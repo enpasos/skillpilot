@@ -73,8 +73,9 @@ class LearningUnitLayerProjectionConformanceTest {
             for (JsonNode placement : math.path("pilotPlacements")) ((ArrayNode) document.get("goalPlacements")).add(placement.deepCopy());
         }
         String expected = null;
-        for (JsonNode source : MAPPER.readTree(REGISTRY.toFile()).path("catalogSources")) {
-            if (source.path("path").asText().equals(math.path("path").asText())) expected = source.path("currentDocumentDigest").asText();
+        // The active V9 registry records the document digests of the frozen proof as history.
+        for (JsonNode source : MAPPER.readTree(REGISTRY.toFile()).path("frozenCatalogSources")) {
+            if (source.path("path").asText().equals(math.path("path").asText())) expected = source.path("frozenDocumentDigest").asText();
         }
         assertThat(expected).isNotNull();
         assertThat(LearningUnitLayerProjection.documentHash(document, MAPPER)).isEqualTo(expected);

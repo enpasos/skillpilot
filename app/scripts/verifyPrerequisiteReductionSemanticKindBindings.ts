@@ -10,8 +10,8 @@ import {
   loadVerifiedPrerequisiteReductionContext,
   PREREQUISITE_REDUCTION_REGISTRY_PATH,
   reviewBindingGoal,
+  verifiedPrerequisiteReductionCatalogSources,
   verifiedPrerequisiteReductionSummary,
-  type PrerequisiteReductionRegistry,
 } from './prerequisiteReductionProof'
 
 const REPOSITORY_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
@@ -34,9 +34,9 @@ export async function verifyPrerequisiteReductionSemanticKindBindings(
   const registryFile = resolve(repositoryRoot, PREREQUISITE_REDUCTION_REGISTRY_PATH)
   const registryBytes = readFileSync(registryFile)
   ensure(digest(registryBytes) === proof.registryDigest, 'registry changed after verification')
-  // These exact registry bytes have already passed the capability loader.
-  const registry = JSON.parse(registryBytes.toString('utf8')) as PrerequisiteReductionRegistry
-  const binding = registry.catalogSources.find(({ path }) => path === sourcePath)
+  // The document the capability loader read. Contracts V1 to V8 also bind it in the registry;
+  // the goal-scoped V9 registry binds single goals, so the loaded catalog is the reference.
+  const binding = verifiedPrerequisiteReductionCatalogSources(context)?.find(({ path }) => path === sourcePath)
   ensure(binding, 'canonical source is not in the verified catalog')
   const sourceBytes = readFileSync(sourceFile)
   const document = JSON.parse(sourceBytes.toString('utf8')) as {

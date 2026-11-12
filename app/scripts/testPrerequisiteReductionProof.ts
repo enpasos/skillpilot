@@ -8,9 +8,13 @@ import { fileURLToPath, pathToFileURL } from 'node:url'
 import type { LearningGoal } from '../src/landscapeTypes'
 import {
   fingerprintPrerequisiteReductionDocument as digest,
+  fingerprintPrerequisiteReductionRecord,
   BATCHED_PREREQUISITE_REDUCTION_CONTRACT,
   APPLICABILITY_REFRESH_PREREQUISITE_REDUCTION_CONTRACT,
   BASIS_BOUND_PREREQUISITE_REDUCTION_CONTRACT,
+  GOAL_SCOPED_PREREQUISITE_REDUCTION_CONTRACT,
+  deriveGoalScopedPrerequisiteReductionRegistry,
+  type GoalScopedPrerequisiteReductionRegistry,
   type BasisBoundPrerequisiteReductionRegistry,
   type AssessmentBasisReductionEntry,
   type ApplicabilityRefreshPrerequisiteReductionRegistry,
@@ -385,10 +389,11 @@ const byNeuroId = '11675f1a-5de2-5926-be78-1e8275f19f5b'
 const heNeuroId = 'afde0001-d7d7-5ed3-8a60-383e8da5620e'
 const neuroOriginalClusters = ['02f8a5a3-9c44-50ec-b9b8-a0b7f402aaa8',
   '7e6b9185-f261-5c76-961a-c61e1cc4ef8d', '485ef1c3-8997-52b7-91f5-b1ddf179013d']
-function basisBoundFixture() {
+function basisBoundFixture(cachePresent = true) {
   // Three real immutable endpoint records retain their actual immediate refs and
   // source metadata. Minimal dependency clusters isolate the real neuro all-of
   // counterexample; this fixture is not the complete live Biology certificate.
+  // Without `cachePresent` the reviewed cache goal lacks the `applicability` field.
   const biology = JSON.parse(readFileSync(resolve(root,
     'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json'), 'utf8')) as Document
   const raw = (id: string) => structuredClone(biology.goals.find(goal => goal.id === id)!)
@@ -404,7 +409,7 @@ function basisBoundFixture() {
   extra.push({ ...goal('zz-basis-history-parent', ['basis-history-x']), type: 'cluster', contains: ['v'] },
     goal('basis-history-x', ['w']), goal('basis-next-source', ['basis-next-mid', 'basis-next-end']),
     goal('basis-next-mid', ['basis-next-end']), goal('basis-next-end'))
-  const f = applicabilityRefreshFixture(true, false, extra)
+  const f = applicabilityRefreshFixture(cachePresent, false, extra)
   const parentRegistry = structuredClone(f.registry), parentPath = 'basis-parent-v7.json'
   const parentFile = resolve(f.directory, parentPath)
   const parentBytes = Buffer.from(JSON.stringify(parentRegistry, null, 2) + '\n')
@@ -523,6 +528,214 @@ async function runBasisBoundFixtureRegressions() {
   assert.ok(await appended.load(), 'later subjects append a flat entry under the same fixed V7 contract')
   checks++
   console.log(`Basis-bound public loader fixtures passed: ${checks}; real neuro predicate shape, exact old refs, per-cut witnesses and prefix continuation retained`)
+}
+
+// V9 freezes the complete V8 fixture proof: its exact bytes stay beside the catalog as the
+// frozen parent, and `proof.json` becomes the goal-scoped registry derived from them.
+const goalScopedParentPath = 'frozen-parent-v8.json'
+const rawDigest = (bytes: Buffer) => `sha256:${createHash('sha256').update(bytes).digest('hex')}`
+// Equal parent bytes bind equal catalogs, so one complete V8 derivation serves every fresh copy.
+const goalScopedDerivations = new Map<string, string>()
+async function goalScopedFixture(cachePresent = true) {
+  const f = basisBoundFixture(cachePresent), frozenParentFile = resolve(f.directory, goalScopedParentPath)
+  const frozenParentBytes = readFileSync(resolve(f.directory, 'proof.json')), parentDigest = rawDigest(frozenParentBytes)
+  writeFileSync(frozenParentFile, frozenParentBytes)
+  const derive = () => deriveGoalScopedPrerequisiteReductionRegistry({
+    repositoryRoot: f.directory, parentRegistryPath: goalScopedParentPath, catalogPath: 'canonical' })
+  if (!goalScopedDerivations.has(parentDigest)) goalScopedDerivations.set(parentDigest, JSON.stringify((await derive()).registry))
+  const frozen = JSON.parse(goalScopedDerivations.get(parentDigest)!) as GoalScopedPrerequisiteReductionRegistry
+  const transfer = (source: string) => {
+    const found = frozen.transfers.find(entry => entry.source === source)
+    assert.ok(found, `fixture transfer ${source}`)
+    return found
+  }
+  // Unlike the V8 `save`, this never touches the frozen parent or any document binding.
+  const save = () => {
+    for (const { path, landscapeId } of f.registry.catalogSources)
+      writeFileSync(resolve(f.directory, path), JSON.stringify(f.documents.find(document => document.landscapeId === landscapeId)))
+    writeFileSync(resolve(f.directory, 'proof.json'), JSON.stringify(frozen))
+  }
+  const loadParent = () => loadVerifiedPrerequisiteReductionContext({
+    repositoryRoot: f.directory, registryPath: goalScopedParentPath, catalogPath: 'canonical' })
+  save()
+  return { ...f, frozen, frozenParentFile, frozenParentBytes, transfer, derive, save, loadParent }
+}
+type GoalScopedFixture = Awaited<ReturnType<typeof goalScopedFixture>>
+// Every goal of the catalog on disk, including documents the registry has never seen.
+const catalogGoals = (directory: string) => new Map<string, Goal>(readdirSync(resolve(directory, 'canonical')).flatMap(name => {
+  const document = JSON.parse(readFileSync(resolve(directory, 'canonical', name), 'utf8')) as Document
+  return document.goals.map(goal => [`${document.landscapeId}:${goal.id}`, goal] as const)
+}))
+// An active transfer source gets its reviewed value from the freeze; every other goal gets its current value.
+function assertGoalScopedReview(
+  context: VerifiedPrerequisiteReductionContext | undefined, directory: string,
+  reviewed: ReadonlyMap<string, unknown>, active: string[], label: string,
+) {
+  assert.ok(context, label)
+  const summary = verifiedPrerequisiteReductionSummary(context)!
+  assert.equal(summary.proofContract, GOAL_SCOPED_PREREQUISITE_REDUCTION_CONTRACT, label)
+  assert.deepEqual(summary.affectedGoalIds, active, `${label}: active transfers`)
+  for (const [key, goal] of catalogGoals(directory))
+    assert.deepEqual(reviewBindingGoal(context, key, goal), active.includes(key) ? reviewed.get(key) : goal, `${label}: ${key}`)
+}
+async function runGoalScopedFixtureRegressions() {
+  let accepted = 0, rejected = 0
+  const f = await goalScopedFixture(), sources = f.frozen.transfers.map(({ source }) => source), goals = catalogGoals(f.directory)
+  const complete = await f.loadParent(), context = await f.load()
+  assert.ok(complete && context)
+  const proven = verifiedPrerequisiteReductionSummary(complete)!
+  assert.equal(proven.proofContract, BASIS_BOUND_PREREQUISITE_REDUCTION_CONTRACT)
+  const reviewed = new Map([...goals].map(([key, goal]) => [key, reviewBindingGoal(complete, key, goal)]))
+  for (const [key, goal] of goals) assert.deepEqual(reviewBindingGoal(context, key, goal), reviewed.get(key),
+    `the frozen registry gives every goal the reviewed value of the complete proof: ${key}`)
+  assertGoalScopedReview(context, f.directory, reviewed, sources, 'every transfer is active at the freeze')
+  const basis = f.transfer(f.source), basisData = basis.reviewedFields.extendedData as Record<string, unknown>
+  assert.deepEqual(basis.reviewedFields.requires, neuroOriginalClusters, 'the basis transfer restores the original cluster requires')
+  assert.ok(basisData && !Object.hasOwn(basisData, 'assessmentApplicabilityBasis'), 'the basis transfer restores extendedData without the basis')
+  const again = await f.derive()
+  assert.equal(JSON.stringify(again.registry), JSON.stringify(f.frozen), 'deriving twice gives the same registry')
+  assert.equal(again.provenSources, proven.affectedGoalIds.length, 'the derivation counts every source of the complete proof')
+  assert.deepEqual(again.provenSourcesWithoutTransfer, [], 'every proven fixture source changed, so each has a transfer')
+  // The V7 cache refresh changed goals outside the requires history; their reviews need a transfer as well.
+  assert.deepEqual(sources.filter(source => !proven.affectedGoalIds.includes(source)), ['cache', 'cache-other'].map(targetKey),
+    'the cache refresh adds transfers outside the requires history')
+  for (const key of [f.source, targetKey('w')]) {
+    assert.equal(sources.includes(key), key === f.source, `only the basis source of the two has a transfer: ${key}`)
+    assert.throws(() => reviewBindingGoal(context, key, { ...goals.get(key)!, title: 'unverified drift' }),
+      /current goal differs from verified snapshot/u, `a caller goal other than the loaded one is rejected: ${key}`)
+  }
+  accepted++
+
+  // A field the reviews never saw is restored by deleting it.
+  const absent = await goalScopedFixture(false), absentComplete = await absent.loadParent(), absentContext = await absent.load()
+  assert.ok(absentComplete && absentContext)
+  assert.deepEqual(absent.transfer(targetKey('cache')).reviewedAbsentFields, ['applicability'], 'the reviewed cache goal had no applicability')
+  for (const [key, goal] of catalogGoals(absent.directory))
+    assert.deepEqual(reviewBindingGoal(absentContext, key, goal), reviewBindingGoal(absentComplete, key, goal),
+      `an absent-field transfer gives every goal the reviewed value of the complete proof: ${key}`)
+  accepted++
+
+  // The complete V8 parent binds whole documents; the frozen registry binds only its transfer goals.
+  const unrelated = async (label: string, change: (g: GoalScopedFixture) => void, parent?: RegExp) => {
+    const g = await goalScopedFixture(); change(g); g.save()
+    assertGoalScopedReview(await g.load(), g.directory, reviewed, sources, `${label} keeps every transfer`)
+    if (parent) await assert.rejects(g.loadParent, parent, `${label} stales the complete V8 parent`)
+    else assert.ok(await g.loadParent(), `${label} leaves the complete V8 parent valid as well`)
+    accepted++
+  }
+  await unrelated('a new goal', g => { g.documents[0].goals.push(goal('goal-scoped-new')) }, /current document digest differs/u)
+  await unrelated('a changed title without transfer', g => { g.get(targetKey('w')).title = 'Changed after the freeze' },
+    /current document digest differs/u)
+  await unrelated('changed requires off every witness', g => { g.get(targetKey('basis-next-source')).requires = ['basis-next-mid'] },
+    /current document digest differs/u)
+  // basis-history-x -> w is the last edge of the end witness v -> basis-history-x -> w of the supported goal v.
+  await unrelated('changed requires on a witness path', g => { g.get(targetKey('basis-history-x')).requires = [] },
+    /current document digest differs/u)
+  await unrelated('a new canonical document', g => {
+    writeFileSync(resolve(g.directory, 'canonical/goal-scoped-extra.json'),
+      JSON.stringify({ landscapeId: 'goal-scoped-extra', title: 'Extra', goals: [goal('n')] }))
+  }, /catalog source paths are missing, new, or duplicated/u)
+  // V8 projects the layer out of every document digest, so neither contract sees it.
+  await unrelated('a learning-unit layer', g => {
+    const document = g.documents[1] as Document & Record<string, unknown>
+    document.programUnits = [learningUnit('unit')]
+    document.goalPlacements = [{ goalId: 'z', unitId: 'unit', relation: 'own' }]
+    document.learningUnitCoverage = 'partial'
+  })
+
+  const release = async (label: string, source: string, change: (documentGoals: Goal[], index: number) => void) => {
+    const g = await goalScopedFixture(), [owner, id] = source.split(':')
+    const document = g.documents.find(entry => entry.landscapeId === owner)!, index = document.goals.findIndex(entry => entry.id === id)
+    const frozenGoal = structuredClone(document.goals[index])
+    change(document.goals, index); g.save()
+    const changed = await g.load()
+    assertGoalScopedReview(changed, g.directory, reviewed, sources.filter(entry => entry !== source), `${label} releases exactly ${source}`)
+    if (!catalogGoals(g.directory).has(source))
+      assert.throws(() => reviewBindingGoal(changed, source, frozenGoal), /current goal differs from verified snapshot/u,
+        `a removed goal has no verified snapshot: ${source}`)
+    const restored = document.goals.filter(entry => entry.id !== id)
+    restored.splice(index, 0, frozenGoal)
+    document.goals = restored; g.save()
+    assertGoalScopedReview(await g.load(), g.directory, reviewed, sources, `restoring the frozen ${source} reactivates its transfer`)
+    accepted += 2
+  }
+  await release('a changed title', f.source, (documentGoals, index) => { documentGoals[index].title = 'Changed after the freeze' })
+  await release('changed requires', local('q'), (documentGoals, index) => { documentGoals[index].requires = ['p', 's'] })
+  await release('a removed goal', targetKey('u'), (documentGoals, index) => { documentGoals.splice(index, 1) })
+
+  const tampered = async (mutate: (g: GoalScopedFixture) => void, expected: RegExp, cachePresent = true) => {
+    const g = await goalScopedFixture(cachePresent); mutate(g); g.save()
+    await assert.rejects(g.load, expected, `a tampered goal-scoped registry is rejected: ${expected.source}`); rejected++
+  }
+  const zero = `sha256:${'0'.repeat(64)}`
+  await tampered(g => { g.transfer(targetKey('v')).reviewedFields.requires = ['w', 'basis-history-x'] },
+    /reviewed goal digest differs: cluster-target-test:v/u)
+  await tampered(g => { g.transfer(local('q')).reviewedAbsentFields.push('title') }, /reviewed goal digest differs: proof-test:q/u)
+  await tampered(g => { g.transfer(targetKey('cache')).reviewedAbsentFields = ['description'] },
+    /reviewed goal digest differs: cluster-target-test:cache/u, false)
+  await tampered(g => { writeFileSync(g.frozenParentFile, Buffer.concat([g.frozenParentBytes, Buffer.from(' ')])) },
+    /frozen parent raw digest differs/u)
+  await tampered(g => { g.frozen.parentRegistryRawDigest = zero }, /frozen parent raw digest differs/u)
+  await tampered(g => {
+    writeFileSync(resolve(g.directory, 'frozen-parent-copy.json'), g.frozenParentBytes)
+    rmSync(g.frozenParentFile); symlinkSync('frozen-parent-copy.json', g.frozenParentFile)
+  }, /frozen parent must be a regular file/u)
+  await tampered(g => {
+    mkdirSync(resolve(g.directory, 'parent-directory'))
+    writeFileSync(resolve(g.directory, 'parent-directory', goalScopedParentPath), g.frozenParentBytes)
+    symlinkSync('parent-directory', resolve(g.directory, 'parent-alias'))
+    g.frozen.parentRegistryPath = `parent-alias/${goalScopedParentPath}`
+  }, /frozen parent path contains a symlink/u)
+  for (const alias of [`./${goalScopedParentPath}`, `history/../${goalScopedParentPath}`])
+    await tampered(g => { g.frozen.parentRegistryPath = alias }, /frozen parent path must be canonical and relative/u)
+  await tampered(g => { g.frozen.parentRegistryPath = g.frozenParentFile }, /frozen parent path must be canonical and relative/u)
+  await tampered(g => { g.frozen.parentRegistryPath = '../outside.json' }, /path escapes repository/u)
+  await tampered(g => { g.frozen.parentRegistryPath = 'basis-parent-v7.json'; g.frozen.parentRegistryRawDigest = rawDigest(g.parentBytes) },
+    /goal-scoped registry requires a strict V8 parent/u)
+  await tampered(g => { g.frozen.frozenCatalogSources[0].frozenDocumentDigest = zero }, /frozen catalog bindings differ from the frozen parent/u)
+  await tampered(g => { g.frozen.frozenCatalogSources.reverse() }, /frozen catalog bindings differ from the frozen parent/u)
+  await tampered(g => { Object.assign(g.frozen, { extra: true }) }, /invalid goal-scoped registry fields/u)
+  await tampered(g => { Object.assign(g.frozen, { schemaVersion: 2 }) }, /invalid goal-scoped parent or scope/u)
+  await tampered(g => { Object.assign(g.frozen.frozenCatalogSources[0], { extra: true }) }, /invalid frozen catalog source fields/u)
+  await tampered(g => { g.frozen.frozenCatalogSources.push(structuredClone(g.frozen.frozenCatalogSources[0])) },
+    /invalid or duplicate frozen catalog source/u)
+  await tampered(g => { Object.assign(g.frozen.transfers[0], { extra: true }) }, /invalid review transfer fields/u)
+  for (const mutate of [
+    (g: GoalScopedFixture) => { g.frozen.transfers.reverse() },
+    (g: GoalScopedFixture) => { g.frozen.transfers.splice(1, 0, structuredClone(g.frozen.transfers[0])) },
+    (g: GoalScopedFixture) => { g.frozen.transfers.push({ ...structuredClone(g.frozen.transfers.at(-1)!), source: 'zz-unknown-landscape:q' }) },
+  ]) await tampered(mutate, /invalid, unsorted or duplicate review transfer source/u)
+  await tampered(g => { g.frozen.transfers[0].reviewedGoalDigest = g.frozen.transfers[0].frozenGoalDigest }, /invalid or no-op review transfer digests/u)
+  for (const mutate of [
+    (g: GoalScopedFixture) => { Object.assign(g.frozen.transfers[0], { reviewedFields: {}, reviewedAbsentFields: [] }) },
+    (g: GoalScopedFixture) => { g.frozen.transfers[0].reviewedFields.id = 'renamed' },
+    (g: GoalScopedFixture) => { g.frozen.transfers[0].reviewedAbsentFields = Object.keys(g.frozen.transfers[0].reviewedFields).slice(0, 1) },
+  ]) await tampered(mutate, /empty, duplicate or identity-changing reviewed fields/u)
+  await tampered(g => { g.frozen.transfers = [] }, /empty review transfers/u)
+
+  // The registry is immutable evidence: a consistently rebound transfer cannot be told apart
+  // at load. The derivation from the frozen parent, run at the freeze, exposes it.
+  const forged = await goalScopedFixture(), forgedTransfer = forged.transfer(targetKey('v'))
+  forgedTransfer.reviewedFields.requires = ['basis-history-x', 'w']
+  const forgedGoal: Record<string, unknown> = { ...structuredClone(forged.get(targetKey('v'))), ...structuredClone(forgedTransfer.reviewedFields) }
+  for (const field of forgedTransfer.reviewedAbsentFields) delete forgedGoal[field]
+  forgedTransfer.reviewedGoalDigest = fingerprintPrerequisiteReductionRecord(forgedGoal)
+  forged.save()
+  const forgedContext = await forged.load()
+  assert.ok(forgedContext, 'a consistently rebound transfer loads')
+  assert.deepEqual(reviewBindingGoal(forgedContext, targetKey('v'), forged.get(targetKey('v'))), forgedGoal,
+    'a forged registry supplies its forged reviewed value')
+  assert.notEqual(JSON.stringify((await forged.derive()).registry), JSON.stringify(forged.frozen),
+    'the derivation from the frozen parent differs from a forged registry')
+  accepted++
+
+  // Only the proof's end state can be frozen.
+  const moved = await goalScopedFixture()
+  moved.get(targetKey('w')).title = 'Changed after the freeze'; moved.save()
+  await assert.rejects(moved.derive, /current document digest differs/u, 'the derivation refuses a catalog past the end state'); rejected++
+  await assert.rejects(deriveGoalScopedPrerequisiteReductionRegistry({ repositoryRoot: f.directory,
+    parentRegistryPath: 'basis-parent-v7.json', catalogPath: 'canonical' }), /strict V8 parent/u, 'only a V8 proof can be frozen'); rejected++
+  console.log(`Goal-scoped V9 fixtures passed: ${accepted} accepted and ${rejected} rejected cases; ${sources.length} transfers reproduce every reviewed value of the complete V8 proof, unrelated changes keep them and a changed goal releases only itself.`)
 }
 
 async function runApplicabilityRefreshFixtureRegressions() {
@@ -1576,6 +1789,7 @@ try {
   const basisOnly = process.argv.slice(2)
   assert.ok(basisOnly.length === 0 || basisOnly.length === 1 && basisOnly[0] === '--basis-bound-fixtures-only', 'unknown proof test selector')
   await runBasisBoundFixtureRegressions()
+  await runGoalScopedFixtureRegressions()
   await runLearningUnitLayerRegressions()
   if (basisOnly.length === 0) {
   await runApplicabilityRefreshFixtureRegressions()
@@ -2229,13 +2443,28 @@ try {
   badParent.save()
   await assert.rejects(badParent.load, /atomic tail witness|witness edge/u)
 
-  const activeRegistry = JSON.parse(readFileSync(resolve(root, PREREQUISITE_REDUCTION_REGISTRY_PATH), 'utf8')) as PrerequisiteReductionRegistry
+  // Once the complete proof is frozen, the active registry is the goal-scoped V9 registry and
+  // the complete proof is its parent; the contract checks below run on the complete proof.
+  const activeValue = JSON.parse(readFileSync(resolve(root, PREREQUISITE_REDUCTION_REGISTRY_PATH), 'utf8')) as
+    PrerequisiteReductionRegistry | GoalScopedPrerequisiteReductionRegistry
+  const frozen = activeValue.proofContract === GOAL_SCOPED_PREREQUISITE_REDUCTION_CONTRACT ? activeValue : undefined
+  const completeProofPath = frozen ? frozen.parentRegistryPath : PREREQUISITE_REDUCTION_REGISTRY_PATH
+  const activeRegistry = frozen
+    ? JSON.parse(readFileSync(resolve(root, completeProofPath), 'utf8')) as PrerequisiteReductionRegistry
+    : activeValue as PrerequisiteReductionRegistry
   assert.ok(activeRegistry.proofContract === CLUSTER_TARGET_PREREQUISITE_REDUCTION_CONTRACT
     || activeRegistry.proofContract === BATCHED_PREREQUISITE_REDUCTION_CONTRACT
     || activeRegistry.proofContract === APPLICABILITY_REFRESH_PREREQUISITE_REDUCTION_CONTRACT
-    || activeRegistry.proofContract === BASIS_BOUND_PREREQUISITE_REDUCTION_CONTRACT, 'the active live proof uses V5, V6, V7 or the bound-basis wrapper')
+    || activeRegistry.proofContract === BASIS_BOUND_PREREQUISITE_REDUCTION_CONTRACT,
+  'the complete live proof (the active registry, or the parent of a frozen V9 registry) uses V5, V6, V7 or the bound-basis wrapper')
+  assert.ok(!frozen || activeRegistry.proofContract === BASIS_BOUND_PREREQUISITE_REDUCTION_CONTRACT,
+    'the frozen V9 registry has the complete V8 proof as its parent')
+  // The frozen registry is immutable evidence: once the catalog has moved on, nothing can
+  // derive it again, so its exact bytes are pinned here.
+  if (frozen) assert.equal(rawDigest(readFileSync(resolve(root, PREREQUISITE_REDUCTION_REGISTRY_PATH))),
+    'sha256:a48b52ca0449ff75dce93e93a3ade8982210d32a03f9a585a03b935ebed052b7', 'the registry frozen on 12 November 2026 is unchanged')
   if (activeRegistry.proofContract === BASIS_BOUND_PREREQUISITE_REDUCTION_CONTRACT) {
-    const context = await loadVerifiedPrerequisiteReductionContext({ repositoryRoot: root })
+    const context = await loadVerifiedPrerequisiteReductionContext({ repositoryRoot: root, registryPath: completeProofPath })
     assert.ok(context)
     assert.equal(verifiedPrerequisiteReductionSummary(context)!.proofContract, BASIS_BOUND_PREREQUISITE_REDUCTION_CONTRACT)
     const current = activeRegistry.catalogSources.map(({ path }) => JSON.parse(readFileSync(resolve(root, path), 'utf8')) as Document)
@@ -2256,7 +2485,25 @@ try {
         { kind: 'allOfGoalApplicability', goalRefs: old.requires }, `actual exact immediate-start predicate: ${binding.source}`)
     }
     assert.ok(declared.size > 0)
+    if (frozen) {
+      const frozenContext = await loadVerifiedPrerequisiteReductionContext({ repositoryRoot: root })
+      assert.ok(frozenContext, 'the active frozen registry loads')
+      const summary = verifiedPrerequisiteReductionSummary(frozenContext)!
+      assert.equal(summary.proofContract, GOAL_SCOPED_PREREQUISITE_REDUCTION_CONTRACT, 'the active live registry is the frozen goal-scoped registry')
+      const transferred = frozen.transfers.map(({ source }) => source)
+      assert.deepEqual(summary.affectedGoalIds, transferred, 'every transfer is active at the freeze')
+      for (const [source, goal] of goals) assert.deepEqual(reviewBindingGoal(frozenContext, source, goal), reviewBindingGoal(context, source, goal),
+        `the frozen registry gives every goal the reviewed value of the complete proof: ${source}`)
+      const transferredSources = new Set(transferred)
+      for (const source of verifiedPrerequisiteReductionSummary(context)!.affectedGoalIds) {
+        const goal = goals.get(source)
+        assert.ok(goal, `proven source in the current catalog: ${source}`)
+        if (!transferredSources.has(source)) assert.deepEqual(reviewBindingGoal(context, source, goal), goal,
+          `a proven source without a transfer was reviewed with its current value: ${source}`)
+      }
+    }
     console.log(`Actual basis-bound public loader: ${activeRegistry.entries.length} flat entries, ${declared.size} exact assessment bases, 21 complete current documents and 6524 earliest comparison guards passed.`)
+    if (frozen) console.log(`Frozen goal-scoped registry: ${frozen.transfers.length} transfers give all ${goals.size} goals the reviewed value of the complete proof.`)
   } else if (activeRegistry.proofContract === CLUSTER_TARGET_PREREQUISITE_REDUCTION_CONTRACT) {
     await verifyHistoricalLiveV5Checkpoint(root)
   } else {

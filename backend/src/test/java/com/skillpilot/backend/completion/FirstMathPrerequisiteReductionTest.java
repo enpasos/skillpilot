@@ -272,8 +272,11 @@ class FirstMathPrerequisiteReductionTest {
             "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_DEUTSCH.de.json");
     private static final Path PHYSICS_SOURCE = REPOSITORY.resolve(
             "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json");
+    // The complete V8 proof these native frames replay. Since the freeze of 12 November 2026 it
+    // is the frozen parent of the active goal-scoped V9 registry, which binds it by raw digest.
+    // The frames need the catalog to still be the end state of that proof.
     private static final Path REDUCTION_REGISTRY = REPOSITORY.resolve(
-            "curricula/DE/Gymnasium/provenance/prerequisite-reduction-proof-registry.json");
+            "curricula/DE/Gymnasium/provenance/prerequisite-reduction-proof-registry-v8-politics-economics-20261111.json");
     private static final ObjectMapper MAPPER = new ObjectMapper();
 
     private static Path findRepositoryRoot() {

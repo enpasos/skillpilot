@@ -155,14 +155,15 @@ function main() {
     assert.deepEqual(references, conformance.references, 'committed reference fingerprints (shared with the Java test)')
   }
 
-  // Canonical Mathematics with the pilot unit fingerprints exactly as the registry binds it.
+  // Canonical Mathematics with the pilot unit fingerprints exactly as the frozen proof bound it;
+  // the active V9 registry records that document digest as history.
   const registry = JSON.parse(read(PREREQUISITE_REDUCTION_REGISTRY_PATH).toString('utf8')) as {
-    catalogSources: Array<{ path: string; landscapeId: string; currentDocumentDigest: string }> }
-  const binding = registry.catalogSources.find(source => source.path === conformance.canonicalMathematics.path)
+    frozenCatalogSources: Array<{ path: string; landscapeId: string; frozenDocumentDigest: string }> }
+  const binding = registry.frozenCatalogSources.find(source => source.path === conformance.canonicalMathematics.path)
   assert.ok(binding && binding.landscapeId === conformance.canonicalMathematics.landscapeId)
   assert.ok(hasLearningUnitLayer(math))
   const mathFingerprint = fingerprintPrerequisiteReductionDocument(math)
-  assert.equal(mathFingerprint, binding.currentDocumentDigest, 'Mathematics with its learning unit keeps the registry binding')
+  assert.equal(mathFingerprint, binding.frozenDocumentDigest, 'Mathematics with its learning unit keeps the frozen document binding')
   if (python)
     assert.deepEqual(pythonMath, { fingerprint: mathFingerprint }, 'Python agrees on Mathematics with its learning unit')
   rawPinBehaviour(math, injected)

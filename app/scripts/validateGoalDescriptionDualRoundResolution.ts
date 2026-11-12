@@ -10,6 +10,7 @@ import {
   reviewBindingGoal,
   verifiedPrerequisiteReductionSummary,
   BASIS_BOUND_PREREQUISITE_REDUCTION_CONTRACT,
+  GOAL_SCOPED_PREREQUISITE_REDUCTION_CONTRACT,
   type VerifiedPrerequisiteReductionContext,
 } from './prerequisiteReductionProof'
 import { buildGoalDescriptionRolloutResolutionSynthesis } from './goalDescriptionRolloutResolutionSynthesis'
@@ -43,6 +44,11 @@ import {
 } from './validateGoalDescriptionRolloutSynthesisDecisionManifest'
 
 const REPOSITORY_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
+// Contracts whose verified context certifies the reviewed value of a goal that carries an
+// assessment applicability basis: V8 introduced the basis, the frozen V9 registry transfers it.
+const basisCertifyingContracts: ReadonlySet<unknown> = new Set([
+  BASIS_BOUND_PREREQUISITE_REDUCTION_CONTRACT, GOAL_SCOPED_PREREQUISITE_REDUCTION_CONTRACT,
+])
 const RESOLUTION_SCHEMA_PATH = resolve(
   REPOSITORY_ROOT,
   'contracts/goal-description-review/v1/goal-description-dual-round-resolution.schema.json',
@@ -734,11 +740,11 @@ const validateCurrentGoalBindings = ({
     const certifiedBasis = extended !== null && typeof extended === 'object'
       && Object.hasOwn(extended, 'assessmentApplicabilityBasis')
       && prerequisiteReductionContext !== undefined
-      && verifiedPrerequisiteReductionSummary(prerequisiteReductionContext)?.proofContract
-        === BASIS_BOUND_PREREQUISITE_REDUCTION_CONTRACT
+      && basisCertifyingContracts.has(verifiedPrerequisiteReductionSummary(prerequisiteReductionContext)?.proofContract)
     const historicalCanonicalContext = buildGoalDescriptionCanonicalContext(certifiedGoal)
-    // The opaque lookup above validates the exact current goal before a V8-only
-    // basis can use its certified baseline. Raw and older contracts stay strict.
+    // The opaque lookup above validates the exact current goal before a basis that
+    // V8 introduced can use its certified baseline; the frozen V9 registry carries
+    // that baseline per goal. Raw and older contracts stay strict.
     const expectedCanonicalContext = certifiedBasis
       ? historicalCanonicalContext : buildGoalDescriptionCanonicalContext(canonicalGoal)
     if (stableGoalBookJson(currentGoal.canonicalContext) !== stableGoalBookJson(expectedCanonicalContext)

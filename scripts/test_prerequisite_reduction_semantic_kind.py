@@ -780,7 +780,8 @@ class SemanticKindReductionTest(unittest.TestCase):
             "extra-field": at(["unverified"], True),
         }
         for contract in (bridge.PROOF_CONTRACT, bridge.APPEND_ONLY_PROOF_CONTRACT,
-                         bridge.APPLICABILITY_REFRESH_PROOF_CONTRACT, bridge.BASIS_BOUND_PROOF_CONTRACT):
+                         bridge.APPLICABILITY_REFRESH_PROOF_CONTRACT, bridge.BASIS_BOUND_PROOF_CONTRACT,
+                         bridge.GOAL_SCOPED_PROOF_CONTRACT):
             self.receipt["proof"]["proofContract"] = contract
             for name, mutate in cases.items():
                 with self.subTest(contract=contract, name=name):
@@ -792,7 +793,7 @@ class SemanticKindReductionTest(unittest.TestCase):
         for contract in (bridge.PROOF_CONTRACT, bridge.CLUSTER_PROOF_CONTRACT, bridge.ORDERED_PROOF_CONTRACT,
                          bridge.CONTINUED_PROOF_CONTRACT, bridge.CLUSTER_TARGET_PROOF_CONTRACT,
                          bridge.APPEND_ONLY_PROOF_CONTRACT, bridge.APPLICABILITY_REFRESH_PROOF_CONTRACT,
-                         bridge.BASIS_BOUND_PROOF_CONTRACT):
+                         bridge.BASIS_BOUND_PROOF_CONTRACT, bridge.GOAL_SCOPED_PROOF_CONTRACT):
             with self.subTest(contract=contract):
                 self.receipt["proof"]["proofContract"] = contract
                 with patch.object(bridge.subprocess, "run", return_value=self.completed()):
@@ -800,10 +801,34 @@ class SemanticKindReductionTest(unittest.TestCase):
                 self.assertEqual(verified.baseline_fingerprints, {"q": BASELINE})
                 self.assertEqual(verified.provenance["proofContract"], contract)
 
+    def test_frozen_contract_accepts_a_catalog_without_active_transfers(self):
+        # A goal that changed after the freeze has no transfer: its baseline is its current
+        # value. Only the frozen V9 contract can therefore report an empty inventory.
+        released = copy.deepcopy(self.receipt)
+        released["proof"]["affectedGoalIds"] = []
+        released["goals"][0]["baselineFingerprint"] = CURRENT
+        for contract in (bridge.BASIS_BOUND_PROOF_CONTRACT, bridge.GOAL_SCOPED_PROOF_CONTRACT):
+            with self.subTest(contract=contract):
+                released["proof"]["proofContract"] = contract
+                with patch.object(bridge.subprocess, "run", return_value=self.completed(released)):
+                    if contract == bridge.GOAL_SCOPED_PROOF_CONTRACT:
+                        verified = self.load()
+                        self.assertEqual(verified.baseline_fingerprints, {"q": CURRENT})
+                        self.assertEqual(verified.provenance["affectedGoalIds"], [])
+                    else:
+                        with self.assertRaisesRegex(bridge.PrerequisiteReductionBindingError, "Invalid affected goal inventory"):
+                            self.load()
+        # A historical fingerprint still needs a declared transfer under V9.
+        undeclared = copy.deepcopy(released)
+        undeclared["goals"][0]["baselineFingerprint"] = BASELINE
+        with patch.object(bridge.subprocess, "run", return_value=self.completed(undeclared)):
+            with self.assertRaisesRegex(bridge.PrerequisiteReductionBindingError, "Undeclared historical goal fingerprint"):
+                self.load()
+
     def test_append_only_contract_invokes_node_with_bounded_timeout_and_no_fallback(self):
         self.assertEqual(bridge.NODE_VERIFIER_TIMEOUT_SECONDS, 1800)
         for contract in (bridge.APPEND_ONLY_PROOF_CONTRACT, bridge.APPLICABILITY_REFRESH_PROOF_CONTRACT,
-                         bridge.BASIS_BOUND_PROOF_CONTRACT):
+                         bridge.BASIS_BOUND_PROOF_CONTRACT, bridge.GOAL_SCOPED_PROOF_CONTRACT):
             with self.subTest(contract=contract):
                 self.receipt["proof"]["proofContract"] = contract
                 with patch.object(bridge.subprocess, "run", return_value=self.completed()) as run:
@@ -878,11 +903,12 @@ class LearningUnitLayerFingerprintTest(unittest.TestCase):
             document["programUnits"].append(copy.deepcopy(math["pilotUnit"]))
             document["goalPlacements"].extend(copy.deepcopy(math["pilotPlacements"]))
         registry = json.loads((ROOT / bridge.REGISTRY_PATH).read_bytes())
-        binding = next(row for row in registry["catalogSources"] if row["path"] == math["path"])
-        self.assertEqual(bridge.fingerprint_prerequisite_reduction_document(document), binding["currentDocumentDigest"])
+        # The active V9 registry records the document digests of the frozen proof as history.
+        binding = next(row for row in registry["frozenCatalogSources"] if row["path"] == math["path"])
+        self.assertEqual(bridge.fingerprint_prerequisite_reduction_document(document), binding["frozenDocumentDigest"])
         changed = copy.deepcopy(document)
         changed["goals"][0]["title"] += " (changed)"
-        self.assertNotEqual(bridge.fingerprint_prerequisite_reduction_document(changed), binding["currentDocumentDigest"])
+        self.assertNotEqual(bridge.fingerprint_prerequisite_reduction_document(changed), binding["frozenDocumentDigest"])
 
 
 if __name__ == "__main__":

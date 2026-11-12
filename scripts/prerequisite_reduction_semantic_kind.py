@@ -23,6 +23,9 @@ CLUSTER_TARGET_PROOF_CONTRACT = "atomic-cluster-target-normalization-v5"
 APPEND_ONLY_PROOF_CONTRACT = "append-only-prerequisite-reduction-batches-v6"
 APPLICABILITY_REFRESH_PROOF_CONTRACT = "prerequisite-reduction-applicability-refresh-v7"
 BASIS_BOUND_PROOF_CONTRACT = "assessment-basis-bound-prerequisite-reduction-v8"
+# V9 freezes the complete V8 proof and transfers review reuse goal by goal; a goal that
+# changed after the freeze has no transfer, so the inventory of active transfers may be empty.
+GOAL_SCOPED_PROOF_CONTRACT = "frozen-goal-scoped-prerequisite-reduction-v9"
 SOFTWARE_ROOT = Path(__file__).resolve().parents[1]
 # Still one bounded attempt without fallback. The complete proof verification took
 # 273 s before and 526 s after the remaining protected subjects were added, and a
@@ -128,13 +131,15 @@ def load_verified_semantic_kind_bindings(
         require(proof["proofContract"] in (PROOF_CONTRACT, CLUSTER_PROOF_CONTRACT,
                                           ORDERED_PROOF_CONTRACT, CONTINUED_PROOF_CONTRACT,
                                           CLUSTER_TARGET_PROOF_CONTRACT, APPEND_ONLY_PROOF_CONTRACT,
-                                          APPLICABILITY_REFRESH_PROOF_CONTRACT, BASIS_BOUND_PROOF_CONTRACT)
+                                          APPLICABILITY_REFRESH_PROOF_CONTRACT, BASIS_BOUND_PROOF_CONTRACT,
+                                          GOAL_SCOPED_PROOF_CONTRACT)
                 and proof["mode"] == "current-or-certified-baseline-comparison"
                 and proof["auditScope"] == "origin-source-landscape-closure"
                 and proof["registryPath"] == REGISTRY_PATH
                 and proof["registryDigest"] == digest(registry_bytes), "Registry byte or proof contract binding differs")
         affected = proof["affectedGoalIds"]
-        require(isinstance(affected, list) and affected
+        require(isinstance(affected, list)
+                and (bool(affected) or proof["proofContract"] == GOAL_SCOPED_PROOF_CONTRACT)
                 and all(isinstance(value, str) and re.fullmatch(r"[^:\s]+:[^:\s]+", value) for value in affected)
                 and affected == sorted(set(affected)), "Invalid affected goal inventory")
         goals = source_document.get("goals")

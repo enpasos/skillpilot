@@ -100,6 +100,7 @@
     "validate:graph": "tsx scripts/validateGraph.ts",
     "audit:transitive-minimality": "tsx scripts/auditTransitiveMinimality.ts --report-only",
     "check:transitive-minimality": "tsx scripts/auditTransitiveMinimality.ts --check",
+    "check:prerequisite-reduction-freeze": "tsx scripts/freezePrerequisiteReductionProof.ts --check",
     "test:transitive-minimality": "tsx --test scripts/testApplicabilityInputSnapshot.ts && tsx scripts/testTransitiveMinimality.ts && tsx --test scripts/testTransitiveMinimalityCli.ts && tsx scripts/testPrerequisiteReductionProof.ts && tsx scripts/testLearningUnitLayerProjection.ts && tsx --test scripts/testCurrentCurriculumCatalog.ts scripts/testCurriculumGraphIntegrity.ts scripts/testOptionalHistoricalReviewContext.ts",
     "validate:learning-units": "tsx scripts/validateLearningUnits.ts",
     "validate:learning-units:offered": "tsx scripts/reportMathPhysicsNativeInventory.ts --output tmp/learning-units/offered-membership.json && tsx scripts/testMathPhysicsNativeInventory.ts --inventory tmp/learning-units/offered-membership.json && tsx scripts/validateLearningUnits.ts --offered tmp/learning-units/offered-membership.json",
