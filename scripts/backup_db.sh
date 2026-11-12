@@ -11,7 +11,8 @@ DB_NAME="${POSTGRES_DB:-skillpilot}"
 DB_USER="${POSTGRES_USER:-skillpilot}"
 : "${POSTGRES_PASSWORD:?POSTGRES_PASSWORD must be provided by a protected environment file}"
 DATE=$(date +%Y-%m-%d_%H-%M-%S)
-BACKUP_DIR="backups"
+# The deployment engine stores its pre-restart dumps outside the checkout.
+BACKUP_DIR="${SKILLPILOT_BACKUP_DIR:-backups}"
 BACKUP_RETENTION_DAYS="${SKILLPILOT_BACKUP_RETENTION_DAYS:-30}"
 FILENAME="${BACKUP_DIR}/${DB_NAME}_${DATE}.sql"
 PARTIAL_FILENAME="${BACKUP_DIR}/.${DB_NAME}_${DATE}.$$.partial"
@@ -48,6 +49,13 @@ PGPASSWORD="$POSTGRES_PASSWORD" pg_dump \
   --exclude-table-data=goal_feedback_inbox_capacity \
   -f "$PARTIAL_FILENAME"
 
+# pg_dump closes a complete plain-format dump with this trailer. A dump
+# without it must never be published as a restorable backup.
+if ! grep -q -- '^-- PostgreSQL database dump complete' "$PARTIAL_FILENAME"; then
+  echo "Backup is incomplete: the pg_dump completion trailer is missing." >&2
+  exit 1
+fi
+
 # A restore must never retain a capacity receipt for content that was
 # intentionally excluded above. Recreate the required singleton as an empty,
 # internally consistent inbox after the schema has been restored.
@@ -74,4 +82,4 @@ find "$BACKUP_DIR" \
   -print \
   -delete
 
-echo "Backup created successfully at: $FILENAME"
+echo "Backup created successfully at: $FILENAME ($(wc -c < "$FILENAME") bytes)"
