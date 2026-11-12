@@ -274,6 +274,8 @@ class FirstMathPrerequisiteReductionTest {
             "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json");
     private static final Path REDUCTION_REGISTRY = REPOSITORY.resolve(
             "curricula/DE/Gymnasium/provenance/prerequisite-reduction-proof-registry.json");
+    private static final String HISTORICAL_REVIEW_FRAME =
+            "curricula/DE/Gymnasium/provenance/historical-review-frame-2026-11-12.json";
     private static final ObjectMapper MAPPER = new ObjectMapper();
 
     private static Path findRepositoryRoot() {
@@ -288,6 +290,39 @@ class FirstMathPrerequisiteReductionTest {
         throw new IllegalStateException("Cannot locate SkillPilot repository root from " + start);
     }
 
+    @Test
+    void historicalReviewFramesRejectRebindingAndMissingOverlaysWithoutReplacingLiveInputs() throws Exception {
+        JsonNode active = MAPPER.readTree(REDUCTION_REGISTRY.toFile());
+        JsonNode snapshot = MAPPER.readTree(exactRegularRepositoryFile(HISTORICAL_REVIEW_FRAME).toFile());
+        Map<Path, JsonNode> historical = reconstructHistoricalReviewDocuments(active, snapshot);
+        Path changed = exactRegularRepositoryFile(snapshot.path("documents").get(0).path("path").asText());
+        byte[] liveBytes = Files.readAllBytes(changed);
+        JsonNode live = MAPPER.readTree(liveBytes);
+        assertThat(documentHash(historical.get(changed))).as("historical overlay is not live native acceptance")
+                .isNotEqualTo(documentHash(live));
+        ObjectNode wrongRegistryDigest = snapshot.deepCopy();
+        wrongRegistryDigest.put("registryRawDigest", "sha256:" + "0".repeat(64));
+        assertThatThrownBy(() -> reconstructHistoricalReviewDocuments(active, wrongRegistryDigest))
+                .isInstanceOf(AssertionError.class).hasMessageContaining("exact raw proof binding");
+        ObjectNode wrongRegistryPath = snapshot.deepCopy();
+        wrongRegistryPath.put("registryPath", "curricula/DE/Gymnasium/provenance/other.json");
+        assertThatThrownBy(() -> reconstructHistoricalReviewDocuments(active, wrongRegistryPath)).isInstanceOf(AssertionError.class);
+        ObjectNode missingOverlay = snapshot.deepCopy();
+        ((com.fasterxml.jackson.databind.node.ArrayNode) missingOverlay.path("documents")).remove(0);
+        assertThatThrownBy(() -> reconstructHistoricalReviewDocuments(active, missingOverlay))
+                .isInstanceOf(AssertionError.class).hasMessageContaining("full historical review document binding");
+        ObjectNode wrongPresence = snapshot.deepCopy();
+        ((ObjectNode) wrongPresence.path("documents").get(0).path("originalRequires").get(0)).putNull("requires");
+        assertThatThrownBy(() -> reconstructHistoricalReviewDocuments(active, wrongPresence))
+                .isInstanceOf(AssertionError.class).hasMessageContaining("full historical review document binding");
+        ObjectNode duplicateOverlay = snapshot.deepCopy();
+        var documents = (com.fasterxml.jackson.databind.node.ArrayNode) duplicateOverlay.path("documents");
+        documents.add(documents.get(0).deepCopy());
+        assertThatThrownBy(() -> reconstructHistoricalReviewDocuments(active, duplicateOverlay))
+                .isInstanceOf(AssertionError.class).hasMessageContaining("unique historical overlay document");
+        assertThat(Files.readAllBytes(changed)).as("historical reconstruction never writes live catalog").containsExactly(liveBytes);
+    }
+
     /** Bounded projection-model regression without enumerating the live curriculum scopes. */
     @Test
     void rawRegistryFramesRejectMissingOverlaysBadDigestsAndRequiresPresenceChanges() throws Exception {
@@ -299,25 +334,25 @@ class FirstMathPrerequisiteReductionTest {
             cacheDeclaration = frame.registry();
             ObjectNode badParentDigest = active.deepCopy();
             badParentDigest.put("parentRegistryRawDigest", "sha256:" + "0".repeat(64));
-            assertThatThrownBy(() -> readBasisBoundFrame(badParentDigest, Map.of())).isInstanceOf(AssertionError.class);
+            assertThatThrownBy(() -> readBasisBoundFrame(badParentDigest, frame.currentDocuments())).isInstanceOf(AssertionError.class);
             ObjectNode missingBasis = active.deepCopy();
             ((com.fasterxml.jackson.databind.node.ArrayNode) missingBasis.path("entries").get(0).path("basisBindings")).remove(0);
-            assertThatThrownBy(() -> readBasisBoundFrame(missingBasis, Map.of())).isInstanceOf(AssertionError.class);
+            assertThatThrownBy(() -> readBasisBoundFrame(missingBasis, frame.currentDocuments())).isInstanceOf(AssertionError.class);
             ObjectNode duplicateBasis = active.deepCopy();
             var basisBindings = (com.fasterxml.jackson.databind.node.ArrayNode) duplicateBasis.path("entries").get(0).path("basisBindings");
             basisBindings.add(basisBindings.get(0).deepCopy());
-            assertThatThrownBy(() -> readBasisBoundFrame(duplicateBasis, Map.of())).isInstanceOf(AssertionError.class);
+            assertThatThrownBy(() -> readBasisBoundFrame(duplicateBasis, frame.currentDocuments())).isInstanceOf(AssertionError.class);
             ObjectNode wrongStart = active.deepCopy();
             String source = active.path("entries").get(0).path("basisBindings").get(0).path("source").asText();
             for (JsonNode snapshot : wrongStart.path("entries").get(0).path("batch").path("originalRequires"))
                 if (source.equals(snapshot.path("source").asText())) ((ObjectNode) snapshot).set("requires", MAPPER.createArrayNode());
-            assertThatThrownBy(() -> readBasisBoundFrame(wrongStart, Map.of())).isInstanceOf(AssertionError.class);
+            assertThatThrownBy(() -> readBasisBoundFrame(wrongStart, frame.currentDocuments())).isInstanceOf(AssertionError.class);
             ObjectNode missingStart = active.deepCopy();
             ((com.fasterxml.jackson.databind.node.ArrayNode) missingStart.path("entries").get(0).path("batch").path("originalRequires")).remove(0);
-            assertThatThrownBy(() -> readBasisBoundFrame(missingStart, Map.of())).isInstanceOf(AssertionError.class);
+            assertThatThrownBy(() -> readBasisBoundFrame(missingStart, frame.currentDocuments())).isInstanceOf(AssertionError.class);
             ObjectNode wrongPredecessor = active.deepCopy();
             ((ObjectNode) wrongPredecessor.path("entries").get(0).path("batch")).put("previousDigest", "sha256:" + "0".repeat(64));
-            assertThatThrownBy(() -> readBasisBoundFrame(wrongPredecessor, Map.of())).isInstanceOf(AssertionError.class);
+            assertThatThrownBy(() -> readBasisBoundFrame(wrongPredecessor, frame.currentDocuments())).isInstanceOf(AssertionError.class);
             Map<Path, JsonNode> changedMetadata = mutableDocuments(frame.currentDocuments());
             ((ObjectNode) registeredGoal(frameGoals(changedMetadata), source).path("extendedData")).put("unapprovedNativeFixtureField", true);
             ObjectNode reboundEnd = active.deepCopy();
@@ -515,6 +550,10 @@ class FirstMathPrerequisiteReductionTest {
     @Test
     void currentCatalogLearningScopesRetainEveryCanonicalAcquisitionTarget() throws Exception {
         ReductionRegistry registry = readActualCurrentRegistry();
+        for (var document : registry.currentDocuments().entrySet()) {
+            assertThat(document.getValue()).as("current native acquisition uses live catalog %s", document.getKey())
+                    .isEqualTo(MAPPER.readTree(document.getKey().toFile()));
+        }
         var fixture = new NativeFixture(registry, false);
         Set<String> subjects = new TreeSet<>(registry.canonicalOwners().values());
         assertThat(subjects).hasSize(21).contains(ROOT);
@@ -3107,8 +3146,70 @@ class FirstMathPrerequisiteReductionTest {
         return new NativeV7Boundary(active, bytes, Map.of());
     }
 
+    /** Only declared requires overlays may reconstruct the old proof frame.
+     * Every resulting complete document still has to match the unchanged V8 digest.
+     * These inputs never substitute for live current-catalog acquisition acceptance.
+     */
+    private static Map<Path, JsonNode> reconstructHistoricalReviewDocuments(JsonNode registry,
+            JsonNode snapshot) throws IOException {
+        assertFields(snapshot, "historical review frame", "schemaVersion", "contract", "registryPath",
+                "registryRawDigest", "documents");
+        assertThat(snapshot.path("schemaVersion").isIntegralNumber()).isTrue();
+        assertThat(snapshot.path("schemaVersion").asInt()).isEqualTo(1);
+        assertThat(snapshot.path("contract").asText()).isEqualTo("dependency-bounded-historical-review-frame-v1");
+        assertThat(snapshot.path("registryPath").asText()).isEqualTo(
+                REPOSITORY.relativize(REDUCTION_REGISTRY).toString().replace(File.separatorChar, '/'));
+        byte[] registryBytes = Files.readAllBytes(REDUCTION_REGISTRY);
+        assertThat(snapshot.path("registryRawDigest").asText()).as("historical frame exact raw proof binding")
+                .isEqualTo(rawByteHash(registryBytes));
+        assertThat(registry).as("historical frame belongs to the supplied proof").isEqualTo(MAPPER.readTree(registryBytes));
+        Map<Path, JsonNode> documents = new LinkedHashMap<>();
+        for (JsonNode source : registry.path("catalogSources")) {
+            Path file = exactRegularRepositoryFile(source.path("path").asText());
+            JsonNode document = MAPPER.readTree(file.toFile());
+            assertThat(document.path("landscapeId")).isEqualTo(source.path("landscapeId"));
+            assertThat(documents.putIfAbsent(file, document)).isNull();
+        }
+        assertThat(documents).hasSize(21);
+        assertThat(snapshot.path("documents").isArray()).isTrue();
+        assertThat(snapshot.path("documents")).isNotEmpty();
+        Set<Path> paths = new HashSet<>();
+        for (JsonNode row : snapshot.path("documents")) {
+            assertFields(row, "historical review document", "path", "landscapeId", "originalRequires");
+            Path file = exactRegularRepositoryFile(row.path("path").asText());
+            assertThat(paths.add(file)).as("unique historical overlay document").isTrue();
+            assertThat(documents).containsKey(file);
+            JsonNode document = documents.get(file);
+            assertThat(row.path("landscapeId")).isEqualTo(document.path("landscapeId"));
+            Map<String, JsonNode> goals = rawGoals(document);
+            Set<String> ids = new HashSet<>();
+            assertThat(row.path("originalRequires").isArray()).isTrue();
+            assertThat(row.path("originalRequires")).isNotEmpty();
+            for (JsonNode original : row.path("originalRequires")) {
+                assertFields(original, "historical requires overlay", "goalId", "requires");
+                String id = original.path("goalId").asText();
+                assertThat(id).isNotBlank();
+                assertThat(ids.add(id)).as("unique historical goal overlay %s", id).isTrue();
+                assertThat(goals).containsKey(id);
+                ObjectNode goal = (ObjectNode) goals.get(id);
+                if (original.path("requires").isNull()) goal.remove("requires");
+                else goal.set("requires", MAPPER.valueToTree(rawRequires(original.path("requires"), id)));
+            }
+        }
+        for (JsonNode source : registry.path("catalogSources")) {
+            Path file = exactRegularRepositoryFile(source.path("path").asText());
+            assertDocumentDigest(documents.get(file), source.path("currentDocumentDigest").asText(),
+                    "full historical review document binding " + file);
+        }
+        return immutableDocuments(documents);
+    }
+
     private static NativeBasisBoundFrame readBasisBoundFrame(JsonNode registry,
             Map<Path, JsonNode> suppliedDocuments) throws IOException {
+        if (suppliedDocuments.isEmpty()) {
+            suppliedDocuments = reconstructHistoricalReviewDocuments(registry,
+                    MAPPER.readTree(exactRegularRepositoryFile(HISTORICAL_REVIEW_FRAME).toFile()));
+        }
         assertFields(registry, "V8 basis-bound registry", "schemaVersion", "proofContract", "auditScope", "catalogSources",
                 "parentRegistryPath", "parentRegistryRawDigest", "entries");
         assertThat(registry.path("schemaVersion").isIntegralNumber()).isTrue();
@@ -3149,7 +3250,7 @@ class FirstMathPrerequisiteReductionTest {
             Path file = exactRegularRepositoryFile(relative);
             JsonNode document = readFrameDocument(file, suppliedDocuments);
             assertThat(document.path("landscapeId")).isEqualTo(source.path("landscapeId"));
-            assertDocumentDigest(document, source.path("currentDocumentDigest").asText(), "actual final V8 document " + relative);
+            assertDocumentDigest(document, source.path("currentDocumentDigest").asText(), "certified historical final V8 document " + relative);
             assertThat(currentDocuments.putIfAbsent(file, document)).isNull();
         }
         assertThat(currentDocuments).hasSize(parentBindings.size());
@@ -3242,7 +3343,24 @@ class FirstMathPrerequisiteReductionTest {
         return false;
     }
 
+    /** Historical proof replay remains strict, while current acquisition checks use only live data. */
     private static ReductionRegistry readActualCurrentRegistry() throws IOException {
+        ReductionRegistry certified = readCertifiedCurrentRegistry();
+        Map<Path, JsonNode> live = new LinkedHashMap<>();
+        Map<Path, DocumentDigests> digests = new LinkedHashMap<>();
+        for (var entry : certified.canonicalOwners().entrySet()) {
+            JsonNode document = MAPPER.readTree(entry.getKey().toFile());
+            assertThat(document.path("landscapeId").asText()).isEqualTo(entry.getValue());
+            live.put(entry.getKey(), document);
+            String digest = documentHash(document);
+            digests.put(entry.getKey(), new DocumentDigests(digest, digest));
+        }
+        return new ReductionRegistry(certified.canonicalOwners(), Map.of(), Map.of(), List.of(),
+                Collections.unmodifiableMap(digests), Set.of(), Set.of(), Set.of(), Set.of(), Map.of(),
+                immutableDocuments(live), Set.of(), immutableDocuments(live));
+    }
+
+    private static ReductionRegistry readCertifiedCurrentRegistry() throws IOException {
         JsonNode active = MAPPER.readTree(REDUCTION_REGISTRY.toFile());
         if (!V8.equals(active.path("proofContract").asText())) {
             NativeV7Boundary boundary = readNativeV7Boundary();

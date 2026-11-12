@@ -124,12 +124,34 @@ def load_verified_semantic_kind_bindings(
         require(source == {"path": relative_source, "landscapeId": source_document["landscapeId"],
                            "sha256": digest(source_bytes)}, "Canonical source byte or owner binding differs")
         proof = receipt["proof"]
-        exact_fields(proof, {"proofContract", "mode", "auditScope", "registryPath", "registryDigest", "affectedGoalIds"}, "proof summary")
+        require(isinstance(proof, dict), "Invalid proof summary")
+        proof_fields = {"proofContract", "mode", "auditScope", "registryPath", "registryDigest", "affectedGoalIds"}
+        bounded = proof.get("mode") == "dependency-bounded-certified-baseline-comparison"
+        exact_fields(proof, proof_fields | ({"dependencyBinding"} if bounded else set()), "proof summary")
+        if bounded:
+            binding = proof["dependencyBinding"]
+            exact_fields(binding, {"contract", "snapshotPath", "snapshotDigest", "eligibleLandscapeIds"}, "dependency binding")
+            require(binding["contract"] == "dependency-bounded-historical-review-frame-v1"
+                    and binding["snapshotPath"] == "curricula/DE/Gymnasium/provenance/historical-review-frame-2026-11-12.json",
+                    "Unknown historical dependency binding")
+            frame_path = repository_root / binding["snapshotPath"]
+            require(frame_path.is_file() and not frame_path.is_symlink(), "Historical dependency frame is not a regular file")
+            frame_bytes = frame_path.read_bytes()
+            require(binding["snapshotDigest"] == digest(frame_bytes), "Historical dependency frame digest differs")
+            frame = parse_json(frame_bytes)
+            exact_fields(frame, {"schemaVersion", "contract", "registryPath", "registryRawDigest", "documents"}, "historical frame")
+            require(frame["schemaVersion"] == 1 and frame["contract"] == binding["contract"]
+                    and frame["registryPath"] == REGISTRY_PATH and frame["registryRawDigest"] == digest(registry_bytes),
+                    "Historical frame proof binding differs")
+            eligible = binding["eligibleLandscapeIds"]
+            require(isinstance(eligible, list) and eligible and all(isinstance(value, str) and value for value in eligible)
+                    and eligible == sorted(set(eligible)) and source_document["landscapeId"] in eligible,
+                    "Canonical source has no dependency-bounded historical privilege")
         require(proof["proofContract"] in (PROOF_CONTRACT, CLUSTER_PROOF_CONTRACT,
                                           ORDERED_PROOF_CONTRACT, CONTINUED_PROOF_CONTRACT,
                                           CLUSTER_TARGET_PROOF_CONTRACT, APPEND_ONLY_PROOF_CONTRACT,
                                           APPLICABILITY_REFRESH_PROOF_CONTRACT, BASIS_BOUND_PROOF_CONTRACT)
-                and proof["mode"] == "current-or-certified-baseline-comparison"
+                and (bounded or proof["mode"] == "current-or-certified-baseline-comparison")
                 and proof["auditScope"] == "origin-source-landscape-closure"
                 and proof["registryPath"] == REGISTRY_PATH
                 and proof["registryDigest"] == digest(registry_bytes), "Registry byte or proof contract binding differs")
@@ -160,6 +182,8 @@ def load_verified_semantic_kind_bindings(
             baseline[goal_id] = row["baselineFingerprint"]
         require(source_bytes == source_path.read_bytes(), "Canonical source changed during verification")
         require(registry_bytes == registry_path.read_bytes(), "Registry changed during verification")
+        if bounded:
+            require(frame_bytes == frame_path.read_bytes(), "Historical dependency frame changed during verification")
         return SemanticKindReductionBindings(baseline, {
             **proof, "comparisonFamily": COMPARISON_FAMILY, "canonicalSource": source,
         })

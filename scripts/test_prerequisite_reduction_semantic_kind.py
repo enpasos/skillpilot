@@ -320,6 +320,42 @@ class SemanticKindReductionTest(unittest.TestCase):
         with self.assertRaises(bridge.PrerequisiteReductionBindingError):
             self.load()
 
+    def bounded_receipt(self):
+        frame_path = self.root / "curricula/DE/Gymnasium/provenance/historical-review-frame-2026-11-12.json"
+        frame = {"schemaVersion": 1, "contract": "dependency-bounded-historical-review-frame-v1",
+                 "registryPath": bridge.REGISTRY_PATH, "registryRawDigest": bridge.digest(self.registry.read_bytes()), "documents": []}
+        frame_path.write_text(json.dumps(frame))
+        receipt = copy.deepcopy(self.receipt)
+        receipt["proof"]["mode"] = "dependency-bounded-certified-baseline-comparison"
+        receipt["proof"]["dependencyBinding"] = {"contract": frame["contract"],
+            "snapshotPath": frame_path.relative_to(self.root).as_posix(),
+            "snapshotDigest": bridge.digest(frame_path.read_bytes()), "eligibleLandscapeIds": ["fixture"]}
+        return receipt, frame_path
+
+    def test_dependency_bounded_receipt_requires_exact_frame_and_eligible_owner(self):
+        receipt, frame_path = self.bounded_receipt()
+        with patch.object(bridge.subprocess, "run", return_value=self.completed(receipt)):
+            self.assertEqual(self.load().baseline_fingerprints["q"], BASELINE)
+        for field, value in [("snapshotDigest", BASELINE), ("eligibleLandscapeIds", ["other"]),
+                             ("contract", "unverified"), ("snapshotPath", "elsewhere")]:
+            changed = copy.deepcopy(receipt)
+            changed["proof"]["dependencyBinding"][field] = value
+            with self.subTest(field=field), patch.object(bridge.subprocess, "run", return_value=self.completed(changed)):
+                with self.assertRaises(bridge.PrerequisiteReductionBindingError): self.load()
+        frame_path.write_text("{}")
+        with patch.object(bridge.subprocess, "run", return_value=self.completed(receipt)):
+            with self.assertRaises(bridge.PrerequisiteReductionBindingError): self.load()
+
+    def test_full_receipt_cannot_masquerade_as_dependency_bounded_or_reverse(self):
+        receipt = copy.deepcopy(self.receipt)
+        receipt["proof"]["mode"] = "dependency-bounded-certified-baseline-comparison"
+        with patch.object(bridge.subprocess, "run", return_value=self.completed(receipt)):
+            with self.assertRaises(bridge.PrerequisiteReductionBindingError): self.load()
+        receipt, _ = self.bounded_receipt()
+        receipt["proof"]["mode"] = "current-or-certified-baseline-comparison"
+        with patch.object(bridge.subprocess, "run", return_value=self.completed(receipt)):
+            with self.assertRaises(bridge.PrerequisiteReductionBindingError): self.load()
+
     def test_absent_registry_uses_no_node(self):
         self.registry.unlink()
         with patch.object(bridge.subprocess, "run", side_effect=AssertionError("Node must not run")):
