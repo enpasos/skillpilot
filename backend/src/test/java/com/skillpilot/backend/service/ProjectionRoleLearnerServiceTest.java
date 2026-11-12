@@ -118,6 +118,38 @@ class ProjectionRoleLearnerServiceTest {
     }
 
     @Test
+    void unknownRequirementOfAnAtomicTargetOutsideTheFocusFailsTheFrontierClosed() {
+        for (boolean strict : List.of(false, true)) {
+            Fixture fixture = fixture(view(goalEntry(TARGET_ID), goalEntry(OUTSIDE_TARGET_ID)));
+            fixture.learner().setStrictMode(strict);
+            Object projection = ReflectionTestUtils.invokeMethod(fixture.service(), "getGoalProjection",
+                    LANDSCAPE_ID, PERSONAL_CURRICULUM);
+            PersonalCurriculumLearningScope learning = ReflectionTestUtils.invokeMethod(projection, "learningScope");
+            assertThat(learning.learningAtomicGoalIds()).contains(TARGET_ID, OUTSIDE_TARGET_ID);
+            Map<String, LearningGoal> canonical = ReflectionTestUtils.invokeMethod(projection, "canonicalPrerequisiteGoals");
+            LearningGoal focused = canonical.get(OUTSIDE_TARGET_ID);
+            Set<String> focus = Set.of(OUTSIDE_TARGET_ID);
+            // The focused goal has no demand of its own, so it is available while the graph is valid.
+            Object valid = ReflectionTestUtils.invokeMethod(fixture.service(), "frontierPrerequisites",
+                    fixture.learner(), projection, Map.of(), focus);
+            CompletionProfileCompiler.PrerequisiteTopology topology = ReflectionTestUtils.invokeMethod(valid, "topology");
+            assertThat(topology.transitivePrerequisites(OUTSIDE_TARGET_ID)).isEmpty();
+            assertThat(ReflectionTestUtils.<Boolean>invokeMethod(fixture.service(),
+                    "areFrontierPrerequisitesMastered", focused, projection, valid)).isTrue();
+
+            // An atomic target outside the focus gets an unknown requirement in the projection's own graph.
+            canonical.get(TARGET_ID).setRequires(List.of("unknown-atomic-requirement-outside-focus"));
+            Object rejected = ReflectionTestUtils.invokeMethod(fixture.service(), "frontierPrerequisites",
+                    fixture.learner(), projection, Map.of(), focus);
+            assertThat((Object) ReflectionTestUtils.invokeMethod(rejected, "topology"))
+                    .as("strict=%s: the earlier topology is not reused for a broken graph", strict).isNull();
+            assertThat(ReflectionTestUtils.<Boolean>invokeMethod(fixture.service(),
+                    "areFrontierPrerequisitesMastered", focused, projection, rejected))
+                    .as("strict=%s: neither the focus nor an empty demand excuses a broken graph", strict).isFalse();
+        }
+    }
+
+    @Test
     void missingRoleDefaultsToSeedTargetAndRequiredSupportClosesTheLearningBasis() {
         Fixture fixture = fixture(view(
                 goalEntry(TARGET_ID),

@@ -44,7 +44,7 @@ test('the quick tier always runs and never waits for another job', () => {
 })
 
 test('every other job belongs to the complete check and cannot be skipped otherwise', () => {
-  assert.ok(completeJobs.length >= 9, 'The complete check lost jobs')
+  assert.ok(completeJobs.length >= 8, 'The complete check lost jobs')
   for (const name of completeJobs) {
     assert.equal(jobs[name].if, completeCondition, `${name} must run exactly when the complete check runs`)
     assert.equal(jobs[name]['continue-on-error'], undefined, `${name} must be able to fail the run`)
@@ -82,34 +82,15 @@ test('the quick tier only repeats checks; it never is the only place of one', ()
   assert.match(commands('quick-checks'), /npx --no-install tsc -b/u)
   assert.match(complete, /npm run build:application/u)
   assert.match(commands('backend-quick-checks'), /run_backend_ci\.py --compile-only/u)
-  assert.doesNotMatch(commands('backend-quick-checks'), /--manifest|--partition/u)
+  assert.doesNotMatch(commands('backend-quick-checks'), /--manifest/u)
 })
 
-test('the parallel backend jobs run every partition exactly once', () => {
-  const source = read('scripts/run_backend_ci.py')
-  const declared = source.match(/^CI_PARTITIONS = \(([^)]*)\)$/mu)?.[1]
-    .split(',').map(name => name.trim().replaceAll('"', '')).filter(Boolean)
-  assert.ok(declared?.length, 'scripts/run_backend_ci.py must declare CI_PARTITIONS')
-  const used = []
-  for (const name of completeJobs) {
-    const matrix = jobs[name].strategy?.matrix?.partition
-    for (const step of jobs[name].steps) {
-      const partition = (step.run ?? '').match(/run_backend_ci\.py --partition (\S+)/u)?.[1]
-      if (!partition) continue
-      if (partition === '"${BACKEND_PARTITION}"') {
-        assert.equal(step.env?.BACKEND_PARTITION, '${{ matrix.partition }}')
-        assert.equal(jobs[name].strategy['fail-fast'], false, 'One failing partition must not cancel the other')
-        used.push(...matrix)
-      } else {
-        used.push(partition)
-      }
-      assert.match(step.run, /--manifest "\$\{BACKEND_FAILURE_MANIFEST\}"/u)
-    }
-  }
-  assert.deepEqual([...used].sort(), [...declared].sort())
-  assert.equal(new Set(used).size, used.length, 'A backend partition must not run twice')
-  assert.doesNotMatch(completeJobs.map(commands).join('\n'), /(?<!test_)run_backend_ci\.py(?! --partition)/u,
-    'The complete check must name its backend partition')
+test('the complete check runs the complete backend suite exactly once', () => {
+  const runs = completeJobs.flatMap(name => jobs[name].steps.map(step => step.run ?? '')
+    .filter(run => /(?<!test_)run_backend_ci\.py/u.test(run)))
+  assert.equal(runs.length, 1, 'Exactly one complete-check step runs the backend suite')
+  assert.match(runs[0], /--manifest "\$\{BACKEND_FAILURE_MANIFEST\}"/u)
+  assert.doesNotMatch(runs[0], /--compile-only/u)
 })
 
 test('split jobs keep the environment of the job they were split from', () => {
