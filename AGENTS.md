@@ -557,10 +557,21 @@ curricular-level terminology. Personalization Levels 1–4, QA maturity and goal
   an owner for every atomic goal. Missing R2 evidence is reported, not
   rejected; it is not yet a milestone gate. R5 and implicit recognition are
   not implemented: a learning unit has no runtime effect, and every goal is
-  still completed by its own explicit result. Every unit change is a change of
-  the canonical subject file with the usual binding refresh. Never add an
-  edge, weaken a goal description or cut a unit to turn the validator green; a
-  finding is a subject-review task.
+  still completed by its own explicit result. Never add an edge, weaken a goal
+  description or cut a unit to turn the validator green; a finding is a
+  subject-review task.
+- **Open: bindings on the canonical file (12 November 2026).** No canonical
+  landscape contains a learning unit yet. Placing one changes the bytes of the
+  subject file although every goal object stays identical. The
+  prerequisite-reduction proof chain (V6 to V8 registries) fingerprints the
+  whole document and rejects rebinding by design; with a unit in canonical
+  Mathematics the proof no longer verifies, review reuse is switched off, five
+  subjects fall from M7 to M6 and the goal-book and release-model builds fail.
+  Do not rebind those proofs by hand and do not touch the floors. The
+  recommended resolution, awaiting the Product Owner, is that bindings about
+  goals fingerprint the landscape with its learning-unit layer projected out
+  (the projection the package build already uses for contracts 1.0 and 1.1), so
+  that existing proofs stay valid and a unit edit never stales them.
 
 This is concept documentation plus a static authoring contract and validator,
 not an implemented runtime or access policy. See `docs/concept/skill-graph/learning-units.md`,

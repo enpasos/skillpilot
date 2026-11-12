@@ -8,9 +8,10 @@ learner trial or evidence of learning effectiveness.
 
 ## Subject of the review
 
-Learning unit `math-dot-product-projection`, revision `2026-11-12-v1`, declared
-in the placement layer of the canonical Mathematics landscape
-(`curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`):
+Candidate learning unit `math-dot-product-projection`, revision
+`2026-11-12-v1`, for the placement layer of the canonical Mathematics landscape
+(`curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`).
+It is not placed in that file yet; see "Placement" below.
 
 - Own ordinary goal `3016ec37-1c2e-47db-83f5-e767923bc97e`, "Definition des
   Skalarprodukts mithilfe orthogonaler Projektionen veranschaulichen".
@@ -87,6 +88,19 @@ the goal.
 A separate observation, not an R2 defect: a 10 of 10 threshold also fails a
 learner for a single arithmetic slip, which the design criteria judge
 differently from a missing central understanding.
+
+## Placement
+
+The unit was inserted into the canonical file on a trial basis and removed
+again. With the unit in place both validators pass (`validate:learning-units`:
+the unit valid, reviewed coverage missing for one goal;
+`validate:learning-units:offered`: 190 offered membership classes, no finding),
+all 1,252 goal objects stay byte-identical, and the file with its learning-unit
+layer projected out equals the unchanged file. The insertion nevertheless
+changes the whole-document fingerprint to which the prerequisite-reduction
+proofs are bound; those proofs then no longer verify, and five subjects fall
+below their protected maturity level. The unit is placed once it is decided how
+these proofs bind a landscape that contains learning units.
 
 ## What would satisfy R2
 
