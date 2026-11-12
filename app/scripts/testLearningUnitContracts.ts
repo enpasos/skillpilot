@@ -113,15 +113,20 @@ for (const [label, unit] of Object.entries({
 assert(goalPlacementSchema({ goalId: 'A', unitId: 'u', relation: 'own' }))
 assert(goalPlacementSchema({ goalId: 'A', unitId: 'y5', relation: 'primary', context: { jurisdiction: 'DE-HE' } }))
 assert(!goalPlacementSchema({ goalId: 'A', unitId: 'u', relation: 'own', context: { jurisdiction: 'DE-HE' } }), 'Ownership carries no context')
-const reviewedGoal = (coverageReview: unknown) => ({
-  id: 'Q', title: 'Q', description: 'Q', weight: 1, contains: [], requires: [], dimensionTags: { phase: 'Q2' },
-  examData: { taskContent: 'Task', solutionContent: 'Solution', scoring: { maxPoints: 2, passingPoints: 1, steps: [] }, coverageReview },
-})
-const coverageReview = { goalIds: ['A'], reference: 'review.md', taskRevision: `sha256:${'0'.repeat(64)}`, rubricRevision: `sha256:${'0'.repeat(64)}` }
-assert(goalSchema(reviewedGoal(coverageReview)), JSON.stringify(goalSchema.errors))
-assert(!goalSchema(reviewedGoal({ ...coverageReview, approvedBy: 'someone' })), 'A coverage review has exactly its four fields')
-assert(!goalSchema(reviewedGoal({ ...coverageReview, goalIds: [] })), 'A coverage review names at least one goal')
-assert(!goalSchema(reviewedGoal({ ...coverageReview, taskRevision: 'latest' })), 'A coverage review binds a sha256 task revision')
+const coverageReview = { assessmentGoalId: 'Q', goalIds: ['A'], reference: 'review.md',
+  taskRevision: `sha256:${'0'.repeat(64)}`, rubricRevision: `sha256:${'0'.repeat(64)}` }
+const reviewedUnit = (review: unknown) => JSON.parse(JSON.stringify({ ...learningUnit, coverageReviews: [review] }))
+assert(programUnitSchema(reviewedUnit(coverageReview)), JSON.stringify(programUnitSchema.errors))
+assert(!programUnitSchema(reviewedUnit({ ...coverageReview, approvedBy: 'someone' })), 'A coverage review has exactly its five fields')
+assert(!programUnitSchema(reviewedUnit({ ...coverageReview, assessmentGoalId: undefined })), 'A coverage review names its assessment')
+assert(!programUnitSchema(reviewedUnit({ ...coverageReview, goalIds: [] })), 'A coverage review names at least one goal')
+assert(!programUnitSchema(reviewedUnit({ ...coverageReview, taskRevision: 'latest' })), 'A coverage review binds a sha256 task revision')
+assert(!programUnitSchema({ ...yearUnit, coverageReviews: [] }), 'Only a learning unit carries coverage reviews')
+// Goal objects carry nothing of the unit contract, so a review never changes a goal's bytes.
+const examGoal = { id: 'Q', title: 'Q', description: 'Q', weight: 1, contains: [], requires: [], dimensionTags: { phase: 'Q2' },
+  examData: { taskContent: 'Task', solutionContent: 'Solution', scoring: { maxPoints: 2, passingPoints: 1, steps: [] } } }
+assert(goalSchema(examGoal), JSON.stringify(goalSchema.errors))
+assert.equal('coverageReview' in (runtimeSchema.$defs.goal as { properties: { examData: { properties: object } } }).properties.examData.properties, false)
 
 // Goal kinds mirror the backend completion semantics, including legacy encodings.
 const kindOf = (goal: Omit<UnitGraphGoal, 'id'>) => new UnitGraph([{ landscapeId: 'L', goals: [{ id: 'g', ...goal }] }]).kinds('L:g')

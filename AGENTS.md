@@ -538,8 +538,10 @@ curricular-level terminology. Personalization Levels 1–4, QA maturity and goal
   `label`, `labelEn`, `promise`, `promiseEn`, `revision`, optional
   `parentUnitId` naming the unit that requires it as a child). It owns atomic
   goals of the same landscape through `goalPlacements` of relation `own`,
-  which carry no `context`. Reviewed coverage (R2) is `examData.coverageReview`
-  on the owned assessment, hash-bound to its task, solution and rubric. The
+  which carry no `context`. Reviewed coverage (R2) is the unit's
+  `coverageReviews`, one entry per own assessment, hash-bound to that
+  assessment's task, solution and rubric; goal objects carry nothing of the
+  unit contract, so a review never changes a goal's bytes. The
   optional landscape field `learningUnitCoverage` is `partial` or `complete`.
   The declaration is closed: whole-unit prerequisites, access locks and waiver
   lists cannot be expressed. Curriculum-package contract 1.2

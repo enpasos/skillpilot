@@ -21,6 +21,19 @@ export type ProgramUnitKind =
   /** A learning unit: owns atomic goals through placements of relation `own`. */
   | 'learningUnit'
 
+/** Reviewed evidence that an own assessment of a learning unit really tests own goals of that unit (rule R2). */
+export interface LearningUnitCoverageReview {
+  /** An own assessment of the unit; at most one review per assessment. */
+  assessmentGoalId: string
+  goalIds: string[]
+  /** Repository-relative path of the review record. */
+  reference: string
+  /** Canonical `sha256:` hash of the assessment's `{taskContent, solutionContent}` at review time. */
+  taskRevision: string
+  /** Canonical `sha256:` hash of the assessment's `scoring` object at review time. */
+  rubricRevision: string
+}
+
 export interface ProgramUnit {
   id: string
   kind: ProgramUnitKind
@@ -36,6 +49,8 @@ export interface ProgramUnit {
   promiseEn?: string
   /** Learning units only: dated revision of the unit definition, `YYYY-MM-DD-vN`. */
   revision?: string
+  /** Learning units only: reviewed coverage of the unit's own assessments. */
+  coverageReviews?: LearningUnitCoverageReview[]
 }
 
 export interface GoalPlacementContext {
@@ -77,17 +92,6 @@ export interface LandscapeFilter {
   label: string
 }
 
-/** Reviewed evidence that an assessment really tests goals of its owning learning unit (rule R2). */
-export interface ExamCoverageReview {
-  goalIds: string[]
-  /** Repository-relative path of the review record. */
-  reference: string
-  /** Canonical `sha256:` hash of `{taskContent, solutionContent}` at review time. */
-  taskRevision: string
-  /** Canonical `sha256:` hash of the `scoring` object at review time. */
-  rubricRevision: string
-}
-
 export interface ExamData {
   /**
    * Optional release gate for learner-facing hard exam mode.
@@ -98,8 +102,6 @@ export interface ExamData {
   reviewNote?: string
   /** Canonical goal IDs covered by this assessment package. */
   coveredGoalIds?: string[]
-  /** Only on an assessment that a learning unit owns. */
-  coverageReview?: ExamCoverageReview
   /** Human-readable or canonical strand labels covered by this assessment package. */
   coveredStrands?: string[]
   /** Demand levels covered by the assessment package, e.g. AB1/AB2/AB3. */

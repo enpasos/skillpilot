@@ -133,7 +133,7 @@ festgelegt:
 | Einheit | `programUnits`-Eintrag mit `kind: "learningUnit"`: `id`, `label`, `labelEn`, `promise`, `promiseEn`, `revision`; keine weiteren Felder. |
 | Hierarchie | `parentUnitId` nennt die Einheit, die diese als Pflichtkind verlangt. Beide Enden sind Einheiten; eine Einheit hat höchstens ein Elternteil. |
 | Eigenes Ziel | `goalPlacements`-Eintrag mit `relation: "own"` auf ein atomares Ziel derselben Landschaft, ohne `context`. |
-| R2-Nachweis | `examData.coverageReview` an der eigenen Prüfung: geprüfte Ziele, Reviewprotokoll, Aufgaben- und Rubrikhash. |
+| R2-Nachweis | `coverageReviews` an der Einheit, ein Eintrag je eigener Prüfung: geprüfte Ziele, Reviewprotokoll, Aufgaben- und Rubrikhash dieser Prüfung. Die Zielobjekte selbst bleiben unverändert. |
 | Vollständigkeit | Landschaftsfeld `learningUnitCoverage`: `partial` oder `complete`; fehlt es, gilt `partial`. |
 
 Zielarten, Voraussetzungen und die Abdeckungsangabe einer Prüfung stehen wie
@@ -163,7 +163,7 @@ jedem Befund:
 | R3 | Jeder Abdeckungseintrag einer eigenen Prüfung ist ein atomares Ziel, das die Prüfung direkt oder transitiv benötigt. |
 | R4 | Kein Ziel hat zwei Einheiten. Erklärt die Landschaft `complete`, hat jedes ihrer atomaren Ziele eine Einheit; sonst weist der Validator die offenen Ziele als Zahl aus. |
 | Struktur | Die Deklaration von Einheit und Platzierung ist wohlgeformt; eigene Ziele sind atomare Ziele der Fachlandschaft mit genau einer Zielart; der Gesamtumfang ist nicht leer; die Einheitenhierarchie ist azyklisch; jeder Verweis auf den Voraussetzungspfaden der eigenen Ziele ist auflösbar, und kein eigenes Ziel setzt sich selbst transitiv voraus. |
-| R2 | Kein Pflichtbestandteil der Strukturgültigkeit. Ein eingetragener Nachweis (`coverageReview`) muss stimmen: eigene Prüfung, eigenes gewöhnliches Ziel, von der Prüfung benötigt und in ihrer Abdeckung genannt, Reviewprotokoll vorhanden, Aufgaben- und Rubrikhash aktuell. Der Validator meldet je Einheit, welchen Zielen der Nachweis fehlt. |
+| R2 | Kein Pflichtbestandteil der Strukturgültigkeit. Ein eingetragener Nachweis (`coverageReviews`) muss stimmen: eigene Prüfung, eigenes gewöhnliches Ziel, von der Prüfung benötigt und in ihrer Abdeckung genannt, Reviewprotokoll vorhanden, Aufgaben- und Rubrikhash aktuell. Der Validator meldet je Einheit, welchen Zielen der Nachweis fehlt. |
 | R5 | Nicht umgesetzt; Laufzeitvertrag der Stufe 3. |
 
 Voraussetzungspfade folgen der normativen Relation der Graph Definition:

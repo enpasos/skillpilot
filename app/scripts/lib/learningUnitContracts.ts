@@ -4,9 +4,9 @@
  *
  * A learning unit is a `programUnits` entry of kind `learningUnit`; it owns
  * atomic goals through `goalPlacements` of relation `own`, requires the units
- * that name it as `parentUnitId`, and reviewed coverage is recorded on the
- * owned assessment as `examData.coverageReview` (curriculum-package contract
- * 1.2). Graph Definition §11 and §13.3 give the unit validity rules:
+ * that name it as `parentUnitId`, and carries the reviewed coverage of its own
+ * assessments as `coverageReviews` (curriculum-package contract 1.2). Graph
+ * Definition §11 and §13.3 give the unit validity rules:
  *   R1  every own ordinary goal lies on a prerequisite path from an own assessment
  *   R3  an assessment claims coverage only for goals it requires
  *   R4  every acquisition target has exactly one directly owning unit
@@ -31,7 +31,6 @@ export interface UnitGraphGoal {
     taskContent?: unknown
     solutionContent?: unknown
     scoring?: unknown
-    coverageReview?: unknown
   } | null
   extendedData?: Record<string, unknown> | null
 }
@@ -299,9 +298,9 @@ const unitKey = (landscapeId: string, unitId: string): string => `${landscapeId}
 
 export const LEARNING_UNIT_KIND = 'learningUnit'
 export const OWN_RELATION = 'own'
-const unitFields = new Set(['id', 'kind', 'label', 'labelEn', 'promise', 'promiseEn', 'revision', 'parentUnitId', 'order'])
-const unitOnlyFields = ['labelEn', 'promise', 'promiseEn', 'revision']
-const reviewFields = new Set(['goalIds', 'reference', 'taskRevision', 'rubricRevision'])
+const unitFields = new Set(['id', 'kind', 'label', 'labelEn', 'promise', 'promiseEn', 'revision', 'parentUnitId', 'order', 'coverageReviews'])
+const unitOnlyFields = ['labelEn', 'promise', 'promiseEn', 'revision', 'coverageReviews']
+const reviewFields = new Set(['assessmentGoalId', 'goalIds', 'reference', 'taskRevision', 'rubricRevision'])
 const slug = /^[a-z0-9]+(?:-[a-z0-9]+)*$/u
 const revision = /^[0-9]{4}-[0-9]{2}-[0-9]{2}-v[1-9][0-9]*$/u
 const sha256 = /^sha256:[0-9a-f]{64}$/u
@@ -351,6 +350,33 @@ export function deriveLearningUnits(landscapes: UnitGraphLandscape[]): DerivedLe
         ...Object.keys(unit).filter((field) => !unitFields.has(field)).map((field) => `field ${field} is not part of the contract`),
       ]
       for (const problem of problems) report('LU-UNIT', `Learning unit ${id}: ${problem}`, { unitId: id })
+      // Reviewed coverage (R2) is part of the unit's local contract, one entry per own assessment.
+      const declared = unit.coverageReviews ?? []
+      if (!Array.isArray(declared)) report('LU-R2-EVIDENCE', `Learning unit ${id}: coverageReviews is not a list`, { unitId: id })
+      const reviewedAssessments = new Set<string>()
+      for (const review of Array.isArray(declared) ? declared : []) {
+        const record = (review ?? {}) as Record<string, unknown>
+        const assessmentGoalId = typeof record.assessmentGoalId === 'string' ? record.assessmentGoalId : undefined
+        const evidence = (message: string) => report('LU-R2-EVIDENCE', message, { unitId: id, ...(assessmentGoalId ? { goalId: assessmentGoalId } : {}) })
+        const goalIds = Array.isArray(record.goalIds) ? record.goalIds : []
+        const wellFormed = review !== null && typeof review === 'object' && !Array.isArray(review)
+          && Object.keys(record).every((field) => reviewFields.has(field)) && hasText(assessmentGoalId)
+          && goalIds.length > 0 && goalIds.every((goalId) => hasText(goalId)) && new Set(goalIds).size === goalIds.length
+          && typeof record.reference === 'string' && repoPath.test(record.reference)
+          && typeof record.taskRevision === 'string' && sha256.test(record.taskRevision)
+          && typeof record.rubricRevision === 'string' && sha256.test(record.rubricRevision)
+        if (!wellFormed) {
+          evidence(`Learning unit ${id}: a coverage review needs assessmentGoalId, goalIds, a repository-relative reference and sha256 task and rubric revisions, and nothing else`)
+        } else if (reviewedAssessments.has(assessmentGoalId!)) {
+          evidence(`Learning unit ${id}: more than one coverage review for assessment ${assessmentGoalId}`)
+        } else {
+          reviewedAssessments.add(assessmentGoalId!)
+          units.get(id)!.coverageReviews.push({
+            assessmentGoalId: assessmentGoalId!, goalIds: goalIds as string[], reference: record.reference as string,
+            taskRevision: record.taskRevision as string, rubricRevision: record.rubricRevision as string,
+          })
+        }
+      }
     }
     // The parent requires the unit as a child; both ends are learning units.
     for (const unit of programUnits) {
@@ -360,7 +386,7 @@ export function deriveLearningUnits(landscapes: UnitGraphLandscape[]): DerivedLe
       else if (child) report('LU-CHILD', `Parent ${parent} of learning unit ${child.id} is not a learning unit of this landscape`, { unitId: child.id })
       else if (units.has(parent)) report('LU-CHILD', `Program unit ${unit.id} of kind ${String(unit.kind)} names learning unit ${parent} as parent`, { unitId: parent })
     }
-    const owner = new Map<string, string[]>(), seen = new Set<string>()
+    const seen = new Set<string>()
     for (const placement of placements) {
       const goalId = String(placement.goalId), unitId = String(placement.unitId), unit = units.get(unitId)
       if (placement.relation !== OWN_RELATION) {
@@ -380,33 +406,6 @@ export function deriveLearningUnits(landscapes: UnitGraphLandscape[]): DerivedLe
       }
       seen.add(`${goalId} ${unitId}`)
       unit.ownGoalIds.push(goalId)
-      owner.set(goalId, [...(owner.get(goalId) ?? []), unitId])
-    }
-    for (const goal of landscape.goals) {
-      const review = goal.examData?.coverageReview
-      if (review === undefined || review === null) continue
-      const evidence = (message: string, unitId?: string) => report('LU-R2-EVIDENCE', message, { goalId: goal.id, ...(unitId ? { unitId } : {}) })
-      const owners = owner.get(goal.id) ?? []
-      if (owners.length !== 1) {
-        evidence(`Coverage review on ${goal.id}, which ${owners.length ? 'several units own' : 'no learning unit owns'}`)
-        continue
-      }
-      const record = review as Record<string, unknown>
-      const goalIds = Array.isArray(record.goalIds) ? record.goalIds : []
-      const wellFormed = typeof review === 'object' && !Array.isArray(review)
-        && Object.keys(record).every((field) => reviewFields.has(field))
-        && goalIds.length > 0 && goalIds.every((id) => hasText(id)) && new Set(goalIds).size === goalIds.length
-        && typeof record.reference === 'string' && repoPath.test(record.reference)
-        && typeof record.taskRevision === 'string' && sha256.test(record.taskRevision)
-        && typeof record.rubricRevision === 'string' && sha256.test(record.rubricRevision)
-      if (!wellFormed) {
-        evidence(`Coverage review on ${goal.id} is malformed: it needs goalIds, a repository-relative reference and sha256 task and rubric revisions, and nothing else`, owners[0])
-        continue
-      }
-      units.get(owners[0])!.coverageReviews.push({
-        assessmentGoalId: goal.id, goalIds: goalIds as string[], reference: record.reference as string,
-        taskRevision: record.taskRevision as string, rubricRevision: record.rubricRevision as string,
-      })
     }
     const coverage = landscape.learningUnitCoverage
     if (coverage !== undefined && coverage !== null && coverage !== 'partial' && coverage !== 'complete') {
@@ -575,7 +574,7 @@ export function validateLearningUnits(
         const assessment = `${landscapeId}:${review.assessmentGoalId}`
         const evidence = (message: string) => fail(entry, { code: 'LU-R2-EVIDENCE', goalId: review.assessmentGoalId, message })
         if (entry.own.get(assessment) !== 'assessment') {
-          evidence(`Coverage review on ${review.assessmentGoalId}, which is not an assessment`)
+          evidence(`Coverage review names ${review.assessmentGoalId}, which is not an own assessment of the unit`)
           continue
         }
         if (options.reviewRecordExists && !options.reviewRecordExists(review.reference)) {

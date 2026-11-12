@@ -861,41 +861,6 @@
                   }
                 }
               }
-            },
-            "coverageReview": {
-              "type": "object",
-              "additionalProperties": false,
-              "description": "Reviewed evidence that the tasks and normal grading of this assessment really test the listed goals of its owning learning unit (unit validity rule R2). Only valid on an assessment that a learning unit owns.",
-              "required": [
-                "goalIds",
-                "reference",
-                "taskRevision",
-                "rubricRevision"
-              ],
-              "properties": {
-                "goalIds": {
-                  "type": "array",
-                  "minItems": 1,
-                  "uniqueItems": true,
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "reference": {
-                  "type": "string",
-                  "description": "Repository-relative path of the review record."
-                },
-                "taskRevision": {
-                  "type": "string",
-                  "pattern": "^sha256:[0-9a-f]{64}$",
-                  "description": "Canonical hash of {taskContent, solutionContent} at review time."
-                },
-                "rubricRevision": {
-                  "type": "string",
-                  "pattern": "^sha256:[0-9a-f]{64}$",
-                  "description": "Canonical hash of the scoring object at review time."
-                }
-              }
             }
           }
         }
@@ -946,6 +911,50 @@
           "type": "string",
           "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}-v[1-9][0-9]*$",
           "description": "Dated revision of the unit definition (YYYY-MM-DD-vN). Learning units only."
+        },
+        "coverageReviews": {
+          "type": "array",
+          "description": "Reviewed coverage of the unit's own assessments. Learning units only.",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "description": "Reviewed evidence that the tasks and normal grading of one own assessment of the unit really test the listed own ordinary goals (unit validity rule R2).",
+            "required": [
+              "assessmentGoalId",
+              "goalIds",
+              "reference",
+              "taskRevision",
+              "rubricRevision"
+            ],
+            "properties": {
+              "assessmentGoalId": {
+                "type": "string",
+                "description": "An own assessment of the unit; at most one review per assessment."
+              },
+              "goalIds": {
+                "type": "array",
+                "minItems": 1,
+                "uniqueItems": true,
+                "items": {
+                  "type": "string"
+                }
+              },
+              "reference": {
+                "type": "string",
+                "description": "Repository-relative path of the review record."
+              },
+              "taskRevision": {
+                "type": "string",
+                "pattern": "^sha256:[0-9a-f]{64}$",
+                "description": "Canonical hash of {taskContent, solutionContent} at review time."
+              },
+              "rubricRevision": {
+                "type": "string",
+                "pattern": "^sha256:[0-9a-f]{64}$",
+                "description": "Canonical hash of the scoring object at review time."
+              }
+            }
+          }
         }
       },
       "allOf": [
@@ -983,7 +992,8 @@
                 "promiseEn",
                 "revision",
                 "parentUnitId",
-                "order"
+                "order",
+                "coverageReviews"
               ]
             }
           },
@@ -1008,6 +1018,11 @@
                 {
                   "required": [
                     "labelEn"
+                  ]
+                },
+                {
+                  "required": [
+                    "coverageReviews"
                   ]
                 }
               ]

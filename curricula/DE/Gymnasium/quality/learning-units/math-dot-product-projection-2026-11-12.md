@@ -23,7 +23,7 @@ later justify implicit recognition of that goal?
 
 ## Decision
 
-**R2 is not satisfied. The assessment carries no `coverageReview`.** The unit
+**R2 is not satisfied. The unit carries no coverage review.** The unit
 is structurally valid (R1, R3, R4), and the validator reports its reviewed
 coverage as missing. The goal therefore stays open until it is mastered
 explicitly, which is also today's behaviour: implicit recognition is not
