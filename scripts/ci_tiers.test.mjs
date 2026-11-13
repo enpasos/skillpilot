@@ -142,8 +142,8 @@ test('complete curriculum CI enforces the catalog and policy against the trusted
   assert.ok(commands('curriculum-assessment-proofs').includes('npm run test:graph-gate-contracts'))
   const proofSteps = jobs['curriculum-assessment-proofs'].steps
   const restoreIndex = proofSteps.findIndex(step => step.name === 'Restore same-run verified goal-book publications')
-  const pythonIndex = proofSteps.findIndex(step => step.name === 'Set up Python for historical review receipt tests')
-  const installIndex = proofSteps.findIndex(step => step.name === 'Install Python dependencies for historical review receipt tests')
+  const pythonIndex = proofSteps.findIndex(step => step.name === 'Set up Python for curriculum proof receipts')
+  const installIndex = proofSteps.findIndex(step => step.name === 'Install Python dependencies for curriculum proof receipts')
   const gateIndex = proofSteps.findIndex(step => step.run === 'npm run test:graph-gate-contracts')
   assert.ok(restoreIndex >= 0 && pythonIndex > restoreIndex && installIndex > pythonIndex && gateIndex > installIndex,
     'Python and its pinned release-model dependencies must be ready before the receipt gate')

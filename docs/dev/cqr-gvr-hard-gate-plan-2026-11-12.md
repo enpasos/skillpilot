@@ -561,3 +561,11 @@ plan.
   other resolved versions and published widget artifacts are unchanged.
   Both clean installs and test suites pass (OpenAI 67/67, Claude 30/30),
   both fresh audits report zero vulnerabilities, and widget-byte checks pass.
+- 2026-11-13: the next remote integration run on `019a485` exposed the
+  existing plugin-workflow naming guard: the new Python setup step names
+  contained reserved historical-review wording. The unchanged guard reproduced
+  the failure locally (8/9). Renamed only those two steps to curriculum proof
+  receipts and adjusted their wiring-test references. The actual five-file CI
+  test command now passes 89/89, and the CI-tier tests pass 8/8 (both exit 0).
+  Guard assertions, Python dependency setup and receipt execution are unchanged;
+  acceptance still requires fresh remote CI for the repaired head.
