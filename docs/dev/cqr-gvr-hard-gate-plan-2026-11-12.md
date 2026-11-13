@@ -807,6 +807,14 @@ Target: the seven scopes of the five `M7` subjects (`canonical-math-sek1`,
 `-math-sek2`, `-physics-sek1`, `-physics-sek2`, `-biology-sek2`,
 `-chemistry-sek2`, `-economics-crossstage`).
 
+**Product Owner decision, 13 November 2026:** `GVR-012` shall become mandatory
+from subject maturity `M7`. This is the binding target, with activation deferred
+until the current M7 evidence gaps are closed. It supersedes the earlier
+twelve-scope completion condition in WP6: the required domain is every
+registered QA scope of a subject obligated to meet M7, currently these seven
+scopes. The full inventory still contains twelve scopes; the other five belong
+to M6 subjects and enter the mandatory domain when their subjects advance to M7.
+
 1. Physics probe: run the semantic validator
    (`app/scripts/lib/hardLearningRouteValidation.ts`) on both Physics scopes
    with the existing ledger. Add negative fixtures for each obligation that
@@ -827,9 +835,22 @@ per scope and repair it only with evidence. Never weaken the validator or
 change a classification to pass. The five `M6` scopes have no classification;
 that work belongs to their `M7` path and is not part of this programme.
 
-`GVR-012` stays `PARTIAL` below twelve scopes. Whether it becomes a
-milestone-bound `M7` obligation, graded like `CQR-303`, is an owner question
-to raise with the F4 result, not to decide in the package.
+`GVR-012` remains `PARTIAL`: three of the seven current M7 scopes are directly
+required and pass. The remaining four need current classification and route
+evidence before the complete M7 obligation can be activated. A later `HARD`
+grade requires fail-closed enforcement across the complete M7 domain,
+including its expansion on future promotions, with meaningful negative tests.
+That is a prerequisite for regrading `GVR-012`, not an automatic upgrade of
+broader `GD-C21`, `GD-C22` or `GD-A18` obligations.
+Do not activate the incomplete obligation now, lower existing floors, remove
+required scopes, or treat this decision as passing evidence. The current
+three required scopes and every existing pin remain unchanged and protected
+against removal or reduction even through a later status change.
+
+The semantic route audit remains a complete twelve-scope diagnostic. Its
+nonzero exit for route findings or unavailable ledgers, including those of M6
+subjects, is not an M7 promotion check. `3/12` continues to describe current
+inventory coverage; `3/7` describes coverage of today's normative M7 domain.
 
 #### F5 – `CQR-104` from eight to twelve scopes
 
@@ -890,14 +911,18 @@ snapshots. The 55 `OPEN` runtime/concept rows are not regraded.
   edges. See the [consumer audit](cqr-gvr-gymnasium-retained-source-audit-2026-11-13.md).
 - **F4:** shared QA profiles now drive six current-ledger semantic probes;
   Mathematics Sek I/II and Biology Sek II pass and are directly required
-  (**3/12 scopes**). Physics Sek I/II and Chemistry Sek II have 8/1/3 actual
-  route findings. The Economics ledger still lacks 24 current goals, and five
+  (**3/12 inventory scopes; 3/7 current M7 scopes**). Physics Sek I/II and
+  Chemistry Sek II have 8/1/3 actual route findings. The Economics ledger
+  still lacks 24 current goals, and five
   M6 scopes have no current authoritative ledger. Those cases remain explicit
   in the complete coverage register and
   [current-input audit](../qa-ci/status/semantic-learning-route-audit.json).
   Required coverage and established node boundaries cannot be downgraded
   against the Git base. No source classification or prerequisite was changed
-  to pass the route validator; `GVR-012` remains `PARTIAL`.
+  to pass the route validator; `GVR-012` remains `PARTIAL`. The owner's
+  subsequent M7 decision above sets the future obligation; complete technical
+  enforcement is still pending. The five M6 scopes remain in the diagnostic
+  inventory and become mandatory on a later subject promotion to M7.
 - **F5:** the shared evaluator respects authored course/duration filters;
   Biology's eight existing national assessment collections expose their 21
   GK tasks again, with five LK-only tasks still excluded. All eight pinned

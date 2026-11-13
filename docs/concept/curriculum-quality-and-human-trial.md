@@ -43,6 +43,8 @@ Die Reifegrade bilden eine kumulative Leiter, die ausschließlich aus den aktuel
 <a id="sec-qa-human-trial-m7"></a>
 ### 1.2. Verbindliche Definition von `M7` und Umgang mit Bildern
 
+**Beschlossenes Ausbauziel, noch nicht vollständig aktiviert (13. November 2026):** `GVR-012` wird künftig ab Fachreife M7 für alle registrierten QA-Scopes der jeweils M7-verpflichteten Fächer verlangt. Heute sind drei von sieben M7-Scopes abgesichert; die übrigen vier benötigen aktuelle Klassifikations- und Routenevidenz, bevor die vollständige Pflicht aktiviert wird. Die fünf M6-Scopes bleiben im Gesamtinventar von zwölf und werden beim späteren M7-Aufstieg verpflichtend. Die nachstehende Formel beschreibt den heute aktivierten Abschlussvertrag, noch keinen vollständigen Nachweis des erweiterten M7-Ziels. Bestehende Pflichtscopes und Pins bleiben unverändert, `GVR-012` bleibt TEIL; weder fehlende Evidenz noch Floors werden durch diese Entscheidung aufgehoben.
+
 `M7` verlangt, dass **jedes** aktuelle `curricularAtomic`-Lernziel des Fachs gleichzeitig die **Schnittmenge aller fünf Gates** erfüllt (keine Addition oder Mittelung einzelner Gate-Zähler, keine gerundeten Prozentwerte; Teilstände erscheinen z. B. als *M6 · Vertiefte QS: 472 von 478 Lernzielen abgeschlossen*):
 
 | Gate | Erforderlicher Nachweis |

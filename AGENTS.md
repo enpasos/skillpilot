@@ -1164,6 +1164,23 @@ Interpretation:
   scopes retain route findings; six other scopes lack complete current
   ledgers. The shared semantic scope inventory accounts for all twelve. These limits must
   remain visible in the rule register; no review or learner result is inferred.
+* Product Owner decision of **13 November 2026**: `GVR-012` shall become
+  mandatory from subject maturity `M7`, covering every registered QA scope of
+  each subject obligated to meet M7. This binding target has not yet been
+  activated across that domain: three of today's seven M7 scopes pass and are
+  directly required.
+  First close the remaining current M7 classification and route gaps with
+  evidence, then enforce the complete M7 obligation, including future
+  promotions. The inventory remains twelve scopes; the five M6 scopes join
+  the mandatory domain when their subjects advance to M7. `GVR-012` stays
+  `PARTIAL` until that complete domain is fail-closed; twelve passing scopes
+  are not required merely because all twelve remain in the inventory. Keep
+  the three existing required scopes and all maturity pins unchanged and
+  protected even through later status changes. A later hard `GVR-012` gate
+  does not automatically upgrade broader `GD-*` obligations. This
+  decision neither lowers floors nor supplies missing pass evidence. The
+  twelve-scope semantic audit remains diagnostic, with failure on missing
+  M6 ledgers as well; it is not an M7 promotion check.
 * Do not turn a review queue green by bulk-writing `no_memory_needed`; each decision must be made from the current goal semantics.
 * The OpenAI V1 coach offers normal due-card practice through the dedicated
   `start_skillpilot_memory_practice` MCP Apps UI resource. The model-visible

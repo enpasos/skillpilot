@@ -141,7 +141,16 @@ complete check as parallel jobs. Details: `docs/qa-ci/ci.md`.
   have unresolved evidence gaps. `CQR-102` covers all twelve scopes, but the
   stronger semantic `GVR-012` is required for Mathematics Sek I/Sek II and
   Biology Sek II (3/12). Physics/Chemistry route findings and six missing
-  current ledgers remain explicit in the shared scope inventory. Never turn a review
+  current ledgers remain explicit in the shared scope inventory. The Product
+  Owner decided on **13 November 2026** that `GVR-012` shall become mandatory
+  from subject maturity M7. Activation across that domain waits for the
+  remaining evidence gaps: today three of seven M7 scopes are required and
+  pass. The five M6 scopes stay in the twelve-scope inventory and join the
+  mandatory domain on later promotion to M7. `HARD` requires complete M7
+  enforcement, including future promotions; until then keep `PARTIAL`, all
+  three required scopes and all pins. No immediate activation, floor reduction
+  or inferred pass evidence. The twelve-scope audit remains diagnostic, not
+  an M7 promotion check. Never turn a review
   queue green by bulk decisions. The frozen
   prerequisite-reduction registry (contract V9, `AGENTS.md` §2.2) keeps the
   reviews of 1,361 goals valid while each goal is unchanged; changing one of
