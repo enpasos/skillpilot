@@ -53,9 +53,19 @@ import {
   generateDeepUnderstandingRollout,
   loadDeepUnderstandingRolloutConfig,
 } from './reportDeepUnderstandingRollout'
+import { loadVerifiedPrerequisiteReductionContext } from './prerequisiteReductionProof'
 
 const REPOSITORY_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
 const DEFAULT_PUBLIC_ROOT = 'app/public'
+
+/** Use the same verified review bindings as the ordinary GoalBook build. */
+export const loadGoalDescriptionRolloutBase = async (
+  configPath: string,
+  repositoryRoot = REPOSITORY_ROOT,
+) => {
+  const context = await loadVerifiedPrerequisiteReductionContext({ repositoryRoot })
+  return loadGoalBookBuildInputs(configPath, repositoryRoot, context)
+}
 const CONFIG_SCHEMA_PATH = resolve(
   REPOSITORY_ROOT,
   'contracts/goal-description-review/v1/goal-description-rollout-batch-config.schema.json',
@@ -657,7 +667,7 @@ export const prepareGoalDescriptionRolloutBatch = async (configuredPath: string)
     if (error instanceof Error && error.message.startsWith('Batch output directory already exists:')) throw error
     if (!(error instanceof Error && 'code' in error && error.code === 'ENOENT')) throw error
   }
-  const base = await loadGoalBookBuildInputs(loaded.config.baseGoalBookConfigPath)
+  const base = await loadGoalDescriptionRolloutBase(loaded.config.baseGoalBookConfigPath)
   const denominator = await assertCurrentFullAtomicBase(base)
   const landscapePath = repositoryPath(base.config.landscapePath, 'canonical landscape')
   const landscape = parseJson<Record<string, unknown>>(await readFile(landscapePath), landscapePath)
@@ -1357,7 +1367,7 @@ export const selectGoalDescriptionRolloutBatch = async ({
 }) => {
   const [report, base, excludeConfigs, inFlightLedger] = await Promise.all([
     generateDeepUnderstandingRollout(rolloutConfigPath),
-    loadGoalBookBuildInputs(baseGoalBookConfigPath),
+    loadGoalDescriptionRolloutBase(baseGoalBookConfigPath),
     Promise.all(excludeConfigPaths.map((configPath) => loadGoalDescriptionRolloutBatchConfig(configPath))),
     loadGoalDescriptionRolloutInFlightLedger(inFlightLedgerPath),
   ])

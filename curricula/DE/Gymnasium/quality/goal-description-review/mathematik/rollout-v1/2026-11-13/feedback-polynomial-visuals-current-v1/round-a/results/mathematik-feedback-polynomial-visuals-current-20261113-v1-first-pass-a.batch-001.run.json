@@ -1,0 +1,43 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "mathematik-feedback-polynomial-visuals-current-20261113-v1-first-pass-a-independent-a-20261113",
+  "campaignId": "mathematik-feedback-polynomial-visuals-current-20261113-v1-a",
+  "roundId": "mathematik-feedback-polynomial-visuals-current-20261113-v1-first-pass-a",
+  "batchId": "mathematik-feedback-polynomial-visuals-current-20261113-v1-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:3bb6e8c094cb4e520ebbc3b5df2db1754669ab508ad477e6cb9e12c814969a32",
+  "bundleFingerprint": "sha256:1b4415375725c2a96cea2cf08509bd3ab4ae17e74e4b8747b906519b36757a90",
+  "bookDigest": "sha256:d9eb4768e555179ba161c1925541fcdffc608556da6d0764a568f8e80a2eb81f",
+  "provider": "OpenAI",
+  "model": "GPT-6 (Codex)",
+  "role": "didactic_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:a808078f849edcce720b4419d1cc8765ab0e16f7b89aab85596a030172faff6a",
+  "independenceGroupId": "mathematik-feedback-polynomial-visuals-current-20261113-v1-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
+    "dde9ae98-d97d-598b-92f4-f1616f4d75c8"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:3bb6e8c094cb4e520ebbc3b5df2db1754669ab508ad477e6cb9e12c814969a32"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    }
+  ],
+  "startedAt": "2026-11-13T16:03:43Z",
+  "completedAt": "2026-11-13T16:05:15Z",
+  "status": "completed",
+  "outputDigest": "sha256:b5cc72fed6bddbe1e5426638b0ef840bb9070dd29139b1df0d0bc1fa652e4c88",
+  "toolchainVersion": "goal-description-review-v1"
+}

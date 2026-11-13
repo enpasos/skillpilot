@@ -1,0 +1,104 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "mathematik-feedback-current-20261113-v1-informed-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "Codex root informed synthesis after reading both independent current rounds; evidence selection materialized by feedback review agent; no human approval",
+  "synthesizedAt": "2026-11-13T16:05:27.642Z",
+  "batch": {
+    "batchId": "mathematik-feedback-polynomial-visuals-current-20261113-v1",
+    "batchManifestDigest": "sha256:c1187aac1d3a29abad7b64daf55baa26b16f15594e4a557b38f5d92552443946",
+    "configDigest": "sha256:3b95425f128a90e42dc3196e6213030f4dc4cc0518cfad5ca92ba86ac2195431",
+    "bundleFingerprint": "sha256:1b4415375725c2a96cea2cf08509bd3ab4ae17e74e4b8747b906519b36757a90",
+    "bookDigest": "sha256:d9eb4768e555179ba161c1925541fcdffc608556da6d0764a568f8e80a2eb81f",
+    "reviewInputFingerprint": "sha256:555eab87c80fa677dfc6ac6cf01df52d7122cd484c794a7153d95cda9c4416eb",
+    "dualSummaryDigest": "sha256:1efada973b88f3b3083e38bdaa18219bf4d2d2a92f510c62df0945db3de9f8c4",
+    "canonicalLandscapeDigest": "sha256:bdb8dcf91941316052dd9613bf5598f8a6e4b16b5250a7822a3f3ba6d73a319b"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-feedback-polynomial-visuals-current-20261113-v1-a",
+      "campaignDigest": "sha256:7ea3e9766e648deb255713de6d366d88d34f28f7a9637357897f7f6c897977b8",
+      "roundId": "mathematik-feedback-polynomial-visuals-current-20261113-v1-first-pass-a",
+      "independenceGroupId": "mathematik-feedback-polynomial-visuals-current-20261113-v1-independent-a",
+      "reviewInputFingerprint": "sha256:555eab87c80fa677dfc6ac6cf01df52d7122cd484c794a7153d95cda9c4416eb",
+      "batchId": "mathematik-feedback-polynomial-visuals-current-20261113-v1-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:3bb6e8c094cb4e520ebbc3b5df2db1754669ab508ad477e6cb9e12c814969a32",
+      "runId": "mathematik-feedback-polynomial-visuals-current-20261113-v1-first-pass-a-independent-a-20261113",
+      "runManifestDigest": "sha256:046148406f455ad5dd7ca5a770218ea588cb8d08ad69ea05f85608ddb6f3d35b",
+      "resultsDigest": "sha256:b5cc72fed6bddbe1e5426638b0ef840bb9070dd29139b1df0d0bc1fa652e4c88"
+    },
+    "second": {
+      "campaignId": "mathematik-feedback-polynomial-visuals-current-20261113-v1-b",
+      "campaignDigest": "sha256:6326b40d8afc503dfe727e85cbb2dbef93ac9470fa13eae9b152124b19221af0",
+      "roundId": "mathematik-feedback-polynomial-visuals-current-20261113-v1-first-pass-b",
+      "independenceGroupId": "mathematik-feedback-polynomial-visuals-current-20261113-v1-independent-b",
+      "reviewInputFingerprint": "sha256:555eab87c80fa677dfc6ac6cf01df52d7122cd484c794a7153d95cda9c4416eb",
+      "batchId": "mathematik-feedback-polynomial-visuals-current-20261113-v1-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:dce35b08a4e55d3aee75fbc3a56dd2d005983fd515b8f5c5944d0d5b1d6fc4ca",
+      "runId": "math-feedback-polynomial-current-blind-b-20261113",
+      "runManifestDigest": "sha256:3d2b1917f329aa8d2704337ce6cfa42d0b508f86c6c8b29fefbff4da3f11f21b",
+      "resultsDigest": "sha256:90f6465986dd1b2a5f83afbce18c1c14701af3651b104aa67109036cde73b253"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "mathematik-feedback-current-20261113-v1-informed-synthesis-decision-001",
+      "goalId": "858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:23817169ae1fc6599afd61a7c69e438de54552720cd0d9ae609a943e35ed89b0",
+      "pageFingerprint": "sha256:555bf54cd6f0c93afdfadd86ec0b17282bd64b317d0dba3e14cabce4e6dfbb6f",
+      "goalReviewContextFingerprint": "sha256:c710e5f3bf760d1dfaba4bc581a574b537637d7ce6a68639cafac1a353d2bfc7",
+      "finalText": {
+        "titleDe": "Ableitungen elementarer Funktionen berechnen",
+        "titleEn": "Calculate derivatives of elementary functions",
+        "descriptionDe": "Die lernende Person kann bei ganzrationalen Funktionen bis Grad 3 sowie einfachen Exponential- und Potenzfunktionen aus dem Aufbau des Funktionsterms die passende Ableitungsregel auswählen und damit die Ableitung schrittweise berechnen.",
+        "descriptionEn": "The learner can use the structure of polynomial functions up to degree 3 and simple exponential and power functions to select the appropriate differentiation rule and calculate the derivative step by step."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-feedback-polynomial-visuals-current-20261113-v1-first-pass-a-independent-a-20261113-record-001",
+          "recordDigest": "sha256:12f1c7480904bf4c09c3f98aa2269ec26037628a31ba0779fe0504f911ac80f5"
+        },
+        "second": {
+          "recordId": "math-feedback-polynomial-current-blind-b-20261113.record-001",
+          "recordDigest": "sha256:6c52ded02340f488b9789778881c3a525879482495ac7a5a15525736e42735e3"
+        }
+      },
+      "rationaleDe": "Beide aktuellen unabhängigen Runden bestätigen unveränderten DE/EN-Text, strukturgeleitete Regelwahl und den vollständigen Polynom-/Potenz-/Exponentialumfang. Das Bild zeigt ausdrücklich Polynom-Beispiele; es verkürzt die Kompetenz nicht. Runde A wird gewählt, weil der Wechsel zu 1/x in Bruchschreibweise und einer Exponentialfunktion den unabhängigen Strukturtransfer besonders konkret prüft. Runde B betont ergänzend das Umformen eines Polynoms mit konstantem Faktor und widerspricht dem nicht. Produkt- und Kettenregel werden nicht als neue Pflichten eingeführt.",
+      "rationaleEn": "Both current independent rounds support the unchanged bilingual text, structure-guided rule selection, and the complete polynomial/power/exponential scope. The image explicitly shows polynomial examples without narrowing the competence. Round A is selected because changing to 1/x in fractional notation and an exponential function tests independent structural transfer particularly concretely. Round B additionally emphasises rearranging a polynomial with a constant factor without contradiction. Product and chain rules are not added as new obligations."
+    },
+    {
+      "decisionId": "mathematik-feedback-current-20261113-v1-informed-synthesis-decision-002",
+      "goalId": "dde9ae98-d97d-598b-92f4-f1616f4d75c8",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:f1c1678a1f8c4e801f75391868474c78c3c306248ba24df4fd44ecd66f125b6c",
+      "pageFingerprint": "sha256:ce5adc841b4f37c7253c508113cf608d8c404f379ddc688e561d78e818c92d36",
+      "goalReviewContextFingerprint": "sha256:0b6b0e50e89aca5c1f9be8a2d91c60e8ff1dede561601e666c59879a95ea2009",
+      "finalText": {
+        "titleDe": "Faktor- und Summenregel beweisen und anwenden",
+        "titleEn": "Prove and apply the constant multiple and sum rules",
+        "descriptionDe": "Die lernende Person kann Faktor- und Summenregel für Ableitungen begründen, in Rechnungen anwenden und die einzelnen Ableitungsschritte nachvollziehbar darstellen.",
+        "descriptionEn": "The learner can justify the constant multiple and sum rules for derivatives, apply them in calculations, and present the individual differentiation steps coherently."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-feedback-polynomial-visuals-current-20261113-v1-first-pass-a-independent-a-20261113-record-002",
+          "recordDigest": "sha256:bb0b67eeae5e897c9061cf08061140f73492ba46ecc6fe87295929812e1113ee"
+        },
+        "second": {
+          "recordId": "math-feedback-polynomial-current-blind-b-20261113.record-002",
+          "recordDigest": "sha256:879e5c2bfd27459ac81c68eceb19c01a827c8e0076359b087637e69250f98e24"
+        }
+      },
+      "rationaleDe": "Beide aktuellen unabhängigen Runden bestätigen die allgemeine Begründung beider Linearitätsregeln aus Differenzenquotienten, die Voraussetzungen und die nachvollziehbare Anwendung. Runde B wird wegen ihres Transfers von bekannten f′ und g′ auf af−bg und ihrer ausdrücklichen Grenze bei nichtkonstantem Faktor gewählt. Dies verlangt keine zusätzliche Produktregel. Runde A trägt denselben Begründungs- und Linearkombinationskern ohne Widerspruch. Das neue Polynom-Beispiel ist korrekt; aktuelle Texte bleiben unverändert und die Bildrechnung ersetzt keinen allgemeinen Beweis.",
+      "rationaleEn": "Both current independent rounds confirm the general difference-quotient justification of both linearity rules, their assumptions, and transparent application. Round B is selected for its transfer from known f′ and g′ to af−bg and its explicit limit for a nonconstant factor. This does not require an additional product rule. Round A supports the same justification and linear-combination core without contradiction. The new polynomial example is correct; current texts remain unchanged and its calculation does not replace a general proof."
+    }
+  ],
+  "manifestFingerprint": "sha256:22ad22bd25d53364ea39723f508aed9481b73066bf5110d64f5e69293f79ce10"
+}

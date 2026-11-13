@@ -1,0 +1,42 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-feedback-quantum-terminology-current-20261113-v1-first-pass-a-independent-a-20261113",
+  "campaignId": "physik-feedback-quantum-terminology-current-20261113-v1-a",
+  "roundId": "physik-feedback-quantum-terminology-current-20261113-v1-first-pass-a",
+  "batchId": "physik-feedback-quantum-terminology-current-20261113-v1-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:cbbbab07c9fb7235877c9f6b895d2092bb06434d92fb62b4992d0b7e2cc82cd6",
+  "bundleFingerprint": "sha256:42b967a465a47e73f366c24be33b6f338c79f58cc638b8b2c0636a105875fcc0",
+  "bookDigest": "sha256:a40af97e3e3db7b86d80dcc6b1ad0c79e8c2415ec86eb76d8b3ba6a7cbb4aca6",
+  "provider": "OpenAI",
+  "model": "GPT-6 (Codex)",
+  "role": "didactic_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:a808078f849edcce720b4419d1cc8765ab0e16f7b89aab85596a030172faff6a",
+  "independenceGroupId": "physik-feedback-quantum-terminology-current-20261113-v1-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "727d0946-7019-50ed-8fc6-85db12508733"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:cbbbab07c9fb7235877c9f6b895d2092bb06434d92fb62b4992d0b7e2cc82cd6"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    }
+  ],
+  "startedAt": "2026-11-13T16:03:43Z",
+  "completedAt": "2026-11-13T16:06:20Z",
+  "status": "completed",
+  "outputDigest": "sha256:209cc01b2a25f7545f3919126f1b663c2b06bf48abc46f14c6a04095d8c7fe8a",
+  "toolchainVersion": "goal-description-review-v1"
+}

@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "physik-feedback-quantum-terminology-current-20261113-v1",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-13/feedback-quantum-terminology-current-v1.config.json",
+  "configDigest": "sha256:d1e40f5b6ffffe3629310894f84d7daa1b55559866c1737d5cc85eacf636bba0",
+  "goalIds": [
+    "727d0946-7019-50ed-8fc6-85db12508733"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 478,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-physics-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:47dbda7236fbe3cf13b0e1f5f8019b0130cff1a03cd7b485056cfb386cc6aeb4"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:a40af97e3e3db7b86d80dcc6b1ad0c79e8c2415ec86eb76d8b3ba6a7cbb4aca6",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:42b967a465a47e73f366c24be33b6f338c79f58cc638b8b2c0636a105875fcc0",
+    "reviewInputFingerprint": "sha256:33944665ee4f5a24475fb55d7230e5de764ff1babf0d05824193293e2c626d19",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "physik-feedback-quantum-terminology-current-20261113-v1-a",
+        "campaignDigest": "sha256:1c05e3e131f061223e525a0c16d161b0c6b4de3fb1b95fd43067173cc51829b4",
+        "roundId": "physik-feedback-quantum-terminology-current-20261113-v1-first-pass-a",
+        "independenceGroupId": "physik-feedback-quantum-terminology-current-20261113-v1-independent-a",
+        "batchId": "physik-feedback-quantum-terminology-current-20261113-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:cbbbab07c9fb7235877c9f6b895d2092bb06434d92fb62b4992d0b7e2cc82cd6"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "physik-feedback-quantum-terminology-current-20261113-v1-b",
+        "campaignDigest": "sha256:a00e181a2e68fcce9fd811bef3a602d58312640f354802fbdb3d4395317a171a",
+        "roundId": "physik-feedback-quantum-terminology-current-20261113-v1-first-pass-b",
+        "independenceGroupId": "physik-feedback-quantum-terminology-current-20261113-v1-independent-b",
+        "batchId": "physik-feedback-quantum-terminology-current-20261113-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:071406cb3f755a5d400fd51686bc99323eff66b7b586f7e991311500e098ebc6"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

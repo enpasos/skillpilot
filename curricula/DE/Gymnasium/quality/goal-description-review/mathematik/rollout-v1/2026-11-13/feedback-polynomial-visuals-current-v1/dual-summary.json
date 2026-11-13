@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:1b4415375725c2a96cea2cf08509bd3ab4ae17e74e4b8747b906519b36757a90",
+  "reviewInputFingerprint": "sha256:555eab87c80fa677dfc6ac6cf01df52d7122cd484c794a7153d95cda9c4416eb",
+  "goalCount": 2,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-feedback-polynomial-visuals-current-20261113-v1-a",
+      "roundId": "mathematik-feedback-polynomial-visuals-current-20261113-v1-first-pass-a",
+      "independenceGroupId": "mathematik-feedback-polynomial-visuals-current-20261113-v1-independent-a",
+      "runIds": [
+        "mathematik-feedback-polynomial-visuals-current-20261113-v1-first-pass-a-independent-a-20261113"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 (Codex)::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-feedback-polynomial-visuals-current-20261113-v1-b",
+      "roundId": "mathematik-feedback-polynomial-visuals-current-20261113-v1-first-pass-b",
+      "independenceGroupId": "mathematik-feedback-polynomial-visuals-current-20261113-v1-independent-b",
+      "runIds": [
+        "math-feedback-polynomial-current-blind-b-20261113"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 Codex::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 2,
+    "unavailable": 0,
+    "requiresSynthesis": 2
+  },
+  "goals": [
+    {
+      "goalId": "858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
+      "firstRecordId": "mathematik-feedback-polynomial-visuals-current-20261113-v1-first-pass-a-independent-a-20261113-record-001",
+      "secondRecordId": "math-feedback-polynomial-current-blind-b-20261113.record-001",
+      "firstRunId": "mathematik-feedback-polynomial-visuals-current-20261113-v1-first-pass-a-independent-a-20261113",
+      "secondRunId": "math-feedback-polynomial-current-blind-b-20261113",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "dde9ae98-d97d-598b-92f4-f1616f4d75c8",
+      "firstRecordId": "mathematik-feedback-polynomial-visuals-current-20261113-v1-first-pass-a-independent-a-20261113-record-002",
+      "secondRecordId": "math-feedback-polynomial-current-blind-b-20261113.record-002",
+      "firstRunId": "mathematik-feedback-polynomial-visuals-current-20261113-v1-first-pass-a-independent-a-20261113",
+      "secondRunId": "math-feedback-polynomial-current-blind-b-20261113",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

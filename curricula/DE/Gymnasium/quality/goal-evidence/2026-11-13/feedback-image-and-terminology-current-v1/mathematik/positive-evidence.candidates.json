@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "mathematik-feedback-image-terminology-current-p-20261113-v1",
+  "reviewedAt": "2026-11-13T16:02:44.336Z",
+  "reviewer": "Codex current feedback-delta profile author; independent review pending; no human approval",
+  "goals": [
+    {
+      "goalId": "858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
+      "reason": "Current goal and final visualization inspected. The specific profile cases remain mathematically or scientifically valid; the current image supports orientation and does not supply independent assessment evidence. Historical profiles and judgments are preserved; this successor is an AI candidate, not human approval. The image explicitly shows polynomial examples only. The unchanged canonical goal still includes simple exponential and power functions; its independent comparison case therefore remains necessary.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "HISTORISCHER DISSENT / HISTORICAL DISSENT, übernommen aus curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-018-e-trigonometric-final-current-5-v1.review.jsonl; reviewId canonical-math-positive-evidence-b018-e-trigonometric-final-current-5-v1, 2026-08-28. Keine Aussage über die aktuellen Reviewrunden / No statement about the current review rounds. DE: Runde B benannte die Grund- und Rechenregeln expliziter, unterschied Potenz- und Exponentialstruktur im Transfer jedoch weniger gezielt. Die Synthese übernimmt deshalb die engere Evidence aus Runde A und erweitert den Zielscope nicht. EN: Round B named the basic and operational rules more explicitly but distinguished power and exponential structure less directly in transfer. The synthesis therefore retains the tighter round-A evidence without widening the goal scope.",
+        "Die neue Illustration zeigt ausdrücklich Polynom-Beispiele; sie ersetzt weder den Exponential-/Potenzumfang der kanonischen Beschreibung noch dessen eigenständige Prüfung. The new illustration explicitly shows polynomial examples and replaces neither the canonical exponential/power scope nor its independent assessment."
+      ],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "term-structure-selects-rule",
+            "essentialUnderstandingDe": "Der Aufbau eines Funktionsterms bestimmt, welche Ableitungsregel auf seine Summanden, konstanten Faktoren, Potenzen oder einfachen Exponentialterme anzuwenden ist; die Regel wird aus der mathematischen Struktur und nicht aus dem bloßen Aussehen einzelner Zeichen gewählt.",
+            "essentialUnderstandingEn": "The structure of a function term determines which differentiation rule applies to its summands, constant factors, powers, or simple exponential terms; the rule is selected from the mathematical structure rather than the superficial appearance of individual symbols.",
+            "observablePerformanceDe": "Die lernende Person gliedert eine selbstständig vorgelegte Funktion aus den genannten Klassen in ihre relevanten Bestandteile, ordnet jedem Bestandteil die passende Regel zu und begründet diese Zuordnung vor der Rechnung.",
+            "observablePerformanceEn": "The learner decomposes an independently presented function from the stated classes into its relevant parts, assigns the appropriate rule to each part, and justifies that assignment before calculating."
+          },
+          {
+            "id": "rules-transform-terms-coherently",
+            "essentialUnderstandingDe": "Summen- und Faktorregel erhalten die additive beziehungsweise skalierte Struktur, während Potenz- und Exponentialregel den jeweiligen Funktionstyp auf charakteristische Weise verändern; Konstanten und Vorzeichen müssen dabei konsistent behandelt werden.",
+            "essentialUnderstandingEn": "The sum and constant-factor rules preserve additive or scaled structure, whereas the power and exponential rules transform their respective function types in characteristic ways; constants and signs must be handled consistently.",
+            "observablePerformanceDe": "Die lernende Person berechnet für eine ganzrationale Funktion bis Grad 3 oder eine einfache Potenz- beziehungsweise Exponentialfunktion die Ableitung schrittweise, benennt die verwendeten Regeln und erhält einen algebraisch kohärenten Ableitungsterm.",
+            "observablePerformanceEn": "For a polynomial function up to degree 3 or a simple power or exponential function, the learner calculates the derivative step by step, names the rules used, and obtains an algebraically coherent derivative term."
+          },
+          {
+            "id": "power-and-exponential-structure-transfer",
+            "essentialUnderstandingDe": "Bei einer Potenzfunktion steht die Variable in der Basis, bei einer Exponentialfunktion im Exponenten; diese unterschiedliche Struktur bleibt auch bei Faktoren, Konstanten oder einer veränderten Termanordnung entscheidend für die Ableitungsregel.",
+            "essentialUnderstandingEn": "In a power function the variable is in the base, whereas in an exponential function it is in the exponent; this structural difference remains decisive for the differentiation rule even with factors, constants, or a rearranged term.",
+            "observablePerformanceDe": "Die lernende Person unterscheidet in einer frischen Gegenüberstellung Potenz- und Exponentialstruktur, wählt für beide unabhängig die passende Regel und erklärt, warum ein gemeinsames mechanisches Ableitungsmuster nicht genügt.",
+            "observablePerformanceEn": "In a fresh comparison, the learner distinguishes power from exponential structure, independently selects the appropriate rule for each, and explains why one shared mechanical differentiation pattern is insufficient."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "term-structure-selects-rule",
+            "rules-transform-terms-coherently",
+            "power-and-exponential-structure-transfer"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "function-class",
+            "textDe": "Ganzrationale Funktion bis Grad 3, einfache Potenzfunktion oder einfache Exponentialfunktion",
+            "textEn": "Polynomial function up to degree 3, simple power function, or simple exponential function"
+          },
+          {
+            "id": "term-structure",
+            "textDe": "Einzelterm, Summe, konstanter Faktor, Vorzeichen oder anders angeordnete äquivalente Schreibweise",
+            "textEn": "Single term, sum, constant factor, sign, or a differently arranged equivalent notation"
+          },
+          {
+            "id": "reasoning-demand",
+            "textDe": "Regel auswählen und begründen, Ableitung schrittweise berechnen oder zwei Strukturtypen vergleichen",
+            "textEn": "Select and justify a rule, calculate a derivative step by step, or compare two structural types"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "polynomial-rule-selection",
+            "taskDemandDe": "Für f(x) = -2x³ + 5x² - 7x + 4 sollen vor der Rechnung die auf jeden Summanden anzuwendenden Regeln benannt und anschließend f'(x) schrittweise bestimmt werden.",
+            "taskDemandEn": "For f(x) = -2x³ + 5x² - 7x + 4, name the rules that apply to each term before calculating and then determine f'(x) step by step.",
+            "expectedPerformanceDe": "Die lernende Person gliedert die Summe, erhält unter Beachtung von Faktoren, Potenzen, Vorzeichen und Konstante f'(x) = -6x² + 10x - 7 und ordnet jeden Übergang einer passenden Regel zu.",
+            "expectedPerformanceEn": "The learner decomposes the sum, obtains f'(x) = -6x² + 10x - 7 while handling factors, powers, signs, and the constant, and associates each transition with an appropriate rule.",
+            "understandingFocusDe": "Der Fall prüft strukturgeleitete Regelwahl und eine nachvollziehbare Ableitung innerhalb der Grad-3-Grenze.",
+            "understandingFocusEn": "The case tests structure-guided rule selection and a traceable derivative within the degree-3 bound."
+          },
+          {
+            "id": "power-versus-exponential-transfer",
+            "taskDemandDe": "Vergleiche p(x) = 3x³ und q(x) = 3eˣ. Bestimme beide Ableitungen und erkläre, weshalb die 3 in beiden Termen ein Faktor ist, die Variable aber einmal in einer Potenzbasis und einmal im Exponenten steht.",
+            "taskDemandEn": "Compare p(x) = 3x³ and q(x) = 3eˣ. Determine both derivatives and explain why 3 is a factor in both terms while the variable appears once in a power base and once in an exponent.",
+            "expectedPerformanceDe": "Die lernende Person erhält p'(x) = 9x² und q'(x) = 3eˣ, begründet Faktor- und jeweilige Grundregel getrennt und erklärt die unterschiedliche Veränderung der beiden Funktionstypen.",
+            "expectedPerformanceEn": "The learner obtains p'(x) = 9x² and q'(x) = 3eˣ, justifies the constant-factor rule and each basic rule separately, and explains the different transformation of the two function types.",
+            "understandingFocusDe": "Die Gegenüberstellung macht die in der Synthese ausgewählte Unterscheidung von Potenz- und Exponentialstruktur sichtbar.",
+            "understandingFocusEn": "The comparison makes the synthesis-selected distinction between power and exponential structure observable."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "dde9ae98-d97d-598b-92f4-f1616f4d75c8",
+      "reason": "Current goal and final visualization inspected. The specific profile cases remain mathematically or scientifically valid; the current image supports orientation and does not supply independent assessment evidence. Historical profiles and judgments are preserved; this successor is an AI candidate, not human approval. The polynomial worked example h(x)=3x²+x³ differentiates to 6x+3x²; the general factor/sum justifications remain supported. The independent negative-factor and cancellation cases are retained.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Die allgemeinen Begründungen setzen Differenzierbarkeit der beteiligten Funktionen an der betrachteten Stelle und einen konstanten Faktor voraus. Produkt- oder Kettenregel sind keine zusätzlichen Pflichten."
+      ],
+      "profile": {
+        "archetype": "proof",
+        "expectations": [
+          {
+            "id": "linearity-justification",
+            "essentialUnderstandingDe": "Konstante Faktoren und Summen lassen sich im Differenzenquotienten trennen; bei existierenden Ableitungen tragen die Grenzwertregeln die entsprechenden Ableitungsregeln.",
+            "essentialUnderstandingEn": "Constant factors and sums separate in the difference quotient; when derivatives exist, limit rules support the corresponding differentiation rules.",
+            "observablePerformanceDe": "Begründet Faktor- und Summenregel aus dieser Zerlegung und nennt Konstanz bzw. Differenzierbarkeit als relevante Voraussetzungen.",
+            "observablePerformanceEn": "Justifies the constant multiple and sum rules from this decomposition and states constancy and differentiability as relevant assumptions."
+          },
+          {
+            "id": "transparent-application",
+            "essentialUnderstandingDe": "Die Regeln wirken auf die Summanden und ihre konstanten Faktoren; Vereinfachung darf dieselbe Funktion vor oder nach dem Ableiten darstellen.",
+            "essentialUnderstandingEn": "The rules act on terms and their constant factors; simplification can represent the same function before or after differentiation.",
+            "observablePerformanceDe": "Wendet die Regeln mit nachvollziehbaren Zwischenschritten an und vereinfacht das Ergebnis konsistent, auch wenn sich Summanden aufheben.",
+            "observablePerformanceEn": "Applies the rules with coherent intermediate steps and simplifies consistently, including when terms cancel."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "linearity-justification",
+            "transparent-application"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "rule-and-cancellation",
+            "textDe": "Eine allgemeine Faktorbegründung mit negativer Skalierung gegen eine allgemeine Summenbegründung mit sich aufhebenden Termen variieren.",
+            "textEn": "Vary a general constant-multiple justification with negative scaling against a general sum justification with cancelling terms."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "constant-multiple",
+            "taskDemandDe": "Sei u an x differenzierbar und c eine reelle Konstante. Begründe (cu)′=cu′ am Differenzenquotienten. Wende die begründeten Regeln anschließend auf F(x)=-3x²+5 an und zeige die Schritte.",
+            "taskDemandEn": "Let u be differentiable at x and c a real constant. Justify (cu)′=cu′ using the difference quotient. Then apply the justified rules to F(x)=-3x²+5 and show the steps.",
+            "expectedPerformanceDe": "Zieht c aus [cu(x+h)-cu(x)]/h heraus und nutzt den Grenzwert zu cu′(x). Erhält F′=-3·2x+0=-6x; erläutert, warum c konstant sein muss und der konstante Summand verschwindet.",
+            "expectedPerformanceEn": "Factors c out of [cu(x+h)-cu(x)]/h and takes the limit to obtain cu′(x). Gets F′=-3·2x+0=-6x; explains why c must be constant and why the constant term disappears.",
+            "understandingFocusDe": "Eine Regel begründen und ihren konstanten Faktor in einer Rechnung erkennbar nutzen.",
+            "understandingFocusEn": "Justify a rule and visibly use its constant factor in a calculation."
+          },
+          {
+            "id": "sum-cancellation",
+            "taskDemandDe": "Seien u und v an x differenzierbar. Begründe (u+v)′=u′+v′ am Differenzenquotienten. Nutze danach u(x)=x³ und v(x)=-x³+2x und vergleiche Ableiten vor und nach dem Zusammenfassen.",
+            "taskDemandEn": "Let u and v be differentiable at x. Justify (u+v)′=u′+v′ using the difference quotient. Then use u(x)=x³ and v(x)=-x³+2x and compare differentiating before and after simplification.",
+            "expectedPerformanceDe": "Zerlegt den Quotienten der Summe in die zwei Quotienten und nutzt deren existierende Grenzwerte. Rechnet 3x²+(-3x²+2)=2; vorheriges Zusammenfassen ergibt u+v=2x mit derselben Ableitung 2. Die Rechnung illustriert die allgemein begründete Summenregel.",
+            "expectedPerformanceEn": "Splits the sum's quotient into two quotients and uses their existing limits. Calculates 3x²+(-3x²+2)=2; simplifying first gives u+v=2x with the same derivative 2. The calculation illustrates the generally justified sum rule.",
+            "understandingFocusDe": "Bei struktureller Aufhebung die Linearität nachvollziehbar anwenden.",
+            "understandingFocusEn": "Apply linearity coherently when terms structurally cancel."
+          }
+        ]
+      }
+    }
+  ]
+}

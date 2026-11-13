@@ -1,0 +1,46 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physics-feedback-quantum-current-blind-b-20261113",
+  "campaignId": "physik-feedback-quantum-terminology-current-20261113-v1-b",
+  "roundId": "physik-feedback-quantum-terminology-current-20261113-v1-first-pass-b",
+  "batchId": "physik-feedback-quantum-terminology-current-20261113-v1-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:071406cb3f755a5d400fd51686bc99323eff66b7b586f7e991311500e098ebc6",
+  "bundleFingerprint": "sha256:42b967a465a47e73f366c24be33b6f338c79f58cc638b8b2c0636a105875fcc0",
+  "bookDigest": "sha256:a40af97e3e3db7b86d80dcc6b1ad0c79e8c2415ec86eb76d8b3ba6a7cbb4aca6",
+  "provider": "OpenAI",
+  "model": "GPT-6 Codex",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:2cfb732598ffc676b1529f63f7113b2b133d69ec053121502a64a550f3fe0ed9",
+  "independenceGroupId": "physik-feedback-quantum-terminology-current-20261113-v1-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "727d0946-7019-50ed-8fc6-85db12508733"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_input_jsonl",
+      "digest": "sha256:1f94458118868782f7c27ffbeb78ca997061fbecdc3afdf9d43bd1d55de86ac1"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:071406cb3f755a5d400fd51686bc99323eff66b7b586f7e991311500e098ebc6"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    }
+  ],
+  "startedAt": "2026-11-13T16:06:18.344245Z",
+  "completedAt": "2026-11-13T16:06:18.344245Z",
+  "status": "completed",
+  "outputDigest": "sha256:58bb52552cd5eafe1b3abb7430aa2132c4a956fd758ddde4b09a1dee8b6fc8f0",
+  "toolchainVersion": "goal-description-review-v1"
+}

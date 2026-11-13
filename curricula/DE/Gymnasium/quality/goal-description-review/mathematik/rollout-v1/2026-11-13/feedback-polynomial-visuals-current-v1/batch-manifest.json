@@ -1,0 +1,55 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-feedback-polynomial-visuals-current-20261113-v1",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-11-13/feedback-polynomial-visuals-current-v1.config.json",
+  "configDigest": "sha256:3b95425f128a90e42dc3196e6213030f4dc4cc0518cfad5ca92ba86ac2195431",
+  "goalIds": [
+    "858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
+    "dde9ae98-d97d-598b-92f4-f1616f4d75c8"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 807,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:e026bf409e6ede4f45287675b556a8586551221e042aed43af2b2f5cc97622cc"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:d9eb4768e555179ba161c1925541fcdffc608556da6d0764a568f8e80a2eb81f",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:1b4415375725c2a96cea2cf08509bd3ab4ae17e74e4b8747b906519b36757a90",
+    "reviewInputFingerprint": "sha256:555eab87c80fa677dfc6ac6cf01df52d7122cd484c794a7153d95cda9c4416eb",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-feedback-polynomial-visuals-current-20261113-v1-a",
+        "campaignDigest": "sha256:7ea3e9766e648deb255713de6d366d88d34f28f7a9637357897f7f6c897977b8",
+        "roundId": "mathematik-feedback-polynomial-visuals-current-20261113-v1-first-pass-a",
+        "independenceGroupId": "mathematik-feedback-polynomial-visuals-current-20261113-v1-independent-a",
+        "batchId": "mathematik-feedback-polynomial-visuals-current-20261113-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:3bb6e8c094cb4e520ebbc3b5df2db1754669ab508ad477e6cb9e12c814969a32"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-feedback-polynomial-visuals-current-20261113-v1-b",
+        "campaignDigest": "sha256:6326b40d8afc503dfe727e85cbb2dbef93ac9470fa13eae9b152124b19221af0",
+        "roundId": "mathematik-feedback-polynomial-visuals-current-20261113-v1-first-pass-b",
+        "independenceGroupId": "mathematik-feedback-polynomial-visuals-current-20261113-v1-independent-b",
+        "batchId": "mathematik-feedback-polynomial-visuals-current-20261113-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:dce35b08a4e55d3aee75fbc3a56dd2d005983fd515b8f5c5944d0d5b1d6fc4ca"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}
