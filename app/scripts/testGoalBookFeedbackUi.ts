@@ -16,7 +16,6 @@ const manifestFingerprint = `sha256:${'d'.repeat(64)}`
 const visualizationUrl = `/api/public/goal-feedback/v1/visualizations/${'e'.repeat(64)}`
 const visualizationTitle = 'Visualisierung: Rationale Zahlen darstellen und ordnen'
 const visualizationAlt = 'Rationale Zahlen sind auf einer Zahlengeraden eingeordnet.'
-const landscapeId = '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced'
 const binding = new URLSearchParams({
   bookId: 'de-gym-mathematik-bundesweit',
   goalId,
@@ -145,8 +144,8 @@ try {
   await page.getByRole('heading', { name: 'Rationale Zahlen darstellen und ordnen' }).waitFor()
   assert(
     await page.getByRole('link', { name: 'Zurück zum Cockpit' }).getAttribute('href')
-      === `/learner/${goalId}?l=${landscapeId}`,
-    'Cockpit-origin feedback returns to the exact learner goal and publication landscape after reload',
+      === `/learner/${goalId}`,
+    'Cockpit-origin feedback returns to the exact learner goal without replacing the personal curriculum after reload',
   )
   assert(
     contextUrls.length === 2
@@ -222,7 +221,7 @@ try {
   await page.getByRole('heading', { name: 'Feedback wurde gespeichert' }).waitFor()
   assert(
     await page.getByRole('link', { name: 'Zurück zum Cockpit' }).getAttribute('href')
-      === `/learner/${goalId}?l=${landscapeId}`,
+      === `/learner/${goalId}`,
     'the submitted receipt keeps the Cockpit return action visible',
   )
   assert(submissions.length === 3, 'one edited explicit submission sends one additional request')
@@ -253,12 +252,11 @@ try {
   assert(dimensions.scroll <= dimensions.client, `390px feedback form overflows: ${JSON.stringify(dimensions)}`)
 
   await page.getByRole('link', { name: 'Zurück zum Cockpit' }).click()
-  await page.waitForURL(`**/learner/${goalId}?l=${landscapeId}`)
+  await page.waitForURL(`**/learner/${goalId}`)
   const cockpitReturnUrl = new URL(page.url())
   assert(
     cockpitReturnUrl.pathname === `/learner/${goalId}`
-      && cockpitReturnUrl.searchParams.size === 1
-      && cockpitReturnUrl.searchParams.get('l') === landscapeId,
+      && cockpitReturnUrl.searchParams.size === 0,
     `the return action opened an unexpected Cockpit target: ${cockpitReturnUrl.href}`,
   )
 

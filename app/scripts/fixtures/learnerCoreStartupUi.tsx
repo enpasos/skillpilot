@@ -7,6 +7,7 @@ import { useAppCore } from '../../src/hooks/useAppCore'
 import { CANONICAL_GYMNASIUM_ROOT_ID } from '../../src/utils/curriculumDisplay'
 import { CompetenceTree } from '../../src/components/CompetenceTree'
 import { buildVisibleChildrenMap } from '../../src/utils/treeProjectionRuntime'
+import { learnerCockpitGoalFeedbackReturnPath } from '../../src/utils/goalFeedbackReturnNavigation'
 
 const ignoreMeta = () => undefined
 let mounts = 0
@@ -21,7 +22,8 @@ const Fixture = () => {
   const [selectedId, setSelectedId] = useState('')
   const navigate = useNavigate()
   const location = useLocation()
-  const core = useAppCore({ role: 'learner', skillpilotId: learner, setLearnerMeta: ignoreMeta })
+  const core = useAppCore({ role: 'learner', skillpilotId: learner, setLearnerMeta: ignoreMeta,
+    enabled: location.pathname !== '/lernziel-feedback' })
   const hasProjection = core.landscapeEntries.some((entry) => entry.meta.personalCurriculumProjection)
   // The roots the Cockpit shows (LearnerView): roots of the selected landscape
   // that present goals, otherwise all presenting roots. A full-plan overview
@@ -40,6 +42,12 @@ const Fixture = () => {
     <button onClick={() => setLearner('learner-empty')}>Leerer Umfang</button>
     <button onClick={() => navigate(`/learner/math-a?l=${CANONICAL_GYMNASIUM_ROOT_ID}&panel=details`)}>Nur Navigation</button>
     <button onClick={() => core.handleNavigateToExternal('physics-fixture', 'physics-a')}>Physikplanziel</button>
+    <button onClick={() => navigate('/lernziel-feedback')}>Feedback öffnen</button>
+    <button onClick={() => navigate(learnerCockpitGoalFeedbackReturnPath({
+      bookId: 'de-gym-mathematik-bundesweit', goalId: 'math-a', edition: 'curricular-atomic-v1',
+      goalFingerprint: `sha256:${'a'.repeat(64)}`, pageFingerprint: `sha256:${'b'.repeat(64)}`,
+      bookDigest: `sha256:${'c'.repeat(64)}`, page: '1',
+    })!)}>Feedback zurück</button>
     <button onClick={() => core.handleNavigateToExternal('physics-fixture', 'not-loaded')}>Externes Ziel</button>
     <button onClick={() => core.handleNavigateToExternal('foreign-subject', 'foreign-required')}>Notwendige Fremdgrundlage</button>
     <button onClick={() => navigate('/learner?l=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0')}>Chemie einzeln</button>
@@ -62,6 +70,9 @@ const Fixture = () => {
   </>
 }
 
+const initialRoute = new URLSearchParams(window.location.search).has('feedbackReload')
+  ? '/lernziel-feedback'
+  : `/learner?l=${CANONICAL_GYMNASIUM_ROOT_ID}`
 createRoot(document.getElementById('root')!).render(
-  <LanguageProvider><MemoryRouter initialEntries={[`/learner?l=${CANONICAL_GYMNASIUM_ROOT_ID}`]}><Fixture /></MemoryRouter></LanguageProvider>,
+  <LanguageProvider><MemoryRouter initialEntries={[initialRoute]}><Fixture /></MemoryRouter></LanguageProvider>,
 )

@@ -75,6 +75,9 @@ try {
     }
     const id = path.split('/')[4]
     if (path.endsWith('/closure')) {
+      if (id === 'learner-a' && path !== `/api/ui/learners/learner-a/landscapes/${rootId}/closure`) {
+        return route.fulfill({ status: 409, body: 'Personal learning scope must use the learner\'s selected curriculum' })
+      }
       if (id === 'learner-a') { scopedArrived.release(); await scopedGate.promise }
       if (id === 'learner-b') { switchArrived.release(); await switchedScopeGate.promise }
       if (id === 'learner-error') return route.fulfill({ status: 503, body: 'Scoped service unavailable' })
@@ -121,6 +124,29 @@ try {
   assert.equal(count(`/api/ui/learners/learner-a/landscapes/${rootId}/closure`), 1)
   assert.equal(count('/api/ui/landscapes/physics-fixture/closure'), 0)
   assert.equal(count('/api/ui/learners/learner-a/landscapes/physics-fixture/closure'), 0)
+
+  // Feedback belongs to a subject book, but the Cockpit keeps the learner's
+  // selected curriculum. The real endpoint rejects a subject/root mismatch.
+  await page.getByRole('button', { name: 'Feedback öffnen' }).click()
+  await page.getByTestId('route').filter({ hasText: '/lernziel-feedback' }).waitFor()
+  await page.getByRole('button', { name: 'Feedback zurück' }).click()
+  await page.getByTestId('route').filter({ hasText: `/learner/math-a?l=${rootId}` }).waitFor()
+  await page.getByTestId('ready').filter({ hasText: 'Physik Sekundarstufe II learner-a' }).waitFor()
+  assert.equal(count(`/api/ui/learners/learner-a/landscapes/${mathId}/closure`), 0,
+    'feedback return never requests the subject as the selected curriculum')
+  assert.equal(await page.getByTestId('error').count(), 0)
+
+  // Reloading feedback remounts AppCore without a curriculum URL parameter;
+  // the stored learner selection must still own the return closure.
+  await page.evaluate((id) => localStorage.setItem('skillpilot_learner_landscape', id), rootId)
+  await page.goto(`${server.baseUrl}/scripts/fixtures/learnerCoreStartupUi.html?feedbackReload=1`)
+  await page.getByTestId('route').filter({ hasText: '/lernziel-feedback' }).waitFor()
+  await page.getByRole('button', { name: 'Feedback zurück' }).click()
+  await page.getByTestId('route').filter({ hasText: `/learner/math-a?l=${rootId}` }).waitFor()
+  await page.getByTestId('ready').filter({ hasText: 'Physik Sekundarstufe II learner-a' }).waitFor()
+  assert.equal(count(`/api/ui/learners/learner-a/landscapes/${mathId}/closure`), 0)
+  assert.equal(count(`/api/ui/landscapes/${rootId}/closure`), 0, 'feedback return retains scoped-only reads')
+  assert.equal(await page.getByTestId('error').count(), 0)
 
   await page.getByRole('button', { name: 'Andere Person' }).click()
   await switchArrived.promise

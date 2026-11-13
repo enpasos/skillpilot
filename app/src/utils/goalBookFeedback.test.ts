@@ -61,7 +61,7 @@ assert.equal(isLearnerCockpitGoalFeedbackNavigationState({
 }), false)
 assert.equal(
   learnerCockpitGoalFeedbackReturnPath(binding),
-  `/learner/${binding.goalId}?l=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced`,
+  `/learner/${binding.goalId}`,
 )
 assert.equal(learnerCockpitGoalFeedbackReturnPath({
   ...binding,
