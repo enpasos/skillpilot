@@ -694,6 +694,15 @@ plan.
   Mathematics curriculum/view bytes were not changed to make this optional
   command pass. The actual CI `test:composition-projection-roles` command,
   including the separate HE Q2.1 regression, passed.
+- 2026-11-13, CI #2342 follow-up: the Physics goal-book regression still
+  expected the former CQR-104 selector diagnostics. The five already reviewed
+  explicit stage targets account for exactly 25 + 20 + 10 + 5 + 5 additional
+  occurrences: selected 6,136→6,201, excluded 235→170 and 61→56 unique goals.
+  The regression now verifies the complete 96 + 5 goal selection and each
+  individual occurrence count. All 6,371 projected target occurrences remain
+  checked, with the existing route-failure guards unchanged. The complete
+  Physics input test passed locally; this changes no product, graph, view or
+  review data. The corrected candidate still requires complete remote CI.
 
 ## 10. Follow-up programme: clean Gymnasium (13 November 2026)
 
