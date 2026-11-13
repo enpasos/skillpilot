@@ -18,6 +18,10 @@ declared domains and retired two redundant codes. The delivered legend has
 `GVR-012`) require broader curriculum work; they are not part of the completed
 bounded hardening.
 
+**Active work order: [section 10](#10-follow-up-programme-clean-gymnasium-13-november-2026).**
+It records the owner decision of 13 November 2026 and the follow-up packages
+F1–F5. Sections 1–9 are the record of the delivered work and are not reopened.
+
 Related material:
 
 - Register source: `docs/concept/skill-graph/source/rules-and-gates.json`
@@ -627,3 +631,174 @@ plan.
   separate CI evidence above. Historical baseline and progress-log entries
   retain their original meaning; neither remaining coverage gap is closed by
   these documentation changes.
+
+## 10. Follow-up programme: clean Gymnasium (13 November 2026)
+
+A rough roadmap. Each package names its goal, its first steps and its
+acceptance; the detail is worked out when the package starts.
+
+Execution started on 13 November 2026 in the new goal for F1–F5, on branch
+`feat/cqr-gvr-gymnasium-followup`, based on freshly fetched `origin/main`
+`4aace519463880860c4c634eee2e801a48098df9`. The owner's latest instruction
+requests one new branch and one new PR; the package-specific PR split below
+is superseded by separately reviewable commits in that integration PR.
+Astra Ultra audits the register and documentation; Sol 6.1 Ultra handles
+the live-inventory and semantic-route implementation. Evidence gaps remain
+findings, not permission to weaken gates or fabricate reviews.
+
+### 10.1 Owner decision of 13 November 2026
+
+- Work currently goes into Gymnasium only, and there the state must be clean.
+- The rule domain of the Graph Definition gates is the canonical Gymnasium
+  catalog (`curricula/DE/Gymnasium/canonical/`, 21 roots). A `GD-*` row is
+  graded against that domain. It is no longer held at `PARTIAL` only because
+  landscapes outside Gymnasium are unchecked; the register names that boundary,
+  as `GD-C17` already does.
+- Landscapes outside Gymnasium receive no work in this programme: no repair,
+  no retirement, no new gate. Their cleanup needs a separate later decision.
+- Target inside `curricula/DE/Gymnasium/`: no legacy construct, no bypass and
+  no stale register statement remains.
+
+Record this decision in `AGENTS.md` next to the 12 November decision in the
+first pull request that changes a grade (F2), and keep `CLAUDE.md` consistent.
+
+### 10.2 Starting point
+
+Measured in the working tree on 13 November 2026 unless a source is named.
+
+| Fact | Value |
+| --- | --- |
+| Code legend | 22 `HARD`, 2 `PARTIAL` (`GVR-012`, `CQR-104`) of 24 |
+| `GD-*` register | 4 `HARD`, 58 `PARTIAL`, 55 `OPEN`, 28 `OPT/DOC`; part C: 3, 22, 11 |
+| Loaded landscape files | 593: 21 canonical, 45 under `curricula/DE/Gymnasium/input/BY/gymnasium/`, 527 outside Gymnasium |
+| Root requires its own "Warum" child | 0 canonical, 45 of the 45 Bavarian input graphs, 519 outside Gymnasium |
+| Semantic-kind ledgers covering every current goal, all `authoritative` | Mathematik, Physik (`quality/release-model/`), Biologie, Chemie (`quality/goal-book-publication/`) |
+| Wirtschaftswissenschaften ledger | Only inside versioned rollout packages; the latest (`…-v18`) lacks 24 of 702 current goals |
+| Ledgers for Deutsch, Geschichte, Informatik, Latein, Politik und Wirtschaft | None found |
+| `CQR-104` gaps | Sek II scopes of Mathematics (80 findings), Physics (68), Chemistry (41), Biology (3); section 7, WP5, not re-measured |
+
+The ledger rows correct the WP6 statement in section 7 that authoritative
+ledgers exist for Mathematics and Physics only.
+
+### 10.3 Packages
+
+Order: F1, F2, F3, F4, F5. F2 and F3 are independent of each other; F4 and F5
+are independent of both. F4 precedes F5 because its evidence largely exists.
+
+#### F1 – Documentation hygiene
+
+`docs/concept/skill-graph/source/README.md` still says 26 repository gates
+instead of 24. Rebuild the PDFs (`npm --prefix app run docs:skill-graph:full`)
+and compare the published matrix page and PDF with the register.
+
+Accept when the five documentation checks pass and web, PDF and source agree.
+
+#### F2 – Regrade the `GD-*` rows against the declared domain
+
+Standard: the same as for the legend (section 3). A row becomes `HARD` only
+when every obligation it states is gated fail-closed in the canonical
+Gymnasium catalog. Otherwise correct the text, keep the grade and name the
+remaining gap. No row is upgraded on wording alone: each upgrade cites its
+gate, the covered count and an existing negative test or probe.
+
+| Group | Rows | Work |
+| --- | --- | --- |
+| Limited only by the catalog boundary | `GD-C11`, `C15`, `C16`, `C19`, `U13` | State the domain as in `GD-C17`. Check whether the route clause in `C11` and `C16` is a separate obligation of the rule; if so it follows F4. |
+| Justified by floors or protected inventories | `GD-C04`, `C08`, `X26`, `X29`, `X45`, `X46` | Re-evaluate against the complete pin register (21 curricula, 12 scopes). A rule that binds from `M6` or `M7` is graded like its legend code, with the pinned count. A claim that no gate checks stays a named residual. |
+| Waiting for F4 or F5 | `GD-C21`, `C22`, `A18` | Keep `PARTIAL`. Verify the `A18` statement that `CQR-104` applies to Economics only; the legend says eight scopes. |
+| `OPEN` rows | 55, about 48 of them runtime or concept obligations | Out of scope (10.4). Do not regrade. |
+
+Then update the expected distribution in
+`scripts/doc_compendium/extensions/skill_graph.py`, the `ampelSection` counts,
+the affected chapter prose and the statements in `AGENTS.md` and `CLAUDE.md`;
+regenerate (`docs:skill-graph:web`, QA compendium) and run the five
+documentation checks.
+
+Accept when the rendered matrix shows the new grades and every changed row
+names gate, domain and count.
+
+#### F3 – Clean the Gymnasium remainder
+
+The 45 files under `curricula/DE/Gymnasium/input/BY/gymnasium/` are retained
+Bavarian source graphs (4 to 893 goals). `loadGraphValidationLandscapes` loads
+them as live landscapes. None is a manifest root; the IDs of 21 appear in
+`mapping/` and `provenance/`, those of 5 in `canonical/`.
+
+1. Establish their role: which runtime, tooling and evidence consumers read
+   them as graphs (validator inventory, backend `LandscapeService`, mapping,
+   provenance, deck tooling).
+2. Preferred outcome: they are retained source material, as the input
+   `README.md` already says, not live graphs. Take them out of the live
+   landscape inventories with their bytes unchanged.
+3. Only if a consumer needs them as live graphs: normalise `requires` as in
+   WP2 and add them to the G17 domain. Check hash and provenance bindings
+   first; a frozen snapshot is not rewritten.
+4. If neither is possible without breaking evidence, stop and report.
+
+Accept when a test fails for any live graph under `curricula/DE/Gymnasium/`
+that is outside the gated set, and the register states the domain accordingly.
+
+#### F4 – `GVR-012` beyond Mathematics
+
+Target: the seven scopes of the five `M7` subjects (`canonical-math-sek1`,
+`-math-sek2`, `-physics-sek1`, `-physics-sek2`, `-biology-sek2`,
+`-chemistry-sek2`, `-economics-crossstage`).
+
+1. Physics probe: run the semantic validator
+   (`app/scripts/lib/hardLearningRouteValidation.ts`) on both Physics scopes
+   with the existing ledger. Add negative fixtures for each obligation that
+   distinguishes `GVR-012` from `CQR-102` (semantic kinds, route ordering,
+   intermediate goals, side prerequisites, Memory ordering).
+2. Biology and Chemistry: confirm that the ledgers under
+   `goal-book-publication/` follow the same contract and are valid input for
+   route validation, then repeat step 1.
+3. Wirtschaftswissenschaften: there is no current ledger. Classifying the 24
+   missing goals needs reviewed evidence; report the gap, do not classify in
+   bulk.
+4. Derive the `validate:graph` profiles from the shared scope inventory for
+   every scope with a current authoritative ledger and delete the separate
+   Mathematics list. The legend states the covered count.
+
+A route that fails the semantic validator is a curriculum finding: report it
+per scope and repair it only with evidence. Never weaken the validator or
+change a classification to pass. The five `M6` scopes have no classification;
+that work belongs to their `M7` path and is not part of this programme.
+
+`GVR-012` stays `PARTIAL` below twelve scopes. Whether it becomes a
+milestone-bound `M7` obligation, graded like `CQR-303`, is an owner question
+to raise with the F4 result, not to decide in the package.
+
+#### F5 – `CQR-104` from eight to twelve scopes
+
+1. Biology first (smallest gap). Find the cause before fixing anything:
+   missing applicability data, missing view placement, or no assessment at
+   that level.
+2. After Biology, decide whether one mechanism serves all four subjects and
+   note it here before continuing.
+3. Chemistry, Physics, Mathematics: one reviewable commit per subject. Set
+   `compositionVisibilityRequired` to true for a scope in the pull request
+   that makes it pass.
+
+The expected endpoint set comes from authoritative applicability and
+assessment evidence (state, Sek II course level), never from what is already
+visible. No pin is lowered. A gap that cannot be evidenced stays documented
+and the code stays `PARTIAL`.
+
+After twelve passing scopes: grade `CQR-104` `HARD` and regrade the rows that
+waited for it (`GD-C22`, `A18`).
+
+### 10.4 Out of scope
+
+- The 527 landscapes outside Gymnasium (10.1).
+- The `OPEN` rows that state runtime or concept obligations. They need runtime
+  conformance tests, a separate programme; no `CQR` or `GVR` work reaches them.
+- The frozen prerequisite-reduction registry (contract V9) and its parent.
+- Promotion of the eleven `M0` curricula.
+
+### 10.5 Working rules
+
+Section 6 applies. Under the latest owner instruction, deliver the packages,
+and each F5 subject where evidence supports a repair, as separate reviewable
+commits in one new pull request against `main`. Open a draft early for the
+quick CI tier, then run the complete remote tier when ready. Do not merge,
+publish or deploy. Add one line per package to the progress log in section 9.
