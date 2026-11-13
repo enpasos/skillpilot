@@ -72,6 +72,7 @@ npm --prefix app run validate:composition-views
 npm --prefix app run check:transitive-minimality
 npm --prefix app run validate:learning-units            # learning units in the canonical landscapes (R1, R3, R4)
 npm --prefix app run check:learning-unit-assessments    # unit assessments in the catalog equal their source files
+npm --prefix app run knowledge-context -- <goalId> [--full]   # what a learner can be assumed to know at a goal (AGENTS.md §2.5)
 npm --prefix app run quality:curriculum-status          # regenerate status
 npm --prefix app run quality:curriculum-status:check    # + maturity-floor gate
 python3 scripts/validate_schemas.py

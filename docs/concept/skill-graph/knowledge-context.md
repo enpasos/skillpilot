@@ -16,7 +16,7 @@
 
 Every piece of content that belongs to a learning goal, be it an explanation, an example, a task, a memory card, a goal image, or a sentence of the coach, addresses a learner who knows some things and does not yet know others. This chapter defines that knowledge as a projection of the skill graph and states what the graph must provide for it.
 
-**Status, 13 November 2026.** Concept and Product Owner requirement. Nothing in this chapter is implemented. The numbers come from a prototype run over the canonical catalog on that day; the prototype is not part of the repository. This page changes no learning goals, graph edges, assessments, or coach behaviour.
+**Status, 13 November 2026.** Concept and Product Owner requirement. The derivation exists as a repository tool (`npm --prefix app run knowledge-context`, [knowledgeContext.ts](https://github.com/enpasos/skillpilot/blob/main/app/scripts/lib/knowledgeContext.ts)). Nothing else is implemented: no gate, no generation pipeline, and no coach uses the context. The numbers come from that tool on that day. This page changes no learning goals, graph edges, assessments, or coach behaviour.
 
 <a id="the-requirement"></a>
 <a id="sec-sga-kc-requirement"></a>
@@ -42,9 +42,11 @@ Let $g$ be an atomic learning goal. Its **secured goals** $W(g)$ are the atomic 
 | Builds on | the goals of $W(g)$ that no other goal of $W(g)$ requires | the entry competencies |
 | Secured | all goals of $W(g)$, grouped by area | may be used |
 | Leads to | the goals that require $g$ directly | must not be anticipated |
-| Not yet | the first goals of the same top-level area outside $W(g)$: those that require no other such goal | the neighbouring subject matter that suggests itself |
+| Not yet | the first goals of the same area outside $W(g)$: those that require no other such goal | the neighbouring subject matter that suggests itself |
 
 One rule of use applies to generator, reviewer, and coach alike: **what some goal of the catalog develops may be used only if that goal is secured for $g$.** What $g$ itself develops is the subject of the work. What no goal of the catalog develops counts as baseline knowledge, such as everyday and primary-school knowledge, and is judged by review.
+
+Only ordinary goals are listed. Assessment, memory, and orientation goals on a prerequisite path carry the path, but they develop no subject matter of their own. An area is a cluster directly below the subject root of the landscape, or a separate root.
 
 The projection has two renderings with a fixed order of entries. The **core** consists of goal, builds on, leads to, and not yet; it accompanies the coach. The **full** rendering adds the secured goals; it accompanies generation and review.
 
@@ -52,11 +54,11 @@ The same definition covers the other kinds of nodes. An assessment or memory goa
 
 Nothing new is stored for the knowledge context. It is a projection of `contains`, `requires`, titles, and descriptions, as the frontier is a projection of prerequisites and mastery.
 
-<a id="what-the-prototype-shows"></a>
+<a id="what-the-derivation-shows"></a>
 <a id="sec-sga-kc-prototype"></a>
-### 13.3. What the Prototype Shows
+### 13.3. What the Derivation Shows
 
-The prototype derived the knowledge context of every ordinary atomic goal of canonical Mathematics and Physics.
+The tool derives the knowledge context of every ordinary atomic goal of the canonical catalog. For Mathematics and Physics:
 
 | Quantity | Mathematics, median | Mathematics, 90th percentile | Physics, median | Physics, 90th percentile |
 | --- | --- | --- | --- | --- |
@@ -64,12 +66,14 @@ The prototype derived the knowledge context of every ordinary atomic goal of can
 | Builds on | 1 | 2 | 1 | 3 |
 | Secured | 30 | 51 | 54 | 113 |
 | Leads to | 1 | 4 | 1 | 4 |
-| Not yet | 15 | 25 | 11 | 29 |
-| Core, characters of titles | 950 | 1,440 | 730 | 1,630 |
+| Not yet | 16 | 25 | 11 | 29 |
+| Core, characters of titles | 985 | 1,425 | 700 | 1,529 |
 
 The core is compact: roughly 250 to 450 tokens of titles. The secured goals rarely fill a whole cluster, so they cannot be shortened to cluster names; the full rendering lists them.
 
 The second finding matters more. **The derived context is exactly as good as the edges.** For the Mathematics goal "Ganzrationale Funktionen ableiten" the graph secures 34 goals, and none of them concerns linear, quadratic, power, or polynomial functions; "Ganzrationale Funktionen über Term und Graph beschreiben" and "Potenzen mit natürlichen Exponenten deuten und berechnen" appear under "not yet". The goal "Ganzrationale Funktionen mit Differentialrechnung analysieren" does not have the goal on differentiating polynomial functions on its prerequisite path. The existing gates establish that `requires` is acyclic, atomic, and transitively minimal. None of them establishes that the prerequisites of a goal suffice.
+
+In other subjects the graph models few or no prerequisites, and the context is empty there: no ordinary goal of English (89 goals), History (156), or Latin (115) has a prerequisite, and neither have 178 of the 268 goals of German or 339 of the 413 goals of Politics and Economics.
 
 <a id="sufficiency-the-property-the-graph-must-gain"></a>
 <a id="sec-sga-kc-sufficiency"></a>
@@ -111,7 +115,7 @@ The coach receives titles of goals and mastery states that its context already c
 <a id="sec-sga-kc-order"></a>
 ### 13.6. Order of Introduction
 
-1. **Derive.** A deterministic repository tool and a report per subject. No gate changes.
+1. **Derive.** A deterministic repository tool and a report per subject. No gate changes. This step exists.
 2. **Review sufficiency** block by block, starting with one pilot block per subject. The share of goals with findings shows what it costs to make a subject sufficient.
 3. **Check faithfulness** of images, cards, and tasks, together with the design of the learning units of a block.
 4. **Serve the coach** per subject once the subject is sufficient. A context from an insufficient graph would forbid what learners in fact know.

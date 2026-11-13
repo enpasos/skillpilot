@@ -2,7 +2,7 @@
 
 Jeder Inhalt, der zu einem Lernziel gehört, ob Erklärung, Beispiel, Aufgabe, Lernkarte, Lernzielbild oder ein Satz des Coachs, richtet sich an Lernende, die manches wissen und anderes noch nicht. Dieses Kapitel bestimmt dieses Wissen als Projektion des Skill-Graphen und nennt, was der Graph dafür leisten muss.
 
-**Stand, 13. November 2026.** Konzept und Anforderung des Product Owners. Nichts in diesem Kapitel ist umgesetzt. Die Zahlen stammen aus einem Prototyplauf über den kanonischen Katalog an diesem Tag; der Prototyp gehört nicht zum Repository. Diese Seite ändert keine Lernziele, Graphkanten, Prüfungen oder das Verhalten des Coachs.
+**Stand, 13. November 2026.** Konzept und Anforderung des Product Owners. Die Ableitung gibt es als Werkzeug im Repository (`npm --prefix app run knowledge-context`, [knowledgeContext.ts](repo:app/scripts/lib/knowledgeContext.ts)). Sonst ist nichts umgesetzt: Kein Gate, keine Erzeugungspipeline und kein Coach benutzt den Kontext. Die Zahlen stammen aus diesem Werkzeug an diesem Tag. Diese Seite ändert keine Lernziele, Graphkanten, Prüfungen oder das Verhalten des Coachs.
 
 ### Die Anforderung {#sec:sga-kc-requirement anchors="the-requirement"}
 
@@ -24,10 +24,12 @@ Sei $g$ ein atomares Lernziel. Seine **gesicherten Ziele** $W(g)$ sind die atoma
 | Baut auf | die Ziele aus $W(g)$, die kein anderes Ziel aus $W(g)$ benötigt | die Eingangskompetenzen |
 | Gesichert | alle Ziele aus $W(g)$, nach Bereich gruppiert | darf benutzt werden |
 | Darauf baut auf | die Ziele, die $g$ direkt benötigen | darf nicht vorweggenommen werden |
-| Noch nicht | die ersten Ziele desselben obersten Bereichs außerhalb von $W(g)$: jene, die kein anderes solches Ziel benötigen | der naheliegende Nachbarstoff |
+| Noch nicht | die ersten Ziele desselben Bereichs außerhalb von $W(g)$: jene, die kein anderes solches Ziel benötigen | der naheliegende Nachbarstoff |
 {cols="14%,44%,42%"}
 
 Eine Regel gilt für Generator, Reviewer und Coach gleichermaßen: **Was ein Ziel des Katalogs erarbeitet, darf nur benutzt werden, wenn dieses Ziel für $g$ gesichert ist.** Was $g$ selbst erarbeitet, ist Gegenstand der Arbeit. Was kein Ziel des Katalogs erarbeitet, gilt als Grundwissen, etwa Alltags- und Grundschulwissen, und wird im Review beurteilt.
+
+Aufgeführt werden nur gewöhnliche Ziele. Prüfungs-, Lernkarten- und Orientierungsziele auf einem Voraussetzungspfad tragen den Pfad, erarbeiten aber keinen eigenen Stoff. Ein Bereich ist ein Cluster direkt unter der Fachwurzel der Landschaft oder eine eigene Wurzel.
 
 Die Projektion hat zwei Ausgaben mit fester Reihenfolge der Einträge. Der **Kern** besteht aus Ziel, „baut auf", „darauf baut auf" und „noch nicht"; er begleitet den Coach. Die **Vollform** ergänzt die gesicherten Ziele; sie begleitet Erzeugung und Review.
 
@@ -35,9 +37,9 @@ Dieselbe Definition deckt die übrigen Knotenarten. Ein Prüfungs- oder Lernkart
 
 Für den Wissenskontext wird nichts Neues gespeichert. Er ist eine Projektion aus `contains`, `requires`, Titeln und Beschreibungen, so wie die Frontier eine Projektion aus Voraussetzungen und Beherrschung ist.
 
-### Was der Prototyp zeigt {#sec:sga-kc-prototype anchors="what-the-prototype-shows"}
+### Was die Ableitung zeigt {#sec:sga-kc-prototype anchors="what-the-derivation-shows"}
 
-Der Prototyp hat den Wissenskontext jedes gewöhnlichen atomaren Ziels der kanonischen Mathematik und Physik abgeleitet.
+Das Werkzeug leitet den Wissenskontext jedes gewöhnlichen atomaren Ziels des kanonischen Katalogs ab. Für Mathematik und Physik:
 
 | Größe | Mathematik, Median | Mathematik, 90. Perzentil | Physik, Median | Physik, 90. Perzentil |
 | --- | --- | --- | --- | --- |
@@ -45,13 +47,15 @@ Der Prototyp hat den Wissenskontext jedes gewöhnlichen atomaren Ziels der kanon
 | Baut auf | 1 | 2 | 1 | 3 |
 | Gesichert | 30 | 51 | 54 | 113 |
 | Darauf baut auf | 1 | 4 | 1 | 4 |
-| Noch nicht | 15 | 25 | 11 | 29 |
-| Kern, Zeichen der Titel | 950 | 1.440 | 730 | 1.630 |
+| Noch nicht | 16 | 25 | 11 | 29 |
+| Kern, Zeichen der Titel | 985 | 1.425 | 700 | 1.529 |
 {cols="28%,18%,18%,18%,18%"}
 
 Der Kern ist kompakt: etwa 250 bis 450 Tokens an Titeln. Die gesicherten Ziele füllen selten einen ganzen Cluster und lassen sich deshalb nicht auf Clusternamen verkürzen; die Vollform zählt sie auf.
 
 Der zweite Befund wiegt schwerer. **Der abgeleitete Kontext ist genau so gut wie die Kanten.** Für das Mathematikziel „Ganzrationale Funktionen ableiten" sichert der Graph 34 Ziele, und keines davon betrifft lineare, quadratische, Potenz- oder ganzrationale Funktionen; „Ganzrationale Funktionen über Term und Graph beschreiben" und „Potenzen mit natürlichen Exponenten deuten und berechnen" stehen unter „noch nicht". Das Ziel „Ganzrationale Funktionen mit Differentialrechnung analysieren" hat das Ziel zum Ableiten ganzrationaler Funktionen nicht auf seinem Voraussetzungspfad. Die vorhandenen Gates stellen fest, dass `requires` azyklisch, atomar und transitiv minimal ist. Keines stellt fest, dass die Voraussetzungen eines Ziels ausreichen.
+
+In anderen Fächern modelliert der Graph wenige oder keine Voraussetzungen, und der Kontext ist dort leer: Kein gewöhnliches Ziel in Englisch (89 Ziele), Geschichte (156) oder Latein (115) hat eine Voraussetzung, ebenso wenig 178 der 268 Ziele in Deutsch und 339 der 413 Ziele in Politik und Wirtschaft.
 
 ### Hinlänglichkeit: Die Eigenschaft, die der Graph gewinnen muss {#sec:sga-kc-sufficiency anchors="sufficiency-the-property-the-graph-must-gain"}
 
@@ -89,7 +93,7 @@ Der Coach erhält Titel von Zielen und Beherrschungsstände, die sein Kontext an
 
 ### Reihenfolge der Einführung {#sec:sga-kc-order anchors="order-of-introduction"}
 
-1. **Ableiten.** Ein deterministisches Werkzeug im Repository und ein Bericht je Fach. Kein Gate ändert sich.
+1. **Ableiten.** Ein deterministisches Werkzeug im Repository und ein Bericht je Fach. Kein Gate ändert sich. Diesen Schritt gibt es.
 2. **Hinlänglichkeit prüfen**, blockweise, beginnend mit einem Pilotblock je Fach. Der Anteil der Ziele mit Befund zeigt, was es kostet, ein Fach hinlänglich zu machen.
 3. **Kontexttreue prüfen** bei Bildern, Karten und Aufgaben, zusammen mit dem Entwurf der Lerneinheiten eines Blocks.
 4. **Den Coach bedienen**, je Fach, sobald das Fach hinlänglich ist. Ein Kontext aus einem nicht hinlänglichen Graphen würde verbieten, was Lernende tatsächlich wissen.

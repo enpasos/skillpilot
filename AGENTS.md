@@ -665,19 +665,21 @@ with the respective goal.
   transitively). The knowledge context is a projection, not stored data: the
   goal itself, what it builds on (the goals of `W(g)` that no other goal of
   `W(g)` requires), the secured goals, what leads on from it (its direct
-  dependents), and what is "not yet" (the first goals of the same top-level
-  area outside `W(g)`). An assessment or memory goal develops nothing and may
-  use `W(q)`.
+  dependents), and what is "not yet" (the first goals of the same area
+  outside `W(g)`; an area is a cluster directly below the subject root).
+  Only ordinary goals are listed. An assessment or memory goal develops
+  nothing and may use `W(q)`.
 - **Rule of use.** What some goal of the catalog develops may be used only if
   that goal is secured. What no goal of the catalog develops is baseline
   knowledge and is judged by review. The rule is the same for generator,
   reviewer and coach.
 - **Sufficiency.** The context is exactly as good as the edges. The existing
   gates establish that `requires` is acyclic, atomic and transitively minimal;
-  none establishes that the prerequisites of a goal suffice to learn it. A
-  prototype run on 13 November 2026 found, for example, that the Mathematics
+  none establishes that the prerequisites of a goal suffice to learn it. The
+  derivation of 13 November 2026 shows, for example, that the Mathematics
   goal on differentiating polynomial functions secures no goal on linear,
-  quadratic, power or polynomial functions. Until a subject is reviewed for
+  quadratic, power or polynomial functions; in English, History and Latin no
+  ordinary goal has any prerequisite. Until a subject is reviewed for
   sufficiency, its derived context is a mirror for the graph and must not be
   used to restrict the coach.
 - **Findings, never repairs.** A competence that is needed but not secured is
@@ -688,10 +690,18 @@ with the respective goal.
 - **Monotone verdicts.** An added edge only enlarges `W(g)`; content that
   stayed inside the context still does. Only a goal whose `W(g)` loses a goal
   needs its content reviewed again.
-- **Status.** Concept only; nothing is implemented, and the numbers come from
-  a prototype that is not in the repository. Order of introduction: derive
-  (tool and report), review sufficiency block by block, check images, cards
-  and tasks, serve the coach per subject once it is sufficient. Open: whether
+- **Tool.** `npm --prefix app run knowledge-context -- <goalId> [--full]`
+  prints the context of one goal, `-- --cluster <goalId>` of every atomic
+  goal below a cluster, and `npm --prefix app run report:knowledge-context`
+  the sizes per subject (`app/scripts/lib/knowledgeContext.ts`, built on the
+  graph class of the learning-unit validator; `test:knowledge-context` runs
+  in required CI and pins no catalog count). Derive the context with this
+  tool before generating or reviewing content of a goal; do not re-derive it
+  by hand.
+- **Status.** Only the derivation exists. No gate, no generation pipeline
+  and no coach uses the context yet. Order of introduction: derive (done),
+  review sufficiency block by block, check images, cards and tasks, serve
+  the coach per subject once it is sufficient. Open: whether
   sufficiency becomes a milestone gate, and whether goals should name the
   terms they introduce. Do not call the context of a goal "context" alone;
   that word names the resolved curriculum context.

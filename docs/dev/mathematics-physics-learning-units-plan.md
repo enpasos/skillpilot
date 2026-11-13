@@ -226,13 +226,13 @@ unabhängig von den Stufen dieses Plans:
 
 | Schritt | Inhalt | Verhältnis zu den Stufen |
 | --- | --- | --- |
-| 1 – Ableiten | Deterministisches Werkzeug im Repository und ein Bericht je Fach; kein Gate ändert sich. | Unabhängig; Voraussetzung für alles Weitere. |
+| 1 – Ableiten | Deterministisches Werkzeug im Repository und ein Bericht je Fach; kein Gate ändert sich. | Geliefert am 13. November: `npm --prefix app run knowledge-context` für ein Ziel oder einen Cluster, `report:knowledge-context` für die Größen je Fach, `test:knowledge-context` in der Pflicht-CI. |
 | 2 – Hinlänglichkeit prüfen | Blockweises Review jedes Ziels mit seinem Kontext als Eingabe: Lässt sich das Ziel mit den gesicherten Zielen lernen? Befunde sind Kandidatenkanten, Befunde zur Einordnung oder Lücken und gehen in die Fachprüfung. | Beginnt mit einem Pilotblock je Fach; danach Teil der Blockarbeit in Stufe 4 und 5. |
 | 3 – Kontexttreue prüfen | Prüfungen, Lernkarten und Lernzielbilder eines Blocks gegen den Kontext; Bild-Prompts und Reviews erhalten ihn als Eingabe. | Teil der Arbeitsweise je Themenblock (Abschnitt 6). |
 | 4 – Coach bedienen | Das Backend liefert den Kernkontext des aktiven Ziels, verbunden mit dem Stand der lernenden Person. | Je Fach, sobald es hinlänglich ist; Laufzeit- und Providerarbeit mit eigener Abnahme. |
 
 Die drei vorhandenen Einheiten sind noch nicht gegen ihren Wissenskontext
-geprüft. Das geschieht, sobald Schritt 1 vorliegt.
+geprüft.
 
 Die gemeinsamen Testfälle liegen in
 `contracts/curriculum-package/v1.2/fixtures/learning-units/cases.json`. Der
@@ -499,9 +499,9 @@ Diese Befunde sind Arbeitslisten, keine entschiedenen Korrekturen.
   ein Ziel in einen späteren Block gehört, entscheidet die Fachprüfung beim
   Entwurf der betroffenen Einheiten. Kein Zieltext und keine Kante wurde
   geändert.
-- **Voraussetzungen reichen nicht aus:** Ein Prototyp hat am 13. November den
-  Wissenskontext aller 807 gewöhnlichen Mathematik- und 478 Physikziele
-  abgeleitet. Für „Ganzrationale Funktionen ableiten“
+- **Voraussetzungen reichen nicht aus:** Das Werkzeug leitet den
+  Wissenskontext aller 807 gewöhnlichen Mathematik- und 478 Physikziele ab
+  (Stand 13. November). Für „Ganzrationale Funktionen ableiten“
   (`623cd47f-6f9e-58a7-911c-69e4a8609a27`) sichert der Graph 34 Ziele, aber
   keines zu linearen, quadratischen, Potenz- oder ganzrationalen Funktionen.
   „Ganzrationale Funktionen mit Differentialrechnung analysieren“
@@ -557,8 +557,7 @@ R2-Nachweise, eine davon mit zwei Prüfungen. Stufe 3 kann beginnen; zu ihr
 gehört auch der Vertrag für Aufgabenvarianten. Vor Stufe 5 braucht es die
 Entscheidung des Product Owners zu experimentellen Zielen.
 
-Davon unabhängig ist der erste Schritt zum Wissenskontext (Abschnitt 4): das
-Werkzeug, das ihn ableitet, und ein Pilotblock je Fach, an dem sich zeigt, wie
-viele Ziele nicht hinlänglich sind. Der Ableitungseinstieg der Mathematik und
-die Kinematik der Einführungsphase bieten sich an, weil dort Befunde
-vorliegen.
+Davon unabhängig läuft die Einführung des Wissenskontexts (Abschnitt 4). Das
+Werkzeug, das ihn ableitet, ist vorhanden. Der nächste Schritt ist das Review
+der Hinlänglichkeit an einem Pilotblock je Fach: dem Ableitungseinstieg der
+Mathematik und der Kinematik der Einführungsphase.
