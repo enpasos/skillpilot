@@ -1,0 +1,188 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "goal_feedback_review_disposition",
+  "reviewAuthority": "ai_candidate",
+  "reviewedAt": "2026-11-13",
+  "baselineCommit": "ab859f0acd166a67032444e2a189282691a8adf1",
+  "runbookPath": "docs/qa-ci/goal-feedback-codex-intake.md",
+  "scope": {
+    "newFeedbacks": 2,
+    "olderRetainedFeedbacks": 4,
+    "alreadyResolvedOnMain": 3,
+    "newCorrections": 3
+  },
+  "privacy": "Contains artifact fingerprints and independently established findings only; no submitted free text, learner identifiers or personal view claims. The envelope digest permits local receipt correlation.",
+  "acceptanceBoundary": "AI reviews and repository checks do not attest human approval, learning results or production deployment.",
+  "records": [
+    {
+      "reviewAuthority": "ai_candidate",
+      "sourceEnvelopeDigest": "sha256:5e5db0b5c709558536aa69175d0bc67fc4f8ee7766eb1985400c7b89b71c26bf",
+      "goalId": "dde9ae98-d97d-598b-92f4-f1616f4d75c8",
+      "reportedArtifact": {
+        "bookId": "de-gym-mathematik-bundesweit",
+        "goalFingerprint": "sha256:f1c1678a1f8c4e801f75391868474c78c3c306248ba24df4fd44ecd66f125b6c",
+        "pageFingerprint": "sha256:0778310baec3580962cb845708ff77518a23857adf4669ce041c50ee9442483a",
+        "bookDigest": "sha256:72734d56dd161af83d68b05a121dd988336f0fea16c7c1df6be17f8914280507",
+        "publicationManifestFingerprint": "sha256:8521ec5673dc43b775a51e4274dc36c88fa80abcf64419b8f0aa4a456e3c24c9"
+      },
+      "finding": "confirmed",
+      "summary": "Replaced the early trigonometric example with polynomial differentiation, retaining correct general factor/sum limit arguments.",
+      "implementationStatus": "implemented_and_locally_validated",
+      "existingFixCommit": null,
+      "humanAttestation": null,
+      "deploymentVerified": false,
+      "evidencePaths": [
+        "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-11-13/feedback-polynomial-visuals-current-v1/resolution-index.json",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-13/feedback-image-and-terminology-current-v1/mathematik/positive-evidence.config.json"
+      ],
+      "currentReviewArtifact": {
+        "goalFingerprint": "sha256:f1c1678a1f8c4e801f75391868474c78c3c306248ba24df4fd44ecd66f125b6c",
+        "pageFingerprint": "sha256:ce5adc841b4f37c7253c508113cf608d8c404f379ddc688e561d78e818c92d36",
+        "bookId": "de-gym-math-feedback-polynomial-visuals-current-20261113-v1",
+        "scope": "current native subset review; not production publication acceptance"
+      }
+    },
+    {
+      "reviewAuthority": "ai_candidate",
+      "sourceEnvelopeDigest": "sha256:17a19627faaae1ab450d6378531d18b852af787a51c7622a14cc2d1fec17da2b",
+      "goalId": "858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
+      "reportedArtifact": {
+        "bookId": "de-gym-mathematik-bundesweit",
+        "goalFingerprint": "sha256:23817169ae1fc6599afd61a7c69e438de54552720cd0d9ae609a943e35ed89b0",
+        "pageFingerprint": "sha256:aa30a3365a27d6796f26b48b6cf3c90bf560ce6e1519dad5059c6e4a4876e081",
+        "bookDigest": "sha256:72734d56dd161af83d68b05a121dd988336f0fea16c7c1df6be17f8914280507",
+        "publicationManifestFingerprint": "sha256:8521ec5673dc43b775a51e4274dc36c88fa80abcf64419b8f0aa4a456e3c24c9"
+      },
+      "finding": "confirmed",
+      "summary": "Replaced the early exponential illustration with explicitly labelled polynomial examples. Full canonical goal scope and source mappings preserved.",
+      "implementationStatus": "implemented_and_locally_validated",
+      "existingFixCommit": null,
+      "humanAttestation": null,
+      "deploymentVerified": false,
+      "evidencePaths": [
+        "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-11-13/feedback-polynomial-visuals-current-v1/resolution-index.json",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-13/feedback-image-and-terminology-current-v1/mathematik/positive-evidence.config.json"
+      ],
+      "currentReviewArtifact": {
+        "goalFingerprint": "sha256:23817169ae1fc6599afd61a7c69e438de54552720cd0d9ae609a943e35ed89b0",
+        "pageFingerprint": "sha256:555bf54cd6f0c93afdfadd86ec0b17282bd64b317d0dba3e14cabce4e6dfbb6f",
+        "bookId": "de-gym-math-feedback-polynomial-visuals-current-20261113-v1",
+        "scope": "current native subset review; not production publication acceptance"
+      }
+    },
+    {
+      "reviewAuthority": "ai_candidate",
+      "sourceEnvelopeDigest": "sha256:2285e869ce4858bcba0def2621c9b75156655e1eef6fb7d8304fb7ef55f8f2ce",
+      "goalId": "9023226b-fc17-412b-807c-2bb45cd551d5",
+      "reportedArtifact": {
+        "bookId": "de-gym-mathematik-bundesweit",
+        "goalFingerprint": "sha256:1635d8a1f9fee63262af8b3f06ecdc454a3c4a446d9832dd74a5327c01000aaf",
+        "pageFingerprint": "sha256:c7a48738c268dda057cc285b18ee7321bd4c7772d5f8ec5a03fbf4464af62b51",
+        "bookDigest": "sha256:9d75bde71b7b05eea5fcfe25403a9a18b0d65d9a81d2b56d028317b801ef13cb",
+        "publicationManifestFingerprint": "sha256:912d6767a172e6ecd698253f0b9f4c4fc5420d8e29187b00500d6dbeaca169d6"
+      },
+      "finding": "already_resolved",
+      "summary": "The current image shows the base square, two 2x strips and the completing square of area 4; it distinguishes geometric and algebraic domains.",
+      "implementationStatus": "already_on_main",
+      "existingFixCommit": "f7622b9f6c2ce4fe33fd1d101fd4a63dadda3ce7",
+      "humanAttestation": null,
+      "deploymentVerified": false,
+      "evidencePaths": [
+        "curricula/DE/Gymnasium/visualizations/mathematik/9023226b-fc17-412b-807c-2bb45cd551d5/9023226b-fc17-412b-807c-2bb45cd551d5.png",
+        "curricula/DE/Gymnasium/visualizations/mathematik/9023226b-fc17-412b-807c-2bb45cd551d5/prompt.de.md"
+      ]
+    },
+    {
+      "reviewAuthority": "ai_candidate",
+      "sourceEnvelopeDigest": "sha256:7396a8896e88664b45f436b9ed49db3be5404a26183d017b0abf716c464f50d4",
+      "goalId": "658cf33d-a0c2-5d47-801a-3dbcd5cac074",
+      "reportedArtifact": {
+        "bookId": "de-gym-physik-bundesweit",
+        "goalFingerprint": "sha256:6df72fb23e264e205a36ea4fce20f110affb04ef6dbce9998c70866ca1f0122a",
+        "pageFingerprint": "sha256:a7ba7830306022b850cd5ae38245e0c855cc21c9b854aad565775d5ae41b02ce",
+        "bookDigest": "sha256:6a0dc11150e456ca496441a9e969da4a895e9fff6e31e777c5b3d0272aff410f",
+        "publicationManifestFingerprint": "sha256:36e1ed95a0a6ed2e650b95560784988fe7463724f317ec24722d49cd2f925802"
+      },
+      "finding": "already_resolved",
+      "summary": "Current band-model image and prompts use correct German umlauts; the originally reported rendering has been replaced.",
+      "implementationStatus": "already_on_main",
+      "existingFixCommit": "e347b6e5b307f08f16486fe4a31ce9d2a572aa17",
+      "humanAttestation": null,
+      "deploymentVerified": false,
+      "evidencePaths": [
+        "curricula/DE/Gymnasium/visualizations/physik/658cf33d-a0c2-5d47-801a-3dbcd5cac074/658cf33d-a0c2-5d47-801a-3dbcd5cac074.jpg",
+        "curricula/DE/Gymnasium/visualizations/physik/658cf33d-a0c2-5d47-801a-3dbcd5cac074/prompt.de.md",
+        "curricula/DE/Gymnasium/visualizations/physik/658cf33d-a0c2-5d47-801a-3dbcd5cac074/image-reconstruction-prompt.de.md"
+      ]
+    },
+    {
+      "reviewAuthority": "ai_candidate",
+      "sourceEnvelopeDigest": "sha256:18e50f70523152953b602448fcef3336b8ffd408983be2ceb6b18f4e334545f0",
+      "goalId": "cb0e05ff-e47d-55e7-bd5b-f8d78f2cb91f",
+      "reportedArtifact": {
+        "bookId": "de-gym-physik-bundesweit",
+        "goalFingerprint": "sha256:f0083e6c119ae129adf8f4277369d48031d4935033163d1aaf8c01366534ddf3",
+        "pageFingerprint": "sha256:33870e3d348a1c256f4b4c0e5ba984bc12e37e15add6e598bbea66b11f90eb8d",
+        "bookDigest": "sha256:47567fd0a42c1600b517286e656087c110efdc1484083c976ced6b6863a5e7bc",
+        "publicationManifestFingerprint": "sha256:4439ec4f0961504c7144be0583e61577ca8373c4123c2e4c4cface3de58e146e"
+      },
+      "finding": "already_resolved",
+      "summary": "The current goal title and description spell Fotoeffekt correctly.",
+      "implementationStatus": "already_on_main",
+      "existingFixCommit": "0a293a3363703e5dcda1ac9793ea87f674c67e7f",
+      "humanAttestation": null,
+      "deploymentVerified": false,
+      "evidencePaths": [
+        "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json"
+      ]
+    },
+    {
+      "reviewAuthority": "ai_candidate",
+      "sourceEnvelopeDigest": "sha256:7fe8c81a11fe64ea122a9601f175d93941e425bfeae723144a4841ed4b6b0add",
+      "goalId": "727d0946-7019-50ed-8fc6-85db12508733",
+      "reportedArtifact": {
+        "bookId": "de-gym-physik-bundesweit",
+        "goalFingerprint": "sha256:7f47b7829790d7c459dcfd08fd9773ab8ad7280840a46b47c8647d9a624a92cb",
+        "pageFingerprint": "sha256:6c26196becde933c2621a610d2d57dbae8246a8656d32b26c1d3b00b1ae0b1e4",
+        "bookDigest": "sha256:47567fd0a42c1600b517286e656087c110efdc1484083c976ced6b6863a5e7bc",
+        "publicationManifestFingerprint": "sha256:4439ec4f0961504c7144be0583e61577ca8373c4123c2e4c4cface3de58e146e"
+      },
+      "finding": "confirmed",
+      "summary": "Corrected Realitätsbegriff and Präparation in the German goal and visualization metadata; scientific scope and image bytes unchanged.",
+      "implementationStatus": "implemented_and_locally_validated",
+      "existingFixCommit": null,
+      "humanAttestation": null,
+      "deploymentVerified": false,
+      "evidencePaths": [
+        "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-13/feedback-quantum-terminology-current-v1/resolution-index.json",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-13/feedback-image-and-terminology-current-v1/physik/positive-evidence.config.json"
+      ],
+      "currentReviewArtifact": {
+        "goalFingerprint": "sha256:f28fb7073a376a2893af70c866d3024efafd01c195a46fdaab918360c2ca9b0d",
+        "pageFingerprint": "sha256:0d90cda7a91a7b71462d528911fadc990ce3d41ca550de386131e79671a6769e",
+        "bookId": "de-gym-physics-feedback-quantum-terminology-current-20261113-v1",
+        "scope": "current native subset review; not production publication acceptance"
+      }
+    }
+  ],
+  "validation": {
+    "status": "passed",
+    "newFeedbackQueueEmptyOnFinalPull": true,
+    "mathStrictComplete": "807/807",
+    "physicsStrictComplete": "478/478",
+    "deepUnderstandingBlockingIssues": 0,
+    "protectedMaturityFloors": "passed; Mathematics and Physics M7 unchanged",
+    "checks": [
+      "Native D prepare/check/summarize/resolutions/finalize for both current batches",
+      "Current P profiles and byte-identical retained slices",
+      "Physics Atomicity, Memory and semantic-kind current reviews",
+      "Visualization QA, asset integrity, coverage and parity",
+      "Goal-description rollout tests including verified-proof regression",
+      "TypeScript build and focused ESLint",
+      "Full curriculum status regeneration and protected maturity floors",
+      "Five-book publication build with the original strict verifyPublishedGoalBook gate for every book; two books rendered, three reused only after input/output hash checks"
+    ],
+    "remoteCi": "Separate verification on the pushed commit; not claimed by this local record",
+    "productionDeployment": "Not performed"
+  }
+}

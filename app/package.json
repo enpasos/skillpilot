@@ -77,7 +77,7 @@
     "test:deep-understanding-rollout": "tsx scripts/testDeepUnderstandingRollout.ts",
     "test:repository-source-availability": "tsx scripts/testRepositorySourceAvailability.ts",
     "test:source-extraction-inventory": "tsx scripts/testSourceExtractionInventory.ts",
-    "test:goal-description-rollout-batch": "tsx scripts/testGoalDescriptionRolloutBatch.ts",
+    "test:goal-description-rollout-batch": "tsx scripts/testGoalDescriptionRolloutBatch.ts && tsx scripts/testGoalDescriptionRolloutProofContext.ts",
     "test:goal-evidence-contracts": "tsx scripts/testGoalEvidenceReviewContracts.ts && tsx scripts/testGoalPublicFeedbackV2Contract.ts",
     "test:goal-feedback": "npm run test:goal-evidence-contracts && npm run test:goal-book-feedback-client && npm run test:learner-goal-feedback-ui && tsx scripts/testGoalFeedbackOperations.ts && tsx scripts/testGoalBookFeedbackUi.ts",
     "test:goal-description-review-contracts": "tsx scripts/testGoalDescriptionReviewCampaign.ts",

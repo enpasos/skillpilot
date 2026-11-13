@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:42b967a465a47e73f366c24be33b6f338c79f58cc638b8b2c0636a105875fcc0",
+  "reviewInputFingerprint": "sha256:33944665ee4f5a24475fb55d7230e5de764ff1babf0d05824193293e2c626d19",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "physik-feedback-quantum-terminology-current-20261113-v1-a",
+      "roundId": "physik-feedback-quantum-terminology-current-20261113-v1-first-pass-a",
+      "independenceGroupId": "physik-feedback-quantum-terminology-current-20261113-v1-independent-a",
+      "runIds": [
+        "physik-feedback-quantum-terminology-current-20261113-v1-first-pass-a-independent-a-20261113"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 (Codex)::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "physik-feedback-quantum-terminology-current-20261113-v1-b",
+      "roundId": "physik-feedback-quantum-terminology-current-20261113-v1-first-pass-b",
+      "independenceGroupId": "physik-feedback-quantum-terminology-current-20261113-v1-independent-b",
+      "runIds": [
+        "physics-feedback-quantum-current-blind-b-20261113"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 Codex::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "727d0946-7019-50ed-8fc6-85db12508733",
+      "firstRecordId": "physik-feedback-quantum-terminology-current-20261113-v1-first-pass-a-independent-a-20261113-record-001",
+      "secondRecordId": "physics-feedback-quantum-current-blind-b-20261113.record-001",
+      "firstRunId": "physik-feedback-quantum-terminology-current-20261113-v1-first-pass-a-independent-a-20261113",
+      "secondRunId": "physics-feedback-quantum-current-blind-b-20261113",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}
