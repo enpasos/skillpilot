@@ -540,3 +540,15 @@ plan.
   The reproduced failing suite now passes 5/5; ESLint passes. Other child
   process fixtures import the real module tree and need no copy adjustment.
   No proof implementation, compiler or curriculum data changed in this repair.
+- 2026-11-13: remote assessment job `131612955274` on `b93acb2` failed
+  importing the historical receipt tests because Python package `referencing`
+  was missing through `curriculum_completion_artifacts`. Added Python 3.10
+  setup and installation of the existing pinned curriculum-package validation
+  requirements after goal-book restoration and before the proof gates, matching
+  the goal-book contract job. The CI wiring test now checks that order and the
+  nested Python receipt entry point (8/8 wiring tests pass). A fresh Python
+  environment reproduces the missing dependency at `jsonschema` (exit 1);
+  after installing the declared requirements the complete graph-gate command
+  passes (31 TypeScript, four normalization and three receipt tests, exit 0).
+  Receipt assertions are unchanged; fresh remote CI is required to accept the
+  repaired head.

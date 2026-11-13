@@ -140,4 +140,19 @@ test('complete curriculum CI enforces the catalog and policy against the trusted
   assert.match(step.run, /npm run check:curriculum-maturity-floors -- --base-ref "\$\{MATURITY_POLICY_BASE\}"/u)
   assert.equal(step['continue-on-error'], undefined)
   assert.ok(commands('curriculum-assessment-proofs').includes('npm run test:graph-gate-contracts'))
+  const proofSteps = jobs['curriculum-assessment-proofs'].steps
+  const restoreIndex = proofSteps.findIndex(step => step.name === 'Restore same-run verified goal-book publications')
+  const pythonIndex = proofSteps.findIndex(step => step.name === 'Set up Python for historical review receipt tests')
+  const installIndex = proofSteps.findIndex(step => step.name === 'Install Python dependencies for historical review receipt tests')
+  const gateIndex = proofSteps.findIndex(step => step.run === 'npm run test:graph-gate-contracts')
+  assert.ok(restoreIndex >= 0 && pythonIndex > restoreIndex && installIndex > pythonIndex && gateIndex > installIndex,
+    'Python and its pinned release-model dependencies must be ready before the receipt gate')
+  assert.equal(proofSteps[pythonIndex].uses, 'actions/setup-python@v6')
+  assert.equal(proofSteps[pythonIndex].with['python-version'], '3.10')
+  assert.equal(proofSteps[installIndex].run,
+    'python -m pip install -r ../scripts/curriculum_package_validation_requirements.txt')
+  assert.equal(proofSteps[installIndex]['continue-on-error'], undefined)
+  const scripts = JSON.parse(read('app/package.json')).scripts
+  assert.ok(scripts['test:graph-gate-contracts'].includes('npm run test:historical-review-receipts'))
+  assert.match(scripts['test:historical-review-receipts'], /^python3 -B /u)
 })
