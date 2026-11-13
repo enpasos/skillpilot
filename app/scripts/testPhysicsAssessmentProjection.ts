@@ -236,7 +236,8 @@ assert.equal(viewCount, 60, 'Cover every existing GK/LK and SekII/CrossStage ass
 assert.equal(fermiScopeViewCount, 69, 'Check exact Fermi assessment target visibility in every Physics composition view.')
 assert.equal(jurisdictions.size, 14, 'Cover all jurisdictions using these Physics assessment collections.')
 assert.equal(kinematicsTaskPairs, 120, 'Both reviewed kinematics assessments must appear in all 60 shared GK/LK exercise views.')
-assert.equal(practiceTaskPairs, 3126, 'Preserve the existing 3006 practice placements and add exactly 120 reviewed kinematics placements.')
+assert.equal(practiceTaskPairs, 3186,
+  'Preserve the existing 3006 practice placements, the 120 reviewed kinematics placements and the 60 placements of the constant-acceleration unit assessment.')
 assert.equal(abiturTaskPairs, 480, 'Every applicable view must expose both Abitur sample exams and all eight proposals.')
 assert.equal(preservedSekITaskPairs, 40, 'Preserve the established Sek-I task placement in every affected CrossStage view.')
 assert.equal(preservedPrerequisiteOnlyPairs, 161, 'Preserve every existing Q4 prerequisite-only role affected by explicit task references.')

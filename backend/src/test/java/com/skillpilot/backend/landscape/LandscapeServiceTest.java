@@ -1259,7 +1259,10 @@ class LandscapeServiceTest {
                 assertThat(pilot.getFilters())
                                 .extracting(LandscapeFilter::getId)
                                 .containsExactly("GK", "LK");
+                // The programme structure is pinned exactly; learning units share the placement
+                // layer and grow with the catalog, so they are asserted separately.
                 assertThat(pilot.getProgramUnits())
+                                .filteredOn(unit -> !unit.isLearningUnit())
                                 .extracting(ProgramUnit::getId)
                                 .containsExactly(
                                                 "de-gym-physics-program",
@@ -1271,7 +1274,22 @@ class LandscapeServiceTest {
                                                 "de-gym-physics-q3",
                                                 "de-gym-physics-q4",
                                                 "de-gym-physics-abitur");
-                assertThat(pilot.getGoalPlacements()).hasSize(19);
+                assertThat(pilot.getProgramUnits())
+                                .filteredOn(ProgramUnit::isLearningUnit)
+                                .extracting(ProgramUnit::getId)
+                                .contains("physics-constant-acceleration");
+                assertThat(pilot.getGoalPlacements())
+                                .filteredOn(placement -> !placement.isOwnership())
+                                .hasSize(19);
+                assertThat(pilot.getGoalPlacements())
+                                .filteredOn(placement -> "physics-constant-acceleration"
+                                                .equals(placement.getUnitId()))
+                                .allMatch(GoalPlacement::isOwnership)
+                                .extracting(GoalPlacement::getGoalId)
+                                .containsExactlyInAnyOrder(
+                                                "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+                                                "d6dc0e02-831d-4894-a61a-852bcc74f147",
+                                                "c5807a37-129e-5df6-8989-482bc7f5683e");
                 assertThat(pilot.getGoalPlacements())
                                 .extracting(GoalPlacement::getUnitId)
                                 .contains(

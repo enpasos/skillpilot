@@ -624,6 +624,19 @@ curricular-level terminology. Personalization Levels 1–4, QA maturity and goal
   three core dot-product goals everywhere. The assessment model has one task
   per assessment ID; fresh task variants for repeat attempts need a contract
   extension and backend selection and belong to the runtime stage.
+- **First Physics unit and the open decision on experimental goals
+  (13 November 2026).** Canonical Physics contains
+  `physics-constant-acceleration` (two goals of the introductory phase, one
+  assessment written for it, `c5807a37-129e-5df6-8989-482bc7f5683e`) with
+  reviewed coverage for both goals
+  (`curricula/DE/Gymnasium/quality/learning-units/physics-constant-acceleration-2026-11-13.md`).
+  The goal "Freier Fall experimentell untersuchen" is deliberately outside
+  the unit: two independent reviewers found R2 not satisfied for an
+  assessment that evaluates given measurement data, and disagreed on whether
+  own measurement data or planning plus evaluation would satisfy it. How an
+  experimental goal is evidenced in a chat with a coach is an open Product
+  Owner decision for all experimental goals. Until it is taken, do not claim
+  reviewed coverage for an experimental goal.
 
 This is concept documentation plus a static authoring contract and validator,
 not an implemented runtime or access policy. See `docs/concept/skill-graph/learning-units.md`,

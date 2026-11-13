@@ -24,6 +24,7 @@ const machineReview = (date, hash, reviewPath) =>
 
 // One entry per canonical landscape. A unit lists its own ordinary goals and its assessments; an
 // assessment names its source section, the goals it requires directly and the goals it covers.
+// Process competencies and guiding ideas come from the covered goals unless the assessment states them.
 const landscapes = [{
   canonicalPath: 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json',
   semanticPath: 'curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json',
@@ -101,6 +102,46 @@ const landscapes = [{
       coveredGoalIds: ['624764d6-becd-5f9b-ada3-0d4f9d143073', 'fe07241a-b779-5f35-a82d-7aa51ae74f42', '1a25ef44-f310-4c23-9ba8-44baec60d3b0'],
     }],
   }],
+}, {
+  canonicalPath: 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json',
+  semanticPath: 'curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json',
+  idNamespace: 'DE-GYM-CANONICAL-PHYSICS',
+  framework: 'canonical-gymnasium-physics',
+  curricularAtomicCount: 478,
+  // Physics cluster weights are authored workload weights, not counts of atomic descendants,
+  // and Physics marks an assessment by its exam data alone; the projection adds the node kind.
+  countedClusterWeights: false,
+  examNodeKind: false,
+  units: [{
+    id: 'physics-constant-acceleration',
+    revision: '2026-11-13-v1',
+    label: 'Gleichmäßig beschleunigte Bewegung modellieren',
+    labelEn: 'Modelling motion with constant acceleration',
+    promise: 'Ich kann eine geradlinige Bewegung mit konstanter Beschleunigung selbstständig modellieren: Ich lege Achse und Vorzeichen fest, stelle Zeit-Ort- und Zeit-Geschwindigkeits-Gesetz mit den Anfangsbedingungen auf und beschreibe die Bewegung in Diagrammen. Ich kann sagen, welche Vereinfachungen das Modell macht und wo seine Vorhersagen enden. Darauf bauen der freie Fall im Experiment, Würfe in zwei Dimensionen, Kräfte und Energie auf.',
+    promiseEn: 'I can model motion along a line with constant acceleration on my own: I fix axis and signs, set up the position and velocity laws with their initial conditions and describe the motion in diagrams. I can say which simplifications the model makes and where its predictions end. Free fall as an experiment, projectile motion in two dimensions, forces and energy build on it.',
+    ownGoalIds: ['e4b38061-1f28-43ad-8371-a3e7c0e81856', 'd6dc0e02-831d-4894-a61a-852bcc74f147'],
+    reviewPath: `${reviews}/physics-constant-acceleration-2026-11-13.md`,
+    reviewDate: '2026-11-13',
+    sourcePath: `${assessments}/physik/e/constant-acceleration-unit-20261113-v1/tasks.md`,
+    assessments: [{
+      sectionKey: 'constant-acceleration-model',
+      shortKey: 'canonical_physics_e_unit_constant_acceleration_model',
+      stepIdPrefix: 'e_unit_constant_acceleration_model',
+      title: 'Senkrechten Wurf mit konstanter Beschleunigung modellieren',
+      titleEn: 'Model a vertical throw with constant acceleration',
+      description: 'Die lernende Person kann in einer Prüfungsaufgabe der Einführungsphase einen senkrechten Wurf als gleichmäßig beschleunigte Bewegung modellieren, die Gesetze für zwei Achsenwahlen aufstellen, die Bewegung in Diagrammen beschreiben und die Idealisierungen des Modells samt ihren Grenzen begründen.',
+      descriptionEn: 'The learner can, in an assessment of the introductory phase, model a vertical throw as motion with constant acceleration, set up the laws for two choices of axis, describe the motion in diagrams and justify the idealisations of the model together with their limits.',
+      tags: ['GK', 'LK', 'Practice', 'Assessment', 'canonical'],
+      phase: 'E',
+      area: 'Mechanik',
+      topicCode: 'CANONICAL.PHYSICS.E.UNIT.CONSTANT_ACCELERATION_MODEL',
+      processCompetencies: ['PK2_MODELLIEREN', 'PK3_MATHEMATISIEREN', 'PK4_KOMMUNIZIEREN', 'PK5_BEWERTEN'],
+      guidingIdeas: ['LI_BEWEGUNG'],
+      practiceClusterId: '424b07df-bf66-5d7f-99f5-f28b32ad1f22',
+      requires: ['d6dc0e02-831d-4894-a61a-852bcc74f147'],
+      coveredGoalIds: ['e4b38061-1f28-43ad-8371-a3e7c0e81856', 'd6dc0e02-831d-4894-a61a-852bcc74f147'],
+    }],
+  }],
 }]
 
 const write = process.argv.includes('--write')
@@ -173,7 +214,7 @@ for (const landscape of landscapes) {
       assert(declared.coveredGoalIds.every((id) => unit.ownGoalIds.includes(id)), `${declared.sectionKey}: covers a goal the unit does not own`)
       const cluster = byId.get(declared.practiceClusterId)
       assert(cluster?.type === 'cluster', `${declared.sectionKey}: unexpected practice cluster`)
-      const strands = sortedUnion(covered.map((goal) => goal.dimensionTags.guidingIdeas))
+      const strands = declared.guidingIdeas ?? sortedUnion(covered.map((goal) => goal.dimensionTags.guidingIdeas))
       const assessment = {
         id: assessmentId,
         shortKey: declared.shortKey,
@@ -189,7 +230,8 @@ for (const landscape of landscapes) {
         sourceRef: unit.sourcePath,
         dimensionTags: {
           framework: landscape.framework, demandLevel: 'AB3',
-          processCompetencies: sortedUnion(covered.map((goal) => goal.dimensionTags.processCompetencies)), guidingIdeas: strands,
+          processCompetencies: declared.processCompetencies ?? sortedUnion(covered.map((goal) => goal.dimensionTags.processCompetencies)),
+          guidingIdeas: strands,
           phase: declared.phase, area: declared.area, topicCode: declared.topicCode,
         },
         requires: declared.requires,
@@ -209,7 +251,7 @@ for (const landscape of landscapes) {
         },
         phase: declared.phase,
         type: 'atomic',
-        nodeKind: 'exam',
+        ...(landscape.examNodeKind === false ? {} : { nodeKind: 'exam' }),
       }
 
       // Catalog: the assessment goal, its cluster membership and the weights of its ancestors.
@@ -219,7 +261,7 @@ for (const landscape of landscapes) {
       else {
         canonical.goals.push(assessment)
         cluster.contains.push(assessmentId)
-        for (const id of ancestors) byId.get(id).weight += 1
+        if (landscape.countedClusterWeights !== false) for (const id of ancestors) byId.get(id).weight += 1
       }
       byId.set(assessmentId, assessment)
       assert(cluster.contains.includes(assessmentId), `${declared.sectionKey}: not a member of its practice cluster`)

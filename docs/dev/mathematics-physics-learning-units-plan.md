@@ -214,10 +214,10 @@ Ergebnis abgeschlossen.
 | --- | --- | --- | --- |
 | **0 – Wiederaufnahme** | Dieser Plan; Inventarwerkzeug portiert und neu erzeugt. | Dokumentationsprüfungen grün; #83 bleibt Archiv. | Geliefert. |
 | **1 – Vertrag und Validator** | Einheiten in der Platzierungsschicht der Skill-Landschaft, Paketvertrag 1.2, Validator für R1, R3, R4 und Struktur, gemeinsame Testfälle, CI-Einbindung. | Testfälle decken jeden Befundcode; keine Runtimeänderung. | Geliefert. Die Angebotsprüfung ist vorhanden, aber nicht in der Pflicht-CI. |
-| **2 – Erste echte Einheiten** | Pilot „Skalarprodukt über orthogonale Projektion“, danach M01 und P13, jeweils mit unabhängigem R2-Review. | Validator grün, geschützte Reifegrade gehalten, Quellenbindung für neue Prüfungen. | Begonnen: Der Pilot und M01 („Natürliche Zahlen verstehen und darstellen“) tragen seit dem 13. November R2-Nachweise (siehe unten); P13 ist offen. |
+| **2 – Erste echte Einheiten** | Pilot „Skalarprodukt über orthogonale Projektion“, danach M01 und P13, jeweils mit unabhängigem R2-Review. | Validator grün, geschützte Reifegrade gehalten, Quellenbindung für neue Prüfungen. | Geliefert: Der Pilot, M01 („Natürliche Zahlen verstehen und darstellen“) und P13 („Gleichmäßig beschleunigte Bewegung modellieren“) tragen seit dem 13. November R2-Nachweise (siehe unten). Offen ist die Entscheidung, wie experimentelle Ziele nachgewiesen werden. |
 | **3 – Runtime** | Backend leitet aus gültigen Verträgen die wirksame Beherrschung ab, versioniert gebunden (R5); Cockpit, Coach, Frontier und Plan nutzen denselben Stand. | Gesamtfortschritt zählt Anerkennung mit, Perioden zählen nur explizite Abschlüsse, keine neuen Mastery-Zeilen; Deployment und Hostabnahme getrennt durch den Product Owner. | Offen. |
 | **4 – Mathematik vollständig** | Blockweise Einheiten, Prüfungen und Reviews; die Landschaft erklärt `learningUnitCoverage: complete`. | Kein Fachziel ohne Einheit, Angebotsprüfung in allen Mathematikklassen grün, Gesamt-CI grün. | Offen: 801 gewöhnliche Ziele ohne Einheit. |
-| **5 – Physik vollständig** | Wie Stufe 4, zusätzlich Experimente und mathematische Voraussetzungen. | Eigene Fachabnahme; Mathematik bleibt stabil. | Offen. |
+| **5 – Physik vollständig** | Wie Stufe 4, zusätzlich Experimente und mathematische Voraussetzungen. | Eigene Fachabnahme; Mathematik bleibt stabil. | Offen: 476 gewöhnliche Ziele ohne Einheit; die Entscheidung zu experimentellen Zielen steht aus. |
 
 ### Stand der Stufe 2
 
@@ -320,15 +320,50 @@ gleichwertige Aufgaben mit je eigenem Raster und Nachweis, Graph Definition
 erfüllen“) und eine Auswahl durch das Backend. Das ist Laufzeitarbeit und
 gehört zu Stufe 3. Bis dahin steht die Einschränkung in jedem Reviewprotokoll.
 
-Offen in Stufe 2:
+**P13, „Gleichmäßig beschleunigte Bewegung modellieren“ (13. November).** Die
+Einheit `physics-constant-acceleration` in der kanonischen Physik besitzt zwei
+Ziele der Einführungsphase: das Modell der gleichmäßig beschleunigten Bewegung
+(`e4b38061-1f28-43ad-8371-a3e7c0e81856`) und das Modellieren samt
+Idealisierungen und Grenzen (`d6dc0e02-831d-4894-a61a-852bcc74f147`). Das ist
+das Hauptbeispiel des Entwurfsbogens. Ihre Prüfung
+`c5807a37-129e-5df6-8989-482bc7f5683e` (senkrechter Wurf einer Stahlkugel,
+sieben Teile, 24 BE) verlangt die Gesetze für zwei Achsenwahlen, den höchsten
+Punkt samt der Fehlvorstellung zur Beschleunigung, die drei Diagramme mit der
+Steigungsbeziehung sowie Begründung und Grenzen der Idealisierungen. Zwei
+unabhängige maschinelle Reviewer haben R2 für beide Ziele nach drei Runden für
+denselben Endtext als erfüllt bewertet
+([Review vom 13. November](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/learning-units/physics-constant-acceleration-2026-11-13.md)).
+Die vorhandene Prüfung `4ab1cf6d-b808-5b86-9291-85df0b9f2496` ist mit 22 von
+36 Punkten ohne Scheitel- und Diagrammteil bestehbar; sie bleibt Übungsaufgabe.
+Die neue Prüfung liegt im Cluster „Übungen E-Phase“, den 60 Sichten als
+Teilbaum führen. Physik hält M7. Die Angebotsprüfung meldet einen Befund für
+neun Konfigurationen in Baden-Württemberg und Bayern; er steht in Abschnitt 7.
 
-1. **P13** nach dem Entwurfsbogen. Bekannt aus PR #83: Die Prüfung
-   `4ab1cf6d-b808-5b86-9291-85df0b9f2496` ist ohne Scheitel- und
-   Diagrammaufgabe bestehbar (24 von 36 erreichbar, 22 genügen) und braucht
-   eine neue Prüfung mit eigener ID. Die experimentellen Ziele
-   `09029573-864f-40ca-bf8a-cee7bf6dcb73` und
-   `ce431132-dfc4-42c2-aff6-bd72035190f8` verlangen eine Aufgabe, die das
-   Experiment einschließt.
+Der Zuschnitt ist enger als der Kandidat „Eindimensionale Bewegungen“ aus
+PR #83. Die drei Ziele vor dem Modell (Bewegungen in Diagrammen,
+gleichförmige Bewegung, Durchschnitts- und Momentangeschwindigkeit) sind ein
+eigener Erkenntnisschritt, Geschwindigkeit als Steigung zu lesen, und werden
+eine eigene Einheit in Stufe 5. „Physik im Straßenverkehr“ wendet beide
+Bewegungsmodelle in einer Bewertungsaufgabe an und baut auf der Einheit auf.
+
+**Offene Entscheidung: experimentelle Ziele.** Der erste Entwurf von P13
+enthielt auch das Ziel „Freier Fall experimentell untersuchen“
+(`09029573-864f-40ca-bf8a-cee7bf6dcb73`) mit einer zweiten Prüfung, die
+Messwerte eines beschriebenen Schulversuchs auswerten ließ. Beide Reviewer
+haben R2 dafür als nicht erfüllt bewertet und sich in der Abhilfe
+widersprochen:
+
+| Lesart | Folge |
+| --- | --- |
+| „Experimentell untersuchen“ verlangt eigene Messdaten. | Die Prüfung braucht einen Heimversuch mit Foto des Aufbaus und eigener Messreihe. Der Coach kann die Echtheit nicht prüfen, und fehlende Ausrüstung lässt Lernende aus Gründen scheitern, die mit dem Ziel nichts zu tun haben. |
+| Planung, Auswertung und Fehleranalyse eines beschriebenen Versuchs genügen in diesem Kanal. | Die Prüfung braucht zusätzlich einen Planungsteil, und der Product Owner hält diese Lesart ausdrücklich fest. Das Ausführen eines Versuchs wird dann nicht nachgewiesen. |
+| Experimentelle Ziele werden nie anerkannt. | Sie gehören zu einer Einheit ohne vollständigen Nachweis oder zu keiner und bleiben nur über ihr eigenes explizites Ergebnis abschließbar. |
+
+Die Entscheidung gilt für alle experimentellen Ziele in Physik, Chemie und
+Biologie und liegt beim Product Owner. Bis dahin bleibt das Ziel außerhalb der
+Einheit; der Entwurf der Messwertaufgabe ist nicht eingecheckt. Dasselbe
+betrifft `ce431132-dfc4-42c2-aff6-bd72035190f8` („Bewegungen mit Diagrammen
+untersuchen“) in der künftigen Einheit zur Beschreibung von Bewegungen.
 
 ## 6. Arbeitsweise je Themenblock
 
@@ -378,6 +413,26 @@ Diese Befunde sind Arbeitslisten, keine entschiedenen Korrekturen.
   benannten fragwürdigen Voraussetzungen („Spiegelungen von Funktionsgraphen →
   Hauptsatz/Ableitungen“, „Polynomdivision → Optimierungsaufgaben“) werden in
   ihrem Block entschieden.
+- **Physik, dieselben Ziele auf verschiedenen Stufen:** Die Angebotsprüfung
+  meldet für `physics-constant-acceleration` neun Konfigurationen
+  (Baden-Württemberg und Bayern, stufenübergreifend), in denen die beiden
+  Ziele Lernziel sind, die Prüfung der Einheit aber nicht im Lernumfang liegt.
+  Dort stehen die Ziele in Abschnitten der Sekundarstufe I (Baden-Württemberg
+  3.2.6 und 3.3.5.2, Bayern Ph8.3 und Ph10.3), und die Sichten führen weder
+  die neue noch die bisherige Kinematikprüfung. Die Prüfung der Einheit ist
+  für die Einführungsphase geschrieben und braucht quadratische Gleichungen.
+  Sie in diese Sichten einzutragen, wäre eine fachliche Aussage über das
+  Niveau des Ziels auf der früheren Stufe und ist deshalb nicht geschehen. In
+  den übrigen 90 Konfigurationen, in denen die Ziele Lernziel sind, liegt die
+  Prüfung im Lernumfang. Bis zur Fachprüfung ist die Einheit in den neun
+  Konfigurationen nicht anerkennungsfähig; die Ziele bleiben dort explizit
+  abschließbar.
+- **Physik, mathematisches Eingangswissen der Bewegungsmodelle:** Die Prüfung
+  der Einheit `physics-constant-acceleration` braucht quadratische
+  Gleichungen sowie Parabel und Scheitel. Beides liegt auf keinem
+  Voraussetzungspfad der beiden Ziele; im Graphen stehen nur „Terme mit
+  Variablen lesen und deuten“ und die Ziele zur Beschreibung von Bewegungen.
+  Ob eine fachübergreifende Voraussetzung fehlt, entscheidet die Fachprüfung.
 - **Orientierungsziele als Voraussetzung:** Die beiden Mathematikziele „Warum
   Mathematik? …“ sind Voraussetzung von 11 und 47 gewöhnlichen Zielen und
   gelangen dadurch in den Lernumfang fast jeder Konfiguration, auch jeder
@@ -417,7 +472,7 @@ belegt den Bau nur lokal in `./run_ci.sh package`.
 
 ## 9. Nächster Schritt
 
-Stufe 3 kann beginnen: Zwei Einheiten tragen vollständige R2-Nachweise, eine
-mit einer und eine mit zwei Prüfungen. Zu Stufe 3 gehört auch der Vertrag für
-Aufgabenvarianten. Parallel Stufe 2 abschließen: den Kandidaten P13 nach dem
-Entwurfsbogen ausarbeiten.
+Stufe 2 ist geliefert: Drei Einheiten in zwei Fächern tragen vollständige
+R2-Nachweise, eine davon mit zwei Prüfungen. Stufe 3 kann beginnen; zu ihr
+gehört auch der Vertrag für Aufgabenvarianten. Vor Stufe 5 braucht es die
+Entscheidung des Product Owners zu experimentellen Zielen.
