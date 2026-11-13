@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "purpose": "Reference fingerprints of the prerequisite-reduction document fingerprint (canonical JSON SHA-256 of the landscape without its learning-unit layer) for every landscape of the shared learning-unit cases, plus the pilot unit for canonical Mathematics. TypeScript and Python are compared directly; Java is compared with these references. Regenerate with: npx tsx scripts/testLearningUnitLayerProjection.ts --write",
+  "purpose": "Reference fingerprints of the prerequisite-reduction document fingerprint (canonical JSON SHA-256 of the landscape without its learning-unit layer) for every landscape of the shared learning-unit cases, plus the pilot unit that the tests inject into canonical Mathematics if it has no learning-unit layer of its own. The TypeScript and the Python test each compare their implementation with these references; --write compares TypeScript and Python directly before it regenerates them. Regenerate with: npx tsx scripts/testLearningUnitLayerProjection.ts --write",
   "casesPath": "contracts/curriculum-package/v1.2/fixtures/learning-units/cases.json",
   "casesSha256": "6be0f5dd26b0cc5054f5ee43741b182270b9932b33c297b8bc5625c4ec5f4dd0",
   "references": [

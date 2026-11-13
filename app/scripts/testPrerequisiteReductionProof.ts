@@ -3,14 +3,18 @@ import assert from 'node:assert/strict'
 import { createHash } from 'node:crypto'
 import { execFileSync, spawnSync } from 'node:child_process'
 import { mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, symlinkSync, writeFileSync } from 'node:fs'
-import { dirname, relative, resolve } from 'node:path'
+import { dirname, resolve } from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 import type { LearningGoal } from '../src/landscapeTypes'
 import {
   fingerprintPrerequisiteReductionDocument as digest,
+  fingerprintPrerequisiteReductionRecord,
   BATCHED_PREREQUISITE_REDUCTION_CONTRACT,
   APPLICABILITY_REFRESH_PREREQUISITE_REDUCTION_CONTRACT,
   BASIS_BOUND_PREREQUISITE_REDUCTION_CONTRACT,
+  GOAL_SCOPED_PREREQUISITE_REDUCTION_CONTRACT,
+  deriveGoalScopedPrerequisiteReductionRegistry,
+  type GoalScopedPrerequisiteReductionRegistry,
   type BasisBoundPrerequisiteReductionRegistry,
   type AssessmentBasisReductionEntry,
   type ApplicabilityRefreshPrerequisiteReductionRegistry,
@@ -385,12 +389,15 @@ const byNeuroId = '11675f1a-5de2-5926-be78-1e8275f19f5b'
 const heNeuroId = 'afde0001-d7d7-5ed3-8a60-383e8da5620e'
 const neuroOriginalClusters = ['02f8a5a3-9c44-50ec-b9b8-a0b7f402aaa8',
   '7e6b9185-f261-5c76-961a-c61e1cc4ef8d', '485ef1c3-8997-52b7-91f5-b1ddf179013d']
-function basisBoundFixture() {
-  // Three real immutable endpoint records retain their actual immediate refs and
-  // source metadata. Minimal dependency clusters isolate the real neuro all-of
-  // counterexample; this fixture is not the complete live Biology certificate.
+function basisBoundFixture(cachePresent = true) {
+  // Three real endpoint records retain their actual immediate refs and source
+  // metadata. They come from a snapshot of canonical Biology at the freeze, so the
+  // fixtures stay the same when the live catalog changes. Minimal dependency
+  // clusters isolate the real neuro all-of counterexample; this fixture is not the
+  // complete Biology certificate.
+  // Without `cachePresent` the reviewed cache goal lacks the `applicability` field.
   const biology = JSON.parse(readFileSync(resolve(root,
-    'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json'), 'utf8')) as Document
+    'app/scripts/fixtures/prerequisite-reduction-basis-bound-goals.json'), 'utf8')) as Document
   const raw = (id: string) => structuredClone(biology.goals.find(goal => goal.id === id)!)
   const neuro = raw(neuroId), by = raw(byNeuroId), he = raw(heNeuroId)
   assert.ok(neuro && by && he)
@@ -404,7 +411,7 @@ function basisBoundFixture() {
   extra.push({ ...goal('zz-basis-history-parent', ['basis-history-x']), type: 'cluster', contains: ['v'] },
     goal('basis-history-x', ['w']), goal('basis-next-source', ['basis-next-mid', 'basis-next-end']),
     goal('basis-next-mid', ['basis-next-end']), goal('basis-next-end'))
-  const f = applicabilityRefreshFixture(true, false, extra)
+  const f = applicabilityRefreshFixture(cachePresent, false, extra)
   const parentRegistry = structuredClone(f.registry), parentPath = 'basis-parent-v7.json'
   const parentFile = resolve(f.directory, parentPath)
   const parentBytes = Buffer.from(JSON.stringify(parentRegistry, null, 2) + '\n')
@@ -523,6 +530,219 @@ async function runBasisBoundFixtureRegressions() {
   assert.ok(await appended.load(), 'later subjects append a flat entry under the same fixed V7 contract')
   checks++
   console.log(`Basis-bound public loader fixtures passed: ${checks}; real neuro predicate shape, exact old refs, per-cut witnesses and prefix continuation retained`)
+}
+
+// V9 freezes the complete V8 fixture proof: its exact bytes stay beside the catalog as the
+// frozen parent, and `proof.json` becomes the goal-scoped registry derived from them.
+const goalScopedParentPath = 'frozen-parent-v8.json'
+const rawDigest = (bytes: Buffer) => `sha256:${createHash('sha256').update(bytes).digest('hex')}`
+// Equal parent bytes bind equal catalogs, so one complete V8 derivation serves every fresh copy.
+const goalScopedDerivations = new Map<string, string>()
+async function goalScopedFixture(cachePresent = true) {
+  const f = basisBoundFixture(cachePresent), frozenParentFile = resolve(f.directory, goalScopedParentPath)
+  const frozenParentBytes = readFileSync(resolve(f.directory, 'proof.json')), parentDigest = rawDigest(frozenParentBytes)
+  writeFileSync(frozenParentFile, frozenParentBytes)
+  const derive = () => deriveGoalScopedPrerequisiteReductionRegistry({
+    repositoryRoot: f.directory, parentRegistryPath: goalScopedParentPath, catalogPath: 'canonical' })
+  if (!goalScopedDerivations.has(parentDigest)) goalScopedDerivations.set(parentDigest, JSON.stringify((await derive()).registry))
+  const frozen = JSON.parse(goalScopedDerivations.get(parentDigest)!) as GoalScopedPrerequisiteReductionRegistry
+  const transfer = (source: string) => {
+    const found = frozen.transfers.find(entry => entry.source === source)
+    assert.ok(found, `fixture transfer ${source}`)
+    return found
+  }
+  // Unlike the V8 `save`, this never touches the frozen parent or any document binding.
+  const save = () => {
+    for (const { path, landscapeId } of f.registry.catalogSources)
+      writeFileSync(resolve(f.directory, path), JSON.stringify(f.documents.find(document => document.landscapeId === landscapeId)))
+    writeFileSync(resolve(f.directory, 'proof.json'), JSON.stringify(frozen))
+  }
+  const loadParent = () => loadVerifiedPrerequisiteReductionContext({
+    repositoryRoot: f.directory, registryPath: goalScopedParentPath, catalogPath: 'canonical' })
+  save()
+  return { ...f, frozen, frozenParentFile, frozenParentBytes, transfer, derive, save, loadParent }
+}
+type GoalScopedFixture = Awaited<ReturnType<typeof goalScopedFixture>>
+// The documents the verifier loads from a catalog directory, by the rule of `catalogFiles` in
+// the proof module: every `.json` file below it, recursively, whose name does not contain `_deck`.
+const catalogFiles = (directory: string): string[] => readdirSync(directory, { withFileTypes: true }).flatMap(entry =>
+  entry.isDirectory() ? catalogFiles(resolve(directory, entry.name))
+    : entry.isFile() && /\.json$/iu.test(entry.name) && !/_deck/iu.test(entry.name) ? [resolve(directory, entry.name)] : []).sort()
+const catalogDocuments = (catalog: string) => catalogFiles(catalog).map(file => JSON.parse(readFileSync(file, 'utf8')) as Document)
+const goalsOf = (documents: Document[]) => new Map<string, Goal>(documents.flatMap(document =>
+  document.goals.map(goal => [`${document.landscapeId}:${goal.id}`, goal] as const)))
+// Every goal of the catalog on disk, including documents the registry has never seen.
+const catalogGoals = (directory: string) => goalsOf(catalogDocuments(resolve(directory, 'canonical')))
+// An active transfer source gets its reviewed value from the freeze; every other goal gets its current value.
+function assertGoalScopedReview(
+  context: VerifiedPrerequisiteReductionContext | undefined, directory: string,
+  reviewed: ReadonlyMap<string, unknown>, active: string[], label: string,
+) {
+  assert.ok(context, label)
+  const summary = verifiedPrerequisiteReductionSummary(context)!
+  assert.equal(summary.proofContract, GOAL_SCOPED_PREREQUISITE_REDUCTION_CONTRACT, label)
+  assert.deepEqual(summary.affectedGoalIds, active, `${label}: active transfers`)
+  for (const [key, goal] of catalogGoals(directory))
+    assert.deepEqual(reviewBindingGoal(context, key, goal), active.includes(key) ? reviewed.get(key) : goal, `${label}: ${key}`)
+}
+async function runGoalScopedFixtureRegressions() {
+  let accepted = 0, rejected = 0
+  const f = await goalScopedFixture(), sources = f.frozen.transfers.map(({ source }) => source), goals = catalogGoals(f.directory)
+  const complete = await f.loadParent(), context = await f.load()
+  assert.ok(complete && context)
+  const proven = verifiedPrerequisiteReductionSummary(complete)!
+  assert.equal(proven.proofContract, BASIS_BOUND_PREREQUISITE_REDUCTION_CONTRACT)
+  const reviewed = new Map([...goals].map(([key, goal]) => [key, reviewBindingGoal(complete, key, goal)]))
+  for (const [key, goal] of goals) assert.deepEqual(reviewBindingGoal(context, key, goal), reviewed.get(key),
+    `the frozen registry gives every goal the reviewed value of the complete proof: ${key}`)
+  assertGoalScopedReview(context, f.directory, reviewed, sources, 'every transfer is active at the freeze')
+  const basis = f.transfer(f.source), basisData = basis.reviewedFields.extendedData as Record<string, unknown>
+  assert.deepEqual(basis.reviewedFields.requires, neuroOriginalClusters, 'the basis transfer restores the original cluster requires')
+  assert.ok(basisData && !Object.hasOwn(basisData, 'assessmentApplicabilityBasis'), 'the basis transfer restores extendedData without the basis')
+  const again = await f.derive()
+  assert.equal(JSON.stringify(again.registry), JSON.stringify(f.frozen), 'deriving twice gives the same registry')
+  assert.equal(again.provenSources, proven.affectedGoalIds.length, 'the derivation counts every source of the complete proof')
+  assert.deepEqual(again.provenSourcesWithoutTransfer, [], 'every proven fixture source changed, so each has a transfer')
+  // The V7 cache refresh changed goals outside the requires history; their reviews need a transfer as well.
+  assert.deepEqual(sources.filter(source => !proven.affectedGoalIds.includes(source)), ['cache', 'cache-other'].map(targetKey),
+    'the cache refresh adds transfers outside the requires history')
+  for (const key of [f.source, targetKey('w')]) {
+    assert.equal(sources.includes(key), key === f.source, `only the basis source of the two has a transfer: ${key}`)
+    assert.throws(() => reviewBindingGoal(context, key, { ...goals.get(key)!, title: 'unverified drift' }),
+      /current goal differs from verified snapshot/u, `a caller goal other than the loaded one is rejected: ${key}`)
+  }
+  accepted++
+
+  // A field the reviews never saw is restored by deleting it.
+  const absent = await goalScopedFixture(false), absentComplete = await absent.loadParent(), absentContext = await absent.load()
+  assert.ok(absentComplete && absentContext)
+  assert.deepEqual(absent.transfer(targetKey('cache')).reviewedAbsentFields, ['applicability'], 'the reviewed cache goal had no applicability')
+  for (const [key, goal] of catalogGoals(absent.directory))
+    assert.deepEqual(reviewBindingGoal(absentContext, key, goal), reviewBindingGoal(absentComplete, key, goal),
+      `an absent-field transfer gives every goal the reviewed value of the complete proof: ${key}`)
+  accepted++
+
+  // The complete V8 parent binds whole documents; the frozen registry binds only its transfer goals.
+  const unrelated = async (label: string, change: (g: GoalScopedFixture) => void, parent?: RegExp) => {
+    const g = await goalScopedFixture(); change(g); g.save()
+    assertGoalScopedReview(await g.load(), g.directory, reviewed, sources, `${label} keeps every transfer`)
+    if (parent) await assert.rejects(g.loadParent, parent, `${label} stales the complete V8 parent`)
+    else assert.ok(await g.loadParent(), `${label} leaves the complete V8 parent valid as well`)
+    accepted++
+  }
+  await unrelated('a new goal', g => { g.documents[0].goals.push(goal('goal-scoped-new')) }, /current document digest differs/u)
+  await unrelated('a changed title without transfer', g => { g.get(targetKey('w')).title = 'Changed after the freeze' },
+    /current document digest differs/u)
+  await unrelated('changed requires off every witness', g => { g.get(targetKey('basis-next-source')).requires = ['basis-next-mid'] },
+    /current document digest differs/u)
+  // basis-history-x -> w is the last edge of the end witness v -> basis-history-x -> w of the supported goal v.
+  await unrelated('changed requires on a witness path', g => { g.get(targetKey('basis-history-x')).requires = [] },
+    /current document digest differs/u)
+  await unrelated('a new canonical document', g => {
+    writeFileSync(resolve(g.directory, 'canonical/goal-scoped-extra.json'),
+      JSON.stringify({ landscapeId: 'goal-scoped-extra', title: 'Extra', goals: [goal('n')] }))
+  }, /catalog source paths are missing, new, or duplicated/u)
+  // V8 projects the layer out of every document digest, so neither contract sees it.
+  await unrelated('a learning-unit layer', g => {
+    const document = g.documents[1] as Document & Record<string, unknown>
+    document.programUnits = [learningUnit('unit')]
+    document.goalPlacements = [{ goalId: 'z', unitId: 'unit', relation: 'own' }]
+    document.learningUnitCoverage = 'partial'
+  })
+
+  const release = async (label: string, source: string, change: (documentGoals: Goal[], index: number) => void) => {
+    const g = await goalScopedFixture(), [owner, id] = source.split(':')
+    const document = g.documents.find(entry => entry.landscapeId === owner)!, index = document.goals.findIndex(entry => entry.id === id)
+    const frozenGoal = structuredClone(document.goals[index])
+    change(document.goals, index); g.save()
+    const changed = await g.load()
+    assertGoalScopedReview(changed, g.directory, reviewed, sources.filter(entry => entry !== source), `${label} releases exactly ${source}`)
+    if (!catalogGoals(g.directory).has(source))
+      assert.throws(() => reviewBindingGoal(changed, source, frozenGoal), /current goal differs from verified snapshot/u,
+        `a removed goal has no verified snapshot: ${source}`)
+    const restored = document.goals.filter(entry => entry.id !== id)
+    restored.splice(index, 0, frozenGoal)
+    document.goals = restored; g.save()
+    assertGoalScopedReview(await g.load(), g.directory, reviewed, sources, `restoring the frozen ${source} reactivates its transfer`)
+    accepted += 2
+  }
+  await release('a changed title', f.source, (documentGoals, index) => { documentGoals[index].title = 'Changed after the freeze' })
+  await release('changed requires', local('q'), (documentGoals, index) => { documentGoals[index].requires = ['p', 's'] })
+  await release('a removed goal', targetKey('u'), (documentGoals, index) => { documentGoals.splice(index, 1) })
+
+  const tampered = async (mutate: (g: GoalScopedFixture) => void, expected: RegExp, cachePresent = true) => {
+    const g = await goalScopedFixture(cachePresent); mutate(g); g.save()
+    await assert.rejects(g.load, expected, `a tampered goal-scoped registry is rejected: ${expected.source}`); rejected++
+  }
+  const zero = `sha256:${'0'.repeat(64)}`
+  await tampered(g => { g.transfer(targetKey('v')).reviewedFields.requires = ['w', 'basis-history-x'] },
+    /reviewed goal digest differs: cluster-target-test:v/u)
+  await tampered(g => { g.transfer(local('q')).reviewedAbsentFields.push('title') }, /reviewed goal digest differs: proof-test:q/u)
+  await tampered(g => { g.transfer(targetKey('cache')).reviewedAbsentFields = ['description'] },
+    /reviewed goal digest differs: cluster-target-test:cache/u, false)
+  await tampered(g => { writeFileSync(g.frozenParentFile, Buffer.concat([g.frozenParentBytes, Buffer.from(' ')])) },
+    /frozen parent raw digest differs/u)
+  await tampered(g => { g.frozen.parentRegistryRawDigest = zero }, /frozen parent raw digest differs/u)
+  await tampered(g => {
+    writeFileSync(resolve(g.directory, 'frozen-parent-copy.json'), g.frozenParentBytes)
+    rmSync(g.frozenParentFile); symlinkSync('frozen-parent-copy.json', g.frozenParentFile)
+  }, /frozen parent must be a regular file/u)
+  await tampered(g => {
+    mkdirSync(resolve(g.directory, 'parent-directory'))
+    writeFileSync(resolve(g.directory, 'parent-directory', goalScopedParentPath), g.frozenParentBytes)
+    symlinkSync('parent-directory', resolve(g.directory, 'parent-alias'))
+    g.frozen.parentRegistryPath = `parent-alias/${goalScopedParentPath}`
+  }, /frozen parent path contains a symlink/u)
+  for (const alias of [`./${goalScopedParentPath}`, `history/../${goalScopedParentPath}`])
+    await tampered(g => { g.frozen.parentRegistryPath = alias }, /frozen parent path must be canonical and relative/u)
+  await tampered(g => { g.frozen.parentRegistryPath = g.frozenParentFile }, /frozen parent path must be canonical and relative/u)
+  await tampered(g => { g.frozen.parentRegistryPath = '../outside.json' }, /path escapes repository/u)
+  await tampered(g => { g.frozen.parentRegistryPath = 'basis-parent-v7.json'; g.frozen.parentRegistryRawDigest = rawDigest(g.parentBytes) },
+    /goal-scoped registry requires a strict V8 parent/u)
+  await tampered(g => { g.frozen.frozenCatalogSources[0].frozenDocumentDigest = zero }, /frozen catalog bindings differ from the frozen parent/u)
+  await tampered(g => { g.frozen.frozenCatalogSources.reverse() }, /frozen catalog bindings differ from the frozen parent/u)
+  await tampered(g => { Object.assign(g.frozen, { extra: true }) }, /invalid goal-scoped registry fields/u)
+  await tampered(g => { Object.assign(g.frozen, { schemaVersion: 2 }) }, /invalid goal-scoped parent or scope/u)
+  await tampered(g => { Object.assign(g.frozen.frozenCatalogSources[0], { extra: true }) }, /invalid frozen catalog source fields/u)
+  await tampered(g => { g.frozen.frozenCatalogSources.push(structuredClone(g.frozen.frozenCatalogSources[0])) },
+    /invalid or duplicate frozen catalog source/u)
+  await tampered(g => { Object.assign(g.frozen.transfers[0], { extra: true }) }, /invalid review transfer fields/u)
+  for (const mutate of [
+    (g: GoalScopedFixture) => { g.frozen.transfers.reverse() },
+    (g: GoalScopedFixture) => { g.frozen.transfers.splice(1, 0, structuredClone(g.frozen.transfers[0])) },
+    (g: GoalScopedFixture) => { g.frozen.transfers.push({ ...structuredClone(g.frozen.transfers.at(-1)!), source: 'zz-unknown-landscape:q' }) },
+  ]) await tampered(mutate, /invalid, unsorted or duplicate review transfer source/u)
+  await tampered(g => { g.frozen.transfers[0].reviewedGoalDigest = g.frozen.transfers[0].frozenGoalDigest }, /invalid or no-op review transfer digests/u)
+  for (const mutate of [
+    (g: GoalScopedFixture) => { Object.assign(g.frozen.transfers[0], { reviewedFields: {}, reviewedAbsentFields: [] }) },
+    (g: GoalScopedFixture) => { g.frozen.transfers[0].reviewedFields.id = 'renamed' },
+    (g: GoalScopedFixture) => { g.frozen.transfers[0].reviewedAbsentFields = Object.keys(g.frozen.transfers[0].reviewedFields).slice(0, 1) },
+  ]) await tampered(mutate, /empty, duplicate or identity-changing reviewed fields/u)
+  await tampered(g => { g.frozen.transfers = [] }, /empty review transfers/u)
+
+  // The registry is immutable evidence: a consistently rebound transfer cannot be told apart
+  // at load. The derivation from the frozen parent, run at the freeze, exposes it.
+  const forged = await goalScopedFixture(), forgedTransfer = forged.transfer(targetKey('v'))
+  forgedTransfer.reviewedFields.requires = ['basis-history-x', 'w']
+  const forgedGoal: Record<string, unknown> = { ...structuredClone(forged.get(targetKey('v'))), ...structuredClone(forgedTransfer.reviewedFields) }
+  for (const field of forgedTransfer.reviewedAbsentFields) delete forgedGoal[field]
+  forgedTransfer.reviewedGoalDigest = fingerprintPrerequisiteReductionRecord(forgedGoal)
+  forged.save()
+  const forgedContext = await forged.load()
+  assert.ok(forgedContext, 'a consistently rebound transfer loads')
+  assert.deepEqual(reviewBindingGoal(forgedContext, targetKey('v'), forged.get(targetKey('v'))), forgedGoal,
+    'a forged registry supplies its forged reviewed value')
+  assert.notEqual(JSON.stringify((await forged.derive()).registry), JSON.stringify(forged.frozen),
+    'the derivation from the frozen parent differs from a forged registry')
+  accepted++
+
+  // Only the proof's end state can be frozen.
+  const moved = await goalScopedFixture()
+  moved.get(targetKey('w')).title = 'Changed after the freeze'; moved.save()
+  await assert.rejects(moved.derive, /current document digest differs/u, 'the derivation refuses a catalog past the end state'); rejected++
+  await assert.rejects(deriveGoalScopedPrerequisiteReductionRegistry({ repositoryRoot: f.directory,
+    parentRegistryPath: 'basis-parent-v7.json', catalogPath: 'canonical' }), /strict V8 parent/u, 'only a V8 proof can be frozen'); rejected++
+  console.log(`Goal-scoped V9 fixtures passed: ${accepted} accepted and ${rejected} rejected cases; ${sources.length} transfers reproduce every reviewed value of the complete V8 proof, unrelated changes keep them and a changed goal releases only itself.`)
 }
 
 async function runApplicabilityRefreshFixtureRegressions() {
@@ -803,100 +1023,6 @@ async function runBatchRequiredNegativeRegressions() {
   console.log('V6 required extra negative fixture checks passed: 3')
 }
 
-type BatchTestDocument = { path: string; document: Document }
-const batchTestSources = (batch: PrerequisiteReductionBatch) => [...new Set(batch.operations.flatMap(operation =>
-  'steps' in operation ? operation.steps.map(step => step.source) : [operation.step.source]))].sort()
-function batchTestGoals(documents: BatchTestDocument[]) {
-  const result = new Map<string, Goal>(documents.flatMap(({ document }) => document.goals.map(goal =>
-    [`${document.landscapeId}:${goal.id}`, goal] as const)))
-  assert.equal(result.size, documents.reduce((sum, { document }) => sum + document.goals.length, 0), 'unique canonical goals')
-  return result
-}
-function assertBatchTestDocuments(
-  documents: BatchTestDocument[], registry: Pick<BatchedPrerequisiteReductionRegistry, 'catalogSources'>,
-  bindings: Array<{ path: string; currentDocumentDigest: string }>, label: string,
-) {
-  assert.equal(new Set(bindings.map(entry => entry.path)).size, bindings.length, `${label}: unique document bindings`)
-  assert.deepEqual(bindings.map(entry => entry.path).sort(), registry.catalogSources.map(entry => entry.path).sort(),
-    `${label}: complete document bindings`)
-  assert.deepEqual(documents.map(entry => entry.path).sort(), bindings.map(entry => entry.path).sort(), `${label}: actual catalog paths`)
-  for (const { path, document } of documents) {
-    assert.equal(document.landscapeId, registry.catalogSources.find(entry => entry.path === path)!.landscapeId, `${label}: actual owner`)
-    assert.equal(digest(document), bindings.find(entry => entry.path === path)!.currentDocumentDigest, `${label}: full document ${path}`)
-  }
-}
-function restoreBoundV5TestCheckpoint(registry: BatchedPrerequisiteReductionRegistry, current: BatchTestDocument[]) {
-  assert.equal(registry.proofContract, BATCHED_PREREQUISITE_REDUCTION_CONTRACT)
-  assert.ok(registry.batches.length > 0)
-  assertBatchTestDocuments(current, registry, registry.catalogSources, 'current')
-  const { v5Checkpoint, batches, ...prefix } = structuredClone(registry)
-  assert.equal(new Set(v5Checkpoint.currentDocumentDigests.map(entry => entry.path)).size,
-    v5Checkpoint.currentDocumentDigests.length, 'unique V5 checkpoint document bindings')
-  assert.deepEqual(v5Checkpoint.currentDocumentDigests.map(entry => entry.path).sort(),
-    registry.catalogSources.map(entry => entry.path).sort(), 'complete V5 checkpoint document bindings')
-  const parent: ClusterTargetPrerequisiteReductionRegistry = { ...prefix,
-    proofContract: CLUSTER_TARGET_PREREQUISITE_REDUCTION_CONTRACT,
-    catalogSources: prefix.catalogSources.map(entry => ({ ...entry,
-      currentDocumentDigest: v5Checkpoint.currentDocumentDigests.find(binding => binding.path === entry.path)!.currentDocumentDigest })) }
-  assert.equal(digest(parent), v5Checkpoint.registryDigest, 'complete unchanged V5 registry checkpoint')
-  let predecessor = v5Checkpoint.registryDigest
-  for (const batch of batches) {
-    assert.equal(batch.previousDigest, predecessor, 'append-only batch predecessor')
-    assert.deepEqual(batch.originalRequires.map(entry => entry.source).sort(), batchTestSources(batch), 'exact batch original source set')
-    predecessor = digest(batch)
-  }
-  const documents = structuredClone(current), goals = batchTestGoals(documents)
-  for (let index = batches.length - 1; index >= 0; index--) {
-    const batch = batches[index]
-    assertBatchTestDocuments(documents, registry, batch.currentDocumentDigests, `reverse ${batch.id} end`)
-    for (const snapshot of batch.originalRequires) {
-      const goal = goals.get(snapshot.source)
-      assert.ok(goal, `known batch original ${snapshot.source}`)
-      if (snapshot.requires === null) delete (goal as Partial<Goal>).requires
-      else goal.requires = structuredClone(snapshot.requires)
-    }
-    assertBatchTestDocuments(documents, registry, index ? batches[index - 1].currentDocumentDigests
-      : v5Checkpoint.currentDocumentDigests, `reverse ${batch.id} start`)
-  }
-  return { parent, documents }
-}
-function replayBatchTestArrays(registry: BatchedPrerequisiteReductionRegistry, checkpoint: BatchTestDocument[]) {
-  // Only literal raw-array effects are repeated here. The genuine loader alone
-  // establishes scope, fresh auditor findings, paths, continuations and applicability.
-  const documents = structuredClone(checkpoint), goals = batchTestGoals(documents)
-  const reference = (raw: string, source: string) => {
-    const owner = source.split(':')[0]
-    if (raw.includes(':')) {
-      const [landscape, id] = raw.split(':')
-      return `${landscape || owner}:${id}`
-    }
-    if (goals.has(`${owner}:${raw}`)) return `${owner}:${raw}`
-    const matches = [...goals.keys()].filter(key => key.split(':')[1] === raw)
-    assert.equal(matches.length, 1, `unambiguous literal test reference ${raw}`)
-    return matches[0]
-  }
-  for (const batch of registry.batches) {
-    for (const snapshot of batch.originalRequires) {
-      const goal = goals.get(snapshot.source)!
-      assert.equal(Object.hasOwn(goal, 'requires'), snapshot.requires !== null, 'forward exact requires presence')
-      if (snapshot.requires !== null) assert.deepEqual(goal.requires, snapshot.requires, 'forward exact original array')
-    }
-    for (const operation of batch.operations) for (const step of 'steps' in operation ? operation.steps : [operation.step]) {
-      const goal = goals.get(step.source)!, before = goal.requires ?? []
-      const matches = before.filter(raw => reference(raw, step.source) === step.prerequisite)
-      if ('operation' in step && step.operation === 'materialize-atomic') {
-        assert.equal(matches.length, 0, 'new direct raw edge')
-        const [owner, id] = step.prerequisite.split(':')
-        goal.requires = [...before, owner === step.source.split(':')[0] ? id : step.prerequisite]
-      } else {
-        assert.equal(matches.length, 1, 'one actual authored raw edge removed')
-        goal.requires = before.filter(raw => reference(raw, step.source) !== step.prerequisite)
-      }
-    }
-    assertBatchTestDocuments(documents, registry, batch.currentDocumentDigests, `forward ${batch.id} end`)
-  }
-  return documents
-}
 function earliestBatchTestOriginals(registry: BatchedPrerequisiteReductionRegistry) {
   const originals = new Map<string, { source: string; requires: string[] | null }>()
   for (const original of [...registry.originalRequires, ...registry.suffixOriginalRequires,
@@ -905,577 +1031,6 @@ function earliestBatchTestOriginals(registry: BatchedPrerequisiteReductionRegist
     if (!originals.has(original.source)) originals.set(original.source, structuredClone(original))
   }
   return originals
-}
-function runBatchLiveHelperRegressions() {
-  const document = clusterTargetBaseline()
-  document.goals.push(goal('u', ['v', 'w', 'x']), goal('v', ['w', 'x']), goal('w', ['x']), goal('x'))
-  const f = batchFixture(document)
-  f.add([{ id: 'cut-u-w', step: { source: targetKey('u'), prerequisite: targetKey('w'),
-    witness: ['u', 'v', 'w'].map(targetKey) }, endWitness: ['u', 'v', 'w'].map(targetKey) }],
-  () => { f.get(targetKey('u')).requires = ['v', 'x'] })
-  f.add([{ id: 'cut-u-x', step: { source: targetKey('u'), prerequisite: targetKey('x'),
-    witness: ['u', 'v', 'x'].map(targetKey) }, endWitness: ['u', 'v', 'x'].map(targetKey) }],
-  () => { f.get(targetKey('u')).requires = ['v'] })
-  const current = f.registry.catalogSources.map(source => ({ path: source.path,
-    document: f.documents.find(document => document.landscapeId === source.landscapeId)! }))
-  const restored = restoreBoundV5TestCheckpoint(f.registry, current)
-  assert.deepEqual(restored.parent, f.parent)
-  assert.deepEqual(replayBatchTestArrays(f.registry, restored.documents), current)
-  assert.deepEqual(earliestBatchTestOriginals(f.registry).get(targetKey('u'))!.requires, ['v', 'w', 'x'])
-  const reject = (mutate: (registry: BatchedPrerequisiteReductionRegistry, documents: BatchTestDocument[]) => void, expected: RegExp) => {
-    const registry = structuredClone(f.registry), documents = structuredClone(current)
-    mutate(registry, documents)
-    assert.throws(() => restoreBoundV5TestCheckpoint(registry, documents), expected)
-  }
-  reject(registry => { registry.batches[0].originalRequires[0].requires = null
-    registry.batches[1].previousDigest = digest(registry.batches[0]) }, /reverse .* start/u)
-  reject(registry => { registry.batches[0].originalRequires = [] }, /exact batch original source set/u)
-  reject(registry => { registry.batches[0].originalRequires.push(structuredClone(registry.batches[0].originalRequires[0])) }, /exact batch original source set/u)
-  reject(registry => { registry.v5Checkpoint.registryDigest = digest({ bad: true }) }, /complete unchanged V5/u)
-  reject(registry => { registry.batches[0].currentDocumentDigests[0].currentDocumentDigest = digest({ bad: true })
-    registry.batches[1].previousDigest = digest(registry.batches[0]) }, /reverse .* start/u)
-  reject((_registry, documents) => { documents[0].document.title = 'Unreported content drift' }, /current: full document/u)
-  const absentDocument = clusterTargetBaseline()
-  absentDocument.goals.push({ ...goal('d', ['p']), type: 'cluster', contains: ['n'] }, goal('n'))
-  delete (absentDocument.goals.find(goal => goal.id === 'n')! as Partial<Goal>).requires
-  const absent = batchFixture(absentDocument)
-  absent.add([{ id: 'add-n-p', step: { operation: 'materialize-atomic', source: targetKey('n'), prerequisite: targetKey('p'),
-    origin: { source: targetKey('d'), prerequisite: 'p', sourceContainsPath: ['d', 'n'].map(targetKey), prerequisiteContainsPath: [targetKey('p')] } },
-  endWitness: ['n', 'p'].map(targetKey) }], () => { absent.get(targetKey('n')).requires = ['p'] })
-  const absentCurrent = absent.registry.catalogSources.map(binding => ({ path: binding.path,
-    document: absent.documents.find(document => document.landscapeId === binding.landscapeId)! }))
-  const absentRestored = restoreBoundV5TestCheckpoint(absent.registry, absentCurrent)
-  assert.equal(Object.hasOwn(batchTestGoals(absentRestored.documents).get(targetKey('n'))!, 'requires'), false)
-  assert.deepEqual(replayBatchTestArrays(absent.registry, absentRestored.documents), absentCurrent)
-  const falseEmpty = structuredClone(absent.registry)
-  falseEmpty.batches[0].originalRequires[0].requires = []
-  assert.throws(() => restoreBoundV5TestCheckpoint(falseEmpty, absentCurrent), /reverse .* start/u)
-  console.log('V6 live-frame helper checks passed: 9 (raw replay and binding only; no live catalog call)')
-}
-
-async function verifyHistoricalLiveV5Checkpoint(root: string) {
-  // Replay the actual first Math case against the complete current catalog in
-  // an ignored fixture. No live canonical or historical review file is edited.
-  const catalog = resolve(root, 'curricula/DE/Gymnasium/canonical')
-  const files = (directory: string): string[] => readdirSync(directory, { withFileTypes: true }).flatMap((entry) =>
-    entry.isDirectory() ? files(resolve(directory, entry.name))
-      : /\.json$/iu.test(entry.name) && !/_deck/iu.test(entry.name) ? [resolve(directory, entry.name)] : []).sort()
-  const liveRegistry = JSON.parse(readFileSync(resolve(root, PREREQUISITE_REDUCTION_REGISTRY_PATH), 'utf8')) as PrerequisiteReductionRegistry
-  assert.equal(liveRegistry.proofContract, CLUSTER_TARGET_PREREQUISITE_REDUCTION_CONTRACT, 'the live registry uses the cluster-target V5 contract')
-  const liveTarget = liveRegistry as ClusterTargetPrerequisiteReductionRegistry
-  const { v4Checkpoint, clusterTargetOriginalRequires, clusterTargetSuffix, ...livePrefix } = liveTarget
-  const v4Digests = new Map(v4Checkpoint.currentDocumentDigests.map(entry => [entry.path, entry.currentDocumentDigest]))
-  const liveContinued: ContinuedPrerequisiteReductionRegistry = { ...livePrefix, proofContract: CONTINUED_PREREQUISITE_REDUCTION_CONTRACT,
-    catalogSources: liveTarget.catalogSources.map(entry => ({ ...entry, currentDocumentDigest: v4Digests.get(entry.path)! })) }
-  assert.equal(digest(liveContinued), 'sha256:b43287aac991215610cf9a3fa01a766c17d9a3e4bc47eb4cc45d61573ddb9803')
-  assert.equal(v4Checkpoint.registryDigest, digest(liveContinued))
-  assert.equal(`sha256:${createHash('sha256').update(`${JSON.stringify(liveContinued, null, 2)}\n`).digest('hex')}`,
-    'sha256:94f65d3338c901f5160b2b9d123a692639b0a5f455eb33d23b7d1c3853ddf394', 'the complete V4 parent remains byte-reconstructable')
-  const parentDigests = new Map(liveContinued.v3Checkpoint.currentDocumentDigests.map(entry => [entry.path, entry.currentDocumentDigest]))
-  const liveOrdered: OrderedPrerequisiteReductionRegistry = {
-    schemaVersion: liveContinued.schemaVersion, proofContract: ORDERED_PREREQUISITE_REDUCTION_CONTRACT,
-    auditScope: liveContinued.auditScope,
-    catalogSources: liveContinued.catalogSources.map(entry => ({ ...entry, currentDocumentDigest: parentDigests.get(entry.path)! })),
-    originalRequires: liveContinued.originalRequires, removals: liveContinued.removals,
-    v2Checkpoint: liveContinued.v2Checkpoint, suffixOriginalRequires: liveContinued.suffixOriginalRequires, suffix: liveContinued.suffix,
-  }
-  const v3Digest = 'sha256:55bbd974c3265cd3802b7bf5d8622beeb2d3d5ac4795d4e0dfdb27b63302f06b'
-  assert.equal(digest(liveOrdered), v3Digest)
-  assert.equal(liveContinued.v3Checkpoint.registryDigest, v3Digest)
-  assert.equal(liveContinued.v3Checkpoint.currentDocumentDigests.length, 21)
-  assert.equal(`sha256:${createHash('sha256').update(`${JSON.stringify(liveOrdered, null, 2)}\n`).digest('hex')}`,
-    'sha256:deb3d78f5e5f2797dd88d2776c7e9645f9d8869d7e375a00f2790f970d7aae29', 'the complete previous V3 registry remains reconstructable byte for byte')
-  const originals = files(catalog).map((path) => ({ path, document: JSON.parse(readFileSync(path, 'utf8')) as Document }))
-  for (const { path, document } of originals) {
-    for (const original of clusterTargetOriginalRequires) {
-      if (!original.source.startsWith(`${document.landscapeId}:`)) continue
-      const goal = document.goals.find(entry => `${document.landscapeId}:${entry.id}` === original.source)!
-      if (original.requires === null) delete (goal as Record<string, unknown>).requires
-      else goal.requires = structuredClone(original.requires)
-    }
-    assert.equal(digest(document), v4Digests.get(relative(root, path)), `restored V4 parent document: ${path}`)
-  }
-  const tailOriginals = new Map(liveContinued.tailOriginalRequires.map(entry => [entry.source, entry.requires]))
-  for (const { path, document } of originals) {
-    for (const goal of document.goals) {
-      const key = `${document.landscapeId}:${goal.id}`
-      if (!tailOriginals.has(key)) continue
-      const before = tailOriginals.get(key)!
-      if (before === null) delete (goal as Record<string, unknown>).requires
-      else goal.requires = structuredClone(before)
-    }
-    assert.equal(digest(document), parentDigests.get(relative(root, path)), `restored V3 parent document: ${path}`)
-  }
-  if (liveOrdered) {
-    // Keep this isolated V1 replay on the actual historical V2 checkpoint even
-    // when the live catalog has already applied the ordered V3 suffix.
-    const suffixOriginals = new Map(liveOrdered.suffixOriginalRequires.map((entry) => [entry.source, entry.requires]))
-    const checkpointDigests = new Map(liveOrdered.v2Checkpoint.currentDocumentDigests
-      .map(({ path, currentDocumentDigest }) => [path, currentDocumentDigest]))
-    for (const { path, document } of originals) {
-      for (const goal of document.goals) {
-        const key = `${document.landscapeId}:${goal.id}`
-        if (!suffixOriginals.has(key)) continue
-        const original = suffixOriginals.get(key)!
-        if (original === null) delete (goal as Record<string, unknown>).requires
-        else goal.requires = structuredClone(original)
-      }
-      assert.equal(digest(document), checkpointDigests.get(relative(root, path)),
-        `isolated first Math fixture starts from the V2 checkpoint: ${path}`)
-    }
-  }
-  const math = originals.find(({ document }) => document.goals.some(({ id }) => id === 'bf17cada-3ccd-5d9a-b9e3-42065cfdbb01'))!
-  const q = math.document.goals.find(({ id }) => id === 'bf17cada-3ccd-5d9a-b9e3-42065cfdbb01')!
-  q.requires = ['91e2f564-3bc8-4924-af85-2a3fa84c1471', '71cec9fb-3751-4d61-8b34-c5adbbf6e5f2']
-  const complete = resolve(temporaryRoot, 'complete')
-  const registry: PrerequisiteReductionRegistry = {
-    schemaVersion: 1, proofContract: PREREQUISITE_REDUCTION_CONTRACT, auditScope: 'origin-source-landscape-closure', catalogSources: [],
-    originalRequires: [{ source: `${math.document.landscapeId}:${q.id}`, requires: [...q.requires] }],
-    removals: [{ source: `${math.document.landscapeId}:${q.id}`,
-      prerequisite: `${math.document.landscapeId}:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2`,
-      witness: [q.id, ...q.requires].map((id) => `${math.document.landscapeId}:${id}`) }],
-  }
-  for (const { path, document } of originals) {
-    const current = structuredClone(document)
-    const target = current.goals.find(({ id }) => id === q.id)
-    if (target) target.requires = [q.requires[0]]
-    const local = `canonical/${relative(catalog, path)}`
-    mkdirSync(dirname(resolve(complete, local)), { recursive: true })
-    writeFileSync(resolve(complete, local), JSON.stringify(current))
-    registry.catalogSources.push({ path: local, landscapeId: document.landscapeId,
-      baselineDocumentDigest: digest(document), currentDocumentDigest: digest(current) })
-  }
-  writeFileSync(resolve(complete, 'proof.json'), JSON.stringify(registry))
-  const actual = await loadVerifiedPrerequisiteReductionContext({
-    repositoryRoot: complete, registryPath: 'proof.json', catalogPath: 'canonical',
-  })
-  assert.ok(actual)
-  const current = { ...q, requires: [q.requires[0]] }
-  assert.deepEqual(reviewBindingGoal(actual, `${math.document.landscapeId}:${q.id}`, current), q)
-  // Exercise the actual cumulative registry, not just the isolated first case.
-  const liveContext = await loadVerifiedPrerequisiteReductionContext({ repositoryRoot: root })
-  assert.ok(liveContext)
-  const liveGoals = new Map<string, Goal>(files(catalog).flatMap((path) => {
-    const document = JSON.parse(readFileSync(path, 'utf8')) as Document
-    return document.goals.map((goal) => [`${document.landscapeId}:${goal.id}`, goal] as const)
-  }))
-  assert.equal(liveGoals.size, 6524)
-  assert.equal(liveRegistry.catalogSources.length, 21)
-  assert.equal(liveRegistry.removals.length, 204)
-  assert.equal(liveRegistry.originalRequires.length, 200)
-  const historicalRegistry: LegacyPrerequisiteReductionRegistry = liveOrdered ? {
-    schemaVersion: liveOrdered.schemaVersion,
-    proofContract: CLUSTER_PREREQUISITE_REDUCTION_CONTRACT,
-    auditScope: liveOrdered.auditScope,
-    catalogSources: liveOrdered.catalogSources.map((entry) => {
-      const checkpoints = liveOrdered.v2Checkpoint.currentDocumentDigests.filter(({ path }) => path === entry.path)
-      assert.equal(checkpoints.length, 1, `one historical checkpoint binding: ${entry.path}`)
-      return { ...entry, currentDocumentDigest: checkpoints[0].currentDocumentDigest }
-    }),
-    originalRequires: liveOrdered.originalRequires,
-    removals: liveOrdered.removals,
-  } : liveRegistry as LegacyPrerequisiteReductionRegistry
-  assert.equal(historicalRegistry.proofContract, CLUSTER_PREREQUISITE_REDUCTION_CONTRACT)
-  // Fixed pins of the actual historical prefix, independent of fixture edits.
-  const historicalDigest = 'sha256:9142a16a3418ec77a7689a14c74eb86d0f77ee6e0ed166fac39c0f4737c0650f'
-  assert.equal(digest(historicalRegistry), historicalDigest)
-  assert.equal(digest(liveRegistry.catalogSources.map(({ path, landscapeId, baselineDocumentDigest }) =>
-    ({ path, landscapeId, baselineDocumentDigest }))), 'sha256:356ffe9a535fb4b35734c7c1bee0c5e9258feab163ea6dec83c4260d793d1471')
-  assert.equal(digest(liveRegistry.removals), 'sha256:2c533d75b972288ab828a7312af9156d59c738e9d4a0e5755c3b25862470630f')
-  assert.equal(digest(liveRegistry.originalRequires), 'sha256:b731e23f6ef9e142d4efb7b95c844f8bed84f11e71c462fa21e40d9b2dc6583c')
-  assert.equal(liveRegistry.removals[0].source, `${math.document.landscapeId}:${q.id}`,
-    'the original first Math operation stays first')
-  assert.deepEqual(liveRegistry.originalRequires[0], {
-    source: `${math.document.landscapeId}:${q.id}`, requires: q.requires,
-  })
-  const allOriginals: Array<{ source: string; requires: string[] | null }> = [...liveRegistry.originalRequires]
-  if (liveOrdered) {
-    assert.equal(liveOrdered.v2Checkpoint.registryDigest, historicalDigest)
-    assert.equal(liveOrdered.v2Checkpoint.currentDocumentDigests.length, 21)
-    assert.equal(liveOrdered.suffix.length, 29)
-    assert.equal(liveOrdered.suffix.filter(({ operation }) => operation === 'materialize-atomic').length, 27)
-    assert.equal(liveOrdered.suffix.filter(({ operation }) => operation === 'remove-cluster').length, 2)
-    assert.equal(liveOrdered.suffixOriginalRequires.length, 29)
-    const historicalSources = new Set(liveRegistry.originalRequires.map(({ source }) => source))
-    assert.ok(liveOrdered.suffixOriginalRequires.every(({ source }) => !historicalSources.has(source)),
-      'all 29 suffix overlays are new sources, without rewriting the historical prefix')
-    assert.deepEqual(liveOrdered.suffixOriginalRequires.map(({ source }) => source).sort(),
-      [...new Set(liveOrdered.suffix.map(({ source }) => source))].sort())
-    allOriginals.push(...liveOrdered.suffixOriginalRequires)
-    assert.equal(new Set(allOriginals.map(({ source }) => source)).size, 229)
-  }
-  assert.equal(liveContinued.atomicRemovals.length, 922)
-  assert.equal(liveContinued.tailOriginalRequires.length, 490)
-  assert.equal(tailOriginals.size, 490)
-  assert.deepEqual([...tailOriginals.keys()].sort(), [...new Set(liveContinued.atomicRemovals.map(entry => entry.source))].sort())
-  const prefixSources = new Set(allOriginals.map(entry => entry.source))
-  assert.ok([...tailOriginals.keys()].every(source => !prefixSources.has(source)), 'all 490 tail sources are additional sources')
-  assert.deepEqual(liveContinued.witnessContinuations, [{ historicalRemovalIndex: 0, edgeIndex: 1, tailRemovalIndex: 608 }])
-  assert.deepEqual(liveContinued.atomicRemovals[608].witness, ['91e2f564-3bc8-4924-af85-2a3fa84c1471',
-    '71683f37-24de-4e0f-badd-858b56fa4d64', '71cec9fb-3751-4d61-8b34-c5adbbf6e5f2'].map(id => `${math.document.landscapeId}:${id}`))
-  allOriginals.push(...liveContinued.tailOriginalRequires)
-  assert.equal(new Set(allOriginals.map(entry => entry.source)).size, 719)
-  const germanSource = '67bd301b-e11a-582d-94ba-4f4b1a4cefff:2fb368b0-7b9d-5df0-99b6-6d719fd47f95'
-  const germanCluster = '67bd301b-e11a-582d-94ba-4f4b1a4cefff:53462f11-c368-51df-bb68-c36a83d761b1'
-  assert.equal(v4Checkpoint.currentDocumentDigests.length, 21)
-  assert.deepEqual(clusterTargetOriginalRequires, [{ source: germanSource,
-    requires: ['53462f11-c368-51df-bb68-c36a83d761b1', 'bb3dee7b-d6d3-513b-8824-bdf6414e02df'] }])
-  assert.ok(!allOriginals.some(entry => entry.source === germanSource), 'the new source is outside the 719-source prefix')
-  assert.equal(clusterTargetSuffix.length, 11)
-  assert.equal(clusterTargetSuffix.filter(step => step.operation === 'materialize-atomic').length, 10)
-  assert.deepEqual(clusterTargetSuffix.at(-1), { operation: 'remove-cluster-target', source: germanSource, prerequisite: germanCluster })
-  const germanAdds = clusterTargetSuffix.slice(0, -1) as AtomicPrerequisiteMaterialization[]
-  assert.equal(new Set(germanAdds.map(step => step.prerequisite)).size, 10)
-  for (const step of germanAdds) {
-    assert.equal(step.source, germanSource)
-    assert.equal(step.origin.source, germanSource)
-    assert.equal(step.origin.prerequisite, '53462f11-c368-51df-bb68-c36a83d761b1')
-    assert.deepEqual(step.origin.sourceContainsPath, [germanSource])
-    assert.equal(step.origin.prerequisiteContainsPath[0], germanCluster)
-    assert.equal(step.origin.prerequisiteContainsPath.at(-1), step.prerequisite)
-  }
-  assert.deepEqual(liveGoals.get(germanSource)!.requires,
-    ['bb3dee7b-d6d3-513b-8824-bdf6414e02df', ...germanAdds.map(step => step.prerequisite.split(':')[1])])
-  assert.ok([...liveGoals.values()].every(goal => !(goal.requires ?? []).some(raw => raw.split(':').at(-1) === germanSource.split(':')[1])),
-    'the single new source has no incoming requires anywhere in the actual catalog')
-  allOriginals.push(...clusterTargetOriginalRequires)
-  assert.equal(new Set(allOriginals.map(entry => entry.source)).size, 720)
-  assert.deepEqual(verifiedPrerequisiteReductionSummary(liveContext)!.affectedGoalIds,
-    allOriginals.map(({ source }) => source).sort())
-  for (const original of allOriginals) {
-    const raw = liveGoals.get(original.source)!
-    const historical = reviewBindingGoal(liveContext, original.source, raw)
-    assert.equal(Object.hasOwn(historical, 'requires'), original.requires !== null,
-      `exact original requires presence: ${original.source}`)
-    if (original.requires !== null) {
-      assert.deepEqual(historical.requires, original.requires, `exact ordered original requires: ${original.source}`)
-    }
-    const restoredCurrent = structuredClone(historical)
-    if (Object.hasOwn(raw, 'requires')) restoredCurrent.requires = structuredClone(raw.requires)
-    else delete restoredCurrent.requires
-    assert.deepEqual(restoredCurrent, raw,
-      `historical binding changes only requires: ${original.source}`)
-    assert.equal(reviewBindingGoal(undefined, original.source, raw), raw,
-      `missing context retains the strict current raw value: ${original.source}`)
-    assert.notEqual(fingerprintSemanticKindSourceGoal(raw), fingerprintSemanticKindSourceGoal(historical),
-      `historical comparison requires the verified capability: ${original.source}`)
-  }
-  for (const file of files(catalog)) {
-    const document = JSON.parse(readFileSync(file, 'utf8')) as Document
-    document.goals = document.goals.map(goal => structuredClone(reviewBindingGoal(liveContext, `${document.landscapeId}:${goal.id}`, goal)))
-    const binding = liveRegistry.catalogSources.find(entry => entry.path === relative(root, file))!
-    assert.equal(digest(document), binding.baselineDocumentDigest, `all original document fields restored exactly: ${file}`)
-  }
-  console.log(`Prerequisite reduction proof: strict negatives, bound V4 parent, ${liveRegistry.removals.length} historical operations, ${liveOrdered.suffix.length} V3 steps, ${liveContinued.atomicRemovals.length} atomic cuts, ${clusterTargetSuffix.length} cluster-target steps and ${allOriginals.length} snapshots passed.`)
-}
-
-async function verifyActualLiveV6(
-  registry: BatchedPrerequisiteReductionRegistry, currentDocuments: BatchTestDocument[],
-  checkpoint: ReturnType<typeof restoreBoundV5TestCheckpoint>, repositoryRoot = root,
-) {
-  // The checkpoint checks above remain V5 checks. This capability must be
-  // obtained from the actual current registry and complete current catalog.
-  const context = await loadVerifiedPrerequisiteReductionContext({ repositoryRoot })
-  assert.ok(context)
-  const summary = verifiedPrerequisiteReductionSummary(context)!
-  assert.equal(summary.proofContract, BATCHED_PREREQUISITE_REDUCTION_CONTRACT)
-  assert.equal(summary.registryDigest, `sha256:${createHash('sha256')
-    .update(readFileSync(resolve(repositoryRoot, PREREQUISITE_REDUCTION_REGISTRY_PATH))).digest('hex')}`)
-  assert.equal(registry.catalogSources.length, 21)
-  assert.equal(batchTestGoals(currentDocuments).size, 6524)
-  assert.deepEqual(replayBatchTestArrays(registry, checkpoint.documents), currentDocuments,
-    'every final document field and ordered array equals the complete batch replay')
-  const prefix = new Set([...checkpoint.parent.originalRequires, ...checkpoint.parent.suffixOriginalRequires,
-    ...checkpoint.parent.tailOriginalRequires, ...checkpoint.parent.clusterTargetOriginalRequires].map(entry => entry.source))
-  assert.equal(prefix.size, 720, 'the original V5 affected-source count remains exact')
-  assert.ok([1, 2, 3].includes(registry.batches.length), 'only the reviewed German, Physics or Chemistry delivery is accepted')
-  const [batch, physics, chemistry] = registry.batches
-  assert.equal(digest(batch), 'sha256:c21e1fcd260dc83fec0826388dabad3ae59432b1c94335a7d8257af7e3d6fe2e',
-    'the entire first German batch, including all witnesses and bindings, remains exact')
-  assert.equal(summary.registryDigest, chemistry
-    ? 'sha256:e9d880b8f038b251a766d1208ae04f65004e161c336ee894d31a0433c380c389'
-    : physics ? 'sha256:dd38bd85793769d2afae6b34a3b0b89112c497ee1b17b54f92a61af5bf785c93'
-    : 'sha256:ecaa33fc009f1b72f34edbfe8fbc67916e5e280026831333902038e1ecb0b109',
-    'the complete V6 parent equals the approved German, Physics or Chemistry bytes')
-  const sources = batchTestSources(batch)
-  assert.equal(sources.length, 18)
-  assert.deepEqual(sources.filter(source => prefix.has(source)),
-    ['67bd301b-e11a-582d-94ba-4f4b1a4cefff:2fb368b0-7b9d-5df0-99b6-6d719fd47f95'])
-  assert.equal(sources.filter(source => !prefix.has(source)).length, 17)
-  assert.equal(batch.operations.filter(operation => 'steps' in operation).length, 45)
-  assert.equal(batch.operations.filter(operation => 'step' in operation && !('operation' in operation.step)).length, 311)
-  assert.equal(batch.operations.reduce((sum, operation) => sum + ('steps' in operation
-    ? operation.steps.filter(step => step.operation === 'materialize-atomic').length
-    : 'operation' in operation.step && operation.step.operation === 'materialize-atomic' ? 1 : 0), 0), 272)
-  const afterGermanSources = new Set([...prefix, ...sources])
-  assert.equal(afterGermanSources.size, 737, 'German batch 1 retains its exact 737-source union')
-  const physicsSources = physics ? batchTestSources(physics) : []
-  if (physics) {
-    assert.equal(physics.id, 'ph-complete-atomic-prerequisites-and-transitive-reduction')
-    assert.equal(physics.previousDigest, digest(batch), 'Physics is bound to the exact German end frame')
-    assert.equal(physicsSources.length, 144)
-    assert.ok(physicsSources.every(source => source.startsWith('7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:')))
-    assert.deepEqual(physicsSources.filter(source => afterGermanSources.has(source)), [],
-      'all 144 Physics operation sources are new snapshots, independently of older witness obligations')
-    assert.equal(physics.operations.length, 2843)
-    const physicsStepCounts = { 'materialize-atomic': 0, 'remove-cluster-target': 0, 'remove-cluster': 0, atomic: 0 }
-    for (const operation of physics.operations) for (const step of 'steps' in operation ? operation.steps : [operation.step]) {
-      if ('operation' in step) physicsStepCounts[step.operation]++
-      else physicsStepCounts.atomic++
-    }
-    assert.deepEqual(physicsStepCounts, { 'materialize-atomic': 1319, 'remove-cluster-target': 15, 'remove-cluster': 15, atomic: 1494 })
-    assert.equal(physics.legacyContinuations.length, 17)
-    assert.equal(physics.currentDocumentDigests.length, 21)
-  }
-  const afterPhysicsSources = new Set([...afterGermanSources, ...physicsSources])
-  assert.equal(afterPhysicsSources.size, physics ? 881 : 737, 'the exact Physics prefix source union remains unchanged')
-  const chemistrySources = chemistry ? batchTestSources(chemistry) : []
-  if (chemistry) {
-    assert.ok(physics)
-    assert.equal(chemistry.id, 'ch-complete-atomic-prerequisites-and-transitive-reduction')
-    assert.equal(chemistry.previousDigest, digest(physics), 'Chemistry is bound to the entire exact Physics batch object')
-    assert.equal(chemistrySources.length, 181)
-    assert.ok(chemistrySources.every(source => source.startsWith('c436b994-8f44-5134-b9f8-0c9f5d6a5ba0:')))
-    assert.deepEqual(chemistrySources.filter(source => afterPhysicsSources.has(source)), [],
-      'the actual Chemistry source union is deduplicated against every historical snapshot')
-    assert.equal(chemistry.operations.length, 1308)
-    const chemistryStepCounts = { 'materialize-atomic': 0, 'remove-cluster-target': 0, 'remove-cluster': 0, atomic: 0 }
-    for (const operation of chemistry.operations) for (const step of 'steps' in operation ? operation.steps : [operation.step]) {
-      if ('operation' in step) chemistryStepCounts[step.operation]++
-      else chemistryStepCounts.atomic++
-    }
-    assert.deepEqual(chemistryStepCounts, { 'materialize-atomic': 578, 'remove-cluster-target': 46, 'remove-cluster': 11, atomic: 673 })
-    assert.deepEqual(chemistry.legacyContinuations, [
-      { witness: { kind: 'legacy-path', path: '/removals/191/atomicWitnesses/2' }, edgeIndex: 0, removalId: 'ch-atomic-cut-526' },
-      { witness: { kind: 'legacy-path', path: '/removals/192/atomicWitnesses/2' }, edgeIndex: 0, removalId: 'ch-atomic-cut-526' },
-    ], 'both actual old witness positions are explicitly continued')
-    assert.equal(chemistry.currentDocumentDigests.length, 21)
-  }
-  const expectedOriginals = new Set([...afterPhysicsSources, ...chemistrySources])
-  const originals = earliestBatchTestOriginals(registry)
-  assert.equal(originals.size, chemistry ? 1062 : physics ? 881 : 737)
-  assert.deepEqual([...originals.keys()].sort(), [...expectedOriginals].sort(), 'the full source union is exact')
-  if (physics) {
-    const negativeDirectory = resolve(repositoryRoot, 'app/node_modules/.tmp/physics-live-negative-parents')
-    mkdirSync(negativeDirectory, { recursive: true })
-    try {
-      const invalidPredecessor = structuredClone(registry)
-      invalidPredecessor.batches[1].previousDigest = 'sha256:' + '0'.repeat(64)
-      const invalidPredecessorPath = resolve(negativeDirectory, 'invalid-second-predecessor.json')
-      writeFileSync(invalidPredecessorPath, JSON.stringify(invalidPredecessor))
-      await assert.rejects(loadVerifiedPrerequisiteReductionContext({ repositoryRoot, registryPath: invalidPredecessorPath }),
-        /batch predecessor digest differs/u, 'the genuine loader rejects the actual second-batch predecessor mutation')
-      const missingContinuation = structuredClone(registry)
-      missingContinuation.batches[1].legacyContinuations.shift()
-      if (chemistry) missingContinuation.batches[2].previousDigest = digest(missingContinuation.batches[1])
-      const missingContinuationPath = resolve(negativeDirectory, 'missing-prior-witness-continuation.json')
-      writeFileSync(missingContinuationPath, JSON.stringify(missingContinuation))
-      await assert.rejects(loadVerifiedPrerequisiteReductionContext({ repositoryRoot, registryPath: missingContinuationPath }),
-        /literal atomic witness edge missing/u, 'removing one necessary actual prior witness-position continuation fails closed')
-    } finally { rmSync(negativeDirectory, { recursive: true, force: true }) }
-  }
-  if (chemistry) {
-    const negativeDirectory = resolve(repositoryRoot, 'app/node_modules/.tmp/chemistry-live-negative-parents')
-    mkdirSync(negativeDirectory, { recursive: true })
-    try {
-      const invalidPredecessor = structuredClone(registry)
-      invalidPredecessor.batches[2].previousDigest = 'sha256:' + '0'.repeat(64)
-      const invalidPath = resolve(negativeDirectory, 'invalid-third-predecessor.json')
-      writeFileSync(invalidPath, JSON.stringify(invalidPredecessor))
-      await assert.rejects(loadVerifiedPrerequisiteReductionContext({ repositoryRoot, registryPath: invalidPath }),
-        /batch predecessor digest differs/u, 'the actual third batch cannot detach from Physics')
-      const missingContinuation = structuredClone(registry)
-      missingContinuation.batches[2].legacyContinuations.shift()
-      const missingPath = resolve(negativeDirectory, 'missing-chemistry-prior-witness-continuation.json')
-      writeFileSync(missingPath, JSON.stringify(missingContinuation))
-      await assert.rejects(loadVerifiedPrerequisiteReductionContext({ repositoryRoot, registryPath: missingPath }),
-        /literal atomic witness edge missing/u, 'the actual Chemistry continuation cannot be omitted')
-    } finally { rmSync(negativeDirectory, { recursive: true, force: true }) }
-  }
-  assert.deepEqual(summary.affectedGoalIds, [...originals.keys()].sort(), 'actual verified affected IDs equal the deduplicated source union')
-  const currentGoals = batchTestGoals(currentDocuments)
-  if (physics) {
-    assert.equal(physicsSources.filter(source => !(currentGoals.get(source)!.contains?.length)).length, 139)
-    assert.equal(physicsSources.filter(source => currentGoals.get(source)!.contains?.length).length, 5)
-    assert.equal(physics.originalRequires.filter(original => {
-      const raw = currentGoals.get(original.source)!
-      return Object.hasOwn(raw, 'requires') !== (original.requires !== null)
-        || JSON.stringify(raw.requires) !== JSON.stringify(original.requires === null ? undefined : original.requires)
-    }).length, 140, 'all 144 operation snapshots remain required although only 140 arrays differ net')
-  }
-  if (chemistry) {
-    assert.equal(chemistrySources.filter(source => !(currentGoals.get(source)!.contains?.length)).length, 171)
-    assert.equal(chemistrySources.filter(source => currentGoals.get(source)!.contains?.length).length, 10)
-    assert.equal(chemistry.originalRequires.filter(original => {
-      const raw = currentGoals.get(original.source)!
-      return Object.hasOwn(raw, 'requires') !== (original.requires !== null)
-        || JSON.stringify(raw.requires) !== JSON.stringify(original.requires === null ? undefined : original.requires)
-    }).length, 153, 'all 181 Chemistry snapshots remain required although 28 arrays are net unchanged')
-  }
-  for (const original of originals.values()) {
-    const raw = currentGoals.get(original.source)!
-    const restored = reviewBindingGoal(context, original.source, raw)
-    assert.equal(Object.hasOwn(restored, 'requires'), original.requires !== null,
-      `actual earliest original field presence: ${original.source}`)
-    if (original.requires !== null) assert.deepEqual(restored.requires, original.requires,
-      `actual earliest original ordered array: ${original.source}`)
-    const currentAgain = structuredClone(restored)
-    if (Object.hasOwn(raw, 'requires')) currentAgain.requires = structuredClone(raw.requires)
-    else delete currentAgain.requires
-    assert.deepEqual(currentAgain, raw, `only certified requires differ: ${original.source}`)
-  }
-  for (const { path, document } of currentDocuments) {
-    const original = structuredClone(document)
-    original.goals = original.goals.map(goal => structuredClone(reviewBindingGoal(context, `${original.landscapeId}:${goal.id}`, goal)) as Goal)
-    assert.equal(digest(original), registry.catalogSources.find(entry => entry.path === path)!.baselineDocumentDigest,
-      `all original document fields restored from actual V6: ${path}`)
-  }
-  const operationCount = registry.batches.reduce((sum, entry) => sum + entry.operations.length, 0)
-  const allBatchSources = new Set(registry.batches.flatMap(batchTestSources))
-  console.log(`Actual V6 registry: ${registry.batches.length} batches, ${operationCount} ordered operations, ${allBatchSources.size} batch sources, ${originals.size} deduplicated original snapshots and 21 complete documents passed.`)
-}
-
-
-function restoreBoundApplicabilityRefreshV6(
-  registry: ApplicabilityRefreshPrerequisiteReductionRegistry, current: BatchTestDocument[],
-) {
-  assertBatchTestDocuments(current, registry, registry.catalogSources, 'V7 complete current')
-  const parentFile = resolve(root, registry.parentRegistryPath)
-  assert.equal(relative(root, parentFile), registry.parentRegistryPath, 'canonical relative live parent path')
-  const parentBytes = readFileSync(parentFile)
-  assert.equal(`sha256:${createHash('sha256').update(parentBytes).digest('hex')}`, registry.parentRegistryRawDigest)
-  const chemistryParent = registry.parentRegistryRawDigest === 'sha256:e9d880b8f038b251a766d1208ae04f65004e161c336ee894d31a0433c380c389'
-  const physicsParent = registry.parentRegistryRawDigest === 'sha256:dd38bd85793769d2afae6b34a3b0b89112c497ee1b17b54f92a61af5bf785c93'
-  assert.equal(registry.parentRegistryRawDigest, chemistryParent
-    ? 'sha256:e9d880b8f038b251a766d1208ae04f65004e161c336ee894d31a0433c380c389'
-    : physicsParent ? 'sha256:dd38bd85793769d2afae6b34a3b0b89112c497ee1b17b54f92a61af5bf785c93'
-    : 'sha256:ecaa33fc009f1b72f34edbfe8fbc67916e5e280026831333902038e1ecb0b109',
-    'only the byte-pinned German, Physics or third Chemistry V6 parent is accepted')
-  assert.equal(registry.parentRegistryPath, chemistryParent
-    ? 'curricula/DE/Gymnasium/provenance/prerequisite-reduction-proof-registry-v6-chemistry-20261110.json'
-    : physicsParent ? 'curricula/DE/Gymnasium/provenance/prerequisite-reduction-proof-registry-v6-physics-20261109.json'
-    : 'curricula/DE/Gymnasium/provenance/prerequisite-reduction-proof-registry-v6-german-20261109.json')
-  const parent = JSON.parse(parentBytes.toString('utf8')) as BatchedPrerequisiteReductionRegistry
-  assert.equal(parent.proofContract, BATCHED_PREREQUISITE_REDUCTION_CONTRACT)
-  const baseBindings = (sources: typeof registry.catalogSources) => sources.map(({ path, landscapeId, baselineDocumentDigest }) =>
-    ({ path, landscapeId, baselineDocumentDigest }))
-  assert.deepEqual(baseBindings(registry.catalogSources), baseBindings(parent.catalogSources))
-  const documents = structuredClone(current), goals = batchTestGoals(documents)
-  assert.equal(new Set(registry.originalApplicability.map(entry => entry.source)).size, registry.originalApplicability.length)
-  for (const original of registry.originalApplicability) {
-    const goal = goals.get(original.source)
-    assert.ok(goal, `known original cache source ${original.source}`)
-    const beforeFingerprint = fingerprintSemanticKindSourceGoal(goal)
-    if (original.present) goal.applicability = structuredClone(original.value)
-    else delete goal.applicability
-    assert.equal(fingerprintSemanticKindSourceGoal(goal), beforeFingerprint, 'cache restoration does not change SourceFingerprint-v1')
-  }
-  assertBatchTestDocuments(documents, parent, parent.catalogSources, 'V7 restored complete V6 end frame')
-  return { parent, parentBytes, documents }
-}
-async function verifyActualLiveApplicabilityRefresh(
-  registry: ApplicabilityRefreshPrerequisiteReductionRegistry, current: BatchTestDocument[],
-  parent: BatchedPrerequisiteReductionRegistry,
-) {
-  const context = await loadVerifiedPrerequisiteReductionContext()
-  assert.ok(context)
-  const summary = verifiedPrerequisiteReductionSummary(context)!
-  assert.equal(summary.proofContract, APPLICABILITY_REFRESH_PREREQUISITE_REDUCTION_CONTRACT)
-  assert.equal(summary.registryDigest, `sha256:${createHash('sha256')
-    .update(readFileSync(resolve(root, PREREQUISITE_REDUCTION_REGISTRY_PATH))).digest('hex')}`)
-  assert.equal(current.length, 21)
-  assert.equal(batchTestGoals(current).size, 6524)
-  assert.deepEqual(summary.affectedGoalIds, [...earliestBatchTestOriginals(parent).keys()].sort())
-  const chemistryParent = parent.batches.length === 3
-  const physicsParent = parent.batches.length >= 2
-  assert.equal(summary.affectedGoalIds.length, chemistryParent ? 1062 : physicsParent ? 881 : 737,
-    'cache-only sources never enlarge the exact approved prerequisite-source union')
-  assert.equal(summary.registryDigest, chemistryParent
-    ? 'sha256:e7d4415a37e5f4d9b351ff85538d519b79a0a2ff642293ee5e3118bb6ef6c4b6'
-    : physicsParent ? 'sha256:2fc01e8c0bd0cf1bf7af05d094cac9373ca985d9c9fd5128b3bd15745e614000'
-    : 'sha256:8e56e88b70e0b34c649596e1d58acbf3e099e767f7bed92838153983decb2c25',
-    'the actual complete V7 wrapper equals the reviewed German, Physics or Chemistry candidate')
-  assert.equal(registry.originalApplicability.length, 27)
-  assert.ok(registry.originalApplicability.every(original => original.present === true))
-  assert.equal(digest(registry.originalApplicability),
-    'sha256:3906dc1870fd98e2681029c3dd8c766f6c70436301c87b2ffb618a1100e57f11', 'all exact old cache values and presence flags are pinned')
-  assert.deepEqual(registry.originalApplicability.map(original => original.source), [
-    '7d51b38c-a149-5407-bddc-d2ce7878b020:de388e30-1623-5c21-9daf-1a985219da10',
-    '7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:00e2ddfe-18c1-57a4-86ad-ee467a1a3d61',
-    '7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:1ab5f599-0927-579d-94cc-feecdf3b5603',
-    '7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:35dd0a33-e5d5-53b9-8438-3d339173db1b',
-    '7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:3f477f0d-4f79-5eed-8671-fb2667d60910',
-    '7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:52bdabb2-d9a1-56e6-bccf-ff58f299c739',
-    '7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:58db62d4-458f-5e2d-9ca0-968e09f4944b',
-    '7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:5e64eacd-5204-5028-af23-02a43377c56e',
-    '7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:6367d45e-919e-4c19-bcd9-7770a2d51139',
-    '7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:783c1ffe-d983-5c5a-8897-2c88fc64147c',
-    '7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:7fe6f8a1-5580-4e37-bf8e-9772964a6b0a',
-    '7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:841edfdb-5e12-5a37-ab12-552a1d8e92ca',
-    '7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:9743baad-9371-52b6-98ee-72bc6dc68701',
-    '7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:a24c41ce-68c5-56a7-8235-ef9a7dba7042',
-    '7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:ba29e928-a287-5de7-b3fe-5c8c3731363b',
-    '7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:cf570e66-2ce2-5923-9033-c97d74119553',
-    '7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:d02438ba-0cc9-5993-831e-5e44d35e32c4',
-    '7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:d441ee2f-9230-5751-832b-5b0b5cf14605',
-    '7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:d8442d03-8b7e-54b7-9d9a-dc31ce541daa',
-    '7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:db5f4121-d4b1-5006-b2da-6e76aac72bf5',
-    'c436b994-8f44-5134-b9f8-0c9f5d6a5ba0:17fe22c4-1248-5f37-9d0c-52ee4571d09f',
-    'c436b994-8f44-5134-b9f8-0c9f5d6a5ba0:7964cb36-e9b1-5176-9426-a82041a5b72f',
-    'c436b994-8f44-5134-b9f8-0c9f5d6a5ba0:79db6d68-b402-5563-a348-f2784fed8867',
-    'c436b994-8f44-5134-b9f8-0c9f5d6a5ba0:8576b82b-811a-5e13-b5dc-ec5d42030565',
-    'c436b994-8f44-5134-b9f8-0c9f5d6a5ba0:965ca297-5dbf-5e58-b5f0-6559a4433646',
-    'c436b994-8f44-5134-b9f8-0c9f5d6a5ba0:c441d9e8-d9d9-5e55-a189-a37345541321',
-    'c436b994-8f44-5134-b9f8-0c9f5d6a5ba0:fcaf8c9b-bd81-552e-9d91-43649895471e',
-  ], 'the actual 19 Physics, 7 Chemistry and 1 Informatics cache sources are fixed')
-  for (const { path, document } of current) {
-    const original = structuredClone(document)
-    original.goals = original.goals.map(goal => structuredClone(reviewBindingGoal(context, `${original.landscapeId}:${goal.id}`, goal)) as Goal)
-    assert.equal(digest(original), parent.catalogSources.find(entry => entry.path === path)!.baselineDocumentDigest,
-      `V7 capability restores the complete earliest baseline: ${path}`)
-  }
-  if (physicsParent) {
-    const physics = current.find(({ document }) => document.landscapeId === '7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a')!.document
-    assert.equal(physics.goals.length, 766)
-    const earliest = earliestBatchTestOriginals(parent)
-    const beforePhysics = earliestBatchTestOriginals({ ...parent, batches: parent.batches.slice(0, 1) })
-    assert.equal([...beforePhysics.keys()].filter(source => source.startsWith(`${physics.landscapeId}:`)).length, 4,
-      'the four earlier Physics originals retain their chronological priority')
-    for (const goal of physics.goals) {
-      const source = `${physics.landscapeId}:${goal.id}`, expected = structuredClone(goal)
-      const original = earliest.get(source)
-      if (original) {
-        if (original.requires === null) delete expected.requires
-        else expected.requires = structuredClone(original.requires)
-      }
-      assert.equal(fingerprintSemanticKindSourceGoal(reviewBindingGoal(context, source, goal)),
-        fingerprintSemanticKindSourceGoal(expected), `all 766 earliest Physics sourceFP baselines: ${source}`)
-    }
-  }
-  if (chemistryParent) {
-    const chemistry = current.find(({ document }) => document.landscapeId === 'c436b994-8f44-5134-b9f8-0c9f5d6a5ba0')!.document
-    assert.equal(chemistry.goals.length, 742)
-    const earliest = earliestBatchTestOriginals(parent)
-    const beforeChemistry = earliestBatchTestOriginals({ ...parent, batches: parent.batches.slice(0, 2) })
-    const historicalChemistrySources = [
-      'bb707fda-504c-4699-a78c-d0a6c320658f', '871eabde-6e19-59d3-bc7c-60977a9837db',
-      '08b44b8f-e407-5a1f-82dc-e70e598022cf', '10ce2814-8796-5633-9bed-f6990d039b91',
-    ].map(id => `${chemistry.landscapeId}:${id}`).sort()
-    assert.deepEqual([...beforeChemistry.keys()].filter(source => source.startsWith(`${chemistry.landscapeId}:`)).sort(), historicalChemistrySources)
-    for (const source of historicalChemistrySources) assert.deepEqual(earliest.get(source), beforeChemistry.get(source),
-      `the earlier Chemistry original retains chronological priority: ${source}`)
-    for (const goal of chemistry.goals) {
-      const source = `${chemistry.landscapeId}:${goal.id}`, expected = structuredClone(goal)
-      const original = earliest.get(source)
-      if (original) {
-        if (original.requires === null) delete expected.requires
-        else expected.requires = structuredClone(original.requires)
-      }
-      assert.equal(fingerprintSemanticKindSourceGoal(reviewBindingGoal(context, source, goal)),
-        fingerprintSemanticKindSourceGoal(expected), `all 742 earliest Chemistry sourceFP baselines: ${source}`)
-    }
-  }
-  console.log(`Actual V7 cache refresh: unchanged ${summary.affectedGoalIds.length} prerequisite sources, exact 27 cache snapshots and 21 complete current documents passed.`)
 }
 
 // A learning unit is an orthogonal placement layer: the proof fingerprints each catalog
@@ -1572,16 +1127,68 @@ async function runLearningUnitLayerRegressions() {
   console.log('Learning-unit layer regressions passed: 4 layer edits accepted, 13 non-layer changes rejected, V8 chain valid with layers, rebinding rejected.')
 }
 
+// The proof is frozen: the active registry is the goal-scoped V9 registry, and the complete V8
+// proof survives only as its byte-bound parent, which is never replayed here. A transfer binds a
+// single goal, so every assertion below holds for any later catalog: a new goal or document has
+// no transfer, a changed or removed goal releases only its own transfer, and a learning unit
+// changes no goal object.
+async function verifyActualFrozenRegistry() {
+  const registryBytes = readFileSync(resolve(root, PREREQUISITE_REDUCTION_REGISTRY_PATH))
+  const frozen = JSON.parse(registryBytes.toString('utf8')) as GoalScopedPrerequisiteReductionRegistry
+  assert.equal(frozen.proofContract, GOAL_SCOPED_PREREQUISITE_REDUCTION_CONTRACT,
+    'the prerequisite-reduction proof is frozen: the active registry is the goal-scoped V9 registry')
+  // The frozen registry is immutable evidence: once the catalog has moved on, nothing can
+  // derive it again, so its exact bytes are pinned here.
+  assert.equal(rawDigest(registryBytes), 'sha256:a48b52ca0449ff75dce93e93a3ade8982210d32a03f9a585a03b935ebed052b7',
+    'the registry frozen on 12 November 2026 is unchanged')
+  assert.equal(frozen.transfers.length, 1361, 'the frozen registry records 1361 transfers')
+  const parentBytes = readFileSync(resolve(root, frozen.parentRegistryPath))
+  assert.equal(rawDigest(parentBytes), frozen.parentRegistryRawDigest, 'the frozen parent keeps its bound raw bytes')
+  assert.equal((JSON.parse(parentBytes.toString('utf8')) as { proofContract?: unknown }).proofContract,
+    BASIS_BOUND_PREREQUISITE_REDUCTION_CONTRACT, 'the frozen parent is the complete V8 proof')
+
+  const context = await loadVerifiedPrerequisiteReductionContext({ repositoryRoot: root })
+  assert.ok(context, 'the active frozen registry loads')
+  const summary = verifiedPrerequisiteReductionSummary(context)!
+  assert.equal(summary.proofContract, GOAL_SCOPED_PREREQUISITE_REDUCTION_CONTRACT, 'the active live registry is the frozen goal-scoped registry')
+  assert.equal(summary.registryDigest, rawDigest(registryBytes), 'the context verified the pinned registry bytes')
+  const documents = catalogDocuments(resolve(root, 'curricula/DE/Gymnasium/canonical')), goals = goalsOf(documents)
+  // A transfer is active while its goal still is the frozen goal; any other transfer is released.
+  const active = new Map(frozen.transfers.filter(({ source, frozenGoalDigest }) => {
+    const goal = goals.get(source)
+    return goal !== undefined && fingerprintPrerequisiteReductionRecord(goal) === frozenGoalDigest
+  }).map(transfer => [transfer.source, transfer]))
+  assert.deepEqual(summary.affectedGoalIds, [...active.keys()].sort(), 'exactly the transfers whose goal is unchanged since the freeze are active')
+  for (const [source, goal] of goals) {
+    const reviewed = reviewBindingGoal(context, source, goal), transfer = active.get(source)
+    if (!transfer) {
+      assert.deepEqual(reviewed, goal, `a goal without an active transfer is reviewed with its current value: ${source}`)
+      continue
+    }
+    const expected: Record<string, unknown> = { ...structuredClone(goal), ...structuredClone(transfer.reviewedFields) }
+    for (const field of transfer.reviewedAbsentFields) delete expected[field]
+    assert.deepEqual(reviewed, expected, `an active transfer changes exactly its reviewed fields: ${source}`)
+    assert.equal(fingerprintPrerequisiteReductionRecord(reviewed), transfer.reviewedGoalDigest, `the reviewed value has the reviewed goal digest: ${source}`)
+    assert.notDeepStrictEqual(reviewed, goal, `the reviewed value differs from the current goal: ${source}`)
+    // Reviewed values are earliest baselines; the complete proof binds an assessment
+    // applicability basis only in its V8 entries, after its basis-free V7 prefix.
+    assert.equal(Object.hasOwn((reviewed.extendedData as Record<string, unknown> | undefined) ?? {}, 'assessmentApplicabilityBasis'), false,
+      `the reviewed value is basis-free: ${source}`)
+  }
+  const released = frozen.transfers.length - active.size
+  console.log(`Frozen goal-scoped registry: ${active.size} of ${frozen.transfers.length} transfers active, ${released} released; ${goals.size} goals in ${documents.length} documents checked.`)
+}
+
 try {
   const basisOnly = process.argv.slice(2)
   assert.ok(basisOnly.length === 0 || basisOnly.length === 1 && basisOnly[0] === '--basis-bound-fixtures-only', 'unknown proof test selector')
   await runBasisBoundFixtureRegressions()
+  await runGoalScopedFixtureRegressions()
   await runLearningUnitLayerRegressions()
   if (basisOnly.length === 0) {
   await runApplicabilityRefreshFixtureRegressions()
   await runBatchFixtureRegressions()
   await runBatchRequiredNegativeRegressions()
-  runBatchLiveHelperRegressions()
   const f = fixture()
   rmSync(resolve(f.directory, 'proof.json'))
   assert.equal(await f.load(), undefined, 'absent registry preserves the old strict path')
@@ -2229,68 +1836,7 @@ try {
   badParent.save()
   await assert.rejects(badParent.load, /atomic tail witness|witness edge/u)
 
-  const activeRegistry = JSON.parse(readFileSync(resolve(root, PREREQUISITE_REDUCTION_REGISTRY_PATH), 'utf8')) as PrerequisiteReductionRegistry
-  assert.ok(activeRegistry.proofContract === CLUSTER_TARGET_PREREQUISITE_REDUCTION_CONTRACT
-    || activeRegistry.proofContract === BATCHED_PREREQUISITE_REDUCTION_CONTRACT
-    || activeRegistry.proofContract === APPLICABILITY_REFRESH_PREREQUISITE_REDUCTION_CONTRACT
-    || activeRegistry.proofContract === BASIS_BOUND_PREREQUISITE_REDUCTION_CONTRACT, 'the active live proof uses V5, V6, V7 or the bound-basis wrapper')
-  if (activeRegistry.proofContract === BASIS_BOUND_PREREQUISITE_REDUCTION_CONTRACT) {
-    const context = await loadVerifiedPrerequisiteReductionContext({ repositoryRoot: root })
-    assert.ok(context)
-    assert.equal(verifiedPrerequisiteReductionSummary(context)!.proofContract, BASIS_BOUND_PREREQUISITE_REDUCTION_CONTRACT)
-    const current = activeRegistry.catalogSources.map(({ path }) => JSON.parse(readFileSync(resolve(root, path), 'utf8')) as Document)
-    assert.equal(current.length, 21)
-    assert.equal(current.reduce((count, document) => count + document.goals.length, 0), 6524)
-    const goals = new Map<string, Goal>(current.flatMap(document => document.goals.map(goal => [`${document.landscapeId}:${goal.id}`, goal] as const)))
-    for (const [source, goal] of goals) {
-      const baseline = reviewBindingGoal(context, source, goal)
-      assert.equal(Object.hasOwn((baseline.extendedData as Record<string, unknown> | undefined) ?? {}, 'assessmentApplicabilityBasis'), false,
-        `earliest reviewed baseline stays basis-free: ${source}`)
-    }
-    const declared = new Set<string>()
-    for (const entry of activeRegistry.entries) for (const binding of entry.basisBindings) {
-      assert.ok(!declared.has(binding.source)); declared.add(binding.source)
-      const old = entry.batch.originalRequires.find(original => original.source === binding.source)
-      assert.ok(old && old.requires)
-      assert.deepEqual((goals.get(binding.source)!.extendedData as Record<string, unknown>).assessmentApplicabilityBasis,
-        { kind: 'allOfGoalApplicability', goalRefs: old.requires }, `actual exact immediate-start predicate: ${binding.source}`)
-    }
-    assert.ok(declared.size > 0)
-    console.log(`Actual basis-bound public loader: ${activeRegistry.entries.length} flat entries, ${declared.size} exact assessment bases, 21 complete current documents and 6524 earliest comparison guards passed.`)
-  } else if (activeRegistry.proofContract === CLUSTER_TARGET_PREREQUISITE_REDUCTION_CONTRACT) {
-    await verifyHistoricalLiveV5Checkpoint(root)
-  } else {
-    const currentDocuments = activeRegistry.catalogSources.map(({ path }) => ({ path,
-      document: JSON.parse(readFileSync(resolve(root, path), 'utf8')) as Document }))
-    const refresh = activeRegistry.proofContract === APPLICABILITY_REFRESH_PREREQUISITE_REDUCTION_CONTRACT
-      ? restoreBoundApplicabilityRefreshV6(activeRegistry, currentDocuments) : undefined
-    const v6Registry = refresh ? refresh.parent : activeRegistry as BatchedPrerequisiteReductionRegistry
-    const v6Documents = refresh ? refresh.documents : currentDocuments
-    const checkpoint = restoreBoundV5TestCheckpoint(v6Registry, v6Documents)
-    assert.equal(v6Registry.v5Checkpoint.registryDigest,
-      'sha256:672c5e69194f23d3178a80225e804ca8c01ba88c0af37a7630a7a339b2e3c637', 'the unchanged complete live V5 prefix remains independently pinned')
-    const checkpointRoot = resolve(temporaryRoot, 'bound-live-v5-checkpoint')
-    for (const { path, document } of checkpoint.documents) {
-      mkdirSync(dirname(resolve(checkpointRoot, path)), { recursive: true })
-      writeFileSync(resolve(checkpointRoot, path), JSON.stringify(document))
-    }
-    mkdirSync(dirname(resolve(checkpointRoot, PREREQUISITE_REDUCTION_REGISTRY_PATH)), { recursive: true })
-    writeFileSync(resolve(checkpointRoot, PREREQUISITE_REDUCTION_REGISTRY_PATH), JSON.stringify(checkpoint.parent))
-    await verifyHistoricalLiveV5Checkpoint(checkpointRoot)
-    let v6Root = root
-    if (refresh) {
-      v6Root = resolve(temporaryRoot, 'bound-live-v6-before-cache-refresh')
-      for (const { path, document } of v6Documents) {
-        mkdirSync(dirname(resolve(v6Root, path)), { recursive: true })
-        writeFileSync(resolve(v6Root, path), JSON.stringify(document))
-      }
-      mkdirSync(dirname(resolve(v6Root, PREREQUISITE_REDUCTION_REGISTRY_PATH)), { recursive: true })
-      writeFileSync(resolve(v6Root, PREREQUISITE_REDUCTION_REGISTRY_PATH), refresh.parentBytes)
-    }
-    await verifyActualLiveV6(v6Registry, v6Documents, checkpoint, v6Root)
-    if (activeRegistry.proofContract === APPLICABILITY_REFRESH_PREREQUISITE_REDUCTION_CONTRACT)
-      await verifyActualLiveApplicabilityRefresh(activeRegistry, currentDocuments, v6Registry)
-  }
+  await verifyActualFrozenRegistry()
   }
 } finally {
   rmSync(temporaryRoot, { recursive: true, force: true })

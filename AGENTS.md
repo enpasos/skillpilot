@@ -293,13 +293,7 @@ We use exactly **two connection types**:
    - Product Owner decision of **12 November 2026** supersedes the earlier prerequisite-migration order and preservation obligation: acceptance depends on comprehensive deterministic validation of the current target state within the milestone examination. No comparison with a historical prerequisite closure, scope or frontier is required for `G17` or `GD-C17`.
    - Before any `M1`–`M7` pass, check the complete declared canonical subject inventory, including necessary foreign prerequisites and inheriting ancestors, for resolved identities/references, acyclicity, atomic `requires` endpoints, consistent explicit types and transitive minimality. A violation or incomplete check caps the subject and its scopes at `M0`; an incomplete catalog aborts the status run. Current `CQR-001` coverage is the canonical Gymnasium catalog, not every curriculum in the repository.
    - Historical reduction proofs remain evidence for the review bindings that actually reuse them; they neither define the current validation inventory nor replace current-state checks. A missing or invalid proof disables that reuse and leaves strict current-input QA checks in force; it never grants stale reviews. Existing source fidelity, review freshness and learner-result contracts remain in force. Graph edits never automatically write learner results.
-   - A separately bound historical frame may reconstruct the exact certified
-     catalog for the unchanged proof verifier. Historical comparisons then apply
-     only to unchanged subjects with checked dependency closure and unchanged
-     compiled applicability under the same captured external inputs. Changed or
-     dependent subjects use current inputs only. The bounded capability and its
-     receipt must identify this limit; reconstruction never validates the changed
-     graph, changes old proof bytes or supplies new review decisions.
+   - Product Owner decision of **12 November 2026 (frozen proof, registry contract V9)**: the reduction proof is frozen at its end state and review reuse is decided goal by goal. Contracts V1 to V8 bind complete documents and store no historical document, so their chain can be replayed only while the catalog still is its end state; any goal change, even a new exam, disabled the whole reuse. The chain was verified completely for the last time at the freeze. The active registry `curricula/DE/Gymnasium/provenance/prerequisite-reduction-proof-registry.json` (`frozen-goal-scoped-prerequisite-reduction-v9`) binds the complete V8 proof as its parent by raw digest and records, for each of the 1,361 goals whose reviews saw another value than the frozen goal, that reviewed value and the digest of the frozen goal. While a goal still has its frozen digest, its reviews are compared with the reviewed value. A changed or removed goal has no transfer and faces the strict current-input checks, so only that goal needs a new review. Every other catalog change (new goals, new documents, other goals, learning units) leaves all transfers untouched. Witness paths belong to the frozen proof and are not re-checked against later catalogs; ordinary reviews do not depend on edges of other goals either. The V9 registry and its parent are immutable evidence: never edit or rebind them. No process replays the history after the freeze; a later bulk normalization needs a new proof epoch. Record: `docs/dev/prerequisite-reduction-proof-freeze-2026-11-12.md`.
    - Intention: modelling **didactic dependencies** (prevents jumping into topics without foundation).
 
 2. `contains` – **is composed of / includes**  
@@ -442,15 +436,19 @@ Interpretation rules:
   Current support requires a fully resolved local expression and rejects
   malformed, duplicate, cyclic, foreign or Memory-derived dependencies. This is a temporary
   compiler boundary, not a restriction on foreign prerequisites in the Personal
-  Curriculum. Existing Biology and Economics basis bindings use the V8 proof
-  contract for their historical review comparisons. Ordinary current
+  Curriculum. The V8 proof contract introduced the existing Biology and
+  Economics basis bindings; the frozen V9 registry carries their reviewed
+  values per goal. Ordinary current
   description-review contexts still reject an unqualified basis; the
   current-state decision does not extend the review schema. Those evidence
   bindings remain intact; new graph acceptance follows the current-state
   decision above and does not require another prerequisite-migration
-  preservation proof. The milestone producer uses historical proofs only for
-  review reuse; standalone strict proof tools and native historical regression
-  suites remain intact.
+  preservation proof. The milestone producer uses the frozen proof only for
+  review reuse (registry contract V9, §2.2). The complete-proof verifier stays
+  as a tool with its fixture regressions. The replays of the real history ran
+  for the last time at the freeze and are retired; the native gates on the
+  current catalog, among them `APV-102`, live in
+  `CanonicalRequiredLearningGateTest`.
 - local authoring tools should mirror this split: one tool for canonical cluster authoring, one tool for composition-view authoring
 - preferred design maxim: **as much semantics as necessary, as little ontology as possible**
 - add semantic distinctions only when they solve a concrete authoring, migration, validation, projection, or runtime problem
@@ -573,12 +571,13 @@ curricular-level terminology. Personalization Levels 1–4, QA maturity and goal
   `learningUnit`, without `goalPlacements` of relation `own` or towards a
   learning unit, and without `learningUnitCoverage`. It is the projection the
   package build applies for contracts 1.0 and 1.1; for a landscape without
-  units it is the identity. The prerequisite-reduction proof (TypeScript
-  verifier, Java test, Python bridge) and the input pin of the Mathematics
-  duration layout fingerprint that projection; the V6 to V8 registries are
-  unedited and still verify, and a registry record keeps its full digest. A
-  unit edit therefore never stales these proofs, and any other change still
-  does. Carriers that predate learning units follow the same rule: a 1.0 or
+  units it is the identity. Contracts V1 to V8 of the prerequisite-reduction
+  proof and the input pin of the Mathematics duration layout fingerprint that
+  projection; a registry record keeps its full digest. Since the freeze of
+  12 November 2026 the active V9 registry binds single goals (§2.2), so
+  neither a unit edit nor an unrelated goal change stales review reuse; the
+  duration-layout pin still goes stale on any goal change in Mathematics.
+  Carriers that predate learning units follow the same rule: a 1.0 or
   1.1 build and the legacy subject export (with its MEM/FWU roundtrip) ship
   the landscape without the layer; only contract 1.2 carries units. This was
   the recommendation presented to the Product Owner on 12 November 2026 after

@@ -229,8 +229,8 @@ class BackendCiFailurePriorityTests(unittest.TestCase):
         self.assertEqual(["com.skillpilot.FormerFailureTest"], run_backend_ci.read_failed_selectors(self.manifest))
 
 
-class BackendCiPartitionTests(unittest.TestCase):
-    """Parallel CI jobs must together run every backend test exactly once."""
+class BackendCiCommandTests(unittest.TestCase):
+    """Hosted CI runs the complete suite in parallel test JVMs."""
 
     PRIORITY = ["./gradlew", "test", "--fail-fast", "-PbackendFailurePriorityPreflight=true"]
 
@@ -248,58 +248,25 @@ class BackendCiPartitionTests(unittest.TestCase):
         self.commands.append(command)
         return subprocess.CompletedProcess(command, 0)
 
-    def test_ci_partitions_are_complementary(self):
-        partitions = run_backend_ci.PARTITIONS
-        proof_class = run_backend_ci.REDUCTION_PROOF_CLASS
-        physics = run_backend_ci.PHYSICS_REDUCTION_PROOF
-        self.assertEqual(("check", (), ()), partitions["complete"])
-        self.assertEqual({"complete", *run_backend_ci.CI_PARTITIONS}, set(partitions))
-        self.assertEqual(3, len(set(run_backend_ci.CI_PARTITIONS)))
-        # Whatever one partition leaves out, exactly one other partition runs.
-        self.assertEqual(("check", (), (proof_class,)), partitions["main"])
-        self.assertEqual(("test", (proof_class,), (physics,)), partitions["reduction-proofs"])
-        self.assertEqual(("test", (physics,), ()), partitions["physics-reduction-proof"])
-        self.assertTrue(physics.startswith(f"{proof_class}."))
-        for _, included, excluded in partitions.values():
-            for selector in (*included, *excluded):
-                self.assertTrue(run_backend_ci.valid_class_name(selector))
-                self.assertNotIn(",", selector)
+    def test_complete_check_runs_without_test_filters(self):
+        self.assertEqual(["./gradlew", "check"], run_backend_ci.complete_command(1))
+        self.assertEqual(["./gradlew", "check", "-PbackendTestForks=3"], run_backend_ci.complete_command(3))
 
-    def test_partition_selectors_name_current_test_declarations(self):
-        # A renamed class or method must fail here, not silently change a partition.
-        backend = Path(run_backend_ci.__file__).resolve().parents[1] / "backend"
-        for selector in (run_backend_ci.REDUCTION_PROOF_CLASS, run_backend_ci.PHYSICS_REDUCTION_PROOF):
-            self.assertEqual(selector, run_backend_ci.current_test_selector(backend, selector))
-
-    def test_partition_commands_exclude_and_include_the_same_selectors(self):
-        proof_class = run_backend_ci.REDUCTION_PROOF_CLASS
-        physics = run_backend_ci.PHYSICS_REDUCTION_PROOF
-        self.assertEqual(["./gradlew", "check"], run_backend_ci.partition_command("complete", 1))
-        self.assertEqual(["./gradlew", "check", f"-PbackendTestExclude={proof_class}", "-PbackendTestForks=3"],
-                         run_backend_ci.partition_command("main", 3))
-        self.assertEqual(["./gradlew", "test", f"-PbackendTestExclude={physics}", "--tests", proof_class],
-                         run_backend_ci.partition_command("reduction-proofs", 1))
-        self.assertEqual(["./gradlew", "test", "--tests", physics],
-                         run_backend_ci.partition_command("physics-reduction-proof", 1))
-
-    def test_priority_run_stays_inside_its_partition(self):
+    def test_priority_run_and_complete_check_use_the_same_forks(self):
         run_backend_ci.write_failed_selectors(self.manifest, ["com.skillpilot.FormerFailureTest"])
-        options = [f"-PbackendTestExclude={run_backend_ci.REDUCTION_PROOF_CLASS}", "-PbackendTestForks=3"]
         self.assertEqual(0, run_backend_ci.run_backend_ci(
-            self.backend, self.manifest, self.backend / "build/test-results/test", self.execute,
-            partition="main", forks=3))
+            self.backend, self.manifest, self.backend / "build/test-results/test", self.execute, forks=3))
         self.assertEqual([
-            [*self.PRIORITY, *options, "--tests", "com.skillpilot.FormerFailureTest"],
-            ["./gradlew", "check", *options],
+            [*self.PRIORITY, "-PbackendTestForks=3", "--tests", "com.skillpilot.FormerFailureTest"],
+            ["./gradlew", "check", "-PbackendTestForks=3"],
         ], self.commands)
 
     def test_compile_only_runs_no_test(self):
         self.assertEqual(0, run_backend_ci.compile_backend(self.backend, self.execute))
         self.assertEqual([["./gradlew", "testClasses"]], self.commands)
 
-    def test_command_line_requires_exactly_one_mode_and_a_known_partition(self):
+    def test_command_line_requires_exactly_one_mode_and_valid_forks(self):
         for arguments in ([], ["--manifest", "m.json", "--compile-only"],
-                          ["--manifest", "m.json", "--partition", "unknown"],
                           ["--manifest", "m.json", "--forks", "9"]):
             with self.subTest(arguments=arguments), mock.patch("sys.argv", ["run_backend_ci.py", *arguments]), \
                     mock.patch("sys.stderr"), self.assertRaises(SystemExit) as stopped:

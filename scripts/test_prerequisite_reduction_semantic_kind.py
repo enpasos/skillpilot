@@ -320,42 +320,6 @@ class SemanticKindReductionTest(unittest.TestCase):
         with self.assertRaises(bridge.PrerequisiteReductionBindingError):
             self.load()
 
-    def bounded_receipt(self):
-        frame_path = self.root / "curricula/DE/Gymnasium/provenance/historical-review-frame-2026-11-12.json"
-        frame = {"schemaVersion": 1, "contract": "dependency-bounded-historical-review-frame-v1",
-                 "registryPath": bridge.REGISTRY_PATH, "registryRawDigest": bridge.digest(self.registry.read_bytes()), "documents": []}
-        frame_path.write_text(json.dumps(frame))
-        receipt = copy.deepcopy(self.receipt)
-        receipt["proof"]["mode"] = "dependency-bounded-certified-baseline-comparison"
-        receipt["proof"]["dependencyBinding"] = {"contract": frame["contract"],
-            "snapshotPath": frame_path.relative_to(self.root).as_posix(),
-            "snapshotDigest": bridge.digest(frame_path.read_bytes()), "eligibleLandscapeIds": ["fixture"]}
-        return receipt, frame_path
-
-    def test_dependency_bounded_receipt_requires_exact_frame_and_eligible_owner(self):
-        receipt, frame_path = self.bounded_receipt()
-        with patch.object(bridge.subprocess, "run", return_value=self.completed(receipt)):
-            self.assertEqual(self.load().baseline_fingerprints["q"], BASELINE)
-        for field, value in [("snapshotDigest", BASELINE), ("eligibleLandscapeIds", ["other"]),
-                             ("contract", "unverified"), ("snapshotPath", "elsewhere")]:
-            changed = copy.deepcopy(receipt)
-            changed["proof"]["dependencyBinding"][field] = value
-            with self.subTest(field=field), patch.object(bridge.subprocess, "run", return_value=self.completed(changed)):
-                with self.assertRaises(bridge.PrerequisiteReductionBindingError): self.load()
-        frame_path.write_text("{}")
-        with patch.object(bridge.subprocess, "run", return_value=self.completed(receipt)):
-            with self.assertRaises(bridge.PrerequisiteReductionBindingError): self.load()
-
-    def test_full_receipt_cannot_masquerade_as_dependency_bounded_or_reverse(self):
-        receipt = copy.deepcopy(self.receipt)
-        receipt["proof"]["mode"] = "dependency-bounded-certified-baseline-comparison"
-        with patch.object(bridge.subprocess, "run", return_value=self.completed(receipt)):
-            with self.assertRaises(bridge.PrerequisiteReductionBindingError): self.load()
-        receipt, _ = self.bounded_receipt()
-        receipt["proof"]["mode"] = "current-or-certified-baseline-comparison"
-        with patch.object(bridge.subprocess, "run", return_value=self.completed(receipt)):
-            with self.assertRaises(bridge.PrerequisiteReductionBindingError): self.load()
-
     def test_absent_registry_uses_no_node(self):
         self.registry.unlink()
         with patch.object(bridge.subprocess, "run", side_effect=AssertionError("Node must not run")):
@@ -816,7 +780,8 @@ class SemanticKindReductionTest(unittest.TestCase):
             "extra-field": at(["unverified"], True),
         }
         for contract in (bridge.PROOF_CONTRACT, bridge.APPEND_ONLY_PROOF_CONTRACT,
-                         bridge.APPLICABILITY_REFRESH_PROOF_CONTRACT, bridge.BASIS_BOUND_PROOF_CONTRACT):
+                         bridge.APPLICABILITY_REFRESH_PROOF_CONTRACT, bridge.BASIS_BOUND_PROOF_CONTRACT,
+                         bridge.GOAL_SCOPED_PROOF_CONTRACT):
             self.receipt["proof"]["proofContract"] = contract
             for name, mutate in cases.items():
                 with self.subTest(contract=contract, name=name):
@@ -828,7 +793,7 @@ class SemanticKindReductionTest(unittest.TestCase):
         for contract in (bridge.PROOF_CONTRACT, bridge.CLUSTER_PROOF_CONTRACT, bridge.ORDERED_PROOF_CONTRACT,
                          bridge.CONTINUED_PROOF_CONTRACT, bridge.CLUSTER_TARGET_PROOF_CONTRACT,
                          bridge.APPEND_ONLY_PROOF_CONTRACT, bridge.APPLICABILITY_REFRESH_PROOF_CONTRACT,
-                         bridge.BASIS_BOUND_PROOF_CONTRACT):
+                         bridge.BASIS_BOUND_PROOF_CONTRACT, bridge.GOAL_SCOPED_PROOF_CONTRACT):
             with self.subTest(contract=contract):
                 self.receipt["proof"]["proofContract"] = contract
                 with patch.object(bridge.subprocess, "run", return_value=self.completed()):
@@ -836,10 +801,34 @@ class SemanticKindReductionTest(unittest.TestCase):
                 self.assertEqual(verified.baseline_fingerprints, {"q": BASELINE})
                 self.assertEqual(verified.provenance["proofContract"], contract)
 
+    def test_frozen_contract_accepts_a_catalog_without_active_transfers(self):
+        # A goal that changed after the freeze has no transfer: its baseline is its current
+        # value. Only the frozen V9 contract can therefore report an empty inventory.
+        released = copy.deepcopy(self.receipt)
+        released["proof"]["affectedGoalIds"] = []
+        released["goals"][0]["baselineFingerprint"] = CURRENT
+        for contract in (bridge.BASIS_BOUND_PROOF_CONTRACT, bridge.GOAL_SCOPED_PROOF_CONTRACT):
+            with self.subTest(contract=contract):
+                released["proof"]["proofContract"] = contract
+                with patch.object(bridge.subprocess, "run", return_value=self.completed(released)):
+                    if contract == bridge.GOAL_SCOPED_PROOF_CONTRACT:
+                        verified = self.load()
+                        self.assertEqual(verified.baseline_fingerprints, {"q": CURRENT})
+                        self.assertEqual(verified.provenance["affectedGoalIds"], [])
+                    else:
+                        with self.assertRaisesRegex(bridge.PrerequisiteReductionBindingError, "Invalid affected goal inventory"):
+                            self.load()
+        # A historical fingerprint still needs a declared transfer under V9.
+        undeclared = copy.deepcopy(released)
+        undeclared["goals"][0]["baselineFingerprint"] = BASELINE
+        with patch.object(bridge.subprocess, "run", return_value=self.completed(undeclared)):
+            with self.assertRaisesRegex(bridge.PrerequisiteReductionBindingError, "Undeclared historical goal fingerprint"):
+                self.load()
+
     def test_append_only_contract_invokes_node_with_bounded_timeout_and_no_fallback(self):
         self.assertEqual(bridge.NODE_VERIFIER_TIMEOUT_SECONDS, 1800)
         for contract in (bridge.APPEND_ONLY_PROOF_CONTRACT, bridge.APPLICABILITY_REFRESH_PROOF_CONTRACT,
-                         bridge.BASIS_BOUND_PROOF_CONTRACT):
+                         bridge.BASIS_BOUND_PROOF_CONTRACT, bridge.GOAL_SCOPED_PROOF_CONTRACT):
             with self.subTest(contract=contract):
                 self.receipt["proof"]["proofContract"] = contract
                 with patch.object(bridge.subprocess, "run", return_value=self.completed()) as run:
@@ -881,7 +870,7 @@ class SemanticKindReductionTest(unittest.TestCase):
 
 
 class LearningUnitLayerFingerprintTest(unittest.TestCase):
-    """Python side of the projection conformance shared with TypeScript and Java."""
+    """Python side of the projection conformance shared with TypeScript."""
 
     CONFORMANCE = ROOT / "app/scripts/fixtures/learning-unit-layer-projection-conformance.json"
 
@@ -905,7 +894,7 @@ class LearningUnitLayerFingerprintTest(unittest.TestCase):
                 actual.append(row)
         self.assertEqual(actual, conformance["references"])
 
-    def test_mathematics_with_its_pilot_unit_keeps_the_registry_binding(self) -> None:
+    def test_mathematics_fingerprint_projects_out_its_learning_unit_layer(self) -> None:
         import curriculum_learning_units as learning_units
 
         math = json.loads(self.CONFORMANCE.read_bytes())["canonicalMathematics"]
@@ -913,12 +902,18 @@ class LearningUnitLayerFingerprintTest(unittest.TestCase):
         if not learning_units.has_learning_unit_content(document):
             document["programUnits"].append(copy.deepcopy(math["pilotUnit"]))
             document["goalPlacements"].extend(copy.deepcopy(math["pilotPlacements"]))
-        registry = json.loads((ROOT / bridge.REGISTRY_PATH).read_bytes())
-        binding = next(row for row in registry["catalogSources"] if row["path"] == math["path"])
-        self.assertEqual(bridge.fingerprint_prerequisite_reduction_document(document), binding["currentDocumentDigest"])
+        self.assertEqual(document["landscapeId"], math["landscapeId"])
+        self.assertTrue(learning_units.has_learning_unit_content(document))
+        # Relations within the current document, so they hold after any goal change too.
+        fingerprint = bridge.fingerprint_prerequisite_reduction_document(document)
+        self.assertEqual(fingerprint, bridge.fingerprint_prerequisite_reduction_document(
+            learning_units.project_out_learning_units(document)), "equal with and without the learning-unit layer")
+        whole = bridge.digest(compiler.canonical_json_text(document).encode("utf-8"))
+        self.assertNotEqual(fingerprint, whole, "the learning-unit layer is projected out")
         changed = copy.deepcopy(document)
         changed["goals"][0]["title"] += " (changed)"
-        self.assertNotEqual(bridge.fingerprint_prerequisite_reduction_document(changed), binding["currentDocumentDigest"])
+        self.assertNotEqual(bridge.fingerprint_prerequisite_reduction_document(changed), fingerprint,
+                            "a goal edit moves the fingerprint")
 
 
 if __name__ == "__main__":

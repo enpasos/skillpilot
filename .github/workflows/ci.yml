@@ -374,7 +374,7 @@ jobs:
       - &ensure_gradle_wrapper
         name: Ensure Gradle wrapper is executable
         run: chmod +x ./gradlew
-      - name: Test backend CI partitions and failure prioritization
+      - name: Test backend CI failure prioritization
         run: python3 -B -m unittest discover -s ../scripts -p test_run_backend_ci.py
       # The backend test suite itself belongs to the complete check.
       - name: Compile backend main and test sources
@@ -987,71 +987,24 @@ jobs:
         continue-on-error: true
         with:
           path: ${{ runner.temp }}/skillpilot-backend-ci/failed-test-selectors.json
-          key: backend-failures-v2-main-${{ runner.os }}-${{ github.ref }}-${{ github.run_id }}-${{ github.run_attempt }}
+          key: backend-failures-v3-${{ runner.os }}-${{ github.ref }}-${{ github.run_id }}-${{ github.run_attempt }}
           restore-keys: |
-            backend-failures-v2-main-${{ runner.os }}-${{ github.ref }}-
-      # Every test class except the prerequisite-reduction proofs, which run in
-      # their own jobs. Three test JVMs share the four-core hosted runner.
+            backend-failures-v3-${{ runner.os }}-${{ github.ref }}-
+      # The complete backend suite. Three test JVMs share the four-core hosted runner.
       - name: Run backend tests
         id: backend-tests
         env:
           BACKEND_FAILURE_MANIFEST: ${{ runner.temp }}/skillpilot-backend-ci/failed-test-selectors.json
-        run: python3 -B ../scripts/run_backend_ci.py --partition main --forks 3 --manifest "${BACKEND_FAILURE_MANIFEST}"
+        run: python3 -B ../scripts/run_backend_ci.py --forks 3 --manifest "${BACKEND_FAILURE_MANIFEST}"
       - name: Save current backend failure selectors
         if: ${{ always() && !cancelled() && (steps.backend-tests.outcome == 'success' || steps.backend-tests.outcome == 'failure') }}
         uses: actions/cache/save@v4
         continue-on-error: true
         with:
           path: ${{ runner.temp }}/skillpilot-backend-ci/failed-test-selectors.json
-          key: backend-failures-v2-main-${{ runner.os }}-${{ github.ref }}-${{ github.run_id }}-${{ github.run_attempt }}
+          key: backend-failures-v3-${{ runner.os }}-${{ github.ref }}-${{ github.run_id }}-${{ github.run_attempt }}
       - name: Verify Claude direct-install beta publication
         working-directory: .
         run: |
           node scripts/claude_direct_install_beta_release.mjs verify
           node scripts/claude_direct_install_beta_release.mjs verify --publication-root backend/build/resources/main/claude-plugin-publication
-
-  # The prerequisite-reduction proofs read only committed curricula, so they do
-  # not wait for the goal-book build. scripts/run_backend_ci.py owns the
-  # partitions; together with backend-ci they run every backend test once.
-  backend-reduction-proofs:
-    name: Backend reduction proofs (${{ matrix.partition }})
-    if: ${{ github.event_name != 'pull_request' || !github.event.pull_request.draft }}
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        partition: [ reduction-proofs, physics-reduction-proof ]
-    defaults:
-      run:
-        working-directory: backend
-    steps:
-      - *reserve_repository_disk
-      - name: Checkout
-        uses: actions/checkout@v6
-      - *verify_repository_disk
-      - *use_backend_java
-      - *use_backend_node
-      - *use_production_corretto
-      - *ensure_gradle_wrapper
-      - name: Restore previous backend failure selectors
-        id: backend-failures-cache
-        uses: actions/cache/restore@v4
-        continue-on-error: true
-        with:
-          path: ${{ runner.temp }}/skillpilot-backend-ci/failed-test-selectors.json
-          key: backend-failures-v2-${{ matrix.partition }}-${{ runner.os }}-${{ github.ref }}-${{ github.run_id }}-${{ github.run_attempt }}
-          restore-keys: |
-            backend-failures-v2-${{ matrix.partition }}-${{ runner.os }}-${{ github.ref }}-
-      - name: Run backend reduction proofs
-        id: backend-tests
-        env:
-          BACKEND_FAILURE_MANIFEST: ${{ runner.temp }}/skillpilot-backend-ci/failed-test-selectors.json
-          BACKEND_PARTITION: ${{ matrix.partition }}
-        run: python3 -B ../scripts/run_backend_ci.py --partition "${BACKEND_PARTITION}" --manifest "${BACKEND_FAILURE_MANIFEST}"
-      - name: Save current backend failure selectors
-        if: ${{ always() && !cancelled() && (steps.backend-tests.outcome == 'success' || steps.backend-tests.outcome == 'failure') }}
-        uses: actions/cache/save@v4
-        continue-on-error: true
-        with:
-          path: ${{ runner.temp }}/skillpilot-backend-ci/failed-test-selectors.json
-          key: backend-failures-v2-${{ matrix.partition }}-${{ runner.os }}-${{ github.ref }}-${{ github.run_id }}-${{ github.run_attempt }}

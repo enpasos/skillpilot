@@ -62,8 +62,7 @@ Im Complete Check baut und verifiziert `goal-book-publication` einmalig alle reg
 | `curriculum-assessment-proofs` | ja | Beweise transitiver Minimalität sowie Assessment-, Prüfungs- und Routentests |
 | `curriculum-integrated-build` | ja | Laufzeitassets, Visualisierungsprüfungen, integrierter App-Build und reines Paket-Frontend |
 | `curriculum-package-contracts` | ja | Paketverträge und Selbsttests, Schemata, Ziel-IDs, Archiv- und Legacy-Referenzvalidatoren |
-| `backend-ci` | ja | Alle Backend-Testklassen außer den Voraussetzungs-Reduktionsbeweisen in drei disjunkten parallelen Test-JVMs (`scripts/run_backend_ci.py`; fehlgeschlagene Vorläufertests werden zuerst wiederholt) |
-| `backend-reduction-proofs` | nein | Voraussetzungs-Reduktionsbeweise in zwei parallelen Partitionen (alle Fächer ohne Physik sowie die Physik-Methode isoliert); `./gradlew check` ohne Optionen führt weiterhin die Gesamtsuite seriell aus |
+| `backend-ci` | ja | Alle Backend-Testklassen in drei disjunkten parallelen Test-JVMs (`scripts/run_backend_ci.py`; fehlgeschlagene Vorläufertests werden zuerst wiederholt); `./gradlew check` ohne Optionen führt dieselbe Suite seriell aus |
 
 <a id="sec-qal-ci-scopes"></a>
 ### 1.3. Curriculum-, View- und Archivgrenzen sowie optionale Paket-CI

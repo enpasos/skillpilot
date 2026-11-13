@@ -569,3 +569,13 @@ plan.
   test command now passes 89/89, and the CI-tier tests pass 8/8 (both exit 0).
   Guard assertions, Python dependency setup and receipt execution are unchanged;
   acceptance still requires fresh remote CI for the repaired head.
+- 2026-11-13: the dependency-bounded historical frame is superseded by the
+  frozen prerequisite-reduction registry (contract V9). The frame file, its
+  helper module, its tests and the frame branches of the verifier and the
+  Python bridge are removed. Under V9 the six normalized subjects carry no
+  transfer and are checked against current goals; all 1,361 transfers of the
+  other subjects stay active. The regenerated status equals the status of this
+  change in summary, rule catalog and all 21 curriculum entries; only the
+  proof-binding header differs. Statements above about the historical frame
+  describe the state before that change. Record:
+  [freeze of the reduction proof](prerequisite-reduction-proof-freeze-2026-11-12.md).

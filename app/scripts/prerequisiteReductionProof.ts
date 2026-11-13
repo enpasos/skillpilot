@@ -7,18 +7,13 @@ import { fileURLToPath } from 'node:url'
 import type { SkillLandscape } from '../src/landscapeTypes'
 import type { ApplicabilityInputSnapshot } from './applicabilityCompiler'
 import { auditTransitiveMinimality, auditTransitiveMinimalityOrigin, validateTransitiveMinimalityScope, assertTransitiveMinimalityImplementationCurrent, type AuditLandscape } from './auditTransitiveMinimality'
-import { eligibleHistoricalReviewLandscapes, requireHistoricalReviewApplicabilityBinding } from './lib/historicalReviewDependencyScope'
 import { assertLearningUnitProjectionImplementationCurrent, projectOutLearningUnits } from './learningUnitLayerProjection'
 
 const proofModulePath = fileURLToPath(import.meta.url)
 const proofModuleBytes = readFileSync(proofModulePath)
-const dependencyScopeModulePath = fileURLToPath(new URL('./lib/historicalReviewDependencyScope.ts', import.meta.url))
-const dependencyScopeModuleBytes = readFileSync(dependencyScopeModulePath)
 function assertProofImplementationCurrent(): void {
   if (!readFileSync(proofModulePath).equals(proofModuleBytes))
     throw new Error('Prerequisite reduction implementation changed since module load')
-  if (!readFileSync(dependencyScopeModulePath).equals(dependencyScopeModuleBytes))
-    throw new Error('Historical review dependency scope implementation changed since module load')
   assertTransitiveMinimalityImplementationCurrent()
   assertLearningUnitProjectionImplementationCurrent()
 }
@@ -34,6 +29,7 @@ type LegacyProofContract = typeof PREREQUISITE_REDUCTION_CONTRACT | typeof CLUST
 type ProofContract = LegacyProofContract | typeof ORDERED_PREREQUISITE_REDUCTION_CONTRACT | typeof CONTINUED_PREREQUISITE_REDUCTION_CONTRACT
   | typeof CLUSTER_TARGET_PREREQUISITE_REDUCTION_CONTRACT | typeof BATCHED_PREREQUISITE_REDUCTION_CONTRACT
   | typeof APPLICABILITY_REFRESH_PREREQUISITE_REDUCTION_CONTRACT | typeof BASIS_BOUND_PREREQUISITE_REDUCTION_CONTRACT
+  | typeof GOAL_SCOPED_PREREQUISITE_REDUCTION_CONTRACT
 export type DirectPrerequisiteReduction = { source: string; prerequisite: string; witness: string[] }
 export type ClusterPrerequisiteReduction = { source: string; prerequisite: string; atomicWitnesses: string[][] }
 export type AtomicPrerequisiteMaterialization = {
@@ -143,7 +139,38 @@ export interface BasisBoundPrerequisiteReductionRegistry
   entries: AssessmentBasisReductionEntry[]
 }
 
-export type PrerequisiteReductionRegistry = LegacyPrerequisiteReductionRegistry | OrderedPrerequisiteReductionRegistry
+/**
+ * V9 freezes a completely verified proof at its end state and keeps only what review reuse
+ * needs: for every goal whose reviews saw another value than the frozen goal, the reviewed
+ * value. Contracts V1 to V8 bind complete documents and can only be replayed while the
+ * catalog still is their end state; V9 binds single goals. A transfer holds while the
+ * current goal still has `frozenGoalDigest`. A changed or removed goal has no transfer and
+ * is compared with its current value like any other goal. Every other catalog change,
+ * including new goals, new documents and learning units, leaves all transfers untouched.
+ */
+export const GOAL_SCOPED_PREREQUISITE_REDUCTION_CONTRACT = 'frozen-goal-scoped-prerequisite-reduction-v9' as const
+export type GoalScopedReviewTransfer = {
+  source: string
+  /** Record digest of the complete goal object when the proof was frozen. */
+  frozenGoalDigest: string
+  /** Record digest of the complete goal object the reviews were bound to. */
+  reviewedGoalDigest: string
+  /** Top-level fields of the reviewed goal whose value differs from the frozen goal. */
+  reviewedFields: Record<string, unknown>
+  /** Top-level fields of the frozen goal that the reviewed goal did not have. */
+  reviewedAbsentFields: string[]
+}
+export interface GoalScopedPrerequisiteReductionRegistry
+  extends Pick<LegacyPrerequisiteReductionRegistry, 'schemaVersion' | 'auditScope'> {
+  proofContract: typeof GOAL_SCOPED_PREREQUISITE_REDUCTION_CONTRACT
+  parentRegistryPath: string
+  parentRegistryRawDigest: string
+  /** The document bindings of the frozen parent: history, not a binding of the current catalog. */
+  frozenCatalogSources: Array<{ path: string; landscapeId: string; baselineDocumentDigest: string; frozenDocumentDigest: string }>
+  transfers: GoalScopedReviewTransfer[]
+}
+
+export type PrerequisiteReductionRegistry =LegacyPrerequisiteReductionRegistry | OrderedPrerequisiteReductionRegistry
   | ContinuedPrerequisiteReductionRegistry | ClusterTargetPrerequisiteReductionRegistry | BatchedPrerequisiteReductionRegistry
   | ApplicabilityRefreshPrerequisiteReductionRegistry | BasisBoundPrerequisiteReductionRegistry
 type LoadedDocument = { file: string; path: string; document: Document; applicabilityInputs?: ApplicabilityInputSnapshot }
@@ -164,11 +191,7 @@ declare const verifiedReduction: unique symbol
 export type VerifiedPrerequisiteReductionContext = Readonly<{ [verifiedReduction]: true }>
 export interface PrerequisiteReductionProofSummary {
   proofContract: ProofContract
-  mode: 'current-or-certified-baseline-comparison' | 'dependency-bounded-certified-baseline-comparison'
-  dependencyBinding?: {
-    contract: 'dependency-bounded-historical-review-frame-v1'
-    snapshotPath: string; snapshotDigest: string; eligibleLandscapeIds: readonly string[]
-  }
+  mode: 'current-or-certified-baseline-comparison'
   auditScope: 'origin-source-landscape-closure'
   registryPath: string
   registryDigest: string
@@ -196,10 +219,10 @@ function stableJson(value: unknown): string {
 export const fingerprintPrerequisiteReductionRecord = (record: unknown): string =>
   `sha256:${createHash('sha256').update(stableJson(record)).digest('hex')}`
 /**
- * Digest of a catalog document: the landscape without its learning-unit layer. The proof is
- * about goals, edges and assessments; a learning unit is an orthogonal placement layer, so
- * adding, changing or removing one never stales a proof, while any other change still does.
- * For a document without learning units the projection is the identity.
+ * Digest of a catalog document: the landscape without its learning-unit layer. Contracts V1
+ * to V8 bind complete documents with it; a learning unit is an orthogonal placement layer,
+ * so it never changes this digest, while any other change does. For a document without
+ * learning units the projection is the identity. V9 does not bind documents.
  */
 export const fingerprintPrerequisiteReductionDocument = (document: unknown): string =>
   fingerprintPrerequisiteReductionRecord(projectOutLearningUnits(document))
@@ -279,6 +302,38 @@ function parseBasisBoundRegistry(value: Record<string, unknown>): BasisBoundPrer
     ensure(batchDigest(entry.batch.previousDigest), 'invalid basis-bound predecessor digest')
   }
   return value as unknown as BasisBoundPrerequisiteReductionRegistry
+}
+function parseGoalScopedRegistry(value: Record<string, unknown>): GoalScopedPrerequisiteReductionRegistry {
+  fields(value, ['schemaVersion', 'proofContract', 'auditScope', 'parentRegistryPath', 'parentRegistryRawDigest',
+    'frozenCatalogSources', 'transfers'], 'goal-scoped registry')
+  ensure(value.schemaVersion === 1 && value.auditScope === 'origin-source-landscape-closure'
+    && nonempty(value.parentRegistryPath) && batchDigest(value.parentRegistryRawDigest), 'invalid goal-scoped parent or scope')
+  ensure(Array.isArray(value.frozenCatalogSources) && value.frozenCatalogSources.length > 0, 'empty frozen catalog sources')
+  const paths = new Set<string>(), landscapes = new Set<string>()
+  for (const source of value.frozenCatalogSources) {
+    fields(source, ['path', 'landscapeId', 'baselineDocumentDigest', 'frozenDocumentDigest'], 'frozen catalog source')
+    ensure(nonempty(source.path) && nonempty(source.landscapeId) && batchDigest(source.baselineDocumentDigest)
+      && batchDigest(source.frozenDocumentDigest) && !paths.has(source.path) && !landscapes.has(source.landscapeId),
+    'invalid or duplicate frozen catalog source')
+    paths.add(source.path)
+    landscapes.add(source.landscapeId)
+  }
+  ensure(Array.isArray(value.transfers) && value.transfers.length > 0, 'empty review transfers')
+  let previous = ''
+  for (const transfer of value.transfers) {
+    fields(transfer, ['source', 'frozenGoalDigest', 'reviewedGoalDigest', 'reviewedFields', 'reviewedAbsentFields'], 'review transfer')
+    ensure(qualified(transfer.source) && landscapes.has(transfer.source.split(':')[0]) && transfer.source > previous,
+      'invalid, unsorted or duplicate review transfer source')
+    previous = transfer.source
+    ensure(batchDigest(transfer.frozenGoalDigest) && batchDigest(transfer.reviewedGoalDigest)
+      && transfer.frozenGoalDigest !== transfer.reviewedGoalDigest, 'invalid or no-op review transfer digests')
+    ensure(object(transfer.reviewedFields) && Array.isArray(transfer.reviewedAbsentFields)
+      && transfer.reviewedAbsentFields.every(nonempty), 'invalid reviewed fields')
+    const changed = [...Object.keys(transfer.reviewedFields), ...transfer.reviewedAbsentFields]
+    ensure(changed.length > 0 && new Set(changed).size === changed.length && !changed.includes('id'),
+      'empty, duplicate or identity-changing reviewed fields')
+  }
+  return value as unknown as GoalScopedPrerequisiteReductionRegistry
 }
 function parseApplicabilityRefreshRegistry(value: Record<string, unknown>): ApplicabilityRefreshPrerequisiteReductionRegistry {
   fields(value, ['schemaVersion', 'proofContract', 'auditScope', 'catalogSources', 'parentRegistryPath',
@@ -1183,47 +1238,12 @@ async function verifyDocumentFrame(
   return { currentDocuments, baselineDocuments, baselineApplicability, affectedSources }
 }
 
-/** Restore only declared old requires fields; the existing full proof's
- * exact document digests authenticate every reconstructed byte-semantic field. */
-function reconstructHistoricalReviewFrame(
-  value: unknown, registryBytes: Buffer, registryPath: string, loaded: LoadedDocument[],
-): LoadedDocument[] {
-  fields(value, ['schemaVersion', 'contract', 'registryPath', 'registryRawDigest', 'documents'], 'historical review frame')
-  ensure(value.schemaVersion === 1 && value.contract === 'dependency-bounded-historical-review-frame-v1'
-    && value.registryPath === registryPath
-    && value.registryRawDigest === `sha256:${createHash('sha256').update(registryBytes).digest('hex')}`
-    && Array.isArray(value.documents) && value.documents.length > 0, 'historical review frame proof binding differs')
-  const result = loaded.map(entry => ({ ...entry, document: structuredClone(entry.document) }))
-  const seen = new Set<string>()
-  for (const row of value.documents) {
-    fields(row, ['path', 'landscapeId', 'originalRequires'], 'historical review frame document')
-    ensure(nonempty(row.path) && nonempty(row.landscapeId) && !seen.has(row.path)
-      && Array.isArray(row.originalRequires) && row.originalRequires.length > 0, 'malformed or duplicate historical review frame document')
-    seen.add(row.path)
-    const entry = result.find(candidate => candidate.path === row.path && candidate.document.landscapeId === row.landscapeId)
-    ensure(entry, `historical review frame references unknown document: ${row.path}`)
-    const goals = new Map(entry.document.goals.map(goal => [goal.id, goal])), goalIds = new Set<string>()
-    for (const original of row.originalRequires) {
-      fields(original, ['goalId', 'requires'], 'historical review original requires')
-      ensure(nonempty(original.goalId) && !goalIds.has(original.goalId)
-        && (original.requires === null || (Array.isArray(original.requires) && original.requires.every(nonempty))), 'malformed or duplicate historical requires')
-      goalIds.add(original.goalId)
-      const goal = goals.get(original.goalId)
-      ensure(goal, `historical review frame references unknown goal: ${original.goalId}`)
-      if (original.requires === null) delete goal.requires
-      else goal.requires = structuredClone(original.requires)
-    }
-  }
-  return result
-}
-
 /** Load once at a Node entrypoint, then pass explicitly to comparison consumers. */
 export async function loadVerifiedPrerequisiteReductionContext({
   repositoryRoot = REPOSITORY_ROOT,
   registryPath = PREREQUISITE_REDUCTION_REGISTRY_PATH,
   catalogPath = CANONICAL_PATH,
-  historicalFramePath = 'curricula/DE/Gymnasium/provenance/historical-review-frame-2026-11-12.json',
-}: { repositoryRoot?: string; registryPath?: string; catalogPath?: string; historicalFramePath?: string } = {}):
+}: { repositoryRoot?: string; registryPath?: string; catalogPath?: string } = {}):
   Promise<VerifiedPrerequisiteReductionContext | undefined> {
   assertProofImplementationCurrent()
   const registryFile = repositoryPath(repositoryRoot, registryPath)
@@ -1235,77 +1255,23 @@ export async function loadVerifiedPrerequisiteReductionContext({
   }
   // A declared proof is authoritative input: any failure is fatal, never a stale-check fallback.
   const registryBytes = readFileSync(registryFile)
-  const registry = parseRegistry(JSON.parse(registryBytes.toString('utf8')))
-  const loaded = catalogFiles(repositoryPath(repositoryRoot, catalogPath)).map((file) => ({
-    file, path: relative(repositoryRoot, file).split(sep).join('/'),
-    document: JSON.parse(readFileSync(file, 'utf8')) as Document,
-  }))
-  const { withApplicabilityInputSnapshot, assertApplicabilityInputSnapshotCurrent } = await import('./applicabilityCompiler')
-  return withApplicabilityInputSnapshot(async inputs => {
-    const boundLoaded = loaded.map(entry => ({ ...entry, applicabilityInputs: inputs }))
-    const liveDocuments = loaded.map(entry => entry.document)
-    let verificationLoaded: LoadedDocument[] = boundLoaded
-    let dependencyBinding: PrerequisiteReductionProofSummary['dependencyBinding']
-    let frameBytes: Buffer | undefined
-    let frameFile: string | undefined
-    const exactCurrent = registry.catalogSources.length === loaded.length && loaded.every(entry => {
-      const binding = registry.catalogSources.find(source => source.path === entry.path)
-      return binding?.landscapeId === entry.document.landscapeId
-        && binding.currentDocumentDigest === fingerprintPrerequisiteReductionDocument(entry.document)
-    })
-    if (!exactCurrent) {
-      frameFile = repositoryPath(repositoryRoot, historicalFramePath)
-      let frameExists = true
-      try { ensure(lstatSync(frameFile).isFile(), 'historical review frame must be a regular file') }
-      catch (error) {
-        if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error
-        frameExists = false
-      }
-      if (frameExists) {
-        ensure(realpathSync(frameFile) === resolve(realpathSync(repositoryRoot), historicalFramePath), 'historical review frame contains a symlink')
-        frameBytes = readFileSync(frameFile)
-        const reconstructed = reconstructHistoricalReviewFrame(JSON.parse(frameBytes.toString('utf8')), registryBytes, registryPath, boundLoaded)
-        verificationLoaded = reconstructed
-        const eligible = eligibleHistoricalReviewLandscapes(liveDocuments, reconstructed.map(entry => entry.document))
-        ensure(eligible.size > 0, 'historical review frame has no unchanged dependency-closed subject')
-        dependencyBinding = {
-          contract: 'dependency-bounded-historical-review-frame-v1', snapshotPath: historicalFramePath,
-          snapshotDigest: `sha256:${createHash('sha256').update(frameBytes).digest('hex')}`,
-          eligibleLandscapeIds: [...eligible].sort(),
-        }
-      }
-    }
-    // The existing full verifier is mandatory, including every historical
-    // prefix, witness, replay and external applicability input. A reconstructed
-    // frame is not a new migration proof for the changed current subjects.
-    const verified = await verifyDocumentFrame(registry, verificationLoaded, repositoryRoot)
-    let baselineDocuments = verified.baselineDocuments
-    const currentDocuments = liveDocuments
-    if (dependencyBinding) {
-      const eligible = new Set(dependencyBinding.eligibleLandscapeIds)
-      requireHistoricalReviewApplicabilityBinding(
-        JSON.parse(await compileApplicability(currentDocuments, boundLoaded)),
-        JSON.parse(await compileApplicability(verified.currentDocuments, verificationLoaded)), eligible,
-      )
-      baselineDocuments = verified.baselineDocuments.filter(document => eligible.has(document.landscapeId))
-    }
+  const registryValue: unknown = JSON.parse(registryBytes.toString('utf8'))
+  const loaded = loadCatalog(repositoryRoot, catalogPath)
+  const register = (
+    registry: { proofContract: ProofContract; auditScope: 'origin-source-landscape-closure' },
+    { currentDocuments, baselineDocuments, affectedSources }: Pick<VerifiedDocumentFrame, 'currentDocuments' | 'baselineDocuments' | 'affectedSources'>,
+  ) => {
     assertProofImplementationCurrent()
-    assertApplicabilityInputSnapshotCurrent(inputs)
-    ensure(readFileSync(registryFile).equals(registryBytes), 'registry changed during verification')
-    if (frameBytes && frameFile) ensure(readFileSync(frameFile).equals(frameBytes), 'historical review frame changed during verification')
-    for (const entry of loaded) ensure(fingerprintPrerequisiteReductionDocument(JSON.parse(readFileSync(entry.file, 'utf8')))
-      === fingerprintPrerequisiteReductionDocument(entry.document), `live catalog changed during verification: ${entry.path}`)
     const context = Object.freeze({}) as VerifiedPrerequisiteReductionContext
     deepFreeze(currentDocuments)
     deepFreeze(baselineDocuments)
     const summary = deepFreeze({
       proofContract: registry.proofContract,
-      mode: dependencyBinding ? 'dependency-bounded-certified-baseline-comparison' as const : 'current-or-certified-baseline-comparison' as const,
-      ...(dependencyBinding ? { dependencyBinding } : {}),
+      mode: 'current-or-certified-baseline-comparison' as const,
       auditScope: registry.auditScope,
       registryPath,
       registryDigest: `sha256:${createHash('sha256').update(registryBytes).digest('hex')}`,
-      affectedGoalIds: [...verified.affectedSources].filter(id => !dependencyBinding || dependencyBinding.eligibleLandscapeIds.includes(id.split(':')[0])).sort(),
+      affectedGoalIds: [...affectedSources].sort(),
     })
     const catalogSources = deepFreeze(loaded.map(({ path }, index) => ({ path,
       landscapeId: currentDocuments[index].landscapeId,
@@ -1313,6 +1279,134 @@ export async function loadVerifiedPrerequisiteReductionContext({
     })))
     verifiedContexts.set(context, { current: goalIndex(currentDocuments), baseline: goalIndex(baselineDocuments), summary, catalogSources })
     return context
+  }
+  if (object(registryValue) && registryValue.proofContract === GOAL_SCOPED_PREREQUISITE_REDUCTION_CONTRACT) {
+    const registry = parseGoalScopedRegistry(registryValue)
+    return register(registry, verifyGoalScopedFrame(registry, loaded, repositoryRoot))
+  }
+  const registry = parseRegistry(registryValue)
+  const { withApplicabilityInputSnapshot, assertApplicabilityInputSnapshotCurrent } = await import('./applicabilityCompiler')
+  return withApplicabilityInputSnapshot(async inputs => {
+    const frame = await verifyDocumentFrame(registry, loaded.map(entry => ({ ...entry, applicabilityInputs: inputs })), repositoryRoot)
+    assertApplicabilityInputSnapshotCurrent(inputs)
+    return register(registry, frame)
+  })
+}
+
+function loadCatalog(repositoryRoot: string, catalogPath: string): LoadedDocument[] {
+  return catalogFiles(repositoryPath(repositoryRoot, catalogPath)).map((file) => ({
+    file, path: relative(repositoryRoot, file).split(sep).join('/'),
+    document: JSON.parse(readFileSync(file, 'utf8')) as Document,
+  }))
+}
+
+/** The frozen parent of a V9 registry: its exact bytes, parsed as the only contract V9 may freeze. */
+function readFrozenParent(repositoryRoot: string, parentRegistryPath: string, expectedRawDigest?: string) {
+  const parentFile = repositoryPath(repositoryRoot, parentRegistryPath)
+  ensure(relative(repositoryRoot, parentFile).split(sep).join('/') === parentRegistryPath,
+    'frozen parent path must be canonical and relative')
+  ensure(lstatSync(parentFile).isFile(), 'frozen parent must be a regular file')
+  ensure(realpathSync(parentFile) === resolve(realpathSync(repositoryRoot), parentRegistryPath),
+    'frozen parent path contains a symlink')
+  const bytes = readFileSync(parentFile), rawDigest = `sha256:${createHash('sha256').update(bytes).digest('hex')}`
+  ensure(expectedRawDigest === undefined || rawDigest === expectedRawDigest, 'frozen parent raw digest differs')
+  const value: unknown = JSON.parse(bytes.toString('utf8'))
+  ensure(object(value) && value.proofContract === BASIS_BOUND_PREREQUISITE_REDUCTION_CONTRACT,
+    'goal-scoped registry requires a strict V8 parent')
+  return { bytes, rawDigest, registry: parseBasisBoundRegistry(value) }
+}
+const frozenCatalogSources = (parent: BasisBoundPrerequisiteReductionRegistry) => parent.catalogSources
+  .map(({ path, landscapeId, baselineDocumentDigest, currentDocumentDigest }) =>
+    ({ path, landscapeId, baselineDocumentDigest, frozenDocumentDigest: currentDocumentDigest }))
+  .sort((a, b) => a.path < b.path ? -1 : a.path > b.path ? 1 : 0)
+
+/**
+ * V9 never replays history. It binds the frozen parent by its raw bytes, takes the catalog as
+ * it is and restores the reviewed value of exactly those goals that still are the frozen goal.
+ */
+function verifyGoalScopedFrame(
+  registry: GoalScopedPrerequisiteReductionRegistry, loaded: LoadedDocument[], repositoryRoot: string,
+): Pick<VerifiedDocumentFrame, 'currentDocuments' | 'baselineDocuments' | 'affectedSources'> {
+  const parent = readFrozenParent(repositoryRoot, registry.parentRegistryPath, registry.parentRegistryRawDigest)
+  ensure(stableJson(registry.frozenCatalogSources) === stableJson(frozenCatalogSources(parent.registry)),
+    'frozen catalog bindings differ from the frozen parent')
+  const currentDocuments = loaded.map(({ document }) => document)
+  goalIndex(currentDocuments)
+  const baselineDocuments = structuredClone(currentDocuments), baselineGoals = goalIndex(baselineDocuments)
+  const affectedSources = new Set<string>()
+  for (const transfer of registry.transfers) {
+    const goal = baselineGoals.get(transfer.source)
+    // A changed or removed goal has left the proof: its reviews face the current goal.
+    if (!goal || fingerprintPrerequisiteReductionRecord(goal) !== transfer.frozenGoalDigest) continue
+    for (const [field, value] of Object.entries(transfer.reviewedFields)) goal[field] = structuredClone(value)
+    for (const field of transfer.reviewedAbsentFields) delete goal[field]
+    ensure(fingerprintPrerequisiteReductionRecord(goal) === transfer.reviewedGoalDigest,
+      `reviewed goal digest differs: ${transfer.source}`)
+    affectedSources.add(transfer.source)
+  }
+  return { currentDocuments, baselineDocuments, affectedSources }
+}
+
+/**
+ * Freeze a proof: verify `parentRegistryPath` completely against the catalog, which must
+ * still be the end state of that proof, and express every goal whose reviewed value differs
+ * from its current value as a goal-scoped transfer. The result is deterministic; it is the
+ * registry that replaces the parent as the active one.
+ */
+export async function deriveGoalScopedPrerequisiteReductionRegistry({
+  repositoryRoot = REPOSITORY_ROOT,
+  parentRegistryPath,
+  catalogPath = CANONICAL_PATH,
+}: { repositoryRoot?: string; parentRegistryPath: string; catalogPath?: string }): Promise<{
+  registry: GoalScopedPrerequisiteReductionRegistry
+  provenSources: number
+  provenSourcesWithoutTransfer: string[]
+}> {
+  assertProofImplementationCurrent()
+  const parent = readFrozenParent(repositoryRoot, parentRegistryPath)
+  const loaded = loadCatalog(repositoryRoot, catalogPath)
+  const { withApplicabilityInputSnapshot, assertApplicabilityInputSnapshotCurrent } = await import('./applicabilityCompiler')
+  return withApplicabilityInputSnapshot(async inputs => {
+    const { currentDocuments, baselineDocuments, affectedSources } = await verifyDocumentFrame(
+      parent.registry, loaded.map(entry => ({ ...entry, applicabilityInputs: inputs })), repositoryRoot)
+    assertProofImplementationCurrent()
+    assertApplicabilityInputSnapshotCurrent(inputs)
+    ensure(readFrozenParent(repositoryRoot, parentRegistryPath).bytes.equals(parent.bytes), 'frozen parent changed during verification')
+    const current = goalIndex(currentDocuments), baseline = goalIndex(baselineDocuments)
+    ensure(current.size === baseline.size, 'verified frames differ in their goals')
+    const transfers: GoalScopedReviewTransfer[] = []
+    for (const source of [...current.keys()].sort()) {
+      const frozen = current.get(source)!, reviewed = baseline.get(source)
+      ensure(reviewed, `reviewed goal missing: ${source}`)
+      if (stableJson(frozen) === stableJson(reviewed)) continue
+      const reviewedFields: Record<string, unknown> = {}
+      for (const field of Object.keys(reviewed).sort()) {
+        if (!Object.hasOwn(frozen, field) || stableJson(frozen[field]) !== stableJson(reviewed[field]))
+          reviewedFields[field] = structuredClone(reviewed[field])
+      }
+      const reviewedAbsentFields = Object.keys(frozen).filter(field => !Object.hasOwn(reviewed, field)).sort()
+      transfers.push({ source,
+        frozenGoalDigest: fingerprintPrerequisiteReductionRecord(frozen),
+        reviewedGoalDigest: fingerprintPrerequisiteReductionRecord(reviewed),
+        reviewedFields, reviewedAbsentFields })
+    }
+    const registry: GoalScopedPrerequisiteReductionRegistry = {
+      schemaVersion: 1,
+      proofContract: GOAL_SCOPED_PREREQUISITE_REDUCTION_CONTRACT,
+      auditScope: parent.registry.auditScope,
+      parentRegistryPath,
+      parentRegistryRawDigest: parent.rawDigest,
+      frozenCatalogSources: frozenCatalogSources(parent.registry),
+      transfers,
+    }
+    // The derived registry must give every goal the reviewed value the complete proof gives it.
+    const frame = verifyGoalScopedFrame(parseGoalScopedRegistry(structuredClone(registry) as unknown as Record<string, unknown>),
+      loaded, repositoryRoot)
+    ensure(stableJson(frame.baselineDocuments) === stableJson(baselineDocuments),
+      'goal-scoped transfers do not reproduce the reviewed catalog')
+    const transferred = new Set(transfers.map(({ source }) => source))
+    return { registry, provenSources: affectedSources.size,
+      provenSourcesWithoutTransfer: [...affectedSources].filter(source => !transferred.has(source)).sort() }
   })
 }
 
@@ -1325,7 +1419,10 @@ export function verifiedPrerequisiteReductionSummary(
   return snapshot.summary
 }
 
-/** Full current-document bindings, separate from the six-field proof summary. */
+/**
+ * Digests of the catalog documents this context loaded, separate from the six-field proof
+ * summary. Contracts V1 to V8 also bind them in the registry; V9 binds single goals.
+ */
 export function verifiedPrerequisiteReductionCatalogSources(
   context: VerifiedPrerequisiteReductionContext | undefined,
 ): readonly PrerequisiteReductionCatalogSource[] | undefined {
@@ -1348,7 +1445,6 @@ export function reviewBindingGoal(
   ensure(verified && stableJson(verified) === stableJson(currentRawGoal),
     `current goal differs from verified snapshot: ${qualifiedId}`)
   const baseline = snapshot.baseline.get(qualifiedId)
-  if (!baseline && snapshot.summary.dependencyBinding) return currentRawGoal
   ensure(baseline, `baseline goal missing from verified snapshot: ${qualifiedId}`)
   return baseline
 }

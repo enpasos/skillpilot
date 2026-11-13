@@ -132,7 +132,11 @@ complete check as parallel jobs. Details: `docs/qa-ci/ci.md`.
   explicitly limited to eight scopes; the four unconfigured Sek II scopes
   have unresolved evidence gaps. `CQR-102` covers all twelve scopes, but the
   stronger semantic `GVR-012` remains Mathematics-only. Never turn a review
-  queue green by bulk decisions.
+  queue green by bulk decisions. The frozen
+  prerequisite-reduction registry (contract V9, `AGENTS.md` §2.2) keeps the
+  reviews of 1,361 goals valid while each goal is unchanged; changing one of
+  them needs a new review of that goal, other changes do not touch it. The
+  registry and its parent are immutable evidence.
 - **Privacy**: the permanent `skillpilotId` never reaches an AI provider. In
   every provider lane OAuth only authorizes the connection; the learner is
   resolved through that lane's own `learningSessionId` (created by "Lernen
