@@ -653,7 +653,10 @@ curricular-level terminology. Personalization Levels 1–4, QA maturity and goal
   resolved curriculum context. Fix the frame before writing or reviewing
   tasks, cards or images of a unit. The unit declaration does not carry the
   frame yet; it is added with the contract version of the runtime stage, not
-  in a side file. Design criteria §12.2; working plan sections 4 and 6.
+  in a side file, and it adds no validity rule beside R1–R5: whether an
+  assessment stays inside the frame becomes part of its R2 review (approved
+  by the Product Owner on 13 November 2026). Design criteria §12.2; working
+  plan sections 4 and 6.
 
 This is concept documentation plus a static authoring contract and validator,
 not an implemented runtime or access policy. See `docs/concept/skill-graph/learning-units.md`,

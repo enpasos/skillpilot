@@ -218,7 +218,10 @@ eigene Version nur für dieses Feld gibt es nicht. Eine Datei neben der
 Landschaft scheidet aus demselben Grund aus wie der Einheitenkatalog. Der
 Rahmen bezieht sich auf den kanonischen Voraussetzungsgraphen und ist deshalb
 wie die Zugehörigkeit in jedem Kontext derselbe; er ändert kein Zielobjekt und
-berührt keinen Nachweis über Ziele.
+berührt keinen Nachweis über Ziele. Eine neue Gültigkeitsregel neben R1–R5
+entsteht nicht. Der Product Owner hat dieser Umsetzung am 13. November 2026
+zugestimmt: Feld der Deklaration, Vertragsversion der Stufe 3, keine neue
+Regel.
 
 Nichts davon ist umgesetzt. Vorgesehen ist:
 
