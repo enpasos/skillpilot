@@ -30,7 +30,9 @@ npm run quality:goal-source-rationales:mem-examples
 npm run quality:goal-source-rationales:mem-examples:plain
 ```
 
-Key CLI flags: `--landscape=<path>`, `--mapping-root=<path>`, `--output-json=<path>`, `--output-md=<path>`, `--no-md`, `--goals=source-backed | source-backed-relevant-leaves | all-relevant-leaves`, `--jurisdiction=all`, `--include-mem`, and `--mem-config=<path>`.
+Key CLI flags: `--landscape=<path>`, `--mapping-root=<path>`, `--output-json=<path>`, `--output-md=<path>`, `--no-md`, `--goals=source-backed | source-backed-relevant-leaves | all-relevant-leaves`, `--jurisdiction=all`, `--include-mem`, `--mem-config=<path>`, and `--mem-replay=<path>`.
+
+`--mem-replay=<path>` takes the MEM expectation texts recorded in the consistent routes of an earlier report of this generator instead of querying the endpoint, and applies the same matching to the current classic routes. A route that no longer matches becomes `mem_sparql_review_needed`; nothing becomes consistent through a replay. Use it, with the committed report as input, when only canonical goal texts changed and the endpoint cannot be evaluated. On 13 November 2026 the endpoint still served the Bavarian LehrplanPLUS plans, but they no longer reach their competencies through `bfo:BFO_0000051`, so a live run found no expectation; adapting the query to the new data model is open.
 
 <a id="sec-qal-rationales-runtime"></a>
 ### 13.2. Runtime Public Index (Repository vs. Package Mode) & Deployment Smoke

@@ -298,6 +298,7 @@ function parseArgs(args: string[]): {
   goalIds: string[]
   includeMemSparql: boolean
   memConfigPath: string
+  memReplayPath: string | null
   audience: 'technical' | 'plain'
 } {
   let landscapePath = defaultLandscapePath
@@ -309,6 +310,7 @@ function parseArgs(args: string[]): {
   let jurisdiction: string | null = defaultJurisdiction
   let includeMemSparql = false
   let memConfigPath = defaultMemConfigPath
+  let memReplayPath: string | null = null
   let audience: 'technical' | 'plain' = 'technical'
   const goalIds: string[] = []
 
@@ -378,6 +380,10 @@ function parseArgs(args: string[]): {
       memConfigPath = arg.slice('--mem-config='.length)
       return
     }
+    if (arg.startsWith('--mem-replay=')) {
+      memReplayPath = arg.slice('--mem-replay='.length)
+      return
+    }
     if (arg.startsWith('--audience=')) {
       const value = arg.slice('--audience='.length)
       if (value !== 'technical' && value !== 'plain') throw new Error(`Unknown audience: ${value}`)
@@ -430,6 +436,7 @@ function parseArgs(args: string[]): {
     goalIds: goalIds.length > 0 ? Array.from(new Set(goalIds)) : defaultGoalIds,
     includeMemSparql,
     memConfigPath,
+    memReplayPath,
     audience,
   }
 }
@@ -1076,10 +1083,52 @@ function routeWithEndpointError(endpoint: string, error: unknown): MemSparqlRout
   }
 }
 
-async function enrichReportWithMemSparql(report: SourceRationaleReport, memConfigPath: string): Promise<void> {
+/**
+ * MEM expectation texts recorded in an earlier report of this generator: every consistent route
+ * carries the plan, year, goal IRI and text the endpoint returned for it. Replaying them applies
+ * the same matching to the current classic routes without querying the endpoint, so a report can
+ * be regenerated reproducibly when the endpoint is unreachable or its data model has changed.
+ * A route that no longer matches a recorded text becomes `mem_sparql_review_needed`; nothing new
+ * can become consistent through a replay.
+ */
+function replayedMemExpectations(replayPath: string): Map<string, MemExpectation[]> {
+  const previous = readJsonFile<{ items?: Array<{ memSparqlRoute?: Record<string, unknown> }> }>(replayPath)
+  if (!Array.isArray(previous.items)) throw new Error(`${replayPath} is not a source-rationale report`)
+  const byComparison = new Map<string, Map<string, MemExpectation>>()
+  for (const item of previous.items) {
+    const route = item.memSparqlRoute
+    if (route?.status !== 'mem_sparql_consistent') continue
+    const comparisonId = asString(route.comparisonId)
+    const goalIri = asString(route.goalIri)
+    const text = asString(route.goalLabel)
+    if (comparisonId === null || goalIri === null || text === null) {
+      throw new Error(`${replayPath}: a consistent MEM route lacks comparisonId, goalIri or goalLabel`)
+    }
+    const expectations = byComparison.get(comparisonId) ?? new Map<string, MemExpectation>()
+    expectations.set(goalIri, {
+      planIri: asString(route.planIri) ?? '',
+      planLabel: asString(route.planLabel) ?? '',
+      yearLabel: asString(route.yearLabel) ?? '',
+      goalIri,
+      text,
+      normalizedText: normalizeText(text),
+    })
+    byComparison.set(comparisonId, expectations)
+  }
+  if (byComparison.size === 0) throw new Error(`${replayPath} records no consistent MEM route to replay`)
+  return new Map([...byComparison].map(([comparisonId, expectations]) => [comparisonId, [...expectations.values()].sort((left, right) =>
+    `${left.yearLabel}|${left.planLabel}|${left.text}`.localeCompare(`${right.yearLabel}|${right.planLabel}|${right.text}`, 'de'))]))
+}
+
+async function enrichReportWithMemSparql(
+  report: SourceRationaleReport,
+  memConfigPath: string,
+  memReplayPath: string | null = null,
+): Promise<void> {
   const config = readJsonFile<MemConsistencyConfig>(memConfigPath)
   const endpoint = asString(config.endpoint) ?? defaultMemSparqlRoute().endpoint
   const comparisons = memConcreteComparisonConfigs(config)
+  const replayed = memReplayPath === null ? null : replayedMemExpectations(memReplayPath)
   const expectationsByComparisonId = new Map<string, MemExpectation[]>()
 
   try {
@@ -1099,8 +1148,9 @@ async function enrichReportWithMemSparql(report: SourceRationaleReport, memConfi
       }
 
       if (!expectationsByComparisonId.has(comparison.id)) {
-        const bindings = await querySparql(endpoint, buildMemComparisonQuery(comparison))
-        expectationsByComparisonId.set(comparison.id, expectationsFromBindings(bindings))
+        expectationsByComparisonId.set(comparison.id, replayed !== null
+          ? replayed.get(comparison.id) ?? []
+          : expectationsFromBindings(await querySparql(endpoint, buildMemComparisonQuery(comparison))))
       }
       const expectations = expectationsByComparisonId.get(comparison.id) ?? []
       const match = findMemExpectation(route, expectations)
@@ -1494,8 +1544,11 @@ async function main(): Promise<void> {
     audience: args.audience,
   })
 
+  if (args.memReplayPath !== null && !args.includeMemSparql) {
+    throw new Error('--mem-replay requires --include-mem')
+  }
   if (args.includeMemSparql) {
-    await enrichReportWithMemSparql(report, args.memConfigPath)
+    await enrichReportWithMemSparql(report, args.memConfigPath, args.memReplayPath)
   }
 
   mkdirSync(dirname(resolveRepoPath(args.outputJsonPath)), { recursive: true })

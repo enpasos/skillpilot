@@ -15,7 +15,9 @@ npm run quality:goal-source-rationales:mem-examples
 npm run quality:goal-source-rationales:mem-examples:plain
 ```
 
-Wichtige CLI-Optionen: `--landscape=<path>`, `--mapping-root=<path>`, `--output-json=<path>`, `--output-md=<path>`, `--no-md`, `--goals=source-backed | source-backed-relevant-leaves | all-relevant-leaves`, `--jurisdiction=all`, `--include-mem` und `--mem-config=<path>`.
+Wichtige CLI-Optionen: `--landscape=<path>`, `--mapping-root=<path>`, `--output-json=<path>`, `--output-md=<path>`, `--no-md`, `--goals=source-backed | source-backed-relevant-leaves | all-relevant-leaves`, `--jurisdiction=all`, `--include-mem`, `--mem-config=<path>` und `--mem-replay=<path>`.
+
+`--mem-replay=<path>` verwendet statt einer Abfrage des Endpunkts die MEM-Erwartungstexte, die in den konsistenten Wegen eines früheren Berichts dieses Generators festgehalten sind, und wendet denselben Abgleich auf die aktuellen klassischen Wege an. Ein Weg, der nicht mehr passt, wird `mem_sparql_review_needed`; durch eine Wiedergabe wird nichts neu konsistent. Die Option dient, mit dem eingecheckten Bericht als Eingabe, für den Fall, dass sich nur kanonische Zieltexte geändert haben und der Endpunkt nicht ausgewertet werden kann. Am 13. November 2026 lieferte der Endpunkt die bayerischen LehrplanPLUS-Pläne noch, sie erreichen ihre Kompetenzen aber nicht mehr über `bfo:BFO_0000051`, sodass ein Live-Lauf keinen Erwartungstext fand; die Anpassung der Abfrage an das neue Datenmodell ist offen.
 
 ### Öffentlicher Laufzeitindex (Repository- vs. Paketmodus) & Deployment-Smoke {#sec:qal-rationales-runtime}
 
