@@ -639,7 +639,7 @@ public class LearnerControllerIntegrationTest {
             assertThat(topicId).isEqualTo(CANONICAL_MATH_ROOT_ID);
             assertThat(sourceLandscapeId).isEqualTo(HESSEN_GYMNASIUM_UPPER_MATH_ID);
             assertThat(sourceGoalId).isEqualTo("ccf9569b-b0e4-4d76-98d5-65be461d4d76");
-            SkillLandscape source = landscapeService.getById(sourceLandscapeId);
+            SkillLandscape source = landscapeService.getRetainedSourceLandscape(sourceLandscapeId);
             assertThat(source).as("retained HE Mathematics source snapshot").isNotNull();
             Map<String, LearningGoal> sourceGoals = source.getGoals().stream()
                     .collect(java.util.stream.Collectors.toMap(LearningGoal::getId, goal -> goal));
@@ -1201,6 +1201,7 @@ public class LearnerControllerIntegrationTest {
     void retiredBavariaAndHessenLowerSessionsRemainReadOnlyWithoutCutoverRuntime() throws Exception {
         Map<String, String> retiredCurriculaByLearner = Map.of(
                 "readonly-bavaria-after-cutover-removal", BAVARIA_GYMNASIUM_MATH_ID,
+                "readonly-retained-bavaria-chinese", BAVARIA_GYMNASIUM_CHINESE_ID,
                 "readonly-hessen-lower-after-cutover-removal", HESSEN_GYMNASIUM_LOWER_MATH_ID);
 
         for (Map.Entry<String, String> entry : retiredCurriculaByLearner.entrySet()) {
@@ -1208,6 +1209,21 @@ public class LearnerControllerIntegrationTest {
             learner.setSkillpilotId(entry.getKey());
             learner.setSelectedCurriculum(entry.getValue());
             learnerRepository.save(learner);
+            masteryRepository.save(new Mastery(learner, "retained-progress-goal", 1.0));
+
+            HttpResponse<String> learnerRead = getRequest("/api/ui/learners/" + entry.getKey());
+            assertThat(learnerRead.statusCode()).isEqualTo(HttpStatus.OK.value());
+            assertThat(objectMapper.readTree(learnerRead.body()).path("selectedCurriculum").asText())
+                    .isEqualTo(entry.getValue());
+            HttpResponse<String> masteryRead = getRequest("/api/ui/learners/" + entry.getKey() + "/mastery");
+            assertThat(masteryRead.statusCode()).isEqualTo(HttpStatus.OK.value());
+            assertThat(objectMapper.readTree(masteryRead.body()).path("mastery").has("retained-progress-goal")).isTrue();
+            HttpResponse<String> exportRead = getRequest("/api/ui/learners/" + entry.getKey() + "/export");
+            assertThat(exportRead.statusCode()).isEqualTo(HttpStatus.OK.value());
+            JsonNode exported = objectMapper.readTree(exportRead.body());
+            assertThat(exported.path("data").path("learner").path("selectedCurriculum").asText()).isEqualTo(entry.getValue());
+            assertThat(exported.path("data").path("mastery").has("retained-progress-goal")).isTrue();
+            assertThat(exported.path("signature").asText()).isNotBlank();
 
             HttpResponse<String> response = sendJsonRequest(
                     "POST",

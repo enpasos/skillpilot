@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.attribute.FileTime;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
@@ -17,6 +18,110 @@ class LandscapeServiceSourceRegistryTest {
 
     @TempDir
     Path tempDir;
+
+    @Test
+    void retainedSourcesStayOutsideActiveIndexesButServeExplicitLegacyClosureAndSourceEvidence() throws IOException {
+        writeJson(tempDir.resolve("DE/Gymnasium/input/BY/gymnasium/retained.json"), """
+                {"landscapeId":"retained-source","title":"Frozen source","goals":[
+                  {"id":"source-root","contains":["source-atom"],"requires":["source-atom"]},
+                  {"id":"source-atom"}
+                ]}
+                """);
+        String consumer = """
+                {"landscapeId":"%s","goals":[{"id":"%s","contains":["source-root"]}]}
+                """;
+        writeJson(tempDir.resolve("DE/BY/legacy-overview.json"), consumer.formatted("legacy-overview", "legacy-root"));
+        writeJson(tempDir.resolve("DE/Gymnasium/canonical/current.json"), consumer.formatted("current", "current-root"));
+        writeJson(tempDir.resolve("DE/BY/through-canonical.json"), """
+                {"landscapeId":"through-canonical","goals":[{"id":"outside-root","contains":["current-root"]}]}
+                """);
+
+        LandscapeService service = createService(tempDir);
+        service.pinRuntimeGeneration();
+
+        assertThat(service.getAll()).extracting(SkillLandscape::getLandscapeId)
+                .containsExactlyInAnyOrder("current", "legacy-overview", "through-canonical");
+        assertThat(service.getById("retained-source")).isNull();
+        assertThat(service.getGoalDefinition("source-atom")).isNull();
+        assertThat(service.getLandscapeIdForGoal("source-atom")).isNull();
+        assertThat(service.getRetainedSourceLandscape("retained-source")).isNotNull();
+        assertThat(service.resolveLandscapeIdForGoalIncludingArchived("source-atom")).isEqualTo("retained-source");
+        assertThat(service.resolveSourceAtomicGoalIds("retained-source", "source-root")).containsExactly("source-atom");
+        assertThat(service.getClosure("legacy-overview")).extracting(SkillLandscape::getLandscapeId)
+                .containsExactly("legacy-overview", "retained-source");
+        assertThat(service.getClosure("current")).extracting(SkillLandscape::getLandscapeId).containsExactly("current");
+        assertThat(service.getClosure("through-canonical")).extracting(SkillLandscape::getLandscapeId)
+                .containsExactly("through-canonical", "current");
+        assertThat(service.isCompatibilityOnlyLandscape("retained-source")).isTrue();
+    }
+
+    @Test
+    void ungatedGymnasiumGraphIsExcludedWhileOtherCurriculaRemainReadable() throws IOException {
+        writeJson(tempDir.resolve("DE/Gymnasium/quality-neighbor/rogue.json"), """
+                {"landscapeId":"rogue","goals":[{"id":"rogue-goal"}]}
+                """);
+        writeJson(tempDir.resolve("Other/current.json"), """
+                {"landscapeId":"current","goals":[{"id":"current-goal"}]}
+                """);
+        writeJson(tempDir.resolve("DE/Gymnasium/input/BY/gymnasium/unreadable.json"), "{invalid retained JSON");
+        LandscapeService service = createService(tempDir);
+        service.pinRuntimeGeneration();
+        assertThat(service.getById("rogue")).isNull();
+        assertThat(service.getGoalDefinition("rogue-goal")).isNull();
+        assertThat(service.getRetainedSourceLandscape("rogue")).isNull();
+        assertThat(service.getAll()).extracting(SkillLandscape::getLandscapeId).containsExactly("current");
+        assertThat(service.getById("current")).isNotNull();
+        assertThat(service.getGoalDefinition("current-goal")).isNotNull();
+    }
+
+    @Test
+    void activeLandscapeAndGoalLookupsKeepPrecedenceOverRetainedSourceCollisions() throws IOException {
+        writeJson(tempDir.resolve("DE/BY/other-school.json"), """
+                {"landscapeId":"shared-owner","title":"Active school","goals":[{"id":"shared-goal","title":"Active"}]}
+                """);
+        writeJson(tempDir.resolve("DE/Gymnasium/input/BY/gymnasium/retained.json"), """
+                {"landscapeId":"shared-owner","title":"Frozen source","goals":[
+                  {"id":"shared-goal","title":"Frozen"},{"id":"source-only-goal","title":"Source only"}
+                ]}
+                """);
+        writeJson(tempDir.resolve("DE/BY/consumer.json"), """
+                {"landscapeId":"outside-consumer","goals":[{"id":"outside-root","contains":["source-only-goal"]}]}
+                """);
+        LandscapeService service = createService(tempDir);
+        assertThat(service.getById("shared-owner").getTitle()).isEqualTo("Active school");
+        assertThat(service.getGoalDefinition("shared-goal").getTitle()).isEqualTo("Active");
+        assertThat(service.getRetainedSourceLandscape("shared-owner").getTitle()).isEqualTo("Frozen source");
+        assertThat(service.isCompatibilityOnlyLandscape("shared-owner")).isFalse();
+        assertThat(service.getClosure("shared-owner")).hasSize(1);
+        assertThat(service.getClosure("outside-consumer")).extracting(SkillLandscape::getLandscapeId)
+                .containsExactly("outside-consumer");
+    }
+
+    @Test
+    void retainedSourceReloadKeepsActiveIndexesSeparateAndRespectsPinnedGeneration() throws IOException {
+        Path source = tempDir.resolve("DE/Gymnasium/input/BY/gymnasium/source.json");
+        String sourceJson = """
+                {"landscapeId":"source","title":"%s","goals":[{"id":"source-goal"}]}
+                """;
+        writeJson(source, sourceJson.formatted("Before"));
+        writeJson(tempDir.resolve("Other/current.json"), """
+                {"landscapeId":"current","title":"Active","goals":[{"id":"current-goal"}]}
+                """);
+        LandscapeService service = createService(tempDir);
+        assertThat(service.getRetainedSourceLandscape("source").getTitle()).isEqualTo("Before");
+        writeJson(source, sourceJson.formatted("After"));
+        Files.setLastModifiedTime(source, FileTime.fromMillis(System.currentTimeMillis() + 20_000));
+        org.springframework.test.util.ReflectionTestUtils.setField(service, "lastReloadCheck", 0L);
+        assertThat(service.getRetainedSourceLandscape("source").getTitle()).isEqualTo("After");
+        assertThat(service.getById("source")).isNull();
+        assertThat(service.getGoalDefinition("source-goal")).isNull();
+        assertThat(service.getAll()).extracting(SkillLandscape::getLandscapeId).containsExactly("current");
+        service.pinRuntimeGeneration();
+        writeJson(source, sourceJson.formatted("Later"));
+        Files.setLastModifiedTime(source, FileTime.fromMillis(System.currentTimeMillis() + 40_000));
+        assertThat(service.getRetainedSourceLandscape("source").getTitle()).isEqualTo("After");
+        assertThat(service.getById("current").getTitle()).isEqualTo("Active");
+    }
 
     @Test
     void ignoresReviewCandidateWithSameLandscapeIdAsCanonicalRuntimeLandscape() throws IOException {
@@ -136,8 +241,9 @@ class LandscapeServiceSourceRegistryTest {
 
         LandscapeService service = createService(tempDir);
 
-        assertThat(service.getById("legacy-math")).isNotNull();
-        assertThat(service.getLandscapeIdForGoal("legacy-atom")).isEqualTo("legacy-math");
+        assertThat(service.getRetainedSourceLandscape("legacy-math")).isNotNull();
+        assertThat(service.getLandscapeIdForGoal("legacy-atom")).isNull();
+        assertThat(service.resolveLandscapeIdForGoalIncludingArchived("legacy-atom")).isEqualTo("legacy-math");
     }
 
     @Test
@@ -177,8 +283,9 @@ class LandscapeServiceSourceRegistryTest {
 
         LandscapeService service = createService(tempDir);
 
-        assertThat(service.getById("legacy-lower-overview")).isNotNull();
-        assertThat(service.getLandscapeIdForGoal("legacy-lower-atom")).isEqualTo("legacy-lower-overview");
+        assertThat(service.getRetainedSourceLandscape("legacy-lower-overview")).isNotNull();
+        assertThat(service.getLandscapeIdForGoal("legacy-lower-atom")).isNull();
+        assertThat(service.resolveLandscapeIdForGoalIncludingArchived("legacy-lower-atom")).isEqualTo("legacy-lower-overview");
         assertThat(service.resolveSourceLandscapeJurisdiction("legacy-lower-overview")).isEqualTo("DE-HE");
     }
 
@@ -219,8 +326,9 @@ class LandscapeServiceSourceRegistryTest {
 
         LandscapeService service = createService(tempDir);
 
-        assertThat(service.getById("legacy-bavaria-math")).isNotNull();
-        assertThat(service.getLandscapeIdForGoal("legacy-bavaria-atom")).isEqualTo("legacy-bavaria-math");
+        assertThat(service.getRetainedSourceLandscape("legacy-bavaria-math")).isNotNull();
+        assertThat(service.getLandscapeIdForGoal("legacy-bavaria-atom")).isNull();
+        assertThat(service.resolveLandscapeIdForGoalIncludingArchived("legacy-bavaria-atom")).isEqualTo("legacy-bavaria-math");
         assertThat(service.resolveSourceLandscapeJurisdiction("legacy-bavaria-math")).isEqualTo("DE-BY");
     }
 

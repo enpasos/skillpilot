@@ -299,6 +299,8 @@ jobs:
   quick-checks:
     name: Quick checks
     runs-on: ubuntu-24.04
+    env: &semantic_route_policy_environment
+      SEMANTIC_ROUTE_POLICY_BASE: ${{ github.event.pull_request.base.sha || github.event.before || 'origin/main' }}
     defaults:
       run:
         working-directory: app
@@ -324,6 +326,18 @@ jobs:
         run: npm run lint
       - name: Type-check the application
         run: npx --no-install tsc -b
+      - &fetch_semantic_route_policy_base
+        name: Fetch trusted semantic-route policy base
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -n "${SEMANTIC_ROUTE_POLICY_BASE}"
+          if [ "${SEMANTIC_ROUTE_POLICY_BASE}" = origin/main ]; then
+            git fetch --no-tags --depth=1 origin +refs/heads/main:refs/remotes/origin/main
+          else
+            git fetch --no-tags --depth=1 origin "${SEMANTIC_ROUTE_POLICY_BASE}"
+          fi
+          git rev-parse --verify "${SEMANTIC_ROUTE_POLICY_BASE}^{commit}"
       - name: Validate Graph
         run: npm run validate:graph
       - name: Set up Python
@@ -626,6 +640,7 @@ jobs:
     needs: goal-book-publication
     if: ${{ github.event_name != 'pull_request' || !github.event.pull_request.draft }}
     runs-on: ubuntu-24.04
+    env: *semantic_route_policy_environment
     defaults:
       run:
         working-directory: app
@@ -656,6 +671,7 @@ jobs:
         with:
           name: goal-book-publication-${{ github.sha }}
           path: app/public/lernzielbuch/
+      - *fetch_semantic_route_policy_base
       - name: Validate Graph
         run: npm run validate:graph
       - name: Check complete canonical G17 domain
@@ -747,6 +763,7 @@ jobs:
     needs: goal-book-publication
     if: ${{ github.event_name != 'pull_request' || !github.event.pull_request.draft }}
     runs-on: ubuntu-24.04
+    env: *semantic_route_policy_environment
     defaults:
       run:
         working-directory: app
@@ -761,6 +778,7 @@ jobs:
       - *install_pdf_validation_tools
       - *install_playwright_chromium
       - *restore_goal_book_publications
+      - *fetch_semantic_route_policy_base
       # Historical review receipt tests import the Python release-model consumer.
       - name: Set up Python for curriculum proof receipts
         uses: actions/setup-python@v6

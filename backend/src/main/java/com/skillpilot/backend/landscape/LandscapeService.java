@@ -35,6 +35,9 @@ public class LandscapeService {
     private static final Path QUALITY_REVIEW_ARTIFACTS_PATH = Path.of("DE", "Gymnasium", "quality");
     private static final Path COMPLETION_PROFILES_PATH = Path.of("DE", "Gymnasium", "completion-profiles");
     private static final Path COMPLETION_SCOPES_PATH = Path.of("DE", "Gymnasium", "completion-scopes");
+    private static final Path GYMNASIUM_PATH = Path.of("DE", "Gymnasium");
+    private static final Path CANONICAL_GYMNASIUM_PATH = GYMNASIUM_PATH.resolve("canonical");
+    private static final Path RETAINED_GYMNASIUM_INPUT_PATH = GYMNASIUM_PATH.resolve("input");
     private static final int SUPPORTED_SOURCE_GOAL_CLOSURE_REGISTRY_VERSION = 1;
     private static final Path SOURCE_GOAL_CLOSURE_REGISTRY_PATH = Path.of(
             "DE", "Gymnasium", "provenance", "source-goal-closure-registry.json");
@@ -111,6 +114,9 @@ public class LandscapeService {
     private volatile Map<String, String> sourceLandscapeJurisdictionById = Collections.emptyMap();
     private volatile Map<String, Map<String, Set<String>>> sourceAtomicGoalIdsByLandscapeAndGoal = Collections.emptyMap();
     private volatile Map<String, String> sourceLandscapeIdByGoalId = Collections.emptyMap();
+    private volatile Map<String, SkillLandscape> retainedSourceLandscapesById = Collections.emptyMap();
+    private volatile Map<String, String> retainedSourceLandscapeIdByGoalId = Collections.emptyMap();
+    private volatile Set<String> canonicalGymnasiumLandscapeIds = Collections.emptySet();
     private volatile Map<String, Map<String, Object>> canonicalGoalProvenanceByGoalId = Collections.emptyMap();
     private volatile Map<String, Map<String, List<String>>> canonicalGoalApplicabilityOverridesByGoalId = Collections.emptyMap();
     private volatile ConcurrentHashMap<String, Map<String, List<String>>> canonicalJurisdictionApplicabilityByLandscapeId = new ConcurrentHashMap<>();
@@ -199,6 +205,16 @@ public class LandscapeService {
         return cachedById.get(landscapeId);
     }
 
+    /** Frozen source evidence, deliberately absent from runtime discovery and goal lookup. */
+    public SkillLandscape getRetainedSourceLandscape(String landscapeId) {
+        ensureFresh();
+        return retainedSourceLandscapesById.get(landscapeId);
+    }
+
+    public SkillLandscape getRetainedSourceLandscape(String landscapeId, String lang) {
+        return localize(getRetainedSourceLandscape(landscapeId), lang);
+    }
+
     public String getLandscapeIdForGoal(String goalId) {
         ensureFresh();
         return goalIdToLandscapeId.get(goalId);
@@ -213,7 +229,8 @@ public class LandscapeService {
         if (loadedLandscapeId != null) {
             return loadedLandscapeId;
         }
-        return sourceLandscapeIdByGoalId.get(goalId);
+        String sourceLandscapeId = sourceLandscapeIdByGoalId.get(goalId);
+        return sourceLandscapeId != null ? sourceLandscapeId : retainedSourceLandscapeIdByGoalId.get(goalId);
     }
 
     public Map<String, Object> resolveGoalProvenance(LearningGoal goal) {
@@ -261,7 +278,7 @@ public class LandscapeService {
         // Keep traversal insertion order so frontend module lists remain stable and
         // follow curriculum authoring order (root contains order).
         Map<String, SkillLandscape> closure = new LinkedHashMap<>();
-        collectClosure(root, closure);
+        collectClosure(root, closure, !canonicalGymnasiumLandscapeIds.contains(rootId));
 
         // Localize the results
         return closure.values().stream()
@@ -682,28 +699,36 @@ public class LandscapeService {
         return copy;
     }
 
-    private void collectClosure(SkillLandscape current, Map<String, SkillLandscape> visited) {
+    private void collectClosure(SkillLandscape current, Map<String, SkillLandscape> visited, boolean allowRetainedSources) {
         if (current == null || visited.containsKey(current.getLandscapeId())) {
             return;
         }
         visited.put(current.getLandscapeId(), current);
+        allowRetainedSources = allowRetainedSources && !canonicalGymnasiumLandscapeIds.contains(current.getLandscapeId());
 
         if (current.getGoals() != null) {
             for (LearningGoal goal : current.getGoals()) {
-                collectReferences(goal.getContains(), visited);
-                collectReferences(goal.getRequires(), visited);
+                collectReferences(goal.getContains(), visited, allowRetainedSources);
+                collectReferences(goal.getRequires(), visited, allowRetainedSources);
             }
         }
     }
 
-    private void collectReferences(List<String> refs, Map<String, SkillLandscape> visited) {
+    private void collectReferences(List<String> refs, Map<String, SkillLandscape> visited, boolean allowRetainedSources) {
         if (refs == null)
             return;
         for (String ref : refs) {
             // Ref is now a UUID (Goal ID)
             String landscapeId = goalIdToLandscapeId.get(ref);
             if (landscapeId != null && !visited.containsKey(landscapeId)) {
-                collectClosure(getById(landscapeId), visited);
+                collectClosure(cachedById.get(landscapeId), visited, allowRetainedSources);
+            } else if (landscapeId == null && allowRetainedSources) {
+                String sourceLandscapeId = retainedSourceLandscapeIdByGoalId.get(ref);
+                // Keep the existing active-owner deduplication even for a source-only goal ID.
+                if (sourceLandscapeId != null && !cachedById.containsKey(sourceLandscapeId)
+                        && !visited.containsKey(sourceLandscapeId)) {
+                    collectClosure(retainedSourceLandscapesById.get(sourceLandscapeId), visited, true);
+                }
             }
         }
     }
@@ -723,6 +748,9 @@ public class LandscapeService {
             sourceLandscapeJurisdictionById = Collections.emptyMap();
             sourceAtomicGoalIdsByLandscapeAndGoal = Collections.emptyMap();
             sourceLandscapeIdByGoalId = Collections.emptyMap();
+            retainedSourceLandscapesById = Collections.emptyMap();
+            retainedSourceLandscapeIdByGoalId = Collections.emptyMap();
+            canonicalGymnasiumLandscapeIds = Collections.emptySet();
             canonicalGoalProvenanceByGoalId = Collections.emptyMap();
             canonicalGoalApplicabilityOverridesByGoalId = Collections.emptyMap();
             canonicalJurisdictionApplicabilityByLandscapeId = new ConcurrentHashMap<>();
@@ -737,13 +765,14 @@ public class LandscapeService {
         Map<String, SkillLandscape> byId = new LinkedHashMap<>();
         Map<String, SkillLandscape> byLegacyId = new HashMap<>();
         Map<String, String> goalIndex = new HashMap<>();
+        Set<String> canonicalIds = new LinkedHashSet<>();
         long maxLastModified = 0L;
         boolean criticalParseError = false;
 
         try {
             List<Path> files = PrunedFileTree.files(dir,
-                            path -> isReservedMetadataPath(dir, path)).stream()
-                    .filter(p -> isRuntimeLandscapeJson(dir, p))
+                            path -> isAuthoringMetadataPath(dir, path)).stream()
+                    .filter(p -> Files.isRegularFile(p) && p.getFileName().toString().endsWith(".json"))
                     .sorted()
                     .collect(Collectors.toList());
             for (Path file : files) {
@@ -755,6 +784,9 @@ public class LandscapeService {
                 } catch (IOException e) {
                     log.debug("Could not read lastModified for {}", file, e);
                 }
+                // Preserve the existing reload fingerprint without parsing retained
+                // inputs as live graphs. Source evidence is read explicitly below.
+                if (!isRuntimeLandscapeJson(dir, file)) continue;
                 try {
                     JsonNode root = objectMapper.readTree(file.toFile());
                     if (root == null || !root.isObject()) {
@@ -768,6 +800,13 @@ public class LandscapeService {
                     }
                     if (!root.has("goals") || !root.get("goals").isArray()) {
                         log.debug("Skipping non-landscape JSON file {}: missing goals array", file);
+                        continue;
+                    }
+                    if (file.startsWith(dir.resolve(GYMNASIUM_PATH))
+                            && !file.startsWith(dir.resolve(CANONICAL_GYMNASIUM_PATH))) {
+                        // CI rejects this input. Learner reads keep the other current
+                        // graphs available without admitting the ungated definition.
+                        log.warn("Ignoring live Gymnasium landscape outside the gated canonical catalog: {}", file);
                         continue;
                     }
 
@@ -806,6 +845,9 @@ public class LandscapeService {
                     }
 
                     loaded.add(landscape);
+                    if (file.startsWith(dir.resolve(CANONICAL_GYMNASIUM_PATH))) {
+                        canonicalIds.add(landscape.getLandscapeId());
+                    }
 
                 } catch (com.fasterxml.jackson.databind.exc.MismatchedInputException e) {
                     if (isCriticalLandscapeFile(file)) {
@@ -828,7 +870,10 @@ public class LandscapeService {
             log.error("Failed to list landscapes in {}", dir, e);
         }
 
-        long archivedSourceMaxLastModified = loadArchivedSourceLandscapes(dir, loaded);
+        List<SkillLandscape> retainedSources = new ArrayList<>();
+        long retainedSourceMaxLastModified = loadRetainedBavariaSourceLandscapes(dir, retainedSources);
+        long archivedSourceMaxLastModified = loadArchivedSourceLandscapes(dir, retainedSources);
+        maxLastModified = Math.max(maxLastModified, retainedSourceMaxLastModified);
         if (archivedSourceMaxLastModified > maxLastModified) {
             maxLastModified = archivedSourceMaxLastModified;
         }
@@ -862,6 +907,16 @@ public class LandscapeService {
         cachedById = Collections.unmodifiableMap(byId);
         cachedByLegacyId = Collections.unmodifiableMap(byLegacyId);
         goalIdToLandscapeId = Collections.unmodifiableMap(goalIndex);
+        Map<String, SkillLandscape> retainedById = new LinkedHashMap<>();
+        Map<String, String> retainedGoalOwners = new LinkedHashMap<>();
+        for (SkillLandscape source : retainedSources) {
+            if (retainedById.putIfAbsent(source.getLandscapeId(), source) == null && source.getGoals() != null) {
+                source.getGoals().forEach(goal -> retainedGoalOwners.put(goal.getId(), source.getLandscapeId()));
+            }
+        }
+        retainedSourceLandscapesById = Collections.unmodifiableMap(retainedById);
+        retainedSourceLandscapeIdByGoalId = Collections.unmodifiableMap(retainedGoalOwners);
+        canonicalGymnasiumLandscapeIds = Collections.unmodifiableSet(canonicalIds);
         sourceLandscapeJurisdictionById = Collections.unmodifiableMap(loadSourceLandscapeRegistry(dir));
         sourceAtomicGoalIdsByLandscapeAndGoal = Collections.unmodifiableMap(loadSourceGoalClosureRegistry(dir));
         sourceLandscapeIdByGoalId = Collections.unmodifiableMap(loadSourceGoalMembershipRegistry(dir));
@@ -888,9 +943,37 @@ public class LandscapeService {
     }
 
     private boolean isReservedMetadataPath(Path dir, Path path) {
+        return isAuthoringMetadataPath(dir, path)
+                || path.startsWith(dir.resolve(RETAINED_GYMNASIUM_INPUT_PATH));
+    }
+
+    private boolean isAuthoringMetadataPath(Path dir, Path path) {
         return path.startsWith(dir.resolve(QUALITY_REVIEW_ARTIFACTS_PATH))
                 || path.startsWith(dir.resolve(COMPLETION_PROFILES_PATH))
                 || path.startsWith(dir.resolve(COMPLETION_SCOPES_PATH));
+    }
+
+    private long loadRetainedBavariaSourceLandscapes(Path dir, List<SkillLandscape> sources) {
+        Path sourceDirectory = dir.resolve(RETAINED_GYMNASIUM_INPUT_PATH).resolve("BY/gymnasium");
+        if (!Files.isDirectory(sourceDirectory)) return 0L;
+        long latest = 0L;
+        try (var files = Files.list(sourceDirectory)) {
+            for (Path file : files.filter(Files::isRegularFile)
+                    .filter(path -> path.getFileName().toString().endsWith(".json")).sorted().toList()) {
+                try {
+                    JsonNode root = objectMapper.readTree(file.toFile());
+                    if (root != null && root.hasNonNull("landscapeId") && root.path("goals").isArray()) {
+                        sources.add(objectMapper.treeToValue(root, SkillLandscape.class));
+                        latest = Math.max(latest, Files.getLastModifiedTime(file).toMillis());
+                    }
+                } catch (IOException e) {
+                    log.warn("Ignoring unreadable retained Bavaria source evidence {}", file, e);
+                }
+            }
+        } catch (IOException e) {
+            log.warn("Cannot list retained Bavaria source evidence {}", sourceDirectory, e);
+        }
+        return latest;
     }
 
     private long loadArchivedSourceLandscapes(Path dir, List<SkillLandscape> loaded) {
@@ -1320,6 +1403,7 @@ public class LandscapeService {
                 && (Boolean.TRUE.equals(landscape != null ? landscape.getCompatibilityOnly() : null)
                         || COMPATIBILITY_ONLY_LANDSCAPE_IDS.contains(landscapeId)
                         || sourceLandscapeJurisdictionById.containsKey(landscapeId)
+                        || (landscape == null && retainedSourceLandscapesById.containsKey(landscapeId))
                         || isLegacyBavariaGymnasiumLandscape(landscapeId));
     }
 
@@ -1366,10 +1450,23 @@ public class LandscapeService {
             return Collections.emptySet();
         }
         Map<String, Set<String>> byGoalId = sourceAtomicGoalIdsByLandscapeAndGoal.get(landscapeId);
-        if (byGoalId == null || byGoalId.isEmpty()) {
-            return Collections.emptySet();
-        }
-        return byGoalId.getOrDefault(goalId, Collections.emptySet());
+        if (byGoalId != null && byGoalId.containsKey(goalId)) return byGoalId.get(goalId);
+        SkillLandscape source = retainedSourceLandscapesById.get(landscapeId);
+        if (source == null || source.getGoals() == null) return Collections.emptySet();
+        Map<String, LearningGoal> goals = new LinkedHashMap<>();
+        source.getGoals().forEach(goal -> goals.put(goal.getId(), goal));
+        Set<String> atomic = new LinkedHashSet<>();
+        collectRetainedSourceAtoms(goalId, goals, atomic, new HashSet<>());
+        return Collections.unmodifiableSet(atomic);
+    }
+
+    private void collectRetainedSourceAtoms(String goalId, Map<String, LearningGoal> goals,
+            Set<String> atomic, Set<String> visiting) {
+        LearningGoal goal = goals.get(goalId);
+        if (goal == null || !visiting.add(goalId)) return;
+        if (goal.getContains() == null || goal.getContains().isEmpty()) atomic.add(goalId);
+        else goal.getContains().forEach(child -> collectRetainedSourceAtoms(child, goals, atomic, visiting));
+        visiting.remove(goalId);
     }
 
     public LandscapeSummary getCompatibilityArchiveSummary(String landscapeId) {
@@ -1880,8 +1977,8 @@ public class LandscapeService {
         }
         try {
             return PrunedFileTree.files(dir,
-                            path -> isReservedMetadataPath(dir, path)).stream()
-                    .filter(p -> isRuntimeLandscapeJson(dir, p))
+                            path -> isAuthoringMetadataPath(dir, path)).stream()
+                    .filter(p -> Files.isRegularFile(p) && p.getFileName().toString().endsWith(".json"))
                     .mapToLong(p -> {
                         try {
                             return Files.getLastModifiedTime(p).toMillis();

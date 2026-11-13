@@ -3,6 +3,8 @@ import { readFileSync, readdirSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { fingerprintSemanticKindSourceGoal } from './goalBookModel'
+import { routeProfiles } from './generateCurriculumQualityStatus'
+import { deriveSemanticRouteProfiles } from './lib/semanticRouteInventory'
 import { loadVerifiedPrerequisiteReductionContext, reviewBindingGoal } from './prerequisiteReductionProof'
 import { buildApplicabilityCompilation, intersectApplicabilityJurisdictions } from './applicabilityCompiler'
 import type { SkillLandscape } from '../src/landscapeTypes'
@@ -45,15 +47,17 @@ const changedPrerequisites = [
 ]
 const retiredCompatibilityGoalId = '972cc7e8-be9c-444c-ba45-98e817b3cf14'
 const assessmentClusterId = '967d1863-1b9b-4798-8a35-ae4e9760e322'
-// Both native commands own explicit terminal-cluster lists. Inspect only these
-// declarations here; importing validateGraph would start its full-repo run.
-for (const script of ['validateGraph.ts', 'generateCurriculumQualityStatus.ts']) {
-  const source = readFileSync(resolve(repoRoot, 'app/scripts', script), 'utf8')
-  const declaration = source.match(/const CANONICAL_GYM_MATH_SEK2_PRACTICE_CLUSTER_IDS = \[([\s\S]*?)\]/u)
-  assert(declaration, `${script}: native Sek-II terminal-cluster selector missing`)
-  const clusterIds = [...declaration[1].matchAll(/'([^']+)'/gu)].map((match) => match[1])
-  assert.equal(clusterIds.filter((id) => id === assessmentClusterId).length, 1, `${script}: HE Q2.1 assessments must participate in native route/assessment gates`)
-}
+// The semantic gate derives its endpoints from the same QA inventory. Assert
+// the actual profiles without starting validateGraph's full-repository CLI.
+const sharedRoute = routeProfiles.find(profile => profile.profileId === 'canonical-math-sek2')!
+assert(sharedRoute, 'native QA Sek-II route profile missing')
+assert.equal(sharedRoute.terminalAutonomyClusterIds.filter(id => id === assessmentClusterId).length, 1,
+  'HE Q2.1 assessments must participate in native QA route/assessment gates')
+const semanticRoute = deriveSemanticRouteProfiles(readJson('app/scripts/config/semantic-route-coverage.json'), new Map(), new Map())
+  .find(profile => profile.profileId === sharedRoute.profileId)
+assert(semanticRoute?.required, 'native semantic Sek-II route must remain required')
+assert.equal(semanticRoute.terminalGoalClusterIds.filter(id => id === assessmentClusterId).length, 1,
+  'HE Q2.1 assessments must participate in the required semantic route gate')
 assert.deepEqual(rawGoalById.get(assessmentClusterId)?.contains, tasks)
 
 // Applicability is a compiled eligibility cache, not a composition placement.

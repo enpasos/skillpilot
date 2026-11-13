@@ -15,6 +15,20 @@ import org.junit.jupiter.api.io.TempDir;
 class LandscapeServiceTest {
 
         @Test
+        void realCanonicalClosureUsesOnlyTheGatedCatalogAndRetainedEvidenceStaysExplicit() {
+                LandscapeProperties properties = new LandscapeProperties();
+                properties.setDirectory("../curricula");
+                LandscapeService service = new LandscapeService(properties, new ObjectMapper());
+                List<SkillLandscape> closure = service.getClosure(CANONICAL_GYMNASIUM_ROOT_ID);
+                assertThat(closure).hasSize(21);
+                assertThat(closure).allSatisfy(landscape ->
+                        assertThat(landscape.getFrameworkId()).startsWith("canonical-gymnasium"));
+                assertThat(service.getRetainedSourceLandscape(BAVARIA_MATH_ID)).isNotNull();
+                assertThat(service.getAll()).noneSatisfy(landscape ->
+                        assertThat(landscape).isSameAs(service.getRetainedSourceLandscape(BAVARIA_MATH_ID)));
+        }
+
+        @Test
         void completionMetadataDirectoriesCannotIntroduceRuntimeLandscapes(@TempDir Path curriculaDir) throws Exception {
                 String landscape = "{\"landscapeId\":\"%s\",\"title\":\"Fixture\",\"goals\":[{\"id\":\"%s\",\"title\":\"Goal\",\"contains\":[]}]}";
                 for (String directory : List.of("completion-profiles", "completion-scopes")) {
@@ -23,7 +37,7 @@ class LandscapeServiceTest {
                 }
                 // Similar names and the same directory names outside the reserved location
                 // are ordinary runtime inputs and must not be broadly excluded.
-                for (String directory : List.of("DE/Gymnasium/completion-profiles-extra", "Other/completion-scopes")) {
+                for (String directory : List.of("Other/completion-profiles-extra", "Other/completion-scopes")) {
                         Path ordinary = Files.createDirectories(curriculaDir.resolve(directory));
                         String id = directory.replace('/', '-');
                         Files.writeString(ordinary.resolve("landscape.json"), landscape.formatted(id, id + "-goal"));
@@ -34,7 +48,7 @@ class LandscapeServiceTest {
                 service.pinRuntimeGeneration();
 
                 assertThat(service.getAll()).extracting(SkillLandscape::getLandscapeId)
-                        .containsExactlyInAnyOrder("DE-Gymnasium-completion-profiles-extra", "Other-completion-scopes");
+                        .containsExactlyInAnyOrder("Other-completion-profiles-extra", "Other-completion-scopes");
                 assertThat(service.getLandscapeIdForGoal("completion-profiles-goal")).isNull();
                 assertThat(service.getLandscapeIdForGoal("completion-scopes-goal")).isNull();
         }
@@ -372,9 +386,9 @@ class LandscapeServiceTest {
                 ObjectMapper objectMapper = new ObjectMapper();
                 LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
 
-                assertThat(landscapeService.getById(NRW_LOWER_MATH_ID)).isNotNull();
-                assertThat(landscapeService.getById(NRW_UPPER_MATH_ID)).isNotNull();
-                assertThat(landscapeService.getById(NRW_UPPER_PHYSICS_ID)).isNotNull();
+                assertThat(landscapeService.getRetainedSourceLandscape(NRW_LOWER_MATH_ID)).isNotNull();
+                assertThat(landscapeService.getRetainedSourceLandscape(NRW_UPPER_MATH_ID)).isNotNull();
+                assertThat(landscapeService.getRetainedSourceLandscape(NRW_UPPER_PHYSICS_ID)).isNotNull();
                 assertThat(landscapeService.resolveSourceLandscapeJurisdiction(NRW_LOWER_MATH_ID)).isEqualTo("DE-NW");
                 assertThat(landscapeService.resolveSourceLandscapeJurisdiction(NRW_UPPER_MATH_ID)).isEqualTo("DE-NW");
                 assertThat(landscapeService.resolveSourceLandscapeJurisdiction(NRW_UPPER_PHYSICS_ID)).isEqualTo("DE-NW");
@@ -390,8 +404,8 @@ class LandscapeServiceTest {
                 ObjectMapper objectMapper = new ObjectMapper();
                 LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
 
-                SkillLandscape lower = landscapeService.getById(NRW_CHEMISTRY_LOWER_ID);
-                SkillLandscape upper = landscapeService.getById(NRW_CHEMISTRY_UPPER_ID);
+                SkillLandscape lower = landscapeService.getRetainedSourceLandscape(NRW_CHEMISTRY_LOWER_ID);
+                SkillLandscape upper = landscapeService.getRetainedSourceLandscape(NRW_CHEMISTRY_UPPER_ID);
 
                 assertThat(lower).isNotNull();
                 assertThat(upper).isNotNull();
@@ -416,8 +430,8 @@ class LandscapeServiceTest {
                 ObjectMapper objectMapper = new ObjectMapper();
                 LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
 
-                SkillLandscape lower = landscapeService.getById(RHEINLAND_PFALZ_CHEMISTRY_LOWER_ID);
-                SkillLandscape upper = landscapeService.getById(RHEINLAND_PFALZ_CHEMISTRY_UPPER_ID);
+                SkillLandscape lower = landscapeService.getRetainedSourceLandscape(RHEINLAND_PFALZ_CHEMISTRY_LOWER_ID);
+                SkillLandscape upper = landscapeService.getRetainedSourceLandscape(RHEINLAND_PFALZ_CHEMISTRY_UPPER_ID);
 
                 assertThat(lower).isNotNull();
                 assertThat(upper).isNotNull();
@@ -442,8 +456,8 @@ class LandscapeServiceTest {
                 ObjectMapper objectMapper = new ObjectMapper();
                 LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
 
-                SkillLandscape lower = landscapeService.getById(NIEDERSACHSEN_CHEMISTRY_LOWER_ID);
-                SkillLandscape upper = landscapeService.getById(NIEDERSACHSEN_CHEMISTRY_UPPER_ID);
+                SkillLandscape lower = landscapeService.getRetainedSourceLandscape(NIEDERSACHSEN_CHEMISTRY_LOWER_ID);
+                SkillLandscape upper = landscapeService.getRetainedSourceLandscape(NIEDERSACHSEN_CHEMISTRY_UPPER_ID);
 
                 assertThat(lower).isNotNull();
                 assertThat(upper).isNotNull();
@@ -468,10 +482,10 @@ class LandscapeServiceTest {
                 ObjectMapper objectMapper = new ObjectMapper();
                 LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
 
-                SkillLandscape brandenburgLower = landscapeService.getById(BRANDENBURG_CHEMISTRY_LOWER_ID);
-                SkillLandscape brandenburgUpper = landscapeService.getById(BRANDENBURG_CHEMISTRY_UPPER_ID);
-                SkillLandscape berlinLower = landscapeService.getById(BERLIN_CHEMISTRY_LOWER_ID);
-                SkillLandscape berlinUpper = landscapeService.getById(BERLIN_CHEMISTRY_UPPER_ID);
+                SkillLandscape brandenburgLower = landscapeService.getRetainedSourceLandscape(BRANDENBURG_CHEMISTRY_LOWER_ID);
+                SkillLandscape brandenburgUpper = landscapeService.getRetainedSourceLandscape(BRANDENBURG_CHEMISTRY_UPPER_ID);
+                SkillLandscape berlinLower = landscapeService.getRetainedSourceLandscape(BERLIN_CHEMISTRY_LOWER_ID);
+                SkillLandscape berlinUpper = landscapeService.getRetainedSourceLandscape(BERLIN_CHEMISTRY_UPPER_ID);
 
                 assertThat(brandenburgLower).isNotNull();
                 assertThat(brandenburgUpper).isNotNull();
@@ -510,8 +524,8 @@ class LandscapeServiceTest {
                 ObjectMapper objectMapper = new ObjectMapper();
                 LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
 
-                SkillLandscape lower = landscapeService.getById(BREMEN_CHEMISTRY_LOWER_ID);
-                SkillLandscape upper = landscapeService.getById(BREMEN_CHEMISTRY_UPPER_ID);
+                SkillLandscape lower = landscapeService.getRetainedSourceLandscape(BREMEN_CHEMISTRY_LOWER_ID);
+                SkillLandscape upper = landscapeService.getRetainedSourceLandscape(BREMEN_CHEMISTRY_UPPER_ID);
 
                 assertThat(lower).isNotNull();
                 assertThat(upper).isNotNull();
@@ -536,8 +550,8 @@ class LandscapeServiceTest {
                 ObjectMapper objectMapper = new ObjectMapper();
                 LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
 
-                SkillLandscape lower = landscapeService.getById(BADEN_WUERTTEMBERG_CHEMISTRY_LOWER_ID);
-                SkillLandscape upper = landscapeService.getById(BADEN_WUERTTEMBERG_CHEMISTRY_UPPER_ID);
+                SkillLandscape lower = landscapeService.getRetainedSourceLandscape(BADEN_WUERTTEMBERG_CHEMISTRY_LOWER_ID);
+                SkillLandscape upper = landscapeService.getRetainedSourceLandscape(BADEN_WUERTTEMBERG_CHEMISTRY_UPPER_ID);
 
                 assertThat(lower).isNotNull();
                 assertThat(upper).isNotNull();
@@ -562,8 +576,8 @@ class LandscapeServiceTest {
                 ObjectMapper objectMapper = new ObjectMapper();
                 LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
 
-                SkillLandscape lower = landscapeService.getById(HAMBURG_CHEMISTRY_LOWER_ID);
-                SkillLandscape upper = landscapeService.getById(HAMBURG_CHEMISTRY_UPPER_ID);
+                SkillLandscape lower = landscapeService.getRetainedSourceLandscape(HAMBURG_CHEMISTRY_LOWER_ID);
+                SkillLandscape upper = landscapeService.getRetainedSourceLandscape(HAMBURG_CHEMISTRY_UPPER_ID);
 
                 assertThat(lower).isNotNull();
                 assertThat(upper).isNotNull();
@@ -588,8 +602,8 @@ class LandscapeServiceTest {
                 ObjectMapper objectMapper = new ObjectMapper();
                 LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
 
-                SkillLandscape lower = landscapeService.getById(MECKLENBURG_VORPOMMERN_CHEMISTRY_LOWER_ID);
-                SkillLandscape upper = landscapeService.getById(MECKLENBURG_VORPOMMERN_CHEMISTRY_UPPER_ID);
+                SkillLandscape lower = landscapeService.getRetainedSourceLandscape(MECKLENBURG_VORPOMMERN_CHEMISTRY_LOWER_ID);
+                SkillLandscape upper = landscapeService.getRetainedSourceLandscape(MECKLENBURG_VORPOMMERN_CHEMISTRY_UPPER_ID);
 
                 assertThat(lower).isNotNull();
                 assertThat(upper).isNotNull();
@@ -614,8 +628,8 @@ class LandscapeServiceTest {
                 ObjectMapper objectMapper = new ObjectMapper();
                 LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
 
-                SkillLandscape lower = landscapeService.getById(SCHLESWIG_HOLSTEIN_CHEMISTRY_LOWER_ID);
-                SkillLandscape upper = landscapeService.getById(SCHLESWIG_HOLSTEIN_CHEMISTRY_UPPER_ID);
+                SkillLandscape lower = landscapeService.getRetainedSourceLandscape(SCHLESWIG_HOLSTEIN_CHEMISTRY_LOWER_ID);
+                SkillLandscape upper = landscapeService.getRetainedSourceLandscape(SCHLESWIG_HOLSTEIN_CHEMISTRY_UPPER_ID);
 
                 assertThat(lower).isNotNull();
                 assertThat(upper).isNotNull();
@@ -640,8 +654,8 @@ class LandscapeServiceTest {
                 ObjectMapper objectMapper = new ObjectMapper();
                 LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
 
-                SkillLandscape lower = landscapeService.getById(SAXONY_CHEMISTRY_LOWER_ID);
-                SkillLandscape upper = landscapeService.getById(SAXONY_CHEMISTRY_UPPER_ID);
+                SkillLandscape lower = landscapeService.getRetainedSourceLandscape(SAXONY_CHEMISTRY_LOWER_ID);
+                SkillLandscape upper = landscapeService.getRetainedSourceLandscape(SAXONY_CHEMISTRY_UPPER_ID);
 
                 assertThat(lower).isNotNull();
                 assertThat(upper).isNotNull();
@@ -666,8 +680,8 @@ class LandscapeServiceTest {
                 ObjectMapper objectMapper = new ObjectMapper();
                 LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
 
-                SkillLandscape lower = landscapeService.getById(SACHSEN_ANHALT_CHEMISTRY_LOWER_ID);
-                SkillLandscape upper = landscapeService.getById(SACHSEN_ANHALT_CHEMISTRY_UPPER_ID);
+                SkillLandscape lower = landscapeService.getRetainedSourceLandscape(SACHSEN_ANHALT_CHEMISTRY_LOWER_ID);
+                SkillLandscape upper = landscapeService.getRetainedSourceLandscape(SACHSEN_ANHALT_CHEMISTRY_UPPER_ID);
 
                 assertThat(lower).isNotNull();
                 assertThat(upper).isNotNull();
@@ -692,8 +706,8 @@ class LandscapeServiceTest {
                 ObjectMapper objectMapper = new ObjectMapper();
                 LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
 
-                SkillLandscape lower = landscapeService.getById(THUERINGIA_CHEMISTRY_LOWER_ID);
-                SkillLandscape upper = landscapeService.getById(THUERINGIA_CHEMISTRY_UPPER_ID);
+                SkillLandscape lower = landscapeService.getRetainedSourceLandscape(THUERINGIA_CHEMISTRY_LOWER_ID);
+                SkillLandscape upper = landscapeService.getRetainedSourceLandscape(THUERINGIA_CHEMISTRY_UPPER_ID);
 
                 assertThat(lower).isNotNull();
                 assertThat(upper).isNotNull();
@@ -718,8 +732,8 @@ class LandscapeServiceTest {
                 ObjectMapper objectMapper = new ObjectMapper();
                 LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
 
-                SkillLandscape lower = landscapeService.getById(SAARLAND_CHEMISTRY_LOWER_ID);
-                SkillLandscape upper = landscapeService.getById(SAARLAND_CHEMISTRY_UPPER_ID);
+                SkillLandscape lower = landscapeService.getRetainedSourceLandscape(SAARLAND_CHEMISTRY_LOWER_ID);
+                SkillLandscape upper = landscapeService.getRetainedSourceLandscape(SAARLAND_CHEMISTRY_UPPER_ID);
 
                 assertThat(lower).isNotNull();
                 assertThat(upper).isNotNull();
@@ -786,7 +800,7 @@ class LandscapeServiceTest {
                 properties.setDirectory(curriculaDir.toString());
                 LandscapeService landscapeService = new LandscapeService(properties, new ObjectMapper());
 
-                SkillLandscape loaded = landscapeService.getById(sourceLandscapeId);
+                SkillLandscape loaded = landscapeService.getRetainedSourceLandscape(sourceLandscapeId);
 
                 assertThat(loaded).isNotNull();
                 assertThat(loaded.getTitle()).isEqualTo("Fallback Source Extraction");
@@ -861,8 +875,8 @@ class LandscapeServiceTest {
                 ObjectMapper objectMapper = new ObjectMapper();
                 LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
 
-                assertThat(landscapeService.getById(NIEDERSACHSEN_LOWER_MATH_ID)).isNotNull();
-                assertThat(landscapeService.getById(NIEDERSACHSEN_UPPER_MATH_ID)).isNotNull();
+                assertThat(landscapeService.getRetainedSourceLandscape(NIEDERSACHSEN_LOWER_MATH_ID)).isNotNull();
+                assertThat(landscapeService.getRetainedSourceLandscape(NIEDERSACHSEN_UPPER_MATH_ID)).isNotNull();
                 assertThat(landscapeService.resolveSourceLandscapeJurisdiction(NIEDERSACHSEN_LOWER_MATH_ID))
                                 .isEqualTo("DE-NI");
                 assertThat(landscapeService.resolveSourceLandscapeJurisdiction(NIEDERSACHSEN_UPPER_MATH_ID))
@@ -929,8 +943,8 @@ class LandscapeServiceTest {
                 ObjectMapper objectMapper = new ObjectMapper();
                 LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
 
-                assertThat(landscapeService.getById(BADEN_WUERTTEMBERG_LOWER_MATH_ID)).isNotNull();
-                assertThat(landscapeService.getById(BADEN_WUERTTEMBERG_UPPER_MATH_ID)).isNotNull();
+                assertThat(landscapeService.getRetainedSourceLandscape(BADEN_WUERTTEMBERG_LOWER_MATH_ID)).isNotNull();
+                assertThat(landscapeService.getRetainedSourceLandscape(BADEN_WUERTTEMBERG_UPPER_MATH_ID)).isNotNull();
                 assertThat(landscapeService.resolveSourceLandscapeJurisdiction(BADEN_WUERTTEMBERG_LOWER_MATH_ID))
                                 .isEqualTo("DE-BW");
                 assertThat(landscapeService.resolveSourceLandscapeJurisdiction(BADEN_WUERTTEMBERG_UPPER_MATH_ID))

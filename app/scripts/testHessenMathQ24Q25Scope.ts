@@ -17,6 +17,8 @@ import {
   normalizeCompositionView,
 } from '../src/utils/authoring/compositionViewAuthoring'
 import { fingerprintSemanticKindSourceGoal } from './goalBookModel'
+import { routeProfiles } from './generateCurriculumQualityStatus'
+import { deriveSemanticRouteProfiles } from './lib/semanticRouteInventory'
 
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
 const readText = (path: string) => readFileSync(resolve(repoRoot, path), 'utf8')
@@ -149,12 +151,15 @@ for (const id of [cluster, assessment]) {
   assert.equal(validateK7(invalidLedger), false, `${id}: native K7 must reject an invented decision basis even with a valid fingerprint`)
   assert(validateK7.errors?.some((error) => error.instancePath === `/decisions/${index}/decisionBasis`), `${id}: negative control must fail on decisionBasis`)
 }
-for (const script of ['validateGraph.ts', 'generateCurriculumQualityStatus.ts']) {
-  const declaration = readText(`app/scripts/${script}`).match(/const CANONICAL_GYM_MATH_SEK2_PRACTICE_CLUSTER_IDS = \[([\s\S]*?)\]/u)
-  assert(declaration, `${script}: missing native terminal-cluster selector`)
-  const ids = [...declaration[1].matchAll(/'([^']+)'/gu)].map((match) => match[1])
-  assert.equal(ids.filter((id) => id === cluster).length, 1, `${script}: rotation endpoint missing from native route/assessment checks`)
-}
+const sharedRoute = routeProfiles.find(profile => profile.profileId === 'canonical-math-sek2')!
+assert(sharedRoute, 'native QA Sek-II route profile missing')
+assert.equal(sharedRoute.terminalAutonomyClusterIds.filter(id => id === cluster).length, 1,
+  'rotation endpoint missing from native QA route/assessment checks')
+const semanticRoute = deriveSemanticRouteProfiles(readJson('app/scripts/config/semantic-route-coverage.json'), new Map(), new Map())
+  .find(profile => profile.profileId === sharedRoute.profileId)
+assert(semanticRoute?.required, 'native semantic Sek-II route must remain required')
+assert.equal(semanticRoute.terminalGoalClusterIds.filter(id => id === cluster).length, 1,
+  'rotation endpoint missing from the required semantic route gate')
 
 const examGoal = rawById.get(assessment)
 assert(examGoal?.examData, 'Actual rotation exam is missing')

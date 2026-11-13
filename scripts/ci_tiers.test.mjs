@@ -137,3 +137,23 @@ test('complete curriculum CI enforces the catalog and policy against the trusted
   assert.ok(scripts['test:graph-gate-contracts'].includes('npm run test:historical-review-receipts'))
   assert.match(scripts['test:historical-review-receipts'], /^python3 -B /u)
 })
+
+test('every semantic-route consumer fetches and inherits the exact PR or previous-push policy base', () => {
+  const trustedBase = "${{ github.event.pull_request.base.sha || github.event.before || 'origin/main' }}"
+  const consumers = Object.entries(jobs).filter(([, job]) => job.steps.some(step =>
+    /npm run (?:validate:graph|test:hard-learning-routes)(?:\s|$)/u.test(step.run ?? '')))
+  assert.deepEqual(consumers.map(([name]) => name).sort(), ['curriculum-assessment-proofs', 'graph-validation', 'quick-checks'])
+  for (const [name, job] of consumers) {
+    assert.equal(job.env.SEMANTIC_ROUTE_POLICY_BASE, trustedBase, `${name} must use PR base or push-before, never its own main head`)
+    const fetchIndex = job.steps.findIndex(step => step.name === 'Fetch trusted semantic-route policy base')
+    const consumerIndex = job.steps.findIndex(step => /npm run (?:validate:graph|test:hard-learning-routes)(?:\s|$)/u.test(step.run ?? ''))
+    assert.ok(fetchIndex >= 0 && fetchIndex < consumerIndex, `${name} must fetch before semantic-route evaluation`)
+    const fetch = job.steps[fetchIndex]
+    assert.match(fetch.run, /set -euo pipefail/u)
+    assert.match(fetch.run, /git fetch --no-tags --depth=1 origin "\$\{SEMANTIC_ROUTE_POLICY_BASE\}"/u)
+    assert.match(fetch.run, /\+refs\/heads\/main:refs\/remotes\/origin\/main/u)
+    assert.match(fetch.run, /git rev-parse --verify "\$\{SEMANTIC_ROUTE_POLICY_BASE\}\^\{commit\}"/u)
+    assert.equal(fetch['continue-on-error'], undefined)
+    assert.equal(job.steps[consumerIndex].env, undefined, `${name}'s consumer must inherit the verified job environment`)
+  }
+})

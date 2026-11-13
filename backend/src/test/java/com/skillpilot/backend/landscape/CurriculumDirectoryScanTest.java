@@ -62,11 +62,11 @@ class CurriculumDirectoryScanTest {
     @Test
     void preservesLandscapeScopeSortedDuplicateChoiceAndFileSymlinkReloads() throws Exception {
         Path root = Files.createDirectory(tempDir.resolve("curricula"));
-        Path first = writeLandscape(root.resolve("DE/Gymnasium/canonical/a.json"), "current", "First");
-        Path duplicate = writeLandscape(root.resolve("DE/Gymnasium/canonical/b.json"), "current", "Duplicate");
+        Path first = writeLandscape(root.resolve("Other/current/a.json"), "current", "First");
+        Path duplicate = writeLandscape(root.resolve("Other/current/b.json"), "current", "Duplicate");
         Path source = writeLandscape(tempDir.resolve("external/source.json"), "linked", "Before");
         Path link = Files.createSymbolicLink(first.getParent().resolve("linked.json"), source);
-        Path neighbor = writeLandscape(root.resolve("DE/Gymnasium/quality-neighbor/active.json"), "neighbor", "Neighbor");
+        Path neighbor = writeLandscape(root.resolve("Other/quality-neighbor/active.json"), "neighbor", "Neighbor");
         Path otherQuality = writeLandscape(root.resolve("other/quality/active.json"), "other-quality", "Accepted");
         Path ignored = writeLandscape(root.resolve("DE/Gymnasium/quality/nested/candidate.json"), "current", "Candidate");
         Files.createSymbolicLink(root.resolve("directory-link"), source.getParent());

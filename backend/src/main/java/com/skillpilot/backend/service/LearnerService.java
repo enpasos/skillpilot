@@ -5303,13 +5303,13 @@ public class LearnerService {
             throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
                     "curriculumId must not be empty.");
         }
-        if (landscapeService.getById(effectiveCurriculumId) == null) {
-            throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
-                    "Invalid curriculum ID: " + effectiveCurriculumId);
-        }
         if (landscapeService.isCompatibilityOnlyLandscape(effectiveCurriculumId)) {
             throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT,
                     buildCompatibilityOnlyRetirementMessage(effectiveCurriculumId));
+        }
+        if (landscapeService.getById(effectiveCurriculumId) == null) {
+            throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
+                    "Invalid curriculum ID: " + effectiveCurriculumId);
         }
         boolean curriculumChanged = !Objects.equals(learner.getSelectedCurriculum(), effectiveCurriculumId);
         learner.setSelectedCurriculum(effectiveCurriculumId);
