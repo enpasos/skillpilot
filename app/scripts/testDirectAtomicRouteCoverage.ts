@@ -5,10 +5,11 @@ import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { test } from 'node:test'
 import type { LearningGoal, SkillLandscape } from '../src/landscapeTypes'
-import { routeProfiles, evaluateRouteProfile } from './generateCurriculumQualityStatus'
+import { createRouteProfiles, evaluateRouteProfile } from './generateCurriculumQualityStatus'
 import { evaluateDirectAtomicRouteCoverage } from './lib/directAtomicRouteCoverage'
 import { validateHardDirectAtomicRoutes, type HardRouteSemanticKind } from './lib/hardLearningRouteValidation'
 
+const routeProfiles = createRouteProfiles()
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
 const status = JSON.parse(readFileSync(resolve(root, 'docs/qa-ci/status/curriculum-quality-status.json'), 'utf8'))
 const goal = (id: string, requires: string[] = [], contains: string[] = []): LearningGoal => ({

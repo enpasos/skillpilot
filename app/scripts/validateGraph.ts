@@ -8,7 +8,6 @@ import {
 } from './lib/hardLearningRouteValidation'
 import { validateOrientationOutlooks } from './lib/orientationOutlookValidation'
 import { findExamMarkdownTableIssues } from './lib/examMarkdownValidation'
-import { routeProfiles } from './generateCurriculumQualityStatus'
 import { evaluateDirectAtomicRouteCoverage } from './lib/directAtomicRouteCoverage'
 import { canResolveRetainedGymnasiumReference, loadGraphValidationLandscapes, loadRetainedGymnasiumSourceLandscapes } from './lib/graphValidationInventory'
 import { loadSemanticRouteInventory } from './lib/semanticRouteInventory'
@@ -116,7 +115,7 @@ const semanticRoutes = await loadSemanticRouteInventory(join(process.cwd(), '..'
   parsedLandscapes.map(entry => ({ file: entry.file, landscape: entry.source })))
 const requiredSemanticProfiles = semanticRoutes.profiles.filter(profile => profile.required)
 const rawSemanticGoalById = new Map(semanticRoutes.goals.map(goal => [goal.id, goal]))
-const mathQaProfiles = routeProfiles.filter(profile => profile.landscapeId === CANONICAL_GYM_MATH_LANDSCAPE_ID)
+const mathQaProfiles = semanticRoutes.qaProfiles.filter(profile => profile.landscapeId === CANONICAL_GYM_MATH_LANDSCAPE_ID)
 
 if (existsSync(compatibilityArchiveRegistryPath)) {
   try {
@@ -704,7 +703,7 @@ function validateLandscape(landscape: ParsedLandscape) {
     })
   }
 
-  for (const profile of routeProfiles.filter((candidate) => candidate.landscapeId === landscape.landscapeId)) {
+  for (const profile of semanticRoutes.qaProfiles.filter((candidate) => candidate.landscapeId === landscape.landscapeId)) {
     const coverage = evaluateDirectAtomicRouteCoverage(landscape.source, profile)
     for (const detail of coverage.details) addIssue('error', landscape.landscapeId, `[CQR-102] ${profile.profileId}: ${detail}`)
   }

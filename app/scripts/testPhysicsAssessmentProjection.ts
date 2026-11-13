@@ -16,8 +16,9 @@ import { goalMatchesFilters } from '../src/utils/goalFilters'
 import { normalizeLearnerProjectedEntries } from '../src/utils/learnerTreeProjection'
 import { buildVisibleChildrenMap } from '../src/utils/treeProjectionRuntime'
 import { buildApplicabilityCompilation } from './applicabilityCompiler'
-import { evaluateRouteProfile, routeProfiles } from './generateCurriculumQualityStatus'
+import { evaluateRouteProfile, createRouteProfiles } from './generateCurriculumQualityStatus'
 
+const routeProfiles = createRouteProfiles()
 const root = resolve(import.meta.dirname, '../..')
 const canonicalLandscape = JSON.parse(readFileSync(resolve(root,
   'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json'), 'utf8')) as SkillLandscape

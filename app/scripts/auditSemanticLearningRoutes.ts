@@ -20,6 +20,26 @@ export async function auditSemanticLearningRoutes(repositoryRoot: string) {
       findings,
     }
   })
+  // The established global lane is not the complete learner-facing subtree
+  // union. Report that separate alignment debt instead of hiding it behind the
+  // explicit-placement repair or silently widening the protected CQR lane.
+  const scopeAlignmentDebt = inventory.profiles.flatMap(profile => {
+    const broader = inventory.scopeAlignmentProfiles.find(candidate => candidate.profileId === profile.profileId)!
+    const additionalInheritedTargetGoalIds = inventory.goals.filter(goal => broader.goalSelector(goal) && !profile.goalSelector(goal))
+      .map(goal => goal.id).sort()
+    if (!additionalInheritedTargetGoalIds.length) return []
+    const additionalIds = new Set(additionalInheritedTargetGoalIds)
+    const findings = validateHardDirectAtomicRoutes(inventory.goals, inventory.semanticKindByGoalId, broader)
+      .filter(finding => finding.goalId && additionalIds.has(finding.goalId))
+    return [{
+      profileId: profile.profileId,
+      status: 'scope-alignment-debt',
+      semantics: 'Inherited national stage-subtree targets beyond the established global route lane; diagnostic only, not covered by the explicit goalEntry selector override.',
+      additionalInheritedTargetGoalIds,
+      broaderSelectedCurricularGoals: inventory.goals.filter(broader.goalSelector).length,
+      findings,
+    }]
+  })
   // Re-read the exact bytes after route evaluation; a mixed-time report is an
   // error even when both versions would independently satisfy the hard gate.
   inventory.assertInputsCurrent()
@@ -53,6 +73,7 @@ export async function auditSemanticLearningRoutes(repositoryRoot: string) {
     coverageBaseline: inventory.coverageBaseline,
     inputBindings,
     scopes,
+    scopeAlignmentDebt,
   }
 }
 

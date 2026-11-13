@@ -7,7 +7,8 @@ import { dirname, relative, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import type { SkillLandscape } from '../src/landscapeTypes'
 import { buildApplicabilityCompilation } from './applicabilityCompiler'
-import { evaluateRouteProfile, routeProfiles } from './generateCurriculumQualityStatus'
+import { createRouteProfiles, evaluateRouteProfile } from './generateCurriculumQualityStatus'
+import { PHYSICS_QA_SELECTOR_INPUT_PATHS } from './lib/physicsQaStageTargets'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
 const sha256 = (bytes: string | Buffer) => createHash('sha256').update(bytes).digest('hex')
@@ -21,26 +22,36 @@ function jsonFiles(directory: string): string[] {
 }
 
 export function reportRouteEndpointVisibility() {
+  const inputBytes = new Map<string, Buffer>()
+  const readBound = (path: string) => {
+    if (!inputBytes.has(path)) inputBytes.set(path, readFileSync(path))
+    return inputBytes.get(path)!
+  }
   const canonicalFiles = jsonFiles(resolve(root, 'curricula/DE/Gymnasium/canonical'))
   const landscapes = canonicalFiles.map(path => ({
     path,
-    landscape: JSON.parse(readFileSync(path, 'utf8')) as SkillLandscape,
+    landscape: JSON.parse(readBound(path).toString('utf8')) as SkillLandscape,
   }))
+  PHYSICS_QA_SELECTOR_INPUT_PATHS.forEach(path => readBound(resolve(root, path)))
+  const routeProfiles = createRouteProfiles(root, { readText: path => readBound(path).toString('utf8') })
   const unpinnedProfiles = routeProfiles.filter(profile => profile.compositionViewStage === undefined)
   if (unpinnedProfiles.some(profile => !profile.profileId.endsWith('-sek2'))) {
     throw new Error('An unpinned route scope needs an explicit diagnostic stage before it can be measured.')
   }
   const selectedLandscapeIds = new Set(unpinnedProfiles.map(profile => profile.landscapeId))
   const viewFiles = jsonFiles(resolve(root, 'curricula/DE/Gymnasium/composition-views'))
-    .filter(path => selectedLandscapeIds.has(JSON.parse(readFileSync(path, 'utf8')).landscapeId))
+    .filter(path => selectedLandscapeIds.has(JSON.parse(readBound(path).toString('utf8')).landscapeId))
   const inputPaths = [
     ...canonicalFiles,
     ...viewFiles,
     resolve(root, 'app/scripts/config/curriculum-maturity-floor-policy.json'),
     resolve(root, 'app/scripts/generateCurriculumQualityStatus.ts'),
+    ...PHYSICS_QA_SELECTOR_INPUT_PATHS.map(path => resolve(root, path)),
     fileURLToPath(import.meta.url),
   ].sort()
-  const inputs = inputPaths.map(path => ({ path: repoPath(path), sha256: sha256(readFileSync(path)) }))
+  inputPaths.forEach(readBound)
+  const inputs = [...inputBytes].map(([path, bytes]) => ({ path: repoPath(path), sha256: sha256(bytes) }))
+    .sort((a, b) => a.path.localeCompare(b.path, 'en'))
   const applicability = buildApplicabilityCompilation()
   const results = unpinnedProfiles.flatMap(profile => {
     const source = landscapes.find(entry => entry.landscape.landscapeId === profile.landscapeId)

@@ -4,7 +4,8 @@ import { execFileSync } from 'node:child_process'
 import { existsSync, readFileSync, readdirSync } from 'node:fs'
 import { relative, resolve } from 'node:path'
 import type { LearningGoal, SkillLandscape } from '../../src/landscapeTypes'
-import { routeProfiles } from '../generateCurriculumQualityStatus'
+import { createRouteProfiles, routeProfileDefinitions, type RouteProfile } from '../generateCurriculumQualityStatus'
+import { PHYSICS_QA_SELECTOR_INPUT_PATHS } from './physicsQaStageTargets'
 import { parseSemanticKindLedger } from '../goalBookModel'
 import { loadOptionalHistoricalReviewContext } from '../optionalHistoricalReviewContext'
 import type { HardRouteProfile, HardRouteSemanticKind } from './hardLearningRouteValidation'
@@ -29,14 +30,14 @@ export interface SemanticRouteProfile extends HardRouteProfile<LearningGoal> {
   required: boolean
 }
 
-type QaRouteProfile = (typeof routeProfiles)[number]
+type QaRouteProfile = RouteProfile
 const POLICY_PATH = 'app/scripts/config/semantic-route-coverage.json'
 const ensure: (condition: unknown, message: string) => asserts condition = (condition, message) => {
   if (!condition) throw new Error(`Semantic route inventory: ${message}`)
 }
 
 /** An explicit residual is never inferred from a failing route or missing file. */
-export function validateSemanticRoutePolicy(policy: SemanticRoutePolicy, profiles: readonly QaRouteProfile[] = routeProfiles): void {
+export function validateSemanticRoutePolicy(policy: SemanticRoutePolicy, profiles: readonly QaRouteProfile[] = routeProfileDefinitions): void {
   ensure(policy?.schemaVersion === 1 && Array.isArray(policy.ledgerSources) && Array.isArray(policy.scopes), 'unsupported coverage policy')
   const profilesById = new Map(profiles.map(profile => [profile.profileId, profile]))
   ensure(profilesById.size === profiles.length, 'duplicate QA scope')
@@ -65,7 +66,7 @@ export function validateSemanticRoutePolicy(policy: SemanticRoutePolicy, profile
 export function checkSemanticRoutePolicyMonotonicity(policy: SemanticRoutePolicy, base: SemanticRoutePolicy): void {
   validateSemanticRoutePolicy(policy)
   const previousScopeIds = new Set(base.scopes.map(scope => scope.scopeId))
-  validateSemanticRoutePolicy(base, routeProfiles.filter(profile => previousScopeIds.has(profile.profileId)))
+  validateSemanticRoutePolicy(base, routeProfileDefinitions.filter(profile => previousScopeIds.has(profile.profileId)))
   for (const previous of base.scopes) {
     const current = policy.scopes.find(scope => scope.scopeId === previous.scopeId)
     ensure(current, `base scope removed: ${previous.scopeId}`)
@@ -81,12 +82,12 @@ export function checkSemanticRoutePolicyMonotonicity(policy: SemanticRoutePolicy
 /** The first policy migration must preserve the two pre-existing Math gates. */
 export function legacySemanticRoutePolicy(): SemanticRoutePolicy {
   const mathScopeIds = new Set(['canonical-math-sek1', 'canonical-math-sek2'])
-  const mathOwner = routeProfiles.find(profile => profile.profileId === 'canonical-math-sek1')!.landscapeId
+  const mathOwner = routeProfileDefinitions.find(profile => profile.profileId === 'canonical-math-sek1')!.landscapeId
   return {
     schemaVersion: 1,
     ledgerSources: [{ landscapeId: mathOwner,
       path: 'curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json', routeNodeScope: 'qa-stage' }],
-    scopes: routeProfiles.map(profile => mathScopeIds.has(profile.profileId)
+    scopes: routeProfileDefinitions.map(profile => mathScopeIds.has(profile.profileId)
       ? { scopeId: profile.profileId, status: 'required' }
       : { scopeId: profile.profileId, status: 'pending-semantic-ledger', reason: 'No previously enforced semantic route scope.' }),
   }
@@ -118,7 +119,7 @@ export function deriveSemanticRouteProfiles(
   policy: SemanticRoutePolicy,
   semanticKindByGoalId: ReadonlyMap<string, HardRouteSemanticKind>,
   ownerByGoalId: ReadonlyMap<string, string>,
-  profiles: readonly QaRouteProfile[] = routeProfiles,
+  profiles: readonly QaRouteProfile[],
 ): SemanticRouteProfile[] {
   validateSemanticRoutePolicy(policy, profiles)
   const scopeById = new Map(policy.scopes.map(scope => [scope.scopeId, scope]))
@@ -169,7 +170,7 @@ export async function loadSemanticRouteInventory(
     'app/scripts/prerequisiteReductionProof.ts', 'app/scripts/optionalHistoricalReviewContext.ts',
     'contracts/curriculum-package/v1/curriculum-ontology-profile.schema.json',
     'contracts/curriculum-package/v1/profiles/semantic-normal-form-v1.profile.json',
-    'curricula/curriculum_manifest.json',
+    'curricula/curriculum_manifest.json', ...PHYSICS_QA_SELECTOR_INPUT_PATHS,
   ]
   for (const path of implementationPaths) bindBytes(path)
   const canonicalDirectory = 'curricula/DE/Gymnasium/canonical'
@@ -218,6 +219,10 @@ export async function loadSemanticRouteInventory(
       goals.push(goal)
     }
   }
+  const qaProfiles = createRouteProfiles(repositoryRoot, { readText: path => bindBytes(relative(repositoryRoot, path)).toString('utf8') })
+  const profiles = deriveSemanticRouteProfiles(policy, semanticKindByGoalId, ownerByGoalId, qaProfiles)
+  const scopeAlignmentProfiles = deriveSemanticRouteProfiles(policy, semanticKindByGoalId, ownerByGoalId, qaProfiles.map(profile => profile.inheritedStageTargetSelector
+    ? { ...profile, clusterSelector: goal => profile.clusterSelector(goal) || profile.inheritedStageTargetSelector!(goal) } : profile))
   const assertInputsCurrent = () => {
     ensure(directorySignature() === initialDirectorySignature, 'canonical directory changed during audit')
     for (const [path, present] of inputPresence) ensure(existsSync(resolve(repositoryRoot, path)) === present, `input presence changed during audit: ${path}`)
@@ -227,7 +232,7 @@ export async function loadSemanticRouteInventory(
   assertInputsCurrent()
   return {
     policy, goals, semanticKindByGoalId, ownerByGoalId, inputBindings,
-    profiles: deriveSemanticRouteProfiles(policy, semanticKindByGoalId, ownerByGoalId),
+    profiles, qaProfiles, scopeAlignmentProfiles,
     historicalReviewDiagnostic: historicalReview.diagnostic,
     coverageBaseline: base.baseline,
     assertInputsCurrent,

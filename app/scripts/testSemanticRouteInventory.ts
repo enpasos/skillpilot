@@ -4,21 +4,22 @@ import { readFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { test } from 'node:test'
-import { routeProfiles } from './generateCurriculumQualityStatus'
+import { createRouteProfiles } from './generateCurriculumQualityStatus'
 import { fingerprintSemanticKindSourceGoal, parseSemanticKindLedger } from './goalBookModel'
 import { auditSemanticLearningRoutes } from './auditSemanticLearningRoutes'
 import { checkSemanticRoutePolicyMonotonicity, deriveSemanticRouteProfiles, legacySemanticRoutePolicy, semanticRoutePolicyBaseRef, validateSemanticRoutePolicy, type SemanticRoutePolicy } from './lib/semanticRouteInventory'
 
+const routeProfiles = createRouteProfiles()
 const repositoryRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
 const policy = JSON.parse(readFileSync(resolve(repositoryRoot, 'app/scripts/config/semantic-route-coverage.json'), 'utf8')) as SemanticRoutePolicy
 
-test('semantic coverage accounts for every shared QA scope and preserves three required scopes', () => {
+test('semantic coverage accounts for every shared QA scope and preserves four required scopes', () => {
   validateSemanticRoutePolicy(policy)
   assert.equal(policy.scopes.length, 12)
   assert.deepEqual(policy.scopes.filter(scope => scope.status === 'required').map(scope => scope.scopeId).sort(), [
-    'canonical-biology-sek2', 'canonical-math-sek1', 'canonical-math-sek2',
+    'canonical-biology-sek2', 'canonical-math-sek1', 'canonical-math-sek2', 'canonical-physics-sek2',
   ])
-  const derived = deriveSemanticRouteProfiles(policy, new Map(), new Map())
+  const derived = deriveSemanticRouteProfiles(policy, new Map(), new Map(), routeProfiles)
   assert.equal(derived.length, 6)
   for (const profile of derived) {
     const shared = routeProfiles.find(candidate => candidate.profileId === profile.profileId)!
@@ -50,7 +51,7 @@ test('Git-base coverage cannot lose required scopes, covered owners or establish
     copy => { copy.scopes.find(scope => scope.scopeId === 'canonical-biology-sek2')!.status = 'pending-route-evidence'; copy.scopes.find(scope => scope.scopeId === 'canonical-biology-sek2')!.reason = 'Attempted downgrade' },
     copy => { copy.scopes.find(scope => scope.scopeId === 'canonical-math-sek1')!.status = 'pending-route-evidence'; copy.scopes.find(scope => scope.scopeId === 'canonical-math-sek1')!.reason = 'Attempted downgrade' },
     copy => { copy.ledgerSources[0]!.routeNodeScope = 'canonical-prerequisites' },
-    copy => { copy.ledgerSources.splice(1, 1); for (const scope of copy.scopes.filter(scope => scope.scopeId.startsWith('canonical-physics-'))) scope.status = 'pending-semantic-ledger' },
+    copy => { copy.ledgerSources.splice(1, 1); for (const scope of copy.scopes.filter(scope => scope.scopeId.startsWith('canonical-physics-'))) { scope.status = 'pending-semantic-ledger'; scope.reason = 'Attempted owner removal' } },
   ]
   for (const change of changes) {
     const changed = structuredClone(policy)
@@ -102,12 +103,14 @@ test('all publication and release ledgers use the same closed current fingerprin
 test('the actual audit validates current ledgers and records pending routes without granting them coverage', async () => {
   const report = await auditSemanticLearningRoutes(repositoryRoot)
   assert.deepEqual(report.summary, {
-    registeredScopes: 12, directlyRequiredScopes: 3, ledgerBackedScopes: 6,
-    passingScopes: 3, failingScopes: 3, unavailableScopes: 6, routeFindings: 12,
+    registeredScopes: 12, directlyRequiredScopes: 4, ledgerBackedScopes: 6,
+    passingScopes: 4, failingScopes: 2, unavailableScopes: 6, routeFindings: 8,
   })
   for (const scope of report.scopes.filter(scope => scope.status === 'required')) assert.equal(scope.outcome, 'pass', scope.scopeId)
   assert.deepEqual(report.scopes.filter(scope => scope.outcome === 'fail').map(scope => [scope.scopeId, scope.findings!.length]), [
-    ['canonical-physics-sek1', 8], ['canonical-physics-sek2', 1], ['canonical-chemistry-sek2', 3],
+    ['canonical-physics-sek1', 5], ['canonical-chemistry-sek2', 3],
   ])
   assert.equal(report.inputBindings.filter(binding => binding.path.endsWith('.semantic-kinds.json')).length, 4)
+  assert.equal(report.inputBindings.filter(binding => binding.path.includes('/composition-views/physik/')).length, 3)
+  assert.deepEqual(report.scopeAlignmentDebt.map(debt => [debt.profileId, debt.additionalInheritedTargetGoalIds.length, debt.findings.length]), [['canonical-physics-sek2', 43, 42]])
 })

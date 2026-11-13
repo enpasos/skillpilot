@@ -17,9 +17,10 @@ import {
   normalizeCompositionView,
 } from '../src/utils/authoring/compositionViewAuthoring'
 import { fingerprintSemanticKindSourceGoal } from './goalBookModel'
-import { routeProfiles } from './generateCurriculumQualityStatus'
+import { createRouteProfiles } from './generateCurriculumQualityStatus'
 import { deriveSemanticRouteProfiles } from './lib/semanticRouteInventory'
 
+const routeProfiles = createRouteProfiles()
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
 const readText = (path: string) => readFileSync(resolve(repoRoot, path), 'utf8')
 const readJson = (path: string) => JSON.parse(readText(path))
@@ -155,7 +156,7 @@ const sharedRoute = routeProfiles.find(profile => profile.profileId === 'canonic
 assert(sharedRoute, 'native QA Sek-II route profile missing')
 assert.equal(sharedRoute.terminalAutonomyClusterIds.filter(id => id === cluster).length, 1,
   'rotation endpoint missing from native QA route/assessment checks')
-const semanticRoute = deriveSemanticRouteProfiles(readJson('app/scripts/config/semantic-route-coverage.json'), new Map(), new Map())
+const semanticRoute = deriveSemanticRouteProfiles(readJson('app/scripts/config/semantic-route-coverage.json'), new Map(), new Map(), routeProfiles)
   .find(profile => profile.profileId === sharedRoute.profileId)
 assert(semanticRoute?.required, 'native semantic Sek-II route must remain required')
 assert.equal(semanticRoute.terminalGoalClusterIds.filter(id => id === cluster).length, 1,

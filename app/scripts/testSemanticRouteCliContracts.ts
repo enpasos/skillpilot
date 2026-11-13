@@ -9,11 +9,13 @@ import { test } from 'node:test'
 import { fingerprintSemanticKindSourceGoal } from './goalBookModel'
 import { loadGraphValidationLandscapes } from './lib/graphValidationInventory'
 import { loadSemanticRouteInventory, type SemanticRoutePolicy } from './lib/semanticRouteInventory'
+import { PHYSICS_QA_STAGE_VIEWS } from './lib/physicsQaStageTargets'
 
 const original = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
 const policyPath = 'app/scripts/config/semantic-route-coverage.json'
 const biologyPath = 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json'
 const biologyLedgerPath = 'curricula/DE/Gymnasium/quality/goal-book-publication/biologie.semantic-kinds.json'
+const physicsViewPaths = new Set(PHYSICS_QA_STAGE_VIEWS.map(view => resolve(original, view.path)))
 
 function materializeLiveInputs(source: string, target: string): void {
   mkdirSync(target, { recursive: true })
@@ -22,7 +24,7 @@ function materializeLiveInputs(source: string, target: string): void {
     if (entry.isDirectory()) {
       if (['quality', 'input', 'archive'].includes(entry.name)) symlinkSync(path, output, 'dir')
       else materializeLiveInputs(path, output)
-    } else if (path.includes('/canonical/') || [
+    } else if (path.includes('/canonical/') || physicsViewPaths.has(path) || [
       'prerequisite-reduction-proof-registry.json',
       'prerequisite-reduction-proof-registry-v8-politics-economics-20261111.json',
     ].includes(entry.name)) copyFileSync(path, output)
@@ -33,6 +35,7 @@ function materializeLiveInputs(source: string, target: string): void {
 function makeFixture(): string {
   const fixture = mkdtempSync(join(tmpdir(), 'skillpilot-semantic-cli-'))
   mkdirSync(join(fixture, 'app/scripts/config'), { recursive: true })
+  symlinkSync(join(original, 'app/src'), join(fixture, 'app/src'), 'dir')
   for (const entry of readdirSync(join(original, 'app/scripts'))) {
     if (entry !== 'config') symlinkSync(join(original, 'app/scripts', entry), join(fixture, 'app/scripts', entry))
   }
@@ -107,6 +110,41 @@ test('actual validate:graph CLI rejects route and Git-base coverage mutations', 
       assert.match(result.output, /required coverage lowered: canonical-biology-sek2/)
       writeFileSync(join(fixture, policyPath), policyBytes)
     })
+    await t.test('required Physics coverage cannot become pending against Git base', () => {
+      const changed = JSON.parse(policyBytes.toString('utf8')) as SemanticRoutePolicy
+      Object.assign(changed.scopes.find(scope => scope.scopeId === 'canonical-physics-sek2')!, {
+        status: 'pending-route-evidence', reason: 'Attempted scope downgrade',
+      })
+      writeFileSync(join(fixture, policyPath), JSON.stringify(changed))
+      const result = runCli(fixture)
+      assert.equal(result.status, 1, result.output)
+      assert.match(result.output, /required coverage lowered: canonical-physics-sek2/)
+      writeFileSync(join(fixture, policyPath), policyBytes)
+    })
+    await t.test('the actual CLI reads isolated Physics stage roles rather than cached original-repository targets', () => {
+      const originals = PHYSICS_QA_STAGE_VIEWS.filter(view => view.stage === 'SekII').map(view => {
+        const path = join(fixture, view.path)
+        return { path, bytes: readFileSync(path) }
+      })
+      const changeRole = (nodes: Array<Record<string, unknown>>) => {
+        for (const node of nodes) {
+          if (node.kind === 'structure') changeRole(node.children as Array<Record<string, unknown>>)
+          else if (node.goalId === '68034218-8f3e-5f7f-ae4e-ed057dd4e44e') node.projectionRole = 'prerequisiteOnly'
+        }
+      }
+      try {
+        for (const entry of originals) {
+          const view = JSON.parse(entry.bytes.toString('utf8'))
+          changeRole(view.rootNodes)
+          writeFileSync(entry.path, JSON.stringify(view))
+        }
+        const result = runCli(fixture)
+        assert.equal(result.status, 1, result.output)
+        assert.match(result.output, /\[GVR-012\].*74a32716-2b46-5d96-8b57-3f6edb90e088.*no route through an ordinary curricular atomic goal/)
+      } finally {
+        originals.forEach(entry => writeFileSync(entry.path, entry.bytes))
+      }
+    })
     await t.test('Mathematics stage-bound route nodes cannot be widened against Git base', () => {
       const changed = JSON.parse(policyBytes.toString('utf8')) as SemanticRoutePolicy
       changed.ledgerSources[0]!.routeNodeScope = 'canonical-prerequisites'
@@ -137,6 +175,17 @@ test('actual validate:graph CLI rejects route and Git-base coverage mutations', 
       const result = runCli(fixture, '0'.repeat(40))
       assert.equal(result.status, 1, result.output)
       assert.match(result.output, /git rev-parse --verify 0000000000000000000000000000000000000000/)
+    })
+    await t.test('a selector view changed after evaluation invalidates the snapshot', async () => {
+      const inventory = await loadSemanticRouteInventory(fixture, loadGraphValidationLandscapes(join(fixture, 'curricula')), 'origin/main')
+      const path = join(fixture, PHYSICS_QA_STAGE_VIEWS[0].path)
+      const before = readFileSync(path)
+      try {
+        writeFileSync(path, Buffer.concat([before, Buffer.from('\n')]))
+        assert.throws(inventory.assertInputsCurrent, /input changed during audit/)
+      } finally {
+        writeFileSync(path, before)
+      }
     })
     await t.test('a canonical input changed after evaluation invalidates the snapshot', async () => {
       const inventory = await loadSemanticRouteInventory(fixture, loadGraphValidationLandscapes(join(fixture, 'curricula')), 'origin/main')

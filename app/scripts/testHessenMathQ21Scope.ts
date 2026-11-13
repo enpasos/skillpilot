@@ -3,7 +3,7 @@ import { readFileSync, readdirSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { fingerprintSemanticKindSourceGoal } from './goalBookModel'
-import { routeProfiles } from './generateCurriculumQualityStatus'
+import { createRouteProfiles } from './generateCurriculumQualityStatus'
 import { deriveSemanticRouteProfiles } from './lib/semanticRouteInventory'
 import { loadVerifiedPrerequisiteReductionContext, reviewBindingGoal } from './prerequisiteReductionProof'
 import { buildApplicabilityCompilation, intersectApplicabilityJurisdictions } from './applicabilityCompiler'
@@ -15,6 +15,7 @@ import {
   normalizeCompositionView,
 } from '../src/utils/authoring/compositionViewAuthoring'
 
+const routeProfiles = createRouteProfiles()
 const prerequisiteReductionContext = await loadVerifiedPrerequisiteReductionContext()
 
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
@@ -53,7 +54,7 @@ const sharedRoute = routeProfiles.find(profile => profile.profileId === 'canonic
 assert(sharedRoute, 'native QA Sek-II route profile missing')
 assert.equal(sharedRoute.terminalAutonomyClusterIds.filter(id => id === assessmentClusterId).length, 1,
   'HE Q2.1 assessments must participate in native QA route/assessment gates')
-const semanticRoute = deriveSemanticRouteProfiles(readJson('app/scripts/config/semantic-route-coverage.json'), new Map(), new Map())
+const semanticRoute = deriveSemanticRouteProfiles(readJson('app/scripts/config/semantic-route-coverage.json'), new Map(), new Map(), routeProfiles)
   .find(profile => profile.profileId === sharedRoute.profileId)
 assert(semanticRoute?.required, 'native semantic Sek-II route must remain required')
 assert.equal(semanticRoute.terminalGoalClusterIds.filter(id => id === assessmentClusterId).length, 1,

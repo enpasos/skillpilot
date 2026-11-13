@@ -31,6 +31,7 @@ import { evaluateGraphIntegrity, requireCompleteCurrentCatalog } from './curricu
 import { createReviewedRequiresClosureCoverageChecker } from './sourceCoverageEvidence'
 import { shouldRequireCanonicalMathSek1AssessmentEndpoint } from './lib/canonicalMathSek1ReviewedExamRoutes'
 import { createRepositorySourceAvailability } from './repositorySourceAvailability'
+import { loadPhysicsQaStageTargets, PHYSICS_QA_SELECTOR_INPUT_PATHS } from './lib/physicsQaStageTargets'
 
 type RuleStatus = 'pass' | 'warn' | 'fail' | 'not_configured'
 type MaturityLevel = 'M0' | 'M1' | 'M2' | 'M3' | 'M4' | 'M5' | 'M6' | 'M7'
@@ -875,7 +876,7 @@ interface SourceGoalClosureRegistry {
 type CoverageReport = ApplicabilityCompilationResult['reports'][number]
 type CoverageGoalReport = CoverageReport['goals'][number]
 
-interface RouteProfile {
+export interface RouteProfile {
   profileId: string
   landscapeId: string
   label: string
@@ -887,6 +888,8 @@ interface RouteProfile {
   compositionViewRoutePathMode?: 'visible-atomic'
   goalSelector: (goal: LearningGoal) => boolean
   clusterSelector: (goal: LearningGoal) => boolean
+  /** Broader inherited placement targets remain visible as scope-alignment debt. */
+  inheritedStageTargetSelector?: (goal: LearningGoal) => boolean
 }
 
 const scriptDir = dirname(fileURLToPath(import.meta.url))
@@ -1150,7 +1153,8 @@ const ruleCatalog: QualityRuleDefinition[] = [
   },
 ]
 
-export const routeProfiles: RouteProfile[] = [
+/** Registry metadata and established lanes; use createRouteProfiles for evaluation. */
+export const routeProfileDefinitions: RouteProfile[] = [
   {
     profileId: 'canonical-math-sek1',
     landscapeId: CANONICAL_GYM_MATH_LANDSCAPE_ID,
@@ -1357,6 +1361,29 @@ export const routeProfiles: RouteProfile[] = [
       && !goal.tags?.includes('Abitur'),
   },
 ]
+
+/** Bind the same reviewed stage overrides for CQR, graph validation and diagnostics. */
+export function createRouteProfiles(
+  repositoryRoot = repoRoot,
+  inputs: Pick<VerificationInputReader, 'readText'> = { readText: path => readFileSync(path, 'utf8') },
+): RouteProfile[] {
+  const placements = loadPhysicsQaStageTargets(repositoryRoot, path => inputs.readText(path))
+  return routeProfileDefinitions.map(profile => {
+    if (profile.landscapeId !== CANONICAL_GYM_PHYSICS_LANDSCAPE_ID) return profile
+    const stage = profile.profileId === 'canonical-physics-sek1' ? 'SekI' : 'SekII'
+    const explicitTargets = placements.explicitTargetIdsByStage.get(stage)!
+    const allTargets = placements.allTargetIdsByStage.get(stage)!
+    return {
+      ...profile,
+      // Explicit reviewed goalEntry placements supplement the existing lane;
+      // inherited subtree targets do not silently redefine that global lane.
+      goalSelector: goal => profile.goalSelector(goal) || (explicitTargets.has(goal.id) && isProjectedRouteTargetGoal(goal)),
+      clusterSelector: goal => profile.clusterSelector(goal) || explicitTargets.has(goal.id),
+      inheritedStageTargetSelector: goal => allTargets.has(goal.id) && !explicitTargets.has(goal.id)
+        && !profile.clusterSelector(goal),
+    }
+  })
+}
 
 function toRepoPath(path: string): string {
   return relative(repoRoot, path).split(/[\\/]/).join('/')
@@ -6227,6 +6254,8 @@ function renderMarkdownDe(status: StatusDocument): string {
 
 async function generateStatus(inputs: VerificationInputReader, assertCurrent: () => void) {
   const shouldCheck = process.argv.includes('--check')
+  for (const path of PHYSICS_QA_SELECTOR_INPUT_PATHS) inputs.readText(resolve(repoRoot, path))
+  const routeProfiles = createRouteProfiles(repoRoot, inputs)
   const { entries, sources } = loadCurrentCurriculumCatalog(inputs)
   const currentCatalog = requireCompleteCurrentCatalog(entries, sources)
   // G17 always evaluates every complete current root, before optional reuse of

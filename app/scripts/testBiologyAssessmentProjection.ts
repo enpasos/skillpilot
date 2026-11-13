@@ -5,8 +5,9 @@ import { tmpdir } from 'node:os'
 import { resolve } from 'node:path'
 import type { SkillLandscape } from '../src/landscapeTypes'
 import { buildApplicabilityCompilation } from './applicabilityCompiler'
-import { collectRenderedAtomicGoalIdsFromCompositionView, evaluateRouteProfile, routeProfiles } from './generateCurriculumQualityStatus'
+import { collectRenderedAtomicGoalIdsFromCompositionView, evaluateRouteProfile, createRouteProfiles } from './generateCurriculumQualityStatus'
 
+const routeProfiles = createRouteProfiles()
 const root = resolve(import.meta.dirname, '../..')
 const viewPath = resolve(root, 'curricula/DE/Gymnasium/composition-views/biologie/de-de-gym-biology-gk.view.json')
 const landscape = JSON.parse(readFileSync(resolve(root,
