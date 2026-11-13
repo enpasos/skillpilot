@@ -139,16 +139,20 @@ complete check as parallel jobs. Details: `docs/qa-ci/ci.md`.
   runs directly in curriculum CI, including M0 entries. `CQR-104` remains
   explicitly limited to eight scopes; the four unconfigured Sek II scopes
   have unresolved evidence gaps. `CQR-102` covers all twelve scopes, but the
-  stronger semantic `GVR-012` is required for Mathematics Sek I/Sek II and
-  Biology Sek II (3/12). Physics/Chemistry route findings and six missing
-  current ledgers remain explicit in the shared scope inventory. The Product
+  stronger semantic `GVR-012` is required for Mathematics Sek I/Sek II,
+  Biology Sek II and Physics Sek II (4/12). Five Physics Sek I and three
+  Chemistry findings, plus six scopes without current ledgers, remain explicit.
+  The shared factory adds only reviewed explicit Physics stage targets to
+  the existing lanes; 43 additional inherited Sek II targets, 42 without
+  terminal routes, remain separate alignment debt. This is not complete
+  stage-target coverage. The Product
   Owner decided on **13 November 2026** that `GVR-012` shall become mandatory
   from subject maturity M7. Activation across that domain waits for the
-  remaining evidence gaps: today three of seven M7 scopes are required and
+  remaining evidence gaps: today four of seven M7 scopes are required and
   pass. The five M6 scopes stay in the twelve-scope inventory and join the
   mandatory domain on later promotion to M7. `HARD` requires complete M7
   enforcement, including future promotions; until then keep `PARTIAL`, all
-  three required scopes and all pins. No immediate activation, floor reduction
+  four required scopes and all pins. No immediate activation, floor reduction
   or inferred pass evidence. The twelve-scope audit remains diagnostic, not
   an M7 promotion check. Never turn a review
   queue green by bulk decisions. The frozen

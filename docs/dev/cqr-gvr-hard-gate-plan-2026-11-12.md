@@ -835,8 +835,8 @@ per scope and repair it only with evidence. Never weaken the validator or
 change a classification to pass. The five `M6` scopes have no classification;
 that work belongs to their `M7` path and is not part of this programme.
 
-`GVR-012` remains `PARTIAL`: three of the seven current M7 scopes are directly
-required and pass. The remaining four need current classification and route
+`GVR-012` remains `PARTIAL`: four of the seven current M7 scopes are directly
+required and pass. The remaining three need current classification and route
 evidence before the complete M7 obligation can be activated. A later `HARD`
 grade requires fail-closed enforcement across the complete M7 domain,
 including its expansion on future promotions, with meaningful negative tests.
@@ -844,13 +844,13 @@ That is a prerequisite for regrading `GVR-012`, not an automatic upgrade of
 broader `GD-C21`, `GD-C22` or `GD-A18` obligations.
 Do not activate the incomplete obligation now, lower existing floors, remove
 required scopes, or treat this decision as passing evidence. The current
-three required scopes and every existing pin remain unchanged and protected
+four required scopes and every existing pin remain unchanged and protected
 against removal or reduction even through a later status change.
 
 The semantic route audit remains a complete twelve-scope diagnostic. Its
 nonzero exit for route findings or unavailable ledgers, including those of M6
-subjects, is not an M7 promotion check. `3/12` continues to describe current
-inventory coverage; `3/7` describes coverage of today's normative M7 domain.
+subjects, is not an M7 promotion check. `4/12` continues to describe current
+inventory coverage; `4/7` describes coverage of today's normative M7 domain.
 
 #### F5 – `CQR-104` from eight to twelve scopes
 
@@ -910,13 +910,21 @@ snapshots. The 55 `OPEN` runtime/concept rows are not regraded.
   reads retain compatibility; canonical closure cannot use retained source
   edges. See the [consumer audit](cqr-gvr-gymnasium-retained-source-audit-2026-11-13.md).
 - **F4:** shared QA profiles now drive six current-ledger semantic probes;
-  Mathematics Sek I/II and Biology Sek II pass and are directly required
-  (**3/12 inventory scopes; 3/7 current M7 scopes**). Physics Sek I/II and
-  Chemistry Sek II have 8/1/3 actual route findings. The Economics ledger
+  Mathematics Sek I/II, Biology Sek II and Physics Sek II pass and are directly required
+  (**4/12 inventory scopes; 4/7 current M7 scopes**). The shared
+  `createRouteProfiles` factory repairs an omitted input: already reviewed
+  explicit `goalEntry` stage targets in three national Physics views now
+  supplement the existing lanes (Sek I 96→101; Sek II 306→316). Terminals,
+  canonical graphs, views and roles are unchanged. This is not complete
+  stage-target coverage: 43 additional Sek-II targets inherited only through
+  subtrees remain separate alignment debt, 42 without terminal routes in the
+  broader diagnostic. Physics Sek I and Chemistry Sek II retain 5/3 actual
+  route findings, eight in total. The Economics ledger
   still lacks 24 current goals, and five
   M6 scopes have no current authoritative ledger. Those cases remain explicit
   in the complete coverage register and
-  [current-input audit](../qa-ci/status/semantic-learning-route-audit.json).
+  [current-input audit](../qa-ci/status/semantic-learning-route-audit.json),
+  which binds 45 current inputs, including the shared stage selector and views.
   Required coverage and established node boundaries cannot be downgraded
   against the Git base. No source classification or prerequisite was changed
   to pass the route validator; `GVR-012` remains `PARTIAL`. The owner's
@@ -932,7 +940,22 @@ snapshots. The 55 `OPEN` runtime/concept rows are not regraded.
   placement mechanism cannot supply the missing assessment evidence. The
   [subject findings](cqr-gvr-endpoint-visibility-findings-2026-11-13.md) and
   [reproducible diagnostic](../qa-ci/status/route-endpoint-visibility-audit.json)
-  specify the remainder; `CQR-104` remains `PARTIAL` at **8/12 scopes**.
+  specify the remainder; the diagnostic binds 381 current inputs, including
+  all view files read to determine membership. Independent task/rubric checks
+  against ST Biology eAN pp. 57–61 and gAN pp. 46–49 establish an LK source
+  basis for the two missing assessments, but also overbroad prerequisites
+  (22/16), coverage clusters (36/28 atoms), material and passing-result gaps.
+  An unchanged placement in both courses is therefore not justified; reviewed
+  task, atomic coverage, applicability and result contracts remain subject
+  follow-up work. `CQR-104` remains `PARTIAL` at **8/12 scopes**.
+
+The Physics selector follow-up passed all 25 semantic contract tests, all 548
+live graph files, the eight existing visibility pins, five direct-route tests,
+18 workflow guards and the Q2.1 regression. The full CQR run completed with
+21 curricula (five M7, five M6, eleven M0), unchanged; the floor checker
+passed all 21 curriculum and twelve scope pins against main `2ad03c810c`.
+The app TypeScript build and targeted ESLint also passed. These are local
+results; the final candidate still requires its own remote CI evidence.
 
 F4/F5's stronger coverage targets are not complete. Their documented evidence
 work remains necessary before further pins or grades can be raised; this PR

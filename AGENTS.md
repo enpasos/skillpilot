@@ -1159,15 +1159,21 @@ Interpretation:
   scopes. The four upper-secondary Mathematics, Physics, Chemistry and Biology
   gaps remain open; an unconfigured scope is not a visibility pass. Direct
   route coverage (`CQR-102`) applies to all twelve scopes, while the stronger
-  semantic route rule (`GVR-012`) is required in three scopes (Mathematics
-  Sek I/Sek II and Biology Sek II). Three ledger-backed Physics/Chemistry
-  scopes retain route findings; six other scopes lack complete current
-  ledgers. The shared semantic scope inventory accounts for all twelve. These limits must
+  semantic route rule (`GVR-012`) is required in four scopes (Mathematics
+  Sek I/Sek II, Biology Sek II and Physics Sek II). Physics Sek I and Chemistry
+  Sek II retain five/three route findings; six other scopes lack complete
+  current ledgers. The shared factory adds reviewed explicit Physics
+  `goalEntry` stage targets to the established QA lanes (96→101 and 306→316
+  curricular atoms), without changing terminals, graphs, views or roles.
+  Separately, 43 inherited Physics Sek II stage targets lie beyond that lane;
+  42 lack a terminal route in the broader diagnostic. Four passing registered
+  scopes do not prove complete stage-target coverage. The shared semantic
+  scope inventory accounts for all twelve. These limits must
   remain visible in the rule register; no review or learner result is inferred.
 * Product Owner decision of **13 November 2026**: `GVR-012` shall become
   mandatory from subject maturity `M7`, covering every registered QA scope of
   each subject obligated to meet M7. This binding target has not yet been
-  activated across that domain: three of today's seven M7 scopes pass and are
+  activated across that domain: four of today's seven M7 scopes pass and are
   directly required.
   First close the remaining current M7 classification and route gaps with
   evidence, then enforce the complete M7 obligation, including future
@@ -1175,7 +1181,7 @@ Interpretation:
   the mandatory domain when their subjects advance to M7. `GVR-012` stays
   `PARTIAL` until that complete domain is fail-closed; twelve passing scopes
   are not required merely because all twelve remain in the inventory. Keep
-  the three existing required scopes and all maturity pins unchanged and
+  the four existing required scopes and all maturity pins unchanged and
   protected even through later status changes. A later hard `GVR-012` gate
   does not automatically upgrade broader `GD-*` obligations. This
   decision neither lowers floors nor supplies missing pass evidence. The
