@@ -72,6 +72,7 @@ npm --prefix app run validate:composition-views
 npm --prefix app run check:transitive-minimality
 npm --prefix app run validate:learning-units            # learning units in the canonical landscapes (R1, R3, R4)
 npm --prefix app run check:learning-unit-assessments    # unit assessments in the catalog equal their source files
+npm --prefix app run knowledge-context -- <goalId> [--full]   # what a learner can be assumed to know at a goal (AGENTS.md §2.5)
 npm --prefix app run quality:curriculum-status          # regenerate status
 npm --prefix app run quality:curriculum-status:check    # + maturity-floor gate
 python3 scripts/validate_schemas.py
@@ -193,7 +194,7 @@ Full rules: `docs/dev/documentation-guidelines.md`.
 - `docs/concept/runtime-workflows/provider-neutral-coach-boundary.md` — canonical ChatClient/backend contract
 - `docs/concept/runtime-workflows/learning-workflow.md` — goal-type workflows
 - `docs/concept/curriculum-quality-and-human-trial.md` — maturity levels M0–M7, human trial
-- `docs/concept/skill-graph/` — goal system, composition views, learning units, assessment-gated completion, visualizations, goal books, packages
+- `docs/concept/skill-graph/` — goal system, composition views, learning units, assessment-gated completion, visualizations, goal books, packages; `knowledge-context.md` — what a learner can be assumed to know at a goal (concept, AGENTS.md §2.5)
 - `docs/concept/didactic/unified-learning-plan-status.md` — learning-plan contract
 - `docs/dev/mathematics-physics-learning-units-plan.md` — working plan for learning units (Mathematics, then Physics); units live in `programUnits`/`goalPlacements`, package contract `contracts/curriculum-package/v1.2/`
 - `docs/dev/landscape-json-field-reference.md` — landscape JSON fields

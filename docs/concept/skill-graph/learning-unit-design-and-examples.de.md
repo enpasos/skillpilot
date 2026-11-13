@@ -8,7 +8,7 @@
 
 **Sprache / Language:** **Deutsch (DE)** · [English (EN)](learning-unit-design-and-examples.md) | **PDF:** [Deutsches PDF](skillpilot-skill-graph-architecture.de.pdf) · [English PDF](skillpilot-skill-graph-architecture.en.pdf)
 
-**Kompendium:** [§1 Allgemeines Zielsystem](general-goal-system-and-migration.de.md) · [§2 Knotentypen](node-types.de.md) · [§3 Sichtenprojektion](view-projection-and-goal-placement.de.md) · [§4 Quellen- & Ressourcenlinks](source-and-resource-links.de.md) · [§5 Contentanbindung](content-integration.md) · [§6 Quellenbegründungen](human-readable-source-rationales.de.md) · [§7 Zielvisualisierungen](atomic-goal-visualizations.de.md) · [§8 Lernzielbuch](learning-goal-book-and-evidence-review-pipeline.de.md) · [§9 Gymnasium-Rollout](canonical-gymnasium-rollout.de.md) · [§10 MEM/FWU-Plan](mem-fwu-roundtrip-plan.de.md) · [§11 Duale Paket-Releases](dual-curriculum-package-releases.md) · **§12 Einheitsentwurf & Beispiele**
+**Kompendium:** [§1 Allgemeines Zielsystem](general-goal-system-and-migration.de.md) · [§2 Knotentypen](node-types.de.md) · [§3 Sichtenprojektion](view-projection-and-goal-placement.de.md) · [§4 Quellen- & Ressourcenlinks](source-and-resource-links.de.md) · [§5 Contentanbindung](content-integration.md) · [§6 Quellenbegründungen](human-readable-source-rationales.de.md) · [§7 Zielvisualisierungen](atomic-goal-visualizations.de.md) · [§8 Lernzielbuch](learning-goal-book-and-evidence-review-pipeline.de.md) · [§9 Gymnasium-Rollout](canonical-gymnasium-rollout.de.md) · [§10 MEM/FWU-Plan](mem-fwu-roundtrip-plan.de.md) · [§11 Duale Paket-Releases](dual-curriculum-package-releases.md) · **§12 Einheitsentwurf & Beispiele** · [§13 Wissenskontext](knowledge-context.de.md)
 
 ---
 <a id="sec-sga-unit-design"></a>
@@ -42,6 +42,21 @@ Ungeeignet sind folgende Begründungen:
 - „Dann passen alle Kanten": Voraussetzungen werden weder erfunden noch entfernt, um eine gewünschte Zerlegung nachträglich passend zu machen.
 
 Eine fachlich fragwürdige Kante ist ein Befund für sich. Ihre Überprüfung darf nicht dadurch ersetzt werden, dass die Bedeutung der beteiligten Ziele stillschweigend verengt wird. Selbst eine atomar azyklische Folge kann durch ungünstige Gruppierung einen Widerspruch zwischen ganzen Blöcken erzeugen; Grenze oder Schachtelung müssen dann überdacht werden.
+
+<a id="the-knowledge-context-of-a-unit"></a>
+<a id="sec-sga-ud-frame"></a>
+#### 12.2. Der Wissenskontext einer Einheit
+
+Was die Ziele einer Einheit ausgestaltet, richtet sich an Lernende, die manches wissen und anderes noch nicht. Dieses Wissen ist der [Wissenskontext](knowledge-context.de.md): eine Projektion des Skill-Graphen, die für jedes Ziel sagt, worauf es aufbaut, was gesichert ist, was auf ihm aufbaut und welcher benachbarte Stoff noch nicht gesichert ist (Anforderung des Product Owners vom 13. November 2026). Der Wissenskontext einer Einheit ist die Vereinigung der Kontexte ihrer eigenen Ziele und Prüfungen. Für eine Einheit wird nichts von Hand geschrieben.
+
+In einer Einheit zum Ableiten ganzrationaler Funktionen sichert der Kontext Potenzfunktionen mit natürlichen Exponenten, ihre Vielfachen und Summen sowie die Regeln, die die Einheit erarbeitet. Trigonometrische Funktionen, Exponential- und Logarithmusfunktionen sowie Produkt- und Kettenregel sind nicht gesichert. Eine Anwendung in dieser Einheit und ebenso das Bild eines ihrer Ziele zeigt dann eine ganzrationale Funktion und nie $\sin x$ oder $e^x$, so naheliegend ein solches Beispiel für jemanden wirkt, der das ganze Fach kennt.
+
+Für den Entwurf einer Einheit folgen daraus zwei Regeln:
+
+1. **Jede Ausgestaltung bleibt im Kontext.** Aufgaben und Musterlösungen der eigenen Prüfungen, Lernkarten, Übungsaufgaben, Lernzielbilder und die Beispiele des Coachs zu den Zielen der Einheit benutzen nur, was der Kontext sichert und was die Einheit erarbeitet. Was ihn verlässt, ist der falschen Einheit zugeordnet oder wird geändert.
+2. **Der Graph muss ausreichen.** Braucht die Einheit etwas, das ihr Kontext nicht sichert, fehlt dem Graphen eine Voraussetzung, greift ein Ziel in späteren Stoff, oder die Grenze stimmt nicht. Das ist ein Befund für die Fachprüfung. Keine Kante wird erfunden und kein Zieltext verengt, um ihn zu beseitigen.
+
+Der Kontext wird abgeleitet, bevor Aufgaben, Karten und Bilder der Einheit geschrieben oder geprüft werden. Er ist in jedem Lehrplankontext derselbe, weil die Voraussetzungsrelation kanonisch ist; „im selben Schuljahr vorgesehen" sichert nichts.
 
 <a id="3-learn-demonstrate-and-continue-learning"></a>
 <a id="sec-sga-ud-loop"></a>
@@ -92,6 +107,8 @@ Bei $t=2\,\mathrm{s}$ erreicht der Ort sein Maximum und die Geschwindigkeit ist 
 #### 12.4. Einstieg und Anschluss
 
 Benötigt werden die mathematischen Fertigkeiten, die diese Aufgaben tatsächlich verlangen: mit Termen und Einheiten umgehen sowie Gleichungen einschließlich auftretender quadratischer Gleichungen lösen. Verlangt die gewählte Aufgabe Ableitungen, müssen auch diese vorab verfügbar sein. Eine in der Physikaufgabe sichtbare Anwendung beweist nicht pauschal die vollständigen entsprechenden Mathematikziele; dafür zählen deren eigene Bedeutung und gültiger Nachweis.
+
+Der Wissenskontext dieses Beispiels sichert die Beschreibung von Bewegungen in Diagrammen, die gleichförmige Bewegung sowie Durchschnitts- und Momentangeschwindigkeit, dazu lineare Funktionen und das Lesen von Graphen. Vektoren und Bewegungen in zwei Dimensionen, Kräfte als Ursachen sowie Ableitungen und Integrale sind nicht gesichert. Quadratische Gleichungen sind es ebenfalls nicht: Kein Voraussetzungspfad der beiden Ziele stellt sie bereit, obwohl die Aufgaben sie brauchen. Das ist ein Befund nach der zweiten Regel zum Wissenskontext einer Einheit.
 
 Die gleichförmige Bewegung kann einen sinnvollen fachlichen Einstieg bilden, etwa um Geschwindigkeit und Beschleunigung voneinander abzugrenzen. Daraus entsteht keine Pflicht, zuvor jede kalendarisch früher liegende Physikeinheit abzuschließen.
 
@@ -223,12 +240,13 @@ Vor jeder Implementierungsplanung sind für jeden Kandidaten zu beantworten:
 
 1. Was können Lernende danach selbstständig, und warum ist das bedeutsam?
 2. Welche konkreten Eingangskompetenzen werden benötigt, und stehen sie – auch fachübergreifend – vor der ersten abhängigen Aktivität bereit?
-3. Welche vorhandenen Ziele gehören direkt zur Einheit, welche verpflichtenden Kindeinheiten besitzt sie, und gehört jedes Ziel genau einer Einheit direkt an (R4)?
-4. Worin besteht der zentrale Erkenntnisschritt, und was baut tatsächlich darauf auf?
-5. Welche Aufgaben und regulären Bewertungsregeln weisen das gesamte Versprechen nach? Liegt jedes eigene reguläre Ziel auf einem Pfad von einer eigenen Prüfung (R1), und trägt mindestens eine solche Prüfung dafür geprüfte Evidenz (R2)?
-6. Beansprucht jede Prüfung Abdeckung ausschließlich für Ziele, die sie voraussetzt (R3)?
-7. Könnte jemand bestehen, obwohl ihm eine wesentliche Kompetenz fehlt?
-8. Welches gezielte Weiterlernen und welche frische Prüfung folgen auf eine solche Lücke?
-9. Welche Quellen und vollständigen Zielbedeutungen begründen Umfang und Grenze?
+3. Was sichert der Wissenskontext der Einheit, und was ist noch nicht gesichert? Reicht der Graph für das, was die Einheit braucht, und bleiben alle Aufgaben, Karten, Bilder und Beispiele der Einheit im Kontext?
+4. Welche vorhandenen Ziele gehören direkt zur Einheit, welche verpflichtenden Kindeinheiten besitzt sie, und gehört jedes Ziel genau einer Einheit direkt an (R4)?
+5. Worin besteht der zentrale Erkenntnisschritt, und was baut tatsächlich darauf auf?
+6. Welche Aufgaben und regulären Bewertungsregeln weisen das gesamte Versprechen nach? Liegt jedes eigene reguläre Ziel auf einem Pfad von einer eigenen Prüfung (R1), und trägt mindestens eine solche Prüfung dafür geprüfte Evidenz (R2)?
+7. Beansprucht jede Prüfung Abdeckung ausschließlich für Ziele, die sie voraussetzt (R3)?
+8. Könnte jemand bestehen, obwohl ihm eine wesentliche Kompetenz fehlt?
+9. Welches gezielte Weiterlernen und welche frische Prüfung folgen auf eine solche Lücke?
+10. Welche Quellen und vollständigen Zielbedeutungen begründen Umfang und Grenze?
 
 Vor einer erneuten Planung sollen die Beispiele nachvollziehbar machen, warum die Grenzen fachlich tragen, die Prüfungen nichts Wesentliches übersehen und ein Nichtbestehen zu sinnvollem Weiterlernen führt. Ein Alternativzuschnitt muss anhand derselben Fragen vergleichbar sein. Dieses Blatt autorisiert weder eine Implementierung noch eine vollständige Schuljahreszuordnung oder eine technische Zugangssperre.

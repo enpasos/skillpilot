@@ -47,6 +47,8 @@ SkillPilot represents learning goals and their prerequisites as a shared skill g
   JSON runtime and ontology packages, and the runtime contract versions 1.0, 1.1 (`assessmentCompletionV1`), and 1.2 (`learningUnitsV1`, learning units).
 - [Learning-Unit Design Criteria and Examples (§13)](learning-unit-design-and-examples.md):
   the purpose of a unit, criteria for meaningful boundaries and assessments, two worked candidates, and the unit validity rules R1–R5 of 11 November 2026 applied to unit design; the representation of a unit is in [Graph Definition §11.2](learning-units.md#sec-unit-representation).
+- [Knowledge Context (§14)](knowledge-context.md):
+  what a learner can be assumed to know at a goal, derived deterministically from the graph for generation, review, and the coach; the sufficiency of prerequisites as the property the graph must gain. Concept of 13 November 2026, not implemented.
 
 See the [Concept Documentation Index](../index.md) for didactic concepts and runtime workflows, and the [Glossary](../glossary.md) for shared terminology.
 
@@ -115,6 +117,8 @@ SkillPilot stellt Lernziele und ihre Voraussetzungen als gemeinsamen Skill-Graph
   JSON-Runtime- und Ontologiepakete sowie die Laufzeitvertragsversionen 1.0, 1.1 (`assessmentCompletionV1`) und 1.2 (`learningUnitsV1`, Lerneinheiten).
 - [Entwurfskriterien und Beispiele für Lerneinheiten (§13)](learning-unit-design-and-examples.de.md):
   didaktischer Zweck einer Lerneinheit, Kriterien für sinnvolle Grenzen und Prüfungen, zwei durchgearbeitete Kandidaten sowie die Gültigkeitsregeln R1–R5 vom 11. November 2026; die Darstellung einer Einheit steht in [Graph-Definition §11.2](learning-units.de.md#sec-unit-representation).
+- [Wissenskontext (§14)](knowledge-context.de.md):
+  was bei Lernenden an einem Ziel vorausgesetzt werden darf, deterministisch aus dem Graphen abgeleitet für Erzeugung, Review und Coach; die Hinlänglichkeit der Voraussetzungen als Eigenschaft, die der Graph gewinnen muss. Konzept vom 13. November 2026, nicht umgesetzt.
 
 Siehe die [Konzept-Übersicht](../index.md) für didaktische Konzepte und Laufzeit-Workflows sowie das [Glossar](../glossary.de.md) für die gemeinsame Terminologie.
 
