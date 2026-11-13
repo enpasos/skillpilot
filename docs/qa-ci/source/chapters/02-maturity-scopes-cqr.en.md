@@ -4,7 +4,9 @@
 Domain specification for `/quality-dashboard` and the generated snapshots under `docs/qa-ci/status/curriculum-quality-status.json` (producer: `cd app && npm run quality:curriculum-status` via `app/scripts/generateCurriculumQualityStatus.ts`; overview: [Dashboard Status Layer](repo:docs/qa-ci/curriculum-quality-dashboard.md)). **Concept correction, 4 November 2026:** Existing `M7` closeouts or passing route checks do not automatically prove that exam tasks verify independent application of every implicitly recognized competence under [Assessment-Gated Completion](repo:docs/concept/skill-graph/assessment-gated-completion.md); that authoring obligation requires a dedicated task/rubric review.
 :::
 
-The candidate of 12 November 2026 adds direct enforcement through `check:transitive-minimality` for all 21 canonical roots and `check:curriculum-maturity-floors` for the complete catalog, twelve declared scope identities, exact pinned maturities, and required individual rule passes. The latter checks against `--base-ref` (PR base SHA, push-before SHA, or local `origin/main`) and fails closed on missing, duplicate, non-passing, or deconfigured required obligations. Neither numeric maturity nor a regenerated status file alone can satisfy these obligations. The shared `CQR-102` evaluator covers all twelve profiles; the stronger semantic `GVR-012` remains Mathematics-specific. Candidate evidence does not assert merge or mainline acceptance.
+**Delivered hardening, 13 November 2026:** Direct enforcement reached `main` in [PR #131](https://github.com/enpasos/skillpilot/pull/131). Following subsequent changes to historical review evidence and the Mathematics assessment, `main` at `2129b207f4` passed all 14 jobs of [CI #2315](https://github.com/enpasos/skillpilot/actions/runs/43398052180). The [delivery record](repo:docs/dev/cqr-gvr-hard-gate-plan-2026-11-12.md) distinguishes this later integration state from the original PR run and the cancelled CI run of its merge commit. The CQR/GVR register therefore records 22 codes enforced hard within their named domains; `CQR-104` and `GVR-012` remain `PARTIAL` because of the coverage gaps below. This is automated QA, not evidence of human trials or complete implementation of every skill-graph rule.
+
+`check:transitive-minimality` checks all 21 canonical roots directly. `check:curriculum-maturity-floors` enforces the complete catalog, twelve declared scope identities, exact pinned maturities, and required individual rule passes. Even the eleven M0 roots must each pass `CQR-001`, `CQR-002`, and `CQR-501`. The checker compares against `--base-ref` (PR base SHA, push-before SHA, or local `origin/main`) and fails on missing, duplicate, non-passing, or deconfigured required obligations and removed or lowered pins. A maturity gain requires raising its pin in the same change. Neither numeric maturity nor a regenerated status file alone can satisfy these obligations. The shared `CQR-102` evaluator covers all twelve profiles; the stronger semantic `GVR-012` remains limited to the two Mathematics scopes.
 
 The direct `CQR-104` visibility obligation remains limited to its eight configured scopes out of twelve route profiles. Attempts to add the four stage profiles produced 80 Mathematics, 68 Physics, 41 Chemistry, and 3 Biology findings; compiled-jurisdiction filtering did not resolve them. Their expansion is deferred without reducing existing maturity floors. The pinned checker preserves the eight-scope configuration against silent removal.
 
@@ -45,17 +47,19 @@ Each `CQR-*` rule evaluates to `pass`, `warn`, `fail`, or `not_configured`. Sinc
 | --- | --- |
 | **`M0`** | `CQR-101` is not `pass` (effective route from motivation to terminal autonomy remains open). |
 | **`M1`** | `CQR-101` is `pass`, while `CQR-102` or `CQR-103` remains open (atomic routing or cluster `requires`). |
-| **`M2`** | `CQR-101..103` are `pass`, while `CQR-104` or `CQR-201`/`CQR-202` remains open (visibility / terminal `examData`). |
+| **`M2`** | `CQR-101..103` are `pass`, while a required visibility check `CQR-104` or `CQR-201`/`CQR-202` is not `pass`. |
 | **`M3`** | Route and baseline assessment rules are `pass`, while `CQR-203` remains open. |
 | **`M4`** | All required route and assessment rules including `CQR-203` are `pass`. |
 :::
 
+Visibility checking is required in eight scopes. It remains absent in the other four, so their scope M4 does not establish endpoint visibility. Any present `CQR-104` rule must always be `pass`. In addition, a non-passing `CQR-001` or `CQR-002` caps every scope of that subject at M0.
+
 :::table{cols="2.0cm,X"}
 | Curriculum | Cumulative subject-level condition (`M0`–`M7` scale) |
 | --- | --- |
-| **`M0`** | `CQR-001` or `CQR-002` fails, or source snapshot ingestion with official HTTP(S) URLs (`CQR-000`) is incomplete. |
-| **`M1`** | `CQR-000..002` pass, while state view coverage (`CQR-003`) or `GK`/`LK` mapping consistency (`CQR-004`) is open. |
-| **`M2`** | `CQR-000..004` pass; QA scopes are not yet configured or at least one scope has not passed `CQR-101`. |
+| **`M0`** | At least one of `CQR-000..002` is not `pass` (source inventory, graph integrity, or type consistency). |
+| **`M1`** | `CQR-000..002` are `pass`, but at least one of `CQR-003..005` is not `pass` (state-view coverage, `GK`/`LK` consistency, or source-count plausibility). |
+| **`M2`** | `CQR-000..005` are `pass`; QA scopes are missing or at least one scope does not reach scope `M2`. |
 | **`M3`** | All QA scopes pass `CQR-101`, `CQR-102`, and `CQR-103`, while exam-mode readiness remains incomplete. |
 | **`M4`** | All QA scopes reach >= Scope `M3`, while at least one misses Scope `M4` or `CQR-301`/`401`/`501` is open. |
 | **`M5`** | **School-ready core QA stage:** all QA scopes at Scope `M4` plus `CQR-301`, `CQR-401`, and `CQR-501` `pass`. |

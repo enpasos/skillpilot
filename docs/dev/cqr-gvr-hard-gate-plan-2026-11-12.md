@@ -3,17 +3,20 @@
 Snapshot: 12 November 2026; delivery record updated 13 November. Status:
 bounded implementation delivered in [PR #131](https://github.com/enpasos/skillpilot/pull/131),
 head `39fe19b658`, based on `38b1080130`, subsequently merged as `dcf5278881`.
-Its complete PR CI passed; section 9 records the exact verification scope and
-later main changes. The two broader target gaps remain open. The owner
+Its complete PR CI passed; subsequent main `2129b207f4` passed complete
+[CI #2315](https://github.com/enpasos/skillpilot/actions/runs/43398052180).
+Section 9 records the exact verification scope and later main changes.
+The bounded main delivery is complete; the two broader target gaps remain open. The owner
 authorized plan review, necessary adjustments, autonomous implementation and
 PR creation. The execution choices in section 4 apply; merge and publication
 are separate operations.
 
-This plan is written for a coding agent that works through it package by
-package. It aims to replace the 21 initially partial gates with complete
-enforcement in their declared domains, retiring redundant codes. The review
-has identified two evidence gaps (`CQR-104`, `GVR-012`) that must remain explicit
-until their broader curriculum work is complete.
+This document retains the original work packages and their delivery evidence.
+The implementation replaced indirect enforcement with direct gates in the
+declared domains and retired two redundant codes. The delivered legend has
+22 `HARD` and 2 `PARTIAL` codes. The remaining evidence gaps (`CQR-104`,
+`GVR-012`) require broader curriculum work; they are not part of the completed
+bounded hardening.
 
 Related material:
 
@@ -29,11 +32,11 @@ Related material:
 The initial code legend listed 8 `GVR` and 18 `CQR` codes. At that baseline, 5 `GVR` codes were
 `HARD`; `GVR-006`, `GVR-012`, `GVR-013` and all 18 `CQR` codes were `PARTIAL`.
 
-The bounded implementation is complete when the executable portions of the
-work packages have been implemented and verified in a reviewable PR with
-terminal remote CI, unfulfilled target items remain explicit, and the register
-states exactly which domain each gate covers. The full `HARD` target additionally
-requires main integration, genuine endpoint visibility evidence for the four
+The bounded implementation is complete: the executable portions of the work
+packages were delivered in a PR with terminal green remote CI and
+integrated into main, with subsequent green integration CI. Unfulfilled target
+items remain explicit, and the register states exactly which domain each gate
+covers. The full `HARD` target still requires genuine endpoint visibility evidence for the four
 remaining scopes in WP5, and independently evidenced semantic route coverage
 as described in WP6. A measured missing prerequisite remains an explicit
 open item; neither a narrower validator nor invented curriculum evidence may
@@ -47,7 +50,7 @@ main evidence. Assigning a rule to a validation area is not a pass.
 ## 2. Baseline (measured 12 November 2026)
 
 This section records the initial pre-implementation snapshot, not the current
-candidate results. Re-measure for verification; do not overwrite this baseline
+delivered results. Re-measure for verification; do not overwrite this baseline
 or rely on its findings as current after implementation changes.
 
 ```bash
@@ -337,8 +340,9 @@ fixture fails with a message naming the curriculum or scope and the rule.
 
 Result: every Class II rule satisfies H1 and H2 for all pinned curricula and
 scopes, with `CQR-104` bounded to its eight pinned visibility scopes.
-`CQR-002` and `CQR-501` satisfy H1–H3 for the complete catalog; H4 remains
-pending main acceptance.
+`CQR-002` and `CQR-501` satisfy H1–H3 for the complete catalog. The main
+integration and green CI recorded in section 9 also establish H4 for this
+bounded enforcement.
 
 ### WP5 – Close promotion-chain leniencies and measure visibility gaps (L6, L7)
 
@@ -438,9 +442,9 @@ For the integrated candidate, before marking the PR ready for review:
    `python3 scripts/build_compendia.py --compendium qa-ci --web-and-tex`, then
    run the five documentation checks listed in `CLAUDE.md`.
 
-## 8. Expected bounded candidate legend
+## 8. Delivered bounded legend
 
-| Code | Initial baseline | Package | Candidate | Condition |
+| Code | Initial baseline | Package | Delivered on main | Condition |
 | --- | --- | --- | --- | --- |
 | `GVR-001`, `003`, `009`, `010`, `014` | `HARD` | WP1 | `HARD` | Warn-only switch removed |
 | `GVR-006` | `PARTIAL` (empty scope) | WP7 | retired | D2; implied by `CQR-001` in the catalog |
@@ -454,9 +458,11 @@ For the integrated candidate, before marking the PR ready for review:
 | `CQR-303` | `PARTIAL` | WP4 | `HARD`, 5 of 21 pinned | D1 |
 
 There are 24 remaining legend codes after the two retirements. The bounded
-candidate targets 22 `HARD` and 2 `PARTIAL` codes; `GVR-012` and `CQR-104` retain
-their actual covered domains and documented missing evidence. Main
-acceptance remains pending until merge and successful main CI.
+delivery establishes 22 `HARD` and 2 `PARTIAL` codes; `GVR-012` and `CQR-104`
+retain their actual covered domains and documented missing evidence. Main
+integration is evidenced by the merge and the subsequent successful main CI
+in section 9. This code-legend result does not upgrade the broader 145-rule
+`GD-*` register, which remains 4 `HARD`, 58 `PARTIAL`, 55 `OPEN` and 28 `OPT/DOC`.
 
 ## 9. Progress log
 
@@ -611,3 +617,13 @@ plan.
   these follow-up changes. Final documentation review also corrects the German
   EXAM note to state the actual CQR-203 catalog target M5; the broader
   CQR-104 and GVR-012 gaps remain unchanged.
+- 2026-11-13: the owner merged the final EXAM-note and verification-record
+  correction in [PR #136](https://github.com/enpasos/skillpilot/pull/136)
+  as `7d13eb82a5`, after all three jobs of
+  [Docs Checks #790](https://github.com/enpasos/skillpilot/actions/runs/43423688281)
+  passed. The subsequent documentation update replaces stale candidate and
+  pending-main wording in the bilingual Graph Definition, rule register,
+  implementation status and QA chapters with the delivered scope and the
+  separate CI evidence above. Historical baseline and progress-log entries
+  retain their original meaning; neither remaining coverage gap is closed by
+  these documentation changes.
