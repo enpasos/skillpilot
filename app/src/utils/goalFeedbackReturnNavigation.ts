@@ -27,7 +27,7 @@ export const learnerCockpitGoalFeedbackReturnPath = (
 ): string | null => {
   const definition = goalBookDefinitionById(binding.bookId)
   if (!definition) return null
-  return `/learner/${encodeURIComponent(binding.goalId)}?${new URLSearchParams({
-    l: definition.landscapeId,
-  }).toString()}`
+  // Keep the learner's current curriculum; the book identifies the goal's
+  // subject, not the root of their Personal Curriculum.
+  return `/learner/${encodeURIComponent(binding.goalId)}`
 }
