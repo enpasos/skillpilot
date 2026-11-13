@@ -114,6 +114,9 @@ complete check as parallel jobs. Details: `docs/qa-ci/ci.md`.
   the subject and all its scopes at M0. No historical migration-preservation
   proof is required for this target gate. Current CQR coverage is the canonical
   Gymnasium catalog; inherited QA review bindings remain separately checked.
+  Historical review reuse may use an explicitly bound certified frame only
+  after full proof verification and dependency/applicability checks for the
+  unchanged subjects. Changed subjects retain strict current-input reviews.
 - **Mastery**: one binary result (`0`/`1`) per atomic goal. Cluster and
   learning-unit progress is derived from atomic descendants; no completion
   ever writes mastery to children. Exams and memory goals always need their
@@ -122,7 +125,14 @@ complete check as parallel jobs. Details: `docs/qa-ci/ci.md`.
   traceable to the official source; never invent goals, edges or source claims.
 - **Maturity floors**: after curriculum/description/route/view changes,
   regenerate curriculum-quality status and ensure no protected maturity (e.g.
-  M6/M7) drops. Never turn a review queue green by bulk decisions.
+  M6/M7) drops. The complete catalog and QA scope pins directly require each
+  applicable rule to pass; base-policy comparison forbids lowering pins or
+  existing visibility coverage. Raise pins with any maturity gain. G17 also
+  runs directly in curriculum CI, including M0 entries. `CQR-104` remains
+  explicitly limited to eight scopes; the four unconfigured Sek II scopes
+  have unresolved evidence gaps. `CQR-102` covers all twelve scopes, but the
+  stronger semantic `GVR-012` remains Mathematics-only. Never turn a review
+  queue green by bulk decisions.
 - **Privacy**: the permanent `skillpilotId` never reaches an AI provider. In
   every provider lane OAuth only authorizes the connection; the learner is
   resolved through that lane's own `learningSessionId` (created by "Lernen

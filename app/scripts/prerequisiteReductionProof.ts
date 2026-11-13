@@ -7,13 +7,18 @@ import { fileURLToPath } from 'node:url'
 import type { SkillLandscape } from '../src/landscapeTypes'
 import type { ApplicabilityInputSnapshot } from './applicabilityCompiler'
 import { auditTransitiveMinimality, auditTransitiveMinimalityOrigin, validateTransitiveMinimalityScope, assertTransitiveMinimalityImplementationCurrent, type AuditLandscape } from './auditTransitiveMinimality'
+import { eligibleHistoricalReviewLandscapes, requireHistoricalReviewApplicabilityBinding } from './lib/historicalReviewDependencyScope'
 import { assertLearningUnitProjectionImplementationCurrent, projectOutLearningUnits } from './learningUnitLayerProjection'
 
 const proofModulePath = fileURLToPath(import.meta.url)
 const proofModuleBytes = readFileSync(proofModulePath)
+const dependencyScopeModulePath = fileURLToPath(new URL('./lib/historicalReviewDependencyScope.ts', import.meta.url))
+const dependencyScopeModuleBytes = readFileSync(dependencyScopeModulePath)
 function assertProofImplementationCurrent(): void {
   if (!readFileSync(proofModulePath).equals(proofModuleBytes))
     throw new Error('Prerequisite reduction implementation changed since module load')
+  if (!readFileSync(dependencyScopeModulePath).equals(dependencyScopeModuleBytes))
+    throw new Error('Historical review dependency scope implementation changed since module load')
   assertTransitiveMinimalityImplementationCurrent()
   assertLearningUnitProjectionImplementationCurrent()
 }
@@ -159,7 +164,11 @@ declare const verifiedReduction: unique symbol
 export type VerifiedPrerequisiteReductionContext = Readonly<{ [verifiedReduction]: true }>
 export interface PrerequisiteReductionProofSummary {
   proofContract: ProofContract
-  mode: 'current-or-certified-baseline-comparison'
+  mode: 'current-or-certified-baseline-comparison' | 'dependency-bounded-certified-baseline-comparison'
+  dependencyBinding?: {
+    contract: 'dependency-bounded-historical-review-frame-v1'
+    snapshotPath: string; snapshotDigest: string; eligibleLandscapeIds: readonly string[]
+  }
   auditScope: 'origin-source-landscape-closure'
   registryPath: string
   registryDigest: string
@@ -1174,12 +1183,47 @@ async function verifyDocumentFrame(
   return { currentDocuments, baselineDocuments, baselineApplicability, affectedSources }
 }
 
+/** Restore only declared old requires fields; the existing full proof's
+ * exact document digests authenticate every reconstructed byte-semantic field. */
+function reconstructHistoricalReviewFrame(
+  value: unknown, registryBytes: Buffer, registryPath: string, loaded: LoadedDocument[],
+): LoadedDocument[] {
+  fields(value, ['schemaVersion', 'contract', 'registryPath', 'registryRawDigest', 'documents'], 'historical review frame')
+  ensure(value.schemaVersion === 1 && value.contract === 'dependency-bounded-historical-review-frame-v1'
+    && value.registryPath === registryPath
+    && value.registryRawDigest === `sha256:${createHash('sha256').update(registryBytes).digest('hex')}`
+    && Array.isArray(value.documents) && value.documents.length > 0, 'historical review frame proof binding differs')
+  const result = loaded.map(entry => ({ ...entry, document: structuredClone(entry.document) }))
+  const seen = new Set<string>()
+  for (const row of value.documents) {
+    fields(row, ['path', 'landscapeId', 'originalRequires'], 'historical review frame document')
+    ensure(nonempty(row.path) && nonempty(row.landscapeId) && !seen.has(row.path)
+      && Array.isArray(row.originalRequires) && row.originalRequires.length > 0, 'malformed or duplicate historical review frame document')
+    seen.add(row.path)
+    const entry = result.find(candidate => candidate.path === row.path && candidate.document.landscapeId === row.landscapeId)
+    ensure(entry, `historical review frame references unknown document: ${row.path}`)
+    const goals = new Map(entry.document.goals.map(goal => [goal.id, goal])), goalIds = new Set<string>()
+    for (const original of row.originalRequires) {
+      fields(original, ['goalId', 'requires'], 'historical review original requires')
+      ensure(nonempty(original.goalId) && !goalIds.has(original.goalId)
+        && (original.requires === null || (Array.isArray(original.requires) && original.requires.every(nonempty))), 'malformed or duplicate historical requires')
+      goalIds.add(original.goalId)
+      const goal = goals.get(original.goalId)
+      ensure(goal, `historical review frame references unknown goal: ${original.goalId}`)
+      if (original.requires === null) delete goal.requires
+      else goal.requires = structuredClone(original.requires)
+    }
+  }
+  return result
+}
+
 /** Load once at a Node entrypoint, then pass explicitly to comparison consumers. */
 export async function loadVerifiedPrerequisiteReductionContext({
   repositoryRoot = REPOSITORY_ROOT,
   registryPath = PREREQUISITE_REDUCTION_REGISTRY_PATH,
   catalogPath = CANONICAL_PATH,
-}: { repositoryRoot?: string; registryPath?: string; catalogPath?: string } = {}):
+  historicalFramePath = 'curricula/DE/Gymnasium/provenance/historical-review-frame-2026-11-12.json',
+}: { repositoryRoot?: string; registryPath?: string; catalogPath?: string; historicalFramePath?: string } = {}):
   Promise<VerifiedPrerequisiteReductionContext | undefined> {
   assertProofImplementationCurrent()
   const registryFile = repositoryPath(repositoryRoot, registryPath)
@@ -1198,19 +1242,70 @@ export async function loadVerifiedPrerequisiteReductionContext({
   }))
   const { withApplicabilityInputSnapshot, assertApplicabilityInputSnapshotCurrent } = await import('./applicabilityCompiler')
   return withApplicabilityInputSnapshot(async inputs => {
-    const { currentDocuments, baselineDocuments, affectedSources } = await verifyDocumentFrame(registry, loaded.map(entry => ({ ...entry, applicabilityInputs: inputs })), repositoryRoot)
+    const boundLoaded = loaded.map(entry => ({ ...entry, applicabilityInputs: inputs }))
+    const liveDocuments = loaded.map(entry => entry.document)
+    let verificationLoaded: LoadedDocument[] = boundLoaded
+    let dependencyBinding: PrerequisiteReductionProofSummary['dependencyBinding']
+    let frameBytes: Buffer | undefined
+    let frameFile: string | undefined
+    const exactCurrent = registry.catalogSources.length === loaded.length && loaded.every(entry => {
+      const binding = registry.catalogSources.find(source => source.path === entry.path)
+      return binding?.landscapeId === entry.document.landscapeId
+        && binding.currentDocumentDigest === fingerprintPrerequisiteReductionDocument(entry.document)
+    })
+    if (!exactCurrent) {
+      frameFile = repositoryPath(repositoryRoot, historicalFramePath)
+      let frameExists = true
+      try { ensure(lstatSync(frameFile).isFile(), 'historical review frame must be a regular file') }
+      catch (error) {
+        if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error
+        frameExists = false
+      }
+      if (frameExists) {
+        ensure(realpathSync(frameFile) === resolve(realpathSync(repositoryRoot), historicalFramePath), 'historical review frame contains a symlink')
+        frameBytes = readFileSync(frameFile)
+        const reconstructed = reconstructHistoricalReviewFrame(JSON.parse(frameBytes.toString('utf8')), registryBytes, registryPath, boundLoaded)
+        verificationLoaded = reconstructed
+        const eligible = eligibleHistoricalReviewLandscapes(liveDocuments, reconstructed.map(entry => entry.document))
+        ensure(eligible.size > 0, 'historical review frame has no unchanged dependency-closed subject')
+        dependencyBinding = {
+          contract: 'dependency-bounded-historical-review-frame-v1', snapshotPath: historicalFramePath,
+          snapshotDigest: `sha256:${createHash('sha256').update(frameBytes).digest('hex')}`,
+          eligibleLandscapeIds: [...eligible].sort(),
+        }
+      }
+    }
+    // The existing full verifier is mandatory, including every historical
+    // prefix, witness, replay and external applicability input. A reconstructed
+    // frame is not a new migration proof for the changed current subjects.
+    const verified = await verifyDocumentFrame(registry, verificationLoaded, repositoryRoot)
+    let baselineDocuments = verified.baselineDocuments
+    const currentDocuments = liveDocuments
+    if (dependencyBinding) {
+      const eligible = new Set(dependencyBinding.eligibleLandscapeIds)
+      requireHistoricalReviewApplicabilityBinding(
+        JSON.parse(await compileApplicability(currentDocuments, boundLoaded)),
+        JSON.parse(await compileApplicability(verified.currentDocuments, verificationLoaded)), eligible,
+      )
+      baselineDocuments = verified.baselineDocuments.filter(document => eligible.has(document.landscapeId))
+    }
     assertProofImplementationCurrent()
     assertApplicabilityInputSnapshotCurrent(inputs)
+    ensure(readFileSync(registryFile).equals(registryBytes), 'registry changed during verification')
+    if (frameBytes && frameFile) ensure(readFileSync(frameFile).equals(frameBytes), 'historical review frame changed during verification')
+    for (const entry of loaded) ensure(fingerprintPrerequisiteReductionDocument(JSON.parse(readFileSync(entry.file, 'utf8')))
+      === fingerprintPrerequisiteReductionDocument(entry.document), `live catalog changed during verification: ${entry.path}`)
     const context = Object.freeze({}) as VerifiedPrerequisiteReductionContext
     deepFreeze(currentDocuments)
     deepFreeze(baselineDocuments)
     const summary = deepFreeze({
       proofContract: registry.proofContract,
-      mode: 'current-or-certified-baseline-comparison' as const,
+      mode: dependencyBinding ? 'dependency-bounded-certified-baseline-comparison' as const : 'current-or-certified-baseline-comparison' as const,
+      ...(dependencyBinding ? { dependencyBinding } : {}),
       auditScope: registry.auditScope,
       registryPath,
       registryDigest: `sha256:${createHash('sha256').update(registryBytes).digest('hex')}`,
-      affectedGoalIds: [...affectedSources].sort(),
+      affectedGoalIds: [...verified.affectedSources].filter(id => !dependencyBinding || dependencyBinding.eligibleLandscapeIds.includes(id.split(':')[0])).sort(),
     })
     const catalogSources = deepFreeze(loaded.map(({ path }, index) => ({ path,
       landscapeId: currentDocuments[index].landscapeId,
@@ -1253,6 +1348,7 @@ export function reviewBindingGoal(
   ensure(verified && stableJson(verified) === stableJson(currentRawGoal),
     `current goal differs from verified snapshot: ${qualifiedId}`)
   const baseline = snapshot.baseline.get(qualifiedId)
+  if (!baseline && snapshot.summary.dependencyBinding) return currentRawGoal
   ensure(baseline, `baseline goal missing from verified snapshot: ${qualifiedId}`)
   return baseline
 }

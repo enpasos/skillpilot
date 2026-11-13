@@ -125,3 +125,34 @@ test('split jobs keep the environment of the job they were split from', () => {
   assert.equal(jobs['goal-book-contracts']['runs-on'], jobs['frontend-ci']['runs-on'])
   assert.deepEqual(jobs['goal-book-contracts'].defaults, jobs['frontend-ci'].defaults)
 })
+
+test('complete curriculum CI enforces the catalog and policy against the trusted base', () => {
+  const graph = commands('graph-validation')
+  const local = read('run_ci.sh')
+  for (const command of ['npm run check:transitive-minimality', 'npm run test:curriculum-maturity-floors']) {
+    assert.ok(graph.includes(command), `Remote curriculum gate missing: ${command}`)
+    assert.ok(local.includes(command), `Local curriculum gate missing: ${command}`)
+  }
+  assert.match(local, /npm run check:curriculum-maturity-floors -- --base-ref origin\/main/u)
+  const step = jobs['graph-validation'].steps.find(step => step.name === 'Verify committed curriculum quality status')
+  assert.equal(step.env.MATURITY_POLICY_BASE, "${{ github.event.pull_request.base.sha || github.event.before || 'origin/main' }}")
+  assert.match(step.run, /git fetch --no-tags --depth=1 origin/u)
+  assert.match(step.run, /npm run check:curriculum-maturity-floors -- --base-ref "\$\{MATURITY_POLICY_BASE\}"/u)
+  assert.equal(step['continue-on-error'], undefined)
+  assert.ok(commands('curriculum-assessment-proofs').includes('npm run test:graph-gate-contracts'))
+  const proofSteps = jobs['curriculum-assessment-proofs'].steps
+  const restoreIndex = proofSteps.findIndex(step => step.name === 'Restore same-run verified goal-book publications')
+  const pythonIndex = proofSteps.findIndex(step => step.name === 'Set up Python for curriculum proof receipts')
+  const installIndex = proofSteps.findIndex(step => step.name === 'Install Python dependencies for curriculum proof receipts')
+  const gateIndex = proofSteps.findIndex(step => step.run === 'npm run test:graph-gate-contracts')
+  assert.ok(restoreIndex >= 0 && pythonIndex > restoreIndex && installIndex > pythonIndex && gateIndex > installIndex,
+    'Python and its pinned release-model dependencies must be ready before the receipt gate')
+  assert.equal(proofSteps[pythonIndex].uses, 'actions/setup-python@v6')
+  assert.equal(proofSteps[pythonIndex].with['python-version'], '3.10')
+  assert.equal(proofSteps[installIndex].run,
+    'python -m pip install -r ../scripts/curriculum_package_validation_requirements.txt')
+  assert.equal(proofSteps[installIndex]['continue-on-error'], undefined)
+  const scripts = JSON.parse(read('app/package.json')).scripts
+  assert.ok(scripts['test:graph-gate-contracts'].includes('npm run test:historical-review-receipts'))
+  assert.match(scripts['test:historical-review-receipts'], /^python3 -B /u)
+})

@@ -40,8 +40,8 @@ Aktuell berichteter Migrationsstand am `2026-03-16`:
 
 Einordnung:
 
-- `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe` steht bei `100%` Abschluss des Delete-Gates auf Baumebene und ist bereits aus dem aktiven Repository gelöscht
-- `curricula/DE/HE/Kultusministerium/Gymnasium_9_Mittelstufe` steht bei `100%` Abschluss des Delete-Gates auf Baumebene und ist bereits aus dem aktiven Repository gelöscht
+- Der frühere Quellbaum der hessischen gymnasialen Oberstufe steht bei `100%` Abschluss des Delete-Gates auf Baumebene und ist bereits aus dem aktiven Repository gelöscht
+- Der frühere Quellbaum der hessischen gymnasialen Mittelstufe steht bei `100%` Abschluss des Delete-Gates auf Baumebene und ist bereits aus dem aktiven Repository gelöscht
 - `curricula/DE/BY/Gymnasium` steht nun ebenfalls bei `100%` Abschluss des Delete-Gates auf Baumebene und ist aus dem aktiven Repository entfernt
 
 ## Leitplanken
@@ -317,7 +317,7 @@ Erwartetes Ergebnis:
 Ergebnis der Bestandsaufnahme:
 
 - Quelldatei der hessischen Oberstufen-Mathematik identifiziert:
-  `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_MATHEMATIK.de.json`
+  `curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/DE_HES_S_GYM_2_MATHEMATIK.de.json.snapshot`
 - Quell-Landscape-ID identifiziert:
   `2796fc7b-ba9d-446f-8f26-711dd6d8a9a3`
 - kleinste Einfügepunkte im Backend identifiziert:

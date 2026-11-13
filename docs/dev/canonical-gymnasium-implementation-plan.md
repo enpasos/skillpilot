@@ -40,8 +40,8 @@ Current reported migration status on `2026-03-16`:
 
 Interpretation:
 
-- `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe` is at `100%` tree-level delete-gate completion and is already deleted from the active repo
-- `curricula/DE/HE/Kultusministerium/Gymnasium_9_Mittelstufe` is at `100%` tree-level delete-gate completion and is already deleted from the active repo
+- The former Hessen upper-secondary source tree is at `100%` tree-level delete-gate completion and is already deleted from the active repo
+- The former Hessen lower-secondary source tree is at `100%` tree-level delete-gate completion and is already deleted from the active repo
 - `curricula/DE/BY/Gymnasium` is now at `100%` tree-level delete-gate completion and removed from the active repo
 
 ## Guardrails
@@ -317,7 +317,7 @@ Expected output:
 Baseline inventory result:
 
 - Hessen upper-secondary mathematics source file identified:
-  `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_MATHEMATIK.de.json`
+  `curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/DE_HES_S_GYM_2_MATHEMATIK.de.json.snapshot`
 - source landscape ID identified:
   `2796fc7b-ba9d-446f-8f26-711dd6d8a9a3`
 - smallest backend insertion points identified:

@@ -1,3 +1,4 @@
+import { evaluateDirectAtomicRouteCoverage } from './lib/directAtomicRouteCoverage'
 import { createHash } from 'node:crypto'
 import { existsSync, mkdirSync, readdirSync, readFileSync, realpathSync, statSync, writeFileSync } from 'node:fs'
 import { dirname, isAbsolute, join, relative, resolve } from 'node:path'
@@ -631,7 +632,7 @@ interface StatusDocument {
   prerequisiteReductionProof?: DeepUnderstandingRolloutReport['prerequisiteReductionProof']
   historicalReviewReuseIssue?: string
   schemaVersion: 1
-  rulesVersion: 'curriculum-quality-v5'
+  rulesVersion: 'curriculum-quality-v6'
   generatedAt: string
   generatedBy: string
   sources: {
@@ -1087,7 +1088,7 @@ const ruleCatalog: QualityRuleDefinition[] = [
     id: 'CQR-104',
     label: 'Route endpoint composition visibility',
     category: 'route',
-    maturityTarget: 'M3',
+    maturityTarget: 'M4',
     description: 'Configured route scopes expose motivation anchors and terminal autonomy goals in relevant learner-facing composition views.',
   },
   {
@@ -1108,7 +1109,7 @@ const ruleCatalog: QualityRuleDefinition[] = [
     id: 'CQR-203',
     label: 'Exam release and coverage metadata',
     category: 'assessment',
-    maturityTarget: 'M4',
+    maturityTarget: 'M5',
     description: 'Terminal autonomy examData has release status, covered goals, covered strands, and demand-level metadata.',
   },
   {
@@ -2632,8 +2633,6 @@ export function evaluateRouteProfile(
   const reverseAtomicDirectEdges = buildReverseEdges(atomicDirectEdges)
   const hasEffectivePath = createPathChecker(effectiveEdges)
   const hasReverseEffectivePath = createPathChecker(reverseEffectiveEdges)
-  const hasAtomicDirectPath = createPathChecker(atomicDirectEdges)
-  const hasReverseAtomicDirectPath = createPathChecker(reverseAtomicDirectEdges)
   const terminalAutonomyGoals = profile.terminalAutonomyClusterIds
     .flatMap((clusterId) => goalById.get(clusterId)?.contains ?? [])
     .map((goalId) => goalById.get(goalId))
@@ -2646,10 +2645,7 @@ export function evaluateRouteProfile(
   const missingEffectiveTerminal = selectedGoals.filter((goal) =>
     !terminalGoalIds.some((terminalId) => hasReverseEffectivePath(goal.id, terminalId)))
 
-  const missingDirectMotivation = selectedGoals.filter((goal) =>
-    !profile.motivationAnchorGoalIds.some((anchorId) => hasAtomicDirectPath(goal.id, anchorId)))
-  const missingDirectTerminal = selectedGoals.filter((goal) =>
-    !terminalGoalIds.some((terminalId) => hasReverseAtomicDirectPath(goal.id, terminalId)))
+  const { missingDirectMotivation, missingDirectTerminal, configurationIssues } = evaluateDirectAtomicRouteCoverage(landscape, profile)
 
   const scopedClusterRequires = landscape.goals.filter((goal) =>
     !isAtomicGoal(goal) && profile.clusterSelector(goal) && (goal.requires?.length ?? 0) > 0)
@@ -2692,8 +2688,8 @@ export function evaluateRouteProfile(
     ),
     makeRule(
       'CQR-102',
-      missingDirectMotivation.length === 0 && missingDirectTerminal.length === 0 ? 'pass' : 'warn',
-      missingDirectMotivation.length === 0 && missingDirectTerminal.length === 0
+      configurationIssues.length === 0 && missingDirectMotivation.length === 0 && missingDirectTerminal.length === 0 ? 'pass' : 'warn',
+      configurationIssues.length === 0 && missingDirectMotivation.length === 0 && missingDirectTerminal.length === 0
         ? 'Direct atomic route coverage is complete for the configured scope.'
         : 'Direct atomic route coverage still needs migration work.',
       {
@@ -2702,6 +2698,7 @@ export function evaluateRouteProfile(
         missingDirectTerminalPath: missingDirectTerminal.length,
       },
       [
+        ...configurationIssues,
         ...missingDirectMotivation.map((goal) => `No direct atomic motivation path: ${formatGoal(goal, goal.id)}`),
         ...missingDirectTerminal.map((goal) => `No direct atomic terminal path: ${formatGoal(goal, goal.id)}`),
       ],
@@ -2763,7 +2760,7 @@ export function evaluateRouteProfile(
     scopeId: profile.profileId,
     label: profile.label,
     selectedAtomicGoals: selectedGoals.length,
-    maturity: deriveScopeMaturity(rules),
+    maturity: deriveScopeMaturity(rules, profile.compositionViewStage !== undefined),
     rules,
   }
 }
@@ -5937,12 +5934,12 @@ function evaluateSourceGoalCountPlausibility(pipeline: MappingPipelineStatus | u
   )
 }
 
-function deriveScopeMaturity(rules: RuleResult[]): MaturityLevel {
+export function deriveScopeMaturity(rules: RuleResult[], compositionVisibilityRequired = true): MaturityLevel {
   if (rules.find((rule) => rule.id === 'CQR-101')?.status !== 'pass') return 'M0'
   if (rules.find((rule) => rule.id === 'CQR-102')?.status !== 'pass') return 'M1'
   if (rules.find((rule) => rule.id === 'CQR-103')?.status !== 'pass') return 'M1'
   const routeEndpointVisibility = rules.find((rule) => rule.id === 'CQR-104')
-  if (routeEndpointVisibility && routeEndpointVisibility.status !== 'pass') return 'M2'
+  if ((compositionVisibilityRequired || routeEndpointVisibility) && routeEndpointVisibility?.status !== 'pass') return 'M2'
   if (rules.find((rule) => rule.id === 'CQR-201')?.status !== 'pass') return 'M2'
   if (rules.find((rule) => rule.id === 'CQR-202')?.status !== 'pass') return 'M2'
   if (rules.find((rule) => rule.id === 'CQR-203')?.status !== 'pass') return 'M3'
@@ -5961,8 +5958,8 @@ export function deriveCurriculumMaturity(curriculumRules: RuleResult[], scopes: 
   if (!graphReady) return 'M0'
   if (curriculumRules.find((rule) => rule.id === 'CQR-000')?.status !== 'pass') return 'M0'
   if (curriculumRules.find((rule) => rule.id === 'CQR-003')?.status !== 'pass') return 'M1'
-  if (curriculumRules.find((rule) => rule.id === 'CQR-004')?.status === 'fail') return 'M1'
-  if (curriculumRules.find((rule) => rule.id === 'CQR-005')?.status === 'warn') return 'M1'
+  if (curriculumRules.find((rule) => rule.id === 'CQR-004')?.status !== 'pass') return 'M1'
+  if (curriculumRules.find((rule) => rule.id === 'CQR-005')?.status !== 'pass') return 'M1'
 
   const routeScopes = scopes.filter((scope) => scope.rules.some((rule) => rule.id === 'CQR-101'))
   if (routeScopes.length === 0) return 'M2'
@@ -6307,7 +6304,7 @@ async function generateStatus(inputs: VerificationInputReader, assertCurrent: ()
     } : {}),
     ...(historicalReviewReuseIssue ? { historicalReviewReuseIssue } : {}),
     schemaVersion: 1,
-    rulesVersion: 'curriculum-quality-v5',
+    rulesVersion: 'curriculum-quality-v6',
     generatedAt: new Date().toISOString(),
     generatedBy: 'app/scripts/generateCurriculumQualityStatus.ts',
     sources: {
