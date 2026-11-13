@@ -672,6 +672,17 @@ plan.
   canonical graph, view, review ledger or CQR evaluator input. Main acceptance
   still requires the unmerged candidate's separate complete remote CI and
   subsequent owner merge.
+- 2026-11-13, renewed main integration: CI #2337 on `fcbc4ec61e` exposed
+  a stale source-rationale mapping-batch timestamp and the Cockpit action
+  spacing regression. Both were already corrected upstream in `28dfa65ed2`
+  and `2ad03c810c`; the branch incorporated that newer main as `4bc4dc7f14`.
+  The mapping-batch freshness check and all 21 curriculum/12 scope floors
+  pass after integration. The complete `test:learner-map` projection/browser
+  suite also passes, including the native App and original Cockpit at desktop,
+  320px and 390px widths. These upstream changes affect two derived reports
+  and the Cockpit action layout, not the canonical graphs, views, semantic
+  ledgers or evaluator inputs bound by the F4/F5 diagnostics. Complete CI
+  on the renewed candidate remains the acceptance requirement.
 - 2026-11-13, separate baseline finding: the optional
   `test:hessen-math-q24-q25-scope` command fails an old authored-target removal
   comparison on unchanged main `d12f448c1b` as well. Its first failing view
