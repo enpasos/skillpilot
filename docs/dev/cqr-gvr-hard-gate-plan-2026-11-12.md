@@ -552,3 +552,12 @@ plan.
   passes (31 TypeScript, four normalization and three receipt tests, exit 0).
   Receipt assertions are unchanged; fresh remote CI is required to accept the
   repaired head.
+- 2026-11-13: the next remote audit (`131626422810`, head `8def9b2`)
+  reported a separate moderate vulnerability in transitive `hono` 4.13.12,
+  reproduced locally. Both MCP app locks now resolve only that dependency to
+  4.13.18; `@hono/node-server` stays at 2.1.6. The current
+  [upstream patch release](https://github.com/honojs/hono/releases/tag/v4.13.18)
+  includes the initial fixes and their follow-up corrections. Package manifests,
+  other resolved versions and published widget artifacts are unchanged.
+  Both clean installs and test suites pass (OpenAI 67/67, Claude 30/30),
+  both fresh audits report zero vulnerabilities, and widget-byte checks pass.
