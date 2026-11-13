@@ -1,11 +1,13 @@
 # CQR and GVR Gates: Work Plan to `HARD`
 
 Snapshot: 12 November 2026; delivery record updated 13 November. Status:
-bounded implementation candidate in [PR #131](https://github.com/enpasos/skillpilot/pull/131),
-on `feat/cqr-gvr-hard-gates`, based on `38b1080130`. Final local and remote
-verification results are tracked in the PR. The owner authorized plan
-review, necessary adjustments, autonomous implementation and PR creation.
-The execution choices in section 4 apply; merge and publication are separate.
+bounded implementation delivered in [PR #131](https://github.com/enpasos/skillpilot/pull/131),
+head `39fe19b658`, based on `38b1080130`, subsequently merged as `dcf5278881`.
+Its complete PR CI passed; section 9 records the exact verification scope and
+later main changes. The two broader target gaps remain open. The owner
+authorized plan review, necessary adjustments, autonomous implementation and
+PR creation. The execution choices in section 4 apply; merge and publication
+are separate operations.
 
 This plan is written for a coding agent that works through it package by
 package. It aims to replace the 21 initially partial gates with complete
@@ -579,3 +581,33 @@ plan.
   proof-binding header differs. Statements above about the historical frame
   describe the state before that change. Record:
   [freeze of the reduction proof](prerequisite-reduction-proof-freeze-2026-11-12.md).
+
+- 2026-11-13: final delivery verification for head `39fe19b658`: all sixteen
+  jobs of [CI #2299](https://github.com/enpasos/skillpilot/actions/runs/43365069806)
+  and the separate Assessment, Docs, OAuth and Gemini workflows passed.
+  The full local default-suite coverage passed across the original invocation
+  and verified continuations after generated-asset and stale-document-path
+  repairs; this is not an uninterrupted `./run_ci.sh` pass. The final backend
+  check reports 2,775 tests, zero failures/errors and 19 skipped tests; both
+  plugin verifications and the final continuation marker passed. Preserved
+  XML reports independently confirm the counts. The old process handle is no
+  longer available, so no newly observed numeric exit code is claimed.
+- 2026-11-13: additional WP3 negative evidence executes the exact workflow
+  G17 `run` block and the original local G17 call with its original function
+  and caller semantics against independent 21-document copies of `39fe19b658`.
+  Both unchanged controls return exit 0 with 21 passes. Adding a cluster
+  `requires` in M0 Spanish returns exit 1 in both, failing Spanish and Overview;
+  no subsequent local command runs. This tests actual gate-boundary error
+  propagation without stubs or live-data changes. It does not claim mutated
+  full-script starts or entire GitHub job executions; the complete positive
+  PR CI above is separate evidence.
+- 2026-11-13: PR #131 was merged outside this agent run as `dcf5278881`.
+  The merge commit's main CI was cancelled. Later main `2129b207f4`, including
+  the subsequent proof retirement, Mathematics assessment and inventory fix,
+  passed all fourteen jobs of
+  [CI #2315](https://github.com/enpasos/skillpilot/actions/runs/43398052180).
+  This is current integration evidence for that later tree, not an unchanged
+  rerun of the original PR tree. The user-requested local main merge preserves
+  these follow-up changes. Final documentation review also corrects the German
+  EXAM note to state the actual CQR-203 catalog target M5; the broader
+  CQR-104 and GVR-012 gaps remain unchanged.
