@@ -43,6 +43,27 @@ Ungeeignet sind folgende Begründungen:
 
 Eine fachlich fragwürdige Kante ist ein Befund für sich. Ihre Überprüfung darf nicht dadurch ersetzt werden, dass die Bedeutung der beteiligten Ziele stillschweigend verengt wird. Selbst eine atomar azyklische Folge kann durch ungünstige Gruppierung einen Widerspruch zwischen ganzen Blöcken erzeugen; Grenze oder Schachtelung müssen dann überdacht werden.
 
+<a id="the-content-frame-what-the-unit-works-with"></a>
+<a id="sec-sga-ud-frame"></a>
+#### 12.2. Der Stoffrahmen: Womit die Einheit arbeitet
+
+Neben ihrem Lernversprechen legt jede Einheit einen kurzen **Stoffrahmen** fest (Anforderung des Product Owners vom 13. November 2026). Er hat zwei Teile:
+
+- **Arbeitet mit:** die Objekte, Darstellungen und Verfahren, die Beispiele, Anwendungen, Aufgaben, Lernkarten und Lernzielbilder der Einheit benutzen dürfen. Das ist, was die Einheit selbst erarbeitet und was ihre Eingangskompetenzen bereitstellen.
+- **Noch nicht:** benachbarter Stoff, der an dieser Stelle naheliegt, aber noch nicht erarbeitet ist, ausdrücklich benannt.
+
+Eine Einheit zum Ableiten ganzrationaler Funktionen arbeitet mit Potenzfunktionen mit natürlichen Exponenten, ihren Vielfachen und Summen sowie mit Potenz-, Faktor- und Summenregel. Trigonometrische Funktionen, Exponential- und Logarithmusfunktionen sowie Produkt- und Kettenregel sind „noch nicht". Eine Anwendung in dieser Einheit und ebenso das Bild eines ihrer Ziele zeigt dann eine ganzrationale Funktion und nie $\sin x$ oder $e^x$, so naheliegend ein solches Beispiel für jemanden wirkt, der das ganze Fach kennt.
+
+Drei Regeln machen den Rahmen verbindlich:
+
+1. **Der Graph deckt den Rahmen.** Alles unter „arbeitet mit" wird von einem eigenen Ziel der Einheit erarbeitet oder liegt auf einem Voraussetzungspfad ihrer eigenen Ziele. „Im selben Schuljahr vorgesehen" genügt nicht. Der Rahmen nennt deshalb das gesicherte Minimum und ist in jedem Lehrplankontext derselbe. Was gebraucht wird, aber auf keinem Voraussetzungspfad liegt, ist ein Befund für die Fachprüfung: Es fehlt eine Voraussetzung, oder der Rahmen ist zu weit. Keine Kante wird erfunden, um ihn zu schließen.
+2. **Nichts aus „noch nicht" wird gebraucht.** Kein eigenes Ziel und keine eigene Prüfung der Einheit benötigt, was der Rahmen ausschließt.
+3. **Jede Ausgestaltung bleibt im Rahmen.** Aufgaben und Musterlösungen der eigenen Prüfungen, Lernkarten, Übungsaufgaben, Lernzielbilder und die Beispiele des Coachs zu den Zielen der Einheit benutzen nur den Rahmen. Was ihn verlässt, ist der falschen Einheit zugeordnet oder wird geändert.
+
+Der Rahmen verengt kein Ziel. Reicht die vollständige Bedeutung eines Ziels über den Rahmen hinaus, etwa bei einem Ziel zu Ableitungen elementarer Funktionen, das einfache Exponentialfunktionen nennt, während Exponentialfunktionen erst später erarbeitet werden, ist das ein Befund zur Grenze: Das Ziel gehört in eine spätere Einheit, oder die Einheit braucht einen weiteren Rahmen, den der Graph deckt. Ein Verfahren darf in einer späteren Einheit mit weiterem Rahmen wiederkehren; diese zeigt es dann an ihrem eigenen Stoff.
+
+Der Rahmen steht fest, bevor Aufgaben, Karten und Bilder der Einheit geschrieben oder geprüft werden, und er gehört zum Vertrag der Einheit. Die Einheitendeklaration trägt ihn noch nicht; der [Arbeitsplan](../../dev/mathematics-physics-learning-units-plan.md) nennt die Stufe, die ihn ergänzt.
+
 <a id="3-learn-demonstrate-and-continue-learning"></a>
 <a id="sec-sga-ud-loop"></a>
 ### 12.3. Lernen, nachweisen und weiterlernen
@@ -92,6 +113,8 @@ Bei $t=2\,\mathrm{s}$ erreicht der Ort sein Maximum und die Geschwindigkeit ist 
 #### 12.4. Einstieg und Anschluss
 
 Benötigt werden die mathematischen Fertigkeiten, die diese Aufgaben tatsächlich verlangen: mit Termen und Einheiten umgehen sowie Gleichungen einschließlich auftretender quadratischer Gleichungen lösen. Verlangt die gewählte Aufgabe Ableitungen, müssen auch diese vorab verfügbar sein. Eine in der Physikaufgabe sichtbare Anwendung beweist nicht pauschal die vollständigen entsprechenden Mathematikziele; dafür zählen deren eigene Bedeutung und gültiger Nachweis.
+
+Der Stoffrahmen dieses Beispiels lautet: Die Einheit arbeitet mit Bewegungen längs einer Geraden, konstanter Beschleunigung mit vorgegebenem Wert, Orts- und Geschwindigkeitsgesetz als quadratischer und linearer Funktion der Zeit sowie den drei Bewegungsdiagrammen. Vektoren und Bewegungen in zwei Dimensionen, Kräfte als Ursachen, Ableitungen und Integrale sowie eine quantitative Behandlung des Luftwiderstands sind „noch nicht". Die quadratischen Gleichungen gehören nur dann zum Rahmen, wenn ein Voraussetzungspfad sie bereitstellt; sonst meldet Regel 1 des Rahmens einen Befund.
 
 Die gleichförmige Bewegung kann einen sinnvollen fachlichen Einstieg bilden, etwa um Geschwindigkeit und Beschleunigung voneinander abzugrenzen. Daraus entsteht keine Pflicht, zuvor jede kalendarisch früher liegende Physikeinheit abzuschließen.
 
@@ -223,12 +246,13 @@ Vor jeder Implementierungsplanung sind für jeden Kandidaten zu beantworten:
 
 1. Was können Lernende danach selbstständig, und warum ist das bedeutsam?
 2. Welche konkreten Eingangskompetenzen werden benötigt, und stehen sie – auch fachübergreifend – vor der ersten abhängigen Aktivität bereit?
-3. Welche vorhandenen Ziele gehören direkt zur Einheit, welche verpflichtenden Kindeinheiten besitzt sie, und gehört jedes Ziel genau einer Einheit direkt an (R4)?
-4. Worin besteht der zentrale Erkenntnisschritt, und was baut tatsächlich darauf auf?
-5. Welche Aufgaben und regulären Bewertungsregeln weisen das gesamte Versprechen nach? Liegt jedes eigene reguläre Ziel auf einem Pfad von einer eigenen Prüfung (R1), und trägt mindestens eine solche Prüfung dafür geprüfte Evidenz (R2)?
-6. Beansprucht jede Prüfung Abdeckung ausschließlich für Ziele, die sie voraussetzt (R3)?
-7. Könnte jemand bestehen, obwohl ihm eine wesentliche Kompetenz fehlt?
-8. Welches gezielte Weiterlernen und welche frische Prüfung folgen auf eine solche Lücke?
-9. Welche Quellen und vollständigen Zielbedeutungen begründen Umfang und Grenze?
+3. Wie lautet der Stoffrahmen: Mit welchen Objekten, Darstellungen und Verfahren arbeitet die Einheit, und welcher benachbarte Stoff ist ausdrücklich „noch nicht"? Deckt ihn der Graph, und bleiben alle Aufgaben, Karten, Bilder und Beispiele der Einheit in ihm?
+4. Welche vorhandenen Ziele gehören direkt zur Einheit, welche verpflichtenden Kindeinheiten besitzt sie, und gehört jedes Ziel genau einer Einheit direkt an (R4)?
+5. Worin besteht der zentrale Erkenntnisschritt, und was baut tatsächlich darauf auf?
+6. Welche Aufgaben und regulären Bewertungsregeln weisen das gesamte Versprechen nach? Liegt jedes eigene reguläre Ziel auf einem Pfad von einer eigenen Prüfung (R1), und trägt mindestens eine solche Prüfung dafür geprüfte Evidenz (R2)?
+7. Beansprucht jede Prüfung Abdeckung ausschließlich für Ziele, die sie voraussetzt (R3)?
+8. Könnte jemand bestehen, obwohl ihm eine wesentliche Kompetenz fehlt?
+9. Welches gezielte Weiterlernen und welche frische Prüfung folgen auf eine solche Lücke?
+10. Welche Quellen und vollständigen Zielbedeutungen begründen Umfang und Grenze?
 
 Vor einer erneuten Planung sollen die Beispiele nachvollziehbar machen, warum die Grenzen fachlich tragen, die Prüfungen nichts Wesentliches übersehen und ein Nichtbestehen zu sinnvollem Weiterlernen führt. Ein Alternativzuschnitt muss anhand derselben Fragen vergleichbar sein. Dieses Blatt autorisiert weder eine Implementierung noch eine vollständige Schuljahreszuordnung oder eine technische Zugangssperre.

@@ -43,6 +43,27 @@ The following justifications are unsuitable:
 
 A subject-matter questionable edge is a finding of its own. Its review must not be replaced by silently narrowing the meaning of the goals involved. Even an atomically acyclic sequence can, through poor grouping, produce a contradiction between whole blocks; boundary or nesting must then be reconsidered.
 
+<a id="the-content-frame-what-the-unit-works-with"></a>
+<a id="sec-sga-ud-frame"></a>
+#### 12.2. The Content Frame: What the Unit Works With
+
+Next to its learning promise, every unit fixes a short **content frame** (Product Owner requirement of 13 November 2026). It has two parts:
+
+- **Works with:** the objects, representations, and methods that examples, applications, tasks, memory cards, and goal images of the unit may use. They are what the unit develops itself and what its entry competencies provide.
+- **Not yet:** neighbouring subject matter that suggests itself at this point but has not been developed, named explicitly.
+
+A unit on differentiating polynomial functions works with power functions with natural exponents, their multiples and sums, and the power, factor, and sum rules. Trigonometric, exponential, and logarithmic functions and the product and chain rules are "not yet". An application in this unit, and equally the image of one of its goals, then shows a polynomial function and never $\sin x$ or $e^x$, however natural such an example looks to an author who knows the whole subject.
+
+Three rules make the frame binding:
+
+1. **The graph backs the frame.** Everything under "works with" is developed by an own goal of the unit or lies on a prerequisite path of its own goals. "Planned for the same school year" is not sufficient. The frame therefore states the guaranteed minimum and is the same in every curriculum context. Something that is needed but lies on no prerequisite path is a finding for subject review: a prerequisite is missing, or the frame is too wide. No edge is invented to close it.
+2. **Nothing "not yet" is needed.** No own goal and no own assessment of the unit requires what the frame excludes.
+3. **Every elaboration stays inside.** Tasks and sample solutions of the own assessments, memory cards, practice tasks, goal images, and the coach's examples for the unit's goals use only the frame. Whatever leaves it is assigned to the wrong unit or is changed.
+
+The frame does not narrow a goal. If the complete meaning of a goal reaches beyond the frame, for example a goal on derivatives of elementary functions that names simple exponential functions while exponential functions are developed only later, that is a boundary finding: the goal belongs to a later unit, or the unit needs a wider frame that the graph backs. A method may return in a later unit with a wider frame; that unit then shows it on its own material.
+
+The frame is fixed before tasks, cards, and images of the unit are written or reviewed, and it is part of the unit's contract. The unit declaration does not carry it yet; the [working plan](../../dev/mathematics-physics-learning-units-plan.md) names the stage that adds it.
+
 <a id="3-learn-demonstrate-and-continue-learning"></a>
 <a id="sec-sga-ud-loop"></a>
 ### 12.3. Learn, Demonstrate, and Continue Learning
@@ -92,6 +113,8 @@ At $t=2\,\mathrm{s}$ the position reaches its maximum and the velocity is zero, 
 #### 12.4. Entry and Continuation
 
 What is needed are the mathematical skills these tasks actually require: using terms and units and solving equations, including the quadratic equations that occur. If the chosen task demands derivatives, those must be available beforehand as well. An application visible in the physics task does not prove the complete corresponding mathematics goals across the board; their own meaning and valid evidence count for that.
+
+The content frame of this example reads: the unit works with motion along a line, constant acceleration with a given value, position and velocity laws as quadratic and linear functions of time, and the three motion diagrams. Vectors and motion in two dimensions, forces as causes, derivatives and integrals, and a quantitative treatment of air resistance are "not yet". The quadratic equations belong to the frame only if a prerequisite path provides them; otherwise rule 1 of the frame reports a finding.
 
 Uniform motion can form a sensible subject-matter entry, for example to distinguish velocity from acceleration. This creates no obligation to complete every physics unit that comes earlier in the calendar first.
 
@@ -223,12 +246,13 @@ Before any implementation planning, answer for every candidate:
 
 1. What can learners do independently afterwards, and why does it matter?
 2. Which concrete entry competencies are needed, and are they available, also across subjects, before the first dependent activity?
-3. Which existing goals belong directly to the unit, which required child units does it have, and is every goal owned by exactly one unit (R4)?
-4. What is the central conceptual step, and what actually builds on it?
-5. Which tasks and ordinary grading rules demonstrate the whole promise? Does every own ordinary goal lie on a path from an own assessment (R1), and does at least one such assessment carry reviewed evidence for it (R2)?
-6. Does every assessment claim coverage only for goals it requires (R3)?
-7. Could someone pass despite lacking an essential competence?
-8. Which focused further learning and fresh assessment follow such a gap?
-9. Which sources and complete goal meanings justify scope and boundary?
+3. What is the content frame: which objects, representations, and methods does the unit work with, and which neighbouring subject matter is explicitly "not yet"? Does the graph back it, and do all tasks, cards, images, and examples of the unit stay inside it?
+4. Which existing goals belong directly to the unit, which required child units does it have, and is every goal owned by exactly one unit (R4)?
+5. What is the central conceptual step, and what actually builds on it?
+6. Which tasks and ordinary grading rules demonstrate the whole promise? Does every own ordinary goal lie on a path from an own assessment (R1), and does at least one such assessment carry reviewed evidence for it (R2)?
+7. Does every assessment claim coverage only for goals it requires (R3)?
+8. Could someone pass despite lacking an essential competence?
+9. Which focused further learning and fresh assessment follow such a gap?
+10. Which sources and complete goal meanings justify scope and boundary?
 
 Before planning again, the examples should make traceable why the boundaries hold up in subject terms, the assessments miss nothing essential, and a failure leads to meaningful further learning. An alternative cut must be comparable on the same questions. This sheet authorizes no implementation, no complete assignment of school years, and no technical access lock.

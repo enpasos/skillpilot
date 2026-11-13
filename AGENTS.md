@@ -637,6 +637,23 @@ curricular-level terminology. Personalization Levels 1–4, QA maturity and goal
   experimental goal is evidenced in a chat with a coach is an open Product
   Owner decision for all experimental goals. Until it is taken, do not claim
   reviewed coverage for an experimental goal.
+- **Content frame of a unit (Product Owner requirement of 13 November
+  2026).** Next to its promise, every unit fixes a short content frame
+  (German "Stoffrahmen"): what it works with (objects, representations and
+  methods that examples, applications, tasks, memory cards and goal images
+  may use) and what is explicitly "not yet" (neighbouring subject matter that
+  suggests itself but has not been developed). A unit on differentiating
+  polynomial functions shows no trigonometric or exponential function. Three
+  rules: the graph backs the frame (own goals or a prerequisite path of the
+  own goals, never the calendar), nothing "not yet" is required by an own
+  goal or assessment, and every elaboration of the unit's goals stays inside.
+  The frame never narrows a goal and no edge is invented to close it: a goal
+  text or task that reaches beyond the frame is a finding for subject review
+  or belongs to a later unit. Do not call it "context"; that word names the
+  resolved curriculum context. Fix the frame before writing or reviewing
+  tasks, cards or images of a unit. The unit declaration does not carry the
+  frame yet; it is added with the contract version of the runtime stage, not
+  in a side file. Design criteria §12.2; working plan sections 4 and 6.
 
 This is concept documentation plus a static authoring contract and validator,
 not an implemented runtime or access policy. See `docs/concept/skill-graph/learning-units.md`,
