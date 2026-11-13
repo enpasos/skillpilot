@@ -1,3 +1,4 @@
+import { validateSemanticAtomicityRecordShape } from './lib/semanticAtomicityRecordValidation'
 import { evaluateDirectAtomicRouteCoverage } from './lib/directAtomicRouteCoverage'
 import { createHash } from 'node:crypto'
 import { existsSync, mkdirSync, readdirSync, readFileSync, realpathSync, statSync, writeFileSync } from 'node:fs'
@@ -2805,7 +2806,7 @@ function reusableGeneratedAt(nextStatus: StatusDocument): string | null {
   }
 }
 
-function fingerprintGoal(goal: LearningGoal, ruleVersion: string): string {
+export function fingerprintGoal(goal: LearningGoal, ruleVersion: string): string {
   const payload = stableJson({
     ruleVersion,
     goalId: goal.id,
@@ -3315,7 +3316,7 @@ function validateMemoryCardReviewCardRecordShape(
   return errors
 }
 
-function evaluateSemanticAtomicity(landscape: SkillLandscape, configs: ReviewConfig[]): RuleResult {
+export function evaluateSemanticAtomicity(landscape: SkillLandscape, configs: ReviewConfig[]): RuleResult {
   if (configs.length === 0) {
     return makeRule('CQR-301', 'not_configured', 'No semantic atomicity review config is registered for this curriculum.')
   }
@@ -3328,6 +3329,9 @@ function evaluateSemanticAtomicity(landscape: SkillLandscape, configs: ReviewCon
   let missing = 0
   let stale = 0
   let obsolete = 0
+  let invalidReviewRecords = 0
+  let parseErrorCount = 0
+  let duplicateReviewRecords = 0
   const details: string[] = []
 
   configs.forEach((config) => {
@@ -3341,7 +3345,22 @@ function evaluateSemanticAtomicity(landscape: SkillLandscape, configs: ReviewCon
     const fingerprintsByGoalId = new Map(scopedLeafGoals.map((goal) => [goal.id, fingerprintGoal(goal, config.ruleVersion)]))
     const reviewPath = resolve(repoRoot, config.reviewPath)
     const { records, parseErrors } = parseReviewRecords(reviewPath)
-    const recordsByGoalId = new Map(records.map((record) => [record.goalId, record]))
+    parseErrorCount += parseErrors.length
+    const validRecords = records.filter((record) => {
+      const errors = validateSemanticAtomicityRecordShape(record, config)
+      if (errors.length === 0) return true
+      invalidReviewRecords += 1
+      errors.forEach((issue) => details.push(`${config.reviewId}: ${issue}`))
+      return false
+    })
+    const recordsByGoalId = new Map<string, ReviewRecord>()
+    validRecords.forEach((record) => {
+      if (recordsByGoalId.has(record.goalId)) {
+        duplicateReviewRecords += 1
+        details.push(`${config.reviewId}: duplicate review record for ${record.goalId}`)
+      }
+      recordsByGoalId.set(record.goalId, record)
+    })
 
     leafGoals += scopedLeafGoals.length
     parseErrors.forEach((issue) => details.push(`${config.reviewId}: ${issue}`))
@@ -3364,18 +3383,19 @@ function evaluateSemanticAtomicity(landscape: SkillLandscape, configs: ReviewCon
       if (record.status === 'non_atomic') nonAtomic += 1
     })
 
-    records.forEach((record) => {
+    validRecords.forEach((record) => {
       if (!scopedLeafGoalIds.has(record.goalId)) obsolete += 1
     })
   })
 
-  const unresolved = missing + stale + needsDeveloperReview + nonAtomic + obsolete
+  const invalidInputs = invalidReviewRecords + parseErrorCount + duplicateReviewRecords
+  const unresolved = missing + stale + needsDeveloperReview + nonAtomic + obsolete + invalidInputs
   return makeRule(
     'CQR-301',
-    unresolved === 0 ? 'pass' : 'warn',
+    invalidInputs > 0 ? 'fail' : unresolved === 0 ? 'pass' : 'warn',
     unresolved === 0
       ? 'Semantic atomicity review ledgers are current and fully accepted.'
-      : 'Semantic atomicity review still has missing, stale, or unresolved entries.',
+      : 'Semantic atomicity review still has missing, stale, invalid, or unresolved entries.',
     {
       configs: configs.length,
       leafGoals,
@@ -3385,6 +3405,7 @@ function evaluateSemanticAtomicity(landscape: SkillLandscape, configs: ReviewCon
       missing,
       stale,
       obsolete,
+      ...(invalidInputs > 0 ? { invalidReviewRecords, parseErrors: parseErrorCount, duplicateReviewRecords } : {}),
     },
     details,
   )
