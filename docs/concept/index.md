@@ -68,6 +68,8 @@ This page is the entry point for durable SkillPilot concepts. Keep implementatio
   Target architecture for equivalent JSON-runtime and FWU-ontology release packages, standalone consumption, and repository decoupling.
 - [Learning-Unit Design Criteria and Examples](skill-graph/learning-unit-design-and-examples.md)
   Purpose of a unit, criteria for meaningful boundaries and assessments, two worked candidates, and the unit validity rules R1–R5 of 11 November 2026.
+- [Knowledge Context](skill-graph/knowledge-context.md)
+  What a learner can be assumed to know at a goal, derived deterministically from the graph for generation, review, and the coach. Concept, not implemented.
 
 ## Didactic & Planning Concepts
 
@@ -178,6 +180,8 @@ Diese Seite ist der Einstiegspunkt für dauerhafte SkillPilot-Konzepte. Umsetzun
   Zielarchitektur für äquivalente JSON-Runtime- und FWU-Ontologie-Release-Pakete, Standalone-Nutzung und Repository-Entkopplung.
 - [Entwurfskriterien und Beispiele für Lerneinheiten](skill-graph/learning-unit-design-and-examples.de.md)
   Didaktischer Zweck einer Lerneinheit, Kriterien für sinnvolle Grenzen und Prüfungen, zwei durchgearbeitete Kandidaten sowie die Gültigkeitsregeln R1–R5 vom 11. November 2026.
+- [Wissenskontext](skill-graph/knowledge-context.de.md)
+  Was bei Lernenden an einem Ziel vorausgesetzt werden darf, deterministisch aus dem Graphen abgeleitet für Erzeugung, Review und Coach. Konzept, nicht umgesetzt.
 
 ## Didaktik & Planung
 

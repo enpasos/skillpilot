@@ -21,6 +21,7 @@ import { createHash } from 'node:crypto'
 export interface UnitGraphGoal {
   id: string
   title?: string
+  description?: string
   contains?: string[]
   requires?: string[]
   nodeKind?: string | null
@@ -186,6 +187,17 @@ export class UnitGraph {
   goal(key: string): UnitGraphGoal { return this.nodes.get(key)!.goal }
   landscapeId(key: string): string { return this.nodes.get(key)!.landscapeId }
   isAtomic(key: string): boolean { return this.nodes.get(key)!.contains.length === 0 }
+  /** Direct `contains` parents of a goal, sorted; empty for a root. */
+  parentKeys(key: string): string[] { return sorted(this.nodes.get(key)!.parents) }
+  /** Every goal that contains the given goal directly or transitively. */
+  ancestorKeys(key: string): string[] { return sorted(this.ancestors(key)) }
+  /** Goals of a landscape that no goal of the same landscape contains; an overview landscape may contain them. */
+  rootKeys(landscapeId: string): string[] {
+    return [...this.nodes.values()]
+      .filter((node) => node.landscapeId === landscapeId
+        && !node.parents.some((parent) => this.nodes.get(parent)!.landscapeId === landscapeId))
+      .map((node) => node.key).sort(byCodeUnit)
+  }
   atomicKeys(landscapeId: string): string[] {
     return [...this.nodes.values()].filter((node) => node.landscapeId === landscapeId && node.contains.length === 0)
       .map((node) => node.key).sort(byCodeUnit)

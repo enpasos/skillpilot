@@ -240,6 +240,9 @@ run_curriculum_frontend_ci() {
   npm run validate:learning-units
   npm run check:learning-unit-assessments
 
+  echo "--> Testing the Knowledge-Context Derivation"
+  npm run test:knowledge-context
+
   echo "--> Testing Exam Markdown Conventions"
   npm run test:exam-markdown
 

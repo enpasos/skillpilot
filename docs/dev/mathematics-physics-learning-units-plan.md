@@ -50,6 +50,20 @@ Der Product Owner hat am 12. November 2026 entschieden:
   neues Review, alle anderen Inhaltsänderungen sind frei. Einzelheiten:
   [Einfrieren des Reduktionsnachweises](prerequisite-reduction-proof-freeze-2026-11-12.md).
 
+Am 13. November 2026 hat der Product Owner ergänzt:
+
+- **Wissenskontext:** Der Wissenskontext der Lernenden muss eingehalten
+  werden. Zu jedem Lernziel wird er deterministisch aus den im Graphen
+  gespeicherten Daten abgeleitet, kompakt genug für jeden Schritt, und steht
+  jedem KI-Schritt, der Inhalte der Skill-Landschaft erzeugt oder prüft, als
+  ständiger Abgleich zur Verfügung sowie dem Coach zum jeweiligen Ziel. In
+  einer Einheit zum Ableiten ganzrationaler Funktionen kommen in Anwendungen
+  und Lernzielbildern keine trigonometrischen Funktionen und keine
+  Exponentialfunktionen vor, solange diese noch nicht dran waren. Anlass
+  waren zwei Zuordnungsfehler dieser Art im Bestand. Das Konzept steht in
+  [Wissenskontext](../concept/skill-graph/knowledge-context.de.md), die Folgen
+  für diesen Plan in den Abschnitten 4, 6 und 7.
+
 Unverändert gilt die Anerkennungsregel, die der Product Owner am 11. November
 bestätigt hat: Ein eigenes gewöhnliches Ziel einer Einheit ist anerkannt, sobald
 keine offene eigene Prüfung und kein offenes eigenes Lernkartenziel dieser
@@ -197,6 +211,29 @@ nur als Voraussetzung in den Lernumfang gelangt, wird als einzelne Kompetenz
 erworben und verlangt keine Prüfung seiner Einheit. Diese Prüfung braucht einen
 Backendlauf und gehört noch nicht zur Pflicht-CI.
 
+**Wissenskontext (nicht umgesetzt).** Der Wissenskontext eines Ziels ist
+eine Projektion des Graphen: worauf das Ziel aufbaut, welche Ziele gesichert
+sind, was auf ihm aufbaut und welcher Nachbarstoff desselben Bereichs noch
+nicht gesichert ist. Der Kontext einer Einheit ist die Vereinigung der Kontexte
+ihrer eigenen Ziele und Prüfungen. Dafür wird nichts gespeichert und nichts von
+Hand geschrieben; die Einheitendeklaration bekommt kein Feld, und der
+Paketvertrag ändert sich dafür nicht. Eine neue Gültigkeitsregel neben R1–R5
+entsteht nicht: Ob eine Prüfung im Kontext bleibt, wird Teil ihres R2-Reviews.
+
+Der Kontext bindet nur, wo die Voraussetzungen eines Ziels ausreichen. Das
+prüft heute kein Gate (Abschnitt 7). Die Einführung hat deshalb vier Schritte,
+unabhängig von den Stufen dieses Plans:
+
+| Schritt | Inhalt | Verhältnis zu den Stufen |
+| --- | --- | --- |
+| 1 – Ableiten | Deterministisches Werkzeug im Repository und ein Bericht je Fach; kein Gate ändert sich. | Geliefert am 13. November: `npm --prefix app run knowledge-context` für ein Ziel oder einen Cluster, `report:knowledge-context` für die Größen je Fach, `test:knowledge-context` in der Pflicht-CI. |
+| 2 – Hinlänglichkeit prüfen | Blockweises Review jedes Ziels mit seinem Kontext als Eingabe: Lässt sich das Ziel mit den gesicherten Zielen lernen? Befunde sind Kandidatenkanten, Befunde zur Einordnung oder Lücken und gehen in die Fachprüfung. | Beginnt mit einem Pilotblock je Fach; danach Teil der Blockarbeit in Stufe 4 und 5. |
+| 3 – Kontexttreue prüfen | Prüfungen, Lernkarten und Lernzielbilder eines Blocks gegen den Kontext; Bild-Prompts und Reviews erhalten ihn als Eingabe. | Teil der Arbeitsweise je Themenblock (Abschnitt 6). |
+| 4 – Coach bedienen | Das Backend liefert den Kernkontext des aktiven Ziels, verbunden mit dem Stand der lernenden Person. | Je Fach, sobald es hinlänglich ist; Laufzeit- und Providerarbeit mit eigener Abnahme. |
+
+Die drei vorhandenen Einheiten sind noch nicht gegen ihren Wissenskontext
+geprüft.
+
 Die gemeinsamen Testfälle liegen in
 `contracts/curriculum-package/v1.2/fixtures/learning-units/cases.json`. Der
 Validator (`npm --prefix app run test:learning-unit-contracts`) und der
@@ -215,8 +252,8 @@ Ergebnis abgeschlossen.
 | **0 – Wiederaufnahme** | Dieser Plan; Inventarwerkzeug portiert und neu erzeugt. | Dokumentationsprüfungen grün; #83 bleibt Archiv. | Geliefert. |
 | **1 – Vertrag und Validator** | Einheiten in der Platzierungsschicht der Skill-Landschaft, Paketvertrag 1.2, Validator für R1, R3, R4 und Struktur, gemeinsame Testfälle, CI-Einbindung. | Testfälle decken jeden Befundcode; keine Runtimeänderung. | Geliefert. Die Angebotsprüfung ist vorhanden, aber nicht in der Pflicht-CI. |
 | **2 – Erste echte Einheiten** | Pilot „Skalarprodukt über orthogonale Projektion“, danach M01 und P13, jeweils mit unabhängigem R2-Review. | Validator grün, geschützte Reifegrade gehalten, Quellenbindung für neue Prüfungen. | Geliefert: Der Pilot, M01 („Natürliche Zahlen verstehen und darstellen“) und P13 („Gleichmäßig beschleunigte Bewegung modellieren“) tragen seit dem 13. November R2-Nachweise (siehe unten). Offen ist die Entscheidung, wie experimentelle Ziele nachgewiesen werden. |
-| **3 – Runtime** | Backend leitet aus gültigen Verträgen die wirksame Beherrschung ab, versioniert gebunden (R5); Cockpit, Coach, Frontier und Plan nutzen denselben Stand. | Gesamtfortschritt zählt Anerkennung mit, Perioden zählen nur explizite Abschlüsse, keine neuen Mastery-Zeilen; Deployment und Hostabnahme getrennt durch den Product Owner. | Offen. |
-| **4 – Mathematik vollständig** | Blockweise Einheiten, Prüfungen und Reviews; die Landschaft erklärt `learningUnitCoverage: complete`. | Kein Fachziel ohne Einheit, Angebotsprüfung in allen Mathematikklassen grün, Gesamt-CI grün. | Offen: 801 gewöhnliche Ziele ohne Einheit. |
+| **3 – Runtime** | Backend leitet aus gültigen Verträgen die wirksame Beherrschung ab, versioniert gebunden (R5); Cockpit, Coach, Frontier und Plan nutzen denselben Stand. Die Vertragsversion dieser Stufe nimmt Aufgabenvarianten auf. | Gesamtfortschritt zählt Anerkennung mit, Perioden zählen nur explizite Abschlüsse, keine neuen Mastery-Zeilen; Deployment und Hostabnahme getrennt durch den Product Owner. | Offen. |
+| **4 – Mathematik vollständig** | Blockweise Einheiten, Prüfungen und Reviews; die Landschaft erklärt `learningUnitCoverage: complete`. | Kein Fachziel ohne Einheit, Aufgaben, Karten und Bilder jeder Einheit gegen ihren Wissenskontext geprüft, Angebotsprüfung in allen Mathematikklassen grün, Gesamt-CI grün. | Offen: 801 gewöhnliche Ziele ohne Einheit. |
 | **5 – Physik vollständig** | Wie Stufe 4, zusätzlich Experimente und mathematische Voraussetzungen. | Eigene Fachabnahme; Mathematik bleibt stabil. | Offen: 476 gewöhnliche Ziele ohne Einheit; die Entscheidung zu experimentellen Zielen steht aus. |
 
 ### Stand der Stufe 2
@@ -376,18 +413,30 @@ untersuchen“) in der künftigen Einheit zur Beschreibung von Bewegungen.
    Befund ist ein Auftrag für die Fachprüfung. Keine Kante wird ergänzt oder
    entfernt, kein Zieltext verkürzt und keine Einheit zerschnitten, damit der
    Validator grün wird.
-3. **Prüfungen unabhängig gegenlesen:** Kann jemand nach der normalen Rubrik
-   bestehen, obwohl ein wesentlicher Teil des Ziels fehlt? Das Review erhält
-   Ziel, Aufgabe, Lösung, Rubrik und Kriterien, aber kein erwartetes Ergebnis.
-   Ein negatives Ergebnis wird als Protokoll abgelegt; die Einheit bleibt dann
-   ohne Nachweis.
-4. **Stärkere Ansprüche bekommen neue Prüfungs-IDs.** Eine Prüfungs-ID steht
+3. **Wissenskontext ableiten und Hinlänglichkeit prüfen:** Für jedes eigene
+   Ziel und jede eigene Prüfung den Wissenskontext ableiten, bevor eine
+   Aufgabe, eine Karte oder ein Bild geschrieben oder geprüft wird. Braucht
+   ein Ziel etwas, das sein Kontext nicht sichert, ist das ein Befund: eine
+   fehlende Voraussetzung, ein Ziel, das in späteren Stoff greift, oder eine
+   falsche Grenze. Kein Zieltext wird dafür geändert.
+4. **Prüfungen unabhängig gegenlesen:** Kann jemand nach der normalen Rubrik
+   bestehen, obwohl ein wesentlicher Teil des Ziels fehlt? Verlassen Aufgabe,
+   Lösung oder Raster den Wissenskontext der Prüfung? Das Review erhält Ziel,
+   Wissenskontext, Aufgabe, Lösung, Rubrik und Kriterien, aber kein erwartetes
+   Ergebnis. Ein negatives Ergebnis wird als Protokoll abgelegt; die Einheit
+   bleibt dann ohne Nachweis.
+5. **Vorhandene Ausgestaltung durchsehen:** Lernkarten, Übungsaufgaben und
+   Lernzielbilder der eigenen Ziele gegen den Wissenskontext prüfen. Ein Bild,
+   das ihn verlässt, gilt als fehlerhaft und wird nach der geltenden
+   Bildrichtlinie neu erzeugt; gute Bilder bleiben. Eine Aufgabe, die ihn
+   verlässt, gehört zu einer späteren Einheit oder wird geändert.
+6. **Stärkere Ansprüche bekommen neue Prüfungs-IDs.** Eine Prüfungs-ID steht
    dauerhaft für denselben Nachweisumfang; alte Ergebnisse werden nicht
    aufgewertet.
-5. **Kanonische Änderungen bleiben quellengebunden** und durchlaufen die
+7. **Kanonische Änderungen bleiben quellengebunden** und durchlaufen die
    vorhandenen Quellen-, Aufgaben-, Bild- und Reifegradprüfungen. Ein
    Einheitenkatalog setzt keine davon außer Kraft.
-6. **Kleine PRs:** ein Block, ein reviewter Stand, grüne CI am genauen Commit.
+8. **Kleine PRs:** ein Block, ein reviewter Stand, grüne CI am genauen Commit.
 
 ## 7. Befunde für die Fachprüfung
 
@@ -433,6 +482,37 @@ Diese Befunde sind Arbeitslisten, keine entschiedenen Korrekturen.
   Voraussetzungspfad der beiden Ziele; im Graphen stehen nur „Terme mit
   Variablen lesen und deuten“ und die Ziele zur Beschreibung von Bewegungen.
   Ob eine fachübergreifende Voraussetzung fehlt, entscheidet die Fachprüfung.
+  Der Wissenskontext der Prüfung sichert sie nicht.
+- **Mathematik, Zieltexte über dem Voraussetzungspfad:** Zwei Ziele nennen
+  Funktionsklassen, die auf ihrem Voraussetzungspfad kein Ziel erarbeitet.
+  „Ableitungen elementarer Funktionen berechnen“
+  (`858113c5-e53b-57bb-b01f-ba95c3ddcb6f`, im Ableitungseinstieg) nennt
+  einfache Exponentialfunktionen; die Ziele zu Eigenschaften der
+  Exponentialfunktionen setzen umgekehrt dieses Ziel voraus. „Einfache
+  Integrale berechnen“ (`a9ed219d-d497-55e5-a4e0-4d45d2554f6b`) nennt
+  Stammfunktionen von $e^x$, $\sin(x)$ und $\cos(x)$; auf seinem Pfad liegt
+  kein Ziel zu Sinus und Kosinus und zu Exponentialfunktionen nur das
+  erstgenannte. Gefunden durch eine Stichwortsuche über Titel und
+  Beschreibungen der Ziele auf dem Voraussetzungspfad, für
+  Exponentialfunktionen, Sinus und Kosinus und Logarithmen; das ist kein
+  Fachurteil und keine vollständige Liste. Ob eine Voraussetzung fehlt oder
+  ein Ziel in einen späteren Block gehört, entscheidet die Fachprüfung beim
+  Entwurf der betroffenen Einheiten. Kein Zieltext und keine Kante wurde
+  geändert.
+- **Voraussetzungen reichen nicht aus:** Das Werkzeug leitet den
+  Wissenskontext aller 807 gewöhnlichen Mathematik- und 478 Physikziele ab
+  (Stand 13. November). Für „Ganzrationale Funktionen ableiten“
+  (`623cd47f-6f9e-58a7-911c-69e4a8609a27`) sichert der Graph 34 Ziele, aber
+  keines zu linearen, quadratischen, Potenz- oder ganzrationalen Funktionen.
+  „Ganzrationale Funktionen mit Differentialrechnung analysieren“
+  (`d78946f9-1f5f-462c-a99c-fe01054042dd`) hat das Ziel zum Ableiten
+  ganzrationaler Funktionen nicht auf seinem Voraussetzungspfad. 20
+  Mathematik- und 19 Physikziele haben gar keine Voraussetzung. Die
+  vorhandenen Gates prüfen Zyklenfreiheit, atomare Form und transitive
+  Minimalität, nicht ob die Voraussetzungen eines Ziels ausreichen. Wie viele
+  Ziele betroffen sind, zeigt erst das Review der Pilotblöcke (Abschnitt 4,
+  Schritt 2). Zahlen und Definition:
+  [Wissenskontext](../concept/skill-graph/knowledge-context.de.md).
 - **Orientierungsziele als Voraussetzung:** Die beiden Mathematikziele „Warum
   Mathematik? …“ sind Voraussetzung von 11 und 47 gewöhnlichen Zielen und
   gelangen dadurch in den Lernumfang fast jeder Konfiguration, auch jeder
@@ -476,3 +556,8 @@ Stufe 2 ist geliefert: Drei Einheiten in zwei Fächern tragen vollständige
 R2-Nachweise, eine davon mit zwei Prüfungen. Stufe 3 kann beginnen; zu ihr
 gehört auch der Vertrag für Aufgabenvarianten. Vor Stufe 5 braucht es die
 Entscheidung des Product Owners zu experimentellen Zielen.
+
+Davon unabhängig läuft die Einführung des Wissenskontexts (Abschnitt 4). Das
+Werkzeug, das ihn ableitet, ist vorhanden. Der nächste Schritt ist das Review
+der Hinlänglichkeit an einem Pilotblock je Fach: dem Ableitungseinstieg der
+Mathematik und der Kinematik der Einführungsphase.

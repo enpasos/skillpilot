@@ -8,7 +8,7 @@
 
 **Language / Sprache:** **English (EN)** · [Deutsch (DE)](learning-unit-design-and-examples.de.md) | **PDF:** [English PDF](skillpilot-skill-graph-architecture.en.pdf) · [Deutsches PDF](skillpilot-skill-graph-architecture.de.pdf)
 
-**Compendium:** [§1 General Goal System](general-goal-system-and-migration.md) · [§2 Node Types](node-types.md) · [§3 View Projection](view-projection-and-goal-placement.md) · [§4 Source & Resource Links](source-and-resource-links.md) · [§5 Content Integration](content-integration.en.md) · [§6 Source Rationales](human-readable-source-rationales.md) · [§7 Goal Visualizations](atomic-goal-visualizations.md) · [§8 Learning-Goal Book](learning-goal-book-and-evidence-review-pipeline.md) · [§9 Gymnasium Rollout](canonical-gymnasium-rollout.md) · [§10 MEM/FWU Plan](mem-fwu-roundtrip-plan.md) · [§11 Dual Package Releases](dual-curriculum-package-releases.en.md) · **§12 Unit Design & Examples**
+**Compendium:** [§1 General Goal System](general-goal-system-and-migration.md) · [§2 Node Types](node-types.md) · [§3 View Projection](view-projection-and-goal-placement.md) · [§4 Source & Resource Links](source-and-resource-links.md) · [§5 Content Integration](content-integration.en.md) · [§6 Source Rationales](human-readable-source-rationales.md) · [§7 Goal Visualizations](atomic-goal-visualizations.md) · [§8 Learning-Goal Book](learning-goal-book-and-evidence-review-pipeline.md) · [§9 Gymnasium Rollout](canonical-gymnasium-rollout.md) · [§10 MEM/FWU Plan](mem-fwu-roundtrip-plan.md) · [§11 Dual Package Releases](dual-curriculum-package-releases.en.md) · **§12 Unit Design & Examples** · [§13 Knowledge Context](knowledge-context.md)
 
 ---
 <a id="sec-sga-unit-design"></a>
@@ -42,6 +42,21 @@ The following justifications are unsuitable:
 - "Then all edges fit": prerequisites are neither invented nor removed to make a desired partition fit afterwards.
 
 A subject-matter questionable edge is a finding of its own. Its review must not be replaced by silently narrowing the meaning of the goals involved. Even an atomically acyclic sequence can, through poor grouping, produce a contradiction between whole blocks; boundary or nesting must then be reconsidered.
+
+<a id="the-knowledge-context-of-a-unit"></a>
+<a id="sec-sga-ud-frame"></a>
+#### 12.2. The Knowledge Context of a Unit
+
+Whatever elaborates the goals of a unit addresses a learner who knows some things and does not yet know others. This knowledge is the [knowledge context](knowledge-context.md): a projection of the skill graph that says for every goal what it builds on, what is secured, what builds on it, and which neighbouring subject matter is not yet secured (Product Owner requirement of 13 November 2026). The knowledge context of a unit is the union of the contexts of its own goals and assessments. Nothing is written for a unit by hand.
+
+In a unit on differentiating polynomial functions, the context secures power functions with natural exponents, their multiples and sums, and the rules the unit develops. Trigonometric, exponential, and logarithmic functions and the product and chain rules are not secured. An application in this unit, and equally the image of one of its goals, then shows a polynomial function and never $\sin x$ or $e^x$, however natural such an example looks to an author who knows the whole subject.
+
+Two rules follow for the design of a unit:
+
+1. **Every elaboration stays inside.** Tasks and sample solutions of the own assessments, memory cards, practice tasks, goal images, and the coach's examples for the unit's goals use only what the context secures and what the unit develops. Whatever leaves it is assigned to the wrong unit or is changed.
+2. **The graph must suffice.** If the unit needs something that its context does not secure, the graph lacks a prerequisite, a goal reaches into later subject matter, or the boundary is wrong. That is a finding for subject review. No edge is invented and no goal text is narrowed to remove it.
+
+The context is derived before tasks, cards, and images of the unit are written or reviewed. It is the same in every curriculum context, because the prerequisite relation is canonical; "planned for the same school year" secures nothing.
 
 <a id="3-learn-demonstrate-and-continue-learning"></a>
 <a id="sec-sga-ud-loop"></a>
@@ -92,6 +107,8 @@ At $t=2\,\mathrm{s}$ the position reaches its maximum and the velocity is zero, 
 #### 12.4. Entry and Continuation
 
 What is needed are the mathematical skills these tasks actually require: using terms and units and solving equations, including the quadratic equations that occur. If the chosen task demands derivatives, those must be available beforehand as well. An application visible in the physics task does not prove the complete corresponding mathematics goals across the board; their own meaning and valid evidence count for that.
+
+The knowledge context of this example secures the description of motion in diagrams, uniform motion, and average and instantaneous velocity, together with linear functions and the reading of graphs. Vectors and motion in two dimensions, forces as causes, and derivatives and integrals are not secured. Neither are quadratic equations: no prerequisite path of the two goals provides them, although the tasks need them. That is a finding under the second rule of the knowledge context of a unit.
 
 Uniform motion can form a sensible subject-matter entry, for example to distinguish velocity from acceleration. This creates no obligation to complete every physics unit that comes earlier in the calendar first.
 
@@ -223,12 +240,13 @@ Before any implementation planning, answer for every candidate:
 
 1. What can learners do independently afterwards, and why does it matter?
 2. Which concrete entry competencies are needed, and are they available, also across subjects, before the first dependent activity?
-3. Which existing goals belong directly to the unit, which required child units does it have, and is every goal owned by exactly one unit (R4)?
-4. What is the central conceptual step, and what actually builds on it?
-5. Which tasks and ordinary grading rules demonstrate the whole promise? Does every own ordinary goal lie on a path from an own assessment (R1), and does at least one such assessment carry reviewed evidence for it (R2)?
-6. Does every assessment claim coverage only for goals it requires (R3)?
-7. Could someone pass despite lacking an essential competence?
-8. Which focused further learning and fresh assessment follow such a gap?
-9. Which sources and complete goal meanings justify scope and boundary?
+3. What does the knowledge context of the unit secure, and what is not yet secured? Does the graph suffice for what the unit needs, and do all tasks, cards, images, and examples of the unit stay inside the context?
+4. Which existing goals belong directly to the unit, which required child units does it have, and is every goal owned by exactly one unit (R4)?
+5. What is the central conceptual step, and what actually builds on it?
+6. Which tasks and ordinary grading rules demonstrate the whole promise? Does every own ordinary goal lie on a path from an own assessment (R1), and does at least one such assessment carry reviewed evidence for it (R2)?
+7. Does every assessment claim coverage only for goals it requires (R3)?
+8. Could someone pass despite lacking an essential competence?
+9. Which focused further learning and fresh assessment follow such a gap?
+10. Which sources and complete goal meanings justify scope and boundary?
 
 Before planning again, the examples should make traceable why the boundaries hold up in subject terms, the assessments miss nothing essential, and a failure leads to meaningful further learning. An alternative cut must be comparable on the same questions. This sheet authorizes no implementation, no complete assignment of school years, and no technical access lock.
