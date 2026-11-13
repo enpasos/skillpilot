@@ -1054,6 +1054,18 @@ Interpretation:
 * A deck should stay narrow and should not become a second curriculum hidden inside flashcards.
 * Passing `CQR-302` means the configured scope has current semantic goal-level decisions, current card-level origin traces, configured learner-facing visibility for required memory nodes, and no unresolved/removal debt in active decks. It upgrades a curriculum from core-ready `M5` to memory-layer-ready `M6`.
 * Canonical description, assessment, route, mapping, or composition-view work is not complete until the curriculum-quality status has been regenerated and the protected maturity floors have been checked. A previously reached maturity such as `M6` must not silently fall to a lower level; the floor gate reports the concrete non-passing CQR rules and fails closed. Lowering a protected floor requires an explicit product-owner decision with the fachliche reason recorded in the floor policy.
+* The CQR gate pins every canonical Gymnasium catalog entry and every registered
+  QA scope. It checks the catalog independently, requires each applicable rule
+  result exactly once with `pass`, and rejects unpinned maturity gains as well
+  as losses. The Git base policy protects pins and existing endpoint-visibility
+  coverage against removal or reduction. `CQR-001`, `CQR-002` and `CQR-501`
+  apply even at `M0`; the complete-catalog G17 checker also fails CI directly.
+  Endpoint visibility (`CQR-104`) is explicitly pinned for eight of twelve
+  scopes. The four upper-secondary Mathematics, Physics, Chemistry and Biology
+  gaps remain open; an unconfigured scope is not a visibility pass. Direct
+  route coverage (`CQR-102`) applies to all twelve scopes, while the stronger
+  semantic route rule (`GVR-012`) remains Mathematics-only. These limits must
+  remain visible in the rule register; no review or learner result is inferred.
 * Do not turn a review queue green by bulk-writing `no_memory_needed`; each decision must be made from the current goal semantics.
 * The OpenAI V1 coach offers normal due-card practice through the dedicated
   `start_skillpilot_memory_practice` MCP Apps UI resource. The model-visible

@@ -1370,8 +1370,8 @@
     ]
   },
   "schemaVersion": 1,
-  "rulesVersion": "curriculum-quality-v5",
-  "generatedAt": "2026-11-12T23:56:25.939Z",
+  "rulesVersion": "curriculum-quality-v6",
+  "generatedAt": "2026-11-13T06:00:47.090Z",
   "generatedBy": "app/scripts/generateCurriculumQualityStatus.ts",
   "sources": {
     "canonicalRoot": "curricula/DE/Gymnasium/canonical",
@@ -1400,9 +1400,9 @@
       "M7": 5
     },
     "ruleStatus": {
-      "pass": 228,
+      "pass": 235,
       "warn": 18,
-      "fail": 11,
+      "fail": 4,
       "not_configured": 65
     }
   },
@@ -1474,7 +1474,7 @@
       "id": "CQR-104",
       "label": "Route endpoint composition visibility",
       "category": "route",
-      "maturityTarget": "M3",
+      "maturityTarget": "M4",
       "description": "Configured route scopes expose motivation anchors and terminal autonomy goals in relevant learner-facing composition views."
     },
     {
@@ -1495,7 +1495,7 @@
       "id": "CQR-203",
       "label": "Exam release and coverage metadata",
       "category": "assessment",
-      "maturityTarget": "M4",
+      "maturityTarget": "M5",
       "description": "Terminal autonomy examData has release status, covered goals, covered strands, and demand-level metadata."
     },
     {
@@ -11979,14 +11979,19 @@
       "rules": [
         {
           "id": "CQR-001",
-          "status": "fail",
-          "summary": "Invalid current graph for 8fdb83f5-b42a-5b36-ab5d-64edd4b2ab80.",
+          "status": "pass",
+          "summary": "Current graph references, DAGs, atomic requires normal form and transitive minimality pass.",
           "metrics": {
-            "invalidInputs": 1
-          },
-          "details": [
-            "effective requires cycle: 8fdb83f5-b42a-5b36-ab5d-64edd4b2ab80:d7a23bd7-81ee-5c3e-8e92-f5915ab588f2 -> 8fdb83f5-b42a-5b36-ab5d-64edd4b2ab80:d7a23bd7-81ee-5c3e-8e92-f5915ab588f2"
-          ]
+            "goals": 193,
+            "authoredRequires": 403,
+            "effectiveRequires": 403,
+            "crossLandscapeReferences": 1,
+            "minimalityFindings": 0,
+            "atomicNormalFormFindings": 0,
+            "explicitTypeMismatches": 0,
+            "witnessEdges": 0,
+            "invalidInputs": 0
+          }
         },
         {
           "id": "CQR-002",
@@ -18470,41 +18475,19 @@
       "rules": [
         {
           "id": "CQR-001",
-          "status": "fail",
-          "summary": "111 current graph integrity issue(s).",
+          "status": "pass",
+          "summary": "Current graph references, DAGs, atomic requires normal form and transitive minimality pass.",
           "metrics": {
             "goals": 131,
-            "authoredRequires": 124,
-            "effectiveRequires": 192,
+            "authoredRequires": 620,
+            "effectiveRequires": 620,
             "crossLandscapeReferences": 1,
-            "minimalityFindings": 66,
-            "atomicNormalFormFindings": 45,
+            "minimalityFindings": 0,
+            "atomicNormalFormFindings": 0,
             "explicitTypeMismatches": 0,
-            "witnessEdges": 66,
+            "witnessEdges": 0,
             "invalidInputs": 0
-          },
-          "details": [
-            "Redundant c8c84073-46ae-57ec-898a-882d08d7a72f:036dfdad-8b48-5aed-be49-7265d2c3dd9e -> c8c84073-46ae-57ec-898a-882d08d7a72f:8610bd4b-6c16-579e-a741-5f602b3c2ea4; witness c8c84073-46ae-57ec-898a-882d08d7a72f:036dfdad-8b48-5aed-be49-7265d2c3dd9e -> c8c84073-46ae-57ec-898a-882d08d7a72f:8610bd4b-6c16-579e-a741-5f602b3c2ea4; authored origins c8c84073-46ae-57ec-898a-882d08d7a72f:6baf8eae-1e62-56f4-b336-2b401e4360fc -> c8c84073-46ae-57ec-898a-882d08d7a72f:8610bd4b-6c16-579e-a741-5f602b3c2ea4",
-            "Redundant c8c84073-46ae-57ec-898a-882d08d7a72f:08859610-54f6-51ed-b246-7765c9ec0dad -> c8c84073-46ae-57ec-898a-882d08d7a72f:8610bd4b-6c16-579e-a741-5f602b3c2ea4; witness c8c84073-46ae-57ec-898a-882d08d7a72f:08859610-54f6-51ed-b246-7765c9ec0dad -> c8c84073-46ae-57ec-898a-882d08d7a72f:8610bd4b-6c16-579e-a741-5f602b3c2ea4; authored origins c8c84073-46ae-57ec-898a-882d08d7a72f:6baf8eae-1e62-56f4-b336-2b401e4360fc -> c8c84073-46ae-57ec-898a-882d08d7a72f:8610bd4b-6c16-579e-a741-5f602b3c2ea4",
-            "Redundant c8c84073-46ae-57ec-898a-882d08d7a72f:08c13b86-819f-5fa6-a54d-6aed0ebafdd8 -> c8c84073-46ae-57ec-898a-882d08d7a72f:8610bd4b-6c16-579e-a741-5f602b3c2ea4; witness c8c84073-46ae-57ec-898a-882d08d7a72f:08c13b86-819f-5fa6-a54d-6aed0ebafdd8 -> c8c84073-46ae-57ec-898a-882d08d7a72f:8610bd4b-6c16-579e-a741-5f602b3c2ea4; authored origins c8c84073-46ae-57ec-898a-882d08d7a72f:d4a09a6a-501c-5364-bc15-aba8b0ad398c -> c8c84073-46ae-57ec-898a-882d08d7a72f:8610bd4b-6c16-579e-a741-5f602b3c2ea4",
-            "Redundant c8c84073-46ae-57ec-898a-882d08d7a72f:08d644fa-374d-505b-a1ef-d3ad49798b96 -> c8c84073-46ae-57ec-898a-882d08d7a72f:8610bd4b-6c16-579e-a741-5f602b3c2ea4; witness c8c84073-46ae-57ec-898a-882d08d7a72f:08d644fa-374d-505b-a1ef-d3ad49798b96 -> c8c84073-46ae-57ec-898a-882d08d7a72f:8610bd4b-6c16-579e-a741-5f602b3c2ea4; authored origins c8c84073-46ae-57ec-898a-882d08d7a72f:d4a09a6a-501c-5364-bc15-aba8b0ad398c -> c8c84073-46ae-57ec-898a-882d08d7a72f:8610bd4b-6c16-579e-a741-5f602b3c2ea4",
-            "Redundant c8c84073-46ae-57ec-898a-882d08d7a72f:0f7e10fc-a0e4-5d1f-821d-027187339820 -> c8c84073-46ae-57ec-898a-882d08d7a72f:8610bd4b-6c16-579e-a741-5f602b3c2ea4; witness c8c84073-46ae-57ec-898a-882d08d7a72f:0f7e10fc-a0e4-5d1f-821d-027187339820 -> c8c84073-46ae-57ec-898a-882d08d7a72f:8610bd4b-6c16-579e-a741-5f602b3c2ea4; authored origins c8c84073-46ae-57ec-898a-882d08d7a72f:8d4bc24e-8eb1-5167-9bd3-dda9845277c9 -> c8c84073-46ae-57ec-898a-882d08d7a72f:8610bd4b-6c16-579e-a741-5f602b3c2ea4",
-            "Redundant c8c84073-46ae-57ec-898a-882d08d7a72f:102605c7-fcdb-5344-88cb-08b60844ceec -> c8c84073-46ae-57ec-898a-882d08d7a72f:8610bd4b-6c16-579e-a741-5f602b3c2ea4; witness c8c84073-46ae-57ec-898a-882d08d7a72f:102605c7-fcdb-5344-88cb-08b60844ceec -> c8c84073-46ae-57ec-898a-882d08d7a72f:8610bd4b-6c16-579e-a741-5f602b3c2ea4; authored origins c8c84073-46ae-57ec-898a-882d08d7a72f:8d4bc24e-8eb1-5167-9bd3-dda9845277c9 -> c8c84073-46ae-57ec-898a-882d08d7a72f:8610bd4b-6c16-579e-a741-5f602b3c2ea4",
-            "Redundant c8c84073-46ae-57ec-898a-882d08d7a72f:133581b1-511a-5985-b08a-7e81026aa14d -> c8c84073-46ae-57ec-898a-882d08d7a72f:8610bd4b-6c16-579e-a741-5f602b3c2ea4; witness c8c84073-46ae-57ec-898a-882d08d7a72f:133581b1-511a-5985-b08a-7e81026aa14d -> c8c84073-46ae-57ec-898a-882d08d7a72f:8610bd4b-6c16-579e-a741-5f602b3c2ea4; authored origins c8c84073-46ae-57ec-898a-882d08d7a72f:6baf8eae-1e62-56f4-b336-2b401e4360fc -> c8c84073-46ae-57ec-898a-882d08d7a72f:8610bd4b-6c16-579e-a741-5f602b3c2ea4",
-            "Redundant c8c84073-46ae-57ec-898a-882d08d7a72f:1788f132-255f-5248-be84-38d5110f4669 -> c8c84073-46ae-57ec-898a-882d08d7a72f:8610bd4b-6c16-579e-a741-5f602b3c2ea4; witness c8c84073-46ae-57ec-898a-882d08d7a72f:1788f132-255f-5248-be84-38d5110f4669 -> c8c84073-46ae-57ec-898a-882d08d7a72f:8610bd4b-6c16-579e-a741-5f602b3c2ea4; authored origins c8c84073-46ae-57ec-898a-882d08d7a72f:8d4bc24e-8eb1-5167-9bd3-dda9845277c9 -> c8c84073-46ae-57ec-898a-882d08d7a72f:8610bd4b-6c16-579e-a741-5f602b3c2ea4",
-            "Redundant c8c84073-46ae-57ec-898a-882d08d7a72f:19ade9bf-7bac-5f78-84d1-1711f413c9c2 -> c8c84073-46ae-57ec-898a-882d08d7a72f:8610bd4b-6c16-579e-a741-5f602b3c2ea4; witness c8c84073-46ae-57ec-898a-882d08d7a72f:19ade9bf-7bac-5f78-84d1-1711f413c9c2 -> c8c84073-46ae-57ec-898a-882d08d7a72f:8610bd4b-6c16-579e-a741-5f602b3c2ea4; authored origins c8c84073-46ae-57ec-898a-882d08d7a72f:8d4bc24e-8eb1-5167-9bd3-dda9845277c9 -> c8c84073-46ae-57ec-898a-882d08d7a72f:8610bd4b-6c16-579e-a741-5f602b3c2ea4",
-            "Redundant c8c84073-46ae-57ec-898a-882d08d7a72f:1b27593e-892e-5b9c-8703-6b0c704146cd -> c8c84073-46ae-57ec-898a-882d08d7a72f:8610bd4b-6c16-579e-a741-5f602b3c2ea4; witness c8c84073-46ae-57ec-898a-882d08d7a72f:1b27593e-892e-5b9c-8703-6b0c704146cd -> c8c84073-46ae-57ec-898a-882d08d7a72f:8610bd4b-6c16-579e-a741-5f602b3c2ea4; authored origins c8c84073-46ae-57ec-898a-882d08d7a72f:6baf8eae-1e62-56f4-b336-2b401e4360fc -> c8c84073-46ae-57ec-898a-882d08d7a72f:8610bd4b-6c16-579e-a741-5f602b3c2ea4",
-            "Redundant c8c84073-46ae-57ec-898a-882d08d7a72f:1b53cc90-8104-5762-9951-2b6f3d9abe69 -> c8c84073-46ae-57ec-898a-882d08d7a72f:8610bd4b-6c16-579e-a741-5f602b3c2ea4; witness c8c84073-46ae-57ec-898a-882d08d7a72f:1b53cc90-8104-5762-9951-2b6f3d9abe69 -> c8c84073-46ae-57ec-898a-882d08d7a72f:8610bd4b-6c16-579e-a741-5f602b3c2ea4; authored origins c8c84073-46ae-57ec-898a-882d08d7a72f:8d4bc24e-8eb1-5167-9bd3-dda9845277c9 -> c8c84073-46ae-57ec-898a-882d08d7a72f:8610bd4b-6c16-579e-a741-5f602b3c2ea4",
-            "Redundant c8c84073-46ae-57ec-898a-882d08d7a72f:1c4561e8-d340-5eb5-be1d-5e97add380c9 -> c8c84073-46ae-57ec-898a-882d08d7a72f:8610bd4b-6c16-579e-a741-5f602b3c2ea4; witness c8c84073-46ae-57ec-898a-882d08d7a72f:1c4561e8-d340-5eb5-be1d-5e97add380c9 -> c8c84073-46ae-57ec-898a-882d08d7a72f:8610bd4b-6c16-579e-a741-5f602b3c2ea4; authored origins c8c84073-46ae-57ec-898a-882d08d7a72f:6baf8eae-1e62-56f4-b336-2b401e4360fc -> c8c84073-46ae-57ec-898a-882d08d7a72f:8610bd4b-6c16-579e-a741-5f602b3c2ea4",
-            "Redundant c8c84073-46ae-57ec-898a-882d08d7a72f:1f083b4e-8c2f-5d24-a4f8-2dcbcf3d202b -> c8c84073-46ae-57ec-898a-882d08d7a72f:8610bd4b-6c16-579e-a741-5f602b3c2ea4; witness c8c84073-46ae-57ec-898a-882d08d7a72f:1f083b4e-8c2f-5d24-a4f8-2dcbcf3d202b -> c8c84073-46ae-57ec-898a-882d08d7a72f:8610bd4b-6c16-579e-a741-5f602b3c2ea4; authored origins c8c84073-46ae-57ec-898a-882d08d7a72f:1e5be19f-4c39-5696-9709-732c21548c02 -> c8c84073-46ae-57ec-898a-882d08d7a72f:8610bd4b-6c16-579e-a741-5f602b3c2ea4",
-            "Redundant c8c84073-46ae-57ec-898a-882d08d7a72f:1fa315d0-4ec3-58fa-bd5a-bb7ff2d25d7b -> c8c84073-46ae-57ec-898a-882d08d7a72f:8610bd4b-6c16-579e-a741-5f602b3c2ea4; witness c8c84073-46ae-57ec-898a-882d08d7a72f:1fa315d0-4ec3-58fa-bd5a-bb7ff2d25d7b -> c8c84073-46ae-57ec-898a-882d08d7a72f:8610bd4b-6c16-579e-a741-5f602b3c2ea4; authored origins c8c84073-46ae-57ec-898a-882d08d7a72f:8d4bc24e-8eb1-5167-9bd3-dda9845277c9 -> c8c84073-46ae-57ec-898a-882d08d7a72f:8610bd4b-6c16-579e-a741-5f602b3c2ea4",
-            "Redundant c8c84073-46ae-57ec-898a-882d08d7a72f:200e7f32-98a7-57e7-b070-b6f27cb01d83 -> c8c84073-46ae-57ec-898a-882d08d7a72f:8610bd4b-6c16-579e-a741-5f602b3c2ea4; witness c8c84073-46ae-57ec-898a-882d08d7a72f:200e7f32-98a7-57e7-b070-b6f27cb01d83 -> c8c84073-46ae-57ec-898a-882d08d7a72f:8610bd4b-6c16-579e-a741-5f602b3c2ea4; authored origins c8c84073-46ae-57ec-898a-882d08d7a72f:8d4bc24e-8eb1-5167-9bd3-dda9845277c9 -> c8c84073-46ae-57ec-898a-882d08d7a72f:8610bd4b-6c16-579e-a741-5f602b3c2ea4",
-            "Redundant c8c84073-46ae-57ec-898a-882d08d7a72f:208e16fc-416f-59dc-8438-631e611ae90e -> c8c84073-46ae-57ec-898a-882d08d7a72f:8610bd4b-6c16-579e-a741-5f602b3c2ea4; witness c8c84073-46ae-57ec-898a-882d08d7a72f:208e16fc-416f-59dc-8438-631e611ae90e -> c8c84073-46ae-57ec-898a-882d08d7a72f:8610bd4b-6c16-579e-a741-5f602b3c2ea4; authored origins c8c84073-46ae-57ec-898a-882d08d7a72f:dd148c99-e5a8-5e78-9681-7d560cbc0626 -> c8c84073-46ae-57ec-898a-882d08d7a72f:8610bd4b-6c16-579e-a741-5f602b3c2ea4",
-            "Redundant c8c84073-46ae-57ec-898a-882d08d7a72f:23c4bc70-9541-5670-a5c8-e7b3c5486e7d -> c8c84073-46ae-57ec-898a-882d08d7a72f:8610bd4b-6c16-579e-a741-5f602b3c2ea4; witness c8c84073-46ae-57ec-898a-882d08d7a72f:23c4bc70-9541-5670-a5c8-e7b3c5486e7d -> c8c84073-46ae-57ec-898a-882d08d7a72f:8610bd4b-6c16-579e-a741-5f602b3c2ea4; authored origins c8c84073-46ae-57ec-898a-882d08d7a72f:d4a09a6a-501c-5364-bc15-aba8b0ad398c -> c8c84073-46ae-57ec-898a-882d08d7a72f:8610bd4b-6c16-579e-a741-5f602b3c2ea4",
-            "Redundant c8c84073-46ae-57ec-898a-882d08d7a72f:25aad3f8-41a4-5ce8-ace8-8a6ee01a5385 -> c8c84073-46ae-57ec-898a-882d08d7a72f:8610bd4b-6c16-579e-a741-5f602b3c2ea4; witness c8c84073-46ae-57ec-898a-882d08d7a72f:25aad3f8-41a4-5ce8-ace8-8a6ee01a5385 -> c8c84073-46ae-57ec-898a-882d08d7a72f:8610bd4b-6c16-579e-a741-5f602b3c2ea4; authored origins c8c84073-46ae-57ec-898a-882d08d7a72f:1e5be19f-4c39-5696-9709-732c21548c02 -> c8c84073-46ae-57ec-898a-882d08d7a72f:8610bd4b-6c16-579e-a741-5f602b3c2ea4",
-            "Redundant c8c84073-46ae-57ec-898a-882d08d7a72f:27fbd370-121c-5b67-a2e6-ebe4bdb9c4d9 -> c8c84073-46ae-57ec-898a-882d08d7a72f:8610bd4b-6c16-579e-a741-5f602b3c2ea4; witness c8c84073-46ae-57ec-898a-882d08d7a72f:27fbd370-121c-5b67-a2e6-ebe4bdb9c4d9 -> c8c84073-46ae-57ec-898a-882d08d7a72f:8610bd4b-6c16-579e-a741-5f602b3c2ea4; authored origins c8c84073-46ae-57ec-898a-882d08d7a72f:dd148c99-e5a8-5e78-9681-7d560cbc0626 -> c8c84073-46ae-57ec-898a-882d08d7a72f:8610bd4b-6c16-579e-a741-5f602b3c2ea4",
-            "Redundant c8c84073-46ae-57ec-898a-882d08d7a72f:281de054-e835-5e40-a5f1-63ed77e98889 -> c8c84073-46ae-57ec-898a-882d08d7a72f:8610bd4b-6c16-579e-a741-5f602b3c2ea4; witness c8c84073-46ae-57ec-898a-882d08d7a72f:281de054-e835-5e40-a5f1-63ed77e98889 -> c8c84073-46ae-57ec-898a-882d08d7a72f:8610bd4b-6c16-579e-a741-5f602b3c2ea4; authored origins c8c84073-46ae-57ec-898a-882d08d7a72f:dd148c99-e5a8-5e78-9681-7d560cbc0626 -> c8c84073-46ae-57ec-898a-882d08d7a72f:8610bd4b-6c16-579e-a741-5f602b3c2ea4"
-          ]
+          }
         },
         {
           "id": "CQR-002",
@@ -19651,14 +19634,19 @@
       "rules": [
         {
           "id": "CQR-001",
-          "status": "fail",
-          "summary": "Invalid current graph for 96a915cc-4fd6-5dc2-8cee-aaf3ab8c2977.",
+          "status": "pass",
+          "summary": "Current graph references, DAGs, atomic requires normal form and transitive minimality pass.",
           "metrics": {
-            "invalidInputs": 1
-          },
-          "details": [
-            "effective requires cycle: 96a915cc-4fd6-5dc2-8cee-aaf3ab8c2977:81f0501c-890a-5ebd-be54-4ae7698d4d52 -> 96a915cc-4fd6-5dc2-8cee-aaf3ab8c2977:81f0501c-890a-5ebd-be54-4ae7698d4d52"
-          ]
+            "goals": 332,
+            "authoredRequires": 377,
+            "effectiveRequires": 377,
+            "crossLandscapeReferences": 1,
+            "minimalityFindings": 0,
+            "atomicNormalFormFindings": 0,
+            "explicitTypeMismatches": 0,
+            "witnessEdges": 0,
+            "invalidInputs": 0
+          }
         },
         {
           "id": "CQR-002",
@@ -26827,14 +26815,19 @@
       "rules": [
         {
           "id": "CQR-001",
-          "status": "fail",
-          "summary": "Invalid current graph for 70a2cb55-127b-5c6e-b518-4a1c9f4f77a0.",
+          "status": "pass",
+          "summary": "Current graph references, DAGs, atomic requires normal form and transitive minimality pass.",
           "metrics": {
-            "invalidInputs": 1
-          },
-          "details": [
-            "effective requires cycle: 70a2cb55-127b-5c6e-b518-4a1c9f4f77a0:c8acea81-7cc7-5471-ba3d-cedde0e28bc6 -> 70a2cb55-127b-5c6e-b518-4a1c9f4f77a0:c8acea81-7cc7-5471-ba3d-cedde0e28bc6"
-          ]
+            "goals": 199,
+            "authoredRequires": 322,
+            "effectiveRequires": 322,
+            "crossLandscapeReferences": 1,
+            "minimalityFindings": 0,
+            "atomicNormalFormFindings": 0,
+            "explicitTypeMismatches": 0,
+            "witnessEdges": 0,
+            "invalidInputs": 0
+          }
         },
         {
           "id": "CQR-002",
@@ -27544,14 +27537,19 @@
       "rules": [
         {
           "id": "CQR-001",
-          "status": "fail",
-          "summary": "Invalid current graph for a0e13c56-c25f-4742-9272-3a1a603ee52e.",
+          "status": "pass",
+          "summary": "Current graph references, DAGs, atomic requires normal form and transitive minimality pass.",
           "metrics": {
-            "invalidInputs": 1
-          },
-          "details": [
-            "effective requires cycle: 70a2cb55-127b-5c6e-b518-4a1c9f4f77a0:c8acea81-7cc7-5471-ba3d-cedde0e28bc6 -> 70a2cb55-127b-5c6e-b518-4a1c9f4f77a0:c8acea81-7cc7-5471-ba3d-cedde0e28bc6"
-          ]
+            "goals": 6524,
+            "authoredRequires": 11569,
+            "effectiveRequires": 11569,
+            "crossLandscapeReferences": 176,
+            "minimalityFindings": 0,
+            "atomicNormalFormFindings": 0,
+            "explicitTypeMismatches": 0,
+            "witnessEdges": 0,
+            "invalidInputs": 0
+          }
         },
         {
           "id": "CQR-002",
@@ -45174,41 +45172,19 @@
       "rules": [
         {
           "id": "CQR-001",
-          "status": "fail",
-          "summary": "53 current graph integrity issue(s).",
+          "status": "pass",
+          "summary": "Current graph references, DAGs, atomic requires normal form and transitive minimality pass.",
           "metrics": {
             "goals": 77,
-            "authoredRequires": 82,
-            "effectiveRequires": 189,
+            "authoredRequires": 72,
+            "effectiveRequires": 72,
             "crossLandscapeReferences": 1,
-            "minimalityFindings": 10,
-            "atomicNormalFormFindings": 43,
+            "minimalityFindings": 0,
+            "atomicNormalFormFindings": 0,
             "explicitTypeMismatches": 0,
-            "witnessEdges": 18,
+            "witnessEdges": 0,
             "invalidInputs": 0
-          },
-          "details": [
-            "Redundant f620c251-c1e1-41c1-b4e1-b10950b43608:0bec6fd4-4443-5d1a-9e93-72f91c657932 -> f620c251-c1e1-41c1-b4e1-b10950b43608:8ebec5bf-447f-5b4e-944f-6c7410cf15b2; witness f620c251-c1e1-41c1-b4e1-b10950b43608:0bec6fd4-4443-5d1a-9e93-72f91c657932 -> f620c251-c1e1-41c1-b4e1-b10950b43608:c019bfa9-84a4-5e9d-b917-85a9dc183379 -> f620c251-c1e1-41c1-b4e1-b10950b43608:8ebec5bf-447f-5b4e-944f-6c7410cf15b2; authored origins f620c251-c1e1-41c1-b4e1-b10950b43608:0bec6fd4-4443-5d1a-9e93-72f91c657932 -> f620c251-c1e1-41c1-b4e1-b10950b43608:c019bfa9-84a4-5e9d-b917-85a9dc183379; f620c251-c1e1-41c1-b4e1-b10950b43608:c019bfa9-84a4-5e9d-b917-85a9dc183379 -> f620c251-c1e1-41c1-b4e1-b10950b43608:8ebec5bf-447f-5b4e-944f-6c7410cf15b2",
-            "Redundant f620c251-c1e1-41c1-b4e1-b10950b43608:0bec6fd4-4443-5d1a-9e93-72f91c657932 -> f620c251-c1e1-41c1-b4e1-b10950b43608:ae37954a-2035-5a98-b0d7-f7f59c6a6aef; witness f620c251-c1e1-41c1-b4e1-b10950b43608:0bec6fd4-4443-5d1a-9e93-72f91c657932 -> f620c251-c1e1-41c1-b4e1-b10950b43608:8ebec5bf-447f-5b4e-944f-6c7410cf15b2 -> f620c251-c1e1-41c1-b4e1-b10950b43608:ae37954a-2035-5a98-b0d7-f7f59c6a6aef; authored origins f620c251-c1e1-41c1-b4e1-b10950b43608:0bec6fd4-4443-5d1a-9e93-72f91c657932 -> f620c251-c1e1-41c1-b4e1-b10950b43608:8ebec5bf-447f-5b4e-944f-6c7410cf15b2; f620c251-c1e1-41c1-b4e1-b10950b43608:8ebec5bf-447f-5b4e-944f-6c7410cf15b2 -> f620c251-c1e1-41c1-b4e1-b10950b43608:ae37954a-2035-5a98-b0d7-f7f59c6a6aef",
-            "Redundant f620c251-c1e1-41c1-b4e1-b10950b43608:18479156-9314-5047-94fb-f112b846ccf1 -> f620c251-c1e1-41c1-b4e1-b10950b43608:13716bad-4406-581e-8947-a685fb4f02a4; witness f620c251-c1e1-41c1-b4e1-b10950b43608:18479156-9314-5047-94fb-f112b846ccf1 -> f620c251-c1e1-41c1-b4e1-b10950b43608:13716bad-4406-581e-8947-a685fb4f02a4; authored origins f620c251-c1e1-41c1-b4e1-b10950b43608:c2bf22c5-4627-5e07-8e6c-d0dfaed165c0 -> f620c251-c1e1-41c1-b4e1-b10950b43608:13716bad-4406-581e-8947-a685fb4f02a4",
-            "Redundant f620c251-c1e1-41c1-b4e1-b10950b43608:524c2fbe-0657-52c1-abea-d158d3e6078b -> f620c251-c1e1-41c1-b4e1-b10950b43608:8ebec5bf-447f-5b4e-944f-6c7410cf15b2; witness f620c251-c1e1-41c1-b4e1-b10950b43608:524c2fbe-0657-52c1-abea-d158d3e6078b -> f620c251-c1e1-41c1-b4e1-b10950b43608:c019bfa9-84a4-5e9d-b917-85a9dc183379 -> f620c251-c1e1-41c1-b4e1-b10950b43608:8ebec5bf-447f-5b4e-944f-6c7410cf15b2; authored origins f620c251-c1e1-41c1-b4e1-b10950b43608:524c2fbe-0657-52c1-abea-d158d3e6078b -> f620c251-c1e1-41c1-b4e1-b10950b43608:c019bfa9-84a4-5e9d-b917-85a9dc183379; f620c251-c1e1-41c1-b4e1-b10950b43608:c019bfa9-84a4-5e9d-b917-85a9dc183379 -> f620c251-c1e1-41c1-b4e1-b10950b43608:8ebec5bf-447f-5b4e-944f-6c7410cf15b2",
-            "Redundant f620c251-c1e1-41c1-b4e1-b10950b43608:524c2fbe-0657-52c1-abea-d158d3e6078b -> f620c251-c1e1-41c1-b4e1-b10950b43608:ae37954a-2035-5a98-b0d7-f7f59c6a6aef; witness f620c251-c1e1-41c1-b4e1-b10950b43608:524c2fbe-0657-52c1-abea-d158d3e6078b -> f620c251-c1e1-41c1-b4e1-b10950b43608:8ebec5bf-447f-5b4e-944f-6c7410cf15b2 -> f620c251-c1e1-41c1-b4e1-b10950b43608:ae37954a-2035-5a98-b0d7-f7f59c6a6aef; authored origins f620c251-c1e1-41c1-b4e1-b10950b43608:524c2fbe-0657-52c1-abea-d158d3e6078b -> f620c251-c1e1-41c1-b4e1-b10950b43608:8ebec5bf-447f-5b4e-944f-6c7410cf15b2; f620c251-c1e1-41c1-b4e1-b10950b43608:8ebec5bf-447f-5b4e-944f-6c7410cf15b2 -> f620c251-c1e1-41c1-b4e1-b10950b43608:ae37954a-2035-5a98-b0d7-f7f59c6a6aef",
-            "Redundant f620c251-c1e1-41c1-b4e1-b10950b43608:8ebec5bf-447f-5b4e-944f-6c7410cf15b2 -> f620c251-c1e1-41c1-b4e1-b10950b43608:13716bad-4406-581e-8947-a685fb4f02a4; witness f620c251-c1e1-41c1-b4e1-b10950b43608:8ebec5bf-447f-5b4e-944f-6c7410cf15b2 -> f620c251-c1e1-41c1-b4e1-b10950b43608:ae37954a-2035-5a98-b0d7-f7f59c6a6aef -> f620c251-c1e1-41c1-b4e1-b10950b43608:13716bad-4406-581e-8947-a685fb4f02a4; authored origins f620c251-c1e1-41c1-b4e1-b10950b43608:8ebec5bf-447f-5b4e-944f-6c7410cf15b2 -> f620c251-c1e1-41c1-b4e1-b10950b43608:ae37954a-2035-5a98-b0d7-f7f59c6a6aef; f620c251-c1e1-41c1-b4e1-b10950b43608:ae37954a-2035-5a98-b0d7-f7f59c6a6aef -> f620c251-c1e1-41c1-b4e1-b10950b43608:13716bad-4406-581e-8947-a685fb4f02a4",
-            "Redundant f620c251-c1e1-41c1-b4e1-b10950b43608:97c441ea-1ae6-54d9-b9da-de36fd611a89 -> f620c251-c1e1-41c1-b4e1-b10950b43608:13716bad-4406-581e-8947-a685fb4f02a4; witness f620c251-c1e1-41c1-b4e1-b10950b43608:97c441ea-1ae6-54d9-b9da-de36fd611a89 -> f620c251-c1e1-41c1-b4e1-b10950b43608:c019bfa9-84a4-5e9d-b917-85a9dc183379 -> f620c251-c1e1-41c1-b4e1-b10950b43608:13716bad-4406-581e-8947-a685fb4f02a4; authored origins f620c251-c1e1-41c1-b4e1-b10950b43608:97c441ea-1ae6-54d9-b9da-de36fd611a89 -> f620c251-c1e1-41c1-b4e1-b10950b43608:c019bfa9-84a4-5e9d-b917-85a9dc183379; f620c251-c1e1-41c1-b4e1-b10950b43608:c019bfa9-84a4-5e9d-b917-85a9dc183379 -> f620c251-c1e1-41c1-b4e1-b10950b43608:13716bad-4406-581e-8947-a685fb4f02a4",
-            "Redundant f620c251-c1e1-41c1-b4e1-b10950b43608:a51650e4-40a6-572f-821e-839e8cff83c1 -> f620c251-c1e1-41c1-b4e1-b10950b43608:13716bad-4406-581e-8947-a685fb4f02a4; witness f620c251-c1e1-41c1-b4e1-b10950b43608:a51650e4-40a6-572f-821e-839e8cff83c1 -> f620c251-c1e1-41c1-b4e1-b10950b43608:13716bad-4406-581e-8947-a685fb4f02a4; authored origins f620c251-c1e1-41c1-b4e1-b10950b43608:c2bf22c5-4627-5e07-8e6c-d0dfaed165c0 -> f620c251-c1e1-41c1-b4e1-b10950b43608:13716bad-4406-581e-8947-a685fb4f02a4",
-            "Redundant f620c251-c1e1-41c1-b4e1-b10950b43608:ae37954a-2035-5a98-b0d7-f7f59c6a6aef -> f620c251-c1e1-41c1-b4e1-b10950b43608:13716bad-4406-581e-8947-a685fb4f02a4; witness f620c251-c1e1-41c1-b4e1-b10950b43608:ae37954a-2035-5a98-b0d7-f7f59c6a6aef -> f620c251-c1e1-41c1-b4e1-b10950b43608:c2bf22c5-4627-5e07-8e6c-d0dfaed165c0 -> f620c251-c1e1-41c1-b4e1-b10950b43608:13716bad-4406-581e-8947-a685fb4f02a4; authored origins f620c251-c1e1-41c1-b4e1-b10950b43608:ae37954a-2035-5a98-b0d7-f7f59c6a6aef -> f620c251-c1e1-41c1-b4e1-b10950b43608:c2bf22c5-4627-5e07-8e6c-d0dfaed165c0; f620c251-c1e1-41c1-b4e1-b10950b43608:c2bf22c5-4627-5e07-8e6c-d0dfaed165c0 -> f620c251-c1e1-41c1-b4e1-b10950b43608:13716bad-4406-581e-8947-a685fb4f02a4",
-            "Redundant f620c251-c1e1-41c1-b4e1-b10950b43608:c019bfa9-84a4-5e9d-b917-85a9dc183379 -> f620c251-c1e1-41c1-b4e1-b10950b43608:13716bad-4406-581e-8947-a685fb4f02a4; witness f620c251-c1e1-41c1-b4e1-b10950b43608:c019bfa9-84a4-5e9d-b917-85a9dc183379 -> f620c251-c1e1-41c1-b4e1-b10950b43608:8ebec5bf-447f-5b4e-944f-6c7410cf15b2 -> f620c251-c1e1-41c1-b4e1-b10950b43608:13716bad-4406-581e-8947-a685fb4f02a4; authored origins f620c251-c1e1-41c1-b4e1-b10950b43608:c019bfa9-84a4-5e9d-b917-85a9dc183379 -> f620c251-c1e1-41c1-b4e1-b10950b43608:8ebec5bf-447f-5b4e-944f-6c7410cf15b2; f620c251-c1e1-41c1-b4e1-b10950b43608:8ebec5bf-447f-5b4e-944f-6c7410cf15b2 -> f620c251-c1e1-41c1-b4e1-b10950b43608:13716bad-4406-581e-8947-a685fb4f02a4",
-            "Non-atomic requires f620c251-c1e1-41c1-b4e1-b10950b43608:0bec6fd4-4443-5d1a-9e93-72f91c657932 -> f620c251-c1e1-41c1-b4e1-b10950b43608:8ebec5bf-447f-5b4e-944f-6c7410cf15b2; source=cluster; prerequisite=cluster",
-            "Non-atomic requires f620c251-c1e1-41c1-b4e1-b10950b43608:0bec6fd4-4443-5d1a-9e93-72f91c657932 -> f620c251-c1e1-41c1-b4e1-b10950b43608:ae37954a-2035-5a98-b0d7-f7f59c6a6aef; source=cluster; prerequisite=cluster",
-            "Non-atomic requires f620c251-c1e1-41c1-b4e1-b10950b43608:0bec6fd4-4443-5d1a-9e93-72f91c657932 -> f620c251-c1e1-41c1-b4e1-b10950b43608:c019bfa9-84a4-5e9d-b917-85a9dc183379; source=cluster; prerequisite=cluster",
-            "Non-atomic requires f620c251-c1e1-41c1-b4e1-b10950b43608:214c911a-e7a0-5465-a911-3c3a455d794e -> f620c251-c1e1-41c1-b4e1-b10950b43608:81277888-2254-539b-b103-b530da706910; source=atomic; prerequisite=cluster",
-            "Non-atomic requires f620c251-c1e1-41c1-b4e1-b10950b43608:318e3d57-1fd2-5fb9-80eb-b9b6c10efb86 -> f620c251-c1e1-41c1-b4e1-b10950b43608:a2685957-b61d-5900-ba53-7b26752acf9f; source=atomic; prerequisite=cluster",
-            "Non-atomic requires f620c251-c1e1-41c1-b4e1-b10950b43608:318e3d57-1fd2-5fb9-80eb-b9b6c10efb86 -> f620c251-c1e1-41c1-b4e1-b10950b43608:e351e611-fda8-586e-b1fe-f809a3666914; source=atomic; prerequisite=cluster",
-            "Non-atomic requires f620c251-c1e1-41c1-b4e1-b10950b43608:3207f270-031c-564f-aadd-726358f8199f -> f620c251-c1e1-41c1-b4e1-b10950b43608:e351e611-fda8-586e-b1fe-f809a3666914; source=atomic; prerequisite=cluster",
-            "Non-atomic requires f620c251-c1e1-41c1-b4e1-b10950b43608:42d0f919-76d6-52fb-b019-c2629c5d110e -> f620c251-c1e1-41c1-b4e1-b10950b43608:c2bf22c5-4627-5e07-8e6c-d0dfaed165c0; source=cluster; prerequisite=cluster",
-            "Non-atomic requires f620c251-c1e1-41c1-b4e1-b10950b43608:432f886c-0ef1-50c6-828a-7d40f9241f32 -> f620c251-c1e1-41c1-b4e1-b10950b43608:382e9e29-e00d-5648-88ae-44226e99e4e4; source=atomic; prerequisite=cluster",
-            "Non-atomic requires f620c251-c1e1-41c1-b4e1-b10950b43608:432f886c-0ef1-50c6-828a-7d40f9241f32 -> f620c251-c1e1-41c1-b4e1-b10950b43608:5e4a41a8-25c7-5005-8374-70490da2af48; source=atomic; prerequisite=cluster"
-          ]
+          }
         },
         {
           "id": "CQR-002",
@@ -57571,41 +57547,19 @@
       "rules": [
         {
           "id": "CQR-001",
-          "status": "fail",
-          "summary": "93 current graph integrity issue(s).",
+          "status": "pass",
+          "summary": "Current graph references, DAGs, atomic requires normal form and transitive minimality pass.",
           "metrics": {
             "goals": 84,
-            "authoredRequires": 106,
-            "effectiveRequires": 227,
+            "authoredRequires": 76,
+            "effectiveRequires": 76,
             "crossLandscapeReferences": 1,
-            "minimalityFindings": 32,
-            "atomicNormalFormFindings": 61,
+            "minimalityFindings": 0,
+            "atomicNormalFormFindings": 0,
             "explicitTypeMismatches": 0,
-            "witnessEdges": 40,
+            "witnessEdges": 0,
             "invalidInputs": 0
-          },
-          "details": [
-            "Redundant 90eedebf-9ea8-5247-85dd-31c147f907c3:004a171a-3623-53ad-976a-9e1eae0a6653 -> 90eedebf-9ea8-5247-85dd-31c147f907c3:4cd6b148-699a-53c3-9197-ee998e618495; witness 90eedebf-9ea8-5247-85dd-31c147f907c3:004a171a-3623-53ad-976a-9e1eae0a6653 -> 90eedebf-9ea8-5247-85dd-31c147f907c3:fe50b414-40d9-5885-805e-a428cc3e7f45 -> 90eedebf-9ea8-5247-85dd-31c147f907c3:2bcfc5be-aa3f-569d-9be8-e7d053f0d6e4 -> 90eedebf-9ea8-5247-85dd-31c147f907c3:c26d9d5f-99e0-55c4-9901-d14dd791c57d -> 90eedebf-9ea8-5247-85dd-31c147f907c3:4cd6b148-699a-53c3-9197-ee998e618495; authored origins 90eedebf-9ea8-5247-85dd-31c147f907c3:004a171a-3623-53ad-976a-9e1eae0a6653 -> 90eedebf-9ea8-5247-85dd-31c147f907c3:fe50b414-40d9-5885-805e-a428cc3e7f45; 90eedebf-9ea8-5247-85dd-31c147f907c3:fe50b414-40d9-5885-805e-a428cc3e7f45 -> 90eedebf-9ea8-5247-85dd-31c147f907c3:2bcfc5be-aa3f-569d-9be8-e7d053f0d6e4; 90eedebf-9ea8-5247-85dd-31c147f907c3:2bcfc5be-aa3f-569d-9be8-e7d053f0d6e4 -> 90eedebf-9ea8-5247-85dd-31c147f907c3:c26d9d5f-99e0-55c4-9901-d14dd791c57d; 90eedebf-9ea8-5247-85dd-31c147f907c3:c26d9d5f-99e0-55c4-9901-d14dd791c57d -> 90eedebf-9ea8-5247-85dd-31c147f907c3:4cd6b148-699a-53c3-9197-ee998e618495",
-            "Redundant 90eedebf-9ea8-5247-85dd-31c147f907c3:0e8ff04f-abf3-5b4e-8173-dce686db5b9e -> 90eedebf-9ea8-5247-85dd-31c147f907c3:3ee365a5-7f9d-5529-bfea-d5be510ba90b; witness 90eedebf-9ea8-5247-85dd-31c147f907c3:0e8ff04f-abf3-5b4e-8173-dce686db5b9e -> 90eedebf-9ea8-5247-85dd-31c147f907c3:3ee365a5-7f9d-5529-bfea-d5be510ba90b; authored origins 90eedebf-9ea8-5247-85dd-31c147f907c3:3f4499a9-509d-57ec-9259-1aa549eb6d3f -> 90eedebf-9ea8-5247-85dd-31c147f907c3:3ee365a5-7f9d-5529-bfea-d5be510ba90b",
-            "Redundant 90eedebf-9ea8-5247-85dd-31c147f907c3:125ca537-beb4-50b7-acfc-2eac523d0aec -> 90eedebf-9ea8-5247-85dd-31c147f907c3:3ee365a5-7f9d-5529-bfea-d5be510ba90b; witness 90eedebf-9ea8-5247-85dd-31c147f907c3:125ca537-beb4-50b7-acfc-2eac523d0aec -> 90eedebf-9ea8-5247-85dd-31c147f907c3:3ee365a5-7f9d-5529-bfea-d5be510ba90b; authored origins 90eedebf-9ea8-5247-85dd-31c147f907c3:3f4499a9-509d-57ec-9259-1aa549eb6d3f -> 90eedebf-9ea8-5247-85dd-31c147f907c3:3ee365a5-7f9d-5529-bfea-d5be510ba90b",
-            "Redundant 90eedebf-9ea8-5247-85dd-31c147f907c3:125ca537-beb4-50b7-acfc-2eac523d0aec -> 90eedebf-9ea8-5247-85dd-31c147f907c3:e5d50263-2eea-57e7-baf5-4da6aeeab31c; witness 90eedebf-9ea8-5247-85dd-31c147f907c3:125ca537-beb4-50b7-acfc-2eac523d0aec -> 90eedebf-9ea8-5247-85dd-31c147f907c3:e5d50263-2eea-57e7-baf5-4da6aeeab31c; authored origins 90eedebf-9ea8-5247-85dd-31c147f907c3:3f4499a9-509d-57ec-9259-1aa549eb6d3f -> 90eedebf-9ea8-5247-85dd-31c147f907c3:e5d50263-2eea-57e7-baf5-4da6aeeab31c",
-            "Redundant 90eedebf-9ea8-5247-85dd-31c147f907c3:176aae8e-1dc5-542e-8d4e-f34867c0f8d0 -> 90eedebf-9ea8-5247-85dd-31c147f907c3:45767ca3-092b-5a6e-938d-72d6a08792dd; witness 90eedebf-9ea8-5247-85dd-31c147f907c3:176aae8e-1dc5-542e-8d4e-f34867c0f8d0 -> 90eedebf-9ea8-5247-85dd-31c147f907c3:f4bf14a4-099c-5baf-b1b2-75b5f5a8b8d0 -> 90eedebf-9ea8-5247-85dd-31c147f907c3:45767ca3-092b-5a6e-938d-72d6a08792dd; authored origins 90eedebf-9ea8-5247-85dd-31c147f907c3:176aae8e-1dc5-542e-8d4e-f34867c0f8d0 -> 90eedebf-9ea8-5247-85dd-31c147f907c3:f4bf14a4-099c-5baf-b1b2-75b5f5a8b8d0; 90eedebf-9ea8-5247-85dd-31c147f907c3:f4bf14a4-099c-5baf-b1b2-75b5f5a8b8d0 -> 90eedebf-9ea8-5247-85dd-31c147f907c3:45767ca3-092b-5a6e-938d-72d6a08792dd",
-            "Redundant 90eedebf-9ea8-5247-85dd-31c147f907c3:2e40b905-27db-5976-bf4f-98c450cef0ac -> 90eedebf-9ea8-5247-85dd-31c147f907c3:45767ca3-092b-5a6e-938d-72d6a08792dd; witness 90eedebf-9ea8-5247-85dd-31c147f907c3:2e40b905-27db-5976-bf4f-98c450cef0ac -> 90eedebf-9ea8-5247-85dd-31c147f907c3:45767ca3-092b-5a6e-938d-72d6a08792dd; authored origins 90eedebf-9ea8-5247-85dd-31c147f907c3:f4bf14a4-099c-5baf-b1b2-75b5f5a8b8d0 -> 90eedebf-9ea8-5247-85dd-31c147f907c3:45767ca3-092b-5a6e-938d-72d6a08792dd",
-            "Redundant 90eedebf-9ea8-5247-85dd-31c147f907c3:31fc4aa9-6aaa-5728-9f93-4056e7524e8c -> 90eedebf-9ea8-5247-85dd-31c147f907c3:45767ca3-092b-5a6e-938d-72d6a08792dd; witness 90eedebf-9ea8-5247-85dd-31c147f907c3:31fc4aa9-6aaa-5728-9f93-4056e7524e8c -> 90eedebf-9ea8-5247-85dd-31c147f907c3:45767ca3-092b-5a6e-938d-72d6a08792dd; authored origins 90eedebf-9ea8-5247-85dd-31c147f907c3:f4bf14a4-099c-5baf-b1b2-75b5f5a8b8d0 -> 90eedebf-9ea8-5247-85dd-31c147f907c3:45767ca3-092b-5a6e-938d-72d6a08792dd",
-            "Redundant 90eedebf-9ea8-5247-85dd-31c147f907c3:514d7115-6714-56da-ae77-79071045815e -> 90eedebf-9ea8-5247-85dd-31c147f907c3:45767ca3-092b-5a6e-938d-72d6a08792dd; witness 90eedebf-9ea8-5247-85dd-31c147f907c3:514d7115-6714-56da-ae77-79071045815e -> 90eedebf-9ea8-5247-85dd-31c147f907c3:176aae8e-1dc5-542e-8d4e-f34867c0f8d0 -> 90eedebf-9ea8-5247-85dd-31c147f907c3:45767ca3-092b-5a6e-938d-72d6a08792dd; authored origins 90eedebf-9ea8-5247-85dd-31c147f907c3:514d7115-6714-56da-ae77-79071045815e -> 90eedebf-9ea8-5247-85dd-31c147f907c3:176aae8e-1dc5-542e-8d4e-f34867c0f8d0; 90eedebf-9ea8-5247-85dd-31c147f907c3:176aae8e-1dc5-542e-8d4e-f34867c0f8d0 -> 90eedebf-9ea8-5247-85dd-31c147f907c3:45767ca3-092b-5a6e-938d-72d6a08792dd",
-            "Redundant 90eedebf-9ea8-5247-85dd-31c147f907c3:53d40804-4104-58b0-b21e-28e0ef5a6e80 -> 90eedebf-9ea8-5247-85dd-31c147f907c3:45767ca3-092b-5a6e-938d-72d6a08792dd; witness 90eedebf-9ea8-5247-85dd-31c147f907c3:53d40804-4104-58b0-b21e-28e0ef5a6e80 -> 90eedebf-9ea8-5247-85dd-31c147f907c3:514d7115-6714-56da-ae77-79071045815e -> 90eedebf-9ea8-5247-85dd-31c147f907c3:45767ca3-092b-5a6e-938d-72d6a08792dd; authored origins 90eedebf-9ea8-5247-85dd-31c147f907c3:53d40804-4104-58b0-b21e-28e0ef5a6e80 -> 90eedebf-9ea8-5247-85dd-31c147f907c3:514d7115-6714-56da-ae77-79071045815e; 90eedebf-9ea8-5247-85dd-31c147f907c3:514d7115-6714-56da-ae77-79071045815e -> 90eedebf-9ea8-5247-85dd-31c147f907c3:45767ca3-092b-5a6e-938d-72d6a08792dd",
-            "Redundant 90eedebf-9ea8-5247-85dd-31c147f907c3:5e97903d-ca5b-5ec5-a3ac-9ab9cf569d9c -> 90eedebf-9ea8-5247-85dd-31c147f907c3:23f67e03-2207-526a-a002-74660e140980; witness 90eedebf-9ea8-5247-85dd-31c147f907c3:5e97903d-ca5b-5ec5-a3ac-9ab9cf569d9c -> 90eedebf-9ea8-5247-85dd-31c147f907c3:23f67e03-2207-526a-a002-74660e140980; authored origins 90eedebf-9ea8-5247-85dd-31c147f907c3:91343083-266d-592e-8dbe-36514df4716c -> 90eedebf-9ea8-5247-85dd-31c147f907c3:23f67e03-2207-526a-a002-74660e140980",
-            "Redundant 90eedebf-9ea8-5247-85dd-31c147f907c3:5e97903d-ca5b-5ec5-a3ac-9ab9cf569d9c -> 90eedebf-9ea8-5247-85dd-31c147f907c3:eeb4233b-64b6-5eac-96bc-0000cf58234f; witness 90eedebf-9ea8-5247-85dd-31c147f907c3:5e97903d-ca5b-5ec5-a3ac-9ab9cf569d9c -> 90eedebf-9ea8-5247-85dd-31c147f907c3:eeb4233b-64b6-5eac-96bc-0000cf58234f; authored origins 90eedebf-9ea8-5247-85dd-31c147f907c3:91343083-266d-592e-8dbe-36514df4716c -> 90eedebf-9ea8-5247-85dd-31c147f907c3:eeb4233b-64b6-5eac-96bc-0000cf58234f",
-            "Redundant 90eedebf-9ea8-5247-85dd-31c147f907c3:6302d0ba-18d6-5f14-aaf9-4bc6d311b957 -> 90eedebf-9ea8-5247-85dd-31c147f907c3:3ee365a5-7f9d-5529-bfea-d5be510ba90b; witness 90eedebf-9ea8-5247-85dd-31c147f907c3:6302d0ba-18d6-5f14-aaf9-4bc6d311b957 -> 90eedebf-9ea8-5247-85dd-31c147f907c3:3ee365a5-7f9d-5529-bfea-d5be510ba90b; authored origins 90eedebf-9ea8-5247-85dd-31c147f907c3:43eaf6d8-2f3f-5143-bb2e-e412683c4720 -> 90eedebf-9ea8-5247-85dd-31c147f907c3:3ee365a5-7f9d-5529-bfea-d5be510ba90b",
-            "Redundant 90eedebf-9ea8-5247-85dd-31c147f907c3:6a6366f6-fe87-5f3c-9d00-cd675a53ab5d -> 90eedebf-9ea8-5247-85dd-31c147f907c3:412c5999-7d47-54e9-8e16-06c8a3ca5645; witness 90eedebf-9ea8-5247-85dd-31c147f907c3:6a6366f6-fe87-5f3c-9d00-cd675a53ab5d -> 90eedebf-9ea8-5247-85dd-31c147f907c3:412c5999-7d47-54e9-8e16-06c8a3ca5645; authored origins 90eedebf-9ea8-5247-85dd-31c147f907c3:d6d10861-d4ca-57b1-825f-231da54a1686 -> 90eedebf-9ea8-5247-85dd-31c147f907c3:412c5999-7d47-54e9-8e16-06c8a3ca5645",
-            "Redundant 90eedebf-9ea8-5247-85dd-31c147f907c3:6a6366f6-fe87-5f3c-9d00-cd675a53ab5d -> 90eedebf-9ea8-5247-85dd-31c147f907c3:f4d72fa2-abf9-56c7-a550-4b7396f53b6e; witness 90eedebf-9ea8-5247-85dd-31c147f907c3:6a6366f6-fe87-5f3c-9d00-cd675a53ab5d -> 90eedebf-9ea8-5247-85dd-31c147f907c3:f4d72fa2-abf9-56c7-a550-4b7396f53b6e; authored origins 90eedebf-9ea8-5247-85dd-31c147f907c3:d6d10861-d4ca-57b1-825f-231da54a1686 -> 90eedebf-9ea8-5247-85dd-31c147f907c3:f4d72fa2-abf9-56c7-a550-4b7396f53b6e",
-            "Redundant 90eedebf-9ea8-5247-85dd-31c147f907c3:6dc4e1a5-9088-5ef7-a933-48ae0615358d -> 90eedebf-9ea8-5247-85dd-31c147f907c3:3ee365a5-7f9d-5529-bfea-d5be510ba90b; witness 90eedebf-9ea8-5247-85dd-31c147f907c3:6dc4e1a5-9088-5ef7-a933-48ae0615358d -> 90eedebf-9ea8-5247-85dd-31c147f907c3:3ee365a5-7f9d-5529-bfea-d5be510ba90b; authored origins 90eedebf-9ea8-5247-85dd-31c147f907c3:0e465ba3-2ca5-5a6a-81e9-a28dcff47095 -> 90eedebf-9ea8-5247-85dd-31c147f907c3:3ee365a5-7f9d-5529-bfea-d5be510ba90b",
-            "Redundant 90eedebf-9ea8-5247-85dd-31c147f907c3:6dc4e1a5-9088-5ef7-a933-48ae0615358d -> 90eedebf-9ea8-5247-85dd-31c147f907c3:56477bf5-4cd3-5ce4-b4e7-1e7ff8115714; witness 90eedebf-9ea8-5247-85dd-31c147f907c3:6dc4e1a5-9088-5ef7-a933-48ae0615358d -> 90eedebf-9ea8-5247-85dd-31c147f907c3:56477bf5-4cd3-5ce4-b4e7-1e7ff8115714; authored origins 90eedebf-9ea8-5247-85dd-31c147f907c3:0e465ba3-2ca5-5a6a-81e9-a28dcff47095 -> 90eedebf-9ea8-5247-85dd-31c147f907c3:56477bf5-4cd3-5ce4-b4e7-1e7ff8115714",
-            "Redundant 90eedebf-9ea8-5247-85dd-31c147f907c3:713c9be6-7042-560b-be13-ada9d736d7b1 -> 90eedebf-9ea8-5247-85dd-31c147f907c3:23f67e03-2207-526a-a002-74660e140980; witness 90eedebf-9ea8-5247-85dd-31c147f907c3:713c9be6-7042-560b-be13-ada9d736d7b1 -> 90eedebf-9ea8-5247-85dd-31c147f907c3:23f67e03-2207-526a-a002-74660e140980; authored origins 90eedebf-9ea8-5247-85dd-31c147f907c3:91343083-266d-592e-8dbe-36514df4716c -> 90eedebf-9ea8-5247-85dd-31c147f907c3:23f67e03-2207-526a-a002-74660e140980",
-            "Redundant 90eedebf-9ea8-5247-85dd-31c147f907c3:713c9be6-7042-560b-be13-ada9d736d7b1 -> 90eedebf-9ea8-5247-85dd-31c147f907c3:eeb4233b-64b6-5eac-96bc-0000cf58234f; witness 90eedebf-9ea8-5247-85dd-31c147f907c3:713c9be6-7042-560b-be13-ada9d736d7b1 -> 90eedebf-9ea8-5247-85dd-31c147f907c3:eeb4233b-64b6-5eac-96bc-0000cf58234f; authored origins 90eedebf-9ea8-5247-85dd-31c147f907c3:91343083-266d-592e-8dbe-36514df4716c -> 90eedebf-9ea8-5247-85dd-31c147f907c3:eeb4233b-64b6-5eac-96bc-0000cf58234f",
-            "Redundant 90eedebf-9ea8-5247-85dd-31c147f907c3:79f03790-2a14-5a5a-845b-23d6264a9f47 -> 90eedebf-9ea8-5247-85dd-31c147f907c3:3ee365a5-7f9d-5529-bfea-d5be510ba90b; witness 90eedebf-9ea8-5247-85dd-31c147f907c3:79f03790-2a14-5a5a-845b-23d6264a9f47 -> 90eedebf-9ea8-5247-85dd-31c147f907c3:3ee365a5-7f9d-5529-bfea-d5be510ba90b; authored origins 90eedebf-9ea8-5247-85dd-31c147f907c3:3f4499a9-509d-57ec-9259-1aa549eb6d3f -> 90eedebf-9ea8-5247-85dd-31c147f907c3:3ee365a5-7f9d-5529-bfea-d5be510ba90b",
-            "Redundant 90eedebf-9ea8-5247-85dd-31c147f907c3:79f03790-2a14-5a5a-845b-23d6264a9f47 -> 90eedebf-9ea8-5247-85dd-31c147f907c3:e5d50263-2eea-57e7-baf5-4da6aeeab31c; witness 90eedebf-9ea8-5247-85dd-31c147f907c3:79f03790-2a14-5a5a-845b-23d6264a9f47 -> 90eedebf-9ea8-5247-85dd-31c147f907c3:e5d50263-2eea-57e7-baf5-4da6aeeab31c; authored origins 90eedebf-9ea8-5247-85dd-31c147f907c3:3f4499a9-509d-57ec-9259-1aa549eb6d3f -> 90eedebf-9ea8-5247-85dd-31c147f907c3:e5d50263-2eea-57e7-baf5-4da6aeeab31c"
-          ]
+          }
         },
         {
           "id": "CQR-002",

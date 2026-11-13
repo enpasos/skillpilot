@@ -1,4 +1,4 @@
-import { existsSync, readdirSync, readFileSync } from 'node:fs'
+import { existsSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import type { SkillLandscape } from '../src/landscapeTypes'
 import { convertLearningGoal, type UiGoal } from '../src/goalTypes'
@@ -10,6 +10,9 @@ import {
 } from './lib/hardLearningRouteValidation'
 import { validateOrientationOutlooks } from './lib/orientationOutlookValidation'
 import { findExamMarkdownTableIssues } from './lib/examMarkdownValidation'
+import { routeProfiles } from './generateCurriculumQualityStatus'
+import { evaluateDirectAtomicRouteCoverage } from './lib/directAtomicRouteCoverage'
+import { loadGraphValidationLandscapes } from './lib/graphValidationInventory'
 
 type Issue = { level: 'error' | 'warn'; message: string }
 
@@ -58,16 +61,6 @@ const allowedLeitideen = new Set([
 ])
 const kompetenzPattern = /^(PK[0-9]+(_[A-ZÄÖÜ]+)?|P[1-5](\.[0-9]+)?|K(1[0-4]|[1-9])(\.[0-9]+)?|E(1[0-7]|[1-9])(\.[0-9]+)?|B(1[0-2]|[1-9])(\.[0-9]+)?)$/
 
-const PHYSICS_LANDSCAPE_ID = '24f2ca0f-b94a-444e-bb70-677cb6f85c02'
-const PHYSICS_ENERGY_FROM_NEWTON_LK_GOAL_ID = 'b36bb565-f304-47c4-b44e-012dd9ff7a1a'
-const PHYSICS_ENERGY_CLUSTER_GOAL_ID = 'fa204429-674f-466d-b049-a6de19a50579'
-const PHYSICS_NEWTON_INERTIAL_CLUSTER_GOAL_ID = 'ff07337f-24bd-4148-8fa7-7a750d7ae5f8'
-const PHYSICS_NEWTON_SECOND_LAW_GOAL_ID = 'be89ee6a-d11d-4970-8c39-bb0c84edac56'
-const PHYSICS_INERTIAL_SYSTEMS_GOAL_ID = '2808ec13-5b8b-4fb9-9b1a-7792146995b7'
-const PHYSICS_POTENTIAL_ENERGY_AND_POTENTIAL_GOAL_ID = '99bbf33e-74f5-4f33-98e2-e4e6661d8648'
-
-const MATH_LANDSCAPE_ID = '2796fc7b-ba9d-446f-8f26-711dd6d8a9a3'
-const MATH_DIFFERENTIATION_GOAL_ID = 'e2b6b4d1-02db-4a27-948e-ecfbdb44dab3'
 const CANONICAL_GYM_MATH_LANDSCAPE_ID = '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced'
 const CANONICAL_GYM_MATH_SEK1_MOTIVATION_GOAL_ID = '65365dce-f33f-49d8-9516-42f75883aa86'
 const CANONICAL_GYM_MATH_SEK1_EXAM_FOLDER_IDS = [
@@ -106,45 +99,16 @@ const HARD_ROUTE_SEMANTIC_KINDS = new Set<HardRouteSemanticKind>([
 const RULE_REQUIRES_ANCESTOR = 'GVR-001'
 const RULE_PHASE_MONOTONIC = 'GVR-002'
 const RULE_REQUIRES_DIRECT_CONTAINER = 'GVR-003'
-const RULE_FIRST_ATOMIC_IS_WARUM = 'GVR-004'
-const RULE_ATOMIC_TRANSITIVE_TO_WARUM = 'GVR-005'
-const RULE_REQUIRES_DIRECT_CHILD = 'GVR-006'
 const RULE_MIT_ATOMIC_SOURCE_LINKS = 'GVR-007'
 const RULE_NO_LEGACY_LINK_FIELDS = 'GVR-008'
 const RULE_EXPLICIT_TYPE_CONSISTENCY = 'GVR-009'
 const RULE_SHORTKEY_UNIQUE_WITHIN_LANDSCAPE = 'GVR-010'
 const RULE_SCOPED_TRANSITIVE_TO_MOTIVATION = 'GVR-011'
 const RULE_SCOPED_FULL_ROUTE_COVERAGE = 'GVR-012'
-const RULE_SCOPED_ATOMIC_DIRECT_REQUIRES_ONLY = 'GVR-013'
 const RULE_ORIENTATION_MOTIVATION_STRUCTURE = 'GVR-014'
 const RULE_ORIENTATION_OUTLOOK_INTEGRITY = 'GVR-015'
 const RULE_EXAM_MARKDOWN_TABLES = 'GVR-016'
-const HESSEN_GYM_OVERVIEW_LANDSCAPE_ID = 'bbbf39f3-4a5b-46cf-9edd-48f2c54ae0da'
-const motivationRuleLandscapeIds = new Set<string>([
-  '3e56aa75-c76c-4de5-883b-0aac98297846', // DE_HES_S_GYM_2_BIOLOGIE
-  '2f391ba2-ba1e-40e4-a8d2-dff049516c13', // DE_HES_S_GYM_2_CHEMIE
-  '7651cbe2-5fb8-464d-b0c4-3e830cda41dd', // DE_HES_S_GYM_2_CHINESISCH
-  'f1ba2118-853f-4aa0-bef5-4f749bc621ed', // DE_HES_S_GYM_2_DEUTSCH
-  'bc2124fa-2974-46cc-85e7-2392e61250e1', // DE_HES_S_GYM_2_ENGLISCH
-  '30acd190-609c-4109-8ee7-06fc5594af19', // DE_HES_S_GYM_2_FRANZOESISCH
-  'bdc89685-73d3-446c-af5a-eaf642c07463', // DE_HES_S_GYM_2_GESCHICHTE
-  'c7209caa-18e5-4dd8-b68f-dd86e228d045', // DE_HES_S_GYM_2_GRIECHISCH
-  'c1a02ddd-736d-4975-920b-18b03aff147f', // DE_HES_S_GYM_2_INFORMATIK
-  'fe28bda8-03f3-4c4a-8286-7fcfce4eeac1', // DE_HES_S_GYM_2_LATEIN
-  MATH_LANDSCAPE_ID, // DE_HES_S_GYM_2_MATHEMATIK
-  'a8c23058-6998-49f2-9f3b-a85e951d5ab0', // DE_HES_S_GYM_2_MUSIK
-  PHYSICS_LANDSCAPE_ID, // DE_HES_S_GYM_2_PHYSIK
-  '1d0e9f8f-0087-49e4-8ea2-976e5a89b165', // DE_HES_S_GYM_2_POLITIKWIRTSCHAFT
-  '936efc61-a4d5-49fd-8694-085d1347db80', // DE_HES_S_GYM_2_SPANISCH
-  'a334a745-1d67-4e1d-86a5-dadc04f144d2', // DE_HES_S_GYM_2_WIRTSCHAFT
-])
-const noDirectChildRequireRuleLandscapeIds = new Set<string>([
-  ...motivationRuleLandscapeIds,
-  HESSEN_GYM_OVERVIEW_LANDSCAPE_ID, // DE_HES_S_GYM_2_OVERVIEW
-])
-// Default is strict. Set VALIDATE_GRAPH_STRICT_RULES=0 for temporary warn-only rollout mode.
-const strictGraphRules = process.env.VALIDATE_GRAPH_STRICT_RULES !== '0'
-const graphRuleIssueLevel: Issue['level'] = strictGraphRules ? 'error' : 'warn'
+const graphRuleIssueLevel = 'error' as const
 
 interface ParsedLandscape {
   file: string
@@ -152,6 +116,7 @@ interface ParsedLandscape {
   title: string
   frameworkId?: string
   goals: UiGoal[]
+  source: SkillLandscape
 }
 
 interface ScopedMotivationConnectivityProfile {
@@ -174,38 +139,12 @@ interface SemanticKindLedger {
   }>
 }
 
-interface ScopedAtomicDirectRequiresOnlyProfile {
-  landscapeId: string
-  goalSelector: (goal: UiGoal) => boolean
-  scopeLabel: string
-}
-
 const curriculaDir = join(process.cwd(), '../curricula')
 const curriculumManifestPath = join(curriculaDir, 'curriculum_manifest.json')
 const compatibilityArchiveRegistryPath = join(
   curriculaDir,
   'DE/Gymnasium/archive/compatibility-landscape-registry.json',
 )
-
-function getAllJsonFiles(dir: string, fileList: string[] = []): string[] {
-  const files = readdirSync(dir, { withFileTypes: true })
-  files.forEach((file) => {
-    if (file.isDirectory()) {
-      // QA packages contain immutable historical full-landscape snapshots.
-      // Validate live curriculum files here; review candidates have their own
-      // targeted checks and must not become a second copy of a live graph.
-      if (file.name === 'quality') return
-      getAllJsonFiles(join(dir, file.name), fileList)
-    } else {
-      if (file.name.endsWith('.json')) {
-        fileList.push(join(dir, file.name))
-      }
-    }
-  })
-  return fileList
-}
-
-const landscapeFiles = getAllJsonFiles(curriculaDir)
 
 const issues: Issue[] = []
 const parsedLandscapes: ParsedLandscape[] = []
@@ -255,41 +194,18 @@ try {
   })
 }
 
-for (const file of landscapeFiles) {
-  try {
-    const raw = readFileSync(file, 'utf8')
-    const json = JSON.parse(raw) as SkillLandscape
-    const landscapeId = json.landscapeId ?? (json as { id?: string }).id
-    if (!landscapeId || !Array.isArray(json.goals)) {
-      continue
-    }
-    const goals = json.goals.map((goal) => convertLearningGoal(goal))
-    const entry = {
-      file,
-      landscapeId,
-      title: json.title ?? '',
-      frameworkId: (json as { frameworkId?: string }).frameworkId,
-      goals,
-    }
-    parsedLandscapes.push(entry)
-    if (!landscapeById.has(landscapeId)) {
-      landscapeById.set(landscapeId, entry)
-    }
-    const titleSet = titlesByLandscapeId.get(landscapeId) ?? new Set<string>()
-    if (entry.title) {
-      titleSet.add(entry.title)
-    }
-    const titleEn = (json as { titleEn?: string }).titleEn
-    if (titleEn) {
-      titleSet.add(titleEn)
-    }
-    titlesByLandscapeId.set(landscapeId, titleSet)
-  } catch (error) {
-    issues.push({
-      level: 'error',
-      message: `[${file}] Failed to parse landscape JSON: ${String(error)}`,
-    })
+for (const { file, landscape: json } of loadGraphValidationLandscapes(curriculaDir)) {
+  const landscapeId = json.landscapeId ?? (json as { id?: string }).id!
+  const entry = {
+    file, landscapeId, title: json.title ?? '', frameworkId: json.frameworkId,
+    goals: json.goals.map((goal) => convertLearningGoal(goal)), source: json,
   }
+  parsedLandscapes.push(entry)
+  if (!landscapeById.has(landscapeId)) landscapeById.set(landscapeId, entry)
+  const titleSet = titlesByLandscapeId.get(landscapeId) ?? new Set<string>()
+  if (entry.title) titleSet.add(entry.title)
+  if (json.titleEn) titleSet.add(json.titleEn)
+  titlesByLandscapeId.set(landscapeId, titleSet)
 }
 
 if (existsSync(compatibilityArchiveRegistryPath)) {
@@ -413,21 +329,6 @@ function parseReference(raw: string, currentLandscape: string) {
   return { landscapeId: currentLandscape, goalId: raw }
 }
 
-function refMatchesGoal(ref: string, goalId: string): boolean {
-  if (ref === goalId) {
-    return true
-  }
-  if (!ref.includes(':')) {
-    return false
-  }
-  const [, refGoalId] = ref.split(':', 2)
-  return refGoalId === goalId
-}
-
-function refsIncludeGoal(refs: string[], goalId: string): boolean {
-  return refs.some((ref) => refMatchesGoal(ref, goalId))
-}
-
 function isYearLevelPhase(phase: string): boolean {
   return /^([5-9]|1[0-3])(?:\.[1-9]\d*)?$/.test(phase)
 }
@@ -469,18 +370,6 @@ function isAtomicGoal(goal: UiGoal): boolean {
   return (goal.contains?.length ?? 0) === 0
 }
 
-function isWarumGoal(goal: UiGoal): boolean {
-  const title = goal.title ?? ''
-  return /^\s*(warum|why)\b/i.test(title)
-}
-
-function isMemoryGoal(goal: UiGoal): boolean {
-  const tags = goal.tags ?? []
-  return (goal as { nodeKind?: string }).nodeKind === 'memory'
-    || tags.includes('memorization')
-    || tags.some((tag) => tag.startsWith('srs-deck:'))
-}
-
 function isCanonicalGymMathSek1Goal(goal: UiGoal): boolean {
   if (goal.id === CANONICAL_GYM_MATH_SEK1_MOTIVATION_GOAL_ID) return true
   if (goal.tags?.includes('phase:SekI')) return true
@@ -511,10 +400,6 @@ function isCanonicalGymMathSek2Goal(goal: UiGoal): boolean {
 function isCanonicalGymMathSek2CurricularGoal(goal: UiGoal): boolean {
   return isCanonicalGymMathSek2Goal(goal)
     && canonicalMathSemanticKindByGoalId.get(goal.id) === 'curricularAtomic'
-}
-
-function isCanonicalGymMathAtomicGoal(goal: UiGoal): boolean {
-  return isAtomicGoal(goal) && !isMemoryGoal(goal)
 }
 
 const scopedMotivationConnectivityProfiles: ScopedMotivationConnectivityProfile[] = [
@@ -548,14 +433,6 @@ const scopedFullRouteCoverageProfiles: ScopedFullRouteCoverageProfile[] = [
     routeGoalSelector: isCanonicalGymMathSek2Goal,
     goalSelector: isCanonicalGymMathSek2CurricularGoal,
     scopeLabel: 'canonical DE Gymnasium mathematics / Sek II curricular atomic goals',
-  },
-]
-
-const scopedAtomicDirectRequiresOnlyProfiles: ScopedAtomicDirectRequiresOnlyProfile[] = [
-  {
-    landscapeId: CANONICAL_GYM_MATH_LANDSCAPE_ID,
-    goalSelector: isCanonicalGymMathAtomicGoal,
-    scopeLabel: 'canonical DE Gymnasium mathematics / all non-memory atomic goals',
   },
 ]
 
@@ -870,35 +747,6 @@ function validateLandscape(landscape: ParsedLandscape) {
     })
   })
 
-  // GVR-006:
-  // A goal must not directly require one of its direct contains-children.
-  // This is the inverse anti-pattern of GVR-003 and creates inconsistent graph semantics.
-  if (noDirectChildRequireRuleLandscapeIds.has(landscape.landscapeId)) {
-    landscape.goals.forEach((goal) => {
-      const directChildren = new Set(
-        (goal.contains ?? [])
-          .map((rawChild) => parseReference(rawChild, landscape.landscapeId))
-          .filter((parsed) => parsed.landscapeId === landscape.landscapeId && localMap.has(parsed.goalId))
-          .map((parsed) => parsed.goalId),
-      )
-
-      goal.requires.forEach((rawReq) => {
-        const parsed = parseReference(rawReq, landscape.landscapeId)
-        if (parsed.landscapeId !== landscape.landscapeId || !localMap.has(parsed.goalId)) return
-        if (!directChildren.has(parsed.goalId)) return
-
-        const reqGoal = localMap.get(parsed.goalId)
-        const reqLabel = reqGoal ? `${reqGoal.id} (${reqGoal.title})` : parsed.goalId
-        const goalLabel = `${goal.id} (${goal.title})`
-        addIssue(
-          graphRuleIssueLevel,
-          landscape.landscapeId,
-          `[${RULE_REQUIRES_DIRECT_CHILD}] Goal ${goalLabel} requires its direct child ${reqLabel}.`,
-        )
-      })
-    })
-  }
-
   const effectiveMemo = new Map<string, string[]>()
   const visiting = new Set<string>()
   const computeEffectiveRequires = (goalId: string): string[] => {
@@ -971,48 +819,6 @@ function validateLandscape(landscape: ParsedLandscape) {
     })
   })
 
-  // GVR-004 / GVR-005:
-  // Motivation anchor rollout: first atomic node must be a "Warum"/"Why" node.
-  // All other atomic nodes must reach this anchor transitively via effective requires.
-  if (motivationRuleLandscapeIds.has(landscape.landscapeId)) {
-    const atomicGoals = landscape.goals.filter(isAtomicGoal)
-    let motivationAnchor: UiGoal | undefined
-
-    if (atomicGoals.length === 0) {
-      addIssue(
-        graphRuleIssueLevel,
-        landscape.landscapeId,
-        `[${RULE_FIRST_ATOMIC_IS_WARUM}] Landscape has no atomic nodes; cannot validate motivation anchor rule.`,
-      )
-    } else {
-      motivationAnchor = atomicGoals[0]
-      const anchorLabel = `${motivationAnchor.id} (${motivationAnchor.title})`
-      if (!isWarumGoal(motivationAnchor)) {
-        addIssue(
-          graphRuleIssueLevel,
-          landscape.landscapeId,
-          `[${RULE_FIRST_ATOMIC_IS_WARUM}] First atomic node ${anchorLabel} is not a "Warum"/"Why" motivation node.`,
-        )
-      }
-    }
-
-    if (motivationAnchor && isWarumGoal(motivationAnchor)) {
-      const anchorId = motivationAnchor.id
-      const anchorLabel = `${anchorId} (${motivationAnchor.title})`
-      atomicGoals.forEach((goal) => {
-        if (goal.id === anchorId) return
-
-        if (!hasPathToTarget(goal.id, anchorId, effectiveEdges)) {
-          addIssue(
-            graphRuleIssueLevel,
-            landscape.landscapeId,
-            `[${RULE_ATOMIC_TRANSITIVE_TO_WARUM}] Atomic node ${goal.id} (${goal.title}) has no transitive effective-requires path to motivation anchor ${anchorLabel}.`,
-          )
-        }
-      })
-    }
-  }
-
   for (const profile of scopedMotivationConnectivityProfiles) {
     if (profile.landscapeId !== landscape.landscapeId) continue
 
@@ -1046,6 +852,11 @@ function validateLandscape(landscape: ParsedLandscape) {
     })
   }
 
+  for (const profile of routeProfiles.filter((candidate) => candidate.landscapeId === landscape.landscapeId)) {
+    const coverage = evaluateDirectAtomicRouteCoverage(landscape.source, profile)
+    for (const detail of coverage.details) addIssue('error', landscape.landscapeId, `[CQR-102] ${profile.profileId}: ${detail}`)
+  }
+
   for (const profile of scopedFullRouteCoverageProfiles) {
     if (profile.landscapeId !== landscape.landscapeId) continue
     validateHardDirectAtomicRoutes(
@@ -1060,27 +871,6 @@ function validateLandscape(landscape: ParsedLandscape) {
         landscape.landscapeId,
         `[${RULE_SCOPED_FULL_ROUTE_COVERAGE}]${goalLabel} ${finding.message}`,
       )
-    })
-  }
-
-  for (const profile of scopedAtomicDirectRequiresOnlyProfiles) {
-    if (profile.landscapeId !== landscape.landscapeId) continue
-
-    const scopedGoals = landscape.goals.filter(profile.goalSelector)
-    scopedGoals.forEach((goal) => {
-      goal.requires.forEach((rawReq) => {
-        const parsed = parseReference(rawReq, landscape.landscapeId)
-        if (parsed.landscapeId !== landscape.landscapeId) return
-
-        const requiredGoal = localMap.get(parsed.goalId)
-        if (!requiredGoal || isAtomicGoal(requiredGoal)) return
-
-        addIssue(
-          graphRuleIssueLevel,
-          landscape.landscapeId,
-          `[${RULE_SCOPED_ATOMIC_DIRECT_REQUIRES_ONLY}] Scoped atomic node ${goal.id} (${goal.title}) directly requires non-atomic prerequisite ${requiredGoal.id} (${requiredGoal.title}) for scope ${profile.scopeLabel}. Replace the cluster prerequisite with reviewed atomic prerequisites.`,
-        )
-      })
     })
   }
 
@@ -1152,61 +942,6 @@ function validateLandscape(landscape: ParsedLandscape) {
           }
         })
       })
-  }
-
-  if (landscape.landscapeId === PHYSICS_LANDSCAPE_ID) {
-    const goal = localMap.get(PHYSICS_ENERGY_FROM_NEWTON_LK_GOAL_ID)
-    if (!goal) {
-      addIssue(
-        'error',
-        landscape.landscapeId,
-        `Missing invariant goal ${PHYSICS_ENERGY_FROM_NEWTON_LK_GOAL_ID} (Energieerhaltung aus Newtonschen Axiomen (LK))`,
-      )
-      return
-    }
-
-    const requires = goal.requires ?? []
-    if (refsIncludeGoal(requires, PHYSICS_ENERGY_CLUSTER_GOAL_ID)) {
-      addIssue(
-        'error',
-        landscape.landscapeId,
-        `Goal ${PHYSICS_ENERGY_FROM_NEWTON_LK_GOAL_ID} must not require ${PHYSICS_ENERGY_CLUSTER_GOAL_ID} (Energie)`,
-      )
-    }
-    const hasNewtonPrereq =
-      refsIncludeGoal(requires, PHYSICS_NEWTON_INERTIAL_CLUSTER_GOAL_ID)
-      || refsIncludeGoal(requires, PHYSICS_NEWTON_SECOND_LAW_GOAL_ID)
-
-    if (!hasNewtonPrereq) {
-      addIssue(
-        'error',
-        landscape.landscapeId,
-        `Goal ${PHYSICS_ENERGY_FROM_NEWTON_LK_GOAL_ID} must require either ${PHYSICS_NEWTON_INERTIAL_CLUSTER_GOAL_ID} (Newtons Axiome und Inertialsysteme) or ${PHYSICS_NEWTON_SECOND_LAW_GOAL_ID} (Newtons 2. Axiom)`,
-      )
-    }
-    if (!refsIncludeGoal(requires, PHYSICS_INERTIAL_SYSTEMS_GOAL_ID)) {
-      addIssue(
-        'error',
-        landscape.landscapeId,
-        `Goal ${PHYSICS_ENERGY_FROM_NEWTON_LK_GOAL_ID} must require ${PHYSICS_INERTIAL_SYSTEMS_GOAL_ID} (Inertialsysteme und Bezugssysteme)`,
-      )
-    }
-    if (!refsIncludeGoal(requires, PHYSICS_POTENTIAL_ENERGY_AND_POTENTIAL_GOAL_ID)) {
-      addIssue(
-        'error',
-        landscape.landscapeId,
-        `Goal ${PHYSICS_ENERGY_FROM_NEWTON_LK_GOAL_ID} must require ${PHYSICS_POTENTIAL_ENERGY_AND_POTENTIAL_GOAL_ID} (Potenzielle Energie und Potential)`,
-      )
-    }
-
-    const requiredMathDiff = `${MATH_LANDSCAPE_ID}:${MATH_DIFFERENTIATION_GOAL_ID}`
-    if (!refsIncludeGoal(requires, MATH_DIFFERENTIATION_GOAL_ID)) {
-      addIssue(
-        'error',
-        landscape.landscapeId,
-        `Goal ${PHYSICS_ENERGY_FROM_NEWTON_LK_GOAL_ID} must require ${MATH_DIFFERENTIATION_GOAL_ID} (or ${requiredMathDiff})`,
-      )
-    }
   }
 
   if (landscape.landscapeId === CANONICAL_GYM_MATH_LANDSCAPE_ID) {
@@ -1438,7 +1173,6 @@ if (!existsSync(curriculumManifestPath)) {
 
 const errorCount = issues.filter((issue) => issue.level === 'error').length
 const warningCount = issues.length - errorCount
-const hasGraphRuleMessages = issues.some((issue) => issue.message.includes('[GVR-'))
 
 if (issues.length === 0) {
   console.log(`✅ ${parsedLandscapes.length} landscape(s) passed validation.`)
@@ -1447,11 +1181,6 @@ if (issues.length === 0) {
   for (const issue of issues) {
     const tag = issue.level === 'error' ? '❌' : '⚠️'
     console.log(`${tag} ${issue.message}`)
-  }
-  if (hasGraphRuleMessages && !strictGraphRules) {
-    console.log(
-      '\nℹ️ Legacy warn mode active (VALIDATE_GRAPH_STRICT_RULES=0). GVR rules are not failing in this run. See docs/qa-ci/graph-validation-rules.md',
-    )
   }
   console.log(`\n${errorCount} error(s), ${warningCount} warning(s).`)
   process.exit(errorCount > 0 ? 1 : 0)
