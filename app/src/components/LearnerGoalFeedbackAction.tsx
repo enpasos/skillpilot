@@ -15,13 +15,13 @@ import { goalBookDefinitionByLandscapeId } from '../utils/goalBookPublicationReg
 const copy = {
   de: {
     prompt: 'Schwäche oder Fehler entdeckt?',
-    action: 'Feedback zu diesem Lernziel',
+    action: 'Feedback geben',
     loading: 'Feedback wird vorbereitet …',
     error: 'Der Feedbackweg ist gerade nicht verfügbar. Bitte versuche es erneut.',
   },
   en: {
     prompt: 'Found a weakness or an error?',
-    action: 'Give feedback on this learning goal',
+    action: 'Give feedback',
     loading: 'Preparing feedback …',
     error: 'Feedback is currently unavailable. Please try again.',
   },

@@ -2,7 +2,9 @@ import { goalBookDefinitionById } from './goalBookPublicationRegistry'
 
 export const GOAL_BOOK_FEEDBACK_SCHEMA_URL =
   'https://skillpilot.com/schemas/goal-evidence/v2/goal-public-feedback.schema.json'
-export const GOAL_BOOK_FEEDBACK_PRIVACY_NOTICE_VERSION = '2026-08-31.1' as const
+export const GOAL_BOOK_FEEDBACK_PRIVACY_NOTICE_VERSION = '2026-11-13.1' as const
+export const GENERAL_FEEDBACK_SCHEMA_URL =
+  'https://skillpilot.com/schemas/goal-evidence/v3/goal-public-feedback.schema.json'
 export const GOAL_BOOK_FEEDBACK_PRIVACY_NOTICE_LOCALES = ['de', 'en'] as const
 export const GOAL_BOOK_FEEDBACK_CONTEXT_ENDPOINT = '/api/public/goal-feedback/v1/context'
 export const GOAL_BOOK_FEEDBACK_CURRENT_BINDING_ENDPOINT = '/api/public/goal-feedback/v1/current-binding'
@@ -375,5 +377,30 @@ export const createGoalBookFeedbackSubmission = ({
     privacyNoticeLocale,
     privacyAcknowledged: true,
     automatedProcessingAcknowledged: true,
+  },
+})
+
+export const createGeneralFeedbackSubmission = ({
+  observation,
+  clientSubmissionId,
+  privacyNoticeLocale,
+  website = '',
+}: {
+  observation: string
+  clientSubmissionId: string
+  privacyNoticeLocale: GoalBookFeedbackPrivacyNoticeLocale
+  website?: string
+}) => ({
+  clientSubmissionId,
+  website,
+  envelope: {
+    $schema: GENERAL_FEEDBACK_SCHEMA_URL,
+    schemaVersion: 3 as const,
+    context: { scope: 'general' as const },
+    feedback: { observation },
+    privacyNoticeVersion: GOAL_BOOK_FEEDBACK_PRIVACY_NOTICE_VERSION,
+    privacyNoticeLocale,
+    privacyAcknowledged: true as const,
+    automatedProcessingAcknowledged: true as const,
   },
 })

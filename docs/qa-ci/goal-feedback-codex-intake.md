@@ -2,7 +2,7 @@
 
 Status: implemented with a source-level default-off; production activation is
 an explicit operator state
-Scope: public learning-goal feedback, production custody transfer, and local
+Scope: public learning-goal and general feedback, production custody transfer, and local
 critical triage
 
 ## Trust and custody model
@@ -20,8 +20,35 @@ public form -> production inbox -> digest-bound HTTPS batch
 The production operations API accepts only its dedicated bearer token. The
 local client pins that credential to `https://skillpilot.com`; only HTTP
 loopback origins are accepted by tests. Feedback prose is external untrusted
-input. The exact server-derived publication snapshot is stored separately from
-that prose.
+input. For goal feedback, the exact server-derived publication snapshot is stored
+separately from that prose. General feedback has the closed context
+`{"scope":"general"}`; it carries no automatic learner, session, goal or book
+identifier and no fabricated publication snapshot.
+
+## Submission variants
+
+Both variants use the existing public POST
+`/api/public/goal-feedback/v1/submissions` and the wrapper
+`{clientSubmissionId, website, envelope}`. The form exposes one free-text field,
+`feedback.observation`, bounded to 4,000 characters. A goal submission retains
+the complete immutable V2 publication context and sets the existing category to
+`other`; historical V2 submissions with other categories and optional fields
+remain readable. General submissions use the new
+`contracts/goal-evidence/v3/goal-public-feedback.schema.json`, `schemaVersion: 3`,
+`context: {scope: "general"}`, and `feedback: {observation: "…"}`. Unknown fields,
+mixed scopes, missing acknowledgements and extra identities are rejected.
+General feedback needs no context lookup or authenticated learner session.
+
+The export payload remains version 1. General records have `bindingStatus:
+"general"`; their `serverTrustedContext` contains exactly `schemaVersion: 1`,
+the general context and `submissionEndpoint`, with no `goal` field. The local
+intake validates V2 and V3 independently and reports general records as
+`general/not_applicable` for publication comparison. A general-only inbox needs
+no local goal-book index. Mixed batches preserve each goal record's original
+publication binding. Canonical envelope and payload digests, durable local
+verification before the digest-bound DELETE, capacity, rate limits and retention
+apply to both variants unchanged. The existing deterministic critical-review
+instruction artifact remains unchanged so retained local inboxes stay verifiable.
 
 ## Production activation gate
 
@@ -33,12 +60,15 @@ the following before enabling intake:
    and cover purpose, consent, the processed data, technically assisted review,
    the 30-day pending threshold, retention after review begins, backup limits,
    and statutory requests without exposing internal service or storage names.
-   Every new envelope binds the current notice version `2026-08-31.1` and the
-   displayed `de|en` locale. The V2 schema continues to recognize the earlier
-   `2026-08-30.1` version so retained historical envelopes remain verifiable.
-   During the cache-transition window the live endpoint accepts both issued
-   versions and preserves the version actually submitted; new forms emit only
-   `2026-08-31.1`. Retiring the older accepted version requires a separate,
+   Every new envelope binds the current notice version `2026-11-13.1` and the
+   displayed `de|en` locale. This version covers both general feedback and the
+   optional published-goal context. Both explicit acknowledgements remain
+   required. The V2 schema continues to recognize the earlier `2026-08-30.1`
+   and `2026-08-31.1` versions so retained historical envelopes remain verifiable.
+   General V3 feedback requires the new notice version.
+   During the cache-transition window the live endpoint accepts all three issued
+   versions for V2 and preserves the version actually submitted; new forms emit only
+   `2026-11-13.1`. Retiring an older accepted version requires a separate,
    cache-aware decision. The frozen general Coach privacy text is not silently
    broadened.
 2. Generate a distinct, high-entropy token of at least 32 characters. It must
@@ -121,7 +151,7 @@ is the ignored `tmp/goal-feedback/inbox/`. A successful command:
 
 1. obtains the oldest still-open batch or creates one from bounded unbound
    submissions;
-2. validates its closed wire shape, V2 envelopes, production snapshots, and
+2. validates its closed wire shape, V2 goal or V3 general envelopes, applicable production snapshots, and
    canonical SHA-256 digests;
 3. writes `0600` files into a real, non-symlinked `0700` batch directory below
    a real, non-symlinked `0700` inbox root;

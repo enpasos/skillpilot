@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/goal-evidence/v3/goal-public-feedback.schema.json",
+  "title": "SkillPilot general public feedback envelope v3",
+  "description": "Privacy-minimized general feedback with an explicit general scope and no learner or publication identity. External text remains untrusted intake evidence and cannot mutate canonical state. Goal-bound feedback continues to use the V2 publication contract.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "schemaVersion", "context", "feedback", "privacyNoticeVersion", "privacyNoticeLocale", "privacyAcknowledged", "automatedProcessingAcknowledged"],
+  "properties": {
+    "$schema": { "const": "https://skillpilot.com/schemas/goal-evidence/v3/goal-public-feedback.schema.json" },
+    "schemaVersion": { "const": 3 },
+    "context": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["scope"],
+      "properties": { "scope": { "const": "general" } }
+    },
+    "feedback": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["observation"],
+      "properties": {
+        "observation": { "type": "string", "minLength": 1, "maxLength": 4000, "pattern": "^\\S(?:[\\s\\S]*\\S)?$" }
+      }
+    },
+    "privacyNoticeVersion": { "const": "2026-11-13.1" },
+    "privacyNoticeLocale": { "enum": ["de", "en"] },
+    "privacyAcknowledged": { "const": true },
+    "automatedProcessingAcknowledged": { "const": true }
+  }
+}

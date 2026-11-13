@@ -20,6 +20,7 @@ import { GoalCard } from '../components/GoalCard'
 import { MaterialSelectionPanel } from '../components/MaterialSelectionPanel'
 import { GoalAdditionalMaterials } from '../components/GoalAdditionalMaterials'
 import { LearnerGoalFeedbackAction } from '../components/LearnerGoalFeedbackAction'
+import { LearnerFeedbackLink } from '../components/LearnerFeedbackLink'
 import { FlashcardDrill } from '../components/srs/FlashcardDrill'
 import { ProgressPopover } from '../components/ProgressPopover'
 import { InlineMathText } from '../components/InlineMathText'
@@ -3643,8 +3644,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         onTouchEnd={finishMobileEdgeSwipe}
         onTouchCancel={() => { mobileEdgeTouchStart.current = null }}
       >
-        {/* The two main actions stay at the very top right, above the assessment shortcuts. */}
-        <div className="mb-4 flex w-full items-center justify-end gap-2">
+        {/* Cockpit actions remain reachable above the assessment shortcuts. */}
+        <div className="mb-4 flex w-full flex-wrap items-center justify-end gap-2">
           <button
             ref={learningMapOpenButtonRef}
             type="button"
@@ -3659,6 +3660,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             <MapIcon size={16} aria-hidden="true" />
             <span className="max-[359px]:sr-only">{localizedLanguage === 'en' ? 'Learning map' : 'Lernkarte'}</span>
           </button>
+          <LearnerFeedbackLink />
           <Link to={buildCompletionRouteStartHref(hasActiveCompletionRoute(levelCompletion) ? levelCompletion?.profileId : undefined)} data-testid="learner-coach-start-link"
             title={t.startPage.login.coachProviderLabel}
             className="inline-flex min-h-11 items-center gap-2 rounded-full border border-sky-500 bg-sky-600 px-4 py-2 text-sm font-semibold text-white hover:bg-sky-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500">

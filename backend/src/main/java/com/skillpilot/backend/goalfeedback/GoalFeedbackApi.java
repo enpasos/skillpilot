@@ -10,9 +10,12 @@ public final class GoalFeedbackApi {
 
     public static final String SCHEMA_URL =
             "https://skillpilot.com/schemas/goal-evidence/v2/goal-public-feedback.schema.json";
-    public static final String PRIVACY_NOTICE_VERSION = "2026-08-31.1";
+    public static final String GENERAL_SCHEMA_URL =
+            "https://skillpilot.com/schemas/goal-evidence/v3/goal-public-feedback.schema.json";
+    public static final String PRIVACY_NOTICE_VERSION = "2026-11-13.1";
     public static final Set<String> PRIVACY_NOTICE_VERSIONS = Set.of(
             "2026-08-30.1",
+            "2026-08-31.1",
             PRIVACY_NOTICE_VERSION);
     public static final Set<String> PRIVACY_NOTICE_LOCALES = Set.of("de", "en");
     public static final String SUBMISSION_ENDPOINT = "/api/public/goal-feedback/v1/submissions";

@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict'
 import {
   createGoalBookFeedbackSubmission,
+  createGeneralFeedbackSubmission,
   GOAL_BOOK_FEEDBACK_PRIVACY_NOTICE_VERSION,
   goalBookFeedbackContextUrl,
   goalBookFeedbackCurrentBindingUrl,
@@ -227,3 +228,17 @@ assert.equal(parseGoalBookFeedbackSubmissionReceipt({ ...receipt, feedbackId: 'f
 assert.equal(parseGoalBookFeedbackSubmissionReceipt({ ...receipt, receivedAt: '2026-02-31T10:00:00Z' }), null)
 
 console.log('goal-book feedback client contract tests passed')
+
+const generalFeedback = createGeneralFeedbackSubmission({
+  observation: 'Die Bedienung könnte einfacher sein.',
+  clientSubmissionId: '22222222-2222-4222-8222-222222222222',
+  privacyNoticeLocale: 'de',
+})
+assert.equal(generalFeedback.envelope.schemaVersion, 3)
+assert.equal(generalFeedback.envelope.$schema, 'https://skillpilot.com/schemas/goal-evidence/v3/goal-public-feedback.schema.json')
+assert.deepEqual(generalFeedback.envelope.context, { scope: 'general' })
+assert.deepEqual(generalFeedback.envelope.feedback, { observation: 'Die Bedienung könnte einfacher sein.' })
+assert.equal(generalFeedback.envelope.privacyNoticeVersion, '2026-11-13.1')
+assert.equal(generalFeedback.envelope.privacyAcknowledged, true)
+assert.equal(generalFeedback.envelope.automatedProcessingAcknowledged, true)
+assert(!/learnerId|skillpilotId|goalId|bookId|Fingerprint/u.test(JSON.stringify(generalFeedback)))

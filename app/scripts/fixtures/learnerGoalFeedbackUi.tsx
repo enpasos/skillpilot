@@ -5,6 +5,7 @@ import { MemoryRouter, Route, Routes, useLocation } from 'react-router-dom'
 
 import '../../src/index.css'
 import { LearnerGoalFeedbackAction } from '../../src/components/LearnerGoalFeedbackAction'
+import { LearnerFeedbackLink } from '../../src/components/LearnerFeedbackLink'
 import { LanguageProvider } from '../../src/contexts/LanguageContext'
 import { ThemeProvider } from '../../src/contexts/ThemeContext'
 
@@ -40,6 +41,7 @@ const Fixture = () => (
         path="/learner"
         element={(
           <main className="mx-auto w-full max-w-3xl p-4">
+            <LearnerFeedbackLink />
             <LearnerGoalFeedbackAction goal={{ ...eligibleGoal, landscapeId: subjectLandscapeId }} />
             <LearnerGoalFeedbackAction
               goal={{

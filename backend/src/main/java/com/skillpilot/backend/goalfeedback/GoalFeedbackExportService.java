@@ -247,6 +247,14 @@ public class GoalFeedbackExportService {
 
     private String bindingStatus(JsonNode envelope) {
         JsonNode context = envelope.path("context");
+        if (envelope.path("schemaVersion").asInt() == 3
+                && GoalFeedbackApi.GENERAL_SCHEMA_URL.equals(envelope.path("$schema").textValue())) {
+            ObjectNode expected = objectMapper.createObjectNode().put("scope", "general");
+            if (!expected.equals(context)) {
+                throw new IllegalStateException("Stored general feedback contains an invalid context");
+            }
+            return "general";
+        }
         try {
             LinkBinding binding = new LinkBinding(
                     context.path("bookId").textValue(),

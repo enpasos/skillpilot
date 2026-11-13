@@ -178,6 +178,107 @@ const temporaryRoot = await mkdtemp(join(tmpdir(), 'skillpilot-goal-feedback-'))
 try {
   const localIndexPath = await writeLocalPublicationFixture(temporaryRoot)
 
+  const generalEnvelope = {
+    $schema: 'https://skillpilot.com/schemas/goal-evidence/v3/goal-public-feedback.schema.json',
+    schemaVersion: 3,
+    context: { scope: 'general' },
+    feedback: { observation: 'Der Einstieg in SkillPilot könnte verständlicher sein.' },
+    privacyNoticeVersion: '2026-11-13.1',
+    privacyNoticeLocale: 'de',
+    privacyAcknowledged: true,
+    automatedProcessingAcknowledged: true,
+  }
+  const generalBatch = buildBatch('export-general-001', {
+    bindingStatus: 'general',
+    envelope: generalEnvelope,
+    serverTrustedContext: {
+      schemaVersion: 1,
+      context: { scope: 'general' },
+      submissionEndpoint: '/api/public/goal-feedback/v1/submissions',
+    },
+  })
+  assert.deepEqual(await validateGoalFeedbackExportBatch(batchBytes(generalBatch)), generalBatch)
+  const generalComparison = await compareGoalFeedbackWithLocalRepository(generalBatch, '/missing-publication-index.json')
+  assert.equal(generalComparison[0]?.comparisonStatus, 'general/not_applicable')
+  assert.equal(generalComparison[0]?.localIndexFingerprint, null)
+  assert.equal(generalComparison[0]?.localContext, null)
+  assert.deepEqual(generalComparison[0]?.productionContext, { scope: 'general' })
+  let generalDeletes = 0
+  const generalPull = await withServer((request, response) => {
+    assert.equal(request.headers.authorization, `Bearer ${OPERATOR_TOKEN}`)
+    if (request.method === 'POST') return json(response, 200, batchBytes(generalBatch))
+    assert.equal(request.method, 'DELETE')
+    assert.equal(request.headers['if-match'], `"${generalBatch.payloadDigest}"`)
+    generalDeletes++
+    json(response, 200, deletionReceiptBytes(generalBatch))
+  }, async (baseUrl) => pullGoalFeedback({
+    baseUrl, operatorToken: OPERATOR_TOKEN, outputRoot: join(temporaryRoot, 'general-pull'), log: () => {},
+  }))
+  assert.equal(generalPull.status, 'downloaded')
+  assert.equal(generalDeletes, 1)
+  await verifyGoalFeedbackInbox(generalPull.inboxDirectory, { requireDeletionReceipt: true })
+  assert(!(await readFile(join(generalPull.inboxDirectory, 'bundle.json'), 'utf8')).match(/goalId|bookId|learnerId|skillpilotId/u))
+  await validateGoalFeedbackInbox(generalPull.inboxDirectory, '/missing-publication-index.json')
+
+  // General scope and historical goal scope coexist without retargeting old records.
+  const mixedPayload = {
+    ...generalBatch.payload,
+    exportId: 'export-mixed-001',
+    recordCount: 3,
+    records: [buildBatch('unused').payload.records[0]!, {
+      ...generalBatch.payload.records[0]!, feedbackId: 'feedback-002',
+    }, {
+      ...buildBatch('unused-new-notice', {
+        envelope: { ...envelope, privacyNoticeVersion: '2026-11-13.1' },
+      }).payload.records[0]!, feedbackId: 'feedback-003',
+    }],
+  }
+  const mixedBatch = { payloadDigest: sha256Digest(canonicalJson(mixedPayload)), payload: mixedPayload }
+  assert.deepEqual(await validateGoalFeedbackExportBatch(batchBytes(mixedBatch)), mixedBatch)
+  assert.deepEqual((await compareGoalFeedbackWithLocalRepository(mixedBatch, localIndexPath))
+    .map((entry) => entry.comparisonStatus), [
+    'production_current/local_match', 'general/not_applicable', 'production_current/local_match',
+  ])
+  let mixedDeletes = 0
+  const mixedPull = await withServer((request, response) => {
+    if (request.method === 'POST') return json(response, 200, batchBytes(mixedBatch))
+    assert.equal(request.method, 'DELETE')
+    assert.equal(request.headers['if-match'], `"${mixedBatch.payloadDigest}"`)
+    mixedDeletes++
+    json(response, 200, deletionReceiptBytes(mixedBatch))
+  }, async (baseUrl) => pullGoalFeedback({
+    baseUrl, operatorToken: OPERATOR_TOKEN, outputRoot: join(temporaryRoot, 'mixed-pull'), log: () => {},
+  }))
+  assert.equal(mixedPull.status, 'downloaded')
+  assert.equal(mixedDeletes, 1)
+  await verifyGoalFeedbackInbox(mixedPull.inboxDirectory, { requireDeletionReceipt: true })
+  await validateGoalFeedbackInbox(mixedPull.inboxDirectory, localIndexPath)
+  for (const invalidEnvelope of [
+    { ...generalEnvelope, context: { scope: 'general', learnerId: 'private' } },
+    { ...generalEnvelope, context: { scope: 'general', goalId: 'invented' } },
+    { ...generalEnvelope, feedback: { observation: 'Text', category: 'other' } },
+    { ...generalEnvelope, privacyAcknowledged: false },
+    { ...generalEnvelope, automatedProcessingAcknowledged: false },
+    { ...generalEnvelope, privacyNoticeVersion: '2026-08-31.1' },
+    { ...generalEnvelope, feedback: { observation: 'x'.repeat(4_001) } },
+    { ...generalEnvelope, $schema: envelope.$schema },
+  ]) {
+    const invalidBatch = buildBatch('export-general-invalid', {
+      bindingStatus: 'general', envelope: invalidEnvelope,
+      serverTrustedContext: generalBatch.payload.records[0]!.serverTrustedContext,
+    })
+    await assert.rejects(validateGoalFeedbackExportBatch(batchBytes(invalidBatch)), /V3 contract/u)
+  }
+  const fakeGoalSnapshot = buildBatch('export-general-fake-goal', {
+    ...generalBatch.payload.records[0]!,
+    serverTrustedContext: { ...serverTrustedContext(envelope), context: { scope: 'general' } },
+  })
+  await assert.rejects(validateGoalFeedbackExportBatch(batchBytes(fakeGoalSnapshot)), /unexpected or missing properties/u)
+  const misclassifiedGeneral = buildBatch('export-general-misclassified', {
+    ...generalBatch.payload.records[0]!, bindingStatus: 'exact_current',
+  })
+  await assert.rejects(validateGoalFeedbackExportBatch(batchBytes(misclassifiedGeneral)), /V2 contract/u)
+
   const successBatch = buildBatch('export-success-001')
   const successBytes = batchBytes(successBatch)
   let successDeleteCount = 0
@@ -262,7 +363,9 @@ try {
   assert.equal(historicalComparison[0]?.productionBindingStatus, 'exact_historical')
   assert.equal(historicalComparison[0]?.localComparisonStatus, 'local_different')
   assert.equal(historicalComparison[0]?.productionContext.goalFingerprint, DIGEST('e'))
-  assert.equal(historicalComparison[0]?.productionSnapshot.goal.title, 'Fixture-Lernziel')
+  const historicalSnapshot = historicalComparison[0]!.productionSnapshot
+  assert('goal' in historicalSnapshot)
+  assert.equal(historicalSnapshot.goal.title, 'Fixture-Lernziel')
   assert.equal(historicalComparison[0]?.localContext?.goalFingerprint, DIGEST('a'))
 
   const mismatchedSnapshotBatch = buildBatch('export-snapshot-mismatch-001', {

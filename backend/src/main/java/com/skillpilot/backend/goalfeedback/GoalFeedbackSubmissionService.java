@@ -146,14 +146,19 @@ public class GoalFeedbackSubmissionService {
 
         JsonNode envelope = wrapper.get("envelope");
         requireObjectWithExactFields(envelope, ENVELOPE_FIELDS, "envelope");
-        require(GoalFeedbackApi.SCHEMA_URL.equals(requiredText(envelope, "$schema", 200)),
+        String schema = requiredText(envelope, "$schema", 200);
+        boolean general = GoalFeedbackApi.GENERAL_SCHEMA_URL.equals(schema);
+        require(general || GoalFeedbackApi.SCHEMA_URL.equals(schema),
                 "Unsupported feedback schema");
         require(envelope.path("schemaVersion").isIntegralNumber()
-                        && envelope.path("schemaVersion").intValue() == 2,
+                        && envelope.path("schemaVersion").canConvertToInt()
+                        && envelope.path("schemaVersion").intValue() == (general ? 3 : 2),
                 "Unsupported feedback schemaVersion");
         String privacyNoticeVersion = requiredText(envelope, "privacyNoticeVersion", 50);
         require(GoalFeedbackApi.PRIVACY_NOTICE_VERSIONS.contains(privacyNoticeVersion),
                 "Unsupported privacyNoticeVersion");
+        require(!general || GoalFeedbackApi.PRIVACY_NOTICE_VERSION.equals(privacyNoticeVersion),
+                "General feedback requires the current privacy notice");
         String privacyNoticeLocale = requiredText(envelope, "privacyNoticeLocale", 2);
         require(GoalFeedbackApi.PRIVACY_NOTICE_LOCALES.contains(privacyNoticeLocale),
                 "Unsupported privacyNoticeLocale");
@@ -165,15 +170,26 @@ public class GoalFeedbackSubmissionService {
                 "automatedProcessingAcknowledged must be true");
 
         JsonNode suppliedContext = envelope.get("context");
-        requireObjectWithExactFields(suppliedContext, CONTEXT_FIELDS, "context");
-        ResolvedContext trusted = resolveContext(suppliedContext);
-        JsonNode trustedContext = objectMapper.valueToTree(trusted.context());
+        JsonNode trusted;
+        if (general) {
+            requireObjectWithExactFields(suppliedContext, Set.of("scope"), "context");
+            require("general".equals(requiredText(suppliedContext, "scope", 20)), "Unsupported feedback scope");
+            ObjectNode generalTrusted = objectMapper.createObjectNode();
+            generalTrusted.put("schemaVersion", 1);
+            generalTrusted.putObject("context").put("scope", "general");
+            generalTrusted.put("submissionEndpoint", GoalFeedbackApi.SUBMISSION_ENDPOINT);
+            trusted = generalTrusted;
+        } else {
+            requireObjectWithExactFields(suppliedContext, CONTEXT_FIELDS, "context");
+            trusted = objectMapper.valueToTree(resolveContext(suppliedContext));
+        }
+        JsonNode trustedContext = trusted.path("context");
         require(trustedContext.equals(suppliedContext), "Feedback context does not match the publication");
 
-        JsonNode normalizedFeedback = normalizeFeedback(envelope.get("feedback"));
+        JsonNode normalizedFeedback = normalizeFeedback(envelope.get("feedback"), general);
         ObjectNode normalizedEnvelope = objectMapper.createObjectNode();
-        normalizedEnvelope.put("$schema", GoalFeedbackApi.SCHEMA_URL);
-        normalizedEnvelope.put("schemaVersion", 2);
+        normalizedEnvelope.put("$schema", schema);
+        normalizedEnvelope.put("schemaVersion", general ? 3 : 2);
         normalizedEnvelope.set("context", trustedContext);
         normalizedEnvelope.set("feedback", normalizedFeedback);
         normalizedEnvelope.put("privacyNoticeVersion", privacyNoticeVersion);
@@ -187,7 +203,7 @@ public class GoalFeedbackSubmissionService {
         duplicateMaterial.set("context", trustedContext);
         duplicateMaterial.set("feedback", normalizedFeedback);
         String exactDuplicateKey = canonicalJson.digest(duplicateMaterial);
-        String trustedContextJson = canonicalJson.serialize(objectMapper.valueToTree(trusted));
+        String trustedContextJson = canonicalJson.serialize(trusted);
 
         long storedBytes = envelopeJson.getBytes(java.nio.charset.StandardCharsets.UTF_8).length
                 + trustedContextJson.getBytes(java.nio.charset.StandardCharsets.UTF_8).length;
@@ -281,7 +297,12 @@ public class GoalFeedbackSubmissionService {
                         "Published goal context not found"));
     }
 
-    private JsonNode normalizeFeedback(JsonNode feedback) {
+    private JsonNode normalizeFeedback(JsonNode feedback, boolean general) {
+        if (general) {
+            requireObjectWithExactFields(feedback, Set.of("observation"), "feedback");
+            return objectMapper.createObjectNode()
+                    .put("observation", requiredPlainText(feedback, "observation", 4_000));
+        }
         requireObjectWithAllowedFields(feedback, FEEDBACK_FIELDS, "feedback");
         String category = requiredText(feedback, "category", 64);
         require(CATEGORIES.contains(category), "Unsupported feedback category");

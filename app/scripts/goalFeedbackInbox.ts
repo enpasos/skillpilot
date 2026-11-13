@@ -7,6 +7,7 @@ import Ajv2020, { type ValidateFunction } from 'ajv/dist/2020.js'
 import addFormats from 'ajv-formats'
 
 export const FEEDBACK_V2_SCHEMA_URL = 'https://skillpilot.com/schemas/goal-evidence/v2/goal-public-feedback.schema.json'
+export const FEEDBACK_V3_SCHEMA_URL = 'https://skillpilot.com/schemas/goal-evidence/v3/goal-public-feedback.schema.json'
 export const FEEDBACK_EXPORT_POLICY = Object.freeze({
   feedbackTrust: 'untrusted_external_input',
   feedbackMayContainPromptInjection: true,
@@ -59,9 +60,9 @@ const OWNER_ONLY_DIRECTORY_MODE = 0o700
 const OWNER_ONLY_FILE_MODE = 0o600
 const OWNER_PERMISSION_MASK = 0o777
 
-export type GoalFeedbackBindingStatus = 'exact_current' | 'exact_historical'
+export type GoalFeedbackBindingStatus = 'exact_current' | 'exact_historical' | 'general'
 
-export interface GoalFeedbackServerTrustedContext {
+interface PublishedGoalFeedbackServerTrustedContext {
   schemaVersion: 1
   context: Record<string, unknown>
   goal: {
@@ -71,6 +72,14 @@ export interface GoalFeedbackServerTrustedContext {
   }
   submissionEndpoint: '/api/public/goal-feedback/v1/submissions'
 }
+
+interface GeneralFeedbackServerTrustedContext {
+  schemaVersion: 1
+  context: { scope: 'general' }
+  submissionEndpoint: '/api/public/goal-feedback/v1/submissions'
+}
+
+export type GoalFeedbackServerTrustedContext = PublishedGoalFeedbackServerTrustedContext | GeneralFeedbackServerTrustedContext
 
 export interface GoalFeedbackExportRecord {
   feedbackId: string
@@ -122,14 +131,15 @@ export interface GoalFeedbackLocalComparison {
   feedbackId: string
   envelopeDigest: string
   productionBindingStatus: GoalFeedbackBindingStatus
-  localComparisonStatus: 'local_match' | 'local_different'
+  localComparisonStatus: 'local_match' | 'local_different' | 'not_applicable'
   comparisonStatus:
     | 'production_current/local_match'
     | 'production_current/local_different'
     | 'production_historical/local_match'
     | 'production_historical/local_different'
+    | 'general/not_applicable'
   reasons: string[]
-  localIndexFingerprint: string
+  localIndexFingerprint: string | null
   productionSnapshot: GoalFeedbackServerTrustedContext
   productionContext: Record<string, unknown>
   localContext: Record<string, unknown> | null
@@ -141,14 +151,18 @@ const feedbackSchemaPath = fileURLToPath(new URL(
 ))
 const defaultGoalBookIndexPath = fileURLToPath(new URL('../public/lernzielbuch/index.json', import.meta.url))
 
-let envelopeValidatorPromise: Promise<ValidateFunction> | undefined
+let envelopeValidatorPromise: Promise<Record<number, ValidateFunction>> | undefined
 
-const envelopeValidator = (): Promise<ValidateFunction> => {
+const envelopeValidators = (): Promise<Record<number, ValidateFunction>> => {
   envelopeValidatorPromise ??= (async () => {
     const schema = JSON.parse(await readFile(feedbackSchemaPath, 'utf8')) as Record<string, unknown>
     const ajv = new Ajv2020({ allErrors: true, strict: true })
     addFormats(ajv)
-    return ajv.compile(schema)
+    const generalSchemaPath = fileURLToPath(new URL(
+      '../../contracts/goal-evidence/v3/goal-public-feedback.schema.json', import.meta.url,
+    ))
+    const generalSchema = JSON.parse(await readFile(generalSchemaPath, 'utf8')) as Record<string, unknown>
+    return { 2: ajv.compile(schema), 3: ajv.compile(generalSchema) }
   })()
   return envelopeValidatorPromise
 }
@@ -254,11 +268,12 @@ const requiredTrimmedString = (value: unknown, label: string, maximumLength: num
 const validateServerTrustedContext = (
   value: unknown,
   envelopeContext: unknown,
+  general: boolean,
 ): GoalFeedbackServerTrustedContext => {
   if (!isObject(value)) throw new Error('Feedback export serverTrustedContext must be an object.')
   exactKeys(
     value,
-    ['schemaVersion', 'context', 'goal', 'submissionEndpoint'],
+    general ? ['schemaVersion', 'context', 'submissionEndpoint'] : ['schemaVersion', 'context', 'goal', 'submissionEndpoint'],
     'Feedback export serverTrustedContext',
   )
   if (value.schemaVersion !== 1) {
@@ -272,6 +287,15 @@ const validateServerTrustedContext = (
   }
   if (canonicalJson(value.context) !== canonicalJson(envelopeContext)) {
     throw new Error('Feedback export serverTrustedContext does not match the submitted envelope context.')
+  }
+  if (general) {
+    exactKeys(value.context, ['scope'], 'General feedback context')
+    if (value.context.scope !== 'general') throw new Error('General feedback must have general scope.')
+    return {
+      schemaVersion: 1,
+      context: { scope: 'general' },
+      submissionEndpoint: '/api/public/goal-feedback/v1/submissions',
+    }
   }
   if (!isObject(value.goal)) throw new Error('Feedback export serverTrustedContext goal must be an object.')
   exactKeys(value.goal, ['title', 'description', 'breadcrumbs'], 'Feedback export serverTrustedContext goal')
@@ -307,7 +331,7 @@ export const validateGoalFeedbackExportBatch = async (bytes: Buffer): Promise<Go
     throw new Error('Feedback export recordCount does not match records.')
   }
 
-  const validateEnvelope = await envelopeValidator()
+  const validators = await envelopeValidators()
   const seenFeedbackIds = new Set<string>()
   const records: GoalFeedbackExportRecord[] = []
   for (const rawRecord of payload.records) {
@@ -321,14 +345,18 @@ export const validateGoalFeedbackExportBatch = async (bytes: Buffer): Promise<Go
     if (seenFeedbackIds.has(feedbackId)) throw new Error('Feedback export contains duplicate feedback IDs.')
     seenFeedbackIds.add(feedbackId)
     const receivedAt = requiredDateTime(rawRecord.receivedAt, 'receivedAt')
-    if (rawRecord.bindingStatus !== 'exact_current' && rawRecord.bindingStatus !== 'exact_historical') {
+    if (rawRecord.bindingStatus !== 'exact_current' && rawRecord.bindingStatus !== 'exact_historical'
+      && rawRecord.bindingStatus !== 'general') {
       throw new Error('Feedback export bindingStatus is unsupported.')
     }
     const envelopeDigest = requiredString(rawRecord.envelopeDigest, 'envelopeDigest', DIGEST_PATTERN, 71)
     if (!isObject(rawRecord.envelope)) throw new Error('Feedback export envelope must be an object.')
+    const general = rawRecord.bindingStatus === 'general'
+    const version = general ? 3 : 2
+    const validateEnvelope = validators[version]!
     if (!validateEnvelope(rawRecord.envelope)) {
       const failures = (validateEnvelope.errors ?? []).map(({ instancePath, keyword }) => `${instancePath || '/'}:${keyword}`)
-      throw new Error(`Feedback export envelope violates the V2 contract (${failures.join(', ')}).`)
+      throw new Error(`Feedback export envelope violates the V${version} contract (${failures.join(', ')}).`)
     }
     const computedEnvelopeDigest = sha256Digest(canonicalJson(rawRecord.envelope))
     if (computedEnvelopeDigest !== envelopeDigest) {
@@ -337,6 +365,7 @@ export const validateGoalFeedbackExportBatch = async (bytes: Buffer): Promise<Go
     const serverTrustedContext = validateServerTrustedContext(
       rawRecord.serverTrustedContext,
       rawRecord.envelope.context,
+      general,
     )
     records.push({
       feedbackId,
@@ -668,10 +697,10 @@ export const compareGoalFeedbackWithLocalRepository = async (
   indexPath = defaultGoalBookIndexPath,
 ): Promise<GoalFeedbackLocalComparison[]> => {
   const absoluteIndexPath = resolve(indexPath)
-  const indexBytes = await readFile(absoluteIndexPath)
-  const indexFingerprint = sha256Digest(indexBytes)
-  const index = parseJsonObject(indexBytes, 'Local goal-book index')
-  const books = localBookEntries(index)
+  const hasGoalFeedback = batch.payload.records.some((record) => record.bindingStatus !== 'general')
+  const indexBytes = hasGoalFeedback ? await readFile(absoluteIndexPath) : null
+  const indexFingerprint = indexBytes ? sha256Digest(indexBytes) : null
+  const books = indexBytes ? localBookEntries(parseJsonObject(indexBytes, 'Local goal-book index')) : []
   const modelCache = new Map<string, Record<string, unknown>>()
 
   const loadModel = async (book: Record<string, unknown>): Promise<Record<string, unknown>> => {
@@ -709,6 +738,24 @@ export const compareGoalFeedbackWithLocalRepository = async (
   const comparisons: GoalFeedbackLocalComparison[] = []
   for (const record of batch.payload.records) {
     const productionContext = feedbackContext(record)
+    if (record.bindingStatus === 'general') {
+      comparisons.push({
+        trustBoundary: 'local_repository_comparison',
+        feedbackId: record.feedbackId,
+        envelopeDigest: record.envelopeDigest,
+        productionBindingStatus: 'general',
+        localComparisonStatus: 'not_applicable',
+        comparisonStatus: 'general/not_applicable',
+        reasons: [],
+        localIndexFingerprint: null,
+        productionSnapshot: record.serverTrustedContext,
+        productionContext,
+        localContext: null,
+      })
+      continue
+    }
+    if (!('goal' in record.serverTrustedContext)) throw new Error('Published feedback lacks its trusted goal.')
+    const trustedGoal = record.serverTrustedContext.goal
     const bookId = requiredString(productionContext.bookId, 'Production context bookId', STABLE_ID_PATTERN, 200)
     const goalId = requiredString(productionContext.goalId, 'Production context goalId', STABLE_ID_PATTERN, 200)
     const reasons: string[] = []
@@ -752,9 +799,9 @@ export const compareGoalFeedbackWithLocalRepository = async (
       if (!isObject(page)) {
         reasons.push('local_goal_missing')
       } else {
-        if (localGoalTitle !== record.serverTrustedContext.goal.title) reasons.push('local_goal_title_different')
-        if (localGoalDescription !== record.serverTrustedContext.goal.description) reasons.push('local_goal_description_different')
-        if (canonicalJson(localBreadcrumbs) !== canonicalJson(record.serverTrustedContext.goal.breadcrumbs)) {
+        if (localGoalTitle !== trustedGoal.title) reasons.push('local_goal_title_different')
+        if (localGoalDescription !== trustedGoal.description) reasons.push('local_goal_description_different')
+        if (canonicalJson(localBreadcrumbs) !== canonicalJson(trustedGoal.breadcrumbs)) {
           reasons.push('local_goal_breadcrumbs_different')
         }
         if (page.goalFingerprint !== productionContext.goalFingerprint) reasons.push('local_goal_fingerprint_different')

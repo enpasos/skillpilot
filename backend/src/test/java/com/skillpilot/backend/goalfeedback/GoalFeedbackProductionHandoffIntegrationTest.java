@@ -277,6 +277,21 @@ class GoalFeedbackProductionHandoffIntegrationTest {
         assertThat(empty.statusCode()).isEqualTo(204);
 
         assertDurablePriorPublicationStillResolves(fixture);
+
+        // Historical notices remain accepted and retain their exact audit version.
+        for (String historicalNotice : List.of("2026-08-30.1", "2026-08-31.1")) {
+            ObjectNode historical = submission(UUID.randomUUID(), "", resolved.path("context"),
+                    "Rückmeldung mit einer noch gültigen älteren Datenschutzerklärung.");
+            historical.withObject("envelope").put("privacyNoticeVersion", historicalNotice);
+            assertThat(submit(historical).statusCode()).isEqualTo(202);
+            JsonNode oldBatch = objectMapper.readTree(send(operator(HttpRequest.newBuilder(exportsUri))
+                    .POST(HttpRequest.BodyPublishers.noBody()).build()).body());
+            assertThat(oldBatch.path("payload").path("records").get(0)
+                    .path("envelope").path("privacyNoticeVersion").textValue()).isEqualTo(historicalNotice);
+            URI oldBatchUri = uri("/api/operations/goal-feedback/v1/export-batches/"
+                    + oldBatch.path("payload").path("exportId").textValue());
+            assertThat(delete(oldBatchUri, oldBatch.path("payloadDigest").textValue()).statusCode()).isEqualTo(200);
+        }
     }
 
     private HttpResponse<String> delete(URI batchUri, String payloadDigest) throws Exception {
@@ -284,6 +299,81 @@ class GoalFeedbackProductionHandoffIntegrationTest {
                 .header("If-Match", "\"" + payloadDigest + "\"")
                 .DELETE()
                 .build());
+    }
+
+    @Test
+    void generalFeedbackPreservesStrictPrivacyIdentityAndDigestBoundCustody() throws Exception {
+        ObjectNode wrapper = submission(UUID.randomUUID(), "",
+                objectMapper.createObjectNode().put("scope", "general"), "Der Einstieg könnte verständlicher sein.");
+        ObjectNode envelope = wrapper.withObject("envelope");
+        envelope.put("$schema", GoalFeedbackApi.GENERAL_SCHEMA_URL);
+        envelope.put("schemaVersion", 3);
+        envelope.withObject("feedback").remove(List.of("category", "reviewerRole"));
+
+        for (String identity : List.of("goalId", "bookId", "learnerId", "skillpilotId", "sessionId")) {
+            ObjectNode forged = wrapper.deepCopy();
+            forged.withObject("envelope").withObject("context").put(identity, "private-or-invented-identity");
+            assertThat(submit(forged).statusCode()).as(identity).isEqualTo(400);
+        }
+        for (String acknowledgement : List.of("privacyAcknowledged", "automatedProcessingAcknowledged")) {
+            ObjectNode unacknowledged = wrapper.deepCopy();
+            unacknowledged.withObject("envelope").put(acknowledgement, false);
+            assertThat(submit(unacknowledged).statusCode()).isEqualTo(400);
+        }
+        ObjectNode oldNotice = wrapper.deepCopy();
+        oldNotice.withObject("envelope").put("privacyNoticeVersion", "2026-08-31.1");
+        assertThat(submit(oldNotice).statusCode()).isEqualTo(400);
+        ObjectNode wrongSchema = wrapper.deepCopy();
+        wrongSchema.withObject("envelope").put("$schema", GoalFeedbackApi.SCHEMA_URL);
+        assertThat(submit(wrongSchema).statusCode()).isEqualTo(400);
+        ObjectNode additionalFeedback = wrapper.deepCopy();
+        additionalFeedback.withObject("envelope").withObject("feedback").put("category", "other");
+        assertThat(submit(additionalFeedback).statusCode()).isEqualTo(400);
+        for (String text : List.of(" ", "a".repeat(4_001), "Text\u0000Injection")) {
+            ObjectNode invalidText = wrapper.deepCopy();
+            invalidText.withObject("envelope").withObject("feedback").put("observation", text);
+            assertThat(submit(invalidText).statusCode()).isEqualTo(400);
+        }
+        assertThat(send(HttpRequest.newBuilder(uri(GoalFeedbackApi.SUBMISSION_ENDPOINT))
+                .header("Origin", "https://foreign.example")
+                .header("Content-Type", "application/json")
+                .POST(HttpRequest.BodyPublishers.ofString(wrapper.toString())).build()).statusCode()).isEqualTo(403);
+
+        HttpResponse<String> accepted = submit(wrapper);
+        assertThat(accepted.statusCode()).isEqualTo(202);
+        assertThat(accepted.headers().firstValue("Cache-Control")).contains("no-store");
+        assertThat(objectMapper.readTree(submit(wrapper).body())).isEqualTo(objectMapper.readTree(accepted.body()));
+        ObjectNode conflicting = wrapper.deepCopy();
+        conflicting.withObject("envelope").withObject("feedback").put("observation", "Andere Rückmeldung.");
+        assertThat(submit(conflicting).statusCode()).isEqualTo(409);
+
+        URI exports = uri("/api/operations/goal-feedback/v1/export-batches?limit=10");
+        assertThat(send(HttpRequest.newBuilder(exports).POST(HttpRequest.BodyPublishers.noBody()).build())
+                .statusCode()).isEqualTo(401);
+        HttpResponse<String> exported = send(operator(HttpRequest.newBuilder(exports))
+                .POST(HttpRequest.BodyPublishers.noBody()).build());
+        assertThat(exported.statusCode()).isEqualTo(200);
+        JsonNode batch = objectMapper.readTree(exported.body());
+        JsonNode record = batch.path("payload").path("records").get(0);
+        assertThat(record.path("bindingStatus").textValue()).isEqualTo("general");
+        assertThat(record.path("envelope")).isEqualTo(envelope);
+        assertThat(record.path("serverTrustedContext").path("context")).isEqualTo(envelope.path("context"));
+        assertThat(fieldNames(record.path("serverTrustedContext")))
+                .containsExactlyInAnyOrder("schemaVersion", "context", "submissionEndpoint");
+        assertThat(batch.toString()).doesNotContain("goalId", "bookId", "learnerId", "skillpilotId", "sessionId");
+        assertThat(record.path("envelopeDigest").textValue()).isEqualTo(canonicalJson.digest(envelope));
+        String digest = batch.path("payloadDigest").textValue();
+        assertThat(digest).isEqualTo(canonicalJson.digest(batch.path("payload")));
+        URI batchUri = uri("/api/operations/goal-feedback/v1/export-batches/"
+                + batch.path("payload").path("exportId").textValue());
+        assertThat(objectMapper.readTree(send(operator(HttpRequest.newBuilder(batchUri)).GET().build()).body()))
+                .isEqualTo(batch);
+        assertThat(send(operator(HttpRequest.newBuilder(batchUri)).header("If-Match", "\"wrong\"")
+                .DELETE().build()).statusCode()).isEqualTo(412);
+        assertThat(count("goal_feedback_submission")).isOne();
+        assertThat(delete(batchUri, digest).statusCode()).isEqualTo(200);
+        assertThat(count("goal_feedback_submission")).isZero();
+        assertThat(send(operator(HttpRequest.newBuilder(batchUri)).GET().build()).statusCode()).isEqualTo(410);
     }
 
     private ObjectNode submission(

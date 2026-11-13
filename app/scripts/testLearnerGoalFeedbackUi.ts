@@ -65,10 +65,10 @@ try {
   })
 
   await page.goto(`${server.baseUrl}/scripts/fixtures/learnerGoalFeedbackUi.html?l=personalized-landscape&role=learner`)
-  const feedbackButton = page.getByRole('button', { name: `Feedback zu diesem Lernziel: Natürliche Zahlen darstellen und am Zahlenstrahl verorten` })
+  const feedbackButton = page.getByRole('button', { name: `Feedback geben: Natürliche Zahlen darstellen und am Zahlenstrahl verorten` })
   await feedbackButton.waitFor()
   assert.equal(
-    await page.getByRole('button', { name: /Feedback zu diesem Lernziel/u }).count(),
+    await page.getByRole('button', { name: /Feedback geben/u }).count(),
     1,
     'only the ordinary published atomic goal exposes the Cockpit action',
   )
@@ -87,7 +87,7 @@ try {
   assert.equal(lookupUrls.length, 1, 'one deliberate action issues one binding lookup')
 
   await page.evaluate(() => {
-    const button = document.querySelector<HTMLButtonElement>('button[aria-label^="Feedback zu diesem Lernziel"]')
+    const button = document.querySelector<HTMLButtonElement>('button[aria-label^="Feedback geben"]')
     button?.click()
     button?.click()
   })
@@ -120,11 +120,18 @@ try {
   const destinationState = await page.getByTestId('feedback-state').textContent() ?? ''
   assert.deepEqual(JSON.parse(destinationState), { goalFeedbackOrigin: 'learner-cockpit' })
   assert(!/skillpilotId|learnerId|sessionId|chatSession|returnUrl/iu.test(destinationState))
+  await page.goto(`${server.baseUrl}/scripts/fixtures/learnerGoalFeedbackUi.html`)
+  const lookupsBeforeGeneral = lookupUrls.length
+  await page.getByRole('link', { name: 'Feedback geben', exact: true }).click()
+  await page.getByRole('heading', { name: 'Bestehender Feedbackweg' }).waitFor()
+  assert.equal(await page.getByTestId('feedback-search').textContent(), '')
+  assert.deepEqual(JSON.parse(await page.getByTestId('feedback-state').textContent() ?? '{}'), { goalFeedbackOrigin: 'learner-cockpit' })
+  assert.equal(lookupUrls.length, lookupsBeforeGeneral, 'general feedback needs no learning-goal lookup')
   for (const [subject, bookId] of [['chemistry', 'de-gym-chemie-bundesweit'], ['biology', 'de-gym-biologie-bundesweit']]) {
     const before = lookupUrls.length
     await page.goto(`${server.baseUrl}/scripts/fixtures/learnerGoalFeedbackUi.html?subject=${subject}`)
     await feedbackButton.waitFor()
-    assert.equal(await page.getByRole('button', { name: /Feedback zu diesem Lernziel/u }).count(), 1)
+    assert.equal(await page.getByRole('button', { name: /Feedback geben/u }).count(), 1)
     assert.equal(lookupUrls.length, before, 'the nationwide subject does not introduce prefetching')
     await feedbackButton.click()
     await page.getByRole('heading', { name: 'Bestehender Feedbackweg' }).waitFor()

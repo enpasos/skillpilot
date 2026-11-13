@@ -300,6 +300,12 @@ try {
   }
   await overview.getByTestId('learner-plan-subject-mathematik').getByText('0 von 2', { exact: true }).waitFor()
 
+  const generalFeedbackLink = page.getByRole('link', { name: 'Feedback geben', exact: true })
+  assert.equal(await generalFeedbackLink.getAttribute('href'), '/lernziel-feedback', 'general feedback is reachable without a learning-goal selection')
+  const feedbackLinkBox = await generalFeedbackLink.boundingBox()
+  assert(feedbackLinkBox && feedbackLinkBox.height >= 44 && feedbackLinkBox.x >= 0
+    && feedbackLinkBox.x + feedbackLinkBox.width <= 390, 'the general feedback entry stays visible with a mobile touch target')
+
   assert.equal(await menuButton.count(), 1, 'the mobile goal menu keeps a keyboard-accessible opener')
   const menuBox = await menuButton.boundingBox()
   assert(!menuBox || (menuBox.width <= 2 && menuBox.height <= 2),

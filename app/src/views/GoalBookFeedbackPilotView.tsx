@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import {
   AlertTriangle,
   ArrowLeft,
@@ -12,16 +12,14 @@ import { ThemeToggle } from '../components/ThemeToggle'
 import { useLanguage } from '../contexts/LanguageContext'
 import {
   createGoalBookFeedbackSubmission,
-  GOAL_BOOK_FEEDBACK_CATEGORIES,
+  createGeneralFeedbackSubmission,
   GOAL_BOOK_FEEDBACK_PRIVACY_NOTICE_VERSION,
-  GOAL_BOOK_FEEDBACK_REVIEWER_ROLES,
+  GOAL_BOOK_FEEDBACK_SUBMISSION_ENDPOINT,
   goalBookFeedbackContextUrl,
   parseGoalBookFeedbackLinkBinding,
   parseGoalBookFeedbackResolvedContext,
   parseGoalBookFeedbackSubmissionReceipt,
-  type GoalBookFeedbackCategory,
   type GoalBookFeedbackResolvedContext,
-  type GoalBookFeedbackReviewerRole,
 } from '../utils/goalBookFeedback'
 import {
   isLearnerCockpitGoalFeedbackNavigationState,
@@ -30,6 +28,7 @@ import {
 import { goalBookRoute } from '../utils/goalBookPublicationRegistry'
 
 type LoadState =
+  | { status: 'general' }
   | { status: 'loading' }
   | { status: 'invalid-link' }
   | { status: 'unavailable' }
@@ -45,10 +44,16 @@ const copy = {
   de: {
     backToGoalBook: 'Zurück zum Lernzielbuch',
     backToCockpit: 'Zurück zum Cockpit',
-    eyebrow: 'Lernziel-Feedback',
-    title: 'Kritik strukturiert einreichen',
-    introduction: 'Hier kannst du Hinweise zum Text, zur Einordnung oder zum Bild dieses Lernziels geben. Deine Rückmeldung bleibt genau mit diesem Lernziel und dieser Buchfassung verbunden.',
-    loading: 'Die geprüfte Lernzielbindung wird geladen …',
+    eyebrow: 'Deine Rückmeldung',
+    title: 'Feedback geben',
+    introduction: 'Was können wir verbessern? Ob Lerninhalt, Coach oder Bedienung: Beschreibe einfach, was dir aufgefallen ist.',
+    scope: 'Worum geht es?',
+    goalScope: 'Zu diesem Lernziel',
+    generalScope: 'Allgemein zu SkillPilot',
+    goalDetails: 'Lernziel und Bild ansehen',
+    backToStart: 'Zurück zur Startseite',
+    loading: 'Lernziel wird geladen …',
+    generalFallback: 'Allgemeines Feedback geben',
     invalidTitle: 'Feedbacklink nicht gültig',
     invalidText: 'Die Lernziel-ID, Seite oder Buchfassung konnte nicht eindeutig geprüft werden. Bitte öffne den Feedbacklink erneut direkt beim gewünschten Lernziel.',
     unavailableTitle: 'Feedbackkanal nicht verfügbar',
@@ -57,47 +62,44 @@ const copy = {
     edition: 'Buchausgabe',
     page: 'Seite',
     imageUnavailable: 'Das Lernzielbild konnte nicht geladen werden. Du kannst trotzdem Feedback dazu geben.',
-    category: 'Art der Rückmeldung',
-    categoryPlaceholder: 'Bitte auswählen',
     observation: 'Was ist dir konkret aufgefallen?',
-    observationHint: 'Beschreibe möglichst genau, was am Inhalt, Text, Bild oder an der Einordnung nicht passt.',
-    evidence: 'Woran machst du das fest? (optional)',
-    evidenceHint: 'Zum Beispiel ein Gegenbeispiel, eine missverständliche Stelle oder eine beobachtete Folge.',
-    improvement: 'Wie könnte es besser sein? (optional)',
-    source: 'Quelle oder Fundstelle (optional)',
-    sourceHint: 'Dokumenttitel, Link, Seite oder Abschnitt. Links werden nicht automatisch geöffnet.',
-    role: 'Perspektive (optional)',
-    rolePlaceholder: 'Keine Angabe',
+    observationHint: 'Hilfreich sind: Wo ist es passiert? Was hast du erwartet, und was ist stattdessen passiert? Wenn du eine Verbesserungsidee oder Fundstelle hast, schreibe sie einfach dazu.',
     automated: 'Ich verstehe, dass die Prüfung technisch unterstützt werden kann. Über Änderungen entscheidet immer eine fachlich verantwortliche Person.',
-    send: 'Feedback verbindlich absenden',
+    send: 'Feedback absenden',
     sending: 'Feedback wird gespeichert …',
     submitError: 'Das Feedback konnte nicht gespeichert werden. Es bleibt im Formular erhalten; bitte versuche es später erneut.',
     successTitle: 'Feedback wurde gespeichert',
     successText: 'Vielen Dank. Deine Rückmeldung ist eingegangen und wird vor einer möglichen Änderung fachlich geprüft.',
     receipt: 'Feedback-ID',
-    noPersonalData: 'Bitte beschreibe nur das Lernziel. Gib keine Namen, Lernenden-IDs, Chattexte oder andere personenbezogene oder vertrauliche Angaben ein.',
+    noPersonalData: 'Bitte keine Namen, Lernenden-IDs, vollständigen Chats oder anderen personenbezogenen oder vertraulichen Angaben eintragen.',
     privacyDetailsSummary: 'Datenschutzdetails anzeigen',
-    privacyNoticeTitle: 'Datenschutz für Lernziel-Feedback',
-    privacyNoticeDate: 'Stand: 31. August 2026',
+    privacyNoticeTitle: 'Datenschutz für Feedback',
+    privacyNoticeDate: 'Stand: 13. November 2026',
     privacyNoticeVersion: 'Hinweisversion',
-    privacyNoticeIntro: 'Verantwortlich ist die enpasos - Enterprise Patterns & Solutions GmbH. Wir verarbeiten deine freiwilligen Angaben ausschließlich, um das angezeigte Lernziel zu prüfen und gegebenenfalls zu verbessern.',
+    privacyNoticeIntro: 'Verantwortlich ist die enpasos - Enterprise Patterns & Solutions GmbH. Wir verarbeiten deine freiwilligen Angaben ausschließlich, um deine Rückmeldung zu prüfen und SkillPilot, seine Lerninhalte oder die Bedienung gegebenenfalls zu verbessern.',
     privacyNoticeItems: [
-      'Gespeichert werden die Formularangaben, die gewählte Perspektive, eine zufällige Feedback-ID sowie die Zuordnung zu Lernziel, Buchausgabe und Seite. Anhänge, SkillPilot-IDs und Chatverläufe werden nicht angefordert.',
+      'Gespeichert werden dein Feedbacktext, eine zufällige Feedback-ID, der Eingangszeitpunkt und die bestätigten Datenschutzhinweise. Bei Feedback zu einem Lernziel werden auch Lernziel, Buchausgabe und Seite zugeordnet; allgemeines Feedback hat diese Zuordnung nicht. Anhänge, SkillPilot-IDs und Chatverläufe werden nicht angefordert oder automatisch übermittelt.',
       'Unbearbeitetes Feedback wird im laufenden Betrieb spätestens nach 31 Tagen gelöscht. Nach Beginn einer Prüfung wird es nur so lange aufbewahrt, wie es für die Prüfung und eine ausdrücklich beauftragte Verbesserung erforderlich ist.',
       'Bei der Prüfung können beauftragte technische Dienste und automatisierte Assistenz eingesetzt werden. Änderungen am Curriculum benötigen immer eine fachliche Freigabe.',
       'Du kannst deine Einwilligung jederzeit für die Zukunft widerrufen sowie Auskunft oder Löschung anfragen. Nenne möglichst die angezeigte Feedback-ID. Gesetzliche Pflichten bleiben unberührt. Bestehende technische Sicherungskopien werden durch eine Löschung aus aktiven Systemen nicht einzeln verändert.',
     ],
     privacyNoticePolicy: 'Allgemeine Datenschutzerklärung',
     privacyNoticeContact: 'Datenschutzkontakt',
-    privacyConsent: 'Ich willige in die Verarbeitung meiner Angaben zur Prüfung und Verbesserung dieses Lernziels ein. Die Einwilligung ist freiwillig und kann für die Zukunft widerrufen werden.',
+    privacyConsent: 'Ich willige in die Verarbeitung meiner Angaben zur Prüfung meiner Rückmeldung und zur Verbesserung von SkillPilot ein. Die Einwilligung ist freiwillig und kann für die Zukunft widerrufen werden.',
   },
   en: {
     backToGoalBook: 'Back to the learning goal book',
     backToCockpit: 'Back to the cockpit',
-    eyebrow: 'Learning-goal feedback',
-    title: 'Submit structured criticism',
-    introduction: 'Use this form to comment on the text, placement, or image for this learning goal. Your feedback remains bound to this exact learning goal and book edition.',
-    loading: 'Loading the verified learning-goal binding …',
+    eyebrow: 'Your feedback',
+    title: 'Give feedback',
+    introduction: 'What could we improve? Learning content, the coach, or using SkillPilot: simply describe what you noticed.',
+    scope: 'What is your feedback about?',
+    goalScope: 'This learning goal',
+    generalScope: 'SkillPilot in general',
+    goalDetails: 'View the learning goal and image',
+    backToStart: 'Back to the start page',
+    loading: 'Loading the learning goal …',
+    generalFallback: 'Give general feedback',
     invalidTitle: 'Invalid feedback link',
     invalidText: 'The learning-goal ID, page, or book edition could not be verified unambiguously. Please reopen the feedback link directly from the intended learning goal.',
     unavailableTitle: 'Feedback channel unavailable',
@@ -106,17 +108,8 @@ const copy = {
     edition: 'Book edition',
     page: 'Page',
     imageUnavailable: 'The learning-goal image could not be loaded. You can still provide feedback about it.',
-    category: 'Type of feedback',
-    categoryPlaceholder: 'Please select',
     observation: 'What exactly did you notice?',
-    observationHint: 'Describe as precisely as possible what is incorrect in the content, wording, image, or placement.',
-    evidence: 'What supports your concern? (optional)',
-    evidenceHint: 'For example, a counterexample, an ambiguous passage, or an observed consequence.',
-    improvement: 'How could it be improved? (optional)',
-    source: 'Source or reference (optional)',
-    sourceHint: 'Document title, link, page, or section. Links are not opened automatically.',
-    role: 'Perspective (optional)',
-    rolePlaceholder: 'No answer',
+    observationHint: 'Helpful details: Where did it happen? What did you expect, and what happened instead? Include any improvement idea or reference in the same text.',
     automated: 'I understand that the review may be technically assisted. A qualified person always decides whether the curriculum is changed.',
     send: 'Submit feedback',
     sending: 'Saving feedback …',
@@ -124,44 +117,23 @@ const copy = {
     successTitle: 'Feedback saved',
     successText: 'Thank you. Your feedback has been received and will be reviewed before any possible change.',
     receipt: 'Feedback ID',
-    noPersonalData: 'Please describe only the learning goal. Do not enter names, learner IDs, chat content, or other personal or confidential information.',
+    noPersonalData: 'Please do not include names, learner IDs, complete chats, or other personal or confidential information.',
     privacyDetailsSummary: 'Show privacy details',
-    privacyNoticeTitle: 'Privacy for learning-goal feedback',
-    privacyNoticeDate: 'Effective: August 31, 2026',
+    privacyNoticeTitle: 'Privacy for feedback',
+    privacyNoticeDate: 'Effective: November 13, 2026',
     privacyNoticeVersion: 'Notice version',
-    privacyNoticeIntro: 'The controller is enpasos - Enterprise Patterns & Solutions GmbH. We process your voluntary information solely to review and, where appropriate, improve the displayed learning goal.',
+    privacyNoticeIntro: 'The controller is enpasos - Enterprise Patterns & Solutions GmbH. We process your voluntary information solely to review your feedback and, where appropriate, improve SkillPilot, its learning content, or its usability.',
     privacyNoticeItems: [
-      'We store the form entries, the selected perspective, a random feedback ID, and the binding to the learning goal, book edition, and page. We do not request attachments, SkillPilot IDs, or chat transcripts.',
+      'We store your feedback text, a random feedback ID, the receipt time, and your acknowledged privacy notice. Learning-goal feedback also includes the learning goal, book edition, and page; general feedback has no such binding. Attachments, SkillPilot IDs, and chat transcripts are neither requested nor automatically transmitted.',
       'Unprocessed feedback is deleted during normal operation no later than 31 days after receipt. Once a review begins, it is retained only as long as needed for that review and any expressly commissioned improvement.',
       'Commissioned technical services and automated assistance may support the review. Changes to the curriculum always require qualified approval.',
       'You may withdraw consent for the future at any time and request access or deletion. Please include the displayed feedback ID where possible. Statutory obligations remain unaffected. Existing technical backups are not individually changed when data is deleted from active systems.',
     ],
     privacyNoticePolicy: 'General Privacy Policy',
     privacyNoticeContact: 'Privacy contact',
-    privacyConsent: 'I consent to the processing of my information to review and improve this learning goal. Consent is voluntary and may be withdrawn for the future.',
+    privacyConsent: 'I consent to the processing of my information to review my feedback and improve SkillPilot. Consent is voluntary and may be withdrawn for the future.',
   },
 } as const
-
-const categoryLabels: Record<GoalBookFeedbackCategory, { de: string; en: string }> = {
-  factual_error: { de: 'Fachlicher oder sachlicher Fehler', en: 'Factual or subject-matter error' },
-  wording_or_language: { de: 'Formulierung oder Sprache', en: 'Wording or language' },
-  missing_or_overbroad_goal: { de: 'Lernziel fehlt oder ist zu breit', en: 'Missing or overly broad goal' },
-  prerequisite_or_sequence: { de: 'Voraussetzung oder Reihenfolge', en: 'Prerequisite or sequence' },
-  chapter_structure: { de: 'Kapitelzuordnung oder Gliederung', en: 'Chapter placement or structure' },
-  scope_or_applicability: { de: 'Geltung, Stufe oder Kursprofil', en: 'Scope, stage, or course profile' },
-  source_assignment: { de: 'Quellenzuordnung', en: 'Source assignment' },
-  visualization_or_accessibility: { de: 'Darstellung oder Barrierefreiheit', en: 'Visualization or accessibility' },
-  other: { de: 'Sonstiges', en: 'Other' },
-}
-
-const roleLabels: Record<GoalBookFeedbackReviewerRole, { de: string; en: string }> = {
-  teacher: { de: 'Lehrkraft', en: 'Teacher' },
-  learner: { de: 'Lernende Person', en: 'Learner' },
-  parent: { de: 'Elternteil', en: 'Parent' },
-  researcher: { de: 'Forschung', en: 'Researcher' },
-  subject_expert: { de: 'Fachexpertise', en: 'Subject expert' },
-  other: { de: 'Andere Perspektive', en: 'Other perspective' },
-}
 
 const optionalText = (value: FormDataEntryValue | null): string | undefined => {
   const normalized = typeof value === 'string' ? value.trim() : ''
@@ -178,35 +150,51 @@ export const GoalBookFeedbackPilotView: React.FC = () => {
     () => parseGoalBookFeedbackLinkBinding(location.search),
     [location.search],
   )
+  const [scopeSelection, setScopeSelection] = useState<{ search: string; scope: 'goal' | 'general' }>({
+    search: location.search,
+    scope: binding ? 'goal' : 'general',
+  })
+  const feedbackScope = scopeSelection.search === location.search
+    ? scopeSelection.scope
+    : binding ? 'goal' : 'general'
+  const acknowledgementKey = `${location.search}:${feedbackScope}`
   const [loadState, setLoadState] = useState<LoadState>(() => (
-    binding ? { status: 'loading' } : { status: 'invalid-link' }
+    binding ? { status: 'loading' } : location.search ? { status: 'invalid-link' } : { status: 'general' }
   ))
   const [submitState, setSubmitState] = useState<SubmitState>({ status: 'idle' })
   const [failedVisualizationUrl, setFailedVisualizationUrl] = useState<string | null>(null)
   const [acknowledgements, setAcknowledgements] = useState({
-    bindingSearch: location.search,
+    bindingSearch: acknowledgementKey,
     locale,
     privacy: false,
     automated: false,
   })
   const formRef = useRef<HTMLFormElement>(null)
   const clientSubmissionRef = useRef<{ payloadIdentity: string; id: string } | null>(null)
+  const submissionGenerationRef = useRef(0)
+
+  // Invalidate pending answers when the form context changes, before a new
+  // form can receive an earlier form's receipt, error, or focus request.
+  useLayoutEffect(() => {
+    submissionGenerationRef.current += 1
+    return () => { submissionGenerationRef.current += 1 }
+  }, [location.pathname, location.search])
 
   useEffect(() => {
     setAcknowledgements({
-      bindingSearch: location.search,
+      bindingSearch: acknowledgementKey,
       locale,
       privacy: false,
       automated: false,
     })
-  }, [locale, location.search])
+  }, [acknowledgementKey, locale])
 
   useEffect(() => {
     clientSubmissionRef.current = null
     setSubmitState({ status: 'idle' })
     setFailedVisualizationUrl(null)
     if (!binding) {
-      setLoadState({ status: 'invalid-link' })
+      setLoadState(location.search ? { status: 'invalid-link' } : { status: 'general' })
       return
     }
     const controller = new AbortController()
@@ -215,6 +203,7 @@ export const GoalBookFeedbackPilotView: React.FC = () => {
       method: 'GET',
       headers: { Accept: 'application/json' },
       credentials: 'omit',
+      referrerPolicy: 'no-referrer',
       signal: controller.signal,
     }).then(async (response) => {
       if (!response.ok) throw new Error(`context:${response.status}`)
@@ -237,49 +226,32 @@ export const GoalBookFeedbackPilotView: React.FC = () => {
       setLoadState({ status: 'unavailable' })
     })
     return () => controller.abort()
-  }, [binding])
+  }, [binding, location.pathname, location.search])
 
   const bookTarget = binding ? goalBookRoute(binding.bookId) : '/lernzielbuch'
-  const cockpitTarget = binding && isLearnerCockpitGoalFeedbackNavigationState(location.state)
-    ? learnerCockpitGoalFeedbackReturnPath(binding)
+  const cockpitTarget = isLearnerCockpitGoalFeedbackNavigationState(location.state)
+    ? binding ? learnerCockpitGoalFeedbackReturnPath(binding) : '/learner'
     : null
   const backTarget = cockpitTarget
     ? cockpitTarget
-    : binding ? `${bookTarget}#goal-${binding.goalId}` : bookTarget
-  const backLabel = cockpitTarget ? c.backToCockpit : c.backToGoalBook
-  const acknowledgementsAreCurrent = acknowledgements.bindingSearch === location.search
+    : binding ? `${bookTarget}#goal-${binding.goalId}` : '/'
+  const backLabel = cockpitTarget ? c.backToCockpit : binding ? c.backToGoalBook : c.backToStart
+  const acknowledgementsAreCurrent = acknowledgements.bindingSearch === acknowledgementKey
     && acknowledgements.locale === locale
 
   const submit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    if (loadState.status !== 'ready' || submitState.status === 'submitting') return
+    if ((loadState.status !== 'ready' && loadState.status !== 'general') || submitState.status === 'submitting') return
     const form = event.currentTarget
     if (!form.reportValidity()) return
     const data = new FormData(form)
-    const category = data.get('category')
     const observation = optionalText(data.get('observation'))
-    if (typeof category !== 'string'
-      || !GOAL_BOOK_FEEDBACK_CATEGORIES.includes(category as GoalBookFeedbackCategory)
-      || !observation) return
-    const reviewerRoleCandidate = data.get('reviewerRole')
-    const reviewerRole = typeof reviewerRoleCandidate === 'string'
-      && GOAL_BOOK_FEEDBACK_REVIEWER_ROLES.includes(reviewerRoleCandidate as GoalBookFeedbackReviewerRole)
-      ? reviewerRoleCandidate as GoalBookFeedbackReviewerRole
-      : undefined
-    const evidence = optionalText(data.get('evidence'))
-    const proposedImprovement = optionalText(data.get('proposedImprovement'))
-    const sourceReference = optionalText(data.get('sourceReference'))
+    if (!observation) return
     const website = optionalText(data.get('website')) ?? ''
-    const content = {
-      category: category as GoalBookFeedbackCategory,
-      observation,
-      ...(evidence ? { evidence } : {}),
-      ...(proposedImprovement ? { proposedImprovement } : {}),
-      ...(sourceReference ? { sourceReference } : {}),
-      ...(reviewerRole ? { reviewerRole } : {}),
-    }
+    const goalContext = feedbackScope === 'goal' && loadState.status === 'ready' ? loadState.value.context : null
+    const content = { category: 'other' as const, observation }
     const payloadIdentity = JSON.stringify({
-      context: loadState.value.context,
+      context: goalContext,
       website,
       content,
       privacyNoticeLocale: locale,
@@ -288,18 +260,17 @@ export const GoalBookFeedbackPilotView: React.FC = () => {
     if (clientSubmissionRef.current?.payloadIdentity !== payloadIdentity) {
       clientSubmissionRef.current = { payloadIdentity, id: crypto.randomUUID() }
     }
-    const payload = createGoalBookFeedbackSubmission({
-      context: loadState.value.context,
-      clientSubmissionId: clientSubmissionRef.current.id,
-      website,
-      content,
-      privacyNoticeLocale: locale,
-    })
+    const shared = { clientSubmissionId: clientSubmissionRef.current.id, website, privacyNoticeLocale: locale } as const
+    const payload = goalContext
+      ? createGoalBookFeedbackSubmission({ ...shared, context: goalContext, content })
+      : createGeneralFeedbackSubmission({ ...shared, observation })
+    const submissionGeneration = submissionGenerationRef.current
     setSubmitState({ status: 'submitting' })
     try {
-      const response = await fetch(loadState.value.submissionEndpoint, {
+      const response = await fetch(GOAL_BOOK_FEEDBACK_SUBMISSION_ENDPOINT, {
         method: 'POST',
         credentials: 'omit',
+        referrerPolicy: 'no-referrer',
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
@@ -309,11 +280,17 @@ export const GoalBookFeedbackPilotView: React.FC = () => {
       if (response.status !== 202) throw new Error(`submit:${response.status}`)
       const receipt = parseGoalBookFeedbackSubmissionReceipt(await response.json())
       if (!receipt) throw new Error('submit:invalid-receipt')
+      if (submissionGeneration !== submissionGenerationRef.current) return
       setSubmitState({ status: 'submitted', feedbackId: receipt.feedbackId })
     } catch (reason) {
+      if (submissionGeneration !== submissionGenerationRef.current) return
       console.warn('[GoalBookFeedback] Submission failed', reason)
       setSubmitState({ status: 'error' })
-      requestAnimationFrame(() => formRef.current?.querySelector<HTMLElement>('[name="category"]')?.focus())
+      requestAnimationFrame(() => {
+        if (submissionGeneration === submissionGenerationRef.current) {
+          formRef.current?.querySelector<HTMLElement>('[name="observation"]')?.focus()
+        }
+      })
     }
   }
 
@@ -335,7 +312,7 @@ export const GoalBookFeedbackPilotView: React.FC = () => {
           <MessageSquareText size={18} aria-hidden="true" />
           {c.eyebrow}
         </p>
-        <h1 className="mt-3 text-3xl font-semibold text-slate-800 dark:text-slate-100">{c.title}</h1>
+        <h1 className="mt-3 text-2xl font-semibold text-slate-800 dark:text-slate-100 sm:text-3xl">{c.title}</h1>
         <p className="mt-4 text-base leading-7 text-text-primary">{c.introduction}</p>
 
         {loadState.status === 'loading' && <p className="mt-8" role="status">{c.loading}</p>}
@@ -349,16 +326,34 @@ export const GoalBookFeedbackPilotView: React.FC = () => {
             <p className="mt-2 text-sm leading-6">
               {loadState.status === 'invalid-link' ? c.invalidText : c.unavailableText}
             </p>
+            <Link to="/lernziel-feedback"
+              state={isLearnerCockpitGoalFeedbackNavigationState(location.state) ? location.state : null}
+              className="mt-3 inline-flex min-h-11 items-center rounded-lg border border-amber-400 px-3 py-2 text-sm font-semibold underline-offset-2 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-600">
+              {c.generalFallback}
+            </Link>
           </section>
         )}
 
-        {loadState.status === 'ready' && (
+        {(loadState.status === 'ready' || loadState.status === 'general') && (
           <>
-            <section className="mt-7 rounded-xl border border-violet-200 bg-violet-50/70 p-4 dark:border-violet-900 dark:bg-violet-950/30" aria-labelledby="feedback-goal-title">
+            {binding && submitState.status !== 'submitted' && <fieldset className="mt-6">
+              <legend className="text-sm font-semibold">{c.scope}</legend>
+              <div className="mt-2 flex flex-wrap gap-2">
+                {(['goal', 'general'] as const).map((scope) => <button key={scope} type="button"
+                  disabled={submitState.status === 'submitting'} aria-pressed={feedbackScope === scope}
+                  onClick={() => { setScopeSelection({ search: location.search, scope }); setSubmitState({ status: 'idle' }) }}
+                  className={`min-h-11 rounded-lg border px-4 py-2 text-sm font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 ${feedbackScope === scope ? 'border-violet-600 bg-violet-100 text-violet-950 dark:bg-violet-950 dark:text-violet-100' : 'border-border-color'}`}>
+                  {scope === 'goal' ? c.goalScope : c.generalScope}
+                </button>)}
+              </div>
+            </fieldset>}
+            {loadState.status === 'ready' && feedbackScope === 'goal' && <section className="mt-7 rounded-xl border border-violet-200 bg-violet-50/70 p-4 dark:border-violet-900 dark:bg-violet-950/30" aria-labelledby="feedback-goal-title">
               <p className="text-xs text-text-secondary">{loadState.value.goal.breadcrumbs.join(' › ')}</p>
               <h2 id="feedback-goal-title" className="mt-1 text-xl font-semibold text-violet-950 dark:text-violet-100">
                 {loadState.value.goal.title}
               </h2>
+              <details className="mt-3">
+                <summary className="min-h-11 cursor-pointer py-2 text-sm font-medium">{c.goalDetails}</summary>
               {loadState.value.goal.visualization
                 && failedVisualizationUrl !== loadState.value.goal.visualization.url && (
                 <figure className="mt-4 overflow-hidden rounded-xl border border-violet-200 bg-white p-3 dark:border-violet-800 dark:bg-slate-950/60">
@@ -390,7 +385,8 @@ export const GoalBookFeedbackPilotView: React.FC = () => {
                 <dt className="font-semibold">{c.page}</dt>
                 <dd>{loadState.value.context.pageNumber}</dd>
               </dl>
-            </section>
+              </details>
+            </section>}
 
             {submitState.status === 'submitted' ? (
               <section className="mt-7 rounded-xl border border-emerald-300 bg-emerald-50 p-5 text-emerald-950 dark:border-emerald-900 dark:bg-emerald-950/35 dark:text-emerald-100" role="status">
@@ -405,51 +401,13 @@ export const GoalBookFeedbackPilotView: React.FC = () => {
               </section>
             ) : (
               <form ref={formRef} onSubmit={(event) => { void submit(event) }} className="mt-7 space-y-5">
-                <p className="rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm leading-6 text-amber-950 dark:border-amber-900 dark:bg-amber-950/35 dark:text-amber-100">
-                  {c.noPersonalData}
-                </p>
-                <label className="block text-sm font-semibold text-text-primary">
-                  {c.category}
-                  <select name="category" required defaultValue="" className="mt-1 min-h-11 w-full rounded-lg border border-border-color bg-white px-3 py-2 text-text-primary dark:bg-slate-900">
-                    <option value="" disabled>{c.categoryPlaceholder}</option>
-                    {GOAL_BOOK_FEEDBACK_CATEGORIES.map((category) => (
-                      <option key={category} value={category}>{categoryLabels[category][locale]}</option>
-                    ))}
-                  </select>
-                </label>
-
                 <label className="block text-sm font-semibold text-text-primary">
                   {c.observation}
                   <span className="mt-1 block text-xs font-normal leading-5 text-text-secondary">{c.observationHint}</span>
-                  <textarea name="observation" required minLength={1} maxLength={4000} rows={5} className="mt-2 w-full rounded-lg border border-border-color bg-white px-3 py-2 font-normal text-text-primary dark:bg-slate-900" />
+                  <textarea name="observation" required minLength={1} maxLength={4000} rows={9}
+                    className="mt-2 min-h-56 w-full resize-y rounded-lg border border-border-color bg-white px-3 py-3 text-base font-normal leading-7 text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 dark:bg-slate-900" />
                 </label>
-
-                <label className="block text-sm font-semibold text-text-primary">
-                  {c.evidence}
-                  <span className="mt-1 block text-xs font-normal leading-5 text-text-secondary">{c.evidenceHint}</span>
-                  <textarea name="evidence" maxLength={4000} rows={3} className="mt-2 w-full rounded-lg border border-border-color bg-white px-3 py-2 font-normal text-text-primary dark:bg-slate-900" />
-                </label>
-
-                <label className="block text-sm font-semibold text-text-primary">
-                  {c.improvement}
-                  <textarea name="proposedImprovement" maxLength={4000} rows={3} className="mt-2 w-full rounded-lg border border-border-color bg-white px-3 py-2 font-normal text-text-primary dark:bg-slate-900" />
-                </label>
-
-                <label className="block text-sm font-semibold text-text-primary">
-                  {c.source}
-                  <span className="mt-1 block text-xs font-normal leading-5 text-text-secondary">{c.sourceHint}</span>
-                  <textarea name="sourceReference" maxLength={4000} rows={2} className="mt-2 w-full rounded-lg border border-border-color bg-white px-3 py-2 font-normal text-text-primary dark:bg-slate-900" />
-                </label>
-
-                <label className="block text-sm font-semibold text-text-primary">
-                  {c.role}
-                  <select name="reviewerRole" defaultValue="" className="mt-1 min-h-11 w-full rounded-lg border border-border-color bg-white px-3 py-2 text-text-primary dark:bg-slate-900">
-                    <option value="">{c.rolePlaceholder}</option>
-                    {GOAL_BOOK_FEEDBACK_REVIEWER_ROLES.map((role) => (
-                      <option key={role} value={role}>{roleLabels[role][locale]}</option>
-                    ))}
-                  </select>
-                </label>
+                <p className="text-xs leading-5 text-text-secondary">{c.noPersonalData}</p>
 
                 <div aria-hidden="true" className="absolute left-[-10000px] h-px w-px overflow-hidden">
                   <label>Website<input type="text" name="website" tabIndex={-1} autoComplete="off" /></label>
@@ -489,9 +447,9 @@ export const GoalBookFeedbackPilotView: React.FC = () => {
                     required
                     checked={acknowledgementsAreCurrent && acknowledgements.privacy}
                     onChange={(event) => setAcknowledgements((current) => {
-                      const sameNotice = current.bindingSearch === location.search && current.locale === locale
+                      const sameNotice = current.bindingSearch === acknowledgementKey && current.locale === locale
                       return {
-                        bindingSearch: location.search,
+                        bindingSearch: acknowledgementKey,
                         locale,
                         privacy: event.target.checked,
                         automated: sameNotice ? current.automated : false,
@@ -508,9 +466,9 @@ export const GoalBookFeedbackPilotView: React.FC = () => {
                     required
                     checked={acknowledgementsAreCurrent && acknowledgements.automated}
                     onChange={(event) => setAcknowledgements((current) => {
-                      const sameNotice = current.bindingSearch === location.search && current.locale === locale
+                      const sameNotice = current.bindingSearch === acknowledgementKey && current.locale === locale
                       return {
-                        bindingSearch: location.search,
+                        bindingSearch: acknowledgementKey,
                         locale,
                         privacy: sameNotice ? current.privacy : false,
                         automated: event.target.checked,

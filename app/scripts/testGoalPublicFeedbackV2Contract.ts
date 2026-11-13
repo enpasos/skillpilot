@@ -84,6 +84,7 @@ assert.equal(
   'historical submissions must remain valid against the published V2 schema',
 )
 assert.equal(validate({ ...envelope, privacyNoticeVersion: '2026-08-30.0' }), false)
+assert.equal(validate({ ...envelope, privacyNoticeVersion: '2026-11-13.1' }), true)
 assert.equal(validate({ ...envelope, privacyNoticeLocale: 'de-DE' }), false)
 assert.equal(validate({ ...envelope, privacyNoticeLocale: 'en' }), true)
 assert.equal(validate({ ...envelope, learnerId: 'forbidden' }), false)
