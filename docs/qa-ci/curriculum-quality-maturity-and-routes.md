@@ -17,7 +17,9 @@
 !!! info "Workbench-Lesart und Konzeptkorrektur vom 4. November 2026"
     Fachliche Spezifikation der Anzeige unter `/quality-dashboard` und der generierten Snapshots in `docs/qa-ci/status/curriculum-quality-status.json` (Generator: `cd app && npm run quality:curriculum-status` via `app/scripts/generateCurriculumQualityStatus.ts`; Kurzüberblick: [Dashboard Status Layer](curriculum-quality-dashboard.de.md)). **Konzeptkorrektur vom 4. November 2026:** Bisherige `M7`-Freigaben oder bestandene Routenprüfungen belegen nicht automatisch, dass Prüfungsaufgaben die selbständige Anwendung sämtlicher implizit anerkannten Kompetenzen gemäß [Assessment-Gated Completion](../concept/skill-graph/assessment-gated-completion.de.md) absichern; diese Autorenpflicht erfordert ein separates Aufgaben-/Rubrikreview.
 
-Der Kandidat vom 12. November 2026 ergänzt die direkte Durchsetzung durch `check:transitive-minimality` für alle 21 kanonischen Wurzeln und `check:curriculum-maturity-floors` für den vollständigen Katalog, zwölf deklarierte Scope-Identitäten, genaue Reifepins und erforderliche einzelne Regelpasses. Letzterer prüft gegen `--base-ref` (PR-Basis-SHA, SHA vor dem Push oder lokal `origin/main`) und scheitert hart bei fehlenden, doppelten, nicht bestandenen oder dekonfigurierten Pflichtregeln. Weder numerische Reife noch eine regenerierte Statusdatei allein erfüllen diese Verpflichtungen. Der gemeinsame Auswerter von `CQR-102` umfasst alle zwölf Profile; die stärkere semantische Regel `GVR-012` bleibt mathematikspezifisch. Kandidatenevidenz behauptet weder Merge noch Abnahme auf main.
+**Erreichte Härtung, 13. November 2026:** Die direkte Durchsetzung ist mit [PR #131](https://github.com/enpasos/skillpilot/pull/131) auf `main` angekommen. Nach den anschließenden Änderungen am historischen Reviewnachweis und der Mathematikprüfung bestand `main` bei `2129b207f4` alle 14 Jobs von [CI #2315](https://github.com/enpasos/skillpilot/actions/runs/43398052180). Der [Liefernachweis](../dev/cqr-gvr-hard-gate-plan-2026-11-12.md) trennt diesen späteren Integrationsstand vom ursprünglichen PR-Lauf und dem abgebrochenen CI-Lauf seines Merge-Commits. Im CQR/GVR-Register sind damit 22 Codes in ihrem benannten Bereich hart durchgesetzt; `CQR-104` und `GVR-012` bleiben wegen der unten benannten Abdeckungslücken `TEIL`. Das ist maschinelle QA und kein Nachweis menschlicher Erprobung oder vollständiger Umsetzung aller Graphregeln.
+
+`check:transitive-minimality` prüft alle 21 kanonischen Wurzeln direkt. `check:curriculum-maturity-floors` erzwingt den vollständigen Katalog, zwölf deklarierte Scope-Identitäten, genaue Reifepins und erforderliche einzelne Regelpasses. Auch für die elf Wurzeln auf M0 müssen `CQR-001`, `CQR-002` und `CQR-501` jeweils `pass` sein. Der Prüfer vergleicht mit `--base-ref` (PR-Basis-SHA, SHA vor dem Push oder lokal `origin/main`) und scheitert bei fehlenden, doppelten, nicht bestandenen oder dekonfigurierten Pflichtregeln sowie entfernten oder abgesenkten Pins. Ein Reifegewinn erfordert im selben Änderungsstand einen erhöhten Pin. Weder numerische Reife noch eine regenerierte Statusdatei allein erfüllen diese Verpflichtungen. Der gemeinsame Auswerter von `CQR-102` umfasst alle zwölf Profile; die stärkere semantische Regel `GVR-012` bleibt auf die beiden Mathematik-Scopes begrenzt.
 
 Die direkte Sichtbarkeitsverpflichtung `CQR-104` bleibt auf ihre acht konfigurierten Scopes von zwölf Routenprofilen begrenzt. Versuche zum Ausbau auf die vier Stufenprofile ergaben 80 Befunde in Mathematik, 68 in Physik, 41 in Chemie und 3 in Biologie; Filterung nach kompilierter Landesanwendbarkeit behob sie nicht. Der Ausbau ist ohne Absenkung bestehender Reifegrad-Floors zurückgestellt. Die fest gebundene Prüfung schützt die Acht-Scope-Konfiguration gegen stilles Entfernen.
 
@@ -57,15 +59,17 @@ Jede `CQR-*`-Regel liefert `pass`, `warn`, `fail` oder `not_configured`. Seit de
 | --- | --- |
 | **`M0`** | `CQR-101` nicht `pass` (effektive Route von Motivation zu terminaler Autonomie noch offen). |
 | **`M1`** | `CQR-101` `pass`, aber `CQR-102` oder `CQR-103` offen (direkte atomare Route oder Cluster-`requires` offen). |
-| **`M2`** | `CQR-101..103` `pass`, aber `CQR-104` oder `CQR-201`/`CQR-202` offen (Sichtbarkeit / terminale `examData`). |
+| **`M2`** | `CQR-101..103` `pass`, aber eine erforderliche Sichtbarkeitsprüfung `CQR-104` oder `CQR-201`/`CQR-202` nicht `pass`. |
 | **`M3`** | Routen- und Basis-Assessment-Regeln `pass`, aber `CQR-203` noch offen. |
-| **`M4`** | Sämtliche Routen- und Assessment-Regeln einschließlich `CQR-203` stehen auf `pass`. |
+| **`M4`** | Sämtliche erforderlichen Routen- und Assessment-Regeln einschließlich `CQR-203` stehen auf `pass`. |
+
+Die Sichtbarkeitsprüfung ist in acht Scopes vorgeschrieben. In den übrigen vier fehlt sie weiterhin; deren Scope-M4 belegt daher keine Endpunktsichtbarkeit. Eine vorhandene `CQR-104`-Regel muss immer `pass` sein. Zusätzlich begrenzt ein nicht bestandenes `CQR-001` oder `CQR-002` jeden Scope des Fachs auf M0.
 
 | Curriculum | Kumulative Bedingung auf Fachebene (Skala `M0`–`M7`) |
 | --- | --- |
-| **`M0`** | `CQR-001` oder `CQR-002` verletzt oder Source-Ingestion inkl. amtlicher HTTP(S)-Links (`CQR-000`) unsauber. |
-| **`M1`** | `CQR-000..002` sauber, aber Bundesland-View-Abdeckung (`CQR-003`) oder `GK`/`LK`-Konsistenz (`CQR-004`) offen. |
-| **`M2`** | `CQR-000..004` sauber; QA-Scopes fehlen noch oder mindestens ein Scope verfehlt `CQR-101`. |
+| **`M0`** | Mindestens eine Regel `CQR-000..002` ist nicht `pass` (Quelleninventar, Graphintegrität oder Typkonsistenz). |
+| **`M1`** | `CQR-000..002` sind `pass`, aber mindestens eine Regel `CQR-003..005` ist nicht `pass` (Bundesland-View-Abdeckung, `GK`/`LK`-Konsistenz oder Quellenumfangsplausibilität). |
+| **`M2`** | `CQR-000..005` sind `pass`; QA-Scopes fehlen noch oder mindestens ein Scope erreicht nicht Scope-`M2`. |
 | **`M3`** | Alle QA-Scopes bestehen `CQR-101`, `CQR-102` und `CQR-103`, sind aber noch nicht durchgängig exam-mode-fähig. |
 | **`M4`** | Alle QA-Scopes >= Scope-`M3`, aber noch nicht alle Scope-`M4` oder `CQR-301`/`401`/`501` offen. |
 | **`M5`** | **Schulgeeigneter Kern-QS-Stand:** alle QA-Scopes auf Scope-`M4` plus `CQR-301`, `CQR-401` und `CQR-501` `pass`. |
