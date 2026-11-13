@@ -102,14 +102,17 @@ test('proof and auditor detect edits after their own import, before lazy compile
   const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
   const root = mkdtempSync(join(repoRoot, 'tmp', 'proof-code-generation-'))
   try {
-    for (const module of ['prerequisiteReductionProof', 'auditTransitiveMinimality', 'learningUnitLayerProjection']) {
+    for (const module of ['prerequisiteReductionProof', 'auditTransitiveMinimality', 'learningUnitLayerProjection', 'historicalReviewDependencyScope']) {
       const scripts = join(root, module, 'app', 'scripts')
       mkdirSync(scripts, { recursive: true })
       writeFileSync(join(root, module, 'package.json'), JSON.stringify({ type: 'module' }))
       for (const name of ['prerequisiteReductionProof', 'auditTransitiveMinimality', 'learningUnitLayerProjection'])
         copyFileSync(join(repoRoot, 'app', 'scripts', `${name}.ts`), join(scripts, `${name}.ts`))
+      mkdirSync(join(scripts, 'lib'), { recursive: true })
+      copyFileSync(join(repoRoot, 'app', 'scripts', 'lib', 'historicalReviewDependencyScope.ts'),
+        join(scripts, 'lib', 'historicalReviewDependencyScope.ts'))
       const proofPath = join(scripts, 'prerequisiteReductionProof.ts')
-      const changedPath = join(scripts, `${module}.ts`)
+      const changedPath = join(scripts, ...(module === 'historicalReviewDependencyScope' ? ['lib'] : []), `${module}.ts`)
       const script = `import { readFileSync, writeFileSync } from 'node:fs';
         import { pathToFileURL } from 'node:url';
         const proof = await import(pathToFileURL(${JSON.stringify(proofPath)}).href);

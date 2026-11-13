@@ -533,3 +533,10 @@ plan.
   Active and historical widget bytes are unchanged. A fresh full PR run is
   required for the resulting head; earlier successful jobs do not substitute
   for that result.
+- 2026-11-13: full remote gate tests exposed a stale isolated module-copy
+  fixture: `testApplicabilityInputSnapshot.ts` omitted the new historical
+  dependency helper. Added the required file and a fourth implementation
+  mutation case for that helper, preserving the existing rejection assertion.
+  The reproduced failing suite now passes 5/5; ESLint passes. Other child
+  process fixtures import the real module tree and need no copy adjustment.
+  No proof implementation, compiler or curriculum data changed in this repair.
