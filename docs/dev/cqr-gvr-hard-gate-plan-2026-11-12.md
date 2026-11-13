@@ -703,6 +703,20 @@ plan.
   checked, with the existing route-failure guards unchanged. The complete
   Physics input test passed locally; this changes no product, graph, view or
   review data. The corrected candidate still requires complete remote CI.
+- 2026-11-13, backend CI #2342: the complete run finished with 2,772 tests,
+  six failures and 19 skips. All six failures came from active-frontier
+  assertions using retired Hessen source identities. The replacement uses
+  an isolated live landscape and retains all three mastery scenarios,
+  nonempty independent reference sets, the 20-goal compaction boundary,
+  transitive prerequisite demand, autopilot membership and read/revision
+  separation. A separate HTTP regression reads the unchanged historical
+  export fixture: all 205 mastery values and configuration remain readable;
+  re-export also retains the stored focus, while retired active routes remain 409.
+  The final compiled local run passed all 92 selected tests with no failures,
+  errors or skips: frontier invariants (7), canonical projections (59),
+  automatic completion (14), frontier fallback (2) and historical/retirement
+  HTTP contracts (10). No runtime or curriculum data was changed to restore
+  these tests; complete CI on the corrected commit remains required.
 
 ## 10. Follow-up programme: clean Gymnasium (13 November 2026)
 

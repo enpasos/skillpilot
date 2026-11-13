@@ -42,16 +42,24 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
 import org.springframework.context.ApplicationEventPublisher;
 
 public class LearnerFrontierInvariantTest {
 
     private static final String LEARNER_ID = "test-learner";
-    private static final String CURRICULUM_ID = "bbbf39f3-4a5b-46cf-9edd-48f2c54ae0da";
-    private static final String MATH_LANDSCAPE_ID = "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3";
-    private static final String Q22_CLUSTER_ID = "edef12b4-638c-4d19-8c8d-2c0e102ef2d1";
-    private static final String Q22_VECTORS_ID = "db064bbe-5adb-4661-bb78-932789919e36";
+    private static final String CURRICULUM_ID = "frontier-invariant-overview";
+    private static final String MATH_LANDSCAPE_ID = "frontier-invariant-math";
+    private static final String MATH_ROOT_ID = "math-root";
+    private static final String Q22_CLUSTER_ID = "vector-scope";
+    private static final String Q22_VECTORS_ID = "vectors";
+    private static final String ORIENTATION_ID = "orientation";
+    private static final String POLYNOMIAL_BASICS_ID = "polynomial-basics";
+    private static final String SYMMETRY_ID = "symmetry";
     private static final String FILTER_ID = "LK";
+
+    @TempDir
+    static Path fixtureDirectory;
 
     private static ObjectMapper objectMapper;
     private static LandscapeService landscapeService;
@@ -67,12 +75,23 @@ public class LearnerFrontierInvariantTest {
     private Learner learner;
 
     @BeforeAll
-    static void initLandscapeService() {
+    static void initLandscapeService() throws Exception {
         objectMapper = new ObjectMapper();
+        // Exercise the real active-file loader without reviving retired Hessen
+        // source landscapes. The historical learner export has a separate HTTP
+        // read/export regression in LearnerControllerIntegrationTest.
+        writeActiveFixture();
         LandscapeProperties properties = new LandscapeProperties();
-        properties.setDirectory(resolveCurriculaDir().toString());
+        properties.setDirectory(fixtureDirectory.toString());
         landscapeService = new LandscapeService(properties, objectMapper);
         goalMappingService = new GoalMappingService(properties, objectMapper);
+
+        assertThat(landscapeService.getClosure(CURRICULUM_ID))
+                .extracting(SkillLandscape::getLandscapeId)
+                .containsExactlyInAnyOrder(CURRICULUM_ID, MATH_LANDSCAPE_ID);
+        assertThat(getFilteredGoals(CURRICULUM_ID, buildPersonalConfigJson()))
+                .containsKeys(Q22_CLUSTER_ID, Q22_VECTORS_ID, MATH_ROOT_ID,
+                        ORIENTATION_ID, POLYNOMIAL_BASICS_ID, SYMMETRY_ID);
     }
 
     @AfterAll
@@ -137,6 +156,11 @@ public class LearnerFrontierInvariantTest {
 
             Set<String> expected = computeReferenceFrontier(mastery, List.of(Q22_CLUSTER_ID));
 
+            assertThat(expected).as("nonempty independent frontier for mastery %s", mastery).isNotEmpty();
+            if (mastery.isEmpty()) {
+                assertThat(frontier).hasSize(20).allMatch(goal -> "atomic".equals(goal.type()));
+                assertThat(learnerService.getUncompactedRichFrontier(LEARNER_ID)).hasSizeGreaterThan(20);
+            }
             assertThat(actual).containsExactlyInAnyOrderElementsOf(expected);
         }
     }
@@ -155,7 +179,7 @@ public class LearnerFrontierInvariantTest {
     }
 
     @Test
-    void autoPilotLocksFirstAtomicFrontierGoalServerSide() {
+    void autoPilotLocksFirstAtomicFrontierGoalServerSide() throws Exception {
         learner.setAutoPilot(true);
         setPlannedGoals(Q22_CLUSTER_ID);
         setMastery(Collections.emptyMap());
@@ -163,6 +187,8 @@ public class LearnerFrontierInvariantTest {
         var state = learnerService.getLearnerState(LEARNER_ID);
 
         assertThat(state.activeGoal()).isNotNull();
+        assertThat(expectedAtomicFrontier(Collections.emptyMap(), List.of(Q22_CLUSTER_ID)))
+                .contains(state.activeGoal().id());
         assertThat(state.activeGoal().id()).isEqualTo(learner.getActiveGoalId());
         assertThat(state.stateMachine().requiredAction()).isEqualTo("teachActiveGoal");
         assertThat(state.stateMachine().activeGoal()).isNotNull();
@@ -175,7 +201,7 @@ public class LearnerFrontierInvariantTest {
     }
 
     @Test
-    void coachReadProjectionDoesNotActivateAutopilotOrAdvanceRevision() {
+    void coachReadProjectionDoesNotActivateAutopilotOrAdvanceRevision() throws Exception {
         learner.setAutoPilot(true);
         setPlannedGoals(Q22_CLUSTER_ID);
         setMastery(Collections.emptyMap());
@@ -189,12 +215,14 @@ public class LearnerFrontierInvariantTest {
 
         var cockpitState = learnerService.getLearnerState(LEARNER_ID);
         assertThat(cockpitState.activeGoal()).isNotNull();
+        assertThat(expectedAtomicFrontier(Collections.emptyMap(), List.of(Q22_CLUSTER_ID)))
+                .contains(cockpitState.activeGoal().id());
         assertThat(learner.getCoachStateRevision()).isEqualTo(revisionBeforeRead + 1L);
     }
 
     @Test
-    void frontierMatchesExportSnapshot() throws Exception {
-        Snapshot snapshot = loadSnapshot("exports/learner_export_1c90a010.json");
+    void frontierRetainsTransitiveDemandWithMasteredIntermediate() throws Exception {
+        Snapshot snapshot = partiallyMasteredSnapshot();
 
         learner.setSelectedCurriculum(snapshot.selectedCurriculum());
         learner.setPersonalCurriculum(snapshot.personalCurriculum());
@@ -212,11 +240,11 @@ public class LearnerFrontierInvariantTest {
                 snapshot.plannedGoals());
 
         // A persisted intermediate retains the successor's transitive demand.
-        // This real export has symmetry -> polynomial basics -> orientation,
-        // with only polynomial basics mastered.
-        String symmetry = "8f42b49d-a2fb-45f5-9da3-97ec96b8113e";
-        String polynomialBasics = "0903db01-4377-4a79-8f29-aceffea68f24";
-        String orientation = "bea16be0-88b3-51b7-be3b-494d5c496105";
+        // Symmetry -> polynomial basics -> orientation, with only the
+        // intermediate mastered. The graph traversal must not stop there.
+        String symmetry = SYMMETRY_ID;
+        String polynomialBasics = POLYNOMIAL_BASICS_ID;
+        String orientation = ORIENTATION_ID;
         Map<String, LearningGoal> filteredGoals = getFilteredGoals(snapshot.selectedCurriculum(),
                 snapshot.personalCurriculum());
         assertThat(filteredGoals.get(symmetry).getRequires()).contains(polynomialBasics);
@@ -234,21 +262,20 @@ public class LearnerFrontierInvariantTest {
                 .map(LearningGoal::getId)
                 .collect(Collectors.toSet());
 
-        if (!expectedAtomic.isEmpty()) {
-            var state = learnerService.getLearnerState(LEARNER_ID);
-            assertThat(state.stateMachine().requiredAction()).isEqualTo("setActiveGoal");
-            assertThat(state.stateMachine().goalOptions()).isNotEmpty()
-                    .allMatch(goal -> "atomic".equals(goal.type()));
-            Set<String> optionIds = state.stateMachine().goalOptions().stream()
-                    .map(FrontierGoal::id)
-                    .collect(Collectors.toSet());
-            assertThat(optionIds).isSubsetOf(expectedAtomic);
-        }
+        assertThat(expectedAtomic).isNotEmpty();
+        var state = learnerService.getLearnerState(LEARNER_ID);
+        assertThat(state.stateMachine().requiredAction()).isEqualTo("setActiveGoal");
+        assertThat(state.stateMachine().goalOptions()).isNotEmpty()
+                .allMatch(goal -> "atomic".equals(goal.type()));
+        Set<String> optionIds = state.stateMachine().goalOptions().stream()
+                .map(FrontierGoal::id)
+                .collect(Collectors.toSet());
+        assertThat(optionIds).isSubsetOf(expectedAtomic);
     }
 
     @Test
     void snapshotHasAtomicFrontierWhenAtomicUnmasteredExists() throws Exception {
-        Snapshot snapshot = loadSnapshot("exports/learner_export_1c90a010.json");
+        Snapshot snapshot = partiallyMasteredSnapshot();
 
         learner.setSelectedCurriculum(snapshot.selectedCurriculum());
         learner.setPersonalCurriculum(snapshot.personalCurriculum());
@@ -307,14 +334,55 @@ public class LearnerFrontierInvariantTest {
         return objectMapper.writeValueAsString(config);
     }
 
-    private static Path resolveCurriculaDir() {
-        Path[] candidates = new Path[] { Path.of("..", "curricula"), Path.of("curricula") };
-        for (Path candidate : candidates) {
-            if (Files.isDirectory(candidate)) {
-                return candidate.toAbsolutePath().normalize();
-            }
+    private static void writeActiveFixture() throws Exception {
+        Files.writeString(fixtureDirectory.resolve("overview.json"), """
+                {"landscapeId":"frontier-invariant-overview","title":"Active frontier contract",
+                 "goals":[{"id":"overview","title":"Overview","type":"cluster",
+                 "contains":["math-root"]}]}
+                """);
+
+        List<String> vectorChildren = new ArrayList<>(List.of(Q22_VECTORS_ID, "scaled-vectors"));
+        List<LearningGoal> goals = new ArrayList<>();
+        goals.add(fixtureGoal(MATH_ROOT_ID, List.of(Q22_CLUSTER_ID, "analysis-scope"), List.of()));
+        goals.add(fixtureGoal(Q22_CLUSTER_ID, vectorChildren, List.of()));
+        goals.add(fixtureGoal(Q22_VECTORS_ID, List.of(), List.of()));
+        goals.add(fixtureGoal("scaled-vectors", List.of(), List.of(Q22_VECTORS_ID)));
+        // Keep the former real-export suite's >20 frontier compaction coverage.
+        for (int i = 1; i <= 24; i++) {
+            String id = "independent-vector-skill-" + i;
+            vectorChildren.add(id);
+            goals.add(fixtureGoal(id, List.of(), List.of()));
         }
-        throw new IllegalStateException("Could not locate curricula directory from test execution path.");
+        goals.add(fixtureGoal("analysis-scope", List.of(ORIENTATION_ID, POLYNOMIAL_BASICS_ID, SYMMETRY_ID), List.of()));
+        goals.add(fixtureGoal(ORIENTATION_ID, List.of(), List.of()));
+        goals.add(fixtureGoal(POLYNOMIAL_BASICS_ID, List.of(), List.of(ORIENTATION_ID)));
+        goals.add(fixtureGoal(SYMMETRY_ID, List.of(), List.of(POLYNOMIAL_BASICS_ID)));
+        objectMapper.writeValue(fixtureDirectory.resolve("mathematics.json").toFile(), Map.of(
+                "landscapeId", MATH_LANDSCAPE_ID, "title", "Active mathematics contract", "goals", goals));
+    }
+
+    private static LearningGoal fixtureGoal(String id, List<String> contains, List<String> requires) {
+        LearningGoal goal = new LearningGoal();
+        goal.setId(id);
+        goal.setTitle(id);
+        goal.setType(contains.isEmpty() ? "atomic" : "cluster");
+        goal.setContains(contains);
+        goal.setRequires(requires);
+        goal.setTags(List.of(FILTER_ID));
+        return goal;
+    }
+
+    private static Snapshot partiallyMasteredSnapshot() throws Exception {
+        return new Snapshot(CURRICULUM_ID, buildPersonalConfigJson(), List.of("analysis-scope"),
+                Map.of(POLYNOMIAL_BASICS_ID, 1.0));
+    }
+
+    private static Set<String> expectedAtomicFrontier(Map<String, Double> mastery, List<String> plannedIds)
+            throws Exception {
+        Map<String, LearningGoal> goals = getFilteredGoals(CURRICULUM_ID, buildPersonalConfigJson());
+        return computeReferenceFrontier(mastery, plannedIds).stream()
+                .filter(id -> goals.get(id).getContains() == null || goals.get(id).getContains().isEmpty())
+                .collect(Collectors.toSet());
     }
 
     private static List<Map<String, Double>> buildMasteryScenarios() throws Exception {
@@ -719,33 +787,6 @@ public class LearnerFrontierInvariantTest {
         }
 
         return quotas;
-    }
-
-    private static Snapshot loadSnapshot(String resourcePath) throws Exception {
-        try (var stream = LearnerFrontierInvariantTest.class.getClassLoader().getResourceAsStream(resourcePath)) {
-            if (stream == null) {
-                throw new IllegalStateException("Snapshot resource not found: " + resourcePath);
-            }
-            var root = objectMapper.readTree(stream);
-            var data = root.path("serverExport").path("data");
-            var learnerNode = data.path("learner");
-            String selectedCurriculum = learnerNode.path("selectedCurriculum").asText();
-            String personalCurriculum = learnerNode.path("personalCurriculum").asText();
-
-            List<String> plannedGoals = new ArrayList<>();
-            data.path("plannedGoals").forEach(node -> plannedGoals.add(node.asText()));
-
-            Map<String, Double> mastery = new HashMap<>();
-            var masteryNode = data.path("mastery");
-            var fields = masteryNode.fieldNames();
-            while (fields.hasNext()) {
-                String goalId = fields.next();
-                double value = masteryNode.path(goalId).path("value").asDouble(0.0);
-                mastery.put(goalId, value);
-            }
-
-            return new Snapshot(selectedCurriculum, personalCurriculum, plannedGoals, mastery);
-        }
     }
 
     private record Snapshot(String selectedCurriculum, String personalCurriculum, List<String> plannedGoals,

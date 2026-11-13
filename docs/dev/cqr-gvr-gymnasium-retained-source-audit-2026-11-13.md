@@ -105,6 +105,21 @@ curriculum identities, passed in the final focused run. The other eight-class
 coverage included real mapping/provenance fixtures, canonical landscape
 closures, decks, learner services and personalization migration.
 
+Full CI #2342 subsequently exposed six active-frontier assertions that still
+used retired Hessen source identities. Their independent reference could also
+return an empty set from the same empty live closure. The test now uses a real
+isolated live fixture, requires nonempty reference sets and retains complete
+frontier comparisons, the 20-goal compaction boundary, transitive demand and
+autopilot/read-revision checks. A separate HTTP regression reads the original
+historical export fixture without changing its bytes: its 205 mastery values
+and personal configuration remain readable, and re-export also retains focus. Live
+lookup/closure remain empty and active UI/AI routes remain rejected. These are
+test-contract corrections, with no runtime or source-data exception.
+The final compiled local regression run passed 92/92 tests with zero failures,
+errors or skips: seven frontier invariants, 59 canonical projection cases,
+14 automatic-completion cases, two frontier fallback cases and ten historical
+or retirement HTTP cases. The original export fixture remains byte-identical.
+
 Backend terminal results are also recorded in the programme progress log together
 with integration verification. These local checks do not establish remote CI,
 merge or deployment acceptance.
