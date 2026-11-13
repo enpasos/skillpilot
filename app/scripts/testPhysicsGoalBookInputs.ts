@@ -213,6 +213,9 @@ const SEMANTIC_RECHECK_ATOMIC_GOAL_IDS = new Set([
   'f2538793-8b0a-5c3b-b216-5d329a4e87bd', // Normalized interval probability; no energy calculation claim.
   // B053: substantive model-function recheck in model-wording-informed-layer-a-alignment-20260913-v1.receipt.json.
   'e5bc2227-d900-585f-8ac0-9d3f1cb40e27',
+  // Feedback of 13 November 2026: targeted recheck after the umlaut correction of title and description,
+  // quality/release-model/physics-feedback-spelling-semantic-review-2026-11-13.md.
+  '727d0946-7019-50ed-8fc6-85db12508733',
 ])
 const STRUCTURAL_SPLIT_ATOMIC_GOAL_IDS = new Set([
   '2a6ad2c6-3e1b-57a9-82a1-e6620a532f5c',
