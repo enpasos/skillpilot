@@ -2029,10 +2029,8 @@ function evaluateRouteEndpointCompositionVisibility(
       evaluatedProjectionScopes += 1
       const scopeLabel = `${toRepoPath(file)}${jurisdiction ? ` [${jurisdiction}]` : ''}`
 
-      const scopeFilters = useCompiledJurisdiction
-        ? [view.scope.courseProfile, view.scope.durationModel]
-          .filter((value): value is string => typeof value === 'string' && value.trim().length > 0)
-        : []
+      const scopeFilters = [view.scope.courseProfile, view.scope.durationModel]
+        .filter((value): value is string => typeof value === 'string' && value.trim().length > 0)
       const removeGoalsOutsideCompiledProjection = (goalIds: Set<string>) => {
         if (!useCompiledJurisdiction || !jurisdiction) return
         Array.from(goalIds).forEach((goalId) => {
@@ -2156,10 +2154,10 @@ function evaluateRouteEndpointCompositionVisibility(
         })
       }
       const expectedTerminalGoalIds = scopedTerminalGoals
-        // Whole Economics materials must also match the actual authored course
-        // and duration. Compiled country applicability alone does not imply this.
-        .filter((goal) => profile.landscapeId !== CANONICAL_GYM_ECONOMICS_LANDSCAPE_ID
-          || scopeFilters.length === 0
+        // Endpoint obligations follow the authored course and duration in every
+        // subject. Compiled country applicability alone does not imply either;
+        // the expected set is still derived independently of visible endpoints.
+        .filter((goal) => scopeFilters.length === 0
           || goalMatchesFilters(
             convertLearningGoal(goal, { landscapeId: landscape.landscapeId }),
             scopeFilters,

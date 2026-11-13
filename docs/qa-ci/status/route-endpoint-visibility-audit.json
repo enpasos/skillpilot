@@ -1,0 +1,1543 @@
+{
+  "schemaVersion": 1,
+  "diagnostic": "unconfigured-cqr-104-endpoint-visibility",
+  "acceptance": "diagnostic-only; no scope pin, source applicability or assessment decision is changed",
+  "inputBinding": "Raw current canonical, relevant view and evaluator files; applicability reports are derived output, not a complete provenance receipt.",
+  "inputs": [
+    {
+      "path": "app/scripts/config/curriculum-maturity-floor-policy.json",
+      "sha256": "ab71dc368bbe4e3e77a5f8aa8e2ad21585af0af7c8961c3a08af76e9b9faa77d"
+    },
+    {
+      "path": "app/scripts/generateCurriculumQualityStatus.ts",
+      "sha256": "8396921b1c27298e4c55d86a0126d07ae044109e6330775993b0838df451b89e"
+    },
+    {
+      "path": "app/scripts/reportRouteEndpointVisibility.ts",
+      "sha256": "71917465babef1a0e8a0b61a3cd433331c5f73192b21f8aa3a5e58bed4a5758a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+      "sha256": "0de1cfc92fd15d6633575f6f1da9aa78027feec4383e45f50ca738744977fe5e"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+      "sha256": "e29c271e797956c4679e211034b6ad83a0e5a45ef1da25f3d39166657eaf4b5d"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHINESISCH.de.json",
+      "sha256": "6ec98972436881fa0593838493c0aa098afe508fa6dde063e1aa1d2b80563d76"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_DEUTSCH.de.json",
+      "sha256": "707fdcfd8fea3cffed4435d7d8da6637d6babd396e5697c7a4364a86b32c3142"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_ENGLISCH.de.json",
+      "sha256": "499e35f99df208be1a9a55958d1b5654d25785390f62f39c47817642024e9b2d"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_FRANZOESISCH.de.json",
+      "sha256": "39422cfdea218d3b1e925aae539315038d8b223d1b837b9ac1f8931fb81d2b4c"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_GESCHICHTE.de.json",
+      "sha256": "a2701a5dce37546c6b90b0306801767241de6269fd76f736d9db306225784fa7"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_GRIECHISCH.de.json",
+      "sha256": "d9ab127073034c0df30dea5df21345118325b20bd80ccffa72aeb1013bcb8709"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+      "sha256": "ea83b25661d5fcdd5f6aacabbe2fb193b9074457cf7e8022dc6914a5ea0adfb4"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_ITALIENISCH.de.json",
+      "sha256": "1ae4bebedc761be3c7a572c6b31dd82c7bb5bef893a15fc5b593bb57db7c1ef0"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_LATEIN.de.json",
+      "sha256": "f9dc6081ede69dab7f856bed3d7b28c803a8d40376c069b30dd2bf3924a9b33c"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "sha256": "3a36b654429537dddc3e3326928cb36688f67586e2e04e9aec6b74676402ebdf"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MUSIK.de.json",
+      "sha256": "214baa8ea209ef2ff0f7d28861cccedce4226a491ef6f5a903417580a4c1b7dc"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_OVERVIEW.de.json",
+      "sha256": "9c9acd716ca0a4e4bae3a020f93cd180ddb639390783be72a912d94f1cd9a1cf"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+      "sha256": "a239bae16029672e8b828f468181a488dd607ea6231c2f49a9b8a96404455794"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLITIKWIRTSCHAFT.de.json",
+      "sha256": "1227445d498ab26138fc0dbb81cbe4138c40380d8f61d222b88bfeba58969cb7"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLNISCH.de.json",
+      "sha256": "be6bfaf34f64c93f2723d0532bcffe218e725248d32ace8be9073f52bbdd9b68"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_RUSSISCH.de.json",
+      "sha256": "f085a7023c9f65ebcc27ea8f4fcd4c15a29987b2eaa3afc1a61d1c28f9bd0bc9"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_SPANISCH.de.json",
+      "sha256": "5dc31897813aa32f3bfca8e397b82a6e179d3547af18ddea82ae39df27990a5c"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_TSCHECHISCH.de.json",
+      "sha256": "91037164f5cfda3d3fd5ae805312fa99c58692334225009f623ce67c5fbee41f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+      "sha256": "a9d9bb678fc6f124bbdc102eec9cec2315913f5c837bcae5fd8f4bfa940a05a7"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/biologie/de-de-gym-biology-gk.view.json",
+      "sha256": "4807d7e38a4e72c7aa5df9a8a5f9bde3039cea4b70c348e0877e09bc89ec732c"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/biologie/de-de-gym-seki-biology.view.json",
+      "sha256": "a126cdf231805adaa7bfe71c2e6d811a7f9ddd67e222acde24901c8231cf8ecb"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/biologie/de-mv-gym-seki-biology.view.json",
+      "sha256": "62721e52c7bcfe74f8aee832b28806a43b81d9ebec3f4047d7bf12ad24f19f3f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/biologie/de-sn-gym-seki-biology.view.json",
+      "sha256": "feaef8a137176fa384a24b02cd5bacc56ebe6be304ec7f5f7d6593798ab6bb4c"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/biologie/de-st-gym-seki-biology.view.json",
+      "sha256": "1d96527729e88353ef20748f394deb8a932745a6e16e23a1822578408d67bbd2"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/biologie/de-st-gym-sekii-biology-gk.view.json",
+      "sha256": "a320f51c260c5b71196212e7aee4ce687a32d000375632c941b279e5a0ca17e6"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/biologie/de-st-gym-sekii-biology-lk.view.json",
+      "sha256": "3980377806d85f60d202279588bf3c314bc0cc739d333434b9fc02ed4bffb812"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/biologie/de-th-gym-seki-biology.view.json",
+      "sha256": "6320003265a994759596a746e30d9dd9950b6d44c06f799cc12d0a2f3bad9724"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/chemie/de-bb-gk.view.json",
+      "sha256": "5fc62a10baf69b9b17c772eae288bb1e396afe3e20a6488410d0f107035265a8"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/chemie/de-bb-lk.view.json",
+      "sha256": "c92bda879ca892480bceda17a923180011cd98308b47061a960ffdb780b676b5"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/chemie/de-be-gk.view.json",
+      "sha256": "41d774ce0682d2a7acac04fcf92d125947359713d59d95e90a5f41577ce780ac"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/chemie/de-be-lk.view.json",
+      "sha256": "b3eacf65b8fc09532615f4d49e30c34002f23568f0ae2fc6708ecc732501da8a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/chemie/de-bw-gk.view.json",
+      "sha256": "b156015c665645c7c96409c118a0982b5d0839ffb9afc2298d8c1c1420daa328"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/chemie/de-bw-lk.view.json",
+      "sha256": "e4eac85693e6ae21d89c8d2733703b80456ae6949e0f2abccc5760a8be128f18"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/chemie/de-by-lk.current-pilot.view.json",
+      "sha256": "3d5f35aac74c54aadcc4d3cedd3921b9396a96dd331aa8a8dc6bbd3be8e977ef"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/chemie/de-by-seki.view.json",
+      "sha256": "2cb37399486f0108ccc77712bae86ec2e6324631c70e2f528be9571d9b55d64f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-gk.view.json",
+      "sha256": "9209e513bc761c2cfdcf3055cb4a01735296f470da13dc390ea3aeaa6b616fa7"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-lk.view.json",
+      "sha256": "ef2455e99fcd7d755c5cac9afd514a547f5102e5a9e22e2c39226db9023e82db"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-seki-chemistry.view.json",
+      "sha256": "a80d1669ee4923e370e5f036407edd0bb51a0d87b28c652b01d85bcbe1c084ab"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-sekii-chemistry-gk.view.json",
+      "sha256": "dc39b8e427f74d48ec4544e03545a1d10eb78b4f2d79e6560954ff3d69575793"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-sekii-chemistry-lk.view.json",
+      "sha256": "5a0265fe1a070edc80faaaa5581525af7b792be31f1fd1b5815a2d3d06b2d065"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/chemie/de-hb-gk.view.json",
+      "sha256": "e7893ee866f487d814a506528d0aa0edaaa614055e4849e4f389db00a5bc78c6"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/chemie/de-hb-lk.view.json",
+      "sha256": "55deca6ec1c8abfac3629573df3d227301260b7822769c74ad00e0b4fdc8ffef"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/chemie/de-hb-sekii-gk.view.json",
+      "sha256": "b049c645a494d4041217750976c52475d26f63e3fb83a326f7e9ecb58bec0805"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/chemie/de-hb-sekii-lk.view.json",
+      "sha256": "8ebbe9f9ebe3b7a39cf53de9b9cea23d066e510ca0ea62603324d533963fd992"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/chemie/de-he-gk-lk.view.json",
+      "sha256": "afec1b964d43e53a72ae2fb8a8117a46da544b137e378995cf66177b48864e7c"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/chemie/de-he-gk.view.json",
+      "sha256": "9f6e1c43554936590cd5a29712fa7bbbd07ed622657246acccf7acc83c3a60cb"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/chemie/de-he-lk.view.json",
+      "sha256": "05d269d03c1a2d9dd7fda5af5d2b327231918734ce85e6d4caf01a296563188f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-gk-lk.view.json",
+      "sha256": "4de3850c144391bc863716ad1e977cfbc4c6340e22a3dafa92c7a541188f0bac"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-gk.view.json",
+      "sha256": "a7edb604cb67bb6ca8956f7d1301db4ebd905842df3d33d115e08ea717a8591a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-lk.view.json",
+      "sha256": "a1201fcee7ebbc6b581af1fe1210b3d5ee33ab626ef8e63e0f2d11a07b260fbc"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/chemie/de-hh-gk.view.json",
+      "sha256": "efa1392dd3d00f6402decd8f9c14051b29d88c0e854ad9fe585369e9fec9173b"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/chemie/de-hh-lk.view.json",
+      "sha256": "d82822725065d7065451b8cb89dba674aa51b3922d7eca731ca539330e398de3"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/chemie/de-mv-gk.view.json",
+      "sha256": "10a9f6df089c5f751d63209600000d41dd690bdc65cd488ce6a0e7de005309f9"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/chemie/de-mv-lk.view.json",
+      "sha256": "fdb3d43c4f99d68b73d6c48e31811f1b3167398d17af4f6ab94880321f9892e8"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/chemie/de-ni-gk.view.json",
+      "sha256": "53659a82b0a3e2eeddc56c81b583c955ed1647723a0b55cad4d42dd313597d13"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/chemie/de-ni-lk.view.json",
+      "sha256": "8ec94e549d7106bb001637f0c8f92a75ca13978ad71ad60da2b573b0178edede"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/chemie/de-nw-gk.view.json",
+      "sha256": "9d2594e392950c10b6088a365a4c6f6d0dfa8bb53adba2f7cbc015e63da3a9cb"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/chemie/de-nw-lk.view.json",
+      "sha256": "87e1e9b2916920211e168291cd9074805123b6bcf0c36d1a6dbabfad85ed77c9"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/chemie/de-rp-gk.view.json",
+      "sha256": "da1727f7f3f1d526d473e76f30718776860ef07e30e080bbb068ae88d6824c5a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/chemie/de-rp-lk.view.json",
+      "sha256": "4d2f4301f16897f283e207290cb7bd0d660bba74febef8530ccde8794dfd67bf"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/chemie/de-sh-gk.view.json",
+      "sha256": "8b6e461463024a32c047e5c85c4dbf5e0da9350be695cd438d930bf46a5087da"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/chemie/de-sh-lk.view.json",
+      "sha256": "ad3a69b1b66db8ebe74a90b80dece322bd62fbec6ca176080f9a2a00c0cb7ddf"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/chemie/de-sl-gk.view.json",
+      "sha256": "18c682bc20ef70ed4352dd6964134b6b0b52aa5c51e258ee95c525e3a3c0830a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/chemie/de-sl-lk.view.json",
+      "sha256": "d4e6f3df3eca988681d628db44be2dcb8e1375ea61fc2babc71539f7734f8db9"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/chemie/de-sn-gk.view.json",
+      "sha256": "c0df3b98deae861e3472ff6b8b82ff7d80aea2f7d06320df01dadbc270553cea"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/chemie/de-sn-lk.view.json",
+      "sha256": "768c5c24a7d036f05fd7abe05382e681621db6d1641caca3a904047f3ec68614"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/chemie/de-st-gk.view.json",
+      "sha256": "25ac64f5d0829ae742b177390f8731cb469051febf7f54668d12019f4e155009"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/chemie/de-st-lk.view.json",
+      "sha256": "177754353ba8b63e780324538db7ae459ab232b873fd15fd9e89e9a470585ce4"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/chemie/de-th-gk.view.json",
+      "sha256": "c18b8420af2489ae44b23300d8bbd27b6cfba69142595f83af8994cd93916d8e"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/chemie/de-th-lk.view.json",
+      "sha256": "fbd036a5704e542d1bc179a2c7ea769b4ca43761ac4f5c136ee6f445417beafe"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-gk.view.json",
+      "sha256": "884447f5ca900dcd4a421c0348fe16310608f3cb93848a5a16cee1795c9956ff"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-lk.view.json",
+      "sha256": "1bf1dae3bac9a0e0aa1cbab75f67b308a7a0b7d69951d1ed23017d947f317077"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-sekii-gk.view.json",
+      "sha256": "321b7bb491c9335650f3c2499de21ebbe464792b40e8f11f465c922b9e49ad9d"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-sekii-lk.view.json",
+      "sha256": "d3221084accc28e6ce125fd20aee160b5185423f6e88a8fcaad6b23dd688b5aa"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-be-gk.view.json",
+      "sha256": "b8598e1a664cff57b74784a6a88121ea839b11dfb17424cf4c03ac6d6a9863ed"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-be-lk.view.json",
+      "sha256": "1648f65c239362ab5c9deefdd8b54232516c34dd27e06cb7610d2e8f408a2f87"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-be-sekii-gk.view.json",
+      "sha256": "6f6bb6a80f03dcf0c2dd586b444a8e290860b6da42922027c28103c7e4e5eda9"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-be-sekii-lk.view.json",
+      "sha256": "8fef0b25cfd5755ff2a8420b3a947e35e4f841c09535fbb41d859c6cb0139639"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-gk.view.json",
+      "sha256": "b6fe01c25fc8ca62852c75d3883b514f62fa682f74965e69a137ce7e753517b1"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-lk.view.json",
+      "sha256": "5740c9d28a8b26f831a7d5bd35d8a7d0e6e2270b1046db4e4c83f9b70ac22a9b"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-seki.view.json",
+      "sha256": "b02fad31081e1b1c52a17e5ec45252022b2b551b80f3c60626b6fe93a744dc6a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-sekii-gk.view.json",
+      "sha256": "8fc2adf9f0d856f9032795d46d834375b6d0ed087e2027da38086f801ae99a63"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-sekii-lk.view.json",
+      "sha256": "561b3831ff9469511b694fb5797d790547f60d76ef5feef34a1b49adf1f6f077"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-gk.view.json",
+      "sha256": "3524f11295b343f829a6c77fcc0b468c730747710f08de15e38aaf23a832469e"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-lk.view.json",
+      "sha256": "0e8b3c0ecf1a61c8ec85df63e5ac3e3595f685e7aa84727d062c33bec51ed69b"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-sekii-gk.view.json",
+      "sha256": "0b1532d50ed05c495e85d4427916c9f76ae219552a93764eeb14677606862f1a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-sekii-lk.view.json",
+      "sha256": "5c82db41ff4ee776e1507525957e92f66ab97b832f15d7eb237d00bac89692ee"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-de-gk.view.json",
+      "sha256": "8155e94cbc64c8ff9e5a8f3076930c736b1420fcd68017dec4bb692b821d6858"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-de-lk.view.json",
+      "sha256": "0a8bf9ab31e0b24b724587055978ec91f10a97da700d753bbc820a535c30b9c1"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-de-seki.view.json",
+      "sha256": "9c7418ea63a4b8e684c6af12653178f7870ed19eb7441895322c57659525f30f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-de-sekii-gk.view.json",
+      "sha256": "2040b9ed32b4e3686b48c8b35f4d77e27f40a400d450988f291e48764dc04963"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-de-sekii-lk.view.json",
+      "sha256": "1360f29522c2c75b403417ba191f00a90eace99cd65411c7b13451d781f53f46"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-gk.view.json",
+      "sha256": "eb38ccabe1e69111387fb3e854e8f7c2401b38a10b74493c39959483e4d4e1f6"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-lk.view.json",
+      "sha256": "0d910b30644e1f8075bf2695b1689bb96dc19e4cc0e189c13085b2216b205466"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-sekii-gk.view.json",
+      "sha256": "d28cee1e99618cbfcc579bc5a4f7f50ee39845f05235bec11ab48fad83a139b8"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-sekii-lk.view.json",
+      "sha256": "08e8863f63d48d885f34de69d9ad2489c7c3100cae9874f9d056f6e024fb498c"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-gk-g8.view.json",
+      "sha256": "169b0adf4ef09802f910acfe3ef2706838d0a575156d4ba9c952316b34a875c6"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-gk-g9.view.json",
+      "sha256": "a33d9519191f2d260b8f16deaf9f70825a98802b111bfe5ac6fab96f1b081938"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-gk.view.json",
+      "sha256": "378e1d63c3d82165ce45c9233b0a532426f0556d20a49f2bd8c60ac4dc25400e"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-lk-g8.view.json",
+      "sha256": "c77b4bb843a7ec819717d8b7db44b12102e95d4c009bc048a3f23127bf7ef9a8"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-lk-g9.view.json",
+      "sha256": "f52a68ee85e375047e7dd51ec051e589b6c99ae44ceff25681914d429845af5a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-lk.view.json",
+      "sha256": "1793bf991061f2f7c3cce9758fbafd89b2ba61788f5669416afc0898259b6ca5"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-seki-g8.view.json",
+      "sha256": "1f8a3cac0b91c80fd84cbad72f358f0774d88b8ba4ed23ff59430bf7d661198f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-seki-g9.view.json",
+      "sha256": "0a67d241305a7ef4af1abb9276b3e992a050164289560c62c7f4a0aae12a9b2c"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-sekii-gk.view.json",
+      "sha256": "3888f56417b1759afd195cb8098f2115f98c530ce9fe264ae02fd92ebc8da09e"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-sekii-lk.view.json",
+      "sha256": "c410c6c2068539efbd769b2833571fcae8c0460e96689b9992b5b3b37a173271"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hh-gk.view.json",
+      "sha256": "2fc4a2dac5ddf1780a63afddec01823cbbafb8d4cd424b2ab75d1e0ad8ccc79c"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hh-lk.view.json",
+      "sha256": "76a284850dffd2dbde934ff2952d4f22c7c916a8f5b0f68cd192307acfda7e5c"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hh-sekii-gk.view.json",
+      "sha256": "49fed1002cf55795ba31a3a51e0e61ee4bbd3056c660999dd7457148153444e2"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hh-sekii-lk.view.json",
+      "sha256": "cf2b92cba16ad7b61a72b858ea2bb6d87ea11f2167066827d9ec968c7490976d"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-gk.view.json",
+      "sha256": "ee2c6b0590ee5b86edc4f2de47042ebd5d3fdeb0a6264e9ccd408b5559c449a7"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-lk.view.json",
+      "sha256": "5280f5d0a962ddcc8a6592774b43dafddbd3a15d95ac77ff5cc85d804e8fe3db"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-sekii-gk.view.json",
+      "sha256": "842140cc30ceba2b8d7a56cbf0752ad6a58997fdcdd7036f8dfdd3404960bd23"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-sekii-lk.view.json",
+      "sha256": "3c8d2a92971ed2589fdd164e7c3b97cb091e8faff1e9949c16ccc85e537499c3"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-gk.view.json",
+      "sha256": "9adf4f184e078cdde14baf7c5055e4602610cf36eaf3919da8a3309288b9e3fb"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-lk.view.json",
+      "sha256": "8c3094408deaf85ecede4b011f9de61cdb64948986602bdd61cb3024bed2ae0a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-sekii-gk.view.json",
+      "sha256": "41309e5b3c3321087c61f414fbb93b08f61efc30778f3f3b4211c6a325f62d13"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-sekii-lk.view.json",
+      "sha256": "93087f9c50fd3d38abfb4696be512bc8a0399b1ad580a70481d5c203a912da4f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-gk.view.json",
+      "sha256": "1f7fd64b50127dcea02e0e361bb58e72d684aed6f6309e1cb9e162ec3147053d"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-lk.view.json",
+      "sha256": "8831ab783c6cbd682c4b929431da251c4245b3f30921e9d0b2249094ff47f246"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-sekii-gk.view.json",
+      "sha256": "47c8b47bbb94f1b79cd60892d0ff51eabd17d9fea3f63fae61d13c5fa03cc0d8"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-sekii-lk.view.json",
+      "sha256": "000a39e5ad0640d118b77ceefc3da08c073f07a645168a5a44ac620ce99c9d12"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-gk-g8.view.json",
+      "sha256": "f689ad32a28a80ede93c21fa6722ae8d8eaee986170747b2f325c324063a70de"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-gk-g9.view.json",
+      "sha256": "b608dbf25112d6337ccdbcef6cd2a73db1288787847a9574b84caec304d6d83a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-gk.view.json",
+      "sha256": "7b42733d589ae2e0ebbbfda26ed1c7b29444d6d6701040faf8ee9c0d9fd61f07"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-lk-g8.view.json",
+      "sha256": "f7a897edaf3eb6dc91c100b69db90c34b96ea782f72dedfe046906f0a625a5ee"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-lk-g9.view.json",
+      "sha256": "a4201392e080b5990bbf5be1aca3e13c28da80e3e5a0d05cb15a4948883297ca"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-lk.view.json",
+      "sha256": "c943a6d4182b2cafbedec80ee4400e024130000eb1e149cb6ffa0d60ccbdd8ed"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-seki-g8.view.json",
+      "sha256": "e32ef68f3f53fda913d631b5fb0a8d0be3cb434c3b174b4e51e27436c2fb0648"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-seki-g9.view.json",
+      "sha256": "ee6b5174b46a697a413d311b2df3939eaa2b7b918ea0fe5e0038efcb5fa1c64a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-sekii-gk.view.json",
+      "sha256": "d88276e159bf29b2ee32e950066a514c0994214a7d1b4bf7c4bf414ae3636d38"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-sekii-lk.view.json",
+      "sha256": "e7c0e7b952b084d52522767ba10ec25d75773bb36260abb3b4eb384e5969c830"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk-g8.view.json",
+      "sha256": "5a57672da5f6ca80393c877013a324feb7db8e72baef254d1d162a10b446042f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk-g9.view.json",
+      "sha256": "57bed3698e21d3f0c5c547a810f3734ae155e190f7d0459f26bbf2fbff8ea49e"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk.view.json",
+      "sha256": "de03556c27836cc4452796ae65187b1dd6f7777b46b74dfdb60f78f224f51645"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-lk-g8.view.json",
+      "sha256": "251b1a123860c7baaa57ce891cd6dfd4aa92b5cad30541fd636e88c9f6c1e0d7"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-lk-g9.view.json",
+      "sha256": "75ac64f48c03b9217ca485ba270a48dc055311d4383790b5c2a34fe05482fa12"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-lk.view.json",
+      "sha256": "c292708beb59a94b440f8e8b74cbe9b08b4562b3815301403697751b82663464"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-seki-g8.view.json",
+      "sha256": "595ded88926fb7993f449cdc630d7d8afdbb41517051b228df282dd3dc8e255a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-seki-g9.view.json",
+      "sha256": "22d1805dff1ea8a42889e7e2fedd25f293de977f1ac4ed5dcf17e043f875a93a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-sekii-gk.view.json",
+      "sha256": "ce10e69d60d0f4ebd5a8bd22d24a8d4498091ba76e165624f991d87e3a8d950b"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-sekii-lk.view.json",
+      "sha256": "549eb1a5363b7014d67d27dff6fd08ca2e0a1e94b9badc1318eb61d5d0c5b452"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-gk.view.json",
+      "sha256": "eb6f81ff5d09d474dbdee0346c809195f52247703b55cd7c94fcd95f0fefa0e7"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-lk.view.json",
+      "sha256": "73c0a2f79bbfd4c3c6b1aef433c1f00b5a349a399f2b647b92ce6d005c107cdf"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-sekii-gk.view.json",
+      "sha256": "2c8b8590cd272c799676a664ded89c1c00ac234a09ee6d7728c0ea8f5aa3244d"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-sekii-lk.view.json",
+      "sha256": "e4b9979d8caf02cbfff3f7a1c93794e3bf4429595a8c991338bca17de5cacc5c"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-gk.view.json",
+      "sha256": "aff373bea94ea6e10321868c99f9bec2a2271f83d133401a8659772a3aed2f16"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-lk.view.json",
+      "sha256": "dd038c9c1637c638551e6a91a0603a26317e6e281cd5606e7be920200dce97c8"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-sekii-gk.view.json",
+      "sha256": "8e1c2a1c2b8160e6559f9326a4b8d39ae8bdb6a5d6c7b05db51e91f2f79310cd"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-sekii-lk.view.json",
+      "sha256": "546fb3902b88cf19b1fd5bba1cf54e557aca0bbfc64b1c2251dcc06d4aff9128"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-st-gk.view.json",
+      "sha256": "391d0a131a5a50d5d187b12772480e33bb42d6c607bbf798fe0792ca504640f8"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-st-lk.view.json",
+      "sha256": "aa147ee26e43a25c88cb8d028d765703b5da09c19dc0af420e48cb97370ee31c"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-st-sekii-gk.view.json",
+      "sha256": "881f1517fa96703c2ad7a1c2d3cbe77f6f34134ec7d4262c87231bca4677e5d0"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-st-sekii-lk.view.json",
+      "sha256": "7b32be715dc4e660fb2838e7f3a603894a00feb7ab7267e3a3992e8e9529c3ce"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-gk.view.json",
+      "sha256": "e25c6e3085f7d64a509ba3b01ffc40ce4f7d5d2b92ae55604a05862368456533"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-lk.view.json",
+      "sha256": "b1ca523ab24b4cda052ea07b1a3d715f04865efaac6fa9784e753a4d93525d8c"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-sekii-gk.view.json",
+      "sha256": "85828f3d505f3e5cb923ad08fed4c8f25f769213c43d33092471ddd207d64735"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-sekii-lk.view.json",
+      "sha256": "eacc9393fc6d35863b0cb9191aec13d25876522b02a7ad2cb92cd15cc8466b8a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-bb-gk.view.json",
+      "sha256": "e5863139f3c97670742780c684ecbac1eb2fafb8d9b08f12cf04c032f09a1cb2"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-bb-lk.view.json",
+      "sha256": "c072a9e330bd73fa55f08121a9b12511bd7b9e1956a4e1464d13281c21bda377"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-bb-sekii-gk.view.json",
+      "sha256": "1d44579f880ef5cf7ba395b6b0a9a785fe0dd4cfd2a6214cfe77edfdcf1f129a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-bb-sekii-lk.view.json",
+      "sha256": "b277e95817dba3ba1189f2128de751b7a3e6b8910ece7651bb9ec6f4fd15e651"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-be-gk.view.json",
+      "sha256": "cd1af814f3572ae1d82b4e93f789481d749f39f3cda2acdbefdc24f30df3c41f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-be-lk.view.json",
+      "sha256": "a6f883bed4f98f22a7c5ed2415d96ebcd45e4c48189afba861bea7ddd4b75f01"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-be-sekii-gk.view.json",
+      "sha256": "5e1fd95417932e4991e1665325238103ceb63ae09a395aa9f7c29e1201f81873"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-be-sekii-lk.view.json",
+      "sha256": "5d09f0cf764b9ec36a13314457287df6f4c724663f55024b4870795eb6f3f109"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-bw-gk.view.json",
+      "sha256": "a74e59a145314d24ba8ba1365f321d0f009e83f2842650fc9cbe3ff3c9d43b77"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-bw-lk.view.json",
+      "sha256": "74feea6dd1cc6d736203c4822d55ddc9a8ec34f587b888dc9c3b8ee081e79259"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-bw-sekii-gk.view.json",
+      "sha256": "aa20427f68cf16a2b50c7548a847936276179cfca8cdb88a78030af8f6abd0ac"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-bw-sekii-lk.view.json",
+      "sha256": "5bf28a8a779ebff07b1f79247e07e3bdba50dc5e24977a9044455b2a0cbbb01e"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-by-gk.view.json",
+      "sha256": "d1cfb3bdf71810914d105a5437d522ed72d09d714d44f533f9d8ae0f7285ed7b"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-by-lk.view.json",
+      "sha256": "b2daa07e07c8a3028e30de541fad26b58522f4657df53cf69f302569df8897a4"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-by-sekii-gk.view.json",
+      "sha256": "d74e5464858c065efda506a8fbd3bfa8bd1ef7a5c04a63664098cbc1a9b39fce"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-by-sekii-lk.view.json",
+      "sha256": "73c3f2e96260b5c29d0f973676eca39f8cec9eafd411d23c94b9cfd3bf6fe123"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-de-gym-physics-gk.view.json",
+      "sha256": "4719df7af1531eafc3213cf1f912b379dbbda46fbe61b9743dddf6a00a4d0010"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-de-gym-physics-lk.view.json",
+      "sha256": "a53eaf8fd7a6a0f2d495122ca2945082fc31d90d00884cb3de58656c55d48ee0"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-de-gym-seki-physics.view.json",
+      "sha256": "3c691e9765c2e2c072cc89c65c6330e1a39bb8161daee7a5f7d3415391ce3931"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-de-gym-sekii-physics-gk.view.json",
+      "sha256": "e25f7d64edbb63d2ff92acf4fc8c4e6e1028c4e85423503d5bd6a3da892cc7ea"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-de-gym-sekii-physics-lk.view.json",
+      "sha256": "1f52fcd98fdaa37fb0af9181211aaf11116084a699cde95dd1080562391f8dce"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-hb-gk.view.json",
+      "sha256": "9bcf7e03d6e88a958db5680c80745dcaf1cbab7b5856e33cf7187a57e52b5708"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-hb-lk.view.json",
+      "sha256": "27e2858c25ee9c802b08f8409185dee7c6eee02a01bea56f58dae9f4b938344e"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-hb-sekii-gk.view.json",
+      "sha256": "b441198059da7bcd03fbcfc1f3d235c44dcfe2703fa09267cf09927142ea3be0"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-hb-sekii-lk.view.json",
+      "sha256": "fed9e4819a2c499a4850bda5001a64b018e17f1f569013db49477793b2452ee6"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-he-gk.view.json",
+      "sha256": "38167cec85f5ed593be9e8259cdf391c206dc16c1f29e7a3a19906d7aa523780"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-he-lk.view.json",
+      "sha256": "7fdebd6a2fc3a32448c1514dd3fd123aba288240f249c0fe42b239263503dd2d"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-he-sekii-gk.view.json",
+      "sha256": "6514aece6f10d2b41b05fe7e1ac8a1ea4d2f4d9416044e02be1c9f962df2ba6e"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-he-sekii-lk.view.json",
+      "sha256": "4127a51bcb8c4d015a3e3cdacde4b77ccaa89dbfa629caac204fc7fc5b790f00"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-hh-gk.view.json",
+      "sha256": "4d1260b1cf782b94ca86d9df6887d8eaeb0987b5ab49a948852cd4aba2fdb2df"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-hh-lk.view.json",
+      "sha256": "864648e8b0709b226b481faf99c962ab696bee87cbb0bd436401b876f39bc623"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-hh-sekii-gk.view.json",
+      "sha256": "1feafea8b254ba67f66699f027d3878a536e10e954005371a95d1b29f52ed3d2"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-hh-sekii-lk.view.json",
+      "sha256": "d6f379c88475c89a7028f9234d4b4402c8a5b3c8533c9c53ad0a36f96a19d1f3"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-mv-gk.view.json",
+      "sha256": "0caccc424baec408d6f1e4e5ffce6045d19eb4d2d98f9a14bea00a9a38af308f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-mv-lk.view.json",
+      "sha256": "22313d323c1843557b54f97f130a5648e7376dd19b1363efc90c55c57cb4dbd0"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-mv-sekii-gk.view.json",
+      "sha256": "f80721689209950b3a2585ab6cc63d4da1fbc7df6684feb79da593d3caa33992"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-mv-sekii-lk.view.json",
+      "sha256": "5f3e3ae6576a60b962d8dbcb6cddc04e6b1a42a3784b26dc07df1fec62c5bcd1"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-ni-gk.view.json",
+      "sha256": "8ce25a8ec7bb59ffbbfcc21fbc93754705ea0a062bd042c2cb7c5faa6cc03fc1"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-ni-lk.view.json",
+      "sha256": "9be0234fefbdcde716584a29a4baf29d85f4a8d4e5e2616388d0b0418bdd298c"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-ni-sekii-gk.view.json",
+      "sha256": "093e8ce1d4ebd5ea6a00db7127f8d1508801be16cc9c13b08d525f0cd663b18f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-ni-sekii-lk.view.json",
+      "sha256": "d8eb82df1a20ecb59567a6457f9161927571b50d98917d2388ed898c43fa7251"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-nw-gk.view.json",
+      "sha256": "9e47c52f42115ea131eaaece228803183e26137b3fda13cda83c87241399032f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-nw-lk.view.json",
+      "sha256": "86226fa7fbd3cbfc240abeebc92261a9b24ed0cfac0ad1a19bbf6a1ba03edcb6"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-nw-sekii-gk.view.json",
+      "sha256": "24f5ff96d741a3559fb1e729bd0f7968a500c0396e3f306310b9be12717000e4"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-nw-sekii-lk.view.json",
+      "sha256": "84cc565ca8d083f8bedbb5f27c3b20824135938745f715e9a41796a69b877df3"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-rp-gk.view.json",
+      "sha256": "942fbee7c3433c4eaa556385987ba2f21d7da5b2b7a006154266dfeb3a4cae4a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-rp-lk.view.json",
+      "sha256": "1ec229c6b682c35a9e8f28a8008256b0c1f00e81a1e1aa031b995d072a03edac"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-rp-sekii-gk.view.json",
+      "sha256": "6b9b3083c6e118c91dc02b6675281dd89f5e0f55f666d168fd4c2da8f823ff6d"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-rp-sekii-lk.view.json",
+      "sha256": "23381e9834caa4a73e39dfc7d88a29a564f84698a1b6c68e725dd174ac86894b"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-sh-gk.view.json",
+      "sha256": "3fa28b8470c1796495ff90942505ffd3a14bcf4b1cdfcbcb324aa38fcbd2fe6b"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-sh-lk.view.json",
+      "sha256": "bc54c5480a34c5ba962132d0b55dcc09ad69366984f5aa195b69e83aa1af40ae"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-sh-sekii-gk.view.json",
+      "sha256": "341e235ed96de83fa5e5e0fbfb2a9426363fde9b45dbcbdc61da7666dc810a20"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-sh-sekii-lk.view.json",
+      "sha256": "a401ce7eb810a9495e3373353b1dec5a28120d0b12138f8ecb31e480d5e865e5"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-sl-gk.view.json",
+      "sha256": "cea0d9cbe8a37277f7feeda21c50ba770bc74535eda31a4d8a0cdf0e67157d54"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-sl-lk.view.json",
+      "sha256": "be0865d9abe83f58eaea84f5890658d80e795bbf268e6bc1bed02570aa406ac0"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-sl-sekii-gk.view.json",
+      "sha256": "0716a7d4498cb5ae56eb50407eeb772a81bd150c754f78be2318c68a385f548e"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-sl-sekii-lk.view.json",
+      "sha256": "684d08a9afa0586545c26a6d0f6d8d9aa7cddcea720c4351252069b98cf116c1"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-sn-gk.view.json",
+      "sha256": "4381d19c8d9e87705a941220bcfaa6d4495447d11f9fc5ba649e4a7c9f22be34"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-sn-lk.view.json",
+      "sha256": "5318427ee6f7fb66d2355fd0184dad750548148290a2b59dae5b21f107be4a58"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-sn-sekii-gk.view.json",
+      "sha256": "8e8dafa30ff20220236294580035bf26bac5d8f0909929942c4f42439df99fb1"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-sn-sekii-lk.view.json",
+      "sha256": "333b652ea4ac63c49b595d8f89b5fe1f41f7ba6587c84cf265ff84200a9fef11"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-st-gk.view.json",
+      "sha256": "15deae800b86e9d8c5404f1888cfafff9a091710042a0656c4f8ebeb0879b21e"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-st-lk.view.json",
+      "sha256": "d0b2ff000589e4cd214d14d6c0ae2b5b64a2f59e765b0d2594622c223a3c40a8"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-st-sekii-gk.view.json",
+      "sha256": "cc34baa947408d9153865c2cb3a4dd23b02eeaea60d80f635850ec51a223d6c3"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-st-sekii-lk.view.json",
+      "sha256": "0f137afb6180959036aa5245b052faac6eb8857b4e1a776637258ff9bc0dfb9d"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-th-gk.view.json",
+      "sha256": "8963fcfd1e9ad3ffcf63fee0abc31f5f18ee617bacd5ed17a2898493df67ca21"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-th-lk.view.json",
+      "sha256": "bffb56bb0beac38aae8f1e0f2aa1d20fb02339b3d46a00942a3a8d4f41e45478"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-th-sekii-gk.view.json",
+      "sha256": "2cf8f4c2f2fc95f3317598317a0853af6b8cd43ddcfd36a93e5cf3ecefa63b33"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-th-sekii-lk.view.json",
+      "sha256": "9ffc6bd0e1997c45caa7dacbe6d1caf448ec9591aa12a157c7bcc14936fededf"
+    }
+  ],
+  "applicabilityReportsSha256": "45e214c306de94be70220e933d7435b058501d90beb8ccb273ecce5d2ddd10df",
+  "registeredScopes": 12,
+  "pinnedVisibilityScopes": 8,
+  "unpinnedVisibilityScopes": 4,
+  "results": [
+    {
+      "profileId": "canonical-math-sek2",
+      "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+      "compiledJurisdiction": false,
+      "id": "CQR-104",
+      "status": "fail",
+      "summary": "Route endpoints or projection-local routes are missing, unexpected, or not applicability-bound in at least one learner-facing projection scope.",
+      "metrics": {
+        "relevantCompositionViews": 80,
+        "evaluatedProjectionScopes": 80,
+        "requiredMotivationAnchors": 1,
+        "minimumRequiredTerminalAutonomyGoals": 56,
+        "requiredTerminalAutonomyGoals": 78,
+        "projectionScopesMissingMotivationAnchors": 0,
+        "projectionScopesMissingTerminalAutonomyGoals": 80,
+        "projectionScopesWithUnexpectedTerminalAutonomyGoals": 0,
+        "projectionScopesWithoutExpectedTerminalAutonomyGoals": 0,
+        "terminalGoalsMissingCompiledApplicability": 0,
+        "projectionScopesWithInvalidStageStructure": 0,
+        "nationalProjectionScopesUsingJurisdictionStageAuthority": 0,
+        "nationalProjectionScopesMissingJurisdictionStageAuthority": 0,
+        "nationalProjectionScopesWithAmbiguousJurisdictionStageAuthority": 0,
+        "nationalTargetAtomicGoalOccurrencesExcludedByJurisdictionStageAuthority": 0,
+        "nationalSelectedGoalOccurrencesExcludedByJurisdictionStageAuthority": 0,
+        "nationalPrerequisiteOnlyGoalOccurrencesImportedByJurisdictionStageAuthority": 0,
+        "projectionScopesWithIncompleteExplicitTerminalPrerequisites": 0,
+        "explicitTerminalPrerequisiteOccurrencesMissingFromProjection": 0,
+        "projectionScopesWithIncompleteWholeMaterialCoverageBindings": 0,
+        "wholeMaterialCoveredGoalOccurrencesWithoutVisiblePrerequisitePath": 0,
+        "projectionScopesWithIncompleteWholeMaterialPrerequisiteClosure": 0,
+        "wholeMaterialPrerequisiteOccurrencesMissingFromProjection": 0,
+        "uniqueExplicitTerminalPrerequisitesMissingFromProjection": 0,
+        "projectionLocalRouteChecksEnabled": 0,
+        "visibleSelectedAtomicGoalOccurrences": 37917,
+        "visibleProfileSelectedAtomicGoalOccurrences": 37917,
+        "visibleProjectedRouteTargetGoalOccurrences": 37917,
+        "visibleProjectedRouteTargetGoalOccurrencesExcludedByProfileSelector": 0,
+        "uniqueProjectedRouteTargetsExcludedByProfileSelector": 0,
+        "visibleProjectedRouteTargetGoalOccurrencesExcludedFromRouteChecks": 0,
+        "projectionScopesMissingEffectiveMotivationRoutes": 0,
+        "projectionScopesMissingDirectMotivationRoutes": 0,
+        "projectionScopesMissingEffectiveTerminalRoutes": 0,
+        "projectionScopesMissingDirectTerminalRoutes": 0,
+        "visibleSelectedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+        "visibleSelectedGoalOccurrencesMissingDirectMotivationRoute": 0,
+        "visibleSelectedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+        "visibleSelectedGoalOccurrencesMissingDirectTerminalRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingDirectMotivationRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingDirectTerminalRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingEffectiveMotivationRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingDirectMotivationRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingEffectiveTerminalRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingDirectTerminalRoute": 0
+      },
+      "details": [
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/mathematik/de-bb-gk.view.json: 728fd537-40d3-5fdf-8b08-925cba0b2004, 22842d80-de9d-5dad-9819-6ae6e9ca61be, 0f18f4e2-efd9-58b8-9b7e-f26aa2fbf43b, 338135aa-d5bb-5b53-8413-90fa8f1e4fb6, e98672c6-871a-5d0b-889c-5afc51040f0d, be48054d-48f7-54c0-8248-d0a462ad6dc9, bbb340ed-1009-4966-ae96-bfea4437505a, 46bb8422-a822-46e1-8bcc-8b6475994b3a, 1429363f-628f-4f42-80e5-8a9a935147cc",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/mathematik/de-bb-lk.view.json: 728fd537-40d3-5fdf-8b08-925cba0b2004, 22842d80-de9d-5dad-9819-6ae6e9ca61be, 0f18f4e2-efd9-58b8-9b7e-f26aa2fbf43b, 338135aa-d5bb-5b53-8413-90fa8f1e4fb6, 7d160e08-d987-4a63-873b-44496f6e11d3, a7896fa5-993e-52b9-8aa4-10420b35bfd9, 440edf01-1824-597a-9afa-2f23f5becfba, 990739f7-f17d-5199-bdec-0512eb846f14, e98672c6-871a-5d0b-889c-5afc51040f0d, bc244d82-bac0-5b13-8a33-d7b101835480, be48054d-48f7-54c0-8248-d0a462ad6dc9, bbb340ed-1009-4966-ae96-bfea4437505a, 46bb8422-a822-46e1-8bcc-8b6475994b3a, 1429363f-628f-4f42-80e5-8a9a935147cc, 34dc8c9b-f61b-50ca-8daa-0d46277c7b32",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/mathematik/de-bb-sekii-gk.view.json: 728fd537-40d3-5fdf-8b08-925cba0b2004, 22842d80-de9d-5dad-9819-6ae6e9ca61be, 0f18f4e2-efd9-58b8-9b7e-f26aa2fbf43b, 338135aa-d5bb-5b53-8413-90fa8f1e4fb6, e98672c6-871a-5d0b-889c-5afc51040f0d, be48054d-48f7-54c0-8248-d0a462ad6dc9, bbb340ed-1009-4966-ae96-bfea4437505a, 46bb8422-a822-46e1-8bcc-8b6475994b3a, 1429363f-628f-4f42-80e5-8a9a935147cc",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/mathematik/de-bb-sekii-lk.view.json: 728fd537-40d3-5fdf-8b08-925cba0b2004, 22842d80-de9d-5dad-9819-6ae6e9ca61be, 0f18f4e2-efd9-58b8-9b7e-f26aa2fbf43b, 338135aa-d5bb-5b53-8413-90fa8f1e4fb6, 7d160e08-d987-4a63-873b-44496f6e11d3, a7896fa5-993e-52b9-8aa4-10420b35bfd9, 440edf01-1824-597a-9afa-2f23f5becfba, 990739f7-f17d-5199-bdec-0512eb846f14, e98672c6-871a-5d0b-889c-5afc51040f0d, bc244d82-bac0-5b13-8a33-d7b101835480, be48054d-48f7-54c0-8248-d0a462ad6dc9, bbb340ed-1009-4966-ae96-bfea4437505a, 46bb8422-a822-46e1-8bcc-8b6475994b3a, 1429363f-628f-4f42-80e5-8a9a935147cc, 34dc8c9b-f61b-50ca-8daa-0d46277c7b32",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/mathematik/de-be-gk.view.json: 728fd537-40d3-5fdf-8b08-925cba0b2004, 22842d80-de9d-5dad-9819-6ae6e9ca61be, 0f18f4e2-efd9-58b8-9b7e-f26aa2fbf43b, 338135aa-d5bb-5b53-8413-90fa8f1e4fb6, e98672c6-871a-5d0b-889c-5afc51040f0d, be48054d-48f7-54c0-8248-d0a462ad6dc9, bbb340ed-1009-4966-ae96-bfea4437505a, 46bb8422-a822-46e1-8bcc-8b6475994b3a, 1429363f-628f-4f42-80e5-8a9a935147cc",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/mathematik/de-be-lk.view.json: 728fd537-40d3-5fdf-8b08-925cba0b2004, 22842d80-de9d-5dad-9819-6ae6e9ca61be, 0f18f4e2-efd9-58b8-9b7e-f26aa2fbf43b, 338135aa-d5bb-5b53-8413-90fa8f1e4fb6, 7d160e08-d987-4a63-873b-44496f6e11d3, a7896fa5-993e-52b9-8aa4-10420b35bfd9, 440edf01-1824-597a-9afa-2f23f5becfba, 990739f7-f17d-5199-bdec-0512eb846f14, e98672c6-871a-5d0b-889c-5afc51040f0d, bc244d82-bac0-5b13-8a33-d7b101835480, be48054d-48f7-54c0-8248-d0a462ad6dc9, bbb340ed-1009-4966-ae96-bfea4437505a, 46bb8422-a822-46e1-8bcc-8b6475994b3a, 1429363f-628f-4f42-80e5-8a9a935147cc, 34dc8c9b-f61b-50ca-8daa-0d46277c7b32",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/mathematik/de-be-sekii-gk.view.json: 728fd537-40d3-5fdf-8b08-925cba0b2004, 22842d80-de9d-5dad-9819-6ae6e9ca61be, 0f18f4e2-efd9-58b8-9b7e-f26aa2fbf43b, 338135aa-d5bb-5b53-8413-90fa8f1e4fb6, e98672c6-871a-5d0b-889c-5afc51040f0d, be48054d-48f7-54c0-8248-d0a462ad6dc9, bbb340ed-1009-4966-ae96-bfea4437505a, 46bb8422-a822-46e1-8bcc-8b6475994b3a, 1429363f-628f-4f42-80e5-8a9a935147cc",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/mathematik/de-be-sekii-lk.view.json: 728fd537-40d3-5fdf-8b08-925cba0b2004, 22842d80-de9d-5dad-9819-6ae6e9ca61be, 0f18f4e2-efd9-58b8-9b7e-f26aa2fbf43b, 338135aa-d5bb-5b53-8413-90fa8f1e4fb6, 7d160e08-d987-4a63-873b-44496f6e11d3, a7896fa5-993e-52b9-8aa4-10420b35bfd9, 440edf01-1824-597a-9afa-2f23f5becfba, 990739f7-f17d-5199-bdec-0512eb846f14, e98672c6-871a-5d0b-889c-5afc51040f0d, bc244d82-bac0-5b13-8a33-d7b101835480, be48054d-48f7-54c0-8248-d0a462ad6dc9, bbb340ed-1009-4966-ae96-bfea4437505a, 46bb8422-a822-46e1-8bcc-8b6475994b3a, 1429363f-628f-4f42-80e5-8a9a935147cc, 34dc8c9b-f61b-50ca-8daa-0d46277c7b32",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/mathematik/de-bw-gk.view.json: 240f7716-7c6f-5705-876e-8046fd8a6720, bbb340ed-1009-4966-ae96-bfea4437505a, 46bb8422-a822-46e1-8bcc-8b6475994b3a, 1429363f-628f-4f42-80e5-8a9a935147cc, 1969d4dc-2ba6-5c26-ad7c-6e0114ab1fdf, f77b9b40-6afc-5d9e-821e-79903bbbcb94, a8525adc-fad3-53f5-953f-213bd37b09e8, 7337049a-c85c-5b94-adaa-81dc93528bf8, 0c44524c-f617-5076-8acf-729cd5515c14",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/mathematik/de-bw-lk.view.json: 7d160e08-d987-4a63-873b-44496f6e11d3, a7896fa5-993e-52b9-8aa4-10420b35bfd9, 990739f7-f17d-5199-bdec-0512eb846f14, bbb340ed-1009-4966-ae96-bfea4437505a, 46bb8422-a822-46e1-8bcc-8b6475994b3a, 1429363f-628f-4f42-80e5-8a9a935147cc, 1969d4dc-2ba6-5c26-ad7c-6e0114ab1fdf, f77b9b40-6afc-5d9e-821e-79903bbbcb94, a8525adc-fad3-53f5-953f-213bd37b09e8, 74e9a588-cd05-5007-a715-f360fdea9989, 1ff9d055-70cd-52d7-98b1-4338bc1ee59a, c849eeab-e88f-5e82-89d9-761a1e17d97b, 34dc8c9b-f61b-50ca-8daa-0d46277c7b32, 7337049a-c85c-5b94-adaa-81dc93528bf8, 0c44524c-f617-5076-8acf-729cd5515c14, 1fcb56db-5e3f-57da-862d-f3bdf9984af2",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/mathematik/de-bw-sekii-gk.view.json: 240f7716-7c6f-5705-876e-8046fd8a6720, bbb340ed-1009-4966-ae96-bfea4437505a, 46bb8422-a822-46e1-8bcc-8b6475994b3a, 1429363f-628f-4f42-80e5-8a9a935147cc, 1969d4dc-2ba6-5c26-ad7c-6e0114ab1fdf, f77b9b40-6afc-5d9e-821e-79903bbbcb94, a8525adc-fad3-53f5-953f-213bd37b09e8, 7337049a-c85c-5b94-adaa-81dc93528bf8, 0c44524c-f617-5076-8acf-729cd5515c14",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/mathematik/de-bw-sekii-lk.view.json: 7d160e08-d987-4a63-873b-44496f6e11d3, a7896fa5-993e-52b9-8aa4-10420b35bfd9, 990739f7-f17d-5199-bdec-0512eb846f14, bbb340ed-1009-4966-ae96-bfea4437505a, 46bb8422-a822-46e1-8bcc-8b6475994b3a, 1429363f-628f-4f42-80e5-8a9a935147cc, 1969d4dc-2ba6-5c26-ad7c-6e0114ab1fdf, f77b9b40-6afc-5d9e-821e-79903bbbcb94, a8525adc-fad3-53f5-953f-213bd37b09e8, 74e9a588-cd05-5007-a715-f360fdea9989, 1ff9d055-70cd-52d7-98b1-4338bc1ee59a, c849eeab-e88f-5e82-89d9-761a1e17d97b, 34dc8c9b-f61b-50ca-8daa-0d46277c7b32, e45a39e5-cc9b-577e-a28d-691319410b9a, 99b3435a-fdda-5d1b-9681-0ae6d7d5bfcd, 3095e125-fbb7-51c6-bf12-ffbb1735b9b7, 7337049a-c85c-5b94-adaa-81dc93528bf8, 4c319dfd-ebb1-504b-a036-c780e1915900, b9a501c4-9d74-5514-b77b-895980b89b1b, 0c44524c-f617-5076-8acf-729cd5515c14, 1fcb56db-5e3f-57da-862d-f3bdf9984af2",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/mathematik/de-by-gk.view.json: 22842d80-de9d-5dad-9819-6ae6e9ca61be, 0f18f4e2-efd9-58b8-9b7e-f26aa2fbf43b, 6420e4be-fcb1-537a-8367-206431e5b14e, 5886c6e8-2bea-5401-a834-9bd621b04bda, 226e5c66-b5ce-5b58-a11c-7ed64feadcc1, 97fb270f-9ede-5fe0-9a1f-600ffbd65610, bd2c5e29-31c6-58bf-9858-d08e9c8a32ad, 1878f680-095c-511d-aaed-e98393f7fde9, 2f8a3a90-717d-5ac1-b54e-facca26e9008, 57aff94e-91b8-5cc6-9f85-3f317ecf36ca, 81823f27-0c92-5444-ac4e-32b83169f318, 338135aa-d5bb-5b53-8413-90fa8f1e4fb6, e98672c6-871a-5d0b-889c-5afc51040f0d, e3c70a12-7886-51f7-8bcd-ed54865415d6, 03b00864-7001-5c6a-875b-dc269b3484d9, 240f7716-7c6f-5705-876e-8046fd8a6720, be48054d-48f7-54c0-8248-d0a462ad6dc9, bbb340ed-1009-4966-ae96-bfea4437505a, 46bb8422-a822-46e1-8bcc-8b6475994b3a, 1429363f-628f-4f42-80e5-8a9a935147cc, 77940875-ad1e-5272-9002-3ca9db810a18, 9cf020ee-4f6b-554e-97d6-eca3e2aabe99, 99e45593-8509-5f51-832e-39ed2a9c10d9, 3c8c4a64-f6d0-5eaf-b35a-d97c8566ee3b, c83dc2d1-f44f-5fae-86ce-280c68c3c55e, 3f884dbe-108c-57eb-80cc-836bc4c79c9e, 6644a4dc-a773-525f-a382-5e1e3c592b4f, 1969d4dc-2ba6-5c26-ad7c-6e0114ab1fdf, f77b9b40-6afc-5d9e-821e-79903bbbcb94, a8525adc-fad3-53f5-953f-213bd37b09e8, e45a39e5-cc9b-577e-a28d-691319410b9a, 99b3435a-fdda-5d1b-9681-0ae6d7d5bfcd, 3095e125-fbb7-51c6-bf12-ffbb1735b9b7, 7337049a-c85c-5b94-adaa-81dc93528bf8, 4c319dfd-ebb1-504b-a036-c780e1915900, b9a501c4-9d74-5514-b77b-895980b89b1b, 0c44524c-f617-5076-8acf-729cd5515c14",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/mathematik/de-by-lk.view.json: 22842d80-de9d-5dad-9819-6ae6e9ca61be, 0f18f4e2-efd9-58b8-9b7e-f26aa2fbf43b, 6420e4be-fcb1-537a-8367-206431e5b14e, 5886c6e8-2bea-5401-a834-9bd621b04bda, 226e5c66-b5ce-5b58-a11c-7ed64feadcc1, 97fb270f-9ede-5fe0-9a1f-600ffbd65610, 3da7863d-9784-5ea2-bb53-856021b32b18, bd2c5e29-31c6-58bf-9858-d08e9c8a32ad, 1878f680-095c-511d-aaed-e98393f7fde9, 8d314e15-69e9-5af1-a10a-be820b2f821d, e4656e83-3f33-5bda-b0bc-d4b63ec4653e, 81823f27-0c92-5444-ac4e-32b83169f318, 66d75e35-bcbc-5ec9-95f9-8e0558e75f14, 3db949bd-3091-5a25-a1a0-c8ff0369db94, e457af0b-e87f-5d61-9177-41daa6361dd3, 7d160e08-d987-4a63-873b-44496f6e11d3, a7896fa5-993e-52b9-8aa4-10420b35bfd9, 440edf01-1824-597a-9afa-2f23f5becfba, 990739f7-f17d-5199-bdec-0512eb846f14, 942de65f-e8cc-417c-a66b-5f597b26d965, e3c70a12-7886-51f7-8bcd-ed54865415d6, bc244d82-bac0-5b13-8a33-d7b101835480, bbb340ed-1009-4966-ae96-bfea4437505a, 46bb8422-a822-46e1-8bcc-8b6475994b3a, 1429363f-628f-4f42-80e5-8a9a935147cc, 77940875-ad1e-5272-9002-3ca9db810a18, 9cf020ee-4f6b-554e-97d6-eca3e2aabe99, 99e45593-8509-5f51-832e-39ed2a9c10d9, 3c8c4a64-f6d0-5eaf-b35a-d97c8566ee3b, c83dc2d1-f44f-5fae-86ce-280c68c3c55e, 3f884dbe-108c-57eb-80cc-836bc4c79c9e, 14e40ac8-9666-5bf5-a011-870d62b8e597, 6644a4dc-a773-525f-a382-5e1e3c592b4f, 1969d4dc-2ba6-5c26-ad7c-6e0114ab1fdf, f77b9b40-6afc-5d9e-821e-79903bbbcb94, a8525adc-fad3-53f5-953f-213bd37b09e8, 74e9a588-cd05-5007-a715-f360fdea9989, 1ff9d055-70cd-52d7-98b1-4338bc1ee59a, c849eeab-e88f-5e82-89d9-761a1e17d97b, e45a39e5-cc9b-577e-a28d-691319410b9a, 99b3435a-fdda-5d1b-9681-0ae6d7d5bfcd, 3095e125-fbb7-51c6-bf12-ffbb1735b9b7, 7337049a-c85c-5b94-adaa-81dc93528bf8, 4c319dfd-ebb1-504b-a036-c780e1915900, b9a501c4-9d74-5514-b77b-895980b89b1b, 0c44524c-f617-5076-8acf-729cd5515c14, 1fcb56db-5e3f-57da-862d-f3bdf9984af2, 42752317-6022-47f2-8b34-160db5ef01fb",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/mathematik/de-by-sekii-gk.view.json: 22842d80-de9d-5dad-9819-6ae6e9ca61be, 0f18f4e2-efd9-58b8-9b7e-f26aa2fbf43b, 6420e4be-fcb1-537a-8367-206431e5b14e, 5886c6e8-2bea-5401-a834-9bd621b04bda, 226e5c66-b5ce-5b58-a11c-7ed64feadcc1, 97fb270f-9ede-5fe0-9a1f-600ffbd65610, bd2c5e29-31c6-58bf-9858-d08e9c8a32ad, 1878f680-095c-511d-aaed-e98393f7fde9, 2f8a3a90-717d-5ac1-b54e-facca26e9008, 57aff94e-91b8-5cc6-9f85-3f317ecf36ca, 81823f27-0c92-5444-ac4e-32b83169f318, 338135aa-d5bb-5b53-8413-90fa8f1e4fb6, e98672c6-871a-5d0b-889c-5afc51040f0d, e3c70a12-7886-51f7-8bcd-ed54865415d6, 03b00864-7001-5c6a-875b-dc269b3484d9, 240f7716-7c6f-5705-876e-8046fd8a6720, be48054d-48f7-54c0-8248-d0a462ad6dc9, bbb340ed-1009-4966-ae96-bfea4437505a, 46bb8422-a822-46e1-8bcc-8b6475994b3a, 1429363f-628f-4f42-80e5-8a9a935147cc, 77940875-ad1e-5272-9002-3ca9db810a18, 9cf020ee-4f6b-554e-97d6-eca3e2aabe99, 99e45593-8509-5f51-832e-39ed2a9c10d9, 3c8c4a64-f6d0-5eaf-b35a-d97c8566ee3b, c83dc2d1-f44f-5fae-86ce-280c68c3c55e, 3f884dbe-108c-57eb-80cc-836bc4c79c9e, 6644a4dc-a773-525f-a382-5e1e3c592b4f, 1969d4dc-2ba6-5c26-ad7c-6e0114ab1fdf, f77b9b40-6afc-5d9e-821e-79903bbbcb94, a8525adc-fad3-53f5-953f-213bd37b09e8, e45a39e5-cc9b-577e-a28d-691319410b9a, 99b3435a-fdda-5d1b-9681-0ae6d7d5bfcd, 3095e125-fbb7-51c6-bf12-ffbb1735b9b7, 7337049a-c85c-5b94-adaa-81dc93528bf8, 4c319dfd-ebb1-504b-a036-c780e1915900, b9a501c4-9d74-5514-b77b-895980b89b1b, 0c44524c-f617-5076-8acf-729cd5515c14",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/mathematik/de-by-sekii-lk.view.json: 22842d80-de9d-5dad-9819-6ae6e9ca61be, 0f18f4e2-efd9-58b8-9b7e-f26aa2fbf43b, 6420e4be-fcb1-537a-8367-206431e5b14e, 5886c6e8-2bea-5401-a834-9bd621b04bda, 226e5c66-b5ce-5b58-a11c-7ed64feadcc1, 97fb270f-9ede-5fe0-9a1f-600ffbd65610, 3da7863d-9784-5ea2-bb53-856021b32b18, bd2c5e29-31c6-58bf-9858-d08e9c8a32ad, 1878f680-095c-511d-aaed-e98393f7fde9, 8d314e15-69e9-5af1-a10a-be820b2f821d, e4656e83-3f33-5bda-b0bc-d4b63ec4653e, 81823f27-0c92-5444-ac4e-32b83169f318, 66d75e35-bcbc-5ec9-95f9-8e0558e75f14, 3db949bd-3091-5a25-a1a0-c8ff0369db94, e457af0b-e87f-5d61-9177-41daa6361dd3, 7d160e08-d987-4a63-873b-44496f6e11d3, a7896fa5-993e-52b9-8aa4-10420b35bfd9, 440edf01-1824-597a-9afa-2f23f5becfba, 990739f7-f17d-5199-bdec-0512eb846f14, 942de65f-e8cc-417c-a66b-5f597b26d965, e3c70a12-7886-51f7-8bcd-ed54865415d6, bc244d82-bac0-5b13-8a33-d7b101835480, bbb340ed-1009-4966-ae96-bfea4437505a, 46bb8422-a822-46e1-8bcc-8b6475994b3a, 1429363f-628f-4f42-80e5-8a9a935147cc, 77940875-ad1e-5272-9002-3ca9db810a18, 9cf020ee-4f6b-554e-97d6-eca3e2aabe99, 99e45593-8509-5f51-832e-39ed2a9c10d9, 3c8c4a64-f6d0-5eaf-b35a-d97c8566ee3b, c83dc2d1-f44f-5fae-86ce-280c68c3c55e, 3f884dbe-108c-57eb-80cc-836bc4c79c9e, 14e40ac8-9666-5bf5-a011-870d62b8e597, 6644a4dc-a773-525f-a382-5e1e3c592b4f, 1969d4dc-2ba6-5c26-ad7c-6e0114ab1fdf, f77b9b40-6afc-5d9e-821e-79903bbbcb94, a8525adc-fad3-53f5-953f-213bd37b09e8, 74e9a588-cd05-5007-a715-f360fdea9989, 1ff9d055-70cd-52d7-98b1-4338bc1ee59a, c849eeab-e88f-5e82-89d9-761a1e17d97b, e45a39e5-cc9b-577e-a28d-691319410b9a, 99b3435a-fdda-5d1b-9681-0ae6d7d5bfcd, 3095e125-fbb7-51c6-bf12-ffbb1735b9b7, 7337049a-c85c-5b94-adaa-81dc93528bf8, 4c319dfd-ebb1-504b-a036-c780e1915900, b9a501c4-9d74-5514-b77b-895980b89b1b, 0c44524c-f617-5076-8acf-729cd5515c14, 1fcb56db-5e3f-57da-862d-f3bdf9984af2, 42752317-6022-47f2-8b34-160db5ef01fb",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/mathematik/de-de-gk.view.json: 22842d80-de9d-5dad-9819-6ae6e9ca61be, 338135aa-d5bb-5b53-8413-90fa8f1e4fb6, e98672c6-871a-5d0b-889c-5afc51040f0d, 240f7716-7c6f-5705-876e-8046fd8a6720, be48054d-48f7-54c0-8248-d0a462ad6dc9, bbb340ed-1009-4966-ae96-bfea4437505a, 46bb8422-a822-46e1-8bcc-8b6475994b3a, 1429363f-628f-4f42-80e5-8a9a935147cc",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/mathematik/de-de-lk.view.json: 22842d80-de9d-5dad-9819-6ae6e9ca61be, 338135aa-d5bb-5b53-8413-90fa8f1e4fb6, a7896fa5-993e-52b9-8aa4-10420b35bfd9, 440edf01-1824-597a-9afa-2f23f5becfba, 990739f7-f17d-5199-bdec-0512eb846f14, e98672c6-871a-5d0b-889c-5afc51040f0d, bc244d82-bac0-5b13-8a33-d7b101835480, 60dbe2ed-55fb-5352-8829-1ea23fbee024, 240f7716-7c6f-5705-876e-8046fd8a6720, be48054d-48f7-54c0-8248-d0a462ad6dc9, bbb340ed-1009-4966-ae96-bfea4437505a, 46bb8422-a822-46e1-8bcc-8b6475994b3a, 1429363f-628f-4f42-80e5-8a9a935147cc, 34dc8c9b-f61b-50ca-8daa-0d46277c7b32",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/mathematik/de-de-sekii-gk.view.json: 22842d80-de9d-5dad-9819-6ae6e9ca61be, 338135aa-d5bb-5b53-8413-90fa8f1e4fb6, e98672c6-871a-5d0b-889c-5afc51040f0d, 240f7716-7c6f-5705-876e-8046fd8a6720, be48054d-48f7-54c0-8248-d0a462ad6dc9, bbb340ed-1009-4966-ae96-bfea4437505a, 46bb8422-a822-46e1-8bcc-8b6475994b3a, 1429363f-628f-4f42-80e5-8a9a935147cc",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/mathematik/de-de-sekii-lk.view.json: 22842d80-de9d-5dad-9819-6ae6e9ca61be, 338135aa-d5bb-5b53-8413-90fa8f1e4fb6, a7896fa5-993e-52b9-8aa4-10420b35bfd9, 440edf01-1824-597a-9afa-2f23f5becfba, 990739f7-f17d-5199-bdec-0512eb846f14, e98672c6-871a-5d0b-889c-5afc51040f0d, bc244d82-bac0-5b13-8a33-d7b101835480, 60dbe2ed-55fb-5352-8829-1ea23fbee024, 240f7716-7c6f-5705-876e-8046fd8a6720, be48054d-48f7-54c0-8248-d0a462ad6dc9, bbb340ed-1009-4966-ae96-bfea4437505a, 46bb8422-a822-46e1-8bcc-8b6475994b3a, 1429363f-628f-4f42-80e5-8a9a935147cc, 34dc8c9b-f61b-50ca-8daa-0d46277c7b32"
+      ]
+    },
+    {
+      "profileId": "canonical-math-sek2",
+      "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+      "compiledJurisdiction": true,
+      "id": "CQR-104",
+      "status": "fail",
+      "summary": "Route endpoints or projection-local routes are missing, unexpected, or not applicability-bound in at least one learner-facing projection scope.",
+      "metrics": {
+        "relevantCompositionViews": 80,
+        "evaluatedProjectionScopes": 140,
+        "requiredMotivationAnchors": 1,
+        "minimumRequiredTerminalAutonomyGoals": 29,
+        "requiredTerminalAutonomyGoals": 72,
+        "projectionScopesMissingMotivationAnchors": 0,
+        "projectionScopesMissingTerminalAutonomyGoals": 140,
+        "projectionScopesWithUnexpectedTerminalAutonomyGoals": 0,
+        "projectionScopesWithoutExpectedTerminalAutonomyGoals": 0,
+        "terminalGoalsMissingCompiledApplicability": 0,
+        "projectionScopesWithInvalidStageStructure": 0,
+        "nationalProjectionScopesUsingJurisdictionStageAuthority": 0,
+        "nationalProjectionScopesMissingJurisdictionStageAuthority": 0,
+        "nationalProjectionScopesWithAmbiguousJurisdictionStageAuthority": 0,
+        "nationalTargetAtomicGoalOccurrencesExcludedByJurisdictionStageAuthority": 0,
+        "nationalSelectedGoalOccurrencesExcludedByJurisdictionStageAuthority": 0,
+        "nationalPrerequisiteOnlyGoalOccurrencesImportedByJurisdictionStageAuthority": 0,
+        "projectionScopesWithIncompleteExplicitTerminalPrerequisites": 0,
+        "explicitTerminalPrerequisiteOccurrencesMissingFromProjection": 0,
+        "projectionScopesWithIncompleteWholeMaterialCoverageBindings": 0,
+        "wholeMaterialCoveredGoalOccurrencesWithoutVisiblePrerequisitePath": 0,
+        "projectionScopesWithIncompleteWholeMaterialPrerequisiteClosure": 0,
+        "wholeMaterialPrerequisiteOccurrencesMissingFromProjection": 0,
+        "uniqueExplicitTerminalPrerequisitesMissingFromProjection": 0,
+        "projectionLocalRouteChecksEnabled": 0,
+        "visibleSelectedAtomicGoalOccurrences": 66193,
+        "visibleProfileSelectedAtomicGoalOccurrences": 66193,
+        "visibleProjectedRouteTargetGoalOccurrences": 66193,
+        "visibleProjectedRouteTargetGoalOccurrencesExcludedByProfileSelector": 0,
+        "uniqueProjectedRouteTargetsExcludedByProfileSelector": 0,
+        "visibleProjectedRouteTargetGoalOccurrencesExcludedFromRouteChecks": 0,
+        "projectionScopesMissingEffectiveMotivationRoutes": 0,
+        "projectionScopesMissingDirectMotivationRoutes": 0,
+        "projectionScopesMissingEffectiveTerminalRoutes": 0,
+        "projectionScopesMissingDirectTerminalRoutes": 0,
+        "visibleSelectedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+        "visibleSelectedGoalOccurrencesMissingDirectMotivationRoute": 0,
+        "visibleSelectedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+        "visibleSelectedGoalOccurrencesMissingDirectTerminalRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingDirectMotivationRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingDirectTerminalRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingEffectiveMotivationRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingDirectMotivationRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingEffectiveTerminalRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingDirectTerminalRoute": 0
+      },
+      "details": [
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/mathematik/de-bb-gk.view.json [DE-BB]: 338135aa-d5bb-5b53-8413-90fa8f1e4fb6, e98672c6-871a-5d0b-889c-5afc51040f0d, be48054d-48f7-54c0-8248-d0a462ad6dc9, bbb340ed-1009-4966-ae96-bfea4437505a, 46bb8422-a822-46e1-8bcc-8b6475994b3a, 1429363f-628f-4f42-80e5-8a9a935147cc",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/mathematik/de-bb-lk.view.json [DE-BB]: 338135aa-d5bb-5b53-8413-90fa8f1e4fb6, e98672c6-871a-5d0b-889c-5afc51040f0d, bc244d82-bac0-5b13-8a33-d7b101835480, be48054d-48f7-54c0-8248-d0a462ad6dc9, bbb340ed-1009-4966-ae96-bfea4437505a, 46bb8422-a822-46e1-8bcc-8b6475994b3a, 1429363f-628f-4f42-80e5-8a9a935147cc",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/mathematik/de-bb-sekii-gk.view.json [DE-BB]: 338135aa-d5bb-5b53-8413-90fa8f1e4fb6, e98672c6-871a-5d0b-889c-5afc51040f0d, be48054d-48f7-54c0-8248-d0a462ad6dc9, bbb340ed-1009-4966-ae96-bfea4437505a, 46bb8422-a822-46e1-8bcc-8b6475994b3a, 1429363f-628f-4f42-80e5-8a9a935147cc",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/mathematik/de-bb-sekii-lk.view.json [DE-BB]: 338135aa-d5bb-5b53-8413-90fa8f1e4fb6, e98672c6-871a-5d0b-889c-5afc51040f0d, bc244d82-bac0-5b13-8a33-d7b101835480, be48054d-48f7-54c0-8248-d0a462ad6dc9, bbb340ed-1009-4966-ae96-bfea4437505a, 46bb8422-a822-46e1-8bcc-8b6475994b3a, 1429363f-628f-4f42-80e5-8a9a935147cc",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/mathematik/de-be-gk.view.json [DE-BE]: 338135aa-d5bb-5b53-8413-90fa8f1e4fb6, e98672c6-871a-5d0b-889c-5afc51040f0d, be48054d-48f7-54c0-8248-d0a462ad6dc9, bbb340ed-1009-4966-ae96-bfea4437505a, 46bb8422-a822-46e1-8bcc-8b6475994b3a, 1429363f-628f-4f42-80e5-8a9a935147cc",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/mathematik/de-be-lk.view.json [DE-BE]: 338135aa-d5bb-5b53-8413-90fa8f1e4fb6, e98672c6-871a-5d0b-889c-5afc51040f0d, bc244d82-bac0-5b13-8a33-d7b101835480, be48054d-48f7-54c0-8248-d0a462ad6dc9, bbb340ed-1009-4966-ae96-bfea4437505a, 46bb8422-a822-46e1-8bcc-8b6475994b3a, 1429363f-628f-4f42-80e5-8a9a935147cc",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/mathematik/de-be-sekii-gk.view.json [DE-BE]: 338135aa-d5bb-5b53-8413-90fa8f1e4fb6, e98672c6-871a-5d0b-889c-5afc51040f0d, be48054d-48f7-54c0-8248-d0a462ad6dc9, bbb340ed-1009-4966-ae96-bfea4437505a, 46bb8422-a822-46e1-8bcc-8b6475994b3a, 1429363f-628f-4f42-80e5-8a9a935147cc",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/mathematik/de-be-sekii-lk.view.json [DE-BE]: 338135aa-d5bb-5b53-8413-90fa8f1e4fb6, e98672c6-871a-5d0b-889c-5afc51040f0d, bc244d82-bac0-5b13-8a33-d7b101835480, be48054d-48f7-54c0-8248-d0a462ad6dc9, bbb340ed-1009-4966-ae96-bfea4437505a, 46bb8422-a822-46e1-8bcc-8b6475994b3a, 1429363f-628f-4f42-80e5-8a9a935147cc",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/mathematik/de-bw-gk.view.json [DE-BW]: 240f7716-7c6f-5705-876e-8046fd8a6720, bbb340ed-1009-4966-ae96-bfea4437505a, 46bb8422-a822-46e1-8bcc-8b6475994b3a, 1429363f-628f-4f42-80e5-8a9a935147cc, 1969d4dc-2ba6-5c26-ad7c-6e0114ab1fdf, f77b9b40-6afc-5d9e-821e-79903bbbcb94, a8525adc-fad3-53f5-953f-213bd37b09e8, 7337049a-c85c-5b94-adaa-81dc93528bf8, 0c44524c-f617-5076-8acf-729cd5515c14",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/mathematik/de-bw-lk.view.json [DE-BW]: bbb340ed-1009-4966-ae96-bfea4437505a, 46bb8422-a822-46e1-8bcc-8b6475994b3a, 1429363f-628f-4f42-80e5-8a9a935147cc, 1969d4dc-2ba6-5c26-ad7c-6e0114ab1fdf, f77b9b40-6afc-5d9e-821e-79903bbbcb94, a8525adc-fad3-53f5-953f-213bd37b09e8, 74e9a588-cd05-5007-a715-f360fdea9989, 1ff9d055-70cd-52d7-98b1-4338bc1ee59a, 7337049a-c85c-5b94-adaa-81dc93528bf8, 0c44524c-f617-5076-8acf-729cd5515c14, 1fcb56db-5e3f-57da-862d-f3bdf9984af2",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/mathematik/de-bw-sekii-gk.view.json [DE-BW]: 240f7716-7c6f-5705-876e-8046fd8a6720, bbb340ed-1009-4966-ae96-bfea4437505a, 46bb8422-a822-46e1-8bcc-8b6475994b3a, 1429363f-628f-4f42-80e5-8a9a935147cc, 1969d4dc-2ba6-5c26-ad7c-6e0114ab1fdf, f77b9b40-6afc-5d9e-821e-79903bbbcb94, a8525adc-fad3-53f5-953f-213bd37b09e8, 7337049a-c85c-5b94-adaa-81dc93528bf8, 0c44524c-f617-5076-8acf-729cd5515c14",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/mathematik/de-bw-sekii-lk.view.json [DE-BW]: bbb340ed-1009-4966-ae96-bfea4437505a, 46bb8422-a822-46e1-8bcc-8b6475994b3a, 1429363f-628f-4f42-80e5-8a9a935147cc, 1969d4dc-2ba6-5c26-ad7c-6e0114ab1fdf, f77b9b40-6afc-5d9e-821e-79903bbbcb94, a8525adc-fad3-53f5-953f-213bd37b09e8, 74e9a588-cd05-5007-a715-f360fdea9989, 1ff9d055-70cd-52d7-98b1-4338bc1ee59a, e45a39e5-cc9b-577e-a28d-691319410b9a, 99b3435a-fdda-5d1b-9681-0ae6d7d5bfcd, 3095e125-fbb7-51c6-bf12-ffbb1735b9b7, 7337049a-c85c-5b94-adaa-81dc93528bf8, 4c319dfd-ebb1-504b-a036-c780e1915900, b9a501c4-9d74-5514-b77b-895980b89b1b, 0c44524c-f617-5076-8acf-729cd5515c14, 1fcb56db-5e3f-57da-862d-f3bdf9984af2",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/mathematik/de-by-gk.view.json [DE-BY]: 338135aa-d5bb-5b53-8413-90fa8f1e4fb6, e98672c6-871a-5d0b-889c-5afc51040f0d, 03b00864-7001-5c6a-875b-dc269b3484d9, 240f7716-7c6f-5705-876e-8046fd8a6720, be48054d-48f7-54c0-8248-d0a462ad6dc9, bbb340ed-1009-4966-ae96-bfea4437505a, 46bb8422-a822-46e1-8bcc-8b6475994b3a, 1429363f-628f-4f42-80e5-8a9a935147cc, 3f884dbe-108c-57eb-80cc-836bc4c79c9e, 6644a4dc-a773-525f-a382-5e1e3c592b4f",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/mathematik/de-by-lk.view.json [DE-BY]: 8d314e15-69e9-5af1-a10a-be820b2f821d, 66d75e35-bcbc-5ec9-95f9-8e0558e75f14, 3db949bd-3091-5a25-a1a0-c8ff0369db94, e457af0b-e87f-5d61-9177-41daa6361dd3, bbb340ed-1009-4966-ae96-bfea4437505a, 46bb8422-a822-46e1-8bcc-8b6475994b3a, 1429363f-628f-4f42-80e5-8a9a935147cc, 3f884dbe-108c-57eb-80cc-836bc4c79c9e, 14e40ac8-9666-5bf5-a011-870d62b8e597, 6644a4dc-a773-525f-a382-5e1e3c592b4f, 1ff9d055-70cd-52d7-98b1-4338bc1ee59a, c849eeab-e88f-5e82-89d9-761a1e17d97b",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/mathematik/de-by-sekii-gk.view.json [DE-BY]: 338135aa-d5bb-5b53-8413-90fa8f1e4fb6, e98672c6-871a-5d0b-889c-5afc51040f0d, 03b00864-7001-5c6a-875b-dc269b3484d9, 240f7716-7c6f-5705-876e-8046fd8a6720, be48054d-48f7-54c0-8248-d0a462ad6dc9, bbb340ed-1009-4966-ae96-bfea4437505a, 46bb8422-a822-46e1-8bcc-8b6475994b3a, 1429363f-628f-4f42-80e5-8a9a935147cc, 3f884dbe-108c-57eb-80cc-836bc4c79c9e, 6644a4dc-a773-525f-a382-5e1e3c592b4f",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/mathematik/de-by-sekii-lk.view.json [DE-BY]: 8d314e15-69e9-5af1-a10a-be820b2f821d, 66d75e35-bcbc-5ec9-95f9-8e0558e75f14, 3db949bd-3091-5a25-a1a0-c8ff0369db94, e457af0b-e87f-5d61-9177-41daa6361dd3, bbb340ed-1009-4966-ae96-bfea4437505a, 46bb8422-a822-46e1-8bcc-8b6475994b3a, 1429363f-628f-4f42-80e5-8a9a935147cc, 3f884dbe-108c-57eb-80cc-836bc4c79c9e, 14e40ac8-9666-5bf5-a011-870d62b8e597, 6644a4dc-a773-525f-a382-5e1e3c592b4f, 1ff9d055-70cd-52d7-98b1-4338bc1ee59a, c849eeab-e88f-5e82-89d9-761a1e17d97b",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/mathematik/de-de-gk.view.json [DE-BW]: 22842d80-de9d-5dad-9819-6ae6e9ca61be, 338135aa-d5bb-5b53-8413-90fa8f1e4fb6, e98672c6-871a-5d0b-889c-5afc51040f0d, 240f7716-7c6f-5705-876e-8046fd8a6720, be48054d-48f7-54c0-8248-d0a462ad6dc9, bbb340ed-1009-4966-ae96-bfea4437505a, 46bb8422-a822-46e1-8bcc-8b6475994b3a, 1429363f-628f-4f42-80e5-8a9a935147cc",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/mathematik/de-de-gk.view.json [DE-HE]: 338135aa-d5bb-5b53-8413-90fa8f1e4fb6, e98672c6-871a-5d0b-889c-5afc51040f0d, 240f7716-7c6f-5705-876e-8046fd8a6720, be48054d-48f7-54c0-8248-d0a462ad6dc9, bbb340ed-1009-4966-ae96-bfea4437505a, 46bb8422-a822-46e1-8bcc-8b6475994b3a, 1429363f-628f-4f42-80e5-8a9a935147cc",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/mathematik/de-de-gk.view.json [DE-BY]: 338135aa-d5bb-5b53-8413-90fa8f1e4fb6, e98672c6-871a-5d0b-889c-5afc51040f0d, 240f7716-7c6f-5705-876e-8046fd8a6720, be48054d-48f7-54c0-8248-d0a462ad6dc9, bbb340ed-1009-4966-ae96-bfea4437505a, 46bb8422-a822-46e1-8bcc-8b6475994b3a, 1429363f-628f-4f42-80e5-8a9a935147cc",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/mathematik/de-de-gk.view.json [DE-BB]: 338135aa-d5bb-5b53-8413-90fa8f1e4fb6, e98672c6-871a-5d0b-889c-5afc51040f0d, 240f7716-7c6f-5705-876e-8046fd8a6720, be48054d-48f7-54c0-8248-d0a462ad6dc9, bbb340ed-1009-4966-ae96-bfea4437505a, 46bb8422-a822-46e1-8bcc-8b6475994b3a, 1429363f-628f-4f42-80e5-8a9a935147cc"
+      ]
+    },
+    {
+      "profileId": "canonical-physics-sek2",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "compiledJurisdiction": false,
+      "id": "CQR-104",
+      "status": "fail",
+      "summary": "Route endpoints or projection-local routes are missing, unexpected, or not applicability-bound in at least one learner-facing projection scope.",
+      "metrics": {
+        "relevantCompositionViews": 68,
+        "evaluatedProjectionScopes": 68,
+        "requiredMotivationAnchors": 1,
+        "minimumRequiredTerminalAutonomyGoals": 51,
+        "requiredTerminalAutonomyGoals": 65,
+        "projectionScopesMissingMotivationAnchors": 0,
+        "projectionScopesMissingTerminalAutonomyGoals": 64,
+        "projectionScopesWithUnexpectedTerminalAutonomyGoals": 58,
+        "projectionScopesWithoutExpectedTerminalAutonomyGoals": 0,
+        "terminalGoalsMissingCompiledApplicability": 0,
+        "projectionScopesWithInvalidStageStructure": 0,
+        "nationalProjectionScopesUsingJurisdictionStageAuthority": 0,
+        "nationalProjectionScopesMissingJurisdictionStageAuthority": 0,
+        "nationalProjectionScopesWithAmbiguousJurisdictionStageAuthority": 0,
+        "nationalTargetAtomicGoalOccurrencesExcludedByJurisdictionStageAuthority": 0,
+        "nationalSelectedGoalOccurrencesExcludedByJurisdictionStageAuthority": 0,
+        "nationalPrerequisiteOnlyGoalOccurrencesImportedByJurisdictionStageAuthority": 0,
+        "projectionScopesWithIncompleteExplicitTerminalPrerequisites": 0,
+        "explicitTerminalPrerequisiteOccurrencesMissingFromProjection": 0,
+        "projectionScopesWithIncompleteWholeMaterialCoverageBindings": 0,
+        "wholeMaterialCoveredGoalOccurrencesWithoutVisiblePrerequisitePath": 0,
+        "projectionScopesWithIncompleteWholeMaterialPrerequisiteClosure": 0,
+        "wholeMaterialPrerequisiteOccurrencesMissingFromProjection": 0,
+        "uniqueExplicitTerminalPrerequisitesMissingFromProjection": 0,
+        "projectionLocalRouteChecksEnabled": 0,
+        "visibleSelectedAtomicGoalOccurrences": 16150,
+        "visibleProfileSelectedAtomicGoalOccurrences": 16150,
+        "visibleProjectedRouteTargetGoalOccurrences": 16150,
+        "visibleProjectedRouteTargetGoalOccurrencesExcludedByProfileSelector": 0,
+        "uniqueProjectedRouteTargetsExcludedByProfileSelector": 0,
+        "visibleProjectedRouteTargetGoalOccurrencesExcludedFromRouteChecks": 0,
+        "projectionScopesMissingEffectiveMotivationRoutes": 0,
+        "projectionScopesMissingDirectMotivationRoutes": 0,
+        "projectionScopesMissingEffectiveTerminalRoutes": 0,
+        "projectionScopesMissingDirectTerminalRoutes": 0,
+        "visibleSelectedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+        "visibleSelectedGoalOccurrencesMissingDirectMotivationRoute": 0,
+        "visibleSelectedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+        "visibleSelectedGoalOccurrencesMissingDirectTerminalRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingDirectMotivationRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingDirectTerminalRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingEffectiveMotivationRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingDirectMotivationRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingEffectiveTerminalRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingDirectTerminalRoute": 0
+      },
+      "details": [
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-bb-gk.view.json: 5902ebe8-2025-5a7c-b95d-13057398d6e6, 6da29199-f086-512c-89f2-1b5ca865eef9, 6c87a996-9166-5c6e-8cda-01d40720f9c8, 74a32716-2b46-5d96-8b57-3f6edb90e088",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-bb-lk.view.json: 51af53cb-8866-52cd-b2ca-af8bd8a836e0, 4dbe6eb9-4d77-58a9-a15c-f0b8bb110a65, 5902ebe8-2025-5a7c-b95d-13057398d6e6, 74a32716-2b46-5d96-8b57-3f6edb90e088",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-bb-sekii-gk.view.json: 5902ebe8-2025-5a7c-b95d-13057398d6e6, 6da29199-f086-512c-89f2-1b5ca865eef9, 6c87a996-9166-5c6e-8cda-01d40720f9c8, 74a32716-2b46-5d96-8b57-3f6edb90e088",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-bb-sekii-lk.view.json: 51af53cb-8866-52cd-b2ca-af8bd8a836e0, 4dbe6eb9-4d77-58a9-a15c-f0b8bb110a65, 5902ebe8-2025-5a7c-b95d-13057398d6e6, 74a32716-2b46-5d96-8b57-3f6edb90e088",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-be-gk.view.json: 5902ebe8-2025-5a7c-b95d-13057398d6e6, 6da29199-f086-512c-89f2-1b5ca865eef9, 6c87a996-9166-5c6e-8cda-01d40720f9c8, 74a32716-2b46-5d96-8b57-3f6edb90e088",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-be-lk.view.json: 51af53cb-8866-52cd-b2ca-af8bd8a836e0, 4dbe6eb9-4d77-58a9-a15c-f0b8bb110a65, 5902ebe8-2025-5a7c-b95d-13057398d6e6, 74a32716-2b46-5d96-8b57-3f6edb90e088",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-be-sekii-gk.view.json: 5902ebe8-2025-5a7c-b95d-13057398d6e6, 6da29199-f086-512c-89f2-1b5ca865eef9, 6c87a996-9166-5c6e-8cda-01d40720f9c8, 74a32716-2b46-5d96-8b57-3f6edb90e088",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-be-sekii-lk.view.json: 51af53cb-8866-52cd-b2ca-af8bd8a836e0, 4dbe6eb9-4d77-58a9-a15c-f0b8bb110a65, 5902ebe8-2025-5a7c-b95d-13057398d6e6, 74a32716-2b46-5d96-8b57-3f6edb90e088",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-bw-gk.view.json: a9562b05-c54d-5635-9244-3f7dd24a8642, 22561c66-3957-5d55-b07a-25de1f359930, 72649cf5-893c-5f03-88bd-a2497171d434, 5773ccbe-cd20-5ba0-99a5-7ccd5f42be51, 0432a422-401b-5134-bf08-05cfd8c7a366, dd99528a-bae5-5b78-89e6-c6092c927f8d, 7c0b94b9-2af7-59d4-bfae-278a3418f6a8, be6d4895-65ab-545b-8df9-84e5a308a5e3, 7e0308d8-a239-5c0f-b2c0-724f21e4da60, 6ba2e47f-7e88-5d30-8f1a-3f4b4f785ca1, 6d25344c-35d7-5853-925d-2bccbaf50630, 7f83e25c-38f7-5ac2-8f9c-ec54eeef1026, 4ab1cf6d-b808-5b86-9291-85df0b9f2496, 6ea3fb3c-abdc-568f-ab13-97c36dc274e4, c5807a37-129e-5df6-8989-482bc7f5683e, 841edfdb-5e12-5a37-ab12-552a1d8e92ca, 783c1ffe-d983-5c5a-8897-2c88fc64147c, db5f4121-d4b1-5006-b2da-6e76aac72bf5, ba29e928-a287-5de7-b3fe-5c8c3731363b, d441ee2f-9230-5751-832b-5b0b5cf14605, 1659e056-c7ac-553d-b4d6-467cc5688dd1, 82feb329-c3bc-58ba-a5b0-6ccdf226dbeb, b15f3e47-6051-5382-aa86-1e4f09e245d5, eecb0af8-a45a-51fc-8987-2acb6292ca7f, ab2b9c0f-db98-5d20-adee-e46eafe037b4, 50328a4f-91e8-5c8b-8d61-8f9c98a5cddf, 7e2017d0-e76e-559c-bace-d5d7809a241f, 36d5b915-1cb8-5a05-b64a-5f9497a33d1f, 22bdd29e-00d3-5d43-97d6-8b442b8bfc8c, d0eb16e9-9a52-5237-baca-ad5a14a4c59b, a94f9b05-ecb1-5a13-8364-44c1c98be8e4, b585ff81-6332-5d11-ae63-ee6a9928c00d, a3e22e70-6629-5c74-a8ae-a8c4f55c72a0, 4daef009-6425-526a-8574-4fa75f28f946, 5a5bc118-4420-5bb7-94c3-67837f2ce0dd, 15cb40f1-e2d3-5754-9e7b-e8888fe78340, f532c772-7b6e-59aa-ad65-e0eeafc3767f, 0f5346d6-de1b-5e38-aaba-68db205e594b, 4a58df57-f791-502f-8b8d-9ba155e46035, 5902ebe8-2025-5a7c-b95d-13057398d6e6, 6da29199-f086-512c-89f2-1b5ca865eef9, 6c87a996-9166-5c6e-8cda-01d40720f9c8, 74a32716-2b46-5d96-8b57-3f6edb90e088, b3b365f4-4988-57d5-97cd-5d8446483ef7, 18fb1470-5a03-5277-9486-ae74c63c8a8c",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-bw-lk.view.json: 2b9e565f-d9b4-5e23-b5b7-b7977cecff06, 8320bb17-e6ab-50ea-a965-aa331bfd33e1, 1b432223-3d59-5586-86a9-2214b4844101, 879491c0-7153-570b-91f4-c61d9fe8a143, 0432a422-401b-5134-bf08-05cfd8c7a366, dd99528a-bae5-5b78-89e6-c6092c927f8d, 7c0b94b9-2af7-59d4-bfae-278a3418f6a8, be6d4895-65ab-545b-8df9-84e5a308a5e3, 8a1d4093-9832-5010-b1ca-9d32d8c05afa, 6ba2e47f-7e88-5d30-8f1a-3f4b4f785ca1, 6d25344c-35d7-5853-925d-2bccbaf50630, 7f83e25c-38f7-5ac2-8f9c-ec54eeef1026, 4ab1cf6d-b808-5b86-9291-85df0b9f2496, 6ea3fb3c-abdc-568f-ab13-97c36dc274e4, c5807a37-129e-5df6-8989-482bc7f5683e, 841edfdb-5e12-5a37-ab12-552a1d8e92ca, 5e64eacd-5204-5028-af23-02a43377c56e, 72ee642f-7574-517e-abd6-17d699b05af6, d8442d03-8b7e-54b7-9d9a-dc31ce541daa, d441ee2f-9230-5751-832b-5b0b5cf14605, d350cfa7-c606-501e-abf7-1c9e546b266b, 82feb329-c3bc-58ba-a5b0-6ccdf226dbeb, acf192a8-c398-51dc-a03b-672ab55df957, b15f3e47-6051-5382-aa86-1e4f09e245d5, eecb0af8-a45a-51fc-8987-2acb6292ca7f, ab2b9c0f-db98-5d20-adee-e46eafe037b4, 50328a4f-91e8-5c8b-8d61-8f9c98a5cddf, 7e2017d0-e76e-559c-bace-d5d7809a241f, 36d5b915-1cb8-5a05-b64a-5f9497a33d1f, 22bdd29e-00d3-5d43-97d6-8b442b8bfc8c, 2c3f9ee1-fe78-5583-8eb1-fa6369b95905, d0eb16e9-9a52-5237-baca-ad5a14a4c59b, 23530be9-66b6-57d7-9ff8-0c55dd5b1295, a94f9b05-ecb1-5a13-8364-44c1c98be8e4, b585ff81-6332-5d11-ae63-ee6a9928c00d, a3e22e70-6629-5c74-a8ae-a8c4f55c72a0, 4daef009-6425-526a-8574-4fa75f28f946, 5a5bc118-4420-5bb7-94c3-67837f2ce0dd, 15cb40f1-e2d3-5754-9e7b-e8888fe78340, f532c772-7b6e-59aa-ad65-e0eeafc3767f, 0f5346d6-de1b-5e38-aaba-68db205e594b, 335a75b0-f691-5867-8ce3-3c971d541b9f, 4a58df57-f791-502f-8b8d-9ba155e46035, 51af53cb-8866-52cd-b2ca-af8bd8a836e0, 4dbe6eb9-4d77-58a9-a15c-f0b8bb110a65, 5902ebe8-2025-5a7c-b95d-13057398d6e6, 74a32716-2b46-5d96-8b57-3f6edb90e088, 144007cb-e2bc-5c82-bf9d-dda705b15257, b3b365f4-4988-57d5-97cd-5d8446483ef7, 18fb1470-5a03-5277-9486-ae74c63c8a8c",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-bw-sekii-gk.view.json: a9562b05-c54d-5635-9244-3f7dd24a8642, 22561c66-3957-5d55-b07a-25de1f359930, 72649cf5-893c-5f03-88bd-a2497171d434, 5773ccbe-cd20-5ba0-99a5-7ccd5f42be51, 0432a422-401b-5134-bf08-05cfd8c7a366, dd99528a-bae5-5b78-89e6-c6092c927f8d, 7c0b94b9-2af7-59d4-bfae-278a3418f6a8, be6d4895-65ab-545b-8df9-84e5a308a5e3, 7e0308d8-a239-5c0f-b2c0-724f21e4da60, 6ba2e47f-7e88-5d30-8f1a-3f4b4f785ca1, 6d25344c-35d7-5853-925d-2bccbaf50630, 7f83e25c-38f7-5ac2-8f9c-ec54eeef1026, 841edfdb-5e12-5a37-ab12-552a1d8e92ca, 783c1ffe-d983-5c5a-8897-2c88fc64147c, db5f4121-d4b1-5006-b2da-6e76aac72bf5, ba29e928-a287-5de7-b3fe-5c8c3731363b, d441ee2f-9230-5751-832b-5b0b5cf14605, 1659e056-c7ac-553d-b4d6-467cc5688dd1, 82feb329-c3bc-58ba-a5b0-6ccdf226dbeb, b15f3e47-6051-5382-aa86-1e4f09e245d5, eecb0af8-a45a-51fc-8987-2acb6292ca7f, ab2b9c0f-db98-5d20-adee-e46eafe037b4, 50328a4f-91e8-5c8b-8d61-8f9c98a5cddf, 7e2017d0-e76e-559c-bace-d5d7809a241f, 36d5b915-1cb8-5a05-b64a-5f9497a33d1f, 22bdd29e-00d3-5d43-97d6-8b442b8bfc8c, d0eb16e9-9a52-5237-baca-ad5a14a4c59b, a94f9b05-ecb1-5a13-8364-44c1c98be8e4, b585ff81-6332-5d11-ae63-ee6a9928c00d, a3e22e70-6629-5c74-a8ae-a8c4f55c72a0, 4daef009-6425-526a-8574-4fa75f28f946, 5a5bc118-4420-5bb7-94c3-67837f2ce0dd, 15cb40f1-e2d3-5754-9e7b-e8888fe78340, f532c772-7b6e-59aa-ad65-e0eeafc3767f, 0f5346d6-de1b-5e38-aaba-68db205e594b, 4a58df57-f791-502f-8b8d-9ba155e46035, 5902ebe8-2025-5a7c-b95d-13057398d6e6, 6da29199-f086-512c-89f2-1b5ca865eef9, 6c87a996-9166-5c6e-8cda-01d40720f9c8, 74a32716-2b46-5d96-8b57-3f6edb90e088, b3b365f4-4988-57d5-97cd-5d8446483ef7, c61b2a69-b5cd-5785-bb04-5d6bca53b218, 4ac5a07c-fff0-5eae-890d-89e13eaf69c3, 18fb1470-5a03-5277-9486-ae74c63c8a8c",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-bw-sekii-lk.view.json: 2b9e565f-d9b4-5e23-b5b7-b7977cecff06, 8320bb17-e6ab-50ea-a965-aa331bfd33e1, 1b432223-3d59-5586-86a9-2214b4844101, 879491c0-7153-570b-91f4-c61d9fe8a143, 0432a422-401b-5134-bf08-05cfd8c7a366, dd99528a-bae5-5b78-89e6-c6092c927f8d, 7c0b94b9-2af7-59d4-bfae-278a3418f6a8, be6d4895-65ab-545b-8df9-84e5a308a5e3, 8a1d4093-9832-5010-b1ca-9d32d8c05afa, 6ba2e47f-7e88-5d30-8f1a-3f4b4f785ca1, 6d25344c-35d7-5853-925d-2bccbaf50630, 7f83e25c-38f7-5ac2-8f9c-ec54eeef1026, 841edfdb-5e12-5a37-ab12-552a1d8e92ca, 5e64eacd-5204-5028-af23-02a43377c56e, 72ee642f-7574-517e-abd6-17d699b05af6, d8442d03-8b7e-54b7-9d9a-dc31ce541daa, d441ee2f-9230-5751-832b-5b0b5cf14605, d350cfa7-c606-501e-abf7-1c9e546b266b, 82feb329-c3bc-58ba-a5b0-6ccdf226dbeb, acf192a8-c398-51dc-a03b-672ab55df957, b15f3e47-6051-5382-aa86-1e4f09e245d5, eecb0af8-a45a-51fc-8987-2acb6292ca7f, ab2b9c0f-db98-5d20-adee-e46eafe037b4, 50328a4f-91e8-5c8b-8d61-8f9c98a5cddf, 7e2017d0-e76e-559c-bace-d5d7809a241f, 36d5b915-1cb8-5a05-b64a-5f9497a33d1f, 22bdd29e-00d3-5d43-97d6-8b442b8bfc8c, 2c3f9ee1-fe78-5583-8eb1-fa6369b95905, d0eb16e9-9a52-5237-baca-ad5a14a4c59b, 23530be9-66b6-57d7-9ff8-0c55dd5b1295, a94f9b05-ecb1-5a13-8364-44c1c98be8e4, b585ff81-6332-5d11-ae63-ee6a9928c00d, a3e22e70-6629-5c74-a8ae-a8c4f55c72a0, 4daef009-6425-526a-8574-4fa75f28f946, 5a5bc118-4420-5bb7-94c3-67837f2ce0dd, 15cb40f1-e2d3-5754-9e7b-e8888fe78340, f532c772-7b6e-59aa-ad65-e0eeafc3767f, 0f5346d6-de1b-5e38-aaba-68db205e594b, 335a75b0-f691-5867-8ce3-3c971d541b9f, 4a58df57-f791-502f-8b8d-9ba155e46035, 51af53cb-8866-52cd-b2ca-af8bd8a836e0, 4dbe6eb9-4d77-58a9-a15c-f0b8bb110a65, 5902ebe8-2025-5a7c-b95d-13057398d6e6, 74a32716-2b46-5d96-8b57-3f6edb90e088, 144007cb-e2bc-5c82-bf9d-dda705b15257, b3b365f4-4988-57d5-97cd-5d8446483ef7, c61b2a69-b5cd-5785-bb04-5d6bca53b218, 4ac5a07c-fff0-5eae-890d-89e13eaf69c3, 18fb1470-5a03-5277-9486-ae74c63c8a8c",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-by-gk.view.json: a9562b05-c54d-5635-9244-3f7dd24a8642, 22561c66-3957-5d55-b07a-25de1f359930, 72649cf5-893c-5f03-88bd-a2497171d434, 5773ccbe-cd20-5ba0-99a5-7ccd5f42be51, 0432a422-401b-5134-bf08-05cfd8c7a366, dd99528a-bae5-5b78-89e6-c6092c927f8d, 7c0b94b9-2af7-59d4-bfae-278a3418f6a8, be6d4895-65ab-545b-8df9-84e5a308a5e3, 7e0308d8-a239-5c0f-b2c0-724f21e4da60, 6ba2e47f-7e88-5d30-8f1a-3f4b4f785ca1, 6d25344c-35d7-5853-925d-2bccbaf50630, 7f83e25c-38f7-5ac2-8f9c-ec54eeef1026, 4ab1cf6d-b808-5b86-9291-85df0b9f2496, 6ea3fb3c-abdc-568f-ab13-97c36dc274e4, c5807a37-129e-5df6-8989-482bc7f5683e, 841edfdb-5e12-5a37-ab12-552a1d8e92ca, 783c1ffe-d983-5c5a-8897-2c88fc64147c, db5f4121-d4b1-5006-b2da-6e76aac72bf5, ba29e928-a287-5de7-b3fe-5c8c3731363b, d441ee2f-9230-5751-832b-5b0b5cf14605, 1659e056-c7ac-553d-b4d6-467cc5688dd1, 82feb329-c3bc-58ba-a5b0-6ccdf226dbeb, eecb0af8-a45a-51fc-8987-2acb6292ca7f, ab2b9c0f-db98-5d20-adee-e46eafe037b4, 50328a4f-91e8-5c8b-8d61-8f9c98a5cddf, 7e2017d0-e76e-559c-bace-d5d7809a241f, 36d5b915-1cb8-5a05-b64a-5f9497a33d1f, 22bdd29e-00d3-5d43-97d6-8b442b8bfc8c, d0eb16e9-9a52-5237-baca-ad5a14a4c59b, a94f9b05-ecb1-5a13-8364-44c1c98be8e4, b585ff81-6332-5d11-ae63-ee6a9928c00d, a3e22e70-6629-5c74-a8ae-a8c4f55c72a0, 4daef009-6425-526a-8574-4fa75f28f946, 5a5bc118-4420-5bb7-94c3-67837f2ce0dd, 15cb40f1-e2d3-5754-9e7b-e8888fe78340, f532c772-7b6e-59aa-ad65-e0eeafc3767f, 0f5346d6-de1b-5e38-aaba-68db205e594b, 4a58df57-f791-502f-8b8d-9ba155e46035, 5902ebe8-2025-5a7c-b95d-13057398d6e6, 18fb1470-5a03-5277-9486-ae74c63c8a8c",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-by-lk.view.json: 2b9e565f-d9b4-5e23-b5b7-b7977cecff06, 8320bb17-e6ab-50ea-a965-aa331bfd33e1, 1b432223-3d59-5586-86a9-2214b4844101, 879491c0-7153-570b-91f4-c61d9fe8a143, 0432a422-401b-5134-bf08-05cfd8c7a366, dd99528a-bae5-5b78-89e6-c6092c927f8d, 7c0b94b9-2af7-59d4-bfae-278a3418f6a8, be6d4895-65ab-545b-8df9-84e5a308a5e3, 8a1d4093-9832-5010-b1ca-9d32d8c05afa, 6ba2e47f-7e88-5d30-8f1a-3f4b4f785ca1, 6d25344c-35d7-5853-925d-2bccbaf50630, 7f83e25c-38f7-5ac2-8f9c-ec54eeef1026, 4ab1cf6d-b808-5b86-9291-85df0b9f2496, 6ea3fb3c-abdc-568f-ab13-97c36dc274e4, c5807a37-129e-5df6-8989-482bc7f5683e, 841edfdb-5e12-5a37-ab12-552a1d8e92ca, 5e64eacd-5204-5028-af23-02a43377c56e, d8442d03-8b7e-54b7-9d9a-dc31ce541daa, d441ee2f-9230-5751-832b-5b0b5cf14605, 82feb329-c3bc-58ba-a5b0-6ccdf226dbeb, eecb0af8-a45a-51fc-8987-2acb6292ca7f, ab2b9c0f-db98-5d20-adee-e46eafe037b4, 50328a4f-91e8-5c8b-8d61-8f9c98a5cddf, 7e2017d0-e76e-559c-bace-d5d7809a241f, 36d5b915-1cb8-5a05-b64a-5f9497a33d1f, 22bdd29e-00d3-5d43-97d6-8b442b8bfc8c, 2c3f9ee1-fe78-5583-8eb1-fa6369b95905, d0eb16e9-9a52-5237-baca-ad5a14a4c59b, 23530be9-66b6-57d7-9ff8-0c55dd5b1295, a94f9b05-ecb1-5a13-8364-44c1c98be8e4, b585ff81-6332-5d11-ae63-ee6a9928c00d, a3e22e70-6629-5c74-a8ae-a8c4f55c72a0, 4daef009-6425-526a-8574-4fa75f28f946, 5a5bc118-4420-5bb7-94c3-67837f2ce0dd, 15cb40f1-e2d3-5754-9e7b-e8888fe78340, f532c772-7b6e-59aa-ad65-e0eeafc3767f, 0f5346d6-de1b-5e38-aaba-68db205e594b, 335a75b0-f691-5867-8ce3-3c971d541b9f, 4a58df57-f791-502f-8b8d-9ba155e46035, 5902ebe8-2025-5a7c-b95d-13057398d6e6, 144007cb-e2bc-5c82-bf9d-dda705b15257, b3b365f4-4988-57d5-97cd-5d8446483ef7, 18fb1470-5a03-5277-9486-ae74c63c8a8c",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-by-sekii-gk.view.json: a9562b05-c54d-5635-9244-3f7dd24a8642, 22561c66-3957-5d55-b07a-25de1f359930, 72649cf5-893c-5f03-88bd-a2497171d434, 5773ccbe-cd20-5ba0-99a5-7ccd5f42be51, 0432a422-401b-5134-bf08-05cfd8c7a366, dd99528a-bae5-5b78-89e6-c6092c927f8d, 7c0b94b9-2af7-59d4-bfae-278a3418f6a8, be6d4895-65ab-545b-8df9-84e5a308a5e3, 7e0308d8-a239-5c0f-b2c0-724f21e4da60, 6ba2e47f-7e88-5d30-8f1a-3f4b4f785ca1, 6d25344c-35d7-5853-925d-2bccbaf50630, 7f83e25c-38f7-5ac2-8f9c-ec54eeef1026, 841edfdb-5e12-5a37-ab12-552a1d8e92ca, 783c1ffe-d983-5c5a-8897-2c88fc64147c, db5f4121-d4b1-5006-b2da-6e76aac72bf5, ba29e928-a287-5de7-b3fe-5c8c3731363b, d441ee2f-9230-5751-832b-5b0b5cf14605, 1659e056-c7ac-553d-b4d6-467cc5688dd1, 82feb329-c3bc-58ba-a5b0-6ccdf226dbeb, eecb0af8-a45a-51fc-8987-2acb6292ca7f, ab2b9c0f-db98-5d20-adee-e46eafe037b4, 50328a4f-91e8-5c8b-8d61-8f9c98a5cddf, 7e2017d0-e76e-559c-bace-d5d7809a241f, 36d5b915-1cb8-5a05-b64a-5f9497a33d1f, 22bdd29e-00d3-5d43-97d6-8b442b8bfc8c, d0eb16e9-9a52-5237-baca-ad5a14a4c59b, a94f9b05-ecb1-5a13-8364-44c1c98be8e4, b585ff81-6332-5d11-ae63-ee6a9928c00d, a3e22e70-6629-5c74-a8ae-a8c4f55c72a0, 4daef009-6425-526a-8574-4fa75f28f946, 5a5bc118-4420-5bb7-94c3-67837f2ce0dd, 15cb40f1-e2d3-5754-9e7b-e8888fe78340, f532c772-7b6e-59aa-ad65-e0eeafc3767f, 0f5346d6-de1b-5e38-aaba-68db205e594b, 4a58df57-f791-502f-8b8d-9ba155e46035, 5902ebe8-2025-5a7c-b95d-13057398d6e6, c61b2a69-b5cd-5785-bb04-5d6bca53b218, 4ac5a07c-fff0-5eae-890d-89e13eaf69c3, 18fb1470-5a03-5277-9486-ae74c63c8a8c",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-by-sekii-lk.view.json: 2b9e565f-d9b4-5e23-b5b7-b7977cecff06, 8320bb17-e6ab-50ea-a965-aa331bfd33e1, 1b432223-3d59-5586-86a9-2214b4844101, 879491c0-7153-570b-91f4-c61d9fe8a143, 0432a422-401b-5134-bf08-05cfd8c7a366, dd99528a-bae5-5b78-89e6-c6092c927f8d, 7c0b94b9-2af7-59d4-bfae-278a3418f6a8, be6d4895-65ab-545b-8df9-84e5a308a5e3, 8a1d4093-9832-5010-b1ca-9d32d8c05afa, 6ba2e47f-7e88-5d30-8f1a-3f4b4f785ca1, 6d25344c-35d7-5853-925d-2bccbaf50630, 7f83e25c-38f7-5ac2-8f9c-ec54eeef1026, 841edfdb-5e12-5a37-ab12-552a1d8e92ca, 5e64eacd-5204-5028-af23-02a43377c56e, d8442d03-8b7e-54b7-9d9a-dc31ce541daa, d441ee2f-9230-5751-832b-5b0b5cf14605, 82feb329-c3bc-58ba-a5b0-6ccdf226dbeb, eecb0af8-a45a-51fc-8987-2acb6292ca7f, ab2b9c0f-db98-5d20-adee-e46eafe037b4, 50328a4f-91e8-5c8b-8d61-8f9c98a5cddf, 7e2017d0-e76e-559c-bace-d5d7809a241f, 36d5b915-1cb8-5a05-b64a-5f9497a33d1f, 22bdd29e-00d3-5d43-97d6-8b442b8bfc8c, 2c3f9ee1-fe78-5583-8eb1-fa6369b95905, d0eb16e9-9a52-5237-baca-ad5a14a4c59b, 23530be9-66b6-57d7-9ff8-0c55dd5b1295, a94f9b05-ecb1-5a13-8364-44c1c98be8e4, b585ff81-6332-5d11-ae63-ee6a9928c00d, a3e22e70-6629-5c74-a8ae-a8c4f55c72a0, 4daef009-6425-526a-8574-4fa75f28f946, 5a5bc118-4420-5bb7-94c3-67837f2ce0dd, 15cb40f1-e2d3-5754-9e7b-e8888fe78340, f532c772-7b6e-59aa-ad65-e0eeafc3767f, 0f5346d6-de1b-5e38-aaba-68db205e594b, 335a75b0-f691-5867-8ce3-3c971d541b9f, 4a58df57-f791-502f-8b8d-9ba155e46035, 5902ebe8-2025-5a7c-b95d-13057398d6e6, 144007cb-e2bc-5c82-bf9d-dda705b15257, b3b365f4-4988-57d5-97cd-5d8446483ef7, c61b2a69-b5cd-5785-bb04-5d6bca53b218, 4ac5a07c-fff0-5eae-890d-89e13eaf69c3, 18fb1470-5a03-5277-9486-ae74c63c8a8c",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-hb-gk.view.json: 5902ebe8-2025-5a7c-b95d-13057398d6e6, 6da29199-f086-512c-89f2-1b5ca865eef9, 6c87a996-9166-5c6e-8cda-01d40720f9c8, 74a32716-2b46-5d96-8b57-3f6edb90e088",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-hb-lk.view.json: 51af53cb-8866-52cd-b2ca-af8bd8a836e0, 4dbe6eb9-4d77-58a9-a15c-f0b8bb110a65, 5902ebe8-2025-5a7c-b95d-13057398d6e6, 74a32716-2b46-5d96-8b57-3f6edb90e088",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-hb-sekii-gk.view.json: 5902ebe8-2025-5a7c-b95d-13057398d6e6, 6da29199-f086-512c-89f2-1b5ca865eef9, 6c87a996-9166-5c6e-8cda-01d40720f9c8, 74a32716-2b46-5d96-8b57-3f6edb90e088",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-hb-sekii-lk.view.json: 51af53cb-8866-52cd-b2ca-af8bd8a836e0, 4dbe6eb9-4d77-58a9-a15c-f0b8bb110a65, 5902ebe8-2025-5a7c-b95d-13057398d6e6, 74a32716-2b46-5d96-8b57-3f6edb90e088"
+      ]
+    },
+    {
+      "profileId": "canonical-physics-sek2",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "compiledJurisdiction": true,
+      "id": "CQR-104",
+      "status": "fail",
+      "summary": "Route endpoints or projection-local routes are missing, unexpected, or not applicability-bound in at least one learner-facing projection scope.",
+      "metrics": {
+        "relevantCompositionViews": 68,
+        "evaluatedProjectionScopes": 128,
+        "requiredMotivationAnchors": 1,
+        "minimumRequiredTerminalAutonomyGoals": 23,
+        "requiredTerminalAutonomyGoals": 61,
+        "projectionScopesMissingMotivationAnchors": 0,
+        "projectionScopesMissingTerminalAutonomyGoals": 64,
+        "projectionScopesWithUnexpectedTerminalAutonomyGoals": 60,
+        "projectionScopesWithoutExpectedTerminalAutonomyGoals": 0,
+        "terminalGoalsMissingCompiledApplicability": 0,
+        "projectionScopesWithInvalidStageStructure": 0,
+        "nationalProjectionScopesUsingJurisdictionStageAuthority": 0,
+        "nationalProjectionScopesMissingJurisdictionStageAuthority": 0,
+        "nationalProjectionScopesWithAmbiguousJurisdictionStageAuthority": 0,
+        "nationalTargetAtomicGoalOccurrencesExcludedByJurisdictionStageAuthority": 0,
+        "nationalSelectedGoalOccurrencesExcludedByJurisdictionStageAuthority": 0,
+        "nationalPrerequisiteOnlyGoalOccurrencesImportedByJurisdictionStageAuthority": 0,
+        "projectionScopesWithIncompleteExplicitTerminalPrerequisites": 0,
+        "explicitTerminalPrerequisiteOccurrencesMissingFromProjection": 0,
+        "projectionScopesWithIncompleteWholeMaterialCoverageBindings": 0,
+        "wholeMaterialCoveredGoalOccurrencesWithoutVisiblePrerequisitePath": 0,
+        "projectionScopesWithIncompleteWholeMaterialPrerequisiteClosure": 0,
+        "wholeMaterialPrerequisiteOccurrencesMissingFromProjection": 0,
+        "uniqueExplicitTerminalPrerequisitesMissingFromProjection": 0,
+        "projectionLocalRouteChecksEnabled": 0,
+        "visibleSelectedAtomicGoalOccurrences": 30636,
+        "visibleProfileSelectedAtomicGoalOccurrences": 30636,
+        "visibleProjectedRouteTargetGoalOccurrences": 30636,
+        "visibleProjectedRouteTargetGoalOccurrencesExcludedByProfileSelector": 0,
+        "uniqueProjectedRouteTargetsExcludedByProfileSelector": 0,
+        "visibleProjectedRouteTargetGoalOccurrencesExcludedFromRouteChecks": 0,
+        "projectionScopesMissingEffectiveMotivationRoutes": 0,
+        "projectionScopesMissingDirectMotivationRoutes": 0,
+        "projectionScopesMissingEffectiveTerminalRoutes": 0,
+        "projectionScopesMissingDirectTerminalRoutes": 0,
+        "visibleSelectedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+        "visibleSelectedGoalOccurrencesMissingDirectMotivationRoute": 0,
+        "visibleSelectedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+        "visibleSelectedGoalOccurrencesMissingDirectTerminalRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingDirectMotivationRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingDirectTerminalRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingEffectiveMotivationRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingDirectMotivationRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingEffectiveTerminalRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingDirectTerminalRoute": 0
+      },
+      "details": [
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-bb-gk.view.json [DE-BB]: 5902ebe8-2025-5a7c-b95d-13057398d6e6, 74a32716-2b46-5d96-8b57-3f6edb90e088",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-bb-lk.view.json [DE-BB]: 5902ebe8-2025-5a7c-b95d-13057398d6e6, 74a32716-2b46-5d96-8b57-3f6edb90e088",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-bb-sekii-gk.view.json [DE-BB]: 5902ebe8-2025-5a7c-b95d-13057398d6e6, 74a32716-2b46-5d96-8b57-3f6edb90e088",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-bb-sekii-lk.view.json [DE-BB]: 5902ebe8-2025-5a7c-b95d-13057398d6e6, 74a32716-2b46-5d96-8b57-3f6edb90e088",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-be-gk.view.json [DE-BE]: 5902ebe8-2025-5a7c-b95d-13057398d6e6, 74a32716-2b46-5d96-8b57-3f6edb90e088",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-be-lk.view.json [DE-BE]: 5902ebe8-2025-5a7c-b95d-13057398d6e6, 74a32716-2b46-5d96-8b57-3f6edb90e088",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-be-sekii-gk.view.json [DE-BE]: 5902ebe8-2025-5a7c-b95d-13057398d6e6, 74a32716-2b46-5d96-8b57-3f6edb90e088",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-be-sekii-lk.view.json [DE-BE]: 5902ebe8-2025-5a7c-b95d-13057398d6e6, 74a32716-2b46-5d96-8b57-3f6edb90e088",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-bw-gk.view.json [DE-BW]: a9562b05-c54d-5635-9244-3f7dd24a8642, 22561c66-3957-5d55-b07a-25de1f359930, 72649cf5-893c-5f03-88bd-a2497171d434, 5773ccbe-cd20-5ba0-99a5-7ccd5f42be51, 0432a422-401b-5134-bf08-05cfd8c7a366, dd99528a-bae5-5b78-89e6-c6092c927f8d, 7c0b94b9-2af7-59d4-bfae-278a3418f6a8, be6d4895-65ab-545b-8df9-84e5a308a5e3, 7e0308d8-a239-5c0f-b2c0-724f21e4da60, 6ba2e47f-7e88-5d30-8f1a-3f4b4f785ca1, 6d25344c-35d7-5853-925d-2bccbaf50630, 7f83e25c-38f7-5ac2-8f9c-ec54eeef1026, 4ab1cf6d-b808-5b86-9291-85df0b9f2496, 6ea3fb3c-abdc-568f-ab13-97c36dc274e4, c5807a37-129e-5df6-8989-482bc7f5683e, 841edfdb-5e12-5a37-ab12-552a1d8e92ca, 783c1ffe-d983-5c5a-8897-2c88fc64147c, db5f4121-d4b1-5006-b2da-6e76aac72bf5, ba29e928-a287-5de7-b3fe-5c8c3731363b, d441ee2f-9230-5751-832b-5b0b5cf14605, 1659e056-c7ac-553d-b4d6-467cc5688dd1, 82feb329-c3bc-58ba-a5b0-6ccdf226dbeb, b15f3e47-6051-5382-aa86-1e4f09e245d5, eecb0af8-a45a-51fc-8987-2acb6292ca7f, ab2b9c0f-db98-5d20-adee-e46eafe037b4, 50328a4f-91e8-5c8b-8d61-8f9c98a5cddf, 7e2017d0-e76e-559c-bace-d5d7809a241f, 36d5b915-1cb8-5a05-b64a-5f9497a33d1f, 22bdd29e-00d3-5d43-97d6-8b442b8bfc8c, d0eb16e9-9a52-5237-baca-ad5a14a4c59b, a94f9b05-ecb1-5a13-8364-44c1c98be8e4, b585ff81-6332-5d11-ae63-ee6a9928c00d, a3e22e70-6629-5c74-a8ae-a8c4f55c72a0, 4daef009-6425-526a-8574-4fa75f28f946, 5a5bc118-4420-5bb7-94c3-67837f2ce0dd, 15cb40f1-e2d3-5754-9e7b-e8888fe78340, f532c772-7b6e-59aa-ad65-e0eeafc3767f, 0f5346d6-de1b-5e38-aaba-68db205e594b, 4a58df57-f791-502f-8b8d-9ba155e46035, 5902ebe8-2025-5a7c-b95d-13057398d6e6, 74a32716-2b46-5d96-8b57-3f6edb90e088, b3b365f4-4988-57d5-97cd-5d8446483ef7",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-bw-lk.view.json [DE-BW]: 2b9e565f-d9b4-5e23-b5b7-b7977cecff06, 8320bb17-e6ab-50ea-a965-aa331bfd33e1, 1b432223-3d59-5586-86a9-2214b4844101, 879491c0-7153-570b-91f4-c61d9fe8a143, 0432a422-401b-5134-bf08-05cfd8c7a366, dd99528a-bae5-5b78-89e6-c6092c927f8d, 7c0b94b9-2af7-59d4-bfae-278a3418f6a8, be6d4895-65ab-545b-8df9-84e5a308a5e3, 8a1d4093-9832-5010-b1ca-9d32d8c05afa, 6ba2e47f-7e88-5d30-8f1a-3f4b4f785ca1, 6d25344c-35d7-5853-925d-2bccbaf50630, 7f83e25c-38f7-5ac2-8f9c-ec54eeef1026, 4ab1cf6d-b808-5b86-9291-85df0b9f2496, 6ea3fb3c-abdc-568f-ab13-97c36dc274e4, c5807a37-129e-5df6-8989-482bc7f5683e, 841edfdb-5e12-5a37-ab12-552a1d8e92ca, 5e64eacd-5204-5028-af23-02a43377c56e, 72ee642f-7574-517e-abd6-17d699b05af6, d8442d03-8b7e-54b7-9d9a-dc31ce541daa, d441ee2f-9230-5751-832b-5b0b5cf14605, d350cfa7-c606-501e-abf7-1c9e546b266b, 82feb329-c3bc-58ba-a5b0-6ccdf226dbeb, acf192a8-c398-51dc-a03b-672ab55df957, b15f3e47-6051-5382-aa86-1e4f09e245d5, eecb0af8-a45a-51fc-8987-2acb6292ca7f, ab2b9c0f-db98-5d20-adee-e46eafe037b4, 50328a4f-91e8-5c8b-8d61-8f9c98a5cddf, 7e2017d0-e76e-559c-bace-d5d7809a241f, 36d5b915-1cb8-5a05-b64a-5f9497a33d1f, 22bdd29e-00d3-5d43-97d6-8b442b8bfc8c, 2c3f9ee1-fe78-5583-8eb1-fa6369b95905, d0eb16e9-9a52-5237-baca-ad5a14a4c59b, 23530be9-66b6-57d7-9ff8-0c55dd5b1295, a94f9b05-ecb1-5a13-8364-44c1c98be8e4, b585ff81-6332-5d11-ae63-ee6a9928c00d, a3e22e70-6629-5c74-a8ae-a8c4f55c72a0, 4daef009-6425-526a-8574-4fa75f28f946, 5a5bc118-4420-5bb7-94c3-67837f2ce0dd, 15cb40f1-e2d3-5754-9e7b-e8888fe78340, f532c772-7b6e-59aa-ad65-e0eeafc3767f, 0f5346d6-de1b-5e38-aaba-68db205e594b, 4a58df57-f791-502f-8b8d-9ba155e46035, 5902ebe8-2025-5a7c-b95d-13057398d6e6, 74a32716-2b46-5d96-8b57-3f6edb90e088, 144007cb-e2bc-5c82-bf9d-dda705b15257, b3b365f4-4988-57d5-97cd-5d8446483ef7",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-bw-sekii-gk.view.json [DE-BW]: a9562b05-c54d-5635-9244-3f7dd24a8642, 22561c66-3957-5d55-b07a-25de1f359930, 72649cf5-893c-5f03-88bd-a2497171d434, 5773ccbe-cd20-5ba0-99a5-7ccd5f42be51, 0432a422-401b-5134-bf08-05cfd8c7a366, dd99528a-bae5-5b78-89e6-c6092c927f8d, 7c0b94b9-2af7-59d4-bfae-278a3418f6a8, be6d4895-65ab-545b-8df9-84e5a308a5e3, 7e0308d8-a239-5c0f-b2c0-724f21e4da60, 6ba2e47f-7e88-5d30-8f1a-3f4b4f785ca1, 6d25344c-35d7-5853-925d-2bccbaf50630, 7f83e25c-38f7-5ac2-8f9c-ec54eeef1026, 841edfdb-5e12-5a37-ab12-552a1d8e92ca, 783c1ffe-d983-5c5a-8897-2c88fc64147c, db5f4121-d4b1-5006-b2da-6e76aac72bf5, ba29e928-a287-5de7-b3fe-5c8c3731363b, d441ee2f-9230-5751-832b-5b0b5cf14605, 1659e056-c7ac-553d-b4d6-467cc5688dd1, 82feb329-c3bc-58ba-a5b0-6ccdf226dbeb, b15f3e47-6051-5382-aa86-1e4f09e245d5, eecb0af8-a45a-51fc-8987-2acb6292ca7f, ab2b9c0f-db98-5d20-adee-e46eafe037b4, 50328a4f-91e8-5c8b-8d61-8f9c98a5cddf, 7e2017d0-e76e-559c-bace-d5d7809a241f, 36d5b915-1cb8-5a05-b64a-5f9497a33d1f, 22bdd29e-00d3-5d43-97d6-8b442b8bfc8c, d0eb16e9-9a52-5237-baca-ad5a14a4c59b, a94f9b05-ecb1-5a13-8364-44c1c98be8e4, b585ff81-6332-5d11-ae63-ee6a9928c00d, a3e22e70-6629-5c74-a8ae-a8c4f55c72a0, 4daef009-6425-526a-8574-4fa75f28f946, 5a5bc118-4420-5bb7-94c3-67837f2ce0dd, 15cb40f1-e2d3-5754-9e7b-e8888fe78340, f532c772-7b6e-59aa-ad65-e0eeafc3767f, 0f5346d6-de1b-5e38-aaba-68db205e594b, 4a58df57-f791-502f-8b8d-9ba155e46035, 5902ebe8-2025-5a7c-b95d-13057398d6e6, 74a32716-2b46-5d96-8b57-3f6edb90e088, b3b365f4-4988-57d5-97cd-5d8446483ef7, c61b2a69-b5cd-5785-bb04-5d6bca53b218, 4ac5a07c-fff0-5eae-890d-89e13eaf69c3",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-bw-sekii-lk.view.json [DE-BW]: 2b9e565f-d9b4-5e23-b5b7-b7977cecff06, 8320bb17-e6ab-50ea-a965-aa331bfd33e1, 1b432223-3d59-5586-86a9-2214b4844101, 879491c0-7153-570b-91f4-c61d9fe8a143, 0432a422-401b-5134-bf08-05cfd8c7a366, dd99528a-bae5-5b78-89e6-c6092c927f8d, 7c0b94b9-2af7-59d4-bfae-278a3418f6a8, be6d4895-65ab-545b-8df9-84e5a308a5e3, 8a1d4093-9832-5010-b1ca-9d32d8c05afa, 6ba2e47f-7e88-5d30-8f1a-3f4b4f785ca1, 6d25344c-35d7-5853-925d-2bccbaf50630, 7f83e25c-38f7-5ac2-8f9c-ec54eeef1026, 841edfdb-5e12-5a37-ab12-552a1d8e92ca, 5e64eacd-5204-5028-af23-02a43377c56e, 72ee642f-7574-517e-abd6-17d699b05af6, d8442d03-8b7e-54b7-9d9a-dc31ce541daa, d441ee2f-9230-5751-832b-5b0b5cf14605, d350cfa7-c606-501e-abf7-1c9e546b266b, 82feb329-c3bc-58ba-a5b0-6ccdf226dbeb, acf192a8-c398-51dc-a03b-672ab55df957, b15f3e47-6051-5382-aa86-1e4f09e245d5, eecb0af8-a45a-51fc-8987-2acb6292ca7f, ab2b9c0f-db98-5d20-adee-e46eafe037b4, 50328a4f-91e8-5c8b-8d61-8f9c98a5cddf, 7e2017d0-e76e-559c-bace-d5d7809a241f, 36d5b915-1cb8-5a05-b64a-5f9497a33d1f, 22bdd29e-00d3-5d43-97d6-8b442b8bfc8c, 2c3f9ee1-fe78-5583-8eb1-fa6369b95905, d0eb16e9-9a52-5237-baca-ad5a14a4c59b, 23530be9-66b6-57d7-9ff8-0c55dd5b1295, a94f9b05-ecb1-5a13-8364-44c1c98be8e4, b585ff81-6332-5d11-ae63-ee6a9928c00d, a3e22e70-6629-5c74-a8ae-a8c4f55c72a0, 4daef009-6425-526a-8574-4fa75f28f946, 5a5bc118-4420-5bb7-94c3-67837f2ce0dd, 15cb40f1-e2d3-5754-9e7b-e8888fe78340, f532c772-7b6e-59aa-ad65-e0eeafc3767f, 0f5346d6-de1b-5e38-aaba-68db205e594b, 4a58df57-f791-502f-8b8d-9ba155e46035, 5902ebe8-2025-5a7c-b95d-13057398d6e6, 74a32716-2b46-5d96-8b57-3f6edb90e088, 144007cb-e2bc-5c82-bf9d-dda705b15257, b3b365f4-4988-57d5-97cd-5d8446483ef7, c61b2a69-b5cd-5785-bb04-5d6bca53b218, 4ac5a07c-fff0-5eae-890d-89e13eaf69c3",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-by-gk.view.json [DE-BY]: 4ab1cf6d-b808-5b86-9291-85df0b9f2496, 6ea3fb3c-abdc-568f-ab13-97c36dc274e4, c5807a37-129e-5df6-8989-482bc7f5683e, 841edfdb-5e12-5a37-ab12-552a1d8e92ca, 783c1ffe-d983-5c5a-8897-2c88fc64147c, db5f4121-d4b1-5006-b2da-6e76aac72bf5, ba29e928-a287-5de7-b3fe-5c8c3731363b, d441ee2f-9230-5751-832b-5b0b5cf14605, 1659e056-c7ac-553d-b4d6-467cc5688dd1, 82feb329-c3bc-58ba-a5b0-6ccdf226dbeb, eecb0af8-a45a-51fc-8987-2acb6292ca7f, ab2b9c0f-db98-5d20-adee-e46eafe037b4, 50328a4f-91e8-5c8b-8d61-8f9c98a5cddf",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-by-lk.view.json [DE-BY]: 4ab1cf6d-b808-5b86-9291-85df0b9f2496, 6ea3fb3c-abdc-568f-ab13-97c36dc274e4, c5807a37-129e-5df6-8989-482bc7f5683e, 841edfdb-5e12-5a37-ab12-552a1d8e92ca, 5e64eacd-5204-5028-af23-02a43377c56e, d8442d03-8b7e-54b7-9d9a-dc31ce541daa, d441ee2f-9230-5751-832b-5b0b5cf14605, 82feb329-c3bc-58ba-a5b0-6ccdf226dbeb, eecb0af8-a45a-51fc-8987-2acb6292ca7f, ab2b9c0f-db98-5d20-adee-e46eafe037b4, 50328a4f-91e8-5c8b-8d61-8f9c98a5cddf, b3b365f4-4988-57d5-97cd-5d8446483ef7",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-by-sekii-gk.view.json [DE-BY]: 841edfdb-5e12-5a37-ab12-552a1d8e92ca, 783c1ffe-d983-5c5a-8897-2c88fc64147c, db5f4121-d4b1-5006-b2da-6e76aac72bf5, ba29e928-a287-5de7-b3fe-5c8c3731363b, d441ee2f-9230-5751-832b-5b0b5cf14605, 1659e056-c7ac-553d-b4d6-467cc5688dd1, 82feb329-c3bc-58ba-a5b0-6ccdf226dbeb, eecb0af8-a45a-51fc-8987-2acb6292ca7f, ab2b9c0f-db98-5d20-adee-e46eafe037b4, 50328a4f-91e8-5c8b-8d61-8f9c98a5cddf, c61b2a69-b5cd-5785-bb04-5d6bca53b218, 4ac5a07c-fff0-5eae-890d-89e13eaf69c3",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-by-sekii-lk.view.json [DE-BY]: 841edfdb-5e12-5a37-ab12-552a1d8e92ca, 5e64eacd-5204-5028-af23-02a43377c56e, d8442d03-8b7e-54b7-9d9a-dc31ce541daa, d441ee2f-9230-5751-832b-5b0b5cf14605, 82feb329-c3bc-58ba-a5b0-6ccdf226dbeb, eecb0af8-a45a-51fc-8987-2acb6292ca7f, ab2b9c0f-db98-5d20-adee-e46eafe037b4, 50328a4f-91e8-5c8b-8d61-8f9c98a5cddf, b3b365f4-4988-57d5-97cd-5d8446483ef7, c61b2a69-b5cd-5785-bb04-5d6bca53b218, 4ac5a07c-fff0-5eae-890d-89e13eaf69c3",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-hb-gk.view.json [DE-HB]: 5902ebe8-2025-5a7c-b95d-13057398d6e6, 74a32716-2b46-5d96-8b57-3f6edb90e088",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-hb-lk.view.json [DE-HB]: 5902ebe8-2025-5a7c-b95d-13057398d6e6, 74a32716-2b46-5d96-8b57-3f6edb90e088",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-hb-sekii-gk.view.json [DE-HB]: 5902ebe8-2025-5a7c-b95d-13057398d6e6, 74a32716-2b46-5d96-8b57-3f6edb90e088",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-hb-sekii-lk.view.json [DE-HB]: 5902ebe8-2025-5a7c-b95d-13057398d6e6, 74a32716-2b46-5d96-8b57-3f6edb90e088"
+      ]
+    },
+    {
+      "profileId": "canonical-chemistry-sek2",
+      "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+      "compiledJurisdiction": false,
+      "id": "CQR-104",
+      "status": "fail",
+      "summary": "Route endpoints or projection-local routes are missing, unexpected, or not applicability-bound in at least one learner-facing projection scope.",
+      "metrics": {
+        "relevantCompositionViews": 41,
+        "evaluatedProjectionScopes": 41,
+        "requiredMotivationAnchors": 1,
+        "minimumRequiredTerminalAutonomyGoals": 61,
+        "requiredTerminalAutonomyGoals": 107,
+        "projectionScopesMissingMotivationAnchors": 0,
+        "projectionScopesMissingTerminalAutonomyGoals": 41,
+        "projectionScopesWithUnexpectedTerminalAutonomyGoals": 0,
+        "projectionScopesWithoutExpectedTerminalAutonomyGoals": 0,
+        "terminalGoalsMissingCompiledApplicability": 0,
+        "projectionScopesWithInvalidStageStructure": 0,
+        "nationalProjectionScopesUsingJurisdictionStageAuthority": 0,
+        "nationalProjectionScopesMissingJurisdictionStageAuthority": 0,
+        "nationalProjectionScopesWithAmbiguousJurisdictionStageAuthority": 0,
+        "nationalTargetAtomicGoalOccurrencesExcludedByJurisdictionStageAuthority": 0,
+        "nationalSelectedGoalOccurrencesExcludedByJurisdictionStageAuthority": 0,
+        "nationalPrerequisiteOnlyGoalOccurrencesImportedByJurisdictionStageAuthority": 0,
+        "projectionScopesWithIncompleteExplicitTerminalPrerequisites": 0,
+        "explicitTerminalPrerequisiteOccurrencesMissingFromProjection": 0,
+        "projectionScopesWithIncompleteWholeMaterialCoverageBindings": 0,
+        "wholeMaterialCoveredGoalOccurrencesWithoutVisiblePrerequisitePath": 0,
+        "projectionScopesWithIncompleteWholeMaterialPrerequisiteClosure": 0,
+        "wholeMaterialPrerequisiteOccurrencesMissingFromProjection": 0,
+        "uniqueExplicitTerminalPrerequisitesMissingFromProjection": 0,
+        "projectionLocalRouteChecksEnabled": 0,
+        "visibleSelectedAtomicGoalOccurrences": 6618,
+        "visibleProfileSelectedAtomicGoalOccurrences": 6618,
+        "visibleProjectedRouteTargetGoalOccurrences": 6618,
+        "visibleProjectedRouteTargetGoalOccurrencesExcludedByProfileSelector": 0,
+        "uniqueProjectedRouteTargetsExcludedByProfileSelector": 0,
+        "visibleProjectedRouteTargetGoalOccurrencesExcludedFromRouteChecks": 0,
+        "projectionScopesMissingEffectiveMotivationRoutes": 0,
+        "projectionScopesMissingDirectMotivationRoutes": 0,
+        "projectionScopesMissingEffectiveTerminalRoutes": 0,
+        "projectionScopesMissingDirectTerminalRoutes": 0,
+        "visibleSelectedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+        "visibleSelectedGoalOccurrencesMissingDirectMotivationRoute": 0,
+        "visibleSelectedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+        "visibleSelectedGoalOccurrencesMissingDirectTerminalRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingDirectMotivationRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingDirectTerminalRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingEffectiveMotivationRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingDirectMotivationRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingEffectiveTerminalRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingDirectTerminalRoute": 0
+      },
+      "details": [
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/chemie/de-bb-gk.view.json: 23fc54ce-3519-5292-af90-71bc869f4ff1, 9746ff9a-c423-5504-9d4d-0fced93fa382, 00139854-e5a7-5c12-ab50-2268c80bf776, c91350bc-7d2e-523c-bd50-0324bccfcf98, bf6c39f0-1e44-53b2-8ff6-025f2e36e125, 27045f71-10ed-57d3-ac99-cfbe5d6b515a, e195b2b3-339c-563c-8b01-ce6d313c41af, e6cb2efa-0fd5-518d-9df2-c75aa71fa4c6, 8872d828-a025-5e45-af74-3d84caedfb73, 954b55d6-8a2b-533d-8aff-dadaf6306916, 35b76ced-abb8-558b-8e05-29aa3c587e75, bacf2568-03bc-5655-8798-cda078c897e3, c31fa777-89c0-52f5-a6d9-d054027aabf5, 3259bf7f-4af4-58ae-8190-9aec07ec476f, ab315f52-a9e3-5c1c-a404-7fb1a96a3eaf, 31a630bc-ee86-5316-8ce5-e522b14fd607, 4a2477e3-3bae-5452-8058-58e6ed9cc3e3, b406eff8-3cd9-551b-a913-c6dda7223645, 14577339-9e0c-5b44-8e47-91e1a4947367, 7bfe515c-e59f-521c-9781-b75e33caf0ec, eed5eda3-2daf-5d48-b935-23dadd622d9b, 69928892-ac71-553d-a35c-4f96f16b6d6e, c5394fb8-9411-5533-b2af-831c4c67b4be, 4238e88b-7d6c-5eef-b94f-d6d87659649e, 11837e4e-71bc-5374-892e-6c8cd4f0c29b, 0a8e4de3-40ec-5537-b427-4904719fcb92, 8cab60cd-619a-5c20-8550-21a7a750aa1a, 61c1d898-07b3-53a0-b8a0-a7c49006eff9, d5542006-f219-5af4-a963-ec507cadbaab, 119f0da6-4f21-5e90-9697-34776e48691c, dd63beba-613b-5f9e-80f6-9b2552c2cc2a, 28bf3678-d807-5ddc-a792-b550e955ed45, d28b9b5f-848e-516a-84df-0ca76a3daf27, 42a2eaf1-fbb2-5879-b205-7f74dfb1eafa, 04b62be5-7af8-5b7b-af12-c3059ba22727, 8c4bd771-13df-57ee-92bf-9f8d101edaa0, 990b6704-879b-522c-a82c-99ce55944cf1, f08ce862-1448-54cc-928a-ec54040bd63f, 8a281a5b-fa13-5873-a15a-a4a0c8d6cfa1, 95cff878-b85e-53d8-84bc-132c8bf4cf71, 987cebe4-9157-51f2-9939-f12bbb512c6e, fc403749-50ef-58ea-8146-dd49918f9564, 994068b1-d8f2-5c18-ae36-808f3fa4f52f, 37d2e2a5-736f-541d-a66f-0d467e8e9bc1, 02889be3-b333-5362-860a-4ef9b3dedc05, 9fea3d6f-9c43-5380-a2bc-ba06bf23b70e, 3d5bd844-eae5-5b03-a0d2-8fb554f2f4cf, 1b1a7493-1708-509b-962a-ff8195e2c3b4, e883c5e9-5634-5a46-a013-15d5a684c5cd",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/chemie/de-bb-lk.view.json: 23fc54ce-3519-5292-af90-71bc869f4ff1, 9746ff9a-c423-5504-9d4d-0fced93fa382, 00139854-e5a7-5c12-ab50-2268c80bf776, c91350bc-7d2e-523c-bd50-0324bccfcf98, bf6c39f0-1e44-53b2-8ff6-025f2e36e125, 4cb74d76-99f1-5264-b1e3-448cda47b005, 171b47e2-2c53-50f2-a145-a26b896fd73f, 27045f71-10ed-57d3-ac99-cfbe5d6b515a, e195b2b3-339c-563c-8b01-ce6d313c41af, 532c57fe-18bf-53a7-bba1-1f0672a57a89, e6cb2efa-0fd5-518d-9df2-c75aa71fa4c6, 8872d828-a025-5e45-af74-3d84caedfb73, 954b55d6-8a2b-533d-8aff-dadaf6306916, 967fcb02-09cf-51b4-9840-37b0fc8345a6, 35b76ced-abb8-558b-8e05-29aa3c587e75, bacf2568-03bc-5655-8798-cda078c897e3, c31fa777-89c0-52f5-a6d9-d054027aabf5, 3259bf7f-4af4-58ae-8190-9aec07ec476f, e6196381-eab5-5a3e-bb6e-56c6e6e3617f, 563f69ed-562f-5544-ab0c-bf0e481928d8, ab315f52-a9e3-5c1c-a404-7fb1a96a3eaf, 5b5ece8f-1559-547b-a1d1-3b5511446c70, 1f7dd7c3-29f0-50aa-a404-6884896409c4, ff44ba9f-b506-5c3d-bc5e-88878765f333, b82c892b-36e2-5d8c-a96a-6ba5e77cd755, 4216a708-d9c4-5582-ad7c-65d81643f0d3, f7a7f4c2-6949-5f14-beeb-d22a74011d80, 3f7e5700-083d-5b84-9445-aafb7c9ff8f3, 31a630bc-ee86-5316-8ce5-e522b14fd607, 4a2477e3-3bae-5452-8058-58e6ed9cc3e3, b406eff8-3cd9-551b-a913-c6dda7223645, 479e4194-b5a8-56a1-b95a-829a3057cf25, 7bfe515c-e59f-521c-9781-b75e33caf0ec, eed5eda3-2daf-5d48-b935-23dadd622d9b, 32705a3a-9b7f-5cc0-ba41-881d13d0c45b, 69928892-ac71-553d-a35c-4f96f16b6d6e, c5394fb8-9411-5533-b2af-831c4c67b4be, 4238e88b-7d6c-5eef-b94f-d6d87659649e, 11837e4e-71bc-5374-892e-6c8cd4f0c29b, d2530d82-30cb-59d3-af4e-64aee17f7db6, 0a8e4de3-40ec-5537-b427-4904719fcb92, 8cab60cd-619a-5c20-8550-21a7a750aa1a, d5542006-f219-5af4-a963-ec507cadbaab, 8b7ac0a3-f893-5a7f-bad0-0b299c7fba6a, 6303e470-a790-542b-ac6a-17142e14ba16, d7abdeb3-5b69-5744-b7fd-8149fd92b0d5, b0ebce3a-eeed-5bf6-ae5e-e0cba5628e43, 119f0da6-4f21-5e90-9697-34776e48691c, dd63beba-613b-5f9e-80f6-9b2552c2cc2a, 28bf3678-d807-5ddc-a792-b550e955ed45, 000af080-6908-5c7b-b792-a91796968022, c8d83dac-839d-561f-a85d-a3e1dfbc506b, 540a050a-0a38-5d8d-9f6b-997509a1f8e0, 8c6b7c40-cba2-5d1d-8774-72ae747f462c, 7e1f6eaa-b4e6-5ec4-829b-94344e78bcd9, 20ea3cd6-57b8-5809-b335-05d400975596, 13e856ab-f7be-53df-a32a-6d6e8242e26c, 42a2eaf1-fbb2-5879-b205-7f74dfb1eafa, eaf7cf9a-7ede-53bf-a268-a1dc4b3dd086, 85ba42e5-7625-50b1-aaf4-bd8e233a1de6, 9a6120ff-c645-513d-aa5c-8fab85df4cc0, 44af0ce3-e16a-5f05-99ae-1087c2c82f47, b2bd0ed3-aaa1-504e-9633-17f84201b624, 57537252-0dc6-507a-be9f-8553f567785e, ae171e50-f552-5f8f-b618-77a667f3b5f1, 6ca09c6b-9546-587c-a632-1aa3085bffb1, 60d99973-5e2e-506d-8dd9-ef710daad2ab, 04b62be5-7af8-5b7b-af12-c3059ba22727, 036701ad-a62f-5c91-bb68-9abc00802efb, dab7b908-4370-548d-9c99-1de64a7ef129, 8c4bd771-13df-57ee-92bf-9f8d101edaa0, 990b6704-879b-522c-a82c-99ce55944cf1, f08ce862-1448-54cc-928a-ec54040bd63f, 8a281a5b-fa13-5873-a15a-a4a0c8d6cfa1, 95cff878-b85e-53d8-84bc-132c8bf4cf71, 987cebe4-9157-51f2-9939-f12bbb512c6e, fc403749-50ef-58ea-8146-dd49918f9564, 994068b1-d8f2-5c18-ae36-808f3fa4f52f, 37d2e2a5-736f-541d-a66f-0d467e8e9bc1, 02889be3-b333-5362-860a-4ef9b3dedc05, 9fea3d6f-9c43-5380-a2bc-ba06bf23b70e, 3d5bd844-eae5-5b03-a0d2-8fb554f2f4cf, 4cbc2b02-d8c9-510e-9f64-2bb98b7673ef, 1b1a7493-1708-509b-962a-ff8195e2c3b4, e883c5e9-5634-5a46-a013-15d5a684c5cd",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/chemie/de-be-gk.view.json: 23fc54ce-3519-5292-af90-71bc869f4ff1, 9746ff9a-c423-5504-9d4d-0fced93fa382, 00139854-e5a7-5c12-ab50-2268c80bf776, c91350bc-7d2e-523c-bd50-0324bccfcf98, bf6c39f0-1e44-53b2-8ff6-025f2e36e125, 27045f71-10ed-57d3-ac99-cfbe5d6b515a, e195b2b3-339c-563c-8b01-ce6d313c41af, e6cb2efa-0fd5-518d-9df2-c75aa71fa4c6, 8872d828-a025-5e45-af74-3d84caedfb73, 954b55d6-8a2b-533d-8aff-dadaf6306916, 35b76ced-abb8-558b-8e05-29aa3c587e75, bacf2568-03bc-5655-8798-cda078c897e3, c31fa777-89c0-52f5-a6d9-d054027aabf5, 3259bf7f-4af4-58ae-8190-9aec07ec476f, ab315f52-a9e3-5c1c-a404-7fb1a96a3eaf, 31a630bc-ee86-5316-8ce5-e522b14fd607, 4a2477e3-3bae-5452-8058-58e6ed9cc3e3, b406eff8-3cd9-551b-a913-c6dda7223645, 14577339-9e0c-5b44-8e47-91e1a4947367, 7bfe515c-e59f-521c-9781-b75e33caf0ec, eed5eda3-2daf-5d48-b935-23dadd622d9b, 69928892-ac71-553d-a35c-4f96f16b6d6e, c5394fb8-9411-5533-b2af-831c4c67b4be, 4238e88b-7d6c-5eef-b94f-d6d87659649e, 11837e4e-71bc-5374-892e-6c8cd4f0c29b, 0a8e4de3-40ec-5537-b427-4904719fcb92, 8cab60cd-619a-5c20-8550-21a7a750aa1a, 61c1d898-07b3-53a0-b8a0-a7c49006eff9, d5542006-f219-5af4-a963-ec507cadbaab, 119f0da6-4f21-5e90-9697-34776e48691c, dd63beba-613b-5f9e-80f6-9b2552c2cc2a, 28bf3678-d807-5ddc-a792-b550e955ed45, d28b9b5f-848e-516a-84df-0ca76a3daf27, 42a2eaf1-fbb2-5879-b205-7f74dfb1eafa, 04b62be5-7af8-5b7b-af12-c3059ba22727, 8c4bd771-13df-57ee-92bf-9f8d101edaa0, 990b6704-879b-522c-a82c-99ce55944cf1, f08ce862-1448-54cc-928a-ec54040bd63f, 8a281a5b-fa13-5873-a15a-a4a0c8d6cfa1, 95cff878-b85e-53d8-84bc-132c8bf4cf71, 987cebe4-9157-51f2-9939-f12bbb512c6e, fc403749-50ef-58ea-8146-dd49918f9564, 994068b1-d8f2-5c18-ae36-808f3fa4f52f, 37d2e2a5-736f-541d-a66f-0d467e8e9bc1, 02889be3-b333-5362-860a-4ef9b3dedc05, 9fea3d6f-9c43-5380-a2bc-ba06bf23b70e, 3d5bd844-eae5-5b03-a0d2-8fb554f2f4cf, 1b1a7493-1708-509b-962a-ff8195e2c3b4, e883c5e9-5634-5a46-a013-15d5a684c5cd",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/chemie/de-be-lk.view.json: 23fc54ce-3519-5292-af90-71bc869f4ff1, 9746ff9a-c423-5504-9d4d-0fced93fa382, 00139854-e5a7-5c12-ab50-2268c80bf776, c91350bc-7d2e-523c-bd50-0324bccfcf98, bf6c39f0-1e44-53b2-8ff6-025f2e36e125, 4cb74d76-99f1-5264-b1e3-448cda47b005, 171b47e2-2c53-50f2-a145-a26b896fd73f, 27045f71-10ed-57d3-ac99-cfbe5d6b515a, e195b2b3-339c-563c-8b01-ce6d313c41af, 532c57fe-18bf-53a7-bba1-1f0672a57a89, e6cb2efa-0fd5-518d-9df2-c75aa71fa4c6, 8872d828-a025-5e45-af74-3d84caedfb73, 954b55d6-8a2b-533d-8aff-dadaf6306916, 967fcb02-09cf-51b4-9840-37b0fc8345a6, 35b76ced-abb8-558b-8e05-29aa3c587e75, bacf2568-03bc-5655-8798-cda078c897e3, c31fa777-89c0-52f5-a6d9-d054027aabf5, 3259bf7f-4af4-58ae-8190-9aec07ec476f, e6196381-eab5-5a3e-bb6e-56c6e6e3617f, 563f69ed-562f-5544-ab0c-bf0e481928d8, ab315f52-a9e3-5c1c-a404-7fb1a96a3eaf, 5b5ece8f-1559-547b-a1d1-3b5511446c70, 1f7dd7c3-29f0-50aa-a404-6884896409c4, ff44ba9f-b506-5c3d-bc5e-88878765f333, b82c892b-36e2-5d8c-a96a-6ba5e77cd755, 4216a708-d9c4-5582-ad7c-65d81643f0d3, f7a7f4c2-6949-5f14-beeb-d22a74011d80, 3f7e5700-083d-5b84-9445-aafb7c9ff8f3, 31a630bc-ee86-5316-8ce5-e522b14fd607, 4a2477e3-3bae-5452-8058-58e6ed9cc3e3, b406eff8-3cd9-551b-a913-c6dda7223645, 479e4194-b5a8-56a1-b95a-829a3057cf25, 7bfe515c-e59f-521c-9781-b75e33caf0ec, eed5eda3-2daf-5d48-b935-23dadd622d9b, 32705a3a-9b7f-5cc0-ba41-881d13d0c45b, 69928892-ac71-553d-a35c-4f96f16b6d6e, c5394fb8-9411-5533-b2af-831c4c67b4be, 4238e88b-7d6c-5eef-b94f-d6d87659649e, 11837e4e-71bc-5374-892e-6c8cd4f0c29b, d2530d82-30cb-59d3-af4e-64aee17f7db6, 0a8e4de3-40ec-5537-b427-4904719fcb92, 8cab60cd-619a-5c20-8550-21a7a750aa1a, d5542006-f219-5af4-a963-ec507cadbaab, 8b7ac0a3-f893-5a7f-bad0-0b299c7fba6a, 6303e470-a790-542b-ac6a-17142e14ba16, d7abdeb3-5b69-5744-b7fd-8149fd92b0d5, b0ebce3a-eeed-5bf6-ae5e-e0cba5628e43, 119f0da6-4f21-5e90-9697-34776e48691c, dd63beba-613b-5f9e-80f6-9b2552c2cc2a, 28bf3678-d807-5ddc-a792-b550e955ed45, 000af080-6908-5c7b-b792-a91796968022, c8d83dac-839d-561f-a85d-a3e1dfbc506b, 540a050a-0a38-5d8d-9f6b-997509a1f8e0, 8c6b7c40-cba2-5d1d-8774-72ae747f462c, 7e1f6eaa-b4e6-5ec4-829b-94344e78bcd9, 20ea3cd6-57b8-5809-b335-05d400975596, 13e856ab-f7be-53df-a32a-6d6e8242e26c, 42a2eaf1-fbb2-5879-b205-7f74dfb1eafa, eaf7cf9a-7ede-53bf-a268-a1dc4b3dd086, 85ba42e5-7625-50b1-aaf4-bd8e233a1de6, 9a6120ff-c645-513d-aa5c-8fab85df4cc0, 44af0ce3-e16a-5f05-99ae-1087c2c82f47, b2bd0ed3-aaa1-504e-9633-17f84201b624, 57537252-0dc6-507a-be9f-8553f567785e, ae171e50-f552-5f8f-b618-77a667f3b5f1, 6ca09c6b-9546-587c-a632-1aa3085bffb1, 60d99973-5e2e-506d-8dd9-ef710daad2ab, 04b62be5-7af8-5b7b-af12-c3059ba22727, 036701ad-a62f-5c91-bb68-9abc00802efb, dab7b908-4370-548d-9c99-1de64a7ef129, 8c4bd771-13df-57ee-92bf-9f8d101edaa0, 990b6704-879b-522c-a82c-99ce55944cf1, f08ce862-1448-54cc-928a-ec54040bd63f, 8a281a5b-fa13-5873-a15a-a4a0c8d6cfa1, 95cff878-b85e-53d8-84bc-132c8bf4cf71, 987cebe4-9157-51f2-9939-f12bbb512c6e, fc403749-50ef-58ea-8146-dd49918f9564, 994068b1-d8f2-5c18-ae36-808f3fa4f52f, 37d2e2a5-736f-541d-a66f-0d467e8e9bc1, 02889be3-b333-5362-860a-4ef9b3dedc05, 9fea3d6f-9c43-5380-a2bc-ba06bf23b70e, 3d5bd844-eae5-5b03-a0d2-8fb554f2f4cf, 4cbc2b02-d8c9-510e-9f64-2bb98b7673ef, 1b1a7493-1708-509b-962a-ff8195e2c3b4, e883c5e9-5634-5a46-a013-15d5a684c5cd",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/chemie/de-bw-gk.view.json: 23fc54ce-3519-5292-af90-71bc869f4ff1, 9746ff9a-c423-5504-9d4d-0fced93fa382, 00139854-e5a7-5c12-ab50-2268c80bf776, c91350bc-7d2e-523c-bd50-0324bccfcf98, bf6c39f0-1e44-53b2-8ff6-025f2e36e125, 27045f71-10ed-57d3-ac99-cfbe5d6b515a, ac75b416-70d5-50f8-a913-475943d21a55, e195b2b3-339c-563c-8b01-ce6d313c41af, e6cb2efa-0fd5-518d-9df2-c75aa71fa4c6, 8872d828-a025-5e45-af74-3d84caedfb73, 954b55d6-8a2b-533d-8aff-dadaf6306916, 4cbcfc86-ae8c-5152-87cf-9dabd1a5f954, 35b76ced-abb8-558b-8e05-29aa3c587e75, bacf2568-03bc-5655-8798-cda078c897e3, c31fa777-89c0-52f5-a6d9-d054027aabf5, ab315f52-a9e3-5c1c-a404-7fb1a96a3eaf, 5774702d-6083-5165-975c-4ad89e3d6045, 31a630bc-ee86-5316-8ce5-e522b14fd607, 4a2477e3-3bae-5452-8058-58e6ed9cc3e3, b406eff8-3cd9-551b-a913-c6dda7223645, 14577339-9e0c-5b44-8e47-91e1a4947367, 7bfe515c-e59f-521c-9781-b75e33caf0ec, eed5eda3-2daf-5d48-b935-23dadd622d9b, 69928892-ac71-553d-a35c-4f96f16b6d6e, c5394fb8-9411-5533-b2af-831c4c67b4be, 4238e88b-7d6c-5eef-b94f-d6d87659649e, 11837e4e-71bc-5374-892e-6c8cd4f0c29b, 0a8e4de3-40ec-5537-b427-4904719fcb92, 8cab60cd-619a-5c20-8550-21a7a750aa1a, 61c1d898-07b3-53a0-b8a0-a7c49006eff9, d5542006-f219-5af4-a963-ec507cadbaab, 2c00a9c4-b290-5e7a-8997-445dee0e2821, ed0eadfa-cad8-5989-9ad9-e5173f3cbe16, dd63beba-613b-5f9e-80f6-9b2552c2cc2a, d28b9b5f-848e-516a-84df-0ca76a3daf27, 2339b9b1-39c8-59f1-9108-c46966ecf1fd, 42a2eaf1-fbb2-5879-b205-7f74dfb1eafa, 69f73aac-9c13-57ab-82b6-a029b7e2a40a, 04b62be5-7af8-5b7b-af12-c3059ba22727, 8c4bd771-13df-57ee-92bf-9f8d101edaa0, 990b6704-879b-522c-a82c-99ce55944cf1, f08ce862-1448-54cc-928a-ec54040bd63f, 8a281a5b-fa13-5873-a15a-a4a0c8d6cfa1, 95cff878-b85e-53d8-84bc-132c8bf4cf71, 987cebe4-9157-51f2-9939-f12bbb512c6e, 37d2e2a5-736f-541d-a66f-0d467e8e9bc1, 02889be3-b333-5362-860a-4ef9b3dedc05, 9fea3d6f-9c43-5380-a2bc-ba06bf23b70e, 3d5bd844-eae5-5b03-a0d2-8fb554f2f4cf, 1b1a7493-1708-509b-962a-ff8195e2c3b4, e883c5e9-5634-5a46-a013-15d5a684c5cd",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/chemie/de-bw-lk.view.json: 23fc54ce-3519-5292-af90-71bc869f4ff1, 9746ff9a-c423-5504-9d4d-0fced93fa382, 00139854-e5a7-5c12-ab50-2268c80bf776, c91350bc-7d2e-523c-bd50-0324bccfcf98, bf6c39f0-1e44-53b2-8ff6-025f2e36e125, 4cb74d76-99f1-5264-b1e3-448cda47b005, 171b47e2-2c53-50f2-a145-a26b896fd73f, 27045f71-10ed-57d3-ac99-cfbe5d6b515a, ac75b416-70d5-50f8-a913-475943d21a55, e195b2b3-339c-563c-8b01-ce6d313c41af, 532c57fe-18bf-53a7-bba1-1f0672a57a89, e6cb2efa-0fd5-518d-9df2-c75aa71fa4c6, 8872d828-a025-5e45-af74-3d84caedfb73, 954b55d6-8a2b-533d-8aff-dadaf6306916, 967fcb02-09cf-51b4-9840-37b0fc8345a6, 35b76ced-abb8-558b-8e05-29aa3c587e75, bacf2568-03bc-5655-8798-cda078c897e3, c31fa777-89c0-52f5-a6d9-d054027aabf5, ab315f52-a9e3-5c1c-a404-7fb1a96a3eaf, 5b5ece8f-1559-547b-a1d1-3b5511446c70, 1f7dd7c3-29f0-50aa-a404-6884896409c4, ff44ba9f-b506-5c3d-bc5e-88878765f333, b82c892b-36e2-5d8c-a96a-6ba5e77cd755, 4216a708-d9c4-5582-ad7c-65d81643f0d3, f7a7f4c2-6949-5f14-beeb-d22a74011d80, 5774702d-6083-5165-975c-4ad89e3d6045, 3f7e5700-083d-5b84-9445-aafb7c9ff8f3, 31a630bc-ee86-5316-8ce5-e522b14fd607, 4a2477e3-3bae-5452-8058-58e6ed9cc3e3, b406eff8-3cd9-551b-a913-c6dda7223645, 479e4194-b5a8-56a1-b95a-829a3057cf25, 7bfe515c-e59f-521c-9781-b75e33caf0ec, eed5eda3-2daf-5d48-b935-23dadd622d9b, 32705a3a-9b7f-5cc0-ba41-881d13d0c45b, 69928892-ac71-553d-a35c-4f96f16b6d6e, c5394fb8-9411-5533-b2af-831c4c67b4be, 4238e88b-7d6c-5eef-b94f-d6d87659649e, 11837e4e-71bc-5374-892e-6c8cd4f0c29b, f48bd326-3fd6-5e60-9721-50f79a403852, d2d706b8-3ebf-55ed-8793-1cef6997cbc2, 0a8e4de3-40ec-5537-b427-4904719fcb92, 8cab60cd-619a-5c20-8550-21a7a750aa1a, d5542006-f219-5af4-a963-ec507cadbaab, 2c00a9c4-b290-5e7a-8997-445dee0e2821, 8b7ac0a3-f893-5a7f-bad0-0b299c7fba6a, 6303e470-a790-542b-ac6a-17142e14ba16, d7abdeb3-5b69-5744-b7fd-8149fd92b0d5, b0ebce3a-eeed-5bf6-ae5e-e0cba5628e43, 71ebedcf-e1ef-52cc-957c-0a81bf479a78, ed0eadfa-cad8-5989-9ad9-e5173f3cbe16, dd63beba-613b-5f9e-80f6-9b2552c2cc2a, 000af080-6908-5c7b-b792-a91796968022, c8d83dac-839d-561f-a85d-a3e1dfbc506b, 540a050a-0a38-5d8d-9f6b-997509a1f8e0, 2339b9b1-39c8-59f1-9108-c46966ecf1fd, 13e856ab-f7be-53df-a32a-6d6e8242e26c, 42a2eaf1-fbb2-5879-b205-7f74dfb1eafa, eaf7cf9a-7ede-53bf-a268-a1dc4b3dd086, 85ba42e5-7625-50b1-aaf4-bd8e233a1de6, 9a6120ff-c645-513d-aa5c-8fab85df4cc0, 69f73aac-9c13-57ab-82b6-a029b7e2a40a, 44af0ce3-e16a-5f05-99ae-1087c2c82f47, b2bd0ed3-aaa1-504e-9633-17f84201b624, 57537252-0dc6-507a-be9f-8553f567785e, ae171e50-f552-5f8f-b618-77a667f3b5f1, 6ca09c6b-9546-587c-a632-1aa3085bffb1, f0ef9592-da31-59de-86a4-d2d3d7025a8b, 04b62be5-7af8-5b7b-af12-c3059ba22727, 036701ad-a62f-5c91-bb68-9abc00802efb, dab7b908-4370-548d-9c99-1de64a7ef129, 8c4bd771-13df-57ee-92bf-9f8d101edaa0, 990b6704-879b-522c-a82c-99ce55944cf1, f08ce862-1448-54cc-928a-ec54040bd63f, 8a281a5b-fa13-5873-a15a-a4a0c8d6cfa1, 95cff878-b85e-53d8-84bc-132c8bf4cf71, 987cebe4-9157-51f2-9939-f12bbb512c6e, 37d2e2a5-736f-541d-a66f-0d467e8e9bc1, 02889be3-b333-5362-860a-4ef9b3dedc05, 9fea3d6f-9c43-5380-a2bc-ba06bf23b70e, 3d5bd844-eae5-5b03-a0d2-8fb554f2f4cf, 4cbc2b02-d8c9-510e-9f64-2bb98b7673ef, 1b1a7493-1708-509b-962a-ff8195e2c3b4, e883c5e9-5634-5a46-a013-15d5a684c5cd",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/chemie/de-by-lk.current-pilot.view.json: 23fc54ce-3519-5292-af90-71bc869f4ff1, 9746ff9a-c423-5504-9d4d-0fced93fa382, 00139854-e5a7-5c12-ab50-2268c80bf776, c91350bc-7d2e-523c-bd50-0324bccfcf98, bf6c39f0-1e44-53b2-8ff6-025f2e36e125, 4cb74d76-99f1-5264-b1e3-448cda47b005, 171b47e2-2c53-50f2-a145-a26b896fd73f, ac75b416-70d5-50f8-a913-475943d21a55, e195b2b3-339c-563c-8b01-ce6d313c41af, 532c57fe-18bf-53a7-bba1-1f0672a57a89, e6cb2efa-0fd5-518d-9df2-c75aa71fa4c6, 8872d828-a025-5e45-af74-3d84caedfb73, 954b55d6-8a2b-533d-8aff-dadaf6306916, 967fcb02-09cf-51b4-9840-37b0fc8345a6, 35b76ced-abb8-558b-8e05-29aa3c587e75, bacf2568-03bc-5655-8798-cda078c897e3, c31fa777-89c0-52f5-a6d9-d054027aabf5, 3259bf7f-4af4-58ae-8190-9aec07ec476f, e6196381-eab5-5a3e-bb6e-56c6e6e3617f, 563f69ed-562f-5544-ab0c-bf0e481928d8, ab315f52-a9e3-5c1c-a404-7fb1a96a3eaf, 5b5ece8f-1559-547b-a1d1-3b5511446c70, 1f7dd7c3-29f0-50aa-a404-6884896409c4, ff44ba9f-b506-5c3d-bc5e-88878765f333, b82c892b-36e2-5d8c-a96a-6ba5e77cd755, 4216a708-d9c4-5582-ad7c-65d81643f0d3, f7a7f4c2-6949-5f14-beeb-d22a74011d80, 3f7e5700-083d-5b84-9445-aafb7c9ff8f3, 31a630bc-ee86-5316-8ce5-e522b14fd607, 4a2477e3-3bae-5452-8058-58e6ed9cc3e3, b406eff8-3cd9-551b-a913-c6dda7223645, 479e4194-b5a8-56a1-b95a-829a3057cf25, 7bfe515c-e59f-521c-9781-b75e33caf0ec, eed5eda3-2daf-5d48-b935-23dadd622d9b, 32705a3a-9b7f-5cc0-ba41-881d13d0c45b, 69928892-ac71-553d-a35c-4f96f16b6d6e, c5394fb8-9411-5533-b2af-831c4c67b4be, 4238e88b-7d6c-5eef-b94f-d6d87659649e, 11837e4e-71bc-5374-892e-6c8cd4f0c29b, f48bd326-3fd6-5e60-9721-50f79a403852, 0a8e4de3-40ec-5537-b427-4904719fcb92, 8cab60cd-619a-5c20-8550-21a7a750aa1a, 8b7ac0a3-f893-5a7f-bad0-0b299c7fba6a, 6303e470-a790-542b-ac6a-17142e14ba16, d7abdeb3-5b69-5744-b7fd-8149fd92b0d5, b0ebce3a-eeed-5bf6-ae5e-e0cba5628e43, 71ebedcf-e1ef-52cc-957c-0a81bf479a78, 35709a35-ed66-5b6c-88cd-e01e8e8eed89, 000af080-6908-5c7b-b792-a91796968022, 20ea3cd6-57b8-5809-b335-05d400975596, 2339b9b1-39c8-59f1-9108-c46966ecf1fd, 13e856ab-f7be-53df-a32a-6d6e8242e26c, 42a2eaf1-fbb2-5879-b205-7f74dfb1eafa, eaf7cf9a-7ede-53bf-a268-a1dc4b3dd086, f0ef9592-da31-59de-86a4-d2d3d7025a8b, 04b62be5-7af8-5b7b-af12-c3059ba22727, 036701ad-a62f-5c91-bb68-9abc00802efb, fbd8d2c6-343d-55f4-839d-427ec712b389, f08ce862-1448-54cc-928a-ec54040bd63f, 8a281a5b-fa13-5873-a15a-a4a0c8d6cfa1, 95cff878-b85e-53d8-84bc-132c8bf4cf71, 987cebe4-9157-51f2-9939-f12bbb512c6e, fc403749-50ef-58ea-8146-dd49918f9564, 994068b1-d8f2-5c18-ae36-808f3fa4f52f, 37d2e2a5-736f-541d-a66f-0d467e8e9bc1, 4cbc2b02-d8c9-510e-9f64-2bb98b7673ef, 1b1a7493-1708-509b-962a-ff8195e2c3b4, e883c5e9-5634-5a46-a013-15d5a684c5cd",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-gk.view.json: 7bfe515c-e59f-521c-9781-b75e33caf0ec, eed5eda3-2daf-5d48-b935-23dadd622d9b, 69928892-ac71-553d-a35c-4f96f16b6d6e, c5394fb8-9411-5533-b2af-831c4c67b4be, 4238e88b-7d6c-5eef-b94f-d6d87659649e, 11837e4e-71bc-5374-892e-6c8cd4f0c29b, 0a8e4de3-40ec-5537-b427-4904719fcb92, 8cab60cd-619a-5c20-8550-21a7a750aa1a, 61c1d898-07b3-53a0-b8a0-a7c49006eff9, 2c00a9c4-b290-5e7a-8997-445dee0e2821, ed0eadfa-cad8-5989-9ad9-e5173f3cbe16, 119f0da6-4f21-5e90-9697-34776e48691c, dd63beba-613b-5f9e-80f6-9b2552c2cc2a, 954e0574-c05b-5029-90e9-25f412c8c79a, 0e883c00-0980-5ca0-a958-19c843596ddf, 28bf3678-d807-5ddc-a792-b550e955ed45, d28b9b5f-848e-516a-84df-0ca76a3daf27, 522fa82a-1703-581c-a704-617a00cf6ea6, 42a2eaf1-fbb2-5879-b205-7f74dfb1eafa, 69f73aac-9c13-57ab-82b6-a029b7e2a40a, 04b62be5-7af8-5b7b-af12-c3059ba22727, f08ce862-1448-54cc-928a-ec54040bd63f, 8a281a5b-fa13-5873-a15a-a4a0c8d6cfa1, 95cff878-b85e-53d8-84bc-132c8bf4cf71, 987cebe4-9157-51f2-9939-f12bbb512c6e, 37d2e2a5-736f-541d-a66f-0d467e8e9bc1, 1b1a7493-1708-509b-962a-ff8195e2c3b4, e883c5e9-5634-5a46-a013-15d5a684c5cd",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-lk.view.json: 7bfe515c-e59f-521c-9781-b75e33caf0ec, eed5eda3-2daf-5d48-b935-23dadd622d9b, 69928892-ac71-553d-a35c-4f96f16b6d6e, c5394fb8-9411-5533-b2af-831c4c67b4be, 4238e88b-7d6c-5eef-b94f-d6d87659649e, 11837e4e-71bc-5374-892e-6c8cd4f0c29b, f48bd326-3fd6-5e60-9721-50f79a403852, d2530d82-30cb-59d3-af4e-64aee17f7db6, d2d706b8-3ebf-55ed-8793-1cef6997cbc2, 0a8e4de3-40ec-5537-b427-4904719fcb92, 8cab60cd-619a-5c20-8550-21a7a750aa1a, 2c00a9c4-b290-5e7a-8997-445dee0e2821, d7abdeb3-5b69-5744-b7fd-8149fd92b0d5, 71ebedcf-e1ef-52cc-957c-0a81bf479a78, ed0eadfa-cad8-5989-9ad9-e5173f3cbe16, 119f0da6-4f21-5e90-9697-34776e48691c, dd63beba-613b-5f9e-80f6-9b2552c2cc2a, 954e0574-c05b-5029-90e9-25f412c8c79a, 0e883c00-0980-5ca0-a958-19c843596ddf, 28bf3678-d807-5ddc-a792-b550e955ed45, 1dfe54e5-2b08-525e-9421-5b584faa3717, d28b9b5f-848e-516a-84df-0ca76a3daf27, 000af080-6908-5c7b-b792-a91796968022, a0aff485-59bc-537f-aab7-d50e78e2506a, c8d83dac-839d-561f-a85d-a3e1dfbc506b, 540a050a-0a38-5d8d-9f6b-997509a1f8e0, 8c6b7c40-cba2-5d1d-8774-72ae747f462c, 7e1f6eaa-b4e6-5ec4-829b-94344e78bcd9, 20ea3cd6-57b8-5809-b335-05d400975596, 522fa82a-1703-581c-a704-617a00cf6ea6, 13e856ab-f7be-53df-a32a-6d6e8242e26c, 42a2eaf1-fbb2-5879-b205-7f74dfb1eafa, 85ba42e5-7625-50b1-aaf4-bd8e233a1de6, 9a6120ff-c645-513d-aa5c-8fab85df4cc0, 69f73aac-9c13-57ab-82b6-a029b7e2a40a, 44af0ce3-e16a-5f05-99ae-1087c2c82f47, b2bd0ed3-aaa1-504e-9633-17f84201b624, 57537252-0dc6-507a-be9f-8553f567785e, ae171e50-f552-5f8f-b618-77a667f3b5f1, 6ca09c6b-9546-587c-a632-1aa3085bffb1, 60d99973-5e2e-506d-8dd9-ef710daad2ab, 04b62be5-7af8-5b7b-af12-c3059ba22727, 036701ad-a62f-5c91-bb68-9abc00802efb, f08ce862-1448-54cc-928a-ec54040bd63f, 8a281a5b-fa13-5873-a15a-a4a0c8d6cfa1, 95cff878-b85e-53d8-84bc-132c8bf4cf71, 987cebe4-9157-51f2-9939-f12bbb512c6e, 37d2e2a5-736f-541d-a66f-0d467e8e9bc1, 4cbc2b02-d8c9-510e-9f64-2bb98b7673ef, 1b1a7493-1708-509b-962a-ff8195e2c3b4, e883c5e9-5634-5a46-a013-15d5a684c5cd",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-sekii-chemistry-gk.view.json: 7bfe515c-e59f-521c-9781-b75e33caf0ec, eed5eda3-2daf-5d48-b935-23dadd622d9b, 69928892-ac71-553d-a35c-4f96f16b6d6e, c5394fb8-9411-5533-b2af-831c4c67b4be, 4238e88b-7d6c-5eef-b94f-d6d87659649e, 11837e4e-71bc-5374-892e-6c8cd4f0c29b, 0a8e4de3-40ec-5537-b427-4904719fcb92, 8cab60cd-619a-5c20-8550-21a7a750aa1a, 61c1d898-07b3-53a0-b8a0-a7c49006eff9, 2c00a9c4-b290-5e7a-8997-445dee0e2821, ed0eadfa-cad8-5989-9ad9-e5173f3cbe16, 119f0da6-4f21-5e90-9697-34776e48691c, dd63beba-613b-5f9e-80f6-9b2552c2cc2a, 954e0574-c05b-5029-90e9-25f412c8c79a, 35709a35-ed66-5b6c-88cd-e01e8e8eed89, 0e883c00-0980-5ca0-a958-19c843596ddf, 28bf3678-d807-5ddc-a792-b550e955ed45, d28b9b5f-848e-516a-84df-0ca76a3daf27, 522fa82a-1703-581c-a704-617a00cf6ea6, 42a2eaf1-fbb2-5879-b205-7f74dfb1eafa, 69f73aac-9c13-57ab-82b6-a029b7e2a40a, 04b62be5-7af8-5b7b-af12-c3059ba22727, f08ce862-1448-54cc-928a-ec54040bd63f, 8a281a5b-fa13-5873-a15a-a4a0c8d6cfa1, 95cff878-b85e-53d8-84bc-132c8bf4cf71, 987cebe4-9157-51f2-9939-f12bbb512c6e, 37d2e2a5-736f-541d-a66f-0d467e8e9bc1, 1b1a7493-1708-509b-962a-ff8195e2c3b4, e883c5e9-5634-5a46-a013-15d5a684c5cd",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-sekii-chemistry-lk.view.json: 7bfe515c-e59f-521c-9781-b75e33caf0ec, eed5eda3-2daf-5d48-b935-23dadd622d9b, 69928892-ac71-553d-a35c-4f96f16b6d6e, c5394fb8-9411-5533-b2af-831c4c67b4be, 4238e88b-7d6c-5eef-b94f-d6d87659649e, 11837e4e-71bc-5374-892e-6c8cd4f0c29b, f48bd326-3fd6-5e60-9721-50f79a403852, d2530d82-30cb-59d3-af4e-64aee17f7db6, d2d706b8-3ebf-55ed-8793-1cef6997cbc2, 0a8e4de3-40ec-5537-b427-4904719fcb92, 8cab60cd-619a-5c20-8550-21a7a750aa1a, 2c00a9c4-b290-5e7a-8997-445dee0e2821, d7abdeb3-5b69-5744-b7fd-8149fd92b0d5, 71ebedcf-e1ef-52cc-957c-0a81bf479a78, ed0eadfa-cad8-5989-9ad9-e5173f3cbe16, 119f0da6-4f21-5e90-9697-34776e48691c, dd63beba-613b-5f9e-80f6-9b2552c2cc2a, 954e0574-c05b-5029-90e9-25f412c8c79a, 35709a35-ed66-5b6c-88cd-e01e8e8eed89, 0e883c00-0980-5ca0-a958-19c843596ddf, 28bf3678-d807-5ddc-a792-b550e955ed45, 1dfe54e5-2b08-525e-9421-5b584faa3717, d28b9b5f-848e-516a-84df-0ca76a3daf27, 000af080-6908-5c7b-b792-a91796968022, a0aff485-59bc-537f-aab7-d50e78e2506a, c8d83dac-839d-561f-a85d-a3e1dfbc506b, 540a050a-0a38-5d8d-9f6b-997509a1f8e0, 8c6b7c40-cba2-5d1d-8774-72ae747f462c, 7e1f6eaa-b4e6-5ec4-829b-94344e78bcd9, 20ea3cd6-57b8-5809-b335-05d400975596, 522fa82a-1703-581c-a704-617a00cf6ea6, 13e856ab-f7be-53df-a32a-6d6e8242e26c, 42a2eaf1-fbb2-5879-b205-7f74dfb1eafa, 85ba42e5-7625-50b1-aaf4-bd8e233a1de6, 9a6120ff-c645-513d-aa5c-8fab85df4cc0, 69f73aac-9c13-57ab-82b6-a029b7e2a40a, 44af0ce3-e16a-5f05-99ae-1087c2c82f47, b2bd0ed3-aaa1-504e-9633-17f84201b624, 57537252-0dc6-507a-be9f-8553f567785e, ae171e50-f552-5f8f-b618-77a667f3b5f1, 6ca09c6b-9546-587c-a632-1aa3085bffb1, 60d99973-5e2e-506d-8dd9-ef710daad2ab, 04b62be5-7af8-5b7b-af12-c3059ba22727, 036701ad-a62f-5c91-bb68-9abc00802efb, f08ce862-1448-54cc-928a-ec54040bd63f, 8a281a5b-fa13-5873-a15a-a4a0c8d6cfa1, 95cff878-b85e-53d8-84bc-132c8bf4cf71, 987cebe4-9157-51f2-9939-f12bbb512c6e, 37d2e2a5-736f-541d-a66f-0d467e8e9bc1, 4cbc2b02-d8c9-510e-9f64-2bb98b7673ef, 1b1a7493-1708-509b-962a-ff8195e2c3b4, e883c5e9-5634-5a46-a013-15d5a684c5cd",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/chemie/de-hb-gk.view.json: 23fc54ce-3519-5292-af90-71bc869f4ff1, 9746ff9a-c423-5504-9d4d-0fced93fa382, 00139854-e5a7-5c12-ab50-2268c80bf776, c91350bc-7d2e-523c-bd50-0324bccfcf98, bf6c39f0-1e44-53b2-8ff6-025f2e36e125, 27045f71-10ed-57d3-ac99-cfbe5d6b515a, e195b2b3-339c-563c-8b01-ce6d313c41af, e6cb2efa-0fd5-518d-9df2-c75aa71fa4c6, 8872d828-a025-5e45-af74-3d84caedfb73, 954b55d6-8a2b-533d-8aff-dadaf6306916, 4cbcfc86-ae8c-5152-87cf-9dabd1a5f954, 35b76ced-abb8-558b-8e05-29aa3c587e75, bacf2568-03bc-5655-8798-cda078c897e3, c31fa777-89c0-52f5-a6d9-d054027aabf5, 3259bf7f-4af4-58ae-8190-9aec07ec476f, ab315f52-a9e3-5c1c-a404-7fb1a96a3eaf, 31a630bc-ee86-5316-8ce5-e522b14fd607, 4a2477e3-3bae-5452-8058-58e6ed9cc3e3, b406eff8-3cd9-551b-a913-c6dda7223645, 14577339-9e0c-5b44-8e47-91e1a4947367, 7bfe515c-e59f-521c-9781-b75e33caf0ec, eed5eda3-2daf-5d48-b935-23dadd622d9b, 69928892-ac71-553d-a35c-4f96f16b6d6e, 0a8e4de3-40ec-5537-b427-4904719fcb92, 61c1d898-07b3-53a0-b8a0-a7c49006eff9, d5542006-f219-5af4-a963-ec507cadbaab, 2c00a9c4-b290-5e7a-8997-445dee0e2821, 69f73aac-9c13-57ab-82b6-a029b7e2a40a, 8c4bd771-13df-57ee-92bf-9f8d101edaa0, 990b6704-879b-522c-a82c-99ce55944cf1, fc403749-50ef-58ea-8146-dd49918f9564, 02889be3-b333-5362-860a-4ef9b3dedc05, 9fea3d6f-9c43-5380-a2bc-ba06bf23b70e, 3d5bd844-eae5-5b03-a0d2-8fb554f2f4cf, 1b1a7493-1708-509b-962a-ff8195e2c3b4, e883c5e9-5634-5a46-a013-15d5a684c5cd",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/chemie/de-hb-lk.view.json: 23fc54ce-3519-5292-af90-71bc869f4ff1, 9746ff9a-c423-5504-9d4d-0fced93fa382, 00139854-e5a7-5c12-ab50-2268c80bf776, c91350bc-7d2e-523c-bd50-0324bccfcf98, bf6c39f0-1e44-53b2-8ff6-025f2e36e125, 4cb74d76-99f1-5264-b1e3-448cda47b005, 171b47e2-2c53-50f2-a145-a26b896fd73f, 27045f71-10ed-57d3-ac99-cfbe5d6b515a, e195b2b3-339c-563c-8b01-ce6d313c41af, 532c57fe-18bf-53a7-bba1-1f0672a57a89, e6cb2efa-0fd5-518d-9df2-c75aa71fa4c6, 8872d828-a025-5e45-af74-3d84caedfb73, 954b55d6-8a2b-533d-8aff-dadaf6306916, 4cbcfc86-ae8c-5152-87cf-9dabd1a5f954, 967fcb02-09cf-51b4-9840-37b0fc8345a6, 35b76ced-abb8-558b-8e05-29aa3c587e75, bacf2568-03bc-5655-8798-cda078c897e3, c31fa777-89c0-52f5-a6d9-d054027aabf5, 3259bf7f-4af4-58ae-8190-9aec07ec476f, e6196381-eab5-5a3e-bb6e-56c6e6e3617f, 563f69ed-562f-5544-ab0c-bf0e481928d8, ab315f52-a9e3-5c1c-a404-7fb1a96a3eaf, 1f7dd7c3-29f0-50aa-a404-6884896409c4, ff44ba9f-b506-5c3d-bc5e-88878765f333, b82c892b-36e2-5d8c-a96a-6ba5e77cd755, 4216a708-d9c4-5582-ad7c-65d81643f0d3, 3f7e5700-083d-5b84-9445-aafb7c9ff8f3, 31a630bc-ee86-5316-8ce5-e522b14fd607, 4a2477e3-3bae-5452-8058-58e6ed9cc3e3, b406eff8-3cd9-551b-a913-c6dda7223645, 479e4194-b5a8-56a1-b95a-829a3057cf25, 7bfe515c-e59f-521c-9781-b75e33caf0ec, eed5eda3-2daf-5d48-b935-23dadd622d9b, 32705a3a-9b7f-5cc0-ba41-881d13d0c45b, 69928892-ac71-553d-a35c-4f96f16b6d6e, d2530d82-30cb-59d3-af4e-64aee17f7db6, d2d706b8-3ebf-55ed-8793-1cef6997cbc2, 0a8e4de3-40ec-5537-b427-4904719fcb92, d5542006-f219-5af4-a963-ec507cadbaab, 2c00a9c4-b290-5e7a-8997-445dee0e2821, 8b7ac0a3-f893-5a7f-bad0-0b299c7fba6a, 6303e470-a790-542b-ac6a-17142e14ba16, d7abdeb3-5b69-5744-b7fd-8149fd92b0d5, b0ebce3a-eeed-5bf6-ae5e-e0cba5628e43, 71ebedcf-e1ef-52cc-957c-0a81bf479a78, a0aff485-59bc-537f-aab7-d50e78e2506a, 8c6b7c40-cba2-5d1d-8774-72ae747f462c, 7e1f6eaa-b4e6-5ec4-829b-94344e78bcd9, 20ea3cd6-57b8-5809-b335-05d400975596, 85ba42e5-7625-50b1-aaf4-bd8e233a1de6, 9a6120ff-c645-513d-aa5c-8fab85df4cc0, 69f73aac-9c13-57ab-82b6-a029b7e2a40a, 44af0ce3-e16a-5f05-99ae-1087c2c82f47, b2bd0ed3-aaa1-504e-9633-17f84201b624, 57537252-0dc6-507a-be9f-8553f567785e, ae171e50-f552-5f8f-b618-77a667f3b5f1, 6ca09c6b-9546-587c-a632-1aa3085bffb1, f0ef9592-da31-59de-86a4-d2d3d7025a8b, 036701ad-a62f-5c91-bb68-9abc00802efb, fbd8d2c6-343d-55f4-839d-427ec712b389, dab7b908-4370-548d-9c99-1de64a7ef129, 8c4bd771-13df-57ee-92bf-9f8d101edaa0, fc403749-50ef-58ea-8146-dd49918f9564, 02889be3-b333-5362-860a-4ef9b3dedc05, 9fea3d6f-9c43-5380-a2bc-ba06bf23b70e, 3d5bd844-eae5-5b03-a0d2-8fb554f2f4cf, e883c5e9-5634-5a46-a013-15d5a684c5cd",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/chemie/de-hb-sekii-gk.view.json: 23fc54ce-3519-5292-af90-71bc869f4ff1, 9746ff9a-c423-5504-9d4d-0fced93fa382, 00139854-e5a7-5c12-ab50-2268c80bf776, c91350bc-7d2e-523c-bd50-0324bccfcf98, bf6c39f0-1e44-53b2-8ff6-025f2e36e125, 27045f71-10ed-57d3-ac99-cfbe5d6b515a, e195b2b3-339c-563c-8b01-ce6d313c41af, e6cb2efa-0fd5-518d-9df2-c75aa71fa4c6, 8872d828-a025-5e45-af74-3d84caedfb73, 954b55d6-8a2b-533d-8aff-dadaf6306916, 4cbcfc86-ae8c-5152-87cf-9dabd1a5f954, 35b76ced-abb8-558b-8e05-29aa3c587e75, bacf2568-03bc-5655-8798-cda078c897e3, c31fa777-89c0-52f5-a6d9-d054027aabf5, 3259bf7f-4af4-58ae-8190-9aec07ec476f, ab315f52-a9e3-5c1c-a404-7fb1a96a3eaf, 31a630bc-ee86-5316-8ce5-e522b14fd607, 4a2477e3-3bae-5452-8058-58e6ed9cc3e3, b406eff8-3cd9-551b-a913-c6dda7223645, 14577339-9e0c-5b44-8e47-91e1a4947367, 7bfe515c-e59f-521c-9781-b75e33caf0ec, eed5eda3-2daf-5d48-b935-23dadd622d9b, 69928892-ac71-553d-a35c-4f96f16b6d6e, 0a8e4de3-40ec-5537-b427-4904719fcb92, 61c1d898-07b3-53a0-b8a0-a7c49006eff9, d5542006-f219-5af4-a963-ec507cadbaab, 2c00a9c4-b290-5e7a-8997-445dee0e2821, 69f73aac-9c13-57ab-82b6-a029b7e2a40a, 8c4bd771-13df-57ee-92bf-9f8d101edaa0, 990b6704-879b-522c-a82c-99ce55944cf1, fc403749-50ef-58ea-8146-dd49918f9564, 02889be3-b333-5362-860a-4ef9b3dedc05, 9fea3d6f-9c43-5380-a2bc-ba06bf23b70e, 3d5bd844-eae5-5b03-a0d2-8fb554f2f4cf, 1b1a7493-1708-509b-962a-ff8195e2c3b4, e883c5e9-5634-5a46-a013-15d5a684c5cd",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/chemie/de-hb-sekii-lk.view.json: 23fc54ce-3519-5292-af90-71bc869f4ff1, 9746ff9a-c423-5504-9d4d-0fced93fa382, 00139854-e5a7-5c12-ab50-2268c80bf776, c91350bc-7d2e-523c-bd50-0324bccfcf98, bf6c39f0-1e44-53b2-8ff6-025f2e36e125, 4cb74d76-99f1-5264-b1e3-448cda47b005, 171b47e2-2c53-50f2-a145-a26b896fd73f, 27045f71-10ed-57d3-ac99-cfbe5d6b515a, e195b2b3-339c-563c-8b01-ce6d313c41af, 532c57fe-18bf-53a7-bba1-1f0672a57a89, e6cb2efa-0fd5-518d-9df2-c75aa71fa4c6, 8872d828-a025-5e45-af74-3d84caedfb73, 954b55d6-8a2b-533d-8aff-dadaf6306916, 4cbcfc86-ae8c-5152-87cf-9dabd1a5f954, 967fcb02-09cf-51b4-9840-37b0fc8345a6, 35b76ced-abb8-558b-8e05-29aa3c587e75, bacf2568-03bc-5655-8798-cda078c897e3, c31fa777-89c0-52f5-a6d9-d054027aabf5, 3259bf7f-4af4-58ae-8190-9aec07ec476f, e6196381-eab5-5a3e-bb6e-56c6e6e3617f, 563f69ed-562f-5544-ab0c-bf0e481928d8, ab315f52-a9e3-5c1c-a404-7fb1a96a3eaf, 1f7dd7c3-29f0-50aa-a404-6884896409c4, ff44ba9f-b506-5c3d-bc5e-88878765f333, b82c892b-36e2-5d8c-a96a-6ba5e77cd755, 4216a708-d9c4-5582-ad7c-65d81643f0d3, 3f7e5700-083d-5b84-9445-aafb7c9ff8f3, 31a630bc-ee86-5316-8ce5-e522b14fd607, 4a2477e3-3bae-5452-8058-58e6ed9cc3e3, b406eff8-3cd9-551b-a913-c6dda7223645, 479e4194-b5a8-56a1-b95a-829a3057cf25, 7bfe515c-e59f-521c-9781-b75e33caf0ec, eed5eda3-2daf-5d48-b935-23dadd622d9b, 32705a3a-9b7f-5cc0-ba41-881d13d0c45b, 69928892-ac71-553d-a35c-4f96f16b6d6e, d2530d82-30cb-59d3-af4e-64aee17f7db6, d2d706b8-3ebf-55ed-8793-1cef6997cbc2, 0a8e4de3-40ec-5537-b427-4904719fcb92, d5542006-f219-5af4-a963-ec507cadbaab, 2c00a9c4-b290-5e7a-8997-445dee0e2821, 8b7ac0a3-f893-5a7f-bad0-0b299c7fba6a, 6303e470-a790-542b-ac6a-17142e14ba16, d7abdeb3-5b69-5744-b7fd-8149fd92b0d5, b0ebce3a-eeed-5bf6-ae5e-e0cba5628e43, 71ebedcf-e1ef-52cc-957c-0a81bf479a78, a0aff485-59bc-537f-aab7-d50e78e2506a, 8c6b7c40-cba2-5d1d-8774-72ae747f462c, 7e1f6eaa-b4e6-5ec4-829b-94344e78bcd9, 20ea3cd6-57b8-5809-b335-05d400975596, 85ba42e5-7625-50b1-aaf4-bd8e233a1de6, 9a6120ff-c645-513d-aa5c-8fab85df4cc0, 69f73aac-9c13-57ab-82b6-a029b7e2a40a, 44af0ce3-e16a-5f05-99ae-1087c2c82f47, b2bd0ed3-aaa1-504e-9633-17f84201b624, 57537252-0dc6-507a-be9f-8553f567785e, ae171e50-f552-5f8f-b618-77a667f3b5f1, 6ca09c6b-9546-587c-a632-1aa3085bffb1, f0ef9592-da31-59de-86a4-d2d3d7025a8b, 036701ad-a62f-5c91-bb68-9abc00802efb, fbd8d2c6-343d-55f4-839d-427ec712b389, dab7b908-4370-548d-9c99-1de64a7ef129, 8c4bd771-13df-57ee-92bf-9f8d101edaa0, fc403749-50ef-58ea-8146-dd49918f9564, 02889be3-b333-5362-860a-4ef9b3dedc05, 9fea3d6f-9c43-5380-a2bc-ba06bf23b70e, 3d5bd844-eae5-5b03-a0d2-8fb554f2f4cf, e883c5e9-5634-5a46-a013-15d5a684c5cd",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/chemie/de-he-gk-lk.view.json: 5774702d-6083-5165-975c-4ad89e3d6045, 7bfe515c-e59f-521c-9781-b75e33caf0ec, eed5eda3-2daf-5d48-b935-23dadd622d9b, 69928892-ac71-553d-a35c-4f96f16b6d6e, c5394fb8-9411-5533-b2af-831c4c67b4be, 4238e88b-7d6c-5eef-b94f-d6d87659649e, 11837e4e-71bc-5374-892e-6c8cd4f0c29b, f48bd326-3fd6-5e60-9721-50f79a403852, d2530d82-30cb-59d3-af4e-64aee17f7db6, d2d706b8-3ebf-55ed-8793-1cef6997cbc2, 0a8e4de3-40ec-5537-b427-4904719fcb92, 8cab60cd-619a-5c20-8550-21a7a750aa1a, 61c1d898-07b3-53a0-b8a0-a7c49006eff9, d5542006-f219-5af4-a963-ec507cadbaab, 2c00a9c4-b290-5e7a-8997-445dee0e2821, 8b7ac0a3-f893-5a7f-bad0-0b299c7fba6a, 6303e470-a790-542b-ac6a-17142e14ba16, d7abdeb3-5b69-5744-b7fd-8149fd92b0d5, b0ebce3a-eeed-5bf6-ae5e-e0cba5628e43, 71ebedcf-e1ef-52cc-957c-0a81bf479a78, ed0eadfa-cad8-5989-9ad9-e5173f3cbe16, 119f0da6-4f21-5e90-9697-34776e48691c, dd63beba-613b-5f9e-80f6-9b2552c2cc2a, 954e0574-c05b-5029-90e9-25f412c8c79a, 0e883c00-0980-5ca0-a958-19c843596ddf, 28bf3678-d807-5ddc-a792-b550e955ed45, 1dfe54e5-2b08-525e-9421-5b584faa3717, d28b9b5f-848e-516a-84df-0ca76a3daf27, 000af080-6908-5c7b-b792-a91796968022, a0aff485-59bc-537f-aab7-d50e78e2506a, c8d83dac-839d-561f-a85d-a3e1dfbc506b, 540a050a-0a38-5d8d-9f6b-997509a1f8e0, 8c6b7c40-cba2-5d1d-8774-72ae747f462c, 7e1f6eaa-b4e6-5ec4-829b-94344e78bcd9, 20ea3cd6-57b8-5809-b335-05d400975596, 522fa82a-1703-581c-a704-617a00cf6ea6, 13e856ab-f7be-53df-a32a-6d6e8242e26c, 42a2eaf1-fbb2-5879-b205-7f74dfb1eafa, eaf7cf9a-7ede-53bf-a268-a1dc4b3dd086, 85ba42e5-7625-50b1-aaf4-bd8e233a1de6, 9a6120ff-c645-513d-aa5c-8fab85df4cc0, 69f73aac-9c13-57ab-82b6-a029b7e2a40a, 44af0ce3-e16a-5f05-99ae-1087c2c82f47, b2bd0ed3-aaa1-504e-9633-17f84201b624, 57537252-0dc6-507a-be9f-8553f567785e, ae171e50-f552-5f8f-b618-77a667f3b5f1, 6ca09c6b-9546-587c-a632-1aa3085bffb1, 60d99973-5e2e-506d-8dd9-ef710daad2ab, f0ef9592-da31-59de-86a4-d2d3d7025a8b, 04b62be5-7af8-5b7b-af12-c3059ba22727, 036701ad-a62f-5c91-bb68-9abc00802efb, dab7b908-4370-548d-9c99-1de64a7ef129, 8c4bd771-13df-57ee-92bf-9f8d101edaa0, 990b6704-879b-522c-a82c-99ce55944cf1, f08ce862-1448-54cc-928a-ec54040bd63f, 8a281a5b-fa13-5873-a15a-a4a0c8d6cfa1, 95cff878-b85e-53d8-84bc-132c8bf4cf71, 987cebe4-9157-51f2-9939-f12bbb512c6e, fc403749-50ef-58ea-8146-dd49918f9564, 994068b1-d8f2-5c18-ae36-808f3fa4f52f, 37d2e2a5-736f-541d-a66f-0d467e8e9bc1, 02889be3-b333-5362-860a-4ef9b3dedc05, 9fea3d6f-9c43-5380-a2bc-ba06bf23b70e, 3d5bd844-eae5-5b03-a0d2-8fb554f2f4cf, 4cbc2b02-d8c9-510e-9f64-2bb98b7673ef, 1b1a7493-1708-509b-962a-ff8195e2c3b4, e883c5e9-5634-5a46-a013-15d5a684c5cd",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/chemie/de-he-gk.view.json: 5774702d-6083-5165-975c-4ad89e3d6045, 7bfe515c-e59f-521c-9781-b75e33caf0ec, eed5eda3-2daf-5d48-b935-23dadd622d9b, 69928892-ac71-553d-a35c-4f96f16b6d6e, c5394fb8-9411-5533-b2af-831c4c67b4be, 4238e88b-7d6c-5eef-b94f-d6d87659649e, 11837e4e-71bc-5374-892e-6c8cd4f0c29b, 0a8e4de3-40ec-5537-b427-4904719fcb92, 8cab60cd-619a-5c20-8550-21a7a750aa1a, 61c1d898-07b3-53a0-b8a0-a7c49006eff9, d5542006-f219-5af4-a963-ec507cadbaab, 2c00a9c4-b290-5e7a-8997-445dee0e2821, ed0eadfa-cad8-5989-9ad9-e5173f3cbe16, 119f0da6-4f21-5e90-9697-34776e48691c, dd63beba-613b-5f9e-80f6-9b2552c2cc2a, 954e0574-c05b-5029-90e9-25f412c8c79a, 0e883c00-0980-5ca0-a958-19c843596ddf, 28bf3678-d807-5ddc-a792-b550e955ed45, d28b9b5f-848e-516a-84df-0ca76a3daf27, 522fa82a-1703-581c-a704-617a00cf6ea6, 42a2eaf1-fbb2-5879-b205-7f74dfb1eafa, 69f73aac-9c13-57ab-82b6-a029b7e2a40a, 04b62be5-7af8-5b7b-af12-c3059ba22727, 8c4bd771-13df-57ee-92bf-9f8d101edaa0, 990b6704-879b-522c-a82c-99ce55944cf1, f08ce862-1448-54cc-928a-ec54040bd63f, 8a281a5b-fa13-5873-a15a-a4a0c8d6cfa1, 95cff878-b85e-53d8-84bc-132c8bf4cf71, 987cebe4-9157-51f2-9939-f12bbb512c6e, fc403749-50ef-58ea-8146-dd49918f9564, 994068b1-d8f2-5c18-ae36-808f3fa4f52f, 37d2e2a5-736f-541d-a66f-0d467e8e9bc1, 02889be3-b333-5362-860a-4ef9b3dedc05, 9fea3d6f-9c43-5380-a2bc-ba06bf23b70e, 3d5bd844-eae5-5b03-a0d2-8fb554f2f4cf, 1b1a7493-1708-509b-962a-ff8195e2c3b4, e883c5e9-5634-5a46-a013-15d5a684c5cd",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/chemie/de-he-lk.view.json: 532c57fe-18bf-53a7-bba1-1f0672a57a89, 967fcb02-09cf-51b4-9840-37b0fc8345a6, 5b5ece8f-1559-547b-a1d1-3b5511446c70, 1f7dd7c3-29f0-50aa-a404-6884896409c4, ff44ba9f-b506-5c3d-bc5e-88878765f333, b82c892b-36e2-5d8c-a96a-6ba5e77cd755, 4216a708-d9c4-5582-ad7c-65d81643f0d3, 5774702d-6083-5165-975c-4ad89e3d6045, 3f7e5700-083d-5b84-9445-aafb7c9ff8f3, 479e4194-b5a8-56a1-b95a-829a3057cf25, 7bfe515c-e59f-521c-9781-b75e33caf0ec, eed5eda3-2daf-5d48-b935-23dadd622d9b, 69928892-ac71-553d-a35c-4f96f16b6d6e, c5394fb8-9411-5533-b2af-831c4c67b4be, 4238e88b-7d6c-5eef-b94f-d6d87659649e, 11837e4e-71bc-5374-892e-6c8cd4f0c29b, f48bd326-3fd6-5e60-9721-50f79a403852, d2530d82-30cb-59d3-af4e-64aee17f7db6, d2d706b8-3ebf-55ed-8793-1cef6997cbc2, 0a8e4de3-40ec-5537-b427-4904719fcb92, 8cab60cd-619a-5c20-8550-21a7a750aa1a, d5542006-f219-5af4-a963-ec507cadbaab, 2c00a9c4-b290-5e7a-8997-445dee0e2821, 8b7ac0a3-f893-5a7f-bad0-0b299c7fba6a, 6303e470-a790-542b-ac6a-17142e14ba16, d7abdeb3-5b69-5744-b7fd-8149fd92b0d5, b0ebce3a-eeed-5bf6-ae5e-e0cba5628e43, 71ebedcf-e1ef-52cc-957c-0a81bf479a78, ed0eadfa-cad8-5989-9ad9-e5173f3cbe16, 119f0da6-4f21-5e90-9697-34776e48691c, dd63beba-613b-5f9e-80f6-9b2552c2cc2a, 954e0574-c05b-5029-90e9-25f412c8c79a, 0e883c00-0980-5ca0-a958-19c843596ddf, 28bf3678-d807-5ddc-a792-b550e955ed45, 1dfe54e5-2b08-525e-9421-5b584faa3717, d28b9b5f-848e-516a-84df-0ca76a3daf27, 000af080-6908-5c7b-b792-a91796968022, a0aff485-59bc-537f-aab7-d50e78e2506a, c8d83dac-839d-561f-a85d-a3e1dfbc506b, 540a050a-0a38-5d8d-9f6b-997509a1f8e0, 8c6b7c40-cba2-5d1d-8774-72ae747f462c, 7e1f6eaa-b4e6-5ec4-829b-94344e78bcd9, 20ea3cd6-57b8-5809-b335-05d400975596, 522fa82a-1703-581c-a704-617a00cf6ea6, 13e856ab-f7be-53df-a32a-6d6e8242e26c, 42a2eaf1-fbb2-5879-b205-7f74dfb1eafa, eaf7cf9a-7ede-53bf-a268-a1dc4b3dd086, 85ba42e5-7625-50b1-aaf4-bd8e233a1de6, 9a6120ff-c645-513d-aa5c-8fab85df4cc0, 69f73aac-9c13-57ab-82b6-a029b7e2a40a, 44af0ce3-e16a-5f05-99ae-1087c2c82f47, b2bd0ed3-aaa1-504e-9633-17f84201b624, 57537252-0dc6-507a-be9f-8553f567785e, ae171e50-f552-5f8f-b618-77a667f3b5f1, 6ca09c6b-9546-587c-a632-1aa3085bffb1, 60d99973-5e2e-506d-8dd9-ef710daad2ab, f0ef9592-da31-59de-86a4-d2d3d7025a8b, 04b62be5-7af8-5b7b-af12-c3059ba22727, 036701ad-a62f-5c91-bb68-9abc00802efb, dab7b908-4370-548d-9c99-1de64a7ef129, 8c4bd771-13df-57ee-92bf-9f8d101edaa0, 990b6704-879b-522c-a82c-99ce55944cf1, f08ce862-1448-54cc-928a-ec54040bd63f, 8a281a5b-fa13-5873-a15a-a4a0c8d6cfa1, 95cff878-b85e-53d8-84bc-132c8bf4cf71, 987cebe4-9157-51f2-9939-f12bbb512c6e, fc403749-50ef-58ea-8146-dd49918f9564, 994068b1-d8f2-5c18-ae36-808f3fa4f52f, 37d2e2a5-736f-541d-a66f-0d467e8e9bc1, 02889be3-b333-5362-860a-4ef9b3dedc05, 9fea3d6f-9c43-5380-a2bc-ba06bf23b70e, 3d5bd844-eae5-5b03-a0d2-8fb554f2f4cf, 4cbc2b02-d8c9-510e-9f64-2bb98b7673ef, 1b1a7493-1708-509b-962a-ff8195e2c3b4, e883c5e9-5634-5a46-a013-15d5a684c5cd",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-gk-lk.view.json: 5774702d-6083-5165-975c-4ad89e3d6045, 7bfe515c-e59f-521c-9781-b75e33caf0ec, eed5eda3-2daf-5d48-b935-23dadd622d9b, 69928892-ac71-553d-a35c-4f96f16b6d6e, c5394fb8-9411-5533-b2af-831c4c67b4be, 4238e88b-7d6c-5eef-b94f-d6d87659649e, 11837e4e-71bc-5374-892e-6c8cd4f0c29b, f48bd326-3fd6-5e60-9721-50f79a403852, d2530d82-30cb-59d3-af4e-64aee17f7db6, d2d706b8-3ebf-55ed-8793-1cef6997cbc2, 0a8e4de3-40ec-5537-b427-4904719fcb92, 8cab60cd-619a-5c20-8550-21a7a750aa1a, 61c1d898-07b3-53a0-b8a0-a7c49006eff9, d5542006-f219-5af4-a963-ec507cadbaab, 2c00a9c4-b290-5e7a-8997-445dee0e2821, 8b7ac0a3-f893-5a7f-bad0-0b299c7fba6a, 6303e470-a790-542b-ac6a-17142e14ba16, d7abdeb3-5b69-5744-b7fd-8149fd92b0d5, b0ebce3a-eeed-5bf6-ae5e-e0cba5628e43, 71ebedcf-e1ef-52cc-957c-0a81bf479a78, ed0eadfa-cad8-5989-9ad9-e5173f3cbe16, 119f0da6-4f21-5e90-9697-34776e48691c, dd63beba-613b-5f9e-80f6-9b2552c2cc2a, 954e0574-c05b-5029-90e9-25f412c8c79a, 35709a35-ed66-5b6c-88cd-e01e8e8eed89, 0e883c00-0980-5ca0-a958-19c843596ddf, 28bf3678-d807-5ddc-a792-b550e955ed45, 1dfe54e5-2b08-525e-9421-5b584faa3717, d28b9b5f-848e-516a-84df-0ca76a3daf27, 000af080-6908-5c7b-b792-a91796968022, a0aff485-59bc-537f-aab7-d50e78e2506a, c8d83dac-839d-561f-a85d-a3e1dfbc506b, 540a050a-0a38-5d8d-9f6b-997509a1f8e0, 8c6b7c40-cba2-5d1d-8774-72ae747f462c, 7e1f6eaa-b4e6-5ec4-829b-94344e78bcd9, 20ea3cd6-57b8-5809-b335-05d400975596, 522fa82a-1703-581c-a704-617a00cf6ea6, 13e856ab-f7be-53df-a32a-6d6e8242e26c, 42a2eaf1-fbb2-5879-b205-7f74dfb1eafa, eaf7cf9a-7ede-53bf-a268-a1dc4b3dd086, 85ba42e5-7625-50b1-aaf4-bd8e233a1de6, 9a6120ff-c645-513d-aa5c-8fab85df4cc0, 69f73aac-9c13-57ab-82b6-a029b7e2a40a, 44af0ce3-e16a-5f05-99ae-1087c2c82f47, b2bd0ed3-aaa1-504e-9633-17f84201b624, 57537252-0dc6-507a-be9f-8553f567785e, ae171e50-f552-5f8f-b618-77a667f3b5f1, 6ca09c6b-9546-587c-a632-1aa3085bffb1, 60d99973-5e2e-506d-8dd9-ef710daad2ab, f0ef9592-da31-59de-86a4-d2d3d7025a8b, 04b62be5-7af8-5b7b-af12-c3059ba22727, 036701ad-a62f-5c91-bb68-9abc00802efb, dab7b908-4370-548d-9c99-1de64a7ef129, 8c4bd771-13df-57ee-92bf-9f8d101edaa0, 990b6704-879b-522c-a82c-99ce55944cf1, f08ce862-1448-54cc-928a-ec54040bd63f, 8a281a5b-fa13-5873-a15a-a4a0c8d6cfa1, 95cff878-b85e-53d8-84bc-132c8bf4cf71, 987cebe4-9157-51f2-9939-f12bbb512c6e, fc403749-50ef-58ea-8146-dd49918f9564, 994068b1-d8f2-5c18-ae36-808f3fa4f52f, 37d2e2a5-736f-541d-a66f-0d467e8e9bc1, 02889be3-b333-5362-860a-4ef9b3dedc05, 9fea3d6f-9c43-5380-a2bc-ba06bf23b70e, 3d5bd844-eae5-5b03-a0d2-8fb554f2f4cf, 4cbc2b02-d8c9-510e-9f64-2bb98b7673ef, 1b1a7493-1708-509b-962a-ff8195e2c3b4, e883c5e9-5634-5a46-a013-15d5a684c5cd",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-gk.view.json: 5774702d-6083-5165-975c-4ad89e3d6045, 7bfe515c-e59f-521c-9781-b75e33caf0ec, eed5eda3-2daf-5d48-b935-23dadd622d9b, 69928892-ac71-553d-a35c-4f96f16b6d6e, c5394fb8-9411-5533-b2af-831c4c67b4be, 4238e88b-7d6c-5eef-b94f-d6d87659649e, 11837e4e-71bc-5374-892e-6c8cd4f0c29b, 0a8e4de3-40ec-5537-b427-4904719fcb92, 8cab60cd-619a-5c20-8550-21a7a750aa1a, 61c1d898-07b3-53a0-b8a0-a7c49006eff9, d5542006-f219-5af4-a963-ec507cadbaab, 2c00a9c4-b290-5e7a-8997-445dee0e2821, ed0eadfa-cad8-5989-9ad9-e5173f3cbe16, 119f0da6-4f21-5e90-9697-34776e48691c, dd63beba-613b-5f9e-80f6-9b2552c2cc2a, 954e0574-c05b-5029-90e9-25f412c8c79a, 35709a35-ed66-5b6c-88cd-e01e8e8eed89, 0e883c00-0980-5ca0-a958-19c843596ddf, 28bf3678-d807-5ddc-a792-b550e955ed45, d28b9b5f-848e-516a-84df-0ca76a3daf27, 522fa82a-1703-581c-a704-617a00cf6ea6, 42a2eaf1-fbb2-5879-b205-7f74dfb1eafa, 69f73aac-9c13-57ab-82b6-a029b7e2a40a, 04b62be5-7af8-5b7b-af12-c3059ba22727, 8c4bd771-13df-57ee-92bf-9f8d101edaa0, 990b6704-879b-522c-a82c-99ce55944cf1, f08ce862-1448-54cc-928a-ec54040bd63f, 8a281a5b-fa13-5873-a15a-a4a0c8d6cfa1, 95cff878-b85e-53d8-84bc-132c8bf4cf71, 987cebe4-9157-51f2-9939-f12bbb512c6e, fc403749-50ef-58ea-8146-dd49918f9564, 994068b1-d8f2-5c18-ae36-808f3fa4f52f, 37d2e2a5-736f-541d-a66f-0d467e8e9bc1, 02889be3-b333-5362-860a-4ef9b3dedc05, 9fea3d6f-9c43-5380-a2bc-ba06bf23b70e, 3d5bd844-eae5-5b03-a0d2-8fb554f2f4cf, 1b1a7493-1708-509b-962a-ff8195e2c3b4, e883c5e9-5634-5a46-a013-15d5a684c5cd"
+      ]
+    },
+    {
+      "profileId": "canonical-chemistry-sek2",
+      "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+      "compiledJurisdiction": true,
+      "id": "CQR-104",
+      "status": "fail",
+      "summary": "Route endpoints or projection-local routes are missing, unexpected, or not applicability-bound in at least one learner-facing projection scope.",
+      "metrics": {
+        "relevantCompositionViews": 41,
+        "evaluatedProjectionScopes": 101,
+        "requiredMotivationAnchors": 1,
+        "minimumRequiredTerminalAutonomyGoals": 7,
+        "requiredTerminalAutonomyGoals": 73,
+        "projectionScopesMissingMotivationAnchors": 0,
+        "projectionScopesMissingTerminalAutonomyGoals": 101,
+        "projectionScopesWithUnexpectedTerminalAutonomyGoals": 0,
+        "projectionScopesWithoutExpectedTerminalAutonomyGoals": 0,
+        "terminalGoalsMissingCompiledApplicability": 2,
+        "projectionScopesWithInvalidStageStructure": 0,
+        "nationalProjectionScopesUsingJurisdictionStageAuthority": 0,
+        "nationalProjectionScopesMissingJurisdictionStageAuthority": 0,
+        "nationalProjectionScopesWithAmbiguousJurisdictionStageAuthority": 0,
+        "nationalTargetAtomicGoalOccurrencesExcludedByJurisdictionStageAuthority": 0,
+        "nationalSelectedGoalOccurrencesExcludedByJurisdictionStageAuthority": 0,
+        "nationalPrerequisiteOnlyGoalOccurrencesImportedByJurisdictionStageAuthority": 0,
+        "projectionScopesWithIncompleteExplicitTerminalPrerequisites": 0,
+        "explicitTerminalPrerequisiteOccurrencesMissingFromProjection": 0,
+        "projectionScopesWithIncompleteWholeMaterialCoverageBindings": 0,
+        "wholeMaterialCoveredGoalOccurrencesWithoutVisiblePrerequisitePath": 0,
+        "projectionScopesWithIncompleteWholeMaterialPrerequisiteClosure": 0,
+        "wholeMaterialPrerequisiteOccurrencesMissingFromProjection": 0,
+        "uniqueExplicitTerminalPrerequisitesMissingFromProjection": 0,
+        "projectionLocalRouteChecksEnabled": 0,
+        "visibleSelectedAtomicGoalOccurrences": 15340,
+        "visibleProfileSelectedAtomicGoalOccurrences": 15340,
+        "visibleProjectedRouteTargetGoalOccurrences": 15340,
+        "visibleProjectedRouteTargetGoalOccurrencesExcludedByProfileSelector": 0,
+        "uniqueProjectedRouteTargetsExcludedByProfileSelector": 0,
+        "visibleProjectedRouteTargetGoalOccurrencesExcludedFromRouteChecks": 0,
+        "projectionScopesMissingEffectiveMotivationRoutes": 0,
+        "projectionScopesMissingDirectMotivationRoutes": 0,
+        "projectionScopesMissingEffectiveTerminalRoutes": 0,
+        "projectionScopesMissingDirectTerminalRoutes": 0,
+        "visibleSelectedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+        "visibleSelectedGoalOccurrencesMissingDirectMotivationRoute": 0,
+        "visibleSelectedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+        "visibleSelectedGoalOccurrencesMissingDirectTerminalRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingDirectMotivationRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingDirectTerminalRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingEffectiveMotivationRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingDirectMotivationRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingEffectiveTerminalRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingDirectTerminalRoute": 0
+      },
+      "details": [
+        "Missing compiled applicability: eed5eda3-2daf-5d48-b935-23dadd622d9b",
+        "Missing compiled applicability: d7abdeb3-5b69-5744-b7fd-8149fd92b0d5",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/chemie/de-bb-gk.view.json [DE-BB]: 27045f71-10ed-57d3-ac99-cfbe5d6b515a, d28b9b5f-848e-516a-84df-0ca76a3daf27",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/chemie/de-bb-lk.view.json [DE-BB]: 27045f71-10ed-57d3-ac99-cfbe5d6b515a, d2530d82-30cb-59d3-af4e-64aee17f7db6",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/chemie/de-be-gk.view.json [DE-BE]: 27045f71-10ed-57d3-ac99-cfbe5d6b515a, d28b9b5f-848e-516a-84df-0ca76a3daf27",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/chemie/de-be-lk.view.json [DE-BE]: 27045f71-10ed-57d3-ac99-cfbe5d6b515a, d2530d82-30cb-59d3-af4e-64aee17f7db6",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/chemie/de-bw-gk.view.json [DE-BW]: 27045f71-10ed-57d3-ac99-cfbe5d6b515a, 4cbcfc86-ae8c-5152-87cf-9dabd1a5f954, d28b9b5f-848e-516a-84df-0ca76a3daf27",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/chemie/de-bw-lk.view.json [DE-BW]: 27045f71-10ed-57d3-ac99-cfbe5d6b515a",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/chemie/de-by-lk.current-pilot.view.json [DE-BY]: 23fc54ce-3519-5292-af90-71bc869f4ff1, 9746ff9a-c423-5504-9d4d-0fced93fa382, 00139854-e5a7-5c12-ab50-2268c80bf776, c91350bc-7d2e-523c-bd50-0324bccfcf98, bf6c39f0-1e44-53b2-8ff6-025f2e36e125, ac75b416-70d5-50f8-a913-475943d21a55, e195b2b3-339c-563c-8b01-ce6d313c41af, 532c57fe-18bf-53a7-bba1-1f0672a57a89, e6cb2efa-0fd5-518d-9df2-c75aa71fa4c6, 8872d828-a025-5e45-af74-3d84caedfb73, 954b55d6-8a2b-533d-8aff-dadaf6306916, 967fcb02-09cf-51b4-9840-37b0fc8345a6, 35b76ced-abb8-558b-8e05-29aa3c587e75, bacf2568-03bc-5655-8798-cda078c897e3, c31fa777-89c0-52f5-a6d9-d054027aabf5, ab315f52-a9e3-5c1c-a404-7fb1a96a3eaf, 5b5ece8f-1559-547b-a1d1-3b5511446c70, 1f7dd7c3-29f0-50aa-a404-6884896409c4, ff44ba9f-b506-5c3d-bc5e-88878765f333, b82c892b-36e2-5d8c-a96a-6ba5e77cd755, 4216a708-d9c4-5582-ad7c-65d81643f0d3, 3f7e5700-083d-5b84-9445-aafb7c9ff8f3, 31a630bc-ee86-5316-8ce5-e522b14fd607, 4a2477e3-3bae-5452-8058-58e6ed9cc3e3, b406eff8-3cd9-551b-a913-c6dda7223645, 479e4194-b5a8-56a1-b95a-829a3057cf25, 7bfe515c-e59f-521c-9781-b75e33caf0ec, 8b7ac0a3-f893-5a7f-bad0-0b299c7fba6a, 6303e470-a790-542b-ac6a-17142e14ba16, b0ebce3a-eeed-5bf6-ae5e-e0cba5628e43, 35709a35-ed66-5b6c-88cd-e01e8e8eed89, eaf7cf9a-7ede-53bf-a268-a1dc4b3dd086, f0ef9592-da31-59de-86a4-d2d3d7025a8b, fbd8d2c6-343d-55f4-839d-427ec712b389, fc403749-50ef-58ea-8146-dd49918f9564, 994068b1-d8f2-5c18-ae36-808f3fa4f52f",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-gk.view.json [DE-BW]: 119f0da6-4f21-5e90-9697-34776e48691c, 954e0574-c05b-5029-90e9-25f412c8c79a, 0e883c00-0980-5ca0-a958-19c843596ddf, 28bf3678-d807-5ddc-a792-b550e955ed45, d28b9b5f-848e-516a-84df-0ca76a3daf27, 522fa82a-1703-581c-a704-617a00cf6ea6",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-gk.view.json [DE-HE]: 2c00a9c4-b290-5e7a-8997-445dee0e2821, ed0eadfa-cad8-5989-9ad9-e5173f3cbe16, 119f0da6-4f21-5e90-9697-34776e48691c, dd63beba-613b-5f9e-80f6-9b2552c2cc2a, 954e0574-c05b-5029-90e9-25f412c8c79a",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-gk.view.json [DE-BY]: 7bfe515c-e59f-521c-9781-b75e33caf0ec, 2c00a9c4-b290-5e7a-8997-445dee0e2821, ed0eadfa-cad8-5989-9ad9-e5173f3cbe16, 119f0da6-4f21-5e90-9697-34776e48691c, dd63beba-613b-5f9e-80f6-9b2552c2cc2a, 954e0574-c05b-5029-90e9-25f412c8c79a, 0e883c00-0980-5ca0-a958-19c843596ddf, 28bf3678-d807-5ddc-a792-b550e955ed45, d28b9b5f-848e-516a-84df-0ca76a3daf27, 522fa82a-1703-581c-a704-617a00cf6ea6, 69f73aac-9c13-57ab-82b6-a029b7e2a40a",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-gk.view.json [DE-BB]: 2c00a9c4-b290-5e7a-8997-445dee0e2821, ed0eadfa-cad8-5989-9ad9-e5173f3cbe16, 954e0574-c05b-5029-90e9-25f412c8c79a, 0e883c00-0980-5ca0-a958-19c843596ddf, d28b9b5f-848e-516a-84df-0ca76a3daf27, 522fa82a-1703-581c-a704-617a00cf6ea6, 69f73aac-9c13-57ab-82b6-a029b7e2a40a",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-gk.view.json [DE-BE]: 2c00a9c4-b290-5e7a-8997-445dee0e2821, ed0eadfa-cad8-5989-9ad9-e5173f3cbe16, 954e0574-c05b-5029-90e9-25f412c8c79a, 0e883c00-0980-5ca0-a958-19c843596ddf, d28b9b5f-848e-516a-84df-0ca76a3daf27, 522fa82a-1703-581c-a704-617a00cf6ea6, 69f73aac-9c13-57ab-82b6-a029b7e2a40a",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-gk.view.json [DE-NI]: 0a8e4de3-40ec-5537-b427-4904719fcb92, 119f0da6-4f21-5e90-9697-34776e48691c, dd63beba-613b-5f9e-80f6-9b2552c2cc2a, 954e0574-c05b-5029-90e9-25f412c8c79a",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-gk.view.json [DE-NW]: ed0eadfa-cad8-5989-9ad9-e5173f3cbe16, 954e0574-c05b-5029-90e9-25f412c8c79a, 0e883c00-0980-5ca0-a958-19c843596ddf, d28b9b5f-848e-516a-84df-0ca76a3daf27",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-gk.view.json [DE-SH]: 69928892-ac71-553d-a35c-4f96f16b6d6e, ed0eadfa-cad8-5989-9ad9-e5173f3cbe16, 954e0574-c05b-5029-90e9-25f412c8c79a, 0e883c00-0980-5ca0-a958-19c843596ddf, 28bf3678-d807-5ddc-a792-b550e955ed45, d28b9b5f-848e-516a-84df-0ca76a3daf27, 522fa82a-1703-581c-a704-617a00cf6ea6, 69f73aac-9c13-57ab-82b6-a029b7e2a40a, 1b1a7493-1708-509b-962a-ff8195e2c3b4",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-gk.view.json [DE-HB]: 7bfe515c-e59f-521c-9781-b75e33caf0ec, 69928892-ac71-553d-a35c-4f96f16b6d6e, c5394fb8-9411-5533-b2af-831c4c67b4be, 4238e88b-7d6c-5eef-b94f-d6d87659649e, 11837e4e-71bc-5374-892e-6c8cd4f0c29b, 8cab60cd-619a-5c20-8550-21a7a750aa1a, ed0eadfa-cad8-5989-9ad9-e5173f3cbe16, 119f0da6-4f21-5e90-9697-34776e48691c, dd63beba-613b-5f9e-80f6-9b2552c2cc2a, 954e0574-c05b-5029-90e9-25f412c8c79a, 0e883c00-0980-5ca0-a958-19c843596ddf, 28bf3678-d807-5ddc-a792-b550e955ed45, d28b9b5f-848e-516a-84df-0ca76a3daf27, 522fa82a-1703-581c-a704-617a00cf6ea6, 42a2eaf1-fbb2-5879-b205-7f74dfb1eafa, 04b62be5-7af8-5b7b-af12-c3059ba22727, f08ce862-1448-54cc-928a-ec54040bd63f, 8a281a5b-fa13-5873-a15a-a4a0c8d6cfa1, 95cff878-b85e-53d8-84bc-132c8bf4cf71, 987cebe4-9157-51f2-9939-f12bbb512c6e, 37d2e2a5-736f-541d-a66f-0d467e8e9bc1, 1b1a7493-1708-509b-962a-ff8195e2c3b4",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-gk.view.json [DE-HH]: c5394fb8-9411-5533-b2af-831c4c67b4be, ed0eadfa-cad8-5989-9ad9-e5173f3cbe16, 954e0574-c05b-5029-90e9-25f412c8c79a, 69f73aac-9c13-57ab-82b6-a029b7e2a40a",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-gk.view.json [DE-MV]: c5394fb8-9411-5533-b2af-831c4c67b4be, 4238e88b-7d6c-5eef-b94f-d6d87659649e, ed0eadfa-cad8-5989-9ad9-e5173f3cbe16, 69f73aac-9c13-57ab-82b6-a029b7e2a40a"
+      ]
+    },
+    {
+      "profileId": "canonical-biology-sek2",
+      "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+      "compiledJurisdiction": false,
+      "id": "CQR-104",
+      "status": "fail",
+      "summary": "Route endpoints or projection-local routes are missing, unexpected, or not applicability-bound in at least one learner-facing projection scope.",
+      "metrics": {
+        "relevantCompositionViews": 3,
+        "evaluatedProjectionScopes": 3,
+        "requiredMotivationAnchors": 1,
+        "minimumRequiredTerminalAutonomyGoals": 17,
+        "requiredTerminalAutonomyGoals": 18,
+        "projectionScopesMissingMotivationAnchors": 0,
+        "projectionScopesMissingTerminalAutonomyGoals": 2,
+        "projectionScopesWithUnexpectedTerminalAutonomyGoals": 0,
+        "projectionScopesWithoutExpectedTerminalAutonomyGoals": 0,
+        "terminalGoalsMissingCompiledApplicability": 0,
+        "projectionScopesWithInvalidStageStructure": 0,
+        "nationalProjectionScopesUsingJurisdictionStageAuthority": 0,
+        "nationalProjectionScopesMissingJurisdictionStageAuthority": 0,
+        "nationalProjectionScopesWithAmbiguousJurisdictionStageAuthority": 0,
+        "nationalTargetAtomicGoalOccurrencesExcludedByJurisdictionStageAuthority": 0,
+        "nationalSelectedGoalOccurrencesExcludedByJurisdictionStageAuthority": 0,
+        "nationalPrerequisiteOnlyGoalOccurrencesImportedByJurisdictionStageAuthority": 0,
+        "projectionScopesWithIncompleteExplicitTerminalPrerequisites": 0,
+        "explicitTerminalPrerequisiteOccurrencesMissingFromProjection": 0,
+        "projectionScopesWithIncompleteWholeMaterialCoverageBindings": 0,
+        "wholeMaterialCoveredGoalOccurrencesWithoutVisiblePrerequisitePath": 0,
+        "projectionScopesWithIncompleteWholeMaterialPrerequisiteClosure": 0,
+        "wholeMaterialPrerequisiteOccurrencesMissingFromProjection": 0,
+        "uniqueExplicitTerminalPrerequisitesMissingFromProjection": 0,
+        "projectionLocalRouteChecksEnabled": 0,
+        "visibleSelectedAtomicGoalOccurrences": 142,
+        "visibleProfileSelectedAtomicGoalOccurrences": 142,
+        "visibleProjectedRouteTargetGoalOccurrences": 142,
+        "visibleProjectedRouteTargetGoalOccurrencesExcludedByProfileSelector": 0,
+        "uniqueProjectedRouteTargetsExcludedByProfileSelector": 0,
+        "visibleProjectedRouteTargetGoalOccurrencesExcludedFromRouteChecks": 0,
+        "projectionScopesMissingEffectiveMotivationRoutes": 0,
+        "projectionScopesMissingDirectMotivationRoutes": 0,
+        "projectionScopesMissingEffectiveTerminalRoutes": 0,
+        "projectionScopesMissingDirectTerminalRoutes": 0,
+        "visibleSelectedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+        "visibleSelectedGoalOccurrencesMissingDirectMotivationRoute": 0,
+        "visibleSelectedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+        "visibleSelectedGoalOccurrencesMissingDirectTerminalRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingDirectMotivationRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingDirectTerminalRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingEffectiveMotivationRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingDirectMotivationRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingEffectiveTerminalRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingDirectTerminalRoute": 0
+      },
+      "details": [
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/biologie/de-st-gym-sekii-biology-gk.view.json: 1b566274-a107-5ade-aee7-602e7413f562, a3b69e34-57f2-577c-b320-1b547b9df9d2, bbbc9609-ee7e-5849-956e-047b7a753ce9, 21bca0dc-27b0-5fe7-8c33-0e1859174f90, f0564118-a46e-52a1-9f0a-2d7906f35691, f9637b40-93c1-5603-86e5-3d85b52d01fd, 1d0c84df-8040-5cab-8a7c-359366937e44, 3ac1cbb1-a366-5ae5-85c0-76b08270869d, 55045aec-e044-52db-8866-2a8b889079f7, b3d65cb1-0310-555f-8d78-a7ccae9e8726, 7c7f147c-2b64-5b0c-90c1-ea9a9bf4b03a, 3368ad5a-1f5e-534c-aa25-b3b5d1fdceac, ea940ef2-de7c-5ffd-b43e-70e5c1f3c39a, 59253f67-b458-5441-a17a-b1d57cb299dd, 52eda3e1-4d0c-5c41-b177-a749e068e5a7, 540f13dd-9876-552f-ac12-22d4a62cdd60, 1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/biologie/de-st-gym-sekii-biology-lk.view.json: 1b566274-a107-5ade-aee7-602e7413f562, a3b69e34-57f2-577c-b320-1b547b9df9d2, bbbc9609-ee7e-5849-956e-047b7a753ce9, 21bca0dc-27b0-5fe7-8c33-0e1859174f90, f0564118-a46e-52a1-9f0a-2d7906f35691, f9637b40-93c1-5603-86e5-3d85b52d01fd, 1d0c84df-8040-5cab-8a7c-359366937e44, 3ac1cbb1-a366-5ae5-85c0-76b08270869d, 55045aec-e044-52db-8866-2a8b889079f7, b3d65cb1-0310-555f-8d78-a7ccae9e8726, 7c7f147c-2b64-5b0c-90c1-ea9a9bf4b03a, e8caebd4-57bc-5c2f-881d-0b1693777c64, 3368ad5a-1f5e-534c-aa25-b3b5d1fdceac, ea940ef2-de7c-5ffd-b43e-70e5c1f3c39a, 59253f67-b458-5441-a17a-b1d57cb299dd, 52eda3e1-4d0c-5c41-b177-a749e068e5a7, 540f13dd-9876-552f-ac12-22d4a62cdd60, 1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a"
+      ]
+    },
+    {
+      "profileId": "canonical-biology-sek2",
+      "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+      "compiledJurisdiction": true,
+      "id": "CQR-104",
+      "status": "fail",
+      "summary": "Route endpoints or projection-local routes are missing, unexpected, or not applicability-bound in at least one learner-facing projection scope.",
+      "metrics": {
+        "relevantCompositionViews": 3,
+        "evaluatedProjectionScopes": 18,
+        "requiredMotivationAnchors": 1,
+        "minimumRequiredTerminalAutonomyGoals": 0,
+        "requiredTerminalAutonomyGoals": 17,
+        "projectionScopesMissingMotivationAnchors": 0,
+        "projectionScopesMissingTerminalAutonomyGoals": 2,
+        "projectionScopesWithUnexpectedTerminalAutonomyGoals": 0,
+        "projectionScopesWithoutExpectedTerminalAutonomyGoals": 5,
+        "terminalGoalsMissingCompiledApplicability": 0,
+        "projectionScopesWithInvalidStageStructure": 0,
+        "nationalProjectionScopesUsingJurisdictionStageAuthority": 0,
+        "nationalProjectionScopesMissingJurisdictionStageAuthority": 0,
+        "nationalProjectionScopesWithAmbiguousJurisdictionStageAuthority": 0,
+        "nationalTargetAtomicGoalOccurrencesExcludedByJurisdictionStageAuthority": 0,
+        "nationalSelectedGoalOccurrencesExcludedByJurisdictionStageAuthority": 0,
+        "nationalPrerequisiteOnlyGoalOccurrencesImportedByJurisdictionStageAuthority": 0,
+        "projectionScopesWithIncompleteExplicitTerminalPrerequisites": 0,
+        "explicitTerminalPrerequisiteOccurrencesMissingFromProjection": 0,
+        "projectionScopesWithIncompleteWholeMaterialCoverageBindings": 0,
+        "wholeMaterialCoveredGoalOccurrencesWithoutVisiblePrerequisitePath": 0,
+        "projectionScopesWithIncompleteWholeMaterialPrerequisiteClosure": 0,
+        "wholeMaterialPrerequisiteOccurrencesMissingFromProjection": 0,
+        "uniqueExplicitTerminalPrerequisitesMissingFromProjection": 0,
+        "projectionLocalRouteChecksEnabled": 0,
+        "visibleSelectedAtomicGoalOccurrences": 878,
+        "visibleProfileSelectedAtomicGoalOccurrences": 878,
+        "visibleProjectedRouteTargetGoalOccurrences": 878,
+        "visibleProjectedRouteTargetGoalOccurrencesExcludedByProfileSelector": 0,
+        "uniqueProjectedRouteTargetsExcludedByProfileSelector": 0,
+        "visibleProjectedRouteTargetGoalOccurrencesExcludedFromRouteChecks": 0,
+        "projectionScopesMissingEffectiveMotivationRoutes": 0,
+        "projectionScopesMissingDirectMotivationRoutes": 0,
+        "projectionScopesMissingEffectiveTerminalRoutes": 0,
+        "projectionScopesMissingDirectTerminalRoutes": 0,
+        "visibleSelectedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+        "visibleSelectedGoalOccurrencesMissingDirectMotivationRoute": 0,
+        "visibleSelectedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+        "visibleSelectedGoalOccurrencesMissingDirectTerminalRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingDirectMotivationRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingDirectTerminalRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingEffectiveMotivationRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingDirectMotivationRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingEffectiveTerminalRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingDirectTerminalRoute": 0
+      },
+      "details": [
+        "No applicable terminal autonomy goal: curricula/DE/Gymnasium/composition-views/biologie/de-de-gym-biology-gk.view.json [DE-BW]",
+        "No applicable terminal autonomy goal: curricula/DE/Gymnasium/composition-views/biologie/de-de-gym-biology-gk.view.json [DE-NI]",
+        "No applicable terminal autonomy goal: curricula/DE/Gymnasium/composition-views/biologie/de-de-gym-biology-gk.view.json [DE-HB]",
+        "No applicable terminal autonomy goal: curricula/DE/Gymnasium/composition-views/biologie/de-de-gym-biology-gk.view.json [DE-HH]",
+        "No applicable terminal autonomy goal: curricula/DE/Gymnasium/composition-views/biologie/de-de-gym-biology-gk.view.json [DE-SL]",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/biologie/de-st-gym-sekii-biology-gk.view.json [DE-ST]: 1d0c84df-8040-5cab-8a7c-359366937e44, 7c7f147c-2b64-5b0c-90c1-ea9a9bf4b03a",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/biologie/de-st-gym-sekii-biology-lk.view.json [DE-ST]: 1d0c84df-8040-5cab-8a7c-359366937e44, 7c7f147c-2b64-5b0c-90c1-ea9a9bf4b03a"
+      ]
+    }
+  ]
+}
