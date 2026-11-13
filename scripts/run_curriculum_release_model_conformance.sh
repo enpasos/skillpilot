@@ -132,8 +132,8 @@ npm --prefix app run --silent export:full-standalone-package -- \
   --archive-root "${PACKAGE_ARCHIVE_ROOT}" \
   --supported-skillpilot-software ">=0.1.0 <1.0.0" \
   --zip \
-  --expect-entry-count 1061 \
-  --expect-manifest-file-count 1059 \
+  --expect-entry-count 1062 \
+  --expect-manifest-file-count 1060 \
   --expect-binary-asset-count 836 \
   --expect-content-digest "${EXPECTED_CONTENT_DIGEST}" \
   > "${PACKAGE_BUILD_REPORT}"
