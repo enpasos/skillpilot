@@ -8,7 +8,7 @@
 
 **Sprache / Language:** **Deutsch (DE)** · [English (EN)](learning-unit-design-and-examples.md) | **PDF:** [Deutsches PDF](skillpilot-skill-graph-architecture.de.pdf) · [English PDF](skillpilot-skill-graph-architecture.en.pdf)
 
-**Kompendium:** [§1 Allgemeines Zielsystem](general-goal-system-and-migration.de.md) · [§2 Knotentypen](node-types.de.md) · [§3 Sichtenprojektion](view-projection-and-goal-placement.de.md) · [§4 Quellen- & Ressourcenlinks](source-and-resource-links.de.md) · [§5 Contentanbindung](content-integration.md) · [§6 Quellenbegründungen](human-readable-source-rationales.de.md) · [§7 Zielvisualisierungen](atomic-goal-visualizations.de.md) · [§8 Lernzielbuch](learning-goal-book-and-evidence-review-pipeline.de.md) · [§9 Gymnasium-Rollout](canonical-gymnasium-rollout.de.md) · [§10 MEM/FWU-Plan](mem-fwu-roundtrip-plan.de.md) · [§11 Duale Paket-Releases](dual-curriculum-package-releases.md) · **§12 Einheitsentwurf & Beispiele**
+**Kompendium:** [§1 Allgemeines Zielsystem](general-goal-system-and-migration.de.md) · [§2 Knotentypen](node-types.de.md) · [§3 Sichtenprojektion](view-projection-and-goal-placement.de.md) · [§4 Quellen- & Ressourcenlinks](source-and-resource-links.de.md) · [§5 Contentanbindung](content-integration.md) · [§6 Quellenbegründungen](human-readable-source-rationales.de.md) · [§7 Zielvisualisierungen](atomic-goal-visualizations.de.md) · [§8 Lernzielbuch](learning-goal-book-and-evidence-review-pipeline.de.md) · [§9 Gymnasium-Rollout](canonical-gymnasium-rollout.de.md) · [§10 MEM/FWU-Plan](mem-fwu-roundtrip-plan.de.md) · [§11 Duale Paket-Releases](dual-curriculum-package-releases.md) · **§12 Einheitsentwurf & Beispiele** · [§13 Wissenskontext](knowledge-context.de.md)
 
 ---
 <a id="sec-sga-unit-design"></a>
@@ -43,26 +43,20 @@ Ungeeignet sind folgende Begründungen:
 
 Eine fachlich fragwürdige Kante ist ein Befund für sich. Ihre Überprüfung darf nicht dadurch ersetzt werden, dass die Bedeutung der beteiligten Ziele stillschweigend verengt wird. Selbst eine atomar azyklische Folge kann durch ungünstige Gruppierung einen Widerspruch zwischen ganzen Blöcken erzeugen; Grenze oder Schachtelung müssen dann überdacht werden.
 
-<a id="the-content-frame-what-the-unit-works-with"></a>
+<a id="the-knowledge-context-of-a-unit"></a>
 <a id="sec-sga-ud-frame"></a>
-#### 12.2. Der Stoffrahmen: Womit die Einheit arbeitet
+#### 12.2. Der Wissenskontext einer Einheit
 
-Neben ihrem Lernversprechen legt jede Einheit einen kurzen **Stoffrahmen** fest (Anforderung des Product Owners vom 13. November 2026). Er hat zwei Teile:
+Was die Ziele einer Einheit ausgestaltet, richtet sich an Lernende, die manches wissen und anderes noch nicht. Dieses Wissen ist der [Wissenskontext](knowledge-context.de.md): eine Projektion des Skill-Graphen, die für jedes Ziel sagt, worauf es aufbaut, was gesichert ist, was auf ihm aufbaut und welcher benachbarte Stoff noch nicht gesichert ist (Anforderung des Product Owners vom 13. November 2026). Der Wissenskontext einer Einheit ist die Vereinigung der Kontexte ihrer eigenen Ziele und Prüfungen. Für eine Einheit wird nichts von Hand geschrieben.
 
-- **Arbeitet mit:** die Objekte, Darstellungen und Verfahren, die Beispiele, Anwendungen, Aufgaben, Lernkarten und Lernzielbilder der Einheit benutzen dürfen. Das ist, was die Einheit selbst erarbeitet und was ihre Eingangskompetenzen bereitstellen.
-- **Noch nicht:** benachbarter Stoff, der an dieser Stelle naheliegt, aber noch nicht erarbeitet ist, ausdrücklich benannt.
+In einer Einheit zum Ableiten ganzrationaler Funktionen sichert der Kontext Potenzfunktionen mit natürlichen Exponenten, ihre Vielfachen und Summen sowie die Regeln, die die Einheit erarbeitet. Trigonometrische Funktionen, Exponential- und Logarithmusfunktionen sowie Produkt- und Kettenregel sind nicht gesichert. Eine Anwendung in dieser Einheit und ebenso das Bild eines ihrer Ziele zeigt dann eine ganzrationale Funktion und nie $\sin x$ oder $e^x$, so naheliegend ein solches Beispiel für jemanden wirkt, der das ganze Fach kennt.
 
-Eine Einheit zum Ableiten ganzrationaler Funktionen arbeitet mit Potenzfunktionen mit natürlichen Exponenten, ihren Vielfachen und Summen sowie mit Potenz-, Faktor- und Summenregel. Trigonometrische Funktionen, Exponential- und Logarithmusfunktionen sowie Produkt- und Kettenregel sind „noch nicht". Eine Anwendung in dieser Einheit und ebenso das Bild eines ihrer Ziele zeigt dann eine ganzrationale Funktion und nie $\sin x$ oder $e^x$, so naheliegend ein solches Beispiel für jemanden wirkt, der das ganze Fach kennt.
+Für den Entwurf einer Einheit folgen daraus zwei Regeln:
 
-Drei Regeln machen den Rahmen verbindlich:
+1. **Jede Ausgestaltung bleibt im Kontext.** Aufgaben und Musterlösungen der eigenen Prüfungen, Lernkarten, Übungsaufgaben, Lernzielbilder und die Beispiele des Coachs zu den Zielen der Einheit benutzen nur, was der Kontext sichert und was die Einheit erarbeitet. Was ihn verlässt, ist der falschen Einheit zugeordnet oder wird geändert.
+2. **Der Graph muss ausreichen.** Braucht die Einheit etwas, das ihr Kontext nicht sichert, fehlt dem Graphen eine Voraussetzung, greift ein Ziel in späteren Stoff, oder die Grenze stimmt nicht. Das ist ein Befund für die Fachprüfung. Keine Kante wird erfunden und kein Zieltext verengt, um ihn zu beseitigen.
 
-1. **Der Graph deckt den Rahmen.** Alles unter „arbeitet mit" wird von einem eigenen Ziel der Einheit erarbeitet oder liegt auf einem Voraussetzungspfad ihrer eigenen Ziele. „Im selben Schuljahr vorgesehen" genügt nicht. Der Rahmen nennt deshalb das gesicherte Minimum und ist in jedem Lehrplankontext derselbe. Was gebraucht wird, aber auf keinem Voraussetzungspfad liegt, ist ein Befund für die Fachprüfung: Es fehlt eine Voraussetzung, oder der Rahmen ist zu weit. Keine Kante wird erfunden, um ihn zu schließen.
-2. **Nichts aus „noch nicht" wird gebraucht.** Kein eigenes Ziel und keine eigene Prüfung der Einheit benötigt, was der Rahmen ausschließt.
-3. **Jede Ausgestaltung bleibt im Rahmen.** Aufgaben und Musterlösungen der eigenen Prüfungen, Lernkarten, Übungsaufgaben, Lernzielbilder und die Beispiele des Coachs zu den Zielen der Einheit benutzen nur den Rahmen. Was ihn verlässt, ist der falschen Einheit zugeordnet oder wird geändert.
-
-Der Rahmen verengt kein Ziel. Reicht die vollständige Bedeutung eines Ziels über den Rahmen hinaus, etwa bei einem Ziel zu Ableitungen elementarer Funktionen, das einfache Exponentialfunktionen nennt, während Exponentialfunktionen erst später erarbeitet werden, ist das ein Befund zur Grenze: Das Ziel gehört in eine spätere Einheit, oder die Einheit braucht einen weiteren Rahmen, den der Graph deckt. Ein Verfahren darf in einer späteren Einheit mit weiterem Rahmen wiederkehren; diese zeigt es dann an ihrem eigenen Stoff.
-
-Der Rahmen steht fest, bevor Aufgaben, Karten und Bilder der Einheit geschrieben oder geprüft werden, und er gehört zum Vertrag der Einheit. Die Einheitendeklaration trägt ihn noch nicht; der [Arbeitsplan](../../dev/mathematics-physics-learning-units-plan.md) nennt die Stufe, die ihn ergänzt.
+Der Kontext wird abgeleitet, bevor Aufgaben, Karten und Bilder der Einheit geschrieben oder geprüft werden. Er ist in jedem Lehrplankontext derselbe, weil die Voraussetzungsrelation kanonisch ist; „im selben Schuljahr vorgesehen" sichert nichts.
 
 <a id="3-learn-demonstrate-and-continue-learning"></a>
 <a id="sec-sga-ud-loop"></a>
@@ -114,7 +108,7 @@ Bei $t=2\,\mathrm{s}$ erreicht der Ort sein Maximum und die Geschwindigkeit ist 
 
 Benötigt werden die mathematischen Fertigkeiten, die diese Aufgaben tatsächlich verlangen: mit Termen und Einheiten umgehen sowie Gleichungen einschließlich auftretender quadratischer Gleichungen lösen. Verlangt die gewählte Aufgabe Ableitungen, müssen auch diese vorab verfügbar sein. Eine in der Physikaufgabe sichtbare Anwendung beweist nicht pauschal die vollständigen entsprechenden Mathematikziele; dafür zählen deren eigene Bedeutung und gültiger Nachweis.
 
-Der Stoffrahmen dieses Beispiels lautet: Die Einheit arbeitet mit Bewegungen längs einer Geraden, konstanter Beschleunigung mit vorgegebenem Wert, Orts- und Geschwindigkeitsgesetz als quadratischer und linearer Funktion der Zeit sowie den drei Bewegungsdiagrammen. Vektoren und Bewegungen in zwei Dimensionen, Kräfte als Ursachen, Ableitungen und Integrale sowie eine quantitative Behandlung des Luftwiderstands sind „noch nicht". Die quadratischen Gleichungen gehören nur dann zum Rahmen, wenn ein Voraussetzungspfad sie bereitstellt; sonst meldet Regel 1 des Rahmens einen Befund.
+Der Wissenskontext dieses Beispiels sichert die Beschreibung von Bewegungen in Diagrammen, die gleichförmige Bewegung sowie Durchschnitts- und Momentangeschwindigkeit, dazu lineare Funktionen und das Lesen von Graphen. Vektoren und Bewegungen in zwei Dimensionen, Kräfte als Ursachen sowie Ableitungen und Integrale sind nicht gesichert. Quadratische Gleichungen sind es ebenfalls nicht: Kein Voraussetzungspfad der beiden Ziele stellt sie bereit, obwohl die Aufgaben sie brauchen. Das ist ein Befund nach der zweiten Regel zum Wissenskontext einer Einheit.
 
 Die gleichförmige Bewegung kann einen sinnvollen fachlichen Einstieg bilden, etwa um Geschwindigkeit und Beschleunigung voneinander abzugrenzen. Daraus entsteht keine Pflicht, zuvor jede kalendarisch früher liegende Physikeinheit abzuschließen.
 
@@ -246,7 +240,7 @@ Vor jeder Implementierungsplanung sind für jeden Kandidaten zu beantworten:
 
 1. Was können Lernende danach selbstständig, und warum ist das bedeutsam?
 2. Welche konkreten Eingangskompetenzen werden benötigt, und stehen sie – auch fachübergreifend – vor der ersten abhängigen Aktivität bereit?
-3. Wie lautet der Stoffrahmen: Mit welchen Objekten, Darstellungen und Verfahren arbeitet die Einheit, und welcher benachbarte Stoff ist ausdrücklich „noch nicht"? Deckt ihn der Graph, und bleiben alle Aufgaben, Karten, Bilder und Beispiele der Einheit in ihm?
+3. Was sichert der Wissenskontext der Einheit, und was ist noch nicht gesichert? Reicht der Graph für das, was die Einheit braucht, und bleiben alle Aufgaben, Karten, Bilder und Beispiele der Einheit im Kontext?
 4. Welche vorhandenen Ziele gehören direkt zur Einheit, welche verpflichtenden Kindeinheiten besitzt sie, und gehört jedes Ziel genau einer Einheit direkt an (R4)?
 5. Worin besteht der zentrale Erkenntnisschritt, und was baut tatsächlich darauf auf?
 6. Welche Aufgaben und regulären Bewertungsregeln weisen das gesamte Versprechen nach? Liegt jedes eigene reguläre Ziel auf einem Pfad von einer eigenen Prüfung (R1), und trägt mindestens eine solche Prüfung dafür geprüfte Evidenz (R2)?

@@ -193,7 +193,7 @@ Full rules: `docs/dev/documentation-guidelines.md`.
 - `docs/concept/runtime-workflows/provider-neutral-coach-boundary.md` — canonical ChatClient/backend contract
 - `docs/concept/runtime-workflows/learning-workflow.md` — goal-type workflows
 - `docs/concept/curriculum-quality-and-human-trial.md` — maturity levels M0–M7, human trial
-- `docs/concept/skill-graph/` — goal system, composition views, learning units, assessment-gated completion, visualizations, goal books, packages
+- `docs/concept/skill-graph/` — goal system, composition views, learning units, assessment-gated completion, visualizations, goal books, packages; `knowledge-context.md` — what a learner can be assumed to know at a goal (concept, AGENTS.md §2.5)
 - `docs/concept/didactic/unified-learning-plan-status.md` — learning-plan contract
 - `docs/dev/mathematics-physics-learning-units-plan.md` — working plan for learning units (Mathematics, then Physics); units live in `programUnits`/`goalPlacements`, package contract `contracts/curriculum-package/v1.2/`
 - `docs/dev/landscape-json-field-reference.md` — landscape JSON fields

@@ -637,26 +637,11 @@ curricular-level terminology. Personalization Levels 1–4, QA maturity and goal
   experimental goal is evidenced in a chat with a coach is an open Product
   Owner decision for all experimental goals. Until it is taken, do not claim
   reviewed coverage for an experimental goal.
-- **Content frame of a unit (Product Owner requirement of 13 November
-  2026).** Next to its promise, every unit fixes a short content frame
-  (German "Stoffrahmen"): what it works with (objects, representations and
-  methods that examples, applications, tasks, memory cards and goal images
-  may use) and what is explicitly "not yet" (neighbouring subject matter that
-  suggests itself but has not been developed). A unit on differentiating
-  polynomial functions shows no trigonometric or exponential function. Three
-  rules: the graph backs the frame (own goals or a prerequisite path of the
-  own goals, never the calendar), nothing "not yet" is required by an own
-  goal or assessment, and every elaboration of the unit's goals stays inside.
-  The frame never narrows a goal and no edge is invented to close it: a goal
-  text or task that reaches beyond the frame is a finding for subject review
-  or belongs to a later unit. Do not call it "context"; that word names the
-  resolved curriculum context. Fix the frame before writing or reviewing
-  tasks, cards or images of a unit. The unit declaration does not carry the
-  frame yet; it is added with the contract version of the runtime stage, not
-  in a side file, and it adds no validity rule beside R1–R5: whether an
-  assessment stays inside the frame becomes part of its R2 review (approved
-  by the Product Owner on 13 November 2026). Design criteria §12.2; working
-  plan sections 4 and 6.
+- **Knowledge context of a unit (13 November 2026).** Nothing is written by
+  hand about the subject matter of a unit: its knowledge context is the union
+  of the contexts of its own goals and assessments (§2.5). Tasks, memory
+  cards, goal images and coach examples of a unit stay inside it; whether an
+  assessment does becomes part of its R2 review, not a new validity rule.
 
 This is concept documentation plus a static authoring contract and validator,
 not an implemented runtime or access policy. See `docs/concept/skill-graph/learning-units.md`,
@@ -665,6 +650,54 @@ not an implemented runtime or access policy. See `docs/concept/skill-graph/learn
 and worked candidates) and Graph Definition §11 (learning units), §12 (optional
 acquisition and time planning) and §13.3 (unit validity rules);
 capacity details remain in `docs/concept/didactic/curriculum-time-axis-and-pacing.md`.
+
+### 2.5 Knowledge context
+
+Product Owner requirement of 13 November 2026: **the learner's knowledge
+context must be respected.** For every learning goal it is derived
+deterministically from data stored in the graph, compact enough to accompany
+every step, and given to every AI step that generates or reviews content of
+the skill landscape, as a constant cross-check, and to the coach together
+with the respective goal.
+
+- **Definition.** The secured goals `W(g)` of an atomic goal are the atomic
+  goals it requires directly or transitively (inherit, expand to atoms, close
+  transitively). The knowledge context is a projection, not stored data: the
+  goal itself, what it builds on (the goals of `W(g)` that no other goal of
+  `W(g)` requires), the secured goals, what leads on from it (its direct
+  dependents), and what is "not yet" (the first goals of the same top-level
+  area outside `W(g)`). An assessment or memory goal develops nothing and may
+  use `W(q)`.
+- **Rule of use.** What some goal of the catalog develops may be used only if
+  that goal is secured. What no goal of the catalog develops is baseline
+  knowledge and is judged by review. The rule is the same for generator,
+  reviewer and coach.
+- **Sufficiency.** The context is exactly as good as the edges. The existing
+  gates establish that `requires` is acyclic, atomic and transitively minimal;
+  none establishes that the prerequisites of a goal suffice to learn it. A
+  prototype run on 13 November 2026 found, for example, that the Mathematics
+  goal on differentiating polynomial functions secures no goal on linear,
+  quadratic, power or polynomial functions. Until a subject is reviewed for
+  sufficiency, its derived context is a mirror for the graph and must not be
+  used to restrict the coach.
+- **Findings, never repairs.** A competence that is needed but not secured is
+  a candidate `requires` edge (a pedagogical modelling decision with honest
+  provenance, through subject review), a goal that reaches into later subject
+  matter, or a gap in the catalog. Do not add an edge, narrow a goal text or
+  invent a goal to make a context fit.
+- **Monotone verdicts.** An added edge only enlarges `W(g)`; content that
+  stayed inside the context still does. Only a goal whose `W(g)` loses a goal
+  needs its content reviewed again.
+- **Status.** Concept only; nothing is implemented, and the numbers come from
+  a prototype that is not in the repository. Order of introduction: derive
+  (tool and report), review sufficiency block by block, check images, cards
+  and tasks, serve the coach per subject once it is sufficient. Open: whether
+  sufficiency becomes a milestone gate, and whether goals should name the
+  terms they introduce. Do not call the context of a goal "context" alone;
+  that word names the resolved curriculum context.
+
+See `docs/concept/skill-graph/knowledge-context.md` and the working plan
+`docs/dev/mathematics-physics-learning-units-plan.md`, sections 4, 6 and 7.
 
 ---
 

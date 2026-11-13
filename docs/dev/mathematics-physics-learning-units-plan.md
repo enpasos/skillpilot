@@ -52,15 +52,17 @@ Der Product Owner hat am 12. November 2026 entschieden:
 
 Am 13. November 2026 hat der Product Owner ergänzt:
 
-- **Stoffrahmen:** Jede Einheit legt neben ihrem Lernversprechen einen kurzen
-  Stoffrahmen fest: womit sie arbeitet und welcher naheliegende Nachbarstoff
-  noch nicht erarbeitet ist. Die Ausgestaltung ihrer Ziele hält sich daran, in
-  Anwendungen ebenso wie in Lernzielbildern. In einer Einheit zum Ableiten
-  ganzrationaler Funktionen kommen keine trigonometrischen Funktionen und
-  keine Exponentialfunktionen vor, solange diese noch nicht dran waren. Anlass
-  waren zwei Zuordnungsfehler dieser Art im Bestand. Die Regeln stehen im
-  [Entwurfsbogen](../concept/skill-graph/learning-unit-design-and-examples.md#sec-sga-ud-frame),
-  die Umsetzung in den Abschnitten 4 und 6.
+- **Wissenskontext:** Der Wissenskontext der Lernenden muss eingehalten
+  werden. Zu jedem Lernziel wird er deterministisch aus den im Graphen
+  gespeicherten Daten abgeleitet, kompakt genug für jeden Schritt, und steht
+  jedem KI-Schritt, der Inhalte der Skill-Landschaft erzeugt oder prüft, als
+  ständiger Abgleich zur Verfügung sowie dem Coach zum jeweiligen Ziel. In
+  einer Einheit zum Ableiten ganzrationaler Funktionen kommen in Anwendungen
+  und Lernzielbildern keine trigonometrischen Funktionen und keine
+  Exponentialfunktionen vor, solange diese noch nicht dran waren. Anlass
+  waren zwei Zuordnungsfehler dieser Art im Bestand. Das Konzept steht in
+  [Wissenskontext](../concept/skill-graph/knowledge-context.de.md), die Folgen
+  für diesen Plan in den Abschnitten 4, 6 und 7.
 
 Unverändert gilt die Anerkennungsregel, die der Product Owner am 11. November
 bestätigt hat: Ein eigenes gewöhnliches Ziel einer Einheit ist anerkannt, sobald
@@ -209,32 +211,28 @@ nur als Voraussetzung in den Lernumfang gelangt, wird als einzelne Kompetenz
 erworben und verlangt keine Prüfung seiner Einheit. Diese Prüfung braucht einen
 Backendlauf und gehört noch nicht zur Pflicht-CI.
 
-**Stoffrahmen (noch nicht im Vertrag).** Die Einheitendeklaration ist
-geschlossen und kennt kein Feld für den Stoffrahmen. Er wird Teil der
-Deklaration, neben dem Lernversprechen und zweisprachig wie dieses, mit den
-beiden Teilen „arbeitet mit“ und „noch nicht“. Das geschieht mit der
-Vertragsversion der Stufe 3, die auch die Aufgabenvarianten aufnimmt; eine
-eigene Version nur für dieses Feld gibt es nicht. Eine Datei neben der
-Landschaft scheidet aus demselben Grund aus wie der Einheitenkatalog. Der
-Rahmen bezieht sich auf den kanonischen Voraussetzungsgraphen und ist deshalb
-wie die Zugehörigkeit in jedem Kontext derselbe; er ändert kein Zielobjekt und
-berührt keinen Nachweis über Ziele. Eine neue Gültigkeitsregel neben R1–R5
-entsteht nicht. Der Product Owner hat dieser Umsetzung am 13. November 2026
-zugestimmt: Feld der Deklaration, Vertragsversion der Stufe 3, keine neue
-Regel.
+**Wissenskontext (nicht umgesetzt).** Der Wissenskontext eines Ziels ist
+eine Projektion des Graphen: worauf das Ziel aufbaut, welche Ziele gesichert
+sind, was auf ihm aufbaut und welcher Nachbarstoff desselben Bereichs noch
+nicht gesichert ist. Der Kontext einer Einheit ist die Vereinigung der Kontexte
+ihrer eigenen Ziele und Prüfungen. Dafür wird nichts gespeichert und nichts von
+Hand geschrieben; die Einheitendeklaration bekommt kein Feld, und der
+Paketvertrag ändert sich dafür nicht. Eine neue Gültigkeitsregel neben R1–R5
+entsteht nicht: Ob eine Prüfung im Kontext bleibt, wird Teil ihres R2-Reviews.
 
-Nichts davon ist umgesetzt. Vorgesehen ist:
+Der Kontext bindet nur, wo die Voraussetzungen eines Ziels ausreichen. Das
+prüft heute kein Gate (Abschnitt 7). Die Einführung hat deshalb vier Schritte,
+unabhängig von den Stufen dieses Plans:
 
-| Regel des Rahmens | Vorgesehene Durchsetzung |
-| --- | --- |
-| Der Graph deckt den Rahmen. | Review. Als Hilfe gibt der Validator je Einheit die Eingangsziele aus: die Ziele außerhalb der Einheit, die ihre eigenen Ziele und Prüfungen direkt benötigen. Was gebraucht wird und auf keinem Pfad liegt, ist ein Befund für Abschnitt 7. |
-| Nichts aus „noch nicht“ wird gebraucht. | Review; maschinell prüfbar erst, wenn der Rahmen ausgeschlossenen Stoff als Ziele benennt. Ob er das tut, entscheidet der Vertragsentwurf der Stufe 3. |
-| Jede Ausgestaltung bleibt im Rahmen. | Prüfungen: Teil des R2-Reviews; die Reviewer erhalten den Rahmen und bewerten Aufgabe, Lösung und Raster dagegen. Lernkarten und Lernzielbilder: Durchsicht beim Entwurf der Einheit (Abschnitt 6). Neue Bilder: Der Bild-Prompt eines Ziels erhält den Rahmen seiner Einheit; heute enthält er nur Titel und Beschreibung des Ziels. Coach: Der Rahmen gehört zum Kontext des aktiven Ziels. |
+| Schritt | Inhalt | Verhältnis zu den Stufen |
+| --- | --- | --- |
+| 1 – Ableiten | Deterministisches Werkzeug im Repository und ein Bericht je Fach; kein Gate ändert sich. | Unabhängig; Voraussetzung für alles Weitere. |
+| 2 – Hinlänglichkeit prüfen | Blockweises Review jedes Ziels mit seinem Kontext als Eingabe: Lässt sich das Ziel mit den gesicherten Zielen lernen? Befunde sind Kandidatenkanten, Befunde zur Einordnung oder Lücken und gehen in die Fachprüfung. | Beginnt mit einem Pilotblock je Fach; danach Teil der Blockarbeit in Stufe 4 und 5. |
+| 3 – Kontexttreue prüfen | Prüfungen, Lernkarten und Lernzielbilder eines Blocks gegen den Kontext; Bild-Prompts und Reviews erhalten ihn als Eingabe. | Teil der Arbeitsweise je Themenblock (Abschnitt 6). |
+| 4 – Coach bedienen | Das Backend liefert den Kernkontext des aktiven Ziels, verbunden mit dem Stand der lernenden Person. | Je Fach, sobald es hinlänglich ist; Laufzeit- und Providerarbeit mit eigener Abnahme. |
 
-Die drei vorhandenen Einheiten haben noch keinen festgeschriebenen Rahmen.
-Sie erhalten ihn mit dem Feld; ihre Prüfungen, Karten und Bilder werden dann
-dagegen geprüft. Ziele ohne Einheit haben keinen Rahmen, bis ihr Block in
-Stufe 4 oder 5 entworfen wird.
+Die drei vorhandenen Einheiten sind noch nicht gegen ihren Wissenskontext
+geprüft. Das geschieht, sobald Schritt 1 vorliegt.
 
 Die gemeinsamen Testfälle liegen in
 `contracts/curriculum-package/v1.2/fixtures/learning-units/cases.json`. Der
@@ -254,8 +252,8 @@ Ergebnis abgeschlossen.
 | **0 – Wiederaufnahme** | Dieser Plan; Inventarwerkzeug portiert und neu erzeugt. | Dokumentationsprüfungen grün; #83 bleibt Archiv. | Geliefert. |
 | **1 – Vertrag und Validator** | Einheiten in der Platzierungsschicht der Skill-Landschaft, Paketvertrag 1.2, Validator für R1, R3, R4 und Struktur, gemeinsame Testfälle, CI-Einbindung. | Testfälle decken jeden Befundcode; keine Runtimeänderung. | Geliefert. Die Angebotsprüfung ist vorhanden, aber nicht in der Pflicht-CI. |
 | **2 – Erste echte Einheiten** | Pilot „Skalarprodukt über orthogonale Projektion“, danach M01 und P13, jeweils mit unabhängigem R2-Review. | Validator grün, geschützte Reifegrade gehalten, Quellenbindung für neue Prüfungen. | Geliefert: Der Pilot, M01 („Natürliche Zahlen verstehen und darstellen“) und P13 („Gleichmäßig beschleunigte Bewegung modellieren“) tragen seit dem 13. November R2-Nachweise (siehe unten). Offen ist die Entscheidung, wie experimentelle Ziele nachgewiesen werden. |
-| **3 – Runtime** | Backend leitet aus gültigen Verträgen die wirksame Beherrschung ab, versioniert gebunden (R5); Cockpit, Coach, Frontier und Plan nutzen denselben Stand. Die Vertragsversion dieser Stufe nimmt Aufgabenvarianten und den Stoffrahmen auf. | Gesamtfortschritt zählt Anerkennung mit, Perioden zählen nur explizite Abschlüsse, keine neuen Mastery-Zeilen; Deployment und Hostabnahme getrennt durch den Product Owner. | Offen. |
-| **4 – Mathematik vollständig** | Blockweise Einheiten, Prüfungen und Reviews; die Landschaft erklärt `learningUnitCoverage: complete`. | Kein Fachziel ohne Einheit, jede Einheit mit Stoffrahmen und dagegen geprüften Aufgaben, Karten und Bildern, Angebotsprüfung in allen Mathematikklassen grün, Gesamt-CI grün. | Offen: 801 gewöhnliche Ziele ohne Einheit. |
+| **3 – Runtime** | Backend leitet aus gültigen Verträgen die wirksame Beherrschung ab, versioniert gebunden (R5); Cockpit, Coach, Frontier und Plan nutzen denselben Stand. Die Vertragsversion dieser Stufe nimmt Aufgabenvarianten auf. | Gesamtfortschritt zählt Anerkennung mit, Perioden zählen nur explizite Abschlüsse, keine neuen Mastery-Zeilen; Deployment und Hostabnahme getrennt durch den Product Owner. | Offen. |
+| **4 – Mathematik vollständig** | Blockweise Einheiten, Prüfungen und Reviews; die Landschaft erklärt `learningUnitCoverage: complete`. | Kein Fachziel ohne Einheit, Aufgaben, Karten und Bilder jeder Einheit gegen ihren Wissenskontext geprüft, Angebotsprüfung in allen Mathematikklassen grün, Gesamt-CI grün. | Offen: 801 gewöhnliche Ziele ohne Einheit. |
 | **5 – Physik vollständig** | Wie Stufe 4, zusätzlich Experimente und mathematische Voraussetzungen. | Eigene Fachabnahme; Mathematik bleibt stabil. | Offen: 476 gewöhnliche Ziele ohne Einheit; die Entscheidung zu experimentellen Zielen steht aus. |
 
 ### Stand der Stufe 2
@@ -407,29 +405,28 @@ untersuchen“) in der künftigen Einheit zur Beschreibung von Bewegungen.
 ## 6. Arbeitsweise je Themenblock
 
 1. **Kandidat nach dem Entwurfsbogen beschreiben:** Lernversprechen,
-   Eingangskompetenzen, Stoffrahmen, eigene Ziele, Kinder, zentraler Schritt,
-   was darauf aufbaut. Die Grenze folgt dem fachlichen Übergang, nicht einer
-   vorhandenen Prüfung, einer Zielzahl oder einer Überschrift. Der Stoffrahmen
-   steht fest, bevor eine Aufgabe, eine Karte oder ein Bild der Einheit
-   geschrieben oder geprüft wird.
+   Eingangskompetenzen, eigene Ziele, Kinder, zentraler Schritt, was darauf
+   aufbaut. Die Grenze folgt dem fachlichen Übergang, nicht einer vorhandenen
+   Prüfung, einer Zielzahl oder einer Überschrift.
 2. **Strukturell prüfen:** Einheit in der kanonischen Fachdatei eintragen,
    Validator laufen lassen. Ein
    Befund ist ein Auftrag für die Fachprüfung. Keine Kante wird ergänzt oder
    entfernt, kein Zieltext verkürzt und keine Einheit zerschnitten, damit der
    Validator grün wird.
-3. **Rahmen gegen den Graphen halten:** Die Eingangsziele der Einheit mit
-   „arbeitet mit“ vergleichen. Nennt ein eigenes Ziel in seinem Text Stoff,
-   den weder die Einheit erarbeitet noch ein Voraussetzungspfad bereitstellt,
-   ist das ein Befund zur Grenze oder zu einer fehlenden Voraussetzung, kein
-   Anlass, den Zieltext zu ändern.
+3. **Wissenskontext ableiten und Hinlänglichkeit prüfen:** Für jedes eigene
+   Ziel und jede eigene Prüfung den Wissenskontext ableiten, bevor eine
+   Aufgabe, eine Karte oder ein Bild geschrieben oder geprüft wird. Braucht
+   ein Ziel etwas, das sein Kontext nicht sichert, ist das ein Befund: eine
+   fehlende Voraussetzung, ein Ziel, das in späteren Stoff greift, oder eine
+   falsche Grenze. Kein Zieltext wird dafür geändert.
 4. **Prüfungen unabhängig gegenlesen:** Kann jemand nach der normalen Rubrik
    bestehen, obwohl ein wesentlicher Teil des Ziels fehlt? Verlassen Aufgabe,
-   Lösung oder Raster den Stoffrahmen? Das Review erhält Ziel, Stoffrahmen,
-   Aufgabe, Lösung, Rubrik und Kriterien, aber kein erwartetes Ergebnis.
-   Ein negatives Ergebnis wird als Protokoll abgelegt; die Einheit bleibt dann
-   ohne Nachweis.
+   Lösung oder Raster den Wissenskontext der Prüfung? Das Review erhält Ziel,
+   Wissenskontext, Aufgabe, Lösung, Rubrik und Kriterien, aber kein erwartetes
+   Ergebnis. Ein negatives Ergebnis wird als Protokoll abgelegt; die Einheit
+   bleibt dann ohne Nachweis.
 5. **Vorhandene Ausgestaltung durchsehen:** Lernkarten, Übungsaufgaben und
-   Lernzielbilder der eigenen Ziele gegen den Stoffrahmen prüfen. Ein Bild,
+   Lernzielbilder der eigenen Ziele gegen den Wissenskontext prüfen. Ein Bild,
    das ihn verlässt, gilt als fehlerhaft und wird nach der geltenden
    Bildrichtlinie neu erzeugt; gute Bilder bleiben. Eine Aufgabe, die ihn
    verlässt, gehört zu einer späteren Einheit oder wird geändert.
@@ -485,8 +482,7 @@ Diese Befunde sind Arbeitslisten, keine entschiedenen Korrekturen.
   Voraussetzungspfad der beiden Ziele; im Graphen stehen nur „Terme mit
   Variablen lesen und deuten“ und die Ziele zur Beschreibung von Bewegungen.
   Ob eine fachübergreifende Voraussetzung fehlt, entscheidet die Fachprüfung.
-  Das ist ein Befund nach Regel 1 des Stoffrahmens: Der Graph deckt nicht,
-  womit die Einheit arbeitet.
+  Der Wissenskontext der Prüfung sichert sie nicht.
 - **Mathematik, Zieltexte über dem Voraussetzungspfad:** Zwei Ziele nennen
   Funktionsklassen, die auf ihrem Voraussetzungspfad kein Ziel erarbeitet.
   „Ableitungen elementarer Funktionen berechnen“
@@ -503,6 +499,20 @@ Diese Befunde sind Arbeitslisten, keine entschiedenen Korrekturen.
   ein Ziel in einen späteren Block gehört, entscheidet die Fachprüfung beim
   Entwurf der betroffenen Einheiten. Kein Zieltext und keine Kante wurde
   geändert.
+- **Voraussetzungen reichen nicht aus:** Ein Prototyp hat am 13. November den
+  Wissenskontext aller 807 gewöhnlichen Mathematik- und 478 Physikziele
+  abgeleitet. Für „Ganzrationale Funktionen ableiten“
+  (`623cd47f-6f9e-58a7-911c-69e4a8609a27`) sichert der Graph 34 Ziele, aber
+  keines zu linearen, quadratischen, Potenz- oder ganzrationalen Funktionen.
+  „Ganzrationale Funktionen mit Differentialrechnung analysieren“
+  (`d78946f9-1f5f-462c-a99c-fe01054042dd`) hat das Ziel zum Ableiten
+  ganzrationaler Funktionen nicht auf seinem Voraussetzungspfad. 20
+  Mathematik- und 19 Physikziele haben gar keine Voraussetzung. Die
+  vorhandenen Gates prüfen Zyklenfreiheit, atomare Form und transitive
+  Minimalität, nicht ob die Voraussetzungen eines Ziels ausreichen. Wie viele
+  Ziele betroffen sind, zeigt erst das Review der Pilotblöcke (Abschnitt 4,
+  Schritt 2). Zahlen und Definition:
+  [Wissenskontext](../concept/skill-graph/knowledge-context.de.md).
 - **Orientierungsziele als Voraussetzung:** Die beiden Mathematikziele „Warum
   Mathematik? …“ sind Voraussetzung von 11 und 47 gewöhnlichen Zielen und
   gelangen dadurch in den Lernumfang fast jeder Konfiguration, auch jeder
@@ -544,7 +554,11 @@ belegt den Bau nur lokal in `./run_ci.sh package`.
 
 Stufe 2 ist geliefert: Drei Einheiten in zwei Fächern tragen vollständige
 R2-Nachweise, eine davon mit zwei Prüfungen. Stufe 3 kann beginnen; zu ihr
-gehört auch der Vertrag für Aufgabenvarianten und den Stoffrahmen. Mit dem
-Feld erhalten die drei vorhandenen Einheiten ihren Stoffrahmen, und ihre
-Prüfungen, Karten und Bilder werden dagegen geprüft. Vor Stufe 5 braucht es
-die Entscheidung des Product Owners zu experimentellen Zielen.
+gehört auch der Vertrag für Aufgabenvarianten. Vor Stufe 5 braucht es die
+Entscheidung des Product Owners zu experimentellen Zielen.
+
+Davon unabhängig ist der erste Schritt zum Wissenskontext (Abschnitt 4): das
+Werkzeug, das ihn ableitet, und ein Pilotblock je Fach, an dem sich zeigt, wie
+viele Ziele nicht hinlänglich sind. Der Ableitungseinstieg der Mathematik und
+die Kinematik der Einführungsphase bieten sich an, weil dort Befunde
+vorliegen.

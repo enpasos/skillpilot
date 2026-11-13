@@ -86,6 +86,10 @@ window.SKILLPILOT_DOCS_I18N = {
       "en": "concept/skill-graph/learning-unit-design-and-examples.md"
     },
     {
+      "de": "concept/skill-graph/knowledge-context.de.md",
+      "en": "concept/skill-graph/knowledge-context.md"
+    },
+    {
       "de": "concept/skill-graph/skillpilot-skill-graph-architecture.de.pdf",
       "en": "concept/skill-graph/skillpilot-skill-graph-architecture.en.pdf"
     },
