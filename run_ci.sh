@@ -238,6 +238,7 @@ run_curriculum_frontend_ci() {
   echo "--> Testing and Validating Learning-Unit Contracts"
   npm run test:learning-unit-contracts
   npm run validate:learning-units
+  npm run check:learning-unit-assessments
 
   echo "--> Testing Exam Markdown Conventions"
   npm run test:exam-markdown

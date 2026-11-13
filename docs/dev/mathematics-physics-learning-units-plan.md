@@ -1,6 +1,6 @@
 # Umsetzungsplan: Lerneinheiten für Mathematik und Physik
 
-**Stand: 12. November 2026. Arbeitsgrundlage.** Dieser Plan ersetzt den
+**Stand: 13. November 2026. Arbeitsgrundlage.** Dieser Plan ersetzt den
 [Plan vom 5. November](learning-units-implementation-plan.md) und den
 eingefrorenen Plan gleichen Namens auf dem Archivzweig von
 [PR #83](https://github.com/enpasos/skillpilot/pull/83). Er beschreibt Sollzustand
@@ -214,9 +214,9 @@ Ergebnis abgeschlossen.
 | --- | --- | --- | --- |
 | **0 – Wiederaufnahme** | Dieser Plan; Inventarwerkzeug portiert und neu erzeugt. | Dokumentationsprüfungen grün; #83 bleibt Archiv. | Geliefert. |
 | **1 – Vertrag und Validator** | Einheiten in der Platzierungsschicht der Skill-Landschaft, Paketvertrag 1.2, Validator für R1, R3, R4 und Struktur, gemeinsame Testfälle, CI-Einbindung. | Testfälle decken jeden Befundcode; keine Runtimeänderung. | Geliefert. Die Angebotsprüfung ist vorhanden, aber nicht in der Pflicht-CI. |
-| **2 – Erste echte Einheiten** | Pilot „Skalarprodukt über orthogonale Projektion“, danach M01 und P13, jeweils mit unabhängigem R2-Review. | Validator grün, geschützte Reifegrade gehalten, Quellenbindung für neue Prüfungen. | Begonnen: Der Pilot trägt seit dem 13. November einen R2-Nachweis (siehe unten); M01 und P13 sind offen. |
+| **2 – Erste echte Einheiten** | Pilot „Skalarprodukt über orthogonale Projektion“, danach M01 und P13, jeweils mit unabhängigem R2-Review. | Validator grün, geschützte Reifegrade gehalten, Quellenbindung für neue Prüfungen. | Begonnen: Der Pilot und M01 („Natürliche Zahlen verstehen und darstellen“) tragen seit dem 13. November R2-Nachweise (siehe unten); P13 ist offen. |
 | **3 – Runtime** | Backend leitet aus gültigen Verträgen die wirksame Beherrschung ab, versioniert gebunden (R5); Cockpit, Coach, Frontier und Plan nutzen denselben Stand. | Gesamtfortschritt zählt Anerkennung mit, Perioden zählen nur explizite Abschlüsse, keine neuen Mastery-Zeilen; Deployment und Hostabnahme getrennt durch den Product Owner. | Offen. |
-| **4 – Mathematik vollständig** | Blockweise Einheiten, Prüfungen und Reviews; die Landschaft erklärt `learningUnitCoverage: complete`. | Kein Fachziel ohne Einheit, Angebotsprüfung in allen Mathematikklassen grün, Gesamt-CI grün. | Offen: 806 gewöhnliche Ziele ohne Einheit. |
+| **4 – Mathematik vollständig** | Blockweise Einheiten, Prüfungen und Reviews; die Landschaft erklärt `learningUnitCoverage: complete`. | Kein Fachziel ohne Einheit, Angebotsprüfung in allen Mathematikklassen grün, Gesamt-CI grün. | Offen: 801 gewöhnliche Ziele ohne Einheit. |
 | **5 – Physik vollständig** | Wie Stufe 4, zusätzlich Experimente und mathematische Voraussetzungen. | Eigene Fachabnahme; Mathematik bleibt stabil. | Offen. |
 
 ### Stand der Stufe 2
@@ -265,23 +265,67 @@ mit der Runtime (Stufe 3). Das ältere Completion-Profil
 neue Prüfung umgestellt, bis Stufe 3 belassen oder zurückgezogen wird, ist eine
 offene Entscheidung des Product Owners.
 
+**M01, „Natürliche Zahlen verstehen und darstellen“ (13. November).** Die
+Einheit `math-natural-numbers` besitzt die fünf Ziele der Jahrgangsstufe 5 aus
+dem Entwurfsbogen (Stellenwertsystem, Darstellen und Zahlenstrahl, Ordnen,
+Runden, Unbegrenztheit) und zwei für sie geschriebene Prüfungen entlang der
+beiden Teilzweige des Graphen:
+`49507f95-d079-5113-8aac-1a08299473a3` (Darstellen, Zahlenstrahl, Ordnen;
+13 BE) und `de7e0bb2-262a-50e7-8398-f91ab1b365ca` (Stellenwertsystem, Runden,
+Unbegrenztheit; 17 BE). Sie bildet eine eigene Einheit und ist nicht mit dem
+Rechnen verbunden: Darstellen und Vergleichen von Zahlen ist ein anderer
+Erkenntnisschritt als das Rechnen mit ihnen, und darauf bauen Grundrechenarten,
+ganze Zahlen, Zahlenfolgen und Brüche getrennt auf. Zwei unabhängige
+maschinelle Reviewer haben R2 für alle fünf Ziele nach vier Runden für
+denselben Endtext als erfüllt bewertet
+([Review vom 13. November](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/learning-units/math-natural-numbers-2026-11-13.md)).
+Die vorhandene Aufgabe `311ab2f2-3364-5166-ac22-3ef01419fee4` gehört nicht zur
+Einheit: Sie benötigt ein Rechenziel außerhalb der Einheit und ist mit dem
+Rechenteil allein bestehbar (3 von 6 Punkten). Sie bleibt Übungsaufgabe. Die
+beiden neuen Prüfungen liegen im Cluster „Prüfungen Jahrgangsstufe 5“ und sind
+damit in jeder Sicht enthalten, die diesen Cluster oder die Jahrgangsstufe 5
+führt; für Lernende sind das zwei zusätzliche Übungsprüfungen. Mathematik hält
+M7.
+
+Aufgabentext, Katalogeintrag und Einheit hält ein Werkzeug zusammen:
+`app/scripts/applyLearningUnitAssessments.mjs` leitet aus den Aufgabenquellen
+und der Einheitendeklaration die Prüfungsziele, ihre Clustermitgliedschaft, die
+Semantic-Kind-Entscheidung, die Einheit und ihre Nachweise ab.
+`npm --prefix app run check:learning-unit-assessments` läuft in der Pflicht-CI
+und scheitert, wenn Katalog und Quellen auseinanderlaufen.
+
+**Grenze des Pilots (entschieden am 13. November).** Der Pilot bleibt eine
+eigene Einheit. Sein Ziel ist ein kanonisches Vertiefungsziel ohne eigene
+amtliche Quellenstelle und nur in wenigen Konfigurationen Lernziel; die drei
+übrigen Ziele des Clusters „Skalarprodukt, Orthogonalität und metrische
+Grundlagen im Raum“ (definieren, Winkel berechnen, Orthogonalität prüfen) sind
+Kernstoff fast jeder Sek-II-Konfiguration. Die Prüfung des Pilots benötigt das
+Winkelziel transitiv. In einer gemeinsamen Einheit hielte sie deshalb dessen
+Anerkennung auch dort zurück, wo das Vertiefungsziel gar nicht zum Lernweg
+gehört. Als Pflichtkind einer Clustereinheit scheidet der Pilot aus demselben
+Grund aus. Die drei übrigen Ziele bilden einen eigenen Kandidaten
+„Skalarprodukt berechnen und anwenden“; er braucht eigene Prüfungen, weil
+keine vorhandene Prüfung sie direkt benötigt, und gehört zu Stufe 4.
+
+**Aufgabenvarianten (Befund vom 13. November).** Der Entwurfsbogen verlangt
+nach einem nicht bestandenen Versuch eine frische Variante; ein Bestehen der
+identischen Aufgabe nach besprochener Musterlösung ist kein unabhängiger
+Nachweis. Das Prüfungsmodell kennt heute genau eine Aufgabe je Prüfungs-ID
+(`examData` mit einem Aufgaben-, einem Lösungstext und einem Raster). Eine
+zweite Prüfung mit eigener ID in derselben Einheit wäre keine Variante: Nach
+der Anerkennungsregel müssten beide bestanden werden. Varianten unter einer
+Prüfungs-ID brauchen deshalb eine Erweiterung des Vertrags (mehrere
+gleichwertige Aufgaben mit je eigenem Raster und Nachweis, Graph Definition
+§13: „Wechselnde Aufgabenvarianten müssen denselben qualifizierten Vertrag
+erfüllen“) und eine Auswahl durch das Backend. Das ist Laufzeitarbeit und
+gehört zu Stufe 3. Bis dahin steht die Einschränkung in jedem Reviewprotokoll.
+
 Offen in Stufe 2:
 
-1. **Zweite Aufgabenvariante für den Pilot.** Nach einem Versuch wird die
-   Musterlösung besprochen, und dieselbe Aufgabe kann wiederholt werden. Ein
-   Bestehen im Wiederholungsversuch ist deshalb kein unabhängiger Nachweis.
-   Der Entwurfsbogen verlangt eine frische Variante.
-2. **Grenze des Pilots prüfen:** Ob das Ziel eine eigene Einheit bildet oder zu
-   einer Einheit über den ganzen Cluster „Skalarprodukt, Orthogonalität und
-   metrische Grundlagen im Raum“ gehört, entscheidet der Entwurf dieses Blocks.
-   Die drei übrigen Ziele des Clusters haben heute keine Prüfung, die sie
-   direkt benötigt.
-3. **M01 und P13** nach dem Entwurfsbogen. Bekannt aus PR #83: Die Aufgabe
-   `311ab2f2-3364-5166-ac22-3ef01419fee4` ist mit dem Rechenteil allein
-   bestehbar (3 von 6 Punkten); die Prüfung
+1. **P13** nach dem Entwurfsbogen. Bekannt aus PR #83: Die Prüfung
    `4ab1cf6d-b808-5b86-9291-85df0b9f2496` ist ohne Scheitel- und
-   Diagrammaufgabe bestehbar (24 von 36 erreichbar, 22 genügen). Beide brauchen
-   neue Prüfungen mit eigener ID. Die experimentellen Ziele
+   Diagrammaufgabe bestehbar (24 von 36 erreichbar, 22 genügen) und braucht
+   eine neue Prüfung mit eigener ID. Die experimentellen Ziele
    `09029573-864f-40ca-bf8a-cee7bf6dcb73` und
    `ce431132-dfc4-42c2-aff6-bd72035190f8` verlangen eine Aufgabe, die das
    Experiment einschließt.
@@ -373,7 +417,7 @@ belegt den Bau nur lokal in `./run_ci.sh package`.
 
 ## 9. Nächster Schritt
 
-Stufe 3 kann beginnen: Mit dem Pilot trägt eine Einheit einen vollständigen
-R2-Nachweis. Parallel Stufe 2 fortsetzen: die Kandidaten M01 und P13 nach dem
-Entwurfsbogen ausarbeiten und für den Pilot eine zweite Aufgabenvariante
-schreiben.
+Stufe 3 kann beginnen: Zwei Einheiten tragen vollständige R2-Nachweise, eine
+mit einer und eine mit zwei Prüfungen. Zu Stufe 3 gehört auch der Vertrag für
+Aufgabenvarianten. Parallel Stufe 2 abschließen: den Kandidaten P13 nach dem
+Entwurfsbogen ausarbeiten.

@@ -606,6 +606,24 @@ curricular-level terminology. Personalization Levels 1–4, QA maturity and goal
   rubric revisions: any change to task, solution, grading note or rubric needs
   a new review. The earlier completion profile `math-dot-product-projection`
   still names the earlier assessment and is unchanged.
+- **Second unit and the assessment tool (13 November 2026).** Canonical
+  Mathematics also contains `math-natural-numbers` (five grade 5 goals, two
+  assessments written for it, `49507f95-d079-5113-8aac-1a08299473a3` and
+  `de7e0bb2-262a-50e7-8398-f91ab1b365ca`), with reviewed coverage for all five
+  goals
+  (`curricula/DE/Gymnasium/quality/learning-units/math-natural-numbers-2026-11-13.md`).
+  Unit assessments are authored in a source file under
+  `curricula/DE/Gymnasium/assessments/` and placed by
+  `app/scripts/applyLearningUnitAssessments.mjs`, which derives the assessment
+  goal, its cluster membership, the semantic-kind decision, the unit and its
+  coverage reviews; `npm --prefix app run check:learning-unit-assessments`
+  fails in required CI when catalog and sources differ. Do not edit a unit
+  assessment in the canonical file by hand. The pilot stays a unit of its own
+  (decided 13 November): its goal is a learning target in few configurations,
+  and in a shared unit its assessment would hold back the recognition of the
+  three core dot-product goals everywhere. The assessment model has one task
+  per assessment ID; fresh task variants for repeat attempts need a contract
+  extension and backend selection and belong to the runtime stage.
 
 This is concept documentation plus a static authoring contract and validator,
 not an implemented runtime or access policy. See `docs/concept/skill-graph/learning-units.md`,

@@ -1704,22 +1704,22 @@ public class LearnerControllerIntegrationTest {
         // Preserve those seed counts, including local assessments. Full learning
         // totals additionally include the independently checked prerequisite demand.
         String[][] scopes = {
-                { "DE-BB", "241", "241" },
-                { "DE-BE", "237", "237" },
-                { "DE-BW", "267", "267" },
-                { "DE-BY", "227", "227" },
-                { "DE-HB", "215", "215" },
-                { "DE-HE", "325", "352" },
-                { "DE-HH", "237", "237" },
-                { "DE-MV", "236", "236" },
-                { "DE-NI", "236", "236" },
-                { "DE-NW", "236", "236" },
-                { "DE-RP", "267", "279" },
-                { "DE-SH", "260", "266" },
-                { "DE-SL", "239", "239" },
-                { "DE-SN", "236", "236" },
-                { "DE-ST", "236", "236" },
-                { "DE-TH", "237", "237" }
+                { "DE-BB", "243", "243" },
+                { "DE-BE", "239", "239" },
+                { "DE-BW", "269", "269" },
+                { "DE-BY", "229", "229" },
+                { "DE-HB", "217", "217" },
+                { "DE-HE", "327", "354" },
+                { "DE-HH", "239", "239" },
+                { "DE-MV", "238", "238" },
+                { "DE-NI", "238", "238" },
+                { "DE-NW", "238", "238" },
+                { "DE-RP", "269", "281" },
+                { "DE-SH", "262", "268" },
+                { "DE-SL", "241", "241" },
+                { "DE-SN", "238", "238" },
+                { "DE-ST", "238", "238" },
+                { "DE-TH", "239", "239" }
         };
         SoftAssertions softly = new SoftAssertions();
 
@@ -1780,12 +1780,12 @@ public class LearnerControllerIntegrationTest {
         // with projection roles, jurisdiction, course tags and G8/G9 applicability.
         // Pin S independently before checking the full canonical learning demand.
         String[][] scopes = {
-                { "DE-HE", "GK", "751", "761" },
-                { "DE-HE", "LK", "890", "900" },
-                { "DE-RP", "GK", "688", "699" },
-                { "DE-RP", "LK", "802", "813" },
-                { "DE-SH", "GK", "668", "675" },
-                { "DE-SH", "LK", "765", "773" }
+                { "DE-HE", "GK", "753", "763" },
+                { "DE-HE", "LK", "892", "902" },
+                { "DE-RP", "GK", "690", "701" },
+                { "DE-RP", "LK", "804", "815" },
+                { "DE-SH", "GK", "670", "677" },
+                { "DE-SH", "LK", "767", "775" }
         };
         SoftAssertions softly = new SoftAssertions();
 
