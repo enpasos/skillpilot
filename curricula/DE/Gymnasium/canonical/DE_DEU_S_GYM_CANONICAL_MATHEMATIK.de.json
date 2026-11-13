@@ -138,7 +138,18 @@
       "labelEn": "Interpreting the dot product through orthogonal projection",
       "promise": "Ich kann einen Vektor orthogonal auf die Richtung eines anderen Vektors projizieren und damit die Definition des Skalarprodukts geometrisch veranschaulichen und fachsprachlich erläutern. So wird aus einer Rechenvorschrift eine anschauliche Größe, auf die Projektionen als lineare Abbildungen aufbauen.",
       "promiseEn": "I can project a vector orthogonally onto the direction of another vector and use this to illustrate the definition of the dot product geometrically and explain it in mathematical language. This turns a calculation rule into a quantity with a geometric meaning, on which projections as linear maps build.",
-      "revision": "2026-11-12-v1"
+      "revision": "2026-11-13-v2",
+      "coverageReviews": [
+        {
+          "assessmentGoalId": "be48054d-48f7-54c0-8248-d0a462ad6dc9",
+          "goalIds": [
+            "3016ec37-1c2e-47db-83f5-e767923bc97e"
+          ],
+          "reference": "curricula/DE/Gymnasium/quality/learning-units/math-dot-product-projection-2026-11-13.md",
+          "taskRevision": "sha256:12db387541d3a43fb96611d9668780bd4ab6963c38652c74ea412e9df94374fb",
+          "rubricRevision": "sha256:02b4d58d1f8cffbd493da8bc21c2454b2183dbd33dd6b2a70b9e7cffefe7d5a3"
+        }
+      ]
     }
   ],
   "goalPlacements": [
@@ -3233,7 +3244,7 @@
       "relation": "own"
     },
     {
-      "goalId": "e98672c6-871a-5d0b-889c-5afc51040f0d",
+      "goalId": "be48054d-48f7-54c0-8248-d0a462ad6dc9",
       "unitId": "math-dot-product-projection",
       "relation": "own"
     }
@@ -3279,7 +3290,7 @@
       "description": "Gemeinsame Wurzel für Mathematik am Gymnasium in Deutschland. Die Baseline bündelt einen kanonischen Mathematik-Graphen über Sekundarstufe I und II mit Jahrgangsankern, fachlichen Korridoren und anschlussfähigen Oberstufenzielen.",
       "descriptionEn": "Shared root for mathematics at Gymnasium in Germany. The baseline bundles one canonical mathematics graph across lower and upper secondary with year anchors, content corridors, and upper-secondary continuation goals.",
       "core": true,
-      "weight": 977,
+      "weight": 978,
       "tags": [
         "root",
         "canonical",
@@ -60965,7 +60976,7 @@
       "titleEn": "Analytic Geometry, Linear Algebra and Advanced Analysis",
       "description": "Überblicksknoten für vertiefte Analysis, Orientieren und Bewegen im Raum, Geraden und Ebenen im Raum, ebene Figuren in Raumdarstellungen, Spiegelungen an Ebenen sowie Matrizen für Übergangsprozesse und lineare geometrische Abbildungen.",
       "descriptionEn": "Overview node for advanced analysis, orientation and movement in space, lines and planes in space, and matrices for transition processes and linear geometric mappings.",
-      "weight": 174,
+      "weight": 175,
       "tags": [
         "GK",
         "LK"
@@ -73017,7 +73028,7 @@
       "id": "14b19ee4-364e-50bd-b6a3-499471356ef3",
       "title": "Übungen Q2",
       "description": "Bündelt materialgestützte Q2-Klausuraufgaben mit normalem Klausurcharakter zu Vertiefung der Analysis, Raumgeometrie und Matrizen. Die globalen Abituraufgaben bleiben davon getrennt modelliert.",
-      "weight": 28,
+      "weight": 29,
       "tags": [
         "GK",
         "LK"
@@ -73069,7 +73080,8 @@
         "60dbe2ed-55fb-5352-8829-1ea23fbee024",
         "240f7716-7c6f-5705-876e-8046fd8a6720",
         "6cff2b2e-be7f-531a-8849-e5fb3a55978a",
-        "9809780d-c860-5a79-87ec-2a3479cc7f1f"
+        "9809780d-c860-5a79-87ec-2a3479cc7f1f",
+        "be48054d-48f7-54c0-8248-d0a462ad6dc9"
       ],
       "examples": [],
       "applicability": {
@@ -92509,6 +92521,122 @@
               "id": "q2_m7_figure_properties_3",
               "points": 3,
               "description": "Ungültigen Viereck-Kongruenzschluss mit Gegenbeispiel widerlegt"
+            }
+          ]
+        }
+      },
+      "phase": "Q2",
+      "type": "atomic",
+      "nodeKind": "exam"
+    },
+    {
+      "id": "be48054d-48f7-54c0-8248-d0a462ad6dc9",
+      "shortKey": "canonical_math_sek2_q2_unit_dot_projection_signed",
+      "title": "Skalarprodukt über die orthogonale Projektion begründen",
+      "titleEn": "Justify the dot product through orthogonal projection",
+      "description": "Die lernende Person kann in einer Q2-Prüfungsaufgabe die orthogonale Projektion eines Vektors auf eine beliebige Richtung bestimmen, daraus die geometrische Bedeutung des Skalarprodukts einschließlich seines Vorzeichens herleiten und fachsprachlich begründen.",
+      "descriptionEn": "The learner can, in a Q2 assessment, determine the orthogonal projection of a vector onto an arbitrary direction, derive from it the geometric meaning of the dot product including its sign, and justify it in mathematical language.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment",
+        "ExamTask",
+        "canonical",
+        "phase:Q2"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "applicabilityFromRequires": true,
+        "applicabilityMappingInheritance": "boundary"
+      },
+      "sourceRef": "curricula/DE/Gymnasium/assessments/mathematik/sekii/q2/dot-projection-signed-20261113-v1/tasks.md",
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "K2.3",
+          "K3.3"
+        ],
+        "guidingIdeas": [
+          "L3"
+        ],
+        "phase": "Q2",
+        "area": "LinearAlgebra",
+        "topicCode": "CANONICAL.MATH.SEK2.Q2.UNIT.DOT_PROJECTION_SIGNED"
+      },
+      "requires": [
+        "3016ec37-1c2e-47db-83f5-e767923bc97e"
+      ],
+      "contains": [],
+      "examples": [],
+      "resourceLinks": [],
+      "examData": {
+        "reviewStatus": "released",
+        "reviewNote": "Machine-only content, calculation and unit coverage review, 2026-11-13; source section SHA-256 873804899ae86cf1b3d9cf741ceb03d9f60cc7cad8f4137040a368ec1f5634e9. Every rubric step is required because the backend enforces only total points; the grading note inside the sample solution says what costs no points. Review record: curricula/DE/Gymnasium/quality/learning-units/math-dot-product-projection-2026-11-13.md. No human review, learner trial or publication claimed.",
+        "coveredGoalIds": [
+          "3016ec37-1c2e-47db-83f5-e767923bc97e"
+        ],
+        "coveredStrands": [
+          "L3"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2",
+          "AB3"
+        ],
+        "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/sekii/q2/dot-projection-signed-20261113-v1/tasks.md",
+        "taskContent": "Gegeben sind die Vektoren\n$$\n\\vec a=\\begin{pmatrix}-3\\\\4\\\\-4\\end{pmatrix}\n\\quad\\text{und}\\quad\n\\vec b=\\begin{pmatrix}2\\\\-1\\\\2\\end{pmatrix}.\n$$\n\n1. Bestimme die orthogonale Projektion $\\vec p$ von $\\vec a$ auf die Richtung von $\\vec b$ und den Restvektor $\\vec r=\\vec a-\\vec p$. Weise nach, dass $\\vec r$ senkrecht auf $\\vec b$ steht. (2 BE)\n2. Die vorzeichenbehaftete Projektionslänge $s$ von $\\vec a$ auf $\\vec b$ ist die Zahl mit $\\vec p=s\\cdot\\frac{\\vec b}{|\\vec b|}$. Bestimme $s$. Denke dir $\\vec a$ und $\\vec b$ vom Ursprung $O$ aus abgetragen; ihre Pfeilspitzen seien $A$ und $B$. Gib den Fußpunkt $F$ des Lotes von $A$ auf die Gerade $OB$ an, beschreibe die Lage von $F$ im Vergleich zu $O$ und $B$ und erkläre damit, was das Vorzeichen von $s$ geometrisch bedeutet. (3 BE)\n3. Berechne $\\vec a\\cdot\\vec b$ aus den Koordinaten und vergleiche das Ergebnis mit dem Produkt aus $|\\vec b|$ und $s$. Formuliere den Zusammenhang als Gleichung und in einem Satz in Worten. Begründe mit der Zerlegung $\\vec a=\\vec p+\\vec r$, dass er für jeden Vektor $\\vec a$ und jeden Vektor $\\vec b\\neq\\vec 0$ gilt. (3 BE)\n4. Setzt man die Pfeile von $\\vec p$ und $\\vec r$ aneinander, bilden sie mit dem Pfeil von $\\vec a$ ein rechtwinkliges Dreieck. Leite an diesem Dreieck her, wie $s$ von $|\\vec a|$ und vom Winkel $\\theta$ zwischen $\\vec a$ und $\\vec b$ abhängt, und gib $s$ in möglichst einfacher Form an. Benutze dabei nicht die Formel $\\vec a\\cdot\\vec b=|\\vec a|\\,|\\vec b|\\cos\\theta$. Die Herleitung muss für die hier vorliegende Lage von $\\vec p$ gelten; eine Probe mit den gegebenen Zahlen ersetzt sie nicht. Gib an, ob $\\theta$ hier ein spitzer, ein rechter oder ein stumpfer Winkel ist, und folgere mit Teil 3 eine Darstellung von $\\vec a\\cdot\\vec b$, in der nur $|\\vec a|$, $|\\vec b|$ und $\\theta$ vorkommen. (3 BE)\n5. Folgere, welches Vorzeichen das Skalarprodukt zweier vom Nullvektor verschiedener Vektoren bei spitzem, bei rechtem und bei stumpfem Winkel hat. Begründe für jeden der drei Fälle geometrisch, wo der Lotfußpunkt $F$ (wie in Teil 2) liegt, und folgere daraus das Vorzeichen. (3 BE)",
+        "solutionContent": "**Zu 1.** Die Projektion ist das Vielfache $\\vec p=t\\,\\vec b$, dessen Rest senkrecht auf $\\vec b$ steht: Aus $(\\vec a-t\\,\\vec b)\\cdot\\vec b=0$ folgt $t=\\frac{\\vec a\\cdot\\vec b}{\\vec b\\cdot\\vec b}$. Mit $\\vec a\\cdot\\vec b=-6-4-8=-18$ und $\\vec b\\cdot\\vec b=4+1+4=9$ ist $t=-2$, also\n$$\n\\vec p=-2\\,\\vec b=\\begin{pmatrix}-4\\\\2\\\\-4\\end{pmatrix},\n\\qquad\n\\vec r=\\vec a-\\vec p=\\begin{pmatrix}1\\\\2\\\\0\\end{pmatrix}.\n$$\nWegen $\\vec r\\cdot\\vec b=2-2+0=0$ steht $\\vec r$ senkrecht auf $\\vec b$. Gleichwertig ist die Projektionsformel $\\vec p=\\frac{\\vec a\\cdot\\vec b}{\\vec b\\cdot\\vec b}\\,\\vec b$.\n\n**Zu 2.** Mit $|\\vec b|=3$ ist $\\frac{\\vec b}{|\\vec b|}=\\frac13\\vec b$ und $\\vec p=-2\\,\\vec b=-6\\cdot\\frac13\\vec b$, also $s=-6$. Der Lotfußpunkt ist die Spitze von $\\vec p$, also $F(-4\\,|\\,2\\,|\\,-4)$. Auf der Geraden $\\vec x=t\\cdot\\vec b$ gehört $F$ zu $t=-2$ und $B(2\\,|\\,-1\\,|\\,2)$ zu $t=1$: $F$ liegt von $O$ aus auf der anderen Seite als $B$. Das negative Vorzeichen bedeutet, dass $\\vec p$ entgegengesetzt zu $\\vec b$ zeigt. Nicht verlangt ist der Abstand $|OF|=|s|=6=2\\,|\\vec b|$.\n\n**Zu 3.** Aus den Koordinaten folgt $\\vec a\\cdot\\vec b=-18$, und es ist $|\\vec b|\\cdot s=3\\cdot(-6)=-18$. Der Zusammenhang lautet\n$$\n\\vec a\\cdot\\vec b=|\\vec b|\\cdot s .\n$$\nIn Worten: Das Skalarprodukt ist die Länge von $\\vec b$ mal der vorzeichenbehafteten Projektionslänge von $\\vec a$ auf $\\vec b$. Der Zusammenhang gilt allgemein, weil der Rest nichts zum Skalarprodukt beiträgt:\n$$\n\\vec a\\cdot\\vec b=(\\vec p+\\vec r)\\cdot\\vec b=\\vec p\\cdot\\vec b+\\underbrace{\\vec r\\cdot\\vec b}_{=0}\n=s\\,\\frac{\\vec b\\cdot\\vec b}{|\\vec b|}=s\\,|\\vec b| .\n$$\n\n**Zu 4.** Das Dreieck $OFA$ hat den rechten Winkel bei $F$ zwischen $\\vec p$ und $\\vec r$; die Hypotenuse ist $\\vec a$. Für den Innenwinkel $\\varphi$ bei $O$ zwischen $\\vec a$ und $\\vec p$ gilt $|\\vec p|=|\\vec a|\\cos\\varphi$. Hier zeigt $\\vec p$ entgegengesetzt zu $\\vec b$; $\\varphi$ ist also der Winkel zwischen $\\vec a$ und $-\\vec b$, das heißt $\\varphi=180^\\circ-\\theta$, und es ist $s=-|\\vec p|$. Damit gilt\n$$\ns=-|\\vec a|\\cos(180^\\circ-\\theta)=|\\vec a|\\cos\\theta .\n$$\nDa $\\varphi$ als einer der beiden anderen Innenwinkel des rechtwinkligen Dreiecks spitz ist, ist $\\theta=180^\\circ-\\varphi$ ein stumpfer Winkel. Mit Teil 3 folgt $\\vec a\\cdot\\vec b=|\\vec b|\\,s=|\\vec a|\\,|\\vec b|\\cos\\theta$.\n\nGleichwertig ist jede Herleitung an diesem Dreieck, die einen seiner Winkel richtig durch $\\theta$ ausdrückt, zum Beispiel den Winkel $\\theta-90^\\circ$ bei $A$ mit $|\\vec p|=|\\vec a|\\sin(\\theta-90^\\circ)=-|\\vec a|\\cos\\theta$. Nicht verlangt und kein Ersatz für die Herleitung in der vorliegenden Lage: Zeigt $\\vec p$ in die Richtung von $\\vec b$, ist $\\varphi=\\theta$ und $s=|\\vec p|=|\\vec a|\\cos\\theta$. Nicht verlangt sind außerdem die Probe $36+5=41$, der Zahlenwert $\\theta\\approx159{,}6^\\circ$ und die Sonderfälle $\\vec p=\\vec 0$ (dann ist $\\vec a\\perp\\vec b$, sofern $\\vec a\\neq\\vec 0$) und $\\vec r=\\vec 0$.\n\n**Zu 5.** Wegen $\\vec a\\cdot\\vec b=|\\vec b|\\cdot s$ und $|\\vec b|>0$ hat das Skalarprodukt das Vorzeichen von $s$. Dabei ist $s$ positiv, null oder negativ, je nachdem, ob der Lotfußpunkt $F$ auf dem Strahl von $O$ in Richtung $\\vec b$ liegt, mit $O$ zusammenfällt oder auf dem Strahl in Richtung $-\\vec b$ liegt. Ist $\\vec a$ weder senkrecht noch parallel zu $\\vec b$, bilden die Pfeile von $\\vec p$, $\\vec r$ und $\\vec a$ ein rechtwinkliges Dreieck mit dem rechten Winkel bei $F$; sein Winkel bei $O$ ist der Winkel zwischen $\\vec a$ und $\\vec p$ und als einer der beiden anderen Innenwinkel spitz. Das ist bei spitzem und bei stumpfem $\\theta$ stets der Fall; insbesondere ist dann $\\vec p\\neq\\vec 0$.\n\n- Spitzer Winkel: Zeigte $\\vec p$ entgegengesetzt zu $\\vec b$, wäre der Winkel bei $O$ gleich $180^\\circ-\\theta$, also stumpf. Also liegt $F$ auf dem Strahl in Richtung $\\vec b$: $s>0$ und $\\vec a\\cdot\\vec b>0$.\n- Rechter Winkel: $\\vec a$ steht selbst senkrecht auf $\\vec b$. Der Lotfußpunkt ist $O$, also $\\vec p=\\vec 0$, $s=0$ und $\\vec a\\cdot\\vec b=0$.\n- Stumpfer Winkel: Zeigte $\\vec p$ in die Richtung von $\\vec b$, wäre der Winkel bei $O$ gleich $\\theta$, also stumpf. Also liegt $F$ auf dem Strahl in Richtung $-\\vec b$: $s<0$ und $\\vec a\\cdot\\vec b<0$.\n\nIn Teil 5 ist eine Begründung über eine zutreffend beschriebene Skizze gleichwertig.\n\n**Bewertungshinweis.** Ein Schritt erhält seine volle BE-Zahl, wenn die im Raster genannten Leistungen vollständig und fachlich richtig vorliegen; fehlt eine oder ist sie fachlich falsch, erhält er 0 BE. Eine verlangte Angabe (ein Ergebnis oder eine Einordnung, nicht eine Beschreibung, Erklärung oder Herleitung) gilt als vorhanden, wenn sie eindeutig aus der Bearbeitung hervorgeht, etwa die Einordnung „stumpf“ aus $\\varphi=180^\\circ-\\theta$ mit spitzem $\\varphi$. Keine BE kosten: Rechenfehler, mit denen folgerichtig weitergearbeitet wird; ein Rechenfehler in Teil 1, den die lernende Person an $\\vec r\\cdot\\vec b\\neq0$ selbst als Fehler erkennt, auch wenn sie ihn nicht findet und folgerichtig weiterarbeitet; Rundungen; gleichwertige Bezeichnungen und Schreibweisen; sprachliche Unschärfen ohne fachlichen Fehler; das Weglassen von Sonderfällen und Proben, die die Aufgabe nicht verlangt. Führt ein Rechenfehler dazu, dass $\\vec p$ in die Richtung von $\\vec b$ zeigt, fehlt die in Teil 2 und Teil 4 verlangte Begründung für die entgegengesetzte Lage. Eine Leistung fehlt oder ist falsch insbesondere, wenn\n\n- in Teil 1 trotz $\\vec r\\cdot\\vec b\\neq0$ Orthogonalität behauptet wird;\n- in Teil 2 der Lotfußpunkt fehlt oder seine Lage zu $O$ und $B$ nicht beschrieben wird;\n- in Teil 3 nur Zahlen verglichen werden; $s=\\frac{\\vec a\\cdot\\vec b}{|\\vec b|}$ aus einer nicht begründeten Projektionsformel abgelesen wird, ohne zu zeigen, dass $\\vec r$ nichts zum Skalarprodukt beiträgt; oder die Allgemeingültigkeit statt mit der Zerlegung über $\\vec a\\cdot\\vec b=|\\vec a|\\,|\\vec b|\\cos\\theta$ begründet wird. Die Formulierung in Worten wird zusammen mit der Gleichung beurteilt: Fehlt in ihr nur der Hinweis auf das Vorzeichen (etwa „Länge von $\\vec b$ mal Länge der Projektion“), während Gleichung und übrige Bearbeitung mit der vorzeichenbehafteten Projektionslänge $s$ arbeiten, ist das eine sprachliche Unschärfe; fachlich falsch ist sie, wenn die Bearbeitung die Projektionslänge tatsächlich als nichtnegativ behandelt, etwa $|\\vec p|$ statt $s$ in die Gleichung einsetzt;\n- in Teil 4 der Zusammenhang aus $\\vec a\\cdot\\vec b=|\\vec a|\\,|\\vec b|\\cos\\theta$ gewonnen, nur mit den gegebenen Zahlen geprüft oder im vorliegenden Fall $\\theta$ als Innenwinkel des Dreiecks verwendet wird; das gilt auch, wenn das Vorzeichen nur nachträglich angepasst wird (etwa „$\\cos\\theta=-|\\vec p|/|\\vec a|$, weil $\\theta$ stumpf ist“), ohne einen Winkel des Dreiecks auf $\\theta$ zurückzuführen und $s=-|\\vec p|$ aus der Richtung von $\\vec p$ zu begründen;\n- in Teil 5 das Vorzeichen eines Falls allein aus dem Vorzeichen von $\\cos\\theta$ gewonnen und die Lage der Projektion nur als Folgerung genannt wird. Verlangt ist für jeden Fall die Lage des Lotfußpunkts (Strahl in Richtung $\\vec b$, $O$, Strahl in Richtung $-\\vec b$), geometrisch aus dem Winkel begründet, über das rechtwinklige Dreieck, dessen Winkel bei $O$ spitz ist, oder über eine zutreffend beschriebene Skizze, daraus das Vorzeichen von $s$ und mit Teil 3 das von $\\vec a\\cdot\\vec b$. Dafür genügt je Fall ein Satz, der die Lage des Lotfußpunkts geometrisch mit dem Winkel zwischen $\\vec a$ und $\\vec b$ verknüpft, etwa über den spitzen Dreieckswinkel bei $O$.",
+        "scoring": {
+          "maxPoints": 14,
+          "passingPoints": 14,
+          "steps": [
+            {
+              "id": "q2_unit_dot_projection_signed_1",
+              "points": 2,
+              "description": "Projektionsvektor mit Ansatz oder Projektionsformel und Restvektor bestimmt, Orthogonalität des Rests nachgewiesen"
+            },
+            {
+              "id": "q2_unit_dot_projection_signed_2",
+              "points": 3,
+              "description": "Vorzeichenbehaftete Projektionslänge s = −6 bestimmt, Lotfußpunkt angegeben und seine Lage auf der von der Pfeilspitze des zweiten Vektors abgewandten Seite des Ursprungs beschrieben, negatives Vorzeichen damit erklärt"
+            },
+            {
+              "id": "q2_unit_dot_projection_signed_3",
+              "points": 3,
+              "description": "Zusammenhang Skalarprodukt gleich Länge des zweiten Vektors mal vorzeichenbehaftete Projektionslänge als Gleichung und in Worten formuliert, ohne die Projektionslänge als vorzeichenlose Größe zu behandeln, und mit der Zerlegung allgemein begründet, nicht über die Kosinusformel und nicht nur durch Zahlenvergleich"
+            },
+            {
+              "id": "q2_unit_dot_projection_signed_4",
+              "points": 3,
+              "description": "Projektionslänge gleich Länge des ersten Vektors mal Kosinus des Winkels zwischen den Vektoren am rechtwinkligen Dreieck für die vorliegende Lage hergeleitet: ein Dreieckswinkel richtig durch diesen Winkel ausgedrückt, etwa Innenwinkel beim Ursprung gleich 180° minus diesem Winkel, und Projektionslänge gleich minus Länge des Projektionsvektors; nicht über die Kosinusformel, nicht durch Zahlenprobe und nicht durch bloße Vorzeichenkorrektur. Winkel als stumpf eingeordnet und die Kosinusdarstellung des Skalarprodukts gefolgert"
+            },
+            {
+              "id": "q2_unit_dot_projection_signed_5",
+              "points": 3,
+              "description": "Vorzeichen des Skalarprodukts für spitzen, rechten und stumpfen Winkel jeweils aus der geometrisch begründeten Lage des Lotfußpunkts über das Vorzeichen der Projektionslänge gefolgert, nicht allein über das Vorzeichen des Kosinus"
             }
           ]
         }

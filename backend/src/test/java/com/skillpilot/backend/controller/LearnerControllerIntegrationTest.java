@@ -1781,11 +1781,11 @@ public class LearnerControllerIntegrationTest {
         // Pin S independently before checking the full canonical learning demand.
         String[][] scopes = {
                 { "DE-HE", "GK", "751", "761" },
-                { "DE-HE", "LK", "889", "899" },
+                { "DE-HE", "LK", "890", "900" },
                 { "DE-RP", "GK", "688", "699" },
                 { "DE-RP", "LK", "802", "813" },
-                { "DE-SH", "GK", "667", "674" },
-                { "DE-SH", "LK", "764", "772" }
+                { "DE-SH", "GK", "668", "675" },
+                { "DE-SH", "LK", "765", "773" }
         };
         SoftAssertions softly = new SoftAssertions();
 

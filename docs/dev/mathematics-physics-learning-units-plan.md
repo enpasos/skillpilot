@@ -214,7 +214,7 @@ Ergebnis abgeschlossen.
 | --- | --- | --- | --- |
 | **0 – Wiederaufnahme** | Dieser Plan; Inventarwerkzeug portiert und neu erzeugt. | Dokumentationsprüfungen grün; #83 bleibt Archiv. | Geliefert. |
 | **1 – Vertrag und Validator** | Einheiten in der Platzierungsschicht der Skill-Landschaft, Paketvertrag 1.2, Validator für R1, R3, R4 und Struktur, gemeinsame Testfälle, CI-Einbindung. | Testfälle decken jeden Befundcode; keine Runtimeänderung. | Geliefert. Die Angebotsprüfung ist vorhanden, aber nicht in der Pflicht-CI. |
-| **2 – Erste echte Einheiten** | Pilot „Skalarprodukt über orthogonale Projektion“, danach M01 und P13, jeweils mit unabhängigem R2-Review. | Validator grün, geschützte Reifegrade gehalten, Quellenbindung für neue Prüfungen. | Begonnen: Pilot eingetragen und strukturell gültig; R2 nicht erfüllt (siehe unten). |
+| **2 – Erste echte Einheiten** | Pilot „Skalarprodukt über orthogonale Projektion“, danach M01 und P13, jeweils mit unabhängigem R2-Review. | Validator grün, geschützte Reifegrade gehalten, Quellenbindung für neue Prüfungen. | Begonnen: Der Pilot trägt seit dem 13. November einen R2-Nachweis (siehe unten); M01 und P13 sind offen. |
 | **3 – Runtime** | Backend leitet aus gültigen Verträgen die wirksame Beherrschung ab, versioniert gebunden (R5); Cockpit, Coach, Frontier und Plan nutzen denselben Stand. | Gesamtfortschritt zählt Anerkennung mit, Perioden zählen nur explizite Abschlüsse, keine neuen Mastery-Zeilen; Deployment und Hostabnahme getrennt durch den Product Owner. | Offen. |
 | **4 – Mathematik vollständig** | Blockweise Einheiten, Prüfungen und Reviews; die Landschaft erklärt `learningUnitCoverage: complete`. | Kein Fachziel ohne Einheit, Angebotsprüfung in allen Mathematikklassen grün, Gesamt-CI grün. | Offen: 806 gewöhnliche Ziele ohne Einheit. |
 | **5 – Physik vollständig** | Wie Stufe 4, zusätzlich Experimente und mathematische Voraussetzungen. | Eigene Fachabnahme; Mathematik bleibt stabil. | Offen. |
@@ -222,10 +222,10 @@ Ergebnis abgeschlossen.
 ### Stand der Stufe 2
 
 Die Einheit `math-dot-product-projection` besitzt das Ziel
-`3016ec37-1c2e-47db-83f5-e767923bc97e` und die Prüfung
-`e98672c6-871a-5d0b-889c-5afc51040f0d`. Sie ist in der kanonischen
-Mathematikdatei eingetragen und erfüllt R1, R3 und R4, auch in allen 190
-Mitgliedschaftsklassen; alle 1.252 Zielobjekte bleiben dabei bytegleich.
+`3016ec37-1c2e-47db-83f5-e767923bc97e` und seit dem 13. November die für sie
+geschriebene Prüfung `be48054d-48f7-54c0-8248-d0a462ad6dc9`. Sie ist in der
+kanonischen Mathematikdatei eingetragen, erfüllt R1, R3 und R4, auch in allen
+190 Mitgliedschaftsklassen, und trägt den ersten R2-Nachweis.
 
 Empfohlen und am 12. November umgesetzt ist, dass Nachweise über Ziele die
 Landschaft ohne ihre Einheitenschicht binden; der Product Owner hat nach
@@ -244,18 +244,33 @@ Das unabhängige
 kommt zu dem Ergebnis, dass die vorhandene Aufgabe R2 **nicht** erfüllt: Der
 zweite Vektor liegt auf einer Koordinatenachse, das Vorzeichen der Projektion
 wird nie geprüft, und die Aufgabe nennt die Beziehungen, die erklärt werden
-sollen. Eine reine Formelroutine kann 10 von 10 Punkten erreichen. Die Einheit
-trägt deshalb keinen Nachweis; ihr Ziel bleibt bis zum expliziten Abschluss
-offen.
+sollen. Eine reine Formelroutine kann 10 von 10 Punkten erreichen. Die erste
+Prüfung `e98672c6-871a-5d0b-889c-5afc51040f0d` trägt deshalb keinen Nachweis.
 
-Daraus folgt für Stufe 2:
+Die neue Prüfung setzt die drei Auflagen dieses Reviews um: Der zweite Vektor
+ist zu keiner Achse parallel, der Winkel ist stumpf, und die Zusammenhänge sind
+selbst zu begründen. Zwei unabhängige maschinelle Reviewer, der zweite ohne
+Kenntnis des ersten, haben R2 nach drei und vier Runden für denselben Endtext
+als erfüllt bewertet
+([Review vom 13. November](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/learning-units/math-dot-product-projection-2026-11-13.md)).
+Der Nachweis ist an Aufgabe, Lösung samt Bewertungshinweis und Raster
+gebunden; jede Textänderung braucht ein neues Review. Die erste Prüfung behält
+ihre ID und bleibt als Übungsaufgabe im Katalog, gehört aber nicht mehr zur
+Einheit; bestandene Versuche werden nicht aufgewertet. Mathematik hält M7, und
+alle Übertragungen des eingefrorenen Reduktionsnachweises bleiben aktiv.
 
-1. **Stärkere Prüfung für den Pilot** mit neuer Prüfungs-ID nach den drei
-   Änderungen des Reviews. Bestandene Versuche der alten ID werden nicht
-   aufgewertet. Das ist eine Änderung der kanonischen Mathematik mit eigener
-   Quellen-, Review- und Hashbindung und ein eigener PR. Voraussetzung ist der
-   eingefrorene Reduktionsnachweis (Abschnitt 1); die Wiederholungen der echten
-   Nachweishistorie sind aus der laufenden CI genommen.
+Für Lernende ändert sich dadurch noch nichts: Eine Anerkennung gibt es erst
+mit der Runtime (Stufe 3). Das ältere Completion-Profil
+`math-dot-product-projection` nennt weiterhin die erste Prüfung; ob es auf die
+neue Prüfung umgestellt, bis Stufe 3 belassen oder zurückgezogen wird, ist eine
+offene Entscheidung des Product Owners.
+
+Offen in Stufe 2:
+
+1. **Zweite Aufgabenvariante für den Pilot.** Nach einem Versuch wird die
+   Musterlösung besprochen, und dieselbe Aufgabe kann wiederholt werden. Ein
+   Bestehen im Wiederholungsversuch ist deshalb kein unabhängiger Nachweis.
+   Der Entwurfsbogen verlangt eine frische Variante.
 2. **Grenze des Pilots prüfen:** Ob das Ziel eine eigene Einheit bildet oder zu
    einer Einheit über den ganzen Cluster „Skalarprodukt, Orthogonalität und
    metrische Grundlagen im Raum“ gehört, entscheidet der Entwurf dieses Blocks.
@@ -358,7 +373,7 @@ belegt den Bau nur lokal in `./run_ci.sh package`.
 
 ## 9. Nächster Schritt
 
-Stufe 2 fortsetzen: die stärkere Prüfung für den Pilot entwerfen und unabhängig
-gegenlesen lassen, parallel die Kandidaten M01 und P13 nach dem Entwurfsbogen
-ausarbeiten. Stufe 3 beginnt, sobald eine Einheit einen vollständigen
-R2-Nachweis trägt; vorher gäbe es nichts, was die Runtime anerkennen dürfte.
+Stufe 3 kann beginnen: Mit dem Pilot trägt eine Einheit einen vollständigen
+R2-Nachweis. Parallel Stufe 2 fortsetzen: die Kandidaten M01 und P13 nach dem
+Entwurfsbogen ausarbeiten und für den Pilot eine zweite Aufgabenvariante
+schreiben.
