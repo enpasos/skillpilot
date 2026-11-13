@@ -116,9 +116,15 @@ complete check as parallel jobs. Details: `docs/qa-ci/ci.md`.
   the subject and all its scopes at M0. No historical migration-preservation
   proof is required for this target gate. Current CQR coverage is the canonical
   Gymnasium catalog; inherited QA review bindings remain separately checked.
-  Historical review reuse may use an explicitly bound certified frame only
-  after full proof verification and dependency/applicability checks for the
-  unchanged subjects. Changed subjects retain strict current-input reviews.
+  The 13 November 2026 decision grades `GD-*` rules against all 21 canonical
+  Gymnasium roots, with higher obligations applying at their stated milestone.
+  A bounded catalog is not itself a partial gate; every upgrade needs gate,
+  count, and negative-test evidence. Runtime gaps remain explicit. Other
+  landscapes and promotion of the eleven M0 curricula are outside this work;
+  retained source bytes stay intact and live consumers need explicit validation.
+  Frozen V9 review reuse is goal-scoped: unchanged goals keep their bound
+  reviewed values, changed goals face strict current-input reviews. The proof
+  history is not replayed after the freeze; see the immutable-evidence rule below.
 - **Mastery**: one binary result (`0`/`1`) per atomic goal. Cluster and
   learning-unit progress is derived from atomic descendants; no completion
   ever writes mastery to children. Exams and memory goals always need their
@@ -133,7 +139,9 @@ complete check as parallel jobs. Details: `docs/qa-ci/ci.md`.
   runs directly in curriculum CI, including M0 entries. `CQR-104` remains
   explicitly limited to eight scopes; the four unconfigured Sek II scopes
   have unresolved evidence gaps. `CQR-102` covers all twelve scopes, but the
-  stronger semantic `GVR-012` remains Mathematics-only. Never turn a review
+  stronger semantic `GVR-012` is required for Mathematics Sek I/Sek II and
+  Biology Sek II (3/12). Physics/Chemistry route findings and six missing
+  current ledgers remain explicit in the shared scope inventory. Never turn a review
   queue green by bulk decisions. The frozen
   prerequisite-reduction registry (contract V9, `AGENTS.md` §2.2) keeps the
   reviews of 1,361 goals valid while each goal is unchanged; changing one of

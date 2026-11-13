@@ -14,7 +14,7 @@ Single source of truth for algorithmic graph and view validation in `.github/wor
 
 **Always-active core checks (`error`):** JSON parsing, goal-ID and logical `shortKey` uniqueness, referential integrity and self-reference guards on `requires`/`contains`, allowed `phase`/Leitideen/competency tag domains, acyclicity of direct `requires`, `contains`, and effective `requires`, `curricula/curriculum_manifest.json` sync, and project invariants (such as cross-subject Physics-to-Mathematics resolution).
 
-The validator also enforces the shared `CQR-102` direct atomic route obligation across every declared route profile. This reachability check does not claim the stronger Mathematics-specific semantic guarantees of `GVR-012`.
+The validator also enforces the shared `CQR-102` direct atomic route obligation across every declared route profile. This reachability check does not claim the stronger semantic guarantees of `GVR-012` (currently three of twelve scopes).
 
 ### Emitted Graph Validation Rules (`GVR-001` through `GVR-016`) {#sec:qa-gvr-catalog}
 
@@ -31,7 +31,7 @@ The retired identifiers `GVR-004`, `GVR-005`, `GVR-006`, and `GVR-013` remain re
 | **`GVR-009`** | `error` · local | Optional `type` metadata matches structural leaf/non-leaf classification (`atomic` iff `contains` is empty). |
 | **`GVR-010`** | `error` · `landscapeId` | `shortKey` is unique within the logical `landscapeId` (locale file pairs allowed only on identical goal UUIDs). |
 | **`GVR-011`** | `error` · profile scopes | Selected `curricularAtomic` goals reach their stage-specific motivation anchor via $R_{\mathrm{effective}}^+$. |
-| **`GVR-012`** | **unconditional `error`** · Math DE Sek I & II | **Hard full-route invariant:** Every `curricularAtomic` goal lies stage-locally on a direct atomic `requires` path from its `orientation` anchor to an atomic `practiceAssessment` terminal (Sek I: individual tasks under `Prüfungen Jahrgangsstufe 5..10`; Sek II: atomic tasks under `Übungen E-Phase`, `Q1..Q4`, `Prozesskompetenzen`; complete `semanticKind` ledger, zero cluster/structure shortcuts). |
+| **`GVR-012`** | **unconditional `error`** · Mathematics lower/upper secondary, Biology upper secondary | **Hard semantic full route:** Every selected `curricularAtomic` goal lies on a direct atomic route between `orientation` and `practiceAssessment`; complete current classifications, admissible intermediate goals, side prerequisites, and memory ordering are checked. Three of twelve scopes are required. The [shared inventory](repo:app/scripts/lib/semanticRouteInventory.ts) and [route audit](repo:app/scripts/auditSemanticLearningRoutes.ts) account for three additional scopes with route findings and six without complete ledgers; no cluster/structure shortcuts. |
 | **`GVR-014`** | **unconditional `error`** · all | Motivation/orientation nodes are pure, prerequisite-free atomic entry anchors with zero `examData`, `examples`, memory/SRS, or assessment tags. |
 | **`GVR-015`** | **unconditional `error`** · Math DE Sek I & II | Reviewed bilingual orientation outlooks (2–4 paths with `curricularArea` roots plus atomic `curricularAtomic` `entryGoalIds` and `milestoneGoalIds`, direct atomic link to the anchor, zero internal authoring terms like `Source-Extraction`, and fail-closed runtime intersection with `targetGoalIds`). |
 | **`GVR-016`** | **unconditional `error`** · `examData` | GFM table integrity across `taskContent*` and `solutionContent*` (valid delimiter row and uniform column count on consecutive pipe rows). |

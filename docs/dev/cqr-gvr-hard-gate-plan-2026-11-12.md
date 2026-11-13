@@ -631,6 +631,58 @@ plan.
   separate CI evidence above. Historical baseline and progress-log entries
   retain their original meaning; neither remaining coverage gap is closed by
   these documentation changes.
+- 2026-11-13, F1/F2 candidate in PR #141: corrected the 24-code source legend,
+  regraded eight independently checked `GD-*` rows and regenerated Graph
+  Definition/QA web and all four PDFs. All five documentation checks passed;
+  the Graph DE/EN PDFs have 108/107 pages and zero layout warnings. All 145
+  rule IDs and the new 12/50/55/28 distribution match source, web and PDF.
+  CQR-301 now shares native record validation; 18 new cases, the complete
+  140-case maturity suite and all 89 current review configurations passed.
+- 2026-11-13, F3 candidate: separated retained-source reads from the live
+  validator/backend inventories while preserving source evidence and explicit
+  outside-context compatibility. The 45 source graphs remain byte-identical;
+  the live validator reports 548 landscapes (21 canonical, 527 outside).
+  Exact inventory, rogue-graph and source-boundary regressions run in CI.
+  Eight inventory regressions passed. The final compiled backend subset passed
+  30/30 with no skips: source/index/closure/reload/readability/localization,
+  retired-learner HTTP reads, persisted mastery, signed export and retirement
+  rejection. The preceding nine-class run passed 355/356; its sole failure was
+  the new test reading the existing mastery response envelope incorrectly,
+  corrected and covered by the successful final rerun. CLI rejection remains
+  hard; runtime excludes ungated files while keeping other reads available.
+  Complete remote CI is separate from these local results.
+- 2026-11-13, F4 candidate: replaced the separate Mathematics route list with
+  profiles derived from the shared QA inventory, current authoritative ledgers
+  and a complete monotonic coverage register. Mathematics Sek I/II and Biology
+  Sek II are directly enforced. Physics and Chemistry retain 12 measured
+  semantic findings; the unclassified Economics remainder and five M6 scopes
+  remain explicit. Actual CLI negative probes cover route removal, coverage
+  downgrade, boundary widening, missing Git bases and concurrent input drift.
+- 2026-11-13, F5 candidate: restored the national Biology assessment collections
+  and corrected common course/duration filtering. The actual projection test
+  proves 21 restored GK tasks, five excluded LK-only tasks and all eight
+  existing visibility pins passing. Full composition validation passed for
+  354 views, with zero errors and 2,388 warnings. The stricter prospective
+  four-scope diagnostic still exits 1 and records genuine remaining gaps.
+- 2026-11-13, integration: the branch began at freshly fetched main `4aace51946`
+  and subsequently merged the newer source-rationale fixes through main
+  `d12f448c1b` as `5a7cc5ba92`. Full local CQR generation passed with 21/21 G17
+  passes and unchanged five M7, five M6 and eleven M0 curricula; all 21
+  curriculum and 12 scope floor pins passed. The later merge changed no
+  canonical graph, view, review ledger or CQR evaluator input. Main acceptance
+  still requires the unmerged candidate's separate complete remote CI and
+  subsequent owner merge.
+- 2026-11-13, separate baseline finding: the optional
+  `test:hessen-math-q24-q25-scope` command fails an old authored-target removal
+  comparison on unchanged main `d12f448c1b` as well. Its first failing view
+  contains four now-structural cluster identities and three explicitly
+  prerequisite-only placements absent from the old expectation. This is a
+  historical projection-fixture debt, not a change to the closed Personal
+  Curriculum learning basis. Shared route assertions were updated after
+  removal of the duplicate Mathematics list; historical expected sets and
+  Mathematics curriculum/view bytes were not changed to make this optional
+  command pass. The actual CI `test:composition-projection-roles` command,
+  including the separate HE Q2.1 regression, passed.
 
 ## 10. Follow-up programme: clean Gymnasium (13 November 2026)
 
@@ -784,8 +836,10 @@ assessment evidence (state, Sek II course level), never from what is already
 visible. No pin is lowered. A gap that cannot be evidenced stays documented
 and the code stays `PARTIAL`.
 
-After twelve passing scopes: grade `CQR-104` `HARD` and regrade the rows that
-waited for it (`GD-C22`, `A18`).
+After twelve passing scopes: grade `CQR-104` `HARD` and re-evaluate the rows
+that waited for it. This does not automatically make `GD-C22` or `A18` hard:
+`C22` additionally needs the semantic route obligation; `A18` includes
+assessment coverage/path and runtime obligations beyond endpoint visibility.
 
 ### 10.4 Out of scope
 
@@ -802,3 +856,48 @@ and each F5 subject where evidence supports a repair, as separate reviewable
 commits in one new pull request against `main`. Open a draft early for the
 quick CI tier, then run the complete remote tier when ready. Do not merge,
 publish or deploy. Add one line per package to the progress log in section 9.
+
+### 10.6 Current candidate and evidence-bound remainder
+
+The follow-up is being delivered in [PR #141](https://github.com/enpasos/skillpilot/pull/141).
+Passing candidate tests do not establish main acceptance. The implementation
+preserves all floors, the frozen V9 registry and its parent, and the source
+snapshots. The 55 `OPEN` runtime/concept rows are not regraded.
+
+- **F1/F2:** the register now measures the canonical Gymnasium domain, with
+  eight evidence-backed upgrades (`GD-C08`, `C11`, `C15`, `C16`, `C19`,
+  `X45`, `X46`, `U13`): 12 `HARD`, 50 `PARTIAL`, 55 `OPEN`, 28 `OPT/DOC`.
+  CQR-301 additionally rejects malformed, inconsistent or duplicate review
+  records and parser errors using the shared native record contract. The 89
+  current configured ledgers pass without changing a review decision. Counts
+  and summary badges are checked against the register, not maintained as an
+  unchecked second truth.
+- **F3:** retained source graphs have a separate explicit lookup. The live
+  validator inventory is 21 canonical roots plus the unchanged 527 files
+  outside Gymnasium. Source/provenance APIs and legacy outside-context closure
+  reads retain compatibility; canonical closure cannot use retained source
+  edges. See the [consumer audit](cqr-gvr-gymnasium-retained-source-audit-2026-11-13.md).
+- **F4:** shared QA profiles now drive six current-ledger semantic probes;
+  Mathematics Sek I/II and Biology Sek II pass and are directly required
+  (**3/12 scopes**). Physics Sek I/II and Chemistry Sek II have 8/1/3 actual
+  route findings. The Economics ledger still lacks 24 current goals, and five
+  M6 scopes have no current authoritative ledger. Those cases remain explicit
+  in the complete coverage register and
+  [current-input audit](../qa-ci/status/semantic-learning-route-audit.json).
+  Required coverage and established node boundaries cannot be downgraded
+  against the Git base. No source classification or prerequisite was changed
+  to pass the route validator; `GVR-012` remains `PARTIAL`.
+- **F5:** the shared evaluator respects authored course/duration filters;
+  Biology's eight existing national assessment collections expose their 21
+  GK tasks again, with five LK-only tasks still excluded. All eight pinned
+  visibility scopes pass. The four broader scopes still have genuine gaps;
+  Biology alone retains two missing state-view placements and five national
+  jurisdiction projections without an applicable terminal. A single bulk
+  placement mechanism cannot supply the missing assessment evidence. The
+  [subject findings](cqr-gvr-endpoint-visibility-findings-2026-11-13.md) and
+  [reproducible diagnostic](../qa-ci/status/route-endpoint-visibility-audit.json)
+  specify the remainder; `CQR-104` remains `PARTIAL` at **8/12 scopes**.
+
+F4/F5's stronger coverage targets are not complete. Their documented evidence
+work remains necessary before further pins or grades can be raised; this PR
+does not convert successful diagnosis into full target acceptance.
