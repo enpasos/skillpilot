@@ -576,12 +576,12 @@ const KINEMATICS_ASSESSMENT_IDS = new Set([
 const EXPECTED_COUNTS: SemanticKindLedger['counts'] = {
   curricularAtomic: 478,
   curricularArea: 112,
-  practiceAssessment: 164,
+  practiceAssessment: 165,
   programStructure: 1,
   memory: 5,
   runtimeSupport: 4,
   orientation: 2,
-  total: 766,
+  total: 767,
 }
 // Approved final diode/astronomy splits: exactly eight children replace three
 // mixed content leaves, and six new singleton-coverage assessment tasks are added.
