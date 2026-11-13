@@ -591,12 +591,21 @@ curricular-level terminology. Personalization Levels 1–4, QA maturity and goal
   is generated per build and is committed, taking over the CI check, when the
   runtime switches to contract 1.2. Do not commit a ledger that no CI step
   checks.
-- **First placed unit (12 November 2026).** Canonical Mathematics contains the
-  pilot unit `math-dot-product-projection` (one ordinary goal, one
-  assessment). It is structurally valid and carries no coverage review,
-  because its independent review found R2 not satisfied
+- **First placed unit (12 November 2026), first reviewed coverage
+  (13 November 2026).** Canonical Mathematics contains the pilot unit
+  `math-dot-product-projection` (one ordinary goal, one assessment). Its first
+  assessment did not satisfy R2
   (`curricula/DE/Gymnasium/quality/learning-units/math-dot-product-projection-2026-11-12.md`).
-  A stronger assessment needs a new assessment ID.
+  Since 13 November the unit owns the assessment
+  `be48054d-48f7-54c0-8248-d0a462ad6dc9`, written for it, and carries the
+  first coverage review: two independent machine reviewers, the second without
+  knowledge of the first, found R2 satisfied for the bound text
+  (`curricula/DE/Gymnasium/quality/learning-units/math-dot-product-projection-2026-11-13.md`).
+  The earlier assessment keeps its ID outside the unit; its passes are not
+  upgraded. A coverage review is machine content review bound to the task and
+  rubric revisions: any change to task, solution, grading note or rubric needs
+  a new review. The earlier completion profile `math-dot-product-projection`
+  still names the earlier assessment and is unchanged.
 
 This is concept documentation plus a static authoring contract and validator,
 not an implemented runtime or access policy. See `docs/concept/skill-graph/learning-units.md`,
