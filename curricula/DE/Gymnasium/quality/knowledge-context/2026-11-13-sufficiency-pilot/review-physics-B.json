@@ -1,0 +1,117 @@
+{
+  "reviewer": "Physics B",
+  "block": "65ddd780-0323-45d1-8f94-5e31bf28da23",
+  "results": [
+    {
+      "goalId": "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+      "title": "Freier Fall experimentell untersuchen",
+      "verdict": "not_sufficient",
+      "findings": [
+        {
+          "kind": "missing_prerequisite",
+          "competence": "set up and read a quadratic function of time (s ∝ t², with parameters s0, v0, g)",
+          "evidence": "unter Angabe der Anfangsbedingungen ein Zeit-Ort-Gesetz formulieren",
+          "existingGoalId": "5bced7dc-6557-4af1-9e70-d87f850d3b7f",
+          "existingGoalTitle": "Parameter quadratischer Funktionen in Scheitelpunktform deuten",
+          "confidence": "high",
+          "note": "Builds only on the secured 'Lineare Funktionen beschreiben'. Alternatives: 7bff61c1, 30c013ac, 1b70498a. With s-t data it would also need 264dc31c 'Methode: Linearisierung von Messkurven' or a quadratic fit."
+        }
+      ]
+    },
+    {
+      "goalId": "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+      "title": "Physik im Straßenverkehr: Sicherheitsabstände bewerten",
+      "verdict": "sufficient",
+      "findings": []
+    },
+    {
+      "goalId": "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
+      "title": "Gleichförmige Bewegung und Geschwindigkeit",
+      "verdict": "sufficient",
+      "findings": []
+    },
+    {
+      "goalId": "bf8517a9-142b-5789-826a-767f3b277998",
+      "title": "Durchschnitts- und Momentangeschwindigkeit unterscheiden",
+      "verdict": "not_sufficient",
+      "findings": [
+        {
+          "kind": "missing_prerequisite",
+          "competence": "instantaneous rate of change as the limit of secant slopes, i.e. the tangent slope on a graph",
+          "evidence": "Momentangeschwindigkeit für einen Zeitpunkt bestimmen ... im t-s-Diagramm als ... Tangentensteigung deuten",
+          "existingGoalId": "2143e9e8-b176-545b-b2fa-91bbb6c8cf5c",
+          "existingGoalTitle": "Momentane Änderungsrate qualitativ verstehen",
+          "confidence": "high",
+          "note": "Only 'Mittlere Änderungsrate berechnen und deuten' is secured. Same content in Jg 10: 7156558c. The gap carries over to every successor."
+        }
+      ]
+    },
+    {
+      "goalId": "ce431132-dfc4-42c2-aff6-bd72035190f8",
+      "title": "Bewegungen mit Diagrammen untersuchen",
+      "verdict": "not_sufficient",
+      "findings": [
+        {
+          "kind": "reaches_later",
+          "competence": "acceleration as a physical quantity (Δv/Δt, m/s²)",
+          "evidence": "in ... t-a-Diagrammen darstellen und interpretieren",
+          "existingGoalId": "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+          "existingGoalTitle": "Gleichmäßig beschleunigte Bewegung und Beschleunigung",
+          "confidence": "high",
+          "note": "Acceleration is introduced only in e4b38061, which transitively requires this goal."
+        },
+        {
+          "kind": "reaches_later",
+          "competence": "velocity as a defined quantity at a time point",
+          "evidence": "in ... t-v-Diagrammen darstellen und interpretieren",
+          "existingGoalId": "bf8517a9-142b-5789-826a-767f3b277998",
+          "existingGoalTitle": "Durchschnitts- und Momentangeschwindigkeit unterscheiden",
+          "confidence": "medium",
+          "note": "Velocity is first defined in 971beafa, which requires this goal directly."
+        }
+      ]
+    },
+    {
+      "goalId": "d6dc0e02-831d-4894-a61a-852bcc74f147",
+      "title": "Modellierung und Idealisierung von Bewegungen",
+      "verdict": "not_sufficient",
+      "findings": [
+        {
+          "kind": "missing_prerequisite",
+          "competence": "quadratic functions (s(t) = s0 + v0·t + ½a·t² as function and graph)",
+          "evidence": "Bewegungen mit Zeit-Ort- ... Gesetzen modellieren",
+          "existingGoalId": "5bced7dc-6557-4af1-9e70-d87f850d3b7f",
+          "existingGoalTitle": "Parameter quadratischer Funktionen in Scheitelpunktform deuten",
+          "confidence": "medium",
+          "note": "For the general form use 7bff61c1; for modelling 1b70498a fits but is heavier."
+        },
+        {
+          "kind": "missing_prerequisite",
+          "competence": "friction as a force that opposes and slows relative motion",
+          "evidence": "die verwendeten Idealisierungen wie ... Reibungsfreiheit begründen",
+          "existingGoalId": "581c0766-b84b-54cb-b8b6-375310329a41",
+          "existingGoalTitle": "Reibung als Kontaktkraft deuten",
+          "confidence": "medium",
+          "note": "E-phase duplicate: 5fd45dbc 'Reibungskräfte qualitativ verstehen'. An everyday notion might suffice."
+        }
+      ]
+    },
+    {
+      "goalId": "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+      "title": "Gleichmäßig beschleunigte Bewegung und Beschleunigung",
+      "verdict": "not_sufficient",
+      "findings": [
+        {
+          "kind": "missing_prerequisite",
+          "competence": "quadratic function / parabola to describe s ∝ t²",
+          "evidence": "das Modell der gleichmäßig beschleunigten Bewegung ... in t-s-... Darstellungen beschreiben",
+          "existingGoalId": "5bced7dc-6557-4af1-9e70-d87f850d3b7f",
+          "existingGoalTitle": "Parameter quadratischer Funktionen in Scheitelpunktform deuten",
+          "confidence": "medium",
+          "note": "A purely qualitative t-s description would be possible without it. Alternative: 30c013ac."
+        }
+      ]
+    }
+  ],
+  "remarks": "Judged from descriptions only. Pattern 1: no Mathematics goal on quadratic functions, powers of t or tangents is secured anywhere in the block. Pattern 2: the entry goal uses t-v and t-a diagrams before velocity, instantaneous velocity and acceleration are introduced. Judged as everyday knowledge: air resistance, road conditions, speed magnitude in 1D."
+}

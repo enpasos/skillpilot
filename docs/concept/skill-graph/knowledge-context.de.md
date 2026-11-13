@@ -116,7 +116,7 @@ Der Coach erhält Titel von Zielen und Beherrschungsstände, die sein Kontext an
 ### 13.6. Reihenfolge der Einführung
 
 1. **Ableiten.** Ein deterministisches Werkzeug im Repository und ein Bericht je Fach. Kein Gate ändert sich. Diesen Schritt gibt es.
-2. **Hinlänglichkeit prüfen**, blockweise, beginnend mit einem Pilotblock je Fach. Der Anteil der Ziele mit Befund zeigt, was es kostet, ein Fach hinlänglich zu machen.
+2. **Hinlänglichkeit prüfen**, blockweise, beginnend mit einem Pilotblock je Fach. Der Anteil der Ziele mit Befund zeigt, was es kostet, ein Fach hinlänglich zu machen. Im Pilot vom 13. November 2026 (Ableitungseinstieg der Mathematik, Kinematik der Einführungsphase der Physik) fanden beide unabhängigen Reviewer die Voraussetzungen bei 20 von 39 Zielen nicht ausreichend; die Einstiegskette der Analysis sichert keine Algebra der Klassen 7 bis 9 ([Pilotprotokoll](../../dev/knowledge-context-sufficiency-pilot-2026-11-13.md)).
 3. **Kontexttreue prüfen** bei Bildern, Karten und Aufgaben, zusammen mit dem Entwurf der Lerneinheiten eines Blocks.
 4. **Den Coach bedienen**, je Fach, sobald das Fach hinlänglich ist. Ein Kontext aus einem nicht hinlänglichen Graphen würde verbieten, was Lernende tatsächlich wissen.
 

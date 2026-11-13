@@ -1,0 +1,98 @@
+{
+  "reviewer": "Physics A",
+  "block": "65ddd780-0323-45d1-8f94-5e31bf28da23",
+  "results": [
+    {
+      "goalId": "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+      "title": "Freier Fall experimentell untersuchen",
+      "verdict": "not_sufficient",
+      "findings": [
+        {
+          "kind": "missing_prerequisite",
+          "competence": "Set up a time-position law for a uniformly accelerated motion with initial conditions (a term in t that contains t²)",
+          "evidence": "unter Angabe der Anfangsbedingungen ein Zeit-Ort-Gesetz formulieren",
+          "existingGoalId": "d6dc0e02-831d-4894-a61a-852bcc74f147",
+          "existingGoalTitle": "Modellierung und Idealisierung von Bewegungen",
+          "confidence": "medium",
+          "note": "Only catalog goal that develops time-position laws. If Freier Fall is meant to develop the law itself, the maths is still missing: neither f08d06dc 'Terme mit Variablen lesen und deuten' nor d658e26a 'Potenzen mit natürlichen Exponenten deuten und berechnen' is secured here."
+        }
+      ]
+    },
+    {
+      "goalId": "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+      "title": "Physik im Straßenverkehr: Sicherheitsabstände bewerten",
+      "verdict": "sufficient",
+      "findings": []
+    },
+    {
+      "goalId": "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
+      "title": "Gleichförmige Bewegung und Geschwindigkeit",
+      "verdict": "sufficient",
+      "findings": []
+    },
+    {
+      "goalId": "bf8517a9-142b-5789-826a-767f3b277998",
+      "title": "Durchschnitts- und Momentangeschwindigkeit unterscheiden",
+      "verdict": "not_sufficient",
+      "findings": [
+        {
+          "kind": "missing_prerequisite",
+          "competence": "Instantaneous rate of change as the limit of average rates; the tangent slope at a point of a graph",
+          "evidence": "Momentangeschwindigkeit für einen Zeitpunkt bestimmen ... im t-s-Diagramm als Sekanten- beziehungsweise Tangentensteigung deuten",
+          "existingGoalId": "2143e9e8-b176-545b-b2fa-91bbb6c8cf5c",
+          "existingGoalTitle": "Momentane Änderungsrate qualitativ verstehen",
+          "confidence": "high",
+          "note": "Only ae20183e is secured. Same competence in 7156558c (grade 10) and b1dcc191."
+        }
+      ]
+    },
+    {
+      "goalId": "ce431132-dfc4-42c2-aff6-bd72035190f8",
+      "title": "Bewegungen mit Diagrammen untersuchen",
+      "verdict": "not_sufficient",
+      "findings": [
+        {
+          "kind": "reaches_later",
+          "competence": "Acceleration as a physical quantity, needed to draw and read t-a diagrams",
+          "evidence": "in t-s-, t-v- und t-a-Diagrammen darstellen und interpretieren",
+          "existingGoalId": "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+          "existingGoalTitle": "Gleichmäßig beschleunigte Bewegung und Beschleunigung",
+          "confidence": "high",
+          "note": "Acceleration is developed only in e4b38061, which requires this goal transitively."
+        },
+        {
+          "kind": "reaches_later",
+          "competence": "Velocity as a defined quantity and, for non-uniform motion, instantaneous velocity, needed for t-v diagrams",
+          "evidence": "in ... t-v- ... Diagrammen darstellen und interpretieren",
+          "existingGoalId": "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
+          "existingGoalTitle": "Gleichförmige Bewegung und Geschwindigkeit",
+          "confidence": "low",
+          "note": "Average velocity is available through ae20183e and the Sek I t-s diagram goal."
+        }
+      ]
+    },
+    {
+      "goalId": "d6dc0e02-831d-4894-a61a-852bcc74f147",
+      "title": "Modellierung und Idealisierung von Bewegungen",
+      "verdict": "not_sufficient",
+      "findings": [
+        {
+          "kind": "missing_prerequisite",
+          "competence": "Friction as an effect (force) that brakes motion",
+          "evidence": "die verwendeten Idealisierungen wie Massepunkt und Reibungsfreiheit begründen und die Grenzen der Modellvorhersagen angeben",
+          "existingGoalId": "581c0766-b84b-54cb-b8b6-375310329a41",
+          "existingGoalTitle": "Reibung als Kontaktkraft deuten",
+          "confidence": "medium",
+          "note": "If an everyday notion of friction is accepted, this finding falls away. Later alternative: 5fd45dbc."
+        }
+      ]
+    },
+    {
+      "goalId": "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+      "title": "Gleichmäßig beschleunigte Bewegung und Beschleunigung",
+      "verdict": "sufficient",
+      "findings": []
+    }
+  ],
+  "remarks": "Read 'beschreiben' and 'darstellen' in the minimal, qualitative sense. If the t-s description in e4b38061 includes s = ½·a·t² or the parabola, powers and quadratic functions would be missing. No goal in the block secures a quadratic-function goal. Main pattern: the chain begins with ce431132, whose description already uses t-v and t-a diagrams while velocity and acceleration are defined only in its successors. The tangent concept is secured for no goal in the block. Not reported as everyday knowledge: air resistance, road conditions, unit conversion, best-fit line by eye."
+}

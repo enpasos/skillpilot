@@ -700,8 +700,11 @@ with the respective goal.
   by hand.
 - **Status.** Only the derivation exists. No gate, no generation pipeline
   and no coach uses the context yet. Order of introduction: derive (done),
-  review sufficiency block by block, check images, cards and tasks, serve
-  the coach per subject once it is sufficient. Open: whether
+  review sufficiency block by block (pilot done on 13 November 2026: 20 of 39
+  goals insufficient by both independent reviewers,
+  `docs/dev/knowledge-context-sufficiency-pilot-2026-11-13.md`), check
+  images, cards and tasks, serve the coach per subject once it is
+  sufficient. Open: whether
   sufficiency becomes a milestone gate, and whether goals should name the
   terms they introduce. Do not call the context of a goal "context" alone;
   that word names the resolved curriculum context.

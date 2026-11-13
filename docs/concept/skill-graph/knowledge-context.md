@@ -116,7 +116,7 @@ The coach receives titles of goals and mastery states that its context already c
 ### 13.6. Order of Introduction
 
 1. **Derive.** A deterministic repository tool and a report per subject. No gate changes. This step exists.
-2. **Review sufficiency** block by block, starting with one pilot block per subject. The share of goals with findings shows what it costs to make a subject sufficient.
+2. **Review sufficiency** block by block, starting with one pilot block per subject. The share of goals with findings shows what it costs to make a subject sufficient. In the pilot of 13 November 2026 (derivative entry of Mathematics, kinematics of the introductory phase of Physics) both independent reviewers found the prerequisites insufficient for 20 of 39 goals; the entry chain of calculus secures no algebra of grades 7 to 9 ([pilot record](../../dev/knowledge-context-sufficiency-pilot-2026-11-13.md)).
 3. **Check faithfulness** of images, cards, and tasks, together with the design of the learning units of a block.
 4. **Serve the coach** per subject once the subject is sufficient. A context from an insufficient graph would forbid what learners in fact know.
 
