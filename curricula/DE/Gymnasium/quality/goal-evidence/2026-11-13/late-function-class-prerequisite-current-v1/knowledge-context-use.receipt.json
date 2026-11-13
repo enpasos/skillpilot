@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-13T17:29:38.076062+00:00",
+  "canonicalPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+  "canonicalSha256": "sha256:3a36b654429537dddc3e3326928cb36688f67586e2e04e9aec6b74676402ebdf",
+  "derivations": [
+    {
+      "command": "npm --prefix app run -s knowledge-context -- 08b80080-4895-55df-8ca6-4e8c5eb0f9f5 --full",
+      "exitCode": 0,
+      "outputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-13/late-function-class-prerequisite-current-v1/knowledge-context.full.txt",
+      "outputSha256": "sha256:9d91a206c143a2beac6ab1a6323e91965cf518dbc1b9c94b8b765885ae7d389b"
+    },
+    {
+      "command": "npm --prefix app run -s knowledge-context -- 08b80080-4895-55df-8ca6-4e8c5eb0f9f5 --json",
+      "exitCode": 0,
+      "outputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-13/late-function-class-prerequisite-current-v1/knowledge-context.json",
+      "outputSha256": "sha256:56896113af1928cd534513e53218bef0437780e06def3a465c97d953646d97de"
+    }
+  ],
+  "use": "Both actual outputs were read before current P/A/M/semantic-kind content review and supplied to each fresh blind D reviewer before content review. This documents manual tool use for this batch, not an implemented automatic generator/coach integration.",
+  "toolInputs": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "sha256:98919d0a4fed699cae2df1a99834bb3023f0dc513d694d314138c13a12e0bd32"
+    },
+    {
+      "path": "app/scripts/deriveKnowledgeContext.ts",
+      "sha256": "sha256:fabc11c00442a6e580caa4a85a0470e4b0dbb8635154a5321ce8f1e458b409c7"
+    },
+    {
+      "path": "app/scripts/lib/knowledgeContext.ts",
+      "sha256": "sha256:4ef6d7c8be94091469a12e381a2246716b21e067b7bcf8a728486b9cc4990791"
+    },
+    {
+      "path": "app/scripts/lib/learningUnitContracts.ts",
+      "sha256": "sha256:d9885fc641113c928ad4ec496098e9000f304e0368f2c341c3c315c9c7b2f36b"
+    }
+  ]
+}

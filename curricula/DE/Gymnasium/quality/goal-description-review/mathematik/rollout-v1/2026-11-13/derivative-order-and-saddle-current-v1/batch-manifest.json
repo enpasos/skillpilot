@@ -1,0 +1,56 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-derivative-order-and-saddle-current-20261113-v1",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-11-13/derivative-order-and-saddle-current-v1.config.json",
+  "configDigest": "sha256:75a21b2b0e187c873ba5d086ce16a185b0e3a7c0daf2e6333c91ccb048c9a52a",
+  "goalIds": [
+    "350fc8b1-ead0-4239-b28a-217cbd3bd1c3",
+    "b3604df4-15a8-41c8-a8b0-50dadd698bd3",
+    "d5feba00-4336-4f26-8dba-0537a797eddb"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 807,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:e13712859d486a0baeeaadd92fa80588cf0bdd56032a4762f27c0793c329e5f7"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:cbd5a7f635457f72a169c7a0d2fab5b25fde7c235bb549e09224445aac492984",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:e042f5c192b40330d2a8612fd5b37605813585520671534c4ce55bdd0bbc8ea6",
+    "reviewInputFingerprint": "sha256:fb14261c397e6442443342005a1652f9759dadf9a94db7555350c1f267fe39ec",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-derivative-order-and-saddle-current-20261113-v1-a",
+        "campaignDigest": "sha256:d0fbc80749fc32ed0ad0c8f9256c4d496471dd468918f699e4b480efa03b9494",
+        "roundId": "mathematik-derivative-order-and-saddle-current-20261113-v1-first-pass-a",
+        "independenceGroupId": "mathematik-derivative-order-and-saddle-current-20261113-v1-independent-a",
+        "batchId": "mathematik-derivative-order-and-saddle-current-20261113-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:6e03c8e5362995c00ccd7484c2ab9ef6f44cbf0e232aef3eaeefa8c5d57817dc"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-derivative-order-and-saddle-current-20261113-v1-b",
+        "campaignDigest": "sha256:e90d96513164c90ceed23faa664e277ab99fb2e9d81eb1a8c4243fff35f04c4b",
+        "roundId": "mathematik-derivative-order-and-saddle-current-20261113-v1-first-pass-b",
+        "independenceGroupId": "mathematik-derivative-order-and-saddle-current-20261113-v1-independent-b",
+        "batchId": "mathematik-derivative-order-and-saddle-current-20261113-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:d88afda586fe808d75b72043e35d64242c2a05256501afbd45b3bae2272b0cf6"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "kind": "local-integration-validation",
+  "completedAt": "2026-11-13T17:40:06.326448+00:00",
+  "baseCommit": "e05782e968734af9daba880a7c7aca292aa6465c",
+  "canonicalSha256": "3a36b654429537dddc3e3326928cb36688f67586e2e04e9aec6b74676402ebdf",
+  "registrySha256": "f15956f19c55df7b7160daf80b9e9c23d670755f3074ff994582ff7729ad7756",
+  "checks": [
+    {
+      "command": "npm --prefix app run quality:curriculum-status",
+      "exitCode": 0,
+      "deepUnderstandingChecks": "complete current D/P/A/M/V and all required checks through CQR-303",
+      "subjects": [
+        {
+          "subject": "Biologie",
+          "maturity": "M7",
+          "strictComplete": 397,
+          "expectedGoals": 397,
+          "requiredChecksPassed": 6,
+          "requiredChecksTotal": 6,
+          "blockingIssues": 0
+        },
+        {
+          "subject": "Chemie",
+          "maturity": "M7",
+          "strictComplete": 455,
+          "expectedGoals": 455,
+          "requiredChecksPassed": 6,
+          "requiredChecksTotal": 6,
+          "blockingIssues": 0
+        },
+        {
+          "subject": "Mathematik",
+          "maturity": "M7",
+          "strictComplete": 807,
+          "expectedGoals": 807,
+          "requiredChecksPassed": 6,
+          "requiredChecksTotal": 6,
+          "blockingIssues": 0
+        },
+        {
+          "subject": "Physik",
+          "maturity": "M7",
+          "strictComplete": 478,
+          "expectedGoals": 478,
+          "requiredChecksPassed": 6,
+          "requiredChecksTotal": 6,
+          "blockingIssues": 0
+        },
+        {
+          "subject": "Wirtschaftswissenschaften",
+          "maturity": "M7",
+          "strictComplete": 346,
+          "expectedGoals": 346,
+          "requiredChecksPassed": 6,
+          "requiredChecksTotal": 6,
+          "blockingIssues": 0
+        }
+      ]
+    },
+    {
+      "command": "npm --prefix app run check:curriculum-maturity-floors",
+      "exitCode": 0,
+      "curricula": 21,
+      "scopes": 12
+    },
+    {
+      "command": "npm --prefix app run build:goal-books",
+      "exitCode": 0,
+      "registeredBooksBuiltOrHashReusedAndVerified": 5
+    },
+    {
+      "check": "current Mathematics and Physics runtime schemas and all committable curriculum symlinks",
+      "status": "pass"
+    }
+  ],
+  "limits": [
+    "Local machine QA only; no human-trial or host acceptance claim.",
+    "Remote CI and production deployment are separate."
+  ]
+}

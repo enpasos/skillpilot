@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:ab95c2ee56254f465d5da4ef07952698903598716db2b29944aa9e33fe07e229",
+  "reviewInputFingerprint": "sha256:aed4f154a6ed61972dd5249fe47731a82969555b12e03bf4c8afa1bfeb718569",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-late-function-class-prerequisite-current-20261113-v1-a",
+      "roundId": "mathematik-late-function-class-prerequisite-current-20261113-v1-first-pass-a",
+      "independenceGroupId": "mathematik-late-function-class-prerequisite-current-20261113-v1-independent-a",
+      "runIds": [
+        "mathematik-late-function-class-prerequisite-current-20261113-v1-a.sol61-native-20261113T172305Z"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6.1-sol::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-late-function-class-prerequisite-current-20261113-v1-b",
+      "roundId": "mathematik-late-function-class-prerequisite-current-20261113-v1-first-pass-b",
+      "independenceGroupId": "mathematik-late-function-class-prerequisite-current-20261113-v1-independent-b",
+      "runIds": [
+        "late-function-class-current-20261113-b-sol61-native"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6.1-sol::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [
+      "OpenAI::gpt-6.1-sol::(unspecified-version)"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "08b80080-4895-55df-8ca6-4e8c5eb0f9f5",
+      "firstRecordId": "mathematik-late-function-class-prerequisite-current-20261113-v1-a.sol61-native-20261113T172305Z.record-001",
+      "secondRecordId": "late-function-class-current-20261113-b-sol61-native.goal-001",
+      "firstRunId": "mathematik-late-function-class-prerequisite-current-20261113-v1-a.sol61-native-20261113T172305Z",
+      "secondRunId": "late-function-class-current-20261113-b-sol61-native",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Actual native current validation on final canonical after direct08b\u2192858 edge; existing review artifacts were not rewritten.",
+  "checks": [
+    {
+      "command": "npm --prefix app run -s quality:goal-description-rollout-batch -- finalize --config curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-11-13/derivative-order-and-saddle-current-v1.config.json",
+      "exitCode": 0,
+      "strictResolutions": 3,
+      "configuredGoals": 3,
+      "write": false
+    },
+    {
+      "command": "npm --prefix app run -s quality:goal-description-rollout-batch -- finalize --config curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-11-13/feedback-polynomial-visuals-current-v1.config.json",
+      "exitCode": 0,
+      "strictResolutions": 2,
+      "configuredGoals": 2,
+      "write": false
+    }
+  ],
+  "interpretation": "Native current canonical contexts and exact goal-scoped resolution bindings remain valid. A new reverse reference to08b in a regenerated full book is not an own-goal change and does not require rewriting858 or the three early native D packets. This does not assert that a static historical page is the fresh full book.",
+  "checkedCanonicalPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+  "checkedCanonicalSha256": "sha256:3a36b654429537dddc3e3326928cb36688f67586e2e04e9aec6b74676402ebdf"
+}

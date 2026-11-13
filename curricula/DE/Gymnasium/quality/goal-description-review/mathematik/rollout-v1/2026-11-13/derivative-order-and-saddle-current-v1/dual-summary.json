@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:e042f5c192b40330d2a8612fd5b37605813585520671534c4ce55bdd0bbc8ea6",
+  "reviewInputFingerprint": "sha256:fb14261c397e6442443342005a1652f9759dadf9a94db7555350c1f267fe39ec",
+  "goalCount": 3,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-derivative-order-and-saddle-current-20261113-v1-a",
+      "roundId": "mathematik-derivative-order-and-saddle-current-20261113-v1-first-pass-a",
+      "independenceGroupId": "mathematik-derivative-order-and-saddle-current-20261113-v1-independent-a",
+      "runIds": [
+        "mathematik-derivative-current-20261113-sol61-review-a"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6.1-sol::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-derivative-order-and-saddle-current-20261113-v1-b",
+      "roundId": "mathematik-derivative-order-and-saddle-current-20261113-v1-first-pass-b",
+      "independenceGroupId": "mathematik-derivative-order-and-saddle-current-20261113-v1-independent-b",
+      "runIds": [
+        "mathematik-derivative-order-and-saddle-current-20261113-v1-first-pass-b.openai-gpt-6.1-sol"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6.1-sol::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [
+      "OpenAI::gpt-6.1-sol::(unspecified-version)"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 3,
+    "unavailable": 0,
+    "requiresSynthesis": 3
+  },
+  "goals": [
+    {
+      "goalId": "350fc8b1-ead0-4239-b28a-217cbd3bd1c3",
+      "firstRecordId": "mathematik-derivative-current-20261113-sol61-review-a.001",
+      "secondRecordId": "mathematik-derivative-order-and-saddle-current-20261113-v1-first-pass-b.openai-gpt-6.1-sol.goal-1",
+      "firstRunId": "mathematik-derivative-current-20261113-sol61-review-a",
+      "secondRunId": "mathematik-derivative-order-and-saddle-current-20261113-v1-first-pass-b.openai-gpt-6.1-sol",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "b3604df4-15a8-41c8-a8b0-50dadd698bd3",
+      "firstRecordId": "mathematik-derivative-current-20261113-sol61-review-a.002",
+      "secondRecordId": "mathematik-derivative-order-and-saddle-current-20261113-v1-first-pass-b.openai-gpt-6.1-sol.goal-2",
+      "firstRunId": "mathematik-derivative-current-20261113-sol61-review-a",
+      "secondRunId": "mathematik-derivative-order-and-saddle-current-20261113-v1-first-pass-b.openai-gpt-6.1-sol",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "d5feba00-4336-4f26-8dba-0537a797eddb",
+      "firstRecordId": "mathematik-derivative-current-20261113-sol61-review-a.003",
+      "secondRecordId": "mathematik-derivative-order-and-saddle-current-20261113-v1-first-pass-b.openai-gpt-6.1-sol.goal-3",
+      "firstRunId": "mathematik-derivative-current-20261113-sol61-review-a",
+      "secondRunId": "mathematik-derivative-order-and-saddle-current-20261113-v1-first-pass-b.openai-gpt-6.1-sol",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

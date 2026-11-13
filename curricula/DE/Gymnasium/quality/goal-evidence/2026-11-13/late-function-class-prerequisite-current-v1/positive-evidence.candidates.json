@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "mathematik-late-function-class-prerequisite-current-p-20261113-v1",
+  "reviewedAt": "2026-11-13T17:19:37Z",
+  "reviewer": "Codex current Q4 function-class knowledge-context content re-review; AI candidate, no human approval",
+  "goals": [
+    {
+      "goalId": "08b80080-4895-55df-8ca6-4e8c5eb0f9f5",
+      "reason": "Nach tatsächlicher vollständiger Tool-Ableitung des aktuellen Wissenskontexts erneut fachlich gelesenes vollständiges bestehendes P-Profil: x³−x versus2^x benötigt die nun ausdrücklich durch858 gesicherte elementare Exponentialableitung; die Polynomregeln bleiben durch623/dde/e944 gesichert. Der zweite Vergleich mit1/(x−1) und einer quadratischen Funktion bleibt vollständig erhalten. Keine Verengung von Funktionsklassen, Aufgaben oder positiver Evidenz; tatsächliche eigene Bildsichtprüfung nach Wissenskontextableitung bestätigt den unveränderten Klassenvergleich. Baseline-Lücken bei Funktionsfamilien, Definitionsbereich, Logarithmus und allgemeinen Verkettungsregeln bleiben gesonderte Suffizienzbefunde, keine automatische Freigabe. AI-KandidatE1/G1, keine menschliche Abnahme oder beobachtete Lernleistung.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "core-understanding",
+            "essentialUnderstandingDe": "Funktionsklassen unterscheiden sich in Definitionslücken, Verhalten an den Rändern, möglicher Zahl von Extrema/Wendestellen und geeigneten Nullstellenwegen; solche Vergleiche brauchen begründete Bedingungen statt bloße Graphenähnlichkeit.",
+            "essentialUnderstandingEn": "Function classes differ in domain gaps, end behavior, possible extrema/inflection points, and suitable root strategies; comparisons need justified conditions rather than visual resemblance.",
+            "observablePerformanceDe": "Die Person vergleicht konkrete Vertreter anhand von Term, Ableitungen und Definitionsbereich und begründet, welche Eigenschaften klassentypisch bzw. beispielabhängig sind.",
+            "observablePerformanceEn": "The learner compares concrete representatives using formulas, derivatives, and domains, and explains which features are characteristic of the classes and which depend on the example."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "core-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Von Polynom versus Exponentialfunktion zu gebrochenrationaler Funktion versus quadratischem Polynom wechseln; Polstelle und Asymptote ändern die Vergleichskriterien.",
+            "textEn": "Move from polynomial versus exponential function to rational function versus quadratic polynomial; a pole and asymptote change the comparison criteria."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "cubic-exponential",
+            "taskDemandDe": "Vergleiche f(x)=x³−x und g(x)=2^x bezüglich Verhalten für x→±∞, Extrema/Wendestellen und einer passenden Nullstellenstrategie; begründe deine Aussagen.",
+            "taskDemandEn": "Compare f(x)=x³−x and g(x)=2^x for x→±∞, extrema/inflection points, and a suitable root strategy; justify the claims.",
+            "expectedPerformanceDe": "f verhält sich wie x³, hat Nullstellen −1,0,1, zwei Extrema aus f′=3x²−1 und einen Wendepunkt bei 0 aus f′′=6x. g>0, wächst streng, hat keine Nullstelle, Extrema oder Wendestelle; g→0 für x→−∞ und g→∞ für x→∞.",
+            "expectedPerformanceEn": "f behaves like x³, has roots −1,0,1, two extrema from f′=3x²−1, and one inflection at 0 from f′′=6x. g>0, increases strictly, has no root, extremum, or inflection; g→0 as x→−∞ and g→∞ as x→∞.",
+            "understandingFocusDe": "Termstruktur und Ableitungen statt bloßem Kurvenbild tragen den Klassenvergleich.",
+            "understandingFocusEn": "Formula structure and derivatives rather than visual shape carry the class comparison."
+          },
+          {
+            "id": "rational-quadratic",
+            "taskDemandDe": "Vergleiche r(x)=1/(x−1) und q(x)=(x−1)²−1 nach denselben Kriterien. Welche neue Rolle spielen Definitionsbereich und Asymptote?",
+            "taskDemandEn": "Compare r(x)=1/(x−1) and q(x)=(x−1)²−1 using the same criteria. What new role do domain and asymptote play?",
+            "expectedPerformanceDe": "r ist bei x=1 undefiniert, hat dort eine Polstelle, für |x|→∞ Grenzwert 0, keine Nullstelle und auf jedem Definitionsintervall weder Extremum noch Wendepunkt. q→∞ an beiden Enden, hat Minimum (1,−1), Nullstellen 0 und 2, keinen Wendepunkt; quadratische Gleichung liefert die Nullstellen.",
+            "expectedPerformanceEn": "r is undefined at x=1 with a pole, tends to 0 as |x|→∞, has no root and no extremum or inflection on either domain interval. q→∞ at both ends, has minimum (1,−1), roots 0 and 2, and no inflection; a quadratic equation yields the roots.",
+            "understandingFocusDe": "Der Transfer ergänzt Definitionslücke und Asymptote, ohne einen Vorzeichenwechsel über die Polstelle als Wendepunkt zu missdeuten.",
+            "understandingFocusEn": "The transfer adds domain gap and asymptote without mistaking a sign change across the pole for an inflection point."
+          }
+        ]
+      }
+    }
+  ]
+}

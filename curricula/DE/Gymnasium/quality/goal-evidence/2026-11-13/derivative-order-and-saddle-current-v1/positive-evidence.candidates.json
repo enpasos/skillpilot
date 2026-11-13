@@ -1,0 +1,231 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "mathematik-derivative-order-and-saddle-current-p-20261113-v1",
+  "reviewedAt": "2026-11-13T16:47:48Z",
+  "reviewer": "Codex targeted current polynomial derivative-profile author; AI candidate, no human approval",
+  "goals": [
+    {
+      "goalId": "350fc8b1-ead0-4239-b28a-217cbd3bd1c3",
+      "reason": "Fachlich neu geprüfter aktueller P-Nachfolger für die explizite Präzisierung der Ableitungsordnung, Vorzeichen- und Bedingungslogik. Eigenständige Transferfälle statt Bildwiedergabe; AI-Kandidat E1/G1, keine menschliche Freigabe oder beobachtete Lernleistung. Die unveränderten Bilder wurden vom koordinierenden Root visuell geprüft; native Materialisierung bindet die aktuellen Bildbytes.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "sign-intervals",
+            "essentialUnderstandingDe": "Das Vorzeichen von f′ auf Intervallen bestimmt das Monotonieverhalten; eine einzelne Nullstelle von f′ reicht für eine Extremstelle nicht aus.",
+            "essentialUnderstandingEn": "The sign of f′ on intervals determines monotonicity; a single zero of f′ is insufficient to establish an extremum.",
+            "observablePerformanceDe": "Bestimmt und begründet die Vorzeichenintervalle von f′ und übersetzt sie in das Verhalten von f.",
+            "observablePerformanceEn": "Determines and justifies the sign intervals of f′ and translates them into the behaviour of f."
+          },
+          {
+            "id": "extremum-type",
+            "essentialUnderstandingDe": "Ein Vorzeichenwechsel von f′ entscheidet in den betrachteten Polynombeispielen über Hoch- oder Tiefpunkte; Stelle und Funktionswert sind verschieden.",
+            "essentialUnderstandingEn": "A sign change of f′ determines a local maximum or minimum in the polynomial examples considered; an input location differs from its function value.",
+            "observablePerformanceDe": "Klassifiziert stationäre Stellen anhand der benachbarten Vorzeichen und berechnet die zugehörigen Punkte.",
+            "observablePerformanceEn": "Classifies stationary locations using adjacent signs and calculates the corresponding points."
+          },
+          {
+            "id": "derivative-role",
+            "essentialUnderstandingDe": "Die erste Ableitung beschreibt die lokale Änderungsrate und die Tangentensteigung, nicht den Funktionswert.",
+            "essentialUnderstandingEn": "The first derivative describes the local rate of change and tangent slope, not the function value.",
+            "observablePerformanceDe": "Bestimmt an einer vorgegebenen Stelle f′ und deutet Vorzeichen und Betrag als lokale Änderung beziehungsweise Tangentensteigung.",
+            "observablePerformanceEn": "Determines f′ at a given location and interprets its sign and magnitude as local change or tangent slope."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "sign-intervals",
+            "extremum-type",
+            "derivative-role"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "sign-change-or-touch",
+            "textDe": "Einfache Ableitungsnullstellen mit Vorzeichenwechsel und eine doppelte Nullstelle ohne Wechsel vergleichen.",
+            "textEn": "Compare simple derivative zeros with sign changes and a double zero without a sign change."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "two-turning-points",
+            "taskDemandDe": "Untersuche f(x)=x³−6x²+9x auf ℝ auf Monotonie und lokale Extrempunkte. Begründe die Einteilung ohne vorgegebenes Vorzeichenschema. Deute zusätzlich f′(2) als lokale Änderungsrate und Tangentensteigung.",
+            "taskDemandEn": "Investigate f(x)=x³−6x²+9x on ℝ for monotonicity and local extrema. Justify your intervals without a supplied sign chart. Also interpret f′(2) as a local rate of change and tangent slope.",
+            "expectedPerformanceDe": "f′=3(x−1)(x−3) hat die Vorzeichen +,−,+. f steigt auf (−∞,1), fällt auf (1,3) und steigt auf (3,∞). Hochpunkt (1,4), Tiefpunkt (3,0); die Vorzeichenwechsel begründen die Typen. f′(2)=−3 ist die Tangentensteigung und lokale Änderungsrate, nicht der Funktionswert f(2)=2.",
+            "expectedPerformanceEn": "f′=3(x−1)(x−3) has signs +,−,+. f increases on (−∞,1), decreases on (1,3), and increases on (3,∞). Local maximum (1,4), minimum (3,0); the sign changes justify their types. f′(2)=−3 is the tangent slope and local rate of change, not the function value f(2)=2.",
+            "understandingFocusDe": "Vorzeichenintervalle tragen die Schlussfolgerung, nicht allein die Gleichung f′=0.",
+            "understandingFocusEn": "Sign intervals support the conclusion, not merely the equation f′=0."
+          },
+          {
+            "id": "stationary-without-extremum",
+            "taskDemandDe": "Untersuche g(x)=x³+2 auf ℝ. Ist die waagerechte Tangente bei x=0 mit einem Extrempunkt verbunden? Begründe auch das globale Monotonieverhalten.",
+            "taskDemandEn": "Investigate g(x)=x³+2 on ℝ. Does the horizontal tangent at x=0 imply an extremum? Also justify global monotonicity.",
+            "expectedPerformanceDe": "g′=3x² ist außer bei 0 positiv und wechselt dort nicht das Vorzeichen. (0,2) ist kein Extrempunkt. g ist streng steigend auf ℝ; dies folgt etwa direkt aus der strengen Ordnungserhaltung von x³, nicht aus der falschen Behauptung g′>0 überall.",
+            "expectedPerformanceEn": "g′=3x² is positive except at 0 and does not change sign there. (0,2) is not an extremum. g is strictly increasing on ℝ, for example by the strict order preservation of x³, not by the false claim that g′>0 everywhere.",
+            "understandingFocusDe": "Eine isolierte waagerechte Tangente verhindert strenges Steigen nicht.",
+            "understandingFocusEn": "An isolated horizontal tangent does not preclude strict increase."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "b3604df4-15a8-41c8-a8b0-50dadd698bd3",
+      "reason": "Fachlich neu geprüfter aktueller P-Nachfolger für die explizite Präzisierung der Ableitungsordnung, Vorzeichen- und Bedingungslogik. Eigenständige Transferfälle statt Bildwiedergabe; AI-Kandidat E1/G1, keine menschliche Freigabe oder beobachtete Lernleistung. Die unveränderten Bilder wurden vom koordinierenden Root visuell geprüft; native Materialisierung bindet die aktuellen Bildbytes.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "curvature-change",
+            "essentialUnderstandingDe": "Für wachsendes x bedeutet f″>0 zunehmende Steigung beziehungsweise Linkskrümmung und f″<0 abnehmende Steigung beziehungsweise Rechtskrümmung. Ein Krümmungswechsel ist von einer bloßen Nullstelle von f″ zu unterscheiden.",
+            "essentialUnderstandingEn": "As x increases, f″>0 means increasing slope or concave-up curvature, and f″<0 means decreasing slope or concave-down curvature. A change of curvature differs from a mere zero of f″.",
+            "observablePerformanceDe": "Untersucht die Vorzeichen von f″ beiderseits einer Kandidatenstelle und bestimmt einen begründeten Wendepunkt.",
+            "observablePerformanceEn": "Examines the signs of f″ on either side of a candidate location and determines a justified inflection point."
+          },
+          {
+            "id": "rate-at-inflection",
+            "essentialUnderstandingDe": "Die Änderungsrate am Wendepunkt ist f′ an dieser Stelle und weder automatisch null noch der Funktionswert.",
+            "essentialUnderstandingEn": "The rate at an inflection point is f′ at that location and is neither automatically zero nor the function value.",
+            "observablePerformanceDe": "Berechnet diese Rate und deutet ihr Vorzeichen sowie ihre Einheit im gegebenen Kontext.",
+            "observablePerformanceEn": "Calculates that rate and interprets its sign and unit in context."
+          },
+          {
+            "id": "stationary-inflection",
+            "essentialUnderstandingDe": "Ein Sattelpunkt ist ein Wendepunkt mit waagerechter Tangente; zusätzlich zum Krümmungswechsel gilt dort f′=0. Eine waagerechte Tangente allein genügt nicht.",
+            "essentialUnderstandingEn": "A stationary inflection is an inflection point with a horizontal tangent; in addition to a curvature change, f′=0 holds. A horizontal tangent alone does not suffice.",
+            "observablePerformanceDe": "Weist am selben Punkt einen Vorzeichenwechsel von f″ und f′=0 nach und grenzt den Sattelpunkt von einem Extrempunkt ab.",
+            "observablePerformanceEn": "Establishes a sign change of f″ and f′=0 at the same point and distinguishes the stationary inflection from an extremum."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "curvature-change",
+            "rate-at-inflection",
+            "stationary-inflection"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "increasing-or-decreasing-rate",
+            "textDe": "Einen maximalen positiven Zufluss und die lokal stärkste Abkühlung als unterschiedliche Änderungsraten deuten.",
+            "textEn": "Interpret a maximum positive inflow and locally fastest cooling as different rates of change."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "volume-inflow",
+            "taskDemandDe": "Ein Modell gibt V(t)=10+6t²−t³ Liter für 0≤t≤4 Minuten an. Bestimme und deute den Wendepunkt und die dortige Änderungsrate. Deute außerdem V″(1).",
+            "taskDemandEn": "A model gives V(t)=10+6t²−t³ litres for 0≤t≤4 minutes. Determine and interpret the inflection point and its rate of change. Also interpret V″(1).",
+            "expectedPerformanceDe": "V′=12t−3t², V″=12−6t. V″ wechselt bei t=2 von + nach −: Wendepunkt (2,26). V′(2)=12 L/min ist der maximale Zufluss im Modellintervall; davor wächst, danach sinkt die Zuflussrate. V″(1)=6 L/min² bedeutet, dass die Zuflussrate zu diesem Zeitpunkt lokal um 6 L/min je weiterer Minute zunimmt.",
+            "expectedPerformanceEn": "V′=12t−3t², V″=12−6t. V″ changes from + to − at t=2: inflection point (2,26). V′(2)=12 L/min is the maximum inflow on the model interval; the inflow rate rises before and falls afterwards. V″(1)=6 L/min² means that at this time the inflow rate locally increases by 6 L/min per additional minute.",
+            "understandingFocusDe": "Krümmung als Veränderung einer physikalisch bezeichneten Rate.",
+            "understandingFocusEn": "Curvature as change in a physically labelled rate."
+          },
+          {
+            "id": "cooling-rate",
+            "taskDemandDe": "Für 0≤t≤2 Minuten sei T(t)=30−4(t−1)+(t−1)³ in °C. Untersuche Krümmung und Wendestelle und erkläre die dortige Änderungsrate.",
+            "taskDemandEn": "For 0≤t≤2 minutes let T(t)=30−4(t−1)+(t−1)³ in °C. Investigate curvature and the inflection location and explain the rate there.",
+            "expectedPerformanceDe": "T″=6(t−1) wechselt bei 1 von − nach +; Wendepunkt (1,30). T′(1)=−4 °C/min ist der kleinste Wert der Rate im Intervall: lokal stärkste Abkühlung, nicht Temperaturminimum und keine waagerechte Tangente.",
+            "expectedPerformanceEn": "T″=6(t−1) changes from − to + at 1; inflection point (1,30). T′(1)=−4 °C/min is the minimum rate on the interval: locally fastest cooling, not a temperature minimum or a horizontal tangent.",
+            "understandingFocusDe": "Negative Rate und deren Minimum von einem Minimum der Ausgangsgröße unterscheiden.",
+            "understandingFocusEn": "Distinguish a negative rate and its minimum from a minimum of the original quantity."
+          },
+          {
+            "id": "stationary-inflection-vs-extremum",
+            "taskDemandDe": "Vergleiche f(x)=x³+2 und g(x)=x⁴ bei x=0: Welche Funktion hat einen Sattelpunkt, welche ein Extremum? Begründe anhand erster und zweiter Ableitung mit Vorzeichen auf beiden Seiten.",
+            "taskDemandEn": "Compare f(x)=x³+2 and g(x)=x⁴ at x=0: which has a stationary inflection and which an extremum? Justify using the first and second derivatives and their signs on either side.",
+            "expectedPerformanceDe": "f′=3x² und f″=6x: f′(0)=0 und f″ wechselt von − zu +, also Sattelpunkt (0,2), kein Extremum. g′=4x³ wechselt von − zu +, g″=12x² wechselt nicht: Tiefpunkt (0,0), kein Wendepunkt.",
+            "expectedPerformanceEn": "f′=3x² and f″=6x: f′(0)=0 and f″ changes from − to +, giving stationary inflection (0,2), not an extremum. g′=4x³ changes from − to + while g″=12x² does not change sign: minimum (0,0), not an inflection.",
+            "understandingFocusDe": "f′=0 und f″=0 ersetzen keinen Vorzeichenwechsel; Sattelpunkt und Extrempunkt sind verschieden.",
+            "understandingFocusEn": "f′=0 and f″=0 do not replace a sign-change argument; a stationary inflection differs from an extremum."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "d5feba00-4336-4f26-8dba-0537a797eddb",
+      "reason": "Fachlich neu geprüfter aktueller P-Nachfolger für die explizite Präzisierung der Ableitungsordnung, Vorzeichen- und Bedingungslogik. Eigenständige Transferfälle statt Bildwiedergabe; AI-Kandidat E1/G1, keine menschliche Freigabe oder beobachtete Lernleistung. Die unveränderten Bilder wurden vom koordinierenden Root visuell geprüft; native Materialisierung bindet die aktuellen Bildbytes.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "proof",
+        "expectations": [
+          {
+            "id": "logical-direction",
+            "essentialUnderstandingDe": "Notwendig bedeutet unverzichtbar, hinreichend bedeutet ausreichend; die Umkehrung einer Implikation braucht eine eigene Begründung.",
+            "essentialUnderstandingEn": "Necessary means indispensable and sufficient means enough; reversing an implication requires separate justification.",
+            "observablePerformanceDe": "Formuliert Kriterien mit zutreffender Richtung und nennt die Voraussetzungen, insbesondere innere Stellen und Differenzierbarkeit. Den Test f″(x₀)=0, f‴(x₀)≠0 verwendet sie für dreimal stetig differenzierbare Funktionen an inneren Stellen.",
+            "observablePerformanceEn": "States criteria with the correct implication direction and names assumptions, especially interior locations and differentiability. Uses f″(x₀)=0, f‴(x₀)≠0 for three-times continuously differentiable functions at interior locations."
+          },
+          {
+            "id": "counterexample-reasoning",
+            "essentialUnderstandingDe": "Verschwindende Ableitungen allein entscheiden nicht über Extrem- oder Wendestellen; ein nicht verschwindender höherer Ableitungswert ist bei hinreichenden Tests nicht immer notwendig.",
+            "essentialUnderstandingEn": "Vanishing derivatives alone do not decide extrema or inflections; a nonzero higher derivative used in a sufficient test is not always necessary.",
+            "observablePerformanceDe": "Prüft Behauptungen an begründeten Gegenbeispielen und zeigt das tatsächliche lokale Verhalten.",
+            "observablePerformanceEn": "Tests claims using justified counterexamples and shows the actual local behaviour."
+          },
+          {
+            "id": "successive-derivatives",
+            "essentialUnderstandingDe": "f″ ist die Ableitung von f′; f‴ ist die Ableitung beziehungsweise Änderungsrate von f″. Bei Polynomen werden sie durch wiederholtes Ableiten gebildet.",
+            "essentialUnderstandingEn": "f″ is the derivative of f′; f‴ is the derivative or rate of change of f″. For polynomials they are obtained by repeated differentiation.",
+            "observablePerformanceDe": "Benennt erste, zweite und dritte Ableitung, bildet die Ableitungskette eines neuen Polynoms und ordnet den Werten ihre Rolle im jeweiligen Kriterium zu.",
+            "observablePerformanceEn": "Names the first, second and third derivatives, forms the derivative chain of a new polynomial, and assigns each value its role in the relevant criterion."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "logical-direction",
+            "counterexample-reasoning",
+            "successive-derivatives"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "extremum-and-inflection-tests",
+            "textDe": "Extremstellen- und Wendestellenkriterien an unterschiedlichen Polynomen auf ihre logische Stärke prüfen.",
+            "textEn": "Examine the logical strength of extremum and inflection criteria using different polynomials."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "stationary-test",
+            "taskDemandDe": "Prüfe bei inneren Stellen differenzierbarer Funktionen die Behauptung: f′(0)=0 genügt für ein Extremum, und f″(0)>0 ist für ein Minimum notwendig. Nutze x³ und x⁴ als selbst auszuwertende Testfälle. Bilde jeweils die ersten drei Ableitungen und erkläre, welche Funktion einen Sattelpunkt hat.",
+            "taskDemandEn": "For interior locations of differentiable functions, assess: f′(0)=0 suffices for an extremum, and f″(0)>0 is necessary for a minimum. Use x³ and x⁴ as test cases you must analyse. Form the first three derivatives of each polynomial and explain which has a stationary inflection.",
+            "expectedPerformanceDe": "Bei x³ gilt f′(0)=0 ohne Extremum, da die Funktion durch 0 steigt. x⁴ hat bei 0 ein strenges Minimum, obwohl f″(0)=0. f′=0 ist hier notwendig, nicht hinreichend; f′=0 zusammen mit f″>0 ist hinreichend, aber nicht notwendig für ein lokales Minimum. Für x³: f′=3x², f″=6x, f‴=6; Krümmungswechsel und f′(0)=0 ergeben den Sattelpunkt (0,0). Für x⁴: f′=4x³, f″=12x², f‴=24x; kein Krümmungswechsel bei 0.",
+            "expectedPerformanceEn": "For x³, f′(0)=0 without an extremum, since the function increases through 0. x⁴ has a strict minimum at 0 although f″(0)=0. Here f′=0 is necessary, not sufficient; f′=0 together with f″>0 is sufficient but not necessary for a local minimum. For x³: f′=3x², f″=6x, f‴=6; a curvature change and f′(0)=0 establish stationary inflection (0,0). For x⁴: f′=4x³, f″=12x², f‴=24x; no curvature change at 0.",
+            "understandingFocusDe": "Gegenbeispiele belegen genau die jeweils ungültige Umkehrung.",
+            "understandingFocusEn": "Counterexamples establish exactly which converse fails."
+          },
+          {
+            "id": "inflection-test",
+            "taskDemandDe": "Für Polynome soll f″(0)=0 einen Wendepunkt garantieren; außerdem soll f‴(0)≠0 für jeden Wendepunkt nötig sein. Prüfe beide Aussagen mit x⁴ und x⁵ und formuliere gültige Kriterien. Deute zusätzlich beim Volumenmodell V(t)=10+6t²−t³ Litern mit t in Minuten die dritte Ableitung V‴(t) im Zusammenhang mit V″(t).",
+            "taskDemandEn": "For polynomials, f″(0)=0 is claimed to guarantee an inflection point, and f‴(0)≠0 is claimed necessary at every inflection point. Assess both statements with x⁴ and x⁵ and state valid criteria. Additionally, for the volume model V(t)=10+6t²−t³ litres with t in minutes, interpret the third derivative V‴(t) in relation to V″(t).",
+            "expectedPerformanceDe": "Bei x⁴ ist f″=12x² ohne Vorzeichenwechsel: kein Wendepunkt. Bei x⁵ wechselt f″=20x³ das Vorzeichen, obwohl f‴(0)=0: Wendepunkt. Für Polynome ist f″=0 notwendig; f″=0 und f‴≠0 ist ein hinreichender, nicht notwendiger Test. Bei x⁵ gilt f′=5x⁴, f″=20x³ und f‴=60x²; f‴ ist die Änderungsrate von f″. Der Wendepunkt (0,0) ist wegen f′(0)=0 auch ein Sattelpunkt. Der verschwindende Wert von f‴(0) widerlegt die behauptete Notwendigkeit, nicht den hinreichenden Test. Im Volumenmodell ist V″(t)=12−6t L/min² und V‴(t)=−6 L/min³. V‴ ist die lokale Änderungsrate von V″: Dessen Wert sinkt je weiterer Minute um 6 L/min². Dies beschreibt die Änderung der Steigungsänderung, nicht die Ableitung einer geometrischen Krümmungsfunktion.",
+            "expectedPerformanceEn": "For x⁴, f″=12x² does not change sign: no inflection. For x⁵, f″=20x³ changes sign although f‴(0)=0: an inflection. For polynomials f″=0 is necessary; f″=0 with f‴≠0 is a sufficient, not necessary, test. For x⁵, f′=5x⁴, f″=20x³ and f‴=60x²; f‴ is the rate of change of f″. Since f′(0)=0, inflection (0,0) is stationary. The vanishing f‴(0) disproves the claimed necessity, not the sufficient test. In the volume model V″(t)=12−6t L/min² and V‴(t)=−6 L/min³. V‴ is the local rate of change of V″: its value decreases by 6 L/min² per additional minute. This describes the change of the rate of slope change, not the derivative of a geometric curvature function.",
+            "understandingFocusDe": "Ein versagender hinreichender Test ist kein Nachweis der Abwesenheit einer Wendestelle.",
+            "understandingFocusEn": "Failure of a sufficient test does not establish absence of an inflection."
+          }
+        ]
+      }
+    }
+  ]
+}
