@@ -176,3 +176,27 @@ Einfrierstand in `app/scripts/fixtures/prerequisite-reduction-basis-bound-goals.
 `npm --prefix app run check:prerequisite-reduction-freeze` bleibt als Werkzeug
 erhalten. Es kann den vollständigen Nachweis nur auf einem Arbeitsbaum
 nachrechnen, dessen Katalog der Einfrierstand ist.
+
+## Verhältnis zum historischen Review-Rahmen aus PR #131
+
+PR #131 hat sechs Fächer normalisiert (Chinesisch, Englisch, Französisch,
+Griechisch, Musik, Spanisch), bevor das eingefrorene Register auf `main` lag.
+Weil der V8-Nachweis ganze Dokumente bindet, brachte er dafür einen eigenen
+Mechanismus mit: die Rahmendatei `historical-review-frame-2026-11-12.json`, die
+den Endstand des Nachweises für diese Fächer wiederherstellte, und eine
+Beschränkung der Wiederverwendung auf unveränderte Fächer mit geprüfter
+Abhängigkeitshülle.
+
+Mit dem eingefrorenen Register entfällt dieser Mechanismus. Die sechs Fächer
+tragen keine Übertragung, ihre Ziele werden am aktuellen Stand geprüft; alle
+1.361 Übertragungen der übrigen Fächer bleiben aktiv. Die Zusammenführung hat
+die Rahmendatei, ihr Hilfsmodul, die zugehörigen Tests und die Rahmenzweige in
+Prüfer und Python-Brücke entfernt.
+
+Der danach neu erzeugte Qualitätsstatus stimmt in Zusammenfassung, Regelkatalog
+und allen 21 Facheinträgen mit dem Status von PR #131 überein. Nur der Kopf mit
+der Nachweisbindung unterscheidet sich.
+
+Die Rahmendatei band die Bytes des V8-Registers unter dem Pfad des aktiven
+Registers. Dort liegt seit dem Einfrieren das V9-Register; der Rahmen wäre
+deshalb ohnehin nicht mehr ladbar gewesen.
