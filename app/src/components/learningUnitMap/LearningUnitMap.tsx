@@ -299,16 +299,20 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
 
   const edges = useMemo<Edge[]>(() => activeLayout?.edges.map(edge => {
     const highlighted = edge.source === selectedId || edge.target === selectedId
-    const relation = relationByEndpoints.get(`${edge.source}\u0000${edge.target}`)
+    // A reversed layout edge (Rückgriff) runs from its layout target back to its layout source.
+    const relationSource = edge.reversed ? edge.target : edge.source
+    const relationTarget = edge.reversed ? edge.source : edge.target
+    const relation = relationByEndpoints.get(`${relationSource}\u0000${relationTarget}`)
     // Unit maps only: a declared order is solid, demand against it (Rückgriff) is red and dotted.
     const backward = !!relation?.backward
     const declared = relation?.unitOrder === 'declared'
     const color = backward ? highlighted ? '#b42318' : '#d4553a' : highlighted ? '#2870b0' : declared ? '#6f8193' : '#9aa4ae'
     const summary = relation?.kind === 'summary' && !declared && !backward
-    const sourceTitle = fixture.entries[edge.source].title
-    const targetTitle = fixture.entries[edge.target].title
+    const sourceTitle = fixture.entries[relationSource].title
+    const targetTitle = fixture.entries[relationTarget].title
+    const marker = { type: MarkerType.ArrowClosed, width: 11, height: 11, color }
     return { ...edge, type: 'routed', data: { points: edge.points },
-      markerEnd: { type: MarkerType.ArrowClosed, width: 11, height: 11, color },
+      ...(edge.reversed ? { markerStart: marker } : { markerEnd: marker }),
       style: { stroke: color, strokeWidth: highlighted ? 1.8 : backward || declared ? 1.5 : 1.1,
         strokeDasharray: backward ? '2 4' : summary ? '5 4' : undefined,
         opacity: selectedId && !highlighted ? 0.13 : 1 },
