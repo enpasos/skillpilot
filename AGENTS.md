@@ -711,8 +711,12 @@ with the respective goal.
   and no coach uses the context yet. Order of introduction: derive (done),
   review sufficiency block by block (pilot done on 13 November 2026: 20 of 39
   goals insufficient by both independent reviewers,
-  `docs/dev/knowledge-context-sufficiency-pilot-2026-11-13.md`), check
-  images, cards and tasks, serve the coach per subject once it is
+  `docs/dev/knowledge-context-sufficiency-pilot-2026-11-13.md`; subject
+  review of its 15 high-confidence findings on 14 November 2026: both
+  reviewers recommend twelve edges and two narrower goal texts, which would
+  change 14 goals, and disagree on one cross-subject Physics edge; nothing is
+  applied yet, `docs/dev/knowledge-context-subject-review-2026-11-14.md`),
+  check images, cards and tasks, serve the coach per subject once it is
   sufficient. Open: whether
   sufficiency becomes a milestone gate, and whether goals should name the
   terms they introduce. Do not call the context of a goal "context" alone;

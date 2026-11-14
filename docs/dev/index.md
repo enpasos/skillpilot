@@ -77,6 +77,7 @@ Diese Seite ist der Einstiegspunkt für die entwicklungsnahe Dokumentation von S
 - [Reduktionsnachweis eingefroren: Wiederverwendung der Reviews je Ziel, 12. November 2026](prerequisite-reduction-proof-freeze-2026-11-12.md)
 - [Mathematik: erste Lerneinheit und Bindungspflege, 12. November 2026](canonical-math-learning-unit-pilot-binding-review-2026-11-12.md)
 - [Wissenskontext: Pilot zur Hinlänglichkeit, 13. November 2026](knowledge-context-sufficiency-pilot-2026-11-13.md)
+- [Wissenskontext: Fachprüfung der Pilotbefunde, 14. November 2026](knowledge-context-subject-review-2026-11-14.md)
 - [Voraussetzungennachweise: wiederverwendbare Batch-Fortsetzung, 9. November 2026](prerequisite-reduction-batches-v6-support-2026-11-09.md)
 - [Deutsch: erster atomarer Bedarf an einem Cluster, 9. November 2026](german-first-cluster-prerequisite-normalization-review-2026-11-09.md)
 - [Deutsch: Integration der Mathematik-Assessment-Reader, 9. November 2026](german-assessment-reader-integration-review-2026-11-09.md)
