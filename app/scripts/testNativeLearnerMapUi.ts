@@ -297,6 +297,10 @@ try {
   assert.equal(await page.locator(`[data-entry-id="${id.section}"]`).count(), 0, 'the cluster "Vektoren" is no unit and leaves the map')
   assert.deepEqual((await page.locator('.lum-node[data-entry-id]').evaluateAll(nodes => nodes.map(n => n.getAttribute('data-entry-id')))).sort(),
     [id.foundation, id.application, id.memory].sort(), 'the unit holds the goals of the removed cluster')
+  assert.equal(await page.locator(`.lum-node[data-entry-id="${id.application}"]`).getAttribute('data-active-goal'), 'true',
+    'the active learning goal stays marked in the unit map')
+  assert.equal(await page.locator(`.lum-node[data-entry-id="${id.foundation}"] .lum-node-state`).getAttribute('class'),
+    'lum-node-icon lum-node-state is-explicit', 'goal progress stays visible in the unit map')
   assert.equal(await page.locator('.lum-node-open').count(), 0, 'leaf goals never get a scope arrow')
   await node(page, id.foundation).focus()
   await afterEffects(page)
@@ -349,6 +353,8 @@ try {
   stage = 'one stage unit for both subjects, declared order and Rückgriff'
   assert.deepEqual((await page.locator('.lum-node[data-entry-id]').evaluateAll(nodes => nodes.map(n => n.getAttribute('data-entry-id')))).sort(),
     [section.vectors, section.analysis, id.physicsGoal].sort(), 'Sekundarstufe II holds the units of Mathematics and the goal of Physics')
+  assert.ok((await page.locator(`.lum-node[data-entry-id="${section.vectors}"] .lum-node-meta`).innerText()).includes('1/3 erledigt'),
+    'unit progress is derived from its goals')
   const legend = page.getByTestId('learning-map-order-legend')
   assert.equal(await legend.isVisible(), true, 'the order legend explains the arrows between units')
   assert.ok((await legend.innerText()).includes('erklärte Reihenfolge') && (await legend.innerText()).includes('1 Rückgriff'))
