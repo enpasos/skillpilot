@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict'
+import { test } from 'node:test'
 import {
   validateHardDirectAtomicRoutes,
   validateOrientationMotivationStructure,
@@ -570,5 +571,77 @@ assert.ok(
       && finding.message.includes('must be atomic')),
   'a curricularAtomic ledger decision must not disappear from coverage when the goal acquires children',
 )
+
+test('unselected intermediate route nodes need an authoritative permitted semantic kind', () => {
+  const route = [...goals, { id: 'bridge', requires: ['orientation-seki'], contains: [] }]
+    .map(goal => goal.id === 'understand-a' ? { ...goal, requires: ['bridge'] } : goal)
+  const bridgeKinds = new Map(kinds)
+  bridgeKinds.set('bridge', 'curricularAtomic')
+  assert.deepEqual(validateHardDirectAtomicRoutes(route, bridgeKinds, profile), [])
+  for (const kind of ['runtimeSupport', 'programStructure', 'curricularArea', undefined] as const) {
+    const invalidKinds = new Map(bridgeKinds)
+    if (kind) invalidKinds.set('bridge', kind)
+    else invalidKinds.delete('bridge')
+    const findings = validateHardDirectAtomicRoutes(route, invalidKinds, profile)
+    assert.ok(findings.some(finding => finding.goalId === 'understand-a' && finding.message.includes('motivation')))
+  }
+})
+
+test('a valid main route never hides an invalid side prerequisite on an intermediate', () => {
+  const route = [...goals,
+    { id: 'bridge', requires: ['orientation-seki', 'side'], contains: [] },
+    { id: 'side', requires: [], contains: [] },
+  ].map(goal => goal.id === 'understand-a' ? { ...goal, requires: ['bridge'] } : goal)
+  for (const sideKind of ['runtimeSupport', 'programStructure', undefined] as const) {
+    const intermediateKinds = new Map(kinds)
+    intermediateKinds.set('bridge', 'curricularAtomic')
+    if (sideKind) intermediateKinds.set('side', sideKind)
+    const findings = validateHardDirectAtomicRoutes(route, intermediateKinds, profile)
+    assert.ok(findings.some(finding => finding.goalId === 'bridge'
+      && finding.message.includes('non-route direct prerequisite(s) side')))
+  }
+})
+
+test('route order is checked on an unselected participating intermediate', () => {
+  const route = [...goals,
+    { id: 'bridge', requires: ['early-assessment'], contains: [] },
+    { id: 'early-assessment', requires: ['orientation-seki'], contains: [] },
+  ].map(goal => goal.id === 'understand-a' ? { ...goal, requires: ['bridge'] } : goal)
+  const intermediateKinds = new Map(kinds)
+  intermediateKinds.set('bridge', 'curricularAtomic')
+  intermediateKinds.set('early-assessment', 'practiceAssessment')
+  assert.ok(validateHardDirectAtomicRoutes(route, intermediateKinds, profile)
+    .some(finding => finding.goalId === 'bridge' && finding.message.includes('Route order is reversed')))
+})
+
+test('a terminal kind or orientation kind cannot be supplied by tags or physical shape', () => {
+  for (const kind of ['curricularAtomic', 'memory', 'runtimeSupport', undefined] as const) {
+    const anchorKinds = new Map(kinds)
+    if (kind) anchorKinds.set('orientation-seki', kind)
+    else anchorKinds.delete('orientation-seki')
+    assert.ok(validateHardDirectAtomicRoutes(goals, anchorKinds, profile)
+      .some(finding => finding.goalId === 'orientation-seki' && finding.message.includes('semanticKind=orientation')))
+    const terminalKinds = new Map(kinds)
+    if (kind) terminalKinds.set('exam-seki', kind)
+    else terminalKinds.delete('exam-seki')
+    assert.ok(validateHardDirectAtomicRoutes(goals, terminalKinds, profile)
+      .some(finding => finding.goalId === 'exam-seki' && finding.message.includes('semanticKind=practiceAssessment')))
+  }
+})
+
+test('every participating memory intermediate follows selected ordinary understanding', () => {
+  const validRoute = [...routeWithOptionalMemory,
+    { id: 'memory-b', requires: ['memory-a'], contains: [] },
+  ].map(goal => goal.id === 'understand-b' ? { ...goal, requires: ['memory-b'] } : goal)
+  const memoryKinds = new Map(optionalMemoryKinds)
+  memoryKinds.set('memory-b', 'memory')
+  assert.deepEqual(validateHardDirectAtomicRoutes(validRoute, memoryKinds, profile), [])
+  const invalidRoute = validRoute.map(goal => goal.id === 'memory-a'
+    ? { ...goal, requires: ['orientation-seki'] }
+    : goal.id === 'understand-a' ? { ...goal, requires: ['memory-b'] } : goal)
+  const findings = validateHardDirectAtomicRoutes(invalidRoute, memoryKinds, profile)
+  for (const id of ['memory-a', 'memory-b']) assert.ok(findings.some(finding => finding.goalId === id
+    && finding.message.includes('without following an ordinary curricular atomic goal')))
+})
 
 console.log('Hard learning-route validation regression tests passed.')

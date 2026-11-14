@@ -30,6 +30,8 @@ Maturity levels form a cumulative ladder derived strictly from current central v
 
 ### Normative Definition of `M7` and Image Governance {#sec:qa-human-trial-m7}
 
+**Decided expansion target, not yet fully activated (13 November 2026):** `GVR-012` shall become mandatory from subject maturity M7 for every registered QA scope of subjects obligated to meet M7. Today four of seven M7 scopes are secured; the other three need current classification and route evidence before the complete obligation is activated. The five M6 scopes remain in the full inventory of twelve and become mandatory on later promotion to M7. The formula below describes the currently activated closeout contract, not yet complete evidence of the expanded M7 target. Existing required scopes and pins remain unchanged and `GVR-012` stays PARTIAL; this decision waives neither missing evidence nor floors.
+
 `M7` requires **every** current `curricularAtomic` goal of the subject to satisfy the **strict intersection of all five gates** simultaneously (never summing or averaging gate counters or accepting rounded percentages; partial progress renders e.g. as *M6 · Deep QA: 472 of 478 learning goals completed*):
 
 :::table{cols="3.8cm,X"}

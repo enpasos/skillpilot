@@ -639,7 +639,7 @@ public class LearnerControllerIntegrationTest {
             assertThat(topicId).isEqualTo(CANONICAL_MATH_ROOT_ID);
             assertThat(sourceLandscapeId).isEqualTo(HESSEN_GYMNASIUM_UPPER_MATH_ID);
             assertThat(sourceGoalId).isEqualTo("ccf9569b-b0e4-4d76-98d5-65be461d4d76");
-            SkillLandscape source = landscapeService.getById(sourceLandscapeId);
+            SkillLandscape source = landscapeService.getRetainedSourceLandscape(sourceLandscapeId);
             assertThat(source).as("retained HE Mathematics source snapshot").isNotNull();
             Map<String, LearningGoal> sourceGoals = source.getGoals().stream()
                     .collect(java.util.stream.Collectors.toMap(LearningGoal::getId, goal -> goal));
@@ -1198,9 +1198,74 @@ public class LearnerControllerIntegrationTest {
     }
 
     @Test
+    void historicalFrontierExportRemainsReadableWithoutReactivatingRetiredCurriculum() throws Exception {
+        JsonNode snapshot;
+        try (var stream = getClass().getClassLoader().getResourceAsStream("exports/learner_export_1c90a010.json")) {
+            assertThat(stream).isNotNull();
+            snapshot = objectMapper.readTree(stream).path("serverExport").path("data");
+        }
+        String learnerId = "readonly-historical-frontier-export";
+        String selectedCurriculum = snapshot.path("learner").path("selectedCurriculum").asText();
+        String personalCurriculum = snapshot.path("learner").path("personalCurriculum").asText();
+        assertThat(selectedCurriculum).isEqualTo(HESSEN_GYMNASIUM_UPPER_ROOT_ID);
+        assertThat(snapshot.path("mastery").size()).isEqualTo(205);
+        Learner learner = new Learner();
+        learner.setSkillpilotId(learnerId);
+        learner.setSelectedCurriculum(selectedCurriculum);
+        learner.setPersonalCurriculum(personalCurriculum);
+        learnerRepository.save(learner);
+        List<Mastery> mastery = new ArrayList<>();
+        snapshot.path("mastery").properties().forEach(entry ->
+                mastery.add(new Mastery(learner, entry.getKey(), entry.getValue().path("value").asDouble())));
+        masteryRepository.saveAll(mastery);
+        List<PlannedGoal> planned = new ArrayList<>();
+        snapshot.path("plannedGoals").forEach(goal -> planned.add(new PlannedGoal(learner, goal.asText())));
+        plannedGoalRepository.saveAll(planned);
+
+        HttpResponse<String> learnerRead = getRequest("/api/ui/learners/" + learnerId);
+        assertThat(learnerRead.statusCode()).isEqualTo(HttpStatus.OK.value());
+        JsonNode storedLearner = objectMapper.readTree(learnerRead.body());
+        assertThat(storedLearner.path("selectedCurriculum").asText()).isEqualTo(selectedCurriculum);
+        assertThat(storedLearner.path("personalCurriculum").asText()).isEqualTo(personalCurriculum);
+        HttpResponse<String> masteryRead = getRequest("/api/ui/learners/" + learnerId + "/mastery");
+        assertThat(masteryRead.statusCode()).isEqualTo(HttpStatus.OK.value());
+        JsonNode storedMastery = objectMapper.readTree(masteryRead.body()).path("mastery");
+        assertThat(storedMastery.size()).isEqualTo(snapshot.path("mastery").size());
+        HttpResponse<String> exportRead = getRequest("/api/ui/learners/" + learnerId + "/export");
+        assertThat(exportRead.statusCode()).isEqualTo(HttpStatus.OK.value());
+        JsonNode exported = objectMapper.readTree(exportRead.body());
+        assertThat(exported.path("signature").asText()).isNotBlank();
+        assertThat(exported.path("data").path("learner").path("selectedCurriculum").asText())
+                .isEqualTo(selectedCurriculum);
+        assertThat(exported.path("data").path("learner").path("personalCurriculum").asText())
+                .isEqualTo(personalCurriculum);
+        assertThat(exported.path("data").path("plannedGoals")).isEqualTo(snapshot.path("plannedGoals"));
+        assertThat(exported.path("data").path("mastery").size()).isEqualTo(snapshot.path("mastery").size());
+        snapshot.path("mastery").properties().forEach(entry -> {
+            assertThat(storedMastery.has(entry.getKey())).isTrue();
+            assertThat(exported.path("data").path("mastery").has(entry.getKey())).isTrue();
+            assertThat(storedMastery.path(entry.getKey()).asDouble())
+                    .isEqualTo(entry.getValue().path("value").asDouble());
+            assertThat(exported.path("data").path("mastery").path(entry.getKey()).path("value").asDouble())
+                    .isEqualTo(entry.getValue().path("value").asDouble());
+        });
+
+        assertThat(landscapeService.getById(selectedCurriculum)).isNull();
+        assertThat(landscapeService.getClosure(selectedCurriculum)).isEmpty();
+        assertThat(getRequest("/api/ui/learners/" + learnerId + "/state").statusCode())
+                .isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(getRequest("/api/ai/en/learners/" + learnerId + "/state").statusCode())
+                .isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(sendJsonRequest("POST", "/api/ui/learners/" + learnerId + "/active-goal",
+                "{\"goalId\":\"8f42b49d-a2fb-45f5-9da3-97ec96b8113e\"}").statusCode())
+                .isEqualTo(HttpStatus.CONFLICT.value());
+    }
+
+    @Test
     void retiredBavariaAndHessenLowerSessionsRemainReadOnlyWithoutCutoverRuntime() throws Exception {
         Map<String, String> retiredCurriculaByLearner = Map.of(
                 "readonly-bavaria-after-cutover-removal", BAVARIA_GYMNASIUM_MATH_ID,
+                "readonly-retained-bavaria-chinese", BAVARIA_GYMNASIUM_CHINESE_ID,
                 "readonly-hessen-lower-after-cutover-removal", HESSEN_GYMNASIUM_LOWER_MATH_ID);
 
         for (Map.Entry<String, String> entry : retiredCurriculaByLearner.entrySet()) {
@@ -1208,6 +1273,21 @@ public class LearnerControllerIntegrationTest {
             learner.setSkillpilotId(entry.getKey());
             learner.setSelectedCurriculum(entry.getValue());
             learnerRepository.save(learner);
+            masteryRepository.save(new Mastery(learner, "retained-progress-goal", 1.0));
+
+            HttpResponse<String> learnerRead = getRequest("/api/ui/learners/" + entry.getKey());
+            assertThat(learnerRead.statusCode()).isEqualTo(HttpStatus.OK.value());
+            assertThat(objectMapper.readTree(learnerRead.body()).path("selectedCurriculum").asText())
+                    .isEqualTo(entry.getValue());
+            HttpResponse<String> masteryRead = getRequest("/api/ui/learners/" + entry.getKey() + "/mastery");
+            assertThat(masteryRead.statusCode()).isEqualTo(HttpStatus.OK.value());
+            assertThat(objectMapper.readTree(masteryRead.body()).path("mastery").has("retained-progress-goal")).isTrue();
+            HttpResponse<String> exportRead = getRequest("/api/ui/learners/" + entry.getKey() + "/export");
+            assertThat(exportRead.statusCode()).isEqualTo(HttpStatus.OK.value());
+            JsonNode exported = objectMapper.readTree(exportRead.body());
+            assertThat(exported.path("data").path("learner").path("selectedCurriculum").asText()).isEqualTo(entry.getValue());
+            assertThat(exported.path("data").path("mastery").has("retained-progress-goal")).isTrue();
+            assertThat(exported.path("signature").asText()).isNotBlank();
 
             HttpResponse<String> response = sendJsonRequest(
                     "POST",

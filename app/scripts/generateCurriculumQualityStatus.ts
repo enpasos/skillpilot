@@ -1,3 +1,4 @@
+import { validateSemanticAtomicityRecordShape } from './lib/semanticAtomicityRecordValidation'
 import { evaluateDirectAtomicRouteCoverage } from './lib/directAtomicRouteCoverage'
 import { createHash } from 'node:crypto'
 import { existsSync, mkdirSync, readdirSync, readFileSync, realpathSync, statSync, writeFileSync } from 'node:fs'
@@ -30,6 +31,7 @@ import { evaluateGraphIntegrity, requireCompleteCurrentCatalog } from './curricu
 import { createReviewedRequiresClosureCoverageChecker } from './sourceCoverageEvidence'
 import { shouldRequireCanonicalMathSek1AssessmentEndpoint } from './lib/canonicalMathSek1ReviewedExamRoutes'
 import { createRepositorySourceAvailability } from './repositorySourceAvailability'
+import { loadPhysicsQaStageTargets, PHYSICS_QA_SELECTOR_INPUT_PATHS } from './lib/physicsQaStageTargets'
 
 type RuleStatus = 'pass' | 'warn' | 'fail' | 'not_configured'
 type MaturityLevel = 'M0' | 'M1' | 'M2' | 'M3' | 'M4' | 'M5' | 'M6' | 'M7'
@@ -874,7 +876,7 @@ interface SourceGoalClosureRegistry {
 type CoverageReport = ApplicabilityCompilationResult['reports'][number]
 type CoverageGoalReport = CoverageReport['goals'][number]
 
-interface RouteProfile {
+export interface RouteProfile {
   profileId: string
   landscapeId: string
   label: string
@@ -886,6 +888,8 @@ interface RouteProfile {
   compositionViewRoutePathMode?: 'visible-atomic'
   goalSelector: (goal: LearningGoal) => boolean
   clusterSelector: (goal: LearningGoal) => boolean
+  /** Broader inherited placement targets remain visible as scope-alignment debt. */
+  inheritedStageTargetSelector?: (goal: LearningGoal) => boolean
 }
 
 const scriptDir = dirname(fileURLToPath(import.meta.url))
@@ -1149,7 +1153,8 @@ const ruleCatalog: QualityRuleDefinition[] = [
   },
 ]
 
-export const routeProfiles: RouteProfile[] = [
+/** Registry metadata and established lanes; use createRouteProfiles for evaluation. */
+export const routeProfileDefinitions: RouteProfile[] = [
   {
     profileId: 'canonical-math-sek1',
     landscapeId: CANONICAL_GYM_MATH_LANDSCAPE_ID,
@@ -1356,6 +1361,29 @@ export const routeProfiles: RouteProfile[] = [
       && !goal.tags?.includes('Abitur'),
   },
 ]
+
+/** Bind the same reviewed stage overrides for CQR, graph validation and diagnostics. */
+export function createRouteProfiles(
+  repositoryRoot = repoRoot,
+  inputs: Pick<VerificationInputReader, 'readText'> = { readText: path => readFileSync(path, 'utf8') },
+): RouteProfile[] {
+  const placements = loadPhysicsQaStageTargets(repositoryRoot, path => inputs.readText(path))
+  return routeProfileDefinitions.map(profile => {
+    if (profile.landscapeId !== CANONICAL_GYM_PHYSICS_LANDSCAPE_ID) return profile
+    const stage = profile.profileId === 'canonical-physics-sek1' ? 'SekI' : 'SekII'
+    const explicitTargets = placements.explicitTargetIdsByStage.get(stage)!
+    const allTargets = placements.allTargetIdsByStage.get(stage)!
+    return {
+      ...profile,
+      // Explicit reviewed goalEntry placements supplement the existing lane;
+      // inherited subtree targets do not silently redefine that global lane.
+      goalSelector: goal => profile.goalSelector(goal) || (explicitTargets.has(goal.id) && isProjectedRouteTargetGoal(goal)),
+      clusterSelector: goal => profile.clusterSelector(goal) || explicitTargets.has(goal.id),
+      inheritedStageTargetSelector: goal => allTargets.has(goal.id) && !explicitTargets.has(goal.id)
+        && !profile.clusterSelector(goal),
+    }
+  })
+}
 
 function toRepoPath(path: string): string {
   return relative(repoRoot, path).split(/[\\/]/).join('/')
@@ -2028,10 +2056,8 @@ function evaluateRouteEndpointCompositionVisibility(
       evaluatedProjectionScopes += 1
       const scopeLabel = `${toRepoPath(file)}${jurisdiction ? ` [${jurisdiction}]` : ''}`
 
-      const scopeFilters = useCompiledJurisdiction
-        ? [view.scope.courseProfile, view.scope.durationModel]
-          .filter((value): value is string => typeof value === 'string' && value.trim().length > 0)
-        : []
+      const scopeFilters = [view.scope.courseProfile, view.scope.durationModel]
+        .filter((value): value is string => typeof value === 'string' && value.trim().length > 0)
       const removeGoalsOutsideCompiledProjection = (goalIds: Set<string>) => {
         if (!useCompiledJurisdiction || !jurisdiction) return
         Array.from(goalIds).forEach((goalId) => {
@@ -2155,10 +2181,10 @@ function evaluateRouteEndpointCompositionVisibility(
         })
       }
       const expectedTerminalGoalIds = scopedTerminalGoals
-        // Whole Economics materials must also match the actual authored course
-        // and duration. Compiled country applicability alone does not imply this.
-        .filter((goal) => profile.landscapeId !== CANONICAL_GYM_ECONOMICS_LANDSCAPE_ID
-          || scopeFilters.length === 0
+        // Endpoint obligations follow the authored course and duration in every
+        // subject. Compiled country applicability alone does not imply either;
+        // the expected set is still derived independently of visible endpoints.
+        .filter((goal) => scopeFilters.length === 0
           || goalMatchesFilters(
             convertLearningGoal(goal, { landscapeId: landscape.landscapeId }),
             scopeFilters,
@@ -2805,7 +2831,7 @@ function reusableGeneratedAt(nextStatus: StatusDocument): string | null {
   }
 }
 
-function fingerprintGoal(goal: LearningGoal, ruleVersion: string): string {
+export function fingerprintGoal(goal: LearningGoal, ruleVersion: string): string {
   const payload = stableJson({
     ruleVersion,
     goalId: goal.id,
@@ -3315,7 +3341,7 @@ function validateMemoryCardReviewCardRecordShape(
   return errors
 }
 
-function evaluateSemanticAtomicity(landscape: SkillLandscape, configs: ReviewConfig[]): RuleResult {
+export function evaluateSemanticAtomicity(landscape: SkillLandscape, configs: ReviewConfig[]): RuleResult {
   if (configs.length === 0) {
     return makeRule('CQR-301', 'not_configured', 'No semantic atomicity review config is registered for this curriculum.')
   }
@@ -3328,6 +3354,9 @@ function evaluateSemanticAtomicity(landscape: SkillLandscape, configs: ReviewCon
   let missing = 0
   let stale = 0
   let obsolete = 0
+  let invalidReviewRecords = 0
+  let parseErrorCount = 0
+  let duplicateReviewRecords = 0
   const details: string[] = []
 
   configs.forEach((config) => {
@@ -3341,7 +3370,22 @@ function evaluateSemanticAtomicity(landscape: SkillLandscape, configs: ReviewCon
     const fingerprintsByGoalId = new Map(scopedLeafGoals.map((goal) => [goal.id, fingerprintGoal(goal, config.ruleVersion)]))
     const reviewPath = resolve(repoRoot, config.reviewPath)
     const { records, parseErrors } = parseReviewRecords(reviewPath)
-    const recordsByGoalId = new Map(records.map((record) => [record.goalId, record]))
+    parseErrorCount += parseErrors.length
+    const validRecords = records.filter((record) => {
+      const errors = validateSemanticAtomicityRecordShape(record, config)
+      if (errors.length === 0) return true
+      invalidReviewRecords += 1
+      errors.forEach((issue) => details.push(`${config.reviewId}: ${issue}`))
+      return false
+    })
+    const recordsByGoalId = new Map<string, ReviewRecord>()
+    validRecords.forEach((record) => {
+      if (recordsByGoalId.has(record.goalId)) {
+        duplicateReviewRecords += 1
+        details.push(`${config.reviewId}: duplicate review record for ${record.goalId}`)
+      }
+      recordsByGoalId.set(record.goalId, record)
+    })
 
     leafGoals += scopedLeafGoals.length
     parseErrors.forEach((issue) => details.push(`${config.reviewId}: ${issue}`))
@@ -3364,18 +3408,19 @@ function evaluateSemanticAtomicity(landscape: SkillLandscape, configs: ReviewCon
       if (record.status === 'non_atomic') nonAtomic += 1
     })
 
-    records.forEach((record) => {
+    validRecords.forEach((record) => {
       if (!scopedLeafGoalIds.has(record.goalId)) obsolete += 1
     })
   })
 
-  const unresolved = missing + stale + needsDeveloperReview + nonAtomic + obsolete
+  const invalidInputs = invalidReviewRecords + parseErrorCount + duplicateReviewRecords
+  const unresolved = missing + stale + needsDeveloperReview + nonAtomic + obsolete + invalidInputs
   return makeRule(
     'CQR-301',
-    unresolved === 0 ? 'pass' : 'warn',
+    invalidInputs > 0 ? 'fail' : unresolved === 0 ? 'pass' : 'warn',
     unresolved === 0
       ? 'Semantic atomicity review ledgers are current and fully accepted.'
-      : 'Semantic atomicity review still has missing, stale, or unresolved entries.',
+      : 'Semantic atomicity review still has missing, stale, invalid, or unresolved entries.',
     {
       configs: configs.length,
       leafGoals,
@@ -3385,6 +3430,7 @@ function evaluateSemanticAtomicity(landscape: SkillLandscape, configs: ReviewCon
       missing,
       stale,
       obsolete,
+      ...(invalidInputs > 0 ? { invalidReviewRecords, parseErrors: parseErrorCount, duplicateReviewRecords } : {}),
     },
     details,
   )
@@ -6208,6 +6254,8 @@ function renderMarkdownDe(status: StatusDocument): string {
 
 async function generateStatus(inputs: VerificationInputReader, assertCurrent: () => void) {
   const shouldCheck = process.argv.includes('--check')
+  for (const path of PHYSICS_QA_SELECTOR_INPUT_PATHS) inputs.readText(resolve(repoRoot, path))
+  const routeProfiles = createRouteProfiles(repoRoot, inputs)
   const { entries, sources } = loadCurrentCurriculumCatalog(inputs)
   const currentCatalog = requireCompleteCurrentCatalog(entries, sources)
   // G17 always evaluates every complete current root, before optional reuse of

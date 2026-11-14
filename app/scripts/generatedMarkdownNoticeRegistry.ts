@@ -50,6 +50,31 @@ export const generatedStatusRegistryReadmeDeNoticeConfig: GeneratedMarkdownNotic
 
 const staticGeneratedStatusRows: GeneratedStatusRegistryRow[] = [
   {
+    artifactPaths: ['docs/qa-ci/status/semantic-learning-route-audit.json'],
+    generatedBy: 'app/scripts/auditSemanticLearningRoutes.ts',
+    role: 'Current semantic route coverage and explicit evidence gaps; diagnostic, not full-domain acceptance.',
+    roleDe: 'Aktuelle semantische Routenabdeckung und ausdrückliche Nachweislücken; Diagnose, keine Abnahme der gesamten Domäne.',
+    sourceOfTruth: [
+      'app/scripts/config/semantic-route-coverage.json',
+      'app/scripts/lib/semanticRouteInventory.ts',
+      'app/scripts/lib/hardLearningRouteValidation.ts',
+      'curricula/DE/Gymnasium/',
+    ],
+    regenerateWith: 'cd app && npm run audit:semantic-learning-routes -- --output ../docs/qa-ci/status/semantic-learning-route-audit.json',
+  },
+  {
+    artifactPaths: ['docs/qa-ci/status/route-endpoint-visibility-audit.json'],
+    generatedBy: 'app/scripts/reportRouteEndpointVisibility.ts',
+    role: 'CQR-104 diagnostics for explicitly unpinned scopes; endpoint identities remain independently applicability-bound.',
+    roleDe: 'CQR-104-Diagnose der ausdrücklich noch ungesicherten Scopes; Endpunktidentitäten bleiben unabhängig an Anwendbarkeit gebunden.',
+    sourceOfTruth: [
+      'app/scripts/generateCurriculumQualityStatus.ts',
+      'app/scripts/config/curriculum-maturity-floor-policy.json',
+      'curricula/DE/Gymnasium/',
+    ],
+    regenerateWith: 'cd app && npm run report:route-endpoint-visibility -- --output ../docs/qa-ci/status/route-endpoint-visibility-audit.json',
+  },
+  {
     artifactPaths: [
       'docs/qa-ci/status/curriculum-quality-status.md',
       'docs/qa-ci/status/curriculum-quality-status.de.md',

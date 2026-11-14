@@ -18,6 +18,10 @@ declared domains and retired two redundant codes. The delivered legend has
 `GVR-012`) require broader curriculum work; they are not part of the completed
 bounded hardening.
 
+**Active work order: [section 10](#10-follow-up-programme-clean-gymnasium-13-november-2026).**
+It records the owner decision of 13 November 2026 and the follow-up packages
+F1–F5. Sections 1–9 are the record of the delivered work and are not reopened.
+
 Related material:
 
 - Register source: `docs/concept/skill-graph/source/rules-and-gates.json`
@@ -627,3 +631,355 @@ plan.
   separate CI evidence above. Historical baseline and progress-log entries
   retain their original meaning; neither remaining coverage gap is closed by
   these documentation changes.
+- 2026-11-13, F1/F2 candidate in PR #141: corrected the 24-code source legend,
+  regraded eight independently checked `GD-*` rows and regenerated Graph
+  Definition/QA web and all four PDFs. All five documentation checks passed;
+  the Graph DE/EN PDFs have 108/107 pages and zero layout warnings. All 145
+  rule IDs and the new 12/50/55/28 distribution match source, web and PDF.
+  CQR-301 now shares native record validation; 18 new cases, the complete
+  140-case maturity suite and all 89 current review configurations passed.
+- 2026-11-13, F3 candidate: separated retained-source reads from the live
+  validator/backend inventories while preserving source evidence and explicit
+  outside-context compatibility. The 45 source graphs remain byte-identical;
+  the live validator reports 548 landscapes (21 canonical, 527 outside).
+  Exact inventory, rogue-graph and source-boundary regressions run in CI.
+  Eight inventory regressions passed. The final compiled backend subset passed
+  30/30 with no skips: source/index/closure/reload/readability/localization,
+  retired-learner HTTP reads, persisted mastery, signed export and retirement
+  rejection. The preceding nine-class run passed 355/356; its sole failure was
+  the new test reading the existing mastery response envelope incorrectly,
+  corrected and covered by the successful final rerun. CLI rejection remains
+  hard; runtime excludes ungated files while keeping other reads available.
+  Complete remote CI is separate from these local results.
+- 2026-11-13, F4 candidate: replaced the separate Mathematics route list with
+  profiles derived from the shared QA inventory, current authoritative ledgers
+  and a complete monotonic coverage register. Mathematics Sek I/II and Biology
+  Sek II are directly enforced. Physics and Chemistry retain 12 measured
+  semantic findings; the unclassified Economics remainder and five M6 scopes
+  remain explicit. Actual CLI negative probes cover route removal, coverage
+  downgrade, boundary widening, missing Git bases and concurrent input drift.
+- 2026-11-13, F5 candidate: restored the national Biology assessment collections
+  and corrected common course/duration filtering. The actual projection test
+  proves 21 restored GK tasks, five excluded LK-only tasks and all eight
+  existing visibility pins passing. Full composition validation passed for
+  354 views, with zero errors and 2,388 warnings. The stricter prospective
+  four-scope diagnostic still exits 1 and records genuine remaining gaps.
+- 2026-11-13, integration: the branch began at freshly fetched main `4aace51946`
+  and subsequently merged the newer source-rationale fixes through main
+  `d12f448c1b` as `5a7cc5ba92`. Full local CQR generation passed with 21/21 G17
+  passes and unchanged five M7, five M6 and eleven M0 curricula; all 21
+  curriculum and 12 scope floor pins passed. The later merge changed no
+  canonical graph, view, review ledger or CQR evaluator input. Main acceptance
+  still requires the unmerged candidate's separate complete remote CI and
+  subsequent owner merge.
+- 2026-11-13, renewed main integration: CI #2337 on `fcbc4ec61e` exposed
+  a stale source-rationale mapping-batch timestamp and the Cockpit action
+  spacing regression. Both were already corrected upstream in `28dfa65ed2`
+  and `2ad03c810c`; the branch incorporated that newer main as `4bc4dc7f14`.
+  The mapping-batch freshness check and all 21 curriculum/12 scope floors
+  pass after integration. The complete `test:learner-map` projection/browser
+  suite also passes, including the native App and original Cockpit at desktop,
+  320px and 390px widths. These upstream changes affect two derived reports
+  and the Cockpit action layout, not the canonical graphs, views, semantic
+  ledgers or evaluator inputs bound by the F4/F5 diagnostics. Complete CI
+  on the renewed candidate remains the acceptance requirement.
+- 2026-11-13, separate baseline finding: the optional
+  `test:hessen-math-q24-q25-scope` command fails an old authored-target removal
+  comparison on unchanged main `d12f448c1b` as well. Its first failing view
+  contains four now-structural cluster identities and three explicitly
+  prerequisite-only placements absent from the old expectation. This is a
+  historical projection-fixture debt, not a change to the closed Personal
+  Curriculum learning basis. Shared route assertions were updated after
+  removal of the duplicate Mathematics list; historical expected sets and
+  Mathematics curriculum/view bytes were not changed to make this optional
+  command pass. The actual CI `test:composition-projection-roles` command,
+  including the separate HE Q2.1 regression, passed.
+- 2026-11-13, CI #2342 follow-up: the Physics goal-book regression still
+  expected the former CQR-104 selector diagnostics. The five already reviewed
+  explicit stage targets account for exactly 25 + 20 + 10 + 5 + 5 additional
+  occurrences: selected 6,136→6,201, excluded 235→170 and 61→56 unique goals.
+  The regression now verifies the complete 96 + 5 goal selection and each
+  individual occurrence count. All 6,371 projected target occurrences remain
+  checked, with the existing route-failure guards unchanged. The complete
+  Physics input test passed locally; this changes no product, graph, view or
+  review data. The corrected candidate still requires complete remote CI.
+- 2026-11-13, backend CI #2342: the complete run finished with 2,772 tests,
+  six failures and 19 skips. All six failures came from active-frontier
+  assertions using retired Hessen source identities. The replacement uses
+  an isolated live landscape and retains all three mastery scenarios,
+  nonempty independent reference sets, the 20-goal compaction boundary,
+  transitive prerequisite demand, autopilot membership and read/revision
+  separation. A separate HTTP regression reads the unchanged historical
+  export fixture: all 205 mastery values and configuration remain readable;
+  re-export also retains the stored focus, while retired active routes remain 409.
+  The final compiled local run passed all 92 selected tests with no failures,
+  errors or skips: frontier invariants (7), canonical projections (59),
+  automatic completion (14), frontier fallback (2) and historical/retirement
+  HTTP contracts (10). No runtime or curriculum data was changed to restore
+  these tests; complete CI on the corrected commit remains required.
+
+## 10. Follow-up programme: clean Gymnasium (13 November 2026)
+
+A rough roadmap. Each package names its goal, its first steps and its
+acceptance; the detail is worked out when the package starts.
+
+Execution started on 13 November 2026 in the new goal for F1–F5, on branch
+`feat/cqr-gvr-gymnasium-followup`, based on freshly fetched `origin/main`
+`4aace519463880860c4c634eee2e801a48098df9`. The owner's latest instruction
+requests one new branch and one new PR; the package-specific PR split below
+is superseded by separately reviewable commits in that integration PR.
+Astra Ultra audits the register and documentation; Sol 6.1 Ultra handles
+the live-inventory and semantic-route implementation. Evidence gaps remain
+findings, not permission to weaken gates or fabricate reviews.
+
+### 10.1 Owner decision of 13 November 2026
+
+- Work currently goes into Gymnasium only, and there the state must be clean.
+- The rule domain of the Graph Definition gates is the canonical Gymnasium
+  catalog (`curricula/DE/Gymnasium/canonical/`, 21 roots). A `GD-*` row is
+  graded against that domain. It is no longer held at `PARTIAL` only because
+  landscapes outside Gymnasium are unchecked; the register names that boundary,
+  as `GD-C17` already does.
+- Landscapes outside Gymnasium receive no work in this programme: no repair,
+  no retirement, no new gate. Their cleanup needs a separate later decision.
+- Target inside `curricula/DE/Gymnasium/`: no legacy construct, no bypass and
+  no stale register statement remains.
+
+Record this decision in `AGENTS.md` next to the 12 November decision in the
+first pull request that changes a grade (F2), and keep `CLAUDE.md` consistent.
+
+### 10.2 Starting point
+
+Measured in the working tree on 13 November 2026 unless a source is named.
+
+| Fact | Value |
+| --- | --- |
+| Code legend | 22 `HARD`, 2 `PARTIAL` (`GVR-012`, `CQR-104`) of 24 |
+| `GD-*` register | 4 `HARD`, 58 `PARTIAL`, 55 `OPEN`, 28 `OPT/DOC`; part C: 3, 22, 11 |
+| Loaded landscape files | 593: 21 canonical, 45 under `curricula/DE/Gymnasium/input/BY/gymnasium/`, 527 outside Gymnasium |
+| Root requires its own "Warum" child | 0 canonical, 45 of the 45 Bavarian input graphs, 519 outside Gymnasium |
+| Semantic-kind ledgers covering every current goal, all `authoritative` | Mathematik, Physik (`quality/release-model/`), Biologie, Chemie (`quality/goal-book-publication/`) |
+| Wirtschaftswissenschaften ledger | Only inside versioned rollout packages; the latest (`…-v18`) lacks 24 of 702 current goals |
+| Ledgers for Deutsch, Geschichte, Informatik, Latein, Politik und Wirtschaft | None found |
+| `CQR-104` gaps | Sek II scopes of Mathematics (80 findings), Physics (68), Chemistry (41), Biology (3); section 7, WP5, not re-measured |
+
+The ledger rows correct the WP6 statement in section 7 that authoritative
+ledgers exist for Mathematics and Physics only.
+
+### 10.3 Packages
+
+Order: F1, F2, F3, F4, F5. F2 and F3 are independent of each other; F4 and F5
+are independent of both. F4 precedes F5 because its evidence largely exists.
+
+#### F1 – Documentation hygiene
+
+`docs/concept/skill-graph/source/README.md` still says 26 repository gates
+instead of 24. Rebuild the PDFs (`npm --prefix app run docs:skill-graph:full`)
+and compare the published matrix page and PDF with the register.
+
+Accept when the five documentation checks pass and web, PDF and source agree.
+
+#### F2 – Regrade the `GD-*` rows against the declared domain
+
+Standard: the same as for the legend (section 3). A row becomes `HARD` only
+when every obligation it states is gated fail-closed in the canonical
+Gymnasium catalog. Otherwise correct the text, keep the grade and name the
+remaining gap. No row is upgraded on wording alone: each upgrade cites its
+gate, the covered count and an existing negative test or probe.
+
+| Group | Rows | Work |
+| --- | --- | --- |
+| Limited only by the catalog boundary | `GD-C11`, `C15`, `C16`, `C19`, `U13` | State the domain as in `GD-C17`. Check whether the route clause in `C11` and `C16` is a separate obligation of the rule; if so it follows F4. |
+| Justified by floors or protected inventories | `GD-C04`, `C08`, `X26`, `X29`, `X45`, `X46` | Re-evaluate against the complete pin register (21 curricula, 12 scopes). A rule that binds from `M6` or `M7` is graded like its legend code, with the pinned count. A claim that no gate checks stays a named residual. |
+| Waiting for F4 or F5 | `GD-C21`, `C22`, `A18` | Keep `PARTIAL`. Verify the `A18` statement that `CQR-104` applies to Economics only; the legend says eight scopes. |
+| `OPEN` rows | 55, about 48 of them runtime or concept obligations | Out of scope (10.4). Do not regrade. |
+
+Then update the expected distribution in
+`scripts/doc_compendium/extensions/skill_graph.py`, the `ampelSection` counts,
+the affected chapter prose and the statements in `AGENTS.md` and `CLAUDE.md`;
+regenerate (`docs:skill-graph:web`, QA compendium) and run the five
+documentation checks.
+
+Accept when the rendered matrix shows the new grades and every changed row
+names gate, domain and count.
+
+#### F3 – Clean the Gymnasium remainder
+
+The 45 files under `curricula/DE/Gymnasium/input/BY/gymnasium/` are retained
+Bavarian source graphs (4 to 893 goals). `loadGraphValidationLandscapes` loads
+them as live landscapes. None is a manifest root; the IDs of 21 appear in
+`mapping/` and `provenance/`, those of 5 in `canonical/`.
+
+1. Establish their role: which runtime, tooling and evidence consumers read
+   them as graphs (validator inventory, backend `LandscapeService`, mapping,
+   provenance, deck tooling).
+2. Preferred outcome: they are retained source material, as the input
+   `README.md` already says, not live graphs. Take them out of the live
+   landscape inventories with their bytes unchanged.
+3. Only if a consumer needs them as live graphs: normalise `requires` as in
+   WP2 and add them to the G17 domain. Check hash and provenance bindings
+   first; a frozen snapshot is not rewritten.
+4. If neither is possible without breaking evidence, stop and report.
+
+Accept when a test fails for any live graph under `curricula/DE/Gymnasium/`
+that is outside the gated set, and the register states the domain accordingly.
+
+#### F4 – `GVR-012` beyond Mathematics
+
+Target: the seven scopes of the five `M7` subjects (`canonical-math-sek1`,
+`-math-sek2`, `-physics-sek1`, `-physics-sek2`, `-biology-sek2`,
+`-chemistry-sek2`, `-economics-crossstage`).
+
+**Product Owner decision, 13 November 2026:** `GVR-012` shall become mandatory
+from subject maturity `M7`. This is the binding target, with activation deferred
+until the current M7 evidence gaps are closed. It supersedes the earlier
+twelve-scope completion condition in WP6: the required domain is every
+registered QA scope of a subject obligated to meet M7, currently these seven
+scopes. The full inventory still contains twelve scopes; the other five belong
+to M6 subjects and enter the mandatory domain when their subjects advance to M7.
+
+1. Physics probe: run the semantic validator
+   (`app/scripts/lib/hardLearningRouteValidation.ts`) on both Physics scopes
+   with the existing ledger. Add negative fixtures for each obligation that
+   distinguishes `GVR-012` from `CQR-102` (semantic kinds, route ordering,
+   intermediate goals, side prerequisites, Memory ordering).
+2. Biology and Chemistry: confirm that the ledgers under
+   `goal-book-publication/` follow the same contract and are valid input for
+   route validation, then repeat step 1.
+3. Wirtschaftswissenschaften: there is no current ledger. Classifying the 24
+   missing goals needs reviewed evidence; report the gap, do not classify in
+   bulk.
+4. Derive the `validate:graph` profiles from the shared scope inventory for
+   every scope with a current authoritative ledger and delete the separate
+   Mathematics list. The legend states the covered count.
+
+A route that fails the semantic validator is a curriculum finding: report it
+per scope and repair it only with evidence. Never weaken the validator or
+change a classification to pass. The five `M6` scopes have no classification;
+that work belongs to their `M7` path and is not part of this programme.
+
+`GVR-012` remains `PARTIAL`: four of the seven current M7 scopes are directly
+required and pass. The remaining three need current classification and route
+evidence before the complete M7 obligation can be activated. A later `HARD`
+grade requires fail-closed enforcement across the complete M7 domain,
+including its expansion on future promotions, with meaningful negative tests.
+That is a prerequisite for regrading `GVR-012`, not an automatic upgrade of
+broader `GD-C21`, `GD-C22` or `GD-A18` obligations.
+Do not activate the incomplete obligation now, lower existing floors, remove
+required scopes, or treat this decision as passing evidence. The current
+four required scopes and every existing pin remain unchanged and protected
+against removal or reduction even through a later status change.
+
+The semantic route audit remains a complete twelve-scope diagnostic. Its
+nonzero exit for route findings or unavailable ledgers, including those of M6
+subjects, is not an M7 promotion check. `4/12` continues to describe current
+inventory coverage; `4/7` describes coverage of today's normative M7 domain.
+
+#### F5 – `CQR-104` from eight to twelve scopes
+
+1. Biology first (smallest gap). Find the cause before fixing anything:
+   missing applicability data, missing view placement, or no assessment at
+   that level.
+2. After Biology, decide whether one mechanism serves all four subjects and
+   note it here before continuing.
+3. Chemistry, Physics, Mathematics: one reviewable commit per subject. Set
+   `compositionVisibilityRequired` to true for a scope in the pull request
+   that makes it pass.
+
+The expected endpoint set comes from authoritative applicability and
+assessment evidence (state, Sek II course level), never from what is already
+visible. No pin is lowered. A gap that cannot be evidenced stays documented
+and the code stays `PARTIAL`.
+
+After twelve passing scopes: grade `CQR-104` `HARD` and re-evaluate the rows
+that waited for it. This does not automatically make `GD-C22` or `A18` hard:
+`C22` additionally needs the semantic route obligation; `A18` includes
+assessment coverage/path and runtime obligations beyond endpoint visibility.
+
+### 10.4 Out of scope
+
+- The 527 landscapes outside Gymnasium (10.1).
+- The `OPEN` rows that state runtime or concept obligations. They need runtime
+  conformance tests, a separate programme; no `CQR` or `GVR` work reaches them.
+- The frozen prerequisite-reduction registry (contract V9) and its parent.
+- Promotion of the eleven `M0` curricula.
+
+### 10.5 Working rules
+
+Section 6 applies. Under the latest owner instruction, deliver the packages,
+and each F5 subject where evidence supports a repair, as separate reviewable
+commits in one new pull request against `main`. Open a draft early for the
+quick CI tier, then run the complete remote tier when ready. Do not merge,
+publish or deploy. Add one line per package to the progress log in section 9.
+
+### 10.6 Current candidate and evidence-bound remainder
+
+The follow-up is being delivered in [PR #141](https://github.com/enpasos/skillpilot/pull/141).
+Passing candidate tests do not establish main acceptance. The implementation
+preserves all floors, the frozen V9 registry and its parent, and the source
+snapshots. The 55 `OPEN` runtime/concept rows are not regraded.
+
+- **F1/F2:** the register now measures the canonical Gymnasium domain, with
+  eight evidence-backed upgrades (`GD-C08`, `C11`, `C15`, `C16`, `C19`,
+  `X45`, `X46`, `U13`): 12 `HARD`, 50 `PARTIAL`, 55 `OPEN`, 28 `OPT/DOC`.
+  CQR-301 additionally rejects malformed, inconsistent or duplicate review
+  records and parser errors using the shared native record contract. The 89
+  current configured ledgers pass without changing a review decision. Counts
+  and summary badges are checked against the register, not maintained as an
+  unchecked second truth.
+- **F3:** retained source graphs have a separate explicit lookup. The live
+  validator inventory is 21 canonical roots plus the unchanged 527 files
+  outside Gymnasium. Source/provenance APIs and legacy outside-context closure
+  reads retain compatibility; canonical closure cannot use retained source
+  edges. See the [consumer audit](cqr-gvr-gymnasium-retained-source-audit-2026-11-13.md).
+- **F4:** shared QA profiles now drive six current-ledger semantic probes;
+  Mathematics Sek I/II, Biology Sek II and Physics Sek II pass and are directly required
+  (**4/12 inventory scopes; 4/7 current M7 scopes**). The shared
+  `createRouteProfiles` factory repairs an omitted input: already reviewed
+  explicit `goalEntry` stage targets in three national Physics views now
+  supplement the existing lanes (Sek I 96→101; Sek II 306→316). Terminals,
+  canonical graphs, views and roles are unchanged. This is not complete
+  stage-target coverage: 43 additional Sek-II targets inherited only through
+  subtrees remain separate alignment debt, 42 without terminal routes in the
+  broader diagnostic. Physics Sek I and Chemistry Sek II retain 5/3 actual
+  route findings, eight in total. The Economics ledger
+  still lacks 24 current goals, and five
+  M6 scopes have no current authoritative ledger. Those cases remain explicit
+  in the complete coverage register and
+  [current-input audit](../qa-ci/status/semantic-learning-route-audit.json),
+  which binds 45 current inputs, including the shared stage selector and views.
+  Required coverage and established node boundaries cannot be downgraded
+  against the Git base. No source classification or prerequisite was changed
+  to pass the route validator; `GVR-012` remains `PARTIAL`. The owner's
+  subsequent M7 decision above sets the future obligation; complete technical
+  enforcement is still pending. The five M6 scopes remain in the diagnostic
+  inventory and become mandatory on a later subject promotion to M7.
+- **F5:** the shared evaluator respects authored course/duration filters;
+  Biology's eight existing national assessment collections expose their 21
+  GK tasks again, with five LK-only tasks still excluded. All eight pinned
+  visibility scopes pass. The four broader scopes still have genuine gaps;
+  Biology alone retains two missing state-view placements and five national
+  jurisdiction projections without an applicable terminal. A single bulk
+  placement mechanism cannot supply the missing assessment evidence. The
+  [subject findings](cqr-gvr-endpoint-visibility-findings-2026-11-13.md) and
+  [reproducible diagnostic](../qa-ci/status/route-endpoint-visibility-audit.json)
+  specify the remainder; the diagnostic binds 381 current inputs, including
+  all view files read to determine membership. Independent task/rubric checks
+  against ST Biology eAN pp. 57–61 and gAN pp. 46–49 establish an LK source
+  basis for the two missing assessments, but also overbroad prerequisites
+  (22/16), coverage clusters (36/28 atoms), material and passing-result gaps.
+  An unchanged placement in both courses is therefore not justified; reviewed
+  task, atomic coverage, applicability and result contracts remain subject
+  follow-up work. `CQR-104` remains `PARTIAL` at **8/12 scopes**.
+
+The Physics selector follow-up passed all 25 semantic contract tests, all 548
+live graph files, the eight existing visibility pins, five direct-route tests,
+18 workflow guards and the Q2.1 regression. The full CQR run completed with
+21 curricula (five M7, five M6, eleven M0), unchanged; the floor checker
+passed all 21 curriculum and twelve scope pins against main `2ad03c810c`.
+The app TypeScript build and targeted ESLint also passed. These are local
+results; the final candidate still requires its own remote CI evidence.
+
+F4/F5's stronger coverage targets are not complete. Their documented evidence
+work remains necessary before further pins or grades can be raised; this PR
+does not convert successful diagnosis into full target acceptance.

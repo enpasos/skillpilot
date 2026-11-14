@@ -116,9 +116,15 @@ complete check as parallel jobs. Details: `docs/qa-ci/ci.md`.
   the subject and all its scopes at M0. No historical migration-preservation
   proof is required for this target gate. Current CQR coverage is the canonical
   Gymnasium catalog; inherited QA review bindings remain separately checked.
-  Historical review reuse may use an explicitly bound certified frame only
-  after full proof verification and dependency/applicability checks for the
-  unchanged subjects. Changed subjects retain strict current-input reviews.
+  The 13 November 2026 decision grades `GD-*` rules against all 21 canonical
+  Gymnasium roots, with higher obligations applying at their stated milestone.
+  A bounded catalog is not itself a partial gate; every upgrade needs gate,
+  count, and negative-test evidence. Runtime gaps remain explicit. Other
+  landscapes and promotion of the eleven M0 curricula are outside this work;
+  retained source bytes stay intact and live consumers need explicit validation.
+  Frozen V9 review reuse is goal-scoped: unchanged goals keep their bound
+  reviewed values, changed goals face strict current-input reviews. The proof
+  history is not replayed after the freeze; see the immutable-evidence rule below.
 - **Mastery**: one binary result (`0`/`1`) per atomic goal. Cluster and
   learning-unit progress is derived from atomic descendants; no completion
   ever writes mastery to children. Exams and memory goals always need their
@@ -133,7 +139,22 @@ complete check as parallel jobs. Details: `docs/qa-ci/ci.md`.
   runs directly in curriculum CI, including M0 entries. `CQR-104` remains
   explicitly limited to eight scopes; the four unconfigured Sek II scopes
   have unresolved evidence gaps. `CQR-102` covers all twelve scopes, but the
-  stronger semantic `GVR-012` remains Mathematics-only. Never turn a review
+  stronger semantic `GVR-012` is required for Mathematics Sek I/Sek II,
+  Biology Sek II and Physics Sek II (4/12). Five Physics Sek I and three
+  Chemistry findings, plus six scopes without current ledgers, remain explicit.
+  The shared factory adds only reviewed explicit Physics stage targets to
+  the existing lanes; 43 additional inherited Sek II targets, 42 without
+  terminal routes, remain separate alignment debt. This is not complete
+  stage-target coverage. The Product
+  Owner decided on **13 November 2026** that `GVR-012` shall become mandatory
+  from subject maturity M7. Activation across that domain waits for the
+  remaining evidence gaps: today four of seven M7 scopes are required and
+  pass. The five M6 scopes stay in the twelve-scope inventory and join the
+  mandatory domain on later promotion to M7. `HARD` requires complete M7
+  enforcement, including future promotions; until then keep `PARTIAL`, all
+  four required scopes and all pins. No immediate activation, floor reduction
+  or inferred pass evidence. The twelve-scope audit remains diagnostic, not
+  an M7 promotion check. Never turn a review
   queue green by bulk decisions. The frozen
   prerequisite-reduction registry (contract V9, `AGENTS.md` §2.2) keeps the
   reviews of 1,361 goals valid while each goal is unchanged; changing one of

@@ -5,7 +5,7 @@ import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { loadCurrentCurriculumCatalog } from './currentCurriculumCatalog'
 import { liveVerificationInputs } from './lib/verificationInputSnapshot'
-import { routeProfiles } from './generateCurriculumQualityStatus'
+import { routeProfileDefinitions } from './generateCurriculumQualityStatus'
 
 export interface MaturityRule { id?: string; status?: string }
 export interface ScopeStatus { scopeId?: string; maturity?: string; rules?: MaturityRule[] }
@@ -165,7 +165,7 @@ function main(): void {
   const { entries } = loadCurrentCurriculumCatalog(liveVerificationInputs, root)
   checkCurriculumMaturityPolicy(artifact, policy, {
     landscapeIds: entries.map(entry => entry.landscape.landscapeId),
-    scopes: routeProfiles.map(profile => ({ landscapeId: profile.landscapeId, scopeId: profile.profileId, compositionVisibilityRequired: profile.compositionViewStage !== undefined })),
+    scopes: routeProfileDefinitions.map(profile => ({ landscapeId: profile.landscapeId, scopeId: profile.profileId, compositionVisibilityRequired: profile.compositionViewStage !== undefined })),
   })
   console.log(`curriculum maturity gates passed: ${policy.floors.length} curricula, ${policy.scopeFloors.length} scopes; base ${baseRef}`)
 }

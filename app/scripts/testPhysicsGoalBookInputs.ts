@@ -20,7 +20,7 @@ import {
   type CompositionViewNode,
 } from '../src/utils/authoring/compositionViewAuthoring'
 import { buildApplicabilityCompilation } from './applicabilityCompiler'
-import { collectWholeMaterialPrerequisiteClosure } from './generateCurriculumQualityStatus'
+import { collectWholeMaterialPrerequisiteClosure, createRouteProfiles, evaluateRouteProfile, routeProfileDefinitions } from './generateCurriculumQualityStatus'
 import type { SkillLandscape } from '../src/landscapeTypes'
 import { parseSubjectDurationModelPolicy } from './goalBookModel'
 import {
@@ -611,12 +611,21 @@ const FINAL_SPLIT_ASSESSMENT_COVERAGE = new Map([
   ['092017a7-1ce1-54b7-a14c-1658b72d70a7', FINAL_SPLIT_CHILD_IDS[6]],
   ['027d25fc-b609-5383-ac44-5dd3327ca577', FINAL_SPLIT_CHILD_IDS[7]],
 ])
-// Native final CQR-104 (2026-09-08 07:44:52Z): exact current projections,
-// including approved split/support route integration; all zero-failure guards remain.
+// The 2026-11-13 shared-selector repair changes only which existing projected
+// targets belong to the global lane: exactly five reviewed explicit targets,
+// occurring 25+20+10+5+5 times. The full projection stays at 6371 targets; no
+// target or route check is removed. The complete selection delta is tested below.
 const EXPECTED_PHYSICS_SEKI_PROJECTED_ROUTE_TARGET_OCCURRENCES = 6371
-const EXPECTED_PHYSICS_SEKI_PROFILE_SELECTED_TARGET_OCCURRENCES = 6136
-const EXPECTED_PHYSICS_SEKI_PROFILE_SELECTOR_EXCLUDED_OCCURRENCES = 235
-const EXPECTED_PHYSICS_SEKI_PROFILE_SELECTOR_EXCLUDED_UNIQUE_GOALS = 61
+const EXPECTED_PHYSICS_SEKI_PROFILE_SELECTED_TARGET_OCCURRENCES = 6201
+const EXPECTED_PHYSICS_SEKI_PROFILE_SELECTOR_EXCLUDED_OCCURRENCES = 170
+const EXPECTED_PHYSICS_SEKI_PROFILE_SELECTOR_EXCLUDED_UNIQUE_GOALS = 56
+const EXPECTED_PHYSICS_SEKI_ADDED_TARGET_OCCURRENCES = new Map([
+  [FINAL_SPLIT_CHILD_IDS[0], 25], // p-n model
+  [FINAL_SPLIT_CHILD_IDS[1], 20], // diode experiment
+  [FINAL_SPLIT_CHILD_IDS[2], 10], // rectifier
+  ['7d4d6a39-0c78-5fb0-b7bf-182ed00972f7', 5], // transistor
+  ['68034218-8f3e-5f7f-ae4e-ed057dd4e44e', 5], // reactor
+])
 
 const EXPECTED_DURATION_DECISIONS = new Map<string, {
   stage: 'SekI' | 'SekI+SekII'
@@ -1245,7 +1254,8 @@ assert.equal(
   undefined,
   'excluded legacy aggregate assessment must not retain an external applicability override',
 )
-const physicsApplicabilityReport = buildApplicabilityCompilation().reports.find(
+const applicabilityCompilation = buildApplicabilityCompilation()
+const physicsApplicabilityReport = applicabilityCompilation.reports.find(
   ({ landscapeId }) => landscapeId === LANDSCAPE_ID,
 )
 assert(physicsApplicabilityReport, 'applicability compiler lacks canonical Physics report')
@@ -2338,6 +2348,29 @@ assert(physicsSekIRouteScope, 'curriculum-quality status lacks canonical Physics
 const routeProjectionRule = physicsSekIRouteScope.rules.find(({ id }) => id === 'CQR-104')
 assert(routeProjectionRule, 'curriculum-quality status lacks Physics Sek-I CQR-104')
 const routeMetrics = routeProjectionRule.metrics ?? {}
+const legacyRouteProfile = routeProfileDefinitions.find(profile => profile.profileId === 'canonical-physics-sek1')!
+const currentRouteProfile = createRouteProfiles(repoRoot).find(profile => profile.profileId === legacyRouteProfile.profileId)!
+const currentPhysics = rawLandscape as unknown as SkillLandscape
+const legacySelectedGoalIds = currentPhysics.goals.filter(legacyRouteProfile.goalSelector).map(goal => goal.id)
+const currentSelectedGoalIds = currentPhysics.goals.filter(currentRouteProfile.goalSelector).map(goal => goal.id)
+assert.equal(legacySelectedGoalIds.length, 96)
+assert.deepEqual(
+  [...currentSelectedGoalIds].sort(compareCodePoints),
+  [...legacySelectedGoalIds, ...EXPECTED_PHYSICS_SEKI_ADDED_TARGET_OCCURRENCES.keys()].sort(compareCodePoints),
+  'The complete shared Physics Sek-I lane changes only by the five reviewed explicit stage targets',
+)
+const addedTargetOccurrences = new Map([...EXPECTED_PHYSICS_SEKI_ADDED_TARGET_OCCURRENCES.keys()].map(goalId => {
+  const measured = evaluateRouteProfile(currentPhysics, {
+    ...currentRouteProfile, goalSelector: goal => goal.id === goalId,
+  }, applicabilityCompilation).rules.find(rule => rule.id === 'CQR-104')!
+  return [goalId, measured.metrics?.visibleProfileSelectedAtomicGoalOccurrences]
+}))
+assert.deepEqual(
+  addedTargetOccurrences,
+  EXPECTED_PHYSICS_SEKI_ADDED_TARGET_OCCURRENCES,
+  'The 65 newly selected occurrences must come only from the five existing reviewed targets',
+)
+assert.equal([...addedTargetOccurrences.values()].reduce((sum, count) => sum + (count ?? 0), 0), 65)
 assert.equal(
   routeMetrics.visibleProjectedRouteTargetGoalOccurrences,
   EXPECTED_PHYSICS_SEKI_PROJECTED_ROUTE_TARGET_OCCURRENCES,
@@ -2350,7 +2383,7 @@ assert.equal(
 assert.equal(
   routeMetrics.visibleProjectedRouteTargetGoalOccurrencesExcludedByProfileSelector,
   EXPECTED_PHYSICS_SEKI_PROFILE_SELECTOR_EXCLUDED_OCCURRENCES,
-  'The profile selector diagnostic must retain the known tag/phase mismatch instead of hiding it',
+  'The profile selector diagnostic must retain every remaining tag/phase mismatch after the five-target correction',
 )
 assert.equal(
   routeMetrics.uniqueProjectedRouteTargetsExcludedByProfileSelector,
