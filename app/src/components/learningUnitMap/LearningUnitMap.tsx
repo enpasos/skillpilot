@@ -450,8 +450,10 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
           {headingMode === 'standard' && <span>{visibleIds.length} Bereiche · {activeLayout?.edges.length ?? '…'} Verbindungen</span>}
           {unitOrderRelations && !listMode && <span className="lum-order-legend" data-testid="learning-map-order-legend">
             <span><i className="lum-legend-line lum-legend-line--declared" />{label('erklärte Reihenfolge', 'declared order')}</span>
-            <span><i className="lum-legend-line lum-legend-line--derived" />{label('Abhängigkeit, noch nicht erklärt', 'dependency, not declared yet')}</span>
-            {backwardCount > 0 && <span className="lum-legend-backward" title={label('Ein Ziel braucht ein Ziel aus einer Einheit, die nach seiner eigenen Einheit kommt.', 'A goal needs a goal from a unit that comes after its own unit.')}>
+            <span title={label('Lernziele am Ende des Pfeils brauchen Lernziele an seinem Anfang. Zwischen zwei Einheiten ist dafür noch keine Reihenfolge erklärt.',
+              'Goals at the end of the arrow need goals at its start. Between two units, no order has been declared for this yet.')}>
+              <i className="lum-legend-line lum-legend-line--derived" />{label('Bedarf der Lernziele', 'need of the goals')}</span>
+            {backwardCount > 0 && <span className="lum-legend-backward" title={label('Früheres braucht Späteres: Ein Ziel braucht ein Ziel aus einer Einheit, die nach seiner eigenen Einheit kommt.', 'Earlier needs later: a goal needs a goal from a unit that comes after its own unit.')}>
               <i className="lum-legend-line lum-legend-line--backward" />{backwardCount} {label(backwardCount === 1 ? 'Rückgriff' : 'Rückgriffe', backwardCount === 1 ? 'backward dependency' : 'backward dependencies')}</span>}
           </span>}
         </div>
