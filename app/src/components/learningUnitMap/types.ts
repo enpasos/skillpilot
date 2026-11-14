@@ -15,6 +15,14 @@ export interface LearningMapRelation {
   target: string
   kind: 'requirement' | 'summary'
   provenance: LearningMapRequirement[]
+  /**
+   * Unit map only, between two child units of one unit: `declared` follows an
+   * `after` (target lies after source); `derived` stems from goal demand that
+   * no `after` covers yet. Absent for every other relation.
+   */
+  unitOrder?: 'declared' | 'derived'
+  /** Unit map only: demand against the declared order (Rückgriff). The source lies after the target. */
+  backward?: true
 }
 
 export interface LearningMapEntry {
@@ -26,6 +34,10 @@ export interface LearningMapEntry {
   requires: string[]
   position: { x: number; y: number }
   eyebrow?: string
+  /** Unit map only: landscape IDs of the subjects whose goals the entry is or contains. */
+  subjects?: string[]
+  /** Unit map only: a goal the prerequisite closure added from outside the plan. */
+  preparation?: true
 }
 
 export interface LearningMapFixture {
