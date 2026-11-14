@@ -1,0 +1,433 @@
+{
+  "schemaVersion" : 1,
+  "startedAt" : "2026-10-30T08:55:02.710614888Z",
+  "sourceRevision" : "not supplied",
+  "environment" : {
+    "java.version" : "25.0.2",
+    "java.vendor" : "Amazon.com Inc.",
+    "java.vm.name" : "OpenJDK 64-Bit Server VM",
+    "java.vm.version" : "25.0.2+10-LTS",
+    "os.name" : "Linux",
+    "os.version" : "6.18.54.1-microsoft-standard-WSL2",
+    "os.arch" : "amd64",
+    "availableProcessors" : 16,
+    "maxHeapBytes" : 3221225472,
+    "garbageCollectors" : [ "G1 Young Generation", "G1 Concurrent GC", "G1 Old Generation" ],
+    "cpuModel" : "model name\t: Intel(R) Xeon(R) E-2286M  CPU @ 2.40GHz",
+    "cpuAffinity" : "Cpus_allowed_list:\t0-15",
+    "cgroupCpuMax" : "max 100000",
+    "cgroupMemoryMax" : "max",
+    "runnerImage" : "not supplied"
+  },
+  "method" : {
+    "heap" : "observed used heap and peak pools; includes uncollected garbage, not a retained-size proof",
+    "scope" : "pure compiler/evaluator/cache only; no database, HTTP, host acceptance or end-to-end latency claim",
+    "masterySnapshots" : [ "no goals mastered: all expanded edges propagate blockers", "assessment mastered: the one rule enables every ordinary goal" ],
+    "warmupIterationsPerSnapshot" : 40,
+    "clock" : "System.nanoTime; durations include returned-set and explanation-map construction",
+    "coldCompile" : "first compilation of this dataset in the same JVM; JVM/compiler code may already be warm",
+    "measuredIterationsPerSnapshot" : 100,
+    "ruleReferences" : "one assessment plus every ordinary goal; counted explicitly per dataset",
+    "timingGate" : "none; 25ms warm p95 is recorded as a design target, not asserted on shared CI"
+  },
+  "datasets" : [ {
+    "shape" : "chain",
+    "atomicContextNodes" : 100,
+    "authoredNodesIncludingClusters" : 100,
+    "expandedEdges" : 197,
+    "ruleCount" : 1,
+    "ruleReferenceCount" : 100,
+    "coldCompileMs" : 27.495044,
+    "heapUsedBeforeCompileBytes" : 20992328,
+    "heapUsedAfterCompileBytes" : 20992328,
+    "heapUsedCompileDeltaBytes" : 0,
+    "threadAllocatedCompileBytes" : 763728,
+    "warmNoMastery" : {
+      "p50Ms" : 0.056704,
+      "p95Ms" : 0.172711,
+      "maxMs" : 0.390926,
+      "designTargetP95Ms" : 25,
+      "withinDesignTarget" : true,
+      "meanThreadAllocatedBytes" : 13680
+    },
+    "warmAssessmentMastered" : {
+      "p50Ms" : 0.048704,
+      "p95Ms" : 0.170212,
+      "maxMs" : 0.232216,
+      "designTargetP95Ms" : 25,
+      "withinDesignTarget" : true,
+      "meanThreadAllocatedBytes" : 25216
+    },
+    "heapUsedAfterEvaluationBytes" : 31478088,
+    "sumHeapPoolPeaksSinceMeasurementStartBytes" : 31478088
+  }, {
+    "shape" : "diamonds",
+    "atomicContextNodes" : 100,
+    "authoredNodesIncludingClusters" : 100,
+    "expandedEdges" : 195,
+    "ruleCount" : 1,
+    "ruleReferenceCount" : 100,
+    "coldCompileMs" : 7.099276,
+    "heapUsedBeforeCompileBytes" : 31478088,
+    "heapUsedAfterCompileBytes" : 31478088,
+    "heapUsedCompileDeltaBytes" : 0,
+    "threadAllocatedCompileBytes" : 259040,
+    "warmNoMastery" : {
+      "p50Ms" : 0.015702,
+      "p95Ms" : 0.017201,
+      "maxMs" : 0.037503,
+      "designTargetP95Ms" : 25,
+      "withinDesignTarget" : true,
+      "meanThreadAllocatedBytes" : 13680
+    },
+    "warmAssessmentMastered" : {
+      "p50Ms" : 0.032102,
+      "p95Ms" : 0.065204,
+      "maxMs" : 0.213314,
+      "designTargetP95Ms" : 25,
+      "withinDesignTarget" : true,
+      "meanThreadAllocatedBytes" : 25216
+    },
+    "heapUsedAfterEvaluationBytes" : 37769544,
+    "sumHeapPoolPeaksSinceMeasurementStartBytes" : 37769544
+  }, {
+    "shape" : "shared-prerequisites",
+    "atomicContextNodes" : 100,
+    "authoredNodesIncludingClusters" : 100,
+    "expandedEdges" : 989,
+    "ruleCount" : 1,
+    "ruleReferenceCount" : 100,
+    "coldCompileMs" : 6.514538,
+    "heapUsedBeforeCompileBytes" : 37769544,
+    "heapUsedAfterCompileBytes" : 39866696,
+    "heapUsedCompileDeltaBytes" : 2097152,
+    "threadAllocatedCompileBytes" : 407024,
+    "warmNoMastery" : {
+      "p50Ms" : 0.020102,
+      "p95Ms" : 0.031002,
+      "maxMs" : 0.102007,
+      "designTargetP95Ms" : 25,
+      "withinDesignTarget" : true,
+      "meanThreadAllocatedBytes" : 13680
+    },
+    "warmAssessmentMastered" : {
+      "p50Ms" : 0.024202,
+      "p95Ms" : 0.038502,
+      "maxMs" : 0.157211,
+      "designTargetP95Ms" : 25,
+      "withinDesignTarget" : true,
+      "meanThreadAllocatedBytes" : 25216
+    },
+    "heapUsedAfterEvaluationBytes" : 46158152,
+    "sumHeapPoolPeaksSinceMeasurementStartBytes" : 46158152
+  }, {
+    "shape" : "dense-clusters",
+    "atomicContextNodes" : 100,
+    "authoredNodesIncludingClusters" : 110,
+    "expandedEdges" : 989,
+    "ruleCount" : 1,
+    "ruleReferenceCount" : 100,
+    "coldCompileMs" : 4.740818,
+    "heapUsedBeforeCompileBytes" : 46158152,
+    "heapUsedAfterCompileBytes" : 46158152,
+    "heapUsedCompileDeltaBytes" : 0,
+    "threadAllocatedCompileBytes" : 339296,
+    "warmNoMastery" : {
+      "p50Ms" : 0.053104,
+      "p95Ms" : 0.072705,
+      "maxMs" : 0.234816,
+      "designTargetP95Ms" : 25,
+      "withinDesignTarget" : true,
+      "meanThreadAllocatedBytes" : 13680
+    },
+    "warmAssessmentMastered" : {
+      "p50Ms" : 0.047004,
+      "p95Ms" : 0.084306,
+      "maxMs" : 0.255717,
+      "designTargetP95Ms" : 25,
+      "withinDesignTarget" : true,
+      "meanThreadAllocatedBytes" : 25216
+    },
+    "heapUsedAfterEvaluationBytes" : 52449608,
+    "sumHeapPoolPeaksSinceMeasurementStartBytes" : 52449608
+  }, {
+    "shape" : "chain",
+    "atomicContextNodes" : 1000,
+    "authoredNodesIncludingClusters" : 1000,
+    "expandedEdges" : 1997,
+    "ruleCount" : 1,
+    "ruleReferenceCount" : 1000,
+    "coldCompileMs" : 29.36547,
+    "heapUsedBeforeCompileBytes" : 56643912,
+    "heapUsedAfterCompileBytes" : 58741064,
+    "heapUsedCompileDeltaBytes" : 2097152,
+    "threadAllocatedCompileBytes" : 2526376,
+    "warmNoMastery" : {
+      "p50Ms" : 0.214914,
+      "p95Ms" : 0.394126,
+      "maxMs" : 0.517634,
+      "designTargetP95Ms" : 25,
+      "withinDesignTarget" : true,
+      "meanThreadAllocatedBytes" : 117120
+    },
+    "warmAssessmentMastered" : {
+      "p50Ms" : 0.389727,
+      "p95Ms" : 0.564438,
+      "maxMs" : 0.826055,
+      "designTargetP95Ms" : 25,
+      "withinDesignTarget" : true,
+      "meanThreadAllocatedBytes" : 222208
+    },
+    "heapUsedAfterEvaluationBytes" : 106975560,
+    "sumHeapPoolPeaksSinceMeasurementStartBytes" : 106975560
+  }, {
+    "shape" : "diamonds",
+    "atomicContextNodes" : 1000,
+    "authoredNodesIncludingClusters" : 1000,
+    "expandedEdges" : 1995,
+    "ruleCount" : 1,
+    "ruleReferenceCount" : 1000,
+    "coldCompileMs" : 31.114688,
+    "heapUsedBeforeCompileBytes" : 109072712,
+    "heapUsedAfterCompileBytes" : 111169864,
+    "heapUsedCompileDeltaBytes" : 2097152,
+    "threadAllocatedCompileBytes" : 2545392,
+    "warmNoMastery" : {
+      "p50Ms" : 0.228515,
+      "p95Ms" : 0.346323,
+      "maxMs" : 0.411027,
+      "designTargetP95Ms" : 25,
+      "withinDesignTarget" : true,
+      "meanThreadAllocatedBytes" : 117120
+    },
+    "warmAssessmentMastered" : {
+      "p50Ms" : 0.381326,
+      "p95Ms" : 0.621941,
+      "maxMs" : 0.654844,
+      "designTargetP95Ms" : 25,
+      "withinDesignTarget" : true,
+      "meanThreadAllocatedBytes" : 222208
+    },
+    "heapUsedAfterEvaluationBytes" : 159404360,
+    "sumHeapPoolPeaksSinceMeasurementStartBytes" : 159404360
+  }, {
+    "shape" : "shared-prerequisites",
+    "atomicContextNodes" : 1000,
+    "authoredNodesIncludingClusters" : 1000,
+    "expandedEdges" : 10889,
+    "ruleCount" : 1,
+    "ruleReferenceCount" : 1000,
+    "coldCompileMs" : 38.555187,
+    "heapUsedBeforeCompileBytes" : 167792968,
+    "heapUsedAfterCompileBytes" : 171987272,
+    "heapUsedCompileDeltaBytes" : 4194304,
+    "threadAllocatedCompileBytes" : 4656672,
+    "warmNoMastery" : {
+      "p50Ms" : 0.263817,
+      "p95Ms" : 0.348623,
+      "maxMs" : 0.471332,
+      "designTargetP95Ms" : 25,
+      "withinDesignTarget" : true,
+      "meanThreadAllocatedBytes" : 117120
+    },
+    "warmAssessmentMastered" : {
+      "p50Ms" : 0.29312,
+      "p95Ms" : 0.659445,
+      "maxMs" : 0.864458,
+      "designTargetP95Ms" : 25,
+      "withinDesignTarget" : true,
+      "meanThreadAllocatedBytes" : 222208
+    },
+    "heapUsedAfterEvaluationBytes" : 220221768,
+    "sumHeapPoolPeaksSinceMeasurementStartBytes" : 220221768
+  }, {
+    "shape" : "dense-clusters",
+    "atomicContextNodes" : 1000,
+    "authoredNodesIncludingClusters" : 1100,
+    "expandedEdges" : 10889,
+    "ruleCount" : 1,
+    "ruleReferenceCount" : 1000,
+    "coldCompileMs" : 24.881169,
+    "heapUsedBeforeCompileBytes" : 222318920,
+    "heapUsedAfterCompileBytes" : 226513224,
+    "heapUsedCompileDeltaBytes" : 4194304,
+    "threadAllocatedCompileBytes" : 3295384,
+    "warmNoMastery" : {
+      "p50Ms" : 0.205813,
+      "p95Ms" : 0.873859,
+      "maxMs" : 4.544605,
+      "designTargetP95Ms" : 25,
+      "withinDesignTarget" : true,
+      "meanThreadAllocatedBytes" : 117120
+    },
+    "warmAssessmentMastered" : {
+      "p50Ms" : 0.256017,
+      "p95Ms" : 0.523736,
+      "maxMs" : 0.688046,
+      "designTargetP95Ms" : 25,
+      "withinDesignTarget" : true,
+      "meanThreadAllocatedBytes" : 222208
+    },
+    "heapUsedAfterEvaluationBytes" : 54260248,
+    "sumHeapPoolPeaksSinceMeasurementStartBytes" : 236712472
+  }, {
+    "shape" : "chain",
+    "atomicContextNodes" : 10000,
+    "authoredNodesIncludingClusters" : 10000,
+    "expandedEdges" : 19997,
+    "ruleCount" : 1,
+    "ruleReferenceCount" : 10000,
+    "coldCompileMs" : 128.979455,
+    "heapUsedBeforeCompileBytes" : 83620376,
+    "heapUsedAfterCompileBytes" : 106689048,
+    "heapUsedCompileDeltaBytes" : 23068672,
+    "threadAllocatedCompileBytes" : 23581616,
+    "warmNoMastery" : {
+      "p50Ms" : 1.818222,
+      "p95Ms" : 2.801888,
+      "maxMs" : 3.73355,
+      "designTargetP95Ms" : 25,
+      "withinDesignTarget" : true,
+      "meanThreadAllocatedBytes" : 1108136
+    },
+    "warmAssessmentMastered" : {
+      "p50Ms" : 3.395428,
+      "p95Ms" : 5.975801,
+      "maxMs" : 6.199316,
+      "designTargetP95Ms" : 25,
+      "withinDesignTarget" : true,
+      "meanThreadAllocatedBytes" : 2105325
+    },
+    "heapUsedAfterEvaluationBytes" : 263777464,
+    "sumHeapPoolPeaksSinceMeasurementStartBytes" : 328789176
+  }, {
+    "shape" : "diamonds",
+    "atomicContextNodes" : 10000,
+    "authoredNodesIncludingClusters" : 10000,
+    "expandedEdges" : 19995,
+    "ruleCount" : 1,
+    "ruleReferenceCount" : 10000,
+    "coldCompileMs" : 120.647996,
+    "heapUsedBeforeCompileBytes" : 293137592,
+    "heapUsedAfterCompileBytes" : 316206264,
+    "heapUsedCompileDeltaBytes" : 23068672,
+    "threadAllocatedCompileBytes" : 22822328,
+    "warmNoMastery" : {
+      "p50Ms" : 0.917461,
+      "p95Ms" : 1.081773,
+      "maxMs" : 1.324489,
+      "designTargetP95Ms" : 25,
+      "withinDesignTarget" : true,
+      "meanThreadAllocatedBytes" : 1108136
+    },
+    "warmAssessmentMastered" : {
+      "p50Ms" : 1.325189,
+      "p95Ms" : 2.394961,
+      "maxMs" : 7.493202,
+      "designTargetP95Ms" : 25,
+      "withinDesignTarget" : true,
+      "meanThreadAllocatedBytes" : 2105272
+    },
+    "heapUsedAfterEvaluationBytes" : 178037192,
+    "sumHeapPoolPeaksSinceMeasurementStartBytes" : 321797584
+  }, {
+    "shape" : "shared-prerequisites",
+    "atomicContextNodes" : 10000,
+    "authoredNodesIncludingClusters" : 10000,
+    "expandedEdges" : 109889,
+    "ruleCount" : 1,
+    "ruleReferenceCount" : 10000,
+    "coldCompileMs" : 179.957175,
+    "heapUsedBeforeCompileBytes" : 255631816,
+    "heapUsedAfterCompileBytes" : 299672008,
+    "heapUsedCompileDeltaBytes" : 44040192,
+    "threadAllocatedCompileBytes" : 44940376,
+    "warmNoMastery" : {
+      "p50Ms" : 0.879259,
+      "p95Ms" : 1.028969,
+      "maxMs" : 1.19218,
+      "designTargetP95Ms" : 25,
+      "withinDesignTarget" : true,
+      "meanThreadAllocatedBytes" : 1108136
+    },
+    "warmAssessmentMastered" : {
+      "p50Ms" : 1.286586,
+      "p95Ms" : 1.660612,
+      "maxMs" : 8.830393,
+      "designTargetP95Ms" : 25,
+      "withinDesignTarget" : true,
+      "meanThreadAllocatedBytes" : 2105272
+    },
+    "heapUsedAfterEvaluationBytes" : 170472664,
+    "sumHeapPoolPeaksSinceMeasurementStartBytes" : 325781056
+  }, {
+    "shape" : "dense-clusters",
+    "atomicContextNodes" : 10000,
+    "authoredNodesIncludingClusters" : 11000,
+    "expandedEdges" : 109889,
+    "ruleCount" : 1,
+    "ruleReferenceCount" : 10000,
+    "coldCompileMs" : 195.82814,
+    "heapUsedBeforeCompileBytes" : 199832792,
+    "heapUsedAfterCompileBytes" : 229192920,
+    "heapUsedCompileDeltaBytes" : 29360128,
+    "threadAllocatedCompileBytes" : 30068664,
+    "warmNoMastery" : {
+      "p50Ms" : 1.03907,
+      "p95Ms" : 1.839824,
+      "maxMs" : 7.579209,
+      "designTargetP95Ms" : 25,
+      "withinDesignTarget" : true,
+      "meanThreadAllocatedBytes" : 1108136
+    },
+    "warmAssessmentMastered" : {
+      "p50Ms" : 1.368792,
+      "p95Ms" : 2.502768,
+      "maxMs" : 7.493103,
+      "designTargetP95Ms" : 25,
+      "withinDesignTarget" : true,
+      "meanThreadAllocatedBytes" : 2105272
+    },
+    "heapUsedAfterEvaluationBytes" : 88101192,
+    "sumHeapPoolPeaksSinceMeasurementStartBytes" : 325661912
+  }, {
+    "shape" : "bounded-dense-dag",
+    "atomicContextNodes" : 10000,
+    "authoredNodesIncludingClusters" : 10000,
+    "expandedEdges" : 100000,
+    "ruleCount" : 1,
+    "ruleReferenceCount" : 10000,
+    "coldCompileMs" : 209.98999,
+    "heapUsedBeforeCompileBytes" : 161501512,
+    "heapUsedAfterCompileBytes" : 199250248,
+    "heapUsedCompileDeltaBytes" : 37748736,
+    "threadAllocatedCompileBytes" : 35722624,
+    "warmNoMastery" : {
+      "p50Ms" : 1.009668,
+      "p95Ms" : 2.08464,
+      "maxMs" : 9.912866,
+      "designTargetP95Ms" : 25,
+      "withinDesignTarget" : true,
+      "meanThreadAllocatedBytes" : 1108136
+    },
+    "warmAssessmentMastered" : {
+      "p50Ms" : 1.268285,
+      "p95Ms" : 1.813222,
+      "maxMs" : 7.677615,
+      "designTargetP95Ms" : 25,
+      "withinDesignTarget" : true,
+      "meanThreadAllocatedBytes" : 2105272
+    },
+    "heapUsedAfterEvaluationBytes" : 66517080,
+    "sumHeapPoolPeaksSinceMeasurementStartBytes" : 326563928
+  } ],
+  "sameKeyConcurrentFirstAccess" : {
+    "expandedEdges" : 100000,
+    "callerMs" : [ 126.565992, 130.99839, 131.814744, 132.6314, 133.418152, 134.368416, 135.301178, 135.729807 ],
+    "atomicContextNodes" : 10000,
+    "subsequentLookupMs" : 0.602241,
+    "wallMs" : 136.36885,
+    "oneSharedResultInstance" : true,
+    "workers" : 8
+  }
+}

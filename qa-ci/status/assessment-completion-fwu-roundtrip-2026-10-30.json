@@ -1,0 +1,451 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-30",
+  "status": "LOCAL_FWU_AND_HERMETIC_ROUNDTRIP_PASSED",
+  "sourceState": "Uncommitted local implementation; exact artifact and receipt hashes bind this evidence.",
+  "scope": "Complete Mathematics completion.2 JSON and FWU carriers with all 836 binary images; no reduced fixture or binary bypass.",
+  "package": {
+    "packageId": "org.skillpilot.curriculum.de.gymnasium.mathematik",
+    "packageVersion": "0.1.0-completion.2",
+    "releaseId": "org.skillpilot.curriculum.de.gymnasium.mathematik@0.1.0-completion.2",
+    "contentDigest": "sha256:55ed6abbef12a036a31d520bfe3608d086e5e7a1a8e2cef76d1bb8221f264328",
+    "sourceJsonZipSha256": "fe52bf0608117e08779e47391c0d32521bf97749b944dd3b70c129207257d839",
+    "fwuZipSha256": "6f126027583d14b39b9a05c25ed2b627479d665f49c3500ddf7c8fb25a31566b"
+  },
+  "buildReproducibility": {
+    "json": {
+      "byteIdenticalDoubleZipBuild": true,
+      "buildLog": {
+        "path": "tmp/assessment-completion-json-02-build.log",
+        "bytes": 1347,
+        "sha256": "03b21392079cc85b03bec92251ae87a1a8bd85f2e4db3605a86894535daaab62"
+      }
+    },
+    "fwu": {
+      "byteIdentical": true,
+      "locale": "C.UTF-8",
+      "runA": {
+        "manifestSha256": "5a28b96e9782ca881a4b5d60ca27c60f7adb9b8e5eaf77464ef90e698461964d",
+        "zipSha256": "6f126027583d14b39b9a05c25ed2b627479d665f49c3500ddf7c8fb25a31566b"
+      },
+      "runB": {
+        "manifestSha256": "5a28b96e9782ca881a4b5d60ca27c60f7adb9b8e5eaf77464ef90e698461964d",
+        "zipSha256": "6f126027583d14b39b9a05c25ed2b627479d665f49c3500ddf7c8fb25a31566b"
+      },
+      "sourceDateEpoch": 315532800,
+      "status": "passed",
+      "timezone": "UTC"
+    }
+  },
+  "normativeFwuValidation": {
+    "embeddedRelativeEvidenceBase": "tmp/assessment-completion-fwu-02-validation",
+    "receipt": {
+      "path": "tmp/assessment-completion-fwu-02-validation/report.json",
+      "bytes": 10628,
+      "sha256": "c972834505b2c7efcbb0ef312e5abfbe23656844620c390fe9eb4975a9271c6a"
+    },
+    "validatorId": "skillpilot-fwu-owl-package-validator-v1",
+    "gates": [
+      {
+        "id": "archive-security",
+        "status": "passed",
+        "summary": "Secure deterministic ZIP32 structure passed for 969 entries."
+      },
+      {
+        "id": "manifest-schema",
+        "status": "passed",
+        "summary": "Manifest is strict JSON and valid against the repository Draft 2020-12 trust root."
+      },
+      {
+        "id": "profile-contract",
+        "status": "passed",
+        "summary": "Embedded profile is byte-identical to the schema-valid repository trust root."
+      },
+      {
+        "id": "inventory",
+        "status": "passed",
+        "summary": "Exact 967-record inventory, role policy, CRC, SHA256SUMS, and manifest hashes passed."
+      },
+      {
+        "id": "contract-bindings",
+        "status": "passed",
+        "summary": "Repository trust roots and independently validated source-JSON identity/contracts are exactly bound."
+      },
+      {
+        "id": "offline-schema-catalog",
+        "status": "passed",
+        "summary": "Closed offline catalog binds and meta-validates exactly 29 Draft 2020-12 schemas."
+      },
+      {
+        "id": "semantic-content-index",
+        "status": "passed",
+        "summary": "Recomputed shared content digest from 114 logical and 836 binary records."
+      },
+      {
+        "id": "field-registry-coverage",
+        "status": "passed",
+        "summary": "Schema-valid registry has 473 unique entries and a closed, correctly classified vocabulary."
+      },
+      {
+        "id": "rdf-syntax",
+        "status": "passed",
+        "summary": "All 963717 positioned triples are strict UTF-8, canonical, sorted N-Triples with closed declarations."
+      },
+      {
+        "id": "rdf-segment-order",
+        "status": "passed",
+        "summary": "Eight normative RDF segments have exact positions 0..7 in the closed profile order."
+      },
+      {
+        "id": "rdf-bundle",
+        "status": "passed",
+        "summary": "RDF bundle is byte-identical to the ordered concatenation of all eight segments."
+      },
+      {
+        "id": "core-binding",
+        "status": "passed",
+        "summary": "Pinned FWU Core commit 8aa5bce4a5366807d46f18650e31db98f9bfe35d and exact offline catalog bytes are bound."
+      },
+      {
+        "id": "ontology-profile",
+        "status": "passed",
+        "summary": "Static application ontology and non-executable SHACL shapes equal repository trust roots."
+      },
+      {
+        "id": "shacl",
+        "status": "passed",
+        "summary": "pySHACL inference=none conforms with zero violations and zero warnings."
+      },
+      {
+        "id": "owl2-dl",
+        "status": "passed",
+        "summary": "ROBOT confirms the merged application profile, data, and offline Core import closure are OWL 2 DL."
+      },
+      {
+        "id": "reasoner",
+        "status": "passed",
+        "summary": "HermiT confirms consistency and zero unsatisfiable named classes."
+      },
+      {
+        "id": "binary-sidecars",
+        "status": "passed",
+        "summary": "All 836 image sidecars have exact resource identity, hashes, sizes, media types, and magic bytes."
+      },
+      {
+        "id": "reproducibility",
+        "status": "passed",
+        "summary": "Independent second build is byte-identical, including the exact manifest."
+      }
+    ],
+    "counts": {
+      "binaryBytes": 1638192987,
+      "binaryResources": 836,
+      "fieldRegistryEntries": 473,
+      "logicalArtifacts": 114,
+      "manifestFiles": 967,
+      "rdfSegments": 8,
+      "rdfTriples": 963717,
+      "zipEntries": 969
+    },
+    "ontologyEvidence": {
+      "owl2Dl": {
+        "report": "evidence/owl2-dl-evidence.txt",
+        "reportSha256": "b7c9d64b39dab2a567456d32a70d4c4587def74cbad6c702abd2a42fbe91cac9",
+        "status": "passed",
+        "tool": "ROBOT",
+        "version": "1.9.10"
+      },
+      "rdfSyntax": {
+        "report": "evidence/rdf-syntax.txt",
+        "reportSha256": "f9b0743318d891460298b2c701b250f7a6542048219b57c07a9277c862f62f9e",
+        "status": "passed",
+        "tool": "skillpilot-ntriples-stream-validator",
+        "version": "1.0.0"
+      },
+      "reasoner": {
+        "consistent": true,
+        "report": "evidence/hermit-report.txt",
+        "reportSha256": "a33908ef2e12a1fa89febc6288881bc581328f781cb36b76abb31ee3c69514fe",
+        "status": "passed",
+        "tool": "HermiT",
+        "unsatisfiableClassCount": 0,
+        "version": "1.4.5.456"
+      },
+      "shacl": {
+        "report": "evidence/shacl-evidence.txt",
+        "reportSha256": "5563c8bb05ff0ce6bdd70400a9f0328eadfed026a9c55c7c51a75a3e111950dc",
+        "status": "passed",
+        "tool": "pySHACL",
+        "version": "0.30.1",
+        "violationCount": 0,
+        "warningCount": 0
+      }
+    }
+  },
+  "hermeticReverse": {
+    "embeddedRelativeEvidenceBase": "tmp/assessment-completion-hermetic-02-20261030",
+    "receipt": {
+      "path": "tmp/assessment-completion-hermetic-02-20261030/report.json",
+      "bytes": 12135,
+      "sha256": "f772c3c62c3deb170c6ebb96c52614cb0215956aa3f8e3f40d992b674e3dcfa5"
+    },
+    "isolation": {
+      "authoringCheckoutAccessible": false,
+      "forwardExporterAccessible": false,
+      "mechanism": "bubblewrap-clearenv-readonly-input-strace-v1",
+      "networkAccessible": false,
+      "originalJsonPackageAccessible": false,
+      "pythonRuntime": {
+        "executable": {
+          "bytes": 5937800,
+          "path": "/usr/bin/python3.10",
+          "sha256": "11dde438e1a636073e79c81d4c2543708cc0a2922e7c42c38b1b588e17545f96"
+        },
+        "minimumVersion": "3.10",
+        "mountedRoots": [
+          "/usr/lib/python3.10",
+          "/usr/lib/x86_64-linux-gnu",
+          "/usr/lib64"
+        ],
+        "siteEnabled": false,
+        "version": "3.10.12"
+      },
+      "runA": {
+        "bytes": 534863540,
+        "forbiddenReadCount": 0,
+        "networkAttemptCount": 0,
+        "path": "evidence/run-a/filesystem.strace",
+        "sha256": "d5d52006a3c75c78263a81b41c63d41dfcb04d9b232ef7543b8c88d38079af8e"
+      },
+      "runB": {
+        "bytes": 534863547,
+        "forbiddenReadCount": 0,
+        "networkAttemptCount": 0,
+        "path": "evidence/run-b/filesystem.strace",
+        "sha256": "d19e3bb6751748dd9107704d93ba5abb0fd0d200915bae5ae71e0028bbb3a71b"
+      },
+      "sandboxTool": {
+        "bytes": 72160,
+        "path": "/usr/bin/bwrap",
+        "sha256": "d78807229d616606e339c5988392b9e0ab4a6a6998fa51e4590837f426a12fca"
+      },
+      "status": "passed",
+      "traceTool": {
+        "bytes": 1972848,
+        "path": "/usr/bin/strace",
+        "sha256": "38a5c75cb29dd85ddd7780d54f5bf595554d7a1b5c42524b23065f5dc4c4b01d"
+      }
+    },
+    "reproducibility": {
+      "locale": "C.UTF-8",
+      "manifestByteIdentical": true,
+      "sourceDateEpoch": 315532800,
+      "status": "passed",
+      "timezone": "UTC",
+      "zipByteIdentical": true
+    },
+    "runs": {
+      "runA": {
+        "output": {
+          "bytes": 1685095642,
+          "contentDigest": "sha256:55ed6abbef12a036a31d520bfe3608d086e5e7a1a8e2cef76d1bb8221f264328",
+          "counts": {
+            "binaryBytes": 1638192987,
+            "binaryResources": 836,
+            "checksumRows": 1063,
+            "logicalArtifacts": 114,
+            "manifestFiles": 1062,
+            "zipEntries": 1064
+          },
+          "manifestSha256": "df863f32525758f394685a3bbbe0beab5b0365289ea79ad4369226e9a70cf363",
+          "path": "output/run-a/package/skillpilot-curriculum-de-gymnasium-mathematik-0.1.0-completion.2.reconstructed.json.zip",
+          "sha256": "e3070e9a274ff3f1edc157753c02544b5a8c4ea28c6dcd2a3133968dc01ebd80"
+        },
+        "validationReceipt": {
+          "path": "tmp/assessment-completion-hermetic-02-20261030/evidence/run-a/full-package-validation-report.json",
+          "bytes": 2030,
+          "sha256": "b2859e7f4462cd626fe128d05a03e79683d9be1a8b14b139ee24e760783f1ef1"
+        },
+        "gates": {
+          "assetBytes": {
+            "diagnosticCodes": [],
+            "diagnosticCount": 0,
+            "status": "passed"
+          },
+          "contentDigest": {
+            "diagnosticCodes": [],
+            "diagnosticCount": 0,
+            "status": "passed"
+          },
+          "hardReferenceClosure": {
+            "diagnosticCodes": [],
+            "diagnosticCount": 0,
+            "status": "passed"
+          },
+          "inventory": {
+            "diagnosticCodes": [],
+            "diagnosticCount": 0,
+            "status": "passed"
+          },
+          "offlineSchemaCatalog": {
+            "diagnosticCodes": [],
+            "diagnosticCount": 0,
+            "status": "passed"
+          },
+          "runtimeCatalog": {
+            "diagnosticCodes": [],
+            "diagnosticCount": 0,
+            "status": "passed"
+          }
+        }
+      },
+      "runB": {
+        "output": {
+          "bytes": 1685095642,
+          "contentDigest": "sha256:55ed6abbef12a036a31d520bfe3608d086e5e7a1a8e2cef76d1bb8221f264328",
+          "counts": {
+            "binaryBytes": 1638192987,
+            "binaryResources": 836,
+            "checksumRows": 1063,
+            "logicalArtifacts": 114,
+            "manifestFiles": 1062,
+            "zipEntries": 1064
+          },
+          "manifestSha256": "df863f32525758f394685a3bbbe0beab5b0365289ea79ad4369226e9a70cf363",
+          "path": "output/run-b/package/skillpilot-curriculum-de-gymnasium-mathematik-0.1.0-completion.2.reconstructed.json.zip",
+          "sha256": "e3070e9a274ff3f1edc157753c02544b5a8c4ea28c6dcd2a3133968dc01ebd80"
+        },
+        "validationReceipt": {
+          "path": "tmp/assessment-completion-hermetic-02-20261030/evidence/run-b/full-package-validation-report.json",
+          "bytes": 2030,
+          "sha256": "088df1f0fddac5fac36671b88ba085bf9770088e19c59a7f61084eca7ef4e75b"
+        },
+        "gates": {
+          "assetBytes": {
+            "diagnosticCodes": [],
+            "diagnosticCount": 0,
+            "status": "passed"
+          },
+          "contentDigest": {
+            "diagnosticCodes": [],
+            "diagnosticCount": 0,
+            "status": "passed"
+          },
+          "hardReferenceClosure": {
+            "diagnosticCodes": [],
+            "diagnosticCount": 0,
+            "status": "passed"
+          },
+          "inventory": {
+            "diagnosticCodes": [],
+            "diagnosticCount": 0,
+            "status": "passed"
+          },
+          "offlineSchemaCatalog": {
+            "diagnosticCodes": [],
+            "diagnosticCount": 0,
+            "status": "passed"
+          },
+          "runtimeCatalog": {
+            "diagnosticCodes": [],
+            "diagnosticCount": 0,
+            "status": "passed"
+          }
+        }
+      }
+    },
+    "evidenceManifest": {
+      "bytes": 3483,
+      "path": "evidence/evidence-manifest.json",
+      "sha256": "54b4385f701fccda905ec30d8f7a05d52074f75b172358473f661b3a290ff1c0"
+    }
+  },
+  "externalReceiptContractValidation": {
+    "status": "passed",
+    "exitCode": 0,
+    "command": [
+      "python3",
+      "scripts/validate_curriculum_fwu_owl_reverse_compilation_contract.py",
+      "--report",
+      "tmp/assessment-completion-hermetic-02-20261030/report.json"
+    ],
+    "log": {
+      "path": "tmp/assessment-completion-hermetic-02-contract-validation.log",
+      "bytes": 104,
+      "sha256": "ec97315598b87cdabcc4de415be760a4ed6691e6dcfdcc3bf944223ef7ba24c3"
+    }
+  },
+  "roundtripIdentity": {
+    "sharedSemanticContentDigest": "sha256:55ed6abbef12a036a31d520bfe3608d086e5e7a1a8e2cef76d1bb8221f264328",
+    "originalJsonArchiveEntries": 1067,
+    "reconstructedJsonArchiveEntries": 1064,
+    "omittedForwardBuildMetadata": [
+      "metadata/build-inputs.json",
+      "metadata/field-coverage.json",
+      "metadata/release-model-conformance.json"
+    ],
+    "sharedFileLicenseProvenanceAndRedistributionBindingsPreserved": true,
+    "explanation": "The reconstructed JSON carrier preserves every logical artifact and binary resource. It omits three forward-build-only metadata records, so its outer ZIP hash differs from the original JSON ZIP; the two independent reverse builds are byte-identical."
+  },
+  "portableReviewBinding": {
+    "sourceReviewBindingsVerifiedBeforeExport": true,
+    "registrySetArraysCanonicalizedBeforePortableBinding": true,
+    "reverseRebind": false,
+    "scopeRevision": "sha256:dfee9810c82772df19d52c26ee9ce36189cc2cb21c1b37199e448103b2de9490",
+    "validation": "Full independent JSON validation of both isolated RDF reconstructions, including static scope/task/rubric bindings."
+  },
+  "compatibility": {
+    "trackedV1ContractFilesUnchanged": true,
+    "originalRegistryEntriesPreserved": 456,
+    "extendedRegistryEntries": 473,
+    "normalFormAndDefinitionDigestContracts": "Existing V1 contracts retained"
+  },
+  "licensing": {
+    "preservedLicenseTexts": [
+      {
+        "path": "LICENSE",
+        "licenseExpression": "Apache-2.0",
+        "sha256": "6bbe4ace8a1818f89b96dfdda9f9d4b9a178bc047c3dc2511a3d93d51f86d7ae"
+      },
+      {
+        "path": "LICENSES/CC-BY-4.0.txt",
+        "licenseExpression": "CC-BY-4.0",
+        "sha256": "9e5f1b3c610b9c2da5c313bf81d577a7d1acec686bdb0384edefa6df0f90cd94"
+      }
+    ],
+    "completionContent": [
+      {
+        "path": "data/completion/profiles/math-dot-product-projection.json",
+        "role": "completion-profile",
+        "licenseExpression": "CC-BY-4.0",
+        "redistributionStatus": "allowed"
+      },
+      {
+        "path": "data/completion/reviews/math-dot-product-projection-77f46f84064e7120.json",
+        "role": "completion-rule-review",
+        "licenseExpression": "CC-BY-4.0",
+        "redistributionStatus": "allowed"
+      },
+      {
+        "path": "data/completion/scopes/math-dot-product-projection.json",
+        "role": "completion-scope",
+        "licenseExpression": "CC-BY-4.0",
+        "redistributionStatus": "allowed"
+      }
+    ],
+    "otherSharedRecords": "Existing license, provenance and redistribution bindings preserved; no third-party relicensing or new human approval."
+  },
+  "loaderEvidence": "docs/qa-ci/status/assessment-completion-package-loader-2026-10-30.json",
+  "publication": {
+    "publicationReady": false,
+    "openRedistributionReviewItems": 839,
+    "openSourceVerificationItems": 481,
+    "productionActivation": false
+  },
+  "limits": [
+    "This is local machine QA of a DRAFT candidate, not publication, deployment or real-host acceptance.",
+    "Package consistency does not replace human curriculum/task review or learner trials and does not establish didactic effectiveness.",
+    "Only ordinary binary goal mastery is persisted; static completion rules and scope-specific waivers introduce no extra learner result.",
+    "Existing .1 diagnostic receipts remain historical; the completed full roundtrip is bound only to the .2 identities above."
+  ]
+}

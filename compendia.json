@@ -1,0 +1,350 @@
+{
+  "schemaVersion": 1,
+  "compendia": [
+    {
+      "id": "skill-graph",
+      "title": {
+        "de": "Die Graph-Definition von SkillPilot",
+        "en": "The SkillPilot Graph Definition"
+      },
+      "sourceDir": "docs/concept/skill-graph/source",
+      "manifestPath": "docs/concept/skill-graph/source/spec-manifest.json",
+      "assetRoot": "docs/concept/skill-graph",
+      "figureAssetPrefix": "assets/graph-definition",
+      "buildDir": "tmp/skill-graph-document",
+      "texStem": "skillpilot-graph-definition",
+      "buildJsonPath": "docs/concept/skill-graph/skillpilot-graph-definition.build.json",
+      "outputTracking": "untracked",
+      "generatedBy": "docs/concept/skill-graph/build_spec.py",
+      "regenerateWebCommand": "cd app && npm run docs:skill-graph:web",
+      "extension": "skill_graph",
+      "extraUntrackedPaths": [
+        "docs/concept/skill-graph/skillpilot-graph-definition.tex"
+      ],
+      "extraUntrackedGlobs": [
+        "docs/concept/skill-graph/latex/*.tex"
+      ]
+    },
+    {
+      "id": "skill-graph-architecture",
+      "title": {
+        "de": "Skill-Graph-Architektur, Medien, Lernzielbuch und Paketaustausch",
+        "en": "Skill Graph Architecture, Media, Goal Book, and Package Interchange"
+      },
+      "sourceDir": "docs/concept/skill-graph/architecture-source",
+      "manifestPath": "docs/concept/skill-graph/architecture-source/spec-manifest.json",
+      "assetRoot": "docs/concept/skill-graph",
+      "buildDir": "tmp/compendia/skill-graph-architecture",
+      "texStem": "skillpilot-skill-graph-architecture",
+      "buildJsonPath": "docs/concept/skill-graph/skillpilot-skill-graph-architecture.build.json",
+      "outputTracking": "committed-web",
+      "generatedBy": "scripts/build_compendia.py",
+      "regenerateWebCommand": "python3 scripts/build_compendia.py --compendium skill-graph-architecture --web-and-tex"
+    },
+    {
+      "id": "whitepaper",
+      "title": {
+        "de": "SkillPilot Whitepaper",
+        "en": "SkillPilot Whitepaper"
+      },
+      "sourceDir": "docs/whitepaper/source",
+      "manifestPath": "docs/whitepaper/source/spec-manifest.json",
+      "assetRoot": "docs",
+      "buildDir": "tmp/compendia/whitepaper",
+      "texStem": "skillpilot-whitepaper",
+      "buildJsonPath": "docs/whitepaper/whitepaper.build.json",
+      "outputTracking": "committed-web",
+      "allowedTrackedOutputs": [
+        "docs/whitepaper/whitepaper.de.pdf",
+        "app/public/whitepaper/whitepaper.de.pdf"
+      ],
+      "generatedBy": "scripts/build_compendia.py",
+      "regenerateWebCommand": "python3 scripts/build_compendia.py --compendium whitepaper --web-and-tex"
+    },
+    {
+      "id": "glossary",
+      "title": {
+        "de": "SkillPilot Glossar",
+        "en": "SkillPilot Glossary"
+      },
+      "sourceDir": "docs/concept/glossary/source",
+      "manifestPath": "docs/concept/glossary/source/spec-manifest.json",
+      "assetRoot": "docs/concept",
+      "buildDir": "tmp/compendia/glossary",
+      "texStem": "skillpilot-glossary",
+      "buildJsonPath": "docs/concept/skillpilot-glossary.build.json",
+      "outputTracking": "committed-web",
+      "generatedBy": "scripts/build_compendia.py",
+      "regenerateWebCommand": "python3 scripts/build_compendia.py --compendium glossary --web-and-tex"
+    },
+    {
+      "id": "didactic",
+      "title": {
+        "de": "Didaktik, Lernplanstatus und Kursplanung",
+        "en": "Didactics, Learning-Plan Status, and Course Planning"
+      },
+      "sourceDir": "docs/concept/didactic/source",
+      "manifestPath": "docs/concept/didactic/source/spec-manifest.json",
+      "assetRoot": "docs/concept/didactic",
+      "buildDir": "tmp/compendia/didactic",
+      "texStem": "skillpilot-didactics-and-planning",
+      "buildJsonPath": "docs/concept/didactic/skillpilot-didactics-and-planning.build.json",
+      "outputTracking": "committed-web",
+      "generatedBy": "scripts/build_compendia.py",
+      "regenerateWebCommand": "python3 scripts/build_compendia.py --compendium didactic --web-and-tex"
+    },
+    {
+      "id": "runtime-workflows",
+      "title": {
+        "de": "Personalisierung, Lernlaufzeit und Coach-Architektur",
+        "en": "Personalization, Learner Runtime, and Coach Architecture"
+      },
+      "sourceDir": "docs/concept/runtime-workflows/source",
+      "manifestPath": "docs/concept/runtime-workflows/source/spec-manifest.json",
+      "assetRoot": "docs/concept",
+      "buildDir": "tmp/compendia/runtime-workflows",
+      "texStem": "skillpilot-coach-and-runtime-architecture",
+      "buildJsonPath": "docs/concept/runtime-workflows/skillpilot-coach-and-runtime-architecture.build.json",
+      "outputTracking": "committed-web",
+      "generatedBy": "scripts/build_compendia.py",
+      "regenerateWebCommand": "python3 scripts/build_compendia.py --compendium runtime-workflows --web-and-tex"
+    },
+    {
+      "id": "production-pipelines",
+      "title": {
+        "de": "Produktionspipelines für Skill-Graphen, Pakete und Prüfungen",
+        "en": "Production Pipelines for Skill Graphs, Packages, and Exams"
+      },
+      "sourceDir": "docs/production-pipelines/source",
+      "manifestPath": "docs/production-pipelines/source/spec-manifest.json",
+      "assetRoot": "docs/production-pipelines",
+      "buildDir": "tmp/compendia/production-pipelines",
+      "texStem": "skillpilot-production-pipelines",
+      "buildJsonPath": "docs/production-pipelines/skillpilot-production-pipelines.build.json",
+      "outputTracking": "committed-web",
+      "generatedBy": "scripts/build_compendia.py",
+      "regenerateWebCommand": "python3 scripts/build_compendia.py --compendium production-pipelines --web-and-tex"
+    },
+    {
+      "id": "qa-ci",
+      "title": {
+        "de": "Curriculum-Qualität, Validierung und Champion-Erprobung",
+        "en": "Curriculum Quality, Validation, and Champion Trials"
+      },
+      "sourceDir": "docs/qa-ci/source",
+      "manifestPath": "docs/qa-ci/source/spec-manifest.json",
+      "assetRoot": "docs",
+      "buildDir": "tmp/compendia/qa-ci",
+      "texStem": "skillpilot-curriculum-quality-handbook",
+      "buildJsonPath": "docs/qa-ci/skillpilot-curriculum-quality-handbook.build.json",
+      "outputTracking": "committed-web",
+      "generatedBy": "scripts/build_compendia.py",
+      "regenerateWebCommand": "python3 scripts/build_compendia.py --compendium qa-ci --web-and-tex"
+    },
+    {
+      "id": "qa-ci-lanes",
+      "title": {
+        "de": "CI-Architektur, Release-Verträge und Review-Lanes",
+        "en": "CI Architecture, Release Contracts, and Review Lanes"
+      },
+      "sourceDir": "docs/qa-ci/lanes-source",
+      "manifestPath": "docs/qa-ci/lanes-source/spec-manifest.json",
+      "assetRoot": "docs/qa-ci",
+      "buildDir": "tmp/compendia/qa-ci-lanes",
+      "texStem": "skillpilot-qa-lanes-and-release-contracts",
+      "buildJsonPath": "docs/qa-ci/skillpilot-qa-lanes-and-release-contracts.build.json",
+      "outputTracking": "committed-web",
+      "generatedBy": "scripts/build_compendia.py",
+      "regenerateWebCommand": "python3 scripts/build_compendia.py --compendium qa-ci-lanes --web-and-tex"
+    },
+    {
+      "id": "security",
+      "title": {
+        "de": "Sicherheit, Datenschutz und KI-Transparenz",
+        "en": "Security, Data Privacy, and AI Transparency"
+      },
+      "sourceDir": "docs/security/source",
+      "manifestPath": "docs/security/source/spec-manifest.json",
+      "assetRoot": "docs",
+      "buildDir": "tmp/compendia/security",
+      "texStem": "skillpilot-security-and-privacy",
+      "buildJsonPath": "docs/security/skillpilot-security-and-privacy.build.json",
+      "outputTracking": "committed-web",
+      "generatedBy": "scripts/build_compendia.py",
+      "regenerateWebCommand": "python3 scripts/build_compendia.py --compendium security --web-and-tex"
+    },
+    {
+      "id": "dev-handbook",
+      "title": {
+        "de": "Entwickler-, Schema- und Editor-Handbuch",
+        "en": "Developer, Schema, and Editor Guide"
+      },
+      "sourceDir": "docs/dev/source",
+      "manifestPath": "docs/dev/source/spec-manifest.json",
+      "assetRoot": "docs/dev",
+      "buildDir": "tmp/compendia/dev-handbook",
+      "texStem": "skillpilot-developer-and-editor-guide",
+      "buildJsonPath": "docs/dev/skillpilot-developer-and-editor-guide.build.json",
+      "outputTracking": "committed-web",
+      "generatedBy": "scripts/build_compendia.py",
+      "regenerateWebCommand": "python3 scripts/build_compendia.py --compendium dev-handbook --web-and-tex"
+    }
+  ],
+  "standaloneBilingualPairs": [
+    {
+      "id": "quickstart-story",
+      "de": "docs/quickstart/story.de.md",
+      "en": "docs/quickstart/story.en.md"
+    },
+    {
+      "id": "whitepaper-storyboard",
+      "de": "docs/whitepaper/storyboard.de.md",
+      "en": "docs/whitepaper/storyboard.en.md"
+    },
+    {
+      "id": "claude-connector-user-guide",
+      "de": "docs/deploy/claude-connector-v1-user-guide.de.md",
+      "en": "docs/deploy/claude-connector-v1-user-guide.md"
+    },
+    {
+      "id": "deploy-deployment",
+      "de": "docs/deploy/deployment.de.md",
+      "en": "docs/deploy/deployment.md"
+    },
+    {
+      "id": "deploy-openai-mcp-coach-v1",
+      "de": "docs/deploy/openai-mcp-coach-v1.md",
+      "en": "docs/deploy/openai-mcp-coach-v1.en.md"
+    },
+    {
+      "id": "deploy-openai-plugin-v1-release",
+      "de": "docs/deploy/openai-plugin-v1-release.md",
+      "en": "docs/deploy/openai-plugin-v1-release.en.md"
+    },
+    {
+      "id": "deploy-openai-plugin-v1-submission",
+      "de": "docs/deploy/openai-plugin-v1-submission.md",
+      "en": "docs/deploy/openai-plugin-v1-submission.en.md"
+    },
+    {
+      "id": "deploy-openai-personal-marketplace",
+      "de": "docs/deploy/openai-personal-marketplace-release.de.md",
+      "en": "docs/deploy/openai-personal-marketplace-release.md"
+    },
+    {
+      "id": "deploy-gemini-integration",
+      "de": "docs/deploy/gemini-integration.md",
+      "en": "docs/deploy/gemini-integration.en.md"
+    },
+    {
+      "id": "deploy-claude-coach-beta",
+      "de": "docs/deploy/claude-coach-beta.de.md",
+      "en": "docs/deploy/claude-coach-beta.md"
+    },
+    {
+      "id": "deploy-claude-connector-v1-release",
+      "de": "docs/deploy/claude-connector-v1-release.de.md",
+      "en": "docs/deploy/claude-connector-v1-release.md"
+    },
+    {
+      "id": "deploy-claude-personal-marketplace",
+      "de": "docs/deploy/claude-personal-marketplace-release.de.md",
+      "en": "docs/deploy/claude-personal-marketplace-release.md"
+    },
+    {
+      "id": "deploy-claude-support-readiness",
+      "de": "docs/deploy/claude-support-readiness-runbook.de.md",
+      "en": "docs/deploy/claude-support-readiness-runbook.md"
+    },
+    {
+      "id": "concept-daily-learning-progress",
+      "de": "docs/concept/runtime-workflows/daily-learning-progress.md",
+      "en": "docs/concept/runtime-workflows/daily-learning-progress.en.md"
+    },
+    {
+      "id": "concept-chatgpt-visible-session-flow",
+      "de": "docs/concept/runtime-workflows/chatgpt-visible-session-flow.md",
+      "en": "docs/concept/runtime-workflows/chatgpt-visible-session-flow.en.md"
+    },
+    {
+      "id": "concept-chatgpt-startcode-session-flow",
+      "de": "docs/concept/runtime-workflows/chatgpt-startcode-session-flow.md",
+      "en": "docs/concept/runtime-workflows/chatgpt-startcode-session-flow.en.md"
+    },
+    {
+      "id": "concept-curriculum-time-axis-and-pacing",
+      "de": "docs/concept/didactic/curriculum-time-axis-and-pacing.md",
+      "en": "docs/concept/didactic/curriculum-time-axis-and-pacing.en.md"
+    },
+    {
+      "id": "qa-ci-curriculum-quality-status",
+      "de": "docs/qa-ci/status/curriculum-quality-status.de.md",
+      "en": "docs/qa-ci/status/curriculum-quality-status.md"
+    },
+    {
+      "id": "qa-ci-generated-status-registry",
+      "de": "docs/qa-ci/status/README.de.md",
+      "en": "docs/qa-ci/status/README.md"
+    },
+    {
+      "id": "security-coach-feedback-cleanup",
+      "de": "docs/security/coach-feedback-cleanup-2026-09-12.md",
+      "en": "docs/security/coach-feedback-cleanup-2026-09-12.en.md"
+    },
+    {
+      "id": "legal-privacy-review-2026-09-13",
+      "de": "docs/legal/legal-privacy-review-2026-09-13.md",
+      "en": "docs/legal/legal-privacy-review-2026-09-13.en.md"
+    },
+    {
+      "id": "dev-canonical-gymnasium-implementation-plan",
+      "de": "docs/dev/canonical-gymnasium-implementation-plan.de.md",
+      "en": "docs/dev/canonical-gymnasium-implementation-plan.md"
+    },
+    {
+      "id": "dev-canonical-gymnasium-math-status",
+      "de": "docs/dev/canonical-gymnasium-math-bundeslaender-status.de.md",
+      "en": "docs/dev/canonical-gymnasium-math-bundeslaender-status.md"
+    },
+    {
+      "id": "dev-canonical-gymnasium-physics-status",
+      "de": "docs/dev/canonical-gymnasium-physics-bundeslaender-status.de.md",
+      "en": "docs/dev/canonical-gymnasium-physics-bundeslaender-status.md"
+    },
+    {
+      "id": "dev-canonical-gymnasium-chemistry-status",
+      "de": "docs/dev/canonical-gymnasium-chemistry-bundeslaender-status.de.md",
+      "en": "docs/dev/canonical-gymnasium-chemistry-bundeslaender-status.md"
+    },
+    {
+      "id": "dev-dual-curriculum-package-status",
+      "de": "docs/dev/dual-curriculum-package-implementation-status.de.md",
+      "en": "docs/dev/dual-curriculum-package-implementation-status.md"
+    }
+  ],
+  "mkdocsNavLabels": {
+    "Home": { "de": "Start", "en": "Home" },
+    "Quickstart": { "de": "Schnellstart", "en": "Quickstart" },
+    "Whitepaper": { "de": "Whitepaper", "en": "Whitepaper" },
+    "Concept": { "de": "Konzept", "en": "Concept" },
+    "Skill Graph": { "de": "Skill-Graph", "en": "Skill Graph" },
+    "Runtime & Coach": { "de": "Laufzeit & Coach", "en": "Runtime & Coach" },
+    "Didactic & Planning": { "de": "Didaktik & Planung", "en": "Didactic & Planning" },
+    "Production Pipelines": { "de": "Produktions-Pipelines", "en": "Production Pipelines" },
+    "QA & CI": { "de": "Qualität & CI", "en": "QA & CI" },
+    "QA/CI": { "de": "Qualität & CI", "en": "QA/CI" },
+    "Current Status Snapshot": { "de": "Aktueller Qualitätsstatus", "en": "Current Status Snapshot" },
+    "Generated Status Artifacts": { "de": "Generierte Statusberichte", "en": "Generated Status Artifacts" },
+    "Deploy": { "de": "Betrieb & Rollout", "en": "Deploy" },
+    "Security": { "de": "Sicherheit & Datenschutz", "en": "Security & Privacy" },
+    "Legal": { "de": "Rechtliches", "en": "Legal" },
+    "Dev": { "de": "Entwicklung", "en": "Dev" },
+    "Canonical Gymnasium": { "de": "Kanonisches Gymnasium", "en": "Canonical Gymnasium" },
+    "Implementation Plan": { "de": "Umsetzungsplan", "en": "Implementation Plan" },
+    "Math Bundeslaender Status": { "de": "Mathematik Bundesländer-Status", "en": "Math Bundeslaender Status" },
+    "Physics Bundeslaender Status": { "de": "Physik Bundesländer-Status", "en": "Physics Bundeslaender Status" },
+    "Chemistry Bundeslaender Status": { "de": "Chemie Bundesländer-Status", "en": "Chemistry Bundeslaender Status" },
+    "Dual Curriculum Package Implementation Status": { "de": "Umsetzungsstand Duale Pakete", "en": "Dual Curriculum Package Implementation Status" },
+    "Table of contents": { "de": "Inhaltsverzeichnis", "en": "Table of contents" }
+  }
+}

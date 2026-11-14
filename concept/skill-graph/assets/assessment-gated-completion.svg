@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="806" viewBox="0 0 1440 806" role="img" aria-labelledby="diagram-title diagram-desc">
+<title id="diagram-title">Assessment-gated completion and shared prerequisites</title>
+<desc id="diagram-desc">Immediate arrows shown run B to A, C to A and A to D, from dependent to prerequisite. Demand travels only through unfinished goals. Mastery stops outgoing demand; no manual waiver rule is needed. Left: only B passed, discharging its demands on A and D. C still needs A, and A still needs D, so both stay open. Right: both exams passed; A is waived in round 1 and D in round 2. Exams always require explicit passes. Waived work is calculated; only mastery is stored per goal.</desc>
+<defs>
+<marker id="arrow-discharged" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#087b67"/></marker>
+<marker id="arrow-active" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#bd6b10"/></marker>
+<style>
+.heading{font:700 31px system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#15253a}
+.subtitle{font:400 17px system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#485c72}
+.paneltitle{font:700 21px system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#15253a}
+.panelsub{font:500 15px system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#496078}
+.goal{font:800 25px system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#15253a}
+.state{font:600 14px system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#283d52}
+.badge{font:700 11px system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#6341a8;letter-spacing:1.1px}
+.hint{font:500 15px system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#354e68}
+.legend{font:500 15px system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#334b63}
+.edge-label{font:700 13px system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.explicit{fill:#d9f8ed;stroke:#087b67;stroke-width:2.3}
+.pending{fill:#fff1d6;stroke:#bd6b10;stroke-width:2.3}
+.waived{fill:#def6fa;stroke:#0285a5;stroke-width:2.3}
+.discharged{fill:none;stroke:#087b67;stroke-width:3.5;marker-end:url(#arrow-discharged)}
+.active{fill:none;stroke:#bd6b10;stroke-width:3.5;stroke-dasharray:9 6;marker-end:url(#arrow-active)}
+</style>
+</defs>
+<rect width="1440" height="806" fill="#f5f8fc"/>
+<text class="heading" x="40" y="54">When passed exams waive separate learning work</text>
+<text class="subtitle" x="40" y="87">Direct requirements: consumer → prerequisite. Mastered or implicit goals no longer demand their preparation.</text>
+<g>
+<rect x="32" y="117" width="674" height="523" rx="21" fill="#fff" stroke="#d7e1ec" stroke-width="1.7"/>
+<text class="paneltitle" x="60" y="160">1 · Only exam B passed</text>
+<text class="panelsub" x="60" y="188">Mastery: {B}   ·   Waived: { }</text>
+<path class="discharged" d="M236 279 Q301 279 365 352"/>
+<path class="active" d="M236 455 Q304 455 365 385"/>
+<path class="active" d="M520 368 L570 368"/>
+<rect x="261" y="269" width="92" height="26" rx="13" fill="#e8fbf5"/><text class="edge-label" x="307" y="286" text-anchor="middle" fill="#087b67">discharged</text>
+<rect x="276" y="435" width="57" height="25" rx="12" fill="#fff7e9"/><text class="edge-label" x="304" y="451" text-anchor="middle" fill="#a65d0d">active</text>
+<rect class="explicit" x="74" y="235" width="162" height="88" rx="15"/>
+<text class="badge" x="91" y="257">EXAM · PROTECTED</text><text class="goal" x="91" y="285">B</text><text class="state" x="118" y="285">passed</text><text class="state" x="91" y="305">mastery saved</text>
+<rect class="pending" x="74" y="410" width="162" height="88" rx="15"/>
+<text class="badge" x="91" y="432">EXAM · PROTECTED</text><text class="goal" x="91" y="461">C</text><text class="state" x="118" y="461">not passed</text><text class="state" x="91" y="480">mastery missing</text>
+<rect class="pending" x="365" y="321" width="155" height="94" rx="16"/>
+<text class="goal" x="385" y="355">A</text><text class="state" x="385" y="382">still required</text><text class="state" x="385" y="402">by C</text>
+<rect class="pending" x="570" y="321" width="110" height="94" rx="16"/>
+<text class="goal" x="590" y="355">D</text><text class="state" x="590" y="382">still</text><text class="state" x="590" y="402">required</text>
+<rect x="60" y="546" width="618" height="61" rx="13" fill="#f5f8fc"/>
+<text class="hint" x="78" y="572">C is still open and continues to need A.</text>
+<text class="hint" x="78" y="594">C → A and A → D remain active; B → A is discharged.</text>
+</g>
+<g transform="translate(698 0)">
+<rect x="32" y="117" width="674" height="523" rx="21" fill="#fff" stroke="#d7e1ec" stroke-width="1.7"/>
+<text class="paneltitle" x="60" y="160">2 · Both exams passed</text>
+<text class="panelsub" x="60" y="188">Mastery: {B, C}   ·   Waived: {A, D}</text>
+<path class="discharged" d="M236 279 Q301 279 365 352"/><path class="discharged" d="M236 455 Q304 455 365 385"/><path class="discharged" d="M520 368 L570 368"/>
+<rect x="261" y="269" width="92" height="26" rx="13" fill="#e8fbf5"/><text class="edge-label" x="307" y="286" text-anchor="middle" fill="#087b67">discharged</text>
+<rect x="261" y="435" width="92" height="26" rx="13" fill="#e8fbf5"/><text class="edge-label" x="307" y="452" text-anchor="middle" fill="#087b67">discharged</text>
+<rect class="explicit" x="74" y="235" width="162" height="88" rx="15"/>
+<text class="badge" x="91" y="257">EXAM · PROTECTED</text><text class="goal" x="91" y="285">B</text><text class="state" x="118" y="285">passed</text><text class="state" x="91" y="305">mastery saved</text>
+<rect class="explicit" x="74" y="410" width="162" height="88" rx="15"/>
+<text class="badge" x="91" y="432">EXAM · PROTECTED</text><text class="goal" x="91" y="461">C</text><text class="state" x="118" y="461">passed</text><text class="state" x="91" y="480">mastery saved</text>
+<rect class="waived" x="365" y="321" width="155" height="94" rx="16"/>
+<text class="goal" x="385" y="355">A</text><text class="state" x="385" y="382">work waived</text><text class="state" x="385" y="402">round 1</text>
+<rect class="waived" x="570" y="321" width="110" height="94" rx="16"/>
+<text class="goal" x="590" y="355">D</text><text class="state" x="590" y="382">waived</text><text class="state" x="590" y="402">round 2</text>
+<rect x="60" y="546" width="618" height="61" rx="13" fill="#f5f8fc"/>
+<text class="hint" x="78" y="572">Neither B nor C needs preparation anymore.</text>
+<text class="hint" x="78" y="594">A is waived, then D; global mastery stays unchanged.</text>
+</g>
+<rect x="32" y="664" width="1378" height="110" rx="19" fill="#fff" stroke="#d7e1ec" stroke-width="1.7"/>
+<text class="paneltitle" x="58" y="700">Legend</text>
+<rect class="explicit" x="171" y="683" width="32" height="23" rx="6"/><text class="legend" x="212" y="700">Explicit success</text>
+<rect class="waived" x="394" y="683" width="32" height="23" rx="6"/><text class="legend" x="435" y="700">Waived work</text>
+<rect class="pending" x="609" y="683" width="32" height="23" rx="6"/><text class="legend" x="650" y="700">Pending</text>
+<path class="discharged" d="M830 694 L890 694"/><text class="legend" x="909" y="700">Discharged demand</text>
+<path class="active" d="M1125 694 L1185 694"/><text class="legend" x="1204" y="700">Active demand</text>
+<text class="subtitle" x="58" y="747">Waivers are calculated for this level. Only mastery is stored; waived work does not create mastery.</text>
+</svg>
