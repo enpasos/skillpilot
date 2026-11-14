@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 > Source of truth: `app/public/data/goal-source-rationales-math-public.json`
 
-Generated: 2026-11-13T17:55:47.820Z
+Generated: 2026-11-14T01:09:41.644Z
 
 Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung schon skaliert. Er ist ein Status- und Arbeitslisten-Artefakt: offene Eintraege blockieren die Runtime nicht, machen aber sichtbar, welche Ziel- und Relationstexte noch aufgebaut werden muessen.
 
@@ -23,9 +23,9 @@ Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung sch
 | Clusterziele | 274 |
 | Runtime-Quellenbegruendungen | 754 |
 | Runtime-Ziele mit klassischem Quellenweg | 754 |
-| Runtime-Ziele mit MEM/FWU-konsistenter Route | 234 |
+| Runtime-Ziele mit MEM/FWU-konsistenter Route | 260 |
 | Relevante Blattziele mit klassischem Quellenweg | 754/807 (93.4%) |
-| Relevante Blattziele mit MEM/FWU-konsistenter Route | 234/807 (29.0%) |
+| Relevante Blattziele mit MEM/FWU-konsistenter Route | 260/807 (32.2%) |
 | Relevante Blattziele ohne Runtime-Quellenbegruendung | 53 |
 | Relevante Blattziele mit Runtime-Classic-Gap | 0 |
 | Cluster mit direkter Runtime-Quellenbegruendung | 0/274 |
@@ -44,32 +44,32 @@ Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung sch
 | Bucket | Relevant leaves | Classic | MEM consistent | Missing |
 | --- | --- | --- | --- | --- |
 | Q4 | 162 | 123 (75.9%) | 39 (24.1%) | 39 |
-| E | 96 | 88 (91.7%) | 25 (26.0%) | 8 |
-| Q3 | 76 | 73 (96.1%) | 16 (21.1%) | 3 |
+| E | 96 | 88 (91.7%) | 26 (27.1%) | 8 |
+| Q3 | 76 | 73 (96.1%) | 19 (25.0%) | 3 |
 | Q2 | 141 | 139 (98.6%) | 20 (14.2%) | 2 |
-| J9 | 51 | 50 (98.0%) | 18 (35.3%) | 1 |
-| J10 | 61 | 61 (100.0%) | 23 (37.7%) | 0 |
+| J9 | 51 | 50 (98.0%) | 23 (45.1%) | 1 |
+| J10 | 61 | 61 (100.0%) | 30 (49.2%) | 0 |
 | Q1 | 48 | 48 (100.0%) | 11 (22.9%) | 0 |
-| J7 | 47 | 47 (100.0%) | 19 (40.4%) | 0 |
-| J6 | 43 | 43 (100.0%) | 22 (51.2%) | 0 |
-| J8 | 39 | 39 (100.0%) | 16 (41.0%) | 0 |
-| J5 | 36 | 36 (100.0%) | 23 (63.9%) | 0 |
-| GLOBAL | 7 | 7 (100.0%) | 2 (28.6%) | 0 |
+| J7 | 47 | 47 (100.0%) | 21 (44.7%) | 0 |
+| J6 | 43 | 43 (100.0%) | 23 (53.5%) | 0 |
+| J8 | 39 | 39 (100.0%) | 17 (43.6%) | 0 |
+| J5 | 36 | 36 (100.0%) | 28 (77.8%) | 0 |
+| GLOBAL | 7 | 7 (100.0%) | 3 (42.9%) | 0 |
 
 ## Gaps By Area
 
 | Bucket | Relevant leaves | Classic | MEM consistent | Missing |
 | --- | --- | --- | --- | --- |
-| unknown | 382 | 335 (87.7%) | 70 (18.3%) | 47 |
-| Analysis | 133 | 128 (96.2%) | 40 (30.1%) | 5 |
+| unknown | 382 | 335 (87.7%) | 74 (19.4%) | 47 |
+| Analysis | 133 | 128 (96.2%) | 51 (38.3%) | 5 |
 | Stochastics | 2 | 1 (50.0%) | 1 (50.0%) | 1 |
-| Geometry | 89 | 89 (100.0%) | 43 (48.3%) | 0 |
+| Geometry | 89 | 89 (100.0%) | 45 (50.6%) | 0 |
 | LinearAlgebra | 70 | 70 (100.0%) | 7 (10.0%) | 0 |
-| Algebra | 56 | 56 (100.0%) | 33 (58.9%) | 0 |
-| Arithmetic | 46 | 46 (100.0%) | 24 (52.2%) | 0 |
-| Measurement | 11 | 11 (100.0%) | 4 (36.4%) | 0 |
+| Algebra | 56 | 56 (100.0%) | 36 (64.3%) | 0 |
+| Arithmetic | 46 | 46 (100.0%) | 26 (56.5%) | 0 |
+| Measurement | 11 | 11 (100.0%) | 7 (63.6%) | 0 |
 | Data | 10 | 10 (100.0%) | 8 (80.0%) | 0 |
-| Probability | 6 | 6 (100.0%) | 4 (66.7%) | 0 |
+| Probability | 6 | 6 (100.0%) | 5 (83.3%) | 0 |
 | Lineare Algebra | 2 | 2 (100.0%) | 0 (0.0%) | 0 |
 
 ## Next Work Queue
@@ -223,7 +223,7 @@ Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung sch
 | Ähnlichkeitsbeziehungen ebener Figuren untersuchen (canonical_math_q2_analyze_plane_figures_area_congruence_similarity_similarity) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.Q2.2.ANALYZE_PLANE_FIGURES_AREA_CONGRUENCE_SIMILARITY.SIMILARITY | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Punkte, Vektoren und Bewegungen im Raum > Körper und Figuren im Raum charakterisieren > Eigenschaften ebener Figuren für Flächenberechnungen untersuchen > Ähnlichkeitsbeziehungen ebener Figuren untersuchen |
 | Eigenschaften ebener Figuren für Flächenberechnungen nutzen (canonical_math_q2_analyze_plane_figures_area_congruence_similarity_area_properties) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.Q2.2.ANALYZE_PLANE_FIGURES_AREA_CONGRUENCE_SIMILARITY.AREA_PROPERTIES | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Punkte, Vektoren und Bewegungen im Raum > Körper und Figuren im Raum charakterisieren > Eigenschaften ebener Figuren für Flächenberechnungen untersuchen > Eigenschaften ebener Figuren für Flächenberechnungen nutzen |
 
-Weitere 440 Eintraege stehen in der JSON-Begleitdatei.
+Weitere 414 Eintraege stehen in der JSON-Begleitdatei.
 
 ## Cluster Direct Rationale Pending
 
@@ -296,5 +296,5 @@ Weitere 214 Eintraege stehen in der JSON-Begleitdatei.
 
 - Landscape: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 - Runtime index: `app/public/data/goal-source-rationales-math-public.json`
-- Runtime index generated: 2026-11-13T17:55:44.717Z
+- Runtime index generated: 2026-11-14T01:08:52.097Z
 

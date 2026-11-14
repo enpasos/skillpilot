@@ -318,7 +318,6 @@ const defaultConfigPath = 'curricula/DE/Gymnasium/quality/mem-sparql-consistency
 
 const LP = 'https://w3id.org/lehrplan/ontology/'
 const RDFS = 'http://www.w3.org/2000/01/rdf-schema#'
-const BFO = 'http://purl.obolibrary.org/obo/'
 
 const usage = () => `Usage:
   npm run quality:mem-sparql-consistency
@@ -511,7 +510,6 @@ function iri(value: string): string {
 function buildConcreteComparisonQuery(comparison: ConcreteTextComparisonConfig): string {
   return `
 PREFIX lp: <${LP}>
-PREFIX bfo: <${BFO}>
 PREFIX rdfs: <${RDFS}>
 SELECT DISTINCT ?plan ?planLabel ?yearLabel ?goal ?goalLabel
 WHERE {
@@ -525,7 +523,7 @@ WHERE {
     ?year rdfs:label ?yearLabel .
     FILTER(langMatches(lang(?yearLabel), "de"))
 
-    ?plan bfo:BFO_0000051+ ?goal .
+    ?plan lp:LP_0000565+ ?goal .
     ?goal a ${iri(comparison.competencyClassIri)} ;
           rdfs:label ?goalLabel .
   }

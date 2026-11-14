@@ -256,7 +256,6 @@ const sourceBackedRelevantLeavesSelectionAliases = new Set([
 ])
 
 const LP = 'https://w3id.org/lehrplan/ontology/'
-const BFO = 'http://purl.obolibrary.org/obo/'
 const RDFS = 'http://www.w3.org/2000/01/rdf-schema#'
 
 function toPosixPath(path: string): string {
@@ -746,7 +745,6 @@ function iri(value: string): string {
 function buildMemComparisonQuery(comparison: MemConcreteTextComparisonConfig): string {
   return `
 PREFIX lp: <${LP}>
-PREFIX bfo: <${BFO}>
 PREFIX rdfs: <${RDFS}>
 SELECT DISTINCT ?plan ?planLabel ?yearLabel ?goal ?goalLabel
 WHERE {
@@ -760,7 +758,7 @@ WHERE {
     ?year rdfs:label ?yearLabel .
     FILTER(langMatches(lang(?yearLabel), "de"))
 
-    ?plan bfo:BFO_0000051+ ?goal .
+    ?plan lp:LP_0000565+ ?goal .
     ?goal a ${iri(comparison.competencyClassIri)} ;
           rdfs:label ?goalLabel .
   }
@@ -1298,7 +1296,6 @@ function sourceReadInstructions(route: SourceRationaleCandidate): string[] {
 function memVerificationQuery(route: MemSparqlRoute): string | null {
   if (route.status !== 'mem_sparql_consistent' || !route.graphIri || !route.planIri || !route.goalIri) return null
   return `PREFIX lp: <${LP}>
-PREFIX bfo: <${BFO}>
 PREFIX rdfs: <${RDFS}>
 
 SELECT DISTINCT ?planLabel ?yearLabel ?goalLabel
@@ -1309,7 +1306,7 @@ WHERE {
 
   ?plan rdfs:label ?planLabel ;
     lp:LP_0000026 ?year ;
-    bfo:BFO_0000051+ ?goal .
+    lp:LP_0000565+ ?goal .
 
   ?year rdfs:label ?yearLabel .
   ?goal rdfs:label ?goalLabel .

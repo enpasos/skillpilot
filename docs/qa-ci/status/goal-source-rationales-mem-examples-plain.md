@@ -10,7 +10,7 @@
 > Source of truth: `curricula/DE/Gymnasium/input/`
 > Source of truth: `curricula/DE/Gymnasium/quality/mem-sparql-consistency/canonical-math-poc.config.json`
 
-Erzeugt: 2026-08-26T04:38:56.667Z
+Erzeugt: 2026-11-14T01:09:34.912Z
 
 Diese Ansicht ist für Leserinnen und Leser gedacht, die keine SkillPilot-IDs auswerten wollen. Das Lernziel wird deshalb über seinen SkillPilot-Pfad in der Skill-Landschaft benannt. Technische Bezeichner erscheinen nur dort, wo sie für die MEM/FWU-SPARQL-Abfrage notwendig sind.
 
@@ -53,18 +53,17 @@ MEM/FWU liefert über die SPARQL-Schnittstelle denselben bzw. den passenden übe
 
 ```sparql
 PREFIX lp: <https://w3id.org/lehrplan/ontology/>
-PREFIX bfo: <http://purl.obolibrary.org/obo/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
 SELECT DISTINCT ?planLabel ?yearLabel ?goalLabel
 FROM <https://w3id.org/lehrplan/by/data>
 WHERE {
-  VALUES ?plan { <https://lp-bavaria.org/lis_live_isb.c.220606.de> }
-  VALUES ?goal { <https://lp-bavaria.org/9d44fa19-fa0f-47a0-a3ab-fe763ef89c0c> }
+  VALUES ?plan { <https://w3id.org/lehrplan/resource/by/lis_live_isb.c.220606.de> }
+  VALUES ?goal { <https://w3id.org/lehrplan/resource/by/381722cd-7e1d-4518-8b4d-14f9f3c51c9e> }
 
   ?plan rdfs:label ?planLabel ;
     lp:LP_0000026 ?year ;
-    bfo:BFO_0000051+ ?goal .
+    lp:LP_0000565+ ?goal .
 
   ?year rdfs:label ?yearLabel .
   ?goal rdfs:label ?goalLabel .
@@ -111,18 +110,17 @@ MEM/FWU liefert über die SPARQL-Schnittstelle denselben bzw. den passenden übe
 
 ```sparql
 PREFIX lp: <https://w3id.org/lehrplan/ontology/>
-PREFIX bfo: <http://purl.obolibrary.org/obo/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
 SELECT DISTINCT ?planLabel ?yearLabel ?goalLabel
 FROM <https://w3id.org/lehrplan/by/data>
 WHERE {
-  VALUES ?plan { <https://lp-bavaria.org/lis_live_isb.c.220606.de> }
-  VALUES ?goal { <https://lp-bavaria.org/9d44fa19-fa0f-47a0-a3ab-fe763ef89c0c> }
+  VALUES ?plan { <https://w3id.org/lehrplan/resource/by/lis_live_isb.c.220606.de> }
+  VALUES ?goal { <https://w3id.org/lehrplan/resource/by/381722cd-7e1d-4518-8b4d-14f9f3c51c9e> }
 
   ?plan rdfs:label ?planLabel ;
     lp:LP_0000026 ?year ;
-    bfo:BFO_0000051+ ?goal .
+    lp:LP_0000565+ ?goal .
 
   ?year rdfs:label ?yearLabel .
   ?goal rdfs:label ?goalLabel .
@@ -141,7 +139,7 @@ Auswertung: Wenn diese Zeile erscheint und der Erwartungstext fachlich mit dem o
 
 SkillPilot-Pfad: Mathematik > Grundlagen der Analysis und mathematische Modelle > Funktionen und ihre Darstellung > Funktionsbegriff und Darstellungen verstehen
 
-Lernziel: Die lernende Person kann reellwertige Funktionen als Zuordnung zwischen Zahlenmengen beschreiben und zwischen Wertetabelle, Term und Graph wechseln.
+Lernziel: Die lernende Person kann eine reellwertige Funktion als Zuordnung erklären, die jedem zulässigen Eingabewert genau einen Funktionswert zuweist, und Term, Wertetabelle und Graph einer gegebenen Funktion als zusammengehörige Darstellungen verwenden.
 
 ### So liest man die Originalquelle
 
@@ -156,7 +154,7 @@ Die Quelle formuliert den fachlichen Kern so: verstehen eine Funktion als eindeu
 
 Dieser Ausschnitt steht in einem breiteren offiziellen Erwartungssatz: verstehen eine Funktion als eindeutige Zuordnung und grenzen die zugehörigen Fachbegriffe (z. B. Funktionsterm, Graph, Definitionsmenge, Wertemenge) voneinander ab. Sie erkennen Funktionen als solche und unterscheiden diese begründet von nicht eindeutigen Zuordnungen. Graphen von Funktionen, denen Terme zugrunde liegen, stellen sie mithilfe einer geeignet...
 
-SkillPilot formuliert daraus ein prüfbares Lernziel im Pfad "Mathematik > Grundlagen der Analysis und mathematische Modelle > Funktionen und ihre Darstellung > Funktionsbegriff und Darstellungen verstehen": Die lernende Person kann reellwertige Funktionen als Zuordnung zwischen Zahlenmengen beschreiben und zwischen Wertetabelle, Term und Graph wechseln.
+SkillPilot formuliert daraus ein prüfbares Lernziel im Pfad "Mathematik > Grundlagen der Analysis und mathematische Modelle > Funktionen und ihre Darstellung > Funktionsbegriff und Darstellungen verstehen": Die lernende Person kann eine reellwertige Funktion als Zuordnung erklären, die jedem zulässigen Eingabewert genau einen Funktionswert zuweist, und Term, Wertetabelle und Graph einer gegebenen Funktion als zusammengehörige Darstellungen verwenden.
 
 Die fachliche Zuordnungsprüfung bewertet die Verbindung als genauer Treffer. Inhaltlich heißt das: Der extrahierte Quellenbeleg trägt dieses Lernziel direkt; weitere klassische Quellenwege bleiben maschinenlesbar dokumentiert.
 
@@ -169,18 +167,17 @@ MEM/FWU liefert über die SPARQL-Schnittstelle denselben bzw. den passenden übe
 
 ```sparql
 PREFIX lp: <https://w3id.org/lehrplan/ontology/>
-PREFIX bfo: <http://purl.obolibrary.org/obo/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
 SELECT DISTINCT ?planLabel ?yearLabel ?goalLabel
 FROM <https://w3id.org/lehrplan/by/data>
 WHERE {
-  VALUES ?plan { <https://lp-bavaria.org/lis_live_isb.c.220710.de> }
-  VALUES ?goal { <https://lp-bavaria.org/32733866-36a7-46f8-b663-4ff9d058c23f> }
+  VALUES ?plan { <https://w3id.org/lehrplan/resource/by/lis_live_isb.c.220710.de> }
+  VALUES ?goal { <https://w3id.org/lehrplan/resource/by/f25243fe-67ce-4f05-b28f-cc356e41c63b> }
 
   ?plan rdfs:label ?planLabel ;
     lp:LP_0000026 ?year ;
-    bfo:BFO_0000051+ ?goal .
+    lp:LP_0000565+ ?goal .
 
   ?year rdfs:label ?yearLabel .
   ?goal rdfs:label ?goalLabel .
@@ -225,18 +222,17 @@ MEM/FWU liefert über die SPARQL-Schnittstelle denselben bzw. den passenden übe
 
 ```sparql
 PREFIX lp: <https://w3id.org/lehrplan/ontology/>
-PREFIX bfo: <http://purl.obolibrary.org/obo/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
 SELECT DISTINCT ?planLabel ?yearLabel ?goalLabel
 FROM <https://w3id.org/lehrplan/by/data>
 WHERE {
-  VALUES ?plan { <https://lp-bavaria.org/lis_live_isb.c.220889.de> }
-  VALUES ?goal { <https://lp-bavaria.org/786038d7-4eed-4698-912e-6dc1da590b73> }
+  VALUES ?plan { <https://w3id.org/lehrplan/resource/by/lis_live_isb.c.220889.de> }
+  VALUES ?goal { <https://w3id.org/lehrplan/resource/by/d0aadf88-a7fe-4791-8b16-06ff45a196e7> }
 
   ?plan rdfs:label ?planLabel ;
     lp:LP_0000026 ?year ;
-    bfo:BFO_0000051+ ?goal .
+    lp:LP_0000565+ ?goal .
 
   ?year rdfs:label ?yearLabel .
   ?goal rdfs:label ?goalLabel .
