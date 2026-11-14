@@ -56,15 +56,46 @@ const referenceCount = (nodes: CompositionViewNode[], goalId: string): number =>
     ? referenceCount(node.children, goalId)
     : 'goalId' in node && node.goalId === goalId ? 1 : 0)
 ), 0)
+const flattenReferences = (nodes: CompositionViewNode[]): Exclude<CompositionViewNode, CompositionStructureNode>[] =>
+  nodes.flatMap(node => (node.kind === 'structure' ? flattenReferences(node.children) : [node]))
+
+// Rule of the top-down correction pass of 14 November 2026 (approved by the Product Owner for
+// goals without source evidence and applied to the method goals under his delegation of the same
+// day): a goal is a target of a stage only where the Land's source carries it for that stage.
+// The 14 Länder below have no goal-level source evidence
+// for the four methods in either stage, so their 28 cross-stage views reference each method once
+// as prerequisiteOnly preparation instead of a visible target branch. The support is declared in
+// the Sek-II section, where astronomy consumes it, and makes no statement about Sek I; RP keeps
+// its two retained Sek-I supports (observation, models) unchanged. Learner availability then
+// follows from the Personal Curriculum closure rule of 10 November 2026 (necessary prerequisites
+// become learning targets), covered by ProjectionRoleLearnerServiceTest
+// .omittedOrPrerequisiteOnlyPhysicsMethodsBecomeRequiredLearnableAstronomyPreparation.
+// Single-stage Sek-II views and the BW/BY cross-stage views keep the methods as targets.
+const methodPreparationJurisdictions = new Set([
+  'DE-BB', 'DE-BE', 'DE-HB', 'DE-HE', 'DE-HH', 'DE-MV', 'DE-NI',
+  'DE-NW', 'DE-RP', 'DE-SH', 'DE-SL', 'DE-SN', 'DE-ST', 'DE-TH',
+])
+const methodsArePreparation = (view: CompositionView): boolean => view.scope.stage === 'CrossStage'
+  && methodPreparationJurisdictions.has(String(view.scope.jurisdiction))
+const isSekIIStageLabel = (label: string) => /^Sekundarstufe II(?:$|[\s(:\-–])/u.test(label)
 
 test('every atlas view that teaches either astronomy goal also teaches its complete method prerequisites', () => {
   assert.equal(views.length, 64)
   let astronomyViewCount = 0
+  let preparationViewCount = 0
   for (const { path, view } of views) {
     const roles = collectCompositionProjectionRoleGoalIds(view.rootNodes, byId)
     if (!astronomy.some(goalId => roles.targetGoalIds.has(goalId))) continue
     astronomyViewCount++
+    const preparation = methodsArePreparation(view)
+    if (preparation) preparationViewCount++
     for (const goalId of [...methods, orientation]) {
+      if (preparation && goalId !== orientation) {
+        // Replaces "learnable target" for these 28 views only: present as preparation.
+        assert(roles.prerequisiteOnlyGoalIds.has(goalId), `${path}: method must be present as prerequisiteOnly: ${goalId}`)
+        assert(!roles.targetGoalIds.has(goalId), `${path}: method must not be a stage target here: ${goalId}`)
+        continue
+      }
       assert(roles.targetGoalIds.has(goalId), `${path}: prerequisite must be learnable: ${goalId}`)
       assert(!roles.prerequisiteOnlyGoalIds.has(goalId), `${path}: hidden prerequisite: ${goalId}`)
     }
@@ -81,11 +112,17 @@ test('every atlas view that teaches either astronomy goal also teaches its compl
           assert(!roles.targetGoalIds.has(requiredId), `${path}: mathematics prerequisite became a physics target: ${requiredId}`)
           continue
         }
+        if (preparation) {
+          assert(roles.targetGoalIds.has(requiredId) || roles.prerequisiteOnlyGoalIds.has(requiredId),
+            `${path}: omitted method dependency: ${goalId} -> ${requiredId}`)
+          continue
+        }
         assert(roles.targetGoalIds.has(requiredId), `${path}: omitted method dependency: ${goalId} -> ${requiredId}`)
       }
     }
   }
   assert.equal(astronomyViewCount, 60)
+  assert.equal(preparationViewCount, 28)
 })
 
 test('the four method goals form a bounded sequence after the existing orientation and mathematics foundation', () => {
@@ -96,11 +133,43 @@ test('the four method goals form a bounded sequence after the existing orientati
   for (const goalId of astronomy) assert(byId.get(goalId)?.requires.includes(sources))
 })
 
-test('the 56 repaired astronomy branches own exactly one visible method entry per competence', () => {
+test('28 Sek-II astronomy branches teach the methods; 28 cross-stage views reference them once as preparation', () => {
+  let preparationViews = 0
+  for (const { path, view } of views) {
+    if (!methodsArePreparation(view)) continue
+    preparationViews++
+    assert.equal(structures(view.rootNodes).filter(node => node.id === methodStructureId).length, 0,
+      `${path}: no method branch in a cross-stage view of these Länder`)
+    const roles = collectCompositionProjectionRoleGoalIds(view.rootNodes, byId)
+    const physicsRoot = structures(view.rootNodes).find(node => node.id === 'physics-root')!
+    const sekIIStages = physicsRoot.children
+      .filter((node): node is CompositionStructureNode => node.kind === 'structure' && isSekIIStageLabel(node.label))
+    assert.equal(sekIIStages.length, 1, `${path}: exactly one Sek-II section`)
+    const sekIIReferences = flattenReferences(sekIIStages[0].children)
+    const rpRetainedSekISupport = view.scope.jurisdiction === 'DE-RP' ? [observation, models] : []
+    for (const goalId of methods) {
+      assert.equal(referenceCount(view.rootNodes, goalId), 1, `${path}: exactly one method reference: ${goalId}`)
+      const reference = flattenReferences(view.rootNodes).find(node => node.goalId === goalId)
+      assert.deepEqual(reference, { kind: 'goalEntry', goalId, projectionRole: 'prerequisiteOnly' }, path)
+      assert(!roles.targetGoalIds.has(goalId), `${path}: method must never be a target here: ${goalId}`)
+      const declaredInSekII = sekIIReferences.includes(reference!)
+      if (rpRetainedSekISupport.includes(goalId)) {
+        assert(!declaredInSekII, `${path}: RP keeps its retained Sek-I support only: ${goalId}`)
+      } else {
+        assert(declaredInSekII, `${path}: method support must be declared in the Sek-II section: ${goalId}`)
+      }
+    }
+    for (const goalId of [...astronomy, orientation]) {
+      assert(roles.targetGoalIds.has(goalId), `${path}: must remain a target: ${goalId}`)
+    }
+  }
+  assert.equal(preparationViews, 28)
+
   let repaired = 0
   for (const { path, view } of views) {
     const branch = structures(view.rootNodes).find(node => node.id === methodStructureId)
     if (!branch) continue
+    assert.equal(view.scope.stage, 'SekII', `${path}: method branches remain only in single-stage Sek-II views`)
     repaired++
     const parent = structures(view.rootNodes).find(node => node.children.includes(branch))
     assert.equal(parent?.label, 'Astrophysik', path)
@@ -108,12 +177,7 @@ test('the 56 repaired astronomy branches own exactly one visible method entry pe
     for (const node of branch.children) {
       assert.equal(node.kind, 'goalEntry', path)
       assert.equal(node.projectionRole, 'target', path)
-      // RP CrossStage retains two original hidden supports for its independent
-      // Sek-I routes. Each still has only one visible entry, in SekII astronomy.
-      const retainedRpStageSupport = view.scope.jurisdiction === 'DE-RP'
-        && view.scope.stage === 'CrossStage'
-        && [observation, models].includes(String(node.goalId))
-      assert.equal(referenceCount(view.rootNodes, String(node.goalId)), retainedRpStageSupport ? 2 : 1,
+      assert.equal(referenceCount(view.rootNodes, String(node.goalId)), 1,
         `${path}: unexpected method reference count`)
     }
     const localRoles = collectCompositionProjectionRoleGoalIds(parent!.children, byId)
@@ -124,10 +188,10 @@ test('the 56 repaired astronomy branches own exactly one visible method entry pe
     // into each narrow focus; this route starts after that regular orientation.
     assert.equal(referenceCount(branch.children, orientation), 0, path)
   }
-  assert.equal(repaired, 56)
+  assert.equal(repaired, 28)
 })
 
-test('RP preserves original Sek-I support while teaching the methods once in its Sek-II astronomy branch', () => {
+test('RP preserves its original Sek-I supports and references the two other methods once as preparation', () => {
   const rp = views.filter(({ view }) => view.scope.jurisdiction === 'DE-RP' && view.scope.stage === 'CrossStage')
   assert.equal(rp.length, 2)
   const withoutSekII = (nodes: CompositionViewNode[]): CompositionViewNode[] => nodes.flatMap(node => (
@@ -154,7 +218,8 @@ test('RP preserves original Sek-I support while teaching the methods once in its
     const compiled = compileCompositionView(view, physics, universe, landscapesById)
     const countVisible = (nodes: typeof compiled.compiledRootNodes, id: string): number => nodes.reduce(
       (count, node) => count + Number(node.sourceGoalId === id) + countVisible(node.children, id), 0)
-    for (const id of [observation, models]) assert.equal(countVisible(compiled.compiledRootNodes, id), 1, path)
+    // Since 14 November 2026 no method is a visible target in RP's cross-stage tree.
+    for (const id of methods) assert.equal(countVisible(compiled.compiledRootNodes, id), 0, path)
     assert.deepEqual(compiled.findings.filter(finding => finding.severity === 'error'), [], path)
   }
 })
