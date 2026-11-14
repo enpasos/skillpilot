@@ -705,6 +705,17 @@ curricular-level terminology. Personalization Levels 1–4, QA maturity and goal
   Until the follow-up work in section 10 of the document is done, the tools
   enforce the unit contract of 12 November and Graph Definition §11 to §13
   describe the implemented state.
+  A first, surface-only step is implemented: the learner map
+  (`app/src/components/learningUnitMap/learnerUnitMapProjection.ts` and
+  `learnerUnitMapPreview.ts`) renders the learner's graph as units and atomic
+  goals for Mathematics and Physics only, under a visible construction-site
+  notice; other subjects appear in the goal tree only, and the tree view is
+  unchanged. Units are not declared in the curriculum yet, so this preview
+  takes the sections of the Land views as stand-ins, top-down by a step
+  control, orders sibling sections as the view lists them, and merges the two
+  stages across the subjects through a provisional table of view node ids
+  (`PROVISIONAL_STAGE_PLAN_UNITS`), to be removed once plan units are
+  declared. `buildLearnerMapProjection` is kept but no longer rendered.
 
 This is concept documentation plus a static authoring contract and validator,
 not an implemented runtime or access policy. See `docs/concept/skill-graph/learning-units.md`,
