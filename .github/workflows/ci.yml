@@ -804,6 +804,8 @@ jobs:
         run: npm run test:math-checkpoint-exams
       - name: Test HE Q2.5 central-dilation assessment scope
         run: npm run test:math-q25-central-dilation-scope
+      - name: Test HE Q2.4/Q2.5 rotation endpoint and GK scope
+        run: npm run test:hessen-math-q24-q25-scope
       - name: Test Mathematics Q2 assessment projection and scoring
         run: npm run test:math-q2-m7-assessment-projection
       - name: Test Physics practice and Abitur assessment projection

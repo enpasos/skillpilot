@@ -18,9 +18,11 @@ declared domains and retired two redundant codes. The delivered legend has
 `GVR-012`) require broader curriculum work; they are not part of the completed
 bounded hardening.
 
-**Active work order: [section 10](#10-follow-up-programme-clean-gymnasium-13-november-2026).**
-It records the owner decision of 13 November 2026 and the follow-up packages
-F1–F5. Sections 1–9 are the record of the delivered work and are not reopened.
+**Current state and next steps: [section 11](#11-status-and-next-steps-14-november-2026).**
+[Section 10](#10-follow-up-programme-clean-gymnasium-13-november-2026) records
+the owner decision of 13 November 2026 and the follow-up packages F1–F5,
+delivered in [PR #141](https://github.com/enpasos/skillpilot/pull/141).
+Sections 1–9 are the record of the first delivery and are not reopened.
 
 Related material:
 
@@ -717,6 +719,21 @@ plan.
   automatic completion (14), frontier fallback (2) and historical/retirement
   HTTP contracts (10). No runtime or curriculum data was changed to restore
   these tests; complete CI on the corrected commit remains required.
+- 2026-11-14: the owner merged PR #141 as `8ebcfbab67`. Its head `674806c092`
+  had passed all 14 jobs of
+  [CI #2343](https://github.com/enpasos/skillpilot/actions/runs/43516942141).
+  Main [CI #2346](https://github.com/enpasos/skillpilot/actions/runs/43536761502)
+  on the merge commit then passed all 14 jobs.
+  The published matrix shows 12 `HARD`, 50 `PARTIAL` and 55 `OPEN` rows.
+- 2026-11-14, close-out round (section 11): repaired the Hessen Q2.4/Q2.5
+  regression, which had failed on main since `7534d5e844` (28 September), and added it to
+  the assessment-proof job. Its whole-view comparison with the archived
+  22 September fixture is now limited to the Q2.4/Q2.5 area the original
+  repair touched; every other assertion is unchanged. The repaired test
+  passes, and a probe that removes the retained basic-course target from the
+  Hessen basic-course views fails with exit 1. Recorded the part-C runtime
+  test inventory and the causes of the remaining `GVR-012` gaps. No
+  curriculum data, view, ledger or register grade changed.
 
 ## 10. Follow-up programme: clean Gymnasium (13 November 2026)
 
@@ -912,10 +929,11 @@ commits in one new pull request against `main`. Open a draft early for the
 quick CI tier, then run the complete remote tier when ready. Do not merge,
 publish or deploy. Add one line per package to the progress log in section 9.
 
-### 10.6 Current candidate and evidence-bound remainder
+### 10.6 Delivered follow-up and evidence-bound remainder
 
-The follow-up is being delivered in [PR #141](https://github.com/enpasos/skillpilot/pull/141).
-Passing candidate tests do not establish main acceptance. The implementation
+The follow-up was delivered in [PR #141](https://github.com/enpasos/skillpilot/pull/141)
+and merged on 14 November 2026; section 11.1 records the remote evidence. The
+text below describes the candidate as it was written before the merge. The implementation
 preserves all floors, the frozen V9 registry and its parent, and the source
 snapshots. The 55 `OPEN` runtime/concept rows are not regraded.
 
@@ -977,9 +995,94 @@ live graph files, the eight existing visibility pins, five direct-route tests,
 18 workflow guards and the Q2.1 regression. The full CQR run completed with
 21 curricula (five M7, five M6, eleven M0), unchanged; the floor checker
 passed all 21 curriculum and twelve scope pins against main `2ad03c810c`.
-The app TypeScript build and targeted ESLint also passed. These are local
-results; the final candidate still requires its own remote CI evidence.
+The app TypeScript build and targeted ESLint also passed. These were local
+results; the remote CI evidence is recorded in section 11.1.
 
 F4/F5's stronger coverage targets are not complete. Their documented evidence
 work remains necessary before further pins or grades can be raised; this PR
 does not convert successful diagnosis into full target acceptance.
+
+## 11. Status and next steps (14 November 2026)
+
+### 11.1 Delivered state
+
+- PR #141 is merged as `8ebcfbab67`; the remote evidence is in the progress
+  log (section 9, 14 November).
+- Rule register on main: 12 `HARD`, 50 `PARTIAL`, 55 `OPEN`, 28 `OPT/DOC`;
+  part C: 8, 17, 11. Code legend: 22 `HARD`, 2 `PARTIAL`.
+- F1, F2 and F3 are complete. F4 stands at four of the seven `M7` scopes of
+  `GVR-012`, F5 at eight of twelve scopes of `CQR-104`.
+
+### 11.2 Owner instruction of 14 November 2026
+
+The follow-up continues without haste and must not hinder the parallel work
+on learning units. Execution choices for this round under that instruction:
+
+- no change to canonical curriculum data, composition views or semantic-kind
+  ledgers;
+- no regeneration of the Graph Definition compendium or its PDFs, so the rule
+  register stays as it is;
+- analysis first; repairs are prepared as packages (11.6).
+
+### 11.3 Results of this round
+
+- The Hessen Q2.4/Q2.5 regression is repaired and runs in CI (section 9).
+- [Part C: runtime test inventory](graph-definition-part-c-runtime-test-inventory-2026-11-14.md):
+  of the 28 part-C rows that are not `HARD`, existing tests in required CI
+  already prove six (`GD-C10`, `C12`, `C13`, `C18`, `C34`, `C35`), cover 17
+  partly, and leave two without any test. One row cannot be tested because
+  the behaviour is not implemented; two have no runtime share.
+- Causes of the remaining `GVR-012` gaps (11.4).
+
+### 11.4 `GVR-012`: causes of the remaining gaps
+
+An independent re-implementation of the validator reproduces the audit
+exactly (Physics lower secondary: 101 selected goals, 5 findings; Chemistry
+upper secondary: 342 and 3). No defect was found in the validator or in the
+profile factory. All eight findings come from the two scope-local checks: a
+route must pass through an ordinary goal selected by the same scope, and a
+memory goal must follow such a goal.
+
+| Scope | Cause | Repair needs |
+| --- | --- | --- |
+| Physics lower secondary, 5 findings | Five practice assessments are tagged `SekI` and are explicit targets of the national lower-secondary view. Their seven prerequisites are upper-secondary goals (phases E, Q1, Q2, Q4), which that view includes only as `prerequisiteOnly`. No lower-secondary goal exists on these topics. The state views disagree: BW and BY place the prerequisites as lower-secondary targets and SL two of them, RP keeps them `prerequisiteOnly`, and the other states place them in upper secondary. Whether the sources support the BW, BY and SL placements is not verified. | A subject decision on the stage: either the seven prerequisites become national lower-secondary targets, or the five assessments leave the national lower-secondary practice cluster. |
+| Chemistry upper secondary, 3 findings | Assessment `9746ff9a` (Antazida) requires only a lower-secondary goal. It was authored as an admission-only prerequisite; its route state is on hold and it has no review. Memory goal `417e65ec` entered a route on 10 November, when the cluster requirement of assessment `23fc54ce` was expanded into 20 atomic ones. | Authored `requires` for two goals, with a subject review. |
+| Economics, no ledger | All 24 unclassified goals were added in `c4ca15980f`, together with the ledger that omits them: 12 assessment tasks, 10 ordinary goals and 2 grouping clusters. | 24 reviewed ledger decisions; the route result is unknown until the audit can run. |
+| Physics upper secondary, 43 goals of alignment debt | All are ordinary goals with phase `GLOBAL`, inherited by the national upper-secondary views through subtrees; 28 belong to astrophysics. 33 are required by no goal. | First a decision whether they are assessable upper-secondary content or enrichment. Selecting them without terminal routes would add 42 findings to a required scope. |
+
+As a hypothetical check, not a recommendation: with the seven prerequisites
+as national lower-secondary targets, the Physics scope selects 108 goals and
+has no finding.
+
+Each repair in Physics or Chemistry changes `requires`, tags or view roles of
+canonical goals, and with them ledger fingerprints and goal reviews.
+
+### 11.5 Open owner decisions
+
+1. Do runtime tests become a third gate family in the register? Without it,
+   about 80 of the 105 rows that are not `HARD` stay out of reach.
+2. `CQR-104` in upper secondary: one visible terminal assessment per state
+   and course level, or per national scope? In Mathematics and Chemistry
+   every projection fails today, which points to an undefined target.
+3. Physics lower secondary: the stage of the seven prerequisites (11.4).
+4. Physics upper secondary: the status of the 43 phase-`GLOBAL` goals (11.4).
+
+### 11.6 Prepared packages
+
+| Package | Content | Touches unit work? |
+| --- | --- | --- |
+| R1 | The six test additions listed in the inventory | No: test code only |
+| R2 | Regrade the part-C rows that runtime tests prove | Needs decision 1; regenerates the compendium and its PDFs |
+| G1 | Economics: the 24 ledger decisions, then the first audit run | No: Economics only |
+| G2 | Route repairs in Physics lower secondary and Chemistry upper secondary | Yes: canonical Physics and Chemistry. Needs decision 3 |
+| V1 | `CQR-104` in the four upper-secondary scopes | Yes: subject authoring. Needs decision 2 |
+| A1 | Assessment coverage contracts | Yes: subject authoring |
+
+A1 follows from the Biology finding in the
+[endpoint visibility dossier](cqr-gvr-endpoint-visibility-findings-2026-11-13.md):
+coverage declared through whole clusters. An unreviewed count on 14 November
+found cluster entries in the coverage list of about 29 assessments
+(Informatik 8, Biologie 7, Latein 7, Physik 6, Chemie 1).
+
+Order: R1 and G1 can run at any time. R2 follows decision 1. G2, V1 and A1
+wait until the unit work in the affected subjects allows it.
