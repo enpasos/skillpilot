@@ -1,6 +1,6 @@
 # Umsetzungsplan: Lerneinheiten für Mathematik und Physik
 
-**Stand: 13. November 2026. Arbeitsgrundlage.** Dieser Plan ersetzt den
+**Stand: 14. November 2026. Arbeitsgrundlage.** Dieser Plan ersetzt den
 [Plan vom 5. November](learning-units-implementation-plan.md) und den
 eingefrorenen Plan gleichen Namens auf dem Archivzweig von
 [PR #83](https://github.com/enpasos/skillpilot/pull/83). Er beschreibt Sollzustand
@@ -63,6 +63,17 @@ Am 13. November 2026 hat der Product Owner ergänzt:
   waren zwei Zuordnungsfehler dieser Art im Bestand. Das Konzept steht in
   [Wissenskontext](../concept/skill-graph/knowledge-context.de.md), die Folgen
   für diesen Plan in den Abschnitten 4, 6 und 7.
+
+Am 14. November 2026 ist der Product Owner den offenen Empfehlungen gefolgt:
+
+- **Experimentelle Ziele** in Physik, Chemie und Biologie werden nie
+  anerkannt. Sie bleiben nur über ihr eigenes explizites Ergebnis
+  abschließbar, und kein Review behauptet für sie eine geprüfte Abdeckung. Der
+  Coach kann die Echtheit eigener Messdaten nicht prüfen; eine Auswertung
+  vorgegebener Messwerte weist das Ausführen eines Versuchs nicht nach.
+  Einzelheiten und offene Vertragsfragen in Abschnitt 5.
+- **Wissenskontext:** Der nächste Schritt ist die Fachprüfung der 15 Befunde
+  aus dem Pilot zur Hinlänglichkeit (Abschnitt 9).
 
 Unverändert gilt die Anerkennungsregel, die der Product Owner am 11. November
 bestätigt hat: Ein eigenes gewöhnliches Ziel einer Einheit ist anerkannt, sobald
@@ -251,10 +262,10 @@ Ergebnis abgeschlossen.
 | --- | --- | --- | --- |
 | **0 – Wiederaufnahme** | Dieser Plan; Inventarwerkzeug portiert und neu erzeugt. | Dokumentationsprüfungen grün; #83 bleibt Archiv. | Geliefert. |
 | **1 – Vertrag und Validator** | Einheiten in der Platzierungsschicht der Skill-Landschaft, Paketvertrag 1.2, Validator für R1, R3, R4 und Struktur, gemeinsame Testfälle, CI-Einbindung. | Testfälle decken jeden Befundcode; keine Runtimeänderung. | Geliefert. Die Angebotsprüfung ist vorhanden, aber nicht in der Pflicht-CI. |
-| **2 – Erste echte Einheiten** | Pilot „Skalarprodukt über orthogonale Projektion“, danach M01 und P13, jeweils mit unabhängigem R2-Review. | Validator grün, geschützte Reifegrade gehalten, Quellenbindung für neue Prüfungen. | Geliefert: Der Pilot, M01 („Natürliche Zahlen verstehen und darstellen“) und P13 („Gleichmäßig beschleunigte Bewegung modellieren“) tragen seit dem 13. November R2-Nachweise (siehe unten). Offen ist die Entscheidung, wie experimentelle Ziele nachgewiesen werden. |
+| **2 – Erste echte Einheiten** | Pilot „Skalarprodukt über orthogonale Projektion“, danach M01 und P13, jeweils mit unabhängigem R2-Review. | Validator grün, geschützte Reifegrade gehalten, Quellenbindung für neue Prüfungen. | Geliefert: Der Pilot, M01 („Natürliche Zahlen verstehen und darstellen“) und P13 („Gleichmäßig beschleunigte Bewegung modellieren“) tragen seit dem 13. November R2-Nachweise (siehe unten). Experimentelle Ziele werden nicht anerkannt (entschieden am 14. November). |
 | **3 – Runtime** | Backend leitet aus gültigen Verträgen die wirksame Beherrschung ab, versioniert gebunden (R5); Cockpit, Coach, Frontier und Plan nutzen denselben Stand. Die Vertragsversion dieser Stufe nimmt Aufgabenvarianten auf. | Gesamtfortschritt zählt Anerkennung mit, Perioden zählen nur explizite Abschlüsse, keine neuen Mastery-Zeilen; Deployment und Hostabnahme getrennt durch den Product Owner. | Offen. |
 | **4 – Mathematik vollständig** | Blockweise Einheiten, Prüfungen und Reviews; die Landschaft erklärt `learningUnitCoverage: complete`. | Kein Fachziel ohne Einheit, Aufgaben, Karten und Bilder jeder Einheit gegen ihren Wissenskontext geprüft, Angebotsprüfung in allen Mathematikklassen grün, Gesamt-CI grün. | Offen: 801 gewöhnliche Ziele ohne Einheit. |
-| **5 – Physik vollständig** | Wie Stufe 4, zusätzlich Experimente und mathematische Voraussetzungen. | Eigene Fachabnahme; Mathematik bleibt stabil. | Offen: 476 gewöhnliche Ziele ohne Einheit; die Entscheidung zu experimentellen Zielen steht aus. |
+| **5 – Physik vollständig** | Wie Stufe 4, zusätzlich Experimente und mathematische Voraussetzungen. | Eigene Fachabnahme; Mathematik bleibt stabil. | Offen: 476 gewöhnliche Ziele ohne Einheit. |
 
 ### Stand der Stufe 2
 
@@ -298,9 +309,14 @@ alle Übertragungen des eingefrorenen Reduktionsnachweises bleiben aktiv.
 
 Für Lernende ändert sich dadurch noch nichts: Eine Anerkennung gibt es erst
 mit der Runtime (Stufe 3). Das ältere Completion-Profil
-`math-dot-product-projection` nennt weiterhin die erste Prüfung; ob es auf die
-neue Prüfung umgestellt, bis Stufe 3 belassen oder zurückgezogen wird, ist eine
-offene Entscheidung des Product Owners.
+`math-dot-product-projection` nennt weiterhin die erste Prüfung und bleibt bis
+Stufe 3 unverändert (Stand 14. November). Die Laufzeit lädt es nicht: Im
+automatischen Modus überspringt sie die Verzeichnisse der Completion-Profile
+und -Umfänge. Das Profil dient nur noch den Tests des historischen Profilpfads
+und dem 1.1-Paketprofil. Eine Umstellung änderte für Lernende nichts. In der
+heutigen Laufzeit hält bereits die neue Prüfung das Ziel offen: Sie steht in
+allen Sichten der ersten, und solange sie offen ist, gilt das Ziel nicht als
+implizit erledigt. Stufe 3 löst den Profilpfad ab.
 
 **M01, „Natürliche Zahlen verstehen und darstellen“ (13. November).** Die
 Einheit `math-natural-numbers` besitzt die fünf Ziele der Jahrgangsstufe 5 aus
@@ -383,7 +399,7 @@ eigener Erkenntnisschritt, Geschwindigkeit als Steigung zu lesen, und werden
 eine eigene Einheit in Stufe 5. „Physik im Straßenverkehr“ wendet beide
 Bewegungsmodelle in einer Bewertungsaufgabe an und baut auf der Einheit auf.
 
-**Offene Entscheidung: experimentelle Ziele.** Der erste Entwurf von P13
+**Experimentelle Ziele (entschieden am 14. November).** Der erste Entwurf von P13
 enthielt auch das Ziel „Freier Fall experimentell untersuchen“
 (`09029573-864f-40ca-bf8a-cee7bf6dcb73`) mit einer zweiten Prüfung, die
 Messwerte eines beschriebenen Schulversuchs auswerten ließ. Beide Reviewer
@@ -396,11 +412,21 @@ widersprochen:
 | Planung, Auswertung und Fehleranalyse eines beschriebenen Versuchs genügen in diesem Kanal. | Die Prüfung braucht zusätzlich einen Planungsteil, und der Product Owner hält diese Lesart ausdrücklich fest. Das Ausführen eines Versuchs wird dann nicht nachgewiesen. |
 | Experimentelle Ziele werden nie anerkannt. | Sie gehören zu einer Einheit ohne vollständigen Nachweis oder zu keiner und bleiben nur über ihr eigenes explizites Ergebnis abschließbar. |
 
-Die Entscheidung gilt für alle experimentellen Ziele in Physik, Chemie und
-Biologie und liegt beim Product Owner. Bis dahin bleibt das Ziel außerhalb der
+Der Product Owner hat am 14. November die dritte Lesart gewählt (Abschnitt 1):
+Experimentelle Ziele in Physik, Chemie und Biologie werden nie anerkannt und
+bleiben nur über ihr eigenes explizites Ergebnis abschließbar. Kein Review
+behauptet für sie eine geprüfte Abdeckung. Das Ziel bleibt außerhalb der
 Einheit; der Entwurf der Messwertaufgabe ist nicht eingecheckt. Dasselbe
 betrifft `ce431132-dfc4-42c2-aff6-bd72035190f8` („Bewegungen mit Diagrammen
 untersuchen“) in der künftigen Einheit zur Beschreibung von Bewegungen.
+
+Offen sind damit zwei Fragen für den Vertrag der Stufe 3. Erstens: Woran
+erkennt der Vertrag ein experimentelles Ziel? Die kanonischen Ziele tragen
+dafür heute kein Merkmal. Zweitens: Wie gehört ein solches Ziel zu einer
+Einheit, ohne die Anerkennung der übrigen Ziele dieser Einheit zurückzuhalten?
+Nach R2 hielte ein eigenes Ziel ohne geprüfte Abdeckung die ganze Einheit
+offen. Bis zu dieser Vertragsversion gehört ein experimentelles Ziel zu keiner
+Einheit.
 
 ## 6. Arbeitsweise je Themenblock
 
@@ -557,8 +583,9 @@ belegt den Bau nur lokal in `./run_ci.sh package`.
 
 Stufe 2 ist geliefert: Drei Einheiten in zwei Fächern tragen vollständige
 R2-Nachweise, eine davon mit zwei Prüfungen. Stufe 3 kann beginnen; zu ihr
-gehört auch der Vertrag für Aufgabenvarianten. Vor Stufe 5 braucht es die
-Entscheidung des Product Owners zu experimentellen Zielen.
+gehören auch der Vertrag für Aufgabenvarianten und die Form, in der
+experimentelle Ziele zu Einheiten gehören, ohne anerkannt zu werden
+(Abschnitt 5).
 
 Davon unabhängig läuft die Einführung des Wissenskontexts (Abschnitt 4). Das
 Werkzeug ist vorhanden, der Pilot zur Hinlänglichkeit durchgeführt
