@@ -1863,13 +1863,15 @@ public class LearnerControllerIntegrationTest {
         // it leaves S everywhere it was a seed; in HE/RP G9 so do the two J10
         // derivative goals that only its route completion had placed in Sek I,
         // and in SH LK G9 the J10 task 3 whose direct prerequisite it is.
+        // "Ganzrationale Funktionen ueber Term und Graph beschreiben" is
+        // preparation only outside BY, NW and NI and leaves S in all six scopes.
         String[][] scopes = {
-                { "DE-HE", "GK", "753", "760" },
-                { "DE-HE", "LK", "892", "899" },
-                { "DE-RP", "GK", "690", "698" },
-                { "DE-RP", "LK", "804", "812" },
-                { "DE-SH", "GK", "669", "676" },
-                { "DE-SH", "LK", "766", "773" }
+                { "DE-HE", "GK", "752", "759" },
+                { "DE-HE", "LK", "891", "898" },
+                { "DE-RP", "GK", "689", "697" },
+                { "DE-RP", "LK", "803", "811" },
+                { "DE-SH", "GK", "668", "675" },
+                { "DE-SH", "LK", "765", "772" }
         };
         SoftAssertions softly = new SoftAssertions();
 
