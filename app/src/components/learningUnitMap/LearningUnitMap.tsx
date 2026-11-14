@@ -504,8 +504,8 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
           </ReactFlow>
           {listMode && <div ref={listContainer} className="lum-list" data-testid="learning-map-compact-list">
             <p className="lum-list-note" role="note">{visibleIds.some(id => fixture.entries[id].children?.length)
-              ? label(`Diese Ebene hat ${visibleIds.length} Einträge. Sie ist noch nicht weiter in Einheiten unterteilt und steht deshalb als Liste ohne Pfeile da.`,
-                `This level has ${visibleIds.length} entries. It is not subdivided into units yet, so it is listed without arrows.`)
+              ? label(`Hier stehen ${visibleIds.length} Einträge. Sie sind noch nicht weiter in Einheiten unterteilt und stehen deshalb als Liste ohne Pfeile da.`,
+                `There are ${visibleIds.length} entries here. They are not subdivided into units yet, so they are listed without arrows.`)
               : label(`Diese Einheit ist noch nicht weiter unterteilt. Ihre ${visibleIds.length} Lernziele stehen deshalb als Liste ohne Pfeile da.`,
                 `This unit is not subdivided yet, so its ${visibleIds.length} learning goals are listed without arrows.`)}</p>
             <ul aria-label={`${label('Lernkarte', 'Learning map')}: ${scopeTitle}`}>

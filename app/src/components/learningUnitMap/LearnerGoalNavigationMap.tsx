@@ -93,11 +93,11 @@ export default function LearnerGoalNavigationMap(props: LearnerGoalNavigationMap
       })}
     </div>}
     {view.maxStep > 1 && <label className="lum-step-control" title={english
-      ? 'Step 1 makes only the outermost sections units; every further step adds the sections inside them.'
-      : 'Stufe 1 macht nur die äußersten Abschnitte zu Einheiten; jede weitere Stufe nimmt die Abschnitte darin hinzu.'}>
-      <span className="lum-step-label" aria-hidden="true">{english ? 'Units down to step' : 'Einheiten bis Stufe'}</span>
-      <span className="lum-step-label-short" aria-hidden="true">{english ? 'Step' : 'Stufe'}</span>
-      <select data-testid="learner-map-unit-step" aria-label={english ? 'Units down to step' : 'Einheiten bis Stufe'}
+      ? 'Units are introduced top down. Step 1 makes only the outermost sections units; every further step adds the sections inside them.'
+      : 'Einheiten werden von oben nach unten eingeführt. Schritt 1 macht nur die äußersten Abschnitte zu Einheiten; jeder weitere Schritt nimmt die Abschnitte darin hinzu.'}>
+      <span className="lum-step-label" aria-hidden="true">{english ? 'Units top down, step' : 'Einheiten von oben, Schritt'}</span>
+      <span className="lum-step-label-short" aria-hidden="true">{english ? 'Step' : 'Schritt'}</span>
+      <select data-testid="learner-map-unit-step" aria-label={english ? 'Units top down, step' : 'Einheiten von oben, Schritt'}
         value={view.step} onChange={event => setRequestedStep(Number(event.target.value))}>
         {Array.from({ length: view.maxStep }, (_, index) => index + 1).map(step => <option key={step} value={step}>{step}</option>)}
       </select>
