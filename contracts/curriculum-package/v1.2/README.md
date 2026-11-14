@@ -96,7 +96,7 @@ additions by `scripts/generate_curriculum_package_learning_unit_contracts.py`;
 | `profiles/skillpilot-fwu-field-semantics-learning-units-v1.registry.json` | The 456 unchanged V1 entries plus 19 entries (475). Each coverage review is a positioned record of its unit with registered fields, like `goalPlacements`. |
 | `profiles/de-gymnasium-mathematik-learning-units-release-model-v1.profile.json` | Mathematics build profile for runtime 1.2. Its unit counts are derived from the canonical file (currently two units with nine own placements and three coverage reviews). |
 | `profiles/fwu-owl-learning-units-v1.profile.json`, `fwu-owl-package-*.schema.json`, `ontology/skillpilot-fwu-profile-learning-units-1.2.0.ttl` | FWU-OWL carrier, derived from the 1.0 carrier as 1.1 did. |
-| `fixtures/learning-units/cases.json` | Shared conformance cases (owned by the learning-unit validator; not generated). |
+| `fixtures/learning-units/cases.json` | Shared conformance cases (owned by the learning-unit validator; not generated). Cases with `recognition` also list learner states with the goals recognized through valid units and the complete units; the reference evaluation `app/scripts/lib/learningUnitRecognition.ts` checks them. Recognition is not part of this package contract. |
 
 ## Builds of earlier contracts
 

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "purpose": "Synthetic conformance cases for the learning-unit validity rules of curriculum-package contract 1.2. No case represents a reviewed production learning unit.",
-  "reading": "Each case lists complete landscapes in the placement-layer format. expect.findings names every finding by code; unitId and goalId are given where the finding belongs to one. expect.valid is true when findings is empty. offered and expect.offeredFindings concern the optional check against offered curricula.",
+  "purpose": "Synthetic conformance cases for the learning-unit validity rules of curriculum-package contract 1.2 and for the recognition of own goals through valid units (Graph Definition §13). No case represents a reviewed production learning unit.",
+  "reading": "Each case lists complete landscapes in the placement-layer format. expect.findings names every finding by code; unitId and goalId are given where the finding belongs to one. expect.valid is true when findings is empty. offered and expect.offeredFindings concern the optional check against offered curricula. recognition lists learner states: explicit names the goals with an explicit result of 1, recognized the goals recognized on top of them, complete the units that are complete and unavailable the units whose completion is undefined because the unit or a required child is invalid. Only a structurally valid unit with complete reviewed coverage recognizes goals; a case with recognition states validity and reviewed coverage for each of its units in expect.units. Every explicit result counts as achieved under the current contract; the binding of results to a contract state (R5) is not part of these cases.",
   "cases": [
     {
       "id": "valid-chain",
@@ -83,7 +83,27 @@
             "ownedGoals": 3
           }
         }
-      }
+      },
+      "recognition": [
+        {
+          "explicit": [
+            "Q"
+          ],
+          "recognized": [],
+          "complete": []
+        },
+        {
+          "explicit": [
+            "A",
+            "B",
+            "Q"
+          ],
+          "recognized": [],
+          "complete": [
+            "u"
+          ]
+        }
+      ]
     },
     {
       "id": "calendar-units-are-untouched",
@@ -195,7 +215,19 @@
             "valid": false
           }
         }
-      }
+      },
+      "recognition": [
+        {
+          "explicit": [
+            "Q"
+          ],
+          "recognized": [],
+          "complete": [],
+          "unavailable": [
+            "u"
+          ]
+        }
+      ]
     },
     {
       "id": "r1-memory-only-path",
@@ -738,7 +770,21 @@
             "valid": false
           }
         }
-      }
+      },
+      "recognition": [
+        {
+          "explicit": [
+            "Q1",
+            "Q2"
+          ],
+          "recognized": [],
+          "complete": [],
+          "unavailable": [
+            "u1",
+            "u2"
+          ]
+        }
+      ]
     },
     {
       "id": "r4-complete-landscape-leaves-goal-unowned",
@@ -1067,17 +1113,61 @@
         "units": {
           "top": {
             "valid": true,
-            "totalScope": 5
+            "totalScope": 5,
+            "goalsWithoutReviewedCoverage": []
           },
           "mid": {
             "valid": true,
-            "totalScope": 4
+            "totalScope": 4,
+            "goalsWithoutReviewedCoverage": []
           },
           "k1": {
-            "totalScope": 2
+            "valid": true,
+            "totalScope": 2,
+            "goalsWithoutReviewedCoverage": [
+              "A"
+            ]
+          },
+          "k2": {
+            "valid": true,
+            "goalsWithoutReviewedCoverage": [
+              "B"
+            ]
           }
         }
-      }
+      },
+      "recognition": [
+        {
+          "explicit": [
+            "A",
+            "B",
+            "Q1",
+            "Q2"
+          ],
+          "recognized": [],
+          "complete": [
+            "k1",
+            "k2",
+            "mid"
+          ]
+        },
+        {
+          "explicit": [
+            "A",
+            "B",
+            "Q1",
+            "Q2",
+            "QS"
+          ],
+          "recognized": [],
+          "complete": [
+            "k1",
+            "k2",
+            "mid",
+            "top"
+          ]
+        }
+      ]
     },
     {
       "id": "hierarchy-cycle",
@@ -2031,7 +2121,16 @@
             ]
           }
         }
-      }
+      },
+      "recognition": [
+        {
+          "explicit": [
+            "Q"
+          ],
+          "recognized": [],
+          "complete": []
+        }
+      ]
     },
     {
       "id": "stale-or-unfounded-review",
@@ -2663,6 +2762,969 @@
           }
         ]
       }
+    },
+    {
+      "id": "recognition-shared-assessments",
+      "description": "Q1 and Q2 belong to the same unit and both require A. A stays open after Q1 and is recognized once Q2 is passed as well. An explicit result never needs recognition.",
+      "landscapes": [
+        {
+          "landscapeId": "L",
+          "goals": [
+            {
+              "id": "Q1",
+              "requires": [
+                "A"
+              ],
+              "nodeKind": "exam",
+              "examData": {
+                "coveredGoalIds": [
+                  "A"
+                ],
+                "taskContent": "Task Q1",
+                "solutionContent": "Solution Q1",
+                "scoring": {
+                  "maxPoints": 10,
+                  "passingPoints": 6
+                }
+              }
+            },
+            {
+              "id": "Q2",
+              "requires": [
+                "A"
+              ],
+              "nodeKind": "exam",
+              "examData": {
+                "coveredGoalIds": [
+                  "A"
+                ],
+                "taskContent": "Task Q2",
+                "solutionContent": "Solution Q2",
+                "scoring": {
+                  "maxPoints": 10,
+                  "passingPoints": 6
+                }
+              }
+            },
+            {
+              "id": "A"
+            }
+          ],
+          "programUnits": [
+            {
+              "id": "u",
+              "kind": "learningUnit",
+              "label": "Einheit u",
+              "labelEn": "Unit u",
+              "promise": "Ich kann das Fixture anwenden.",
+              "promiseEn": "I can apply the fixture.",
+              "revision": "2026-11-14-v1",
+              "coverageReviews": [
+                {
+                  "assessmentGoalId": "Q1",
+                  "goalIds": [
+                    "A"
+                  ],
+                  "reference": "review.md",
+                  "taskRevision": "sha256:2027e61567f0583bb89f59f93c5cdb4ecdc5ce6cd596e5171ca4f58eb58c51e8",
+                  "rubricRevision": "sha256:d550ba44898f816ee4f2e99f821e7a7239253de4056550cb6b2a199232839f34"
+                },
+                {
+                  "assessmentGoalId": "Q2",
+                  "goalIds": [
+                    "A"
+                  ],
+                  "reference": "review.md",
+                  "taskRevision": "sha256:e9e3f31be53946bfa073a376f7b25da2e736ece54f13065c0f34b1ebe771f7a1",
+                  "rubricRevision": "sha256:d550ba44898f816ee4f2e99f821e7a7239253de4056550cb6b2a199232839f34"
+                }
+              ]
+            }
+          ],
+          "goalPlacements": [
+            {
+              "goalId": "Q1",
+              "unitId": "u",
+              "relation": "own"
+            },
+            {
+              "goalId": "Q2",
+              "unitId": "u",
+              "relation": "own"
+            },
+            {
+              "goalId": "A",
+              "unitId": "u",
+              "relation": "own"
+            }
+          ],
+          "learningUnitCoverage": "complete"
+        }
+      ],
+      "expect": {
+        "valid": true,
+        "findings": [],
+        "units": {
+          "u": {
+            "valid": true,
+            "goalsWithoutReviewedCoverage": []
+          }
+        }
+      },
+      "recognition": [
+        {
+          "explicit": [],
+          "recognized": [],
+          "complete": []
+        },
+        {
+          "explicit": [
+            "Q1"
+          ],
+          "recognized": [],
+          "complete": []
+        },
+        {
+          "explicit": [
+            "Q1",
+            "Q2"
+          ],
+          "recognized": [
+            "A"
+          ],
+          "complete": [
+            "u"
+          ]
+        },
+        {
+          "explicit": [
+            "A"
+          ],
+          "recognized": [],
+          "complete": []
+        },
+        {
+          "explicit": [
+            "A",
+            "Q1",
+            "Q2"
+          ],
+          "recognized": [],
+          "complete": [
+            "u"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "recognition-demand-through-mastered-goal",
+      "description": "Q requires B, B requires A. With only B explicitly mastered, the open Q still demands A through B. Passing Q recognizes A and B.",
+      "landscapes": [
+        {
+          "landscapeId": "L",
+          "goals": [
+            {
+              "id": "Q",
+              "requires": [
+                "B"
+              ],
+              "nodeKind": "exam",
+              "examData": {
+                "coveredGoalIds": [
+                  "A",
+                  "B"
+                ],
+                "taskContent": "Task Q",
+                "solutionContent": "Solution Q",
+                "scoring": {
+                  "maxPoints": 10,
+                  "passingPoints": 6
+                }
+              }
+            },
+            {
+              "id": "B",
+              "requires": [
+                "A"
+              ]
+            },
+            {
+              "id": "A"
+            }
+          ],
+          "programUnits": [
+            {
+              "id": "u",
+              "kind": "learningUnit",
+              "label": "Einheit u",
+              "labelEn": "Unit u",
+              "promise": "Ich kann das Fixture anwenden.",
+              "promiseEn": "I can apply the fixture.",
+              "revision": "2026-11-14-v1",
+              "coverageReviews": [
+                {
+                  "assessmentGoalId": "Q",
+                  "goalIds": [
+                    "A",
+                    "B"
+                  ],
+                  "reference": "review.md",
+                  "taskRevision": "sha256:f3bcaf0ba4bf1cc80ed9ddd475e09bb767646b75549f29bfa82a2160dc8a03db",
+                  "rubricRevision": "sha256:d550ba44898f816ee4f2e99f821e7a7239253de4056550cb6b2a199232839f34"
+                }
+              ]
+            }
+          ],
+          "goalPlacements": [
+            {
+              "goalId": "Q",
+              "unitId": "u",
+              "relation": "own"
+            },
+            {
+              "goalId": "B",
+              "unitId": "u",
+              "relation": "own"
+            },
+            {
+              "goalId": "A",
+              "unitId": "u",
+              "relation": "own"
+            }
+          ],
+          "learningUnitCoverage": "complete"
+        }
+      ],
+      "expect": {
+        "valid": true,
+        "findings": [],
+        "units": {
+          "u": {
+            "valid": true,
+            "goalsWithoutReviewedCoverage": []
+          }
+        }
+      },
+      "recognition": [
+        {
+          "explicit": [
+            "B"
+          ],
+          "recognized": [],
+          "complete": []
+        },
+        {
+          "explicit": [
+            "Q"
+          ],
+          "recognized": [
+            "A",
+            "B"
+          ],
+          "complete": [
+            "u"
+          ]
+        },
+        {
+          "explicit": [
+            "B",
+            "Q"
+          ],
+          "recognized": [
+            "A"
+          ],
+          "complete": [
+            "u"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "recognition-open-memory-goal",
+      "description": "The open own memory goal K requires A but not B. After Q, B is recognized and A stays open until K is passed; the unit is complete only then. Assessment and memory goals are never recognized.",
+      "landscapes": [
+        {
+          "landscapeId": "L",
+          "goals": [
+            {
+              "id": "Q",
+              "requires": [
+                "A",
+                "B"
+              ],
+              "nodeKind": "exam",
+              "examData": {
+                "coveredGoalIds": [
+                  "A",
+                  "B"
+                ],
+                "taskContent": "Task Q",
+                "solutionContent": "Solution Q",
+                "scoring": {
+                  "maxPoints": 10,
+                  "passingPoints": 6
+                }
+              }
+            },
+            {
+              "id": "K",
+              "requires": [
+                "A"
+              ],
+              "nodeKind": "memory"
+            },
+            {
+              "id": "A"
+            },
+            {
+              "id": "B"
+            }
+          ],
+          "programUnits": [
+            {
+              "id": "u",
+              "kind": "learningUnit",
+              "label": "Einheit u",
+              "labelEn": "Unit u",
+              "promise": "Ich kann das Fixture anwenden.",
+              "promiseEn": "I can apply the fixture.",
+              "revision": "2026-11-14-v1",
+              "coverageReviews": [
+                {
+                  "assessmentGoalId": "Q",
+                  "goalIds": [
+                    "A",
+                    "B"
+                  ],
+                  "reference": "review.md",
+                  "taskRevision": "sha256:f3bcaf0ba4bf1cc80ed9ddd475e09bb767646b75549f29bfa82a2160dc8a03db",
+                  "rubricRevision": "sha256:d550ba44898f816ee4f2e99f821e7a7239253de4056550cb6b2a199232839f34"
+                }
+              ]
+            }
+          ],
+          "goalPlacements": [
+            {
+              "goalId": "Q",
+              "unitId": "u",
+              "relation": "own"
+            },
+            {
+              "goalId": "K",
+              "unitId": "u",
+              "relation": "own"
+            },
+            {
+              "goalId": "A",
+              "unitId": "u",
+              "relation": "own"
+            },
+            {
+              "goalId": "B",
+              "unitId": "u",
+              "relation": "own"
+            }
+          ],
+          "learningUnitCoverage": "complete"
+        }
+      ],
+      "expect": {
+        "valid": true,
+        "findings": [],
+        "units": {
+          "u": {
+            "valid": true,
+            "goalsWithoutReviewedCoverage": []
+          }
+        }
+      },
+      "recognition": [
+        {
+          "explicit": [
+            "Q"
+          ],
+          "recognized": [
+            "B"
+          ],
+          "complete": []
+        },
+        {
+          "explicit": [
+            "K"
+          ],
+          "recognized": [],
+          "complete": []
+        },
+        {
+          "explicit": [
+            "K",
+            "Q"
+          ],
+          "recognized": [
+            "A",
+            "B"
+          ],
+          "complete": [
+            "u"
+          ]
+        },
+        {
+          "explicit": [
+            "A",
+            "B"
+          ],
+          "recognized": [],
+          "complete": []
+        }
+      ]
+    },
+    {
+      "id": "recognition-later-unit-keeps-recognition",
+      "description": "A, recognized under u1, stays recognized while Q2 of the later unit u2 is open, although Q2 requires A through C. Each unit recognizes only its own goals: passing Q2 alone leaves A of u1 open.",
+      "landscapes": [
+        {
+          "landscapeId": "L",
+          "goals": [
+            {
+              "id": "Q1",
+              "requires": [
+                "A"
+              ],
+              "nodeKind": "exam",
+              "examData": {
+                "coveredGoalIds": [
+                  "A"
+                ],
+                "taskContent": "Task Q1",
+                "solutionContent": "Solution Q1",
+                "scoring": {
+                  "maxPoints": 10,
+                  "passingPoints": 6
+                }
+              }
+            },
+            {
+              "id": "A"
+            },
+            {
+              "id": "Q2",
+              "requires": [
+                "C"
+              ],
+              "nodeKind": "exam",
+              "examData": {
+                "coveredGoalIds": [
+                  "C"
+                ],
+                "taskContent": "Task Q2",
+                "solutionContent": "Solution Q2",
+                "scoring": {
+                  "maxPoints": 10,
+                  "passingPoints": 6
+                }
+              }
+            },
+            {
+              "id": "C",
+              "requires": [
+                "A"
+              ]
+            }
+          ],
+          "programUnits": [
+            {
+              "id": "u1",
+              "kind": "learningUnit",
+              "label": "Einheit u1",
+              "labelEn": "Unit u1",
+              "promise": "Ich kann das Fixture anwenden.",
+              "promiseEn": "I can apply the fixture.",
+              "revision": "2026-11-14-v1",
+              "coverageReviews": [
+                {
+                  "assessmentGoalId": "Q1",
+                  "goalIds": [
+                    "A"
+                  ],
+                  "reference": "review.md",
+                  "taskRevision": "sha256:2027e61567f0583bb89f59f93c5cdb4ecdc5ce6cd596e5171ca4f58eb58c51e8",
+                  "rubricRevision": "sha256:d550ba44898f816ee4f2e99f821e7a7239253de4056550cb6b2a199232839f34"
+                }
+              ]
+            },
+            {
+              "id": "u2",
+              "kind": "learningUnit",
+              "label": "Einheit u2",
+              "labelEn": "Unit u2",
+              "promise": "Ich kann das Fixture anwenden.",
+              "promiseEn": "I can apply the fixture.",
+              "revision": "2026-11-14-v1",
+              "coverageReviews": [
+                {
+                  "assessmentGoalId": "Q2",
+                  "goalIds": [
+                    "C"
+                  ],
+                  "reference": "review.md",
+                  "taskRevision": "sha256:e9e3f31be53946bfa073a376f7b25da2e736ece54f13065c0f34b1ebe771f7a1",
+                  "rubricRevision": "sha256:d550ba44898f816ee4f2e99f821e7a7239253de4056550cb6b2a199232839f34"
+                }
+              ]
+            }
+          ],
+          "goalPlacements": [
+            {
+              "goalId": "Q1",
+              "unitId": "u1",
+              "relation": "own"
+            },
+            {
+              "goalId": "A",
+              "unitId": "u1",
+              "relation": "own"
+            },
+            {
+              "goalId": "Q2",
+              "unitId": "u2",
+              "relation": "own"
+            },
+            {
+              "goalId": "C",
+              "unitId": "u2",
+              "relation": "own"
+            }
+          ],
+          "learningUnitCoverage": "complete"
+        }
+      ],
+      "expect": {
+        "valid": true,
+        "findings": [],
+        "units": {
+          "u1": {
+            "valid": true,
+            "goalsWithoutReviewedCoverage": []
+          },
+          "u2": {
+            "valid": true,
+            "goalsWithoutReviewedCoverage": []
+          }
+        }
+      },
+      "recognition": [
+        {
+          "explicit": [
+            "Q1"
+          ],
+          "recognized": [
+            "A"
+          ],
+          "complete": [
+            "u1"
+          ]
+        },
+        {
+          "explicit": [
+            "Q2"
+          ],
+          "recognized": [
+            "C"
+          ],
+          "complete": [
+            "u2"
+          ]
+        },
+        {
+          "explicit": [
+            "Q1",
+            "Q2"
+          ],
+          "recognized": [
+            "A",
+            "C"
+          ],
+          "complete": [
+            "u1",
+            "u2"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "recognition-parent-synthesis",
+      "description": "The parent p owns only the synthesis assessment QS; its required child k owns QK and A. Passing QS passes neither QK nor recognizes A. A child completed under QK stays complete while QS is open.",
+      "landscapes": [
+        {
+          "landscapeId": "L",
+          "goals": [
+            {
+              "id": "QS",
+              "requires": [
+                "A"
+              ],
+              "nodeKind": "exam",
+              "examData": {
+                "coveredGoalIds": [],
+                "taskContent": "Task QS",
+                "solutionContent": "Solution QS",
+                "scoring": {
+                  "maxPoints": 10,
+                  "passingPoints": 6
+                }
+              }
+            },
+            {
+              "id": "QK",
+              "requires": [
+                "A"
+              ],
+              "nodeKind": "exam",
+              "examData": {
+                "coveredGoalIds": [
+                  "A"
+                ],
+                "taskContent": "Task QK",
+                "solutionContent": "Solution QK",
+                "scoring": {
+                  "maxPoints": 10,
+                  "passingPoints": 6
+                }
+              }
+            },
+            {
+              "id": "A"
+            }
+          ],
+          "programUnits": [
+            {
+              "id": "p",
+              "kind": "learningUnit",
+              "label": "Einheit p",
+              "labelEn": "Unit p",
+              "promise": "Ich kann das Fixture anwenden.",
+              "promiseEn": "I can apply the fixture.",
+              "revision": "2026-11-14-v1"
+            },
+            {
+              "id": "k",
+              "kind": "learningUnit",
+              "label": "Einheit k",
+              "labelEn": "Unit k",
+              "promise": "Ich kann das Fixture anwenden.",
+              "promiseEn": "I can apply the fixture.",
+              "revision": "2026-11-14-v1",
+              "parentUnitId": "p",
+              "coverageReviews": [
+                {
+                  "assessmentGoalId": "QK",
+                  "goalIds": [
+                    "A"
+                  ],
+                  "reference": "review.md",
+                  "taskRevision": "sha256:529d8d9d2f13527927abda26c2a2b17f7f8b80a0705324ec3b5f471cc394d177",
+                  "rubricRevision": "sha256:d550ba44898f816ee4f2e99f821e7a7239253de4056550cb6b2a199232839f34"
+                }
+              ]
+            }
+          ],
+          "goalPlacements": [
+            {
+              "goalId": "QS",
+              "unitId": "p",
+              "relation": "own"
+            },
+            {
+              "goalId": "QK",
+              "unitId": "k",
+              "relation": "own"
+            },
+            {
+              "goalId": "A",
+              "unitId": "k",
+              "relation": "own"
+            }
+          ],
+          "learningUnitCoverage": "complete"
+        }
+      ],
+      "expect": {
+        "valid": true,
+        "findings": [],
+        "units": {
+          "p": {
+            "valid": true,
+            "goalsWithoutReviewedCoverage": []
+          },
+          "k": {
+            "valid": true,
+            "goalsWithoutReviewedCoverage": []
+          }
+        }
+      },
+      "recognition": [
+        {
+          "explicit": [
+            "QS"
+          ],
+          "recognized": [],
+          "complete": []
+        },
+        {
+          "explicit": [
+            "QK"
+          ],
+          "recognized": [
+            "A"
+          ],
+          "complete": [
+            "k"
+          ]
+        },
+        {
+          "explicit": [
+            "QK",
+            "QS"
+          ],
+          "recognized": [
+            "A"
+          ],
+          "complete": [
+            "k",
+            "p"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "recognition-orientation-entry-anchor",
+      "description": "The orientation goal O is the entry anchor of A. While Q is open it is demanded like A; after Q both are recognized. Recognizing O asserts no motivational dialogue.",
+      "landscapes": [
+        {
+          "landscapeId": "L",
+          "goals": [
+            {
+              "id": "O",
+              "semanticKind": "orientation"
+            },
+            {
+              "id": "A",
+              "requires": [
+                "O"
+              ]
+            },
+            {
+              "id": "Q",
+              "requires": [
+                "A"
+              ],
+              "nodeKind": "exam",
+              "examData": {
+                "coveredGoalIds": [
+                  "A"
+                ],
+                "taskContent": "Task Q",
+                "solutionContent": "Solution Q",
+                "scoring": {
+                  "maxPoints": 10,
+                  "passingPoints": 6
+                }
+              }
+            }
+          ],
+          "programUnits": [
+            {
+              "id": "u",
+              "kind": "learningUnit",
+              "label": "Einheit u",
+              "labelEn": "Unit u",
+              "promise": "Ich kann das Fixture anwenden.",
+              "promiseEn": "I can apply the fixture.",
+              "revision": "2026-11-14-v1",
+              "coverageReviews": [
+                {
+                  "assessmentGoalId": "Q",
+                  "goalIds": [
+                    "A"
+                  ],
+                  "reference": "review.md",
+                  "taskRevision": "sha256:f3bcaf0ba4bf1cc80ed9ddd475e09bb767646b75549f29bfa82a2160dc8a03db",
+                  "rubricRevision": "sha256:d550ba44898f816ee4f2e99f821e7a7239253de4056550cb6b2a199232839f34"
+                }
+              ]
+            }
+          ],
+          "goalPlacements": [
+            {
+              "goalId": "O",
+              "unitId": "u",
+              "relation": "own"
+            },
+            {
+              "goalId": "A",
+              "unitId": "u",
+              "relation": "own"
+            },
+            {
+              "goalId": "Q",
+              "unitId": "u",
+              "relation": "own"
+            }
+          ],
+          "learningUnitCoverage": "complete"
+        }
+      ],
+      "expect": {
+        "valid": true,
+        "findings": [],
+        "units": {
+          "u": {
+            "valid": true,
+            "goalsWithoutReviewedCoverage": []
+          }
+        }
+      },
+      "recognition": [
+        {
+          "explicit": [],
+          "recognized": [],
+          "complete": []
+        },
+        {
+          "explicit": [
+            "O"
+          ],
+          "recognized": [],
+          "complete": []
+        },
+        {
+          "explicit": [
+            "Q"
+          ],
+          "recognized": [
+            "A",
+            "O"
+          ],
+          "complete": [
+            "u"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "recognition-demand-beyond-the-unit",
+      "description": "Q requires A through F, which no unit owns. An explicit result on F stops no demand: A stays demanded until Q is passed. F itself is never recognized.",
+      "landscapes": [
+        {
+          "landscapeId": "L",
+          "goals": [
+            {
+              "id": "Q",
+              "requires": [
+                "F"
+              ],
+              "nodeKind": "exam",
+              "examData": {
+                "coveredGoalIds": [
+                  "A"
+                ],
+                "taskContent": "Task Q",
+                "solutionContent": "Solution Q",
+                "scoring": {
+                  "maxPoints": 10,
+                  "passingPoints": 6
+                }
+              }
+            },
+            {
+              "id": "F",
+              "requires": [
+                "A"
+              ]
+            },
+            {
+              "id": "A"
+            }
+          ],
+          "programUnits": [
+            {
+              "id": "u",
+              "kind": "learningUnit",
+              "label": "Einheit u",
+              "labelEn": "Unit u",
+              "promise": "Ich kann das Fixture anwenden.",
+              "promiseEn": "I can apply the fixture.",
+              "revision": "2026-11-14-v1",
+              "coverageReviews": [
+                {
+                  "assessmentGoalId": "Q",
+                  "goalIds": [
+                    "A"
+                  ],
+                  "reference": "review.md",
+                  "taskRevision": "sha256:f3bcaf0ba4bf1cc80ed9ddd475e09bb767646b75549f29bfa82a2160dc8a03db",
+                  "rubricRevision": "sha256:d550ba44898f816ee4f2e99f821e7a7239253de4056550cb6b2a199232839f34"
+                }
+              ]
+            }
+          ],
+          "goalPlacements": [
+            {
+              "goalId": "Q",
+              "unitId": "u",
+              "relation": "own"
+            },
+            {
+              "goalId": "A",
+              "unitId": "u",
+              "relation": "own"
+            }
+          ],
+          "learningUnitCoverage": "partial"
+        }
+      ],
+      "expect": {
+        "valid": true,
+        "findings": [],
+        "units": {
+          "u": {
+            "valid": true,
+            "goalsWithoutReviewedCoverage": []
+          }
+        }
+      },
+      "recognition": [
+        {
+          "explicit": [
+            "F"
+          ],
+          "recognized": [],
+          "complete": []
+        },
+        {
+          "explicit": [
+            "Q"
+          ],
+          "recognized": [
+            "A"
+          ],
+          "complete": [
+            "u"
+          ]
+        },
+        {
+          "explicit": [
+            "F",
+            "Q"
+          ],
+          "recognized": [
+            "A"
+          ],
+          "complete": [
+            "u"
+          ]
+        }
+      ]
     }
   ]
 }
