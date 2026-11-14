@@ -21,6 +21,8 @@ export interface LearnerMapMemberUnit {
   key: string
   label: string
   goalIds: readonly string[]
+  /** Its entry names coverage reviews of its own assessments (concept B2). */
+  withAssessments?: boolean
 }
 
 export interface LearnerUnitMapProjectionInput extends LearnerMapProjectionInput {
@@ -141,7 +143,7 @@ export function buildLearnerUnitMapProjection(input: LearnerUnitMapProjectionInp
     const goal = goalIndexAll.get(nodeId)!
     const id = nodes.length === 1 ? nodeId : syntheticUnitId(identity.key)
     entries[id] = { id, title: identity.label ?? audienceTitle(goal, treeParentId),
-      description: nodes.length === 1 ? goal.description : '', kind: 'unit', children: [], requires: [], position: { x: 0, y: 0 } }
+      description: nodes.length === 1 ? goal.description : '', kind: 'unit', unitType: 'unit', children: [], requires: [], position: { x: 0, y: 0 } }
     childSet.set(id, new Set())
     unitEntryIdByKey.set(identity.key, id)
     unitKeyByEntryId.set(id, identity.key)
@@ -256,7 +258,8 @@ export function buildLearnerUnitMapProjection(input: LearnerUnitMapProjectionInp
     }
     const parentId = parents[0]
     const id = syntheticUnitId(unit.key)
-    entries[id] = { id, title: unit.label, description: '', kind: 'unit', children: [], requires: [], position: { x: 0, y: 0 } }
+    entries[id] = { id, title: unit.label, description: '', kind: 'unit', unitType: unit.withAssessments ? 'unitWithAssessments' : 'unit',
+      children: [], requires: [], position: { x: 0, y: 0 } }
     childSet.set(id, new Set())
     const siblings = entries[parentId].children!
     const firstIndex = Math.min(...present.map(goalId => siblings.indexOf(goalId)))

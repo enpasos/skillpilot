@@ -38,6 +38,8 @@ export interface LearningMapEntry {
   subjects?: string[]
   /** Unit map only: a goal the prerequisite closure added from outside the plan. */
   preparation?: true
+  /** Unit map only: which kind of unit (concept §3.1) a `unit` entry is; it names the unit in the map. */
+  unitType?: 'unit' | 'unitWithAssessments'
 }
 
 export interface LearningMapFixture {

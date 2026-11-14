@@ -88,7 +88,7 @@ for (const preview of [step1, step2]) {
   assert(![...preview.units.keys()].some(id => input.rootGoals.some(root => root.id === id)), 'subject roots are never units')
   assert(![...preview.units.keys()].includes('m-q1-cluster'), 'canonical clusters placed by the view are never units in the preview')
 }
-assert.deepEqual(step2.memberUnits, [{ key: `learning-unit:${math}:lu-five`, label: 'Zahlen der Klasse 5', goalIds: ['m5a', 'm5b'] }],
+assert.deepEqual(step2.memberUnits, [{ key: `learning-unit:${math}:lu-five`, label: 'Zahlen der Klasse 5', goalIds: ['m5a', 'm5b'], withAssessments: false }],
   'declared learning units come from the placement layer of the landscape')
 assert.equal(deriveLearnerUnitMapPreview({ ...input, language: 'en' }).memberUnits[0].label, 'Numbers of year 5')
 assert.equal(JSON.stringify([...input.goalIndexAll]), snapshot, 'the preview does not mutate the learner tree')
@@ -141,6 +141,9 @@ for (const [land, mathView, physicsView] of [['BY', 'de-by-gk', 'de-by-gk'], ['H
     assert.deepEqual(bad, [], `${land} step ${step}: the view order yields no contradictory or misplaced declarations`)
     assert(map.scopeRelations?.[map.rootId]?.some(relation => relation.source === '__unit__:sek1' && relation.target === '__unit__:sek2'
       && relation.unitOrder === 'declared'), `${land} step ${step}: Sekundarstufe II lies after Sekundarstufe I`)
+    assert.equal(map.entries['__unit__:sek1'].unitType, 'unit')
+    if (step === 1) assert.equal(map.entries[map.unitEntryIds[`learning-unit:${math}:math-natural-numbers`]]?.unitType, 'unitWithAssessments',
+      `${land}: the declared learning unit with coverage reviews is a unit with assessments`)
   }
 }
 

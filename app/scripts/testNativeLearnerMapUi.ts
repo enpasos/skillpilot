@@ -353,8 +353,8 @@ try {
   stage = 'one stage unit for both subjects, declared order and Rückgriff'
   assert.deepEqual((await page.locator('.lum-node[data-entry-id]').evaluateAll(nodes => nodes.map(n => n.getAttribute('data-entry-id')))).sort(),
     [section.vectors, section.analysis, id.physicsGoal].sort(), 'Sekundarstufe II holds the units of Mathematics and the goal of Physics')
-  assert.ok((await page.locator(`.lum-node[data-entry-id="${section.vectors}"] .lum-node-meta`).innerText()).includes('1/3 erledigt'),
-    'unit progress is derived from its goals')
+  assert.equal(await page.locator(`.lum-node[data-entry-id="${section.vectors}"] .lum-node-meta`).innerText(), 'Einheit · 1/3 erledigt',
+    'a section standing in for a plan unit is an "Einheit"; its progress is derived from its goals')
   const [vectorsBox, analysisBox] = await Promise.all([node(page, section.vectors).boundingBox(), node(page, section.analysis).boundingBox()])
   assert.ok(vectorsBox && analysisBox && vectorsBox.x + vectorsBox.width < analysisBox.x,
     'the declared order, not the Rückgriff, sets the direction: the earlier unit stands on the left')

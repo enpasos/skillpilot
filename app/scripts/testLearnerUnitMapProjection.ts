@@ -61,6 +61,7 @@ assert.equal(depthMap.entries.subject, undefined)
 assert.deepEqual(depthMap.entryPaths?.C, [depthMap.rootId, 'U', 'C'], 'a removed cluster still leads to the board holding its content')
 assert.deepEqual(depthMap.entryPaths?.v1, [depthMap.rootId, 'U', 'V', 'v1'])
 assert.equal(depthMap.entries.U.kind, 'unit')
+assert.equal(depthMap.entries.U.unitType, 'unit', 'a unit from the tree is named a plain unit')
 assert.deepEqual(depthMap.findings, [])
 
 // With an empty units map, every atomic goal is a child of the root.
@@ -177,12 +178,15 @@ for (const id of ['pa', 'pb', 'pc', 'pd', 'pe']) assert.equal(parentOf(preparati
 
 // Units declared by their own goals (learning units) where all of them share one parent.
 const memberMap = project({ ...depth, units: unitsOf({ U: 'u', V: 'v', W: 'w' }), memberUnits: [
-  { key: 'lu', label: 'Lerneinheit', goalIds: ['v1', 'v2'] },
+  { key: 'lu', label: 'Lerneinheit', goalIds: ['v1', 'v2'], withAssessments: true },
   { key: 'split', label: 'Geteilt', goalIds: ['v1', 'w1'] },
   { key: 'absent', label: 'Fehlt', goalIds: ['missing'] },
 ] })
 assert.deepEqual(children(memberMap, 'V'), ['__unit__:lu'])
 assert.deepEqual(children(memberMap, '__unit__:lu'), ['v1', 'v2'])
+assert.equal(memberMap.entries['__unit__:lu'].unitType, 'unitWithAssessments', 'a unit whose entry names assessment reviews is a unit with assessments')
+const plainMember = project({ ...depth, units: unitsOf({ U: 'u', V: 'v', W: 'w' }), memberUnits: [{ key: 'plain', label: 'Ohne', goalIds: ['v1', 'v2'] }] })
+assert.equal(plainMember.entries['__unit__:plain'].unitType, 'unit', 'a declared unit without assessment reviews is a plain unit')
 assert.deepEqual(memberMap.findings.map(finding => finding.kind), ['memberUnitSplit', 'memberUnitAbsent'])
 
 console.log('Learner unit map projection passed: units and goals only, unequal depth, removed clusters, merged keys, '

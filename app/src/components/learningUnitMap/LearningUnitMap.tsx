@@ -6,7 +6,7 @@ import { Background, BackgroundVariant, MarkerType, MiniMap, ReactFlow, ReactFlo
 import '@xyflow/react/dist/style.css'
 import type { LearningEntryProgress, LearningMapCommand, LearningMapFixture } from './types'
 import { MapListItem, MapNode, type LearningFlowNode } from './MapNode'
-import { getKindLabels } from './presentation'
+import { getEntryKindLabel } from './presentation'
 import { isCompactListScope, useMapNavigation } from './useMapNavigation'
 import { layoutLearningScope, restartLearningScopeLayoutWorker, type LearningScopeLayout } from './layoutLearningScope'
 import { ElkRoutedEdge } from './ElkRoutedEdge'
@@ -76,7 +76,6 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
   onSelectionChange, renderSelectionActions, onReturnToTree, onEscape, language = 'de',
   compactListThreshold, toolbar, notice }: MapProps) {
   const label = (de: string, en: string) => language === 'en' ? en : de
-  const kindLabels = getKindLabels(language)
   const MapContainer = embedded ? 'section' : 'main'
   const reducedMotion = useReducedMotion()
   const narrowScreen = useNarrowScreen()
@@ -421,7 +420,7 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
         {query && <button type="button" aria-label={label('Suche leeren', 'Clear search')} onClick={() => { setQuery(''); searchInput.current?.focus() }}><X size={13} /></button>}
         {searchOpen && <div className="lum-search-results" role="listbox" aria-label={label('Suchtreffer', 'Search results')}>
           {matches.slice(0, 8).map(id => <button key={id} type="button" role="option" aria-selected={selectedId === id}
-            onClick={() => selectSearchResult(id)}>{fixture.entries[id].title}<span>{kindLabels[fixture.entries[id].kind]}</span></button>)}
+            onClick={() => selectSearchResult(id)}>{fixture.entries[id].title}<span>{getEntryKindLabel(fixture.entries[id], language)}</span></button>)}
           {!matches.length && <p>{label('Keine Treffer in dieser Ebene.', 'No matches in this level.')}</p>}
           {matches.length > 8 && <small>{matches.length} {label('Treffer · Suche eingrenzen', 'matches · narrow your search')}</small>}
         </div>}
@@ -534,7 +533,7 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
         {!listMode && <span className="lum-map-hint">{direction === 'RIGHT' ? '→' : '↓'} {label('Vorbereitung zur Anwendung', 'Preparation to application')}<span> · {label('Doppelklick hinein · Shift + Doppelklick heraus', 'Double-click in · Shift + double-click out')}</span></span>}
       </section>
       {showInspector && inspected && <aside className="lum-inspector" aria-label="Ausgewählter Bereich">
-        <div className="lum-inspector-top"><span>{inspected.eyebrow ?? kindLabels[inspected.kind]}</span>
+        <div className="lum-inspector-top"><span>{inspected.eyebrow ?? getEntryKindLabel(inspected, language)}</span>
           <button type="button" aria-label="Information schließen" onClick={() => setSelection(null)}><X size={17} /></button></div>
         <h2 title={inspected.description}>{inspected.title}</h2><p>{inspected.description}</p>
         {learnerProgress?.[inspected.id] && <div className="lum-selected-progress">

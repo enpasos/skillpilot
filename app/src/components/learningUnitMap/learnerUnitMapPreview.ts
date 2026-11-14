@@ -126,7 +126,8 @@ export function deriveLearnerUnitMapPreview(input: LearnerUnitMapPreviewInput, r
       const goalIds = (meta.goalPlacements ?? []).filter(placement => placement.unitId === unit.id && placement.relation === 'own')
         .map(placement => placement.goalId)
       if (goalIds.length) memberUnits.push({ key: `learning-unit:${meta.landscapeId}:${unit.id}`,
-        label: language === 'en' ? unit.labelEn ?? unit.label : unit.label, goalIds })
+        label: language === 'en' ? unit.labelEn ?? unit.label : unit.label, goalIds,
+        withAssessments: (unit.coverageReviews?.length ?? 0) > 0 })
     }
   }
   return { maxStep, step, units, after, memberUnits }

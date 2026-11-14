@@ -3,7 +3,7 @@ import { ArrowDownRight, Check, Layers3, Link2, Send, ShieldCheck, Target } from
 import { Handle, Position, type Node, type NodeProps } from '@xyflow/react'
 import type { LearningEntryProgress, LearningMapEntry } from './types'
 import type { LayoutPort } from './layoutLearningScope'
-import { getKindLabels } from './presentation'
+import { getEntryKindLabel } from './presentation'
 
 const sides = { WEST: Position.Left, EAST: Position.Right, NORTH: Position.Top, SOUTH: Position.Bottom }
 
@@ -27,7 +27,7 @@ export type LearningFlowNode = Node<MapNodeData, 'learningUnit'>
 function entryPresentation(entry: LearningMapEntry, childCount: number, progress: LearningEntryProgress | undefined,
   activeLearningGoal: boolean | undefined, language: 'de' | 'en' | undefined) {
   const english = language === 'en'
-  const kindLabels = getKindLabels(language ?? 'de')
+  const kindLabel = getEntryKindLabel(entry, language ?? 'de')
   const expandable = childCount > 0
   const total = progress?.total ?? 0
   const explicit = Math.min(total, Math.max(0, progress?.explicit ?? 0))
@@ -41,17 +41,17 @@ function entryPresentation(entry: LearningMapEntry, childCount: number, progress
   const status = explicit ? 'is-explicit' : implicit ? 'is-implicit' : activeLearningGoal ? 'is-active' : progress ? 'is-open' : 'is-context'
   const statusLabel = explicit ? english ? 'Explicitly completed' : 'Direkt geschafft' : implicit ? progress?.waiverLabel
     ?? (english ? 'Completed in this section' : 'In diesem Lernabschnitt erledigt')
-    : activeLearningGoal ? english ? 'Active learning goal' : 'Aktives Lernziel' : progress ? english ? 'Still open' : 'Noch offen' : kindLabels[entry.kind]
-  const meta = `${progress ? kindLabels[entry.kind] : entry.eyebrow ?? kindLabels[entry.kind]}${expandable ? (total ? ` · ${achieved}/${total} ${english ? 'completed' : 'erledigt'}` : ` · ${childCount} ${english ? 'sections' : 'Bereiche'}`) : ''}`
+    : activeLearningGoal ? english ? 'Active learning goal' : 'Aktives Lernziel' : progress ? english ? 'Still open' : 'Noch offen' : kindLabel
+  const meta = `${progress ? kindLabel : entry.eyebrow ?? kindLabel}${expandable ? (total ? ` · ${achieved}/${total} ${english ? 'completed' : 'erledigt'}` : ` · ${childCount} ${english ? 'sections' : 'Bereiche'}`) : ''}`
   const preparationLabel = english ? 'Preparation' : 'Vorbereitung'
   const preparationTitle = english ? 'Added from outside the plan because a goal here needs it.'
     : 'Kommt von außerhalb des Plans hinzu, weil ein Ziel hier es braucht.'
-  return { english, kindLabels, expandable, total, explicit, implicit, progressLabel, Icon, status, statusLabel, meta, preparationLabel, preparationTitle }
+  return { english, kindLabel, expandable, total, explicit, implicit, progressLabel, Icon, status, statusLabel, meta, preparationLabel, preparationTitle }
 }
 
 export const MapNode = memo(function MapNode({ data }: NodeProps<LearningFlowNode>) {
   const { entry, childCount, outsideCount, ports, active, related, muted, progress, activeLearningGoal, onSelect, onOpen } = data
-  const { english, kindLabels, expandable, total, explicit, implicit, progressLabel, Icon, status, statusLabel, meta,
+  const { english, kindLabel, expandable, total, explicit, implicit, progressLabel, Icon, status, statusLabel, meta,
     preparationLabel, preparationTitle } = entryPresentation(entry, childCount, progress, activeLearningGoal, data.language)
   return <article className={`lum-node lum-node--${entry.kind}${active ? ' is-focused' : ''}${related ? ' is-related' : ''}${muted ? ' is-muted' : ''}`}
     data-entry-id={entry.id} data-entry-kind={entry.kind} data-active-goal={activeLearningGoal || undefined}
@@ -67,7 +67,7 @@ export const MapNode = memo(function MapNode({ data }: NodeProps<LearningFlowNod
           onSelect(entry.id)
         }
       }} aria-pressed={active} aria-label={`${entry.title}, ${english ? 'Show details' : 'Details anzeigen'}${activeLearningGoal ? english ? ', active learning goal' : ', aktives Lernziel' : ''}${entry.preparation ? `, ${preparationLabel}` : ''}`}>
-      <span className={`lum-node-icon${expandable ? '' : ` lum-node-state ${status}`}`} role="img" aria-label={expandable ? kindLabels[entry.kind] : statusLabel}
+      <span className={`lum-node-icon${expandable ? '' : ` lum-node-state ${status}`}`} role="img" aria-label={expandable ? kindLabel : statusLabel}
         title={expandable ? undefined : statusLabel}><Icon size={16} strokeWidth={!expandable && explicit ? 3 : !expandable && implicit ? 2.5 : 2} /></span>
       <span className="lum-node-copy"><strong>{entry.title}</strong>
         <span className="lum-node-meta" title={entry.eyebrow}>{meta}</span>
@@ -101,14 +101,14 @@ export function MapListItem({ entry, childCount, active, progress, activeLearnin
   onSelect: (id: string) => void
   onOpen: (id: string) => void
 }) {
-  const { english, kindLabels, expandable, explicit, implicit, Icon, status, statusLabel, meta,
+  const { english, kindLabel, expandable, explicit, implicit, Icon, status, statusLabel, meta,
     preparationLabel, preparationTitle } = entryPresentation(entry, childCount, progress, activeLearningGoal, language)
   return <li className={`lum-list-item lum-node--${entry.kind}${active ? ' is-focused' : ''}`} data-entry-id={entry.id}
     data-entry-kind={entry.kind} data-active-goal={activeLearningGoal || undefined} data-preparation={entry.preparation || undefined}>
     <button type="button" className="lum-node-main" title={entry.title} aria-pressed={active}
       onClick={() => onSelect(entry.id)} onDoubleClick={event => { if (!event.shiftKey && expandable) onOpen(entry.id) }}
       aria-label={`${entry.title}, ${english ? 'Show details' : 'Details anzeigen'}${activeLearningGoal ? english ? ', active learning goal' : ', aktives Lernziel' : ''}${entry.preparation ? `, ${preparationLabel}` : ''}`}>
-      <span className={`lum-node-icon${expandable ? '' : ` lum-node-state ${status}`}`} role="img" aria-label={expandable ? kindLabels[entry.kind] : statusLabel}
+      <span className={`lum-node-icon${expandable ? '' : ` lum-node-state ${status}`}`} role="img" aria-label={expandable ? kindLabel : statusLabel}
         title={expandable ? undefined : statusLabel}><Icon size={15} strokeWidth={!expandable && explicit ? 3 : !expandable && implicit ? 2.5 : 2} /></span>
       <span className="lum-node-copy"><strong>{entry.title}</strong><span className="lum-node-meta">{meta}</span></span>
     </button>
