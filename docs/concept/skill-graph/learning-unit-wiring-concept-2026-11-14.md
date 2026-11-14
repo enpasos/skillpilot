@@ -37,7 +37,7 @@ es nicht, auch keine Zeitachse.
 | B6 | Die Lernkarte zeigt den Graphen der lernenden Person ohne die Cluster, die keine Einheit sind: Einheiten und atomare Ziele. Fächer sind dort Filter. Alle Cluster zeigt nur der Lernzielbaum. | 3.4 |
 | B7 | Zwischen Einheiten steht `after`, und zwar zwischen Kindern derselben Einheit. Zwischen atomaren Zielen steht `requires`. `requires` ist ein besonderes `after`. | 4.1 |
 | B8 | Ein `after` gilt für alle Ziele seiner beiden Einheiten, als Reihenfolge und nicht als Bedarf. Die `requires` zwischen Zielen verschiedener Einheiten sind eine Teilmenge dieser vererbten `after`. Kein Cluster trägt ein `requires`. | 4.2 |
-| B9 | Wer die selbstständige Anwendung braucht, die eine Einheit belegt, setzt ihre Prüfung voraus. Das ist eine begründete Ausnahme. Eine Sperre ganzer Einheiten gibt es nicht. | 4.3 |
+| B9 | Dass eine Einheit auf der selbstständigen Anwendung einer anderen aufbaut, sagt allein ihr `after`. Keine Voraussetzung zeigt auf eine Prüfung, und eine Sperre ganzer Einheiten gibt es nicht. | 4.3 |
 | B10 | Für Einheiten gelten die Regeln E1 bis E4. Sie betrachten jeweils die Kinder einer Einheit. | 5 |
 | B11 | Die `after` der fachlichen Einheiten schlägt ein Werkzeug aus den `requires` der Ziele vor; die Fachprüfung bestätigt sie. | 5 |
 | B12 | Ein `after` ändert die Frontier nicht. In der Lernweise „Einheit für Einheit“ bestimmt es, welches erreichbare Ziel als nächstes kommt: zuerst eines aus einer Einheit, die an der Reihe ist. | 6 |
@@ -68,7 +68,7 @@ Einheiten mit Prüfungen.
 | --- | --- | --- |
 | Gliederung | jeden Cluster | Lernzielbaum, abgeleiteter Fortschritt |
 | Reihenfolge | jede Einheit | Lernversprechen, `after`, Regeln E1 bis E4, Lernweise „Einheit für Einheit“, Knoten der Lernkarte |
-| Nachweis | jede Einheit mit Prüfungen | Regeln R1 bis R5, Anerkennung, Voraussetzung auf ihre Prüfung (Abschnitt 4.3) |
+| Nachweis | jede Einheit mit Prüfungen | Regeln R1 bis R5, Anerkennung |
 
 **Einheit.** Eine Einheit wird an einem Stück gelernt: Man beginnt sie,
 schließt sie ab und beginnt erst dann, was nach ihr liegt. Dass ein Cluster
@@ -257,7 +257,7 @@ Zielen steht nur `requires`, und das ist dort selbst das `after`.
 Die Vererbung von `requires` entlang `contains` bleibt die Lesart des
 Übergangsbestands außerhalb des kanonischen Gymnasialkatalogs (Abschnitt 9.7).
 
-### 4.3 Wer die selbstständige Anwendung braucht
+### 4.3 Aufbauen auf der selbstständigen Anwendung
 
 `U after V` sagt für jede Einheit dasselbe: V ist abgeschlossen, bevor U
 beginnt. Ist V eine Einheit mit Prüfungen, gehört ihr Bestehen dazu. Das Soll
@@ -265,35 +265,16 @@ lautet dann: U baut auf der selbstständigen Anwendung von V auf. In der
 Lernweise „Einheit für Einheit“ kommen die Prüfungen von V deshalb vor den
 Zielen von U.
 
-Ein Bedarf ist das noch nicht. Braucht ein Ziel mehr als das Verstehen einer
-einzelnen Kompetenz, setzt es die Prüfung voraus:
+Mehr als dieses Soll gibt es nicht:
 
-| Das Ziel braucht | Es setzt voraus | Die Frontier verlangt |
-| --- | --- | --- |
-| eine einzelne Kompetenz | das Inhaltsziel | dass das Inhaltsziel beherrscht ist, durch ein eigenes Ergebnis oder durch Anerkennung |
-| die selbstständige Anwendung, die eine Einheit belegt | die Prüfung dieser Einheit | dass die Prüfung bestanden ist |
-
-Eine Prüfung ist ein atomares Ziel. Die Voraussetzung auf sie ist ein
-gewöhnliches `requires`: Sie bleibt in der atomaren Normalform, und die
-Frontier prüft sie wie jede Voraussetzung, im Normalmodus also innerhalb des
-Fokus. Weil die Prüfung ihre abgedeckten Ziele voraussetzt, steht keine zweite
-Kante auf das Inhaltsziel daneben (transitive Minimalität). E3 verlangt dann
-das `after` zwischen den Einheiten. Wer die Kompetenzen schon hat, legt die
-Prüfung direkt ab (direkter Prüfungszugang).
-
-Eine solche Voraussetzung ist die Ausnahme und wird begründet. Sie steht nur,
-wo ein Ziel die selbstständige Anwendung braucht, und ersetzt kein `after`.
-Ihr Preis: Der Lernumfang nimmt die Prüfung auf und alles, was sie
-voraussetzt.
+- **Keine Voraussetzung zeigt auf eine Prüfung.** Im Voraussetzungsgraphen ist
+  eine Prüfung ein Endpunkt. Setzt ein Ziel ein Inhaltsziel voraus, zählt
+  dieses als beherrscht, ob durch ein eigenes Ergebnis oder durch Anerkennung.
+- **Es gibt keine Sperre ganzer Einheiten.** Das Zugangsprofil, das die
+  Graph-Definition §11.5 offen lässt, entfällt damit.
 
 Der Katalog enthält 170 Kanten von gewöhnlichen Zielen auf Prüfungen
-(Abschnitt 9.5). Sie sind kein Vorbild, und die Fachprüfung beurteilt sie
-(F5).
-
-Eine Sperre ganzer Einheiten gibt es nicht. Sie machte aus jedem `after` einen
-Bedarf aller Ziele der späteren Einheit, auch derer, die aus der früheren
-nichts brauchen. Das Zugangsprofil, das die Graph-Definition §11.5 offen
-lässt, entfällt damit.
+(Abschnitt 9.5). Sie widersprechen dem und gehen in die Fachprüfung (F5).
 
 ## 5. Die Regeln
 
@@ -641,7 +622,9 @@ neuronale Signalleitung“ jeweils dieselben acht Prüfungen des Clusters
 RC-Kreis. Diese 80 Kanten kamen mit der atomaren Normalisierung hinzu;
 vermutlich wurde dabei die geerbte Voraussetzung eines Clusters auf alle seine
 Ziele ausgeschrieben. Die 90 Kanten der übrigen vier Fächer sind nicht
-untersucht. Die Fachprüfung beurteilt alle (F5).
+untersucht. Alle 170 widersprechen Abschnitt 4.3. Die Fachprüfung entscheidet
+je Kante, ob sie entfällt oder durch eine Voraussetzung auf ein Inhaltsziel
+ersetzt wird (F5).
 
 ### 9.6 Wie groß die Verdrahtung ist
 
@@ -734,7 +717,7 @@ hartes Gate gibt es erst bei null Verstößen.
 
 | Bereich | Änderung |
 | --- | --- |
-| Graph-Definition | §2: `after` neben `requires`. §11: Einheiten als erklärte Cluster, die Stufung Cluster, Einheit und Einheit mit Prüfungen, Planeinheiten. §11.5: Regeln E2 bis E4 an den Kindern einer Einheit; das offene Zugangsprofil entfällt. §12: Der Reihenfolgefehler wird für Planeinheiten ein Verstoß gegen E2. §13: R4 wird E1; R1 bis R5 gelten für Einheiten mit Prüfungen; vollständig ist ein Fach, wenn jedes Inhaltsziel in einer Einheit mit Prüfungen liegt. Dazu Regelregister, `AGENTS.md`, Glossar und Entwurfsbogen. |
+| Graph-Definition | §2: `after` neben `requires`; keine Voraussetzung auf eine Prüfung. §11: Einheiten als erklärte Cluster, die Stufung Cluster, Einheit und Einheit mit Prüfungen, Planeinheiten. §11.5: Regeln E2 bis E4 an den Kindern einer Einheit; das offene Zugangsprofil entfällt. §12: Der Reihenfolgefehler wird für Planeinheiten ein Verstoß gegen E2. §13: R4 wird E1; R1 bis R5 gelten für Einheiten mit Prüfungen; vollständig ist ein Fach, wenn jedes Inhaltsziel in einer Einheit mit Prüfungen liegt. Dazu Regelregister, `AGENTS.md`, Glossar und Entwurfsbogen. |
 | Ländersichten | Ihre Abschnitte werden als Planeinheiten erklärt. Später ordnen sie fachliche Einheiten zu, wo sie heute einzelne Ziele aufzählen. |
 | Einheitenvertrag | Die Platzierungen `own` und das Elternfeld entfallen. Der Einheiteneintrag zeigt auf seinen Cluster und trägt `after`. Das wird Vertrag 1.3. |
 | `contains`-Hierarchie | Wo kein Cluster den Zuschnitt einer Einheit hat, kommt einer hinzu, und die Prüfungen der Einheit ziehen in ihn um. Die übrigen Cluster gliedern weiter. Weil kein Cluster eine Voraussetzung trägt, ändert das keine Voraussetzung. |

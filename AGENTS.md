@@ -686,10 +686,12 @@ curricular-level terminology. Personalization Levels 1–4, QA maturity and goal
   declaration among the children of a unit). An `after` never changes the
   frontier and locks nothing. In the learning mode "unit by unit" it decides
   which reachable goal comes next: first from a child that is due (everything
-  it must come after is done), among those from a unit already begun. A goal
-  that needs the independent application a unit proves requires that unit's
-  assessment goal, as a justified exception; there is no unit lock, so the
-  open access profile of Graph Definition §11.5 is dropped. Every Land
+  it must come after is done), among those from a unit already begun. That a
+  unit builds on the independent application of another is said only by its
+  `after` and followed by the learning mode: no `requires` points to an
+  assessment goal, and there is no unit lock, so the open access profile of
+  Graph Definition §11.5 is dropped. The 170 existing edges from ordinary
+  goals to assessments contradict this and go to the subject review. Every Land
   carries a subject unit without sub-units whole in one plan unit. The
   learner map shows units and atomic goals only: for display, the learner's
   graph is cleaned of the clusters that are not units, `contains` is kept
