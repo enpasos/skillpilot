@@ -34,10 +34,10 @@ es nicht, auch keine Zeitachse.
 | B3 | Die Prüfungen einer Einheit liegen in ihrem Cluster und decken jedes ihrer eigenen Inhaltsziele ab. Eine Einheit ohne Prüfungen ordnet ihre Ziele nur. Am Ende liegt jedes Inhaltsziel in einer Einheit mit Prüfungen. | 3.1 |
 | B4 | Dass ein Cluster eine Einheit ist, steht im Einheiteneintrag der Platzierungsschicht und nicht im Zielobjekt. | 3.2 |
 | B5 | Fachliche Einheiten gelten in allen Ländern. Stufen, Jahrgänge und Phasen sind Planeinheiten eines Landes über die gewählten Fächer, mit fester Reihenfolge. | 3.3 |
-| B6 | Die Lernkarte zeigt Einheiten und atomare Ziele. Cluster, die keine Einheit sind, zeigt nur der Lernzielbaum. | 3.4 |
+| B6 | Die Lernkarte zeigt den Graphen der lernenden Person ohne die Cluster, die keine Einheit sind: Einheiten und atomare Ziele. Fächer sind dort Filter. Alle Cluster zeigt nur der Lernzielbaum. | 3.4 |
 | B7 | Zwischen Einheiten steht `after`, und zwar zwischen Kindern derselben Einheit. Zwischen atomaren Zielen steht `requires`. `requires` ist ein besonderes `after`. | 4.1 |
-| B8 | Kein Cluster trägt ein `requires`, und kein `after` wird entlang `contains` an Ziele vererbt. Die Regeln stellen sicher, dass beide zusammenpassen. | 4.2 |
-| B9 | Wer die selbstständige Anwendung braucht, die eine Einheit belegt, setzt ihre Prüfung voraus. Das ist eine begründete Ausnahme. Eine Sperre ganzer Einheiten gibt es nicht. | 4.3 |
+| B8 | Ein `after` gilt für alle Ziele seiner beiden Einheiten, als Reihenfolge und nicht als Bedarf. Die `requires` zwischen Zielen verschiedener Einheiten sind eine Teilmenge dieser vererbten `after`. Kein Cluster trägt ein `requires`. | 4.2 |
+| B9 | Dass eine Einheit auf der selbstständigen Anwendung einer anderen aufbaut, sagt allein ihr `after`. Keine Voraussetzung zeigt auf eine Prüfung, und eine Sperre ganzer Einheiten gibt es nicht. | 4.3 |
 | B10 | Für Einheiten gelten die Regeln E1 bis E4. Sie betrachten jeweils die Kinder einer Einheit. | 5 |
 | B11 | Die `after` der fachlichen Einheiten schlägt ein Werkzeug aus den `requires` der Ziele vor; die Fachprüfung bestätigt sie. | 5 |
 | B12 | Ein `after` ändert die Frontier nicht. In der Lernweise „Einheit für Einheit“ bestimmt es, welches erreichbare Ziel als nächstes kommt: zuerst eines aus einer Einheit, die an der Reihe ist. | 6 |
@@ -68,7 +68,7 @@ Einheiten mit Prüfungen.
 | --- | --- | --- |
 | Gliederung | jeden Cluster | Lernzielbaum, abgeleiteter Fortschritt |
 | Reihenfolge | jede Einheit | Lernversprechen, `after`, Regeln E1 bis E4, Lernweise „Einheit für Einheit“, Knoten der Lernkarte |
-| Nachweis | jede Einheit mit Prüfungen | Regeln R1 bis R5, Anerkennung, Voraussetzung auf ihre Prüfung (Abschnitt 4.3) |
+| Nachweis | jede Einheit mit Prüfungen | Regeln R1 bis R5, Anerkennung |
 
 **Einheit.** Eine Einheit wird an einem Stück gelernt: Man beginnt sie,
 schließt sie ab und beginnt erst dann, was nach ihr liegt. Dass ein Cluster
@@ -176,16 +176,25 @@ Planeinheit sein, wenn er an einem Stück gelernt wird.
 | Lernzielbaum | alle Cluster und Ziele | Gliederung: etwas finden |
 | Lernkarte | Einheiten und atomare Ziele | Reihenfolge: sehen, was worauf folgt |
 
-Die Lernkarte zeigt zu einer Einheit ihre Kinder. Cluster dazwischen, die
-keine Einheit sind, zeigt sie nicht; ihre Ziele stehen dann unmittelbar in der
-Einheit. Pfeile zeichnet die Karte nur zwischen den Kindern einer Einheit:
-zwischen zwei Einheiten nach ihrem `after`, sonst nach dem Bedarf der Ziele.
-Mit Regel E2 bilden diese Pfeile keinen Kreis. Solange die Regel verletzt ist,
+Die Lernkarte ist eine Darstellung des Graphen, wie er für die lernende Person
+zugeschnitten ist. Für die Anzeige wird er um die Cluster bereinigt, die keine
+Einheit sind. Was ein solcher Cluster enthielt, enthält danach der nächste
+verbleibende Knoten darüber: `contains` bleibt über die entfernten Cluster
+hinweg erhalten. Übrig sind Einheiten und atomare Ziele, und jede Einheit
+enthält genau ihre Kinder. Gespeichert wird davon nichts; der Graph selbst
+bleibt, wie er ist.
+
+Pfeile zeichnet die Karte nur zwischen den Kindern einer Einheit: zwischen
+zwei Einheiten nach ihrem `after`, sonst nach dem Bedarf der Ziele. Mit Regel
+E2 bilden diese Pfeile keinen Kreis. Solange die Regel verletzt ist,
 kennzeichnet die Karte den Rückgriff.
 
-Ein Fach ist kein Knoten der Karte; es erscheint als Farbe oder Spur seiner
-Einheiten. Ziele, die der Voraussetzungsabschluss von außerhalb des Plans
-hinzufügt, stehen als „Notwendige Grundlagen“ bei ihrem eigenen Fach.
+| Was im Graphen steht | In der Lernkarte |
+| --- | --- |
+| Fach | kein Knoten, sondern ein Filter |
+| Planeinheit | ein Knoten für alle Fächer: eine Sekundarstufe I, nicht eine je Fach |
+| Ziel ohne Einheit über sich, etwa das Orientierungsziel eines Fachs | steht neben den obersten Einheiten |
+| Ziel, das der Voraussetzungsabschluss von außerhalb des Plans hinzufügt | steht als Vorbereitung in der Planeinheit, in der es zuerst gebraucht wird (Abschnitt 7.3) |
 
 ## 4. `after` und `requires`
 
@@ -224,23 +233,31 @@ Zwei Begriffe werden im Folgenden gebraucht:
   kleinste Einheit, die beide enthält: Die eine liegt nach der anderen, wenn
   dort das Kind, in dem sie liegt, nach dem Kind der anderen liegt.
 
-### 4.2 Abgleich statt Vererbung
+### 4.2 Vererbt wird die Reihenfolge, nicht der Bedarf
 
-In der atomaren Normalform trägt kein Cluster ein `requires`. Das gilt auch
-für Einheiten. Ein `after` wird nicht als Bedarf an die Ziele der Einheit
-weitergereicht. Stünde „Sekundarstufe II nach Sekundarstufe I“ als `requires`
-am Cluster und würde vererbt, zöge der Voraussetzungsabschluss die ganze
-Sekundarstufe I in jeden Lernumfang, der ein Ziel der Sekundarstufe II
-enthält.
+Denkt man ein `after` bis zu den Blättern weiter, ordnet es jedes Ziel der
+einen Einheit hinter jedes Ziel der anderen. Diese vererbten `after` sind eine
+Aussage über die Reihenfolge. Ein Bedarf sind sie nicht: Frontier und
+Lernumfang lesen weiter nur `requires`. Würde „Sekundarstufe II nach
+Sekundarstufe I“ als Bedarf vererbt, zöge der Voraussetzungsabschluss die
+ganze Sekundarstufe I in jeden Lernumfang, der ein Ziel der Sekundarstufe II
+enthält. Deshalb trägt in der atomaren Normalform kein Cluster ein `requires`,
+auch keine Einheit.
 
-Betrachtet wird die umgekehrte Richtung: Was sich aus den `requires` der Ziele
-ergibt, darf dem `after` der Einheiten nicht widersprechen (Regel E2) und muss
-durch es gedeckt sein (Regel E3).
+Beim Modellieren muss beides zusammenpassen: Die `requires`, die zwischen
+Zielen verschiedener Einheiten tatsächlich bestehen, sind eine Teilmenge der
+vererbten `after`. Das ist Regel E3. Umgekehrt gilt es nicht: Die vererbten
+`after` enthalten mehr, weil der Plan mehr festlegen darf, als die Ziele
+brauchen. Dass die `after` einander nicht widersprechen und keine Einheit
+zerrissen wird, sichert Regel E2.
 
-Die Vererbung entlang `contains` bleibt die Lesart des Übergangsbestands
-außerhalb des kanonischen Gymnasialkatalogs (Abschnitt 9.7).
+Innerhalb einer Einheit gibt es nichts zu vererben. Zwischen ihren eigenen
+Zielen steht nur `requires`, und das ist dort selbst das `after`.
 
-### 4.3 Wer die selbstständige Anwendung braucht
+Die Vererbung von `requires` entlang `contains` bleibt die Lesart des
+Übergangsbestands außerhalb des kanonischen Gymnasialkatalogs (Abschnitt 9.7).
+
+### 4.3 Aufbauen auf der selbstständigen Anwendung
 
 `U after V` sagt für jede Einheit dasselbe: V ist abgeschlossen, bevor U
 beginnt. Ist V eine Einheit mit Prüfungen, gehört ihr Bestehen dazu. Das Soll
@@ -248,35 +265,16 @@ lautet dann: U baut auf der selbstständigen Anwendung von V auf. In der
 Lernweise „Einheit für Einheit“ kommen die Prüfungen von V deshalb vor den
 Zielen von U.
 
-Ein Bedarf ist das noch nicht. Braucht ein Ziel mehr als das Verstehen einer
-einzelnen Kompetenz, setzt es die Prüfung voraus:
+Mehr als dieses Soll gibt es nicht:
 
-| Das Ziel braucht | Es setzt voraus | Die Frontier verlangt |
-| --- | --- | --- |
-| eine einzelne Kompetenz | das Inhaltsziel | dass das Inhaltsziel beherrscht ist, durch ein eigenes Ergebnis oder durch Anerkennung |
-| die selbstständige Anwendung, die eine Einheit belegt | die Prüfung dieser Einheit | dass die Prüfung bestanden ist |
-
-Eine Prüfung ist ein atomares Ziel. Die Voraussetzung auf sie ist ein
-gewöhnliches `requires`: Sie bleibt in der atomaren Normalform, und die
-Frontier prüft sie wie jede Voraussetzung, im Normalmodus also innerhalb des
-Fokus. Weil die Prüfung ihre abgedeckten Ziele voraussetzt, steht keine zweite
-Kante auf das Inhaltsziel daneben (transitive Minimalität). E3 verlangt dann
-das `after` zwischen den Einheiten. Wer die Kompetenzen schon hat, legt die
-Prüfung direkt ab (direkter Prüfungszugang).
-
-Eine solche Voraussetzung ist die Ausnahme und wird begründet. Sie steht nur,
-wo ein Ziel die selbstständige Anwendung braucht, und ersetzt kein `after`.
-Ihr Preis: Der Lernumfang nimmt die Prüfung auf und alles, was sie
-voraussetzt.
+- **Keine Voraussetzung zeigt auf eine Prüfung.** Im Voraussetzungsgraphen ist
+  eine Prüfung ein Endpunkt. Setzt ein Ziel ein Inhaltsziel voraus, zählt
+  dieses als beherrscht, ob durch ein eigenes Ergebnis oder durch Anerkennung.
+- **Es gibt keine Sperre ganzer Einheiten.** Das Zugangsprofil, das die
+  Graph-Definition §11.5 offen lässt, entfällt damit.
 
 Der Katalog enthält 170 Kanten von gewöhnlichen Zielen auf Prüfungen
-(Abschnitt 9.5). Sie sind kein Vorbild, und die Fachprüfung beurteilt sie
-(F5).
-
-Eine Sperre ganzer Einheiten gibt es nicht. Sie machte aus jedem `after` einen
-Bedarf aller Ziele der späteren Einheit, auch derer, die aus der früheren
-nichts brauchen. Das Zugangsprofil, das die Graph-Definition §11.5 offen
-lässt, entfällt damit.
+(Abschnitt 9.5). Sie widersprechen dem und gehen in die Fachprüfung (F5).
 
 ## 5. Die Regeln
 
@@ -284,7 +282,7 @@ lässt, entfällt damit.
 | --- | --- |
 | **E1 Baum** | Zwei Einheiten sind ineinander geschachtelt oder haben kein gemeinsames Ziel. Jedes Ziel hat damit höchstens eine kleinste Einheit. |
 | **E2 An einem Stück lernbar** | Es gibt eine Reihenfolge aller Ziele, die jeden Bedarf und jedes `after` einhält und in der jede Einheit an einem Stück steht. |
-| **E3 Vollständig** | Braucht ein Ziel a ein Ziel b, betrachtet man die kleinste Einheit, die beide enthält, und ihre beiden Kinder, in denen a und b liegen. Sind beide Kinder Einheiten, liegt das Kind von a nach dem Kind von b. |
+| **E3 Vollständig** | Die `requires` zwischen Zielen verschiedener Einheiten sind eine Teilmenge der vererbten `after`. Genauer: Braucht ein Ziel a ein Ziel b, betrachtet man die kleinste Einheit, die beide enthält, und ihre beiden Kinder, in denen a und b liegen. Sind beide Kinder Einheiten, liegt das Kind von a nach dem Kind von b. |
 | **E4 Sparsam** | Unter den Kindern einer Einheit folgt kein erklärtes `after` schon aus den übrigen. |
 
 E1 ist die bisherige Regel R4 in der Sprache der Cluster. E2 sagt, dass Plan
@@ -624,7 +622,9 @@ neuronale Signalleitung“ jeweils dieselben acht Prüfungen des Clusters
 RC-Kreis. Diese 80 Kanten kamen mit der atomaren Normalisierung hinzu;
 vermutlich wurde dabei die geerbte Voraussetzung eines Clusters auf alle seine
 Ziele ausgeschrieben. Die 90 Kanten der übrigen vier Fächer sind nicht
-untersucht. Die Fachprüfung beurteilt alle (F5).
+untersucht. Alle 170 widersprechen Abschnitt 4.3. Die Fachprüfung entscheidet
+je Kante, ob sie entfällt oder durch eine Voraussetzung auf ein Inhaltsziel
+ersetzt wird (F5).
 
 ### 9.6 Wie groß die Verdrahtung ist
 
@@ -717,7 +717,7 @@ hartes Gate gibt es erst bei null Verstößen.
 
 | Bereich | Änderung |
 | --- | --- |
-| Graph-Definition | §2: `after` neben `requires`. §11: Einheiten als erklärte Cluster, die Stufung Cluster, Einheit und Einheit mit Prüfungen, Planeinheiten. §11.5: Regeln E2 bis E4 an den Kindern einer Einheit; das offene Zugangsprofil entfällt. §12: Der Reihenfolgefehler wird für Planeinheiten ein Verstoß gegen E2. §13: R4 wird E1; R1 bis R5 gelten für Einheiten mit Prüfungen; vollständig ist ein Fach, wenn jedes Inhaltsziel in einer Einheit mit Prüfungen liegt. Dazu Regelregister, `AGENTS.md`, Glossar und Entwurfsbogen. |
+| Graph-Definition | §2: `after` neben `requires`; keine Voraussetzung auf eine Prüfung. §11: Einheiten als erklärte Cluster, die Stufung Cluster, Einheit und Einheit mit Prüfungen, Planeinheiten. §11.5: Regeln E2 bis E4 an den Kindern einer Einheit; das offene Zugangsprofil entfällt. §12: Der Reihenfolgefehler wird für Planeinheiten ein Verstoß gegen E2. §13: R4 wird E1; R1 bis R5 gelten für Einheiten mit Prüfungen; vollständig ist ein Fach, wenn jedes Inhaltsziel in einer Einheit mit Prüfungen liegt. Dazu Regelregister, `AGENTS.md`, Glossar und Entwurfsbogen. |
 | Ländersichten | Ihre Abschnitte werden als Planeinheiten erklärt. Später ordnen sie fachliche Einheiten zu, wo sie heute einzelne Ziele aufzählen. |
 | Einheitenvertrag | Die Platzierungen `own` und das Elternfeld entfallen. Der Einheiteneintrag zeigt auf seinen Cluster und trägt `after`. Das wird Vertrag 1.3. |
 | `contains`-Hierarchie | Wo kein Cluster den Zuschnitt einer Einheit hat, kommt einer hinzu, und die Prüfungen der Einheit ziehen in ihn um. Die übrigen Cluster gliedern weiter. Weil kein Cluster eine Voraussetzung trägt, ändert das keine Voraussetzung. |
@@ -732,7 +732,7 @@ hartes Gate gibt es erst bei null Verstößen.
 | F1 | Form festlegen, in der ein Abschnitt einer Ländersicht als Planeinheit erklärt wird und für alle Fächer eines Landes dieselbe ist | nichts | Schema der Sichten, Backend, Paketvertrag |
 | F2 | Planeinheiten erklären: Stufen in allen Sichten, dann Jahrgänge und Phasen | F1 | 157 Sichten, 16 Länder, G8 und G9 |
 | F3 | Lernkarte: Einheiten und atomare Ziele, Pfeile zwischen den Kindern einer Einheit, Rückgriffe gekennzeichnet | F1 | Projektion der Lernkarte |
-| F4 | „Notwendige Grundlagen“ je Fach. Heute hängt der Zweig unter der ersten Fachwurzel und enthält Ziele aller Fächer; daher der Pfeil von Physik nach Mathematik in der Lernkarte. | nichts | klein |
+| F4 | Vorbereitungsziele dort einordnen, wo sie zuerst gebraucht werden. Heute hängen sie als „Notwendige Grundlagen“ unter der ersten Fachwurzel, auch die anderer Fächer; daher der Pfeil von Physik nach Mathematik in der Lernkarte. | F2; bis dahin je Fach unter der eigenen Fachwurzel | klein |
 | F5 | Fachprüfung der Rückgriffe, zusammen mit den Kanten zum [Wissenskontext](../../dev/knowledge-context-subject-review-2026-11-14.md) und den Voraussetzungen auf Prüfungen | F6 | rund 40 Ziele je Fach zwischen Stufen, 56 und 10 zwischen Jahrgängen, acht Kanten zwischen den Fächern, 170 Kanten auf Prüfungen; je geänderte Kante oder geändertes Ziel neue Reviews |
 | F6 | Bericht der Regelverstöße als eingechecktes Werkzeug: E2 je Einheit, zuerst für die Planeinheiten | F2 | ersetzt die Erkundungsrechnungen aus Abschnitt 9 |
 | F7 | Norm anpassen (Abschnitt 10.2) | für Planeinheiten und `after` nichts; für B3 und B13 F8 | zweisprachig; 26 Regeln zu Einheiten und Planung |

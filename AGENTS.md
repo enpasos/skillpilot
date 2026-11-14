@@ -675,21 +675,27 @@ curricular-level terminology. Personalization Levels 1–4, QA maturity and goal
   are children of the same unit the relation is `after` (the intended order:
   the other unit is completed before this one begins); between atomic goals
   it is `requires`, which is a special `after` that additionally states the
-  need. No cluster carries `requires`, and no `after` is inherited along
-  `contains`; rules E1 to E4 keep the two consistent, each looking at the
-  children of one unit (E1: units form a tree; E2: an order of all goals
-  exists that keeps every need and every `after` with each unit in one piece;
-  E3: where a need separates two child units of the smallest unit that
+  need. An `after` holds for all goals of its two units, as an order and
+  never as a need, and no cluster carries `requires`. Rules E1 to E4 keep the
+  two consistent, each looking at the children of one unit (E1: units form a
+  tree; E2: an order of all goals exists that keeps every need and every
+  `after` with each unit in one piece; E3: the `requires` between goals of
+  different units are a subset of the `after` inherited to the leaves, that
+  is, where a need separates two child units of the smallest unit that
   contains both goals, the `after` between them is declared; E4: no redundant
   declaration among the children of a unit). An `after` never changes the
   frontier and locks nothing. In the learning mode "unit by unit" it decides
   which reachable goal comes next: first from a child that is due (everything
-  it must come after is done), among those from a unit already begun. A goal
-  that needs the independent application a unit proves requires that unit's
-  assessment goal, as a justified exception; there is no unit lock, so the
-  open access profile of Graph Definition §11.5 is dropped. Every Land
+  it must come after is done), among those from a unit already begun. That a
+  unit builds on the independent application of another is said only by its
+  `after` and followed by the learning mode: no `requires` points to an
+  assessment goal, and there is no unit lock, so the open access profile of
+  Graph Definition §11.5 is dropped. The 170 existing edges from ordinary
+  goals to assessments contradict this and go to the subject review. Every Land
   carries a subject unit without sub-units whole in one plan unit. The
-  learner map shows units and atomic goals only; clusters that are not units
+  learner map shows units and atomic goals only: for display, the learner's
+  graph is cleaned of the clusters that are not units, `contains` is kept
+  across the removed clusters, and subjects act as filters. All clusters
   appear in the goal tree. Units are introduced top-down: plan units first
   (only the plans of the Länder change), subject units below them, their
   assessments last. There is no timeline and no stage-specific rule. Never
