@@ -602,17 +602,17 @@ Fachprüfung seiner 15 Befunde liegt als Entscheidungsvorlage vor
 Beide Reviewer empfehlen zwölf Kanten und zwei engere Zieltexte; damit
 änderten sich 14 Ziele. Eine fachübergreifende Physik-Kante ist strittig.
 
-Am 14. November 2026 hat der Product Owner außerdem eine Richtung für die
-Struktur der Einheiten vorgegeben, noch keine Entscheidung: Einheiten sind
-ausgezeichnete Cluster der `contains`-Hierarchie, sie werden ausdrücklich
-verdrahtet, und Stufen und Jahrgänge werden Einheiten des Plans eines Landes.
-Zwischen Einheiten steht dabei ein „nach“: Die eine sollte im Lernfluss nach
-der anderen liegen. Zwischen atomaren Zielen steht `requires`; es ist selbst
-ein „nach“, nur ein besonderes. Ein „nach“ wird nicht entlang `contains`
-vererbt, sondern gegen die `requires` der Ziele geprüft. Der
-[Konzeptentwurf](../concept/skill-graph/learning-unit-wiring-concept-2026-11-14.md)
-arbeitet das aus, nennt zehn offene Entscheidungen und in Abschnitt 9 die
-Folgearbeiten. Drei der Entscheidungen ändern, wie eine Einheit abgelegt und
-geschnitten wird. Stufe 4 sollte deshalb erst beginnen, wenn sie gefallen
-sind. Stufe 3 ist in der Sache nicht berührt; ihr Vertrag und ihr Backend-Teil
-lesen aber Einheiten und sollten dieselbe Vertragsversion bekommen.
+Am 14. November 2026 hat der Product Owner außerdem die Struktur der Einheiten
+festgelegt
+([Festlegung](../concept/skill-graph/learning-unit-wiring-concept-2026-11-14.md)):
+Eine Einheit ist ein Cluster, der an einem Stück gelernt wird; hat sie eigene
+Prüfungen, belegt ihr Abschluss die selbstständige Anwendung. Zwischen
+Einheiten steht `after`, zwischen atomaren Zielen `requires`; `requires` ist
+ein besonderes `after`. Ein `after` wird nicht entlang `contains` vererbt,
+sondern mit den `requires` der Ziele abgeglichen, und in der Lernweise
+„Einheit für Einheit“ bestimmt es, welches erreichbare Ziel als nächstes
+kommt. Stufen und Jahrgänge werden Planeinheiten eines Landes. Abschnitt 10
+der Festlegung nennt die Folgearbeiten. Stufe 4 beginnt erst nach dem
+Trockenlauf und der Umstellung der drei vorhandenen Einheiten. Stufe 3 ist in
+der Sache nicht berührt; ihr Vertrag und ihr Backend-Teil lesen aber Einheiten
+und bekommen dieselbe Vertragsversion.

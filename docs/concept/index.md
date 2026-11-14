@@ -39,8 +39,9 @@ This page is the entry point for durable SkillPilot concepts. Keep implementatio
 - [Assessment-Gated Completion and Global Mastery (§13)](skill-graph/assessment-gated-completion.md)
   Direct assessment access and globally effective mastery through independent application in valid local learning-unit assessments.
 - [Product Decision of 4 November 2026: Mastery via Understanding and Independent Application (DE)](skill-graph/completion-semantics-clarification-2026-11-04.md)
-- [Concept Draft of 14 November 2026: Learning Units as Clusters with Explicit Wiring (DE, not decided)](skill-graph/learning-unit-wiring-concept-2026-11-14.md)
   Binding concept clarification; implementation and review of existing assessment contracts remain separate.
+- [Decision of 14 November 2026: Learning Units – Clusters, `after` and Learning Flow (DE)](skill-graph/learning-unit-wiring-concept-2026-11-14.md)
+  What a learning unit is, how units are ordered and how that order acts in the learning flow; not implemented.
 - [Graph Definition Compendium Appendices (B–F)](skill-graph/compendium-appendix.en.md)
   Current implementation status, verification strategy, glossary/symbols, sources, and single-source build reference.
 - [Architecture & Interchange Compendium (PDF)](skill-graph/skillpilot-skill-graph-architecture.en.pdf)
@@ -152,8 +153,9 @@ Diese Seite ist der Einstiegspunkt für dauerhafte SkillPilot-Konzepte. Umsetzun
 - [Prüfungsgebundener Abschluss und implizite Mastery (§13)](skill-graph/assessment-gated-completion.de.md)
   Direkter Prüfungszugang und global wirksame Mastery durch selbstständige Anwendung in gültigen lokalen Lerneinheiten-Prüfungen.
 - [Produktentscheidung vom 4. November 2026: Beherrschung durch Verständnis und selbstständige Anwendung](skill-graph/completion-semantics-clarification-2026-11-04.md)
-- [Konzeptentwurf vom 14. November 2026: Lerneinheiten als Cluster mit ausdrücklicher Verdrahtung (nicht entschieden)](skill-graph/learning-unit-wiring-concept-2026-11-14.md)
   Verbindliche Konzeptkorrektur; Umsetzung und Prüfung bestehender Prüfungsverträge folgen separat.
+- [Festlegung vom 14. November 2026: Lerneinheiten – Cluster, `after` und Lernfluss](skill-graph/learning-unit-wiring-concept-2026-11-14.md)
+  Was eine Lerneinheit ist, wie Einheiten geordnet werden und wie diese Ordnung im Lernfluss wirkt; nicht umgesetzt.
 - [Kompendiums-Anhänge zur Graph-Definition (B–F)](skill-graph/compendium-appendix.de.md)
   Aktueller Umsetzungsstand, Prüfstrategie, Glossar/Symbole, Quellen und Single-Source-Build-Referenz.
 - [Architektur- & Austausch-Kompendium (PDF)](skill-graph/skillpilot-skill-graph-architecture.de.pdf)

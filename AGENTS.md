@@ -651,44 +651,42 @@ curricular-level terminology. Personalization Levels 1–4, QA maturity and goal
   of the contexts of its own goals and assessments (§2.5). Tasks, memory
   cards, goal images and coach examples of a unit stay inside it; whether an
   assessment does becomes part of its R2 review, not a new validity rule.
-- **Unit structure (Product Owner direction, 14 November 2026; concept draft,
-  not decided).** Circular arrows between Sek I and Sek II in the learner map
-  led to a direction, not yet a decision: no special rule for stages; units
-  are distinguished clusters of the `contains` hierarchy (a cluster may be a
-  unit, a subject is not); Sek I and Sek II are units across the selected
-  subjects, and school years are ordered as strictly; the top-down plan is
-  stated as fixed prerequisites between units, not as a timeline; units are
-  wired by explicit unit prerequisites that must not contradict the atomic
-  prerequisites and must be complete, so that no further dependency between
-  units arises indirectly; subject combinations such as Physics LK with
-  Mathematics GK must be fair; every backward dependency is judged case by
-  case, because treating a topic phenomenologically first and rigorously
-  later is legitimate. The draft
-  `docs/concept/skill-graph/learning-unit-wiring-concept-2026-11-14.md` works
-  this out (rules E1 to E4, subject units versus plan units of a Land, check
-  of a Land's plan at unit level, additional demand of a subject selection)
-  and lists ten open decisions and the follow-up work (section 9: a dry run
-  on a catalog copy first, then decisions, norm and contract, the three
-  existing units, plan units per Land, stages 4 and 5). Until the decisions
-  are taken, the unit contract of
-  12 November and Graph Definition §11 to §13 stay authoritative. The Product
-  Owner also asked to keep the graph simple and, after reading the draft,
-  settled on this wording: between units the statement is an "after" (German
-  "nach": the unit should lie after the other in the learning flow; whether
-  a learner actually follows it is another matter), between atomic goals it
-  is `requires`, and `requires` is itself an "after", only a special,
-  sharpened one (a specialization of the statement, not inheritance along
-  `contains`). The draft follows this. `requires` states the need and drives frontier, learning scope and
-  knowledge context; an "after" between units states the plan, is never
-  inherited by the unit's goals, secures no knowledge and is only checked
-  against the `requires` of the goals. No cluster carries `requires` in the
-  target norm, units included; inheritance stays the reading of transition
-  data, which 525 of the 526 examined landscapes outside the canonical
-  Gymnasium catalog still are. Never author `requires` on a cluster of a
-  canonical landscape: today's readers inherit it to every
-  atomic goal and `CQR-001` rejects it. The draft recommends deciding where
-  the unit property is stored and whether every Land places the smallest
-  units whole before further units are authored.
+- **Unit structure (Product Owner decision, 14 November 2026; not
+  implemented).** `docs/concept/skill-graph/learning-unit-wiring-concept-2026-11-14.md`
+  is the binding statement (decisions B1 to B16). Three concepts build on each
+  other: a cluster structures goals; a unit is a cluster that is learned in
+  one piece (begun, completed, and only then what lies after it) and thereby
+  takes part in the order; a unit with assessments additionally proves the
+  independent application of its own content goals. Being a unit is declared;
+  having assessments follows from the unit's own goals. Not every cluster is a
+  unit, and subjects are not. Own content goals exist only in a unit with
+  assessments (R1 to R5 unchanged), and a unit's assessments lie in its
+  cluster. Subject units live in the canonical landscape and hold in every
+  Land; stages, school years and phases are plan units of a Land across the
+  selected subjects, in a fixed order. Between units the relation is `after`
+  (the intended order: the other unit is completed before this one begins);
+  between atomic goals it is `requires`, which is a special `after` that
+  additionally states the need. No cluster carries `requires`, and no `after`
+  is inherited along `contains`; rules E1 to E4 keep the two consistent (E1:
+  units form a tree; E2: an order of all goals exists that keeps every need
+  and every `after` with each unit in one piece; E3: every need across units
+  is covered by declared `after`; E4: no redundant declaration). An `after`
+  never changes the frontier and locks nothing. In the learning mode "unit by
+  unit" it decides which reachable goal comes next: finish a begun unit
+  before starting a new one, and start units in `after` order. A goal that
+  needs the independent application a unit proves requires that unit's
+  assessment goal; there is no unit lock, so the open access profile of Graph
+  Definition §11.5 is dropped. Every Land places the smallest subject units
+  whole, and its plan is checked at unit level. The learner map shows units
+  and atomic goals only; clusters that are not units appear in the goal tree.
+  There is no timeline and no stage-specific rule. Never author `requires` on
+  a cluster of a canonical landscape: today's readers inherit it to every
+  atomic goal and `CQR-001` rejects it; inheritance stays the reading of
+  transition data outside the canonical Gymnasium catalog. Until the
+  follow-up work in section 10 of the document is done (dry run on a catalog
+  copy first, then norm, contract 1.3, tools, the three existing units, plan
+  units per Land, stages 4 and 5), the tools enforce the unit contract of
+  12 November and Graph Definition §11 to §13 describe the implemented state.
 
 This is concept documentation plus a static authoring contract and validator,
 not an implemented runtime or access policy. See `docs/concept/skill-graph/learning-units.md`,
