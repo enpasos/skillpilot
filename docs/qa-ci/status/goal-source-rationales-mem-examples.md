@@ -10,7 +10,7 @@
 > Source of truth: `curricula/DE/Gymnasium/input/`
 > Source of truth: `curricula/DE/Gymnasium/quality/mem-sparql-consistency/canonical-math-poc.config.json`
 
-Erzeugt: 2026-08-26T04:38:56.554Z
+Erzeugt: 2026-11-14T01:09:34.086Z
 
 Dieser PoC rendert menschenlesbare Quellenbegründungen für ausgewählte SkillPilot-Lernziele und ergänzt den klassischen reviewten Weg um einen zielbezogenen MEM/FWU-SPARQL-Abgleich.
 
@@ -77,8 +77,8 @@ Aus der bestehenden BY-Pilotzuordnung uebernommen und gegen die neue LehrplanPLU
 - Vergleich: Bayern Mathematik Gymnasium LehrplanPLUS (`de-by-math-gymnasium-lehrplanplus`)
 - MEM-Graph: https://w3id.org/lehrplan/by/data
 - MEM-Plan: Mathematik 6 / Jahrgangsstufe 6
-- MEM-Plan-IRI: https://lp-bavaria.org/lis_live_isb.c.220606.de
-- MEM-Ziel-IRI: https://lp-bavaria.org/9d44fa19-fa0f-47a0-a3ab-fe763ef89c0c
+- MEM-Plan-IRI: https://w3id.org/lehrplan/resource/by/lis_live_isb.c.220606.de
+- MEM-Ziel-IRI: https://w3id.org/lehrplan/resource/by/381722cd-7e1d-4518-8b4d-14f9f3c51c9e
 - MEM-Erwartungstext: erläutern anhand von Beispielen, dass Erweitern und Kürzen den Wert eines Bruchs nicht verändern. Sie wählen beim Größenvergleich von Brüchen geeignete Strategien; bei Verwendung des Hauptnenners ermitteln sie diesen auch mithilfe eines algorithmischen (z....
 - Match-Basis: parentBulletText
 
@@ -136,8 +136,8 @@ Split-Aspekt aus dem bereits fachlich reviewten BY-LehrplanPLUS-Source-Ziel 2aa1
 - Vergleich: Bayern Mathematik Gymnasium LehrplanPLUS (`de-by-math-gymnasium-lehrplanplus`)
 - MEM-Graph: https://w3id.org/lehrplan/by/data
 - MEM-Plan: Mathematik 6 / Jahrgangsstufe 6
-- MEM-Plan-IRI: https://lp-bavaria.org/lis_live_isb.c.220606.de
-- MEM-Ziel-IRI: https://lp-bavaria.org/9d44fa19-fa0f-47a0-a3ab-fe763ef89c0c
+- MEM-Plan-IRI: https://w3id.org/lehrplan/resource/by/lis_live_isb.c.220606.de
+- MEM-Ziel-IRI: https://w3id.org/lehrplan/resource/by/381722cd-7e1d-4518-8b4d-14f9f3c51c9e
 - MEM-Erwartungstext: erläutern anhand von Beispielen, dass Erweitern und Kürzen den Wert eines Bruchs nicht verändern. Sie wählen beim Größenvergleich von Brüchen geeignete Strategien; bei Verwendung des Hauptnenners ermitteln sie diesen auch mithilfe eines algorithmischen (z....
 - Match-Basis: parentBulletText
 
@@ -150,7 +150,7 @@ Split-Aspekt aus dem bereits fachlich reviewten BY-LehrplanPLUS-Source-Ziel 2aa1
 ### Lernziel
 
 - Ziel-ID: `09f47964-2cd0-410e-93ee-9632b582fc91`
-- Beschreibung: Die lernende Person kann reellwertige Funktionen als Zuordnung zwischen Zahlenmengen beschreiben und zwischen Wertetabelle, Term und Graph wechseln.
+- Beschreibung: Die lernende Person kann eine reellwertige Funktion als Zuordnung erklären, die jedem zulässigen Eingabewert genau einen Funktionswert zuweist, und Term, Wertetabelle und Graph einer gegebenen Funktion als zusammengehörige Darstellungen verwenden.
 - Quellenbegründungsstatus: `classic_source_reviewed`
 
 ### Kurzbegründung
@@ -195,8 +195,8 @@ Aus der bestehenden BY-Pilotzuordnung uebernommen und gegen die neue LehrplanPLU
 - Vergleich: Bayern Mathematik Gymnasium LehrplanPLUS (`de-by-math-gymnasium-lehrplanplus`)
 - MEM-Graph: https://w3id.org/lehrplan/by/data
 - MEM-Plan: Mathematik 8 / Jahrgangsstufe 8
-- MEM-Plan-IRI: https://lp-bavaria.org/lis_live_isb.c.220710.de
-- MEM-Ziel-IRI: https://lp-bavaria.org/32733866-36a7-46f8-b663-4ff9d058c23f
+- MEM-Plan-IRI: https://w3id.org/lehrplan/resource/by/lis_live_isb.c.220710.de
+- MEM-Ziel-IRI: https://w3id.org/lehrplan/resource/by/f25243fe-67ce-4f05-b28f-cc356e41c63b
 - MEM-Erwartungstext: verstehen eine Funktion als eindeutige Zuordnung und grenzen die zugehörigen Fachbegriffe (z. B. Funktionsterm, Graph, Definitionsmenge, Wertemenge) voneinander ab. Sie erkennen Funktionen als solche und unterscheiden diese begründet von nicht eindeutigen Z...
 - Match-Basis: parentBulletText
 
@@ -254,8 +254,8 @@ Aus der bestehenden BY-Pilotzuordnung uebernommen und gegen die neue LehrplanPLU
 - Vergleich: Bayern Mathematik Gymnasium LehrplanPLUS (`de-by-math-gymnasium-lehrplanplus`)
 - MEM-Graph: https://w3id.org/lehrplan/by/data
 - MEM-Plan: Mathematik 11 / Jahrgangsstufe 11
-- MEM-Plan-IRI: https://lp-bavaria.org/lis_live_isb.c.220889.de
-- MEM-Ziel-IRI: https://lp-bavaria.org/786038d7-4eed-4698-912e-6dc1da590b73
+- MEM-Plan-IRI: https://w3id.org/lehrplan/resource/by/lis_live_isb.c.220889.de
+- MEM-Ziel-IRI: https://w3id.org/lehrplan/resource/by/d0aadf88-a7fe-4791-8b16-06ff45a196e7
 - MEM-Erwartungstext: interpretieren Werte von Ableitungsfunktionen als lokale Änderungsraten und nutzen diese Interpretation auch im Sachkontext (u. a. lokale Steigung einer Straße, Momentangeschwindigkeit).
 - Match-Basis: parentBulletText
 
