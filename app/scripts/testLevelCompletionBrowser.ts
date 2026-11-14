@@ -1213,7 +1213,11 @@ try {
     await browser.getByText('Keine Prüfung passt zu deiner Suche.', { exact: true }).waitFor()
     await card.getByRole('searchbox', { name: 'Lernabschnitt suchen', exact: true }).fill('Abschnitt 30')
     assert.equal(h.writes.length, 0, 'searching and paging never writes learning state')
-    await card.getByRole('button', { name: 'Abschnitt als Lernweg wählen: Abschnitt 30', exact: true }).click()
+    // The write is recorded by the route handler; wait for its response instead of racing the click.
+    await Promise.all([
+      h.page.waitForResponse(response => new URL(response.url()).pathname.endsWith('/level-completion/actions')),
+      card.getByRole('button', { name: 'Abschnitt als Lernweg wählen: Abschnitt 30', exact: true }).click(),
+    ])
     assert.equal(h.writes.length, 1)
     assert.deepEqual(h.writes[0].body, { action: 'selectProfile', profileId: 'automatic:scope-30', expectedRevision: 170 },
       'only deliberate section selection writes the exact backend scope')
