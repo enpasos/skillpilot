@@ -1,6 +1,6 @@
 import type { UiGoal } from '../../goalTypes'
 import { getAudienceGoalTitle } from '../../utils/treeProjectionRuntime'
-import type { LearningMapEntry, LearningMapFixture, LearningMapRelation, LearningMapRequirement } from './types'
+import type { LearningMapEntry, LearningMapFixture, LearningMapRelation, LearningMapRequirement, MapEntryKind } from './types'
 
 export interface LearnerMapProjectionInput {
   rootGoals: readonly UiGoal[]
@@ -11,52 +11,29 @@ export interface LearnerMapProjectionInput {
   useRawGoalTitles?: boolean
 }
 
-/**
- * Read-only navigation over the very same projected tree as CompetenceTree.
- * The canonical graph is used solely to explain requirements; it cannot add
- * targets, change progress, or turn a branch into a whole-unit prerequisite.
- */
-export function buildLearnerMapProjection({ rootGoals, goalIndexAll, canonicalGoalIndexAll = goalIndexAll,
-  visibleGoalIds, visibleChildrenByParent, useRawGoalTitles = true }: LearnerMapProjectionInput): LearningMapFixture {
-  let rootId = '__learner_goal_map_root__'
+/** A synthetic root ID that never collides with a goal of the projected tree. */
+export function learnerMapRootId(goalIndexAll: ReadonlyMap<string, UiGoal>, base = '__learner_goal_map_root__'): string {
+  let rootId = base
   while (goalIndexAll.has(rootId)) rootId += '_'
-  const entries: Record<string, LearningMapEntry> = Object.create(null)
-  entries[rootId] = { id: rootId, title: 'Meine Lernziele', description: '', kind: 'cluster',
-    requires: [], children: rootGoals.filter(goal => visibleGoalIds.has(goal.id)).map(goal => goal.id), position: { x: 0, y: 0 } }
-  const entryPaths: Record<string, string[]> = Object.create(null)
-  entryPaths[rootId] = [rootId]
-  const queue = [...entries[rootId].children!]
-  for (const id of queue) {
-    if (entries[id]) continue
-    const goal = goalIndexAll.get(id)
-    if (!goal) continue
-    const children = [...(visibleChildrenByParent.get(id) ?? [])]
-      .filter(child => visibleGoalIds.has(child) && goalIndexAll.has(child))
-    const original = canonicalGoalIndexAll.get(id)
-    const cluster = goal.type === 'cluster' || goal.contains.length > 0 || children.length > 0
-      || original?.type === 'cluster' || (original?.contains.length ?? 0) > 0
-    const kind = cluster ? 'cluster' : goal.nodeKind === 'exam' || goal.examData ? 'assessment'
-      : goal.nodeKind === 'memory' ? 'memory' : goal.tags?.some(tag => tag === 'motivation' || tag === 'orientation') ? 'motivation' : 'goal'
-    entries[id] = { id, title: goal.title, description: goal.description, kind, children,
-      requires: [], position: { x: 0, y: 0 } }
-    queue.push(...children)
-  }
-  // One breadth-first hierarchy index replaces a tree search for every relation
-  // and every reveal. Shared canonical containment does not duplicate map nodes.
-  const pathQueue = [rootId]
-  for (const parentId of pathQueue) {
-    for (const id of entries[parentId]?.children ?? []) {
-      if (!entries[id] || entryPaths[id]) continue
-      entryPaths[id] = [...entryPaths[parentId], id]
-      pathQueue.push(id)
-    }
-  }
-  if (!useRawGoalTitles) for (const id of pathQueue.slice(1)) {
-    const path = entryPaths[id]
-    const parent = goalIndexAll.get(path[path.length - 2])
-    entries[id].title = getAudienceGoalTitle(goalIndexAll.get(id)!, parent)
-  }
+  return rootId
+}
 
+/** Map kind of a displayed tree node; a cluster stays a cluster even when its children are hidden. */
+export function learnerMapEntryKind(goal: UiGoal, original: UiGoal | undefined, visibleChildCount: number): MapEntryKind {
+  const cluster = goal.type === 'cluster' || goal.contains.length > 0 || visibleChildCount > 0
+    || original?.type === 'cluster' || (original?.contains.length ?? 0) > 0
+  return cluster ? 'cluster' : goal.nodeKind === 'exam' || goal.examData ? 'assessment'
+    : goal.nodeKind === 'memory' ? 'memory' : goal.tags?.some(tag => tag === 'motivation' || tag === 'orientation') ? 'motivation' : 'goal'
+}
+
+export type LearnerRequirementResolver = ReturnType<typeof createLearnerRequirementResolver>
+
+/**
+ * Exact atomic demand of the canonical graph, shared by every learner map
+ * projection. `noteTitle` records the titles needed to explain a requirement.
+ */
+export function createLearnerRequirementResolver(goalIndexAll: ReadonlyMap<string, UiGoal>,
+  canonicalGoalIndexAll: ReadonlyMap<string, UiGoal>, noteTitle: (goalId: string) => void) {
   const normalize = (ref: string): string => {
     if (canonicalGoalIndexAll.has(ref) || goalIndexAll.has(ref)) return ref
     const colon = ref.indexOf(':')
@@ -64,6 +41,10 @@ export function buildLearnerMapProjection({ rootGoals, goalIndexAll, canonicalGo
     return canonicalGoalIndexAll.has(suffix) || goalIndexAll.has(suffix) ? suffix : ref
   }
   const canonicalGoal = (id: string) => canonicalGoalIndexAll.get(id) ?? goalIndexAll.get(id)
+  const isCanonicalCluster = (id: string) => {
+    const goal = canonicalGoal(id)
+    return !!goal && (goal.type === 'cluster' || goal.contains.length > 0)
+  }
   const canonicalParents = new Map<string, string[]>()
   for (const goal of canonicalGoalIndexAll.values()) {
     for (const ref of goal.contains) {
@@ -120,36 +101,80 @@ export function buildLearnerMapProjection({ rootGoals, goalIndexAll, canonicalGo
     atomMemo.set(id, result)
     return result
   }
-
-  const scopeRelations: NonNullable<LearningMapFixture['scopeRelations']> = Object.create(null)
-  const scopeContext: NonNullable<LearningMapFixture['scopeContext']> = Object.create(null)
-  const contextGoalTitles: Record<string, string> = Object.create(null)
-  const relationIndex = new Map<string, LearningMapRelation>()
-  const title = (id: string) => { contextGoalTitles[id] ??= entries[id]?.title ?? goalIndexAll.get(id)?.title ?? canonicalGoal(id)?.title ?? id }
   const directRequirementContext = (dependentGoalId: string): LearningMapRequirement[] => inheritedRequirements(dependentGoalId).map(origin => {
     const sourceGoalIds = atoms(origin.requiredGoalId).filter(id => id !== dependentGoalId)
-    title(origin.requiredGoalId); title(dependentGoalId)
-    if (origin.authoredOnGoalId) title(origin.authoredOnGoalId)
-    sourceGoalIds.forEach(title)
+    noteTitle(origin.requiredGoalId); noteTitle(dependentGoalId)
+    if (origin.authoredOnGoalId) noteTitle(origin.authoredOnGoalId)
+    sourceGoalIds.forEach(noteTitle)
     return { ...origin, dependentGoalId, inherited: origin.authoredOnGoalId !== dependentGoalId,
       sourceGoalIds, unresolved: incompleteAtoms.has(origin.requiredGoalId) }
   })
   const getRequirementContext = (goalId: string): LearningMapRequirement[] => {
-    const goal = canonicalGoal(goalId)
-    const targets = goal && (goal.type === 'cluster' || goal.contains.length > 0)
-      ? [...new Set([goalId, ...atoms(goalId)])] : [goalId]
+    const targets = isCanonicalCluster(goalId) ? [...new Set([goalId, ...atoms(goalId)])] : [goalId]
     return targets.flatMap(directRequirementContext)
   }
+  return { normalize, canonicalGoal, isCanonicalCluster, atoms, directRequirementContext, getRequirementContext }
+}
+
+/**
+ * Read-only navigation over the very same projected tree as CompetenceTree.
+ * The canonical graph is used solely to explain requirements; it cannot add
+ * targets, change progress, or turn a branch into a whole-unit prerequisite.
+ */
+export function buildLearnerMapProjection({ rootGoals, goalIndexAll, canonicalGoalIndexAll = goalIndexAll,
+  visibleGoalIds, visibleChildrenByParent, useRawGoalTitles = true }: LearnerMapProjectionInput): LearningMapFixture {
+  const rootId = learnerMapRootId(goalIndexAll)
+  const entries: Record<string, LearningMapEntry> = Object.create(null)
+  entries[rootId] = { id: rootId, title: 'Meine Lernziele', description: '', kind: 'cluster',
+    requires: [], children: rootGoals.filter(goal => visibleGoalIds.has(goal.id)).map(goal => goal.id), position: { x: 0, y: 0 } }
+  const entryPaths: Record<string, string[]> = Object.create(null)
+  entryPaths[rootId] = [rootId]
+  const queue = [...entries[rootId].children!]
+  for (const id of queue) {
+    if (entries[id]) continue
+    const goal = goalIndexAll.get(id)
+    if (!goal) continue
+    const children = [...(visibleChildrenByParent.get(id) ?? [])]
+      .filter(child => visibleGoalIds.has(child) && goalIndexAll.has(child))
+    const kind = learnerMapEntryKind(goal, canonicalGoalIndexAll.get(id), children.length)
+    entries[id] = { id, title: goal.title, description: goal.description, kind, children,
+      requires: [], position: { x: 0, y: 0 } }
+    queue.push(...children)
+  }
+  // One breadth-first hierarchy index replaces a tree search for every relation
+  // and every reveal. Shared canonical containment does not duplicate map nodes.
+  const pathQueue = [rootId]
+  for (const parentId of pathQueue) {
+    for (const id of entries[parentId]?.children ?? []) {
+      if (!entries[id] || entryPaths[id]) continue
+      entryPaths[id] = [...entryPaths[parentId], id]
+      pathQueue.push(id)
+    }
+  }
+  if (!useRawGoalTitles) for (const id of pathQueue.slice(1)) {
+    const path = entryPaths[id]
+    const parent = goalIndexAll.get(path[path.length - 2])
+    entries[id].title = getAudienceGoalTitle(goalIndexAll.get(id)!, parent)
+  }
+
+  const contextGoalTitles: Record<string, string> = Object.create(null)
+  const resolver = createLearnerRequirementResolver(goalIndexAll, canonicalGoalIndexAll, id => {
+    contextGoalTitles[id] ??= entries[id]?.title ?? goalIndexAll.get(id)?.title ?? resolver.canonicalGoal(id)?.title ?? id
+  })
+  const { atoms, directRequirementContext, getRequirementContext } = resolver
+
+  const scopeRelations: NonNullable<LearningMapFixture['scopeRelations']> = Object.create(null)
+  const scopeContext: NonNullable<LearningMapFixture['scopeContext']> = Object.create(null)
+  const relationIndex = new Map<string, LearningMapRelation>()
   const addContext = (scopeId: string, target: string, provenance: LearningMapRequirement) => {
     const board = scopeContext[scopeId] ??= Object.create(null)
     ;(board[target] ??= []).push(provenance)
   }
   for (const targetId of pathQueue.slice(1)) {
-    const targetGoal = canonicalGoal(targetId)
     // A composition goalEntry can deliberately hide children. It remains a
     // cluster and must not become a fictitious atomic assessment or result.
-    if (!targetGoal) continue
-    const isCluster = targetGoal.type === 'cluster' || targetGoal.contains.length > 0
+    if (!resolver.canonicalGoal(targetId)) continue
+    const isCluster = resolver.isCanonicalCluster(targetId)
     // Opaque displayed clusters keep boundary context from their actual atoms.
     // Those hidden atoms are explanations, never additional acquisition targets.
     if (isCluster && entries[targetId].children?.length) continue
@@ -209,16 +234,21 @@ export function buildLearnerMapProjection({ rootGoals, goalIndexAll, canonicalGo
   return { rootId, title: 'Meine Lernziele', entries, entryPaths, scopeRelations, scopeContext, contextGoalTitles, getRequirementContext }
 }
 
+/** Topology of a learner map input; route selection recreates goal objects but keeps this. */
+export function learnerMapProjectionSignature(input: LearnerMapProjectionInput): unknown[] {
+  return [input.useRawGoalTitles, input.rootGoals.map(goal => goal.id), [...input.visibleGoalIds].map(id => {
+    const goal = input.goalIndexAll.get(id)
+    return [id, goal?.title, goal?.description, goal?.type, goal?.nodeKind, goal?.tags, goal?.examData ? true : false,
+      goal?.contains, goal?.requires, goal?.effectiveRequires, goal?.inheritedRequires, input.visibleChildrenByParent.get(id)]
+  })]
+}
+
 /** Route selection recreates projected goal objects, but unchanged topology must
  * retain node DOM, camera state and its already completed ELK layout. */
 export function createLearnerMapProjectionCache() {
   let previous: { signature: string; canonical: LearnerMapProjectionInput['canonicalGoalIndexAll']; fixture: LearningMapFixture } | undefined
   return (input: LearnerMapProjectionInput): LearningMapFixture => {
-    const signature = JSON.stringify([input.useRawGoalTitles, input.rootGoals.map(goal => goal.id), [...input.visibleGoalIds].map(id => {
-      const goal = input.goalIndexAll.get(id)
-      return [id, goal?.title, goal?.description, goal?.type, goal?.nodeKind, goal?.tags, goal?.examData ? true : false,
-        goal?.contains, goal?.requires, goal?.effectiveRequires, goal?.inheritedRequires, input.visibleChildrenByParent.get(id)]
-    })])
+    const signature = JSON.stringify(learnerMapProjectionSignature(input))
     if (previous?.signature === signature && previous.canonical === input.canonicalGoalIndexAll) return previous.fixture
     const fixture = buildLearnerMapProjection(input)
     previous = { signature, canonical: input.canonicalGoalIndexAll, fixture }
