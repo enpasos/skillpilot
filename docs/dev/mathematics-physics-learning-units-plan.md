@@ -254,16 +254,20 @@ Completion-Profils.
 
 ## 5. Stufen und Stand
 
-Jede Stufe ist ein eigener, deploybarer PR-Strang. Bis Stufe 3 ändert sich für
-Lernende nichts: Ziele werden wie bisher nur über ihr eigenes explizites
-Ergebnis abgeschlossen.
+Jede Stufe ist ein eigener, deploybarer PR-Strang. Bis Stufe 3 ändern die
+Einheiten für Lernende nichts: Ziele werden wie bisher nur über ihr eigenes
+explizites Ergebnis abgeschlossen. Unabhängig davon wirkt bis zur Umstellung
+der am 4. November abgelöste Arbeitsentfall weiter, in Lernempfehlung,
+Plan-IST und Cockpit
+([Entscheidungsvorlage zu Stufe 3](learning-unit-recognition-runtime-proposal-2026-11-14.md),
+Abschnitt 1).
 
 | Stufe | Lieferstück | Abnahme | Stand |
 | --- | --- | --- | --- |
 | **0 – Wiederaufnahme** | Dieser Plan; Inventarwerkzeug portiert und neu erzeugt. | Dokumentationsprüfungen grün; #83 bleibt Archiv. | Geliefert. |
 | **1 – Vertrag und Validator** | Einheiten in der Platzierungsschicht der Skill-Landschaft, Paketvertrag 1.2, Validator für R1, R3, R4 und Struktur, gemeinsame Testfälle, CI-Einbindung. | Testfälle decken jeden Befundcode; keine Runtimeänderung. | Geliefert. Die Angebotsprüfung ist vorhanden, aber nicht in der Pflicht-CI. |
 | **2 – Erste echte Einheiten** | Pilot „Skalarprodukt über orthogonale Projektion“, danach M01 und P13, jeweils mit unabhängigem R2-Review. | Validator grün, geschützte Reifegrade gehalten, Quellenbindung für neue Prüfungen. | Geliefert: Der Pilot, M01 („Natürliche Zahlen verstehen und darstellen“) und P13 („Gleichmäßig beschleunigte Bewegung modellieren“) tragen seit dem 13. November R2-Nachweise (siehe unten). Experimentelle Ziele werden nicht anerkannt (entschieden am 14. November). |
-| **3 – Runtime** | Backend leitet aus gültigen Verträgen die wirksame Beherrschung ab, versioniert gebunden (R5); Cockpit, Coach, Frontier und Plan nutzen denselben Stand. Die Vertragsversion dieser Stufe nimmt Aufgabenvarianten auf. | Gesamtfortschritt zählt Anerkennung mit, Perioden zählen nur explizite Abschlüsse, keine neuen Mastery-Zeilen; Deployment und Hostabnahme getrennt durch den Product Owner. | Offen. |
+| **3 – Runtime** | Backend leitet aus gültigen Verträgen die wirksame Beherrschung ab, versioniert gebunden (R5); Cockpit, Coach, Frontier und Plan nutzen denselben Stand. Die Vertragsversion dieser Stufe nimmt Aufgabenvarianten auf. | Gesamtfortschritt zählt Anerkennung mit, Perioden zählen nur explizite Abschlüsse, keine neuen Mastery-Zeilen; Deployment und Hostabnahme getrennt durch den Product Owner. | Offen. Entscheidungsvorlage vom 14. November mit vier Fragen und fünf Lieferschnitten ([Vorlage](learning-unit-recognition-runtime-proposal-2026-11-14.md)). |
 | **4 – Mathematik vollständig** | Blockweise Einheiten, Prüfungen und Reviews; die Landschaft erklärt `learningUnitCoverage: complete`. | Kein Fachziel ohne Einheit, Aufgaben, Karten und Bilder jeder Einheit gegen ihren Wissenskontext geprüft, Angebotsprüfung in allen Mathematikklassen grün, Gesamt-CI grün. | Offen: 801 gewöhnliche Ziele ohne Einheit. |
 | **5 – Physik vollständig** | Wie Stufe 4, zusätzlich Experimente und mathematische Voraussetzungen. | Eigene Fachabnahme; Mathematik bleibt stabil. | Offen: 476 gewöhnliche Ziele ohne Einheit. |
 
@@ -582,10 +586,13 @@ belegt den Bau nur lokal in `./run_ci.sh package`.
 ## 9. Nächster Schritt
 
 Stufe 2 ist geliefert: Drei Einheiten in zwei Fächern tragen vollständige
-R2-Nachweise, eine davon mit zwei Prüfungen. Stufe 3 kann beginnen; zu ihr
-gehören auch der Vertrag für Aufgabenvarianten und die Form, in der
-experimentelle Ziele zu Einheiten gehören, ohne anerkannt zu werden
-(Abschnitt 5).
+R2-Nachweise, eine davon mit zwei Prüfungen. Für Stufe 3 liegt eine
+[Entscheidungsvorlage](learning-unit-recognition-runtime-proposal-2026-11-14.md)
+vor: wann der Arbeitsentfall abgeschaltet wird, wie ein Bestehen an den
+Vertragsstand seiner Einheit gebunden wird (R5), wie experimentelle Ziele zu
+Einheiten gehören und in welcher Form Aufgabenvarianten in den Vertrag kommen.
+Der erste Lieferschnitt, die Rechnung als reine Funktion mit gemeinsamen
+Abnahmefällen, hängt von keiner dieser Fragen ab.
 
 Davon unabhängig läuft die Einführung des Wissenskontexts (Abschnitt 4). Das
 Werkzeug ist vorhanden, der Pilot zur Hinlänglichkeit durchgeführt

@@ -79,6 +79,7 @@ Diese Seite ist der Einstiegspunkt für die entwicklungsnahe Dokumentation von S
 - [Mathematik: erste Lerneinheit und Bindungspflege, 12. November 2026](canonical-math-learning-unit-pilot-binding-review-2026-11-12.md)
 - [Wissenskontext: Pilot zur Hinlänglichkeit, 13. November 2026](knowledge-context-sufficiency-pilot-2026-11-13.md)
 - [Wissenskontext: Fachprüfung der Pilotbefunde, 14. November 2026](knowledge-context-subject-review-2026-11-14.md)
+- [Stufe 3: Anerkennung zur Laufzeit, Entscheidungsvorlage vom 14. November 2026](learning-unit-recognition-runtime-proposal-2026-11-14.md)
 - [Voraussetzungennachweise: wiederverwendbare Batch-Fortsetzung, 9. November 2026](prerequisite-reduction-batches-v6-support-2026-11-09.md)
 - [Deutsch: erster atomarer Bedarf an einem Cluster, 9. November 2026](german-first-cluster-prerequisite-normalization-review-2026-11-09.md)
 - [Deutsch: Integration der Mathematik-Assessment-Reader, 9. November 2026](german-assessment-reader-integration-review-2026-11-09.md)
