@@ -562,6 +562,8 @@ Entscheidung des Product Owners zu experimentellen Zielen.
 
 Davon unabhängig läuft die Einführung des Wissenskontexts (Abschnitt 4). Das
 Werkzeug ist vorhanden, der Pilot zur Hinlänglichkeit durchgeführt
-([Protokoll](knowledge-context-sufficiency-pilot-2026-11-13.md)). Der nächste
-Schritt ist die Fachprüfung der 15 Befunde, bei denen beide Reviewer mit hoher
-Sicherheit dasselbe fehlende Ziel nennen.
+([Protokoll](knowledge-context-sufficiency-pilot-2026-11-13.md)). Die
+Fachprüfung seiner 15 Befunde liegt als Entscheidungsvorlage vor
+([Protokoll vom 14. November](knowledge-context-subject-review-2026-11-14.md)):
+Beide Reviewer empfehlen zwölf Kanten und zwei engere Zieltexte; damit
+änderten sich 14 Ziele. Eine fachübergreifende Physik-Kante ist strittig.
