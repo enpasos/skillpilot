@@ -651,6 +651,28 @@ curricular-level terminology. Personalization Levels 1–4, QA maturity and goal
   of the contexts of its own goals and assessments (§2.5). Tasks, memory
   cards, goal images and coach examples of a unit stay inside it; whether an
   assessment does becomes part of its R2 review, not a new validity rule.
+- **Unit structure (Product Owner direction, 14 November 2026; concept draft,
+  not decided).** Circular arrows between Sek I and Sek II in the learner map
+  led to a direction, not yet a decision: no special rule for stages; units
+  are distinguished clusters of the `contains` hierarchy (a cluster may be a
+  unit, a subject is not); Sek I and Sek II are units across the selected
+  subjects, and school years are ordered as strictly; the top-down plan is
+  stated as fixed prerequisites between units, not as a timeline; units are
+  wired by explicit unit prerequisites that must not contradict the atomic
+  prerequisites and must be complete, so that no further dependency between
+  units arises indirectly; subject combinations such as Physics LK with
+  Mathematics GK must be fair; every backward dependency is judged case by
+  case, because treating a topic phenomenologically first and rigorously
+  later is legitimate. The draft
+  `docs/concept/skill-graph/learning-unit-wiring-concept-2026-11-14.md` works
+  this out (rules E1 to E4, subject units versus plan units of a Land, check
+  of a Land's plan at unit level, additional demand of a subject selection)
+  and lists eight open decisions. Until they are taken, the unit contract of
+  12 November and Graph Definition §11 to §13 stay authoritative. The unit
+  prerequisite is a relation of its own: never author it as `requires` on a
+  cluster, which would be inherited by every atomic goal. The draft
+  recommends deciding where the unit property is stored and whether every
+  Land places the smallest units whole before further units are authored.
 
 This is concept documentation plus a static authoring contract and validator,
 not an implemented runtime or access policy. See `docs/concept/skill-graph/learning-units.md`,

@@ -601,3 +601,13 @@ Fachprüfung seiner 15 Befunde liegt als Entscheidungsvorlage vor
 ([Protokoll vom 14. November](knowledge-context-subject-review-2026-11-14.md)):
 Beide Reviewer empfehlen zwölf Kanten und zwei engere Zieltexte; damit
 änderten sich 14 Ziele. Eine fachübergreifende Physik-Kante ist strittig.
+
+Am 14. November 2026 hat der Product Owner außerdem eine Richtung für die
+Struktur der Einheiten vorgegeben, noch keine Entscheidung: Einheiten sind
+ausgezeichnete Cluster der `contains`-Hierarchie, sie werden durch
+ausdrückliche Einheitsvoraussetzungen verdrahtet, und Stufen und Jahrgänge
+werden Einheiten des Plans eines Landes. Der
+[Konzeptentwurf](../concept/skill-graph/learning-unit-wiring-concept-2026-11-14.md)
+arbeitet das aus und nennt acht offene Entscheidungen. Zwei davon ändern, wie
+eine Einheit abgelegt und geschnitten wird. Stufe 4 sollte deshalb erst
+beginnen, wenn sie gefallen sind; Stufe 3 ist in der Sache nicht berührt.
