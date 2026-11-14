@@ -227,7 +227,7 @@ unabhängig von den Stufen dieses Plans:
 | Schritt | Inhalt | Verhältnis zu den Stufen |
 | --- | --- | --- |
 | 1 – Ableiten | Deterministisches Werkzeug im Repository und ein Bericht je Fach; kein Gate ändert sich. | Geliefert am 13. November: `npm --prefix app run knowledge-context` für ein Ziel oder einen Cluster, `report:knowledge-context` für die Größen je Fach, `test:knowledge-context` in der Pflicht-CI. |
-| 2 – Hinlänglichkeit prüfen | Blockweises Review jedes Ziels mit seinem Kontext als Eingabe: Lässt sich das Ziel mit den gesicherten Zielen lernen? Befunde sind Kandidatenkanten, Befunde zur Einordnung oder Lücken und gehen in die Fachprüfung. | Beginnt mit einem Pilotblock je Fach; danach Teil der Blockarbeit in Stufe 4 und 5. |
+| 2 – Hinlänglichkeit prüfen | Blockweises Review jedes Ziels mit seinem Kontext als Eingabe: Lässt sich das Ziel mit den gesicherten Zielen lernen? Befunde sind Kandidatenkanten, Befunde zur Einordnung oder Lücken und gehen in die Fachprüfung. | Pilot am 13. November: In 20 von 39 Zielen der beiden Pilotblöcke reichen die Voraussetzungen nach beiden unabhängigen Reviewern nicht aus ([Protokoll](knowledge-context-sufficiency-pilot-2026-11-13.md)). Danach Teil der Blockarbeit in Stufe 4 und 5. |
 | 3 – Kontexttreue prüfen | Prüfungen, Lernkarten und Lernzielbilder eines Blocks gegen den Kontext; Bild-Prompts und Reviews erhalten ihn als Eingabe. | Teil der Arbeitsweise je Themenblock (Abschnitt 6). |
 | 4 – Coach bedienen | Das Backend liefert den Kernkontext des aktiven Ziels, verbunden mit dem Stand der lernenden Person. | Je Fach, sobald es hinlänglich ist; Laufzeit- und Providerarbeit mit eigener Abnahme. |
 
@@ -510,8 +510,11 @@ Diese Befunde sind Arbeitslisten, keine entschiedenen Korrekturen.
   Mathematik- und 19 Physikziele haben gar keine Voraussetzung. Die
   vorhandenen Gates prüfen Zyklenfreiheit, atomare Form und transitive
   Minimalität, nicht ob die Voraussetzungen eines Ziels ausreichen. Wie viele
-  Ziele betroffen sind, zeigt erst das Review der Pilotblöcke (Abschnitt 4,
-  Schritt 2). Zahlen und Definition:
+  Ziele betroffen sind, hat der Pilot vom 13. November gezeigt: in den
+  Pilotblöcken (Ableitungseinstieg, Kinematik der Einführungsphase) 20 von 39
+  Zielen nach beiden Reviewern
+  ([Protokoll](knowledge-context-sufficiency-pilot-2026-11-13.md)). Zahlen und
+  Definition:
   [Wissenskontext](../concept/skill-graph/knowledge-context.de.md).
 - **Orientierungsziele als Voraussetzung:** Die beiden Mathematikziele „Warum
   Mathematik? …“ sind Voraussetzung von 11 und 47 gewöhnlichen Zielen und
@@ -558,6 +561,7 @@ gehört auch der Vertrag für Aufgabenvarianten. Vor Stufe 5 braucht es die
 Entscheidung des Product Owners zu experimentellen Zielen.
 
 Davon unabhängig läuft die Einführung des Wissenskontexts (Abschnitt 4). Das
-Werkzeug, das ihn ableitet, ist vorhanden. Der nächste Schritt ist das Review
-der Hinlänglichkeit an einem Pilotblock je Fach: dem Ableitungseinstieg der
-Mathematik und der Kinematik der Einführungsphase.
+Werkzeug ist vorhanden, der Pilot zur Hinlänglichkeit durchgeführt
+([Protokoll](knowledge-context-sufficiency-pilot-2026-11-13.md)). Der nächste
+Schritt ist die Fachprüfung der 15 Befunde, bei denen beide Reviewer mit hoher
+Sicherheit dasselbe fehlende Ziel nennen.
