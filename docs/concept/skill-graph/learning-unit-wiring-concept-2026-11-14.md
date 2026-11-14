@@ -4,8 +4,8 @@
 die Richtung fest, die der Product Owner am 14. November 2026 für die Struktur
 der Lerneinheiten vorgegeben hat, und arbeitet sie zu einem prüfbaren Modell
 aus. Abschnitt 2 gibt die Vorgaben wieder. Die Abschnitte 3 bis 5 sind die
-Ausarbeitung; sie ist ein Vorschlag. Abschnitt 7 nennt, was zu entscheiden ist.
-Nichts davon ist umgesetzt. Bis zu einer Entscheidung gelten die
+Ausarbeitung; sie ist ein Vorschlag. Abschnitt 7 nennt, was zu entscheiden ist,
+Abschnitt 9, was daraus folgt. Nichts davon ist umgesetzt. Bis zu einer Entscheidung gelten die
 [Graph-Definition §11 bis §13](learning-units.de.md) und der Einheitenvertrag
 vom 12. November unverändert.
 
@@ -390,8 +390,10 @@ anerkannt werden, und der Vertragsstand einer Einheit.
 | K8 | Wie wird aus der Prüfung ein Gate? | Zuerst ein Bericht, dann Behebung der Ursachen, dann eine Sperrklinke: Kein neuer Verstoß kommt hinzu. Ein hartes Gate erst bei null. |
 | K9 | Trägt eine Einheit ein `requires`? | Nein. Zwischen Einheiten steht „nach“ (Abschnitt 3.2). `requires` bleibt den atomaren Zielen vorbehalten. Die Vererbung bleibt die Lesart des Übergangsbestands und wird in der Zielnorm nicht gebraucht. |
 
-K1 und K4 sollten fallen, bevor in Stufe 4 weitere Einheiten verfasst werden.
-Beide bestimmen, wie eine Einheit abgelegt und geschnitten wird.
+| K10 | Müssen die Prüfungen einer Einheit in ihrem Cluster liegen, oder nennt die Einheit ihre Prüfungen, wie es heute ihre Abdeckungsreviews tun? | Offen bis zum Trockenlauf (Abschnitt 9.2). Liegen sie im Cluster, ist die Einheit im Baum vollständig sichtbar; dafür ziehen 323 Prüfungen aus 28 Prüfungsclustern um, und die Sichten folgen. Nennt die Einheit ihre Prüfungen, bleiben Prüfungscluster und Sichten unverändert. |
+
+K1, K4 und K10 sollten fallen, bevor in Stufe 4 weitere Einheiten verfasst
+werden. Sie bestimmen, wie eine Einheit abgelegt und geschnitten wird.
 
 ## 8. Befunde im heutigen Bestand
 
@@ -459,8 +461,8 @@ Fassung führt. Stoff, den nur der Leistungskurs führt, ist es in drei Ländern
 
 Die eigenen Ziele der drei vorhandenen Einheiten liegen in zwei bis drei
 Clustern: die Fachziele in einem Themencluster, die Prüfungen in einem
-Prüfungscluster. Eine Einheit als Cluster verlangt, dass ihre Prüfungen bei
-ihren Fachzielen liegen.
+Prüfungscluster. Soll eine Einheit als Cluster auch ihre Prüfungen enthalten,
+müssen diese zu ihren Fachzielen ziehen (K10).
 
 ### 8.5 Wie groß eine Verdrahtung wäre
 
@@ -500,7 +502,26 @@ die Curriculum-Werkzeuge einschließlich des Minimalitätsprüfers. `CQR-001`
 weist jede Voraussetzung an einem Cluster zurück. Im eingefrorenen
 Reduktionsnachweis betreffen 71 der 1.361 Übertragungen Cluster.
 
-### 8.7 Nicht erklärt
+### 8.7 Woran die Folgearbeiten hängen
+
+| Befund | Zahl |
+| --- | --- |
+| Ländersichten | 88 in Mathematik, 69 in Physik |
+| Physiksichten, die die Ziele des Clusters „E.1 Bewegungen und ihre Beschreibung“ einzeln aufzählen | 65 von 69 |
+| Mathematiksichten zum Cluster „Zahlenverständnis und Grundoperationen aufbauen“ | 29 als Teilbaum, 25 mit einzeln aufgezählten Zielen, 34 ohne |
+| Anteil der eigenen Fachziele der drei vorhandenen Einheiten an den direkten Kindern ihres Themenclusters | 5 von 19, 1 von 4, 2 von 8 |
+| Programme, die den Einheitenvertrag vom 12. November lesen | gut 20 Skripte der Curriculum-Werkzeuge, rund 20 Python-Skripte der Paketkette, 3 Backend-Klassen, 8 Vertragsdateien |
+| Regeln der Graph-Definition | 145, davon 15 zu Einheiten und 11 zur Planung |
+| Gewöhnliche Ziele ohne Einheit | 801 in Mathematik, 476 in Physik |
+
+Ein Clusterobjekt trägt Titel und Beschreibung in zwei Sprachen,
+Anwendbarkeit, Gewicht und Dimensionsmerkmale. Jede Änderung an einer
+kanonischen Fachdatei zieht außerdem eine bekannte Kette nach sich:
+Bindungshashes, feste Zählwerte in Tests, die Paketkette und die
+Statusberichte. Weicht die Anwendbarkeit eines Clusters von der seiner Kinder
+ab, fällt Mathematik im Status von M7 auf M4.
+
+### 8.8 Nicht erklärt
 
 Der Pfeil von Physik nach Mathematik in der Lernkarte des Product Owners ist
 nicht erklärt. Kanonisch setzt kein Mathematikziel ein Physikziel voraus, und
@@ -508,12 +529,76 @@ keine einzelne Ländersicht erzeugt ihn. Er entsteht vermutlich beim
 Zusammenführen von Grund- und Leistungskurs. Zur Klärung fehlt die
 Konfiguration.
 
-## 9. Nächste Schritte
+## 9. Was aus dem Konzept folgt
 
-1. Der Product Owner entscheidet über Abschnitt 7.
-2. Das Entschiedene geht in die Graph-Definition §11 und §12, in `AGENTS.md`
-   und in den Umsetzungsplan ein.
-3. Ein Pilot fasst die drei vorhandenen Einheiten und ihre Nachbarschaft als
-   Cluster, erklärt ihre Verdrahtung und prüft sie gegen die Pläne der Länder.
-4. Die Fachprüfung beurteilt die Ursachen aus Abschnitt 8.1, beginnend mit den
-   Zielen, in die am häufigsten gegriffen wird.
+### 9.1 Folgerungen
+
+- **Die `contains`-Hierarchie wird zur Einheitenhierarchie.** Heute ist sie
+  nach Themen geschnitten. Die drei vorhandenen Einheiten sind nur Teile ihrer
+  Themencluster (Abschnitt 8.7). Einheiten werden deshalb meist neue Cluster
+  unterhalb der Themencluster sein, und jeder neue Cluster ist ein Zielobjekt
+  mit den Prüfpflichten eines Zielobjekts.
+- **Die Ländersichten werden zu Plänen aus Einheiten.** Heute zählen sie
+  überwiegend einzelne Ziele auf. Plant ein Land Einheiten als Ganzes ein
+  (K4), werden aus Zielverweisen Einheitenverweise. Dieselbe Umstellung zeigt
+  je Sicht und Einheit, ob K4 hält: Die Einheit steht dort ganz, nur zum Teil
+  oder über zwei Abschnitte verteilt.
+- **Jeder Rückgriff braucht ein Fachurteil.** Das sind auf Stufenebene rund
+  40 Ziele je Fach, auf Jahrgangsebene 56 in Mathematik und 10 in Physik, dazu
+  die acht Kanten zwischen den Fächern (Abschnitt 8). Ändert die Auflösung
+  eine Kante oder ein Ziel, braucht das Ziel neue Reviews; ein Vorziehen
+  ändert nur Sichten. Die Arbeit gehört mit der
+  [Fachprüfung zum Wissenskontext](../../dev/knowledge-context-subject-review-2026-11-14.md)
+  zusammen, denn beide beurteilen dieselben Kanten.
+- **Der Einheitenvertrag vom 12. November wird abgelöst.** Platzierungen der
+  Beziehung `own` und das Elternfeld entfallen, das „nach“ und die
+  Planeinheiten kommen hinzu. Die Werkzeuge, die den Vertrag lesen, und die
+  drei vorhandenen Einheiten ziehen um.
+- **Stufe 3 wartet mit ihrem Vertrag, nicht mit ihrer Rechnung.** Die
+  Anerkennungsrechnung ändert sich nicht. Ihr Vertrag und der Backend-Teil
+  lesen aber Einheiten. Beide Stränge sollten deshalb eine gemeinsame
+  Vertragsversion bekommen, sonst zieht die Laufzeit zweimal um.
+- **Die Norm ändert sich an fünf Stellen:** Graph-Definition §2 (das „nach“
+  neben `requires`), §11 (Einheiten als Cluster, Planeinheiten), §11.5 (Regeln
+  E2 bis E4), §12 (der Reihenfolgefehler wird für Planeinheiten zur Regel) und
+  §13 (R4 wird E1). Dazu kommen das Regelregister, `AGENTS.md`, das Glossar
+  und der Entwurfsbogen.
+- **Die Oberfläche zeigt Einheiten.** Die Lernkarte ordnet nach dem „nach“,
+  der Lernzielbaum zeigt Einheiten als Cluster, und die Fächerauswahl kann den
+  Zusatzbedarf einer Kombination nennen.
+
+### 9.2 Folgearbeiten
+
+| Nr. | Arbeit | Braucht vorher | Anhaltspunkt zum Umfang |
+| --- | --- | --- | --- |
+| F1 | Trockenlauf an zwei Blöcken auf einer Kopie des Katalogs: Einheiten als Cluster schneiden, das „nach“ vorschlagen, gegen die Pläne aller Länder prüfen und auszählen, was sich an Sichten, Clustern und Bindungen ändern würde | nichts | ein Block je Fach, kein Eingriff in den Katalog; liefert Zahlen zu K4 und K10 |
+| F2 | Bericht „Früheres braucht Späteres“ als eingechecktes Werkzeug, mit erklärter Zuordnung der Sichtabschnitte zu Stufen, Jahrgängen und Phasen | nichts | 157 Sichten; ersetzt die Erkundungsrechnungen aus Abschnitt 8 |
+| F3 | Lernkarte: Bereiche in der Reihenfolge der Sicht anordnen, Rückgriffe kennzeichnen | nichts | klein |
+| F4 | Den Pfeil von Physik nach Mathematik klären | Konfiguration des Product Owners | klein |
+| F5 | Entscheidungen K1 bis K10 | F1 für K4 und K10 | Product Owner |
+| F6 | Fachprüfung der Ursachen, zusammen mit den Kanten zum Wissenskontext | F2 | Zahlen in Abschnitt 9.1; je geänderte Kante oder geändertes Ziel neue Reviews |
+| F7 | Norm anpassen: Graph-Definition, Regelregister, `AGENTS.md`, Glossar, Entwurfsbogen | F5 | zweisprachig; 26 Regeln zu Einheiten und Planung |
+| F8 | Vertrag 1.3 für Einheiten als Cluster, das „nach“ und Planeinheiten, zusammen mit den Vertragsinhalten der Stufe 3 | F5 | Schema, Paketvertrag, FWU-OWL-Träger, Feldregister |
+| F9 | Werkzeuge umstellen: Validator mit E1 bis E4, gemeinsame Fälle, Paketvalidator, Backend-Lader, Bindungsprojektion, Prüfungswerkzeug, Referenzrechnung der Anerkennung | F8 | Programme aus Abschnitt 8.7 |
+| F10 | Die drei vorhandenen Einheiten umstellen | F9 | drei Einheiten; Bindungskette je Fach |
+| F11 | Planeinheiten je Land erklären, Sichten darauf beziehen, über Fächer hinweg prüfen, Zusatzbedarf anzeigen | F5, F9 | 16 Länder, G8 und G9, 157 Sichten |
+| F12 | Stufe 4 und 5 nach der neuen Methode: Einheiten schneiden, verdrahten, Sichten umstellen; erst Sperrklinke, dann Gate | F10, F11 | 801 und 476 gewöhnliche Ziele ohne Einheit |
+| F13 | Stufe 3: Backend und Oberfläche der Anerkennung | F9 und die Entscheidungen der Vorlage zu Stufe 3 | wie dort beschrieben |
+
+### 9.3 Reihenfolge
+
+1. **Sofort, ohne Entscheidung:** F1 bis F4. Der Trockenlauf macht aus den
+   offenen Fragen K4 und K10 gemessene Abwägungen.
+2. **Dann entscheiden:** F5.
+3. **Ein Strang für Norm und Vertrag:** F7 bis F10. Die Fachprüfung F6 läuft
+   daneben.
+4. **Danach die Fläche:** F11, dann F12. F13 kann beginnen, sobald F9 fertig
+   ist.
+
+### 9.4 Was nicht folgt
+
+- Frontier, Lernumfang, gespeicherte Ergebnisse und die Anerkennungsregel
+  ändern sich nicht. Ein „nach“ hat zur Laufzeit keine Wirkung.
+- An den Anbieterspuren ist nichts zu tun.
+- Der Übergangsbestand außerhalb des Gymnasialkatalogs bleibt, wie er ist.
+- Die übrigen 19 kanonischen Fächer folgen erst nach Mathematik und Physik.

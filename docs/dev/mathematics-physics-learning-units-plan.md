@@ -611,6 +611,8 @@ der anderen liegen. Zwischen atomaren Zielen steht `requires`; es ist selbst
 ein „nach“, nur ein besonderes. Ein „nach“ wird nicht entlang `contains`
 vererbt, sondern gegen die `requires` der Ziele geprüft. Der
 [Konzeptentwurf](../concept/skill-graph/learning-unit-wiring-concept-2026-11-14.md)
-arbeitet das aus und nennt neun offene Entscheidungen. Zwei davon ändern, wie
-eine Einheit abgelegt und geschnitten wird. Stufe 4 sollte deshalb erst
-beginnen, wenn sie gefallen sind; Stufe 3 ist in der Sache nicht berührt.
+arbeitet das aus, nennt zehn offene Entscheidungen und in Abschnitt 9 die
+Folgearbeiten. Drei der Entscheidungen ändern, wie eine Einheit abgelegt und
+geschnitten wird. Stufe 4 sollte deshalb erst beginnen, wenn sie gefallen
+sind. Stufe 3 ist in der Sache nicht berührt; ihr Vertrag und ihr Backend-Teil
+lesen aber Einheiten und sollten dieselbe Vertragsversion bekommen.

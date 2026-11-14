@@ -667,7 +667,10 @@ curricular-level terminology. Personalization Levels 1–4, QA maturity and goal
   `docs/concept/skill-graph/learning-unit-wiring-concept-2026-11-14.md` works
   this out (rules E1 to E4, subject units versus plan units of a Land, check
   of a Land's plan at unit level, additional demand of a subject selection)
-  and lists nine open decisions. Until they are taken, the unit contract of
+  and lists ten open decisions and the follow-up work (section 9: a dry run
+  on a catalog copy first, then decisions, norm and contract, the three
+  existing units, plan units per Land, stages 4 and 5). Until the decisions
+  are taken, the unit contract of
   12 November and Graph Definition §11 to §13 stay authoritative. The Product
   Owner also asked to keep the graph simple and, after reading the draft,
   settled on this wording: between units the statement is an "after" (German
