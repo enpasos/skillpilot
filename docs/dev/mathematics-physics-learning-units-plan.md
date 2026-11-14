@@ -66,12 +66,12 @@ Am 13. November 2026 hat der Product Owner ergänzt:
 
 Am 14. November 2026 ist der Product Owner den offenen Empfehlungen gefolgt:
 
-- **Experimentelle Ziele** in Physik, Chemie und Biologie werden nie
-  anerkannt. Sie bleiben nur über ihr eigenes explizites Ergebnis
-  abschließbar, und kein Review behauptet für sie eine geprüfte Abdeckung. Der
-  Coach kann die Echtheit eigener Messdaten nicht prüfen; eine Auswertung
-  vorgegebener Messwerte weist das Ausführen eines Versuchs nicht nach.
-  Einzelheiten und offene Vertragsfragen in Abschnitt 5.
+- **Experimentelle Ziele** in Physik, Chemie und Biologie werden nicht
+  gesondert behandelt. Sie sind Inhaltsziele wie alle anderen: Eine Einheit
+  nimmt ein solches Ziel auf, sobald eine ihrer Prüfungen es voraussetzt und
+  ein Abdeckungsreview bestätigt, dass sie es prüft. Das ersetzt die
+  Entscheidung vom selben Tag, solche Ziele nie anzuerkennen. Einzelheiten in
+  Abschnitt 5.
 - **Wissenskontext:** Der nächste Schritt ist die Fachprüfung der 15 Befunde
   aus dem Pilot zur Hinlänglichkeit (Abschnitt 9).
 
@@ -416,21 +416,18 @@ widersprochen:
 | Planung, Auswertung und Fehleranalyse eines beschriebenen Versuchs genügen in diesem Kanal. | Die Prüfung braucht zusätzlich einen Planungsteil, und der Product Owner hält diese Lesart ausdrücklich fest. Das Ausführen eines Versuchs wird dann nicht nachgewiesen. |
 | Experimentelle Ziele werden nie anerkannt. | Sie gehören zu einer Einheit ohne vollständigen Nachweis oder zu keiner und bleiben nur über ihr eigenes explizites Ergebnis abschließbar. |
 
-Der Product Owner hat am 14. November die dritte Lesart gewählt (Abschnitt 1):
-Experimentelle Ziele in Physik, Chemie und Biologie werden nie anerkannt und
-bleiben nur über ihr eigenes explizites Ergebnis abschließbar. Kein Review
-behauptet für sie eine geprüfte Abdeckung. Das Ziel bleibt außerhalb der
-Einheit; der Entwurf der Messwertaufgabe ist nicht eingecheckt. Dasselbe
-betrifft `ce431132-dfc4-42c2-aff6-bd72035190f8` („Bewegungen mit Diagrammen
-untersuchen“) in der künftigen Einheit zur Beschreibung von Bewegungen.
+Der Product Owner hat am 14. November entschieden, experimentelle Ziele nicht
+gesondert zu behandeln (Abschnitt 1). Die dritte Lesart entfällt damit. Ein
+experimentelles Ziel gehört zu einer Einheit, sobald eine ihrer Prüfungen es
+voraussetzt und ein Abdeckungsreview die Abdeckung bestätigt; es wird dann wie
+die übrigen Ziele anerkannt. Welche der beiden ersten Lesarten gilt, ist nicht
+entschieden. Das wird einmal für alle solchen Ziele festgelegt, wenn die erste
+Einheit mit einem experimentellen Ziel geschnitten wird.
 
-Offen sind damit zwei Fragen für den Vertrag der Stufe 3. Erstens: Woran
-erkennt der Vertrag ein experimentelles Ziel? Die kanonischen Ziele tragen
-dafür heute kein Merkmal. Zweitens: Wie gehört ein solches Ziel zu einer
-Einheit, ohne die Anerkennung der übrigen Ziele dieser Einheit zurückzuhalten?
-Nach R2 hielte ein eigenes Ziel ohne geprüfte Abdeckung die ganze Einheit
-offen. Bis zu dieser Vertragsversion gehört ein experimentelles Ziel zu keiner
-Einheit.
+Bis dahin bleibt das Ziel außerhalb der Einheit; der Entwurf der
+Messwertaufgabe ist nicht eingecheckt. Dasselbe betrifft
+`ce431132-dfc4-42c2-aff6-bd72035190f8` („Bewegungen mit Diagrammen
+untersuchen“) in der künftigen Einheit zur Beschreibung von Bewegungen.
 
 ## 6. Arbeitsweise je Themenblock
 
@@ -589,8 +586,9 @@ Stufe 2 ist geliefert: Drei Einheiten in zwei Fächern tragen vollständige
 R2-Nachweise, eine davon mit zwei Prüfungen. Für Stufe 3 liegt eine
 [Entscheidungsvorlage](learning-unit-recognition-runtime-proposal-2026-11-14.md)
 vor: wann der Arbeitsentfall abgeschaltet wird, wie ein Bestehen an den
-Vertragsstand seiner Einheit gebunden wird (R5), wie experimentelle Ziele zu
-Einheiten gehören und in welcher Form Aufgabenvarianten in den Vertrag kommen.
+Vertragsstand seiner Einheit gebunden wird (R5) und in welcher Form
+Aufgabenvarianten in den Vertrag kommen. Die Frage zu experimentellen Zielen
+ist entschieden (Abschnitt 5).
 Der erste Lieferschnitt, die Rechnung als reine Funktion mit gemeinsamen
 Abnahmefällen, hängt von keiner dieser Fragen ab.
 
@@ -611,8 +609,9 @@ Einheiten steht `after`, zwischen atomaren Zielen `requires`; `requires` ist
 ein besonderes `after`. Ein `after` wird nicht entlang `contains` vererbt,
 sondern mit den `requires` der Ziele abgeglichen, und in der Lernweise
 „Einheit für Einheit“ bestimmt es, welches erreichbare Ziel als nächstes
-kommt. Stufen und Jahrgänge werden Planeinheiten eines Landes. Abschnitt 10
-der Festlegung nennt die Folgearbeiten. Stufe 4 beginnt erst nach dem
-Trockenlauf und der Umstellung der drei vorhandenen Einheiten. Stufe 3 ist in
+kommt. Stufen und Jahrgänge werden Planeinheiten eines Landes. Einheiten
+werden von oben nach unten eingeführt: zuerst die Planeinheiten der Länder,
+darunter die fachlichen Einheiten, zuletzt ihre Prüfungen; Stufe 4 und 5
+folgen dieser Reihenfolge (Abschnitt 10 der Festlegung). Stufe 3 ist in
 der Sache nicht berührt; ihr Vertrag und ihr Backend-Teil lesen aber Einheiten
 und bekommen dieselbe Vertragsversion.
