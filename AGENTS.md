@@ -689,7 +689,9 @@ curricular-level terminology. Personalization Levels 1–4, QA maturity and goal
   assessment goal, as a justified exception; there is no unit lock, so the
   open access profile of Graph Definition §11.5 is dropped. Every Land
   carries a subject unit without sub-units whole in one plan unit. The
-  learner map shows units and atomic goals only; clusters that are not units
+  learner map shows units and atomic goals only: for display, the learner's
+  graph is cleaned of the clusters that are not units, `contains` is kept
+  across the removed clusters, and subjects act as filters. All clusters
   appear in the goal tree. Units are introduced top-down: plan units first
   (only the plans of the Länder change), subject units below them, their
   assessments last. There is no timeline and no stage-specific rule. Never

@@ -34,7 +34,7 @@ es nicht, auch keine Zeitachse.
 | B3 | Die Prüfungen einer Einheit liegen in ihrem Cluster und decken jedes ihrer eigenen Inhaltsziele ab. Eine Einheit ohne Prüfungen ordnet ihre Ziele nur. Am Ende liegt jedes Inhaltsziel in einer Einheit mit Prüfungen. | 3.1 |
 | B4 | Dass ein Cluster eine Einheit ist, steht im Einheiteneintrag der Platzierungsschicht und nicht im Zielobjekt. | 3.2 |
 | B5 | Fachliche Einheiten gelten in allen Ländern. Stufen, Jahrgänge und Phasen sind Planeinheiten eines Landes über die gewählten Fächer, mit fester Reihenfolge. | 3.3 |
-| B6 | Die Lernkarte zeigt Einheiten und atomare Ziele. Cluster, die keine Einheit sind, zeigt nur der Lernzielbaum. | 3.4 |
+| B6 | Die Lernkarte zeigt den Graphen der lernenden Person ohne die Cluster, die keine Einheit sind: Einheiten und atomare Ziele. Fächer sind dort Filter. Alle Cluster zeigt nur der Lernzielbaum. | 3.4 |
 | B7 | Zwischen Einheiten steht `after`, und zwar zwischen Kindern derselben Einheit. Zwischen atomaren Zielen steht `requires`. `requires` ist ein besonderes `after`. | 4.1 |
 | B8 | Kein Cluster trägt ein `requires`, und kein `after` wird entlang `contains` an Ziele vererbt. Die Regeln stellen sicher, dass beide zusammenpassen. | 4.2 |
 | B9 | Wer die selbstständige Anwendung braucht, die eine Einheit belegt, setzt ihre Prüfung voraus. Das ist eine begründete Ausnahme. Eine Sperre ganzer Einheiten gibt es nicht. | 4.3 |
@@ -176,16 +176,25 @@ Planeinheit sein, wenn er an einem Stück gelernt wird.
 | Lernzielbaum | alle Cluster und Ziele | Gliederung: etwas finden |
 | Lernkarte | Einheiten und atomare Ziele | Reihenfolge: sehen, was worauf folgt |
 
-Die Lernkarte zeigt zu einer Einheit ihre Kinder. Cluster dazwischen, die
-keine Einheit sind, zeigt sie nicht; ihre Ziele stehen dann unmittelbar in der
-Einheit. Pfeile zeichnet die Karte nur zwischen den Kindern einer Einheit:
-zwischen zwei Einheiten nach ihrem `after`, sonst nach dem Bedarf der Ziele.
-Mit Regel E2 bilden diese Pfeile keinen Kreis. Solange die Regel verletzt ist,
+Die Lernkarte ist eine Darstellung des Graphen, wie er für die lernende Person
+zugeschnitten ist. Für die Anzeige wird er um die Cluster bereinigt, die keine
+Einheit sind. Was ein solcher Cluster enthielt, enthält danach der nächste
+verbleibende Knoten darüber: `contains` bleibt über die entfernten Cluster
+hinweg erhalten. Übrig sind Einheiten und atomare Ziele, und jede Einheit
+enthält genau ihre Kinder. Gespeichert wird davon nichts; der Graph selbst
+bleibt, wie er ist.
+
+Pfeile zeichnet die Karte nur zwischen den Kindern einer Einheit: zwischen
+zwei Einheiten nach ihrem `after`, sonst nach dem Bedarf der Ziele. Mit Regel
+E2 bilden diese Pfeile keinen Kreis. Solange die Regel verletzt ist,
 kennzeichnet die Karte den Rückgriff.
 
-Ein Fach ist kein Knoten der Karte; es erscheint als Farbe oder Spur seiner
-Einheiten. Ziele, die der Voraussetzungsabschluss von außerhalb des Plans
-hinzufügt, stehen als „Notwendige Grundlagen“ bei ihrem eigenen Fach.
+| Was im Graphen steht | In der Lernkarte |
+| --- | --- |
+| Fach | kein Knoten, sondern ein Filter |
+| Planeinheit | ein Knoten für alle Fächer: eine Sekundarstufe I, nicht eine je Fach |
+| Ziel ohne Einheit über sich, etwa das Orientierungsziel eines Fachs | steht neben den obersten Einheiten |
+| Ziel, das der Voraussetzungsabschluss von außerhalb des Plans hinzufügt | steht als Vorbereitung in der Planeinheit, in der es zuerst gebraucht wird (Abschnitt 7.3) |
 
 ## 4. `after` und `requires`
 
@@ -732,7 +741,7 @@ hartes Gate gibt es erst bei null Verstößen.
 | F1 | Form festlegen, in der ein Abschnitt einer Ländersicht als Planeinheit erklärt wird und für alle Fächer eines Landes dieselbe ist | nichts | Schema der Sichten, Backend, Paketvertrag |
 | F2 | Planeinheiten erklären: Stufen in allen Sichten, dann Jahrgänge und Phasen | F1 | 157 Sichten, 16 Länder, G8 und G9 |
 | F3 | Lernkarte: Einheiten und atomare Ziele, Pfeile zwischen den Kindern einer Einheit, Rückgriffe gekennzeichnet | F1 | Projektion der Lernkarte |
-| F4 | „Notwendige Grundlagen“ je Fach. Heute hängt der Zweig unter der ersten Fachwurzel und enthält Ziele aller Fächer; daher der Pfeil von Physik nach Mathematik in der Lernkarte. | nichts | klein |
+| F4 | Vorbereitungsziele dort einordnen, wo sie zuerst gebraucht werden. Heute hängen sie als „Notwendige Grundlagen“ unter der ersten Fachwurzel, auch die anderer Fächer; daher der Pfeil von Physik nach Mathematik in der Lernkarte. | F2; bis dahin je Fach unter der eigenen Fachwurzel | klein |
 | F5 | Fachprüfung der Rückgriffe, zusammen mit den Kanten zum [Wissenskontext](../../dev/knowledge-context-subject-review-2026-11-14.md) und den Voraussetzungen auf Prüfungen | F6 | rund 40 Ziele je Fach zwischen Stufen, 56 und 10 zwischen Jahrgängen, acht Kanten zwischen den Fächern, 170 Kanten auf Prüfungen; je geänderte Kante oder geändertes Ziel neue Reviews |
 | F6 | Bericht der Regelverstöße als eingechecktes Werkzeug: E2 je Einheit, zuerst für die Planeinheiten | F2 | ersetzt die Erkundungsrechnungen aus Abschnitt 9 |
 | F7 | Norm anpassen (Abschnitt 10.2) | für Planeinheiten und `after` nichts; für B3 und B13 F8 | zweisprachig; 26 Regeln zu Einheiten und Planung |
