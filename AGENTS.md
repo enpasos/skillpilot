@@ -675,11 +675,13 @@ curricular-level terminology. Personalization Levels 1–4, QA maturity and goal
   are children of the same unit the relation is `after` (the intended order:
   the other unit is completed before this one begins); between atomic goals
   it is `requires`, which is a special `after` that additionally states the
-  need. No cluster carries `requires`, and no `after` is inherited along
-  `contains`; rules E1 to E4 keep the two consistent, each looking at the
-  children of one unit (E1: units form a tree; E2: an order of all goals
-  exists that keeps every need and every `after` with each unit in one piece;
-  E3: where a need separates two child units of the smallest unit that
+  need. An `after` holds for all goals of its two units, as an order and
+  never as a need, and no cluster carries `requires`. Rules E1 to E4 keep the
+  two consistent, each looking at the children of one unit (E1: units form a
+  tree; E2: an order of all goals exists that keeps every need and every
+  `after` with each unit in one piece; E3: the `requires` between goals of
+  different units are a subset of the `after` inherited to the leaves, that
+  is, where a need separates two child units of the smallest unit that
   contains both goals, the `after` between them is declared; E4: no redundant
   declaration among the children of a unit). An `after` never changes the
   frontier and locks nothing. In the learning mode "unit by unit" it decides

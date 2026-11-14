@@ -36,7 +36,7 @@ es nicht, auch keine Zeitachse.
 | B5 | Fachliche Einheiten gelten in allen Ländern. Stufen, Jahrgänge und Phasen sind Planeinheiten eines Landes über die gewählten Fächer, mit fester Reihenfolge. | 3.3 |
 | B6 | Die Lernkarte zeigt den Graphen der lernenden Person ohne die Cluster, die keine Einheit sind: Einheiten und atomare Ziele. Fächer sind dort Filter. Alle Cluster zeigt nur der Lernzielbaum. | 3.4 |
 | B7 | Zwischen Einheiten steht `after`, und zwar zwischen Kindern derselben Einheit. Zwischen atomaren Zielen steht `requires`. `requires` ist ein besonderes `after`. | 4.1 |
-| B8 | Kein Cluster trägt ein `requires`, und kein `after` wird entlang `contains` an Ziele vererbt. Die Regeln stellen sicher, dass beide zusammenpassen. | 4.2 |
+| B8 | Ein `after` gilt für alle Ziele seiner beiden Einheiten, als Reihenfolge und nicht als Bedarf. Die `requires` zwischen Zielen verschiedener Einheiten sind eine Teilmenge dieser vererbten `after`. Kein Cluster trägt ein `requires`. | 4.2 |
 | B9 | Wer die selbstständige Anwendung braucht, die eine Einheit belegt, setzt ihre Prüfung voraus. Das ist eine begründete Ausnahme. Eine Sperre ganzer Einheiten gibt es nicht. | 4.3 |
 | B10 | Für Einheiten gelten die Regeln E1 bis E4. Sie betrachten jeweils die Kinder einer Einheit. | 5 |
 | B11 | Die `after` der fachlichen Einheiten schlägt ein Werkzeug aus den `requires` der Ziele vor; die Fachprüfung bestätigt sie. | 5 |
@@ -233,21 +233,29 @@ Zwei Begriffe werden im Folgenden gebraucht:
   kleinste Einheit, die beide enthält: Die eine liegt nach der anderen, wenn
   dort das Kind, in dem sie liegt, nach dem Kind der anderen liegt.
 
-### 4.2 Abgleich statt Vererbung
+### 4.2 Vererbt wird die Reihenfolge, nicht der Bedarf
 
-In der atomaren Normalform trägt kein Cluster ein `requires`. Das gilt auch
-für Einheiten. Ein `after` wird nicht als Bedarf an die Ziele der Einheit
-weitergereicht. Stünde „Sekundarstufe II nach Sekundarstufe I“ als `requires`
-am Cluster und würde vererbt, zöge der Voraussetzungsabschluss die ganze
-Sekundarstufe I in jeden Lernumfang, der ein Ziel der Sekundarstufe II
-enthält.
+Denkt man ein `after` bis zu den Blättern weiter, ordnet es jedes Ziel der
+einen Einheit hinter jedes Ziel der anderen. Diese vererbten `after` sind eine
+Aussage über die Reihenfolge. Ein Bedarf sind sie nicht: Frontier und
+Lernumfang lesen weiter nur `requires`. Würde „Sekundarstufe II nach
+Sekundarstufe I“ als Bedarf vererbt, zöge der Voraussetzungsabschluss die
+ganze Sekundarstufe I in jeden Lernumfang, der ein Ziel der Sekundarstufe II
+enthält. Deshalb trägt in der atomaren Normalform kein Cluster ein `requires`,
+auch keine Einheit.
 
-Betrachtet wird die umgekehrte Richtung: Was sich aus den `requires` der Ziele
-ergibt, darf dem `after` der Einheiten nicht widersprechen (Regel E2) und muss
-durch es gedeckt sein (Regel E3).
+Beim Modellieren muss beides zusammenpassen: Die `requires`, die zwischen
+Zielen verschiedener Einheiten tatsächlich bestehen, sind eine Teilmenge der
+vererbten `after`. Das ist Regel E3. Umgekehrt gilt es nicht: Die vererbten
+`after` enthalten mehr, weil der Plan mehr festlegen darf, als die Ziele
+brauchen. Dass die `after` einander nicht widersprechen und keine Einheit
+zerrissen wird, sichert Regel E2.
 
-Die Vererbung entlang `contains` bleibt die Lesart des Übergangsbestands
-außerhalb des kanonischen Gymnasialkatalogs (Abschnitt 9.7).
+Innerhalb einer Einheit gibt es nichts zu vererben. Zwischen ihren eigenen
+Zielen steht nur `requires`, und das ist dort selbst das `after`.
+
+Die Vererbung von `requires` entlang `contains` bleibt die Lesart des
+Übergangsbestands außerhalb des kanonischen Gymnasialkatalogs (Abschnitt 9.7).
 
 ### 4.3 Wer die selbstständige Anwendung braucht
 
@@ -293,7 +301,7 @@ lässt, entfällt damit.
 | --- | --- |
 | **E1 Baum** | Zwei Einheiten sind ineinander geschachtelt oder haben kein gemeinsames Ziel. Jedes Ziel hat damit höchstens eine kleinste Einheit. |
 | **E2 An einem Stück lernbar** | Es gibt eine Reihenfolge aller Ziele, die jeden Bedarf und jedes `after` einhält und in der jede Einheit an einem Stück steht. |
-| **E3 Vollständig** | Braucht ein Ziel a ein Ziel b, betrachtet man die kleinste Einheit, die beide enthält, und ihre beiden Kinder, in denen a und b liegen. Sind beide Kinder Einheiten, liegt das Kind von a nach dem Kind von b. |
+| **E3 Vollständig** | Die `requires` zwischen Zielen verschiedener Einheiten sind eine Teilmenge der vererbten `after`. Genauer: Braucht ein Ziel a ein Ziel b, betrachtet man die kleinste Einheit, die beide enthält, und ihre beiden Kinder, in denen a und b liegen. Sind beide Kinder Einheiten, liegt das Kind von a nach dem Kind von b. |
 | **E4 Sparsam** | Unter den Kindern einer Einheit folgt kein erklärtes `after` schon aus den übrigen. |
 
 E1 ist die bisherige Regel R4 in der Sprache der Cluster. E2 sagt, dass Plan
