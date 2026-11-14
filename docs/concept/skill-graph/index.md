@@ -16,6 +16,7 @@ SkillPilot represents learning goals and their prerequisites as a shared skill g
   recursively composed educational units, motivational introduction, required outcomes, and completion derived from child units and own obligations; how a unit is represented in the skill landscape (placement layer, curriculum-package contract 1.2) is in [§11.2](learning-units.md#sec-unit-representation).
 - [Learning-Unit Progression (§11.5)](learning-unit-progression.md):
   explicit course dependencies, whole-unit ordering, and the separate choice of access policy.
+  Decision of 14 November 2026: [Learning units: clusters, `after` and learning flow (DE)](learning-unit-wiring-concept-2026-11-14.md).
 - [Optional Acquisition & Time Planning (§12)](planning-and-budget.en.md):
   multi-period acquisition plans, structural prerequisite witnesses, and workload budgets.
 - [Assessment-Gated Completion & Implicit Mastery (§13)](assessment-gated-completion.md):
@@ -86,6 +87,7 @@ SkillPilot stellt Lernziele und ihre Voraussetzungen als gemeinsamen Skill-Graph
   rekursiv aufgebaute Lerneinheiten, motivierende Hinführung, geforderte Lernergebnisse und aus Untereinheiten sowie eigenen Nachweisen abgeleiteter Abschluss; wie eine Einheit in der Skill-Landschaft dargestellt wird (Platzierungsschicht, Curriculum-Paketvertrag 1.2), steht in [§11.2](learning-units.de.md#sec-unit-representation).
 - [Einheitsfolge & Zugang (§11.5)](learning-unit-progression.de.md):
   explizite Kursabhängigkeiten, Blockreihenfolge ganzer Einheiten und die getrennte Richtlinienfrage zur Zugangssteuerung.
+  Festlegung vom 14. November 2026: [Lerneinheiten: Cluster, `after` und Lernfluss](learning-unit-wiring-concept-2026-11-14.md).
 - [Optionale Erwerbs- & Zeitplanung (§12)](planning-and-budget.de.md):
   mehrperiodige Erwerbspläne, strukturelle Voraussetzungszeugen und Arbeitslastbudgets.
 - [Prüfungsgebundener Abschluss & implizite Mastery (§13)](assessment-gated-completion.de.md):

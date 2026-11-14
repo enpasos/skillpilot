@@ -601,3 +601,18 @@ Fachprüfung seiner 15 Befunde liegt als Entscheidungsvorlage vor
 ([Protokoll vom 14. November](knowledge-context-subject-review-2026-11-14.md)):
 Beide Reviewer empfehlen zwölf Kanten und zwei engere Zieltexte; damit
 änderten sich 14 Ziele. Eine fachübergreifende Physik-Kante ist strittig.
+
+Am 14. November 2026 hat der Product Owner außerdem die Struktur der Einheiten
+festgelegt
+([Festlegung](../concept/skill-graph/learning-unit-wiring-concept-2026-11-14.md)):
+Eine Einheit ist ein Cluster, der an einem Stück gelernt wird; hat sie eigene
+Prüfungen, belegt ihr Abschluss die selbstständige Anwendung. Zwischen
+Einheiten steht `after`, zwischen atomaren Zielen `requires`; `requires` ist
+ein besonderes `after`. Ein `after` wird nicht entlang `contains` vererbt,
+sondern mit den `requires` der Ziele abgeglichen, und in der Lernweise
+„Einheit für Einheit“ bestimmt es, welches erreichbare Ziel als nächstes
+kommt. Stufen und Jahrgänge werden Planeinheiten eines Landes. Abschnitt 10
+der Festlegung nennt die Folgearbeiten. Stufe 4 beginnt erst nach dem
+Trockenlauf und der Umstellung der drei vorhandenen Einheiten. Stufe 3 ist in
+der Sache nicht berührt; ihr Vertrag und ihr Backend-Teil lesen aber Einheiten
+und bekommen dieselbe Vertragsversion.
