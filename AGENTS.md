@@ -606,7 +606,11 @@ curricular-level terminology. Personalization Levels 1–4, QA maturity and goal
   upgraded. A coverage review is machine content review bound to the task and
   rubric revisions: any change to task, solution, grading note or rubric needs
   a new review. The earlier completion profile `math-dot-product-projection`
-  still names the earlier assessment and is unchanged.
+  still names the earlier assessment and stays unchanged until the runtime
+  stage retires the profile path: production runs in automatic mode, which
+  skips the completion-profile and completion-scope directories, so the
+  profile only serves the historical profile-path tests and the 1.1 package
+  profile.
 - **Second unit and the assessment tool (13 November 2026).** Canonical
   Mathematics also contains `math-natural-numbers` (five grade 5 goals, two
   assessments written for it, `49507f95-d079-5113-8aac-1a08299473a3` and
@@ -625,8 +629,8 @@ curricular-level terminology. Personalization Levels 1–4, QA maturity and goal
   three core dot-product goals everywhere. The assessment model has one task
   per assessment ID; fresh task variants for repeat attempts need a contract
   extension and backend selection and belong to the runtime stage.
-- **First Physics unit and the open decision on experimental goals
-  (13 November 2026).** Canonical Physics contains
+- **First Physics unit (13 November 2026) and experimental goals (Product
+  Owner, 14 November 2026).** Canonical Physics contains
   `physics-constant-acceleration` (two goals of the introductory phase, one
   assessment written for it, `c5807a37-129e-5df6-8989-482bc7f5683e`) with
   reviewed coverage for both goals
@@ -634,10 +638,14 @@ curricular-level terminology. Personalization Levels 1–4, QA maturity and goal
   The goal "Freier Fall experimentell untersuchen" is deliberately outside
   the unit: two independent reviewers found R2 not satisfied for an
   assessment that evaluates given measurement data, and disagreed on whether
-  own measurement data or planning plus evaluation would satisfy it. How an
-  experimental goal is evidenced in a chat with a coach is an open Product
-  Owner decision for all experimental goals. Until it is taken, do not claim
-  reviewed coverage for an experimental goal.
+  own measurement data or planning plus evaluation would satisfy it. The
+  Product Owner decided on 14 November 2026 that experimental goals in
+  Physics, Chemistry and Biology are never recognized: they stay completable
+  only through their own explicit result, and no review claims coverage for
+  them. Canonical goals carry no marker for experimental goals today; how the
+  unit contract identifies them and places them without holding back the
+  recognition of the other goals of a unit belongs to the runtime-stage
+  contract version. Until then an experimental goal belongs to no unit.
 - **Knowledge context of a unit (13 November 2026).** Nothing is written by
   hand about the subject matter of a unit: its knowledge context is the union
   of the contexts of its own goals and assessments (§2.5). Tasks, memory
