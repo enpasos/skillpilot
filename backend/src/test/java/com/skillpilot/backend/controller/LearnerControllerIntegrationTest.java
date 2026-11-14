@@ -1859,13 +1859,17 @@ public class LearnerControllerIntegrationTest {
         // Reviewed cross-stage seed leaves were counted from each matched view
         // with projection roles, jurisdiction, course tags and G8/G9 applicability.
         // Pin S independently before checking the full canonical learning demand.
+        // The Monotoniesatz goal is preparation only outside Baden-Wuerttemberg:
+        // it leaves S everywhere it was a seed; in HE/RP G9 so do the two J10
+        // derivative goals that only its route completion had placed in Sek I,
+        // and in SH LK G9 the J10 task 3 whose direct prerequisite it is.
         String[][] scopes = {
-                { "DE-HE", "GK", "753", "763" },
-                { "DE-HE", "LK", "892", "902" },
-                { "DE-RP", "GK", "690", "701" },
-                { "DE-RP", "LK", "804", "815" },
-                { "DE-SH", "GK", "670", "677" },
-                { "DE-SH", "LK", "767", "775" }
+                { "DE-HE", "GK", "753", "760" },
+                { "DE-HE", "LK", "892", "899" },
+                { "DE-RP", "GK", "690", "698" },
+                { "DE-RP", "LK", "804", "812" },
+                { "DE-SH", "GK", "669", "676" },
+                { "DE-SH", "LK", "766", "773" }
         };
         SoftAssertions softly = new SoftAssertions();
 
