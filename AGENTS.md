@@ -669,16 +669,20 @@ curricular-level terminology. Personalization Levels 1–4, QA maturity and goal
   of a Land's plan at unit level, additional demand of a subject selection)
   and lists nine open decisions. Until they are taken, the unit contract of
   12 November and Graph Definition §11 to §13 stay authoritative. The Product
-  Owner also questioned a separate relation for the unit prerequisite, to
-  keep the graph simple: the draft therefore uses one `requires` relation on
-  two levels. Between atomic goals it states the need and drives frontier,
-  learning scope and knowledge context; between units it states the plan, is
-  never inherited by the unit's goals and is only checked against them. In
-  the target norm inheritance would go; it stays the reading of transition
+  Owner also asked to keep the graph simple and, after reading the draft,
+  settled on this wording: between units the statement is an "after" (German
+  "nach": the unit should lie after the other in the learning flow; whether
+  a learner actually follows it is another matter), between atomic goals it
+  is `requires`, and `requires` is itself an "after", only a special,
+  sharpened one (a specialization of the statement, not inheritance along
+  `contains`). The draft follows this. `requires` states the need and drives frontier, learning scope and
+  knowledge context; an "after" between units states the plan, is never
+  inherited by the unit's goals, secures no knowledge and is only checked
+  against the `requires` of the goals. No cluster carries `requires` in the
+  target norm, units included; inheritance stays the reading of transition
   data, which 525 of the 526 examined landscapes outside the canonical
-  Gymnasium catalog still are. Until this is decided and every program that
-  computes prerequisites knows the distinction, never author `requires` on a
-  cluster of a canonical landscape: today's readers inherit it to every
+  Gymnasium catalog still are. Never author `requires` on a cluster of a
+  canonical landscape: today's readers inherit it to every
   atomic goal and `CQR-001` rejects it. The draft recommends deciding where
   the unit property is stored and whether every Land places the smallest
   units whole before further units are authored.

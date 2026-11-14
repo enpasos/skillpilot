@@ -9,11 +9,13 @@ Nichts davon ist umgesetzt. Bis zu einer Entscheidung gelten die
 [Graph-Definition §11 bis §13](learning-units.de.md) und der Einheitenvertrag
 vom 12. November unverändert.
 
-**Überarbeitet am 14. November 2026.** Die erste Fassung führte die
-Einheitsvoraussetzung als eigene Beziehung. Der Product Owner hat das in Frage
-gestellt: Der Graph soll so einfach wie möglich bleiben. Diese Fassung kommt
-mit einer Beziehung aus und verzichtet in der Zielnorm auf die Vererbung
-(Abschnitt 3.2).
+**Zweimal überarbeitet am 14. November 2026.** Die erste Fassung führte
+zwischen Einheiten eine eigene Beziehung ohne Bezug zu `requires`. Der Product
+Owner wollte den Graphen einfacher und stellte die Vererbung in Frage; die
+zweite Fassung kam mit `requires` allein aus. Nach dem Lesen hat er das
+geschärft: Zwischen Einheiten steht ein „nach“, zwischen atomaren Zielen
+`requires`, und `requires` ist selbst ein „nach“, nur ein besonderes. Diese
+Fassung folgt dem (Abschnitt 3.2).
 
 ## 1. Worum es geht
 
@@ -67,9 +69,15 @@ Ziele ausschließen, ohne eine Sonderregel für Stufen oder Schuljahre.
    Hierarchie lässt sich deshalb möglicherweise verzichten. Betrachtet wird
    die umgekehrte Richtung: Was sich von den Blättern her ergibt, darf den
    Voraussetzungen an den Einheiten nicht widersprechen.
+10. **„Nach“ und `requires`.** Zwischen Einheiten steht inhaltlich ein „nach“:
+    Die eine sollte im Lernfluss nach der anderen liegen. Ob es bei einer
+    lernenden Person tatsächlich so ist, ist etwas anderes. Zwischen den
+    Blättern steht `requires`. Es ist ein „nach“, aber ein besonderes,
+    verschärftes. Dieser Vererbungsgedanke soll erhalten bleiben.
 
 Die Punkte 3, 5, 6 und 9 hat der Product Owner als Wunsch oder Überlegung
-geäußert, nicht als Beschluss.
+geäußert, nicht als Beschluss. Punkt 10 schärft Punkt 9; sein erstes Urteil
+über die Beziehungen nannte er dabei selbst vielleicht voreilig.
 
 ## 3. Das Modell
 
@@ -86,47 +94,61 @@ Lernversprechen, eigene Prüfungen, geprüfte Abdeckung und die Regeln R1 bis R5
 bleiben Eigenschaften der Einheit. Neu ist, woher eine Einheit ihre Ziele und
 ihre Untereinheiten hat: aus `contains`, nicht aus einer eigenen Aufzählung.
 
-### 3.2 Eine Beziehung auf zwei Ebenen
+### 3.2 „Nach“ und `requires`
 
-Der Graph kennt eine Beziehung „setzt voraus“ (`requires`). Sie verbindet ein
-atomares Ziel mit einem atomaren Ziel oder eine Einheit mit einer Einheit. An
-einem Cluster, der keine Einheit ist, steht keine Voraussetzung.
+Der Graph kennt eine Aussage über die Reihenfolge, das „nach“, und eine
+besondere Form davon, `requires`. `requires` ist ein „nach“, aber ein
+besonderes: Was für jedes „nach“ gilt, gilt auch für jedes `requires`;
+umgekehrt ist nicht jedes „nach“ ein `requires`. Das ist Vererbung zwischen
+den beiden Aussagen, vom Allgemeinen auf das Besondere. Mit der Vererbung
+entlang `contains`, von der dieser Abschnitt unten handelt, hat sie nichts zu
+tun.
 
-| | Zwischen atomaren Zielen | Zwischen Einheiten |
+| | „nach“ | `requires`, das besondere „nach“ |
 | --- | --- | --- |
-| Sagt | den Bedarf: Das Ziel ist erst erreichbar, wenn das andere gelernt ist. | den Plan: Die vorausgesetzte Einheit ist abgeschlossen, bevor die andere beginnt. |
-| Herkunft | fachlich, von unten | erklärt, von oben |
-| Wirkung | Frontier, Lernumfang, Wissenskontext | keine auf einzelne Ziele; sie wird geprüft |
+| Steht zwischen | zwei Einheiten | zwei atomaren Zielen |
+| Sagt | das Soll: Die eine Einheit sollte im Lernfluss nach der anderen liegen. Die andere ist abgeschlossen, bevor sie beginnt. | das Soll und den Bedarf: Das Ziel liegt nach dem anderen und ist ohne es nicht erreichbar. |
+| Herkunft | erklärt, von oben | fachlich, von unten |
+| Wirkung | keine auf einzelne Ziele; es wird geprüft | Frontier, Lernumfang, Wissenskontext |
+
+Besonders ist `requires` durch seine Verbindlichkeit, nicht durch seinen
+Umfang. Ein „nach“ zwischen zwei Einheiten ordnet alle Ziele der einen hinter
+alle Ziele der anderen, ein `requires` ein Ziel hinter ein anderes.
+
+„Nach“ beschreibt das Soll des Lernflusses. Ob eine lernende Person die
+Einheiten tatsächlich in dieser Reihenfolge lernt, ist etwas anderes; nichts
+sperrt sie. Deshalb sichert ein „nach“ für ein einzelnes Ziel kein Wissen zu.
+`requires` wirkt dagegen im Lernfluss: Die Frontier richtet sich nach ihm, und
+der Lernumfang nimmt alles auf, was ein Ziel braucht.
 
 Ein Ziel **braucht** ein anderes, wenn es dieses direkt oder über
-Zwischenschritte voraussetzt. Die Voraussetzung zwischen zwei Einheiten heißt
-hier wie in der Graph-Definition §11.5 **Einheitsvoraussetzung**.
+Zwischenschritte voraussetzt. Das „nach“ zwischen zwei Einheiten ist die
+Einheitsvoraussetzung der Graph-Definition §11.5, die dort bisher weder eine
+Darstellung noch Regeln hat. Dieser Entwurf sagt „nach“, weil die Aussage eine
+Reihenfolge behauptet und keinen Bedarf.
 
-**Prüfung statt Vererbung.** Die Graph-Definition liest eine Voraussetzung an
-einem Cluster bisher so, dass sie für alle Nachfahren gilt. In der Zielnorm,
-der atomaren Normalform, tragen Cluster aber keine Voraussetzungen mehr; die
-Vererbung ist dort nur noch die Lesart für den Übergangsbestand
-([§2](graph-definition.de.md#sec-relations)). Im kanonischen Gymnasialkatalog
-steht an keinem der 1.029 Cluster eine Voraussetzung (Abschnitt 8.6). Dieser
-frei gewordene Platz bekommt für Einheiten eine neue Bedeutung: Die
-Voraussetzung an einer Einheit ist eine Aussage über den Plan. Sie wird nicht
-nach unten weitergereicht. Betrachtet wird die umgekehrte Richtung: Was sich
-aus den Voraussetzungen der Ziele ergibt, darf ihr nicht widersprechen.
+**Prüfung statt Vererbung entlang `contains`.** In der Zielnorm, der atomaren
+Normalform, trägt kein Cluster ein `requires`. Das bleibt so, auch für
+Einheiten. Die Vererbung entlang `contains` ist nur die Lesart für den
+Übergangsbestand
+([§2](graph-definition.de.md#sec-relations)); im kanonischen Gymnasialkatalog
+steht an keinem der 1.029 Cluster ein `requires` (Abschnitt 8.6). Ein „nach“
+wird nicht nach unten weitergereicht. Betrachtet wird die umgekehrte Richtung:
+Was sich aus den `requires` der Ziele ergibt, darf dem „nach“ der Einheiten
+nicht widersprechen.
 
-Der Unterschied liegt in der Wirkung, nicht in der Rechnung. Vererbt wäre
-„Sekundarstufe II setzt Sekundarstufe I voraus“ Bedarf jedes einzelnen Ziels:
-Kein Ziel der Sekundarstufe II wäre erreichbar, bevor die ganze
-Sekundarstufe I gemeistert ist, und der Voraussetzungsabschluss zöge sie
-vollständig in jeden Lernumfang. Als Aussage über den Plan sperrt sie nichts.
+Stünde „Sekundarstufe II nach Sekundarstufe I“ stattdessen als `requires` am
+Cluster und würde vererbt, wäre es Bedarf jedes einzelnen Ziels: Kein Ziel der
+Sekundarstufe II wäre erreichbar, bevor die ganze Sekundarstufe I gemeistert
+ist, und der Voraussetzungsabschluss zöge sie vollständig in jeden Lernumfang.
 Die Prüfung in Regel E2 rechnet dasselbe wie die bisherige Zyklenprüfung über
 vererbte Voraussetzungen. Ihr Ergebnis ist aber kein Bedarf, sondern ein
 Befund.
 
-Eine Einheitsvoraussetzung ordnet jedes Ziel der einen Einheit hinter jedes
-Ziel der anderen. Daraus folgt, wann eine Einheit **nach** einer anderen
+Aus den erklärten „nach“ folgt, wann eine Einheit **nach** einer anderen
 liegt:
 
-- Setzt u die Einheit v voraus, liegt u nach v.
+- Ist für u ein „nach“ zu v erklärt, liegt u nach v.
 - Liegt u nach v, liegt jeder Teil von u nach jedem Teil von v.
 - Liegt u nach w und w nach v, liegt u nach v.
 
@@ -135,9 +157,9 @@ liegt:
 | Regel | Inhalt |
 | --- | --- |
 | **E1 Baum** | Zwei Einheiten sind ineinander geschachtelt oder haben kein gemeinsames Ziel. Jedes atomare Ziel hat damit höchstens eine kleinste Einheit; ist ein Fach vollständig in Einheiten gefasst, genau eine. |
-| **E2 Widerspruchsfrei** | Nimmt man die Voraussetzungen der Ziele und die der Einheiten zusammen, kommt kein Ziel nach sich selbst. Eine Einheitsvoraussetzung verbindet deshalb nie zwei Einheiten, von denen eine in der anderen liegt. |
+| **E2 Widerspruchsfrei** | Nimmt man alle „nach“ zusammen, die der Einheiten und die `requires` der Ziele als besondere „nach“, kommt kein Ziel nach sich selbst. Ein „nach“ verbindet deshalb nie zwei Einheiten, von denen eine in der anderen liegt. |
 | **E3 Vollständig** | Braucht ein Ziel a ein Ziel b, und liegt von ihren kleinsten Einheiten keine in der anderen, dann liegt die kleinste Einheit von a nach der von b. |
-| **E4 Sparsam** | Keine Einheitsvoraussetzung folgt schon aus den übrigen. |
+| **E4 Sparsam** | Kein erklärtes „nach“ folgt schon aus den übrigen. |
 
 E1 ist die bisherige Regel R4 in der Sprache der Cluster. E2 ist die neunte
 Vorgabe und die erste Hälfte der sechsten: Was von den Blättern kommt,
@@ -146,14 +168,12 @@ Vorgabe: Zwischen Einheiten entsteht nichts Unerklärtes. E4 entspricht der
 transitiven Minimalität und hält die Verdrahtung lesbar.
 
 E2 genügt, um Rückgriffe auszuschließen. E3 geht weiter: Mit ihr sind die
-Einheitsvoraussetzungen die ausdrücklich hingeschriebene Zusammenfassung
-dessen, was die Ziele brauchen, ergänzt um das, was der Plan zusätzlich
-festlegt.
+„nach“ der Einheiten die ausdrücklich hingeschriebene Zusammenfassung dessen,
+was die Ziele brauchen, ergänzt um das, was der Plan zusätzlich festlegt.
 
-Eine Einheitsvoraussetzung darf mehr verlangen, als die Ziele brauchen. Das
-ist die Planung von oben: „Jahrgang 6 setzt Jahrgang 5 voraus“ gilt, auch wenn
-kein Ziel es erzwingt. Sie darf nie weniger verlangen und nie etwas
-Widersprüchliches.
+Ein „nach“ darf mehr festlegen, als die Ziele brauchen. Das ist die Planung
+von oben: „Jahrgang 6 nach Jahrgang 5“ gilt, auch wenn kein Ziel es erzwingt.
+Mit E3 legt es nie weniger fest, mit E2 nie etwas Widersprüchliches.
 
 ### 3.4 Was aus den Regeln folgt
 
@@ -166,10 +186,10 @@ Widersprüchliches.
 - **Die Einheit hat eine Schnittstelle (aus E3).** Was die Ziele einer Einheit
   von außen brauchen, liegt in Einheiten, nach denen sie liegt. Der
   [Wissenskontext](knowledge-context.de.md) jedes ihrer Ziele ist damit durch
-  die erklärten Voraussetzungen der Einheit begrenzt und lässt sich in wenigen
-  Namen angeben.
+  die erklärten „nach“ der Einheit begrenzt und lässt sich in wenigen Namen
+  angeben.
 - **Änderungen fallen auf.** Eine neue Voraussetzung zwischen Zielen
-  verschiedener Einheiten verletzt E3, solange keine Einheitsvoraussetzung sie
+  verschiedener Einheiten verletzt E3, solange kein „nach“ der Einheiten sie
   deckt. Wer sie einträgt, muss entscheiden, ob die eine Einheit wirklich auf
   der anderen aufbauen soll.
 
@@ -177,8 +197,8 @@ Widersprüchliches.
 
 Angenommen, eine Einheit D fasst die Ziele zur Diode und eine Einheit B das
 Bändermodell. In 14 Ländern stehen die Ziele von D in der Sekundarstufe I und
-die von B in der Sekundarstufe II, und die Sekundarstufe II setzt die
-Sekundarstufe I voraus. Damit kommt jedes Ziel von B nach jedem Ziel von D.
+die von B in der Sekundarstufe II, und die Sekundarstufe II liegt nach der
+Sekundarstufe I. Damit kommt jedes Ziel von B nach jedem Ziel von D.
 Ein Ziel aus D braucht heute aber „Bändermodell und Dotierung“ aus B; dieses
 muss also vor ihm kommen. Beides zusammen ergibt einen Kreis. E2 ist verletzt.
 Mit E3 steht der Widerspruch zwischen zwei benannten Einheiten: D müsste nach
@@ -203,16 +223,15 @@ ergeben sich zwei Arten von Einheiten mit denselben Regeln:
 | Beispiele | „Natürliche Zahlen verstehen und darstellen“ | Sekundarstufe I, Jahrgang 8, Q1 |
 | Gilt für | alle Länder | den Plan eines Landes |
 | Inhalt | eigene Ziele und Untereinheiten, überall dieselben | die Einheiten, die das Land dort vorsieht, über alle gewählten Fächer |
-| Einheitsvoraussetzungen | fachlich begründet | fest vorgegeben: Stufe nach Stufe, Jahrgang nach Jahrgang |
+| „Nach“ | fachlich begründet | fest vorgegeben: Stufe nach Stufe, Jahrgang nach Jahrgang |
 
 Fächer sind in beiden Fällen nur Gruppierung. Die Ansicht nach Fächern und die
 Ansicht nach Stufen sind zwei Darstellungen derselben Einheiten.
 
 ### 4.2 Der Plan eines Landes
 
-Der Plan eines Landes besteht aus seinen Planeinheiten, deren festen
-Einheitsvoraussetzungen und der Zuordnung fachlicher Einheiten zu
-Planeinheiten. Heute steckt diese Zuordnung in den Ländersichten: Deren
+Der Plan eines Landes besteht aus seinen Planeinheiten, deren fester
+Reihenfolge und der Zuordnung fachlicher Einheiten zu Planeinheiten. Heute steckt diese Zuordnung in den Ländersichten: Deren
 Abschnitte „Sekundarstufe I“, „Jahrgangsstufe 7“ oder „Ph8.3“ sagen, welcher
 Cluster wohin gehört. Sie sind die Planung von oben, nur noch nicht als
 prüfbare Aussage.
@@ -240,15 +259,15 @@ Plans.
 
 Die Pläne der 16 Länder prüfen damit auch die fachliche Verdrahtung. Lehren
 mehrere Länder eine Einheit vor der anderen, obwohl die Verdrahtung das
-Gegenteil erklärt, ist das ein Beleg gegen die Voraussetzung in dieser Form:
-Die Einheit braucht die andere nicht, oder diese Länder lehren eine schwächere
-Fassung.
+Gegenteil erklärt, ist das ein Beleg gegen dieses „nach“ und den Bedarf
+dahinter: Die Einheit braucht die andere nicht, oder diese Länder lehren eine
+schwächere Fassung.
 
 ### 4.4 Fächerauswahl und Zusatzbedarf
 
 Eine Fächerauswahl mit Kursprofilen bestimmt, welche fachlichen Einheiten der
-Plan enthält. Der **Zusatzbedarf** einer Auswahl sind die Einheiten, nach
-denen eine gewählte Einheit liegt, die aber nicht zur Auswahl gehören.
+Plan enthält. Der **Zusatzbedarf** einer Auswahl sind die Einheiten außerhalb
+der Auswahl, aus denen ein gewähltes Ziel etwas braucht.
 
 Eine Kombination ist fair, wenn ihr Zusatzbedarf benannt und als Vorbereitung
 in den Plan aufgenommen wird, jeweils vor der ersten Einheit, die ihn braucht.
@@ -325,11 +344,11 @@ Innerhalb der Fächer zeigen sich dieselben Muster:
 - Der persönliche Lernumfang ist der Abschluss über die atomaren
   Voraussetzungen (Entscheidung vom 10. November).
 - Der Wissenskontext eines Ziels wird aus den atomaren Voraussetzungen
-  abgeleitet (Anforderung vom 13. November). Eine Einheitsvoraussetzung
-  sichert für ein einzelnes Ziel nichts zusätzlich; sie begrenzt, was der
-  Kontext enthalten kann.
-- Ob eine Einheitsvoraussetzung den Zugang sperrt, bleibt unentschieden. Sie
-  prüft den Plan, den wir anbieten, und sperrt niemanden.
+  abgeleitet (Anforderung vom 13. November). Ein „nach“ sichert für ein
+  einzelnes Ziel nichts zu, weil es nur das Soll beschreibt; mit E3 begrenzt
+  es, was der Kontext enthalten kann.
+- Ob ein „nach“ je den Zugang sperrt, bleibt unentschieden. Es beschreibt den
+  Plan, den wir anbieten, und sperrt niemanden.
 
 **Ändern würde sich:**
 
@@ -339,16 +358,11 @@ Innerhalb der Fächer zeigen sich dieselben Muster:
 - **Die Stellung von Stufen und Jahrgängen.** Die Graph-Definition nennt
   Schuljahre mögliche Planungsanker und keine Lerneinheiten. Sie würden
   Planeinheiten.
-- **Die Lesart einer Voraussetzung an einem Cluster.** Die Zielnorm verbietet
-  sie heute ganz; die Vererbung gilt nur für den Übergangsbestand. Künftig
-  dürfte eine Einheit eine Voraussetzung tragen, und diese würde geprüft statt
-  vererbt. Der Übergangsbestand behielte seine Lesart, bis er normalisiert ist;
-  eine Landschaft mit Einheiten müsste in atomarer Normalform sein. Jedes
-  Programm, das Voraussetzungen ausrechnet, muss diese Abgrenzung kennen,
-  bevor die erste Einheitsvoraussetzung im Katalog steht (Abschnitt 8.6).
-- **Die Einheitsvoraussetzung** bekäme eine Darstellung und die Regeln E2 bis
-  E4. Der „Reihenfolgefehler“ aus §12 wäre für Planeinheiten ein Verstoß gegen
-  E2; die Budgetprüfung aus §12 bliebe ein freiwilliges Profil.
+- **Einheiten bekämen das „nach“.** Es ist die Einheitsvoraussetzung aus
+  §11.5, nun mit einer Darstellung und den Regeln E2 bis E4. `requires` behält
+  überall seine heutige Bedeutung, und in der Zielnorm trägt weiterhin kein
+  Cluster eines. Der „Reihenfolgefehler“ aus §12 wäre für Planeinheiten ein
+  Verstoß gegen E2; die Budgetprüfung aus §12 bliebe ein freiwilliges Profil.
 - **Die `contains`-Hierarchie** müsste um Einheiten herum geordnet werden
   (Abschnitt 8.4). Weil kein Cluster eine Voraussetzung trägt, ändert das
   keine Voraussetzung. Es ändert die Bäume der Ländersichten und alles, was an
@@ -366,7 +380,7 @@ anerkannt werden, und der Vertragsstand einer Einheit.
 
 | Nr. | Frage | Empfehlung |
 | --- | --- | --- |
-| K1 | Wo werden die Einheiteneigenschaft eines Clusters und seine Einheitsvoraussetzungen geschrieben: am Cluster selbst oder am Einheiteneintrag der Platzierungsschicht, der auf den Cluster zeigt? | Am Einheiteneintrag, solange es Übergangsbestand gibt. Das Modell ist in beiden Fällen dasselbe. Am Einheiteneintrag kann kein vorhandenes Programm die Aussage als Bedarf lesen, das Feld `requires` behält an Clustern überall eine einzige Lesart, und Zielobjekte samt ihren Nachweisen bleiben unverändert. Am Cluster stünde alles an einer Stelle; dafür müssten vorher alle Programme und `CQR-001` umgestellt sein. Die Platzierungen `own` und das Elternfeld entfielen in beiden Fällen. |
+| K1 | Wo werden die Einheiteneigenschaft eines Clusters und sein „nach“ geschrieben: am Cluster selbst oder am Einheiteneintrag der Platzierungsschicht, der auf den Cluster zeigt? | Am Einheiteneintrag. Zielobjekte samt den an sie gebundenen Nachweisen bleiben dann unverändert; Lernversprechen, Abdeckungsreviews und Revision stehen dort schon. Am Cluster stünde alles an einer Stelle. Weil „nach“ ein eigenes Feld ist, läse es auch dort kein vorhandenes Programm als Bedarf; geändert würden aber Zielobjekte, darunter 71 Cluster des eingefrorenen Reduktionsnachweises. Die Platzierungen `own` und das Elternfeld entfielen in beiden Fällen. |
 | K2 | Gelten E2 bis E4 wie in Abschnitt 3.3? | E2 ja. E3 ebenfalls, zunächst für fachliche Einheiten: Erst mit ihr lässt sich der Plan eines Landes auf Einheitenebene prüfen. Offen ist eine Feinheit: Eigene Ziele neben Untereinheiten sollten nur Einstieg (Orientierung) oder Abschluss (zusammenführende Prüfung, Lernkarten) sein; eigene Fachziele gehören in eine Untereinheit. |
 | K3 | Zwei Arten von Einheiten nach Abschnitt 4.1? | Ja. Anders lässt sich nicht fassen, dass dieselbe fachliche Einheit in zwei Ländern in verschiedenen Jahrgängen steht. |
 | K4 | Plant jedes Land die kleinsten fachlichen Einheiten als Ganzes ein? | Ja. Das macht die Länderpläne zur Prüfbedingung für den Zuschnitt und deckt Ziele auf, die zwei Niveaus mischen. Es führt stellenweise zu kleinen Einheiten. |
@@ -374,7 +388,7 @@ anerkannt werden, und der Vertragsstand einer Einheit.
 | K6 | Wo werden die Planeinheiten eines Landes erklärt, sodass sie für alle Fächer dieselben sind? | Offen. Heute führt jede Fachsicht eigene Abschnitte, und jedes Fach eigene Programmeinheiten `stage`, `year` und `phase`. |
 | K7 | Was fügt eine Fächerauswahl ihrem Plan hinzu: ganze Einheiten des Zusatzbedarfs oder nur die gebrauchten Ziele? | Zur Laufzeit weiter nur die gebrauchten Ziele, wie am 10. November entschieden. Angezeigt wird der Zusatzbedarf in Einheiten. |
 | K8 | Wie wird aus der Prüfung ein Gate? | Zuerst ein Bericht, dann Behebung der Ursachen, dann eine Sperrklinke: Kein neuer Verstoß kommt hinzu. Ein hartes Gate erst bei null. |
-| K9 | Entfällt die Vererbung in der Zielnorm (Abschnitt 3.2)? | Ja. Sie leistet im kanonischen Gymnasialkatalog schon heute nichts, und die Graph-Definition wird einfacher: Die drei Schritte Erben, Expandieren, Abschließen gelten dann nur noch für den Übergangsbestand. |
+| K9 | Trägt eine Einheit ein `requires`? | Nein. Zwischen Einheiten steht „nach“ (Abschnitt 3.2). `requires` bleibt den atomaren Zielen vorbehalten. Die Vererbung bleibt die Lesart des Übergangsbestands und wird in der Zielnorm nicht gebraucht. |
 
 K1 und K4 sollten fallen, bevor in Stufe 4 weitere Einheiten verfasst werden.
 Beide bestimmen, wie eine Einheit abgelegt und geschnitten wird.
@@ -457,7 +471,7 @@ Prüfungen beiseite:
 | --- | --- | --- |
 | Themencluster mit Fachzielen | 215 | 105 |
 | Abgeleitete Abhängigkeiten zwischen ihnen | 445 | 233 |
-| Nötige Einheitsvoraussetzungen nach E4 | 257 | 120 |
+| Nötige erklärte „nach“ (sparsam nach E4) | 257 | 120 |
 | Cluster, die sich gegenseitig brauchen | 46 in 16 Gruppen | 24 in 10 Gruppen |
 
 Dazu kommen 133 Abhängigkeiten von 61 Physikclustern zu 36

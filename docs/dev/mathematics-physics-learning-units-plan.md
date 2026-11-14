@@ -604,11 +604,12 @@ Beide Reviewer empfehlen zwölf Kanten und zwei engere Zieltexte; damit
 
 Am 14. November 2026 hat der Product Owner außerdem eine Richtung für die
 Struktur der Einheiten vorgegeben, noch keine Entscheidung: Einheiten sind
-ausgezeichnete Cluster der `contains`-Hierarchie, sie werden durch
-ausdrückliche Einheitsvoraussetzungen verdrahtet, und Stufen und Jahrgänge
-werden Einheiten des Plans eines Landes. Der Graph soll dabei mit einer
-Beziehung auskommen: Eine Voraussetzung an einer Einheit wird nicht vererbt,
-sondern gegen die Voraussetzungen der Ziele geprüft. Der
+ausgezeichnete Cluster der `contains`-Hierarchie, sie werden ausdrücklich
+verdrahtet, und Stufen und Jahrgänge werden Einheiten des Plans eines Landes.
+Zwischen Einheiten steht dabei ein „nach“: Die eine sollte im Lernfluss nach
+der anderen liegen. Zwischen atomaren Zielen steht `requires`; es ist selbst
+ein „nach“, nur ein besonderes. Ein „nach“ wird nicht entlang `contains`
+vererbt, sondern gegen die `requires` der Ziele geprüft. Der
 [Konzeptentwurf](../concept/skill-graph/learning-unit-wiring-concept-2026-11-14.md)
 arbeitet das aus und nennt neun offene Entscheidungen. Zwei davon ändern, wie
 eine Einheit abgelegt und geschnitten wird. Stufe 4 sollte deshalb erst
