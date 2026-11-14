@@ -723,9 +723,7 @@ plan.
   had passed all 14 jobs of
   [CI #2343](https://github.com/enpasos/skillpilot/actions/runs/43516942141).
   Main [CI #2346](https://github.com/enpasos/skillpilot/actions/runs/43536761502)
-  on the merge commit had passed 12 of 14 jobs when this entry was written;
-  `Curriculum CI` and `backend-ci` were still running. Main acceptance needs
-  that run to finish green.
+  on the merge commit then passed all 14 jobs.
   The published matrix shows 12 `HARD`, 50 `PARTIAL` and 55 `OPEN` rows.
 - 2026-11-14, close-out round (section 11): repaired the Hessen Q2.4/Q2.5
   regression, which had failed on main since `7534d5e844` (28 September), and added it to
