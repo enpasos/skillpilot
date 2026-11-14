@@ -667,12 +667,21 @@ curricular-level terminology. Personalization Levels 1–4, QA maturity and goal
   `docs/concept/skill-graph/learning-unit-wiring-concept-2026-11-14.md` works
   this out (rules E1 to E4, subject units versus plan units of a Land, check
   of a Land's plan at unit level, additional demand of a subject selection)
-  and lists eight open decisions. Until they are taken, the unit contract of
-  12 November and Graph Definition §11 to §13 stay authoritative. The unit
-  prerequisite is a relation of its own: never author it as `requires` on a
-  cluster, which would be inherited by every atomic goal. The draft
-  recommends deciding where the unit property is stored and whether every
-  Land places the smallest units whole before further units are authored.
+  and lists nine open decisions. Until they are taken, the unit contract of
+  12 November and Graph Definition §11 to §13 stay authoritative. The Product
+  Owner also questioned a separate relation for the unit prerequisite, to
+  keep the graph simple: the draft therefore uses one `requires` relation on
+  two levels. Between atomic goals it states the need and drives frontier,
+  learning scope and knowledge context; between units it states the plan, is
+  never inherited by the unit's goals and is only checked against them. In
+  the target norm inheritance would go; it stays the reading of transition
+  data, which 525 of the 526 examined landscapes outside the canonical
+  Gymnasium catalog still are. Until this is decided and every program that
+  computes prerequisites knows the distinction, never author `requires` on a
+  cluster of a canonical landscape: today's readers inherit it to every
+  atomic goal and `CQR-001` rejects it. The draft recommends deciding where
+  the unit property is stored and whether every Land places the smallest
+  units whole before further units are authored.
 
 This is concept documentation plus a static authoring contract and validator,
 not an implemented runtime or access policy. See `docs/concept/skill-graph/learning-units.md`,

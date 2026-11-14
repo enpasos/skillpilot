@@ -9,6 +9,12 @@ Nichts davon ist umgesetzt. Bis zu einer Entscheidung gelten die
 [Graph-Definition §11 bis §13](learning-units.de.md) und der Einheitenvertrag
 vom 12. November unverändert.
 
+**Überarbeitet am 14. November 2026.** Die erste Fassung führte die
+Einheitsvoraussetzung als eigene Beziehung. Der Product Owner hat das in Frage
+gestellt: Der Graph soll so einfach wie möglich bleiben. Diese Fassung kommt
+mit einer Beziehung aus und verzichtet in der Zielnorm auf die Vererbung
+(Abschnitt 3.2).
+
 ## 1. Worum es geht
 
 Die Lernkarte zeigte Pfeile im Kreis: zwischen Sekundarstufe I und
@@ -56,8 +62,13 @@ Ziele ausschließen, ohne eine Sonderregel für Stufen oder Schuljahre.
 8. **Jeder Rückgriff wird am konkreten Fall beurteilt.** Es ist zulässig,
    etwas zuerst phänomenologisch zu behandeln und erst später auf ein solides
    Fundament zu stellen.
+9. **Der Graph bleibt einfach.** Die Voraussetzungen stehen letztlich an den
+   Blättern der `contains`-Hierarchie. Auf eine strikte Vererbung entlang der
+   Hierarchie lässt sich deshalb möglicherweise verzichten. Betrachtet wird
+   die umgekehrte Richtung: Was sich von den Blättern her ergibt, darf den
+   Voraussetzungen an den Einheiten nicht widersprechen.
 
-Die Punkte 3, 5 und 6 hat der Product Owner als Wunsch oder Überlegung
+Die Punkte 3, 5, 6 und 9 hat der Product Owner als Wunsch oder Überlegung
 geäußert, nicht als Beschluss.
 
 ## 3. Das Modell
@@ -75,32 +86,48 @@ Lernversprechen, eigene Prüfungen, geprüfte Abdeckung und die Regeln R1 bis R5
 bleiben Eigenschaften der Einheit. Neu ist, woher eine Einheit ihre Ziele und
 ihre Untereinheiten hat: aus `contains`, nicht aus einer eigenen Aufzählung.
 
-### 3.2 Zwei Arten von Voraussetzungen
+### 3.2 Eine Beziehung auf zwei Ebenen
+
+Der Graph kennt eine Beziehung „setzt voraus“ (`requires`). Sie verbindet ein
+atomares Ziel mit einem atomaren Ziel oder eine Einheit mit einer Einheit. An
+einem Cluster, der keine Einheit ist, steht keine Voraussetzung.
 
 | | Zwischen atomaren Zielen | Zwischen Einheiten |
 | --- | --- | --- |
-| Name | Voraussetzung (`requires`) | Einheitsvoraussetzung |
+| Sagt | den Bedarf: Das Ziel ist erst erreichbar, wenn das andere gelernt ist. | den Plan: Die vorausgesetzte Einheit ist abgeschlossen, bevor die andere beginnt. |
 | Herkunft | fachlich, von unten | erklärt, von oben |
-| Bedeutung | Das Ziel ist erst erreichbar, wenn das andere gelernt ist. | Im Plan ist die vorausgesetzte Einheit abgeschlossen, bevor die andere beginnt. |
-| Wirkung | Frontier, Lernumfang, Wissenskontext | Prüfung des Plans, Ordnung der Darstellung |
+| Wirkung | Frontier, Lernumfang, Wissenskontext | keine auf einzelne Ziele; sie wird geprüft |
 
 Ein Ziel **braucht** ein anderes, wenn es dieses direkt oder über
-Zwischenschritte voraussetzt.
+Zwischenschritte voraussetzt. Die Voraussetzung zwischen zwei Einheiten heißt
+hier wie in der Graph-Definition §11.5 **Einheitsvoraussetzung**.
 
-Die Einheitsvoraussetzung ist eine eigene Beziehung. Sie wird nicht auf die
-Ziele der Einheit vererbt. Sonst setzte jedes Ziel der Sekundarstufe II jedes
-Ziel der Sekundarstufe I voraus: Der Voraussetzungsabschluss zöge die gesamte
-Sekundarstufe I in jeden Lernumfang, und die transitive Minimalität wäre
-verletzt. Genau diese Form, Voraussetzungen an Clustern, hat die atomare
-Normalisierung gerade beseitigt. Die Graph-Definition nennt die
-Einheitsvoraussetzung bereits in §11.5, bisher ohne Darstellung und ohne
-Regeln.
+**Prüfung statt Vererbung.** Die Graph-Definition liest eine Voraussetzung an
+einem Cluster bisher so, dass sie für alle Nachfahren gilt. In der Zielnorm,
+der atomaren Normalform, tragen Cluster aber keine Voraussetzungen mehr; die
+Vererbung ist dort nur noch die Lesart für den Übergangsbestand
+([§2](graph-definition.de.md#sec-relations)). Im kanonischen Gymnasialkatalog
+steht an keinem der 1.029 Cluster eine Voraussetzung (Abschnitt 8.6). Dieser
+frei gewordene Platz bekommt für Einheiten eine neue Bedeutung: Die
+Voraussetzung an einer Einheit ist eine Aussage über den Plan. Sie wird nicht
+nach unten weitergereicht. Betrachtet wird die umgekehrte Richtung: Was sich
+aus den Voraussetzungen der Ziele ergibt, darf ihr nicht widersprechen.
 
-Aus den erklärten Einheitsvoraussetzungen folgt, wann eine Einheit **nach**
-einer anderen liegt:
+Der Unterschied liegt in der Wirkung, nicht in der Rechnung. Vererbt wäre
+„Sekundarstufe II setzt Sekundarstufe I voraus“ Bedarf jedes einzelnen Ziels:
+Kein Ziel der Sekundarstufe II wäre erreichbar, bevor die ganze
+Sekundarstufe I gemeistert ist, und der Voraussetzungsabschluss zöge sie
+vollständig in jeden Lernumfang. Als Aussage über den Plan sperrt sie nichts.
+Die Prüfung in Regel E2 rechnet dasselbe wie die bisherige Zyklenprüfung über
+vererbte Voraussetzungen. Ihr Ergebnis ist aber kein Bedarf, sondern ein
+Befund.
+
+Eine Einheitsvoraussetzung ordnet jedes Ziel der einen Einheit hinter jedes
+Ziel der anderen. Daraus folgt, wann eine Einheit **nach** einer anderen
+liegt:
 
 - Setzt u die Einheit v voraus, liegt u nach v.
-- Liegt u nach v, liegt jede Untereinheit von u nach jeder Untereinheit von v.
+- Liegt u nach v, liegt jeder Teil von u nach jedem Teil von v.
 - Liegt u nach w und w nach v, liegt u nach v.
 
 ### 3.3 Die Regeln
@@ -108,14 +135,20 @@ einer anderen liegt:
 | Regel | Inhalt |
 | --- | --- |
 | **E1 Baum** | Zwei Einheiten sind ineinander geschachtelt oder haben kein gemeinsames Ziel. Jedes atomare Ziel hat damit höchstens eine kleinste Einheit; ist ein Fach vollständig in Einheiten gefasst, genau eine. |
-| **E2 Widerspruchsfrei** | Keine Einheit liegt nach sich selbst. Eine Einheitsvoraussetzung verbindet nie zwei Einheiten, von denen eine in der anderen liegt. |
+| **E2 Widerspruchsfrei** | Nimmt man die Voraussetzungen der Ziele und die der Einheiten zusammen, kommt kein Ziel nach sich selbst. Eine Einheitsvoraussetzung verbindet deshalb nie zwei Einheiten, von denen eine in der anderen liegt. |
 | **E3 Vollständig** | Braucht ein Ziel a ein Ziel b, und liegt von ihren kleinsten Einheiten keine in der anderen, dann liegt die kleinste Einheit von a nach der von b. |
 | **E4 Sparsam** | Keine Einheitsvoraussetzung folgt schon aus den übrigen. |
 
-E1 ist die bisherige Regel R4 in der Sprache der Cluster. E2 und E3 sind die
-beiden Hälften der sechsten Vorgabe: E2 verlangt, dass die Erklärungen zu den
-Zielen passen, E3, dass nichts Unerklärtes zwischen Einheiten entsteht. E4
-entspricht der transitiven Minimalität und hält die Verdrahtung lesbar.
+E1 ist die bisherige Regel R4 in der Sprache der Cluster. E2 ist die neunte
+Vorgabe und die erste Hälfte der sechsten: Was von den Blättern kommt,
+widerspricht den Einheiten nicht. E3 ist die zweite Hälfte der sechsten
+Vorgabe: Zwischen Einheiten entsteht nichts Unerklärtes. E4 entspricht der
+transitiven Minimalität und hält die Verdrahtung lesbar.
+
+E2 genügt, um Rückgriffe auszuschließen. E3 geht weiter: Mit ihr sind die
+Einheitsvoraussetzungen die ausdrücklich hingeschriebene Zusammenfassung
+dessen, was die Ziele brauchen, ergänzt um das, was der Plan zusätzlich
+festlegt.
 
 Eine Einheitsvoraussetzung darf mehr verlangen, als die Ziele brauchen. Das
 ist die Planung von oben: „Jahrgang 6 setzt Jahrgang 5 voraus“ gilt, auch wenn
@@ -124,14 +157,14 @@ Widersprüchliches.
 
 ### 3.4 Was aus den Regeln folgt
 
-- **Kein Rückgriff.** Liegt u nach v, braucht kein Ziel aus v ein Ziel aus u.
-  Sonst läge nach E3 auch v nach u und damit u nach sich selbst.
-- **Jede Ebene lässt sich ordnen.** Alle Abhängigkeiten zwischen Einheiten
-  sind erklärt und kreisfrei. Auf jeder Ebene gibt es deshalb eine
+- **Kein Rückgriff (aus E2).** Liegt u nach v, braucht kein Ziel aus v ein
+  Ziel aus u. Sonst käme dieses Ziel nach sich selbst.
+- **Jede Ebene lässt sich ordnen (aus E3).** Alle Abhängigkeiten zwischen
+  Einheiten sind erklärt und kreisfrei. Auf jeder Ebene gibt es deshalb eine
   Reihenfolge, in der jede Einheit nach allem kommt, was sie braucht. Die
   Lernkarte kann keine Kreise mehr zeigen.
-- **Die Einheit hat eine Schnittstelle.** Was die Ziele einer Einheit von
-  außen brauchen, liegt in Einheiten, nach denen sie liegt. Der
+- **Die Einheit hat eine Schnittstelle (aus E3).** Was die Ziele einer Einheit
+  von außen brauchen, liegt in Einheiten, nach denen sie liegt. Der
   [Wissenskontext](knowledge-context.de.md) jedes ihrer Ziele ist damit durch
   die erklärten Voraussetzungen der Einheit begrenzt und lässt sich in wenigen
   Namen angeben.
@@ -143,12 +176,13 @@ Widersprüchliches.
 ### 3.5 Ein Beispiel
 
 Angenommen, eine Einheit D fasst die Ziele zur Diode und eine Einheit B das
-Bändermodell. Ein Ziel aus D braucht heute „Bändermodell und Dotierung“. Nach
-E3 muss D nach B liegen. In 14 Ländern stehen die Ziele von D in der
-Sekundarstufe I und die von B in der Sekundarstufe II, und die
-Sekundarstufe II setzt die Sekundarstufe I voraus. Damit liegt B nach D.
-Beides zusammen ergibt: D liegt nach sich selbst. E2 ist verletzt, und der
-Widerspruch steht zwischen zwei benannten Einheiten.
+Bändermodell. In 14 Ländern stehen die Ziele von D in der Sekundarstufe I und
+die von B in der Sekundarstufe II, und die Sekundarstufe II setzt die
+Sekundarstufe I voraus. Damit kommt jedes Ziel von B nach jedem Ziel von D.
+Ein Ziel aus D braucht heute aber „Bändermodell und Dotierung“ aus B; dieses
+muss also vor ihm kommen. Beides zusammen ergibt einen Kreis. E2 ist verletzt.
+Mit E3 steht der Widerspruch zwischen zwei benannten Einheiten: D müsste nach
+B liegen und liegt zugleich davor.
 
 Der Verstoß sagt nicht, was falsch ist. Die Sperrschicht einer Diode lässt
 sich mit der Dotierung erklären, ohne das Bändermodell zu kennen; das spätere
@@ -281,8 +315,8 @@ Innerhalb der Fächer zeigen sich dieselben Muster:
 
 **Unverändert bleiben:**
 
-- Voraussetzungen stehen nur zwischen atomaren Zielen, sind kreisfrei und
-  transitiv minimal.
+- Der Bedarf steht nur zwischen atomaren Zielen, ist kreisfrei und transitiv
+  minimal. Die atomare Normalform bleibt die Zielnorm.
 - Je atomarem Ziel wird ein binäres Ergebnis gespeichert. Der Abschluss einer
   Einheit wird abgeleitet.
 - Die Anerkennungsregel und R1 bis R5 gelten für fachliche Einheiten wie
@@ -305,6 +339,13 @@ Innerhalb der Fächer zeigen sich dieselben Muster:
 - **Die Stellung von Stufen und Jahrgängen.** Die Graph-Definition nennt
   Schuljahre mögliche Planungsanker und keine Lerneinheiten. Sie würden
   Planeinheiten.
+- **Die Lesart einer Voraussetzung an einem Cluster.** Die Zielnorm verbietet
+  sie heute ganz; die Vererbung gilt nur für den Übergangsbestand. Künftig
+  dürfte eine Einheit eine Voraussetzung tragen, und diese würde geprüft statt
+  vererbt. Der Übergangsbestand behielte seine Lesart, bis er normalisiert ist;
+  eine Landschaft mit Einheiten müsste in atomarer Normalform sein. Jedes
+  Programm, das Voraussetzungen ausrechnet, muss diese Abgrenzung kennen,
+  bevor die erste Einheitsvoraussetzung im Katalog steht (Abschnitt 8.6).
 - **Die Einheitsvoraussetzung** bekäme eine Darstellung und die Regeln E2 bis
   E4. Der „Reihenfolgefehler“ aus §12 wäre für Planeinheiten ein Verstoß gegen
   E2; die Budgetprüfung aus §12 bliebe ein freiwilliges Profil.
@@ -325,14 +366,15 @@ anerkannt werden, und der Vertragsstand einer Einheit.
 
 | Nr. | Frage | Empfehlung |
 | --- | --- | --- |
-| K1 | Wo steht die Einheiteneigenschaft eines Clusters? | Im Einheiteneintrag der Platzierungsschicht, der auf den Cluster zeigt. Zielobjekte und alle an sie gebundenen Nachweise bleiben unverändert; Lernversprechen, Abdeckungsreviews und Revision stehen dort schon. Die Platzierungen `own` und das Elternfeld entfielen. |
-| K2 | Gelten E2 bis E4 wie in Abschnitt 3.3? | Ja. Offen ist eine Feinheit: Eigene Ziele neben Untereinheiten sollten nur Einstieg (Orientierung) oder Abschluss (zusammenführende Prüfung, Lernkarten) sein; eigene Fachziele gehören in eine Untereinheit. |
+| K1 | Wo werden die Einheiteneigenschaft eines Clusters und seine Einheitsvoraussetzungen geschrieben: am Cluster selbst oder am Einheiteneintrag der Platzierungsschicht, der auf den Cluster zeigt? | Am Einheiteneintrag, solange es Übergangsbestand gibt. Das Modell ist in beiden Fällen dasselbe. Am Einheiteneintrag kann kein vorhandenes Programm die Aussage als Bedarf lesen, das Feld `requires` behält an Clustern überall eine einzige Lesart, und Zielobjekte samt ihren Nachweisen bleiben unverändert. Am Cluster stünde alles an einer Stelle; dafür müssten vorher alle Programme und `CQR-001` umgestellt sein. Die Platzierungen `own` und das Elternfeld entfielen in beiden Fällen. |
+| K2 | Gelten E2 bis E4 wie in Abschnitt 3.3? | E2 ja. E3 ebenfalls, zunächst für fachliche Einheiten: Erst mit ihr lässt sich der Plan eines Landes auf Einheitenebene prüfen. Offen ist eine Feinheit: Eigene Ziele neben Untereinheiten sollten nur Einstieg (Orientierung) oder Abschluss (zusammenführende Prüfung, Lernkarten) sein; eigene Fachziele gehören in eine Untereinheit. |
 | K3 | Zwei Arten von Einheiten nach Abschnitt 4.1? | Ja. Anders lässt sich nicht fassen, dass dieselbe fachliche Einheit in zwei Ländern in verschiedenen Jahrgängen steht. |
 | K4 | Plant jedes Land die kleinsten fachlichen Einheiten als Ganzes ein? | Ja. Das macht die Länderpläne zur Prüfbedingung für den Zuschnitt und deckt Ziele auf, die zwei Niveaus mischen. Es führt stellenweise zu kleinen Einheiten. |
 | K5 | Woher kommt die fachliche Verdrahtung? | Ein Werkzeug schlägt sie aus den Voraussetzungen der Ziele vor, die Fachprüfung bestätigt sie. Danach ist sie erklärt, und neue Voraussetzungen müssen zu ihr passen. |
 | K6 | Wo werden die Planeinheiten eines Landes erklärt, sodass sie für alle Fächer dieselben sind? | Offen. Heute führt jede Fachsicht eigene Abschnitte, und jedes Fach eigene Programmeinheiten `stage`, `year` und `phase`. |
 | K7 | Was fügt eine Fächerauswahl ihrem Plan hinzu: ganze Einheiten des Zusatzbedarfs oder nur die gebrauchten Ziele? | Zur Laufzeit weiter nur die gebrauchten Ziele, wie am 10. November entschieden. Angezeigt wird der Zusatzbedarf in Einheiten. |
 | K8 | Wie wird aus der Prüfung ein Gate? | Zuerst ein Bericht, dann Behebung der Ursachen, dann eine Sperrklinke: Kein neuer Verstoß kommt hinzu. Ein hartes Gate erst bei null. |
+| K9 | Entfällt die Vererbung in der Zielnorm (Abschnitt 3.2)? | Ja. Sie leistet im kanonischen Gymnasialkatalog schon heute nichts, und die Graph-Definition wird einfacher: Die drei Schritte Erben, Expandieren, Abschließen gelten dann nur noch für den Übergangsbestand. |
 
 K1 und K4 sollten fallen, bevor in Stufe 4 weitere Einheiten verfasst werden.
 Beide bestimmen, wie eine Einheit abgelegt und geschnitten wird.
@@ -423,7 +465,28 @@ Mathematikclustern. Die Verdrahtung ist also klein, gut eine Aussage je
 Einheit. Rund 70 Cluster müssten anders geschnitten werden, bevor sie
 Einheiten sein können.
 
-### 8.6 Nicht erklärt
+### 8.6 Voraussetzungen an Clustern
+
+| | Kanonischer Gymnasialkatalog | Übrige untersuchte Landschaften |
+| --- | --- | --- |
+| Landschaften | 21 | 526 |
+| Cluster | 1.029 | 7.974 |
+| Cluster mit Voraussetzung | 0 | 1.779 in 525 Landschaften |
+| davon mit Voraussetzung auf ein eigenes Kind | 0 | 518 |
+| Voraussetzungen atomarer Ziele auf Cluster | 0 | 59 |
+
+Die übrigen Landschaften sind Hochschulen, die weiteren bayerischen
+Schulformen und Sprachen; die zurückbehaltenen Länderquellen des Gymnasiums
+sind nicht mitgezählt. Im kanonischen Katalog wirkt die Vererbung also nicht
+mehr, im Übergangsbestand trägt sie das Verhalten.
+
+Die Vererbung rechnen heute der Voraussetzungscompiler, der Lernumfang und die
+Frontier im Backend, die Lernkarte und die Graphansichten der Oberfläche sowie
+die Curriculum-Werkzeuge einschließlich des Minimalitätsprüfers. `CQR-001`
+weist jede Voraussetzung an einem Cluster zurück. Im eingefrorenen
+Reduktionsnachweis betreffen 71 der 1.361 Übertragungen Cluster.
+
+### 8.7 Nicht erklärt
 
 Der Pfeil von Physik nach Mathematik in der Lernkarte des Product Owners ist
 nicht erklärt. Kanonisch setzt kein Mathematikziel ein Physikziel voraus, und

@@ -606,8 +606,10 @@ Am 14. November 2026 hat der Product Owner außerdem eine Richtung für die
 Struktur der Einheiten vorgegeben, noch keine Entscheidung: Einheiten sind
 ausgezeichnete Cluster der `contains`-Hierarchie, sie werden durch
 ausdrückliche Einheitsvoraussetzungen verdrahtet, und Stufen und Jahrgänge
-werden Einheiten des Plans eines Landes. Der
+werden Einheiten des Plans eines Landes. Der Graph soll dabei mit einer
+Beziehung auskommen: Eine Voraussetzung an einer Einheit wird nicht vererbt,
+sondern gegen die Voraussetzungen der Ziele geprüft. Der
 [Konzeptentwurf](../concept/skill-graph/learning-unit-wiring-concept-2026-11-14.md)
-arbeitet das aus und nennt acht offene Entscheidungen. Zwei davon ändern, wie
+arbeitet das aus und nennt neun offene Entscheidungen. Zwei davon ändern, wie
 eine Einheit abgelegt und geschnitten wird. Stufe 4 sollte deshalb erst
 beginnen, wenn sie gefallen sind; Stufe 3 ist in der Sache nicht berührt.
