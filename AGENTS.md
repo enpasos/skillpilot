@@ -635,17 +635,19 @@ curricular-level terminology. Personalization Levels 1–4, QA maturity and goal
   assessment written for it, `c5807a37-129e-5df6-8989-482bc7f5683e`) with
   reviewed coverage for both goals
   (`curricula/DE/Gymnasium/quality/learning-units/physics-constant-acceleration-2026-11-13.md`).
-  The goal "Freier Fall experimentell untersuchen" is deliberately outside
-  the unit: two independent reviewers found R2 not satisfied for an
-  assessment that evaluates given measurement data, and disagreed on whether
-  own measurement data or planning plus evaluation would satisfy it. The
-  Product Owner decided on 14 November 2026 that experimental goals in
-  Physics, Chemistry and Biology are never recognized: they stay completable
-  only through their own explicit result, and no review claims coverage for
-  them. Canonical goals carry no marker for experimental goals today; how the
-  unit contract identifies them and places them without holding back the
-  recognition of the other goals of a unit belongs to the runtime-stage
-  contract version. Until then an experimental goal belongs to no unit.
+  The goal "Freier Fall experimentell untersuchen" is outside the unit: two
+  independent reviewers found R2 not satisfied for an assessment that
+  evaluates given measurement data, and disagreed on whether own measurement
+  data or planning plus evaluation would satisfy it. Experimental goals get
+  no special treatment (Product Owner, 14 November 2026; this replaces the
+  decision of the same day that they are never recognized). An experimental
+  goal is a content goal like any other: it joins a unit once an own
+  assessment of that unit requires it and a coverage review confirms that the
+  assessment tests it, and it is then recognized like the unit's other goals.
+  Until then it stays outside the unit. What an assessment must demand to
+  test an experimental goal is not decided; it is settled once, for all such
+  goals, when the first unit with one is cut. The contract needs no marker
+  and no `ownExplicit` relation.
 - **Knowledge context of a unit (13 November 2026).** Nothing is written by
   hand about the subject matter of a unit: its knowledge context is the union
   of the contexts of its own goals and assessments (§2.5). Tasks, memory
@@ -657,36 +659,46 @@ curricular-level terminology. Personalization Levels 1–4, QA maturity and goal
   other: a cluster structures goals; a unit is a cluster that is learned in
   one piece (begun, completed, and only then what lies after it) and thereby
   takes part in the order; a unit with assessments additionally proves the
-  independent application of its own content goals. Being a unit is declared;
-  having assessments follows from the unit's own goals. Not every cluster is a
-  unit, and subjects are not. Own content goals exist only in a unit with
-  assessments (R1 to R5 unchanged), and a unit's assessments lie in its
-  cluster. Subject units live in the canonical landscape and hold in every
-  Land; stages, school years and phases are plan units of a Land across the
-  selected subjects, in a fixed order. Between units the relation is `after`
-  (the intended order: the other unit is completed before this one begins);
-  between atomic goals it is `requires`, which is a special `after` that
-  additionally states the need. No cluster carries `requires`, and no `after`
-  is inherited along `contains`; rules E1 to E4 keep the two consistent (E1:
-  units form a tree; E2: an order of all goals exists that keeps every need
-  and every `after` with each unit in one piece; E3: every need across units
-  is covered by declared `after`; E4: no redundant declaration). An `after`
-  never changes the frontier and locks nothing. In the learning mode "unit by
-  unit" it decides which reachable goal comes next: finish a begun unit
-  before starting a new one, and start units in `after` order. A goal that
-  needs the independent application a unit proves requires that unit's
-  assessment goal; there is no unit lock, so the open access profile of Graph
-  Definition §11.5 is dropped. Every Land places the smallest subject units
-  whole, and its plan is checked at unit level. The learner map shows units
-  and atomic goals only; clusters that are not units appear in the goal tree.
-  There is no timeline and no stage-specific rule. Never author `requires` on
-  a cluster of a canonical landscape: today's readers inherit it to every
-  atomic goal and `CQR-001` rejects it; inheritance stays the reading of
-  transition data outside the canonical Gymnasium catalog. Until the
-  follow-up work in section 10 of the document is done (dry run on a catalog
-  copy first, then norm, contract 1.3, tools, the three existing units, plan
-  units per Land, stages 4 and 5), the tools enforce the unit contract of
-  12 November and Graph Definition §11 to §13 describe the implemented state.
+  independent application of its own content goals. Being a unit is declared
+  in the unit entry of the placement layer, which points to the cluster; own
+  goals and sub-units follow from `contains`. Not every cluster is a unit,
+  and subjects are not. A unit has assessments when its entry names coverage
+  reviews for own assessments; these assessments lie in its cluster (they
+  move there; view rule 5 rules out a second parent cluster) and cover each
+  of its own content goals (R1 to R5 unchanged). A unit without assessments
+  only orders its goals and may hold content goals directly; in the end every
+  content goal lies in a unit with assessments. Only content goals need a
+  unit. The children of a unit are its direct sub-units and its own goals;
+  there are no uniform levels. Subject units live in the canonical landscape
+  and hold in every Land; stages, school years and phases are plan units of a
+  Land across the selected subjects, in a fixed order. Between two units that
+  are children of the same unit the relation is `after` (the intended order:
+  the other unit is completed before this one begins); between atomic goals
+  it is `requires`, which is a special `after` that additionally states the
+  need. No cluster carries `requires`, and no `after` is inherited along
+  `contains`; rules E1 to E4 keep the two consistent, each looking at the
+  children of one unit (E1: units form a tree; E2: an order of all goals
+  exists that keeps every need and every `after` with each unit in one piece;
+  E3: where a need separates two child units of the smallest unit that
+  contains both goals, the `after` between them is declared; E4: no redundant
+  declaration among the children of a unit). An `after` never changes the
+  frontier and locks nothing. In the learning mode "unit by unit" it decides
+  which reachable goal comes next: first from a child that is due (everything
+  it must come after is done), among those from a unit already begun. A goal
+  that needs the independent application a unit proves requires that unit's
+  assessment goal, as a justified exception; there is no unit lock, so the
+  open access profile of Graph Definition §11.5 is dropped. Every Land
+  carries a subject unit without sub-units whole in one plan unit. The
+  learner map shows units and atomic goals only; clusters that are not units
+  appear in the goal tree. Units are introduced top-down: plan units first
+  (only the plans of the Länder change), subject units below them, their
+  assessments last. There is no timeline and no stage-specific rule. Never
+  author `requires` on a cluster of a canonical landscape: today's readers
+  inherit it to every atomic goal and `CQR-001` rejects it; inheritance stays
+  the reading of transition data outside the canonical Gymnasium catalog.
+  Until the follow-up work in section 10 of the document is done, the tools
+  enforce the unit contract of 12 November and Graph Definition §11 to §13
+  describe the implemented state.
 
 This is concept documentation plus a static authoring contract and validator,
 not an implemented runtime or access policy. See `docs/concept/skill-graph/learning-units.md`,

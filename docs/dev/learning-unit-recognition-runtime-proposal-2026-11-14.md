@@ -3,8 +3,8 @@
 Stand: 14. November 2026. Diese Vorlage bereitet Stufe 3 des
 [Umsetzungsplans](mathematics-physics-learning-units-plan.md) vor: Das Backend
 leitet aus gültigen Einheitenverträgen die wirksame Beherrschung ab. Sie ändert
-keinen Code und keine Curriculumdaten. Vier Fragen entscheidet der Product
-Owner; zu jeder steht eine Empfehlung.
+keinen Code und keine Curriculumdaten. Drei Fragen entscheidet der Product
+Owner noch; zu jeder steht eine Empfehlung. Die vierte, E3, ist entschieden.
 
 ## 1. Ausgangslage
 
@@ -120,6 +120,13 @@ Folgen von A:
 
 ### E3: Wie experimentelle Ziele zu einer Einheit gehören
 
+**Entschieden am 14. November 2026:** Experimentelle Ziele werden nicht
+gesondert behandelt. Sie sind Inhaltsziele wie alle anderen und gehören zu
+einer Einheit, sobald eine ihrer Prüfungen sie voraussetzt und ein
+Abdeckungsreview die Abdeckung bestätigt. Der Vertrag braucht dafür kein
+Merkmal und keine Relation `ownExplicit`. Der Rest dieses Abschnitts
+beschreibt die Möglichkeiten, die vor dieser Entscheidung vorlagen.
+
 Seit dem 14. November steht fest, dass experimentelle Ziele nie anerkannt
 werden (Plan, Abschnitt 5). Offen ist die Form im Vertrag.
 
@@ -151,8 +158,8 @@ dessen Reviews.
 
 ## 3. Vertragsversion
 
-Die Relation `ownExplicit`, die Varianten und die Regel für `revision` kommen
-in einen neuen Paketvertrag 1.3 neben 1.2; veröffentlichte Dateien älterer
+Die Varianten und die Regel für `revision` kommen in einen neuen
+Paketvertrag 1.3 neben 1.2; veröffentlichte Dateien älterer
 Versionen bleiben unverändert. Die Produktion liest im Repositorymodus direkt
 die kanonische Landschaft. Der Vertrag betrifft deshalb Paketverbraucher und
 den Weitergabeledger, nicht die Frage, ob das Backend die Einheiten sieht.
@@ -165,7 +172,7 @@ nichts.
 | Schnitt | Inhalt | Für Lernende |
 | --- | --- | --- |
 | 3a | Rechnung als reine Funktion in TypeScript und Java. Beide lesen dieselben Abnahmefälle (Plan, Abschnitt 8). Ableitung von $H_U$. | keine Änderung |
-| 3b | Vertrag 1.3: `ownExplicit` und Varianten in Schema, Validator und Paketvalidator; `revision` folgt $H_U$ | keine Änderung |
+| 3b | Vertrag 1.3: Varianten in Schema, Validator und Paketvalidator; `revision` folgt $H_U$ | keine Änderung |
 | 3c | Backend: Vertragsstand und Aufgabenfassung am Abschlussereignis (Liquibase), Ereignis bei erneutem Bestehen, Projektion von $M_{\mathrm{eff}}$ hinter einem Schalter, der ausgeschaltet ist | keine Änderung |
 | 3d | Verbraucher hinter demselben Schalter: Lernempfehlung, Plan-IST, Cockpit, Coachkontext; der Arbeitsentfall wird dabei entfernt | keine Änderung, solange der Schalter aus ist |
 | 3e | Einschalten durch den Product Owner; Deployment und Hostabnahme getrennt | Umstellung |
