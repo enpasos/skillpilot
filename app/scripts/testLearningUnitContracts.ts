@@ -11,15 +11,18 @@ import {
   UnitGraph, assessmentReviewRevisions, validateLearningUnits, validateOfferedScopes,
   type UnitFinding, type UnitGraphGoal, type UnitGraphLandscape,
 } from './lib/learningUnitContracts'
+import { deriveRecognition } from './lib/learningUnitRecognition'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
 const json = (path: string) => JSON.parse(readFileSync(resolve(root, path), 'utf8'))
 export const learningUnitFixturePath = 'contracts/curriculum-package/v1.2/fixtures/learning-units/cases.json'
 
 interface ExpectedFinding { code: string; unitId?: string; goalId?: string }
+interface RecognitionState { explicit: string[]; recognized: string[]; complete: string[]; unavailable?: string[] }
 interface FixtureCase {
   id: string
   landscapes: UnitGraphLandscape[]
+  recognition?: RecognitionState[]
   offered?: { id: string; landscapeId: string; seedTargetGoalIds: string[]; targetGoalIds: string[]; members: string[] }[]
   expect: {
     valid: boolean
@@ -88,6 +91,72 @@ for (const fixture of fixtures.cases) {
   }))) : []
   expectFindings(fixture.id, offeredFindings, fixture.expect.offeredFindings ?? [], 'offered finding')
   for (const finding of [...result.findings, ...offeredFindings]) coveredCodes.add(finding.code)
+  if (fixture.recognition) checkRecognitionStates(fixture, graph, result)
+}
+
+// Recognition (Graph Definition §13): the reference evaluation against every learner state a case lists.
+function checkRecognitionStates(fixture: FixtureCase, graph: UnitGraph, result: ReturnType<typeof validateLearningUnits>) {
+  const sortedIds = (values: string[]) => [...values].sort()
+  const baseline = deriveRecognition(graph, result, new Set())
+  for (const unit of baseline.units) {
+    // Another implementation may read eligibility from the case instead of validating the unit itself.
+    const expected = fixture.expect.units?.[unit.unitId]
+    assert(expected?.valid === false || (expected?.valid === true && expected.goalsWithoutReviewedCoverage),
+      `${fixture.id}/${unit.unitId}: a case with recognition states validity and reviewed coverage of each unit`)
+    assert.equal(unit.eligible, expected!.valid === true && expected!.goalsWithoutReviewedCoverage!.length === 0,
+      `${fixture.id}/${unit.unitId}: eligibility follows validity and complete reviewed coverage`)
+  }
+  for (const state of fixture.recognition!) {
+    const label = `${fixture.id} [${state.explicit.join(', ')}]`
+    const explicit = new Set(state.explicit.map((goalId) => graph.resolve(goalId, fixture.landscapes[0].landscapeId)))
+    const derived = deriveRecognition(graph, result, explicit)
+    assert.deepEqual(sortedIds(derived.effective.filter((key) => !explicit.has(key)).map(idOfKey)), state.recognized, `${label}: recognized goals`)
+    assert.deepEqual(sortedIds(derived.units.filter((unit) => unit.complete === true).map((unit) => unit.unitId)), state.complete, `${label}: complete units`)
+    assert.deepEqual(sortedIds(derived.units.filter((unit) => unit.complete === null).map((unit) => unit.unitId)), state.unavailable ?? [], `${label}: unavailable units`)
+  }
+}
+function idOfKey(key: string): string { return key.slice(key.indexOf(':') + 1) }
+
+// Invariants of the set formula over every learner state of every small case:
+// recognition never touches explicit, assessment or memory goals or foreign goals,
+// an ineligible unit recognizes nothing, and more explicit results never shrink
+// effective mastery or undo a completed unit.
+for (const fixture of fixtures.cases) {
+  const graph = new UnitGraph(fixture.landscapes)
+  const result = validateLearningUnits(fixture.landscapes, graph)
+  const atoms = fixture.landscapes.flatMap((landscape) => graph.atomicKeys(landscape.landscapeId))
+  if (atoms.length > 10 || result.catalogs.length === 0) continue
+  const owned = new Map<string, Set<string>>(result.catalogs.flatMap((catalog) => catalog.units.map((unit) =>
+    [`${catalog.landscapeId}:${unit.id}`, new Set(unit.ownGoalIds.map((goalId) => `${catalog.landscapeId}:${goalId}`))])))
+  const states = Array.from({ length: 2 ** atoms.length }, (_, mask) => {
+    const explicit = new Set(atoms.filter((_, bit) => mask & (1 << bit)))
+    return { explicit, derived: deriveRecognition(graph, result, explicit) }
+  })
+  for (const [mask, { explicit, derived }] of states.entries()) {
+    const label = `${fixture.id} [${[...explicit].map(idOfKey).join(', ')}]`
+    for (const unit of derived.units) {
+      const unitKey = `${unit.landscapeId}:${unit.unitId}`
+      if (!unit.eligible) assert.deepEqual(unit.recognized, [], `${label}/${unit.unitId}: an ineligible unit recognizes nothing`)
+      for (const goalId of unit.recognized) {
+        const key = `${unit.landscapeId}:${goalId}`
+        assert(owned.get(unitKey)!.has(key), `${label}/${unit.unitId}: ${goalId} is not an own goal`)
+        assert(!explicit.has(key), `${label}/${unit.unitId}: ${goalId} is explicit`)
+        assert(!['assessment', 'memory'].includes(graph.kind(key)), `${label}/${unit.unitId}: ${goalId} is protected`)
+      }
+    }
+    const effective = new Set(derived.effective)
+    for (const key of explicit) assert(effective.has(key), `${label}: explicit results are effective`)
+    for (let bit = 0; bit < atoms.length; bit++) {
+      if (mask & (1 << bit)) continue
+      const larger = states[mask | (1 << bit)].derived
+      const largerEffective = new Set(larger.effective)
+      for (const key of effective) assert(largerEffective.has(key), `${label} + ${idOfKey(atoms[bit])}: ${idOfKey(key)} stays effective`)
+      for (const unit of derived.units.filter((candidate) => candidate.complete === true)) {
+        const after = larger.units.find((candidate) => candidate.landscapeId === unit.landscapeId && candidate.unitId === unit.unitId)!
+        assert.equal(after.complete, true, `${label} + ${idOfKey(atoms[bit])}: ${unit.unitId} stays complete`)
+      }
+    }
+  }
 }
 // Every finding code the validator can emit is exercised by at least one fixture.
 const source = readFileSync(resolve(root, 'app/scripts/lib/learningUnitContracts.ts'), 'utf8')

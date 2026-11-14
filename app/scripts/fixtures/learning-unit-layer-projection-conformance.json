@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "purpose": "Reference fingerprints of the prerequisite-reduction document fingerprint (canonical JSON SHA-256 of the landscape without its learning-unit layer) for every landscape of the shared learning-unit cases, plus the pilot unit that the tests inject into canonical Mathematics if it has no learning-unit layer of its own. The TypeScript and the Python test each compare their implementation with these references; --write compares TypeScript and Python directly before it regenerates them. Regenerate with: npx tsx scripts/testLearningUnitLayerProjection.ts --write",
   "casesPath": "contracts/curriculum-package/v1.2/fixtures/learning-units/cases.json",
-  "casesSha256": "6be0f5dd26b0cc5054f5ee43741b182270b9932b33c297b8bc5625c4ec5f4dd0",
+  "casesSha256": "01a3f652ea3bc2feddf322b8a76115dd641ad66d28da390bf1cd789c15bae6a3",
   "references": [
     {
       "case": "valid-chain",
@@ -183,6 +183,48 @@
       "index": 0,
       "landscapeId": "L",
       "fingerprint": "sha256:da3d9f1820e7a084e89b23678fcedb2ddec15792daf6b5cb392d5e862befc7c2"
+    },
+    {
+      "case": "recognition-shared-assessments",
+      "index": 0,
+      "landscapeId": "L",
+      "fingerprint": "sha256:d7f42bb40e34998bb0311bf5a203e760f619e9a7802d14c306e530d3d867f050"
+    },
+    {
+      "case": "recognition-demand-through-mastered-goal",
+      "index": 0,
+      "landscapeId": "L",
+      "fingerprint": "sha256:609c9fe2538bc3abf181009409bc376e0f9813c222ac29876cc5d83a1c1c3190"
+    },
+    {
+      "case": "recognition-open-memory-goal",
+      "index": 0,
+      "landscapeId": "L",
+      "fingerprint": "sha256:7b9ce63a25e9aedeae808e8836222a539a96af58c00167efd1a95248587c2255"
+    },
+    {
+      "case": "recognition-later-unit-keeps-recognition",
+      "index": 0,
+      "landscapeId": "L",
+      "fingerprint": "sha256:3f2d97c8a6285fb88aa3ba35aa11df06b8589748fd1d67d9268a385419e62a2e"
+    },
+    {
+      "case": "recognition-parent-synthesis",
+      "index": 0,
+      "landscapeId": "L",
+      "fingerprint": "sha256:db34fcee73027e6955a7edb820df2227473657c89744a604aa2dd12185e4a840"
+    },
+    {
+      "case": "recognition-orientation-entry-anchor",
+      "index": 0,
+      "landscapeId": "L",
+      "fingerprint": "sha256:0a99401ccee261709bb742e99d07bcf08344f175f9a1c7b76ed0ca4bfc641b15"
+    },
+    {
+      "case": "recognition-demand-beyond-the-unit",
+      "index": 0,
+      "landscapeId": "L",
+      "fingerprint": "sha256:1d5b22eecc6fd0400ccb3013640ab1767d60e73ac1c603b96c025b78763a8180"
     }
   ],
   "canonicalMathematics": {
