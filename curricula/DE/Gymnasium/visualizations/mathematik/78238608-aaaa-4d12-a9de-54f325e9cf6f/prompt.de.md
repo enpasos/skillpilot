@@ -8,43 +8,15 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
-- Status: pilot
-- Quellbild: `78238608-aaaa-4d12-a9de-54f325e9cf6f.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/78238608-aaaa-4d12-a9de-54f325e9cf6f/78238608-aaaa-4d12-a9de-54f325e9cf6f.jpg`
+- Provider: OpenAI / Codex image_gen
+- Status: accepted
+- Quellbild: `78238608-aaaa-4d12-a9de-54f325e9cf6f.jpeg`
+- Public Asset: `/assets/goal-visualizations/mathematik/78238608-aaaa-4d12-a9de-54f325e9cf6f/78238608-aaaa-4d12-a9de-54f325e9cf6f.jpeg`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Graphverlauf exponentieller Funktionen der Form $b\cdot a^x$ anhand von $a$ und $b$ beschreiben
-Beschreibung: Die lernende Person kann für exponentielle Funktionen der Form $b\cdot a^x$ den Verlauf des Graphen anhand der Parameter $a$ und $b$ beschreiben, insbesondere y-Achsenabschnitt, asymptotisches Verhalten und Monotonieverhalten begründen und passende Veranschaulichungen auch mit digitalen Werkzeugen nutzen.
-
-Zusatzanweisung:
-Korrigiere ausschließlich die Dezimalschreibweise und bewahre die korrekten Exponentialgraphen.
-
-Pflichtinhalt:
-- Titel: „Exponentialfunktionen anhand von Term und Graph unterscheiden“.
-- Wachstum: f(x) = 3 · 2^x mit steigender positiver Kurve.
-- Zerfall: g(x) = 3 · 0,5^x mit einem gut sichtbaren Multiplikationspunkt zwischen 3 und 0,5 und mit fallender positiver Kurve.
-- Beide Graphen schneiden die y-Achse bei 3.
-- Erkläre knapp: Basis größer als 1 bedeutet Wachstum; Basis zwischen 0 und 1 bedeutet Zerfall.
-- Ausschließlich deutsche Dezimalkommas.
-
-Vermeiden:
-- Niemals „3, 0,5^x“ oder ein Komma zwischen Vorfaktor und Potenz schreiben; dort muss exakt „3 · 0,5^x“ stehen.
-- Kein „0.5“ mit Dezimalpunkt.
-- Keine linearen Graphen, technischen Kennungen, Marken, Logos oder Wasserzeichen.
+Rebuild the two mathematical graphs in this German SkillPilot learning illustration accurately, in a calm friendly lightly drawn educational style. Keep the pale blue background, two white panels, thick readable German labels, no decoration, sparkles or glow. Title: 'Exponentialfunktionen: Startwert und Verlauf'. Left panel title 'Wachstum', equation f(x)=3·2^x. Right panel title 'Zerfall', equation g(x)=3·0,5^x. Both panels MUST have IDENTICAL numerical coordinate scales: x from -2 to 2, labelled integer x ticks -2,-1,0,1,2; y from 0 to12 labelled 0,3,6,9,12. Both x-axes horizontal at y=0; vertical y-axes pass through x=0 in MIDDLE of each graph. Both graphs have a red marked point exactly (0|3), at the SAME relative height in both panels, one quarter up the y range. LEFT blue smooth convex curve MUST go through (-2|0,75),(-1|1,5),(0|3),(1|6),(2|12), increasing smoothly with steadily increasing slope, absolutely NO kink at the y-axis. RIGHT purple smooth convex decreasing curve MUST go through (-2|12),(-1|6),(0|3),(1|1,5),(2|0,75). Add a very light grid, the equations above their graphs, and short labels below: left 'b = 3: Startwert' and 'a = 2: steigend'; right 'b = 3: Startwert' and 'a = 0,5: fallend'. A footer 'Die x-Achse wird angenähert, aber nicht erreicht.' refers to the asymptotic direction of both curves. Do not plot either curve through the origin, and do not detach the (0|3) marker from its curve. Be precise about numerical axis tick placement and the actual curve coordinates. All graph elements stay inside their panel. Landscape16:9, clear legible at mobile width.
 ```
 
 ## Review-Notiz

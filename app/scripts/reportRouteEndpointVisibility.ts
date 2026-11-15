@@ -46,6 +46,7 @@ export function reportRouteEndpointVisibility() {
     ...viewFiles,
     resolve(root, 'app/scripts/config/curriculum-maturity-floor-policy.json'),
     resolve(root, 'app/scripts/generateCurriculumQualityStatus.ts'),
+    resolve(root, 'app/scripts/lib/routeCatalogContext.ts'),
     ...PHYSICS_QA_SELECTOR_INPUT_PATHS.map(path => resolve(root, path)),
     fileURLToPath(import.meta.url),
   ].sort()
@@ -62,7 +63,7 @@ export function reportRouteEndpointVisibility() {
         compositionViewStage: 'SekII' as const,
         ...(compiledJurisdiction ? { compositionViewApplicabilityMode: 'compiled-jurisdiction' as const } : {}),
       }
-      const rule = evaluateRouteProfile(source.landscape, measuredProfile, applicability)
+      const rule = evaluateRouteProfile(source.landscape, measuredProfile, applicability, landscapes.map(entry => entry.landscape))
         .rules.find(rule => rule.id === 'CQR-104')
       if (!rule) throw new Error(`Diagnostic failed to evaluate CQR-104 for ${profile.profileId}`)
       return { profileId: profile.profileId, landscapeId: profile.landscapeId, compiledJurisdiction, ...rule }

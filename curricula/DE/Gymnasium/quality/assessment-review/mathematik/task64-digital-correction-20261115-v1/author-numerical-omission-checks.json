@@ -1,0 +1,534 @@
+{
+  "at": "2026-11-15T16:00:04.669123+00:00",
+  "status": "ACTUAL_AUTHOR_NUMERICAL_AND_WRITTEN_OMISSION_CHECKS_ONLY",
+  "actualDigitalSampleValues": [
+    {
+      "x": -2,
+      "f": 0.75,
+      "g": -8.0,
+      "changed_g": 8.0
+    },
+    {
+      "x": -1,
+      "f": 1.5,
+      "g": -4.0,
+      "changed_g": 4.0
+    },
+    {
+      "x": 0,
+      "f": 3,
+      "g": -2.0,
+      "changed_g": 2.0
+    },
+    {
+      "x": 1,
+      "f": 6,
+      "g": -1.0,
+      "changed_g": 1.0
+    },
+    {
+      "x": 2,
+      "f": 12,
+      "g": -0.5,
+      "changed_g": 0.5
+    }
+  ],
+  "globalMonotonicityReason": "For every realx andh>0,a^x>0, hence sign(F(x+h)−F(x))=sign(b)·sign(a^h−1); the four sign/base regimes follow on allR. Numerical arbitraryhchecks confirm examples but are not the general proof.",
+  "fourRegimes": [
+    {
+      "a": 2,
+      "b": 3,
+      "direction": "increasing",
+      "at0": 3,
+      "at1": 6,
+      "arbitraryStepNumericalChecks": [
+        {
+          "x": -3,
+          "h": 0.125,
+          "difference": 0.033940399749471606
+        },
+        {
+          "x": -3,
+          "h": 0.7,
+          "difference": 0.23418929726717663
+        },
+        {
+          "x": -3,
+          "h": 1.3,
+          "difference": 0.5483583100086873
+        },
+        {
+          "x": -1.2,
+          "h": 0.125,
+          "difference": 0.11818733648159263
+        },
+        {
+          "x": -1.2,
+          "h": 0.7,
+          "difference": 0.8154944986154566
+        },
+        {
+          "x": -1.2,
+          "h": 1.3,
+          "difference": 1.9094945426646932
+        },
+        {
+          "x": 0,
+          "h": 0.125,
+          "difference": 0.27152319799577285
+        },
+        {
+          "x": 0,
+          "h": 0.7,
+          "difference": 1.873514378137413
+        },
+        {
+          "x": 0,
+          "h": 1.3,
+          "difference": 4.386866480069498
+        },
+        {
+          "x": 0.8,
+          "h": 0.125,
+          "difference": 0.4727493459263705
+        },
+        {
+          "x": 0.8,
+          "h": 0.7,
+          "difference": 3.2619779944618266
+        },
+        {
+          "x": 0.8,
+          "h": 1.3,
+          "difference": 7.637978170658773
+        },
+        {
+          "x": 3,
+          "h": 0.125,
+          "difference": 2.1721855839661828
+        },
+        {
+          "x": 3,
+          "h": 0.7,
+          "difference": 14.988115025099304
+        },
+        {
+          "x": 3,
+          "h": 1.3,
+          "difference": 35.09493184055597
+        }
+      ]
+    },
+    {
+      "a": 0.3333333333333333,
+      "b": 3,
+      "direction": "decreasing",
+      "at0": 3,
+      "at1": 1.0,
+      "arbitraryStepNumericalChecks": [
+        {
+          "x": -3,
+          "h": 0.125,
+          "difference": -10.39347102738941
+        },
+        {
+          "x": -3,
+          "h": 0.7,
+          "difference": -43.45949240147046
+        },
+        {
+          "x": -3,
+          "h": 1.3,
+          "difference": -61.58097648022868
+        },
+        {
+          "x": -1.2,
+          "h": 0.125,
+          "difference": -1.4386076032018291
+        },
+        {
+          "x": -1.2,
+          "h": 0.7,
+          "difference": -6.015426033833025
+        },
+        {
+          "x": -1.2,
+          "h": 1.3,
+          "difference": -8.523703077017371
+        },
+        {
+          "x": 0,
+          "h": 0.125,
+          "difference": -0.38494337138479295
+        },
+        {
+          "x": 0,
+          "h": 0.7,
+          "difference": -1.6096108296840905
+        },
+        {
+          "x": 0,
+          "h": 1.3,
+          "difference": -2.2807769066751358
+        },
+        {
+          "x": 0.8,
+          "h": 0.125,
+          "difference": -0.1598452892446478
+        },
+        {
+          "x": 0.8,
+          "h": 0.7,
+          "difference": -0.6683806704258917
+        },
+        {
+          "x": 0.8,
+          "h": 1.3,
+          "difference": -0.9470781196685967
+        },
+        {
+          "x": 3,
+          "h": 0.125,
+          "difference": -0.01425716190314047
+        },
+        {
+          "x": 3,
+          "h": 0.7,
+          "difference": -0.05961521591422556
+        },
+        {
+          "x": 3,
+          "h": 1.3,
+          "difference": -0.08447321876574573
+        }
+      ]
+    },
+    {
+      "a": 2,
+      "b": -3,
+      "direction": "decreasing",
+      "at0": -3,
+      "at1": -6,
+      "arbitraryStepNumericalChecks": [
+        {
+          "x": -3,
+          "h": 0.125,
+          "difference": -0.033940399749471606
+        },
+        {
+          "x": -3,
+          "h": 0.7,
+          "difference": -0.23418929726717663
+        },
+        {
+          "x": -3,
+          "h": 1.3,
+          "difference": -0.5483583100086873
+        },
+        {
+          "x": -1.2,
+          "h": 0.125,
+          "difference": -0.11818733648159263
+        },
+        {
+          "x": -1.2,
+          "h": 0.7,
+          "difference": -0.8154944986154566
+        },
+        {
+          "x": -1.2,
+          "h": 1.3,
+          "difference": -1.9094945426646932
+        },
+        {
+          "x": 0,
+          "h": 0.125,
+          "difference": -0.27152319799577285
+        },
+        {
+          "x": 0,
+          "h": 0.7,
+          "difference": -1.873514378137413
+        },
+        {
+          "x": 0,
+          "h": 1.3,
+          "difference": -4.386866480069498
+        },
+        {
+          "x": 0.8,
+          "h": 0.125,
+          "difference": -0.4727493459263705
+        },
+        {
+          "x": 0.8,
+          "h": 0.7,
+          "difference": -3.2619779944618266
+        },
+        {
+          "x": 0.8,
+          "h": 1.3,
+          "difference": -7.637978170658773
+        },
+        {
+          "x": 3,
+          "h": 0.125,
+          "difference": -2.1721855839661828
+        },
+        {
+          "x": 3,
+          "h": 0.7,
+          "difference": -14.988115025099304
+        },
+        {
+          "x": 3,
+          "h": 1.3,
+          "difference": -35.09493184055597
+        }
+      ]
+    },
+    {
+      "a": 0.3333333333333333,
+      "b": -3,
+      "direction": "increasing",
+      "at0": -3,
+      "at1": -1.0,
+      "arbitraryStepNumericalChecks": [
+        {
+          "x": -3,
+          "h": 0.125,
+          "difference": 10.39347102738941
+        },
+        {
+          "x": -3,
+          "h": 0.7,
+          "difference": 43.45949240147046
+        },
+        {
+          "x": -3,
+          "h": 1.3,
+          "difference": 61.58097648022868
+        },
+        {
+          "x": -1.2,
+          "h": 0.125,
+          "difference": 1.4386076032018291
+        },
+        {
+          "x": -1.2,
+          "h": 0.7,
+          "difference": 6.015426033833025
+        },
+        {
+          "x": -1.2,
+          "h": 1.3,
+          "difference": 8.523703077017371
+        },
+        {
+          "x": 0,
+          "h": 0.125,
+          "difference": 0.38494337138479295
+        },
+        {
+          "x": 0,
+          "h": 0.7,
+          "difference": 1.6096108296840905
+        },
+        {
+          "x": 0,
+          "h": 1.3,
+          "difference": 2.2807769066751358
+        },
+        {
+          "x": 0.8,
+          "h": 0.125,
+          "difference": 0.1598452892446478
+        },
+        {
+          "x": 0.8,
+          "h": 0.7,
+          "difference": 0.6683806704258917
+        },
+        {
+          "x": 0.8,
+          "h": 1.3,
+          "difference": 0.9470781196685967
+        },
+        {
+          "x": 3,
+          "h": 0.125,
+          "difference": 0.01425716190314047
+        },
+        {
+          "x": 3,
+          "h": 0.7,
+          "difference": 0.05961521591422556
+        },
+        {
+          "x": 3,
+          "h": 1.3,
+          "difference": 0.08447321876574573
+        }
+      ]
+    }
+  ],
+  "allPossibleIntegerScoreVectors": 3125,
+  "passingVectors": [
+    [
+      3,
+      4,
+      4,
+      4,
+      4
+    ],
+    [
+      4,
+      3,
+      4,
+      4,
+      4
+    ],
+    [
+      4,
+      4,
+      3,
+      4,
+      4
+    ],
+    [
+      4,
+      4,
+      4,
+      3,
+      4
+    ],
+    [
+      4,
+      4,
+      4,
+      4,
+      3
+    ],
+    [
+      4,
+      4,
+      4,
+      4,
+      4
+    ]
+  ],
+  "anyMissingCoreAtMost2CannotPass": true,
+  "noDigitalMaximum": 16,
+  "missingDigitalComponentMaximum": 18,
+  "writtenCounteranswersAndFairAlternatives": [
+    {
+      "case": "perfect-paper-no-digital",
+      "writtenAnswerDe": "Ich begründe für f D=R,W=(0,∞),f(0)=3,strenges Steigen und die0-Asymptote links; für g D=R,W=(−∞,0),g(0)=−2,strenges Steigen und0-Asymptote rechts. Beide eigenen Handskizzen mit passenden Kontrollpunkten liegen vor. Ich wähle h1 und verwerfe h2 wegen positivem Achsenabschnitt,h3 wegen Steigen/rechterAsymptotik. p ist5,q ist0,r negativ fallend mit linker0-Asymptote;s hat negativeBasis und definiert keine reelle Funktion auf ganzR. Die vierRegime haben die Richtungen steigend,fallend,fallend,steigend; dies folgt für beliebigesh>0 aus b·a^x·(a^h−1), kontrolliert durch3→6,3→1,−3→−6,−3→−1. Ich verwende kein digitales Werkzeug.",
+      "writtenAnswerEn": "All four paper cases, both own sketches, all sign/base regimes and boundary cases are fully justified. I use no digital tool.",
+      "deskScore": [
+        4,
+        4,
+        4,
+        4,
+        0
+      ],
+      "total": 16,
+      "passesWrittenThreshold": false
+    },
+    {
+      "case": "bare-claim-of-tool-use",
+      "writtenAnswerDe": "Die vier Papierfälle und beide Handskizzen sind vollständig bearbeitet. Zusätzlich: digital geprüft.",
+      "writtenAnswerEn": "The four paper cases and both hand sketches are complete. Additionally: checked digitally.",
+      "deskScore": [
+        4,
+        4,
+        4,
+        4,
+        0
+      ],
+      "total": 16,
+      "passesWrittenThreshold": false
+    },
+    {
+      "case": "missing-digital-parameter-change",
+      "writtenAnswerDe": "Die vier Papierfälle sind vollständig; ich lege einen digitalen Plot vonf undg mit lesbaren Eingaben/Achsen und kontrollierten Punkten vor, zeige aber keinen veränderten digitalen Graphen und keine Vorzeichenänderung.",
+      "writtenAnswerEn": "Paper work is complete; an actual digital f/g plot with readable input, axes and checked points is supplied, but there is no changed digital graph or coefficient-sign comparison.",
+      "deskScore": [
+        4,
+        4,
+        4,
+        4,
+        2
+      ],
+      "total": 18,
+      "passesWrittenThreshold": false
+    },
+    {
+      "case": "digital-only-replaces-hand-sketches",
+      "writtenAnswerDe": "Meine digitale Darstellung und Parameterkontrolle sind vollständig. Für Teil1 gebe ich die richtigen Merkmale an, zeichne aber keine eigenen Handskizzen. Die übrigen Papierkerne sind vollständig.",
+      "writtenAnswerEn": "Digital plotting and parameter checking are complete. In part1 I list the correct features but provide no own hand sketches. The other paper cores are complete.",
+      "deskScore": [
+        2,
+        4,
+        4,
+        4,
+        4
+      ],
+      "total": 18,
+      "passesWrittenThreshold": false
+    },
+    {
+      "case": "only-unitstep-monotonicity-claim",
+      "writtenAnswerDe": "Ich nenne in Teil4 nur die Werte bei0und1 und folgere daraus ohne weitere Potenz-/Vorzeichenbegründung globale Monotonie; alle übrigen Kerne sind vollständig.",
+      "writtenAnswerEn": "Part4 gives only values at0and1 and infers global monotonicity without further power-order/sign reasoning; every other core is complete.",
+      "deskScore": [
+        4,
+        4,
+        4,
+        2,
+        4
+      ],
+      "total": 18,
+      "passesWrittenThreshold": false
+    },
+    {
+      "case": "fair-window-and-points-alternative",
+      "writtenAnswerDe": "Ich plotte beide Terme digital im Fensterx∈[−1,2],y∈[−5,13]. Die eigenen Exportkurven zeigenf(0)=3,g(0)=−2 sowie meine weiteren Punktef(−1)=1,5 undg(−1)=−4. Beide steigen;f liegt oberhalb undg unterhalb der Achse. Nach alleiniger Änderungb=+2 zeigt mein zusätzlicher digitaler G-Graph eine Spiegelung: G(0)=2,G(−1)=4,positiv und fallend. Dies stimmt mit meiner vorherigen Termbegründung überein; das endliche Fenster beweist den Grenzwert nicht. Die vier Papierfälle und beide eigenen Handskizzen liegen vollständig vor.",
+      "writtenAnswerEn": "I digitally plot both terms in x∈[−1,2],y∈[−5,13]. My exports show f(0)=3,g(0)=−2 and my chosen further points f(−1)=1.5,g(−1)=−4. Both increase; f is positive and g negative. Changing only b to+2 adds a digitally plotted reflected G curve: G(0)=2,G(−1)=4,positive and decreasing. This agrees with my earlier reasoning; a finite window does not prove the limit. All paper cases and both own hand sketches are complete.",
+      "deskScore": [
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "total": 20,
+      "passesWrittenThreshold": true
+    },
+    {
+      "case": "one-minor-error-with-all-cores-observable",
+      "writtenAnswerDe": "Alle Papier- und Digitalkerne sind erkennbar vollständig; ein kleiner Ablese-/Dokumentationsfehler kostet genau einen Punkt im Digitalblock.",
+      "writtenAnswerEn": "All paper and digital cores are observably complete; one minor reading/documentation error costs one point in the digital block.",
+      "deskScore": [
+        4,
+        4,
+        4,
+        4,
+        3
+      ],
+      "total": 19,
+      "passesWrittenThreshold": true
+    }
+  ],
+  "sanitizedFullContentIntegrity": {
+    "ordinary2GoalRowsExactlyEqual": true,
+    "completePrerequisiteContentExactlyEqual": true,
+    "otherAssessmentD143ExactlyEqual": true,
+    "all5ActualDEENRuntimeBlocksMatchRevisedGoal": true,
+    "noPriorReviewerJudgmentFieldsPresent": true
+  },
+  "notActualLLMGrading": true,
+  "notStudentData": true,
+  "notIndependentAcceptance": true,
+  "activeInputsModified": false
+}

@@ -1,0 +1,142 @@
+{
+  "at": "2026-11-15T14:20:07.211667+01:00",
+  "reviewer": "Independent Codex AI reviewer",
+  "cases": [
+    {
+      "id": "W1-unchanged-first-model-only",
+      "taskId": "9dbb9fd3-a93f-53ca-82d6-bf0e0e16e9d9",
+      "kind": "weak answer",
+      "answerDe": "Das Radmodell samt zwei korrekten Perioden ist vollständig. Für den Wasserstand verwende ich in beiden Fenstern w=3,2+1,1sin(πt/6) und sage nur, die Werte seien annähernd richtig.",
+      "answerEn": "The wheel model and two correct periods are complete. For water level I retain 3.2+1.1sin(πt/6) in both windows and merely call the values approximately correct.",
+      "independentJudgment": "The exact later data are all .3 m higher. This fails the required continuation test and actual second-model variation.",
+      "conditionalRubricScoreUpperBound": [
+        4,
+        2
+      ],
+      "sumUpperBound": 6,
+      "passingPoints": 7,
+      "expectedWrittenDisposition": "FAIL"
+    },
+    {
+      "id": "W2-restrict-without-second-model",
+      "taskId": "9dbb9fd3-a93f-53ca-82d6-bf0e0e16e9d9",
+      "kind": "weak answer",
+      "answerDe": "Ich bestimme w₁ richtig und begrenze es auf [0,12]; über das spätere Fenster schreibe ich nur: Das erste Modell gilt dort nicht.",
+      "answerEn": "I find w₁ correctly and restrict it to [0,12]; I only say that the first model is invalid in the later window.",
+      "independentJudgment": "The new actual demand explicitly requires a fitting model on [24,36], not merely abandoning the first model.",
+      "conditionalRubricScoreUpperBound": [
+        4,
+        2
+      ],
+      "sumUpperBound": 6,
+      "passingPoints": 7,
+      "expectedWrittenDisposition": "FAIL"
+    },
+    {
+      "id": "W3-fabricated-jump",
+      "taskId": "9dbb9fd3-a93f-53ca-82d6-bf0e0e16e9d9",
+      "kind": "weak answer",
+      "answerDe": "Beide Modelle und alle Werte sind richtig. Daraus folgt sicher ein plötzlicher Anstieg um 0,3 m genau bei 12 h.",
+      "answerEn": "Both models and every value are correct. Therefore a sudden .3 m rise definitely happened exactly at 12 h.",
+      "independentJudgment": "This contradicts the expressly required distinction between observed windows and the unspecified gap. Two smooth completions independently refute necessity of a jump.",
+      "conditionalRubricScoreUpperBound": [
+        4,
+        2
+      ],
+      "sumUpperBound": 6,
+      "passingPoints": 7,
+      "expectedWrittenDisposition": "FAIL"
+    },
+    {
+      "id": "W4-valid-cosine-time-anchor",
+      "taskId": "9dbb9fd3-a93f-53ca-82d6-bf0e0e16e9d9",
+      "kind": "fair alternative",
+      "answerDe": "Als zweite Funktion wähle ich 3,5+1,1cos(π(t−27)/6) für24≤t≤36h. Das Maximum4,6m liegt bei27h; bei24h beginnt der Zyklus steigend auf3,5m. Das erste Modell liegt an allen fünf späteren Zeiten0,3m zu niedrig. Der Zwischenverlauf ist unbekannt. Zusammen mit dem vollständigen Radnachweis und erstem Modell ist dies gleichwertig.",
+      "answerEn": "For the later window I use 3.5+1.1cos(π(t−27)/6) on 24≤t≤36h. Its4.6m maximum occurs at27h; at24h it starts upwards at3.5m. The first model is .3m too low at all five later times. The gap remains unknown. With the complete wheel work and first model, this is equivalent.",
+      "independentJudgment": "Exact phase equivalence was independently proved symbolically, not inferred from one matching sample.",
+      "conditionalRubricScore": [
+        4,
+        4
+      ],
+      "sum": 8,
+      "passingPoints": 7,
+      "expectedWrittenDisposition": "PASS"
+    },
+    {
+      "id": "W5-valid-negative-sign-phase",
+      "taskId": "9dbb9fd3-a93f-53ca-82d6-bf0e0e16e9d9",
+      "kind": "fair alternative",
+      "answerDe": "Im späteren Fenster nutze ich 3,5−1,1sin(π(t−30)/6), erläutere die tatsächliche positive Amplitude1,1m und prüfe alle fünf Werte und den steigenden Anfang.",
+      "answerEn": "In the later window I use 3.5−1.1sin(π(t−30)/6), explain the actual positive amplitude1.1m, and check all five values and the rising start.",
+      "independentJudgment": "The signed coefficient and phase give exactly the same function, not a different physical assumption. With every other required element this must receive the same credit.",
+      "conditionalRubricScore": [
+        4,
+        4
+      ],
+      "sum": 8,
+      "passingPoints": 7,
+      "expectedWrittenDisposition": "PASS"
+    },
+    {
+      "id": "B1-old-formula-only-witness",
+      "taskId": "9a42d9cd-2c17-514b-879e-2686b29d86f2",
+      "kind": "weak answer",
+      "answerDe": "Nach der zweiten binomischen Formel: (2x−3)²=4x²−12x+9; der Mittelterm ist−2ab. Rückwärts ist es das Quadrat. Die zweite Aufgabe löse und prüfe ich vollständig.",
+      "answerEn": "By the second binomial formula,(2x−3)²=4x²−12x+9; the middle term is−2ab. It factors back to the square. I solve and verify the second task completely.",
+      "independentJudgment": "This was the previous false-positive witness. It now fails the explicit four-products/cross-product derivation demand and actual runtime rubric.",
+      "conditionalRubricScoreUpperBound": [
+        2,
+        4
+      ],
+      "sumUpperBound": 6,
+      "passingPoints": 7,
+      "expectedWrittenDisposition": "FAIL"
+    },
+    {
+      "id": "B2-one-number-as-proof",
+      "taskId": "9a42d9cd-2c17-514b-879e-2686b29d86f2",
+      "kind": "weak answer",
+      "answerDe": "Fürx=2 ergibt das Quadrat1 und der ausmultiplizierte Ausdruck ebenfalls1, also gilt die Formel für jedes x. Die zweite Aufgabe ist vollständig.",
+      "answerEn": "At x=2 both the square and expanded expression give1, so the formula holds for everyx. The second task is complete.",
+      "independentJudgment": "One instance does not justify an identity. The task and actual rubric expressly reject a numerical check in place of the distributive argument.",
+      "conditionalRubricScoreUpperBound": [
+        2,
+        4
+      ],
+      "sumUpperBound": 6,
+      "passingPoints": 7,
+      "expectedWrittenDisposition": "FAIL"
+    },
+    {
+      "id": "B3-valid-general-distributive-proof",
+      "taskId": "9a42d9cd-2c17-514b-879e-2686b29d86f2",
+      "kind": "fair alternative",
+      "answerDe": "Für reelle a,b gilt (a−b)(a−b)=a(a−b)−b(a−b)=a²−ab−ba+b². Beide Kreuzprodukte sind−ab; durch Kommutativität ist ihre Summe−2ab. Mit a=2x,b=3 entstehen−6x und−6x, also4x²−12x+9. Der Gleichheitswechsel ist für jedes reelle x umkehrbar. Beim zweiten Term zeigen (x+3)²−1 die Quadratstruktur und (x+2)(x+4) die Faktoren; beide werden ausdrücklich ausmultipliziert.",
+      "answerEn": "For real a,b,(a−b)(a−b)=a(a−b)−b(a−b)=a²−ab−ba+b². Each cross-product is−ab, so commutativity gives−2ab. With a=2x,b=3, the products are−6x and−6x, giving4x²−12x+9. Every identity is reversible for every real x. In the second expression,(x+3)²−1 reveals the square structure and(x+2)(x+4) the factors; explicitly expand both.",
+      "independentJudgment": "This genuinely derives rather than cites the general identity and explicitly instantiates the requested products. It is expressly permitted in both actual language rubrics.",
+      "conditionalRubricScore": [
+        4,
+        4
+      ],
+      "sum": 8,
+      "passingPoints": 7,
+      "expectedWrittenDisposition": "PASS"
+    },
+    {
+      "id": "B4-correct-distribution-missing-second-transfer",
+      "taskId": "9a42d9cd-2c17-514b-879e-2686b29d86f2",
+      "kind": "weak answer",
+      "answerDe": "Die distributive Herleitung ist vollständig. Ich behaupte danach jedoch x²+6x+8=(x+3)² und prüfe den konstanten Term nicht.",
+      "answerEn": "The distributive derivation is complete. I then assert x²+6x+8=(x+3)² and do not check the constant term.",
+      "independentJudgment": "The independent non-square transfer is still compulsory; its absence cannot be replaced by the stronger first proof.",
+      "conditionalRubricScoreUpperBound": [
+        4,
+        2
+      ],
+      "sumUpperBound": 6,
+      "passingPoints": 7,
+      "expectedWrittenDisposition": "FAIL"
+    }
+  ],
+  "qualification": "Desk judgments of complete specified answer patterns under the written actual task/rubric; no learner submission, model grade or server grade was observed. Complete positive cases include all unchanged requirements, including the wheel graph and interpretations."
+}

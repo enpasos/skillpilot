@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "math-stage-direct-evidence-current8-v7-c088fd81-fe4f-4282-99af-ebc0d1a7d202",
+  "goal": {
+    "goalId": "c088fd81-fe4f-4282-99af-ebc0d1a7d202",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:f63cdd7a9e1401d2ca445bbb5348d7641e9cac6f007114fe11f14cde99de16ef",
+    "pageFingerprint": "sha256:afeabd48022ff804d48ab5bfba315a7c03cc1c2c432719402f10308a55870b57",
+    "goalReviewContextFingerprint": "sha256:46c482378d31c3dfee5e41630a92b8a3cce47e1955b35b52451cc84504b473d6",
+    "finalText": {
+      "titleDe": "Exponentialgleichungen mit Logarithmen lösen",
+      "titleEn": "Solve Exponential Equations Using Logarithms",
+      "descriptionDe": "Die lernende Person kann einfache Exponentialgleichungen mithilfe logarithmischer Umformungen lösen, Ergebnisse prüfen und in exponentiellen Wachstumskontexten deuten.",
+      "descriptionEn": "The learner can solve simple exponential equations using logarithmic transformations, check results, and interpret them in exponential growth contexts."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "math-current8-context-v7-20261115-a",
+      "campaignDigest": "sha256:24683d330c8183d59b420c383673bfbf6aac930dab54d4421c01f1c0f017f056",
+      "roundId": "math-current8-context-v7-round-a",
+      "independenceGroupId": "math-current8-context-v7-independent-a",
+      "reviewInputFingerprint": "sha256:d00bc400b600329f17767b7caec5e997310969bb763654247004d737fe076afd",
+      "goalReviewContextFingerprint": "sha256:46c482378d31c3dfee5e41630a92b8a3cce47e1955b35b52451cc84504b473d6",
+      "batchId": "math-current8-context-v7-round-a.batch-001",
+      "runId": "math-current8-v7-root-a-actual-current-context-review-20261115",
+      "runManifestDigest": "sha256:49609643bcfa47be53d98727447a802d8fef701620e205c90b1bae3afe260ef9",
+      "resultsDigest": "sha256:745094f35c14864dbdcfdb3de6d14f956d8e811eed8dd256b143e7f24274fba9",
+      "recordId": "math-current8-v7-root-a-actual-current-context-review-20261115-c088fd81-fe4f-4282-99af-ebc0d1a7d202",
+      "recordDigest": "sha256:0807b15cd8ccd6a66db03c9632a58075b6faa804a63b2894a71a8aaa07c6a1e4"
+    },
+    "second": {
+      "campaignId": "math-current8-context-v7-20261115-b",
+      "campaignDigest": "sha256:4a2ac353defa29866d211762a2c053c46b9c81a123f45bf5bac8e704a52603f4",
+      "roundId": "math-current8-context-v7-round-b",
+      "independenceGroupId": "math-current8-context-v7-independent-b",
+      "reviewInputFingerprint": "sha256:d00bc400b600329f17767b7caec5e997310969bb763654247004d737fe076afd",
+      "goalReviewContextFingerprint": "sha256:46c482378d31c3dfee5e41630a92b8a3cce47e1955b35b52451cc84504b473d6",
+      "batchId": "math-current8-context-v7-round-b.batch-001",
+      "runId": "math-current8-v7-b-actual-current-context-review-20261115",
+      "runManifestDigest": "sha256:6ef75ce9bc324340345fc9001654c73ccef3b83e676f1e142a96cad64794aedc",
+      "resultsDigest": "sha256:e9d50a1b02375e6c7ddccb095d9bdbb90aa8d64ae01ee652b5cb6a382ecf51d0",
+      "recordId": "math-current8-v7-b-actual-current-context-review-20261115-c088fd81-fe4f-4282-99af-ebc0d1a7d202",
+      "recordDigest": "sha256:76d0b6d9b19bb12cefc7aff119b07c03f7e52aaf7b8d43551605939ab44ef42f"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:6059191c18afda0c0e4fe2273c2a7d713b2971aa8ebe55d49bd6aa203e53c8a4"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "math-stage-direct-evidence-current8-v7-actual-ai-synthesis",
+    "manifestDigest": "sha256:ff8e4bc2679b42c9d578006ac41adec53a94f682f3ee57a0b9945e01abf3bb15",
+    "manifestFingerprint": "sha256:5786ecc2a436ce444c2a0b677965f5cbbfdf80614f58d73b53fadb6f53f507f6",
+    "decisionId": "math-stage-direct-evidence-current8-v7-actual-ai-synthesis-007"
+  },
+  "synthesis": {
+    "synthesisId": "math-stage-direct-evidence-current8-v7-actual-ai-synthesis-007",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "codex-math-current8-integration-agent-reading-actual-independently-sealed-A8-B8-20261115",
+    "synthesizedAt": "2026-11-15T15:16:47.912911+00:00",
+    "rationaleDe": "Beide unabhängig versiegelten aktuellen Runden halten die volle DEEN-Beschreibung und die fachlich passenden aktuellen Voraussetzungen. 3·2^x=15 ergibt x=ln5/ln2≈2.321928;40·1.25^(t/2)=100 ergibt t≈8.212567h, Beobachtung erstmals10h. Die acht historischen Reviewkontexte werden nur zielweise ersetzt. Die Bildkorrektur für78238608 bleibt ausdrücklich gesondert erforderlich.",
+    "rationaleEn": "Both independently sealed current rounds retain the full bilingual description and mathematically appropriate current preparation. 3·2^x=15 gives x=ln5/ln2≈2.321928;40·1.25^(t/2)=100 gives t≈8.212567h, first observation10h. Only the eight changed goal contexts supersede their prior review bindings. The78238608image correction remains explicitly required separately.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Logarithmische Lösung wird durch Potenzgrenzen und Kontextdeutung geprüft.",
+      "essentialUnderstandingEn": "A logarithmic solution is checked against neighboring powers and contextual meaning.",
+      "observablePerformanceDe": "2^x=12 ergibt3.5849625 zwischen3 und4; die Pflanzenvignette ist keine Tabelle gleicher Zeitabstände.",
+      "observablePerformanceEn": "2^x=12 gives3.5849625 between3 and4; the plant vignette is not a table of equal time intervals.",
+      "transferExpectationDe": "Die aktuelle Begründung wird auf den im unabhängigen A-Review berechneten geänderten Fall übertragen; Bildbeispiele sind keine Lernerleistung.",
+      "transferExpectationEn": "Current reasoning transfers to the changed case calculated in the independent A review; illustrated examples are not learner performance."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-08efd6f878e60ad4c61d84a6ad59501cbc38d7d6547f1b335c8ad00946fa03a9",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:693398ba6cafac873c34f5729448f22e3a64c5456eaeee93b212f22ae0f59c3d"
+}

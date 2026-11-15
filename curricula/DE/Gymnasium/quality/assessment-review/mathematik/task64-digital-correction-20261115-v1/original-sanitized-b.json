@@ -1,0 +1,150 @@
+{
+  "reviewer": "/root/math_two_sanitized_blind_b",
+  "round": "B",
+  "sealedAt": "2026-11-15T15:53:05.966798+00:00",
+  "blindToOtherReviews": true,
+  "blindnessStatement": "I read no other reviewer judgment, native review input, full canonical catalog, review provenance or earlier opinion. I used only the specified sanitized pack, the specified PDF, its two rendered goal pages, and the two actual primary image files selected by that pack. No reviewer was contacted before this seal.",
+  "reviewNature": "Independent AI mathematical, pedagogical, assessment and visual/page content review; not human grading, learner trial, classroom effectiveness, official-source verification, runtime grading acceptance or deployment acceptance.",
+  "input": {
+    "contentPath": "tmp/math-current-two-content-only-20261115/content-input.json",
+    "contentSha256": "d070c49cc87c0c39c238d5cc9e5ecf2aa90416b64d6ec0693e4ba91c037a93d4",
+    "sourceNativeInputSha256ForTransportOnly": "909030d2420f2caade305ba10ef298fe20765c524aca96ffb2aae3ea91a3fd5f",
+    "sourceCanonicalSha256ForTransportOnly": "dff6a605492e74de3d17d32cce8049e0abb3624a84adcacbb51dc4173742e1c4",
+    "originalReviewInputFingerprintForTransportOnly": "sha256:b1770fff05df2cf554907321ec37681c1c958f5b83ed40163083a2b0614c378d",
+    "originalBundleFingerprintForTransportOnly": "sha256:6f192b51d8e4801e4c0c34547104fe3bf1ed043b90b7b71a98bff9b3d1d75f3e",
+    "bookDigest": "sha256:0881aebe0f081bbc37794b59e2b5d5c17be18f757637c71cecae44ffe4b96b75",
+    "pdfPath": "tmp/math-v7-active-integration-20261115/book-two-current1310.pdf",
+    "pdfSha256": "e72cfd134ce359989ba54bc38087881ac0a884892344baa46c7bc8cb3ef8b73b",
+    "visualPagesInspected": [
+      3,
+      4
+    ],
+    "rendering": "pdftoppm -scale-to 1800 -png, actual physical PDF pages 3 and 4, after two frontmatter pages",
+    "prerequisiteGoalCountRead": 60,
+    "assessmentCountRead": 2,
+    "sectionDigestConvention": "SHA-256 of UTF-8 JSON with ensure_ascii=False, sort_keys=True, separators=(comma,colon)",
+    "prerequisiteContentSha256": "f30a9d5724a40cb6cf00bddac411d8c4b81920e72277819687542253c6eb4c1a",
+    "assessmentContentSha256": "d8c6c58d2b317acc10f5f9d2c8d034bb5e5656ec7d239e6fa764487feb247dcb",
+    "assessments": [
+      {
+        "goalId": "d143245a-a423-5699-bf00-4c520cd64b86",
+        "contentSha256": "b865895783ba92fdeedbce5e0e2b045c79e27a13364d7673245a3f0d9b1c91e2"
+      },
+      {
+        "goalId": "64dafd7e-2f33-5987-a927-181b1c5f529d",
+        "contentSha256": "ace81b03dc6cab3a955b1e89d88187aaa4eeeeef6bf5f2e5d9de1f8bf1a4a03e"
+      }
+    ]
+  },
+  "decisions": [
+    {
+      "goalId": "78238608-aaaa-4d12-a9de-54f325e9cf6f",
+      "goalFingerprint": "sha256:a132b889da1543803a126a5ed255105b4a258fe18f2e4ef17230afbdfa4b0cd8",
+      "pageFingerprint": "sha256:c9ce28ff10a88de7a7066fdb35d8630b2b1eeec6893b95fd61d9bddd2f06ad4f",
+      "decision": "REVISE",
+      "mathematicalCorrectness": "PASS",
+      "preparation": "PASS",
+      "assessmentFullScope": "REVISE",
+      "visualAndPage": "PASS",
+      "blockingFindings": [
+        {
+          "id": "exp-digital-use-unassessed",
+          "severity": "coverage",
+          "location": "currentDescriptionDe/currentDescriptionEn; assessment 64dafd7e task 1, solution and compare-positive-growth-and-negative-decay-base rubric",
+          "reasonDe": "Die vollständige DE/EN-Lernzielbeschreibung nennt als Können auch die Nutzung passender Veranschaulichungen mit digitalen Werkzeugen. Die einzige konkrete Zeichenaufgabe erklärt den digitalen Check ausdrücklich für freiwillig; Musterlösung und Rubrik erlauben ausschließlich eigene Handskizzen für volle Punkte. Damit kann eine Person sämtliche 16 Punkte und die Bestehensgrenze 15 erreichen, ohne ein digitales Werkzeug verwendet oder dessen Darstellung sinnvoll beurteilt zu haben. Das belegt Graphverständnis und Darstellen per Hand, aber nicht den ausdrücklich mitbenannten digitalen Teilumfang.",
+          "counterexample": "A response supplies all correct symbolic reasoning, both correct hand-drawn curves, all four regimes and boundary classifications, but never uses a digital graphing tool. The current rubric awards 16/16; the stated ability to use digital visualizations remains undemonstrated.",
+          "requiredRepair": "Require a small actual digital visualization action and interpretation in the task and essential rubric, for example plotting both functions with a suitable window, identifying the intercept/asymptotic direction and comparing with the predictions. Keep own prior sketches/reasoning. Do not merely relabel a voluntary digital check as assessed."
+        }
+      ],
+      "reasonsDe": [
+        "Unter a>0, a!=1, b!=0 sind Achsenabschnitt b, Wertebereiche, asymptotische Richtung und alle vier Monotoniefälle korrekt. Die DE/EN-Fassungen sind fachlich gleichwertig. a=1, b=0 und negative Basis werden zutreffend von nichtkonstanten reellen Exponentialfunktionen auf R abgegrenzt.",
+        "Die Voraussetzungen lineare Funktionswerte/Graphpunkte sowie rationale Exponenten einschließlich ihrer Potenz-/Wurzelvorbereitung sind als Einstieg tragfähig. Asymptotik und die gemeinsame Wirkung von a und b werden hier erworben; es wird keine spätere Analysis-Voraussetzung benötigt.",
+        "Die Aufgaben fordern echte eigene Kurven für beide Funktionen, inverse Termwahl, Randfälle und alle vier Vorzeichen-/Basisregime. Ein fehlender fachlicher Kern deckelt den betreffenden Block auf 2/4; dadurch sind höchstens 14/16 und somit weniger als 15 erreichbar. Das gilt gemäß schriftlicher Rubrik und ist keine Aussage über serverseitige Teilminima.",
+        "Das tatsächliche Bild zeigt positive Beispiele 3*2^x und 3*0,5^x mit gemeinsamer Skalierung, korrektem Achsenabschnitt und plausiblen Stützpunkten. Die positive g-Abbildung ist eine separate Lernillustration; die konkrete Prüfungsaufgabe nennt eigenständig g=-2*(1/2)^x und bindet keine Bilddatei als Stimulus. Daher kein widersprüchlicher Prüfungsstimulus.",
+        "PDF-Seite 3 zeigt korrekte Formeln, lesbare Beschreibung und vollständige externe Voraussetzungen ohne Überlagerungen. Die Illustration ist ruhig und altersangemessen. Der Ausschnitt kann als Motivation zur Asymptote dienen; die tatsächliche Begründung wird in den Aufgaben verlangt."
+      ],
+      "ownCases": [
+        {
+          "case": "F(x)=-5*(1/4)^x",
+          "workedResult": "F(-1)=-20, F(0)=-5, F(1/2)=-2.5, F(1)=-1.25. Strictly increasing despite a<1; range (-infinity,0); approaches 0 from below as x->+infinity."
+        },
+        {
+          "case": "H(x)=4*(9/4)^x and -H(x)",
+          "workedResult": "H(0)=4, H(1/2)=6, H(1)=9; H increases and -H decreases. For every h>0, F(x+h)-F(x)=b*a^x*(a^h-1), giving all four real-variable directions from the sign of b and a-1."
+        },
+        {
+          "case": "Boundary and invalid-base check",
+          "workedResult": "7*1^x is constant 7; 0*(5/2)^x is identically 0; (-2)^(1/2) is not real, so a negative base cannot define the claimed real function on all R."
+        },
+        {
+          "case": "Rubric omission stress case",
+          "workedResult": "Omitting either own sketch leaves the first block at most 2/4, total at most 14<15. Omitting the expressly optional digital action leaves every rubric item satisfiable and 16/16 possible: the blocking coverage gap."
+        }
+      ],
+      "nonBlockingNotes": [
+        "For a fully explicit real-variable justification, the unit-step relation may be extended to arbitrary h>0. The present statements within the exponential family are correct; this is a clarification, not the blocking finding."
+      ],
+      "image": {
+        "path": "app/public/assets/goal-visualizations/mathematik/78238608-aaaa-4d12-a9de-54f325e9cf6f/78238608-aaaa-4d12-a9de-54f325e9cf6f.jpeg",
+        "sha256": "233c09ed4ad912ee126557fb5bf58cbc16d9dfd78512277f36af7e7c20221fef"
+      },
+      "pdfPhysicalPage": 3,
+      "renderSha256": "3adc7170127a9c013e018b58d27a842f090a18e97fcf645d7f35798125344d85"
+    },
+    {
+      "goalId": "f76d00dc-6b31-59cd-b01a-3610eadc9908",
+      "goalFingerprint": "sha256:d7867dcac02da264801c264084fdbe279eac32111ae4112162cbebe7da5fb1b9",
+      "pageFingerprint": "sha256:b244d2c33eedc15ae0f54f6b6f7de54388feb3389199bc16d1f695fc8da0589e",
+      "decision": "PASS",
+      "mathematicalCorrectness": "PASS",
+      "preparation": "PASS",
+      "assessmentFullScope": "PASS",
+      "visualAndPage": "PASS",
+      "blockingFindings": [],
+      "reasonsDe": [
+        "Ziel und Evidenzprofil trennen die hinreichenden Ableitungsvorzeichen von den falschen strikten Umkehrungen. Sowohl Steigen als auch Fallen werden behandelt; eine isolierte Nullstelle der Ableitung wird zutreffend zugelassen. DE und EN stimmen in diesem Umfang überein.",
+        "Der direkte Vorgänger deckt Potenz-, Faktor- und Summenregel; die mitgelieferte Vorbereitung führt über Tangentensteigung und Monotonie/Extrema quadratischer Funktionen. Das ist für die neue logische Unterscheidung tragfähig. Die kubische Faktorisierung und eine positive Quadratsummenform werden in der Aufgabe ausdrücklich als Material angeboten, statt als unmodellierte Spezialtechnik vorausgesetzt.",
+        "Die konkrete Aufgabe d143245a verlangt die tatsächliche Anwendung beider Satzrichtungen auf x² und -x² auf [1,3], mit Stetigkeit am geschlossenen Intervall und Differenzierbarkeit/Vorzeichen im Inneren. Außerdem werden ein nichtzirkulärer Nachweis für x³, das Gegenbeispiel f′(0)=0, kein Extremum bei 0 und der eigenständig zu begründende fallende Fall -x³ verlangt. Musterlösungen und DE/EN-Rubriken sind hierfür korrekt.",
+        "Bei x>y ist x-y positiv und x²+xy+y²=((x+y)²+x²+y²)/2 strikt positiv, weil x=y=0 ausgeschlossen ist. Der Beweis von x³ ist deshalb nicht von einer falschen Umkehrung abhängig. Die Multiplikation mit -1 liefert korrekt den fallenden Transfer.",
+        "Jeder wesentliche fehlende Kern deckelt seinen 4-Punkte-Block auf 2, damit bleiben höchstens 18/20<19. Die schriftliche Bewertung verhindert also fachliche Kompensation bei ihrer korrekten Anwendung; eine technische Durchsetzung von Teilminima wurde nicht geprüft oder behauptet.",
+        "Das tatsächliche Bild zeigt die richtigen beiden Implikationen sowie x³ mit waagerechter Tangente im Ursprung und die explizite Warnung vor der strikten Umkehrung. Handschriftliche Formen sind gut lesbar; die Darstellungen bleiben klar. Auf PDF-Seite 4 sind Titel, Bild, vollständige Beschreibung und der externe Voraussetzungshinweis lesbar und nicht abgeschnitten."
+      ],
+      "ownCases": [
+        {
+          "case": "Shifted increasing counterexample h(x)=(x-2)^3+7",
+          "workedResult": "h(1)=6, h(2)=7, h(3)=8; h is strictly increasing by translation of x³, but h′(2)=0. Thus the converse failure is not tied to the origin or intercept 0."
+        },
+        {
+          "case": "Falling transfer k(x)=-2*(x+1)^3+4",
+          "workedResult": "k(-2)=6, k(-1)=4, k(0)=2; k is strictly decreasing, while k′(-1)=-6*0²=0. A horizontal tangent does not force an extremum."
+        },
+        {
+          "case": "Why the interval hypothesis matters",
+          "workedResult": "F(x)=x for x<0 and F(x)=x-2 for x>0 has F′=1 on (-infinity,0) union (0,infinity), yet F(-0.5)=-0.5>F(0.5)=-1.5, so the function is not strictly increasing on that noninterval domain. The task correctly insists on an interval."
+        },
+        {
+          "case": "Why closed-interval continuity matters",
+          "workedResult": "On [0,1], define F(0)=5 and F(x)=x for x>0. F′=1 in (0,1), but F(0)>F(1); endpoint continuity is needed to include the endpoints. The task and model explicitly check it for the polynomial application."
+        },
+        {
+          "case": "No-extremum locality",
+          "workedResult": "For every epsilon>0, (-epsilon)^3<0<epsilon^3, so values arbitrarily close on either side rule out both local extrema at 0. Mere checks at -1 and +1 would not alone prove a general local statement; the provided model correctly states the all-left/all-right sign property."
+        }
+      ],
+      "nonBlockingNotes": [
+        "The generic image alt text could be improved to describe the actual theorem panels and the horizontal tangent; the visible mathematical content and current PDF are correct."
+      ],
+      "image": {
+        "path": "app/public/assets/goal-visualizations/mathematik/f76d00dc-6b31-59cd-b01a-3610eadc9908/f76d00dc-6b31-59cd-b01a-3610eadc9908.jpg",
+        "sha256": "3a875467d089ea2b0a1c949eb158833e5e549f59745fa66eb75b1ac4d0cee42e"
+      },
+      "pdfPhysicalPage": 4,
+      "renderSha256": "a92af56f7591879a5180fbe28abdc9ba9a753e2157f8c1e7d43b47045fc08b02"
+    }
+  ],
+  "limits": [
+    "Only the two specified ordinary goals are judged. The 60 preparation entries were read as supplied supporting content, not independently certified as a whole curriculum.",
+    "No external official sources were opened; sourceRef accuracy and the applicability in all sixteen Laender were not verified.",
+    "No native review schema, canonical file, runtime scoring implementation or earlier judgments were opened. Transporting these findings must not silently convert the REVISE judgment to PASS."
+  ]
+}

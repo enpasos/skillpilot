@@ -1,0 +1,108 @@
+{
+  "status": "BOUNDED_AUTHOR_COUNTEREXAMPLES_AND_ANALYTIC_FEASIBILITY_NOT_INDEPENDENT_REVIEW",
+  "cases": [
+    {
+      "case": "no-A-execution",
+      "fullySatisfiedOtherCriteriaAssumed": true,
+      "missingCriterionIds": [
+        "a-own-raw",
+        "a-own-setup"
+      ],
+      "maximumScore": 16,
+      "passes": false,
+      "manualContentReason": "Plan und gelieferte Messwerte belegen keinen eigenen Aufbau/keine A-Rohdaten."
+    },
+    {
+      "case": "no-B-execution",
+      "fullySatisfiedOtherCriteriaAssumed": true,
+      "missingCriterionIds": [
+        "b-changed-own-setup",
+        "b-own-raw"
+      ],
+      "maximumScore": 16,
+      "passes": false,
+      "manualContentReason": "Kopierte A-Werte oder vorgegebene B-Beispiele ersetzen den tatsächlich neuen Aufbau und die neuen Rohdaten nicht."
+    },
+    {
+      "case": "both-only-supplied-readings",
+      "fullySatisfiedOtherCriteriaAssumed": true,
+      "missingCriterionIds": [
+        "a-own-raw",
+        "b-own-raw"
+      ],
+      "maximumScore": 16,
+      "passes": false,
+      "manualContentReason": "Beide echten Rohdatenprodukte sind notwendig, auch bei richtiger Rechnung."
+    },
+    {
+      "case": "no-changed-optical-condition",
+      "fullySatisfiedOtherCriteriaAssumed": true,
+      "missingCriterionIds": [
+        "b-changed-own-setup"
+      ],
+      "maximumScore": 18,
+      "passes": false,
+      "manualContentReason": "Eine unveränderte Wiederholung trägt den ausdrücklich verlangten neuen optischen Fall nicht."
+    },
+    {
+      "case": "no-uncertainty",
+      "fullySatisfiedOtherCriteriaAssumed": true,
+      "missingCriterionIds": [
+        "uncertainty-controls"
+      ],
+      "maximumScore": 18,
+      "passes": false,
+      "manualContentReason": "Bloße Nominalwerte tragen keinen begrenzten Mess-/Modellvergleich."
+    },
+    {
+      "case": "near-defocus-only",
+      "fullySatisfiedOtherCriteriaAssumed": true,
+      "missingCriterionIds": [
+        "b-far-limit"
+      ],
+      "maximumScore": 18,
+      "passes": false,
+      "manualContentReason": "Fehlender Nahfokus allein begründet keine Weitsichtigkeitsdeutung des entspannten Modells."
+    }
+  ],
+  "analyticSetupWitnessesMm": {
+    "A": {
+      "f": [
+        99,
+        101
+      ],
+      "g": [
+        999,
+        1001
+      ],
+      "retina": [
+        119,
+        121
+      ],
+      "prediction": [
+        109.86585365853658,
+        112.3596881959911
+      ]
+    },
+    "B": {
+      "f": [
+        99,
+        101
+      ],
+      "g": [
+        299,
+        301
+      ],
+      "retina": [
+        79,
+        81
+      ],
+      "prediction": [
+        147.51980198019803,
+        152.52020202020202
+      ]
+    }
+  },
+  "actualHardwareOrLearnerMeasurementsClaimed": false,
+  "fairPassMeaning": "A genuinely performed submission with complete actual own records and valid bounded model comparison can obtain 20/20; these analytic witnesses attest no execution. An honestly unresolved result can pass with the required actual control and limited interpretation."
+}

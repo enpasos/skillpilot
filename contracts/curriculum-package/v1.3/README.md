@@ -3,7 +3,7 @@
 This directory currently contains the stage-plan foundation for works F1,
 F2 and F6 of the [15 November handover](../../../docs/dev/stage-plan-units-handover-2026-11-15.md).
 It is not a released curriculum-package runtime version. Package exporters,
-Java consumers and the learner map still need their explicit integration;
+Java consumers and the shared production index reader still need explicit integration;
 the existing 1.0, 1.1 and 1.2 contracts remain unchanged.
 
 ## Authority and meaning
@@ -21,13 +21,40 @@ references to their full authorities and selected units, rather than another
 authored goal tree. A course-neutral excerpt must agree across all named
 course authorities.
 
+The same `units` array may now declare temporal children. A stage's explicit
+`children` list names its `year` units in SekI, or its `phase` units (`E`,
+`Q1`–`Q4`) in SekII. Years carry `year`; phases carry `phase`; both carry
+`parentUnitId`, `after`, and a cited `basis`. An `officialSource` basis cites
+the Land/duration structure; `reviewedStructure` records an explicitly justified
+author structure without claiming an official assignment. Labels may reflect
+the applicable Land; optional `labelEn` is presentation only. The contract does
+not invent a universal list of school years for all Länder or duration models.
+
+Every child belongs to exactly one stage and is listed once by that parent.
+The displayed sibling order and the explicit minimal `after` chain must agree;
+missing, backward, repeated and cross-parent slots fail validation. Subdivided
+stages aggregate their children's targets; each acquisition target has one
+leaf placement in a year or phase. A target left on the subdivided aggregate
+has no unambiguous temporal position and is rejected. An unsplit original
+stage remains a valid leaf, so the existing two-stage format is unchanged.
+
 Each target reference records the basis of its placement:
 
 - `officialSource`: the Land source supports the named stage and is cited.
+  A nested assignment also identifies its exact `sourceUnitId`; source evidence
+  for the stage alone does not establish a particular year or phase.
 - `canonicalDefault`: a provisional canonical phase, without an official
-  source claim.
+  source claim. At a temporal leaf it must match the declared year/phase;
+  it is not permission to relocate a canonical goal silently.
 - `reviewedPreparation`: an explicitly justified earlier learning placement
-  whose original source stage and references remain recorded.
+  whose original source stage and references remain recorded. For nested
+  preparation, `sourceUnitId` retains the later source year/phase while the
+  learning placement is earlier in the same declared hierarchy.
+- `reviewedPlacement`: a cited, reasoned author placement, explicitly separate
+  from an official year/phase claim. This can locate a cross-phase assessment
+  or orientation goal without falsely assigning it an official calendar slot.
+  Basis declarations still require source and subject review before activation;
+  syntactic validity is not independent acceptance.
 
 The location of a `prerequisiteOnly` reference is not a learning placement.
 Necessary preparation is derived from the complete prerequisite graph and
@@ -46,7 +73,7 @@ mastery. A support reference does not acquire an official source claim.
 The semantic validator in
 [`stagePlan.ts`](../../../app/src/utils/stagePlan.ts) additionally checks
 references, unique visible placements, the two-stage order and agreement of
-shared authorities. Schema validation alone is insufficient. Qualified goal
+shared authorities at every temporal boundary. Schema validation alone is insufficient. Qualified goal
 references require the exact canonical owner; matching a bare suffix does
 not establish ownership.
 
@@ -56,6 +83,10 @@ of a broader target subtree. Excerpts retain the global support declarations
 needed to preserve their selected stage's actual target projection; they do
 not turn those declarations into acquisition targets or independent placements.
 The materializer compares its indexed atoms with the native compiler result.
+Its index recursively binds each emitted stage/year/phase structure, including
+parent, kind and sibling order. Empty subject contributions to a calendar unit
+remain in the shared authority but are omitted from the legacy output; no
+artificial goals are inserted to satisfy the legacy nonempty-structure rule.
 
 The file-backed materializer in
 [`stagePlanCatalog.ts`](../../../app/scripts/lib/stagePlanCatalog.ts) loads
@@ -79,8 +110,11 @@ npm run report:stage-plan-learning-flow -- --inventory <repository-relative-inve
 
 The report verifies fresh materializations before and after analysis and
 checks all independently selected subject/course combinations. It reports
-direct and transitive stage backflows, with prerequisite witnesses, including
-derived preparation. Its optional `--require-no-backflow` fails on any such
+direct and transitive backflows across years, phases and stages, with prerequisite witnesses, including
+derived preparation. Unit counts aggregate descendants once; direct ownership
+counts remain available separately. Preparation is placed at the earliest
+actual temporal need using the declared hierarchy, independently of mastery.
+Its optional `--require-no-backflow` fails on any such
 finding. A clean report does not establish source fidelity, pedagogical
 quality, complete package support or learner-runtime acceptance.
 
@@ -99,3 +133,23 @@ The existing curriculum-quality gates remain required.
 The [independent role and label review](../../../docs/qa-ci/stage-plan-foundation-role-review-2026-11-15.md)
 preserves the reproduced label defect, its correction and the actual final
 source hashes. It is focused implementation evidence, not Land-plan acceptance.
+
+The learner-map adapter `deriveLearnerUnitMapPreview` accepts the selected plan
+and verified records of this same generated index through `stagePlanContext`.
+It uses declared identities and `after`, merges them across subjects, exposes
+actual nested year/phase units, and leaves atomic requirement provenance and
+backward arrows intact. With declared metadata, ordinary topic headings never
+become a second unit hierarchy. Without activated metadata, the existing
+explicitly provisional preview remains; its table includes the exact neutral
+GK/LK stage IDs emitted by the native Java merger. Neither adapter nor unit
+order writes mastery, changes closure, blocks entry, or hides a prerequisite.
+
+The nested integration test runs within the existing required
+`test:stage-plan-contracts` gate. It exercises the real materializer, legacy
+compiler, generated index, learner tree and map projection together, including
+same-stage year/phase backflows and invalid parent/order/source declarations.
+The isolated fixtures activate zero real plans. A real HE G8/G9 authoring
+preparation must retain and resolve actual placement/source findings before
+reviewed activation; a clean fixture is no substitute. Production loading and
+raw-digest binding of the selected index, including the Java GK/LK merge path,
+remain explicit integration work before real activation.

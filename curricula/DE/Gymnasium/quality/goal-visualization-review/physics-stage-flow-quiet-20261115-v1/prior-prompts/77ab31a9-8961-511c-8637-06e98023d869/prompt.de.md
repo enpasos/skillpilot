@@ -1,0 +1,3 @@
+# Eigenes natives Unterrichtsschema
+
+Originales repo-natives SVG, von SkillPilot verfasst, CC-BY-4.0. Kein Bildanbieteraufruf und keine Bearbeitung eines fremden Rasterbildes. Die enge Vektorausführung dient den exakten Verbindungen, Pinbezügen, drei Widerstandswerten und der eindeutig nur im Steuerzweig liegenden Trennstelle. rsvg-convert rendert das unveränderte SVG als PNG. Die LED wird als beschriftetes Lehrbauteil mit A/K-Anschlüssen dargestellt; der npn-Pfeil zeigt vom Basisbereich entlang des Emitters nach außen. Der feste 100-kΩ-Bezug verhindert eine schwebende Basis beim Öffnen von T. Der vollständige Aufgabenauftrag und das reale Datenblatt bleiben für die tatsächliche Montage maßgeblich. Die Abbildung behauptet keine Durchführung oder Lernendenbeobachtung.

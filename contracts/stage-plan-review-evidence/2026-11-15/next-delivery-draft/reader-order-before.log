@@ -1,0 +1,42 @@
+warning: unknown enum constant Status.STABLE
+  reason: class file for org.apiguardian.api.API$Status not found
+warning: unknown enum constant Status.STABLE
+warning: unknown enum constant Status.MAINTAINED
+warning: unknown enum constant Status.MAINTAINED
+warning: unknown enum constant Status.MAINTAINED
+warning: unknown enum constant Status.STABLE
+warning: unknown enum constant Status.STABLE
+7 warnings
+17:51:27.104 [main] WARN com.skillpilot.backend.service.CompositionViewService -- STAGE_PLAN_INDEX_UNAVAILABLE: Stage-plan runtime index: stale raw source curricula/DE/Gymnasium/canonical/subject-0.json; compatibility views remain readable without declared plan metadata
+
+Test run finished after 1015 ms
+[         2 containers found      ]
+[         0 containers skipped    ]
+[         2 containers started    ]
+[         0 containers aborted    ]
+[         2 containers successful ]
+[         0 containers failed     ]
+[        12 tests found           ]
+[         0 tests skipped         ]
+[        12 tests started         ]
+[         0 tests aborted         ]
+[         9 tests successful      ]
+[         3 tests failed          ]
+
+
+Failures (3):
+  JUnit Jupiter:StagePlanRuntimeIndexTest:repinningAnArtifactDoesNotPermitReversedPhaseSiblings(Path)
+    MethodSource [className = 'com.skillpilot.backend.composition.StagePlanRuntimeIndexTest', methodName = 'repinningAnArtifactDoesNotPermitReversedPhaseSiblings', methodParameterTypes = 'java.nio.file.Path']
+    => java.lang.AssertionError: 
+Expecting code to raise a throwable.
+       com.skillpilot.backend.composition.StagePlanRuntimeIndexTest.repinningAnArtifactDoesNotPermitReversedPhaseSiblings(StagePlanRuntimeIndexTest.java:126)
+  JUnit Jupiter:StagePlanRuntimeIndexTest:actualYearOrderAfterMergeMustMatchThePlan(Path)
+    MethodSource [className = 'com.skillpilot.backend.composition.StagePlanRuntimeIndexTest', methodName = 'actualYearOrderAfterMergeMustMatchThePlan', methodParameterTypes = 'java.nio.file.Path']
+    => java.lang.AssertionError: 
+Expecting code to raise a throwable.
+       com.skillpilot.backend.composition.StagePlanRuntimeIndexTest.actualYearOrderAfterMergeMustMatchThePlan(StagePlanRuntimeIndexTest.java:114)
+  JUnit Jupiter:StagePlanRuntimeIndexTest:unboundSubjectWrappersCannotConcealReversedYearOrder(Path)
+    MethodSource [className = 'com.skillpilot.backend.composition.StagePlanRuntimeIndexTest', methodName = 'unboundSubjectWrappersCannotConcealReversedYearOrder', methodParameterTypes = 'java.nio.file.Path']
+    => java.lang.AssertionError: 
+Expecting code to raise a throwable.
+       com.skillpilot.backend.composition.StagePlanRuntimeIndexTest.unboundSubjectWrappersCannotConcealReversedYearOrder(StagePlanRuntimeIndexTest.java:141)

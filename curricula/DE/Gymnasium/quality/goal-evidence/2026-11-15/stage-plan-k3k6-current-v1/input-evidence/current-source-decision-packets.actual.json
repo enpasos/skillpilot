@@ -1,0 +1,1054 @@
+{
+  "status": "ACTUAL_EXCERPT_MAPPING_CONTENT_REVIEW_NOT_NATIVE_RELEASE_STATUS",
+  "mappingPath": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_physics_source_extraction_to_canonical_physics.review.json",
+  "sourcePath": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_PHYSIK_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+  "sourceSha256": "sha256:c6771966752d0bb257e1a0fcef7290b92f5eb60534c03458685f2dfc14f32ee7",
+  "sourceUnchanged": true,
+  "records": [
+    {
+      "sourceGoalId": "7812213c-59e5-5d52-9a01-0c0534020cd5",
+      "beforeDecision": {
+        "sourceGoalId": "7812213c-59e5-5d52-9a01-0c0534020cd5",
+        "topicCode": "Ph8.3",
+        "sourceSpan": "Ph8.3.2",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "ae67bcf1-f3ee-50d6-9a12-25a159dff659",
+          "d67502e3-5e0a-595b-a24b-65b1c40de36e"
+        ],
+        "rationale": "Fachliche BY-Physik-M3-Review: Das Source-Ziel ist durch die angegebenen kanonischen SkillPilot-Ziele inhaltlich vollständig abgedeckt; mehrere Ziele beschreiben nur eine 1:n-Zuordnungsform.",
+        "reviewedAt": "2026-05-10",
+        "reviewer": "codex"
+      },
+      "currentDecision": {
+        "sourceGoalId": "7812213c-59e5-5d52-9a01-0c0534020cd5",
+        "topicCode": "Ph8.3",
+        "sourceSpan": "Ph8.3.2",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "d61ea362-f6c3-5eab-ac30-2d0e265ac0f6"
+        ],
+        "rationale": "Ph8.3.2 verlangt Geschwindigkeitspfeile in zweidimensionalen Stroboskop-/Videoaufnahmen. Das neue frühe Atom operationalisiert genau die zeitlich/räumliche Bildauswertung und grafische Geschwindigkeit; kein vollständiger eigenständiger Wurfmodell-Fit wird der frühen Quelle zugeschrieben.",
+        "reviewedAt": "2026-11-15",
+        "reviewer": "K6-v3 author candidate; independent review pending"
+      },
+      "retainedSourceGoal": {
+        "id": "7812213c-59e5-5d52-9a01-0c0534020cd5",
+        "passageId": "a9457ac2-38c5-5604-9dd1-bb63107b7e6e",
+        "topicCode": "Ph8.3",
+        "bulletIndex": 2,
+        "aspectIndex": 1,
+        "title": "kennzeichnen in Stroboskopdarstellungen oder mithilfe geeigneter Software in Videos von zweidimensio...",
+        "description": "kennzeichnen in Stroboskopdarstellungen oder mithilfe geeigneter Software in Videos von zweidimensionalen Bewegungen die Geschwindigkeit eines Körpers, indem sie Pfeile als fachtypische Darstellungsform verwenden.",
+        "sourceText": "kennzeichnen in Stroboskopdarstellungen oder mithilfe geeigneter Software in Videos von zweidimensionalen Bewegungen die Geschwindigkeit eines Körpers, indem sie Pfeile als fachtypische Darstellungsform verwenden.",
+        "sourceSpan": "Ph8.3.2",
+        "parentBulletText": "kennzeichnen in Stroboskopdarstellungen oder mithilfe geeigneter Software in Videos von zweidimensionalen Bewegungen die Geschwindigkeit eines Körpers, indem sie Pfeile als fachtypische Darstellungsform verwenden.",
+        "sourceRef": "LehrplanPLUS Bayern Gymnasium Physik, Ph8.3.2",
+        "courseLevel": "unspecified",
+        "granularity": "officialCompetency",
+        "tags": [
+          "jurisdiction:DE-BY",
+          "stage:SekI",
+          "courseLevel:unspecified",
+          "topic:Ph8.3"
+        ],
+        "rawSourceText": "kennzeichnen in Stroboskopdarstellungen oder mithilfe geeigneter Software in Videos von zweidimensionalen Bewegungen die Geschwindigkeit eines Körpers, indem sie Pfeile als fachtypische Darstellungsform verwenden.",
+        "rawSourceSpan": "Ph8.3.2",
+        "rawParentBulletText": "kennzeichnen in Stroboskopdarstellungen oder mithilfe geeigneter Software in Videos von zweidimensionalen Bewegungen die Geschwindigkeit eines Körpers, indem sie Pfeile als fachtypische Darstellungsform verwenden."
+      },
+      "currentCanonicalGoals": [
+        {
+          "id": "d61ea362-f6c3-5eab-ac30-2d0e265ac0f6",
+          "title": "Geschwindigkeitspfeile aus einer Video-Bildfolge bestimmen und vergleichen",
+          "description": "Die lernende Person kann in einer zeitlich und räumlich kalibrierten Bildfolge einer zweidimensionalen Bewegung aus den Ortsänderungen über kurze gleiche Zeitintervalle maßstäbliche Geschwindigkeitspfeile konstruieren, die Näherung für den jeweiligen Zeitpunkt benennen und Änderungen der Geschwindigkeit grafisch bestimmen.",
+          "type": "atomic",
+          "contains": [],
+          "requires": [
+            "13b338eb-f761-5817-9058-11043b9cb253"
+          ],
+          "tags": [
+            "GK",
+            "LK",
+            "canonical",
+            "SekI"
+          ],
+          "applicability": {
+            "jurisdiction": [
+              "DE-BY"
+            ]
+          },
+          "dimensionTags": {
+            "framework": "canonical-gymnasium-physics",
+            "demandLevel": "AB2",
+            "phase": "GLOBAL",
+            "area": "Mechanik",
+            "topicCode": "CANONICAL.PHYSICS.BY.PH8.D61EA362",
+            "processCompetencies": [
+              "PK1_EXPERIMENTIEREN",
+              "PK3_MATHEMATISIEREN"
+            ]
+          },
+          "titleEn": "Determine and compare velocity arrows from a video sequence",
+          "descriptionEn": "The learner can construct scaled velocity arrows from displacements over short equal intervals in a spatially and temporally calibrated image sequence of a two-dimensional motion, state the approximation involved in assigning them to instants, and determine velocity changes graphically.",
+          "weight": 1,
+          "sourceRef": "SkillPilot-eigene Operationalisierung nach LehrplanPLUS Bayern Physik8, Lernbereich3.1; Quellenextraktion Ph8.3.2 und Ph8.3.3. Keine wortgleiche amtliche Kompetenzbehauptung.",
+          "resourceLinks": [
+            {
+              "type": "goal-visualization",
+              "resourceType": "image",
+              "role": "primary",
+              "skillpilotId": "d61ea362-f6c3-5eab-ac30-2d0e265ac0f6",
+              "title": "Visualisierung: Geschwindigkeitspfeile aus einer Video-Bildfolge bestimmen und vergleichen",
+              "url": "/assets/goal-visualizations/physik/d61ea362-f6c3-5eab-ac30-2d0e265ac0f6/d61ea362-f6c3-5eab-ac30-2d0e265ac0f6.png",
+              "provider": "SkillPilot; eigene SVG-Diagramme",
+              "description": "Eigene Darstellung für den K6-Kandidaten.",
+              "altText": "Zwei Geschwindigkeitspfeile vom selben Anfangspunkt. Der Änderungspfeil führt von der ersten zur zweiten Spitze; gleiche Beträge können bei verschiedener Richtung ein Delta v ungleich null ergeben.",
+              "lang": "de",
+              "license": "CC-BY-4.0",
+              "reviewStatus": "needs_review"
+            }
+          ]
+        }
+      ],
+      "contentDecision": "ACCEPT_MAPPING_FIT_WITH_STATED_PARTIAL_AND_PROFILE_BOUNDARIES",
+      "reviewer": "codex-physics-native-integration-prepare-source-content-review-20261115",
+      "reviewMethod": "Read exact retained official excerpt and complete current target goals; independent from initial K3/K6 authors, no new remote source fetch or whole-source reapproval claimed."
+    },
+    {
+      "sourceGoalId": "5f86e662-1f46-5fb2-b44a-57ec2cea470f",
+      "beforeDecision": {
+        "sourceGoalId": "5f86e662-1f46-5fb2-b44a-57ec2cea470f",
+        "topicCode": "Ph8.3",
+        "sourceSpan": "Ph8.3.3",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+          "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20"
+        ],
+        "rationale": "Fachliche BY-Physik-M3-Review: Das Source-Ziel ist durch die angegebenen kanonischen SkillPilot-Ziele inhaltlich vollständig abgedeckt; mehrere Ziele beschreiben nur eine 1:n-Zuordnungsform.",
+        "reviewedAt": "2026-05-10",
+        "reviewer": "codex"
+      },
+      "currentDecision": {
+        "sourceGoalId": "5f86e662-1f46-5fb2-b44a-57ec2cea470f",
+        "topicCode": "Ph8.3",
+        "sourceSpan": "Ph8.3.3",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "d61ea362-f6c3-5eab-ac30-2d0e265ac0f6"
+        ],
+        "rationale": "Ph8.3.3 verlangt zeichnerische Geschwindigkeitsänderung vor/nach einer Einwirkung. Das neue frühe Atom konstruiert die Differenz maßstäblicher Geschwindigkeitspfeile; ein globales Beschleunigungsgesetz oder vollständiges Kräftegesetz wird nicht daraus behauptet.",
+        "reviewedAt": "2026-11-15",
+        "reviewer": "K6-v3 author candidate; independent review pending"
+      },
+      "retainedSourceGoal": {
+        "id": "5f86e662-1f46-5fb2-b44a-57ec2cea470f",
+        "passageId": "a9457ac2-38c5-5604-9dd1-bb63107b7e6e",
+        "topicCode": "Ph8.3",
+        "bulletIndex": 3,
+        "aspectIndex": 1,
+        "title": "bestimmen zeichnerisch die Geschwindigkeitsänderung und die Geschwindigkeit vor bzw. nach einer Kraf...",
+        "description": "bestimmen zeichnerisch die Geschwindigkeitsänderung und die Geschwindigkeit vor bzw. nach einer Krafteinwirkung für das betreffende Zeitintervall.",
+        "sourceText": "bestimmen zeichnerisch die Geschwindigkeitsänderung und die Geschwindigkeit vor bzw. nach einer Krafteinwirkung für das betreffende Zeitintervall.",
+        "sourceSpan": "Ph8.3.3",
+        "parentBulletText": "bestimmen zeichnerisch die Geschwindigkeitsänderung und die Geschwindigkeit vor bzw. nach einer Krafteinwirkung für das betreffende Zeitintervall.",
+        "sourceRef": "LehrplanPLUS Bayern Gymnasium Physik, Ph8.3.3",
+        "courseLevel": "unspecified",
+        "granularity": "officialCompetency",
+        "tags": [
+          "jurisdiction:DE-BY",
+          "stage:SekI",
+          "courseLevel:unspecified",
+          "topic:Ph8.3"
+        ],
+        "rawSourceText": "bestimmen zeichnerisch die Geschwindigkeitsänderung und die Geschwindigkeit vor bzw. nach einer Krafteinwirkung für das betreffende Zeitintervall.",
+        "rawSourceSpan": "Ph8.3.3",
+        "rawParentBulletText": "bestimmen zeichnerisch die Geschwindigkeitsänderung und die Geschwindigkeit vor bzw. nach einer Krafteinwirkung für das betreffende Zeitintervall."
+      },
+      "currentCanonicalGoals": [
+        {
+          "id": "d61ea362-f6c3-5eab-ac30-2d0e265ac0f6",
+          "title": "Geschwindigkeitspfeile aus einer Video-Bildfolge bestimmen und vergleichen",
+          "description": "Die lernende Person kann in einer zeitlich und räumlich kalibrierten Bildfolge einer zweidimensionalen Bewegung aus den Ortsänderungen über kurze gleiche Zeitintervalle maßstäbliche Geschwindigkeitspfeile konstruieren, die Näherung für den jeweiligen Zeitpunkt benennen und Änderungen der Geschwindigkeit grafisch bestimmen.",
+          "type": "atomic",
+          "contains": [],
+          "requires": [
+            "13b338eb-f761-5817-9058-11043b9cb253"
+          ],
+          "tags": [
+            "GK",
+            "LK",
+            "canonical",
+            "SekI"
+          ],
+          "applicability": {
+            "jurisdiction": [
+              "DE-BY"
+            ]
+          },
+          "dimensionTags": {
+            "framework": "canonical-gymnasium-physics",
+            "demandLevel": "AB2",
+            "phase": "GLOBAL",
+            "area": "Mechanik",
+            "topicCode": "CANONICAL.PHYSICS.BY.PH8.D61EA362",
+            "processCompetencies": [
+              "PK1_EXPERIMENTIEREN",
+              "PK3_MATHEMATISIEREN"
+            ]
+          },
+          "titleEn": "Determine and compare velocity arrows from a video sequence",
+          "descriptionEn": "The learner can construct scaled velocity arrows from displacements over short equal intervals in a spatially and temporally calibrated image sequence of a two-dimensional motion, state the approximation involved in assigning them to instants, and determine velocity changes graphically.",
+          "weight": 1,
+          "sourceRef": "SkillPilot-eigene Operationalisierung nach LehrplanPLUS Bayern Physik8, Lernbereich3.1; Quellenextraktion Ph8.3.2 und Ph8.3.3. Keine wortgleiche amtliche Kompetenzbehauptung.",
+          "resourceLinks": [
+            {
+              "type": "goal-visualization",
+              "resourceType": "image",
+              "role": "primary",
+              "skillpilotId": "d61ea362-f6c3-5eab-ac30-2d0e265ac0f6",
+              "title": "Visualisierung: Geschwindigkeitspfeile aus einer Video-Bildfolge bestimmen und vergleichen",
+              "url": "/assets/goal-visualizations/physik/d61ea362-f6c3-5eab-ac30-2d0e265ac0f6/d61ea362-f6c3-5eab-ac30-2d0e265ac0f6.png",
+              "provider": "SkillPilot; eigene SVG-Diagramme",
+              "description": "Eigene Darstellung für den K6-Kandidaten.",
+              "altText": "Zwei Geschwindigkeitspfeile vom selben Anfangspunkt. Der Änderungspfeil führt von der ersten zur zweiten Spitze; gleiche Beträge können bei verschiedener Richtung ein Delta v ungleich null ergeben.",
+              "lang": "de",
+              "license": "CC-BY-4.0",
+              "reviewStatus": "needs_review"
+            }
+          ]
+        }
+      ],
+      "contentDecision": "ACCEPT_MAPPING_FIT_WITH_STATED_PARTIAL_AND_PROFILE_BOUNDARIES",
+      "reviewer": "codex-physics-native-integration-prepare-source-content-review-20261115",
+      "reviewMethod": "Read exact retained official excerpt and complete current target goals; independent from initial K3/K6 authors, no new remote source fetch or whole-source reapproval claimed."
+    },
+    {
+      "sourceGoalId": "5be2d963-0510-5a61-a42a-820980bca521",
+      "beforeDecision": {
+        "sourceGoalId": "5be2d963-0510-5a61-a42a-820980bca521",
+        "topicCode": "Ph8.3",
+        "sourceSpan": "Ph8.3.6",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+          "d3c153b9-e09b-5668-8386-73105546a7c1",
+          "72effc66-87f4-5f5e-8d36-1547677365fb",
+          "ad62f563-4fee-5399-8d9c-03a214658aa9"
+        ],
+        "rationale": "Fachliche BY-Physik-M3-Review: Das Source-Ziel ist durch die angegebenen kanonischen SkillPilot-Ziele inhaltlich vollständig abgedeckt; mehrere Ziele beschreiben nur eine 1:n-Zuordnungsform.",
+        "reviewedAt": "2026-05-10",
+        "reviewer": "codex"
+      },
+      "currentDecision": {
+        "sourceGoalId": "5be2d963-0510-5a61-a42a-820980bca521",
+        "topicCode": "Ph8.3",
+        "sourceSpan": "Ph8.3.6",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "677a192d-8bbe-57fc-bb7a-1c1ed5fba32b"
+        ],
+        "rationale": "Ph8.3.6 verlangt angeleitete Planung sowie unterstützte Durchführung/Auswertung eines Beschleunigungsversuchs aus gemessenen Geschwindigkeitsänderungen. Das neue frühe Atom und seine echte Erfassungsaufgabe sichern dies mit Sensor ODER Video; die Mittelpunktzuordnung endlicher Fenster ist ausdrücklich eine Näherung. Kein optionales NTG-Thema und kein Videozwang wird universalisiert.",
+        "reviewedAt": "2026-11-15",
+        "reviewer": "K6-v3 author candidate; independent review pending"
+      },
+      "retainedSourceGoal": {
+        "id": "5be2d963-0510-5a61-a42a-820980bca521",
+        "passageId": "a9457ac2-38c5-5604-9dd1-bb63107b7e6e",
+        "topicCode": "Ph8.3",
+        "bulletIndex": 6,
+        "aspectIndex": 1,
+        "title": "planen unter Anleitung ein Experiment zur Bestimmung der Beschleunigungen von Körpern aus gemessenen...",
+        "description": "planen unter Anleitung ein Experiment zur Bestimmung der Beschleunigungen von Körpern aus gemessenen Geschwindigkeitsänderungen, beispielsweise mithilfe von Sensoren oder einer Videoanalyse, das sie mit Hilfe durchführen und auswerten.",
+        "sourceText": "planen unter Anleitung ein Experiment zur Bestimmung der Beschleunigungen von Körpern aus gemessenen Geschwindigkeitsänderungen, beispielsweise mithilfe von Sensoren oder einer Videoanalyse, das sie mit Hilfe durchführen und auswerten.",
+        "sourceSpan": "Ph8.3.6",
+        "parentBulletText": "planen unter Anleitung ein Experiment zur Bestimmung der Beschleunigungen von Körpern aus gemessenen Geschwindigkeitsänderungen, beispielsweise mithilfe von Sensoren oder einer Videoanalyse, das sie mit Hilfe durchführen und auswerten.",
+        "sourceRef": "LehrplanPLUS Bayern Gymnasium Physik, Ph8.3.6",
+        "courseLevel": "unspecified",
+        "granularity": "officialCompetency",
+        "tags": [
+          "jurisdiction:DE-BY",
+          "stage:SekI",
+          "courseLevel:unspecified",
+          "topic:Ph8.3"
+        ],
+        "rawSourceText": "planen unter Anleitung ein Experiment zur Bestimmung der Beschleunigungen von Körpern aus gemessenen Geschwindigkeitsänderungen, beispielsweise mithilfe von Sensoren oder einer Videoanalyse, das sie mit Hilfe durchführen und auswerten.",
+        "rawSourceSpan": "Ph8.3.6",
+        "rawParentBulletText": "planen unter Anleitung ein Experiment zur Bestimmung der Beschleunigungen von Körpern aus gemessenen Geschwindigkeitsänderungen, beispielsweise mithilfe von Sensoren oder einer Videoanalyse, das sie mit Hilfe durchführen und auswerten."
+      },
+      "currentCanonicalGoals": [
+        {
+          "id": "677a192d-8bbe-57fc-bb7a-1c1ed5fba32b",
+          "title": "Einen angeleiteten Versuch zur mittleren Beschleunigung planen und auswerten",
+          "description": "Die lernende Person kann unter Anleitung vor der Erfassung einen sicheren geradlinigen Bewegungsversuch mit Aufbauskizze, begründeter tatsächlicher Zeitbasis und geplanten kurzen Messfenstern beziehungsweise Auswahlregel planen und anschließend selbst durchführen. Aus zwei lokalen Geschwindigkeitsmitteln und dem Abstand der Fenstermitten gewinnt sie eine Näherung der mittleren Beschleunigung und beurteilt Vorzeichen und Messgrenzen. Ein zweiter echter Durchgang mit veränderter Bedingung wird evidenzbezogen verglichen; sowohl auflösbare Unterschiede als auch Übereinstimmung innerhalb der Messgrenzen sind möglich. Sensor oder Video ist möglich; ein globaler Bewegungsfit wird nicht vorausgesetzt.",
+          "type": "atomic",
+          "contains": [],
+          "requires": [
+            "13b338eb-f761-5817-9058-11043b9cb253"
+          ],
+          "tags": [
+            "GK",
+            "LK",
+            "canonical",
+            "SekI"
+          ],
+          "applicability": {
+            "jurisdiction": [
+              "DE-BY"
+            ]
+          },
+          "dimensionTags": {
+            "framework": "canonical-gymnasium-physics",
+            "demandLevel": "AB2",
+            "phase": "GLOBAL",
+            "area": "Mechanik",
+            "topicCode": "CANONICAL.PHYSICS.BY.PH8.677A192D",
+            "processCompetencies": [
+              "PK1_EXPERIMENTIEREN",
+              "PK3_MATHEMATISIEREN"
+            ]
+          },
+          "titleEn": "Plan and analyze a guided average-acceleration experiment",
+          "descriptionEn": "The learner can, with guidance and before acquisition, plan a safe straight-motion experiment using a setup sketch, a justified actual time base, and planned short measurement windows or a window-selection rule, then conduct it themselves. From two local average velocities and the separation of their window centers they estimate average acceleration and assess signs and measurement limits. They compare a genuinely fresh second trial under a changed condition using evidence; either resolved differences or agreement within measurement limits is possible. Sensor or video is possible; no global motion fit is required.",
+          "weight": 1,
+          "sourceRef": "SkillPilot-eigene Operationalisierung nach LehrplanPLUS Bayern Physik8, Lernbereich3.1; Quellenextraktion Ph8.3.6. Keine wortgleiche amtliche Kompetenzbehauptung.",
+          "resourceLinks": [
+            {
+              "type": "goal-visualization",
+              "resourceType": "image",
+              "role": "primary",
+              "skillpilotId": "677a192d-8bbe-57fc-bb7a-1c1ed5fba32b",
+              "title": "Visualisierung: Mittlere Beschleunigung in einem angeleiteten Bewegungsversuch bestimmen",
+              "url": "/assets/goal-visualizations/physik/677a192d-8bbe-57fc-bb7a-1c1ed5fba32b/677a192d-8bbe-57fc-bb7a-1c1ed5fba32b.png",
+              "provider": "SkillPilot; eigene SVG-Diagramme",
+              "description": "Eigene Darstellung für den K6-Kandidaten.",
+              "altText": "Zwei kurze Messfenster mit verschiedenen Mittelpunkten: Erst wird je Fenster eine mittlere Geschwindigkeit bestimmt, dann ihre Änderung durch den Abstand der Mittelpunkte geteilt. Sensor oder Video ist möglich.",
+              "lang": "de",
+              "license": "CC-BY-4.0",
+              "reviewStatus": "needs_review"
+            }
+          ]
+        }
+      ],
+      "contentDecision": "ACCEPT_MAPPING_FIT_WITH_STATED_PARTIAL_AND_PROFILE_BOUNDARIES",
+      "reviewer": "codex-physics-native-integration-prepare-source-content-review-20261115",
+      "reviewMethod": "Read exact retained official excerpt and complete current target goals; independent from initial K3/K6 authors, no new remote source fetch or whole-source reapproval claimed."
+    },
+    {
+      "sourceGoalId": "0074dc7c-b4ab-5bfb-b1b7-a8f5cdb9accc",
+      "beforeDecision": {
+        "sourceGoalId": "0074dc7c-b4ab-5bfb-b1b7-a8f5cdb9accc",
+        "topicCode": "Ph10.3",
+        "sourceSpan": "Ph10.3.1",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "ce431132-dfc4-42c2-aff6-bd72035190f8"
+        ],
+        "rationale": "Fachliche BY-Physik-M3-Review: Das Source-Ziel ist durch die angegebenen kanonischen SkillPilot-Ziele inhaltlich vollständig abgedeckt; mehrere Ziele beschreiben nur eine 1:n-Zuordnungsform.",
+        "reviewedAt": "2026-05-10",
+        "reviewer": "codex"
+      },
+      "currentDecision": {
+        "sourceGoalId": "0074dc7c-b4ab-5bfb-b1b7-a8f5cdb9accc",
+        "topicCode": "Ph10.3",
+        "sourceSpan": "Ph10.3.1",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "ce431132-dfc4-42c2-aff6-bd72035190f8",
+          "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+          "d67502e3-5e0a-595b-a24b-65b1c40de36e"
+        ],
+        "rationale": "Ph10.3.1 verbindet digitale t-s/t-v-Daten mit linearen/quadratischen Bewegungsfunktionen. Der engere ce-Baustein, das volle Beschleunigungsmodell und die volle digitale Video-/Komponentenmodellierung decken den Anspruch gemeinsam. Ein unabhängiger kompletter Wurf-Fit bleibt eigene SkillPilot-Operationalisierung im späteren Kontext, keine wörtliche Forderung jedes einzelnen amtlichen Satzes.",
+        "reviewedAt": "2026-11-15",
+        "reviewer": "K6-v3 author candidate; independent review pending"
+      },
+      "retainedSourceGoal": {
+        "id": "0074dc7c-b4ab-5bfb-b1b7-a8f5cdb9accc",
+        "passageId": "6be922a1-e60a-5317-b910-b6fea632f0fb",
+        "topicCode": "Ph10.3",
+        "bulletIndex": 1,
+        "aspectIndex": 1,
+        "title": "erstellen und interpretieren Zeit-Ort- und Zeit-Geschwindigkeit-Diagramme von Bewegungen in alltagsr...",
+        "description": "erstellen und interpretieren Zeit-Ort- und Zeit-Geschwindigkeit-Diagramme von Bewegungen in alltagsrelevanten Kontexten und stellen Beziehungen zwischen den Diagrammen und linearen bzw. quadratischen Bewegungsfunktionen her. Dabei nutzen sie geeignete digitale Hilfsmittel, mit denen sie die Daten erfassen, verarbeiten und sachgerecht darstellen.",
+        "sourceText": "erstellen und interpretieren Zeit-Ort- und Zeit-Geschwindigkeit-Diagramme von Bewegungen in alltagsrelevanten Kontexten und stellen Beziehungen zwischen den Diagrammen und linearen bzw. quadratischen Bewegungsfunktionen her. Dabei nutzen sie geeignete digitale Hilfsmittel, mit denen sie die Daten erfassen, verarbeiten und sachgerecht darstellen.",
+        "sourceSpan": "Ph10.3.1",
+        "parentBulletText": "erstellen und interpretieren Zeit-Ort- und Zeit-Geschwindigkeit-Diagramme von Bewegungen in alltagsrelevanten Kontexten und stellen Beziehungen zwischen den Diagrammen und linearen bzw. quadratischen Bewegungsfunktionen her. Dabei nutzen sie geeignete digitale Hilfsmittel, mit denen sie die Daten erfassen, verarbeiten und sachgerecht darstellen.",
+        "sourceRef": "LehrplanPLUS Bayern Gymnasium Physik, Ph10.3.1",
+        "courseLevel": "unspecified",
+        "granularity": "officialCompetency",
+        "tags": [
+          "jurisdiction:DE-BY",
+          "stage:SekI",
+          "courseLevel:unspecified",
+          "topic:Ph10.3"
+        ],
+        "rawSourceText": "erstellen und interpretieren Zeit-Ort- und Zeit-Geschwindigkeit-Diagramme von Bewegungen in alltagsrelevanten Kontexten und stellen Beziehungen zwischen den Diagrammen und linearen bzw. quadratischen Bewegungsfunktionen her. Dabei nutzen sie geeignete digitale Hilfsmittel, mit denen sie die Daten erfassen, verarbeiten und sachgerecht darstellen.",
+        "rawSourceSpan": "Ph10.3.1",
+        "rawParentBulletText": "erstellen und interpretieren Zeit-Ort- und Zeit-Geschwindigkeit-Diagramme von Bewegungen in alltagsrelevanten Kontexten und stellen Beziehungen zwischen den Diagrammen und linearen bzw. quadratischen Bewegungsfunktionen her. Dabei nutzen sie geeignete digitale Hilfsmittel, mit denen sie die Daten erfassen, verarbeiten und sachgerecht darstellen."
+      },
+      "currentCanonicalGoals": [
+        {
+          "id": "ce431132-dfc4-42c2-aff6-bd72035190f8",
+          "title": "Bewegungen mit Diagrammen untersuchen",
+          "titleEn": "Investigate Motions with Diagrams",
+          "description": "Die lernende Person kann einfache eindimensionale Bewegungen experimentell erfassen, Orts-Zeit-Daten und daraus bestimmte mittlere Intervallgeschwindigkeiten in t-s- und t-v-Diagrammen darstellen und interpretieren. Sie berücksichtigt Messauflösung, Ruhe und Bewegungsrichtung und prüft die Konsistenz von Ortsänderungen und vorzeichenbehafteten Flächen im stückweise gleichförmigen Modell.",
+          "descriptionEn": "The learner can experimentally record simple one-dimensional motions, represent and interpret position-time data and the average interval velocities determined from them in time-position and time-velocity graphs. They account for measurement resolution, rest, and direction of motion and check consistency between displacements and signed areas in a piecewise-uniform model.",
+          "weight": 0.9,
+          "tags": [
+            "GK",
+            "LK",
+            "canonical",
+            "cross-subject:mathematics"
+          ],
+          "contains": [],
+          "requires": [
+            "ae67bcf1-f3ee-50d6-9a12-25a159dff659",
+            "d6c3fb37-ece6-5b56-9221-1eeb21845877",
+            "25593605-5e13-55cc-9a05-8f3d737e15e9",
+            "13b338eb-f761-5817-9058-11043b9cb253",
+            "f6b1d812-ce8b-5852-b417-e6c29b533c7a"
+          ],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-physics",
+            "demandLevel": "AB1",
+            "processCompetencies": [],
+            "guidingIdeas": [],
+            "phase": "E"
+          },
+          "shortKey": "canonical_physics_motion_diagrams",
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "type": "atomic",
+          "resourceLinks": [
+            {
+              "type": "goal-visualization",
+              "resourceType": "image",
+              "role": "primary",
+              "skillpilotId": "ce431132-dfc4-42c2-aff6-bd72035190f8",
+              "title": "Visualisierung: Bewegungen mit Diagrammen untersuchen",
+              "url": "/assets/goal-visualizations/physik/ce431132-dfc4-42c2-aff6-bd72035190f8/ce431132-dfc4-42c2-aff6-bd72035190f8.png",
+              "provider": "SkillPilot; eigene SVG-Diagramme",
+              "description": "Eigene Darstellung für den K6-Kandidaten.",
+              "altText": "Zwei Diagramme derselben Bewegung: Der Ort steigt von 1 m auf 3 m, bleibt konstant und sinkt auf 2 m. Die zugehörigen Intervallgeschwindigkeiten sind +1, +1, 0 und −1 m/s. Beschleunigung wird nicht dargestellt.",
+              "lang": "de",
+              "license": "CC-BY-4.0",
+              "reviewStatus": "needs_review"
+            }
+          ]
+        },
+        {
+          "id": "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+          "title": "Gleichmäßig beschleunigte Bewegung und Beschleunigung",
+          "titleEn": "Uniformly Accelerated Motion and Acceleration",
+          "description": "Die lernende Person kann das Modell der gleichmäßig beschleunigten Bewegung mit konstanter Beschleunigung erläutern und in t-s-, t-v- und t-a-Darstellungen beschreiben.",
+          "descriptionEn": "The learner can explain the model of uniformly accelerated motion with constant acceleration and describe it using time-position, time-velocity, and time-acceleration representations.",
+          "weight": 0.9,
+          "tags": [
+            "GK",
+            "LK",
+            "canonical",
+            "cross-subject:mathematics"
+          ],
+          "contains": [],
+          "requires": [
+            "bf8517a9-142b-5789-826a-767f3b277998",
+            "c65ecabf-d00b-4e2d-99ae-b64692325ffb",
+            "87c55be5-06a9-41e2-a0d4-c60f7c8b8078"
+          ],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-physics",
+            "demandLevel": "AB1",
+            "processCompetencies": [],
+            "guidingIdeas": [],
+            "phase": "E"
+          },
+          "shortKey": "canonical_physics_accelerated_motion",
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "type": "atomic",
+          "resourceLinks": [
+            {
+              "type": "goal-visualization",
+              "resourceType": "image",
+              "role": "primary",
+              "skillpilotId": "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+              "title": "Visualisierung: Gleichmäßig beschleunigte Bewegung und Beschleunigung",
+              "url": "/assets/goal-visualizations/physik/e4b38061-1f28-43ad-8371-a3e7c0e81856/e4b38061-1f28-43ad-8371-a3e7c0e81856.jpg",
+              "provider": "Google Gemini / Nano Banana Pro",
+              "description": "Visualisierung zum Lernziel: Gleichmäßig beschleunigte Bewegung und Beschleunigung.",
+              "altText": "Didaktische Visualisierung zum Lernziel \"Gleichmäßig beschleunigte Bewegung und Beschleunigung\". Die lernende Person kann das Modell der gleichmäßig beschleunigten Bewegung mit konstanter Beschleunigung erläutern und in t-s-, t-v- und t-a-Darstellungen beschreiben.",
+              "lang": "de",
+              "license": "AI-generated, SkillPilot-curated",
+              "reviewStatus": "pilot"
+            }
+          ]
+        },
+        {
+          "id": "d67502e3-5e0a-595b-a24b-65b1c40de36e",
+          "title": "Bewegungen mit Videoanalyse untersuchen",
+          "titleEn": "Investigate motion using video analysis",
+          "description": "Die lernende Person kann ein Bewegungsvideo räumlich und zeitlich kalibrieren, daraus Orts-Zeit-Daten sowie s(t)- und v(t)-Diagramme gewinnen und Modelle einer gleichförmigen oder geworfenen Bewegung unter Berücksichtigung der Messunsicherheit prüfen.",
+          "descriptionEn": "The learner can calibrate a motion video spatially and temporally, obtain position-time data and s(t) and v(t) graphs from it, and test models of uniform or projectile motion while accounting for measurement uncertainty.",
+          "weight": 0.9,
+          "tags": [
+            "GK",
+            "LK",
+            "Method"
+          ],
+          "contains": [],
+          "requires": [
+            "691c11d0-fa6a-5d2e-a19c-086e89c3c233",
+            "f23fdfa9-38b6-5157-8301-ed302476c456",
+            "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+          ],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-physics",
+            "demandLevel": "AB1",
+            "processCompetencies": [
+              "PK1_EXPERIMENTIEREN"
+            ],
+            "guidingIdeas": [
+              "LI_BEWEGUNG"
+            ],
+            "phase": "E"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "sourceRef": "KC2024, Gymnasiale Oberstufe Physik",
+          "resourceLinks": [
+            {
+              "type": "goal-visualization",
+              "resourceType": "image",
+              "role": "primary",
+              "skillpilotId": "d67502e3-5e0a-595b-a24b-65b1c40de36e",
+              "title": "Visualisierung: Bewegungen mit Videoanalyse untersuchen",
+              "url": "/assets/goal-visualizations/physik/d67502e3-5e0a-595b-a24b-65b1c40de36e/d67502e3-5e0a-595b-a24b-65b1c40de36e.jpg",
+              "provider": "Google Gemini / Nano Banana Pro",
+              "description": "Visualisierung zum Lernziel: Bewegungen mit Videoanalyse untersuchen.",
+              "altText": "Didaktische Visualisierung zum Lernziel \"Bewegungen mit Videoanalyse untersuchen\". Die lernende Person kann ein Bewegungsvideo räumlich und zeitlich kalibrieren, daraus Orts-Zeit-Daten sowie s(t)- und v(t)-Diagramme gewinnen und Modelle einer gleichförmigen oder geworfenen Bewegung unter Berücksichtigung der Messunsicherheit prüfen.",
+              "lang": "de",
+              "license": "AI-generated, SkillPilot-curated",
+              "reviewStatus": "pilot"
+            }
+          ],
+          "type": "atomic"
+        }
+      ],
+      "contentDecision": "ACCEPT_MAPPING_FIT_WITH_STATED_PARTIAL_AND_PROFILE_BOUNDARIES",
+      "reviewer": "codex-physics-native-integration-prepare-source-content-review-20261115",
+      "reviewMethod": "Read exact retained official excerpt and complete current target goals; independent from initial K3/K6 authors, no new remote source fetch or whole-source reapproval claimed."
+    },
+    {
+      "sourceGoalId": "a4461a25-8e68-5f80-ab23-0c3f61af59db",
+      "beforeDecision": {
+        "sourceGoalId": "a4461a25-8e68-5f80-ab23-0c3f61af59db",
+        "topicCode": "Ph10.5",
+        "sourceSpan": "Ph10.5.1",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "d3c153b9-e09b-5668-8386-73105546a7c1",
+          "ad62f563-4fee-5399-8d9c-03a214658aa9",
+          "3857891b-d328-585b-9936-85c7aff122ee",
+          "77ab31a9-8961-511c-8637-06e98023d869",
+          "dc55adac-91a5-5cc3-ab47-be008480616f"
+        ],
+        "rationale": "K1 global-result repair 2026-11-15: BY Ph10.5.1 (official NTG profile) explicitly requires personal semiconductor-circuit construction and investigation. The transistor own-experiment component maps to the distinct experimental identity77ab; interpretation7d remains separately supported by the Ph10.5.2 model clause. Other diode/application components retain their existing partial targets. This does not claim every Bavarian Gymnasium profile mandates the NTG component and introduces no new track selector. Explicit remaining component: the official NTG content also includes personally investigating a transistor amplifier. That own amplifier experiment is not covered by switching-only77ab, interpretation7d/88, or supplied-material amplifieraf/144. This mapping remains partial; whole Ph10.5.1/NTG completion is not claimed. The own-amplifier component requires a subsequent coherent practical delivery. The same exact source clause explicitly requires interpreting the recorded diode characteristic. Its qualitative functional interpretation component also maps partially to dc55adac; the own-measurement requirement remains on3857891b and is not satisfied by the supplied-curve assessment8670. This is a component-level source claim, not whole-source completion.",
+        "reviewedAt": "2026-11-15",
+        "reviewer": "codex-physics-semiconductor-source-author-20261115"
+      },
+      "currentDecision": {
+        "sourceGoalId": "a4461a25-8e68-5f80-ab23-0c3f61af59db",
+        "topicCode": "Ph10.5",
+        "sourceSpan": "Ph10.5.1",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "d3c153b9-e09b-5668-8386-73105546a7c1",
+          "ad62f563-4fee-5399-8d9c-03a214658aa9",
+          "3857891b-d328-585b-9936-85c7aff122ee",
+          "77ab31a9-8961-511c-8637-06e98023d869",
+          "dc55adac-91a5-5cc3-ab47-be008480616f",
+          "d8b2b349-b83a-5225-a180-1afe205750cd"
+        ],
+        "rationale": "K3 author candidate, 2026-11-15: preserve all previous K1 component mappings. Add the distinct own-DC-current-amplifier experiment only for the personally performed amplifier component of official BY Ph10.5.1, NTG profile. Actual assembly and personal paired readings are required; interpretation af50/144 and switching-only77ab do not confer this execution result. This is a partial component mapping, not whole Ph10.5.1 coverage, not all Bavarian profiles and not a new track selector. Supplied circuit values and the two-supply measurement design are original didactic operationalisation, not official source wording.",
+        "reviewedAt": "2026-11-15",
+        "reviewer": "codex-physics-methods-k3-author-20261115"
+      },
+      "retainedSourceGoal": {
+        "id": "a4461a25-8e68-5f80-ab23-0c3f61af59db",
+        "passageId": "b3819f38-915e-5340-9587-60ba2d48e322",
+        "topicCode": "Ph10.5",
+        "bulletIndex": 1,
+        "aspectIndex": 1,
+        "title": "untersuchen selbständig experimentell grundlegende Eigenschaften von Diode und Transistor; insbesond...",
+        "description": "untersuchen selbständig experimentell grundlegende Eigenschaften von Diode und Transistor; insbesondere interpretieren sie die aufgenommene Kennlinie einer Diode. Für eine vorgegebene Anwendung bauen sie eine einfache elektrische Schaltung aus Halbleiterbauelementen und untersuchen diese selbständig.",
+        "sourceText": "untersuchen selbständig experimentell grundlegende Eigenschaften von Diode und Transistor; insbesondere interpretieren sie die aufgenommene Kennlinie einer Diode. Für eine vorgegebene Anwendung bauen sie eine einfache elektrische Schaltung aus Halbleiterbauelementen und untersuchen diese selbständig.",
+        "sourceSpan": "Ph10.5.1",
+        "parentBulletText": "untersuchen selbständig experimentell grundlegende Eigenschaften von Diode und Transistor; insbesondere interpretieren sie die aufgenommene Kennlinie einer Diode. Für eine vorgegebene Anwendung bauen sie eine einfache elektrische Schaltung aus Halbleiterbauelementen und untersuchen diese selbständig.",
+        "sourceRef": "LehrplanPLUS Bayern Gymnasium Physik, Ph10.5.1",
+        "courseLevel": "unspecified",
+        "granularity": "officialCompetency",
+        "tags": [
+          "jurisdiction:DE-BY",
+          "stage:SekI",
+          "courseLevel:unspecified",
+          "topic:Ph10.5"
+        ],
+        "rawSourceText": "untersuchen selbständig experimentell grundlegende Eigenschaften von Diode und Transistor; insbesondere interpretieren sie die aufgenommene Kennlinie einer Diode. Für eine vorgegebene Anwendung bauen sie eine einfache elektrische Schaltung aus Halbleiterbauelementen und untersuchen diese selbständig.",
+        "rawSourceSpan": "Ph10.5.1",
+        "rawParentBulletText": "untersuchen selbständig experimentell grundlegende Eigenschaften von Diode und Transistor; insbesondere interpretieren sie die aufgenommene Kennlinie einer Diode. Für eine vorgegebene Anwendung bauen sie eine einfache elektrische Schaltung aus Halbleiterbauelementen und untersuchen diese selbständig."
+      },
+      "currentCanonicalGoals": [
+        {
+          "id": "d3c153b9-e09b-5668-8386-73105546a7c1",
+          "shortKey": "canonical_physics_sek1_experiment_planning_data_analysis",
+          "title": "Experimente planen und Messdaten auswerten",
+          "titleEn": "Plan experiments and evaluate measurement data",
+          "description": "Die lernende Person kann zu einer physikalischen Fragestellung einen einfachen Versuchsaufbau planen, Messdaten strukturiert erfassen und mit passenden Darstellungen oder einfacher Mathematisierung auswerten.",
+          "descriptionEn": "The learner can plan a simple experimental setup for a physical question, record measurement data systematically, and evaluate them with suitable representations or simple mathematization.",
+          "weight": 1,
+          "tags": [
+            "GK",
+            "LK",
+            "canonical",
+            "SekI"
+          ],
+          "contains": [],
+          "requires": [
+            "da26294f-4316-5bd5-a37a-bd89397b3b8b",
+            "3ed3279e-c524-5230-a277-dda89493df6d",
+            "15505229-efec-4d01-8e71-acf15f9c2424",
+            "25593605-5e13-55cc-9a05-8f3d737e15e9",
+            "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+            "ee48e811-4c9c-5080-9836-8403fc9f0810"
+          ],
+          "dimensionTags": {
+            "framework": "canonical-gymnasium-physics",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "PK1_EXPERIMENTIEREN",
+              "PK3_MATHEMATISIEREN"
+            ],
+            "guidingIdeas": [],
+            "phase": "GLOBAL",
+            "area": "Denk- und Arbeitsweisen",
+            "topicCode": "CANONICAL.PHYSICS.SEK1.METHODS.EXPERIMENT_DATA"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "type": "atomic",
+          "competencyRefs": [
+            "PROCESS.PK1_EXPERIMENTIEREN",
+            "PROCESS.PK3_MATHEMATISIEREN"
+          ],
+          "resourceLinks": [
+            {
+              "type": "goal-visualization",
+              "resourceType": "image",
+              "role": "primary",
+              "skillpilotId": "d3c153b9-e09b-5668-8386-73105546a7c1",
+              "title": "Visualisierung: Experimente planen und Messdaten auswerten",
+              "url": "/assets/goal-visualizations/physik/d3c153b9-e09b-5668-8386-73105546a7c1/d3c153b9-e09b-5668-8386-73105546a7c1.jpg",
+              "provider": "Google Gemini / Nano Banana Pro",
+              "description": "Visualisierung zum Lernziel: Experimente planen und Messdaten auswerten.",
+              "altText": "Didaktische Visualisierung zum Lernziel \"Experimente planen und Messdaten auswerten\". Die lernende Person kann zu einer physikalischen Fragestellung einen einfachen Versuchsaufbau planen, Messdaten strukturiert erfassen und mit passenden Darstellungen oder einfacher Mathematisierung auswerten.",
+              "lang": "de",
+              "license": "AI-generated, SkillPilot-curated",
+              "reviewStatus": "accepted"
+            }
+          ]
+        },
+        {
+          "id": "ad62f563-4fee-5399-8d9c-03a214658aa9",
+          "shortKey": "canonical_physics_sek1_experiment_documentation",
+          "title": "Experimentelle Untersuchungen fachgerecht dokumentieren",
+          "titleEn": "Document experimental investigations professionally",
+          "description": "Die lernende Person kann Beobachtungen, Messwerte, Auswertungsschritte und Ergebnisse einer physikalischen Untersuchung in einem strukturierten Protokoll oder einer fachtypischen Darstellung nachvollziehbar dokumentieren.",
+          "descriptionEn": "The learner can document observations, measurements, evaluation steps, and results of a physical investigation in a structured report or subject-specific representation.",
+          "weight": 1,
+          "tags": [
+            "GK",
+            "LK",
+            "canonical",
+            "SekI"
+          ],
+          "contains": [],
+          "requires": [
+            "d3c153b9-e09b-5668-8386-73105546a7c1"
+          ],
+          "dimensionTags": {
+            "framework": "canonical-gymnasium-physics",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "PK1_EXPERIMENTIEREN",
+              "PK4_KOMMUNIZIEREN"
+            ],
+            "guidingIdeas": [],
+            "phase": "GLOBAL",
+            "area": "Denk- und Arbeitsweisen",
+            "topicCode": "CANONICAL.PHYSICS.SEK1.METHODS.DOCUMENTATION"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "type": "atomic",
+          "competencyRefs": [
+            "PROCESS.PK1_EXPERIMENTIEREN",
+            "PROCESS.PK4_KOMMUNIZIEREN"
+          ],
+          "resourceLinks": [
+            {
+              "type": "goal-visualization",
+              "resourceType": "image",
+              "role": "primary",
+              "skillpilotId": "ad62f563-4fee-5399-8d9c-03a214658aa9",
+              "title": "Visualisierung: Experimentelle Untersuchungen fachgerecht dokumentieren",
+              "url": "/assets/goal-visualizations/physik/ad62f563-4fee-5399-8d9c-03a214658aa9/ad62f563-4fee-5399-8d9c-03a214658aa9.jpg",
+              "provider": "Google Gemini / Nano Banana Pro",
+              "description": "Visualisierung zum Lernziel: Experimentelle Untersuchungen fachgerecht dokumentieren.",
+              "altText": "Didaktische Visualisierung zum Lernziel \"Experimentelle Untersuchungen fachgerecht dokumentieren\". Die lernende Person kann Beobachtungen, Messwerte, Auswertungsschritte und Ergebnisse einer physikalischen Untersuchung in einem strukturierten Protokoll oder einer fachtypischen Darstellung nachvollziehbar dokumentieren.",
+              "lang": "de",
+              "license": "AI-generated, SkillPilot-curated",
+              "reviewStatus": "pilot"
+            }
+          ]
+        },
+        {
+          "id": "3857891b-d328-585b-9936-85c7aff122ee",
+          "shortKey": "canonical_physics_diode_iv_experiment",
+          "title": "Die Strom-Spannungs-Kennlinie einer Diode experimentell bestimmen",
+          "titleEn": "Determine a Diode’s Current–Voltage Characteristic Experimentally",
+          "description": "Die lernende Person kann in einem beaufsichtigten, strombegrenzten Kleinspannungsversuch die Strom-Spannungs-Kennlinie einer Diode in Durchlass- und Sperrpolung aufnehmen und aus den Messwerten ihr richtungsabhängiges Leitverhalten begründen.",
+          "descriptionEn": "The learner can record a diode’s current–voltage characteristic under forward and reverse bias in a supervised, current-limited low-voltage experiment and use the measurements to justify its direction-dependent conduction.",
+          "weight": 1,
+          "tags": [
+            "GK",
+            "LK",
+            "canonical"
+          ],
+          "applicability": {
+            "jurisdiction": [
+              "DE-BW",
+              "DE-BY",
+              "DE-HE",
+              "DE-SL",
+              "DE-SN"
+            ]
+          },
+          "type": "atomic",
+          "contains": [],
+          "requires": [
+            "28237994-9c24-5a06-82fe-be1f494768ba",
+            "f1a078ae-6262-4444-a4bc-a5ab275621cf",
+            "80c232f1-8f72-5829-9dbe-5a610ccab3be"
+          ],
+          "dimensionTags": {
+            "framework": "canonical-gymnasium-physics",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "PK1_EXPERIMENTIEREN"
+            ],
+            "guidingIdeas": [
+              "LI_TECHNIK",
+              "LI_MATERIE"
+            ],
+            "phase": "GLOBAL",
+            "area": "Elektronik",
+            "topicCode": "CANONICAL_PHYSICS_EXPERIMENT"
+          },
+          "competencyRefs": [
+            "PROCESS.PK1_EXPERIMENTIEREN"
+          ],
+          "extendedData": {
+            "applicabilityMappingInheritance": "boundary"
+          },
+          "resourceLinks": [
+            {
+              "type": "goal-visualization",
+              "resourceType": "image",
+              "role": "primary",
+              "skillpilotId": "3857891b-d328-585b-9936-85c7aff122ee",
+              "title": "Visualisierung: Die Strom-Spannungs-Kennlinie einer Diode experimentell bestimmen",
+              "url": "/assets/goal-visualizations/physik/3857891b-d328-585b-9936-85c7aff122ee/3857891b-d328-585b-9936-85c7aff122ee.png",
+              "provider": "SkillPilot / unchanged panel crop of reviewed repo-native SVG",
+              "description": "Unveränderter zielspezifischer Ausschnitt der bestehenden Diodenübersicht; Explizit schematische qualitative I_D(U_D)-Kennlinie, kleiner negativer Sperrstrom und ansteigender positiver Durchlassstrom. Keine Messpunkte, keine universelle Schwellspannung, keine exakte Nullbehauptung. U an der Diode, I durch die Diode, Strombegrenzung und sichere Kleinspannung. Kein realer Aufbau oder Messdatennachweis.",
+              "altText": "Explizit schematische qualitative I_D(U_D)-Kennlinie, kleiner negativer Sperrstrom und ansteigender positiver Durchlassstrom. Keine Messpunkte, keine universelle Schwellspannung, keine exakte Nullbehauptung. U an der Diode, I durch die Diode, Strombegrenzung und sichere Kleinspannung. Kein realer Aufbau oder Messdatennachweis.",
+              "lang": "de",
+              "license": "AI-assisted, SkillPilot-curated (unchanged repo-native SVG panel)",
+              "reviewStatus": "accepted"
+            }
+          ]
+        },
+        {
+          "id": "77ab31a9-8961-511c-8637-06e98023d869",
+          "title": "Transistorschaltung selbst aufbauen und untersuchen",
+          "titleEn": "Personally Assemble and Investigate a Transistor Circuit",
+          "description": "Die lernende Person kann eine vollständig vorgegebene einfache Transistorschaltung unter Aufsicht mit strombegrenzter Kleinspannung selbst aufbauen, ihre Schaltwirkung durch gezieltes Verändern der Ansteuerung und einen Kontrollversuch anhand eigener Beobachtungen untersuchen und funktional begründen sowie die Ergebnisse auf eine geänderte Eingangszuordnung übertragen.",
+          "descriptionEn": "The learner can personally assemble a fully specified simple transistor circuit under supervision using current-limited low voltage, investigate and functionally explain its switching behaviour through deliberate changes of drive and a control trial using their own observations, and transfer the findings to a changed input mapping.",
+          "weight": 1.15,
+          "tags": [
+            "GK",
+            "LK"
+          ],
+          "contains": [],
+          "requires": [
+            "69f8f59c-b0c3-5b0b-82db-834a0e655736"
+          ],
+          "dimensionTags": {
+            "framework": "canonical-gymnasium-physics",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "PK1_EXPERIMENTIEREN",
+              "PK4_KOMMUNIZIEREN"
+            ],
+            "guidingIdeas": [
+              "LI_TECHNIK"
+            ],
+            "phase": "GLOBAL",
+            "area": "Elektronik"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BY"
+            ]
+          },
+          "type": "atomic",
+          "resourceLinks": [
+            {
+              "type": "goal-visualization",
+              "resourceType": "image",
+              "role": "primary",
+              "skillpilotId": "77ab31a9-8961-511c-8637-06e98023d869",
+              "title": "Vorgegebener Aufbau für eigene Transistorversuche",
+              "url": "/assets/goal-visualizations/physik/77ab31a9-8961-511c-8637-06e98023d869/77ab31a9-8961-511c-8637-06e98023d869.png",
+              "provider": "SkillPilot / original repo-native SVG",
+              "description": "Vollständig vorgegebener 5-V-Lehrmodulplan mit 330-Ω-LED-Vorwiderstand, npn-Anschlüssen B/C/E, 0-/5-V-Steuerquelle, 10-kΩ-Basiswiderstand und dauerhaftem 100-kΩ-Bezug von B nach 0 V. Nur die markierte Steuerverbindung T wird im Kontrollversuch getrennt.",
+              "altText": "Der Lastpfad führt von +5 V über 330 Ω und die LED mit A/K zum Kollektor C; E liegt an gemeinsam 0 V. Die 0-/5-V-Steuerung führt über T und 10 kΩ nach B. 100 kΩ verbinden B dauerhaft mit 0 V. T trennt nur die Steuerleitung und lässt den festen Basisbezug bestehen. Eigene LED-Zustände werden nicht vorweggenommen; tatsächliche Montage folgt dem vollständigen Material und Datenblatt.",
+              "lang": "de",
+              "license": "CC-BY-4.0; SkillPilot",
+              "reviewStatus": "accepted"
+            }
+          ],
+          "extendedData": {
+            "applicabilityMappingInheritance": "boundary"
+          }
+        },
+        {
+          "id": "dc55adac-91a5-5cc3-ab47-be008480616f",
+          "shortKey": "canonical_physics_diode_functional_characteristic",
+          "title": "Durchlass- und Sperrverhalten einer Diode an einer Kennlinie erklären",
+          "titleEn": "Explain Forward and Reverse Diode Behaviour Using a Characteristic",
+          "description": "Die lernende Person kann aus einer vorgegebenen qualitativen Strom-Spannungs-Kennlinie einer Diode ihr Durchlass- und Sperrverhalten ablesen und damit für beide Polungen bei angegebener Diodenspannung im dargestellten Kennlinienbereich vorhersagen, ob in einem einfachen Stromkreis ein nennenswerter Strom fließt.",
+          "descriptionEn": "The learner can read forward and reverse diode behaviour from a supplied qualitative current–voltage characteristic and use it, for either polarity at a stated diode voltage within the displayed characteristic range, to predict whether an appreciable current flows in a simple circuit.",
+          "weight": 1,
+          "tags": [
+            "GK",
+            "LK",
+            "canonical"
+          ],
+          "applicability": {
+            "jurisdiction": [
+              "DE-BW",
+              "DE-BY",
+              "DE-HE",
+              "DE-SL",
+              "DE-SN"
+            ]
+          },
+          "type": "atomic",
+          "contains": [],
+          "requires": [
+            "69f8f59c-b0c3-5b0b-82db-834a0e655736",
+            "80c232f1-8f72-5829-9dbe-5a610ccab3be"
+          ],
+          "dimensionTags": {
+            "framework": "canonical-gymnasium-physics",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "PK2_MODELLIEREN"
+            ],
+            "guidingIdeas": [
+              "LI_TECHNIK",
+              "LI_MATERIE"
+            ],
+            "phase": "GLOBAL",
+            "area": "Elektronik",
+            "topicCode": "CANONICAL.PHYSICS.ELECTRONICS.DIODE_FUNCTION"
+          },
+          "competencyRefs": [
+            "PROCESS.PK2_MODELLIEREN"
+          ],
+          "extendedData": {
+            "applicabilityMappingInheritance": "boundary"
+          },
+          "resourceLinks": [
+            {
+              "type": "goal-visualization",
+              "resourceType": "image",
+              "role": "primary",
+              "skillpilotId": "dc55adac-91a5-5cc3-ab47-be008480616f",
+              "title": "Visualisierung: Durchlass- und Sperrverhalten einer Diode an einer Kennlinie erklären",
+              "url": "/assets/goal-visualizations/physik/dc55adac-91a5-5cc3-ab47-be008480616f/dc55adac-91a5-5cc3-ab47-be008480616f.png",
+              "provider": "SkillPilot / repo-native SVG",
+              "description": "Die lernende Person kann aus einer vorgegebenen qualitativen Strom-Spannungs-Kennlinie einer Diode ihr Durchlass- und Sperrverhalten ablesen und damit für beide Polungen bei angegebener Diodenspannung im dargestellten Kennlinienbereich vorhersagen, ob in einem einfachen Stromkreis ein nennenswerter Strom fließt.",
+              "altText": "Die lernende Person kann aus einer vorgegebenen qualitativen Strom-Spannungs-Kennlinie einer Diode ihr Durchlass- und Sperrverhalten ablesen und damit für beide Polungen bei angegebener Diodenspannung im dargestellten Kennlinienbereich vorhersagen, ob in einem einfachen Stromkreis ein nennenswerter Strom fließt.",
+              "lang": "de",
+              "license": "CC-BY-4.0; SkillPilot",
+              "reviewStatus": "pilot"
+            }
+          ]
+        },
+        {
+          "id": "d8b2b349-b83a-5225-a180-1afe205750cd",
+          "title": "Transistorstromverstärkung selbst experimentell untersuchen",
+          "titleEn": "Personally Investigate Transistor Current Amplification",
+          "description": "Die lernende Person kann einen vollständig vorgegebenen Transistor-Gleichstromverstärker unter Aufsicht selbst aufbauen, Basis- und Kollektorströme sowie die Kollektor-Emitter-Spannung bei kontrolliert veränderter Ansteuerung selbst messen und daraus die Stromverstärkung im geprüften Arbeitsbereich mit bereitgestellten Auswertehilfen begründen und begrenzen.",
+          "descriptionEn": "The learner can personally assemble a fully specified transistor DC-current amplifier under supervision, measure base and collector currents and collector-emitter voltage under controlled changes of drive, and use supplied evaluation aids to justify and bound current amplification within the verified operating range.",
+          "type": "atomic",
+          "contains": [],
+          "tags": [
+            "GK",
+            "LK",
+            "canonical"
+          ],
+          "requires": [
+            "f1a078ae-6262-4444-a4bc-a5ab275621cf",
+            "28237994-9c24-5a06-82fe-be1f494768ba"
+          ],
+          "applicability": {
+            "jurisdiction": [
+              "DE-BY"
+            ]
+          },
+          "shortKey": "canonical_physics_own_current_amplifier_experiment",
+          "weight": 1.15,
+          "dimensionTags": {
+            "framework": "canonical-gymnasium-physics",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "PK1_EXPERIMENTIEREN",
+              "PK4_KOMMUNIZIEREN"
+            ],
+            "guidingIdeas": [
+              "LI_TECHNIK"
+            ],
+            "phase": "GLOBAL",
+            "area": "Elektronik",
+            "topicCode": "CANONICAL.PHYSICS.ELECTRONICS.OWN_DC_CURRENT_AMPLIFIER"
+          },
+          "extendedData": {
+            "applicabilityMappingInheritance": "boundary"
+          },
+          "resourceLinks": [
+            {
+              "type": "goal-visualization",
+              "resourceType": "image",
+              "role": "primary",
+              "skillpilotId": "d8b2b349-b83a-5225-a180-1afe205750cd",
+              "title": "Vorgegebener Aufbau für eigene Stromverstärkermessungen",
+              "url": "/assets/goal-visualizations/physik/d8b2b349-b83a-5225-a180-1afe205750cd/d8b2b349-b83a-5225-a180-1afe205750cd.png",
+              "provider": "SkillPilot / original repo-native SVG",
+              "description": "Eigener Anschlussplan mit zwei Strommesszweigen, parallelem hochohmigem C/E-Voltmeter und gemeinsamem Rückleiter; ohne vorweggenommene Messdaten.",
+              "altText": "Bei 5 V beziehungsweise 4 V führen 330 Ohm und A_C zum Kollektor C. E liegt an gemeinsam 0 V. Der Schleifer eines 10-kOhm-Potentiometers führt über 100 kOhm und A_B zur Basis B. Ein Voltmeter mit mindestens 10 Megaohm Eingangswiderstand liegt von C nach E. A_C enthält einen unter der vorgegebenen Auflösung liegenden Voltmeterstrom.",
+              "lang": "de",
+              "license": "CC-BY-4.0; SkillPilot",
+              "reviewStatus": "pilot"
+            }
+          ]
+        }
+      ],
+      "contentDecision": "ACCEPT_MAPPING_FIT_WITH_STATED_PARTIAL_AND_PROFILE_BOUNDARIES",
+      "reviewer": "codex-physics-native-integration-prepare-source-content-review-20261115",
+      "reviewMethod": "Read exact retained official excerpt and complete current target goals; independent from initial K3/K6 authors, no new remote source fetch or whole-source reapproval claimed."
+    }
+  ],
+  "sourceStatusLeftNeedsReviewInCorePayload": "needs_review"
+}

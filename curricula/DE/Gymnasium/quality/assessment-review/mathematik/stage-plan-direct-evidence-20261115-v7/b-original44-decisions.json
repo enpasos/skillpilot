@@ -1,0 +1,1174 @@
+{
+  "reviewer": "Second independent AI subject-content reviewer, task /root/math_v6_second_content_review",
+  "authority": "AI independent desk review only; no human approval, learner pass, real grading, production or CI acceptance",
+  "at": "2026-11-15T13:55:27.561023+00:00",
+  "decision": "REVISE",
+  "scope": {
+    "ordinaryGoalsDEEN": 44,
+    "fullNativePositiveProfilesDEEN": 44,
+    "actualTaskSolutionDEENPairs": 44,
+    "actualBilingualRuntimeDescriptionBlocks": 116,
+    "SVGsVisuallyInspected": 14,
+    "originalPNGsDirectlyInspected": 1,
+    "candidateOnly": true
+  },
+  "readingMethod": "Read original named fields for tasks1–5, then full-field flattened readers6–44; only exactly repeated common cap boilerplate already read verbatim in1–5 was represented by a common-reference token. Full unabridged input-read copies retained. Task4 truncated DE fields were explicitly re-read in full. No first-review decisions or author acceptance reports read. Input pins establish identity only and are not evidence of subject validity.",
+  "deskGradingMethod": "Own written counteranswer fragments and complete strongest cases are quoted. Rejection bounds assume every other block receives full credit, making the attempted missing core as favorable as possible. Passing bounds identify a literal rubric loophole, not an actual runtime score. Fair alternatives identify valid responses that must not lose core points merely for choosing another permitted point/method.",
+  "rows": [
+    {
+      "index": 1,
+      "taskId": "bc53c4e9-46b3-579e-8504-c6510732f218",
+      "primaryGoalId": "7156558c-57f1-4372-9ba7-0640c3f7cb3a",
+      "decision": "ACCEPT_CONTENT",
+      "read": {
+        "ordinaryDEEN": true,
+        "fullProfileDEEN": true,
+        "actualTaskSolutionDEEN": true,
+        "actualRuntimeRubricBlockIds": [
+          "average-secant",
+          "secant-limit",
+          "local-tangent",
+          "falling-height-independent-transfer"
+        ],
+        "requiredPExpectationIds": [
+          "average-secant",
+          "limit-tangent"
+        ]
+      },
+      "independentMathematics": "For x² at 2, [(2+h)²−4]/h=4+h, so slopes at h=.1,.01 are4.1,4.01 and the tangent slope is4. For H=10−t² the quotient is−4−h and average2→3 is−5m/s. Secant endpoints are(2,4),(3,9) and(2s,6m),(3s,1m).",
+      "independentDemonstrations": "Two independent situations: increasing dimensionless quadratic and decreasing height with signed m/s.",
+      "writtenWeakCounteranswerDE": "Die Sekante von x² hat Steigung5; nahe2 sind es4,1 und4,01; 4+h→4. Die Tangente hat Steigung4. Bei H ist die mittlere Rate−5 und der Grenzwert−4. Eine Einheit und die Bedeutung des negativen Vorzeichens gebe ich nicht an.",
+      "deskGrading": "Height-transfer block≤2/4: even perfect other blocks give≤14/16<15. No passing counterexample found under the literal cap.",
+      "fairAlternativeDE": "Die Höhenrate darf als [m]/[s] oder m·s⁻¹ und als Abnahmegeschwindigkeit4m/s mit ausdrücklich zugehöriger Änderungsrate−4m/s erklärt werden. Tangentengleichung y=4x−4 ist zusätzliche, nicht notwendige Evidenz.",
+      "findingIds": []
+    },
+    {
+      "index": 2,
+      "taskId": "90ec67fc-0400-5f2c-ae8e-059ff67fc0b3",
+      "primaryGoalId": "9f2fc0d1-e1e7-4051-ba70-87ba1dd8dd1c",
+      "decision": "ACCEPT_CONTENT",
+      "read": {
+        "ordinaryDEEN": true,
+        "fullProfileDEEN": true,
+        "actualTaskSolutionDEEN": true,
+        "actualRuntimeRubricBlockIds": [
+          "three-rules",
+          "factor-error",
+          "linear-constant"
+        ],
+        "requiredPExpectationIds": [
+          "basic-rules-compose-correctly",
+          "reason-for-each-step"
+        ]
+      },
+      "independentMathematics": "Termwise differentiation gives12x³−4x+7; g=2x³+2x² gives6x²+4x, not6x²+2x. d(x)/dx=1 and d(8)/dx=0.",
+      "independentDemonstrations": "Independent differentiation and factor-error diagnosis, plus linear/constant boundary cases.",
+      "writtenWeakCounteranswerDE": "f′=12x³−4x+7. Ich leite Summanden einzeln ab; der Faktor bleibt und der Exponent kommt nach vorn. g′=6x²+4x. p′=1 und q′=0. Ich begründe nicht, weshalb die vorgelegte g-Ableitung falsch ist.",
+      "deskGrading": "factor-error≤2; total≤10/12<11 despite correct bare formulas.",
+      "fairAlternativeDE": "Zuerst ausmultiplizieren und dann Faktor-, Potenz- und Summenregel sichtbar benutzen ist ebenso gültig wie das Ableiten der geklammerten Summe.",
+      "findingIds": []
+    },
+    {
+      "index": 3,
+      "taskId": "c992f67a-f901-503c-994f-5eb5b03b2950",
+      "primaryGoalId": "f9fdb733-5838-4983-888a-05624eabbe17",
+      "decision": "ACCEPT_CONTENT",
+      "read": {
+        "ordinaryDEEN": true,
+        "fullProfileDEEN": true,
+        "actualTaskSolutionDEEN": true,
+        "actualRuntimeRubricBlockIds": [
+          "sine-cosine-terms",
+          "sine-graph",
+          "cosine-graph"
+        ],
+        "requiredPExpectationIds": [
+          "derivative-identities",
+          "graphical-rate"
+        ]
+      },
+      "independentMathematics": "(3sin−2cos+4)′=3cos+2sin; sine derivative zerosπ/2,3π/2 and cosine derivative atπ/2=−1. Sine rises where cos>0; cosine derivative is−sin.",
+      "independentDemonstrations": "Both untransformed sine and cosine, with computation and two distinct function/derivative graph relations.",
+      "writtenWeakCounteranswerDE": "sin′=cos; cos′=−sin; f′=3cos+2sin. Ich zeichne sin und cos, markiere die waagerechten Tangenten des Sinus und erkläre das Vorzeichen von cos. Für den Kosinus zeichne ich keinen Ableitungsgraphen und sage nur: Das Minus ist bekannt.",
+      "deskGrading": "cosine-graph≤2, total≤10/12<11. Actual graph demand is explicit in both graph blocks.",
+      "fairAlternativeDE": "Verschiedene Farben, getrennte Achsen oder ein gemeinsames System sind gleichwertig, sofern Zuordnung, richtige Stellen und Vorzeichenbeziehung klar sind; keine Kettenregel nötig.",
+      "findingIds": []
+    },
+    {
+      "index": 4,
+      "taskId": "82c1deff-b359-5813-9aae-8843df3bc2a1",
+      "primaryGoalId": "efc3506a-5f35-4d77-9498-d70a091a470b",
+      "decision": "ACCEPT_CONTENT",
+      "read": {
+        "ordinaryDEEN": true,
+        "fullProfileDEEN": true,
+        "actualTaskSolutionDEEN": true,
+        "actualRuntimeRubricBlockIds": [
+          "tree-structure",
+          "path-products",
+          "path-sum",
+          "replacement-independent-transfer",
+          "third-stage-independent-transfer"
+        ],
+        "requiredPExpectationIds": [
+          "tree-encodes-sequence",
+          "event-from-paths"
+        ]
+      },
+      "independentMathematics": "Without replacement from2R1B gives RR=RB=BR=1/3,BB=0, exactlyoneB=2/3. With replacement3R2B gives RB=BR=6/25 and12/25 total. Three draws without replacement3R2B gives each RRB,RBR,BRR=1/5 and total3/5; probabilities sum1.",
+      "independentDemonstrations": "Three genuinely different trees: changed counts, replacement, and depth3.",
+      "writtenWeakCounteranswerDE": "Der erste Baum hat2/3,1/3 und danach1/2,1/2 beziehungsweise1,0. RR=RB=BR=1/3; BB=0; genau ein B hat2/3. Im zweiten Baum sind alle R-Äste3/5 und B-Äste2/5, RB+BR=12/25. Im dritten nenne ich nur das richtige Endergebnis3/5 und zeichne keinen Baum.",
+      "deskGrading": "third-stage-independent-transfer≤2; total≤18/20<19.",
+      "fairAlternativeDE": "Im dritten Versuch dürfen unmögliche BBB-Zweige fehlen, denn das ist dort ausdrücklich erlaubt. Im ersten Versuch muss der verlangte Nullast erkennbar sein. Brüche oder exakte Dezimalwerte mit erklärten Pfadregeln sind gleichwertig.",
+      "findingIds": []
+    },
+    {
+      "index": 5,
+      "taskId": "e2174adb-545f-5119-8f23-45f67e358d70",
+      "primaryGoalId": "17c9e061-fe52-5553-be81-fec7a525fcbd",
+      "decision": "ACCEPT_CONTENT",
+      "read": {
+        "ordinaryDEEN": true,
+        "fullProfileDEEN": true,
+        "actualTaskSolutionDEEN": true,
+        "actualRuntimeRubricBlockIds": [
+          "distribution",
+          "inequality-sign",
+          "domain-restriction",
+          "solution-set"
+        ],
+        "requiredPExpectationIds": [
+          "solution-path-preserves-equivalence-and-domain",
+          "inequality-sign-and-solution-set-consistency"
+        ]
+      },
+      "independentMathematics": "Distribution givesx=2, verified2(2+3)=10. Dividing−2x>6 by−2 givesx<−3; checks at−3,−4,−2 yield6,8,4. Restricted domain rejects−2. Last equation is an identity for every realx.",
+      "independentDemonstrations": "Independent equation, strict inequality, domain exclusion and identity cases.",
+      "writtenWeakCounteranswerDE": "1:2x+6=10, alsox=2; Probe10=10. 2:Division durch−2 kehrt das Zeichen um, L=(−∞,−3). Die Werte−4 und−2 ergeben8>6 und4<6. 3:L=∅ wegenx≥0. 4:L=R, weil die Gleichung identisch ist. Den Randwert−3 prüfe ich nicht.",
+      "deskGrading": "inequality-sign≤2; total≤14/16<15.",
+      "fairAlternativeDE": "x<−3, {x∈R:x<−3} und ]−∞;−3[ sind gleichwertig. Eine andere Darstellung der Identität darf anstelle von Abziehen aller Terme benutzt werden.",
+      "findingIds": []
+    },
+    {
+      "index": 6,
+      "taskId": "bc87680f-ece0-542d-a5fb-e75ea122d675",
+      "primaryGoalId": "39fa30f2-e1ae-5c36-be56-793b77906abb",
+      "decision": "ACCEPT_CONTENT",
+      "read": {
+        "ordinaryDEEN": true,
+        "fullProfileDEEN": true,
+        "actualTaskSolutionDEEN": true,
+        "actualRuntimeRubricBlockIds": [
+          "two-linear-factors",
+          "factor-variable",
+          "or-not-and",
+          "zero-condition"
+        ],
+        "requiredPExpectationIds": [
+          "union-of-factor-zeros",
+          "original-substitution"
+        ]
+      },
+      "independentMathematics": "Roots2,−5 and0,1/2 follow by zero factors; OR is necessary, not AND. At2 and−5 the nonzero-RHS equation gives0≠6, so zero-product inference is invalid.",
+      "independentDemonstrations": "Two independent factor structures, plus logical and applicability checks.",
+      "writtenWeakCounteranswerDE": "Die Lösungen sind{2,−5} und{0,1/2}; Einsetzen erzeugt jeweils einen Nullfaktor. Richtig ist oder, nicht und. Für das Produktgleich6 darf ich dieselben Werte trotzdem benutzen, weil die Faktoren dieselben sind.",
+      "deskGrading": "zero-condition≤2; total≤14/16<15.",
+      "fairAlternativeDE": "Die Mengenelemente können anders angeordnet sein; beim zweiten Produkt darf3 vorab dividiert werden. Keine Lösung der Gleichung mit rechter Seite6 wird zusätzlich verlangt.",
+      "findingIds": []
+    },
+    {
+      "index": 7,
+      "taskId": "d143245a-a423-5699-bf00-4c520cd64b86",
+      "primaryGoalId": "f76d00dc-6b31-59cd-b01a-3610eadc9908",
+      "decision": "ACCEPT_CONTENT",
+      "read": {
+        "ordinaryDEEN": true,
+        "fullProfileDEEN": true,
+        "actualTaskSolutionDEEN": true,
+        "actualRuntimeRubricBlockIds": [
+          "theorem-direction",
+          "strict-cubic",
+          "nonconverse",
+          "no-extremum",
+          "falling-nonconverse-transfer"
+        ],
+        "requiredPExpectationIds": [
+          "theorem-direction-and-domain",
+          "strict-converse-fails"
+        ]
+      },
+      "independentMathematics": "For x>y, x³−y³=(x−y)[((x+y)²+x²+y²)/2]>0. The second factor cannot vanish for distinctx,y. Negation proves−x³ strictly decreases. Both derivatives vanish at0; cubic signs on either side exclude an extremum. On[1,3],±2x have constant strict signs.",
+      "independentDemonstrations": "Direct increasing/decreasing theorem applications, increasing nonconverse, decreasing nonconverse.",
+      "writtenWeakCounteranswerDE": "u′=2x>0 undv′=−2x<0 im Inneren, Polynome sind stetig und differenzierbar. x³ steigt, denn die gegebene Differenz ist fürx>y positiv. f′(0)=0 widerlegt die steigende Umkehrung; links negative und rechts positive Werte schließen ein Extremum aus. Für−x³ sage ich nur: fällt, weil es gespiegelt ist; k′(0) prüfe ich nicht.",
+      "deskGrading": "falling-nonconverse-transfer≤2; total≤18/20<19.",
+      "fairAlternativeDE": "Ein korrekt erklärtes Integralargument fürx³−y³ oder getrennte Anwendung des Satzes links/rechts mit Anschluss bei0 ist ebenso möglich wie die vorgegebene Produktidentität.",
+      "findingIds": []
+    },
+    {
+      "index": 8,
+      "taskId": "3e0017bd-f305-5d25-91fd-62b772c3e757",
+      "primaryGoalId": "1ce8af38-082a-477b-af48-b924c92761bf",
+      "decision": "ACCEPT_CONTENT",
+      "read": {
+        "ordinaryDEEN": true,
+        "fullProfileDEEN": true,
+        "actualTaskSolutionDEEN": true,
+        "actualRuntimeRubricBlockIds": [
+          "match-three-graphs",
+          "cubic-zeros-tails",
+          "quartic-zeros-tails",
+          "quadratic-vertex"
+        ],
+        "requiredPExpectationIds": [
+          "term-graph-features-agree",
+          "graph-to-plausible-expression"
+        ]
+      },
+      "independentMathematics": "p=x(x−1)(x+1), roots−1,0,1, positive cubic tails; q=−x²(x−2)(x+2), roots−2,0,2 with doubletouch0 and negative quartic tails. r=(x−1)²+1 has minimum1 at1. VisualA/B/C agree.",
+      "independentDemonstrations": "Cubic crossing, negative quartic touching, shifted quadratic without realzeros.",
+      "writtenWeakCounteranswerDE": "A=p,B=q,C=r. p hatNullstellen−1,0,1 und läuft links nachunten/rechts nachoben; s hat nur0. q hat−2,0,2 und beideEnden nachunten; bei0 ist der Faktor quadratisch. r hatS(1,1) und keine reelleNullstelle. Ich sage nicht, dass der doppelte Faktor das Berühren erklärt.",
+      "deskGrading": "quartic-zeros-tails≤2 if touch interpretation is absent; total≤14/16<15.",
+      "fairAlternativeDE": "Die Nullstellen dürfen als Faktorgleichungen gezeigt werden; kein Ableitungsverfahren oder exakte Lage der quartischen Hochpunkte ist erforderlich.",
+      "findingIds": []
+    },
+    {
+      "index": 9,
+      "taskId": "d363a3d4-deb1-5e63-87d0-ad4cac6919dd",
+      "primaryGoalId": "58d2f963-4fb9-550d-a832-f5ac60808900",
+      "decision": "ACCEPT_CONTENT",
+      "read": {
+        "ordinaryDEEN": true,
+        "fullProfileDEEN": true,
+        "actualTaskSolutionDEEN": true,
+        "actualRuntimeRubricBlockIds": [
+          "affine-trig-chain-1",
+          "affine-trig-chain-2",
+          "affine-trig-chain-3",
+          "negative-inner-phase-transfer",
+          "constant-boundary-transfer"
+        ],
+        "requiredPExpectationIds": [
+          "trigonometric-chain-rule",
+          "chain-rule-check-and-boundary"
+        ]
+      },
+      "independentMathematics": "Inner ratesπ/20,π/6 giveH′=(7π/10)cos andQ′=−(π/3)sin; values at5,15,6 are7π/10,0,−π/3. g′=−12sin(−3(t+1))=12sin(3(t+1)), at−1+π/6 gives12. h constant−2; h1′=.7cos(.1(x−4)), period20π.",
+      "independentDemonstrations": "At least3 independent cases: affine positive inner factors, negative inner cosine with sign simplification, andb=0 boundary versus.1.",
+      "writtenWeakCounteranswerDE": "H′=(7π/10)cos((π/20)(t−5)), Q′=−(π/3)sin((π/6)(t−3)); innere Faktoren geben die Änderung je Sekunde. Die Werte sind7π/10m/s aufwärts,0m/s amMaximum und−π/3. g′=12sin(3(t+1)), Probe12. h=−2,h′=0; h1′=.7cos(.1(x−4)),T=20π. Eine konstante Funktion hat nach meiner Behauptung die kleinste Periode0.",
+      "deskGrading": "constant-boundary-transfer≤2 because0 is not a positiveperiod and no least positiveperiod exists; total≤18/20<19.",
+      "fairAlternativeDE": "Beide äquivalenten g′-Formen gelten; bei der vereinfachten Form müssen die Vorzeichen erklärt werden. Für h genügt jede sachlich richtige Begründung: jedesT>0 geht, also kein kleinstes.",
+      "findingIds": []
+    },
+    {
+      "index": 10,
+      "taskId": "911c3dd4-5756-52f4-a1e3-177ddd86a601",
+      "primaryGoalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "decision": "ACCEPT_CONTENT",
+      "read": {
+        "ordinaryDEEN": true,
+        "fullProfileDEEN": true,
+        "actualTaskSolutionDEEN": true,
+        "actualRuntimeRubricBlockIds": [
+          "quadratic-endpoint-global-maximum",
+          "cubic-global-ties"
+        ],
+        "requiredPExpectationIds": [
+          "derivative-sign-to-monotonicity",
+          "local-extrema-by-sign-change",
+          "global-extrema-require-value-comparison"
+        ]
+      },
+      "independentMathematics": "Quadratic derivative2(x−2) givesminimum−1 at2, endpointvalues8 and3, max8 at−1. Cubic derivative3(x−1)(x+1), sign+−+, values f(−2)=−2,f(−1)=2,f(1)=−2,f(2)=2 yield both tied globalmax/min.",
+      "independentDemonstrations": "Quadratic unique endpointmaximum versus cubic two internalextrema and endpointties.",
+      "writtenWeakCounteranswerDE": "Fall1:Vorzeichen−,+ um2, also Minimum−1; Werte8,−1,3 geben Maximum8 bei−1. Fall2:f′ hat+,−,+; lokal Maximum2 bei−1 undMinimum−2 bei1. Global seien nur diese beiden inneren Stellen extrem; die Randwerte lasse ich weg.",
+      "deskGrading": "cubic-global-ties≤2; total≤6/8<7.",
+      "fairAlternativeDE": "Geschlossene Monotonieintervalle bis zum kritischen Punkt oder offene Vorzeichenintervalle mit expliziten Grenzpunkten sind gleichwertig. Randmaxima müssen nicht als innere lokale Extrema bezeichnet werden.",
+      "findingIds": []
+    },
+    {
+      "index": 11,
+      "taskId": "ec3467b0-a62e-51f5-a99d-6dd524a8fc86",
+      "primaryGoalId": "b43a1e45-f05c-4d78-8453-f6fa677dc24c",
+      "decision": "ACCEPT_CONTENT",
+      "read": {
+        "ordinaryDEEN": true,
+        "fullProfileDEEN": true,
+        "actualTaskSolutionDEEN": true,
+        "actualRuntimeRubricBlockIds": [
+          "cubic-nonzero-slope",
+          "horizontal-tangent-vertical-normal"
+        ],
+        "requiredPExpectationIds": [
+          "tangent-from-point-and-derivative",
+          "normal-is-perpendicular-through-contact",
+          "slope-meaning-and-domain"
+        ]
+      },
+      "independentMathematics": "At−1 cubic point(−1,−1), tangent3x+2, normal−x/3−4/3; slopeproduct−1. At quadraticvertex(2,−3), tangent y=−3, normalx=2;−1/0 undefined.",
+      "independentDemonstrations": "Nonzero tangent slope versus horizontal tangent/verticalnormal.",
+      "writtenWeakCounteranswerDE": "Kubisch:P=(−1,−1),mT=3,mN=−1/3,T:y=3x+2,N:y=−x/3−4/3; beide enthaltenP und Steigungenprodukt−1. Quadratisch:P=(2,−3),T:y=−3,N:y=0, denn−1/0 sei0.",
+      "deskGrading": "horizontal-tangent-vertical-normal≤2; total≤6/8<7.",
+      "fairAlternativeDE": "Punkt-Steigungsformen oder implizite Geradengleichungen sind vollwertig; die vertikale Normale braucht keine endliche Steigung.",
+      "findingIds": []
+    },
+    {
+      "index": 12,
+      "taskId": "af7ec286-0ce4-5a36-bcaa-23b1a9c55b8e",
+      "primaryGoalId": "06bdbecb-53e0-5ac3-992f-d6fd20555b59",
+      "decision": "ACCEPT_CONTENT",
+      "read": {
+        "ordinaryDEEN": true,
+        "fullProfileDEEN": true,
+        "actualTaskSolutionDEEN": true,
+        "actualRuntimeRubricBlockIds": [
+          "tank-stock-horizontal-at-zero",
+          "cubic-nonzero-tangent"
+        ],
+        "requiredPExpectationIds": [
+          "local-line-matches-value-and-slope",
+          "nearby-estimate-and-interpretation",
+          "local-validity-and-error"
+        ]
+      },
+      "independentMathematics": "B tangent at0 is10, errors.04L at.2min and1L at1min. Cubic tangent at1 is3x−2;1.3 versus1.331 error.031, at2:4 versus8 error4.",
+      "independentDemonstrations": "Horizontal contextual tangent with units versus nonhorizontal cubicapproximation and distance.",
+      "writtenWeakCounteranswerDE": "B′(0)=0,L=10L, die Werte sind10.04L und11L, Fehler.04L und1L; lokal brauchbar. Bei x³ ist L=3x−2, also1.3≈1.331. Bei2 ergibt die Tangente4 undf(2)=8. Ich behaupte trotzdem, die Tangente sei überall ein gleich gutes Modell.",
+      "deskGrading": "cubic-nonzero-tangent≤2; total≤6/8<7.",
+      "fairAlternativeDE": "Vorzeichenbehafteter FehlerL−f oder absoluter Fehler|L−f| ist bei klarer Benennung gültig. Keine allgemeine Taylor-Fehlerformel nötig.",
+      "findingIds": []
+    },
+    {
+      "index": 13,
+      "taskId": "0dc1352a-c0d1-5231-af77-ca2284c4a27c",
+      "primaryGoalId": "ad66009f-55fb-563f-ace0-dbfeae7c76c3",
+      "decision": "ACCEPT_CONTENT",
+      "read": {
+        "ordinaryDEEN": true,
+        "fullProfileDEEN": true,
+        "actualTaskSolutionDEEN": true,
+        "actualRuntimeRubricBlockIds": [
+          "reversed-cubic-curvature",
+          "quartic-two-changes-and-flat-control"
+        ],
+        "requiredPExpectationIds": [
+          "second-derivative-sign-to-curvature",
+          "inflection-requires-sign-change",
+          "inflection-location-and-coordinate"
+        ]
+      },
+      "independentMathematics": "f″=6(1−x) changes+to− at1, f(1)=2. g″=12(x²−1), signs+−+, inflections(−1,−5),(1,−5). h″=12x² staysnonnegative, so0 is notinflection.",
+      "independentDemonstrations": "Reversed cubic curvature versus quartic twochanges and flatnocross control.",
+      "writtenWeakCounteranswerDE": "f″=6−6x, links1 positiv undrechts1negativ, W(1,2). g″=12(x²−1), Vorzeichen+−+, W(±1,−5). Bei h=x⁴ genüge h″(0)=0 für einen Wendepunkt; die Vorzeichen daneben prüfe ich nicht.",
+      "deskGrading": "quartic-two-changes-and-flat-control≤2; total≤6/8<7.",
+      "fairAlternativeDE": "Konvex/konkav, links-/rechtsgekrümmt oder eindeutig erläuterte Krümmung nach oben/unten sind zulässig. Kritische Stellen dürfen separat aus den offenen Intervallen benannt werden.",
+      "findingIds": []
+    },
+    {
+      "index": 14,
+      "taskId": "373e3278-683a-553d-8cdc-090a36ab17cc",
+      "primaryGoalId": "308f19e2-e202-5300-a2fa-1eaa717f4e73",
+      "decision": "ACCEPT_CONTENT",
+      "read": {
+        "ordinaryDEEN": true,
+        "fullProfileDEEN": true,
+        "actualTaskSolutionDEEN": true,
+        "actualRuntimeRubricBlockIds": [
+          "cooling-baseline",
+          "shifted-growth"
+        ],
+        "requiredPExpectationIds": [
+          "term-to-limits",
+          "graph-and-context"
+        ]
+      },
+      "independentMathematics": "T−2=4·2^(−t)>0 tends0 for t→+∞ and+∞ for t→−∞. g+1=3·2^x>0 tends0 forx→−∞ and+∞ forx→+∞. Actualgraphs show intercepts6 and2, shifts2 and−1.",
+      "independentDemonstrations": "Decay with physical domain versus growing mathematicalindex with opposite asymptotic direction.",
+      "writtenWeakCounteranswerDE": "T nähert sich vonoben2°C fürt→∞, umgekehrt wächst der Term unbegrenzt; y=2 ist die Asymptote. Ich deute negative t als reale Messzeiten, obwohlt≥0 gilt. g nähert sich links−1 vonoben und wächst rechts unbegrenzt;−1 wird endlich nicht erreicht.",
+      "deskGrading": "cooling-baseline≤2; total≤6/8<7.",
+      "fairAlternativeDE": "Die Asymptote darf alsT=2°C oder y=2 beschrieben werden. Das auf negativen t gezeichnete Stück muss als mathematische Fortsetzung bezeichnet werden.",
+      "findingIds": []
+    },
+    {
+      "index": 15,
+      "taskId": "b3249d3b-5e4f-5bec-a9f2-bd1a69c300b7",
+      "primaryGoalId": "c19d1f8f-b297-5a58-b1d4-26d811e4aff4",
+      "decision": "ACCEPT_CONTENT",
+      "read": {
+        "ordinaryDEEN": true,
+        "fullProfileDEEN": true,
+        "actualTaskSolutionDEEN": true,
+        "actualRuntimeRubricBlockIds": [
+          "visual-hourly-pattern",
+          "population-growth",
+          "medicine-decay"
+        ],
+        "requiredPExpectationIds": [
+          "factor-time",
+          "context-meaning"
+        ]
+      },
+      "independentMathematics": "A at3h=800, B=12.5, differences100,200,400 versus−50,−25,−12.5. ln2/ln1.2=3.8017840169years; ln.5/ln.8=3.1062837195days. Factor intervals multiply current amount independent of initialamount.",
+      "independentDemonstrations": "Hourlytable recognition plus nontrivial growthyears and decaydays.",
+      "writtenWeakCounteranswerDE": "A:q=2,T=1h,800; B:q=.5,H=1h,12.5; die Unterschiede variieren. Populations-T≈3.80Jahre, weil1.2^T=2. Stoff-H≈3.11Tage, weil.8^H=.5; nach jeder Halbwertszeit verschwinden stets40mg.",
+      "deskGrading": "medicine-decay≤2; total≤10/12<11.",
+      "fairAlternativeDE": "Für den relativen Zusammenhang darf B(t+T)/B(t)=2 beziehungsweiseM(t+H)/M(t)=.5 stehen. Die frühere Illustration muss nicht erwähnt werden; actualtask uses tables. Left/right wording is editorial residue only.",
+      "findingIds": []
+    },
+    {
+      "index": 16,
+      "taskId": "d09afa07-f7fc-5148-92a9-f9a89c9257d5",
+      "primaryGoalId": "6a4716bd-8038-46bb-b647-0db4a254fee7",
+      "decision": "ACCEPT_CONTENT",
+      "read": {
+        "ordinaryDEEN": true,
+        "fullProfileDEEN": true,
+        "actualTaskSolutionDEEN": true,
+        "actualRuntimeRubricBlockIds": [
+          "cross-touch",
+          "two-touches"
+        ],
+        "requiredPExpectationIds": [
+          "graph-constraints",
+          "fitting-term"
+        ]
+      },
+      "independentMathematics": "Minimum multiplicities1+2 give degree3, a·(1)(4)=8 givesa=2. Two touches degree≥4, a·4·1=4 givesa=1. Multiplying either by1+x² preserves listedroots, crossing/touching signs, intercept andendparity while addingdegree2. Visualplots agree with minimalterms.",
+      "independentDemonstrations": "Odd crossing-touching versus even twotouches, with minimumdegree versus inferenceambiguity.",
+      "writtenWeakCounteranswerDE": "f=2(x+1)(x−2)², weil Kreuzung einfach undBerührung doppelt ist; f(0)=8. g=(x+2)²(x−1)², weil zweiBerührungen Grad4 brauchen undg(0)=4. Damit ist der tatsächliche Grad aus den sichtbaren Merkmalen eindeutig3 beziehungsweise4.",
+      "deskGrading": "Missing ambiguity core caps appropriateblock≤2; total≤6/8<7.",
+      "fairAlternativeDE": "Die höheren Terme f(x)(1+x²) undg(x)(1+x²) sind gute Gegenzeugen zur behaupteten Eindeutigkeit der aufgelisteten Merkmale; sie werden nicht als minimale Antwort ausgegeben.",
+      "findingIds": []
+    },
+    {
+      "index": 17,
+      "taskId": "e3f4187c-3570-5056-9990-4486f87d1a0e",
+      "primaryGoalId": "367a59ce-a388-5c93-b6f9-a3b0c6c3b45e",
+      "decision": "ACCEPT_CONTENT",
+      "read": {
+        "ordinaryDEEN": true,
+        "fullProfileDEEN": true,
+        "actualTaskSolutionDEEN": true,
+        "actualRuntimeRubricBlockIds": [
+          "two-year-deposit",
+          "statement-sequence"
+        ],
+        "requiredPExpectationIds": [
+          "capital-rate-time",
+          "interest-on-interest"
+        ]
+      },
+      "independentMathematics": "1000·1.03²=1060.90; year2interest30.90 and interestoninterest.90. 2000·1.05²=2205, year2interest105 and extra5.",
+      "independentDemonstrations": "Terminology from deposit description versus statementsequence, different rates/capital.",
+      "writtenWeakCounteranswerDE": "K0=1000€,p=3%proJahr,n=2Jahre,K2=1060.90€; Jahr2 verzinst1030€, davon.90€ auf die ersten30€Zinsen. ZweiterFall:Start2000€,Ende2205€,5%proJahr,2Jahre. Ich nenne105€Zinsen, erkläre aber nicht die zusätzlichen5€.",
+      "deskGrading": "statement-sequence≤2; total≤6/8<7.",
+      "fairAlternativeDE": "Direkter Vergleich1060.90−1060=.90 und2205−2200=5 ist gleichwertig, wenn einfacheZinsen undZinseszins begrifflich erklärt werden.",
+      "findingIds": []
+    },
+    {
+      "index": 18,
+      "taskId": "0b2c68f9-f9d4-57c1-af56-3b7d639f1631",
+      "primaryGoalId": "3e4032bd-4d8c-4e72-bfdd-64a34df053c9",
+      "decision": "REVISE",
+      "read": {
+        "ordinaryDEEN": true,
+        "fullProfileDEEN": true,
+        "actualTaskSolutionDEEN": true,
+        "actualRuntimeRubricBlockIds": [
+          "complete-square-and-sketch",
+          "expand-downward-parabola"
+        ],
+        "requiredPExpectationIds": [
+          "equivalent-forms-and-vertex",
+          "sketch-from-form"
+        ]
+      },
+      "independentMathematics": "Completing square gives(x−3)²−4; shifteddownparabola expands−2x²−4x+6. Ownfair points: f(2)=f(4)=−3 andg(−.5)=g(−1.5)=7.5.",
+      "independentDemonstrations": "Two conversion directions and upward/downward graph shapes; actual learner sketches remain insufficiently explicit in runtimecriteria.",
+      "writtenWeakCounteranswerDE": "f=(x−3)²−4,S(3,−4),Achsex=3,öffnetaufwärts,f(0)=5 undf(6)=5. g=−2x²−4x+6,S(−1,8),Achsex=−1,öffnetabwärts,g(0)=g(−2)=6. Ich zeichne ausdrücklich keine der beiden Skizzen.",
+      "deskGrading": "Literal feature-based descriptions allow4+4=8/8 despite absent actualsketches. This is a written-rubric deskcounterexample, not an observed runtimegrade.",
+      "fairAlternativeDE": "Eine handgezeichnete Parabel mitS/Achse und den selbst gewählten Paaren(2,−3),(4,−3) beziehungsweise(−.5,7.5),(−1.5,7.5) erfüllt den Graphenkern ebenso. Vorgegebene Beispielpunkte dürfen nicht erzwungen werden.",
+      "findingIds": [
+        "G18"
+      ]
+    },
+    {
+      "index": 19,
+      "taskId": "17e73e5b-ae25-5b4c-bd05-b06381dacdb7",
+      "primaryGoalId": "d9725eb6-6b1f-5674-9f17-3de10f5b1ed8",
+      "decision": "ACCEPT_CONTENT",
+      "read": {
+        "ordinaryDEEN": true,
+        "fullProfileDEEN": true,
+        "actualTaskSolutionDEEN": true,
+        "actualRuntimeRubricBlockIds": [
+          "triangle-general-derivation",
+          "signed-unit-circle-transfer"
+        ],
+        "requiredPExpectationIds": [
+          "pythagorean-derivation",
+          "unit-circle-meaning"
+        ]
+      },
+      "independentMathematics": "sin²+cos²=(a²+b²)/c²=1 byPythagoras withc>0. At(−3/5,4/5), cosine−3/5,sine4/5 and9/25+16/25=1; squaring removesnegativecoordinate sign.",
+      "independentDemonstrations": "General trianglederivation and signed unitcircleextension.",
+      "writtenWeakCounteranswerDE": "Im Dreieck sei sin²α+cos²α=1, weil das eine bekannte Formel ist. BeiP sindcos=−3/5,sin=4/5 und9/25+16/25=1; die Kreisgleichung erklärt die Identität in allen Quadranten.",
+      "deskGrading": "triangle-general-derivation≤2; total≤6/8<7.",
+      "fairAlternativeDE": "Ein allgemeiner Einheitskreisbeweis plus die verlangte Seitenzuordnung kann die Beziehung rechnerisch statt über eine besondere Flächenzeichnung herleiten; eine Zahlenprobe allein ist kein allgemeiner Beweis.",
+      "findingIds": []
+    },
+    {
+      "index": 20,
+      "taskId": "a68fcfd9-675c-59a0-8dde-ee90bb374483",
+      "primaryGoalId": "674baaa8-911d-5231-9330-881c5288634f",
+      "decision": "ACCEPT_CONTENT",
+      "read": {
+        "ordinaryDEEN": true,
+        "fullProfileDEEN": true,
+        "actualTaskSolutionDEEN": true,
+        "actualRuntimeRubricBlockIds": [
+          "three-four-five",
+          "unit-circle-reflection"
+        ],
+        "requiredPExpectationIds": [
+          "complementary-angles",
+          "coordinate-transfer"
+        ]
+      },
+      "independentMathematics": "Other acuteangleβ=90°−α faces4, adjacenttoα, so bothquotients4/5. Reflection(u,v)→(v,u) acrossy=x sends angleα toπ/2−α, hence newy=u=cosα.",
+      "independentDemonstrations": "Specific triangle side-role proof versus general coordinate reflection.",
+      "writtenWeakCounteranswerDE": "β liegt gegenüber4, also sinβ=4/5=cosα mit gleicherHypotenuse. BeiP′=(v,u) ist die neuey-Koordinateu; ich behaupte ohne Winkelbegründung, dies sei schon die Komplementwinkelbeziehung.",
+      "deskGrading": "unit-circle-reflection≤2 when reflectedangle relation absent; total≤6/8<7.",
+      "fairAlternativeDE": "Bogenmaßπ/2−α ist gleichwertig mit90°−α bei konsistenter Winkelbenennung. Die Spiegelungsachse darf über Winkelhalbierung statt einer numerischen Probe erklärt werden.",
+      "findingIds": []
+    },
+    {
+      "index": 21,
+      "taskId": "aca3f4d8-87e9-5733-b6e8-bc595b09c746",
+      "primaryGoalId": "4cba85d3-2e25-5c4b-9c4c-37e5b201dce7",
+      "decision": "ACCEPT_CONTENT",
+      "read": {
+        "ordinaryDEEN": true,
+        "fullProfileDEEN": true,
+        "actualTaskSolutionDEEN": true,
+        "actualRuntimeRubricBlockIds": [
+          "general-domain-derivation",
+          "quadrant-two-transfer"
+        ],
+        "requiredPExpectationIds": [
+          "relation-derivation",
+          "domain-and-sign-transfer"
+        ]
+      },
+      "independentMathematics": "Signed ray coordinates give(sin/cos)=(y/r)/(x/r)=y/x forx≠0 allquadrants. P=(−2,5) givesr=√29, sine5/√29, cosine−2/√29, tangent−5/2; x=0 excludesquotient.",
+      "independentDemonstrations": "General-domain freelychosenderivation and nonacute rayapplication/boundary.",
+      "writtenWeakCounteranswerDE": "Im spitzen Dreieck gilt(a/c)/(b/c)=a/b=tanα. Das ist mein ganzer Beweis für alleWinkel. FürP=(−2,5) sind dieWerte5/√29,−2/√29,−5/2; an dery-Achse ist wegenx=0 nicht definiert.",
+      "deskGrading": "general-domain-derivation≤2 because acuteonlyproof does not cover full domain; total≤6/8<7.",
+      "fairAlternativeDE": "Ein Dreiecksbeweis ist vollwertig, wenn die Vorzeichen der Bezugswinkel in allen vier Quadranten ausdrücklich fortgesetzt werden; ein zweiter Beweisweg ist nicht notwendig.",
+      "findingIds": []
+    },
+    {
+      "index": 22,
+      "taskId": "d09278a9-70cf-5c22-8eb4-a28118651649",
+      "primaryGoalId": "a7ccb7a9-6fb0-4e2d-b6e0-6420cc5ae0bf",
+      "decision": "ACCEPT_CONTENT",
+      "read": {
+        "ordinaryDEEN": true,
+        "fullProfileDEEN": true,
+        "actualTaskSolutionDEEN": true,
+        "actualRuntimeRubricBlockIds": [
+          "fixed-perimeter-rectangle",
+          "parabolic-arch-transfer"
+        ],
+        "requiredPExpectationIds": [
+          "quadratic-context-model",
+          "context-extremum-validation"
+        ]
+      },
+      "independentMathematics": "2x+2y=20 givesy=10−x; x(10−x)=25−(x−5)² max25at5. Arch a·x(x−12), at6 gives−36a=3 soa=−1/12. Endpoints0 and12verify andvertex(6,3) interior.",
+      "independentDemonstrations": "Constraint-derived area optimization versus fitted geometricheight.",
+      "writtenWeakCounteranswerDE": "Die andereSeite ist10−x,A=x(10−x)=25−(x−5)², Maximum25m²bei5m,Umfang20m. FürdenBogen h=−x²/12+x, h(0)=h(12)=0,h(6)=3m. Einen zulässigen x-Bereich und die Lage desMaximums darin nenne ich nicht.",
+      "deskGrading": "Context/domaincore missing caps block≤2; total≤6/8<7.",
+      "fairAlternativeDE": "Für ein nichtdegeneriertes Beet istD=(0,10) ebenfalls sachgerecht;D=[0,10] kann als erweiterterBereich mit degeneriertenRandfällen verwendet werden. Die optimaleInnenlösung ist identisch. Factorizedarch andvertexforms are equivalent.",
+      "findingIds": []
+    },
+    {
+      "index": 23,
+      "taskId": "71169b14-8363-576e-9e51-002f51da08e3",
+      "primaryGoalId": "3f3557a8-7d89-4f96-8a32-e24745c34d82",
+      "decision": "REVISE",
+      "read": {
+        "ordinaryDEEN": true,
+        "fullProfileDEEN": true,
+        "actualTaskSolutionDEEN": true,
+        "actualRuntimeRubricBlockIds": [
+          "horizontal-directrix",
+          "vertical-directrix-transfer"
+        ],
+        "requiredPExpectationIds": [
+          "equal-distance-locus",
+          "construct-from-focus-directrix"
+        ]
+      },
+      "independentMathematics": "Equal-distance equations givey=x²/12 forF(0,3),directrix−3; x=y²/8 forF(2,0),directrix−2. Fairalternative firstpoints(√12,1),(−√12,1) eachdistance4; second(8,8),(8,−8) eachdistance10. Verticesbothorigin; axesx=0,y=0.",
+      "independentDemonstrations": "Horizontal andverticalfocus/directrix construction with genuinechanged geometry.",
+      "writtenWeakCounteranswerDE": "Ich wähle imerstenFall diePunkte(√12,1),(−√12,1): Abstand zumFokus√(12+4)=4, zurLeitgeraden1+3=4. Scheitel(0,0),Achsex=0, nachobenoffen. ImzweitenFall(8,±8): Fokusabstand√(36+64)=10, Leitgeradenabstand8+2=10. Scheitel(0,0),Achsey=0, Öffnungrechts.",
+      "deskGrading": "This is a mathematically complete fairanswer. Literal requirement of all named exemplar coordinates could cap it≤6/8 or≤4/8 although it deserves8/8. No real scorer execution claimed.",
+      "fairAlternativeDE": "Die tatsächlichen beiden Punktpaare dürfen frei gewählt werden; obige vollständige Abstandsrechnung muss8/8 erhalten. Keine Pflicht zu genau(±6,3) oder(2,±4).",
+      "findingIds": [
+        "F23"
+      ]
+    },
+    {
+      "index": 24,
+      "taskId": "b214caea-13d3-5789-9434-f31d0fd606a3",
+      "primaryGoalId": "42e19186-6769-41ac-a7bf-ab39bdb50661",
+      "decision": "ACCEPT_CONTENT",
+      "read": {
+        "ordinaryDEEN": true,
+        "fullProfileDEEN": true,
+        "actualTaskSolutionDEEN": true,
+        "actualRuntimeRubricBlockIds": [
+          "battery-capacity",
+          "growing-culture-transfer"
+        ],
+        "requiredPExpectationIds": [
+          "term-table-graph-correspondence",
+          "contextual-trajectory-meaning"
+        ]
+      },
+      "independentMathematics": "25%loss givesfactor.75 andtable200,150,112.5. Ratios60/40=90/60=1.5 give40·1.5^t andincrements20,30. Positiveexponentialdecay flattens; growthsteepens.",
+      "independentDemonstrations": "Decaycontext→term/table/ownsketch versus growthtable→term/ownsketch.",
+      "writtenWeakCounteranswerDE": "Akku:B=200·.75^t,200,150,112.5Wh; eigeneSkizze beginnt200undflachtfallendab. Kultur:N=40·1.5^t, Zuwächse20,30,weil50%desaktuellenWerts. Eine eigeneKulturskizze lasse ichweg.",
+      "deskGrading": "growing-culture-transfer references the sketched graph; missing graph core≤2; total≤6/8<7.",
+      "fairAlternativeDE": "Alternative Achsenskalierungen sind zulässig. Ganze Zellzahlen sind Mess-/Bestandsdaten; die glatteModellkurve darf auch nichtganzeZwischenwerte tragen, ohne realeTeilzellen zu behaupten.",
+      "findingIds": []
+    },
+    {
+      "index": 25,
+      "taskId": "ba2d707f-d95c-55ac-b978-60c51424d367",
+      "primaryGoalId": "283ec44e-747c-55e3-9a61-4a4cc70ebfab",
+      "decision": "ACCEPT_CONTENT",
+      "read": {
+        "ordinaryDEEN": true,
+        "fullProfileDEEN": true,
+        "actualTaskSolutionDEEN": true,
+        "actualRuntimeRubricBlockIds": [
+          "negative-odd-end-behaviour",
+          "positive-even-transfer"
+        ],
+        "requiredPExpectationIds": [
+          "leading-term-dominates-at-both-ends"
+        ]
+      },
+      "independentMathematics": "p/x^5=−2+100/x³−3/x^5→−2; hencep right−∞,left+∞. q/x⁴=3−9/x+2/x⁴→3; bothends+∞.",
+      "independentDemonstrations": "Negative odd leadingterm versus positive even leadingterm.",
+      "writtenWeakCounteranswerDE": "p hatGrad5,Leitkoeffizient−2, also rechts−∞ undlinks+∞, da dasLeitglied dominiert. q hatGrad4,Leitkoeffizient3, beideEnden+∞. Ich erkläre beiq nicht, weshalb−9x³ dieEndrichtungen nicht verändert.",
+      "deskGrading": "If no leadingterm dominance explanation forq, positive-even-transfer≤2; total≤6/8<7.",
+      "fairAlternativeDE": "Normieren durch die höchstePotenz ist ein vollwertiger Begründungsweg; ein Grenzwertquotient wird nicht zusätzlich zu einer korrekten Dominanzargumentation verlangt.",
+      "findingIds": []
+    },
+    {
+      "index": 26,
+      "taskId": "9b3485cb-c631-5b2e-8abe-eb55d4f0d89e",
+      "primaryGoalId": "0190e463-51a7-4860-9b35-d875530a85ba",
+      "decision": "ACCEPT_CONTENT",
+      "read": {
+        "ordinaryDEEN": true,
+        "fullProfileDEEN": true,
+        "actualTaskSolutionDEEN": true,
+        "actualRuntimeRubricBlockIds": [
+          "even-polynomial-test",
+          "odd-and-mixed-transfer"
+        ],
+        "requiredPExpectationIds": [
+          "algebraic-symmetry-test"
+        ]
+      },
+      "independentMathematics": "f(−x)=f(x),f(0)=1rulesoutodd. g(−x)=−g(x); h(−x)=−x³+x² differsfromh and−h. E.g.h(1)=2,h(−1)=0 rejectsbothequations.",
+      "independentDemonstrations": "Even polynomial versus odd andmixedstructures.",
+      "writtenWeakCounteranswerDE": "f istgerade, weilf(−x)=x⁴−3x²+1=f(x);f(0)=1 schließt Ursprungssymmetrieaus. g(−x)=−g(x),ursprungssymmetrisch. h habeauchUrsprungssymmetrie, weilderhöchsteExponentungeradeist.",
+      "deskGrading": "odd-and-mixed-transfer≤2; total≤6/8<7.",
+      "fairAlternativeDE": "Eine Strukturargumentation nach Zusammenfassen derTerme oder ein vollständiger−x-Test ist gültig; zum Widerlegen einerIdentität genügt ein konkreter Gegenwert.",
+      "findingIds": []
+    },
+    {
+      "index": 27,
+      "taskId": "bae1464d-4b32-5492-b65b-32c7de3fa11e",
+      "primaryGoalId": "31207307-0cf9-4a56-bf14-90196dc2b3d4",
+      "decision": "ACCEPT_CONTENT",
+      "read": {
+        "ordinaryDEEN": true,
+        "fullProfileDEEN": true,
+        "actualTaskSolutionDEEN": true,
+        "actualRuntimeRubricBlockIds": [
+          "growing-population-table",
+          "decay-graph-transfer"
+        ],
+        "requiredPExpectationIds": [
+          "constant-ratio-across-representations",
+          "context-to-exponential-expression"
+        ]
+      },
+      "independentMathematics": "Tablefactor2 gives30·2^t, t3=240. Graphpoints80,40,20factor.5 give80·.5^t; linearalternativeat2 gives0, othergrowthcandidateat0 gives40, bothreject.",
+      "independentDemonstrations": "Growthtable versus scaleddecaygraph withalternativeexpressions.",
+      "writtenWeakCounteranswerDE": "DieTabellehatFaktor2proStunde,N=30·2^t,N(3)=240. BeimGraphen wähleich80·.5^t, weil80,40,20 jehalbiertwerden;80−40t scheitertbei2und40·2^t schonbei0. DieseKurvebeweiseuneingeschränktallezukünftigenrealenWerte.",
+      "deskGrading": "decay-graph-transfer≤2 dueunboundedvalidityclaim; total≤6/8<7.",
+      "fairAlternativeDE": "Die Aussage „unter unverändertem Modell“ reicht als Grenze; es muss keine besondere externe Zerfallsursache erfunden werden.",
+      "findingIds": []
+    },
+    {
+      "index": 28,
+      "taskId": "843f23ee-f0c4-5a57-b99f-9ac35af73bf4",
+      "primaryGoalId": "c74d0c7e-44e2-46ab-8f95-b8dc45fcfae7",
+      "decision": "ACCEPT_CONTENT",
+      "read": {
+        "ordinaryDEEN": true,
+        "fullProfileDEEN": true,
+        "actualTaskSolutionDEEN": true,
+        "actualRuntimeRubricBlockIds": [
+          "growth-table-parameters",
+          "decay-term-transfer"
+        ],
+        "requiredPExpectationIds": [
+          "parameters-from-equation-and-values",
+          "parameters-have-contextual-meaning"
+        ]
+      },
+      "independentMathematics": "b=f0=50,a=60/50=1.2,f2=72. Second120·(.75)²=67.5, currentrelative loss25% perhour.",
+      "independentDemonstrations": "Parameterreconstructionfromgrowthdata versus interpretationofdecayterm.",
+      "writtenWeakCounteranswerDE": "f=50·1.2^t,Start50,Zuwachs20%täglich,Probe72. B(0)=120,B(2)=67.5. DerFaktor.75bedeute75%VerlustproStunde.",
+      "deskGrading": "decay-term-transfer≤2; total≤6/8<7.",
+      "fairAlternativeDE": "20% kann als Faktor6/5,25%Verlust als Faktor3/4 formuliertwerden; Zeit- undMengeneinheiten müssen ausdemjeweiligenKontext klarbleiben.",
+      "findingIds": []
+    },
+    {
+      "index": 29,
+      "taskId": "6f4d30a4-2e49-5281-8c50-233efb402a09",
+      "primaryGoalId": "3c1d6ce7-099e-4267-9ff2-3d1526209a89",
+      "decision": "ACCEPT_CONTENT",
+      "read": {
+        "ordinaryDEEN": true,
+        "fullProfileDEEN": true,
+        "actualTaskSolutionDEEN": true,
+        "actualRuntimeRubricBlockIds": [
+          "exact-simple-values",
+          "digital-approximation-transfer"
+        ],
+        "requiredPExpectationIds": [
+          "logarithm-is-inverse-exponent",
+          "tool-value-is-checked-by-definition"
+        ]
+      },
+      "independentMathematics": "3⁴=81,2^(−3)=1/8. ln7/ln2=2.807354922, and4<7<8gives2<log2(7)<3. Base1cannotinvert1^x; negativeargumentoutsidepositiveexponentialrange.",
+      "independentDemonstrations": "Exactpositive/negativeexponents versus digitalnonintegerapproximation and invaliddomain.",
+      "writtenWeakCounteranswerDE": "log3(81)=4weildrittePotenznotation3⁴=81;log2(1/8)=−3weil2^(−3)=1/8. Werkzeugwertlog2(7)≈2.807;4<7<8sichert2<log2(7)<3. log1(7)seidefiniertals7,log2(−7)seiauchnegativ.",
+      "deskGrading": "digital-approximation-transfer≤2; total≤6/8<7.",
+      "fairAlternativeDE": "Mehr oder weniger Dezimalstellen sind bei korrekterApproximation und Größenkontrolle zulässig; Basiswechsel ln/ln ist keine zusätzlichePflicht, wenn das Werkzeug direktlog₂ berechnet.",
+      "findingIds": []
+    },
+    {
+      "index": 30,
+      "taskId": "cb7142e0-f370-5f8b-b6c5-75f83d42a302",
+      "primaryGoalId": "3010d965-b9b9-4dc5-9d04-d706725e9a30",
+      "decision": "ACCEPT_CONTENT",
+      "read": {
+        "ordinaryDEEN": true,
+        "fullProfileDEEN": true,
+        "actualTaskSolutionDEEN": true,
+        "actualRuntimeRubricBlockIds": [
+          "same-first-step-different-law",
+          "decay-transfer"
+        ],
+        "requiredPExpectationIds": [
+          "difference-versus-ratio",
+          "graph-behaviour-from-change-rule"
+        ]
+      },
+      "independentMathematics": "A differences5;B ratios1.25,including31.25/25. Decayratios.8; differences−20,−16,−12.8. The straightline initialfit100−20t failsat2:60≠64.",
+      "independentDemonstrations": "Sameinitialstepbutdifferentgrowthlaw versus decayandgraphshapecomparison.",
+      "writtenWeakCounteranswerDE": "Alinearmit+5,Bexponentiellmit×1.25;dieerstenzweiWertealleinunterscheidennicht. BeimBestandseien100,80,64,51.2linear,weilalleWertekleinerwerden;ichzeichneeineGerade.",
+      "deskGrading": "decay-transfer≤2; total≤6/8<7.",
+      "fairAlternativeDE": "Ein verbal sauber erklärter Vergleich „fallend undabflachend“ gegenGerademitkonstanterDifferenz genügt, weil keine fertigenzweiGraphen zurAuswahl geliefert und kein eigenerSketch ausdrücklichverlangtwerden.",
+      "findingIds": []
+    },
+    {
+      "index": 31,
+      "taskId": "967e0b4a-8b18-541f-8ba0-2bc24982a470",
+      "primaryGoalId": "46bdcc16-418f-417a-89cf-033d7ae6c8cc",
+      "decision": "ACCEPT_CONTENT",
+      "read": {
+        "ordinaryDEEN": true,
+        "fullProfileDEEN": true,
+        "actualTaskSolutionDEEN": true,
+        "actualRuntimeRubricBlockIds": [
+          "ferris-wheel-height-graph",
+          "periodic-table-sine-transfer"
+        ],
+        "requiredPExpectationIds": [
+          "periodic-graph-features-have-meaning",
+          "simple-sine-cosine-description-matches-start-and-cycle"
+        ]
+      },
+      "independentMathematics": "Wheelmidline11,amplitude7,halfcycle6min→period12. Forwatercontinuousconsecutive risingcrossings0→8 establishT8 andsineπt/4; at10 gives1. Alias sin(5πt/4) matchesallfivesamples buthasT1.6 andextracycles, contradictingcontinuousobservation.",
+      "independentDemonstrations": "Maximumstartscaledwheelgraph versus rising-midlinewatertable withcontinuouscycleconstraint.",
+      "writtenWeakCounteranswerDE": "Riesenrad:h=11+7cos(πt/6),T12min,W[4,18],Werte18,11,4. Pegel:p=sin(πt/4),T8h,p(10)=1unterFortbestanddesZyklus. IchbegründeT8nurmitdenfünfStichprobenundignorieredieangegebeneDurchbeobachtung.",
+      "deskGrading": "periodic-table-sine-transfer≤2 ifperiodjustification rests solelyonfinite samples; total≤6/8<7.",
+      "fairAlternativeDE": "p(t)=cos(π(t−2)/4) ist dieselbeFunktion; negativeAmplitude mitpassenderPhase ebenfalls. Die explizite fortlaufendeBeobachtung schließtAliase korrekt aus; diealtenP-Beispieldatenallein nicht.",
+      "findingIds": []
+    },
+    {
+      "index": 32,
+      "taskId": "a8dfd3ce-7e43-560c-8ac1-c8b1ee7c5547",
+      "primaryGoalId": "82597dfb-0ec6-4a77-abaf-e1d6bdd12041",
+      "decision": "REVISE",
+      "read": {
+        "ordinaryDEEN": true,
+        "fullProfileDEEN": true,
+        "actualTaskSolutionDEEN": true,
+        "actualRuntimeRubricBlockIds": [
+          "five-sixths-pi-values",
+          "reflection-and-full-turn-properties"
+        ],
+        "requiredPExpectationIds": [
+          "unit-circle-coordinates-give-cosine-and-sine",
+          "circle-transformations-explain-properties"
+        ]
+      },
+      "independentMathematics": "5π/6=π−π/6 givescos=−√3/2,sin=.5. Reflection(.6,.8)→(.6,−.8) andfullturnreturns(.6,.8), provingeven/oddand2πperiodidentities geometrically.",
+      "independentDemonstrations": "Radianangle→unitcirclevalues and reflection/fullturn→generalproperties; owncircleconstruction omittedfromrubric.",
+      "writtenWeakCounteranswerDE": "5π/6liegtimzweitenQuadrantenmitBezugswinkelπ/6,also(cos,sin)=(−√3/2,1/2). FürP=(.6,.8)liegen−θbei(.6,−.8)undθ+2πwiederbei(.6,.8). Spiegelunganx-Achseerhältxundnegierty;Vollumkehrerhältbeide. Daher cos(−θ)=cosθ,sin(−θ)=−sinθundbeide2π-periodisch. EinenEinheitskreiszeichneoderkonstruiereichnicht.",
+      "deskGrading": "Literalblocks contain onlycoordinates/reasoning, allowing8/8 despiteexplicitlyaskedlearner-drawncircle. Procedural evidence mismatch; not a claim of actualgraderoutput.",
+      "fairAlternativeDE": "Eine grobe, klar bezeichneteKreisskizze mitRadianwinkel undeinordnungP/Spiegelbild genügt; keine perfekteZeichnung odernumerischeBestimmungvonθ erforderlich.",
+      "findingIds": [
+        "G32"
+      ]
+    },
+    {
+      "index": 33,
+      "taskId": "7b88b182-fcba-59dc-ba62-0fa3bfb7ebe2",
+      "primaryGoalId": "30c013ac-5164-4c3c-8bc1-9a10b2f49533",
+      "decision": "ACCEPT_CONTENT",
+      "read": {
+        "ordinaryDEEN": true,
+        "fullProfileDEEN": true,
+        "actualTaskSolutionDEEN": true,
+        "actualRuntimeRubricBlockIds": [
+          "positive-powers",
+          "reciprocal-and-constant-powers"
+        ],
+        "requiredPExpectationIds": [
+          "parity-and-sign",
+          "exponent-regime"
+        ]
+      },
+      "independentMathematics": "Forx²/ x³ signsandparityfollowmultiplication, valuesat−1,0,1give1,0,1versus−1,0,1. Reciprocals preserveparity butreversegrowthnearzero/large|x|;x⁰=1forx≠0 isevensignedconstant.",
+      "independentDemonstrations": "Positiveeven/oddpowers versusnegativeeven/oddpowersandexplicitzeroexponentdomain.",
+      "writtenWeakCounteranswerDE": "x²istnichtnegativundgerade,fälltbis0undsteigtdann;x³ungerade,strengsteigendmitVorzeichenvonx. Punktebei−1,0,1sind(1,0,1)beziehungsweise(−1,0,1). x⁻²positivgerade,x⁻³ungerade,nahe0großundfern0nah. h=x⁰=1;ichnehmeohneVereinbarungauch0⁰=1an.",
+      "deskGrading": "reciprocal-and-constant-powers≤2 forviolatingstateddomain; total≤6/8<7.",
+      "fairAlternativeDE": "Anschauliche Betrags- undKehrwertargumente genügen, keineDifferentialrechnung undkeineformalenGrenzwertnachweise. DieAufgabe setztgerade keineDefinitionvon0⁰ voraus.",
+      "findingIds": []
+    },
+    {
+      "index": 34,
+      "taskId": "acc08105-b740-5a7d-abe2-dca33991b16b",
+      "primaryGoalId": "5743b8f9-86cb-4e24-8859-351708d070ab",
+      "decision": "ACCEPT_CONTENT",
+      "read": {
+        "ordinaryDEEN": true,
+        "fullProfileDEEN": true,
+        "actualTaskSolutionDEEN": true,
+        "actualRuntimeRubricBlockIds": [
+          "three-points",
+          "equal-heights"
+        ],
+        "requiredPExpectationIds": [
+          "conditions-to-system",
+          "solve-explain-check"
+        ]
+      },
+      "independentMathematics": "Firstc1,a+b=−1,4a+2b=2; subtracttwicefirst gives2a4→a2,b−3. Secondc1,4a+2b=−4,and8a+2b=0givea1,b−4. Checks0,1,3and1,−3,−2 respectively; anonzero.",
+      "independentDemonstrations": "Threespecificpoints versus mixedpoint/equalheightconstraint, independentlinearsystems.",
+      "writtenWeakCounteranswerDE": "Fall1:c=1,a+b=−1,4a+2b=2;Subtraktionlieferta=2,b=−3;allePunkteerfülltund a≠0. Fall2behaupteichnurf=x²−4x+1mitWerten1,−3undf(1)=f(3)=−2;ichzeigeundbegründekeinGleichungssystem.",
+      "deskGrading": "equal-heights≤2; total≤6/8<7.",
+      "fairAlternativeDE": "Einsetz-, Additions-, Gauß- oderMatrixverfahren ist gültig. Andere Reihenfolgen derUnbekannten verändern die Leistung nicht; eine bloß gerateneParabel ersetzt dasverlangteSystemnicht.",
+      "findingIds": []
+    },
+    {
+      "index": 35,
+      "taskId": "5641d6c9-429d-5758-b9ba-3422b4f29950",
+      "primaryGoalId": "27b63e2e-6a34-483e-8e5a-fe0f49670d1d",
+      "decision": "REVISE",
+      "read": {
+        "ordinaryDEEN": true,
+        "fullProfileDEEN": true,
+        "actualTaskSolutionDEEN": true,
+        "actualRuntimeRubricBlockIds": [
+          "own-decay-data-variation",
+          "own-growth-data-long-horizon"
+        ],
+        "requiredPExpectationIds": [
+          "multiplicative-model-structure",
+          "coordinate-model-and-context",
+          "assumptions-and-limits"
+        ]
+      },
+      "independentMathematics": "Decay80·2^(−t/4), at6=20√2=28.2842712475; strict<10onlyt>12. Changedhalf-life5gives34.8220225318. Growthratios1.2,1.2,173/144≈1.2013889;100·1.2³=172.8,at10=619.17364224;1.1regime=259.37424601.",
+      "independentDemonstrations": "Decaythreshold/assumptionvariation versus approximategrowthdataandlonghorizonlimits.",
+      "writtenWeakCounteranswerDE": "M=80·2^(−t/4),M6≈28.284mg;M12=10mg,erstt>12darunter. Mit5h:34.822mg,langsamer. Eigeneskizzeab80,positivfallendabflachend. ZweiGrenzen:erneuteZufuhrundindividuellunterschiedlicherAbbau. Population:N=100·1.2^twegenQuotienten≈1.2;N3=172.8statt173,N10≈619.174. EigeneSkizzesteigt. Mit1.1:N10≈259.374. BegrenzterLebensraumverhindertbeliebiglang×1.2. IchzeichnekeinezweitezusätzlicheKurvefür1.1.",
+      "deskGrading": "Completefairanswer toaskedtwolimitsandrequestedownoriginalsketch; rubriclists4limitsand“bothsketches”, creatingpossiblefalsecorecap≤6/8 ratherthanfair8/8. No realLLMgradingclaimed.",
+      "fairAlternativeDE": "Beliebigezwei tragfähige konkreteGrenzen müssen reichen. Eine zweiteKurvefürdenvariiertenFaktor ist zulässig, jedoch ohnezusätzlichePromptpflicht nicht zwingend;VergleichderbeidenPrognosen ist erforderlich.",
+      "findingIds": [
+        "F35"
+      ]
+    },
+    {
+      "index": 36,
+      "taskId": "64dafd7e-2f33-5987-a927-181b1c5f529d",
+      "primaryGoalId": "78238608-aaaa-4d12-a9de-54f325e9cf6f",
+      "decision": "REVISE",
+      "read": {
+        "ordinaryDEEN": true,
+        "fullProfileDEEN": true,
+        "actualTaskSolutionDEEN": true,
+        "actualRuntimeRubricBlockIds": [
+          "compare-positive-growth-and-negative-decay-base",
+          "match-described-graph-to-one-parameter-pair",
+          "classify-degenerate-and-nondegenerate-cases",
+          "all-four-regimes"
+        ],
+        "requiredPExpectationIds": [
+          "parameters-determine-intercept-sign-range-and-asymptote",
+          "base-factor-and-sign-jointly-determine-monotonicity",
+          "graph-features-and-parameter-conditions-are-coherent"
+        ]
+      },
+      "independentMathematics": "For3·2^x positivestrictincreasing,range(0,∞),leftlimit0. For−2·.5^x negativebutincreasing,range(−∞,0),rightlimit0. h1=−4·3^x satisfiesfallingnegative/leftlimit0. pconstant5,q0,rnegativefalling,snegativebasenotrealallR. Fourregimes+,+→up;below1,+→down;above1,−→down;below1,−→up.",
+      "independentDemonstrations": "Atleast3casesplusall4regimes, but actualpairsketches notprotectedbyruntimeblock.",
+      "writtenWeakCounteranswerDE": "f:D=R,W=(0,∞),f0=3,strengsteigend,links0vonoben,rechts∞. g:D=R,W=(−∞,0),g0=−2,g(−1)=−4,g1=−1,strengsteigend,links−∞,rechts0vonunten. h1passt;h2hatfalschesVorzeichen,h3steigtundnähertsichrechts0. p=5,q=0konstant;r0=−.5,negativfallend,links0;sbeix=.5nichtreell. VierPaare:3→6auf,3→1ab,−3→−6ab,−3→−1auf,dennMultiplikationmitagewichtetVorzeichenvonb;letzterFallwiderlegtBehauptung. IchzeichnekeinenGraphen.",
+      "deskGrading": "Allstatedruntimecriteria canreceive4each=16/16, threshold15, withoutbothrequiredsketches. Actualgraphcoremissing;written deskcounterexample only.",
+      "fairAlternativeDE": "Handsketchesneedrecognizableintercepts,sideofaxis,monotonicityandcorrectasymptoticdirection. g neednotuseexactpoint−1ifotherpointsandshapeproveit. Optionaldigitalcheckmustremainoptional.",
+      "findingIds": [
+        "G36"
+      ]
+    },
+    {
+      "index": 37,
+      "taskId": "fe35c5da-c953-5f5e-b1a4-b0dce641a889",
+      "primaryGoalId": "0500f77f-8c12-5f7e-97b0-a75125eaa99b",
+      "decision": "ACCEPT_CONTENT",
+      "read": {
+        "ordinaryDEEN": true,
+        "fullProfileDEEN": true,
+        "actualTaskSolutionDEEN": true,
+        "actualRuntimeRubricBlockIds": [
+          "derive-cosine-expression-from-extrema",
+          "derive-and-compare-equivalent-phase-forms"
+        ],
+        "requiredPExpectationIds": [
+          "graph-features-determine-scale-and-period",
+          "phase-anchor-selects-and-checks-expression"
+        ]
+      },
+      "independentMathematics": "Graph1max5min−1 givesmidline2amplitude3,period4→ωπ/2. f=2+3cos(πx/2),midlineat1,3. Graph2midline−2,max1→A3,risingat1next5→T4;−2+3sin(π(x−1)/2)=−2+3cos(π(x−2)/2). ActualSVGpointsandturnsagree.",
+      "independentDemonstrations": "Extremumanchoredcosine versus rising-midlinephasesineandotherbasis.",
+      "writtenWeakCounteranswerDE": "ErsterGraph:f=2+3cos(πx/2),Mittellinie2,A3,T4,ωπ/2;Probe1,3liefert2,bei2−1. ZweiterGraph:g=−2+3sin(π(x−1)/2),A3,T4;ichgebealsangeblichgleichwertigenKosinus−2+3cos(π(x−1)/2)an.",
+      "deskGrading": "derive-and-compare-equivalent-phase-forms≤2 becausephasewrong; total≤6/8<7.",
+      "fairAlternativeDE": "ErsterGraphauch2+3sin(πx/2+π/2);zweiterauch−2−3cos(πx/2), mitkorrekterSinusformundgeprüftenStellen. DerTermistnichtdurcheinegewählteGrundfunktion eindeutig.",
+      "findingIds": []
+    },
+    {
+      "index": 38,
+      "taskId": "9dbb9fd3-a93f-53ca-82d6-bf0e0e16e9d9",
+      "primaryGoalId": "7f11ffe0-7c43-4507-9101-50374a60b0e8",
+      "decision": "REVISE",
+      "read": {
+        "ordinaryDEEN": true,
+        "fullProfileDEEN": true,
+        "actualTaskSolutionDEEN": true,
+        "actualRuntimeRubricBlockIds": [
+          "ferris-wheel-height-model",
+          "tide-baseline-shift-model-variation"
+        ],
+        "requiredPExpectationIds": [
+          "context-features-map-to-model-parameters",
+          "model-results-are-contextual-predictions",
+          "assumptions-control-validity-and-variation"
+        ]
+      },
+      "independentMathematics": "Wheelperiod40,A12,midline14,minstart gives14−12cos(πt/20);t10=14rising,t20=26max,min2. Water1=3.2+1.1sin(πt/6); t24+3kquarterperiods unchanged samevalues, all.3belowlaterobservations. Window2=3.5+1.1sin(π(t−24)/6), nooverlapwithwindow1. Gap12→24underdetermined.",
+      "independentDemonstrations": "Ownreal-contextwheelmodel and separatewaterbaselinevariation; firstmandatory2periodgraphnotprotected.",
+      "writtenWeakCounteranswerDE": "h(t)=14−12cos(πt/20),Grundniveau14m,Amplitude12m,Periode40s,StartimMinimum2m. h10=14maufsteigenderMittelliniendurchgang,h20=26mMaximum. IchlassedieSkizzeaus. Wasser:w1=3.2+1.1sin(πt/6)auf[0,12],prüft3.2,4.3,3.2,2.1,3.2. Unverändertbei24,27,30,33,36jedesmal.3munterdenneuenDaten. w2=3.5+1.1sin(π(t−24)/6)auf[24,36],selbeAmplitudeundPeriode. DieFensterhabenverschiedeneGrundniveaus;derVerlaufinderLückeundderZeitpunkteinesmöglichenWechselsistunbekannt,insbesonderekeinbelegterSprungbei12.",
+      "deskGrading": "Literalfirstblock4/4andsecond4/4permit8/8≥7withoutrequiredtwo-periodgraph. This is ownwrittendeskcounterexample, not real runtimegrading.",
+      "fairAlternativeDE": "Sinusform14+12sin(π(t−10)/20)istgleichwertig. BeideWassermodelledürfeninKosinusformangegebenwerden. EinbeliebigbehaupteterSprungbei12istnichtakzeptabel;eineausdrücklichalsAnnahmebezeichneteglatteLückeninterpolationistoptional.",
+      "findingIds": [
+        "G38"
+      ]
+    },
+    {
+      "index": 39,
+      "taskId": "9a42d9cd-2c17-514b-879e-2686b29d86f2",
+      "primaryGoalId": "e322310f-f33a-485d-bc23-2412a6b8fa12",
+      "decision": "ACCEPT_CONTENT",
+      "read": {
+        "ordinaryDEEN": true,
+        "fullProfileDEEN": true,
+        "actualTaskSolutionDEEN": true,
+        "actualRuntimeRubricBlockIds": [
+          "expand-and-refactor",
+          "incomplete-square-pattern"
+        ],
+        "requiredPExpectationIds": [
+          "selected-review-understanding"
+        ]
+      },
+      "independentMathematics": "Independentdistributiveproductfourterms4x²−6x−6x+9 gives4x²−12x+9. x²+6x+8=(x+3)²−1=(x+2)(x+4); twoexpansionsverifyidentitiesforallx.",
+      "independentDemonstrations": "Fullnegativebinomialdistributivederivationandreversefactorization versus incomplete-squareboundaryandtwoforms.",
+      "writtenWeakCounteranswerDE": "(2x−3)²=4x²−12x+9lautbinomischerFormel;ichkenne−2ab. Rückwärts(2x−3)². ZweiterFall:x²+6x+8=(x+3)²−1=(x+2)(x+4),prüfeAusmultiplizierenx²+6x+9−1undx²+4x+2x+8.",
+      "deskGrading": "expand-and-refactor≤2 withoutactualfour-productderivation; total≤6/8<7.",
+      "fairAlternativeDE": "Die allgemeineDistributivherleitung(a−b)(a−b) mit klarerEinsetzunga=2x,b=3 ist explizit erlaubt;eine vollständigeFlächendarstellung ebenfalls. EineauswendiggenannteFormelnicht.",
+      "findingIds": []
+    },
+    {
+      "index": 40,
+      "taskId": "0220bbbc-c51f-5f7c-92e6-9ea2598baf74",
+      "primaryGoalId": "66077296-a8f8-4645-938b-7c3424cb2f14",
+      "decision": "REVISE",
+      "read": {
+        "ordinaryDEEN": true,
+        "fullProfileDEEN": true,
+        "actualTaskSolutionDEEN": true,
+        "actualRuntimeRubricBlockIds": [
+          "square-root-from-formula",
+          "cube-root-from-partial-graph"
+        ],
+        "requiredPExpectationIds": [
+          "independent-review-a-understanding",
+          "independent-review-b-understanding"
+        ]
+      },
+      "independentMathematics": "Square-rootdomainx≥2,range≥1,endpoint(2,1); rootsmonotone sofunctionincreases. CubicradicaldefinedallR,rangeR,originshift(0,−2); missingleftpoints(−1,−3),(−8,−4), centralpoint symmetry about(0,−2). PartialSVGindeedshowsonlyx≥0.",
+      "independentDemonstrations": "Square-rootconstructfromformula andcube-rootcompleteactualclippedgraph; requiredconstructionnotexplicitlyprotected.",
+      "writtenWeakCounteranswerDE": "f:D=[2,∞),W=[1,∞),wegenx−2≥0undnichtnegativerWurzel. (2,1),(3,2),(6,3)liegenaufdemsteigendenGraphenmitRandpunkt(2,1). g:D=W=R,weilKubikwurzelalleReellenannimmt;strengsteigend,y-Achsenschnitt(0,−2),Graphsetztlinksfort. Ichzeichnef nichtunderweiteredenabgeschnitteneng-Graphennicht.",
+      "deskGrading": "Currentliteralbothblockscontainonlyfeature/pointdescriptionandcanaward8/8≥7; actualconstruction/completionPmissing. Deskcounterexample, notobservedgraderbehavior.",
+      "fairAlternativeDE": "Ersteskizze darfanderebegründetePunkte(11,4),(18,5)verwenden. DievervollständigteKubikwurzelmusstermgerechtenlinkenAstzeigen,z.B.(−1,−3),(−8,−4);esgibtkeinenneuenlinkenEndpunkt.",
+      "findingIds": [
+        "G40"
+      ]
+    },
+    {
+      "index": 41,
+      "taskId": "1a7fda7f-4ebf-5efc-9a74-c6372a9ab866",
+      "primaryGoalId": "eb28b403-f9fc-57ea-a793-b4555596fdd7",
+      "decision": "ACCEPT_CONTENT",
+      "read": {
+        "ordinaryDEEN": true,
+        "fullProfileDEEN": true,
+        "actualTaskSolutionDEEN": true,
+        "actualRuntimeRubricBlockIds": [
+          "transform-square-root",
+          "reconstruct-power-expression"
+        ],
+        "requiredPExpectationIds": [
+          "independent-review-a-understanding",
+          "independent-review-b-understanding"
+        ]
+      },
+      "independentMathematics": "h(x)=−2sqrt(x+3)+1 shiftsleft3,verticalstretch2,reflectx-axis,up1;Dx≥−3,Wy≤1. Reflectiony-axisandcompressionfactorc>1ofcube gives(−cx)³−2;factorunspecifiedbytask.",
+      "independentDemonstrations": "Radicalinner/outertransformations withdomainversusinverseconstructionfromcubegraphdescription.",
+      "writtenWeakCounteranswerDE": "Wurzelgraphnachlinks3,Streckung2,Spiegelunganx-Achse,nachoben1;D=[−3,∞),W=(−∞,1]. Kubischnehmeich(−2x)³−2,behaupteaberdasMinusaußerhalbdesTermsverschiebedenGraphenhorizontal.",
+      "deskGrading": "reconstruct-power-expression≤2 becauseparameterinterpretationwrong; total≤6/8<7.",
+      "fairAlternativeDE": "(−3x)³−2 ist ebenso passend wie(−2x)³−2, da keinStauchungsfaktor vorgegebenist. Das istkeineäquivalenteFunktion,sondern eineanderezulässigeAntwort. DieWorte„einmöglicherTerm“gebenfreieWahl;amBestenexplizitbestätigen.",
+      "findingIds": []
+    },
+    {
+      "index": 42,
+      "taskId": "7b27715c-c768-5bed-bf3e-94dacd905ee7",
+      "primaryGoalId": "c088fd81-fe4f-4282-99af-ebc0d1a7d202",
+      "decision": "ACCEPT_CONTENT",
+      "read": {
+        "ordinaryDEEN": true,
+        "fullProfileDEEN": true,
+        "actualTaskSolutionDEEN": true,
+        "actualRuntimeRubricBlockIds": [
+          "isolate-power",
+          "two-hour-observation"
+        ],
+        "requiredPExpectationIds": [
+          "inverse-exponent-and-check",
+          "time-unit-and-growth-threshold"
+        ]
+      },
+      "independentMathematics": "3·2^x15→2^x5→xln5/ln2=2.3219280949; RHSnegativeimpossible. Growththresholdt=2ln2.5/ln1.25=8.2125674390h; N8=97.65625,N10=122.0703125 sofirstallowed10h.",
+      "independentDemonstrations": "Prefactorpowerlogarithm/domainandgrowthcontextwithtwohourtimebase/discretethreshold.",
+      "writtenWeakCounteranswerDE": "3·2^x=15gibtnachDivisiondurch3x=log2(5)≈2.322,Probe15;negativesZielunmöglich. BeimWachstumt≈8.213hwegenFaktorje2h;ichrundeauf8hundnenne8halsersteBeobachtungmitmindestens100.",
+      "deskGrading": "two-hour-observation≤2; total≤6/8<7.",
+      "fairAlternativeDE": "log1.25(2.5)inAnzahlZweistundenschritte undanschließendmal2 istgleichwertig mitln-Quotient. DiskreteEntscheidungmussüberzulässigeNachbarzeiten8/10hgeprüftwerden.",
+      "findingIds": []
+    },
+    {
+      "index": 43,
+      "taskId": "e4462b8c-ed2f-5daf-98bf-bebd78bd7662",
+      "primaryGoalId": "aed3ca99-815b-40b8-ae91-e11bf92f51da",
+      "decision": "ACCEPT_CONTENT",
+      "read": {
+        "ordinaryDEEN": true,
+        "fullProfileDEEN": true,
+        "actualTaskSolutionDEEN": true,
+        "actualRuntimeRubricBlockIds": [
+          "doubling-levels",
+          "decimal-comparison-scale"
+        ],
+        "requiredPExpectationIds": [
+          "equivalent-exponential-logarithmic-statements",
+          "inverse-scale-context-and-domain"
+        ]
+      },
+      "independentMathematics": "2⁵=32↔log2(32)=5,2³=8↔log2(8)=3. 10^(−2)=.01↔log10(.01)=−2; ratiooneatstep0;negativequantitycannotbe10^real.",
+      "independentDemonstrations": "Doublingpositiveintegersteps versusdecimalscalenegativeexponentsanddomain.",
+      "writtenWeakCounteranswerDE": "FünfVerdopplungengeben32,also2⁵=32undlog2(32)=5;log2(8)=3bedeutetdreiVerdopplungen. AufderZehnerskalalog10(.01)=−2,also10^(−2)=.01;dieStufe−2bedeuteeinennegativenBestand. s0gehörtzuR1;R−1istunzulässig.",
+      "deskGrading": "decimal-comparison-scale≤2 becauseinterpretationnegativelevelwrong; total≤6/8<7.",
+      "fairAlternativeDE": "„ZweiZehnerstufennachunten“,„einHundertstel“ und„Faktor10zweimalinvertieren“sindgleichwertigepositiveVerhältnisdeutungen. KeinrealerphysikalischerSkalentypmusserfundenwerden.",
+      "findingIds": []
+    },
+    {
+      "index": 44,
+      "taskId": "cb567b03-b590-5ae9-9d1e-9864d02fb3af",
+      "primaryGoalId": "5d17ebb4-4e27-4f9c-8d0b-3520f34b2e11",
+      "decision": "ACCEPT_CONTENT",
+      "read": {
+        "ordinaryDEEN": true,
+        "fullProfileDEEN": true,
+        "actualTaskSolutionDEEN": true,
+        "actualRuntimeRubricBlockIds": [
+          "step-1",
+          "step-2",
+          "step-3",
+          "step-4",
+          "step-5",
+          "step-6",
+          "step-7",
+          "step-8"
+        ],
+        "requiredPExpectationIds": [
+          "base-functions-have-characteristic-periodic-features",
+          "sine-and-cosine-are-phase-shifted-not-identical"
+        ]
+      },
+      "independentMathematics": "Recomputedbothbasicfunctions at allquarterperiods on[−2π,4π]. Sinezeroskπ,maxπ/2+2kπ,min3π/2+2kπ; cosinezerosπ/2+kπ,max2kπ,minπ+2kπ. SVG/PNGnegativepartsareU=sin,V=cos. πfailsatπ/2forsineand0forcos;4πisnonleastperiod. V(x)=U(x+π/2),e.g.V(−π)=U(−π/2)=−1. Finite-pointcountercurve sinx+.1sin2x matchesallfivequarterperiodvaluesbutdiffersatπ/4.",
+      "independentDemonstrations": "Bothbasicsine/cosineown2periodgraphs plusindependentnegative-domainmislabeldiagnosisandowncompletion;fullPdemonstratedtwicewithchangedrepresentation/direction.",
+      "writtenWeakCounteranswerDE": "IchzeichneAkorrektüber[0,4π],nennefürbeide2πund[−1,1],alleNull-/Hoch-/Tiefstellenmit±1,jezweigültigeWiederholungspaare;πscheitertanGegenwerten,4πistPeriodenvielfaches. cosx=sin(x+π/2)istLinksverschiebung,geprüftbei0undπ/2. InBleseU(−3π/2)=1,U(−π/2)=−1,V(−π)=−1,V(−2π)=1,ordneU=sin,V=coszuundnennealleStellen/Phasenpaarerichtig. IchlassejedochdenrechtenGraubereichausdrücklichleer. GleichePeriodeerzwingtkeinegleichenNullstellen;fünfPunktebestimmeneineKurvenichteindeutig.",
+      "deskGrading": "step-6=0/2;evenallotherstepsfullgivemax14/16<15. Bothformulaonlyandonecasemissingfail. Oneisolatednonessentialmarkingslipmayreceive15/16andpass.",
+      "fairAlternativeDE": "cosx=sin(x−3π/2)istgleichwertig,mitSinusgraph3π/2nachrechts;allgemeinek-FormelnoderkorrekteIntervalllistenbeidegültig. HandskizzenmitklarenAchsen/StellenundglatterGrundformwerdenohneMaßstabsperfektionvollanerkannt. BeideechtenMaterialformatezeigendieselbenkorrektennegativenKurven.",
+      "findingIds": []
+    }
+  ],
+  "nonScope": [
+    "Stageview18seedrepair",
+    "Ordinary requires changes",
+    "dimensionTags/clusterdescription",
+    "Prior learner records and transfer",
+    "Public service replay and real LLM scoring",
+    "Human trials",
+    "Integration/main CI"
+  ]
+}

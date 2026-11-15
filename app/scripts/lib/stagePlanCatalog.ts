@@ -13,7 +13,7 @@ import { collectCompositionProjectionRoleGoalIds, compileCompositionView, type C
 import { normalizeCanonicalLandscape } from '../../src/utils/authoring/canonicalAuthoring'
 import {
   PLAN_COMPOSITION_SCHEMA, validateStagePlanCatalog,
-  type PlacementBasis, type PlanStage, type StagePlan, type StagePlanGoal,
+  type PlacementBasis, type PlanStage, type StagePlan, type StagePlanGoal, type StagePlanStructureBinding,
 } from '../../src/utils/stagePlan'
 
 export const STAGE_PLAN_CATALOG_SCHEMA = 'https://skillpilot.com/schemas/curriculum-package/v1.3/stage-plan-catalog.schema.json'
@@ -64,7 +64,7 @@ export interface StagePlanProjectionView {
   planIds: string[]
   sourceViewIds: string[]
   unitIds: string[]
-  structureBindings: { structureId: string; planUnitId: string; stage: PlanStage; order: number; after: string[] }[]
+  structureBindings: StagePlanStructureBinding[]
   placements: { goalId: string; planUnitId: string; stage: PlanStage; claims: StagePlanProjectionClaim[] }[]
   /** Support-node position grants neither a source claim nor a learning placement. */
   prerequisiteOnlyReferences: StagePlanProjectionClaim[]
@@ -194,14 +194,21 @@ function canonicalGoals(entries: readonly CurrentCatalogEntry[]) {
 }
 
 function legacyView(view: CompositionView, goals: ReadonlyMap<string, StagePlanGoal>): CompositionView {
-  const node = (value: CompositionViewNode): CompositionViewNode => value.kind === 'structure'
-    ? { kind: value.kind, id: value.id, label: value.label, children: value.children.map(node) }
-    : value.kind === 'canonicalSubtree' || value.kind === 'goalEntry'
+  const node = (value: CompositionViewNode): CompositionViewNode | undefined => {
+    if (value.kind === 'structure') {
+      const children = value.children.map(node).filter((child): child is CompositionViewNode => child !== undefined)
+      // A shared calendar unit may have no contribution from this subject.
+      // Keep its authority, but never fabricate content to satisfy legacy CPV-007.
+      if (!children.length && value.planUnitId) return undefined
+      return { kind: value.kind, id: value.id, label: value.label, children }
+    }
+    return value.kind === 'canonicalSubtree' || value.kind === 'goalEntry'
       ? { ...Object.fromEntries(Object.entries(value).filter(([key]) => key !== 'placementBasis')), goalId: goals.get(value.goalId)!.id } as CompositionViewNode
       : { ...value }
+  }
   const { planBinding: _binding, ...legacy } = view
   void _binding
-  return { ...legacy, $schema: LEGACY_COMPOSITION_SCHEMA, viewFormatVersion: '1.0', rootNodes: view.rootNodes.map(node) }
+  return { ...legacy, $schema: LEGACY_COMPOSITION_SCHEMA, viewFormatVersion: '1.0', rootNodes: view.rootNodes.map(node).filter((child): child is CompositionViewNode => child !== undefined) }
 }
 
 /** Production always loads the complete authoritative Gymnasium domain (21 roots).
@@ -328,10 +335,30 @@ function buildWithCanonicalCatalog(options: BuildOptions, entries: readonly Curr
     ensure(placements.every(placement => placement.claims?.length), `placement lacks authority claim: ${entry.viewId}`)
     indexViews.push({ viewId: entry.viewId, landscapeId: legacy.landscapeId, scope: legacy.scope, source: entry.source,
       artifact: { path: entry.outputPath, sha256: hash(content) }, planIds, sourceViewIds, unitIds: [...unitIds],
-      structureBindings: projected.rootNodes.map((node, order) => {
-        const unit = plan.units.find(candidate => candidate.id === node.planUnitId)!
-        return { structureId: String(node.id), planUnitId: unit.id, stage: unit.stage, order, after: [...unit.after] }
-      }), placements, prerequisiteOnlyReferences: support })
+      structureBindings: (() => {
+        const bindings: StagePlanProjectionView['structureBindings'] = []
+        const nested = plan.units.some(unit => unit.kind !== 'stage')
+        const emitted = new Set<string>()
+        const noteEmitted = (nodes: CompositionViewNode[]) => nodes.forEach(node => { if (node.kind === 'structure') { emitted.add(node.id); noteEmitted(node.children) } })
+        noteEmitted(legacy.rootNodes)
+        const collect = (nodes: CompositionViewNode[]) => nodes.forEach(node => {
+          if (node.kind !== 'structure') return
+          const unit = plan.units.find(candidate => candidate.id === node.planUnitId)
+          if (unit && emitted.has(node.id)) {
+            const siblings = unit.parentUnitId === plan.rootUnit.id ? plan.rootUnit.children
+              : plan.units.find(parent => parent.id === unit.parentUnitId)!.children!
+            bindings.push({ structureId: String(node.id), planUnitId: unit.id, stage: unit.stage,
+              order: siblings.indexOf(unit.id), after: [...unit.after], ...(nested ? {
+                kind: unit.kind, parentUnitId: unit.parentUnitId,
+                ...(unit.children ? { children: [...unit.children] } : {}),
+                ...(unit.year !== undefined ? { year: unit.year } : {}), ...(unit.phase ? { phase: unit.phase } : {}),
+              } : {}) })
+          }
+          collect(node.children)
+        })
+        collect(projected.rootNodes)
+        return bindings
+      })(), placements, prerequisiteOnlyReferences: support })
   }
   const canonicalSources = entries.map(entry => {
     const input = readSource(root, entry.path)

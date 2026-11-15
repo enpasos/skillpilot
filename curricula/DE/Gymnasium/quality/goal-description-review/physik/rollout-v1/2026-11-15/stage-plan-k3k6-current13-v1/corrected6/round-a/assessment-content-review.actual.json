@@ -1,0 +1,799 @@
+{
+  "schemaVersion": 1,
+  "status": "COMPLETED_GENUINE_INDEPENDENT_AI_CONTENT_REVIEW",
+  "reviewerId": "physics_corrected6_blind_d_a",
+  "runId": "physics-k3k6-correction-current6-20261115-first-pass-a",
+  "startedAtUtc": "2026-11-15T12:07:37Z",
+  "reviewAuthority": "ai_candidate",
+  "humanApproval": false,
+  "realLearnerTestsPerformed": false,
+  "hardwareExperimentsPerformed": false,
+  "scopeDe": "Vollständiger DE/EN-Vorher-/Nachher-Inhaltsreview dreier Assessment-Pakete; ce14 ist neu und hat keinen Vorher-Task. Keine Laufzeit-/Mastery-/Quellen-/Projektionsannahme und keine menschliche Freigabe.",
+  "scoringMethodDe": "Endliche logische Prüffälle gegen die tatsächlich gelesenen Kriterien. Vollständige Fälle sind konditionale Inhaltsbelege. Defizitfälle tragen großzügige ganzzahlige Obergrenzen (höchstens Kriteriumsmaximum minus 1 bei fehlender wesentlicher Leistung); die Rubrik bestimmt keine feinere Teilpunkteskala. Es werden keine realen Lernenden benotet. Da jeweils die volle Punktzahl zum Bestehen nötig ist, können fehlende Kern- oder Transferleistungen nicht kompensiert werden.",
+  "numericalFixturesAreSyntheticDeskReviewOnly": true,
+  "assessments": [
+    {
+      "assessmentId": "6345871e-eab4-59c1-a3b6-8456ab9bd7df",
+      "coveredGoalIds": [
+        "d67502e3-5e0a-595b-a24b-65b1c40de36e"
+      ],
+      "verdict": "ACCEPT_CONTENT",
+      "beforeAfterRead": true,
+      "deEnParity": "same added causal boundary in both task, solution, and criterion 6; original full A/B/C work retained",
+      "maxPoints": 32,
+      "passingPoints": 32,
+      "criterionOrder": [
+        "video_models_v2_1",
+        "video_models_v2_2",
+        "video_models_v2_3",
+        "video_models_v2_4",
+        "video_models_v2_5",
+        "video_models_v2_6",
+        "video_models_v2_7",
+        "video_models_v2_8"
+      ],
+      "cases": [
+        {
+          "id": "complete_A_B_C_with_bounded_unresolved_cause",
+          "scoreVector": [
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          "scoreTotal": 32,
+          "scoreIsConservativeUpperBound": false,
+          "passes": true,
+          "reasonDe": "Bedingt vollständige reale A/B-Artefakte, sämtliche Diagramme, Fits, Sensitivitäten und C-Auswertung; die Ursache bleibt datenbegründet offen und kontrollierte geometrische Zusatzinformation wird sinnvoll benannt. Die Korrektur erlaubt diese vollständige Antwort ohne dritte Messung."
+        },
+        {
+          "id": "all_numerical_work_but_no_real_A_or_B",
+          "scoreVector": [
+            3,
+            4,
+            3,
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          "scoreTotal": 30,
+          "scoreIsConservativeUpperBound": true,
+          "passes": false,
+          "reasonDe": "Selbst bei großzügiger voller Anerkennung aller übrigen Kriterien können die ausdrücklich realen Originalaufnahmen in Kriterium 1 und 3 nicht voll bewertet werden. C-Daten, Simulation oder erfundene Beispielzahlen ersetzen sie nicht."
+        },
+        {
+          "id": "omit_A_velocity_graph",
+          "scoreVector": [
+            4,
+            3,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          "scoreTotal": 31,
+          "scoreIsConservativeUpperBound": true,
+          "passes": false,
+          "reasonDe": "Das volle zweite Kriterium verlangt x(t) und v(t) aus derselben tatsächlichen Rohdatentabelle. Richtige Parameter und andere Teilaufgaben kompensieren das fehlende Diagramm nicht."
+        },
+        {
+          "id": "omit_one_B_component_graph",
+          "scoreVector": [
+            4,
+            4,
+            4,
+            3,
+            4,
+            4,
+            4,
+            4
+          ],
+          "scoreTotal": 31,
+          "scoreIsConservativeUpperBound": true,
+          "passes": false,
+          "reasonDe": "Das volle vierte Kriterium verlangt alle vier eigenen B-Diagrammprodukte; ein fehlendes v_y(t) bleibt auch bei richtigen Fits ein unvollständiger Kern."
+        },
+        {
+          "id": "omit_C_transfer",
+          "scoreVector": [
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            0,
+            0
+          ],
+          "scoreTotal": 24,
+          "scoreIsConservativeUpperBound": true,
+          "passes": false,
+          "reasonDe": "Fehlender unabhängiger numerischer Transfer erreicht höchstens 24/32; er kann nicht durch reale Aufnahmeleistungen ersetzt werden."
+        },
+        {
+          "id": "assert_perspective_cause_from_residuals_only",
+          "scoreVector": [
+            4,
+            4,
+            4,
+            4,
+            4,
+            3,
+            4,
+            4
+          ],
+          "scoreTotal": 31,
+          "scoreIsConservativeUpperBound": true,
+          "passes": false,
+          "reasonDe": "Ein eindeutiger Kausalanspruch ohne unabhängige Kontrolle erfüllt das ergänzte sechste Kriterium nicht. Das nachgerechnete Projektionsgegenbeispiel zeigt die Nichtidentifizierbarkeit."
+        },
+        {
+          "id": "another_unchecked_video_claimed_as_decisive_control",
+          "scoreVector": [
+            4,
+            4,
+            4,
+            4,
+            4,
+            3,
+            4,
+            4
+          ],
+          "scoreTotal": 31,
+          "scoreIsConservativeUpperBound": true,
+          "passes": false,
+          "reasonDe": "Eine weitere nicht geometrisch kontrollierte Aufnahme schließt dieselbe Verwechslung nicht aus. Die Behauptung einer eindeutigen Ursache verfehlt Kriterium 6."
+        },
+        {
+          "id": "harmless_isolated_copy_typo_with_all_evidence_intact",
+          "scoreVector": [
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          "scoreTotal": 32,
+          "scoreIsConservativeUpperBound": false,
+          "passes": true,
+          "reasonDe": "Ein folgenloser einmaliger Abschreibfehler in einer ergänzenden Notiz entzieht keine geforderte Kompetenz, wenn richtige Fits, Einheiten, Grafiken und Erklärung an anderer eindeutiger Stelle vorliegen. Die Kriterien werden inhaltlich bewertet; kein verbindliches Ergebnis wird durch den Fehler ersetzt."
+        },
+        {
+          "id": "unexpected_fitted_acceleration_with_honest_sensitivity",
+          "scoreVector": [
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          "scoreTotal": 32,
+          "scoreIsConservativeUpperBound": false,
+          "passes": true,
+          "reasonDe": "Ein unerwarteter echter a_y-Wert darf bei vollständig belegter Datenkette, Prüfung von Perspektive und Messgrenzen sowie begrenzter Schlussfolgerung bestehen. Die Lösung schreibt keine ideale g-Zahl für die eigene Aufnahme vor."
+        }
+      ]
+    },
+    {
+      "assessmentId": "fbaeed34-81a0-5955-9777-bf103002feee",
+      "coveredGoalIds": [
+        "d61ea362-f6c3-5eab-ac30-2d0e265ac0f6"
+      ],
+      "verdict": "ACCEPT_CONTENT",
+      "beforeAfterRead": true,
+      "deEnParity": "same supplied-calibration route in task, solution, and first criterion; own analysis and fresh real transfer retained",
+      "maxPoints": 14,
+      "passingPoints": 14,
+      "criterionOrder": [
+        "ph8_video_1",
+        "ph8_video_2",
+        "ph8_video_3"
+      ],
+      "cases": [
+        {
+          "id": "two_supplied_real_clips_and_checked_calibrations",
+          "scoreVector": [
+            4,
+            5,
+            5
+          ],
+          "scoreTotal": 14,
+          "scoreIsConservativeUpperBound": false,
+          "passes": true,
+          "reasonDe": "Persönlich ausgeführte Ortsmessung, maßstäbliche Vektoren und unabhängiger Richtungswechseltransfer genügen mit bereitgestellter geprüfter Kalibrierung vollständig. Eigene Aufnahme oder Kalibrierung ist ausdrücklich kein zusätzliches Kriterium."
+        },
+        {
+          "id": "invented_positions_without_real_clip",
+          "scoreVector": [
+            3,
+            5,
+            5
+          ],
+          "scoreTotal": 13,
+          "scoreIsConservativeUpperBound": true,
+          "passes": false,
+          "reasonDe": "Kriterium 1 verlangt zwei reale Artefakte; rein erfundene Positionen können es nicht voll erfüllen, selbst wenn die Vektorrechnung formal stimmt."
+        },
+        {
+          "id": "omit_second_clip",
+          "scoreVector": [
+            3,
+            5,
+            4
+          ],
+          "scoreTotal": 12,
+          "scoreIsConservativeUpperBound": true,
+          "passes": false,
+          "reasonDe": "Zwei neue reale Clips und unabhängiger Transfer fehlen; weder Kriterium 1 noch die vollständige Deutung des dritten Kriteriums kann voll sein."
+        },
+        {
+          "id": "equal_speed_so_delta_v_claimed_zero",
+          "scoreVector": [
+            4,
+            5,
+            4
+          ],
+          "scoreTotal": 13,
+          "scoreIsConservativeUpperBound": true,
+          "passes": false,
+          "reasonDe": "Die Betragsdifferenz null ist kein Vektoränderungspfeil. Bei den unten berechneten rechten Winkelrichtungen ist Δv=(-0,3;0,3) m/s ungleich null; Kriterium 3 bleibt unvollständig."
+        },
+        {
+          "id": "omit_graphical_delta_v",
+          "scoreVector": [
+            4,
+            5,
+            4
+          ],
+          "scoreTotal": 13,
+          "scoreIsConservativeUpperBound": true,
+          "passes": false,
+          "reasonDe": "Eine richtige mündliche Aussage ohne geforderte eigene grafische Konstruktion erfüllt Kriterium 3 nicht vollständig."
+        },
+        {
+          "id": "claim_midpoint_values_exact_for_arbitrary_motion",
+          "scoreVector": [
+            4,
+            5,
+            4
+          ],
+          "scoreTotal": 13,
+          "scoreIsConservativeUpperBound": true,
+          "passes": false,
+          "reasonDe": "Ein allgemeiner exakter Zeitpunktwert folgt aus den endlichen Intervallen nicht. Die fehlende Näherungsgrenze verhindert volle Punkte in Kriterium 3."
+        },
+        {
+          "id": "harmless_isolated_notation_slip",
+          "scoreVector": [
+            4,
+            5,
+            5
+          ],
+          "scoreTotal": 14,
+          "scoreIsConservativeUpperBound": false,
+          "passes": true,
+          "reasonDe": "Eine folgenlose einzelne falsche Buchstabenwiederholung in einer Notiz ist bei eindeutigen korrekten Vektoren, Zeiten, Skalen und physikalischer Interpretation kein fehlender Beherrschungsnachweis."
+        }
+      ]
+    },
+    {
+      "assessmentId": "04f643c6-74f5-56e9-a9c7-ea39ae98db31",
+      "coveredGoalIds": [
+        "ce14a7e7-7e2a-517f-a465-78ba3fbe414d"
+      ],
+      "verdict": "ACCEPT_CONTENT",
+      "beforeAfterRead": true,
+      "beforeState": null,
+      "deEnParity": "same two personal real investigations, fixed relaxed models, whole-range interval condition, own controls, far limit, and fair unexpected-result treatment",
+      "maxPoints": 20,
+      "passingPoints": 20,
+      "criterionOrder": [
+        "a-own-setup",
+        "a-own-raw",
+        "a-prediction",
+        "a-comparison",
+        "b-changed-own-setup",
+        "b-own-raw",
+        "b-prediction-comparison",
+        "b-far-limit",
+        "uncertainty-controls",
+        "model-boundary"
+      ],
+      "cases": [
+        {
+          "id": "two_complete_personal_executions",
+          "scoreVector": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "scoreTotal": 20,
+          "scoreIsConservativeUpperBound": false,
+          "passes": true,
+          "reasonDe": "Zwei bedingt tatsächlich ausgeführte eigene Fälle mit vollständigen neuen Rohdaten, festem Netzhautbezug, Modellvergleich und Fernobjektgrenze erfüllen alle zehn Kriterien."
+        },
+        {
+          "id": "plan_simulation_or_supplied_example_only",
+          "scoreVector": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            2,
+            1,
+            1
+          ],
+          "scoreTotal": 11,
+          "scoreIsConservativeUpperBound": true,
+          "passes": false,
+          "reasonDe": "Ohne eigene Ausführung fehlen eigene Aufbauten, persönliche Schärfesuchen und echte Mess-/Modellvergleiche. Selbst sehr großzügige Teilpunkte plus theoretisch richtiger Fernobjektgrenze ergeben nur 11/20."
+        },
+        {
+          "id": "A_complete_B_copied_or_supplied",
+          "scoreVector": [
+            2,
+            2,
+            2,
+            2,
+            1,
+            1,
+            1,
+            2,
+            2,
+            2
+          ],
+          "scoreTotal": 17,
+          "scoreIsConservativeUpperBound": true,
+          "passes": false,
+          "reasonDe": "Eine nicht selbst eingestellte B-Bedingung und kopierte oder gelieferte B-Rohwerte verhindern volle Punkte in Kriterien 5–7. Andere Leistungen können die fehlende zweite Durchführung nicht kompensieren."
+        },
+        {
+          "id": "omit_A_comparison",
+          "scoreVector": [
+            2,
+            2,
+            2,
+            1,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "scoreTotal": 19,
+          "scoreIsConservativeUpperBound": true,
+          "passes": false,
+          "reasonDe": "Ohne begründeten eigenen Mess-/Modellvergleich kann das vierte Kriterium nicht voll sein."
+        },
+        {
+          "id": "omit_B_far_object_limit",
+          "scoreVector": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            1,
+            2,
+            2
+          ],
+          "scoreTotal": 19,
+          "scoreIsConservativeUpperBound": true,
+          "passes": false,
+          "reasonDe": "Die neue optische Bedingung allein beweist keine Weitsichtigkeit; der verpflichtende Fernobjekt-Grenzfall ist Teil des achten Kriteriums."
+        },
+        {
+          "id": "invalid_finite_interval_across_g_equals_f",
+          "scoreVector": [
+            2,
+            2,
+            1,
+            2,
+            2,
+            2,
+            2,
+            2,
+            1,
+            2
+          ],
+          "scoreTotal": 18,
+          "scoreIsConservativeUpperBound": true,
+          "passes": false,
+          "reasonDe": "Ein über eine Nennernullstelle erstrecktes endliches Vorhersageband ist mathematisch falsch und verfehlt sowohl begründete Vorhersage als auch Unsicherheitskontrolle. Eine geeignete neue tatsächliche Kontrolle/Neueinstellung bleibt erforderlich."
+        },
+        {
+          "id": "honestly_unresolved_position_after_actual_targeted_control",
+          "scoreVector": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "scoreTotal": 20,
+          "scoreIsConservativeUpperBound": false,
+          "passes": true,
+          "reasonDe": "Bedingt vollständig eigene Daten plus dokumentierter tatsächlich ausgeführter gezielter Kontrollschritt können die Lagezuordnung weiterhin offenlassen. Kriterium 4 und die Lösung erlauben diese begrenzte Schlussfolgerung ausdrücklich; ein gewünschtes Resultat ist nicht erforderlich."
+        },
+        {
+          "id": "unexpected_measurement_with_actual_control_and_bounded_conclusion",
+          "scoreVector": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "scoreTotal": 20,
+          "scoreIsConservativeUpperBound": false,
+          "passes": true,
+          "reasonDe": "Ein unerwarteter tatsächlicher Bildort wird mit vollständigen eigenen Daten, Kontrolle und ehrlichem Vorhersage-/Messvergleich bewertet. Keine passende Zahl und keine eindeutig erfundene Fehlerursache wird gefordert."
+        },
+        {
+          "id": "harmless_isolated_arithmetic_or_notation_slip",
+          "scoreVector": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "scoreTotal": 20,
+          "scoreIsConservativeUpperBound": false,
+          "passes": true,
+          "reasonDe": "Die Lösung erlaubt isolierte folgenlose Schreib-/Rechenfehler ausdrücklich; alle geforderten eigenständigen Leistungen, der richtige Modellzusammenhang und die belastbare Schlussfolgerung bleiben nachweisbar."
+        },
+        {
+          "id": "interval_condition_initially_unmet_then_real_reset",
+          "scoreVector": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "scoreTotal": 20,
+          "scoreIsConservativeUpperBound": false,
+          "passes": true,
+          "reasonDe": "Die Singularitätsnähe wird erkannt, kein falsches endliches Band behauptet und eine tatsächlich neue geeignete Einstellung mit neuen Rohdaten dokumentiert. Das ist der ausdrücklich erlaubte Umgang mit der unzureichenden Ausgangslage."
+        }
+      ]
+    }
+  ],
+  "numericRecomputation": {
+    "lens": {
+      "unit": "mm",
+      "fixtures": [
+        {
+          "case": "A",
+          "unit": "mm",
+          "fRange": [
+            99,
+            101
+          ],
+          "gRange": [
+            995,
+            1005
+          ],
+          "retinaRange": [
+            119,
+            121
+          ],
+          "predictionRange": [
+            109.81788079470199,
+            112.41051454138703
+          ]
+        },
+        {
+          "case": "B",
+          "unit": "mm",
+          "fRange": [
+            99,
+            101
+          ],
+          "gRange": [
+            298,
+            302
+          ],
+          "retinaRange": [
+            79,
+            81
+          ],
+          "predictionRange": [
+            147.2807881773399,
+            152.78172588832487
+          ]
+        }
+      ],
+      "wholeRangeProof": "For b=fg/(g-f), db/df=g^2/(g-f)^2>0 and db/dg=-f^2/(g-f)^2<0 throughout a positive uncertainty rectangle with g_min>f_max. Thus the stated opposite corners bound the whole rectangle, not only sampled points. Independent 101 by 101 grids per case also satisfied the bounds.",
+      "exampleOwnReadingFixturesNotActualMeasurements": {
+        "A_readings": [
+          111,
+          111.5,
+          110.5
+        ],
+        "A_boundedMeasurement": [
+          109,
+          113
+        ],
+        "B_readings": [
+          150,
+          151,
+          149
+        ],
+        "B_boundedMeasurement": [
+          147,
+          153
+        ],
+        "A_retina": [
+          119,
+          121
+        ],
+        "B_retina": [
+          79,
+          81
+        ]
+      },
+      "farLimitCheck": "B: f in [99,101] mm lies behind the fixed retina [79,81] mm, so the relaxed-model hyperopia interpretation is not inferred from near-object blur alone.",
+      "singularityCounterexample": {
+        "fRange": [
+          90,
+          110
+        ],
+        "gRange": [
+          100,
+          120
+        ],
+        "conditionSatisfied": false,
+        "internalSingularity": {
+          "f": 105,
+          "g": 105
+        },
+        "proof": "f=105, g=105+epsilon stays in the box for arbitrarily small positive epsilon and b=105*(105+epsilon)/epsilon is unbounded; values with negative epsilon also occur. Opposite-corner arithmetic does not supply a finite enclosing interval."
+      },
+      "unresolvedFixtureNotActualMeasurement": {
+        "retinaAfterControl": [
+          111.2,
+          112.2
+        ],
+        "focusAfterControl": [
+          110.7,
+          112.0
+        ],
+        "conclusion": "Intervals still overlap; without more resolving evidence the sign of defocus remains unresolved. Full credit is conditional on the task-required actual own control, not this numeric illustration."
+      }
+    },
+    "velocityArrows": {
+      "unit": "m/s",
+      "scaleMetersPerPixel": 0.001,
+      "windowSeconds": 0.1,
+      "firstClipDisplacementsPx": [
+        [
+          30,
+          0
+        ],
+        [
+          0,
+          40
+        ]
+      ],
+      "firstClipVelocities": [
+        [
+          0.3,
+          0
+        ],
+        [
+          0,
+          0.4
+        ]
+      ],
+      "firstClipDeltaV": [
+        -0.3,
+        0.4
+      ],
+      "firstClipDeltaVMagnitude": 0.5,
+      "freshEqualSpeedClipDisplacementsPx": [
+        [
+          30,
+          0
+        ],
+        [
+          0,
+          30
+        ]
+      ],
+      "freshEqualSpeedVelocities": [
+        [
+          0.3,
+          0
+        ],
+        [
+          0,
+          0.3
+        ]
+      ],
+      "freshEqualSpeedDeltaV": [
+        -0.3,
+        0.3
+      ],
+      "freshEqualSpeedDeltaVMagnitude": 0.4242640687119285,
+      "interpretation": "Given checked calibration is enough to construct all arrows. The actual required real frames must support these quantities; these illustrative coordinates alone are not an artifact."
+    },
+    "videoSyntheticC": {
+      "timesSeconds": [
+        0.0,
+        0.1,
+        0.2,
+        0.3,
+        0.4,
+        0.5,
+        0.6,
+        0.7,
+        0.8
+      ],
+      "linearX_A_B": [
+        0.2005555555555551,
+        1.8499999999999999
+      ],
+      "quadraticY_C_D_E": [
+        4.5008181818181825,
+        -0.29998917748917764,
+        -4.903138528138528
+      ],
+      "ay": -9.806277056277056,
+      "xResiduals": [
+        0.004444444444444917,
+        -0.005555555555555092,
+        0.004444444444445028,
+        -0.005555555555555092,
+        0.004444444444444917,
+        -0.00555555555555487,
+        0.004444444444444917,
+        -0.005555555555555092,
+        0.004444444444444917
+      ],
+      "yResiduals": [
+        -0.0008181818181824951,
+        0.0032121212121207776,
+        -0.004694805194805696,
+        0.005461038961038334,
+        -0.00632034632034717,
+        0.004961038961037723,
+        -0.00569480519480603,
+        0.006712121212119948,
+        -0.002818181818182275
+      ],
+      "xIntervalVelocities": [
+        1.7499999999999998,
+        1.9500000000000006,
+        1.7499999999999998,
+        1.95,
+        1.7500000000000009,
+        1.9499999999999988,
+        1.7500000000000009,
+        1.9499999999999988
+      ],
+      "yIntervalVelocities": [
+        -0.7500000000000018,
+        -1.849999999999996,
+        -2.6500000000000017,
+        -3.850000000000001,
+        -4.6000000000000005,
+        -5.799999999999997,
+        -6.550000000000004,
+        -7.749999999999992
+      ],
+      "trackingVariants": [
+        {
+          "outerDeltaPx": 1,
+          "middleDeltaPx": -1,
+          "fit_C_D_E": [
+            4.505212121212122,
+            -0.3328896103896106,
+            -4.862012987012984
+          ],
+          "ay": -9.724025974025968
+        },
+        {
+          "outerDeltaPx": -1,
+          "middleDeltaPx": 1,
+          "fit_C_D_E": [
+            4.496424242424245,
+            -0.26708874458875087,
+            -4.944264069264062
+          ],
+          "ay": -9.888528138528123
+        }
+      ],
+      "B_scaleOnlyRange": [
+        1.8315,
+        1.8684999999999998
+      ],
+      "ay_scaleOnlyRange": [
+        -9.904339826839827,
+        -9.708214285714284
+      ],
+      "agreementWithSolution": true,
+      "sensitivityBoundary": "The requested finite variants are sensitivity examples, not global extrema over all pixels and not confidence intervals."
+    },
+    "videoCausalNonidentifiability": {
+      "modelOne": "True uniform X(t)=t observed under a fixed projective map u=X/(1+0.2X).",
+      "modelTwo": "Orthographic observation of actual motion X(t)=t/(1+0.2t), whose acceleration is -0.4/(1+0.2t)^3.",
+      "sameObservedCoordinates": [
+        0.0,
+        0.09803921568627451,
+        0.19230769230769232,
+        0.2830188679245283,
+        0.37037037037037035,
+        0.45454545454545453,
+        0.5357142857142857,
+        0.6140350877192983,
+        0.689655172413793
+      ],
+      "sameLinearFitResiduals": [
+        -0.01541303324096463,
+        -0.003456285541162729,
+        0.004729723093782473,
+        0.009358430724145828,
+        0.010627465183515317,
+        0.008720081372126931,
+        0.003806444554485422,
+        -0.003955221426974576,
+        -0.014417604718952481
+      ],
+      "conclusion": "Both generate exactly the same samples, fits and residuals. Residuals alone therefore cannot identify a perspective effect versus physical acceleration. A second unchecked video need not break this equivalence. Verified geometry/planar calibration or an independent motion measurement can supply discriminating information; naming appropriate control information is sufficient in this task."
+    }
+  },
+  "limitations": [
+    "Content review and analytical recomputation only; no actual learner submission, optical hardware, camera recording, runtime validation, or human approval.",
+    "Official source fidelity, compiled effective projection and national coverage are not established by raw applicability or sourceRef.",
+    "No prior reviewer result, sibling first pass, author counterexample verdict or root disposition was used as evidence. The supplied profile content was assessed on its merits; editorial reason metadata was not a judgment input."
+  ]
+}

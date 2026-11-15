@@ -1658,14 +1658,23 @@ class CompositionViewServiceTest {
                                 : "de-he-gym-sekii-physics-" + profile.toLowerCase(java.util.Locale.ROOT));
                 List<Map<String, Object>> roots = (List<Map<String, Object>>) match.get("rootNodes");
                 List<Map<String, Object>> stages = roots.stream()
-                        .filter(node -> "structure".equals(node.get("kind"))).toList();
+                        .filter(node -> "structure".equals(node.get("kind")) && "physics-root".equals(node.get("id"))).toList();
+                List<Map<String, Object>> outsideStage = flattenCompositionNodes(roots.stream()
+                        .filter(node -> !"physics-root".equals(node.get("id"))).toList());
+                assertThat(outsideStage).as(context + " references outside the stage remain support only")
+                        .filteredOn(node -> !"structure".equals(node.get("kind")))
+                        .allSatisfy(node -> assertThat(node).containsEntry("projectionRole", "prerequisiteOnly"));
                 assertThat(stages).as(context + " sole stage wrapper").singleElement().satisfies(stage -> {
                     assertThat(stage).containsEntry("id", "physics-root")
                             .containsEntry("labelEn", "Upper Secondary")
                             .containsEntry("label", "Sekundarstufe II ("
                                     + ("GK+LK".equals(profile) ? "GK + LK" : profile) + ")");
                     List<Map<String, Object>> children = (List<Map<String, Object>>) stage.get("children");
-                    assertThat(children).filteredOn(node -> "structure".equals(node.get("kind")))
+                    // Preparation assessments are an additional upper-stage
+                    // contribution. They do not replace or reorder the five
+                    // existing source-backed phase sections.
+                    assertThat(children).filteredOn(node -> "structure".equals(node.get("kind"))
+                                    && List.of("physics-e-phase", "physics-q1", "physics-q2", "physics-q3", "physics-q4").contains(node.get("id")))
                             .extracting(node -> node.get("id"))
                             .containsExactly("physics-e-phase", "physics-q1", "physics-q2", "physics-q3", "physics-q4");
                     List<Map<String, Object>> examEntries = children.stream()

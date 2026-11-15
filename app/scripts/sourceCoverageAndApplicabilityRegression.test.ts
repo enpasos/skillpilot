@@ -734,3 +734,35 @@ test('assessment, practice, examData, and chains through them fail closed', () =
   )
   assert.equal(coverage.hasCoverageBackedJurisdictionEvidence(start), false)
 })
+
+
+test('excluded assessment endpoints stay excluded during requires and explicit-basis refresh', () => {
+  const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
+  const catalog = getAllJsonFiles(resolve(repoRoot, 'curricula/DE/Gymnasium/canonical'))
+    .map(file => ({ file, landscape: JSON.parse(readFileSync(file, 'utf8')) as SkillLandscape }))
+  const physics = catalog.find(entry => entry.landscape.landscapeId === '7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a')!.landscape
+  const root = physics.goals.find(goal => goal.tags?.includes('root'))!
+  const prerequisite = 'e5bc2227-d900-585f-8ac0-9d3f1cb40e27'
+  const fixture = (id: string, excluded: boolean, explicitBasis: boolean): LearningGoal => ({
+    id, title: id, type: 'atomic', contains: [], requires: [prerequisite], tags: ['Practice', 'Assessment'],
+    extendedData: {
+      applicabilityFromRequires: true,
+      ...(excluded ? { applicabilityProjection: 'excluded' } : {}),
+      ...(explicitBasis ? { assessmentApplicabilityBasis: { kind: 'allOfGoalApplicability', goalRefs: [prerequisite] } } : {}),
+    },
+  }) as LearningGoal
+  const hidden = [fixture('fixture-excluded-requires-endpoint', true, false), fixture('fixture-excluded-basis-endpoint', true, true)]
+  const live = fixture('fixture-live-requires-endpoint', false, false)
+  physics.goals.push(...hidden, live)
+  root.contains!.push(...hidden.map(goal => goal.id), live.id)
+  const report = buildApplicabilityCompilation(catalog).reports.find(row => row.landscapeId === physics.landscapeId)!
+  const goals = new Map(report.goals.map(goal => [goal.goalId, goal]))
+  for (const endpoint of hidden) {
+    assert.deepEqual(goals.get(endpoint.id)!.compiledApplicability, {}, 'Excluded endpoints must not be resurrected by either derived predicate')
+    assert.deepEqual(goals.get(endpoint.id)!.evidence, [])
+  }
+  assert.deepEqual(goals.get(live.id)!.compiledApplicability, goals.get(prerequisite)!.compiledApplicability,
+    'Ordinary active assessment-requires derivation remains in force')
+  assert(goals.get(live.id)!.evidence.some(entry => entry.kind === 'assessment-requires'))
+  assert.equal(report.findings.filter(finding => finding.severity === 'error' && [...hidden, live].some(goal => goal.id === finding.goalId)).length, 0)
+})

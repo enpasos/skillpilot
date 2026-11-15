@@ -1,0 +1,48 @@
+{
+  "executedAt": "2026-11-15T13:03:12.835219+00:00",
+  "executions": [
+    {
+      "command": [
+        "javac",
+        "-cp",
+        "backend/build/classes/java/main:/home/enpasos/.gradle-ci/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-annotations/2.21/b1bc1868bf02dc0bd6c7836257a036a331005309/jackson-annotations-2.21.jar:/home/enpasos/.gradle-ci/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.21.4/56a503ba45016714394807ea89f95f5093760089/jackson-core-2.21.4.jar:/home/enpasos/.gradle-ci/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-databind/2.21.4/9e495680be707d466527d734368ebf36e464da2/jackson-databind-2.21.4.jar",
+        "-d",
+        "tmp/physics-current13-activation-work-20261115/unit-native-classes",
+        "backend/src/main/java/com/skillpilot/backend/completion/CompletionProfileCompiler.java",
+        "backend/src/main/java/com/skillpilot/backend/completion/CompletionEvaluator.java",
+        "tmp/physics-current13-activation-work-20261115/UnitTwoAssessmentProbe.java"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "java",
+        "-cp",
+        "tmp/physics-current13-activation-work-20261115/unit-native-classes:backend/build/classes/java/main:/home/enpasos/.gradle-ci/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-annotations/2.21/b1bc1868bf02dc0bd6c7836257a036a331005309/jackson-annotations-2.21.jar:/home/enpasos/.gradle-ci/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.21.4/56a503ba45016714394807ea89f95f5093760089/jackson-core-2.21.4.jar:/home/enpasos/.gradle-ci/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-databind/2.21.4/9e495680be707d466527d734368ebf36e464da2/jackson-databind-2.21.4.jar",
+        "UnitTwoAssessmentProbe",
+        "tmp/physics-current13-activation-work-20261115/unit-native-two-assessment.actual.json"
+      ],
+      "exitCode": 0,
+      "stdout": "Actual native two-assessment unit probe:4/4 cases pass; both real task results required.\n",
+      "stderr": ""
+    }
+  ],
+  "compiledActualCurrentSource": true,
+  "sourcePins": [
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/completion/CompletionProfileCompiler.java",
+      "sha256": "sha256:90d9b05e01432784c54fd3bc10619adaf1e74c017f1d8d86c2841596edc3b9f8"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/completion/CompletionEvaluator.java",
+      "sha256": "sha256:b878fb7b2d3257a37ec856c980f0cfb49a92930b8c56431fcd16d271e7c6f6fa"
+    },
+    {
+      "path": "tmp/physics-current13-activation-work-20261115/UnitTwoAssessmentProbe.java",
+      "sha256": "sha256:ce22279eba1172989ba0466d66c8365ce4a5e04d587d8e6b3985a5dacd3d58c4"
+    }
+  ],
+  "noLearnerDataOrServiceClaim": true
+}

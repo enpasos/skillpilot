@@ -107,22 +107,22 @@ const landscapes = [{
   semanticPath: 'curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json',
   idNamespace: 'DE-GYM-CANONICAL-PHYSICS',
   framework: 'canonical-gymnasium-physics',
-  // Three reviewed semiconductor atoms (77ab31a9, 9f265f49, dc55adac) were added on 2026-11-15.
-  curricularAtomicCount: 481,
+  // Three reviewed semiconductor atoms and four K3/K6 ordinary goals are current.
+  curricularAtomicCount: 485,
   // Physics cluster weights are authored workload weights, not counts of atomic descendants,
   // and Physics marks an assessment by its exam data alone; the projection adds the node kind.
   countedClusterWeights: false,
   examNodeKind: false,
   units: [{
     id: 'physics-constant-acceleration',
-    revision: '2026-11-13-v1',
+    revision: '2026-11-15-v2',
     label: 'Gleichmäßig beschleunigte Bewegung modellieren',
     labelEn: 'Modelling motion with constant acceleration',
     promise: 'Ich kann eine geradlinige Bewegung mit konstanter Beschleunigung selbstständig modellieren: Ich lege Achse und Vorzeichen fest, stelle Zeit-Ort- und Zeit-Geschwindigkeits-Gesetz mit den Anfangsbedingungen auf und beschreibe die Bewegung in Diagrammen. Ich kann sagen, welche Vereinfachungen das Modell macht und wo seine Vorhersagen enden. Darauf bauen der freie Fall im Experiment, Würfe in zwei Dimensionen, Kräfte und Energie auf.',
     promiseEn: 'I can model motion along a line with constant acceleration on my own: I fix axis and signs, set up the position and velocity laws with their initial conditions and describe the motion in diagrams. I can say which simplifications the model makes and where its predictions end. Free fall as an experiment, projectile motion in two dimensions, forces and energy build on it.',
     ownGoalIds: ['e4b38061-1f28-43ad-8371-a3e7c0e81856', 'd6dc0e02-831d-4894-a61a-852bcc74f147'],
-    reviewPath: `${reviews}/physics-constant-acceleration-2026-11-13.md`,
-    reviewDate: '2026-11-13',
+    reviewPath: `${reviews}/physics-constant-acceleration-2026-11-15-v2.md`,
+    reviewDate: '2026-11-15',
     sourcePath: `${assessments}/physik/e/constant-acceleration-unit-20261113-v1/tasks.md`,
     assessments: [{
       sectionKey: 'constant-acceleration-model',
@@ -140,7 +140,15 @@ const landscapes = [{
       guidingIdeas: ['LI_BEWEGUNG'],
       practiceClusterId: '424b07df-bf66-5d7f-99f5-f28b32ad1f22',
       requires: ['d6dc0e02-831d-4894-a61a-852bcc74f147'],
-      coveredGoalIds: ['e4b38061-1f28-43ad-8371-a3e7c0e81856', 'd6dc0e02-831d-4894-a61a-852bcc74f147'],
+      coveredGoalIds: ['d6dc0e02-831d-4894-a61a-852bcc74f147'],
+    }, {
+      // This full, independently content-reviewed current assessment already
+      // exists in the K3/K6 stream. Bind its exact task/rubric; never regenerate
+      // its content from a second copy or transfer a historical learner result.
+      existingGoalId: 'a8dc0290-9f80-5763-8943-e16b8d2aa860',
+      coveredGoalIds: ['e4b38061-1f28-43ad-8371-a3e7c0e81856'],
+      taskRevision: 'sha256:8a5ccaa3f596ace70e6a4dad6f644a2ddaa046be5f2c598a012a1ff40d9b17ef',
+      rubricRevision: 'sha256:62bf8143588daa963566318ada486cc4a189906d6a6b92d2e428ec8fe5383163',
     }],
   }],
 }]
@@ -208,6 +216,24 @@ for (const landscape of landscapes) {
     const coverageReviews = []
     const assessmentIds = []
     for (const declared of unit.assessments) {
+      if (declared.existingGoalId) {
+        const assessment = byId.get(declared.existingGoalId)
+        assert(assessment?.examData && assessment.type === 'atomic', `${unit.id}: missing existing assessment ${declared.existingGoalId}`)
+        assert(assessment.examData.reviewStatus === 'released', `${unit.id}: existing assessment is not released`)
+        assert.deepEqual(assessmentReviewRevisions(assessment), {
+          taskRevision: declared.taskRevision, rubricRevision: declared.rubricRevision,
+        }, `${unit.id}: existing assessment differs from its exact reviewed task/rubric`)
+        assert(declared.coveredGoalIds.every((id) => unit.ownGoalIds.includes(id)
+          && assessment.examData.coveredGoalIds.includes(id)), `${unit.id}: invalid existing assessment coverage`)
+        declared.coveredGoalIds.forEach(ordinary)
+        coverageReviews.push({ assessmentGoalId: assessment.id, goalIds: declared.coveredGoalIds,
+          reference: unit.reviewPath, ...assessmentReviewRevisions(assessment) })
+        assessmentIds.push(assessment.id)
+        report.push({ unitId: unit.id, unitRevision: unit.revision, assessmentId: assessment.id,
+          retainedExistingAssessment: true, maxPoints: assessment.examData.scoring.maxPoints,
+          passingPoints: assessment.examData.scoring.passingPoints, ...coverageReviews.at(-1) })
+        continue
+      }
       const hex = createHash('sha1').update(`${landscape.idNamespace}:${declared.shortKey}`).digest('hex')
       const assessmentId = `${hex.slice(0, 8)}-${hex.slice(8, 12)}-5${hex.slice(13, 16)}-8${hex.slice(17, 20)}-${hex.slice(20, 32)}`
       const { taskContent, solutionContent, scoring, sectionHash } = readSection(source, unit.sourcePath, declared)

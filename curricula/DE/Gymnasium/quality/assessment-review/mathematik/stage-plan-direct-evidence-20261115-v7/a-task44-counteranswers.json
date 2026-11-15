@@ -1,0 +1,251 @@
+{
+  "at": "2026-11-15T14:48:32.784416+01:00",
+  "taskId": "cb567b03-b590-5ae9-9d1e-9864d02fb3af",
+  "cases": [
+    {
+      "id": "omit-essential-step-1",
+      "type": "concrete weak answer",
+      "actualStepId": "step-1",
+      "answerPattern": "I supply the complete value tables and every later explanation but no learner-produced graphs for A.",
+      "independentContentJudgment": "Actual A explicitly requires two smooth labeled graphs over [0,4π]; values alone do not meet that demand.",
+      "qualification": "Every other required part is assumed fully and correctly supplied; this is a conditional written scoring witness, not an observed learner or server submission.",
+      "conditionalWrittenVector": [
+        0,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "sum": 14,
+      "passingPoints": 15,
+      "expectedDisposition": "FAIL"
+    },
+    {
+      "id": "omit-essential-step-2",
+      "type": "concrete weak answer",
+      "actualStepId": "step-2",
+      "answerPattern": "I give the correct sine features but state that cosine also has zeros at kπ.",
+      "independentContentJudgment": "The full features of both base functions are required. Cosine at 0 is1, so the claimed zero set is false.",
+      "qualification": "Every other required part is assumed fully and correctly supplied; this is a conditional written scoring witness, not an observed learner or server submission.",
+      "conditionalWrittenVector": [
+        2,
+        0,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "sum": 14,
+      "passingPoints": 15,
+      "expectedDisposition": "FAIL"
+    },
+    {
+      "id": "omit-essential-step-3",
+      "type": "concrete weak answer",
+      "actualStepId": "step-3",
+      "answerPattern": "I show sin0=sin2π and cos0=cos2π only, then infer periodicity from those single pairs.",
+      "independentContentJudgment": "The actual task and runtime description require two different pairs per function and the π/4π comparison. A single repeated value is explicitly insufficient.",
+      "qualification": "Every other required part is assumed fully and correctly supplied; this is a conditional written scoring witness, not an observed learner or server submission.",
+      "conditionalWrittenVector": [
+        2,
+        2,
+        0,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "sum": 14,
+      "passingPoints": 15,
+      "expectedDisposition": "FAIL"
+    },
+    {
+      "id": "omit-essential-step-4",
+      "type": "concrete weak answer",
+      "actualStepId": "step-4",
+      "answerPattern": "I write cos x=sin(x−π/2) and call this a left shift by π/2. Everything else is correct.",
+      "independentContentJudgment": "The displayed identity is negative cosine, not cosine; correct identity, direction and two supporting pairs are actual essential demands.",
+      "qualification": "Every other required part is assumed fully and correctly supplied; this is a conditional written scoring witness, not an observed learner or server submission.",
+      "conditionalWrittenVector": [
+        2,
+        2,
+        2,
+        0,
+        2,
+        2,
+        2,
+        2
+      ],
+      "sum": 14,
+      "passingPoints": 15,
+      "expectedDisposition": "FAIL"
+    },
+    {
+      "id": "omit-essential-step-5",
+      "type": "concrete weak answer",
+      "actualStepId": "step-5",
+      "answerPattern": "I correctly name U as sine and V as cosine but supply no two negative-domain readings or comparisons with the two candidate terms.",
+      "independentContentJudgment": "Both wrong labels must be diagnosed from two actual negative graph readings per curve. Correct names alone are explicitly insufficient.",
+      "qualification": "Every other required part is assumed fully and correctly supplied; this is a conditional written scoring witness, not an observed learner or server submission.",
+      "conditionalWrittenVector": [
+        2,
+        2,
+        2,
+        2,
+        0,
+        2,
+        2,
+        2
+      ],
+      "sum": 14,
+      "passingPoints": 15,
+      "expectedDisposition": "FAIL"
+    },
+    {
+      "id": "omit-essential-step-6",
+      "type": "concrete weak answer",
+      "actualStepId": "step-6",
+      "answerPattern": "I repeat the left-hand curves or their names but leave the gray right-hand areas blank.",
+      "independentContentJudgment": "Both right-hand continuations are actual independent drawing demands; the preprinted graph cannot replace them.",
+      "qualification": "Every other required part is assumed fully and correctly supplied; this is a conditional written scoring witness, not an observed learner or server submission.",
+      "conditionalWrittenVector": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        0,
+        2,
+        2
+      ],
+      "sum": 14,
+      "passingPoints": 15,
+      "expectedDisposition": "FAIL"
+    },
+    {
+      "id": "omit-essential-step-7",
+      "type": "concrete weak answer",
+      "actualStepId": "step-7",
+      "answerPattern": "I list all correct B features but merely refer to my phase explanation in A, with no independent negative-domain value pairs.",
+      "independentContentJudgment": "The B runtime block explicitly requires its own direction and two suitable negative value pairs. Correct A work does not replace this independent transfer.",
+      "qualification": "Every other required part is assumed fully and correctly supplied; this is a conditional written scoring witness, not an observed learner or server submission.",
+      "conditionalWrittenVector": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        0,
+        2
+      ],
+      "sum": 14,
+      "passingPoints": 15,
+      "expectedDisposition": "FAIL"
+    },
+    {
+      "id": "omit-essential-step-8",
+      "type": "concrete weak answer",
+      "actualStepId": "step-8",
+      "answerPattern": "I assert that any curve through the five sine values must be sine, even without the explicit basic-function restriction.",
+      "independentContentJudgment": "sin(5x) matches all five listed sine samples yet differs at π/4 and has extra oscillations. The finite-data inference is false; the stated restriction is essential.",
+      "qualification": "Every other required part is assumed fully and correctly supplied; this is a conditional written scoring witness, not an observed learner or server submission.",
+      "conditionalWrittenVector": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        0
+      ],
+      "sum": 14,
+      "passingPoints": 15,
+      "expectedDisposition": "FAIL"
+    },
+    {
+      "id": "fair-reverse-phase-description",
+      "type": "fair alternative",
+      "answerPattern": "I explain sin x=cos(x−π/2): move the cosine graph π/2 to the right to obtain sine. In B I check U(−π)=V(−3π/2)=0 and U(−π/2)=V(−π)=−1, together with all other required work.",
+      "independentContentJudgment": "Both negative pairs lie in the actually supplied interval. The reversed description expresses exactly the same relation and is expressly compatible with equivalent mathematical notation.",
+      "conditionalWrittenVector": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "sum": 16,
+      "passingPoints": 15,
+      "expectedDisposition": "PASS"
+    },
+    {
+      "id": "fair-whole-period-shift",
+      "type": "fair alternative",
+      "answerPattern": "For A I write cos x=sin(x−3π/2), moving sine right by3π/2, which is equivalent to left byπ/2 because of period2π. I check cos(3π/2)=sin0=0 and cos2π=sin(π/2)=1. I independently complete every B requirement.",
+      "independentContentJudgment": "The actual rubric permits equivalent shifts differing by whole periods. The exact identity and two characteristic values were checked independently.",
+      "conditionalWrittenVector": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "sum": 16,
+      "passingPoints": 15,
+      "expectedDisposition": "PASS"
+    },
+    {
+      "id": "fair-conditional-uniqueness",
+      "type": "fair alternative",
+      "answerPattern": "Among the explicitly allowed pair of basic functions, the two negative graph readings identify each function. Without that restriction, finite samples are insufficient: sin(5x) matches the five sine samples but differs from sin x atπ/4. This does not make sin(5x) an admissible assignment to the actual supplied U or V.",
+      "independentContentJudgment": "This distinguishes conditional uniqueness among the allowed candidates from the false unrestricted claim. It should receive full credit for B step8 when all other work is complete.",
+      "conditionalWrittenVector": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "sum": 16,
+      "passingPoints": 15,
+      "expectedDisposition": "PASS"
+    },
+    {
+      "id": "one-incidental-slip",
+      "type": "bounded tolerance control",
+      "answerPattern": "All essential mathematical content and all own graphs are supplied unambiguously. Exactly one incidental writing/drawing slip is independently identified as minor, and does not erase a named core.",
+      "independentContentJudgment": "The written rubric permits1 point for that block, leaving15. Harmless scale imprecision in a readable hand sketch is explicitly no error and must not be used as the supposed slip.",
+      "conditionalWrittenVector": [
+        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "sum": 15,
+      "passingPoints": 15,
+      "expectedDisposition": "PASS"
+    }
+  ],
+  "realLearnerOrServerGrades": 0
+}

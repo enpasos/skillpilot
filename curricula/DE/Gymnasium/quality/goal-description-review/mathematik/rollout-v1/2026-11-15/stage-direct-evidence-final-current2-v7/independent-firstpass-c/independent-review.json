@@ -1,0 +1,109 @@
+{
+  "reportType": "independent-content-review-not-native-activation",
+  "reviewer": "independent-first-pass-C",
+  "createdAtUtc": "2026-11-15T16:32:08.259241+00:00",
+  "createdAtEuropeBerlin": "2026-11-15T17:32:08.259493+01:00",
+  "firstPass": true,
+  "blindToOtherReviews": true,
+  "inputHashes": [
+    {
+      "role": "exclusive-current-content",
+      "path": "/home/enpasos/projects/skillpilot/tmp/math-v7-final-current2-activation-20261115/current-content-only.json",
+      "sha256": "b49dbdd220fde1618ec31888d8ee0bd799e90cadaa3c9265e158c8c023de7913"
+    },
+    {
+      "role": "actual-book-read-only-pages-3-and-4",
+      "path": "/home/enpasos/projects/skillpilot/tmp/math-v7-final-current2-activation-20261115/book-two-final.pdf",
+      "sha256": "761e376a368422acd916c967abb9327eae13b08c21a86dfef96c4479c995e10c",
+      "visuallyInspectedPhysicalPages": [
+        3,
+        4
+      ]
+    },
+    {
+      "role": "actual-original-image",
+      "goalId": "78238608-aaaa-4d12-a9de-54f325e9cf6f",
+      "path": "/home/enpasos/projects/skillpilot/app/public/assets/goal-visualizations/mathematik/78238608-aaaa-4d12-a9de-54f325e9cf6f/78238608-aaaa-4d12-a9de-54f325e9cf6f.jpeg",
+      "sha256": "233c09ed4ad912ee126557fb5bf58cbc16d9dfd78512277f36af7e7c20221fef",
+      "visuallyInspected": true
+    },
+    {
+      "role": "actual-original-image",
+      "goalId": "f76d00dc-6b31-59cd-b01a-3610eadc9908",
+      "path": "/home/enpasos/projects/skillpilot/app/public/assets/goal-visualizations/mathematik/f76d00dc-6b31-59cd-b01a-3610eadc9908/f76d00dc-6b31-59cd-b01a-3610eadc9908.jpg",
+      "sha256": "3a875467d089ea2b0a1c949eb158833e5e549f59745fa66eb75b1ac4d0cee42e",
+      "visuallyInspected": true
+    }
+  ],
+  "readBoundary": "Read only the authorized current-content-only.json, the two actual original images referenced there and the actual book physical pages 3/4. No neighboring inputs, author evidence, other reviews, canonical whole documents or native review inputs were opened. Neutral field names were supplied by the parent without findings or verdicts.",
+  "allDeclaredPrerequisiteTextsRead": 60,
+  "actualImageCountVisuallyInspected": 2,
+  "actualPdfPhysicalPagesVisuallyInspected": [
+    3,
+    4
+  ],
+  "nativeActivationPerformed": false,
+  "productOrGitWritesPerformed": false,
+  "limitations": "Der Bericht bewertet die bereitgestellten Inhaltsstände. Er aktiviert keine nativen Reviewdaten, ändert keine Lernziele, schreibt keine Mastery und belegt weder globale Curriculum-Gates noch Laufzeitbewertung, Quellenprüfung am Originalcurriculum oder CI.",
+  "overallVerdict": "PASS",
+  "goalReviews": [
+    {
+      "goalId": "78238608-aaaa-4d12-a9de-54f325e9cf6f",
+      "goalFingerprint": "sha256:a132b889da1543803a126a5ed255105b4a258fe18f2e4ef17230afbdfa4b0cd8",
+      "pageFingerprint": "sha256:c9ce28ff10a88de7a7066fdb35d8630b2b1eeec6893b95fd61d9bddd2f06ad4f",
+      "decision": "keep",
+      "verdict": "PASS",
+      "rationale": "Die Kompetenz bildet eine zusammenhängende, assessierbare Parameter-zu-Graph-Leistung. Die beiden direkten Vorbereitungen sichern Funktionswerte/Koordinaten und Potenzdarstellungen; ihre vollständige gelieferte Vorfahrenhülle ist aufgelöst und azyklisch. Das Profil unterscheidet alle vier Basis-/Vorzeichenregime, Zulässigkeit, konstante Randfälle, Achsenabschnitt, Wertebereich und Asymptotik. Die tatsächliche Prüfung verlangt termbasierte Begründungen, eigene Kurven, inverse Zuordnung, Randfalldiagnose, eine auf ganz R tragfähige Monotoniebegründung und einen gesonderten eigenen digitalen Parameterwechsel. Die fünf 4-Punkte-Blöcke bei 19/20 erlauben keine Kompensation eines fehlenden ausdrücklich verlangten Kerns. DE/EN sind fachlich und hinsichtlich digitaler Pflicht, Handskizzen und Bewertung gleichwertig. Originalbild und PDF-Seite 3 sind mathematisch korrekt und lesbar. Kein notwendiger Inhaltsänderungsbefund.",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Für a>0, a≠1 und b≠0 ist F(x)=b·a^x auf R definiert, besitzt den y-Achsenabschnitt b und den Wertebereich (0,∞) bei b>0 beziehungsweise (−∞,0) bei b<0. a ist der Multiplikationsfaktor für eine x-Einheit; |b| skaliert vertikal und ein negatives b spiegelt an der x-Achse. Deshalb bestimmen Basisregime und Vorzeichen gemeinsam die strenge Monotonie. y=0 wird nur in einer x-Richtung angenähert, deren Wahl vom Basisregime abhängt; b bestimmt die Annäherungsseite. a=1 oder b=0 erzeugen konstante Randfälle. Eine nichtpositive Basis liefert keine übliche reelle Exponentialfunktion auf ganz R.",
+        "essentialUnderstandingEn": "For a>0, a≠1 and b≠0, F(x)=b·a^x is defined on R, has y-intercept b and range (0,∞) for b>0 or (−∞,0) for b<0. The base a is the multiplication factor for one unit of x; |b| scales vertically and a negative b reflects the graph across the x-axis. Thus the base regime and coefficient sign jointly determine strict monotonicity. The graph approaches y=0 in one x-direction determined by the base regime, and b determines the side of approach. a=1 or b=0 give constant boundary cases. A nonpositive base does not give the usual real exponential function on all R.",
+        "observablePerformanceDe": "Die lernende Person kann neue positive und negative Vorfaktoren mit Basen über und unter 1 termbasiert untersuchen, Definitions- und Wertebereich, Achsenabschnitt, Monotonie sowie beide Endrichtungen erklären und passende eigene Graphen zeichnen. Sie prüft eine inverse Termzuordnung an allen verlangten Merkmalen und trennt konstante oder unzulässige Fälle. Eine Begründung für beliebige geordnete reelle Eingaben ersetzt bloße Stichproben. Zusätzlich erstellt und dokumentiert sie selbst eine geeignete digitale Grafik der ursprünglichen Funktionen und des Vorzeichenwechsels, kontrolliert Punkte und vergleicht ihre Beobachtungen mit der vorherigen mathematischen Begründung.",
+        "observablePerformanceEn": "The learner can investigate unfamiliar positive and negative coefficients with bases above and below 1 from the expressions, explain domain and range, intercept, monotonicity and both limiting directions, and draw suitable own graphs. The learner checks an inverse expression match against every requested feature and separates constant or inadmissible cases. Reasoning for arbitrary ordered real inputs replaces mere spot checks. The learner also produces and documents a suitable digital plot of the original functions and the coefficient-sign change, checks points, and compares the observations with the earlier mathematical reasoning.",
+        "transferExpectationDe": "Ein frischer Fall wie −5·(1/4)^x muss trotz Basis unter 1 als streng steigend unterhalb der x-Achse erkannt werden: F(0)=−5, F(1)=−5/4 und Annäherung an 0 von unten nach rechts. Bei −6·4^x müssen Fallrichtung und linke Annäherung an 0 zusammenpassen. Derselbe Faktor- und Vorzeichenzusammenhang trägt eine unbekannte inverse Zuordnung, eine andere sinnvolle digitale Fensterwahl und den Wechsel b→−b; ein endliches Bildschirmbild ersetzt den Grenzbeweis nicht.",
+        "transferExpectationEn": "A fresh case such as −5·(1/4)^x must be recognized as strictly increasing below the x-axis despite its base being below 1: F(0)=−5, F(1)=−5/4 and approach to zero from below to the right. For −6·4^x, strict decrease and approach to zero on the left must agree. The same factor-and-sign reasoning supports an unfamiliar inverse match, a different suitable digital window and the change b→−b; a finite screen display does not replace reasoning about limits."
+      },
+      "evidenceProfileRecommendation": "none",
+      "dimensionFindings": {
+        "fachlicheRichtigkeit": "PASS: Eigenes Differenzargument, exakte rationale Werte, Grenzrichtungen und Randfall-Gegenproben stimmen mit Aufgaben und Lösungen überein. Negative Vorfaktoren kehren numerische Monotonie um; negative Basen werden korrekt von ganz R ausgeschlossen.",
+        "atomarerZuschnittUndVorbereitung": "PASS: Ein gemeinsamer Parameter-zu-Graph-Kern trägt die Teilhandlungen einschließlich Kontrollvisualisierung. Die zwei direkten Voraussetzungen sind fachlich passend und nicht gegenseitig redundant; alle 52 gelieferten Vorfahren des Ziels sind aufgelöst und zyklusfrei. Neue Exponentialbegriffe und Grenzverhalten gehören zum Ziel selbst.",
+        "vollstaendigeAufgabenabdeckung": "PASS: Achsenabschnitt, Bereich, beide Endrichtungen und eigene Kurven in Block 1; inverse Merkmalskohärenz in 2; konstante und unzulässige Fälle in 3; alle vier Regime mit allgemeinem Argument in 4; tatsächliche digitale Kontrolle und b-Vorzeichenwechsel in 5. Unterschiedliche Beträge werden in Funktionswerten und Kurven korrekt angewandt. Das Profil-Praxisbeispiel mit optionaler digitaler Kontrolle hebt die ausdrückliche digitale Pflicht der tatsächlichen Assessment-Aufgabe nicht auf.",
+        "bestehensgrenzeUndAuslassungsresistenz": "PASS: 5×4=20, Bestehen ab 19. Ein fehlender ausdrücklich verlangter Kern führt höchstens zu 18; eine vollständig fehlende digitale Bearbeitung höchstens zu 16. Nur ein kleiner Fehler bei erkennbaren Kernen kann mit 19 bestehen. Dies ist eine Prüfung der schriftlichen Rubrik, keine Behauptung serverseitiger Teilminima.",
+        "sprachparitaetUndFaireAntworten": "PASS: DE/EN verlangen dieselben Kernleistungen und besitzen dieselben Wertungen. Andere richtige Kontrollpunkte, verständliche Handskizzen, passende Werkzeuge und Fenster sowie kombinierte oder separate digitale Nachweise sind gleichwertig. Bestimmte Beispielkoordinaten oder Exportgestaltung werden nicht zusätzlich verbindlich gemacht.",
+        "originalbildUndTatsaechlichePdfSeite": "PASS: Beide numerischen Bildkurven sind korrekt; PDF-Seite 3 zeigt die vollständige, lesbare Darstellung und die richtigen Ziel-/Voraussetzungstexte. Die Illustration mit positivem b ist eine Lernansicht, kein Ersatz für die eigenen negativen Prüfungsfälle."
+      }
+    },
+    {
+      "goalId": "f76d00dc-6b31-59cd-b01a-3610eadc9908",
+      "goalFingerprint": "sha256:d7867dcac02da264801c264084fdbe279eac32111ae4112162cbebe7da5fb1b9",
+      "pageFingerprint": "sha256:b244d2c33eedc15ae0f54f6b6f7de54388feb3389199bc16d1f695fc8da0589e",
+      "decision": "keep",
+      "verdict": "PASS",
+      "rationale": "Die Kompetenz ist eine zusammenhängende logische Leistung: den hinreichenden strengen Ableitungssatz korrekt anwenden und die falsche strenge Umkehrung mit einem gültigen Gegenbeispiel verwerfen. Die vorausgesetzten Ableitungsregeln haben über Änderungsraten und Funktionsgraphen eine fachlich geeignete, im Pack vollständig aufgelöste und azyklische Vorbereitung. Die tatsächliche Prüfung erfasst beide Vorzeichenrichtungen, Intervallvoraussetzungen, ein nichtzirkuläres strenges Ordnungsargument für x³, den Ableitungsnullpunkt, fehlendes Extremum sowie den negativen Transfer −x³. Kein ausdrücklich verlangter Kern kann bei 19/20 kompensiert werden. DE/EN sind gleichwertig. Originalbild und PDF-Seite 4 zeigen die korrekte strenge Nichtumkehrbarkeit. Kein notwendiger Inhaltsänderungsbefund.",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Für eine differenzierbare Funktion auf einem Intervall impliziert überall positives beziehungsweise negatives Ableitungsvorzeichen strenges Steigen beziehungsweise Fallen. Bei einem abgeschlossenen Intervall sichern Stetigkeit auf dem ganzen Intervall und Differenzierbarkeit im Inneren die Anwendung auf beide Endpunkte. Voraussetzung und Folgerung dürfen nicht vertauscht werden: Strenge Monotonie erlaubt an einzelnen Stellen die Ableitung 0. x³ und −x³ sind streng steigend beziehungsweise fallend, obwohl beide Ableitungen bei 0 verschwinden. Eine waagerechte Tangente erzwingt folglich auch kein lokales Extremum.",
+        "essentialUnderstandingEn": "For a differentiable function on an interval, an everywhere positive or negative derivative implies strict increase or decrease respectively. On a closed interval, continuity on the whole interval and differentiability in its interior support the conclusion including both endpoints. Premise and conclusion must not be reversed: strict monotonicity allows the derivative to be zero at individual points. x³ and −x³ are strictly increasing and decreasing respectively although both derivatives vanish at zero. A horizontal tangent therefore need not force a local extremum either.",
+        "observablePerformanceDe": "Die lernende Person formuliert beide hinreichenden Implikationen mit Intervallbezug, prüft die nötigen Voraussetzungen und wendet sie tatsächlich auf x² und −x² auf [1,3] an. Für beliebige x>y begründet sie unabhängig die strenge Ordnung x³>y³, nutzt f′(0)=0 zur ausdrücklichen Widerlegung der steigenden strikten Umkehrung und zeigt an beliebig nahen linken und rechten Funktionswerten das fehlende Extremum. Sie überträgt die Argumentation durch Vorzeichenumkehr auf −x³ und widerlegt auch die fallende strikte Umkehrung.",
+        "observablePerformanceEn": "The learner states both sufficient implications with the interval premise, checks the needed assumptions and actually applies them to x² and −x² on [1,3]. For arbitrary x>y, the learner independently justifies x³>y³, uses f′(0)=0 to explicitly refute the increasing strict converse, and shows the absence of an extremum with arbitrarily nearby values on both sides. The learner transfers the argument by sign reversal to −x³ and also refutes the decreasing strict converse.",
+        "transferExpectationDe": "Die Begründung muss Vorzeichenrichtungen und logische Richtung auch nach einer Spiegelung korrekt erhalten. Bei −x³ ist für x>y die Funktionsdifferenz negativ, während k′(0)=0 bleibt. Als weitere zulässige eigene Variation trägt etwa (x−2)³+4 denselben Nichtumkehrbarkeitsgrund mit waagerechter Tangente bei x=2. Eine einzelne Ableitungsnullstelle oder zwei isolierte Stichproben dürfen weder ein Extremum noch eine globale Monotonie begründen.",
+        "transferExpectationEn": "The reasoning must preserve the sign direction and logical implication correctly after reflection. For −x³, the function difference is negative when x>y while k′(0)=0 remains true. Another valid learner-generated variation is (x−2)³+4, with the same reason for the failure of the converse and a horizontal tangent at x=2. Neither a single derivative zero nor two isolated samples can establish an extremum or global monotonicity."
+      },
+      "evidenceProfileRecommendation": "none",
+      "dimensionFindings": {
+        "fachlicheRichtigkeit": "PASS: Q=x²+xy+y² ist bei x>y strikt positiv, da Q=((x+y)²+x²+y²)/2 nur für x=y=0 null wäre. Somit steigt x³ streng und −x³ fällt streng. Die Ableitungsnullstellen bei 0 widerlegen exakt die behaupteten strikten Umkehrungen; das allgemeine linke/rechte Vorzeichen widerlegt das lokale Extremum.",
+        "atomarerZuschnittUndVorbereitung": "PASS: Satzrichtung und zugehöriger Gegenbeispielschluss bilden einen gemeinsamen logischen Kern. Die direkten Ableitungsregeln sowie ihre 56 gelieferten Vorfahren bereiten Rechnen, Änderungsrate und graphische Monotonie vor; die Hülle ist aufgelöst und zyklusfrei. Die Zielprüfung darf die Intervall- und Stetigkeitsbedingungen innerhalb dieses Satzkontexts verlangen.",
+        "vollstaendigeAufgabenabdeckung": "PASS: Block 1 fordert Satzformulierung und tatsächliche positive wie negative Anwendung samt Stetigkeit, Differenzierbarkeit und Intervall; 2 verlangt eine nichtzirkuläre Begründung strengen Steigens; 3 den Nullpunkt und logischen Gegenbeispielschluss; 4 das fehlende Extremum; 5 den eigenständigen fallenden Transfer samt Ableitung und expliziter Nichtumkehrbarkeit. Ein bloßes Ablesen des illustrierten x³ genügt nicht.",
+        "bestehensgrenzeUndAuslassungsresistenz": "PASS: 20 Maximalpunkte und Bestehen ab 19; jede ausdrücklich genannte fehlende oder falsche Kernleistung deckelt ihren Block auf 2, so dass höchstens 18 verbleiben. Das gilt insbesondere für eine ausgelassene negative Satzrichtung oder den ausgelassenen fallenden Gegenbeispieltransfer. Ein unbehandelter Block lässt höchstens 16 übrig. Keine technische Laufzeitdurchsetzung wird behauptet.",
+        "sprachparitaetUndFaireAntworten": "PASS: Beide Sprachen verlangen dieselben Aussagen und Vorzeichenrichtungen. Die angebotene Faktoridentität ist ausdrücklich optional; gültige nichtzirkuläre Alternativbeweise sind gleichwertig. Vorzeichenumkehr von −f und negative Differenz sind derselbe fachliche Kern. Für das fehlende Extremum genügt ein allgemeines ε- oder Vorzeichenargument; keine festen Beispielzahlen sind Pflicht.",
+        "originalbildUndTatsaechlichePdfSeite": "PASS: Original und PDF-Seite 4 zeigen korrekt positive/negative Ableitung als hinreichend auf I sowie x³ mit waagerechter Tangente im Ursprung. Die Nichtumkehrbarkeit ist in der Kernaussage ausdrücklich auf strikt positive Ableitung bezogen. Der fallende Gegenfall wird durch die tatsächliche Aufgabe ergänzt."
+      }
+    }
+  ],
+  "requiredRevisions": [],
+  "technicalScopeNotes": [
+    "The complete source PDF hash is bound, but only physical pages 3/4 were visually read.",
+    "The JSON-declared canonical/native fingerprints were not independently rederived from prohibited source files.",
+    "The provided prerequisite subgraph has no unresolved endpoints or cycles; no statement about the whole live catalog follows.",
+    "The supplied sourceRef strings were read as provided. Official source documents were outside the authorized read scope."
+  ],
+  "evidenceFile": "independent-evidence.json"
+}

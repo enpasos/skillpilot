@@ -149,3 +149,15 @@ for (const [land, mathView, physicsView] of [['BY', 'de-by-gk', 'de-by-gk'], ['H
 
 console.log('Learner unit map preview passed: top-down steps, shared stage units, view order, learning units, '
   + 'other subjects untouched, real BY and HE views without contradictory declarations.')
+
+// Exact neutral structure IDs produced by CourseProfileCompositionViewMerger.java.
+const mergedIdViews = structuredClone(views)
+mergedIdViews[0].rootNodes[1].id = 'sek2-gk-lk'
+mergedIdViews[1].rootNodes[1].id = 'physics-sekii-gk-lk'
+const mergedInput = learnerTree(source, mergedIdViews)
+const mergedPreview = deriveLearnerUnitMapPreview(mergedInput, 1)
+assert.deepEqual([...mergedPreview.units.values()].map(unit => unit.key).sort(), ['sek1', 'sek1', 'sek2', 'sek2'])
+const mergedMap = buildLearnerUnitMapProjection({ ...mergedInput, units: mergedPreview.units, after: mergedPreview.after })
+assert.equal(mergedMap.entries[mergedMap.rootId].children!.filter(id => mergedMap.entries[id].kind === 'unit').length, 2, 'Native GK/LK merging still yields one shared upper stage.')
+assert.deepEqual([...source.flatMap(entry => entry.goals)].map(goal => [goal.id, goal.requires]),
+  [...input.canonicalGoalIndexAll.values()].map(goal => [goal.id, goal.requires]), 'The neutral-stage fix changes no actual atomic requirement.')

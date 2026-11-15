@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: Apache-2.0
 /** Static diagnosis on declared plans. This reports stage order, not source
  * fidelity, assessment quality, learner mastery or complete plan acceptance. */
+import { stagePlanLeafOrder, stagePlanUnitIds } from './stagePlanHierarchy'
 import {
   deriveStagePlanPreparation, validateStagePlanCatalog,
   type StagePlan, type StagePlanCatalog, type StagePlanFinding, type StagePlanGoal,
@@ -19,7 +20,7 @@ export interface StagePlanScopeDiagnosis {
   durationModel: string
   /** Profiles are selected independently for each subject. */
   subjectSelections: StagePlan['subjectViews']
-  units: { id: string; stage: string; after: string[]; targetCount: number; preparationCount: number }[]
+  units: { id: string; stage: string; after: string[]; targetCount: number; preparationCount: number; kind?: string; parentUnitId?: string; year?: number; phase?: string; directTargetCount?: number; directPreparationCount?: number }[]
   targetCount: number
   learningBasisCount: number
   preparation: { goalId: string; planUnitId: string; witnessPath: string[] }[]
@@ -107,7 +108,7 @@ export function diagnoseStagePlanLearningFlow(catalog: StagePlanCatalog): StageP
   const orderedAliases = new Map([...catalog.goals].map(([alias, goal]) => [alias, orderedGoals.get(goal.id)!]))
 
   for (const plan of [...validated.plansById.values()].sort((a, b) => compare(a.planId, b.planId))) {
-    const rank = new Map(plan.rootUnit.children.map((id, index) => [id, index]))
+    const rank = stagePlanLeafOrder(plan)
     for (const selected of selections(plan)) {
       const targets = new Map<string, string>()
       for (const subject of selected) {
@@ -152,11 +153,17 @@ export function diagnoseStagePlanLearningFlow(catalog: StagePlanCatalog): StageP
       result.scopes.push({
         planId: plan.planId, jurisdiction: plan.scope.jurisdiction, durationModel: plan.scope.durationModel,
         subjectSelections: selected.map(subject => ({ ...subject })),
-        units: plan.rootUnit.children.map(id => {
+        units: stagePlanUnitIds(plan).map(id => {
           const unit = plan.units.find(candidate => candidate.id === id)!
+          const descendants = new Set(stagePlanUnitIds(plan, [id]))
+          const nested = plan.units.some(candidate => candidate.kind !== 'stage')
           return { id, stage: unit.stage, after: [...unit.after],
-            targetCount: [...orderedTargets.values()].filter(value => value === id).length,
-            preparationCount: preparation.filter(item => item.planUnitId === id).length }
+            targetCount: [...orderedTargets.values()].filter(value => descendants.has(value)).length,
+            preparationCount: preparation.filter(item => descendants.has(item.planUnitId)).length,
+            ...(nested ? { kind: unit.kind, parentUnitId: unit.parentUnitId,
+              ...(unit.year !== undefined ? { year: unit.year } : {}), ...(unit.phase ? { phase: unit.phase } : {}),
+              directTargetCount: [...orderedTargets.values()].filter(value => value === id).length,
+              directPreparationCount: preparation.filter(item => item.planUnitId === id).length } : {}) }
         }),
         targetCount: orderedTargets.size, learningBasisCount: placements.size, preparation,
         directBackflows, transitiveBackflows,

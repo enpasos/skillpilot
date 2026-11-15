@@ -1,0 +1,5 @@
+import {readFileSync,copyFileSync} from 'node:fs'
+import {loadGoalBookBuildInputs,writeGoalBookModel} from '../../app/scripts/goalBookModel.ts'
+import {loadVerifiedPrerequisiteReductionContext} from '../../app/scripts/prerequisiteReductionProof.ts'
+import {writeGoalBookHtml} from '../../app/scripts/goalBookRenderer.ts'
+const mode=process.argv[2];if(!['before','after'].includes(mode))throw Error('before|after');const W='tmp/physics-two-assessments-integration-20261115-v1',proof=await loadVerifiedPrerequisiteReductionContext(),result=await loadGoalBookBuildInputs(W+'/book.config.json',process.cwd(),proof);await writeGoalBookModel(result.model,result.outputPath);copyFileSync(result.outputPath,W+'/book-model.'+mode+'.json');await writeGoalBookHtml(result.model,W+'/book.'+mode+'.html',{feedbackBaseUrl:'https://skillpilot.com/lernziel-feedback',publicRoot:process.cwd()+'/app/public'});console.log(JSON.stringify({mode,pages:result.model.pages.length,bookDigest:result.model.digest,html:W+'/book.'+mode+'.html'}))

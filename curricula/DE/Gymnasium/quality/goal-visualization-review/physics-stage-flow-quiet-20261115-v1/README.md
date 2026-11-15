@@ -1,0 +1,9 @@
+# Ruhige Physik-Lernbilder, 15. November 2026
+
+Stand: 15:48 MEZ. Neun tatsächlich erzeugte und betrachtete Lernillustrationen wurden über die vorhandene Importpipeline eingebunden. Der tatsächliche Provider ist **OpenAI / Codex image_gen**. Die bestehende freundliche, lockere Bildsprache bleibt erhalten; dekorativer Glitzer, Strahlen und flächige Hervorhebungsstreifen wurden nach dem Owner-Feedback entfernt.
+
+`visual-review-and-import.actual.json` bindet jedes aktuelle Bild, seinen tatsächlich verwendeten Prompt und das konkrete fachliche Urteil. Die generierten Originale sowie die normalisierten Ansichten in 360 und 680 Pixel Breite wurden tatsächlich angesehen. Die JPEG-Produktion erfolgt technisch in 1600×900; die andere Erweiterung erhält vorhandene JPEGs und PNGs. Die neun neuen Quellbilder umfassen zusammen rund 2,25 MB. Originale, Prompts und frühere Fehlversuche bleiben erhalten; ihre Entscheidungen stehen in `superseded-attempts.json`.
+
+Die zwölf vorhandenen Rasterdateien bleiben byteidentisch. Besonders die PNGs zu **77ab31a9** und **d8b2b349** dienen weiter als genaue Anschluss-/Aufgabenmaterialien; die neuen Konzeptillustrationen überschreiben diese Reize nicht. Frühere Prompt- und QA-Daten sind hier separat erhalten. Aktuelle Metadaten und Alttexte beschreiben die neuen Bilder und nennen den echten Provider.
+
+Die AI-Freigabe wurde nach der konkreten Sichtprüfung an die neuen Bytes gebunden. Dies ist eine eigene Bildprüfung durch Root und ausdrücklich keine vorgetäuschte unabhängige oder menschliche Abnahme. Die Darstellungen beweisen keine Lernleistung und ersetzen keine eigenen Versuche. Native Asset-/QA-Prüfungen, betroffene Goal-/Page-/Context-Bindungen und die vollständige Integration werden gesondert protokolliert; dieser Import ist noch kein abgeschlossener Main-Lieferumfang.

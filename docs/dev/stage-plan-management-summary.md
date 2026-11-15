@@ -23,16 +23,19 @@ CI-Nachweis gilt weiterhin für den benannten Implementierungscommit.
 
 ## Gesamtstand
 
-**Stand: 15. November 2026, 15:38 MEZ (UTC+01:00).**
+**Stand: 15. November 2026, 18:04 MEZ (UTC+01:00).**
 
 **Fortschritt: K 0/13 und F 0/7 vollständig abgeschlossen · 0 reale Landespläne
-aktiviert · Vorher-/Nachher-Messung der tatsächlichen Lernkarten läuft.**
-Die native Lernkartenberechnung bestätigt bereits neue Physikrückgriffe nach
-#157: Bayern 9 → 10, bundesweite Sicht 39 → 43. Diese Zahlen zählen fachliche
-Rückgriffsbeziehungen, nicht sichtbare Pfeile. Beide Nutzerscreenshots sind jetzt
-mit der tatsächlichen GK+LK-Zusammenführung exakt reproduziert: Physik 204/418,
-Mathematik 334/616 Ziele. Die Rückgriffsursachen sind erfasst; ihre Reparatur und
-die Abnahme der neuen Untereinheiten stehen aus.
+aktiviert · Letzter vollständig dokumentierter Zwischenstand: 4 direkte
+Rückgriffe in der kombinierten bundesweiten Lernkarte, gegenüber 41 am
+integrierten Ausgangsstand. Eine neue gemeinsame Messung ist noch offen.**
+Die beiden freistehenden Vektorknoten sind dort korrekt eingeordnet. Diese
+Messung umfasst Physik und Mathematik einschließlich fachübergreifender
+Abhängigkeiten; sie zählt Beziehungen, nicht sichtbare Pfeile. Die getrennte
+Kursmessung für #157 (Bayern 9 → 10, bundesweit 39 → 43) hat einen anderen
+Bezugsumfang und bleibt als Ausgangsbefund erhalten. Die vier verbleibenden
+Beziehungen, vollständige Qualitätsprüfung und Quellenprüfung der neuen
+Untereinheiten verhindern derzeit den Abschluss des Folgepakets.
 
 | Umfang | Stand und verbleibende Arbeit |
 | --- | --- |
@@ -44,6 +47,44 @@ die Abnahme der neuen Untereinheiten stehen aus.
 | F3, F4 | Offen: Lernkarte aus erklärten Planeinheiten und Einordnung notwendiger Vorbereitung. |
 | F7 | Zweisprachiger Normkandidat lokal umgesetzt und unabhängig geprüft; noch nicht integriert. |
 | F5 | Fachprüfung teilweise umgesetzt über K1/K2; der vollständige Befundbestand bleibt offen. |
+
+## 15. November 2026, 18:04 MEZ — Prüfbarer Zwischenstand für einen gemeinsamen Draft-PR
+
+**Stand: Lokale Umsetzung; ein einzelner Draft-PR wird mit diesem Stand
+angelegt. Nicht freigegeben und noch ohne frische CI für dieses Paket.**
+
+- **Fortschritt:** K 0/13 und F 0/7 vollständig abgeschlossen; 0 reale
+  Landespläne aktiviert. Der vorherige kombinierte Messstand betrug vier
+  direkte und 29 transitive Rückgriffsbeziehungen, ohne freistehende
+  Vorbereitungsknoten. Nach den weiteren Korrekturen fehlt die gemeinsame
+  Neumessung einschließlich der Untereinheiten; kein Nullbefund wird behauptet.
+- **Ergebnis und Entscheidungen:** Die Zusammenführung erhält jetzt den
+  ausdrücklich erklärten Lernplatz, wenn zuvor ein Vorbereitungshinweis
+  gelesen wurde. Der Planvertrag v1.3 unterstützt Jahrgänge sowie E/Q1–Q4.
+  Vertauschte Jahrgänge wurden als zusätzlicher Readerfehler reproduziert und
+  korrigiert. Die digitale Mathematikaufgabe verlangt jetzt tatsächlich
+  digitale Arbeit. Sechs partielle bayerische Quellenzuordnungen sind
+  unabhängig geprüft; amtlicher Quellenumfang und eigene Vorbereitung bleiben
+  ausdrücklich getrennt. Sieben weitere Physikaufgaben sind inhaltlich geprüft,
+  aber noch Kandidaten außerhalb des eingecheckten Curriculums.
+- **Kontrollstellen:** [Ausgangsbefund und Messgrenzen](stage-plan-real-view-backflows-2026-11-15.md),
+  [Planvertrag v1.3](https://github.com/enpasos/skillpilot/blob/main/contracts/curriculum-package/v1.3/README.md)
+  und die Aufgabe zur digitalen Exponentialfunktion
+  (`64dafd7e-2f33-5987-a927-181b1c5f529d`). Die zugehörigen zwei frischen,
+  voneinander unabhängigen Inhaltsreviews sind abgeschlossen.
+- **Nachweise und Grenzen:** [Lokale Prüfergebnisse und offene Abnahme](https://github.com/enpasos/skillpilot/tree/fix/stage-plan-next-delivery-20261115/contracts/stage-plan-review-evidence/2026-11-15/next-delivery-draft).
+  Alle 807 regulären Mathematikziele bestehen die sechs fachlichen
+  Qualitätskomponenten. Die gesamte aktuelle Mathematikbewertung bleibt
+  trotzdem auf M4: Bei 43 neuen Aufgaben fehlen ausdrückliche Angaben zu
+  Leitideen und Anforderungsbereichen. Die Sperre bleibt bestehen, bis diese
+  Angaben korrekt ergänzt und geprüft sind. Die aktuelle Backend-Regression
+  besteht nach frischer Kompilierung mit 153/153 Tests. Physik und die Quellenzuordnung
+  der echten Landespläne sind noch nicht vollständig abgenommen. Der grüne
+  Main-Nachweis unterhalb dieses Eintrags gilt ausschließlich für #157.
+- **Nächster Schritt:** Den gemeinsamen Draft sichtbar machen, die fehlenden
+  Metadaten und das Physikpaket integrieren, tatsächliche Rückgriffe erneut
+  messen und reale Landespläne quellengeprüft aktivieren. Erst nach vollständiger
+  Abnahme und grüner PR-CI folgen Merge und frische Main-CI.
 
 ## 15. November 2026, 15:38 MEZ — Abnahme an den tatsächlichen Lernkarten konkretisiert
 
@@ -83,14 +124,17 @@ integriert und seine frische Main-CI erfolgreich. Dieses Folgepaket ist offen.**
   nach dem nächsten Fachpaket vergleichen. Ein früherer Statusvergleich oder
   eine grüne CI ersetzt diesen Wirkungsnachweis nicht.
 
-## 15. November 2026, 15:18 MEZ — Lernbilder an die vorhandene Bildsprache anpassen
+## 15. November 2026, 15:59 MEZ — Lernbilder an die vorhandene Bildsprache anpassen
 
-**Stand: Pipeline geprüft, neue Bildentwürfe lokal erzeugt; noch nicht
-importiert oder freigegeben. Kein abgeschlossener Lieferumfang.**
+**Stand: Neun ruhige Endfassungen lokal importiert und durch den ausführenden
+Agenten fachlich und visuell geprüft; noch nicht auf main. Kein abgeschlossener
+Lieferumfang und keine menschliche Freigabe.**
 
 - **Fortschritt:** Neun neue aktive Physik-Lernbilder identifiziert: vier aus
-  #157 und fünf im folgenden lokalen Paket. Drei genaue Aufgabenabbildungen
-  und drei unveränderte bestehende Lernbilder sind getrennt erfasst.
+  #157 und fünf im folgenden lokalen Paket. Alle neun Ersatzbilder sind über
+  die bestehende Produktionspipeline importiert (zusammen rund 2,25 MB).
+  Zwölf ältere Rasterdateien sind bytegleich erhalten, darunter beide zugleich
+  als Aufgabenmaterial verwendeten PNGs. Deren Aufgabenverweise bleiben gleich.
 - **Ergebnis und Entscheidungen:** Die vorhandene Produktionspipeline mit
   explizitem Provider, tatsächlichem Prompt, Import und Bildprüfung wird
   verwendet. Nach dem aktuellen Owner-Feedback gilt eine ruhige, locker
@@ -98,18 +142,21 @@ importiert oder freigegeben. Kein abgeschlossener Lieferumfang.**
   Hervorhebungen. Zwei bisherige PNGs dienen zugleich als Aufgabenmaterial;
   ihre exakten Bytes und Aufgabenverweise werden erhalten.
 - **Kontrollstellen:** Materialvergleich, Dotierung und Bewegungsdiagramme;
-  Darstellung in 360 und 680 Pixel Breite; unveränderte Anschlusspläne der
-  beiden eigenen Transistorversuche.
+  Darstellung in 360 und 680 Pixel Breite; unveränderte Aufgabenmaterialien
+  der beiden eigenen Transistorversuche. Der konkrete Prüf- und Importbericht
+  liegt unter
+  `curricula/DE/Gymnasium/quality/goal-visualization-review/physics-stage-flow-quiet-20261115-v1/`.
 - **Nachweise:** Die unabhängige Bestandsaufnahme hat tatsächliche Bildlinks,
   Verbraucher und Stilreferenzen geprüft. Die bisherigen Bildentwürfe wurden
-  tatsächlich angesehen. Fachliche Bildfehler und zu kleine Beschriftungen
-  führten zu Korrekturen; erzeugte Bilder gelten nicht automatisch als geprüft.
-  Die ruhigen Endfassungen und ihre Produktionsbytes brauchen die abschließende
-  Inhalts- und Lesbarkeitsprüfung.
-- **Nächster Schritt:** Neun ruhige Endfassungen prüfen, über die vorhandene
-  Pipeline importieren und alle betroffenen Bild-, Seiten- und Fachbindungen
-  mit aktuellem Inhalt validieren. Die Gesamtverantwortung bleibt beim
-  ausführenden Agenten; eine externe Gemini-Übernahme ist derzeit nicht nötig.
+  tatsächlich angesehen. Der ausführende Agent hat anschließend alle neun
+  Endfassungen in beiden genannten Breiten gelesen und fachlich geprüft.
+  Asset-Check (2.575 Bildlinks), Physik-Bild-QA und Transparenzinventar bestehen
+  lokal; Quell-, Frontend- und Backend-JPEGs sind bytegleich. Dies ist eine
+  tatsächliche Eigenprüfung der Bilder, keine unabhängige Inhaltsfreigabe.
+- **Nächster Schritt:** Die betroffenen Lernzielbuch-Seiten und aktuellen
+  Fachreview-Bindungen validieren und das gesamte Paket durch die CI bringen.
+  Die Gesamtverantwortung bleibt beim ausführenden Agenten; eine externe
+  Gemini-Übernahme ist derzeit nicht nötig.
 
 ## 15. November 2026, 15:18 MEZ — Modellnorm für Stufenpläne vereinheitlicht
 

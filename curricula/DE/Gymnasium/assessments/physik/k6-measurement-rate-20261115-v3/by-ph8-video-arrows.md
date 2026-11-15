@@ -1,0 +1,36 @@
+# Prüfungsaufgabe: Geschwindigkeitspfeile in einem echten Bewegungsvideo konstruieren
+
+Autorenvorschlag, unabhängiges Review ausstehend. Eigene SkillPilot-Aufgabe, CC-BY-4.0.
+
+## Aufgabe
+
+Nimm mit einer feststehenden Kamera von oben ein kurzes Video auf, in dem ein flacher Gegenstand auf einer ebenen Fläche zuerst annähernd geradlinig und anschließend in eine andere Richtung bewegt wird. Lege ein Lineal oder ein kariertes Blatt in dieselbe Bewegungsebene. Notiere die tatsächliche Bildrate; falls sie variabel ist, verwende die tatsächlichen Zeitstempel. Ein vorgelegtes reales Video mit sichtbarer Längenskala und tatsächlichen Zeitangaben ist ebenso zulässig. Ein erfundenes Positionsprotokoll genügt nicht.
+1. Importiere das Video in eine geeignete Software und dokumentiere die Kalibrierung. Markiere für zwei kurze, gleich lange Zeitintervalle vor und nach dem Richtungswechsel jeweils denselben Punkt des Körpers und exportiere ein Bild mit den Markierungen. Vermeide Intervalle, die den Richtungswechsel selbst überdecken.
+2. Bestimme für jedes der beiden Intervalle die räumliche Verschiebung und die verstrichene Zeit. Konstruiere die beiden Geschwindigkeitspfeile als Verschiebungspfeil geteilt durch die Intervalllänge mit derselben eingezeichneten Pfeilskala. Gib Betrag und Bewegungsrichtung an.
+3. Trage die beiden Geschwindigkeitspfeile von demselben Anfangspunkt aus ab und konstruiere grafisch den Änderungspfeil vom Ende des ersten zum Ende des zweiten Pfeils. Deute ihn. Erkläre an deinen Messintervallen, weshalb die Pfeile zunächst Intervallgeschwindigkeiten und nur näherungsweise Geschwindigkeiten an den Intervallmitten darstellen. Benenne eine konkrete Fehlerquelle deines Videos.
+4. Wiederhole die Auswertung unabhängig an einem zweiten neuen realen Clip oder einer zweiten neuen echten Aufnahme: diesmal mit annähernd gleichem Geschwindigkeitsbetrag, aber anderer Bewegungsrichtung. Dokumentiere erneut Kalibrierung, beide Messfenster und Pfeile; erkläre an den tatsächlichen Pfeilen, warum der Änderungspfeil trotzdem ungleich null sein kann. Der zweite Clip darf vorgelegt sein, darf aber keine fertigen Geschwindigkeitspfeile oder Ergebnisse liefern.
+
+## Musterlösung und Auswertung
+
+Die Lösung muss das reale Video, tatsächliche Zeit- und Längenskala sowie zwei nachvollziehbare Ortsdifferenzen enthalten. Jeder Geschwindigkeitspfeil hat die Richtung der entsprechenden Ortsänderung und den Betrag Verschiebungslänge geteilt durch Zeitintervall. Die beiden Pfeile werden mit derselben Skala gezeichnet. Nach Verschieben auf denselben Anfangspunkt führt der Änderungspfeil von der Spitze des ersten zur Spitze des zweiten Geschwindigkeitspfeils; er beschreibt die Vektoränderung, nicht die zurückgelegte Strecke. Auch bei gleichem Geschwindigkeitsbetrag kann die Richtungsänderung einen nicht verschwindenden Änderungspfeil erzeugen. Die endlichen Messfenster liefern Mittelwerte; die Zuordnung zur Intervallmitte ist bei kurzen Fenstern und hinreichend gleichmäßiger Bewegung eine Näherung. Individuelle Werte werden am echten Artefakt geprüft. Perspektivfehler, Punktwahl, Zeitstempel oder Bildunschärfe werden konkret an der eigenen Auswertung erläutert. Ein formal passendes Zahlenbeispiel ohne reales Artefakt besteht nicht.
+Der zweite neue reale Clip wird getrennt ausgewertet. Gleiche Beträge genügen nicht für gleiche Geschwindigkeitsvektoren; bei verschiedener Richtung ist der Änderungspfeil nicht null. Die tatsächlichen Frames, Skalen und Pfeile müssen die Begründung tragen, keine bloß behauptete Wiederholung.
+
+## Bewertung
+
+- 4 BE: Zwei neue reale Clips mit tatsächlicher räumlicher/zeitlicher Kalibrierung und dokumentierten Messfenstern vorgelegt. / EN: Two fresh real clips with actual spatial/temporal calibration and documented measurement windows.
+- 5 BE: Ortsänderung und Zeitintervalle korrekt verwendet sowie beide Geschwindigkeitspfeile maßstäblich mit Betrag und Richtung konstruiert / EN: Correct displacements/durations and scaled velocity arrows with magnitudes/directions in both clips.
+- 5 BE: Geschwindigkeitsänderung grafisch richtig konstruiert und gedeutet, Intervall-/Zeitpunktnäherung und konkrete Messgrenze erläutert / EN: Correct graphical velocity-change construction and interpretation, midpoint limits, concrete measurement limits, and independent equal-speed direction-change transfer.
+
+Alle 14 BE erforderlich. Fehlender experimenteller Beleg wird nicht durch gelieferte Modellwerte ersetzt.
+
+## English task
+
+Use a stationary overhead camera to record a short real video of a flat object moving approximately straight and then in a different direction on a level surface. Put a ruler or grid in the same plane. Record the actual frame rate or actual timestamps if variable. A supplied real video with visible length scale and actual timing is equally acceptable. Invented positions are insufficient.
+1. Import the video in suitable software and document calibration. Mark the same body point over two short equal-duration windows before and after the turn, avoiding windows spanning the turn. Export frames with the marks.
+2. Find both displacements and durations. Construct both velocity arrows as displacement divided by window duration using the same drawn arrow scale. Give magnitudes and directions.
+3. Place both arrows at one origin and draw the change arrow from the first arrowhead to the second. Interpret it and explain why these are interval averages and only approximate midpoint velocities. Identify one concrete error source in this video.
+4. Independently repeat the analysis on a second fresh real clip or recording, now with approximately equal speed magnitude but different motion direction. Again document calibration, windows, and arrows; explain from the actual arrows why the velocity change can be nonzero. This supplied second clip may contain no finished velocity arrows or results.
+
+## English solution
+
+Require both real source clips, actual time/length scales, and two traceable displacement measurements in each. Each velocity arrow has the displacement direction and displacement magnitude divided by duration, using the same arrow scale. With both arrows moved to the same origin, the change arrow runs from the first arrowhead to the second; it represents velocity change, not traveled distance. Equal speed magnitude with different direction can yield nonzero change. Finite windows give averages; midpoint assignment is an approximation for short windows with sufficiently smooth motion. Assess individual values against actual frames. Explain perspective, tracking, timing, or blur using concrete evidence. A formal numerical example without real clips does not pass. The fresh second clip must have its own measured arrows and direction-change interpretation, not merely a claimed repetition.

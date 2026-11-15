@@ -1,5 +1,6 @@
 import { validateSemanticAtomicityRecordShape } from './lib/semanticAtomicityRecordValidation'
 import { evaluateDirectAtomicRouteCoverage } from './lib/directAtomicRouteCoverage'
+import { buildRouteCatalogContext, restrictForeignRouteSupport } from './lib/routeCatalogContext'
 import { createHash } from 'node:crypto'
 import { existsSync, mkdirSync, readdirSync, readFileSync, realpathSync, statSync, writeFileSync } from 'node:fs'
 import { dirname, isAbsolute, join, relative, resolve } from 'node:path'
@@ -924,6 +925,8 @@ const CANONICAL_GYM_MATH_SEK1_EXAM_FOLDER_IDS = [
   'f6c9c2b8-3dbd-4839-972f-c60f33c44b63',
   'cb20dd6b-c4ff-4a1b-9636-3b3d6ea86aa8',
 ]
+const CANONICAL_GYM_MATH_SEK1_DIRECT_EVIDENCE_CLUSTER_ID = 'a58ab751-8d16-54dc-839d-efafbf3030c6'
+const CANONICAL_GYM_MATH_SEK2_DIRECT_EVIDENCE_CLUSTER_ID = 'd7290a35-dc08-588b-86d5-0cc725355b64'
 const CANONICAL_GYM_MATH_SEK2_MOTIVATION_GOAL_ID = '71cec9fb-3751-4d61-8b34-c5adbbf6e5f2'
 const CANONICAL_GYM_MATH_SEK2_PRACTICE_CLUSTER_IDS = [
   '28b45b93-11e1-5a96-97a1-4cfee171802b',
@@ -938,12 +941,15 @@ const CANONICAL_GYM_MATH_SEK2_PRACTICE_CLUSTER_IDS = [
 const CANONICAL_GYM_PHYSICS_LANDSCAPE_ID = '7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a'
 const CANONICAL_GYM_PHYSICS_MOTIVATION_GOAL_ID = '5c44b9ba-9b05-4774-95d5-073230d3fc4f'
 const CANONICAL_GYM_PHYSICS_SEK1_PRACTICE_CLUSTER_ID = '21ab0854-4d67-5233-9495-ae208e152a3c'
+const CANONICAL_GYM_PHYSICS_SHARED_PRACTICE_CLUSTER_ID = '4ad7303d-22ad-56e6-aee0-f05b2ca42a07'
 const CANONICAL_GYM_PHYSICS_SEK2_PRACTICE_CLUSTER_IDS = [
   '424b07df-bf66-5d7f-99f5-f28b32ad1f22',
   '549a427d-f10a-5537-990e-6fdd7466848b',
   '9dd7c596-a751-523c-acba-916f73e900a5',
   'b47a2a23-b56d-5433-9036-075d6bb7c782',
   '85bbad98-2f48-5d64-85c4-ab6cf67f24c2',
+  CANONICAL_GYM_PHYSICS_SHARED_PRACTICE_CLUSTER_ID,
+  '8e5c7195-eb30-55c1-a19a-630742620ba0',
 ]
 const CANONICAL_GYM_CHEMISTRY_LANDSCAPE_ID = 'c436b994-8f44-5134-b9f8-0c9f5d6a5ba0'
 const CANONICAL_GYM_CHEMISTRY_MOTIVATION_GOAL_ID = 'a9c22adc-b543-5b0c-a2d8-3189facdff08'
@@ -1160,10 +1166,10 @@ export const routeProfileDefinitions: RouteProfile[] = [
     landscapeId: CANONICAL_GYM_MATH_LANDSCAPE_ID,
     label: 'Sekundarstufe I',
     motivationAnchorGoalIds: [CANONICAL_GYM_MATH_SEK1_MOTIVATION_GOAL_ID],
-    terminalAutonomyClusterIds: CANONICAL_GYM_MATH_SEK1_EXAM_FOLDER_IDS,
+    terminalAutonomyClusterIds: [...CANONICAL_GYM_MATH_SEK1_EXAM_FOLDER_IDS, CANONICAL_GYM_MATH_SEK1_DIRECT_EVIDENCE_CLUSTER_ID],
     terminalAutonomyClusterIdsByDurationModel: {
-      G8: CANONICAL_GYM_MATH_SEK1_EXAM_FOLDER_IDS.slice(0, 5),
-      G9: CANONICAL_GYM_MATH_SEK1_EXAM_FOLDER_IDS,
+      G8: [...CANONICAL_GYM_MATH_SEK1_EXAM_FOLDER_IDS.slice(0, 5), CANONICAL_GYM_MATH_SEK1_DIRECT_EVIDENCE_CLUSTER_ID],
+      G9: [...CANONICAL_GYM_MATH_SEK1_EXAM_FOLDER_IDS, CANONICAL_GYM_MATH_SEK1_DIRECT_EVIDENCE_CLUSTER_ID],
     },
     compositionViewStage: 'SekI',
     goalSelector: (goal) => isAtomicGoal(goal)
@@ -1177,7 +1183,7 @@ export const routeProfileDefinitions: RouteProfile[] = [
     landscapeId: CANONICAL_GYM_MATH_LANDSCAPE_ID,
     label: 'Sekundarstufe II',
     motivationAnchorGoalIds: [CANONICAL_GYM_MATH_SEK2_MOTIVATION_GOAL_ID],
-    terminalAutonomyClusterIds: CANONICAL_GYM_MATH_SEK2_PRACTICE_CLUSTER_IDS,
+    terminalAutonomyClusterIds: [...CANONICAL_GYM_MATH_SEK2_PRACTICE_CLUSTER_IDS, CANONICAL_GYM_MATH_SEK2_DIRECT_EVIDENCE_CLUSTER_ID],
     goalSelector: (goal) => isAtomicGoal(goal) && isCanonicalGymMathSek2Goal(goal) && !isMemoryGoal(goal),
     clusterSelector: isCanonicalGymMathSek2Goal,
   },
@@ -1185,8 +1191,8 @@ export const routeProfileDefinitions: RouteProfile[] = [
     profileId: 'canonical-physics-sek1',
     landscapeId: CANONICAL_GYM_PHYSICS_LANDSCAPE_ID,
     label: 'Sekundarstufe I',
-    motivationAnchorGoalIds: [CANONICAL_GYM_PHYSICS_MOTIVATION_GOAL_ID],
-    terminalAutonomyClusterIds: [CANONICAL_GYM_PHYSICS_SEK1_PRACTICE_CLUSTER_ID],
+    motivationAnchorGoalIds: [CANONICAL_GYM_PHYSICS_MOTIVATION_GOAL_ID, '65365dce-f33f-49d8-9516-42f75883aa86'],
+    terminalAutonomyClusterIds: [CANONICAL_GYM_PHYSICS_SEK1_PRACTICE_CLUSTER_ID, CANONICAL_GYM_PHYSICS_SHARED_PRACTICE_CLUSTER_ID],
     compositionViewStage: 'SekI',
     compositionViewApplicabilityMode: 'compiled-jurisdiction',
     compositionViewRoutePathMode: 'visible-atomic',
@@ -1708,7 +1714,7 @@ function buildAtomicDirectRequiresEdges(landscape: SkillLandscape): Map<string, 
   return edges
 }
 
-function buildEffectiveRequiresEdges(landscape: SkillLandscape): Map<string, string[]> {
+export function buildEffectiveRequiresEdges(landscape: SkillLandscape): Map<string, string[]> {
   const goalById = new Map(landscape.goals.map((goal) => [goal.id, goal]))
   const parentByChild = buildParentByChild(landscape.goals)
   const directEdges = buildDirectRequiresEdges(landscape)
@@ -1946,14 +1952,15 @@ function evaluateRouteEndpointCompositionVisibility(
   reverseEffectiveEdges: Map<string, string[]>,
   atomicDirectEdges: Map<string, string[]>,
   reverseAtomicDirectEdges: Map<string, string[]>,
+  canonicalCatalog: readonly SkillLandscape[],
+  ownGoalIds: ReadonlySet<string>,
 ): RuleResult | null {
   if (!profile.compositionViewStage) return null
   const goalById = new Map(landscape.goals.map((goal) => [goal.id, goal]))
-  const applicabilityReport = applicabilityCompilation.reports.find(
-    (report) => report.landscapeId === profile.landscapeId,
-  )
+  const contextGoalIds = new Set(landscape.goals.map(goal => goal.id))
   const compiledJurisdictionsByGoalId = new Map(
-    (applicabilityReport?.goals ?? []).map((goal) => [
+    applicabilityCompilation.reports.flatMap(report => report.goals)
+      .filter(goal => contextGoalIds.has(goal.goalId)).map((goal) => [
       goal.goalId,
       new Set(goal.compiledApplicability.jurisdiction ?? []),
     ]),
@@ -2034,11 +2041,9 @@ function evaluateRouteEndpointCompositionVisibility(
   viewEntries.forEach(({ file, view }) => {
     // CrossStage explicitly means the entire authored view, including both
     // school stages. Its root is not inferred from year, phase or display labels.
-    const matchingStageStructures = enforceProjectionLocalRoutes
-      ? profile.compositionViewStage === 'CrossStage'
-        ? view.rootNodes.filter((node) => node.kind === 'structure')
-        : collectCompositionStageStructures(view.rootNodes, profile.compositionViewStage!)
-      : []
+    const matchingStageStructures = profile.compositionViewStage === 'CrossStage'
+      ? view.rootNodes.filter((node) => node.kind === 'structure')
+      : collectCompositionStageStructures(view.rootNodes, profile.compositionViewStage!)
     const scopedTerminalGoals = terminalAutonomyGoalsForRouteScope(
       goalById,
       profile,
@@ -2071,21 +2076,25 @@ function evaluateRouteEndpointCompositionVisibility(
         file,
         scopeFilters,
         false,
-        enforceProjectionLocalRoutes ? profile.compositionViewStage : undefined,
-        enforceProjectionLocalRoutes ? profile.motivationAnchorGoalIds : [],
+        profile.compositionViewStage,
+        profile.motivationAnchorGoalIds,
+        canonicalCatalog,
       )
       const visibleAtomicGoalIds = collectRenderedAtomicGoalIdsFromCompositionView(
         landscape,
         file,
         scopeFilters,
         true,
-        enforceProjectionLocalRoutes ? profile.compositionViewStage : undefined,
-        enforceProjectionLocalRoutes ? profile.motivationAnchorGoalIds : [],
+        profile.compositionViewStage,
+        profile.motivationAnchorGoalIds,
+        canonicalCatalog,
       )
       if (useCompiledJurisdiction && jurisdiction) {
         removeGoalsOutsideCompiledProjection(visibleTargetAtomicGoalIds)
         removeGoalsOutsideCompiledProjection(visibleAtomicGoalIds)
       }
+      restrictForeignRouteSupport(visibleAtomicGoalIds, visibleTargetAtomicGoalIds,
+        ownGoalIds, effectiveEdges, profile.motivationAnchorGoalIds)
       let jurisdictionStageTargetAuthorityGoalIds: Set<string> | null = null
       let jurisdictionStageVisibleAuthorityGoalIds: Set<string> | null = null
       if (useCompiledJurisdiction && enforceProjectionLocalRoutes && !viewJurisdiction && jurisdiction) {
@@ -2114,6 +2123,7 @@ function evaluateRouteEndpointCompositionVisibility(
             false,
             profile.compositionViewStage,
             profile.motivationAnchorGoalIds,
+            canonicalCatalog,
           )
           const visibleGoalIds = collectRenderedAtomicGoalIdsFromCompositionView(
             landscape,
@@ -2122,9 +2132,12 @@ function evaluateRouteEndpointCompositionVisibility(
             true,
             profile.compositionViewStage,
             profile.motivationAnchorGoalIds,
+            canonicalCatalog,
           )
           removeGoalsOutsideCompiledProjection(targetGoalIds)
           removeGoalsOutsideCompiledProjection(visibleGoalIds)
+          restrictForeignRouteSupport(visibleGoalIds, targetGoalIds,
+            ownGoalIds, effectiveEdges, profile.motivationAnchorGoalIds)
           return { file: authorityFile, targetGoalIds, visibleGoalIds }
         })
 
@@ -2400,7 +2413,8 @@ function evaluateRouteEndpointCompositionVisibility(
         uniqueTerminalPrerequisitesMissingFromProjection.add(pair.split('->')[1] ?? pair)
       })
 
-      if (enforceProjectionLocalRoutes && matchingStageStructures.length !== 1) {
+      if ((enforceProjectionLocalRoutes || profile.compositionViewStage !== 'CrossStage')
+        && matchingStageStructures.length !== 1) {
         invalidStageStructureScopes.push(
           `${scopeLabel}: expected 1 ${profile.compositionViewStage} structure, got ${matchingStageStructures.length}`,
         )
@@ -2650,9 +2664,15 @@ export function evaluateRouteProfile(
   landscape: SkillLandscape,
   profile: RouteProfile,
   applicabilityCompilation: ApplicabilityCompilationResult,
+  canonicalCatalog?: readonly SkillLandscape[],
 ): ScopeStatus {
+  // Preserve the subject's selection predicates while resolving its real
+  // prerequisites across the current catalog. This never authors a view role.
+  const ownGoalIds = new Set(landscape.goals.map(goal => goal.id))
+  const sourceCatalog = canonicalCatalog ?? [landscape]
+  if (canonicalCatalog) landscape = buildRouteCatalogContext(landscape, canonicalCatalog).landscape
   const goalById = new Map(landscape.goals.map((goal) => [goal.id, goal]))
-  const selectedGoals = landscape.goals.filter(profile.goalSelector)
+  const selectedGoals = landscape.goals.filter(goal => ownGoalIds.has(goal.id) && profile.goalSelector(goal))
   const effectiveEdges = buildEffectiveRequiresEdges(landscape)
   const reverseEffectiveEdges = buildReverseEdges(effectiveEdges)
   const atomicDirectEdges = buildAtomicDirectRequiresEdges(landscape)
@@ -2671,10 +2691,12 @@ export function evaluateRouteProfile(
   const missingEffectiveTerminal = selectedGoals.filter((goal) =>
     !terminalGoalIds.some((terminalId) => hasReverseEffectivePath(goal.id, terminalId)))
 
-  const { missingDirectMotivation, missingDirectTerminal, configurationIssues } = evaluateDirectAtomicRouteCoverage(landscape, profile)
+  const { missingDirectMotivation, missingDirectTerminal, configurationIssues } = evaluateDirectAtomicRouteCoverage(landscape, {
+    ...profile, goalSelector: goal => ownGoalIds.has(goal.id) && profile.goalSelector(goal),
+  })
 
   const scopedClusterRequires = landscape.goals.filter((goal) =>
-    !isAtomicGoal(goal) && profile.clusterSelector(goal) && (goal.requires?.length ?? 0) > 0)
+    ownGoalIds.has(goal.id) && !isAtomicGoal(goal) && profile.clusterSelector(goal) && (goal.requires?.length ?? 0) > 0)
 
   const terminalAutonomyGoalsWithoutExamData = terminalAutonomyGoals.filter((goal) => !goal.examData)
   const terminalAutonomyGoalsWithWeakExamData = terminalAutonomyGoals
@@ -2693,6 +2715,8 @@ export function evaluateRouteProfile(
     reverseEffectiveEdges,
     atomicDirectEdges,
     reverseAtomicDirectEdges,
+    sourceCatalog,
+    ownGoalIds,
   )
 
   const rules: RuleResult[] = [
@@ -4137,14 +4161,16 @@ export function collectRenderedAtomicGoalIdsFromCompositionView(
   includePrerequisiteOnly = false,
   compositionStage?: CompositionRouteStage,
   additionalVisibleGoalIds: string[] = [],
+  canonicalCatalog: readonly SkillLandscape[] = [landscape],
 ): Set<string> {
-  const entry = {
-    meta: landscape,
-    goals: landscape.goals.map((goal) => convertLearningGoal(goal, { landscapeId: landscape.landscapeId })),
-  }
+  const entries = canonicalCatalog.map(source => ({
+    meta: source,
+    goals: source.goals.map(goal => convertLearningGoal(goal, { landscapeId: source.landscapeId })),
+  }))
   const rawView = loadJson<unknown>(viewFile)
   const normalizedView = normalizeCompositionView(rawView)
-  const projectedEntry = applyCompositionViewProjection([entry], normalizedView)[0]
+  const projectedEntry = applyCompositionViewProjection(entries, normalizedView)
+    .find(entry => entry.meta.landscapeId === landscape.landscapeId)
   if (!projectedEntry) return new Set<string>()
 
   const goalById = new Map(projectedEntry.goals.map((goal) => [goal.id, goal]))
@@ -4196,9 +4222,11 @@ export function collectRenderedAtomicGoalIdsFromCompositionView(
     .filter((goalId) => fullVisibleGoalIds.has(goalId))
     .forEach(addRenderedAtomicGoal)
   if (includePrerequisiteOnly) {
-    const sourceGoalById = new Map(entry.goals.map((goal) => [goal.id, goal]))
-    const sourceRoot = entry.goals.find((goal) => (goal.tags ?? []).includes('root') && goal.contains.length > 0)
-    const sourceRootByLandscapeId = new Map(sourceRoot ? [[landscape.landscapeId, sourceRoot.id]] : [])
+    const sourceGoalById = new Map(entries.flatMap(entry => entry.goals.map(goal => [goal.id, goal] as const)))
+    const sourceRootByLandscapeId = new Map(entries.flatMap(entry => {
+      const root = entry.goals.find(goal => (goal.tags ?? []).includes('root') && goal.contains.length > 0)
+      return root ? [[entry.meta.landscapeId, root.id] as const] : []
+    }))
     const { prerequisiteOnlyGoalIds } = collectCompositionProjectionRoleGoalIds(
       normalizedView.rootNodes,
       sourceGoalById,
@@ -6305,6 +6333,7 @@ async function generateStatus(inputs: VerificationInputReader, assertCurrent: ()
         landscape,
         profile,
         applicabilityCompilation,
+        loadedLandscapes.map(entry => entry.landscape),
       )))
       if (scopes.length === 0) {
         curriculumRules.push(makeRule(

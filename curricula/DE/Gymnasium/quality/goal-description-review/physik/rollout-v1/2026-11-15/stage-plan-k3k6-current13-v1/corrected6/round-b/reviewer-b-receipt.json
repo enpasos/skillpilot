@@ -1,0 +1,112 @@
+{
+  "status": "COMPLETED_INDEPENDENT_AI_CANDIDATE_REVIEW",
+  "reviewAuthority": "ai_candidate",
+  "recordStatus": "candidate",
+  "reviewerAgentId": "/root/physics_corrected6_blind_d_b",
+  "runId": "physics-k3k6-correction-current6-20261115-first-pass-b-run",
+  "campaignId": "physics-k3k6-correction-current6-20261115-b",
+  "roundId": "physics-k3k6-correction-current6-20261115-first-pass-b",
+  "independenceGroupId": "physics-k3k6-correction-current6-20261115-independent-b",
+  "blindToOtherReviews": true,
+  "startedAtUtc": "2026-11-15T12:19:35Z",
+  "completedAtUtc": "2026-11-15T12:27:41Z",
+  "clockEvidence": {
+    "source": "tools.clock__curr_time",
+    "startedObservedUtc": "2026-11-15 12:19:35 UTC",
+    "completedObservedUtc": "2026-11-15 12:27:41 UTC",
+    "meaning": "Actual observed UTC review start and completion; no synthetic elapsed duration."
+  },
+  "inputBindings": {
+    "sealedCorrectionManifestPath": "tmp/physics-native-integration-k3k6-correction-v1-20261115/sealed-correction.manifest.json",
+    "sealedCorrectionManifestSha256": "sha256:340fe7670be415ff3c1d4998bbe59afd03bb3c66ccddfebe1c6dc4daec8387fc",
+    "bundleManifestPath": "tmp/physics-native-integration-k3k6-correction-v1-20261115/native-bundle-current6/manifest.json",
+    "bundleManifestSha256": "sha256:97e5596918d7478b840407e32601510e61c160984253a7cc5206bc5b64f618b6",
+    "bundleFingerprint": "sha256:34f29f0e837f4dcc6f55b3f31998e83c3ee9126b372363aeb82c876b126338d7",
+    "bookDigest": "sha256:20dea5324f0fa57e171704e4229fc8821107a2562650f082f24080e8ea550150",
+    "reviewInputFingerprint": "sha256:fe8d73cb85c7b78b721f2803261cb355af1abe39ebc2ffc840c767ed3c641292",
+    "campaignSha256": "sha256:4b22fa814cf9930824c4a638042f6720812804adf93e661c7f75874f54c21db8",
+    "batchInputSha256": "sha256:46a1430ccbcd9d63b705fa2d9f01e97a3b269bd57840ea5a379c700559cbdfcf",
+    "promptSha256": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+    "criteriaSha256": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+    "recordSchemaSha256": "sha256:b1d5fe108f157ebcb3e6b5c5f0376b3f4d88da935fab9aab79fac8a49b50b7ff",
+    "assessmentInputManifestSha256": "sha256:e5c726939e5b31175db2c20b01c376b6fc1f77502a2734c1785e45c5ad595076"
+  },
+  "fullInputPinValidation": {
+    "path": "tmp/physics-native-integration-k3k6-correction-v1-20261115/native-d/round-b/results/input-pin-validation.actual.json",
+    "sha256": "sha256:00993ee3fe7d956d21330c746f3f8161be6c7a14c2dbb146b44427ef247258d5",
+    "sealedFilesChecked": 261,
+    "sealedFileFailures": 0,
+    "assessmentInputFilesChecked": 7,
+    "assessmentInputFailures": 0,
+    "allSealedOriginalsRecheckedAfterReview": true,
+    "sealedOriginalMutations": 0
+  },
+  "reviewScope": {
+    "fullNativeGoalContextsRead": 6,
+    "deEnDescriptionsRead": true,
+    "allPExpectationsCaseBriefsVariationsCoverageRead": true,
+    "allProvidedRCanonicalAndPageContextsRead": true,
+    "threeExactAssessmentBeforeAftersRead": true,
+    "allDeEnTaskAndSolutionFieldsRead": true,
+    "allScoringStepsThresholdsAndCoreGatesRead": true,
+    "sourceArtifactsCheckedForVerbatimDeEnTaskSolution": 3,
+    "analyticalAndAdversarialScoreProbes": 31
+  },
+  "independence": {
+    "roundAResultsRead": false,
+    "earlierReviewFilesReadForConclusions": false,
+    "oldDispositionsRead": false,
+    "authorCounterexampleConclusionsRead": false,
+    "desiredVerdictRequested": false,
+    "incidentalInputMetadataDisclosure": "The supplied native and exact before/after inputs carry author/history labels. These incidental labels were ignored as authority; no separate reviewer output, earlier disposition or author-counterexample conclusion was semantically inspected. Hash checks read sealed files as bytes only."
+  },
+  "nativeOutputs": {
+    "path": "tmp/physics-native-integration-k3k6-correction-v1-20261115/native-d/round-b/results/physics-k3k6-correction-current6-20261115-first-pass-b.batch-001.records.jsonl",
+    "sha256": "sha256:c856b61e6ba58ae07507d68719e66f027c443157960292ddf158fb167d4d4691",
+    "recordCount": 6,
+    "orderedGoalIds": [
+      "d67502e3-5e0a-595b-a24b-65b1c40de36e",
+      "bbee4c52-4e95-5529-990f-706aa99316a3",
+      "8da5c981-8216-5fcd-a393-19f392ae2006",
+      "ce14a7e7-7e2a-517f-a465-78ba3fbe414d",
+      "d61ea362-f6c3-5eab-ac30-2d0e265ac0f6",
+      "677a192d-8bbe-57fc-bb7a-1c1ed5fba32b"
+    ],
+    "decisions": {
+      "d67502e3-5e0a-595b-a24b-65b1c40de36e": "keep",
+      "bbee4c52-4e95-5529-990f-706aa99316a3": "keep",
+      "8da5c981-8216-5fcd-a393-19f392ae2006": "keep",
+      "ce14a7e7-7e2a-517f-a465-78ba3fbe414d": "keep",
+      "d61ea362-f6c3-5eab-ac30-2d0e265ac0f6": "keep",
+      "677a192d-8bbe-57fc-bb7a-1c1ed5fba32b": "keep"
+    },
+    "profileRecommendations": {
+      "d67502e3-5e0a-595b-a24b-65b1c40de36e": "none",
+      "bbee4c52-4e95-5529-990f-706aa99316a3": "none",
+      "8da5c981-8216-5fcd-a393-19f392ae2006": "none",
+      "ce14a7e7-7e2a-517f-a465-78ba3fbe414d": "none",
+      "d61ea362-f6c3-5eab-ac30-2d0e265ac0f6": "none",
+      "677a192d-8bbe-57fc-bb7a-1c1ed5fba32b": "none"
+    }
+  },
+  "assessmentOutput": {
+    "path": "tmp/physics-native-integration-k3k6-correction-v1-20261115/native-d/round-b/assessment-content-review.actual.json",
+    "sha256": "sha256:638e9704cb66609c36b62b4e3af9dfc279c50ccd7fd0a40fdaa9cce9f9ab4f77",
+    "assessmentCount": 3,
+    "status": "PASS",
+    "finding": "No content blocker found for the exact three reviewed contracts; all-maxima thresholds prevent missing required performance from compensation. Positive probes include supplied calibration, justified unresolved outcomes and inconsequential slips."
+  },
+  "validation": {
+    "nativeRecordSchema": "PASS",
+    "sixExactNativeBindings": "PASS",
+    "scoringTotalsAndThresholds": "PASS",
+    "scoreProbeArithmetic": "PASS",
+    "sealedOriginalPins": "PASS"
+  },
+  "limitations": [
+    "AI candidate review only; no human approval, publication, integration acceptance or learner mastery.",
+    "Full external official-source mapping and nationwide effective projections were not evidenced by the supplied batch and are not claimed.",
+    "Reviewer numerical examples and score probes are hypothetical contract checks, not actual learner trials."
+  ],
+  "writtenAtUtc": "2026-11-15T12:28:11.548165+00:00"
+}

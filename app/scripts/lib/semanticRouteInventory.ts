@@ -167,6 +167,7 @@ export async function loadSemanticRouteInventory(
     'app/scripts/auditSemanticLearningRoutes.ts', 'app/scripts/lib/semanticRouteInventory.ts',
     'app/scripts/lib/hardLearningRouteValidation.ts', 'app/scripts/lib/graphValidationInventory.ts',
     'app/scripts/generateCurriculumQualityStatus.ts', 'app/scripts/goalBookModel.ts',
+    'app/scripts/lib/routeCatalogContext.ts', 'app/scripts/lib/directAtomicRouteCoverage.ts',
     'app/scripts/prerequisiteReductionProof.ts', 'app/scripts/optionalHistoricalReviewContext.ts',
     'contracts/curriculum-package/v1/curriculum-ontology-profile.schema.json',
     'contracts/curriculum-package/v1/profiles/semantic-normal-form-v1.profile.json',

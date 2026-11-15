@@ -1,0 +1,1059 @@
+{
+  "status": "TARGETED_CONTENT_FINDING_PENDING_ROOT_REVIEW_NOT_RELEASED",
+  "createdAt": "2026-11-15T12:35:34.682485+00:00",
+  "candidatePhysics": "tmp/physics-native-integration-k3k6-correction-v1-20261115/payload/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+  "candidatePhysicsSha256": "sha256:c5e73a34db6ca83f7a29b0410cadcc03e82d37922113ebad9103b73757a3c48d",
+  "currentCe431Goal": {
+    "id": "ce431132-dfc4-42c2-aff6-bd72035190f8",
+    "title": "Bewegungen mit Diagrammen untersuchen",
+    "titleEn": "Investigate Motions with Diagrams",
+    "description": "Die lernende Person kann einfache eindimensionale Bewegungen experimentell erfassen, Orts-Zeit-Daten und daraus bestimmte mittlere Intervallgeschwindigkeiten in t-s- und t-v-Diagrammen darstellen und interpretieren. Sie berücksichtigt Messauflösung, Ruhe und Bewegungsrichtung und prüft die Konsistenz von Ortsänderungen und vorzeichenbehafteten Flächen im stückweise gleichförmigen Modell.",
+    "descriptionEn": "The learner can experimentally record simple one-dimensional motions, represent and interpret position-time data and the average interval velocities determined from them in time-position and time-velocity graphs. They account for measurement resolution, rest, and direction of motion and check consistency between displacements and signed areas in a piecewise-uniform model.",
+    "weight": 0.9,
+    "tags": [
+      "GK",
+      "LK",
+      "canonical",
+      "cross-subject:mathematics"
+    ],
+    "contains": [],
+    "requires": [
+      "ae67bcf1-f3ee-50d6-9a12-25a159dff659",
+      "d6c3fb37-ece6-5b56-9221-1eeb21845877",
+      "25593605-5e13-55cc-9a05-8f3d737e15e9",
+      "13b338eb-f761-5817-9058-11043b9cb253",
+      "f6b1d812-ce8b-5852-b417-e6c29b533c7a"
+    ],
+    "dimensionTags": {
+      "framework": "hessen-kc-2024-physics",
+      "demandLevel": "AB1",
+      "processCompetencies": [],
+      "guidingIdeas": [],
+      "phase": "E"
+    },
+    "shortKey": "canonical_physics_motion_diagrams",
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "type": "atomic",
+    "resourceLinks": [
+      {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "ce431132-dfc4-42c2-aff6-bd72035190f8",
+        "title": "Visualisierung: Bewegungen mit Diagrammen untersuchen",
+        "url": "/assets/goal-visualizations/physik/ce431132-dfc4-42c2-aff6-bd72035190f8/ce431132-dfc4-42c2-aff6-bd72035190f8.png",
+        "provider": "SkillPilot; eigene SVG-Diagramme",
+        "description": "Eigene Darstellung für den K6-Kandidaten.",
+        "altText": "Zwei Diagramme derselben Bewegung: Der Ort steigt von 1 m auf 3 m, bleibt konstant und sinkt auf 2 m. Die zugehörigen Intervallgeschwindigkeiten sind +1, +1, 0 und −1 m/s. Beschleunigung wird nicht dargestellt.",
+        "lang": "de",
+        "license": "CC-BY-4.0",
+        "reviewStatus": "needs_review"
+      }
+    ]
+  },
+  "currentCe431PositiveProfile": {
+    "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+    "schemaVersion": 2,
+    "reviewId": "canonical-physics-k3k6-native-current13-20261115",
+    "goalFingerprintRuleVersion": "goal-evidence-v1",
+    "profileRuleVersion": "positive-understanding-evidence-v2",
+    "reviewCriteriaFingerprint": "sha256:8d64a50ede312df08795f6fddec82c1c3bcc8b77e50dad62220c201c819fd460",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "goalId": "ce431132-dfc4-42c2-aff6-bd72035190f8",
+    "goalFingerprint": "sha256:fdb9aaed7b4d18b35518e3f312886605c2334b0f8df1ee1291536d53c673c0a1",
+    "reviewInputFingerprint": "sha256:47f7dbeec16b29123bf98dc22430c9ff5bd6a19c13249d44b95ddee6d15fc3ec",
+    "profileFingerprint": "sha256:04c42219f282a011630f992f16cbf932f8492c1cf0376d8a320b1417352926d9",
+    "status": "needs_human_review",
+    "reviewAuthority": "ai_candidate",
+    "reviewedAt": "2026-11-15T11:36:55.901Z",
+    "reviewer": "codex-physics-native-integration-prepare-author-20261115",
+    "reason": "Eigenes Messen, zwei Darstellungen und vorzeichenbehaftete stückweise Ortsänderung bilden die begrenzte Kompetenz. Das neue P entfernt t-a und globale Beschleunigungsbehauptungen ausdrücklich; Punktmittel und Messauflösung sind transparent.",
+    "evidenceLevel": "E1",
+    "maximumClaimScope": "G1",
+    "reviewRunIds": [],
+    "dissent": [],
+    "profile": {
+      "archetype": "representation",
+      "expectations": [
+        {
+          "id": "measured-position-derived-interval-velocity",
+          "essentialUnderstandingDe": "t-s und t-v stellen dieselbe eindimensionale Bewegung durch gemessene Orte und daraus bestimmte mittlere Intervallgeschwindigkeiten dar. Vorzeichen hängen von der vereinbarten Achsenrichtung ab; ein waagerechter t-s-Abschnitt bedeutet Ruhe, ein waagerechter t-v-Abschnitt konstante Geschwindigkeit.",
+          "essentialUnderstandingEn": "Time-position and time-velocity graphs represent the same one-dimensional motion through measured positions and average interval velocities determined from them. Signs depend on the agreed axis direction; a horizontal time-position interval means rest, while a horizontal time-velocity interval means constant velocity.",
+          "observablePerformanceDe": "Erfasst eigene Zeit-Ort-Daten einer sicheren einfachen Bewegung, trennt gemessene und berechnete Größen, zeichnet beschriftete Diagramme und erklärt Ruhe, Hin- und Rückbewegung.",
+          "observablePerformanceEn": "Records their own time-position data for a safe simple motion, distinguishes measured and calculated quantities, draws labelled graphs, and explains rest, outward motion, and return motion."
+        },
+        {
+          "id": "measurement-resolution-bounds-graph-consistency",
+          "essentialUnderstandingDe": "Differenzbildung kann Positionsrauschen im Geschwindigkeitswert verstärken. Die Flächen unter einem stückweise konstanten t-v-Modell entsprechen vorzeichenbehafteten Ortsänderungen; Zwischenbewegungen sind durch diskrete Messpunkte nicht vollständig festgelegt.",
+          "essentialUnderstandingEn": "Differencing can amplify positional noise in velocity values. Areas under a piecewise-constant time-velocity model equal signed displacements; discrete measurements do not fully determine the intervening motion.",
+          "observablePerformanceDe": "Wählt begründet Auswerteintervalle, kennzeichnet Ortsauflösung und Geschwindigkeitsmittel, trennt messbedingte Schwankungen von gesicherten Richtungswechseln und prüft aus einem neuen t-v-Modell die vorhergesagten Ortsmarken.",
+          "observablePerformanceEn": "Justifies analysis intervals, indicates position resolution and average velocities, distinguishes measurement fluctuations from established reversals, and checks predicted position marks from a fresh time-velocity model."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "measured-position-derived-interval-velocity",
+          "measurement-resolution-bounds-graph-consistency"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "motion-sequence",
+          "textDe": "Ruhe, stückweise gleichförmige Abschnitte und Richtungswechsel; bei ungleichförmigen Abschnitten nur Intervallmittel.",
+          "textEn": "Rest, piecewise-uniform intervals, and reversals; only interval averages for nonuniform intervals."
+        },
+        {
+          "id": "acquisition-quality",
+          "textDe": "Abtastintervall, Ortsauflösung und Messrauschen.",
+          "textEn": "Sampling interval, position resolution, and measurement noise."
+        },
+        {
+          "id": "given-representation-and-axis",
+          "textDe": "Eigene Ortsmessung und unabhängiger Ausgangspunkt im t-v-Modell, auch bei umgekehrter Achse.",
+          "textEn": "Own position measurements and an independent starting point in a time-velocity model, including a reversed axis."
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "own-cart-stop-return",
+          "taskDemandDe": "Erfasse eine sichere Wagenbewegung mit einem Hinweg, einer Pause und einer Rückbewegung. Erstelle eine Messwerttabelle sowie t-s- und t-v-Diagramme, kennzeichne Intervallmittel und untersuche Messauflösung.",
+          "taskDemandEn": "Record a safe cart motion with an outward interval, a pause, and a return interval. Produce a data table and time-position and time-velocity graphs, label interval averages, and examine measurement resolution.",
+          "expectedPerformanceDe": "Eigene Daten und Messverfahren sind dokumentiert; Steigungen, Vorzeichen und Ruhe passen zusammen. Einzelne Intervallmittel werden nicht als gesicherte Momentangeschwindigkeiten ausgegeben.",
+          "expectedPerformanceEn": "Own data and measurement method are documented; slopes, signs, and rest are consistent. Individual interval averages are not presented as established instantaneous velocities.",
+          "understandingFocusDe": "Experimentelle Erfassung und konsistente zwei Darstellungen.",
+          "understandingFocusEn": "Experimental acquisition and two consistent representations."
+        },
+        {
+          "id": "velocity-log-position-marks",
+          "taskDemandDe": "Ein neues stückweise konstantes t-v-Modell und ein Anfangsort sind gegeben. Sage Ortsmarken voraus und vergleiche sie mit unabhängigen Kontrollmarken samt Auflösung; kehre anschließend die Achsenrichtung um.",
+          "taskDemandEn": "Given a fresh piecewise-constant time-velocity model and initial position, predict position marks and compare them with independent check marks and their resolution; then reverse the axis direction.",
+          "expectedPerformanceDe": "Vorzeichenbehaftete Rechtecksflächen ergeben die Ortsänderungen; ein Richtungswechsel wird von einem Aufenthalt getrennt. Achsenumkehr ändert Vorzeichen, nicht die Bewegung.",
+          "expectedPerformanceEn": "Signed rectangular areas give displacements; a reversal is distinguished from a period of rest. Reversing the axis changes signs, not the motion.",
+          "understandingFocusDe": "Transfer von t-v nach t-s ohne vorgezogene Beschleunigung.",
+          "understandingFocusEn": "Transfer from time-velocity to time-position without introducing acceleration early."
+        }
+      ]
+    }
+  },
+  "operations": [
+    {
+      "goalId": "2b9e565f-d9b4-5e23-b5b7-b7977cecff06",
+      "before": {
+        "id": "2b9e565f-d9b4-5e23-b5b7-b7977cecff06",
+        "title": "Mehrphasenbewegung und Modellprüfung",
+        "titleEn": "Multi-phase Motion and Model Validation",
+        "description": "E.1/E.2 datenbasierte Modellierung, 30 BE.",
+        "descriptionEn": "E.1/E.2 data-based modeling, 30 points.",
+        "weight": 1,
+        "tags": [
+          "LK",
+          "Practice",
+          "Assessment"
+        ],
+        "contains": [],
+        "requires": [
+          "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-physics",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "PK1_EXPERIMENTIEREN",
+            "PK2_MODELLIEREN",
+            "PK3_MATHEMATISIEREN",
+            "PK5_BEWERTEN"
+          ],
+          "guidingIdeas": [
+            "LI_BEWEGUNG",
+            "LI_TECHNIK"
+          ],
+          "phase": "E"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "examData": {
+          "reviewStatus": "released",
+          "coveredGoalIds": [
+            "ce431132-dfc4-42c2-aff6-bd72035190f8",
+            "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+            "68c90ba6-c438-463c-9a53-cf61062d416a",
+            "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
+            "f6b1d812-ce8b-5852-b417-e6c29b533c7a"
+          ],
+          "coveredStrands": [
+            "LI_BEWEGUNG",
+            "LI_TECHNIK",
+            "LI_MATERIE"
+          ],
+          "demandLevels": [
+            "AB1",
+            "AB2",
+            "AB3"
+          ],
+          "taskContent": "**Kontext:**\n\nFür einen Actionfilm wird ein Stunt mit einem Auto geplant. Das Stunt-Fahrzeug durchläuft Beschleunigungs-, Konstantfahr- und Bremsphasen. Der Sprung an der Rampenkante erfolgt aus der Konstantfahrphase (also mit $v=8.0\\,\\mathrm{m/s}$), und die Messdaten werden mit Unsicherheiten ausgewertet.\n\nAlle Materialien gehören zu dieser einen Stunt-Sequenz: Material 1 beschreibt die Fahrdynamik des Stunt-Wagens, Material 2 den Sprung am Rampenende und Material 3 die Messunsicherheiten derselben Messreihe.\n\n**Material 1 ($v$-$t$-Messreihe eines Stunt-Wagens):**\n\n| Zeit $t$ (s) | 0 | 2 | 4 | 6 | 8 | 10 |\n|---|---:|---:|---:|---:|---:|---:|\n| Geschwindigkeit $v$ (m/s) | 0.0 | 3.2 | 6.4 | 8.0 | 8.0 | 4.0 |\n\n**Material 2 (Sprung von einer Rampenkante):**\n\n- horizontaler Austritt mit der Geschwindigkeit aus der Konstantfahrtphase\n- Kantenhöhe: $h=1.25\\,\\mathrm{m}$\n- Erdbeschleunigung: $g=9.81\\,\\mathrm{m/s^2}$\n- Luftwiderstand wird vernachlässigt.\n\n**Material 3 (Messunsicherheiten):**\n\n- Geschwindigkeitsunsicherheit: $\\Delta v=\\pm 0.20\\,\\mathrm{m/s}$\n- Unsicherheit der Flugzeitbestimmung: $\\Delta t=\\pm 0.03\\,\\mathrm{s}$\n\n**Aufgaben:**\n\n**Hinweis zur Rechnung:** In den Teilaufgaben 1 bis 3 rechnen Sie mit den Nennwerten aus Material 1 und 2 (ohne Unsicherheitsrechnung). Nur in Teilaufgabe 4 sind die Unsicherheiten aus Material 3 einzubeziehen (Intervallabschätzung mit Minimal-/Maximalwerten).\n\n1. Leiten Sie aus Material 1 ein Drei-Phasen-Modell ab: Phase I (Beschleunigen bis $t=6\\,\\mathrm{s}$), Phase II (Konstantfahrt von $t=6\\,\\mathrm{s}$ bis $t=8\\,\\mathrm{s}$), Phase III (Bremsen von $t=8\\,\\mathrm{s}$ bis $t=10\\,\\mathrm{s}$). Bestimmen Sie geeignete Beschleunigungen (mittlere Beschleunigungen je Phase) und charakterisieren Sie die Phasen physikalisch. (7 BE)\n2. Bestimmen Sie die in $0$ bis $10\\,\\mathrm{s}$ zurückgelegte Gesamtstrecke direkt aus den Messdaten von Material 1 als Fläche unter dem $v$-$t$-Verlauf (stückweise lineare Verbindung benachbarter Messpunkte). (6 BE)\n3. Berechnen Sie für Material 2 die Wurfweite. (7 BE)\n4. Bestimmen Sie aus Material 3 ein Intervall für die mögliche Wurfweite. (6 BE)\n5. Nennen Sie zwei fachlich begründete Modellgrenzen der Rechnung. (4 BE)",
+          "solutionContent": "Modellannahme für Teilaufgaben 1 und 2: Drei Phasen aus den Messdaten: $0$-$6\\,\\mathrm{s}$ (Beschleunigen), $6$-$8\\,\\mathrm{s}$ (Konstantfahrt), $8$-$10\\,\\mathrm{s}$ (Bremsen).\n\n1. Phase I ($0$-$6\\,\\mathrm{s}$): mittlere Beschleunigung\n\n$$\na_1=\\frac{8.0-0.0}{6.0}=1.33\\,\\mathrm{m/s^2}\n$$\n\n(Die Messwerte zeigen dabei eine abnehmende Beschleunigung: in den 2-s-Intervallen $1.6$, $1.6$, $0.8\\,\\mathrm{m/s^2}$.)\n\nPhase II ($6$-$8\\,\\mathrm{s}$): $v=8.0\\,\\mathrm{m/s}$ konstant, also $a_2=0$.\n\nPhase III ($8$-$10\\,\\mathrm{s}$):\n\n$$\na_3=\\frac{4.0-8.0}{2.0}=-2.0\\,\\mathrm{m/s^2}\n$$\n\n**7 BE**\n\n2. Strecke = Fläche unter dem stückweise linear verbundenen $v$-$t$-Verlauf der Messdaten:\n\n$$\ns_{0-2}=\\frac{0.0+3.2}{2}\\cdot 2=3.2\\,\\mathrm{m}\n$$\n\n$$\ns_{2-4}=\\frac{3.2+6.4}{2}\\cdot 2=9.6\\,\\mathrm{m}\n$$\n\n$$\ns_{4-6}=\\frac{6.4+8.0}{2}\\cdot 2=14.4\\,\\mathrm{m}\n$$\n\n$$\ns_{6-8}=\\frac{8.0+8.0}{2}\\cdot 2=16.0\\,\\mathrm{m}\n$$\n\n$$\ns_{8-10}=\\frac{8.0+4.0}{2}\\cdot 2=12.0\\,\\mathrm{m}\n$$\n\n$$\ns_\\mathrm{ges}=3.2+9.6+14.4+16.0+12.0=55.2\\,\\mathrm{m}\n$$\n\n**6 BE**\n\n3. Nennwertrechnung (ohne Messunsicherheiten): Aus der Konstantfahrtphase: $v_x=8.0\\,\\mathrm{m/s}$.\n\nFallzeit:\n\n$$\nt_F=\\sqrt{\\frac{2h}{g}}=\\sqrt{\\frac{2\\cdot 1.25}{9.81}}=0.505\\,\\mathrm{s}\n$$\n\nWurfweite:\n\n$$\nx=v_x t_F=8.0\\cdot 0.505=4.04\\,\\mathrm{m}\n$$\n\n**7 BE**\n\n4. Unsicherheitsrechnung (nur hier): Intervallabschätzung mit Minimal-/Maximalwerten:\n\n$$\nx_{\\min}=(8.0-0.20)\\,(0.505-0.03)=3.71\\,\\mathrm{m}\n$$\n\n$$\nx_{\\max}=(8.0+0.20)\\,(0.505+0.03)=4.39\\,\\mathrm{m}\n$$\n\nDamit $x\\in[3.71\\,\\mathrm{m},\\,4.39\\,\\mathrm{m}]$.\n\n**6 BE**\n\n5. Mögliche Modellgrenzen (zwei genügen):\n\n- Luftwiderstand und Wind werden vernachlässigt.\n- Der Übergang von Fahr- zu Wurfphase wird idealisiert (keine Rotations- oder Kantenverluste).\n- Messpunkte sind diskret und nicht kontinuierlich.\n\n**4 BE**",
+          "scoring": {
+            "maxPoints": 30,
+            "passingPoints": 18,
+            "steps": [
+              {
+                "id": "s1",
+                "points": 7,
+                "description": "Phasen aus den Messdaten sinnvoll abgegrenzt und (mittlere) Beschleunigungen korrekt bestimmt"
+              },
+              {
+                "id": "s2",
+                "points": 6,
+                "description": "Gesamtstrecke aus den Messdaten mit stückweise linearer Flächenberechnung korrekt berechnet"
+              },
+              {
+                "id": "s3",
+                "points": 7,
+                "description": "Wurfweite aus dem Mehrphasenmodell korrekt berechnet"
+              },
+              {
+                "id": "s4",
+                "points": 6,
+                "description": "Unsicherheitsintervall fachlich korrekt angegeben"
+              },
+              {
+                "id": "s5",
+                "points": 4,
+                "description": "Modellgrenzen fachlich reflektiert"
+              }
+            ]
+          }
+        },
+        "phase": "E",
+        "type": "atomic"
+      },
+      "after": {
+        "id": "2b9e565f-d9b4-5e23-b5b7-b7977cecff06",
+        "title": "Mehrphasenbewegung und Modellprüfung",
+        "titleEn": "Multi-phase Motion and Model Validation",
+        "description": "E.1/E.2 datenbasierte Modellierung, 30 BE.",
+        "descriptionEn": "E.1/E.2 data-based modeling, 30 points.",
+        "weight": 1,
+        "tags": [
+          "LK",
+          "Practice",
+          "Assessment"
+        ],
+        "contains": [],
+        "requires": [
+          "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-physics",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "PK1_EXPERIMENTIEREN",
+            "PK2_MODELLIEREN",
+            "PK3_MATHEMATISIEREN",
+            "PK5_BEWERTEN"
+          ],
+          "guidingIdeas": [
+            "LI_BEWEGUNG",
+            "LI_TECHNIK"
+          ],
+          "phase": "E"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "examData": {
+          "reviewStatus": "released",
+          "coveredGoalIds": [
+            "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+            "68c90ba6-c438-463c-9a53-cf61062d416a",
+            "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
+            "f6b1d812-ce8b-5852-b417-e6c29b533c7a"
+          ],
+          "coveredStrands": [
+            "LI_BEWEGUNG",
+            "LI_TECHNIK",
+            "LI_MATERIE"
+          ],
+          "demandLevels": [
+            "AB1",
+            "AB2",
+            "AB3"
+          ],
+          "taskContent": "**Kontext:**\n\nFür einen Actionfilm wird ein Stunt mit einem Auto geplant. Das Stunt-Fahrzeug durchläuft Beschleunigungs-, Konstantfahr- und Bremsphasen. Der Sprung an der Rampenkante erfolgt aus der Konstantfahrphase (also mit $v=8.0\\,\\mathrm{m/s}$), und die Messdaten werden mit Unsicherheiten ausgewertet.\n\nAlle Materialien gehören zu dieser einen Stunt-Sequenz: Material 1 beschreibt die Fahrdynamik des Stunt-Wagens, Material 2 den Sprung am Rampenende und Material 3 die Messunsicherheiten derselben Messreihe.\n\n**Material 1 ($v$-$t$-Messreihe eines Stunt-Wagens):**\n\n| Zeit $t$ (s) | 0 | 2 | 4 | 6 | 8 | 10 |\n|---|---:|---:|---:|---:|---:|---:|\n| Geschwindigkeit $v$ (m/s) | 0.0 | 3.2 | 6.4 | 8.0 | 8.0 | 4.0 |\n\n**Material 2 (Sprung von einer Rampenkante):**\n\n- horizontaler Austritt mit der Geschwindigkeit aus der Konstantfahrtphase\n- Kantenhöhe: $h=1.25\\,\\mathrm{m}$\n- Erdbeschleunigung: $g=9.81\\,\\mathrm{m/s^2}$\n- Luftwiderstand wird vernachlässigt.\n\n**Material 3 (Messunsicherheiten):**\n\n- Geschwindigkeitsunsicherheit: $\\Delta v=\\pm 0.20\\,\\mathrm{m/s}$\n- Unsicherheit der Flugzeitbestimmung: $\\Delta t=\\pm 0.03\\,\\mathrm{s}$\n\n**Aufgaben:**\n\n**Hinweis zur Rechnung:** In den Teilaufgaben 1 bis 3 rechnen Sie mit den Nennwerten aus Material 1 und 2 (ohne Unsicherheitsrechnung). Nur in Teilaufgabe 4 sind die Unsicherheiten aus Material 3 einzubeziehen (Intervallabschätzung mit Minimal-/Maximalwerten).\n\n1. Leiten Sie aus Material 1 ein Drei-Phasen-Modell ab: Phase I (Beschleunigen bis $t=6\\,\\mathrm{s}$), Phase II (Konstantfahrt von $t=6\\,\\mathrm{s}$ bis $t=8\\,\\mathrm{s}$), Phase III (Bremsen von $t=8\\,\\mathrm{s}$ bis $t=10\\,\\mathrm{s}$). Bestimmen Sie geeignete Beschleunigungen (mittlere Beschleunigungen je Phase) und charakterisieren Sie die Phasen physikalisch. (7 BE)\n2. Bestimmen Sie die in $0$ bis $10\\,\\mathrm{s}$ zurückgelegte Gesamtstrecke direkt aus den Messdaten von Material 1 als Fläche unter dem $v$-$t$-Verlauf (stückweise lineare Verbindung benachbarter Messpunkte). (6 BE)\n3. Berechnen Sie für Material 2 die Wurfweite. (7 BE)\n4. Bestimmen Sie aus Material 3 ein Intervall für die mögliche Wurfweite. (6 BE)\n5. Nennen Sie zwei fachlich begründete Modellgrenzen der Rechnung. (4 BE)",
+          "solutionContent": "Modellannahme für Teilaufgaben 1 und 2: Drei Phasen aus den Messdaten: $0$-$6\\,\\mathrm{s}$ (Beschleunigen), $6$-$8\\,\\mathrm{s}$ (Konstantfahrt), $8$-$10\\,\\mathrm{s}$ (Bremsen).\n\n1. Phase I ($0$-$6\\,\\mathrm{s}$): mittlere Beschleunigung\n\n$$\na_1=\\frac{8.0-0.0}{6.0}=1.33\\,\\mathrm{m/s^2}\n$$\n\n(Die Messwerte zeigen dabei eine abnehmende Beschleunigung: in den 2-s-Intervallen $1.6$, $1.6$, $0.8\\,\\mathrm{m/s^2}$.)\n\nPhase II ($6$-$8\\,\\mathrm{s}$): $v=8.0\\,\\mathrm{m/s}$ konstant, also $a_2=0$.\n\nPhase III ($8$-$10\\,\\mathrm{s}$):\n\n$$\na_3=\\frac{4.0-8.0}{2.0}=-2.0\\,\\mathrm{m/s^2}\n$$\n\n**7 BE**\n\n2. Strecke = Fläche unter dem stückweise linear verbundenen $v$-$t$-Verlauf der Messdaten:\n\n$$\ns_{0-2}=\\frac{0.0+3.2}{2}\\cdot 2=3.2\\,\\mathrm{m}\n$$\n\n$$\ns_{2-4}=\\frac{3.2+6.4}{2}\\cdot 2=9.6\\,\\mathrm{m}\n$$\n\n$$\ns_{4-6}=\\frac{6.4+8.0}{2}\\cdot 2=14.4\\,\\mathrm{m}\n$$\n\n$$\ns_{6-8}=\\frac{8.0+8.0}{2}\\cdot 2=16.0\\,\\mathrm{m}\n$$\n\n$$\ns_{8-10}=\\frac{8.0+4.0}{2}\\cdot 2=12.0\\,\\mathrm{m}\n$$\n\n$$\ns_\\mathrm{ges}=3.2+9.6+14.4+16.0+12.0=55.2\\,\\mathrm{m}\n$$\n\n**6 BE**\n\n3. Nennwertrechnung (ohne Messunsicherheiten): Aus der Konstantfahrtphase: $v_x=8.0\\,\\mathrm{m/s}$.\n\nFallzeit:\n\n$$\nt_F=\\sqrt{\\frac{2h}{g}}=\\sqrt{\\frac{2\\cdot 1.25}{9.81}}=0.505\\,\\mathrm{s}\n$$\n\nWurfweite:\n\n$$\nx=v_x t_F=8.0\\cdot 0.505=4.04\\,\\mathrm{m}\n$$\n\n**7 BE**\n\n4. Unsicherheitsrechnung (nur hier): Intervallabschätzung mit Minimal-/Maximalwerten:\n\n$$\nx_{\\min}=(8.0-0.20)\\,(0.505-0.03)=3.71\\,\\mathrm{m}\n$$\n\n$$\nx_{\\max}=(8.0+0.20)\\,(0.505+0.03)=4.39\\,\\mathrm{m}\n$$\n\nDamit $x\\in[3.71\\,\\mathrm{m},\\,4.39\\,\\mathrm{m}]$.\n\n**6 BE**\n\n5. Mögliche Modellgrenzen (zwei genügen):\n\n- Luftwiderstand und Wind werden vernachlässigt.\n- Der Übergang von Fahr- zu Wurfphase wird idealisiert (keine Rotations- oder Kantenverluste).\n- Messpunkte sind diskret und nicht kontinuierlich.\n\n**4 BE**",
+          "scoring": {
+            "maxPoints": 30,
+            "passingPoints": 18,
+            "steps": [
+              {
+                "id": "s1",
+                "points": 7,
+                "description": "Phasen aus den Messdaten sinnvoll abgegrenzt und (mittlere) Beschleunigungen korrekt bestimmt"
+              },
+              {
+                "id": "s2",
+                "points": 6,
+                "description": "Gesamtstrecke aus den Messdaten mit stückweise linearer Flächenberechnung korrekt berechnet"
+              },
+              {
+                "id": "s3",
+                "points": 7,
+                "description": "Wurfweite aus dem Mehrphasenmodell korrekt berechnet"
+              },
+              {
+                "id": "s4",
+                "points": 6,
+                "description": "Unsicherheitsintervall fachlich korrekt angegeben"
+              },
+              {
+                "id": "s5",
+                "points": 4,
+                "description": "Modellgrenzen fachlich reflektiert"
+              }
+            ]
+          }
+        },
+        "phase": "E",
+        "type": "atomic"
+      },
+      "onlyChangedField": "examData.coveredGoalIds removes ce431",
+      "contentFindingDe": "Die Aufgaben liefern die komplette v(t)-Messreihe; Phasen, Flächen, Wurfweite, Unsicherheit und Modellgrenzen sind schriftlich aus bereitgestellten Daten lösbar. Keine eigene Ortsmessung oder neue experimentelle Erfassung wird verlangt.",
+      "fairPassWithoutCe431Performance": {
+        "ownExperimentPerformed": false,
+        "ownRawDataAcquired": false,
+        "acceptedPaperScoring": {
+          "maxPoints": 30,
+          "passingPoints": 18,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 7,
+              "description": "Phasen aus den Messdaten sinnvoll abgegrenzt und (mittlere) Beschleunigungen korrekt bestimmt"
+            },
+            {
+              "id": "s2",
+              "points": 6,
+              "description": "Gesamtstrecke aus den Messdaten mit stückweise linearer Flächenberechnung korrekt berechnet"
+            },
+            {
+              "id": "s3",
+              "points": 7,
+              "description": "Wurfweite aus dem Mehrphasenmodell korrekt berechnet"
+            },
+            {
+              "id": "s4",
+              "points": 6,
+              "description": "Unsicherheitsintervall fachlich korrekt angegeben"
+            },
+            {
+              "id": "s5",
+              "points": 4,
+              "description": "Modellgrenzen fachlich reflektiert"
+            }
+          ]
+        },
+        "fullWrittenCriterionFulfilmentPossibleWithoutOwnAcquisition": true,
+        "oldTaskPassPreserved": true,
+        "ce431MasteryOrWaiverJustified": false,
+        "syntheticReasoningCaseNotActualLearnerResult": true
+      }
+    },
+    {
+      "goalId": "7f83e25c-38f7-5ac2-8f9c-ec54eeef1026",
+      "before": {
+        "id": "7f83e25c-38f7-5ac2-8f9c-ec54eeef1026",
+        "shortKey": "canonical_physics_e_practice_capstone",
+        "title": "E-Phase-Klausuraufgaben Physik selbstständig lösen",
+        "titleEn": "Solve E physics written-test tasks independently",
+        "description": "Die lernende Person kann eine prüfungsnahe, materialgebundene Physik-Klausuraufgabe der Phase E selbstständig bearbeiten und fachlich begründet auswerten.",
+        "descriptionEn": "The learner can independently solve an exam-like, material-based E physics written-test task and justify the result scientifically.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "Practice",
+          "Assessment",
+          "canonical"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-physics",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "PK1_EXPERIMENTIEREN",
+            "PK2_MODELLIEREN",
+            "PK3_MATHEMATISIEREN",
+            "PK5_BEWERTEN"
+          ],
+          "guidingIdeas": [
+            "LI_BEWEGUNG",
+            "LI_ENERGIE",
+            "LI_TECHNIK"
+          ],
+          "phase": "E",
+          "area": "Klausurtraining",
+          "topicCode": "CANONICAL.PHYSICS.E.PRACTICE.CAPSTONE"
+        },
+        "requires": [
+          "2eecd0e2-a7ca-4568-9b12-3d47706c65fb",
+          "b615830a-e8b0-5754-81e0-99da98343a8d",
+          "264dc31c-ec92-5e39-a8b8-16f1d74366d4",
+          "72effc66-87f4-5f5e-8d36-1547677365fb",
+          "e39c83b0-cb4f-5454-a143-b9a159c99cba",
+          "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+          "32b896b9-f2f1-4d4e-96ad-e869ac3d3759",
+          "253a71d2-e751-4c63-acbe-238b71463cd8",
+          "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2",
+          "1232febe-868a-4dac-b4c2-e35789434601",
+          "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+          "e359f8bb-6106-44aa-9edf-694528d2d2a9",
+          "f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+          "e2da5eec-45de-5527-9ad7-16f41cacbe58",
+          "39b2a0c4-eecf-5049-b58f-e790790a3bf2",
+          "fbecbd60-5db3-51e8-94be-d66b066ffa06",
+          "761a0879-fc15-5d0c-a2b7-2b439efecd5b",
+          "76fd0ab2-079a-516e-a33b-170355336d40",
+          "156edddc-ce8d-580d-8d17-d9376d59e60e",
+          "89cadf81-143b-5f6b-82bd-29ba20d92a1b",
+          "d873ffa2-04b3-5978-a955-89563802a348",
+          "c968d263-8be4-5cf9-b320-e95398fe648f",
+          "161502b8-e52d-58d0-8f01-9f777b56d392",
+          "91b20476-12cf-50d6-880a-ea509ffe8a9a",
+          "f322c268-dc16-5d50-82dd-209834f20208",
+          "7fe3022f-fad0-5f41-af1c-d55ff214ebc6",
+          "73b5af24-7750-520a-bb16-43136ce19a5c",
+          "5a951a0b-fd6c-51a1-9ffb-2a34ed6d3931",
+          "c2c3cdc5-3e87-47c4-89fd-4eb2c5c2f2ea",
+          "21c0a5f2-4152-549a-aa9c-e02ab772f589",
+          "07f298b2-2f5e-5b16-8150-bc603fa78ecd"
+        ],
+        "contains": [],
+        "examples": [],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "examData": {
+          "reviewStatus": "needs_review",
+          "coveredGoalIds": [
+            "2eecd0e2-a7ca-4568-9b12-3d47706c65fb",
+            "8aff7aac-321b-5172-ac55-877876bfd2cd",
+            "f6b1d812-ce8b-5852-b417-e6c29b533c7a",
+            "b615830a-e8b0-5754-81e0-99da98343a8d",
+            "f23fdfa9-38b6-5157-8301-ed302476c456",
+            "264dc31c-ec92-5e39-a8b8-16f1d74366d4",
+            "75b9ca4c-178e-5df2-adc4-f7f78e9d28e5",
+            "691c11d0-fa6a-5d2e-a19c-086e89c3c233",
+            "72effc66-87f4-5f5e-8d36-1547677365fb",
+            "7ead007f-e85a-5cb5-b52d-76aae626119a",
+            "e39c83b0-cb4f-5454-a143-b9a159c99cba",
+            "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+            "ce431132-dfc4-42c2-aff6-bd72035190f8",
+            "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
+            "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+            "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+            "d6dc0e02-831d-4894-a61a-852bcc74f147",
+            "c1c71daa-042b-4f4c-8c31-0ac366f5149e",
+            "31a2ef52-114b-4d2c-a720-6ef5a390b6dc",
+            "32b896b9-f2f1-4d4e-96ad-e869ac3d3759",
+            "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+            "ad984bb6-e225-432a-952d-d83cda40b7f8",
+            "a0aaedcb-41f8-4891-af77-a69a76b8c10d",
+            "00245a43-eb89-47d2-92d7-21799dbec9f3",
+            "5f289cdc-fda1-4058-b44f-041ba1398e79",
+            "94784e0a-7ddc-48be-91fb-dc82b78eb322",
+            "7eeff2de-6015-49a6-a96e-a488d886dc9f",
+            "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+            "594f7f21-6b8a-531c-8424-5f1dcbaf0f23",
+            "253a71d2-e751-4c63-acbe-238b71463cd8",
+            "91c49019-ea51-4ce5-a919-c91c45b25e83",
+            "cbdc0b5f-8a48-5ade-be53-ab6aacaa3e73",
+            "839ecc8f-3a60-418b-bc92-64bfeef33824",
+            "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+            "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2",
+            "e790de73-f8e5-4027-bc05-9f12a0e8c9cb",
+            "1232febe-868a-4dac-b4c2-e35789434601",
+            "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+            "e359f8bb-6106-44aa-9edf-694528d2d2a9",
+            "f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+            "68c90ba6-c438-463c-9a53-cf61062d416a",
+            "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
+            "ec7a0a68-730b-5c94-ac72-a937508f8303",
+            "e918b31f-6f39-5dee-ade6-3617080fb24f",
+            "accb1d9e-cd48-5983-bcef-9b9bca4a9114",
+            "e2da5eec-45de-5527-9ad7-16f41cacbe58",
+            "39b2a0c4-eecf-5049-b58f-e790790a3bf2",
+            "fbecbd60-5db3-51e8-94be-d66b066ffa06",
+            "5fd45dbc-0eb1-591b-99a9-7386336f1456",
+            "30ddb2d7-b991-55fe-9e74-37ffe1048f9f",
+            "12260012-cf04-5409-b57d-f5b3a46d9126",
+            "ac25ffe3-fd42-592d-a937-79cc13460313",
+            "761a0879-fc15-5d0c-a2b7-2b439efecd5b",
+            "76fd0ab2-079a-516e-a33b-170355336d40",
+            "92d8f398-0c9f-523c-88d7-44165b6b4768",
+            "156edddc-ce8d-580d-8d17-d9376d59e60e",
+            "eb0ffdea-c12d-56df-b7e8-c0297d2f8aff",
+            "a42f91a4-0d21-5aa9-ae11-f48be6f2e431",
+            "60211ac1-cbe1-5182-87ef-673a068c5b0a",
+            "497f1311-17d6-56ff-afb1-422a738e5c16",
+            "16caf92e-2800-57d1-946c-5b92ce848a96",
+            "89cadf81-143b-5f6b-82bd-29ba20d92a1b",
+            "15b56a1e-3eec-52ca-82fa-b4df9ce88415",
+            "25edd154-b1d8-546c-94a5-88502b6725cd",
+            "d873ffa2-04b3-5978-a955-89563802a348",
+            "481ffd56-d585-56fe-b525-ed423e30eed3",
+            "1b833656-cd16-5b21-973a-9810960dcfd2",
+            "c968d263-8be4-5cf9-b320-e95398fe648f",
+            "88d07c80-5d7d-5c70-b385-b22769381e44",
+            "37b33812-d428-5953-852e-57a53a4347fe",
+            "2088ccf0-48f4-51d4-be5f-67affd0fb099",
+            "5f17e992-fd07-56ee-80a0-567f45bbd10c",
+            "912a5489-abcc-55f9-8f1a-9ee1e2d7fd9d",
+            "36c4590c-6032-5a37-b660-f15951dee076",
+            "0de2ca8c-7272-59ed-9c89-0971d6ce2f47",
+            "239aac49-1137-5df5-b197-49e72292e40c",
+            "e713dc34-beeb-5807-8a90-f872e049aa4e",
+            "6e79ef4a-2666-5f7a-885c-b175954506f8",
+            "741e7056-69e4-59be-a159-0e2583d748d1",
+            "eaef821b-4dbe-52a4-a0e2-574e5ce2040d",
+            "14099861-897c-53f4-8c6c-48d088ee9f01",
+            "be921c3b-7db9-50b5-a110-92f31673fc62",
+            "81a45dec-37be-529b-89ce-2f3101237293",
+            "616ac6cf-901b-509a-8cbb-bd422ddecf05",
+            "b61d233a-1902-526b-a9b5-6b3d553f4013",
+            "b6dfd3e6-2dd3-5983-9a27-7e7db70e8db8",
+            "77604656-7ffe-516c-8af3-7cbe7de2f2a4",
+            "d0cebf18-8b2a-52d6-857d-ef18cd64541c",
+            "161502b8-e52d-58d0-8f01-9f777b56d392",
+            "91b20476-12cf-50d6-880a-ea509ffe8a9a",
+            "18058384-a1bc-5ba2-8f5d-1fe9498acbf0",
+            "aed9161b-ddc4-559c-be8f-baeeddf224f3",
+            "f322c268-dc16-5d50-82dd-209834f20208",
+            "cd1903a5-d70a-5320-9124-b6b24917ba14",
+            "fb73c94b-6a23-5351-8fef-db2c2533e361",
+            "7fe3022f-fad0-5f41-af1c-d55ff214ebc6",
+            "7982cd8e-2151-59e7-858d-c1361c5d249e",
+            "93ece389-78c5-5141-9ef1-c68bd558306e",
+            "23c5382a-4b0f-5715-84b5-cf87b8323152",
+            "73b5af24-7750-520a-bb16-43136ce19a5c",
+            "cf570e66-2ce2-5923-9033-c97d74119553",
+            "37f17e7e-9fcf-5dca-ac10-e94cb8420be5",
+            "642aebd7-66cd-5a50-b543-73c4b207525d",
+            "5a951a0b-fd6c-51a1-9ffb-2a34ed6d3931",
+            "b49e0f6b-df2a-5643-b3ce-a9dfdf25f3bc",
+            "21c0a5f2-4152-549a-aa9c-e02ab772f589",
+            "8daaf751-93fe-56d9-8697-ac30237061bd",
+            "07f298b2-2f5e-5b16-8150-bc603fa78ecd"
+          ],
+          "coveredStrands": [
+            "LI_BEWEGUNG",
+            "LI_ENERGIE",
+            "LI_TECHNIK",
+            "LI_MATERIE",
+            "KONZEPT_ERHALTUNG_GLEICHGEWICHT",
+            "KONZEPT_ZUFALL_DETERMINIERTHEIT",
+            "LI_KOSMOS"
+          ],
+          "demandLevels": [
+            "AB1",
+            "AB2",
+            "AB3"
+          ],
+          "taskContent": "**Kontext:**\n\nBearbeiten Sie eine materialgebundene Klausuraufgabe zu \"E-Phase-Klausuraufgaben Physik selbstständig lösen\". Nutzen Sie geeignete Modelle, Diagramme, Rechnungen und eine fachlich begruendete Bewertung.\n\n**Aufgaben:**\n\n1. Stellen Sie die relevanten physikalischen Groessen, Modelle und Zusammenhaenge dar. (8 BE)\n2. Werten Sie gegebene Mess- oder Materialdaten rechnerisch aus und dokumentieren Sie den Loesungsweg. (10 BE)\n3. Deuten Sie das Ergebnis fachlich und pruefen Sie Modellgrenzen. (6 BE)\n4. Beurteilen Sie eine Anwendung oder Entscheidungssituation mit physikalischen Kriterien. (6 BE)",
+          "solutionContent": "Eine vollstaendige Loesung zu \"E-Phase-Klausuraufgaben Physik selbstständig lösen\" enthaelt die Auswahl eines passenden Modells, korrekte Groessengleichungen mit Einheiten, nachvollziehbare Rechnungen, eine fachliche Deutung der Ergebnisse und eine begruendete Bewertung der Modellgrenzen.",
+          "scoring": {
+            "maxPoints": 30,
+            "passingPoints": 18,
+            "steps": [
+              {
+                "id": "s1",
+                "points": 8,
+                "description": "relevante Modelle und Groessen fuer E fachlich richtig dargestellt"
+              },
+              {
+                "id": "s2",
+                "points": 10,
+                "description": "Materialdaten rechnerisch korrekt ausgewertet"
+              },
+              {
+                "id": "s3",
+                "points": 6,
+                "description": "Ergebnisse fachlich gedeutet und Modellgrenzen benannt"
+              },
+              {
+                "id": "s4",
+                "points": 6,
+                "description": "Anwendungssituation physikalisch begruendet bewertet"
+              }
+            ]
+          },
+          "reviewNote": "K6-v2: schriftliche Aufgabe und Identität unverändert; kein Nachweis der vollen eigenen Video-/Wurffitkompetenz d67502e3. Deren Abdeckung wurde entfernt. Reale Aufnahme/Fits nur im gesonderten aktuellen Nachweis6345871e. Vertragskorrektur schreibt oder migriert keine Lernendenresultate; aktuelles unabhängiges Review vor Freigabe nötig."
+        }
+      },
+      "after": {
+        "id": "7f83e25c-38f7-5ac2-8f9c-ec54eeef1026",
+        "shortKey": "canonical_physics_e_practice_capstone",
+        "title": "E-Phase-Klausuraufgaben Physik selbstständig lösen",
+        "titleEn": "Solve E physics written-test tasks independently",
+        "description": "Die lernende Person kann eine prüfungsnahe, materialgebundene Physik-Klausuraufgabe der Phase E selbstständig bearbeiten und fachlich begründet auswerten.",
+        "descriptionEn": "The learner can independently solve an exam-like, material-based E physics written-test task and justify the result scientifically.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "Practice",
+          "Assessment",
+          "canonical"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-physics",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "PK1_EXPERIMENTIEREN",
+            "PK2_MODELLIEREN",
+            "PK3_MATHEMATISIEREN",
+            "PK5_BEWERTEN"
+          ],
+          "guidingIdeas": [
+            "LI_BEWEGUNG",
+            "LI_ENERGIE",
+            "LI_TECHNIK"
+          ],
+          "phase": "E",
+          "area": "Klausurtraining",
+          "topicCode": "CANONICAL.PHYSICS.E.PRACTICE.CAPSTONE"
+        },
+        "requires": [
+          "2eecd0e2-a7ca-4568-9b12-3d47706c65fb",
+          "b615830a-e8b0-5754-81e0-99da98343a8d",
+          "264dc31c-ec92-5e39-a8b8-16f1d74366d4",
+          "72effc66-87f4-5f5e-8d36-1547677365fb",
+          "e39c83b0-cb4f-5454-a143-b9a159c99cba",
+          "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+          "32b896b9-f2f1-4d4e-96ad-e869ac3d3759",
+          "253a71d2-e751-4c63-acbe-238b71463cd8",
+          "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2",
+          "1232febe-868a-4dac-b4c2-e35789434601",
+          "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+          "e359f8bb-6106-44aa-9edf-694528d2d2a9",
+          "f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+          "e2da5eec-45de-5527-9ad7-16f41cacbe58",
+          "39b2a0c4-eecf-5049-b58f-e790790a3bf2",
+          "fbecbd60-5db3-51e8-94be-d66b066ffa06",
+          "761a0879-fc15-5d0c-a2b7-2b439efecd5b",
+          "76fd0ab2-079a-516e-a33b-170355336d40",
+          "156edddc-ce8d-580d-8d17-d9376d59e60e",
+          "89cadf81-143b-5f6b-82bd-29ba20d92a1b",
+          "d873ffa2-04b3-5978-a955-89563802a348",
+          "c968d263-8be4-5cf9-b320-e95398fe648f",
+          "161502b8-e52d-58d0-8f01-9f777b56d392",
+          "91b20476-12cf-50d6-880a-ea509ffe8a9a",
+          "f322c268-dc16-5d50-82dd-209834f20208",
+          "7fe3022f-fad0-5f41-af1c-d55ff214ebc6",
+          "73b5af24-7750-520a-bb16-43136ce19a5c",
+          "5a951a0b-fd6c-51a1-9ffb-2a34ed6d3931",
+          "c2c3cdc5-3e87-47c4-89fd-4eb2c5c2f2ea",
+          "21c0a5f2-4152-549a-aa9c-e02ab772f589",
+          "07f298b2-2f5e-5b16-8150-bc603fa78ecd"
+        ],
+        "contains": [],
+        "examples": [],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "examData": {
+          "reviewStatus": "needs_review",
+          "coveredGoalIds": [
+            "2eecd0e2-a7ca-4568-9b12-3d47706c65fb",
+            "8aff7aac-321b-5172-ac55-877876bfd2cd",
+            "f6b1d812-ce8b-5852-b417-e6c29b533c7a",
+            "b615830a-e8b0-5754-81e0-99da98343a8d",
+            "f23fdfa9-38b6-5157-8301-ed302476c456",
+            "264dc31c-ec92-5e39-a8b8-16f1d74366d4",
+            "75b9ca4c-178e-5df2-adc4-f7f78e9d28e5",
+            "691c11d0-fa6a-5d2e-a19c-086e89c3c233",
+            "72effc66-87f4-5f5e-8d36-1547677365fb",
+            "7ead007f-e85a-5cb5-b52d-76aae626119a",
+            "e39c83b0-cb4f-5454-a143-b9a159c99cba",
+            "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+            "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
+            "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+            "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+            "d6dc0e02-831d-4894-a61a-852bcc74f147",
+            "c1c71daa-042b-4f4c-8c31-0ac366f5149e",
+            "31a2ef52-114b-4d2c-a720-6ef5a390b6dc",
+            "32b896b9-f2f1-4d4e-96ad-e869ac3d3759",
+            "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+            "ad984bb6-e225-432a-952d-d83cda40b7f8",
+            "a0aaedcb-41f8-4891-af77-a69a76b8c10d",
+            "00245a43-eb89-47d2-92d7-21799dbec9f3",
+            "5f289cdc-fda1-4058-b44f-041ba1398e79",
+            "94784e0a-7ddc-48be-91fb-dc82b78eb322",
+            "7eeff2de-6015-49a6-a96e-a488d886dc9f",
+            "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+            "594f7f21-6b8a-531c-8424-5f1dcbaf0f23",
+            "253a71d2-e751-4c63-acbe-238b71463cd8",
+            "91c49019-ea51-4ce5-a919-c91c45b25e83",
+            "cbdc0b5f-8a48-5ade-be53-ab6aacaa3e73",
+            "839ecc8f-3a60-418b-bc92-64bfeef33824",
+            "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+            "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2",
+            "e790de73-f8e5-4027-bc05-9f12a0e8c9cb",
+            "1232febe-868a-4dac-b4c2-e35789434601",
+            "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+            "e359f8bb-6106-44aa-9edf-694528d2d2a9",
+            "f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+            "68c90ba6-c438-463c-9a53-cf61062d416a",
+            "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
+            "ec7a0a68-730b-5c94-ac72-a937508f8303",
+            "e918b31f-6f39-5dee-ade6-3617080fb24f",
+            "accb1d9e-cd48-5983-bcef-9b9bca4a9114",
+            "e2da5eec-45de-5527-9ad7-16f41cacbe58",
+            "39b2a0c4-eecf-5049-b58f-e790790a3bf2",
+            "fbecbd60-5db3-51e8-94be-d66b066ffa06",
+            "5fd45dbc-0eb1-591b-99a9-7386336f1456",
+            "30ddb2d7-b991-55fe-9e74-37ffe1048f9f",
+            "12260012-cf04-5409-b57d-f5b3a46d9126",
+            "ac25ffe3-fd42-592d-a937-79cc13460313",
+            "761a0879-fc15-5d0c-a2b7-2b439efecd5b",
+            "76fd0ab2-079a-516e-a33b-170355336d40",
+            "92d8f398-0c9f-523c-88d7-44165b6b4768",
+            "156edddc-ce8d-580d-8d17-d9376d59e60e",
+            "eb0ffdea-c12d-56df-b7e8-c0297d2f8aff",
+            "a42f91a4-0d21-5aa9-ae11-f48be6f2e431",
+            "60211ac1-cbe1-5182-87ef-673a068c5b0a",
+            "497f1311-17d6-56ff-afb1-422a738e5c16",
+            "16caf92e-2800-57d1-946c-5b92ce848a96",
+            "89cadf81-143b-5f6b-82bd-29ba20d92a1b",
+            "15b56a1e-3eec-52ca-82fa-b4df9ce88415",
+            "25edd154-b1d8-546c-94a5-88502b6725cd",
+            "d873ffa2-04b3-5978-a955-89563802a348",
+            "481ffd56-d585-56fe-b525-ed423e30eed3",
+            "1b833656-cd16-5b21-973a-9810960dcfd2",
+            "c968d263-8be4-5cf9-b320-e95398fe648f",
+            "88d07c80-5d7d-5c70-b385-b22769381e44",
+            "37b33812-d428-5953-852e-57a53a4347fe",
+            "2088ccf0-48f4-51d4-be5f-67affd0fb099",
+            "5f17e992-fd07-56ee-80a0-567f45bbd10c",
+            "912a5489-abcc-55f9-8f1a-9ee1e2d7fd9d",
+            "36c4590c-6032-5a37-b660-f15951dee076",
+            "0de2ca8c-7272-59ed-9c89-0971d6ce2f47",
+            "239aac49-1137-5df5-b197-49e72292e40c",
+            "e713dc34-beeb-5807-8a90-f872e049aa4e",
+            "6e79ef4a-2666-5f7a-885c-b175954506f8",
+            "741e7056-69e4-59be-a159-0e2583d748d1",
+            "eaef821b-4dbe-52a4-a0e2-574e5ce2040d",
+            "14099861-897c-53f4-8c6c-48d088ee9f01",
+            "be921c3b-7db9-50b5-a110-92f31673fc62",
+            "81a45dec-37be-529b-89ce-2f3101237293",
+            "616ac6cf-901b-509a-8cbb-bd422ddecf05",
+            "b61d233a-1902-526b-a9b5-6b3d553f4013",
+            "b6dfd3e6-2dd3-5983-9a27-7e7db70e8db8",
+            "77604656-7ffe-516c-8af3-7cbe7de2f2a4",
+            "d0cebf18-8b2a-52d6-857d-ef18cd64541c",
+            "161502b8-e52d-58d0-8f01-9f777b56d392",
+            "91b20476-12cf-50d6-880a-ea509ffe8a9a",
+            "18058384-a1bc-5ba2-8f5d-1fe9498acbf0",
+            "aed9161b-ddc4-559c-be8f-baeeddf224f3",
+            "f322c268-dc16-5d50-82dd-209834f20208",
+            "cd1903a5-d70a-5320-9124-b6b24917ba14",
+            "fb73c94b-6a23-5351-8fef-db2c2533e361",
+            "7fe3022f-fad0-5f41-af1c-d55ff214ebc6",
+            "7982cd8e-2151-59e7-858d-c1361c5d249e",
+            "93ece389-78c5-5141-9ef1-c68bd558306e",
+            "23c5382a-4b0f-5715-84b5-cf87b8323152",
+            "73b5af24-7750-520a-bb16-43136ce19a5c",
+            "cf570e66-2ce2-5923-9033-c97d74119553",
+            "37f17e7e-9fcf-5dca-ac10-e94cb8420be5",
+            "642aebd7-66cd-5a50-b543-73c4b207525d",
+            "5a951a0b-fd6c-51a1-9ffb-2a34ed6d3931",
+            "b49e0f6b-df2a-5643-b3ce-a9dfdf25f3bc",
+            "21c0a5f2-4152-549a-aa9c-e02ab772f589",
+            "8daaf751-93fe-56d9-8697-ac30237061bd",
+            "07f298b2-2f5e-5b16-8150-bc603fa78ecd"
+          ],
+          "coveredStrands": [
+            "LI_BEWEGUNG",
+            "LI_ENERGIE",
+            "LI_TECHNIK",
+            "LI_MATERIE",
+            "KONZEPT_ERHALTUNG_GLEICHGEWICHT",
+            "KONZEPT_ZUFALL_DETERMINIERTHEIT",
+            "LI_KOSMOS"
+          ],
+          "demandLevels": [
+            "AB1",
+            "AB2",
+            "AB3"
+          ],
+          "taskContent": "**Kontext:**\n\nBearbeiten Sie eine materialgebundene Klausuraufgabe zu \"E-Phase-Klausuraufgaben Physik selbstständig lösen\". Nutzen Sie geeignete Modelle, Diagramme, Rechnungen und eine fachlich begruendete Bewertung.\n\n**Aufgaben:**\n\n1. Stellen Sie die relevanten physikalischen Groessen, Modelle und Zusammenhaenge dar. (8 BE)\n2. Werten Sie gegebene Mess- oder Materialdaten rechnerisch aus und dokumentieren Sie den Loesungsweg. (10 BE)\n3. Deuten Sie das Ergebnis fachlich und pruefen Sie Modellgrenzen. (6 BE)\n4. Beurteilen Sie eine Anwendung oder Entscheidungssituation mit physikalischen Kriterien. (6 BE)",
+          "solutionContent": "Eine vollstaendige Loesung zu \"E-Phase-Klausuraufgaben Physik selbstständig lösen\" enthaelt die Auswahl eines passenden Modells, korrekte Groessengleichungen mit Einheiten, nachvollziehbare Rechnungen, eine fachliche Deutung der Ergebnisse und eine begruendete Bewertung der Modellgrenzen.",
+          "scoring": {
+            "maxPoints": 30,
+            "passingPoints": 18,
+            "steps": [
+              {
+                "id": "s1",
+                "points": 8,
+                "description": "relevante Modelle und Groessen fuer E fachlich richtig dargestellt"
+              },
+              {
+                "id": "s2",
+                "points": 10,
+                "description": "Materialdaten rechnerisch korrekt ausgewertet"
+              },
+              {
+                "id": "s3",
+                "points": 6,
+                "description": "Ergebnisse fachlich gedeutet und Modellgrenzen benannt"
+              },
+              {
+                "id": "s4",
+                "points": 6,
+                "description": "Anwendungssituation physikalisch begruendet bewertet"
+              }
+            ]
+          },
+          "reviewNote": "K6-v2: schriftliche Aufgabe und Identität unverändert; kein Nachweis der vollen eigenen Video-/Wurffitkompetenz d67502e3. Deren Abdeckung wurde entfernt. Reale Aufnahme/Fits nur im gesonderten aktuellen Nachweis6345871e. Vertragskorrektur schreibt oder migriert keine Lernendenresultate; aktuelles unabhängiges Review vor Freigabe nötig."
+        }
+      },
+      "onlyChangedField": "examData.coveredGoalIds removes ce431",
+      "contentFindingDe": "Die allgemeine materialgebundene Klausur verlangt Darstellung, Rechnen, Deutung und Bewertung anhand gegebener Daten. Kein eigenes Experiment oder persönlich erfasstes Orts-Zeit-/Intervallgeschwindigkeitsprotokoll steht in Aufgabe, Lösung oder Raster.",
+      "fairPassWithoutCe431Performance": {
+        "ownExperimentPerformed": false,
+        "ownRawDataAcquired": false,
+        "acceptedPaperScoring": {
+          "maxPoints": 30,
+          "passingPoints": 18,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 8,
+              "description": "relevante Modelle und Groessen fuer E fachlich richtig dargestellt"
+            },
+            {
+              "id": "s2",
+              "points": 10,
+              "description": "Materialdaten rechnerisch korrekt ausgewertet"
+            },
+            {
+              "id": "s3",
+              "points": 6,
+              "description": "Ergebnisse fachlich gedeutet und Modellgrenzen benannt"
+            },
+            {
+              "id": "s4",
+              "points": 6,
+              "description": "Anwendungssituation physikalisch begruendet bewertet"
+            }
+          ]
+        },
+        "fullWrittenCriterionFulfilmentPossibleWithoutOwnAcquisition": true,
+        "oldTaskPassPreserved": true,
+        "ce431MasteryOrWaiverJustified": false,
+        "syntheticReasoningCaseNotActualLearnerResult": true
+      }
+    }
+  ],
+  "newActualAcquisitionAssessment": {
+    "id": "cd182a3c-be23-5f5a-87f6-0898ea16cb74",
+    "shortKey": "canonical_physics_k6_position_and_velocity",
+    "title": "Eigene Bewegungsmessung und unabhängiges Geschwindigkeitsprotokoll",
+    "titleEn": "Own motion measurements and an independent velocity log",
+    "description": "Die lernende Person kann eigene Bewegungsdaten erfassen und in zwei Diagrammen prüfen sowie ein unabhängiges t-v-Modell in Ortsmarken übertragen.",
+    "descriptionEn": "The learner can record and check their own motion data using two graphs and translate an independent time-velocity model into position marks.",
+    "weight": 1,
+    "tags": [
+      "GK",
+      "LK",
+      "Practice",
+      "Assessment",
+      "canonical"
+    ],
+    "contains": [],
+    "requires": [
+      "ce431132-dfc4-42c2-aff6-bd72035190f8"
+    ],
+    "dimensionTags": {
+      "framework": "canonical-gymnasium-physics",
+      "demandLevel": "AB2",
+      "processCompetencies": [
+        "PK3_MATHEMATISIEREN"
+      ],
+      "guidingIdeas": [],
+      "phase": "GLOBAL",
+      "area": "Messdaten und Bewegung",
+      "topicCode": "CANONICAL.PHYSICS.PRACTICE.K6.POSITION_AND_VELOCITY"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "type": "atomic",
+    "examData": {
+      "reviewStatus": "needs_review",
+      "reviewNote": "Autorenvorschlag; unabhängige Inhalts-, Abdeckungs- und Qualitätsreviews ausstehend. Keine Lernendenresultate.",
+      "coveredGoalIds": [
+        "ce431132-dfc4-42c2-aff6-bd72035190f8"
+      ],
+      "coveredStrands": [],
+      "demandLevels": [
+        "AB1",
+        "AB2"
+      ],
+      "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/physik/k6-measurement-rate-20261115-v3/position-and-velocity.md",
+      "taskContent": "1. Erfasse selbst eine sichere langsame eindimensionale Bewegung eines Spielzeugwagens oder eines auf einem Tisch verschobenen Gegenstands: mindestens ein Hinweg, eine Pause und ein Rückweg, mindestens acht Zeit-Ort-Paare. Vereinbare Achse und Nullpunkt; dokumentiere Gerät, Zeitbasis und Ortsauflösung. Reiche das unveränderte Protokoll und eine Skizze des Aufbaus ein. Wähle und begründe Auswerteintervalle, zeichne t-s und aus Ortsdifferenzen bestimmte mittlere Intervallgeschwindigkeiten im t-v-Diagramm; kennzeichne deren Intervallbezug. Erkläre Ruhe/Richtung und eine durch Auflösung begrenzte Aussage. Erfunde keine Messdaten; gelieferte Beispiele ersetzen das eigene Protokoll nicht. (12 BE)\n\n2. Unabhängiges Idealmodell: s(2 s)=4 m; v=+2 m/s auf [2;4] s, v=0 auf [4;5] s, v=−1 m/s auf [5;8] s. Bestimme die Ortsmarken bei 4,5 und 8 s über vorzeichenbehaftete Flächen und zeichne t-s. Kontrollmessungen mit Ortsauflösung ±0,05 m liefern 8,02 m; 7,98 m; 5,02 m. Beurteile die Konsistenz. Erkläre die Wirkung einer umgekehrten Ortsachse bei demselben Nullpunkt. (8 BE)",
+      "taskContentEn": "1. Record a safe slow one-dimensional motion of a toy cart or an object moved on a table: at least one outward interval, one pause, and one return interval, with at least eight time-position pairs. Define axis and origin; document the device, time base, and position resolution. Submit the unchanged log and a setup sketch. Choose and justify analysis intervals, draw time-position and time-velocity graphs of average interval velocities calculated from position differences, and label their intervals. Explain rest/direction and one claim bounded by resolution. Do not invent measurements; supplied examples do not replace your own log. (12 points)\n\n2. Independent ideal model: s(2 s)=4 m; v=+2 m/s over [2,4] s, v=0 over [4,5] s, and v=−1 m/s over [5,8] s. Use signed areas to find position marks at 4,5,8 s and draw time-position. Check measurements with resolution ±0.05 m are 8.02,7.98,5.02 m. Judge consistency. Explain reversing the position axis while keeping the same origin. (8 points)",
+      "solutionContent": "1. Individuelle Messdaten: Prüfung am unveränderten Protokoll; mindestens acht echte Paare, dokumentierte Geräte/Achse/Auflösung. t-s zeigt Hinweg, Pause und Rückweg. Δs/Δt wird je Intervall mit Einheit bestimmt und im t-v-Diagramm als Mittel gekennzeichnet; keine Punktgeschwindigkeit behaupten. Bei einem beispielhaften Ortsfehler ±ε kann Δs um bis zu 2ε abweichen; deshalb können kleine Δt stärkere Geschwindigkeitsstreuung bewirken. Auch eine korrekte qualitative Begründung genügt, eine formale Fehlerfortpflanzung ist nicht verlangt. Ein Messprotokoll kann nicht aus einer Musterlösung übernommen werden. 2. Δs=+4,0,−3 m; Orte 8,8,5 m. t-s steigt linear, bleibt konstant, fällt linear. Alle Kontrollwerte stimmen innerhalb ±0,05 m. Achsenumkehr negiert Orte und Geschwindigkeiten, nicht Dauer, Strecke oder tatsächliche Bewegung.",
+      "solutionContentEn": "1. Individual data are assessed against the unchanged log: at least eight genuine pairs and documented equipment/axis/resolution. Time-position shows outward motion, pause, and return. Δs/Δt is calculated with units for each interval and labelled as an average in time-velocity; no instantaneous velocity is asserted. With example position error ±ε, Δs can vary by up to 2ε; small Δt can therefore create larger velocity scatter. A correct qualitative explanation is sufficient; formal error propagation is not required. An experimental log cannot be copied from the reference solution. 2. Displacements are +4,0,−3 m; positions 8,8,5 m. Time-position rises linearly, stays constant, then falls linearly. All checks agree within ±0.05 m. Reversing the axis negates positions and velocities, not duration, distance, or the actual motion.",
+      "scoring": {
+        "maxPoints": 20,
+        "passingPoints": 20,
+        "steps": [
+          {
+            "id": "position-and-velocity_1",
+            "points": 4,
+            "description": "Eigenes unverändertes Messprotokoll mit mindestens acht Paaren, Aufbau, Achse und Auflösung vorgelegt. / EN: Submits own unchanged log with at least eight pairs, setup, axis, and resolution."
+          },
+          {
+            "id": "position-and-velocity_2",
+            "points": 4,
+            "description": "t-s und t-v mit Einheiten, korrekten Intervallmitteln und begründeter Intervallwahl konstruiert. / EN: Constructs both graphs with units, correct interval averages, and justified intervals."
+          },
+          {
+            "id": "position-and-velocity_3",
+            "points": 4,
+            "description": "Ruhe, Richtung und den Einfluss der Auflösung anhand der eigenen Daten erklärt. / EN: Explains rest, direction, and resolution effects using own data."
+          },
+          {
+            "id": "position-and-velocity_4",
+            "points": 4,
+            "description": "Drei vorzeichenbehaftete Flächen, Ortsmarken und t-s-Abschnitte korrekt bestimmt. / EN: Finds three signed areas, position marks, and time-position intervals correctly."
+          },
+          {
+            "id": "position-and-velocity_5",
+            "points": 4,
+            "description": "Kontrollmessungen begrenzt verglichen und Achsenumkehr physikalisch korrekt erklärt. / EN: Makes a bounded comparison with check measurements and explains axis reversal correctly."
+          }
+        ]
+      }
+    }
+  },
+  "preserved": [
+    "all identities",
+    "all task and solution text DE/EN",
+    "all scoring and thresholds",
+    "requires and applicability",
+    "old stored learner results untouched"
+  ],
+  "notClaimed": [
+    "review of unrelated old coverage",
+    "human approval",
+    "actual learner measurements",
+    "native release or CI"
+  ]
+}
