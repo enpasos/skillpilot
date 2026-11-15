@@ -2,6 +2,12 @@
 
 A careful reader must be able to reconstruct every visible learner-facing tree directly from documented JSON fields without inspecting runtime code or relying on title/`phase` heuristics.
 
+**Binding target model, 15 November 2026:** One shared plan per Land and duration model is the placement authority across selected subjects; course profiles select contributions rather than contradictory stages for the same goal. Single-stage views are derived excerpts. The full root carries only Sekundarstufe I and II, exactly II after I; orientation, practice, and assessments belong inside the stages. The nationwide view is no Land plan.
+
+Carried in means evidenced source assignment; placed in means didactic learning placement. A canonical marker justifies at most a labeled provisional default assignment. A prerequisiteOnly reference's position asserts no stage. Necessary atoms outside carried targets receive placement at earliest actual need in the closed personal scope; carried late targets are not silently moved. Justified earlier preparation preserves original source assignment. Source checks and routes inspect their own distinct claims.
+
+The [stage-plan foundation](repo:contracts/curriculum-package/v1.3/README.md) contains shared authorities, excerpts, and generated compatibility views. It activates zero real Land plans; shared production-reader migration remains pending. The v1.3 directory is no published package version. Existing field contracts below are a compatibility footprint, not evidence of completed cluster, package, or runtime migration.
+
 ### Four View Families and Five Non-Negotiable Projection Rules {#sec:sga-vp-families}
 
 | View Family | Primary Question Answered | Exclusive Structural Source of Truth |
@@ -31,11 +37,11 @@ Under the Product Owner decisions of **9 November 2026**, **10 November 2026**, 
 
 ### Learning Units in Projected Views {#sec:sga-vp-units anchors="learning-units-in-projected-views,curriculum-levels-in-projected-views"}
 
-Learning units are declared in the placement layer of their skill landscape (Product Owner decision of 12 November 2026): a `programUnits` entry of kind `learningUnit` owns atomic goals through `goalPlacements` of relation `own` and names the unit that requires it as a child through `parentUnitId` ([Graph Definition §11.2](repo:docs/concept/skill-graph/learning-units.md#sec-unit-representation); [field reference](repo:docs/dev/landscape-json-field-reference.md)); `validate:learning-units` checks these declarations. The program-tree projection attaches goals only through `primary` placements, so an `own` placement changes no visible tree.
+In the existing compatibility contract, learning units are declared in the placement layer of their skill landscape (decision of 12 November 2026): a `programUnits` entry of kind `learningUnit` owns atomic goals through `goalPlacements` of relation `own` and names the unit that requires it as a child through `parentUnitId` ([Graph Definition §11.2](repo:docs/concept/skill-graph/learning-units.md#sec-unit-representation); [field reference](repo:docs/dev/landscape-json-field-reference.md)); `validate:learning-units` checks these declarations. The program-tree projection attaches goals only through `primary` placements, so an `own` placement changes no visible tree.
 
 Projected [Learning Units](repo:docs/concept/skill-graph/learning-units.md) (target concept; runtime compiler pending) bind to the reviewed composition view or program projection:
 
 1. **Single direct course owner:** Every planned atomic acquisition has exactly one directly owning unit in the resolved course; ancestors aggregate child obligations without duplicating ownership.
 2. **Cross-subject identity:** Shared canonical goals (for example `target` in Mathematics and `prerequisiteOnly` in Physics) count once in the joint plan while retaining subject-local roles.
 3. **Full prerequisite accounting:** Every required atom must be covered by the explicit entry basis or a planned acquisition no later than its dependent target.
-4. **Local recognition & block ordering:** Implicit recognition evaluates only against each directly owning unit's reviewed contract; parent exams neither reopen completed child units nor pass protected child exams/cards, and [whole-unit progression](repo:docs/concept/skill-graph/learning-unit-progression.md) remains a separate explicit course policy.
+4. **Local recognition & block ordering:** Implicit recognition evaluates only against each directly owning unit's reviewed contract; parent exams neither reopen completed child units nor pass protected child exams/cards, and [whole-unit progression](repo:docs/concept/skill-graph/learning-unit-progression.md) follows declared after and E1 to E4 in the target model; it creates no access lock.

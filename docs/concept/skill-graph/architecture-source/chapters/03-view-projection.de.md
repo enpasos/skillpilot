@@ -2,6 +2,12 @@
 
 Eine sorgfältig lesende Person muss jeden sichtbaren Lernbaum allein aus dokumentierten JSON-Feldern rekonstruieren können – ohne Laufzeitcode zu lesen oder auf Titel- bzw. `phase`-Heuristiken zurückzugreifen.
 
+**Verbindliches Zielmodell, 15. November 2026:** Ein gemeinsamer Plan je Land und Dauermodell ist die Platzierungsautorität über die gewählten Fächer; Kursprofile wählen Anteile, nicht widersprechende Stufen desselben Ziels. Sichten einer Stufe sind daraus abgeleitete Ausschnitte. Die vollständige Wurzel trägt nur Sekundarstufe I und II, genau II after I; Orientierung, Übung und Prüfungen liegen innerhalb der Stufen. Die bundesweite Sicht ist kein Landesplan.
+
+Geführt in bezeichnet die belegte Quellenzuordnung, steht in den didaktischen Lernplatz. Eine kanonische Marke begründet höchstens eine gekennzeichnete vorläufige Standardzuordnung. Die Stelle einer prerequisiteOnly-Referenz behauptet keine Stufe. Notwendige Atome außerhalb der geführten Ziele erhalten ihren Lernplatz am frühesten tatsächlichen Bedarf im geschlossenen persönlichen Umfang; geführte späte Ziele werden nicht stillschweigend verschoben. Begründete frühere Vorbereitung erhält die ursprüngliche Quellenzuordnung. Quellenprüfungen und Routen prüfen ihre jeweils eigenen Aussagen.
+
+Die [Stufenplan-Grundlage](repo:contracts/curriculum-package/v1.3/README.md) enthält gemeinsame Autoritäten, Ausschnitte und daraus erzeugte Kompatibilitätssichten. Sie aktiviert null echte Landespläne; die gemeinsame produktive Leserumstellung steht aus. Das Verzeichnis v1.3 ist keine veröffentlichte Paketversion. Die nachstehenden bestehenden Feldverträge sind Kompatibilitätsstand, kein Nachweis einer abgeschlossenen Cluster-, Paket- oder Laufzeitmigration.
+
 ### Vier Sichtenfamilien und fünf unverhandelbare Projektionsregeln {#sec:sga-vp-families}
 
 | Sichtenfamilie | Beantwortete Leitfrage | Ausschließliche strukturelle Wahrheitsquelle |
@@ -31,11 +37,11 @@ Gemäß den Product-Owner-Entscheidungen vom **9. November 2026**, **10. Novembe
 
 ### Lerneinheiten in projizierten Sichten {#sec:sga-vp-units anchors="learning-units-in-projected-views,curriculum-levels-in-projected-views"}
 
-Lerneinheiten werden in der Platzierungsschicht ihrer Skill-Landschaft deklariert (Entscheidung des Product Owners vom 12. November 2026): Ein `programUnits`-Eintrag der Art `learningUnit` besitzt atomare Ziele über `goalPlacements` der Relation `own` und nennt über `parentUnitId` die Einheit, die ihn als Kind verlangt ([Graph-Definition §11.2](repo:docs/concept/skill-graph/learning-units.md#sec-unit-representation); [Feldreferenz](repo:docs/dev/landscape-json-field-reference.md)); `validate:learning-units` prüft diese Deklarationen. Die Programmbaumprojektion hängt Ziele nur über `primary`-Platzierungen ein, eine `own`-Platzierung ändert also keinen sichtbaren Baum.
+Im bestehenden Kompatibilitätsvertrag werden Lerneinheiten in der Platzierungsschicht ihrer Skill-Landschaft deklariert (Entscheidung vom 12. November 2026): Ein `programUnits`-Eintrag der Art `learningUnit` besitzt atomare Ziele über `goalPlacements` der Relation `own` und nennt über `parentUnitId` die Einheit, die ihn als Kind verlangt ([Graph-Definition §11.2](repo:docs/concept/skill-graph/learning-units.md#sec-unit-representation); [Feldreferenz](repo:docs/dev/landscape-json-field-reference.md)); `validate:learning-units` prüft diese Deklarationen. Die Programmbaumprojektion hängt Ziele nur über `primary`-Platzierungen ein, eine `own`-Platzierung ändert also keinen sichtbaren Baum.
 
 Projizierte [Lerneinheiten](repo:docs/concept/skill-graph/learning-units.md) (Zielkonzept; Laufzeitcompiler offen) binden an die geprüfte Composition View oder Programmprojektion:
 
 1. **Ein direkter Kursbesitzer:** Jeder geplante atomare Kompetenzerwerb hat im aufgelösten Kurs genau eine direkt besitzende Einheit; Vorfahren aggregieren Kindpflichten ohne Doppelbesitz.
 2. **Fachübergreifende Identität:** Gemeinsame kanonische Ziele (z. B. `target` in Mathematik und `prerequisiteOnly` in Physik) zählen im Gesamtplan einmal bei erhaltener Fachrolle.
 3. **Vollständige Voraussetzungsbilanz:** Jedes benötigte Atom muss spätestens beim abhängigen Ziel durch die explizite Eingangsbasis oder einen geplanten Erwerb gedeckt sein.
-4. **Lokale Anerkennung & Blockfolge:** Implizite Anerkennung gilt ausschließlich gemäß dem geprüften Vertrag der direkt besitzenden Einheit; Elternprüfungen öffnen weder abgeschlossene Kindeinheiten neu noch bestehen sie geschützte Kindprüfungen/Karten, und eine [Blockfolge ganzer Einheiten](repo:docs/concept/skill-graph/learning-unit-progression.md) bleibt eine separate explizite Kurspolitik.
+4. **Lokale Anerkennung & Blockfolge:** Implizite Anerkennung gilt ausschließlich gemäß dem geprüften Vertrag der direkt besitzenden Einheit; Elternprüfungen öffnen weder abgeschlossene Kindeinheiten neu noch bestehen sie geschützte Kindprüfungen/Karten, und eine [Blockfolge ganzer Einheiten](repo:docs/concept/skill-graph/learning-unit-progression.md) folgt im Zielmodell den erklärten after und E1 bis E4; daraus entsteht keine Zugangssperre.

@@ -70,6 +70,10 @@ $$
 
 Er ist erfolgreich genau dann, wenn sein Fixpunkt ganz $S_i$ enthält. Die Verfügbarkeit eines noch offenen Ziels kann durch zusätzliche Erfüllungen nicht verschlechtert werden. Deshalb kann jede gleichzeitig hinzugefügte Menge auch nacheinander erworben werden. Ein vorhandener Abschlusszeuge kann umgekehrt nicht vorzeitig an diesem Verfahren scheitern. Das Verfahren ist ein *hypothetischer* Lerndurchlauf; es ändert keine persönlichen Daten. Im rein atomaren DAG liefert eine voraussetzungsgetreue topologische Ordnung den bekannten Spezialfall.
 
+
+
+Eine erklärte Planeinheit gehört dagegen bereits zum verbindlichen Ordnungsmodell aus Abschnitt~@ref{sec:unit-progression}. Liegt ein benötigtes Ziel in einer späteren Planeinheit, ist das dort ein Verstoß gegen E2, auch ohne optionales Budgetprofil (`GD-P05`). Die angenommene Eintrittsbasis $B_\pi$ darf diesen Rückgriff im wirklichen persönlichen Lernumfang $L=\Closure(S)$ nicht ausblenden. Ein gestufter Diagnosebericht ist noch kein hartes Curriculum-Gate: erst Bericht, fachliche Behebung, Sperrklinke und bei null Verstößen das harte Gate. Der vorhandene Stufenplanbericht und seine optionale Null-Rückgriff-Prüfung aktivieren keinen echten Landesplan und ersetzen keine Quellen- oder Inhaltsprüfung.
+
 ### Aufwand, Reserve und Budget {#sec:workload-budget anchors="123-workload-feasibility"}
 
 Strukturelle Machbarkeit beweist noch nicht, dass ein Schuljahr zeitlich ausreicht. Jede Zeitbehauptung nennt Referenzlernende, Eintrittsbedingungen, Ziel- und Wahlauswahl, Kalender, Schätzmethode und Unsicherheit. Diese deklarierten Schätzannahmen des Plans $\pi$ fassen wir als $\Theta_\pi$ zusammen. Für eine tatsächliche Aktivität $h$ bezeichnet $\widehat t_h(\Theta_\pi) \ge 0$ ihre unter diesen Annahmen geschätzte Dauer. Alle Größen müssen in derselben kalibrierten Zeiteinheit vorliegen:
@@ -98,7 +102,7 @@ Ein Gesamtbudget genügt nicht, wenn Fächer, Räume oder Termine eigene bindend
 
 Ein Zeit- und Erwerbsplan ist unter diesem optionalen Profil gültig, wenn er sowohl strukturell als auch unter seinen erklärten Annahmen zeitlich machbar ist. Ohne belastbare Aufwandsschätzung ist allein die strukturelle Aussage zulässig. Der Anspruch bindet Plan, Curriculumfassung, aufgelösten Umfang und Schätzannahmen. Er garantiert keine identische Lerngeschwindigkeit für jede Person.
 
-Der Abschluss der fachlichen Lerneinheit folgt den rekursiven Zieltyp- und Kinderpflichten aus Abschnitt~@ref{sec:learning-units}. Ein Kalenderabschnitt kann mehrere Einheiten enthalten; eine Einheit kann sich über mehrere Kalenderabschnitte erstrecken. Aus diesem Zeitprofil folgt keine pauschale Voraussetzung des gesamten vorigen Jahres für jedes spätere Lernziel.
+Der Abschluss der fachlichen Lerneinheit folgt den rekursiven Zieltyp- und Kinderpflichten aus Abschnitt~@ref{sec:learning-units}. Ein bloßer Kalenderabschnitt kann mehrere fachliche Einheiten enthalten; ohne Erklärung als Planeinheit darf er eine fachliche Einheit zeitlich schneiden. Wird er als Planeinheit erklärt, gelten E1 bis E4. Die vollständige gemeinsame Einführung und die Prüfung, ob jedes Land eine fachliche Blatteinheit als Ganzes führt (B13), folgen erst nach F8; sie sind keine bereits bestandene Eigenschaft der drei bisherigen Einheiten. Aus diesem Zeitprofil folgt keine pauschale Voraussetzung des gesamten vorigen Jahres für jedes spätere Lernziel.
 
 :::sources
 [Lerneinheiten](repo:docs/concept/skill-graph/learning-units.md); [Graph-Definition](repo:docs/concept/skill-graph/graph-definition.md); [Zeitachse und Kapazität](repo:docs/concept/didactic/curriculum-time-axis-and-pacing.md).

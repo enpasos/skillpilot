@@ -194,6 +194,60 @@ Ein atomares Ziel, an dem Lernende selbstständig Probleme lösen – typischerw
 
 Die Eigenschaft, dass jedes routenrelevante atomare Lernziel auf mindestens einem Voraussetzungspfad zwischen einem Motivationsanker und einem terminalen Autonomieziel liegt. Die intendierte Lernrichtung verläuft von Orientierung über Verstehen (und begleitendes Memorieren bei Bedarf) zur selbstständigen Anwendung.
 
+### Planeinheit
+
+*EN: plan unit* — siehe [Einheitenkonzept](skill-graph/learning-unit-wiring-concept-2026-11-14.md)
+
+Erklärte Einheit im gemeinsamen Plan eines Landes und Dauermodells über die gewählten Fächer, etwa Stufe, Jahrgang oder Phase; ordnet Lernen und ist keine neue Kompetenz.
+
+### Fachliche Einheit
+
+*EN: subject unit* — siehe [Einheitenkonzept](skill-graph/learning-unit-wiring-concept-2026-11-14.md)
+
+Erklärter Cluster der kanonischen Fachlandschaft mit Lernversprechen; gilt in allen Ländern. Eine Einheit mit Prüfungen belegt zusätzlich die selbstständige Anwendung ihrer eigenen Inhaltsziele.
+
+### after
+
+*EN: after* — siehe [Einheitenkonzept](skill-graph/learning-unit-wiring-concept-2026-11-14.md)
+
+Erklärte Reihenfolge zwischen Geschwistereinheiten: die vorausgehende Einheit ist im vorgesehenen Lernfluss vollständig abgeschlossen, bevor die andere beginnt. Vererbt Ordnung, keinen Bedarf; keine Sperre, Mastery oder Umfangserweiterung.
+
+### Rückgriff
+
+*EN: backflow* — siehe [Einheitenkonzept](skill-graph/learning-unit-wiring-concept-2026-11-14.md)
+
+Ein Ziel einer früheren Planeinheit braucht ein Ziel einer späteren, direkt oder transitiv. Das ist ein E2-Befund, auch bei Vorbereitung; Darstellung und Fokus dürfen ihn nicht verdecken.
+
+### Vorbereitung
+
+*EN: preparation* — siehe [Einheitenkonzept](skill-graph/learning-unit-wiring-concept-2026-11-14.md)
+
+Notwendiges Atom außerhalb der geführten Ausgangsziele erhält im geschlossenen persönlichen Umfang einen abgeleiteten Lernplatz am frühesten tatsächlichen Bedarf. Begründete frühere Vorbereitung eines geführten Ziels bleibt ausdrücklich gekennzeichnet; die Quellenzuordnung bleibt erhalten.
+
+### Zusatzbedarf
+
+*EN: additional demand* — siehe [Einheitenkonzept](skill-graph/learning-unit-wiring-concept-2026-11-14.md)
+
+Notwendige Ziele außerhalb der gewählten fachlichen Ausgangsziele. Nur diese Atome werden ergänzt, unabhängig von Mastery; Anzeige nach Einheiten fügt keine ganze fremde Einheit hinzu.
+
+### geführt in / steht in
+
+*EN: carried in / placed in* — siehe [Einheitenkonzept](skill-graph/learning-unit-wiring-concept-2026-11-14.md)
+
+Geführt in bezeichnet die amtlich belegte curriculare Zuordnung; steht in den didaktischen Lernplatz. Frühere Vorbereitung oder kanonischer Standard erzeugt keinen Landesbeleg und schreibt kein Lernergebnis.
+
+### Standardzuordnung
+
+*EN: default assignment* — siehe [Einheitenkonzept](skill-graph/learning-unit-wiring-concept-2026-11-14.md)
+
+Ausdrücklich vorläufige didaktische Einordnung aus einer kanonischen Marke wie dimensionTags.phase, wenn Landesbeleg fehlt. Ersetzt weder Quellenbeleg noch Abdeckungsprüfung und überschreibt keine maßgebliche Sicht.
+
+### Prüfungslücke
+
+*EN: assessment gap* — siehe [Einheitenkonzept](skill-graph/learning-unit-wiring-concept-2026-11-14.md)
+
+Ein Inhaltsziel ohne geeignete geprüfte Aufgaben- und Rasterdeckung bleibt ein nicht bestandener Befund. Reparatur liefert echte Prüfung und Review, niemals fiktive Voraussetzungen oder gelockerte Qualitätsgates.
+
 <a id="sec-node-types"></a>
 ## 3. Knotentypen (Lernmodi)
 
@@ -607,7 +661,7 @@ Ein durch ein Skript erzeugter Bericht, Status-Snapshot oder Dokumentations-Buil
 | `phase` vs. Programmeinheit | `phase` ist Kompatibilitätsmetadaten; nur explizite Programmeinheiten bilden Strukturknoten. |
 | Lerneinheit vs. Personalisierungsstufe | Rekursive pädagogische Einheit mit abgeleitetem Abschluss vs. eine der vier Umfangs-/Zustandsebenen. |
 | Lerneinheit vs. Zielschwierigkeit | Erwerbs- und Abschlusseinheit vs. Anspruchsniveau eines einzelnen Ziels (`level`). |
-| Einheitsabschluss vs. Zielverfügbarkeit | Erfüllte Kind- und Eigenpflichten vs. Startvoraussetzungen; ein technisches Ganz-Einheiten-Gate erfordert eine separate Policy. |
+| Einheitsabschluss vs. Zielverfügbarkeit | Erfüllte Kind- und Eigenpflichten vs. Startvoraussetzungen; B9 verwirft technische Einheitssperren im Zielmodell; after ordnet ohne Bedarf oder Mastery. |
 | QA-Scope vs. Lernroute | Ein QA-Scope ist ein registriertes Prüfprofil, kein einzelner Lernpfad. |
 | CQR- vs. GVR-Regeln | Inhaltliche Curriculum-Qualitätssicherung vs. strukturelle Graphvalidierung. |
 | Curriculum vs. Skill-Graph | Normatives externes Dokument vs. versioniertes operatives Graphmodell. |

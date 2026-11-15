@@ -3,8 +3,8 @@
   "stand": {
     "lead": { "de": "Stand dieser Fassung.", "en": "Status of this edition." },
     "body": {
-      "de": "**Aktueller Kandidat, 13. November 2026:** [PR #141](https://github.com/enpasos/skillpilot/pull/141) führt die Gymnasium-Folgearbeiten auf der aktualisierten Main-Basis `2ad03c810c` zusammen. Die 12 HART / 50 TEIL / 55 OFFEN / 28 OPT/DOK und die vier Pflichtscopes von `GVR-012` gehören zu diesem noch nicht auf main integrierten Kandidaten. Lokale Gate-, Negativ-, Dokument- und PDF-Prüfungen sind im [Folgearbeitsnachweis](repo:docs/dev/cqr-gvr-hard-gate-plan-2026-11-12.md) belegt. Abschließende Remote-CI und Main-Abnahme sind hier nicht als abgeschlossen ausgewiesen; die frühere CI von PR #131 belegt diese Änderungen nicht. Dieser Anhang hält fest, an welchen Repository-Ständen die Aussagen des Dokuments geprüft wurden und wo die gelesene Implementierung vom beschriebenen Modell abweicht ([GD-D01](@rule{GD-D01})). Diese gemeinsame Single-Source-Fassung führt die Konzeptkorrektur vom 4. November, die Festlegung der atomaren Normalform und die Meilensteinzuordnung vom 8. November, die Präzisierung des Projektionsvertrags vom 9. November den geschlossenen persönlichen Lernumfang vom 10. November sowie die Entscheidungen vom 11. November 2026 zu nicht strikt kompilierbaren Lernkontexten und zur Gültigkeit von Lerneinheiten und vom 12. November 2026 zur vollständigen aktuellen Zielzustandsprüfung und zur Darstellung von Lerneinheiten für Web und PDF zusammen. Seit dem 11. November 2026 setzt `CQR-001` zudem `G17` für den kanonischen Gymnasialkatalog durch. Die mit PR #131 ausgelieferte CQR-/GVR-Härtung ist auf main integriert und durch die nachstehend datierten CI-Belege abgesichert; ihre genauen Bereiche und die beiden verbleibenden Lücken stehen im Regelregister. Backend und WebGUI verwenden nun die feste atomare Voraussetzungshülle; der Hüllencompiler [PersonalCurriculumLearningScope.java](repo:backend/src/main/java/com/skillpilot/backend/completion/PersonalCurriculumLearningScope.java) nutzt die vorhandene kanonische Normalisierung. Lokale Regressionen prüfen Lernbarkeit, Planung, Fokus, Referenzfehler und die Auslieferung fachfremder Grundlagen. Vollständige native, Curriculum- und Remote-CI-Abnahme sowie die Anwendbarkeitsprüfung des aktuellen Zustands bleiben getrennt erforderlich. Die neue globale Anwendungsanerkennung ist **noch nicht implementiert**. Ein lesbarer Beleg oder ein erfolgreicher Dokumentbuild beweist weder Laufzeitkonformität noch Deployment.",
-      "en": "**Current candidate, 13 November 2026:** [PR #141](https://github.com/enpasos/skillpilot/pull/141) brings together the Gymnasium follow-up work on the updated main baseline `2ad03c810c`. The 12 HARD / 50 PARTIAL / 55 OPEN / 28 OPT/DOC rows and four required `GVR-012` scopes belong to this candidate, which has not been integrated into main. Local gate, negative-case, documentation, and PDF checks are evidenced in the [follow-up record](repo:docs/dev/cqr-gvr-hard-gate-plan-2026-11-12.md). Final remote CI and main acceptance are not recorded here as complete; the earlier CI for PR #131 does not evidence these changes. This appendix records the repository states against which the specification's claims were audited and documents where the inspected implementation diverges from the normative model ([GD-D01](@rule{GD-D01})). This unified Single-Source edition consolidates the 4 November concept correction, the 8 November atomic normal-form mandate and milestone mapping, the 9 November projection contract clarification, the 10 November closed Personal Curriculum learning scope, the 11 November 2026 decisions on non-compilable learning contexts and on learning-unit validity, and the 12 November 2026 decisions on complete current target-state validation and on the representation of learning units across Web and PDF. Since 11 November 2026, `CQR-001` also enforces `G17` for the canonical Gymnasium catalog. The CQR/GVR hardening delivered in PR #131 is integrated into main and supported by the dated CI evidence below; its exact domains and two remaining gaps are recorded in the rule registry. Both backend and WebGUI now evaluate the fixed atomic prerequisite closure; the closure compiler [PersonalCurriculumLearningScope.java](repo:backend/src/main/java/com/skillpilot/backend/completion/PersonalCurriculumLearningScope.java) reuses canonical normalization. Local regression tests cover learnability, planning, focus, reference errors, and cross-subject prerequisite delivery. Full native, curriculum, and remote-CI acceptance as well as applicability validation of the current state remain separate steps. Global application recognition ($\\Meff$) is **not yet implemented**. Readable documentation evidence or a green document build proves neither runtime conformance nor production deployment."
+      "de": "**F7-Zielnorm, 15. November 2026:** Die Kapitel bilden jetzt B1 bis B16 und die Entscheidungen M1 bis M8 ab: erklärte Cluster und Planeinheiten, after als Ordnung ohne Bedarf, E1 bis E4, Z3, Quellenzuordnung gegenüber Lernplatz und früheste notwendige Vorbereitung. Der alte Stand vom 13. November im folgenden Absatz bleibt ein datierter historischer Audit und belegt keine neue Umsetzung. Die Stufenplan-Grundlage unter contracts/curriculum-package/v1.3/ ist ein Entwicklungsvertrag; null echte Landespläne sind aktiviert. Vorhandene Tests und Berichte sind automatisierte Strukturbelege, keine unabhängigen Inhaltsreviews, Aufgaben für Lernende oder gemessene Rückgriffreduktion. Produktive Leser, fachliche Clusterumstellung und Anerkennung bleiben bis F8 bis F13 getrennte Lieferungen. Kein neuer harter Gate-Erfolg, keine Veröffentlichung und keine main-Abnahme wird aus diesem Normkandidaten abgeleitet. **Aktueller Kandidat, 13. November 2026:** [PR #141](https://github.com/enpasos/skillpilot/pull/141) führt die Gymnasium-Folgearbeiten auf der aktualisierten Main-Basis `2ad03c810c` zusammen. Die 12 HART / 50 TEIL / 55 OFFEN / 28 OPT/DOK und die vier Pflichtscopes von `GVR-012` gehören zu diesem noch nicht auf main integrierten Kandidaten. Lokale Gate-, Negativ-, Dokument- und PDF-Prüfungen sind im [Folgearbeitsnachweis](repo:docs/dev/cqr-gvr-hard-gate-plan-2026-11-12.md) belegt. Abschließende Remote-CI und Main-Abnahme sind hier nicht als abgeschlossen ausgewiesen; die frühere CI von PR #131 belegt diese Änderungen nicht. Dieser Anhang hält fest, an welchen Repository-Ständen die Aussagen des Dokuments geprüft wurden und wo die gelesene Implementierung vom beschriebenen Modell abweicht ([GD-D01](@rule{GD-D01})). Diese gemeinsame Single-Source-Fassung führt die Konzeptkorrektur vom 4. November, die Festlegung der atomaren Normalform und die Meilensteinzuordnung vom 8. November, die Präzisierung des Projektionsvertrags vom 9. November den geschlossenen persönlichen Lernumfang vom 10. November sowie die Entscheidungen vom 11. November 2026 zu nicht strikt kompilierbaren Lernkontexten und zur Gültigkeit von Lerneinheiten und vom 12. November 2026 zur vollständigen aktuellen Zielzustandsprüfung und zur Darstellung von Lerneinheiten für Web und PDF zusammen. Seit dem 11. November 2026 setzt `CQR-001` zudem `G17` für den kanonischen Gymnasialkatalog durch. Die mit PR #131 ausgelieferte CQR-/GVR-Härtung ist auf main integriert und durch die nachstehend datierten CI-Belege abgesichert; ihre genauen Bereiche und die beiden verbleibenden Lücken stehen im Regelregister. Backend und WebGUI verwenden nun die feste atomare Voraussetzungshülle; der Hüllencompiler [PersonalCurriculumLearningScope.java](repo:backend/src/main/java/com/skillpilot/backend/completion/PersonalCurriculumLearningScope.java) nutzt die vorhandene kanonische Normalisierung. Lokale Regressionen prüfen Lernbarkeit, Planung, Fokus, Referenzfehler und die Auslieferung fachfremder Grundlagen. Vollständige native, Curriculum- und Remote-CI-Abnahme sowie die Anwendbarkeitsprüfung des aktuellen Zustands bleiben getrennt erforderlich. Die neue globale Anwendungsanerkennung ist **noch nicht implementiert**. Ein lesbarer Beleg oder ein erfolgreicher Dokumentbuild beweist weder Laufzeitkonformität noch Deployment.",
+      "en": "**F7 target specification, 15 November 2026:** The chapters now reflect B1 to B16 and decisions M1 to M8: declared clusters and plan units, after as order without demand, E1 to E4, Z3, source assignment versus learning placement, and earliest necessary preparation. The following 13 November paragraph remains a dated historical audit and evidences no new implementation. The stage-plan foundation under contracts/curriculum-package/v1.3/ is a development contract; zero real Land plans are activated. Existing tests and reports are automated structural evidence, not independent content reviews, learner assessment tasks, or measured backflow reduction. Production readers, subject-cluster migration, and recognition remain separate deliveries until F8 to F13. This normative candidate claims no new hard-gate pass, publication, or main acceptance. **Current candidate, 13 November 2026:** [PR #141](https://github.com/enpasos/skillpilot/pull/141) brings together the Gymnasium follow-up work on the updated main baseline `2ad03c810c`. The 12 HARD / 50 PARTIAL / 55 OPEN / 28 OPT/DOC rows and four required `GVR-012` scopes belong to this candidate, which has not been integrated into main. Local gate, negative-case, documentation, and PDF checks are evidenced in the [follow-up record](repo:docs/dev/cqr-gvr-hard-gate-plan-2026-11-12.md). Final remote CI and main acceptance are not recorded here as complete; the earlier CI for PR #131 does not evidence these changes. This appendix records the repository states against which the specification's claims were audited and documents where the inspected implementation diverges from the normative model ([GD-D01](@rule{GD-D01})). This unified Single-Source edition consolidates the 4 November concept correction, the 8 November atomic normal-form mandate and milestone mapping, the 9 November projection contract clarification, the 10 November closed Personal Curriculum learning scope, the 11 November 2026 decisions on non-compilable learning contexts and on learning-unit validity, and the 12 November 2026 decisions on complete current target-state validation and on the representation of learning units across Web and PDF. Since 11 November 2026, `CQR-001` also enforces `G17` for the canonical Gymnasium catalog. The CQR/GVR hardening delivered in PR #131 is integrated into main and supported by the dated CI evidence below; its exact domains and two remaining gaps are recorded in the rule registry. Both backend and WebGUI now evaluate the fixed atomic prerequisite closure; the closure compiler [PersonalCurriculumLearningScope.java](repo:backend/src/main/java/com/skillpilot/backend/completion/PersonalCurriculumLearningScope.java) reuses canonical normalization. Local regression tests cover learnability, planning, focus, reference errors, and cross-subject prerequisite delivery. Full native, curriculum, and remote-CI acceptance as well as applicability validation of the current state remain separate steps. Global application recognition ($\\Meff$) is **not yet implemented**. Readable documentation evidence or a green document build proves neither runtime conformance nor production deployment."
     }
   },
   "poDecisionsLead": {
@@ -12,51 +12,55 @@
     "en": "Binding Product Owner decisions."
   },
   "poDecisions": [
-    {
-      "de": "**4. November 2026:** Implizite Beherrschung durch gültige lokale Prüfungen belegt selbstständige Anwendung und wirkt global ($\\Meff$); die transitive Minimalität bleibt Pflicht. Prüfungs- und Memorierziele bleiben geschützt: Bei Memorierzielen begründet allein der verifizierte Abschlussabruf den Zielabschluss, und spätere Kartenfälligkeit nimmt ihn nicht zurück (Abschnitte~@ref{sec:validity}, @ref{sec:goal-types} und~@ref{sec:assessment}; [GD-D03](@rule{GD-D03})).",
-      "en": "**4 November 2026:** Implicit mastery through passed assessments of a valid local contract demonstrates independent application and carries global effect ($\\Meff$); transitive minimality remains mandatory. Assessment and memory goals remain protected: for memory goals, verified completion recall alone establishes goal completion, and subsequent card due state never revokes it (Sections~@ref{sec:validity}, @ref{sec:goal-types}, and~@ref{sec:assessment}; [GD-D03](@rule{GD-D03}))."
-    },
-    {
-      "de": "**7. November 2026:** Jede erreichbare Voraussetzung eines sichtbaren Ziels benötigt in der Fach-Kompositionssicht eine ausdrückliche Projektionsrolle (`target` oder `prerequisiteOnly`); an der Kompilationsgrenze des gesamten Personal Curriculum ergänzt und präzisiert die Hüllenregel vom 10. November 2026 diese Pflicht (Abschnitt~@ref{sec:projection-roles}).",
-      "en": "**7 November 2026:** Every reachable prerequisite of a visible goal requires an explicit projection role (`target` or `prerequisiteOnly`) in subject composition views; at the Personal Curriculum compile boundary, the 10 November 2026 closure rule supersedes blanket manual per-atom view entries with derived target roles (Section~@ref{sec:projection-roles})."
-    },
-    {
-      "de": "**8. November 2026:** Atomare Normalform $R\\subseteq A\\times A$ als verbindlicher kanonischer Zielzustand ohne Cluster-Ausnahme, geordnete Migrationsreihenfolge und Zuordnung aller 143 Regelgruppen zu Prüfgebieten und Meilensteinen (Abschnitte~@ref{sec:relations} und~@ref{sec:validity}, Anhang~@ref{sec:rule-milestones}). Die damalige Migrationsreihenfolge und Erhaltungspflicht sind durch die Entscheidung vom 12. November 2026 abgelöst.",
-      "en": "**8 November 2026:** Atomic normal form $R\\subseteq A\\times A$ as the binding canonical target state without cluster exceptions, mandatory ordered migration sequence, and mapping of all 143 rule groups to validation areas and milestones (Sections~@ref{sec:relations} and~@ref{sec:validity}, Appendix~@ref{sec:rule-milestones}). The migration-order and preservation obligations from that decision are superseded by the decision of 12 November 2026."
-    },
-    {
-      "de": "**9. November 2026:** Projektionen erhalten die vollständige Voraussetzungshülle; ein kanonischer Cluster wird durch eine Kompositionssicht niemals zu einem atomaren Laufzeitziel (Abschnitte~@ref{sec:filters} und~@ref{sec:composition-views}).",
-      "en": "**9 November 2026:** Projections preserve full prerequisite closure; a canonical cluster never becomes an atomic runtime goal through a composition view (Sections~@ref{sec:filters} and~@ref{sec:composition-views})."
-    },
-    {
-      "de": "**10. November 2026:** Der persönliche Lernumfang auf Level 2 ist $L=\\Closure(S)$ über dem unbeschnittenen kanonischen Skill-Graphen, unabhängig von Mastery fest bestimmt und mit abgeleiteten Zielrollen für alle notwendigen Voraussetzungsatome versehen (Abschnitte~@ref{sec:filters} und~@ref{sec:personal-scope}).",
-      "en": "**10 November 2026:** The Level 2 Personal Curriculum learning scope is $L=\\Closure(S)$ on the unpruned canonical skill graph, fixed independently of mastery, assigning derived target roles to all necessary prerequisite atoms (Sections~@ref{sec:filters} and~@ref{sec:personal-scope})."
-    },
-    {
-      "de": "**11. November 2026 (Lernkontext):** Harte Hüllenfehler gehören in Validierung, Curriculum-QA und native Abnahme, nicht in Lesezugriffe von Lernenden. Ist der kanonische Graph eines Lernkontexts nicht strikt kompilierbar, behält die Laufzeit den geprüften Ausgangsumfang ohne abgeleitete Hülle, beansprucht keine Lernbasis, bietet kein Ziel mit gebrochenem Bedarf an und protokolliert den Fehler einmal je Curriculum und Fehlercode; Fehler der Ausgangsauswahl bleiben hart (Abschnitt~@ref{sec:projection-roles}).",
-      "en": "**11 November 2026 (learning context):** Hard closure errors belong to validation, curriculum QA, and native acceptance, not to learner reads. When the canonical graph of a learning context is not strictly compilable, the runtime keeps the reviewed seed scope without derived closure, claims no learning basis, offers no goal with broken demand, and logs the failure once per curriculum and error code; seed-selection errors stay hard (Section~@ref{sec:projection-roles})."
-    },
-    {
-      "de": "**11. November 2026 (Lerneinheiten):** Die Anerkennungsregel vom 4. November bleibt: Ein eigenes gewöhnliches Ziel gilt als anerkannt, sobald keine offene eigene Prüfung und kein offenes eigenes Memorierziel seiner Einheit es noch benötigt (setzen die Prüfungen $\\nd{Q_1}$ und $\\nd{Q_2}$ derselben Einheit beide $\\nd{A}$ voraus, bleibt $\\nd{A}$ offen, bis beide bestanden sind). Die auf dem archivierten Branch von Pull Request #83 als „Zielentscheidung vom 6. November 2026“ geführte Alternative -- sofortige Anerkennung aus der qualifizierten Deckungsliste einer einzelnen bestandenen Prüfung, auch als Nachweis durch eine Eltern- oder Fremdeinheit -- wurde geprüft und **nicht übernommen**. Tragfähig ist die Anerkennung nur in Einheiten, die die Regeln R1--R5 erfüllen: R1, R3 und R4 als harte Gültigkeitsbedingungen ab der ersten verfassten Einheit, R2 bei M5 mit aktueller zielgenauer Bindung bei M7, R5 als Laufzeitvorbedingung, bevor Anerkennung produktiv eingeschaltet wird; der Zweck einer Einheit ist eine tragfähige Grundlage, bevor geplantes Lernen darauf aufbaut (Abschnitte~@ref{sec:learning-units} und~@ref{sec:why-graph-not-enough}).",
-      "en": "**11 November 2026 (learning units):** The recognition rule of 4 November stays: an own ordinary goal is recognized once no open own assessment or memory goal of its unit still requires it (if assessments $\\nd{Q_1}$ and $\\nd{Q_2}$ of the same unit both require $\\nd{A}$, $\\nd{A}$ stays open until both are passed). The alternative recorded on the archived branch of pull request #83 as a “6 November 2026 target decision” -- immediate recognition from the qualified coverage list of a single passed assessment, including proof by a parent or foreign unit -- was reviewed and is **not adopted**. Recognition is sound only inside units that satisfy rules R1--R5: R1, R3, and R4 as hard validity conditions from the first authored unit, R2 at M5 with the current per-goal binding at M7, and R5 as a runtime precondition before recognition is enabled in production; a unit's purpose is a secure foundation before planned learning builds on it (Sections~@ref{sec:learning-units} and~@ref{sec:why-graph-not-enough})."
-    },
-    {
-      "de": "**12. November 2026 (G17/GD-C17):** Die vollständige deterministische Prüfung des aktuellen deklarierten Fachbestands ist vor jedem Fach- und Scope-Meilensteinpass M1--M7 erforderlich. Historische Hüllengleichheit und eine feste Migrationsreihenfolge sind keine Abnahmebedingungen mehr. Historische Reduktionsnachweise bleiben für davon abhängige Reviewbindungen erhalten; sie bestimmen weder das aktuelle Kataloginventar noch das G17-Ergebnis (Abschnitt~@ref{sec:mandatory-validity}).",
-      "en": "**12 November 2026 (G17/GD-C17):** Complete deterministic validation of the current declared subject inventory is required before every subject and scope milestone pass M1--M7. Historical closure equality and a fixed migration order are no longer acceptance conditions. Historical reduction proofs remain available for dependent review bindings; they determine neither the current catalog inventory nor the G17 result (Section~@ref{sec:mandatory-validity})."
-    },
-    {
-      "de": "**12. November 2026 (Darstellung von Lerneinheiten):** Lerneinheiten sind Teil der Skill-Landschaft und liegen in deren Platzierungsschicht; eine eigene Katalogdatei neben der Landschaft wurde als Anbau verworfen, zugunsten eines langfristig stabilen Vertrags mit einer neuen Version des Curriculum-Paketvertrags (1.2), wo eine nötig ist (Abschnitt~@ref{sec:unit-representation}). Die Arbeit an den Einheiten wird nach dem Arbeitsplan [Lerneinheiten für Mathematik und Physik](repo:docs/dev/mathematics-physics-learning-units-plan.md) fortgesetzt.",
-      "en": "**12 November 2026 (learning-unit representation):** Learning units are part of the skill landscape and live in its placement layer; a separate catalog file beside the landscape was rejected as a bolt-on in favor of a stable long-term contract with a new curriculum-package contract version (1.2) where one is needed (Section~@ref{sec:unit-representation}). The unit work resumes under the working plan [Learning Units for Mathematics and Physics](repo:docs/dev/mathematics-physics-learning-units-plan.md)."
-    },
-    {
-      "de": "**12. November 2026 (eingefrorener Reduktionsnachweis):** Der Nachweis der Voraussetzungsreduktion ist an seinem Endstand eingefroren. Sein Register (Vertrag V9) hält je Ziel den Stand fest, an den die Reviews gebunden sind; ein unverändertes Ziel behält seine Reviews, ein geändertes Ziel braucht ein neues Review, und jede andere Katalogänderung lässt die Wiederverwendung unberührt. Die Historie wird nicht mehr gegen den aktuellen Katalog nachgerechnet (Abschnitt~@ref{sec:mandatory-validity}).",
-      "en": "**12 November 2026 (frozen reduction proof):** The prerequisite-reduction proof is frozen at its end state. Its registry (contract V9) records per goal the value the reviews are bound to; an unchanged goal keeps its reviews, a changed goal needs a new review, and every other catalog change leaves the reuse untouched. The history is no longer replayed against the current catalog (Section~@ref{sec:mandatory-validity})."
-    },
-    {
-      "de": "**13. November 2026 (GVR-012 ab M7):** Die stärkere semantische Routenprüfung wird künftig für alle registrierten QA-Scopes der jeweils M7-verpflichteten Fächer verbindlich. Heute sind das sieben Scopes von fünf M7-Fächern; vier sind abgesichert. Die Aktivierung der vollständigen M7-Pflicht wartet auf den evidenzbasierten Abschluss der drei übrigen M7-Scopes. Das Gesamtinventar bleibt zwölf; die fünf M6-Scopes werden beim späteren M7-Aufstieg verpflichtend. Bestehende Pflichtscopes und Pins bleiben auch bei späteren Statusänderungen geschützt. Bis zur vollständigen technischen Durchsetzung bleibt GVR-012 TEIL; diese Zielentscheidung ist weder Aktivierung noch Passevidenz und senkt keinen Floor.",
-      "en": "**13 November 2026 (GVR-012 from M7):** The stronger semantic route check shall become mandatory for every registered QA scope of each subject obligated to meet M7. Today this covers seven scopes of five M7 subjects; four are secured. Activation of the complete M7 obligation waits for evidence-backed closure of the other three M7 scopes. The full inventory remains twelve; the five M6 scopes become mandatory on later promotion to M7. Existing required scopes and pins remain protected even through later status changes. GVR-012 stays PARTIAL until complete technical enforcement; this target decision neither activates the obligation nor supplies pass evidence or lowers any floor."
-    }
-  ],
+  {
+    "de": "**4. November 2026:** Implizite Beherrschung durch gültige lokale Prüfungen belegt selbstständige Anwendung und wirkt global ($\\Meff$); die transitive Minimalität bleibt Pflicht. Prüfungs- und Memorierziele bleiben geschützt: Bei Memorierzielen begründet allein der verifizierte Abschlussabruf den Zielabschluss, und spätere Kartenfälligkeit nimmt ihn nicht zurück (Abschnitte~@ref{sec:validity}, @ref{sec:goal-types} und~@ref{sec:assessment}; [GD-D03](@rule{GD-D03})).",
+    "en": "**4 November 2026:** Implicit mastery through passed assessments of a valid local contract demonstrates independent application and carries global effect ($\\Meff$); transitive minimality remains mandatory. Assessment and memory goals remain protected: for memory goals, verified completion recall alone establishes goal completion, and subsequent card due state never revokes it (Sections~@ref{sec:validity}, @ref{sec:goal-types}, and~@ref{sec:assessment}; [GD-D03](@rule{GD-D03}))."
+  },
+  {
+    "de": "**7. November 2026:** Jede erreichbare Voraussetzung eines sichtbaren Ziels benötigt in der Fach-Kompositionssicht eine ausdrückliche Projektionsrolle (`target` oder `prerequisiteOnly`); an der Kompilationsgrenze des gesamten Personal Curriculum ergänzt und präzisiert die Hüllenregel vom 10. November 2026 diese Pflicht (Abschnitt~@ref{sec:projection-roles}).",
+    "en": "**7 November 2026:** Every reachable prerequisite of a visible goal requires an explicit projection role (`target` or `prerequisiteOnly`) in subject composition views; at the Personal Curriculum compile boundary, the 10 November 2026 closure rule supersedes blanket manual per-atom view entries with derived target roles (Section~@ref{sec:projection-roles})."
+  },
+  {
+    "de": "**8. November 2026:** Atomare Normalform $R\\subseteq A\\times A$ als verbindlicher kanonischer Zielzustand ohne Cluster-Ausnahme, geordnete Migrationsreihenfolge und Zuordnung aller 143 Regelgruppen zu Prüfgebieten und Meilensteinen (Abschnitte~@ref{sec:relations} und~@ref{sec:validity}, Anhang~@ref{sec:rule-milestones}). Die damalige Migrationsreihenfolge und Erhaltungspflicht sind durch die Entscheidung vom 12. November 2026 abgelöst.",
+    "en": "**8 November 2026:** Atomic normal form $R\\subseteq A\\times A$ as the binding canonical target state without cluster exceptions, mandatory ordered migration sequence, and mapping of all 143 rule groups to validation areas and milestones (Sections~@ref{sec:relations} and~@ref{sec:validity}, Appendix~@ref{sec:rule-milestones}). The migration-order and preservation obligations from that decision are superseded by the decision of 12 November 2026."
+  },
+  {
+    "de": "**9. November 2026:** Projektionen erhalten die vollständige Voraussetzungshülle; ein kanonischer Cluster wird durch eine Kompositionssicht niemals zu einem atomaren Laufzeitziel (Abschnitte~@ref{sec:filters} und~@ref{sec:composition-views}).",
+    "en": "**9 November 2026:** Projections preserve full prerequisite closure; a canonical cluster never becomes an atomic runtime goal through a composition view (Sections~@ref{sec:filters} and~@ref{sec:composition-views})."
+  },
+  {
+    "de": "**10. November 2026:** Der persönliche Lernumfang auf Level 2 ist $L=\\Closure(S)$ über dem unbeschnittenen kanonischen Skill-Graphen, unabhängig von Mastery fest bestimmt und mit abgeleiteten Zielrollen für alle notwendigen Voraussetzungsatome versehen (Abschnitte~@ref{sec:filters} und~@ref{sec:personal-scope}).",
+    "en": "**10 November 2026:** The Level 2 Personal Curriculum learning scope is $L=\\Closure(S)$ on the unpruned canonical skill graph, fixed independently of mastery, assigning derived target roles to all necessary prerequisite atoms (Sections~@ref{sec:filters} and~@ref{sec:personal-scope})."
+  },
+  {
+    "de": "**11. November 2026 (Lernkontext):** Harte Hüllenfehler gehören in Validierung, Curriculum-QA und native Abnahme, nicht in Lesezugriffe von Lernenden. Ist der kanonische Graph eines Lernkontexts nicht strikt kompilierbar, behält die Laufzeit den geprüften Ausgangsumfang ohne abgeleitete Hülle, beansprucht keine Lernbasis, bietet kein Ziel mit gebrochenem Bedarf an und protokolliert den Fehler einmal je Curriculum und Fehlercode; Fehler der Ausgangsauswahl bleiben hart (Abschnitt~@ref{sec:projection-roles}).",
+    "en": "**11 November 2026 (learning context):** Hard closure errors belong to validation, curriculum QA, and native acceptance, not to learner reads. When the canonical graph of a learning context is not strictly compilable, the runtime keeps the reviewed seed scope without derived closure, claims no learning basis, offers no goal with broken demand, and logs the failure once per curriculum and error code; seed-selection errors stay hard (Section~@ref{sec:projection-roles})."
+  },
+  {
+    "de": "**11. November 2026 (Lerneinheiten):** Die Anerkennungsregel vom 4. November bleibt: Ein eigenes gewöhnliches Ziel gilt als anerkannt, sobald keine offene eigene Prüfung und kein offenes eigenes Memorierziel seiner Einheit es noch benötigt (setzen die Prüfungen $\\nd{Q_1}$ und $\\nd{Q_2}$ derselben Einheit beide $\\nd{A}$ voraus, bleibt $\\nd{A}$ offen, bis beide bestanden sind). Die auf dem archivierten Branch von Pull Request #83 als „Zielentscheidung vom 6. November 2026“ geführte Alternative -- sofortige Anerkennung aus der qualifizierten Deckungsliste einer einzelnen bestandenen Prüfung, auch als Nachweis durch eine Eltern- oder Fremdeinheit -- wurde geprüft und **nicht übernommen**. Tragfähig ist die Anerkennung nur in Einheiten, die die Regeln R1--R5 erfüllen: R1, R3 und R4 als harte Gültigkeitsbedingungen ab der ersten verfassten Einheit, R2 bei M5 mit aktueller zielgenauer Bindung bei M7, R5 als Laufzeitvorbedingung, bevor Anerkennung produktiv eingeschaltet wird; der Zweck einer Einheit ist eine tragfähige Grundlage, bevor geplantes Lernen darauf aufbaut (Abschnitte~@ref{sec:learning-units} und~@ref{sec:why-graph-not-enough}).",
+    "en": "**11 November 2026 (learning units):** The recognition rule of 4 November stays: an own ordinary goal is recognized once no open own assessment or memory goal of its unit still requires it (if assessments $\\nd{Q_1}$ and $\\nd{Q_2}$ of the same unit both require $\\nd{A}$, $\\nd{A}$ stays open until both are passed). The alternative recorded on the archived branch of pull request #83 as a “6 November 2026 target decision” -- immediate recognition from the qualified coverage list of a single passed assessment, including proof by a parent or foreign unit -- was reviewed and is **not adopted**. Recognition is sound only inside units that satisfy rules R1--R5: R1, R3, and R4 as hard validity conditions from the first authored unit, R2 at M5 with the current per-goal binding at M7, and R5 as a runtime precondition before recognition is enabled in production; a unit's purpose is a secure foundation before planned learning builds on it (Sections~@ref{sec:learning-units} and~@ref{sec:why-graph-not-enough})."
+  },
+  {
+    "de": "**12. November 2026 (G17/GD-C17):** Die vollständige deterministische Prüfung des aktuellen deklarierten Fachbestands ist vor jedem Fach- und Scope-Meilensteinpass M1--M7 erforderlich. Historische Hüllengleichheit und eine feste Migrationsreihenfolge sind keine Abnahmebedingungen mehr. Historische Reduktionsnachweise bleiben für davon abhängige Reviewbindungen erhalten; sie bestimmen weder das aktuelle Kataloginventar noch das G17-Ergebnis (Abschnitt~@ref{sec:mandatory-validity}).",
+    "en": "**12 November 2026 (G17/GD-C17):** Complete deterministic validation of the current declared subject inventory is required before every subject and scope milestone pass M1--M7. Historical closure equality and a fixed migration order are no longer acceptance conditions. Historical reduction proofs remain available for dependent review bindings; they determine neither the current catalog inventory nor the G17 result (Section~@ref{sec:mandatory-validity})."
+  },
+  {
+    "de": "**12. November 2026 (Darstellung von Lerneinheiten):** Lerneinheiten sind Teil der Skill-Landschaft und liegen in deren Platzierungsschicht; eine eigene Katalogdatei neben der Landschaft wurde als Anbau verworfen, zugunsten eines langfristig stabilen Vertrags mit einer neuen Version des Curriculum-Paketvertrags (1.2), wo eine nötig ist (Abschnitt~@ref{sec:unit-representation}). Die Arbeit an den Einheiten wird nach dem Arbeitsplan [Lerneinheiten für Mathematik und Physik](repo:docs/dev/mathematics-physics-learning-units-plan.md) fortgesetzt.",
+    "en": "**12 November 2026 (learning-unit representation):** Learning units are part of the skill landscape and live in its placement layer; a separate catalog file beside the landscape was rejected as a bolt-on in favor of a stable long-term contract with a new curriculum-package contract version (1.2) where one is needed (Section~@ref{sec:unit-representation}). The unit work resumes under the working plan [Learning Units for Mathematics and Physics](repo:docs/dev/mathematics-physics-learning-units-plan.md)."
+  },
+  {
+    "de": "**12. November 2026 (eingefrorener Reduktionsnachweis):** Der Nachweis der Voraussetzungsreduktion ist an seinem Endstand eingefroren. Sein Register (Vertrag V9) hält je Ziel den Stand fest, an den die Reviews gebunden sind; ein unverändertes Ziel behält seine Reviews, ein geändertes Ziel braucht ein neues Review, und jede andere Katalogänderung lässt die Wiederverwendung unberührt. Die Historie wird nicht mehr gegen den aktuellen Katalog nachgerechnet (Abschnitt~@ref{sec:mandatory-validity}).",
+    "en": "**12 November 2026 (frozen reduction proof):** The prerequisite-reduction proof is frozen at its end state. Its registry (contract V9) records per goal the value the reviews are bound to; an unchanged goal keeps its reviews, a changed goal needs a new review, and every other catalog change leaves the reuse untouched. The history is no longer replayed against the current catalog (Section~@ref{sec:mandatory-validity})."
+  },
+  {
+    "de": "**13. November 2026 (GVR-012 ab M7):** Die stärkere semantische Routenprüfung wird künftig für alle registrierten QA-Scopes der jeweils M7-verpflichteten Fächer verbindlich. Heute sind das sieben Scopes von fünf M7-Fächern; vier sind abgesichert. Die Aktivierung der vollständigen M7-Pflicht wartet auf den evidenzbasierten Abschluss der drei übrigen M7-Scopes. Das Gesamtinventar bleibt zwölf; die fünf M6-Scopes werden beim späteren M7-Aufstieg verpflichtend. Bestehende Pflichtscopes und Pins bleiben auch bei späteren Statusänderungen geschützt. Bis zur vollständigen technischen Durchsetzung bleibt GVR-012 TEIL; diese Zielentscheidung ist weder Aktivierung noch Passevidenz und senkt keinen Floor.",
+    "en": "**13 November 2026 (GVR-012 from M7):** The stronger semantic route check shall become mandatory for every registered QA scope of each subject obligated to meet M7. Today this covers seven scopes of five M7 subjects; four are secured. Activation of the complete M7 obligation waits for evidence-backed closure of the other three M7 scopes. The full inventory remains twelve; the five M6 scopes become mandatory on later promotion to M7. Existing required scopes and pins remain protected even through later status changes. GVR-012 stays PARTIAL until complete technical enforcement; this target decision neither activates the obligation nor supplies pass evidence or lowers any floor."
+  },
+  {
+    "de": "**14./15. November 2026:** B1 bis B16 und die delegierten Stufenentscheidungen M1 bis M8 sind die verbindliche Zielnorm; sie lösen das offene Einheits-Zugangsprofil ab. after ordnet ohne Bedarf und ohne Mastery. Ein gemeinsamer Landes-/Dauermodellplan, zwei Wurzelstufen, abgeleitete Ausschnitte, erhaltene Quellenzuordnung und frühester Vorbereitungsbedarf sind verbindlich. Die künftige Einführung und Umstellung fachlicher Einheiten, ihre Cluster- und Prüfungsumzüge, Paketträger, produktiven Leser und neue Anerkennung folgen F8 bis F13 mit eigenen Nachweisen. Notwendige aktuelle Ziel-, Aufgaben-, Rubrik- und Deckungsreparaturen bleiben im delegierten K1–K13-Auftrag bereits jetzt zulässig; sie brauchen geeignete Aufgaben und aktuelle unabhängige Nachweise und dürfen falsche Voraussetzungen oder Abdeckung nicht bis F8 konservieren.",
+    "en": "**14/15 November 2026:** B1 to B16 and delegated stage decisions M1 to M8 form the binding target specification; they supersede the open whole-unit access profile. after orders without demand or mastery. A shared Land/duration plan, two root stages, derived excerpts, preserved source assignment, and earliest preparation demand are binding. Future introduction and migration of subject units, their cluster and assessment moves, package carriers, production readers, and new recognition follow F8 to F13 with their own evidence. Necessary current goal, task, rubric, and coverage repairs remain authorized now under delegated K1–K13; they require suitable tasks and current independent evidence and must not preserve false prerequisites or coverage until F8."
+  }
+],
   "auditedCommitsLead": {
     "de": "Gelesene Stände.",
     "en": "Audited repository states."
@@ -114,172 +118,231 @@
     }
   },
   "boundaryTable": [
-    {
-      "area": { "de": "Abschlussrechnung (Transitivität)", "en": "Completion traversal (transitivity)" },
-      "spec": {
-        "de": "Vollständige transitive offene Nachfrage $N_U=\\operatorname{Reach}_{\\Rat}^{*}(P_U\\setminus M)$ ohne Stopp an gemeisterten Zwischenzielen.",
-        "en": "Full transitive open demand $N_U=\\operatorname{Reach}_{\\Rat}^{*}(P_U\\setminus M)$ without stopping at mastered intermediate goals."
-      },
-      "repoStatus": {
-        "de": "`CompletionEvaluator.evaluateAutomaticGraph` stoppt an gemeisterten Zwischenzielen: In $\\nd{Q}\\to\\nd{B}\\to\\nd{A}$ mit nur $\\nd{B}$ gemeistert wird $\\nd{A}$ dort entlassen, während die neue Formel $\\nd{A}$ für die offene Prüfung $\\nd{Q}$ benötigt hält. Der historische Profilpfad im selben Service ist ein anderer Algorithmus und setzt den neuen Vertrag ebenfalls nicht um.",
-        "en": "`CompletionEvaluator.evaluateAutomaticGraph` stops at mastered intermediate goals: in $\\nd{Q}\\to\\nd{B}\\to\\nd{A}$ with only $\\nd{B}$ mastered, $\\nd{A}$ is released there, whereas the new formula keeps $\\nd{A}$ needed for open assessment $\\nd{Q}$. The legacy profile path in the same service is a different algorithm and likewise does not implement the new contract."
-      }
+  {
+    "area": {
+      "de": "Abschlussrechnung (Transitivität)",
+      "en": "Completion traversal (transitivity)"
     },
-    {
-      "area": { "de": "Geschützte Ziele und lokale Deckung", "en": "Protected goals and local coverage" },
-      "spec": {
-        "de": "Die Schutzmenge $P_U=Q_U\\cup A_{\\mathrm{mem},U}$ schützt alle eigenen Prüfungs- und Memorierziele; jedes eigene Inhaltsziel verlangt lokale Prüfungsdeckung in $\\Own(U)$, ohne reine Aggregate oder Elternsynthesen zu künstlichen Verträgen über alle Nachkommen zu machen.",
-        "en": "The protected set $P_U=Q_U\\cup A_{\\mathrm{mem},U}$ protects all own assessment and memory goals; every own content goal requires local assessment coverage within $\\Own(U)$, without turning pure aggregates or parent syntheses into artificial contracts over descendants."
-      },
-      "repoStatus": {
-        "de": "Der bisherige automatische Pfad beginnt allein bei offenen Prüfungszielen; der gemeinsame Schutz ausgewählter Memorierziele und die lokale Vertragsdeckung sind in der Laufzeit noch nicht umgesetzt. Für die in den kanonischen Gymnasialfächern verfassten Lerneinheiten prüft `validate:learning-units` R1, R3 und den Eindeutigkeitsanteil von R4 fail-closed in der Pflicht-Curriculum-CI und kontrolliert beanspruchte R2-Nachweise (`coverageReviews` der Einheit); R2 als Meilensteingate und R5 bleiben offen.",
-        "en": "The existing automatic path starts solely from open assessment goals; joint protection of selected memory goals and own-unit assessment coverage are not yet implemented in runtime evaluation. For the learning units authored in the canonical Gymnasium landscapes, `validate:learning-units` checks R1, R3, and the uniqueness part of R4 fail-closed in required curriculum CI and verifies claimed R2 evidence (the unit's `coverageReviews`); R2 as a milestone gate and R5 remain open."
-      }
+    "spec": {
+      "de": "Vollständige transitive offene Nachfrage $N_U=\\operatorname{Reach}_{\\Rat}^{*}(P_U\\setminus M)$ ohne Stopp an gemeisterten Zwischenzielen.",
+      "en": "Full transitive open demand $N_U=\\operatorname{Reach}_{\\Rat}^{*}(P_U\\setminus M)$ without stopping at mastered intermediate goals."
     },
-    {
-      "area": { "de": "Globale Wirkung ($\\Meff$)", "en": "Global recognition ($\\Meff$)" },
-      "spec": {
-        "de": "Personen- und revisionsgebundene globale Vereinigung $\\Meff=M\\cup\\bigcup_{U\\in\\mathcal U_{\\mathrm{valid}}}I_U$ wirkt dauerhaft auf Folge-Frontier, Fokuswechsel und Gesamtfortschritt ohne synthetische `Mastery`-Datensätze.",
-        "en": "Person- and revision-bound global union $\\Meff=M\\cup\\bigcup_{U\\in\\mathcal U_{\\mathrm{valid}}}I_U$ acts durably across downstream frontiers, focus switches, and cumulative progress without writing synthetic `Mastery` records."
-      },
-      "repoStatus": {
-        "de": "**Noch nicht implementiert.** Bisherige kontextbezogene Freistellung ist nicht die dauerhaft vertragsgebundene Menge $\\Meff$; Folge-Frontier, Gesamt-IST, Vertragsrevision und historische Bedeutung müssen gemeinsam umgesetzt und geprüft werden. Eine [Referenzrechnung](repo:app/scripts/lib/learningUnitRecognition.ts) der Mengengleichungen prüft sie an den gemeinsamen Konformitätsfällen samt Invarianten über alle Lernstände; das Backend verwendet sie nicht, und die Bindung an Vertragsstände (R5) fehlt ihr.",
-        "en": "**Not yet implemented.** Context-local legacy exemption is not the durable contract-bound set $\\Meff$; downstream frontier, cumulative progress, contract revision binding, and historical meaning must be implemented and verified together. A [reference evaluation](repo:app/scripts/lib/learningUnitRecognition.ts) of the set equations checks them against the shared conformance cases, including invariants over all learner states; the backend does not use it, and it has no binding to contract states (R5)."
-      }
-    },
-    {
-      "area": { "de": "Atomare Normalform und Minimalität (G17)", "en": "Atomic normal form and minimality (G17)" },
-      "spec": {
-        "de": "Vollständige atomare Normalform $R\\subseteq A\\times A$ und transitive Minimalität als Pflichtbasis vor Reifegrad M1; vollständige deterministische Prüfung des aktuellen Fachbestands einschließlich notwendiger fachfremder Voraussetzungen und vererbender Vorfahren.",
-        "en": "Complete atomic normal form $R\\subseteq A\\times A$ and transitive minimality as mandatory baseline before maturity level M1; complete deterministic validation of the current subject inventory including necessary cross-subject prerequisites and inheriting ancestors."
-      },
-      "repoStatus": {
-        "de": "Seit `15f74ef564` (mit Pull Request #119 und #121 auf der Hauptlinie, 11. November 2026) führt `CQR-001` die `G17`-Prüfung (atomare Normalform, transitive Minimalität, explizite Typen, einschließlich benötigter fachfremder Ziele) für jede Wurzel des vollständigen kanonischen Gymnasialkatalogs aus und setzt ein verletzendes Fach auf M0; in der CI hart über die zehn geschützten Floors. Im Status vom 11. November 2026 bestehen die zehn geschützten Fächer sowie Italienisch, Polnisch, Russisch und Tschechisch; Chinesisch, Englisch, Französisch, Griechisch, Musik, Spanisch und die Gymnasial-Übersichtswurzel scheitern und stehen auf M0. Nichtkanonische Wurzeln haben kein `G17`-Gate. Der aktuelle Katalog wird unabhängig von historischen Reduktionsnachweisen ermittelt und vollständig geprüft; ein fehlender oder ungültiger historischer Nachweis erlaubt keine Wiederverwendung alter Reviewevidenz (Anhang~@ref{sec:rule-milestones}).",
-        "en": "Since `15f74ef564` (on `main` with pull requests #119 and #121, 11 November 2026), `CQR-001` runs the `G17` check (atomic normal form, transitive minimality, explicit types, including required cross-subject goals) for every root of the complete canonical Gymnasium catalog and caps a failing subject at M0; hard in CI via the ten protected floors. In the status generated on 11 November 2026, the ten protected subjects plus Italian, Polish, Russian, and Czech pass; Chinese, English, French, Greek, Music, Spanish, and the Gymnasium overview root fail and report M0. Non-canonical roots have no `G17` gate. The current catalog is derived and completely validated independently of historical reduction proofs; a missing or invalid historical proof never permits reuse of old review evidence (Appendix~@ref{sec:rule-milestones})."
-      }
-    },
-    {
-      "area": { "de": "Clustererfüllung ($\\Sat$)", "en": "Cluster satisfaction ($\\Sat$)" },
-      "spec": {
-        "de": "Der normative Kern verlangt alle atomaren Nachfahren $\\Atoms(g)\\subseteq\\Meff$.",
-        "en": "The normative core requires all atomic descendants $\\Atoms(g)\\subseteq\\Meff$."
-      },
-      "repoStatus": {
-        "de": "Die gelesenen Backendpfade filtern rekursiv mit der privaten Hilfsmethode `isCoreForPrereqs`: Vorhandene Kinder ohne Tags oder mit Tag `GK` verdrängen übrige Kinder; andernfalls zählen alle vorhandenen Kinder. Ein boolesches `core`-Attribut wird dort nicht gelesen. Das ist nicht dieselbe Aggregation.",
-        "en": "Audited backend paths filter recursively via private helper `isCoreForPrereqs`: children with no tags or tag `GK` take precedence over other children when present; otherwise all children count. No boolean `core` field is read there. That differs from normative full-basis aggregation."
-      }
-    },
-    {
-      "area": { "de": "Memorierung und Kartenfälligkeit", "en": "Memorization and card due state" },
-      "spec": {
-        "de": "Der eigene erfolgreiche Abschlussabruf (`RecallPassed`) begründet den Zielabschluss; spätere SRS-Kartenfälligkeit ist kein Mastery-Entzug, und gewöhnliche Ziele erhalten keine Wiederholungsfälligkeit ([GD-D03](@rule{GD-D03})).",
-        "en": "Verified completion recall (`RecallPassed`) establishes memory-goal completion; subsequent SRS card due dates never revoke completed mastery, and ordinary goals carry no review-due expiry ([GD-D03](@rule{GD-D03}))."
-      },
-      "repoStatus": {
-        "de": "Die ältere Fälligkeits-Sollformel ist überholt; eine historische Ableitung allein aus Abrufflags in `useSrsMastery.ts` beweist noch nicht den vollständigen Laufzeitvertrag über alle Pfade.",
-        "en": "Legacy due-date target formulas are superseded; historical derivation from recall flags in `useSrsMastery.ts` alone does not prove full runtime conformance across all flows."
-      }
-    },
-    {
-      "area": { "de": "Rekursive Lerneinheiten (`LearningUnit`)", "en": "Recursive learning units (`LearningUnit`)" },
-      "spec": {
-        "de": "Rekursive Ziel- und Kinderstruktur mit eindeutigem Ersterwerb $\\Own(U)$, abgeleitetem Abschluss $\\Complete(U)$ und getrenntem optionalem Zeit-/Budgetprofil; Einheitssperren und direkter Prüfungszugang darunter bleiben unentschieden.",
-        "en": "Recursive target and child hierarchy with unique direct ownership $\\Own(U)$, derived completion $\\Complete(U)$, and separate optional calendar/budget planning; technical unit locks and direct assessment entry under them remain undecided."
-      },
-      "repoStatus": {
-        "de": "Verbindliches Strukturkonzept; **noch keine behauptete Laufzeitfunktion**. Lerneinheiten werden in der Platzierungsschicht ihrer Skill-Landschaft deklariert und vom [Curriculum-Paketvertrag 1.2](repo:contracts/curriculum-package/v1.2/README.md) getragen (Abschnitt~@ref{sec:unit-representation}). [validateLearningUnits.ts](repo:app/scripts/validateLearningUnits.ts) und der unabhängige Paketvalidator prüfen R1, R3 und den Eindeutigkeitsanteil von R4 fail-closed (Abschnitt~@ref{sec:why-graph-not-enough}). Die kanonische Mathematik enthält seit dem 13. November 2026 zwei Einheiten mit R2-Nachweis: einen Piloten zum Skalarprodukt mit einer für ihn geschriebenen Prüfung und die Einheit „Natürliche Zahlen verstehen und darstellen“ mit fünf Zielen und zwei Prüfungen. Die kanonische Physik enthält die Einheit „Gleichmäßig beschleunigte Bewegung modellieren“ mit zwei Zielen und einer Prüfung. Die Wiederverwendung der Reviews aus dem eingefrorenen Reduktionsnachweis entscheidet sich je Ziel und hängt nicht an der Einheitenschicht. Es fehlen die abgeleitete Anerkennung zur Laufzeit, die Weitergabe der neuen Felder über die Backend-API und eine Blockzyklusprüfung einer Einheitsfolge.",
-        "en": "Binding domain-structure specification; **not yet a claimed runtime feature**. Learning units are declared in the placement layer of their skill landscape and carried by [curriculum-package contract 1.2](repo:contracts/curriculum-package/v1.2/README.md) (Section~@ref{sec:unit-representation}). [validateLearningUnits.ts](repo:app/scripts/validateLearningUnits.ts) and the independent package validator check R1, R3, and the uniqueness part of R4 fail-closed (Section~@ref{sec:why-graph-not-enough}). Since 13 November 2026 canonical Mathematics contains two units with reviewed coverage (R2): a pilot on the dot product with one assessment written for it, and the unit \"Understanding and representing natural numbers\" with five goals and two assessments. Canonical Physics contains the unit \"Modelling motion with constant acceleration\" with two goals and one assessment. Review reuse from the frozen prerequisite-reduction proof is decided per goal and does not depend on the learning-unit layer. Still missing: derived recognition at runtime, pass-through of the new fields by the backend API, and a block-cycle check of a unit sequence."
-      }
-    },
-    {
-      "area": { "de": "Direkte Clusterreferenzen in Sichten", "en": "Direct cluster references in views" },
-      "spec": {
-        "de": "Eine Kompositionssicht macht einen kanonischen Cluster niemals zum Atom; $\\Atoms(g)$ bleibt erhalten ([GD-X09](@rule{GD-X09})).",
-        "en": "A composition view never turns a canonical cluster into an atom; $\\Atoms(g)$ is preserved ([GD-X09](@rule{GD-X09}))."
-      },
-      "repoStatus": {
-        "de": "Am Stand `68db5bf499` behandeln `LearnerService` und `CompletionCanonicalGraphResolver` direkte `goalEntry`-Referenzen auf kanonische Cluster noch als kinderlose Laufzeitatome; Korrektur und nativer Nachweis stehen aus.",
-        "en": "At audited state `68db5bf499`, `LearnerService` and `CompletionCanonicalGraphResolver` still treat direct `goalEntry` references to canonical clusters as childless runtime atoms; fix and native verification remain open."
-      }
-    },
-    {
-      "area": { "de": "Persönlicher Lernumfang ($L=\\Closure(S)$)", "en": "Personal Curriculum scope ($L=\\Closure(S)$)" },
-      "spec": {
-        "de": "Gültige Ausgangsziele $S$ werden im unbeschnittenen kanonischen Graphen abgeschlossen ($L=\\Closure(S)$), unabhängig von Mastery fixiert und mit abgeleiteten Zielrollen für notwendige Atome versehen.",
-        "en": "Valid seed targets $S$ are closed on the unpruned canonical graph ($L=\\Closure(S)$), fixed independently of mastery, and assigned derived target roles for necessary prerequisite atoms."
-      },
-      "repoStatus": {
-        "de": "In Backend (`PersonalCurriculumLearningScope.java`) und WebGUI (`cacf323919`) mit lokalen Regressionen umgesetzt; vollständige native, Curriculum- und Remote-CI-Abnahme sowie Anwendbarkeitsprüfung des aktuellen Zustands bleiben getrennt. Seit `b511654efb` (11. November 2026) behält ein Lernkontext, dessen kanonischer Graph nicht strikt kompilierbar ist, den geprüften Ausgangsumfang ohne abgeleitete Hülle und beansprucht keine Lernbasis.",
-        "en": "Implemented in backend (`PersonalCurriculumLearningScope.java`) and WebGUI (`cacf323919`) with local regressions; full native, curriculum, and remote-CI acceptance plus applicability validation of the current state remain separate. Since `b511654efb` (11 November 2026), a learning context whose canonical graph is not strictly compilable keeps its reviewed seed scope without derived closure and claims no learning basis."
-      }
-    },
-    {
-      "area": { "de": "Fokus und Filtermodi (Normal vs. Strikt)", "en": "Focus and filter modes (normal vs. strict)" },
-      "spec": {
-        "de": "Level-3-Fokus begrenzt Kandidaten bei festem Level-2-Nenner $L$; Normalmodus prüft im Fokus, strikter Modus global; Fokusausweitung erfolgt erst nach tatsächlichem Fokusabschluss.",
-        "en": "Level 3 focus narrows candidate goals while keeping Level 2 denominator $L$ fixed; normal mode checks prerequisites inside focus, strict mode checks globally; focus widening is offered only after actual focus completion."
-      },
-      "repoStatus": {
-        "de": "In Laufzeit und WebGUI über ausdrücklichem $M$ umgesetzt; nutzt noch nicht $\\Meff$ und unterliegt den genannten `isCoreForPrereqs`- und `goalEntry`-Grenzen.",
-        "en": "Implemented in learner runtime and WebGUI over explicit $M$; does not yet evaluate $\\Meff$ and remains subject to the `isCoreForPrereqs` and `goalEntry` boundaries above."
-      }
-    },
-    {
-      "area": { "de": "Didaktische Routen ($O_k\\to a\\to Z_k$)", "en": "Didactic routes ($O_k\\to a\\to Z_k$)" },
-      "spec": {
-        "de": "Jedes nicht ausgenommene Atom liegt innerhalb seines Routenprofils auf einer direkten atomaren Kette von Orientierungsanker zu terminalem Autonomieziel.",
-        "en": "Every non-exempt atomic goal lies on a direct atomic prerequisite path from an orientation anchor to a terminal autonomy goal within its route profile."
-      },
-      "repoStatus": {
-        "de": "`CQR-101/102/103` werden in allen zwölf konfigurierten QA-Profilen für zehn Gymnasialfächer direkt hart erzwungen; `CQR-102` prüft atomare Erreichbarkeit. `CQR-104` erzwingt Endpunktsichtbarkeit nur in acht dieser zwölf Scopes. Die stärkere semantische Routenprüfung `GVR-012` gilt im Folgearbeitsstand für vier Scopes: Mathematik Sek I/Sek II sowie Biologie und Physik Sek II. Zwei weitere Scopes haben Routenbefunde (Physik Sek I 5, Chemie 3); sechs Scopes haben kein vollständiges aktuelles Ledger. Curricula ohne Routenprofil bleiben höchstens M2. Der frühere Hauptlinienstand `2129b207f4` belegt die ausgelieferte Basis; er ist keine CI-Evidenz für spätere Änderungen. Die Ownerentscheidung vom 13. November 2026 verlangt künftig alle Scopes der jeweils M7-verpflichteten Fächer (heute sieben), mit Aktivierung erst nach evidenzbasiertem Lückenschluss. Der heutige Stand ist vier von sieben M7-Scopes bzw. vier von zwölf Inventarscopes; fünf M6-Scopes werden beim späteren M7-Aufstieg verpflichtend. Die zwölfteilige Diagnose bleibt von dieser künftigen Aufstiegsprüfung getrennt. Die Physik-Lane enthält nun auch die reviewten expliziten Stage-Targets. Weitere 43 nur über Unterbäume geerbte Sek-II-Targets bleiben separat als Abgleichslücke ausgewiesen, davon 42 ohne Terminalroute; das ist keine vollständige Stage-Target-Abdeckung.",
-        "en": "`CQR-101/102/103` are directly hard-enforced in all twelve configured QA profiles across ten Gymnasium subjects; `CQR-102` checks atomic reachability. `CQR-104` enforces endpoint visibility only in eight of those twelve scopes. In the follow-up working state, the stronger semantic route check `GVR-012` applies to four scopes: Mathematics lower/upper secondary, Biology and Physics upper secondary. Two other scopes have route findings (Physics lower secondary 5, Chemistry 3); six scopes lack complete current ledgers. Curricula without route profiles cap at M2. The earlier mainline state `2129b207f4` evidences the delivered baseline; it is not CI evidence for later changes. The Product Owner decision of 13 November 2026 requires every scope of subjects obligated to meet M7 in future (currently seven), with activation only after evidence-backed gap closure. Current coverage is four of seven M7 scopes, or four of twelve inventory scopes; five M6 scopes become mandatory on later promotion to M7. The twelve-scope diagnostic remains separate from this future promotion check. The Physics lane now also includes reviewed explicit stage targets. Another 43 upper-secondary targets inherited only through subtrees remain separate alignment debt, 42 without terminal routes; this is not complete stage-target coverage."
-      }
-    },
-    {
-      "area": { "de": "Prüfungsaufgaben und Anwendungsdeckung", "en": "Assessment tasks and application coverage" },
-      "spec": {
-        "de": "Freigebende Prüfungen müssen jede anerkannte wesentliche Kompetenz unter jeder Bestehenskombination unabhängig abverlangen ([GD-A08](@rule{GD-A08})).",
-        "en": "Releasing assessments must require independent application of every recognized essential competence under every passing score combination ([GD-A08](@rule{GD-A08}))."
-      },
-      "repoStatus": {
-        "de": "`CQR-201`--`CQR-203` verlangen in allen zwölf fest gebundenen QA-Scopes direkt bestandene Prüfungen für `examData`, konkrete Aufgabenbereitschaft und Metadaten, beweisen aber weder Live-Sitzungsbenotung noch Nichtkompensierbarkeit jeder Rubrikkombination. `CQR-104` prüft die allgemeine Endpunktsichtbarkeit in acht von zwölf fest gebundenen Scopes. Seine zusätzliche Bindung jedes `coveredGoalIds`-Eintrags an einen sichtbaren Voraussetzungspfad (verwandt mit R3) gilt weiterhin nur für terminale Prüfungen der kanonischen Wirtschaftswissenschaften; die Erweiterung der Sichtbarkeit allein schließt R3 außerhalb dieses Bereichs nicht. Für eigene Prüfungen verfasster Lerneinheiten erzwingt `validate:learning-units` R3 fail-closed und prüft beanspruchte Deckungsreviews (`coverageReviews` der Einheit) gegen die aktuellen Aufgaben- und Raster-Hashes; R2 belegt es nicht.",
-        "en": "`CQR-201`--`CQR-203` directly require passing results for `examData` presence, non-placeholder readiness, and metadata in all twelve pinned QA scopes, without proving live session grading or non-compensability of every passing rubric combination. `CQR-104` checks general endpoint visibility in eight of twelve pinned scopes. Its additional binding of every `coveredGoalIds` entry to a visible prerequisite path (related to R3) still applies only to terminal assessments of canonical Economics; expanding visibility alone does not close R3 outside this domain. For own assessments of authored learning units, `validate:learning-units` enforces R3 fail-closed and checks claimed coverage reviews (the unit's `coverageReviews`) against the current task and rubric hashes; it does not establish R2."
-      }
-    },
-    {
-      "area": { "de": "Optionale Erwerbs- und Zeitplanung", "en": "Optional acquisition and time planning" },
-      "spec": {
-        "de": "Optionale Kalenderstufen prüfen strukturelle Abschlusszeugen über $B_\\pi$ und $\\Work+\\Reserve\\le\\Budget$ nur unter ausdrücklich deklarierten Schätzannahmen $\\Theta_\\pi$.",
-        "en": "Optional calendar periods verify structural completion witnesses over $B_\\pi$ and $\\Work+\\Reserve\\le\\Budget$ only under explicitly declared estimation assumptions $\\Theta_\\pi$."
-      },
-      "repoStatus": {
-        "de": "Optionales Planungsprofil (`GD-P01`--`GD-P11`); kein produktives Curriculum- oder Laufzeit-Budgetgate behauptet, und `weight` bedeutet niemals Minuten.",
-        "en": "Optional planning profile (`GD-P01`--`GD-P11`); no productive curriculum or runtime budget gate is claimed, and `weight` never denotes minutes."
-      }
-    },
-    {
-      "area": { "de": "Gesamt-IST vs. Periodenleistung", "en": "Cumulative progress vs. period completions" },
-      "spec": {
-        "de": "Der Gesamt-IST zählt $\\lvert T_{\\mathrm{Plan}}\\cap\\Meff\\rvert$ (mit optionalem nur-ausdrücklichem Planzähler $\\lvert T_{\\mathrm{Plan}}\\cap M\\rvert$ samt Kennzeichnung), laufende Perioden zählen allein datierte ausdrückliche Abschlüsse.",
-        "en": "Cumulative plan progress counts $\\lvert T_{\\mathrm{Plan}}\\cap\\Meff\\rvert$ (with an optional clearly labelled explicit-only plan counter $\\lvert T_{\\mathrm{Plan}}\\cap M\\rvert$), while active periods count only reliably dated explicit completions."
-      },
-      "repoStatus": {
-        "de": "Aktuelle Cockpit- und Geschwindigkeitsansichten zählen ausdrückliche Abschlussereignisse; die getrennte explizite/implizite Darstellung setzt die Umsetzung von $\\Meff$ voraus.",
-        "en": "Current Cockpit and velocity views count explicit completion events; segmented explicit/implicit accounting awaits implementation of $\\Meff$."
-      }
-    },
-    {
-      "area": { "de": "Reifegrade M0--M7 und Qualitäts-Floors", "en": "Maturity levels M0--M7 and quality floors" },
-      "spec": {
-        "de": "Maschinelle Curriculum-QA M0--M7 bleibt strikt getrennt von menschlicher Freigabe, Erprobung und Laufzeitkonformität.",
-        "en": "Automated phase-1 curriculum QA M0--M7 remains strictly separated from human sign-off, learner trials, and runtime conformance."
-      },
-      "repoStatus": {
-        "de": "CI schützt zehn Gymnasialfächer über [checkCurriculumMaturityFloors.ts](repo:app/scripts/checkCurriculumMaturityFloors.ts) (5 auf M7, 5 auf M6) samt Status-Diff; ungeschützte Experimentalstände bleiben auf M0 berichtbar, reine `docs/**`-Änderungen sind in `ci.yml` ausgenommen.",
-        "en": "CI protects ten Gymnasium subjects via [checkCurriculumMaturityFloors.ts](repo:app/scripts/checkCurriculumMaturityFloors.ts) (5 at M7, 5 at M6) plus status-file diffing; unfloored experimental landscapes remain reportable at M0, and `docs/**`-only changes are exempted in `ci.yml`."
-      }
+    "repoStatus": {
+      "de": "`CompletionEvaluator.evaluateAutomaticGraph` stoppt an gemeisterten Zwischenzielen: In $\\nd{Q}\\to\\nd{B}\\to\\nd{A}$ mit nur $\\nd{B}$ gemeistert wird $\\nd{A}$ dort entlassen, während die neue Formel $\\nd{A}$ für die offene Prüfung $\\nd{Q}$ benötigt hält. Der historische Profilpfad im selben Service ist ein anderer Algorithmus und setzt den neuen Vertrag ebenfalls nicht um.",
+      "en": "`CompletionEvaluator.evaluateAutomaticGraph` stops at mastered intermediate goals: in $\\nd{Q}\\to\\nd{B}\\to\\nd{A}$ with only $\\nd{B}$ mastered, $\\nd{A}$ is released there, whereas the new formula keeps $\\nd{A}$ needed for open assessment $\\nd{Q}$. The legacy profile path in the same service is a different algorithm and likewise does not implement the new contract."
     }
-  ],
+  },
+  {
+    "area": {
+      "de": "Geschützte Ziele und lokale Deckung",
+      "en": "Protected goals and local coverage"
+    },
+    "spec": {
+      "de": "Die Schutzmenge $P_U=Q_U\\cup A_{\\mathrm{mem},U}$ schützt alle eigenen Prüfungs- und Memorierziele; jedes eigene Inhaltsziel verlangt lokale Prüfungsdeckung in $\\Own(U)$, ohne reine Aggregate oder Elternsynthesen zu künstlichen Verträgen über alle Nachkommen zu machen.",
+      "en": "The protected set $P_U=Q_U\\cup A_{\\mathrm{mem},U}$ protects all own assessment and memory goals; every own content goal requires local assessment coverage within $\\Own(U)$, without turning pure aggregates or parent syntheses into artificial contracts over descendants."
+    },
+    "repoStatus": {
+      "de": "Der bisherige automatische Pfad beginnt allein bei offenen Prüfungszielen; der gemeinsame Schutz ausgewählter Memorierziele und die lokale Vertragsdeckung sind in der Laufzeit noch nicht umgesetzt. Für die in den kanonischen Gymnasialfächern verfassten Lerneinheiten prüft `validate:learning-units` R1, R3 und den Eindeutigkeitsanteil von R4 fail-closed in der Pflicht-Curriculum-CI und kontrolliert beanspruchte R2-Nachweise (`coverageReviews` der Einheit); R2 als Meilensteingate und R5 bleiben offen.",
+      "en": "The existing automatic path starts solely from open assessment goals; joint protection of selected memory goals and own-unit assessment coverage are not yet implemented in runtime evaluation. For the learning units authored in the canonical Gymnasium landscapes, `validate:learning-units` checks R1, R3, and the uniqueness part of R4 fail-closed in required curriculum CI and verifies claimed R2 evidence (the unit's `coverageReviews`); R2 as a milestone gate and R5 remain open."
+    }
+  },
+  {
+    "area": {
+      "de": "Globale Wirkung ($\\Meff$)",
+      "en": "Global recognition ($\\Meff$)"
+    },
+    "spec": {
+      "de": "Personen- und revisionsgebundene globale Vereinigung $\\Meff=M\\cup\\bigcup_{U\\in\\mathcal U_{\\mathrm{valid}}}I_U$ wirkt dauerhaft auf Folge-Frontier, Fokuswechsel und Gesamtfortschritt ohne synthetische `Mastery`-Datensätze.",
+      "en": "Person- and revision-bound global union $\\Meff=M\\cup\\bigcup_{U\\in\\mathcal U_{\\mathrm{valid}}}I_U$ acts durably across downstream frontiers, focus switches, and cumulative progress without writing synthetic `Mastery` records."
+    },
+    "repoStatus": {
+      "de": "**Noch nicht implementiert.** Bisherige kontextbezogene Freistellung ist nicht die dauerhaft vertragsgebundene Menge $\\Meff$; Folge-Frontier, Gesamt-IST, Vertragsrevision und historische Bedeutung müssen gemeinsam umgesetzt und geprüft werden. Eine [Referenzrechnung](repo:app/scripts/lib/learningUnitRecognition.ts) der Mengengleichungen prüft sie an den gemeinsamen Konformitätsfällen samt Invarianten über alle Lernstände; das Backend verwendet sie nicht, und die Bindung an Vertragsstände (R5) fehlt ihr.",
+      "en": "**Not yet implemented.** Context-local legacy exemption is not the durable contract-bound set $\\Meff$; downstream frontier, cumulative progress, contract revision binding, and historical meaning must be implemented and verified together. A [reference evaluation](repo:app/scripts/lib/learningUnitRecognition.ts) of the set equations checks them against the shared conformance cases, including invariants over all learner states; the backend does not use it, and it has no binding to contract states (R5)."
+    }
+  },
+  {
+    "area": {
+      "de": "Atomare Normalform und Minimalität (G17)",
+      "en": "Atomic normal form and minimality (G17)"
+    },
+    "spec": {
+      "de": "Vollständige atomare Normalform $R\\subseteq A\\times A$ und transitive Minimalität als Pflichtbasis vor Reifegrad M1; vollständige deterministische Prüfung des aktuellen Fachbestands einschließlich notwendiger fachfremder Voraussetzungen und vererbender Vorfahren.",
+      "en": "Complete atomic normal form $R\\subseteq A\\times A$ and transitive minimality as mandatory baseline before maturity level M1; complete deterministic validation of the current subject inventory including necessary cross-subject prerequisites and inheriting ancestors."
+    },
+    "repoStatus": {
+      "de": "Seit `15f74ef564` (mit Pull Request #119 und #121 auf der Hauptlinie, 11. November 2026) führt `CQR-001` die `G17`-Prüfung (atomare Normalform, transitive Minimalität, explizite Typen, einschließlich benötigter fachfremder Ziele) für jede Wurzel des vollständigen kanonischen Gymnasialkatalogs aus und setzt ein verletzendes Fach auf M0; in der CI hart über die zehn geschützten Floors. Im Status vom 11. November 2026 bestehen die zehn geschützten Fächer sowie Italienisch, Polnisch, Russisch und Tschechisch; Chinesisch, Englisch, Französisch, Griechisch, Musik, Spanisch und die Gymnasial-Übersichtswurzel scheitern und stehen auf M0. Nichtkanonische Wurzeln haben kein `G17`-Gate. Der aktuelle Katalog wird unabhängig von historischen Reduktionsnachweisen ermittelt und vollständig geprüft; ein fehlender oder ungültiger historischer Nachweis erlaubt keine Wiederverwendung alter Reviewevidenz (Anhang~@ref{sec:rule-milestones}).",
+      "en": "Since `15f74ef564` (on `main` with pull requests #119 and #121, 11 November 2026), `CQR-001` runs the `G17` check (atomic normal form, transitive minimality, explicit types, including required cross-subject goals) for every root of the complete canonical Gymnasium catalog and caps a failing subject at M0; hard in CI via the ten protected floors. In the status generated on 11 November 2026, the ten protected subjects plus Italian, Polish, Russian, and Czech pass; Chinese, English, French, Greek, Music, Spanish, and the Gymnasium overview root fail and report M0. Non-canonical roots have no `G17` gate. The current catalog is derived and completely validated independently of historical reduction proofs; a missing or invalid historical proof never permits reuse of old review evidence (Appendix~@ref{sec:rule-milestones})."
+    }
+  },
+  {
+    "area": {
+      "de": "Clustererfüllung ($\\Sat$)",
+      "en": "Cluster satisfaction ($\\Sat$)"
+    },
+    "spec": {
+      "de": "Der normative Kern verlangt alle atomaren Nachfahren $\\Atoms(g)\\subseteq\\Meff$.",
+      "en": "The normative core requires all atomic descendants $\\Atoms(g)\\subseteq\\Meff$."
+    },
+    "repoStatus": {
+      "de": "Die gelesenen Backendpfade filtern rekursiv mit der privaten Hilfsmethode `isCoreForPrereqs`: Vorhandene Kinder ohne Tags oder mit Tag `GK` verdrängen übrige Kinder; andernfalls zählen alle vorhandenen Kinder. Ein boolesches `core`-Attribut wird dort nicht gelesen. Das ist nicht dieselbe Aggregation.",
+      "en": "Audited backend paths filter recursively via private helper `isCoreForPrereqs`: children with no tags or tag `GK` take precedence over other children when present; otherwise all children count. No boolean `core` field is read there. That differs from normative full-basis aggregation."
+    }
+  },
+  {
+    "area": {
+      "de": "Memorierung und Kartenfälligkeit",
+      "en": "Memorization and card due state"
+    },
+    "spec": {
+      "de": "Der eigene erfolgreiche Abschlussabruf (`RecallPassed`) begründet den Zielabschluss; spätere SRS-Kartenfälligkeit ist kein Mastery-Entzug, und gewöhnliche Ziele erhalten keine Wiederholungsfälligkeit ([GD-D03](@rule{GD-D03})).",
+      "en": "Verified completion recall (`RecallPassed`) establishes memory-goal completion; subsequent SRS card due dates never revoke completed mastery, and ordinary goals carry no review-due expiry ([GD-D03](@rule{GD-D03}))."
+    },
+    "repoStatus": {
+      "de": "Die ältere Fälligkeits-Sollformel ist überholt; eine historische Ableitung allein aus Abrufflags in `useSrsMastery.ts` beweist noch nicht den vollständigen Laufzeitvertrag über alle Pfade.",
+      "en": "Legacy due-date target formulas are superseded; historical derivation from recall flags in `useSrsMastery.ts` alone does not prove full runtime conformance across all flows."
+    }
+  },
+  {
+    "area": {
+      "de": "Rekursive Lerneinheiten (`LearningUnit`)",
+      "en": "Recursive learning units (`LearningUnit`)"
+    },
+    "spec": {
+      "de": "Erklärte Cluster mit eindeutigen eigenen Zielen und Untereinheiten (E1/R4), abgeleitetem Abschluss, after-Ordnung (E2 bis E4) und getrenntem optionalem Zeitbudget. B9 hebt das frühere Ganzheits-Zugangsprofil auf.",
+      "en": "Declared clusters with unique own goals and child units (E1/R4), derived completion, after ordering (E2 to E4), and a separate optional time budget. B9 retires the former whole-unit access profile."
+    },
+    "repoStatus": {
+      "de": "Kompatibilitätsstand des 12.-November-Vertrags; das Zielmodell der erklärten Cluster ersetzt ihn erst mit F9/F10. Verbindliches Strukturkonzept; **noch keine behauptete Laufzeitfunktion**. Lerneinheiten werden in der Platzierungsschicht ihrer Skill-Landschaft deklariert und vom [Curriculum-Paketvertrag 1.2](repo:contracts/curriculum-package/v1.2/README.md) getragen (Abschnitt~@ref{sec:unit-representation}). [validateLearningUnits.ts](repo:app/scripts/validateLearningUnits.ts) und der unabhängige Paketvalidator prüfen R1, R3 und den Eindeutigkeitsanteil von R4 fail-closed (Abschnitt~@ref{sec:why-graph-not-enough}). Die kanonische Mathematik enthält seit dem 13. November 2026 zwei Einheiten mit R2-Nachweis: einen Piloten zum Skalarprodukt mit einer für ihn geschriebenen Prüfung und die Einheit „Natürliche Zahlen verstehen und darstellen“ mit fünf Zielen und zwei Prüfungen. Die kanonische Physik enthält die Einheit „Gleichmäßig beschleunigte Bewegung modellieren“ mit zwei Zielen und einer Prüfung. Die Wiederverwendung der Reviews aus dem eingefrorenen Reduktionsnachweis entscheidet sich je Ziel und hängt nicht an der Einheitenschicht. Es fehlen die abgeleitete Anerkennung zur Laufzeit, die Weitergabe der neuen Felder über die Backend-API und eine Blockzyklusprüfung einer Einheitsfolge.",
+      "en": "Compatibility footprint of the 12 November contract; the declared-cluster target model replaces it only with F9/F10. Binding domain-structure specification; **not yet a claimed runtime feature**. Learning units are declared in the placement layer of their skill landscape and carried by [curriculum-package contract 1.2](repo:contracts/curriculum-package/v1.2/README.md) (Section~@ref{sec:unit-representation}). [validateLearningUnits.ts](repo:app/scripts/validateLearningUnits.ts) and the independent package validator check R1, R3, and the uniqueness part of R4 fail-closed (Section~@ref{sec:why-graph-not-enough}). Since 13 November 2026 canonical Mathematics contains two units with reviewed coverage (R2): a pilot on the dot product with one assessment written for it, and the unit \"Understanding and representing natural numbers\" with five goals and two assessments. Canonical Physics contains the unit \"Modelling motion with constant acceleration\" with two goals and one assessment. Review reuse from the frozen prerequisite-reduction proof is decided per goal and does not depend on the learning-unit layer. Still missing: derived recognition at runtime, pass-through of the new fields by the backend API, and a block-cycle check of a unit sequence."
+    }
+  },
+  {
+    "area": {
+      "de": "Direkte Clusterreferenzen in Sichten",
+      "en": "Direct cluster references in views"
+    },
+    "spec": {
+      "de": "Eine Kompositionssicht macht einen kanonischen Cluster niemals zum Atom; $\\Atoms(g)$ bleibt erhalten ([GD-X09](@rule{GD-X09})).",
+      "en": "A composition view never turns a canonical cluster into an atom; $\\Atoms(g)$ is preserved ([GD-X09](@rule{GD-X09}))."
+    },
+    "repoStatus": {
+      "de": "Am Stand `68db5bf499` behandeln `LearnerService` und `CompletionCanonicalGraphResolver` direkte `goalEntry`-Referenzen auf kanonische Cluster noch als kinderlose Laufzeitatome; Korrektur und nativer Nachweis stehen aus.",
+      "en": "At audited state `68db5bf499`, `LearnerService` and `CompletionCanonicalGraphResolver` still treat direct `goalEntry` references to canonical clusters as childless runtime atoms; fix and native verification remain open."
+    }
+  },
+  {
+    "area": {
+      "de": "Persönlicher Lernumfang ($L=\\Closure(S)$)",
+      "en": "Personal Curriculum scope ($L=\\Closure(S)$)"
+    },
+    "spec": {
+      "de": "Gültige Ausgangsziele $S$ werden im unbeschnittenen kanonischen Graphen abgeschlossen ($L=\\Closure(S)$), unabhängig von Mastery fixiert und mit abgeleiteten Zielrollen für notwendige Atome versehen.",
+      "en": "Valid seed targets $S$ are closed on the unpruned canonical graph ($L=\\Closure(S)$), fixed independently of mastery, and assigned derived target roles for necessary prerequisite atoms."
+    },
+    "repoStatus": {
+      "de": "In Backend (`PersonalCurriculumLearningScope.java`) und WebGUI (`cacf323919`) mit lokalen Regressionen umgesetzt; vollständige native, Curriculum- und Remote-CI-Abnahme sowie Anwendbarkeitsprüfung des aktuellen Zustands bleiben getrennt. Seit `b511654efb` (11. November 2026) behält ein Lernkontext, dessen kanonischer Graph nicht strikt kompilierbar ist, den geprüften Ausgangsumfang ohne abgeleitete Hülle und beansprucht keine Lernbasis.",
+      "en": "Implemented in backend (`PersonalCurriculumLearningScope.java`) and WebGUI (`cacf323919`) with local regressions; full native, curriculum, and remote-CI acceptance plus applicability validation of the current state remain separate. Since `b511654efb` (11 November 2026), a learning context whose canonical graph is not strictly compilable keeps its reviewed seed scope without derived closure and claims no learning basis."
+    }
+  },
+  {
+    "area": {
+      "de": "Fokus und Filtermodi (Normal vs. Strikt)",
+      "en": "Focus and filter modes (normal vs. strict)"
+    },
+    "spec": {
+      "de": "Level-3-Fokus begrenzt Kandidaten bei festem Level-2-Nenner $L$; Normalmodus prüft im Fokus, strikter Modus global; Fokusausweitung erfolgt erst nach tatsächlichem Fokusabschluss.",
+      "en": "Level 3 focus narrows candidate goals while keeping Level 2 denominator $L$ fixed; normal mode checks prerequisites inside focus, strict mode checks globally; focus widening is offered only after actual focus completion."
+    },
+    "repoStatus": {
+      "de": "In Laufzeit und WebGUI über ausdrücklichem $M$ umgesetzt; nutzt noch nicht $\\Meff$ und unterliegt den genannten `isCoreForPrereqs`- und `goalEntry`-Grenzen.",
+      "en": "Implemented in learner runtime and WebGUI over explicit $M$; does not yet evaluate $\\Meff$ and remains subject to the `isCoreForPrereqs` and `goalEntry` boundaries above."
+    }
+  },
+  {
+    "area": {
+      "de": "Didaktische Routen ($O_k\\to a\\to Z_k$)",
+      "en": "Didactic routes ($O_k\\to a\\to Z_k$)"
+    },
+    "spec": {
+      "de": "Jedes nicht ausgenommene Atom liegt innerhalb seines Routenprofils auf einer direkten atomaren Kette von Orientierungsanker zu terminalem Autonomieziel.",
+      "en": "Every non-exempt atomic goal lies on a direct atomic prerequisite path from an orientation anchor to a terminal autonomy goal within its route profile."
+    },
+    "repoStatus": {
+      "de": "`CQR-101/102/103` werden in allen zwölf konfigurierten QA-Profilen für zehn Gymnasialfächer direkt hart erzwungen; `CQR-102` prüft atomare Erreichbarkeit. `CQR-104` erzwingt Endpunktsichtbarkeit nur in acht dieser zwölf Scopes. Die stärkere semantische Routenprüfung `GVR-012` gilt im Folgearbeitsstand für vier Scopes: Mathematik Sek I/Sek II sowie Biologie und Physik Sek II. Zwei weitere Scopes haben Routenbefunde (Physik Sek I 5, Chemie 3); sechs Scopes haben kein vollständiges aktuelles Ledger. Curricula ohne Routenprofil bleiben höchstens M2. Der frühere Hauptlinienstand `2129b207f4` belegt die ausgelieferte Basis; er ist keine CI-Evidenz für spätere Änderungen. Die Ownerentscheidung vom 13. November 2026 verlangt künftig alle Scopes der jeweils M7-verpflichteten Fächer (heute sieben), mit Aktivierung erst nach evidenzbasiertem Lückenschluss. Der heutige Stand ist vier von sieben M7-Scopes bzw. vier von zwölf Inventarscopes; fünf M6-Scopes werden beim späteren M7-Aufstieg verpflichtend. Die zwölfteilige Diagnose bleibt von dieser künftigen Aufstiegsprüfung getrennt. Die Physik-Lane enthält nun auch die reviewten expliziten Stage-Targets. Weitere 43 nur über Unterbäume geerbte Sek-II-Targets bleiben separat als Abgleichslücke ausgewiesen, davon 42 ohne Terminalroute; das ist keine vollständige Stage-Target-Abdeckung.",
+      "en": "`CQR-101/102/103` are directly hard-enforced in all twelve configured QA profiles across ten Gymnasium subjects; `CQR-102` checks atomic reachability. `CQR-104` enforces endpoint visibility only in eight of those twelve scopes. In the follow-up working state, the stronger semantic route check `GVR-012` applies to four scopes: Mathematics lower/upper secondary, Biology and Physics upper secondary. Two other scopes have route findings (Physics lower secondary 5, Chemistry 3); six scopes lack complete current ledgers. Curricula without route profiles cap at M2. The earlier mainline state `2129b207f4` evidences the delivered baseline; it is not CI evidence for later changes. The Product Owner decision of 13 November 2026 requires every scope of subjects obligated to meet M7 in future (currently seven), with activation only after evidence-backed gap closure. Current coverage is four of seven M7 scopes, or four of twelve inventory scopes; five M6 scopes become mandatory on later promotion to M7. The twelve-scope diagnostic remains separate from this future promotion check. The Physics lane now also includes reviewed explicit stage targets. Another 43 upper-secondary targets inherited only through subtrees remain separate alignment debt, 42 without terminal routes; this is not complete stage-target coverage."
+    }
+  },
+  {
+    "area": {
+      "de": "Prüfungsaufgaben und Anwendungsdeckung",
+      "en": "Assessment tasks and application coverage"
+    },
+    "spec": {
+      "de": "Freigebende Prüfungen müssen jede anerkannte wesentliche Kompetenz unter jeder Bestehenskombination unabhängig abverlangen ([GD-A08](@rule{GD-A08})).",
+      "en": "Releasing assessments must require independent application of every recognized essential competence under every passing score combination ([GD-A08](@rule{GD-A08}))."
+    },
+    "repoStatus": {
+      "de": "`CQR-201`--`CQR-203` verlangen in allen zwölf fest gebundenen QA-Scopes direkt bestandene Prüfungen für `examData`, konkrete Aufgabenbereitschaft und Metadaten, beweisen aber weder Live-Sitzungsbenotung noch Nichtkompensierbarkeit jeder Rubrikkombination. `CQR-104` prüft die allgemeine Endpunktsichtbarkeit in acht von zwölf fest gebundenen Scopes. Seine zusätzliche Bindung jedes `coveredGoalIds`-Eintrags an einen sichtbaren Voraussetzungspfad (verwandt mit R3) gilt weiterhin nur für terminale Prüfungen der kanonischen Wirtschaftswissenschaften; die Erweiterung der Sichtbarkeit allein schließt R3 außerhalb dieses Bereichs nicht. Für eigene Prüfungen verfasster Lerneinheiten erzwingt `validate:learning-units` R3 fail-closed und prüft beanspruchte Deckungsreviews (`coverageReviews` der Einheit) gegen die aktuellen Aufgaben- und Raster-Hashes; R2 belegt es nicht.",
+      "en": "`CQR-201`--`CQR-203` directly require passing results for `examData` presence, non-placeholder readiness, and metadata in all twelve pinned QA scopes, without proving live session grading or non-compensability of every passing rubric combination. `CQR-104` checks general endpoint visibility in eight of twelve pinned scopes. Its additional binding of every `coveredGoalIds` entry to a visible prerequisite path (related to R3) still applies only to terminal assessments of canonical Economics; expanding visibility alone does not close R3 outside this domain. For own assessments of authored learning units, `validate:learning-units` enforces R3 fail-closed and checks claimed coverage reviews (the unit's `coverageReviews`) against the current task and rubric hashes; it does not establish R2."
+    }
+  },
+  {
+    "area": {
+      "de": "Optionale Erwerbs- und Zeitplanung",
+      "en": "Optional acquisition and time planning"
+    },
+    "spec": {
+      "de": "Optionale Kalenderstufen prüfen strukturelle Abschlusszeugen über $B_\\pi$ und $\\Work+\\Reserve\\le\\Budget$ nur unter ausdrücklich deklarierten Schätzannahmen $\\Theta_\\pi$.",
+      "en": "Optional calendar periods verify structural completion witnesses over $B_\\pi$ and $\\Work+\\Reserve\\le\\Budget$ only under explicitly declared estimation assumptions $\\Theta_\\pi$."
+    },
+    "repoStatus": {
+      "de": "Das Zeit-/Budgetprofil bleibt optional (GD-P01–P04 und GD-P06–P11). GD-P05 enthält daneben die verbindliche E2-Pflicht erklärter Planeinheiten, noch ohne produktives hartes Gate. Kein produktives Curriculum- oder Laufzeit-Budgetgate wird behauptet; weight bedeutet niemals Minuten.",
+      "en": "The time/budget profile remains optional (GD-P01–P04 and GD-P06–P11). GD-P05 additionally contains binding E2 for declared plan units, without a production hard gate yet. No production curriculum or runtime budget gate is claimed; weight never denotes minutes."
+    }
+  },
+  {
+    "area": {
+      "de": "Gesamt-IST vs. Periodenleistung",
+      "en": "Cumulative progress vs. period completions"
+    },
+    "spec": {
+      "de": "Der Gesamt-IST zählt $\\lvert T_{\\mathrm{Plan}}\\cap\\Meff\\rvert$ (mit optionalem nur-ausdrücklichem Planzähler $\\lvert T_{\\mathrm{Plan}}\\cap M\\rvert$ samt Kennzeichnung), laufende Perioden zählen allein datierte ausdrückliche Abschlüsse.",
+      "en": "Cumulative plan progress counts $\\lvert T_{\\mathrm{Plan}}\\cap\\Meff\\rvert$ (with an optional clearly labelled explicit-only plan counter $\\lvert T_{\\mathrm{Plan}}\\cap M\\rvert$), while active periods count only reliably dated explicit completions."
+    },
+    "repoStatus": {
+      "de": "Aktuelle Cockpit- und Geschwindigkeitsansichten zählen ausdrückliche Abschlussereignisse; die getrennte explizite/implizite Darstellung setzt die Umsetzung von $\\Meff$ voraus.",
+      "en": "Current Cockpit and velocity views count explicit completion events; segmented explicit/implicit accounting awaits implementation of $\\Meff$."
+    }
+  },
+  {
+    "area": {
+      "de": "Reifegrade M0--M7 und Qualitäts-Floors",
+      "en": "Maturity levels M0--M7 and quality floors"
+    },
+    "spec": {
+      "de": "Maschinelle Curriculum-QA M0--M7 bleibt strikt getrennt von menschlicher Freigabe, Erprobung und Laufzeitkonformität.",
+      "en": "Automated phase-1 curriculum QA M0--M7 remains strictly separated from human sign-off, learner trials, and runtime conformance."
+    },
+    "repoStatus": {
+      "de": "CI schützt zehn Gymnasialfächer über [checkCurriculumMaturityFloors.ts](repo:app/scripts/checkCurriculumMaturityFloors.ts) (5 auf M7, 5 auf M6) samt Status-Diff; ungeschützte Experimentalstände bleiben auf M0 berichtbar, reine `docs/**`-Änderungen sind in `ci.yml` ausgenommen.",
+      "en": "CI protects ten Gymnasium subjects via [checkCurriculumMaturityFloors.ts](repo:app/scripts/checkCurriculumMaturityFloors.ts) (5 at M7, 5 at M6) plus status-file diffing; unfloored experimental landscapes remain reportable at M0, and `docs/**`-only changes are exempted in `ci.yml`."
+    }
+  },
+  {
+    "area": {
+      "de": "Erklärte Planeinheiten und after (Zielnorm vom 15. November)",
+      "en": "Declared plan units and after (15 November target specification)"
+    },
+    "spec": {
+      "de": "Gemeinsame Land-/Dauermodellautorität, Z3, E1 bis E4 und frühester tatsächlicher Vorbereitungsbedarf; keine Sperre und keine Mastery aus Ordnung.",
+      "en": "Shared Land/duration authority, Z3, E1 to E4, and earliest actual preparation demand; no locks or mastery from order."
+    },
+    "repoStatus": {
+      "de": "Stufenplan-Grundlage und automatisierte Testfälle vorhanden; null echte Landespläne aktiviert. Der alte 1.2-Validator prüft die drei bisherigen fachlichen Einheiten, nicht die vollständige Zielnorm. Gemeinsame produktive Leser, Paketexport und Lernfluss F13 stehen aus.",
+      "en": "Stage-plan foundation and automated cases exist; zero real Land plans activated. The old 1.2 validator checks the three existing subject units, not the full target specification. Shared production readers, package export, and F13 learning flow remain pending."
+    }
+  }
+],
   "codeAnchors": {
     "lead": { "de": "Prüfbare Codeanker.", "en": "Inspectable code anchors." },
     "body": {
@@ -343,12 +406,12 @@
     {
       "part": { "de": "Rekursive Lerneinheiten (§11)", "en": "Recursive learning units (§11)" },
       "sources": {
-        "de": "`source/chapters/03-learning-units.{de,en}.md` ([source/README.md](repo:docs/concept/skill-graph/source/README.md)); [Gestaltungskriterien und Beispiele](repo:docs/concept/skill-graph/learning-unit-design-and-examples.md); [Laufzeitschema](repo:docs/landscape-runtime.schema.json); [Curriculum-Paketvertrag 1.2](repo:contracts/curriculum-package/v1.2/README.md).",
-        "en": "`source/chapters/03-learning-units.{de,en}.md` ([source/README.md](repo:docs/concept/skill-graph/source/README.md)); [Learning-Unit Design Criteria and Examples](repo:docs/concept/skill-graph/learning-unit-design-and-examples.md); [runtime schema](repo:docs/landscape-runtime.schema.json); [curriculum-package contract 1.2](repo:contracts/curriculum-package/v1.2/README.md)."
+        "de": "`source/chapters/03-learning-units.{de,en}.md` ([source/README.md](repo:docs/concept/skill-graph/source/README.md)); [Gestaltungskriterien und Beispiele](repo:docs/concept/skill-graph/learning-unit-design-and-examples.md); [Laufzeitschema](repo:docs/landscape-runtime.schema.json); [Curriculum-Paketvertrag 1.2](repo:contracts/curriculum-package/v1.2/README.md). [Einheitenkonzept](repo:docs/concept/skill-graph/learning-unit-wiring-concept-2026-11-14.md); [Stufenplan-Grundlage](repo:contracts/curriculum-package/v1.3/README.md).",
+        "en": "`source/chapters/03-learning-units.{de,en}.md` ([source/README.md](repo:docs/concept/skill-graph/source/README.md)); [Learning-Unit Design Criteria and Examples](repo:docs/concept/skill-graph/learning-unit-design-and-examples.md); [runtime schema](repo:docs/landscape-runtime.schema.json); [curriculum-package contract 1.2](repo:contracts/curriculum-package/v1.2/README.md). [Einheitenkonzept](repo:docs/concept/skill-graph/learning-unit-wiring-concept-2026-11-14.md); [Stufenplan-Grundlage](repo:contracts/curriculum-package/v1.3/README.md)."
       },
       "role": {
-        "de": "Kanonische Single-Source-Definition rekursiver `LearningUnit`-Einheiten, eindeutiger Ersterwerbszuordnung $\\Own(U)$, abgeleiteten Abschlusses $\\Complete(U)$ und offener Einheitszugangspolitik; Gestaltungskriterien und durchgearbeitete Kandidaten.",
-        "en": "Canonical single-source definition of recursive `LearningUnit`s, unique direct ownership $\\Own(U)$, derived completion $\\Complete(U)$, and undecided unit-entry policy; design criteria and worked candidates."
+        "de": "Zielnorm erklärter fachlicher Einheiten und Planeinheiten, E1 bis E4, abgeleiteter Abschluss und erhaltene lokale Anerkennungsrechnung; bestehende 1.2-Darstellung ausdrücklich als Kompatibilität, Zugangsprofil aufgehoben.",
+        "en": "Target specification of declared subject and plan units, E1 to E4, derived completion and preserved local recognition computation; existing 1.2 representation explicitly labeled compatibility, access profile retired."
       }
     },
     {

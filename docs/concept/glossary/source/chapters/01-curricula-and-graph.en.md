@@ -166,3 +166,57 @@ An atomic goal at which the learner performs independently, typically an exam-mo
 *DE: Routenabdeckung* — see [Context & Views](repo:docs/concept/skill-graph/context-and-views.en.md)
 
 The property that every route-relevant atomic goal lies on at least one prerequisite path from a motivation anchor to a terminal autonomy goal. The intended learning direction runs from orientation through understanding (and parallel memorization where needed) to independent application.
+
+### Plan unit {unnumbered=true}
+
+*DE: Planeinheit* — see [Einheitenkonzept](repo:docs/concept/skill-graph/learning-unit-wiring-concept-2026-11-14.md)
+
+Declared unit in the shared plan of one Land and duration model across selected subjects, such as stage, year, or phase; orders learning and creates no new competency.
+
+### Subject unit {unnumbered=true}
+
+*DE: Fachliche Einheit* — see [Einheitenkonzept](repo:docs/concept/skill-graph/learning-unit-wiring-concept-2026-11-14.md)
+
+Declared cluster in the canonical subject landscape with a learning promise; applies across all Länder. A unit with assessments additionally demonstrates independent application of own content goals.
+
+### After {unnumbered=true}
+
+*DE: after* — see [Einheitenkonzept](repo:docs/concept/skill-graph/learning-unit-wiring-concept-2026-11-14.md)
+
+Declared order between sibling units: the preceding unit is fully complete in the intended flow before the other starts. Inherits order, not demand; no lock, mastery, or scope expansion.
+
+### Backflow {unnumbered=true}
+
+*DE: Rückgriff* — see [Einheitenkonzept](repo:docs/concept/skill-graph/learning-unit-wiring-concept-2026-11-14.md)
+
+A goal in an earlier plan unit requires a goal in a later one, directly or transitively. This is an E2 finding, including preparation; display and focus must not hide it.
+
+### Preparation {unnumbered=true}
+
+*DE: Vorbereitung* — see [Einheitenkonzept](repo:docs/concept/skill-graph/learning-unit-wiring-concept-2026-11-14.md)
+
+A necessary atom outside the carried seed targets receives a derived learning placement at its earliest actual need in the closed personal scope. Justified earlier preparation of a carried target stays explicitly labeled; source assignment is preserved.
+
+### Additional demand {unnumbered=true}
+
+*DE: Zusatzbedarf* — see [Einheitenkonzept](repo:docs/concept/skill-graph/learning-unit-wiring-concept-2026-11-14.md)
+
+Necessary goals outside the selected subject seed targets. Only these atoms are added, independently of mastery; displaying them by unit adds no entire external unit.
+
+### Carried in / placed in {unnumbered=true}
+
+*DE: geführt in / steht in* — see [Einheitenkonzept](repo:docs/concept/skill-graph/learning-unit-wiring-concept-2026-11-14.md)
+
+Carried in means officially evidenced curricular assignment; placed in means didactic learning placement. Earlier preparation or a canonical default creates neither Land evidence nor learner results.
+
+### Default assignment {unnumbered=true}
+
+*DE: Standardzuordnung* — see [Einheitenkonzept](repo:docs/concept/skill-graph/learning-unit-wiring-concept-2026-11-14.md)
+
+Explicitly provisional didactic assignment from a canonical marker such as dimensionTags.phase when Land evidence is absent. Replaces neither source evidence nor coverage checking and does not override an authoritative view.
+
+### Assessment gap {unnumbered=true}
+
+*DE: Prüfungslücke* — see [Einheitenkonzept](repo:docs/concept/skill-graph/learning-unit-wiring-concept-2026-11-14.md)
+
+A content goal without suitable reviewed task and rubric coverage remains a failing finding. Repair supplies a real assessment and review, never fictitious prerequisites or relaxed quality gates.

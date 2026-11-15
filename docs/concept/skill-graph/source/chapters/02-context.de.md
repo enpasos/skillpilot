@@ -26,7 +26,7 @@ Historische Bäume können Jahrgangs- und Phasenknoten als Kompatibilitätsgerü
 
 Eine *Projektion* leitet aus den Curriculumdaten einen sichtbaren Baum oder eine andere navigierbare Sicht ab. Sie gilt für einen *aufgelösten Kontext*, in dem Merkmale wie Bundesland, Schulform, Stufe, Dauer und Kursprofil festgelegt sind.
 
-`programUnits` beschreiben im Zielmodell einen expliziten Baum oder Wald von Programmeinheiten. `goalPlacements` verbinden Ziele mit diesen Einheiten. Eine `primary`-Platzierung liefert den normalen Programmanker; `secondary` zeigt zusätzliche Relevanz, `assessed` einen Prüfungsbezug. Sekundäre und prüfungsbezogene Zuordnungen erzeugen keine weiteren sichtbaren Kopien desselben Ziels. Die Relation `own` hält kontextfrei fest, dass eine Lerneinheit ein atomares Ziel direkt besitzt (Abschnitt~@ref{sec:unit-representation}); sie ist kein Programmanker.
+`programUnits` beschreiben im Zielmodell einen expliziten Baum oder Wald von Programmeinheiten. `goalPlacements` verbinden Ziele mit diesen Einheiten. Eine `primary`-Platzierung liefert den normalen Programmanker; `secondary` zeigt zusätzliche Relevanz, `assessed` einen Prüfungsbezug. Sekundäre und prüfungsbezogene Zuordnungen erzeugen keine weiteren sichtbaren Kopien desselben Ziels. Im bestehenden Kompatibilitätsvertrag 1.2 hält die Relation `own` kontextfrei fest, dass eine Lerneinheit ein atomares Ziel direkt besitzt (Abschnitt~@ref{sec:unit-representation}); sie ist kein Programmanker.
 
 Für einen aufgelösten Kontext gilt: Genau eine passende primäre Platzierung ergibt einen eindeutigen Anker. Ohne passende Platzierung darf die Darstellung keinen Elternknoten erfinden. Mehrere passende primäre Platzierungen benötigen eine ausdrücklich geprüfte Auflösung; sonst ist die Projektion uneindeutig. Die Kontextmerkmale ändern dabei nicht die Ziel-ID.
 
@@ -49,6 +49,16 @@ Die Kompilation soll früh erfolgen, in dieser Reihenfolge:
 5. Das Ergebnis für die Laufzeit bereitstellen.
 
 Die Hüllenbedingung aus Abschnitt~@ref{par:projection-closure} gilt auch dann, wenn die Sicht nur einen Teil der kanonischen Atome auswählt. Damit wird Strukturvalidierung möglich, bevor eine Benutzeroberfläche daraus einen Baum zeichnet.
+
+
+
+#### Landesautorität, Quellenzuordnung und Lernplatz.
+
+Im verbindlichen Zielmodell gibt es je Land und Dauermodell einen maßgeblichen Plan über alle gewählten Fächer. Seine vollständige Wurzel hat genau zwei Kinder, Sekundarstufe I und Sekundarstufe II, mit genau einem erklärten `after` von II nach I (Z3). Orientierungsziele, Übungsaufgaben und Prüfungen haben einen begründeten Platz innerhalb dieser Stufen; daneben steht nichts. Kursprofile wählen fachliche Anteile, aber keine widersprechenden Stufen desselben kanonischen Ziels. Eine Einstufensicht ist ein abgeleiteter Ausschnitt und benötigt keine künstliche leere Gegenstufe. Die bundesweite Sicht bleibt kanonische Gliederung und ist kein Landesplan.
+
+**Geführt in** bezeichnet die durch die Landesquelle belegte curriculare Zuordnung. **Steht in** bezeichnet den didaktischen Lernplatz. Eine ausdrücklich begründete frühere Vorbereitung darf den Lernplatz ändern, ohne die ursprüngliche Quellenzuordnung zu überschreiben; sie ist keine neue amtliche Pflicht. Fehlt Landesbeleg, darf eine kanonische Marke wie `dimensionTags.phase` nur eine ausdrücklich vorläufige **Standardzuordnung** begründen. Sie ersetzt weder Landesbeleg noch Quellenabdeckung und überschreibt keine maßgebliche Sicht. Routen prüfen die ausgewertete Lernplatzierung; Quellenprüfungen prüfen weiterhin die Quellenbelege. Unterschiedliche bisherige Leser bleiben bis zur gemeinsamen Umstellung ein Umsetzungsbefund.
+
+Die vorhandene [Stufenplan-Grundlage](repo:contracts/curriculum-package/v1.3/README.md) trennt gemeinsame Pläne, Fachautoritäten und Ausschnitte; die daraus erzeugten Kompatibilitätssichten sind keine zweite Autorquelle. Das Verzeichnis `v1.3` bezeichnet hier einen Entwicklungsvertrag für Stufenpläne, keine veröffentlichte Version des Curriculum-Pakets und keine fertige Umstellung der produktiven Leser. Noch ist kein echter Landesplan aktiviert.
 
 #### Kanonische Identität bleibt erhalten.
 
@@ -105,6 +115,10 @@ Diese Gültigkeitsprüfung ist von der späteren Level-3-Fokuswahl getrennt: Ein
 Nach der Ownerentscheidung vom 11. November 2026 gehören diese harten Fehler in Validierung, Curriculum-QA und native Abnahme, nicht in Lesezugriffe von Lernenden. Ist der kanonische Graph eines Lernkontexts nicht strikt kompilierbar, behält die Laufzeit den geprüften Ausgangsumfang ohne abgeleitete Hülle, beansprucht keine Lernbasis, bietet kein Ziel mit gebrochenem Voraussetzungsbedarf an und protokolliert den Fehler einmal je Curriculum und Fehlercode; Lernstand, Ergebnisse und Export bleiben lesbar. Fehler in der Ausgangsauswahl selbst bleiben harte Fehler. Die Regel erfasst die vielen nichtkanonischen Curricula, deren Wurzelcluster sein eigenes Orientierungsziel enthält und voraussetzt, und ändert deren Daten nicht.
 
 *Beispiel im Übergangsbestand:* Ein Physikziel $g$ benötigt einen Mathematik-Cluster $k$. Seine kanonische atomare Basis und deren transitive Anforderungen werden vor Anzeigefiltern aufgelöst. Eine fachlokale `prerequisiteOnly`-Referenz auf $k$ kann erhalten bleiben. Jedes wirklich notwendige Atom braucht dennoch ein Erwerbsziel im gesamten Personal Curriculum, etwa in Mathematik oder als abgeleitete Vorbereitung. Keine manuelle Referenz je Atom und kein ganzes zusätzliches Fach ist dafür nötig. Kanonische Identität, Quellenzuordnung und Mastery bleiben erhalten.
+
+
+
+Die Stelle einer verfassten `prerequisiteOnly`-Referenz behauptet weder eine amtliche Stufe noch einen Lernplatz. Im Zielmodell erhält ein notwendiges Atom, das der gewählte Plan nicht als Ausgangsziel führt, genau einen abgeleiteten Lernplatz in der Planeinheit seines frühesten tatsächlichen Bedarfs im vollständigen $L$. Dafür werden die vollständigen kanonischen Pfade unabhängig von Mastery durchlaufen; kein ganzes Fach und keine ganze Einheit werden ergänzt. Schon geführte Ziele werden nicht stillschweigend umplatziert: Ein früherer Bedarf an einem später geführten Ziel bleibt ein Rückgriff, bis eine belegte Fachkorrektur oder ausdrücklich begründete Vorbereitung ihn auflöst. Z4/E2 gelten für Vorbereitung und geführte Ziele gleichermaßen. Diese gemeinsame Platzierungsableitung für alle Leser ist noch nicht vollständig produktiv umgesetzt.
 
 ### Anwendbarkeit ist keine Platzierung {#sec:applicability-vs-placement}
 

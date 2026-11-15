@@ -1,6 +1,6 @@
 # Umsetzungsplan: Lerneinheiten für Mathematik und Physik
 
-**Stand: 14. November 2026. Arbeitsgrundlage.** Dieser Plan ersetzt den
+**Stand: 15. November 2026. Arbeitsgrundlage.** Dieser Plan ersetzt den
 [Plan vom 5. November](learning-units-implementation-plan.md) und den
 eingefrorenen Plan gleichen Namens auf dem Archivzweig von
 [PR #83](https://github.com/enpasos/skillpilot/pull/83). Er beschreibt Sollzustand
@@ -254,7 +254,17 @@ Completion-Profils.
 
 ## 5. Stufen und Stand
 
-Jede Stufe ist ein eigener, deploybarer PR-Strang. Bis Stufe 3 ändern die
+Seit dem 15. November hat die [Stufenplan-Übergabe](stage-plan-units-handover-2026-11-15.md)
+für K1–K13 und F1–F7 Vorrang. Die Agenten lösen die fachlichen Befunde und
+führen die Ergebnisse mit wenigen zwischenzeitlichen PRs bis auf `main` mit
+frischer erfolgreicher CI. Der [laufende Managementstand](stage-plan-management-summary.md)
+trennt lokale Entwürfe, Integration und Abschluss. #157 enthält erste
+Fachreparaturen und die technische Plan-Grundlage; echte Landespläne sind noch
+nicht aktiviert. Die zweisprachige Zielnorm für F7 ist lokal unabhängig geprüft
+und neu erzeugt. Die spätere Einheiteneinführung und Laufzeit F8–F13 bleiben
+eigene Folgearbeiten.
+
+Die folgenden Stufen bezeichnen fachliche Lieferstücke. Bis Stufe 3 ändern die
 Einheiten für Lernende nichts: Ziele werden wie bisher nur über ihr eigenes
 explizites Ergebnis abgeschlossen. Unabhängig davon wirkt bis zur Umstellung
 der am 4. November abgelöste Arbeitsentfall weiter, in Lernempfehlung,
@@ -266,7 +276,7 @@ Abschnitt 1).
 | --- | --- | --- | --- |
 | **0 – Wiederaufnahme** | Dieser Plan; Inventarwerkzeug portiert und neu erzeugt. | Dokumentationsprüfungen grün; #83 bleibt Archiv. | Geliefert. |
 | **1 – Vertrag und Validator** | Einheiten in der Platzierungsschicht der Skill-Landschaft, Paketvertrag 1.2, Validator für R1, R3, R4 und Struktur, gemeinsame Testfälle, CI-Einbindung. | Testfälle decken jeden Befundcode; keine Runtimeänderung. | Geliefert. Die Angebotsprüfung ist vorhanden, aber nicht in der Pflicht-CI. |
-| **2 – Erste echte Einheiten** | Pilot „Skalarprodukt über orthogonale Projektion“, danach M01 und P13, jeweils mit unabhängigem R2-Review. | Validator grün, geschützte Reifegrade gehalten, Quellenbindung für neue Prüfungen. | Geliefert: Der Pilot, M01 („Natürliche Zahlen verstehen und darstellen“) und P13 („Gleichmäßig beschleunigte Bewegung modellieren“) tragen seit dem 13. November R2-Nachweise (siehe unten). Experimentelle Ziele werden nicht anerkannt (entschieden am 14. November). |
+| **2 – Erste echte Einheiten** | Pilot „Skalarprodukt über orthogonale Projektion“, danach M01 und P13, jeweils mit unabhängigem R2-Review. | Validator grün, geschützte Reifegrade gehalten, Quellenbindung für neue Prüfungen. | Geliefert: Der Pilot, M01 („Natürliche Zahlen verstehen und darstellen“) und P13 („Gleichmäßig beschleunigte Bewegung modellieren“) tragen seit dem 13. November R2-Nachweise (siehe unten). Für experimentelle Ziele gilt die spätere Entscheidung vom 14. November in Abschnitt 1: Eine geeignete eigene Aufgabe muss die Versuchshandlung tatsächlich nachweisen; die neue Einheitenanerkennung ist noch nicht implementiert. |
 | **3 – Runtime** | Backend leitet aus gültigen Verträgen die wirksame Beherrschung ab, versioniert gebunden (R5); Cockpit, Coach, Frontier und Plan nutzen denselben Stand. Die Vertragsversion dieser Stufe nimmt Aufgabenvarianten auf. | Gesamtfortschritt zählt Anerkennung mit, Perioden zählen nur explizite Abschlüsse, keine neuen Mastery-Zeilen; Deployment und Hostabnahme getrennt durch den Product Owner. | Offen. Entscheidungsvorlage vom 14. November mit vier Fragen und fünf Lieferschnitten ([Vorlage](learning-unit-recognition-runtime-proposal-2026-11-14.md)). |
 | **4 – Mathematik vollständig** | Blockweise Einheiten, Prüfungen und Reviews; die Landschaft erklärt `learningUnitCoverage: complete`. | Kein Fachziel ohne Einheit, Aufgaben, Karten und Bilder jeder Einheit gegen ihren Wissenskontext geprüft, Angebotsprüfung in allen Mathematikklassen grün, Gesamt-CI grün. | Offen: 801 gewöhnliche Ziele ohne Einheit. |
 | **5 – Physik vollständig** | Wie Stufe 4, zusätzlich Experimente und mathematische Voraussetzungen. | Eigene Fachabnahme; Mathematik bleibt stabil. | Offen: 476 gewöhnliche Ziele ohne Einheit. |

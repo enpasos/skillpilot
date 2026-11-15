@@ -194,6 +194,60 @@ An atomic goal at which the learner performs independently, typically an exam-mo
 
 The property that every route-relevant atomic goal lies on at least one prerequisite path from a motivation anchor to a terminal autonomy goal. The intended learning direction runs from orientation through understanding (and parallel memorization where needed) to independent application.
 
+### Plan unit
+
+*DE: Planeinheit* — see [Einheitenkonzept](skill-graph/learning-unit-wiring-concept-2026-11-14.md)
+
+Declared unit in the shared plan of one Land and duration model across selected subjects, such as stage, year, or phase; orders learning and creates no new competency.
+
+### Subject unit
+
+*DE: Fachliche Einheit* — see [Einheitenkonzept](skill-graph/learning-unit-wiring-concept-2026-11-14.md)
+
+Declared cluster in the canonical subject landscape with a learning promise; applies across all Länder. A unit with assessments additionally demonstrates independent application of own content goals.
+
+### After
+
+*DE: after* — see [Einheitenkonzept](skill-graph/learning-unit-wiring-concept-2026-11-14.md)
+
+Declared order between sibling units: the preceding unit is fully complete in the intended flow before the other starts. Inherits order, not demand; no lock, mastery, or scope expansion.
+
+### Backflow
+
+*DE: Rückgriff* — see [Einheitenkonzept](skill-graph/learning-unit-wiring-concept-2026-11-14.md)
+
+A goal in an earlier plan unit requires a goal in a later one, directly or transitively. This is an E2 finding, including preparation; display and focus must not hide it.
+
+### Preparation
+
+*DE: Vorbereitung* — see [Einheitenkonzept](skill-graph/learning-unit-wiring-concept-2026-11-14.md)
+
+A necessary atom outside the carried seed targets receives a derived learning placement at its earliest actual need in the closed personal scope. Justified earlier preparation of a carried target stays explicitly labeled; source assignment is preserved.
+
+### Additional demand
+
+*DE: Zusatzbedarf* — see [Einheitenkonzept](skill-graph/learning-unit-wiring-concept-2026-11-14.md)
+
+Necessary goals outside the selected subject seed targets. Only these atoms are added, independently of mastery; displaying them by unit adds no entire external unit.
+
+### Carried in / placed in
+
+*DE: geführt in / steht in* — see [Einheitenkonzept](skill-graph/learning-unit-wiring-concept-2026-11-14.md)
+
+Carried in means officially evidenced curricular assignment; placed in means didactic learning placement. Earlier preparation or a canonical default creates neither Land evidence nor learner results.
+
+### Default assignment
+
+*DE: Standardzuordnung* — see [Einheitenkonzept](skill-graph/learning-unit-wiring-concept-2026-11-14.md)
+
+Explicitly provisional didactic assignment from a canonical marker such as dimensionTags.phase when Land evidence is absent. Replaces neither source evidence nor coverage checking and does not override an authoritative view.
+
+### Assessment gap
+
+*DE: Prüfungslücke* — see [Einheitenkonzept](skill-graph/learning-unit-wiring-concept-2026-11-14.md)
+
+A content goal without suitable reviewed task and rubric coverage remains a failing finding. Repair supplies a real assessment and review, never fictitious prerequisites or relaxed quality gates.
+
 <a id="sec-node-types"></a>
 ## 3. Node types (learning modes)
 
@@ -607,7 +661,7 @@ A report, status snapshot, or documentation output produced by a script and carr
 | `phase` vs program unit | `phase` is compatibility metadata; only an explicit program unit forms a structural node. |
 | Learning unit vs personalization level | A recursively composed educational whole with derived completion vs one of the four scope/state layers. |
 | Learning unit vs goal difficulty | A unit of acquisition and completion vs the demand level of one goal (`level`). |
-| Unit completion vs goal availability | Fulfilled child and own obligations vs prerequisites for starting work; a technical whole-unit gate requires a separate policy. |
+| Unit completion vs goal availability | Fulfilled child and own obligations vs prerequisites for starting work; B9 rejects technical whole-unit locks in the target model; after orders without demand or mastery. |
 | QA scope vs learning route | A QA scope is a registered check profile, not a single path walked by a learner. |
 | CQR vs GVR rules | Content quality review vs structural graph validation. |
 | Curriculum vs skill graph | Normative external document vs versioned operative graph model derived from it. |

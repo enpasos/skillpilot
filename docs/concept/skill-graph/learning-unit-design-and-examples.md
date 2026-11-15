@@ -16,7 +16,9 @@
 
 This chapter makes the didactic purpose of [learning units](learning-units.md) concrete. It explains how to draw and test a unit boundary and applies these criteria to two worked candidates: motion with constant acceleration in upper-secondary physics and number sense in grade 5 mathematics.
 
-**Status, 11 November 2026.** The examples are **concept candidates**, not reviewed assessment contracts and not an approved partition of any official curriculum. This page changes no learning goals, graph edges, assessments, or access rules. The binding contracts are [Learning Units](learning-units.md) (Graph Definition §11), [Implicit Mastery](assessment-gated-completion.md) (§13), and the separate [progression and access decision](learning-unit-progression.md). Where this chapter and those contracts differ, the contracts win.
+**Status, 11 November 2026.** The examples are **concept candidates**, not reviewed assessment contracts and not an approved partition of any official curriculum. This page changes no learning goals, graph edges, assessments, or access rules. The binding contracts are [Learning Units](learning-units.md) (Graph Definition §11), [Implicit Mastery](assessment-gated-completion.md) (§13), and the binding [ordering rules E1 to E4](learning-unit-progression.md). Where this chapter and those contracts differ, the contracts win.
+
+**Normative addition of 15 November 2026:** The examples remain candidates of the earlier subject-matter grouping. A new unit is declared as a cluster; own goals and children derive from it. R1 to R5 apply to units with assessments; assessment-free units only order and recognize nothing. Migration of existing examples and the cross-Land B13 whole-placement test follow only after F8 measurement. New boundaries or assessments need their own independent reviews.
 
 <a id="1-establish-a-secure-foundation"></a>
 <a id="sec-sga-ud-foundation"></a>
@@ -68,7 +70,7 @@ The subsequent assessment demands the claimed independent application. Step-by-s
 
 When the evidence is missing, the concrete gap is explained, for example the confusion of two quantities. Suitable further development and practice follow, then a fresh assessment variant with equivalent content. A retry must not sidestep the problem through memorising an identical task. Valid competence evidence obtained elsewhere is not deleted by this.
 
-The didactic principle is thereby fixed. Whether technical start locks follow from it, and how deliberate direct assessment attempts behave under such a lock, remains a separate, undecided policy; see [progression and access](learning-unit-progression.md). Direct assessment access remains the current baseline, and an attempt that is not passed records no learner result.
+B9 of 14 November 2026 rejects technical whole-unit locks in the binding target model. after declares intended order without demand, mastery, or frontier changes; see [unit ordering](learning-unit-progression.md). Direct assessment access remains the current baseline, and an attempt that is not passed records no learner result.
 
 <a id="4-main-example-motion-with-constant-acceleration-upper-secondary-physics"></a>
 <a id="sec-sga-ud-physics"></a>
@@ -226,7 +228,7 @@ Implicit recognition therefore exists only inside units whose contract satisfies
 
 For unit design this means: every own ordinary goal of a candidate needs an own assessment that requires it, and a path only to a memory goal is not enough; an assessment's claimed coverage never exceeds what it requires, and a missing prerequisite path is a subject-review finding rather than a reason for a redundant edge; and each goal is owned by exactly one unit, while a parent may display child goals without owning them.
 
-Assessments and required cards need their own explicit results. Explicit mastery of an ordinary goal does not automatically pass a separately required unit assessment. Conversely, a single atomic prerequisite does not automatically require completion of the whole foreign unit; that needs a subject-justified whole-unit prerequisite. A parent completion replaces no open child assessment; completed children pass no additional parent assessment. Validly recognized individual competence stays in force while other obligations of the unit are still open.
+Assessments and required cards need their own explicit results. Explicit mastery of an ordinary goal does not automatically pass a separately required unit assessment. Conversely, a single atomic prerequisite does not automatically require completion of the whole foreign unit; Only an explicitly authored, subject-justified `after` states that the whole other unit is complete before work begins in the intended flow. This is order, not an additional prerequisite type: it changes neither atomic demand nor frontier and locks no deliberate assessment attempt. A parent completion replaces no open child assessment; completed children pass no additional parent assessment. Validly recognized individual competence stays in force while other obligations of the unit are still open.
 
 All effective prerequisites remain authoritative, including inheritance, clusters, and complete transitive paths. An already mastered intermediate goal must not hide the demand of a still-open local assessment. Transitive minimality stays in force.
 

@@ -70,6 +70,10 @@ $$
 
 It succeeds if and only if its fixed point contains all of $S_i$. Because satisfying additional prerequisites can never revoke availability of a still-open goal, any batch added simultaneously can also be acquired one goal at a time; conversely, no valid completion witness can fail this iteration prematurely. The procedure is a *hypothetical* traversal that alters no learner data; on a purely atomic DAG, prerequisite-respecting topological order recovers the familiar special case.
 
+
+
+A declared plan unit, by contrast, already belongs to the binding ordering model in Section~@ref{sec:unit-progression}. A required goal placed in a later plan unit violates E2 there even without an optional budget profile (`GD-P05`). The assumed entry basis $B_\pi$ must not hide this backflow in the actual Personal Curriculum $L=\Closure(S)$. A staged diagnostic report is not yet a hard curriculum gate: reporting, subject-matter repair, a ratchet, and a hard gate at zero violations follow in that order. The existing stage-plan report and its optional zero-backflow check activate no real Land plan and replace neither source nor content review.
+
 ### Effort, Reserve, and Budget {#sec:workload-budget anchors="123-workload-feasibility"}
 
 Structural feasibility does not yet prove that a school year affords enough time. Every workload claim must state reference learners, entry conditions, target and elective selections, calendar exclusions, estimation method, and uncertainty. Collecting those declared estimation assumptions of plan $\pi$ into $\Theta_\pi$, let $\widehat t_h(\Theta_\pi) \ge 0$ denote the estimated duration of an actual activity $h$ under $\Theta_\pi$. All quantities must share one calibrated time unit:
@@ -98,7 +102,7 @@ An aggregate budget alone is insufficient whenever individual subjects, rooms, o
 
 Under this optional profile, a schedule and acquisition plan is valid when it is both structurally feasible and workload-feasible under its declared assumptions; without calibrated effort estimates, only the structural claim is admissible. Every feasibility claim binds the plan, curriculum revision, resolved scope, and estimation assumptions, without guaranteeing uniform learning speed across individuals.
 
-Completion of a domain learning unit still follows the recursive goal-type and child-unit obligations from Section~@ref{sec:learning-units}. One calendar period may host several learning units, and one learning unit may span multiple calendar periods; nothing in this scheduling profile makes the entire preceding year a universal prerequisite for every subsequent goal.
+Completion of a domain learning unit still follows the recursive goal-type and child-unit obligations from Section~@ref{sec:learning-units}. A mere calendar interval may contain several subject units; without declaration as a plan unit it may cut across a subject unit in time. Once declared as a plan unit, E1 to E4 apply. Full joint introduction and verification that every Land carries each subject leaf unit as a whole (B13) follow only after F8; they are no already-passed property of the three existing units.; nothing in this scheduling profile makes the entire preceding year a universal prerequisite for every subsequent goal.
 
 :::sources
 [Learning Units](repo:docs/concept/skill-graph/learning-units.md); [Graph Definition](repo:docs/concept/skill-graph/graph-definition.md); [Curriculum Time Axis, Buffer Planning, and Pacing](repo:docs/concept/didactic/curriculum-time-axis-and-pacing.md).

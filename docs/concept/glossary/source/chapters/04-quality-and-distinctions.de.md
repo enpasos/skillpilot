@@ -74,7 +74,7 @@ Ein durch ein Skript erzeugter Bericht, Status-Snapshot oder Dokumentations-Buil
 | `phase` vs. Programmeinheit | `phase` ist Kompatibilitätsmetadaten; nur explizite Programmeinheiten bilden Strukturknoten. |
 | Lerneinheit vs. Personalisierungsstufe | Rekursive pädagogische Einheit mit abgeleitetem Abschluss vs. eine der vier Umfangs-/Zustandsebenen. |
 | Lerneinheit vs. Zielschwierigkeit | Erwerbs- und Abschlusseinheit vs. Anspruchsniveau eines einzelnen Ziels (`level`). |
-| Einheitsabschluss vs. Zielverfügbarkeit | Erfüllte Kind- und Eigenpflichten vs. Startvoraussetzungen; ein technisches Ganz-Einheiten-Gate erfordert eine separate Policy. |
+| Einheitsabschluss vs. Zielverfügbarkeit | Erfüllte Kind- und Eigenpflichten vs. Startvoraussetzungen; B9 verwirft technische Einheitssperren im Zielmodell; after ordnet ohne Bedarf oder Mastery. |
 | QA-Scope vs. Lernroute | Ein QA-Scope ist ein registriertes Prüfprofil, kein einzelner Lernpfad. |
 | CQR- vs. GVR-Regeln | Inhaltliche Curriculum-Qualitätssicherung vs. strukturelle Graphvalidierung. |
 | Curriculum vs. Skill-Graph | Normatives externes Dokument vs. versioniertes operatives Graphmodell. |

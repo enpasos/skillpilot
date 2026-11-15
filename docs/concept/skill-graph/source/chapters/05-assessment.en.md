@@ -74,15 +74,17 @@ The set equations above may be evaluated only for a valid domain contract. The P
 | R1 | Every own ordinary content goal lies on a prerequisite path from at least one own assessment of the unit, directly or transitively; a path that leads only to a memory goal does not count. | Validity condition of the unit definition, in the same class as acyclicity: hard from the first authored unit; a violating unit cannot be merged. |
 | R2 | For every own ordinary goal, at least one own assessment that requires it has reviewed evidence that its tasks and normal grading really test the goal. | Milestone `M5` (assessment approval and coverage metadata), with the current per-goal binding at `M7`; without it the curriculum does not reach the milestone. |
 | R3 | An assessment claims coverage only for goals it requires directly or transitively: $\operatorname{Cov}(q)\subseteq\{b\in A\mid(q,b)\in\Rat^+\}$. | As R1. |
-| R4 | Every acquisition target has exactly one directly owning unit. | As R1. |
+| R4 / E1 | The smallest unit of a goal is unique in the resolved structure; own goals and child units derive from declared clusters. Content recognition uses the smallest responsible subject unit with assessments. | E1 is the structural contract; full rollout assigns every content goal to a unit with assessments. |
 | R5 | A later re-cut of units or later edges never grant additional recognition to existing results; the contract is versioned. | Runtime contract; precondition before implicit recognition is enabled in production. |
 :::
+
+Rules R1 to R5 apply to **units with assessments**, not as a claim of assessment coverage for every initially assessment-free plan unit. Such units only order goals and recognize nothing. The three existing units remain checked under the previous 1.2 contract until F8 to F11; this normative edition does not rewrite their `own` placements. R4 becomes the tree rule E1 in the target model (Section~@ref{sec:unit-progression}); the set equation and global, revision-bound recognition remain unchanged.
 
 #### Structural conditions (R1, R3, R4).
 
 Every content goal in $\Own(U)$ must lie on a local prerequisite path from at least one local assessment in $Q_U$: an own assessment of the unit must require it directly or transitively (R1). A path leading only to a memory goal never suffices, because verified card recall does not prove independent application. An isolated terminal content goal without a local assessment consumer is a contract defect rather than zero-work mastery; lacking a downstream consumer never proves competence. No ad-hoc mask of “recognition-eligible” subgoals exists -- the formula governs the entire valid local contract.
 
-Let $\operatorname{Cov}(q)$ denote the goals whose independent application an assessment $q$ claims to test according to its reviewed coverage claim. R3 requires $q$ to require each of them directly or transitively. This guarantees that the assessment which actually tests a goal is among the open protected goals the recognition rule waits for: while an own assessment $q$ is open, every own goal in $\operatorname{Cov}(q)$ stays in $N_U$. A missing path is a finding for subject review, not a reason to add a redundant direct edge. R4 makes the contract well defined: a goal with no or with several directly owning units belongs to no valid local contract.
+Let $\operatorname{Cov}(q)$ denote the goals whose independent application an assessment $q$ claims to test according to its reviewed coverage claim. R3 requires $q$ to require each of them directly or transitively. This guarantees that the assessment which actually tests a goal is among the open protected goals the recognition rule waits for: while an own assessment $q$ is open, every own goal in $\operatorname{Cov}(q)$ stays in $N_U$. A missing path is a finding for subject review, not a reason to add a redundant direct edge. R4/E1 makes the contract unambiguous: a content goal without a responsible valid local assessment contract gains no implicit recognition; it can still be mastered explicitly. This does not turn an assessment-free unit into a unit with assessments.
 
 #### Content condition (R2).
 
@@ -140,7 +142,7 @@ Comparing that case with Figure~@ref{fig:local-recognition} presupposes domain-j
 
 #### Assessment access.
 
-Existing direct assessment access remains the baseline of the current learner workflow, subject to task availability, authentication, session ownership, and explicit learner selection. Whether optional gated profiles later impose hard unit locks -- and how deliberate direct assessment attempts behave under them -- remains undecided (Section~@ref{sec:learning-units}); recursive unit definitions introduce neither a hidden lock nor an unreviewed bypass. Ordinary prerequisite evaluation uses $\Meff$ over the transitive effective relation while preserving normal and strict focus semantics.
+Existing direct assessment access remains the baseline of the current learner workflow, subject to task availability, authentication, session ownership, and explicit learner selection. B9 of 14 November 2026 rejects hard whole-unit locks in the binding target model and retires the formerly open access profile (Section~@ref{sec:unit-progression}); recursive unit definitions introduce neither a hidden lock nor an unreviewed bypass. Ordinary prerequisite evaluation uses $\Meff$ over the transitive effective relation while preserving normal and strict focus semantics.
 
 ### Cumulative Attainment and Dated Period Events {#sec:period-accounting}
 

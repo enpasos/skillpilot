@@ -74,7 +74,7 @@ A report, status snapshot, or documentation output produced by a script and carr
 | `phase` vs program unit | `phase` is compatibility metadata; only an explicit program unit forms a structural node. |
 | Learning unit vs personalization level | A recursively composed educational whole with derived completion vs one of the four scope/state layers. |
 | Learning unit vs goal difficulty | A unit of acquisition and completion vs the demand level of one goal (`level`). |
-| Unit completion vs goal availability | Fulfilled child and own obligations vs prerequisites for starting work; a technical whole-unit gate requires a separate policy. |
+| Unit completion vs goal availability | Fulfilled child and own obligations vs prerequisites for starting work; B9 rejects technical whole-unit locks in the target model; after orders without demand or mastery. |
 | QA scope vs learning route | A QA scope is a registered check profile, not a single path walked by a learner. |
 | CQR vs GVR rules | Content quality review vs structural graph validation. |
 | Curriculum vs skill graph | Normative external document vs versioned operative graph model derived from it. |
