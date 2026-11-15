@@ -2,8 +2,8 @@
 
 Dieser Abschnitt beantwortet zwei Planungsfragen: Lassen sich die Ziele eines Plans in der vorgesehenen zeitlichen Reihenfolge überhaupt erwerben, und reicht die verfügbare Zeit dafür? Beide Prüfungen rechnen mit einem Plan, nicht mit dem Lernzustand einer Person.
 
-:::principle {title="Status: zusätzliches Planungsprofil"}
-Lerneinheiten tragen den fachlichen Zusammenhang und ihren rekursiven Abschluss. Ein optionaler Zeitplan ordnet deren Erwerbsziele auf Planungsstufen, etwa Schuljahre oder Semester, und prüft verfügbare Zeit. Diese Zuordnung ist keine Definition der Lerneinheiten. Sie verändert weder Grundgraphgültigkeit noch gespeicherte Mastery und führt keine technischen Einheitssperren ein. Ein produktiver neuer Budgetvalidator wird nicht behauptet.
+:::principle {title="Status: zusätzliches Zeit- und Budgetprofil"}
+Kanonische fachliche Lerneinheiten und gemeinsame Landesplaneinheiten (Stufen, Jahrgänge, Phasen) regeln den strukturellen Aufbau und die `after`-Ordnung in Abschnitt~@ref{sec:learning-units}. Davon getrennt ordnet ein optionaler **datierter Zeit- und Budgetplan** Erwerbsziele auf kalendarische Planungsstufen $S_i$ (etwa Halbjahre oder Unterrichtswochen) und prüft die verfügbare Lernzeit. Dieses Zeitprofil verändert weder Grundgraphgültigkeit noch gespeicherte Mastery, führt keine technischen Einheitssperren ein und behauptet keinen produktiven fächerübergreifenden Budgetvalidator.
 :::
 
 Eine fachliche Einheit kann in verschiedenen Bildungsgängen zu anderen Zeiten erworben werden. Eine Planungsstufe bezeichnet hier nur einen geplanten Zeitraum, bildhaft eine Bauetappe: Kompetenzen bleiben die Bauteile, und ihre fachlichen Voraussetzungen bleiben erhalten. Es folgt daraus keine Pflicht, erst alle Fächer eines Kalenderjahres abzuschließen, bevor irgendein späteres Ziel zugänglich wird.
@@ -70,9 +70,7 @@ $$
 
 Er ist erfolgreich genau dann, wenn sein Fixpunkt ganz $S_i$ enthält. Die Verfügbarkeit eines noch offenen Ziels kann durch zusätzliche Erfüllungen nicht verschlechtert werden. Deshalb kann jede gleichzeitig hinzugefügte Menge auch nacheinander erworben werden. Ein vorhandener Abschlusszeuge kann umgekehrt nicht vorzeitig an diesem Verfahren scheitern. Das Verfahren ist ein *hypothetischer* Lerndurchlauf; es ändert keine persönlichen Daten. Im rein atomaren DAG liefert eine voraussetzungsgetreue topologische Ordnung den bekannten Spezialfall.
 
-
-
-Eine erklärte Planeinheit gehört dagegen bereits zum verbindlichen Ordnungsmodell aus Abschnitt~@ref{sec:unit-progression}. Liegt ein benötigtes Ziel in einer späteren Planeinheit, ist das dort ein Verstoß gegen E2, auch ohne optionales Budgetprofil (`GD-P05`). Die angenommene Eintrittsbasis $B_\pi$ darf diesen Rückgriff im wirklichen persönlichen Lernumfang $L=\Closure(S)$ nicht ausblenden. Ein gestufter Diagnosebericht ist noch kein hartes Curriculum-Gate: erst Bericht, fachliche Behebung, Sperrklinke und bei null Verstößen das harte Gate. Der vorhandene Stufenplanbericht und seine optionale Null-Rückgriff-Prüfung aktivieren keinen echten Landesplan und ersetzen keine Quellen- oder Inhaltsprüfung.
+Während ein datierter Referenzplan diese Machbarkeit relativ zu einer deklarierten Eintrittsbasis $B_\pi$ prüft, gehören ausdrücklich erklärte **Planeinheiten** eines Landesplans bereits zum verbindlichen Ordnungsmodell aus Abschnitt~@ref{sec:unit-progression}: Auf dem geschlossenen persönlichen Lernumfang $L=\Closure(S)$ ist jeder Voraussetzungsrückgriff in eine spätere Planeinheit ein unmittelbarer Verstoß gegen E2/E3 (`GD-P05`), den keine angenommene Eintrittsbasis $B_\pi$ verdecken darf. Die Durchsetzung folgt dem Vierschritt aus Diagnosebericht, fachlicher Ursachenbehebung, Sperrklinke und hartem Null-Rückgriff-Gate; der bestehende Stufenplanbericht aktiviert noch keinen echten Landesplan und ersetzt weder Quellen- noch Inhaltsprüfung.
 
 ### Aufwand, Reserve und Budget {#sec:workload-budget anchors="123-workload-feasibility"}
 
@@ -102,7 +100,7 @@ Ein Gesamtbudget genügt nicht, wenn Fächer, Räume oder Termine eigene bindend
 
 Ein Zeit- und Erwerbsplan ist unter diesem optionalen Profil gültig, wenn er sowohl strukturell als auch unter seinen erklärten Annahmen zeitlich machbar ist. Ohne belastbare Aufwandsschätzung ist allein die strukturelle Aussage zulässig. Der Anspruch bindet Plan, Curriculumfassung, aufgelösten Umfang und Schätzannahmen. Er garantiert keine identische Lerngeschwindigkeit für jede Person.
 
-Der Abschluss der fachlichen Lerneinheit folgt den rekursiven Zieltyp- und Kinderpflichten aus Abschnitt~@ref{sec:learning-units}. Ein bloßer Kalenderabschnitt kann mehrere fachliche Einheiten enthalten; ohne Erklärung als Planeinheit darf er eine fachliche Einheit zeitlich schneiden. Wird er als Planeinheit erklärt, gelten E1 bis E4. Die vollständige gemeinsame Einführung und die Prüfung, ob jedes Land eine fachliche Blatteinheit als Ganzes führt (B13), folgen erst nach F8; sie sind keine bereits bestandene Eigenschaft der drei bisherigen Einheiten. Aus diesem Zeitprofil folgt keine pauschale Voraussetzung des gesamten vorigen Jahres für jedes spätere Lernziel.
+Der Abschluss einer fachlichen Lerneinheit folgt den rekursiven Zieltyp- und Kinderpflichten aus Abschnitt~@ref{sec:learning-units}. Ein rein kalendarischer Planungsabschnitt $S_i$ darf mehrere fachliche Einheiten umfassen oder eine Einheit zeitlich schneiden; für erklärte Planeinheiten eines Landesplans gelten dagegen verbindlich E1 bis E4, und fachliche Blatteinheiten werden bei der Facheinheiten-Einführung nach `F8` so geschnitten, dass sie in allen 16 Bundesländern ungeteilt in einer Planeinheit liegen (für die drei bestehenden 1.2-Einheiten steht dieser Nachweis noch aus). Aus diesem Zeitprofil folgt keine pauschale Voraussetzung des gesamten vorigen Jahres für jedes spätere Lernziel.
 
 :::sources
 [Lerneinheiten](repo:docs/concept/skill-graph/learning-units.md); [Graph-Definition](repo:docs/concept/skill-graph/graph-definition.md); [Zeitachse und Kapazität](repo:docs/concept/didactic/curriculum-time-axis-and-pacing.md).

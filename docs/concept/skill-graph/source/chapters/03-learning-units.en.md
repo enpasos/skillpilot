@@ -81,11 +81,24 @@ The set computation in Section~@ref{sec:assessment} remains unchanged and is not
 
 E2 is checked at the children of every unit including the imaginary root. A directed edge from child X to child Y arises when X declares `after` Y or an atom in X requires an atom in Y. This child graph must be acyclic; internal child graphs are checked likewise. An atomic DAG alone is insufficient: $a\to b\to c$, $\Own(U)=\{a,c\}$, and $\Own(V)=\{b\}$ create a cycle between U and V. Regrouping or subject-matter-justified finer goals repair it; the diagnosis invents no whole-unit lock.
 
-E3 compares actual atomic demand with declared order. A subject `after` does not become redundant merely because the Land's year order imposes the same order: E4 applies per declaration layer. Atomic normal form $R\subseteq A\times A$ and its transitive minimality remain separate obligations; the hard G17 check still covers the complete 21 canonical Gymnasium roots. This claims no new E4 gate.
+E3 compares actual atomic demand with declared order. A subject `after` does not become redundant merely because the Land's year order imposes the same order: E4 applies per declaration layer. Subject units are introduced top-down: first coarse parent units free of E1-to-E4 backflows with `after`, then refined leaf units with own assessments that stay whole inside a single plan unit across all 16 Bundesländer; larger parent units whose child units span multiple plan units appear as a single whole only in the nationwide subject overview. Atomic normal form $R\subseteq A\times A$ and its transitive minimality remain separate obligations; the hard G17 check still covers the complete 21 canonical Gymnasium roots. This claims no new E4 gate.
 
 :::principle {title="No Whole-Unit Lock; GD-U14 Is Superseded"}
 The formerly open access profile `GD-U14` with `Open` and `Cleared` is retired in the binding target model by B9 of 14 November 2026. `after` changes neither frontier nor focus rules, direct assessment access, stored outcomes, or recognition. The planned learning mode “unit by unit” only ranks already reachable offers; explicit learner choice and learning-plan priority remain. This runtime selection F13 is not implemented yet. Retirement claims no completed removal of historical code paths.
 :::
+
+#### “Unit by unit” learning mode. {#sec:unit-by-unit}
+
+The target learning mode **“unit by unit”** (*Einheit für Einheit*) uses the unit hierarchy and `after` to rank next-step suggestions over the unchanged set of reachable frontier goals $\Frontier(\Meff)$. Within the active personal scope $L$, a child $X$ (child unit or own atom) counts as **done** (*erledigt*) once all of its atoms in $L$ are effectively mastered ($\Atoms(X)\cap L \subseteq \Meff$); this completes the required portion, whereas $\Complete(U)$ in @eqref{eq:unit-complete} checks all of $T(U)$. Assessment and memory atoms in $L$ count too: an open own assessment leaves this portion open even if all content goals are explicitly mastered. This neither blocks deliberate selection of another goal nor removes a reachable goal from the frontier. A unit is **started** (*begonnen*) when it contains at least one effectively mastered atom in $L$ and is not yet done; an open child is **up next** (*an der Reihe*) when all of its predecessors among the siblings of the same parent unit (from `after` and crossing atomic demand) are done.
+
+Starting at the imaginary root, selection descends recursively to an atomic goal in $\Frontier(\Meff)$, choosing at each level among children that still contain at least one reachable frontier goal by four priority tiers:
+
+1. an open child unit that is both **up next** and already **started** (finish an already started unit coherently);
+2. otherwise an open child (child unit or own atom) that is **up next**;
+3. otherwise an open **started** child unit (when prior skipping left a predecessor open);
+4. otherwise any child still containing a reachable frontier goal.
+
+At genuine zero-progress entry, unresolved orientation goals retain priority (Section~@ref{sec:orientation}); inside a unit with assessments, own assessments naturally follow once their required content goals are done. Explicit learner selection and an active dated schedule retain precedence; runtime implementation (`F13`) remains pending.
 
 For full Land plans Sekundarstufe I and II are the only root children, II `after` I. No atom of the earlier stage may require an atom of the later stage, including transitively and as preparation. A finding is repaired through corrected prerequisites, splitting, evidenced earlier placement, or labeled preparation. No view weakens demand or hides backflows. Introduction follows reporting, cause repair, a ratchet, and a hard gate at zero violations; no new complete Land plan has thereby already been accepted.
 

@@ -670,6 +670,7 @@ const applyAnchoredProjection = ({
   view,
   strippedGoals,
   strippedGoalById,
+  referencedGoalById = strippedGoalById,
   rootGoalIdByLandscapeId,
   anchorGoalId,
   nodes,
@@ -681,6 +682,7 @@ const applyAnchoredProjection = ({
   view: CompositionView
   strippedGoals: UiGoal[]
   strippedGoalById: Map<string, UiGoal>
+  referencedGoalById?: Map<string, UiGoal>
   rootGoalIdByLandscapeId: Map<string, string>
   anchorGoalId: string
   nodes: CompositionViewNode[]
@@ -696,7 +698,7 @@ const applyAnchoredProjection = ({
   const { syntheticGoals, childIds } = buildSyntheticGoalsForNodes(
     entry,
     view,
-    strippedGoalById,
+    referencedGoalById,
     nodes,
     rootGoalIdByLandscapeId,
   )
@@ -973,6 +975,7 @@ export const applyCompositionViewProjection = (
         view,
         strippedGoals,
         strippedGoalById,
+        referencedGoalById: projectedGoalById,
         rootGoalIdByLandscapeId,
         anchorGoalId: authoredRootGoal.id,
         nodes: rootProjectionNodes,
@@ -994,6 +997,7 @@ export const applyCompositionViewProjection = (
         view,
         strippedGoals,
         strippedGoalById: projectedGoalById,
+        referencedGoalById: projectedGoalById,
         rootGoalIdByLandscapeId,
         anchorGoalId: stageAnchorGoal.id,
         nodes: rootStructure.children,

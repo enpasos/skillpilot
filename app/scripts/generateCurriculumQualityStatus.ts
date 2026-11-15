@@ -1,6 +1,7 @@
 import { validateSemanticAtomicityRecordShape } from './lib/semanticAtomicityRecordValidation'
 import { evaluateDirectAtomicRouteCoverage } from './lib/directAtomicRouteCoverage'
 import { buildRouteCatalogContext, restrictForeignRouteSupport } from './lib/routeCatalogContext'
+import { materializeNationalStageProjection, PHYSICS_NATIONAL_STAGE_EXPOSURE_SOURCES } from './lib/nationalStageProjection'
 import { createHash } from 'node:crypto'
 import { existsSync, mkdirSync, readdirSync, readFileSync, realpathSync, statSync, writeFileSync } from 'node:fs'
 import { dirname, isAbsolute, join, relative, resolve } from 'node:path'
@@ -1968,6 +1969,7 @@ function evaluateRouteEndpointCompositionVisibility(
   reverseAtomicDirectEdges: Map<string, string[]>,
   canonicalCatalog: readonly SkillLandscape[],
   ownGoalIds: ReadonlySet<string>,
+  compositionViewFiles?: readonly string[],
 ): RuleResult | null {
   if (!profile.compositionViewStage) return null
   const goalById = new Map(landscape.goals.map((goal) => [goal.id, goal]))
@@ -1995,7 +1997,7 @@ function evaluateRouteEndpointCompositionVisibility(
       .map((decision) => decision.goalId))
     : null
 
-  const viewEntries = readCompositionViewFilesForLandscapeId(profile.landscapeId)
+  const viewEntries = (compositionViewFiles ?? readCompositionViewFilesForLandscapeId(profile.landscapeId))
     .map((file) => ({ file, view: normalizeCompositionView(loadJson<unknown>(file)) }))
     .filter(({ view }) => view.landscapeId === profile.landscapeId
       && (view.scope.stage === profile.compositionViewStage || view.scope.stage === 'CrossStage'))
@@ -2016,6 +2018,7 @@ function evaluateRouteEndpointCompositionVisibility(
   const missingDirectTerminalRouteScopes: string[] = []
   const missingJurisdictionStageAuthorityScopes: string[] = []
   const ambiguousJurisdictionStageAuthorityScopes: string[] = []
+  const invalidNationalExposureFamilyScopes: string[] = []
   const uniqueGoalsMissingEffectiveMotivationRoute = new Set<string>()
   const uniqueGoalsMissingDirectMotivationRoute = new Set<string>()
   const uniqueGoalsMissingEffectiveTerminalRoute = new Set<string>()
@@ -2048,6 +2051,7 @@ function evaluateRouteEndpointCompositionVisibility(
   let nationalTargetAtomicGoalOccurrencesExcludedByJurisdictionStageAuthority = 0
   let nationalSelectedGoalOccurrencesExcludedByJurisdictionStageAuthority = 0
   let nationalPrerequisiteOnlyGoalOccurrencesImportedByJurisdictionStageAuthority = 0
+  let nationalStageTargetGoalOccurrencesMaterializedFromFullExposure = 0
   let minRequiredTerminalAutonomyGoals = Number.POSITIVE_INFINITY
   let maxRequiredTerminalAutonomyGoals = 0
   const selectedGoalIds = new Set(selectedGoals.map((goal) => goal.id))
@@ -2178,26 +2182,73 @@ function evaluateRouteEndpointCompositionVisibility(
           jurisdictionStageTargetAuthorityGoalIds = new Set(jurisdictionStageTargetGoalIds)
           jurisdictionStageVisibleAuthorityGoalIds = new Set(jurisdictionStageVisibleGoalIds)
 
-          const prerequisiteOnlySupportGoalIds = new Set(
-            Array.from(visibleAtomicGoalIds)
-              .filter((goalId) => !visibleTargetAtomicGoalIds.has(goalId)),
-          )
-          const excludedTargetGoalIds = Array.from(visibleTargetAtomicGoalIds)
-            .filter((goalId) => !jurisdictionStageTargetGoalIds.has(goalId))
-          nationalTargetAtomicGoalOccurrencesExcludedByJurisdictionStageAuthority += excludedTargetGoalIds.length
-          nationalSelectedGoalOccurrencesExcludedByJurisdictionStageAuthority += excludedTargetGoalIds
-            .filter((goalId) => selectedGoalIds.has(goalId))
-            .length
-          const jurisdictionPrerequisiteOnlySupportGoalIds = Array.from(jurisdictionStageVisibleGoalIds)
-            .filter((goalId) => !jurisdictionStageTargetGoalIds.has(goalId))
-          nationalPrerequisiteOnlyGoalOccurrencesImportedByJurisdictionStageAuthority += (
-            jurisdictionPrerequisiteOnlySupportGoalIds.length
-          )
-          excludedTargetGoalIds.forEach((goalId) => visibleTargetAtomicGoalIds.delete(goalId))
-          visibleAtomicGoalIds.clear()
-          visibleTargetAtomicGoalIds.forEach((goalId) => visibleAtomicGoalIds.add(goalId))
-          prerequisiteOnlySupportGoalIds.forEach((goalId) => visibleAtomicGoalIds.add(goalId))
-          jurisdictionPrerequisiteOnlySupportGoalIds.forEach((goalId) => visibleAtomicGoalIds.add(goalId))
+          // A national/[Land] row is a compatibility audit: the actual learner
+          // API selects the Land view directly. Materialize the same Land stage
+          // against the explicit national full-view exposure boundary, rather
+          // than intersecting two incompatible national and Land stage cuts.
+          if (profile.landscapeId === CANONICAL_GYM_PHYSICS_LANDSCAPE_ID) {
+            const nationalExposureFamily = viewEntries
+              .filter(({ view: source }) => !source.scope.jurisdiction && source.scope.stage === 'CrossStage')
+              .map(({ file: sourceFile, view: source }) => {
+                const sourceFilters = [source.scope.courseProfile, source.scope.durationModel]
+                  .filter((value): value is string => typeof value === 'string' && value.trim().length > 0)
+                const targetGoalIds = collectRenderedAtomicGoalIdsFromCompositionView(
+                  landscape, sourceFile, sourceFilters, false, 'CrossStage', profile.motivationAnchorGoalIds, canonicalCatalog,
+                )
+                const visibleGoalIds = collectRenderedAtomicGoalIdsFromCompositionView(
+                  landscape, sourceFile, sourceFilters, true, 'CrossStage', profile.motivationAnchorGoalIds, canonicalCatalog,
+                )
+                removeGoalsOutsideCompiledProjection(targetGoalIds)
+                removeGoalsOutsideCompiledProjection(visibleGoalIds)
+                restrictForeignRouteSupport(visibleGoalIds, targetGoalIds,
+                  ownGoalIds, effectiveEdges, profile.motivationAnchorGoalIds)
+                return { viewId: source.viewId, landscapeId: source.landscapeId, scope: source.scope, targetGoalIds, visibleGoalIds }
+              })
+            const materialized = materializeNationalStageProjection({
+              landscapeId: landscape.landscapeId,
+              scope: view.scope,
+              defaultProjection: { targetGoalIds: visibleTargetAtomicGoalIds, visibleGoalIds: visibleAtomicGoalIds },
+              jurisdiction,
+              sourceViewIds: PHYSICS_NATIONAL_STAGE_EXPOSURE_SOURCES[view.viewId] ?? [],
+              nationalExposureFamily,
+              stageAuthorities: authorityProjectionSets,
+            })
+            invalidNationalExposureFamilyScopes.push(...materialized.errors.map(error => `${scopeLabel}: ${error}`))
+            const beforeTargets = new Set(visibleTargetAtomicGoalIds)
+            nationalTargetAtomicGoalOccurrencesExcludedByJurisdictionStageAuthority += [...beforeTargets]
+              .filter(id => !materialized.projection.targetGoalIds.has(id)).length
+            nationalSelectedGoalOccurrencesExcludedByJurisdictionStageAuthority += [...beforeTargets]
+              .filter(id => selectedGoalIds.has(id) && !materialized.projection.targetGoalIds.has(id)).length
+            nationalStageTargetGoalOccurrencesMaterializedFromFullExposure += [...materialized.projection.targetGoalIds]
+              .filter(id => !beforeTargets.has(id)).length
+            nationalPrerequisiteOnlyGoalOccurrencesImportedByJurisdictionStageAuthority += [...materialized.projection.visibleGoalIds]
+              .filter(id => !materialized.projection.targetGoalIds.has(id) && !visibleAtomicGoalIds.has(id)).length
+            visibleTargetAtomicGoalIds.clear()
+            materialized.projection.targetGoalIds.forEach(id => visibleTargetAtomicGoalIds.add(id))
+            visibleAtomicGoalIds.clear()
+            materialized.projection.visibleGoalIds.forEach(id => visibleAtomicGoalIds.add(id))
+          } else {
+            const prerequisiteOnlySupportGoalIds = new Set(
+              Array.from(visibleAtomicGoalIds)
+                .filter((goalId) => !visibleTargetAtomicGoalIds.has(goalId)),
+            )
+            const excludedTargetGoalIds = Array.from(visibleTargetAtomicGoalIds)
+              .filter((goalId) => !jurisdictionStageTargetGoalIds.has(goalId))
+            nationalTargetAtomicGoalOccurrencesExcludedByJurisdictionStageAuthority += excludedTargetGoalIds.length
+            nationalSelectedGoalOccurrencesExcludedByJurisdictionStageAuthority += excludedTargetGoalIds
+              .filter((goalId) => selectedGoalIds.has(goalId))
+              .length
+            const jurisdictionPrerequisiteOnlySupportGoalIds = Array.from(jurisdictionStageVisibleGoalIds)
+              .filter((goalId) => !jurisdictionStageTargetGoalIds.has(goalId))
+            nationalPrerequisiteOnlyGoalOccurrencesImportedByJurisdictionStageAuthority += (
+              jurisdictionPrerequisiteOnlySupportGoalIds.length
+            )
+            excludedTargetGoalIds.forEach((goalId) => visibleTargetAtomicGoalIds.delete(goalId))
+            visibleAtomicGoalIds.clear()
+            visibleTargetAtomicGoalIds.forEach((goalId) => visibleAtomicGoalIds.add(goalId))
+            prerequisiteOnlySupportGoalIds.forEach((goalId) => visibleAtomicGoalIds.add(goalId))
+            jurisdictionPrerequisiteOnlySupportGoalIds.forEach((goalId) => visibleAtomicGoalIds.add(goalId))
+          }
         }
       }
       if (enforceProjectionLocalRoutes) {
@@ -2484,6 +2535,7 @@ function evaluateRouteEndpointCompositionVisibility(
     && invalidStageStructureScopes.length === 0
     && missingJurisdictionStageAuthorityScopes.length === 0
     && ambiguousJurisdictionStageAuthorityScopes.length === 0
+    && invalidNationalExposureFamilyScopes.length === 0
     && missingMotivationScopes.length === 0
     && missingTerminalScopes.length === 0
     && unexpectedTerminalScopes.length === 0
@@ -2525,6 +2577,8 @@ function evaluateRouteEndpointCompositionVisibility(
       nationalTargetAtomicGoalOccurrencesExcludedByJurisdictionStageAuthority,
       nationalSelectedGoalOccurrencesExcludedByJurisdictionStageAuthority,
       nationalPrerequisiteOnlyGoalOccurrencesImportedByJurisdictionStageAuthority,
+      nationalStageTargetGoalOccurrencesMaterializedFromFullExposure,
+      nationalProjectionScopesWithInvalidExposureFamily: invalidNationalExposureFamilyScopes.length,
       projectionScopesWithIncompleteExplicitTerminalPrerequisites: terminalPrerequisiteClosureScopes.length,
       explicitTerminalPrerequisiteOccurrencesMissingFromProjection: terminalPrerequisiteOccurrencesMissingFromProjection,
       projectionScopesWithIncompleteWholeMaterialCoverageBindings: terminalMaterialCoverageBindingScopes.length,
@@ -2566,6 +2620,7 @@ function evaluateRouteEndpointCompositionVisibility(
       ...ambiguousJurisdictionStageAuthorityScopes.map(
         (scope) => `Ambiguous jurisdiction-specific stage-placement authority for national projection: ${scope}`,
       ),
+      ...invalidNationalExposureFamilyScopes.map(scope => `Invalid national stage exposure family: ${scope}`),
       ...missingMotivationScopes.map((scope) => `Missing motivation anchor(s): ${scope}`),
       ...emptyExpectedTerminalScopes.map((scope) => `No applicable terminal autonomy goal: ${scope}`),
       ...missingTerminalScopes.map((scope) => `Missing terminal autonomy goal(s): ${scope}`),
@@ -2679,6 +2734,7 @@ export function evaluateRouteProfile(
   profile: RouteProfile,
   applicabilityCompilation: ApplicabilityCompilationResult,
   canonicalCatalog?: readonly SkillLandscape[],
+  compositionViewFiles?: readonly string[],
 ): ScopeStatus {
   // Preserve the subject's selection predicates while resolving its real
   // prerequisites across the current catalog. This never authors a view role.
@@ -2731,6 +2787,7 @@ export function evaluateRouteProfile(
     reverseAtomicDirectEdges,
     sourceCatalog,
     ownGoalIds,
+    compositionViewFiles,
   )
 
   const rules: RuleResult[] = [
@@ -6296,6 +6353,7 @@ function renderMarkdownDe(status: StatusDocument): string {
 
 async function generateStatus(inputs: VerificationInputReader, assertCurrent: () => void) {
   const shouldCheck = process.argv.includes('--check')
+  inputs.readText(resolve(repoRoot, 'app/scripts/lib/nationalStageProjection.ts'))
   for (const path of PHYSICS_QA_SELECTOR_INPUT_PATHS) inputs.readText(resolve(repoRoot, path))
   const routeProfiles = createRouteProfiles(repoRoot, inputs)
   const { entries, sources } = loadCurrentCurriculumCatalog(inputs)

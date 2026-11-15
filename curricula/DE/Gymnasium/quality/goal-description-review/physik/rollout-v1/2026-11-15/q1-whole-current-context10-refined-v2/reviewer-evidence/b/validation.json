@@ -1,0 +1,59 @@
+{
+  "validatedAt": "2026-11-15T20:23:00.061263+00:00",
+  "passed": true,
+  "validator": "Python jsonschema Draft202012Validator",
+  "jsonschemaVersion": "4.26.0",
+  "recordCount": 10,
+  "checks": {
+    "10_schema_valid_records": true,
+    "exact_assigned_order": true,
+    "each_goal_exactly_once": true,
+    "unique_record_ids": true,
+    "local_execution_run_id": true,
+    "campaign_and_round_copied_exactly": true,
+    "current_texts_copied_exactly": true,
+    "goal_page_fingerprints_copied_exactly": true,
+    "exact_new_bundle_binding": true,
+    "exact_new_book_binding": true,
+    "campaign_review_input_binding": true,
+    "campaign_batch_raw_digest": true,
+    "schema_raw_digest": true,
+    "prompt_raw_digest": true,
+    "criteria_raw_digest": true,
+    "current_description_input_equals_batch": true,
+    "native_whole_profile_page_context_exact": true,
+    "book_page_context_exact": true,
+    "manifest_goal_bindings_exact": true,
+    "candidate_ai_authority_only": true,
+    "profile_contract_v2": true,
+    "six_nonempty_bilingual_fields_per_goal": true,
+    "no_replacement_fields_for_keep": true,
+    "12_pdf_rasters_exist": true,
+    "only_allowed_input_paths_pinned": true,
+    "no_round_a_input_read_for_hashing": true,
+    "40_inputs_byte_identical_before_after": true,
+    "input_seal_exact_raw_sha256": true,
+    "supplied_numerical_model_cases_consistent": true
+  },
+  "schemaErrors": [],
+  "failedChecks": [],
+  "descriptionDecisions": {
+    "keep": 10
+  },
+  "profileRecommendations": {
+    "none": 10
+  },
+  "suppliedModelCaseCalculations": {
+    "door_torque_Nm": 12.0,
+    "opposing_moments_Nm": -2.0,
+    "dipole_30deg_Nm": 0.0029999999999999996,
+    "dipole_90deg_Nm": 0.006,
+    "gauss_axial_B_T": 1.9999999999999995e-05,
+    "gauss_axial_m_Am2": 0.8000000000000002,
+    "gauss_equatorial_B_T": 2.9999999999999994e-05,
+    "gauss_equatorial_m_Am2": 0.6000000000000001
+  },
+  "fingerprintPolicy": "All existing semantic/book/bundle/page bindings copied from current supplied inputs; no fingerprint rewrite or reconstruction. Raw digest verification uses only explicit supplied raw-digest bindings.",
+  "visibilityPolicy": "Existence of twelve raster files is only a technical check. Actual view_image observations for all 12 pages, 10 originals and 3 scientific PNGs are separately attested in receipt and explanation.",
+  "oldOutputPolicy": "No prior output was opened, hashed, modified or used as an authority; there is no new byte comparison of old outputs because they are outside this task input boundary."
+}

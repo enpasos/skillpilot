@@ -48,7 +48,7 @@ export interface LearnerUnitMapPreviewInput {
   /** Learner landscapes with their placement layer; learning units come from here. */
   landscapeSources?: readonly LearnerUnitMapLandscapeSource[]
   language?: 'de' | 'en'
-  /** When present, only explicitly indexed plan structures are units; no title/phase heuristic. */
+  /** Bound views use only indexed plan structures as units; unbound views retain their compatibility sections. */
   stagePlanContext?: LearnerStagePlanMapContext
 }
 
@@ -106,6 +106,7 @@ export function resolveLearnerStagePlanContext(goals: ReadonlyMap<string, UiGoal
 export function deriveLearnerUnitMapPreview(input: LearnerUnitMapPreviewInput, requestedStep?: number): LearnerUnitMapPreview {
   const { rootGoals, goalIndexAll, visibleGoalIds, visibleChildrenByParent, landscapeSources = [], language = 'de' } = input
   const stagePlanContext = input.stagePlanContext ?? resolveLearnerStagePlanContext(goalIndexAll)
+  const planBoundViewIds = new Set(stagePlanContext?.views.map(view => view.viewId) ?? [])
   const declaredUnits = new Map<string, StagePlanUnit>()
   if (stagePlanContext) {
     const unitById = new Map(stagePlanContext.plan.units.map(unit => [unit.id, unit]))
@@ -119,8 +120,9 @@ export function deriveLearnerUnitMapPreview(input: LearnerUnitMapPreviewInput, r
   }
   const subjects = new Set(UNIT_MAP_PREVIEW_SUBJECT_IDS)
   const isSection = (goal: UiGoal | undefined): goal is UiGoal => !!goal && isCompositionStructureNode(goal)
+    && !goal.tags?.includes('root')
     && !!goal.landscapeId && subjects.has(goal.landscapeId) && !!viewNodeId(goal)
-    && (!stagePlanContext || declaredUnits.has(goal.id))
+    && (!planBoundViewIds.has(viewId(goal)) || declaredUnits.has(goal.id))
   const children = (id: string) => (visibleChildrenByParent.get(id) ?? []).filter(child => visibleGoalIds.has(child))
   const depthOf = new Map<string, number>()
   const siblingSections: string[][] = []
@@ -141,7 +143,9 @@ export function deriveLearnerUnitMapPreview(input: LearnerUnitMapPreviewInput, r
     if (sections.length > 1) siblingSections.push(sections)
   }
   for (const root of rootGoals) {
-    if (root.landscapeId && subjects.has(root.landscapeId) && visibleGoalIds.has(root.id)) walk(root.id, 0)
+    // A selected overview can contain the subject roots. Section identity is
+    // still restricted to the reviewed map subjects by isSection above.
+    if (visibleGoalIds.has(root.id)) walk(root.id, 0)
   }
   const maxStep = Math.max(0, ...depthOf.values())
   const step = maxStep === 0 ? 0 : Math.min(maxStep, Math.max(1, Math.round(requestedStep ?? maxStep)))
@@ -157,7 +161,7 @@ export function deriveLearnerUnitMapPreview(input: LearnerUnitMapPreviewInput, r
     if (depth > step) continue
     const goal = goalIndexAll.get(id)!
     const declared = declaredUnits.get(id)
-    const stage = stagePlanContext ? undefined : stageByViewNodeId.get(viewNodeId(goal)!)
+    const stage = planBoundViewIds.has(viewId(goal)) ? undefined : stageByViewNodeId.get(viewNodeId(goal)!)
     units.set(id, declared ? { key: keyOf(goal), label: language === 'en' ? declared.labelEn ?? declared.label : declared.label }
       : stage ? { key: stage.key, label: stage.label[language] } : { key: keyOf(goal) })
   }
@@ -168,16 +172,17 @@ export function deriveLearnerUnitMapPreview(input: LearnerUnitMapPreviewInput, r
       const key = `plan:${stagePlanContext.plan.planId}:${unit.id}`, before = `plan:${stagePlanContext.plan.planId}:${previous}`
       if (keys.has(key) && keys.has(before)) after.push({ unit: key, after: before })
     }
-  } else {
-    for (let index = 1; index < STAGE_ORDER.length; index++) {
-      if (keys.has(STAGE_ORDER[index]) && keys.has(STAGE_ORDER[index - 1])) after.push({ unit: STAGE_ORDER[index], after: STAGE_ORDER[index - 1] })
-    }
-    // The order of sibling sections in the view is the order of the plan.
-    for (const sections of siblingSections) {
-      const unitKeys = sections.filter(id => units.has(id)).map(id => units.get(id)!.key)
-      for (let index = 1; index < unitKeys.length; index++) {
-        if (unitKeys[index] !== unitKeys[index - 1]) after.push({ unit: unitKeys[index], after: unitKeys[index - 1] })
-      }
+  }
+  // Unbound views retain their compatibility preview. Their identities and
+  // sibling order cannot claim membership in an activated subject contribution.
+  for (let index = 1; index < STAGE_ORDER.length; index++) {
+    if (keys.has(STAGE_ORDER[index]) && keys.has(STAGE_ORDER[index - 1])) after.push({ unit: STAGE_ORDER[index], after: STAGE_ORDER[index - 1] })
+  }
+  for (const sections of siblingSections) {
+    const unitKeys = sections.filter(id => units.has(id) && !planBoundViewIds.has(viewId(goalIndexAll.get(id)!)))
+      .map(id => units.get(id)!.key)
+    for (let index = 1; index < unitKeys.length; index++) {
+      if (unitKeys[index] !== unitKeys[index - 1]) after.push({ unit: unitKeys[index], after: unitKeys[index - 1] })
     }
   }
 

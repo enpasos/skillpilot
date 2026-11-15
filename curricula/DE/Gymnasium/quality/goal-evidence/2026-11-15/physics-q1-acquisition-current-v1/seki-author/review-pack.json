@@ -1,0 +1,138 @@
+{
+  "status": "draft-author-candidate-not-independent-approval",
+  "taskId": "16bfb017-53d6-5328-a4e3-2e2b4e4398a9",
+  "wholeGoalId": "72effc66-87f4-5f5e-8d36-1547677365fb",
+  "wholeGoalDescriptionDe": "Die lernende Person kann digitale Messdaten auswerten, zufällige Streuung von systematischen Abweichungen unterscheiden und begründen, wie beide die Aussagekraft des Ergebnisses begrenzen.",
+  "wholeGoalDescriptionEn": "The learner can analyze digital measurement data, distinguish random scatter from systematic deviations, and justify how both limit the strength of the resulting conclusion.",
+  "profileFingerprint": "sha256:5f11634e51e897e7cc2b5c7ed2b613da03f30d9192244618b61ba5c2b7c01117",
+  "expectationBindings": [
+    {
+      "expectationId": "random-scatter-analysis",
+      "criteria": [
+        1,
+        2,
+        4,
+        5,
+        6
+      ],
+      "independentCases": [
+        "A own fresh real dataset and synthetic diagnostic controls",
+        "B independent synthetic timed transient"
+      ]
+    },
+    {
+      "expectationId": "systematic-deviation-diagnosis",
+      "criteria": [
+        3,
+        5,
+        7
+      ],
+      "independentCases": [
+        "A reference offset/calibration comparison",
+        "B changed mechanism: finite temporal sampling, not constant bias"
+      ]
+    },
+    {
+      "expectationId": "claim-strength-limitation",
+      "criteria": [
+        3,
+        5,
+        6,
+        8
+      ],
+      "independentCases": [
+        "A repeatability versus reference accuracy",
+        "B sampled versus continuous maximum"
+      ]
+    }
+  ],
+  "counteranswers": [
+    {
+      "criterion": 1,
+      "counteranswerDe": "Es werden nur die vorgegebenen synthetischen Daten als angeblich eigene Messung abgegeben.",
+      "scoreForMissingEssential": 0,
+      "otherwiseFullTotal": 14,
+      "passes": false,
+      "minorErrorOtherwiseFullTotal": 15,
+      "minorErrorPasses": true
+    },
+    {
+      "criterion": 2,
+      "counteranswerDe": "Es gibt nur einen ausgedachten Mittelwert ohne Rohdatei, digitale Umsetzung oder Diagramm.",
+      "scoreForMissingEssential": 0,
+      "otherwiseFullTotal": 14,
+      "passes": false,
+      "minorErrorOtherwiseFullTotal": 15,
+      "minorErrorPasses": true
+    },
+    {
+      "criterion": 3,
+      "counteranswerDe": "Kleine Streuung beweist, dass die Temperatur auf alle angezeigten Stellen stimmt.",
+      "scoreForMissingEssential": 0,
+      "otherwiseFullTotal": 14,
+      "passes": false,
+      "minorErrorOtherwiseFullTotal": 15,
+      "minorErrorPasses": true
+    },
+    {
+      "criterion": 4,
+      "counteranswerDe": "Der Punkt24,0 wird heimlich gelöscht, weil er nicht zur gewünschten Schlussfolgerung passt.",
+      "scoreForMissingEssential": 0,
+      "otherwiseFullTotal": 14,
+      "passes": false,
+      "minorErrorOtherwiseFullTotal": 15,
+      "minorErrorPasses": true
+    },
+    {
+      "criterion": 5,
+      "counteranswerDe": "Q ist wegen geringerer Streuung zwingend genauer, der1,2-K-Offset verschwindet durch Mitteln.",
+      "scoreForMissingEssential": 0,
+      "otherwiseFullTotal": 14,
+      "passes": false,
+      "minorErrorOtherwiseFullTotal": 15,
+      "minorErrorPasses": true
+    },
+    {
+      "criterion": 6,
+      "counteranswerDe": "Der langsame Sensor hat höchstens22°C gemessen, daher kann das echte Maximum nicht darüber liegen.",
+      "scoreForMissingEssential": 0,
+      "otherwiseFullTotal": 14,
+      "passes": false,
+      "minorErrorOtherwiseFullTotal": 15,
+      "minorErrorPasses": true
+    },
+    {
+      "criterion": 7,
+      "counteranswerDe": "Alle systematischen Abweichungen sind konstante Nullpunktfehler; Abtastrate kann keine Rolle spielen.",
+      "scoreForMissingEssential": 0,
+      "otherwiseFullTotal": 14,
+      "passes": false,
+      "minorErrorOtherwiseFullTotal": 15,
+      "minorErrorPasses": true
+    },
+    {
+      "criterion": 8,
+      "counteranswerDe": "26,000000°C ist das mathematisch exakt bewiesene wahre Maximum, und H=0,1°C garantiert95% Sicherheit.",
+      "scoreForMissingEssential": 0,
+      "otherwiseFullTotal": 14,
+      "passes": false,
+      "minorErrorOtherwiseFullTotal": 15,
+      "minorErrorPasses": true
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.nist.gov/pml/nist-technical-note-1297/nist-tn-1297-appendix-d1-terminology",
+      "use": "Random/systematic effects and finite knowledge of corrections; simplified D/H deliberately not claimed as NIST standard uncertainty."
+    },
+    {
+      "url": "https://www.ni.com/en/shop/data-acquisition/measurement-fundamentals/analog-fundamentals/acquiring-an-analog-signal--bandwidth--nyquist-sampling-theorem-.html",
+      "use": "Sampling times and finite acquisition detail; no claim that a two-times rule guarantees capture of an unknown transient maximum."
+    }
+  ],
+  "preparationDecision": "The whole ordinary72eff goal is the sole direct true prerequisite of this assessment. Its existing canonical closure supplies691c andf23 and through691c also75b9/8aff. Additional redundant direct edges are not added. No motion/video/throw/acceleration prerequisite or new ordinary goal is authored.",
+  "placementProposal": "Assign to an existing pure early assessment container wherever72eff is already in that actual learning unit; do not import d675/e4b or later E mechanics. phaseGLOBAL is compatibility metadata, not a requested extra E placement.",
+  "oldContractsChanged": false,
+  "learnerMasteryWritten": false,
+  "actualLearnerExperimentPerformed": false
+}

@@ -16,10 +16,10 @@ import {
 } from './compositionViewRuntime'
 import { CANONICAL_GYMNASIUM_ROOT_ID } from './curriculumDisplay'
 import { goalMatchesFilter } from './goalFilters'
-import { normalizeLearnerProjectedEntries } from './learnerTreeProjection'
+import { normalizeLearnerProjectedEntries, normalizeLearnerVisibleChildrenMap } from './learnerTreeProjection'
 import { buildGoalContainsClosure } from './plannedScope'
 import { buildTreeCompletionProgressMap } from './treeCompletionProgress'
-import { buildVisibleChildrenMap } from './treeProjectionRuntime'
+import { buildDirectChildrenMap, buildVisibleChildrenMap } from './treeProjectionRuntime'
 
 const load = (path: string) => JSON.parse(readFileSync(new URL(path, import.meta.url), 'utf8'))
 const chemistry = normalizeLandscape(load('../../../curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json'))!
@@ -27,6 +27,64 @@ const view = load('../../../curricula/DE/Gymnasium/composition-views/chemie/de-d
 const target = '1c1420c2-a8e2-520f-8015-6df637a973bd'
 const prerequisite = 'e7c363d4-e02d-4895-8750-ba62c2eb63fe'
 const orientation = 'a9c22adc-b543-5b0c-a2d8-3189facdff08'
+
+// A matching canonical year or orphan composition node is context, not a
+// competing visible placement. It must not remove an already placed target.
+{
+  const template = chemistry.goals.find(goal => goal.contains.length === 0)!
+  const leaf: UiGoal = { ...template, id: 'reachable-target', phase: 'J10', contains: [], type: 'atomic', tags: [] }
+  const topic: UiGoal = { ...template, id: 'reachable-topic', phase: 'GLOBAL', contains: [leaf.id], type: 'cluster', tags: [] }
+  const root: UiGoal = { ...topic, id: 'displayed-root', contains: [topic.id], tags: ['root'] }
+  const orphanYear: UiGoal = { ...topic, id: 'orphan-year', phase: 'J10', title: 'Jahrgangsstufe 10' }
+  const orphanComposition: UiGoal = { ...topic, id: 'orphan-composition', tags: ['synthetic:program-unit'],
+    extendedData: { syntheticStructureKind: 'compositionView' } }
+  const goals = new Map([root, topic, leaf, orphanYear, orphanComposition].map(goal => [goal.id, goal]))
+  const before = JSON.stringify([...goals])
+  const normalized = normalizeLearnerVisibleChildrenMap(goals, buildDirectChildrenMap(goals))
+  assert.deepEqual(normalized.get(topic.id), [leaf.id], 'An unreachable canonical context cannot steal a visible target.')
+  assert(!normalized.get(orphanYear.id)?.includes(leaf.id))
+  assert(!normalized.get(orphanComposition.id)?.includes(leaf.id))
+  assert.equal(buildTreeCompletionProgressMap(goals, normalized, () => 0).get(root.id)?.totalCount, 1,
+    'The required target remains in the visible completion denominator exactly once.')
+  assert.equal(JSON.stringify([...goals]), before)
+}
+
+// A subject-root anchor must resolve authored foreign preparation with the
+// same canonical universe as the unanchored composition path. The seven
+// Chemistry identities stay owned by Chemistry; rendering never creates seeds.
+{
+  const physics = normalizeLandscape(load('../../../curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json'))!
+  const foreignIds = ['a9c22adc-b543-5b0c-a2d8-3189facdff08', '13d4f336-ab16-54a7-9479-c920b458f385',
+    '416dfd33-8b43-5c49-903c-9847b95e4208', 'fcc73fb5-7413-557f-aea3-b9692a66ee75',
+    '326d45bf-9f77-57d5-a054-93e76b034dd5', '988888bb-1f88-55f9-9a44-f3f60469a297',
+    '5dd180f1-f1c8-5f76-9c9a-ea3fc3d921bf']
+  const consumer = 'db47ac91-7bb0-5ba3-b39d-e2d6fc98396e'
+  const ownRoot = physics.goals.find(goal => goal.tags?.includes('root'))!
+  const sources = [physics, chemistry]
+  const before = JSON.stringify(sources)
+  const makeView = (role: 'target' | 'prerequisiteOnly') => ({ viewId: 'foreign-preparation-anchor-regression',
+    landscapeId: physics.meta.landscapeId, scope: { schoolForm: 'Gymnasium', stage: 'CrossStage' },
+    rootNodes: [{ kind: 'structure', id: 'subject', label: ownRoot.title, children: [
+      { kind: 'structure', id: 'membrane', label: 'Membranmodell', children: [
+        ...foreignIds.map(goalId => ({ kind: 'goalEntry', goalId, projectionRole: role })),
+        { kind: 'goalEntry', goalId: consumer },
+      ] },
+    ] }],
+  })
+  const authored = applyCompositionViewProjection(sources, makeView('target'))
+  const membrane = authored.flatMap(entry => entry.goals)
+    .find(goal => goal.extendedData?.compositionNodeId === 'membrane')!
+  assert.deepEqual(membrane.contains, [...foreignIds, consumer],
+    'Anchored subject structures retain all seven resolved foreign preparation references.')
+  for (const id of foreignIds) {
+    const original = chemistry.goals.find(goal => goal.id === id)!
+    assert.deepEqual(authored.find(entry => entry.meta.landscapeId === chemistry.meta.landscapeId)!.goals.find(goal => goal.id === id), original)
+  }
+  assert.equal(JSON.stringify(sources), before, 'Projection leaves canonical goals and the fixed learning-basis metadata unchanged.')
+  const supportOnly = applyCompositionViewProjection(sources, makeView('prerequisiteOnly'))
+    .flatMap(entry => entry.goals).find(goal => goal.extendedData?.compositionNodeId === 'membrane')!
+  assert.deepEqual(supportOnly.contains, [consumer], 'The existing prerequisiteOnly role still omits visible children.')
+}
 assert(chemistry.goals.find((goal) => goal.id === target)?.requires.includes(prerequisite))
 assert.equal(compositionViewExposesGoal([chemistry], view, prerequisite), false,
   'The real Chemistry prerequisite reproduces the authored support-only gap.')

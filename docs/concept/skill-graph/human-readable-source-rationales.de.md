@@ -25,6 +25,8 @@ Jedes kanonische Lernziel einer SkillPilot-Skill-Landschaft muss nachvollziehbar
 - **Klassische Quellenroute (`classicSourceRoute`):** Bindet geprüfte `source-to-canonical`-Mappings (`exact` oder `partial`), amtliche Lehrplandokumente, Kapitelpfade und kurze Fundstellenauszüge.
 - **MEM-SPARQL-Route (`memSparqlRoute`):** Ergänzt Abgleiche gegen externe Metadata-for-Educational-Media-(`MEM`-) bzw. FWU-Ontologie-Bestände ([MEM-SPARQL-Audit](../../qa-ci/mem-sparql-consistency.de.md)), soweit vorhanden.
 
+Amtliche Quellenbelege in einer Quellenbegründung bewerten die curriculare Quellenzuordnung (*geführt in*, `officialSource`); davon getrennte fachliche Modellierungs- und Platzierungsbegründungen bleiben als eigene Entscheidungen erkennbar. Weder eine vorläufige kanonische Standardmarke (`canonicalDefault` aus `dimensionTags.phase`) noch ein didaktisch vorgezogener Lernplatz (*steht in*, `reviewedPreparation` oder abgeleiteter frühester Bedarf in [3](view-projection-and-goal-placement.de.md#sec-sga-view-projection)) wird jemals als amtlicher Landeslehrplanbeleg ausgegeben.
+
 <a id="sec-sga-sr-ranking"></a>
 ### 6.2. Deterministische Rangfolge, Ausspielmodi und Urheberrechtsdisziplin
 

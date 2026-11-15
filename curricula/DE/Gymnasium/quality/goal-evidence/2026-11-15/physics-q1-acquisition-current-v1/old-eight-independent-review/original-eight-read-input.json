@@ -1,0 +1,837 @@
+[
+  {
+    "id": "5e64eacd-5204-5028-af23-02a43377c56e",
+    "title": "RC-Kreis und Dielektrika modellieren",
+    "titleEn": "Model RC Circuits and Dielectrics",
+    "description": "Die lernende Person kann eine LK-orientierte Q1-Klausuraufgabe zu Dielektrika, Modellannahmen und der Differentialgleichung des RC-Kreises selbstaendig bearbeiten.",
+    "descriptionEn": "The learner can independently solve an advanced-course-oriented Q1 written-test task on dielectrics, modeling assumptions, and the differential equation of the RC circuit.",
+    "weight": 1,
+    "tags": [
+      "LK",
+      "Practice",
+      "Assessment"
+    ],
+    "contains": [],
+    "requires": [
+      "73b309ed-1aab-5778-8494-d9b65f5a352b",
+      "330808f6-789a-583d-86df-e271a7683d8b"
+    ],
+    "dimensionTags": {
+      "framework": "hessen-kc-2024-physics",
+      "demandLevel": "AB3",
+      "processCompetencies": [
+        "PK2_MODELLIEREN",
+        "PK3_MATHEMATISIEREN",
+        "PK4_KOMMUNIZIEREN"
+      ],
+      "guidingIdeas": [
+        "LI_FELDER",
+        "LI_ENERGIE"
+      ],
+      "phase": "Q1"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "extendedData": {
+      "treeOrder": 3
+    },
+    "examData": {
+      "reviewStatus": "released",
+      "coveredGoalIds": [
+        "73b309ed-1aab-5778-8494-d9b65f5a352b",
+        "09f2cdbd-64e0-55d2-ada7-1190f4fd50df",
+        "330808f6-789a-583d-86df-e271a7683d8b"
+      ],
+      "coveredStrands": [
+        "LI_FELDER",
+        "LI_ENERGIE"
+      ],
+      "demandLevels": [
+        "AB1",
+        "AB2",
+        "AB3"
+      ],
+      "taskContent": "**Kontext:**\n\nEin Entwicklungsteam bewertet den Lade- und Entladevorgang eines RC-Sensors. Ein Dielektrikum verändert die Kapazitaet, und für die Modellierung soll geklärt werden, wie gut die Differentialgleichung des RC-Kreises die Messdaten trifft.\n\n**Material 1 (Ladevorgang):**\n\n- Versorgungsspannung $U_0 = 12.0\\,V$\n- Widerstand $R = 220\\,k\\Omega$\n- Messwerte für die Kondensatorspannung $U_C(t)$:\n\n| $t$ in ms | 0.0 | 2.0 | 4.0 | 6.0 | 8.0 |\n|---|---:|---:|---:|---:|---:|\n| $U_C$ in V | 0.0 | 7.2 | 10.0 | 11.1 | 11.6 |\n\n**Material 2 (Dielektrikum):**\n\n- Kapazitaet ohne Dielektrikum: $C_0 = 8.0\\,nF$\n- nach Einsetzen des Dielektrikums steigt die Zeitkonstante auf $\\tau = 3.96\\,ms$\n\n**Material 3 (Modellhinweis):**\n\n- für den idealen RC-Kreis gilt $\\frac{dU_C}{dt} = \\frac{1}{RC}(U_0-U_C)$\n- reale Abweichungen entstehen unter anderem durch Innenwiderstand der Quelle und Leckstroeme\n\n**Aufgaben:**\n\n1. Bestimmen Sie aus Material 1 eine geeignete Zeitkonstante $\\tau$ und erklären Sie Ihr Vorgehen. (8 BE)\n2. Berechnen Sie daraus die Kapazitaet des Sensors ohne Dielektrikum und vergleichen Sie sie mit Material 2. (7 BE)\n3. Bestimmen Sie aus der neuen Zeitkonstante in Material 2 die Kapazitaet mit Dielektrikum und den relativen Permittivitaetsfaktor $\\varepsilon_r$. (8 BE)\n4. Erläutern Sie die Differentialgleichung aus Material 3 qualitativ und diskutieren Sie zwei Modellgrenzen. (7 BE)",
+      "solutionContent": "1. Beim Ladevorgang ist bei $U_C \\approx 0.632 U_0$ die Zeitkonstante erreicht.  \n   $0.632 U_0 = 7.58\\,V$; der Messwert bei $t=2.0\\,ms$ liegt mit $7.2\\,V$ sehr nahe daran.  \n   Damit ist $\\tau \\approx 2.0\\,ms$ eine geeignete Schaetzung.  \n   **8 BE**\n\n2. $C = \\tau / R = 2.0\\cdot 10^{-3} / 220\\cdot 10^3 \\approx 9.09\\cdot 10^{-9}\\,F = 9.1\\,nF$.  \n   Vergleich mit Material 2: Das liegt nahe bei $C_0 = 8.0\\,nF$; die Differenz ist im Kontext als Mess- oder Modellabweichung plausibel.  \n   **7 BE**\n\n3. Mit Dielektrikum: $C_D = \\tau / R = 3.96\\cdot 10^{-3} / 220\\cdot 10^3 = 1.80\\cdot 10^{-8}\\,F = 18.0\\,nF$.  \n   Relativer Faktor: $\\varepsilon_r \\approx C_D / C_0 = 18.0 / 8.0 = 2.25$.  \n   **8 BE**\n\n4. Die Gleichung beschreibt: je größer die Spannungsdifferenz $U_0-U_C$, desto schneller aendert sich $U_C$.  \n   Modellgrenzen: Quelle idealisiert, Leckstroeme und temperaturabhaengige Widerstaende vernachlaessigt, Streukapazitaeten fehlen.  \n   **7 BE**",
+      "scoring": {
+        "maxPoints": 30,
+        "passingPoints": 18,
+        "steps": [
+          {
+            "id": "s1",
+            "points": 8,
+            "description": "Zeitkonstante aus Messdaten sinnvoll bestimmt"
+          },
+          {
+            "id": "s2",
+            "points": 7,
+            "description": "Kapazitaet ohne Dielektrikum berechnet und verglichen"
+          },
+          {
+            "id": "s3",
+            "points": 8,
+            "description": "Kapazitaet mit Dielektrikum und Permittivitaetsfaktor bestimmt"
+          },
+          {
+            "id": "s4",
+            "points": 7,
+            "description": "Differentialgleichung und Modellgrenzen erklärt"
+          }
+        ]
+      }
+    },
+    "phase": "Q1",
+    "type": "atomic"
+  },
+  {
+    "id": "72ee642f-7574-517e-abd6-17d699b05af6",
+    "title": "Linearbeschleuniger und Relativitaetsgrenze",
+    "titleEn": "Linear Accelerator and Relativistic Limit",
+    "description": "Die lernende Person kann eine LK-orientierte Q1-Klausuraufgabe zum Linearbeschleuniger, zur Energieübertragung an geladene Teilchen und zur relativistischen Modellgrenze selbstaendig bearbeiten.",
+    "descriptionEn": "The learner can independently solve an advanced-course-oriented Q1 written-test task on linear accelerators, energy transfer to charged particles, and the relativistic limit of the model.",
+    "weight": 1,
+    "tags": [
+      "LK",
+      "Practice",
+      "Assessment"
+    ],
+    "contains": [],
+    "requires": [
+      "8d34228c-da38-5c1e-97cc-571f3eafb9f4"
+    ],
+    "dimensionTags": {
+      "framework": "hessen-kc-2024-physics",
+      "demandLevel": "AB3",
+      "processCompetencies": [
+        "PK2_MODELLIEREN",
+        "PK3_MATHEMATISIEREN",
+        "PK5_BEWERTEN"
+      ],
+      "guidingIdeas": [
+        "LI_FELDER",
+        "LI_TECHNIK",
+        "LI_ENERGIE"
+      ],
+      "phase": "Q1"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "extendedData": {
+      "treeOrder": 5
+    },
+    "examData": {
+      "reviewStatus": "released",
+      "coveredGoalIds": [
+        "74a74132-fa39-541c-8d3c-696cf228452d",
+        "8d34228c-da38-5c1e-97cc-571f3eafb9f4"
+      ],
+      "coveredStrands": [
+        "LI_FELDER",
+        "LI_TECHNIK",
+        "LI_ENERGIE",
+        "LI_BEWEGUNG"
+      ],
+      "demandLevels": [
+        "AB1",
+        "AB2",
+        "AB3"
+      ],
+      "taskContent": "**Kontext:**\n\nEin Linearbeschleuniger soll für eine Materialanalyse kalibriert werden. Das Team will pruefen, bis zu welcher Teilchenenergie das nichtrelativistische Modell noch sinnvoll ist.\n\n**Material 1 (Elektronenbeschleunigung):**\n\n- Beschleunigungsspannung $U_1 = 45\\,kV$\n- Elektronenmasse $m_e = 9.11 \\cdot 10^{-31}\\,kg$\n- Elementarladung $e = 1.602 \\cdot 10^{-19}\\,C$\n\n**Material 2 (zweiter Betriebsfall):**\n\n- Beschleunigungsspannung $U_2 = 180\\,kV$\n- Lichtgeschwindigkeit $c = 3.00 \\cdot 10^8\\,m/s$\n\n**Material 3 (Bewertung):**\n\n- nichtrelativistische Modellrechnungen gelten hier nur als verlaesslich, solange $v < 0.30c$\n\n**Aufgaben:**\n\n1. Berechnen Sie für Material 1 die kinetische Energie in eV und die nichtrelativistische Geschwindigkeit des Elektrons. (8 BE)\n2. Wiederholen Sie die Rechnung für Material 2. (8 BE)\n3. Vergleichen Sie beide Ergebnisse mit der Grenze aus Material 3 und beurteilen Sie, für welchen Betriebsfall das nichtrelativistische Modell noch vertretbar ist. (7 BE)\n4. Erläutern Sie qualitativ, warum die Grenzbeurteilung mit steigender Spannung physikalisch notwendig wird. (7 BE)",
+      "solutionContent": "1. Kinetische Energie: $E_{kin} = eU_1 = 45\\,keV$.  \n   Nichtrelativistisch: $v_1 = \\sqrt{2eU_1/m_e} \\approx 1.26\\cdot 10^8\\,m/s = 0.42c$.  \n   **8 BE**\n\n2. Für $U_2 = 180\\,kV$ gilt $E_{kin} = 180\\,keV$.  \n   $v_2 = \\sqrt{2eU_2/m_e} \\approx 2.52\\cdot 10^8\\,m/s = 0.84c$.  \n   **8 BE**\n\n3. Vergleich mit $0.30c$:  \n   - Material 1: $0.42c > 0.30c$  \n   - Material 2: $0.84c > 0.30c$  \n   Damit ist in beiden Faellen die Grenzbedingung überschritten; das nichtrelativistische Modell ist insbesondere bei Material 2 deutlich unzureichend.  \n   **7 BE**\n\n4. Mit wachsender Spannung steigt die kinetische Energie stark an; die klassische Beziehung $E_{kin}=\\frac12 mv^2$ wuerde Geschwindigkeiten vorhersagen, die der Lichtgeschwindigkeit zu nahe kommen.  \n   Relativistische Effekte aendern dann den Zusammenhang zwischen Energie und Geschwindigkeit wesentlich.  \n   **7 BE**",
+      "scoring": {
+        "maxPoints": 30,
+        "passingPoints": 18,
+        "steps": [
+          {
+            "id": "s1",
+            "points": 8,
+            "description": "Energie und Geschwindigkeit für den ersten Betriebsfall bestimmt"
+          },
+          {
+            "id": "s2",
+            "points": 8,
+            "description": "Energie und Geschwindigkeit für den zweiten Betriebsfall bestimmt"
+          },
+          {
+            "id": "s3",
+            "points": 7,
+            "description": "Modellgrenze gegenüber 0.30c sauber beurteilt"
+          },
+          {
+            "id": "s4",
+            "points": 7,
+            "description": "Notwendigkeit relativistischer Modellierung erklärt"
+          }
+        ]
+      }
+    },
+    "phase": "Q1",
+    "type": "atomic"
+  },
+  {
+    "id": "783c1ffe-d983-5c5a-8897-2c88fc64147c",
+    "title": "Kondensator, Feldenergie und Millikan-Versuch",
+    "titleEn": "Capacitor, Field Energy, and Millikan Experiment",
+    "description": "Die lernende Person kann eine materialgestuetzte Q1-Klausuraufgabe zu Plattenkondensator, Auf- und Entladung, Feldenergie und dem Millikan-Versuch selbstaendig bearbeiten.",
+    "descriptionEn": "The learner can independently solve a material-based Q1 written-test task on the parallel-plate capacitor, charging and discharging, field energy, and the Millikan experiment.",
+    "weight": 1,
+    "tags": [
+      "GK",
+      "Practice",
+      "Assessment"
+    ],
+    "contains": [],
+    "requires": [
+      "0b4f2020-8486-5372-9cb9-6e59f698ac2d",
+      "fd9fd8ad-c4a1-5552-9ea0-1878e0636f20",
+      "0f803c37-8191-5a07-9b31-9603ded98fe2",
+      "38e0ff49-f132-44c8-b17a-73dada5344db"
+    ],
+    "dimensionTags": {
+      "framework": "hessen-kc-2024-physics",
+      "demandLevel": "AB2",
+      "processCompetencies": [
+        "PK1_EXPERIMENTIEREN",
+        "PK2_MODELLIEREN",
+        "PK3_MATHEMATISIEREN"
+      ],
+      "guidingIdeas": [
+        "LI_FELDER",
+        "LI_ENERGIE",
+        "LI_MATERIE"
+      ],
+      "phase": "Q1"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "extendedData": {
+      "treeOrder": 2
+    },
+    "examData": {
+      "reviewStatus": "released",
+      "coveredGoalIds": [
+        "9f59a088-3939-59e9-821d-167fadfda782",
+        "0b4f2020-8486-5372-9cb9-6e59f698ac2d",
+        "fd9fd8ad-c4a1-5552-9ea0-1878e0636f20",
+        "0f803c37-8191-5a07-9b31-9603ded98fe2",
+        "e3bce51c-cfeb-4706-b95e-a22b76e7dd73",
+        "38e0ff49-f132-44c8-b17a-73dada5344db"
+      ],
+      "coveredStrands": [
+        "LI_FELDER",
+        "LI_ENERGIE",
+        "LI_MATERIE"
+      ],
+      "demandLevels": [
+        "AB1",
+        "AB2"
+      ],
+      "taskContent": "**Kontext:**\n\nIn einem Oberstufenlabor wird eine Tropfenfalle für Feinpartikel kalibriert. Dabei werden ein Plattenkondensator, die im Feld gespeicherte Energie und eine an den Millikan-Versuch angelehnte Kraftbilanz gemeinsam ausgewertet.\n\n**Material 1 (Plattenkondensator):**\n\n- Plattenflaeche $A = 0.018\\,m^2$\n- Plattenabstand $d = 3.5\\,mm$\n- Dielektrikum mit $\\varepsilon_r = 2.6$\n- Betriebsspannung $U = 600\\,V$\n\n**Material 2 (Tropfen im elektrischen Feld):**\n\n- Masse des Tropfens $m = 2.4 \\cdot 10^{-15}\\,kg$\n- Feld zwischen den Platten wie in Material 1\n- Erdbeschleunigung $g = 9.81\\,m/s^2$\n\n**Material 3 (Elementarladungsvergleich):**\n\n- Elementarladung $e = 1.602 \\cdot 10^{-19}\\,C$\n- im Kalibrierprotokoll gilt ein ganzzahliges Vielfaches von $e$ als plausibel\n\n**Aufgaben:**\n\n1. Berechnen Sie die Kapazitaet des Kondensators. (6 BE)\n2. Bestimmen Sie die im Kondensator gespeicherte Feldenergie bei der Betriebsspannung. (6 BE)\n3. Berechnen Sie die Tropfenladung, wenn Gewichtskraft und elektrische Kraft im Gleichgewicht sind. (8 BE)\n4. Pruefen Sie mit Material 3, ob die erhaltene Tropfenladung mit einem ganzzahligen Vielfachen der Elementarladung vereinbar ist. (5 BE)",
+      "solutionContent": "1. $C = \\varepsilon_0 \\varepsilon_r A / d = 8.854\\cdot 10^{-12} \\cdot 2.6 \\cdot 0.018 / 0.0035 \\approx 1.18\\cdot 10^{-10}\\,F = 118\\,pF$.  \n   **6 BE**\n\n2. $W = \\frac{1}{2} C U^2 = 0.5 \\cdot 1.18\\cdot 10^{-10} \\cdot 600^2 \\approx 2.12\\cdot 10^{-5}\\,J$.  \n   **6 BE**\n\n3. Feldstaerke: $E = U/d = 600 / 0.0035 \\approx 1.71\\cdot 10^5\\,V/m$.  \n   Gleichgewicht: $qE = mg$ -> $q = mg/E = 2.4\\cdot 10^{-15} \\cdot 9.81 / 1.71\\cdot 10^5 \\approx 1.38\\cdot 10^{-19}\\,C$.  \n   **8 BE**\n\n4. Vergleich mit $e$: $q/e \\approx 1.38\\cdot 10^{-19} / 1.602\\cdot 10^{-19} \\approx 0.86$.  \n   Das Ergebnis liegt in der Größenordnung einer Elementarladung, ist aber nicht exakt ganzzahlig; im Experiment können Modellvereinfachung und Messunsicherheit die Abweichung erklären.  \n   **5 BE**",
+      "scoring": {
+        "maxPoints": 25,
+        "passingPoints": 15,
+        "steps": [
+          {
+            "id": "s1",
+            "points": 6,
+            "description": "Kapazitaet des Plattenkondensators berechnet"
+          },
+          {
+            "id": "s2",
+            "points": 6,
+            "description": "gespeicherte Feldenergie bestimmt"
+          },
+          {
+            "id": "s3",
+            "points": 8,
+            "description": "Tropfenladung aus dem Kraeftegleichgewicht berechnet"
+          },
+          {
+            "id": "s4",
+            "points": 5,
+            "description": "Elementarladungsvergleich fachlich eingeordnet"
+          }
+        ]
+      }
+    },
+    "phase": "Q1",
+    "type": "atomic"
+  },
+  {
+    "id": "841edfdb-5e12-5a37-ab12-552a1d8e92ca",
+    "title": "Elektrostatik und Potenzial",
+    "titleEn": "Electrostatics and Potential",
+    "description": "Die lernende Person kann eine materialgestuetzte Q1-Klausuraufgabe zu Coulomb-Kraft, Feldlinien, Superposition, Spannung und elektrischem Potenzial selbstaendig bearbeiten und fachlich auswerten.",
+    "descriptionEn": "The learner can independently solve and evaluate a material-based Q1 written-test task on Coulomb force, field lines, superposition, voltage, and electric potential.",
+    "weight": 1,
+    "tags": [
+      "GK",
+      "LK",
+      "Practice",
+      "Assessment"
+    ],
+    "contains": [],
+    "requires": [
+      "455c65ca-814a-56ad-918a-013155883c52",
+      "2622bef1-bdbc-504e-b468-b600b2ca3ed8",
+      "9fb1dd85-11b7-4a5a-b124-27fea8d1788e",
+      "e3bce51c-cfeb-4706-b95e-a22b76e7dd73"
+    ],
+    "dimensionTags": {
+      "framework": "hessen-kc-2024-physics",
+      "demandLevel": "AB2",
+      "processCompetencies": [
+        "PK2_MODELLIEREN",
+        "PK3_MATHEMATISIEREN",
+        "PK4_KOMMUNIZIEREN"
+      ],
+      "guidingIdeas": [
+        "LI_FELDER",
+        "LI_ENERGIE"
+      ],
+      "phase": "Q1"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "extendedData": {
+      "treeOrder": 1
+    },
+    "examData": {
+      "reviewStatus": "released",
+      "coveredGoalIds": [
+        "455c65ca-814a-56ad-918a-013155883c52",
+        "1730c01d-8c85-57df-b031-c11e2a0511b1",
+        "2622bef1-bdbc-504e-b468-b600b2ca3ed8",
+        "25998fed-ea4d-4c3e-b606-e965b5d7f290",
+        "f3de5922-dd45-4fb6-87c1-525d1952dd89",
+        "9fb1dd85-11b7-4a5a-b124-27fea8d1788e",
+        "e3bce51c-cfeb-4706-b95e-a22b76e7dd73"
+      ],
+      "coveredStrands": [
+        "LI_FELDER",
+        "LI_ENERGIE"
+      ],
+      "demandLevels": [
+        "AB1",
+        "AB2"
+      ],
+      "taskContent": "**Kontext:**\n\nEin Team entwickelt einen elektrostatischen Sortierkanal für Kunststoffgranulat. Im Vorversuch werden Punktladungen, homogenes Feld und Potenzialmessung kombiniert, um die Trennung unterschiedlicher Koerner abzuschaetzen.\n\n**Material 1 (Punktladungen im Vorfeld):**\n\n- Ladung 1: $Q_1 = +3.0\\,nC$ bei $x = 0.00\\,m$\n- Ladung 2: $Q_2 = +2.0\\,nC$ bei $x = 0.20\\,m$\n- Auswertepunkt $P$ liegt bei $x = 0.10\\,m$\n\n**Material 2 (Sortierkanal als Plattenkondensator):**\n\n- Plattenabstand $d = 8.0\\,mm$\n- Spannung $U = 1.60\\,kV$\n- Ein Korn traegt die Ladung $q = 1.5\\,nC$\n- betrachtete Wegstrecke im Feld: $s = 1.5\\,cm$\n\n**Material 3 (Betriebsgrenze):**\n\n- zulaessige Feldstaerke im Luftspalt: $E_{max} = 2.5 \\cdot 10^5\\,V/m$\n- für sichere Trennung ist eine Arbeit von mindestens $2.0 \\cdot 10^{-8}\\,J$ erforderlich\n\n**Aufgaben:**\n\n1. Berechnen Sie die elektrische Feldstaerke am Punkt $P$ durch beide Punktladungen und geben Sie Richtung sowie Betrag des resultierenden Feldes an. (8 BE)\n2. Bestimmen Sie für Material 2 die Feldstaerke zwischen den Platten und die auf das Korn wirkende Kraft. (7 BE)\n3. Berechnen Sie die im homogenen Feld auf der Strecke $s$ verrichtete elektrische Arbeit sowie die Potenzialdifferenz. (8 BE)\n4. Beurteilen Sie mit Material 3, ob die Anlage innerhalb der Feldgrenze arbeitet und ob die geforderte Trennarbeit erreicht wird. (7 BE)",
+      "solutionContent": "1. Abstand zu beiden Ladungen: $r = 0.10\\,m$.  \n   $E_1 = k \\cdot Q_1 / r^2 = 8.99\\cdot 10^9 \\cdot 3.0\\cdot 10^{-9} / 0.01 \\approx 2697\\,V/m$ nach rechts.  \n   $E_2 = k \\cdot Q_2 / r^2 = 1798\\,V/m$ nach links.  \n   Resultat: $E_{res} \\approx 899\\,V/m$ nach rechts.  \n   **8 BE**\n\n2. Homogenes Feld: $E = U/d = 1600 / 0.008 = 2.0 \\cdot 10^5\\,V/m$.  \n   Kraft: $F = qE = 1.5\\cdot 10^{-9} \\cdot 2.0\\cdot 10^5 = 3.0\\cdot 10^{-4}\\,N$.  \n   **7 BE**\n\n3. Potenzialdifferenz auf $s=0.015\\,m$: $\\Delta V = E s = 2.0\\cdot 10^5 \\cdot 0.015 = 3000\\,V$.  \n   Arbeit: $W = q \\Delta V = 1.5\\cdot 10^{-9} \\cdot 3000 = 4.5\\cdot 10^{-6}\\,J$.  \n   **8 BE**\n\n4. Feldgrenze: $2.0\\cdot 10^5\\,V/m < 2.5\\cdot 10^5\\,V/m$ -> Feldbetrieb zulaessig.  \n   Trennarbeit: $4.5\\cdot 10^{-6}\\,J \\gg 2.0\\cdot 10^{-8}\\,J$ -> die geforderte Arbeit wird deutlich erreicht.  \n   Sinnvolle Zusatzreflexion: reale Verluste durch Luftfeuchte, Randfelder und Ladungsstreuung sind im Modell nicht enthalten.  \n   **7 BE**",
+      "scoring": {
+        "maxPoints": 30,
+        "passingPoints": 18,
+        "steps": [
+          {
+            "id": "s1",
+            "points": 8,
+            "description": "resultierende Feldstaerke zweier Punktladungen berechnet"
+          },
+          {
+            "id": "s2",
+            "points": 7,
+            "description": "homogenes Feld und Kraft auf das Korn bestimmt"
+          },
+          {
+            "id": "s3",
+            "points": 8,
+            "description": "Potenzialdifferenz und elektrische Arbeit berechnet"
+          },
+          {
+            "id": "s4",
+            "points": 7,
+            "description": "Betriebsgrenze und Trennwirkung begründet beurteilt"
+          }
+        ]
+      }
+    },
+    "phase": "Q1",
+    "type": "atomic"
+  },
+  {
+    "id": "8ff2a728-fba3-538e-83e9-69bdd8e1369e",
+    "shortKey": "canonical_physics_sek1_assessment_by_electric_quantities",
+    "title": "Prüfungsaufgabe: Stromstärke und Spannung als Ladungsgrößen deuten",
+    "titleEn": "Assessment Task: Interpret Current and Voltage through Charge",
+    "description": "Die lernende Person kann Stromstärke als Ladung pro Zeit und Spannung als Arbeit pro Ladung berechnen und beide Größen im homogenen elektrischen Feld verknüpfen.",
+    "descriptionEn": "The learner can calculate current as charge per time and voltage as work per charge and link both quantities in a uniform electric field.",
+    "weight": 1,
+    "tags": [
+      "GK",
+      "LK",
+      "Practice",
+      "Assessment",
+      "canonical",
+      "SekI"
+    ],
+    "dimensionTags": {
+      "framework": "canonical-gymnasium-physics",
+      "demandLevel": "AB3",
+      "processCompetencies": [
+        "PK2_MODELLIEREN",
+        "PK3_MATHEMATISIEREN"
+      ],
+      "guidingIdeas": [
+        "LI_FELDER",
+        "LI_ENERGIE"
+      ],
+      "phase": "GLOBAL",
+      "area": "Elektrizitätslehre",
+      "topicCode": "CANONICAL.PHYSICS.SEK1.PRACTICE.BY.ELECTRIC_QUANTITIES"
+    },
+    "requires": [
+      "1730c01d-8c85-57df-b031-c11e2a0511b1"
+    ],
+    "contains": [],
+    "examples": [],
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "extendedData": {
+      "applicabilityFromRequires": true,
+      "applicabilityMappingInheritance": "boundary"
+    },
+    "type": "atomic",
+    "examData": {
+      "reviewStatus": "released",
+      "coveredGoalIds": [
+        "1730c01d-8c85-57df-b031-c11e2a0511b1"
+      ],
+      "coveredStrands": [
+        "LI_FELDER",
+        "LI_ENERGIE"
+      ],
+      "demandLevels": [
+        "AB1",
+        "AB2",
+        "AB3"
+      ],
+      "taskContent": "Durch einen Leiterquerschnitt fließen in 4,0 s insgesamt 12 C Ladung. Die Ladungsträger durchlaufen anschließend eine Spannung von 6,0 V. In einem homogenen Feld mit Plattenabstand 3,0 cm beträgt die Feldstärke 200 V/m.\n\n1. Bestimmen Sie die Stromstärke und erklären Sie die Bedeutung von 1 A in Coulomb pro Sekunde. (5 BE)\n2. Bestimmen Sie die Arbeit, die das elektrische Feld beim Transport von 12 C über 6,0 V überträgt, und deuten Sie U = W/q sprachlich. (5 BE)\n3. Berechnen Sie aus E und d die Plattenspannung. Prüfen Sie die Einheiten und erläutern Sie, unter welcher Modellannahme U = E·d gilt. (5 BE)",
+      "solutionContent": "I = ΔQ/Δt = 3,0 A; 1 A entspricht 1 C/s. Mit U = W/q folgt W = Uq = 72 J. Spannung gibt die übertragene Arbeit je Ladung an. Für das homogene Feld gilt U = E d = 200 V/m · 0,030 m = 6,0 V. Die Beziehung setzt ein homogenes Feld und einen Weg entlang der Feldrichtung voraus.",
+      "scoring": {
+        "maxPoints": 15,
+        "passingPoints": 9,
+        "steps": [
+          {
+            "id": "electric_quantities_1",
+            "points": 5,
+            "description": "Stromstärke als Ladung pro Zeit berechnet und Einheit erklärt"
+          },
+          {
+            "id": "electric_quantities_2",
+            "points": 5,
+            "description": "Elektrische Arbeit aus Spannung und Ladung bestimmt und Spannung gedeutet"
+          },
+          {
+            "id": "electric_quantities_3",
+            "points": 5,
+            "description": "Homogene Feldbeziehung berechnet, einheitengeprüft und eingegrenzt"
+          }
+        ]
+      },
+      "reviewNote": " Aktueller begrenzter AI-Inhaltsentscheid vom15.11.2026: ausschließlich unbelegte Vollclaims bbee4c52-4e95-5529-990f-706aa99316a3 entfernt; Aufgaben-/Lösungs-/Rastertexte, IDs und Punkteschwellen bleiben unverändert. Root-Disposition: curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/stage-plan-k3k6-current-v1/root-review/direct-claim-removal-root-disposition.actual.json. Keine pauschale Neuprüfung übriger historischer Claims und keine Änderung gespeicherter Resultate."
+    }
+  },
+  {
+    "id": "ba29e928-a287-5de7-b3fe-5c8c3731363b",
+    "title": "Magnetfeld, Leiterkraft und Lorentzkraft",
+    "titleEn": "Magnetic Field, Conductor Force, and Lorentz Force",
+    "description": "Die lernende Person kann eine materialgestuetzte Q1-Klausuraufgabe zu Magnetfeldern, Leiterkraft, magnetischer Flussdichte und Lorentzkraft selbstaendig bearbeiten.",
+    "descriptionEn": "The learner can independently solve a material-based Q1 written-test task on magnetic fields, conductor force, magnetic flux density, and Lorentz force.",
+    "weight": 1,
+    "tags": [
+      "GK",
+      "Practice",
+      "Assessment"
+    ],
+    "contains": [],
+    "requires": [
+      "c6355a22-24cf-5d8b-88af-ea11711460fb",
+      "8c9394cb-f54a-508d-9750-4c49e31b3fa9"
+    ],
+    "dimensionTags": {
+      "framework": "hessen-kc-2024-physics",
+      "demandLevel": "AB2",
+      "processCompetencies": [
+        "PK2_MODELLIEREN",
+        "PK3_MATHEMATISIEREN",
+        "PK4_KOMMUNIZIEREN"
+      ],
+      "guidingIdeas": [
+        "LI_FELDER",
+        "LI_BEWEGUNG"
+      ],
+      "phase": "Q1"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "extendedData": {
+      "treeOrder": 6
+    },
+    "examData": {
+      "reviewStatus": "released",
+      "coveredGoalIds": [
+        "c6355a22-24cf-5d8b-88af-ea11711460fb",
+        "8c9394cb-f54a-508d-9750-4c49e31b3fa9"
+      ],
+      "coveredStrands": [
+        "LI_FELDER",
+        "LI_BEWEGUNG"
+      ],
+      "demandLevels": [
+        "AB1",
+        "AB2"
+      ],
+      "taskContent": "**Kontext:**\n\nEin Pruefstand für Elektromotoren vergleicht die magnetische Kraft auf Leiter und die Kreisbahn schneller Elektronen im selben Magnetfeld.\n\n**Material 1 (Messung der Flussdichte):**\n\n| Strom $I$ in A | 1.0 | 1.5 | 2.0 | 2.5 |\n|---|---:|---:|---:|---:|\n| $B$ in mT | 12 | 18 | 24 | 30 |\n\n**Material 2 (Leiter im Feld):**\n\n- Leiterlaenge im Feld $l = 8.0\\,cm$\n- Strom im Leiter $I_L = 3.0\\,A$\n- Magnetfeld aus Material 1 für $I = 2.0\\,A$\n\n**Material 3 (Elektronenbahn):**\n\n- Elektronengeschwindigkeit $v = 4.0 \\cdot 10^6\\,m/s$\n- Magnetfeld wie in Material 2\n- Elektronenmasse $m_e = 9.11 \\cdot 10^{-31}\\,kg$\n- Elementarladung $e = 1.602 \\cdot 10^{-19}\\,C$\n\n**Aufgaben:**\n\n1. Bestimmen Sie aus Material 1 eine lineare Beziehung $B(I)$. (5 BE)\n2. Berechnen Sie die Kraft auf den Leiter aus Material 2. (6 BE)\n3. Bestimmen Sie für Material 3 den Radius der Kreisbahn. (8 BE)\n4. Erklären Sie qualitativ den Unterschied zwischen Leiterkraft und Lorentzkraft auf ein einzelnes Elektron. (6 BE)",
+      "solutionContent": "1. Die Daten sind exakt proportional: $B(I) = 12\\,mT/A \\cdot I$.  \n   In SI-Einheiten: $B(I) = 0.012\\,T/A \\cdot I$.  \n   **5 BE**\n\n2. Bei $I=2.0\\,A$ gilt $B = 24\\,mT = 0.024\\,T$.  \n   Leiterkraft: $F = B I_L l = 0.024 \\cdot 3.0 \\cdot 0.080 = 5.76\\cdot 10^{-3}\\,N$.  \n   **6 BE**\n\n3. Lorentzkraft liefert Zentripetalkraft: $e v B = m_e v^2 / r$ -> $r = m_e v /(eB)$.  \n   $r = 9.11\\cdot 10^{-31} \\cdot 4.0\\cdot 10^6 / (1.602\\cdot 10^{-19} \\cdot 0.024) \\approx 9.48\\cdot 10^{-4}\\,m = 0.95\\,mm$.  \n   **8 BE**\n\n4. Leiterkraft wirkt makroskopisch auf viele bewegte Ladungen im stromdurchflossenen Leiter; die Lorentzkraft beschreibt die Kraft auf eine einzelne Ladung.  \n   Beide beruhen auf demselben magnetischen Wirkprinzip, unterscheiden sich aber im betrachteten System und in der Modellierung.  \n   **6 BE**",
+      "scoring": {
+        "maxPoints": 25,
+        "passingPoints": 15,
+        "steps": [
+          {
+            "id": "s1",
+            "points": 5,
+            "description": "lineare Feld-Strom-Beziehung bestimmt"
+          },
+          {
+            "id": "s2",
+            "points": 6,
+            "description": "Leiterkraft im homogenen Magnetfeld berechnet"
+          },
+          {
+            "id": "s3",
+            "points": 8,
+            "description": "Kreisbahnradius eines Elektrons berechnet"
+          },
+          {
+            "id": "s4",
+            "points": 6,
+            "description": "Leiterkraft und Lorentzkraft fachlich abgegrenzt"
+          }
+        ]
+      }
+    },
+    "phase": "Q1",
+    "type": "atomic"
+  },
+  {
+    "id": "d8442d03-8b7e-54b7-9d9a-dc31ce541daa",
+    "title": "Magnetische Messverfahren und Technik",
+    "titleEn": "Magnetic Measurement Methods and Technology",
+    "description": "Die lernende Person kann eine LK-orientierte Q1-Klausuraufgabe zu Drehmoment auf Dipole, Gauß-Verfahren, Hall-Effekt und MRT selbstaendig bearbeiten und beurteilen.",
+    "descriptionEn": "The learner can independently solve and assess an advanced-course-oriented Q1 written-test task on torque on dipoles, the Gauss method, the Hall effect, and MRI.",
+    "weight": 1,
+    "tags": [
+      "LK",
+      "Practice",
+      "Assessment"
+    ],
+    "contains": [],
+    "requires": [
+      "58db62d4-458f-5e2d-9ca0-968e09f4944b",
+      "b39ae8fb-4358-5866-8adf-3d5365368eeb",
+      "52bdabb2-d9a1-56e6-bccf-ff58f299c739"
+    ],
+    "dimensionTags": {
+      "framework": "hessen-kc-2024-physics",
+      "demandLevel": "AB3",
+      "processCompetencies": [
+        "PK1_EXPERIMENTIEREN",
+        "PK2_MODELLIEREN",
+        "PK3_MATHEMATISIEREN",
+        "PK5_BEWERTEN"
+      ],
+      "guidingIdeas": [
+        "LI_FELDER",
+        "LI_TECHNIK",
+        "LI_MATERIE"
+      ],
+      "phase": "Q1"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "extendedData": {
+      "treeOrder": 7
+    },
+    "examData": {
+      "reviewStatus": "released",
+      "coveredGoalIds": [
+        "d02438ba-0cc9-5993-831e-5e44d35e32c4",
+        "58db62d4-458f-5e2d-9ca0-968e09f4944b",
+        "b39ae8fb-4358-5866-8adf-3d5365368eeb",
+        "52bdabb2-d9a1-56e6-bccf-ff58f299c739"
+      ],
+      "coveredStrands": [
+        "LI_FELDER",
+        "LI_TECHNIK",
+        "LI_MATERIE"
+      ],
+      "demandLevels": [
+        "AB1",
+        "AB2",
+        "AB3"
+      ],
+      "taskContent": "**Kontext:**\n\nEin Medizintechnik-Team bewertet magnetische Messverfahren für eine Bildgebungseinheit. Neben der Kalibrierung eines Hall-Sensors sollen Drehmoment und Feldhomogenitaet im MRT-Messraum abgeschaetzt werden.\n\n**Material 1 (Hall-Sensor):**\n\n| $B$ in mT | 20 | 40 | 60 | 80 |\n|---|---:|---:|---:|---:|\n| $U_H$ in mV | 3.1 | 6.3 | 9.4 | 12.7 |\n\n**Material 2 (Dipol im Feld):**\n\n- magnetisches Dipolmoment $\\mu = 0.18\\,A m^2$\n- Magnetfeld $B = 0.60\\,T$\n- Winkel zwischen Dipol und Feld: $\\varphi = 35^\\circ$\n\n**Material 3 (MRT-Bewertung):**\n\n- in einem Messfenster von $40\\,cm$ soll die Feldschwankung unter $2\\%$ bleiben\n- gemessene Flussdichten: $0.588\\,T$, $0.600\\,T$, $0.612\\,T$\n\n**Aufgaben:**\n\n1. Bestimmen Sie aus Material 1 eine lineare Kalibrierbeziehung zwischen Hall-Spannung und Flussdichte. (8 BE)\n2. Ein unbekanntes Messsignal betraegt $U_H = 10.5\\,mV$. Bestimmen Sie die zugehoerige Flussdichte. (5 BE)\n3. Berechnen Sie mit Material 2 das Drehmoment auf den Dipol. (7 BE)\n4. Beurteilen Sie mit Material 3, ob die Feldhomogenitaet für die Anwendung ausreicht. (5 BE)\n5. Nennen Sie zwei technische Gruende, warum reale Magnetmessungen von der Idealisierung abweichen können. (5 BE)",
+      "solutionContent": "1. Naehernd linear: Steigung etwa $0.158\\,mV/mT$ bzw. $6.33\\,mT/mV$.  \n   Eine passende Kalibrierfunktion ist z. B. $B(U_H) \\approx 6.33\\,mT/mV \\cdot U_H$.  \n   **8 BE**\n\n2. $B \\approx 6.33 \\cdot 10.5\\,mT \\approx 66.5\\,mT$.  \n   **5 BE**\n\n3. Drehmoment: $M = \\mu B \\sin\\varphi = 0.18 \\cdot 0.60 \\cdot \\sin 35^\\circ \\approx 0.062\\,N m$.  \n   **7 BE**\n\n4. Mittelwert der Flussdichten: $0.600\\,T$.  \n   Abweichung nach oben/unten: $0.012\\,T = 2.0\\%$ vom Mittelwert.  \n   Die Homogenitaet liegt damit gerade an der Grenzlinie; im strengen Sinne ist sie nur knapp ausreichend und sollte weiter beobachtet werden.  \n   **5 BE**\n\n5. Beispiele: Temperaturdrift, mechanische Toleranzen, Streufelder, Sensoroffset, nichtlineare Magnetisierung.  \n   **5 BE**",
+      "scoring": {
+        "maxPoints": 30,
+        "passingPoints": 18,
+        "steps": [
+          {
+            "id": "s1",
+            "points": 8,
+            "description": "Hall-Kalibrierung aus Messdaten bestimmt"
+          },
+          {
+            "id": "s2",
+            "points": 5,
+            "description": "unbekannte Flussdichte aus Hall-Spannung ermittelt"
+          },
+          {
+            "id": "s3",
+            "points": 7,
+            "description": "Drehmoment auf magnetischen Dipol berechnet"
+          },
+          {
+            "id": "s4",
+            "points": 5,
+            "description": "Feldhomogenitaet fachlich bewertet"
+          },
+          {
+            "id": "s5",
+            "points": 5,
+            "description": "technische Abweichungsursachen benannt"
+          }
+        ]
+      }
+    },
+    "phase": "Q1",
+    "type": "atomic"
+  },
+  {
+    "id": "db5f4121-d4b1-5006-b2da-6e76aac72bf5",
+    "title": "Elektronenablenkung im elektrischen Feld",
+    "titleEn": "Electron Deflection in Electric Fields",
+    "description": "Die lernende Person kann eine materialgestuetzte Q1-Klausuraufgabe zur Elektronenablenkung, zum Oszilloskop und zur Deutung von Teilchenbahnen im elektrischen Feld selbstaendig bearbeiten.",
+    "descriptionEn": "The learner can independently solve a material-based Q1 written-test task on electron deflection, oscilloscopes, and the interpretation of particle trajectories in electric fields.",
+    "weight": 1,
+    "tags": [
+      "GK",
+      "Practice",
+      "Assessment"
+    ],
+    "contains": [],
+    "requires": [
+      "5fda8623-69e0-5503-9c6d-86d054a8cf91",
+      "0f803c37-8191-5a07-9b31-9603ded98fe2"
+    ],
+    "dimensionTags": {
+      "framework": "hessen-kc-2024-physics",
+      "demandLevel": "AB2",
+      "processCompetencies": [
+        "PK1_EXPERIMENTIEREN",
+        "PK2_MODELLIEREN",
+        "PK3_MATHEMATISIEREN"
+      ],
+      "guidingIdeas": [
+        "LI_FELDER",
+        "LI_TECHNIK"
+      ],
+      "phase": "Q1"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "extendedData": {
+      "treeOrder": 4
+    },
+    "examData": {
+      "reviewStatus": "released",
+      "coveredGoalIds": [
+        "5fda8623-69e0-5503-9c6d-86d054a8cf91",
+        "0f803c37-8191-5a07-9b31-9603ded98fe2"
+      ],
+      "coveredStrands": [
+        "LI_FELDER",
+        "LI_TECHNIK",
+        "LI_MATERIE"
+      ],
+      "demandLevels": [
+        "AB1",
+        "AB2"
+      ],
+      "taskContent": "**Kontext:**\n\nEin altes Kathodenstrahl-Oszilloskop wird für einen Museumsworkshop in Betrieb genommen. Ein Elektronenstrahl wird beschleunigt, in einem Plattenkondensator abgelenkt und am Schirm ausgewertet.\n\n**Material 1 (Beschleunigung):**\n\n- Beschleunigungsspannung $U_B = 1.8\\,kV$\n- Elektronenmasse $m_e = 9.11 \\cdot 10^{-31}\\,kg$\n- Elementarladung $e = 1.602 \\cdot 10^{-19}\\,C$\n\n**Material 2 (Ablenkplatten):**\n\n- Plattenlaenge $l = 5.0\\,cm$\n- Plattenabstand $d = 2.0\\,cm$\n- Ablenkspannung $U_A = 120\\,V$\n\n**Material 3 (Drift zum Schirm):**\n\n- Abstand vom Plattenende bis zum Schirm $L = 12.0\\,cm$\n- eine Schirmabweichung von mindestens $1.5\\,cm$ gilt als gut sichtbar\n\n**Aufgaben:**\n\n1. Berechnen Sie die Geschwindigkeit der Elektronen nach der Beschleunigung mit $eU_B = \\frac12 m_e v^2$. (6 BE)\n2. Bestimmen Sie die Feldstaerke zwischen den Ablenkplatten sowie die senkrechte Beschleunigung des Elektronenstrahls. (6 BE)\n3. Berechnen Sie die vertikale Ablenkung beim Verlassen der Platten und die gesamte Schirmablenkung. (8 BE)\n4. Beurteilen Sie mit Material 3, ob die Ablenkung gut sichtbar ist. Erklären Sie ausserdem qualitativ, wie sich eine Verdopplung von $U_A$ auf das Ergebnis auswirkt. (5 BE)",
+      "solutionContent": "1. $v = \\sqrt{2 e U_B / m_e} = \\sqrt{2 \\cdot 1.602\\cdot 10^{-19} \\cdot 1800 / 9.11\\cdot 10^{-31}} \\approx 2.52\\cdot 10^7\\,m/s$.  \n   **6 BE**\n\n2. Feldstaerke: $E = U_A/d = 120 / 0.020 = 6.0\\cdot 10^3\\,V/m$.  \n   Beschleunigung: $a_y = eE/m_e = 1.05\\cdot 10^{15}\\,m/s^2$.  \n   **6 BE**\n\n3. Aufenthaltszeit in den Platten: $t_1 = l/v = 0.050 / 2.52\\cdot 10^7 \\approx 1.98\\cdot 10^{-9}\\,s$.  \n   Ablenkung in den Platten: $y_1 = \\frac12 a_y t_1^2 \\approx 2.06\\cdot 10^{-3}\\,m = 2.1\\,mm$.  \n   Vertikalgeschwindigkeit am Ende: $v_y = a_y t_1 \\approx 2.07\\cdot 10^6\\,m/s$.  \n   Driftzeit: $t_2 = L/v = 0.120 / 2.52\\cdot 10^7 \\approx 4.76\\cdot 10^{-9}\\,s$.  \n   Zusatzablenkung: $y_2 = v_y t_2 \\approx 9.86\\cdot 10^{-3}\\,m = 9.9\\,mm$.  \n   Gesamt: $y \\approx 1.19\\,cm$.  \n   **8 BE**\n\n4. $1.19\\,cm < 1.5\\,cm$ -> die Ablenkung ist sichtbar, aber unterhalb des Zielwerts für gute Sichtbarkeit.  \n   Bei Verdopplung von $U_A$ verdoppeln sich Feldstaerke und Beschleunigung; die Ablenkung waechst in guter Naeherung ebenfalls um den Faktor 2.  \n   **5 BE**",
+      "scoring": {
+        "maxPoints": 25,
+        "passingPoints": 15,
+        "steps": [
+          {
+            "id": "s1",
+            "points": 6,
+            "description": "Elektronengeschwindigkeit aus Beschleunigung berechnet"
+          },
+          {
+            "id": "s2",
+            "points": 6,
+            "description": "Feldstaerke und Querbeschleunigung bestimmt"
+          },
+          {
+            "id": "s3",
+            "points": 8,
+            "description": "Ablenkung in Platten und am Schirm berechnet"
+          },
+          {
+            "id": "s4",
+            "points": 5,
+            "description": "Sichtbarkeit und Einfluss größerer Ablenkspannung beurteilt"
+          }
+        ]
+      }
+    },
+    "phase": "Q1",
+    "type": "atomic"
+  }
+]

@@ -133,7 +133,7 @@ Vorfahren- und Nachfahrenbeziehungen ergeben sich über Pfade aus einer oder meh
 
 *EN: `requires`* — siehe [Graph-Definition](skill-graph/graph-definition.de.md)
 
-Die modellierte Voraussetzungsrelation $R$: $(g, p)$ bedeutet, dass Lernziel $g$ die Voraussetzung $p$ unmittelbar benötigt. Der Pfeil zeigt vom abhängigen Ziel zur Voraussetzung; $p$ muss sitzen, bevor $g$ bearbeitet wird. Die Relation muss azyklisch sein. Im verbindlichen Zielzustand verlaufen sämtliche modellierten `requires`-Kanten zwischen **atomaren** Zielen ($R \subseteq A \times A$); bestehende Voraussetzungen auf Clustern werden während der Migration über `contains`-Vererbung und atomare Expansion ausgewertet.
+Die modellierte Voraussetzungsrelation $R$: $(g, p)$ bedeutet, dass Lernziel $g$ die Voraussetzung $p$ unmittelbar benötigt. Der Pfeil zeigt vom abhängigen Ziel zur Voraussetzung; $p$ muss sitzen, bevor $g$ bearbeitet wird. Die Relation muss azyklisch sein. Im verbindlichen Zielzustand verlaufen sämtliche modellierten `requires`-Kanten zwischen **atomaren** Zielen ($R \subseteq A \times A$), und keine `requires`-Kante zeigt auf ein Prüfungsziel; bestehende Voraussetzungen auf Clustern werden während der Migration über `contains`-Vererbung und atomare Expansion ausgewertet.
 
 Sowohl `contains` als auch `requires` speichern direkte Kanten; abgeleitete Beziehungen werden berechnet und nicht als zusätzliche Kantenarten modelliert.
 
@@ -196,57 +196,57 @@ Die Eigenschaft, dass jedes routenrelevante atomare Lernziel auf mindestens eine
 
 ### Planeinheit
 
-*EN: plan unit* — siehe [Einheitenkonzept](skill-graph/learning-unit-wiring-concept-2026-11-14.md)
+*EN: Plan unit* — siehe [Lerneinheiten](skill-graph/learning-units.de.md) und [Sichtenprojektion](skill-graph/view-projection-and-goal-placement.de.md)
 
-Erklärte Einheit im gemeinsamen Plan eines Landes und Dauermodells über die gewählten Fächer, etwa Stufe, Jahrgang oder Phase; ordnet Lernen und ist keine neue Kompetenz.
+Erklärte Einheit im gemeinsamen Plan eines Landes und Dauermodells über die gewählten Fächer (`SekI`, `SekII` mit `SekII after SekI`, darunter Jahrgänge bzw. `E` und `Q1`–`Q4`); ordnet den Lernweg nach E1–E4, erzeugt keine neue Kompetenz und erkennt selbst nichts implizit an.
 
 ### Fachliche Einheit
 
-*EN: subject unit* — siehe [Einheitenkonzept](skill-graph/learning-unit-wiring-concept-2026-11-14.md)
+*EN: Subject unit* — siehe [Lerneinheiten](skill-graph/learning-units.de.md)
 
-Erklärter Cluster der kanonischen Fachlandschaft mit Lernversprechen; gilt in allen Ländern. Eine Einheit mit Prüfungen belegt zusätzlich die selbstständige Anwendung ihrer eigenen Inhaltsziele.
+Erklärter Cluster der kanonischen Fachlandschaft mit Lernversprechen und Revision; gilt in allen Bundesländern (fachliche Blatteinheiten liegen in allen 16 Ländern ungeteilt in einer Planeinheit). Eine **Einheit mit Prüfungen** (mit eigenen Prüfungen und gültigen vollständigen `coverageReviews`) belegt zusätzlich die selbstständige Anwendung ihrer eigenen Inhaltsziele nach R1–R5.
 
-### after
+### `after`
 
-*EN: after* — siehe [Einheitenkonzept](skill-graph/learning-unit-wiring-concept-2026-11-14.md)
+*EN: `after`* — siehe [Einheitsordnung](skill-graph/learning-unit-progression.de.md)
 
-Erklärte Reihenfolge zwischen Geschwistereinheiten: die vorausgehende Einheit ist im vorgesehenen Lernfluss vollständig abgeschlossen, bevor die andere beginnt. Vererbt Ordnung, keinen Bedarf; keine Sperre, Mastery oder Umfangserweiterung.
+Erklärte Reihenfolge zwischen Geschwistereinheiten derselben Elterneinheit: Die vorausgehende Einheit ist im vorgesehenen Lernfluss vollständig erledigt, bevor die nachfolgende beginnt. `after` vererbt Reihenfolge statt Bedarf, erzeugt keine technische Zugangssperre, schreibt keine Mastery und erweitert keinen Wissenskontext.
 
 ### Rückgriff
 
-*EN: backflow* — siehe [Einheitenkonzept](skill-graph/learning-unit-wiring-concept-2026-11-14.md)
+*EN: Backflow* — siehe [Einheitsordnung](skill-graph/learning-unit-progression.de.md)
 
-Ein Ziel einer früheren Planeinheit braucht ein Ziel einer späteren, direkt oder transitiv. Das ist ein E2-Befund, auch bei Vorbereitung; Darstellung und Fokus dürfen ihn nicht verdecken.
+Ein Ziel einer früheren Einheit oder Planeinheit setzt direkt oder transitiv ein Ziel einer späteren voraus. Das verletzt E2/E3 (auch bei Vorbereitung); Darstellung, Lernkarte und Fokus dürfen Rückgriffe niemals ausblenden.
 
 ### Vorbereitung
 
-*EN: preparation* — siehe [Einheitenkonzept](skill-graph/learning-unit-wiring-concept-2026-11-14.md)
+*EN: Preparation* — siehe [Kontext und Sichten](skill-graph/context-and-views.de.md)
 
-Notwendiges Atom außerhalb der geführten Ausgangsziele erhält im geschlossenen persönlichen Umfang einen abgeleiteten Lernplatz am frühesten tatsächlichen Bedarf. Begründete frühere Vorbereitung eines geführten Ziels bleibt ausdrücklich gekennzeichnet; die Quellenzuordnung bleibt erhalten.
+Ein notwendiges Atom außerhalb der im Landesplan geführten Ausgangsziele erhält im geschlossenen persönlichen Umfang $L$ deterministisch einen abgeleiteten Lernplatz am **frühesten tatsächlichen Bedarf**. Eine didaktisch begründete frühere Vorbereitung eines geführten Ziels bleibt ausdrücklich gekennzeichnet (`reviewedPreparation`), ohne die amtliche Quellenzuordnung zu überschreiben.
 
 ### Zusatzbedarf
 
-*EN: additional demand* — siehe [Einheitenkonzept](skill-graph/learning-unit-wiring-concept-2026-11-14.md)
+*EN: Additional demand* — siehe [Kontext und Sichten](skill-graph/context-and-views.de.md)
 
-Notwendige Ziele außerhalb der gewählten fachlichen Ausgangsziele. Nur diese Atome werden ergänzt, unabhängig von Mastery; Anzeige nach Einheiten fügt keine ganze fremde Einheit hinzu.
+Notwendige Voraussetzungsatome in $L$ außerhalb der gewählten fachlichen Ausgangsziele $S$. Nur diese tatsächlich benötigten Atome werden ergänzt, unabhängig vom aktuellen Mastery-Stand; eine Anzeige nach Einheiten zieht niemals unbenötigte Geschwister einer fremden Einheit mit.
 
-### geführt in / steht in
+### Geführt in / steht in
 
-*EN: carried in / placed in* — siehe [Einheitenkonzept](skill-graph/learning-unit-wiring-concept-2026-11-14.md)
+*EN: Carried in / placed in* — siehe [Kontext und Sichten](skill-graph/context-and-views.de.md)
 
-Geführt in bezeichnet die amtlich belegte curriculare Zuordnung; steht in den didaktischen Lernplatz. Frühere Vorbereitung oder kanonischer Standard erzeugt keinen Landesbeleg und schreibt kein Lernergebnis.
+*Geführt in* bezeichnet die amtlich belegte curriculare Quellenzuordnung (`officialSource`); *steht in* bezeichnet den didaktischen Lernplatz in einer Planeinheit. Frühere Vorbereitung oder eine vorläufige kanonische Standardmarke erzeugt keinen Landesbeleg und schreibt kein Lernergebnis.
 
 ### Standardzuordnung
 
-*EN: default assignment* — siehe [Einheitenkonzept](skill-graph/learning-unit-wiring-concept-2026-11-14.md)
+*EN: Default assignment* — siehe [Kontext und Sichten](skill-graph/context-and-views.de.md)
 
-Ausdrücklich vorläufige didaktische Einordnung aus einer kanonischen Marke wie dimensionTags.phase, wenn Landesbeleg fehlt. Ersetzt weder Quellenbeleg noch Abdeckungsprüfung und überschreibt keine maßgebliche Sicht.
+Ausdrücklich als vorläufig gekennzeichnete didaktische Einordnung (`canonicalDefault`) aus einer kanonischen Marke wie `dimensionTags.phase`, solange ein amtlicher Landesbeleg fehlt. Ersetzt weder Quellenbeleg noch Abdeckungsprüfung und überschreibt keine maßgebliche Sicht.
 
 ### Prüfungslücke
 
-*EN: assessment gap* — siehe [Einheitenkonzept](skill-graph/learning-unit-wiring-concept-2026-11-14.md)
+*EN: Assessment gap* — siehe [Implizite Beherrschung](skill-graph/assessment-gated-completion.de.md)
 
-Ein Inhaltsziel ohne geeignete geprüfte Aufgaben- und Rasterdeckung bleibt ein nicht bestandener Befund. Reparatur liefert echte Prüfung und Review, niemals fiktive Voraussetzungen oder gelockerte Qualitätsgates.
+Ein eigenes Inhaltsziel einer Einheit mit Prüfungen ohne geeignete geprüfte Aufgaben- und Rasterabdeckung bleibt ein nicht bestandener Befund (R1/R2). Die Reparatur liefert eine tragfähige Prüfung samt unabhängigem Review, niemals fiktive Voraussetzungen oder gelockerte Qualitätsgates.
 
 <a id="sec-node-types"></a>
 ## 3. Knotentypen (Lernmodi)
@@ -263,13 +263,13 @@ Der Standardtyp: begriffliche oder prozedurale Kompetenz, die im Lerndialog erar
 
 *EN: Memorize*
 
-Ein Spaced-Repetition-Ziel für Fakten, Vokabeln, Notation oder ausgewählte Formeln. Es gilt erst dann als gemeistert, wenn keine Pflichtkarte fällig ist **und** jede Pflichtkarte einen ungeholfenen Abruftest (*Verified Recall*) bestanden hat.
+Ein Spaced-Repetition-Ziel für Fakten, Vokabeln, Notation oder ausgewählte Formeln. Der kontrollierte, ungeholfene Abruftest (*Verified Recall*) über **alle Pflichtkarten** eines vollständig aufgelösten Decks begründet den dauerhaften Zielabschluss; spätere SRS-Fälligkeiten entziehen eine erreichte Ziel-Mastery nicht.
 
 ### Selbstständig Probleme lösen / Prüfungsknoten (`Exam`)
 
 *EN: Exam*
 
-Ein Ziel mit `examData`: eine eigenständig zu bearbeitende Prüfungs- oder Übungsaufgabe samt Musterlösung und Bewertungsschema. `requires` steuert die Erreichbarkeit und ermöglicht gezieltes Nacharbeiten nach Fehlversuchen.
+Ein Ziel mit `examData`: eine eigenständig zu bearbeitende Prüfungs- oder Übungsaufgabe samt Musterlösung und Bewertungsschema. Im Zielmodell zeigt keine `requires`-Kante auf ein `Exam`-Ziel (Prüfungen sind Endpunkte von Voraussetzungspfaden). Eigene Anerkennungsprüfungen erklärter **Einheiten mit Prüfungen** (`coverageReviews`) belegen nach R1–R5 die selbstständige Anwendung eigener Inhaltsziele; freie Übungsaufgaben und Abiturklausuren in prüfungsfreien äußeren Einheiten sind regulär wählbar, lösen aber keine implizite Anerkennung aus.
 
 ### `examData` und Bewertung
 
@@ -309,30 +309,30 @@ SkillPilot trennt fünf Ebenen, die in älteren Bestandsgraphen teilweise noch v
 | Schicht | Inhalt | Beispiel |
 | --- | --- | --- |
 | Zielschicht (*Goal layer*) | überprüfbare Kompetenzen und fachliche Cluster | „lineare Funktionen verknüpfen“ |
-| Programmschicht (*Program layer*) | strukturelle Einheiten und Lerneinheiten | `Jahrgang 8`, `E-Phase`, Modul, Kursprofil, Prüfung, Lerneinheit |
-| Platzierungsschicht (*Placement layer*) | Zuordnungen von Zielen zu Programmeinheiten, auch das Eigentum von Lerneinheiten | „dieses Ziel gehört in Q1“ |
+| Einheits- & Programmschicht (*Unit & program layer*) | kanonische Einheits-Cluster, gemeinsame Landesplaneinheiten sowie `programUnits` | `SekI`/`SekII`, `Jahrgang 8`, `Q1`, fachliche Einheit |
+| Platzierungsschicht (*Placement layer*) | Landesplan-Verortung (*geführt in* vs. *steht in*) sowie `goalPlacements` | „geführt in Q1, vorbereitet am frühesten Bedarf“ |
 | Kompetenzachsen (*Competency-axis layer*) | Taxonomieeinträge | `K1 Mathematisch argumentieren` |
-| Kompositionssicht (*Composition-view layer*) | kontextspezifische Lernbäume | `DE-BY / Gymnasium / SekII / Mathematik / LK` |
+| Projektions- & Kartenschicht (*Projection & map layer*) | Lernzielbaum und Lernkarte aus Landesplänen / `.view.json` | `DE-BY / Gymnasium / G9 / SekII / Mathematik / LK` |
 
 ### Programmeinheit
 
 *EN: Program unit* — siehe [View Projection and Goal Placement](skill-graph/view-projection-and-goal-placement.de.md)
 
-Ein expliziter Strukturcontainer (Jahrgang, Halbjahr, Modul, Phase, Kursprofil, Prüfungsabschnitt), der über `parentUnitId` und `order` einen geordneten Baum bildet. Ein fachliches Lernziel darf nicht als Ersatz für eine Programmeinheit zweckentfremdet werden. Ein `programUnits`-Eintrag der Art `learningUnit` deklariert statt eines Strukturcontainers eine Lerneinheit (siehe unten).
+Ein expliziter organisatorischer Strukturcontainer (Jahrgang, Halbjahr, Modul, Phase, Kursprofil, Prüfungsabschnitt), der über `parentUnitId` und `order` einen geordneten Baum bildet. Ein fachliches Lernziel darf nicht als Ersatz für eine Programmeinheit zweckentfremdet werden. Im Kompatibilitätsvertrag 1.2 deklariert ein `programUnits`-Eintrag der Art `learningUnit` übergangsweise eine Lerneinheit, bevor fachliche Einheiten nach `F8` als erklärte Cluster geführt werden.
 
 ### Lerneinheit (`LearningUnit`)
 
-*EN: Learning unit* — siehe [Lerneinheiten](skill-graph/learning-units.de.md) und [Optionale Planung (§12)](skill-graph/planning-and-budget.de.md)
+*EN: Learning unit* — siehe [Lerneinheiten](skill-graph/learning-units.de.md) und [Einheitsordnung (§11.5)](skill-graph/learning-unit-progression.de.md)
 
-Ein rekursiv aufgebautes pädagogisches Ganzes mit explizitem Lernversprechen, motivierendem Einstieg, zugehörigen Zielen oder Untereinheiten und geprüfter Abschlussregel. Ein Jahrgang, Halbjahr oder bloßer Navigationscluster wird nicht allein durch Gruppierung zur Lerneinheit. Seit der Entscheidung des Product Owners vom 12. November 2026 wird eine Lerneinheit in der Platzierungsschicht als `programUnits`-Eintrag der Art `learningUnit` mit Lernversprechen und Revision deklariert; sie besitzt atomare Ziele über `goalPlacements` der Relation `own` und nennt über `parentUnitId` die Einheit, die sie als Kind verlangt ([Feldreferenz](../dev/landscape-json-field-reference.de.md)).
+Ein rekursiv aufgebautes pädagogisches Ganzes im dreistufigen Modell **Cluster $\to$ Einheit $\to$ Einheit mit Prüfungen**. Im verbindlichen Zielmodell wird eine fachliche Einheit als kanonischer Cluster mit Lernversprechen, `revision`, Geschwisterfolge `after` und optionalen `coverageReviews` erklärt; eigene Ziele (`Own(U)`) und direkte Untereinheiten leiten sich aus `contains` ab, und Blatteinheiten bleiben in allen 16 Bundesländern ungeteilt in einer Planeinheit. Bis zur Migration (`F8`–`F11`) nutzen die drei bestehenden kanonischen Einheiten den Kompatibilitätsvertrag 1.2 (`programUnits` der Art `learningUnit` mit `own`-Platzierungen und `parentUnitId`; siehe [Feldreferenz](../dev/landscape-json-field-reference.de.md)).
 
-Jedes Ziel besitzt in der aufgelösten Einheitenhierarchie genau einen direkten Erwerbseigentümer; übergeordnete Einheiten aggregieren ihre Nachfahren. Der Abschluss folgt aus Pflichtkindern und eigenen Zielpflichten ohne gesondert gespeichertes Einheits-Mastery-Ergebnis. Eine offene Elternprüfung öffnet bereits erreichte Kindkompetenzen nicht wieder, und ein bestandener Elterntest ersetzt niemals geschützte Kindprüfungen oder Memorierkarten. Wirksame Kompetenz bleibt global, und einzelne Anerkennungen können dem vollständigen Einheitsabschluss vorausgehen; tragfähig ist eine solche Anerkennung nur in Einheiten, die die Gültigkeitsregeln R1–R5 vom 11. November 2026 erfüllen ([Graph-Definition §13.3](skill-graph/assessment-gated-completion.de.md#sec-why-graph-not-enough)). Dieses weiterentwickelte Konzept befindet sich noch in der Umsetzung; siehe auch [Einheitsfolge](skill-graph/learning-unit-progression.de.md).
+Jede Einheit erfüllt die Ordnungsregeln **E1–E4**, ohne über `after` eine technische Zugangssperre aufzubauen. Der Abschluss folgt aus Untereinheiten und eigenen Zielpflichten ohne gespeicherte Einheits-Mastery. Implizite Anerkennung eigener Inhaltsziele gilt ausschließlich in erklärten **Einheiten mit Prüfungen** (mit eigenen Prüfungen und gültigen vollständigen `coverageReviews`), die R1–R5 erfüllen ([Graph-Definition §13.3](skill-graph/assessment-gated-completion.de.md#sec-why-graph-not-enough)); die Laufzeitumsetzung (`F12`/`F13`) steht noch aus.
 
 ### Zielplatzierung (`Goal placement`)
 
 *EN: Goal placement* — siehe [View Projection and Goal Placement](skill-graph/view-projection-and-goal-placement.de.md)
 
-Ein Eintrag, der ein unverändertes Lernziel unter einem geprüften Kontext an eine Programmeinheit anbindet (`primary`, `secondary`, `assessed`). Eine Platzierung hängt den fachlichen `contains`-Baum niemals um und erzeugt kein doppeltes Vorkommen im Standardbaum. Die Relation `own` hält ohne Kontext fest, dass eine Lerneinheit ein atomares Ziel direkt besitzt; sie hängt nichts in den Programmbaum ein.
+Ein Eintrag, der ein unverändertes Lernziel unter einem geprüften Kontext an eine Programmeinheit anbindet (`primary`, `secondary`, `assessed`). Eine Platzierung hängt den fachlichen `contains`-Baum niemals um und erzeugt kein doppeltes Vorkommen im Standardbaum. Im Kompatibilitätsvertrag 1.2 hält `own` vorläufig das direkte Eigentum einer Lerneinheit fest, ohne etwas in den Programmbaum einzuhängen.
 
 ### Kompetenzachse
 
@@ -385,7 +385,7 @@ Die kleine Menge kontextueller Eingrenzungen vor der Inhaltsnavigation: Schulfor
 
 *EN: Resolved scope* — siehe [View Projection and Goal Placement](skill-graph/view-projection-and-goal-placement.de.md)
 
-Eine vollständig bestimmte Kombination wie `DE-HE / Gymnasium / SekII / Mathematik / LK`. Standardbäume, Einmalvorkommen und Abdeckungsprüfungen beziehen sich stets auf genau einen aufgelösten Kontext.
+Eine vollständig bestimmte Kombination wie `DE-HE / Gymnasium / G9 / SekII / Mathematik / LK`. Standardbäume, Einmalvorkommen und Abdeckungsprüfungen beziehen sich stets auf genau einen aufgelösten Kontext.
 
 ### Standardbaum (`Default tree`)
 
@@ -397,13 +397,19 @@ Der eindeutige Baum, den Lernende für einen aufgelösten Kontext sehen. Jede si
 
 *EN: Content tree, program tree, competency view* — siehe [View Projection and Goal Placement](skill-graph/view-projection-and-goal-placement.de.md)
 
-Die drei klassischen Sichtfamilien mit jeweils eindeutiger Strukturquelle (`contains` für Inhalt, `programUnits` + `goalPlacements` für Programm, `competencyCatalog` + `competencyRefs` für Kompetenzachsen), ergänzt um die kontextspezifische Kompositionssicht als bevorzugte lernendenseitige Standardsicht.
+Die drei klassischen Sichtfamilien mit jeweils eindeutiger Strukturquelle (`contains` für Inhalt, `programUnits` + `goalPlacements` für Programm, `competencyCatalog` + `competencyRefs` für Kompetenzachsen), ergänzt um den kontextspezifischen Lernzielbaum und die Lernkarte.
+
+### Lernzielbaum und Lernkarte
+
+*EN: Goal tree and learner map* — siehe [View Projection and Goal Placement](skill-graph/view-projection-and-goal-placement.de.md)
+
+Zwei koordinierte Darstellungen derselben aufgelösten Projektion: Der **Lernzielbaum** zeigt alle Gliederungsknoten, Einheiten, gewöhnlichen Cluster und atomaren Ziele. Die **Lernkarte** kontrahiert alle Nicht-Einheits-Cluster entlang `contains`, zeigt ausschließlich Einheiten und atomare Ziele (mit Fächern als Filter) und zeichnet Pfeile nur zwischen den direkten Kindern der geöffneten Einheit aus Geschwister-`after` und kreuzenden atomaren `requires`, ohne Rückgriffe zu verdecken.
 
 ### `phase`
 
 *EN: `phase`* — siehe [Graph-Definition](skill-graph/graph-definition.de.md)
 
-Kompatibilitätsmetadaten (`E`, `Q1`–`Q4`, …) für Badges, Filter oder Migrationswerkzeuge. `phase` ist ausdrücklich **keine** kanonische Graphsemantik und begründet niemals eine Elternschaft.
+Kompatibilitätsmetadaten (`E`, `Q1`–`Q4`, …) für Badges, Filter oder vorläufige Standardzuordnungen (`canonicalDefault`), solange ein Landesbeleg fehlt. `phase` ist ausdrücklich **keine** kanonische Graphsemantik, ersetzt keinen Quellenbeleg und begründet niemals eine Elternschaft.
 
 ### `ALL`-Platzhalter
 
@@ -535,7 +541,7 @@ Ein optionaler Modus, der nach dem Meistern des aktiven Ziels automatisch das er
 
 *EN: Selection strategy* — siehe [Frontier Goal Selection Strategies & Autopilot](didactic/frontier-goal-selection-strategies-autopilot.de.md)
 
-Die Sortierregel über der berechneten Frontier: `Random` für Abwechslung über Themenbereiche hinweg, `Sequential` für ein lineares Vorgehen entlang der Curriculumstruktur. Gespeichert je Profil zusammen mit Autopilot und `strictMode`.
+Die Sortierregel über der berechneten Frontier: `Random` für Abwechslung über Themenbereiche hinweg, `Sequential` für ein lineares Vorgehen entlang der Baumstruktur sowie als Zielstandard `Einheit für Einheit` (*Unit by unit*, rekursiver Abstieg über begonnene und über `after` an der Reihe liegende Einheiten ohne Frontier-Sperre; Laufzeitumsetzung `F13` offen). Die bestehenden Strategien werden je Profil zusammen mit Autopilot und `strictMode` gespeichert; dies behauptet noch kein gespeichertes F13-Auswahlprofil.
 
 ---
 
@@ -661,7 +667,10 @@ Ein durch ein Skript erzeugter Bericht, Status-Snapshot oder Dokumentations-Buil
 | `phase` vs. Programmeinheit | `phase` ist Kompatibilitätsmetadaten; nur explizite Programmeinheiten bilden Strukturknoten. |
 | Lerneinheit vs. Personalisierungsstufe | Rekursive pädagogische Einheit mit abgeleitetem Abschluss vs. eine der vier Umfangs-/Zustandsebenen. |
 | Lerneinheit vs. Zielschwierigkeit | Erwerbs- und Abschlusseinheit vs. Anspruchsniveau eines einzelnen Ziels (`level`). |
-| Einheitsabschluss vs. Zielverfügbarkeit | Erfüllte Kind- und Eigenpflichten vs. Startvoraussetzungen; B9 verwirft technische Einheitssperren im Zielmodell; after ordnet ohne Bedarf oder Mastery. |
+| Einheitsabschluss vs. Zielverfügbarkeit | Erfüllte Kind- und Eigenpflichten vs. Startvoraussetzungen; das Zielmodell enthält keine technischen Einheitssperren, und `after` ordnet ohne Bedarf oder Mastery. |
+| Einheit vs. Einheit mit Prüfungen | Jede Einheit erfüllt E1–E4 und ordnet über `after`; nur Einheiten mit eigenem gültigem Prüfungsvertrag und vollständigen aktuellen `coverageReviews` erkennen eigene Inhaltsziele nach R1–R5 implizit an. |
+| Geführt in vs. steht in | Belegte amtliche Quellenzuordnung (`officialSource`) vs. didaktischer Lernplatz in der Planeinheit (inkl. begründeter Vorarbeit und abgeleitetem frühestem Bedarf in $L$). |
+| Lernzielbaum vs. Lernkarte | Vollständiger Baum inkl. gewöhnlicher Fachcluster vs. entlang `contains` kontrahierte Sicht nur aus Einheiten und atomaren Zielen mit aggregierten Kindpfeilen. |
 | QA-Scope vs. Lernroute | Ein QA-Scope ist ein registriertes Prüfprofil, kein einzelner Lernpfad. |
 | CQR- vs. GVR-Regeln | Inhaltliche Curriculum-Qualitätssicherung vs. strukturelle Graphvalidierung. |
 | Curriculum vs. Skill-Graph | Normatives externes Dokument vs. versioniertes operatives Graphmodell. |

@@ -123,12 +123,12 @@ try {
   const landscapes = new Map(canonicalEntries.map(entry => [entry.landscape.landscapeId, normalizeCanonicalLandscape(entry.landscape)]))
   const universe = normalizeCanonicalLandscape({ landscapeId: 'universe', title: 'Universe', goals: [...landscapes.values()].flatMap(l => l.goals) })
   assert.deepEqual(compileCompositionView(legacy, landscapes.get(legacy.landscapeId)!, universe, landscapes).findings.filter(f => f.severity === 'error'), [])
-  const projectMap = (result: typeof generated, runtimeMetadata = false) => {
+  const projectMap = (result: typeof generated, runtimeMetadata = false, legacyLandscapeIds = new Set<string>()) => {
     const sources = prepareLandscapeEntries(canonicalEntries.map(entry => entry.landscape) as unknown as SkillLandscape[])
     let projected = sources
     for (const source of result.index.views.filter(view => view.scope.stage === 'CrossStage' && view.scope.courseProfile === 'GK')) {
       const payload = JSON.parse(result.artifacts.get(source.artifact.path)!)
-      if (runtimeMetadata) payload.stagePlanProjection = { plan: result.index.plans[0].plan, views: [source],
+      if (runtimeMetadata && !legacyLandscapeIds.has(source.landscapeId)) payload.stagePlanProjection = { plan: result.index.plans[0].plan, views: [source],
         indexSource: { path: 'curricula/DE/Gymnasium/stage-plans/generated/index.json',
           sha256: `sha256:${createHash('sha256').update(JSON.stringify(result.index)).digest('hex')}` } }
       projected = applyCompositionViewProjection(projected, payload)
@@ -159,6 +159,30 @@ try {
   const transported = projectMap(generated, true)
   assert.deepEqual(transported.map.unitEntryIds, displayed.map.unitEntryIds, 'The actual composition adapter transports runtime index metadata; the map needs no hand-injected plan context.')
   assert.deepEqual(transported.map.scopeRelations, displayed.map.scopeRelations)
+  const legacyDisplay = projectMap(generated, true, new Set([NESTED_MATH, NESTED_PHYSICS]))
+  const mixedDisplay = projectMap(generated, true, new Set([NESTED_MATH]))
+  const mathUnits = (display: typeof displayed) => [...display.preview.units]
+    .filter(([id]) => display.input.goalIndexAll.get(id)?.landscapeId === NESTED_MATH)
+    .map(([id, identity]) => [id, identity] as const)
+  assert.equal(mathUnits(legacyDisplay).length, 9)
+  assert.deepEqual(mathUnits(mixedDisplay), mathUnits(legacyDisplay),
+    'A bound Physics contribution preserves every unbound Mathematics stage/year/phase preview and its legacy identity.')
+  const legacyMathKeys = new Set(mathUnits(legacyDisplay).map(([, identity]) => identity.key))
+  assert.deepEqual(mixedDisplay.preview.after.filter(edge => legacyMathKeys.has(edge.unit) || legacyMathKeys.has(edge.after)),
+    legacyDisplay.preview.after.filter(edge => legacyMathKeys.has(edge.unit) || legacyMathKeys.has(edge.after)),
+    'Unbound sibling order remains unchanged beside a declared contribution.')
+  assert(mixedDisplay.preview.after.some(edge => edge.unit === key('upper') && edge.after === key('lower')),
+    'The bound contribution keeps its declared stage order.')
+  assert(mixedDisplay.preview.after.every(edge => edge.unit.startsWith('plan:') === edge.after.startsWith('plan:')),
+    'The mixed map never fabricates an order between declared and unbound units.')
+  const mixedMathGoalPath = mixedDisplay.map.entryPaths?.m5 ?? []
+  const legacyMathGoalPath = legacyDisplay.map.entryPaths?.m5 ?? []
+  assert.deepEqual(mixedMathGoalPath, legacyMathGoalPath,
+    'The unbound atomic goal stays inside its actual legacy unit path instead of becoming detached.')
+  assert(mixedMathGoalPath.length >= 3)
+  const boundPhysicsKeys = [...mixedDisplay.preview.units].filter(([id]) => mixedDisplay.input.goalIndexAll.get(id)?.landscapeId === NESTED_PHYSICS)
+    .map(([, identity]) => identity.key)
+  assert(boundPhysicsKeys.every(unit => unit.startsWith(`plan:${input.plan.planId}:`)), 'Bound identities remain declared plan identities.')
   const runtimeGoal = [...transported.input.goalIndexAll.values()].find(goal => goal.extendedData?.stagePlanProjection)!
   const malformedGoals = new Map(transported.input.goalIndexAll)
   malformedGoals.set(runtimeGoal.id, { ...runtimeGoal, extendedData: { ...runtimeGoal.extendedData, stagePlanProjection: { plan: input.plan } } })

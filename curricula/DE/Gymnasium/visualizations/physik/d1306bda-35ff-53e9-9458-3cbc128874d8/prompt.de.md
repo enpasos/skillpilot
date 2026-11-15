@@ -8,35 +8,26 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: OpenAI image_gen
 - Status: pilot
-- Quellbild: `d1306bda-35ff-53e9-9458-3cbc128874d8.jpg`
-- Public Asset: `/assets/goal-visualizations/physik/d1306bda-35ff-53e9-9458-3cbc128874d8/d1306bda-35ff-53e9-9458-3cbc128874d8.jpg`
+- Quellbild: `d1306bda-35ff-53e9-9458-3cbc128874d8.png`
+- Public Asset: `/assets/goal-visualizations/physik/d1306bda-35ff-53e9-9458-3cbc128874d8/d1306bda-35ff-53e9-9458-3cbc128874d8.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
+Use case: precise-object-edit; scientific-educational concept illustration.
+Keep the supplied image's German title, friendly loose hand-drawn style, pale calm background and entire right-hand medical application panel. Replace ONLY the left-hand cyclotron illustration with a clean three-step conceptual explanation. The detailed orbit in earlier versions was geometrically misleading; do not draw a complete spiral or imply disconnected circles are one particle trajectory.
 
-Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
+Left heading: "Zyklotron-Prinzip". Below it, three separate small hand-drawn illustrations arranged vertically with ample white space:
 
-Titel: Zyklotron und Strahlentherapie fachlich bewerten
-Beschreibung: Die lernende Person kann das Funktionsprinzip des Zyklotrons auf Strahlentherapien beziehen und Nutzen sowie Risiken medizinischer Anwendungen mit physikalischen Kriterien bewerten.
+1. "Im Spalt: elektrisches Feld beschleunigt". Show two short vertical electrode faces separated by a visible gap, a small positive particle in the gap and ONE straight horizontal arrow to the right. The arrow is explicitly labelled "Beschleunigung". Beneath, a small AC-source icon labelled "Wechselspannung". This is a schematic detail of the gap, not a full particle orbit.
 
-Zusatzanweisung:
-Use case: scientific-educational
-Primary request: Create a fresh, technically correct overview of a cyclotron and its medical beam application.
-Required cyclotron geometry: Show two D-shaped electrodes separated by one straight gap in a uniform magnetic field perpendicular to the drawing plane. A positive charged particle begins near the centre and follows successive semicircular arcs that alternate between the two electrodes and grow in radius. Connect the arcs into one continuous outward spiral-like trajectory made of half-circles.
-Acceleration constraint: Mark acceleration only at each crossing of the central gap, driven by an alternating voltage. Inside each electrode the particle follows a semicircle at approximately constant speed. Do not draw concentric full circles.
-Application: Show extraction of the outer beam toward a clearly localized treatment target, with surrounding healthy tissue visually spared. Keep the medical claim qualitative.
-Constraints: Use minimal correct German labels, no logos or watermarks.
+2. "Im D: Magnetfeld lenkt, Energie bleibt gleich". Show ONE isolated quarter-circle trajectory for a positive particle in a uniform magnetic field out of the page (a few circled dots). The particle starts at the TOP endpoint moving RIGHT, and the quarter-circle bends clockwise DOWN to the RIGHT endpoint, whose tangent points DOWN. Use ONE arrow at that right endpoint. Add the short label "B aus der Ebene". Clearly frame this as a representative curved segment inside one D-electrode, not a complete cyclotron orbit. No electric-field acceleration arrow in this panel.
+
+3. "Wiederholung: mehr Energie, größerer Radius". Show a simple schematic top view of the two pale-blue D-shaped electrodes separated by a narrow white vertical gap, with a + symbol near the middle. Do NOT draw any particle orbit here. Next to the device, a small rightward process arrow labelled "Ausleitung" points to the separate right-hand medical application panel. The text supplies the repeated acceleration and increasing-radius principle; no false geometric path is shown. Add a small neutral caption "Prinzipdarstellung".
+
+Keep the right-hand target/healthy tissue labels and BOTH benefit/risk boxes. No claim that healthy tissue receives zero dose. Keep the existing title "Zyklotron und Strahlentherapie: Prinzip und Bewertung". Minimal legible text, no sparkles, radiating emphasis marks, highlight bands, logos or technical IDs. The scientific meaning must be correct; this is an orientation image, not an assessment stimulus or a solved task.
 ```
 
 ## Review-Notiz

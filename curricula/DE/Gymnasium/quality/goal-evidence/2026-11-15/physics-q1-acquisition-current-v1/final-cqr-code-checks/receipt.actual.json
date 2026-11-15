@@ -1,0 +1,30 @@
+{
+  "checkedAt": "2026-11-15T21:08:35.605669+00:00",
+  "workingDirectory": "app",
+  "runs": [
+    {
+      "command": "node_modules/.bin/tsx scripts/testCurriculumQualityStatus.ts",
+      "exitCode": 0,
+      "log": "curriculum-quality-tests.log"
+    },
+    {
+      "command": "node_modules/.bin/tsc -b --pretty false",
+      "exitCode": 0
+    },
+    {
+      "command": "node_modules/.bin/eslint scripts/lib/nationalStageProjection.ts scripts/testNationalStageProjection.ts scripts/testNationalStageProjectionNative.ts scripts/generateCurriculumQualityStatus.ts scripts/lib/semanticRouteInventory.ts scripts/reportRouteEndpointVisibility.ts scripts/testCurriculumQualityStatus.ts",
+      "exitCode": 0
+    }
+  ],
+  "inputs": {
+    "app/scripts/lib/nationalStageProjection.ts": "f11da93539c59ba8d34f059450adb4e326c460cea5cea0a8d280150b25c8183e",
+    "app/scripts/testNationalStageProjection.ts": "2a7f8feb2a612815fd497d23bbca4b3432a11417b668bf9c28367f23ed6bbceb",
+    "app/scripts/testNationalStageProjectionNative.ts": "9397f1bdcb09b5e93552fb555f2d520ff40bff566a4fe8ea544496902989acb2",
+    "app/scripts/generateCurriculumQualityStatus.ts": "bf62b64b12c431aa72c30894598b526a0c25dbdd098f90ac5a2da9d7dd73fdf3",
+    "app/scripts/lib/semanticRouteInventory.ts": "068e8db844c068d4484ca3fc02e19d1cfade2ec3918607cfa8a02055e6817ca4",
+    "app/scripts/reportRouteEndpointVisibility.ts": "f8bcaacbe4d544abe618b1b81de2e0ccef87ed23dc18f1fb46563c898624d06b",
+    "app/scripts/testCurriculumQualityStatus.ts": "963ed052bb4fb61fef744e2198882ad8bc8a1203e7c8c2dc951c4ec4b47d52e5"
+  },
+  "authorFinalSourceSealSha256": "5b48acc0859c7990c0f6fd8b232909d12b3add582577cfeb55520b0288574526",
+  "sourceMutationsByTheseChecks": false
+}

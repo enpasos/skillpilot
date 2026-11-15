@@ -2,7 +2,7 @@
 
 Jeder Inhalt, der zu einem Lernziel gehört, ob Erklärung, Beispiel, Aufgabe, Lernkarte, Lernzielbild oder ein Satz des Coachs, richtet sich an Lernende, die manches wissen und anderes noch nicht. Dieses Kapitel bestimmt dieses Wissen als Projektion des Skill-Graphen und nennt, was der Graph dafür leisten muss.
 
-**Stand, 13. November 2026.** Konzept und Anforderung des Product Owners. Die Ableitung gibt es als Werkzeug im Repository (`npm --prefix app run knowledge-context`, [knowledgeContext.ts](repo:app/scripts/lib/knowledgeContext.ts)). Sonst ist nichts umgesetzt: Kein Gate, keine Erzeugungspipeline und kein Coach benutzt den Kontext. Die Zahlen stammen aus diesem Werkzeug an diesem Tag. Diese Seite ändert keine Lernziele, Graphkanten, Prüfungen oder das Verhalten des Coachs.
+**Implementierungsstand:** Die deterministische Ableitung ist als Werkzeug im Repository umgesetzt (`npm --prefix app run knowledge-context`, [knowledgeContext.ts](repo:app/scripts/lib/knowledgeContext.ts)); die Kennzahlen in @ref{sec:sga-kc-prototype} stammen aus dem Messlauf vom 13. November 2026. Gates, Erzeugungspipelines und die Live-Übergabe an den Coach folgen gestuft gemäß @ref{sec:sga-kc-order}.
 
 ### Die Anforderung {#sec:sga-kc-requirement anchors="the-requirement"}
 
@@ -29,11 +29,13 @@ Sei $g$ ein atomares Lernziel. Seine **gesicherten Ziele** $W(g)$ sind die atoma
 
 Eine Regel gilt für Generator, Reviewer und Coach gleichermaßen: **Was ein Ziel des Katalogs erarbeitet, darf nur benutzt werden, wenn dieses Ziel für $g$ gesichert ist.** Was $g$ selbst erarbeitet, ist Gegenstand der Arbeit. Was kein Ziel des Katalogs erarbeitet, gilt als Grundwissen, etwa Alltags- und Grundschulwissen, und wird im Review beurteilt.
 
-Aufgeführt werden nur gewöhnliche Ziele. Prüfungs-, Lernkarten- und Orientierungsziele auf einem Voraussetzungspfad tragen den Pfad, erarbeiten aber keinen eigenen Stoff. Ein Bereich ist ein Cluster direkt unter der Fachwurzel der Landschaft oder eine eigene Wurzel.
+Aufgeführt werden nur gewöhnliche Inhaltsziele. Lernkarten- und Orientierungsziele auf einem Voraussetzungspfad tragen den Pfad, erarbeiten aber keinen eigenen Stoff; auf Prüfungsziele zeigt im Zielmodell keine `requires`-Kante (Prüfungen sind Endpunkte von Voraussetzungspfaden, etwaige Altkanten auf Prüfungen sind Reparaturbefunde). Ein Bereich ist ein Cluster direkt unter der Fachwurzel der Landschaft oder eine eigene Wurzel.
 
 Die Projektion hat zwei Ausgaben mit fester Reihenfolge der Einträge. Der **Kern** besteht aus Ziel, „baut auf", „darauf baut auf" und „noch nicht"; er begleitet den Coach. Die **Vollform** ergänzt die gesicherten Ziele; sie begleitet Erzeugung und Review.
 
 Dieselbe Definition deckt die übrigen Knotenarten. Ein Prüfungs- oder Lernkartenziel $q$ erarbeitet nichts; sein Inhalt darf $W(q)$ benutzen. Der Wissenskontext einer Lerneinheit ist die Vereinigung der Kontexte ihrer eigenen Ziele und Prüfungen; für eine Einheit wird nichts von Hand geschrieben. Weil die Voraussetzungsrelation kanonisch ist, ist der Wissenskontext in jedem Lehrplankontext derselbe.
+
+**Zusammenspiel von `requires` und `after` an Einheitsgrenzen:** Für den Wissenskontext zählen ausschließlich atomare `requires`-Pfade; eine `after`-Reihenfolge zwischen Geschwistereinheiten ([Einheitsfolge](repo:docs/concept/skill-graph/learning-unit-progression.md)) fügt $W(g)$ kein einziges Ziel hinzu und schaltet keinen Stoff für Aufgaben, Karten, Bilder oder Erklärungen frei. Umgekehrt garantiert Regel E3 in einem geordneten Einheitenbaum, dass bei zwei verschiedenen Kindeinheiten an der kleinsten gemeinsamen Elterneinheit der benötigte Zweig in `after` vorgelagert ist. Ist einer der beiden Zweige ein eigenes Atom, ordnet stattdessen der atomare Bedarf selbst. `after` beschreibt die Blockfolge im vorgesehenen Lernfluss; allein `requires` sichert die präzise fachliche Verwendbarkeit.
 
 Für den Wissenskontext wird nichts Neues gespeichert. Er ist eine Projektion aus `contains`, `requires`, Titeln und Beschreibungen, so wie die Frontier eine Projektion aus Voraussetzungen und Beherrschung ist.
 

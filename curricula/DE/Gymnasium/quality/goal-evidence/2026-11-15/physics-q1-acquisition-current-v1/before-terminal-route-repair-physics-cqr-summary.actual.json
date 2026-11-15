@@ -1,0 +1,430 @@
+{
+  "at": "2026-11-15T20:29:02.856Z",
+  "subject": "Physik (Gymnasium, DE)",
+  "maturity": "M3",
+  "goals": 840,
+  "atomicGoals": 708,
+  "checkedCurrentCatalogRoots": 21,
+  "pinnedInputs": 299,
+  "curriculumRules": [
+    {
+      "id": "CQR-001",
+      "status": "pass",
+      "summary": "Current graph references, DAGs, atomic requires normal form and transitive minimality pass.",
+      "metrics": {
+        "goals": 1121,
+        "authoredRequires": 1622,
+        "effectiveRequires": 1622,
+        "crossLandscapeReferences": 161,
+        "minimalityFindings": 0,
+        "atomicNormalFormFindings": 0,
+        "explicitTypeMismatches": 0,
+        "witnessEdges": 0,
+        "invalidInputs": 0
+      }
+    },
+    {
+      "id": "CQR-002",
+      "status": "pass",
+      "summary": "Explicit type metadata matches graph structure.",
+      "metrics": {
+        "mismatches": 0
+      }
+    },
+    {
+      "id": "CQR-000",
+      "status": "pass",
+      "summary": "All 16 declared Bundesland source inventories are readable, linked to official source URLs, and fully registered.",
+      "metrics": {
+        "totalJurisdictions": 16,
+        "completeSourceJurisdictions": 16,
+        "emptySourceJurisdictions": 0,
+        "missingReadableSourceInventoryJurisdictions": 0,
+        "originalSourceUrlIssues": 0,
+        "sourceExtractedGoals": 6289,
+        "sourceOriginalGoals": 6289,
+        "sourceUnregisteredGoals": 0,
+        "sourceExtractedAtomicGoals": 6289,
+        "sourceUnregisteredAtomicGoals": 0
+      }
+    },
+    {
+      "id": "CQR-003",
+      "status": "pass",
+      "summary": "All 16 declared Bundesland projection(s) have source-backed atom-level view coverage, no unsupported assignments, and complete source-to-view mapping.",
+      "metrics": {
+        "totalJurisdictions": 16,
+        "coveredJurisdictions": 16,
+        "sourceBackedJurisdictions": 16,
+        "sourceCompleteJurisdictions": 16,
+        "fullCoverageJurisdictions": 16,
+        "uncoveredJurisdictions": 0,
+        "incompleteJurisdictions": 0,
+        "unsupportedAssignmentJurisdictions": 0,
+        "sourceUnmappedJurisdictions": 0,
+        "unsupportedAssignedAtomicGoals": 0,
+        "unmappedSourceAtomicGoals": 0,
+        "sourceAtomicGoals": 6289,
+        "sourceMappedToViewAtomicGoals": 6289,
+        "sourceOriginalGoals": 6289,
+        "sourceFullyCoveredOriginalGoals": 6289,
+        "sourcePartiallyCoveredOriginalGoals": 0,
+        "sourceUncoveredOriginalGoals": 0,
+        "surrogateBackedAtomicGoals": 0,
+        "partialSourceLinkedAtomicGoals": 0,
+        "warningedJurisdictions": 0,
+        "cleanJurisdictions": 16,
+        "partialJurisdictions": 0,
+        "errorJurisdictions": 0,
+        "minSourceBackedAtomicGoals": 222,
+        "maxVisibleAtomicGoals": 432,
+        "maxSourceBackedAtomicGoals": 432,
+        "totalAtomicGoals": 449
+      }
+    },
+    {
+      "id": "CQR-004",
+      "status": "pass",
+      "summary": "Course-level mapping is clean for 742 upper-secondary source-to-canonical mapping edge(s), including 0 reviewed course-level exception(s); unspecified upper-secondary source goals default to GK/LK unless explicitly reviewed.",
+      "metrics": {
+        "configuredMappingFiles": 25,
+        "sourceGoals": 3989,
+        "sourceGoalsWithCourseLevel": 3989,
+        "gkLkSourceGoals": 1769,
+        "lkSourceGoals": 1427,
+        "unspecifiedSourceGoals": 0,
+        "checkedMappingEdges": 742,
+        "defaultedUnspecifiedMappingEdges": 0,
+        "reviewedCourseLevelExceptions": 0,
+        "mismatches": 0,
+        "missingSourceGoals": 0,
+        "missingTargetGoals": 0,
+        "unmappedCourseLevelSourceGoals": 0
+      }
+    },
+    {
+      "id": "CQR-005",
+      "status": "pass",
+      "summary": "Source-goal counts are inside the configured peer-baseline corridor or explicitly reviewed.",
+      "metrics": {
+        "sourceExtractionSources": 25,
+        "peerBaselineChecks": 21,
+        "failedPeerBaselineChecks": 0,
+        "granularityChecks": 0,
+        "failedGranularityChecks": 0
+      }
+    },
+    {
+      "id": "CQR-301",
+      "status": "pass",
+      "summary": "Semantic atomicity review ledgers are current and fully accepted.",
+      "metrics": {
+        "configs": 1,
+        "leafGoals": 485,
+        "atomic": 485,
+        "needsDeveloperReview": 0,
+        "nonAtomic": 0,
+        "missing": 0,
+        "stale": 0,
+        "obsolete": 0
+      }
+    },
+    {
+      "id": "CQR-302",
+      "status": "pass",
+      "summary": "Memory-card review is current: 128/485 ordinary atomic goals intentionally use memorization support, 146/146 primary cards are kept with origin traces, all 5 memory goals are traced, and 235 view-visible memory-required goals resolve to visible memory nodes.",
+      "metrics": {
+        "configs": 1,
+        "reviewedGoals": 485,
+        "noMemoryNeeded": 357,
+        "memoryRequired": 128,
+        "needsDeveloperReview": 0,
+        "missing": 0,
+        "stale": 0,
+        "obsolete": 0,
+        "duplicateRecords": 0,
+        "invalidRecords": 0,
+        "primaryCards": 146,
+        "keptCards": 146,
+        "cardsMarkedRemove": 0,
+        "cardNeedsDeveloperReview": 0,
+        "missingCardReviews": 0,
+        "staleCardReviews": 0,
+        "obsoleteCardReviews": 0,
+        "duplicateCardReviewRecords": 0,
+        "invalidCardReviewRecords": 0,
+        "untracedMemoryRequiredGoals": 0,
+        "visibilityScopes": 2,
+        "visibilityCheckedMemoryRequiredGoals": 235,
+        "visibilityMissingVisibleMemoryGoals": 0,
+        "visibilityErrors": 0,
+        "memoryGoals": 5,
+        "tracedMemoryGoals": 5,
+        "untracedMemoryGoals": 0,
+        "deckIds": 5,
+        "deckFiles": 6,
+        "cardRows": 233
+      },
+      "details": [
+        "canonical-physics-full: audit report docs/qa-ci/status/memory-card-review-canonical-physics-full.md"
+      ]
+    },
+    {
+      "id": "CQR-303",
+      "status": "pass",
+      "summary": "Deep curriculum QA is complete for all 485 current curricularAtomic goals.",
+      "metrics": {
+        "expectedGoals": 485,
+        "remaining": 0,
+        "strictComplete": 485,
+        "currentDescriptionResolutions": 485,
+        "currentPositiveEvidenceProfiles": 485,
+        "currentSemanticAtomicityDecisions": 485,
+        "currentMemoryReviewDecisions": 485,
+        "currentVisualizationQaRecords": 485,
+        "deferredVisualizations": 0,
+        "requiredChecksPassed": 6,
+        "requiredChecksTotal": 6,
+        "blockingIssues": 0
+      }
+    },
+    {
+      "id": "CQR-401",
+      "status": "pass",
+      "summary": "69 composition view(s) are registered.",
+      "metrics": {
+        "compositionViews": 69
+      }
+    },
+    {
+      "id": "CQR-501",
+      "status": "warn",
+      "summary": "7 active and 0 obsolete accepted applicability warning(s) need review; 6280 partial-only diagnostic finding(s) are non-blocking.",
+      "metrics": {
+        "activeWarnings": 7,
+        "rawActiveWarnings": 7,
+        "diagnosticPartialOnlyWarnings": 6280,
+        "acceptedWarnings": 1,
+        "obsoleteAcceptedWarnings": 0
+      },
+      "details": [
+        "non-blocking partial-only applicability diagnostics APV-202: 6280",
+        "active warning type APV-203: 7",
+        "diagnostic finding type APV-202: 6280",
+        "accepted current warning type APV-201: 1"
+      ]
+    }
+  ],
+  "scopes": [
+    {
+      "scopeId": "canonical-physics-sek1",
+      "label": "Sekundarstufe I",
+      "selectedAtomicGoals": 116,
+      "maturity": "M2",
+      "rules": [
+        {
+          "id": "CQR-101",
+          "status": "pass",
+          "summary": "Effective route coverage is complete for the configured scope.",
+          "metrics": {
+            "selectedAtomicGoals": 116,
+            "missingMotivationPath": 0,
+            "missingTerminalPath": 0
+          }
+        },
+        {
+          "id": "CQR-102",
+          "status": "pass",
+          "summary": "Direct atomic route coverage is complete for the configured scope.",
+          "metrics": {
+            "selectedAtomicGoals": 116,
+            "missingDirectMotivationPath": 0,
+            "missingDirectTerminalPath": 0
+          }
+        },
+        {
+          "id": "CQR-103",
+          "status": "pass",
+          "summary": "No scoped cluster-level requires remain.",
+          "metrics": {
+            "scopedClusterRequires": 0
+          }
+        },
+        {
+          "id": "CQR-104",
+          "status": "fail",
+          "summary": "Route endpoints or projection-local routes are missing, unexpected, or not applicability-bound in at least one learner-facing projection scope.",
+          "metrics": {
+            "relevantCompositionViews": 35,
+            "evaluatedProjectionScopes": 80,
+            "requiredMotivationAnchors": 2,
+            "minimumRequiredTerminalAutonomyGoals": 42,
+            "requiredTerminalAutonomyGoals": 63,
+            "projectionScopesMissingMotivationAnchors": 0,
+            "projectionScopesMissingTerminalAutonomyGoals": 17,
+            "projectionScopesWithUnexpectedTerminalAutonomyGoals": 0,
+            "projectionScopesWithoutExpectedTerminalAutonomyGoals": 0,
+            "terminalGoalsMissingCompiledApplicability": 0,
+            "projectionScopesWithInvalidStageStructure": 0,
+            "nationalProjectionScopesUsingJurisdictionStageAuthority": 48,
+            "nationalProjectionScopesMissingJurisdictionStageAuthority": 0,
+            "nationalProjectionScopesWithAmbiguousJurisdictionStageAuthority": 0,
+            "nationalTargetAtomicGoalOccurrencesExcludedByJurisdictionStageAuthority": 1299,
+            "nationalSelectedGoalOccurrencesExcludedByJurisdictionStageAuthority": 711,
+            "nationalPrerequisiteOnlyGoalOccurrencesImportedByJurisdictionStageAuthority": 3471,
+            "projectionScopesWithIncompleteExplicitTerminalPrerequisites": 0,
+            "explicitTerminalPrerequisiteOccurrencesMissingFromProjection": 0,
+            "projectionScopesWithIncompleteWholeMaterialCoverageBindings": 0,
+            "wholeMaterialCoveredGoalOccurrencesWithoutVisiblePrerequisitePath": 0,
+            "projectionScopesWithIncompleteWholeMaterialPrerequisiteClosure": 0,
+            "wholeMaterialPrerequisiteOccurrencesMissingFromProjection": 0,
+            "uniqueExplicitTerminalPrerequisitesMissingFromProjection": 0,
+            "projectionLocalRouteChecksEnabled": 1,
+            "visibleSelectedAtomicGoalOccurrences": 6879,
+            "visibleProfileSelectedAtomicGoalOccurrences": 6717,
+            "visibleProjectedRouteTargetGoalOccurrences": 6879,
+            "visibleProjectedRouteTargetGoalOccurrencesExcludedByProfileSelector": 162,
+            "uniqueProjectedRouteTargetsExcludedByProfileSelector": 53,
+            "visibleProjectedRouteTargetGoalOccurrencesExcludedFromRouteChecks": 0,
+            "projectionScopesMissingEffectiveMotivationRoutes": 0,
+            "projectionScopesMissingDirectMotivationRoutes": 0,
+            "projectionScopesMissingEffectiveTerminalRoutes": 2,
+            "projectionScopesMissingDirectTerminalRoutes": 2,
+            "visibleSelectedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+            "visibleSelectedGoalOccurrencesMissingDirectMotivationRoute": 0,
+            "visibleSelectedGoalOccurrencesMissingEffectiveTerminalRoute": 4,
+            "visibleSelectedGoalOccurrencesMissingDirectTerminalRoute": 4,
+            "profileSelectorExcludedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+            "profileSelectorExcludedGoalOccurrencesMissingDirectMotivationRoute": 0,
+            "profileSelectorExcludedGoalOccurrencesMissingEffectiveTerminalRoute": 4,
+            "profileSelectorExcludedGoalOccurrencesMissingDirectTerminalRoute": 4,
+            "uniqueVisibleSelectedGoalsMissingEffectiveMotivationRoute": 0,
+            "uniqueVisibleSelectedGoalsMissingDirectMotivationRoute": 0,
+            "uniqueVisibleSelectedGoalsMissingEffectiveTerminalRoute": 2,
+            "uniqueVisibleSelectedGoalsMissingDirectTerminalRoute": 2
+          },
+          "details": [
+            "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-de-gym-physics-gk.view.json [DE-BW]: dfd2628f-b44e-51b3-86e8-99158861be8c, e1794352-ceee-5c27-8be4-224592ddbb89, b637582c-a618-5698-817a-8d7bd1fa05f6, b7e366e2-8323-5171-83a1-1f536c2062d8, b1808b4c-5e02-5e1f-831f-47ee126e00ee, 198bfc8c-25f7-5a02-8618-47650ce36d14, 0cf2a5b0-8660-578d-8316-2b8a50fbdff7, 68061652-d617-5e51-8d2a-1c686c3c49df, b4175564-4397-5c08-90ba-4f13231a75ec, e0932fef-9e1c-5c95-b00c-7589e76d0e83",
+            "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-de-gym-physics-gk.view.json [DE-BY]: 11c964ff-be82-5d02-8cd7-ccb41cda8f4f, dfd2628f-b44e-51b3-86e8-99158861be8c, e1794352-ceee-5c27-8be4-224592ddbb89, 93cdaa49-88e8-5e26-8506-656366d9ce3c, 68061652-d617-5e51-8d2a-1c686c3c49df, 6345871e-eab4-59c1-a3b6-8456ab9bd7df, b4175564-4397-5c08-90ba-4f13231a75ec, e0932fef-9e1c-5c95-b00c-7589e76d0e83",
+            "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-de-gym-physics-gk.view.json [DE-RP]: 11c964ff-be82-5d02-8cd7-ccb41cda8f4f, dfd2628f-b44e-51b3-86e8-99158861be8c, e1794352-ceee-5c27-8be4-224592ddbb89, b637582c-a618-5698-817a-8d7bd1fa05f6, b7e366e2-8323-5171-83a1-1f536c2062d8, b1808b4c-5e02-5e1f-831f-47ee126e00ee, 198bfc8c-25f7-5a02-8618-47650ce36d14, 93cdaa49-88e8-5e26-8506-656366d9ce3c, 0cf2a5b0-8660-578d-8316-2b8a50fbdff7, 68061652-d617-5e51-8d2a-1c686c3c49df, e0932fef-9e1c-5c95-b00c-7589e76d0e83",
+            "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-de-gym-physics-gk.view.json [DE-SL]: 14cc61c4-4909-5671-b1ee-930a02cb9f51, 50521f0d-71b1-51cf-b30d-650e3abf3036",
+            "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-de-gym-physics-gk.view.json [DE-SN]: 14cc61c4-4909-5671-b1ee-930a02cb9f51",
+            "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-de-gym-physics-lk.view.json [DE-BW]: dfd2628f-b44e-51b3-86e8-99158861be8c, e1794352-ceee-5c27-8be4-224592ddbb89, b637582c-a618-5698-817a-8d7bd1fa05f6, b7e366e2-8323-5171-83a1-1f536c2062d8, b1808b4c-5e02-5e1f-831f-47ee126e00ee, 198bfc8c-25f7-5a02-8618-47650ce36d14, 0cf2a5b0-8660-578d-8316-2b8a50fbdff7, 68061652-d617-5e51-8d2a-1c686c3c49df, b4175564-4397-5c08-90ba-4f13231a75ec, e0932fef-9e1c-5c95-b00c-7589e76d0e83",
+            "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-de-gym-physics-lk.view.json [DE-BY]: 11c964ff-be82-5d02-8cd7-ccb41cda8f4f, dfd2628f-b44e-51b3-86e8-99158861be8c, e1794352-ceee-5c27-8be4-224592ddbb89, 93cdaa49-88e8-5e26-8506-656366d9ce3c, 68061652-d617-5e51-8d2a-1c686c3c49df, 6345871e-eab4-59c1-a3b6-8456ab9bd7df, b4175564-4397-5c08-90ba-4f13231a75ec, e0932fef-9e1c-5c95-b00c-7589e76d0e83",
+            "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-de-gym-physics-lk.view.json [DE-RP]: 11c964ff-be82-5d02-8cd7-ccb41cda8f4f, dfd2628f-b44e-51b3-86e8-99158861be8c, e1794352-ceee-5c27-8be4-224592ddbb89, b637582c-a618-5698-817a-8d7bd1fa05f6, b7e366e2-8323-5171-83a1-1f536c2062d8, b1808b4c-5e02-5e1f-831f-47ee126e00ee, 198bfc8c-25f7-5a02-8618-47650ce36d14, 93cdaa49-88e8-5e26-8506-656366d9ce3c, 0cf2a5b0-8660-578d-8316-2b8a50fbdff7, 68061652-d617-5e51-8d2a-1c686c3c49df, e0932fef-9e1c-5c95-b00c-7589e76d0e83",
+            "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-de-gym-physics-lk.view.json [DE-SL]: 14cc61c4-4909-5671-b1ee-930a02cb9f51, 50521f0d-71b1-51cf-b30d-650e3abf3036",
+            "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-de-gym-physics-lk.view.json [DE-SN]: 14cc61c4-4909-5671-b1ee-930a02cb9f51",
+            "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-de-gym-seki-physics.view.json [DE-BW]: dfd2628f-b44e-51b3-86e8-99158861be8c, e1794352-ceee-5c27-8be4-224592ddbb89, b637582c-a618-5698-817a-8d7bd1fa05f6, b7e366e2-8323-5171-83a1-1f536c2062d8, b1808b4c-5e02-5e1f-831f-47ee126e00ee, 198bfc8c-25f7-5a02-8618-47650ce36d14, 0cf2a5b0-8660-578d-8316-2b8a50fbdff7, 68061652-d617-5e51-8d2a-1c686c3c49df, b4175564-4397-5c08-90ba-4f13231a75ec, e0932fef-9e1c-5c95-b00c-7589e76d0e83",
+            "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-de-gym-seki-physics.view.json [DE-BY]: 11c964ff-be82-5d02-8cd7-ccb41cda8f4f, dfd2628f-b44e-51b3-86e8-99158861be8c, e1794352-ceee-5c27-8be4-224592ddbb89, 93cdaa49-88e8-5e26-8506-656366d9ce3c, 68061652-d617-5e51-8d2a-1c686c3c49df, 6345871e-eab4-59c1-a3b6-8456ab9bd7df, b4175564-4397-5c08-90ba-4f13231a75ec, e0932fef-9e1c-5c95-b00c-7589e76d0e83",
+            "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-de-gym-seki-physics.view.json [DE-RP]: 11c964ff-be82-5d02-8cd7-ccb41cda8f4f, dfd2628f-b44e-51b3-86e8-99158861be8c, e1794352-ceee-5c27-8be4-224592ddbb89, b637582c-a618-5698-817a-8d7bd1fa05f6, b7e366e2-8323-5171-83a1-1f536c2062d8, b1808b4c-5e02-5e1f-831f-47ee126e00ee, 198bfc8c-25f7-5a02-8618-47650ce36d14, 93cdaa49-88e8-5e26-8506-656366d9ce3c, 0cf2a5b0-8660-578d-8316-2b8a50fbdff7, 68061652-d617-5e51-8d2a-1c686c3c49df, e0932fef-9e1c-5c95-b00c-7589e76d0e83",
+            "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-de-gym-seki-physics.view.json [DE-SL]: 14cc61c4-4909-5671-b1ee-930a02cb9f51, 50521f0d-71b1-51cf-b30d-650e3abf3036",
+            "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-de-gym-seki-physics.view.json [DE-SN]: 14cc61c4-4909-5671-b1ee-930a02cb9f51",
+            "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-rp-gk.view.json [DE-RP]: 16bfb017-53d6-5328-a4e3-2e2b4e4398a9, 6345871e-eab4-59c1-a3b6-8456ab9bd7df, b4175564-4397-5c08-90ba-4f13231a75ec",
+            "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-rp-lk.view.json [DE-RP]: 16bfb017-53d6-5328-a4e3-2e2b4e4398a9, 6345871e-eab4-59c1-a3b6-8456ab9bd7df, b4175564-4397-5c08-90ba-4f13231a75ec",
+            "No projection-local effective terminal route: curricula/DE/Gymnasium/composition-views/physik/de-by-gk.view.json [DE-BY]: 1730c01d-8c85-57df-b031-c11e2a0511b1, bbee4c52-4e95-5529-990f-706aa99316a3",
+            "No projection-local effective terminal route: curricula/DE/Gymnasium/composition-views/physik/de-by-lk.view.json [DE-BY]: 1730c01d-8c85-57df-b031-c11e2a0511b1, bbee4c52-4e95-5529-990f-706aa99316a3",
+            "No projection-local direct terminal route: curricula/DE/Gymnasium/composition-views/physik/de-by-gk.view.json [DE-BY]: 1730c01d-8c85-57df-b031-c11e2a0511b1, bbee4c52-4e95-5529-990f-706aa99316a3"
+          ]
+        },
+        {
+          "id": "CQR-201",
+          "status": "pass",
+          "summary": "All configured terminal autonomy goals have examData.",
+          "metrics": {
+            "terminalAutonomyGoals": 80,
+            "terminalAutonomyGoalsWithExamData": 80,
+            "terminalAutonomyGoalsWithoutExamData": 0
+          }
+        },
+        {
+          "id": "CQR-202",
+          "status": "pass",
+          "summary": "All terminal autonomy examData is concrete enough for hard exam mode.",
+          "metrics": {
+            "terminalAutonomyGoals": 80,
+            "concreteExamData": 80,
+            "weakExamData": 0
+          }
+        },
+        {
+          "id": "CQR-203",
+          "status": "pass",
+          "summary": "All terminal autonomy examData has release and coverage metadata.",
+          "metrics": {
+            "terminalAutonomyGoals": 80,
+            "releasedCoverageCompleteExamData": 80,
+            "releaseCoverageIncompleteExamData": 0
+          }
+        }
+      ]
+    },
+    {
+      "scopeId": "canonical-physics-sek2",
+      "label": "Sekundarstufe II",
+      "selectedAtomicGoals": 321,
+      "maturity": "M4",
+      "rules": [
+        {
+          "id": "CQR-101",
+          "status": "pass",
+          "summary": "Effective route coverage is complete for the configured scope.",
+          "metrics": {
+            "selectedAtomicGoals": 321,
+            "missingMotivationPath": 0,
+            "missingTerminalPath": 0
+          }
+        },
+        {
+          "id": "CQR-102",
+          "status": "pass",
+          "summary": "Direct atomic route coverage is complete for the configured scope.",
+          "metrics": {
+            "selectedAtomicGoals": 321,
+            "missingDirectMotivationPath": 0,
+            "missingDirectTerminalPath": 0
+          }
+        },
+        {
+          "id": "CQR-103",
+          "status": "pass",
+          "summary": "No scoped cluster-level requires remain.",
+          "metrics": {
+            "scopedClusterRequires": 0
+          }
+        },
+        {
+          "id": "CQR-201",
+          "status": "pass",
+          "summary": "All configured terminal autonomy goals have examData.",
+          "metrics": {
+            "terminalAutonomyGoals": 109,
+            "terminalAutonomyGoalsWithExamData": 109,
+            "terminalAutonomyGoalsWithoutExamData": 0
+          }
+        },
+        {
+          "id": "CQR-202",
+          "status": "pass",
+          "summary": "All terminal autonomy examData is concrete enough for hard exam mode.",
+          "metrics": {
+            "terminalAutonomyGoals": 109,
+            "concreteExamData": 109,
+            "weakExamData": 0
+          }
+        },
+        {
+          "id": "CQR-203",
+          "status": "pass",
+          "summary": "All terminal autonomy examData has release and coverage metadata.",
+          "metrics": {
+            "terminalAutonomyGoals": 109,
+            "releasedCoverageCompleteExamData": 109,
+            "releaseCoverageIncompleteExamData": 0
+          }
+        }
+      ]
+    }
+  ],
+  "allPinnedInputsStillCurrent": true,
+  "boundary": "Actual current generator rule bodies, one-subject report selection and focused native Physics deep check; no Mathematics readiness or main CI claim."
+}

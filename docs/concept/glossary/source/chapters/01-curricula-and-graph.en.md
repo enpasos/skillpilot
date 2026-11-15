@@ -106,7 +106,7 @@ Ancestor/descendant relationships are derived through paths of one or more `cont
 
 *DE: setzt voraus* — see [Graph Definition](repo:docs/concept/skill-graph/graph-definition.md)
 
-The authored prerequisite relation $R$: $(g, p)$ means goal $g$ directly requires prerequisite $p$. Its arrow points from the dependent goal to its prerequisite; $p$ must be satisfied before $g$ is approached. It must be acyclic. Under the binding target state, all authored `requires` edges connect **atomic** goals ($R \subseteq A \times A$); existing prerequisites on clusters are evaluated via `contains` inheritance and atomic expansion during migration.
+The authored prerequisite relation $R$: $(g, p)$ means goal $g$ directly requires prerequisite $p$. Its arrow points from the dependent goal to its prerequisite; $p$ must be satisfied before $g$ is approached. It must be acyclic. Under the binding target state, all authored `requires` edges connect **atomic** goals ($R \subseteq A \times A$) and no `requires` edge points to an assessment goal; existing prerequisites on clusters are evaluated via `contains` inheritance and atomic expansion during migration.
 
 Both `contains` and `requires` record direct relationships; derived relationships are computed rather than modeled as extra relation types.
 
@@ -169,54 +169,54 @@ The property that every route-relevant atomic goal lies on at least one prerequi
 
 ### Plan unit {unnumbered=true}
 
-*DE: Planeinheit* — see [Einheitenkonzept](repo:docs/concept/skill-graph/learning-unit-wiring-concept-2026-11-14.md)
+*DE: Planeinheit* — see [Learning Units](repo:docs/concept/skill-graph/learning-units.md) and [View Projection](repo:docs/concept/skill-graph/view-projection-and-goal-placement.md)
 
-Declared unit in the shared plan of one Land and duration model across selected subjects, such as stage, year, or phase; orders learning and creates no new competency.
+Declared unit in the shared plan of one Land and duration model across selected subjects (`SekI`, `SekII` with `SekII after SekI`, nesting years and `E`/`Q1`–`Q4`); orders the learning path under E1–E4, creates no new competency, and recognizes nothing implicitly on its own.
 
 ### Subject unit {unnumbered=true}
 
-*DE: Fachliche Einheit* — see [Einheitenkonzept](repo:docs/concept/skill-graph/learning-unit-wiring-concept-2026-11-14.md)
+*DE: Fachliche Einheit* — see [Learning Units](repo:docs/concept/skill-graph/learning-units.md)
 
-Declared cluster in the canonical subject landscape with a learning promise; applies across all Länder. A unit with assessments additionally demonstrates independent application of own content goals.
+Declared cluster in the canonical subject landscape with a learning promise and revision; applies across all Bundesländer (leaf subject units stay whole inside one plan unit across all 16 Länder). A **unit with assessments** (with own assessments and valid complete `coverageReviews`) additionally demonstrates independent application of its own content goals under R1–R5.
 
-### After {unnumbered=true}
+### `after` {unnumbered=true}
 
-*DE: after* — see [Einheitenkonzept](repo:docs/concept/skill-graph/learning-unit-wiring-concept-2026-11-14.md)
+*DE: `after`* — see [Unit Ordering](repo:docs/concept/skill-graph/learning-unit-progression.md)
 
-Declared order between sibling units: the preceding unit is fully complete in the intended flow before the other starts. Inherits order, not demand; no lock, mastery, or scope expansion.
+Declared order between sibling units of the same parent unit: the preceding unit is done in the intended learning flow before the next unit begins. `after` inherits order rather than demand, imposes no technical access lock, writes no mastery, and expands no knowledge context.
 
 ### Backflow {unnumbered=true}
 
-*DE: Rückgriff* — see [Einheitenkonzept](repo:docs/concept/skill-graph/learning-unit-wiring-concept-2026-11-14.md)
+*DE: Rückgriff* — see [Unit Ordering](repo:docs/concept/skill-graph/learning-unit-progression.md)
 
-A goal in an earlier plan unit requires a goal in a later one, directly or transitively. This is an E2 finding, including preparation; display and focus must not hide it.
+A goal in an earlier unit or plan unit requires, directly or transitively, a goal placed in a later one. That violates E2/E3 (including preparation); display, learner map, and focus must never hide backflows.
 
 ### Preparation {unnumbered=true}
 
-*DE: Vorbereitung* — see [Einheitenkonzept](repo:docs/concept/skill-graph/learning-unit-wiring-concept-2026-11-14.md)
+*DE: Vorbereitung* — see [Context & Views](repo:docs/concept/skill-graph/context-and-views.en.md)
 
-A necessary atom outside the carried seed targets receives a derived learning placement at its earliest actual need in the closed personal scope. Justified earlier preparation of a carried target stays explicitly labeled; source assignment is preserved.
+A necessary atom outside a Land plan's carried seed targets receives a deterministic derived learning placement at **earliest actual need** inside the closed personal scope $L$. Justified earlier preparation of a carried target remains explicitly labeled (`reviewedPreparation`) without overwriting official source assignment.
 
 ### Additional demand {unnumbered=true}
 
-*DE: Zusatzbedarf* — see [Einheitenkonzept](repo:docs/concept/skill-graph/learning-unit-wiring-concept-2026-11-14.md)
+*DE: Zusatzbedarf* — see [Context & Views](repo:docs/concept/skill-graph/context-and-views.en.md)
 
-Necessary goals outside the selected subject seed targets. Only these atoms are added, independently of mastery; displaying them by unit adds no entire external unit.
+Necessary prerequisite atoms in $L$ outside the selected subject seed targets $S$. Only those genuinely needed atoms are added, independently of current mastery; displaying them by unit never pulls in unneeded siblings of an external unit.
 
 ### Carried in / placed in {unnumbered=true}
 
-*DE: geführt in / steht in* — see [Einheitenkonzept](repo:docs/concept/skill-graph/learning-unit-wiring-concept-2026-11-14.md)
+*DE: Geführt in / steht in* — see [Context & Views](repo:docs/concept/skill-graph/context-and-views.en.md)
 
-Carried in means officially evidenced curricular assignment; placed in means didactic learning placement. Earlier preparation or a canonical default creates neither Land evidence nor learner results.
+*Carried in* means officially evidenced curricular source assignment (`officialSource`); *placed in* means didactic learning placement inside a plan unit. Earlier preparation or a provisional canonical phase marker creates neither Land source evidence nor learner results.
 
 ### Default assignment {unnumbered=true}
 
-*DE: Standardzuordnung* — see [Einheitenkonzept](repo:docs/concept/skill-graph/learning-unit-wiring-concept-2026-11-14.md)
+*DE: Standardzuordnung* — see [Context & Views](repo:docs/concept/skill-graph/context-and-views.en.md)
 
-Explicitly provisional didactic assignment from a canonical marker such as dimensionTags.phase when Land evidence is absent. Replaces neither source evidence nor coverage checking and does not override an authoritative view.
+Explicitly labeled provisional didactic assignment (`canonicalDefault`) derived from a canonical marker such as `dimensionTags.phase` while Land source evidence is absent. Replaces neither source evidence nor coverage checks and never overrides an authoritative view.
 
 ### Assessment gap {unnumbered=true}
 
-*DE: Prüfungslücke* — see [Einheitenkonzept](repo:docs/concept/skill-graph/learning-unit-wiring-concept-2026-11-14.md)
+*DE: Prüfungslücke* — see [Implicit Mastery](repo:docs/concept/skill-graph/assessment-gated-completion.md)
 
-A content goal without suitable reviewed task and rubric coverage remains a failing finding. Repair supplies a real assessment and review, never fictitious prerequisites or relaxed quality gates.
+An own content goal of a unit with assessments lacking suitable reviewed task and rubric coverage remains a failing finding (R1/R2). Repair supplies a sound assessment and independent review, never fictitious prerequisites or relaxed quality gates.

@@ -59,7 +59,7 @@
     "test:physics-semiconductor-learning-path": "tsx scripts/testPhysicsSemiconductorLearningPathReport.ts",
     "test:physics-semiconductor-source-repair": "tsx scripts/testPhysicsSemiconductorSourceRepair.ts",
     "test:stage-plan-contracts": "tsx scripts/testStagePlanContracts.ts",
-    "test:stage-plan-materialization": "tsx scripts/testStagePlanMaterialization.ts",
+    "test:stage-plan-materialization": "tsx scripts/testStagePlanMaterialization.ts && tsx scripts/testNestedStagePlans.ts",
     "generate:stage-plan-views": "tsx scripts/generateStagePlanViews.ts",
     "test:stage-plan-learning-flow": "tsx scripts/testStagePlanLearningFlowReport.ts",
     "report:stage-plan-learning-flow": "tsx scripts/reportStagePlanLearningFlow.ts",

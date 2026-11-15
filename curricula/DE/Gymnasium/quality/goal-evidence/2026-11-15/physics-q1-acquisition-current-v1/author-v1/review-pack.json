@@ -1,0 +1,3015 @@
+{
+  "status": "draft-author-candidate-no-independent-approval",
+  "reviews": [
+    {
+      "taskId": "665fd82d-01c6-510c-92b8-67442f3f8cf1",
+      "key": "magnetisation-two-materials",
+      "status": "draft-author-candidate-not-independent-review",
+      "coveredRowIndices": [
+        0
+      ],
+      "coverageBasis": [
+        {
+          "goalId": "0924162b-46d0-5c56-93bc-33e1f5ac6886",
+          "profileFingerprint": "sha256:39b86ef27a6735044056112b65a616cf06c4f88d39813ac41f3e219459b36260",
+          "requiredExpectationIds": [
+            "microscopic-moment-alignment-produces-macroscopic-magnetization",
+            "persistent-preferred-orientation-explains-permanent-magnetism"
+          ],
+          "independentDemonstrationsRequired": 2,
+          "expectationBindings": [
+            {
+              "expectationId": "microscopic-moment-alignment-produces-macroscopic-magnetization",
+              "scoringCoreIds": [
+                "k1"
+              ]
+            },
+            {
+              "expectationId": "persistent-preferred-orientation-explains-permanent-magnetism",
+              "scoringCoreIds": [
+                "k2"
+              ]
+            }
+          ]
+        }
+      ],
+      "essentialClaims": [
+        {
+          "core": "k1",
+          "criterionDe": "Vektorsumme und makroskopische Richtung/Stärke in A sowie ihre Verbindung mit der Feldwirkung in B; Modellgrenze ausdrücklich benennen.",
+          "criterionEn": "Vector sum, macroscopic direction/magnitude in A and field connection in B; explicit model limit.",
+          "counteranswerDe": "Alle Proben haben 12 Pfeile, daher gleich starke Magnetisierung.",
+          "missingCoreScoreMaximum": 5,
+          "minorErrorScore": 7,
+          "minorErrorPasses": true
+        },
+        {
+          "core": "k2",
+          "criterionDe": "Vorher–während–nachher für beide Materialien und bleibende Vorzugsorientierung einschließlich umgekehrter Magnetisierung in B.",
+          "criterionEn": "Before/during/after explanation and persistent preferred alignment, including reversal in B.",
+          "counteranswerDe": "Im eingeschalteten Feld sind beide gleich stark; daher bleiben beide permanent magnetisch.",
+          "missingCoreScoreMaximum": 5,
+          "minorErrorScore": 7,
+          "minorErrorPasses": true
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://openstax.org/books/university-physics-volume-2/pages/12-7-magnetism-in-matter",
+          "use": "Scientific model constraint only; all problem data and formulations are newly authored. No claim of official curriculum provenance."
+        }
+      ],
+      "authorNumericChecks": [
+        {
+          "calculation": "[6-6,8-4,2-10]",
+          "expected": [
+            0,
+            4,
+            -8
+          ],
+          "actual": [
+            0,
+            4,
+            -8
+          ],
+          "passed": true
+        }
+      ],
+      "placementProposal": {
+        "phase": "Q1",
+        "rule": "Attach only to the existing task container at the stage where ALL actual requires are already required; do not move ordinary goals or import broad Q1 packages into earlier units. Keep GK/LK applicability of preparation.",
+        "requires": [
+          "0924162b-46d0-5c56-93bc-33e1f5ac6886"
+        ]
+      }
+    },
+    {
+      "taskId": "908a7f3d-0e2e-56e3-b04e-bff50c899309",
+      "key": "radial-and-graphical-superposition",
+      "status": "draft-author-candidate-not-independent-review",
+      "coveredRowIndices": [
+        4,
+        9
+      ],
+      "coverageBasis": [
+        {
+          "goalId": "4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe",
+          "profileFingerprint": "sha256:a2a44c465426c9daae7656ea6b752b865cea730f2e7376db6718917ee6dc402a",
+          "requiredExpectationIds": [
+            "construct-vector-superposition",
+            "use-symmetry-and-predict-changes"
+          ],
+          "independentDemonstrationsRequired": 2,
+          "expectationBindings": [
+            {
+              "expectationId": "construct-vector-superposition",
+              "scoringCoreIds": [
+                "k2"
+              ]
+            },
+            {
+              "expectationId": "use-symmetry-and-predict-changes",
+              "scoringCoreIds": [
+                "k3"
+              ]
+            }
+          ]
+        },
+        {
+          "goalId": "98e42cda-9e5d-5910-b2c0-3e631fd20c78",
+          "profileFingerprint": "sha256:0040442d325bd3abf6eceecc57c06d3bda0b8d1146eb98389072c875c75a4f04",
+          "requiredExpectationIds": [
+            "represent-radial-field-and-scaling",
+            "apply-spherical-exterior-limit"
+          ],
+          "independentDemonstrationsRequired": 2,
+          "expectationBindings": [
+            {
+              "expectationId": "represent-radial-field-and-scaling",
+              "scoringCoreIds": [
+                "k1"
+              ]
+            },
+            {
+              "expectationId": "apply-spherical-exterior-limit",
+              "scoringCoreIds": [
+                "k1"
+              ]
+            }
+          ]
+        }
+      ],
+      "essentialClaims": [
+        {
+          "core": "k1",
+          "criterionDe": "Radiale Richtung und geometrische 1/r²-Begründung in A; gültiger gemeinsamer Kugel-Außenraum und explizite Innenraum-/Unsymmetriegrenze in B.",
+          "criterionEn": "Radial direction and geometric inverse-square argument in A; common spherical exterior and explicit interior/nonsymmetry limit in B.",
+          "counteranswerDe": "Doppelter Abstand halbiert E; gleiche Gesamtladung erzwingt überall gleiche Felder.",
+          "missingCoreScoreMaximum": 9,
+          "minorErrorScore": 11,
+          "minorErrorPasses": true
+        },
+        {
+          "core": "k2",
+          "criterionDe": "Grafische Addition mit Einzelvektoren, gemeinsamem Maßstab und korrekten Resultierenden in M/P in beiden unabhängigen Vorzeichenfällen.",
+          "criterionEn": "Graphical addition with individual arrows, common scale and correct resultants at M/P in both charge-sign cases.",
+          "counteranswerDe": "Zwei gleich starke Felder addieren sich in M immer zu doppeltem Betrag.",
+          "missingCoreScoreMaximum": 9,
+          "minorErrorScore": 11,
+          "minorErrorPasses": true
+        },
+        {
+          "core": "k3",
+          "criterionDe": "Qualitative Vorhersage vor Konstruktion und komponentenbezogene Symmetriebegründung für beide Anordnungen.",
+          "criterionEn": "Prediction before construction and component-specific symmetry reasoning for both configurations.",
+          "counteranswerDe": "Symmetrische Lage bedeutet auch beim Dipol überall Feld null.",
+          "missingCoreScoreMaximum": 9,
+          "minorErrorScore": 11,
+          "minorErrorPasses": true
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://openstax.org/books/university-physics-volume-2/pages/5-4-electric-field",
+          "use": "Scientific model constraint only; all problem data and formulations are newly authored. No claim of official curriculum provenance."
+        },
+        {
+          "url": "https://openstax.org/books/university-physics-volume-2/pages/6-3-applying-gausss-law",
+          "use": "Scientific model constraint only; all problem data and formulations are newly authored. No claim of official curriculum provenance."
+        }
+      ],
+      "authorNumericChecks": [
+        {
+          "calculation": "[1,1/2**2,1/3**2]",
+          "expected": [
+            1,
+            0.25,
+            0.1111111111111111
+          ],
+          "actual": [
+            1,
+            0.25,
+            0.1111111111111111
+          ],
+          "passed": true
+        }
+      ],
+      "placementProposal": {
+        "phase": "Q1",
+        "rule": "Attach only to the existing task container at the stage where ALL actual requires are already required; do not move ordinary goals or import broad Q1 packages into earlier units. Keep GK/LK applicability of preparation.",
+        "requires": [
+          "4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe"
+        ]
+      }
+    },
+    {
+      "taskId": "d044ffb0-eba1-5063-bd71-ee1d351b036f",
+      "key": "electric-particle-paths",
+      "status": "draft-author-candidate-not-independent-review",
+      "coveredRowIndices": [
+        5
+      ],
+      "coverageBasis": [
+        {
+          "goalId": "741774ef-15fc-4bcf-a370-e2c5cf4257d0",
+          "profileFingerprint": "sha256:1bf5a942316f2b0437fdc8b35d1e0a4dfabeb87ae7ac9770f06464e1cf7ef64b",
+          "requiredExpectationIds": [
+            "independent-review-a-understanding",
+            "independent-review-b-understanding"
+          ],
+          "independentDemonstrationsRequired": 2,
+          "expectationBindings": [
+            {
+              "expectationId": "independent-review-a-understanding",
+              "scoringCoreIds": [
+                "k1",
+                "k2",
+                "k3"
+              ]
+            },
+            {
+              "expectationId": "independent-review-b-understanding",
+              "scoringCoreIds": [
+                "k1",
+                "k2",
+                "k3"
+              ]
+            }
+          ]
+        }
+      ],
+      "essentialClaims": [
+        {
+          "core": "k1",
+          "criterionDe": "F=qE mit Ladungsvorzeichen und konsistente Kraft-/Beschleunigungsrichtungen in A und B einschließlich Feldumkehr.",
+          "criterionEn": "F=qE with charge sign and consistent force/acceleration directions in A/B and field reversal.",
+          "counteranswerDe": "Das negative Teilchen beschleunigt immer in Feldrichtung.",
+          "missingCoreScoreMaximum": 9,
+          "minorErrorScore": 11,
+          "minorErrorPasses": true
+        },
+        {
+          "core": "k2",
+          "criterionDe": "Anfangsbewegung und konstante Kraft zu Bahnformen kombinieren, einschließlich Abbremsen/Umkehr und erhaltener Querbewegung im Transfer.",
+          "criterionEn": "Combine initial motion and constant force into paths, including slowing/reversal and persistent transverse motion.",
+          "counteranswerDe": "Bei vx=0 steht das schräg gestartete Teilchen vollständig still.",
+          "missingCoreScoreMaximum": 9,
+          "minorErrorScore": 11,
+          "minorErrorPasses": true
+        },
+        {
+          "core": "k3",
+          "criterionDe": "Feldarbeit, gegenläufige Energieänderungen und Gesamtenergie für die konkrete A-Rechnung sowie beide Bewegungsphasen in B.",
+          "criterionEn": "Field work, opposite energy changes and total energy for A calculation and both phases of B.",
+          "counteranswerDe": "Im E-Feld steigt die kinetische Energie unabhängig von Bewegungsrichtung immer an.",
+          "missingCoreScoreMaximum": 9,
+          "minorErrorScore": 11,
+          "minorErrorPasses": true
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://openstax.org/books/university-physics-volume-2/pages/5-4-electric-field",
+          "use": "Scientific model constraint only; all problem data and formulations are newly authored. No claim of official curriculum provenance."
+        }
+      ],
+      "authorNumericChecks": [
+        {
+          "calculation": "2e-9*2e3",
+          "expected": 4e-06,
+          "unit": "N",
+          "actual": 4.000000000000001e-06,
+          "passed": true
+        },
+        {
+          "calculation": "2e-9*2e3*.03",
+          "expected": 1.2e-07,
+          "unit": "J",
+          "actual": 1.2000000000000002e-07,
+          "passed": true
+        }
+      ],
+      "placementProposal": {
+        "phase": "Q1",
+        "rule": "Attach only to the existing task container at the stage where ALL actual requires are already required; do not move ordinary goals or import broad Q1 packages into earlier units. Keep GK/LK applicability of preparation.",
+        "requires": [
+          "741774ef-15fc-4bcf-a370-e2c5cf4257d0"
+        ]
+      }
+    },
+    {
+      "taskId": "cb45d084-4e0f-5926-958c-f1d0ce456906",
+      "key": "lorentz-and-controlled-orbits",
+      "status": "draft-author-candidate-not-independent-review",
+      "coveredRowIndices": [
+        8,
+        25
+      ],
+      "coverageBasis": [
+        {
+          "goalId": "9854589c-5feb-4942-b90f-311ddf36eb78",
+          "profileFingerprint": "sha256:88f91b1ce327b0c53446ded068c6cd2ef62bc9a8b576f07ec33e78c70beb47f0",
+          "requiredExpectationIds": [
+            "known-v-and-b-directions-link-curvature-to-charge-sign",
+            "controlled-radius-comparisons-isolate-m-v-and-b-effects"
+          ],
+          "independentDemonstrationsRequired": 2,
+          "expectationBindings": [
+            {
+              "expectationId": "known-v-and-b-directions-link-curvature-to-charge-sign",
+              "scoringCoreIds": [
+                "k2",
+                "k3"
+              ]
+            },
+            {
+              "expectationId": "controlled-radius-comparisons-isolate-m-v-and-b-effects",
+              "scoringCoreIds": [
+                "k4"
+              ]
+            }
+          ]
+        },
+        {
+          "goalId": "8c9394cb-f54a-508d-9750-4c49e31b3fa9",
+          "profileFingerprint": "sha256:7442db6ec97d104db9cf23596dcdd149f4838e5e4dbe4c27b0f4b7b550734175",
+          "requiredExpectationIds": [
+            "magnitude-and-angle-meaning",
+            "vector-direction-and-charge-sign",
+            "trajectory-limiting-cases"
+          ],
+          "independentDemonstrationsRequired": 2,
+          "expectationBindings": [
+            {
+              "expectationId": "magnitude-and-angle-meaning",
+              "scoringCoreIds": [
+                "k1"
+              ]
+            },
+            {
+              "expectationId": "vector-direction-and-charge-sign",
+              "scoringCoreIds": [
+                "k2"
+              ]
+            },
+            {
+              "expectationId": "trajectory-limiting-cases",
+              "scoringCoreIds": [
+                "k3"
+              ]
+            }
+          ]
+        }
+      ],
+      "essentialClaims": [
+        {
+          "core": "k1",
+          "criterionDe": "Betragsformel mit tatsächlichem Winkel einschließlich 30° und 0°/90°; entsprechende Grenzfälle auch bei Feldumkehr.",
+          "criterionEn": "Magnitude formula with actual angle including 30° and 0°/90°, repeated after field reversal.",
+          "counteranswerDe": "Der Winkel darf immer 90° gesetzt werden, daher auch parallel F=|q|vB.",
+          "missingCoreScoreMaximum": 13,
+          "minorErrorScore": 15,
+          "minorErrorPasses": true
+        },
+        {
+          "core": "k2",
+          "criterionDe": "Ladungsvorzeichen aus bekannter v/B-Richtung und Krümmung erschließen; Kreuzprodukt und Richtungsumkehr im neuen Fall.",
+          "criterionEn": "Infer charge from known v/B and curvature; cross product and reversal in transfer.",
+          "counteranswerDe": "Die obere Spur ist negativ, weil Elektronen immer nach oben abgelenkt werden.",
+          "missingCoreScoreMaximum": 13,
+          "minorErrorScore": 15,
+          "minorErrorPasses": true
+        },
+        {
+          "core": "k3",
+          "criterionDe": "Magnetkraft als senkrechte, arbeitsfreie Kraft und begründete Gerade/Kreis bei ausgeschlossenen weiteren Kräften in beiden Fällen.",
+          "criterionEn": "Perpendicular work-free force and justified straight/circular limits without other forces in both cases.",
+          "counteranswerDe": "Die Kreisbahn zeigt, dass das Magnetfeld den Geschwindigkeitsbetrag ständig erhöht.",
+          "missingCoreScoreMaximum": 13,
+          "minorErrorScore": 15,
+          "minorErrorPasses": true
+        },
+        {
+          "core": "k4",
+          "criterionDe": "Kontrollierte m/v/B-Radiusvergleiche einzeln begründen, Konstanten nennen und Mehrdeutigkeit bei unbekanntem m und v ausdrücklich begrenzen.",
+          "criterionEn": "Explain controlled m/v/B comparisons, name constants and limit inference when m/v are both unknown.",
+          "counteranswerDe": "Aus 2r folgt auch bei unbekanntem v zwingend 2 m.",
+          "missingCoreScoreMaximum": 13,
+          "minorErrorScore": 15,
+          "minorErrorPasses": true
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://openstax.org/books/university-physics-volume-2/pages/11-3-motion-of-a-charged-particle-in-a-magnetic-field",
+          "use": "Scientific model constraint only; all problem data and formulations are newly authored. No claim of official curriculum provenance."
+        }
+      ],
+      "authorNumericChecks": [
+        {
+          "calculation": "3e-9*4e3*.2",
+          "expected": 2.4e-06,
+          "unit": "N",
+          "actual": 2.4000000000000003e-06,
+          "passed": true
+        },
+        {
+          "calculation": "3e-9*4e3*.2*math.sin(math.pi/6)",
+          "expected": 1.2e-06,
+          "unit": "N",
+          "actual": 1.2e-06,
+          "passed": true
+        }
+      ],
+      "placementProposal": {
+        "phase": "Q1",
+        "rule": "Attach only to the existing task container at the stage where ALL actual requires are already required; do not move ordinary goals or import broad Q1 packages into earlier units. Keep GK/LK applicability of preparation.",
+        "requires": [
+          "9854589c-5feb-4942-b90f-311ddf36eb78"
+        ]
+      }
+    },
+    {
+      "taskId": "927084ea-cd50-5ba7-af81-2d868cb010e7",
+      "key": "quantitative-circular-orbits",
+      "status": "draft-author-candidate-not-independent-review",
+      "coveredRowIndices": [
+        2
+      ],
+      "coverageBasis": [
+        {
+          "goalId": "3b866aea-3e4d-5f23-91de-759148382710",
+          "profileFingerprint": "sha256:b405a4303968248e6e48d7aedafac4ba61bdf1006a6459364d5b494be50a0202",
+          "requiredExpectationIds": [
+            "lorentz-force-supplies-centripetal-force",
+            "radius-and-period-follow-different-scalings",
+            "charge-sign-and-model-regime-bound-result"
+          ],
+          "independentDemonstrationsRequired": 2,
+          "expectationBindings": [
+            {
+              "expectationId": "lorentz-force-supplies-centripetal-force",
+              "scoringCoreIds": [
+                "k1"
+              ]
+            },
+            {
+              "expectationId": "radius-and-period-follow-different-scalings",
+              "scoringCoreIds": [
+                "k2"
+              ]
+            },
+            {
+              "expectationId": "charge-sign-and-model-regime-bound-result",
+              "scoringCoreIds": [
+                "k3"
+              ]
+            }
+          ]
+        }
+      ],
+      "essentialClaims": [
+        {
+          "core": "k1",
+          "criterionDe": "Kraftbilanz und Herleitung beider Formeln mit Einheiten; arbeitsfreie Kreisbewegung in A und begründete Grenzen in B.",
+          "criterionEn": "Force balance, both derivations and units; work-free motion in A and justified model limits in B.",
+          "counteranswerDe": "T wird nur geraten; im Magnetfeld nimmt K pro Umlauf zu.",
+          "missingCoreScoreMaximum": 9,
+          "minorErrorScore": 11,
+          "minorErrorPasses": true
+        },
+        {
+          "core": "k2",
+          "criterionDe": "Konkrete r/T-Werte für beide Teilchen und getrennte m/|q|-, v- und B-Skalierungen im unabhängigen Ionenfall.",
+          "criterionEn": "Numerical r/T for both particles and separate m/|q|, v and B scaling in the independent ion case.",
+          "counteranswerDe": "Bei doppelter Geschwindigkeit verdoppeln sich r und T.",
+          "missingCoreScoreMaximum": 9,
+          "minorErrorScore": 11,
+          "minorErrorPasses": true
+        },
+        {
+          "core": "k3",
+          "criterionDe": "Umlaufsinn aus Ladungsvorzeichen und Feldrichtung; relativistischen und schrägen Eintritt ausdrücklich vom einfachen Vollkreis-Modell abgrenzen.",
+          "criterionEn": "Circulation from charge/B directions and explicit relativistic/oblique-entry limits.",
+          "counteranswerDe": "Auch bei 0,95c und 40° gilt unverändert r=mv/(|q|B) mit Gesamtgeschwindigkeit.",
+          "missingCoreScoreMaximum": 9,
+          "minorErrorScore": 11,
+          "minorErrorPasses": true
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://openstax.org/books/university-physics-volume-2/pages/11-3-motion-of-a-charged-particle-in-a-magnetic-field",
+          "use": "Scientific model constraint only; all problem data and formulations are newly authored. No claim of official curriculum provenance."
+        }
+      ],
+      "authorNumericChecks": [
+        {
+          "calculation": "1.67e-27*1e6/(1.6e-19*.1)",
+          "expected": 0.104375,
+          "unit": "m",
+          "actual": 0.10437500000000002,
+          "passed": true
+        },
+        {
+          "calculation": "2*math.pi*1.67e-27/(1.6e-19*.1)",
+          "expected": 6.558074664368694e-07,
+          "unit": "s",
+          "actual": 6.558074664368694e-07,
+          "passed": true
+        },
+        {
+          "calculation": "9.11e-31*1e6/(1.6e-19*.1)",
+          "expected": 5.69375e-05,
+          "unit": "m",
+          "actual": 5.69375e-05,
+          "passed": true
+        }
+      ],
+      "placementProposal": {
+        "phase": "Q1",
+        "rule": "Attach only to the existing task container at the stage where ALL actual requires are already required; do not move ordinary goals or import broad Q1 packages into earlier units. Keep GK/LK applicability of preparation.",
+        "requires": [
+          "3b866aea-3e4d-5f23-91de-759148382710"
+        ]
+      }
+    },
+    {
+      "taskId": "26a6cfcb-bc18-5a9b-b423-278123364f7c",
+      "key": "oblique-magnetic-entry",
+      "status": "draft-author-candidate-not-independent-review",
+      "coveredRowIndices": [
+        6
+      ],
+      "coverageBasis": [
+        {
+          "goalId": "7fe6f8a1-5580-4e37-bf8e-9772964a6b0a",
+          "profileFingerprint": "sha256:4747e4e2d3675d14b5dafc780b41df15473648cbb65b6fdb49dc17ef0b38b302",
+          "requiredExpectationIds": [
+            "velocity-decomposes-relative-to-field",
+            "components-map-to-straight-circular-or-helical-path",
+            "sign-and-reversal-change-selected-features"
+          ],
+          "independentDemonstrationsRequired": 2,
+          "expectationBindings": [
+            {
+              "expectationId": "velocity-decomposes-relative-to-field",
+              "scoringCoreIds": [
+                "k1"
+              ]
+            },
+            {
+              "expectationId": "components-map-to-straight-circular-or-helical-path",
+              "scoringCoreIds": [
+                "k2"
+              ]
+            },
+            {
+              "expectationId": "sign-and-reversal-change-selected-features",
+              "scoringCoreIds": [
+                "k3"
+              ]
+            }
+          ]
+        }
+      ],
+      "essentialClaims": [
+        {
+          "core": "k1",
+          "criterionDe": "Vektorzerlegung relativ zu B in A und geänderter Winkel in B, mit Zuordnung der konstanten und gekrümmten Komponenten.",
+          "criterionEn": "Velocity decomposition relative to B in A and new angle B, assigning constant/curved components.",
+          "counteranswerDe": "Die parallele Komponente wird durch die Lorentzkraft gebremst.",
+          "missingCoreScoreMaximum": 9,
+          "minorErrorScore": 11,
+          "minorErrorPasses": true
+        },
+        {
+          "core": "k2",
+          "criterionDe": "Gerade, Kreis und Helix einschließlich Radius/Achse/Vorschub aus den jeweiligen Komponenten, im neuen 30°-Fall.",
+          "criterionEn": "Straight/circular/helical paths and component-based radius/axis/advance, including 30° transfer.",
+          "counteranswerDe": "Bei 30° bleibt der Radius gleich, weil der Gesamtbetrag v gleich ist.",
+          "missingCoreScoreMaximum": 9,
+          "minorErrorScore": 11,
+          "minorErrorPasses": true
+        },
+        {
+          "core": "k3",
+          "criterionDe": "Getrennte Wirkung von Ladung, B-Umkehr und v_parallel-Umkehr auf Umlaufsinn und Vorschub bei erhaltener Energie.",
+          "criterionEn": "Separate effects of charge, B reversal and parallel-velocity reversal on circulation/advance with conserved K.",
+          "counteranswerDe": "B-Umkehr kehrt stets auch die Vorschubrichtung und die Energie um.",
+          "missingCoreScoreMaximum": 9,
+          "minorErrorScore": 11,
+          "minorErrorPasses": true
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://openstax.org/books/university-physics-volume-2/pages/11-3-motion-of-a-charged-particle-in-a-magnetic-field",
+          "use": "Scientific model constraint only; all problem data and formulations are newly authored. No claim of official curriculum provenance."
+        }
+      ],
+      "authorNumericChecks": [
+        {
+          "calculation": "math.hypot(3e4,4e4)",
+          "expected": 50000.0,
+          "unit": "m/s",
+          "actual": 50000.0,
+          "passed": true
+        },
+        {
+          "calculation": "math.sin(math.pi/6)",
+          "expected": 0.5,
+          "actual": 0.49999999999999994,
+          "passed": true
+        }
+      ],
+      "placementProposal": {
+        "phase": "Q1",
+        "rule": "Attach only to the existing task container at the stage where ALL actual requires are already required; do not move ordinary goals or import broad Q1 packages into earlier units. Keep GK/LK applicability of preparation.",
+        "requires": [
+          "7fe6f8a1-5580-4e37-bf8e-9772964a6b0a"
+        ]
+      }
+    },
+    {
+      "taskId": "aa1841dd-f6fd-57e3-b931-1cb4959650c2",
+      "key": "mass-spectrometer-functions",
+      "status": "draft-author-candidate-not-independent-review",
+      "coveredRowIndices": [
+        3
+      ],
+      "coverageBasis": [
+        {
+          "goalId": "3f17d0d2-562d-4c1c-9ebc-1a1a43f28f9c",
+          "profileFingerprint": "sha256:50c2b08199c97e9230a5077429823c5a9e82cc5356853de15289ac38c7934c0e",
+          "requiredExpectationIds": [
+            "independent-review-a-understanding",
+            "independent-review-b-understanding"
+          ],
+          "independentDemonstrationsRequired": 2,
+          "expectationBindings": [
+            {
+              "expectationId": "independent-review-a-understanding",
+              "scoringCoreIds": [
+                "k1",
+                "k2",
+                "k3"
+              ]
+            },
+            {
+              "expectationId": "independent-review-b-understanding",
+              "scoringCoreIds": [
+                "k1",
+                "k2",
+                "k3"
+              ]
+            }
+          ]
+        }
+      ],
+      "essentialClaims": [
+        {
+          "core": "k1",
+          "criterionDe": "Funktionen von Beschleunigung, Geschwindigkeitsauswahl und magnetischer Analyse mit Kraft-/Energiewirkung in A sowie veränderte Polung in B.",
+          "criterionEn": "Functions of acceleration, selection and magnetic analysis with force/energy roles in A and changed polarity in B.",
+          "counteranswerDe": "Das Magnetfeld beschleunigt die Ionen energetisch; das E-Feld sortiert nur ihre Masse.",
+          "missingCoreScoreMaximum": 9,
+          "minorErrorScore": 11,
+          "minorErrorPasses": true
+        },
+        {
+          "core": "k2",
+          "criterionDe": "Ladungsvorzeichen, v×B und entgegengesetzte Filterkräfte in beiden unabhängigen Vorzeichenfällen; Analysefeldumkehr korrekt.",
+          "criterionEn": "Charge sign, v×B and opposing selector forces in both charge cases; correct analyser reversal.",
+          "counteranswerDe": "Bei negativen Ionen wirken im unveränderten Filter beide Kräfte nach oben.",
+          "missingCoreScoreMaximum": 9,
+          "minorErrorScore": 11,
+          "minorErrorPasses": true
+        },
+        {
+          "core": "k3",
+          "criterionDe": "m/|q|-Trennung, 1:2:1-Radien und Mehrdeutigkeit gleicher Detektororte samt gültigen konstanten Bedingungen, auch im neuen Fall.",
+          "criterionEn": "m/|q| separation, 1:2:1 radii and detector ambiguity under controlled conditions in both cases.",
+          "counteranswerDe": "Ion III hat doppelte Masse und muss daher trotz doppelter Ladung getrennt von I auftreten.",
+          "missingCoreScoreMaximum": 9,
+          "minorErrorScore": 11,
+          "minorErrorPasses": true
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://openstax.org/books/university-physics-volume-2/pages/11-7-applications-of-magnetic-forces-and-fields",
+          "use": "Scientific model constraint only; all problem data and formulations are newly authored. No claim of official curriculum provenance."
+        }
+      ],
+      "authorNumericChecks": [
+        {
+          "calculation": "[1/1,2/1,2/2]",
+          "expected": [
+            1,
+            2,
+            1
+          ],
+          "actual": [
+            1.0,
+            2.0,
+            1.0
+          ],
+          "passed": true
+        }
+      ],
+      "placementProposal": {
+        "phase": "Q1",
+        "rule": "Attach only to the existing task container at the stage where ALL actual requires are already required; do not move ordinary goals or import broad Q1 packages into earlier units. Keep GK/LK applicability of preparation.",
+        "requires": [
+          "3f17d0d2-562d-4c1c-9ebc-1a1a43f28f9c"
+        ]
+      }
+    },
+    {
+      "taskId": "c6b7efac-c795-5c58-8138-f47731ba983f",
+      "key": "fine-beam-indirect-measurement",
+      "status": "draft-author-candidate-not-independent-review",
+      "coveredRowIndices": [
+        7
+      ],
+      "coverageBasis": [
+        {
+          "goalId": "966782e5-690d-4fae-bbab-fa3fa30525c3",
+          "profileFingerprint": "sha256:7e8fb7d879119d99b539249551fc0f3119cb1a8acc2cc7a081a8e3c8f383ad47",
+          "requiredExpectationIds": [
+            "set-measured-inferred-chain",
+            "specific-charge-determination",
+            "mass-needs-independent-charge"
+          ],
+          "independentDemonstrationsRequired": 2,
+          "expectationBindings": [
+            {
+              "expectationId": "set-measured-inferred-chain",
+              "scoringCoreIds": [
+                "k1"
+              ]
+            },
+            {
+              "expectationId": "specific-charge-determination",
+              "scoringCoreIds": [
+                "k2"
+              ]
+            },
+            {
+              "expectationId": "mass-needs-independent-charge",
+              "scoringCoreIds": [
+                "k3"
+              ]
+            }
+          ]
+        }
+      ],
+      "essentialClaims": [
+        {
+          "core": "k1",
+          "criterionDe": "Eingestellt/gemessen/erschlossen über vollständige Kette in A unterscheiden und direkte Massenbehauptung im neuen Fall begrenzen.",
+          "criterionEn": "Distinguish set/measured/inferred through the full chain in A and reject direct-mass claim in B.",
+          "counteranswerDe": "B, e und m werden alle direkt an der Spur abgelesen.",
+          "missingCoreScoreMaximum": 9,
+          "minorErrorScore": 11,
+          "minorErrorPasses": true
+        },
+        {
+          "core": "k2",
+          "criterionDe": "Energie- und Kraftbilanz zur spezifischen Ladung mit Einheit kombinieren; unabhängige U- und I-Variationen vorhersagen und Daten B auswerten.",
+          "criterionEn": "Combine energy/force balances for specific charge with units; predict independent U/I variations and evaluate B.",
+          "counteranswerDe": "Verdopplung von I verdoppelt r; die Energiegleichung wird nicht benötigt.",
+          "missingCoreScoreMaximum": 9,
+          "minorErrorScore": 11,
+          "minorErrorPasses": true
+        },
+        {
+          "core": "k3",
+          "criterionDe": "Zusätzlich unabhängig bekanntes |e| als notwendige Information benennen und daraus m berechnen; Verhältnis nicht als Masse ausgeben.",
+          "criterionEn": "Identify independent |e| as necessary added information and calculate m without confusing ratio and mass.",
+          "counteranswerDe": "1,758·10¹¹ C/kg ist bereits die gemessene Elektronenmasse.",
+          "missingCoreScoreMaximum": 9,
+          "minorErrorScore": 11,
+          "minorErrorPasses": true
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://openstax.org/books/university-physics-volume-2/pages/11-3-motion-of-a-charged-particle-in-a-magnetic-field",
+          "use": "Scientific model constraint only; all problem data and formulations are newly authored. No claim of official curriculum provenance."
+        }
+      ],
+      "authorNumericChecks": [
+        {
+          "calculation": "400/(.001**2*.0477**2)",
+          "expected": 175801765928.73877,
+          "unit": "C/kg",
+          "actual": 175801765928.73877,
+          "passed": true
+        },
+        {
+          "calculation": "900/(.001**2*.0715**2)",
+          "expected": 176047728495.281,
+          "unit": "C/kg",
+          "actual": 176047728495.281,
+          "passed": true
+        },
+        {
+          "calculation": "math.sqrt(450/200)",
+          "expected": 1.5,
+          "actual": 1.5,
+          "passed": true
+        }
+      ],
+      "placementProposal": {
+        "phase": "Q1",
+        "rule": "Attach only to the existing task container at the stage where ALL actual requires are already required; do not move ordinary goals or import broad Q1 packages into earlier units. Keep GK/LK applicability of preparation.",
+        "requires": [
+          "966782e5-690d-4fae-bbab-fa3fa30525c3"
+        ]
+      }
+    },
+    {
+      "taskId": "bbf3de7f-704c-5e3f-bb8a-32de43e78043",
+      "key": "cyclotron-synchrotron-comparison",
+      "status": "draft-author-candidate-not-independent-review",
+      "coveredRowIndices": [
+        1
+      ],
+      "coverageBasis": [
+        {
+          "goalId": "2d62b444-796e-548d-aeee-cfd9c6665ddc",
+          "profileFingerprint": "sha256:9bca4e57c1709f942851d33109eae896d523ea4c5c1b9687286eb7bab8aa28d4",
+          "requiredExpectationIds": [
+            "electric-and-magnetic-fields-have-distinct-roles",
+            "ideal-cyclotron-has-fixed-timing-and-growing-radius",
+            "synchrotron-requires-coordinated-adjustment"
+          ],
+          "independentDemonstrationsRequired": 2,
+          "expectationBindings": [
+            {
+              "expectationId": "electric-and-magnetic-fields-have-distinct-roles",
+              "scoringCoreIds": [
+                "k1"
+              ]
+            },
+            {
+              "expectationId": "ideal-cyclotron-has-fixed-timing-and-growing-radius",
+              "scoringCoreIds": [
+                "k2"
+              ]
+            },
+            {
+              "expectationId": "synchrotron-requires-coordinated-adjustment",
+              "scoringCoreIds": [
+                "k3"
+              ]
+            }
+          ]
+        }
+      ],
+      "essentialClaims": [
+        {
+          "core": "k1",
+          "criterionDe": "Elektrische Energiezufuhr und arbeitsfreie magnetische Bahnführung für beide Anlagen sowie neue Ionensorte getrennt begründen.",
+          "criterionEn": "Separate electric energy supply and work-free magnetic steering for both machines and the new species.",
+          "counteranswerDe": "Das stärkere Synchrotronmagnetfeld liefert selbst den gesamten Energiezuwachs.",
+          "missingCoreScoreMaximum": 9,
+          "minorErrorScore": 11,
+          "minorErrorPasses": true
+        },
+        {
+          "core": "k2",
+          "criterionDe": "Feste nichtrelativistische Zyklotrontaktung aus m/|q| und wachsender Radius; neue Ionensorte und relativistische Synchronitätsgrenze.",
+          "criterionEn": "Fixed nonrelativistic cyclotron timing and growing radius; new-species scaling and relativistic synchronism limit.",
+          "counteranswerDe": "Die feste Zyklotronfrequenz gilt für jede Ionensorte und beliebig nahe c.",
+          "missingCoreScoreMaximum": 9,
+          "minorErrorScore": 11,
+          "minorErrorPasses": true
+        },
+        {
+          "core": "k3",
+          "criterionDe": "Synchrotron-B/Phasenanpassung und datenbegrenzte Wahl: Ziel unter gegebenen Br-Grenzen unmöglich, nötige Änderung explizit.",
+          "criterionEn": "Synchrotron B/phase coordination and data-limited feasibility: target impossible under Br limits, required change explicit.",
+          "counteranswerDe": "Ein Synchrotron erreicht bei gleichem maximalem Br jedes beliebige p, weil der Radius konstant bleibt.",
+          "missingCoreScoreMaximum": 9,
+          "minorErrorScore": 11,
+          "minorErrorPasses": true
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2011.02932",
+          "use": "Scientific model constraint only; all problem data and formulations are newly authored. No claim of official curriculum provenance."
+        }
+      ],
+      "authorNumericChecks": [
+        {
+          "calculation": "1.5*.5",
+          "expected": 0.75,
+          "unit": "T m",
+          "actual": 0.75,
+          "passed": true
+        },
+        {
+          "calculation": "1/.5",
+          "expected": 2,
+          "unit": "T",
+          "actual": 2.0,
+          "passed": true
+        },
+        {
+          "calculation": "1/1.5",
+          "expected": 0.6666666666666666,
+          "unit": "m",
+          "actual": 0.6666666666666666,
+          "passed": true
+        }
+      ],
+      "placementProposal": {
+        "phase": "Q1",
+        "rule": "Attach only to the existing task container at the stage where ALL actual requires are already required; do not move ordinary goals or import broad Q1 packages into earlier units. Keep GK/LK applicability of preparation.",
+        "requires": [
+          "2d62b444-796e-548d-aeee-cfd9c6665ddc"
+        ]
+      }
+    },
+    {
+      "taskId": "9fe94c34-8100-5f4c-b646-69c1983f8adc",
+      "key": "friction-and-charge-conservation",
+      "status": "draft-author-candidate-not-independent-review",
+      "coveredRowIndices": [
+        10,
+        15
+      ],
+      "coverageBasis": [
+        {
+          "goalId": "a6e48b88-51ed-5942-bdb8-8d2192652e0d",
+          "profileFingerprint": "sha256:2348e27d0ae8d2f95ca4d130d658fefe4c6292c1e0b465d06bc7562d9b1daaa5",
+          "requiredExpectationIds": [
+            "controlled-frictional-charge-separation-observations",
+            "qualitative-electric-force-and-evidence-limits"
+          ],
+          "independentDemonstrationsRequired": 2,
+          "expectationBindings": [
+            {
+              "expectationId": "controlled-frictional-charge-separation-observations",
+              "scoringCoreIds": [
+                "k1"
+              ]
+            },
+            {
+              "expectationId": "qualitative-electric-force-and-evidence-limits",
+              "scoringCoreIds": [
+                "k2"
+              ]
+            }
+          ]
+        },
+        {
+          "goalId": "25998fed-ea4d-4c3e-b606-e965b5d7f290",
+          "profileFingerprint": "sha256:edcdd694d7d748b34ff0443b9412ab8c81a17f6ef654984699c07d7b7dc77baf",
+          "requiredExpectationIds": [
+            "closed-system-algebraic-total-is-conserved",
+            "local-changes-are-transfers-across-subsystem-boundaries"
+          ],
+          "independentDemonstrationsRequired": 2,
+          "expectationBindings": [
+            {
+              "expectationId": "closed-system-algebraic-total-is-conserved",
+              "scoringCoreIds": [
+                "k3"
+              ]
+            },
+            {
+              "expectationId": "local-changes-are-transfers-across-subsystem-boundaries",
+              "scoringCoreIds": [
+                "k4"
+              ]
+            }
+          ]
+        }
+      ],
+      "essentialClaims": [
+        {
+          "core": "k1",
+          "criterionDe": "Kontrollierter phänomenologischer Vorher/Nachher-Vergleich mit beiden getrennten Reibpartnern, Beobachtung/Deutung und neuen Referenzbeobachtungen.",
+          "criterionEn": "Controlled before/after comparison of both separated rubbing partners, observation/inference and fresh reference observations.",
+          "counteranswerDe": "Ohne Kontrolle wird nur behauptet, Reiben erzeuge neue Nettoladung.",
+          "missingCoreScoreMaximum": 13,
+          "minorErrorScore": 15,
+          "minorErrorPasses": true
+        },
+        {
+          "core": "k2",
+          "criterionDe": "Anziehung/Abstoßung und Kräfte auf beide Partner samt Grenzen der Vorzeichenbestimmung einschließlich neutralem Papier.",
+          "criterionEn": "Attraction/repulsion and forces on both partners with charge-sign inference limits, including neutral paper.",
+          "counteranswerDe": "Jeder angezogene Körper ist zwingend entgegengesetzt geladen; Papier ist daher positiv.",
+          "missingCoreScoreMaximum": 13,
+          "minorErrorScore": 15,
+          "minorErrorPasses": true
+        },
+        {
+          "core": "k3",
+          "criterionDe": "Algebraische Gesamtladung und fehlende Teilgröße für unabhängige Zweikörper- und Dreikörperbilanzen korrekt.",
+          "criterionEn": "Algebraic total charge and missing part for independent two-/three-body balances.",
+          "counteranswerDe": "Nach Reiben darf die abgeschlossene Summe beliebig von null abweichen.",
+          "missingCoreScoreMaximum": 13,
+          "minorErrorScore": 15,
+          "minorErrorPasses": true
+        },
+        {
+          "core": "k4",
+          "criterionDe": "Offene Teilgrenze versus erweitertes abgeschlossenes System und konkreter Ladungstransfer bei Erdung, ohne Vernichtung/Erzeugung.",
+          "criterionEn": "Open subsystem versus extended closed system and actual grounding transfer without destruction/creation.",
+          "counteranswerDe": "Die +4 nC verschwinden aus dem Universum, weil die Kugel danach neutral ist.",
+          "missingCoreScoreMaximum": 13,
+          "minorErrorScore": 15,
+          "minorErrorPasses": true
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://openstax.org/books/university-physics-volume-2/pages/5-1-electric-charge",
+          "use": "Scientific model constraint only; all problem data and formulations are newly authored. No claim of official curriculum provenance."
+        }
+      ],
+      "authorNumericChecks": [
+        {
+          "calculation": "5-2-1-6",
+          "expected": -4,
+          "unit": "nC",
+          "actual": -4,
+          "passed": true
+        }
+      ],
+      "placementProposal": {
+        "phase": "Q1",
+        "rule": "Attach only to the existing task container at the stage where ALL actual requires are already required; do not move ordinary goals or import broad Q1 packages into earlier units. Keep GK/LK applicability of preparation.",
+        "requires": [
+          "25998fed-ea4d-4c3e-b606-e965b5d7f290"
+        ]
+      }
+    },
+    {
+      "taskId": "a7972e13-41f9-5f7b-bc43-5fe2699a4823",
+      "key": "voltage-work-and-capacitor",
+      "status": "draft-author-candidate-not-independent-review",
+      "coveredRowIndices": [
+        14,
+        27
+      ],
+      "coverageBasis": [
+        {
+          "goalId": "1730c01d-8c85-57df-b031-c11e2a0511b1",
+          "profileFingerprint": "sha256:c8c053eba6eb0606730537a8d9a2206e4e841ba0d3d639784f2690a95d75d3b2",
+          "requiredExpectationIds": [
+            "potential-voltage-work-energy-signs",
+            "uniform-field-parallel-separation-limit"
+          ],
+          "independentDemonstrationsRequired": 2,
+          "expectationBindings": [
+            {
+              "expectationId": "potential-voltage-work-energy-signs",
+              "scoringCoreIds": [
+                "k1"
+              ]
+            },
+            {
+              "expectationId": "uniform-field-parallel-separation-limit",
+              "scoringCoreIds": [
+                "k1",
+                "k2"
+              ]
+            }
+          ]
+        },
+        {
+          "goalId": "9f59a088-3939-59e9-821d-167fadfda782",
+          "profileFingerprint": "sha256:37090af10251777f48198ccdee8dacc5862468bddbf4b4601ecbf5fcca09dc51",
+          "requiredExpectationIds": [
+            "independent-review-a-understanding",
+            "independent-review-b-understanding"
+          ],
+          "independentDemonstrationsRequired": 2,
+          "expectationBindings": [
+            {
+              "expectationId": "independent-review-a-understanding",
+              "scoringCoreIds": [
+                "k2",
+                "k3",
+                "k4"
+              ]
+            },
+            {
+              "expectationId": "independent-review-b-understanding",
+              "scoringCoreIds": [
+                "k2",
+                "k3",
+                "k4"
+              ]
+            }
+          ]
+        }
+      ],
+      "essentialClaims": [
+        {
+          "core": "k1",
+          "criterionDe": "Potenzialnullpunkt, geordnete Spannung und Arbeits-/Energievorzeichen für beide Ladungen in A und projizierte Strecke in B.",
+          "criterionEn": "Potential reference, ordered voltage and energy/work signs for both charges, plus projection in B.",
+          "counteranswerDe": "Spannung hat kein Vorzeichen; negative Ladung verliert bei gleicher Bewegung dieselbe potenzielle Energie wie positive.",
+          "missingCoreScoreMaximum": 13,
+          "minorErrorScore": 15,
+          "minorErrorPasses": true
+        },
+        {
+          "core": "k2",
+          "criterionDe": "Homogenes Feld skizzieren und E=|U|/d mit SI-Einheiten rechnen; neue Geometrie und schräge Verbindungsstrecke korrekt unterscheiden.",
+          "criterionEn": "Sketch uniform field, calculate E with SI units, and distinguish new plate geometry from oblique displacement.",
+          "counteranswerDe": "Bei schräger Strecke gilt immer |U|=E mal volle Strecke.",
+          "missingCoreScoreMaximum": 13,
+          "minorErrorScore": 15,
+          "minorErrorPasses": true
+        },
+        {
+          "core": "k3",
+          "criterionDe": "Kapazität vollständig mit ε₀ε_rA/d berechnen und unabhängige A/d/ε_r-Abhängigkeiten unter klarer Randbedingung begründen.",
+          "criterionEn": "Calculate capacitance and justify independent area/separation/permittivity scalings under clear boundary conditions.",
+          "counteranswerDe": "Doppelter Plattenabstand verdoppelt C; beim Materialwechsel bleibt C immer gleich.",
+          "missingCoreScoreMaximum": 13,
+          "minorErrorScore": 15,
+          "minorErrorPasses": true
+        },
+        {
+          "core": "k4",
+          "criterionDe": "Modellannahmen: große parallele Platten, fern der Ränder, vollständige homogene Füllung; Grenzen in beiden Situationen.",
+          "criterionEn": "Model assumptions: large parallel plates, negligible edges, complete homogeneous filling; explicit limits.",
+          "counteranswerDe": "Eine einzige mittlere ε_r darf ohne Begründung jede Teilfüllung und jeden Randbereich ersetzen.",
+          "missingCoreScoreMaximum": 13,
+          "minorErrorScore": 15,
+          "minorErrorPasses": true
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://openstax.org/books/university-physics-volume-2/pages/7-3-electric-potential-and-potential-difference",
+          "use": "Scientific model constraint only; all problem data and formulations are newly authored. No claim of official curriculum provenance."
+        },
+        {
+          "url": "https://openstax.org/books/university-physics-volume-2/pages/8-1-capacitors-and-capacitance",
+          "use": "Scientific model constraint only; all problem data and formulations are newly authored. No claim of official curriculum provenance."
+        }
+      ],
+      "authorNumericChecks": [
+        {
+          "calculation": "160/.004",
+          "expected": 40000,
+          "unit": "N/C",
+          "actual": 40000.0,
+          "passed": true
+        },
+        {
+          "calculation": "8.85e-12*2*.02/.004",
+          "expected": 8.85e-11,
+          "unit": "F",
+          "actual": 8.85e-11,
+          "passed": true
+        },
+        {
+          "calculation": "-2000*.06*math.cos(math.pi/3)",
+          "expected": -60,
+          "unit": "V",
+          "actual": -60.000000000000014,
+          "passed": true
+        }
+      ],
+      "placementProposal": {
+        "phase": "Q1",
+        "rule": "Attach only to the existing task container at the stage where ALL actual requires are already required; do not move ordinary goals or import broad Q1 packages into earlier units. Keep GK/LK applicability of preparation.",
+        "requires": [
+          "9f59a088-3939-59e9-821d-167fadfda782"
+        ]
+      }
+    },
+    {
+      "taskId": "61225322-fa5b-5414-b7da-ca90c9035adb",
+      "key": "potential-and-equipotential-construction",
+      "status": "draft-author-candidate-not-independent-review",
+      "coveredRowIndices": [
+        16
+      ],
+      "coverageBasis": [
+        {
+          "goalId": "2622bef1-bdbc-504e-b468-b600b2ca3ed8",
+          "profileFingerprint": "sha256:06b5025ffd2dc6e10ea8f66e35a685d51685cfd1a53d03db5a8eb80bad9c00c0",
+          "requiredExpectationIds": [
+            "independent-review-a-understanding",
+            "independent-review-b-understanding"
+          ],
+          "independentDemonstrationsRequired": 2,
+          "expectationBindings": [
+            {
+              "expectationId": "independent-review-a-understanding",
+              "scoringCoreIds": [
+                "k1",
+                "k2"
+              ]
+            },
+            {
+              "expectationId": "independent-review-b-understanding",
+              "scoringCoreIds": [
+                "k1",
+                "k2"
+              ]
+            }
+          ]
+        }
+      ],
+      "essentialClaims": [
+        {
+          "core": "k1",
+          "criterionDe": "Skalare Potenziale und vorzeichenrichtige Spannungen in beiden Geometrien berechnen und Unabhängigkeit von gemeinsamer Referenzverschiebung nachweisen.",
+          "criterionEn": "Calculate scalar potentials and signed voltages in both geometries; demonstrate common-reference invariance.",
+          "counteranswerDe": "Wenn alle Potenziale um 15 V steigen, steigt jede Spannung ebenfalls um 15 V.",
+          "missingCoreScoreMaximum": 5,
+          "minorErrorScore": 7,
+          "minorErrorPasses": true
+        },
+        {
+          "core": "k2",
+          "criterionDe": "Eigene Äquipotenzialkonstruktion in homogenem und radialem Feld mit senkrechten Feldpfeilen; gleiche Potenzialschritte zur Stärkedeutung verwenden.",
+          "criterionEn": "Construct equipotentials in uniform/radial fields with perpendicular field arrows; interpret equal-potential increments.",
+          "counteranswerDe": "Gleich weit entfernte Kreise mit ungleichen Spannungsstufen beweisen konstantes Feld.",
+          "missingCoreScoreMaximum": 5,
+          "minorErrorScore": 7,
+          "minorErrorPasses": true
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://openstax.org/books/university-physics-volume-2/pages/7-5-equipotential-surfaces-and-conductors",
+          "use": "Scientific model constraint only; all problem data and formulations are newly authored. No claim of official curriculum provenance."
+        },
+        {
+          "url": "https://openstax.org/books/university-physics-volume-2/pages/7-3-electric-potential-and-potential-difference",
+          "use": "Scientific model constraint only; all problem data and formulations are newly authored. No claim of official curriculum provenance."
+        }
+      ],
+      "authorNumericChecks": [
+        {
+          "calculation": "[20-300*x for x in [-.2,0,.2]]",
+          "expected": [
+            80,
+            20,
+            -40
+          ],
+          "actual": [
+            80.0,
+            20,
+            -40.0
+          ],
+          "passed": true
+        },
+        {
+          "calculation": "[6/x for x in [.1,.2,.3]]",
+          "expected": [
+            60,
+            30,
+            20
+          ],
+          "actual": [
+            60.0,
+            30.0,
+            20.0
+          ],
+          "passed": true
+        }
+      ],
+      "placementProposal": {
+        "phase": "Q1",
+        "rule": "Attach only to the existing task container at the stage where ALL actual requires are already required; do not move ordinary goals or import broad Q1 packages into earlier units. Keep GK/LK applicability of preparation.",
+        "requires": [
+          "2622bef1-bdbc-504e-b468-b600b2ca3ed8"
+        ]
+      }
+    },
+    {
+      "taskId": "5307fc57-f913-5e44-893d-b9130f656cf5",
+      "key": "quantitative-vector-fields",
+      "status": "draft-author-candidate-not-independent-review",
+      "coveredRowIndices": [
+        19
+      ],
+      "coverageBasis": [
+        {
+          "goalId": "455c65ca-814a-56ad-918a-013155883c52",
+          "profileFingerprint": "sha256:bdba88ccb6b1ac0f8f508499272ba29e7a90d1b2f4df6de1a65df7d22016f176",
+          "requiredExpectationIds": [
+            "vector-law",
+            "result-meaning"
+          ],
+          "independentDemonstrationsRequired": 2,
+          "expectationBindings": [
+            {
+              "expectationId": "vector-law",
+              "scoringCoreIds": [
+                "k1"
+              ]
+            },
+            {
+              "expectationId": "result-meaning",
+              "scoringCoreIds": [
+                "k2"
+              ]
+            }
+          ]
+        }
+      ],
+      "essentialClaims": [
+        {
+          "core": "k1",
+          "criterionDe": "Vektorgesetz und konsistente Komponenten/Pfeiladdition in entgegengesetztem und orthogonalem Fall sowie beim Vorzeichenwechsel.",
+          "criterionEn": "Vector law and consistent component/arrow addition for opposing and orthogonal cases and sign reversal.",
+          "counteranswerDe": "Gegenläufige 240 und 390 ergeben 630 N/C.",
+          "missingCoreScoreMaximum": 5,
+          "minorErrorScore": 7,
+          "minorErrorPasses": true
+        },
+        {
+          "core": "k2",
+          "criterionDe": "Betrag, Einheit und eindeutige Richtung in A und B mit geometrischer oder komponentenbezogener Rückprüfung und Grenzfall.",
+          "criterionEn": "Magnitude, units and definite direction in A/B, with geometric/component check and limiting case.",
+          "counteranswerDe": "Orthogonale 180 und 240 ergeben 300, aber Richtung ist beliebig.",
+          "missingCoreScoreMaximum": 5,
+          "minorErrorScore": 7,
+          "minorErrorPasses": true
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://openstax.org/books/university-physics-volume-2/pages/5-4-electric-field",
+          "use": "Scientific model constraint only; all problem data and formulations are newly authored. No claim of official curriculum provenance."
+        }
+      ],
+      "authorNumericChecks": [
+        {
+          "calculation": "math.hypot(180,240)",
+          "expected": 300,
+          "unit": "N/C",
+          "actual": 300.0,
+          "passed": true
+        },
+        {
+          "calculation": "math.degrees(math.atan2(240,180))",
+          "expected": 53.13010235415598,
+          "unit": "degree",
+          "actual": 53.13010235415598,
+          "passed": true
+        }
+      ],
+      "placementProposal": {
+        "phase": "Q1",
+        "rule": "Attach only to the existing task container at the stage where ALL actual requires are already required; do not move ordinary goals or import broad Q1 packages into earlier units. Keep GK/LK applicability of preparation.",
+        "requires": [
+          "455c65ca-814a-56ad-918a-013155883c52"
+        ]
+      }
+    },
+    {
+      "taskId": "381f58b8-af55-5ee7-856f-e5c0f4359b31",
+      "key": "rc-charge-current-qualitative",
+      "status": "draft-author-candidate-not-independent-review",
+      "coveredRowIndices": [
+        12
+      ],
+      "coverageBasis": [
+        {
+          "goalId": "0b4f2020-8486-5372-9cb9-6e59f698ac2d",
+          "profileFingerprint": "sha256:fa86f90822d0142f2dfc5b3822b045b20d8800a70197eb5717afaa678c18b980",
+          "requiredExpectationIds": [
+            "independent-review-a-understanding",
+            "independent-review-b-understanding"
+          ],
+          "independentDemonstrationsRequired": 2,
+          "expectationBindings": [
+            {
+              "expectationId": "independent-review-a-understanding",
+              "scoringCoreIds": [
+                "k1",
+                "k2",
+                "k3"
+              ]
+            },
+            {
+              "expectationId": "independent-review-b-understanding",
+              "scoringCoreIds": [
+                "k1",
+                "k2",
+                "k3"
+              ]
+            }
+          ]
+        }
+      ],
+      "essentialClaims": [
+        {
+          "core": "k1",
+          "criterionDe": "Strom als vorzeichenbehafteter Ladungstransport pro Zeit mit konkretem Mittelwert und konventioneller Richtung im Lade-/Entlade- und umgepolten Fall.",
+          "criterionEn": "Signed charge transport per time with average calculation and conventional directions for charging/discharging and reversed polarity.",
+          "counteranswerDe": "Stromstärke ist gespeicherte Gesamtladung; Stromrichtung bleibt beim Entladen immer gleich.",
+          "missingCoreScoreMaximum": 9,
+          "minorErrorScore": 11,
+          "minorErrorPasses": true
+        },
+        {
+          "core": "k2",
+          "criterionDe": "Qualitative I/U-Verläufe mit Anfang/Ende und abklingender Potenzialdifferenz, auch bei negativer Anfangspolung.",
+          "criterionEn": "Qualitative I/U curves with endpoints and decreasing driving potential, also for negative initial polarity.",
+          "counteranswerDe": "Der Entladestrom bleibt bis zur vollständigen Entladung konstant.",
+          "missingCoreScoreMaximum": 9,
+          "minorErrorScore": 11,
+          "minorErrorPasses": true
+        },
+        {
+          "core": "k3",
+          "criterionDe": "R- und C-Einflüsse auf |I₀| und RC unabhängig begründen, gleiche Zeit bei kombinierten Änderungen samt Einheit.",
+          "criterionEn": "Separate R/C effects on initial current and RC, including unchanged combined timescale and units.",
+          "counteranswerDe": "Doppelte Kapazität halbiert bei gleichem U den Anfangsstrom.",
+          "missingCoreScoreMaximum": 9,
+          "minorErrorScore": 11,
+          "minorErrorPasses": true
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://openstax.org/books/university-physics-volume-2/pages/10-5-rc-circuits",
+          "use": "Scientific model constraint only; all problem data and formulations are newly authored. No claim of official curriculum provenance."
+        }
+      ],
+      "authorNumericChecks": [
+        {
+          "calculation": "4e-6/.1",
+          "expected": 4e-05,
+          "unit": "A",
+          "actual": 3.9999999999999996e-05,
+          "passed": true
+        },
+        {
+          "calculation": "200e3*10e-6",
+          "expected": 2,
+          "unit": "s",
+          "actual": 2.0,
+          "passed": true
+        },
+        {
+          "calculation": "12/200e3",
+          "expected": 6e-05,
+          "unit": "A",
+          "actual": 6e-05,
+          "passed": true
+        }
+      ],
+      "placementProposal": {
+        "phase": "Q1",
+        "rule": "Attach only to the existing task container at the stage where ALL actual requires are already required; do not move ordinary goals or import broad Q1 packages into earlier units. Keep GK/LK applicability of preparation.",
+        "requires": [
+          "0b4f2020-8486-5372-9cb9-6e59f698ac2d"
+        ]
+      }
+    },
+    {
+      "taskId": "7653d84d-124c-5ad0-a5d9-394d51ec0e8b",
+      "key": "rc-differential-equation-and-transfer",
+      "status": "draft-author-candidate-not-independent-review",
+      "coveredRowIndices": [
+        11,
+        17
+      ],
+      "coverageBasis": [
+        {
+          "goalId": "09f2cdbd-64e0-55d2-ada7-1190f4fd50df",
+          "profileFingerprint": "sha256:2750721e83c19a940af4464164b00a9501ce31fab934019e80cfc56056da8f23",
+          "requiredExpectationIds": [
+            "independent-review-a-understanding",
+            "independent-review-b-understanding"
+          ],
+          "independentDemonstrationsRequired": 2,
+          "expectationBindings": [
+            {
+              "expectationId": "independent-review-a-understanding",
+              "scoringCoreIds": [
+                "k2",
+                "k3"
+              ]
+            },
+            {
+              "expectationId": "independent-review-b-understanding",
+              "scoringCoreIds": [
+                "k2",
+                "k3"
+              ]
+            }
+          ]
+        },
+        {
+          "goalId": "330808f6-789a-583d-86df-e271a7683d8b",
+          "profileFingerprint": "sha256:591e2411c3e3f21ed26e63c488fda2104a9c8fcc071a1d79658abb1a39a17cee",
+          "requiredExpectationIds": [
+            "independent-review-a-understanding",
+            "independent-review-b-understanding"
+          ],
+          "independentDemonstrationsRequired": 2,
+          "expectationBindings": [
+            {
+              "expectationId": "independent-review-a-understanding",
+              "scoringCoreIds": [
+                "k1",
+                "k2",
+                "k3"
+              ]
+            },
+            {
+              "expectationId": "independent-review-b-understanding",
+              "scoringCoreIds": [
+                "k1",
+                "k2",
+                "k3"
+              ]
+            }
+          ]
+        }
+      ],
+      "essentialClaims": [
+        {
+          "core": "k1",
+          "criterionDe": "RC-Gleichung aus tatsächlicher Strom-/Spannungskonvention, Ladung und Ohm herleiten; unabhängigen Bezugswechsel erneut konsistent bearbeiten.",
+          "criterionEn": "Derive RC equation from actual charge/current/voltage references and Ohm; rederive after independent reference change.",
+          "counteranswerDe": "CU_C′=+U_C/R beim Entladen, obwohl U_C positiv und fallend definiert ist.",
+          "missingCoreScoreMaximum": 9,
+          "minorErrorScore": 11,
+          "minorErrorPasses": true
+        },
+        {
+          "core": "k2",
+          "criterionDe": "Exponentialansatz selbst wählen, ableiten, in DGL und Anfangsbedingung einsetzen für RC und unabhängige Zustandsgröße N.",
+          "criterionEn": "Choose/differentiate/substitute an exponential ansatz and verify initial condition for RC and independent N.",
+          "counteranswerDe": "Die Exponentialformel wird nur abgeschrieben, ohne Ableitungsnachweis oder Anfangsbedingung.",
+          "missingCoreScoreMaximum": 9,
+          "minorErrorScore": 11,
+          "minorErrorPasses": true
+        },
+        {
+          "core": "k3",
+          "criterionDe": "Vorzeichen, Einheiten, RC-Zeit, Anfang-/Grenzwert und Wachstum/Abnahme für beide physischen Prozesse begründet deuten.",
+          "criterionEn": "Explain signs, units, RC time, endpoints and growth/decay for both physical processes.",
+          "counteranswerDe": "k ist einheitenlos und positive k lässt die Zustandsgröße ebenfalls gegen null abklingen.",
+          "missingCoreScoreMaximum": 9,
+          "minorErrorScore": 11,
+          "minorErrorPasses": true
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://openstax.org/books/university-physics-volume-2/pages/10-5-rc-circuits",
+          "use": "Scientific model constraint only; all problem data and formulations are newly authored. No claim of official curriculum provenance."
+        }
+      ],
+      "authorNumericChecks": [
+        {
+          "calculation": "400e3*5e-6",
+          "expected": 2,
+          "unit": "s",
+          "actual": 2.0,
+          "passed": true
+        },
+        {
+          "calculation": "8/math.e",
+          "expected": 2.9430355293715387,
+          "unit": "V",
+          "actual": 2.9430355293715387,
+          "passed": true
+        },
+        {
+          "calculation": "1/.25",
+          "expected": 4,
+          "unit": "s",
+          "actual": 4.0,
+          "passed": true
+        }
+      ],
+      "placementProposal": {
+        "phase": "Q1",
+        "rule": "Attach only to the existing task container at the stage where ALL actual requires are already required; do not move ordinary goals or import broad Q1 packages into earlier units. Keep GK/LK applicability of preparation.",
+        "requires": [
+          "330808f6-789a-583d-86df-e271a7683d8b"
+        ]
+      }
+    },
+    {
+      "taskId": "93208b0d-2956-5aae-8aa4-bcef718f06a4",
+      "key": "millikan-quantisation-with-uncertainty",
+      "status": "draft-author-candidate-not-independent-review",
+      "coveredRowIndices": [
+        13
+      ],
+      "coverageBasis": [
+        {
+          "goalId": "0f803c37-8191-5a07-9b31-9603ded98fe2",
+          "profileFingerprint": "sha256:08ce5968b88824ac5f5389dd55c3c70763a91aa5e261708cf8c08e8dc91e66e9",
+          "requiredExpectationIds": [
+            "independent-review-a-understanding",
+            "independent-review-b-understanding"
+          ],
+          "independentDemonstrationsRequired": 2,
+          "expectationBindings": [
+            {
+              "expectationId": "independent-review-a-understanding",
+              "scoringCoreIds": [
+                "k1",
+                "k2",
+                "k3"
+              ]
+            },
+            {
+              "expectationId": "independent-review-b-understanding",
+              "scoringCoreIds": [
+                "k1",
+                "k2",
+                "k3"
+              ]
+            }
+          ]
+        }
+      ],
+      "essentialClaims": [
+        {
+          "core": "k1",
+          "criterionDe": "Kräftegleichgewicht mit effektiver Gewichtskraft, Feld-/Ladungsvorzeichen und Einheiten für auf- und abwärts gerichtetes Feld.",
+          "criterionEn": "Force balance with effective weight, signed field/charge and units for upward/downward E.",
+          "counteranswerDe": "Bei umgekehrtem Feld schwebt dieselbe positive Ladung unverändert.",
+          "missingCoreScoreMaximum": 9,
+          "minorErrorScore": 11,
+          "minorErrorPasses": true
+        },
+        {
+          "core": "k2",
+          "criterionDe": "Mehrere erschlossene q-Werte samt Unsicherheit auf ganzzahlige Vielfache prüfen, Messung/Schluss trennen und neue negative Ladung einordnen.",
+          "criterionEn": "Test multiple inferred charges/uncertainties against integer multiples, distinguish evidence/inference, classify new negative q.",
+          "counteranswerDe": "Ein einziger gemessener Betrag beweist bereits Quantelung und e exakt.",
+          "missingCoreScoreMaximum": 9,
+          "minorErrorScore": 11,
+          "minorErrorPasses": true
+        },
+        {
+          "core": "k3",
+          "criterionDe": "Unscharfen unabhängigen Datensatz und n-Mehrdeutigkeit korrekt auswerten; Verträglichkeit von Nachweis einer kleinsten Einheit unterscheiden.",
+          "criterionEn": "Interpret the independent imprecise dataset and n ambiguity; separate compatibility from proof of a smallest unit.",
+          "counteranswerDe": "Aus (4,0±1,5) folgt zwingend n=2,5 und daher kontinuierliche Ladung.",
+          "missingCoreScoreMaximum": 9,
+          "minorErrorScore": 11,
+          "minorErrorPasses": true
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://openstax.org/books/university-physics-volume-2/pages/5-4-electric-field",
+          "use": "Scientific model constraint only; all problem data and formulations are newly authored. No claim of official curriculum provenance."
+        }
+      ],
+      "authorNumericChecks": [
+        {
+          "calculation": "3.2e-14/1e5",
+          "expected": 3.2e-19,
+          "unit": "C",
+          "actual": 3.2000000000000003e-19,
+          "passed": true
+        },
+        {
+          "calculation": "-9.6e-14/2e5",
+          "expected": -4.8e-19,
+          "unit": "C",
+          "actual": -4.7999999999999995e-19,
+          "passed": true
+        }
+      ],
+      "placementProposal": {
+        "phase": "Q1",
+        "rule": "Attach only to the existing task container at the stage where ALL actual requires are already required; do not move ordinary goals or import broad Q1 packages into earlier units. Keep GK/LK applicability of preparation.",
+        "requires": [
+          "0f803c37-8191-5a07-9b31-9603ded98fe2"
+        ]
+      }
+    },
+    {
+      "taskId": "09c50c4c-fb3a-52f4-947f-a9bf3c083772",
+      "key": "surface-charge-and-plate-derivation",
+      "status": "draft-author-candidate-not-independent-review",
+      "coveredRowIndices": [
+        18,
+        32
+      ],
+      "coverageBasis": [
+        {
+          "goalId": "38e0ff49-f132-44c8-b17a-73dada5344db",
+          "profileFingerprint": "sha256:16a30d2b31dcc1e6c1985f710d865ad9ddaada062d527341947f80a7419642ce",
+          "requiredExpectationIds": [
+            "independent-review-a-understanding",
+            "independent-review-b-understanding"
+          ],
+          "independentDemonstrationsRequired": 2,
+          "expectationBindings": [
+            {
+              "expectationId": "independent-review-a-understanding",
+              "scoringCoreIds": [
+                "k2",
+                "k3"
+              ]
+            },
+            {
+              "expectationId": "independent-review-b-understanding",
+              "scoringCoreIds": [
+                "k2",
+                "k3"
+              ]
+            }
+          ]
+        },
+        {
+          "goalId": "e3bce51c-cfeb-4706-b95e-a22b76e7dd73",
+          "profileFingerprint": "sha256:b3b0b11a32349c4d0c2de13157af12ca1b95a3ff282ad75278e165fdadd7ff6d",
+          "requiredExpectationIds": [
+            "independent-review-a-understanding",
+            "independent-review-b-understanding"
+          ],
+          "independentDemonstrationsRequired": 2,
+          "expectationBindings": [
+            {
+              "expectationId": "independent-review-a-understanding",
+              "scoringCoreIds": [
+                "k1",
+                "k3"
+              ]
+            },
+            {
+              "expectationId": "independent-review-b-understanding",
+              "scoringCoreIds": [
+                "k1",
+                "k3"
+              ]
+            }
+          ]
+        }
+      ],
+      "essentialClaims": [
+        {
+          "core": "k1",
+          "criterionDe": "σ=Q/A mit Vorzeichen/Einheit, Rekonstruktion Q und Änderung von Fläche/Polung im unabhängigen Fall.",
+          "criterionEn": "Signed σ=Q/A with units, reconstruction of Q and independent area/polarity variation.",
+          "counteranswerDe": "σ ist dieselbe Gesamtladung Q unabhängig von A und hat Einheit C/m³.",
+          "missingCoreScoreMaximum": 9,
+          "minorErrorScore": 11,
+          "minorErrorPasses": true
+        },
+        {
+          "core": "k2",
+          "criterionDe": "Eigenständige Gaußdosen-Herleitung des Einzelbeitrags und vektorielle Zwei-Platten-Überlagerung innen/außen, einschließlich neuem ε.",
+          "criterionEn": "Derive single-sheet field via Gaussian pillbox and vector two-plate superposition, including changed ε.",
+          "counteranswerDe": "Eine Platte erzeugt bereits σ/ε auf jeder Seite; innen daher 2σ/ε.",
+          "missingCoreScoreMaximum": 9,
+          "minorErrorScore": 11,
+          "minorErrorPasses": true
+        },
+        {
+          "core": "k3",
+          "criterionDe": "Modellannahmen bei jedem Schritt benennen und neue ungleiche Ladungen/Endlichkeit ohne falsche Außenaufhebung beurteilen.",
+          "criterionEn": "Identify assumptions per derivation step and assess unequal charges/finite geometry without false cancellation.",
+          "counteranswerDe": "Auch bei +Q/−2Q und an endlichen Rändern ist das Außenfeld exakt null.",
+          "missingCoreScoreMaximum": 9,
+          "minorErrorScore": 11,
+          "minorErrorPasses": true
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://openstax.org/books/university-physics-volume-2/pages/6-3-applying-gausss-law",
+          "use": "Scientific model constraint only; all problem data and formulations are newly authored. No claim of official curriculum provenance."
+        },
+        {
+          "url": "https://openstax.org/books/university-physics-volume-2/pages/8-1-capacitors-and-capacitance",
+          "use": "Scientific model constraint only; all problem data and formulations are newly authored. No claim of official curriculum provenance."
+        }
+      ],
+      "authorNumericChecks": [
+        {
+          "calculation": "17.7e-9/.02",
+          "expected": 8.85e-07,
+          "unit": "C/m²",
+          "actual": 8.85e-07,
+          "passed": true
+        },
+        {
+          "calculation": "(17.7e-9/.02)/8.85e-12",
+          "expected": 100000.0,
+          "unit": "N/C",
+          "actual": 100000.0,
+          "passed": true
+        },
+        {
+          "calculation": "-.4e-6*.03",
+          "expected": -1.2e-08,
+          "unit": "C",
+          "actual": -1.1999999999999998e-08,
+          "passed": true
+        }
+      ],
+      "placementProposal": {
+        "phase": "Q1",
+        "rule": "Attach only to the existing task container at the stage where ALL actual requires are already required; do not move ordinary goals or import broad Q1 packages into earlier units. Keep GK/LK applicability of preparation.",
+        "requires": [
+          "38e0ff49-f132-44c8-b17a-73dada5344db"
+        ]
+      }
+    },
+    {
+      "taskId": "c851ec7f-31cc-5fd5-a38a-7f242bcf8cd1",
+      "key": "dielectric-boundary-conditions",
+      "status": "draft-author-candidate-not-independent-review",
+      "coveredRowIndices": [
+        23
+      ],
+      "coverageBasis": [
+        {
+          "goalId": "73b309ed-1aab-5778-8494-d9b65f5a352b",
+          "profileFingerprint": "sha256:6e80426c8894f5dbb34f884f45045734c431d1422f41d59cbb1c33ac3bf8a5a1",
+          "requiredExpectationIds": [
+            "independent-review-a-understanding",
+            "independent-review-b-understanding"
+          ],
+          "independentDemonstrationsRequired": 2,
+          "expectationBindings": [
+            {
+              "expectationId": "independent-review-a-understanding",
+              "scoringCoreIds": [
+                "k1",
+                "k2",
+                "k3"
+              ]
+            },
+            {
+              "expectationId": "independent-review-b-understanding",
+              "scoringCoreIds": [
+                "k1",
+                "k2",
+                "k3"
+              ]
+            }
+          ]
+        }
+      ],
+      "essentialClaims": [
+        {
+          "core": "k1",
+          "criterionDe": "Gebundene Polarisation mikroskopisch und makroskopisch verknüpfen, Oberflächenzeichen und Unterschied zu freier Leitung in beiden Randfällen.",
+          "criterionEn": "Connect microscopic/macroscopic bound polarisation, surface signs and difference from free conduction in both boundary cases.",
+          "counteranswerDe": "Das Dielektrikum leitet freie Elektronen von einer Platte zur anderen.",
+          "missingCoreScoreMaximum": 9,
+          "minorErrorScore": 11,
+          "minorErrorPasses": true
+        },
+        {
+          "core": "k2",
+          "criterionDe": "ε=ε₀ε_r samt SI-Einheiten korrekt einsetzen und C/Q/U/E bei fester freier Ladung vollständig bestimmen.",
+          "criterionEn": "Use ε with SI units and determine C/Q/U/E at fixed free charge.",
+          "counteranswerDe": "Im getrennten Kondensator vervierfacht sich die freie Ladung trotz fehlender Verbindung.",
+          "missingCoreScoreMaximum": 9,
+          "minorErrorScore": 11,
+          "minorErrorPasses": true
+        },
+        {
+          "core": "k3",
+          "criterionDe": "Unabhängigen Fall fester Spannung, Quellenladung und Materialvariation korrekt begründen; Gegenfeld nicht als universelle E-Reduktion ausgeben und Modellgrenze nennen.",
+          "criterionEn": "Explain independent fixed-voltage case, source charge and material variation; reject universal E reduction and state model limit.",
+          "counteranswerDe": "Bei angeschlossener Quelle bleiben U und d gleich, E sinkt trotzdem auf ein Viertel.",
+          "missingCoreScoreMaximum": 9,
+          "minorErrorScore": 11,
+          "minorErrorPasses": true
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://openstax.org/books/university-physics-volume-2/pages/8-4-capacitor-with-a-dielectric",
+          "use": "Scientific model constraint only; all problem data and formulations are newly authored. No claim of official curriculum provenance."
+        }
+      ],
+      "authorNumericChecks": [
+        {
+          "calculation": "40e-12*100",
+          "expected": 4e-09,
+          "unit": "C",
+          "actual": 3.9999999999999994e-09,
+          "passed": true
+        },
+        {
+          "calculation": "8.85e-12*4",
+          "expected": 3.54e-11,
+          "unit": "F/m",
+          "actual": 3.54e-11,
+          "passed": true
+        },
+        {
+          "calculation": "100/.002",
+          "expected": 50000.0,
+          "unit": "N/C",
+          "actual": 50000.0,
+          "passed": true
+        }
+      ],
+      "placementProposal": {
+        "phase": "Q1",
+        "rule": "Attach only to the existing task container at the stage where ALL actual requires are already required; do not move ordinary goals or import broad Q1 packages into earlier units. Keep GK/LK applicability of preparation.",
+        "requires": [
+          "73b309ed-1aab-5778-8494-d9b65f5a352b"
+        ]
+      }
+    },
+    {
+      "taskId": "0236971f-8465-50bf-8c0f-cbb71a69bcf4",
+      "key": "field-energy-and-system-balance",
+      "status": "draft-author-candidate-not-independent-review",
+      "coveredRowIndices": [
+        34
+      ],
+      "coverageBasis": [
+        {
+          "goalId": "fd9fd8ad-c4a1-5552-9ea0-1878e0636f20",
+          "profileFingerprint": "sha256:b8522b4aa21fec2ae33a6e12b8947a757b94dd2d7e220e98715913d988d68c4b",
+          "requiredExpectationIds": [
+            "independent-review-a-understanding",
+            "independent-review-b-understanding"
+          ],
+          "independentDemonstrationsRequired": 2,
+          "expectationBindings": [
+            {
+              "expectationId": "independent-review-a-understanding",
+              "scoringCoreIds": [
+                "k1",
+                "k2",
+                "k3"
+              ]
+            },
+            {
+              "expectationId": "independent-review-b-understanding",
+              "scoringCoreIds": [
+                "k1",
+                "k2",
+                "k3"
+              ]
+            }
+          ]
+        }
+      ],
+      "essentialClaims": [
+        {
+          "core": "k1",
+          "criterionDe": "Äquivalente Energieformeln mit Q/U/C und Einheiten in A sowie frischem Vergleich unter festem U versus Q sicher auswählen und berechnen.",
+          "criterionEn": "Choose/evaluate equivalent energy formulas and units in A and fresh fixed-U versus fixed-Q comparison.",
+          "counteranswerDe": "Verdopplung von C verdoppelt die Energie auch bei festem Q.",
+          "missingCoreScoreMaximum": 9,
+          "minorErrorScore": 11,
+          "minorErrorPasses": true
+        },
+        {
+          "core": "k2",
+          "criterionDe": "Systemgrenze, Quellenzufuhr, Feldspeicherung, Nutzabgabe und Dissipation in A vollständig bilanzieren.",
+          "criterionEn": "Fully balance source supply, field storage, useful output and dissipation across the stated A boundary.",
+          "counteranswerDe": "Die gesamten 5 J der Quelle liegen im Feld; zusätzlich entstehen 2 J Licht.",
+          "missingCoreScoreMaximum": 9,
+          "minorErrorScore": 11,
+          "minorErrorPasses": true
+        },
+        {
+          "core": "k3",
+          "criterionDe": "Unabhängigen Energieaustausch bei Geometrieänderung elektrisch/mechanisch unterscheiden und neue Motor-Nutzabgaben konsistent bilanzieren.",
+          "criterionEn": "Distinguish electrical/mechanical transfers in B and consistently calculate new motor outputs.",
+          "counteranswerDe": "Ein isolierter Kondensator kann keinerlei Energie mit der Umgebung austauschen.",
+          "missingCoreScoreMaximum": 9,
+          "minorErrorScore": 11,
+          "minorErrorPasses": true
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://openstax.org/books/university-physics-volume-2/pages/8-3-energy-stored-in-a-capacitor",
+          "use": "Scientific model constraint only; all problem data and formulations are newly authored. No claim of official curriculum provenance."
+        },
+        {
+          "url": "https://openstax.org/books/university-physics-volume-2/pages/8-4-capacitor-with-a-dielectric",
+          "use": "Scientific model constraint only; all problem data and formulations are newly authored. No claim of official curriculum provenance."
+        }
+      ],
+      "authorNumericChecks": [
+        {
+          "calculation": ".5*100e-6*200**2",
+          "expected": 2,
+          "unit": "J",
+          "actual": 2.0,
+          "passed": true
+        },
+        {
+          "calculation": ".5*40e-6*50**2",
+          "expected": 0.05,
+          "unit": "J",
+          "actual": 0.05,
+          "passed": true
+        },
+        {
+          "calculation": "(.001**2)/(2*40e-6)",
+          "expected": 0.0125,
+          "unit": "J",
+          "actual": 0.012499999999999999,
+          "passed": true
+        }
+      ],
+      "placementProposal": {
+        "phase": "Q1",
+        "rule": "Attach only to the existing task container at the stage where ALL actual requires are already required; do not move ordinary goals or import broad Q1 packages into earlier units. Keep GK/LK applicability of preparation.",
+        "requires": [
+          "fd9fd8ad-c4a1-5552-9ea0-1878e0636f20"
+        ]
+      }
+    },
+    {
+      "taskId": "f0c35076-ae05-574b-83b5-7419bf712a80",
+      "key": "mri-three-independent-situations",
+      "status": "draft-author-candidate-not-independent-review",
+      "coveredRowIndices": [
+        20
+      ],
+      "coverageBasis": [
+        {
+          "goalId": "52bdabb2-d9a1-56e6-bccf-ff58f299c739",
+          "profileFingerprint": "sha256:73a746c45dd257572ddf4ec84e5b9c6bb2b4b72259d7617c15da475ab8bb96c7",
+          "requiredExpectationIds": [
+            "static-field-establishes-net-ensemble-magnetization",
+            "resonant-rf-excitation-tips-net-magnetization",
+            "relaxing-transverse-magnetization-produces-measured-signal",
+            "gradients-encode-position-in-frequency-or-phase"
+          ],
+          "independentDemonstrationsRequired": 3,
+          "expectationBindings": [
+            {
+              "expectationId": "static-field-establishes-net-ensemble-magnetization",
+              "scoringCoreIds": [
+                "k1"
+              ]
+            },
+            {
+              "expectationId": "resonant-rf-excitation-tips-net-magnetization",
+              "scoringCoreIds": [
+                "k2"
+              ]
+            },
+            {
+              "expectationId": "relaxing-transverse-magnetization-produces-measured-signal",
+              "scoringCoreIds": [
+                "k3"
+              ]
+            },
+            {
+              "expectationId": "gradients-encode-position-in-frequency-or-phase",
+              "scoringCoreIds": [
+                "k4"
+              ]
+            }
+          ]
+        }
+      ],
+      "essentialClaims": [
+        {
+          "core": "k1",
+          "criterionDe": "Statisches B₀ erzeugt Netto-Ensembleorientierung statt vollständiger Einzelausrichtung; konkrete A-Population und unveränderte Grenze in C.",
+          "criterionEn": "Static B₀ gives net ensemble orientation, not full individual alignment; use A population and preserve the limit in C.",
+          "counteranswerDe": "Alle 10000 Spins zeigen exakt nach+z, sonst entsteht kein MRT-Signal.",
+          "missingCoreScoreMaximum": 13,
+          "minorErrorScore": 15,
+          "minorErrorPasses": true
+        },
+        {
+          "core": "k2",
+          "criterionDe": "Resonanzbedingte Auslenkung im Ablauf A, breitbandige Anregung B und fehlende wirksame Auslenkung bei verstimmtem C1 unterscheiden.",
+          "criterionEn": "Distinguish resonant tipping A, broadband excitation B and ineffective detuned excitation C1.",
+          "counteranswerDe": "Jede beliebige HF-Frequenz kippt die Magnetisierung gleich stark.",
+          "missingCoreScoreMaximum": 13,
+          "minorErrorScore": 15,
+          "minorErrorPasses": true
+        },
+        {
+          "core": "k3",
+          "criterionDe": "Präzedierende transversale Magnetisierung, Relaxation und tatsächlich gemessenes Empfangssignal konsistent in A und C1/C2 erklären.",
+          "criterionEn": "Explain precessing transverse magnetisation, relaxation and actual measured receiver signal in A/C1/C2.",
+          "counteranswerDe": "Die Spule beobachtet einzelne Protonen unmittelbar als Bildpixel; Relaxation braucht kein Signal.",
+          "missingCoreScoreMaximum": 13,
+          "minorErrorScore": 15,
+          "minorErrorPasses": true
+        },
+        {
+          "core": "k4",
+          "criterionDe": "Konkrete Orts-Frequenz-Zuordnung und Gradientenumkehr B samt fehlender Ortsinformation C2; Gradient nicht mit Resonanz verwechseln.",
+          "criterionEn": "Map positions/frequencies and gradient reversal B; identify missing spatial information C2 without confusing gradient and resonance.",
+          "counteranswerDe": "Ohne Gradienten entsteht automatisch dasselbe räumlich aufgelöste Bild.",
+          "missingCoreScoreMaximum": 13,
+          "minorErrorScore": 15,
+          "minorErrorPasses": true
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://www.nist.gov/how-do-you-measure-it/how-does-mri-machine-work",
+          "use": "Scientific model constraint only; all problem data and formulations are newly authored. No claim of official curriculum provenance."
+        },
+        {
+          "url": "https://www.nibib.nih.gov/science-education/science-topics/magnetic-resonance-imaging-mri",
+          "use": "Scientific model constraint only; all problem data and formulations are newly authored. No claim of official curriculum provenance."
+        }
+      ],
+      "authorNumericChecks": [
+        {
+          "calculation": "5001-4999",
+          "expected": 2,
+          "actual": 2,
+          "passed": true
+        },
+        {
+          "calculation": "[63.5-x*.5 for x in [-1,0,1]]",
+          "expected": [
+            64,
+            63.5,
+            63
+          ],
+          "actual": [
+            64.0,
+            63.5,
+            63.0
+          ],
+          "passed": true
+        }
+      ],
+      "placementProposal": {
+        "phase": "Q1",
+        "rule": "Attach only to the existing task container at the stage where ALL actual requires are already required; do not move ordinary goals or import broad Q1 packages into earlier units. Keep GK/LK applicability of preparation.",
+        "requires": [
+          "52bdabb2-d9a1-56e6-bccf-ff58f299c739"
+        ]
+      }
+    },
+    {
+      "taskId": "789d70ff-8ec2-5b9d-8fa0-9926cb97feab",
+      "key": "gauss-deflection-and-oscillation",
+      "status": "draft-author-candidate-not-independent-review",
+      "coveredRowIndices": [
+        21
+      ],
+      "coverageBasis": [
+        {
+          "goalId": "58db62d4-458f-5e2d-9ca0-968e09f4944b",
+          "profileFingerprint": "sha256:220c880d462b781fe96cb274e415abcbc5be3e8582490ca8ceb8376948832083",
+          "requiredExpectationIds": [
+            "combined-measurements",
+            "geometry-and-validity"
+          ],
+          "independentDemonstrationsRequired": 2,
+          "expectationBindings": [
+            {
+              "expectationId": "combined-measurements",
+              "scoringCoreIds": [
+                "k1"
+              ]
+            },
+            {
+              "expectationId": "geometry-and-validity",
+              "scoringCoreIds": [
+                "k2",
+                "k3"
+              ]
+            }
+          ]
+        }
+      ],
+      "essentialClaims": [
+        {
+          "core": "k1",
+          "criterionDe": "Ablenkungsverhältnis und Schwingungsprodukt aus tatsächlich beobachteten Größen ableiten und beide Unbekannten mit SI-Einheiten in A/B bestimmen.",
+          "criterionEn": "Infer deflection ratio/oscillation product from observations and determine both unknowns with SI units in A/B.",
+          "counteranswerDe": "Aus T allein kann B_H ohne Kenntnis des Magnetmoments eindeutig abgelesen werden.",
+          "missingCoreScoreMaximum": 9,
+          "minorErrorScore": 11,
+          "minorErrorPasses": true
+        },
+        {
+          "core": "k2",
+          "criterionDe": "Axiale/äquatoriale Geometrie statt bloßer Namen zeichnen, richtigen Feldfaktor und Senkrechtstellung in beiden Fällen begründen.",
+          "criterionEn": "Sketch axial/equatorial geometries, justify the correct coefficient and perpendicular fields in both.",
+          "counteranswerDe": "In äquatorialer Lage muss derselbe Faktor 2·10⁻⁷ wie axial verwendet werden.",
+          "missingCoreScoreMaximum": 9,
+          "minorErrorScore": 11,
+          "minorErrorPasses": true
+        },
+        {
+          "core": "k3",
+          "criterionDe": "Modell- und Messkontrollen mit Gründen im unabhängigen Fall B: Fernfeld, kleine Winkel/Torsion, Fremdfelder und Zeitmesswiederholung.",
+          "criterionEn": "Justify independent B controls: far field, small angles/torsion, stray fields and repeated timing.",
+          "counteranswerDe": "Ein großer Schwingungswinkel und ein zusätzlicher Magnet ändern die Modellgültigkeit nicht.",
+          "missingCoreScoreMaximum": 9,
+          "minorErrorScore": 11,
+          "minorErrorPasses": true
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://tu-dresden.de/mn/physik/ressourcen/dateien/studium/lehrveranstaltungen/praktika/pdf/MF.pdf?lang=de",
+          "use": "Scientific model constraint only; all problem data and formulations are newly authored. No claim of official curriculum provenance."
+        }
+      ],
+      "authorNumericChecks": [
+        {
+          "calculation": ".3**3*(2/9)/2e-7",
+          "expected": 30000,
+          "unit": "A m²/T",
+          "actual": 29999.999999999996,
+          "passed": true
+        },
+        {
+          "calculation": "math.sqrt(2.7e-5/30000)",
+          "expected": 3e-05,
+          "unit": "T",
+          "actual": 3e-05,
+          "passed": true
+        },
+        {
+          "calculation": "math.sqrt(6.4e-5*40000)",
+          "expected": 1.6,
+          "unit": "A m²",
+          "actual": 1.6,
+          "passed": true
+        }
+      ],
+      "placementProposal": {
+        "phase": "Q1",
+        "rule": "Attach only to the existing task container at the stage where ALL actual requires are already required; do not move ordinary goals or import broad Q1 packages into earlier units. Keep GK/LK applicability of preparation.",
+        "requires": [
+          "58db62d4-458f-5e2d-9ca0-968e09f4944b"
+        ]
+      }
+    },
+    {
+      "taskId": "a2a7d916-83c6-5ed6-90f2-5c4d9e36abf3",
+      "key": "crt-signal-time-and-deflection",
+      "status": "draft-author-candidate-not-independent-review",
+      "coveredRowIndices": [
+        22
+      ],
+      "coverageBasis": [
+        {
+          "goalId": "5fda8623-69e0-5503-9c6d-86d054a8cf91",
+          "profileFingerprint": "sha256:3fa36ccb34e7c46520bad72469df5702b8d3376b6c1fe1e866e877f31e99aef6",
+          "requiredExpectationIds": [
+            "independent-review-a-understanding",
+            "independent-review-b-understanding"
+          ],
+          "independentDemonstrationsRequired": 2,
+          "expectationBindings": [
+            {
+              "expectationId": "independent-review-a-understanding",
+              "scoringCoreIds": [
+                "k1",
+                "k2",
+                "k3"
+              ]
+            },
+            {
+              "expectationId": "independent-review-b-understanding",
+              "scoringCoreIds": [
+                "k1",
+                "k2",
+                "k3"
+              ]
+            }
+          ]
+        }
+      ],
+      "essentialClaims": [
+        {
+          "core": "k1",
+          "criterionDe": "Eingangsspannung über Plattenpolung/Feld/negative Ladung zu vertikaler Schirmkoordinate in A und neuer umgepolter Spur B erklären.",
+          "criterionEn": "Explain input voltage→plate polarity/field/negative charge→vertical coordinate in A and reversed fresh B trace.",
+          "counteranswerDe": "Elektronen werden von der positiven Oberplatte nach unten gedrückt.",
+          "missingCoreScoreMaximum": 9,
+          "minorErrorScore": 11,
+          "minorErrorPasses": true
+        },
+        {
+          "core": "k2",
+          "criterionDe": "Zeitbasis als Zeit→Horizontalposition mit konkreten Punkten beider Verläufe, Skalenänderung und fehlender Zeitbasis deuten.",
+          "criterionEn": "Interpret timebase as time→horizontal position using both traces, scale change and absent-timebase limit.",
+          "counteranswerDe": "Halbe Zeitbasisgeschwindigkeit verdoppelt die x-Abstände derselben Zeitpunkte.",
+          "missingCoreScoreMaximum": 9,
+          "minorErrorScore": 11,
+          "minorErrorPasses": true
+        },
+        {
+          "core": "k3",
+          "criterionDe": "Unabhängigen magnetischen Vergleich mit korrektem Kreuzprodukt, Ladungsvorzeichen und Geschwindigkeits-/Arbeitsunterschied begründen.",
+          "criterionEn": "Justify the independent magnetic comparison with cross product, charge sign and speed/work distinction.",
+          "counteranswerDe": "Elektrische und magnetische Kraft zeigen stets beide in Feldrichtung und sind geschwindigkeitsunabhängig.",
+          "missingCoreScoreMaximum": 9,
+          "minorErrorScore": 11,
+          "minorErrorPasses": true
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://openstax.org/books/university-physics-volume-2/pages/5-4-electric-field",
+          "use": "Scientific model constraint only; all problem data and formulations are newly authored. No claim of official curriculum provenance."
+        },
+        {
+          "url": "https://openstax.org/books/university-physics-volume-2/pages/11-3-motion-of-a-charged-particle-in-a-magnetic-field",
+          "use": "Scientific model constraint only; all problem data and formulations are newly authored. No claim of official curriculum provenance."
+        }
+      ],
+      "authorNumericChecks": [
+        {
+          "calculation": "[[2*t,4*u] for t,u in enumerate([-2,0,2,0])]",
+          "expected": [
+            [
+              0,
+              -8
+            ],
+            [
+              2,
+              0
+            ],
+            [
+              4,
+              8
+            ],
+            [
+              6,
+              0
+            ]
+          ],
+          "actual": [
+            [
+              0,
+              -8
+            ],
+            [
+              2,
+              0
+            ],
+            [
+              4,
+              8
+            ],
+            [
+              6,
+              0
+            ]
+          ],
+          "passed": true
+        },
+        {
+          "calculation": "[[t,-4*u] for t,u in enumerate([0,1,-1,0])]",
+          "expected": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              -4
+            ],
+            [
+              2,
+              4
+            ],
+            [
+              3,
+              0
+            ]
+          ],
+          "actual": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              -4
+            ],
+            [
+              2,
+              4
+            ],
+            [
+              3,
+              0
+            ]
+          ],
+          "passed": true
+        }
+      ],
+      "placementProposal": {
+        "phase": "Q1",
+        "rule": "Attach only to the existing task container at the stage where ALL actual requires are already required; do not move ordinary goals or import broad Q1 packages into earlier units. Keep GK/LK applicability of preparation.",
+        "requires": [
+          "5fda8623-69e0-5503-9c6d-86d054a8cf91"
+        ]
+      }
+    },
+    {
+      "taskId": "2df9d685-3f11-5124-b769-a4bad14a34f4",
+      "key": "linac-energy-momentum-and-invariant-mass",
+      "status": "draft-author-candidate-not-independent-review",
+      "coveredRowIndices": [
+        24,
+        26
+      ],
+      "coverageBasis": [
+        {
+          "goalId": "74a74132-fa39-541c-8d3c-696cf228452d",
+          "profileFingerprint": "sha256:4269259c560b0e21beebbe45b696817d162ab8c897a87de925086c0aa469a49b",
+          "requiredExpectationIds": [
+            "independent-review-a-understanding",
+            "independent-review-b-understanding"
+          ],
+          "independentDemonstrationsRequired": 2,
+          "expectationBindings": [
+            {
+              "expectationId": "independent-review-a-understanding",
+              "scoringCoreIds": [
+                "k1",
+                "k2"
+              ]
+            },
+            {
+              "expectationId": "independent-review-b-understanding",
+              "scoringCoreIds": [
+                "k1",
+                "k2"
+              ]
+            }
+          ]
+        },
+        {
+          "goalId": "8d34228c-da38-5c1e-97cc-571f3eafb9f4",
+          "profileFingerprint": "sha256:a787951a3fbb2405840a6245de50203b91b8c5fa9621904ab687f2da041550c5",
+          "requiredExpectationIds": [
+            "independent-review-a-understanding",
+            "independent-review-b-understanding"
+          ],
+          "independentDemonstrationsRequired": 2,
+          "expectationBindings": [
+            {
+              "expectationId": "independent-review-a-understanding",
+              "scoringCoreIds": [
+                "k3",
+                "k4"
+              ]
+            },
+            {
+              "expectationId": "independent-review-b-understanding",
+              "scoringCoreIds": [
+                "k3",
+                "k4"
+              ]
+            }
+          ]
+        }
+      ],
+      "essentialClaims": [
+        {
+          "core": "k1",
+          "criterionDe": "Vorzeichenrichtige Stufenenergiebilanz, Kraft- und Bewegungsrichtung sowie Einheiten für positive Protonen A und negative Elektronen B inklusive falsch gepoltem letzten Spalt.",
+          "criterionEn": "Signed stage-energy balance, force/motion direction and units for proton A/electron B including a wrongly poled final gap.",
+          "counteranswerDe": "Ein Elektron im Potenzialanstieg verliert zwingend Energie, weil q negativ ist.",
+          "missingCoreScoreMaximum": 13,
+          "minorErrorScore": 15,
+          "minorErrorPasses": true
+        },
+        {
+          "core": "k2",
+          "criterionDe": "Klassische Geschwindigkeitsrechnung selbst durchführen und gegenüber c prüfen; kleines v/c in A und relativistisches Modell in B begründet auswählen.",
+          "criterionEn": "Calculate/test classical speeds against c; justify low-speed A versus relativistic B.",
+          "counteranswerDe": "1,978c ist zulässig, weil Beschleunigerspannung beliebig groß sein kann.",
+          "missingCoreScoreMaximum": 13,
+          "minorErrorScore": 15,
+          "minorErrorPasses": true
+        },
+        {
+          "core": "k3",
+          "criterionDe": "Relativistische Energie und Impuls konkret in B/C mit klassischem Grenzfall vergleichen und beide Größen unterscheiden.",
+          "criterionEn": "Concretely compare relativistic K/p in B/C with the classical limit and distinguish both quantities.",
+          "counteranswerDe": "Bei 0,60c bleibt p=0,60mc und K=0,18mc² exakt.",
+          "missingCoreScoreMaximum": 13,
+          "minorErrorScore": 15,
+          "minorErrorPasses": true
+        },
+        {
+          "core": "k4",
+          "criterionDe": "Historische γm-Bezeichnung in B und frischen C-Fall in invariante Ruhemasse, wachsende Energie/Impuls und v<c übersetzen.",
+          "criterionEn": "Translate historical γm in B and fresh C into invariant rest mass, growing E/p and v<c.",
+          "counteranswerDe": "Die Ruhemasse wächst mit γ und deshalb kann ein massives Teilchen c überschreiten.",
+          "missingCoreScoreMaximum": 13,
+          "minorErrorScore": 15,
+          "minorErrorPasses": true
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2011.02932",
+          "use": "Scientific model constraint only; all problem data and formulations are newly authored. No claim of official curriculum provenance."
+        },
+        {
+          "url": "https://openstax.org/books/university-physics-volume-3/pages/5-8-relativistic-momentum",
+          "use": "Scientific model constraint only; all problem data and formulations are newly authored. No claim of official curriculum provenance."
+        },
+        {
+          "url": "https://openstax.org/books/university-physics-volume-3/pages/5-9-relativistic-energy",
+          "use": "Scientific model constraint only; all problem data and formulations are newly authored. No claim of official curriculum provenance."
+        }
+      ],
+      "authorNumericChecks": [
+        {
+          "calculation": "math.sqrt(2*1.6e-15/1.67e-27)",
+          "expected": 1384257.0804119655,
+          "unit": "m/s",
+          "actual": 1384257.0804119655,
+          "passed": true
+        },
+        {
+          "calculation": "math.sqrt(2000/511)",
+          "expected": 1.9783564706223267,
+          "actual": 1.9783564706223267,
+          "passed": true
+        },
+        {
+          "calculation": "math.sqrt(1-(1+1000/511)**-2)",
+          "expected": 0.9410790627586203,
+          "actual": 0.9410790627586203,
+          "passed": true
+        },
+        {
+          "calculation": "1/math.sqrt(1-.6**2)",
+          "expected": 1.25,
+          "actual": 1.25,
+          "passed": true
+        }
+      ],
+      "placementProposal": {
+        "phase": "Q1",
+        "rule": "Attach only to the existing task container at the stage where ALL actual requires are already required; do not move ordinary goals or import broad Q1 packages into earlier units. Keep GK/LK applicability of preparation.",
+        "requires": [
+          "8d34228c-da38-5c1e-97cc-571f3eafb9f4"
+        ]
+      }
+    },
+    {
+      "taskId": "f5ca019e-c6f8-5392-b2f5-b0c31d075737",
+      "key": "hall-sign-calibration-and-carriers",
+      "status": "draft-author-candidate-not-independent-review",
+      "coveredRowIndices": [
+        29
+      ],
+      "coverageBasis": [
+        {
+          "goalId": "b39ae8fb-4358-5866-8adf-3d5365368eeb",
+          "profileFingerprint": "sha256:fca52f8bf51b8e0078cc10e70a333c21c893fe8ed042d19d8f2aa406f27d856e",
+          "requiredExpectationIds": [
+            "hall-field-balances-magnetic-deflection",
+            "hall-voltage-carries-material-and-geometry-dependence",
+            "measurement-inference-matches-calibration"
+          ],
+          "independentDemonstrationsRequired": 2,
+          "expectationBindings": [
+            {
+              "expectationId": "hall-field-balances-magnetic-deflection",
+              "scoringCoreIds": [
+                "k1"
+              ]
+            },
+            {
+              "expectationId": "hall-voltage-carries-material-and-geometry-dependence",
+              "scoringCoreIds": [
+                "k2"
+              ]
+            },
+            {
+              "expectationId": "measurement-inference-matches-calibration",
+              "scoringCoreIds": [
+                "k3"
+              ]
+            }
+          ]
+        }
+      ],
+      "essentialClaims": [
+        {
+          "core": "k1",
+          "criterionDe": "Hall-Feld aus Trägerablenkung und stationärem Kräftegleichgewicht herleiten, Ladungsseiten/Polung für negative A und positive B unabhängig konstruieren.",
+          "criterionEn": "Explain Hall field via stationary force balance and independently construct charge sides/polarity for electron A and positive-carrier B.",
+          "counteranswerDe": "Beide Trägerarten sammeln unten dieselbe Ladungsart; die Anhäufung wächst unbegrenzt.",
+          "missingCoreScoreMaximum": 9,
+          "minorErrorScore": 11,
+          "minorErrorPasses": true
+        },
+        {
+          "core": "k2",
+          "criterionDe": "Vorzeichenbehaftete Hall-Beziehung mit Einheiten und t/n-Skalierung in A/B korrekt einsetzen, Einträgermodell nennen.",
+          "criterionEn": "Use signed Hall formula with units and t/n scaling in A/B; state one-carrier model.",
+          "counteranswerDe": "Doppelte Dicke verdoppelt U_H unabhängig vom Trägertyp.",
+          "missingCoreScoreMaximum": 9,
+          "minorErrorScore": 11,
+          "minorErrorPasses": true
+        },
+        {
+          "core": "k3",
+          "criterionDe": "Konkrete Offset-/Feldbestimmung aus Umkehrmessung und unabhängige Trägertypaussage samt Grenzen unbekannter Anschlüsse/Kalibrierung.",
+          "criterionEn": "Determine offset/field from reversal readings and independently infer carrier type with wiring/calibration limits.",
+          "counteranswerDe": "Jede positive Anzeige beweist ohne Kenntnis von B und Anschlüssen positive Träger.",
+          "missingCoreScoreMaximum": 9,
+          "minorErrorScore": 11,
+          "minorErrorPasses": true
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://openstax.org/books/university-physics-volume-2/pages/11-6-the-hall-effect",
+          "use": "Scientific model constraint only; all problem data and formulations are newly authored. No claim of official curriculum provenance."
+        }
+      ],
+      "authorNumericChecks": [
+        {
+          "calculation": ".02*.2/(1e22*(-1.6e-19)*.0005)",
+          "expected": -0.005,
+          "unit": "V",
+          "actual": -0.005,
+          "passed": true
+        },
+        {
+          "calculation": "(-4.9+5.1)/2",
+          "expected": 0.1,
+          "unit": "mV",
+          "actual": 0.09999999999999964,
+          "passed": true
+        },
+        {
+          "calculation": "((-4.9-5.1)/2)/(-25)",
+          "expected": 0.2,
+          "unit": "T",
+          "actual": 0.2,
+          "passed": true
+        }
+      ],
+      "placementProposal": {
+        "phase": "Q1",
+        "rule": "Attach only to the existing task container at the stage where ALL actual requires are already required; do not move ordinary goals or import broad Q1 packages into earlier units. Keep GK/LK applicability of preparation.",
+        "requires": [
+          "b39ae8fb-4358-5866-8adf-3d5365368eeb"
+        ]
+      }
+    },
+    {
+      "taskId": "d9d0fc38-14e7-5a81-8ffc-241e77d06aa8",
+      "key": "conductor-force-angle-offset",
+      "status": "draft-author-candidate-not-independent-review",
+      "coveredRowIndices": [
+        30
+      ],
+      "coverageBasis": [
+        {
+          "goalId": "c6355a22-24cf-5d8b-88af-ea11711460fb",
+          "profileFingerprint": "sha256:ff03e9aae777c648d5c9da7772269b53a5f5422e629184a6090c3023efaad24c",
+          "requiredExpectationIds": [
+            "force-is-transverse-and-angle-dependent",
+            "calculation-retains-vector-meaning",
+            "force-measurement-determines-field"
+          ],
+          "independentDemonstrationsRequired": 2,
+          "expectationBindings": [
+            {
+              "expectationId": "force-is-transverse-and-angle-dependent",
+              "scoringCoreIds": [
+                "k1"
+              ]
+            },
+            {
+              "expectationId": "calculation-retains-vector-meaning",
+              "scoringCoreIds": [
+                "k2"
+              ]
+            },
+            {
+              "expectationId": "force-measurement-determines-field",
+              "scoringCoreIds": [
+                "k3"
+              ]
+            }
+          ]
+        }
+      ],
+      "essentialClaims": [
+        {
+          "core": "k1",
+          "criterionDe": "Trägerursprung, Winkel sinα und transverse Richtung für neue Orientierung A und senkrechte Messgeometrie B begründen.",
+          "criterionEn": "Explain carrier origin, sinα and transverse direction for A and perpendicular measurement B.",
+          "counteranswerDe": "Kraft verläuft in Richtung B und hat bei parallelem Leiter maximalen Betrag.",
+          "missingCoreScoreMaximum": 9,
+          "minorErrorScore": 11,
+          "minorErrorPasses": true
+        },
+        {
+          "core": "k2",
+          "criterionDe": "Betrag mit tatsächlicher wirksamer Länge/Einheit, Grenzfälle und getrennte/einheitliche I/B-Umkehr vektoriell korrekt.",
+          "criterionEn": "Calculate magnitude with active length/units, limits and separate/double I/B reversal.",
+          "counteranswerDe": "Wenn I und B beide umkehren, kehrt die Kraft ebenfalls um.",
+          "missingCoreScoreMaximum": 9,
+          "minorErrorScore": 11,
+          "minorErrorPasses": true
+        },
+        {
+          "core": "k3",
+          "criterionDe": "Frische F-I-Daten per Steigung samt Offset zu B auswerten und Einzelwert-/Feldbereichsgrenzen begründen.",
+          "criterionEn": "Infer B from new force-current slope/offset and explain single-reading/field-region limitations.",
+          "counteranswerDe": "Der Nullstromwert darf ohne Prüfung als magnetische Kraft in B eingerechnet werden.",
+          "missingCoreScoreMaximum": 9,
+          "minorErrorScore": 11,
+          "minorErrorPasses": true
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://openstax.org/books/university-physics-volume-2/pages/11-4-magnetic-force-on-a-current-carrying-conductor",
+          "use": "Scientific model constraint only; all problem data and formulations are newly authored. No claim of official curriculum provenance."
+        }
+      ],
+      "authorNumericChecks": [
+        {
+          "calculation": ".4*2*.12*math.sin(math.pi/6)",
+          "expected": 0.048,
+          "unit": "N",
+          "actual": 0.047999999999999994,
+          "passed": true
+        },
+        {
+          "calculation": "(.098-.002)/2/.12",
+          "expected": 0.4,
+          "unit": "T",
+          "actual": 0.4,
+          "passed": true
+        },
+        {
+          "calculation": ".05/.12",
+          "expected": 0.4166666666666667,
+          "unit": "T",
+          "actual": 0.4166666666666667,
+          "passed": true
+        }
+      ],
+      "placementProposal": {
+        "phase": "Q1",
+        "rule": "Attach only to the existing task container at the stage where ALL actual requires are already required; do not move ordinary goals or import broad Q1 packages into earlier units. Keep GK/LK applicability of preparation.",
+        "requires": [
+          "c6355a22-24cf-5d8b-88af-ea11711460fb"
+        ]
+      }
+    },
+    {
+      "taskId": "349586d0-68ce-5485-97a5-0c73f71bbd72",
+      "key": "dipole-torque-and-stability",
+      "status": "draft-author-candidate-not-independent-review",
+      "coveredRowIndices": [
+        31
+      ],
+      "coverageBasis": [
+        {
+          "goalId": "d02438ba-0cc9-5993-831e-5e44d35e32c4",
+          "profileFingerprint": "sha256:c47e1c5037cb459357e86c6cf2b6664e864c80a791c7acf0554bffc41bf5742a",
+          "requiredExpectationIds": [
+            "dipole-torque",
+            "alignment-stability"
+          ],
+          "independentDemonstrationsRequired": 2,
+          "expectationBindings": [
+            {
+              "expectationId": "dipole-torque",
+              "scoringCoreIds": [
+                "k1"
+              ]
+            },
+            {
+              "expectationId": "alignment-stability",
+              "scoringCoreIds": [
+                "k2",
+                "k3"
+              ]
+            }
+          ]
+        }
+      ],
+      "essentialClaims": [
+        {
+          "core": "k1",
+          "criterionDe": "µ-Richtung, tatsächlicher Winkel, Betrag/Einheit und Drehsinn in A sowie nach unabhängiger Störung/Feldumkehr B.",
+          "criterionEn": "Moment direction, actual angle, magnitude/units and rotation sense in A and perturbed/reversed B.",
+          "counteranswerDe": "τ hat dieselbe Richtung wie B und Einheit Newton.",
+          "missingCoreScoreMaximum": 9,
+          "minorErrorScore": 11,
+          "minorErrorPasses": true
+        },
+        {
+          "core": "k2",
+          "criterionDe": "Parallel/antiparallel beide τ0, aber unterschiedliche Stabilität aus Störung/Energie und vertauschte Zuordnung bei Feldumkehr.",
+          "criterionEn": "Both orientations have zero torque but distinct disturbance/energy stability, swapped on B reversal.",
+          "counteranswerDe": "Antiparallel ist ebenso stabil wie parallel, weil sin 180°=0.",
+          "missingCoreScoreMaximum": 9,
+          "minorErrorScore": 11,
+          "minorErrorPasses": true
+        },
+        {
+          "core": "k3",
+          "criterionDe": "Drehung versus Translation im homogenen Feld sowie notwendige Energieabgabe zum Einschwingen in A/B ausdrücklich unterscheiden.",
+          "criterionEn": "Distinguish rotation/translation in uniform field and energy dissipation needed for settling in A/B.",
+          "counteranswerDe": "Ohne Dämpfung endet jede Nadel zwingend sofort in stabiler Ruhe; homogene Felder ziehen sie stets nach vorn.",
+          "missingCoreScoreMaximum": 9,
+          "minorErrorScore": 11,
+          "minorErrorPasses": true
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://openstax.org/books/university-physics-volume-2/pages/11-5-force-and-torque-on-a-current-loop",
+          "use": "Scientific model constraint only; all problem data and formulations are newly authored. No claim of official curriculum provenance."
+        }
+      ],
+      "authorNumericChecks": [
+        {
+          "calculation": ".16*.075*math.sin(math.pi/6)",
+          "expected": 0.006,
+          "unit": "N m",
+          "actual": 0.005999999999999999,
+          "passed": true
+        },
+        {
+          "calculation": ".16*.075",
+          "expected": 0.012,
+          "unit": "N m",
+          "actual": 0.012,
+          "passed": true
+        }
+      ],
+      "placementProposal": {
+        "phase": "Q1",
+        "rule": "Attach only to the existing task container at the stage where ALL actual requires are already required; do not move ordinary goals or import broad Q1 packages into earlier units. Keep GK/LK applicability of preparation.",
+        "requires": [
+          "d02438ba-0cc9-5993-831e-5e44d35e32c4"
+        ]
+      }
+    },
+    {
+      "taskId": "c4edaf29-7c0c-5c86-bfc8-b5e0f3fbe96b",
+      "key": "induction-and-field-line-limits",
+      "status": "draft-author-candidate-not-independent-review",
+      "coveredRowIndices": [
+        28,
+        33
+      ],
+      "coverageBasis": [
+        {
+          "goalId": "9fb1dd85-11b7-4a5a-b124-27fea8d1788e",
+          "profileFingerprint": "sha256:c83c06b0ea9342df7961d00a94b59a9eb4f9e6ade0cf8c9f692fd7ab97a5196a",
+          "requiredExpectationIds": [
+            "safe-induction-investigation-separates-observation-and-inference",
+            "charge-redistribution-reaches-electrostatic-equilibrium",
+            "field-line-diagram-represents-result-and-limits"
+          ],
+          "independentDemonstrationsRequired": 3,
+          "expectationBindings": [
+            {
+              "expectationId": "safe-induction-investigation-separates-observation-and-inference",
+              "scoringCoreIds": [
+                "k1"
+              ]
+            },
+            {
+              "expectationId": "charge-redistribution-reaches-electrostatic-equilibrium",
+              "scoringCoreIds": [
+                "k2"
+              ]
+            },
+            {
+              "expectationId": "field-line-diagram-represents-result-and-limits",
+              "scoringCoreIds": [
+                "k3",
+                "k4"
+              ]
+            }
+          ]
+        },
+        {
+          "goalId": "f3de5922-dd45-4fb6-87c1-525d1952dd89",
+          "profileFingerprint": "sha256:573dcc3bd4f013ea7ecbc5f44b1f92b7d304247af7a7f1829e035c51bb4f9533",
+          "requiredExpectationIds": [
+            "interpret-field-line-conventions",
+            "apply-conductor-equilibrium-conditions"
+          ],
+          "independentDemonstrationsRequired": 2,
+          "expectationBindings": [
+            {
+              "expectationId": "interpret-field-line-conventions",
+              "scoringCoreIds": [
+                "k3"
+              ]
+            },
+            {
+              "expectationId": "apply-conductor-equilibrium-conditions",
+              "scoringCoreIds": [
+                "k4"
+              ]
+            }
+          ]
+        }
+      ],
+      "essentialClaims": [
+        {
+          "core": "k1",
+          "criterionDe": "Sichere prüfbare Untersuchung mit Variable/Kontrollen/Unsicherheit und Beobachtung versus Modellschluss in A; Vergleich mit unabhängigem C.",
+          "criterionEn": "Safe testable investigation with variable/controls/uncertainty and observation/inference in A; independent comparison C.",
+          "counteranswerDe": "Die Elektronenverschiebung wurde unmittelbar fotografiert; neutrale Anfangszustände und Kontakt sind egal.",
+          "missingCoreScoreMaximum": 13,
+          "minorErrorScore": 15,
+          "minorErrorPasses": true
+        },
+        {
+          "core": "k2",
+          "criterionDe": "Freie Ladungsumordnung bis E_innen 0, tatsächliche Seiten/Vorzeichen und Systembilanz für A/B sowie geerdeten C-Fall.",
+          "criterionEn": "Free charge redistribution to E_inside 0, charge sides/signs and system balance in A/B and grounded C.",
+          "counteranswerDe": "Ein neutraler Leiter erzeugt durch Influenz positive Nettoladung ohne Austausch.",
+          "missingCoreScoreMaximum": 13,
+          "minorErrorScore": 15,
+          "minorErrorPasses": true
+        },
+        {
+          "core": "k3",
+          "criterionDe": "Eigene Feldlinienbilder für Influenz und Dipol, Tangentenrichtung/relative Dichte/Nichtkreuzung, senkrechte Oberfläche und modellhafte Bedeutung.",
+          "criterionEn": "Construct induction/dipole field lines with tangents/density/no-crossing, normal surface condition and model meaning.",
+          "counteranswerDe": "Feldlinien sind Elektronenbahnen; sie kreuzen sich und laufen im Gleichgewicht durch das Metall.",
+          "missingCoreScoreMaximum": 13,
+          "minorErrorScore": 15,
+          "minorErrorPasses": true
+        },
+        {
+          "core": "k4",
+          "criterionDe": "Unabhängige Übertragung auf geschlossenen ladungsfreien Hohlraum, Spitzenverstärkung und Grenzen elektrostatischen Gleichgewichts; neues C-Endfeld korrekt.",
+          "criterionEn": "Transfer to a closed charge-free cavity, tip enhancement and electrostatic limits; correct final C field.",
+          "counteranswerDe": "Im Faraday-Käfig ist jedes beliebige zeitabhängige Feld null, während das elektrostatische Innenfeld unbestimmt ist.",
+          "missingCoreScoreMaximum": 13,
+          "minorErrorScore": 15,
+          "minorErrorPasses": true
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://openstax.org/books/university-physics-volume-2/pages/6-4-conductors-in-electrostatic-equilibrium",
+          "use": "Scientific model constraint only; all problem data and formulations are newly authored. No claim of official curriculum provenance."
+        },
+        {
+          "url": "https://openstax.org/books/university-physics-volume-2/pages/7-5-equipotential-surfaces-and-conductors",
+          "use": "Scientific model constraint only; all problem data and formulations are newly authored. No claim of official curriculum provenance."
+        }
+      ],
+      "authorNumericChecks": [
+        {
+          "calculation": "[2-2,4-4]",
+          "expected": [
+            0,
+            0
+          ],
+          "unit": "nC",
+          "actual": [
+            0,
+            0
+          ],
+          "passed": true
+        }
+      ],
+      "placementProposal": {
+        "phase": "Q1",
+        "rule": "Attach only to the existing task container at the stage where ALL actual requires are already required; do not move ordinary goals or import broad Q1 packages into earlier units. Keep GK/LK applicability of preparation.",
+        "requires": [
+          "9fb1dd85-11b7-4a5a-b124-27fea8d1788e"
+        ]
+      }
+    }
+  ]
+}

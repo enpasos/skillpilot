@@ -1,0 +1,101 @@
+{
+  "at": "2026-11-15T21:26:13.416Z",
+  "beforeSha256": "721585772259388d11c4b6f1e6539099c375e6527828d62369acd6df6539e52c",
+  "candidateSha256": "b391f6a72d6fee14cc5836cd42ad9a46f30ff9dbc07b23a5dd7e0f47c7467173",
+  "nativeFunction": "buildApplicabilityCompilation",
+  "catalogRoots": 21,
+  "summary": {
+    "goals": 841,
+    "errors": 0,
+    "warnings": 1,
+    "diagnostics": 6743
+  },
+  "rows": [
+    {
+      "goalId": "677a192d-8bbe-57fc-bb7a-1c1ed5fba32b",
+      "title": "Einen angeleiteten Versuch zur mittleren Beschleunigung planen und auswerten",
+      "goalType": "atomic",
+      "compiledApplicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BY",
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_physics_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial"
+        }
+      ]
+    },
+    {
+      "goalId": "d61ea362-f6c3-5eab-ac30-2d0e265ac0f6",
+      "title": "Geschwindigkeitspfeile aus einer Video-Bildfolge bestimmen und vergleichen",
+      "goalType": "atomic",
+      "compiledApplicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BY",
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_physics_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial"
+        }
+      ]
+    },
+    {
+      "goalId": "7c2a3450-9b82-54e6-b302-358a964b34ec",
+      "title": "Prüfungsaufgabe: Einen angeleiteten Beschleunigungsversuch planen, durchführen und vergleichen",
+      "goalType": "atomic",
+      "compiledApplicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BY",
+          "kind": "assessment-requires",
+          "source": "requires 677a192d-8bbe-57fc-bb7a-1c1ed5fba32b"
+        }
+      ]
+    },
+    {
+      "goalId": "fbaeed34-81a0-5955-9777-bf103002feee",
+      "title": "Prüfungsaufgabe: Geschwindigkeitspfeile in einem echten Bewegungsvideo konstruieren",
+      "goalType": "atomic",
+      "compiledApplicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BY",
+          "kind": "assessment-requires",
+          "source": "requires d61ea362-f6c3-5eab-ac30-2d0e265ac0f6"
+        }
+      ]
+    }
+  ],
+  "allPhysicsWarnings": [
+    {
+      "code": "APV-201",
+      "severity": "warning",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "goalId": "4996346f-ab5d-4d09-9b9e-b9e559af153d",
+      "title": "Prüfungsaufgabe: Elektrische Energieumwandlungen beurteilen",
+      "dimension": "jurisdiction",
+      "message": "Goal uses applicability override for DE-BW."
+    }
+  ],
+  "activeSourceWrites": false
+}

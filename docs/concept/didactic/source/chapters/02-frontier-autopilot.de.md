@@ -18,6 +18,12 @@ Sobald das Backend aus Skill-Graph, persönlichem Curriculum und Beherrschungsst
 - **Einsatzfall:** Geeignet für Lernende, die ein Themengebiet geschlossen abschließen möchten, bevor sie in den nächsten Zweig wechseln.
 - **Umsetzung:** Die erreichbaren Ziele werden nach ihrer hierarchischen Baumposition (Tree-Index bzw. stabile Zielreihenfolge) sortiert; Geschwisterknoten im aktuellen Zweig haben Vorrang vor neuen Teilbäumen.
 
+#### Strategie 3: Einheit für Einheit (*Zielstandard; Umsetzung `F13` offen*)
+
+- **Konzept:** Folgt den erklärten fachlichen Lerneinheiten und Planeinheiten sowie deren Geschwisterfolge `after` ([Graph-Definition §11.5](repo:docs/concept/skill-graph/learning-unit-progression.md#sec-unit-by-unit)), ohne die berechnete Frontier einzuschränken oder technische Einheitssperren aufzubauen.
+- **Einsatzfall:** Vorgesehener Standardmodus für Lernende, die eine begonnene Einheit zusammenhängend bis zu ihren Nachweisen durcharbeiten möchten, bevor die nächste Einheit an die Reihe kommt.
+- **Umsetzung:** Rekursiver Abstieg von der Wurzel über offene Kinder mit erreichbaren Frontier-Zielen in `stateMachineOptions` nach vier Stufen: (1) offene Kindeinheit, die sowohl *an der Reihe* (alle Vorgänger aus `after` und kreuzendem Bedarf erledigt) als auch bereits *begonnen* ist, (2) offenes Kind an der Reihe, (3) offene begonnene Einheit, (4) übrige Kinder mit erreichbarem Frontier-Ziel. *Erledigt* prüft effektiv beherrschte Atome im Umfang (einschließlich Prüfungs- und Memorierzielen in diesem Umfang; bewusste andere Zielwahl bleibt möglich); Orientierungsziele behalten beim echten Null-Fortschritts-Einstieg Vorrang, ausdrückliche Lernendenwahl und aktiver Lernplan bleiben vorrangig. Die Laufzeitumsetzung (`F13`) steht noch aus.
+
 ### Autopilot-Modus {#sec:autopilot-mode}
 
 Der Autopilot reduziert Navigationsaufwand, indem er nach dem erfolgreichen Abschluss des aktuellen Ziels automatisch das nächste passende Frontier-Ziel aktiviert.
@@ -25,7 +31,7 @@ Der Autopilot reduziert Navigationsaufwand, indem er nach dem erfolgreichen Absc
 #### Laufzeitverhalten
 
 - **Auslöser:** Greift, sobald das aktuelle `activeGoal` in den Zustand **Gemeistert** (*Mastered*) übergeht.
-- **Auswahl:** Wählt das **erste** Ziel der gültigen Frontier nach Anwendung der eingestellten Auswahlstrategie (*Zufällig* oder *Sequenziell*). Ist der Planmodus eines gültigen Lernplans aktiv (siehe @ref{sec:existing-learner-setup}), gelten vorrangig dessen Übergaberegeln und der generische Autopilot wird unterdrückt.
+- **Auswahl:** Wählt das **erste** Ziel der gültigen Frontier nach Anwendung der eingestellten Auswahlstrategie (*Zufällig*, *Sequenziell* oder künftig *Einheit für Einheit*). Ist der Planmodus eines gültigen Lernplans aktiv (siehe @ref{sec:existing-learner-setup}), gelten vorrangig dessen Übergaberegeln und der generische Autopilot wird unterdrückt.
 - **Aktion:** Ruft `setActiveGoal(nextGoalId)` automatisch ohne manuellen Zwischenschritt im Lernzielbaum auf.
 
 #### Konfiguration und Speicherung

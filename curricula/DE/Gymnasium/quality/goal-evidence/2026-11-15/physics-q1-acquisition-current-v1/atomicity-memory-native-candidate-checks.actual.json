@@ -1,0 +1,72 @@
+{
+  "observedAt": "2026-11-15T19:23:54.511099+00:00",
+  "status": "PASS",
+  "candidateEpoch": 840,
+  "ordinaryDenominator": 485,
+  "actualCommands": [
+    {
+      "command": "app/node_modules/.bin/tsx app/scripts/semanticAtomicityReview.ts --config=tmp/physics-release840-20261115/atomicity-candidate.config.json --mode=check",
+      "exitCode": 0,
+      "currentAtomic": 485,
+      "missing": 0,
+      "stale": 0,
+      "obsolete": 0
+    },
+    {
+      "command": "app/node_modules/.bin/tsx app/scripts/memoryCardReview.ts --config=tmp/physics-release840-20261115/memory-candidate.config.json --mode=check",
+      "exitCode": 0,
+      "currentNoMemory": 357,
+      "currentMemoryRequired": 128,
+      "currentTotal": 485,
+      "primaryCards": 146,
+      "keptPrimaryCards": 146,
+      "missing": 0,
+      "stale": 0,
+      "obsolete": 0,
+      "missingVisibleMemoryGoals": 0,
+      "visibilityBoundary": "Two existing HE views, not final 69 successor view acceptance."
+    }
+  ],
+  "semanticInputComparisonPath": "tmp/physics-release840-20261115/atomicity-memory-input-scope-comparison.actual.json",
+  "reviewRecordsWritten": false,
+  "historicalFingerprintRebinding": false,
+  "boundaries": [
+    "Atomicity is not assessment availability.",
+    "P profile changes are not inputs to the native A/M fingerprint contract.",
+    "Final integrated epoch and views still need native validation."
+  ],
+  "pins": [
+    {
+      "path": "tmp/physics-release840-20261115/review-canonical.snapshot.json",
+      "sha256": "42de6d969580d0307ed396b4e8c3ec56ca1d8a08c9ee8db71317c8ce08c4a8ff"
+    },
+    {
+      "path": "app/scripts/semanticAtomicityReview.ts",
+      "sha256": "2c3f66cff412d9578f99a0df97914a671d2016afad6c46d7e854b8b664baaf3c"
+    },
+    {
+      "path": "app/scripts/memoryCardReview.ts",
+      "sha256": "e42b154d8557e4ccff249c7cb41ac26b7c40560dd150dbd3255923cd038446f5"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-physics-full.review.jsonl",
+      "sha256": "e19a96a8d8bda72ae242b2103c82c1de365f84e3f660ba40432c4e930c928414"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-physics-full.review.jsonl",
+      "sha256": "c3cc545987dd44977b46b1a69dbe3f5f7d9b39b6d4fd83cf100f492b136d36c4"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-physics-full.cards.review.jsonl",
+      "sha256": "d9ae2e25e9c09e0a390d2c6a291433e3bfcb0889c35ae6dc3ce446257157b70e"
+    },
+    {
+      "path": "tmp/physics-release840-20261115/atomicity-candidate.config.json",
+      "sha256": "91bfeb42c9eb29c84d501e69e546d587dba55726ede38619db938bfb270af773"
+    },
+    {
+      "path": "tmp/physics-release840-20261115/memory-candidate.config.json",
+      "sha256": "2eecb50d1b2ec9110a2c39c4b43d984ddcc4e2a76c874104e8cb24d9e83ef1e0"
+    }
+  ]
+}

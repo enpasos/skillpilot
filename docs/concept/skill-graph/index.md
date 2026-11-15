@@ -2,60 +2,59 @@
 
 # Skill Graph
 
-SkillPilot represents learning goals and their prerequisites as a shared skill graph. Educational programmes organise those stable goals into contextual views and learning units. This section explains both the skill graph and the contracts around it.
+SkillPilot represents learning goals and their prerequisites as a shared skill graph. Educational programmes organise those stable goals into contextual views, plan units, and subject learning units. This section explains both the skill graph and the contracts around it.
 
-## Foundations (Single-Source Compendium)
+## Foundations (Single-Source Compendium — Volume I)
 
 - **Complete PDF Compendium:**
-  [The SkillPilot Graph Definition (English PDF)](skillpilot-graph-definition.en.pdf) — generated from the canonical single source with full mathematics, bilingual illustrations, 145-rule enforcement traffic light (`Ampelschaltung`), and implementation boundaries.
+  [The SkillPilot Graph Definition (English PDF)](skillpilot-graph-definition.en.pdf) — generated from the canonical single source with full mathematics, bilingual illustrations, rule enforcement traffic light (`Ampelschaltung`), and implementation boundaries.
 - [Graph Definition — Core (§§1–5)](graph-definition.md):
   formal goals, relations, prerequisites, frontier, and graph-validity conditions.
 - [Context, Views, Scope & Goal Types (§§6–10)](context-and-views.en.md):
-  canonical layer vs. educational views, personal curriculum scope $L=\mathrm{Closure}(S)$, understanding/memorisation/assessment goals, time context, and evidence boundaries.
-- [Learning Units (§§11.1–11.4)](learning-units.md):
-  recursively composed educational units, motivational introduction, required outcomes, and completion derived from child units and own obligations; how a unit is represented in the skill landscape (placement layer, curriculum-package contract 1.2) is in [§11.2](learning-units.md#sec-unit-representation).
-- [Learning-Unit Progression (§11.5)](learning-unit-progression.md):
-  explicit course dependencies, whole-unit ordering, and the separate choice of access policy.
-  Decision of 14 November 2026: [Learning units: clusters, `after` and learning flow (DE)](learning-unit-wiring-concept-2026-11-14.md).
+  canonical layer vs. educational views, shared Land/duration plan authority, carried-in vs. placed-in semantics, goal tree vs. learner map, personal curriculum scope $L=\mathrm{Closure}(S)$, orientation/understanding/memorisation/assessment goals, and evidence boundaries.
+- [Declared Units: Structure & Completion (§§11.1–11.4)](learning-units.md):
+  three-tier progression (**Cluster $\to$ Unit $\to$ Unit with assessments**), learning promise, own goals and child units derived from `contains`, and completion without stored unit mastery; target representation vs. compatibility contract 1.2 is in [§11.2](learning-units.md#sec-unit-representation).
+- [Unit Ordering, Rules E1–E4 & Unit-by-Unit Mode (§11.5)](learning-unit-progression.md):
+  sibling `after` ordering without access locks, binding rules E1–E4 across subject and plan units, cross-Land leaf wholeness, and the target [“Unit by Unit” learning mode](learning-unit-progression.md#sec-unit-by-unit).
+  Decision record & rollout plan (`F1`–`F13`): [Learning units: clusters, `after` and learning flow (DE)](learning-unit-wiring-concept-2026-11-14.md).
 - [Optional Acquisition & Time Planning (§12)](planning-and-budget.en.md):
-  multi-period acquisition plans, structural prerequisite witnesses, and workload budgets.
-- [Assessment-Gated Completion & Implicit Mastery (§13)](assessment-gated-completion.md):
-  direct assessment access, transitive minimality, and globally effective recognition through independent application in valid local learning units (implementation pending).
-  [Decision of 4 November 2026 (DE)](completion-semantics-clarification-2026-11-04.md).
-  Working plan: [Learning Units for Mathematics and Physics (DE)](../../dev/mathematics-physics-learning-units-plan.md); historical: [plan of 5 November 2026 (DE)](../../dev/learning-units-implementation-plan.md).
+  dated multi-period schedules, structural completion witnesses, workload budgets, and the boundary to binding plan units.
+- [Implicit Mastery Through Valid Local Assessments (§13)](assessment-gated-completion.md):
+  direct assessment access, assessments as prerequisite sinks, transitive minimality, and globally effective recognition under R1–R5 inside declared units with assessments (runtime adaptation pending).
+  Historical decision records: [4 November 2026 (DE)](completion-semantics-clarification-2026-11-04.md); working plans: [Stage-Plan & Units Handover (DE)](../../dev/stage-plan-units-handover-2026-11-15.md), [Learning Units for Mathematics and Physics (DE)](../../dev/mathematics-physics-learning-units-plan.md).
 - [Compendium Appendices (B–F)](compendium-appendix.en.md):
   current implementation status, verification strategy, glossary/symbols, sources, and build reference; for Appendix A see [Rule & Milestone Matrix](../../qa-ci/graph-definition-rule-milestone-matrix.en.md).
 
-## Architecture, Media, Goal Book & Interchange (Single-Source Compendium)
+## Architecture, Media, Goal Book & Interchange (Single-Source Compendium — Volume Ia)
 
 - **Complete PDF Compendium:**
   [Skill Graph Architecture, Media, Goal Book & Package Interchange (English PDF)](skillpilot-skill-graph-architecture.en.pdf)
-- [General Goal System and Migration (§1)](general-goal-system-and-migration.md):
-  the separation of goals, programmes, placements, competency axes, and views.
+- [General Goal System and Incremental Migration (§1)](general-goal-system-and-migration.md):
+  separation of goals, declared cluster units & plan units, placements, competency axes, and goal-tree / learner-map projections.
 - [Node Types (§2)](node-types.md):
-  orientation, understanding, memorisation, and assessment goals.
+  orientation, understanding, memorisation (SM-2 + Verified Recall), and assessment goals (recognition exams vs. standalone practice/Abitur tasks).
 - [View Projection and Goal Placement (§3)](view-projection-and-goal-placement.md):
-  explicit curriculum structure, personal learning scope $L$, and scope-specific learner views.
+  five view families including the learner map, shared Land/duration plan authority, carried-in vs. placed-in & earliest-need preparation in $L$, and E1–E4 unit projection rules.
 - [Source and Resource Links (§4)](source-and-resource-links.md)
 - [Content Integration Architecture (§5)](content-integration.en.md)
 - [Human-Readable Source Rationales (§6)](human-readable-source-rationales.md)
 - [Atomic Goal Visualizations (§7)](atomic-goal-visualizations.md)
 - [Learning-Goal Book and Evidence-Review Pipeline (§8)](learning-goal-book-and-evidence-review-pipeline.md)
-- [Teacher Goal Book and Local Time Planning (§9)](teacher-goal-book-time-planning.en.md)
-- [Canonical Gymnasium Rollout Policy (§10)](canonical-gymnasium-rollout.md)
-- [MEM/FWU Roundtrip Plan (§11)](mem-fwu-roundtrip-plan.md)
-- [Dual Curriculum Package Releases (§12)](dual-curriculum-package-releases.en.md):
-  JSON runtime and ontology packages, and the runtime contract versions 1.0, 1.1 (`assessmentCompletionV1`), and 1.2 (`learningUnitsV1`, learning units).
-- [Learning-Unit Design Criteria and Examples (§13)](learning-unit-design-and-examples.md):
-  the purpose of a unit, criteria for meaningful boundaries and assessments, two worked candidates, and the unit validity rules R1–R5 of 11 November 2026 applied to unit design; the representation of a unit is in [Graph Definition §11.2](learning-units.md#sec-unit-representation).
-- [Knowledge Context (§14)](knowledge-context.md):
-  what a learner can be assumed to know at a goal, derived deterministically from the graph for generation, review, and the coach; the sufficiency of prerequisites as the property the graph must gain. Concept of 13 November 2026, not implemented.
+  (for teacher timeline planning on top of the GoalBook, see [Teacher Goal-Book Time Planning](teacher-goal-book-time-planning.en.md) in Volume II).
+- [Canonical Gymnasium Rollout Policy (§9)](canonical-gymnasium-rollout.md)
+- [MEM/FWU Roundtrip Plan (§10)](mem-fwu-roundtrip-plan.md)
+- [Dual Curriculum Package Releases (§11)](dual-curriculum-package-releases.en.md):
+  JSON runtime and ontology packages, runtime contracts 1.0, 1.1 (`assessmentCompletionV1`), and 1.2 (`learningUnitsV1`), plus the boundary to the `v1.3` stage-plan foundation and cluster-unit carrier (`F8`).
+- [Learning-Unit Design Criteria and Examples (§12)](learning-unit-design-and-examples.md):
+  didactic unit boundaries, knowledge-context discipline, worked Physics and Mathematics studies, ordering/recognition rules E1–E4 and R1–R5, and the 13-question design sheet.
+- [Knowledge Context (§13)](knowledge-context.md):
+  what a learner can be assumed to know at a goal ($W(g)$), the interface interplay of `requires` and `after`, and prerequisite sufficiency as the property the graph must gain.
 
 See the [Concept Documentation Index](../index.md) for didactic concepts and runtime workflows, and the [Glossary](../glossary.md) for shared terminology.
 
 ## Build Web & PDF Compendia from the Canonical Single Source
 
-All bilingual Web chapters, the 145-rule traffic-light matrix, the bilingual diagrams (`00`, `08`–`16`), and both LuaLaTeX PDFs are compiled from the canonical single sources under `docs/concept/skill-graph/source/` and `docs/concept/skill-graph/architecture-source/` (generated outputs of the Graph Definition are built locally and in CI):
+All bilingual Web chapters, the rule traffic-light matrix, the bilingual diagrams (`00`, `08`–`16`), and both LuaLaTeX PDFs are compiled from the canonical single sources under `docs/concept/skill-graph/source/` and `docs/concept/skill-graph/architecture-source/`:
 
 ```bash
 python3 scripts/build_compendia.py --compendium skill-graph --all
@@ -73,60 +72,59 @@ The [mathematical reference check](latex/check-assessment-model.py) exercises fu
 
 # Skill-Graph
 
-SkillPilot stellt Lernziele und ihre Voraussetzungen als gemeinsamen Skill-Graph dar. Bildungsprogramme ordnen diese stabilen Lernziele in kontextbezogene Sichten und Lerneinheiten ein. Dieser Bereich erläutert sowohl den Skill-Graph als auch die zugehörigen Fach- und Laufzeitverträge.
+SkillPilot stellt Lernziele und ihre Voraussetzungen als gemeinsamen Skill-Graph dar. Bildungsprogramme ordnen diese stabilen Lernziele in kontextbezogene Sichten, Planeinheiten und fachliche Lerneinheiten ein. Dieser Bereich erläutert sowohl den Skill-Graph als auch die zugehörigen Fach- und Laufzeitverträge.
 
-## Grundlagen (Single-Source-Kompendium)
+## Grundlagen (Single-Source-Kompendium — Band I)
 
 - **Vollständiges PDF-Kompendium:**
-  [Die Graph-Definition von SkillPilot (Deutsches PDF)](skillpilot-graph-definition.pdf) — erzeugt aus der kanonischen Single-Source mit vollständiger Mathematik, zweisprachigen Illustrationen, 145-Regel-Ampelmatrix und Umsetzungsstand.
+  [Die Graph-Definition von SkillPilot (Deutsches PDF)](skillpilot-graph-definition.pdf) — erzeugt aus der kanonischen Single-Source mit vollständiger Mathematik, zweisprachigen Illustrationen, Regel-Ampelmatrix und Umsetzungsstand.
 - [Graph-Definition — Kern (§§1–5)](graph-definition.de.md):
   formale Lernziele, Relationen, Voraussetzungen, Frontier und Gültigkeitsbedingungen.
 - [Kontext, Sichten, Scope & Zielarten (§§6–10)](context-and-views.de.md):
-  kanonische Schicht vs. Bildungssichten, persönlicher Curriculum-Scope $L=\mathrm{Closure}(S)$, Verständnis-/Memorier-/Prüfungsziele, Zeitkontext und Nachweisgrenzen.
-- [Lerneinheiten (§§11.1–11.4)](learning-units.de.md):
-  rekursiv aufgebaute Lerneinheiten, motivierende Hinführung, geforderte Lernergebnisse und aus Untereinheiten sowie eigenen Nachweisen abgeleiteter Abschluss; wie eine Einheit in der Skill-Landschaft dargestellt wird (Platzierungsschicht, Curriculum-Paketvertrag 1.2), steht in [§11.2](learning-units.de.md#sec-unit-representation).
-- [Einheitsfolge & Zugang (§11.5)](learning-unit-progression.de.md):
-  explizite Kursabhängigkeiten, Blockreihenfolge ganzer Einheiten und die getrennte Richtlinienfrage zur Zugangssteuerung.
-  Festlegung vom 14. November 2026: [Lerneinheiten: Cluster, `after` und Lernfluss](learning-unit-wiring-concept-2026-11-14.md).
+  kanonische Schicht vs. Bildungssichten, gemeinsame Landes-/Dauer-Planautorität, *geführt in* vs. *steht in*, Lernzielbaum vs. Lernkarte, persönlicher Curriculum-Scope $L=\mathrm{Closure}(S)$, Orientierungs-/Verständnis-/Memorier-/Prüfungsziele und Nachweisgrenzen.
+- [Erklärte Einheiten: Gliederung & Abschluss (§§11.1–11.4)](learning-units.de.md):
+  dreistufiges Modell (**Cluster $\to$ Einheit $\to$ Einheit mit Prüfungen**), Lernversprechen, aus `contains` abgeleitete eigene Ziele und Untereinheiten sowie Abschluss ohne gespeicherte Unit-Mastery; Zieldarstellung vs. Kompatibilitätsvertrag 1.2 steht in [§11.2](learning-units.de.md#sec-unit-representation).
+- [Einheitsordnung, Regeln E1–E4 & Lernweise „Einheit für Einheit“ (§11.5)](learning-unit-progression.de.md):
+  Geschwisterfolge `after` ohne Zugangssperren, verbindliche Ordnungsregeln E1–E4 für Fach- und Planeinheiten, länderübergreifende Blatt-Ganzheit sowie die Ziel-Lernweise [„Einheit für Einheit“](learning-unit-progression.de.md#sec-unit-by-unit).
+  Entscheidungsprotokoll & Einführungsplan (`F1`–`F13`): [Lerneinheiten: Cluster, `after` und Lernfluss](learning-unit-wiring-concept-2026-11-14.md).
 - [Optionale Erwerbs- & Zeitplanung (§12)](planning-and-budget.de.md):
-  mehrperiodige Erwerbspläne, strukturelle Voraussetzungszeugen und Arbeitslastbudgets.
-- [Prüfungsgebundener Abschluss & implizite Mastery (§13)](assessment-gated-completion.de.md):
-  direkter Prüfungszugang, transitive Minimalität und global wirksame Anerkennung durch selbstständige Anwendung in gültigen lokalen Lerneinheiten (Umsetzung offen).
-  [Entscheidung vom 4. November 2026](completion-semantics-clarification-2026-11-04.md).
-  Arbeitsplan: [Lerneinheiten für Mathematik und Physik](../../dev/mathematics-physics-learning-units-plan.md); historisch: [Plan vom 5. November 2026](../../dev/learning-units-implementation-plan.md).
+  datierte mehrperiodige Erwerbspläne, strukturelle Abschlusszeugen, Arbeitslastbudgets und Abgrenzung zu verbindlichen Planeinheiten.
+- [Implizite Beherrschung durch gültige lokale Prüfungen (§13)](assessment-gated-completion.de.md):
+  direkter Prüfungszugang, Prüfungen als Voraussetzungssenken, transitive Minimalität und global wirksame Anerkennung nach R1–R5 in erklärten Einheiten mit Prüfungen (Laufzeitanpassung offen).
+  Historische Entscheidungsdokumente: [4. November 2026](completion-semantics-clarification-2026-11-04.md); Arbeitspläne: [Übergabe Stufenpläne & Einheiten](../../dev/stage-plan-units-handover-2026-11-15.md), [Lerneinheiten für Mathematik und Physik](../../dev/mathematics-physics-learning-units-plan.md).
 - [Kompendiums-Anhänge (B–F)](compendium-appendix.de.md):
   aktueller Umsetzungsstand, Prüfstrategie, Glossar/Symbole, Quellen und Build-Referenz; zu Anhang A siehe die [Regel- & Meilenstein-Matrix](../../qa-ci/graph-definition-rule-milestone-matrix.md).
 
-## Architektur, Medien, Lernzielbuch & Austausch (Single-Source-Kompendium)
+## Architektur, Medien, Lernzielbuch & Austausch (Single-Source-Kompendium — Band Ia)
 
 - **Vollständiges PDF-Kompendium:**
   [Skill-Graph-Architektur, Medien, Lernzielbuch und Paketaustausch (Deutsches PDF)](skillpilot-skill-graph-architecture.de.pdf)
-- [Allgemeines Zielsystem und Migration (§1)](general-goal-system-and-migration.de.md):
-  Trennung von Lernzielen, Programmen, Platzierungen, Kompetenzachsen und Sichten.
+- [Allgemeines Zielsystem und schrittweise Migration (§1)](general-goal-system-and-migration.de.md):
+  Trennung von Lernzielen, erklärten Cluster- und Planeinheiten, Platzierungen, Kompetenzachsen sowie Lernzielbaum und Lernkarte.
 - [Knotentypen (§2)](node-types.de.md):
-  Orientierungs-, Verständnis-, Memorier- und Prüfungsziele.
-- [Sichtprojektion und Zielplatzierung (§3)](view-projection-and-goal-placement.de.md):
-  explizite Curriculum-Struktur, persönlicher Lern-Scope $L$ und scopegerechte Lernendensichten.
+  Orientierungs-, Verständnis-, Memorier- (SM-2 + Verified Recall) und Prüfungsziele (eigene Anerkennungsprüfungen vs. freie Übungs-/Abituraufgaben).
+- [Sichtenprojektion und Goal-Placement (§3)](view-projection-and-goal-placement.de.md):
+  fünf Sichtenfamilien inkl. Lernkarte, gemeinsame Landes-/Dauer-Planautorität, *geführt in* vs. *steht in* samt frühestem Bedarf in $L$ und Einheitsregeln E1–E4.
 - [Quellen- und Ressourcenlinks (§4)](source-and-resource-links.de.md)
 - [Contentanbindung: Architekturrahmen (§5)](content-integration.md)
-- [Menschenlesbare Quellenbegründungen (§6)](human-readable-source-rationales.de.md)
-- [Visualisierungen atomarer Lernziele (§7)](atomic-goal-visualizations.de.md)
-- [Lernzielbuch und Evidence-Review-Pipeline (§8)](learning-goal-book-and-evidence-review-pipeline.de.md)
-- [Lernzielbuch und lokale Zeitplanung für Lehrkräfte (§9)](teacher-goal-book-time-planning.md)
-- [Kanonische Gymnasium-Rollout-Richtlinie (§10)](canonical-gymnasium-rollout.de.md)
-- [MEM/FWU-Roundtrip-Plan (§11)](mem-fwu-roundtrip-plan.de.md)
-- [Duale Curriculum-Pakete (§12)](dual-curriculum-package-releases.md):
-  JSON-Runtime- und Ontologiepakete sowie die Laufzeitvertragsversionen 1.0, 1.1 (`assessmentCompletionV1`) und 1.2 (`learningUnitsV1`, Lerneinheiten).
-- [Entwurfskriterien und Beispiele für Lerneinheiten (§13)](learning-unit-design-and-examples.de.md):
-  didaktischer Zweck einer Lerneinheit, Kriterien für sinnvolle Grenzen und Prüfungen, zwei durchgearbeitete Kandidaten sowie die Gültigkeitsregeln R1–R5 vom 11. November 2026; die Darstellung einer Einheit steht in [Graph-Definition §11.2](learning-units.de.md#sec-unit-representation).
-- [Wissenskontext (§14)](knowledge-context.de.md):
-  was bei Lernenden an einem Ziel vorausgesetzt werden darf, deterministisch aus dem Graphen abgeleitet für Erzeugung, Review und Coach; die Hinlänglichkeit der Voraussetzungen als Eigenschaft, die der Graph gewinnen muss. Konzept vom 13. November 2026, nicht umgesetzt.
+- [Nachvollziehbare Quellenbegründungen (§6)](human-readable-source-rationales.de.md)
+- [Visualisierungen für atomare Lernziele (§7)](atomic-goal-visualizations.de.md)
+- [Lernzielbuch und Evidenz-Review-Pipeline (§8)](learning-goal-book-and-evidence-review-pipeline.de.md)
+  (zur lokalen Unterrichts-Zeitplanung auf Basis des Lernzielbuchs siehe [Lernzielbuch-Zeitplanung](teacher-goal-book-time-planning.md) in Band II).
+- [Rollout-Politik für das kanonische Gymnasium (§9)](canonical-gymnasium-rollout.de.md)
+- [MEM/FWU-Roundtrip-Plan (§10)](mem-fwu-roundtrip-plan.de.md)
+- [Duale Curriculum-Pakete (§11)](dual-curriculum-package-releases.md):
+  JSON-Runtime- und Ontologiepakete, Laufzeitverträge 1.0, 1.1 (`assessmentCompletionV1`) und 1.2 (`learningUnitsV1`) sowie Abgrenzung zur Stufenplan-Grundlage `v1.3` und zum Cluster-Einheiten-Träger (`F8`).
+- [Entwurfskriterien und Beispiele für Lerneinheiten (§12)](learning-unit-design-and-examples.de.md):
+  didaktischer Grenzzuschnitt, Wissenskontext-Disziplin, durchgearbeitete Fachstudien in Physik und Mathematik, Ordnungs- und Anerkennungsregeln E1–E4 / R1–R5 sowie das 13-Punkte-Entwurfsblatt.
+- [Wissenskontext (§13)](knowledge-context.de.md):
+  was bei Lernenden an einem Ziel vorausgesetzt werden darf ($W(g)$), das Zusammenspiel von `requires` und `after` an Einheitsgrenzen und die Hinlänglichkeit als Eigenschaft, die der Graph gewinnen muss.
 
 Siehe die [Konzept-Übersicht](../index.md) für didaktische Konzepte und Laufzeit-Workflows sowie das [Glossar](../glossary.de.md) für die gemeinsame Terminologie.
 
 ## Web- & PDF-Kompendien aus der kanonischen Single-Source bauen
 
-Alle zweisprachigen Web-Kapitel, die 145-Regel-Ampelmatrix, die zweisprachigen Diagramme (`00`, `08`–`16`) und beide LuaLaTeX-PDFs werden aus den kanonischen Single-Sources unter `docs/concept/skill-graph/source/` und `docs/concept/skill-graph/architecture-source/` erzeugt:
+Alle zweisprachigen Web-Kapitel, die Regel-Ampelmatrix, die zweisprachigen Diagramme (`00`, `08`–`16`) und beide LuaLaTeX-PDFs werden aus den kanonischen Single-Sources unter `docs/concept/skill-graph/source/` und `docs/concept/skill-graph/architecture-source/` erzeugt:
 
 ```bash
 python3 scripts/build_compendia.py --compendium skill-graph --all

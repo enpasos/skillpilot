@@ -74,7 +74,10 @@ Ein durch ein Skript erzeugter Bericht, Status-Snapshot oder Dokumentations-Buil
 | `phase` vs. Programmeinheit | `phase` ist Kompatibilitätsmetadaten; nur explizite Programmeinheiten bilden Strukturknoten. |
 | Lerneinheit vs. Personalisierungsstufe | Rekursive pädagogische Einheit mit abgeleitetem Abschluss vs. eine der vier Umfangs-/Zustandsebenen. |
 | Lerneinheit vs. Zielschwierigkeit | Erwerbs- und Abschlusseinheit vs. Anspruchsniveau eines einzelnen Ziels (`level`). |
-| Einheitsabschluss vs. Zielverfügbarkeit | Erfüllte Kind- und Eigenpflichten vs. Startvoraussetzungen; B9 verwirft technische Einheitssperren im Zielmodell; after ordnet ohne Bedarf oder Mastery. |
+| Einheitsabschluss vs. Zielverfügbarkeit | Erfüllte Kind- und Eigenpflichten vs. Startvoraussetzungen; das Zielmodell enthält keine technischen Einheitssperren, und `after` ordnet ohne Bedarf oder Mastery. |
+| Einheit vs. Einheit mit Prüfungen | Jede Einheit erfüllt E1–E4 und ordnet über `after`; nur Einheiten mit eigenem gültigem Prüfungsvertrag und vollständigen aktuellen `coverageReviews` erkennen eigene Inhaltsziele nach R1–R5 implizit an. |
+| Geführt in vs. steht in | Belegte amtliche Quellenzuordnung (`officialSource`) vs. didaktischer Lernplatz in der Planeinheit (inkl. begründeter Vorarbeit und abgeleitetem frühestem Bedarf in $L$). |
+| Lernzielbaum vs. Lernkarte | Vollständiger Baum inkl. gewöhnlicher Fachcluster vs. entlang `contains` kontrahierte Sicht nur aus Einheiten und atomaren Zielen mit aggregierten Kindpfeilen. |
 | QA-Scope vs. Lernroute | Ein QA-Scope ist ein registriertes Prüfprofil, kein einzelner Lernpfad. |
 | CQR- vs. GVR-Regeln | Inhaltliche Curriculum-Qualitätssicherung vs. strukturelle Graphvalidierung. |
 | Curriculum vs. Skill-Graph | Normatives externes Dokument vs. versioniertes operatives Graphmodell. |

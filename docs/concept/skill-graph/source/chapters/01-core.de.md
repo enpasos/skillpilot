@@ -10,7 +10,7 @@ $$
 \mathcal G=(G,C,R),\qquad C,R\subseteq G\times G.
 $$
 
-$G$ ist die Menge der Lernziele. $C$ steht für `contains`: Ein Ziel enthält ein anderes. $R$ steht für `requires`: Ein Ziel setzt ein anderes voraus. Es gibt genau diese beiden *ausdrücklich verfassten* Kantenarten im Skill-Graphen; nur diese beiden werden im Zielkern gespeichert. Die Einheitenschicht erklärt daneben after in ihrem eigenen Vertrag. Abgeleitete Relationen, curriculare Platzierungen, Quellenzuordnungen und Nachweise sind andere Modellschichten.
+$G$ ist die Menge der Lernziele. $C$ steht für `contains`: Ein Ziel enthält ein anderes. $R$ steht für `requires`: Ein Ziel setzt ein anderes voraus. Es gibt genau diese beiden *ausdrücklich verfassten* Kantenarten im Skill-Graphen; nur diese beiden werden im Zielkern gespeichert. Die Einheitenschicht erklärt daneben `after` in ihrem eigenen Vertrag. Abgeleitete Relationen, curriculare Platzierungen, Quellenzuordnungen und Nachweise sind andere Modellschichten.
 
 Ein Paar $(x,y)$ ist gerichtet. Für jede Relation $X$ auf $G$ bezeichnet
 

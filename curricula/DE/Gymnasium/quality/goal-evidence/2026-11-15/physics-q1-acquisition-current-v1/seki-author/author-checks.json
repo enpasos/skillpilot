@@ -1,0 +1,217 @@
+{
+  "status": "author-checks-not-independent-acceptance",
+  "checkedAt": "2026-11-15T17:59:45.327343+00:00",
+  "taskId": "16bfb017-53d6-5328-a4e3-2e2b4e4398a9",
+  "numericChecks": [
+    {
+      "case": "A4 P",
+      "rawValues": [
+        19.8,
+        20.2,
+        20.0,
+        20.1,
+        19.9
+      ],
+      "actualMean": 20.0,
+      "actualHalfRange": 0.1999999999999993,
+      "expectedMean": 20,
+      "expectedHalfRange": 0.2,
+      "passed": true
+    },
+    {
+      "case": "A4 Q",
+      "rawValues": [
+        21.2,
+        21.2,
+        21.1,
+        21.2,
+        21.3
+      ],
+      "actualMean": 21.2,
+      "actualHalfRange": 0.09999999999999964,
+      "expectedMean": 21.2,
+      "expectedHalfRange": 0.1,
+      "passed": true
+    },
+    {
+      "case": "A4 all retained",
+      "rawValues": [
+        20.0,
+        20.1,
+        24,
+        20,
+        19.9
+      ],
+      "actualMean": 20.8,
+      "actualHalfRange": 2.0500000000000007,
+      "expectedMean": 20.8,
+      "expectedHalfRange": 2.05,
+      "passed": true
+    },
+    {
+      "case": "A4 documented interrupted point excluded",
+      "rawValues": [
+        20,
+        20.1,
+        20,
+        19.9
+      ],
+      "actualMean": 20.0,
+      "actualHalfRange": 0.10000000000000142,
+      "expectedMean": 20,
+      "expectedHalfRange": 0.1,
+      "passed": true
+    },
+    {
+      "case": "B slow repeated peaks",
+      "rawValues": [
+        22,
+        22.1,
+        21.9
+      ],
+      "actualMean": 22.0,
+      "actualHalfRange": 0.10000000000000142,
+      "expectedMean": 22,
+      "expectedHalfRange": 0.1,
+      "passed": true
+    },
+    {
+      "case": "B fast repeated peaks",
+      "rawValues": [
+        26,
+        26.1,
+        25.9
+      ],
+      "actualMean": 26.0,
+      "actualHalfRange": 0.10000000000000142,
+      "expectedMean": 26,
+      "expectedHalfRange": 0.1,
+      "passed": true
+    }
+  ],
+  "allSingleCoreOmissions": [
+    {
+      "omittedCriterion": 1,
+      "otherwiseFullScore": 14,
+      "passingPoints": 15,
+      "passes": false,
+      "counteranswerDe": "Es werden nur die vorgegebenen synthetischen Daten als angeblich eigene Messung abgegeben."
+    },
+    {
+      "omittedCriterion": 2,
+      "otherwiseFullScore": 14,
+      "passingPoints": 15,
+      "passes": false,
+      "counteranswerDe": "Es gibt nur einen ausgedachten Mittelwert ohne Rohdatei, digitale Umsetzung oder Diagramm."
+    },
+    {
+      "omittedCriterion": 3,
+      "otherwiseFullScore": 14,
+      "passingPoints": 15,
+      "passes": false,
+      "counteranswerDe": "Kleine Streuung beweist, dass die Temperatur auf alle angezeigten Stellen stimmt."
+    },
+    {
+      "omittedCriterion": 4,
+      "otherwiseFullScore": 14,
+      "passingPoints": 15,
+      "passes": false,
+      "counteranswerDe": "Der Punkt24,0 wird heimlich gelöscht, weil er nicht zur gewünschten Schlussfolgerung passt."
+    },
+    {
+      "omittedCriterion": 5,
+      "otherwiseFullScore": 14,
+      "passingPoints": 15,
+      "passes": false,
+      "counteranswerDe": "Q ist wegen geringerer Streuung zwingend genauer, der1,2-K-Offset verschwindet durch Mitteln."
+    },
+    {
+      "omittedCriterion": 6,
+      "otherwiseFullScore": 14,
+      "passingPoints": 15,
+      "passes": false,
+      "counteranswerDe": "Der langsame Sensor hat höchstens22°C gemessen, daher kann das echte Maximum nicht darüber liegen."
+    },
+    {
+      "omittedCriterion": 7,
+      "otherwiseFullScore": 14,
+      "passingPoints": 15,
+      "passes": false,
+      "counteranswerDe": "Alle systematischen Abweichungen sind konstante Nullpunktfehler; Abtastrate kann keine Rolle spielen."
+    },
+    {
+      "omittedCriterion": 8,
+      "otherwiseFullScore": 14,
+      "passingPoints": 15,
+      "passes": false,
+      "counteranswerDe": "26,000000°C ist das mathematisch exakt bewiesene wahre Maximum, und H=0,1°C garantiert95% Sicherheit."
+    }
+  ],
+  "oneMinorErrorWithAllCores": {
+    "score": 15,
+    "passingPoints": 15,
+    "passes": true
+  },
+  "sampling": {
+    "fastTimes": [
+      0,
+      5,
+      10,
+      15,
+      20,
+      25,
+      30
+    ],
+    "slowTimes": [
+      0,
+      10,
+      20,
+      30
+    ],
+    "fastInterval": 5,
+    "slowInterval": 10,
+    "sampledMaxima": [
+      26,
+      22
+    ],
+    "peakDifferenceK": 4,
+    "continuousMaximumNonidentifiabilityWitness": "A piecewise linear curve through every supplied fast sample and a second curve also through every sample with an additional point(t=12.5s,temperature=40C) have identical supplied values but different continuous maxima. Therefore supplied points alone fix no exact continuous peak/upper bound. This is a mathematical counterexample, not a claimed physical observation."
+  },
+  "preparationClosureIds": [
+    "11e3cf89-9224-5894-8e4a-ae8ff5af0119",
+    "15505229-efec-4d01-8e71-acf15f9c2424",
+    "191c67db-44a8-4f63-994a-d85e8e301194",
+    "1a25ef44-f310-4c23-9ba8-44baec60d3b0",
+    "3fde4db5-9e92-5f3a-98e1-d386a42b9e01",
+    "4b67bed9-06da-40b2-a306-24e9e7dfd390",
+    "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+    "5c44b9ba-9b05-4774-95d5-073230d3fc4f",
+    "5d1decb2-b01b-5c85-88fc-9fc255ff9776",
+    "624764d6-becd-5f9b-ada3-0d4f9d143073",
+    "65365dce-f33f-49d8-9516-42f75883aa86",
+    "691c11d0-fa6a-5d2e-a19c-086e89c3c233",
+    "6ff61721-b2cc-5b1b-ade5-b3c1fd7f7077",
+    "72effc66-87f4-5f5e-8d36-1547677365fb",
+    "75b9ca4c-178e-5df2-adc4-f7f78e9d28e5",
+    "8aff7aac-321b-5172-ac55-877876bfd2cd",
+    "8d1bb6ce-2433-4637-94ba-3bdc35fa5b10",
+    "91571d3f-3651-4477-ba21-320fc4077453",
+    "9ef6c4fa-b97a-5d7a-86c1-96690f02d916",
+    "a4c2b831-02f0-5d55-a300-7823a71352c4",
+    "ca8b2e67-7d14-5baf-8404-26820fe3d548",
+    "cafd6520-c4af-4109-9863-cc49ba6fad4d",
+    "cf474eab-1379-4877-907e-58b0892ce734",
+    "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+    "d825f7ce-e19b-594a-8181-eff199c21d93",
+    "e82d8d3a-9012-5482-afe6-ab0d727a49bb",
+    "ee48e811-4c9c-5080-9836-8403fc9f0810",
+    "f23fdfa9-38b6-5157-8301-ed302476c456",
+    "f6b1d812-ce8b-5852-b417-e6c29b533c7a",
+    "fe07241a-b779-5f35-a82d-7aa51ae74f42"
+  ],
+  "noVideoThrowAccelerationPrerequisite": true,
+  "newOrdinaryGoals": 0,
+  "learnerResultWrites": false,
+  "oldTasksChanged": false,
+  "actualLearnerExperimentPerformed": false
+}

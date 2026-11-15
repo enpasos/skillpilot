@@ -10,7 +10,7 @@ $$
 \mathcal G=(G,C,R),\qquad C,R\subseteq G\times G.
 $$
 
-$G$ is the set of learning goals. $C$ denotes `contains`: one goal contains another. $R$ denotes `requires`: one goal requires another as a prerequisite. Exactly these two *explicitly authored* relation kinds exist in the skill graph; only these two relations are persisted in the goal core. The unit layer additionally declares after in its own contract. Derived relations, curricular placements, source mappings, and evidence belong to separate model layers.
+$G$ is the set of learning goals. $C$ denotes `contains`: one goal contains another. $R$ denotes `requires`: one goal requires another as a prerequisite. Exactly these two *explicitly authored* relation kinds exist in the skill graph; only these two relations are persisted in the goal core. The unit layer additionally declares `after` in its own contract. Derived relations, curricular placements, source mappings, and evidence belong to separate model layers.
 
 Each pair $(x,y)$ is directed. For any relation $X$ on $G$,
 

@@ -30,7 +30,7 @@ Ohne opake JSON-Blobs oder Base64-Medienliterale bewahrt das semantische Bundle:
 
 - Zielidentität (`id`, `shortKey`, `title`, `description`), Atomar-/Cluster-Klassifikation, `weight`, `core` und Dimensionsmetadaten;
 - direkte `contains`-Komposition und didaktische `requires`-Voraussetzungen;
-- Programmstruktur (`programUnits`), `goalPlacements`, Kompetenzachsen (`competencyCatalog`, `competencyRefs`) und lernendenseitige Composition Views;
+- Programm- und Einheitsstruktur (`programUnits`, `goalPlacements` sowie erklärte Einheitsmetadaten `after`, `coverageReviews`, `revision`), Kompetenzachsen (`competencyCatalog`, `competencyRefs`) und lernendenseitige Landesplan-/Composition-Views (aktuell über Vertrag-1.2-Beziehungen serialisiert; Erweiterung auf erklärte Cluster-Einheiten im Paketschnitt `F8`);
 - amtliche Quellen-/Provenienzreferenzen sowie `goal-visualization`-Verweise (`schema:ImageObject`) samt bytegleichen SHA-256-Bild-Sidecars (persönliche Lernstände bleiben außerhalb öffentlicher Pakete).
 
 <a id="sec-sga-mf-profile"></a>

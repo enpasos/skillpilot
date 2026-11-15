@@ -1,4 +1,6 @@
 import assert from 'node:assert/strict'
+import './testNationalStageProjection'
+import './testNationalStageProjectionNative'
 import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import type { LearningGoal, SkillLandscape } from '../src/landscapeTypes'

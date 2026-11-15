@@ -1,0 +1,469 @@
+{
+  "at": "2026-11-15T19:02:14.991305+00:00",
+  "reviewer": "GPT-6.1 Sol Ultra / land_stage_excerpts",
+  "scope": "Authored bilingual chapter sources and skill-graph glossary; no builds, generated outputs, Git mutations, rules/status edits",
+  "filesReviewed": [
+    "docs/concept/didactic/source/chapters/02-frontier-autopilot.de.md",
+    "docs/concept/didactic/source/chapters/02-frontier-autopilot.en.md",
+    "docs/concept/glossary/source/chapters/01-curricula-and-graph.de.md",
+    "docs/concept/glossary/source/chapters/01-curricula-and-graph.en.md",
+    "docs/concept/glossary/source/chapters/02-modes-and-layers.de.md",
+    "docs/concept/glossary/source/chapters/02-modes-and-layers.en.md",
+    "docs/concept/glossary/source/chapters/03-runtime-and-coach.de.md",
+    "docs/concept/glossary/source/chapters/03-runtime-and-coach.en.md",
+    "docs/concept/glossary/source/chapters/04-quality-and-distinctions.de.md",
+    "docs/concept/glossary/source/chapters/04-quality-and-distinctions.en.md",
+    "docs/concept/runtime-workflows/source/chapters/02-learning-workflow.de.md",
+    "docs/concept/runtime-workflows/source/chapters/02-learning-workflow.en.md",
+    "docs/concept/skill-graph/architecture-source/chapters/01-general-goal-system.de.md",
+    "docs/concept/skill-graph/architecture-source/chapters/01-general-goal-system.en.md",
+    "docs/concept/skill-graph/architecture-source/chapters/02-node-types.de.md",
+    "docs/concept/skill-graph/architecture-source/chapters/02-node-types.en.md",
+    "docs/concept/skill-graph/architecture-source/chapters/03-view-projection.de.md",
+    "docs/concept/skill-graph/architecture-source/chapters/03-view-projection.en.md",
+    "docs/concept/skill-graph/architecture-source/chapters/06-source-rationales.de.md",
+    "docs/concept/skill-graph/architecture-source/chapters/06-source-rationales.en.md",
+    "docs/concept/skill-graph/architecture-source/chapters/08-learning-goal-book.de.md",
+    "docs/concept/skill-graph/architecture-source/chapters/08-learning-goal-book.en.md",
+    "docs/concept/skill-graph/architecture-source/chapters/09-canonical-gymnasium-rollout.de.md",
+    "docs/concept/skill-graph/architecture-source/chapters/09-canonical-gymnasium-rollout.en.md",
+    "docs/concept/skill-graph/architecture-source/chapters/10-mem-fwu-roundtrip-plan.de.md",
+    "docs/concept/skill-graph/architecture-source/chapters/10-mem-fwu-roundtrip-plan.en.md",
+    "docs/concept/skill-graph/architecture-source/chapters/11-dual-curriculum-package-releases.de.md",
+    "docs/concept/skill-graph/architecture-source/chapters/11-dual-curriculum-package-releases.en.md",
+    "docs/concept/skill-graph/architecture-source/chapters/12-learning-unit-design-and-examples.de.md",
+    "docs/concept/skill-graph/architecture-source/chapters/12-learning-unit-design-and-examples.en.md",
+    "docs/concept/skill-graph/architecture-source/chapters/13-knowledge-context.de.md",
+    "docs/concept/skill-graph/architecture-source/chapters/13-knowledge-context.en.md",
+    "docs/concept/skill-graph/source/chapters/01-core.de.md",
+    "docs/concept/skill-graph/source/chapters/01-core.en.md",
+    "docs/concept/skill-graph/source/chapters/02-context.de.md",
+    "docs/concept/skill-graph/source/chapters/02-context.en.md",
+    "docs/concept/skill-graph/source/chapters/03-learning-units.de.md",
+    "docs/concept/skill-graph/source/chapters/03-learning-units.en.md",
+    "docs/concept/skill-graph/source/chapters/04-planning.de.md",
+    "docs/concept/skill-graph/source/chapters/04-planning.en.md",
+    "docs/concept/skill-graph/source/chapters/05-assessment.de.md",
+    "docs/concept/skill-graph/source/chapters/05-assessment.en.md",
+    "docs/concept/skill-graph/source/glossary-and-symbols.json"
+  ],
+  "changes": [
+    {
+      "path": "docs/concept/skill-graph/source/chapters/03-learning-units.de.md",
+      "old": "das unterscheidet sich bewusst von $\\Complete(U)$ aus @eqref{eq:unit-complete}: Sind alle Inhaltsziele einer Einheit ausdrücklich gemeistert, ihre Abschlussprüfung aber zunächst übersprungen, ist der Inhaltsanteil für das Weitergehen erledigt, ohne die Einheit als abgeschlossen auszugeben. Eine Einheit heißt **begonnen**, wenn sie mindestens ein effektiv beherrschtes Atom enthält und noch nicht erledigt ist;",
+      "new": "dies ist ein Abschluss des benötigten Anteils, während $\\Complete(U)$ aus @eqref{eq:unit-complete} das ganze $T(U)$ prüft. Prüfungs- und Memorieratome in $L$ zählen mit: Eine noch offene eigene Prüfung hält diesen Anteil offen, auch wenn alle Inhaltsziele ausdrücklich gemeistert sind. Das sperrt keine bewusste andere Zielwahl und entfernt kein erreichbares Ziel aus der Frontier. Eine Einheit heißt **begonnen**, wenn sie mindestens ein effektiv beherrschtes Atom in $L$ enthält und noch nicht erledigt ist;"
+    },
+    {
+      "path": "docs/concept/skill-graph/source/chapters/03-learning-units.en.md",
+      "old": "this intentionally differs from $\\Complete(U)$ in @eqref{eq:unit-complete}: if all content goals of a unit are explicitly mastered while its unit assessment was skipped for now, its content portion counts as done for moving on without marking the unit complete. A unit is **started** (*begonnen*) when it contains at least one effectively mastered atom and is not yet done;",
+      "new": "this completes the required portion, whereas $\\Complete(U)$ in @eqref{eq:unit-complete} checks all of $T(U)$. Assessment and memory atoms in $L$ count too: an open own assessment leaves this portion open even if all content goals are explicitly mastered. This neither blocks deliberate selection of another goal nor removes a reachable goal from the frontier. A unit is **started** (*begonnen*) when it contains at least one effectively mastered atom in $L$ and is not yet done;"
+    },
+    {
+      "path": "docs/concept/didactic/source/chapters/02-frontier-autopilot.de.md",
+      "old": "(sodass übersprungene Prüfungen das Weitergehen nicht sperren)",
+      "new": "(einschließlich Prüfungs- und Memorierzielen in diesem Umfang; bewusste andere Zielwahl bleibt möglich)"
+    },
+    {
+      "path": "docs/concept/didactic/source/chapters/02-frontier-autopilot.en.md",
+      "old": "(so skipped assessments do not block moving on)",
+      "new": "(including assessment and memory goals in that scope; deliberate selection of another goal remains possible)"
+    },
+    {
+      "path": "docs/concept/skill-graph/source/glossary-and-symbols.json",
+      "old": "Erledigt heißt, dass alle im Umfang liegenden Atome effektiv beherrscht sind; abgeschlossen verlangt zusätzlich alle geschützten Nachweise nach $\\\\Complete(U)$.",
+      "new": "Erledigt heißt, dass alle Atome im persönlichen Anteil einschließlich dort benötigter Prüfungs- und Memorierziele effektiv beherrscht sind; vollständiger Abschluss nach $\\\\Complete(U)$ prüft dagegen das ganze $T(U)$, nicht nur seinen benötigten Anteil."
+    },
+    {
+      "path": "docs/concept/skill-graph/source/glossary-and-symbols.json",
+      "old": "Done means all in-scope atoms are effectively mastered; complete additionally requires all protected obligations under $\\\\Complete(U)$.",
+      "new": "Done means all atoms in the personal portion, including required assessment and memory goals there, are effectively mastered; full completion under $\\\\Complete(U)$ instead checks all of $T(U)$ rather than only the required portion."
+    },
+    {
+      "path": "docs/concept/skill-graph/source/chapters/05-assessment.de.md",
+      "old": "Einheiten ohne Prüfungen (wie Stufen, Jahrgänge, Kurshalbjahre oder prüfungsfreie Obereinheiten, selbst wenn sie freie Übungsaufgaben oder Abiturklausuren enthalten) liegen nicht in $\\mathcal U_{\\mathrm{valid}}$ und erkennen nichts an.",
+      "new": "Einheiten ohne eigenen Anerkennungsprüfungsvertrag (wie Stufen, Jahrgänge, Kurshalbjahre oder prüfungsfreie Obereinheiten, selbst wenn sie freie Übungsaufgaben oder Abiturklausuren enthalten) liegen nicht in $\\mathcal U_{\\mathrm{valid}}$ und erkennen nichts an. Eine als Einheit mit Prüfungen erklärte Einheit mit fehlenden, unvollständigen oder ungültigen Deckungsreviews bleibt dagegen ein Vertragsverstoß; sie wird nicht zur prüfungsfreien Einheit umgedeutet. Nichtleere `coverageReviews` allein ersetzen weder R1 bis R5 noch ihre aktuelle fachliche Prüfung."
+    },
+    {
+      "path": "docs/concept/skill-graph/source/chapters/05-assessment.en.md",
+      "old": "assessment-free units (such as stages, years, course phases, or assessment-free parent units, even when they hold standalone practice tasks or Abitur exams) do not enter $\\mathcal U_{\\mathrm{valid}}$ and recognize nothing.",
+      "new": "units without an own recognition-assessment contract (such as stages, years, course phases, or assessment-free parent units, even when they hold standalone practice tasks or Abitur exams) do not enter $\\mathcal U_{\\mathrm{valid}}$ and recognize nothing. A declared unit with assessments whose coverage reviews are missing, incomplete, or invalid instead remains a contract violation; it is never reclassified as assessment-free. Non-empty `coverageReviews` alone replace neither R1 to R5 nor their current domain review."
+    },
+    {
+      "path": "docs/concept/skill-graph/architecture-source/chapters/12-learning-unit-design-and-examples.de.md",
+      "old": "Einheiten ohne `coverageReviews` -- darunter",
+      "new": "Einheiten ohne eigenen Anerkennungsprüfungsvertrag -- darunter"
+    },
+    {
+      "path": "docs/concept/skill-graph/architecture-source/chapters/12-learning-unit-design-and-examples.en.md",
+      "old": "Units without `coverageReviews` — including",
+      "new": "Units without an own recognition-assessment contract — including"
+    },
+    {
+      "path": "docs/concept/skill-graph/architecture-source/chapters/12-learning-unit-design-and-examples.de.md",
+      "old": "ordnen nur und erkennen nichts implizit an. Innerhalb einer Einheit mit Prüfungen",
+      "new": "ordnen nur und erkennen nichts implizit an. Fehlende oder ungültige Deckung einer erklärten Prüfungseinheit bleibt dagegen ein Vertragsverstoß, keine Umklassifikation zur prüfungsfreien Einheit. Innerhalb einer Einheit mit Prüfungen"
+    },
+    {
+      "path": "docs/concept/skill-graph/architecture-source/chapters/12-learning-unit-design-and-examples.en.md",
+      "old": "only order and recognize nothing implicitly. Inside a unit with assessments",
+      "new": "only order and recognize nothing implicitly. Missing or invalid coverage of a declared assessment-bearing unit instead remains a contract violation, never a reclassification as assessment-free. Inside a unit with assessments"
+    },
+    {
+      "path": "docs/concept/glossary/source/chapters/04-quality-and-distinctions.de.md",
+      "old": "nur Einheiten mit erklärten `coverageReviews` erkennen eigene Inhaltsziele nach R1–R5 implizit an.",
+      "new": "nur Einheiten mit eigenem gültigem Prüfungsvertrag und vollständigen aktuellen `coverageReviews` erkennen eigene Inhaltsziele nach R1–R5 implizit an."
+    },
+    {
+      "path": "docs/concept/glossary/source/chapters/04-quality-and-distinctions.en.md",
+      "old": "only units with declared `coverageReviews` implicitly recognize own content goals under R1–R5.",
+      "new": "only units with an own valid assessment contract and complete current `coverageReviews` implicitly recognize own content goals under R1–R5."
+    },
+    {
+      "path": "docs/concept/skill-graph/source/chapters/05-assessment.de.md",
+      "old": "Prüfungen sind Senken von Voraussetzungspfaden und niemals Voraussetzungen späterer Fachziele.",
+      "new": "Prüfungen sind Endpunkte in Lernrichtung und niemals Voraussetzungen späterer Fachziele; in der umgekehrten Pfeilrichtung von $R$ gilt also $R \\cap (G \\times Q)=\\varnothing$."
+    },
+    {
+      "path": "docs/concept/skill-graph/source/chapters/05-assessment.en.md",
+      "old": "assessments are sinks of prerequisite paths and never prerequisites of later subject goals.",
+      "new": "assessments are endpoints in learning order and never prerequisites of later subject goals; in the opposite arrow direction of $R$, this means $R \\cap (G \\times Q)=\\varnothing$."
+    },
+    {
+      "path": "docs/concept/skill-graph/architecture-source/chapters/02-node-types.de.md",
+      "old": "Jede Prüfung ist Senke (Endpunkt) von Voraussetzungspfaden und niemals Durchgangsvoraussetzung für spätere Fachziele.",
+      "new": "Jede Prüfung ist Endpunkt in Lernrichtung und niemals Durchgangsvoraussetzung für spätere Fachziele; bei der Pfeilrichtung von `requires` vom abhängigen Ziel zur Voraussetzung hat sie daher keine eingehende Kante."
+    },
+    {
+      "path": "docs/concept/skill-graph/architecture-source/chapters/02-node-types.en.md",
+      "old": "every assessment is a sink (endpoint) of prerequisite paths and never an intermediate prerequisite for later subject goals.",
+      "new": "every assessment is an endpoint in learning order and never an intermediate prerequisite for later subject goals; since `requires` points from a dependent goal to its prerequisite, assessments therefore have no incoming edge."
+    },
+    {
+      "path": "docs/concept/skill-graph/architecture-source/chapters/12-learning-unit-design-and-examples.de.md",
+      "old": "**E2 (Lückenlose Konvexität):** Zwischen zwei Zielen derselben Einheit liegt auf keinem Voraussetzungspfad ein Ziel von außerhalb der Einheit; die Einheit lässt sich am Stück ohne erzwungene Fremdeinschübe lernen.",
+      "new": "**E2 (Zusammenhängende Blockordnung):** Es gibt eine Reihenfolge aller Atome, die atomaren Bedarf und `after` einhält und jede Einheit als zusammenhängenden Block enthält. Dazu muss der Kindblockgraph aus kreuzendem Bedarf und `after` an jeder Einheit einschließlich der gedachten Wurzel azyklisch sein. Pfadkonvexität allein genügt nicht: Bei $\\Own(U)=\\{a,c\\}$, $\\Own(V)=\\{b,d\\}$, $a\\to b$ und $d\\to c$ ist der atomare Graph azyklisch und beide Mengen sind pfadkonvex, aber die Blöcke benötigen einander."
+    },
+    {
+      "path": "docs/concept/skill-graph/architecture-source/chapters/12-learning-unit-design-and-examples.en.md",
+      "old": "**E2 (Interval convexity):** No prerequisite path between two goals of the same unit passes through a goal outside the unit; the unit can be learned in one continuous block without forced outside detours.",
+      "new": "**E2 (Contiguous block order):** There exists an order of all atoms that respects atomic demand and `after` while keeping every unit contiguous. Thus the child-block graph formed by crossing demand and `after` must be acyclic at every unit, including the virtual root. Path convexity alone does not suffice: for $\\Own(U)=\\{a,c\\}$, $\\Own(V)=\\{b,d\\}$, $a\\to b$, and $d\\to c$, the atomic graph is acyclic and both sets are path-convex, yet the blocks require each other."
+    },
+    {
+      "path": "docs/concept/skill-graph/architecture-source/chapters/12-learning-unit-design-and-examples.de.md",
+      "old": "Lässt sich die Einheit am Stück lernen, ohne dass Voraussetzungspfade zwischen ihren Zielen aus der Einheit heraus- und wieder hineinführen (E2)?",
+      "new": "Besitzt der gesamte Kindblockgraph aus atomarem Bedarf und `after` an jeder Ebene eine azyklische Ordnung, sodass jede Einheit am Stück lernbar ist (E2)?"
+    },
+    {
+      "path": "docs/concept/skill-graph/architecture-source/chapters/12-learning-unit-design-and-examples.en.md",
+      "old": "Can the unit be learned in one continuous block without prerequisite paths leaving the unit and re-entering it (E2)?",
+      "new": "Does the complete child-block graph from atomic demand and `after` admit an acyclic order at every level, so every unit can be learned contiguously (E2)?"
+    },
+    {
+      "path": "docs/concept/skill-graph/architecture-source/chapters/01-general-goal-system.de.md",
+      "old": "Stabile prüfbare atomare Lernziele und fachliche Cluster; trägt Mastery, atomare Voraussetzungspfade",
+      "new": "Stabile prüfbare atomare Lernziele und fachliche Cluster; nur Atome tragen Mastery. Trägt atomare Voraussetzungspfade"
+    },
+    {
+      "path": "docs/concept/skill-graph/architecture-source/chapters/01-general-goal-system.en.md",
+      "old": "Durable assessable atomic goals and subject-matter clusters; owns mastery, atomic prerequisite paths",
+      "new": "Durable assessable atomic goals and subject-matter clusters; only atoms carry mastery. Carries atomic prerequisite paths"
+    },
+    {
+      "path": "docs/concept/skill-graph/architecture-source/chapters/01-general-goal-system.de.md",
+      "old": "eine fachliche Lerneinheit direkt als kanonischer Cluster mit Einheitsmetadaten erklärt",
+      "new": "eine fachliche Lerneinheit in der Platzierungsschicht durch Verweis auf einen kanonischen Cluster erklärt"
+    },
+    {
+      "path": "docs/concept/skill-graph/architecture-source/chapters/01-general-goal-system.en.md",
+      "old": "a subject learning unit is declared directly as a canonical cluster with unit metadata",
+      "new": "a subject learning unit is declared in the placement layer by referring to a canonical cluster"
+    },
+    {
+      "path": "docs/concept/skill-graph/architecture-source/chapters/03-view-projection.de.md",
+      "old": "Jede sichtbare Baum- oder Kartenkante stammt aus genau einem dokumentierten Feld",
+      "new": "Jede sichtbare Eltern-Kind-Kante im Baum oder in der Karte besitzt einen dokumentierten strukturellen Ableitungspfad"
+    },
+    {
+      "path": "docs/concept/skill-graph/architecture-source/chapters/03-view-projection.en.md",
+      "old": "Every visible tree or map edge originates from exactly one documented field",
+      "new": "Every visible parent–child edge in the tree or map has a documented structural derivation path"
+    },
+    {
+      "path": "docs/concept/skill-graph/architecture-source/chapters/03-view-projection.de.md",
+      "old": "`children` eines gemeinsamen Landesplans bzw. einer Composition View).",
+      "new": "`children` eines gemeinsamen Landesplans bzw. einer Composition View). Davon getrennt werden Kartenpfeile aus dokumentierten `after`- und atomaren `requires`-Pfaden aggregiert; ihre Ursachen bleiben nachvollziehbar."
+    },
+    {
+      "path": "docs/concept/skill-graph/architecture-source/chapters/03-view-projection.en.md",
+      "old": "`children` of a shared Land plan or composition view).",
+      "new": "`children` of a shared Land plan or composition view). Separately, map arrows aggregate documented `after` and atomic `requires` paths while retaining traceable causes."
+    },
+    {
+      "path": "docs/concept/skill-graph/architecture-source/chapters/03-view-projection.de.md",
+      "old": "(`J5`–`J9` bzw. `J5`–`J10`)",
+      "new": "(mit ausdrücklich belegtem Beginn und Ende; kein pauschaler Start in `J5`)"
+    },
+    {
+      "path": "docs/concept/skill-graph/architecture-source/chapters/03-view-projection.en.md",
+      "old": "(`J5`–`J9` or `J5`–`J10`)",
+      "new": "(with explicitly evidenced first and last years, never a universal `J5` start)"
+    },
+    {
+      "path": "docs/concept/skill-graph/architecture-source/chapters/13-knowledge-context.de.md",
+      "old": "dass jeder einheitsübergreifende Voraussetzungspfad in $W(g)$ nur in solche Geschwistereinheiten zurückreicht, die bereits in `after` vorgelagert sind:",
+      "new": "dass bei zwei verschiedenen Kindeinheiten an der kleinsten gemeinsamen Elterneinheit der benötigte Zweig in `after` vorgelagert ist. Ist einer der beiden Zweige ein eigenes Atom, ordnet stattdessen der atomare Bedarf selbst:"
+    },
+    {
+      "path": "docs/concept/skill-graph/architecture-source/chapters/13-knowledge-context.en.md",
+      "old": "every cross-unit prerequisite path in $W(g)$ reaches only into sibling units that already precede the unit in `after`:",
+      "new": "for two distinct child units at their smallest common parent, the prerequisite branch precedes the dependent branch in `after`. When either branch is an own atom, atomic demand itself provides the order instead:"
+    },
+    {
+      "path": "docs/concept/skill-graph/architecture-source/chapters/12-learning-unit-design-and-examples.de.md",
+      "old": "in einer nach E3 geordneten Einheitenhierarchie begrenzt `after` lediglich, aus welchen vorgelagerten Einheiten ein Voraussetzungspfad überhaupt stammen kann,",
+      "new": "beim E3-Fall zweier verschiedener Kindeinheiten ordnet `after` die benötigte Kindeinheit vor der abhängigen an (bei einem eigenen Atom ordnet der Bedarf selbst),"
+    },
+    {
+      "path": "docs/concept/skill-graph/architecture-source/chapters/12-learning-unit-design-and-examples.en.md",
+      "old": "in an E3-compliant unit hierarchy `after` merely bounds which upstream units a prerequisite path can originate from,",
+      "new": "in E3’s case of two distinct child units, `after` orders the prerequisite child unit before the dependent one (when either branch is an own atom, demand itself provides the order),"
+    },
+    {
+      "path": "docs/concept/skill-graph/architecture-source/chapters/12-learning-unit-design-and-examples.de.md",
+      "old": "**Aktueller Implementierungs- und Vertragsstand:** Implizite Anerkennung existiert ausschließlich innerhalb von Einheiten mit Prüfungen, deren Vertrag R1–R4 mit geprüfter Abdeckung erfüllt;",
+      "new": "**Aktueller Implementierungs- und Vertragsstand:** Die normative Anerkennung ist auf Einheiten mit Prüfungen begrenzt, deren Vertrag R1–R5 mit geprüfter Abdeckung erfüllt; sie ist noch nicht produktiv eingeführt. Im Zielmodell gilt:"
+    },
+    {
+      "path": "docs/concept/skill-graph/architecture-source/chapters/12-learning-unit-design-and-examples.en.md",
+      "old": "**Current implementation and contract status:** Implicit recognition exists exclusively inside units with assessments whose contract satisfies R1–R4 with reviewed coverage;",
+      "new": "**Current implementation and contract status:** Normative recognition is limited to units with assessments whose contract satisfies R1–R5 with reviewed coverage; it is not yet in production. In the target model,"
+    },
+    {
+      "path": "docs/concept/glossary/source/chapters/03-runtime-and-coach.de.md",
+      "old": "Gespeichert je Profil zusammen mit Autopilot und `strictMode`.",
+      "new": "Die bestehenden Strategien werden je Profil zusammen mit Autopilot und `strictMode` gespeichert; dies behauptet noch kein gespeichertes F13-Auswahlprofil."
+    },
+    {
+      "path": "docs/concept/glossary/source/chapters/03-runtime-and-coach.en.md",
+      "old": "Stored per learner alongside autopilot and `strictMode`.",
+      "new": "The existing strategies are stored per learner alongside autopilot and `strictMode`; this does not claim a persisted F13 selection profile yet."
+    },
+    {
+      "path": "docs/concept/runtime-workflows/source/chapters/02-learning-workflow.de.md",
+      "old": "- **Gedächtnis-/SRS-Ziele:**",
+      "new": "- **Gedächtnis-/SRS-Ziele (verbindlicher Abschlussvertrag; keine Aussage über bereits vollständige Laufzeitkonformität):**"
+    },
+    {
+      "path": "docs/concept/runtime-workflows/source/chapters/02-learning-workflow.en.md",
+      "old": "- **Memorization (SRS) goals:**",
+      "new": "- **Memorization (SRS) goals (binding completion contract; no claim of already complete runtime conformance):**"
+    },
+    {
+      "path": "docs/concept/skill-graph/architecture-source/chapters/12-learning-unit-design-and-examples.en.md",
+      "old": "and each goal belongs directly to at most one unit per course (R4).",
+      "new": "and every planned goal belongs directly to exactly one unit in the resolved course (R4)."
+    },
+    {
+      "path": "docs/concept/skill-graph/architecture-source/chapters/12-learning-unit-design-and-examples.de.md",
+      "old": "und jedes Ziel genau einer Einheit direkt angehört (R4).",
+      "new": "und jedes geplante Ziel im aufgelösten Kurs genau einer Einheit direkt angehört (R4)."
+    },
+    {
+      "path": "docs/concept/skill-graph/architecture-source/chapters/06-source-rationales.de.md",
+      "old": "Quellenbegründungen bewerten ausschließlich die amtlich belegte Quellenzuordnung (*geführt in*, `officialSource`).",
+      "new": "Amtliche Quellenbelege in einer Quellenbegründung bewerten die curriculare Quellenzuordnung (*geführt in*, `officialSource`); davon getrennte fachliche Modellierungs- und Platzierungsbegründungen bleiben als eigene Entscheidungen erkennbar."
+    },
+    {
+      "path": "docs/concept/skill-graph/architecture-source/chapters/06-source-rationales.en.md",
+      "old": "Source rationales evaluate exclusively the evidenced official source assignment (*carried in*, `officialSource`).",
+      "new": "Official source evidence inside a source rationale evaluates curricular source assignment (*carried in*, `officialSource`); separate domain-modeling and placement rationales remain identifiable as authored decisions."
+    },
+    {
+      "path": "docs/concept/skill-graph/architecture-source/chapters/13-knowledge-context.de.md",
+      "old": "Ist einer der beiden Zweige ein eigenes Atom, ordnet stattdessen der atomare Bedarf selbst: `after` begrenzt die mögliche Herkunft im vorgesehenen Lernfluss, `requires` sichert die präzise fachliche Verwendbarkeit.",
+      "new": "Ist einer der beiden Zweige ein eigenes Atom, ordnet stattdessen der atomare Bedarf selbst. `after` beschreibt die Blockfolge im vorgesehenen Lernfluss; allein `requires` sichert die präzise fachliche Verwendbarkeit."
+    },
+    {
+      "path": "docs/concept/skill-graph/architecture-source/chapters/13-knowledge-context.en.md",
+      "old": "When either branch is an own atom, atomic demand itself provides the order instead: `after` bounds possible upstream origin in the intended learning flow, while `requires` secures exact conceptual usability.",
+      "new": "When either branch is an own atom, atomic demand itself provides the order instead. `after` describes block order in the intended learning flow; only `requires` secures exact conceptual usability."
+    },
+    {
+      "path": "docs/concept/glossary/source/chapters/02-modes-and-layers.de.md",
+      "old": "`DE-HE / Gymnasium / SekII / Mathematik / LK`",
+      "new": "`DE-HE / Gymnasium / G9 / SekII / Mathematik / LK`"
+    },
+    {
+      "path": "docs/concept/glossary/source/chapters/02-modes-and-layers.de.md",
+      "old": "`DE-BY / Gymnasium / SekII / Mathematik / LK`",
+      "new": "`DE-BY / Gymnasium / G9 / SekII / Mathematik / LK`"
+    },
+    {
+      "path": "docs/concept/skill-graph/architecture-source/chapters/03-view-projection.de.md",
+      "old": "`DE-HE / Gymnasium / SekII / LK`",
+      "new": "`DE-HE / Gymnasium / G9 / SekII / Mathematik / LK`"
+    },
+    {
+      "path": "docs/concept/glossary/source/chapters/02-modes-and-layers.en.md",
+      "old": "`DE-HE / Gymnasium / SekII / Mathematik / LK`",
+      "new": "`DE-HE / Gymnasium / G9 / SekII / Mathematik / LK`"
+    },
+    {
+      "path": "docs/concept/glossary/source/chapters/02-modes-and-layers.en.md",
+      "old": "`DE-BY / Gymnasium / SekII / Mathematik / LK`",
+      "new": "`DE-BY / Gymnasium / G9 / SekII / Mathematik / LK`"
+    },
+    {
+      "path": "docs/concept/skill-graph/architecture-source/chapters/03-view-projection.en.md",
+      "old": "`DE-HE / Gymnasium / SekII / LK`",
+      "new": "`DE-HE / Gymnasium / G9 / SekII / Mathematik / LK`"
+    }
+  ],
+  "pins": [
+    {
+      "path": "docs/concept/didactic/source/chapters/02-frontier-autopilot.de.md",
+      "beforeSha256": "fe742c039038299fd4f551fc76f00d4f0fb9a8d5d206d9024e74cfd9727cd5d1",
+      "afterSha256": "2adcfec6b3351036f92b2279d31164d345476d426641f023294c71a9cf94186d"
+    },
+    {
+      "path": "docs/concept/didactic/source/chapters/02-frontier-autopilot.en.md",
+      "beforeSha256": "fac4714a1d7fe3251fa2374507321acddb55fcda25f7ee9f0b3c541ec632442b",
+      "afterSha256": "5f40cecdb14f8f4fbbb7d4a850763d36f137d8effe34c2cce516d467fae2d5bb"
+    },
+    {
+      "path": "docs/concept/glossary/source/chapters/01-curricula-and-graph.de.md",
+      "beforeSha256": "b72f9a500109d6c1b462505eac3a02897f6f53a2813f6f05b328ccee6e725206",
+      "afterSha256": "d8aac6d445ef08136bfc4297946bb81e8c310dbac42de40ed50e79f3c3842b1b"
+    },
+    {
+      "path": "docs/concept/glossary/source/chapters/01-curricula-and-graph.en.md",
+      "beforeSha256": "519cc94ac8823fd8c85b1cd4b74aee25e12fb0f01a8ced1148275948adb8b846",
+      "afterSha256": "f84f92013cb484ea01112cd52037b040371d3c2fb6011a00b2ce61c801b1fbec"
+    },
+    {
+      "path": "docs/concept/glossary/source/chapters/02-modes-and-layers.de.md",
+      "beforeSha256": "470303034b6e2da7fd67eeea48a7fa7d9a049b0e431db46c3a9f80a5e2e29ba9",
+      "afterSha256": "664d2c77de5408071ea5ae446f4ef20bf484411c38e8aa839ae45f28f7042e93"
+    },
+    {
+      "path": "docs/concept/glossary/source/chapters/02-modes-and-layers.en.md",
+      "beforeSha256": "9d41f909c6811e93f7f398d1d980c585aa67f6aa8518fe5f6414aeb744a88283",
+      "afterSha256": "e3b668e22b33cb12e3b94859f6e249f0bdd3cc60d904892dc7363cd0ebcc4303"
+    },
+    {
+      "path": "docs/concept/glossary/source/chapters/03-runtime-and-coach.de.md",
+      "beforeSha256": "11c809078154f46ae058b1f23b1555f02bbc8ac4a6d76175e7e535c039b62f4a",
+      "afterSha256": "b2d151683e45fceaf9d13630d69df22ab1be1798bdb38332719f89e174257559"
+    },
+    {
+      "path": "docs/concept/glossary/source/chapters/03-runtime-and-coach.en.md",
+      "beforeSha256": "67154b25a2884e543a00d8a108aa8bc09ffa4ffe3d0e4ecd4b5612e3c77d85be",
+      "afterSha256": "0a2772aa140b571f820b4df73f95e7762da209084d26483574f6eec284097ca7"
+    },
+    {
+      "path": "docs/concept/glossary/source/chapters/04-quality-and-distinctions.de.md",
+      "beforeSha256": "c4f3305ce84cea2d10a795b3b50ab2a7409cf9b4d8ddf6c4767ed248973a5238",
+      "afterSha256": "cae2f3efe7e929ed2548285a469234531738bc6ed28834c685ea53e9bb5077e5"
+    },
+    {
+      "path": "docs/concept/glossary/source/chapters/04-quality-and-distinctions.en.md",
+      "beforeSha256": "c210242cb7176018f2ba71c16048026e295ed062e5d383bf5567490c319a2e05",
+      "afterSha256": "45de6509ce0aa79593f1a37c7ea31226dec4e3d4549b1ec39b502b3aa5c6359d"
+    },
+    {
+      "path": "docs/concept/runtime-workflows/source/chapters/02-learning-workflow.de.md",
+      "beforeSha256": "dbc3bb0a736dc4fde7e1d46605e59e98fb35a4709d0c6de189154ad35b159e72",
+      "afterSha256": "94f5e62ea5d24b92d9c6616b9447651e6270ac08b50abcc5de12f6be215b7d7a"
+    },
+    {
+      "path": "docs/concept/runtime-workflows/source/chapters/02-learning-workflow.en.md",
+      "beforeSha256": "146e149f9359ff7ce1388f379119e8e0d1e8265203649f989470e1255eb33128",
+      "afterSha256": "feaa4459aabcb7542320ce363d09aa85aae6c5434e5dfa92c5ae2cfc25677c1e"
+    },
+    {
+      "path": "docs/concept/skill-graph/architecture-source/chapters/01-general-goal-system.de.md",
+      "beforeSha256": "dbbdc97d8359893657520a4501f93b3cf8fea315654175bb41172f6513b00aa7",
+      "afterSha256": "e99d53014dd6dd18b9b4f26495f29a37000196a60d7431c9cdbdcf5855049810"
+    },
+    {
+      "path": "docs/concept/skill-graph/architecture-source/chapters/01-general-goal-system.en.md",
+      "beforeSha256": "1e2a4a93ca644338d3172da022425eb32db414804cc20c391c6f2e2baaa341c8",
+      "afterSha256": "f1d004cee960a7f9da8497bc2b86e5e964db4e26cb4f3e72dc8f13e829ad961e"
+    },
+    {
+      "path": "docs/concept/skill-graph/architecture-source/chapters/02-node-types.de.md",
+      "beforeSha256": "e134cd6a6b6865c5c65fa8066050bb3bfb786abd222d6dcf38ce6d741f42f5f7",
+      "afterSha256": "33be70638b974a07d7a2a66869477410703cf4bdf26546452e2a909884976735"
+    },
+    {
+      "path": "docs/concept/skill-graph/architecture-source/chapters/02-node-types.en.md",
+      "beforeSha256": "86114b930bad1e1ffd90a3875f64ea6ffd9b23174ed9c431e888c5d9362fae1d",
+      "afterSha256": "58f3440753712c3e103ae3c646ab8f2ff381571e6868a915a44f54c02a186865"
+    },
+    {
+      "path": "docs/concept/skill-graph/architecture-source/chapters/03-view-projection.de.md",
+      "beforeSha256": "6983f3c14586fdae128b4b97dccdd3d99c7237e9cc671b24c2784cd0448f1059",
+      "afterSha256": "2975f202ffc2d1db646409cad71bd8bf768345bc93baf83b37d2fbe6bd0807ec"
+    },
+    {
+      "path": "docs/concept/skill-graph/architecture-source/chapters/03-view-projection.en.md",
+      "beforeSha256": "78e0d6631bc54b85e364708b2ca532496d1c5fcc5ad7dc36893af347b395905b",
+      "afterSha256": "270a8a0015ae1a9f49db8326c826417ad5a7c71d603d0860c4128917339cb1e3"
+    },
+    {
+      "path": "docs/concept/skill-graph/architecture-source/chapters/12-learning-unit-design-and-examples.de.md",
+      "beforeSha256": "0bb6dcd546bd5ef3bb1b337929a0fe93053746506b8e1a7c0c552c9a45a5e173",
+      "afterSha256": "58c2c8b772459cb6e948f77347c2f2e6b3e4de95143bc9c008054e31f43dba28"
+    },
+    {
+      "path": "docs/concept/skill-graph/architecture-source/chapters/12-learning-unit-design-and-examples.en.md",
+      "beforeSha256": "0eacfe36424d113abf5e17aaad2612d3512e31e4c40d4df6468029bfdc0dc3c0",
+      "afterSha256": "4b5beb19ee9980205b58310e68d1286c816de1fad75e6f98a00394465e64d614"
+    },
+    {
+      "path": "docs/concept/skill-graph/architecture-source/chapters/13-knowledge-context.de.md",
+      "beforeSha256": "cd86b206c058b4259f0cfab8d3b38011f30f43c0e00b01e8a8faba8ab2864c37",
+      "afterSha256": "4ceeb4277a70b74c63dc593b7526463afeda75dc9ea911f934c5e8b8788acf0c"
+    },
+    {
+      "path": "docs/concept/skill-graph/architecture-source/chapters/13-knowledge-context.en.md",
+      "beforeSha256": "34a1271de6b333a2adb65be1f4368fec7ea0d525de9f183ca90f4f4b41ab2c94",
+      "afterSha256": "cb804c6367e58a98ae96858f8c454c52e5136ab9d01dd45ad05f2bd44094a27b"
+    },
+    {
+      "path": "docs/concept/skill-graph/source/chapters/03-learning-units.de.md",
+      "beforeSha256": "9ea8974fca9c50ea255cf0cb8988c329760c3dae8a79d9e3ec2268ad2a3b85cc",
+      "afterSha256": "d9166c2a8252e82064eb584b59b2b6c5aef851c937db5dbba8dd41e96efef873"
+    },
+    {
+      "path": "docs/concept/skill-graph/source/chapters/03-learning-units.en.md",
+      "beforeSha256": "641baaa0291380c41371fdcae8eeafb1cc5251064e1a4508b2dea87024380918",
+      "afterSha256": "3db7bbaf067f202a099b7b238049422464e6cb2a7dce6617d000a66d427aa434"
+    },
+    {
+      "path": "docs/concept/skill-graph/source/chapters/05-assessment.de.md",
+      "beforeSha256": "f9a9ed5480359517dcf00646aa7579fa8f974a2f655bc6364e628a080272402e",
+      "afterSha256": "5568666065f8e32c98850afa64acef7d8f9f87bc7b5b7e46fc9c4f2a3fdfd589"
+    },
+    {
+      "path": "docs/concept/skill-graph/source/chapters/05-assessment.en.md",
+      "beforeSha256": "e7651effbac18178ed08288c18c2c3b5e58ebd9ccbe68ee48bf83c4fa429d77d",
+      "afterSha256": "7f14e1ba7a4396f4a909ecee3ed4111dc4d0f37e834d4d282c9d0e6a6fac2f5d"
+    },
+    {
+      "path": "docs/concept/skill-graph/source/glossary-and-symbols.json",
+      "beforeSha256": "d23bb5ea8d99edec7989a722d8840596335c244cddbc0b1bb5544aa066dc2f71",
+      "afterSha256": "cb9f62803e7e837a1473c0f3470ad5677922af330c0d368b3216979c74ca5685"
+    },
+    {
+      "path": "docs/concept/skill-graph/architecture-source/chapters/06-source-rationales.de.md",
+      "beforeSha256": "e5ee91665c00a490d8f620cfc81104a2c2f09221e9e7433ec1560fa8b2522045",
+      "afterSha256": "235a2006325e43494a66220e3a73467116a472224295d13922114f09e76413bc"
+    },
+    {
+      "path": "docs/concept/skill-graph/architecture-source/chapters/06-source-rationales.en.md",
+      "beforeSha256": "f18452df3d111c830145dcd3a784287f4a31536de74db88a87957d8580338d69",
+      "afterSha256": "1e0d911bb562559aae4a95070878286bf8f221e6194bf19d2b2c6e4fa74a49c7"
+    }
+  ]
+}

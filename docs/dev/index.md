@@ -70,6 +70,7 @@ Diese Seite ist der Einstiegspunkt für die entwicklungsnahe Dokumentation von S
 - [Gymnasium retained-source boundary: F3 consumer audit](cqr-gvr-gymnasium-retained-source-audit-2026-11-13.md)
 - [CQR-104 endpoint visibility: repairs and remaining evidence gaps](cqr-gvr-endpoint-visibility-findings-2026-11-13.md)
 - [Graph Definition part C: runtime test inventory](graph-definition-part-c-runtime-test-inventory-2026-11-14.md)
+- [Graph Definition: documentation review and architecture critique](graph-definition-documentation-review-2026-11-15.md)
 - [Mathematik-Dauerlayout: Pflege der Inputbindung, 8. November 2026](canonical-math-duration-input-binding-review-2026-11-08.md)
 - [Mathematikpaket: Pflege der Weitergabebindung, 8. November 2026](canonical-math-package-redistribution-input-binding-review-2026-11-08.md)
 - [Mathematik: Verbraucher transitiv reduzierter Voraussetzungen, 9. November 2026](canonical-math-transitive-prerequisite-consumer-repair-2026-11-09.md)

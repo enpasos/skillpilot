@@ -1,0 +1,872 @@
+{
+  "status": "read-only-current-whole-P-input-not-new-approval",
+  "goal": {
+    "id": "72effc66-87f4-5f5e-8d36-1547677365fb",
+    "title": "Digitale Messdaten auswerten und Unsicherheiten berücksichtigen",
+    "titleEn": "Analyze Digital Data and Account for Uncertainties",
+    "description": "Die lernende Person kann digitale Messdaten auswerten, zufällige Streuung von systematischen Abweichungen unterscheiden und begründen, wie beide die Aussagekraft des Ergebnisses begrenzen.",
+    "descriptionEn": "The learner can analyze digital measurement data, distinguish random scatter from systematic deviations, and justify how both limit the strength of the resulting conclusion.",
+    "weight": 0.9,
+    "tags": [
+      "GK",
+      "LK",
+      "Method",
+      "Measurement"
+    ],
+    "contains": [],
+    "requires": [
+      "691c11d0-fa6a-5d2e-a19c-086e89c3c233",
+      "f23fdfa9-38b6-5157-8301-ed302476c456"
+    ],
+    "dimensionTags": {
+      "framework": "hessen-kc-2024-physics",
+      "demandLevel": "AB1",
+      "processCompetencies": [
+        "PK1_EXPERIMENTIEREN"
+      ],
+      "guidingIdeas": [
+        "LI_BEWEGUNG"
+      ],
+      "phase": "E"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "type": "atomic",
+    "resourceLinks": [
+      {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "72effc66-87f4-5f5e-8d36-1547677365fb",
+        "title": "Visualisierung: Digitale Messdaten auswerten und Unsicherheiten berücksichtigen",
+        "url": "/assets/goal-visualizations/physik/72effc66-87f4-5f5e-8d36-1547677365fb/72effc66-87f4-5f5e-8d36-1547677365fb.jpg",
+        "provider": "Google Gemini / Nano Banana Pro",
+        "description": "Visualisierung zum Lernziel: Digitale Messdaten auswerten und Unsicherheiten berücksichtigen.",
+        "altText": "Didaktische Visualisierung zum Lernziel \"Digitale Messdaten auswerten und Unsicherheiten berücksichtigen\". Die lernende Person kann digitale Messdaten auswerten und dabei systematische und zufällige Unsicherheiten nachvollziehbar berücksichtigen.",
+        "lang": "de",
+        "license": "AI-generated, SkillPilot-curated",
+        "reviewStatus": "pilot"
+      }
+    ]
+  },
+  "positiveEvidenceProfile": {
+    "record": {
+      "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+      "schemaVersion": 2,
+      "reviewId": "canonical-physics-positive-understanding-evidence-calibration-final20-v3",
+      "goalFingerprintRuleVersion": "goal-evidence-v1",
+      "profileRuleVersion": "positive-understanding-evidence-v2",
+      "reviewCriteriaFingerprint": "sha256:8d64a50ede312df08795f6fddec82c1c3bcc8b77e50dad62220c201c819fd460",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "goalId": "72effc66-87f4-5f5e-8d36-1547677365fb",
+      "goalFingerprint": "sha256:5b5eb21ef5fb4985cfbca42031f94165e429d98a0a94a3258e1b9c7891e58a39",
+      "reviewInputFingerprint": "sha256:907b8ece347148993a814a685b391f2a9fbd4dfb55dd99e4081c054feb7395cd",
+      "profileFingerprint": "sha256:5f11634e51e897e7cc2b5c7ed2b613da03f30d9192244618b61ba5c2b7c01117",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "reviewedAt": "2026-08-27T09:13:43.000Z",
+      "reviewer": "codex-physics-visual-revalidation-6-affected-goals-2026-08-27",
+      "reason": "AI-authored current-fingerprint candidate for analyzing digital measurement data and distinguishing random scatter from systematic deviation. It requires fresh-data processing, uncertainty-aware claims, and a counter-case showing that small scatter does not establish accuracy; it claims neither human approval nor a dedicated profile-review run.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "reviewRunIds": [],
+      "dissent": [],
+      "profile": {
+        "archetype": "data",
+        "expectations": [
+          {
+            "id": "random-scatter-analysis",
+            "essentialUnderstandingDe": "Zufällige Einflüsse erzeugen bei Wiederholungsmessungen eine Streuung um einen typischen Wert; ihre Wirkung auf den geschätzten Mittelwert kann durch Wiederholungen und geeignete Streuungsmaße beschrieben, aber nicht für einen Einzelwert vollständig beseitigt werden.",
+            "essentialUnderstandingEn": "Random influences produce scatter around a typical value in repeated measurements; their effect on the estimated mean can be described using repetitions and suitable measures of spread but cannot be completely removed from an individual reading.",
+            "observablePerformanceDe": "Die lernende Person berechnet oder grafisch bestimmt für einen frischen digitalen Datensatz einen geeigneten Lagewert und die Streuung, erkennt Ausreißer begründet und formuliert eine Schlussfolgerung, deren Genauigkeit zur beobachteten Streuung passt.",
+            "observablePerformanceEn": "For a fresh digital data set, the learner calculates or graphically determines an appropriate central value and spread, identifies outliers with justification, and states a conclusion whose precision matches the observed scatter."
+          },
+          {
+            "id": "systematic-deviation-diagnosis",
+            "essentialUnderstandingDe": "Eine systematische Abweichung verschiebt Messwerte in gleicher oder gesetzmäßig veränderlicher Richtung, etwa durch Kalibrierfehler oder ungeeignete Messmethode; viele Wiederholungen um denselben verschobenen Wert machen sie nicht sichtbar oder kleiner.",
+            "essentialUnderstandingEn": "A systematic deviation shifts measurements in the same direction or in a regular way, for example because of calibration error or an unsuitable measurement method; many repetitions around the same shifted value neither reveal nor reduce it by themselves.",
+            "observablePerformanceDe": "Die lernende Person nutzt Referenzdaten, Nullmessung oder Methodenvergleich, um einen systematischen Anteil von zufälliger Streuung zu unterscheiden, und erklärt, welche Korrektur oder veränderte Messung erforderlich wäre.",
+            "observablePerformanceEn": "The learner uses reference data, a zero measurement, or a method comparison to distinguish a systematic component from random scatter and explains what correction or changed measurement would be required."
+          },
+          {
+            "id": "claim-strength-limitation",
+            "essentialUnderstandingDe": "Die Aussagekraft eines Ergebnisses wird durch beide Fehlerarten unterschiedlich begrenzt: geringe Streuung bedeutet hohe Wiederholbarkeit, aber ohne Kontrolle systematischer Abweichungen nicht automatisch Nähe zum richtigen Wert.",
+            "essentialUnderstandingEn": "The strength of a result is limited differently by the two error types: small scatter means high repeatability but, without controlling systematic deviation, not necessarily closeness to the correct value.",
+            "observablePerformanceDe": "Die lernende Person vergleicht zwei Datensätze mit unterschiedlicher Streuung und Verschiebung, trennt Präzision von Richtigkeit und wählt eine Schlussformulierung, die weder kleine Streuung noch einen Referenztreffer überinterpretiert.",
+            "observablePerformanceEn": "The learner compares two data sets with different scatter and offset, distinguishes precision from accuracy, and chooses a conclusion that overinterprets neither small scatter nor agreement with a reference."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "random-scatter-analysis",
+            "systematic-deviation-diagnosis",
+            "claim-strength-limitation"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "data-pattern",
+            "textDe": "Breite zufällige Streuung, eng gebündelte verschobene Werte oder Kombination beider Muster",
+            "textEn": "Broad random scatter, tightly clustered shifted values, or a combination of both patterns"
+          },
+          {
+            "id": "diagnostic-reference",
+            "textDe": "Bekannter Referenzwert, Nullmessung oder Vergleich mit einem unabhängigen Sensor",
+            "textEn": "Known reference value, zero measurement, or comparison with an independent sensor"
+          },
+          {
+            "id": "digital-sampling",
+            "textDe": "Wiederholte Einzelwerte oder zeitaufgelöste Messreihe mit endlicher Abtastrate",
+            "textEn": "Repeated individual readings or a time-resolved series with finite sampling rate"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "temperature-sensor-offset",
+            "taskDemandDe": "Zwei digitale Temperatursensoren messen wiederholt dasselbe Referenzbad. Sensor A streut stärker um den Referenzwert, Sensor B liefert eng gebündelte Werte stets 1,8 K darüber. Präzision, systematische Abweichung und Aussagekraft sind zu vergleichen.",
+            "taskDemandEn": "Two digital temperature sensors repeatedly measure the same reference bath. Sensor A has wider scatter around the reference value, while sensor B gives tightly clustered readings consistently 1.8 K higher. Precision, systematic deviation, and evidential strength must be compared.",
+            "expectedPerformanceDe": "Die lernende Person quantifiziert die Streuung, erkennt B als wiederholbar, aber systematisch verschoben, erklärt, warum Mitteln den Offset nicht entfernt, und schlägt eine Kalibrierprüfung oder Korrektur vor.",
+            "expectedPerformanceEn": "The learner quantifies the scatter, recognizes B as repeatable but systematically shifted, explains why averaging does not remove the offset, and proposes a calibration check or correction.",
+            "understandingFocusDe": "Der Fall diagnostiziert ausdrücklich die Fehlvorstellung, enge Punktwolken seien automatisch richtige Messungen.",
+            "understandingFocusEn": "The case explicitly diagnoses the misconception that tightly clustered points are automatically accurate measurements."
+          },
+          {
+            "id": "motion-sensor-sampling",
+            "taskDemandDe": "Ein digitaler Bewegungssensor zeichnet einen kurzen schnellen Vorgang mit grober Abtastrate auf; Wiederholungen streuen wenig, ein unabhängiger schnellerer Sensor zeigt jedoch einen höheren Spitzenwert. Die Daten sind auszuwerten und die zulässige Aussage zu begrenzen.",
+            "taskDemandEn": "A digital motion sensor records a brief fast event at a coarse sampling rate; repetitions show little scatter, but an independent faster sensor shows a higher peak. The data must be analyzed and the permissible conclusion limited.",
+            "expectedPerformanceDe": "Die lernende Person trennt geringe Wiederholungsstreuung von der systematischen Unterschätzung durch zeitliche Abtastung, vermeidet eine übergenaue Spitzenwertangabe und begründet eine höhere Abtastrate als methodische Verbesserung.",
+            "expectedPerformanceEn": "The learner distinguishes low repeat scatter from systematic underestimation caused by temporal sampling, avoids an overprecise peak claim, and justifies a higher sampling rate as a methodological improvement.",
+            "understandingFocusDe": "Der geänderte Mechanismus zeigt, dass systematische Abweichungen nicht nur konstante Nullpunktfehler sind.",
+            "understandingFocusEn": "The changed mechanism shows that systematic deviations are not limited to constant zero errors."
+          }
+        ]
+      }
+    },
+    "configPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-m7-png-retained-20260920-v1/p002.config.json",
+    "reviewPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-m7-png-retained-20260920-v1/p002.review.jsonl"
+  },
+  "earlyPreparationGoals": [
+    {
+      "id": "5c44b9ba-9b05-4774-95d5-073230d3fc4f",
+      "semanticKind": "orientation",
+      "title": "Warum Physik? – Weltverständnis & Zukunft",
+      "titleEn": "Why Physics? – Understanding the World & Future",
+      "description": "Der 'Big Picture'-Einstieg: Warum das Smartphone funktioniert, wie Ärzte ohne Skalpell in den Körper schauen (MRT), warum Sterne leuchten und wie wir die Energiekrise lösen. Überblick über die Relevanz der Themenfelder von der Mechanik bis zur Quantenphysik für dein Leben. Hier geht es um Orientierung und Interesse; fachliches Detailwissen wird weder vorausgesetzt noch geprüft.",
+      "descriptionEn": "The 'Big Picture' intro: Why smartphones work, how doctors see inside bodies without scalpels (MRI), why stars shine, and how to solve energy crises. Overview of the relevance of topics from mechanics to quantum physics for your life.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Motivation",
+        "Orientation",
+        "canonical"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "treeOrder": 1
+      },
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK5_BEWERTEN"
+        ],
+        "guidingIdeas": [
+          "LI_MATERIE",
+          "LI_ENERGIE",
+          "LI_TECHNIK",
+          "LI_KOSMOS"
+        ],
+        "basicConcepts": [
+          "KONZEPT_SYSTEM",
+          "KONZEPT_ENERGIE"
+        ],
+        "phase": "E"
+      },
+      "shortKey": "canonical_physics_why",
+      "type": "atomic",
+      "competencyRefs": [
+        "PROCESS.PK5"
+      ],
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "5c44b9ba-9b05-4774-95d5-073230d3fc4f",
+          "title": "Visualisierung: Warum Physik? – Weltverständnis & Zukunft",
+          "url": "/assets/goal-visualizations/physik/5c44b9ba-9b05-4774-95d5-073230d3fc4f/5c44b9ba-9b05-4774-95d5-073230d3fc4f.jpg",
+          "provider": "Google Gemini / Nano Banana Pro",
+          "description": "Visualisierung zum Lernziel: Warum Physik? – Weltverständnis & Zukunft.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Warum Physik? – Weltverständnis & Zukunft\". Der 'Big Picture'-Einstieg: Warum das Smartphone funktioniert, wie Ärzte ohne Skalpell in den Körper schauen (MRT), warum Sterne leuchten und wie wir die Energiekrise lösen. Überblick über die Relevanz der Themenfelder von der Mechanik bis zur Quantenphysik für dein Leben.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "8aff7aac-321b-5172-ac55-877876bfd2cd",
+      "title": "Messabweichungen und Fehlerarten unterscheiden",
+      "titleEn": "Distinguish Measurement Deviations and Error Types",
+      "description": "Die lernende Person kann Messabweichungen systematisch erfassen und systematische von zufälligen Fehlern unterscheiden.",
+      "descriptionEn": "The learner can systematically identify measurement deviations and distinguish systematic from random errors.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK",
+        "Method"
+      ],
+      "contains": [],
+      "requires": [
+        "5c44b9ba-9b05-4774-95d5-073230d3fc4f"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG",
+          "LI_MATERIE"
+        ],
+        "phase": "E"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "8aff7aac-321b-5172-ac55-877876bfd2cd",
+          "title": "Visualisierung: Messabweichungen und Fehlerarten unterscheiden",
+          "url": "/assets/goal-visualizations/physik/8aff7aac-321b-5172-ac55-877876bfd2cd/8aff7aac-321b-5172-ac55-877876bfd2cd.jpg",
+          "provider": "Google Gemini / Nano Banana Pro",
+          "description": "Visualisierung zum Lernziel: Messabweichungen und Fehlerarten unterscheiden.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Messabweichungen und Fehlerarten unterscheiden\". Die lernende Person kann Messabweichungen systematisch erfassen und systematische von zufälligen Fehlern unterscheiden.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "f6b1d812-ce8b-5852-b417-e6c29b533c7a",
+      "title": "Messunsicherheiten angeben",
+      "titleEn": "State Measurement Uncertainties",
+      "description": "Die lernende Person kann Messwerte mit geeigneten Unsicherheiten angeben und die Angabe fachgerecht notieren.",
+      "descriptionEn": "The learner can state measured values with suitable uncertainties and record them correctly.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK",
+        "Method"
+      ],
+      "contains": [],
+      "requires": [
+        "8aff7aac-321b-5172-ac55-877876bfd2cd",
+        "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG",
+          "LI_MATERIE"
+        ],
+        "phase": "E"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "f6b1d812-ce8b-5852-b417-e6c29b533c7a",
+          "title": "Visualisierung: Messunsicherheiten angeben",
+          "url": "/assets/goal-visualizations/physik/f6b1d812-ce8b-5852-b417-e6c29b533c7a/f6b1d812-ce8b-5852-b417-e6c29b533c7a.jpg",
+          "provider": "Google Gemini / Nano Banana Pro",
+          "description": "Visualisierung zum Lernziel: Messunsicherheiten angeben.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Messunsicherheiten angeben\". Die lernende Person kann Messwerte mit geeigneten Unsicherheiten angeben und die Angabe fachgerecht notieren.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "f23fdfa9-38b6-5157-8301-ed302476c456",
+      "title": "Mittelwert und Streuung aus Messreihen bestimmen",
+      "titleEn": "Determine Mean and Spread from Data Series",
+      "description": "Die lernende Person kann aus einer Messreihe Mittelwerte bestimmen und die Streuung zur qualitativen Unsicherheitsbewertung nutzen.",
+      "descriptionEn": "The learner can determine mean values from a data series and use spread for qualitative uncertainty assessment.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK",
+        "Method"
+      ],
+      "contains": [],
+      "requires": [
+        "f6b1d812-ce8b-5852-b417-e6c29b533c7a",
+        "15505229-efec-4d01-8e71-acf15f9c2424"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG",
+          "LI_MATERIE"
+        ],
+        "phase": "E"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "f23fdfa9-38b6-5157-8301-ed302476c456",
+          "title": "Visualisierung: Mittelwert und Streuung aus Messreihen bestimmen",
+          "url": "/assets/goal-visualizations/physik/f23fdfa9-38b6-5157-8301-ed302476c456/f23fdfa9-38b6-5157-8301-ed302476c456.jpg",
+          "provider": "Google Gemini / Nano Banana Pro",
+          "description": "Visualisierung zum Lernziel: Mittelwert und Streuung aus Messreihen bestimmen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Mittelwert und Streuung aus Messreihen bestimmen\". Die lernende Person kann aus einer Messreihe Mittelwerte bestimmen und die Streuung zur qualitativen Unsicherheitsbewertung nutzen.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "75b9ca4c-178e-5df2-adc4-f7f78e9d28e5",
+      "title": "Digitale und analoge Messverfahren vergleichen",
+      "titleEn": "Compare Digital and Analog Measurement Methods",
+      "description": "Die lernende Person kann digitale und analoge Messverfahren in Bezug auf Einsatzbereich, Auflösung und typische Fehlerquellen vergleichen.",
+      "descriptionEn": "The learner can compare digital and analog measurement methods regarding use cases, resolution, and typical error sources.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK",
+        "Method",
+        "Measurement"
+      ],
+      "contains": [],
+      "requires": [
+        "8aff7aac-321b-5172-ac55-877876bfd2cd",
+        "ee48e811-4c9c-5080-9836-8403fc9f0810"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG"
+        ],
+        "phase": "E"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "75b9ca4c-178e-5df2-adc4-f7f78e9d28e5",
+          "title": "Visualisierung: Digitale und analoge Messverfahren vergleichen",
+          "url": "/assets/goal-visualizations/physik/75b9ca4c-178e-5df2-adc4-f7f78e9d28e5/75b9ca4c-178e-5df2-adc4-f7f78e9d28e5.jpg",
+          "provider": "Google Gemini / Nano Banana Pro",
+          "description": "Visualisierung zum Lernziel: Digitale und analoge Messverfahren vergleichen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Digitale und analoge Messverfahren vergleichen\". Die lernende Person kann digitale und analoge Messverfahren in Bezug auf Einsatzbereich, Auflösung und typische Fehlerquellen vergleichen.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "691c11d0-fa6a-5d2e-a19c-086e89c3c233",
+      "title": "Digitale Messdaten mit Sensoren erfassen",
+      "titleEn": "Acquire Digital Measurement Data with Sensors",
+      "description": "Die lernende Person kann mit digitalen Sensoren Messdaten strukturiert erfassen und für die Auswertung bereitstellen.",
+      "descriptionEn": "The learner can acquire measurement data with digital sensors in a structured way and prepare it for analysis.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK",
+        "Method",
+        "Measurement"
+      ],
+      "contains": [],
+      "requires": [
+        "75b9ca4c-178e-5df2-adc4-f7f78e9d28e5"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG"
+        ],
+        "phase": "E"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "691c11d0-fa6a-5d2e-a19c-086e89c3c233",
+          "title": "Visualisierung: Digitale Messdaten mit Sensoren erfassen",
+          "url": "/assets/goal-visualizations/physik/691c11d0-fa6a-5d2e-a19c-086e89c3c233/691c11d0-fa6a-5d2e-a19c-086e89c3c233.jpg",
+          "provider": "Google Gemini / Nano Banana Pro",
+          "description": "Visualisierung zum Lernziel: Digitale Messdaten mit Sensoren erfassen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Digitale Messdaten mit Sensoren erfassen\". Die lernende Person kann mit digitalen Sensoren Messdaten strukturiert erfassen und für die Auswertung bereitstellen.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "72effc66-87f4-5f5e-8d36-1547677365fb",
+      "title": "Digitale Messdaten auswerten und Unsicherheiten berücksichtigen",
+      "titleEn": "Analyze Digital Data and Account for Uncertainties",
+      "description": "Die lernende Person kann digitale Messdaten auswerten, zufällige Streuung von systematischen Abweichungen unterscheiden und begründen, wie beide die Aussagekraft des Ergebnisses begrenzen.",
+      "descriptionEn": "The learner can analyze digital measurement data, distinguish random scatter from systematic deviations, and justify how both limit the strength of the resulting conclusion.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK",
+        "Method",
+        "Measurement"
+      ],
+      "contains": [],
+      "requires": [
+        "691c11d0-fa6a-5d2e-a19c-086e89c3c233",
+        "f23fdfa9-38b6-5157-8301-ed302476c456"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG"
+        ],
+        "phase": "E"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "72effc66-87f4-5f5e-8d36-1547677365fb",
+          "title": "Visualisierung: Digitale Messdaten auswerten und Unsicherheiten berücksichtigen",
+          "url": "/assets/goal-visualizations/physik/72effc66-87f4-5f5e-8d36-1547677365fb/72effc66-87f4-5f5e-8d36-1547677365fb.jpg",
+          "provider": "Google Gemini / Nano Banana Pro",
+          "description": "Visualisierung zum Lernziel: Digitale Messdaten auswerten und Unsicherheiten berücksichtigen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Digitale Messdaten auswerten und Unsicherheiten berücksichtigen\". Die lernende Person kann digitale Messdaten auswerten und dabei systematische und zufällige Unsicherheiten nachvollziehbar berücksichtigen.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    }
+  ],
+  "priorContractsRead": [
+    {
+      "id": "367b17f8-972a-5f3e-8915-8cfe743132a3",
+      "title": "Prüfungsaufgabe: Eine Bewegung digital auswerten",
+      "requires": [
+        "72effc66-87f4-5f5e-8d36-1547677365fb",
+        "13b338eb-f761-5817-9058-11043b9cb253",
+        "25593605-5e13-55cc-9a05-8f3d737e15e9"
+      ],
+      "examData": {
+        "reviewStatus": "needs_review",
+        "coveredGoalIds": [
+          "72effc66-87f4-5f5e-8d36-1547677365fb"
+        ],
+        "coveredStrands": [
+          "LI_BEWEGUNG",
+          "LI_TECHNIK"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2",
+          "AB3"
+        ],
+        "taskContent": "**Material:** Ein Fahrrad wird mit 25 Bildern pro Sekunde gefilmt. Nach Kalibrierung mit einer im Bild sichtbaren 2,00-m-Marke ergeben sich für die Bildnummern 0, 5, 10, 15 die Ortswerte 0,02 m, 1,01 m, 1,98 m und 3,00 m. Drei wiederholte Markierungen in Bild 10 liefern 1,96 m, 1,98 m und 2,01 m. Später stellt sich heraus, dass die Kalibriermarke tatsächlich 1,96 m lang war.\n\n1. Beschreiben Sie den vollständigen Ablauf von Kalibrierung, Koordinatenwahl und punktweiser Markierung. Wandeln Sie Bildnummern in Zeiten um und erstellen Sie ein t-s-Diagramm. (7 BE)\n2. Bestimmen Sie die mittleren Geschwindigkeiten in den drei Intervallen und beurteilen Sie die Bewegungsart. (5 BE)\n3. Unterscheiden Sie die Streuung der drei Markierungen von der falschen Kalibrierlänge als zufällige beziehungsweise systematische Abweichung. Erklären Sie Wirkung und Begrenzung der Ergebnisgenauigkeit und schlagen Sie je eine Gegenmaßnahme vor. (6 BE)",
+        "solutionContent": "Bei 25 Bildern/s liegen zwischen fünf Bildern 0,20 s. Die Datenpunkte werden relativ zum Ursprung und zur kalibrierten Längenskala erfasst. Die Intervallgeschwindigkeiten betragen etwa 4,95 m/s, 4,85 m/s und 5,10 m/s; innerhalb der Messstreuung ist eine näherungsweise gleichförmige Bewegung plausibel. Die verschiedenen Markierungen zeigen zufällige Streuung und können durch wiederholtes Markieren beziehungsweise Mittelwertbildung reduziert werden. Die falsch angegebene Referenzlänge skaliert alle Ortswerte systematisch zu groß; Wiederholung allein beseitigt sie nicht, wohl aber eine geprüfte Kalibrierung. Beide Abweichungen begrenzen die Aussagekraft.",
+        "scoring": {
+          "maxPoints": 18,
+          "passingPoints": 11,
+          "steps": [
+            {
+              "id": "digital_video_1",
+              "points": 7,
+              "description": "Videoanalyse mit Kalibrierung, Zeitachse und t-s-Daten nachvollziehbar durchgeführt"
+            },
+            {
+              "id": "digital_video_2",
+              "points": 5,
+              "description": "Intervallgeschwindigkeiten berechnet und Bewegungsart datenbasiert beurteilt"
+            },
+            {
+              "id": "digital_video_3",
+              "points": 6,
+              "description": "Zufällige und systematische Abweichungen unterschieden und Gegenmaßnahmen begründet"
+            }
+          ]
+        },
+        "reviewNote": "K6-v2: schriftliche Aufgabe und Identität unverändert; kein Nachweis der vollen eigenen Video-/Wurffitkompetenz d67502e3. Deren Abdeckung wurde entfernt. Reale Aufnahme/Fits nur im gesonderten aktuellen Nachweis6345871e. Vertragskorrektur schreibt oder migriert keine Lernendenresultate; aktuelles unabhängiges Review vor Freigabe nötig."
+      }
+    },
+    {
+      "id": "6345871e-eab4-59c1-a3b6-8456ab9bd7df",
+      "title": "Videoanalyse: eigene Kalibrierung und unabhängiger Wurftransfer",
+      "requires": [
+        "d67502e3-5e0a-595b-a24b-65b1c40de36e",
+        "72effc66-87f4-5f5e-8d36-1547677365fb"
+      ],
+      "examData": {
+        "reviewStatus": "released",
+        "reviewNote": "V3-Autorrevision nach unabhängigem REVISE R3: volle eigene Video-/Fit-/Sensitivitätsleistung bleibt erhalten; echte daraus erzeugte Orts-/Geschwindigkeitsdiagramme sind in DE/EN und zwingenden Kriterien ausdrücklich gefordert. Noch keine unabhängige v3-Abnahme. Inhaltsfreigabe nach tatsächlichem unabhängigem Review, Aufgaben-/Lösungs-/Rastervergleich und expliziter Vollzielprüfung; Belege: curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/stage-flow-current-assessments-v1/release/eighteen-task-content-release.actual.json. Keine menschliche Unterrichtserprobung oder automatische Ergebnisübertragung.",
+        "coveredGoalIds": [
+          "d67502e3-5e0a-595b-a24b-65b1c40de36e",
+          "691c11d0-fa6a-5d2e-a19c-086e89c3c233",
+          "72effc66-87f4-5f5e-8d36-1547677365fb",
+          "8aff7aac-321b-5172-ac55-877876bfd2cd"
+        ],
+        "coveredStrands": [
+          "LI_BEWEGUNG"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2"
+        ],
+        "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/physik/k3k6-content-correction-20261115-v1/video-models.md",
+        "taskContent": "**A – eigene gleichförmige Aufnahme (8 BE).** Erstelle selbst ein neues, sicheres Video einer annähernd gleichförmigen geradlinigen Bewegung auf einem Tisch. Kamera ruht, geprüfte Längenskala liegt in der Bewegungsebene; tatsächliche Zeitstempel oder verifizierte konstante Bildrate dokumentieren. Reiche Originalvideo, Aufbau, Kalibrierung und mindestens acht selbst markierte Positionen ein. Wähle Achse/Nullpunkt, passe selbst x=A+B·t mit einem dokumentierten digitalen Verfahren an und berichte A/B mit Einheiten, Residuen, mindestens eine selbst gerechnete Intervallgeschwindigkeit und begrenzte Messunsicherheit. Ein perfekt vorgegebener Beispieldatensatz ersetzt die eigene Erfassung nicht.\n\n**Verbindliche Diagrammprodukte zu A:** Erzeuge aus deinen eigenen Videodaten ein beschriftetes Orts-Zeit-Diagramm x(t)=s(t) und ein Geschwindigkeits-Zeit-Diagramm v_x(t)=v(t). Im Ortsdiagramm müssen die tatsächlich markierten Messpunkte und die separat gekennzeichnete Fitgerade erkennbar sein. Das Geschwindigkeitsdiagramm enthält die aus allen benachbarten Messpunkten bestimmten Intervallmittel mit ihrem Zeitfensterbezug; bei automatischer Berechnung bleibt mindestens eine eigene Kontrollrechnung nötig. Ein Mittel darf als waagerechter Abschnitt über seinem Fenster oder als Punkt an dessen Mitte mit ausdrücklich erklärter Näherung dargestellt werden. Kennzeichne einen zusätzlich gezeichneten Modellwert v=B getrennt von diesen Datenmitteln. Achsen, Einheiten, Messauflösung und die Herkunft jedes Diagramms aus der eigenen Rohdatentabelle müssen nachvollziehbar sein. Eine Parametertabelle, zwei Einzelgeschwindigkeiten oder nur eine Modellformel ersetzen diese Diagramme nicht.\n\n**B – unabhängige eigene Wurfaufnahme und Parameterfit (16 BE).** Plane und erfasse unabhängig von A eine kurze sichere Wurfbewegung, zum Beispiel einen von einem niedrigen Tisch in eine gepolsterte Auffangzone rollenden weichen Ball. Aufbau und Sicherung dürfen begleitet werden; du führst Aufnahme, Kalibrierung und Auswertung selbst aus. Die feste Kamera sieht die Bewegung möglichst frontal. Lege Referenzlänge und beide Achsen in dieselbe Bewegungsebene, wähle den Zeitnullpunkt frei bei einem tatsächlich sichtbaren Frame und markiere mindestens zehn Positionen während des freien Flugs. Reiche das Originalvideo, unbearbeitete Frame-/Zeit-/Pixel-Tabelle, Referenzmessung und deren Auflösung ein.\n\nEntscheide aus Daten und physikalischem Modell, welche Komponente näherungsweise linear und welche quadratisch modelliert werden soll. Schätze sämtliche Parameter selbst durch getrennte dokumentierte Fits x=A+B·t und y=C+D·t+E·t². Es werden keine Parameterwerte vorgegeben. Liefere Fit-Einstellungen, A/B/C/D/E mit Einheiten, Residuen beider Komponenten und interpretiere B, D und a_y=2E. Vergleiche den vertikalen quadratischen Fit mit einem vertikalen linearen Fit anhand seiner Residuen. Berechne mindestens zwei Geschwindigkeitsintervalle jeder Komponente selbst und kennzeichne die Zeitintervalle; eine Mittelpunktzuordnung ist bei konstantem Beschleunigungsmodell erklärbar, allgemein nur eine Näherung.\n\n**Verbindliche Diagrammprodukte zu B:** Reiche die vier fachlich getrennten Darstellungen x(t), y(t), v_x(t) und v_y(t) aus dieser echten Wurfaufnahme ein; eine gemeinsame Bildtafel ist gleichwertig. Beide Ortsdarstellungen zeigen eigene Messpunkte und getrennt gekennzeichnete Modellkurven. Beide Geschwindigkeitsdarstellungen zeigen die aus allen benachbarten Rohpunkten gewonnenen Intervallmittel mit tatsächlichen Zeitfenstern beziehungsweise begründetem Mittelpunktbezug; zusätzlich eingezeichnete Modellverläufe v_x=B und v_y=D+2E·t müssen davon unterschieden werden. Beschrifte alle Achsen mit Größen und Einheiten und ordne Punkte, Intervalle, Modell und Auflösung nachprüfbar der eigenen Rohdatentabelle zu. Die mindestens zwei eigenen Intervall-Kontrollrechnungen je Komponente bleiben nötig. Vier Formeln ohne Bewegungsdiagramme oder gegebene C-Daten bestehen diesen Teil nicht.\n\nBestimme eine **quantitative Parametersensitivität**: markiere mindestens ersten, mittleren und letzten Flugpunkt unabhängig ein zweites Mal und fitte erneut; variiere außerdem die Referenzlänge um ihre begründete Ableseunsicherheit. Berichte mindestens die so entstehenden Bereiche für B und a_y mit Einheiten und erläutere, was sie abdecken. Trenne zufälliges Tracking, gemeinsame Kalibrierskalierung und mögliche Perspektive/Physik. Ein paar Sensitivitätsvarianten sind weder garantierte Fehlergrenzen noch ein statistisches Konfidenzintervall. Behaupte keine aus Residuen allein eindeutig bewiesene Ursache. Ein unbekannter Abwurfzeitpunkt wird ohne sichtbares Abwurfereignis oder andere ausreichende Zusatzinformation nicht rekonstruiert. Keine Fit-Parameter aus Material C als Ergebnis der eigenen Aufnahme übernehmen.\n\n**C – unabhängiger numerischer Transfer (8 BE).** Die beigefügte CSV enthält ausdrücklich synthetische, leicht gestörte Aufgabedaten, keine realen Messungen. Bildrate50fps, Referenz100px=(0,500±0,005)m, x rechts/y oben, Pixelmarkierungsauflösung±1px. Frames100,105,110,115,120,125,130,135,140; xpx=41,76,115,150,189,224,263,298,337; ypx=900,885,848,795,718,626,510,379,224. Wähle t=0 beiFrame100. Fitte die beiden Komponenten selbst, gib Parameter/Einheiten und Residuen an und berechne zwei Intervallgeschwindigkeiten. Fitte zusätzlich mit Referenz0,495m und0,505m sowie zwei gegensätzlichen Trackingvarianten: Für y an den beiden äußeren Frames je +1px und am mittleren Frame−1px, beziehungsweise umgekehrt. Berichte die beobachtete Sensitivität von B und a_y und ihre Grenzen. Auch ein korrekter Transferdatensatz ersetzt keines der beiden realen Artefakte.\n\n[Originale CSV-Aufgabedaten](/assets/assessment-materials/physik/k6-measurement-rate-20261115-v3/projectile-fit-transfer.csv)\n![Synthetische Rohpunkte ohne vorgegebene Fitparameter](/assets/assessment-materials/physik/k6-measurement-rate-20261115-v3/projectile-fit-transfer.png)\n\nFür beide realen Fälle A/B gilt: Ein Residuenmuster allein trennt Perspektive und reale Beschleunigung nicht eindeutig. Ein anhand der tatsächlichen Daten begründet offengelassener Ursachenvergleich ist vollständig gültig. Nenne zusätzlich, welche kontrollierte geometrische Information (z. B. verifizierte ebene Kalibrierung/Ausrichtung) oder unabhängige Bewegungsmessung eine Unterscheidung erlauben könnte. Ein bloß weiteres ungeprüftes Video genügt nicht automatisch; eine zusätzliche tatsächliche dritte Aufnahme oder Messung wird hier nicht verlangt.",
+        "taskContentEn": "**A – own uniform-motion recording (8 points).** Make your own fresh safe video of approximately uniform straight motion on a table. Keep the camera stationary, place a checked length scale in the motion plane, and document actual timestamps or a verified constant frame rate. Submit the original video, setup, calibration, and at least eight positions marked by you. Choose axis/origin, independently fit x=A+B·t using a documented digital method, and report A/B with units, residuals, at least one interval velocity calculated by you, and bounded measurement uncertainty. A supplied perfect dataset does not replace your own acquisition.\n\n**Mandatory diagram products for A:** Produce a labelled position-time graph x(t)=s(t) and a velocity-time graph v_x(t)=v(t) from your own video data. The position graph must show the actual marked data points and a separately identified fitted line. The velocity graph contains averages calculated from every adjacent pair of measured positions, with their time-window relation; automated calculation still requires at least one calculation checked by you. An average may be shown as a horizontal segment spanning its window or as a midpoint marker with the approximation explicitly explained. Distinguish any additional model velocity v=B from those data averages. Axes, units, measurement resolution, and each graph’s derivation from your own raw table must be traceable. A parameter table, two isolated velocities, or only a model expression does not replace these graphs.\n\n**B – independent own projectile recording and parameter fitting (16 points).** Independently of A, plan and record a short safe projectile motion, for example a soft ball rolling from a low table into a padded catch area. Setup and safety may be guided; perform the recording, calibration, and analysis yourself. Use a stationary nearly frontal camera. Put the reference length and both axes in the motion plane, freely choose time zero at a visible frame, and mark at least ten positions during free flight. Submit original video, unmodified frame/time/pixel table, reference measurement, and its resolution.\n\nUse data and physics to choose an approximately linear component and a quadratic component. Estimate all parameters yourself in separate documented fits x=A+B·t and y=C+D·t+E·t²; no parameter values are supplied. Submit fit settings, A/B/C/D/E with units, both residual series, and interpretations of B, D, and a_y=2E. Compare the vertical quadratic fit with a vertical linear fit using residuals. Calculate at least two interval velocities for each component yourself and label their intervals; midpoint assignment can be justified for a constant-acceleration model but is generally an approximation.\n\n**Mandatory diagram products for B:** Submit four scientifically distinct representations x(t), y(t), v_x(t), and v_y(t) from this actual projectile recording; one combined figure is equally acceptable. Both position graphs show your measured points and separately identified fitted curves. Both velocity graphs show averages from every adjacent pair of raw points with actual time windows or a justified midpoint relation; distinguish any added model curves v_x=B and v_y=D+2E·t from these averages. Label all axes with quantities and units and make the link between points, intervals, model, resolution, and your own raw table checkable. At least two interval calculations checked by you per component remain required. Four formulas without motion graphs, or supplied C data, do not satisfy this part.\n\nDetermine **quantitative parameter sensitivity**: independently re-mark at least the first, middle, and last flight positions and refit; also vary the reference length by its justified reading uncertainty. Report at least the resulting ranges of B and a_y with units and explain their scope. Distinguish tracking scatter, common calibration scaling, and possible perspective/physical effects. A few sensitivity variants are neither guaranteed error bounds nor a statistical confidence interval. Do not assert a uniquely established cause from residuals alone. Do not reconstruct an unknown launch time without a visible launch event or other sufficient information. Do not copy parameters from C as results of your own recording.\n\n**C – independent numerical transfer (8 points).** The attached CSV explicitly contains synthetic slightly perturbed task data, not real measurements. Frame rate50fps, reference100px=(0.500±0.005)m, x rightward/y upward, marking resolution±1px. Frames100,105,110,115,120,125,130,135,140; xpx=41,76,115,150,189,224,263,298,337; ypx=900,885,848,795,718,626,510,379,224. Choose t=0 at frame100. Independently fit both components and give parameters/units and residuals; calculate two interval velocities. Also refit with reference lengths0.495m and0.505m and two opposite tracking variants: add1px to y at both outer frames and subtract1px at the middle frame, then reverse those changes. Report the observed sensitivity of B and a_y and its limitations. Correct transfer calculations do not replace either real artifact.\n\n[Original CSV task data](/assets/assessment-materials/physik/k6-measurement-rate-20261115-v3/projectile-fit-transfer.csv)\n![Synthetic raw points without supplied fit parameters](/assets/assessment-materials/physik/k6-measurement-rate-20261115-v3/projectile-fit-transfer.en.png)\n\nFor both real cases A/B: a residual pattern alone does not uniquely distinguish perspective from real acceleration. A causal comparison justifiably left unresolved using the actual data is fully valid. Also state which controlled geometric information (for example verified planar calibration/alignment) or independent motion measurement could distinguish them. Merely adding another unchecked video is not automatically sufficient; no actual third recording or measurement is required here.",
+        "solutionContent": "A/B werden an den tatsächlich eingereichten verschiedenen Originalaufnahmen geprüft. Kein fester Zahlenwert ist für diese eigenen Daten vorgeschrieben. Vollständig sind die eigene Kalibrier-/Zeit-/Trackingkette, selbst geschätzte Parameter mit Einheiten (A,C:m; B,D:m/s; E:m/s²), getrennte Residuen und physikalische Deutung. A erfordert einen tatsächlichen linearen Fit, B einen tatsächlichen unabhängigen linearen/quadratischen Komponentenfit und einen Vergleich des vertikalen linearen Alternativmodells. Einsetzen in schon angegebene numerische Terme, Übernahme der C-Werte oder ein Video ohne aus ihm nachvollziehbar bestimmte Parameter genügt nicht. Für B müssen re-markierte Daten und geänderte Längenskala nachweislich erneut angepasst werden, mindestens Bereiche von B und a_y resultieren; bloß „Messfehler vorhanden“ genügt nicht. Eine angenommene ideale g-Zahl darf den gemessenen Fit nicht ersetzen.\n\nC: Die neun Zeiten reichen in0,1-s-Schritten von0bis0,8s; Maßstab nominal0,005m/px. Ungewichteter digitaler Kleinste-Quadrate-Fit ergibt ungefähr A=0,20056m, B=1,85000m/s; C=4,50082m, D=−0,29999m/s, E=−4,90314m/s², also a_y=−9,8063m/s². Rundungen und äquivalente nachvollziehbare Fits sind zulässig. Die x-Residuen sind ungefähr +0,00444/−0,00556m alternierend; y-Residuen sind im Millimeterbereich. Die mittleren Geschwindigkeiten in den ersten zwei Intervallen betragen vx=1,75und1,95m/s sowie vy=−0,75und−1,85m/s. Sie sind nicht einfach den linken Intervallendpunkten als Momentangeschwindigkeiten zuzuordnen. Der vertikale lineare Fit zeigt ein deutlich systematisches Bogenmuster; die beobachtete Krümmung ist nicht durch±1px allein erklärt.\n\nReferenzskalierung0,495/0,505m multipliziert alle Orts-, Geschwindigkeits- und Beschleunigungsparameter gemeinsam mit0,99/1,01; allein daraus B=1,8315bis1,8685m/s und a_y≈−9,9043bis−9,7082m/s². Die zwei vorgeschriebenen Trackingvarianten ergeben abweichende Krümmungsparameter, im Rechenbeleg exakt ausgewiesen. Diese wenigen Varianten sind Sensitivitätsbeispiele, keine vollständige Extremaloptimierung aller Pixelkombinationen und keine95%-Intervalle. Das Vorzeichen von D bezieht sich auf den frei gewählten ersten Filmframe, nicht automatisch auf den Abwurf.\n\nZwingende Auswerteprodukte A: ein aus den eigenen markierten Positionen erzeugtes x(t)-Diagramm mit Messpunkten und separat markierter Fitgerade sowie ein aus denselben Rohdaten erzeugtes v(t)-Diagramm sämtlicher benachbarter Intervallmittel. Zwingende Produkte B: getrennte x(t)- und y(t)-Messpunkt-/Fitdarstellungen und v_x(t)-/v_y(t)-Darstellungen aller benachbarten Intervallmittel. Eine gemeinsame mehrteilige Bildtafel genügt, sofern jede Größe, Achse, Einheit und Daten-/Modelllegende eindeutig ist. Dargestellte Intervallmittel gehören zu ihrem Messfenster; eine Darstellung an der Fenstermitte muss ihren Näherungscharakter nennen. Die gezeichneten Modellwerte B beziehungsweise D+2E·t werden aus den eigenen Fitparametern gewonnen und als Modell erkennbar von den Rohdatenmitteln getrennt. Die Auflösung darf als nachvollziehbare Legendenangabe beziehungsweise geeignete Markierung erscheinen; ein formales Konfidenzband wird nicht verlangt. Beurteilt werden die Diagramme anhand derselben echten Rohdatentabelle, aus der Fits und Kontrollrechnungen stammen. Fehlendes x(t)/v(t) in A oder eine fehlende B-Komponentendarstellung verhindert die volle Punktzahl, auch bei richtigen Fitparametern, Residuen und Sensitivitäten.\n\nVolle Evidenz erlaubt ausdrücklich „mit diesen Daten nicht eindeutig entscheidbar“ bei begründeter Unsicherheits-/Identifizierbarkeitsgrenze. Eine Ursache wird nur bei tatsächlich hinreichender unabhängiger Kontrolle eindeutig behauptet; die passende Kontrollinformation darf als begründeter Vorschlag benannt werden, ohne zusätzlichen Pflichtversuch.",
+        "solutionContentEn": "Assess A/B against the two genuinely submitted distinct original recordings. No fixed numerical answer is prescribed for individual data. Complete performance includes the learner’s calibration/time/tracking chain, independently estimated parameters with units (A,C:m; B,D:m/s; E:m/s²), separate residuals, and physical interpretation. A requires an actual linear fit; B requires an actual independent linear/quadratic component fit and comparison with a vertical linear alternative. Substitution into supplied numerical expressions, copying C values, or a video without parameters traceably obtained from it is insufficient. In B, independently re-marked data and changed reference lengths must actually be refitted, producing at least ranges of B and a_y; merely stating that measurement error exists is insufficient. An assumed ideal gravitational acceleration must not replace the measured fit.\n\nC: Nine times run from0to0.8s in0.1-s steps; nominal scale0.005m/px. An unweighted digital least-squares fit gives approximately A=0.20056m, B=1.85000m/s; C=4.50082m, D=−0.29999m/s, E=−4.90314m/s², hence a_y=−9.8063m/s². Rounding and equivalent documented fits are acceptable. x residuals alternate approximately +0.00444/−0.00556m; y residuals are millimetres in size. Average velocities over the first two intervals are vx=1.75and1.95m/s and vy=−0.75and−1.85m/s. They are not automatically instantaneous velocities at left endpoints. The vertical linear fit has a clear systematic curved residual pattern;±1px alone does not explain the observed curvature.\n\nReference scaling0.495/0.505m multiplies all position, velocity, and acceleration parameters together by0.99/1.01; this alone gives B=1.8315to1.8685m/s and a_y≈−9.9043to−9.7082m/s². The two prescribed tracking variants change the curvature estimate, exactly recorded in the numeric receipt. These few variants are sensitivity examples, not complete optimization over every pixel combination or95% intervals. D’s sign refers to the freely chosen first video frame, not automatically to launch.\n\nMandatory A products: an x(t) graph generated from the learner’s marked positions with measured points and a separately identified fitted line, plus a v(t) graph of every adjacent interval average generated from the same raw data. Mandatory B products: separate x(t)/y(t) measured-point and fitted-curve representations and v_x(t)/v_y(t) representations of all adjacent interval averages. A single multi-panel figure is sufficient if every quantity, axis, unit, and data/model legend is unambiguous. Interval averages belong to their windows; plotting them at window centers must state the approximation. Drawn model velocities B or D+2E·t use the learner’s fitted parameters and are clearly distinguished from raw-data averages. Resolution may be documented in a traceable legend or suitable marks; no formal confidence band is required. Assess graphs against the same actual raw table used for fits and check calculations. Missing A x(t)/v(t) or any B component representation prevents full credit even with correct fitted parameters, residuals, and sensitivity results.\n\nFull evidence explicitly permits \"not uniquely decidable from these data\" with a justified uncertainty/identifiability limit. A cause is uniquely asserted only with actually sufficient independent control; appropriate control information may be proposed with justification without an additional mandatory experiment.",
+        "scoring": {
+          "maxPoints": 32,
+          "passingPoints": 32,
+          "steps": [
+            {
+              "id": "video_models_v2_1",
+              "points": 4,
+              "description": "Eigenes Originalvideo A mit überprüfbarer Kalibrierung, Zeitbasis und mindestens acht selbst markierten Punkten. / EN: Own original video A with checkable calibration/time base and at least eight self-marked points."
+            },
+            {
+              "id": "video_models_v2_2",
+              "points": 4,
+              "description": "A: selbstständiger linearer Parameterfit mit Einheiten, Residuen, eigener Intervallrechnung und begrenzter Unsicherheit; zwingend aus den eigenen Rohvideodaten erzeugte, beschriftete x(t)- und v(t)-Diagramme mit Messpunkt-/Modelltrennung und vollständigem Zeitfensterbezug. / EN: A: independent linear parameter fit with units, residuals, own interval calculation, and bounded uncertainty; mandatory labelled x(t) and v(t) graphs generated from the own raw video data, distinguishing measured data/model and showing all velocity time windows."
+            },
+            {
+              "id": "video_models_v2_3",
+              "points": 4,
+              "description": "Unabhängige eigene reale Wurfaufnahme B mit Originalvideo, Maßstab, Zeit-/Pixelrohdaten und mindestens zehn Flugpunkten. / EN: Independent own real projectile recording B with original video, scale, raw time/pixel data, and at least ten flight points."
+            },
+            {
+              "id": "video_models_v2_4",
+              "points": 4,
+              "description": "B: beide Komponenten selbst angepasst; alle fünf Parameter mit Einheiten, Fit-Einstellungen und getrennten Residuen aus der tatsächlichen Aufnahme; zwingend alle vier aus derselben Rohdatentabelle erzeugten beschrifteten x(t), y(t), v_x(t), v_y(t)-Darstellungen, Messpunkt-/Modelltrennung und nachvollziehbare Intervallzuordnung. / EN: B: fits both components independently; all five parameters with units, fit settings, and separate residuals from the actual recording; mandatory labelled x(t), y(t), v_x(t), v_y(t) representations generated from that same raw table, distinguishing measured data/model and giving traceable interval timing."
+            },
+            {
+              "id": "video_models_v2_5",
+              "points": 4,
+              "description": "B: lineares vertikales Alternativmodell anhand Residuen geprüft; Geschwindigkeitsintervalle, Beschleunigung und frei gewählte Anfangswerte korrekt gedeutet. / EN: B: checks a vertical linear alternative using residuals; correctly interprets interval velocities, acceleration, and freely chosen initial values."
+            },
+            {
+              "id": "video_models_v2_6",
+              "points": 4,
+              "description": "B: reale Re-Markierungen und Kalibrierunsicherheit tatsächlich neu gefittet; quantitative Bereiche von B und a_y mit begrenzter, nichtstatistischer Aussage. / EN: B: actually refits real re-markings and calibration uncertainty; gives quantitative B/a_y ranges with a bounded nonstatistical interpretation. Ursachenvergleich A/B: begründet offene Zuordnung zählt vollständig; zusätzliche unterscheidende Kontrollinformation benennen, keine eindeutige Ursache aus Residuen allein erfinden. / EN: A/B causal comparison may remain justifiably unresolved for full credit; identify discriminating control information and invent no unique cause from residuals alone."
+            },
+            {
+              "id": "video_models_v2_7",
+              "points": 4,
+              "description": "C: aus Rohdaten selbstständige lineare/quadratische Fits mit Einheiten, Residuen und zwei Intervallgeschwindigkeiten. / EN: C: independent linear/quadratic fits from raw data with units, residuals, and two interval velocities."
+            },
+            {
+              "id": "video_models_v2_8",
+              "points": 4,
+              "description": "C: beide Kalibrier- und beide Trackingvarianten neu gefittet, Sensitivität quantitativ berichtet und nicht als garantierte Grenze/Konfidenz ausgegeben. / EN: C: refits both calibration and both tracking variants, reports sensitivity quantitatively, and does not label it a guaranteed bound/confidence interval."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "0521c3ce-999b-5b35-bb3c-7042f24a30ce",
+      "title": "Prüfungsaufgabe: Messreihen, Unsicherheit und Gerätewahl",
+      "requires": [
+        "b615830a-e8b0-5754-81e0-99da98343a8d",
+        "f23fdfa9-38b6-5157-8301-ed302476c456",
+        "75b9ca4c-178e-5df2-adc4-f7f78e9d28e5"
+      ],
+      "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "f6b1d812-ce8b-5852-b417-e6c29b533c7a",
+          "b615830a-e8b0-5754-81e0-99da98343a8d",
+          "f23fdfa9-38b6-5157-8301-ed302476c456",
+          "75b9ca4c-178e-5df2-adc4-f7f78e9d28e5"
+        ],
+        "coveredStrands": [
+          "LI_MATERIE"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2"
+        ],
+        "taskContent": "Zwei voneinander unabhängige Fälle mit ausdrücklich synthetischen Aufgabendaten. Es wird keine eigene Messung behauptet oder verlangt. Bearbeite beide Fälle vollständig. Ein Taschenrechner ist erlaubt.\n\nFür diese Schulaufgabe vereinbaren wir eine einfache **Arbeitsunsicherheit Δ**, kein statistisches Konfidenzintervall und keine garantierte Fehlergrenze: Berechne Mittelwert und halbe Spannweite H=(Maximum−Minimum)/2. Korrigiere einen angegebenen konstanten Anzeigefehler e durch z=Anzeigenmittel−e. Verwende Δ=max(H,r)+b, wobei r die hier angegebene Ablesekomponente und b die verbleibende Kalibrierkomponente ist. Die Formel ist eine Aufgabenvereinbarung, keine allgemeine metrologische Standardformel. Sie verringert einen gemeinsamen Kalibrieranteil nicht durch mehr Wiederholungen. Für abgeleitete Größen sind unten die Rechenregeln angegeben. Führe Zwischenwerte mit mindestens sechs sinnvollen Ziffern weiter; runde erst endgültige Berichte. Runde Δ für den Abschluss auf eine signifikante Ziffer **aufwärts** und den Ergebniswert auf dieselbe Dezimalstelle. Eine begründete gleichwertige oder etwas konservativere Unsicherheitsangabe ist erlaubt, sofern keine Information verloren geht; kennzeichne sie.\n\n**A – feste Länge.** Ein starrer Streifen wird unter denselben Bedingungen wiederholt gemessen. Analoges Lineal: Bereich0–300mm, Skalenteilung1mm, r=0,5mm, e=0 und b=0; Anzeigen100,0/100,5/100,0/99,5/100,0mm. Digitaler Messschieber: Bereich0–150mm, Anzeigeschritt0,01mm, r=0,005mm, e=+0,20mm und b=0,03mm; Anzeigen100,21/100,24/100,23/100,25/100,20mm. Alle Werte sind nach erneutem Anlegen abgelesen. Der bekannte konstante Anzeigefehler ist bereits unabhängig geprüft; b beschreibt das verbleibende Wissen über die Korrektur.\n\nA1. Bestimme für beide Geräte Mittelwert und H. Vergleiche die Streuung und erläutere, warum die feinere Anzeige allein keine entsprechend kleine Gesamtunsicherheit beweist und warum der Offset nicht durch Mitteln verschwindet.\nA2. Korrigiere beide Ergebnisse, bestimme Δ und gib beide Längen fachgerecht mit Einheit und passender Dezimalstelle an. Vergleiche die resultierenden Arbeitsintervalle, ohne ihre Überlappung als Identitätsbeweis auszugeben.\nA3. Eine rechnerische Teilung der Gesamtlänge in genau sieben gleiche Teile definiert d=L/7; dabei gilt Δd=ΔL/7. Berechne d aus dem **unverkürzten korrigierten digitalen Mittelwert** und zeige den Zwischenwert und den gerundeten Ergebnisbericht. Erkläre, weshalb die volle Taschenrechneranzeige als Endergebnis Scheingenauigkeit wäre.\nA4. Ein Auftrag verlangt bei ungefähr100mm Länge eine Arbeitsunsicherheit höchstens0,10mm. Wähle mit Begründung ein geeignetes Gerät anhand von Bereich, Auflösung und berechnetem Δ. Nenne für das analoge und das digitale Verfahren je eine passende mögliche zusätzliche Fehlerquelle und eine konkrete Gegenmaßnahme; unterscheide die gegebenen Fakten von Vermutungen. Beispielsweise ist eine Parallaxe bei schrägem Blick möglich, aber nicht als nachgewiesene Ursache der Daten vorgegeben.\n\n**B – konstante Badtemperatur.** Unabhängiger Aufbau. Analoges Flüssigkeitsthermometer: Bereich−10bis110°C, Skalenteilung1°C, r=0,5°C, e=0,b=0; Anzeigen20,0/20,5/20,0/19,5/20,0°C. Digitalthermometer: Bereich−20bis60°C, Schritt0,1°C, r=0,05°C, e=−0,30°C,b=0,10°C; Anzeigen19,8/19,9/19,8/20,0/19,9°C. Für die Aufgabe ist das Bad während der Reihe als konstant anzunehmen, beide Geräte waren jeweils lange genug eingetaucht.\n\nB1. Berechne Mittelwert und H beider Reihen und interpretiere die Streuung für die qualitative Unsicherheitsbewertung. Unterscheide die Streuung vom konstanten Anzeigefehler; die Daten beweisen keine eindeutige physikalische Ursache.\nB2. Korrigiere beide Mittelwerte und berichte beide Temperaturen mit geeignetem Δ, Einheit und Rundung. Erläutere, ob die Aussage „digital heißt automatisch richtig“ gerechtfertigt ist.\nB3. Eine unabhängige Vergleichstemperatur lautet (10,00±0,05)°C. Berechne die Temperaturdifferenz θ=z_digital−10,00°C aus unverkürzten Zwischenwerten. Hier wird Δθ=Δ_digital+0,05°C vereinbart. Gib Zwischenwerte und einen sinnvoll gerundeten Abschluss an; eine Temperaturdifferenz darf in K oder °C angegeben werden.\nB4. Wähle für die Beobachtung einer anschließend auf80°C erwärmten Flüssigkeit aus diesen zwei Geräten ein geeignetes Gerät. Beziehe Bereich und Auflösung ein. Nenne wiederum je eine analoge und digitale mögliche Fehlerquelle mit einer geeigneten Kontrolle; die feinere Anzeige erlaubt keine Nutzung außerhalb des Gerätebereichs. Es soll kein tatsächlicher Versuch mit heißer Flüssigkeit stattfinden.",
+        "taskContentEn": "Two independent cases with explicitly synthetic task data. No real measurement is claimed or required. Complete both cases. A calculator is allowed.\n\nFor this school task we agree on a simple **working uncertainty Δ**, not a statistical confidence interval or guaranteed error bound: compute the mean and half-range H=(maximum−minimum)/2. Correct a specified constant indication error e using z=mean indication−e. Use Δ=max(H,r)+b, with the reading component r and remaining calibration component b given here. This is a task convention, not a general metrological standard formula. More repetitions do not reduce a shared calibration component. Rules for derived quantities are supplied below. Carry at least six meaningful digits in intermediate values and round only final reports. Round the final Δ **upwards** to one significant figure and the reported value to the same decimal place. A justified equivalent or slightly more conservative uncertainty statement is allowed if information is retained; identify it.\n\n**A – fixed length.** A rigid strip is measured repeatedly under unchanged conditions. Analog ruler: range0–300mm, graduation1mm,r=0.5mm,e=0,b=0; readings100.0/100.5/100.0/99.5/100.0mm. Digital caliper: range0–150mm, display increment0.01mm,r=0.005mm,e=+0.20mm,b=0.03mm; readings100.21/100.24/100.23/100.25/100.20mm. The instrument was repositioned for each reading. The constant indication error has been independently checked; b describes remaining knowledge of the correction.\n\nA1. Calculate both means and half-ranges. Compare scatter and explain why finer display resolution alone does not establish a correspondingly small total uncertainty and why averaging does not remove the offset.\nA2. Correct both results, calculate Δ, and report both lengths with units and appropriate decimal places. Compare their working intervals without treating overlap as proof of identity.\nA3. Dividing the total length mathematically into exactly seven equal parts defines d=L/7, with Δd=ΔL/7. Calculate d from the **unshortened corrected digital mean**, showing an intermediate value and a rounded report. Explain why reporting every calculator digit would imply false precision.\nA4. A job needs a working uncertainty at most0.10mm for a length near100mm. Choose an appropriate instrument using range, resolution, and calculated Δ. Give one plausible additional error source and a specific control for each analog/digital method. Distinguish supplied facts from hypotheses: oblique-view parallax is possible but has not been established as the cause of these data.\n\n**B – constant bath temperature.** Independent setup. Analog liquid thermometer: range−10to110°C, graduation1°C,r=0.5°C,e=0,b=0; readings20.0/20.5/20.0/19.5/20.0°C. Digital thermometer: range−20to60°C, increment0.1°C,r=0.05°C,e=−0.30°C,b=0.10°C; readings19.8/19.9/19.8/20.0/19.9°C. Assume a constant bath throughout each series and sufficient immersion time for both instruments.\n\nB1. Calculate both means and half-ranges and use scatter for qualitative uncertainty assessment. Distinguish scatter from the constant indication error; these data do not uniquely establish a physical cause.\nB2. Correct both means and report both temperatures with suitable Δ, units, and rounding. Explain whether “digital automatically means correct” is justified.\nB3. An independent reference temperature is (10.00±0.05)°C. Calculate θ=corrected digital temperature−10.00°C using unshortened intermediate values. Here use Δθ=Δ_digital+0.05°C. Show intermediate values and an appropriately rounded final report; a temperature difference may be given in K or °C.\nB4. Choose an appropriate one of these two instruments for observing liquid subsequently heated to80°C, referring to range and resolution. Again give one plausible analog and digital error source and an appropriate control. A finer display does not authorize use outside the specified range. No actual hot-liquid experiment is required.",
+        "solutionContent": "A: analoger Mittelwert100,0mm,H=0,5mm, korrigiert100,0mm,Δ=0,5mm, also (100,0±0,5)mm. Digital: Summe501,13mm, Mittel100,226mm,H=0,025mm; korrigiert100,026mm,Δ=0,025+0,03=0,055mm. Ein Abschluss ist (100,03±0,06)mm; die Rundung vonΔ nach oben ist die explizite Aufgabenregel. Analoger Bereich99,5–100,5mm, digital vor Rundung99,971–100,081mm; Überlappung zeigt Vereinbarkeit unter dieser Arbeitsregel, keine bewiesene identische wahre Länge. Die geringere Streuung und Anzeigeauflösung des Messschiebers beseitigen seinen Offset nicht. Für d:100,026/7=14,289428571…mm,Δd=0,055/7=0,007857142…mm, sinnvoll (14,289±0,008)mm. Aus dem schon gerundeten L weiterzurechnen ist als dokumentierter kleiner Rundungsfehler begrenzt zu bewerten; volles Verständnis verlangt unverkürzte Zwischenrechnung, keine 10-stellige Endgenauigkeit. Digital erfüllt die verlangten0,10mm, analog nicht; beide Bereiche umfassen100mm. Mögliche analoge Parallaxe durch senkrechten Blick kontrollieren; beim digitalen Messschieber etwa Schmutz/Anpresskraft durch Reinigung und gleichartige Anlage, Null-/Referenzprüfung prüfen. Keine Ursache allein aus den Zahlen behaupten.\n\nB: analog Mittel20,0°C,H=0,5°C,Δ=0,5°C, Ergebnis (20,0±0,5)°C. Digital Mittel19,88°C,H=0,10°C, Korrektur wegen e=−0,30°C addiert0,30°C:20,18°C. Δ=max(0,10;0,05)+0,10=0,20°C, Abschluss (20,2±0,2)°C. Für Differenz:θ=10,18°C,Δθ=0,25°C, nach vereinbarter Aufwärtsrundung (10,2±0,3)K oder °C. Eine begründete zweistellige Unsicherheit mit gleicher Ergebnis-Dezimalstelle, etwa (10,18±0,25)K, ist bei transparenter Abweichung von der vereinfachten Rundung gleichwertig. Bei80°C ist nur das analoge Gerät innerhalb seines angegebenen Bereichs; die bessere digitale Anzeigeauflösung kompensiert dessen60°C-Grenze nicht. Mögliche analoge Ablese-/Skalenprobleme durch richtigen Blick, digitales Fühlerproblem durch Referenzprüfung kontrollieren; zu kurze Wartezeit wäre generell eine mögliche Fehlerquelle, ist aber in dieser Datensituation ausdrücklich ausgeschlossen. Mehr Wiederholungen beseitigen keinen gemeinsamen Kalibrierfehler; H ist keine Standardabweichung, und die Arbeitsintervalle sind keine95%-Intervalle.",
+        "solutionContentEn": "A: analog mean100.0mm,H=0.5mm,corrected100.0mm,Δ=0.5mm, hence (100.0±0.5)mm. Digital sum501.13mm,mean100.226mm,H=0.025mm,corrected100.026mm,Δ=0.025+0.03=0.055mm. One final report is (100.03±0.06)mm; upward uncertainty rounding is an explicit task rule. Before final rounding the analog interval is99.5–100.5mm and digital interval99.971–100.081mm. Overlap indicates compatibility under the working convention, not proven identity of a true length. Finer display/scatter does not remove the offset. d=100.026/7=14.289428571…mm and Δd=0.055/7=0.007857142…mm, giving (14.289±0.008)mm. Carrying an already rounded L can be a documented isolated rounding error; full understanding requires unshortened intermediate work, not a ten-digit final accuracy claim. Digital meets0.10mm, analog does not; both ranges include100mm. Possible analog parallax can be controlled by perpendicular viewing; possible digital jaw dirt/contact-force errors by cleaning and consistent placement plus zero/reference checks. Do not infer a unique cause from these numbers.\n\nB: analog mean20.0°C,H=0.5°C,Δ=0.5°C,report (20.0±0.5)°C. Digital mean19.88°C,H=0.10°C; e=−0.30°C requires adding0.30°C,giving20.18°C. Δ=max(0.10,0.05)+0.10=0.20°C,report (20.2±0.2)°C. Difference θ=10.18°C,Δθ=0.25°C; upward rounding gives (10.2±0.3)K or °C. A justified two-digit uncertainty with matching value precision, for example (10.18±0.25)K, is equally valid when the departure from simplified rounding is transparent. At80°C only the analog instrument is within range; better digital resolution does not remove its60°C limit. Control possible analog reading/scale problems by proper viewing and a possible digital probe problem by a reference check. Insufficient settling time is a general possible source but explicitly excluded for these data. Repetition does not remove shared calibration error; H is not a standard deviation and these working intervals are not95% intervals.",
+        "scoring": {
+          "maxPoints": 16,
+          "passingPoints": 15,
+          "steps": [
+            {
+              "id": "measurement_uncertainty_two_cases_1",
+              "points": 2,
+              "description": "DE: A: beide Mittelwerte und halbe Spannweiten selbst berechnet, Streuung qualitativ bewertet und vom gemeinsamen Offset unterschieden. EN: A: calculates both means/half-ranges, interprets scatter, and distinguishes a shared offset. DE-Rasterregel: Bewertung je Zweipunkteblock:2 bei vollständig tragfähiger Evidenz;1 nur bei einem isolierten kleinen Rechen-/Schreibfehler, wenn alle genannten wesentlichen Handlungen und Deutungen vorliegen;0 sobald eine wesentliche Handlung/Deutung fehlt oder eine zentrale Fehlvorstellung vorliegt. Fehlende gesamte Fälle, fehlende reale Tabellenimplementierung oder nur Schlagwörter werden nicht durch andere Blöcke kompensiert. Fachlich gleichwertige Darstellungen, klar erklärte alternative Konventionen soweit der Auftrag sie zulässt, sinnvolle Rundungen und korrekt fortgeführte frühere Einzelrechenfehler fair bewerten. EN-Rubric rule: Per two-point block:2 for complete sound evidence;1 only for an isolated minor arithmetic/notation error when every named essential action and interpretation is present;0 when an essential action/interpretation is missing or a central misconception is present. Entire omitted cases, missing actual spreadsheet implementation, or mere keywords cannot be compensated by other blocks. Treat equivalent representations, permitted clearly explained conventions, sensible rounding, and consistent follow-through of isolated earlier arithmetic errors fairly."
+            },
+            {
+              "id": "measurement_uncertainty_two_cases_2",
+              "points": 2,
+              "description": "DE: A: beide Korrekturen und Arbeitsunsicherheiten mit Begründung, Einheit und fachgerechtem Ergebnisbericht. EN: A: both corrections and justified working uncertainties with units and proper result notation. DE-Rasterregel: Bewertung je Zweipunkteblock:2 bei vollständig tragfähiger Evidenz;1 nur bei einem isolierten kleinen Rechen-/Schreibfehler, wenn alle genannten wesentlichen Handlungen und Deutungen vorliegen;0 sobald eine wesentliche Handlung/Deutung fehlt oder eine zentrale Fehlvorstellung vorliegt. Fehlende gesamte Fälle, fehlende reale Tabellenimplementierung oder nur Schlagwörter werden nicht durch andere Blöcke kompensiert. Fachlich gleichwertige Darstellungen, klar erklärte alternative Konventionen soweit der Auftrag sie zulässt, sinnvolle Rundungen und korrekt fortgeführte frühere Einzelrechenfehler fair bewerten. EN-Rubric rule: Per two-point block:2 for complete sound evidence;1 only for an isolated minor arithmetic/notation error when every named essential action and interpretation is present;0 when an essential action/interpretation is missing or a central misconception is present. Entire omitted cases, missing actual spreadsheet implementation, or mere keywords cannot be compensated by other blocks. Treat equivalent representations, permitted clearly explained conventions, sensible rounding, and consistent follow-through of isolated earlier arithmetic errors fairly."
+            },
+            {
+              "id": "measurement_uncertainty_two_cases_3",
+              "points": 2,
+              "description": "DE: A: abgeleitete Größe aus ausreichend genauen Zwischenwerten berechnet; Unsicherheit passend fortgeführt, sinnvoll gerundet und Scheingenauigkeit erklärt. EN: A: calculates the derived quantity with sufficiently precise intermediates, carries uncertainty appropriately, rounds meaningfully, and explains false precision. DE-Rasterregel: Bewertung je Zweipunkteblock:2 bei vollständig tragfähiger Evidenz;1 nur bei einem isolierten kleinen Rechen-/Schreibfehler, wenn alle genannten wesentlichen Handlungen und Deutungen vorliegen;0 sobald eine wesentliche Handlung/Deutung fehlt oder eine zentrale Fehlvorstellung vorliegt. Fehlende gesamte Fälle, fehlende reale Tabellenimplementierung oder nur Schlagwörter werden nicht durch andere Blöcke kompensiert. Fachlich gleichwertige Darstellungen, klar erklärte alternative Konventionen soweit der Auftrag sie zulässt, sinnvolle Rundungen und korrekt fortgeführte frühere Einzelrechenfehler fair bewerten. EN-Rubric rule: Per two-point block:2 for complete sound evidence;1 only for an isolated minor arithmetic/notation error when every named essential action and interpretation is present;0 when an essential action/interpretation is missing or a central misconception is present. Entire omitted cases, missing actual spreadsheet implementation, or mere keywords cannot be compensated by other blocks. Treat equivalent representations, permitted clearly explained conventions, sensible rounding, and consistent follow-through of isolated earlier arithmetic errors fairly."
+            },
+            {
+              "id": "measurement_uncertainty_two_cases_4",
+              "points": 2,
+              "description": "DE: A: analoge/digitale Wahl anhand Einsatzbereich, Auflösung und Fehlerquellen begründet; je Methode konkrete Kontrolle, keine erfundene Datenerklärung. EN: A: compares analog/digital applicability, resolution, and error sources, giving a specific control per method without inventing a cause. DE-Rasterregel: Bewertung je Zweipunkteblock:2 bei vollständig tragfähiger Evidenz;1 nur bei einem isolierten kleinen Rechen-/Schreibfehler, wenn alle genannten wesentlichen Handlungen und Deutungen vorliegen;0 sobald eine wesentliche Handlung/Deutung fehlt oder eine zentrale Fehlvorstellung vorliegt. Fehlende gesamte Fälle, fehlende reale Tabellenimplementierung oder nur Schlagwörter werden nicht durch andere Blöcke kompensiert. Fachlich gleichwertige Darstellungen, klar erklärte alternative Konventionen soweit der Auftrag sie zulässt, sinnvolle Rundungen und korrekt fortgeführte frühere Einzelrechenfehler fair bewerten. EN-Rubric rule: Per two-point block:2 for complete sound evidence;1 only for an isolated minor arithmetic/notation error when every named essential action and interpretation is present;0 when an essential action/interpretation is missing or a central misconception is present. Entire omitted cases, missing actual spreadsheet implementation, or mere keywords cannot be compensated by other blocks. Treat equivalent representations, permitted clearly explained conventions, sensible rounding, and consistent follow-through of isolated earlier arithmetic errors fairly."
+            },
+            {
+              "id": "measurement_uncertainty_two_cases_5",
+              "points": 2,
+              "description": "DE: B: beide Mittelwerte und halbe Spannweiten selbst berechnet, Streuung qualitativ bewertet und vom gemeinsamen Offset unterschieden. EN: B: calculates both means/half-ranges, interprets scatter, and distinguishes a shared offset. DE-Rasterregel: Bewertung je Zweipunkteblock:2 bei vollständig tragfähiger Evidenz;1 nur bei einem isolierten kleinen Rechen-/Schreibfehler, wenn alle genannten wesentlichen Handlungen und Deutungen vorliegen;0 sobald eine wesentliche Handlung/Deutung fehlt oder eine zentrale Fehlvorstellung vorliegt. Fehlende gesamte Fälle, fehlende reale Tabellenimplementierung oder nur Schlagwörter werden nicht durch andere Blöcke kompensiert. Fachlich gleichwertige Darstellungen, klar erklärte alternative Konventionen soweit der Auftrag sie zulässt, sinnvolle Rundungen und korrekt fortgeführte frühere Einzelrechenfehler fair bewerten. EN-Rubric rule: Per two-point block:2 for complete sound evidence;1 only for an isolated minor arithmetic/notation error when every named essential action and interpretation is present;0 when an essential action/interpretation is missing or a central misconception is present. Entire omitted cases, missing actual spreadsheet implementation, or mere keywords cannot be compensated by other blocks. Treat equivalent representations, permitted clearly explained conventions, sensible rounding, and consistent follow-through of isolated earlier arithmetic errors fairly."
+            },
+            {
+              "id": "measurement_uncertainty_two_cases_6",
+              "points": 2,
+              "description": "DE: B: beide Korrekturen und Arbeitsunsicherheiten mit Begründung, Einheit und fachgerechtem Ergebnisbericht. EN: B: both corrections and justified working uncertainties with units and proper result notation. DE-Rasterregel: Bewertung je Zweipunkteblock:2 bei vollständig tragfähiger Evidenz;1 nur bei einem isolierten kleinen Rechen-/Schreibfehler, wenn alle genannten wesentlichen Handlungen und Deutungen vorliegen;0 sobald eine wesentliche Handlung/Deutung fehlt oder eine zentrale Fehlvorstellung vorliegt. Fehlende gesamte Fälle, fehlende reale Tabellenimplementierung oder nur Schlagwörter werden nicht durch andere Blöcke kompensiert. Fachlich gleichwertige Darstellungen, klar erklärte alternative Konventionen soweit der Auftrag sie zulässt, sinnvolle Rundungen und korrekt fortgeführte frühere Einzelrechenfehler fair bewerten. EN-Rubric rule: Per two-point block:2 for complete sound evidence;1 only for an isolated minor arithmetic/notation error when every named essential action and interpretation is present;0 when an essential action/interpretation is missing or a central misconception is present. Entire omitted cases, missing actual spreadsheet implementation, or mere keywords cannot be compensated by other blocks. Treat equivalent representations, permitted clearly explained conventions, sensible rounding, and consistent follow-through of isolated earlier arithmetic errors fairly."
+            },
+            {
+              "id": "measurement_uncertainty_two_cases_7",
+              "points": 2,
+              "description": "DE: B: abgeleitete Größe aus ausreichend genauen Zwischenwerten berechnet; Unsicherheit passend fortgeführt, sinnvoll gerundet und Scheingenauigkeit erklärt. EN: B: calculates the derived quantity with sufficiently precise intermediates, carries uncertainty appropriately, rounds meaningfully, and explains false precision. DE-Rasterregel: Bewertung je Zweipunkteblock:2 bei vollständig tragfähiger Evidenz;1 nur bei einem isolierten kleinen Rechen-/Schreibfehler, wenn alle genannten wesentlichen Handlungen und Deutungen vorliegen;0 sobald eine wesentliche Handlung/Deutung fehlt oder eine zentrale Fehlvorstellung vorliegt. Fehlende gesamte Fälle, fehlende reale Tabellenimplementierung oder nur Schlagwörter werden nicht durch andere Blöcke kompensiert. Fachlich gleichwertige Darstellungen, klar erklärte alternative Konventionen soweit der Auftrag sie zulässt, sinnvolle Rundungen und korrekt fortgeführte frühere Einzelrechenfehler fair bewerten. EN-Rubric rule: Per two-point block:2 for complete sound evidence;1 only for an isolated minor arithmetic/notation error when every named essential action and interpretation is present;0 when an essential action/interpretation is missing or a central misconception is present. Entire omitted cases, missing actual spreadsheet implementation, or mere keywords cannot be compensated by other blocks. Treat equivalent representations, permitted clearly explained conventions, sensible rounding, and consistent follow-through of isolated earlier arithmetic errors fairly."
+            },
+            {
+              "id": "measurement_uncertainty_two_cases_8",
+              "points": 2,
+              "description": "DE: B: analoge/digitale Wahl anhand Einsatzbereich, Auflösung und Fehlerquellen begründet; je Methode konkrete Kontrolle, keine erfundene Datenerklärung. EN: B: compares analog/digital applicability, resolution, and error sources, giving a specific control per method without inventing a cause. DE-Rasterregel: Bewertung je Zweipunkteblock:2 bei vollständig tragfähiger Evidenz;1 nur bei einem isolierten kleinen Rechen-/Schreibfehler, wenn alle genannten wesentlichen Handlungen und Deutungen vorliegen;0 sobald eine wesentliche Handlung/Deutung fehlt oder eine zentrale Fehlvorstellung vorliegt. Fehlende gesamte Fälle, fehlende reale Tabellenimplementierung oder nur Schlagwörter werden nicht durch andere Blöcke kompensiert. Fachlich gleichwertige Darstellungen, klar erklärte alternative Konventionen soweit der Auftrag sie zulässt, sinnvolle Rundungen und korrekt fortgeführte frühere Einzelrechenfehler fair bewerten. EN-Rubric rule: Per two-point block:2 for complete sound evidence;1 only for an isolated minor arithmetic/notation error when every named essential action and interpretation is present;0 when an essential action/interpretation is missing or a central misconception is present. Entire omitted cases, missing actual spreadsheet implementation, or mere keywords cannot be compensated by other blocks. Treat equivalent representations, permitted clearly explained conventions, sensible rounding, and consistent follow-through of isolated earlier arithmetic errors fairly."
+            }
+          ]
+        },
+        "reviewNote": "TMP author candidate. Genuine separate content review and actual native P/D release are pending. No historical task, scoring threshold, learner result or mastery contract is replaced. Inhaltsfreigabe nach tatsächlichem unabhängigem Review, Aufgaben-/Lösungs-/Rastervergleich und expliziter Vollzielprüfung; Belege: curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/stage-flow-current-assessments-v1/release/eighteen-task-content-release.actual.json. Keine menschliche Unterrichtserprobung oder automatische Ergebnisübertragung."
+      }
+    }
+  ],
+  "filePins": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+      "sha256": "1ab730054209aa710b34e852bf3eab4f84e16f348b003fcaba6e2b2988c6b2b1"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+      "sha256": "b1ea2b1b8826f1536e674a0da1ac5279d7c3bd2d57c51e127a971fa2dfff5f27"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-m7-png-retained-20260920-v1/p002.config.json",
+      "sha256": "299806a06f2e0494bef3d571bd27dd21af6f99a941c2f84b2038b04a402ef12c"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-m7-png-retained-20260920-v1/p002.review.jsonl",
+      "sha256": "e71e8542a20ea66866800cf947e29c7dce9429b22acc78a9a431d1ec7183aa22"
+    }
+  ]
+}

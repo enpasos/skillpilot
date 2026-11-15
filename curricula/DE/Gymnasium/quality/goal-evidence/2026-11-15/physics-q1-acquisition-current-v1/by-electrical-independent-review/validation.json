@@ -1,0 +1,138 @@
+{
+  "atUtc": "2026-11-15T20:48:10.579192+00:00",
+  "checks": [
+    {
+      "id": "exact-candidate-file-binding",
+      "pass": true,
+      "evidence": "Raw file SHA256"
+    },
+    {
+      "id": "exact-assigned-order",
+      "pass": true,
+      "evidence": "Candidate order and identities"
+    },
+    {
+      "id": "needs-review-preserved",
+      "pass": true,
+      "evidence": "No release mutation"
+    },
+    {
+      "id": "narrow-current-bindings",
+      "pass": true,
+      "evidence": "Only intended whole competency per task"
+    },
+    {
+      "id": "288-task-body-unchanged-except-point-labels",
+      "pass": true,
+      "evidence": "Exact DE/EN string comparison"
+    },
+    {
+      "id": "288-original-solutions-preserved-before-scoring-paragraph",
+      "pass": true,
+      "evidence": "Exact DE/EN prefix comparison"
+    },
+    {
+      "id": "288-other-goal-fields-unchanged",
+      "pass": true,
+      "evidence": "Exact structured comparison"
+    },
+    {
+      "id": "independent-calculation-288_A",
+      "pass": true,
+      "evidence": {
+        "I_2_5_A": 2.0,
+        "I_5_7_A": -2.0,
+        "I_2_7_A": 0.4,
+        "net_charge_2_7_C": 2
+      }
+    },
+    {
+      "id": "independent-calculation-288_B",
+      "pass": true,
+      "evidence": {
+        "P_pulse_A": 3.0,
+        "P_cycle_A": 1.0,
+        "R_pulse_A": 6.0,
+        "R_cycle_A": 2.0,
+        "P_complete_cycles": 5.0,
+        "P_elapsed_complete_cycle_s": 30.0,
+        "R_charge_12_s_C": 24.0
+      }
+    },
+    {
+      "id": "independent-calculation-d964_A",
+      "pass": true,
+      "evidence": {
+        "U_BA_V": -60.0,
+        "phi_B_V": -50.0,
+        "positive_deltaE_uJ": -119.99999999999999,
+        "positive_W_uJ": 119.99999999999999,
+        "negative_deltaE_uJ": 119.99999999999999,
+        "negative_W_uJ": -119.99999999999999,
+        "reverse_U_AB_V": 60.0,
+        "reverse_positive_deltaE_uJ": 119.99999999999999,
+        "reverse_positive_W_uJ": -119.99999999999999,
+        "shifted_phi_A_V": 90,
+        "shifted_phi_B_V": 30.0
+      }
+    },
+    {
+      "id": "independent-calculation-d964_B",
+      "pass": true,
+      "evidence": {
+        "straight_distance_m": 0.1,
+        "parallel_distance_m": 0.06,
+        "U_QP_V": -90.0,
+        "phi_Q_V": -90.0,
+        "negative_deltaE_uJ": 359.99999999999994,
+        "negative_W_uJ": -359.99999999999994,
+        "wrong_full_distance_voltage_magnitude_V": 150.0,
+        "perpendicular_U_V": 0,
+        "perpendicular_W_uJ": 0.0
+      }
+    },
+    {
+      "id": "rubric-step-sum-28884133-b448-5eb2-a589-8907a78d7687",
+      "pass": true,
+      "evidence": "Four4-point steps; pass14/16"
+    },
+    {
+      "id": "rubric-step-sum-d96479ce-5d3e-57e9-83f4-a8ba2e7ddaa8",
+      "pass": true,
+      "evidence": "Four4-point steps; pass14/16"
+    },
+    {
+      "id": "all-missing-core-upper-bounds-fail",
+      "pass": true,
+      "evidence": "Every capped step totals at most13<14"
+    },
+    {
+      "id": "either-independent-context-omitted-fails",
+      "pass": true,
+      "evidence": "At most8/16"
+    },
+    {
+      "id": "single-minor-error-can-pass-every-step",
+      "pass": true,
+      "evidence": "15/16, with all cores present"
+    },
+    {
+      "id": "md-task-solution-rubric-matches-json-28884133-b448-5eb2-a589-8907a78d7687",
+      "pass": true,
+      "evidence": "All four full texts and all complete bilingual step descriptions contained exactly"
+    },
+    {
+      "id": "md-task-solution-rubric-matches-json-d96479ce-5d3e-57e9-83f4-a8ba2e7ddaa8",
+      "pass": true,
+      "evidence": "All four full texts and all complete bilingual step descriptions contained exactly"
+    },
+    {
+      "id": "all-nine-sealed-inputs-unchanged",
+      "pass": true,
+      "evidence": "Before/after raw-byte hashes"
+    }
+  ],
+  "allChecksPass": true,
+  "checkCount": 19,
+  "limits": "Checks substantiate own informed content review; not curriculum projection, official-source, human, learner-result or release acceptance."
+}

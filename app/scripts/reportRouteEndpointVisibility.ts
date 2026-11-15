@@ -47,6 +47,7 @@ export function reportRouteEndpointVisibility() {
     resolve(root, 'app/scripts/config/curriculum-maturity-floor-policy.json'),
     resolve(root, 'app/scripts/generateCurriculumQualityStatus.ts'),
     resolve(root, 'app/scripts/lib/routeCatalogContext.ts'),
+    resolve(root, 'app/scripts/lib/nationalStageProjection.ts'),
     ...PHYSICS_QA_SELECTOR_INPUT_PATHS.map(path => resolve(root, path)),
     fileURLToPath(import.meta.url),
   ].sort()

@@ -1,11 +1,9 @@
 # Lerneinheiten: Cluster, `after` und Lernfluss
 
-**Stand: 15. November 2026.** Dieses Dokument legt fest, was eine Lerneinheit
-ist, wie Einheiten geordnet werden und wie diese Ordnung im Lernfluss wirkt.
-Die Festlegungen gelten mit der Übernahme des Dokuments nach `main`. Umgesetzt
-ist davon nichts; Abschnitt 10 nennt Einführung und Folgearbeiten. Bis sie erledigt sind,
-beschreiben die [Graph-Definition §11 bis §13](learning-units.de.md) und der
-Einheitenvertrag vom 12. November den umgesetzten Stand.
+**Stand: 15. November 2026 (normativ in die zweisprachigen Standard-Kompendien übernommen).** Dieses Entscheidungs- und Konzeptdokument hält fest, was eine Lerneinheit ist, wie Einheiten geordnet werden und wie diese Ordnung im Lernfluss wirkt, und dokumentiert in Abschnitt 9 und 10 die empirische Ausgangsmessung sowie die Folgearbeiten `F1` bis `F13`.
+
+> [!NOTE]
+> **Status der Spezifikationsintegration:** Die verbindlichen Modellregeln dieses Dokuments (`B1`–`B16`, `E1`–`E4`, Landesplan-Präzisierungen `M1`–`M8`, `Lernzielbaum` vs. `Lernkarte`, „Einheit für Einheit“ sowie die Schnittstelleneigenschaft zum Wissenskontext) sind vollständig in die zweisprachigen Single-Source-Kompendien integriert: **Band I** ([Graph-Definition §§6, 11–13](learning-units.de.md)), **Band Ia** ([Skill-Graph-Architektur §§1–3, 6, 8–13](general-goal-system-and-migration.de.md)), **Band II** ([Frontier-Auswahlstrategien §2](../didactic/frontier-goal-selection-strategies-autopilot.de.md)), **Band III** ([Operativer Lernablauf §2](../runtime-workflows/learning-workflow.de.md)) und das [Glossar](../glossary.de.md). Dieses Dokument bleibt als datiertes Entscheidungsprotokoll und operativer Einführungsplan (`F1`–`F13`) erhalten; die jeweiligen Kapitel weisen die Grenze zwischen Zielmodell, Kompatibilitätsvertrag 1.2 und Stufenplan-Grundlage `v1.3` direkt aus.
 
 Die [Übergabe der Stufenarbeit](../../dev/stage-plan-units-handover-2026-11-15.md)
 hält die nachfolgenden Befunde und den Lieferstand fest. Unter dem Auftrag vom

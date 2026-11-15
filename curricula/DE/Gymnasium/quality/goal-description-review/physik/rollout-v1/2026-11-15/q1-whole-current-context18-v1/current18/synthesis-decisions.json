@@ -1,0 +1,272 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physics-current18-firstpass-eight-unchanged-20261115-actual-ai-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "codex-physics-release-agent-reading-actual-independent-A-B-current-context18-20261115",
+  "synthesizedAt": "2026-11-15T20:11:45.380900+00:00",
+  "batch": {
+    "batchId": "physics-current18-firstpass-eight-unchanged-20261115",
+    "batchManifestDigest": "sha256:348d1a5859f05568a5fcfef5a0f64fb57112f0b9eef058f6026c8a2b87f6fdee",
+    "configDigest": "sha256:e79860865d3a0f05cc317684c59dbcc56f40ee46efcc1c0542ee44f4948f2b60",
+    "bundleFingerprint": "sha256:498a44c36c5cf5c61510c3035431bda2d00b782e52d2418a8bedbd3b89d8b0d1",
+    "bookDigest": "sha256:4f3574884388f69f068d4f516bbfc32a5c2fd19f4d244def23b0f81822209e5e",
+    "reviewInputFingerprint": "sha256:de64bb0e40ff268b46117e93c5a26926411aa829c167982b414bc24b63cdc94d",
+    "dualSummaryDigest": "sha256:52199852d22eeacd30e95c57b9770e1eb5ece78112a8f2c6f03ab6376b5605f6",
+    "canonicalLandscapeDigest": "sha256:6a77eb45c54b065a13b6e0e255f1b79711dd79e41a87923eaef58097d0437f52"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physics-eighteen-current840-context-20261115-first-pass-a",
+      "campaignDigest": "sha256:460100326624c0038991f2132295a6ebd9c3a9247005672290cc6c3cedb61384",
+      "roundId": "independent-a",
+      "independenceGroupId": "physics-eighteen-current840-context-20261115-independent-a",
+      "reviewInputFingerprint": "sha256:de64bb0e40ff268b46117e93c5a26926411aa829c167982b414bc24b63cdc94d",
+      "batchId": "independent-a.batch-001",
+      "batchInputFingerprint": "sha256:4bb3d2ee65ae5066ae9c7c9bc574bfc612733719aea42f755f0769b7d173a6d0",
+      "runId": "physics-current18-fresh-a-20261115",
+      "runManifestDigest": "sha256:0ad4c12baaa45eaebc73839de373608da94a0f2c987402f1fdf39786e49fa270",
+      "resultsDigest": "sha256:ef6f6bc2ecc33efd9882eb6de669b796c60219c8c51ddea13996f31652406ef2"
+    },
+    "second": {
+      "campaignId": "physics-eighteen-current840-context-20261115-first-pass-b",
+      "campaignDigest": "sha256:a0881cf9406e53ead6492963cb147d6f9bc3bab4f7cc4e3237a631049750f8bd",
+      "roundId": "independent-b",
+      "independenceGroupId": "physics-eighteen-current840-context-20261115-independent-b",
+      "reviewInputFingerprint": "sha256:de64bb0e40ff268b46117e93c5a26926411aa829c167982b414bc24b63cdc94d",
+      "batchId": "independent-b.batch-001",
+      "batchInputFingerprint": "sha256:723f278315ab89883a0af75a30fe0189cd9a51748691c63890c1b85011417f56",
+      "runId": "physics-current18-fresh-b-20261115",
+      "runManifestDigest": "sha256:4d3becb7ab49bdd8049b73e50f1ecbc624cbd565189bbac2567ed4d0261aaf8e",
+      "resultsDigest": "sha256:fbe588dd8101c2b5136d90a7fedf86eee52791034617da22c650ab58258aabfe"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physics-current18-firstpass-eight-unchanged-20261115-actual-ai-synthesis-001",
+      "goalId": "84ddb244-e560-592f-9d43-e84c801fe5b4",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:f00b7915335e0576460d0605e68682559ec94e9984897c4e21a2d4c2c3013c9c",
+      "pageFingerprint": "sha256:8b37ef3e7b3e42be8a41d30bf14fb5dcf1b533a1aeae728380a118347cb350c0",
+      "goalReviewContextFingerprint": "sha256:3b5a1b6c53ce4a0e11288c0436586361266fdaf4dcb34437a4a9a9a4d8b471b1",
+      "finalText": {
+        "titleDe": "Linsenauge mit geometrischer Optik modellieren",
+        "titleEn": "Model the Lens Eye Using Geometrical Optics",
+        "descriptionDe": "Die lernende Person kann das Linsenauge mit Strahlenkonstruktion, Linsengleichung und Simulationen modellieren, Bedingungen scharfen Sehens quantitativ deuten und Modellgrenzen benennen.",
+        "descriptionEn": "The learner can model the lens eye using ray construction, the lens equation, and simulations, quantitatively interpret the conditions for sharp vision, and identify the model's limits."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physics-current18-fresh-a-20261115.goal-001",
+          "recordDigest": "sha256:e80f3aaff52c069b3e82579bed073806bd074f57d6be6b04f1ff60583c42f0f6"
+        },
+        "second": {
+          "recordId": "physics-current18-fresh-b-20261115.goal-01",
+          "recordDigest": "sha256:46ea8551c7a983bc4ed2f41af87d1758daf428780fffd777df005977bb0aedc8"
+        }
+      },
+      "rationaleDe": "Beide tatsächlichen unabhängigen aktuellen Erstpassrecords behalten den Text und sehen keinen Profiländerungsbedarf. Linsengleichung, biologische Grenze und Simulation bilden eine aktuelle einheitliche Modellierungsleistung. Die unterschiedlichen eigenen Evidenzformulierungen wurden fachlich gelesen; keine amtliche Projektions-, Lernenden- oder menschliche Freigabe folgt daraus.",
+      "rationaleEn": "Both actual independent current first-pass records retain the text and recommend no profile change. The lens equation, biological limitation and simulation form one current modeling performance. Their differing independently written evidence formulations were read substantively; no official projection, learner-result or human approval follows."
+    },
+    {
+      "decisionId": "physics-current18-firstpass-eight-unchanged-20261115-actual-ai-synthesis-002",
+      "goalId": "41872413-497e-5b88-ac65-365ed7d9851f",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:f34ef17263d047a31d797d91bcc8e22a1ad5077e4b1cdaa83caa2d554aa24481",
+      "pageFingerprint": "sha256:7fefaf6303581b2f1cd9cedeb08f01c3939d2600d3cb538c8c035b62f6481fdf",
+      "goalReviewContextFingerprint": "sha256:3bd86806764b46c87404384ca0b0288655b34eb61c39f414ffaa04026858ba43",
+      "finalText": {
+        "titleDe": "Beugungsbegrenzte Winkelauflösung des Auges abschätzen",
+        "titleEn": "Estimate the diffraction-limited angular resolution of the eye",
+        "descriptionDe": "Die lernende Person kann die Fraunhofer-Beugung an einer Kreisblende nutzen, um aus Wellenlänge und Pupillendurchmesser die beugungsbegrenzte Winkelauflösung des Auges abzuschätzen, und diese ideale optische Grenze von biologischen Einflüssen auf die Sehschärfe unterscheiden.",
+        "descriptionEn": "The learner can use Fraunhofer diffraction at a circular aperture to estimate the diffraction-limited angular resolution of the eye from wavelength and pupil diameter and distinguish this ideal optical limit from biological influences on visual acuity."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physics-current18-fresh-a-20261115.goal-003",
+          "recordDigest": "sha256:815337bfa3cc0429da2fe23905f28af6c841e29d520590887fa0fe357c0aea12"
+        },
+        "second": {
+          "recordId": "physics-current18-fresh-b-20261115.goal-03",
+          "recordDigest": "sha256:ec752f01406fa83d1b814f135fcdff30311bdc938f776f602fdc415f6a435d41"
+        }
+      },
+      "rationaleDe": "Beide tatsächlichen unabhängigen aktuellen Erstpassrecords behalten den Text und sehen keinen Profiländerungsbedarf. Kreisblendenmodell und biologische Sehschärfe sind ausdrücklich getrennt; beide Sprachen und der begrenzte Profiltransfer stimmen damit überein. Die unterschiedlichen eigenen Evidenzformulierungen wurden fachlich gelesen; keine amtliche Projektions-, Lernenden- oder menschliche Freigabe folgt daraus.",
+      "rationaleEn": "Both actual independent current first-pass records retain the text and recommend no profile change. The circular-aperture model and biological visual acuity are explicitly distinguished; both languages and bounded profile transfer agree. Their differing independently written evidence formulations were read substantively; no official projection, learner-result or human approval follows."
+    },
+    {
+      "decisionId": "physics-current18-firstpass-eight-unchanged-20261115-actual-ai-synthesis-003",
+      "goalId": "8ac61062-f63e-5935-96ae-84014906c368",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ee73065a5750909c923ca55ed46a8091c29eca8b7a9c7a7e463d73ed29024ff6",
+      "pageFingerprint": "sha256:378b0fd1f216a4d22014819cb25859680a5997d4de41e2249a9a062441928218",
+      "goalReviewContextFingerprint": "sha256:4c1d60449701499c0654f644fe07456d8473b4f5153d2fb51af846d6d632a24c",
+      "finalText": {
+        "titleDe": "Schalldruckpegel und Hoerrisiken quantitativ beurteilen",
+        "titleEn": "Quantitatively Assess Sound Pressure Levels and Hearing Risks",
+        "descriptionDe": "Die lernende Person kann Zusammenhaenge zwischen messbaren Schallgroessen und empfundener Lautstaerke mathematisch nutzen und Gesundheitsgefaehrdungen durch hohe Schalldruckpegel begruendet beurteilen.",
+        "descriptionEn": "The learner can use mathematical relationships between measurable sound quantities and perceived loudness and make justified judgements about health risks from high sound pressure levels."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physics-current18-fresh-a-20261115.goal-005",
+          "recordDigest": "sha256:e4928dae5fa3715de6b943925d58005ae217e60f1439e6f8bb1db9614b7b1075"
+        },
+        "second": {
+          "recordId": "physics-current18-fresh-b-20261115.goal-05",
+          "recordDigest": "sha256:7f6629ff8eb80a01bb3284d765a773e781d2b0b2e37f3e13eb3c40bbd2eaa48c"
+        }
+      },
+      "rationaleDe": "Beide tatsächlichen unabhängigen aktuellen Erstpassrecords behalten den Text und sehen keinen Profiländerungsbedarf. Physikalischer Pegel, bedingte historische Lautheitsskala und Gesundheitsurteil werden mit den gelieferten Modellgrenzen getrennt. Die unterschiedlichen eigenen Evidenzformulierungen wurden fachlich gelesen; keine amtliche Projektions-, Lernenden- oder menschliche Freigabe folgt daraus.",
+      "rationaleEn": "Both actual independent current first-pass records retain the text and recommend no profile change. Physical level, the conditional historical loudness scale and health judgement are distinguished with the supplied model limits. Their differing independently written evidence formulations were read substantively; no official projection, learner-result or human approval follows."
+    },
+    {
+      "decisionId": "physics-current18-firstpass-eight-unchanged-20261115-actual-ai-synthesis-004",
+      "goalId": "e19fccd7-6a35-5c9e-86e1-dcca76481e9c",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:1d2c3a50258baaa8083a37088df83e35bbf2c2676c76eae5f4bc3a1431ed4267",
+      "pageFingerprint": "sha256:4d484e41563f65afb1e8d76ac3ae9f1dcf50b8df24667874f0cc091bc465ef9a",
+      "goalReviewContextFingerprint": "sha256:6b0a0d8b79593c896e45b14a810ee88a42ee2a86ab12a5c8b32b72040475dbdf",
+      "finalText": {
+        "titleDe": "Elektrische Dipolfelder mit dem EKG verknüpfen",
+        "titleEn": "Relate electric dipole fields to ECG signals",
+        "descriptionDe": "Die lernende Person kann elektrische Potenziale und Äquipotentiallinien eines Dipolfeldes experimentell oder in einer Simulation untersuchen und erklären, wie ein zeitlich veränderliches Dipolmodell des Herzens mit den zwischen Oberflächenelektroden gemessenen EKG-Potenzialdifferenzen zusammenhängt und wo die Grenzen dieser Näherung liegen.",
+        "descriptionEn": "The learner can investigate electric potentials and equipotential lines of a dipole field experimentally or in a simulation and explain how a time-varying dipole model of the heart relates to ECG potential differences measured between surface electrodes and where this approximation is limited."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physics-current18-fresh-a-20261115.goal-006",
+          "recordDigest": "sha256:a0512f6757106751eaf6d89e96ce87863ddb2bf4279fcdd2f6fad5f06272270f"
+        },
+        "second": {
+          "recordId": "physics-current18-fresh-b-20261115.goal-06",
+          "recordDigest": "sha256:93f5f1acee239a904e1259fc4bd53b641cb7459c8fd87f9b3bf282c1a1310f9b"
+        }
+      },
+      "rationaleDe": "Beide tatsächlichen unabhängigen aktuellen Erstpassrecords behalten den Text und sehen keinen Profiländerungsbedarf. Potenzialverteilung, Elektrodengeometrie und EKG-Deutung bleiben eine sichere begrenzte Modellanwendung mit Mess-/Modelltrennung. Die unterschiedlichen eigenen Evidenzformulierungen wurden fachlich gelesen; keine amtliche Projektions-, Lernenden- oder menschliche Freigabe folgt daraus.",
+      "rationaleEn": "Both actual independent current first-pass records retain the text and recommend no profile change. Potential distribution, electrode geometry and ECG interpretation remain a safe bounded model application distinguishing measurement and model. Their differing independently written evidence formulations were read substantively; no official projection, learner-result or human approval follows."
+    },
+    {
+      "decisionId": "physics-current18-firstpass-eight-unchanged-20261115-actual-ai-synthesis-005",
+      "goalId": "d1306bda-35ff-53e9-9458-3cbc128874d8",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:94a9992901d1558f7945f929598ad8abfc1a0591d90ee8d8592418ea01c55061",
+      "pageFingerprint": "sha256:242fcf2a9681e1b8e80ec4e27aed62c00a3aa139eee2ec6641adaa039ad180da",
+      "goalReviewContextFingerprint": "sha256:12c557abf8bdd9766d57467c6d59c5fde8f1c8238aa701623adba5fcbd832dcc",
+      "finalText": {
+        "titleDe": "Zyklotron und Strahlentherapie fachlich bewerten",
+        "titleEn": "Evaluate cyclotron applications in radiotherapy",
+        "descriptionDe": "Die lernende Person kann das Funktionsprinzip des Zyklotrons auf Strahlentherapien beziehen und Nutzen sowie Risiken medizinischer Anwendungen mit physikalischen Kriterien bewerten.",
+        "descriptionEn": "The learner can relate the operating principle of the cyclotron to radiotherapy and evaluate the benefits and risks of medical applications using physical criteria."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physics-current18-fresh-a-20261115.goal-007",
+          "recordDigest": "sha256:594652414e6a945fbd270a736491d7012884f8f63e0a92fc883372087cc41692"
+        },
+        "second": {
+          "recordId": "physics-current18-fresh-b-20261115.goal-07",
+          "recordDigest": "sha256:2ff115cc5ee77e0450e0978f3a59ab301ee60d919ca4f678d0b542e84b33a1cf"
+        }
+      },
+      "rationaleDe": "Beide tatsächlichen unabhängigen aktuellen Erstpassrecords behalten den Text und sehen keinen Profiländerungsbedarf. Elektrischer Energiegewinn und magnetische Ablenkung unterstützen ein physikalisch begründetes Nutzen-Risiko-Urteil; die neue Prinzipillustration ist aktuell gebunden. Die unterschiedlichen eigenen Evidenzformulierungen wurden fachlich gelesen; keine amtliche Projektions-, Lernenden- oder menschliche Freigabe folgt daraus.",
+      "rationaleEn": "Both actual independent current first-pass records retain the text and recommend no profile change. Electrical energy gain and magnetic deflection support a physically justified benefit-risk judgement; the current principle illustration is bound. Their differing independently written evidence formulations were read substantively; no official projection, learner-result or human approval follows."
+    },
+    {
+      "decisionId": "physics-current18-firstpass-eight-unchanged-20261115-actual-ai-synthesis-006",
+      "goalId": "2825b528-00ee-52d0-870e-686890cb1195",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:2ef62e5f9cc8d69cf635e385746768f1935de1d4259f2724ba4cb1c53864d0f8",
+      "pageFingerprint": "sha256:b3e8f75df66d6cd9bdc8dc59bd9a7e51016f4e4f856029a2e4e09dda4b9cf6f4",
+      "goalReviewContextFingerprint": "sha256:46f31b29af19b10da5ae5fa11f9c6c41ccb862a816cc4b5f204859861ded7321",
+      "finalText": {
+        "titleDe": "Nervenleitungs-Messverfahren physikalisch beurteilen",
+        "titleEn": "Evaluate nerve-conduction measurement methods physically",
+        "descriptionDe": "Die lernende Person kann die Eignung eines vorgegebenen Verfahrens zur Messung der Signalleitungsgeschwindigkeit in Nervenzellen begründen, indem sie die für dieses Verfahren relevanten elektrischen oder magnetischen Felder abschätzt und gegebenenfalls auftretende Induktionsspannungen aus der zeitlichen Änderung des magnetischen Flusses erklärt.",
+        "descriptionEn": "The learner can justify the suitability of a supplied method for measuring signal-conduction speed in nerve cells by estimating the electric or magnetic fields relevant to that method and explaining any induced voltages that arise in terms of the time variation of magnetic flux."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physics-current18-fresh-a-20261115.goal-009",
+          "recordDigest": "sha256:3540841a24299015ccee0a16e8a347213a61f6a5e6132ffa1f932cfa0a262cc5"
+        },
+        "second": {
+          "recordId": "physics-current18-fresh-b-20261115.goal-09",
+          "recordDigest": "sha256:014d2fb5d9510489c49ceb1d1e4f2cbc4e6d717a98bb1b11b67a53dcf2a3af74"
+        }
+      },
+      "rationaleDe": "Beide tatsächlichen unabhängigen aktuellen Erstpassrecords behalten den Text und sehen keinen Profiländerungsbedarf. Feldabschätzung und die gegebenenfalls verwendete Induktion begründen dasselbe begrenzte Verfahrensurteil; keine reale Personenmessung wird behauptet. Die unterschiedlichen eigenen Evidenzformulierungen wurden fachlich gelesen; keine amtliche Projektions-, Lernenden- oder menschliche Freigabe folgt daraus.",
+      "rationaleEn": "Both actual independent current first-pass records retain the text and recommend no profile change. Field estimation and conditional induction support the same bounded method judgement; no actual measurement on a person is claimed. Their differing independently written evidence formulations were read substantively; no official projection, learner-result or human approval follows."
+    },
+    {
+      "decisionId": "physics-current18-firstpass-eight-unchanged-20261115-actual-ai-synthesis-007",
+      "goalId": "a24c41ce-68c5-56a7-8235-ef9a7dba7042",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ca5556ab525182e51f63733ce388be42e7fe7b956026108b73584659752e345f",
+      "pageFingerprint": "sha256:7906331a2b8b2626f420cb870454b3d3819ca5b86726cf32983b0883d0621dde",
+      "goalReviewContextFingerprint": "sha256:906523a7aabf528eb846d7ce2d69a61943a4b138579847616b692b7c7562ca61",
+      "finalText": {
+        "titleDe": "Schallgeschwindigkeiten in verschiedenen Medien vergleichen und begründen",
+        "titleEn": "Compare and explain sound speeds in different media",
+        "descriptionDe": "Die lernende Person kann Schallgeschwindigkeiten in verschiedenen Medien anhand von Daten vergleichen, Unterschiede mit elastischer Kopplung und Trägheit im Teilchenmodell begründen und eine vorschnelle Rangfolge allein nach Aggregatzuständen prüfen.",
+        "descriptionEn": "The learner can compare sound speeds in different media using data, explain differences in terms of elastic coupling and inertia in the particle model, and check an oversimplified ranking based only on states of matter."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physics-current18-fresh-a-20261115.goal-011",
+          "recordDigest": "sha256:ad033c34deb645cad883b6be5d0dff4d477f62674c25dd520e28eabecae1b026"
+        },
+        "second": {
+          "recordId": "physics-current18-fresh-b-20261115.goal-11",
+          "recordDigest": "sha256:c5e4593093ef82c1f77ad1ba153b4133dab649db5cae035dfb5a61d6091c4c1c"
+        }
+      },
+      "rationaleDe": "Beide tatsächlichen unabhängigen aktuellen Erstpassrecords behalten den Text und sehen keinen Profiländerungsbedarf. Die Medienvergleiche werden über elastische Kopplung und Trägheit erklärt, nicht aus dem Aggregatzustand allein abgelesen. Die unterschiedlichen eigenen Evidenzformulierungen wurden fachlich gelesen; keine amtliche Projektions-, Lernenden- oder menschliche Freigabe folgt daraus.",
+      "rationaleEn": "Both actual independent current first-pass records retain the text and recommend no profile change. Media comparisons are explained through elastic coupling and inertia rather than inferred from state of matter alone. Their differing independently written evidence formulations were read substantively; no official projection, learner-result or human approval follows."
+    },
+    {
+      "decisionId": "physics-current18-firstpass-eight-unchanged-20261115-actual-ai-synthesis-008",
+      "goalId": "1ab5f599-0927-579d-94cc-feecdf3b5603",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:e00476ca657205960cd403afca1eb41dbf6a29c2dfaa734906409094d61577ff",
+      "pageFingerprint": "sha256:8355d3bb65001f5e245de65ad2493eb2ccc9cf12ffca17e2a2b9aecb232f3d68",
+      "goalReviewContextFingerprint": "sha256:2f3a393d59bc597c0d0d75d70bd9194bd52ac1255dad756677891e1e32777c1d",
+      "finalText": {
+        "titleDe": "Bildentstehung bei der Lochkamera qualitativ beschreiben",
+        "titleEn": "Describe image formation in a pinhole camera qualitatively",
+        "descriptionDe": "Die lernende Person kann mit dem Strahlenmodell erklären, wie Licht von verschiedenen Gegenstandspunkten geradlinig durch die kleine Öffnung zu entsprechenden Bildpunkten auf dem Schirm gelangt und warum dabei ein umgekehrtes Bild entsteht.",
+        "descriptionEn": "The learner can use the ray model to explain how light from different object points travels in straight lines through the small aperture to corresponding image points on the screen and why this produces an inverted image."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physics-current18-fresh-a-20261115.goal-018",
+          "recordDigest": "sha256:c26f1148cc57a120e09176492c7556daa0bf8786c0ac50c4f8295db60d008a3d"
+        },
+        "second": {
+          "recordId": "physics-current18-fresh-b-20261115.goal-18",
+          "recordDigest": "sha256:37504a4fd61d9508675223f48db92e8924362d736e35626f39535698c5bedddd"
+        }
+      },
+      "rationaleDe": "Beide tatsächlichen unabhängigen aktuellen Erstpassrecords behalten den Text und sehen keinen Profiländerungsbedarf. Geradlinige Ausbreitung und Bildumkehr werden am geometrischen Modell verbunden; die qualitative Sek-I-Kompetenz verlangt keinen unnötigen Formalismus. Die unterschiedlichen eigenen Evidenzformulierungen wurden fachlich gelesen; keine amtliche Projektions-, Lernenden- oder menschliche Freigabe folgt daraus.",
+      "rationaleEn": "Both actual independent current first-pass records retain the text and recommend no profile change. Straight-line propagation and image inversion are connected within the geometrical model; the qualitative lower-secondary skill needs no unnecessary formalism. Their differing independently written evidence formulations were read substantively; no official projection, learner-result or human approval follows."
+    }
+  ],
+  "manifestFingerprint": "sha256:1e241c401cb082926e17e4c76f3d5966cd99aae58410de217c602db6c9bfb397"
+}

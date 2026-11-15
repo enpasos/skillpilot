@@ -121,7 +121,7 @@ An opt-in mode that automatically activates the first entry of the strategy-orde
 
 *DE: Auswahlpriorisierung* — see [Frontier Goal Selection Strategies & Autopilot](repo:docs/concept/didactic/frontier-goal-selection-strategies-autopilot.md)
 
-How frontier goals are ordered: `Random` for variety across topic areas, `Sequential` for linear progression along the curriculum structure. Stored per learner alongside autopilot and `strictMode`.
+How frontier goals are ordered: `Random` for variety across topic areas, `Sequential` for linear progression along the tree structure, and the target default `Unit by unit` (*Einheit für Einheit*, recursive descent through started and `after`-ordered up-next units without locking the frontier; runtime implementation `F13` pending). The existing strategies are stored per learner alongside autopilot and `strictMode`; this does not claim a persisted F13 selection profile yet.
 
 ---
 

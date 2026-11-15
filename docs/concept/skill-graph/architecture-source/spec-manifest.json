@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "documentId": "skillpilot-skill-graph-architecture",
-  "documentDate": "2026-11-11",
-  "sourceDateEpoch": "1794355200",
+  "documentDate": "2026-11-15",
+  "sourceDateEpoch": "1794700800",
   "languages": ["de", "en"],
   "useMarkdownH4": true,
   "appendixChapters": [],
@@ -29,23 +29,23 @@
       "babel": "english,ngerman",
       "kicker": "SkillPilot Architekturhandbuch · Band Ia",
       "title": "Skill-Graph-Architektur,\nMedien, Lernzielbuch\nund Paketaustausch",
-      "subtitle": "Schichtenmodell, Zieltypen, Sichtenprojektion, Quellen- und Contentanbindung,\nVisualisierungen, Lernzielbuch-Pipeline, Gymnasium-Rollout und Dual-Release-Pakete",
+      "subtitle": "Schichtenmodell, Zieltypen, Sichtenprojektion, Lerneinheiten, Wissenskontext,\nQuellen- und Contentanbindung, Lernzielbuch, Gymnasium-Rollout und Dual-Release-Pakete",
       "pdfTitle": "SkillPilot — Skill-Graph-Architektur, Medien, Lernzielbuch und Paketaustausch (DE)",
-      "pdfSubject": "Schichtenmodell, Zieltypen, Sichtenprojektion, Contentanbindung, Visualisierungen, Lernzielbuch und Dual-Release-Pakete",
-      "pdfKeywords": "SkillPilot, Skill-Graph, Zieltypen, Composition View, Contentanbindung, Lernzielbuch, MEM, FWU, Dual-Release",
+      "pdfSubject": "Schichtenmodell, Zieltypen, Sichtenprojektion, Lerneinheiten, Wissenskontext, Contentanbindung, Lernzielbuch und Dual-Release-Pakete",
+      "pdfKeywords": "SkillPilot, Skill-Graph, Lerneinheit, Planeinheit, Lernkarte, Wissenskontext, Zieltypen, Composition View, Lernzielbuch, MEM, FWU, Dual-Release",
       "runningHeadLeft": "SkillPilot · Skill-Graph-Architektur & Austausch",
       "tocHeader": "Inhaltsverzeichnis",
       "abstractBox": {
         "title": "Geltungsbereich dieses Bandes",
-        "body": "Ergänzend zur formalen Graph-Definition (Band I) bündelt Band Ia die weiterführenden Architektur-, Medien-, Publikations- und Austauschverträge rund um den Skill-Graphen: das allgemeine Zielsystem und seine schrittweise Migration, die pädagogischen Knotentypen, die deterministische Sichtenprojektion und Goal-Placement-Semantik, Quellen- und Contentlink-Trennung (Issue #50), nachvollziehbare Quellenbegründungen, atomare Zielvisualisierungen, die Lernzielbuch- und Evidenz-Review-Pipeline, die kanonische Gymnasium-Rollout-Politik sowie den MEM/FWU-Ontologie-Roundtrip und duale Curriculum-Paket-Releases."
+        "body": "Ergänzend zur formalen Graph-Definition (Band I) bündelt Band Ia die weiterführenden Architektur-, Medien-, Publikations- und Austauschverträge rund um den Skill-Graphen: das allgemeine Zielsystem, pädagogische Knotentypen, deterministische Sichtenprojektion samt Landesplänen, Lernzielbaum und Lernkarte, Quellen- und Contentlink-Trennung (Issue #50), nachvollziehbare Quellenbegründungen, atomare Zielvisualisierungen, die Lernzielbuch- und Evidenz-Review-Pipeline, die kanonische Gymnasium-Rollout-Politik, den MEM/FWU-Ontologie-Roundtrip und duale Curriculum-Pakete sowie Entwurfskriterien für Lerneinheiten und den deterministischen Wissenskontext."
       },
       "partHeaders": {
         "01-general-goal-system": "Zielsystem, Knotentypen & Projektion",
         "04-source-and-resource-links": "Quellen, Content, Bilder & Lernzielbuch",
-        "09-canonical-gymnasium-rollout": "Kanonischer Rollout & Dual-Release-Pakete"
+        "09-canonical-gymnasium-rollout": "Rollout, Pakete, Einheitsentwurf & Wissenskontext"
       },
       "copyrightFooter": [
-        "Stand: 11. November 2026 · Lizenz: Apache-2.0 (technische Architektur- und Spezifikationsdokumentation; siehe LICENSING.md).",
+        "Stand: 15. November 2026 · Lizenz: Apache-2.0 (technische Architektur- und Spezifikationsdokumentation; siehe LICENSING.md).",
         "Eigene Skill-Landschaften und didaktische Medien stehen separat unter CC-BY-4.0; externe Inhalte behalten ihre Originallizenzen."
       ]
     },
@@ -56,23 +56,23 @@
       "babel": "ngerman,english",
       "kicker": "SkillPilot Architecture Handbook · Volume Ia",
       "title": "Skill Graph Architecture,\nMedia, Goal Book,\nand Package Interchange",
-      "subtitle": "Layered Goal System, Node Types, View Projection, Source and Content Integration,\nVisualizations, Learning-Goal Book Pipeline, Gymnasium Rollout, and Dual Package Releases",
+      "subtitle": "Layered Goal System, Node Types, View Projection, Learning Units, Knowledge Context,\nSource and Content Integration, Goal Book, Gymnasium Rollout, and Dual Package Releases",
       "pdfTitle": "SkillPilot — Skill Graph Architecture, Media, Goal Book, and Package Interchange (EN)",
-      "pdfSubject": "Layered goal system, node types, view projection, content integration, visualizations, learning-goal book, and dual package releases",
-      "pdfKeywords": "SkillPilot, skill graph, node types, composition view, content integration, learning-goal book, MEM, FWU, dual release",
+      "pdfSubject": "Layered goal system, node types, view projection, learning units, knowledge context, content integration, learning-goal book, and dual package releases",
+      "pdfKeywords": "SkillPilot, skill graph, learning unit, plan unit, learner map, knowledge context, node types, composition view, learning-goal book, MEM, FWU, dual release",
       "runningHeadLeft": "SkillPilot · Skill Graph Architecture & Interchange",
       "tocHeader": "Contents",
       "abstractBox": {
         "title": "Scope of this volume",
-        "body": "Complementing the formal Graph Definition (Volume I), Volume Ia consolidates the architectural, media, publication, and interchange contracts surrounding the skill graph: the layered general goal system and incremental migration, pedagogical node types, deterministic view projection and goal-placement semantics, source vs. external content-package separation (Issue #50), human-readable source rationales, atomic goal visualizations, the learning-goal book and multi-AI evidence-review pipeline, the canonical German Gymnasium rollout policy, and MEM/FWU ontology roundtrips plus dual curriculum package releases."
+        "body": "Complementing the formal Graph Definition (Volume I), Volume Ia consolidates the architectural, media, publication, and interchange contracts surrounding the skill graph: the layered general goal system, pedagogical node types, deterministic view projection including shared Land plans, goal tree, and learner map, source vs. external content-package separation (Issue #50), human-readable source rationales, atomic goal visualizations, the learning-goal book and multi-AI evidence-review pipeline, the canonical German Gymnasium rollout policy, MEM/FWU ontology roundtrips and dual curriculum packages, plus learning-unit design criteria and the deterministic knowledge context."
       },
       "partHeaders": {
         "01-general-goal-system": "Goal System, Node Types & Projection",
         "04-source-and-resource-links": "Sources, Content, Media & Goal Book",
-        "09-canonical-gymnasium-rollout": "Canonical Rollout & Dual Package Releases"
+        "09-canonical-gymnasium-rollout": "Rollout, Packages, Unit Design & Knowledge Context"
       },
       "copyrightFooter": [
-        "As of 11 November 2026 · License: Apache-2.0 (technical architecture and specification documentation; see LICENSING.md).",
+        "As of 15 November 2026 · License: Apache-2.0 (technical architecture and specification documentation; see LICENSING.md).",
         "First-party skill landscapes and didactic media are licensed separately under CC-BY-4.0; external resources retain their upstream licenses."
       ]
     }

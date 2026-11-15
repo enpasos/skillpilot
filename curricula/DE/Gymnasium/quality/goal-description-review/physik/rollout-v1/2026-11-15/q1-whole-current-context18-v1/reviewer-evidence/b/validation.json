@@ -1,0 +1,48 @@
+{
+  "validatedAt": "2026-11-15T19:52:53.002889+00:00",
+  "validator": "Python jsonschema Draft202012Validator against exact supplied bound record schema",
+  "schemaPackageVersion": "4.26.0",
+  "passed": true,
+  "recordCount": 18,
+  "checks": {
+    "schema_valid_18_records": true,
+    "assigned_order": true,
+    "one_per_goal": true,
+    "candidate_authority_only": true,
+    "run_id_is_locally_assigned": true,
+    "unique_record_ids": true,
+    "exact_current_bilingual_titles_and_descriptions": true,
+    "exact_goal_and_page_fingerprints": true,
+    "exact_campaign_and_round": true,
+    "exact_bundle_binding": true,
+    "exact_book_binding": true,
+    "review_input_binding": true,
+    "supplied_batch_raw_digest": true,
+    "bound_schema_raw_digest": true,
+    "bound_prompt_raw_digest": true,
+    "bound_criteria_raw_digest": true,
+    "batch_equals_supplied_description_input_goals": true,
+    "native_page_and_profile_context_exact": true,
+    "book_model_page_context_exact": true,
+    "manifest_goal_bindings": true,
+    "replacements_only_for_revise": true,
+    "v2_profile_contract": true,
+    "all_six_evidence_fields_present": true,
+    "rendered_20_physical_pages": true,
+    "all_48_allowed_inputs_unchanged": true,
+    "input_seal_raw_sha256": true,
+    "no_prohibited_round_a_pin": true
+  },
+  "schemaErrors": [],
+  "bindingErrors": [],
+  "decisions": {
+    "keep": 14,
+    "revise": 4
+  },
+  "profileRecommendations": {
+    "none": 13,
+    "revise": 5
+  },
+  "fingerprintPolicy": "Existing supplied fingerprint strings copied exactly; no fingerprint write or content rebind. Raw hashes independently verified only where the campaign explicitly supplies raw digest bindings.",
+  "visualInspection": "Actual view_image observations are recorded in review-explanation.md and receipt.json; file existence is not a visibility test."
+}

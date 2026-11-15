@@ -275,6 +275,7 @@ export function normalizeLearnerVisibleChildrenMap(
     })
   })
 
+  const rootIdSet = new Set(rootIds)
   const preferredParentIdByChild = new Map<string, string>()
 
   visibleParentIdsByChild.forEach((parentIds, childId) => {
@@ -283,6 +284,12 @@ export function normalizeLearnerVisibleChildrenMap(
       const childScopeToken = extractScopeToken(childGoal)
       const leftGoal = allGoals.get(leftParentId)
       const rightGoal = allGoals.get(rightParentId)
+
+      // Canonical context can retain parents outside the displayed tree. Such
+      // a parent must not take a goal away from its reachable authored place.
+      const leftReachable = rootBranchInfoByGoalId.has(leftParentId) || rootIdSet.has(leftParentId)
+      const rightReachable = rootBranchInfoByGoalId.has(rightParentId) || rootIdSet.has(rightParentId)
+      if (leftReachable !== rightReachable) return leftReachable ? -1 : 1
 
       const leftIsCompositionStructure = leftGoal ? isCompositionStructureNode(leftGoal) : false
       const rightIsCompositionStructure = rightGoal ? isCompositionStructureNode(rightGoal) : false
@@ -330,7 +337,6 @@ export function normalizeLearnerVisibleChildrenMap(
   })
 
   const keepNodeCache = new Map<string, boolean>()
-  const rootIdSet = new Set(rootIds)
 
   const keepNode = (goalId: string, path: Set<string> = new Set()): boolean => {
     const cached = keepNodeCache.get(goalId)

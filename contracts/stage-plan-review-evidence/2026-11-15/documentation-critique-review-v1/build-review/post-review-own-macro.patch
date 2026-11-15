@@ -1,0 +1,22 @@
+--- reviewed/docs/concept/skill-graph/architecture-source/chapters/12-learning-unit-design-and-examples.de.md
++++ build-correction/docs/concept/skill-graph/architecture-source/chapters/12-learning-unit-design-and-examples.de.md
+@@ -177,7 +177,7 @@
+ Jede Einheit -- ob prüfungsfreie Planeinheit, übergeordnete Facheinheit oder Blatteinheit mit Prüfungen -- muss zuerst die vier **Ordnungsregeln E1–E4** ([Einheitsfolge](repo:docs/concept/skill-graph/learning-unit-progression.md)) erfüllen:
+ 
+ - **E1 (Teilbaum- und Projektionsform):** Eine fachliche Einheit ist ein erklärter kanonischer Cluster (eigene Ziele und Kindeinheiten leiten sich aus `contains` ab), eine Planeinheit ein projizierter Plancontainer; Blatteinheiten liegen in allen 16 Bundesländern ungeteilt in einer Planeinheit.
+-- **E2 (Zusammenhängende Blockordnung):** Es gibt eine Reihenfolge aller Atome, die atomaren Bedarf und `after` einhält und jede Einheit als zusammenhängenden Block enthält. Dazu muss der Kindblockgraph aus kreuzendem Bedarf und `after` an jeder Einheit einschließlich der gedachten Wurzel azyklisch sein. Pfadkonvexität allein genügt nicht: Bei $\Own(U)=\{a,c\}$, $\Own(V)=\{b,d\}$, $a\to b$ und $d\to c$ ist der atomare Graph azyklisch und beide Mengen sind pfadkonvex, aber die Blöcke benötigen einander.
++- **E2 (Zusammenhängende Blockordnung):** Es gibt eine Reihenfolge aller Atome, die atomaren Bedarf und `after` einhält und jede Einheit als zusammenhängenden Block enthält. Dazu muss der Kindblockgraph aus kreuzendem Bedarf und `after` an jeder Einheit einschließlich der gedachten Wurzel azyklisch sein. Pfadkonvexität allein genügt nicht: Bei $\operatorname{Own}(U)=\{a,c\}$, $\operatorname{Own}(V)=\{b,d\}$, $a\to b$ und $d\to c$ ist der atomare Graph azyklisch und beide Mengen sind pfadkonvex, aber die Blöcke benötigen einander.
+ - **E3 (Geschwisterlokale Vollständigkeit von `after`):** Benötigt ein Atom unter Geschwistereinheit $B$ ein Atom unter Geschwistereinheit $A$ derselben Elterneinheit, so folgt $B$ in der erklärten `after`-Ordnung auf $A$ (keine Rückflüsse gegen die Einheitsfolge; auf Prüfungen selbst zeigt keine `requires`-Kante).
+ - **E4 (Redundanzfreiheit):** Keine erklärte `after`-Beziehung wiederholt, was bereits über andere Geschwister in `after` folgt.
+ 
+--- reviewed/docs/concept/skill-graph/architecture-source/chapters/12-learning-unit-design-and-examples.en.md
++++ build-correction/docs/concept/skill-graph/architecture-source/chapters/12-learning-unit-design-and-examples.en.md
+@@ -177,7 +177,7 @@
+ Every unit — whether an assessment-free plan unit, a parent subject unit, or a leaf unit with assessments — must first satisfy the four **ordering rules E1–E4** ([Unit Progression](repo:docs/concept/skill-graph/learning-unit-progression.md)):
+ 
+ - **E1 (Subtree and projection shape):** A subject unit is a declared canonical cluster (own goals and child units derive from `contains`), and a plan unit is a projected plan container; leaf subject units stay whole inside a single plan unit across all 16 Bundesländer.
+-- **E2 (Contiguous block order):** There exists an order of all atoms that respects atomic demand and `after` while keeping every unit contiguous. Thus the child-block graph formed by crossing demand and `after` must be acyclic at every unit, including the virtual root. Path convexity alone does not suffice: for $\Own(U)=\{a,c\}$, $\Own(V)=\{b,d\}$, $a\to b$, and $d\to c$, the atomic graph is acyclic and both sets are path-convex, yet the blocks require each other.
++- **E2 (Contiguous block order):** There exists an order of all atoms that respects atomic demand and `after` while keeping every unit contiguous. Thus the child-block graph formed by crossing demand and `after` must be acyclic at every unit, including the virtual root. Path convexity alone does not suffice: for $\operatorname{Own}(U)=\{a,c\}$, $\operatorname{Own}(V)=\{b,d\}$, $a\to b$, and $d\to c$, the atomic graph is acyclic and both sets are path-convex, yet the blocks require each other.
+ - **E3 (Sibling-local completeness of `after`):** Whenever an atom beneath sibling unit $B$ requires an atom beneath sibling unit $A$ of the same parent unit, $B$ follows $A$ in the declared `after` order (zero backflows against unit order; no `requires` edge points to an assessment goal).
+ - **E4 (Irredundancy):** No declared `after` link repeats what already follows transitively across other siblings in `after`.
+ 

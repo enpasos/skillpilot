@@ -1,0 +1,31 @@
+{
+  "source": "app/scripts/generateCurriculumQualityStatus.ts",
+  "sourceSha256": "d1f97f6aebbf5b361c24da37058992bd86213a98c7aa36a482d71856b936a79d",
+  "probe": "tmp/physics-release840-20261115/native-current-physics-cqr-probe.mts",
+  "probeSha256": "a27afdcba99820dd1d6491b379b78cafa919314709154f88a93bbe64c32a6e5a",
+  "changes": [
+    {
+      "before": "const scriptDir = dirname(fileURLToPath(import.meta.url))",
+      "after": "const scriptDir = \"/home/enpasos/projects/skillpilot/app/scripts\""
+    },
+    {
+      "before": "const statusDir = resolve(repoRoot, 'docs/qa-ci/status')",
+      "after": "const statusDir = resolve(repoRoot, 'tmp/physics-release840-20261115/cqr-current-physics')"
+    },
+    {
+      "before": "await generateDeepUnderstandingRollout(undefined, prerequisiteReductionContext)",
+      "after": "await generateDeepUnderstandingRollout('tmp/physics-release840-20261115/physics-deep-final-current.config.json', prerequisiteReductionContext)"
+    },
+    {
+      "before": "const curricula = loadedLandscapes\n    .map",
+      "after": "const curricula = loadedLandscapes\n    .filter(({ landscape }) => landscape.landscapeId === CANONICAL_GYM_PHYSICS_LANDSCAPE_ID)\n    .map"
+    },
+    {
+      "before": "await withVerificationInputSnapshot(generateStatus)",
+      "after": "await runPhysicsProbe()"
+    }
+  ],
+  "additionalInstrumentation": "Absolute imports, unchanged original repo root, exact active Physics config equality, before/after21catalog+Physicsviews+config input pins, no production writes.",
+  "ruleBodiesChanged": false,
+  "all21CanonicalGraphChecksRetained": true
+}

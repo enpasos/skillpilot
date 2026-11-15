@@ -23,19 +23,49 @@ CI-Nachweis gilt weiterhin für den benannten Implementierungscommit.
 
 ## Gesamtstand
 
-**Stand: 15. November 2026, 18:55 MEZ (UTC+01:00).**
+**Stand: 15. November 2026, 22:40 MEZ (UTC+01:00).**
 
 **Fortschritt: K 0/13 und F 0/7 vollständig abgeschlossen · 0 reale Landespläne
-aktiviert · Kanonische oberste Lernkarte lokal: 41 → 0 direkte und 512 → 0
-transitive Rückgriffsbeziehungen für GK+LK; 2 → 0 äußere Fachziele.**
-Auch die getrennten GK- und LK-Varianten sind in dieser tatsächlichen
-Projektionskette rückgriffsfrei. Skalar- und Vektorprodukt bleiben erhalten und
-liegen innerhalb der Sek II. Der Befund gilt für die gemeinsame bundesweite
-Physik-/Mathematik-Lernbasis und ihre Fachfilter, noch nicht für Landespläne
-oder innere Jahrgänge und Phasen. Die Umsetzung ist noch nicht auf main.
-Die getrennte Kursmessung für #157 (Bayern 9 → 10, bundesweit 39 → 43) und
-frühere Zwischenstände bleiben als anders abgegrenzte historische Messungen
-bestehen; Beziehungen und sichtbare Pfeile werden nicht gleichgesetzt.
+aktiviert · kanonische oberste Lernkarte lokal: 0 Rückpfeile und 0 außenstehende
+Atome in GK, LK und GK+LK.**
+Die erneute 72-Kontext-Messung verwendet tatsächliche Backend-Exporte und die
+Wurzel-, Filter- und Projektionsfunktionen der Oberfläche. Alle 16 Länder sind
+enthalten; zwölf widersprüchliche Dauerkontexte bleiben getrennt von den
+60 zulässigen Kontexten. Davon haben weiterhin 39 regionale oberste Rückgriffe
+und 35 außenstehende Atome. Kein realer Landesplan ist damit abgenommen.
+
+**Offene innere Wirkung:** Bei gleichem aktuellem Reader/UI steigen die
+kanonischen inneren Rückpfeile gegenüber dem Main-Curriculum von 8 / 9 / 9
+auf 11 / 12 / 12; die unterschiedlichen atomaren Ursachen von 20 / 23 / 25
+auf 27 / 30 / 32. Fünf neue, fachlich erforderliche Aufgabenabhängigkeiten und
+zwei schon auf main vorhandene Kanten treffen auf eine noch falsche Reihenfolge
+innerer Vorbereitungscontainer. Diese offene Arbeit wird ausdrücklich nicht
+als behobener Lernfluss ausgegeben. Der letzte Aufgaben-/Routenfix fügt gegenüber
+dem vorherigen geprüften Kandidaten keine weiteren äußeren oder inneren
+Rückgriffsursachen hinzu.
+
+**Qualitätsabschluss:** Alle vier Mathematik-/Physikroutenprofile bestehen,
+einschließlich 80 Physik-Projektionskontexten. Nachweisprofile, Atomarität,
+Merkkarten und Bilder bestehen aktuell für 485/485 reguläre Physikziele.
+Zwei geänderte Beschreibungskontexte erhalten noch aktuelle unabhängige Reviews.
+Der letzte volle Status war M4: sieben abweichende Länderfelder blockierten M7.
+Die Ursache ist jetzt im bestehenden Quellenmodell behoben, ohne eine
+Qualitätsgrenze zu senken. Der zunächst zu breite Cacheabgleich wurde verworfen:
+Bayerische Operationalisierungen werden nicht ohne direkte Quellenbindung in
+anderen Landesansichten zusätzlich verpflichtend. Die erneute 72-Kontext-
+Messung bestätigt unveränderten gewöhnlichen Lernumfang, keine neuen
+Rückgriffsursachen und keine neuen Außenatome; nur BY-G9 verliert zwei dort
+nicht gültige Aufgaben. Der vollständige Qualitätslauf folgt nach den zwei
+aktuellen Reviewauflösungen.
+
+**Messgrenze:** Bei identischem aktuellem Code zeigt das Main-Curriculum oben
+jeweils einen Rückpfeil mit 43 atomaren Ursachen gegenüber null im Kandidaten;
+außen stehen 3 / 0 / 0 gegenüber 0 / 0 / 0 Zielen. Die historischen Main-UI-
+Funktionen erkennen unter der tatsächlichen Übersicht keine Stufeneinheiten
+und liefern deshalb keinen vergleichbaren sauberen Stufen-Nenner. Die alten
+41/512-Werte aus vollständigen Katalogen mit künstlicher Wurzel bleiben
+überholte Zwischenmessungen. Kein Wert ist eine Produktions- oder
+Unterrichtsabnahme; Rohbelege bleiben erhalten.
 
 | Umfang | Stand und verbleibende Arbeit |
 | --- | --- |
@@ -48,53 +78,85 @@ bestehen; Beziehungen und sichtbare Pfeile werden nicht gleichgesetzt.
 | F7 | Zweisprachiger Normkandidat lokal umgesetzt und unabhängig geprüft; noch nicht integriert. |
 | F5 | Fachprüfung teilweise umgesetzt über K1/K2; der vollständige Befundbestand bleibt offen. |
 
-## 15. November 2026, 18:55 MEZ — Kanonische oberste Lernkarten lokal bereinigt
+## 15. November 2026, 22:40 MEZ — Zielnorm und Bestandsaufnahme abgeglichen
 
-**Stand: [Draft-PR #159](https://github.com/enpasos/skillpilot/pull/159) ist offen.
-Der bisherige PR-Kopf scheiterte im Schema-Check. Die Korrektur und der lokal
-geprüfte Zwischenstand werden gemeinsam in diesem PR aktualisiert. Nicht auf main.**
+**Stand: Abgeschlossener Dokumentationsreview im Lieferumfang von
+[Draft-PR #159](https://github.com/enpasos/skillpilot/pull/159); Dokumentchecks
+bestanden. Keine neue Laufzeitfunktion oder Integration behauptet.**
 
 - **Fortschritt:** K 0/13 und F 0/7 vollständig abgeschlossen; 0 reale
-  Landespläne aktiviert. In der tatsächlichen kanonischen GK+LK-Lernkarte
-  sinken direkte Rückgriffe von 41 auf 0, transitive von 512 auf 0 und äußere
-  Fachziele von 2 auf 0. GK und LK sind ebenfalls rückgriffsfrei. Die offenen
-  Landes- und Untereinheitenbefunde verhindern weiterhin den Gesamtabschluss.
-- **Ergebnis und Entscheidungen:** Die beiden Vektorziele stehen korrekt in
-  Sek II. Die letzten Physikrückgriffe führten von früher Messauswertung zu
-  später eingeordneten Grundlagen zu Sensoren sowie Mittelwert und Streuung.
-  Sechs vollständige Messmethoden erhalten deshalb einen begründeten früheren
-  Lernplatz in der bundesweiten Sicht. Sieben zusätzliche Physikaufgaben sind
-  samt Stufenzuordnung lokal übernommen. Eine falsch frühe Magnetismusaufgabe
-  entfällt ausschließlich aus dem isolierten Sek-I-Ausschnitt; ihre fachlich
-  passende spätere Platzierung bleibt erhalten. Der Ausschnitt und die
-  Unterstufe der Gesamtsicht haben danach exakt denselben Zielumfang und
-  Voraussetzungsschluss. Alte astronomische Aufgaben behalten IDs, Texte,
-  Lösungen und Raster; vollständige neue Erwerbsnachweise erhalten eigene IDs.
-- **Kontrollstellen:** [Reproduzierbarer Vergleich der tatsächlichen Karten](https://github.com/enpasos/skillpilot/blob/fix/stage-plan-next-delivery-20261115/contracts/stage-plan-review-evidence/2026-11-15/top-level-current-view-repair/README.md),
-  die dort enthaltenen Pfade der beiden Vektorziele und
-  [Physikaufgaben samt Inhaltsreviews und Abnahmegrenzen](https://github.com/enpasos/skillpilot/blob/fix/stage-plan-next-delivery-20261115/curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/stage-flow-current-assessments-v1/README.md).
-- **Nachweise und Grenzen:** Ein unabhängiger Agent reproduzierte die beiden
-  Screenshots einschließlich der Zielzahlen exakt mit dem Main-Code und
-  führte anschließend denselben nativen Backend-/Frontend-Projektionsweg mit
-  dem aktuellen Code aus; alle drei Kursvarianten bestehen. Das ist kein
-  Browser- oder Produktionsnachweis. 69 aktuelle Physiksichten kompilieren
-  fehlerfrei. Mathematik besteht nach Ergänzung der Metadaten an 43 Aufgaben
-  lokal wieder M7: alle 24 Fach- und Routenregeln, 807 reguläre Ziele und
-  44 neue Aufgabennachweise sind geprüft; 173 ältere Aufgabenverträge bleiben
-  unverändert. [Mathematiknachweis](https://github.com/enpasos/skillpilot/blob/fix/stage-plan-next-delivery-20261115/curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/math-assessment-contract-metadata-current-v1/README.md).
-  Physik besteht lokal die fünf inhaltlichen Qualitätsbereiche für 485/485
-  reguläre Ziele, einschließlich frischer unabhängiger Reviews für drei
-  geänderte Zielkontexte. Das ist noch kein M7-Gesamtnachweis: vollständige
-  Erwerbsaufgaben für weitere Q1-Ziele und die Auswahl echter Landesausschnitte
-  fehlen. Der CI-Schemafehler entstand durch einen erhaltenen Review-Schnappschuss
-  im Verzeichnis aktiver Curricula. Er liegt jetzt bytegleich im Nachweisbereich;
-  die vollständige lokale Schema-Prüfung besteht wieder. Die Qualitätsgrenzen
-  bleiben unverändert. Der neu entdeckte Mischfall aus planangebundenen und
-  bisherigen Fachsichten wird vor der ersten Landesplan-Aktivierung abgesichert.
-- **Nächster Schritt:** Die verbleibenden Physiknachweise und Landesausschnitte
-  im gemeinsamen Draft vervollständigen, nach weiteren Fachänderungen erneut
-  messen und die vollständige PR-CI ausführen. Erst nach erfolgreicher
-  Integration und frischer Main-CI ist dieses Paket abgeschlossen.
+  Landespläne aktiviert. Dieses Paket präzisiert F7 und die weiterführende
+  Zielnorm; es verändert selbst keine Rückgriffe oder Qualitätsgrade.
+- **Ergebnis und Entscheidungen:** Das Konzept bleibt verbindlicher
+  Zielzustand. Der Implementierungsanhang beschreibt getrennt, was tatsächlich
+  besteht. Eine offene Prüfung gilt weiterhin als offen; ein Revieweintrag
+  allein erteilt keine Anerkennung. Die Reihenfolge ganzer Einheiten muss
+  widerspruchsfrei sein. Die behauptete Unterbrechung der Traversierung an
+  gemeisterten Zwischenzielen war veraltet: der Fix ist bereits auf main.
+  Globale revisionsgebundene Anerkennung und vollständige Durchsetzung der
+  Einheitenverträge bleiben offene Implementierungsaufträge.
+- **Kontrollstellen:** [Bewertung der beigefügten Kritik](graph-definition-documentation-review-2026-11-15.md),
+  [Einheitenfolge und Lernweise](../concept/skill-graph/learning-unit-progression.de.md),
+  [datierter Implementierungsstand](../concept/skill-graph/compendium-appendix.de.md).
+- **Nachweise:** Unabhängiger bilingualer Agentenreview mit 21 geprüften
+  Kapitelpaaren und drei gezielten Modellgegenbeispielen; 62 tatsächlich
+  ausgeführte lokale Backendtests bestehen ohne Fehler oder Auslassungen.
+  Alle zehn DE-/EN-PDFs und 80 Webausgaben sind neu gebaut. Quellen-,
+  Ausgabe-, Terminologie-, Link- und Indexchecks sowie MkDocs strict bestehen.
+  Dies sind weder Prüfungsaufgaben für Lernende noch eine Main-Abnahme.
+  [Erhaltene Review- und Testbelege](https://github.com/enpasos/skillpilot/tree/fix/stage-plan-next-delivery-20261115/contracts/stage-plan-review-evidence/2026-11-15/documentation-critique-review-v1).
+- **Nächster Schritt:** Die präzisierte Norm mit dem geprüften Fachpaket
+  integrieren. Umsetzungsdefizite bleiben bis zu
+  ihrem eigenen Nachweis sichtbar; die Norm wird nicht auf den Bestand verkürzt.
+
+## 15. November 2026, 22:40 MEZ — Kanonische Lernkarten bereinigt, Qualitätsabschluss läuft
+
+**Stand: [Draft-PR #159](https://github.com/enpasos/skillpilot/pull/159) ist offen.
+Die bisherigen sechs erfolgreichen Draft-CI-Jobs und acht übersprungenen Jobs
+sind keine vollständige Abnahme. Dieser veröffentlichte Zwischenstand bleibt ein Draft: zwei aktuelle
+Beschreibungskontexte und der abschließende volle Qualitätslauf sind noch offen.**
+
+- **Fortschritt:** K 0/13, F 0/7 abgeschlossen, 0 reale Landespläne aktiviert.
+  Die kanonische oberste Karte hat in allen drei Kursvarianten null Rückpfeile
+  und null Außenatome. Die erneute 72-Kontext-Messung findet beim letzten Routenfix keine neuen
+  äußeren oder inneren Ursachen. Gegenüber main sind die oben bezifferten
+  inneren Befunde jedoch gestiegen; die Containerreihenfolge bleibt offen.
+- **Ergebnis und Entscheidungen:** Die Vektorziele erhalten gültige Plätze in
+  Sek II; fehlende frühe Messgrundlagen sind fachlich eingeordnet. Fremdfach-
+  vorbereitung bleibt im tatsächlich gelieferten Zielindex auflösbar.
+  Unerreichbare Kontexteltern verdrängen keine vorhandenen sichtbaren Plätze.
+  Die Mathematikgruppe „Anwendungen der Integralrechnung“ wird mit sämtlichen
+  zehn Kindern ausdrücklich materialisiert: ihre alte Q1-Marke darf drei
+  Q4-Ziele nicht verbergen. Zielumfang, Quellen und Voraussetzungen bleiben
+  dabei erhalten. In Bayern bleiben sieben notwendige Chemiegrundlagen nun
+  innerhalb ihrer Physikeinheit sichtbar, ohne die Lernbasis zu vergrößern.
+- **Aufgaben und Inhaltsreviews:** Lokal stehen gegenüber main 57 neue Physik-
+  und 44 neue Mathematikaufgaben. Die ursprünglichen Aufgabenverträge bleiben
+  bei Rücknahme unbelegter Vollabdeckung erhalten. Zwei unabhängige Reviews
+  der aktuellen zehn präzisierten Physikkontexte sind abgeschlossen; ihre
+  eigene Vorbefassung ist offengelegt. Die native Gesamtauswertung vor der letzten Länderfeld-Korrektur
+  bestand für alle 485 regulären Ziele in Beschreibung, Nachweisprofil,
+  Atomarität, Merkkarten und Bildern; die zwei dadurch geänderten
+  Beschreibungskontexte werden aktuell nochmals unabhängig bewertet. Das belegt keine Unterrichtswirkung.
+  Für die zwei echten bayerischen Erwerbslücken sind eine präzisierte
+  Stromstärkerubrik und eine neue Spannungsaufgabe ohne zusätzliche
+  Kondensatortheorie unabhängig geprüft und übernommen. Jede Aufgabe prüft
+  zwei eigenständige Fälle; eine fehlende Kernleistung verhindert das Bestehen.
+  Alle 69 Ansichten sind unabhängig strukturell geprüft; 68 eindeutige Plätze
+  sind installiert, der reine nationale Sek-I-Ausschnitt benötigt die Aufgabe nicht.
+- **Kontrollstellen:** [Messcheckpoint und Grenzen](https://github.com/enpasos/skillpilot/blob/fix/stage-plan-next-delivery-20261115/contracts/stage-plan-review-evidence/2026-11-15/real-view-measurements-v1/final-measurement-summary.md),
+  [Aufgaben und aktuelle Inhaltsnachweise](https://github.com/enpasos/skillpilot/tree/fix/stage-plan-next-delivery-20261115/curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/physics-q1-acquisition-current-v1),
+  [getrennte Bewertung der Architekturkritik](graph-definition-documentation-review-2026-11-15.md).
+- **Automatisierte Nachweise und Grenzen:** Projektion, Kartenvorschau,
+  Kartenlayout, verschachtelte Planmaterialisierung, TypeScript und Lint
+  bestehen lokal. Der frühere Schemafehler ist behoben; sein Snapshot liegt
+  bytegleich im Nachweisbereich. CQR-104 besteht mit 80 Physik-Projektionskontexten. Fehlende Aufgaben oder
+  notwendige Vorbereitung lassen die neuen nativen Gegenproben weiterhin
+  scheitern. Der volle Qualitätsabschluss erfordert noch die frische Abnahme
+  der sieben korrigierten Länderfelder und ihrer tatsächlichen Verbraucher.
+- **Nächster Schritt:** Die zwei aktuellen Reviewauflösungen und den vollen Qualitätsnachweis
+  ergänzen und den finalen Stand nach dem laufenden Draft-CI-Durchgang pushen. Danach vollständige PR-CI, Merge und frische
+  Main-CI. Weitere Fachpakete und reale Planaktivierungen folgen auf dieser Basis.
 
 ## 15. November 2026, 15:38 MEZ — Abnahme an den tatsächlichen Lernkarten konkretisiert
 

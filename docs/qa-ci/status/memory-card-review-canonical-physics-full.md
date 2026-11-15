@@ -22,16 +22,16 @@ Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger.
 
 | Metric | Value |
 | --- | --- |
-| ordinary atomic goals reviewed | 481 |
-| goals without memory need | 352 |
-| goals with intentional memory support | 129 |
+| ordinary atomic goals reviewed | 485 |
+| goals without memory need | 357 |
+| goals with intentional memory support | 128 |
 | goals needing developer review | 0 |
 | primary cards in scope | 146 |
 | kept primary cards with origin trace | 146 |
 | cards removed from active decks | 17 |
 | memory goals traced | 5/5 |
 | composition visibility scopes | 2 |
-| memory-required goals checked in views | 237 |
+| memory-required goals checked in views | 235 |
 | memory-required goals without visible memory node | 0 |
 | blocking issues | 0 |
 
@@ -39,8 +39,8 @@ Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger.
 
 | Scope | View | Visible goals | Visible memory goals | Checked memory-required goals | Missing visible memory goals |
 | --- | --- | --- | --- | --- | --- |
-| Physik Gymnasium GK (DE-HE) | `curricula/DE/Gymnasium/composition-views/physik/de-he-gk.view.json` | 549 | 5 | 109 | 0 |
-| Physik Gymnasium LK (DE-HE) | `curricula/DE/Gymnasium/composition-views/physik/de-he-lk.view.json` | 626 | 5 | 128 | 0 |
+| Physik Gymnasium GK (DE-HE) | `curricula/DE/Gymnasium/composition-views/physik/de-he-gk.view.json` | 586 | 5 | 108 | 0 |
+| Physik Gymnasium LK (DE-HE) | `curricula/DE/Gymnasium/composition-views/physik/de-he-lk.view.json` | 675 | 5 | 127 | 0 |
 
 ## Memory-Required Goals
 
@@ -50,13 +50,12 @@ Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger.
 | E: 3. Kepler-Gesetz per Skalierungsargument herleiten (LK) (`89cadf81-143b-5f6b-82bd-29ba20d92a1b`) | `de_gymnasium_physics_mechanics_ephase` | Erneute individuelle fachliche AI-Prüfung der freigegebenen DE/EN-Präzisierung: Die gelesene DE/EN-Karte physics_e_cov_055 hält T2 proportional a3 sowie T als Umlaufzeit und a als große Halbachse fest. Die präzisierte Beschreibung stimmt insbesondere mit der bereits richtigen Halbachsenbedeutung der Karte überein. Dieser kompakte Gesetzes- und Notationsabruf bleibt erforderlich; die Skalierungsherleitung und ihre Bedingungen sind eigenständige Verständnisleistung am selben Inhaltsziel und werden nicht durch Aufsagen der Karte ersetzt. AI-Kandidatenprüfung; keine menschliche Einzelabnahme behauptet. |
 | E: Adiabatische Zustandsänderungen (`7fe3022f-fad0-5f41-af1c-d55ff214ebc6`) | `de_gymnasium_physics_mechanics_ephase` | Der kompakte Abrufkern Q = 0 und die Abgrenzung zur Isotherme bleiben sinnvoll; Systemgrenze, Arbeitswirkung, Diagramm und Transfer bleiben Verständnisleistungen. |
 | E: Bahn- und Winkelgeschwindigkeit (`ec7a0a68-730b-5c94-ac72-a937508f8303`) | `de_gymnasium_physics_mechanics_ephase` | Karte physics_e_cov_038 sichert die kompakten Beziehungen v = ωr und ω = 2π/T; Definition, Berechnung und Erklärung des Zusammenhangs bleiben im Lernziel. |
-| E: Bewegungen mit Diagrammen untersuchen (`ce431132-dfc4-42c2-aff6-bd72035190f8`) | `de_gymnasium_physics_mechanics_ephase` | Memory-Anteil streng begrenzt auf kompakte physikalische Formel-, Definitions-, Gesetzes- oder Merksatzkarten; Verstehen, Experimentieren und Aufgabenpraxis bleiben führend. |
 | E: Bewegungen mit Videoanalyse untersuchen (`d67502e3-5e0a-595b-a24b-65b1c40de36e`) | `de_gymnasium_physics_mechanics_ephase` | Ein vorhandenes Methodendeck kann Arbeitsschritte absichern; die Auswertung eines neuen Videos und Modellprüfung bleiben Transferleistungen. |
 | E: Bewegungsabläufe im Sport qualitativ analysieren (`7ead007f-e85a-5cb5-b52d-76aae626119a`) | `de_gymnasium_physics_mechanics_ephase` | Memory-Anteil streng begrenzt auf kompakte physikalische Formel-, Definitions-, Gesetzes- oder Merksatzkarten; Verstehen, Experimentieren und Aufgabenpraxis bleiben führend. |
 | E: Bezugssysteme und Geschwindigkeitsüberlagerung (`68c90ba6-c438-463c-9a53-cf61062d416a`) | `de_gymnasium_physics_mechanics_ephase` | Karte physics_e_cov_035 sichert nur die indizierte Vektoraddition von Relativgeschwindigkeiten und die eindeutige Angabe der Bezugssysteme; Bestimmung und Deutung der resultierenden Bewegung bleiben im Lernziel. |
 | E: Digitale Messdaten mit Sensoren erfassen (`691c11d0-fa6a-5d2e-a19c-086e89c3c233`) | `de_gymnasium_physics_mechanics_ephase` | Memory-Anteil streng begrenzt auf kompakte physikalische Formel-, Definitions-, Gesetzes- oder Merksatzkarten; Verstehen, Experimentieren und Aufgabenpraxis bleiben führend. |
 | E: Drehimpuls als Erhaltungsgröße (`37f17e7e-9fcf-5dca-ac10-e94cb8420be5`) | `de_gymnasium_physics_mechanics_ephase` | Memory-Anteil streng begrenzt auf kompakte physikalische Formel-, Definitions-, Gesetzes- oder Merksatzkarten; Verstehen, Experimentieren und Aufgabenpraxis bleiben führend. |
-| E: Drehmoment beschreiben (`cf570e66-2ce2-5923-9033-c97d74119553`) | `de_gymnasium_physics_mechanics_ephase` | Memory-Anteil streng begrenzt auf kompakte physikalische Formel-, Definitions-, Gesetzes- oder Merksatzkarten; Verstehen, Experimentieren und Aufgabenpraxis bleiben führend. |
+| E: Drehmoment beschreiben (`cf570e66-2ce2-5923-9033-c97d74119553`) | `de_gymnasium_physics_mechanics_ephase` | Frische informierte KI-Inhaltsprüfung der vollständigen aktuellen DE/EN-Fassung. Die tatsächlichen DE/EN-Karten physics_e_cov_065 wurden gelesen: M=r×F und Betrag rF sin(alpha) bleiben als kompakter Drehmomentabruf passend. Der neue senkrechte Hebelarm ist dieselbe geometrische Beziehung; Anwendung, Achsenwahl und Deutung bleiben Verständnisleistungen. Vorhandene Deck-/Memorygoal-/Karten-Originbindungen bleiben unverändert. Keine menschliche Abnahme oder Assessmentfreigabe behauptet. |
 | E: Elastische Stöße (`d168ae5d-f36f-4ad4-b070-d5931f8d70d1`) | `de_gymnasium_physics_mechanics_ephase` | Memory-Anteil streng begrenzt auf kompakte physikalische Formel-, Definitions-, Gesetzes- oder Merksatzkarten; Verstehen, Experimentieren und Aufgabenpraxis bleiben führend. |
 | E: Energieentwertung vs. Energieverbrauch (`cbdc0b5f-8a48-5ade-be53-ab6aacaa3e73`) | `de_gymnasium_physics_mechanics_ephase` | Energieerhaltung und Entropieerzeugung bilden einen kompakten Begriffsanker; Systembilanz, Irreversibilität, Nutzbarkeit und Transfer werden erklärend geprüft. |
 | E: Energieerhaltung (`91c49019-ea51-4ce5-a919-c91c45b25e83`) | `de_gymnasium_physics_mechanics_ephase` | Karte 026 sichert die präzise Isolationsbedingung; konkrete Energieübertragungsbilanzen bleiben Verständnis- und Aufgabenpraxis. |
@@ -200,7 +199,7 @@ Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger.
 | `de_gymnasium_physics_mechanics_ephase` | `physics_e_cov_004` | Videoanalyse: vom Video zu Physikgrößen? | Aus Bildfolgen werden Ortsdaten $s(t)$ bestimmt. Daraus und aus den Zeitabständen zwischen Bildern folgen $v(t)$ und $a(t)$. | E: Bewegungen mit Videoanalyse untersuchen (`d67502e3-5e0a-595b-a24b-65b1c40de36e`) | Behalten: kompakter Physik-Formel-, Definitions-, Gesetzes- oder Merksatzbaustein mit kanonischer Lernzielherkunft; Anwendung und Deutung bleiben Teil des normalen Lernziels. |
 | `de_gymnasium_physics_mechanics_ephase` | `physics_e_cov_005` | Numerische Modellierung (Tabellenkalkulation): Euler-Schritt? | $v_{n+1}=v_n+a_n\,\Delta t$, $s_{n+1}=s_n+v_n\,\Delta t$ mit Zeitschritt $\Delta t$, $a_n=a(t_n, s_n, v_n)$, $t_{n+1}=t_n+\Delta t$. | E: Methode: Modellbildung mit Tabellenkalkulation (`ac25ffe3-fd42-592d-a937-79cc13460313`) | Behalten: kompakter Physik-Formel-, Definitions-, Gesetzes- oder Merksatzbaustein mit kanonischer Lernzielherkunft; Anwendung und Deutung bleiben Teil des normalen Lernziels. |
 | `de_gymnasium_physics_mechanics_ephase` | `physics_e_cov_006` | Sportphysik: wichtigste Einflussgrößen? | Startgeschwindigkeit, Abwurfwinkel, Abwurfhöhe, Kraftwirkung, Reibung und Luftwiderstand bestimmen den Bewegungsablauf | E: Bewegungsabläufe im Sport qualitativ analysieren (`7ead007f-e85a-5cb5-b52d-76aae626119a`) | Behalten: kompakter Physik-Formel-, Definitions-, Gesetzes- oder Merksatzbaustein mit kanonischer Lernzielherkunft; Anwendung und Deutung bleiben Teil des normalen Lernziels. |
-| `de_gymnasium_physics_mechanics_ephase` | `physics_e_cov_007` | Diagrammregeln für t-s-, t-v- und t-a-Diagramme? | Steigung in $t$-$s$ ist $v$ Steigung in $t$-$v$ ist $a$ Fläche unter $t$-$v$ ist $\Delta s$ Fläche unter $t$-$a$ ist $\Delta v$ | E: Bewegungen mit Diagrammen untersuchen (`ce431132-dfc4-42c2-aff6-bd72035190f8`) | Behalten: kompakter Physik-Formel-, Definitions-, Gesetzes- oder Merksatzbaustein mit kanonischer Lernzielherkunft; Anwendung und Deutung bleiben Teil des normalen Lernziels. |
+| `de_gymnasium_physics_mechanics_ephase` | `physics_e_cov_007` | Diagrammregeln für t-s-, t-v- und t-a-Diagramme? | Steigung in $t$-$s$ ist $v$ Steigung in $t$-$v$ ist $a$ Fläche unter $t$-$v$ ist $\Delta s$ Fläche unter $t$-$a$ ist $\Delta v$ | E: Gleichmäßig beschleunigte Bewegung und Beschleunigung (`e4b38061-1f28-43ad-8371-a3e7c0e81856`) | Exakte DE/EN-Front/Rückseite, Karten-ID und Deck bleiben unverändert. Tatsächlich gelesene t-s/t-v/t-a-Regeln gehören nach ce431-Verengung zum vollen e4b-Modellziel; nur der Herkunftstag wechselt. Dieser aktuelle AI-Review bindet dieselbe Karte mit nativer NFKC-/Whitespace-Normalisierung. Keine Lernenden-/SRS-/Masteryübertragung. |
 | `de_gymnasium_physics_mechanics_ephase` | `physics_e_cov_008` | Gleichförmige Bewegung: Formel? | $v=\text{konstant}$, $a=0$, $s(t)=s_0+vt$ | E: Gleichförmige Bewegung und Geschwindigkeit (`971beafa-6ba5-4c82-ac8b-7ebf66eec3dd`) | Behalten: kompakter Physik-Formel-, Definitions-, Gesetzes- oder Merksatzbaustein mit kanonischer Lernzielherkunft; Anwendung und Deutung bleiben Teil des normalen Lernziels. |
 | `de_gymnasium_physics_mechanics_ephase` | `physics_e_cov_009` | Gleichmäßig beschleunigte Bewegung: Grundformeln? | $a=\text{konstant}$ $v(t)=v_0+at$ $s(t)=s_0+v_0t+\frac12at^2$ | E: Gleichmäßig beschleunigte Bewegung und Beschleunigung (`e4b38061-1f28-43ad-8371-a3e7c0e81856`) | Behalten: kompakter Physik-Formel-, Definitions-, Gesetzes- oder Merksatzbaustein mit kanonischer Lernzielherkunft; Anwendung und Deutung bleiben Teil des normalen Lernziels. |
 | `de_gymnasium_physics_mechanics_ephase` | `physics_e_cov_010` | Freier Fall (ohne Luftwiderstand): Grundformeln? | $a=g$ $v(t)=gt$ $s(t)=\frac12gt^2$ (für $v_0=0$ und $s_0=0$) | E: Freier Fall experimentell untersuchen (`09029573-864f-40ca-bf8a-cee7bf6dcb73`) | Behalten: kompakter Physik-Formel-, Definitions-, Gesetzes- oder Merksatzbaustein mit kanonischer Lernzielherkunft; Anwendung und Deutung bleiben Teil des normalen Lernziels. |

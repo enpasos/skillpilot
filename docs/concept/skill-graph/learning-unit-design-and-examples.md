@@ -14,11 +14,9 @@
 <a id="sec-sga-unit-design"></a>
 ## 12. Learning-Unit Design Criteria and Examples
 
-This chapter makes the didactic purpose of [learning units](learning-units.md) concrete. It explains how to draw and test a unit boundary and applies these criteria to two worked candidates: motion with constant acceleration in upper-secondary physics and number sense in grade 5 mathematics.
+This chapter makes the didactic purpose of [recursive learning units](learning-units.md) (Graph Definition §11), the [ordering rules E1 to E4](learning-unit-progression.md), and [implicit mastery](assessment-gated-completion.md) (§13) concrete. In the three-tier target model (**Cluster $\to$ Unit $\to$ Unit with assessments**), a subject unit is declared as a canonical cluster and introduced top-down per subject: first as a coarse, E1–E4 backflow-free subject unit ordered by sibling `after`, and subsequently refined into leaf units with own assessments (`coverageReviews`) that stay whole inside a single plan unit across all 16 Bundesländer.
 
-**Status, 11 November 2026.** The examples are **concept candidates**, not reviewed assessment contracts and not an approved partition of any official curriculum. This page changes no learning goals, graph edges, assessments, or access rules. The binding contracts are [Learning Units](learning-units.md) (Graph Definition §11), [Implicit Mastery](assessment-gated-completion.md) (§13), and the binding [ordering rules E1 to E4](learning-unit-progression.md). Where this chapter and those contracts differ, the contracts win.
-
-**Normative addition of 15 November 2026:** The examples remain candidates of the earlier subject-matter grouping. A new unit is declared as a cluster; own goals and children derive from it. R1 to R5 apply to units with assessments; assessment-free units only order and recognize nothing. Migration of existing examples and the cross-Land B13 whole-placement test follow only after F8 measurement. New boundaries or assessments need their own independent reviews.
+Two worked subject studies illustrate boundary analysis, knowledge context, and assessment coverage: **motion with constant acceleration** in upper-secondary Physics and **number sense** in grade-5 Mathematics. Initial cuts of both were authored on 13 November 2026 under compatibility contract 1.2 with reviewed R2 coverage (`2` goals and `1` assessment in Physics, `5` goals and `2` assessments in Mathematics); migrating them to declared cluster units, comparing them against broader cuts (such as full kinematics or joining number sense with natural-number arithmetic), and running the 16-Länder whole-leaf check follow in steps `F8`–`F11`.
 
 <a id="1-establish-a-secure-foundation"></a>
 <a id="sec-sga-ud-foundation"></a>
@@ -58,7 +56,7 @@ Two rules follow for the design of a unit:
 1. **Every elaboration stays inside.** Tasks and sample solutions of the own assessments, memory cards, practice tasks, goal images, and the coach's examples for the unit's goals use only what the context secures and what the unit develops. Whatever leaves it is assigned to the wrong unit or is changed.
 2. **The graph must suffice.** If the unit needs something that its context does not secure, the graph lacks a prerequisite, a goal reaches into later subject matter, or the boundary is wrong. That is a finding for subject review. No edge is invented and no goal text is narrowed to remove it.
 
-The context is derived before tasks, cards, and images of the unit are written or reviewed. It is the same in every curriculum context, because the prerequisite relation is canonical; "planned for the same school year" secures nothing.
+The context is derived before tasks, cards, and images of the unit are written or reviewed. It is the same in every curriculum context, because the prerequisite relation is canonical: neither "planned for the same school year" nor a sibling `after` order unlocks concepts inside $W(g)$; in E3’s case of two distinct child units, `after` orders the prerequisite child unit before the dependent one (when either branch is an own atom, demand itself provides the order), whereas only atomic `requires` paths secure concepts for tasks, cards, images, and explanations.
 
 <a id="3-learn-demonstrate-and-continue-learning"></a>
 <a id="sec-sga-ud-loop"></a>
@@ -70,7 +68,7 @@ The subsequent assessment demands the claimed independent application. Step-by-s
 
 When the evidence is missing, the concrete gap is explained, for example the confusion of two quantities. Suitable further development and practice follow, then a fresh assessment variant with equivalent content. A retry must not sidestep the problem through memorising an identical task. Valid competence evidence obtained elsewhere is not deleted by this.
 
-B9 of 14 November 2026 rejects technical whole-unit locks in the binding target model. after declares intended order without demand, mastery, or frontier changes; see [unit ordering](learning-unit-progression.md). Direct assessment access remains the current baseline, and an attempt that is not passed records no learner result.
+In the intended learning flow, `after` and the "Unit by Unit" learning mode ([Unit Progression](learning-unit-progression.md)) guide learners coherently through an opened unit up to its assessments without imposing technical unit locks: `after` changes neither atomic demand nor mastery or frontier eligibility, learners may attempt assessments directly at any time, an attempt that is not passed records no negative result, and no `requires` edge of later subject goals points to an assessment goal.
 
 <a id="4-main-example-motion-with-constant-acceleration-upper-secondary-physics"></a>
 <a id="sec-sga-ud-physics"></a>
@@ -186,9 +184,9 @@ For the entry described here, a subject-correct route without formal integration
 
 <a id="5-preliminary-comparison-number-sense-in-grade-5-mathematics"></a>
 <a id="sec-sga-ud-math5"></a>
-### 12.5. Preliminary Comparison: Number Sense in Grade 5 Mathematics
+### 12.5. Second Example: Number Sense in Grade 5 Mathematics
 
-The [canonical mathematics graph](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json) contains the following five goals; they are also referenced in the Hessian G9 composition views. This inventory is not a partition of the whole year. The goal titles are given in English translation; the stable IDs identify the authored German goals.
+The [canonical mathematics graph](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json) contains the following five goals; they are also referenced in the Hessian G9 composition views. This selection is not a partition of the whole year. The goal titles are given in English translation; the stable IDs identify the authored German goals.
 
 | Existing Goal (Translated Title) | Meaning to Be Preserved Completely |
 | --- | --- |
@@ -200,9 +198,9 @@ The [canonical mathematics graph](https://github.com/enpasos/skillpilot/blob/mai
 
 For comparison with the graph, the stable IDs in this order are `624764d6-becd-5f9b-ada3-0d4f9d143073`, `cf474eab-1379-4877-907e-58b0892ce734`, `9ef6c4fa-b97a-5d7a-86c1-96690f02d916`, `fe07241a-b779-5f35-a82d-7aa51ae74f42`, and `1a25ef44-f310-4c23-9ba8-44baec60d3b0`.
 
-A possible promise reads: "I understand the structure of the natural numbers, can switch between representations, and estimate orders of magnitude with justification." The five goals are thus connected by one theme. The existing subject-matter paths are sparse, however: representation leads to ordering; place value leads to rounding and to unboundedness. Representation and place value additionally require the existing shared orientation entry, which is not subject-matter evidence. The five goals acquire no additional inherited subject prerequisites through this.
+The learning promise reads: "I understand the structure of the natural numbers, can switch between representations, and estimate orders of magnitude with justification." The five goals are thus connected by one theme. The existing subject-matter paths are sparse, however: representation leads to ordering; place value leads to rounding and to unboundedness. Representation and place value additionally require the existing shared orientation entry, which is not subject-matter evidence. The five goals acquire no additional inherited subject prerequisites through this.
 
-It is still open whether this forms a self-contained unit "number sense" or whether connecting it with calculating with natural numbers yields the better conceptual step. Independent applications, the actual later demand, and the justifiability of the boundary must be compared. The count of five decides this question as little as the existence of two branches does.
+Under compatibility contract 1.2, these five goals together with two associated assessments already form an initial leaf unit. During the top-down subject-unit rollout (`F9`–`F11`), subject review still examines whether separating "number sense" and natural-number arithmetic as child units beneath a shared parent unit holds up didactically and keeps each leaf unit whole inside one plan unit across all 16 Bundesländer. Independent applications, actual downstream demand, and boundary justifiability must be weighed against each other; the count of five decides this question as little as the existence of two branches does.
 
 A shopping context with counting and estimating can supply suitable applications. On its own, however, it does not demonstrate the comparison of number systems or the general successor argument. These parts must not be dropped silently in order to pass off a convenient final task as complete evidence. Under rule R1, each of the five goals would need an own assessment of the unit that requires it; a convenient final task that requires only some of them leaves the others uncovered, which is a rule violation and never a free recognition.
 
@@ -210,25 +208,32 @@ The existing edge from the goal "Use multiplication and integer division as inve
 
 <a id="6-consistency-with-the-recognition-model-and-the-unit-validity-rules"></a>
 <a id="sec-sga-ud-validity"></a>
-### 12.6. Consistency with the Recognition Model and the Unit Validity Rules
+### 12.6. Consistency with the Ordering and Recognition Model (E1–E4 and R1–R5)
 
-Each atomic goal keeps one stored binary explicit result. Explicit mastery $M$ is joined by recognition $I$ derived from the fixed contracts of the directly owning unit: $M_{\mathrm{eff}}=M\cup I$. This competence acts globally, also under another focus or Personal Curriculum. Neither additional stored mastery tiers nor a hidden second qualification verdict arise.
+Each atomic goal keeps one stored binary explicit result. Explicit mastery $M$ is joined by recognition $I$ derived from the fixed contracts of the directly owning unit with assessments: $M_{\mathrm{eff}}=M\cup I$. This competence acts globally, also under another focus or Personal Curriculum. Neither additional stored mastery tiers nor a hidden second qualification verdict arise.
 
-Recognition is derived per valid local contract of the owning unit. An own ordinary goal is recognized once no open own assessment or memory goal of that unit still requires it, directly or transitively, also through already mastered intermediate goals. If assessments Q1 and Q2 belong to the same unit and both require goal A, then A stays open after Q1 is passed until Q2 is passed as well. An open assessment of another, later unit never reopens or withholds an already recognized goal.
+Every unit — whether an assessment-free plan unit, a parent subject unit, or a leaf unit with assessments — must first satisfy the four **ordering rules E1–E4** ([Unit Progression](learning-unit-progression.md)):
 
-The Product Owner decision of 11 November 2026 binds this rule to five unit validity rules ([Graph Definition §13.3](assessment-gated-completion.md#sec-why-graph-not-enough)):
+- **E1 (Subtree and projection shape):** A subject unit is a declared canonical cluster (own goals and child units derive from `contains`), and a plan unit is a projected plan container; leaf subject units stay whole inside a single plan unit across all 16 Bundesländer.
+- **E2 (Contiguous block order):** There exists an order of all atoms that respects atomic demand and `after` while keeping every unit contiguous. Thus the child-block graph formed by crossing demand and `after` must be acyclic at every unit, including the virtual root. Path convexity alone does not suffice: for $\operatorname{Own}(U)=\{a,c\}$, $\operatorname{Own}(V)=\{b,d\}$, $a\to b$, and $d\to c$, the atomic graph is acyclic and both sets are path-convex, yet the blocks require each other.
+- **E3 (Sibling-local completeness of `after`):** Whenever an atom beneath sibling unit $B$ requires an atom beneath sibling unit $A$ of the same parent unit, $B$ follows $A$ in the declared `after` order (zero backflows against unit order; no `requires` edge points to an assessment goal).
+- **E4 (Irredundancy):** No declared `after` link repeats what already follows transitively across other siblings in `after`.
 
-- **R1:** every own ordinary content goal of a unit lies on a prerequisite path from at least one own assessment of that unit, directly or transitively; a path that leads only to a memory goal does not count. Validity condition of the unit definition, hard from the first authored unit.
-- **R2:** for every own ordinary goal, at least one own assessment that requires it has reviewed evidence that its tasks and ordinary grading really test the goal. Milestone M5, with the current per-goal binding at M7.
-- **R3:** an assessment claims coverage only for goals it requires directly or transitively. Same placement as R1.
-- **R4:** every acquisition target has exactly one directly owning unit. Same placement as R1.
-- **R5:** a later re-cut of units or later edges never grant additional recognition to existing results; the contract is versioned. Runtime contract and precondition before implicit recognition is enabled in production.
+A local recognition contract, by contrast, is formed exclusively by a **unit with assessments** (with own assessments and valid complete `coverageReviews`). Units without an own recognition-assessment contract — including stages, years, course semesters, and assessment-free parent units, even when they hold standalone practice tasks or Abitur exams — only order and recognize nothing implicitly. Missing or invalid coverage of a declared assessment-bearing unit instead remains a contract violation, never a reclassification as assessment-free. Inside a unit with assessments, an own content goal (including experimental content goals) is recognized once no open own assessment or memory goal of that unit still requires it, directly or transitively, also through already mastered intermediate goals. If assessments Q1 and Q2 belong to the same unit and both require goal A, then A stays open after Q1 is passed until Q2 is passed as well. An open assessment of another, later unit never reopens or withholds an already recognized goal.
 
-Implicit recognition therefore exists only inside units whose contract satisfies R1–R4 with reviewed coverage. Otherwise the unit's own ordinary goals stay open, and the violation keeps the curriculum from reaching the respective milestone. A goal that no assessment covers stays open and is a rule violation; it is never recognized for free. Learning units are declared in the placement layer of their skill landscape, as `programUnits` of kind `learningUnit` that own atomic goals through `goalPlacements` of relation `own` ([Graph Definition §11.2](learning-units.md#sec-unit-representation)). For the units authored in the canonical landscapes, `validate:learning-units` ([validateLearningUnits.ts](https://github.com/enpasos/skillpilot/blob/main/app/scripts/validateLearningUnits.ts)) enforces R1, R3, and the uniqueness part of R4 fail-closed in the required curriculum CI; the completeness part of R4 applies only to a landscape that declares `learningUnitCoverage` as `complete`. R2 is not yet enforced as a milestone gate: the validator only checks claimed coverage reviews (the unit's `coverageReviews`) and reports missing ones. R5 and implicit recognition itself are not yet implemented. Neither candidate in this chapter is an authored learning unit.
+Every unit with assessments is governed by the five **validity rules R1–R5** ([Graph Definition §13.3](assessment-gated-completion.md#sec-why-graph-not-enough)):
 
-For unit design this means: every own ordinary goal of a candidate needs an own assessment that requires it, and a path only to a memory goal is not enough; an assessment's claimed coverage never exceeds what it requires, and a missing prerequisite path is a subject-review finding rather than a reason for a redundant edge; and each goal is owned by exactly one unit, while a parent may display child goals without owning them.
+- **R1:** Every own content goal of a unit with assessments (including experimental content goals) lies on a prerequisite path from at least one own assessment of that unit, directly or transitively; a path that leads only to a memory goal does not count. Validity condition of the unit with assessments, hard from the moment its `coverageReviews` are declared.
+- **R2:** For every own content goal, at least one own assessment that requires it has reviewed evidence that its tasks and ordinary grading genuinely test the goal without compensating-point bypasses. Milestone M5, with the current per-goal binding at M7.
+- **R3:** An assessment claims coverage only for goals it requires directly or transitively. Same placement as R1.
+- **R4:** Every acquisition target has exactly one directly owning unit in the resolved course. Same placement as R1.
+- **R5:** A later re-cut of units or later edges never grant additional recognition to existing results; the contract is versioned via `revision`. Runtime contract and precondition before implicit recognition is enabled in production.
 
-Assessments and required cards need their own explicit results. Explicit mastery of an ordinary goal does not automatically pass a separately required unit assessment. Conversely, a single atomic prerequisite does not automatically require completion of the whole foreign unit; Only an explicitly authored, subject-justified `after` states that the whole other unit is complete before work begins in the intended flow. This is order, not an additional prerequisite type: it changes neither atomic demand nor frontier and locks no deliberate assessment attempt. A parent completion replaces no open child assessment; completed children pass no additional parent assessment. Validly recognized individual competence stays in force while other obligations of the unit are still open.
+**Current implementation and contract status:** Normative recognition is limited to units with assessments whose contract satisfies R1–R5 with reviewed coverage; it is not yet in production. In the target model, an uncovered goal stays open and constitutes a rule violation, never a free recognition. Currently three learning units are authored in canonical Mathematics and Physics under compatibility contract 1.2 (as `programUnits` of kind `learningUnit` with `own` placements in `goalPlacements`, comprising the dot-product pilot and the initial cuts of the two examples in this chapter; see [Graph Definition §11.2](learning-units.md#sec-unit-representation)). `validate:learning-units` ([validateLearningUnits.ts](https://github.com/enpasos/skillpilot/blob/main/app/scripts/validateLearningUnits.ts)) enforces R1, R3, and the uniqueness part of R4 fail-closed in required CI and verifies claimed `coverageReviews` (the completeness part of R4 applies when `learningUnitCoverage` is `"complete"`). Migrating to declared cluster units with E1–E4 subject validation, R5 contract versioning, and production runtime recognition ($M_{\mathrm{eff}}$) follows in `F8`–`F12`.
+
+For unit design this means: every unit must be convexly learnable in one block (E2) and reflect crossing prerequisite demand across siblings via `after` (E3/E4), while every unit with assessments needs own assessments inside the same cluster for all own content goals (R1–R3) and every planned goal belongs directly to exactly one unit in the resolved course (R4).
+
+Assessments and required cards need their own explicit results. Explicit mastery of an ordinary goal does not automatically pass a separately required unit assessment. Conversely, a single atomic prerequisite does not automatically require completion of the whole foreign unit; only an explicitly authored, subject-justified `after` states that the whole other unit is done before work begins in the intended flow. This is order, not an additional prerequisite type: it changes neither atomic demand nor frontier and locks no deliberate assessment attempt. A parent completion replaces no open child assessment; completed children pass no additional parent assessment. Validly recognized individual competence stays in force while other obligations of the unit are still open.
 
 All effective prerequisites remain authoritative, including inheritance, clusters, and complete transitive paths. An already mastered intermediate goal must not hide the demand of a still-open local assessment. Transitive minimality stays in force.
 
@@ -241,14 +246,17 @@ All effective prerequisites remain authoritative, including inheritance, cluster
 Before any implementation planning, answer for every candidate:
 
 1. What can learners do independently afterwards, and why does it matter?
-2. Which concrete entry competencies are needed, and are they available, also across subjects, before the first dependent activity?
-3. What does the knowledge context of the unit secure, and what is not yet secured? Does the graph suffice for what the unit needs, and do all tasks, cards, images, and examples of the unit stay inside the context?
-4. Which existing goals belong directly to the unit, which required child units does it have, and is every goal owned by exactly one unit (R4)?
-5. What is the central conceptual step, and what actually builds on it?
-6. Which tasks and ordinary grading rules demonstrate the whole promise? Does every own ordinary goal lie on a path from an own assessment (R1), and does at least one such assessment carry reviewed evidence for it (R2)?
-7. Does every assessment claim coverage only for goals it requires (R3)?
-8. Could someone pass despite lacking an essential competence?
-9. Which focused further learning and fresh assessment follow such a gap?
-10. Which sources and complete goal meanings justify scope and boundary?
+2. Is the candidate a canonical cluster (E1), and if it is a leaf unit, does it stay whole inside a single plan unit across all 16 Bundesländer?
+3. Does the complete child-block graph from atomic demand and `after` admit an acyclic order at every level, so every unit can be learned contiguously (E2)?
+4. Which concrete entry competencies are needed, are they available in time (including across subjects), and is crossing demand between sibling units ordered completely and irredundantly via `after` with zero `requires` pointing to assessments (E3, E4)?
+5. What does the unit's knowledge context secure via `requires` alone, what is not yet secured, and do all tasks, cards, images, and examples stay strictly inside that context?
+6. Which existing goals belong directly to the unit (`Own(U)`), which child units does it have, and is every goal owned directly by at most one unit (R4)?
+7. What is the central conceptual step, and should the candidate be a **unit with assessments** (`coverageReviews`) right away or an assessment-free parent unit first?
+8. If it is a unit with assessments: which tasks and ordinary grading rules inside the unit cluster demonstrate the whole promise, does every own content goal (including experimental goals) lie on a path from an own assessment (R1), and does at least one such assessment carry reviewed evidence for it (R2)?
+9. Does every assessment claim coverage only for goals it requires directly or transitively (R3)?
+10. Could someone pass despite lacking an essential competence?
+11. Which focused further learning and fresh assessment follow such a gap?
+12. Are standalone practice tasks or Abitur exams cleanly separated from own recognition assessments?
+13. Which official sources (*carried in*) and complete goal meanings justify scope, learning placement (*placed in*), and boundary?
 
 Before planning again, the examples should make traceable why the boundaries hold up in subject terms, the assessments miss nothing essential, and a failure leads to meaningful further learning. An alternative cut must be comparable on the same questions. This sheet authorizes no implementation, no complete assignment of school years, and no technical access lock.

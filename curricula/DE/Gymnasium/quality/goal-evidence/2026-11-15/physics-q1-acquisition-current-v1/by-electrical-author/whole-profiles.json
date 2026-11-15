@@ -1,0 +1,186 @@
+{
+  "bbee4c52-4e95-5529-990f-706aa99316a3": {
+    "sourcePath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-033r-stable-current-17-v1.review.jsonl",
+    "record": {
+      "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+      "schemaVersion": 2,
+      "reviewId": "canonical-physics-positive-evidence-v1-b033r-stable-current-17-v1",
+      "goalFingerprintRuleVersion": "goal-evidence-v1",
+      "profileRuleVersion": "positive-understanding-evidence-v2",
+      "reviewCriteriaFingerprint": "sha256:8d64a50ede312df08795f6fddec82c1c3bcc8b77e50dad62220c201c819fd460",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "goalId": "bbee4c52-4e95-5529-990f-706aa99316a3",
+      "goalFingerprint": "sha256:9d5ed3dfbabad376b8af66a428d1fe19620e6eef69e3d4891fc587f6214b05f1",
+      "reviewInputFingerprint": "sha256:45dd93b36be4dd8d8454be75c50a3f93afaaab7d44efbf5d058f92559824bfd6",
+      "profileFingerprint": "sha256:b5a4bdf6e4d4d938b7f88c12849ebb6e5161696fd8e90c0ef1d5708a79e26b77",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "reviewedAt": "2026-09-05T00:15:00.000Z",
+      "reviewer": "codex-physics-rollout-v1-batch-033r-stable-current-17-positive-understanding-candidate-author-2026-09-05",
+      "reason": "DE: Das Profil macht mittlere Stromstärke als Netto-Ladungsrate durch einen festgelegten Querschnitt verständlich und prüft Einheit, Richtung und Zeitintervall. Ein gepulster Transport verhindert bloßes Formeleinsetzen. EN: The profile makes average current meaningful as net charge-transfer rate through a specified cross-section and assesses unit, direction, and time interval. Pulsed transfer prevents mere formula substitution.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "reviewRunIds": [],
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "interpret-average-current",
+            "essentialUnderstandingDe": "Die mittlere Stromstärke ist die netto durch einen festgelegten Querschnitt in einem festgelegten Zeitintervall transportierte Ladung, I = ΔQ/Δt. Die Bezugsrichtung bestimmt das Vorzeichen; 1 A und 1 C/s sind dieselbe Einheit.",
+            "essentialUnderstandingEn": "Average current is the net charge transported through a specified cross-section in a specified interval, I = ΔQ/Δt. The reference direction determines the sign; 1 A and 1 C/s are the same unit.",
+            "observablePerformanceDe": "Die lernende Person markiert Querschnitt, Zeitintervall und Richtung, berechnet I mit Einheit und erklärt das Ergebnis als Ladungsmenge pro Zeit statt nur als Zahlenwert.",
+            "observablePerformanceEn": "The learner marks the cross-section, interval, and direction, calculates I with units, and explains the result as charge per time rather than only as a number."
+          },
+          {
+            "id": "compare-intervals-and-rearrange",
+            "essentialUnderstandingDe": "Bei zeitlich ungleichmäßigem Transport hängt der Mittelwert vom gewählten Intervall ab. Gleiche Gesamtladung kann bei anderer Dauer eine andere mittlere Stromstärke bedeuten; die Beziehung kann physikalisch nach Q oder t umgestellt werden.",
+            "essentialUnderstandingEn": "For time-varying transfer, the average depends on the chosen interval. Equal total charge can imply a different average current over a different duration; the relation can be physically rearranged for Q or t.",
+            "observablePerformanceDe": "Die lernende Person bestimmt aus Ladungs-Zeit-Daten mehrere Mittelwerte, vergleicht sie, kehrt die Beziehung für eine neue Zielgröße um und begründet Vorzeichen und Intervallwahl.",
+            "observablePerformanceEn": "The learner determines several averages from charge-time data, compares them, rearranges the relation for a fresh target quantity, and justifies sign and interval choice."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "interpret-average-current",
+            "compare-intervals-and-rearrange"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "time-profile",
+            "textDe": "Gleichmäßiger oder gepulster Ladungstransport",
+            "textEn": "Steady or pulsed charge transfer"
+          },
+          {
+            "id": "reference-direction",
+            "textDe": "Gleiche oder umgekehrte Bezugsrichtung",
+            "textEn": "Same or reversed reference direction"
+          },
+          {
+            "id": "known-quantity",
+            "textDe": "Gesuchte Stromstärke, Ladung oder Zeit",
+            "textEn": "Unknown current, charge, or time"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "charge-time-data-intervals",
+            "taskDemandDe": "Ein Q(t)-Datensatz zeigt ungleichmäßigen Ladungstransport durch einen markierten Leiterquerschnitt. Bestimme die mittlere Stromstärke für zwei Intervalle, erkläre ihre Unterschiede und gib die Bedeutung eines negativen Werts bei der gewählten Richtung an.",
+            "taskDemandEn": "A Q(t) data set shows non-uniform charge transfer through a marked conductor cross-section. Determine average current for two intervals, explain their difference, and state the meaning of a negative value for the chosen direction.",
+            "expectedPerformanceDe": "Die lernende Person bildet passende ΔQ/Δt-Werte mit C/s beziehungsweise A, verwendet Nettoänderungen und deutet Vorzeichen und Intervallabhängigkeit physikalisch.",
+            "expectedPerformanceEn": "The learner forms appropriate ΔQ/Δt values in C/s or A, uses net changes, and physically interprets sign and interval dependence.",
+            "understandingFocusDe": "Der Fall prüft Mittelwertbedeutung an Daten statt isolierter Formelwerte.",
+            "understandingFocusEn": "The case assesses the meaning of an average using data rather than isolated formula values."
+          },
+          {
+            "id": "equal-charge-different-pulses",
+            "taskDemandDe": "Zwei Geräte übertragen pro Zyklus dieselbe Ladung, aber mit unterschiedlich langen Pulsen und Pausen. Berechne Puls- und Zyklusmittelwerte, vergleiche sie und bestimme die Zeit für eine vorgegebene Gesamtladung.",
+            "taskDemandEn": "Two devices transfer the same charge per cycle but use pulses and pauses of different durations. Calculate pulse and cycle averages, compare them, and determine the time required for a specified total charge.",
+            "expectedPerformanceDe": "Die lernende Person legt für jeden Mittelwert das Intervall offen, erhält unterschiedliche Pulsströme trotz gleicher Ladung, berechnet den Zyklusmittelwert inklusive Pause und stellt I = Q/t sinnvoll um.",
+            "expectedPerformanceEn": "The learner states the interval for each average, obtains different pulse currents despite equal charge, calculates the cycle average including the pause, and meaningfully rearranges I = Q/t.",
+            "understandingFocusDe": "Der unabhängige Transfer trennt Ladung, Pulsdauer und Mittelungsintervall.",
+            "understandingFocusEn": "The independent transfer distinguishes charge, pulse duration, and averaging interval."
+          }
+        ]
+      }
+    }
+  },
+  "1730c01d-8c85-57df-b031-c11e2a0511b1": {
+    "sourcePath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-033t-stable-current-6-without-7badac4d-v1.review.jsonl",
+    "record": {
+      "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+      "schemaVersion": 2,
+      "reviewId": "canonical-physics-positive-evidence-v1-b033t-stable-current-6-without-7badac4d-v1",
+      "goalFingerprintRuleVersion": "goal-evidence-v1",
+      "profileRuleVersion": "positive-understanding-evidence-v2",
+      "reviewCriteriaFingerprint": "sha256:8d64a50ede312df08795f6fddec82c1c3bcc8b77e50dad62220c201c819fd460",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "goalId": "1730c01d-8c85-57df-b031-c11e2a0511b1",
+      "goalFingerprint": "sha256:5bce6ea2d9debd2eb6dd7a8fd2fa2a83171938e8dcc85e915c6c95d1511d033b",
+      "reviewInputFingerprint": "sha256:d755665fc034b4250e028cf1bd06eefac852b3f4a3d028652dd7b1183c6bf735",
+      "profileFingerprint": "sha256:c8c053eba6eb0606730537a8d9a2206e4e841ba0d3d639784f2690a95d75d3b2",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "reviewedAt": "2026-10-17T09:32:34.038Z",
+      "reviewer": "codex-pr74-current-context-synthesis-20261017",
+      "reason": "D nennt Potenzialdifferenz mit Vorzeichenkonvention sowie parallelen Feldabstand. Das vollständige P bindet Referenz, ΔE=qΔφ, W_Feld=−ΔE, Ladungswechsel und schräge Projektion; sämtliche gegebenen Felder sind statisch. Eine induktive nichtkonservative Situation wird nirgends als durch dasselbe Potenzial beschreibbar behauptet. Bs elektrostatische Markierung wäre zutreffend und nützlich, korrigiert hier aber keinen konkret falschen Fall.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "reviewRunIds": [],
+      "dissent": [
+        "physics-existing-math-prerequisites-first-b-20261017-v1.batch-003.sol-native-d.goal-010: P=revise. Vorzeichen und feldparalleler Abstand sind bereits sorgfältig beschrieben. D und vollständiges P lassen jedoch die konservative elektrostatische Gültigkeit der Verknüpfung von Feldarbeit und Potenzialenergie unausgesprochen; diese Bedingung sollte kurz benannt werden, ohne eine Induktionskompetenz hinzuzufügen."
+      ],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "potential-voltage-work-energy-signs",
+            "essentialUnderstandingDe": "Elektrisches Potenzial ist potenzielle Energie pro Ladung relativ zu einem Referenzniveau; Spannung ist die Potenzialdifferenz geordneter Punkte. Für eine festgelegte Bewegung gilt ΔE_pot = q·Δφ und die Feldarbeit ist W_Feld = -ΔE_pot.",
+            "essentialUnderstandingEn": "Electric potential is potential energy per unit charge relative to a reference level; voltage is the potential difference between ordered points. For a specified displacement, ΔE_pot = q·Δφ and work done by the field is W_field = -ΔE_pot.",
+            "observablePerformanceDe": "Die lernende Person legt Referenz, Punktreihenfolge und Vorzeichenkonvention offen, bestimmt Potenzialdifferenz, Energieänderung und Feldarbeit mit Einheiten und erklärt deren Vorzeichen für positive und negative Ladungen.",
+            "observablePerformanceEn": "The learner states the reference, point order, and sign convention, determines potential difference, energy change, and field work with units, and explains their signs for positive and negative charges."
+          },
+          {
+            "id": "uniform-field-parallel-separation-limit",
+            "essentialUnderstandingDe": "Der Betragszusammenhang |U| = E·d verwendet in einem homogenen Feld den Abstand parallel zu den Feldlinien; bei einem schrägen Abstand zählt nur dessen feldparallele Komponente.",
+            "essentialUnderstandingEn": "The magnitude relation |U| = E·d uses the separation parallel to the field lines in a uniform field; for an oblique separation only its field-parallel component contributes.",
+            "observablePerformanceDe": "Die lernende Person prüft Homogenität und Geometrie, wählt die feldparallele Strecke beziehungsweise Projektion und begründet, wann die volle Abstandslänge nicht eingesetzt werden darf.",
+            "observablePerformanceEn": "The learner checks uniformity and geometry, selects the field-parallel distance or projection, and explains when the full separation length must not be used."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "potential-voltage-work-energy-signs",
+            "uniform-field-parallel-separation-limit"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "point-order",
+            "textDe": "Punktreihenfolge und Bewegungsrichtung werden vertauscht.",
+            "textEn": "Point order and direction of motion are reversed."
+          },
+          {
+            "id": "charge-sign",
+            "textDe": "Die Probeladung ist positiv oder negativ.",
+            "textEn": "The test charge is positive or negative."
+          },
+          {
+            "id": "separation-direction",
+            "textDe": "Der Abstand ist parallel, antiparallel oder schräg zum Feld.",
+            "textEn": "The separation is parallel, antiparallel, or oblique to the field."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "ordered-points-and-charge-sign",
+            "taskDemandDe": "Ein homogenes Feld E = 2,5 kV/m zeigt nach rechts. Punkt B liegt 4,0 cm rechts von A. Bestimme Δφ = φ_B-φ_A sowie für q = +2,0 nC und q = -2,0 nC jeweils ΔE_pot und W_Feld für A nach B; erkläre alle Vorzeichen.",
+            "taskDemandEn": "A uniform field E = 2.5 kV/m points right. Point B is 4.0 cm to the right of A. Determine Δφ = φ_B-φ_A and, for q = +2.0 nC and q = -2.0 nC, ΔE_pot and W_field for motion from A to B; explain every sign.",
+            "expectedPerformanceDe": "Δφ = -100 V. Für +2,0 nC gilt ΔE_pot = -200 nJ und W_Feld = +200 nJ; für -2,0 nC kehren sich beide Energievorzeichen um. Der Betrag 100 V stimmt mit E·d überein.",
+            "expectedPerformanceEn": "Δφ = -100 V. For +2.0 nC, ΔE_pot = -200 nJ and W_field = +200 nJ; for -2.0 nC both energy signs reverse. The 100 V magnitude agrees with E·d.",
+            "understandingFocusDe": "Punktreihenfolge, Ladungsvorzeichen und Feldarbeit werden konsistent verbunden.",
+            "understandingFocusEn": "Point order, charge sign, and field work are connected consistently."
+          },
+          {
+            "id": "oblique-separation-transfer",
+            "taskDemandDe": "In einem homogenen Feld E = 2,0 kV/m sind zwei Punkte 6,0 cm voneinander entfernt; ihre Verbindung schließt 60° mit der Feldrichtung ein. Bestimme den Spannungsbetrag und widerlege die Rechnung, die unmittelbar 6,0 cm in E·d einsetzt.",
+            "taskDemandEn": "In a uniform field E = 2.0 kV/m, two points are separated by 6.0 cm; their connecting line makes a 60° angle with the field direction. Determine the voltage magnitude and refute a calculation that inserts 6.0 cm directly into E·d.",
+            "expectedPerformanceDe": "Die feldparallele Projektion ist 6,0 cm·cos 60° = 3,0 cm, daher |U| = 60 V. Die Rechnung mit der vollen Länge ergäbe fälschlich 120 V, weil der senkrechte Anteil keine Potenzialänderung erzeugt.",
+            "expectedPerformanceEn": "The field-parallel projection is 6.0 cm·cos 60° = 3.0 cm, so |U| = 60 V. Using the full length would incorrectly give 120 V because the perpendicular component produces no potential change.",
+            "understandingFocusDe": "Die geometrische Geltungsbedingung wird auf eine neue Orientierung übertragen.",
+            "understandingFocusEn": "The geometric validity condition is transferred to a new orientation."
+          }
+        ]
+      }
+    }
+  }
+}
