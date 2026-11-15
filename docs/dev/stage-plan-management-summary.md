@@ -23,7 +23,7 @@ CI-Nachweis gilt weiterhin für den benannten Implementierungscommit.
 
 ## Gesamtstand
 
-**Stand: 15. November 2026, 09:12 MEZ (UTC+01:00).**
+**Stand: 15. November 2026, 10:38 MEZ (UTC+01:00).**
 
 **Fortschritt: K 0/13 und F 0/7 vollständig abgeschlossen · 0 reale Landespläne
 aktiviert · Wirkung auf die vollständigen Stufenrückgriffe noch nicht gemessen.**
@@ -32,50 +32,54 @@ Begrenzte Kanten- und Sichtvergleiche sind noch kein vollständiger Vorher-/Nach
 | Umfang | Stand und verbleibende Arbeit |
 | --- | --- |
 | K1 | Teilreparatur in #157: elementarer Halbleiterpfad und eigener Transistor-Schaltversuch. Eigener Verstärkerversuch und vollständige Stufenplatzierung offen. |
-| K2 | Teilreparatur in #157: vier passende Diagrammaufgaben. Elementare Tabellen-/Diagrammkette und Länderplatzierungen offen. |
+| K2 | Vier passende Diagrammaufgaben in #157; zusätzlich lokal drei elementare Aufgaben und vier korrigierte Voraussetzungskontexte. Physikrückgriffe und Länderplatzierungen bleiben offen. |
 | K3–K6, K8–K11 | Fachrecherche und lokale Entwürfe laufen; noch keine abgeschlossene Lieferung dieser Befunde. |
 | K7, K12, K13 | Offen: Rheinland-Pfalz, fachliche Voraussetzungen auf Prüfungsaufgaben und konsistente Stufenausschnitte. Vorliegende Bestandsaufnahmen sind keine Reparatur. |
 | F1, F2, F6 | Grundlage in #157: Planvertrag, Erzeugung und Diagnosekern. Reale Pläne, vollständige Anbindung und ihre Abnahme fehlen. |
 | F3, F4, F7 | Offen: Lernkarte aus erklärten Planeinheiten, Einordnung notwendiger Vorbereitung und zweisprachige Norm. |
 | F5 | Fachprüfung teilweise umgesetzt über K1/K2; der vollständige Befundbestand bleibt offen. |
 
-## 15. November 2026, 09:12 MEZ — Halbleiterpfad, Diagrammaufgaben und Stufenplangrundlage
+## 15. November 2026, 10:38 MEZ — Halbleiterpfad, Tabellen-/Diagrammaufgaben und Stufenplangrundlage
 
-**Stand: lokale Nachweise vorhanden; [PR #157](https://github.com/enpasos/skillpilot/pull/157)
-meldet einen CI-Fehler beim Check der Bilddateien. Korrektur läuft;
-Integration und frische Main-CI stehen aus.**
+**Stand: lokale Nachweise bestanden; aktualisierte Lieferung für
+[PR #157](https://github.com/enpasos/skillpilot/pull/157). Erfolgreiche vollständige
+PR-CI, Integration und frische Main-CI stehen aus.**
 
-- **Fortschritt:** K1/K2 teilweise bearbeitet; F1/F2/F6 als Grundlage.
-  K 0/13, F 0/7 abgeschlossen; 0 reale Landespläne aktiviert; vollständige
-  Rückgriffswirkung noch nicht gemessen.
-- **Ergebnis und Entscheidungen:** Drei neue Kompetenzen und drei neue
-  Lernendenaufgaben trennen einfaches Dotierungsmodell, Deutung vorgegebener
-  Diodenkennlinien und selbst durchgeführten Transistor-Schaltversuch.
-  Ein bestandener Papierauftrag gilt dadurch nicht als eigener Versuch.
-  33 Quellenzuordnungen wurden begrenzt korrigiert. Vier neue Diagrammaufgaben
-  ersetzen eine unbelegte Abdeckung durch eine Algebraaufgabe; in 18 erzeugten
-  Sichten entfallen vier nur durch deren falsche Voraussetzung aufgenommene
-  Diagrammziele. Die Kompetenzen selbst bleiben erhalten. Die korrigierten
-  Bewertungsraster verlangen alle fachlichen Kernaspekte und lassen
-  gleichwertige Antworten zu. Unter `v1.3` entsteht ein Planvertrag als
-  Grundlage; dies ist noch keine aktivierte neue Paket-Laufzeitversion.
+- **Fortschritt:** K1/K2 teilweise umgesetzt; F1/F2/F6 als Grundlage.
+  **K 0/13, F 0/7 abgeschlossen; 0 reale Landespläne aktiviert.** Die Wirkung
+  auf sämtliche Stufenrückgriffe ist noch nicht gemessen. Lokal sinkt etwa
+  die Zahl vorausgesetzter Kompetenzen für „Tabellen erstellen“ von 27 auf vier.
+- **Ergebnis und Entscheidungen:** Drei neue Physikkompetenzen und drei
+  zugehörige Lernendenaufgaben trennen einfaches Dotierungsmodell,
+  vorgegebene Diodenkennlinien und einen selbst durchgeführten
+  Transistor-Schaltversuch. 33 Quellenzuordnungen sind begrenzt korrigiert.
+  Vier neue Diagrammaufgaben ersetzen eine unbelegte Abdeckung durch eine
+  Algebraaufgabe; vier dadurch fälschlich einbezogene Diagrammziele entfallen
+  aus 18 erzeugten Sichten. Hinzu kommen vier korrigierte elementare
+  Voraussetzungsketten und drei Aufgaben für Tabellenaufbau, Tabellenlesen
+  und Diagrammlesen. Vollständige Zieltexte und Evidenzprofile bleiben erhalten;
+  die Raster verlangen alle fachlichen Kernaspekte und erlauben gleichwertige
+  Antworten. `v1.3` beschreibt den neuen Planvertrag, noch keine aktivierte
+  Paket-Laufzeitversion.
 - **Kontrollstellen:**
-  [Halbleiterkompetenzen, eigene Versuchshandlungen und sechs Bewertungsraster](https://github.com/enpasos/skillpilot/blob/5bf8228635aed4eee780fdb98f4b7ee2af6d480a/curricula/DE/Gymnasium/quality/goal-model-review/physics-semiconductor-learning-path-20261115/post-corrected-independent-review-v3/README.md),
-  [Diagrammaufgaben, unabhängige Reviews und Änderungen der 18 Sichten](https://github.com/enpasos/skillpilot/blob/5bf8228635aed4eee780fdb98f4b7ee2af6d480a/curricula/DE/Gymnasium/quality/assessment-review/mathematik/diagram-route-repair-20261115-v1/README.md),
-  [Planvertrag v1.3 und seine noch fehlende Anbindung](https://github.com/enpasos/skillpilot/blob/5bf8228635aed4eee780fdb98f4b7ee2af6d480a/contracts/curriculum-package/v1.3/README.md).
-- **Nachweise:** Die eingecheckte lokale
-  [Statusberechnung mit Befehl, Laufzeiten und Ergebnissen](https://github.com/enpasos/skillpilot/blob/5bf8228635aed4eee780fdb98f4b7ee2af6d480a/curricula/DE/Gymnasium/quality/goal-model-review/physics-semiconductor-learning-path-20261115/applicability-followup-v5/final-integrated-status.actual.json)
-  und der [Vergleich der unveränderten Mindeststandards](https://github.com/enpasos/skillpilot/blob/5bf8228635aed4eee780fdb98f4b7ee2af6d480a/curricula/DE/Gymnasium/quality/goal-model-review/physics-semiconductor-learning-path-20261115/applicability-followup-v5/after-correction-floor-pass.actual.txt)
-  dokumentieren fünf tief geprüfte Fächer sowie 21 Kataloge und zwölf geschützte
-  Routen. Mathematik und Physik bleiben lokal M7. Die
-  [33 Quellenklauseln](https://github.com/enpasos/skillpilot/blob/5bf8228635aed4eee780fdb98f4b7ee2af6d480a/curricula/DE/Gymnasium/quality/goal-model-review/physics-semiconductor-learning-path-20261115/source-coverage-followup-v4/README.md)
-  sind einzeln nachverfolgbar. Das sind gespeicherte Agentenläufe und getrennte
-  Agentenreviews; die reproduzierte Remote-CI steht noch aus. Beobachtete
-  Lernerfolge werden damit nicht behauptet.
-- **Nächster Schritt:** Den CI-Fehler beheben, #157 nach erfolgreicher vollständiger CI integrieren
-  und die frische Main-CI abwarten. Danach den Abschluss separat dokumentieren.
-  Parallel die Tabellen-/Diagrammkette, den eigenen Verstärkerversuch und die
-  belegten Länderplatzierungen bis zur tatsächlichen Integration bearbeiten.
+  [Physik: Kompetenzen, Versuchshandlungen und Bewertungsraster](https://github.com/enpasos/skillpilot/blob/e5154f263880f8699a3130883c07269d4827737a/curricula/DE/Gymnasium/quality/goal-model-review/physics-semiconductor-learning-path-20261115/post-corrected-independent-review-v3/README.md),
+  [Mathematik: elementare Kette, Gegenbeispiele und unveränderte Zielumfänge](https://github.com/enpasos/skillpilot/blob/e5154f263880f8699a3130883c07269d4827737a/curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/k2-elementary-representations-current-v1/README.md),
+  [Planvertrag v1.3 und fehlende Anbindung](https://github.com/enpasos/skillpilot/blob/e5154f263880f8699a3130883c07269d4827737a/contracts/curriculum-package/v1.3/README.md).
+- **Nachweise:** Der [gemeinsame lokale Liefernachweis](https://github.com/enpasos/skillpilot/blob/e5154f263880f8699a3130883c07269d4827737a/curricula/DE/Gymnasium/quality/goal-model-review/physics-semiconductor-learning-path-20261115/ci-followup-v6/README.md)
+  verlinkt tatsächliche Befehle, Ausgaben, Fehlversuche und Reviews. Vollständiger
+  Anwendungsbuild mit fünf Lernzielbüchern, 119.906 Schemadateien, alle fünf
+  tief geprüften Fächer sowie unveränderte Mindeststandards für 21 Kataloge und
+  zwölf Routen bestehen. Mathematik bleibt M7 mit 807, Physik mit 481
+  Kompetenzen. Die drei korrigierten Backendtests bestehen; 128 konkrete
+  Zielmengen sind gegen frühere Datenstände abgeglichen. Der erste PR-Lauf
+  scheiterte in sechs Jobs; ihre Ursachen sind lokal behoben. Das sind
+  automatisierte Checks und getrennte Agentenreviews, keine beobachtete
+  Lernwirkung oder bereits erfolgreiche neue Remote-CI.
+- **Nächster Schritt:** Den gemeinsamen Stand in #157 vollständig prüfen,
+  integrieren und nach frischer Main-CI abschließen. Danach die bereits
+  vorbereiteten Fachreparaturen und Normquellen integrieren. Eigener
+  Verstärkerversuch, weitere falsche Kompetenznachweise, Länderplatzierungen
+  und reale Planaktivierung bleiben ausdrücklich Teil des Gesamtauftrags.
 
 ## 15. November 2026, 09:09 MEZ — Offene Ausgangslieferungen integriert
 
