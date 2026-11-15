@@ -102,6 +102,7 @@ interface JurisdictionCoverageEntry {
 
 interface JurisdictionCoverage {
   dimension: 'jurisdiction'
+  emptyCanonicalViewProjection?: boolean
   totalJurisdictions: number
   totalAtomicGoals: number
   rawAtomicGoals: number
@@ -4374,38 +4375,110 @@ export function collectRenderedAtomicGoalIdsFromCompositionView(
   return atomicGoalIds
 }
 
-function readCompositionViewAtomicGoalIds(report: CoverageReport): {
+/** Mirror LearnerService.matchesStateFilter for atomic seeds. Selection uses raw
+ * provenance/direct mappings, never the subsequent CQR source-quality verdict
+ * or the compiler's assessment-requires evidence (which replaces raw evidence).
+ */
+function sourceCoverageAtomicScopeMatcher(landscape: SkillLandscape) {
+  const sourceJurisdictions = readSourceLandscapeJurisdictionById()
+  const mappingsByState = new Map<string, Set<string>>()
+  for (const mappingFile of readAllGoalMappingFiles()) {
+    if (mappingFile.targetLandscapeId !== landscape.landscapeId || !mappingFile.sourceLandscapeId) continue
+    const state = sourceJurisdictions.get(mappingFile.sourceLandscapeId)
+    if (!state) continue
+    const ids = mappingsByState.get(state) ?? new Set<string>()
+    for (const mapping of mappingFile.mappings ?? []) if (mapping.canonicalGoalId) ids.add(mapping.canonicalGoalId)
+    mappingsByState.set(state, ids)
+  }
+  const provenanceFile = resolve(repoRoot, 'curricula/DE/Gymnasium/provenance/canonical-goal-provenance-registry.json')
+  const registry = existsSync(provenanceFile)
+    ? loadJson<{ landscapes?: Array<{ landscapeId: string; goalProvenance?: Record<string, Record<string, unknown>> }> }>(provenanceFile)
+      .landscapes?.find(source => source.landscapeId === landscape.landscapeId)?.goalProvenance ?? {}
+    : {}
+  const strings = (value: unknown): string[] => typeof value === 'string'
+    ? [value] : Array.isArray(value) ? value.filter((item): item is string => typeof item === 'string') : []
+  return (goal: LearningGoal, scope: CompositionView['scope']): boolean => {
+    const state = normalizeJurisdiction(scope.jurisdiction)
+    if (state) {
+      const embedded = (goal.extendedData as { provenance?: unknown } | undefined)?.provenance
+      const embeddedEntries = embedded && typeof embedded === 'object' && !Array.isArray(embedded)
+        ? Object.fromEntries(Object.entries(embedded).filter(([, value]) => value !== null && value !== undefined)) : {}
+      const provenance = { ...(registry[goal.id] ?? {}), ...embeddedEntries }
+      const hasProvenance = ['sourceLandscapeId', 'additionalSourceLandscapeIds', 'crossSubjectPrerequisiteLandscapeIds']
+        .some(key => strings(provenance[key]).some(id => sourceJurisdictions.get(id) === state))
+      const explicit = goal.applicability?.jurisdiction?.some(value => normalizeJurisdiction(value) === state) ?? false
+      if (!explicit && !hasProvenance && !mappingsByState.get(state)?.has(goal.id)) return false
+    }
+    // Existing general runtime rule: the authored Bavarian Mathematics view
+    // owns course selection; legacy goal GK/LK tags do not narrow it further.
+    // LearnerService.java:10860-10866. This is not a goal-specific exception.
+    const viewOwnsCourse = state === 'DE-BY' && landscape.landscapeId === CANONICAL_GYM_MATH_LANDSCAPE_ID
+    const tags = goal.tags ?? []
+    const releaseCourse = (goal as LearningGoal & { release?: { courseLevel?: string } }).release?.courseLevel?.trim().toUpperCase()
+    const courseMatches = (course: string): boolean => tags.length === 0 || tags.includes(course)
+      || releaseCourse === course || (!tags.includes('GK') && !tags.includes('LK') && !releaseCourse)
+    if (!viewOwnsCourse && scope.courseProfile) {
+      const course = scope.courseProfile.trim().toUpperCase()
+      if (course === 'GK+LK' ? !courseMatches('GK') && !courseMatches('LK') : !courseMatches(course)) return false
+    }
+    if (scope.durationModel) {
+      const duration = scope.durationModel.trim().toUpperCase()
+      const explicitDuration = goal.applicability?.durationModel
+      if (explicitDuration !== undefined) {
+        if (!explicitDuration.some(value => value.trim().toUpperCase() === duration)) return false
+      } else {
+        const durationTags = tags.map(tag => tag.trim().toUpperCase().replace(/^DURATION-?MODEL:/u, ''))
+          .filter(tag => tag === 'G8' || tag === 'G9')
+        if (durationTags.length && !durationTags.includes(duration)) return false
+      }
+    }
+    return true
+  }
+}
+
+export function readCompositionViewAtomicGoalIds(report: CoverageReport, compositionViewFiles?: readonly string[]): {
+  canonicalViewPresent: boolean
   canonicalViewAtomicGoalIds: Set<string>
   viewAtomicGoalIdsByJurisdiction: Map<string, Set<string>>
 } {
   const landscape = readLandscapeForReport(report)
-  const viewFiles = readCompositionViewFilesForReport(report)
+  const viewFiles = compositionViewFiles ?? readCompositionViewFilesForReport(report)
+  const canonicalViewFiles = viewFiles.filter((file) => file.split(/[\\/]/).pop()?.toLowerCase().startsWith('de-de'))
+  const canonicalViewPresent = canonicalViewFiles.length > 0
   const canonicalViewAtomicGoalIds = new Set<string>()
   const viewAtomicGoalIdsByJurisdiction = new Map<string, Set<string>>()
   if (!landscape || viewFiles.length === 0) {
-    return { canonicalViewAtomicGoalIds, viewAtomicGoalIdsByJurisdiction }
+    return { canonicalViewPresent, canonicalViewAtomicGoalIds, viewAtomicGoalIdsByJurisdiction }
   }
+  const goalById = new Map(landscape.goals.map(goal => [goal.id, goal]))
+  const root = landscape.goals.find(goal => goal.tags?.includes('root'))
+  const roots = root ? new Map([[landscape.landscapeId, root.id]]) : new Map<string, string>()
+  const matchesScope = sourceCoverageAtomicScopeMatcher(landscape)
 
   const addViewAtoms = (target: Set<string>, file: string) => {
-    collectRenderedAtomicGoalIdsFromCompositionView(landscape, file).forEach((goalId) => target.add(goalId))
+    const view = normalizeCompositionView(loadJson<unknown>(file))
+    // Apply the declared view scope to target atoms. Ineligible parents never
+    // prune eligible atomic seeds; prerequisiteOnly support never becomes a target.
+    const roles = collectCompositionProjectionRoleGoalIds(view.rootNodes, goalById, roots)
+    for (const id of roles.targetGoalIds) {
+      const goal = goalById.get(id)
+      if (goal && isAtomicGoal(goal) && matchesScope(goal, view.scope)) target.add(id)
+    }
   }
 
-  viewFiles
-    .filter((file) => file.split(/[\\/]/).pop()?.toLowerCase().startsWith('de-de'))
-    .forEach((file) => addViewAtoms(canonicalViewAtomicGoalIds, file))
+  canonicalViewFiles.forEach((file) => addViewAtoms(canonicalViewAtomicGoalIds, file))
 
   Object.keys(JURISDICTION_LABELS).forEach((jurisdiction) => {
     const prefix = jurisdiction.toLowerCase()
     const target = new Set<string>()
-    viewFiles
-      .filter((file) => file.split(/[\\/]/).pop()?.toLowerCase().startsWith(prefix))
-      .forEach((file) => addViewAtoms(target, file))
-    if (target.size > 0) {
+    const jurisdictionViewFiles = viewFiles.filter((file) => file.split(/[\\/]/).pop()?.toLowerCase().startsWith(prefix))
+    jurisdictionViewFiles.forEach((file) => addViewAtoms(target, file))
+    if (jurisdictionViewFiles.length > 0) {
       viewAtomicGoalIdsByJurisdiction.set(jurisdiction, target)
     }
   })
 
-  return { canonicalViewAtomicGoalIds, viewAtomicGoalIdsByJurisdiction }
+  return { canonicalViewPresent, canonicalViewAtomicGoalIds, viewAtomicGoalIdsByJurisdiction }
 }
 
 function normalizeJurisdiction(value: unknown): string | null {
@@ -5518,7 +5591,7 @@ function readReverseSourceCoverageByJurisdiction(
 
   for (const [jurisdiction, sourceLandscapeIds] of sourceLandscapeIdsByJurisdiction.entries()) {
     const explicitViewAtomicGoalIds = viewAtomicGoalIdsByJurisdiction.get(jurisdiction)
-    const viewAtomicGoalIds = explicitViewAtomicGoalIds && explicitViewAtomicGoalIds.size > 0
+    const viewAtomicGoalIds = explicitViewAtomicGoalIds !== undefined
       ? explicitViewAtomicGoalIds
       : new Set(
         report.goals
@@ -5616,8 +5689,9 @@ function readReverseSourceCoverageByJurisdiction(
   return result
 }
 
-function readJurisdictionCoverageByLandscapeId(
+export function readJurisdictionCoverageByLandscapeId(
   applicabilityCompilation: ApplicabilityCompilationResult,
+  compositionViewFilesByLandscapeId?: ReadonlyMap<string, readonly string[]>,
 ): Map<string, JurisdictionCoverage> {
   const coverageByLandscapeId = new Map<string, JurisdictionCoverage>()
   const surrogateEntriesByKey = readAcceptedSurrogateEvidenceByKey()
@@ -5627,14 +5701,15 @@ function readJurisdictionCoverageByLandscapeId(
     const landscape = readLandscapeForReport(report)
     const canonicalGoalById = new Map((landscape?.goals ?? []).map((goal) => [goal.id, goal]))
     const {
+      canonicalViewPresent,
       canonicalViewAtomicGoalIds,
       viewAtomicGoalIdsByJurisdiction,
-    } = readCompositionViewAtomicGoalIds(report)
+    } = readCompositionViewAtomicGoalIds(report, compositionViewFilesByLandscapeId?.get(report.landscapeId))
     const reverseSourceCoverageByJurisdiction = readReverseSourceCoverageByJurisdiction(
       report,
       viewAtomicGoalIdsByJurisdiction,
     )
-    const canonicalAtomicGoalIds = canonicalViewAtomicGoalIds.size > 0
+    const canonicalAtomicGoalIds = canonicalViewPresent
       ? canonicalViewAtomicGoalIds
       : new Set(rawAtomicGoals.map((goal) => goal.goalId))
     const sourceCoverageAtomicGoalIds = new Set(
@@ -5652,7 +5727,7 @@ function readJurisdictionCoverageByLandscapeId(
       const visibleGoals = report.goals.filter((goal) =>
         (goal.compiledApplicability.jurisdiction ?? []).includes(projection.value))
       const viewAtomicGoalIds = viewAtomicGoalIdsByJurisdiction.get(projection.value)
-      const visibleAtomicGoalReports = (viewAtomicGoalIds && viewAtomicGoalIds.size > 0
+      const visibleAtomicGoalReports = (viewAtomicGoalIds !== undefined
         ? rawAtomicGoals.filter((goal) => viewAtomicGoalIds.has(goal.goalId))
         : visibleGoals.filter((goal) => goal.goalType === 'atomic' && canonicalAtomicGoalIds.has(goal.goalId)))
         .filter((goal) => sourceCoverageAtomicGoalIds.has(goal.goalId))
@@ -5766,6 +5841,7 @@ function readJurisdictionCoverageByLandscapeId(
         && entry.errors === 0).length
     coverageByLandscapeId.set(report.landscapeId, {
       dimension: 'jurisdiction',
+      emptyCanonicalViewProjection: canonicalViewPresent && canonicalViewAtomicGoalIds.size === 0,
       totalJurisdictions: jurisdictions.length,
       totalAtomicGoals,
       rawAtomicGoals: rawAtomicGoals.length,
@@ -5957,7 +6033,7 @@ function evaluateSourceSnapshotIngestion(
   )
 }
 
-function evaluateJurisdictionCoverage(coverage: JurisdictionCoverage | undefined): RuleResult {
+export function evaluateJurisdictionCoverage(coverage: JurisdictionCoverage | undefined): RuleResult {
   if (!coverage) {
     return makeRule('CQR-003', 'not_configured', 'No Bundesland coverage projection is available for this curriculum.')
   }
@@ -5972,7 +6048,9 @@ function evaluateJurisdictionCoverage(coverage: JurisdictionCoverage | undefined
     ? Math.min(...coverage.jurisdictions.map((entry) => entry.sourceBackedAtomicGoals))
     : 0
   const fullCoverageJurisdictions = coverage.sourceCompleteJurisdictions
-  const status: RuleStatus = errored.length > 0
+  const emptyCanonicalViewProjection = coverage.emptyCanonicalViewProjection === true
+  const status: RuleStatus = emptyCanonicalViewProjection
+    || errored.length > 0
     || unsupported.length > 0
     || sourceUnmapped.length > 0
     ? 'fail'
@@ -5988,6 +6066,7 @@ function evaluateJurisdictionCoverage(coverage: JurisdictionCoverage | undefined
       : `${fullCoverageJurisdictions}/${coverage.totalJurisdictions} declared Bundesland projection(s) have source-backed atom-level view coverage, no unsupported assignments, and complete source-to-view mapping.`,
     {
       totalJurisdictions: coverage.totalJurisdictions,
+      emptyCanonicalViewProjection: emptyCanonicalViewProjection ? 1 : 0,
       coveredJurisdictions: coverage.coveredJurisdictions,
       sourceBackedJurisdictions: coverage.sourceBackedJurisdictions,
       sourceCompleteJurisdictions: coverage.sourceCompleteJurisdictions,
@@ -6016,6 +6095,7 @@ function evaluateJurisdictionCoverage(coverage: JurisdictionCoverage | undefined
       totalAtomicGoals: coverage.totalAtomicGoals,
     },
     [
+      ...(emptyCanonicalViewProjection ? ['Existing national composition views expose no source-coverage targets. Registered source obligations remain required.'] : []),
       ...errored.map((entry) => `${entry.jurisdiction}: ${entry.errors} projection error(s), ${entry.sourceBackedAtomicGoals}/${entry.visibleAtomicGoals} source-backed view atomic goal(s)`),
       ...unsupported.map((entry) => `${entry.jurisdiction}: ${entry.unsupportedAssignedAtomicGoals} assigned atomic goal(s) without source-backed Lehrplan evidence`),
       ...sourceUnmapped.map((entry) => `${entry.jurisdiction}: ${entry.unmappedSourceAtomicGoals} source Lehrplan atom(s) do not map into the Bundesland view`),

@@ -1,0 +1,28 @@
+{
+  "atUtc": "2026-11-15T22:14:16.412797+00:00",
+  "agentTask": "/root/physics_eighteen_fresh_b",
+  "reviewKind": "Independent technical source-projection countercheck, separate from completed D2 reviews",
+  "decision": "reject_intermediate_frontend_only_scope_filter",
+  "intermediateGeneratorSHA256InOwnPin": "bf62b64b12c431aa72c30894598b526a0c25dbdd098f90ac5a2da9d7dd73fdf3",
+  "laterIntermediateGeneratorSHA256ReportedByNativeMathDiagnostic": "e3c55e4baf919aebcc1a23e378169236de2c668ee62251b1dfb27b64e4150b73",
+  "specificPhysicsPositive": {
+    "rawForeignGoalJurisdictionOccurrences": 28,
+    "scopedOccurrences": 0,
+    "BYtargetsRetained": 2,
+    "evidence": "collector-comparison.actual.json;api-two-goal-extract.actual.json"
+  },
+  "blockingCounterexample": {
+    "goalId": "2f8a3a90-717d-5ac1-b54e-facca26e9008",
+    "actualScope": "DE-BY:G9:CrossStage:LK and GK+LK",
+    "actualSeed": true,
+    "actualLearning": true,
+    "rawApplicabilityExcludesBY": true,
+    "mechanism": "Backend state eligibility permits direct source provenance/mapping in addition to explicit applicability. A frontend-only applicability filter therefore removes a current actual target.",
+    "evidence": "api-math-task-extract-v2.actual.json;math-by-two-source-atoms.actual.json supplied by QA"
+  },
+  "additionalFailClosedRequirement": "Declared empty national/Land target sets must not fall back to compiled goals in either forward or reverse source coverage.",
+  "negativeRequirement": "An actually visible HE-applicable target retaining only BY source evidence must remain counted and fail CQR003. Source eligibility is not source-backed approval.",
+  "parentRequirement": "Resolve atomic authored target role and own scope eligibility independently from filtered structural-parent traversal; preserve actual backend seeds and reconstruct needed ancestry.",
+  "correction": "api-math-task-extract.actual.json used a wrong invented24174 UUID suffix. No assertion about actual24174 may rely on that entry. v2 extracts all exact UUIDs directly from QA diagnostic fields. The central2f8 result is unchanged.",
+  "limits": "No source, curriculum, active QA, Git or D2-record writes. No hypothetical inconsistency is used to waive the concrete current backend counterexample."
+}

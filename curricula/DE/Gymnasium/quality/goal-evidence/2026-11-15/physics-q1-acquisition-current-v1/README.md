@@ -106,3 +106,27 @@ sechs bestandenen Pflichtchecks ohne Blocker. Genau zwei neue zielbezogene
 Auflösungen ersetzen die betreffenden alten Claims; alle 107 alten
 Reviewindizes bleiben bytegleich. Der volle 21-Katalog-/12-Routenabschluss
 und Remote-CI sind davon getrennte Nachweise.
+
+Die anschließende Quellenprüfung korrigiert einen Auditfehler: Zwei bayerische
+Ziele wurden ungefiltert in 14 fremden Landesmengen mitgezählt. Der
+[unabhängige technische Review](source-scope-independent-review/review-explanation.md)
+verwirft zunächst einen zu engen Frontend-Filter anhand einer tatsächlich
+ausgelieferten bayerischen Mathematikaufgabe. Die Endfassung folgt der atomaren
+Backend-Auswahl einschließlich roher direkter Quellenzuordnungen; die fachliche
+Quellenbewertung bleibt davon getrennt. Vorhandene leere Ansichten und reine
+Vorbereitung erhalten keine erfundene Zielmenge. Der neue native Regressionstest
+ist in den regulären Curriculum-Qualitätstest eingebunden.
+[Die gezielte Katalogprüfung](current841-source-scope-reader-final-v1/native/all21-source-coverage.actual.json)
+weist zehn ausgebaute Fächer mit bestandener Quellenprüfung und elf unveränderte
+M0-Warnungen aus; [alle 26 konfigurierten Routenregeln](current841-source-scope-reader-final-v1/native/math-physics-route-rules.actual.json)
+bestehen. [Die Inputabgrenzung](current841-source-scope-reader-final-v1/author/qa-source-scope-input-invariance.actual.json)
+belegt unveränderte Fach-, Ansichts- und Laufzeitdateien gegenüber dem letzten
+echten API-Export. Ein neuer API-Lauf oder eine Unterrichtsabnahme wird dadurch
+nicht behauptet.
+
+Der [vollständige offizielle lokale Nachlauf](current841-runtime-scope-official-full21-and-protected-floors.actual.json)
+endete am 15. November 2026 um 22:30 UTC mit Exit 0 für Statusgenerator und
+Mindeststandprüfung: 21 Kataloge, zwölf geschützte Routen, keine Eingangsdrift.
+Mathematik und Physik stehen auf M7. Die elf M0-Kataloge werden dadurch nicht
+hochgestuft; ihre weiterhin ausgewiesenen offenen Regeln bleiben sichtbar.
+Remote-CI und Integration sind weiterhin getrennt nachzuweisen.

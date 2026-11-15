@@ -1,0 +1,54 @@
+{
+  "at": "2026-11-15T22:24:05.707648+00:00",
+  "status": "STABLE_AUTHOR_QA_ONLY_CANDIDATE_NATIVE_TESTS_PASS_INDEPENDENT_REVIEW_PENDING",
+  "codePins": [
+    {
+      "path": "app/scripts/generateCurriculumQualityStatus.ts",
+      "sha256": "ffe2b5e59ee80677ecdef7f4d0b2f2095d60c5eb1a69125d73da9f4de63767c1"
+    },
+    {
+      "path": "app/scripts/testSourceCoverageScopeNative.ts",
+      "sha256": "48460e295b7d190f322d3eca90e243962b9c5b2af007af37efa5a962383119a3"
+    },
+    {
+      "path": "app/scripts/testCurriculumQualityStatus.ts",
+      "sha256": "294ad2d71a353514a4f8c64c3912999df9ca593c353b8c1b9421a6e5dd182fe4"
+    }
+  ],
+  "changedFiles": [
+    "app/scripts/generateCurriculumQualityStatus.ts",
+    "app/scripts/testSourceCoverageScopeNative.ts",
+    "app/scripts/testCurriculumQualityStatus.ts"
+  ],
+  "canonicalAndAllViewsWritten": false,
+  "runtimeAndLearnerResultsWritten": false,
+  "change": "CQR003 collects only declared target atoms and applies the existing backend atomic state/course/duration selection. State selection is explicit applicability OR raw direct mapping/provenance, separate from unchanged source-quality evaluation. Existing BY-Mathematics view-owned course selection is mirrored without any goal-specific exception. Existing empty views are preserved as empty and cannot fall back to synthetic complete coverage; registered source obligations stay intact.",
+  "nativeTest": {
+    "path": "tmp/physics-cqr104-consistent-stage-projection-20261115/source-scope-native-tests-v3.log",
+    "sha256": "99aad0535a5d5c3b5fa011ae72168f6289f218071fda07b0c73e2dc780807816",
+    "ciEntry": "app/scripts/testCurriculumQualityStatus.ts imports testSourceCoverageScopeNative.ts",
+    "cases": [
+      "Current Physics source coverage passes; BY-only677a is not selected in HE",
+      "Actually exposed unsupported HE goal fails native CQR003 with unchanged BY evidence",
+      "Empty filtered HE projection has0targets and all its registered source atoms unmapped; CQR003fails",
+      "Unknown HE target cannot fall back to complete coverage",
+      "PrerequisiteOnly-only national projection fails while its registered source universe remains unchanged",
+      "Neutral course equals GK/LK union; DE is national; duration filtering holds",
+      "A nonmatching parent cannot prune an eligible target atom",
+      "Real2f8Math task preserves raw BY direct-mapping fallback despite derived AP/evidence excluding BY; authored GK still omits it"
+    ]
+  },
+  "targetedNativeSourceCoverage": {
+    "path": "tmp/physics-release840-20261115/all21-source-coverage-runtime-source-selector-ffe2.actual.json",
+    "sha256": "5205f50adb906fbdc495ea8f146d991701ea1f709c5893f1e533cc136adbf919"
+  },
+  "targetedNativeRoutes": {
+    "path": "tmp/cqr-foreign-route-context-20261115/runtime-source-selector-ffe2.actual.json",
+    "sha256": "6886563f478097f56899234fea52c298d52d9fdfed8ecfac53cb307f3aafc167"
+  },
+  "api72InputInvariance": {
+    "path": "tmp/physics-cqr104-consistent-stage-projection-20261115/qa-source-scope-input-invariance.actual.json",
+    "sha256": "6cae41553bc5455c4ab5b2bc0995648b990e8fdf1cd572e5fa5d8e18bf40071b"
+  },
+  "releaseBoundary": "Author verification only. Independent B review and official full21/protected-floor run are separately owned. No blanket M7 or main-CI acceptance."
+}
