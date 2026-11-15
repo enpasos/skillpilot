@@ -23,11 +23,16 @@ CI-Nachweis gilt weiterhin für den benannten Implementierungscommit.
 
 ## Gesamtstand
 
-**Stand: 15. November 2026, 13:20 MEZ (UTC+01:00).**
+**Stand: 15. November 2026, 15:38 MEZ (UTC+01:00).**
 
 **Fortschritt: K 0/13 und F 0/7 vollständig abgeschlossen · 0 reale Landespläne
-aktiviert · Wirkung auf die vollständigen Stufenrückgriffe noch nicht gemessen.**
-Begrenzte Kanten- und Sichtvergleiche sind noch kein vollständiger Vorher-/Nachher-Nachweis.
+aktiviert · Vorher-/Nachher-Messung der tatsächlichen Lernkarten läuft.**
+Die native Lernkartenberechnung bestätigt bereits neue Physikrückgriffe nach
+#157: Bayern 9 → 10, bundesweite Sicht 39 → 43. Diese Zahlen zählen fachliche
+Rückgriffsbeziehungen, nicht sichtbare Pfeile. Beide Nutzerscreenshots sind jetzt
+mit der tatsächlichen GK+LK-Zusammenführung exakt reproduziert: Physik 204/418,
+Mathematik 334/616 Ziele. Die Rückgriffsursachen sind erfasst; ihre Reparatur und
+die Abnahme der neuen Untereinheiten stehen aus.
 
 | Umfang | Stand und verbleibende Arbeit |
 | --- | --- |
@@ -40,15 +45,114 @@ Begrenzte Kanten- und Sichtvergleiche sind noch kein vollständiger Vorher-/Nach
 | F7 | Zweisprachiger Normkandidat lokal umgesetzt und unabhängig geprüft; noch nicht integriert. |
 | F5 | Fachprüfung teilweise umgesetzt über K1/K2; der vollständige Befundbestand bleibt offen. |
 
-## 15. November 2026, 13:20 MEZ — Rollout bei unverändertem Git-Stand
+## 15. November 2026, 15:38 MEZ — Abnahme an den tatsächlichen Lernkarten konkretisiert
 
-**Stand: Lokal umgesetzt und getestet; Lieferung mit
-[PR #157](https://github.com/enpasos/skillpilot/pull/157). Integration und frische
-Main-CI stehen aus. Kein Produktionsrollout durchgeführt.**
+**Stand: Diagnose und Umsetzung laufen lokal; noch kein Folge-PR. #157 ist
+integriert und seine frische Main-CI erfolgreich. Dieses Folgepaket ist offen.**
+
+- **Fortschritt:** K1–K13/F1–F7 bleiben der Gesamtauftrag; **K 0/13, F 0/7
+  abgeschlossen, 0 reale Landespläne aktiviert**. Die aktuelle Messung hat
+  einen tatsächlichen Rückschritt sichtbar gemacht, keinen Abschluss belegt.
+- **Ergebnis und Entscheidungen:** Auf den obersten Physik- und
+  Mathematiktafeln sollen die roten Rückgriffe durch fachliche Bereinigung
+  entfallen. Die freistehenden Vorbereitungsknoten zu Skalar- und Vektorprodukt
+  entstehen durch zwei getrennte Oberstufeneinheiten bei der tatsächlichen
+  GK+LK-Zusammenführung. Deren gemeinsame Identität wird korrigiert;
+  benötigte Kompetenzen und Lernnachweise bleiben erhalten. Die echten
+  Rückgriffsbeziehungen brauchen daneben fachliche Bereinigung. Insbesondere
+  müssen irrtümlich in Sekundarstufe I aufgenommene Oberstufenaufgaben an
+  ihrem eigentlichen Lernplatz stehen; bloßes Verschieben ihrer notwendigen
+  Vorbereitung würde den Fehler verdecken.
+  Sekundarstufe I erhält Jahrgangsstufen als Untereinheiten; Sekundarstufe II
+  erhält E-Phase und Q1–Q4 beziehungsweise die zutreffenden Landesbezeichnungen.
+  Dies wird im gemeinsamen Planvertrag umgesetzt und auch innerhalb der
+  Untereinheiten auf Rückgriffe geprüft. Die bisherige reine Stufengrundlage
+  erfüllt diese Abnahme noch nicht.
+- **Kontrollstellen:** Die vom Product Owner gezeigten Tafeln mit Physik
+  204/418 und Mathematik 334/616 Zielen; die Ursachenpfade im entstehenden
+  Vergleichsbericht; die aufgeklappten Jahrgangs- und Phaseneinheiten.
+- **Nachweise:** Ein unabhängiger Agent hat die tatsächliche Kompositions-,
+  persönliche Curriculum- und Lernkartenprojektion auf Ausgangsstand,
+  integriertem #157 und aktuellem Kandidaten ausgeführt. Die ursprünglichen
+  Screenshots stimmen einschließlich beider Vorbereitungsknoten exakt.
+  In der zusammengeführten Sicht sind 41 direkte Rückgriffsbeziehungen erfasst;
+  nach Fachfilter bleiben 28 in Physik und sechs in Mathematik. Diese Zählung
+  ist von den 43 Beziehungen der getrennten bundesweiten Kursansicht zu
+  unterscheiden. Die tatsächliche fachliche Reparatur ist noch nicht abgenommen.
+- **Nächster Schritt:** Fachliche Reparaturen umsetzen und die echten Sichten vor und
+  nach dem nächsten Fachpaket vergleichen. Ein früherer Statusvergleich oder
+  eine grüne CI ersetzt diesen Wirkungsnachweis nicht.
+
+## 15. November 2026, 15:18 MEZ — Lernbilder an die vorhandene Bildsprache anpassen
+
+**Stand: Pipeline geprüft, neue Bildentwürfe lokal erzeugt; noch nicht
+importiert oder freigegeben. Kein abgeschlossener Lieferumfang.**
+
+- **Fortschritt:** Neun neue aktive Physik-Lernbilder identifiziert: vier aus
+  #157 und fünf im folgenden lokalen Paket. Drei genaue Aufgabenabbildungen
+  und drei unveränderte bestehende Lernbilder sind getrennt erfasst.
+- **Ergebnis und Entscheidungen:** Die vorhandene Produktionspipeline mit
+  explizitem Provider, tatsächlichem Prompt, Import und Bildprüfung wird
+  verwendet. Nach dem aktuellen Owner-Feedback gilt eine ruhige, locker
+  gezeichnete Gestaltung ohne dekorative Strahlen, Glitzer und flächendeckende
+  Hervorhebungen. Zwei bisherige PNGs dienen zugleich als Aufgabenmaterial;
+  ihre exakten Bytes und Aufgabenverweise werden erhalten.
+- **Kontrollstellen:** Materialvergleich, Dotierung und Bewegungsdiagramme;
+  Darstellung in 360 und 680 Pixel Breite; unveränderte Anschlusspläne der
+  beiden eigenen Transistorversuche.
+- **Nachweise:** Die unabhängige Bestandsaufnahme hat tatsächliche Bildlinks,
+  Verbraucher und Stilreferenzen geprüft. Die bisherigen Bildentwürfe wurden
+  tatsächlich angesehen. Fachliche Bildfehler und zu kleine Beschriftungen
+  führten zu Korrekturen; erzeugte Bilder gelten nicht automatisch als geprüft.
+  Die ruhigen Endfassungen und ihre Produktionsbytes brauchen die abschließende
+  Inhalts- und Lesbarkeitsprüfung.
+- **Nächster Schritt:** Neun ruhige Endfassungen prüfen, über die vorhandene
+  Pipeline importieren und alle betroffenen Bild-, Seiten- und Fachbindungen
+  mit aktuellem Inhalt validieren. Die Gesamtverantwortung bleibt beim
+  ausführenden Agenten; eine externe Gemini-Übernahme ist derzeit nicht nötig.
+
+## 15. November 2026, 15:18 MEZ — Modellnorm für Stufenpläne vereinheitlicht
+
+**Stand: lokal umgesetzt und unabhängig geprüft; noch kein Folge-PR.
+[#157](https://github.com/enpasos/skillpilot/pull/157) ist nach erfolgreicher
+PR-CI integriert. Integration und frische Main-CI dieses separaten Normpakets
+stehen aus.**
+
+- **Fortschritt:** F7 als lokale Normlieferung vorbereitet.
+  **K 0/13, F 0/7 abgeschlossen; 0 reale Landespläne aktiviert.**
+  Rückgriffe werden durch diese Normkorrektur noch nicht praktisch abgebaut.
+- **Ergebnis und Entscheidungen:** Ein gemeinsamer Plan je Land und
+  Dauermodell bestimmt die Stufen über die Fächer hinweg. Offizielle Zuordnung
+  und geeigneter Lernplatz bleiben unterscheidbar. Die Reihenfolge von
+  Einheiten erzeugt keine zusätzlichen Voraussetzungen oder Lernnachweise.
+  Notwendige Vorbereitung gehört an ihren frühesten tatsächlichen Bedarf;
+  bereits später eingeordnete Ziele werden nicht stillschweigend verschoben.
+  Die bestehende Laufzeit bleibt ausdrücklich vom Zielmodell getrennt.
+- **Kontrollstellen:** [Einheiten und Grenzfälle](../concept/skill-graph/learning-unit-design-and-examples.de.md),
+  [Zuordnung und Lernplatz](../concept/skill-graph/view-projection-and-goal-placement.de.md)
+  sowie [Begriffe und Abgrenzungen](../concept/glossary.de.md).
+- **Nachweise:** Das unabhängige erste Review verlangte vier Normkorrekturen
+  und drei Konsistenzkorrekturen; die zweite Fassung ist angenommen.
+  26 geänderte Quellen und 26 Registerzeilen sind abgeglichen, sieben
+  Gegenbeispiele geprüft. Der native Build erzeugt 44 Markdownseiten und
+  sechs PDFs aus denselben deutschen und englischen Quellen; alle sechs
+  PDF-Builds bestehen. Der erste Versuch scheiterte an einer fehlenden lokalen
+  TeX-Abhängigkeit und bleibt dokumentiert. Dies sind Agentenreviews und
+  automatisierte Dokumentchecks, keine implementierte neue Lernlaufzeit.
+- **Nächster Schritt:** Das Normpaket zusammen mit den nächsten geprüften Fachreparaturen liefern.
+  Bei diesen prüfen wir insbesondere, dass frühere Papieraufgaben keine
+  tatsächlich nicht ausgeführten Versuche nachweisen.
+
+
+## 15. November 2026, 15:38 MEZ — Rollout bei unverändertem Git-Stand
+
+**Stand: Mit [PR #157](https://github.com/enpasos/skillpilot/pull/157) um
+14:25 MEZ auf main integriert und nach erfolgreicher frischer Main-CI um
+15:36 MEZ abgeschlossen. Kein Produktionsrollout durchgeführt.**
 
 - **Fortschritt:** Zusatzauftrag des Product Owners; K 0/13 und F 0/7
-  abgeschlossen, 0 reale Landespläne aktiviert, Gesamtwirkung auf Rückgriffe
-  weiterhin nicht gemessen.
+  abgeschlossen, 0 reale Landespläne aktiviert. Der Zusatzauftrag ändert
+  keine curricularen Rückgriffe.
 - **Ergebnis und Entscheidung:** `./deploy_skillpilot.sh` bietet bei
   unverändertem Commit Abbruch oder erneuten Rollout an. `j` setzt fort;
   `n`, Enter oder Eingabeende brechen vor Build und Service-Neustart ab.
@@ -62,66 +166,47 @@ Main-CI stehen aus. Kein Produktionsrollout durchgeführt.**
   neun CI-Aufteilungstests bestehen ebenfalls. Die neuen Verhaltenstests sind
   in den vorhandenen CI-Job aufgenommen; die lokalen Tests führen keinen echten
   Rollout aus.
-- **Nächster Schritt:** Gemeinsam mit den begrenzten CI-Korrekturen integrieren;
-  Abschluss erst nach frischer erfolgreicher Main-CI.
+- **Integration:** [Implementierungscommit a44c157b53](https://github.com/enpasos/skillpilot/commit/a44c157b536680985dca30737b560b10c7633a04),
+  [Main-CI 43718928027](https://github.com/enpasos/skillpilot/actions/runs/43718928027):
+  **14/14 Jobs erfolgreich**, einschließlich des Deployment-Verhaltenstests.
+- **Nächster Schritt:** Kein weiterer Umsetzungsschritt für diese Auswahl.
+  Ein tatsächlicher Produktionsrollout ist eine getrennte Betriebsaktion.
 
-## 15. November 2026, 13:20 MEZ — Halbleiterpfad, Tabellen-/Diagrammaufgaben und Stufenplangrundlage
+## 15. November 2026, 15:38 MEZ — Halbleiterpfad, Diagrammaufgaben und Stufenplangrundlage
 
-**Stand: Der dritte vollständige Durchgang von
-[PR #157](https://github.com/enpasos/skillpilot/pull/157) ist mit 13 erfolgreichen
-und einem fehlgeschlagenen Job beendet. Der Fehler betrifft einen veralteten
-erzeugten Quellenbericht; die Korrektur und alle 21 nachfolgenden lokalen Checks
-sind abgeschlossen. Die Korrekturen benötigen einen neuen vollständigen
-PR-Durchgang; Integration und frische Main-CI stehen aus.**
+**Umsetzungspaket #157 abgeschlossen: auf main integriert, frische Main-CI
+um 15:36 MEZ erfolgreich. K1/K2 und F1/F2/F6 bleiben teilweise offen.**
 
-- **Fortschritt:** K1/K2 teilweise umgesetzt; F1/F2/F6 als Grundlage mit
-  isolierten Testdaten. **K 0/13, F 0/7 abgeschlossen; 0 reale Landespläne
-  aktiviert.** Die Gesamtwirkung auf Stufenrückgriffe ist noch nicht gemessen.
-  Die jüngste Tabellenkorrektur entfernt vier unnötige fachliche Vorleistungen
-  des elementaren Ziels; die stärkere Aufgabe behält ihre vollständige Vorbereitung.
-- **Ergebnis und Entscheidungen:** Drei neue Physikkompetenzen und drei
-  Lernendenaufgaben trennen einfaches Dotierungsmodell, vorgegebene
-  Diodenkennlinien und einen selbst durchgeführten Transistor-Schaltversuch.
-  33 Quellenzuordnungen sind begrenzt korrigiert. Vier Diagrammaufgaben ersetzen
-  eine unbelegte Abdeckung durch eine Algebraaufgabe; vier dadurch fälschlich
-  einbezogene Diagrammziele entfallen aus 18 erzeugten Sichten. Vier elementare
-  Voraussetzungsketten und drei Aufgaben für Tabellenaufbau, Tabellenlesen und
-  Diagrammlesen ergänzen den Pfad. Der zweite CI-Durchgang fand eine falsch
-  vorgezogene J6-Voraussetzung am J5-Tabellenziel: Die Zahlenvorbereitung sitzt
-  jetzt ausdrücklich an der anspruchsvolleren Aufgabe. Zieltexte und Raster
-  bleiben vollständig erhalten. `v1.3` beschreibt den Planvertrag, noch keine
-  aktivierte Paket-Laufzeitversion. Der jetzt aufgefallene Quellenbericht
-  berücksichtigt lokal auch die drei bereits eingeführten elementaren Aufgaben;
-  bestehende Quellenbewertungen und die 807 relevanten Kompetenzen bleiben
-  unverändert. Eine zusätzliche Testkorrektur prüft die tatsächlichen Felder
-  der Gemini-Lernkartenantwort: Ein zufälliges Wort in einem undurchsichtigen
-  Zugriffstoken ist kein Datenleck.
+- **Fortschritt:** **K 0/13 und F 0/7 vollständig abgeschlossen; 0 reale
+  Landespläne aktiviert.** Die reale Wirkung ist jetzt gemessen: Bayern
+  9 → 10, bundesweite feste Kursansicht 39 → 43 Rückgriffsbeziehungen.
+  Die bestandene technische Lieferung ist deshalb keine fachliche Gesamtabnahme.
+- **Ergebnis und Entscheidungen:** Drei neue Physikkompetenzen und drei Aufgaben
+  trennen einfaches Dotierungsmodell, Diodenkennlinien und einen eigenen
+  Transistor-Schaltversuch; 33 Quellenzuordnungen sind korrigiert. Vier
+  Diagrammaufgaben ersetzen eine unbelegte Algebra-Abdeckung. Tabellenaufbau,
+  Tabellenlesen und elementares Diagrammlesen erhalten passende Aufgaben und
+  bereinigte Voraussetzungen. Planvertrag v1.3 und Diagnosekern bilden die
+  Grundlage für reale Pläne; sie aktivieren noch keine neue Planlaufzeit.
+  Die CI-Reparaturen berichtigen veraltete Bindungen und einen fehlerhaften
+  Token-Texttest, ohne Qualitätsgrenzen zu senken.
 - **Kontrollstellen:**
-  [Physik: Kompetenzen, Versuchshandlungen und Bewertungsraster](https://github.com/enpasos/skillpilot/blob/e5154f263880f8699a3130883c07269d4827737a/curricula/DE/Gymnasium/quality/goal-model-review/physics-semiconductor-learning-path-20261115/post-corrected-independent-review-v3/README.md),
-  [Mathematik: Tabellenkompetenz, Aufgabengrenze und aktuelle Inhaltsreviews](https://github.com/enpasos/skillpilot/blob/e6eb2add29a325204dae9a24f37d89dc0e2a9425/curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/k2-table-task-boundary-current-v2/README.md),
-  [Planvertrag v1.3 und fehlende Anbindung](https://github.com/enpasos/skillpilot/blob/e5154f263880f8699a3130883c07269d4827737a/contracts/curriculum-package/v1.3/README.md).
-- **Nachweise:** Die [aktuelle lokale Qualitätsberechnung](https://github.com/enpasos/skillpilot/blob/e6eb2add29a325204dae9a24f37d89dc0e2a9425/curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/k2-table-task-boundary-current-v2/integrated-validation/full-quality-and-maturity-comparison.actual.json)
-  bestätigt alle fünf M7-Fächer und unveränderte Reifegrade für alle 21 Kataloge;
-  die Mindeststandards für zwölf Routen halten. Mathematik hat 807, Physik 481
-  vollständig maschinell geprüfte Kompetenzen. Die Lernrouten-Tests bestehen
-  mit 25/25 Fällen. Zwei frische unabhängige Inhaltsreviews bestätigen das
-  Tabellenziel; die [technische Gegenprüfung](https://github.com/enpasos/skillpilot/blob/e6eb2add29a325204dae9a24f37d89dc0e2a9425/curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/k2-table-task-boundary-current-v2/completion-audit/README.md)
-  bestätigt 18 unveränderte Sichten und unveränderte Voraussetzungsmengen für
-  128 Konfigurationen. Der Paketvalidator besteht mit 51 Negativfällen.
-  Veraltete Paket-, Berichts- und Testbindungen sind korrigiert; die
-  Freigabeentscheidungen bleiben erhalten. Das sind lokale automatisierte
-  Checks und getrennte Agentenreviews, keine beobachtete Lernwirkung oder
-  bereits erfolgreiche vollständige Remote-CI. Der korrigierte Gemini-Vertragstest
-  besteht lokal mit acht Tests und erkennt alle 20 absichtlich eingebauten
-  Datenlecks. Der erneut gestartete Gemini-Workflow besteht am unveränderten
-  PR-Kopf; dies belegt noch nicht die Integration der Testkorrektur.
-  Nach der Berichtsaktualisierung bestehen alle 21 nachfolgenden lokalen
-  Curriculum-Checks, einschließlich der strengen Qualitäts- und M7-Regeln.
-- **Nächster Schritt:** Die begrenzten Berichts-/Testkorrekturen und die gewünschte
-  Rollout-Auswahl gemeinsam liefern und #157 erst nach erfolgreicher
-  PR-CI integrieren. Die Lieferung wird nach frischer Main-CI abgeschlossen. Danach die vorbereiteten Fachreparaturen und Normquellen
-  integrieren. Eigener Verstärkerversuch, weitere falsche Kompetenznachweise,
-  Länderplatzierungen und reale Planaktivierung bleiben Teil des Gesamtauftrags.
+  [Physik: Kompetenzen und Bewertungsraster](https://github.com/enpasos/skillpilot/blob/a44c157b536680985dca30737b560b10c7633a04/curricula/DE/Gymnasium/quality/goal-model-review/physics-semiconductor-learning-path-20261115/post-corrected-independent-review-v3/README.md),
+  [Mathematik: Tabellenkompetenz und Inhaltsreviews](https://github.com/enpasos/skillpilot/blob/a44c157b536680985dca30737b560b10c7633a04/curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/k2-table-task-boundary-current-v2/README.md),
+  [tatsächliche Rückgriffe und Screenshot-Ursachen](stage-plan-real-view-backflows-2026-11-15.md).
+- **Nachweis und Integration:** [PR #157](https://github.com/enpasos/skillpilot/pull/157)
+  ist nach 14/14 erfolgreichen PR-CI-Jobs um 14:25 MEZ gemergt.
+  Die frische [Main-CI 43718928027](https://github.com/enpasos/skillpilot/actions/runs/43718928027)
+  am [Implementierungscommit a44c157b53](https://github.com/enpasos/skillpilot/commit/a44c157b536680985dca30737b560b10c7633a04)
+  besteht mit **14/14 Jobs**. Alle 21 Kataloge behalten ihre Reifegrade,
+  insbesondere Mathematik und Physik M7. Zusätzliche Workflows für
+  Assessment-Abschluss, Gemini, OAuth und Dokumentation sind separat erfolgreich;
+  sie werden nicht zur Jobzahl dieses Laufs addiert. Inhaltsreviews und
+  automatisierte Nachweise belegen keine bereits beobachtete Lernwirkung.
+- **Nächster Schritt:** Die gemessenen Rückgriffe fachlich beseitigen,
+  eigene Versuche und weitere Kompetenznachweise vervollständigen, Jahrgänge
+  und E-/Q-Phasen einbinden und reale Landespläne aktivieren. Die neue Lieferung
+  wird erneut an tatsächlichen Lernkarten und vollständiger CI gemessen.
 
 ## 15. November 2026, 09:09 MEZ — Offene Ausgangslieferungen integriert
 

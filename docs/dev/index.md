@@ -83,6 +83,7 @@ Diese Seite ist der Einstiegspunkt für die entwicklungsnahe Dokumentation von S
 - [Stufen als Planeinheiten: Übergabe an die Fachprüfung, 15. November 2026](stage-plan-units-handover-2026-11-15.md)
   Iststand, Zielzustand des Modells, Lücken der Dokumente und die curricularen Befunde für Mathematik und Physik.
 - [Fortlaufendes Management Summary zu Lernfluss und Stufenplänen](stage-plan-management-summary.md)
+- [Reale Stufenrückgriffe vor und nach #157, 15. November 2026](stage-plan-real-view-backflows-2026-11-15.md)
   Kurzer Ergebnis-, Qualitäts- und Integrationsstand nach jedem Umsetzungspaket.
 - [Voraussetzungennachweise: wiederverwendbare Batch-Fortsetzung, 9. November 2026](prerequisite-reduction-batches-v6-support-2026-11-09.md)
 - [Deutsch: erster atomarer Bedarf an einem Cluster, 9. November 2026](german-first-cluster-prerequisite-normalization-review-2026-11-09.md)

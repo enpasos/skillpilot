@@ -13,6 +13,21 @@ solution, and implement the corresponding atomic goals, prerequisites,
 assessments and projections with current evidence. Evidence-based new wording
 and bridge goals are permitted; invented official source claims are not.
 
+The owner's follow-up acceptance on **15 November 2026** requires the red
+stage-backflow arrows to disappear from the actual Physics and Mathematics
+learning maps through appropriate curriculum repair. Resolve the two detached
+Mathematics preparation nodes for scalar and vector products through valid
+prerequisites and placements; do not hide edges or delete necessary skills to
+manufacture a clean picture. Under Sekundarstufe I expose the applicable year
+units, and under Sekundarstufe II the E phase and Q1–Q4, respecting each Land
+and duration model. Keep these nested units in the same plan contract. Measure
+actual current-view backflows before and after each subsequent subject package,
+including the nested units, rather than relying only on isolated plan fixtures.
+New learner illustrations must match the established loose, friendly drawing
+style with a calm layout: no decorative sparkles, radiating emphasis marks or
+pervasive highlight bands. Inspect actual images and preserve exact assessment
+stimuli when an asset is shared with a task.
+
 This mandate supersedes the handover's earlier owner-approval reservations
 for this work. It does not waive source fidelity, genuine independent reviews,
 immutable evidence, learner-result contracts or existing quality floors. A
