@@ -1,0 +1,322 @@
+[
+  {
+    "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+    "schemaVersion": 2,
+    "reviewId": "canonical-math-positive-evidence-b037a-diagrams-first-calculus-19-v1",
+    "goalFingerprintRuleVersion": "goal-evidence-v1",
+    "profileRuleVersion": "positive-understanding-evidence-v2",
+    "reviewCriteriaFingerprint": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "goalId": "80c232f1-8f72-5829-9dbe-5a610ccab3be",
+    "goalFingerprint": "sha256:1d2bc29ba7768607c729add7f243b4b860e3b2b980a7954fb980db2cd646f40e",
+    "reviewInputFingerprint": "sha256:d38831c6e6feac6c1187127e3e69c989313a4811a89cdfa444ac521f05dd3020",
+    "profileFingerprint": "sha256:62846d2f03ea8f4255d21a562dc3838bec07992a1909a72251cab5446781c2ba",
+    "status": "needs_human_review",
+    "reviewAuthority": "ai_candidate",
+    "reviewedAt": "2026-09-06T10:00:59Z",
+    "reviewer": "Codex P author; Math B037a; AI candidate only",
+    "reason": "Skalenlesen wird an unterschiedlich aufgebauten Diagrammen als Zuordnung von Position, Größe und Einheit sichtbar.",
+    "evidenceLevel": "E1",
+    "maximumClaimScope": "G1",
+    "reviewRunIds": [],
+    "dissent": [
+      "Die Aufgaben geben Skalen vollständig an; logarithmische Skalen und weitergehende Trendanalyse werden nicht als Pflicht ergänzt."
+    ],
+    "profile": {
+      "archetype": "representation",
+      "expectations": [
+        {
+          "id": "scale-to-value",
+          "essentialUnderstandingDe": "Beschriftung und Teilung legen fest, welche Größe und welcher Zahlenwert zu einer Diagrammposition gehören.",
+          "essentialUnderstandingEn": "Labels and divisions determine the quantity and numerical value represented by a diagram position.",
+          "observablePerformanceDe": "Liest Positionen unter Beachtung von Anfangswert, Teilung und Einheit ab und formuliert die zugehörigen Werte korrekt.",
+          "observablePerformanceEn": "Reads positions using the starting value, divisions and units and states the corresponding values correctly."
+        },
+        {
+          "id": "axis-role",
+          "essentialUnderstandingDe": "Eine Kategorieachse benennt Gruppen, während eine Größenachse Werte samt gegebenem Einheitenfaktor trägt.",
+          "essentialUnderstandingEn": "A categorical axis names groups, while a quantitative axis carries values with any stated unit multiplier.",
+          "observablePerformanceDe": "Unterscheidet Achsenrollen und erläutert, wie eine Beschriftung wie 100 € die abgelesene Zahl verändert.",
+          "observablePerformanceEn": "Distinguishes axis roles and explains how a label such as 100 € changes the meaning of a read-off number."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "scale-to-value",
+          "axis-role"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "axis-format",
+          "textDe": "Ein Zeit-Temperatur-Diagramm mit negativen Skalenwerten gegen ein horizontales Kategoriendiagramm mit Einheitenfaktor variieren.",
+          "textEn": "Vary a time-temperature diagram with negative scale values against a horizontal categorical chart with a unit multiplier."
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "temperature-scale",
+          "taskDemandDe": "Ein Diagramm hat eine Zeitachse in h mit Marken 0,2,4 und eine Temperaturachse in °C mit Marken -10,0,10; beide sind linear geteilt. P liegt horizontal genau zwischen 2 und 4 sowie vertikal zwischen 0 und 10. Lies P und erläutere die Größen.",
+          "taskDemandEn": "A diagram has a time axis in h marked 0,2,4 and a temperature axis in °C marked -10,0,10; both scales are linear. P is horizontally halfway between 2 and 4 and vertically halfway between 0 and 10. Read P and explain the quantities.",
+          "expectedPerformanceDe": "Formuliert: Nach 3 h beträgt die Temperatur 5 °C. Begründet beide Zwischenwerte durch die gleichmäßige Teilung und behandelt 3 als Zeit, nicht als Temperatur.",
+          "expectedPerformanceEn": "States that after 3 h the temperature is 5 °C. Justifies both intermediate values from the uniform divisions and treats 3 as time, not temperature.",
+          "understandingFocusDe": "Achsenbeschriftung und Teilung gemeinsam lesen.",
+          "understandingFocusEn": "Read axis labels and divisions together."
+        },
+        {
+          "id": "horizontal-unit-factor",
+          "taskDemandDe": "Ein horizontales Balkendiagramm zeigt Gruppen A und B auf der vertikalen Achse. Die horizontale Achse heißt Betrag in 100 € und hat lineare Marken 0,2,4. A endet bei 2, B genau zwischen 3 und 4. Lies beide Beträge und ihre Differenz.",
+          "taskDemandEn": "A horizontal bar chart shows groups A and B on the vertical axis. The horizontal axis is labelled Amount in 100 € and has linear marks 0,2,4. A ends at 2 and B halfway between 3 and 4. Read both amounts and their difference.",
+          "expectedPerformanceDe": "Nennt A=200 €, B=350 € und die Differenz 150 €. Erläutert, dass A/B Kategorien und die abgelesenen 2 bzw. 3,5 Vielfache von 100 € sind.",
+          "expectedPerformanceEn": "Gives A=200 €, B=350 € and a difference of 150 €. Explains that A/B are categories and the read-off values 2 and 3.5 are multiples of 100 €.",
+          "understandingFocusDe": "Bei vertauschter Achsenlage den Einheitenfaktor erhalten.",
+          "understandingFocusEn": "Preserve the unit multiplier when axis orientation changes."
+        }
+      ]
+    }
+  },
+  {
+    "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+    "schemaVersion": 2,
+    "reviewId": "canonical-math-positive-evidence-b037a-diagrams-first-calculus-19-v1",
+    "goalFingerprintRuleVersion": "goal-evidence-v1",
+    "profileRuleVersion": "positive-understanding-evidence-v2",
+    "reviewCriteriaFingerprint": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "goalId": "496f16a0-c031-5753-b988-d6cd3cab595e",
+    "goalFingerprint": "sha256:6d115a45d0585730b8e5ef3d5a0864e24cb8c1c9b424b99fa8539b8ebb32f3e6",
+    "reviewInputFingerprint": "sha256:ea533de6b6f42a90fa6a44d6bb40ca445ee770dfa5b5c853d71718003d2d7581",
+    "profileFingerprint": "sha256:0c25e02e94b9ffa632877e09141c282ff8daecce981c341bfc656a970de82ac1",
+    "status": "needs_human_review",
+    "reviewAuthority": "ai_candidate",
+    "reviewedAt": "2026-09-06T10:00:59Z",
+    "reviewer": "Codex P author; Math B037a; AI candidate only",
+    "reason": "Kennwerte tragen konkrete Aussagen über den dargestellten Verlauf, nicht bloß eine optische Beschreibung.",
+    "evidenceLevel": "E1",
+    "maximumClaimScope": "G1",
+    "reviewRunIds": [],
+    "dissent": [
+      "Die Beispiele liefern vollständig festgelegte stückweise lineare Verläufe. Aussagen außerhalb des gezeigten Zeitbereichs und Ursachenbehauptungen bleiben offen."
+    ],
+    "profile": {
+      "archetype": "data",
+      "expectations": [
+        {
+          "id": "diagram-features",
+          "essentialUnderstandingDe": "Steigung, höchster Wert und Schnittpunkt beschreiben Änderungsrate, Niveau und Gleichstand der dargestellten Größen.",
+          "essentialUnderstandingEn": "Slope, highest value and intersection describe rate of change, level and equality of the represented quantities.",
+          "observablePerformanceDe": "Bestimmt die für den Fall relevanten Kennwerte aus dem Diagramm und benennt ihren Zeit- oder Größenbezug.",
+          "observablePerformanceEn": "Determines the features relevant to the case from the diagram and states their time or quantity reference."
+        },
+        {
+          "id": "contextual-trend",
+          "essentialUnderstandingDe": "Ein Trend beschreibt Richtung und Stärke der dargestellten Veränderung im beobachteten Bereich; er erklärt nicht automatisch deren Ursache.",
+          "essentialUnderstandingEn": "A trend describes the direction and strength of the represented change in the observed range; it does not automatically explain its cause.",
+          "observablePerformanceDe": "Deutet Anstieg, Gleichbleiben, Abnahme oder Überholen anhand der Kennwerte mit passenden Einheiten und begrenztem Zeitbezug.",
+          "observablePerformanceEn": "Interprets increase, stability, decrease or overtaking using the features, appropriate units and a bounded time reference."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "diagram-features",
+          "contextual-trend"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "one-versus-two-series",
+          "textDe": "Einen Verlauf mit Plateau gegen zwei sich schneidende lineare Verläufe variieren.",
+          "textEn": "Vary a single course with a plateau against two intersecting linear courses."
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "reservoir-trend",
+          "taskDemandDe": "Ein Volumen-Zeit-Diagramm verbindet (0 h|20 L),(2 h|60 L),(5 h|60 L),(7 h|40 L) geradlinig. Bestimme den höchsten Wert und die Änderungsraten der Abschnitte; deute den Verlauf.",
+          "taskDemandEn": "A volume-time diagram joins (0 h,20 L),(2 h,60 L),(5 h,60 L),(7 h,40 L) with straight segments. Determine the highest value and each segment's rate of change; interpret the course.",
+          "expectedPerformanceDe": "Gibt 60 L während 2≤t≤5 h sowie +20,0,-10 L/h für die drei Abschnitte an. Beschreibt Füllen, gleichbleibendes Volumen und anschließende Abnahme im dargestellten Zeitraum.",
+          "expectedPerformanceEn": "Gives 60 L during 2≤t≤5 h and +20,0,-10 L/h for the three segments. Describes filling, constant volume and subsequent decrease during the shown period.",
+          "understandingFocusDe": "Maximum und Steigung im selben Kontext unterschiedlich deuten.",
+          "understandingFocusEn": "Interpret maximum and slope differently within the same context."
+        },
+        {
+          "id": "two-distance-lines",
+          "taskDemandDe": "Ein Weg-Zeit-Diagramm auf 0≤t≤4 h zeigt Gerade A durch (0|0),(4|24) und Gerade B durch (0|8),(4|16), Wege in km. Bestimme den Gleichstand und deute die Entwicklungen.",
+          "taskDemandEn": "A distance-time diagram on 0≤t≤4 h shows line A through (0,0),(4,24) and line B through (0,8),(4,16), distances in km. Determine where the distances are equal and interpret the developments.",
+          "expectedPerformanceDe": "Liest bzw. bestimmt 6 km/h für A und 2 km/h für B sowie den Schnittpunkt (2 h|12 km). Erklärt: A liegt anfangs 8 km zurück, erreicht nach 2 h denselben Wegwert und liegt danach im gezeigten Bereich vorn.",
+          "expectedPerformanceEn": "Reads or determines 6 km/h for A and 2 km/h for B and the intersection (2 h,12 km). Explains that A starts 8 km behind, reaches the same distance value after 2 h and is ahead thereafter in the displayed range.",
+          "understandingFocusDe": "Einen Schnittpunkt als inhaltlichen Gleichstand bei verschiedenen Trends deuten.",
+          "understandingFocusEn": "Interpret an intersection as contextual equality under different trends."
+        }
+      ]
+    }
+  },
+  {
+    "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+    "schemaVersion": 2,
+    "reviewId": "canonical-math-positive-evidence-b037a-diagrams-first-calculus-19-v1",
+    "goalFingerprintRuleVersion": "goal-evidence-v1",
+    "profileRuleVersion": "positive-understanding-evidence-v2",
+    "reviewCriteriaFingerprint": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "goalId": "fcfbff12-bd03-52ec-b242-a693212b3d2b",
+    "goalFingerprint": "sha256:77b254048840ff301f55c2da39f68ae59a6e7788a9fc167e80fbfa6324f1dbac",
+    "reviewInputFingerprint": "sha256:ae81a3abc8b5b72d0e37a43330c33d3f46d462c7ef430d4240aa62a447dbe563",
+    "profileFingerprint": "sha256:6a63e28c350808b572ee1f09f39f1704ee1cd2dd02abc7268868b8c30cde26a1",
+    "status": "needs_human_review",
+    "reviewAuthority": "ai_candidate",
+    "reviewedAt": "2026-09-06T10:00:59Z",
+    "reviewer": "Codex P author; Math B037a; AI candidate only",
+    "reason": "Das Profil verlangt belegte Aussagenprüfungen und erkennt zwei verschiedene irreführende Darstellungsmechanismen.",
+    "evidenceLevel": "E1",
+    "maximumClaimScope": "G1",
+    "reviewRunIds": [],
+    "dissent": [
+      "Die Fälle prüfen konkrete Behauptungen; aus einer verzerrten Grafik folgt keine Behauptung über absichtliche Täuschung ihres Urhebers."
+    ],
+    "profile": {
+      "archetype": "data",
+      "expectations": [
+        {
+          "id": "claim-and-evidence",
+          "essentialUnderstandingDe": "Eine Diagrammaussage ist an den dargestellten Werten und Bezugsgrößen zu prüfen, nicht allein am visuellen Eindruck.",
+          "essentialUnderstandingEn": "A chart claim must be checked against the displayed values and reference quantities, not merely visual impression.",
+          "observablePerformanceDe": "Belegt ein zustimmendes oder ablehnendes Urteil mit konkreten Diagrammwerten und der zur Aussage passenden Rechnung.",
+          "observablePerformanceEn": "Supports agreement or rejection with specific chart values and a calculation appropriate to the claim."
+        },
+        {
+          "id": "distorted-comparison",
+          "essentialUnderstandingDe": "Abgeschnittene Wertachsen oder unpassende Zeitabstände können Größenverhältnisse oder Änderungsraten optisch verzerren.",
+          "essentialUnderstandingEn": "Truncated value axes or inappropriate time spacing can visually distort ratios or rates of change.",
+          "observablePerformanceDe": "Identifiziert den konkreten Darstellungsmechanismus und erläutert dessen Einfluss auf die geprüfte Aussage.",
+          "observablePerformanceEn": "Identifies the specific representational mechanism and explains its effect on the claim being checked."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "claim-and-evidence",
+          "distorted-comparison"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "distortion-axis",
+          "textDe": "Von einer abgeschnittenen Wertachse zu ungleich langen, gleich breit gezeichneten Zeitintervallen wechseln.",
+          "textEn": "Change from a truncated value axis to unequal time intervals drawn with equal widths."
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "truncated-bars",
+          "taskDemandDe": "Ein Balkendiagramm zeigt Werte A=50 und B=55; die sichtbaren Balken beginnen auf einer abgeschnittenen Achse bei 45. Prüfe: B ist doppelt so groß wie A. Führe Zahlenbelege und den Grafikmechanismus an.",
+          "taskDemandEn": "A bar chart shows A=50 and B=55; the visible bars start at 45 on a truncated axis. Check the claim that B is twice as large as A. Give numerical evidence and identify the graphical mechanism.",
+          "expectedPerformanceDe": "Weist die Verdoppelung zurück: 55/50=1,1, also 10 % mehr. Die sichtbaren Längen 5 und 10 haben zwar Verhältnis 2, bilden aber Abstände von 45 statt der ganzen Werte ab.",
+          "expectedPerformanceEn": "Rejects doubling: 55/50=1.1, so the increase is 10%. The visible lengths 5 and 10 have ratio 2 but represent differences from 45 rather than the full values.",
+          "understandingFocusDe": "Gezeigte Balkenlänge von tatsächlichem Größenverhältnis unterscheiden.",
+          "understandingFocusEn": "Distinguish displayed bar length from the actual value ratio."
+        },
+        {
+          "id": "unequal-time-gaps",
+          "taskDemandDe": "Ein Liniendiagramm setzt die Jahresmarken 0,1,10 gleich weit auseinander und verbindet die Werte 0,10,20. Prüfe: Die Größe wächst in beiden Abschnitten gleich schnell. Begründe anhand der Beschriftung.",
+          "taskDemandEn": "A line chart places year marks 0,1,10 at equal distances and joins values 0,10,20. Check the claim that the quantity grows equally fast in both segments. Justify using the labels.",
+          "expectedPerformanceDe": "Berechnet 10 Einheiten/Jahr im ersten und 10/9≈1,11 Einheiten/Jahr im zweiten Abschnitt. Erklärt, dass gleiche gezeichnete Anstiege hier keine gleichen Änderungsraten bedeuten, weil ein und neun Jahre gleich breit erscheinen.",
+          "expectedPerformanceEn": "Calculates 10 units/year in the first segment and 10/9≈1.11 units/year in the second. Explains that equal drawn rises do not imply equal rates because one year and nine years appear equally wide.",
+          "understandingFocusDe": "Zeitbezogene Aussage mit tatsächlichen Intervalllängen prüfen.",
+          "understandingFocusEn": "Check a time-related claim using the actual interval lengths."
+        }
+      ]
+    }
+  },
+  {
+    "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+    "schemaVersion": 2,
+    "reviewId": "canonical-math-positive-evidence-b037a-diagrams-first-calculus-19-v1",
+    "goalFingerprintRuleVersion": "goal-evidence-v1",
+    "profileRuleVersion": "positive-understanding-evidence-v2",
+    "reviewCriteriaFingerprint": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "goalId": "d668c22d-caeb-5e91-8980-721c931a2bcf",
+    "goalFingerprint": "sha256:3263d7976c1e2035b9e598cce64c8425473b6f0c3aeb5c1f80cde2961fe351ea",
+    "reviewInputFingerprint": "sha256:1fc56959dd34bc1c3d0d8c308f38409d2a9166507510ba14754bec362f1057d7",
+    "profileFingerprint": "sha256:f4ee38384e3127fe95badccc4c1bcc51281c4f0b44f6196aefdf95d7f3fcb4bc",
+    "status": "needs_human_review",
+    "reviewAuthority": "ai_candidate",
+    "reviewedAt": "2026-09-06T10:00:59Z",
+    "reviewer": "Codex P author; Math B037a; AI candidate only",
+    "reason": "Positive Leistung ist hier das verständliche Korrigieren einer vorgegebenen Fehlinterpretation samt begründeter klarerer Darstellung.",
+    "evidenceLevel": "E1",
+    "maximumClaimScope": "G1",
+    "reviewRunIds": [],
+    "dissent": [
+      "Fehlinterpretationen gehören ausdrücklich zum Ziel. Die Beispiele sind konstruierte Aufgaben, keine Diagnose tatsächlicher Lernender oder Absichten von Diagrammautoren."
+    ],
+    "profile": {
+      "archetype": "representation",
+      "expectations": [
+        {
+          "id": "explain-misreading",
+          "essentialUnderstandingDe": "Die Bedeutung einer Bildgröße oder eines Anteils hängt von der dargestellten Größe und deren Bezugsbasis ab.",
+          "essentialUnderstandingEn": "The meaning of a visual size or a proportion depends on the represented quantity and its reference base.",
+          "observablePerformanceDe": "Benennt die vorgegebene Fehlinterpretation, erklärt sie verständlich und ersetzt sie durch eine numerisch belegte zutreffende Aussage.",
+          "observablePerformanceEn": "Names the supplied misinterpretation, explains it clearly and replaces it with a numerically supported correct statement."
+        },
+        {
+          "id": "clearer-alternative",
+          "essentialUnderstandingDe": "Eine klarere Darstellung erhält die Daten und macht den relevanten Vergleich und dessen Bezugsbasis sichtbar.",
+          "essentialUnderstandingEn": "A clearer representation preserves the data and makes the relevant comparison and its reference base visible.",
+          "observablePerformanceDe": "Schlägt eine konkrete alternative Darstellung mit passenden Beschriftungen vor und erklärt, warum der gewünschte Vergleich darin klarer ist.",
+          "observablePerformanceEn": "Proposes a concrete alternative representation with suitable labels and explains why it makes the intended comparison clearer."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "explain-misreading",
+          "clearer-alternative"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "comparison-basis",
+          "textDe": "Flächeneindruck eines Bildsymbols gegen absolute Anzahlen bei unterschiedlichen Gruppengrößen variieren.",
+          "textEn": "Vary the area impression of pictograms against absolute counts for groups of different sizes."
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "square-pictograms",
+          "taskDemandDe": "Für 10 und 20 verkaufte Hefte zeigt eine Grafik Quadrate mit Seitenlängen 1 cm und 2 cm. Eine Betrachterin folgert aus den Bildflächen eine Vervierfachung. Erkläre die Verwechslung und schlage eine klarere Darstellung vor.",
+          "taskDemandEn": "For 10 and 20 notebooks sold, a graphic shows squares with side lengths 1 cm and 2 cm. A viewer infers a fourfold increase from the pictured areas. Explain the confusion and propose a clearer representation.",
+          "expectedPerformanceDe": "Unterscheidet das Flächenverhältnis 4:1 vom Datenverhältnis 2:1 und formuliert die tatsächliche Verdoppelung. Schlägt etwa gleich breite Balken von 10 und 20 auf einer bei null beginnenden Anzahlachse vor und begründet deren Längenvergleich.",
+          "expectedPerformanceEn": "Distinguishes the area ratio 4:1 from the data ratio 2:1 and states the actual doubling. Proposes, for example, equal-width bars of 10 and 20 on a count axis starting at zero and justifies the length comparison.",
+          "understandingFocusDe": "Eine mehrdimensionale Bildvergrößerung in einen ehrlichen Datenvergleich übersetzen.",
+          "understandingFocusEn": "Translate multidimensional image enlargement into a faithful data comparison."
+        },
+        {
+          "id": "different-class-sizes",
+          "taskDemandDe": "Ein Balkendiagramm zeigt 12 teilnehmende Kinder von 20 in Klasse A und 15 von 30 in Klasse B. Prüfe und korrigiere die Deutung: In B nimmt der größere Anteil teil. Schlage für den Anteilsvergleich eine klarere Darstellung vor.",
+          "taskDemandEn": "A bar chart shows 12 participating children out of 20 in class A and 15 out of 30 in class B. Check and correct the interpretation that B has the larger participation proportion. Propose a clearer representation for comparing proportions.",
+          "expectedPerformanceDe": "Erklärt: B hat mehr Teilnehmende absolut, A aber 12/20=60 % gegenüber 15/30=50 %. Schlägt 100-%-Balken oder Prozentbalken mit beschrifteten Gruppengrößen 20 und 30 vor, damit Anteil und Anzahl unterscheidbar bleiben.",
+          "expectedPerformanceEn": "Explains that B has more participants in absolute terms, but A has 12/20=60% compared with 15/30=50%. Proposes 100%-bars or percentage bars labelled with group sizes 20 and 30 so proportions and counts remain distinguishable.",
+          "understandingFocusDe": "Bei geänderter Bezugsbasis die Interpretation und die Darstellung gemeinsam verbessern.",
+          "understandingFocusEn": "Improve both interpretation and representation when the reference base changes."
+        }
+      ]
+    }
+  }
+]

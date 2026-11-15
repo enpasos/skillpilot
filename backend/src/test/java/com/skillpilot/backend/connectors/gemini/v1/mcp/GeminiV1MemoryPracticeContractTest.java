@@ -103,12 +103,39 @@ class GeminiV1MemoryPracticeContractTest {
         McpSchema.CallToolResult result = start();
         assertThat(result.isError()).isFalse();
         assertThat(result.meta()).isNullOrEmpty();
-        assertThat(result.structuredContent().toString())
-                .contains("Vorderseite", "answerCapability", "stateVersion", "progress")
-                .doesNotContain("Rückseite", "reviewCapability", "back", learningSessionId, learnerId);
-        assertThat(result.content().toString()).doesNotContain("Rückseite", "reviewCapability");
-        Map<String, Object> first = map(((List<?>) map(result.structuredContent()).get("cards")).getFirst());
-        assertThat(first).containsOnlyKeys("id", "front", "answerCapability");
+        assertThat(result.content()).hasSize(1);
+        for (Map<String, Object> content : List.of(map(result.structuredContent()), payload(result))) {
+            assertThat(content).containsOnlyKeys(
+                    "status", "goalId", "goalTitle", "stateVersion", "progress", "completed",
+                    "language", "cards", "instruction");
+            assertThat(content)
+                    .containsEntry("status", "ready")
+                    .containsEntry("goalId", GOAL_ID)
+                    .containsEntry("goalTitle", "Wichtige Begriffe behalten")
+                    .containsEntry("completed", false)
+                    .containsEntry("language", "de");
+            assertThat(((Number) content.get("stateVersion")).longValue()).isEqualTo(INITIAL_STATE_VERSION);
+            assertThat(content.get("instruction")).isInstanceOf(String.class);
+            assertThat((String) content.get("instruction")).isNotBlank();
+            assertThat(map(content.get("progress")))
+                    .containsOnlyKeys("totalCards", "dueCards", "scheduledCards")
+                    .containsEntry("totalCards", 2)
+                    .containsEntry("dueCards", 2)
+                    .containsEntry("scheduledCards", 0);
+            List<?> cards = (List<?>) content.get("cards");
+            assertThat(cards).hasSize(2);
+            for (int index = 0; index < cards.size(); index++) {
+                Map<String, Object> card = map(cards.get(index));
+                assertThat(card).as("start card %s", index + 1)
+                        .containsOnlyKeys("id", "front", "answerCapability")
+                        .containsEntry("id", "card-" + (index + 1))
+                        .containsEntry("front", "Vorderseite " + (index + 1));
+                assertThat(card.get("answerCapability")).isInstanceOf(String.class);
+                assertThat((String) card.get("answerCapability")).isNotBlank();
+            }
+            assertThat(content.toString())
+                    .doesNotContain("Rückseite", "private instruction", learningSessionId, learnerId);
+        }
     }
 
     @Test

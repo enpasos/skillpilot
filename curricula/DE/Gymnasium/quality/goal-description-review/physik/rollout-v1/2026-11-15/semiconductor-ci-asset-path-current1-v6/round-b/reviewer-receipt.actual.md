@@ -1,0 +1,32 @@
+# Independent native description review — round B
+
+- Recorded review window: 2026-11-15T08:26:32Z to 2026-11-15T08:28:42Z. The start is the first explicit UTC clock observation after opening the supplied inputs. Receipt written 2026-11-15T08:29:20Z.
+- Reviewer: separately delegated AI reviewer; requested/configured `gpt-6.1-sol`, reasoning `ultra`, per parent delegation. No independently available runtime model attestation and no human review claimed.
+- Scope: exactly goal `7badac4d-2874-5b3a-87e8-bf8f4440b2a6`, blind first pass. No round A, separate earlier-review artifacts, canonical diff, separate author change rationale, adjudication or another agent's result was inspected. The supplied current evidence profile, including its embedded review metadata, was visible as assigned context; that metadata was not treated as approval or as authority for this decision. The actual profile was independently checked against the prompt and criteria.
+- Decision: `keep`; `evidenceProfileContract=positive-understanding-evidence-v2`; `evidenceProfileRecommendation=none`. The existing concise bilingual competence and the complete profile cover typical material classification, a conditional conductivity comparison and justified simple uses. The transfer changes materials and temperature evidence; sample form does not determine material class. The PNG explicitly qualifies silicon's intermediate position as this example and identifies it as a basic material of microchips without claiming a completed switching function.
+- Applicable criteria considered: scientific and bilingual accuracy, observation versus classification, comparison conditions, independently justified applications, fresh changed-case transfer, semantic atomicity, stage-neutral wording, concise description versus detailed profile, safe documented-data tasks and candidate authority. No equations, conservation argument, quantum model, experiment or judgment rubric is required by this narrow goal. External official mapping and complete effective projection evidence were not independently verified.
+
+Files actually read or viewed (all paths relative to repository unless absolute):
+
+1. `curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-15/semiconductor-ci-asset-path-current1-v6/round-b/prompt.md`
+2. `curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-15/semiconductor-ci-asset-path-current1-v6/round-b/criteria.md`
+3. `curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-15/semiconductor-ci-asset-path-current1-v6/round-b/description-review-campaign.json`
+4. `curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-15/semiconductor-ci-asset-path-current1-v6/round-b/review-bundle-manifest.json`
+5. `curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-15/semiconductor-ci-asset-path-current1-v6/round-b/description-review-input.json`, including the supplied current full DE/EN V2 profile and page context.
+6. `curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-15/semiconductor-ci-asset-path-current1-v6/round-b/batches/physik-material-classification-asset-current-20261115-v6-first-pass-b.batch-001.input.jsonl`
+7. `curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-15/semiconductor-ci-asset-path-current1-v6/round-b/contracts/goal-description-review-record.schema.json`
+8. `curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-15/semiconductor-ci-asset-path-current1-v6/bundle/contracts/goal-evidence-ai-run-manifest.schema.json`
+9. `curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-15/semiconductor-ci-asset-path-current1-v6/bundle/book.pdf.render-manifest.json`
+10. `curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-15/semiconductor-ci-asset-path-current1-v6/bundle/book.pdf`: physical page 1 (cover) and physical page 3 (logical goal page 1), rendered with `pdftoppm` and actually viewed through `view_image` as `/tmp/physik-material-classification-v6-b-page-1.png` and `/tmp/physik-material-classification-v6-b-goal-page-1.png`.
+11. `app/public/assets/goal-visualizations/physik/7badac4d-2874-5b3a-87e8-bf8f4440b2a6/7badac4d-2874-5b3a-87e8-bf8f4440b2a6.png`, actually viewed through `view_image`; raw SHA-256 matches the supplied `originalDigest` exactly: `2a9dc2fb15e90877440ec9bf166419105d2ca96ebd13cd0368b5b666af5ac4b7`.
+12. Technical validation implementation only: `app/scripts/validateGoalDescriptionReviewCampaignResults.ts` and selected lines of `app/scripts/validateGoalDescriptionReviewCampaign.ts`.
+
+Native schema and binding validation, run from `app`:
+
+```bash
+npx tsx scripts/validateGoalDescriptionReviewCampaignResults.ts --bundle ../curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-15/semiconductor-ci-asset-path-current1-v6/round-b/review-bundle-manifest.json --input ../curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-15/semiconductor-ci-asset-path-current1-v6/round-b/description-review-input.json --campaign ../curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-15/semiconductor-ci-asset-path-current1-v6/round-b/description-review-campaign.json --batches-dir ../curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-15/semiconductor-ci-asset-path-current1-v6/round-b/batches --results-dir ../curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-15/semiconductor-ci-asset-path-current1-v6/round-b/results
+```
+
+Result: exit code `0`; `Goal-description review campaign results valid: 1`. The campaign directory contains exactly the required run/record pair. All supplied identity, text and fingerprint fields were copied from the assigned input, not reconstructed. Run ID: `physik-material-classification-asset-current-20261115-v6-first-pass-b-actual-4387e4c1-a884-4cd7-8eef-843a9537af59`. Output digest: `sha256:902a24cc4343a41e982a205d6c277d8d14754706e897356b5b797d92aae48703`. Generation configuration and its digest input are preserved in `generation-parameters.actual.json`.
+
+Outputs remain `candidate` / `ai_candidate`. No active goal, evidence profile, visualization, configuration, approval or learner result was changed; no native finalization or Git operation was performed.

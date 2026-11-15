@@ -1,11 +1,18 @@
 # Lerneinheiten: Cluster, `after` und Lernfluss
 
-**Stand: 14. November 2026.** Dieses Dokument legt fest, was eine Lerneinheit
+**Stand: 15. November 2026.** Dieses Dokument legt fest, was eine Lerneinheit
 ist, wie Einheiten geordnet werden und wie diese Ordnung im Lernfluss wirkt.
 Die Festlegungen gelten mit der Übernahme des Dokuments nach `main`. Umgesetzt
 ist davon nichts; Abschnitt 10 nennt Einführung und Folgearbeiten. Bis sie erledigt sind,
 beschreiben die [Graph-Definition §11 bis §13](learning-units.de.md) und der
 Einheitenvertrag vom 12. November den umgesetzten Stand.
+
+Die [Übergabe der Stufenarbeit](../../dev/stage-plan-units-handover-2026-11-15.md)
+hält die nachfolgenden Befunde und den Lieferstand fest. Unter dem Auftrag vom
+15. November übernehmen die ausführenden Agenten die dortigen fachlichen und
+technischen Entscheidungen; der Product Owner kontrolliert die Ergebnisse.
+Die Präzisierungen zu Landesplänen in Abschnitt 7 lösen die Fragen M1 bis M8
+der Übergabe auf. Eine Modellfestlegung ist noch keine umgesetzte Prüfung.
 
 ## 1. Zweck
 
@@ -103,10 +110,12 @@ darf eigene Inhaltsziele haben; so beginnen Einheiten, die von oben nach unten
 eingeführt werden (Abschnitt 10). Am Ende liegt jedes Inhaltsziel in einer
 Einheit mit Prüfungen.
 
-Nur Inhaltsziele brauchen eine Einheit. Übungsaufgaben, Abiturklausuren und
-das Orientierungsziel eines Fachs dürfen ohne Einheit bleiben oder eigenes
-Ziel einer größeren Einheit sein. Lernkarten- und Orientierungsziele können
-eigene Ziele jeder Einheit sein.
+Nur Inhaltsziele brauchen am Ende eine fachliche Einheit mit Prüfungen.
+Übungsaufgaben, Abiturklausuren, Lernkarten- und Orientierungsziele können
+eigene Ziele einer größeren Einheit sein. Im vollständigen Landesplan hat
+jedes Ziel einen Platz unter einer der beiden Stufen; dort steht kein Ziel
+neben den obersten Planeinheiten. Die kanonische Gliederung ohne Landesplan
+darf weiterhin Ziele ohne übergeordnete Einheit führen.
 
 ### 3.2 Was zu einer Einheit gehört
 
@@ -193,7 +202,8 @@ kennzeichnet die Karte den Rückgriff.
 | --- | --- |
 | Fach | kein Knoten, sondern ein Filter |
 | Planeinheit | ein Knoten für alle Fächer: eine Sekundarstufe I, nicht eine je Fach |
-| Ziel ohne Einheit über sich, etwa das Orientierungsziel eines Fachs | steht neben den obersten Einheiten |
+| Orientierungsziel, Übungsaufgabe oder Abiturklausur eines Landesplans | eigenes Ziel einer begründet gewählten Stufe oder einer Einheit darunter |
+| Ziel ohne Einheit in der bundesweiten kanonischen Gliederung | kann dort neben den obersten Einheiten stehen; diese Gliederung ist kein Landesplan |
 | Ziel, das der Voraussetzungsabschluss von außerhalb des Plans hinzufügt | steht als Vorbereitung in der Planeinheit, in der es zuerst gebraucht wird (Abschnitt 7.3) |
 
 ## 4. `after` und `requires`
@@ -426,6 +436,32 @@ Planeinheiten. Heute steckt diese Zuordnung in den Ländersichten: Deren
 Abschnitte „Sekundarstufe I“, „Jahrgangsstufe 7“ oder „Ph8.3“ sagen, welcher
 Cluster und welches Ziel wohin gehört.
 
+Pro Land und Dauermodell gibt es einen maßgeblichen Plan über die Fächer.
+Seine Wurzel hat genau zwei Kinder: Sekundarstufe I und Sekundarstufe II;
+Sekundarstufe II liegt nach I. Die Fächer und ihre Kursprofile wählen den
+Umfang darin. Sie begründen keine widersprechenden Lernplätze desselben
+kanonischen Ziels. Eine Sicht einer Stufe ist ein abgeleiteter Ausschnitt
+dieses Plans und braucht keine leere zweite Stufe. Die bundesweite Sicht
+bleibt die kanonische Gliederung; sie ist kein zusätzlicher Landesplan.
+
+Zwei Aussagen bleiben getrennt:
+
+- **Geführt in:** die durch die Quelle des Landes belegte curriculare
+  Zuordnung. Eine kanonische Phasenmarke oder eine benötigte Voraussetzung
+  erzeugt keine solche Aussage.
+- **Steht in:** der didaktische Lernplatz im Plan. Er folgt normalerweise der
+  belegten Zuordnung; begründete frühere Vorbereitung kann davon abweichen,
+  ohne die Quellenzuordnung zu ersetzen.
+
+Eine kanonische Marke darf eine ausdrücklich vorläufige Einordnung
+unterstützen, wenn der Landesbeleg fehlt. Sie belegt weder offizielle
+Zugehörigkeit noch Quellenabdeckung. Bei `prerequisiteOnly` bestimmt die
+Stelle des Eintrags keine Stufe; notwendige Vorbereitung erhält ihren
+Lernplatz durch den frühesten tatsächlichen Bedarf im geschlossenen
+persönlichen Lernumfang. Sichten, Generatoren und Prüfungen müssen dieselbe
+Ableitung verwenden. Der Voraussetzungsabschluss macht notwendige Atome zu
+Lernzielen der Person, aber nicht zu neu behaupteten amtlichen Zielzuordnungen.
+
 Ein Land führt jede fachliche Einheit ohne Untereinheiten als Ganzes in einer
 Planeinheit. Verteilt ein Lehrplan ihre Ziele auf zwei Planeinheiten, ist das
 ein Befund für die Fachprüfung (Abschnitt 8). Bleibt es bei der Verteilung,
@@ -499,6 +535,16 @@ Auflösungen:
 
 Welche zutrifft, entscheidet die Fachprüfung am Beleg. Die beiden letzten
 ändern kein Ziel.
+
+Die ausführenden Agenten dürfen dafür belegte atomare Brückenziele und neue
+prüfbare Formulierungen verfassen. Eine empfohlene Unterrichtsreihenfolge
+allein begründet keine harte Voraussetzung. Ebenso wird kein Gate durch eine
+fachlich nicht bestehende Voraussetzung oder Abdeckungsbehauptung erfüllt.
+Fehlt nach der Korrektur ein Prüfungsnachweis, gehört eine passende Aufgabe
+mit Rubrik und aktueller Abdeckung zur vollständigen Reparatur; die offene
+Lücke besteht das vorhandene Gate nicht. Ein zunächst belegter Rückgriff
+bleibt offen, bis Zielumfang oder Plan ihn auflösen. Er ist keine Ausnahme
+von E2.
 
 ### Konkrete Fälle
 
@@ -693,7 +739,7 @@ Einheiten, prüft für sie E1 bis E4 und ist sofort in der Lernkarte zu sehen.
 
 | Schritt | Was erklärt wird | Was sich an den Daten ändert |
 | --- | --- | --- |
-| 1 | die Planeinheiten jedes Landes: Stufen, dann Jahrgänge und Phasen, dann feinere Abschnitte, wo der Plan sie hat | nur die Pläne der Länder; die kanonischen Fachdateien bleiben unberührt |
+| 1 | die Planeinheiten jedes Landes: Stufen, dann Jahrgänge und Phasen, dann feinere Abschnitte, wo der Plan sie hat | die strukturelle Erklärung ändert die Pläne; die parallel erforderlichen Fachkorrekturen F5 können kanonische Ziele und Prüfungen ändern |
 | 2 | fachliche Einheiten innerhalb der Planeinheiten, die größten Tafeln der Lernkarte zuerst | Einheiteneinträge; ein neuer Cluster, wo keiner den Zuschnitt hat |
 | 3 | die Prüfungen der Einheiten, sobald ihre Abdeckungsreviews vorliegen | Die Prüfungen ziehen in den Cluster ihrer Einheit. |
 
@@ -712,6 +758,13 @@ B13 neu, bevor Fachdateien geändert werden.
 Die Regeln werden schrittweise zum Gate: zuerst der Bericht, dann die Behebung
 der Ursachen, dann eine Sperrklinke, die keinen neuen Verstoß zulässt. Ein
 hartes Gate gibt es erst bei null Verstößen.
+
+Vor F1/F2 darf ein eingecheckter Diagnosebericht die heutigen Sichten und ihre
+vorläufige Projektion reproduzierbar auswerten. Er ist als Diagnose
+gekennzeichnet und keine vollständige E2-Abnahme. Der formale Bericht F6
+verwendet anschließend die erklärten Planeinheiten. Die Fachrecherche und
+belegten Zielkorrekturen müssen deshalb nicht auf die gesamte Vertragsmigration
+warten. Vorhandene Graph- und Reifegradprüfungen gelten währenddessen weiter.
 
 ### 10.2 Was sich ändert
 
@@ -748,7 +801,8 @@ hartes Gate gibt es erst bei null Verstößen.
 1. **Sofort:** F1 bis F4 und F6, dazu der Teil von F7 zu Planeinheiten und
    `after`. Danach zeigt die Lernkarte Einheiten, und der Bericht nennt die
    Rückgriffe.
-2. **Daneben:** die Fachprüfung F5.
+2. **Daneben:** die Fachprüfung F5, beginnend mit reproduzierbarer Diagnose,
+   Quellenprüfung und vollständigen Reparaturen einschließlich der Aufgaben.
 3. **Vor den Fachdateien:** F8. Danach F9 bis F11.
 4. **Laufzeit:** F13 nach F2, F12 nach F10.
 

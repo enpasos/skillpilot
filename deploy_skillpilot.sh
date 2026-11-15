@@ -17,6 +17,7 @@ Usage: ./deploy_skillpilot.sh [--coach-variant <openai-mcp|visible-session|legac
        [--openai-stable-origin-cutover]
 
 Without arguments, production is deployed with the openai-mcp coach.
+If GitHub supplies no new commits, choose whether to abort (default) or redeploy.
 Use --coach-variant only for an intentional canary or rollback.
 The one-time --openai-stable-origin-cutover validates staged neutral Nginx,
 then reloads it after backend readiness and before the public edge checks.

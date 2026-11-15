@@ -1,0 +1,44 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-semiconductor-applicability-current3-20261115-v5-first-pass-b.actual-sol-ultra-b-20261115T070947Z",
+  "campaignId": "physik-semiconductor-applicability-current3-20261115-v5-b",
+  "roundId": "physik-semiconductor-applicability-current3-20261115-v5-first-pass-b",
+  "batchId": "physik-semiconductor-applicability-current3-20261115-v5-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:ad471b5eb338a85dbfaff903e81ce89804de60f36015e64bc000db69be5af1b7",
+  "bundleFingerprint": "sha256:648855b6eebbd29352498577232b532b0c8671a5b8c1687034487dc4ae350861",
+  "bookDigest": "sha256:fa9e124a6e540e2b45b373103cf655a0d56a9cf269af0e0a99587fe32fc07a0e",
+  "provider": "OpenAI",
+  "model": "gpt-6.1-sol",
+  "role": "subject_reviewer",
+  "promptFamilyId": "physics-description-current-applicability-confirmation-v5",
+  "promptFingerprint": "sha256:ce69922483c803d783fc99c7d83413ba30a592a228409391314ad84e27e92521",
+  "criteriaFingerprint": "sha256:3f6c9f9aae865cef1424e4b88da340706ba7080dcfd20f18cb7d9479b0b08d35",
+  "generationParametersFingerprint": "sha256:d87c364b7ef5cf4a4822262a3e13fa9a0d1ffb70094b7d83c2af612f9170a607",
+  "independenceGroupId": "physik-semiconductor-applicability-current3-20261115-v5-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "77ab31a9-8961-511c-8637-06e98023d869",
+    "dc55adac-91a5-5cc3-ab47-be008480616f",
+    "df010b2b-b182-5f7e-bbe4-49b72e48c27a"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:ce69922483c803d783fc99c7d83413ba30a592a228409391314ad84e27e92521"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:3f6c9f9aae865cef1424e4b88da340706ba7080dcfd20f18cb7d9479b0b08d35"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:ad471b5eb338a85dbfaff903e81ce89804de60f36015e64bc000db69be5af1b7"
+    }
+  ],
+  "startedAt": "2026-11-15T07:09:47Z",
+  "completedAt": "2026-11-15T07:13:46Z",
+  "status": "completed",
+  "outputDigest": "sha256:595a72148a8d540e1862a88b498f70a11773eeeadf49bff5a3dc5aede2a0b135",
+  "toolchainVersion": "codex-actual-independent-review-20261115"
+}

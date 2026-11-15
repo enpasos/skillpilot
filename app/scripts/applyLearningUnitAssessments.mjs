@@ -107,7 +107,8 @@ const landscapes = [{
   semanticPath: 'curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json',
   idNamespace: 'DE-GYM-CANONICAL-PHYSICS',
   framework: 'canonical-gymnasium-physics',
-  curricularAtomicCount: 478,
+  // Three reviewed semiconductor atoms (77ab31a9, 9f265f49, dc55adac) were added on 2026-11-15.
+  curricularAtomicCount: 481,
   // Physics cluster weights are authored workload weights, not counts of atomic descendants,
   // and Physics marks an assessment by its exam data alone; the projection adds the node kind.
   countedClusterWeights: false,

@@ -1,0 +1,111 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-book/v1/goal-book-review-bundle.schema.json",
+  "schemaVersion": 1,
+  "bookModelDigest": "sha256:8dd93ae5db64046f567305ec6ec88f7365ba8afe546081c5a9683a4989d87b7d",
+  "bookModelSchemaVersion": "1.1.0",
+  "bookId": "de-gym-physik-material-classification-asset-current-20261115-v6",
+  "bookEdition": "curricular-atomic-v1",
+  "publicationMode": "review",
+  "feedbackBaseUrl": "https://skillpilot.com/lernziel-feedback",
+  "locale": "de-DE",
+  "selectedGoalCount": 1,
+  "goals": [
+    {
+      "goalId": "7badac4d-2874-5b3a-87e8-bf8f4440b2a6",
+      "pageNumber": 1,
+      "goalFingerprint": "sha256:36cb77ba1f58fb28a0f3f01b1039cc9ee5a0ad18d82400ff95873f42670ff1b8",
+      "pageFingerprint": "sha256:6f7ae685516abdd381e4db9ba35558e59cd5e0324b76cd315721d8b7c27d633e",
+      "evidenceReview": {
+        "reviewId": "physik-material-classification-asset-current-20261115-v6",
+        "status": "needs_human_review",
+        "reviewInputFingerprint": "sha256:1e49f9c0d4e89c1caea091411ff21ee824b31bde511e2496d33bc4d4bd7c5006",
+        "profileFingerprint": "sha256:2497a99ab8ccb68ade26297c561d4b14cd48f328fb9444b5212a71ccd6644fb3",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1"
+      }
+    }
+  ],
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "artifacts": [
+    {
+      "role": "book_model",
+      "path": "book-model.json",
+      "digest": "sha256:5ee45c1178d98c3fac50faaa36ddb63ac2175aa017170c2d45b4d3919ee3d1d9",
+      "bytes": 353970
+    },
+    {
+      "role": "book_pdf",
+      "path": "book.pdf",
+      "digest": "sha256:ba78c513fb48fee78fae23d71568867e04b558e4cd4dccef8bb8a0bbe06b0d7a",
+      "bytes": 143787
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "path": "book.pdf.render-manifest.json",
+      "digest": "sha256:e0245ffeaf1f37910b63518d8b21f55c3853082176453dd018c34a6cf5352aa5",
+      "bytes": 3041
+    },
+    {
+      "role": "book_html",
+      "path": "book.html",
+      "digest": "sha256:52a0a3daf23772423ca620cdfd8aaa753606191a6a8d8a1951d7e898af284ea2",
+      "bytes": 20103
+    },
+    {
+      "role": "book_html_render_manifest",
+      "path": "book.html.render-manifest.json",
+      "digest": "sha256:17f2ffeb39f8664d62a071e595f4d4a8201cfd37f1184cd51fae78453d11351e",
+      "bytes": 3042
+    },
+    {
+      "role": "review_input_json",
+      "path": "review-input.json",
+      "digest": "sha256:b8bbf0a0b90c075eeffb5ea680091779b1ff0d635fceb79217b7e16e38235166",
+      "bytes": 20571
+    },
+    {
+      "role": "review_input_jsonl",
+      "path": "review-input.jsonl",
+      "digest": "sha256:84ed15fc672971eda54973cd312e94bfd111d5892792df4e21a88454b835d3e8",
+      "bytes": 14417
+    },
+    {
+      "role": "review_markdown",
+      "path": "review.md",
+      "digest": "sha256:8f635485e2e4cf83798c859a335ceaeacabbf503c6b82f31d8035324bd22b31a",
+      "bytes": 9029
+    },
+    {
+      "role": "review_prompt",
+      "path": "prompt.md",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+      "bytes": 5974
+    },
+    {
+      "role": "review_criteria",
+      "path": "criteria.md",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+      "bytes": 6989
+    },
+    {
+      "role": "finding_schema",
+      "path": "contracts/goal-evidence-finding.schema.json",
+      "digest": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9",
+      "bytes": 3613
+    },
+    {
+      "role": "run_manifest_schema",
+      "path": "contracts/goal-evidence-ai-run-manifest.schema.json",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6",
+      "bytes": 3886
+    }
+  ],
+  "reviewPolicy": {
+    "blindIndependentFirstPass": true,
+    "modelVotesGrantReleaseAuthority": false,
+    "humanApprovalRequired": true,
+    "learnerDataAllowed": false
+  },
+  "bundleFingerprint": "sha256:8173d924e40ec8db2a08ec14da06891f2a06858d6cb01135e0eca1d7b78391a0"
+}

@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:8173d924e40ec8db2a08ec14da06891f2a06858d6cb01135e0eca1d7b78391a0",
+  "reviewInputFingerprint": "sha256:c498694a31525c35924badbea579d763f8d265534a4719efcdf14d91d0b8b112",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "physik-material-classification-asset-current-20261115-v6-a",
+      "roundId": "physik-material-classification-asset-current-20261115-v6-first-pass-a",
+      "independenceGroupId": "physik-material-classification-asset-current-20261115-v6-independent-a",
+      "runIds": [
+        "physik-asset-current-v6-a-native-20261115T082750Z"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6.1-sol::requested GPT 6.1 Sol Ultra; no runtime attestation"
+      ]
+    },
+    "second": {
+      "campaignId": "physik-material-classification-asset-current-20261115-v6-b",
+      "roundId": "physik-material-classification-asset-current-20261115-v6-first-pass-b",
+      "independenceGroupId": "physik-material-classification-asset-current-20261115-v6-independent-b",
+      "runIds": [
+        "physik-material-classification-asset-current-20261115-v6-first-pass-b-actual-4387e4c1-a884-4cd7-8eef-843a9537af59"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6.1-sol::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "7badac4d-2874-5b3a-87e8-bf8f4440b2a6",
+      "firstRecordId": "physik-asset-current-v6-a-native-20261115T082750Z.7badac4d",
+      "secondRecordId": "physik-material-classification-asset-current-20261115-v6-first-pass-b-actual-4387e4c1-a884-4cd7-8eef-843a9537af59-record-001",
+      "firstRunId": "physik-asset-current-v6-a-native-20261115T082750Z",
+      "secondRunId": "physik-material-classification-asset-current-20261115-v6-first-pass-b-actual-4387e4c1-a884-4cd7-8eef-843a9537af59",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

@@ -1,0 +1,303 @@
+{
+  "schemaVersion": 1,
+  "goalId": "7d4d6a39-0c78-5fb0-b7bf-182ed00972f7",
+  "canonicalCondition": "Die lernende Person kann an einem vorgegebenen npn- oder pnp-Transistoraufbau die Funktion von Basis, Kollektor und Emitter mithilfe eines einfachen Halbleitermodells erklären und daraus das Ein- und Ausschalten des Laststromkreises begründen; wenn der geltende Aufgaben- oder Lehrplanrahmen ein Schülerexperiment vorsieht, kann sie den Aufbau unter Aufsicht mit strombegrenzter Kleinspannung nach Plan herstellen und die Schaltwirkung selbst untersuchen.",
+  "humanApproval": false,
+  "observedLearnerPerformance": false,
+  "runtimeSelectorIntroduced": false,
+  "meaning": "Source/task applicability determines whether the personal experimental branch is required; S and D are review vocabulary, not new persisted learner/profile selectors. Merely naming a state does not select NTG, an optional topic, a teaching device or a task mode.",
+  "expectedEvidenceWhenExperimentDesignated": [
+    "Actually observed personal assembly from the supplied plan under supervision using current-limited low voltage.",
+    "Actual own testing of on/off cases with the specified material and component limits.",
+    "Independent explanation of control/load paths, device roles and the supplied simple semiconductor model.",
+    "A paper answer, supplied schematic, simulated data, image or prebuilt teacher demonstration cannot certify personal construction."
+  ],
+  "requiredSuppliedMaterialWhenBuilding": [
+    "Complete teacher-approved npn or pnp teaching-module plan with assigned terminals, component values, low-voltage supply and current limit.",
+    "Specified control levels or sensor response, load, safe operating range and supervisory constraints.",
+    "Supplied simple thin-base/carrier representation appropriate to the target; no formal band/Fermi derivation is assumed."
+  ],
+  "currentProfileCandidatePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/semiconductor-stage-path-current-v1/positive-evidence.candidates.json",
+  "currentProfileCandidateSha256": "sha256:20d8a67743b936f6e68188a2fbaa39745441232d4ad1375e0faa5d2a5c4df2a6",
+  "currentActualProfileBody": {
+    "archetype": "concept",
+    "expectations": [
+      {
+        "id": "functional-understanding",
+        "essentialUnderstandingDe": "Beim bipolaren Transistor steuert eine geeignete Basis-Emitter-Ansteuerung den Strom im Kollektor-Emitter-Lastpfad. Die Energie der Last kommt aus ihrer Versorgung; der Basiszweig ist kein mechanischer Kontakt und erzeugt die Lastenergie nicht.",
+        "essentialUnderstandingEn": "In a bipolar transistor, appropriate base-emitter drive controls current in the collector-emitter load path. Load energy comes from its supply; the base branch is neither a mechanical contact nor the source of load energy.",
+        "observablePerformanceDe": "An einem vorgegebenen npn- oder pnp-Schaltbild identifiziert die lernende Person Basis, Kollektor, Emitter, Steuer- und Lastpfad und begründet anhand der angegebenen Beschaltung, wann die Lampe beziehungsweise LED ein- oder ausgeschaltet ist. Sie verknüpft die Anschlussrollen mit dem bereitgestellten dünnen Basisbereich im Halbleitermodell. Im vorgesehenen Schülerexperiment sind tatsächlich beobachteter eigener Aufbau und eigene Untersuchung unerlässlich.",
+        "observablePerformanceEn": "In a supplied npn or pnp schematic, the learner identifies base, collector, emitter, control and load paths and uses the specified circuit to justify when its lamp or LED is switched on or off. They connect terminal roles to the supplied thin base region in the semiconductor model. In the designated student experiment, an actually observed personal build and investigation are indispensable."
+      },
+      {
+        "id": "independent-transfer",
+        "essentialUnderstandingDe": "Geeignete Basisansteuerung und vertauschte Sensorwirkung; tatsächliche Untersuchung bei vorgeschriebener Schülerexperimentform.",
+        "essentialUnderstandingEn": "Appropriate base drive and reversed sensor response; actual investigation when student-experiment execution is prescribed.",
+        "observablePerformanceDe": "Für einen unterbrochenen Basiszweig oder eine umgekehrte Sensorwirkung sagt die lernende Person die geänderte Schaltfunktion voraus. Sie überträgt Spannungsrichtungen nicht ungeprüft von npn auf pnp und behauptet keine universelle konstante Stromverstärkung im Schaltbetrieb.",
+        "observablePerformanceEn": "For a broken base branch or reversed sensor response, the learner predicts the altered switching behaviour. They do not transfer voltage directions uncritically from npn to pnp or claim a universally constant current gain during switching."
+      }
+    ],
+    "coverageExpectations": {
+      "requiredExpectationIds": [
+        "functional-understanding",
+        "independent-transfer"
+      ],
+      "alternativeExpectationGroups": [],
+      "minimumIndependentDemonstrations": 2,
+      "freshVariationRequired": true,
+      "independentTransferRequired": true
+    },
+    "variationAxes": [
+      {
+        "id": "physical-condition",
+        "textDe": "Geeignete Basisansteuerung und vertauschte Sensorwirkung; tatsächliche Untersuchung bei vorgeschriebener Schülerexperimentform.",
+        "textEn": "Appropriate base drive and reversed sensor response; actual investigation when student-experiment execution is prescribed."
+      }
+    ],
+    "applicationCaseBriefs": [
+      {
+        "id": "fresh-function-case",
+        "taskDemandDe": "Nutze einen neuen vollständig beschrifteten npn-Lehrmodulplan mit einfacher Halbleiterdarstellung. Begründe Steuer-/Lastpfad und teste die Ein-/Aus-Fälle; im festgelegten Schülerexperiment stelle den Aufbau tatsächlich her.",
+        "taskDemandEn": "Use a fresh fully labelled npn teaching-module plan and a simple semiconductor representation. Explain control/load paths and test on/off cases; in the designated student experiment actually assemble it.",
+        "expectedPerformanceDe": "Die lernende Person verknüpft die dünne Basis mit Ladungsträgertransport und die Ansteuerung mit dem Laststrom. Eigene beobachtete Montage und Messung bleiben im S-Modus notwendig; die Lastenergie stammt aus der Versorgung.",
+        "expectedPerformanceEn": "The learner links the thin base to carrier transport and drive to load current. Observed personal assembly and measurement remain necessary in S mode; load energy comes from the supply.",
+        "understandingFocusDe": "Beim bipolaren Transistor steuert eine geeignete Basis-Emitter-Ansteuerung den Strom im Kollektor-Emitter-Lastpfad. Die Energie der Last kommt aus ihrer Versorgung; der Basiszweig ist kein mechanischer Kontakt und erzeugt die Lastenergie nicht.",
+        "understandingFocusEn": "In a bipolar transistor, appropriate base-emitter drive controls current in the collector-emitter load path. Load energy comes from its supply; the base branch is neither a mechanical contact nor the source of load energy."
+      },
+      {
+        "id": "changed-condition-case",
+        "taskDemandDe": "Bei gleichem Lastkreis kehrt eine Sensorelektronik ihre Hell-Dunkel-Ausgangspegel um. Sage beide Lastzustände und die Wirkung eines offenen Basiszweigs voraus und begründe sie aus dem Material.",
+        "taskDemandEn": "With the same load circuit, a sensor circuit reverses its light/dark output levels. Predict both load states and the effect of an open base branch, justifying them from the material.",
+        "expectedPerformanceDe": "Die lernende Person folgt der konkreten Ansteuerung statt der Regel dunkel bedeutet an. Sie trennt elektronische Steuerung, mechanischen Kontakt und nichtuniverselle Stromverstärkungswerte.",
+        "expectedPerformanceEn": "The learner follows the actual drive instead of a memorized dark-means-on rule. They distinguish electronic control, a mechanical contact and non-universal current-gain values.",
+        "understandingFocusDe": "Geeignete Basisansteuerung und vertauschte Sensorwirkung; tatsächliche Untersuchung bei vorgeschriebener Schülerexperimentform.",
+        "understandingFocusEn": "Appropriate base drive and reversed sensor response; actual investigation when student-experiment execution is prescribed."
+      }
+    ]
+  },
+  "profileMeaning": "These are actual bound understanding-evidence case briefs and expected performances, not a claim that a learner or teacher already performed them. Current input QA will bind the final amended profile after scientific review.",
+  "sourceCases": [
+    {
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_physics_source_extraction_to_canonical_physics.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_PHYSIK_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+      "retainedSourceSha256": "sha256:c6771966752d0bb257e1a0fcef7290b92f5eb60534c03458685f2dfc14f32ee7",
+      "sourceGoal": {
+        "id": "a4461a25-8e68-5f80-ab23-0c3f61af59db",
+        "passageId": "b3819f38-915e-5340-9587-60ba2d48e322",
+        "topicCode": "Ph10.5",
+        "bulletIndex": 1,
+        "aspectIndex": 1,
+        "title": "untersuchen selbständig experimentell grundlegende Eigenschaften von Diode und Transistor; insbesond...",
+        "description": "untersuchen selbständig experimentell grundlegende Eigenschaften von Diode und Transistor; insbesondere interpretieren sie die aufgenommene Kennlinie einer Diode. Für eine vorgegebene Anwendung bauen sie eine einfache elektrische Schaltung aus Halbleiterbauelementen und untersuchen diese selbständig.",
+        "sourceText": "untersuchen selbständig experimentell grundlegende Eigenschaften von Diode und Transistor; insbesondere interpretieren sie die aufgenommene Kennlinie einer Diode. Für eine vorgegebene Anwendung bauen sie eine einfache elektrische Schaltung aus Halbleiterbauelementen und untersuchen diese selbständig.",
+        "sourceSpan": "Ph10.5.1",
+        "parentBulletText": "untersuchen selbständig experimentell grundlegende Eigenschaften von Diode und Transistor; insbesondere interpretieren sie die aufgenommene Kennlinie einer Diode. Für eine vorgegebene Anwendung bauen sie eine einfache elektrische Schaltung aus Halbleiterbauelementen und untersuchen diese selbständig.",
+        "sourceRef": "LehrplanPLUS Bayern Gymnasium Physik, Ph10.5.1",
+        "courseLevel": "unspecified",
+        "granularity": "officialCompetency",
+        "tags": [
+          "jurisdiction:DE-BY",
+          "stage:SekI",
+          "courseLevel:unspecified",
+          "topic:Ph10.5"
+        ],
+        "rawSourceText": "untersuchen selbständig experimentell grundlegende Eigenschaften von Diode und Transistor; insbesondere interpretieren sie die aufgenommene Kennlinie einer Diode. Für eine vorgegebene Anwendung bauen sie eine einfache elektrische Schaltung aus Halbleiterbauelementen und untersuchen diese selbständig.",
+        "rawSourceSpan": "Ph10.5.1",
+        "rawParentBulletText": "untersuchen selbständig experimentell grundlegende Eigenschaften von Diode und Transistor; insbesondere interpretieren sie die aufgenommene Kennlinie einer Diode. Für eine vorgegebene Anwendung bauen sie eine einfache elektrische Schaltung aus Halbleiterbauelementen und untersuchen diese selbständig."
+      },
+      "mappingDecision": {
+        "sourceGoalId": "a4461a25-8e68-5f80-ab23-0c3f61af59db",
+        "topicCode": "Ph10.5",
+        "sourceSpan": "Ph10.5.1",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "7d4d6a39-0c78-5fb0-b7bf-182ed00972f7",
+          "d3c153b9-e09b-5668-8386-73105546a7c1",
+          "ad62f563-4fee-5399-8d9c-03a214658aa9",
+          "3857891b-d328-585b-9936-85c7aff122ee"
+        ],
+        "rationale": "BY Ph10 profile NTG 5.1: own experimental diode investigation and recorded characteristic. Other semiconductor application/build components remain on their existing targets. NTG is a source annotation, not a new runtime selector.",
+        "reviewedAt": "2026-09-08T06:39:47.518Z",
+        "reviewer": "codex-physics-final-diode-informed-author-b-20260908"
+      },
+      "applicationBoundary": "Actual student experiment and personal build/investigation are required within the selected NTG Ph10.5.1 source application."
+    },
+    {
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_physics_source_extraction_to_canonical_physics.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_PHYSIK_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+      "retainedSourceSha256": "sha256:c6771966752d0bb257e1a0fcef7290b92f5eb60534c03458685f2dfc14f32ee7",
+      "sourceGoal": {
+        "id": "70a98347-c765-5555-bf07-4272c78e7a22",
+        "passageId": "b3819f38-915e-5340-9587-60ba2d48e322",
+        "topicCode": "Ph10.5",
+        "bulletIndex": 2,
+        "aspectIndex": 1,
+        "title": "nutzen einfache Modelle, um grundlegende Eigenschaften von Halbleitern, Diode und Transistor zu erkl...",
+        "description": "nutzen einfache Modelle, um grundlegende Eigenschaften von Halbleitern, Diode und Transistor zu erklären.",
+        "sourceText": "nutzen einfache Modelle, um grundlegende Eigenschaften von Halbleitern, Diode und Transistor zu erklären.",
+        "sourceSpan": "Ph10.5.2",
+        "parentBulletText": "nutzen einfache Modelle, um grundlegende Eigenschaften von Halbleitern, Diode und Transistor zu erklären.",
+        "sourceRef": "LehrplanPLUS Bayern Gymnasium Physik, Ph10.5.2",
+        "courseLevel": "unspecified",
+        "granularity": "officialCompetency",
+        "tags": [
+          "jurisdiction:DE-BY",
+          "stage:SekI",
+          "courseLevel:unspecified",
+          "topic:Ph10.5"
+        ],
+        "rawSourceText": "nutzen einfache Modelle, um grundlegende Eigenschaften von Halbleitern, Diode und Transistor zu erklären.",
+        "rawSourceSpan": "Ph10.5.2",
+        "rawParentBulletText": "nutzen einfache Modelle, um grundlegende Eigenschaften von Halbleitern, Diode und Transistor zu erklären."
+      },
+      "mappingDecision": {
+        "sourceGoalId": "70a98347-c765-5555-bf07-4272c78e7a22",
+        "topicCode": "Ph10.5",
+        "sourceSpan": "Ph10.5.2",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "7badac4d-2874-5b3a-87e8-bf8f4440b2a6",
+          "7d4d6a39-0c78-5fb0-b7bf-182ed00972f7",
+          "2084b7d4-300d-5fa0-8b8d-c480c40f853e",
+          "9f265f49-1342-5ba7-9c5d-54e97fdb2f19"
+        ],
+        "rationale": "K1 subject review 2026-11-15: Only the qualitative charge-carrier/doping component is selected; a supplied silicon bond model is the didactic operationalisation, not a prescribed band model. Existing other mappings remain outside this bounded band-overclaim correction; mapped/partial is not a claim that the whole broader source is independently assessed.",
+        "reviewedAt": "2026-11-15",
+        "reviewer": "codex-physics-semiconductor-source-author-20261115"
+      },
+      "applicationBoundary": "This exact clause supports the stated model/application component. A personal-build obligation is taken only from the applicable source/task form, never inferred from the state code or an image."
+    },
+    {
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_PHYSIK_SEKII_KC2024.source-extraction.json",
+      "retainedSourceSha256": "sha256:9552cccda78f64503c338ee4f2c6adba2909f9cbdd8a8f3d111b97627ea7c27b",
+      "sourceGoal": {
+        "id": "he-phys-sekii-q4-5-b07-a01-9e9d4c4b",
+        "passageId": "he-physics-sekii:Q4.5",
+        "topicCode": "Q4.5",
+        "bulletIndex": 7,
+        "aspectIndex": 1,
+        "title": "bipolarer Transistor (nur pnp oder npn, Animation)",
+        "description": "Die lernende Person kann den offiziellen Curriculum-Aspekt \"bipolarer Transistor (nur pnp oder npn, Animation)\" im Kontext \"Festkörperphysik\" fachgerecht bearbeiten.",
+        "sourceText": "bipolarer Transistor (nur pnp oder npn, Animation)",
+        "sourceSpan": "bipolarer Transistor (nur pnp oder npn, Animation)",
+        "parentBulletText": "bipolarer Transistor (nur pnp oder npn, Animation)",
+        "sourceRef": "HMKB Kerncurriculum Physik gymnasiale Oberstufe, Q4.5, S. 46, Spiegelstrich 7",
+        "courseLevel": "GK_LK",
+        "granularity": "officialBullet",
+        "tags": [
+          "source:DE-HE",
+          "sourceDocument:KC2024",
+          "subject:Physik",
+          "stage:SekII",
+          "topic:Q4.5",
+          "bullet:7"
+        ],
+        "rawSourceText": "bipolarer Transistor (nur pnp oder npn, Animation)",
+        "rawSourceSpan": "bipolarer Transistor (nur pnp oder npn, Animation)",
+        "rawParentBulletText": "bipolarer Transistor (nur pnp oder npn, Animation)"
+      },
+      "mappingDecision": {
+        "sourceGoalId": "he-phys-sekii-q4-5-b07-a01-9e9d4c4b",
+        "topicCode": "Q4.5",
+        "sourceSpan": "bipolarer Transistor (nur pnp oder npn, Animation)",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "7d4d6a39-0c78-5fb0-b7bf-182ed00972f7"
+        ],
+        "rationale": "Q4.5 GK/LK bipolar transistor: pnp OR npn, animation. Partial foundational component of switching interpretation, not both device types mandatory.",
+        "reviewedAt": "2026-09-08",
+        "reviewer": "codex-physics-b034-informed-implementation-a-20260908"
+      },
+      "applicationBoundary": "These exact source clauses support animation/model and switching interpretation; they do not by themselves impose personal construction. No general exemption from another applicable task/source requirement is inferred."
+    },
+    {
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_PHYSIK_SEKII_KC2024.source-extraction.json",
+      "retainedSourceSha256": "sha256:9552cccda78f64503c338ee4f2c6adba2909f9cbdd8a8f3d111b97627ea7c27b",
+      "sourceGoal": {
+        "id": "he-phys-sekii-q4-5-b08-a01-13ce719e",
+        "passageId": "he-physics-sekii:Q4.5",
+        "topicCode": "Q4.5",
+        "bulletIndex": 8,
+        "aspectIndex": 1,
+        "title": "Transistor als Schalter (Flip-Flop-Schaltung)",
+        "description": "Die lernende Person kann den offiziellen Curriculum-Aspekt \"Transistor als Schalter (Flip-Flop-Schaltung)\" im Kontext \"Festkörperphysik\" fachgerecht bearbeiten.",
+        "sourceText": "Transistor als Schalter (Flip-Flop-Schaltung)",
+        "sourceSpan": "Transistor als Schalter (Flip-Flop-Schaltung)",
+        "parentBulletText": "Transistor als Schalter (Flip-Flop-Schaltung)",
+        "sourceRef": "HMKB Kerncurriculum Physik gymnasiale Oberstufe, Q4.5, S. 46, Spiegelstrich 8",
+        "courseLevel": "GK_LK",
+        "granularity": "officialBullet",
+        "tags": [
+          "source:DE-HE",
+          "sourceDocument:KC2024",
+          "subject:Physik",
+          "stage:SekII",
+          "topic:Q4.5",
+          "bullet:8"
+        ],
+        "rawSourceText": "Transistor als Schalter (Flip-Flop-Schaltung)",
+        "rawSourceSpan": "Transistor als Schalter (Flip-Flop-Schaltung)",
+        "rawParentBulletText": "Transistor als Schalter (Flip-Flop-Schaltung)"
+      },
+      "mappingDecision": {
+        "sourceGoalId": "he-phys-sekii-q4-5-b08-a01-13ce719e",
+        "topicCode": "Q4.5",
+        "sourceSpan": "Transistor als Schalter (Flip-Flop-Schaltung)",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "7d4d6a39-0c78-5fb0-b7bf-182ed00972f7",
+          "c2af45aa-e3fc-5119-9159-c5a260b4135a"
+        ],
+        "rationale": "Q4.5 GK/LK transistor switch with flipflop explicitly supports the two circuit functions; amplifier belongs to the separate LK clause.",
+        "reviewedAt": "2026-09-08",
+        "reviewer": "codex-physics-b034-informed-implementation-a-20260908"
+      },
+      "applicationBoundary": "These exact source clauses support animation/model and switching interpretation; they do not by themselves impose personal construction. No general exemption from another applicable task/source requirement is inferred."
+    },
+    {
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/RP/upper-secondary/source-extraction/DE_RP_PHYSIK_SEKII_MSS_SOURCE_EXTRACTION_DRAFT.source-extraction.json",
+      "retainedSourceSha256": "sha256:e3f5dd3dc2c9e1d7445979ae3f05f55084144db683802f1d5ad3f03b6344c353",
+      "sourceGoal": {
+        "id": "rp-phys-sek2-q-electronics-transistor-switch",
+        "passageId": "rp-physics-sekii:electronics",
+        "topicCode": "ELECTRONICS",
+        "bulletIndex": 150,
+        "aspectIndex": 1,
+        "title": "Transistor als Schaltelement nutzen",
+        "description": "Die lernende Person kann den Transistor als Schaltelement beschreiben und in einfachen elektronischen Schaltungen deuten.",
+        "sourceText": "Transistor als Schaltelement nutzen",
+        "sourceSpan": "4.4 und 5.4 Elektronik, S. 38 und 68",
+        "parentBulletText": "Transistor als Schaltelement nutzen",
+        "sourceRef": "Rheinland-Pfalz Lehrplan Physik MSS, 4.4 und 5.4 Elektronik, S. 38 und 68",
+        "courseLevel": "GK_LK",
+        "granularity": "officialCompetencyRow",
+        "tags": [
+          "source:rheinland-pfalz",
+          "stage:SekII",
+          "phase:Qualifikationsphase",
+          "topic:ELECTRONICS",
+          "course:GK_LK"
+        ],
+        "rawSourceText": "Transistor als Schaltelement nutzen",
+        "rawSourceSpan": "4.4 und 5.4 Elektronik, S. 38 und 68",
+        "rawParentBulletText": "Transistor als Schaltelement nutzen"
+      },
+      "mappingDecision": {
+        "sourceGoalId": "rp-phys-sek2-q-electronics-transistor-switch",
+        "topicCode": "ELECTRONICS",
+        "sourceSpan": "4.4 und 5.4 Elektronik, S. 38 und 68",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "7d4d6a39-0c78-5fb0-b7bf-182ed00972f7"
+        ],
+        "rationale": "RP optional electronics explicitly names transistor as switching element, not amplification or bistable feedback. Remove unsupported amplifier component: the actual RP original names the transistor as a switching element only.",
+        "reviewedAt": "2026-09-08",
+        "reviewer": "codex-physics-b034-informed-implementation-a-20260908"
+      },
+      "applicationBoundary": "This exact clause supports the stated model/application component. A personal-build obligation is taken only from the applicable source/task form, never inferred from the state code or an image."
+    }
+  ]
+}

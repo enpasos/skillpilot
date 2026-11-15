@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:7f06b11c0e67a86bb5dd73c37e6b421f2bc4c8a550909e41bf72ff267e5d805f",
+  "reviewInputFingerprint": "sha256:ce22f6929049720465a8e085a404b1663e494196efd7503f75056166b1e6addd",
+  "goalCount": 4,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-k2-elementary-representations-current-20261115-v1-a",
+      "roundId": "mathematik-k2-elementary-representations-current-20261115-v1-first-pass-a",
+      "independenceGroupId": "mathematik-k2-elementary-representations-current-20261115-v1-independent-a",
+      "runIds": [
+        "math-k2-elementary-current-v1-a-native-20261115T083015Z"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6.1-sol::requested GPT 6.1 Sol Ultra; no runtime attestation"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-k2-elementary-representations-current-20261115-v1-b",
+      "roundId": "mathematik-k2-elementary-representations-current-20261115-v1-first-pass-b",
+      "independenceGroupId": "mathematik-k2-elementary-representations-current-20261115-v1-independent-b",
+      "runIds": [
+        "mathematik-k2-elementary-representations-current-20261115-v1-first-pass-b-actual-d19e11a2-4d0c-44d9-918f-309084628d6e"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6.1-sol::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 4,
+    "unavailable": 0,
+    "requiresSynthesis": 4
+  },
+  "goals": [
+    {
+      "goalId": "f39c49c7-003b-471a-a33e-6cfea1d7b7b1",
+      "firstRecordId": "math-k2-elementary-current-v1-a-native-20261115T083015Z.f39c49c7",
+      "secondRecordId": "mathematik-k2-elementary-representations-current-20261115-v1-first-pass-b-actual-d19e11a2-4d0c-44d9-918f-309084628d6e-record-001",
+      "firstRunId": "math-k2-elementary-current-v1-a-native-20261115T083015Z",
+      "secondRunId": "mathematik-k2-elementary-representations-current-20261115-v1-first-pass-b-actual-d19e11a2-4d0c-44d9-918f-309084628d6e",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "c9df47fa-81a9-4890-91b7-2cc80da813cb",
+      "firstRecordId": "math-k2-elementary-current-v1-a-native-20261115T083015Z.c9df47fa",
+      "secondRecordId": "mathematik-k2-elementary-representations-current-20261115-v1-first-pass-b-actual-d19e11a2-4d0c-44d9-918f-309084628d6e-record-002",
+      "firstRunId": "math-k2-elementary-current-v1-a-native-20261115T083015Z",
+      "secondRunId": "mathematik-k2-elementary-representations-current-20261115-v1-first-pass-b-actual-d19e11a2-4d0c-44d9-918f-309084628d6e",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "5e7d5ff2-b92c-4989-85bc-8d87ad7edadd",
+      "firstRecordId": "math-k2-elementary-current-v1-a-native-20261115T083015Z.5e7d5ff2",
+      "secondRecordId": "mathematik-k2-elementary-representations-current-20261115-v1-first-pass-b-actual-d19e11a2-4d0c-44d9-918f-309084628d6e-record-003",
+      "firstRunId": "math-k2-elementary-current-v1-a-native-20261115T083015Z",
+      "secondRunId": "mathematik-k2-elementary-representations-current-20261115-v1-first-pass-b-actual-d19e11a2-4d0c-44d9-918f-309084628d6e",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "0c2ddfcd-1399-41ad-aaed-4f061812602a",
+      "firstRecordId": "math-k2-elementary-current-v1-a-native-20261115T083015Z.0c2ddfcd",
+      "secondRecordId": "mathematik-k2-elementary-representations-current-20261115-v1-first-pass-b-actual-d19e11a2-4d0c-44d9-918f-309084628d6e-record-004",
+      "firstRunId": "math-k2-elementary-current-v1-a-native-20261115T083015Z",
+      "secondRunId": "mathematik-k2-elementary-representations-current-20261115-v1-first-pass-b-actual-d19e11a2-4d0c-44d9-918f-309084628d6e",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

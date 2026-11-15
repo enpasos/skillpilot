@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "physik-semiconductor-stage-path-current10-20261115-v3-resolution-af50bb9a-fd7b-50f5-9698-48c4efe99032",
+  "goal": {
+    "goalId": "af50bb9a-fd7b-50f5-9698-48c4efe99032",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:34a98303b95d812011ac3ab7c9e976aab7ea43b82358e6d411d98756051650a4",
+    "pageFingerprint": "sha256:09557adbc593a652bd6df312a6a08dcdf1927a30f30b4f788cbc6e33c9b8fc05",
+    "goalReviewContextFingerprint": "sha256:8ba6813260b681a5b00810258968d3a822b05ae39be1b23712dde68af9f8fb11",
+    "finalText": {
+      "titleDe": "Transistorverstärker analysieren",
+      "titleEn": "Analyze Transistor Amplifier",
+      "descriptionDe": "Die lernende Person kann an einer vorgegebenen oder selbst aufgebauten bipolaren Verstärkerschaltung anhand vorgegebener Kennlinien, des Arbeitspunkts und der angegebenen Spannungsbeziehungen erklären, wie das Eingangssignal den Ausgang steuert, welche Strom- oder Spannungsverstärkung die vorgegebenen Daten belegen und welche Grenzen für eine unverzerrte Verstärkung gelten. Bei einer einfachen Emitterschaltung deutet sie dabei die vorgegebene Spannungsabfallbeziehung im Kollektorzweig; ein vorgesehener eigener Aufbau erfolgt unter Aufsicht mit strombegrenzter Kleinspannung.",
+      "descriptionEn": "The learner can use supplied characteristics, the operating point and stated voltage relations in a supplied or self-built bipolar amplifier circuit to explain how the input signal controls the output, which current or voltage gain the supplied data establish, and the limits of undistorted amplification. For a simple common-emitter circuit they interpret the supplied voltage-drop relation in the collector branch; any designated personal construction uses supervised, current-limited low voltage."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-semiconductor-stage-path-current10-20261115-v3-a",
+      "campaignDigest": "sha256:11ca59c6807a7e95d0f6a4e909714935834d2d5e6737e01929e063af63cb0b6d",
+      "roundId": "physik-semiconductor-stage-path-current10-20261115-v3-first-pass-a",
+      "independenceGroupId": "physik-semiconductor-stage-path-current10-20261115-v3-independent-a",
+      "reviewInputFingerprint": "sha256:4d6a60705ac2ebfb36b2016c333dc86eff58dd64bcb055dd9daa0d67bc5083e6",
+      "goalReviewContextFingerprint": "sha256:8ba6813260b681a5b00810258968d3a822b05ae39be1b23712dde68af9f8fb11",
+      "batchId": "physik-semiconductor-stage-path-current10-20261115-v3-first-pass-a.batch-001",
+      "runId": "physik-semiconductor-current10-v3-a-sol-ultra-20261115-060022",
+      "runManifestDigest": "sha256:dbad396bb89d476870a87ca293ca37b238254202a54e7a0efa1ba54e698c715a",
+      "resultsDigest": "sha256:e4110b0c5f7fdcd820ee99858c862c5ff035b67b14d9f948694009af2c60922b",
+      "recordId": "physik-semiconductor-current10-v3-a-sol-ultra-20261115-060022.goal-8",
+      "recordDigest": "sha256:e7a8bae0c2219c8bc34bb7f64c2678c4d8a6f2703e389d8fe036b6592efe9785"
+    },
+    "second": {
+      "campaignId": "physik-semiconductor-stage-path-current10-20261115-v3-b",
+      "campaignDigest": "sha256:61703027d8664ace80bfb12ee74f2636da8f7fa4097ba89d0af0c36b35932734",
+      "roundId": "physik-semiconductor-stage-path-current10-20261115-v3-first-pass-b",
+      "independenceGroupId": "physik-semiconductor-stage-path-current10-20261115-v3-independent-b",
+      "reviewInputFingerprint": "sha256:4d6a60705ac2ebfb36b2016c333dc86eff58dd64bcb055dd9daa0d67bc5083e6",
+      "goalReviewContextFingerprint": "sha256:8ba6813260b681a5b00810258968d3a822b05ae39be1b23712dde68af9f8fb11",
+      "batchId": "physik-semiconductor-stage-path-current10-20261115-v3-first-pass-b.batch-001",
+      "runId": "physik-semiconductor-stage-path-current10-20261115-v3-first-pass-b.batch-001.informed-current-b-gpt61sol-ultra",
+      "runManifestDigest": "sha256:a4a19c222341631edc7025143c6cdeab186ba29cb460609c21057ec2e1cc6ff4",
+      "resultsDigest": "sha256:02bf34ea3f02d720105a0e228fbfdd2907c78a89b53f9d64332e5a97b6d16386",
+      "recordId": "physik-semiconductor-stage-path-current10-20261115-v3-first-pass-b.batch-001.informed-current-b-gpt61sol-ultra.af50bb9a-fd7b-50f5-9698-48c4efe99032",
+      "recordDigest": "sha256:7bfd633c6649d73ac68aca47d4d60ee9eba1f972a69b0d265a7b802729cb5b8b"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:2cf6976c79a5ae77f11f780fd0076e44d40dacb5434aa297043bcf70e1e6d5cf"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "physik-semiconductor-current10-20261115-v3-informed-synthesis",
+    "manifestDigest": "sha256:9bdf3121d56ff83c09947fb460e06eccbf42743e00b27aa78a7492ba97593733",
+    "manifestFingerprint": "sha256:591f8f9ece037ae9fcf0320e7760d000af5e84791b0a67eac773ea3bf3dc4bc6",
+    "decisionId": "physik-semiconductor-current10-20261115-v3-informed-synthesis-decision-008"
+  },
+  "synthesis": {
+    "synthesisId": "physik-semiconductor-current10-20261115-v3-informed-synthesis-decision-008",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex informed synthesis after actual complete reading and native validation of both distinct current A/B confirmations; machine evidence only",
+    "synthesizedAt": "2026-11-15T06:08:39.000Z",
+    "rationaleDe": "Beide aktuellen Runden prüfen benannte gleichartige Stromamplituden, getrennte Strom-Spannungs-Übertragung, kausale Umkehr, Versorgungsenergie und aktive Grenzen. B wird für die erneut belegte Verstärkung im korrigierten aktiven Fall bei unveränderter Eingangsamplitude gewählt; A bestätigt den wirksamen8/8-Nachweis in beiden Fällen. Eigene Verstärkerexperimente werden damit nicht behauptet.",
+    "rationaleEn": "Both current rounds examine named like-current amplitudes, separate current-to-voltage transfer, causal inversion, supply energy and active limits. B is selected for re-established gain in the corrected active case retaining the input amplitude; A supports effective8/8 evidence across both cases. Personal amplifier experiments are not claimed.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Im gelieferten Emitterschaltungsmodell führt eine Basisstromänderung zu einer Kollektorstromänderung. Bei fester Versorgung vergrößert mehr Kollektorstrom den Widerstandsabfall und verkleinert die Kollektorausgangsspannung. Stromverstärkung vergleicht Stromänderungen gleicher Einheit; ohne Eingangsspannung bleibt Spannungsverstärkung unbestimmt. Versorgung, Arbeitspunkt und beide Ausgangsgrenzen begrenzen die Übertragung.",
+      "essentialUnderstandingEn": "In the supplied common-emitter model, changing base current changes collector current. With fixed supply, greater collector current increases resistor drop and reduces collector output voltage. Current gain compares current changes in common units; without input voltage, voltage gain remains undetermined. Supply, bias and both output limits constrain transfer.",
+      "observablePerformanceDe": "Die lernende Person verbindet für einen vorgegebenen aktiven Arbeitspunkt Basis- und Kollektorstromänderung, Widerstandsspannung und Ausgangsspannung und begründet die schaltungsspezifische Umkehr. Sie erklärt die Versorgung als Energiequelle, trennt Steuerung von Energieerzeugung und prüft bei größerem Signal beide Grenzen statt unbeschränkt konstante Verstärkung zu behaupten.",
+      "observablePerformanceEn": "For a supplied active bias, the learner connects base and collector current changes, resistor voltage and output voltage, justifying this circuit-specific inversion. They explain the supply as energy source, distinguish control from energy creation, and check both limits at larger signal amplitude instead of claiming unbounded constant gain.",
+      "transferExpectationDe": "Bei neuem sättigungsnahem Arbeitspunkt diagnostiziert die lernende Person den asymmetrischen Spielraum, prognostiziert die zuerst begrenzte Ausgangsseite und begründet einen möglichen korrigierten Arbeitspunkt für dieselbe geforderte Eingangsamplitude. Für den korrigierten aktiven Fall belegt sie Stromverstärkung erneut und überträgt auch Lastmodell, Energiequelle und Aussagegrenze der Spannungsverstärkung.",
+      "transferExpectationEn": "At a fresh bias near saturation, the learner diagnoses asymmetric headroom, predicts which output side clips first, and justifies an available corrected bias retaining the required input amplitude. For the corrected active case they re-establish current gain and transfer the load model, energy source and limit on claims of voltage gain."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-39f732deb0f94a7d747abb535ca4b598b8e4cdcad421f8333baa0f98254ec84f",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der zweiten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the second round.",
+        "disposition": "accepted_second"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:e71ce651bf7af8f3807ebbb364895e1f8d15fe83a7a4bf1e34941e86852f6531"
+}

@@ -1,0 +1,895 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "physik-semiconductor-stage-path-current-p-20261115-v1",
+  "reviewedAt": "2026-11-15T03:52:04.835971Z",
+  "reviewer": "Codex semiconductor QA agent; actual individual current-input P author/reviewer, AI candidate only",
+  "goals": [
+    {
+      "goalId": "7badac4d-2874-5b3a-87e8-bf8f4440b2a6",
+      "reason": "Qualitative current classification evidence reauthored after removing advanced solid-state motivation and exponential/scientific-notation prerequisites, while retaining exactly the shared typed Physics entry marker as an orientation/workflow requirement rather than factual knowledge. Comparability and reasoned material/application classification remain essential; no powers, band model or pn knowledge is assumed. Current native materialization binds exact canonical and visualization bytes.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "comparable-classification",
+            "essentialUnderstandingDe": "Materialklassen werden über typische elektrische Leitfähigkeit unter vergleichbaren Bedingungen begründet; eine Kategorie ist eine Schlussfolgerung und kein Messwert.",
+            "essentialUnderstandingEn": "Material classes are justified through typical electrical conductivity under comparable conditions; a category is an inference, not a measurement.",
+            "observablePerformanceDe": "Vergleicht qualitative Materialdaten bei derselben Temperatur, begründet Leiter/Halbleiter/Nichtleiter und eine dazu passende Verwendung.",
+            "observablePerformanceEn": "Compares qualitative material data at the same temperature and justifies conductor/semiconductor/insulator categories and an appropriate use."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "comparable-classification"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "new-materials",
+            "textDe": "Unbekannte Materialnamen und Anwendungen bei qualitativ hoch/mittel/sehr gering beschriebener Leitfähigkeit.",
+            "textEn": "Unfamiliar material labels and applications with qualitatively high/intermediate/very low conductivity."
+          },
+          {
+            "id": "changed-condition",
+            "textDe": "Gleiche gegenüber abweichender Temperatur; fehlende Vergleichsbedingungen erkennen.",
+            "textEn": "Same versus different temperature; identify missing comparison conditions."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "qualitative-common-condition",
+            "taskDemandDe": "Für A, B und C ist bei gleicher Temperatur und gleicher Messmethode die typische Leitfähigkeit als sehr hoch, mittel und sehr gering beschrieben. Ordne die drei Materialklassen zu und begründe die Wahl einer Leitung, einer Isolation und eines steuerbaren elektronischen Bauteils.",
+            "taskDemandEn": "For A, B and C at the same temperature and with the same measurement method, typical conductivity is described as very high, intermediate and very low. Identify the three material classes and justify choices for a wire, insulation and a controllable electronic component.",
+            "expectedPerformanceDe": "A passt typischerweise zum Leiter, B zum Halbleiter, C zum Nichtleiter. Hohe Leitfähigkeit unterstützt Leitung, geringe Isolation. B ist eine typische Materialklasse für elektronisch beeinflussbare Leitung; mittlere Leitfähigkeit allein beweist noch keine fertige Schaltfunktion. Kategorien und Verwendungen sind begründete Deutungen der dokumentierten Bedingungen.",
+            "expectedPerformanceEn": "A typically fits a conductor, B a semiconductor, C an insulator. High conductivity supports conduction and low conductivity supports insulation. B is a typical material class for electronically controlled conduction; intermediate conductivity alone does not establish a complete switching function. Categories and uses are justified interpretations of the documented conditions.",
+            "understandingFocusDe": "Begründete qualitative Klassifikation ohne Potenznotation und ohne verdeckte Bandmodellpflicht.",
+            "understandingFocusEn": "Reasoned qualitative classification without power notation or a hidden band-model requirement."
+          },
+          {
+            "id": "condition-limited-transfer",
+            "taskDemandDe": "Bei einem neuen Satz D/E/F sind die Angaben für D und E bei 20 °C dokumentiert, für F nur bei deutlich höherer Temperatur. D leitet typisch sehr gut, E sehr schlecht, F mittel. Prüfe, welche Einordnung der Vergleich sicher trägt und welche zusätzliche Angabe für F fehlt.",
+            "taskDemandEn": "For a fresh set D/E/F, data for D and E are documented at 20 °C, but F only at a much higher temperature. D typically conducts very well, E very poorly, F intermediately. Assess which classifications the comparison supports and what additional information is needed for F.",
+            "expectedPerformanceDe": "D kann unter der dokumentierten Bedingung als Leiter und E als Nichtleiter eingeordnet werden. Für die direkte gemeinsame Rangfolge und bedingungsgleiche Zuordnung von F fehlt sein Verhalten bei 20 °C oder ein dokumentiertes Temperaturmodell. Die Person fordert diesen Nachweis und behauptet nicht, jede mittlere Einzelmessung bei beliebiger Temperatur beweise die Stoffklasse.",
+            "expectedPerformanceEn": "D can be classified as a conductor and E as an insulator under the documented condition. A direct common ranking and like-for-like classification of F require its behaviour at 20 °C or a documented temperature model. The learner requests this evidence rather than claiming any single intermediate measurement at any temperature proves the material class.",
+            "understandingFocusDe": "Geänderte Temperatur als Grenze der Evidenz erkennen und gezielt Vergleichsdaten verlangen.",
+            "understandingFocusEn": "Recognise changed temperature as an evidence limit and request suitable comparison data."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "9f265f49-1342-5ba7-9c5d-54e97fdb2f19",
+      "reason": "New bounded independent-transfer profile for the supplied simple model; AI author candidate E1/G1 only, without human approval or observed performance. Current native materialization binds exact canonical and visualization bytes.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "doping-carriers",
+            "essentialUnderstandingDe": "Im bereitgestellten Silizium-Bindungsmodell liefert ein Donator ein bewegliches Elektron; ein Akzeptor nimmt ein Bindungselektron auf und hinterlässt ein bewegliches Loch.",
+            "essentialUnderstandingEn": "In the supplied silicon bond model, a donor supplies a mobile electron; an acceptor takes up a bond electron and leaves a mobile hole.",
+            "observablePerformanceDe": "Leitet n- und p-Träger aus dem jeweils vorgegebenen Vier-/Fünf-/Drei-Außenelektronenmodell ab und erklärt Lochbewegung durch nachrückende Bindungselektronen.",
+            "observablePerformanceEn": "Derives n-type and p-type carriers from the supplied four-/five-/three-outer-electron model and explains hole motion through neighbouring bond electrons filling vacancies."
+          },
+          {
+            "id": "charge-neutrality",
+            "essentialUnderstandingDe": "Die Dotierionen bleiben ortsfest; mobiles Elektron und positives Donatorion beziehungsweise Loch und negatives Akzeptorion gleichen die Gesamtladung aus. n/p bezeichnet keine Nettoladung.",
+            "essentialUnderstandingEn": "Dopant ions remain fixed; a mobile electron and positive donor ion, or a hole and negative acceptor ion, balance overall charge. n/p does not mean net charge.",
+            "observablePerformanceDe": "Kennzeichnet mobile und ortsfeste Anteile mit richtigem Vorzeichen und widerlegt eine Nettoaufladung oder wandernde Dotierionen.",
+            "observablePerformanceEn": "Marks mobile and fixed contributions with correct signs and refutes net charging or mobile dopant ions."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "doping-carriers",
+            "charge-neutrality"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "donor-acceptor",
+            "textDe": "Donator- und Akzeptorfall bei vollständig vorgegebenem Bindungsmodell wechseln.",
+            "textEn": "Switch between donor and acceptor cases with a fully supplied bond model."
+          },
+          {
+            "id": "changed-diagram",
+            "textDe": "Neue Anordnung und wechselnde Lage der Fehlstelle; Trägerbewegung und feste Ionen getrennt verfolgen.",
+            "textEn": "Fresh arrangement and vacancy location; trace carrier motion separately from fixed ions."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "donor-first",
+            "taskDemandDe": "Ein neues bereitgestelltes Modell zeigt vier Bindungen pro Si und ein neutrales Fremdatom mit fünf Außenelektronen. Vier sind in Bindungen beteiligt, das fünfte wird bei der genannten Temperatur beweglich. Erkläre den Träger, das verbleibende Ion und die Gesamtladung. Vergleiche anschließend mit einem vorgegebenen Drei-Elektronen-Akzeptor.",
+            "taskDemandEn": "A fresh supplied model shows four bonds per Si and a neutral impurity with five outer electrons. Four participate in bonds; the fifth becomes mobile at the stated temperature. Explain the carrier, remaining ion and overall charge. Then compare with a supplied three-electron acceptor.",
+            "expectedPerformanceDe": "Donator: bewegliches negatives Elektron und ortsfestes positives Ion; Akzeptor: aufgenommenes Bindungselektron, ortsfestes negatives Ion und positiv wirksame Fehlstelle. Beide Bilanzpaare bleiben insgesamt neutral. n/p kennzeichnet den Mehrheitsladungsträger; keine räumlichen Energiebänder oder chemischen Periodensystemkenntnisse werden zusätzlich verlangt.",
+            "expectedPerformanceEn": "Donor: mobile negative electron and fixed positive ion; acceptor: an acquired bond electron, fixed negative ion and positively acting vacancy. Both charge accounts remain neutral overall. n/p identifies the majority mobile carrier; no additional energy-band or periodic-table knowledge is required.",
+            "understandingFocusDe": "Trägerentstehung kausal aus gegebenen Bindungen ableiten und Ladung bilanzieren.",
+            "understandingFocusEn": "Derive carrier formation causally from supplied bonds and balance charge."
+          },
+          {
+            "id": "hole-transfer",
+            "taskDemandDe": "In einem neu angeordneten p-Modell rückt ein benachbartes Bindungselektron in einen fehlenden Elektronenplatz nach. Zeichne danach den neuen fehlenden Platz ein. Prüfe: Ein Loch ist ein Proton; Borionen wandern als positiver Strom; p-Silizium ist insgesamt positiv geladen.",
+            "taskDemandEn": "In a rearranged p-type model, a neighbouring bond electron fills a missing-electron site. Mark the new vacancy. Assess: a hole is a proton; boron ions travel as positive current; p-type silicon has a positive net charge.",
+            "expectedPerformanceDe": "Die Fehlstelle verlagert sich entgegen der Elektronenbewegung und ist ein positiv wirksamer fehlender Elektronenplatz. Das Akzeptorion bleibt ortsfest und negativ; der Kristall bleibt insgesamt neutral. Keine Behauptung eines materiellen Hohlraums oder wandernder Protonen.",
+            "expectedPerformanceEn": "The vacancy moves opposite to the electron and is a positively acting missing-electron site. The acceptor ion remains fixed and negative; the crystal is neutral overall. No material cavity or moving proton is inferred.",
+            "understandingFocusDe": "Echter Darstellungswechsel prüft Lochkonzept, Mobilität und Neutralität ohne Bildkopie.",
+            "understandingFocusEn": "A changed representation tests holes, mobility and neutrality without copying an illustration."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "dc55adac-91a5-5cc3-ab47-be008480616f",
+      "reason": "New bounded independent-transfer profile for the supplied simple model; AI author candidate E1/G1 only, without human approval or observed performance. Current native materialization binds exact canonical and visualization bytes.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "sign-and-conduction",
+            "essentialUnderstandingDe": "Eine vorgegebene I_D(U_D)-Kennlinie zeigt unter angegebenen Bauteil-/Temperaturbedingungen richtungsabhängige Leitung. U_D und I_D haben definierte Bezugsrichtungen; Sperren bedeutet hier keinen nennenswerten Strom, nicht exakt Null.",
+            "essentialUnderstandingEn": "A supplied I_D(U_D) characteristic shows direction-dependent conduction under stated device/temperature conditions. U_D and I_D have defined references; blocking here means no appreciable current, not exact zero.",
+            "observablePerformanceDe": "Liest beide Polungen ab, verbindet die Kennlinie mit Anode/Kathode und sagt im geschlossenen einfachen Stromkreis den nennenswerten Strom voraus.",
+            "observablePerformanceEn": "Reads both bias directions, connects the characteristic to anode/cathode and predicts appreciable current in a closed simple circuit."
+          },
+          {
+            "id": "bounded-transfer",
+            "essentialUnderstandingDe": "Räumliches Spiegeln ändert nicht die definierte Polung. Eine einzelne Kennlinie begründet keine universelle 0,7-V-Schwelle und keinen allgemeinen Durchbruchbereich.",
+            "essentialUnderstandingEn": "Mirroring the layout does not change the defined bias. One characteristic establishes neither a universal 0.7-V threshold nor a general breakdown regime.",
+            "observablePerformanceDe": "Überträgt die Deutung auf eine gespiegelte Schaltung und benennt die Grenze der vorgegebenen Kennlinie.",
+            "observablePerformanceEn": "Transfers the interpretation to a mirrored circuit and states a limit of the supplied characteristic."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "sign-and-conduction",
+            "bounded-transfer"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "polarity-layout",
+            "textDe": "Beschaltung räumlich spiegeln, Anode/Kathode und Bezugsvorzeichen ausdrücklich beibehalten.",
+            "textEn": "Mirror the layout while explicitly retaining anode/cathode and reference signs."
+          },
+          {
+            "id": "curve-variation",
+            "textDe": "Neue qualitative Kennlinie mit anderem Durchlassanstieg oder dokumentiertem kleinem Sperrstrom.",
+            "textEn": "Fresh qualitative characteristic with a different forward rise or documented small reverse current."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "read-both-biases",
+            "taskDemandDe": "Ein gegebener geschlossener Kleinspannungs-Serienkreis enthält Quelle, Strombegrenzung und Diode; U_D ist A gegen K, I_D A nach K. Die qualitative Kennlinie zeigt bei A positiver als K einen starken Stromanstieg und bei K positiver als A nur einen sehr kleinen negativen Strom. Begründe für beide Schalterstellungen Leitung und Stromrichtung.",
+            "taskDemandEn": "A supplied closed low-voltage series circuit contains a source, current limiter and diode; U_D references A to K and I_D A to K. The qualitative characteristic rises strongly for A positive relative to K and shows only a very small negative current for K positive relative to A. Justify conduction and current direction for both switch positions.",
+            "expectedPerformanceDe": "A positiver bedeutet Durchlasspolung und nennenswerten Strom A nach K, sofern der angegebene Betriebspunkt im ansteigenden Bereich liegt. K positiver bedeutet Sperrpolung mit sehr kleinem Strom K nach A. Eine Nullanzeige oder qualitative Sperrung wird nicht zu exakt Null verallgemeinert; Strombegrenzung bleibt Teil des gegebenen Kreises.",
+            "expectedPerformanceEn": "A positive means forward bias and appreciable A-to-K current if the supplied operating point lies on the rising branch. K positive means reverse bias and a very small K-to-A current. A zero display or qualitative blocking is not generalised to exact zero; current limiting remains part of the supplied circuit.",
+            "understandingFocusDe": "Kennlinie, Bezugspolung und Schaltzustand verbinden, ohne mikroskopisches pn-Modell.",
+            "understandingFocusEn": "Connect characteristic, reference polarity and circuit state without requiring a microscopic pn model."
+          },
+          {
+            "id": "mirror-new-curve",
+            "taskDemandDe": "Ein neuer Plan ist gegenüber dem ersten gespiegelt, die Anschlussbuchstaben A/K sind angegeben. Eine andere Diode zeigt bereits unter 0,7 V einen deutlich messbaren Durchlassstrom und einen kleinen Sperrstrom. Beurteile beide Polungen und die Aussage: Jede Diode ist linksherum leitend und schaltet exakt bei 0,7 V.",
+            "taskDemandEn": "A fresh plan is mirrored relative to the first and labels A/K. Another diode shows clearly measurable forward current below 0.7 V and a small reverse current. Assess both bias directions and the statement: every diode conducts leftwards and switches exactly at 0.7 V.",
+            "expectedPerformanceDe": "Die Person liest die neue Kennlinie und die Anschlusszeichen, bestimmt daraus beide Fälle und verwirft sowohl Links-Rechts-Merken als auch die universelle Schwelle. Die Kurve gilt nur für das gegebene Bauteil, Temperatur und den dargestellten Bereich; sie beweist keine eigenen Messungen.",
+            "expectedPerformanceEn": "The learner reads the new curve and terminal labels, derives both cases and rejects both left/right memorisation and the universal threshold. The curve applies to the supplied device, temperature and plotted range; it does not prove personal measurements.",
+            "understandingFocusDe": "Frischer Layout-/Kennlinienwechsel erfordert Übertragung statt Merksatzwiedergabe.",
+            "understandingFocusEn": "Fresh layout and curve variations require transfer rather than repeating a rule."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "2084b7d4-300d-5fa0-8b8d-c480c40f853e",
+      "reason": "Individually reconsidered after replacing advanced band-model preparation by the supplied silicon bond/carrier model and charge redistribution. Existing two pn cases require mobile carriers, fixed ion signs, diffusion/recombination and bias changes; none requires energy bands, exponentials or band occupations. Exact previous profile body retained. Current native materialization binds exact canonical and visualization bytes.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "space-charge",
+            "essentialUnderstandingDe": "Die Sperrschicht ist an beweglichen Ladungsträgern verarmt, aber wegen ortsfester Ionen nicht überall ungeladen; ihr inneres Feld entsteht aus der Raumladung.",
+            "essentialUnderstandingEn": "The depletion region lacks mobile carriers but is not locally uncharged because fixed ions remain; its internal field arises from this space charge.",
+            "observablePerformanceDe": "Die lernende Person erklärt in einer frischen p/n-Anordnung Diffusion, Rekombination und Vorzeichen der zurückbleibenden Ionen und begründet die Richtung des inneren Feldes.",
+            "observablePerformanceEn": "In a fresh p/n arrangement, the learner explains diffusion, recombination and the signs of the remaining ions, and justifies the internal-field direction."
+          },
+          {
+            "id": "bias-transfer",
+            "essentialUnderstandingDe": "Äußere Polung verändert die Barriere und die Breite der Raumladungszone; räumliches Spiegeln ändert nicht, welche Anschlusskombination Durchlasspolung ist.",
+            "essentialUnderstandingEn": "External bias changes the barrier and space-charge width; mirroring the drawing does not change which terminal combination is forward bias.",
+            "observablePerformanceDe": "Ohne übernommene Bildpfeile sagt die lernende Person für umgepolte oder gespiegelte Anordnungen die Barrierenänderung voraus und erklärt, warum Leitung keine vollständig verschwindende Zone voraussetzt.",
+            "observablePerformanceEn": "Without copying diagram arrows, the learner predicts barrier changes in reversed or mirrored arrangements and explains why conduction does not require complete disappearance of the zone."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "space-charge",
+            "bias-transfer"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "polarity-layout",
+            "textDe": "p/n-Anordnung spiegeln und Anschlussvorzeichen unabhängig davon ändern.",
+            "textEn": "Mirror the p/n layout and independently change terminal signs."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "unbiased-contact",
+            "taskDemandDe": "Erkläre an einem noch unbeschrifteten Kontakt zweier dotierter Bereiche die Entstehung der Grenzschicht.",
+            "taskDemandEn": "Explain depletion-layer formation at an initially unlabelled contact between doped regions.",
+            "expectedPerformanceDe": "Ordne bewegliche Träger und ortsfeste Ionen zu und konstruiere eine kausale Erklärung samt Feldrichtung.",
+            "expectedPerformanceEn": "Identify mobile carriers and fixed ions and construct a causal explanation including field direction.",
+            "understandingFocusDe": "Trägerverarmung ist nicht Ladungsfreiheit.",
+            "understandingFocusEn": "Carrier depletion is not absence of charge."
+          },
+          {
+            "id": "mirrored-forward",
+            "taskDemandDe": "Ein n/p-Bauteil wird links negativ und rechts positiv gepolt; entscheide ohne Kopie des ersten Bilds und prüfe die Behauptung einer völlig verschwindenden Sperrschicht.",
+            "taskDemandEn": "An n/p device is biased negative on the left and positive on the right; decide without copying the first diagram and test the claim that the depletion region disappears completely.",
+            "expectedPerformanceDe": "Begründe Durchlasspolung durch Anschlussart und Barrierenverringerung und weise das starre Auf/Zu-Bild zurück.",
+            "expectedPerformanceEn": "Justify forward bias through terminal type and barrier reduction and reject a rigid open/closed picture.",
+            "understandingFocusDe": "Qualitative kontinuierliche Barriere statt geometrisch auswendig gelernter Links-Rechts-Regel.",
+            "understandingFocusEn": "Qualitative continuous barrier rather than a memorised left/right rule."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "3857891b-d328-585b-9936-85c7aff122ee",
+      "reason": "Individually reconsidered after removing microscopic pn preparation. Both cases establish an empirical I(U) relation from actual supervised low-voltage measurements, signed current/voltage, safe current limitation and resolution bounds. No microscopic explanation or fabricated execution is needed or claimed. Exact previous profile body retained. Current native materialization binds exact canonical and visualization bytes.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "experiment",
+        "expectations": [
+          {
+            "id": "own-measurement",
+            "essentialUnderstandingDe": "Die gesuchte Kennlinie verknüpft den Strom durch die Diode mit der Spannung direkt an ihr; Versorgungsspannung und Vorwiderstandsspannung sind andere Größen.",
+            "essentialUnderstandingEn": "The characteristic relates current through the diode to voltage directly across it; supply and series-resistor voltages are different quantities.",
+            "observablePerformanceDe": "Die lernende Person formuliert die Polungsfrage, baut unter Aufsicht mit Strombegrenzung sicher auf und zeichnet nachvollziehbare eigene signierte Messpaare in beiden Polungen einschließlich Messbereichen und Unsicherheiten auf.",
+            "observablePerformanceEn": "The learner formulates the polarity question, safely assembles a supervised current-limited setup and records traceable original signed measurements in both bias directions, including ranges and uncertainties."
+          },
+          {
+            "id": "bounded-inference",
+            "essentialUnderstandingDe": "Eine nicht aufgelöste Sperrstromanzeige ist eine Unsicherheitsgrenze, kein Nachweis einer exakten Null; die Kennlinie ist nicht ohmsch.",
+            "essentialUnderstandingEn": "An unresolved reverse-current reading is an uncertainty bound, not proof of an exact zero; the characteristic is non-ohmic.",
+            "observablePerformanceDe": "Aus der eigenen Kennlinie begründet die lernende Person Richtungsabhängigkeit und Nichtlinearität, sagt die Wirkung höherer Auflösung voraus und vergleicht eine tatsächlich durchgeführte freigegebene Wiederholungsmessung.",
+            "observablePerformanceEn": "From their own graph the learner justifies direction dependence and nonlinearity, predicts the effect of improved resolution and compares an actually performed approved repeat measurement."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "own-measurement",
+            "bounded-inference"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "measurement-quality",
+            "textDe": "Polung und Messauflösung ändern, Bauteil und thermische Randbedingungen für Vergleiche kontrollieren.",
+            "textEn": "Change bias and instrument resolution while controlling device and thermal conditions for comparisons."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "actual-iv",
+            "taskDemandDe": "Bestimme im freigegebenen Kleinspannungsaufbau selbst die Kennlinie beider Polungen; dokumentiere Sicherheit, Messpunktwahl und Unsicherheit.",
+            "taskDemandEn": "Independently determine both bias branches in an approved low-voltage setup; document safety, measurement-point selection and uncertainty.",
+            "expectedPerformanceDe": "Liefere den real beobachteten eigenen Aufbau, Originalpaare, beschriftetes Diagramm und die datengetragene Leitungsdeutung.",
+            "expectedPerformanceEn": "Provide the actually observed personal setup, original pairs, labelled graph and data-supported conduction interpretation.",
+            "understandingFocusDe": "Messung von I_D und U_D, kein Rückschluss auf Durchführung aus einer fertigen Tabelle.",
+            "understandingFocusEn": "Measurement of I_D and U_D, not inference of execution from a completed table."
+          },
+          {
+            "id": "unresolved-current",
+            "taskDemandDe": "Prüfe im sicheren Sperrbetrieb eine Nullanzeige mit einem zugelassenen empfindlicheren Gerät.",
+            "taskDemandEn": "Test a zero reading at a safe reverse bias with an approved more sensitive instrument.",
+            "expectedPerformanceDe": "Sage einen kleinen möglicherweise auflösbaren Strom voraus, führe wirklich nach Freigabe nachmessend aus und begrenze die Aussage mit Auflösung und Unsicherheit.",
+            "expectedPerformanceEn": "Predict a small possibly resolvable current, actually repeat the measurement after approval and bound the conclusion using resolution and uncertainty.",
+            "understandingFocusDe": "Nicht beobachtet heißt nicht physikalisch ausgeschlossen.",
+            "understandingFocusEn": "Not observed does not mean physically excluded."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "4a42cddd-7827-5204-87e5-8d9eac7792f1",
+      "reason": "Individually reconsidered after removing apparatus measurement as a prerequisite for conceptual supply classification. Exactly the shared typed Physics entry marker is retained as orientation, alongside actual axes preparation; it contributes no assumed factual knowledge. All three unchanged independent cases supply traces, sampled data or labels, distinguish repeated polarity reversal from merely pulsating voltage, and never require actual measuring. Numerical RMS labels are provided comparison data, not a hidden calculation prerequisite. Exact previous profile body retained; current native materialization binds exact inputs.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "polarity-and-time-course-define-supply-class",
+            "essentialUnderstandingDe": "Eine Spannung ist immer auf eine festgelegte Reihenfolge zweier Anschlüsse bezogen. Bei Gleichspannung bleibt die Polarität erhalten, auch wenn der Betrag zeitlich schwanken kann; bei Wechselspannung kehrt die Polarität wiederholt um und der Spannungswert wechselt bezogen auf dieselbe Anschlussreihenfolge sein Vorzeichen.",
+            "essentialUnderstandingEn": "Voltage is always defined for an ordered pair of terminals. With direct voltage, polarity is retained even if the magnitude varies with time; with alternating voltage, polarity repeatedly reverses and the voltage value changes sign relative to the same terminal order.",
+            "observablePerformanceDe": "Die lernende Person legt für unbekannte Zeitdaten eine Anschlussreihenfolge fest, verfolgt Vorzeichen und Polarität über die Zeit und klassifiziert konstante, pulsierende gleichgerichtete und umpolende Verläufe mit einer Begründung, die nicht nur auf Schwankung beruht.",
+            "observablePerformanceEn": "For unfamiliar time-series data, the learner specifies the terminal order, tracks sign and polarity over time, and classifies constant, pulsating unidirectional, and polarity-reversing traces with a justification that does not rely on variation alone."
+          },
+          {
+            "id": "graph-features-correspond-to-physical-terminals",
+            "essentialUnderstandingDe": "Ein U-t-Diagramm stellt eine gemessene oder modellierte Potenzialdifferenz über der Zeit dar. Nulldurchgänge zeigen bei unveränderter Anschlussdefinition einen Polaritätswechsel; Periodendauer, Extremwerte und Mittel- oder Effektivangaben beschreiben weitere Eigenschaften, entscheiden aber nicht ohne den Vorzeichenverlauf über Gleich- oder Wechselspannung.",
+            "essentialUnderstandingEn": "A voltage-time graph represents a measured or modeled potential difference over time. With the terminal definition unchanged, zero crossings show a reversal of polarity; period, extreme values, and mean or rms information describe further properties but do not determine direct or alternating voltage without the sign history.",
+            "observablePerformanceDe": "Die lernende Person konstruiert aus einer neuen Wertetabelle ein U-t-Diagramm, kennzeichnet Polaritätswechsel und Perioden, erklärt die Bedeutung der Achsen und korrigiert eine Klassifikation, die allein aus einem positiven Effektiv- oder Amplitudenwert Wechsel- beziehungsweise Gleichspannung folgert.",
+            "observablePerformanceEn": "The learner constructs a voltage-time graph from a fresh table, marks polarity reversals and periods, explains the axes, and corrects a classification that infers alternating or direct voltage solely from a positive rms or amplitude value."
+          },
+          {
+            "id": "source-label-and-waveform-must-agree",
+            "essentialUnderstandingDe": "Batterien und viele gekennzeichnete Netzteil-Ausgänge liefern typischerweise Gleichspannung; Netzversorgung und bestimmte Transformatorausgänge liefern Wechselspannung. Symbole und Beschriftungen sind Informationen über vorgesehene Ein- oder Ausgänge, müssen aber dem betrachteten Anschluss zugeordnet werden und ersetzen bei unbekannten Quellen keine sichere Mess- oder Datengrundlage.",
+            "essentialUnderstandingEn": "Batteries and many labelled power-supply outputs typically provide direct voltage; mains supplies and some transformer outputs provide alternating voltage. Symbols and labels give information about intended inputs or outputs but must be assigned to the terminal under consideration and do not replace safe measurement or supplied data for an unknown source.",
+            "observablePerformanceDe": "An einem unbekannten Adapteretikett ordnet die lernende Person getrennt Ein- und Ausgang, Spannungsart, Polaritätssymbol und Zahlenwert zu, verknüpft dies mit bereitgestellten idealisierten Zeitverläufen und weist eine Zuordnung zurück, die das Wechselspannungseingangssymbol auf den Gleichspannungsausgang überträgt.",
+            "observablePerformanceEn": "For an unfamiliar adapter label, the learner separately assigns input and output, voltage type, polarity symbol, and numerical value, links these with supplied idealized time traces, and rejects an assignment that transfers the alternating-voltage input symbol to the direct-voltage output."
+          },
+          {
+            "id": "classification-respects-safety-and-model-limits",
+            "essentialUnderstandingDe": "Die Form eines idealisierten Verlaufs beschreibt die zeitliche Spannungsart, nicht automatisch Belastbarkeit, Gefährdung oder Eignung für ein Gerät. Netzspannungsverläufe werden aus bereitgestellten Daten beurteilt; praktische Untersuchungen bleiben auf vorgesehene sichere Kleinspannungsquellen und geeignete Messmittel begrenzt.",
+            "essentialUnderstandingEn": "The shape of an idealized trace describes the voltage's time behavior, not automatically its current capability, hazard, or suitability for a device. Mains-voltage traces are assessed from supplied data; practical investigations remain limited to intended safe low-voltage sources and suitable instruments.",
+            "observablePerformanceDe": "Die lernende Person trennt in einem neuen Fall die begründete Spannungsart von nicht belegten Aussagen über Geräteeignung oder Sicherheit, wählt für eine Untersuchung Simulation beziehungsweise bereitgestellte Daten statt Netzspannungsmessung und nennt die zusätzlichen Nennangaben, die für eine Betriebsbeurteilung fehlen.",
+            "observablePerformanceEn": "In a fresh case, the learner separates the justified voltage classification from unsupported claims about device suitability or safety, chooses simulation or supplied data rather than mains-voltage measurement for an investigation, and identifies the additional ratings missing for an operating assessment."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "polarity-and-time-course-define-supply-class",
+            "graph-features-correspond-to-physical-terminals",
+            "source-label-and-waveform-must-agree",
+            "classification-respects-safety-and-model-limits"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "time-course",
+            "textDe": "Konstanter, pulsierend gleichgerichteter, periodisch umpolender oder unregelmäßig umpolender Spannungsverlauf",
+            "textEn": "Constant, pulsating unidirectional, periodically reversing, or irregularly reversing voltage trace"
+          },
+          {
+            "id": "source-and-terminal",
+            "textDe": "Batterie, sichere Kleinspannungsquelle, Adaptereingang oder Adapterausgang mit jeweils festgelegter Anschlussreihenfolge",
+            "textEn": "Battery, safe low-voltage source, adapter input, or adapter output with a specified terminal order"
+          },
+          {
+            "id": "representation",
+            "textDe": "U-t-Diagramm, Wertetabelle, Anschluss- und Polaritätsskizze oder Geräteetikett",
+            "textEn": "Voltage-time graph, data table, terminal and polarity sketch, or device label"
+          },
+          {
+            "id": "classification-boundary",
+            "textDe": "Spannungsart gegenüber Betrag, Frequenz, Belastbarkeit, Sicherheit und Geräteeignung",
+            "textEn": "Voltage type contrasted with magnitude, frequency, current capability, safety, and device suitability"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "constant-pulsating-and-sinusoidal-traces",
+            "taskDemandDe": "Drei bereitgestellte U-t-Diagramme zeigen eine konstante positive Spannung, eine zwischen null und positiven Werten pulsierende Spannung und einen sinusförmig zwischen positiven und negativen Werten wechselnden Verlauf. Klassifiziere alle drei, markiere mögliche Polaritätswechsel und erkläre, warum Schwankung allein keine Wechselspannung definiert.",
+            "taskDemandEn": "Three supplied voltage-time graphs show a constant positive voltage, a voltage pulsing between zero and positive values, and a sinusoidal trace alternating between positive and negative values. Classify all three, mark any polarity reversals, and explain why variation alone does not define alternating voltage.",
+            "expectedPerformanceDe": "Die lernende Person ordnet die ersten beiden Verläufe aufgrund gleichbleibender Polarität der Gleichspannung zu, bezeichnet den zweiten präzise als pulsierende Gleichspannung, erkennt beim dritten die wiederholte Umpolung und begründet jede Zuordnung mit Vorzeichen und Anschlussdefinition.",
+            "expectedPerformanceEn": "The learner classifies the first two traces as direct voltage because polarity is retained, identifies the second precisely as pulsating direct voltage, recognizes repeated polarity reversal in the third, and justifies each classification using sign and terminal definition.",
+            "understandingFocusDe": "Der pulsierende Verlauf deckt die Fehlvorstellung auf, jede zeitliche Änderung sei Wechselspannung.",
+            "understandingFocusEn": "The pulsating trace exposes the misconception that every time variation is alternating voltage."
+          },
+          {
+            "id": "adapter-input-output-label-translation",
+            "taskDemandDe": "Ein fiktives Adapteretikett nennt auf der Eingangsseite ein Wechselspannungssymbol und auf der Ausgangsseite ein Gleichspannungssymbol mit markierter Polarität. Ordne vier bereitgestellte Zeitverläufe den beiden Seiten zu, erkläre die Rolle des Adapters und trenne Spannungsart von der noch ungeprüften Eignung für ein konkretes Gerät.",
+            "taskDemandEn": "A fictional adapter label shows an alternating-voltage symbol on the input side and a direct-voltage symbol with marked polarity on the output side. Assign four supplied time traces to the two sides, explain the adapter's role, and separate voltage type from suitability for a particular device, which has not yet been checked.",
+            "expectedPerformanceDe": "Die lernende Person hält Ein- und Ausgang auseinander, verbindet den umpolenden Verlauf mit dem Eingang und einen gleich gepolten Verlauf mit dem Ausgang, liest die Polarität relativ zu den Anschlüssen und fordert für die Geräteeignung zusätzlich passende Betrags-, Strom- und Polaritätsangaben.",
+            "expectedPerformanceEn": "The learner keeps input and output distinct, links the reversing trace with the input and a fixed-polarity trace with the output, reads polarity relative to the terminals, and requires matching magnitude, current, and polarity ratings before assessing device suitability.",
+            "understandingFocusDe": "Die Übersetzung zwischen Etikett, Anschluss und Zeitdarstellung prüft echte Repräsentationskompetenz.",
+            "understandingFocusEn": "Translation among label, terminal, and time representation tests genuine representational competence."
+          },
+          {
+            "id": "same-rms-different-time-course",
+            "taskDemandDe": "Zwei bereitgestellte Spannungsverläufe besitzen denselben angegebenen Effektivwert: einer bleibt positiv und pulsiert, der andere wechselt regelmäßig das Vorzeichen. Konstruiere aus Stichprobendaten die Verläufe, klassifiziere sie und beurteile die Behauptung, gleicher Effektivwert bedeute gleiche Spannungsart.",
+            "taskDemandEn": "Two supplied voltage traces have the same stated rms value: one remains positive and pulsates, while the other regularly changes sign. Construct the traces from sampled data, classify them, and assess the claim that the same rms value means the same voltage type.",
+            "expectedPerformanceDe": "Die lernende Person erkennt trotz gleicher positiver Kennzahl die feste Polarität des ersten und die Umpolung des zweiten Verlaufs, weist die Behauptung zurück und erklärt, dass der Effektivwert eine Betragswirkung, nicht die vollständige Vorzeichenentwicklung beschreibt.",
+            "expectedPerformanceEn": "Despite the same positive rating, the learner identifies fixed polarity in the first trace and reversal in the second, rejects the claim, and explains that rms describes an effect of magnitude rather than the complete sign history.",
+            "understandingFocusDe": "Gleicher Effektivwert bei verschiedener Polaritätsgeschichte trennt Kennzahl und Klassifikationsmerkmal.",
+            "understandingFocusEn": "Equal rms values with different polarity histories separate a rating from the feature used for classification."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "3b586f2a-60e2-5019-aa08-6a47616a1f1f",
+      "reason": "Individually reconsidered under functional diode preparation plus the explicit AC/DC time/polarity basis. Both supplied-circuit cases derive current paths and signed pulsating load voltage; no pn depletion layer, band model or own measurement is assumed. Exact previous profile body retained. Current native materialization binds exact canonical and visualization bytes.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "path-voltage",
+            "essentialUnderstandingDe": "Diodenpolung und geschlossener Kreis entscheiden über den Strom; ohne Energiespeicher bleibt eine gleichgerichtete Spannung zeitabhängig.",
+            "essentialUnderstandingEn": "Diode bias and a closed circuit determine current; without energy storage a rectified voltage remains time dependent.",
+            "observablePerformanceDe": "Die lernende Person verfolgt in einer vorgegebenen neuen einfachen Schaltung beide Halbwellen, konstruiert die Ausgangswellenform und kennzeichnet ideale Diode, Last und Spannungsbezugsrichtung.",
+            "observablePerformanceEn": "In a supplied fresh simple circuit, the learner traces both half-cycles, constructs the output waveform and identifies the ideal diode, load and voltage-reference direction."
+          },
+          {
+            "id": "reversed-reference",
+            "essentialUnderstandingDe": "Das Ausgangsvorzeichen hängt vom leitenden Pfad und der festgelegten Spannungsdefinition ab, nicht vom Wort Gleichrichter.",
+            "essentialUnderstandingEn": "Output sign depends on the conducting path and the specified voltage definition, not on the word rectifier.",
+            "observablePerformanceDe": "Beim Umdrehen nur einer Diode sagt die lernende Person die nun übertragenen Halbwellen voraus, erklärt das Vorzeichen und benennt die Grenze des idealisierten spannungsabfallfreien Modells.",
+            "observablePerformanceEn": "When only a diode is reversed, the learner predicts the half-cycles now transmitted, explains the sign and states the limitation of the ideal zero-forward-drop model."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "path-voltage",
+            "reversed-reference"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "orientation-waveform",
+            "textDe": "Diodenorientierung oder Spannungsmessrichtung bei unverändertem Lastkreis ändern.",
+            "textEn": "Change diode orientation or voltage-reference direction while retaining the load circuit."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "half-wave",
+            "taskDemandDe": "Leite für eine materialgestützt vorgegebene Einwegschaltung die Ausgangsspannung aus einer neuen Eingangsfolge ab.",
+            "taskDemandEn": "Derive output voltage for a supplied half-wave circuit from a fresh input sequence.",
+            "expectedPerformanceDe": "Verknüpfe Leit-/Sperrzustände mit vollständigen Stromwegen und einer begründeten pulsierenden Wellenform.",
+            "expectedPerformanceEn": "Connect conducting/blocking states to complete current paths and a justified pulsating waveform.",
+            "understandingFocusDe": "Gleichrichtung ist nicht automatische Glättung.",
+            "understandingFocusEn": "Rectification is not automatic smoothing."
+          },
+          {
+            "id": "diode-reversed",
+            "taskDemandDe": "Nur die Diode wird umgedreht; dieselbe Ausgangsmessrichtung bleibt. Prüfe die Behauptung, der Ausgang müsse weiterhin positiv sein.",
+            "taskDemandEn": "Only the diode is reversed; the output-reference direction is retained. Test the claim that output must remain positive.",
+            "expectedPerformanceDe": "Konstruiere die negativen Halbwellen und begründe sie aus dem umgekehrten Laststromweg; reale Vorwärtsspannung begrenzt nur die Idealisierung.",
+            "expectedPerformanceEn": "Construct the negative half-cycles and justify them through the reversed load-current path; real forward drop limits the idealisation.",
+            "understandingFocusDe": "Vorzeichen und Wellenform aus Schaltung statt Etikett herleiten.",
+            "understandingFocusEn": "Derive sign and waveform from the circuit rather than its label."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "df010b2b-b182-5f7e-bbe4-49b72e48c27a",
+      "reason": "Context-only reconsideration: the unchanged advanced goal still develops qualitative bands, doping, carriers and neutrality. The two exact retained profile cases provide qualitative diagrams and compare doping with heating; the 17 removed W goals contain no indispensable unprovided quantitative operation in those cases. Energy bands remain new content of this advanced target, never silently transferred to the early model. Current native materialization binds exact canonical and visualization bytes.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "band-occupancy-and-gap-explain-conduction",
+            "essentialUnderstandingDe": "Teilweise besetzte oder überlappende Bänder erlauben bei Leitern leicht verfügbare Zustandswechsel; beim Halbleiter trennt eine endliche Bandlücke Valenz- und Leitungsband, sodass Anregung Ladungsträger bereitstellt.",
+            "essentialUnderstandingEn": "Partly filled or overlapping bands permit readily available state changes in conductors; in a semiconductor a finite band gap separates valence and conduction bands, so excitation supplies charge carriers.",
+            "observablePerformanceDe": "Die lernende Person deutet ein unbekanntes qualitatives Banddiagramm, ordnet es begründet Leiter oder Halbleiter zu und behandelt Energiebänder nicht als räumliche Bahnen.",
+            "observablePerformanceEn": "The learner interprets an unfamiliar qualitative band diagram, justifies its classification as conductor or semiconductor, and does not treat energy bands as spatial trajectories."
+          },
+          {
+            "id": "doping-changes-carrier-population-not-net-charge",
+            "essentialUnderstandingDe": "Donator- beziehungsweise Akzeptordotierung erhöht die Zahl verfügbarer Elektronen beziehungsweise Löcher und verändert so die Leitfähigkeit, ohne den Kristall als Ganzes dauerhaft elektrisch aufzuladen.",
+            "essentialUnderstandingEn": "Donor or acceptor doping increases the number of available electrons or holes and thus changes conductivity without permanently giving the crystal a net electric charge.",
+            "observablePerformanceDe": "Die lernende Person erklärt für n- und p-Dotierung Ladungsträgerart und Leitfähigkeitsänderung, bilanziert die Neutralität und grenzt die Wirkung von thermischer Anregung ab.",
+            "observablePerformanceEn": "The learner explains carrier type and conductivity change for n- and p-type doping, accounts for neutrality, and distinguishes the effect from thermal excitation."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "band-occupancy-and-gap-explain-conduction",
+            "doping-changes-carrier-population-not-net-charge"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "band-structure",
+            "textDe": "überlappende Bänder oder endliche Bandlücke",
+            "textEn": "overlapping bands or a finite band gap"
+          },
+          {
+            "id": "doping-type",
+            "textDe": "Donator- oder Akzeptordotierung",
+            "textEn": "donor or acceptor doping"
+          },
+          {
+            "id": "carrier-change",
+            "textDe": "Dotierung oder thermische Anregung",
+            "textEn": "doping or thermal excitation"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "unknown-band-diagrams-and-donor",
+            "taskDemandDe": "Deute zwei qualitative Diagramme: A zeigt ein teilweise besetztes Band, B ein gefülltes Valenzband, eine kleine Lücke und ein leeres Leitungsband. Ordne A und B zu und erkläre für B die Wirkung einer Donatordotierung.",
+            "taskDemandEn": "Interpret two qualitative diagrams: A shows a partly filled band; B shows a filled valence band, a small gap, and an empty conduction band. Classify A and B and explain donor doping for B.",
+            "expectedPerformanceDe": "A wird als Leiter, B als Halbleiter gedeutet. Donatoren stellen leicht anregbare Elektronen bereit, erhöhen die Elektronendichte im Leitungsband und typischerweise die Leitfähigkeit; zurückbleibende gebundene Ionen erhalten zusammen mit den Elektronen die Gesamtneutralität.",
+            "expectedPerformanceEn": "A is interpreted as a conductor and B as a semiconductor. Donors supply easily excited electrons, increasing electron density in the conduction band and typically conductivity; the remaining bound ions preserve overall neutrality together with the electrons.",
+            "understandingFocusDe": "Bandstruktur, verfügbare Ladungsträger und Neutralität werden kausal verbunden.",
+            "understandingFocusEn": "Band structure, available carriers, and neutrality are connected causally."
+          },
+          {
+            "id": "acceptor-versus-heating-transfer",
+            "taskDemandDe": "Vergleiche für denselben Halbleiter Akzeptordotierung bei gleicher Temperatur mit einer Temperaturerhöhung ohne Dotierung. Sage jeweils die verfügbaren Ladungsträger voraus und erkläre, warum beide Leitfähigkeitsänderungen nicht derselbe Mechanismus sind.",
+            "taskDemandEn": "For the same semiconductor, compare acceptor doping at constant temperature with raising temperature without doping. Predict the available carriers in each case and explain why the two conductivity changes are not the same mechanism.",
+            "expectedPerformanceDe": "Akzeptoren erzeugen überwiegend Löcher als Mehrheitsladungsträger; Erwärmung regt Elektron-Loch-Paare über die Bandlücke an. Beide können die Trägerzahl erhöhen, doch nur Dotierung legt den Mehrheitsladungsträgertyp gezielt fest; Mobilitätsänderungen begrenzen eine reine Trägerzahldeutung.",
+            "expectedPerformanceEn": "Acceptors produce holes as majority carriers; heating excites electron-hole pairs across the gap. Both may increase carrier population, but only doping deliberately establishes the majority-carrier type; mobility changes limit a carrier-count-only explanation.",
+            "understandingFocusDe": "Dotierung und thermische Anregung werden trotz ähnlicher Messwirkung modellseitig unterschieden.",
+            "understandingFocusEn": "Doping and thermal excitation are distinguished at the model level despite similar measurement effects."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "853dbe54-85b0-59ab-8f3a-000c2b7746ec",
+      "reason": "Context-only reconsideration: exact retained profile cases supply R(T) and documented magnetic observations, use ordinary 80/90/95 K ordering and distinguish model zero from a detection limit. Removed exponent/scientific-notation and motivation closure is not required. Critical temperature, field/current assumptions and nonunique levitation evidence remain explicit. Current native materialization binds exact canonical and visualization bytes.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "transition",
+            "essentialUnderstandingDe": "Im vereinfachten supraleitenden Gleichstromzustand verschwindet der Widerstand unterhalb einer materialabhängigen kritischen Temperatur, solange die übrigen kritischen Bedingungen erfüllt sind.",
+            "essentialUnderstandingEn": "In the simplified superconducting DC state, resistance vanishes below a material-dependent critical temperature provided the other critical conditions are met.",
+            "observablePerformanceDe": "Die lernende Person erklärt einen vorgegebenen R-T-Verlauf und sagt bei Überschreiten der kritischen Temperatur eine qualitative Zustandsänderung samt Anwendungsgrenze voraus.",
+            "observablePerformanceEn": "The learner explains a supplied R-T trace and predicts a qualitative state change and application limit when the critical temperature is exceeded."
+          },
+          {
+            "id": "magnetism",
+            "essentialUnderstandingDe": "Supraleitung umfasst besonderes magnetisches Verhalten wie den Meissner-Effekt; Levitation allein ist ohne Kenntnis des Aufbaus kein eindeutiger Nachweis und nicht bloß eine Folge kleinen Widerstands.",
+            "essentialUnderstandingEn": "Superconductivity includes distinctive magnetic behaviour such as the Meissner effect; levitation alone is not conclusive without knowing the setup and is not merely a consequence of low resistance.",
+            "observablePerformanceDe": "Die lernende Person deutet eine passend dokumentierte Magnetbeobachtung zusammen mit Temperatur-/Widerstandsdaten und erklärt eine einfache Anwendung unter den angegebenen Modellbedingungen.",
+            "observablePerformanceEn": "The learner interprets an appropriately documented magnetic observation together with temperature/resistance data and explains a simple application under the stated model conditions."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "transition",
+            "magnetism"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "temperature-crossing",
+            "textDe": "Abkühlen beziehungsweise Erwärmen über T_c bei festgehaltenen, geeigneten Strom- und Feldbedingungen.",
+            "textEn": "Cooling or warming across T_c with fixed suitable current and field conditions."
+          },
+          {
+            "id": "observation-specificity",
+            "textDe": "Dokumentierter supraleitender Aufbau gegenüber einer Schwebe-Beobachtung mit unbekanntem Mechanismus.",
+            "textEn": "Documented superconducting setup versus a levitation observation with an unknown mechanism."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "resistance-transition",
+            "taskDemandDe": "Ein bereitgestelltes idealisiertes Gleichstromdiagramm eines Modellmaterials zeigt R=0 unter 90 K und R>0 darüber; Strom und Magnetfeld liegen im geeigneten Bereich. Ein dokumentierter Aufbau verwendet das Material bei 80 K als supraleitenden Leiter. Erkläre die Beobachtung und sage die Auswirkung einer Erwärmung auf 95 K auf diese Anwendung voraus.",
+            "taskDemandEn": "A supplied idealised DC diagram of a model material shows R=0 below 90 K and R>0 above; current and magnetic field are in the suitable range. A documented setup uses the material at 80 K as a superconducting conductor. Explain the observation and predict the effect on this application of warming to 95 K.",
+            "expectedPerformanceDe": "Ordnet 80 K dem supraleitenden und 95 K dem normalleitenden Zustand zu, erläutert den Verlust des widerstandsfreien Betriebs und trennt den idealisierten Nullwert von einer experimentellen Aussage 'unter Messgrenze'. Keine tatsächliche Kühlanlage bedienen.",
+            "expectedPerformanceEn": "Classify 80 K as superconducting and 95 K as normal-conducting, explain the loss of resistance-free operation, and distinguish the idealised zero from an experimental statement 'below detection limit'. Do not operate real cooling equipment.",
+            "understandingFocusDe": "Kritische Zustandsbedingung, Mess-/Modellunterscheidung und eine konkrete Anwendungsgrenze.",
+            "understandingFocusEn": "Critical state condition, measurement/model distinction and a concrete application limit."
+          },
+          {
+            "id": "levitation-comparison",
+            "taskDemandDe": "Zwei neue Lehrvideos zeigen je einen schwebenden Magneten. Zu A sind ein supraleitendes Material, geeignete kleine Feldstärke, Temperatur unter T_c und magnetische Flussverdrängung dokumentiert; bei Erwärmung über T_c endet dieses Verhalten. Zu B ist nur das Schweben sichtbar, der Aufbau unbekannt. Erkläre A qualitativ und beurteile, was sich über B ableiten lässt.",
+            "taskDemandEn": "Two fresh teaching videos each show a levitating magnet. A documents a superconducting material, a suitably small field, temperature below T_c and magnetic-flux expulsion; warming above T_c ends this behaviour. B shows levitation only, with the setup unknown. Qualitatively explain A and assess what can be inferred about B.",
+            "expectedPerformanceDe": "Verknüpft As dokumentiertes Verhalten mit dem Meissner-Effekt im angegebenen Zustandsbereich und erklärt seine Temperaturabhängigkeit. Erkennt für B mehrere mögliche Mechanismen und fordert zusätzliche Material-/Temperatur-/Widerstands- oder Magnetbelege statt eines automatischen Supraleitungsbeweises.",
+            "expectedPerformanceEn": "Connect A's documented behaviour with the Meissner effect in the stated regime and explain its temperature dependence. Recognise multiple possible mechanisms for B and request additional material, temperature, resistance or magnetic evidence instead of treating levitation as automatic proof of superconductivity.",
+            "understandingFocusDe": "Frischer Wechsel der Evidenzqualität; Phänomen, Modellzuordnung und bloß sichtbare Schwebe-Beobachtung bleiben getrennt.",
+            "understandingFocusEn": "Fresh change in evidence quality; phenomenon, model attribution and visible levitation alone remain distinct."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "658cf33d-a0c2-5d47-801a-3dbcd5cac074",
+      "reason": "Context-only reconsideration: exact retained profile cases use supplied finite energy intervals and T=0 versus finite-temperature diagrams. They require qualitative occupation, allowed states and excitation, developed at this target after the unchanged band-model prerequisite; no removed exponential, scientific-notation or algebraic quantitative Fermi-Dirac knowledge is used. Current native materialization binds exact canonical and visualization bytes.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "occupation",
+            "essentialUnderstandingDe": "Erlaubte Energiebänder legen mögliche Zustände fest; deren Besetzung wird im einfachen Modell relativ zur Fermienergie gedeutet. Eine Bandlücke enthält keine erlaubten Zustände und ist nicht dasselbe wie ein leeres erlaubtes Band.",
+            "essentialUnderstandingEn": "Allowed energy bands specify possible states; their occupation is interpreted relative to Fermi energy in the simple model. A band gap contains no allowed states and differs from an empty allowed band.",
+            "observablePerformanceDe": "Die lernende Person interpretiert und ergänzt ein vorgegebenes Bänderschema, unterscheidet erlaubte/leere Zustände von einer Lücke und erläutert die Funktion der Fermienergie ohne sie zum Entstehungsmechanismus der Bänder zu machen.",
+            "observablePerformanceEn": "The learner interprets and completes a supplied band diagram, distinguishes allowed empty states from a gap, and explains the role of Fermi energy without treating it as the mechanism that creates bands."
+          },
+          {
+            "id": "temperature",
+            "essentialUnderstandingDe": "Bei T=0 sind im einfachen Fermimodell Zustände unterhalb der Fermienergie besetzt und oberhalb unbesetzt; bei endlicher Temperatur ist die Besetzungsgrenze nicht scharf und thermische Anregung kann Ladungsträger ermöglichen.",
+            "essentialUnderstandingEn": "At T=0 in the simple Fermi model, states below Fermi energy are occupied and those above are empty; at finite temperature the occupation boundary is not sharp and thermal excitation may enable charge carriers.",
+            "observablePerformanceDe": "Die lernende Person erklärt den qualitativen Unterschied zweier ausdrücklich mit Temperaturbedingungen versehener Schemata und begründet, welche Leitfähigkeitsdeutung das vereinfachte Bild erlaubt.",
+            "observablePerformanceEn": "The learner explains the qualitative difference between two diagrams with explicit temperature conditions and justifies which conductivity interpretation the simplified picture supports."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "occupation",
+            "temperature"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "allowed-states",
+            "textDe": "Teilweise besetztes erlaubtes Band gegenüber vollständig besetztem Band und durch Lücke getrenntem leeren Band.",
+            "textEn": "Partly occupied allowed band versus a full band and an empty band separated by a gap."
+          },
+          {
+            "id": "temperature-regime",
+            "textDe": "Idealisierter T=0-Grenzfall gegenüber erläutertem endlichem Temperaturzustand desselben intrinsischen Modellhalbleiters.",
+            "textEn": "Idealised T=0 limit versus an explained finite-temperature state of the same intrinsic model semiconductor."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "complete-band-schema",
+            "taskDemandDe": "Bei T=0 sind für Modell M erlaubte Zustände von 0 bis 4 eV mit E_F=2 eV gegeben. Modell S hat ein Valenzband von 0 bis 1 eV, ein Leitungsband von 3 bis 5 eV und E_F=2 eV. Zeichne einfache Bänderschemata, markiere besetzte/unbesetzte Bereiche und erkläre den Unterschied einer leeren erlaubten Energie von einer Bandlücke.",
+            "taskDemandEn": "At T=0, model M has allowed states from 0 to 4 eV with E_F=2 eV. Model S has a valence band from 0 to 1 eV, a conduction band from 3 to 5 eV and E_F=2 eV. Draw simple band diagrams, mark occupied/empty regions and explain the difference between an empty allowed energy and a band gap.",
+            "expectedPerformanceDe": "Zeigt bei M Besetzung unter 2 eV und erlaubte leere Zustände darüber; bei S volles Valenzband, keine Zustände in 1–3 eV und leeres Leitungsband. Begründet qualitativ die unterschiedlichen Möglichkeiten naher freier Zustände; die künstlichen eV-Werte sind kein Materialdatenanspruch.",
+            "expectedPerformanceEn": "Show M occupied below 2 eV with allowed empty states above; show S with a full valence band, no states in 1–3 eV and an empty conduction band. Qualitatively justify the different availability of nearby empty states; the artificial eV values are not claims about real material data.",
+            "understandingFocusDe": "Eigenes Energieschema übersetzt Zustandsangebot und Besetzung; Fermi-Energie als Besetzungsbezug statt Bandentstehung.",
+            "understandingFocusEn": "A self-constructed energy diagram translates available states and occupation; Fermi energy is an occupation reference, not a cause of band formation."
+          },
+          {
+            "id": "thermal-excitation",
+            "taskDemandDe": "Ein neuer intrinsischer Modellhalbleiter wird einmal idealisiert bei T=0 und einmal bei endlicher Temperatur dargestellt. Im zweiten Bild sind wenige Elektronen im Leitungsband und passende unbesetzte Zustände im Valenzband eingezeichnet; die erlaubten Bänder bleiben im Modell gleich. Erkläre und ergänze beide Schemata, ohne eine quantitative Anregungswahrscheinlichkeit zu berechnen.",
+            "taskDemandEn": "A new intrinsic model semiconductor is shown once ideally at T=0 and once at finite temperature. The second diagram contains a few conduction-band electrons and corresponding empty valence-band states; allowed bands remain unchanged in the model. Explain and complete both diagrams without calculating quantitative excitation probabilities.",
+            "expectedPerformanceDe": "Erklärt die thermische Umverteilung der Besetzung, ordnet Elektronen und verbleibende Löcher zusammen und begründet ihre mögliche Beteiligung an Leitung. Zeigt, dass erlaubte Bänder nicht erst durch die gezeichneten Elektronen entstehen und keine scharfe T=0-Besetzungsregel unverändert übertragen werden darf.",
+            "expectedPerformanceEn": "Explain thermal redistribution of occupation, pair electrons with the holes left behind, and justify their possible role in conduction. Show that allowed bands are not created by the drawn electrons and that the sharp T=0 occupation rule cannot be transferred unchanged.",
+            "understandingFocusDe": "Echter Wechsel der Modellbedingung Temperatur mit unverändertem Zustandsangebot; qualitative Quanten-/Leitfähigkeitsdeutung ohne Fermi-Dirac-Rechenpflicht.",
+            "understandingFocusEn": "A genuine temperature-regime change with unchanged available states; qualitative quantum/conductivity interpretation without mandatory Fermi-Dirac calculations."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "7d4d6a39-0c78-5fb0-b7bf-182ed00972f7",
+      "reason": "Context-only reconsideration: exact retained supplied-circuit/thin-base cases use carrier transport and drive/load paths. New simple doping and pn preparation provide mobile carriers and fixed ions; lost advanced energy-band/exponential material is not used. Actual own construction and observed testing remain required wherever the student-experiment form applies. Current native materialization binds exact canonical and visualization bytes.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "functional-understanding",
+            "essentialUnderstandingDe": "Beim bipolaren Transistor steuert eine geeignete Basis-Emitter-Ansteuerung den Strom im Kollektor-Emitter-Lastpfad. Die Energie der Last kommt aus ihrer Versorgung; der Basiszweig ist kein mechanischer Kontakt und erzeugt die Lastenergie nicht.",
+            "essentialUnderstandingEn": "In a bipolar transistor, appropriate base-emitter drive controls current in the collector-emitter load path. Load energy comes from its supply; the base branch is neither a mechanical contact nor the source of load energy.",
+            "observablePerformanceDe": "An einem vorgegebenen npn- oder pnp-Schaltbild identifiziert die lernende Person Basis, Kollektor, Emitter, Steuer- und Lastpfad und begründet anhand der angegebenen Beschaltung, wann die Lampe beziehungsweise LED ein- oder ausgeschaltet ist. Sie verknüpft die Anschlussrollen mit dem bereitgestellten dünnen Basisbereich im Halbleitermodell. Im vorgesehenen Schülerexperiment sind tatsächlich beobachteter eigener Aufbau und eigene Untersuchung unerlässlich.",
+            "observablePerformanceEn": "In a supplied npn or pnp schematic, the learner identifies base, collector, emitter, control and load paths and uses the specified circuit to justify when its lamp or LED is switched on or off. They connect terminal roles to the supplied thin base region in the semiconductor model. In the designated student experiment, an actually observed personal build and investigation are indispensable."
+          },
+          {
+            "id": "independent-transfer",
+            "essentialUnderstandingDe": "Geeignete Basisansteuerung und vertauschte Sensorwirkung; tatsächliche Untersuchung bei vorgeschriebener Schülerexperimentform.",
+            "essentialUnderstandingEn": "Appropriate base drive and reversed sensor response; actual investigation when student-experiment execution is prescribed.",
+            "observablePerformanceDe": "Für einen unterbrochenen Basiszweig oder eine umgekehrte Sensorwirkung sagt die lernende Person die geänderte Schaltfunktion voraus. Sie überträgt Spannungsrichtungen nicht ungeprüft von npn auf pnp und behauptet keine universelle konstante Stromverstärkung im Schaltbetrieb.",
+            "observablePerformanceEn": "For a broken base branch or reversed sensor response, the learner predicts the altered switching behaviour. They do not transfer voltage directions uncritically from npn to pnp or claim a universally constant current gain during switching."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "functional-understanding",
+            "independent-transfer"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "physical-condition",
+            "textDe": "Geeignete Basisansteuerung und vertauschte Sensorwirkung; tatsächliche Untersuchung bei vorgeschriebener Schülerexperimentform.",
+            "textEn": "Appropriate base drive and reversed sensor response; actual investigation when student-experiment execution is prescribed."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "fresh-function-case",
+            "taskDemandDe": "Nutze einen neuen vollständig beschrifteten npn-Lehrmodulplan mit einfacher Halbleiterdarstellung. Begründe Steuer-/Lastpfad und teste die Ein-/Aus-Fälle; im festgelegten Schülerexperiment stelle den Aufbau tatsächlich her.",
+            "taskDemandEn": "Use a fresh fully labelled npn teaching-module plan and a simple semiconductor representation. Explain control/load paths and test on/off cases; in the designated student experiment actually assemble it.",
+            "expectedPerformanceDe": "Die lernende Person verknüpft die dünne Basis mit Ladungsträgertransport und die Ansteuerung mit dem Laststrom. Eigene beobachtete Montage und Messung bleiben im S-Modus notwendig; die Lastenergie stammt aus der Versorgung.",
+            "expectedPerformanceEn": "The learner links the thin base to carrier transport and drive to load current. Observed personal assembly and measurement remain necessary in S mode; load energy comes from the supply.",
+            "understandingFocusDe": "Beim bipolaren Transistor steuert eine geeignete Basis-Emitter-Ansteuerung den Strom im Kollektor-Emitter-Lastpfad. Die Energie der Last kommt aus ihrer Versorgung; der Basiszweig ist kein mechanischer Kontakt und erzeugt die Lastenergie nicht.",
+            "understandingFocusEn": "In a bipolar transistor, appropriate base-emitter drive controls current in the collector-emitter load path. Load energy comes from its supply; the base branch is neither a mechanical contact nor the source of load energy."
+          },
+          {
+            "id": "changed-condition-case",
+            "taskDemandDe": "Bei gleichem Lastkreis kehrt eine Sensorelektronik ihre Hell-Dunkel-Ausgangspegel um. Sage beide Lastzustände und die Wirkung eines offenen Basiszweigs voraus und begründe sie aus dem Material.",
+            "taskDemandEn": "With the same load circuit, a sensor circuit reverses its light/dark output levels. Predict both load states and the effect of an open base branch, justifying them from the material.",
+            "expectedPerformanceDe": "Die lernende Person folgt der konkreten Ansteuerung statt der Regel dunkel bedeutet an. Sie trennt elektronische Steuerung, mechanischen Kontakt und nichtuniverselle Stromverstärkungswerte.",
+            "expectedPerformanceEn": "The learner follows the actual drive instead of a memorized dark-means-on rule. They distinguish electronic control, a mechanical contact and non-universal current-gain values.",
+            "understandingFocusDe": "Geeignete Basisansteuerung und vertauschte Sensorwirkung; tatsächliche Untersuchung bei vorgeschriebener Schülerexperimentform.",
+            "understandingFocusEn": "Appropriate base drive and reversed sensor response; actual investigation when student-experiment execution is prescribed."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "af50bb9a-fd7b-50f5-9698-48c4efe99032",
+      "reason": "Context-only reconsideration: exact retained amplifier cases provide characteristic tables, operating point and load circuit. The prerequisites still provide functional transistor control, voltage/current and axes; energy-band or exponential derivations are not needed for predicting active range, clipping and energy supply. Current native materialization binds exact canonical and visualization bytes.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "functional-understanding",
+            "essentialUnderstandingDe": "Ein bipolares Verstärkerbauteil steuert Energie aus der Versorgung durch ein Eingangssignal. Ein geeigneter Arbeitspunkt erlaubt kleine Signaländerungen im aktiven Bereich; Sperren oder Sättigung begrenzen die unverzerrte Ausgangsschwingung.",
+            "essentialUnderstandingEn": "A bipolar amplifier device controls energy from its supply through an input signal. A suitable operating point permits small signal variations in the active region; cutoff or saturation limits the undistorted output swing.",
+            "observablePerformanceDe": "An der vorgegebenen oder selbst aufgebauten Schaltung verknüpft die lernende Person Eingangssignal, Arbeitspunkt und Kennlinie mit dem Ausgangssignal. Bei einer Emitterschaltung begründet sie gegebenenfalls die Phasenumkehr, ohne sie jeder Verstärkerschaltung zuzuschreiben.",
+            "observablePerformanceEn": "In the supplied or self-built circuit, the learner relates the input signal, operating point and characteristic curve to the output signal. For a common-emitter circuit they justify phase inversion where applicable, without attributing it to every amplifier circuit."
+          },
+          {
+            "id": "independent-transfer",
+            "essentialUnderstandingDe": "Arbeitspunktlage, Lastkennlinie und Signalhub verändern; aktive Beziehung gilt nicht in Sperre/Sättigung.",
+            "essentialUnderstandingEn": "Vary bias, load characteristic and signal swing; the active-region relation does not apply in cutoff/saturation.",
+            "observablePerformanceDe": "Bei größerer Eingangsamplitude oder verschobenem Arbeitspunkt prognostiziert die lernende Person anhand der Kennlinien das Abschneiden einer Halbwelle und begründet eine geeignete Korrektur im gegebenen Aufbau.",
+            "observablePerformanceEn": "For larger input amplitude or a shifted operating point, the learner uses the curves to predict clipping of a half-wave and justifies a suitable correction in the given setup."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "functional-understanding",
+            "independent-transfer"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "physical-condition",
+            "textDe": "Arbeitspunktlage, Lastkennlinie und Signalhub verändern; aktive Beziehung gilt nicht in Sperre/Sättigung.",
+            "textEn": "Vary bias, load characteristic and signal swing; the active-region relation does not apply in cutoff/saturation."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "fresh-function-case",
+            "taskDemandDe": "Analysiere eine neue vorgegebene Emitterschaltung mit Arbeitspunkt und Kennlinientabelle. Sage Ausgangsextrema bei kleinem Eingangssignal voraus und begründe die schaltungsspezifische Phasenumkehr und Energiequelle.",
+            "taskDemandEn": "Analyse a fresh supplied common-emitter circuit with a bias point and characteristic table. Predict output extremes for a small input and explain this circuit’s phase inversion and energy source.",
+            "expectedPerformanceDe": "Die lernende Person verknüpft Basisansteuerung, Kollektorstrom und Widerstandsspannungsabfall, prüft den aktiven Bereich und schreibt die zusätzliche Signalenergie der Versorgung zu.",
+            "expectedPerformanceEn": "The learner connects base drive, collector current and resistor voltage drop, checks the active region and attributes added signal energy to the supply.",
+            "understandingFocusDe": "Ein bipolares Verstärkerbauteil steuert Energie aus der Versorgung durch ein Eingangssignal. Ein geeigneter Arbeitspunkt erlaubt kleine Signaländerungen im aktiven Bereich; Sperren oder Sättigung begrenzen die unverzerrte Ausgangsschwingung.",
+            "understandingFocusEn": "A bipolar amplifier device controls energy from its supply through an input signal. A suitable operating point permits small signal variations in the active region; cutoff or saturation limits the undistorted output swing."
+          },
+          {
+            "id": "changed-condition-case",
+            "taskDemandDe": "Bei gleichem Eingangssignal wird der Arbeitspunkt nahe an die Sättigungsgrenze verschoben. Prognostiziere die neue Ausgangsform und begründe aus den angegebenen Kennlinien eine wirksame Korrektur.",
+            "taskDemandEn": "With the same input signal, bias shifts close to saturation. Predict the new output shape and justify an effective correction from the supplied characteristics.",
+            "expectedPerformanceDe": "Die lernende Person lokalisiert die zuerst begrenzte Halbwelle, unterscheidet Signalverstärkung von Energieerzeugung und prüft einen verbesserten Arbeitspunkt anhand beider Ausgangsgrenzen.",
+            "expectedPerformanceEn": "The learner identifies the half-wave clipped first, distinguishes amplification from energy creation and checks an improved bias against both output limits.",
+            "understandingFocusDe": "Arbeitspunktlage, Lastkennlinie und Signalhub verändern; aktive Beziehung gilt nicht in Sperre/Sättigung.",
+            "understandingFocusEn": "Vary bias, load characteristic and signal swing; the active-region relation does not apply in cutoff/saturation."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "c2af45aa-e3fc-5119-9159-c5a260b4135a",
+      "reason": "Context-only reconsideration: exact retained cross-coupled model supplies both transistor connections and pulse conditions. Functional switching and feedback steps determine persistence, a changed input and an opened path. Removed band/exponential preparation supplies no missing step; no unstated autonomous oscillation is inferred. Current native materialization binds exact canonical and visualization bytes.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "functional-understanding",
+            "essentialUnderstandingDe": "Gegenseitige Rückkopplung kann in einer passenden Transistorschaltung zwei stabile Zustände erzeugen. Ein Zustand bleibt nach dem auslösenden Impuls erhalten; diese Speicherwirkung unterscheidet Bistabilität vom einfachen Sensor-Schalter.",
+            "essentialUnderstandingEn": "Mutual feedback in a suitable transistor circuit can produce two stable states. A state persists after its triggering pulse; this memory effect distinguishes bistability from a simple sensor-controlled switch.",
+            "observablePerformanceDe": "Die lernende Person verfolgt in einer vorgegebenen gekreuzt rückgekoppelten Schaltung die beiden stabilen Fälle, begründet jeweils das leitende beziehungsweise sperrende Bauteil und erklärt, warum der jeweilige Zustand erhalten bleibt.",
+            "observablePerformanceEn": "The learner traces both stable cases in a supplied cross-coupled circuit, justifies which transistor conducts or is cut off in each case, and explains why that state persists."
+          },
+          {
+            "id": "independent-transfer",
+            "essentialUnderstandingDe": "Anderen Impulseingang oder Rückkopplungsunterbrechung bei vollständig vorgegebenem Schaltungsmodell untersuchen.",
+            "essentialUnderstandingEn": "Investigate another pulse input or a disconnected feedback path with a fully supplied circuit model.",
+            "observablePerformanceDe": "Für einen passend eingezeichneten Setz- oder Rücksetzimpuls prognostiziert die lernende Person den neuen Zustand und dessen Fortbestehen. Bei geöffneter Rückkopplung erklärt sie, weshalb aus dem vorherigen Speichermodell keine unveränderte Aussage mehr folgt.",
+            "observablePerformanceEn": "For an appropriately indicated set or reset pulse, the learner predicts the new state and its persistence. With feedback disconnected, they explain why the previous memory model no longer yields the same conclusion."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "functional-understanding",
+            "independent-transfer"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "physical-condition",
+            "textDe": "Anderen Impulseingang oder Rückkopplungsunterbrechung bei vollständig vorgegebenem Schaltungsmodell untersuchen.",
+            "textEn": "Investigate another pulse input or a disconnected feedback path with a fully supplied circuit model."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "fresh-function-case",
+            "taskDemandDe": "In einer neu beschrifteten bistabilen npn-Schaltung leitet zunächst der rechte Transistor. Verfolge einen Impuls, der dessen Basis kurz auf Masse zieht, und bestimme beide Kollektorpegel nach dem Loslassen.",
+            "taskDemandEn": "In a freshly labelled bistable npn circuit, the right transistor initially conducts. Trace a pulse briefly grounding its base and determine both collector levels after release.",
+            "expectedPerformanceDe": "Die lernende Person begründet beide Rückkopplungsschritte, den Zustandswechsel und das Fortbestehen; sie braucht keine auswendig gelernte Setz/Rücksetz-Tabelle.",
+            "expectedPerformanceEn": "The learner explains both feedback steps, the state change and persistence; no memorized set/reset table is needed.",
+            "understandingFocusDe": "Gegenseitige Rückkopplung kann in einer passenden Transistorschaltung zwei stabile Zustände erzeugen. Ein Zustand bleibt nach dem auslösenden Impuls erhalten; diese Speicherwirkung unterscheidet Bistabilität vom einfachen Sensor-Schalter.",
+            "understandingFocusEn": "Mutual feedback in a suitable transistor circuit can produce two stable states. A state persists after its triggering pulse; this memory effect distinguishes bistability from a simple sensor-controlled switch."
+          },
+          {
+            "id": "changed-condition-case",
+            "taskDemandDe": "Öffne im vorgegebenen Funktionsmodell genau einen Rückkopplungspfad. Prüfe, welche bisherige Begründung der zwei stabilen Zustände dadurch ausfällt und welche Angaben für eine neue Prognose fehlen.",
+            "taskDemandEn": "Open exactly one feedback path in the supplied functional model. Identify which prior argument for two stable states fails and which information a new prediction would require.",
+            "expectedPerformanceDe": "Die lernende Person lokalisiert die fehlende gegenseitige Stabilisierung und behauptet weder unveränderte Speicherung noch automatische Dauerschwingung.",
+            "expectedPerformanceEn": "The learner locates the missing mutual stabilization and claims neither unchanged memory nor automatic oscillation.",
+            "understandingFocusDe": "Anderen Impulseingang oder Rückkopplungsunterbrechung bei vollständig vorgegebenem Schaltungsmodell untersuchen.",
+            "understandingFocusEn": "Investigate another pulse input or a disconnected feedback path with a fully supplied circuit model."
+          }
+        ]
+      }
+    }
+  ]
+}

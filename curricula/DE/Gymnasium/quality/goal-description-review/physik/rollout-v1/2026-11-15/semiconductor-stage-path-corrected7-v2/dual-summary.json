@@ -1,0 +1,174 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:9a92487041e29e2740f57fe629934a26e27d0806512e4fa717952aa7b49a6595",
+  "reviewInputFingerprint": "sha256:d5600fab43578460d683624f239c9cf58a97999d53528d8fba27ddfe42622216",
+  "goalCount": 7,
+  "rounds": {
+    "first": {
+      "campaignId": "physik-semiconductor-stage-path-corrected7-20261115-v2-a",
+      "roundId": "physik-semiconductor-stage-path-corrected7-20261115-v2-first-pass-a",
+      "independenceGroupId": "physik-semiconductor-stage-path-corrected7-20261115-v2-independent-a",
+      "runIds": [
+        "physik-semiconductor-corrected7-v2-a-sol-ultra-20261115-045108"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6.1-sol::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "physik-semiconductor-stage-path-corrected7-20261115-v2-b",
+      "roundId": "physik-semiconductor-stage-path-corrected7-20261115-v2-first-pass-b",
+      "independenceGroupId": "physik-semiconductor-stage-path-corrected7-20261115-v2-independent-b",
+      "runIds": [
+        "physik-semiconductor-stage-path-corrected7-20261115-v2-first-pass-b.batch-001.gpt61sol-ultra"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6.1-sol::gpt-6.1-sol; reasoning_effort=ultra; temperature and other sampling controls not exposed"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 7,
+    "unavailable": 0,
+    "requiresSynthesis": 7
+  },
+  "goals": [
+    {
+      "goalId": "7badac4d-2874-5b3a-87e8-bf8f4440b2a6",
+      "firstRecordId": "physik-semiconductor-corrected7-v2-a-sol-ultra-20261115-045108.goal-1",
+      "secondRecordId": "physik-semiconductor-stage-path-corrected7-20261115-v2-first-pass-b.batch-001.gpt61sol-ultra.7badac4d-2874-5b3a-87e8-bf8f4440b2a6",
+      "firstRunId": "physik-semiconductor-corrected7-v2-a-sol-ultra-20261115-045108",
+      "secondRunId": "physik-semiconductor-stage-path-corrected7-20261115-v2-first-pass-b.batch-001.gpt61sol-ultra",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "dc55adac-91a5-5cc3-ab47-be008480616f",
+      "firstRecordId": "physik-semiconductor-corrected7-v2-a-sol-ultra-20261115-045108.goal-2",
+      "secondRecordId": "physik-semiconductor-stage-path-corrected7-20261115-v2-first-pass-b.batch-001.gpt61sol-ultra.dc55adac-91a5-5cc3-ab47-be008480616f",
+      "firstRunId": "physik-semiconductor-corrected7-v2-a-sol-ultra-20261115-045108",
+      "secondRunId": "physik-semiconductor-stage-path-corrected7-20261115-v2-first-pass-b.batch-001.gpt61sol-ultra",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "3b586f2a-60e2-5019-aa08-6a47616a1f1f",
+      "firstRecordId": "physik-semiconductor-corrected7-v2-a-sol-ultra-20261115-045108.goal-3",
+      "secondRecordId": "physik-semiconductor-stage-path-corrected7-20261115-v2-first-pass-b.batch-001.gpt61sol-ultra.3b586f2a-60e2-5019-aa08-6a47616a1f1f",
+      "firstRunId": "physik-semiconductor-corrected7-v2-a-sol-ultra-20261115-045108",
+      "secondRunId": "physik-semiconductor-stage-path-corrected7-20261115-v2-first-pass-b.batch-001.gpt61sol-ultra",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "853dbe54-85b0-59ab-8f3a-000c2b7746ec",
+      "firstRecordId": "physik-semiconductor-corrected7-v2-a-sol-ultra-20261115-045108.goal-4",
+      "secondRecordId": "physik-semiconductor-stage-path-corrected7-20261115-v2-first-pass-b.batch-001.gpt61sol-ultra.853dbe54-85b0-59ab-8f3a-000c2b7746ec",
+      "firstRunId": "physik-semiconductor-corrected7-v2-a-sol-ultra-20261115-045108",
+      "secondRunId": "physik-semiconductor-stage-path-corrected7-20261115-v2-first-pass-b.batch-001.gpt61sol-ultra",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "7d4d6a39-0c78-5fb0-b7bf-182ed00972f7",
+      "firstRecordId": "physik-semiconductor-corrected7-v2-a-sol-ultra-20261115-045108.goal-5",
+      "secondRecordId": "physik-semiconductor-stage-path-corrected7-20261115-v2-first-pass-b.batch-001.gpt61sol-ultra.7d4d6a39-0c78-5fb0-b7bf-182ed00972f7",
+      "firstRunId": "physik-semiconductor-corrected7-v2-a-sol-ultra-20261115-045108",
+      "secondRunId": "physik-semiconductor-stage-path-corrected7-20261115-v2-first-pass-b.batch-001.gpt61sol-ultra",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "af50bb9a-fd7b-50f5-9698-48c4efe99032",
+      "firstRecordId": "physik-semiconductor-corrected7-v2-a-sol-ultra-20261115-045108.goal-6",
+      "secondRecordId": "physik-semiconductor-stage-path-corrected7-20261115-v2-first-pass-b.batch-001.gpt61sol-ultra.af50bb9a-fd7b-50f5-9698-48c4efe99032",
+      "firstRunId": "physik-semiconductor-corrected7-v2-a-sol-ultra-20261115-045108",
+      "secondRunId": "physik-semiconductor-stage-path-corrected7-20261115-v2-first-pass-b.batch-001.gpt61sol-ultra",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "c2af45aa-e3fc-5119-9159-c5a260b4135a",
+      "firstRecordId": "physik-semiconductor-corrected7-v2-a-sol-ultra-20261115-045108.goal-7",
+      "secondRecordId": "physik-semiconductor-stage-path-corrected7-20261115-v2-first-pass-b.batch-001.gpt61sol-ultra.c2af45aa-e3fc-5119-9159-c5a260b4135a",
+      "firstRunId": "physik-semiconductor-corrected7-v2-a-sol-ultra-20261115-045108",
+      "secondRunId": "physik-semiconductor-stage-path-corrected7-20261115-v2-first-pass-b.batch-001.gpt61sol-ultra",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

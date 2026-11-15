@@ -1,0 +1,66 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "physik-semiconductor-stage-path-current-20261115-v1",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-15/semiconductor-stage-path-current-v1.config.json",
+  "configDigest": "sha256:8a5cad95395eaef260d0063b3cb1545973872172fb07da04bda35ecc3c5628f0",
+  "goalIds": [
+    "7badac4d-2874-5b3a-87e8-bf8f4440b2a6",
+    "9f265f49-1342-5ba7-9c5d-54e97fdb2f19",
+    "dc55adac-91a5-5cc3-ab47-be008480616f",
+    "2084b7d4-300d-5fa0-8b8d-c480c40f853e",
+    "3857891b-d328-585b-9936-85c7aff122ee",
+    "4a42cddd-7827-5204-87e5-8d9eac7792f1",
+    "3b586f2a-60e2-5019-aa08-6a47616a1f1f",
+    "df010b2b-b182-5f7e-bbe4-49b72e48c27a",
+    "853dbe54-85b0-59ab-8f3a-000c2b7746ec",
+    "658cf33d-a0c2-5d47-801a-3dbcd5cac074",
+    "7d4d6a39-0c78-5fb0-b7bf-182ed00972f7",
+    "af50bb9a-fd7b-50f5-9698-48c4efe99032",
+    "c2af45aa-e3fc-5119-9159-c5a260b4135a"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 480,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-physics-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:a74bc815d7d0e4f290ef0b434e60ef27fb1ed24607fb1842e35665ba9b7375c3"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:80b29758960b33761509ba5dab9db7b9735f14c4279f3092739abce0d24367ab",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:c4e715f695fa0e3fed947cf79cfbe4bf58c55f61a5ba0c4c2c258afb47b0e57f",
+    "reviewInputFingerprint": "sha256:18a299d747e2fbe97fc4055d6b5f1c0e558f1a9cedd02029bb31a0e1a09e315c",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "physik-semiconductor-stage-path-current-20261115-v1-a",
+        "campaignDigest": "sha256:5472c521df3f54d62fd2cfb71eea2e210d26e6f6717a30653f0b4bce59d55352",
+        "roundId": "physik-semiconductor-stage-path-current-20261115-v1-first-pass-a",
+        "independenceGroupId": "physik-semiconductor-stage-path-current-20261115-v1-independent-a",
+        "batchId": "physik-semiconductor-stage-path-current-20261115-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:59027f1ea8665ad85bf027001ddf7922162ba8a7e7f5a4697d38867f94ab6979"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "physik-semiconductor-stage-path-current-20261115-v1-b",
+        "campaignDigest": "sha256:71d68f4be3d91c76af0ea9686a98d48568b05a5654215e11629d7166b6cb06e7",
+        "roundId": "physik-semiconductor-stage-path-current-20261115-v1-first-pass-b",
+        "independenceGroupId": "physik-semiconductor-stage-path-current-20261115-v1-independent-b",
+        "batchId": "physik-semiconductor-stage-path-current-20261115-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:0f2f4eb8342df237cffcddfb97dcaf9f4b59ae1c3078f59ef0b65b81ce1618d5"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

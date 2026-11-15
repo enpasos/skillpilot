@@ -204,7 +204,8 @@ test('RP preserves its original Sek-I supports and references the two other meth
     const root = structures(view.rootNodes).find(node => node.id === 'physics-root')!
     const support = structures(view.rootNodes).find(node => node.id === 'physics-seki-route-prerequisites')!
     assert.deepEqual(root.children[1], { kind: 'goalEntry', goalId: observation, projectionRole: 'prerequisiteOnly' }, path)
-    assert.deepEqual(support.children[37], { kind: 'goalEntry', goalId: models, projectionRole: 'prerequisiteOnly' }, path)
+    assert.deepEqual(support.children.filter(node => node.kind === 'goalEntry' && node.goalId === models),
+      [{ kind: 'goalEntry', goalId: models, projectionRole: 'prerequisiteOnly' }], path)
     const stageRoles = collectCompositionProjectionRoleGoalIds(withoutSekII(view.rootNodes), byId)
     for (const id of [observation, models]) {
       assert(stageRoles.prerequisiteOnlyGoalIds.has(id), `${path}: lost Sek-I support ${id}`)

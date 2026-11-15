@@ -4,7 +4,18 @@
 Einführung von Einheiten, die Stufen als Planeinheiten, an die Fachprüfung für
 Mathematik und Physik. Es beschreibt den Iststand, den Zielzustand des Modells,
 die Lücken der Dokumente und die curricularen Befunde, die fachlich aufzulösen
-sind. Es ändert kein Ziel, keine Kante und keine Sicht.
+sind. Die ursprüngliche Übergabe ändert kein Ziel, keine Kante und keine
+Sicht. Die anschließenden Umsetzungsentscheidungen stehen in Abschnitt 2.4;
+Abschnitt 7 unterscheidet laufende Arbeit von integrierten Ergebnissen.
+
+**Arbeitsauftrag vom 15. November 2026:** Der Product Owner hat Recherche,
+fachliche Entscheidungen und Umsetzung an die ausführenden Agenten delegiert.
+Er kontrolliert die konkreten Ergebnisse und greift bei Bedarf ein. Die
+früheren Freigabevorbehalte dieses Dokuments sind für diesen Auftrag aufgehoben.
+Ziel ist die Integration der Ergebnisse auf `main` mit einem frischen,
+vollständig erfolgreichen CI-Lauf; PRs sind Zwischenschritte. Quellenbelege,
+unabhängige Reviews, unveränderliche Nachweise, Lernergebnisse und geschützte
+Qualitätsuntergrenzen bleiben verbindlich.
 
 Grundlage ist das Einheitenkonzept
 [Lerneinheiten: Cluster, `after` und Lernfluss](../concept/skill-graph/learning-unit-wiring-concept-2026-11-14.md)
@@ -168,7 +179,9 @@ den Sichten mit Dauermodell.
 
 ### 2.3 Wo das beschlossene Modell schweigt oder sich widerspricht
 
-Diese Punkte entscheidet der Product Owner. Die Empfehlungen sind Vorschläge.
+Diese Tabelle hält die offenen Fragen und Empfehlungen der ursprünglichen
+Übergabe fest. Ihre Auflösung unter dem delegierten Arbeitsauftrag steht in
+Abschnitt 2.4; sie sind keine an den Product Owner zurückgegebenen Aufgaben.
 
 | Nr. | Frage | Befund | Empfehlung |
 | --- | --- | --- | --- |
@@ -184,13 +197,43 @@ Diese Punkte entscheidet der Product Owner. Die Empfehlungen sind Vorschläge.
 Weiter offen ist B13 (jedes Land führt eine fachliche Einheit ohne
 Untereinheiten als Ganzes). Der Beschluss betrifft erst den zweiten Schritt.
 
+### 2.4 Umsetzungsentscheidungen unter delegierter Verantwortung
+
+Die folgenden Entscheidungen konkretisieren den Arbeitsauftrag vom
+15. November. Sie sind Entscheidungen der ausführenden Agenten mit
+nachträglicher Kontrolle durch den Product Owner, keine Behauptung, dass er
+jede technische Einzelheit selbst vorgegeben hat.
+
+| Bezug | Entscheidung und Abnahme |
+| --- | --- |
+| M1 | Der vollständige Landesplan hat ausschließlich Sekundarstufe I und II an seiner Wurzel, mit Sekundarstufe II nach I. Orientierungsziele und Prüfungen erhalten einen begründeten Platz darin. Eine Sicht einer einzelnen Stufe ist ein Ausschnitt; sie benötigt keine künstliche leere zweite Stufe. |
+| M2 | Quellenzuordnung und Lernplatz sind getrennt. Eine früh benötigte Kompetenz kann als begründete Vorbereitung früher gelernt werden, während ihre amtlich belegte Zuordnung erhalten bleibt. Eine neue Platzierung schreibt weder eine Quellenbehauptung noch ein Lernergebnis. |
+| M3 | Der Platz einer verfassten Voraussetzungshilfe ist keine Stufenaussage. Ihre Lernplatzierung folgt aus dem frühesten tatsächlichen Bedarf im geschlossenen persönlichen Lernumfang. Die Umstellung umfasst die Leser, Sichtbarkeitsprüfungen und Generatoren gemeinsam; bis dahin weist der Bericht ihre unterschiedlichen bisherigen Bedeutungen aus. |
+| M4 | Pro Land und Dauermodell gibt es einen maßgeblichen Plan über die Fächer. Kursprofile wählen die fachlichen Anteile; sie autorieren keine widersprechenden Stufen für dasselbe Ziel. Sichten einer Stufe werden daraus abgeleitet. |
+| M5 | Die kanonische Marke darf eine ausdrücklich vorläufige didaktische Einordnung begründen. Sie ersetzt niemals den fehlenden Landesbeleg und erzeugt weder ein amtliches Lernziel noch bestandene Quellenabdeckung. Routen prüfen die ausgewertete Platzierung; Quellenprüfungen prüfen weiterhin ihre eigenen Belege. |
+| M6 | Eine fachlich falsche Voraussetzung oder Abdeckung wird nicht zum Erhalt eines Reifegrads konserviert. Die vollständige Reparatur liefert geeignete Aufgaben und Rubriken und entfernt die falsche Verbindung. Eine noch offene Prüfungslücke bleibt ein nicht bestandener Befund; weder Frist noch Umbenennung lassen das bestehende Gate bestehen. |
+| M7 | Voraussetzungsabschluss erzeugt notwendige Lernziele des persönlichen Lernumfangs, keine neuen amtlichen Zielzuordnungen. Generator und handverfasste Sichten unterscheiden die belegten Ausgangsziele von dieser abgeleiteten Vorbereitung. |
+| M8 | Die bundesweite Sicht ist die kanonische Gliederung und kein Landesplan. Die Regeln über zwei Landesstufen gelten dort nicht; Graphintegrität, fachliche Richtigkeit und die übrigen Qualitätsregeln gelten unverändert. |
+
+Ein belegter Rückgriff ist eine fachliche Diagnose, keine Ausnahme von Z4.
+Bleibt er ungelöst, ist der betroffene Plan nicht abgenommen. Die Reihenfolge
+der strukturellen Einführung verbietet keine notwendige kanonische
+Fachkorrektur: Ein neuer Platz allein behebt keinen ungeeigneten Zielumfang.
+
+Die didaktische Recherche unterscheidet drei Belegarten: amtliche Quellen
+belegen curricularen Umfang und Zuordnung; veröffentlichte Unterrichtsgänge
+belegen einen praktisch beschriebenen Zugang; empirische Untersuchungen
+belegen nur die tatsächlich untersuchten Lernergebnisse und Bedingungen.
+Keine dieser Belegarten ersetzt die anderen oder eine Erprobung in SkillPilot.
+
 ## 3. Was fehlt, damit der Zielzustand vollständig in den Dokumenten steht
 
 ### 3.1 Entscheidungen
 
-Vor jeder Textänderung entscheidet der Product Owner M1 bis M8. Ohne M2, M3
-und M5 lassen sich die Befunde K2 bis K5 in Abschnitt 4 nicht abschließen,
-weil offen bleibt, welche Form die Auflösung in den Sichten hat.
+Abschnitt 2.4 ist die Arbeitsgrundlage für M1 bis M8. Die ausführenden Agenten
+führen Quellenrecherche, Fachkorrekturen und Vertrag aus; offene fachliche
+Fragen werden untersucht und begründet entschieden. Ein Zwischenbefund darf
+als solcher dokumentiert werden, ohne dass dafür andere Arbeiten warten.
 
 ### 3.2 Dokumente
 
@@ -225,16 +268,46 @@ unprüfbar:
 - **F6, Bericht.** Die Messung aus Abschnitt 1.4 wird ein eingechecktes
   Werkzeug mit erzeugtem Statusbericht: je Land, Kursprofil und Dauermodell
   die Kinder der Planwurzel und die Rückgriffe mit beiden Zielen. Das Konzept
-  setzt F6 vor die Fachprüfung F5. Ohne den Bericht kann die Fachprüfung die
-  Wirkung einer Korrektur nicht selbst feststellen.
+  setzt den formalen F6-Bericht nach F2 und vor die Fachprüfung F5. Für die
+  bereits begonnenen Fachkorrekturen wird vorher ein reproduzierbarer
+  Diagnosebericht auf den bestehenden Sichten erstellt. Er kennzeichnet die
+  vorläufige Zuordnung ausdrücklich und ist noch kein E2-Gate. Nach F1/F2
+  verwendet die Abnahme die erklärten Planeinheiten. So kann die Fachprüfung
+  ihre Wirkung messen, ohne die Vorschau als fertigen Vertrag auszugeben.
+
+Für F2 ist eine gemeinsame Autorenschaft mit erzeugten Kompatibilitätssichten
+festgelegt. Pläne, vollständige Fachbäume und reine Ausschnittsverweise liegen
+unter `stage-plans/`; die aktivierten Landessichten unter `composition-views/`
+werden daraus deterministisch erzeugt. Die bundesweiten kanonischen Sichten
+bleiben außerhalb dieser Landesautorität. Die erzeugten Landessichten sind
+danach keine zweite bearbeitbare
+Platzierungsquelle. Ein ebenfalls erzeugter, an Dateidigest und Planrevision
+gebundener Index liefert die ausdrücklich erklärten Planeinheiten an Lernkarte,
+Backend, Paketverbraucher und F6. Die vorhandenen Prüfungen der materialisierten
+Sichten bleiben wirksam; ein eigener Vergleich findet veraltete, fehlende,
+zusätzliche oder unabhängig bearbeitete Ausgaben. Der Editor muss die
+Autoritätsgrenze ebenfalls beachten. Diese Architektur ist eine
+Implementierungsentscheidung, noch kein Nachweis ihrer vollständigen Umsetzung.
+
+Die alten Angebotsumfänge bleiben erhalten: Eine dauerneutrale Physiksicht kann
+ausdrücklich mehrere Dauermodelle bedienen. Eine kursneutrale Mathematiksicht
+der Sekundarstufe I wird nur dann aus mehreren Fachautoritäten abgeleitet,
+wenn deren ausgewählte Stufe übereinstimmt. Ein fehlendes Dauermodell oder
+Kursprofil wird dabei nicht stillschweigend ergänzt.
 
 ### 3.4 Reihenfolge
 
-1. Product Owner: M1 bis M8.
-2. F6 als Werkzeug; es ersetzt die Zahlen in diesem Dokument.
-3. Einheitenkonzept und `AGENTS.md`, dann F7 in der Graph-Definition.
-4. F1 und danach F2: die Stufen in allen Sichten erklären.
-5. Daneben, ab Schritt 2: die Fachprüfung nach Abschnitt 4.
+1. Den Auftrag und die Entscheidungen aus Abschnitt 2.4 in Einheitenkonzept
+   und `AGENTS.md` festhalten.
+2. Den bestehenden Zustand reproduzierbar diagnostizieren; parallel die
+   fachlichen Fälle recherchieren und konkrete Aufgaben entwerfen.
+3. F1 und danach F2: gemeinsamer Planvertrag und erklärte Stufen; parallel
+   F7 für den jeweils festgelegten Modellteil.
+4. F6 auf die erklärten Planeinheiten anwenden und die Ursachen F5 in
+   vollständigen fachlichen Paketen beheben. K1 und der falsche
+   Prüfungsnachweis K2 gehören in die erste Welle.
+5. Die Ergebnisse auf `main` integrieren und den vollständigen CI-Erfolg am
+   integrierten Stand nachweisen.
 
 ## 4. Curriculare Befunde für die Fachprüfung
 
@@ -287,6 +360,53 @@ Betrifft 12 Länder; häufigster verbleibender Rückgriff.
   Bildanbieters braucht die Freigabe des Product Owners. `df010b2b` steht in
   der Abdeckung von `1abfd5ef`, `0f5346d6` und `4a58df57`; die beiden letzten
   sind an das eingefrorene Reduktionsregister gebunden.
+
+**Umsetzung der Fachprüfung, 15. November.** Die obige Teilungsempfehlung wird
+durch zwei getrennte Einstiege konkretisiert: Ein einfaches Bindungsmodell
+erklärt bewegliche Elektronen und Löcher, ortsfeste Dotierionen und die neutrale
+Ladungsbilanz (`9f265f49`). Ein zweites Ziel behandelt die Funktion einer Diode
+an vorgegebenem Stromkreis und vorgegebener Kennlinie (`dc55adac`). Die
+experimentelle Aufnahme einer Kennlinie bleibt ein eigenes Ziel mit tatsächlicher
+Durchführung. Der p-n-Übergang braucht das einfache Dotierungsmodell; das
+fortgeschrittene Ziel `df010b2b` behält seine Identität und seinen vollständigen
+Lernanspruch einschließlich der Dotierung im Bändermodell.
+
+Diese Reihenfolge stützt sich auf den
+[bayerischen Lehrplan für Physik 10](https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/10/physik)
+und den [Unterrichtsgang zur Diode der Lehrerfortbildung Baden-Württemberg](https://lehrerfortbildung-bw.de/u_matnatech/imp/gym/bp2016/fb2/p01_eui/1_hintergrund/2_gang/4_diode/).
+Die [fachdidaktische Untersuchung von García-Carmona und Criado](https://ensciencias.uab.cat/article/view/v29-n1-garcia-criado)
+begründet die gezielte Prüfung von Ladungsträgern, Löchern und Ladungsbilanz.
+Das sind Belege für die Modellierungsentscheidung, keine Wirksamkeitsmessung
+von SkillPilot und keine zusätzliche amtliche Zuordnung für andere Länder.
+
+Die Aufgabenprüfung erfasst auch mögliche falsche Antworten, die nach dem
+veröffentlichten Raster dennoch bestehen würden. Die ersten Raster ließen
+zentrale Erklärungen innerhalb einer Punktgruppe ausfallen. Die Korrektur
+bewertet deshalb einzeln die wesentlichen Kompetenzen, die zur behaupteten
+Zielabdeckung gehören. Teilpunkte bleiben als Rückmeldung erhalten; ein
+belangloser Schreib- oder Rechenfehler ist kein zusätzlicher Pflichtnachweis.
+Die konkrete Bestehensgrenze gehört offen zum jeweiligen Raster. Es entsteht
+weder eine verdeckte Zusatzbedingung im Coach noch ein zweites Lernergebnis.
+
+Beim Transistorschalter trennt die Umsetzung zusätzlich die materialgestützte
+Deutung vom tatsächlichen eigenen Aufbau. Bisher erlaubten dieselben globalen
+Ziel- und Prüfungskennungen sowohl eine Papierauswertung als auch ein
+Schülerexperiment. Ein späterer Wechsel des Landes oder Aufgabenkontexts kann
+aus dem gespeicherten binären Ergebnis keine Durchführungsevidenz erzeugen.
+Das Experiment erhält daher eine neue Kompetenz- und Prüfungskennung; die
+bestehenden Kennungen behalten den Deutungsanspruch. Der neue praktische
+Einstieg benötigt das Lesen eines Stromkreisplans, keine vorgezogene
+mikroskopische Transistortheorie. Die eigene Versuchsdurchführung wird nur dort
+als Quellenforderung zugeordnet, wo sie tatsächlich belegt ist, insbesondere
+im bayerischen NTG-Lehrplan.
+
+**Verbleibender praktischer Teil:** Derselbe amtliche Inhaltskatalog verlangt
+auch die eigene Untersuchung eines Transistors als Verstärker. Die neue
+Schalterprüfung und die materialgestützte Verstärkeraufgabe belegen diesen
+Versuch nicht. Er bleibt ein konkret benannter Bestandteil der anschließenden
+praktischen Fachlieferung mit K3. Die partielle Quellenzuordnung und ein
+bestandener maschineller Check werden nicht als vollständige Abdeckung des
+NTG-Profilbereichs ausgegeben.
 
 ### K2 Diagrammziele der Jahrgangsstufe 7
 
@@ -485,8 +605,9 @@ angeglichen (M4). Bis dahin weichen sie von den Sichten mit beiden Stufen ab.
 ## 5. Regeln für die Fachprüfung
 
 - **Vier Auflösungen.** Jeder Befund endet mit genau einer der vier
-  Auflösungen aus Abschnitt 8 des Konzepts oder mit der Feststellung, dass der
-  Rückgriff besteht und der Plan des Landes ihn so vorsieht. Fachliche
+  Auflösungen aus Abschnitt 8 des Konzepts. Ergibt die Quellenprüfung, dass
+  ein Rückgriff zunächst bestehen bleibt, ist er ein offener Befund und keine
+  bestandene Ausnahme von Z4. Fachliche
   Richtigkeit geht vor: Eine Voraussetzung ist nicht falsch, weil sie die
   Lernkarte stört.
 - **Belege.** Curriculumdaten sind an Belege gebunden. Gewicht der Belege in
@@ -495,8 +616,12 @@ angeglichen (M4). Bis dahin weichen sie von den Sichten mit beiden Stufen ab.
   `upper-secondary/`; die Provenienz unter `provenance/`; zuletzt die Marken
   des Ziels. Schlüsselwort- und Clustermappings sind nur Hinweise. Fehlt der
   Beleg, lautet der Befund „kein Beleg im Repository“.
-- **Keine erfundenen Ziele, Kanten oder Quellenaussagen.** Ein geteiltes Ziel
-  verwendet vorhandenen Wortlaut.
+- **Begründete Zielautorenarbeit.** Neue Formulierungen, Teilungen und
+  atomare Brückenziele sind zulässig, wenn ihr fachlicher Bedarf und ihr
+  Prüfungsmaßstab belegt sind. Didaktische Modellierungsentscheidungen werden
+  als solche gekennzeichnet; sie dürfen keine amtlichen Quellenaussagen
+  erfinden. Eine empfohlene Unterrichtsreihenfolge ist nicht automatisch eine
+  harte Voraussetzung.
 - **Nebenwirkungen vor der Empfehlung messen.** Vor jedem Vorschlag sind zu
   prüfen:
   - die transitive Minimalität und der Zuwachs des Lernumfangs, wenn eine
@@ -516,22 +641,52 @@ angeglichen (M4). Bis dahin weichen sie von den Sichten mit beiden Stufen ab.
   konkrete Datenänderung (welche Kante, welches Ziel, welcher Abschnitt in
   welchen Sichten), die betroffenen Prüfungen und die gemessene Wirkung auf
   die Bedingungen aus Abschnitt 2.2. Entscheidungen gehen in ein Protokoll
-  unter `mapping/`; Datenänderungen kommen als Pull Request je Fach.
-- **Was dem Product Owner bleibt.** Die Punkte M1 bis M8, jede Teilung eines
-  Ziels, jeder Aufruf des Bildanbieters, jede Änderung an einem gebundenen
-  Ziel und jede Änderung an einer Testregel.
+  unter `mapping/`; zusammenhängende Datenänderungen werden als wenige
+  prüfbare Lieferungen integriert. Ein offener PR ist kein Abschluss.
+- **Verantwortung.** Die ausführenden Agenten entscheiden und implementieren
+  innerhalb des Auftrags; der Product Owner kontrolliert die Ergebnisse.
+  Gebundene Ziele erhalten echte aktuelle Reviews. Notwendige Bildarbeit und
+  fachlich begründete Änderungen an Tests gehören zur Umsetzung, ohne die
+  geschützten Qualitätsanforderungen zu senken.
 
 ## 6. Reihenfolge der Befunde
 
 | Rang | Befund | Wirkung |
 | --- | --- | --- |
-| 1 | K1 | letzter Rückgriff in BB, BE, HH und MV; beide in SL, SN und ST; einer von zwei in HB, NI und NW; zwei von drei in TH |
+| 1 | K1, K2 | Halbleiterpfad ohne vorgezogene Bandtheorie; fachlich falschen Diagramm-Prüfungsnachweis durch echte Aufgaben ersetzen. |
 | 2 | K11 | Bedingung 1 in 11 Ländern |
-| 3 | K4, K6, K10 | restliche Rückgriffe in NI, NW, BW, HB und TH |
-| 4 | K2, K3 | ersetzt zwei Entscheidungen des delegierten Durchgangs durch belegte |
+| 3 | K3, K4, K6, K10 | Echte Prüfungswege für Arbeitsweisen und restliche Rückgriffe in NI, NW, BW, HB und TH. |
+| 4 | K13 | Stufenausschnitte aus den korrigierten Vollsichten ableiten und durchgehend validieren. |
 | 5 | K8, K9 | Schleswig-Holstein und Bayern |
 | 6 | K7 | Rheinland-Pfalz |
-| 7 | K5, K12, K13 | Bereinigung ohne Wirkung auf die oberste Tafel |
+| 7 | K5, K12 | Fachliche Bereinigung auch dort, wo die oberste Tafel unverändert bleibt. |
+
+## 7. Lieferstand des delegierten Auftrags
+
+Der kurze Verlauf für den Product Owner steht im fortlaufenden
+[Management Summary](stage-plan-management-summary.md), mit einem Eintrag
+nach jedem Umsetzungspaket mit Datum, Uhrzeit und Zeitzone, Fortschritt gegenüber K1–K13
+und F1–F7, Entscheidungen, Kontrollstellen und verlinkten Nachweisen. Ein
+kleiner Doku-Abschluss nach erfolgreicher Main-CI ist ausdrücklich erlaubt;
+er muss nicht auf die nächste fachliche Lieferung warten.
+
+Die Befunde K1 bis K13 und die erste strukturelle Einführung F1 bis F7 bilden
+den Arbeitsumfang dieser Übergabe. Die späteren fachlichen Einheiten und ihre
+Laufzeitfunktionen F8 bis F13 bleiben im Einheitenkonzept eigene Folgeschritte;
+sie werden hier nicht durch einen bestandenen Stufenbericht als geliefert
+ausgewiesen.
+
+| Lieferung | Aktueller Nachweis | Noch erforderlich |
+| --- | --- | --- |
+| #156 Übergabe | Alle drei PR-Prüfungen erfolgreich; am 15. November als `c19f1d3f3e` auf `main` integriert. | Die Umsetzung der beschriebenen Arbeiten; die Übergabe selbst löst keinen Fachbefund. |
+| #153 Lernkartenvorschau | Vollständige [PR-CI](https://github.com/enpasos/skillpilot/actions/runs/43669866522) am Kopf `07b30fb2fd` erfolgreich; als `a7c7e9ceb2` auf `main` integriert. Auch die frische [Main-CI](https://github.com/enpasos/skillpilot/actions/runs/43674399591) ist erfolgreich: 14/14 Jobs bestanden, abgeschlossen am 15. November um 04:54 UTC. Die zuvor genannten 25 erfolgreichen und zwei übersprungenen Checks bezeichneten die damalige Summe mehrerer Workflows am Commit um 04:56 UTC, nicht diesen einzelnen Lauf. | Die Vorschau ersetzt noch nicht die erklärten Planeinheiten; die folgenden neuen Lieferungen benötigen jeweils ihre eigene Integration und CI. |
+| K1 Halbleiter-/Diodenpfad | Lokal drei neue Kompetenzen und drei neue Lernendenaufgaben: einfaches Dotierungsmodell, funktionales Diodenverhalten und eigener Transistorversuch. 33 Quellenzuordnungen korrigiert; vier Eingangsquellen bytegleich. Die ursprünglichen zwei Reviews und die zweite Runde sind erhalten. Sechs aktuelle Aufgaben wurden mit vollständigem Material und analytischen Kernrastern tatsächlich geprüft; der eigene Versuch hat eine unabhängige Inhalts- und Bildprüfung. Am aktuellen gemeinsamen Stand bestehen G17 über 21 kanonische Kataloge, CQR-104 mit 80 Routen, alle 70 nativen Physikprojektionen und die Quellenprüfung. Die hessische Vorbereitung steht innerhalb von Q4. | Alle 14 Ziele sind zweifach aktuell bestätigt, nativ finalisiert und aktiviert; 14/14 geprüfte Buchseiten stimmen mit dem aktuellen Katalog überein. Die vollständige lokale Qualitätsprüfung besteht für alle fünf tief geprüften Fächer; Physik erreicht M7 mit 481 aktuellen Inhaltszielen. Die unveränderten Mindeststandards für 21 Kataloge und zwölf Routen bestehen gegen `a7c7e9ceb2`. Integration und frische Remote-CI bleiben erforderlich. Der eigene Verstärkerversuch bleibt für die anschließende praktische Lieferung offen; Stufenplatzierungen folgen F2/F5. |
+| K2 Diagramm-Prüfungsweg | Vier Diagrammaufgaben mit acht eigenen Diagrammen ersetzen die sachfremde Abdeckung durch Task 5. Zusätzlich sind vier elementare Voraussetzungsketten korrigiert und drei vollständige zweisprachige Aufgaben für Tabellenaufbau, Tabellenlesen und Diagrammlesen lokal integriert. Die Zahl gewöhnlicher Mathematikkompetenzen bleibt 807; vier davon haben jetzt fachlich passende Voraussetzungen. Die vollständigen Zieltexte und P-Profile bleiben erhalten. Zwei unabhängige D-Runden bestätigten zunächst alle vier Ziele. Der spätere CI-Befund zur J5-/J6-Kante ist durch die Trennung von Tabellenkompetenz und Zahlenvorbereitung der stärkeren Aufgabe behoben; für das Tabellenziel sind zwei weitere aktuelle D-Runden nativ aufgelöst und aktiviert. Alle 354 Composition-Sichten einschließlich 88 Mathematiksichten bestehen mit null Fehlern und 2.388 dokumentierten Warnungen. | Der gemeinsame sequentielle Qualitätslauf und die unveränderten Mindeststandards für 21 Kataloge und zwölf Routen bestehen; Mathematik bleibt M7. Die erste Lieferung änderte 18 erzeugte Dauermodellsichten, die elementare Ergänzung davon neun. Die vollständigen ID-Deltas zu beiden früheren Datenständen sind geprüft. Die jüngste Aufgabengrenze lässt alle 18 Dauermodellsichten bytegleich und die Voraussetzungshüllen aller 128 aufgezeichneten Seedmengen unverändert. Integration und frische Remote-CI bleiben erforderlich. Physikrückgriffe und Länderplatzierungen bleiben innerhalb K2 offen. |
+| F1 Planvertrag | Lokaler Kandidat mit gemeinsamer Stufenautorität, expliziten G8/G9-Bindungen und abgeleiteten Ausschnitten; dauer- und kursneutrale Angebote bleiben erhalten. 58 Vertrags-Negativfälle, die ergänzten Materialisierungsprüfungen, ESLint und der App-Typecheck bestehen; die bisherigen 50 Vertragsfälle bleiben erhalten. Reale Sichten aus BB und HE werden gegen den vorhandenen Compiler geprüft; versteckte Voraussetzungshinweise werden keine Lernziele. Der unabhängige Rollen- und Namensvergleich bestätigt die korrigierte Fassung; echte doppelte Ziele und nicht auflösbare Namen scheitern weiterhin. | Reale Sichten, Leser und Paketverträge umstellen; F2 bis F7 sowie vollständige Abnahme der betroffenen Pläne. |
+| F2 Erzeugung der Sichten | Lokale Grundlage erzeugt v1-Kompatibilitätssichten und einen an Quelldigests gebundenen Index aus getrennten Plan- und Sichtquellen. Die unabhängig gefundenen Lücken bei qualifizierten Referenzen, semantischer Kompilierung und der Bindung der Aktivierungsdatei sind behoben und nachgeprüft. 51 Negativfälle einschließlich der Berichtsanbindung und nativer Rollen-/Namensgegenproben bestanden. | Reale Quellen autorieren, vorhandene Generatoren und Editor umstellen, Leser und Paketverbraucher anbinden und den vollständigen Datenbestand abnehmen. |
+| F6 Stufenbericht | Lokaler Diagnosekern prüft unabhängig gewählte Fachprofile, direkte und transitive Rückgriffe mit Zeugenpfad sowie notwendige Vorbereitung. Die Kommandozeile verlangt einen frisch materialisierten vollständigen Katalog und bindet den Bericht an den Indexdigest. Gegenbeispiele für gemischte Fachprofile, ungültige globale Graphen, veraltete Artefakte und geänderte Kantenreihenfolge sind geprüft. | Reale Pläne vollständig aktivieren, Bericht erzeugen und seine Befunde lösen. Die geprüfte Grundlage und ihre isolierten Testdaten sind kein bestandener realer Stufenplan. |
+| CI-Nachlauf der ersten Lieferung | Die aktuelle vollständige lokale Qualitätsberechnung und alle 21/12 Mindeststandards bestehen. Die fünf M7-Fächer sind vollständig; 25 Lernroutenfälle und 51 negative Paketfälle bestehen. Der [aktuelle Nachweis](https://github.com/enpasos/skillpilot/blob/e6eb2add29a325204dae9a24f37d89dc0e2a9425/curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/k2-table-task-boundary-current-v2/README.md) erhält die tatsächlichen Fehler, frischen Inhaltsreviews und technische Gegenprüfung. | Der bisherige PR-Durchgang endete mit neun erfolgreichen und fünf fehlgeschlagenen Jobs. Die gebündelte Korrektur erneut vollständig durch CI führen, integrieren und frische Main-CI abwarten. |
+| Weitere K-Befunde | Entscheidungen in Abschnitt 2.4; Priorität gemäß Abschnitt 6. | Zusammenhängende fachliche Lieferungen mit tatsächlichen Aufgaben und frischen Nachweisen. |
 
 ## Anhang A: Verbleibende Rückgriffe
 

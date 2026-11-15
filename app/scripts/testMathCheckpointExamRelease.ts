@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
+import './testMathDiagramAssessmentRelease'
 
 type ScoringStep = { id: string; points: number; description: string }
 type ExamGoal = {
@@ -191,4 +192,4 @@ for (const incompleteCaseMaximum of [5 + 6 + 6, 8 + 3 + 6, 8 + 6 + 3]) {
   assert.ok(incompleteCaseMaximum < 18)
 }
 
-console.log(`Mathematics checkpoint assessment contracts passed (${expected.length} reviewed examinations). Content release is not a real-host or human trial.`)
+console.log(`Mathematics checkpoint assessment contracts passed (${expected.length} general checkpoints plus 4 diagram assessments). Content release is not a real-host or human trial.`)

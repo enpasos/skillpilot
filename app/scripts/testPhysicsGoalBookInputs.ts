@@ -21,8 +21,8 @@ import {
 } from '../src/utils/authoring/compositionViewAuthoring'
 import { buildApplicabilityCompilation } from './applicabilityCompiler'
 import { collectWholeMaterialPrerequisiteClosure, createRouteProfiles, evaluateRouteProfile, routeProfileDefinitions } from './generateCurriculumQualityStatus'
-import type { SkillLandscape } from '../src/landscapeTypes'
-import { parseSubjectDurationModelPolicy } from './goalBookModel'
+import type { ExamData, SkillLandscape } from '../src/landscapeTypes'
+import { parseSubjectDurationModelPolicy, type GoalBookDurationPolicyViewSource } from './goalBookModel'
 import {
   loadVerifiedPrerequisiteReductionContext,
   reviewBindingGoal,
@@ -454,7 +454,11 @@ const CQR104_ROUTE_ASSESSMENT_EVIDENCE = new Map<string, Map<string, string[]>>(
     ['f322c268-dc16-5d50-82dd-209834f20208', ['Klimawirkung der Entscheidung', 'Modellunsicherheiten', 'bedingtes Urteil']],
   ])],
   ['1abfd5ef-1f42-5b71-8c9a-80c0a6b0322e', new Map([
-    ['df010b2b-b182-5f7e-bbe4-49b72e48c27a', ['teilweise besetztes Band', 'n-Dotierung', 'p-Dotierung']],
+    ['df010b2b-b182-5f7e-bbe4-49b72e48c27a', [
+      'Bandmodelle A–C', 'erreichbare unbesetzte Energiezustände', 'Bandlücke',
+      'n-Dotierung', 'p-Dotierung', 'vollständige Ladungsbilanz',
+      'bloßer Erwärmung eines undotierten Halbleiters',
+    ]],
   ])],
   ['dbe230d5-31e1-5fca-8e11-2226821952ff', new Map([
     ['fdcd5faf-f9bf-4fa9-87f4-4e22d8d3387c', ['Induktionsladegerät', 'zeitlich veränderliches Magnetfeld', 'Strom im geschlossenen Sekundärkreis', 'Ladeelektronik', 'nutzbaren beziehungsweise im Akku gespeicherten Energie']],
@@ -477,7 +481,11 @@ const CQR104_ROUTE_ASSESSMENT_EVIDENCE = new Map<string, Map<string, string[]>>(
     ['58fc7852-722c-5a67-be6a-bfd1be0b527e', ['Bedingungen für Totalreflexion', 'optisch dünnerer Mantel', 'Grenzwinkel']],
   ])],
   ['88f27aab-8724-5a4d-8543-e49ebcb54b8e', new Map([
-    ['7d4d6a39-0c78-5fb0-b7bf-182ed00972f7', ['Steuer- und Lastpfad', 'dünnen Basis', 'Stelle den Aufbau nach Plan tatsächlich her', 'Eine Textbehauptung ersetzt keinen beobachteten Aufbau', 'elektronische Schaltwirkung']],
+    ['7d4d6a39-0c78-5fb0-b7bf-182ed00972f7', [
+      'Steuer- und Lastpfad', 'dünne Basis', 'Demonstrationsdaten sind vorgegeben',
+      'bescheinigt keinen selbst hergestellten Aufbau', 'elektronische Schaltwirkung',
+      'beim Tausch dieser Sensorwirkung',
+    ]],
   ])],
   ['8f62ab5e-20fc-562f-8121-63c082313e6e', new Map([
     ['41d35667-0296-5f84-bc12-202ffc440be0', ['Zeichnen Sie beide Kräfte', 'Konstruieren Sie die Resultierende', 'Betrag und Richtung']],
@@ -577,14 +585,14 @@ const KINEMATICS_ASSESSMENT_IDS = new Set([
   '6ea3fb3c-abdc-568f-ab13-97c36dc274e4',
 ])
 const EXPECTED_COUNTS: SemanticKindLedger['counts'] = {
-  curricularAtomic: 478,
+  curricularAtomic: 481,
   curricularArea: 112,
-  practiceAssessment: 165,
+  practiceAssessment: 168,
   programStructure: 1,
   memory: 5,
   runtimeSupport: 4,
   orientation: 2,
-  total: 767,
+  total: 773,
 }
 // Approved final diode/astronomy splits: exactly eight children replace three
 // mixed content leaves, and six new singleton-coverage assessment tasks are added.
@@ -598,8 +606,26 @@ const FINAL_SPLIT_CHILD_IDS = [
   '3a4b2f86-5c59-5429-8fb4-75d9b2589cb5',
   '946ecf7b-0fcf-5776-9fb6-d397423c2f12',
 ]
+const SEMICONDUCTOR_ADDED_GOAL_IDS = [
+  '9f265f49-1342-5ba7-9c5d-54e97fdb2f19', // Elementary carrier/doping model.
+  'dc55adac-91a5-5cc3-ab47-be008480616f', // Functional diode curve and polarity.
+  '77ab31a9-8961-511c-8637-06e98023d869', // Actual transistor construction and investigation.
+]
+const SEMICONDUCTOR_ADDED_PROFILE_TARGET_IDS = [
+  ...SEMICONDUCTOR_ADDED_GOAL_IDS,
+  'df010b2b-b182-5f7e-bbe4-49b72e48c27a', // Explicit advanced target accompanying its relocated band assessment.
+]
+const SEMICONDUCTOR_ADDED_SEKI_ROUTE_TARGET_IDS = [
+  ...SEMICONDUCTOR_ADDED_GOAL_IDS,
+  '7badac4d-2874-5b3a-87e8-bf8f4440b2a6', // Existing qualitative classification, now explicit lower-stage target.
+]
+const SEMICONDUCTOR_ASSESSMENT_COVERAGE = new Map([
+  ['a8d99168-62cc-5771-bb5d-9ba833d84193', SEMICONDUCTOR_ADDED_GOAL_IDS[0]],
+  ['8670cff6-fe9c-5f7e-8cba-d170134965a6', SEMICONDUCTOR_ADDED_GOAL_IDS[1]],
+  ['2cfd5c6a-a16a-5f90-aab7-b27b29271f72', SEMICONDUCTOR_ADDED_GOAL_IDS[2]],
+])
 const FINAL_SPLIT_PARENT_CHILDREN = new Map([
-  ['7f0798cb-5966-5dcb-beb3-84f637ab6139', FINAL_SPLIT_CHILD_IDS.slice(0, 3)],
+  ['7f0798cb-5966-5dcb-beb3-84f637ab6139', [SEMICONDUCTOR_ADDED_GOAL_IDS[1], ...FINAL_SPLIT_CHILD_IDS.slice(0, 3)]],
   ['5b8eaf71-96fe-50eb-b9ea-a8fa392df086', FINAL_SPLIT_CHILD_IDS.slice(3, 5)],
   ['f67550ac-df22-5a3e-8172-f04642efca64', FINAL_SPLIT_CHILD_IDS.slice(5, 8)],
 ])
@@ -611,14 +637,14 @@ const FINAL_SPLIT_ASSESSMENT_COVERAGE = new Map([
   ['092017a7-1ce1-54b7-a14c-1658b72d70a7', FINAL_SPLIT_CHILD_IDS[6]],
   ['027d25fc-b609-5383-ac44-5dd3327ca577', FINAL_SPLIT_CHILD_IDS[7]],
 ])
-// The 2026-11-13 shared-selector repair changes only which existing projected
-// targets belong to the global lane: exactly five reviewed explicit targets,
-// occurring 25+20+10+5+5 times. The full projection stays at 6371 targets; no
-// target or route check is removed. The complete selection delta is tested below.
-const EXPECTED_PHYSICS_SEKI_PROJECTED_ROUTE_TARGET_OCCURRENCES = 6371
-const EXPECTED_PHYSICS_SEKI_PROFILE_SELECTED_TARGET_OCCURRENCES = 6201
-const EXPECTED_PHYSICS_SEKI_PROFILE_SELECTOR_EXCLUDED_OCCURRENCES = 170
-const EXPECTED_PHYSICS_SEKI_PROFILE_SELECTOR_EXCLUDED_UNIQUE_GOALS = 56
+// The 2026-11-13 selector repair retains its five explicit targets and their
+// 25+20+10+5+5 occurrences. The 2026-11-15 semiconductor/source corrections
+// additionally change actual projected targets; these current counts come from
+// the native CQR-104 measurement, including every selector-excluded occurrence.
+const EXPECTED_PHYSICS_SEKI_PROJECTED_ROUTE_TARGET_OCCURRENCES = 6420
+const EXPECTED_PHYSICS_SEKI_PROFILE_SELECTED_TARGET_OCCURRENCES = 6256
+const EXPECTED_PHYSICS_SEKI_PROFILE_SELECTOR_EXCLUDED_OCCURRENCES = 164
+const EXPECTED_PHYSICS_SEKI_PROFILE_SELECTOR_EXCLUDED_UNIQUE_GOALS = 54
 const EXPECTED_PHYSICS_SEKI_ADDED_TARGET_OCCURRENCES = new Map([
   [FINAL_SPLIT_CHILD_IDS[0], 25], // p-n model
   [FINAL_SPLIT_CHILD_IDS[1], 20], // diode experiment
@@ -859,6 +885,7 @@ const explicitClassification = (
       semanticKind: 'practiceAssessment',
       decisionBasis: (POST_SPLIT_PRACTICE_ASSESSMENT_GOAL_IDS.has(goal.id)
         || FINAL_SPLIT_ASSESSMENT_COVERAGE.has(goal.id)
+        || SEMICONDUCTOR_ASSESSMENT_COVERAGE.has(goal.id)
         || ['0f5346d6-de1b-5e38-aaba-68db205e594b', '4a58df57-f791-502f-8b8d-9ba155e46035', 'f61c424e-f091-5f9d-9d58-c1bd29733fc8'].includes(goal.id))
         ? 'reviewed-current-post-split-practice-assessment'
         : 'reviewed-current-pilot-practice-assessment',
@@ -1264,6 +1291,24 @@ assert.equal(
   0,
   'Physics applicability compilation must not lose evidence for any goal',
 )
+// An experiment added directly below the subject root must not inherit broad
+// parent mappings as if every Land explicitly required its personal execution.
+const transistorExecutionId = '77ab31a9-8961-511c-8637-06e98023d869'
+assert.equal(
+  (rawGoalById.get(transistorExecutionId)?.extendedData as Record<string, unknown>)?.applicabilityMappingInheritance,
+  'boundary',
+)
+for (const goalId of [transistorExecutionId, '2cfd5c6a-a16a-5f90-aab7-b27b29271f72']) {
+  assert.deepEqual(rawGoalById.get(goalId)?.applicability, { jurisdiction: ['DE-BY'] })
+  assert.deepEqual(physicsApplicabilityReport.goals.find(goal => goal.goalId === goalId)?.compiledApplicability,
+    { jurisdiction: ['DE-BY'] }, 'own execution stays bound to its actual source clause')
+}
+for (const goalId of ['dc55adac-91a5-5cc3-ab47-be008480616f', '8670cff6-fe9c-5f7e-8cba-d170134965a6']) {
+  const expected = { jurisdiction: ['DE-BW', 'DE-BY', 'DE-HE', 'DE-SL', 'DE-SN'] }
+  assert.deepEqual(rawGoalById.get(goalId)?.applicability, expected)
+  assert.deepEqual(physicsApplicabilityReport.goals.find(goal => goal.goalId === goalId)?.compiledApplicability,
+    expected, 'functional diode scope follows source mappings and actual necessary preparation')
+}
 const compiledGenericSekIApplicability = physicsApplicabilityReport.goals.find(
   ({ goalId }) => goalId === GENERIC_SEKI_ASSESSMENT_ID,
 )
@@ -1356,8 +1401,8 @@ reviewedForeignRequiresEdges.forEach(({ ownerId, goalId }) => {
 })
 assert.equal(
   new Set(foreignRequiresEdges.map(({ goalId }) => goalId)).size,
-  54,
-  'Physics cross-subject prerequisites must resolve to exactly 54 existing mathematics goals',
+  53,
+  'Physics cross-subject prerequisites retain 53 existing mathematics goals after removing the unsupported negative-exponent demand',
 )
 foreignRequiresEdges.forEach(({ goalId }) => {
   assert(mathGoalIds.has(goalId), `Physics cross-subject prerequisite ${goalId} is not canonical mathematics`)
@@ -1994,13 +2039,7 @@ assert.deepEqual(
 )
 
 const atlasCurricularAtomicGoalIds = new Set<string>()
-const sourceViews: Array<{
-  viewId: string
-  jurisdiction: string
-  stage: string
-  courseProfile: string | null
-  durationModel: string | null
-}> = []
+const sourceViews: GoalBookDurationPolicyViewSource[] = []
 const roleCountByJurisdiction = new Map<string, Set<string>>()
 sourceManifest.sourcePaths.forEach((sourcePath) => {
   assert(existsSync(resolve(repoRoot, sourcePath)), `missing Physics atlas source ${sourcePath}`)
@@ -2105,21 +2144,90 @@ for (const profilePath of [
 // Native projection against the pre-B035 checkpoint proved the exact delta:
 // remove the former mixed atom, add energy and interval probability, keep all
 // other target IDs unchanged. Bind that full prior set, not only the new count.
-assert.equal(canonicalProfileTargetIds.size, 408)
+assert.equal(canonicalProfileTargetIds.size, 412)
+SEMICONDUCTOR_ADDED_PROFILE_TARGET_IDS.forEach((id) => assert(canonicalProfileTargetIds.has(id)))
 FINAL_SPLIT_PARENT_CHILDREN.forEach((children, parentId) => {
   assert.deepEqual(semanticGoalById.get(parentId)?.contains, children)
   assert(!canonicalProfileTargetIds.has(parentId), `${parentId}: cluster is not a content atom`)
 })
 FINAL_SPLIT_CHILD_IDS.forEach((id) => assert(canonicalProfileTargetIds.has(id)))
+const assessmentDataFor = (goalId: string) => rawGoalById.get(goalId)?.examData as ExamData | undefined
 FINAL_SPLIT_ASSESSMENT_COVERAGE.forEach((coveredId, taskId) => {
   const task = semanticGoalById.get(taskId)
   assert.deepEqual(task?.requires, [coveredId])
-  assert.deepEqual(task?.examData?.coveredGoalIds, [coveredId])
+  assert.deepEqual(assessmentDataFor(taskId)?.coveredGoalIds, [coveredId])
 })
-// Undo only the explicit final delta (+8 children, -3 former leaves, +road safety).
+SEMICONDUCTOR_ASSESSMENT_COVERAGE.forEach((coveredId, taskId) => {
+  const task = semanticGoalById.get(taskId)
+  assert.deepEqual(task?.requires, [coveredId])
+  assert.deepEqual(assessmentDataFor(taskId)?.coveredGoalIds, [coveredId])
+})
+assert.deepEqual(assessmentDataFor('88f27aab-8724-5a4d-8543-e49ebcb54b8e')?.coveredGoalIds,
+  ['7d4d6a39-0c78-5fb0-b7bf-182ed00972f7'],
+  'the historical transistor interpretation assessment must not acquire an own-experiment coverage claim')
+// These content-reviewed rubrics score scientific essentials individually.
+// Checking omission of a whole old point group missed within-group holes:
+// correct labels/numbers could compensate for a false carrier/energy model.
+// This is a score-contract regression for the reviewed criteria, not an
+// automatic judgement of a learner's free-text scientific explanation.
+const SEMICONDUCTOR_ESSENTIAL_CRITERIA = new Map([
+  ['a8d99168-62cc-5771-bb5d-9ba833d84193', [
+    'doping-donor-mobile', 'doping-donor-balance', 'doping-acceptor-hole',
+    'doping-acceptor-balance', 'doping-hole-motion',
+  ]],
+  ['8670cff6-fe9c-5f7e-8cba-d170134965a6', [
+    'diode-forward-appreciable', 'diode-forward-small', 'diode-reverse-nonzero',
+    'diode-threshold-evidence', 'diode-applicability',
+  ]],
+  ['1abfd5ef-1f42-5b71-8c9a-80c0a6b0322e', [
+    'band-conductor-states', 'band-gap-thermal-pairs', 'band-donor-carriers',
+    'band-acceptor-hole', 'band-doping-versus-heating', 'band-both-charge-balances',
+  ]],
+  ['144007cb-e2bc-5c82-bf9d-dda705b15257', [
+    'amplifier-a1', 'amplifier-a2', 'amplifier-a3', 'amplifier-a4',
+    'amplifier-b1', 'amplifier-b2', 'amplifier-b3', 'amplifier-b4',
+  ]],
+  ['88f27aab-8724-5a4d-8543-e49ebcb54b8e', [
+    'switch-paths-thin-base', 'switch-energy-control', 'switch-supplied-states',
+    'switch-sensor-transfer', 'switch-electronic-limits',
+  ]],
+  ['2cfd5c6a-a16a-5f90-aab7-b27b29271f72', [
+    'experiment-personal-assembly', 'experiment-own-switching', 'experiment-open-control',
+    'experiment-fresh-mapping', 'experiment-evidence-boundary',
+  ]],
+])
+for (const [taskId, essentialIds] of SEMICONDUCTOR_ESSENTIAL_CRITERIA) {
+  const scoring = assessmentDataFor(taskId)?.scoring as {
+    maxPoints: number; passingPoints: number; steps: Array<{ id: string; points: number }>
+  } | undefined
+  assert(scoring, `${taskId}: explicit analytical scoring is required`)
+  assert.deepEqual(scoring.steps.map(step => step.id), essentialIds,
+    `${taskId}: scientific criteria must remain separately assessable`)
+  assert.equal(scoring.steps.reduce((sum, step) => sum + step.points, 0), scoring.maxPoints)
+  assert(scoring.steps.every(step => step.points > 0))
+  assert(scoring.maxPoints >= scoring.passingPoints, `${taskId}: complete evidence must pass`)
+  for (const step of scoring.steps) {
+    assert(scoring.maxPoints - step.points < scoring.passingPoints,
+      `${taskId}: missing or contradicted ${step.id} cannot be compensated by all other criteria`)
+  }
+}
+for (const taskId of ['8670cff6-fe9c-5f7e-8cba-d170134965a6', '1abfd5ef-1f42-5b71-8c9a-80c0a6b0322e',
+  '144007cb-e2bc-5c82-bf9d-dda705b15257', '2cfd5c6a-a16a-5f90-aab7-b27b29271f72']) {
+  const content = assessmentDataFor(taskId)?.taskContent as string
+  const stimulus = content.match(/!\[[^\]]+\]\((\/assets\/(?:goal-visualizations|assessment-materials)\/physik\/[^)]+)\)/u)?.[1]
+  assert(stimulus, `${taskId}: the described diagram must actually be supplied`)
+  const expectedRoot = taskId === '2cfd5c6a-a16a-5f90-aab7-b27b29271f72'
+    ? '/assets/goal-visualizations/physik/' : '/assets/assessment-materials/physik/'
+  assert(stimulus.startsWith(expectedRoot), `${taskId}: primary goal image and assessment-only stimulus must use their declared roots`)
+  assert(existsSync(resolve(repoRoot, 'app/public', stimulus.slice(1))), `${taskId}: missing diagram stimulus`)
+}
+// Undo the three added semiconductor atoms and explicit advanced band target,
+// then the earlier final delta
+// (+8 children, -3 former leaves, +road safety); preserve the old full-set proof.
 // Keep the independently pinned 402 -> 393 -> 392 full-set proof below intact.
 const preFinalProfileTargetIds = new Set([
-  ...[...canonicalProfileTargetIds].filter((id) => !FINAL_SPLIT_CHILD_IDS.includes(id) && id !== ROAD_SAFETY_GOAL_ID),
+  ...[...canonicalProfileTargetIds].filter((id) => !FINAL_SPLIT_CHILD_IDS.includes(id)
+    && !SEMICONDUCTOR_ADDED_PROFILE_TARGET_IDS.includes(id) && id !== ROAD_SAFETY_GOAL_ID),
   ...FINAL_SPLIT_PARENT_CHILDREN.keys(),
 ])
 assert.equal(preFinalProfileTargetIds.size, 402)
@@ -2356,8 +2464,9 @@ const currentSelectedGoalIds = currentPhysics.goals.filter(currentRouteProfile.g
 assert.equal(legacySelectedGoalIds.length, 96)
 assert.deepEqual(
   [...currentSelectedGoalIds].sort(compareCodePoints),
-  [...legacySelectedGoalIds, ...EXPECTED_PHYSICS_SEKI_ADDED_TARGET_OCCURRENCES.keys()].sort(compareCodePoints),
-  'The complete shared Physics Sek-I lane changes only by the five reviewed explicit stage targets',
+  [...legacySelectedGoalIds, ...EXPECTED_PHYSICS_SEKI_ADDED_TARGET_OCCURRENCES.keys(),
+    ...SEMICONDUCTOR_ADDED_SEKI_ROUTE_TARGET_IDS].sort(compareCodePoints),
+  'The complete shared Physics Sek-I lane includes the five retained targets, three semiconductor additions and the existing material classification',
 )
 const addedTargetOccurrences = new Map([...EXPECTED_PHYSICS_SEKI_ADDED_TARGET_OCCURRENCES.keys()].map(goalId => {
   const measured = evaluateRouteProfile(currentPhysics, {

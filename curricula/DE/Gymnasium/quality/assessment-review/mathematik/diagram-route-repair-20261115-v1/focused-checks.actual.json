@@ -1,0 +1,66 @@
+{
+  "recordedAt": "2026-11-15T05:47:44.725099+00:00",
+  "evidenceKind": "Implementing agent record of actual terminal invocations in this session; concise results transcribed from tool output, not a CI or independent review claim.",
+  "checks": [
+    {
+      "command": "npm --prefix app run test:math-checkpoint-exams",
+      "exitCode": 0,
+      "observedResult": "Four exact-content diagram release guards and seven general checkpoint contracts passed."
+    },
+    {
+      "command": "npm --prefix app run test:exam-markdown",
+      "exitCode": 0,
+      "observedResult": "Exam Markdown table validation passed."
+    },
+    {
+      "command": "npm --prefix app run generate:math-duration-composition-views",
+      "exitCode": 0,
+      "observedResult": "18 stale generated Math duration views updated."
+    },
+    {
+      "command": "npm --prefix app run check:math-duration-composition-views",
+      "exitCode": 0,
+      "observedResult": "All 18 generated duration views current after regeneration."
+    },
+    {
+      "command": "npm --prefix app run test:canonical-math-sek1-reviewed-exam-routes",
+      "exitCode": 0,
+      "observedResult": "Reviewed route and exact target/jurisdiction assertions passed."
+    },
+    {
+      "command": "npm --prefix app run test:math-q2-m7-assessment-projection",
+      "exitCode": 0,
+      "observedResult": "80 views, 637 authored target pairs, LK scope and all-essential scoring passed."
+    },
+    {
+      "command": "npm --prefix app run test:math-q4-caterer-exam-scope",
+      "exitCode": 0,
+      "observedResult": "51 target views, including 26 GK, passed."
+    },
+    {
+      "command": "app/node_modules/.bin/tsx tmp/math-diagram-route-20261115/finalize_k2_semantics.mts",
+      "exitCode": 0,
+      "observedResult": "Native current semantic ledger parsed with verified V9 context; 807 curricularAtomic, 185 practiceAssessment, 1259 total."
+    },
+    {
+      "command": "app/node_modules/.bin/tsx tmp/math-diagram-route-20261115/validate_k2_native.mts",
+      "exitCode": 0,
+      "observedResult": "All 88 native Math views: zero errors and warnings; exactly one existing raw prerequisite closure changes, Task5."
+    },
+    {
+      "command": "app/node_modules/.bin/tsx tmp/math-diagram-route-20261115/check_k2_math_hard_routes.mts",
+      "exitCode": 0,
+      "observedResult": "Actual two protected native Math route profiles passed: SekI 281 goals, SekII 526 goals, zero findings."
+    },
+    {
+      "command": "app/node_modules/.bin/tsx app/scripts/testCompositionProjectionRoles.ts",
+      "exitCode": 1,
+      "observedResult": "Imported Physics regression testHessePhysicsTree.ts:231 expects only physics-e-phase/q1/q2/q3/q4; current additional physics-semiconductor-sekii causes failure. No Math failure observed before this import stopped the combined test. Physics repair is coordinated by root."
+    }
+  ],
+  "fullCentralCqrStatusRegenerated": false,
+  "protectedFloorsChanged": false,
+  "remoteCiClaimed": false,
+  "commitOrPush": false,
+  "completionBoundary": "Bounded K2 local implementation and focused verification. Root coordinates the final Physics seal, central quality/floor run, integration and fresh fully successful CI."
+}

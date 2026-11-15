@@ -126,6 +126,7 @@ jobs:
             scripts/install_openai_v1_mtls_edge.sh \
             scripts/verify_openai_v1_mtls_edge.sh
           PYTHONDONTWRITEBYTECODE=1 python3 -B scripts/test_deploy_database_backup.py
+          PYTHONDONTWRITEBYTECODE=1 python3 -B scripts/test_deploy_no_changes.py
           ./deploy_skillpilot.sh --help | grep -Fq 'openai-mcp coach'
           ln -s "${GITHUB_WORKSPACE}/deploy_skillpilot.sh" \
             "${RUNNER_TEMP}/deploy_skillpilot.sh"
@@ -736,10 +737,21 @@ jobs:
         run: npm run validate:composition-views
       - name: Test Composition Projection Roles
         run: npm run test:composition-projection-roles
+      - name: Test Declared Stage-Plan Contracts
+        run: npm run test:stage-plan-contracts
+      - name: Check stage-plan compatibility materialization
+        working-directory: app
+        run: npm run test:stage-plan-materialization
+      - name: Test declared stage-plan learning-flow diagnosis
+        run: npm run test:stage-plan-learning-flow
       - name: Test Course-Level Mapping Consistency
         run: npm run test:course-level-mapping-consistency
       - name: Test Physics Source Method Routes
         run: npm run test:physics-source-method-routes
+      - name: Test Physics Semiconductor Learning-Path Diagnosis
+        run: npm run test:physics-semiconductor-learning-path
+      - name: Test Physics Semiconductor Source Repair
+        run: npm run test:physics-semiconductor-source-repair
       - name: Check Memory-Card Reviews
         run: npm run quality:memory-card-review:check:all
       - name: Test strict deep curriculum QA and M7 transitions

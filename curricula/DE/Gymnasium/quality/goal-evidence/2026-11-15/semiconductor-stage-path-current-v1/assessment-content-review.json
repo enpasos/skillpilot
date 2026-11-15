@@ -1,0 +1,229 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-11-15T03:31:38.912806Z",
+  "reviewer": "Codex semiconductor QA agent; actual independent informed current-input machine design review",
+  "humanApproval": false,
+  "learnerExecutionClaim": false,
+  "reviews": [
+    {
+      "goalId": "a8d99168-62cc-5771-bb5d-9ba833d84193",
+      "reviewedGoal": {
+        "id": "a8d99168-62cc-5771-bb5d-9ba833d84193",
+        "shortKey": "canonical_physics_assessment_simple_doping",
+        "title": "Prüfungsaufgabe: Bewegliche Ladungsträger beim Dotieren erklären",
+        "titleEn": "Assessment Task: Explain Mobile Charge Carriers in Doped Silicon",
+        "description": "Die lernende Person kann ein einfaches Bindungsmodell n- und p-dotierten Siliziums auf bewegliche Ladungsträger und die Ladungsbilanz anwenden.",
+        "descriptionEn": "The learner can apply a simple bond model of n-type and p-type silicon to mobile charge carriers and charge balance.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "Practice",
+          "Assessment",
+          "canonical",
+          "SekI"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-physics",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "PK2_MODELLIEREN",
+            "PK4_KOMMUNIZIEREN"
+          ],
+          "guidingIdeas": [
+            "LI_MATERIE",
+            "LI_TECHNIK"
+          ],
+          "phase": "GLOBAL",
+          "area": "Elektronik",
+          "topicCode": "CANONICAL.PHYSICS.SEK1.PRACTICE.SIMPLE_DOPING"
+        },
+        "requires": [
+          "9f265f49-1342-5ba7-9c5d-54e97fdb2f19"
+        ],
+        "contains": [],
+        "examples": [],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "applicabilityFromRequires": true,
+          "applicabilityMappingInheritance": "boundary"
+        },
+        "type": "atomic",
+        "examData": {
+          "reviewStatus": "draft",
+          "coveredGoalIds": [
+            "9f265f49-1342-5ba7-9c5d-54e97fdb2f19"
+          ],
+          "coveredStrands": [
+            "LI_MATERIE",
+            "LI_TECHNIK"
+          ],
+          "demandLevels": [
+            "AB1",
+            "AB2",
+            "AB3"
+          ],
+          "taskContent": "**Material:** Ein vereinfachtes Bindungsmodell: Silizium hat vier Außenelektronen und bildet vier Elektronenpaarbindungen. Ein eingebautes Phosphoratom hat fünf Außenelektronen, ein Boratom drei. Die eingebauten Atome sind zunächst neutral. Bei der betrachteten Temperatur geben die Donatoren ihr zusätzliches Elektron als bewegliches Elektron ab; die Akzeptoren nehmen ein Elektron aus einer benachbarten Bindung auf.\n\n1. Erklären Sie für beide Dotierungen den entstehenden beweglichen Ladungsträger und die Ladung des ortsfesten Dotierions. Begründen Sie, weshalb das Material als Ganzes neutral bleibt. Ein Loch ist dabei genau zu deuten. (8 BE; je 4 BE für die beiden Fälle)\n2. Ein Lernender sagt: „Bei p-Dotierung wandern positive Borionen durch den Kristall; ein Loch ist ein kleiner Hohlraum.“ Widerlegen Sie beide Aussagen und beschreiben Sie die Bewegung eines Lochs durch das Nachrücken benachbarter Bindungselektronen. (4 BE)",
+          "solutionContent": "Beim Donator bleibt nach Abgabe des zusätzlichen Elektrons ein ortsfestes positives Ion zurück; das negative bewegliche Elektron gleicht seine Ladung aus. Beim Akzeptor entsteht durch die Aufnahme eines Bindungselektrons ein ortsfestes negatives Ion und in der Bindung ein positiv wirksamer fehlender Elektronenplatz (Loch). Ion und Loch gleichen sich in der Ladungsbilanz aus. n beziehungsweise p benennt die Art der überwiegenden beweglichen Träger, keine Nettoladung des gesamten Materials. Ein Loch ist weder Proton noch Hohlraum. Benachbarte Bindungselektronen besetzen den fehlenden Platz; dadurch verlagert sich die Fehlstelle in Gegenrichtung. Die Dotierionen bleiben im Gitter ortsfest. Kein Bändermodell ist erforderlich.",
+          "scoring": {
+            "maxPoints": 12,
+            "passingPoints": 9,
+            "steps": [
+              {
+                "id": "doping_n",
+                "points": 4,
+                "description": "n-Dotierung: bewegliches Elektron, ortsfestes positives Donatorion und neutrale Bilanz erklärt"
+              },
+              {
+                "id": "doping_p",
+                "points": 4,
+                "description": "p-Dotierung: Loch als fehlendes Bindungselektron, ortsfestes negatives Akzeptorion und neutrale Bilanz erklärt"
+              },
+              {
+                "id": "doping_transfer",
+                "points": 4,
+                "description": "Ionenwanderung und Hohlraumvorstellung widerlegt; Lochbewegung über nachrückende Elektronen erklärt"
+              }
+            ]
+          },
+          "taskContentEn": "**Material:** A simplified bond model: silicon has four outer electrons and forms four electron-pair bonds. An incorporated phosphorus atom has five outer electrons, a boron atom three. Incorporated atoms are initially neutral. At the temperature considered, donors release their extra electron as a mobile electron; acceptors take up an electron from a neighbouring bond.\n\n1. Explain for each type of doping the mobile charge carrier and the charge of the fixed dopant ion. Explain why the material remains neutral overall and precisely interpret a hole. (8 points; 4 points for each case)\n2. A learner says: “In p-type silicon positive boron ions travel through the crystal; a hole is a small cavity.” Refute both claims and describe hole motion through neighbouring bond electrons filling the vacancy. (4 points)",
+          "solutionContentEn": "A donor that releases its extra electron leaves a fixed positive ion; the mobile negative electron balances its charge. An acceptor taking up a bond electron becomes a fixed negative ion and leaves a positively acting missing-electron site, a hole, in the bond. The ion and hole balance in the overall charge account. The labels n and p identify the predominant mobile carriers, not a net charge of the material. A hole is neither a proton nor a cavity. Neighbouring bond electrons fill the vacancy so the vacancy moves in the opposite direction. Dopant ions remain fixed in the lattice. No band model is required."
+        }
+      },
+      "result": "machine-content-review-pass",
+      "scope": "Informed independent review from the author, not a blind D round and not human approval. Native assessment-design release and registered gates remain separate.",
+      "reason": "Tatsächlich gelesene vollständige DE/EN-Aufgaben und Lösungen: Das Material liefert den einfachen Bindungsrahmen, verlangt eigene Träger-/Ionenvorzeichen und neutrale Bilanz für n und p sowie die neue Fehlstellenbewegung. Loch ist kein Proton/Hohlraum; Dotierionen bleiben ortsfest. Keine zusätzliche Bänder-/Quanten- oder Chemiekursanforderung. Die drei analytischen4BE-Blöcke und9/12 verhindern Bestehen bei vollständigem Ausfall eines der beiden Dotierungsfälle; keine geheime Kernregel."
+    },
+    {
+      "goalId": "8670cff6-fe9c-5f7e-8cba-d170134965a6",
+      "reviewedGoal": {
+        "id": "8670cff6-fe9c-5f7e-8cba-d170134965a6",
+        "shortKey": "canonical_physics_assessment_diode_function",
+        "title": "Prüfungsaufgabe: Diodenpolung aus einer Kennlinie beurteilen",
+        "titleEn": "Assessment Task: Judge Diode Polarity from a Characteristic",
+        "description": "Die lernende Person kann aus einer vorgegebenen Diodenkennlinie das Leitverhalten in zwei Polungen begründen und eine unzulässige allgemeine Schwellspannungsbehauptung zurückweisen.",
+        "descriptionEn": "The learner can use a supplied diode characteristic to justify conduction for two polarities and reject an unjustified universal threshold-voltage claim.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "Practice",
+          "Assessment",
+          "canonical",
+          "SekI"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-physics",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "PK2_MODELLIEREN",
+            "PK4_KOMMUNIZIEREN"
+          ],
+          "guidingIdeas": [
+            "LI_MATERIE",
+            "LI_TECHNIK"
+          ],
+          "phase": "GLOBAL",
+          "area": "Elektronik",
+          "topicCode": "CANONICAL.PHYSICS.SEK1.PRACTICE.DIODE_FUNCTION"
+        },
+        "requires": [
+          "dc55adac-91a5-5cc3-ab47-be008480616f"
+        ],
+        "contains": [],
+        "examples": [],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "applicabilityFromRequires": true,
+          "applicabilityMappingInheritance": "boundary"
+        },
+        "type": "atomic",
+        "examData": {
+          "reviewStatus": "draft",
+          "coveredGoalIds": [
+            "dc55adac-91a5-5cc3-ab47-be008480616f"
+          ],
+          "coveredStrands": [
+            "LI_MATERIE",
+            "LI_TECHNIK"
+          ],
+          "demandLevels": [
+            "AB1",
+            "AB2",
+            "AB3"
+          ],
+          "taskContent": "![Aufgabenmaterial: Schaltung und Kennlinie](/assets/goal-visualizations/physik/8670cff6-fe9c-5f7e-8cba-d170134965a6/8670cff6-fe9c-5f7e-8cba-d170134965a6.png)\n\n**Material:** Ein sicherer einfacher Serienkreis enthält eine Kleinspannungsquelle, einen strombegrenzenden Widerstand und eine Diode. Ein Pfeil kennzeichnet die technische Stromrichtung von Anode A nach Kathode K; U_D ist als Spannung A gegen K definiert. Eine vorgegebene, für diese Diode bei konstanter Temperatur aufgenommene Kennlinie enthält die Werte U_D = −1,0 V: I_D = −0,001 mA; +0,2 V: +0,001 mA; +0,6 V: +2 mA. Weitere Messungen werden nicht verlangt.\n\n1. Lesen Sie für U_D = +0,6 V und −1,0 V jeweils Stromrichtung und Stromstärke ab. Ordnen Sie Durchlass- und Sperrpolung zu und erklären Sie die Funktion im Serienkreis. Benennen Sie die an der Kennlinie verwendete Vorzeichenrichtung. (8 BE; je 4 BE für die beiden Fälle)\n2. Ein Lernender behauptet: „Jede Diode schaltet bei genau 0,7 V ein; vorher fließt exakt kein Strom.“ Prüfen Sie das mit den vorgegebenen Daten und nennen Sie eine Grenze der Aussagekraft dieser Kennlinie. (4 BE)",
+          "solutionContent": "Bei +0,6 V ist A positiver als K: Durchlasspolung, 2 mA in der festgelegten technischen Richtung A nach K, ein nennenswerter Serienkreisstrom ist möglich. Bei −1,0 V ist K positiver: Sperrpolung, sehr kleiner Strom von K nach A mit −0,001 mA bezüglich der festgelegten Richtung; kein nennenswerter Nutzstrom. Die Strombegrenzung bleibt erforderlich. Die Daten widerlegen sowohl den exakt stromlosen Bereich als auch das universelle Einschalten bei 0,7 V: bereits bei +0,2 V ist ein kleiner und bei +0,6 V ein deutlich größerer Strom angegeben. Diese Kennlinie beschreibt das untersuchte Bauteil bei dieser Temperatur im angegebenen Messbereich; sie legt weder alle Diodentypen noch Durchbruchverhalten außerhalb des Bereichs fest. Die Werte sind vorgegebenes Aufgabenmaterial und kein eigener Durchführungsnachweis.",
+          "scoring": {
+            "maxPoints": 12,
+            "passingPoints": 9,
+            "steps": [
+              {
+                "id": "diode_forward",
+                "points": 4,
+                "description": "Durchlasspolung: +0,6 V, +2 mA, technische Stromrichtung A nach K im Serienkreis korrekt gedeutet"
+              },
+              {
+                "id": "diode_reverse",
+                "points": 4,
+                "description": "Sperrpolung: −1,0 V, kleiner Strom −0,001 mA gegen die Bezugsrichtung, kein nennenswerter Nutzstrom korrekt gedeutet"
+              },
+              {
+                "id": "diode_transfer",
+                "points": 4,
+                "description": "Universelle 0,7-V-Schwelle anhand der Daten widerlegt und Bereichs-/Bauteil-/Temperaturgrenze genannt"
+              }
+            ]
+          },
+          "taskContentEn": "![Assessment material: circuit and characteristic](/assets/goal-visualizations/physik/8670cff6-fe9c-5f7e-8cba-d170134965a6/8670cff6-fe9c-5f7e-8cba-d170134965a6.png)\n\n**Material:** A safe simple series circuit contains a low-voltage source, a current-limiting resistor and a diode. An arrow defines conventional current from anode A to cathode K; U_D is the voltage of A relative to K. A supplied characteristic, recorded for this diode at constant temperature, includes U_D = −1.0 V: I_D = −0.001 mA; +0.2 V: +0.001 mA; +0.6 V: +2 mA. No further measurements are required.\n\n1. Read the current direction and magnitude for U_D = +0.6 V and −1.0 V. Identify forward and reverse bias and explain the function in the series circuit, naming the sign convention. (8 points; 4 points for each case)\n2. A learner claims: “Every diode switches on at exactly 0.7 V; before that the current is exactly zero.” Check this against the data and give one limitation of this characteristic. (4 points)",
+          "solutionContentEn": "At +0.6 V, A is positive relative to K: forward bias, 2 mA in the defined conventional direction A to K, allowing an appreciable series current. At −1.0 V, K is more positive: reverse bias, a very small current K to A, recorded as −0.001 mA against the defined reference; no appreciable useful current. Current limitation remains necessary. The supplied data refute exact zero current and universal switching at 0.7 V: a small current is already present at +0.2 V and a much larger one at +0.6 V. This characteristic describes this component at this temperature within the stated range, not all diode types or breakdown outside the range. The supplied values are assessment material and do not prove the learner performed an experiment."
+        }
+      },
+      "result": "machine-content-review-pass",
+      "scope": "Informed independent review from the author, not a blind D round and not human approval. Native assessment-design release and registered gates remain separate.",
+      "reason": "Tatsächlich gelesene vollständige DE/EN-Aufgaben und Lösungen und eigenes Ansehen des separaten Aufgaben-PNG: geschlossener strombegrenzter Kreis, A/K und Bezugsrichtungen, echte Datenkennlinie mit beschrifteten Punkten ohne Lösungsprädikate. Beide Polungen und kleiner negativer Sperrstrom werden interpretiert;0,7V-Universalsatz wird mit vorgegebenen Daten widerlegt und die Bauteil-/Temperatur-/Bereichsgrenze genannt. Drei analytische4BE-Blöcke,9/12; keine tatsächliche Durchführung oder Nullstrombehauptung.",
+      "actuallyViewedAssessmentStimulus": {
+        "path": "curricula/DE/Gymnasium/visualizations/physik/8670cff6-fe9c-5f7e-8cba-d170134965a6/8670cff6-fe9c-5f7e-8cba-d170134965a6.png",
+        "sha256": "sha256:58b5229211e08dcf07b5f200967254cbb6898ba06806fe8027cced91d13faabe"
+      }
+    }
+  ]
+}

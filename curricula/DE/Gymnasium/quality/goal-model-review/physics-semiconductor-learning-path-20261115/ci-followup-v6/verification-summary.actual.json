@@ -1,0 +1,158 @@
+{
+  "run": 43690394580,
+  "base": "5bf8228635aed4eee780fdb98f4b7ee2af6d480a",
+  "observedAt": "2026-11-15T09:28:48+01:00",
+  "jobs": [
+    {
+      "id": 132739623512,
+      "name": "Learning-goal book build",
+      "status": "completed",
+      "conclusion": "success",
+      "failedSteps": []
+    },
+    {
+      "id": 132739623725,
+      "name": "Backend quick checks",
+      "status": "completed",
+      "conclusion": "success",
+      "failedSteps": []
+    },
+    {
+      "id": 132739623757,
+      "name": "Quick checks",
+      "status": "completed",
+      "conclusion": "success",
+      "failedSteps": []
+    },
+    {
+      "id": 132739623788,
+      "name": "OpenAI MCP Apps CI",
+      "status": "completed",
+      "conclusion": "success",
+      "failedSteps": []
+    },
+    {
+      "id": 132739623834,
+      "name": "Claude Connector V1 CI",
+      "status": "completed",
+      "conclusion": "success",
+      "failedSteps": []
+    },
+    {
+      "id": 132739623838,
+      "name": "OpenAI MCP V1 public edge CI",
+      "status": "completed",
+      "conclusion": "success",
+      "failedSteps": []
+    },
+    {
+      "id": 132739623969,
+      "name": "action-regression-ci",
+      "status": "completed",
+      "conclusion": "success",
+      "failedSteps": []
+    },
+    {
+      "id": 132745178475,
+      "name": "Curriculum package contracts",
+      "status": "completed",
+      "conclusion": "failure",
+      "failedSteps": [
+        "Validate Curriculum Package Contracts"
+      ]
+    },
+    {
+      "id": 132745178486,
+      "name": "backend-ci",
+      "status": "in_progress",
+      "conclusion": null,
+      "failedSteps": []
+    },
+    {
+      "id": 132745178488,
+      "name": "Learning-goal book contracts",
+      "status": "completed",
+      "conclusion": "success",
+      "failedSteps": []
+    },
+    {
+      "id": 132745178489,
+      "name": "Application frontend CI",
+      "status": "completed",
+      "conclusion": "failure",
+      "failedSteps": [
+        "Check AI transparency inventory"
+      ]
+    },
+    {
+      "id": 132745178502,
+      "name": "Curriculum CI",
+      "status": "completed",
+      "conclusion": "failure",
+      "failedSteps": [
+        "Test Physics Source Method Routes"
+      ]
+    },
+    {
+      "id": 132745178505,
+      "name": "Curriculum integrated build",
+      "status": "completed",
+      "conclusion": "failure",
+      "failedSteps": [
+        "Check goal visualization runtime assets"
+      ]
+    },
+    {
+      "id": 132745178564,
+      "name": "Skill-graph and assessment proofs",
+      "status": "completed",
+      "conclusion": "failure",
+      "failedSteps": [
+        "Check learning-unit assessments against their sources"
+      ]
+    }
+  ],
+  "localChecks": [
+    {
+      "name": "Scoped seven-goal asset reproduction",
+      "beforeIssueCount": 20,
+      "afterExitCode": 0,
+      "negativeCasesFailedClosed": 3
+    },
+    {
+      "name": "Full Physics source-method routes",
+      "passed": 6,
+      "failed": 0,
+      "log": "routes.actual.log"
+    },
+    {
+      "name": "Learning-unit source check",
+      "exitCode": 0,
+      "log": "unit-assessments.actual.log"
+    },
+    {
+      "name": "Generated curriculum-package 1.2 contracts",
+      "exitCode": 0
+    },
+    {
+      "name": "Native AI inventory Layer-A measurement",
+      "exitCode": 0,
+      "changedFields": 6
+    },
+    {
+      "name": "Normal AI transparency inventory check",
+      "exitCode": 0,
+      "log": "ai-transparency-normal.actual.log"
+    },
+    {
+      "name": "Combined text patch check including whitespace",
+      "exitCode": 0
+    }
+  ],
+  "limitations": [
+    "Complete asset catalog check is left to root and fresh CI; scoped asset reproduction explicitly excluded unchanged 4.9 GB asset inventory.",
+    "Full release-model compile/validation still needs the integrated tree.",
+    "7bad native current-input D/P/V approval records are handled separately by root; no approval fields were copied or changed by this repair.",
+    "No push, commit, merge or edit outside tmp by this subagent."
+  ]
+}

@@ -1,0 +1,468 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/curriculum-package/v1.3/composition-view.schema.json",
+  "title": "SkillPilot composition view 1.1 - stage-plan candidate",
+  "description": "Candidate stage-plan support only, not the complete learning-unit successor contract. Authoritative full subject views bind shared plan units; stage excerpts reference them and never author a second tree. A duration-neutral authority may list explicit planIds with identical declared stage IDs; contextual excerpts may select one or both stages without reauthoring roots. Duration-neutral excerpts retain planIds; profile-independent excerpts list every subject/course authority in excerptOfViewIds and require equal selected-stage projections.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "viewFormatVersion",
+    "viewId",
+    "landscapeId",
+    "language",
+    "scope",
+    "planBinding"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "https://skillpilot.com/schemas/curriculum-package/v1.3/composition-view.schema.json"
+    },
+    "viewFormatVersion": {
+      "const": "1.1"
+    },
+    "viewId": {
+      "$ref": "#/$defs/id"
+    },
+    "landscapeId": {
+      "$ref": "#/$defs/id"
+    },
+    "language": {
+      "$ref": "#/$defs/languageTag"
+    },
+    "title": {
+      "$ref": "#/$defs/nonBlankText"
+    },
+    "scope": {
+      "$ref": "#/$defs/scope"
+    },
+    "rootNodes": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 1000000,
+      "x-skillpilot-listSemantics": "ordered",
+      "items": {
+        "$ref": "#/$defs/node"
+      }
+    },
+    "planBinding": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/fullPlanBinding"
+        },
+        {
+          "$ref": "#/$defs/excerptPlanBinding"
+        },
+        {
+          "$ref": "#/$defs/sharedPlanBinding"
+        }
+      ]
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 300,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:+-]*$"
+    },
+    "nonBlankText": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000,
+      "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+    },
+    "languageTag": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 64,
+      "pattern": "^[A-Za-z]{2,8}(?:-[A-Za-z0-9]{1,8})*$"
+    },
+    "projectionRole": {
+      "type": "string",
+      "enum": [
+        "target",
+        "prerequisiteOnly"
+      ]
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schoolForm"
+      ],
+      "properties": {
+        "schoolForm": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "jurisdiction": {
+          "type": "string",
+          "pattern": "^DE(?:-[A-Z]{2})?$"
+        },
+        "stage": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "courseProfile": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "durationModel": {
+          "$ref": "#/$defs/nonBlankText"
+        }
+      }
+    },
+    "structureNode": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "id",
+        "label",
+        "children"
+      ],
+      "properties": {
+        "kind": {
+          "const": "structure"
+        },
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "label": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "children": {
+          "type": "array",
+          "maxItems": 1000000,
+          "x-skillpilot-listSemantics": "ordered",
+          "items": {
+            "$ref": "#/$defs/node"
+          }
+        },
+        "planUnitId": {
+          "$ref": "#/$defs/id"
+        }
+      }
+    },
+    "canonicalSubtreeNode": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "goalId"
+      ],
+      "properties": {
+        "kind": {
+          "const": "canonicalSubtree"
+        },
+        "goalId": {
+          "$ref": "#/$defs/id"
+        },
+        "projectionRole": {
+          "$ref": "#/$defs/projectionRole"
+        },
+        "displayLabel": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "placementBasis": {
+          "$ref": "#/$defs/placementBasis"
+        }
+      }
+    },
+    "goalEntryNode": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "goalId"
+      ],
+      "properties": {
+        "kind": {
+          "const": "goalEntry"
+        },
+        "goalId": {
+          "$ref": "#/$defs/id"
+        },
+        "projectionRole": {
+          "$ref": "#/$defs/projectionRole"
+        },
+        "displayLabel": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "placementBasis": {
+          "$ref": "#/$defs/placementBasis"
+        }
+      }
+    },
+    "node": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/structureNode"
+        },
+        {
+          "$ref": "#/$defs/canonicalSubtreeNode"
+        },
+        {
+          "$ref": "#/$defs/goalEntryNode"
+        }
+      ]
+    },
+    "fullPlanBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "planId"
+      ],
+      "properties": {
+        "planId": {
+          "$ref": "#/$defs/id"
+        }
+      }
+    },
+    "excerptPlanBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "unitIds"
+      ],
+      "properties": {
+        "planId": {
+          "$ref": "#/$defs/id"
+        },
+        "planIds": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 16,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        },
+        "excerptOfViewId": {
+          "$ref": "#/$defs/id"
+        },
+        "excerptOfViewIds": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 10000,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        },
+        "unitIds": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 2,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        }
+      },
+      "allOf": [
+        {
+          "oneOf": [
+            {
+              "required": [
+                "planId"
+              ],
+              "not": {
+                "required": [
+                  "planIds"
+                ]
+              }
+            },
+            {
+              "required": [
+                "planIds"
+              ],
+              "not": {
+                "required": [
+                  "planId"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "oneOf": [
+            {
+              "required": [
+                "excerptOfViewId"
+              ],
+              "not": {
+                "required": [
+                  "excerptOfViewIds"
+                ]
+              }
+            },
+            {
+              "required": [
+                "excerptOfViewIds"
+              ],
+              "not": {
+                "required": [
+                  "excerptOfViewId"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "placementBasis": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "sourceStage",
+            "references"
+          ],
+          "properties": {
+            "kind": {
+              "const": "officialSource"
+            },
+            "sourceStage": {
+              "enum": [
+                "SekI",
+                "SekII"
+              ]
+            },
+            "references": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 1000,
+              "uniqueItems": true,
+              "items": {
+                "$ref": "#/$defs/nonBlankText"
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "canonicalPhase"
+          ],
+          "properties": {
+            "kind": {
+              "const": "canonicalDefault"
+            },
+            "canonicalPhase": {
+              "$ref": "#/$defs/nonBlankText"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "sourceStage",
+            "references",
+            "rationale"
+          ],
+          "properties": {
+            "kind": {
+              "const": "reviewedPreparation"
+            },
+            "sourceStage": {
+              "enum": [
+                "SekI",
+                "SekII"
+              ]
+            },
+            "references": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 1000,
+              "uniqueItems": true,
+              "items": {
+                "$ref": "#/$defs/nonBlankText"
+              }
+            },
+            "rationale": {
+              "$ref": "#/$defs/nonBlankText"
+            }
+          }
+        }
+      ]
+    },
+    "sharedPlanBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "planIds"
+      ],
+      "properties": {
+        "planIds": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 16,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        }
+      }
+    }
+  },
+  "oneOf": [
+    {
+      "required": [
+        "rootNodes"
+      ],
+      "properties": {
+        "planBinding": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/fullPlanBinding"
+            },
+            {
+              "$ref": "#/$defs/sharedPlanBinding"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "not": {
+        "required": [
+          "rootNodes"
+        ]
+      },
+      "properties": {
+        "planBinding": {
+          "$ref": "#/$defs/excerptPlanBinding"
+        }
+      }
+    }
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "planBinding": {
+            "required": [
+              "excerptOfViewIds"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "scope": {
+            "not": {
+              "required": [
+                "courseProfile"
+              ]
+            }
+          }
+        }
+      }
+    }
+  ]
+}

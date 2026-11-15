@@ -1,0 +1,609 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Neutral current public goal, complete prerequisite meanings and supplied application task for actual current page-bound confirmation; no other review output or presumed learner performance.",
+  "goal": {
+    "id": "dc55adac-91a5-5cc3-ab47-be008480616f",
+    "title": "Durchlass- und Sperrverhalten einer Diode an einer Kennlinie erklären",
+    "titleEn": "Explain Forward and Reverse Diode Behaviour Using a Characteristic",
+    "description": "Die lernende Person kann aus einer vorgegebenen qualitativen Strom-Spannungs-Kennlinie einer Diode ihr Durchlass- und Sperrverhalten ablesen und damit für beide Polungen bei angegebener Diodenspannung im dargestellten Kennlinienbereich vorhersagen, ob in einem einfachen Stromkreis ein nennenswerter Strom fließt.",
+    "descriptionEn": "The learner can read forward and reverse diode behaviour from a supplied qualitative current–voltage characteristic and use it, for either polarity at a stated diode voltage within the displayed characteristic range, to predict whether an appreciable current flows in a simple circuit.",
+    "requires": [
+      "69f8f59c-b0c3-5b0b-82db-834a0e655736",
+      "80c232f1-8f72-5829-9dbe-5a610ccab3be"
+    ],
+    "contains": [],
+    "type": "atomic",
+    "resourceLinks": [
+      {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "dc55adac-91a5-5cc3-ab47-be008480616f",
+        "title": "Visualisierung: Durchlass- und Sperrverhalten einer Diode an einer Kennlinie erklären",
+        "url": "/assets/goal-visualizations/physik/dc55adac-91a5-5cc3-ab47-be008480616f/dc55adac-91a5-5cc3-ab47-be008480616f.png",
+        "provider": "SkillPilot / repo-native SVG",
+        "description": "Die lernende Person kann aus einer vorgegebenen qualitativen Strom-Spannungs-Kennlinie einer Diode ihr Durchlass- und Sperrverhalten ablesen und damit für beide Polungen bei angegebener Diodenspannung im dargestellten Kennlinienbereich vorhersagen, ob in einem einfachen Stromkreis ein nennenswerter Strom fließt.",
+        "altText": "Die lernende Person kann aus einer vorgegebenen qualitativen Strom-Spannungs-Kennlinie einer Diode ihr Durchlass- und Sperrverhalten ablesen und damit für beide Polungen bei angegebener Diodenspannung im dargestellten Kennlinienbereich vorhersagen, ob in einem einfachen Stromkreis ein nennenswerter Strom fließt.",
+        "lang": "de",
+        "license": "CC-BY-4.0; SkillPilot",
+        "reviewStatus": "pilot"
+      }
+    ],
+    "dimensionTags": {
+      "framework": "canonical-gymnasium-physics",
+      "demandLevel": "AB2",
+      "processCompetencies": [
+        "PK2_MODELLIEREN"
+      ],
+      "guidingIdeas": [
+        "LI_TECHNIK",
+        "LI_MATERIE"
+      ],
+      "phase": "GLOBAL",
+      "area": "Elektronik",
+      "topicCode": "CANONICAL.PHYSICS.ELECTRONICS.DIODE_FUNCTION"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    }
+  },
+  "context": {
+    "goal": {
+      "key": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:dc55adac-91a5-5cc3-ab47-be008480616f",
+      "id": "dc55adac-91a5-5cc3-ab47-be008480616f",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "title": "Durchlass- und Sperrverhalten einer Diode an einer Kennlinie erklären",
+      "description": "Die lernende Person kann aus einer vorgegebenen qualitativen Strom-Spannungs-Kennlinie einer Diode ihr Durchlass- und Sperrverhalten ablesen und damit für beide Polungen bei angegebener Diodenspannung im dargestellten Kennlinienbereich vorhersagen, ob in einem einfachen Stromkreis ein nennenswerter Strom fließt.",
+      "kind": "ordinary"
+    },
+    "subject": "Physik",
+    "buildsOn": [
+      {
+        "key": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:80c232f1-8f72-5829-9dbe-5a610ccab3be",
+        "id": "80c232f1-8f72-5829-9dbe-5a610ccab3be",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "title": "Achsen, Skalen und Einheiten lesen"
+      },
+      {
+        "key": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:69f8f59c-b0c3-5b0b-82db-834a0e655736",
+        "id": "69f8f59c-b0c3-5b0b-82db-834a0e655736",
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "title": "Zwischen Stromkreis und Schaltplan übersetzen"
+      }
+    ],
+    "secured": [
+      {
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "subject": "Mathematik",
+        "areas": [
+          {
+            "key": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:a668ea17-9226-4074-8f8e-051acbe839eb",
+            "id": "a668ea17-9226-4074-8f8e-051acbe839eb",
+            "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+            "title": "Grundlagen der Analysis und mathematische Modelle"
+          }
+        ],
+        "goals": [
+          {
+            "key": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:80c232f1-8f72-5829-9dbe-5a610ccab3be",
+            "id": "80c232f1-8f72-5829-9dbe-5a610ccab3be",
+            "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+            "title": "Achsen, Skalen und Einheiten lesen"
+          }
+        ]
+      },
+      {
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "subject": "Physik",
+        "areas": [
+          {
+            "key": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:4924d83e-5e4b-4819-9d70-86cda3496195",
+            "id": "4924d83e-5e4b-4819-9d70-86cda3496195",
+            "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+            "title": "Magnetismus und einfache Stromkreise (Sek I)"
+          }
+        ],
+        "goals": [
+          {
+            "key": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:7ca44ba0-b77e-52bf-8562-f67b44767172",
+            "id": "7ca44ba0-b77e-52bf-8562-f67b44767172",
+            "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+            "title": "Offene und geschlossene Stromkreise aufbauen und deuten"
+          },
+          {
+            "key": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:69f8f59c-b0c3-5b0b-82db-834a0e655736",
+            "id": "69f8f59c-b0c3-5b0b-82db-834a0e655736",
+            "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+            "title": "Zwischen Stromkreis und Schaltplan übersetzen"
+          }
+        ]
+      }
+    ],
+    "securedCount": 3,
+    "leadsTo": [
+      {
+        "key": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:3b586f2a-60e2-5019-aa08-6a47616a1f1f",
+        "id": "3b586f2a-60e2-5019-aa08-6a47616a1f1f",
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "title": "Die Gleichrichterfunktion einer Diodenschaltung erklären"
+      }
+    ],
+    "areas": [
+      {
+        "key": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:5482bc19-3836-51a5-ba98-fbf5e265b908",
+        "id": "5482bc19-3836-51a5-ba98-fbf5e265b908",
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "title": "Q4 Struktur von Materie, Raum und Zeit"
+      }
+    ],
+    "notYet": [
+      {
+        "key": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:14d99a65-8d58-5647-88ab-02137b96d55b",
+        "id": "14d99a65-8d58-5647-88ab-02137b96d55b",
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "title": "Allgemeine Relativitätstheorie (Qualitativ)"
+      },
+      {
+        "key": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:48e3d6c2-00bf-5afd-8846-ba3dbd01e96d",
+        "id": "48e3d6c2-00bf-5afd-8846-ba3dbd01e96d",
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "title": "Antimaterie und Paarvernichtung"
+      },
+      {
+        "key": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:e5c08365-a0d3-592c-ad8e-d2c2c6e2b717",
+        "id": "e5c08365-a0d3-592c-ad8e-d2c2c6e2b717",
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "title": "Anwendungen ionisierender Strahlung qualitativ beurteilen"
+      },
+      {
+        "key": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:2b700858-bc2e-5ddf-a791-b14d44160480",
+        "id": "2b700858-bc2e-5ddf-a791-b14d44160480",
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "title": "Astronomische Beobachtungsmethoden"
+      },
+      {
+        "key": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:7c986fca-1129-5eff-a17e-0a04bb7346ee",
+        "id": "7c986fca-1129-5eff-a17e-0a04bb7346ee",
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "title": "Astronomische Groessenordnungen und Einheiten"
+      },
+      {
+        "key": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93",
+        "id": "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93",
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "title": "Aufbau des Sonnensystems beschreiben"
+      },
+      {
+        "key": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:14ec85b9-68f6-5400-ad43-5e8dddfddf44",
+        "id": "14ec85b9-68f6-5400-ad43-5e8dddfddf44",
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "title": "Ausgewaehltes Forschungsgebiet beschreiben"
+      },
+      {
+        "key": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:3b586f2a-60e2-5019-aa08-6a47616a1f1f",
+        "id": "3b586f2a-60e2-5019-aa08-6a47616a1f1f",
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "title": "Die Gleichrichterfunktion einer Diodenschaltung erklären"
+      },
+      {
+        "key": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:3857891b-d328-585b-9936-85c7aff122ee",
+        "id": "3857891b-d328-585b-9936-85c7aff122ee",
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "title": "Die Strom-Spannungs-Kennlinie einer Diode experimentell bestimmen"
+      },
+      {
+        "key": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:e296aba6-f407-5944-a2bd-e5296e4c9f06",
+        "id": "e296aba6-f407-5944-a2bd-e5296e4c9f06",
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "title": "Elektronenbeugung als Materiewellenexperiment auswerten"
+      },
+      {
+        "key": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:b3f3f4f7-b5cc-40e1-b57a-3d93649baa61",
+        "id": "b3f3f4f7-b5cc-40e1-b57a-3d93649baa61",
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "title": "Elementare Bestandteile der Materie mit Strukturmodellen ordnen"
+      },
+      {
+        "key": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:7d78da7f-6af5-440a-9d6b-6cab4bee8dd2",
+        "id": "7d78da7f-6af5-440a-9d6b-6cab4bee8dd2",
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "title": "Energiefreisetzung bei Kernreaktionen mit Masse-Energie-Äquivalenz erklären"
+      },
+      {
+        "key": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:f9c025ce-4327-5de7-8288-a3358e14a576",
+        "id": "f9c025ce-4327-5de7-8288-a3358e14a576",
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "title": "Fraunhoferlinien in Sternspektren deuten"
+      },
+      {
+        "key": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:b1ad9493-acca-5366-9ecd-4b7bf7edaf4a",
+        "id": "b1ad9493-acca-5366-9ecd-4b7bf7edaf4a",
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "title": "Geiger-Müller-Zählrohr funktional erklären"
+      },
+      {
+        "key": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:497f1311-17d6-56ff-afb1-422a738e5c16",
+        "id": "497f1311-17d6-56ff-afb1-422a738e5c16",
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "title": "Kepler-Gesetze anwenden"
+      },
+      {
+        "key": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:50877233-7abf-54df-b347-6d3224678fc9",
+        "id": "50877233-7abf-54df-b347-6d3224678fc9",
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "title": "Kernspaltung und Kernfusion qualitativ beschreiben"
+      },
+      {
+        "key": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:4245c54f-d609-41bc-9eff-e9ceeff4902f",
+        "id": "4245c54f-d609-41bc-9eff-e9ceeff4902f",
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "title": "Klassische Wellen, klassische Teilchen und Quantenobjekte am Doppelspalt vergleichen"
+      },
+      {
+        "key": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:75f7139f-0f07-5cec-bcea-4f139502b528",
+        "id": "75f7139f-0f07-5cec-bcea-4f139502b528",
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "title": "Laserprinzip und Anwendungen"
+      },
+      {
+        "key": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:7badac4d-2874-5b3a-87e8-bf8f4440b2a6",
+        "id": "7badac4d-2874-5b3a-87e8-bf8f4440b2a6",
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "title": "Leiter, Nichtleiter und Halbleiter"
+      },
+      {
+        "key": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:512f81af-1480-56a8-ae52-af3aa1a6a859",
+        "id": "512f81af-1480-56a8-ae52-af3aa1a6a859",
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "title": "Michelson-Morley-Nullbefund historisch einordnen"
+      },
+      {
+        "key": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:a359c859-eee0-40ef-a9d1-88db2e6c55b2",
+        "id": "a359c859-eee0-40ef-a9d1-88db2e6c55b2",
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "title": "Photonen und Elektronen als Quantenobjekte beschreiben"
+      },
+      {
+        "key": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:e28381b4-50ef-5cac-bfa4-b7c8e03aef82",
+        "id": "e28381b4-50ef-5cac-bfa4-b7c8e03aef82",
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "title": "Planetenatmosphaeren mit Spektren untersuchen"
+      },
+      {
+        "key": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:ce037050-f94c-5828-883a-76385c84d1f7",
+        "id": "ce037050-f94c-5828-883a-76385c84d1f7",
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "title": "Radialgeschwindigkeiten aus Dopplerverschiebungen bestimmen"
+      },
+      {
+        "key": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:a684bec1-ba59-59d0-98d2-4ca37236f64c",
+        "id": "a684bec1-ba59-59d0-98d2-4ca37236f64c",
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "title": "Relativitätspostulate formulieren und erläutern"
+      },
+      {
+        "key": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:5c5d6698-c056-5850-8ecd-6dd87fb44549",
+        "id": "5c5d6698-c056-5850-8ecd-6dd87fb44549",
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "title": "Sterne anhand ihrer Spektren klassifizieren"
+      },
+      {
+        "key": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:51bc5513-6879-548f-b19a-9746b667f1a3",
+        "id": "51bc5513-6879-548f-b19a-9746b667f1a3",
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "title": "Wellenfunktion und Wahrscheinlichkeitsdeutung"
+      },
+      {
+        "key": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:a12fddce-0215-58d9-bd91-21be8a960d25",
+        "id": "a12fddce-0215-58d9-bd91-21be8a960d25",
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "title": "Zerfallsgesetze anwenden"
+      }
+    ]
+  },
+  "securedGoalMeanings": [
+    {
+      "id": "80c232f1-8f72-5829-9dbe-5a610ccab3be",
+      "title": "Achsen, Skalen und Einheiten lesen",
+      "titleEn": "Read axes, scales and units",
+      "description": "Die lernende Person kann bei Diagrammen Achsenbeschriftung, Skalierung und Einheiten korrekt lesen und daraus Werte bzw. Aussagen ableiten.",
+      "descriptionEn": "The learner can read axis labels, scaling and units correctly and derive values or statements from them.",
+      "requires": [
+        "65365dce-f33f-49d8-9516-42f75883aa86"
+      ],
+      "contains": [],
+      "type": "atomic",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "80c232f1-8f72-5829-9dbe-5a610ccab3be",
+          "title": "Visualisierung: Achsen, Skalen und Einheiten lesen",
+          "url": "/assets/goal-visualizations/mathematik/80c232f1-8f72-5829-9dbe-5a610ccab3be/80c232f1-8f72-5829-9dbe-5a610ccab3be.jpg",
+          "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+          "description": "Visualisierung zum Lernziel: Achsen, Skalen und Einheiten lesen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Achsen, Skalen und Einheiten lesen\". Die lernende Person kann bei Diagrammen Achsenbeschriftung, Skalierung und Einheiten korrekt lesen und daraus Werte bzw. Aussagen ableiten.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K4.2"
+        ],
+        "guidingIdeas": [
+          "L4",
+          "L5"
+        ],
+        "phase": "J7"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      }
+    },
+    {
+      "id": "7ca44ba0-b77e-52bf-8562-f67b44767172",
+      "title": "Offene und geschlossene Stromkreise aufbauen und deuten",
+      "titleEn": "Build and interpret open and closed circuits",
+      "description": "Die lernende Person kann mit einer sicheren Kleinspannungsquelle einfache offene und geschlossene Stromkreise aufbauen und anhand des durchgehenden leitfähigen Weges begründen, ob ein angeschlossener Verbraucher wirken kann.",
+      "descriptionEn": "The learner can use a safe low-voltage source to build simple open and closed circuits and use the continuous conducting path to explain whether a connected device can operate.",
+      "requires": [
+        "5c44b9ba-9b05-4774-95d5-073230d3fc4f"
+      ],
+      "contains": [],
+      "type": "atomic",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "7ca44ba0-b77e-52bf-8562-f67b44767172",
+          "title": "Visualisierung: Offene und geschlossene Stromkreise aufbauen und deuten",
+          "url": "/assets/goal-visualizations/physik/7ca44ba0-b77e-52bf-8562-f67b44767172/7ca44ba0-b77e-52bf-8562-f67b44767172.jpg",
+          "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+          "description": "Visualisierung zum Lernziel: Offene und geschlossene Stromkreise aufbauen und deuten.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Offene und geschlossene Stromkreise aufbauen und deuten\". Die lernende Person kann mit einer sicheren Kleinspannungsquelle einfache offene und geschlossene Stromkreise aufbauen und anhand des durchgehenden leitfähigen Weges begründen, ob ein angeschlossener Verbraucher wirken kann.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN",
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_FELDER",
+          "LI_TECHNIK"
+        ],
+        "phase": "GLOBAL",
+        "area": "Elektrizität",
+        "topicCode": "CANONICAL.PHYSICS.SEK1.ELECTRICITY.CIRCUITS.OPEN_CLOSED"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      }
+    },
+    {
+      "id": "69f8f59c-b0c3-5b0b-82db-834a0e655736",
+      "title": "Zwischen Stromkreis und Schaltplan übersetzen",
+      "titleEn": "Translate between a circuit and its diagram",
+      "description": "Die lernende Person kann einen einfachen realen Stromkreis mit fachüblichen Schaltsymbolen als Schaltplan darstellen, einen vorgegebenen Schaltplan als Aufbau umsetzen und erklären, dass der Plan elektrische Verbindungen statt räumlicher Anordnung codiert.",
+      "descriptionEn": "The learner can represent a simple physical circuit as a circuit diagram using standard symbols, build a physical setup from a given diagram, and explain that the diagram encodes electrical connections rather than spatial arrangement.",
+      "requires": [
+        "7ca44ba0-b77e-52bf-8562-f67b44767172"
+      ],
+      "contains": [],
+      "type": "atomic",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "69f8f59c-b0c3-5b0b-82db-834a0e655736",
+          "title": "Visualisierung: Zwischen Stromkreis und Schaltplan übersetzen",
+          "url": "/assets/goal-visualizations/physik/69f8f59c-b0c3-5b0b-82db-834a0e655736/69f8f59c-b0c3-5b0b-82db-834a0e655736.jpg",
+          "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+          "description": "Visualisierung zum Lernziel: Zwischen Stromkreis und Schaltplan übersetzen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Zwischen Stromkreis und Schaltplan übersetzen\". Die lernende Person kann einen einfachen realen Stromkreis mit fachüblichen Schaltsymbolen als Schaltplan darstellen, einen vorgegebenen Schaltplan als Aufbau umsetzen und erklären, dass der Plan elektrische Verbindungen statt räumlicher Anordnung codiert.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN",
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_FELDER",
+          "LI_TECHNIK"
+        ],
+        "phase": "GLOBAL",
+        "area": "Elektrizität",
+        "topicCode": "CANONICAL.PHYSICS.SEK1.ELECTRICITY.CIRCUITS.DIAGRAM_TRANSLATION"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      }
+    }
+  ],
+  "assessment": {
+    "goal": {
+      "id": "8670cff6-fe9c-5f7e-8cba-d170134965a6",
+      "title": "Prüfungsaufgabe: Diodenpolung aus einer Kennlinie beurteilen",
+      "titleEn": "Assessment Task: Judge Diode Polarity from a Characteristic",
+      "description": "Die lernende Person kann aus einer vorgegebenen Diodenkennlinie das Leitverhalten in zwei Polungen begründen und eine unzulässige allgemeine Schwellspannungsbehauptung zurückweisen.",
+      "descriptionEn": "The learner can use a supplied diode characteristic to justify conduction for two polarities and reject an unjustified universal threshold-voltage claim.",
+      "requires": [
+        "dc55adac-91a5-5cc3-ab47-be008480616f"
+      ],
+      "contains": [],
+      "type": "atomic",
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_MATERIE",
+          "LI_TECHNIK"
+        ],
+        "phase": "GLOBAL",
+        "area": "Elektronik",
+        "topicCode": "CANONICAL.PHYSICS.SEK1.PRACTICE.DIODE_FUNCTION"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      }
+    },
+    "examData": {
+      "coveredGoalIds": [
+        "dc55adac-91a5-5cc3-ab47-be008480616f"
+      ],
+      "coveredStrands": [
+        "LI_MATERIE",
+        "LI_TECHNIK"
+      ],
+      "demandLevels": [
+        "AB1",
+        "AB2",
+        "AB3"
+      ],
+      "taskContent": "![Aufgabenmaterial: Schaltung und Kennlinie](/assets/goal-visualizations/physik/8670cff6-fe9c-5f7e-8cba-d170134965a6/8670cff6-fe9c-5f7e-8cba-d170134965a6.png)\n\n**Material:** Ein sicherer einfacher Serienkreis enthält eine Kleinspannungsquelle, einen strombegrenzenden Widerstand und eine Diode. Ein Pfeil kennzeichnet die technische Stromrichtung von Anode A nach Kathode K; U_D ist als Spannung A gegen K definiert. Eine vorgegebene, für diese Diode bei konstanter Temperatur aufgenommene Kennlinie enthält die Werte U_D = −1,0 V: I_D = −0,001 mA; +0,2 V: +0,001 mA; +0,6 V: +2 mA. Weitere Messungen werden nicht verlangt.\n\n1. Lesen Sie für U_D = +0,6 V, +0,2 V und −1,0 V jeweils Stromrichtung und Stromstärke ab. Ordnen Sie Durchlass- und Sperrpolung zu und erklären Sie das Verhalten im Serienkreis. Benennen Sie die verwendete Vorzeichenrichtung und unterscheiden Sie einen nennenswerten Nutzstrom von einem sehr kleinen, aber nicht exakt verschwindenden Strom. Reicht positive Diodenspannung allein als Begründung für einen nennenswerten Strom? (3 BE)\n2. Ein Lernender behauptet: „Jede Diode schaltet bei genau 0,7 V ein; vorher fließt exakt kein Strom.“ Prüfen Sie das mit den vorgegebenen Daten. Erläutern Sie außerdem die Aussagegrenzen dieser Kennlinie hinsichtlich Bauteil, Temperatur und Messbereich; übertragen Sie sie nicht ungeprüft auf andere Dioden oder Spannungen außerhalb des dargestellten Bereichs. (2 BE)",
+      "solutionContent": "1. Durchlassfall +0,6 V (1 BE): A ist positiver als K. Es fließen +2 mA in der festgelegten technischen Bezugsrichtung A nach K; das ist im Aufgabenbeispiel ein nennenswerter Serienkreisstrom.\n2. Kleiner positiver Fall +0,2 V (1 BE): Trotz positiver Diodenspannung zeigt die Kennlinie nur +0,001 mA von A nach K. Dieser sehr kleine Strom ist nicht exakt null; positive Polung allein belegt keinen nennenswerten Nutzstrom.\n3. Sperrfall −1,0 V (1 BE): K ist positiver als A. Der Strom ist −0,001 mA bezüglich A nach K, fließt also sehr klein von K nach A. Er ist nicht exakt null und kein nennenswerter Nutzstrom. Die Strombegrenzung bleibt Bestandteil des vorgegebenen Kreises.\n4. Universelle Schwelle widerlegt (1 BE): Schon +0,2 V zeigen kleinen, nicht verschwindenden Strom, +0,6 V bereits deutlich größeren Strom. Die Daten widerlegen ein universelles exaktes Einschalten bei 0,7 V samt exakt stromlosem Bereich davor; sie beweisen keine andere universelle Schwelle.\n5. Geltungsgrenzen (1 BE): Die Kurve gilt für das angegebene Bauteil bei der betrachteten konstanten Temperatur im dargestellten Messbereich. Weder alle Dioden noch andere Temperaturen oder außerhalb liegende Spannungen beziehungsweise Durchbruchverhalten sind dadurch festgelegt. Vorgegebene Daten bescheinigen keine selbst ausgeführte Messung.\n\nJedes fachliche Kriterium wird getrennt mit 0 oder 1 BE bewertet. Die Kriterien können nicht durch zusätzliche Zahlen, Formulierungen oder andere Punkte ausgeglichen werden. Fachlich gleichwertige Begründungen zählen. Isolierte Rechen-, Einheiten- oder Schreibfehler ohne Folgen für das begründete Verständnis verursachen keinen eigenen Abzug. Teilpunkte geben Rückmeldung zu den schon gezeigten und noch fehlenden Aspekten.",
+      "scoring": {
+        "maxPoints": 5,
+        "passingPoints": 5,
+        "steps": [
+          {
+            "id": "diode-forward-appreciable",
+            "points": 1,
+            "description": "Bei +0,6 V Durchlasspolung, Bezug A nach K und nennenswerter Strom datenbasiert gedeutet."
+          },
+          {
+            "id": "diode-forward-small",
+            "points": 1,
+            "description": "Bei +0,2 V kleinen nicht verschwindenden Strom erkannt; positive Polung nicht mit stets nennenswertem Strom gleichgesetzt."
+          },
+          {
+            "id": "diode-reverse-nonzero",
+            "points": 1,
+            "description": "Bei −1,0 V Sperrpolung und kleinen nicht verschwindenden Strom entgegen der Bezugsrichtung gedeutet."
+          },
+          {
+            "id": "diode-threshold-evidence",
+            "points": 1,
+            "description": "Universelle exakte 0,7-V-Schwelle und exakt stromlosen Bereich anhand der vorgegebenen Daten widerlegt."
+          },
+          {
+            "id": "diode-applicability",
+            "points": 1,
+            "description": "Gültigkeit auf Bauteil, Temperatur und dargestellten Messbereich begrenzt; keine ungeprüfte Extrapolation."
+          }
+        ]
+      },
+      "taskContentEn": "![Assessment material: circuit and characteristic](/assets/goal-visualizations/physik/8670cff6-fe9c-5f7e-8cba-d170134965a6/8670cff6-fe9c-5f7e-8cba-d170134965a6.png)\n\n**Material:** A safe simple series circuit contains a low-voltage source, a current-limiting resistor and a diode. An arrow defines conventional current from anode A to cathode K; U_D is the voltage of A relative to K. A supplied characteristic, recorded for this diode at constant temperature, includes U_D = −1.0 V: I_D = −0.001 mA; +0.2 V: +0.001 mA; +0.6 V: +2 mA. No further measurements are required.\n\n1. Read current direction and magnitude for U_D = +0.6 V, +0.2 V and −1.0 V. Identify forward and reverse bias and explain behaviour in the series circuit. Name the sign convention and distinguish appreciable useful current from very small but nonzero current. Does positive diode voltage alone establish an appreciable current? (3 points)\n2. A learner claims: “Every diode switches on at exactly 0.7 V; before that the current is exactly zero.” Check this against the supplied data. Also explain the characteristic's evidential limits for component, temperature and measured range; do not transfer it uncritically to other diodes or voltages outside the displayed range. (2 points)",
+      "solutionContentEn": "1. Forward case +0.6 V (1 point): A is positive relative to K. The +2 mA current follows the defined conventional reference A to K and is appreciable in this assessment's series circuit.\n2. Small positive case +0.2 V (1 point): Despite positive diode voltage, the curve gives only +0.001 mA from A to K. This very small current is nonzero; positive bias alone does not establish appreciable useful current.\n3. Reverse case −1.0 V (1 point): K is more positive than A. Current is −0.001 mA relative to A to K, so it flows very slightly from K to A. It is nonzero and not appreciable useful current. Current limitation remains part of the supplied circuit.\n4. Universal threshold rebuttal (1 point): At +0.2 V the current is already nonzero, while +0.6 V produces a much larger current. These data refute universal exact switching at 0.7 V with zero current beforehand; they do not establish another universal threshold.\n5. Applicability limits (1 point): The curve describes the supplied component at the stated constant temperature within the displayed measured range. It does not determine every diode, other temperatures, or voltages and breakdown behaviour outside that range. Supplied data do not certify a personally performed measurement.\n\nEach scientific criterion is scored separately with 0 or 1 point. Additional numbers, wording or other points cannot compensate for a missing criterion. Scientifically equivalent reasoning earns credit. Isolated calculation, unit or notation slips without consequences for the justified understanding do not cause a separate deduction. Partial scores provide feedback on aspects already demonstrated and those still missing."
+    }
+  }
+}

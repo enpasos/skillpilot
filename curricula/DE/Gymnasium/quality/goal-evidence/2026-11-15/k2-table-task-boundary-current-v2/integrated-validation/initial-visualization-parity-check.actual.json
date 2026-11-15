@@ -1,0 +1,8 @@
+{
+  "capturedAt": "2026-11-15T10:31:24.006686+00:00",
+  "source": "visualization-parity-check.actual.log",
+  "exitCode": 1,
+  "sha256": "sha256:f2b131c22d190190743a520a982277580b5bdf89455b7784ded7d8934469e380",
+  "encoding": "UTF-8",
+  "output": "\n> skillpilot@0.0.0 check:goal-visualization-qa-coverage-parity\n> tsx scripts/checkGoalVisualizationQaCoverageParity.ts\n\nmathematik: QA/rollout parity passed (807 atomic scope, 25 active cluster overview, 807 active, 0 provider deferred, 0 quality deferred, 0 regular missing).\nnode:internal/modules/run_main:123\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: physik: target-scope mismatch\n\n481 !== 478\n\n    at <anonymous> (/home/enpasos/projects/skillpilot/app/scripts/checkGoalVisualizationQaCoverageParity.ts:131:10)\n    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)\n    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: 481,\n  expected: 478,\n  operator: 'strictEqual'\n}\n\nNode.js v20.20.2\n"
+}

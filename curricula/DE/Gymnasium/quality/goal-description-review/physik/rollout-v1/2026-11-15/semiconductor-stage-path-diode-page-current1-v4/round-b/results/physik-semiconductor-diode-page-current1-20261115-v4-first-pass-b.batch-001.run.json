@@ -1,0 +1,47 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-semiconductor-diode-page-current1-20261115-v4-first-pass-b.batch-001.informed-page-current-b-gpt61sol-ultra",
+  "campaignId": "physik-semiconductor-diode-page-current1-20261115-v4-b",
+  "roundId": "physik-semiconductor-diode-page-current1-20261115-v4-first-pass-b",
+  "batchId": "physik-semiconductor-diode-page-current1-20261115-v4-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:2e66e03a9d83b52d54572b19998040284945a1666d9bddb9af1ea47799bed5ba",
+  "bundleFingerprint": "sha256:e43d061f553cd81c2aed9eade685939268added70d723f95a24acd4b31c9e815",
+  "bookDigest": "sha256:572346f34429d46379eeeb42d612f50decf327d85c257acf0263f3d8e32f9516",
+  "provider": "OpenAI",
+  "model": "gpt-6.1-sol",
+  "modelVersion": "gpt-6.1-sol; reasoning_effort=ultra; informed own-history current page confirmation; sampling controls not exposed",
+  "role": "subject_reviewer",
+  "promptFamilyId": "informed-current-page-description-confirmation-v4",
+  "promptFingerprint": "sha256:ce69922483c803d783fc99c7d83413ba30a592a228409391314ad84e27e92521",
+  "criteriaFingerprint": "sha256:0c215583a407bcaa4c4c9ff03077cd2dc7059706a199df56080e8b3c106892c1",
+  "generationParametersFingerprint": "sha256:5546b9f20eca3a85445182b1ea17b3fb8746220aa5e5bfba075c6d4d773db2fa",
+  "independenceGroupId": "physik-semiconductor-diode-page-current1-20261115-v4-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "dc55adac-91a5-5cc3-ab47-be008480616f"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:2e66e03a9d83b52d54572b19998040284945a1666d9bddb9af1ea47799bed5ba"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:ce69922483c803d783fc99c7d83413ba30a592a228409391314ad84e27e92521"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:0c215583a407bcaa4c4c9ff03077cd2dc7059706a199df56080e8b3c106892c1"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    }
+  ],
+  "startedAt": "2026-11-15T06:19:17Z",
+  "completedAt": "2026-11-15T06:21:11Z",
+  "status": "completed",
+  "outputDigest": "sha256:503aa1b6c33b1cbae98c5b526811e23691f568b35a71b38bd7cafac38f8b74f9",
+  "toolchainVersion": "tsx-4.21.0-node-20.20.2"
+}

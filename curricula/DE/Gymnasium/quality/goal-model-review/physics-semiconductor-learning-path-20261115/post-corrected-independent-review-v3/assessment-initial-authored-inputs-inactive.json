@@ -1,0 +1,279 @@
+{
+  "schemaVersion": 1,
+  "scope": "Author-provided exact scientific input, not an independent review or learner evidence. Full DE/EN solutions supply the bilingual criterion interpretation; scoring.steps retains the existing native schema.",
+  "canonicalRawSha256": "sha256:8b7de9cfa668e6c06a0518ed05986d79ea020d3cbf6331f65ef0d724b6e2a6de",
+  "rows": [
+    {
+      "goalId": "144007cb-e2bc-5c82-bf9d-dda705b15257",
+      "projectionEncoding": "UTF-8 JSON, ensure_ascii=false, sorted keys, compact separators",
+      "authoredContentSha256": "sha256:52b2595324d254bb49e8dd829abafe067ee3b823e2cd37fe4fb0cc04bc8cc672",
+      "content": {
+        "taskContent": "![Aufgabenmaterial: Kollektorzweig](/assets/goal-visualizations/physik/144007cb-e2bc-5c82-bf9d-dda705b15257/144007cb-e2bc-5c82-bf9d-dda705b15257-collector-20261115.png)\n\nMaterial: Eine vorgegebene npn-Emitterschaltung besitzt einen Emitter an 0 V, einen Kollektorwiderstand von 1,0 kΩ an +10 V und eine Basisvorspannung mit überlagertem kleinem Eingangssignal. Der Ausgang ist die Kollektorspannung gegen 0 V. Nur für den aktiven Bereich dieses Modells gilt I_C = 100 I_B. Für den markierten Kollektorzweig sind die Modellbeziehungen U_R = R_C · I_C und U_C = 10 V − U_R vorgegeben: Widerstandsspannung und Ausgangsspannung ergänzen sich zur festen Versorgungsspannung. Die Arbeitspunkte und Eingangsänderungen sind vorgegeben, nicht aus einem unbekannten Widerstandsnetz zu bestimmen. Die Ausgangsgrenzen sind 0,2 V bei Sättigung und 10 V bei Sperren. Die Kennlinie ist als Tabelle gegeben:\n\n| I_B in µA | 0 | 20 | 40 | 50 | 60 | 80 | 98 |\n|---|---:|---:|---:|---:|---:|---:|---:|\n| I_C in mA | 0 | 2 | 4 | 5 | 6 | 8 | 9,8 |\n| U_C in V | 10 | 8 | 6 | 5 | 4 | 2 | 0,2 |\n\nFall A – Ausgangsarbeitspunkt und größere Signalamplitude (4 BE): Bei I_B = 50 µA schwankt der Basisstrom zunächst um ±10 µA. Vergleiche Basis- und Kollektorstromänderung in gemeinsamen Einheiten und benenne die damit belegte Verstärkung. Ist auch eine Spannungsverstärkung bestimmt, obwohl keine Eingangsspannung angegeben ist? Erkläre mit der vorgegebenen Beziehung, wie sich Kollektorstrom, Widerstandsspannung und Ausgangsspannung gemeinsam ändern und weshalb der Ausgang umgekehrt verläuft. Erläutere, woher die Energie für die Last kommt und welche Rolle der Basiszweig hat. Prüfe anschließend bei demselben Arbeitspunkt die größere Schwankung ±60 µA gegen beide Ausgangsgrenzen: Wie verändert sich die Ausgangsform, und wo endet die Gültigkeit des aktiven Modells?\n\nFall B – Veränderten Arbeitspunkt selbstständig beurteilen (4 BE): Nun liegt der Arbeitspunkt bei I_B = 80 µA; das Eingangssignal schwankt um ±30 µA. Beurteile den Spielraum zu beiden Ausgangsgrenzen und sage voraus, welche Seite begrenzt wird. Wähle einen im Material möglichen Arbeitspunkt, der dieselben ±30 µA unverzerrt überträgt, und begründe dies für beide Signalausschläge. Die Amplitude darf dabei nicht verkleinert werden. Vergleiche für deinen korrigierten aktiven Fall erneut Basis- und Kollektorstromänderung in gemeinsamen Einheiten: Welche Verstärkung ist belegt, und welche Aussage über Spannungsverstärkung bleibt ohne Eingangsspannung offen? Erkläre auch für diesen Fall die Kette von Kollektorstrom über Widerstandsspannung zum Ausgang sowie Energiequelle und Steuerwirkung. Eine kurze, richtig auf den neuen Fall angewandte Rückbeziehung auf deine Erklärung aus Fall A genügt.",
+        "taskContentEn": "![Assessment material: collector branch](/assets/goal-visualizations/physik/144007cb-e2bc-5c82-bf9d-dda705b15257/144007cb-e2bc-5c82-bf9d-dda705b15257-collector-20261115.png)\n\nMaterial: A supplied npn common-emitter circuit has its emitter at 0 V and a 1.0 kΩ collector resistor connected to +10 V. A small input signal is superimposed on the base bias. The output is collector voltage relative to 0 V. Only in this model's active region does I_C = 100 I_B apply. The marked collector branch is supplied with model relations U_R = R_C · I_C and U_C = 10 V − U_R: resistor voltage and output voltage add to the fixed supply voltage. Bias points and input variations are provided, not to be determined from an unspecified resistor network. Output limits are 0.2 V in saturation and 10 V at cutoff. The characteristic is given as a table:\n\n| I_B in µA | 0 | 20 | 40 | 50 | 60 | 80 | 98 |\n|---|---:|---:|---:|---:|---:|---:|---:|\n| I_C in mA | 0 | 2 | 4 | 5 | 6 | 8 | 9.8 |\n| U_C in V | 10 | 8 | 6 | 5 | 4 | 2 | 0.2 |\n\nCase A – Initial bias and a larger signal amplitude (4 points): At I_B = 50 µA the base current initially varies by ±10 µA. Compare base- and collector-current changes in common units and name the gain established by that comparison. Is voltage gain also determined even though no input voltage is supplied? Use the supplied relation to explain how collector current, resistor voltage and output voltage change together and why the output is inverted. Explain where the load energy comes from and the role of the base branch. Then test a larger ±60 µA variation at the same bias against both output limits: how does the output waveform change, and where does the active model cease to apply?\n\nCase B – Independently assess a changed bias (4 points): The bias is now I_B = 80 µA and the input signal varies by ±30 µA. Assess headroom to both output limits and predict which side clips. Select a bias allowed by the material that transmits the same ±30 µA without distortion, justifying both signal excursions. Do not reduce the amplitude. For your corrected active case, again compare base- and collector-current changes in common units: which gain is established, and what remains undetermined about voltage gain without input-voltage data? Also explain for this case the chain from collector current through resistor voltage to output, together with energy source and control. A concise reference to your explanation in Case A is sufficient when correctly applied to the fresh case.",
+        "solutionContent": "Fall A:\nA1 – Belegte Verstärkung und Aussagegrenze (1 BE): ±10 µA Basisstromänderung steuern im aktiven Bereich ±1 mA = ±1000 µA Kollektorstromänderung. Das Verhältnis gleichartiger Stromamplituden ist 100. Es belegt Stromverstärkung. Die Ausgangsspannung liefert zusammen mit dem Basisstrom eine Strom-Spannungs-Übertragung; ohne Eingangsspannungsdaten ist kein Spannungsverstärkungsfaktor bestimmt.\nA2 – Kausale Ausgangsumkehr (1 BE): Im Arbeitspunkt gelten I_C = 5 mA und U_C = 5 V; 40/60 µA ergeben 4/6 mA und 6/4 V. Mit steigendem Kollektorstrom wächst bei gegebenem R_C der Spannungsabfall U_R. Weil die Versorgung fest ist, sinkt der verbleibende Ausgangsanteil U_C. Diese Kette begründet die Umkehr dieser Emitterschaltung.\nA3 – Energiequelle und Steuerung (1 BE): Die 10-V-Versorgung stellt die Energie für die Last bereit. Der Basiszweig steuert den Laststrom und damit die Energieübertragung; er erzeugt diese Energie nicht.\nA4 – Beide Modellgrenzen (1 BE): ±60 µA um 50 µA würde bei unzulässiger aktiver Fortsetzung −10 bis 110 µA und 11 bis −1 V verlangen. Tatsächlich begrenzen Sperren bei 10 V und Sättigung bei 0,2 V die beiden Seiten; das Signal wird oben und unten abgeschnitten. Die aktive Stromverstärkung wird über diese Grenzen hinaus nicht als konstante Übertragung behauptet. Eine gleichwertige qualitative Prüfung beider Grenzen genügt.\n\nFall B:\nB1 – Verstärkung des korrigierten aktiven Falls (1 BE): Beispielsweise ergeben 50±30 µA Basisstrom 20 bis 80 µA und 2 bis 8 mA Kollektorstrom. ±3 mA = ±3000 µA gegenüber ±30 µA belegen erneut Stromverstärkung 100. Dieses Verhältnis gilt für den korrigierten aktiven Fall; es wird nicht für den gesamten ursprünglich begrenzten Ausschlag behauptet. Ohne Eingangsspannung bleibt ein Spannungsverstärkungsfaktor unbestimmt.\nB2 – Kausale Ausgangsumkehr übertragen (1 BE): Auch im neuen Fall führt mehr Kollektorstrom zu größerem Widerstandsspannungsabfall und bei fester Versorgung zu kleinerem Kollektorausgang. Für 50±30 µA sind die Ausgangsextreme 8 und 2 V um 5 V. Die Erklärung wird auf den geänderten Fall angewandt; das bloße Wort Phasenumkehr ohne kausalen Zusammenhang genügt nicht.\nB3 – Energiequelle und Steuerung übertragen (1 BE): Die Lastenergie stammt weiterhin aus der 10-V-Versorgung; der Basiszweig steuert die Übertragung. Eine kurze, im neuen Fall richtige Rückbeziehung auf A3 genügt.\nB4 – Asymmetrie und wirksame Korrektur bei gleichem Signal (1 BE): Bei 80 µA liegt U_C = 2 V, also 1,8 V über der unteren Grenze und 8 V unter der oberen. 50 bis 110 µA würden aktiv 5 bis −1 V verlangen; der untere Ausgangsausschlag sättigt, der obere erreicht 10 V nicht. Beispielsweise verschiebt 50 µA den Arbeitspunkt so, dass dieselben ±30 µA 20 bis 80 µA und 8 bis 2 V ergeben. Beide Grenzen werden eingehalten. Andere begründete Arbeitspunkte mit genügend beidseitigem Spielraum sind gleichwertig. Eine kleinere Amplitude erfüllt den Auftrag mit unverändertem Signal nicht.\n\nAnalytische Bewertung: A1 bis A4 und B1 bis B4 werden unabhängig mit jeweils 0 oder 1 BE bewertet. Für 8 BE müssen alle acht fachlichen Kriterien gezeigt sein; 0 bis 7 BE bleiben aussagekräftige Teilrückmeldung. Es gibt keine Punkte allein für das Ablesen einzelner Zahlen. Fachlich gleichwertige Begründungen zählen; isolierte Rechen-, Einheiten- oder Schreibfehler ohne Folgen für das begründete Verständnis verursachen keinen eigenen Abzug.",
+        "solutionContentEn": "Case A:\nA1 – Established gain and evidential limit (1 point): A ±10 µA base-current change controls a ±1 mA = ±1000 µA collector-current change in the active region. The ratio of like current amplitudes is 100, establishing current gain. Output voltage together with base current describes current-to-voltage transfer; without input-voltage data, no voltage-gain factor is determined.\nA2 – Causal output inversion (1 point): At bias, I_C = 5 mA and U_C = 5 V; 40/60 µA give 4/6 mA and 6/4 V. Increasing collector current increases the drop U_R across the given R_C. With fixed supply, the remaining output share U_C decreases. This chain explains inversion in this common-emitter circuit.\nA3 – Energy source and control (1 point): The 10 V source supplies the load energy. The base branch controls load current and hence energy transfer; it does not create that energy.\nA4 – Both model limits (1 point): A ±60 µA variation about 50 µA would demand −10 to 110 µA and 11 to −1 V if the active relation were extrapolated beyond its range. Cutoff at 10 V and saturation at 0.2 V instead limit the two sides, clipping the waveform at top and bottom. Constant active-region gain is not claimed beyond these limits. An equivalent qualitative check of both limits is sufficient.\n\nCase B:\nB1 – Gain of the corrected active case (1 point): For example, 50±30 µA gives base current from 20 to 80 µA and collector current from 2 to 8 mA. Comparing ±3 mA = ±3000 µA with ±30 µA again establishes current gain 100. This ratio applies to the corrected active case, not across the originally clipped full excursion. Without input voltage, voltage gain remains undetermined.\nB2 – Transfer causal output inversion (1 point): In the fresh case, greater collector current again increases resistor drop and lowers collector output at fixed supply. For 50±30 µA the output extremes are 8 and 2 V about 5 V. The explanation must apply to the changed case; merely naming phase inversion without the causal chain is insufficient.\nB3 – Transfer energy source and control (1 point): Load energy still comes from the 10 V source, while the base branch controls its transfer. A concise reference correctly applying A3 to the fresh case is sufficient.\nB4 – Asymmetry and an effective correction preserving the signal (1 point): At 80 µA, U_C = 2 V gives 1.8 V downward and 8 V upward headroom. A 50 to 110 µA variation would demand 5 to −1 V in the active model: the lower output excursion saturates, while the upper one does not reach 10 V. For example, moving bias to 50 µA lets the same ±30 µA span 20 to 80 µA and 8 to 2 V. Both limits are respected. Other justified bias points providing sufficient headroom on both sides are equivalent. Reducing amplitude does not satisfy the unchanged-signal requirement.\n\nAnalytic scoring: A1 to A4 and B1 to B4 are each scored independently with 0 or 1 point. All eight scientific criteria must be demonstrated for 8 points; 0 to 7 points remain meaningful partial feedback. There are no points solely for reading individual numbers. Scientifically equivalent reasoning earns credit; isolated calculation, unit or notation slips without consequences for the justified understanding do not cause a separate deduction.",
+        "scoring": {
+          "maxPoints": 8,
+          "passingPoints": 8,
+          "steps": [
+            {
+              "id": "amplifier-a1",
+              "points": 1,
+              "description": "Fall A: Stromverstärkung 100 durch gleichartige Stromänderungen belegt; Spannungsverstärkung ohne Eingangsspannung nicht behauptet."
+            },
+            {
+              "id": "amplifier-a2",
+              "points": 1,
+              "description": "Fall A: Größerer Kollektorstrom erhöht den Widerstandsabfall und senkt bei fester Versorgung den Ausgang; kausale Umkehr erklärt."
+            },
+            {
+              "id": "amplifier-a3",
+              "points": 1,
+              "description": "Fall A: Versorgung als Quelle der Lastenergie und Basiszweig als Steuerung unterschieden."
+            },
+            {
+              "id": "amplifier-a4",
+              "points": 1,
+              "description": "Fall A: Größeren Ausschlag gegen beide Grenzen geprüft; Sperren, Sättigung und begrenzte Gültigkeit des aktiven Modells begründet."
+            },
+            {
+              "id": "amplifier-b1",
+              "points": 1,
+              "description": "Fall B: Stromverstärkung 100 im korrigierten aktiven Fall belegt; ursprüngliche Begrenzung und fehlende Eingangsspannungsdaten berücksichtigt."
+            },
+            {
+              "id": "amplifier-b2",
+              "points": 1,
+              "description": "Fall B: Kausale Kette von Kollektorstrom über Widerstandsabfall zur Ausgangsumkehr auf den neuen Fall angewandt."
+            },
+            {
+              "id": "amplifier-b3",
+              "points": 1,
+              "description": "Fall B: Versorgung und Steuerung für den neuen Fall korrekt unterschieden; richtig angewandte kurze Rückbeziehung genügt."
+            },
+            {
+              "id": "amplifier-b4",
+              "points": 1,
+              "description": "Fall B: Asymmetrische beidseitige Aussteuerung diagnostiziert und wirksamer Arbeitspunkt bei unveränderten ±30 µA begründet."
+            }
+          ]
+        },
+        "coveredGoalIds": [
+          "af50bb9a-fd7b-50f5-9698-48c4efe99032"
+        ]
+      },
+      "maximumScoreIfOneCriterionOmitted": 7,
+      "passingPoints": 8,
+      "omittingAnyCriterionCannotPass": true,
+      "sourceArtifactPath": "curricula/DE/Gymnasium/quality/goal-model-review/physics-semiconductor-learning-path-20261115/post-corrected-independent-review-v3/amplifier-assessment-content-review.json"
+    },
+    {
+      "goalId": "a8d99168-62cc-5771-bb5d-9ba833d84193",
+      "projectionEncoding": "UTF-8 JSON, ensure_ascii=false, sorted keys, compact separators",
+      "authoredContentSha256": "sha256:9ca77aa06aea9d5459bacb8e6d293be908b63261c64101d30235ee4a85585346",
+      "content": {
+        "taskContent": "**Material:** Ein vereinfachtes Bindungsmodell: Silizium hat vier Außenelektronen und bildet vier Elektronenpaarbindungen. Ein eingebautes Phosphoratom hat fünf Außenelektronen, ein Boratom drei. Die eingebauten Atome sind zunächst neutral. Bei der betrachteten Temperatur geben die Donatoren ihr zusätzliches Elektron als bewegliches Elektron ab; die Akzeptoren nehmen ein Elektron aus einer benachbarten Bindung auf.\n\n1. Erklären Sie für beide Dotierungen, wie der bewegliche Ladungsträger entsteht und welche Ladung das ortsfeste Dotierion trägt. Begründen Sie für jeden Fall, weshalb das Material als Ganzes neutral bleibt. Ein Loch ist dabei genau zu deuten. (4 BE)\n2. Ein Lernender sagt: „Bei p-Dotierung wandern positive Borionen durch den Kristall; ein Loch ist ein kleiner Hohlraum oder ein Proton.“ Widerlegen Sie die Aussagen und beschreiben Sie die Bewegung eines Lochs durch das Nachrücken benachbarter Bindungselektronen. (1 BE)",
+        "taskContentEn": "**Material:** A simplified bond model: silicon has four outer electrons and forms four electron-pair bonds. An incorporated phosphorus atom has five outer electrons, a boron atom three. Incorporated atoms are initially neutral. At the temperature considered, donors release their extra electron as a mobile electron; acceptors take up an electron from a neighbouring bond.\n\n1. Explain for each doping case how the mobile carrier forms and which charge the fixed dopant ion carries. Explain for each case why the material remains neutral overall and precisely interpret a hole. (4 points)\n2. A learner says: “In p-type silicon positive boron ions travel through the crystal; a hole is a small cavity or a proton.” Refute these claims and describe hole motion through neighbouring bond electrons filling the vacancy. (1 point)",
+        "solutionContent": "1. Donator und bewegliches Elektron (1 BE): Das Phosphoratom hat gegenüber den vier Bindungen ein zusätzliches Außenelektron. Seine Abgabe stellt im vorgegebenen Modell ein bewegliches negatives Elektron bereit.\n2. Donatorion und Neutralität (1 BE): Nach der Abgabe bleibt das Donatorion positiv und ortsfest. Seine positive Ladung und das bewegliche negative Elektron gleichen sich aus; n bedeutet keine negative Nettoladung des ganzen Materials.\n3. Akzeptor und Lochentstehung (1 BE): Das Boratom nimmt ein Elektron aus einer benachbarten Bindung auf. Dort bleibt ein positiv wirksamer fehlender Bindungselektronenplatz, ein Loch, als beweglicher Träger zurück.\n4. Akzeptorion, Neutralität und Ortsfestigkeit (1 BE): Der Akzeptor wird durch das aufgenommene Elektron negativ; er bleibt im Gitter ortsfest. Negatives Ion und positiv wirksames Loch gleichen sich aus, ohne dass Dotierionen durch den Kristall wandern oder das ganze Material positiv geladen wird.\n5. Lochbewegung (1 BE): Benachbarte Bindungselektronen besetzen nacheinander den fehlenden Platz. Dadurch verlagert sich die Fehlstelle entgegengesetzt zur Elektronenbewegung. Ein Loch ist weder ein Hohlraum noch ein Proton.\n\nJedes fachliche Kriterium wird getrennt mit 0 oder 1 BE bewertet. Die Kriterien können nicht durch zusätzliche Zahlen, Formulierungen oder andere Punkte ausgeglichen werden. Fachlich gleichwertige Begründungen zählen. Isolierte Rechen-, Einheiten- oder Schreibfehler ohne Folgen für das begründete Verständnis verursachen keinen eigenen Abzug. Teilpunkte geben Rückmeldung zu den schon gezeigten und noch fehlenden Aspekten.",
+        "solutionContentEn": "1. Donor and mobile electron (1 point): Phosphorus has one outer electron beyond the four bonds. Releasing it supplies a mobile negative electron in the given model.\n2. Donor ion and neutrality (1 point): After release the donor ion is positive and fixed. Its positive charge balances the mobile negative electron; n does not mean a negative net charge of the whole material.\n3. Acceptor and hole formation (1 point): Boron takes up an electron from a neighbouring bond. A positively acting missing bond-electron site, a hole, remains there as the mobile carrier.\n4. Acceptor ion, neutrality and fixed position (1 point): The accepted electron makes the acceptor negative; it remains fixed in the lattice. The negative ion balances the positively acting hole, without dopant-ion migration or a positively charged crystal overall.\n5. Hole motion (1 point): Neighbouring bond electrons successively fill the vacancy, making the missing-electron site move opposite to the electrons. A hole is neither a cavity nor a proton.\n\nEach scientific criterion is scored separately with 0 or 1 point. Additional numbers, wording or other points cannot compensate for a missing criterion. Scientifically equivalent reasoning earns credit. Isolated calculation, unit or notation slips without consequences for the justified understanding do not cause a separate deduction. Partial scores provide feedback on aspects already demonstrated and those still missing.",
+        "scoring": {
+          "maxPoints": 5,
+          "passingPoints": 5,
+          "steps": [
+            {
+              "id": "doping-donor-mobile",
+              "points": 1,
+              "description": "Zusätzliches Donatorelektron und seine Freisetzung als beweglicher negativer Träger kausal erklärt."
+            },
+            {
+              "id": "doping-donor-balance",
+              "points": 1,
+              "description": "Ortsfestes positives Donatorion und neutrale Bilanz mit dem beweglichen Elektron erklärt."
+            },
+            {
+              "id": "doping-acceptor-hole",
+              "points": 1,
+              "description": "Elektronenaufnahme des Akzeptors und dadurch entstehender fehlender Bindungselektronenplatz als Loch erklärt."
+            },
+            {
+              "id": "doping-acceptor-balance",
+              "points": 1,
+              "description": "Ortsfestes negatives Akzeptorion, neutrale Bilanz mit dem Loch und fehlende Ionenwanderung erklärt."
+            },
+            {
+              "id": "doping-hole-motion",
+              "points": 1,
+              "description": "Lochbewegung durch nachrückende Bindungselektronen erklärt; Hohlraum- und Protonenbild verworfen."
+            }
+          ]
+        },
+        "coveredGoalIds": [
+          "9f265f49-1342-5ba7-9c5d-54e97fdb2f19"
+        ]
+      },
+      "maximumScoreIfOneCriterionOmitted": 4,
+      "passingPoints": 5,
+      "omittingAnyCriterionCannotPass": true,
+      "sourceArtifactPath": "curricula/DE/Gymnasium/quality/goal-model-review/physics-semiconductor-learning-path-20261115/post-corrected-independent-review-v3/simple-doping-assessment-content-review.json"
+    },
+    {
+      "goalId": "8670cff6-fe9c-5f7e-8cba-d170134965a6",
+      "projectionEncoding": "UTF-8 JSON, ensure_ascii=false, sorted keys, compact separators",
+      "authoredContentSha256": "sha256:f660e01872173206e2c2c47172fe1413bafe37e005a47ac79623a7eb0a3db509",
+      "content": {
+        "taskContent": "![Aufgabenmaterial: Schaltung und Kennlinie](/assets/goal-visualizations/physik/8670cff6-fe9c-5f7e-8cba-d170134965a6/8670cff6-fe9c-5f7e-8cba-d170134965a6.png)\n\n**Material:** Ein sicherer einfacher Serienkreis enthält eine Kleinspannungsquelle, einen strombegrenzenden Widerstand und eine Diode. Ein Pfeil kennzeichnet die technische Stromrichtung von Anode A nach Kathode K; U_D ist als Spannung A gegen K definiert. Eine vorgegebene, für diese Diode bei konstanter Temperatur aufgenommene Kennlinie enthält die Werte U_D = −1,0 V: I_D = −0,001 mA; +0,2 V: +0,001 mA; +0,6 V: +2 mA. Weitere Messungen werden nicht verlangt.\n\n1. Lesen Sie für U_D = +0,6 V, +0,2 V und −1,0 V jeweils Stromrichtung und Stromstärke ab. Ordnen Sie Durchlass- und Sperrpolung zu und erklären Sie das Verhalten im Serienkreis. Benennen Sie die verwendete Vorzeichenrichtung und unterscheiden Sie einen nennenswerten Nutzstrom von einem sehr kleinen, aber nicht exakt verschwindenden Strom. Reicht positive Diodenspannung allein als Begründung für einen nennenswerten Strom? (3 BE)\n2. Ein Lernender behauptet: „Jede Diode schaltet bei genau 0,7 V ein; vorher fließt exakt kein Strom.“ Prüfen Sie das mit den vorgegebenen Daten. Erläutern Sie außerdem die Aussagegrenzen dieser Kennlinie hinsichtlich Bauteil, Temperatur und Messbereich; übertragen Sie sie nicht ungeprüft auf andere Dioden oder Spannungen außerhalb des dargestellten Bereichs. (2 BE)",
+        "taskContentEn": "![Assessment material: circuit and characteristic](/assets/goal-visualizations/physik/8670cff6-fe9c-5f7e-8cba-d170134965a6/8670cff6-fe9c-5f7e-8cba-d170134965a6.png)\n\n**Material:** A safe simple series circuit contains a low-voltage source, a current-limiting resistor and a diode. An arrow defines conventional current from anode A to cathode K; U_D is the voltage of A relative to K. A supplied characteristic, recorded for this diode at constant temperature, includes U_D = −1.0 V: I_D = −0.001 mA; +0.2 V: +0.001 mA; +0.6 V: +2 mA. No further measurements are required.\n\n1. Read current direction and magnitude for U_D = +0.6 V, +0.2 V and −1.0 V. Identify forward and reverse bias and explain behaviour in the series circuit. Name the sign convention and distinguish appreciable useful current from very small but nonzero current. Does positive diode voltage alone establish an appreciable current? (3 points)\n2. A learner claims: “Every diode switches on at exactly 0.7 V; before that the current is exactly zero.” Check this against the supplied data. Also explain the characteristic's evidential limits for component, temperature and measured range; do not transfer it uncritically to other diodes or voltages outside the displayed range. (2 points)",
+        "solutionContent": "1. Durchlassfall +0,6 V (1 BE): A ist positiver als K. Es fließen +2 mA in der festgelegten technischen Bezugsrichtung A nach K; das ist im Aufgabenbeispiel ein nennenswerter Serienkreisstrom.\n2. Kleiner positiver Fall +0,2 V (1 BE): Trotz positiver Diodenspannung zeigt die Kennlinie nur +0,001 mA von A nach K. Dieser sehr kleine Strom ist nicht exakt null; positive Polung allein belegt keinen nennenswerten Nutzstrom.\n3. Sperrfall −1,0 V (1 BE): K ist positiver als A. Der Strom ist −0,001 mA bezüglich A nach K, fließt also sehr klein von K nach A. Er ist nicht exakt null und kein nennenswerter Nutzstrom. Die Strombegrenzung bleibt Bestandteil des vorgegebenen Kreises.\n4. Universelle Schwelle widerlegt (1 BE): Schon +0,2 V zeigen kleinen, nicht verschwindenden Strom, +0,6 V bereits deutlich größeren Strom. Die Daten widerlegen ein universelles exaktes Einschalten bei 0,7 V samt exakt stromlosem Bereich davor; sie beweisen keine andere universelle Schwelle.\n5. Geltungsgrenzen (1 BE): Die Kurve gilt für das angegebene Bauteil bei der betrachteten konstanten Temperatur im dargestellten Messbereich. Weder alle Dioden noch andere Temperaturen oder außerhalb liegende Spannungen beziehungsweise Durchbruchverhalten sind dadurch festgelegt. Vorgegebene Daten bescheinigen keine selbst ausgeführte Messung.\n\nJedes fachliche Kriterium wird getrennt mit 0 oder 1 BE bewertet. Die Kriterien können nicht durch zusätzliche Zahlen, Formulierungen oder andere Punkte ausgeglichen werden. Fachlich gleichwertige Begründungen zählen. Isolierte Rechen-, Einheiten- oder Schreibfehler ohne Folgen für das begründete Verständnis verursachen keinen eigenen Abzug. Teilpunkte geben Rückmeldung zu den schon gezeigten und noch fehlenden Aspekten.",
+        "solutionContentEn": "1. Forward case +0.6 V (1 point): A is positive relative to K. The +2 mA current follows the defined conventional reference A to K and is appreciable in this assessment's series circuit.\n2. Small positive case +0.2 V (1 point): Despite positive diode voltage, the curve gives only +0.001 mA from A to K. This very small current is nonzero; positive bias alone does not establish appreciable useful current.\n3. Reverse case −1.0 V (1 point): K is more positive than A. Current is −0.001 mA relative to A to K, so it flows very slightly from K to A. It is nonzero and not appreciable useful current. Current limitation remains part of the supplied circuit.\n4. Universal threshold rebuttal (1 point): At +0.2 V the current is already nonzero, while +0.6 V produces a much larger current. These data refute universal exact switching at 0.7 V with zero current beforehand; they do not establish another universal threshold.\n5. Applicability limits (1 point): The curve describes the supplied component at the stated constant temperature within the displayed measured range. It does not determine every diode, other temperatures, or voltages and breakdown behaviour outside that range. Supplied data do not certify a personally performed measurement.\n\nEach scientific criterion is scored separately with 0 or 1 point. Additional numbers, wording or other points cannot compensate for a missing criterion. Scientifically equivalent reasoning earns credit. Isolated calculation, unit or notation slips without consequences for the justified understanding do not cause a separate deduction. Partial scores provide feedback on aspects already demonstrated and those still missing.",
+        "scoring": {
+          "maxPoints": 5,
+          "passingPoints": 5,
+          "steps": [
+            {
+              "id": "diode-forward-appreciable",
+              "points": 1,
+              "description": "Bei +0,6 V Durchlasspolung, Bezug A nach K und nennenswerter Strom datenbasiert gedeutet."
+            },
+            {
+              "id": "diode-forward-small",
+              "points": 1,
+              "description": "Bei +0,2 V kleinen nicht verschwindenden Strom erkannt; positive Polung nicht mit stets nennenswertem Strom gleichgesetzt."
+            },
+            {
+              "id": "diode-reverse-nonzero",
+              "points": 1,
+              "description": "Bei −1,0 V Sperrpolung und kleinen nicht verschwindenden Strom entgegen der Bezugsrichtung gedeutet."
+            },
+            {
+              "id": "diode-threshold-evidence",
+              "points": 1,
+              "description": "Universelle exakte 0,7-V-Schwelle und exakt stromlosen Bereich anhand der vorgegebenen Daten widerlegt."
+            },
+            {
+              "id": "diode-applicability",
+              "points": 1,
+              "description": "Gültigkeit auf Bauteil, Temperatur und dargestellten Messbereich begrenzt; keine ungeprüfte Extrapolation."
+            }
+          ]
+        },
+        "coveredGoalIds": [
+          "dc55adac-91a5-5cc3-ab47-be008480616f"
+        ]
+      },
+      "maximumScoreIfOneCriterionOmitted": 4,
+      "passingPoints": 5,
+      "omittingAnyCriterionCannotPass": true,
+      "sourceArtifactPath": "curricula/DE/Gymnasium/quality/goal-model-review/physics-semiconductor-learning-path-20261115/post-corrected-independent-review-v3/functional-diode-assessment-content-review.json"
+    },
+    {
+      "goalId": "1abfd5ef-1f42-5b71-8c9a-80c0a6b0322e",
+      "projectionEncoding": "UTF-8 JSON, ensure_ascii=false, sorted keys, compact separators",
+      "authoredContentSha256": "sha256:9263f7af0fef5f3be90f356dab2abdd275ac21881271a1f61807a34e42417d04",
+      "content": {
+        "taskContent": "![Aufgabenmaterial: Bandmodelle A–C](/assets/goal-visualizations/physik/1abfd5ef-1f42-5b71-8c9a-80c0a6b0322e/1abfd5ef-1f42-5b71-8c9a-80c0a6b0322e-bands-20261115.png)\n\n**Material:** Die Abbildung zeigt drei vereinfachte Bändermodelle. Dunkel markierte Zustände sind besetzt, helle Bandbereiche unbesetzt. Die Ausgangsbesetzungen gelten für T = 0 K; anschließend wird qualitativ erklärt, was geringe thermische Anregung bewirken kann. Die Höhe gibt eine Energie an, keine räumliche Schicht im Material. In C liegt ein zusätzliches besetztes Niveau dicht unter dem oberen Band; die Hauptbandlücke bleibt bestehen.\n\n1. Ordnen Sie A einem Leiter und B einem undotierten Halbleiter zu und erklären Sie die Zuordnung über erreichbare unbesetzte Energiezustände und die Bandlücke. Erläutern Sie bei B die Wirkung geringer thermischer Anregung auf Elektronen und Löcher.\n2. Deuten Sie C als n-Dotierung und erklären Sie, wie aus dem Zusatzniveau leichter anregbare bewegliche Elektronen bereitgestellt werden und dadurch die Leitfähigkeit beeinflusst wird. Erläutern Sie zusätzlich die Ladung des zurückbleibenden ortsfesten Donatorions und die vollständige Ladungsbilanz.\n3. Skizzieren Sie analog die qualitative Wirkung einer p-Dotierung mit Akzeptorniveaus und Löchern. Erklären Sie die Ladung des ortsfesten Akzeptorions und die vollständige neutrale Bilanz; Dotierung erzeugt keine beliebige elektrische Ladung. Vergleichen Sie ausdrücklich p-Dotierung mit bloßer Erwärmung eines undotierten Halbleiters: Welche Zustände beziehungsweise Träger entstehen jeweils, und warum sind die beiden Vorgänge nicht gleichzusetzen?",
+        "taskContentEn": "![Assessment material: band models A–C](/assets/goal-visualizations/physik/1abfd5ef-1f42-5b71-8c9a-80c0a6b0322e/1abfd5ef-1f42-5b71-8c9a-80c0a6b0322e-bands-20261115.png)\n\n**Material:** The figure shows three simplified band models. Dark states are occupied and pale band regions unoccupied. Initial occupations refer to T = 0 K; explain qualitatively what a small thermal excitation can then cause. Height denotes energy, not a spatial layer in the material. In C an additional occupied level lies close below the upper band; the main band gap remains.\n\n1. Assign A to a conductor and B to an undoped semiconductor, explaining the assignment through accessible unoccupied states and the band gap. For B explain the effect of small thermal excitation on electrons and holes.\n2. Interpret C as n-type doping and explain how the additional level makes mobile electrons more easily available through excitation, affecting conductivity. Also explain the charge of the fixed donor ion left behind and the complete charge balance.\n3. Sketch the corresponding qualitative effect of p-type doping with acceptor levels and holes. Explain the fixed acceptor ion's charge and the complete neutral balance; doping does not arbitrarily create electric charge. Explicitly compare p-type doping with merely heating an undoped semiconductor: which states or carriers arise in each, and why are the processes different?",
+        "solutionContent": "1. Erreichbare Leiterzustände (1 BE): A ist der Leiter. In seinem teilweise besetzten Band liegen erreichbare unbesetzte Zustände nahe besetzten Zuständen; dies ermöglicht die elektrische Leitungsreaktion.\n2. Lücke und thermische Paare (1 BE): B ist der undotierte Halbleiter. Eine Lücke trennt das volle untere vom leeren oberen Band. Thermische Anregung kann Elektronen über die Lücke ins obere Band bringen; im unteren bleiben Löcher zurück.\n3. Donatorniveau und mobile Elektronen (1 BE): C beschreibt n-Dotierung. Das zusätzliche besetzte Niveau liegt nahe unter dem Leitungsband, sodass geringere Anregungsenergie als über die Hauptlücke genügt. Elektronen daraus können beweglich im Leitungsband werden; die Hauptbandlücke bleibt bestehen.\n4. Akzeptorniveau und Lochskizze (1 BE): Die qualitative p-Skizze zeigt Akzeptorniveaus nahe oberhalb des Valenzbands. Ein Elektron aus dem Valenzband kann aufgenommen werden; ein positiv wirksamer fehlender Elektronenplatz, das Loch, bleibt dort als beweglicher Träger zurück. Höhe meint Energie, keine räumliche Materialschicht.\n5. p-Dotierung gegenüber bloßer Erwärmung (1 BE): Akzeptoratome und zugehörige zusätzliche Niveaus verändern das Material; ihre Elektronenaufnahme stellt Löcher bereit. Bloße Erwärmung des undotierten Halbleiters regt dagegen Elektronen über die vorhandene Lücke an und erzeugt Elektron-Loch-Paare, ohne Akzeptoratome oder deren Dotierniveaus einzubauen. Die beiden Vorgänge sind daher nicht gleichzusetzen.\n6. Beide vollständigen Ladungsbilanzen (1 BE): Beim Donator gleicht das ortsfeste positive Ion das zusätzliche bewegliche negative Elektron aus. Beim Akzeptor gleicht das ortsfeste negative Ion das positiv wirksame bewegliche Loch aus. Beide Materialfälle bleiben insgesamt neutral; weder Ionenwanderung noch Erzeugung von Protonen oder Nettoladung erklärt die Leitung. Beide Dotierungsfälle müssen korrekt bilanziert sein.\n\nJedes fachliche Kriterium wird getrennt mit 0 oder 1 BE bewertet. Die Kriterien können nicht durch zusätzliche Zahlen, Formulierungen oder andere Punkte ausgeglichen werden. Fachlich gleichwertige Begründungen zählen. Isolierte Rechen-, Einheiten- oder Schreibfehler ohne Folgen für das begründete Verständnis verursachen keinen eigenen Abzug. Teilpunkte geben Rückmeldung zu den schon gezeigten und noch fehlenden Aspekten.",
+        "solutionContentEn": "1. Accessible conductor states (1 point): A is the conductor. Its partly occupied band contains accessible unoccupied states close to occupied ones, allowing the electrical conduction response.\n2. Gap and thermal pairs (1 point): B is the undoped semiconductor. A gap separates the full lower band from the empty upper band. Thermal excitation can promote electrons across the gap into the upper band, leaving holes in the lower band.\n3. Donor level and mobile electrons (1 point): C represents n-type doping. The additional occupied level lies close below the conduction band, so less excitation energy is required than across the main gap. Electrons from it can become mobile in the conduction band; the main gap remains.\n4. Acceptor level and hole sketch (1 point): The qualitative p-type sketch shows acceptor levels close above the valence band. An electron can be taken from the valence band, leaving a positively acting missing-electron site, a hole, as a mobile carrier. Height denotes energy, not a spatial layer of material.\n5. p-type doping versus mere heating (1 point): Acceptor atoms and their additional levels alter the material; their electron uptake supplies holes. Merely heating an undoped semiconductor instead excites electrons across the existing gap and produces electron-hole pairs, without incorporating acceptor atoms or dopant levels. The processes are therefore different.\n6. Both complete charge balances (1 point): A fixed positive donor ion balances the additional mobile negative electron. A fixed negative acceptor ion balances the positively acting mobile hole. Both material cases remain neutral overall; ion migration or creation of protons or net charge does not explain the conduction. Both doping cases must be balanced correctly.\n\nEach scientific criterion is scored separately with 0 or 1 point. Additional numbers, wording or other points cannot compensate for a missing criterion. Scientifically equivalent reasoning earns credit. Isolated calculation, unit or notation slips without consequences for the justified understanding do not cause a separate deduction. Partial scores provide feedback on aspects already demonstrated and those still missing.",
+        "scoring": {
+          "maxPoints": 6,
+          "passingPoints": 6,
+          "steps": [
+            {
+              "id": "band-conductor-states",
+              "points": 1,
+              "description": "Leiter mit erreichbaren unbesetzten Zuständen im teilweise besetzten Band erklärt."
+            },
+            {
+              "id": "band-gap-thermal-pairs",
+              "points": 1,
+              "description": "Undotierten Halbleiter mit Bandlücke und thermisch anregbaren Elektron-Loch-Paaren erklärt."
+            },
+            {
+              "id": "band-donor-carriers",
+              "points": 1,
+              "description": "Donatorniveau, geringere Anregungsenergie und bewegliche Elektronen bei erhaltener Hauptbandlücke erklärt."
+            },
+            {
+              "id": "band-acceptor-hole",
+              "points": 1,
+              "description": "Akzeptorniveau und Lochentstehung in einer passenden qualitativen Energieskizze erklärt."
+            },
+            {
+              "id": "band-doping-versus-heating",
+              "points": 1,
+              "description": "p-Dotierung ausdrücklich mit bloßer Erwärmung des undotierten Materials verglichen; zusätzliche Akzeptorniveaus von thermischen Paaren unterschieden."
+            },
+            {
+              "id": "band-both-charge-balances",
+              "points": 1,
+              "description": "Ortsfeste positive Donatorionen/mobile Elektronen und ortsfeste negative Akzeptorionen/mobile Löcher jeweils vollständig neutral bilanziert."
+            }
+          ]
+        },
+        "coveredGoalIds": [
+          "df010b2b-b182-5f7e-bbe4-49b72e48c27a"
+        ]
+      },
+      "maximumScoreIfOneCriterionOmitted": 5,
+      "passingPoints": 6,
+      "omittingAnyCriterionCannotPass": true,
+      "sourceArtifactPath": "curricula/DE/Gymnasium/quality/goal-model-review/physics-semiconductor-learning-path-20261115/post-corrected-independent-review-v3/band-assessment-content-review.json"
+    },
+    {
+      "goalId": "88f27aab-8724-5a4d-8543-e49ebcb54b8e",
+      "projectionEncoding": "UTF-8 JSON, ensure_ascii=false, sorted keys, compact separators",
+      "authoredContentSha256": "sha256:97a9a293c5bc083e1be5ba0501272224cc4171be1f8f7ee7e2925b8184e7d27b",
+      "content": {
+        "taskContent": "Material und Anschlussplan: Eine geprüfte, strombegrenzte 5-V-Lehrversorgung speist eine LED mit 330-Ω-Vorwiderstand: +5 V → Widerstand → LED-Anode; LED-Kathode → Kollektor C eines geeigneten npn-Lehrtransistors; Emitter E → 0 V. Der Basiseingang B ist über 10 kΩ mit dem zwischen 0 V und +5 V umschaltbaren Steuerausgang verbunden. Alle 0-V-Anschlüsse sind verbunden. Das Datenblatt bezeichnet die tatsächlichen B/C/E-Pins eindeutig; die Bauteilorientierung wird nicht geraten. Im vereinfachten Materialmodell besitzt der Transistor eine dünne p-dotierte Basis zwischen n-dotiertem Emitter und Kollektor. Geeignete Basis-Emitter-Ansteuerung ermöglicht Ladungsträgertransport vom Emitter durch die dünne Basis zum Kollektor; ein kleiner Steuerstrom kann so den Laststrom beeinflussen. Die Lastenergie stammt aus der 5-V-Versorgung.\n\nArbeitsform vor Beginn markieren: S im vorgesehenen Schülerexperiment, insbesondere BY Ph10.5 NTG; D für Papier-/Demonstrationsdeutung ohne bescheinigten eigenen Aufbau. In S: nur berührungssichere Lehrbauteile, Umstecken ausgeschaltet, Inbetriebnahme nach Lehrkraftkontrolle. Eine Textbehauptung ersetzt keinen beobachteten Aufbau.\n\n1. Verfolge B, C und E sowie Steuer- und Lastpfad am vollständigen Anschlussplan. Erkläre den Ladungsträgertransport durch die dünne Basis im vorgegebenen Modell und unterscheide die Energiequelle der LED von der Steuerwirkung des Basiszweigs.\n2. S: Stelle den Aufbau nach Plan unter Aufsicht tatsächlich her. Variiere selbst die vorgegebene Steuerung zwischen 0 V und 5 V und dokumentiere deine tatsächlich beobachteten LED-Zustände. Unterbrich danach ausgeschaltet den Basiszweig und prüfe nach Lehrkraftfreigabe erneut. Eine eigene Strommessung oder Bestimmung der Geräteunsicherheit wird nicht verlangt. D: Analysiere stattdessen die vorgegebenen Demonstrationsdaten: Steuerung 0 V → I_B = 0,00±0,01 mA, I_C = 0,0±0,1 mA, LED aus; Steuerung 5 V → I_B = 0,42±0,02 mA, I_C = 8,1±0,3 mA, LED an; unterbrochener Basiszweig → LED aus. Erkläre die drei Zustände am gelieferten Plan; diese Daten sind keine eigenen Messungen und kein Nachweis eines eigenen Aufbaus. Begründe in beiden Formen die elektronische Schaltwirkung, ohne aus zwei Betriebspunkten einen universellen konstanten Verstärkungsfaktor abzuleiten.\n3. Ein Sensor liefert im Hellen 5 V und im Dunkeln 0 V. Sage die LED-Zustände voraus und erkläre die Änderung beim Tausch dieser Sensorwirkung. In S prüfe die Vorhersagen durch entsprechende 0-/5-V-Einstellungen desselben vorgegebenen Steuerausgangs und dokumentiere deine eigenen Beobachtungen; ein zusätzlicher Sensoraufbau ist nicht verlangt. Unterscheide den Transistorschalter von einem mechanischen Kontakt.",
+        "taskContentEn": "Material and complete connection plan: A checked, current-limited 5 V teaching supply drives an LED through a 330 Ω resistor: +5 V → resistor → LED anode; LED cathode → collector C of a suitable npn teaching transistor; emitter E → 0 V. Base B connects through 10 kΩ to a control output selectable between 0 V and +5 V. All 0 V terminals are common. The datasheet explicitly identifies actual B/C/E pins; orientation must not be guessed. In the supplied simplified semiconductor model, a thin p-type base lies between n-type emitter and collector. Appropriate base-emitter drive permits carrier transport from the emitter through the thin base to the collector, so a small control current can influence load current. Load energy comes from the 5 V supply.\n\nMark the mode before starting: S for the designated student experiment, in particular BY Ph10.5 NTG; D for paper/demonstration interpretation with no certified personal build. S uses only touch-safe teaching components, reconnects with power off and requires teacher inspection before switching on. A written claim cannot replace an observed setup.\n\n1. Identify B, C and E and trace control and load paths in the complete plan. Explain carrier transport through the thin base in the supplied model and distinguish the LED's energy source from control by the base branch.\n2. S: Personally assemble the specified circuit under supervision. Independently vary the supplied control between 0 V and 5 V and document the LED states you actually observe. Then interrupt the base branch with power off and retest after teacher approval. Personal current measurement or instrument-uncertainty determination is not required. D: Instead analyse these supplied demonstration data: control 0 V → I_B = 0.00±0.01 mA, I_C = 0.0±0.1 mA, LED off; control 5 V → I_B = 0.42±0.02 mA, I_C = 8.1±0.3 mA, LED on; interrupted base branch → LED off. Explain the three states using the supplied plan; these data are neither personal measurements nor evidence of personal construction. In either mode justify electronic switching without inferring a universal constant gain from two operating points.\n3. A sensor outputs 5 V in light and 0 V in darkness. Predict the LED states and explain what changes when the sensor response is reversed. In S test the predictions using corresponding 0/5 V settings of the same supplied control output and document your own observations; no additional sensor assembly is required. Distinguish the transistor switch from a mechanical contact.",
+        "solutionContent": "1. Steuer-/Lastpfad und dünne Basis (1 BE): B, C und E werden anhand des Datenblatts identifiziert. Steuerpfad: Steuerausgang–10 kΩ–B–E–0 V; Lastpfad: Versorgung–330 Ω–LED–C–E–0 V. Im gelieferten Modell ermöglicht geeignete Basis-Emitter-Ansteuerung Ladungsträgertransport vom Emitter durch die dünne Basis zum Kollektor; bloßes Benennen der Anschlüsse ohne diese kausale Wirkung genügt nicht.\n2. Energie und Steuerung (1 BE): Die 5-V-Versorgung liefert die Lastenergie. Der Basiszweig beeinflusst den Ladungsträgertransport und steuert den Laststrom; er erzeugt die LED-Energie nicht.\n3. Zum vorgesehenen Modus passende Durchführungsevidenz (1 BE): In S muss der tatsächlich beobachtete, sichere eigene Aufbau dem gelieferten vollständigen Plan entsprechen: Bauteilpins, gemeinsamer 0-V-Bezug, strombegrenzte Lehrversorgung und Widerstände sind korrekt; Umstecken erfolgt ausgeschaltet, Freigabe vor Inbetriebnahme. Ein Text, fremder Bericht oder eine Demonstration ersetzt diesen eigenen Aufbau nicht. In D wird stattdessen der gelieferte Anschlussplan auf die dokumentierten Demonstrationszustände bezogen und die Aussage ausdrücklich auf Materialdeutung begrenzt; ein eigener Aufbau wird damit nicht bescheinigt. Das bloße Markieren eines Modus gibt keinen Punkt.\n4. Kontrollierte Beobachtung und Kontrollversuch (1 BE): In S werden selbst gezielt 0 V und 5 V eingestellt, eigene LED-Aus-/An-Beobachtungen dokumentiert und der bei ausgeschalteter Versorgung geöffnete Basiszweig nach Freigabe als Kontrollversuch untersucht. Die Erklärung verknüpft die eigenen Zustände mit der jeweiligen Ansteuerung. Eigene Zahlenmessungen und Unsicherheitsbestimmung sind nicht erforderlich. In D müssen alle drei gelieferten Zustände gedeutet werden: 0 V und offener Basiszweig unterbrechen die geeignete Ansteuerung, LED aus; 5 V ermöglicht den Laststrom, LED an. Die Zahlen sind fremde Materialdaten, keine eigenen Messungen.\n5. Geänderte Sensorwirkung übertragen (1 BE): Hell liefert zunächst 5 V und LED an, Dunkel 0 V und LED aus. Umkehr des Sensorausgangs kehrt die Zustände um. In S werden Vorhersagen mit den entsprechenden Einstellungen des gelieferten Steuerausgangs tatsächlich verglichen und eigene Beobachtungen dokumentiert; kein unbekannter Sensorschaltplan wird konstruiert.\n6. Elektronisches Schalten und begrenzte Verstärkungsaussage (1 BE): Geänderte Basisansteuerung beeinflusst elektronisch den Trägertransport; es bewegt sich kein mechanischer Kontakt. Zwei Schaltzustände belegen keine universelle konstante Stromverstärkung.\n\nJedes fachliche Kriterium wird getrennt mit 0 oder 1 BE bewertet. Die Kriterien können nicht durch zusätzliche Zahlen, Formulierungen oder andere Punkte ausgeglichen werden. Fachlich gleichwertige Begründungen zählen. Isolierte Rechen-, Einheiten- oder Schreibfehler ohne Folgen für das begründete Verständnis verursachen keinen eigenen Abzug. Teilpunkte geben Rückmeldung zu den schon gezeigten und noch fehlenden Aspekten. Die konkrete vorgeschriebene Arbeitsform bleibt maßgeblich: Eine D-Deutung bescheinigt keine S-Durchführung.",
+        "solutionContentEn": "1. Control/load paths and thin base (1 point): B, C and E are identified using the datasheet. Control path: control output–10 kΩ–B–E–0 V; load path: supply–330 Ω–LED–C–E–0 V. In the supplied model, suitable base-emitter drive permits carrier transport from emitter through the thin base to collector. Merely naming pins without this causal mechanism is insufficient.\n2. Energy and control (1 point): The 5 V source supplies load energy. The base branch affects carrier transport and controls load current; it does not create the LED's energy.\n3. Execution evidence appropriate to the designated mode (1 point): S requires an actually observed safe personal setup matching the complete supplied plan: component pins, common 0 V reference, current-limited teaching supply and resistors are correct, reconnection occurs with power off and approval precedes switching on. Text, another person's report or a demonstration does not replace personal construction. D instead connects the supplied plan with documented demonstration states and explicitly limits the claim to material interpretation; personal assembly is not certified. Merely marking a mode earns no point.\n4. Controlled observation and control trial (1 point): In S the learner deliberately sets 0 V and 5 V, documents their own LED off/on observations and investigates the base branch opened with power off, retesting after approval. They connect their observed states to the actual drive. Personal numerical measurements and uncertainty estimation are not required. D must interpret all three supplied states: 0 V and an open base branch prevent suitable drive and the LED is off; 5 V enables load current and the LED is on. The numbers are supplied evidence, not personal measurements.\n5. Transfer to a changed sensor response (1 point): Light initially produces 5 V and LED on, darkness 0 V and LED off. Reversing sensor output reverses these states. S compares predictions with corresponding settings of the supplied control output and documents personal observations; no unspecified sensor circuit is constructed.\n6. Electronic switching and bounded gain claim (1 point): Changed base drive electronically affects carrier transport; no mechanical contact moves. Two switching states do not establish universal constant current gain.\n\nEach scientific criterion is scored separately with 0 or 1 point. Additional numbers, wording or other points cannot compensate for a missing criterion. Scientifically equivalent reasoning earns credit. Isolated calculation, unit or notation slips without consequences for the justified understanding do not cause a separate deduction. Partial scores provide feedback on aspects already demonstrated and those still missing. The prescribed mode remains decisive: D interpretation does not certify S execution.",
+        "scoring": {
+          "maxPoints": 6,
+          "passingPoints": 6,
+          "steps": [
+            {
+              "id": "switch-paths-thin-base",
+              "points": 1,
+              "description": "Steuer-/Lastpfad und B/C/E am vorgegebenen Plan mit kausalem Ladungsträgertransport durch die dünne Basis erklärt."
+            },
+            {
+              "id": "switch-energy-control",
+              "points": 1,
+              "description": "Versorgung als Lastenergiequelle und Basiszweig als Steuerung unterschieden."
+            },
+            {
+              "id": "switch-prescribed-execution",
+              "points": 1,
+              "description": "Für vorgeschriebenes S tatsächlich beobachteten sicheren eigenen Aufbau nachgewiesen; D bleibt korrekte materialgestützte Deutung ohne Aufbaubescheinigung."
+            },
+            {
+              "id": "switch-controlled-observations",
+              "points": 1,
+              "description": "In S eigene kontrollierte 0-/5-V-Beobachtungen samt offenem Basispfad untersucht; in D alle drei vorgegebenen Zustände fachlich gedeutet."
+            },
+            {
+              "id": "switch-sensor-transfer",
+              "points": 1,
+              "description": "Geänderte und umgekehrte Sensorwirkung begründet übertragen; in S mit der gelieferten Steuerung tatsächlich verglichen."
+            },
+            {
+              "id": "switch-electronic-limits",
+              "points": 1,
+              "description": "Elektronische Trägersteuerung vom mechanischen Kontakt unterschieden und universelle Verstärkungsbehauptung aus zwei Schaltpunkten vermieden."
+            }
+          ]
+        },
+        "coveredGoalIds": [
+          "7d4d6a39-0c78-5fb0-b7bf-182ed00972f7"
+        ]
+      },
+      "maximumScoreIfOneCriterionOmitted": 5,
+      "passingPoints": 6,
+      "omittingAnyCriterionCannotPass": true,
+      "sourceArtifactPath": "curricula/DE/Gymnasium/quality/goal-model-review/physics-semiconductor-learning-path-20261115/post-corrected-independent-review-v3/transistor-assessment-content-review.json"
+    }
+  ],
+  "humanApproval": false,
+  "learnerStateChanged": false
+}

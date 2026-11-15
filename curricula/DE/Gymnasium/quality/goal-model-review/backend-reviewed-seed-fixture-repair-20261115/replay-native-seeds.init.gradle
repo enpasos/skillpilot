@@ -1,0 +1,14 @@
+// SPDX-License-Identifier: Apache-2.0
+// Read-only proof launcher; calls the actual current backend projection with a source-data snapshot.
+gradle.projectsEvaluated {
+    rootProject.tasks.register('replayReviewedSeedFixtures', Exec) {
+        dependsOn rootProject.tasks.named('compileJava')
+        def jdk = System.getenv('JAVA_HOME')
+        if (!jdk) throw new GradleException('JAVA_HOME must identify the existing Corretto 25 JDK')
+        def sourceSets = rootProject.extensions.getByName('sourceSets')
+        commandLine new File(jdk, 'bin/java').absolutePath,
+            '-Xmx1536m', '--class-path', sourceSets.main.runtimeClasspath.asPath,
+            new File(rootProject.projectDir, '../curricula/DE/Gymnasium/quality/goal-model-review/backend-reviewed-seed-fixture-repair-20261115/ReviewedSeedFixtureProjection.java').absolutePath,
+            rootProject.property('reviewedSeedRoot'), rootProject.property('reviewedSeedRequests'), rootProject.property('reviewedSeedResults')
+    }
+}

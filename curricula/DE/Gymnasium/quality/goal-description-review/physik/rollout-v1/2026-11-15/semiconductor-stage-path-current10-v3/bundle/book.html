@@ -1,0 +1,711 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v2">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-bounded-atlas-v1&quot;,&quot;maxWidthPixels&quot;:1200,&quot;maxHeightPixels&quot;:800,&quot;jpegQuality&quot;:0.76,&quot;webpQuality&quot;:0.82,&quot;maxBytes&quot;:100000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Physik: aktueller Modellkontext und eigenständiges Transistorexperiment</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .front-matter-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 16mm 16mm 11mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: hidden;
+      print-color-adjust: exact;
+    }
+    .cover-page {
+      grid-template-rows: auto auto auto 1fr auto auto;
+      gap: 6mm;
+      padding: 23mm 19mm 14mm;
+      background: linear-gradient(145deg, #f7fbff 0%, #fff 58%, #eef7fc 100%);
+    }
+    .cover-rule { width: 26mm; height: 2.2mm; border-radius: 2mm; background: #0878b9; }
+    .cover-kicker { margin: 10mm 0 0; color: #0871aa; font-size: 13pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .cover-page h1 { max-width: 164mm; margin: 0; color: #132036; font-size: 32pt; line-height: 1.12; hyphens: none; overflow-wrap: normal; word-break: normal; text-wrap: balance; }
+    .cover-view { margin: 0; color: #435a78; font-size: 17pt; line-height: 1.3; }
+    .cover-facts { align-self: end; margin: 0; display: grid; gap: 3mm; }
+    .cover-facts div { display: grid; grid-template-columns: minmax(45mm, auto) minmax(0, 1fr); gap: 5mm; padding-top: 2.5mm; border-top: 0.3mm solid #c6d8e8; }
+    .cover-facts dt, .cover-facts dd { margin: 0; color: #4b617d; font-size: 8.5pt; }
+    .cover-facts dt { font-weight: 700; }
+    .cover-facts dd { min-width: 0; overflow-wrap: anywhere; }
+    .cover-contents-link { justify-self: start; padding: 2.5mm 4mm; border-radius: 2mm; background: #0878b9; color: #fff; font-size: 10pt; font-weight: 700; text-decoration: none; }
+    .contents-page { grid-template-rows: auto minmax(0, 1fr) auto; gap: 4mm; }
+    .contents-header { min-width: 0; }
+    .contents-title { margin: 0; color: #132036; font-size: 23pt; font-weight: 700; line-height: 1.12; }
+    .contents-header > p:not(.contents-title) { max-width: 168mm; margin: 2.5mm 0 0; color: #54647c; font-size: 8pt; line-height: 1.3; }
+    .toc-tree { min-width: 0; min-height: 0; display: grid; align-content: start; gap: 0.65mm; }
+    .toc-entry { min-width: 0; margin: 0; padding: 1.15mm 1.5mm 1.15mm calc((var(--toc-depth) * 5mm) + 1.5mm); border-bottom: 0.2mm solid #d7e2ec; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3mm; color: #16304e; font-size: 8.2pt; line-height: 1.14; }
+    .toc-entry-heading { min-width: 0; margin: 0; color: inherit; font: inherit; }
+    .toc-entry-heading > a { color: inherit; text-decoration: none; }
+    .toc-entry-label { min-width: 0; font-weight: 700; hyphens: none; overflow-wrap: anywhere; word-break: normal; }
+    .toc-entry-meta { align-self: start; display: flex; gap: 2.5mm; color: #5a6c82; font-size: 6.5pt; font-weight: 400; white-space: nowrap; }
+    .front-matter-footer { align-self: end; padding-top: 2mm; border-top: 0.25mm solid #d6dee9; display: flex; justify-content: space-between; gap: 4mm; color: #5b6a80; font-size: 6.5pt; }
+    .front-matter-footer a { color: #075c9d; font-weight: 700; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs a { color: inherit; text-decoration-color: #a9b9ca; text-underline-offset: 0.5mm; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    .goal-title { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .external-references li { font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .external-references code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .external-references li { font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .section-heading--small { margin: 0.4mm 0 0.3mm; font-size: 6pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .front-matter-page,
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+  
+</head>
+<body>
+<section class="front-matter-page cover-page" id="book-cover" data-front-matter-page="1" aria-labelledby="book-title">
+    <div class="cover-rule" aria-hidden="true"></div>
+    <p class="cover-kicker">Lernzielbuch</p>
+    <h1 id="book-title">Physik: aktueller Modellkontext und eigenständiges Transistorexperiment</h1>
+    <p class="cover-view">Kanonische Kapitelsicht</p>
+    <dl class="cover-facts">
+      <div><dt>10 atomare Lernziele</dt><dd>12 Kapitel</dd></div>
+      <div><dt>curricular-atomic-v1</dt><dd><code>sha256:e62f0b96da8e4bf0a9a7702416e79c771c0c573909eb90221969b28365be2cdb</code></dd></div>
+    </dl>
+    <a class="cover-contents-link" href="#contents">Zur Gliederung</a>
+    <footer class="front-matter-footer"><span>Vorspann 1 von 2</span></footer>
+  </section>
+<section class="front-matter-page contents-page" data-front-matter-page="2" aria-labelledby="contents">
+        <header class="contents-header">
+          <p class="contents-title" id="contents">Gliederung</p>
+          <p>Die Gliederung dient der Navigation. Die Lernzielseiten bleiben didaktisch nach ihren Voraussetzungen geordnet und bilden daher keine künstlichen Kapitelblöcke.</p>
+        </header>
+        <nav class="toc-tree" aria-label="Gliederung"><div class="toc-entry" style="--toc-depth:0" data-chapter-id="structure:goal-book-physics-root" data-chapter-depth="0">
+          <h2 class="toc-entry-heading" id="chapter-6747d2e0bbbbd4b4358ff0fa" aria-label="Physik"><a href="#goal-7badac4d-2874-5b3a-87e8-bf8f4440b2a6"><span class="toc-entry-label">Physik</span></a></h2>
+          <span class="toc-entry-meta"><span>10 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="structure:canonical-structure:physics-seki" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-c98d6fbe92be73c1067f72e8" aria-label="Sekundarstufe I"><a href="#goal-7badac4d-2874-5b3a-87e8-bf8f4440b2a6"><span class="toc-entry-label">Sekundarstufe&#160;<wbr>I</span></a></h3>
+          <span class="toc-entry-meta"><span>3 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="structure:physics-semiconductor-seki" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-668e5b1fa24116b3b4f17226" aria-label="Halbleiterbauelemente: Grundlagen"><a href="#goal-7badac4d-2874-5b3a-87e8-bf8f4440b2a6"><span class="toc-entry-label">Halbleiterbauelemente:&#160;<wbr>Grundlagen</span></a></h4>
+          <span class="toc-entry-meta"><span>3 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="structure:goal-book-physics-sekii-gk-lk" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-546e47201fdf10d52f5a936c" aria-label="Sekundarstufe II (GK und LK)"><a href="#goal-658cf33d-a0c2-5d47-801a-3dbcd5cac074"><span class="toc-entry-label">Sekundarstufe&#160;<wbr>II&#160;<wbr>(GK&#160;<wbr>und&#160;<wbr>LK)</span></a></h3>
+          <span class="toc-entry-meta"><span>5 Lernziele</span><span>erste zugehörige Lernzielseite 5</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="structure:canonical-structure:physics-q4" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-2d62da14bfd408e36bddc43b" aria-label="Q4 Struktur von Materie, Raum und Zeit"><a href="#goal-658cf33d-a0c2-5d47-801a-3dbcd5cac074"><span class="toc-entry-label">Q4&#160;<wbr>Struktur&#160;<wbr>von&#160;<wbr>Materie,&#160;<wbr>Raum&#160;<wbr>und&#160;<wbr>Zeit</span></a></h4>
+          <span class="toc-entry-meta"><span>5 Lernziele</span><span>erste zugehörige Lernzielseite 5</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="structure:canonical-goal-620d4320-6b93-500b-8a62-86d02b1ed1f0" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-df06eca134857aef0b9af082" aria-label="Festkörperphysik"><a href="#goal-658cf33d-a0c2-5d47-801a-3dbcd5cac074"><span class="toc-entry-label">Festkörperphysik</span></a></h5>
+          <span class="toc-entry-meta"><span>5 Lernziele</span><span>erste zugehörige Lernzielseite 5</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:4" data-chapter-id="structure:physics-b034-transistor" data-chapter-depth="4">
+          <h6 class="toc-entry-heading" id="chapter-867ed9cb1a11a254728d37d1" aria-label="Transistorschaltungen"><a href="#goal-7d4d6a39-0c78-5fb0-b7bf-182ed00972f7"><span class="toc-entry-label">Transistorschaltungen</span></a></h6>
+          <span class="toc-entry-meta"><span>2 Lernziele</span><span>erste zugehörige Lernzielseite 7</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="structure:goal-book-bundesland-supplements" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-dfefd5ef67d7bfcb62fbc0f8" aria-label="Bundeslandspezifische Ergänzungen"><a href="#goal-2084b7d4-300d-5fa0-8b8d-c480c40f853e"><span class="toc-entry-label">Bundeslandspezifische&#160;<wbr>Ergänzungen</span></a></h3>
+          <span class="toc-entry-meta"><span>2 Lernziele</span><span>erste zugehörige Lernzielseite 3</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="structure:goal-book-supplement-seki" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-e847a07c08f5ec5d127ed63a" aria-label="Sekundarstufe I"><a href="#goal-2084b7d4-300d-5fa0-8b8d-c480c40f853e"><span class="toc-entry-label">Sekundarstufe&#160;<wbr>I</span></a></h4>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 3</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="structure:physics-final-diode-seki" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-1a9ffc52a0f98ecbb6ada879" aria-label="Dioden: belegte Quellenanteile"><a href="#goal-2084b7d4-300d-5fa0-8b8d-c480c40f853e"><span class="toc-entry-label">Dioden:&#160;<wbr>belegte&#160;<wbr>Quellenanteile</span></a></h5>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 3</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="structure:goal-book-supplement-crossstage" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-184fe7fcafd22ffbec8cd5c0" aria-label="Stufenübergreifend"><a href="#goal-df010b2b-b182-5f7e-bbe4-49b72e48c27a"><span class="toc-entry-label">Stufenübergreifend</span></a></h4>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 4</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="structure:goal-book-supplement-CrossStage-Sonstiges" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-4b9986bc08048aa19ec18f4d" aria-label="Weitere fachliche Ziele"><a href="#goal-df010b2b-b182-5f7e-bbe4-49b72e48c27a"><span class="toc-entry-label">Weitere&#160;<wbr>fachliche&#160;<wbr>Ziele</span></a></h5>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 4</span></span>
+        </div></nav>
+        <footer class="front-matter-footer">
+          <a href="#book-cover">Zum Titel</a>
+          <span>Vorspann 2 von 2</span>
+        </footer>
+      </section>
+<article class="goal-page" id="goal-7badac4d-2874-5b3a-87e8-bf8f4440b2a6" data-goal-id="7badac4d-2874-5b3a-87e8-bf8f4440b2a6" data-page-number="1" data-chapter-ids="structure:goal-book-physics-root structure:canonical-structure:physics-seki structure:physics-semiconductor-seki" aria-labelledby="goal-7badac4d-2874-5b3a-87e8-bf8f4440b2a6-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-7badac4d-2874-5b3a-87e8-bf8f4440b2a6-title"><a class="goal-self-link" href="#goal-7badac4d-2874-5b3a-87e8-bf8f4440b2a6">Leiter, Nichtleiter und Halbleiter</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>7badac4d-2874-5b3a-87e8-bf8f4440b2a6</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-c98d6fbe92be73c1067f72e8">Sekundarstufe I</a></li><li><a href="#chapter-668e5b1fa24116b3b4f17226">Halbleiterbauelemente: Grundlagen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:2a9dc2fb15e90877440ec9bf166419105d2ca96ebd13cd0368b5b666af5ac4b7" data-rendered-digest="sha256:c3cb2221825db074782053deb772a155f2b4c9390bb19eab1ddfaaf968f09650" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/7badac4d-2874-5b3a-87e8-bf8f4440b2a6/7badac4d-2874-5b3a-87e8-bf8f4440b2a6-elementary-20261115.png" alt="Gleich geformte Proben aus Kupfer, Glas und reinem Silizium werden bei gleicher Temperatur qualitativ verglichen: Kupfer leitet gut, Glas sehr schlecht; Silizium liegt in diesem Beispiel dazwischen. Genannt werden Stromkabel, Isolator und Mikrochip als Anwendungen. Die Materialklasse folgt nicht aus Größe oder Form.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-7badac4d-2874-5b3a-87e8-bf8f4440b2a6-description-heading">
+        <p class="section-heading" id="goal-7badac4d-2874-5b3a-87e8-bf8f4440b2a6-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann an typischen Materialbeispielen Leiter, Nichtleiter und Halbleiter unterscheiden, ihre elektrische Leitfähigkeit unter vergleichbaren Bedingungen qualitativ vergleichen und damit einfache Verwendungen in Technik und Alltag begründen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BY:</strong> Sek. I · G9</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li class="applicability-more">+ 2 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-7badac4d-2874-5b3a-87e8-bf8f4440b2a6" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-7badac4d-2874-5b3a-87e8-bf8f4440b2a6-requires-heading">
+          <p class="section-heading" id="goal-7badac4d-2874-5b3a-87e8-bf8f4440b2a6-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-7badac4d-2874-5b3a-87e8-bf8f4440b2a6-reverse-heading">
+          <p class="section-heading" id="goal-7badac4d-2874-5b3a-87e8-bf8f4440b2a6-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-9f265f49-1342-5ba7-9c5d-54e97fdb2f19"><span>Dotierung mit einem einfachen Ladungsträgermodell erklären</span><code>9f265f49-1342-5ba7-9c5d-54e97fdb2f19</code><span class="reference-page">S. 2</span></a></li><li><a href="#goal-df010b2b-b182-5f7e-bbe4-49b72e48c27a"><span>Bändermodell und Dotierung</span><code>df010b2b-b182-5f7e-bbe4-49b72e48c27a</code><span class="reference-page">S. 4</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-7badac4d-2874-5b3a-87e8-bf8f4440b2a6-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-7badac4d-2874-5b3a-87e8-bf8f4440b2a6-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-5c44b9ba-9b05-4774-95d5-073230d3fc4f" rel="noreferrer noopener"><span>Warum Physik? – Weltverständnis &amp; Zukunft</span> <code>5c44b9ba-9b05-4774-95d5-073230d3fc4f</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-7badac4d-2874-5b3a-87e8-bf8f4440b2a6-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-7badac4d-2874-5b3a-87e8-bf8f4440b2a6-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-266b6cf8-d49d-5197-862c-9998fcf179a5" rel="noreferrer noopener"><span>Lernkarten - Q4</span> <code>266b6cf8-d49d-5197-862c-9998fcf179a5</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 1 von 10</span>
+      <span>Buch-Digest <code>sha256:e62f0b96da8e4bf0a9a7702416e79c771c0c573909eb90221969b28365be2cdb</code></span>
+      <span>Ziel-Fingerprint <code>sha256:36cb77ba1f58fb28a0f3f01b1039cc9ee5a0ad18d82400ff95873f42670ff1b8</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-semiconductor-current10-20261115-v3&amp;edition=curricular-atomic-v1&amp;goalId=7badac4d-2874-5b3a-87e8-bf8f4440b2a6&amp;goalFingerprint=sha256%3A36cb77ba1f58fb28a0f3f01b1039cc9ee5a0ad18d82400ff95873f42670ff1b8&amp;pageFingerprint=sha256%3Acdec272b6fd639fcd2d18f4c398a280874d16cb3c3150ac0d0730e69acc85402&amp;bookDigest=sha256%3Ae62f0b96da8e4bf0a9a7702416e79c771c0c573909eb90221969b28365be2cdb&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-9f265f49-1342-5ba7-9c5d-54e97fdb2f19" data-goal-id="9f265f49-1342-5ba7-9c5d-54e97fdb2f19" data-page-number="2" data-chapter-ids="structure:goal-book-physics-root structure:canonical-structure:physics-seki structure:physics-semiconductor-seki" aria-labelledby="goal-9f265f49-1342-5ba7-9c5d-54e97fdb2f19-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-9f265f49-1342-5ba7-9c5d-54e97fdb2f19-title"><a class="goal-self-link" href="#goal-9f265f49-1342-5ba7-9c5d-54e97fdb2f19">Dotierung mit einem einfachen Ladungsträgermodell erklären</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>9f265f49-1342-5ba7-9c5d-54e97fdb2f19</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-c98d6fbe92be73c1067f72e8">Sekundarstufe I</a></li><li><a href="#chapter-668e5b1fa24116b3b4f17226">Halbleiterbauelemente: Grundlagen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:1f7e951155ef0deb0b6717b10860d894ef244b2c2f874d19ecbe00c87eef5d57" data-rendered-digest="sha256:c042690d28d5ca7bf695a368a7ea878354fcf0637e84c0e9097ef1f94c2d8db9" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/9f265f49-1342-5ba7-9c5d-54e97fdb2f19/9f265f49-1342-5ba7-9c5d-54e97fdb2f19.png" alt="Die lernende Person kann an einem vorgegebenen einfachen Bindungsmodell für Silizium erklären, wie n- und p-Dotierung die Zahl beweglicher Elektronen beziehungsweise Löcher erhöhen, und bewegliche Ladungsträger von ortsfesten Ionen im insgesamt neutralen Material unterscheiden.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-9f265f49-1342-5ba7-9c5d-54e97fdb2f19-description-heading">
+        <p class="section-heading" id="goal-9f265f49-1342-5ba7-9c5d-54e97fdb2f19-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann an einem vorgegebenen einfachen Bindungsmodell für Silizium erklären, wie n- und p-Dotierung die Zahl beweglicher Elektronen beziehungsweise Löcher erhöhen, und bewegliche Ladungsträger von ortsfesten Ionen im insgesamt neutralen Material unterscheiden.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BY, SL:</strong> Sek. I · G9</li><li><strong>SN:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-9f265f49-1342-5ba7-9c5d-54e97fdb2f19" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-9f265f49-1342-5ba7-9c5d-54e97fdb2f19-requires-heading">
+          <p class="section-heading" id="goal-9f265f49-1342-5ba7-9c5d-54e97fdb2f19-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-7badac4d-2874-5b3a-87e8-bf8f4440b2a6"><span>Leiter, Nichtleiter und Halbleiter</span><code>7badac4d-2874-5b3a-87e8-bf8f4440b2a6</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-9f265f49-1342-5ba7-9c5d-54e97fdb2f19-reverse-heading">
+          <p class="section-heading" id="goal-9f265f49-1342-5ba7-9c5d-54e97fdb2f19-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-2084b7d4-300d-5fa0-8b8d-c480c40f853e"><span>Sperrschicht und Polung am p-n-Übergang erklären</span><code>2084b7d4-300d-5fa0-8b8d-c480c40f853e</code><span class="reference-page">S. 3</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-9f265f49-1342-5ba7-9c5d-54e97fdb2f19-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-9f265f49-1342-5ba7-9c5d-54e97fdb2f19-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-a6e48b88-51ed-5942-bdb8-8d2192652e0d" rel="noreferrer noopener"><span>Ladungsphänomene und Reibungselektrizität</span> <code>a6e48b88-51ed-5942-bdb8-8d2192652e0d</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-9f265f49-1342-5ba7-9c5d-54e97fdb2f19-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-9f265f49-1342-5ba7-9c5d-54e97fdb2f19-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-a8d99168-62cc-5771-bb5d-9ba833d84193" rel="noreferrer noopener"><span>Prüfungsaufgabe: Bewegliche Ladungsträger beim Dotieren erklären</span> <code>a8d99168-62cc-5771-bb5d-9ba833d84193</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 2 von 10</span>
+      <span>Buch-Digest <code>sha256:e62f0b96da8e4bf0a9a7702416e79c771c0c573909eb90221969b28365be2cdb</code></span>
+      <span>Ziel-Fingerprint <code>sha256:410b31ca80e7b62e6c838bd844e0b066002e25a54d261d0f090d8067aefc8ddd</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-semiconductor-current10-20261115-v3&amp;edition=curricular-atomic-v1&amp;goalId=9f265f49-1342-5ba7-9c5d-54e97fdb2f19&amp;goalFingerprint=sha256%3A410b31ca80e7b62e6c838bd844e0b066002e25a54d261d0f090d8067aefc8ddd&amp;pageFingerprint=sha256%3A24a9f14bac05a4497a0872e7bf77e2cdb4937579f596259f8db2f338ec2cbb70&amp;bookDigest=sha256%3Ae62f0b96da8e4bf0a9a7702416e79c771c0c573909eb90221969b28365be2cdb&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-2084b7d4-300d-5fa0-8b8d-c480c40f853e" data-goal-id="2084b7d4-300d-5fa0-8b8d-c480c40f853e" data-page-number="3" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-bundesland-supplements structure:goal-book-supplement-seki structure:physics-final-diode-seki" aria-labelledby="goal-2084b7d4-300d-5fa0-8b8d-c480c40f853e-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-2084b7d4-300d-5fa0-8b8d-c480c40f853e-title"><a class="goal-self-link" href="#goal-2084b7d4-300d-5fa0-8b8d-c480c40f853e">Sperrschicht und Polung am p-n-Übergang erklären</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>2084b7d4-300d-5fa0-8b8d-c480c40f853e</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-dfefd5ef67d7bfcb62fbc0f8">Bundeslandspezifische Ergänzungen</a></li><li><a href="#chapter-e847a07c08f5ec5d127ed63a">Sekundarstufe I</a></li><li><a href="#chapter-1a9ffc52a0f98ecbb6ada879">Dioden: belegte Quellenanteile</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:7b1053f77261d29bc2d0c653646a875ede3ebf49f8b14e492ff82a709c609478" data-rendered-digest="sha256:c8889bd2bbdefcd20909add43101fc86a12c458510492a5553713a7f0c269efc" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/2084b7d4-300d-5fa0-8b8d-c480c40f853e/2084b7d4-300d-5fa0-8b8d-c480c40f853e.png" alt="Mobile Löcher/Elektronen als Kreise, ortsfeste Akzeptor-/Donatorionen als Quadrate. Außenbereiche quasineutral, verarmte Raumladungszone mit richtigen Vorzeichen. Durchlass p+ / n− verkleinert, Sperrung p− / n+ vergrößert die Barriere. Orientierung, kein Leistungsnachweis.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-2084b7d4-300d-5fa0-8b8d-c480c40f853e-description-heading">
+        <p class="section-heading" id="goal-2084b7d4-300d-5fa0-8b8d-c480c40f853e-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann mit einem einfachen Ladungsträgermodell die Entstehung der Sperrschicht am p-n-Übergang und ihre Veränderung bei Durchlass- und Sperrpolung erklären.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BY, SL:</strong> Sek. I · G9</li><li><strong>HE, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>RP:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK; Sek. II · G9 · GK; + 1 weitere Kombinationen</li><li class="applicability-more">+ 2 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-2084b7d4-300d-5fa0-8b8d-c480c40f853e" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-2084b7d4-300d-5fa0-8b8d-c480c40f853e-requires-heading">
+          <p class="section-heading" id="goal-2084b7d4-300d-5fa0-8b8d-c480c40f853e-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-9f265f49-1342-5ba7-9c5d-54e97fdb2f19"><span>Dotierung mit einem einfachen Ladungsträgermodell erklären</span><code>9f265f49-1342-5ba7-9c5d-54e97fdb2f19</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-2084b7d4-300d-5fa0-8b8d-c480c40f853e-reverse-heading">
+          <p class="section-heading" id="goal-2084b7d4-300d-5fa0-8b8d-c480c40f853e-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-7d4d6a39-0c78-5fb0-b7bf-182ed00972f7"><span>Einen bipolaren Transistor als Schalter funktional untersuchen</span><code>7d4d6a39-0c78-5fb0-b7bf-182ed00972f7</code><span class="reference-page">S. 7</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-2084b7d4-300d-5fa0-8b8d-c480c40f853e-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-2084b7d4-300d-5fa0-8b8d-c480c40f853e-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-c61b2a69-b5cd-5785-bb04-5d6bca53b218" rel="noreferrer noopener"><span>Warum eine Diode beim Umpolen sperrt</span> <code>c61b2a69-b5cd-5785-bb04-5d6bca53b218</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 3 von 10</span>
+      <span>Buch-Digest <code>sha256:e62f0b96da8e4bf0a9a7702416e79c771c0c573909eb90221969b28365be2cdb</code></span>
+      <span>Ziel-Fingerprint <code>sha256:edd5475b51161db1b42bc550bc5d9f2c74c0a8f7c1d9d8ac2852266567faaba7</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-semiconductor-current10-20261115-v3&amp;edition=curricular-atomic-v1&amp;goalId=2084b7d4-300d-5fa0-8b8d-c480c40f853e&amp;goalFingerprint=sha256%3Aedd5475b51161db1b42bc550bc5d9f2c74c0a8f7c1d9d8ac2852266567faaba7&amp;pageFingerprint=sha256%3A078bcd7469eeb83042a275d2de6781534cd089d2701470bb45cb51180220158b&amp;bookDigest=sha256%3Ae62f0b96da8e4bf0a9a7702416e79c771c0c573909eb90221969b28365be2cdb&amp;page=3" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-df010b2b-b182-5f7e-bbe4-49b72e48c27a" data-goal-id="df010b2b-b182-5f7e-bbe4-49b72e48c27a" data-page-number="4" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-bundesland-supplements structure:goal-book-supplement-crossstage structure:goal-book-supplement-CrossStage-Sonstiges" aria-labelledby="goal-df010b2b-b182-5f7e-bbe4-49b72e48c27a-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-df010b2b-b182-5f7e-bbe4-49b72e48c27a-title"><a class="goal-self-link" href="#goal-df010b2b-b182-5f7e-bbe4-49b72e48c27a">Bändermodell und Dotierung</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>df010b2b-b182-5f7e-bbe4-49b72e48c27a</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-dfefd5ef67d7bfcb62fbc0f8">Bundeslandspezifische Ergänzungen</a></li><li><a href="#chapter-184fe7fcafd22ffbec8cd5c0">Stufenübergreifend</a></li><li><a href="#chapter-4b9986bc08048aa19ec18f4d">Weitere fachliche Ziele</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:4c77a7de6f56e0861747efedce8744ca0a45dcd5c1c1fcc7d3fced1792492e43" data-rendered-digest="sha256:73577883911abc00aa6e472ffd69a56b1757f3f53f19f57cae8a136dc22bd9b6" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/df010b2b-b182-5f7e-bbe4-49b72e48c27a/df010b2b-b182-5f7e-bbe4-49b72e48c27a.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Bändermodell und Dotierung&quot;. Die lernende Person kann das qualitative Bändermodell für Leiter und Halbleiter beschreiben und erklären, wie Dotierung die Leitfähigkeit beeinflusst.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-df010b2b-b182-5f7e-bbe4-49b72e48c27a-description-heading">
+        <p class="section-heading" id="goal-df010b2b-b182-5f7e-bbe4-49b72e48c27a-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann das qualitative Bändermodell für Leiter und Halbleiter beschreiben und erklären, wie Dotierung die Leitfähigkeit beeinflusst.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-df010b2b-b182-5f7e-bbe4-49b72e48c27a" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-df010b2b-b182-5f7e-bbe4-49b72e48c27a-requires-heading">
+          <p class="section-heading" id="goal-df010b2b-b182-5f7e-bbe4-49b72e48c27a-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-7badac4d-2874-5b3a-87e8-bf8f4440b2a6"><span>Leiter, Nichtleiter und Halbleiter</span><code>7badac4d-2874-5b3a-87e8-bf8f4440b2a6</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-df010b2b-b182-5f7e-bbe4-49b72e48c27a-reverse-heading">
+          <p class="section-heading" id="goal-df010b2b-b182-5f7e-bbe4-49b72e48c27a-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-853dbe54-85b0-59ab-8f3a-000c2b7746ec"><span>Supraleitung qualitativ verstehen</span><code>853dbe54-85b0-59ab-8f3a-000c2b7746ec</code><span class="reference-page">S. 6</span></a></li><li><a href="#goal-658cf33d-a0c2-5d47-801a-3dbcd5cac074"><span>Quantenphysikalische Bändermodelle</span><code>658cf33d-a0c2-5d47-801a-3dbcd5cac074</code><span class="reference-page">S. 5</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-df010b2b-b182-5f7e-bbe4-49b72e48c27a-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-df010b2b-b182-5f7e-bbe4-49b72e48c27a-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-1abfd5ef-1f42-5b71-8c9a-80c0a6b0322e" rel="noreferrer noopener"><span>Prüfungsaufgabe: Halbleiter im Bändermodell deuten</span> <code>1abfd5ef-1f42-5b71-8c9a-80c0a6b0322e</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 4 von 10</span>
+      <span>Buch-Digest <code>sha256:e62f0b96da8e4bf0a9a7702416e79c771c0c573909eb90221969b28365be2cdb</code></span>
+      <span>Ziel-Fingerprint <code>sha256:c6efec78796cfdcaf140097dab80920d856bd38f6b3d0c45ed70772e151a6feb</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-semiconductor-current10-20261115-v3&amp;edition=curricular-atomic-v1&amp;goalId=df010b2b-b182-5f7e-bbe4-49b72e48c27a&amp;goalFingerprint=sha256%3Ac6efec78796cfdcaf140097dab80920d856bd38f6b3d0c45ed70772e151a6feb&amp;pageFingerprint=sha256%3A4dc0a850ab540f80acfb78b1e78c9fa35022007f6a18ed1888b6daf750ccc10f&amp;bookDigest=sha256%3Ae62f0b96da8e4bf0a9a7702416e79c771c0c573909eb90221969b28365be2cdb&amp;page=4" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-658cf33d-a0c2-5d47-801a-3dbcd5cac074" data-goal-id="658cf33d-a0c2-5d47-801a-3dbcd5cac074" data-page-number="5" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-q4 structure:canonical-goal-620d4320-6b93-500b-8a62-86d02b1ed1f0" aria-labelledby="goal-658cf33d-a0c2-5d47-801a-3dbcd5cac074-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-658cf33d-a0c2-5d47-801a-3dbcd5cac074-title"><a class="goal-self-link" href="#goal-658cf33d-a0c2-5d47-801a-3dbcd5cac074">Quantenphysikalische Bändermodelle</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>658cf33d-a0c2-5d47-801a-3dbcd5cac074</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-2d62da14bfd408e36bddc43b">Q4 Struktur von Materie, Raum und Zeit</a></li><li><a href="#chapter-df06eca134857aef0b9af082">Festkörperphysik</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:2fe6bae6f26cb1eca354dc7ffdaa9e5df40c551ab2beb1c3e65be9e2ea96e9f7" data-rendered-digest="sha256:22e5fda399f2177bdbd84ac4a2a97a5013d3d93699054d853443e0b1bcbd49e6" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/658cf33d-a0c2-5d47-801a-3dbcd5cac074/658cf33d-a0c2-5d47-801a-3dbcd5cac074.jpg" alt="Drei schematische Bandmodelle bei 0 K: teilweise gefülltes Metallband und vollständig gefüllte Valenzbänder unter leeren Leitungsbändern bei Halbleiter und Isolator. Dunkelblau bedeutet besetzt, Hellblau unbesetzt, Weiß eine Bandlücke ohne erlaubte Zustände. Die Fermilinie und thermische Anregung werden ausdrücklich im Modell eingeordnet.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-658cf33d-a0c2-5d47-801a-3dbcd5cac074-description-heading">
+        <p class="section-heading" id="goal-658cf33d-a0c2-5d47-801a-3dbcd5cac074-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann in einem vorgegebenen quantenphysikalischen Bändermodell die Lage der Fermienergie und die Besetzung erlaubter Elektronenzustände unter angegebenen Temperaturbedingungen zur Erklärung der elektrischen Leitfähigkeit nutzen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>HB, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>HE:</strong> Sek. II · LK</li><li class="applicability-more">+ 2 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-658cf33d-a0c2-5d47-801a-3dbcd5cac074" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-658cf33d-a0c2-5d47-801a-3dbcd5cac074-requires-heading">
+          <p class="section-heading" id="goal-658cf33d-a0c2-5d47-801a-3dbcd5cac074-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-df010b2b-b182-5f7e-bbe4-49b72e48c27a"><span>Bändermodell und Dotierung</span><code>df010b2b-b182-5f7e-bbe4-49b72e48c27a</code><span class="reference-page">S. 4</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-658cf33d-a0c2-5d47-801a-3dbcd5cac074-reverse-heading">
+          <p class="section-heading" id="goal-658cf33d-a0c2-5d47-801a-3dbcd5cac074-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-658cf33d-a0c2-5d47-801a-3dbcd5cac074-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-658cf33d-a0c2-5d47-801a-3dbcd5cac074-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-71e8936b-fa8a-50dc-8c47-fca015b85ac5" rel="noreferrer noopener"><span>Prüfungsaufgabe: Besetzte Zustände und elektrische Leitfähigkeit</span> <code>71e8936b-fa8a-50dc-8c47-fca015b85ac5</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 5 von 10</span>
+      <span>Buch-Digest <code>sha256:e62f0b96da8e4bf0a9a7702416e79c771c0c573909eb90221969b28365be2cdb</code></span>
+      <span>Ziel-Fingerprint <code>sha256:6d8a7ccb7de4314f36beeb1de5be33558faefe769a12772da76b97017b1ad929</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-semiconductor-current10-20261115-v3&amp;edition=curricular-atomic-v1&amp;goalId=658cf33d-a0c2-5d47-801a-3dbcd5cac074&amp;goalFingerprint=sha256%3A6d8a7ccb7de4314f36beeb1de5be33558faefe769a12772da76b97017b1ad929&amp;pageFingerprint=sha256%3A0402e6b0098d5ce64ee59f5137761e949f9f997e2cf7467d7841656e66b8f03e&amp;bookDigest=sha256%3Ae62f0b96da8e4bf0a9a7702416e79c771c0c573909eb90221969b28365be2cdb&amp;page=5" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-853dbe54-85b0-59ab-8f3a-000c2b7746ec" data-goal-id="853dbe54-85b0-59ab-8f3a-000c2b7746ec" data-page-number="6" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-q4 structure:canonical-goal-620d4320-6b93-500b-8a62-86d02b1ed1f0" aria-labelledby="goal-853dbe54-85b0-59ab-8f3a-000c2b7746ec-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-853dbe54-85b0-59ab-8f3a-000c2b7746ec-title"><a class="goal-self-link" href="#goal-853dbe54-85b0-59ab-8f3a-000c2b7746ec">Supraleitung qualitativ verstehen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>853dbe54-85b0-59ab-8f3a-000c2b7746ec</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-2d62da14bfd408e36bddc43b">Q4 Struktur von Materie, Raum und Zeit</a></li><li><a href="#chapter-df06eca134857aef0b9af082">Festkörperphysik</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:9da94522e0bd0164aede4797bf15b03624cb1d47f3ef05fe80c0092960201776" data-rendered-digest="sha256:ffa245757db7a9baaabab4c31ea4698c782c4492985186841b226963a44dc8ce" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/853dbe54-85b0-59ab-8f3a-000c2b7746ec/853dbe54-85b0-59ab-8f3a-000c2b7746ec.jpg" alt="Schematische Illustration des Meißner-Zustands mit einem schwebenden Magneten über einer gekühlten Probe. Die idealisierte R(T)-Kurve zeigt unterhalb der kritischen Temperatur verschwindenden Gleichstromwiderstand im betrachteten Bereich hinreichend kleiner Ströme und Magnetfelder. Die Abbildung liefert keine eigenen Messdaten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-853dbe54-85b0-59ab-8f3a-000c2b7746ec-description-heading">
+        <p class="section-heading" id="goal-853dbe54-85b0-59ab-8f3a-000c2b7746ec-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann qualitativ beschreiben, dass ein Supraleiter unterhalb seiner kritischen Temperatur bei hinreichend kleinem Strom und Magnetfeld keinen elektrischen Gleichstromwiderstand zeigt und im Meißner-Zustand magnetischen Fluss aus seinem Inneren verdrängt, und damit einfache Anwendungen und Beobachtungen erläutern.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>HB, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>HE:</strong> Sek. II · LK</li><li class="applicability-more">+ 2 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-853dbe54-85b0-59ab-8f3a-000c2b7746ec" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-853dbe54-85b0-59ab-8f3a-000c2b7746ec-requires-heading">
+          <p class="section-heading" id="goal-853dbe54-85b0-59ab-8f3a-000c2b7746ec-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-df010b2b-b182-5f7e-bbe4-49b72e48c27a"><span>Bändermodell und Dotierung</span><code>df010b2b-b182-5f7e-bbe4-49b72e48c27a</code><span class="reference-page">S. 4</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-853dbe54-85b0-59ab-8f3a-000c2b7746ec-reverse-heading">
+          <p class="section-heading" id="goal-853dbe54-85b0-59ab-8f3a-000c2b7746ec-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-853dbe54-85b0-59ab-8f3a-000c2b7746ec-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-853dbe54-85b0-59ab-8f3a-000c2b7746ec-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-0f6b798b-594e-5480-8c5f-95e2486a4d85" rel="noreferrer noopener"><span>Magnetische Felder und Feldlinienbilder</span> <code>0f6b798b-594e-5480-8c5f-95e2486a4d85</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-853dbe54-85b0-59ab-8f3a-000c2b7746ec-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-853dbe54-85b0-59ab-8f3a-000c2b7746ec-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-0f5346d6-de1b-5e38-aaba-68db205e594b" rel="noreferrer noopener"><span>Festkoerperphysik und Halbleiterelektronik</span> <code>0f5346d6-de1b-5e38-aaba-68db205e594b</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-4a58df57-f791-502f-8b8d-9ba155e46035" rel="noreferrer noopener"><span>Q4-Klausuraufgaben Physik selbstständig lösen</span> <code>4a58df57-f791-502f-8b8d-9ba155e46035</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 6 von 10</span>
+      <span>Buch-Digest <code>sha256:e62f0b96da8e4bf0a9a7702416e79c771c0c573909eb90221969b28365be2cdb</code></span>
+      <span>Ziel-Fingerprint <code>sha256:0bbac67d7a60096e3f2e04910f76dfdfcf50bb9b3e160cf279a15c7ed3620dcf</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-semiconductor-current10-20261115-v3&amp;edition=curricular-atomic-v1&amp;goalId=853dbe54-85b0-59ab-8f3a-000c2b7746ec&amp;goalFingerprint=sha256%3A0bbac67d7a60096e3f2e04910f76dfdfcf50bb9b3e160cf279a15c7ed3620dcf&amp;pageFingerprint=sha256%3A55b284bb82d48d99160b807cb4e765f6815c50ef71e8e92844c00f6814a08cc2&amp;bookDigest=sha256%3Ae62f0b96da8e4bf0a9a7702416e79c771c0c573909eb90221969b28365be2cdb&amp;page=6" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-7d4d6a39-0c78-5fb0-b7bf-182ed00972f7" data-goal-id="7d4d6a39-0c78-5fb0-b7bf-182ed00972f7" data-page-number="7" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-q4 structure:canonical-goal-620d4320-6b93-500b-8a62-86d02b1ed1f0 structure:physics-b034-transistor" aria-labelledby="goal-7d4d6a39-0c78-5fb0-b7bf-182ed00972f7-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-7d4d6a39-0c78-5fb0-b7bf-182ed00972f7-title"><a class="goal-self-link" href="#goal-7d4d6a39-0c78-5fb0-b7bf-182ed00972f7">Einen bipolaren Transistor als Schalter funktional untersuchen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>7d4d6a39-0c78-5fb0-b7bf-182ed00972f7</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-2d62da14bfd408e36bddc43b">Q4 Struktur von Materie, Raum und Zeit</a></li><li><a href="#chapter-df06eca134857aef0b9af082">Festkörperphysik</a></li><li><a href="#chapter-867ed9cb1a11a254728d37d1">Transistorschaltungen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:81a177a4e4ee2ecf2befe16093416576c8b5dbe05b9b9e31dba2c42f39304db7" data-rendered-digest="sha256:f7746bdf2c91e074565b8e3c99a5fd1839df2f70f314f542b86d230f33516d76" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/7d4d6a39-0c78-5fb0-b7bf-182ed00972f7/7d4d6a39-0c78-5fb0-b7bf-182ed00972f7.jpg" alt="Vereinfachtes Funktionsbild eines npn-Transistorschalters: geeignete Basisansteuerung steuert den Laststrom, die Lastenergie liefert die Versorgung. Ein kleines Halbleitermodell unterscheidet n-Emitter, dünne p-Basis und n-Kollektor. Das Funktionsbild ist kein vollständiger Aufbau- oder Verdrahtungsplan.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-7d4d6a39-0c78-5fb0-b7bf-182ed00972f7-description-heading">
+        <p class="section-heading" id="goal-7d4d6a39-0c78-5fb0-b7bf-182ed00972f7-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann an einem vorgegebenen npn- oder pnp-Transistoraufbau die Funktion von Basis, Kollektor und Emitter mithilfe eines einfachen Halbleitermodells erklären und daraus das Ein- und Ausschalten des Laststromkreises begründen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BY:</strong> Sek. I · G9</li><li><strong>HE:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>RP:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK; Sek. II · G9 · GK; + 1 weitere Kombinationen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-7d4d6a39-0c78-5fb0-b7bf-182ed00972f7" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-7d4d6a39-0c78-5fb0-b7bf-182ed00972f7-requires-heading">
+          <p class="section-heading" id="goal-7d4d6a39-0c78-5fb0-b7bf-182ed00972f7-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-2084b7d4-300d-5fa0-8b8d-c480c40f853e"><span>Sperrschicht und Polung am p-n-Übergang erklären</span><code>2084b7d4-300d-5fa0-8b8d-c480c40f853e</code><span class="reference-page">S. 3</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-7d4d6a39-0c78-5fb0-b7bf-182ed00972f7-reverse-heading">
+          <p class="section-heading" id="goal-7d4d6a39-0c78-5fb0-b7bf-182ed00972f7-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-af50bb9a-fd7b-50f5-9698-48c4efe99032"><span>Transistorverstärker analysieren</span><code>af50bb9a-fd7b-50f5-9698-48c4efe99032</code><span class="reference-page">S. 8</span></a></li><li><a href="#goal-c2af45aa-e3fc-5119-9159-c5a260b4135a"><span>Eine bistabile Transistor-Flipflop-Schaltung deuten</span><code>c2af45aa-e3fc-5119-9159-c5a260b4135a</code><span class="reference-page">S. 9</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-7d4d6a39-0c78-5fb0-b7bf-182ed00972f7-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-7d4d6a39-0c78-5fb0-b7bf-182ed00972f7-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-69f8f59c-b0c3-5b0b-82db-834a0e655736" rel="noreferrer noopener"><span>Zwischen Stromkreis und Schaltplan übersetzen</span> <code>69f8f59c-b0c3-5b0b-82db-834a0e655736</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-7d4d6a39-0c78-5fb0-b7bf-182ed00972f7-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-7d4d6a39-0c78-5fb0-b7bf-182ed00972f7-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-88f27aab-8724-5a4d-8543-e49ebcb54b8e" rel="noreferrer noopener"><span>Prüfungsaufgabe: Einen Transistor als Schalter deuten</span> <code>88f27aab-8724-5a4d-8543-e49ebcb54b8e</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 7 von 10</span>
+      <span>Buch-Digest <code>sha256:e62f0b96da8e4bf0a9a7702416e79c771c0c573909eb90221969b28365be2cdb</code></span>
+      <span>Ziel-Fingerprint <code>sha256:d6d6359cce2835298a4f32db588a5d978bd0311fa7e6aa8659294debed635651</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-semiconductor-current10-20261115-v3&amp;edition=curricular-atomic-v1&amp;goalId=7d4d6a39-0c78-5fb0-b7bf-182ed00972f7&amp;goalFingerprint=sha256%3Ad6d6359cce2835298a4f32db588a5d978bd0311fa7e6aa8659294debed635651&amp;pageFingerprint=sha256%3A47ccccb19f0cc0a8cfa8cddf38f1e231b943e912f8dcca0be0b213a000fdf2a2&amp;bookDigest=sha256%3Ae62f0b96da8e4bf0a9a7702416e79c771c0c573909eb90221969b28365be2cdb&amp;page=7" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-af50bb9a-fd7b-50f5-9698-48c4efe99032" data-goal-id="af50bb9a-fd7b-50f5-9698-48c4efe99032" data-page-number="8" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-q4 structure:canonical-goal-620d4320-6b93-500b-8a62-86d02b1ed1f0" aria-labelledby="goal-af50bb9a-fd7b-50f5-9698-48c4efe99032-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-af50bb9a-fd7b-50f5-9698-48c4efe99032-title"><a class="goal-self-link" href="#goal-af50bb9a-fd7b-50f5-9698-48c4efe99032">Transistorverstärker analysieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>af50bb9a-fd7b-50f5-9698-48c4efe99032</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-2d62da14bfd408e36bddc43b">Q4 Struktur von Materie, Raum und Zeit</a></li><li><a href="#chapter-df06eca134857aef0b9af082">Festkörperphysik</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:438402ac93ebe6d746bfc077c75cff3c5908a561493786fc09bfdcac619900df" data-rendered-digest="sha256:fd47a657271574df5d1aa64c145d8f237c300eeb9e47c7772e09ef305f44c718" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/af50bb9a-fd7b-50f5-9698-48c4efe99032/af50bb9a-fd7b-50f5-9698-48c4efe99032.jpg" alt="Vorgegebene einfache Emitterschaltung mit 5-V-Versorgung, Kollektorwiderstand und Ausgang gegen 0 V. Die bereitgestellte Modellbeziehung u_out = 5 V−R_C·I_C verbindet Kollektorstrom, Widerstandsspannungsabfall und Ausgangsspannung. Gezeigt sind kleine Wechselanteile um den aktiven Arbeitspunkt, die Phasenumkehr dieser Schaltung und die Versorgung als Quelle der Lastenergie.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-af50bb9a-fd7b-50f5-9698-48c4efe99032-description-heading">
+        <p class="section-heading" id="goal-af50bb9a-fd7b-50f5-9698-48c4efe99032-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann an einer vorgegebenen oder selbst aufgebauten bipolaren Verstärkerschaltung anhand vorgegebener Kennlinien, des Arbeitspunkts und der angegebenen Spannungsbeziehungen erklären, wie das Eingangssignal den Ausgang steuert, welche Strom- oder Spannungsverstärkung die vorgegebenen Daten belegen und welche Grenzen für eine unverzerrte Verstärkung gelten. Bei einer einfachen Emitterschaltung deutet sie dabei die vorgegebene Spannungsabfallbeziehung im Kollektorzweig; ein vorgesehener eigener Aufbau erfolgt unter Aufsicht mit strombegrenzter Kleinspannung.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>HE:</strong> Sek. II · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-af50bb9a-fd7b-50f5-9698-48c4efe99032" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-af50bb9a-fd7b-50f5-9698-48c4efe99032-requires-heading">
+          <p class="section-heading" id="goal-af50bb9a-fd7b-50f5-9698-48c4efe99032-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-7d4d6a39-0c78-5fb0-b7bf-182ed00972f7"><span>Einen bipolaren Transistor als Schalter funktional untersuchen</span><code>7d4d6a39-0c78-5fb0-b7bf-182ed00972f7</code><span class="reference-page">S. 7</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-af50bb9a-fd7b-50f5-9698-48c4efe99032-reverse-heading">
+          <p class="section-heading" id="goal-af50bb9a-fd7b-50f5-9698-48c4efe99032-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-af50bb9a-fd7b-50f5-9698-48c4efe99032-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-af50bb9a-fd7b-50f5-9698-48c4efe99032-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-80c232f1-8f72-5829-9dbe-5a610ccab3be" rel="noreferrer noopener"><span>Achsen, Skalen und Einheiten lesen</span> <code>80c232f1-8f72-5829-9dbe-5a610ccab3be</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-af50bb9a-fd7b-50f5-9698-48c4efe99032-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-af50bb9a-fd7b-50f5-9698-48c4efe99032-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-0f5346d6-de1b-5e38-aaba-68db205e594b" rel="noreferrer noopener"><span>Festkoerperphysik und Halbleiterelektronik</span> <code>0f5346d6-de1b-5e38-aaba-68db205e594b</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-144007cb-e2bc-5c82-bf9d-dda705b15257" rel="noreferrer noopener"><span>Prüfungsaufgabe: Arbeitspunkt und Verzerrung einer Emitterschaltung</span> <code>144007cb-e2bc-5c82-bf9d-dda705b15257</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-4a58df57-f791-502f-8b8d-9ba155e46035" rel="noreferrer noopener"><span>Q4-Klausuraufgaben Physik selbstständig lösen</span> <code>4a58df57-f791-502f-8b8d-9ba155e46035</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 8 von 10</span>
+      <span>Buch-Digest <code>sha256:e62f0b96da8e4bf0a9a7702416e79c771c0c573909eb90221969b28365be2cdb</code></span>
+      <span>Ziel-Fingerprint <code>sha256:34a98303b95d812011ac3ab7c9e976aab7ea43b82358e6d411d98756051650a4</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-semiconductor-current10-20261115-v3&amp;edition=curricular-atomic-v1&amp;goalId=af50bb9a-fd7b-50f5-9698-48c4efe99032&amp;goalFingerprint=sha256%3A34a98303b95d812011ac3ab7c9e976aab7ea43b82358e6d411d98756051650a4&amp;pageFingerprint=sha256%3A09557adbc593a652bd6df312a6a08dcdf1927a30f30b4f788cbc6e33c9b8fc05&amp;bookDigest=sha256%3Ae62f0b96da8e4bf0a9a7702416e79c771c0c573909eb90221969b28365be2cdb&amp;page=8" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-c2af45aa-e3fc-5119-9159-c5a260b4135a" data-goal-id="c2af45aa-e3fc-5119-9159-c5a260b4135a" data-page-number="9" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-q4 structure:canonical-goal-620d4320-6b93-500b-8a62-86d02b1ed1f0 structure:physics-b034-transistor" aria-labelledby="goal-c2af45aa-e3fc-5119-9159-c5a260b4135a-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-c2af45aa-e3fc-5119-9159-c5a260b4135a-title"><a class="goal-self-link" href="#goal-c2af45aa-e3fc-5119-9159-c5a260b4135a">Eine bistabile Transistor-Flipflop-Schaltung deuten</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>c2af45aa-e3fc-5119-9159-c5a260b4135a</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-2d62da14bfd408e36bddc43b">Q4 Struktur von Materie, Raum und Zeit</a></li><li><a href="#chapter-df06eca134857aef0b9af082">Festkörperphysik</a></li><li><a href="#chapter-867ed9cb1a11a254728d37d1">Transistorschaltungen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:7488e7eeb6d9ec6ca1b7d6606abec0901c2cb19ac239fbaa205a5c3a96ed602e" data-rendered-digest="sha256:cdc2aabb74a6ffbf03e3217ce021945ba051bd8467e9f52c85c1cf1a4424d898" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/c2af45aa-e3fc-5119-9159-c5a260b4135a/c2af45aa-e3fc-5119-9159-c5a260b4135a.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Eine bistabile Transistor-Flipflop-Schaltung deuten&quot;. Die lernende Person kann an einer vorgegebenen bistabilen Transistorschaltung erklären, wie gegenseitige Rückkopplung zwei stabile Zustände ermöglicht, und anhand der Schaltung vorhersagen, wie ein geeigneter Schaltimpuls den gespeicherten Zustand ändert.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-c2af45aa-e3fc-5119-9159-c5a260b4135a-description-heading">
+        <p class="section-heading" id="goal-c2af45aa-e3fc-5119-9159-c5a260b4135a-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann an einer vorgegebenen bistabilen Transistorschaltung erklären, wie gegenseitige Rückkopplung zwei stabile Zustände ermöglicht, und anhand der Schaltung vorhersagen, wie ein geeigneter Schaltimpuls den gespeicherten Zustand ändert.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>HE:</strong> Sek. II · GK; Sek. II · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-c2af45aa-e3fc-5119-9159-c5a260b4135a" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-c2af45aa-e3fc-5119-9159-c5a260b4135a-requires-heading">
+          <p class="section-heading" id="goal-c2af45aa-e3fc-5119-9159-c5a260b4135a-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-7d4d6a39-0c78-5fb0-b7bf-182ed00972f7"><span>Einen bipolaren Transistor als Schalter funktional untersuchen</span><code>7d4d6a39-0c78-5fb0-b7bf-182ed00972f7</code><span class="reference-page">S. 7</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-c2af45aa-e3fc-5119-9159-c5a260b4135a-reverse-heading">
+          <p class="section-heading" id="goal-c2af45aa-e3fc-5119-9159-c5a260b4135a-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-c2af45aa-e3fc-5119-9159-c5a260b4135a-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-c2af45aa-e3fc-5119-9159-c5a260b4135a-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-0f5346d6-de1b-5e38-aaba-68db205e594b" rel="noreferrer noopener"><span>Festkoerperphysik und Halbleiterelektronik</span> <code>0f5346d6-de1b-5e38-aaba-68db205e594b</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-4a58df57-f791-502f-8b8d-9ba155e46035" rel="noreferrer noopener"><span>Q4-Klausuraufgaben Physik selbstständig lösen</span> <code>4a58df57-f791-502f-8b8d-9ba155e46035</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-5902ebe8-2025-5a7c-b95d-13057398d6e6" rel="noreferrer noopener"><span>Prüfungsaufgabe: Einen gespeicherten Schaltzustand ändern</span> <code>5902ebe8-2025-5a7c-b95d-13057398d6e6</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 9 von 10</span>
+      <span>Buch-Digest <code>sha256:e62f0b96da8e4bf0a9a7702416e79c771c0c573909eb90221969b28365be2cdb</code></span>
+      <span>Ziel-Fingerprint <code>sha256:a1ba25bc24cf19769180614f94f5003804b1b721d4979d8580fbb9c5fb2aed2a</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-semiconductor-current10-20261115-v3&amp;edition=curricular-atomic-v1&amp;goalId=c2af45aa-e3fc-5119-9159-c5a260b4135a&amp;goalFingerprint=sha256%3Aa1ba25bc24cf19769180614f94f5003804b1b721d4979d8580fbb9c5fb2aed2a&amp;pageFingerprint=sha256%3A22c0bcbcd0927ac88ad57adc280af918dbfe5960b4f9ed35e74a549767083cf1&amp;bookDigest=sha256%3Ae62f0b96da8e4bf0a9a7702416e79c771c0c573909eb90221969b28365be2cdb&amp;page=9" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-77ab31a9-8961-511c-8637-06e98023d869" data-goal-id="77ab31a9-8961-511c-8637-06e98023d869" data-page-number="10" data-chapter-ids="structure:goal-book-physics-root structure:canonical-structure:physics-seki structure:physics-semiconductor-seki" aria-labelledby="goal-77ab31a9-8961-511c-8637-06e98023d869-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-77ab31a9-8961-511c-8637-06e98023d869-title"><a class="goal-self-link" href="#goal-77ab31a9-8961-511c-8637-06e98023d869">Transistorschaltung selbst aufbauen und untersuchen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>77ab31a9-8961-511c-8637-06e98023d869</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-c98d6fbe92be73c1067f72e8">Sekundarstufe I</a></li><li><a href="#chapter-668e5b1fa24116b3b4f17226">Halbleiterbauelemente: Grundlagen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:29631652dceecf06bddf9ded1c7dbb0627d5a8af2d086cf013ae8504b9603fff" data-rendered-digest="sha256:15d6570c22279bce14100d43f49facc6798f50071efea2e0444c13034e5823e6" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/77ab31a9-8961-511c-8637-06e98023d869/77ab31a9-8961-511c-8637-06e98023d869.png" alt="Der Lastpfad führt von +5 V über 330 Ω und die LED mit A/K zum Kollektor C; E liegt an gemeinsam 0 V. Die 0-/5-V-Steuerung führt über T und 10 kΩ nach B. 100 kΩ verbinden B dauerhaft mit 0 V. T trennt nur die Steuerleitung und lässt den festen Basisbezug bestehen. Eigene LED-Zustände werden nicht vorweggenommen; tatsächliche Montage folgt dem vollständigen Material und Datenblatt.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-77ab31a9-8961-511c-8637-06e98023d869-description-heading">
+        <p class="section-heading" id="goal-77ab31a9-8961-511c-8637-06e98023d869-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann eine vollständig vorgegebene einfache Transistorschaltung unter Aufsicht mit strombegrenzter Kleinspannung selbst aufbauen, ihre Schaltwirkung durch gezieltes Verändern der Ansteuerung und einen Kontrollversuch anhand eigener Beobachtungen untersuchen und funktional begründen sowie die Ergebnisse auf eine geänderte Eingangszuordnung übertragen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BY:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-77ab31a9-8961-511c-8637-06e98023d869" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-77ab31a9-8961-511c-8637-06e98023d869-requires-heading">
+          <p class="section-heading" id="goal-77ab31a9-8961-511c-8637-06e98023d869-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-77ab31a9-8961-511c-8637-06e98023d869-reverse-heading">
+          <p class="section-heading" id="goal-77ab31a9-8961-511c-8637-06e98023d869-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-77ab31a9-8961-511c-8637-06e98023d869-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-77ab31a9-8961-511c-8637-06e98023d869-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-69f8f59c-b0c3-5b0b-82db-834a0e655736" rel="noreferrer noopener"><span>Zwischen Stromkreis und Schaltplan übersetzen</span> <code>69f8f59c-b0c3-5b0b-82db-834a0e655736</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-77ab31a9-8961-511c-8637-06e98023d869-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-77ab31a9-8961-511c-8637-06e98023d869-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-2cfd5c6a-a16a-5f90-aab7-b27b29271f72" rel="noreferrer noopener"><span>Prüfungsaufgabe: Transistorschaltung selbst untersuchen</span> <code>2cfd5c6a-a16a-5f90-aab7-b27b29271f72</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 10 von 10</span>
+      <span>Buch-Digest <code>sha256:e62f0b96da8e4bf0a9a7702416e79c771c0c573909eb90221969b28365be2cdb</code></span>
+      <span>Ziel-Fingerprint <code>sha256:2b3142ed4628d0360456b5f05ed98f4c513c31e03ba50946aaace1e170ed6fc9</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-semiconductor-current10-20261115-v3&amp;edition=curricular-atomic-v1&amp;goalId=77ab31a9-8961-511c-8637-06e98023d869&amp;goalFingerprint=sha256%3A2b3142ed4628d0360456b5f05ed98f4c513c31e03ba50946aaace1e170ed6fc9&amp;pageFingerprint=sha256%3Ab8b6c187464ef8cd85c8720969c4f85e809f656068fc913791c2af98c82b7953&amp;bookDigest=sha256%3Ae62f0b96da8e4bf0a9a7702416e79c771c0c573909eb90221969b28365be2cdb&amp;page=10" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

@@ -104,11 +104,11 @@ test('the actual audit validates current ledgers and records pending routes with
   const report = await auditSemanticLearningRoutes(repositoryRoot)
   assert.deepEqual(report.summary, {
     registeredScopes: 12, directlyRequiredScopes: 4, ledgerBackedScopes: 6,
-    passingScopes: 4, failingScopes: 2, unavailableScopes: 6, routeFindings: 8,
+    passingScopes: 4, failingScopes: 2, unavailableScopes: 6, routeFindings: 7,
   })
   for (const scope of report.scopes.filter(scope => scope.status === 'required')) assert.equal(scope.outcome, 'pass', scope.scopeId)
   assert.deepEqual(report.scopes.filter(scope => scope.outcome === 'fail').map(scope => [scope.scopeId, scope.findings!.length]), [
-    ['canonical-physics-sek1', 5], ['canonical-chemistry-sek2', 3],
+    ['canonical-physics-sek1', 4], ['canonical-chemistry-sek2', 3],
   ])
   assert.equal(report.inputBindings.filter(binding => binding.path.endsWith('.semantic-kinds.json')).length, 4)
   assert.equal(report.inputBindings.filter(binding => binding.path.includes('/composition-views/physik/')).length, 3)

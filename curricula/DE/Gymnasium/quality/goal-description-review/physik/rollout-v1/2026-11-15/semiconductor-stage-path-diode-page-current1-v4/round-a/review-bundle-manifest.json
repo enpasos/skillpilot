@@ -1,0 +1,111 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-book/v1/goal-book-review-bundle.schema.json",
+  "schemaVersion": 1,
+  "bookModelDigest": "sha256:572346f34429d46379eeeb42d612f50decf327d85c257acf0263f3d8e32f9516",
+  "bookModelSchemaVersion": "1.1.0",
+  "bookId": "de-gym-physik-diode-page-current1-20261115-v4",
+  "bookEdition": "curricular-atomic-v1",
+  "publicationMode": "review",
+  "feedbackBaseUrl": "https://skillpilot.com/lernziel-feedback",
+  "locale": "de-DE",
+  "selectedGoalCount": 1,
+  "goals": [
+    {
+      "goalId": "dc55adac-91a5-5cc3-ab47-be008480616f",
+      "pageNumber": 1,
+      "goalFingerprint": "sha256:7aed81db95b80531a3f77110669facc91ad106fda0b54e1146f84644d711f6c6",
+      "pageFingerprint": "sha256:b36920357f4ebcee01a318409425c4a695cab04b59763cf237c604d5a6b30b44",
+      "evidenceReview": {
+        "reviewId": "physik-semiconductor-stage-path-current-p-20261115-v2",
+        "status": "needs_human_review",
+        "reviewInputFingerprint": "sha256:be1f82a259fed5e9fc8a720b028f9af56bfb861d78755b49176ad77674c6e6a0",
+        "profileFingerprint": "sha256:e0ab44a99f075c8c9304487ed076080c53beccd72021104cd80118e6cfb7dd6d",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1"
+      }
+    }
+  ],
+  "promptFingerprint": "sha256:ce69922483c803d783fc99c7d83413ba30a592a228409391314ad84e27e92521",
+  "criteriaFingerprint": "sha256:0c215583a407bcaa4c4c9ff03077cd2dc7059706a199df56080e8b3c106892c1",
+  "artifacts": [
+    {
+      "role": "book_model",
+      "path": "book-model.json",
+      "digest": "sha256:af448e5f81e875e764c2f9e3b5867f6e2fb877e8b8edbdb0e881b0c573954407",
+      "bytes": 349581
+    },
+    {
+      "role": "book_pdf",
+      "path": "book.pdf",
+      "digest": "sha256:002ea9fbd856f7831d995fe55bd558349a93cdb418a5142eb5238f989cd4daaf",
+      "bytes": 115361
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "path": "book.pdf.render-manifest.json",
+      "digest": "sha256:83f933375881905341ff018d5b83f0e062dc7d9b3312c9505ef9e47f90031c38",
+      "bytes": 3023
+    },
+    {
+      "role": "book_html",
+      "path": "book.html",
+      "digest": "sha256:f4bc0d7af8d28691137858cdefc2b184ed876b6facd5097a5a5f9b712c6288c4",
+      "bytes": 20096
+    },
+    {
+      "role": "book_html_render_manifest",
+      "path": "book.html.render-manifest.json",
+      "digest": "sha256:1c17b8069a260fbc7d070e087568cc49232131cf01e5783f178f6625b08494d7",
+      "bytes": 3024
+    },
+    {
+      "role": "review_input_json",
+      "path": "review-input.json",
+      "digest": "sha256:2a7a8e7a8bbf984616104ee7518b48dff00dc5a02e2c8a8436235c5d30db3631",
+      "bytes": 14896
+    },
+    {
+      "role": "review_input_jsonl",
+      "path": "review-input.jsonl",
+      "digest": "sha256:8212187043adfcaffe4d040f7ee04a9aad2709f7b96acc276841c42c191c27c9",
+      "bytes": 11812
+    },
+    {
+      "role": "review_markdown",
+      "path": "review.md",
+      "digest": "sha256:43bf3c7b0364fe4277f8ecd1f5675d15fff4a89aceb318b3ad7dd697eaadba59",
+      "bytes": 8795
+    },
+    {
+      "role": "review_prompt",
+      "path": "prompt.md",
+      "digest": "sha256:ce69922483c803d783fc99c7d83413ba30a592a228409391314ad84e27e92521",
+      "bytes": 7259
+    },
+    {
+      "role": "review_criteria",
+      "path": "criteria.md",
+      "digest": "sha256:0c215583a407bcaa4c4c9ff03077cd2dc7059706a199df56080e8b3c106892c1",
+      "bytes": 7974
+    },
+    {
+      "role": "finding_schema",
+      "path": "contracts/goal-evidence-finding.schema.json",
+      "digest": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9",
+      "bytes": 3613
+    },
+    {
+      "role": "run_manifest_schema",
+      "path": "contracts/goal-evidence-ai-run-manifest.schema.json",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6",
+      "bytes": 3886
+    }
+  ],
+  "reviewPolicy": {
+    "blindIndependentFirstPass": true,
+    "modelVotesGrantReleaseAuthority": false,
+    "humanApprovalRequired": true,
+    "learnerDataAllowed": false
+  },
+  "bundleFingerprint": "sha256:e43d061f553cd81c2aed9eade685939268added70d723f95a24acd4b31c9e815"
+}

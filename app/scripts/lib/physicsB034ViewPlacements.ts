@@ -4,6 +4,7 @@
 import {readFileSync} from 'node:fs'
 import {preserveFinalDiodePlacementsFromCurrent} from './physicsFinalDiodeViewPlacements'
 import {resolve} from 'node:path'
+import type {PhysicsPlacementView} from './physicsViewPlacementTypes'
 const ids=new Set([
  'ea17b0af-3d53-5a10-acda-7fd9348537ce','49872cc0-401f-5464-9235-4763df4db5cf','7df923a0-6470-595e-8cea-53126fad9506','d36727cc-ce42-51a3-9425-41afb0b9acdd',
  '922f32ba-f214-5a82-be5c-1111aca51d4a','f505f039-3f07-5afe-88b8-f02532e9c2f0','7d4d6a39-0c78-5fb0-b7bf-182ed00972f7','c2af45aa-e3fc-5119-9159-c5a260b4135a',
@@ -12,7 +13,8 @@ const ids=new Set([
  '51af53cb-8866-52cd-b2ca-af8bd8a836e0','4dbe6eb9-4d77-58a9-a15c-f0b8bb110a65','5902ebe8-2025-5a7c-b95d-13057398d6e6','6da29199-f086-512c-89f2-1b5ca865eef9',
  '6c87a996-9166-5c6e-8cda-01d40720f9c8','74a32716-2b46-5d96-8b57-3f6edb90e088','144007cb-e2bc-5c82-bf9d-dda705b15257','88f27aab-8724-5a4d-8543-e49ebcb54b8e',
  'c64820e1-c0ee-4342-9225-f981650f0c52','f74c691b-0b76-54e0-8fd6-a22211994e0a',
- '7badac4d-2874-5b3a-87e8-bf8f4440b2a6','70b358bf-da6d-53ba-8393-51d5c2365b04','ca13e9cd-6377-540e-88c8-0308cddc8a7e',
+ // Semiconductor classification is now owned by the final semiconductor placement helper.
+ '70b358bf-da6d-53ba-8393-51d5c2365b04','ca13e9cd-6377-540e-88c8-0308cddc8a7e',
 ])
 type Node = {kind?:string,id?:string,goalId?:string,children?:Node[],[key:string]:unknown}
 type Ancestor = {node:Node,index:number}
@@ -49,8 +51,11 @@ export function preserveB034PlacementsFromCurrent(draftInput:Record<string,unkno
  }
  return draft
 }
-export function preservePhysicsB034ViewPlacements(root:string,path:string,draft:Record<string,unknown>){
+export function preservePhysicsB034ViewPlacements<T extends Record<string,unknown>>(root:string,path:string,draft:T){
  const current=JSON.parse(readFileSync(resolve(root,path),'utf8'))
  preserveB034PlacementsFromCurrent(draft,current)
- return preserveFinalDiodePlacementsFromCurrent(draft,current)
+ assert(Array.isArray(draft.rootNodes)&&draft.scope&&typeof draft.scope==='object'&&!Array.isArray(draft.scope),'view scope and root nodes required')
+ // Generator callers start with JSON records; native composition validation
+ // checks complete node/scope semantics separately from this preservation helper.
+ return preserveFinalDiodePlacementsFromCurrent(draft as T&PhysicsPlacementView,current)
 }

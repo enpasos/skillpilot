@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "scope": "local integrated quality and unchanged maturity floors; remote integration is pending",
+  "statusReport": {
+    "path": "docs/qa-ci/status/curriculum-quality-status.json",
+    "sha256": "c1db9967b2a7d384c8e23b71a113b4389624282de264d52e2c6ae99eaed40d80"
+  },
+  "execution": {
+    "command": [
+      "npm",
+      "run",
+      "quality:curriculum-status"
+    ],
+    "workingDirectory": "app",
+    "startedAt": "2026-11-15T07:17:23.016207+00:00",
+    "completedAt": "2026-11-15T07:25:10.100793+00:00",
+    "elapsedSeconds": 467.124,
+    "exitCode": 0
+  },
+  "curricula": [
+    {
+      "subject": "Biologie",
+      "maturity": "M7",
+      "rule": {
+        "id": "CQR-303",
+        "status": "pass",
+        "summary": "Deep curriculum QA is complete for all 397 current curricularAtomic goals.",
+        "metrics": {
+          "expectedGoals": 397,
+          "remaining": 0,
+          "strictComplete": 397,
+          "currentDescriptionResolutions": 397,
+          "currentPositiveEvidenceProfiles": 397,
+          "currentSemanticAtomicityDecisions": 397,
+          "currentMemoryReviewDecisions": 397,
+          "currentVisualizationQaRecords": 397,
+          "deferredVisualizations": 0,
+          "requiredChecksPassed": 6,
+          "requiredChecksTotal": 6,
+          "blockingIssues": 0
+        }
+      }
+    },
+    {
+      "subject": "Chemie",
+      "maturity": "M7",
+      "rule": {
+        "id": "CQR-303",
+        "status": "pass",
+        "summary": "Deep curriculum QA is complete for all 455 current curricularAtomic goals.",
+        "metrics": {
+          "expectedGoals": 455,
+          "remaining": 0,
+          "strictComplete": 455,
+          "currentDescriptionResolutions": 455,
+          "currentPositiveEvidenceProfiles": 455,
+          "currentSemanticAtomicityDecisions": 455,
+          "currentMemoryReviewDecisions": 455,
+          "currentVisualizationQaRecords": 455,
+          "deferredVisualizations": 0,
+          "requiredChecksPassed": 6,
+          "requiredChecksTotal": 6,
+          "blockingIssues": 0
+        }
+      }
+    },
+    {
+      "subject": "Mathematik",
+      "maturity": "M7",
+      "rule": {
+        "id": "CQR-303",
+        "status": "pass",
+        "summary": "Deep curriculum QA is complete for all 807 current curricularAtomic goals.",
+        "metrics": {
+          "expectedGoals": 807,
+          "remaining": 0,
+          "strictComplete": 807,
+          "currentDescriptionResolutions": 807,
+          "currentPositiveEvidenceProfiles": 807,
+          "currentSemanticAtomicityDecisions": 807,
+          "currentMemoryReviewDecisions": 807,
+          "currentVisualizationQaRecords": 807,
+          "deferredVisualizations": 0,
+          "requiredChecksPassed": 6,
+          "requiredChecksTotal": 6,
+          "blockingIssues": 0
+        }
+      }
+    },
+    {
+      "subject": "Physik",
+      "maturity": "M7",
+      "rule": {
+        "id": "CQR-303",
+        "status": "pass",
+        "summary": "Deep curriculum QA is complete for all 481 current curricularAtomic goals.",
+        "metrics": {
+          "expectedGoals": 481,
+          "remaining": 0,
+          "strictComplete": 481,
+          "currentDescriptionResolutions": 481,
+          "currentPositiveEvidenceProfiles": 481,
+          "currentSemanticAtomicityDecisions": 481,
+          "currentMemoryReviewDecisions": 481,
+          "currentVisualizationQaRecords": 481,
+          "deferredVisualizations": 0,
+          "requiredChecksPassed": 6,
+          "requiredChecksTotal": 6,
+          "blockingIssues": 0
+        }
+      }
+    },
+    {
+      "subject": "Wirtschaftswissenschaften",
+      "maturity": "M7",
+      "rule": {
+        "id": "CQR-303",
+        "status": "pass",
+        "summary": "Deep curriculum QA is complete for all 346 current curricularAtomic goals.",
+        "metrics": {
+          "expectedGoals": 346,
+          "remaining": 0,
+          "strictComplete": 346,
+          "currentDescriptionResolutions": 346,
+          "currentPositiveEvidenceProfiles": 346,
+          "currentSemanticAtomicityDecisions": 346,
+          "currentMemoryReviewDecisions": 346,
+          "currentVisualizationQaRecords": 346,
+          "deferredVisualizations": 0,
+          "requiredChecksPassed": 6,
+          "requiredChecksTotal": 6,
+          "blockingIssues": 0
+        }
+      }
+    }
+  ],
+  "floorCheck": {
+    "command": [
+      "npm",
+      "run",
+      "check:curriculum-maturity-floors",
+      "--",
+      "--base-ref",
+      "origin/main"
+    ],
+    "baseSha": "a7c7e9ceb26f06194e25f29e32941d4e4cb17c32",
+    "startedAt": "2026-11-15T07:27:41.999573+00:00",
+    "completedAt": "2026-11-15T07:27:45.008558+00:00",
+    "exitCode": 0,
+    "log": "after-correction-floor-pass.actual.txt"
+  }
+}

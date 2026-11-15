@@ -348,32 +348,6 @@
                   "goalId": "50877233-7abf-54df-b347-6d3224678fc9"
                 }
               ]
-            },
-            {
-              "kind": "structure",
-              "id": "physics-final-diode-seki",
-              "label": "Dioden: belegte Quellenanteile",
-              "labelEn": "Diodes: Source-Supported Components",
-              "children": [
-                {
-                  "kind": "canonicalSubtree",
-                  "goalId": "7f0798cb-5966-5dcb-beb3-84f637ab6139",
-                  "projectionRole": "prerequisiteOnly"
-                }
-              ]
-            },
-            {
-              "kind": "structure",
-              "id": "physics-final-diode-prerequisite-practice",
-              "label": "Übungen zu benötigtem Dioden-Vorwissen",
-              "labelEn": "Practice for Required Diode Prerequisites",
-              "children": [
-                {
-                  "kind": "goalEntry",
-                  "goalId": "c61b2a69-b5cd-5785-bb04-5d6bca53b218",
-                  "projectionRole": "target"
-                }
-              ]
             }
           ]
         },
@@ -1007,6 +981,24 @@
                     {
                       "kind": "goalEntry",
                       "goalId": "027d25fc-b609-5383-ac44-5dd3327ca577"
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "1abfd5ef-1f42-5b71-8c9a-80c0a6b0322e",
+                      "projectionRole": "target"
+                    },
+                    {
+                      "kind": "structure",
+                      "id": "physics-final-diode-prerequisite-practice",
+                      "label": "Dioden: Vorbereitung für die Oberstufe",
+                      "labelEn": "Diodes: Preparation for Upper Secondary",
+                      "children": [
+                        {
+                          "kind": "goalEntry",
+                          "goalId": "c61b2a69-b5cd-5785-bb04-5d6bca53b218",
+                          "projectionRole": "target"
+                        }
+                      ]
                     }
                   ]
                 }
@@ -1196,6 +1188,37 @@
               "kind": "goalEntry",
               "goalId": "c52d55c3-b687-586c-b0f9-8ffcd1069424",
               "projectionRole": "prerequisiteOnly"
+            },
+            {
+              "kind": "structure",
+              "id": "physics-final-diode-sekii",
+              "label": "Dioden: Vorbereitung für die Oberstufe",
+              "labelEn": "Diodes: Preparation for Upper Secondary",
+              "children": [
+                {
+                  "kind": "canonicalSubtree",
+                  "goalId": "7f0798cb-5966-5dcb-beb3-84f637ab6139",
+                  "projectionRole": "prerequisiteOnly"
+                }
+              ]
+            },
+            {
+              "kind": "structure",
+              "id": "physics-semiconductor-sekii",
+              "label": "Halbleiter und Dioden: notwendige Vorbereitung",
+              "labelEn": "Semiconductors and Diodes: Necessary Preparation",
+              "children": [
+                {
+                  "kind": "goalEntry",
+                  "goalId": "9f265f49-1342-5ba7-9c5d-54e97fdb2f19",
+                  "projectionRole": "prerequisiteOnly"
+                },
+                {
+                  "kind": "goalEntry",
+                  "goalId": "a8d99168-62cc-5771-bb5d-9ba833d84193",
+                  "projectionRole": "target"
+                }
+              ]
             }
           ]
         },

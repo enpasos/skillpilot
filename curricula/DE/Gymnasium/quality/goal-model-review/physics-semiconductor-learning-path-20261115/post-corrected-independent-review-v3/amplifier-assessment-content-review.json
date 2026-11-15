@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-11-15T05:37:03.211675Z",
+  "reviewer": "Codex semiconductor QA agent, independent actual informed current-content machine review of delivery-authored task",
+  "goalId": "144007cb-e2bc-5c82-bf9d-dda705b15257",
+  "result": "machine-content-review-pass",
+  "releaseReadiness": "Author may apply machine-content release metadata without altering the exact reviewed scientific projection. Current native D/P/A/M/V, graph, routes and CI remain separate requirements.",
+  "humanApproval": false,
+  "learnerExecutionClaim": false,
+  "reason": "Actually read complete final DE/EN task and solution after removal of pre-submission pass/rubric disclosure. CaseA explicitly establishes like-current gain100, load inversion, supply energy and both limits; caseB independently applies these to changed bias and corrects the same±30µA signal. Gain100 is checked in the corrected active case, never across clipping. The eight independently scored essential criteria cannot compensate one another; minor nonconsequential arithmetic/notation slips do not lose conceptual credit. No unprepared meter, general Kirchhoff or microscopic extra prerequisite is assumed.",
+  "reviewedContent": {
+    "coveredGoalIds": [
+      "af50bb9a-fd7b-50f5-9698-48c4efe99032"
+    ],
+    "coveredStrands": [
+      "LI_TECHNIK"
+    ],
+    "demandLevels": [
+      "AB1",
+      "AB2",
+      "AB3"
+    ],
+    "taskContent": "![Aufgabenmaterial: Kollektorzweig](/assets/goal-visualizations/physik/144007cb-e2bc-5c82-bf9d-dda705b15257/144007cb-e2bc-5c82-bf9d-dda705b15257-collector-20261115.png)\n\nMaterial: Eine vorgegebene npn-Emitterschaltung besitzt einen Emitter an 0 V, einen Kollektorwiderstand von 1,0 kΩ an +10 V und eine Basisvorspannung mit überlagertem kleinem Eingangssignal. Der Ausgang ist die Kollektorspannung gegen 0 V. Nur für den aktiven Bereich dieses Modells gilt I_C = 100 I_B. Für den markierten Kollektorzweig sind die Modellbeziehungen U_R = R_C · I_C und U_C = 10 V − U_R vorgegeben: Widerstandsspannung und Ausgangsspannung ergänzen sich zur festen Versorgungsspannung. Die Arbeitspunkte und Eingangsänderungen sind vorgegeben, nicht aus einem unbekannten Widerstandsnetz zu bestimmen. Die Ausgangsgrenzen sind 0,2 V bei Sättigung und 10 V bei Sperren. Die Kennlinie ist als Tabelle gegeben:\n\n| I_B in µA | 0 | 20 | 40 | 50 | 60 | 80 | 98 |\n|---|---:|---:|---:|---:|---:|---:|---:|\n| I_C in mA | 0 | 2 | 4 | 5 | 6 | 8 | 9,8 |\n| U_C in V | 10 | 8 | 6 | 5 | 4 | 2 | 0,2 |\n\nFall A – Ausgangsarbeitspunkt und größere Signalamplitude (4 BE): Bei I_B = 50 µA schwankt der Basisstrom zunächst um ±10 µA. Vergleiche Basis- und Kollektorstromänderung in gemeinsamen Einheiten und benenne die damit belegte Verstärkung. Ist auch eine Spannungsverstärkung bestimmt, obwohl keine Eingangsspannung angegeben ist? Erkläre mit der vorgegebenen Beziehung, wie sich Kollektorstrom, Widerstandsspannung und Ausgangsspannung gemeinsam ändern und weshalb der Ausgang umgekehrt verläuft. Erläutere, woher die Energie für die Last kommt und welche Rolle der Basiszweig hat. Prüfe anschließend bei demselben Arbeitspunkt die größere Schwankung ±60 µA gegen beide Ausgangsgrenzen: Wie verändert sich die Ausgangsform, und wo endet die Gültigkeit des aktiven Modells?\n\nFall B – Veränderten Arbeitspunkt selbstständig beurteilen (4 BE): Nun liegt der Arbeitspunkt bei I_B = 80 µA; das Eingangssignal schwankt um ±30 µA. Beurteile den Spielraum zu beiden Ausgangsgrenzen und sage voraus, welche Seite begrenzt wird. Wähle einen im Material möglichen Arbeitspunkt, der dieselben ±30 µA unverzerrt überträgt, und begründe dies für beide Signalausschläge. Die Amplitude darf dabei nicht verkleinert werden. Vergleiche für deinen korrigierten aktiven Fall erneut Basis- und Kollektorstromänderung in gemeinsamen Einheiten: Welche Verstärkung ist belegt, und welche Aussage über Spannungsverstärkung bleibt ohne Eingangsspannung offen? Erkläre auch für diesen Fall die Kette von Kollektorstrom über Widerstandsspannung zum Ausgang sowie Energiequelle und Steuerwirkung. Eine kurze, richtig auf den neuen Fall angewandte Rückbeziehung auf deine Erklärung aus Fall A genügt.",
+    "taskContentEn": "![Assessment material: collector branch](/assets/goal-visualizations/physik/144007cb-e2bc-5c82-bf9d-dda705b15257/144007cb-e2bc-5c82-bf9d-dda705b15257-collector-20261115.png)\n\nMaterial: A supplied npn common-emitter circuit has its emitter at 0 V and a 1.0 kΩ collector resistor connected to +10 V. A small input signal is superimposed on the base bias. The output is collector voltage relative to 0 V. Only in this model's active region does I_C = 100 I_B apply. The marked collector branch is supplied with model relations U_R = R_C · I_C and U_C = 10 V − U_R: resistor voltage and output voltage add to the fixed supply voltage. Bias points and input variations are provided, not to be determined from an unspecified resistor network. Output limits are 0.2 V in saturation and 10 V at cutoff. The characteristic is given as a table:\n\n| I_B in µA | 0 | 20 | 40 | 50 | 60 | 80 | 98 |\n|---|---:|---:|---:|---:|---:|---:|---:|\n| I_C in mA | 0 | 2 | 4 | 5 | 6 | 8 | 9.8 |\n| U_C in V | 10 | 8 | 6 | 5 | 4 | 2 | 0.2 |\n\nCase A – Initial bias and a larger signal amplitude (4 points): At I_B = 50 µA the base current initially varies by ±10 µA. Compare base- and collector-current changes in common units and name the gain established by that comparison. Is voltage gain also determined even though no input voltage is supplied? Use the supplied relation to explain how collector current, resistor voltage and output voltage change together and why the output is inverted. Explain where the load energy comes from and the role of the base branch. Then test a larger ±60 µA variation at the same bias against both output limits: how does the output waveform change, and where does the active model cease to apply?\n\nCase B – Independently assess a changed bias (4 points): The bias is now I_B = 80 µA and the input signal varies by ±30 µA. Assess headroom to both output limits and predict which side clips. Select a bias allowed by the material that transmits the same ±30 µA without distortion, justifying both signal excursions. Do not reduce the amplitude. For your corrected active case, again compare base- and collector-current changes in common units: which gain is established, and what remains undetermined about voltage gain without input-voltage data? Also explain for this case the chain from collector current through resistor voltage to output, together with energy source and control. A concise reference to your explanation in Case A is sufficient when correctly applied to the fresh case.",
+    "solutionContent": "Fall A:\nA1 – Belegte Verstärkung und Aussagegrenze (1 BE): ±10 µA Basisstromänderung steuern im aktiven Bereich ±1 mA = ±1000 µA Kollektorstromänderung. Das Verhältnis gleichartiger Stromamplituden ist 100. Es belegt Stromverstärkung. Die Ausgangsspannung liefert zusammen mit dem Basisstrom eine Strom-Spannungs-Übertragung; ohne Eingangsspannungsdaten ist kein Spannungsverstärkungsfaktor bestimmt.\nA2 – Kausale Ausgangsumkehr (1 BE): Im Arbeitspunkt gelten I_C = 5 mA und U_C = 5 V; 40/60 µA ergeben 4/6 mA und 6/4 V. Mit steigendem Kollektorstrom wächst bei gegebenem R_C der Spannungsabfall U_R. Weil die Versorgung fest ist, sinkt der verbleibende Ausgangsanteil U_C. Diese Kette begründet die Umkehr dieser Emitterschaltung.\nA3 – Energiequelle und Steuerung (1 BE): Die 10-V-Versorgung stellt die Energie für die Last bereit. Der Basiszweig steuert den Laststrom und damit die Energieübertragung; er erzeugt diese Energie nicht.\nA4 – Beide Modellgrenzen (1 BE): ±60 µA um 50 µA würde bei unzulässiger aktiver Fortsetzung −10 bis 110 µA und 11 bis −1 V verlangen. Tatsächlich begrenzen Sperren bei 10 V und Sättigung bei 0,2 V die beiden Seiten; das Signal wird oben und unten abgeschnitten. Die aktive Stromverstärkung wird über diese Grenzen hinaus nicht als konstante Übertragung behauptet. Eine gleichwertige qualitative Prüfung beider Grenzen genügt.\n\nFall B:\nB1 – Verstärkung des korrigierten aktiven Falls (1 BE): Beispielsweise ergeben 50±30 µA Basisstrom 20 bis 80 µA und 2 bis 8 mA Kollektorstrom. ±3 mA = ±3000 µA gegenüber ±30 µA belegen erneut Stromverstärkung 100. Dieses Verhältnis gilt für den korrigierten aktiven Fall; es wird nicht für den gesamten ursprünglich begrenzten Ausschlag behauptet. Ohne Eingangsspannung bleibt ein Spannungsverstärkungsfaktor unbestimmt.\nB2 – Kausale Ausgangsumkehr übertragen (1 BE): Auch im neuen Fall führt mehr Kollektorstrom zu größerem Widerstandsspannungsabfall und bei fester Versorgung zu kleinerem Kollektorausgang. Für 50±30 µA sind die Ausgangsextreme 8 und 2 V um 5 V. Die Erklärung wird auf den geänderten Fall angewandt; das bloße Wort Phasenumkehr ohne kausalen Zusammenhang genügt nicht.\nB3 – Energiequelle und Steuerung übertragen (1 BE): Die Lastenergie stammt weiterhin aus der 10-V-Versorgung; der Basiszweig steuert die Übertragung. Eine kurze, im neuen Fall richtige Rückbeziehung auf A3 genügt.\nB4 – Asymmetrie und wirksame Korrektur bei gleichem Signal (1 BE): Bei 80 µA liegt U_C = 2 V, also 1,8 V über der unteren Grenze und 8 V unter der oberen. 50 bis 110 µA würden aktiv 5 bis −1 V verlangen; der untere Ausgangsausschlag sättigt, der obere erreicht 10 V nicht. Beispielsweise verschiebt 50 µA den Arbeitspunkt so, dass dieselben ±30 µA 20 bis 80 µA und 8 bis 2 V ergeben. Beide Grenzen werden eingehalten. Andere begründete Arbeitspunkte mit genügend beidseitigem Spielraum sind gleichwertig. Eine kleinere Amplitude erfüllt den Auftrag mit unverändertem Signal nicht.\n\nAnalytische Bewertung: A1 bis A4 und B1 bis B4 werden unabhängig mit jeweils 0 oder 1 BE bewertet. Für 8 BE müssen alle acht fachlichen Kriterien gezeigt sein; 0 bis 7 BE bleiben aussagekräftige Teilrückmeldung. Es gibt keine Punkte allein für das Ablesen einzelner Zahlen. Fachlich gleichwertige Begründungen zählen; isolierte Rechen-, Einheiten- oder Schreibfehler ohne Folgen für das begründete Verständnis verursachen keinen eigenen Abzug.",
+    "solutionContentEn": "Case A:\nA1 – Established gain and evidential limit (1 point): A ±10 µA base-current change controls a ±1 mA = ±1000 µA collector-current change in the active region. The ratio of like current amplitudes is 100, establishing current gain. Output voltage together with base current describes current-to-voltage transfer; without input-voltage data, no voltage-gain factor is determined.\nA2 – Causal output inversion (1 point): At bias, I_C = 5 mA and U_C = 5 V; 40/60 µA give 4/6 mA and 6/4 V. Increasing collector current increases the drop U_R across the given R_C. With fixed supply, the remaining output share U_C decreases. This chain explains inversion in this common-emitter circuit.\nA3 – Energy source and control (1 point): The 10 V source supplies the load energy. The base branch controls load current and hence energy transfer; it does not create that energy.\nA4 – Both model limits (1 point): A ±60 µA variation about 50 µA would demand −10 to 110 µA and 11 to −1 V if the active relation were extrapolated beyond its range. Cutoff at 10 V and saturation at 0.2 V instead limit the two sides, clipping the waveform at top and bottom. Constant active-region gain is not claimed beyond these limits. An equivalent qualitative check of both limits is sufficient.\n\nCase B:\nB1 – Gain of the corrected active case (1 point): For example, 50±30 µA gives base current from 20 to 80 µA and collector current from 2 to 8 mA. Comparing ±3 mA = ±3000 µA with ±30 µA again establishes current gain 100. This ratio applies to the corrected active case, not across the originally clipped full excursion. Without input voltage, voltage gain remains undetermined.\nB2 – Transfer causal output inversion (1 point): In the fresh case, greater collector current again increases resistor drop and lowers collector output at fixed supply. For 50±30 µA the output extremes are 8 and 2 V about 5 V. The explanation must apply to the changed case; merely naming phase inversion without the causal chain is insufficient.\nB3 – Transfer energy source and control (1 point): Load energy still comes from the 10 V source, while the base branch controls its transfer. A concise reference correctly applying A3 to the fresh case is sufficient.\nB4 – Asymmetry and an effective correction preserving the signal (1 point): At 80 µA, U_C = 2 V gives 1.8 V downward and 8 V upward headroom. A 50 to 110 µA variation would demand 5 to −1 V in the active model: the lower output excursion saturates, while the upper one does not reach 10 V. For example, moving bias to 50 µA lets the same ±30 µA span 20 to 80 µA and 8 to 2 V. Both limits are respected. Other justified bias points providing sufficient headroom on both sides are equivalent. Reducing amplitude does not satisfy the unchanged-signal requirement.\n\nAnalytic scoring: A1 to A4 and B1 to B4 are each scored independently with 0 or 1 point. All eight scientific criteria must be demonstrated for 8 points; 0 to 7 points remain meaningful partial feedback. There are no points solely for reading individual numbers. Scientifically equivalent reasoning earns credit; isolated calculation, unit or notation slips without consequences for the justified understanding do not cause a separate deduction.",
+    "scoring": {
+      "maxPoints": 8,
+      "passingPoints": 8,
+      "steps": [
+        {
+          "id": "amplifier-a1",
+          "points": 1,
+          "description": "Fall A: Stromverstärkung 100 durch gleichartige Stromänderungen belegt; Spannungsverstärkung ohne Eingangsspannung nicht behauptet."
+        },
+        {
+          "id": "amplifier-a2",
+          "points": 1,
+          "description": "Fall A: Größerer Kollektorstrom erhöht den Widerstandsabfall und senkt bei fester Versorgung den Ausgang; kausale Umkehr erklärt."
+        },
+        {
+          "id": "amplifier-a3",
+          "points": 1,
+          "description": "Fall A: Versorgung als Quelle der Lastenergie und Basiszweig als Steuerung unterschieden."
+        },
+        {
+          "id": "amplifier-a4",
+          "points": 1,
+          "description": "Fall A: Größeren Ausschlag gegen beide Grenzen geprüft; Sperren, Sättigung und begrenzte Gültigkeit des aktiven Modells begründet."
+        },
+        {
+          "id": "amplifier-b1",
+          "points": 1,
+          "description": "Fall B: Stromverstärkung 100 im korrigierten aktiven Fall belegt; ursprüngliche Begrenzung und fehlende Eingangsspannungsdaten berücksichtigt."
+        },
+        {
+          "id": "amplifier-b2",
+          "points": 1,
+          "description": "Fall B: Kausale Kette von Kollektorstrom über Widerstandsabfall zur Ausgangsumkehr auf den neuen Fall angewandt."
+        },
+        {
+          "id": "amplifier-b3",
+          "points": 1,
+          "description": "Fall B: Versorgung und Steuerung für den neuen Fall korrekt unterschieden; richtig angewandte kurze Rückbeziehung genügt."
+        },
+        {
+          "id": "amplifier-b4",
+          "points": 1,
+          "description": "Fall B: Asymmetrische beidseitige Aussteuerung diagnostiziert und wirksamer Arbeitspunkt bei unveränderten ±30 µA begründet."
+        }
+      ]
+    }
+  },
+  "reviewedContentSha256": "sha256:9d191228354e64ddd9c770cfc8558c2d7f3bd654ad665ab79ed6aad095c161f0",
+  "contentProjectionContract": "Exact examData excluding only reviewStatus,reviewNote,sourceArtifactPath; digest is UTF8 sorted-key compact JSON. Release metadata cannot modify reviewed scientific task, solution, scoring or coverage.",
+  "assets": [
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/physik/144007cb-e2bc-5c82-bf9d-dda705b15257/144007cb-e2bc-5c82-bf9d-dda705b15257-collector-20261115.png",
+      "sha256": "sha256:60ffc047e9cf529a96a3fe39c88aa4ac675693ef5aca9c273f7954ebfb4034db",
+      "inspection": "Actual earlier full360/680 inspection retained with exact byte pins; no new image-generation or host acceptance claim."
+    }
+  ],
+  "essentialCriterionOmissionAudit": [
+    {
+      "criterionId": "amplifier-a1",
+      "maximumWithoutCriterion": 7,
+      "passingPoints": 8,
+      "result": "cannot pass without this scored essential scientific criterion"
+    },
+    {
+      "criterionId": "amplifier-a2",
+      "maximumWithoutCriterion": 7,
+      "passingPoints": 8,
+      "result": "cannot pass without this scored essential scientific criterion"
+    },
+    {
+      "criterionId": "amplifier-a3",
+      "maximumWithoutCriterion": 7,
+      "passingPoints": 8,
+      "result": "cannot pass without this scored essential scientific criterion"
+    },
+    {
+      "criterionId": "amplifier-a4",
+      "maximumWithoutCriterion": 7,
+      "passingPoints": 8,
+      "result": "cannot pass without this scored essential scientific criterion"
+    },
+    {
+      "criterionId": "amplifier-b1",
+      "maximumWithoutCriterion": 7,
+      "passingPoints": 8,
+      "result": "cannot pass without this scored essential scientific criterion"
+    },
+    {
+      "criterionId": "amplifier-b2",
+      "maximumWithoutCriterion": 7,
+      "passingPoints": 8,
+      "result": "cannot pass without this scored essential scientific criterion"
+    },
+    {
+      "criterionId": "amplifier-b3",
+      "maximumWithoutCriterion": 7,
+      "passingPoints": 8,
+      "result": "cannot pass without this scored essential scientific criterion"
+    },
+    {
+      "criterionId": "amplifier-b4",
+      "maximumWithoutCriterion": 7,
+      "passingPoints": 8,
+      "result": "cannot pass without this scored essential scientific criterion"
+    }
+  ],
+  "limitations": [
+    "A content design review is not observed learner performance, human approval, real-host acceptance or a claim that every unrelated legacy assessment is perfect.",
+    "Prior actual raw reviews/releases remain historical; their insufficient whole-group grading conclusion is not silently reused."
+  ],
+  "priorExactAssetInspectionReceipt": {
+    "path": "curricula/DE/Gymnasium/quality/goal-model-review/physics-semiconductor-learning-path-20261115/post-independent-review-v2/amplifier-assessment-content-review.json",
+    "sha256": "sha256:380f6ff5d696147358207e381382d33a12f02121df9cea08cdd191bf182b0973",
+    "note": "Only actual unchanged image/viewport inspection is retained; the old scientific task/scoring approval is superseded."
+  }
+}

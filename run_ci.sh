@@ -243,6 +243,10 @@ run_curriculum_frontend_ci() {
   echo "--> Testing the Knowledge-Context Derivation"
   npm run test:knowledge-context
 
+  echo "--> Testing Physics Semiconductor Learning-Path Diagnosis"
+  npm run test:physics-semiconductor-learning-path
+  npm run test:physics-semiconductor-source-repair
+
   echo "--> Testing Exam Markdown Conventions"
   npm run test:exam-markdown
 
@@ -317,6 +321,11 @@ run_curriculum_frontend_ci() {
 
   echo "--> Testing Composition Projection Roles"
   npm run test:composition-projection-roles
+
+  echo "--> Testing Declared Stage-Plan Contracts"
+  npm run test:stage-plan-contracts
+  npm run test:stage-plan-materialization
+  npm run test:stage-plan-learning-flow
 
   echo "--> Running Memory-Card Review Check"
   npm run quality:memory-card-review:check:all

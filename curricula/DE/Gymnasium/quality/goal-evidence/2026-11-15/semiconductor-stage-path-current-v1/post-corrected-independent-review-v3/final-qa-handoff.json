@@ -1,0 +1,270 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-11-15T06:48:36.624274Z",
+  "status": "NATIVE_D14_ACTIVATED_V_METADATA_REPAIRED_ROOT_INTEGRATED_FOLLOWUP_PENDING",
+  "physicsScope": {
+    "curricularAtomic": 481,
+    "assessmentAtomic": 168,
+    "allCanonicalGoals": 773,
+    "currentDescriptionTargets": 14,
+    "currentAandBRecords": 28,
+    "historicalActualReviewRecordsPreserved": 40,
+    "currentPCandidateProfiles": 14,
+    "currentPRowsRetainedByteIdentical": 10,
+    "currentPProfilesRepairedOrNew": 4,
+    "unaffectedHistoricalPRowsRetainedByteIdentical": 22
+  },
+  "activationReceiptPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/semiconductor-stage-path-current-v1/activation.receipt.json",
+  "activationReceiptSha256": "sha256:2b6b900f26b3ba0759aac6fe26656beb84f199f432d5efaa1ee27ce485d4d7bf",
+  "registryAfterActivationSha256": "sha256:94763e7093cb72a18890c64d4cd5527037c3aa7454530578ec48ec3992ac02b6",
+  "currentPageComparisonPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/semiconductor-stage-path-current-v1/post-corrected-independent-review-v3/current14-page-bindings.receipt.json",
+  "currentPagesExact": 14,
+  "completeStandaloneCheck": {
+    "execution": {
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/reportDeepUnderstandingRollout.ts",
+        "--config=curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+        "--mode=check",
+        "--format=json"
+      ],
+      "startedAt": "2026-11-15T06:33:48.378267Z",
+      "completedAt": "2026-11-15T06:38:40.575331Z",
+      "elapsedSeconds": 292.213,
+      "exitCode": 1,
+      "completeInvocationCount": 1
+    },
+    "reportPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/semiconductor-stage-path-current-v1/post-corrected-independent-review-v3/strict-central-check/attempt-1/report.json",
+    "reportSha256": "sha256:8eeb4c490323297f4d114aadf8f4c895078bf1ba8c1d4d7b37ec3ae7de9769aa",
+    "blockingIssueCount": 1,
+    "subjectsAsActuallyReportedBeforeRepair": [
+      {
+        "subject": "mathematik",
+        "denominator": 807,
+        "strictComplete": 807,
+        "remaining": 0,
+        "gates": {
+          "currentDescriptionResolutions": 807,
+          "currentPositiveEvidenceProfiles": 807,
+          "currentSemanticAtomicityDecisions": 807,
+          "currentMemoryReviewDecisions": 807,
+          "currentVisualizationQaRecords": 807
+        },
+        "requiredChecks": [
+          {
+            "id": "semantic-kind-scope",
+            "status": "pass"
+          },
+          {
+            "id": "description-review-validation",
+            "status": "pass"
+          },
+          {
+            "id": "positive-evidence-validation",
+            "status": "pass"
+          },
+          {
+            "id": "semantic-atomicity-check",
+            "status": "pass"
+          },
+          {
+            "id": "memory-card-check",
+            "status": "pass"
+          },
+          {
+            "id": "visualization-freshness-and-approval-check",
+            "status": "pass"
+          }
+        ],
+        "strictCompletionReady": true,
+        "issues": []
+      },
+      {
+        "subject": "physik",
+        "denominator": 481,
+        "strictComplete": 0,
+        "remaining": 481,
+        "gates": {
+          "currentDescriptionResolutions": 481,
+          "currentPositiveEvidenceProfiles": 481,
+          "currentSemanticAtomicityDecisions": 481,
+          "currentMemoryReviewDecisions": 481,
+          "currentVisualizationQaRecords": 0
+        },
+        "requiredChecks": [
+          {
+            "id": "semantic-kind-scope",
+            "status": "pass"
+          },
+          {
+            "id": "description-review-validation",
+            "status": "pass"
+          },
+          {
+            "id": "positive-evidence-validation",
+            "status": "pass"
+          },
+          {
+            "id": "semantic-atomicity-check",
+            "status": "pass"
+          },
+          {
+            "id": "memory-card-check",
+            "status": "pass"
+          },
+          {
+            "id": "visualization-freshness-and-approval-check",
+            "status": "fail"
+          }
+        ],
+        "strictCompletionReady": false,
+        "issues": [
+          "physik: visualization-QA freshness check failed: Goal visualization QA ledger(s) are stale: | - curricula/DE/Gymnasium/quality/goal-visualization-qa/physik.qa.json"
+        ]
+      },
+      {
+        "subject": "chemie",
+        "denominator": 455,
+        "strictComplete": 455,
+        "remaining": 0,
+        "gates": {
+          "currentDescriptionResolutions": 455,
+          "currentPositiveEvidenceProfiles": 455,
+          "currentSemanticAtomicityDecisions": 455,
+          "currentMemoryReviewDecisions": 455,
+          "currentVisualizationQaRecords": 455
+        },
+        "requiredChecks": [
+          {
+            "id": "semantic-kind-scope",
+            "status": "pass"
+          },
+          {
+            "id": "description-review-validation",
+            "status": "pass"
+          },
+          {
+            "id": "positive-evidence-validation",
+            "status": "pass"
+          },
+          {
+            "id": "semantic-atomicity-check",
+            "status": "pass"
+          },
+          {
+            "id": "memory-card-check",
+            "status": "pass"
+          },
+          {
+            "id": "visualization-freshness-and-approval-check",
+            "status": "pass"
+          }
+        ],
+        "strictCompletionReady": true,
+        "issues": []
+      },
+      {
+        "subject": "biologie",
+        "denominator": 397,
+        "strictComplete": 397,
+        "remaining": 0,
+        "gates": {
+          "currentDescriptionResolutions": 397,
+          "currentPositiveEvidenceProfiles": 397,
+          "currentSemanticAtomicityDecisions": 397,
+          "currentMemoryReviewDecisions": 397,
+          "currentVisualizationQaRecords": 397
+        },
+        "requiredChecks": [
+          {
+            "id": "semantic-kind-scope",
+            "status": "pass"
+          },
+          {
+            "id": "description-review-validation",
+            "status": "pass"
+          },
+          {
+            "id": "positive-evidence-validation",
+            "status": "pass"
+          },
+          {
+            "id": "semantic-atomicity-check",
+            "status": "pass"
+          },
+          {
+            "id": "memory-card-check",
+            "status": "pass"
+          },
+          {
+            "id": "visualization-freshness-and-approval-check",
+            "status": "pass"
+          }
+        ],
+        "strictCompletionReady": true,
+        "issues": []
+      },
+      {
+        "subject": "wirtschaftswissenschaften",
+        "denominator": 346,
+        "strictComplete": 346,
+        "remaining": 0,
+        "gates": {
+          "currentDescriptionResolutions": 346,
+          "currentPositiveEvidenceProfiles": 346,
+          "currentSemanticAtomicityDecisions": 346,
+          "currentMemoryReviewDecisions": 346,
+          "currentVisualizationQaRecords": 346
+        },
+        "requiredChecks": [
+          {
+            "id": "semantic-kind-scope",
+            "status": "pass"
+          },
+          {
+            "id": "description-review-validation",
+            "status": "pass"
+          },
+          {
+            "id": "positive-evidence-validation",
+            "status": "pass"
+          },
+          {
+            "id": "semantic-atomicity-check",
+            "status": "pass"
+          },
+          {
+            "id": "memory-card-check",
+            "status": "pass"
+          },
+          {
+            "id": "visualization-freshness-and-approval-check",
+            "status": "pass"
+          }
+        ],
+        "strictCompletionReady": true,
+        "issues": []
+      }
+    ]
+  },
+  "specificCorrection": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/semiconductor-stage-path-current-v1/post-corrected-independent-review-v3/strict-central-check/visualization-freshness-repair.receipt.json",
+    "sha256": "sha256:e8253118cad0ac8d4e673b9077a940a8b0e993a7246c27a5779dec2a85194892",
+    "description": "One derived cluster description and native row ordering; all512 images/hashes/AI/human review fields preserved. Exact current cluster raster and four-child scope were actually read; no blanket new image approval.",
+    "targetedFreshnessExitCode": 0,
+    "reviewBindingCheckExitCode": 0
+  },
+  "nextIntegratedAcceptance": "Root will run full curriculum-status generation, which internally calls generateDeepUnderstandingRollout, inspect all five current CQR-303 rows and unchanged M7 floors, then finish fresh integratedCI/main. No second standalone complete central CLI was run by QA. Do not claim the failed first run passed.",
+  "immutableV9": {
+    "registryPath": "curricula/DE/Gymnasium/provenance/prerequisite-reduction-proof-registry.json",
+    "sha256": "sha256:a48b52ca0449ff75dce93e93a3ade8982210d32a03f9a585a03b935ebed052b7",
+    "proofContract": "frozen-goal-scoped-prerequisite-reduction-v9",
+    "unchanged": true
+  },
+  "limitations": [
+    "Machine content/QA evidence only: no human approval, observed learner performance or provider/host acceptance.",
+    "Current3 receives page/P/preparation/image input, not independent native examData. No new review of unsupplied old assessment rubrics is claimed.",
+    "Own amplifier-experiment competence remains explicit within the active goal for the next coherent practical-method delivery; this firstwave does not claim complete NTG5.1 executioncoverage.",
+    "No learner results were written, transferred or upgraded; interpretation7d/88 and actualexecution77ab/2cfd have separate stable identities."
+  ]
+}

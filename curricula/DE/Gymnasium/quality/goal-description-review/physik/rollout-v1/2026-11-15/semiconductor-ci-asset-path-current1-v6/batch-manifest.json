@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "physik-material-classification-asset-current-20261115-v6",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-15/semiconductor-ci-asset-path-current1-v6.config.json",
+  "configDigest": "sha256:00caf40628d870f78ec286ad25b892a2c311db7261f21be0129cb991739eff12",
+  "goalIds": [
+    "7badac4d-2874-5b3a-87e8-bf8f4440b2a6"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 481,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/semiconductor-ci-asset-path-current-v6/current-review.goal-book.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:99e7b9c2d2fdd17b9ada10cbed8781346ad778669468ef3736d29e276bc63b8d"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:8dd93ae5db64046f567305ec6ec88f7365ba8afe546081c5a9683a4989d87b7d",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:8173d924e40ec8db2a08ec14da06891f2a06858d6cb01135e0eca1d7b78391a0",
+    "reviewInputFingerprint": "sha256:c498694a31525c35924badbea579d763f8d265534a4719efcdf14d91d0b8b112",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "physik-material-classification-asset-current-20261115-v6-a",
+        "campaignDigest": "sha256:a6136121ab78df1fec40b90fede42d4829b9200e268bf1e017fbbb2099a7ddc0",
+        "roundId": "physik-material-classification-asset-current-20261115-v6-first-pass-a",
+        "independenceGroupId": "physik-material-classification-asset-current-20261115-v6-independent-a",
+        "batchId": "physik-material-classification-asset-current-20261115-v6-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:25a6c64dcd1eae1b52517805bde70273b10e5109f270cf760632c25953b8d10c"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "physik-material-classification-asset-current-20261115-v6-b",
+        "campaignDigest": "sha256:efa089e2ef828695425aff4da9f8337786fc68e0d75a8167aefaa11982629962",
+        "roundId": "physik-material-classification-asset-current-20261115-v6-first-pass-b",
+        "independenceGroupId": "physik-material-classification-asset-current-20261115-v6-independent-b",
+        "batchId": "physik-material-classification-asset-current-20261115-v6-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:b0b866c7564f2a0e39f22bfa845691cca2c8fe7f25c8b5c8ecfe35016caf1f30"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "runId": "physik-asset-current-v6-a-native-20261115T082750Z",
+  "reviewType": "genuine independent blind AI first pass, native D round A",
+  "reviewerIdentity": {
+    "provider": "OpenAI",
+    "requestedModel": "gpt-6.1-sol",
+    "requestedReasoningEffort": "ultra",
+    "identityBasis": "Parent reports requested spawn configuration; no independent runtime attestation or human review claim."
+  },
+  "timing": {
+    "firstCapturedInspectionTime": "2026-11-15T08:26:38Z",
+    "finalBoundInputRereadStartedAt": "2026-11-15T08:27:50Z",
+    "reviewOutputCompletedAt": "2026-11-15T08:28:53Z",
+    "receiptCreatedAt": "2026-11-15T08:29:26Z",
+    "note": "Initial prompt, criteria, schema, batch and current-profile reading preceded the first captured clock time. Run timestamps bind the explicitly timed final reread and authored output."
+  },
+  "decision": {
+    "goalId": "7badac4d-2874-5b3a-87e8-bf8f4440b2a6",
+    "description": "keep",
+    "evidenceProfileRecommendation": "none",
+    "recordStatus": "candidate",
+    "reviewAuthority": "ai_candidate"
+  },
+  "actualContentInputsRead": [
+    "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-15/semiconductor-ci-asset-path-current1-v6/round-a/prompt.md",
+    "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-15/semiconductor-ci-asset-path-current1-v6/round-a/criteria.md",
+    "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-15/semiconductor-ci-asset-path-current1-v6/round-a/review-bundle-manifest.json",
+    "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-15/semiconductor-ci-asset-path-current1-v6/round-a/description-review-campaign.json",
+    "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-15/semiconductor-ci-asset-path-current1-v6/round-a/description-review-input.json",
+    "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-15/semiconductor-ci-asset-path-current1-v6/round-a/contracts/goal-description-review-record.schema.json",
+    "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-15/semiconductor-ci-asset-path-current1-v6/round-a/batches/physik-material-classification-asset-current-20261115-v6-first-pass-a.batch-001.input.jsonl",
+    "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-15/semiconductor-ci-asset-path-current1-v6/bundle/contracts/goal-evidence-ai-run-manifest.schema.json",
+    "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-15/semiconductor-ci-asset-path-current1-v6/bundle/book.pdf",
+    "app/scripts/validateGoalDescriptionReviewCampaignResults.ts",
+    "app/scripts/validateGoalDescriptionReviewCampaign.ts"
+  ],
+  "imagesActuallyViewed": [
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/physik/7badac4d-2874-5b3a-87e8-bf8f4440b2a6/7badac4d-2874-5b3a-87e8-bf8f4440b2a6.png",
+      "digest": "sha256:2a9dc2fb15e90877440ec9bf166419105d2ca96ebd13cd0368b5b666af5ac4b7",
+      "boundDigestMatched": true
+    },
+    {
+      "path": "/tmp/physics-asset-current-v6-round-a-page.png",
+      "derivedFrom": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-15/semiconductor-ci-asset-path-current1-v6/bundle/book.pdf",
+      "physicalPdfPage": 3,
+      "logicalGoalPage": 1,
+      "method": "pdftoppm followed by view_image"
+    }
+  ],
+  "reviewScope": "Complete DE/EN competence, canonical context, prerequisite/successor titles, page context, exact image, complete current positive-understanding-evidence-v2 profile including both application cases. No official source-mapping or full effective-projection verification claimed.",
+  "independence": "No round B, earlier review content, canonical diff, other-agent review output or author rationale outside the explicitly supplied current profile was inspected. A broad filename-only asset discovery was stopped; it exposed file paths, not prior review contents.",
+  "nativeValidation": {
+    "command": "npx tsx scripts/validateGoalDescriptionReviewCampaignResults.ts --bundle ../curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-15/semiconductor-ci-asset-path-current1-v6/round-a/review-bundle-manifest.json --input ../curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-15/semiconductor-ci-asset-path-current1-v6/round-a/description-review-input.json --campaign ../curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-15/semiconductor-ci-asset-path-current1-v6/round-a/description-review-campaign.json --batches-dir ../curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-15/semiconductor-ci-asset-path-current1-v6/round-a/batches --results-dir ../curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-15/semiconductor-ci-asset-path-current1-v6/round-a/results",
+    "workingDirectory": "/home/enpasos/projects/skillpilot/app",
+    "exitCode": 0,
+    "stdout": "Goal-description review campaign results valid: 1",
+    "coverage": "Native JSON schema, exact campaign/batch/goal/text/fingerprint bindings, output digest and exact result-directory inventory."
+  },
+  "outputFiles": [
+    "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-15/semiconductor-ci-asset-path-current1-v6/round-a/results/physik-material-classification-asset-current-20261115-v6-first-pass-a.batch-001.records.jsonl",
+    "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-15/semiconductor-ci-asset-path-current1-v6/round-a/results/physik-material-classification-asset-current-20261115-v6-first-pass-a.batch-001.run.json",
+    "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-15/semiconductor-ci-asset-path-current1-v6/round-a/review-generation-parameters.json"
+  ],
+  "outputDigest": "sha256:23481691ab8e582452dc6d3f814d50fa191382e04c4383b945a10afa29555af6",
+  "authority": "AI candidate only; no active curriculum/profile edit, automatic approval, native finalization, publication or learner mastery claim."
+}

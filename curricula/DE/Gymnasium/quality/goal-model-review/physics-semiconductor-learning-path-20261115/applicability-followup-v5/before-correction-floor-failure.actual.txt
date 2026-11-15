@@ -1,0 +1,19 @@
+
+> skillpilot@0.0.0 check:curriculum-maturity-floors
+> tsx scripts/checkCurriculumMaturityFloors.ts --base-ref origin/main
+
+/home/enpasos/projects/skillpilot/app/scripts/checkCurriculumMaturityFloors.ts:34
+  if (!condition) throw new Error(`Curriculum maturity gate: ${message}`)
+                        ^
+
+
+Error: Curriculum maturity gate: 7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a: current M4 differs from pin M7
+    at ensure (/home/enpasos/projects/skillpilot/app/scripts/checkCurriculumMaturityFloors.ts:34:25)
+    at checkCurriculumMaturityPolicy (/home/enpasos/projects/skillpilot/app/scripts/checkCurriculumMaturityFloors.ts:103:5)
+    at main (/home/enpasos/projects/skillpilot/app/scripts/checkCurriculumMaturityFloors.ts:166:3)
+    at <anonymous> (/home/enpasos/projects/skillpilot/app/scripts/checkCurriculumMaturityFloors.ts:172:85)
+    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)
+
+Node.js v20.20.2

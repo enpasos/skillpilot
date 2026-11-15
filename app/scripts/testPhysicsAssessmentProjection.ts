@@ -52,9 +52,8 @@ const diodeTaskIds = [
 const expectedSekITasks = (view: CompositionView): Array<{ goalId: string; wrapperId: string }> => {
   if (view.scope.stage !== 'CrossStage') return []
   const jurisdiction = view.scope.jurisdiction ?? ''
-  if (diodeSekIJurisdictions.has(jurisdiction)) {
-    return [{ goalId: diodeTaskIds[0], wrapperId: 'physics-final-diode-prerequisite-practice' }]
-  }
+  // Upper-secondary demand alone does not establish a lower-secondary source placement.
+  if (diodeSekIJurisdictions.has(jurisdiction)) return []
   const diodeTasks = diodeTaskIds.map((goalId) => ({ goalId, wrapperId: 'physics-final-diode-seki' }))
   if (['DE-SL', 'DE-SN'].includes(jurisdiction)) return diodeTasks
   if (['DE-ST', 'DE-TH'].includes(jurisdiction)) return diodeTasks.slice(0, 1)
@@ -194,9 +193,8 @@ for (const filename of readdirSync(viewDirectory).filter((name) => name.endsWith
     const sourceRoot = canonicalById.get(rootId)!
     // These CrossStage views keep established Sek-I tasks in their original
     // sections and explicitly compose the remaining canonical Q4 assessments.
-    const projectedRootId = rootId === practiceRootIds[4] && preservedSekITasks.length > 0
-      ? projected.goals.find((goal) => goal.extendedData?.compositionNodeId === 'physics-q4-practice')?.id
-      : rootId
+    const composedQ4Root = projected.goals.find((goal) => goal.extendedData?.compositionNodeId === 'physics-q4-practice')?.id
+    const projectedRootId = rootId === practiceRootIds[4] && composedQ4Root ? composedQ4Root : rootId
     assert(projectedRootId && visible.has(projectedRootId), `${view.viewId}: missing assessment collection ${sourceRoot.title}`)
     if (view.scope.stage === 'CrossStage') {
       assert((ancestorsById.get(projectedRootId) ?? []).some((id) => /^Sekundarstufe II(?:\s|$)/u.test(byId.get(id)!.title)),
@@ -237,10 +235,10 @@ assert.equal(viewCount, 60, 'Cover every existing GK/LK and SekII/CrossStage ass
 assert.equal(fermiScopeViewCount, 69, 'Check exact Fermi assessment target visibility in every Physics composition view.')
 assert.equal(jurisdictions.size, 14, 'Cover all jurisdictions using these Physics assessment collections.')
 assert.equal(kinematicsTaskPairs, 120, 'Both reviewed kinematics assessments must appear in all 60 shared GK/LK exercise views.')
-assert.equal(practiceTaskPairs, 3186,
-  'Preserve the existing 3006 practice placements, the 120 reviewed kinematics placements and the 60 placements of the constant-acceleration unit assessment.')
+assert.equal(practiceTaskPairs, 3246,
+  'Preserve the 3186 prior upper practice placements and the 60 actual placements of the existing band-assessment ID moved to its proper upper collection.')
 assert.equal(abiturTaskPairs, 480, 'Every applicable view must expose both Abitur sample exams and all eight proposals.')
-assert.equal(preservedSekITaskPairs, 40, 'Preserve the established Sek-I task placement in every affected CrossStage view.')
+assert.equal(preservedSekITaskPairs, 24, 'Preserve the source-backed Sek-I task placements; upper demand alone stays in upper preparation.')
 assert.equal(preservedPrerequisiteOnlyPairs, 161, 'Preserve every existing Q4 prerequisite-only role affected by explicit task references.')
 assert.equal(filteredPrerequisiteOnlyPairs, 48, 'Course and jurisdiction filters must not silently reintroduce these support tasks as targets.')
 const routeProfile = routeProfiles.find((profile) => profile.profileId === 'canonical-physics-sek1')

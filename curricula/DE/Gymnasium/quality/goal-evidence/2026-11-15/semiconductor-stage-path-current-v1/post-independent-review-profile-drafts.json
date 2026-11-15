@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "status": "authoring-draft-only-no-native-binding",
+  "purpose": "Actual profile authoring after independent findings; final canonical/P/144 alignment and native current-input validation remain required. No human approval or observed learner execution.",
+  "goals": [
+    {
+      "goalId": "dc55adac-91a5-5cc3-ab47-be008480616f",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "voltage-point-and-polarity",
+            "essentialUnderstandingDe": "Polung ordnet einen Bereich der vorgegebenen Kennlinie zu; erst die angegebene Diodenspannung und die zugehörige Stromangabe entscheiden über nennenswerten Strom. Positive Spannung allein genügt nicht.",
+            "essentialUnderstandingEn": "Polarity selects a region of the supplied characteristic; the stated diode voltage and corresponding current determine whether current is appreciable. Positive voltage alone is insufficient.",
+            "observablePerformanceDe": "Verknüpft die markierten A/K-Bezüge des neuen Schaltplans mit konkreten Punkten der Kennlinie und unterscheidet kleinen sowie nennenswerten Durchlassstrom vom kleinen Sperrstrom.",
+            "observablePerformanceEn": "Connects marked A/K references in a new circuit diagram with specific characteristic points and distinguishes small and appreciable forward currents from small reverse current."
+          },
+          {
+            "id": "range-and-transfer",
+            "essentialUnderstandingDe": "Kennlinien sind an Bauteil, Temperatur und dargestellten Spannungsbereich gebunden. Ein kleiner Sperrstrom ist nicht exakt null; ein Diagramm begründet weder eine universelle 0,7 V-Schwelle noch Prognosen außerhalb seines Bereichs.",
+            "essentialUnderstandingEn": "Characteristics are bound to component, temperature and plotted voltage range. Small reverse current is not exactly zero; one plot establishes neither a universal 0.7 V threshold nor predictions beyond its range.",
+            "observablePerformanceDe": "Überträgt die Punktdeutung auf gespiegelte Beschaltung und eine andere gegebene Kennlinie; benennt fehlende Grundlage außerhalb des Bereichs statt zu extrapolieren.",
+            "observablePerformanceEn": "Transfers point interpretation to a mirrored circuit and another supplied characteristic; identifies missing evidence outside the range instead of extrapolating."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "voltage-point-and-polarity",
+            "range-and-transfer"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "forward-position",
+            "textDe": "Zwei positive Diodenspannungen auf flachem und steilem Teil derselben Kennlinie.",
+            "textEn": "Two positive diode voltages on shallow and steep parts of the same characteristic."
+          },
+          {
+            "id": "new-diode-layout",
+            "textDe": "Neue Kennlinie mit anderem Durchlassanstieg und gespiegelten A/K-Anschlüssen; alle Spannungen beziehen sich auf A gegen K.",
+            "textEn": "Fresh characteristic with a different forward rise and mirrored A/K terminals; all voltages reference A relative to K."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "three-stated-operating-points",
+            "taskDemandDe": "Ein geschlossener strombegrenzter Kleinspannungskreis und eine Kennlinie für eine Diode bei konstanter Temperatur sind vorgegeben. U_D ist A gegen K, I_D A nach K. Die dargestellte Kennlinie reicht von −1 V bis +0,8 V und gibt bei +0,2 V einen sehr kleinen positiven, bei +0,6 V einen nennenswerten positiven und bei −0,8 V einen sehr kleinen negativen Strom an. Deute alle drei Betriebspunkte im Schaltplan und prüfe: Positive Diodenspannung bedeutet immer nennenswerten Strom.",
+            "taskDemandEn": "A closed current-limited low-voltage circuit and a characteristic for one diode at fixed temperature are supplied. U_D references A to K and I_D A to K. The plotted range is −1 V to +0.8 V, giving very small positive current at +0.2 V, appreciable positive current at +0.6 V and very small negative current at −0.8 V. Interpret all three operating points in the circuit and assess: Positive diode voltage always means appreciable current.",
+            "expectedPerformanceDe": "Beide positiven Spannungen sind Durchlasspolung, aber nur der steile Betriebspunkt zeigt hier nennenswerten Strom. Der negative Punkt ist Sperrpolung mit kleinem Strom gegen die Bezugsrichtung. Die Person begründet jede Aussage am angegebenen Punkt, lehnt die pauschale Durchlassregel ab und behauptet keine exakte Null.",
+            "expectedPerformanceEn": "Both positive voltages represent forward bias, but only the steep-branch point shows appreciable current here. The negative point is reverse bias with small current opposite the reference. The learner justifies every conclusion at the stated point, rejects the blanket forward-bias rule and claims no exact zero.",
+            "understandingFocusDe": "Gleiche Polung, unterschiedliche Stromaussage: tatsächliche Kennlinienanwendung statt Polungsetikett.",
+            "understandingFocusEn": "Same polarity, different current conclusion: actual characteristic use rather than a polarity label."
+          },
+          {
+            "id": "mirrored-second-characteristic",
+            "taskDemandDe": "Eine neue Diode ist räumlich gespiegelt; A/K bleiben bezeichnet. Ihre bereitgestellte Kennlinie bei festgehaltener Temperatur reicht von −1 V bis +2,4 V. Bei +0,6 V ist der Strom sehr klein, bei +2,1 V nennenswert; bei −0,7 V ist ein sehr kleiner negativer Strom angegeben. Bestimme die drei Fälle und beurteile Prognosen für −3 V sowie die allgemeine 0,7 V-Regel.",
+            "taskDemandEn": "A new diode is mirrored spatially while A/K remain labelled. Its supplied fixed-temperature characteristic ranges from −1 V to +2.4 V. Current is very small at +0.6 V and appreciable at +2.1 V; a very small negative current is given at −0.7 V. Determine all three cases and assess predictions for −3 V and the universal 0.7 V rule.",
+            "expectedPerformanceDe": "Die Person bestimmt Polung und Strom jeweils aus Anschlussdefinition und neuer Kennlinie. Die geänderte Durchlasslage widerlegt eine universelle Schwelle. Für −3 V liegt kein dargestellter Wert vor; ohne weitere Daten wird weder fortgesetzte Sperrung noch Durchbruch behauptet. Es werden keine eigenen Messungen ausgegeben.",
+            "expectedPerformanceEn": "The learner determines polarity and current from terminal definitions and the new curve. The shifted forward rise refutes a universal threshold. No plotted value exists for −3 V; without more data neither continued blocking nor breakdown is claimed. No personal measurements are asserted.",
+            "understandingFocusDe": "Echter Bauteil-/Layoutwechsel und explizite Bereichsgrenze bei bereitgestellten Daten.",
+            "understandingFocusEn": "A genuine component/layout change and explicit range boundary with supplied data."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "af50bb9a-fd7b-50f5-9698-48c4efe99032",
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "supplied-load-model",
+            "essentialUnderstandingDe": "Im vorgegebenen Emitterschaltungsmodell stammt die Lastenergie aus der festen Versorgung. Das hier zu lernende Lastmodell besagt: Größerer Kollektorstrom vergrößert den Spannungsabfall am gegebenen Lastwiderstand und verkleinert den verbleibenden Ausgangsanteil. Dies wird aus bereitgestelltem Modell und Daten entwickelt, nicht als bereits gemeisterte allgemeine Kirchhoff-/Ohm-Kompetenz vorausgesetzt.",
+            "essentialUnderstandingEn": "In the supplied common-emitter model, load energy comes from the fixed supply. The load model learned here states that greater collector current increases the drop across the given load resistor and reduces the remaining output share. This is developed from supplied model/data, not assumed as prior general Kirchhoff/Ohm mastery.",
+            "observablePerformanceDe": "Verknüpft Basisansteuerung, vorgegebene Kollektorstromänderung, Widerstandsabfall und Ausgang; begründet die schaltungsspezifische Umkehr und die Energiequelle aus dem Material.",
+            "observablePerformanceEn": "Connects base drive, supplied collector-current change, resistor drop and output; uses the material to justify this circuit-specific inversion and energy source."
+          },
+          {
+            "id": "operating-point-and-limits",
+            "essentialUnderstandingDe": "Eine kleine Signaländerung lässt sich nur innerhalb des angegebenen aktiven Bereichs durch das vorgegebene Verstärkermodell fortsetzen. Sperren und Sättigung begrenzen den Ausgang; eine größere formale Modelländerung ist nicht automatisch physikalisch erreichbar.",
+            "essentialUnderstandingEn": "A small signal variation can be propagated by the supplied amplifier model only within the stated active region. Cutoff and saturation bound the output; a larger formal model variation is not automatically physically attainable.",
+            "observablePerformanceDe": "Prüft beide Ausgangsgrenzen, unterscheidet unverzerrte kleine Änderungen von Begrenzung und wählt bei gegebenen Alternativen einen geeigneteren Arbeitspunkt.",
+            "observablePerformanceEn": "Checks both output limits, distinguishes undistorted small changes from clipping and selects a more suitable bias point among supplied alternatives."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "supplied-load-model",
+            "operating-point-and-limits"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "bias-position",
+            "textDe": "Gleiche kleine Signaländerung bei mittlerem und nahe der Sättigungsgrenze liegendem Arbeitspunkt.",
+            "textEn": "The same small signal change at a central bias point and near saturation."
+          },
+          {
+            "id": "supplied-representation",
+            "textDe": "Vorgegebene Lastbeziehung mit Spannungstabelle oder qualitativer Lastkennlinie übersetzen; keine zusätzliche Messdurchführung.",
+            "textEn": "Translate a supplied load relation using a voltage table or qualitative load characteristic; no extra experimental execution."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "provided-load-explanation",
+            "taskDemandDe": "Ein vollständig beschrifteter neuer npn-Emitterschaltungsplan, die Steuerbeziehung und folgendes Lastmodell sind vorgegeben: Die Versorgung beträgt 5 V; Widerstandsabfall und Ausgang teilen diese feste Spannung auf. Die bereitgestellte Tabelle zeigt für steigende Kollektorströme die Paare(U_R,U_out)=(1 V,4 V),(2 V,3 V),(3 V,2 V). Der aktive Ausgangsbereich ist 0,2 V bis 4,8 V. Erkläre aus diesem hier eingeführten Modell die Wirkung einer kleinen Erhöhung des Eingangssignals, die laut Steuerdaten den Kollektorstrom erhöht; beurteile Energiequelle und Begrenzung.",
+            "taskDemandEn": "A fully labelled fresh npn common-emitter plan, its control relation and this load model are supplied: The supply is 5 V; resistor drop and output share that fixed voltage. The supplied table gives(U_R,U_out)=(1 V,4 V),(2 V,3 V),(3 V,2 V) for rising collector currents. The active output range is 0.2 V to 4.8 V. Use this newly introduced model to explain a small input increase which, according to the control data, increases collector current; assess energy source and clipping.",
+            "expectedPerformanceDe": "Der Widerstandsabfall nimmt zu und der verbleibende Ausgang ab. Die Person begründet die Umkehr für diese Emitterschaltung und prüft, dass alle angegebenen kleinen Ausgangsänderungen im aktiven Bereich bleiben. Energie stammt aus der 5 V-Versorgung; das Eingangssignal erzeugt sie nicht. Die Beziehung wird am gelieferten Modell erklärt, nicht aus fehlendem Vorwissen behauptet und nicht auf jede Verstärkertopologie übertragen.",
+            "expectedPerformanceEn": "The resistor drop increases and the remaining output decreases. The learner explains inversion for this common-emitter circuit and checks that all stated small output variations remain in the active region. Energy comes from the 5 V supply; the input does not create it. The relation is explained from the supplied model, not asserted as missing prior knowledge or generalised to every amplifier topology.",
+            "understandingFocusDe": "Das tatsächliche neue Lastmodell vermittelt die fehlende Verbindung zwischen Steuerstrom, Spannungsaufteilung und Ausgang.",
+            "understandingFocusEn": "The actual new load model teaches the missing connection among controlled current, voltage sharing and output."
+          },
+          {
+            "id": "new-bias-clipping",
+            "taskDemandDe": "Bei derselben vorgegebenen Modellklasse liegt der Ausgangsarbeitspunkt nun bei 0,5 V. Das angegebene lineare Kleinsignalmodell würde bei der vorgegebenen Signaländerung Ausgangswerte von −0,3 V bis 1,3 V liefern; gültig ist es nur zwischen 0,2 V und 4,8 V. Erkläre die tatsächliche Grenze und wähle aus vorgegebenen Ausgangsarbeitspunkten 1,0 V,2,5 V und 4,5 V den mit größtem beidseitigem Spielraum. Begründe mit dem bereitgestellten Lastmodell.",
+            "taskDemandEn": "In the same supplied model class, the output bias is now 0.5 V. The given linear small-signal model would produce outputs from −0.3 V to 1.3 V for the stated signal change, but is valid only from 0.2 V to 4.8 V. Explain the actual limit and choose the output bias with greatest two-sided headroom from 1.0 V,2.5 V and 4.5 V. Justify using the supplied load model.",
+            "expectedPerformanceDe": "Die formal negative Ausgangsprognose überschreitet die untere Modellgrenze; die Ausgangsschwingung wird auf dieser Seite begrenzt, statt die Formel unbegrenzt fortzusetzen.2,5 V bietet gegenüber den angegebenen Grenzen den größten beidseitigen Spielraum. Größerer Widerstandsabfall lässt bei fester Versorgung weniger Ausgang übrig; das begründet die betroffene Signalrichtung. Ein konstanter Verstärkungsfaktor außerhalb des aktiven Bereichs wird nicht behauptet.",
+            "expectedPerformanceEn": "The formally negative prediction exceeds the lower model limit; the output clips on that side rather than extending the formula indefinitely.2.5 V gives the largest two-sided headroom within the stated bounds. Greater resistor drop leaves less output at fixed supply, explaining which signal direction is limited. Constant gain outside the active region is not claimed.",
+            "understandingFocusDe": "Frischer Arbeitspunkt-/Modellgrenzenwechsel prüft begründete Prognose und gezielte Korrektur.",
+            "understandingFocusEn": "A fresh bias/model-limit variation tests justified prediction and a targeted correction."
+          }
+        ]
+      }
+    }
+  ]
+}

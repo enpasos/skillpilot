@@ -1,0 +1,393 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "indexFormatVersion",
+    "generatedBy",
+    "canonicalDomain",
+    "catalog",
+    "canonicalSources",
+    "activationInventory",
+    "plans",
+    "views",
+    "inventorySources",
+    "activationSource"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "https://skillpilot.com/schemas/curriculum-package/v1.3/stage-plan-projection-index.schema.json"
+    },
+    "indexFormatVersion": {
+      "const": "1.0"
+    },
+    "generatedBy": {
+      "const": "skillpilot-stage-plan-materializer-v1"
+    },
+    "canonicalDomain": {
+      "enum": [
+        "canonical-gymnasium-21",
+        "isolated-test-fixture"
+      ]
+    },
+    "catalog": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "revision"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._/-]*$"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        "revision": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000,
+          "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+        }
+      }
+    },
+    "canonicalSources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "sha256",
+          "landscapeId"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._/-]*$"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^sha256:[a-f0-9]{64}$"
+          },
+          "landscapeId": {
+            "$ref": "#/$defs/id"
+          }
+        }
+      }
+    },
+    "activationInventory": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "planIds",
+        "views"
+      ],
+      "properties": {
+        "planIds": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/id"
+          },
+          "uniqueItems": true
+        },
+        "views": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "viewId",
+              "outputPath"
+            ],
+            "properties": {
+              "viewId": {
+                "$ref": "#/$defs/id"
+              },
+              "outputPath": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._/-]*$"
+              }
+            }
+          }
+        }
+      }
+    },
+    "plans": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "source",
+          "plan"
+        ],
+        "properties": {
+          "source": {
+            "$ref": "#/$defs/source"
+          },
+          "plan": {
+            "$ref": "https://skillpilot.com/schemas/curriculum-package/v1.3/stage-plan.schema.json"
+          }
+        }
+      }
+    },
+    "views": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "viewId",
+          "landscapeId",
+          "scope",
+          "source",
+          "artifact",
+          "planIds",
+          "sourceViewIds",
+          "unitIds",
+          "structureBindings",
+          "placements",
+          "prerequisiteOnlyReferences"
+        ],
+        "properties": {
+          "viewId": {
+            "$ref": "#/$defs/id"
+          },
+          "landscapeId": {
+            "$ref": "#/$defs/id"
+          },
+          "scope": {
+            "$ref": "https://skillpilot.com/schemas/curriculum-package/v1/composition-view.schema.json#/$defs/scope"
+          },
+          "source": {
+            "$ref": "#/$defs/source"
+          },
+          "artifact": {
+            "$ref": "#/$defs/source"
+          },
+          "planIds": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "$ref": "#/$defs/id"
+            },
+            "uniqueItems": true
+          },
+          "sourceViewIds": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "$ref": "#/$defs/id"
+            },
+            "uniqueItems": true
+          },
+          "unitIds": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "$ref": "#/$defs/id"
+            },
+            "uniqueItems": true,
+            "maxItems": 2
+          },
+          "structureBindings": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "structureId",
+                "planUnitId",
+                "stage",
+                "order",
+                "after"
+              ],
+              "properties": {
+                "structureId": {
+                  "$ref": "#/$defs/id"
+                },
+                "planUnitId": {
+                  "$ref": "#/$defs/id"
+                },
+                "stage": {
+                  "enum": [
+                    "SekI",
+                    "SekII"
+                  ]
+                },
+                "order": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                "after": {
+                  "type": "array",
+                  "minItems": 0,
+                  "items": {
+                    "$ref": "#/$defs/id"
+                  },
+                  "maxItems": 1,
+                  "uniqueItems": true
+                }
+              }
+            },
+            "maxItems": 2
+          },
+          "placements": {
+            "type": "array",
+            "minItems": 0,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "goalId",
+                "planUnitId",
+                "stage",
+                "claims"
+              ],
+              "properties": {
+                "goalId": {
+                  "$ref": "#/$defs/id"
+                },
+                "planUnitId": {
+                  "$ref": "#/$defs/id"
+                },
+                "stage": {
+                  "enum": [
+                    "SekI",
+                    "SekII"
+                  ]
+                },
+                "claims": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "$ref": "#/$defs/claim"
+                  }
+                }
+              }
+            }
+          },
+          "prerequisiteOnlyReferences": {
+            "type": "array",
+            "minItems": 0,
+            "items": {
+              "$ref": "#/$defs/claim"
+            }
+          }
+        }
+      }
+    },
+    "inventorySources": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/source"
+      }
+    },
+    "activationSource": {
+      "$ref": "#/$defs/source"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/curriculum-package/v1.3/stage-plan-projection-index.schema.json",
+  "title": "SkillPilot generated stage-plan projection index 1.0 - candidate",
+  "description": "Generated digest-bound sidecar for v1 compatibility views. All unit identities, stages and order come from validated plan authorities. Claims preserve source assignment separately from learning placement. prerequisiteOnlyReferences do not claim a learning placement. Additional personal prerequisites must be derived from selected targets at their actual first need. No source coverage, pedagogy, E2 acceptance or learner mastery is certified by this index. Consumers must verify the index against the authority and raw file digests; a schema pass alone is insufficient. activationSource binds the independent activation configuration by repository path and raw SHA-256 digest.",
+  "$defs": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 300,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:+-]*$"
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._/-]*$"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        }
+      }
+    },
+    "claim": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sourceViewId",
+        "nodePath",
+        "kind",
+        "goalId",
+        "projectionRole"
+      ],
+      "properties": {
+        "sourceViewId": {
+          "$ref": "#/$defs/id"
+        },
+        "nodePath": {
+          "type": "string",
+          "pattern": "^rootNodes\\[[0-9]+\\](?:\\.children\\[[0-9]+\\])*$"
+        },
+        "kind": {
+          "enum": [
+            "goalEntry",
+            "canonicalSubtree"
+          ]
+        },
+        "goalId": {
+          "$ref": "#/$defs/id"
+        },
+        "projectionRole": {
+          "enum": [
+            "target",
+            "prerequisiteOnly"
+          ]
+        },
+        "placementBasis": {
+          "$ref": "https://skillpilot.com/schemas/curriculum-package/v1.3/composition-view.schema.json#/$defs/placementBasis"
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "canonicalDomain": {
+            "const": "canonical-gymnasium-21"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "canonicalSources": {
+            "minItems": 21,
+            "maxItems": 21
+          },
+          "inventorySources": {
+            "minItems": 1,
+            "maxItems": 1
+          }
+        }
+      }
+    }
+  ]
+}

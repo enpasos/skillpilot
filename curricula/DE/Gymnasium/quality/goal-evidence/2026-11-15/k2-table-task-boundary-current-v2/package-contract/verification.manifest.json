@@ -1,0 +1,310 @@
+{
+  "schema": "skillpilot-pr157-local-package-repair-evidence-v1",
+  "recordedAtUtc": "2026-11-15T10:53:54.128001+00:00",
+  "sourceContext": {
+    "pr": 157,
+    "failedRunId": 43700773614,
+    "failedJobId": 132777183073,
+    "headBeforeRootRepair": "161acc0d483780c6bece1be316b51fd0054c2e2f"
+  },
+  "scope": "bounded local compilation, current input binding, exact pending redistribution repair; fresh overall PR/main CI remains separate",
+  "commands": [
+    {
+      "name": "compile-current-model",
+      "script": "scripts/compile_curriculum_release_model.py",
+      "exitCode": 0,
+      "stdout": "compile.stdout.json",
+      "stderr": "compile.stderr.log"
+    },
+    {
+      "name": "independent-current-model-validation-with-default-adversarial-suite",
+      "script": "scripts/validate_curriculum_release_model.py",
+      "exitCode": 0,
+      "adversarialCaseCount": 51,
+      "stdout": "validate-model.stdout.json",
+      "stderr": "validate-model.stderr.log"
+    },
+    {
+      "name": "reproduce-original-ledger-failure",
+      "script": "scripts/generate_curriculum_package_redistribution_review.py --check (original ledger)",
+      "exitCode": 1,
+      "expectedFailure": true,
+      "stderr": "reproduce.check.stderr.log"
+    },
+    {
+      "name": "generate-pending-ledger-candidate",
+      "script": "scripts/generate_curriculum_package_redistribution_review.py --generate (absolute candidate ledger)",
+      "exitCode": 0,
+      "stdout": "candidate.generate.stdout.log",
+      "stderr": "candidate.generate.stderr.log"
+    },
+    {
+      "name": "check-pending-ledger-candidate",
+      "script": "scripts/generate_curriculum_package_redistribution_review.py --check (candidate ledger)",
+      "exitCode": 0,
+      "stdout": "candidate.check.stdout.log",
+      "stderr": "candidate.check.stderr.log"
+    },
+    {
+      "name": "redistribution-fail-closed-self-tests",
+      "script": "scripts/generate_curriculum_package_redistribution_review.py --self-test (candidate ledger)",
+      "exitCode": 0,
+      "mutationCount": 39,
+      "nativeMetadataRejectedPairs": 6,
+      "importPromptRejectedCases": 15,
+      "stdout": "candidate.self-test.stdout.log",
+      "stderr": "candidate.self-test.stderr.log"
+    },
+    {
+      "name": "source-verification-strict-local-check",
+      "script": "scripts/generate_curriculum_source_verification_review.py --check",
+      "exitCode": 0,
+      "stdout": "source-verification.check.stdout.log",
+      "stderr": "source-verification.check.stderr.log"
+    },
+    {
+      "name": "source-verification-self-test",
+      "script": "scripts/generate_curriculum_source_verification_review.py --self-test",
+      "exitCode": 0,
+      "stdout": "source-verification.self-test.stdout.log",
+      "stderr": "source-verification.self-test.stderr.log"
+    },
+    {
+      "name": "candidate-decision-equality-assertions",
+      "script": "compare_ledger_candidate.py",
+      "exitCode": 0,
+      "stdout": "candidate-delta.stdout.json"
+    },
+    {
+      "name": "current-raw-input-byte-bindings",
+      "script": "verify_current_input_bytes.py",
+      "exitCode": 0,
+      "checkedBindingCount": 1025,
+      "stdout": "current-source-pins.stdout.json",
+      "stderr": "current-source-pins.stderr.log"
+    },
+    {
+      "name": "candidate-shell-syntax",
+      "script": "bash -n candidate.run_curriculum_release_model_conformance.sh",
+      "exitCode": 0
+    },
+    {
+      "name": "post-validation-conformance-restored-and-active-candidate-byte-equality",
+      "exitCode": 0
+    }
+  ],
+  "candidateContentDigest": "sha256:5db6e33c9118c7382ae439e7713a8ae399a3d5ae6fb3fc8ebe1c125963439049",
+  "candidateBuildInputsSha256": "sha256:05a26409151abb27b8ddce94e258312ff60766558752006c2c18fbaf97579e37",
+  "validatedModel": {
+    "passed": true,
+    "definitionCount": 2726,
+    "referenceCount": 26339,
+    "logicalArtifactCount": 111,
+    "binaryResourceCount": 836,
+    "adversarialCaseCount": 51,
+    "semanticKindCounts": {
+      "curricularArea": 241,
+      "curricularAtomic": 807,
+      "memory": 6,
+      "orientation": 2,
+      "practiceAssessment": 188,
+      "programStructure": 7,
+      "runtimeSupport": 11
+    }
+  },
+  "changedActiveFileCount": 2,
+  "changedActiveLineCount": 3,
+  "decisionAndPublicationBoundary": {
+    "assetCount": 836,
+    "automaticAllowedClassCount": 1,
+    "classDecisionCount": 4,
+    "externalResourceCount": 76,
+    "humanApprovedAssetCount": 0,
+    "humanApprovedClassCount": 0,
+    "humanReviewItemCount": 839,
+    "pendingAssetCount": 836,
+    "pendingClassCount": 3,
+    "prohibitedAssetCount": 0,
+    "prohibitedClassCount": 0,
+    "publicationReady": false,
+    "userProvidedAssetCount": 19
+  },
+  "allRecordedInputByteBindingsEqualCurrentFiles": true,
+  "retention": {
+    "artifacts": [
+      {
+        "path": "README.md",
+        "bytes": 7188,
+        "sha256": "71bca192c4bb52b531ccfb1e9a1642bb8cd0960794bafd44a709414a2870cbb3"
+      },
+      {
+        "path": "candidate-delta.receipt.json",
+        "bytes": 1479,
+        "sha256": "88409b30170ce0cb018bf30f6a4cf28814f4cfa7bfeaf0946bac914bdae837b2"
+      },
+      {
+        "path": "candidate-delta.stdout.json",
+        "bytes": 1479,
+        "sha256": "88409b30170ce0cb018bf30f6a4cf28814f4cfa7bfeaf0946bac914bdae837b2"
+      },
+      {
+        "path": "candidate.check.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "candidate.check.stdout.log",
+        "bytes": 446,
+        "sha256": "4c6bc20dbf0a0b19954252776d40076fa7e7ac4917f28c4484cfe57847b907eb"
+      },
+      {
+        "path": "candidate.generate.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "candidate.generate.stdout.log",
+        "bytes": 471,
+        "sha256": "39090c2ea995ed3ced57a9be6735958780ed17199f1ec4ab75f0a822e81287e5"
+      },
+      {
+        "path": "candidate.review.json",
+        "bytes": 1050541,
+        "sha256": "cdc9bf84ec9e1236d7931eea54abf67ecaf83143a634f082f6a4348bfbdb98d4"
+      },
+      {
+        "path": "candidate.run_curriculum_release_model_conformance.sh",
+        "bytes": 12235,
+        "sha256": "1d4cefa89c4b3f93b868524d0c7d4a3d89b71475e97dee401fb6e06617ef2652"
+      },
+      {
+        "path": "candidate.self-test.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "candidate.self-test.stdout.log",
+        "bytes": 312,
+        "sha256": "aa1fb5779ddd2f605a8c980383f89511806e83bc7baedb6207a9acf04920e8b3"
+      },
+      {
+        "path": "compare_ledger_candidate.py",
+        "bytes": 3803,
+        "sha256": "1cbbc4908618f3828d5b8aea3dfc960b7f7a6eb0d955e163c3c1703209f31f25"
+      },
+      {
+        "path": "compile.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "compile.stdout.json",
+        "bytes": 115828,
+        "sha256": "eca2cd40b99825a32d3f8730a05b9a5567591f79ac78b2d3057b8aa6b7b02dec"
+      },
+      {
+        "path": "current-source-pins.receipt.json",
+        "bytes": 303145,
+        "sha256": "1d7d92a9292a2a98fbf704f8327316a080938652838dfdafbefa291d38b62ba1"
+      },
+      {
+        "path": "current-source-pins.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "current-source-pins.stdout.json",
+        "bytes": 1206,
+        "sha256": "de2cbf0065cea5991d88e6592b94bd2a399486057067bac57a37374e5c47d7c1"
+      },
+      {
+        "path": "original.review.json",
+        "bytes": 1050541,
+        "sha256": "b24decfe3ecd15024c3e7e31c81bd8749657b321b4b00164d90813d0967f31b5"
+      },
+      {
+        "path": "original.run_curriculum_release_model_conformance.sh",
+        "bytes": 12235,
+        "sha256": "78479b640424e5b15e3fd16d8879affa446d750e9f05961c4e9c76df68a5a5d1"
+      },
+      {
+        "path": "pending-ledger-current-binding.candidate.patch",
+        "bytes": 1699,
+        "sha256": "37c22e131a0d0b375282ca6d144c6f385231e298ee82695c94765acc2c3ba880"
+      },
+      {
+        "path": "reproduce.check.stderr.log",
+        "bytes": 249,
+        "sha256": "7f9808ce6e2a0197385a07dbb2a2740698ef4e2090bc12347eb07723742dc879"
+      },
+      {
+        "path": "reproduce.check.stdout.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "root-application.actual.json",
+        "bytes": 731,
+        "sha256": "33026fbbb1d17e6ab6d302fb482bcfd1a150a41c9321f68fabdfc8d578f3e30a"
+      },
+      {
+        "path": "source-verification.check.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "source-verification.check.stdout.log",
+        "bytes": 76,
+        "sha256": "1adcd9d115c4aed4d21e213fb61f7f09cfa84ec96917c1478a66fd7223b74b4d"
+      },
+      {
+        "path": "source-verification.self-test.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "source-verification.self-test.stdout.log",
+        "bytes": 147,
+        "sha256": "2e59417e796334a9c7168f91ad37d21b4175aebde8491fc96a6587eb9160c3b5"
+      },
+      {
+        "path": "validate-model.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "validate-model.stdout.json",
+        "bytes": 116402,
+        "sha256": "3b5b77eafd4d455872b7350c47a4397b209301643f631dee7f44411bca8a23a8"
+      },
+      {
+        "path": "verify_current_input_bytes.py",
+        "bytes": 3358,
+        "sha256": "5124bac39489cb4570a1faf14b227ddde7fb8db2994911988bdaca9908bb6d1b"
+      },
+      {
+        "path": "current-model/metadata/build-inputs.json",
+        "bytes": 547514,
+        "sha256": "05a26409151abb27b8ddce94e258312ff60766558752006c2c18fbaf97579e37"
+      },
+      {
+        "path": "current-model/metadata/field-coverage.json",
+        "bytes": 152165,
+        "sha256": "1b8ecd6d4aac6d322d147ae01f99e8526c45d57644c26a9c30ce9654a0bef9ae"
+      },
+      {
+        "path": "current-model/metadata/release-model-conformance.json",
+        "bytes": 115828,
+        "sha256": "eca2cd40b99825a32d3f8730a05b9a5567591f79ac78b2d3057b8aa6b7b02dec"
+      },
+      {
+        "path": "current-model/metadata/semantic-content-index.json",
+        "bytes": 429450,
+        "sha256": "9073d5aad7c81837687f6c676f3f925016db3f251c0c0fe54209deb279b12219"
+      }
+    ],
+    "compiledModelPayloadExcluded": true,
+    "metadataRetained": true,
+    "manifestSelfDigestExcluded": true
+  }
+}

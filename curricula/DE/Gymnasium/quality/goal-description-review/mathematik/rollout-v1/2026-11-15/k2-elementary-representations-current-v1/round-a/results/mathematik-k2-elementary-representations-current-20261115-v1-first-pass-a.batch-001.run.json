@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "math-k2-elementary-current-v1-a-native-20261115T083015Z",
+  "campaignId": "mathematik-k2-elementary-representations-current-20261115-v1-a",
+  "roundId": "mathematik-k2-elementary-representations-current-20261115-v1-first-pass-a",
+  "batchId": "mathematik-k2-elementary-representations-current-20261115-v1-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:e1a245064a9ec51f2002b140c0438b97f933e83ad3511e47b1370446cda9f517",
+  "bundleFingerprint": "sha256:7f06b11c0e67a86bb5dd73c37e6b421f2bc4c8a550909e41bf72ff267e5d805f",
+  "bookDigest": "sha256:4c602f7d633b549266e1ae5acf04c30dea9037a3c5c716982d961609f25ff12c",
+  "provider": "OpenAI",
+  "model": "gpt-6.1-sol",
+  "modelVersion": "requested GPT 6.1 Sol Ultra; no runtime attestation",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:2c0a1b58ee45eaa3a50328f8aca4171cc311f8ddce2ae087002dd4e968569b72",
+  "independenceGroupId": "mathematik-k2-elementary-representations-current-20261115-v1-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "f39c49c7-003b-471a-a33e-6cfea1d7b7b1",
+    "c9df47fa-81a9-4890-91b7-2cc80da813cb",
+    "5e7d5ff2-b92c-4989-85bc-8d87ad7edadd",
+    "0c2ddfcd-1399-41ad-aaed-4f061812602a"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_pdf",
+      "digest": "sha256:bd3e68033ef126ad3d63ec543e162b7efb634f8235ae626d802b617e36bc9fad"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:e1a245064a9ec51f2002b140c0438b97f933e83ad3511e47b1370446cda9f517"
+    }
+  ],
+  "startedAt": "2026-11-15T08:30:15Z",
+  "completedAt": "2026-11-15T08:33:26Z",
+  "status": "completed",
+  "outputDigest": "sha256:2442adfbf6ba24fa06a3b3acc157921ca0fc5a18d66d673212706918d122af7f",
+  "toolchainVersion": "codex-native-description-review-v1"
+}

@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "physik-semiconductor-diode-page-current1-20261115-v4",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-15/semiconductor-stage-path-diode-page-current1-v4.config.json",
+  "configDigest": "sha256:714324192be56f96300be419a0dc3fa9e05b7c0280cf1cd78bcdba568f1e6a80",
+  "goalIds": [
+    "dc55adac-91a5-5cc3-ab47-be008480616f"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 481,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/semiconductor-stage-path-current-v1/post-corrected-independent-review-v3/current-review.goal-book.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:532e2aaeca376b1b055238c36f877fae82104bb67bc63704119fe74435a59410"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:572346f34429d46379eeeb42d612f50decf327d85c257acf0263f3d8e32f9516",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:e43d061f553cd81c2aed9eade685939268added70d723f95a24acd4b31c9e815",
+    "reviewInputFingerprint": "sha256:b6ba0d5e1be0507c74f17ab37bdb75c64a6b9fbff92764784c543da5dd9c98b2",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "physik-semiconductor-diode-page-current1-20261115-v4-a",
+        "campaignDigest": "sha256:695d3a62d648a45896e255a0b33c3cad150e7a4a019689871d4429eff4a23311",
+        "roundId": "physik-semiconductor-diode-page-current1-20261115-v4-first-pass-a",
+        "independenceGroupId": "physik-semiconductor-diode-page-current1-20261115-v4-independent-a",
+        "batchId": "physik-semiconductor-diode-page-current1-20261115-v4-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:786d4b72057b7c4444191ed94ffdd438152e9eabfad572e25db48f448daf342e"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "physik-semiconductor-diode-page-current1-20261115-v4-b",
+        "campaignDigest": "sha256:74e0d0c2d90dd0a6b1ab320a5b9c32d4a9b2e4bab387aaa7d1b7d84229002cea",
+        "roundId": "physik-semiconductor-diode-page-current1-20261115-v4-first-pass-b",
+        "independenceGroupId": "physik-semiconductor-diode-page-current1-20261115-v4-independent-b",
+        "batchId": "physik-semiconductor-diode-page-current1-20261115-v4-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:2e66e03a9d83b52d54572b19998040284945a1666d9bddb9af1ea47799bed5ba"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

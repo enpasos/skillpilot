@@ -1,0 +1,348 @@
+[
+  {
+    "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/m7-functions-diagrams-next10-p-20260923-v1/image-bound-six.config.json",
+    "configSha256": "sha256:d58835be8a3b664a5c5fd6eb26dbf87d64a0e3fbd5abe616c51a79d5735b2c7e",
+    "reviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/m7-functions-diagrams-next10-p-20260923-v1/image-bound-six.review.jsonl",
+    "reviewSha256": "sha256:80ae6f3df74523ebe402365b7823afc7240fa266e69d1ddc2b39885a16945839",
+    "record": {
+      "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+      "schemaVersion": 2,
+      "reviewId": "canonical-math-positive-understanding-evidence-m7-functions-diagrams-next10-image-six-20260923-v1",
+      "goalFingerprintRuleVersion": "goal-evidence-v1",
+      "profileRuleVersion": "positive-understanding-evidence-v2",
+      "reviewCriteriaFingerprint": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816",
+      "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+      "goalId": "5e7d5ff2-b92c-4989-85bc-8d87ad7edadd",
+      "goalFingerprint": "sha256:d360e7a48a24e5ab09b55121d193eba385abb641190a5564ae43902b5c5fa9eb",
+      "reviewInputFingerprint": "sha256:c4f255a16414bc904bddd97469129054cad9af5ae01fd701fb3d98b0bc60ec2f",
+      "profileFingerprint": "sha256:81b855bd7930bf9b862cdf5cc9afe23d4ada60cd3262d4ca58b6c8cc437979de",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "reviewedAt": "2026-09-23T07:44:34Z",
+      "reviewer": "codex-math-m7-functions-diagrams-first-pass-2026-09-23",
+      "reason": "Current original pixels of the available school-travel bar chart reviewed KEEP in math-m7-functions-diagrams-current-20260923-v1; canonical and public asset agree at sha256:42391e707ce27f79b4d562b43858078dd801bc58f5f571de066f89472246c3f6. Image-bound AI candidate, not a human profile approval; the fresh cases do not copy the image.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "reviewRunIds": [],
+      "dissent": [],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "axes-units",
+            "essentialUnderstandingDe": "Eine Diagrammachse benennt die dargestellte Größe; Beschriftung und Einheit bestimmen, was ein abgelesener Zahlenwert bedeutet.",
+            "essentialUnderstandingEn": "A diagram axis names the represented quantity; label and unit determine the meaning of a read value.",
+            "observablePerformanceDe": "Die lernende Person benennt in einem neuen Diagramm beide Achsen, die relevante Einheit und die Bedeutung eines einzelnen Koordinaten- oder Balkenwerts.",
+            "observablePerformanceEn": "In a fresh diagram, the learner names both axes, the relevant unit and the meaning of one coordinate or bar value."
+          },
+          {
+            "id": "scale-read",
+            "essentialUnderstandingDe": "Ein Wert wird an der skalierten Achse und der passenden Kategorie oder Position abgelesen, nicht aus der bloßen Bildhöhe geschätzt.",
+            "essentialUnderstandingEn": "A value is read using the scaled axis and corresponding category or position, not guessed from visual height alone.",
+            "observablePerformanceDe": "Die lernende Person liest mehrere markierte Werte an einer ausdrücklich angegebenen Skala ab und gibt sie mit Einheit an.",
+            "observablePerformanceEn": "The learner reads several marked values from an explicit scale and gives them with units."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "axes-units",
+            "scale-read"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "diagram-type-scale",
+            "textDe": "kategoriales Balkendiagramm mit Zweierschritten gegenüber zeitlichem Liniendiagramm mit Grad-Celsius-Achse",
+            "textEn": "categorical bar chart in steps of two versus time-series line chart with a degrees-Celsius axis"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "library-bars",
+            "taskDemandDe": "Lege ein einfaches Balkendiagramm zu ausgeliehenen Büchern vor: x-Achse Mo/Di/Mi, y-Achse Bücher in Zweierschritten, Balken bei 4/8/6. Frage nach Achsen, Einheit und den Werten für Di und Mi.",
+            "taskDemandEn": "Present a simple bar chart of borrowed books: x-axis Mon/Tue/Wed, y-axis books in steps of two, bars at 4/8/6. Ask for axes, unit and the values for Tue and Wed.",
+            "expectedPerformanceDe": "Die x-Achse nennt die Wochentage, die y-Achse die Anzahl ausgeliehener Bücher; Di=8 Bücher und Mi=6 Bücher werden an der Zweierskala abgelesen.",
+            "expectedPerformanceEn": "The x-axis gives weekdays, the y-axis the number of borrowed books; Tue=8 books and Wed=6 books are read from the two-unit scale.",
+            "understandingFocusDe": "Achsenbedeutung und diskrete Skala verknüpfen.",
+            "understandingFocusEn": "Linking axis meaning and discrete scale."
+          },
+          {
+            "id": "temperature-line",
+            "taskDemandDe": "Lege ein Liniendiagramm mit x-Achse Zeit in Minuten (0, 5, 10), y-Achse Temperatur in °C (Zweierschritte) und Punkten (0,20), (5,18), (10,16) vor. Frage nach Einheiten und den Messwerten bei 5 und 10 Minuten.",
+            "taskDemandEn": "Present a line chart with time in minutes (0, 5, 10) on x, temperature in °C in steps of two on y, and points (0,20), (5,18), (10,16). Ask for units and readings at 5 and 10 minutes.",
+            "expectedPerformanceDe": "x bezeichnet Minuten, y Grad Celsius; bei 5 Minuten werden 18 °C und bei 10 Minuten 16 °C abgelesen. Es wird nicht nur eine Höhe ohne Einheit genannt.",
+            "expectedPerformanceEn": "x denotes minutes, y degrees Celsius; the readings are 18 °C at 5 minutes and 16 °C at 10 minutes, not unlabeled visual heights.",
+            "understandingFocusDe": "Positions- und Wertachse einer anderen Diagrammart sicher lesen.",
+            "understandingFocusEn": "Reading position and value axes in a different diagram type."
+          }
+        ]
+      }
+    }
+  },
+  {
+    "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/m7-functions-diagrams-next10-p-20260923-v1/image-bound-six.config.json",
+    "configSha256": "sha256:d58835be8a3b664a5c5fd6eb26dbf87d64a0e3fbd5abe616c51a79d5735b2c7e",
+    "reviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/m7-functions-diagrams-next10-p-20260923-v1/image-bound-six.review.jsonl",
+    "reviewSha256": "sha256:80ae6f3df74523ebe402365b7823afc7240fa266e69d1ddc2b39885a16945839",
+    "record": {
+      "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+      "schemaVersion": 2,
+      "reviewId": "canonical-math-positive-understanding-evidence-m7-functions-diagrams-next10-image-six-20260923-v1",
+      "goalFingerprintRuleVersion": "goal-evidence-v1",
+      "profileRuleVersion": "positive-understanding-evidence-v2",
+      "reviewCriteriaFingerprint": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816",
+      "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+      "goalId": "0c2ddfcd-1399-41ad-aaed-4f061812602a",
+      "goalFingerprint": "sha256:1f35bdd0fdeb1e323839fe9b3bd004dd894bd0a14a228ba9fededc72c35fa2e9",
+      "reviewInputFingerprint": "sha256:aef17c3f485d4b322aa111ef937f7cc7e3d399d14e0833a43c230c495ce3570d",
+      "profileFingerprint": "sha256:c0f7073ef25fe7f2623d3e8d129106de09376a3ee82707ffea13127e9da62b59",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "reviewedAt": "2026-09-23T07:44:34Z",
+      "reviewer": "codex-math-m7-functions-diagrams-first-pass-2026-09-23",
+      "reason": "Current original pixels of the available pool-visitors line chart reviewed KEEP in math-m7-functions-diagrams-current-20260923-v1; canonical and public asset agree at sha256:8090330079dfc1c4ec5752b0991a13bde32b0a95b2e820c8cea7722930284f2f. Image-bound AI candidate, not a human profile approval; fresh cases use other data.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "reviewRunIds": [],
+      "dissent": [],
+      "profile": {
+        "archetype": "data",
+        "expectations": [
+          {
+            "id": "grounded-comparison",
+            "essentialUnderstandingDe": "Eine Auffälligkeit oder ein Vergleich im Diagramm muss durch konkrete Kategorien und abgelesene Werte gestützt sein.",
+            "essentialUnderstandingEn": "A notable feature or comparison in a diagram must be supported by concrete categories and read values.",
+            "observablePerformanceDe": "Die lernende Person nennt einen höchsten oder niedrigen Wert sowie einen bezifferten Vergleich und verweist jeweils auf die dargestellten Daten.",
+            "observablePerformanceEn": "The learner identifies a highest or lowest value and a quantified comparison, referring to the plotted data in each case."
+          },
+          {
+            "id": "bounded-trend",
+            "essentialUnderstandingDe": "Ein erster Trend beschreibt den Verlauf im dargestellten Bereich und lässt Zwischenrückgänge zu; er behauptet keine Ursache oder sichere Fortsetzung.",
+            "essentialUnderstandingEn": "An initial trend describes the displayed interval and may include local dips; it asserts neither a cause nor guaranteed continuation.",
+            "observablePerformanceDe": "Die lernende Person beschreibt die Richtung eines mehrteiligen Verlaufs in Worten und benennt eine Abweichung vom Gesamttrend.",
+            "observablePerformanceEn": "The learner describes the direction of a multi-part series in words and identifies a departure from the overall trend."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "grounded-comparison",
+            "bounded-trend"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "representation-pattern",
+            "textDe": "Vergleich von Kategorien im Balkendiagramm gegenüber zeitlichem Verlauf mit lokalem Rückgang",
+            "textEn": "comparison of categories in a bar chart versus a time series with a local decline"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "club-bars",
+            "taskDemandDe": "Ein Balkendiagramm zeigt Anmeldungen A=6, B=9, C=4, D=7. Beschreibe eine Auffälligkeit und vergleiche B und C mit Zahl und Einheit.",
+            "taskDemandEn": "A bar chart shows registrations A=6, B=9, C=4, D=7. Describe a notable feature and compare B and C with number and unit.",
+            "expectedPerformanceDe": "B ist mit 9 Anmeldungen am höchsten, C mit 4 am niedrigsten; B hat 5 Anmeldungen mehr als C. Die Aussagen sind unmittelbar aus den Balken gestützt.",
+            "expectedPerformanceEn": "B is highest with 9 registrations and C lowest with 4; B has 5 more registrations than C. The statements are supported directly by the bars.",
+            "understandingFocusDe": "Vergleich an ausgewiesenen Daten statt bloßem Eindruck.",
+            "understandingFocusEn": "Comparison grounded in shown data rather than visual impression."
+          },
+          {
+            "id": "weekly-visits",
+            "taskDemandDe": "Ein Liniendiagramm zeigt 40, 50, 45, 60, 55 Besuche von Montag bis Freitag. Beschreibe Gesamtverlauf, ein Maximum und einen Gegenlauf, ohne Aussagen über Ursachen oder nächste Woche.",
+            "taskDemandEn": "A line chart shows 40, 50, 45, 60, 55 visits from Monday to Friday. Describe overall course, a maximum and a local reversal without claims about causes or next week.",
+            "expectedPerformanceDe": "Von Montag 40 bis Freitag 55 ist der Verlauf insgesamt höher, aber von Dienstag 50 auf Mittwoch 45 und Donnerstag 60 auf Freitag 55 gibt es Rückgänge; Donnerstag ist mit 60 das Maximum.",
+            "expectedPerformanceEn": "From Monday's 40 to Friday's 55 the overall level rises, but Tuesday 50 to Wednesday 45 and Thursday 60 to Friday 55 are declines; Thursday is highest at 60.",
+            "understandingFocusDe": "Vorsichtigen Trend und lokale Ausnahmen zugleich ausdrücken.",
+            "understandingFocusEn": "Expressing a cautious overall trend and local exceptions together."
+          }
+        ]
+      }
+    }
+  },
+  {
+    "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/m7-five-png-two-text-current-20260923-v1/retained/rest-ed5.config.json",
+    "configSha256": "sha256:9c890475641fcd2c8d3ca4d12ca14cb62e143b0dfe83e6d23e2e40c095e44b1b",
+    "reviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/m7-five-png-two-text-current-20260923-v1/retained/rest-ed5.review.jsonl",
+    "reviewSha256": "sha256:257ea7b4231462abeef06440cd1f227d698ea1907bfb28b61a1346025834d402",
+    "record": {
+      "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+      "schemaVersion": 2,
+      "reviewId": "canonical-math-positive-understanding-evidence-m7-vready-remainder-image-five-20260923-v1",
+      "goalFingerprintRuleVersion": "goal-evidence-v1",
+      "profileRuleVersion": "positive-understanding-evidence-v2",
+      "reviewCriteriaFingerprint": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816",
+      "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+      "goalId": "f39c49c7-003b-471a-a33e-6cfea1d7b7b1",
+      "goalFingerprint": "sha256:0afeeb0f58b616dcb851fea59313b6fed94505612e9902c2ea99740161090c34",
+      "reviewInputFingerprint": "sha256:b11b70f2ec4367cdb68089e7a373f5cb62e7cc1966843110575de7ddd6af67d2",
+      "profileFingerprint": "sha256:a64360c832898480f42bd224336ec9d56a0c943e8a3b173c5de90b2a0476d2cb",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "reviewedAt": "2026-09-23T07:00:39.000Z",
+      "reviewer": "codex-math-m7-vready-remainder-image-five-ai-candidate-2026-09-23",
+      "reason": "DE: Zwei neue Sachkontexte prüfen, ob zusammengehörige Werte, sprechende Beschriftungen und die jeweils passenden Einheiten eigenständig in eine Tabelle gebracht werden. EN: Two fresh contexts assess independent construction of paired values, meaningful headings, and appropriate units.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "reviewRunIds": [],
+      "dissent": [],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "paired-data-structure",
+            "essentialUnderstandingDe": "Eine Tabelle ordnet zu jeder Eingabe oder Kategorie genau den dazugehörigen Sachwert; Überschrift sowie Zeilen- und Spaltenordnung machen diese Zuordnung lesbar.",
+            "essentialUnderstandingEn": "A table pairs each input or category with its corresponding contextual value; its title and row-column arrangement make the pairing readable.",
+            "observablePerformanceDe": "Die lernende Person überführt neue unsortierte Sachangaben in eine geordnete Tabelle, hält jedes Wertepaar zusammen und ergänzt eine zum Inhalt passende Überschrift.",
+            "observablePerformanceEn": "The learner turns fresh unordered contextual statements into an ordered table, keeps each value pair intact, and gives the table a fitting title."
+          },
+          {
+            "id": "labels-and-units",
+            "essentialUnderstandingDe": "Spalten- oder Zeilenköpfe benennen die dargestellten Größen; eine Einheit gehört zur messbaren Größe und nicht wahllos an jede Zahl oder Kategorie.",
+            "essentialUnderstandingEn": "Row or column headers name the represented quantities; a unit belongs to a measurable quantity, not indiscriminately to every number or category.",
+            "observablePerformanceDe": "Die lernende Person beschriftet beide Größen eindeutig, trägt Stunden und Kilometer beziehungsweise Personen nur an den passenden Stellen ein und erläutert, was eine Tabellenzeile aussagt.",
+            "observablePerformanceEn": "The learner labels both quantities unambiguously, attaches hours and kilometres or people only where appropriate, and explains what one table row states."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "paired-data-structure",
+            "labels-and-units"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "data-kind",
+            "textDe": "zeitlich geordnete Messpaare gegenüber Kategorien mit Häufigkeiten",
+            "textEn": "time-ordered measurement pairs versus categories with counts"
+          },
+          {
+            "id": "unit-placement",
+            "textDe": "zwei messbare Größen gegenüber Kategorie ohne Einheit und Anzahl mit Einheit Personen",
+            "textEn": "two measurable quantities versus a unitless category and a count measured in people"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "bike-trip-notes",
+            "taskDemandDe": "Für eine Radtour liegen ungeordnete Notizen vor: nach 2 h 29 km, zu Beginn 0 km, nach 1 h 14 km. Erstelle eine gut beschriftete Tabelle mit Überschrift und erkläre die Zeile zu 2 h.",
+            "taskDemandEn": "Unordered cycling notes say: 29 km after 2 h, 0 km at the start, 14 km after 1 h. Create a clearly labelled table with a title and explain the 2 h row.",
+            "expectedPerformanceDe": "Die Tabelle ordnet Zeit t in h den Strecken s in km als (0,0), (1,14), (2,29) zu; eine Überschrift benennt die Radtour. Die letzte Zeile bedeutet 29 km nach 2 h, nicht 29 km/h.",
+            "expectedPerformanceEn": "The table pairs time t in h with distance s in km as (0,0), (1,14), (2,29), with a title identifying the ride. The final row means 29 km after 2 h, not 29 km/h.",
+            "understandingFocusDe": "Wertepaare aus Notizen erhalten, ordnen und mit zwei Einheiten beschriften.",
+            "understandingFocusEn": "Preserving and ordering pairs from notes with two distinct units."
+          },
+          {
+            "id": "school-club-survey",
+            "taskDemandDe": "In einer AG-Umfrage wählen 8 Personen Theater, 11 Musik und 6 Robotik. Stelle diese Angaben als Tabelle dar, beschrifte Kategorien und Anzahlen passend und erkläre, weshalb die AG-Namen keine physikalische Einheit bekommen.",
+            "taskDemandEn": "In a school-club survey, 8 people choose drama, 11 music and 6 robotics. Present the data as a table, label categories and counts appropriately, and explain why club names have no physical unit.",
+            "expectedPerformanceDe": "Eine Tabelle mit Überschrift enthält AG und Anzahl in Personen, die drei korrekten Zuordnungen Theater–8, Musik–11, Robotik–6. Nur die Anzahl erhält die Einheit Personen; AG-Namen sind Kategorien.",
+            "expectedPerformanceEn": "A titled table contains club and count in people, correctly pairing drama–8, music–11 and robotics–6. Only the count is measured in people; club names are categories.",
+            "understandingFocusDe": "Transfer von Messpaaren auf Kategorien mit einer einzigen sinnvollen Einheit.",
+            "understandingFocusEn": "Transfer from measurement pairs to categories with only one meaningful unit."
+          }
+        ]
+      }
+    }
+  },
+  {
+    "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/m7-five-png-two-text-current-20260923-v1/retained/rest-ed5.config.json",
+    "configSha256": "sha256:9c890475641fcd2c8d3ca4d12ca14cb62e143b0dfe83e6d23e2e40c095e44b1b",
+    "reviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/m7-five-png-two-text-current-20260923-v1/retained/rest-ed5.review.jsonl",
+    "reviewSha256": "sha256:257ea7b4231462abeef06440cd1f227d698ea1907bfb28b61a1346025834d402",
+    "record": {
+      "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+      "schemaVersion": 2,
+      "reviewId": "canonical-math-positive-understanding-evidence-m7-vready-remainder-image-five-20260923-v1",
+      "goalFingerprintRuleVersion": "goal-evidence-v1",
+      "profileRuleVersion": "positive-understanding-evidence-v2",
+      "reviewCriteriaFingerprint": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816",
+      "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+      "goalId": "c9df47fa-81a9-4890-91b7-2cc80da813cb",
+      "goalFingerprint": "sha256:2cae5f71654528b07aef69e98a849eaac5230b4fa9538bd4376e969788d31ca9",
+      "reviewInputFingerprint": "sha256:869165c0deff054470c0fe33eab938a25b87639a60f24670b50597b1bab29aa9",
+      "profileFingerprint": "sha256:1b8d6610cb2db4df1c84291cc974b2d85530ed70a13c82b727e55ec726127d4a",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "reviewedAt": "2026-09-23T07:00:39.000Z",
+      "reviewer": "codex-math-m7-vready-remainder-image-five-ai-candidate-2026-09-23",
+      "reason": "DE: Eine zeitliche und eine mengenbezogene Tabelle prüfen präzises Ablesen, Vergleich und eine in Worten belegte Beziehung ohne unbegründete Extrapolation. EN: A time table and a quantity table assess reading, comparison and a verbally supported relationship without unsupported extrapolation.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "reviewRunIds": [],
+      "dissent": [],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "read-and-compare-table-values",
+            "essentialUnderstandingDe": "Ein Tabellenwert gehört zu seiner Zeilen- und Spaltenbeschriftung; ein Vergleich bezieht sich auf die dort angegebenen Größen und Einheiten.",
+            "essentialUnderstandingEn": "A table value belongs to its row and column labels; a comparison refers to the quantities and units shown there.",
+            "observablePerformanceDe": "Die lernende Person liest in einer neuen einfachen Tabelle angefragte Werte korrekt ab, vergleicht zwei Einträge mit passender Differenz oder Ordnung und nennt die Einheit.",
+            "observablePerformanceEn": "In a fresh simple table, the learner reads requested values accurately, compares two entries using a suitable difference or ordering, and states the unit."
+          },
+          {
+            "id": "describe-supported-relationship",
+            "essentialUnderstandingDe": "Ein Zusammenhang in Worten beschreibt das erkennbare Muster der vorliegenden Zeilen; einzelne Werte belegen die Aussage, ohne mehr über nicht gezeigte Werte zu behaupten.",
+            "essentialUnderstandingEn": "A verbal relationship describes a pattern in the available rows; actual values support it without asserting more about unseen values.",
+            "observablePerformanceDe": "Die lernende Person formuliert zu den tabellierten Paaren eine zutreffende Entwicklung oder Zuordnung und stützt sie mit mindestens zwei konkreten Einträgen.",
+            "observablePerformanceEn": "The learner states a correct trend or mapping for the tabulated pairs and supports it using at least two concrete entries."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "read-and-compare-table-values",
+            "describe-supported-relationship"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "relationship-shape",
+            "textDe": "nichtmonotone Zeitreihe gegenüber gleichmäßig steigender Mengenzuordnung",
+            "textEn": "non-monotonic time series versus steadily increasing quantity mapping"
+          },
+          {
+            "id": "table-meaning",
+            "textDe": "Temperaturverlauf gegenüber Preis für Flaschenzahlen",
+            "textEn": "temperature over time versus price by bottle count"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "aquarium-temperature",
+            "taskDemandDe": "Eine Tabelle zeigt für 8, 12 und 16 Uhr die Aquariumtemperaturen 21 °C, 23 °C und 22 °C. Lies den höchsten Wert mit Zeitpunkt ab, vergleiche 8 und 12 Uhr und beschreibe den Verlauf in Worten.",
+            "taskDemandEn": "A table shows aquarium temperatures of 21 °C, 23 °C and 22 °C at 8, 12 and 16 o'clock. Read the highest value and its time, compare 8 with 12 o'clock, and describe the trend in words.",
+            "expectedPerformanceDe": "Um 12 Uhr sind es 23 °C, also 2 °C mehr als um 8 Uhr; danach sinkt der Tabellenwert bis 16 Uhr auf 22 °C. Die Aussage beschränkt sich auf die dargestellten Zeitpunkte.",
+            "expectedPerformanceEn": "The maximum shown is 23 °C at 12 o'clock, 2 °C above the 8 o'clock value; the tabulated value then drops to 22 °C at 16 o'clock. The statement concerns the shown times.",
+            "understandingFocusDe": "Ablesen und begrenzte, nicht monotone Sachdeutung.",
+            "understandingFocusEn": "Reading values and interpreting a bounded, non-monotonic trend."
+          },
+          {
+            "id": "bottle-price-mapping",
+            "taskDemandDe": "Eine andere Tabelle ordnet 1, 2, 3 und 4 Flaschen die Preise 2 €, 4 €, 6 € und 8 € zu. Vergleiche 2 und 4 Flaschen und beschreibe mit Tabellenbelegen den Zusammenhang.",
+            "taskDemandEn": "Another table pairs 1, 2, 3 and 4 bottles with prices of €2, €4, €6 and €8. Compare 2 and 4 bottles and describe the relationship using entries from the table.",
+            "expectedPerformanceDe": "2 Flaschen kosten 4 €, 4 Flaschen 8 €; der Unterschied beträgt 4 €. In den gezeigten Paaren verdoppelt sich der Preis bei Verdoppelung der Flaschenzahl, etwa 1→2 und 2→4.",
+            "expectedPerformanceEn": "Two bottles cost €4 and four cost €8, a difference of €4. In the shown pairs the price doubles when the bottle count doubles, for example 1→2 and 2→4.",
+            "understandingFocusDe": "Transfer auf eine Zuordnung mit konstantem Preis pro Stück statt Zeitverlauf.",
+            "understandingFocusEn": "Transfer to a constant-price-per-item mapping rather than a time series."
+          }
+        ]
+      }
+    }
+  }
+]
