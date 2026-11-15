@@ -1,0 +1,588 @@
+{
+  "at": "2026-11-15T16:13:25.302563+00:00",
+  "reviewer": "root",
+  "input": {
+    "path": "tmp/physics-measurement-acquisition-repair-20261115-v1/new-assessments.json",
+    "sha256": "6b7ad79fedd81f32128f80eddf91ff618113a0bb5737fc79a2f766144fde948f"
+  },
+  "numericChecks": [
+    {
+      "case": "digital-length-mean-correction-uncertainty",
+      "actual": [
+        100.226,
+        100.026,
+        0.05499999999999858
+      ],
+      "expected": [
+        100.226,
+        100.026,
+        0.055
+      ],
+      "passed": true
+    },
+    {
+      "case": "unrounded-divided-length",
+      "actual": [
+        14.289428571428571,
+        0.007857142857142655
+      ],
+      "expected": [
+        14.2894285714286,
+        0.00785714285714
+      ],
+      "passed": true
+    },
+    {
+      "case": "digital-temperature-correction-and-derived-uncertainty",
+      "actual": [
+        19.880000000000003,
+        20.180000000000003,
+        0.19999999999999965
+      ],
+      "expected": [
+        19.88,
+        20.18,
+        0.2
+      ],
+      "passed": true
+    },
+    {
+      "case": "temperature-difference",
+      "actual": [
+        10.180000000000003,
+        0.25
+      ],
+      "expected": [
+        10.18,
+        0.25
+      ],
+      "passed": true
+    },
+    {
+      "case": "analog-series-mean-half-range",
+      "actual": [
+        100.0,
+        0.5,
+        20.0,
+        0.5
+      ],
+      "expected": [
+        100,
+        0.5,
+        20,
+        0.5
+      ],
+      "passed": true
+    },
+    {
+      "case": "cart-least-squares-normal-equations",
+      "actual": [
+        -1.1310397063368782e-15,
+        -2.615963001773025e-15
+      ],
+      "expected": [
+        0,
+        0
+      ],
+      "passed": true
+    },
+    {
+      "case": "spring-least-squares-normal-equations",
+      "actual": [
+        -4.996003610813204e-16,
+        -8.879615792656281e-17
+      ],
+      "expected": [
+        0,
+        0
+      ],
+      "passed": true
+    },
+    {
+      "case": "cart-parameters",
+      "actual": [
+        0.046551724137931134,
+        1.6045977011494255
+      ],
+      "expected": [
+        0.0465517241379,
+        1.6045977011494
+      ],
+      "passed": true
+    },
+    {
+      "case": "spring-parameters",
+      "actual": [
+        11.688991531947654,
+        0.034751584058743464
+      ],
+      "expected": [
+        11.6889915319477,
+        0.0347515840587435
+      ],
+      "passed": true
+    },
+    {
+      "case": "spring-residuals-not-strictly-alternating",
+      "actual": [
+        -0.005340000000000122,
+        0.007289999999999963,
+        0.00012000000000000899,
+        -0.0007500000000001394,
+        -0.00132000000000021
+      ],
+      "expected": [
+        -0.00534,
+        0.00729,
+        0.00012,
+        -0.00075,
+        -0.00132
+      ],
+      "passed": true
+    },
+    {
+      "case": "A-endpoint",
+      "actual": [
+        5.0,
+        4.5
+      ],
+      "expected": [
+        5,
+        4.5
+      ],
+      "passed": true
+    },
+    {
+      "case": "A-finer-endpoint",
+      "actual": [
+        5.5,
+        4.5
+      ],
+      "expected": [
+        5.5,
+        4.5
+      ],
+      "passed": true
+    },
+    {
+      "case": "A-parameter-endpoint",
+      "actual": [
+        3.75,
+        2.5
+      ],
+      "expected": [
+        3.75,
+        2.5
+      ],
+      "passed": true
+    },
+    {
+      "case": "B-endpoint",
+      "actual": [
+        3.75,
+        0.25
+      ],
+      "expected": [
+        3.75,
+        0.25
+      ],
+      "passed": true
+    },
+    {
+      "case": "B-finer-endpoint",
+      "actual": [
+        3.59954833984375,
+        0.40045166015625
+      ],
+      "expected": [
+        3.59954833984375,
+        0.40045166015625
+      ],
+      "passed": true
+    },
+    {
+      "case": "B-coarse-endpoint",
+      "actual": [
+        8,
+        -4
+      ],
+      "expected": [
+        8,
+        -4
+      ],
+      "passed": true
+    },
+    {
+      "case": "B-parameter-endpoint",
+      "actual": [
+        5.251128673553467,
+        1.3744356632232666
+      ],
+      "expected": [
+        5.251128673553467,
+        1.3744356632232666
+      ],
+      "passed": true
+    },
+    {
+      "case": "continuous-reference",
+      "actual": [
+        0.5413411329464508,
+        3.458658867053549
+      ],
+      "expected": [
+        0.5413411329464508,
+        3.458658867053549
+      ],
+      "passed": true
+    }
+  ],
+  "independentLinearFits": [
+    {
+      "case": "cart",
+      "slope": 0.8022988505747127,
+      "intercept": 0.046551724137931134,
+      "residuals": [
+        0.0034482758620688683,
+        -0.007126436781609319,
+        0.011149425287356074,
+        -0.011724137931034662,
+        0.004252873563217907
+      ]
+    },
+    {
+      "case": "spring",
+      "slope": 3.3773999999999997,
+      "intercept": 0.11737000000000015,
+      "residuals": [
+        -0.005340000000000122,
+        0.007289999999999963,
+        0.00012000000000000899,
+        -0.0007500000000001394,
+        -0.00132000000000021
+      ]
+    }
+  ],
+  "explicitEulerTraces": [
+    {
+      "case": "A",
+      "timeStep": 0.5,
+      "parameter": 2,
+      "trace": [
+        [
+          0,
+          1,
+          0.5
+        ],
+        [
+          0.5,
+          1.25,
+          1.5
+        ],
+        [
+          1.0,
+          2.0,
+          2.5
+        ],
+        [
+          1.5,
+          3.25,
+          3.5
+        ],
+        [
+          2.0,
+          5.0,
+          4.5
+        ]
+      ]
+    },
+    {
+      "case": "A-finer",
+      "timeStep": 0.25,
+      "parameter": 2,
+      "trace": [
+        [
+          0,
+          1,
+          0.5
+        ],
+        [
+          0.25,
+          1.125,
+          1.0
+        ],
+        [
+          0.5,
+          1.375,
+          1.5
+        ],
+        [
+          0.75,
+          1.75,
+          2.0
+        ],
+        [
+          1.0,
+          2.25,
+          2.5
+        ],
+        [
+          1.25,
+          2.875,
+          3.0
+        ],
+        [
+          1.5,
+          3.625,
+          3.5
+        ],
+        [
+          1.75,
+          4.5,
+          4.0
+        ],
+        [
+          2.0,
+          5.5,
+          4.5
+        ]
+      ]
+    },
+    {
+      "case": "A-parameter",
+      "timeStep": 0.25,
+      "parameter": 1,
+      "trace": [
+        [
+          0,
+          1,
+          0.5
+        ],
+        [
+          0.25,
+          1.125,
+          0.75
+        ],
+        [
+          0.5,
+          1.3125,
+          1.0
+        ],
+        [
+          0.75,
+          1.5625,
+          1.25
+        ],
+        [
+          1.0,
+          1.875,
+          1.5
+        ],
+        [
+          1.25,
+          2.25,
+          1.75
+        ],
+        [
+          1.5,
+          2.6875,
+          2.0
+        ],
+        [
+          1.75,
+          3.1875,
+          2.25
+        ],
+        [
+          2.0,
+          3.75,
+          2.5
+        ]
+      ]
+    },
+    {
+      "case": "B",
+      "timeStep": 0.5,
+      "parameter": 1,
+      "trace": [
+        [
+          0,
+          0,
+          4
+        ],
+        [
+          0.5,
+          2.0,
+          2.0
+        ],
+        [
+          1.0,
+          3.0,
+          1.0
+        ],
+        [
+          1.5,
+          3.5,
+          0.5
+        ],
+        [
+          2.0,
+          3.75,
+          0.25
+        ]
+      ]
+    },
+    {
+      "case": "B-finer",
+      "timeStep": 0.25,
+      "parameter": 1,
+      "trace": [
+        [
+          0,
+          0,
+          4
+        ],
+        [
+          0.25,
+          1.0,
+          3.0
+        ],
+        [
+          0.5,
+          1.75,
+          2.25
+        ],
+        [
+          0.75,
+          2.3125,
+          1.6875
+        ],
+        [
+          1.0,
+          2.734375,
+          1.265625
+        ],
+        [
+          1.25,
+          3.05078125,
+          0.94921875
+        ],
+        [
+          1.5,
+          3.2880859375,
+          0.7119140625
+        ],
+        [
+          1.75,
+          3.466064453125,
+          0.533935546875
+        ],
+        [
+          2.0,
+          3.59954833984375,
+          0.40045166015625
+        ]
+      ]
+    },
+    {
+      "case": "B-coarse",
+      "timeStep": 2,
+      "parameter": 1,
+      "trace": [
+        [
+          0,
+          0,
+          4
+        ],
+        [
+          2,
+          8,
+          -4
+        ]
+      ]
+    },
+    {
+      "case": "B-parameter",
+      "timeStep": 0.25,
+      "parameter": 0.5,
+      "trace": [
+        [
+          0,
+          0,
+          4
+        ],
+        [
+          0.25,
+          1.0,
+          3.5
+        ],
+        [
+          0.5,
+          1.875,
+          3.0625
+        ],
+        [
+          0.75,
+          2.640625,
+          2.6796875
+        ],
+        [
+          1.0,
+          3.310546875,
+          2.3447265625
+        ],
+        [
+          1.25,
+          3.896728515625,
+          2.0516357421875
+        ],
+        [
+          1.5,
+          4.409637451171875,
+          1.7951812744140625
+        ],
+        [
+          1.75,
+          4.858432769775391,
+          1.5707836151123047
+        ],
+        [
+          2.0,
+          5.251128673553467,
+          1.3744356632232666
+        ]
+      ]
+    }
+  ],
+  "rubricCounterexamples": [
+    {
+      "id": "0521c3ce-999b-5b35-bb3c-7042f24a30ce",
+      "vectorsChecked": 6561,
+      "passingPatterns": 9,
+      "missingEssentialMaximum": 14,
+      "threshold": 15,
+      "minorErrorWithAllCoresIntactPasses": true
+    },
+    {
+      "id": "de1ed3f0-80b2-5544-9971-c8392f76a3e8",
+      "vectorsChecked": 729,
+      "passingPatterns": 7,
+      "missingEssentialMaximum": 10,
+      "threshold": 11,
+      "minorErrorWithAllCoresIntactPasses": true
+    },
+    {
+      "id": "3791c574-2194-52fa-846b-ee1d4e2c5877",
+      "vectorsChecked": 729,
+      "passingPatterns": 7,
+      "missingEssentialMaximum": 10,
+      "threshold": 11,
+      "minorErrorWithAllCoresIntactPasses": true
+    }
+  ],
+  "limits": [
+    "Content/rubric mathematical review only; no learner results or effectiveness claim.",
+    "Python independently verifies Euler arithmetic; no actual spreadsheet program execution or recalculation acceptance is claimed.",
+    "Essential rubric conditions are written assessor instructions, not server-enforced per-part minima."
+  ]
+}

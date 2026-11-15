@@ -1,0 +1,58 @@
+{
+  "at": "2026-11-15T17:17:53.214338+00:00",
+  "reviewer": "/root",
+  "decision": "ACCEPT_GUARDED_ASTRO_SUCCESSION_STRUCTURE_AND_CONTENT_NOT_RELEASE",
+  "canonicalBeforeSha256": "ef90c416653895f29c18ff92dd60abd973921a6116da5f5c170ed6e4de4530c2",
+  "candidateSha256": "e36f8b00b57094e978ff9defdbd00bfac1e9a03bdb94dd56d404ccf3252ba4e2",
+  "rows": [
+    {
+      "oldTaskId": "d44eb772-acb3-5449-accc-36a1fb7a25a5",
+      "newTaskId": "14cc61c4-4909-5671-b1ee-930a02cb9f51",
+      "preservedOldExamFields": [
+        "reviewStatus",
+        "coveredStrands",
+        "demandLevels",
+        "sourceArtifactPath",
+        "taskContent",
+        "taskContentEn",
+        "solutionContent",
+        "solutionContentEn",
+        "scoring"
+      ],
+      "oldMaximumWithoutEssentialBlock": 8,
+      "oldPassingPoints": 8,
+      "newMaximumWithoutEssentialBlock": 9,
+      "newPassingPoints": 11,
+      "independentlyEnumeratedScoreVectors": 256,
+      "newReviewedWordingAndTaskBytesEqual": true
+    },
+    {
+      "oldTaskId": "e99d87ac-0024-5f2b-ab47-d4d1cebba027",
+      "newTaskId": "50521f0d-71b1-51cf-b30d-650e3abf3036",
+      "preservedOldExamFields": [
+        "reviewStatus",
+        "coveredStrands",
+        "demandLevels",
+        "sourceArtifactPath",
+        "taskContent",
+        "taskContentEn",
+        "solutionContent",
+        "solutionContentEn",
+        "scoring"
+      ],
+      "oldMaximumWithoutEssentialBlock": 8,
+      "oldPassingPoints": 8,
+      "newMaximumWithoutEssentialBlock": 9,
+      "newPassingPoints": 11,
+      "independentlyEnumeratedScoreVectors": 256,
+      "newReviewedWordingAndTaskBytesEqual": true
+    }
+  ],
+  "wholeExistingOrdinaryAtomsUnchanged": 492,
+  "method": "Read both historical rubrics and whole primary goals; compare every old assessment field except explicit coverage/review disposition; compare new tasks and wording to independently reviewed input; independently enumerate all512 new scoring vectors. Keep historical IDs, text, solution, rubric and thresholds; current coverage is explicitly withdrawn and new IDs require their own evidence.",
+  "limits": [
+    "Native P/D/SEM/release and actual-view backflow acceptance are separate pending checks.",
+    "No claim about database migration or real learner grading; no mastery/result writes performed.",
+    "The current candidate is still a local proposal; view application is guarded and recorded separately."
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "requestedModel": "gpt-6.1-sol",
+  "requestedReasoningEffort": "ultra",
+  "forkTurns": "none",
+  "reviewerAgent": "/root/physics_three_d_blind_a",
+  "effectiveRuntimeDeployment": "not independently exposed by session interface",
+  "startedAtMeaning": "Actual filesystem kernel birth time of book-page-01.png, the first PDF raster produced by this reviewer. This bounds the artifact/visual-review phase; it is not a measured beginning of the earlier prompt, criteria or batch reading.",
+  "actualEvidenceWindow": {
+    "kind": "observed_artifact_to_original_validation_seal_timestamp",
+    "startMeaning": "Actual filesystem kernel birth time of book-page-01.png, the first PDF raster produced by this reviewer. This bounds the artifact/visual-review phase; it is not a measured beginning of the earlier prompt, criteria or batch reading.",
+    "endMeaning": "Actual sealedAt application timestamp from this reviewer's original input-output-seal.json after its direct schema/binding validation. It denotes the original validation/seal-recording phase; it is not a claim of an independently measured end to every file write.",
+    "exactInitialReadingStartRecorded": false,
+    "initialReadingStartExplanation": "No initial clock reading was taken before the original textual input review. That earlier reading occurred before the first PDF raster and is not assigned an invented exact timestamp.",
+    "coverage": "The original PDF-raster generation, subsequent actual visual inspection, candidate writing and direct validation lie in or are associated with this observed artifact/validation window. Earlier text-input reading is outside the precisely observed start."
+  },
+  "clockEvidence": [
+    {
+      "source": "GNU stat --printf birth=%w on existing first raster, independently checked in this receipt turn",
+      "path": "tmp/physics-current3-blind-a-20261115/book-page-01.png",
+      "observedLocalKernelBirthTime": "2026-11-15 18:30:35.612262854 +0100",
+      "utcEquivalent": "2026-11-15T17:30:35.612262854Z",
+      "meaning": "Kernel birth time of first reviewer-created PDF raster; exact original text-reading start unknown."
+    },
+    {
+      "source": "Original validation.json validatedAt field, reread without mutation",
+      "path": "tmp/physics-current3-blind-a-20261115/validation.json",
+      "observedValue": "2026-11-15T17:34:30.310792+00:00",
+      "utcEquivalent": "2026-11-15T17:34:30.310792Z"
+    },
+    {
+      "source": "Original input-output-seal.json sealedAt field, reread without mutation",
+      "path": "tmp/physics-current3-blind-a-20261115/input-output-seal.json",
+      "observedValue": "2026-11-15T17:34:30.311152+00:00",
+      "utcEquivalent": "2026-11-15T17:34:30.311152Z",
+      "kernelSealModifiedTimeUtc": "2026-11-15T17:34:30.319929538Z",
+      "meaning": "Application seal timestamp preceded final filesystem persistence by about nine milliseconds; the native run bound uses the recorded application event."
+    },
+    {
+      "source": "clock.curr_time read during receipt-only verification",
+      "observedValue": "2026-11-15 17:39:31 UTC",
+      "meaning": "Current receipt turn only; not evidence of the original review start."
+    }
+  ]
+}

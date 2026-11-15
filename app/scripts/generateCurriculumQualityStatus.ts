@@ -942,6 +942,14 @@ const CANONICAL_GYM_PHYSICS_LANDSCAPE_ID = '7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a
 const CANONICAL_GYM_PHYSICS_MOTIVATION_GOAL_ID = '5c44b9ba-9b05-4774-95d5-073230d3fc4f'
 const CANONICAL_GYM_PHYSICS_SEK1_PRACTICE_CLUSTER_ID = '21ab0854-4d67-5233-9495-ae208e152a3c'
 const CANONICAL_GYM_PHYSICS_SHARED_PRACTICE_CLUSTER_ID = '4ad7303d-22ad-56e6-aee0-f05b2ca42a07'
+// Eligibility as an assessment endpoint does not assign a stage: each actual
+// composition view must still expose the task in the checked stage.
+const CANONICAL_GYM_PHYSICS_CURRENT_PRACTICE_CLUSTER_IDS = [
+  '5630f93b-82ce-5d76-a781-31accc6854e9',
+  '7bdd1853-164e-54ca-8255-497ea8edd1f1',
+  'cc308bcc-435b-527d-b898-efafdf47c48a',
+  '2a5dfdf6-73e7-5336-a37f-cbf2dabec55e',
+]
 const CANONICAL_GYM_PHYSICS_SEK2_PRACTICE_CLUSTER_IDS = [
   '424b07df-bf66-5d7f-99f5-f28b32ad1f22',
   '549a427d-f10a-5537-990e-6fdd7466848b',
@@ -950,6 +958,7 @@ const CANONICAL_GYM_PHYSICS_SEK2_PRACTICE_CLUSTER_IDS = [
   '85bbad98-2f48-5d64-85c4-ab6cf67f24c2',
   CANONICAL_GYM_PHYSICS_SHARED_PRACTICE_CLUSTER_ID,
   '8e5c7195-eb30-55c1-a19a-630742620ba0',
+  ...CANONICAL_GYM_PHYSICS_CURRENT_PRACTICE_CLUSTER_IDS,
 ]
 const CANONICAL_GYM_CHEMISTRY_LANDSCAPE_ID = 'c436b994-8f44-5134-b9f8-0c9f5d6a5ba0'
 const CANONICAL_GYM_CHEMISTRY_MOTIVATION_GOAL_ID = 'a9c22adc-b543-5b0c-a2d8-3189facdff08'
@@ -1192,7 +1201,12 @@ export const routeProfileDefinitions: RouteProfile[] = [
     landscapeId: CANONICAL_GYM_PHYSICS_LANDSCAPE_ID,
     label: 'Sekundarstufe I',
     motivationAnchorGoalIds: [CANONICAL_GYM_PHYSICS_MOTIVATION_GOAL_ID, '65365dce-f33f-49d8-9516-42f75883aa86'],
-    terminalAutonomyClusterIds: [CANONICAL_GYM_PHYSICS_SEK1_PRACTICE_CLUSTER_ID, CANONICAL_GYM_PHYSICS_SHARED_PRACTICE_CLUSTER_ID],
+    terminalAutonomyClusterIds: [
+      CANONICAL_GYM_PHYSICS_SEK1_PRACTICE_CLUSTER_ID,
+      CANONICAL_GYM_PHYSICS_SHARED_PRACTICE_CLUSTER_ID,
+      '8e5c7195-eb30-55c1-a19a-630742620ba0',
+      ...CANONICAL_GYM_PHYSICS_CURRENT_PRACTICE_CLUSTER_IDS,
+    ],
     compositionViewStage: 'SekI',
     compositionViewApplicabilityMode: 'compiled-jurisdiction',
     compositionViewRoutePathMode: 'visible-atomic',

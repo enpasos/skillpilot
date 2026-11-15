@@ -1,0 +1,133 @@
+{
+  "at": "2026-11-15T16:32:28.827675+00:00",
+  "inputSha256": "abf767d011144df86426588dc472103bd3828393a69101c10941ad7b2842c275",
+  "reviewer": "root",
+  "scoreChecks": [
+    {
+      "id": "14cc61c4-4909-5671-b1ee-930a02cb9f51",
+      "allAllowedNumericVectors": 256,
+      "passingVectors": [
+        [
+          2,
+          3,
+          3,
+          3
+        ],
+        [
+          3,
+          2,
+          3,
+          3
+        ],
+        [
+          3,
+          3,
+          2,
+          3
+        ],
+        [
+          3,
+          3,
+          3,
+          2
+        ],
+        [
+          3,
+          3,
+          3,
+          3
+        ]
+      ],
+      "essentialAbsentMaximum": 9,
+      "threshold": 11,
+      "oneMinorErrorWithAllCores": true
+    },
+    {
+      "id": "50521f0d-71b1-51cf-b30d-650e3abf3036",
+      "allAllowedNumericVectors": 256,
+      "passingVectors": [
+        [
+          2,
+          3,
+          3,
+          3
+        ],
+        [
+          3,
+          2,
+          3,
+          3
+        ],
+        [
+          3,
+          3,
+          2,
+          3
+        ],
+        [
+          3,
+          3,
+          3,
+          2
+        ],
+        [
+          3,
+          3,
+          3,
+          3
+        ]
+      ],
+      "essentialAbsentMaximum": 9,
+      "threshold": 11,
+      "oneMinorErrorWithAllCores": true
+    }
+  ],
+  "counteranswers": [
+    {
+      "case": "Only names without roles or membership",
+      "maximum": 0,
+      "passes": false
+    },
+    {
+      "case": "All other cores perfect but galaxy composition absent",
+      "maximum": 9,
+      "passes": false
+    },
+    {
+      "case": "One whole case omitted",
+      "maximum": 6,
+      "passes": false
+    },
+    {
+      "case": "Comet classification rejected merely for absence of current tail",
+      "maximum": 9,
+      "passes": false
+    },
+    {
+      "case": "All membership conclusions supported only by shared map location",
+      "maximum": 9,
+      "passes": false
+    },
+    {
+      "case": "Correct verbal relationships instead of arrows",
+      "maximum": 12,
+      "passes": true
+    },
+    {
+      "case": "Equivalent clearly labelled reverse arrow convention",
+      "maximum": 12,
+      "passes": true
+    },
+    {
+      "case": "Correct binary-star-with-planets terminology",
+      "maximum": 12,
+      "passes": true
+    },
+    {
+      "case": "Unscored cosmology extension omitted",
+      "maximum": 12,
+      "passes": true
+    }
+  ],
+  "limit": "Written rubric analysis; no actual learner grading or server-side minima execution claimed."
+}

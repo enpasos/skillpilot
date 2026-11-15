@@ -1,0 +1,186 @@
+{
+  "at": "2026-11-15T17:47:32.575951+00:00",
+  "goalId": "13b338eb-f761-5817-9058-11043b9cb253",
+  "reason": "Correct an erroneous ownR-only rationale; no profile/goal/input-binding change",
+  "oldConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/stage-flow-current-assessments-v1/current10-informed-P.config.json",
+  "newConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/stage-flow-current-assessments-v1/current10-informed-P-v2.config.json",
+  "oldReviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/stage-flow-current-assessments-v1/current10-informed-P.review.jsonl",
+  "oldReviewSha256": "sha256:4d78ea4702a4b497ad0bffe1d55e696ccc414021f47f60d35b53b82d49ea3413",
+  "newReviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/stage-flow-current-assessments-v1/current10-informed-P-v2.review.jsonl",
+  "newReviewSha256": "sha256:4faeeda1d42559f367e606d95412930231537b466df677cb0ecde777eff387a9",
+  "oldRecordPreserved": {
+    "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+    "schemaVersion": 2,
+    "reviewId": "physics-current809-informed-p10-context-20261115-v1",
+    "goalFingerprintRuleVersion": "goal-evidence-v1",
+    "profileRuleVersion": "positive-understanding-evidence-v2",
+    "reviewCriteriaFingerprint": "sha256:8d64a50ede312df08795f6fddec82c1c3bcc8b77e50dad62220c201c819fd460",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "goalId": "13b338eb-f761-5817-9058-11043b9cb253",
+    "goalFingerprint": "sha256:958f442732409c3c9fb563d8bcfbe2f76e9e5afc6cf06b8590fff2ae15ebe8fd",
+    "reviewInputFingerprint": "sha256:593666dffc40bff8af5f96c9db7cfdf49b2276fef681f0bac51ddd8e435689b4",
+    "profileFingerprint": "sha256:b9fe3b6edf6501dcd307c2934eb90f429769e700fe25bead3719f2d9f2705286",
+    "status": "needs_human_review",
+    "reviewAuthority": "ai_candidate",
+    "reviewedAt": "2026-11-15T17:25:25.965Z",
+    "reviewer": "codex-physics-release-agent-informed-current-context-and-unchanged-whole-P-read-20261115",
+    "reason": "Aktuelle informierte KI-Inhaltsprüfung, unabhängig von den ursprünglichen Autoren. Das aktuelle primitive Datenauswertungsziel hat keine Requires. Zwei ausdrücklich gegebene tabellierte Orts- und graphische Temperaturfälle prüfen passende Differenzen, positive Zeitspanne, Vorzeichen und die Grenze zwischen Intervallmittel und jedem Zeitpunkt. Eigene Nachrechnung: +2,-3,0m/s und -1.5°C/min stimmen. Alte Reviewbytes und Profilfingerprint bleiben als Geschichte erhalten. Diese Prüfung belegt keinen Lernendenerwerb, keinen echten Experimentlauf, keine Wirksamkeit und keine menschliche Freigabe.",
+    "evidenceLevel": "E1",
+    "maximumClaimScope": "G1",
+    "reviewRunIds": [],
+    "dissent": [],
+    "profile": {
+      "archetype": "data",
+      "expectations": [
+        {
+          "id": "matched-differences",
+          "essentialUnderstandingDe": "Eine mittlere Messwertänderung pro Zeit ist die vorzeichenbehaftete Differenz zweier Messwerte geteilt durch die positive Zeitspanne zwischen genau diesen Messungen. Ein von null verschiedener Anfangswert wird mit abgezogen.",
+          "essentialUnderstandingEn": "An average measured change per time is the signed difference between two measured values divided by the positive elapsed time between exactly those measurements. A nonzero initial value is subtracted.",
+          "observablePerformanceDe": "Bestimmt aus Tabelle oder skaliertem Diagramm beide Endpunkte, bildet passende Differenzen und rechnet mit Einheit.",
+          "observablePerformanceEn": "Identifies both endpoints in a table or scaled graph, forms matching differences, and calculates with units."
+        },
+        {
+          "id": "bounded-physical-interpretation",
+          "essentialUnderstandingDe": "Vorzeichen und zusammengesetzte Einheit bezeichnen eine mittlere Veränderung im gewählten Intervall; Messwerthöhe, absolute Zeit und Verlauf zwischen den Punkten sind andere Informationen.",
+          "essentialUnderstandingEn": "The sign and compound unit describe an average change over the chosen interval; measured height, absolute time, and the course between the points are different information.",
+          "observablePerformanceDe": "Deutet positive, negative und verschwindende Mittelwerte, vergleicht Intervalle und begründet, warum zwei Endpunkte keinen Verlauf zu jedem Zeitpunkt festlegen.",
+          "observablePerformanceEn": "Interprets positive, negative, and zero averages, compares intervals, and explains why two endpoints do not determine the course at every instant."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "matched-differences",
+          "bounded-physical-interpretation"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "data-and-sign",
+          "textDe": "Tabellierte Ortswerte und unabhängig graphisch dargestellte Temperaturwerte; positive, negative und verschwindende Änderungen.",
+          "textEn": "Tabulated positions and independently graphed temperatures; positive, negative, and zero changes."
+        },
+        {
+          "id": "origin-and-duration",
+          "textDe": "Nichtnull-Anfangswerte, Startzeiten ungleich null und unterschiedlich lange Intervalle.",
+          "textEn": "Nonzero initial values, nonzero start times, and intervals of different duration."
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "position-intervals",
+          "taskDemandDe": "Ein Wagen hat bei 2 s den Ort 4 m, bei 5 s den Ort 10 m und bei 7 s wieder 4 m. Bestimme und deute beide Intervallmittel und den Gesamtmittelwert.",
+          "taskDemandEn": "A cart is at 4 m at 2 s, 10 m at 5 s, and back at 4 m at 7 s. Determine and interpret both interval averages and the overall average.",
+          "expectedPerformanceDe": "+2 m/s, −3 m/s und 0 m/s auf [2,7] s; der letzte Wert bedeutet gleiche Anfangs- und Endposition, nicht ständige Ruhe.",
+          "expectedPerformanceEn": "+2 m/s, −3 m/s, and 0 m/s over [2,7] s; the last value means equal initial and final position, not continuous rest.",
+          "understandingFocusDe": "Passende Differenzen und Vorzeichen; Ortsänderung von Strecke unterscheiden.",
+          "understandingFocusEn": "Matched differences and signs; distinguish displacement from distance."
+        },
+        {
+          "id": "temperature-transfer",
+          "taskDemandDe": "Lies in einem neuen Zeit-Temperatur-Diagramm 18 °C bei 3 min und 12 °C bei 7 min ab. Bestimme die mittlere Abkühlrate und prüfe, ob jede Minute genau diese Abnahme stattfand.",
+          "taskDemandEn": "Read 18 °C at 3 min and 12 °C at 7 min from a fresh time-temperature graph. Find the average cooling rate and assess whether every minute had exactly this decrease.",
+          "expectedPerformanceDe": "−1,5 °C/min im Intervall; konstante Abnahme ist aus den Endpunkten nicht gesichert.",
+          "expectedPerformanceEn": "−1.5 °C/min over the interval; constant decrease is not established by the endpoints.",
+          "understandingFocusDe": "Unabhängiger Kontextwechsel ohne Funktionsterm oder Grenzübergang.",
+          "understandingFocusEn": "Independent context change without a function expression or limit."
+        }
+      ]
+    }
+  },
+  "correctedRecord": {
+    "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+    "schemaVersion": 2,
+    "reviewId": "physics-current809-informed-p10-context-20261115-v1",
+    "goalFingerprintRuleVersion": "goal-evidence-v1",
+    "profileRuleVersion": "positive-understanding-evidence-v2",
+    "reviewCriteriaFingerprint": "sha256:8d64a50ede312df08795f6fddec82c1c3bcc8b77e50dad62220c201c819fd460",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "goalId": "13b338eb-f761-5817-9058-11043b9cb253",
+    "goalFingerprint": "sha256:958f442732409c3c9fb563d8bcfbe2f76e9e5afc6cf06b8590fff2ae15ebe8fd",
+    "reviewInputFingerprint": "sha256:593666dffc40bff8af5f96c9db7cfdf49b2276fef681f0bac51ddd8e435689b4",
+    "profileFingerprint": "sha256:b9fe3b6edf6501dcd307c2934eb90f429769e700fe25bead3719f2d9f2705286",
+    "status": "needs_human_review",
+    "reviewAuthority": "ai_candidate",
+    "reviewedAt": "2026-11-15T17:47:32.575951+00:00",
+    "reviewer": "codex-physics-release-agent-after-actual-native-knowledge-context-and-full-foreign-preparation-read-20261115",
+    "reason": "Explizite Begründungskorrektur nach nativer KnowledgeContextIndex-Ableitung über21aktuelle Kataloge: Das Ziel hat drei echte Mathematik-Voraussetzungen — Achsen/Skalen/Einheiten lesen, rationale Zahlen addieren/subtrahieren und rationale Zahlen multiplizieren/dividieren. Deren vollständige aktuelle DE/EN-Texte wurden jetzt zusätzlich gelesen; die native Ableitung sichert20ordinaryVorgänger und diese drei unmittelbaren Vorbereitungen. Die frühere Aussage „hat keine Requires“ war falsch, weil das damalige Lesepaket nur ownR-Texte zeigte; sie wird hier ausdrücklich korrigiert und als alte Reviewgeschichte erhalten. Die beiden unveränderten P-Fälle mit tabellierten Ortswerten und unabhängig graphischen Temperaturwerten verlangen passende Differenzen, positive Dauer, Vorzeichen, Einheit und die Grenze zwischen Intervallmittel und jedem Zeitpunkt. Eigene Nachrechnung bestätigt +2,-3,0m/s und -1.5°C/min. Profiltexte, Goal/Input/Profile-Fingerprints und fachlicher P-Umfang bleiben exaktgleich. Diese Ergänzung behauptet keinen früheren Wissenskontextlauf, keine neue blinde D-Prüfung, keine Lernendenleistung und keine menschliche Freigabe.",
+    "evidenceLevel": "E1",
+    "maximumClaimScope": "G1",
+    "reviewRunIds": [],
+    "dissent": [],
+    "profile": {
+      "archetype": "data",
+      "expectations": [
+        {
+          "id": "matched-differences",
+          "essentialUnderstandingDe": "Eine mittlere Messwertänderung pro Zeit ist die vorzeichenbehaftete Differenz zweier Messwerte geteilt durch die positive Zeitspanne zwischen genau diesen Messungen. Ein von null verschiedener Anfangswert wird mit abgezogen.",
+          "essentialUnderstandingEn": "An average measured change per time is the signed difference between two measured values divided by the positive elapsed time between exactly those measurements. A nonzero initial value is subtracted.",
+          "observablePerformanceDe": "Bestimmt aus Tabelle oder skaliertem Diagramm beide Endpunkte, bildet passende Differenzen und rechnet mit Einheit.",
+          "observablePerformanceEn": "Identifies both endpoints in a table or scaled graph, forms matching differences, and calculates with units."
+        },
+        {
+          "id": "bounded-physical-interpretation",
+          "essentialUnderstandingDe": "Vorzeichen und zusammengesetzte Einheit bezeichnen eine mittlere Veränderung im gewählten Intervall; Messwerthöhe, absolute Zeit und Verlauf zwischen den Punkten sind andere Informationen.",
+          "essentialUnderstandingEn": "The sign and compound unit describe an average change over the chosen interval; measured height, absolute time, and the course between the points are different information.",
+          "observablePerformanceDe": "Deutet positive, negative und verschwindende Mittelwerte, vergleicht Intervalle und begründet, warum zwei Endpunkte keinen Verlauf zu jedem Zeitpunkt festlegen.",
+          "observablePerformanceEn": "Interprets positive, negative, and zero averages, compares intervals, and explains why two endpoints do not determine the course at every instant."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "matched-differences",
+          "bounded-physical-interpretation"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "data-and-sign",
+          "textDe": "Tabellierte Ortswerte und unabhängig graphisch dargestellte Temperaturwerte; positive, negative und verschwindende Änderungen.",
+          "textEn": "Tabulated positions and independently graphed temperatures; positive, negative, and zero changes."
+        },
+        {
+          "id": "origin-and-duration",
+          "textDe": "Nichtnull-Anfangswerte, Startzeiten ungleich null und unterschiedlich lange Intervalle.",
+          "textEn": "Nonzero initial values, nonzero start times, and intervals of different duration."
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "position-intervals",
+          "taskDemandDe": "Ein Wagen hat bei 2 s den Ort 4 m, bei 5 s den Ort 10 m und bei 7 s wieder 4 m. Bestimme und deute beide Intervallmittel und den Gesamtmittelwert.",
+          "taskDemandEn": "A cart is at 4 m at 2 s, 10 m at 5 s, and back at 4 m at 7 s. Determine and interpret both interval averages and the overall average.",
+          "expectedPerformanceDe": "+2 m/s, −3 m/s und 0 m/s auf [2,7] s; der letzte Wert bedeutet gleiche Anfangs- und Endposition, nicht ständige Ruhe.",
+          "expectedPerformanceEn": "+2 m/s, −3 m/s, and 0 m/s over [2,7] s; the last value means equal initial and final position, not continuous rest.",
+          "understandingFocusDe": "Passende Differenzen und Vorzeichen; Ortsänderung von Strecke unterscheiden.",
+          "understandingFocusEn": "Matched differences and signs; distinguish displacement from distance."
+        },
+        {
+          "id": "temperature-transfer",
+          "taskDemandDe": "Lies in einem neuen Zeit-Temperatur-Diagramm 18 °C bei 3 min und 12 °C bei 7 min ab. Bestimme die mittlere Abkühlrate und prüfe, ob jede Minute genau diese Abnahme stattfand.",
+          "taskDemandEn": "Read 18 °C at 3 min and 12 °C at 7 min from a fresh time-temperature graph. Find the average cooling rate and assess whether every minute had exactly this decrease.",
+          "expectedPerformanceDe": "−1,5 °C/min im Intervall; konstante Abnahme ist aus den Endpunkten nicht gesichert.",
+          "expectedPerformanceEn": "−1.5 °C/min over the interval; constant decrease is not established by the endpoints.",
+          "understandingFocusDe": "Unabhängiger Kontextwechsel ohne Funktionsterm oder Grenzübergang.",
+          "understandingFocusEn": "Independent context change without a function expression or limit."
+        }
+      ]
+    }
+  },
+  "nineOtherReviewLinesByteExact": true,
+  "currentThreeDSelectedPRecordsUnchanged": true,
+  "nativeKnowledgeContextReceipt": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/stage-flow-current-assessments-v1/current11-native-knowledge-contexts.actual.json",
+  "nativeKnowledgeContextTiming": "Actual post-review supplement; never claimed as an input or prior event of blind A/B",
+  "rootAlreadyReviewedForeignPreparations": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/stage-flow-current-assessments-v1/root-review/ten-P-context.actual.json",
+  "learnerResultWrites": false,
+  "canonicalWrites": false,
+  "oldFiveGateReceiptStillBelongsToEarlierRegistryEpoch": true,
+  "freshPAndWholeDeepValidationRequired": true
+}
