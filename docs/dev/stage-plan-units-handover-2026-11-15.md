@@ -11,8 +11,8 @@ Grundlage ist das Einheitenkonzept
 mit den Beschlüssen B1 bis B16 und den Regeln E1 bis E4. Wer dieses Dokument
 bearbeitet, liest dort zuerst die Abschnitte 3 bis 8.
 
-Alle Zahlen gelten für `main` bei `0b0573613b` zusammen mit den beiden offenen
-Pull Requests [#154](https://github.com/enpasos/skillpilot/pull/154) und
+Alle Zahlen gelten für `main` bei `96035c60b1`, also nach den Pull Requests
+[#154](https://github.com/enpasos/skillpilot/pull/154) und
 [#155](https://github.com/enpasos/skillpilot/pull/155). Sie stammen aus
 Erkundungsrechnungen mit der Projektion der Lernkarte aus
 [#153](https://github.com/enpasos/skillpilot/pull/153) und sind kein
@@ -72,11 +72,11 @@ bestimmt:
 Die Marken der Physik stammen überwiegend aus dem hessischen Kerncurriculum
 (`framework: hessen-kc-2024-physics`).
 
-### 1.3 Was die Pull Requests ändern
+### 1.3 Was #154 und #155 geändert haben
 
-Beide ändern nur Ländersichten mit beiden Stufen und deren Folgebindungen. Die
-kanonischen Fachdateien, die Sichten einer Stufe und alle Reifegrade bleiben
-unverändert.
+Beide haben nur Ländersichten mit beiden Stufen und deren Folgebindungen
+geändert. Die kanonischen Fachdateien, die Sichten einer Stufe und alle
+Reifegrade sind unverändert.
 
 | PR | Ziel | Änderung | Entscheidung |
 | --- | --- | --- | --- |
