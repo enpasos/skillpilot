@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-11-13T17:29:51.639Z
+Generated: 2026-11-15T10:28:47.576Z
 
 Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
@@ -16,11 +16,11 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Alle Ziele in der Landschaft | 767 |
-| Atomare Ziele im Visualisierungs-Scope | 478 |
-| Ziele mit primaerem Visualisierungslink | 478 |
+| Alle Ziele in der Landschaft | 773 |
+| Atomare Ziele im Visualisierungs-Scope | 481 |
+| Ziele mit primaerem Visualisierungslink | 481 |
 | Coverage | 100.0% |
-| Durch Asset oder dokumentierte Deferred-Entscheidung erfasste Ziele | 478 |
+| Durch Asset oder dokumentierte Deferred-Entscheidung erfasste Ziele | 481 |
 | Dokumentierte Coverage | 100.0% |
 | Coverage-Gate | bestanden |
 | Release-approved Visualisierungen | 0 |
@@ -30,15 +30,15 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 1 |
 | Regulaere unvisualisierte Ziele ohne Deferred-Status | 0 |
-| Verlinkt ohne akzeptierende Review-Entscheidung | 65 |
+| Verlinkt ohne akzeptierende Review-Entscheidung | 68 |
 | Akzeptierende Review-Entscheidung ohne Link | 0 |
 
 ## Linked Review Status
 
 | Status | Count |
 | --- | --- |
-| `accepted` | 83 |
-| `pilot` | 395 |
+| `accepted` | 84 |
+| `pilot` | 397 |
 
 ## Ledger Decisions
 
@@ -145,9 +145,11 @@ Keine Eintraege.
 | `68034218-8f3e-5f7f-ae4e-ed057dd4e44e` | Die Funktion eines thermischen Kernreaktors erklären | `accepted` | - |
 | `a7255b83-336c-4d42-ba5c-bc2f6248ea36` | Differentialgleichung des elektromagnetischen Schwingkreises mit Ansatz lösen | `pilot` | `deferred_provider_limitation` |
 | `d05a146f-7fcd-56ae-b9b9-b54203328579` | Diskrete Energien im unendlichen Potenzialtopf berechnen | `pilot` | - |
+| `9f265f49-1342-5ba7-9c5d-54e97fdb2f19` | Dotierung mit einem einfachen Ladungsträgermodell erklären | `pilot` | - |
 | `b4772b06-b10c-52dd-841b-a96ffb7c7e28` | Dunkle Energie qualitativ einordnen | `pilot` | - |
 | `c53b3f0c-b4fe-5509-8803-a36c2883e5d6` | Dunkle Materie aus Galaxienrotationskurven erschließen | `pilot` | `deferred_provider_limitation` |
 | `3d466956-04fb-58d7-9008-ad8090f8706d` | Dunkle Materie qualitativ einordnen | `pilot` | - |
+| `dc55adac-91a5-5cc3-ab47-be008480616f` | Durchlass- und Sperrverhalten einer Diode an einer Kennlinie erklären | `pilot` | - |
 | `bf8517a9-142b-5789-826a-767f3b277998` | Durchschnitts- und Momentangeschwindigkeit unterscheiden | `pilot` | `deferred_provider_limitation` |
 | `2014791b-af68-58d0-838b-fc9701202096` | Dynamische Gesamtmasse aus optischen Zweikörperbahndaten erschließen | `pilot` | `deferred_provider_limitation` |
 | `c2af45aa-e3fc-5119-9159-c5a260b4135a` | Eine bistabile Transistor-Flipflop-Schaltung deuten | `accepted` | - |
@@ -162,10 +164,8 @@ Keine Eintraege.
 | `6dca3b0a-c872-543b-808f-97e855f5fafd` | Exoplanetenkandidaten mit Stern-Radialbewegungen erklären | `pilot` | `deferred_provider_limitation` |
 | `f9c025ce-4327-5de7-8288-a3358e14a576` | Fraunhoferlinien in Sternspektren deuten | `pilot` | `deferred_provider_limitation` |
 | `f06c581a-7157-584e-a692-99bcd613cff9` | Frequenzspektren von Tönen und Klängen analysieren | `pilot` | `deferred_provider_limitation` |
-| `206a7d3d-9b11-56be-89ff-73898445c4f5` | Galaxienentfernungen bestimmen und Verfahren beurteilen | `pilot` | `deferred_provider_limitation` |
-| `b1ad9493-acca-5366-9ecd-4b7bf7edaf4a` | Geiger-Müller-Zählrohr funktional erklären | `pilot` | `deferred_provider_limitation` |
 
-Weitere 35 Eintraege stehen in der JSON-Begleitdatei.
+Weitere 38 Eintraege stehen in der JSON-Begleitdatei.
 
 ### Accepted Review Without Link
 

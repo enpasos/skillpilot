@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-k2-f39-task-boundary-page-current-20261115-v2",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-11-15/k2-table-task-boundary-current-v2.config.json",
+  "configDigest": "sha256:13ede76db33d4c9e46a17ec07ac83e4a229e7a0c1e3b54af56e96f8d786a8c03",
+  "goalIds": [
+    "f39c49c7-003b-471a-a33e-6cfea1d7b7b1"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 807,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-table-task-boundary-current-20261115-v2.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:60ad29978f43f8c92a11bf8938db0aa06213b459b459267646716ea735976b15"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:eab79b0ec39cfbcc1f9a7d206b6a5084d40a115bffa863d4f36ee02edc872f49",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:059609441fc60ee9a0ab5ee8e872e487f1a873a4e989ad19777c6fa7d89ee6dc",
+    "reviewInputFingerprint": "sha256:b061bc55cb025f42b472e0c6a9882f44d69223fdf6e08c9ddd8ddb2b905eef43",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-k2-f39-task-boundary-page-current-20261115-v2-a",
+        "campaignDigest": "sha256:7a9246472eb289b904037929e51090f99c9f4b4bc4b55ab506b036e17197a99d",
+        "roundId": "mathematik-k2-f39-task-boundary-page-current-20261115-v2-first-pass-a",
+        "independenceGroupId": "mathematik-k2-f39-task-boundary-page-current-20261115-v2-independent-a",
+        "batchId": "mathematik-k2-f39-task-boundary-page-current-20261115-v2-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:311c628fbf9e4e22a3ca20bdbefa382f74d3cbfd4ac3a85dc91f2a47b896cb27"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-k2-f39-task-boundary-page-current-20261115-v2-b",
+        "campaignDigest": "sha256:3120e54d8aa4c2b2efa521519667d4c505f2a006cdf1d7bb734325f92c2be4af",
+        "roundId": "mathematik-k2-f39-task-boundary-page-current-20261115-v2-first-pass-b",
+        "independenceGroupId": "mathematik-k2-f39-task-boundary-page-current-20261115-v2-independent-b",
+        "batchId": "mathematik-k2-f39-task-boundary-page-current-20261115-v2-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:1932b72947a705b315bd38641673e08d5dcdcaf97169ded40df4e3d67a4359db"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

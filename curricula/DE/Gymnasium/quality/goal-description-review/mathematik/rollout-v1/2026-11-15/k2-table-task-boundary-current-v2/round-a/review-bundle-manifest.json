@@ -1,0 +1,111 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-book/v1/goal-book-review-bundle.schema.json",
+  "schemaVersion": 1,
+  "bookModelDigest": "sha256:eab79b0ec39cfbcc1f9a7d206b6a5084d40a115bffa863d4f36ee02edc872f49",
+  "bookModelSchemaVersion": "1.1.0",
+  "bookId": "de-gym-math-k2-f39-task-boundary-page-current-20261115-v2",
+  "bookEdition": "curricular-atomic-v1",
+  "publicationMode": "review",
+  "feedbackBaseUrl": "https://skillpilot.com/lernziel-feedback",
+  "locale": "de-DE",
+  "selectedGoalCount": 1,
+  "goals": [
+    {
+      "goalId": "f39c49c7-003b-471a-a33e-6cfea1d7b7b1",
+      "pageNumber": 1,
+      "goalFingerprint": "sha256:0afeeb0f58b616dcb851fea59313b6fed94505612e9902c2ea99740161090c34",
+      "pageFingerprint": "sha256:b0d47e99942dcac7fe0df36edbb5e69b64efc35c7bca1c75eba9ed4e57bc7861",
+      "evidenceReview": {
+        "reviewId": "canonical-math-k2-table-task-boundary-current-f39-20261115-v2",
+        "status": "needs_human_review",
+        "reviewInputFingerprint": "sha256:e2b9bd311ea5f7a1409adc6f28ac96c15f972e6e10fb59bb712abbe521ca4a03",
+        "profileFingerprint": "sha256:a64360c832898480f42bd224336ec9d56a0c943e8a3b173c5de90b2a0476d2cb",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1"
+      }
+    }
+  ],
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "artifacts": [
+    {
+      "role": "book_model",
+      "path": "book-model.json",
+      "digest": "sha256:b955c673a425927993eb8f9c9e029bb54c3c79d6cd9cf583ca2d30ac3d7de5b2",
+      "bytes": 557990
+    },
+    {
+      "role": "book_pdf",
+      "path": "book.pdf",
+      "digest": "sha256:d566a407e804190544e6794e2ed55164eb6b60619d208b0402895544e6e29411",
+      "bytes": 129390
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "path": "book.pdf.render-manifest.json",
+      "digest": "sha256:9970319f2483003e039a0c9d53d4ba62c4649339639ef65fecefb80eaee4aaba",
+      "bytes": 3435
+    },
+    {
+      "role": "book_html",
+      "path": "book.html",
+      "digest": "sha256:5cd0b08dca15db960fe0cd2a0864837575232a0e1a1d65668ffaa148548e296e",
+      "bytes": 19876
+    },
+    {
+      "role": "book_html_render_manifest",
+      "path": "book.html.render-manifest.json",
+      "digest": "sha256:0aaa6d4050015f67f4edd62f3a6901666c9845021baad69e81e3762517a48a6e",
+      "bytes": 3436
+    },
+    {
+      "role": "review_input_json",
+      "path": "review-input.json",
+      "digest": "sha256:fb8ad7550d7991a6860b6b29b9fb62d06e1b560ccdeaff2d4fce79233efc9629",
+      "bytes": 11751
+    },
+    {
+      "role": "review_input_jsonl",
+      "path": "review-input.jsonl",
+      "digest": "sha256:62f0ca282ae6d0e91d520b7fed9ad865967186ada0e2b3a994ba7deb472c772f",
+      "bytes": 9055
+    },
+    {
+      "role": "review_markdown",
+      "path": "review.md",
+      "digest": "sha256:306c2060cec7eb7549a0853383695ac781a72391ee117fef241952e8185d89dc",
+      "bytes": 6536
+    },
+    {
+      "role": "review_prompt",
+      "path": "prompt.md",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+      "bytes": 5974
+    },
+    {
+      "role": "review_criteria",
+      "path": "criteria.md",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+      "bytes": 4496
+    },
+    {
+      "role": "finding_schema",
+      "path": "contracts/goal-evidence-finding.schema.json",
+      "digest": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9",
+      "bytes": 3613
+    },
+    {
+      "role": "run_manifest_schema",
+      "path": "contracts/goal-evidence-ai-run-manifest.schema.json",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6",
+      "bytes": 3886
+    }
+  ],
+  "reviewPolicy": {
+    "blindIndependentFirstPass": true,
+    "modelVotesGrantReleaseAuthority": false,
+    "humanApprovalRequired": true,
+    "learnerDataAllowed": false
+  },
+  "bundleFingerprint": "sha256:059609441fc60ee9a0ab5ee8e872e487f1a873a4e989ad19777c6fa7d89ee6dc"
+}

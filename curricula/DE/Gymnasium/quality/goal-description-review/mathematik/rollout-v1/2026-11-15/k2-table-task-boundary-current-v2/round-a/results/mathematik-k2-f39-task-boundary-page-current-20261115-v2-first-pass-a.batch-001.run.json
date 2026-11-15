@@ -1,0 +1,51 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "mathematik-k2-f39-task-boundary-current-20261115-v2-native-d-a-run",
+  "campaignId": "mathematik-k2-f39-task-boundary-page-current-20261115-v2-a",
+  "roundId": "mathematik-k2-f39-task-boundary-page-current-20261115-v2-first-pass-a",
+  "batchId": "mathematik-k2-f39-task-boundary-page-current-20261115-v2-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:311c628fbf9e4e22a3ca20bdbefa382f74d3cbfd4ac3a85dc91f2a47b896cb27",
+  "bundleFingerprint": "sha256:059609441fc60ee9a0ab5ee8e872e487f1a873a4e989ad19777c6fa7d89ee6dc",
+  "bookDigest": "sha256:eab79b0ec39cfbcc1f9a7d206b6a5084d40a115bffa863d4f36ee02edc872f49",
+  "provider": "OpenAI Codex delegated agent; runtime deployment not independently attested",
+  "model": "gpt-6.1-sol (requested); effective deployment not independently attested",
+  "modelVersion": "not exposed by session interface",
+  "role": "didactic_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:c22a711a5edf442e7093b0fae89ef66cc23d4f2e9eaa787f91d2a3ead21eace7",
+  "independenceGroupId": "mathematik-k2-f39-task-boundary-page-current-20261115-v2-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "f39c49c7-003b-471a-a33e-6cfea1d7b7b1"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_pdf",
+      "digest": "sha256:d566a407e804190544e6794e2ed55164eb6b60619d208b0402895544e6e29411"
+    },
+    {
+      "role": "book_model",
+      "digest": "sha256:b955c673a425927993eb8f9c9e029bb54c3c79d6cd9cf583ca2d30ac3d7de5b2"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:311c628fbf9e4e22a3ca20bdbefa382f74d3cbfd4ac3a85dc91f2a47b896cb27"
+    }
+  ],
+  "startedAt": "2026-11-15T10:28:44Z",
+  "completedAt": "2026-11-15T10:31:10.190493Z",
+  "status": "completed",
+  "outputDigest": "sha256:f864e429774f6384fd7f0b3dd8d4f7d90e900d5c06ce45853d0fdaa3ea6efc22",
+  "toolchainVersion": "codex-native-goal-description-review-v2"
+}
