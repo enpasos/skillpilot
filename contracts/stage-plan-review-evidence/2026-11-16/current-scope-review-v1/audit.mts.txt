@@ -1,0 +1,42 @@
+import {readFileSync,readdirSync,writeFileSync} from 'node:fs'
+import {createHash} from 'node:crypto'
+import assert from 'node:assert/strict'
+import {KnowledgeContextIndex} from '../../app/scripts/lib/knowledgeContext.ts'
+import {normalizeCanonicalLandscape} from '../../app/src/utils/authoring/canonicalAuthoring.ts'
+import {compileCompositionView,normalizeCompositionView,collectCompositionProjectionRoleGoalIds} from '../../app/src/utils/authoring/compositionViewAuthoring.ts'
+const O='tmp/k4-k8-final-placement-independent-20261115/',cp='curricula/DE/Gymnasium/canonical/',vp='curricula/DE/Gymnasium/composition-views/mathematik/'
+const pins:any[]=[],read=(p:string)=>{const b=readFileSync(p);pins.push({path:p,sha256:createHash('sha256').update(b).digest('hex')});return JSON.parse(b.toString())}
+const catalog=readdirSync(cp).filter(f=>f.endsWith('.json')).map(f=>read(cp+f)),math=catalog.find(l=>l.subject==='Mathematik'),mid=math.landscapeId,index=new KnowledgeContextIndex(catalog)
+const goals=new Map<string,any>(),byLandscape=new Map(catalog.map(l=>[l.landscapeId,normalizeCanonicalLandscape(l)]))
+for(const l of catalog)for(const g of l.goals){goals.set(g.id,g);goals.set(l.landscapeId+':'+g.id,g)}
+const bare=(r:string)=>{assert(goals.has(r),'unresolved '+r);return goals.get(r).id}
+const universe=normalizeCanonicalLandscape({landscapeId:'review-complete21',title:'Current catalog',goals:catalog.flatMap(l=>l.goals).map(g=>({...g,contains:(g.contains??[]).map(bare),requires:(g.requires??[]).map(bare)}))})
+const needles=['eb28b403','30c013ac','9023226b','39fa30f2','efc3506a','17c9e061','5518ceb3','632a3837']
+const focus=math.goals.filter((g:any)=>needles.some(k=>g.id.startsWith(k))),edgeInput=read('tmp/math-stage-repairs-20261115-v3/k4-edge-decisions.json'),eight=edgeInput.changes.map((c:any)=>goals.get(c.goalId))
+const inspectIds=new Set([...focus,...eight].map(g=>g.id))
+for(const t of math.goals)if(t.examData?.coveredGoalIds?.some((r:string)=>inspectIds.has(bare(r))))inspectIds.add(t.id)
+const refs=(ns:any[]):any[]=>ns.map(n=>n.kind==='structure'?{...n,children:refs(n.children)}:n.goalId?{...n,goalId:bare(n.goalId)}:n)
+const rowGoals=[...inspectIds].map(id=>goals.get(id)),allFocus=new Set(rowGoals.map(g=>g.id)),views:any[]=[]
+for(const file of readdirSync(vp).filter(f=>f.endsWith('.view.json')).sort()){
+ const bytes=readFileSync(vp+file),raw=JSON.parse(bytes.toString());if(!['DE-NI','DE-NW','DE-HE','DE-SH','DE-HB'].includes(raw.scope.jurisdiction))continue
+ const v=normalizeCompositionView(raw),compiled=compileCompositionView({...v,rootNodes:refs(v.rootNodes)},byLandscape.get(mid)!,universe,byLandscape)
+ assert.deepEqual(compiled.findings.filter(f=>f.severity==='error'),[],file)
+ pins.push({path:vp+file,sha256:createHash('sha256').update(bytes).digest('hex')})
+ const positions=new Map<string,any[]>(),authored=new Map<string,any[]>(),seedIds=new Set<string>()
+ const add=(m:Map<string,any[]>,id:string,row:any)=>m.set(id,[...(m.get(id)??[]),row])
+ const walk=(ns:any[],path:any[])=>{for(const n of ns){if(n.sourceGoalId){const id=bare(n.sourceGoalId);if(index.graph.isAtomic(index.graph.resolve(id,mid)))seedIds.add(id);if(allFocus.has(id))add(positions,id,{path:path.map(p=>({id:p.runtimeId,label:p.label}))})};walk(n.children??[],[...path,n])}};walk(compiled.compiledRootNodes,[])
+ const expand=(id:string,origin:any,path:any[])=>{if(allFocus.has(id))add(authored,id,{kind:origin.kind,projectionRole:origin.projectionRole??'target',viaGoalId:bare(origin.goalId),path:path.map(p=>({id:p.id,label:p.label}))});for(const r of goals.get(id).contains??[])expand(bare(r),origin,path)}
+ const scan=(ns:any[],path:any[])=>{for(const n of ns)if(n.kind==='structure')scan(n.children,[...path,n]);else if(n.goalId){const id=bare(n.goalId);if(n.kind==='canonicalSubtree')expand(id,n,path);else if(allFocus.has(id))add(authored,id,{kind:n.kind,projectionRole:n.projectionRole??'target',path:path.map(p=>({id:p.id,label:p.label}))})}};scan(raw.rootNodes,[])
+ const L=new Set<string>(seedIds);for(const id of seedIds)for(const p of index.graph.reach(index.graph.resolve(id,mid)))L.add(index.graph.goal(p).id)
+ const checks=[...allFocus].map(id=>({id,title:goals.get(id).title,isTarget:seedIds.has(id),inFullLearningBasis:L.has(id),targetPositions:positions.get(id)??[],authoredPositions:authored.get(id)??[],demandingSeeds:[...seedIds].filter(s=>s!==id&&index.graph.reach(index.graph.resolve(s,mid)).has(index.graph.resolve(id,mid))).map(s=>({id:s,title:goals.get(s).title})).slice(0,50)}))
+ views.push({file,scope:raw.scope,compiledErrors:0,targetAtoms:seedIds.size,learningAtoms:L.size,checks})
+}
+const eightChecks=eight.map(g=>({id:g.id,title:g.title,description:g.description,descriptionEn:g.descriptionEn,requires:g.requires.map((r:string)=>({id:bare(r),title:goals.get(r).title,description:goals.get(r).description})),stillRequiresPowerGraph:index.graph.reach(index.graph.resolve(g.id,mid)).has(index.resolveAtomicGoal('eb28b403-f9fc-57ea-a793-b4555596fdd7')),stillRequiresLineIntersection:index.graph.reach(index.graph.resolve(g.id,mid)).has(index.resolveAtomicGoal('2f598bc7-c117-47d7-bb81-0f08ad679b91'))}))
+assert(eightChecks.every(g=>!g.stillRequiresPowerGraph&&!g.stillRequiresLineIntersection))
+const currentGoals=rowGoals.map(g=>({id:g.id,title:g.title,description:g.description,titleEn:g.titleEn,descriptionEn:g.descriptionEn,requires:g.requires,contains:g.contains,dimensionTags:g.dimensionTags,phase:g.phase,extendedData:g.extendedData,examData:g.examData,authoringMetadata:g.authoringMetadata,sha256:createHash('sha256').update(JSON.stringify(g)).digest('hex')}))
+const directConsumers=focus.map(g=>({goalId:g.id,consumers:catalog.flatMap(l=>l.goals.filter((x:any)=>x.requires?.some((r:string)=>bare(r)===g.id)).map((x:any)=>({id:x.id,title:x.title,landscapeId:l.landscapeId,requires:x.requires})))}))
+const goalPlacements=math.goalPlacements.filter((p:any)=>allFocus.has(p.goalId)),units=math.programUnits.filter((u:any)=>goalPlacements.some((p:any)=>p.unitId===u.id))
+for(const p of pins)assert.equal(createHash('sha256').update(readFileSync(p.path)).digest('hex'),p.sha256,'input drift '+p.path)
+const out={at:new Date().toISOString(),head:'069fd6cf4fa5c9c8c8108bd367f986e94c29da12',method:'Current native composition compiler and KnowledgeContextIndex complete21 closure. No QA/floor run, public-service replay, plan activation, or learner state read.',catalogRoots:catalog.length,viewCount:views.length,errors:0,pins,currentGoals,eightChecks,goalPlacements,units,directConsumers,views}
+writeFileSync(O+'current-input-and-placement.actual.json',JSON.stringify(out,null,2)+'\n')
+console.log(JSON.stringify({at:out.at,catalogRoots:catalog.length,views:views.length,errors:0,eight:out.eightChecks.map(g=>({id:g.id,stillRequiresPowerGraph:g.stillRequiresPowerGraph,stillRequiresLineIntersection:g.stillRequiresLineIntersection}))}))

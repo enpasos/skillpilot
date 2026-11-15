@@ -750,9 +750,10 @@ const resolveExternalLandscapes = (
     })
   })
 
-  // Explicit prerequisite-only references authorize lookup support from an
-  // already bound source. Preserve a referenced subtree's contains hierarchy
-  // so the ordinary composition compiler can resolve its authored role.
+  // Source views may place necessary foreign preparation as acquisition
+  // targets. Resolve their explicit references from bound sources too; only
+  // primary-landscape goals become pages in this subject's book. Preserve a
+  // referenced subtree so the composition compiler can validate its role.
   const externalSubtreeGoalIds = new Set<string>()
   const addSubtree = (goalId: string) => {
     if (externalSubtreeGoalIds.has(goalId)) return
@@ -768,7 +769,7 @@ const resolveExternalLandscapes = (
       node.children.forEach(visitReference)
       return
     }
-    if (node.kind === 'landscapeEntry' || node.projectionRole !== 'prerequisiteOnly') return
+    if (node.kind === 'landscapeEntry') return
     if (!rawExternalGoalById.has(node.goalId)) return
     if (node.kind === 'canonicalSubtree') addSubtree(node.goalId)
     else requiredExternalGoalIds.add(node.goalId)
@@ -1176,6 +1177,12 @@ const normalizeAtlasApplicability = (
     scope: GoalBookApplicabilityScope,
   ) => {
     if (!targetGoalIds.has(goalId)) return
+    const goal = goalById.get(goalId)
+      ?? fail(`atlas scope references unknown goal ${goalId}.`)
+    // Book pages are curricular atoms, not assessments whose applicability
+    // may instead derive from requires. Their materialized jurisdiction is
+    // bound with the canonical input and limits broad containing source views.
+    if (!canonicalGoalMatchesDeclaredJurisdiction(goal, jurisdiction)) return
     const keys = scopeKeysByGoalId.get(goalId) ?? new Set<string>()
     keys.add(scopeKey(jurisdiction, scope))
     scopeKeysByGoalId.set(goalId, keys)
@@ -1311,6 +1318,22 @@ const normalizeAtlasApplicability = (
       .map(([jurisdiction, scopes]) => ({ jurisdiction, scopes })))
   })
   return result
+}
+
+const canonicalGoalMatchesDeclaredJurisdiction = (
+  goal: CanonicalAuthoringGoal,
+  jurisdiction: string,
+): boolean => {
+  if (goal.applicability === undefined) return true
+  const applicability = asRecord(goal.applicability, `goal ${goal.id}.applicability`)
+  const declared = applicability.jurisdiction
+  if (declared === undefined) return true
+  if (!Array.isArray(declared) || declared.length === 0 || declared.some((value) => (
+    typeof value !== 'string' || !value.trim()
+  ))) {
+    fail(`goal ${goal.id}.applicability.jurisdiction must contain non-empty jurisdiction codes.`)
+  }
+  return declared.includes(jurisdiction)
 }
 
 /** Explicit per-goal applicability is binding even without the optional global tag policy. */
@@ -1987,6 +2010,7 @@ export const buildGoalBookModel = ({
     prerequisiteReductionContext,
   )
   const projectedOccurrences = membershipTargetCollection.occurrences
+    .filter(({ goalId }) => primaryGoalIds.has(goalId))
   const membershipOccurrences = projectedOccurrences.filter(({ goalId }) => (
     semanticKindLedger.semanticKindByGoalId.get(goalId) === 'curricularAtomic'
   ))

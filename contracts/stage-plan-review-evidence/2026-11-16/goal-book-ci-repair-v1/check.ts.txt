@@ -1,0 +1,182 @@
+import assert from 'node:assert/strict'
+import { createHash } from 'node:crypto'
+import { readFile, writeFile } from 'node:fs/promises'
+import { dirname, relative, resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
+import { execFileSync } from 'node:child_process'
+import { loadGoalBookBuildInputs } from '../../app/scripts/goalBookModel'
+import { loadVerifiedPrerequisiteReductionContext } from '../../app/scripts/prerequisiteReductionProof'
+import { normalizeGoalRef } from '../../app/src/utils/authoring/canonicalAuthoring'
+import { parseVerifiedGoalBookRuntimeModel } from '../../app/src/utils/goalBookRuntime'
+import { goalBookDefinitionByLandscapeId } from '../../app/src/utils/goalBookPublicationRegistry'
+
+const ownDir = dirname(fileURLToPath(import.meta.url))
+const root = resolve(ownDir, '../..')
+const physicsPath = 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json'
+const chemistryPath = 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json'
+const chemistryId = 'c436b994-8f44-5134-b9f8-0c9f5d6a5ba0'
+const restingId = 'db47ac91-7bb0-5ba3-b39d-e2d6fc98396e'
+const diffusionId = '5dd180f1-f1c8-5f76-9c9a-ea3fc3d921bf'
+const configPaths = [
+  'app/scripts/config/goal-books/de-gym-physics-national-atlas.json',
+  'app/scripts/config/goal-books/de-de-gym-physics-description-understanding-evidence-calibration.json',
+]
+const readJson = async (path: string) => JSON.parse(await readFile(resolve(root, path), 'utf8'))
+const sha256 = (bytes: string | Uint8Array) => `sha256:${createHash('sha256').update(bytes).digest('hex')}`
+const physics = await readJson(physicsPath)
+const primaryIds = new Set<string>(physics.goals.map((goal: any) => goal.id))
+const context = await loadVerifiedPrerequisiteReductionContext()
+const results = []
+for (const [index, configPath] of configPaths.entries()) {
+  const config = await readJson(configPath)
+  assert.equal(config.landscapePath, physicsPath)
+  assert.equal(config.externalLandscapePaths.filter((path: string) => path === chemistryPath).length, 1)
+  const boundById = new Map<string, { landscapeId: string; goal: any }>()
+  for (const path of config.externalLandscapePaths) {
+    const external = await readJson(path)
+    for (const goal of external.goals) {
+      assert(!primaryIds.has(goal.id), `primary/external identity collision: ${goal.id}`)
+      assert(!boundById.has(goal.id), `external identity collision: ${goal.id}`)
+      boundById.set(goal.id, { landscapeId: external.landscapeId, goal })
+    }
+  }
+  const externalRelations: any[] = []
+  for (const goal of physics.goals) {
+    for (const reference of goal.contains ?? []) {
+      assert(primaryIds.has(normalizeGoalRef(reference)), `foreign or missing contains: ${goal.id}`)
+    }
+    for (const reference of goal.requires ?? []) {
+      const id = normalizeGoalRef(reference)
+      if (!primaryIds.has(id)) {
+        assert(boundById.has(id), `unresolved primary requires: ${goal.id} -> ${id}`)
+        externalRelations.push({ ownerId: goal.id, goalId: id, landscapeId: boundById.get(id)!.landscapeId })
+      }
+    }
+  }
+  const { model } = await loadGoalBookBuildInputs(resolve(root, configPath), root, context)
+  const pageIds = new Set(model.pages.map(({ goalId }) => goalId))
+  assert.equal(pageIds.size, model.pages.length)
+  assert(model.excludedTargetGoals.every(({ goalId }) => primaryIds.has(goalId)))
+  if (index === 0) {
+    const inventory = await readJson(relative(root, resolve(ownDir, 'view-inventory.json')))
+    assert.deepEqual([...pageIds].sort(), inventory.sourceUnionIds,
+      'book pages equal the independently interpreted primary curricular source union')
+    const byOnlyIds = ['677a192d-8bbe-57fc-bb7a-1c1ed5fba32b', 'd61ea362-f6c3-5eab-ac30-2d0e265ac0f6']
+    const applicabilityInspection = byOnlyIds.map((goalId) => ({
+      goalId,
+      declared: physics.goals.find((goal: any) => goal.id === goalId).applicability,
+      actual: model.pages.find((page) => page.goalId === goalId)!.applicability,
+    }))
+    await writeFile(resolve(ownDir, 'applicability.actual.json'), `${JSON.stringify(applicabilityInspection, null, 2)}\n`)
+    for (const row of applicabilityInspection) assert.deepEqual(row.actual!.map(({ jurisdiction }) => jurisdiction), ['DE-BY'],
+      `BY-only source scope retained in book: ${row.goalId}`)
+  }
+  for (const page of model.pages) {
+    assert(primaryIds.has(page.goalId), `foreign Physics page: ${page.goalId}`)
+    const rawGoal = physics.goals.find((goal: any) => goal.id === page.goalId)
+    assert.deepEqual(
+      [...page.requires, ...page.externalPrerequisites].map(({ goalId }) => goalId).sort(),
+      [...new Set<string>((rawGoal.requires ?? []).map(normalizeGoalRef))].sort(),
+      `all authored prerequisites retained: ${page.goalId}`,
+    )
+    for (const reference of page.externalPrerequisites) {
+      assert(!pageIds.has(reference.goalId))
+      const external = boundById.get(reference.goalId)
+      if (!external) continue // Same-landscape goals outside this book remain external page references.
+      assert.equal(reference.landscapeId, external.landscapeId)
+      assert.equal(reference.title, external.goal.title)
+      const url = new URL(reference.canonicalUrl!)
+      assert.equal(url.origin, 'https://skillpilot.com')
+      assert.equal(url.pathname, '/lernzielbuch')
+      assert.equal(url.searchParams.get('landscape'), external.landscapeId)
+      assert.equal(url.searchParams.get('edition'), 'curricular-atomic-v1')
+      assert.equal(url.hash, `#goal-${reference.goalId}`)
+    }
+  }
+  assert(model.source.externalLandscapes!.some(({ path, landscapeId }) => path === chemistryPath && landscapeId === chemistryId))
+  assert(!pageIds.has(diffusionId))
+  if (index === 0) {
+    const page = model.pages.find(({ goalId }) => goalId === restingId)!
+    assert(page)
+    assert.equal(page.externalPrerequisites.find(({ goalId }) => goalId === diffusionId)?.landscapeId, chemistryId)
+  }
+  const bytes = new TextEncoder().encode(JSON.stringify(model))
+  const parsed = await parseVerifiedGoalBookRuntimeModel(bytes.buffer, sha256(bytes))
+  assert.equal(parsed.pages.length, model.pages.length)
+  const missingConfig = { ...config, externalLandscapePaths: config.externalLandscapePaths.filter((path: string) => path !== chemistryPath) }
+  const missingPath = resolve(ownDir, `without-chemistry-${index}.config.json`)
+  await writeFile(missingPath, `${JSON.stringify(missingConfig, null, 2)}\n`)
+  let negativeMessage = ''
+  await assert.rejects(loadGoalBookBuildInputs(missingPath, root, context), (error: unknown) => {
+    negativeMessage = String(error instanceof Error ? error.message : error)
+    return negativeMessage.includes(`goal ${restingId} has unresolved cross-landscape prerequisite ${diffusionId}`)
+  })
+  const viewNegatives: Record<string, string> = {}
+  if (config.compositionViewManifestPath) {
+    const manifest = await readJson(config.compositionViewManifestPath)
+    const byPath = manifest.sourcePaths.find((path: string) => path.endsWith('/de-by-sekii-gk.view.json'))
+    assert(byPath)
+    const brokenView = await readJson(byPath)
+    const unknownId = '00000000-1111-4222-8333-444444444444'
+    let replaced = false
+    const replaceOne = (node: any) => {
+      if (node.kind === 'structure') node.children.forEach(replaceOne)
+      else if (!replaced && node.kind === 'goalEntry' && !primaryIds.has(node.goalId)) {
+        node.goalId = unknownId
+        replaced = true
+      }
+    }
+    brokenView.rootNodes.forEach(replaceOne)
+    assert(replaced)
+    const brokenViewPath = relative(root, resolve(ownDir, 'unknown-target.view.json'))
+    await writeFile(resolve(root, brokenViewPath), `${JSON.stringify(brokenView, null, 2)}\n`)
+    const brokenManifestPath = relative(root, resolve(ownDir, 'unknown-target.manifest.json'))
+    await writeFile(resolve(root, brokenManifestPath), `${JSON.stringify({
+      ...manifest,
+      sourcePaths: manifest.sourcePaths.map((path: string) => path === byPath ? brokenViewPath : path).sort(),
+    }, null, 2)}\n`)
+    const brokenConfigPath = resolve(ownDir, 'unknown-target.config.json')
+    await writeFile(brokenConfigPath, `${JSON.stringify({ ...config, compositionViewManifestPath: brokenManifestPath }, null, 2)}\n`)
+    await assert.rejects(loadGoalBookBuildInputs(brokenConfigPath, root, context), (error: unknown) => {
+      viewNegatives.unknownSourceTargetRejected = String(error instanceof Error ? error.message : error)
+      return viewNegatives.unknownSourceTargetRejected.includes(`CPV-002 ${unknownId}`)
+    })
+    const foreignNavigation = await readJson(manifest.navigationViewPath)
+    foreignNavigation.rootNodes.push({ kind: 'goalEntry', goalId: diffusionId, projectionRole: 'target' })
+    const foreignNavigationPath = relative(root, resolve(ownDir, 'foreign-target.navigation.json'))
+    await writeFile(resolve(root, foreignNavigationPath), `${JSON.stringify(foreignNavigation, null, 2)}\n`)
+    const foreignNavigationManifestPath = relative(root, resolve(ownDir, 'foreign-target.manifest.json'))
+    await writeFile(resolve(root, foreignNavigationManifestPath), `${JSON.stringify({ ...manifest, navigationViewPath: foreignNavigationPath }, null, 2)}\n`)
+    const foreignNavigationConfigPath = resolve(ownDir, 'foreign-target.config.json')
+    await writeFile(foreignNavigationConfigPath, `${JSON.stringify({ ...config, compositionViewManifestPath: foreignNavigationManifestPath }, null, 2)}\n`)
+    await assert.rejects(loadGoalBookBuildInputs(foreignNavigationConfigPath, root, context), (error: unknown) => {
+      viewNegatives.foreignNavigationTargetRejected = String(error instanceof Error ? error.message : error)
+      return viewNegatives.foreignNavigationTargetRejected.includes(`invalid bound navigation view: CPV-002 ${diffusionId}`)
+    })
+  }
+  results.push({
+    configPath, pageCount: model.pages.length, modelDigest: model.digest,
+    sourceBindings: model.source.externalLandscapes,
+    allPrimaryExternalRequiresCount: externalRelations.length,
+    allPrimaryExternalRequiresByLandscape: Object.fromEntries([...new Set(externalRelations.map(({ landscapeId }) => landscapeId))].map((id) => [id, externalRelations.filter(({ landscapeId }) => landscapeId === id).length])),
+    allPhysicsPageIdsBelongToPrimary: true, allAuthoredPagePrerequisitesPreserved: true,
+    runtimeVerified: true, missingChemistryRejected: negativeMessage,
+    ...viewNegatives,
+  })
+}
+const chemistryDefinition = goalBookDefinitionByLandscapeId(chemistryId)!
+assert(chemistryDefinition)
+const chemistryBook = (await loadGoalBookBuildInputs(resolve(root, 'app', chemistryDefinition.configPath), root, context)).model
+const diffusionPage = chemistryBook.pages.find(({ goalId }) => goalId === diffusionId)
+assert(diffusionPage)
+const report = {
+  reviewedAt: new Date().toISOString(),
+  head: execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim(),
+  scope: 'Independent narrow Goal-Book external-input fix review; no curriculum QA repeated and no source files mutated.',
+  inputs: await Promise.all([...configPaths, physicsPath, chemistryPath, 'app/scripts/goalBookModel.ts', 'app/scripts/testGoalBookModel.ts', 'app/scripts/testPhysicsGoalBookInputs.ts', 'app/scripts/testGoalBookPublicationsBuild.ts', 'app/scripts/config/goal-books/de-gym-physics-national-atlas.sources.json', 'app/scripts/config/goal-books/navigation/de-gym-physics-national-atlas.view.json'].map(async (path) => ({ path, digest: sha256(await readFile(resolve(root, path))) }))),
+  results,
+  chemistryLinkDestination: { bookId: chemistryDefinition.bookId, goalId: diffusionPage!.goalId, title: diffusionPage!.title, pageNumber: diffusionPage!.pageNumber, anchor: diffusionPage!.anchor },
+  outcome: 'PASS; no blocking findings in the external-input, source-view resolution and primary-page projection fix.',
+}
+await writeFile(resolve(ownDir, 'report.json'), `${JSON.stringify(report, null, 2)}\n`)
+console.log(JSON.stringify(report, null, 2))

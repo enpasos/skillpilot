@@ -960,6 +960,30 @@ assert.ok(physicsAtlas.pages.every(({ applicability }) => (
   && applicability[0].scopes[0]?.durationModel === 'G9'
 )))
 
+const foreignPreparationAtlasInput = structuredClone(physicsAtlasInput)
+foreignPreparationAtlasInput.config.externalLandscapePaths = ['fixtures/mathematics.json']
+foreignPreparationAtlasInput.externalLandscapeSources = [{
+  path: 'fixtures/mathematics.json',
+  landscape: externalLandscapeFixture,
+}]
+const foreignPreparationSourceView = structuredClone(physicsAtlasView) as CompositionView
+foreignPreparationSourceView.rootNodes.push({
+  kind: 'goalEntry', goalId: 'math-foundation', projectionRole: 'target',
+})
+foreignPreparationAtlasInput.compositionViewSources![0].view = foreignPreparationSourceView
+const foreignPreparationAtlas = buildGoalBookModel(foreignPreparationAtlasInput)
+assert.deepEqual(foreignPreparationAtlas.pages, physicsAtlas.pages,
+  'a source view can place foreign acquisition targets without changing the subject book pages')
+assert.deepEqual(foreignPreparationAtlas.excludedTargetGoals, physicsAtlas.excludedTargetGoals,
+  'foreign preparation is not misclassified using the primary subject semantic-kind ledger')
+const missingForeignPreparationSource = structuredClone(foreignPreparationAtlasInput)
+missingForeignPreparationSource.config.externalLandscapePaths = []
+missingForeignPreparationSource.externalLandscapeSources = []
+expectBuildFailure(missingForeignPreparationSource, /CPV-002 math-foundation/u)
+const foreignPreparationNavigation = structuredClone(foreignPreparationAtlasInput)
+foreignPreparationNavigation.navigationView = foreignPreparationSourceView
+expectBuildFailure(foreignPreparationNavigation, /invalid bound navigation view: CPV-002 math-foundation/u)
+
 const roleAwareAtlasInput = JSON.parse(JSON.stringify(physicsAtlasInput)) as GoalBookBuildInput
 roleAwareAtlasInput.compositionViewManifest = {
   schemaVersion: 2,
@@ -1033,6 +1057,21 @@ assert.deepEqual(
 const roleAwareHeSource = roleAwareAtlas.source.compositionViewSources
   ?.find(({ viewId }) => viewId === roleAwareExcludedView.viewId)
 assert.ok(roleAwareHeSource)
+const jurisdictionBoundAtlasInput = structuredClone(roleAwareAtlasInput)
+const jurisdictionBoundGoal = (jurisdictionBoundAtlasInput.landscape as {
+  goals: Array<{ id: string; applicability?: { jurisdiction: string[] } }>
+}).goals.find(({ id }) => id === 'B')!
+jurisdictionBoundGoal.applicability = { jurisdiction: ['DE-BY'] }
+refreshFixtureSemanticKindFingerprint(jurisdictionBoundAtlasInput, 'B')
+const jurisdictionBoundAtlas = buildGoalBookModel(jurisdictionBoundAtlasInput)
+assert.deepEqual(jurisdictionBoundAtlas.pages.map(({ goalId }) => goalId),
+  roleAwareAtlas.pages.map(({ goalId }) => goalId))
+assert.deepEqual(jurisdictionBoundAtlas.pages.find(({ goalId }) => goalId === 'B')
+  ?.applicability?.map(({ jurisdiction }) => jurisdiction), ['DE-BY'],
+'a broad source subtree cannot widen a curricular atom beyond its bound jurisdiction')
+assert.deepEqual(jurisdictionBoundAtlas.pages.find(({ goalId }) => goalId === 'C')
+  ?.applicability?.map(({ jurisdiction }) => jurisdiction), ['DE-BY', 'DE-HE'],
+'jurisdiction filtering preserves the unaffected sibling scopes')
 const explicitRoleAwareAtlasInput = JSON.parse(JSON.stringify(roleAwareAtlasInput)) as GoalBookBuildInput
 const explicitHeView = (explicitRoleAwareAtlasInput.compositionViewSources ?? [])[1]
   ?.view as typeof roleAwareExcludedView

@@ -1,0 +1,111 @@
+{
+  "reviewedAt": "2026-11-15T23:26:52.665Z",
+  "head": "069fd6cf4fa5c9c8c8108bd367f986e94c29da12",
+  "scope": "Independent narrow Goal-Book external-input fix review; no curriculum QA repeated and no source files mutated.",
+  "inputs": [
+    {
+      "path": "app/scripts/config/goal-books/de-gym-physics-national-atlas.json",
+      "digest": "sha256:49afa9a38129d288a3844a7b51b68867885ba21b22ac20e849004d7e06a342ce"
+    },
+    {
+      "path": "app/scripts/config/goal-books/de-de-gym-physics-description-understanding-evidence-calibration.json",
+      "digest": "sha256:95bd0de2eb6dc8237e707823ed9ee851a288cb537ccc02ced3810f3e63d4a460"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+      "digest": "sha256:b391f6a72d6fee14cc5836cd42ad9a46f30ff9dbc07b23a5dd7e0f47c7467173"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+      "digest": "sha256:e29c271e797956c4679e211034b6ad83a0e5a45ef1da25f3d39166657eaf4b5d"
+    },
+    {
+      "path": "app/scripts/goalBookModel.ts",
+      "digest": "sha256:10dc517da77987925bbae5e03255f7614814f443975a86ab3011b45a497364cb"
+    },
+    {
+      "path": "app/scripts/testGoalBookModel.ts",
+      "digest": "sha256:433fb34e1bd02f80c234354aa7482e94521eae8592a830a4e15a3797762906a1"
+    },
+    {
+      "path": "app/scripts/testPhysicsGoalBookInputs.ts",
+      "digest": "sha256:3002d516b69851a539365a6e5ad2f2a77f88638e8a744af05354bfe7eebd690e"
+    },
+    {
+      "path": "app/scripts/testGoalBookPublicationsBuild.ts",
+      "digest": "sha256:67305794d39680de90120d5de10a02d213130024d98ca9e8e05e05c39ff505c1"
+    },
+    {
+      "path": "app/scripts/config/goal-books/de-gym-physics-national-atlas.sources.json",
+      "digest": "sha256:91221777f33a9bce3af14ce9efbbd45c0b38fca3b01558e3c4c88a2ffc530957"
+    },
+    {
+      "path": "app/scripts/config/goal-books/navigation/de-gym-physics-national-atlas.view.json",
+      "digest": "sha256:d4e194547402990dcb37b5415265b3d797c4628060feb19ec9bc085a1ab3942f"
+    }
+  ],
+  "results": [
+    {
+      "configPath": "app/scripts/config/goal-books/de-gym-physics-national-atlas.json",
+      "pageCount": 484,
+      "modelDigest": "sha256:816f8f83daebd1856eb907358074628ac0be54b3e0e61ae24282e6aeb3ac6784",
+      "sourceBindings": [
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "digest": "sha256:43afb3b8a9177e5130fb3ae52f07ebd086b828033be6b5fb4025cf27b20a3a99"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+          "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+          "digest": "sha256:5e820a6b655da53bc80830e0e4e028c387c76ed2f74093edd83e6261cbcded6f"
+        }
+      ],
+      "allPrimaryExternalRequiresCount": 158,
+      "allPrimaryExternalRequiresByLandscape": {
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": 157,
+        "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0": 1
+      },
+      "allPhysicsPageIdsBelongToPrimary": true,
+      "allAuthoredPagePrerequisitesPreserved": true,
+      "runtimeVerified": true,
+      "missingChemistryRejected": "Goal-book model: goal db47ac91-7bb0-5ba3-b39d-e2d6fc98396e has unresolved cross-landscape prerequisite 5dd180f1-f1c8-5f76-9c9a-ea3fc3d921bf.",
+      "unknownSourceTargetRejected": "Goal-book model: invalid composition view tmp/goalbook-external-input-independent-20261116/unknown-target.view.json: CPV-002 00000000-1111-4222-8333-444444444444: Fehlende kanonische Ziel-Referenz: 00000000-1111-4222-8333-444444444444",
+      "foreignNavigationTargetRejected": "Goal-book model: invalid bound navigation view: CPV-002 5dd180f1-f1c8-5f76-9c9a-ea3fc3d921bf: Fehlende kanonische Ziel-Referenz: 5dd180f1-f1c8-5f76-9c9a-ea3fc3d921bf"
+    },
+    {
+      "configPath": "app/scripts/config/goal-books/de-de-gym-physics-description-understanding-evidence-calibration.json",
+      "pageCount": 22,
+      "modelDigest": "sha256:8b0323e219751a7f3290bec61d78e8144eb136aef9749bc927b46befc7f07de8",
+      "sourceBindings": [
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "digest": "sha256:43afb3b8a9177e5130fb3ae52f07ebd086b828033be6b5fb4025cf27b20a3a99"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+          "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+          "digest": "sha256:5e820a6b655da53bc80830e0e4e028c387c76ed2f74093edd83e6261cbcded6f"
+        }
+      ],
+      "allPrimaryExternalRequiresCount": 158,
+      "allPrimaryExternalRequiresByLandscape": {
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": 157,
+        "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0": 1
+      },
+      "allPhysicsPageIdsBelongToPrimary": true,
+      "allAuthoredPagePrerequisitesPreserved": true,
+      "runtimeVerified": true,
+      "missingChemistryRejected": "Goal-book model: goal db47ac91-7bb0-5ba3-b39d-e2d6fc98396e has unresolved cross-landscape prerequisite 5dd180f1-f1c8-5f76-9c9a-ea3fc3d921bf."
+    }
+  ],
+  "chemistryLinkDestination": {
+    "bookId": "de-gym-chemie-bundesweit",
+    "goalId": "5dd180f1-f1c8-5f76-9c9a-ea3fc3d921bf",
+    "title": "Diffusion und Brownsche Bewegung mit dem Teilchenmodell deuten",
+    "pageNumber": 21,
+    "anchor": "goal-5dd180f1-f1c8-5f76-9c9a-ea3fc3d921bf"
+  },
+  "outcome": "PASS; no blocking findings in the external-input, source-view resolution and primary-page projection fix."
+}

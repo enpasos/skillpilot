@@ -1,0 +1,151 @@
+{
+  "capturedAt": "2026-11-15T23:38:46.202183+00:00",
+  "baseCommit": "069fd6cf4fa5c9c8c8108bd367f986e94c29da12",
+  "sourcePins": [
+    {
+      "path": "app/scripts/goalBookModel.ts",
+      "sha256": "10dc517da77987925bbae5e03255f7614814f443975a86ab3011b45a497364cb"
+    },
+    {
+      "path": "app/scripts/testGoalBookModel.ts",
+      "sha256": "433fb34e1bd02f80c234354aa7482e94521eae8592a830a4e15a3797762906a1"
+    },
+    {
+      "path": "app/scripts/testGoalBookPublicationsBuild.ts",
+      "sha256": "67305794d39680de90120d5de10a02d213130024d98ca9e8e05e05c39ff505c1"
+    },
+    {
+      "path": "app/scripts/testPhysicsGoalBookInputs.ts",
+      "sha256": "7204b0e2ffd794c19199e4bed38ed8d53efd5eae6c065de9b3e3f68bcc8f8213"
+    },
+    {
+      "path": "app/scripts/config/goal-books/de-gym-physics-national-atlas.json",
+      "sha256": "49afa9a38129d288a3844a7b51b68867885ba21b22ac20e849004d7e06a342ce"
+    },
+    {
+      "path": "app/scripts/config/goal-books/de-de-gym-physics-description-understanding-evidence-calibration.json",
+      "sha256": "95bd0de2eb6dc8237e707823ed9ee851a288cb537ccc02ced3810f3e63d4a460"
+    },
+    {
+      "path": "app/scripts/config/goal-books/de-gym-physics-national-atlas.sources.json",
+      "sha256": "91221777f33a9bce3af14ce9efbbd45c0b38fca3b01558e3c4c88a2ffc530957"
+    },
+    {
+      "path": "app/scripts/config/goal-books/navigation/de-gym-physics-national-atlas.view.json",
+      "sha256": "d4e194547402990dcb37b5415265b3d797c4628060feb19ec9bc085a1ab3942f"
+    }
+  ],
+  "checks": [
+    {
+      "command": "npm run build:goal-books -- --force",
+      "cwd": "app",
+      "exitCode": 0,
+      "log": "full-publication-build.stdout.txt"
+    },
+    {
+      "command": "./node_modules/.bin/tsx scripts/testGoalBookModel.ts",
+      "cwd": "app",
+      "exitCode": 0,
+      "log": "model-tests.stdout.txt"
+    },
+    {
+      "command": "npm run test:goal-book-build",
+      "cwd": "app",
+      "exitCode": 0,
+      "log": "publication-build-tests.stdout.txt"
+    },
+    {
+      "command": "./node_modules/.bin/tsc -b",
+      "cwd": "app",
+      "exitCode": 0,
+      "log": "typescript.stdout.txt"
+    },
+    {
+      "command": "npm run test:physics-goal-book-inputs",
+      "cwd": "app",
+      "exitCode": 0,
+      "log": "physics-input-test.stdout.txt"
+    },
+    {
+      "command": "./node_modules/.bin/eslint scripts/testPhysicsGoalBookInputs.ts",
+      "cwd": "app",
+      "exitCode": 0,
+      "log": "physics-input-test-eslint.stdout.txt"
+    },
+    {
+      "command": "./node_modules/.bin/tsx scripts/checkTerminology.ts",
+      "cwd": "app",
+      "exitCode": 0,
+      "log": "terminology.stdout.txt"
+    }
+  ],
+  "bookPageCounts": {
+    "mathematics": 807,
+    "physics": 484,
+    "chemistry": 423,
+    "biology": 397,
+    "economics": 346
+  },
+  "totalBookPages": 2457,
+  "retainedArtifacts": [
+    {
+      "originalPath": "tmp/goalbook-external-input-independent-20261116/review.md",
+      "retainedPath": "physics-input-test-review-addendum.md",
+      "sha256": "cf237896d53b1d6ff5f5853612ef49100f9025977c4b199b6b5c7952cccabc9e",
+      "bytes": 9222
+    },
+    {
+      "originalPath": "tmp/pr159-physics-book-input-test-final.actual.json",
+      "retainedPath": "physics-input-test-final.actual.json",
+      "sha256": "c33bb5273bc8adcbfe51f7422fb4c0f02e8584cf7428bb080b1b296847279511",
+      "bytes": 1815
+    },
+    {
+      "originalPath": "tmp/pr159-physics-book-inputs-current.log",
+      "retainedPath": "physics-input-test.stdout.txt",
+      "sha256": "991e146d427722878623e6216ce493908e8277a41827d8942afe5ac429c36f84",
+      "bytes": 258
+    },
+    {
+      "originalPath": "tmp/pr159-physics-book-inputs-eslint.log",
+      "retainedPath": "physics-input-test-eslint.stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "originalPath": "tmp/pr159-goalbook-full-build.txt",
+      "retainedPath": "full-publication-build.stdout.txt",
+      "sha256": "5546dc38fd01c3fa3d37c29f3d91f18d78f792cafa89048d4b694852537bd332",
+      "bytes": 963
+    },
+    {
+      "originalPath": "tmp/pr159-goalbook-model-tests-v2.txt",
+      "retainedPath": "model-tests.stdout.txt",
+      "sha256": "b61daf067f8e0224053986e03e9e34b88725026d7c7019d7e344c77269b0aa8a",
+      "bytes": 378
+    },
+    {
+      "originalPath": "tmp/pr159-goalbook-external-fix-tests-v4.txt",
+      "retainedPath": "publication-build-tests.stdout.txt",
+      "sha256": "4f96583a7694ed853c027dc5aa3ad02d53a881c075e476790429912fecc6672d",
+      "bytes": 476
+    },
+    {
+      "originalPath": "tmp/pr159-goalbook-final-typescript.txt",
+      "retainedPath": "typescript.stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "originalPath": "tmp/pr159-goalbook-terminology.txt",
+      "retainedPath": "terminology.stdout.txt",
+      "sha256": "41f2851fb54ae99e402b68127297081af38eac7726caa2f2ed49744e9a0dd885",
+      "bytes": 87
+    }
+  ],
+  "limits": [
+    "Local runs and independent code review; fresh remote PR and main CI remain pending.",
+    "The completed full-catalog quality run is retained separately; canonical inputs and quality gates were not changed by this book fix.",
+    "The retained full terminology scan preceded the final copied review artifacts; their new text was separately searched for the same retired terms."
+  ]
+}

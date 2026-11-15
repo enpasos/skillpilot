@@ -1,0 +1,52 @@
+{
+  "capturedAt": "2026-11-15T23:36:25.731577+00:00",
+  "scope": "Only app/scripts/testPhysicsGoalBookInputs.ts changed by this agent; no curriculum, QA, Git or publication writes.",
+  "checks": [
+    {
+      "command": "npm run test:physics-goal-book-inputs",
+      "cwd": "app",
+      "sessionId": 70519,
+      "exitCode": 0,
+      "logPath": "tmp/pr159-physics-book-inputs-current.log"
+    },
+    {
+      "command": "./node_modules/.bin/eslint scripts/testPhysicsGoalBookInputs.ts",
+      "cwd": "app",
+      "sessionId": 57411,
+      "exitCode": 0,
+      "logPath": "tmp/pr159-physics-book-inputs-eslint.log"
+    }
+  ],
+  "inventory": {
+    "semanticDecisions": 841,
+    "ordinaryCurricularGoals": 485,
+    "atlasTargetGoals": 484,
+    "sourceViews": 64,
+    "reviewedDurationDecisions": 16,
+    "explicitPreparationOnlyAtlasException": "13b338eb-f761-5817-9058-11043b9cb253"
+  },
+  "boundFiles": [
+    {
+      "path": "app/scripts/testPhysicsGoalBookInputs.ts",
+      "bytes": 140268,
+      "sha256": "7204b0e2ffd794c19199e4bed38ed8d53efd5eae6c065de9b3e3f68bcc8f8213"
+    },
+    {
+      "path": "tmp/pr159-physics-book-inputs-current.log",
+      "bytes": 258,
+      "sha256": "991e146d427722878623e6216ce493908e8277a41827d8942afe5ac429c36f84"
+    },
+    {
+      "path": "tmp/pr159-physics-book-inputs-eslint.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tmp/pr159-ci-132988529549-goal-book-failed.actual.log",
+      "bytes": 111005,
+      "sha256": "ad5362cdf385bb84690c50bbc9043cc9f8eaad0df4e337117bdff963e530dca9"
+    }
+  ],
+  "independentTestDiffReview": "separate read-only reviewer; final addendum pending at this receipt time",
+  "releaseBoundary": "Focused local test success, not terminal fresh PR or main CI."
+}
