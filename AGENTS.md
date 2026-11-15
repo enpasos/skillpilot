@@ -28,6 +28,28 @@ their number small. Delegate suitable work to **GPT 6.1 Sol Ultra**. This
 development mandate does not authorize unrelated production deployments,
 provider publication, credential changes or changes to the retained sources.
 
+Maintain `docs/dev/stage-plan-management-summary.md` after every implementation
+delivery, as explicitly requested by the Product Owner on 15 November 2026.
+Write a short German entry with date, time and timezone, overall progress
+against K1–K13/F1–F7, the concrete result, implementation decisions, two or
+three owner inspection points, linked quality evidence, integration status
+and next step. Distinguish learner assessment tasks, automated checks and
+independent content reviews. Count completed work, activated real plans and
+measured backflow effects explicitly; do not turn partial work into completion
+percentages. Update the timestamp when revising an open entry.
+
+Mark a delivery complete only after merge and a fresh successful main CI run.
+Open entries link the PR; completed entries additionally bind the implementation
+commit and terminal main workflow run. Count jobs of that specific run, not
+the changing aggregate of checks attached to a commit. Retain completed
+entries as history, with explicit corrections where needed. The owner's
+follow-up feedback permits a small documentation-only completion commit or
+short-lived PR after successful main CI, so the record need not wait for the
+next implementation delivery. Check the applicable workflow paths and run
+the documentation checks; never claim that the implementation CI ran on the
+later documentation commit. Otherwise keep updates in the coherent delivery
+stream and avoid interrupting a running full PR CI merely to update status.
+
 ## 0. OpenAI review retired — successor development is authorized
 
 The submitted `skillpilot-coach-v1` **1.0.0** was **REJECTED**. On
