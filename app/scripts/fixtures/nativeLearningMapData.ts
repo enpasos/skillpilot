@@ -6,11 +6,21 @@ import { CANONICAL_GYMNASIUM_ROOT_ID } from '../../src/utils/curriculumDisplay'
 // contain no browser adapters, live learner identifiers, or prototype snapshots.
 export const nativeMapIds = {
   learner: 'fixture-native-learning-map', root: CANONICAL_GYMNASIUM_ROOT_ID,
-  math: '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced', physics: 'fixture-native-physics',
+  // The learner map covers Mathematics and Physics, identified by their real landscape IDs.
+  math: '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced', physics: '7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a',
   mathRoot: 'native-math-root', section: 'native-vectors', other: 'native-analysis',
   foundation: 'native-vector-foundation', application: 'native-vector-application',
   memory: 'native-vector-recall', support: 'native-hidden-support',
   physicsRoot: 'native-physics-root', physicsGoal: 'native-force',
+} as const
+
+/** Tree node IDs of the view sections (synthetic structure goals) and the merged stage unit of the map. */
+export const nativeMapSections = {
+  mathStage: `composition:native-${nativeMapIds.math}:structure:sek2-gk`,
+  vectors: `composition:native-${nativeMapIds.math}:structure:native-q2`,
+  analysis: `composition:native-${nativeMapIds.math}:structure:native-q3`,
+  physicsStage: `composition:native-${nativeMapIds.physics}:structure:physics-sekii-gk`,
+  stageUnit: '__unit__:sek2',
 } as const
 
 const id = nativeMapIds
@@ -28,7 +38,8 @@ export const nativeMapLandscapes: SkillLandscape[] = [
     { ...goal(id.mathRoot, 'Mathematik', [id.section, id.other]), tags: ['root'] },
     goal(id.section, 'Vektoren', [id.foundation, id.application, id.memory], [id.support]),
     goal(id.foundation, 'Vektoren darstellen'),
-    { ...goal(id.application, 'Skalarprodukte anwenden', [], [id.foundation]), resourceLinks: [{
+    // The need on the later section's goal is a backward dependency (Rückgriff) in the unit map.
+    { ...goal(id.application, 'Skalarprodukte anwenden', [], [id.foundation, id.other]), resourceLinks: [{
       type: 'goal-visualization', resourceType: 'goal-visualization', role: 'primary',
       url: '/fixtures/native-map-goal.svg', title: 'Vektoren', altText: 'Zwei Vektoren', reviewStatus: 'approved',
     }] },
@@ -52,10 +63,14 @@ export const nativeMapView = (landscapeId: string, physicsOnly = false): Composi
       { kind: 'landscapeEntry', landscapeId: id.physics },
     ]
     : landscapeId === id.math ? [
-      { kind: 'canonicalSubtree', goalId: id.section },
-      { kind: 'goalEntry', goalId: id.other },
+      { kind: 'structure', id: 'sek2-gk', label: 'Sekundarstufe II (GK)', children: [
+        { kind: 'structure', id: 'native-q2', label: 'Vektorrechnung', children: [{ kind: 'canonicalSubtree', goalId: id.section }] },
+        { kind: 'structure', id: 'native-q3', label: 'Änderungsraten', children: [{ kind: 'goalEntry', goalId: id.other }] },
+      ] },
       { kind: 'goalEntry', goalId: id.support, projectionRole: 'prerequisiteOnly' },
-    ] : [{ kind: 'goalEntry', goalId: id.physicsGoal }],
+    ] : [{ kind: 'structure', id: 'physics-sekii-gk', label: 'Sekundarstufe II (GK)', children: [
+      { kind: 'goalEntry', goalId: id.physicsGoal },
+    ] }],
 })
 
 export const nativeMapProfile = (physicsOnly = false) => ({

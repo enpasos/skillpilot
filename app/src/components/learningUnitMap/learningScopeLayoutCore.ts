@@ -56,11 +56,17 @@ export async function computeLearningScopeLayout(
     const b = `${right.target}\u0000${right.source}`
     return a < b ? -1 : a > b ? 1 : 0
   })
-  const edges: EdgeDefinition[] = relations.map(({ source, target }) => {
+  const edges: EdgeDefinition[] = relations.map(({ source, target, backward }) => {
     if (!siblings.has(source) || !siblings.has(target) || source === target) throw new Error('Invalid scope relation')
     const id = `sibling:${source}->${target}`
+    // A Rückgriff never decides the direction: it is laid out along the
+    // declared order it contradicts and drawn back against that flow.
+    if (backward) return { id, source: target, target: source, sourceHandle: `out:${id}`, targetHandle: `in:${id}`, reversed: true }
     return { id, source, target, sourceHandle: `out:${id}`, targetHandle: `in:${id}` }
   })
+  // A declared order outranks goal demand when cycle breaking must reverse an edge.
+  const declared = new Set(relations.filter(relation => relation.unitOrder === 'declared')
+    .map(({ source, target }) => `sibling:${source}->${target}`))
   const sourceSide: LayoutPortSide = direction === 'RIGHT' ? 'EAST' : 'SOUTH'
   const targetSide: LayoutPortSide = direction === 'RIGHT' ? 'WEST' : 'NORTH'
   const portSides = new Map<string, LayoutPortSide>()
@@ -96,7 +102,9 @@ export async function computeLearningScopeLayout(
         return [{ id: portId, width: 0, height: 0, layoutOptions: { 'elk.port.side': side } }]
       }),
     })),
-    edges: edges.map(edge => ({ id: edge.id, sources: [edge.sourceHandle], targets: [edge.targetHandle] })),
+    edges: edges.map(edge => declared.has(edge.id)
+      ? { id: edge.id, sources: [edge.sourceHandle], targets: [edge.targetHandle], layoutOptions: { 'elk.layered.priority.direction': '10' } }
+      : { id: edge.id, sources: [edge.sourceHandle], targets: [edge.targetHandle] }),
   }
 
   const result = await elk.layout(graph)

@@ -8,7 +8,8 @@ import tailwindcss from '@tailwindcss/vite'
 import { chromium, type BrowserContext, type Page } from 'playwright'
 import { createServer } from 'vite'
 import { CURRENT_TERMS_VERSION } from '../src/utils/legalTermsVersion'
-import { nativeMapDeck, nativeMapIds as id, nativeMapLandscapes, nativeMapProfile, nativeMapView } from './fixtures/nativeLearningMapData'
+import { nativeMapDeck, nativeMapIds as id, nativeMapLandscapes, nativeMapProfile, nativeMapSections as section,
+  nativeMapView } from './fixtures/nativeLearningMapData'
 
 const appRoot = fileURLToPath(new URL('../', import.meta.url))
 const artifacts = fileURLToPath(new URL('../../tmp/s1-cockpit-map/', import.meta.url))
@@ -210,6 +211,7 @@ async function open(width = 1440, failLayoutWorker = false, reducedMotion: 'redu
 }
 
 const mapDialog = (page: Page) => page.getByTestId('learner-learning-map-dialog')
+const mapRoot = '__learner_goal_map_root__'
 const mapOpener = (page: Page) => page.getByTestId('learner-main-content').getByTestId('learner-learning-map-open')
 async function openMap(page: Page) {
   await mapOpener(page).click()
@@ -271,17 +273,34 @@ try {
 
   stage = 'full-window native map navigation and result/state isolation'
   await openMap(page)
-  await scope(page, id.section)
+  // The learner map is the unit map: the active goal opens on the board of its unit "Vektorrechnung".
+  await scope(page, section.vectors)
   await fillsWindow(page, 'desktop')
   await page.screenshot({ path: join(artifacts, '02-native-map-full-window.png') })
+  assert.equal(await page.getByTestId('native-cockpit-map').getAttribute('data-map-view'), 'units')
+  const notice = await page.getByTestId('learner-map-construction-notice').innerText()
+  assert.ok(notice.startsWith('Baustelle:') && notice.includes('Einheiten und Lernziele statt der Gliederung')
+    && notice.includes('Abschnitte des Lehrplans') && notice.includes('nur Mathematik und Physik'), `visible construction-site notice: ${notice}`)
+  assert.equal(await page.locator('[role="note"][data-testid="learner-map-construction-notice"]').isVisible(), true)
+  const subjectFilter = page.getByTestId('learner-map-subject-filter')
+  assert.deepEqual(await subjectFilter.getByRole('button').evaluateAll(buttons => buttons.map(button => [button.textContent, button.getAttribute('aria-pressed')])),
+    [['Mathematik', 'true'], ['Physik', 'true']], 'the subject filter offers exactly the subjects present')
+  assert.equal(await page.getByTestId('learner-map-unit-step').inputValue(), '2', 'the deepest top-down step is the default')
+  assert.deepEqual(await page.getByTestId('learner-map-unit-step').locator('option').allTextContents(), ['1', '2'])
+  assert.equal(await page.getByRole('button', { name: /Zur (bisherigen|alten) Ansicht/u }).count(), 0, 'there is no switch to another map view')
   await page.getByTestId('native-cockpit-map').evaluate(element => element.setAttribute('data-native-map-witness', 'original'))
   assert.equal(await main.getAttribute('data-native-instance-witness'), 'original')
   assert.equal(await page.locator('.lum-inspector').count(), 0)
   assert.equal(await page.locator('.learner-cockpit-selection img').count(), 1)
   assert.equal(await page.getByTestId('native-cockpit-map').locator('img').count(), 0, 'map navigation never duplicates the goal image')
   assert.equal(await page.locator(`[data-entry-id="${id.support}"]`).count(), 0)
+  assert.equal(await page.locator(`[data-entry-id="${id.section}"]`).count(), 0, 'the cluster "Vektoren" is no unit and leaves the map')
   assert.deepEqual((await page.locator('.lum-node[data-entry-id]').evaluateAll(nodes => nodes.map(n => n.getAttribute('data-entry-id')))).sort(),
-    [id.foundation, id.application, id.memory].sort(), 'map shows the actual native authored visible children')
+    [id.foundation, id.application, id.memory].sort(), 'the unit holds the goals of the removed cluster')
+  assert.equal(await page.locator(`.lum-node[data-entry-id="${id.application}"]`).getAttribute('data-active-goal'), 'true',
+    'the active learning goal stays marked in the unit map')
+  assert.equal(await page.locator(`.lum-node[data-entry-id="${id.foundation}"] .lum-node-state`).getAttribute('class'),
+    'lum-node-icon lum-node-state is-explicit', 'goal progress stays visible in the unit map')
   assert.equal(await page.locator('.lum-node-open').count(), 0, 'leaf goals never get a scope arrow')
   await node(page, id.foundation).focus()
   await afterEffects(page)
@@ -306,34 +325,79 @@ try {
   await page.getByTestId('learner-active-goal-banner').getByRole('button', { name: 'Gehe zum aktiven Ziel', exact: true }).click()
   await selectedTitle(page, 'Skalarprodukte anwenden')
   await openMap(page)
-  await scope(page, id.section)
+  await scope(page, section.vectors)
   await mapSelection(page, id.application)
   await page.getByRole('button', { name: 'Eine Ebene auftauchen', exact: true }).click()
-  await scope(page, id.mathRoot)
+  await scope(page, section.stageUnit)
   await closeMap(page)
   await focusedTestId(page, 'learner-learning-map-open')
   // Selected goal still has the same ID while its containing scope is hidden.
   await page.getByTestId('learner-active-goal-banner').getByRole('button', { name: 'Gehe zum aktiven Ziel', exact: true }).click()
   await openMap(page)
-  await scope(page, id.section)
+  await scope(page, section.vectors)
   await page.getByRole('button', { name: 'Eine Ebene auftauchen', exact: true }).click()
-  await scope(page, id.mathRoot)
-  await node(page, id.section).dblclick({ delay: 100 })
-  await scope(page, id.section)
-  await mapSelection(page, id.section)
+  await scope(page, section.stageUnit)
+  await node(page, section.vectors).dblclick({ delay: 100 })
+  await scope(page, section.vectors)
+  await mapSelection(page, section.vectors)
   const leaf = node(page, id.foundation)
   await leaf.dblclick({ delay: 100 })
   await mapSelection(page, id.foundation)
-  await scope(page, id.section)
+  await scope(page, section.vectors)
   await leaf.dblclick({ delay: 100, modifiers: ['Shift'] })
-  await scope(page, id.mathRoot)
+  await scope(page, section.stageUnit)
   assert.deepEqual(h.writes, [])
   assert.equal(await main.getAttribute('data-native-instance-witness'), 'original')
   await page.screenshot({ path: join(artifacts, '02-native-map.png') })
 
+  stage = 'one stage unit for both subjects, declared order and Rückgriff'
+  assert.deepEqual((await page.locator('.lum-node[data-entry-id]').evaluateAll(nodes => nodes.map(n => n.getAttribute('data-entry-id')))).sort(),
+    [section.vectors, section.analysis, id.physicsGoal].sort(), 'Sekundarstufe II holds the units of Mathematics and the goal of Physics')
+  assert.equal(await page.locator(`.lum-node[data-entry-id="${section.vectors}"] .lum-node-meta`).innerText(), 'Einheit · 1/3 erledigt',
+    'a section standing in for a plan unit is an "Einheit"; its progress is derived from its goals')
+  const [vectorsBox, analysisBox] = await Promise.all([node(page, section.vectors).boundingBox(), node(page, section.analysis).boundingBox()])
+  assert.ok(vectorsBox && analysisBox && vectorsBox.x + vectorsBox.width < analysisBox.x,
+    'the declared order, not the Rückgriff, sets the direction: the earlier unit stands on the left')
+  const legend = page.getByTestId('learning-map-order-legend')
+  assert.equal(await legend.isVisible(), true, 'the order legend explains the arrows between units')
+  assert.ok((await legend.innerText()).includes('erklärte Reihenfolge') && (await legend.innerText()).includes('1 Rückgriff'))
+  assert.equal(await page.locator('.react-flow__edge[aria-label^="Rückgriff: Vektorrechnung braucht Ziele aus Änderungsraten"]').count(), 1,
+    'a goal of the earlier unit needing a goal of the later unit is marked as Rückgriff')
+  assert.equal(await page.locator('.react-flow__edge[aria-label="Änderungsraten kommt nach Vektorrechnung (erklärte Reihenfolge)"]').count(), 1)
+  const backwardStroke = await page.locator('.react-flow__edge[aria-label^="Rückgriff"] path').first().evaluate(path => getComputedStyle(path).strokeDasharray)
+  const declaredStroke = await page.locator('.react-flow__edge[aria-label$="(erklärte Reihenfolge)"] path').first().evaluate(path => getComputedStyle(path).strokeDasharray)
+  assert.notEqual(backwardStroke, declaredStroke, 'a Rückgriff is drawn differently from the declared order')
+  await page.getByRole('button', { name: 'Eine Ebene auftauchen', exact: true }).click()
+  await scope(page, mapRoot)
+  assert.deepEqual(await page.locator('.lum-node[data-entry-id]').evaluateAll(nodes => nodes.map(n => n.getAttribute('data-entry-id'))),
+    [section.stageUnit], 'subjects are filters, not nodes: the root shows one Sekundarstufe II')
+  await node(page, section.stageUnit).dblclick({ delay: 100 })
+  await scope(page, section.stageUnit)
+
+  stage = 'subject filter and top-down step'
+  await page.getByTestId('learner-map-subject-filter').getByRole('button', { name: 'Physik', exact: true }).click()
+  await page.locator(`[data-entry-id="${id.physicsGoal}"]`).waitFor({ state: 'detached' })
+  assert.equal(await page.getByTestId('learner-map-subject-filter').getByRole('button', { name: 'Mathematik', exact: true }).isDisabled(), true,
+    'the last visible subject cannot be hidden')
+  await scope(page, section.stageUnit)
+  await page.getByTestId('learner-map-subject-filter').getByRole('button', { name: 'Physik', exact: true }).click()
+  await page.locator(`[data-entry-id="${id.physicsGoal}"]`).waitFor()
+  await page.getByTestId('learner-map-unit-step').selectOption('1')
+  await page.locator('[data-testid="native-cockpit-map"][data-unit-step="1"]').waitFor()
+  await scope(page, section.stageUnit)
+  await page.locator(`[data-entry-id="${id.other}"]`).waitFor()
+  assert.deepEqual((await page.locator('.lum-node[data-entry-id]').evaluateAll(nodes => nodes.map(n => n.getAttribute('data-entry-id')))).sort(),
+    [id.foundation, id.application, id.memory, id.other, id.physicsGoal].sort(), 'step 1: the stage unit holds all its goals directly')
+  assert.equal(await page.getByTestId('learning-map-order-legend').count(), 0, 'without sibling units there is no order to explain')
+  await page.getByTestId('learner-map-unit-step').selectOption('2')
+  await page.locator('[data-testid="native-cockpit-map"][data-unit-step="2"]').waitFor()
+  await scope(page, section.stageUnit)
+  await node(page, section.vectors).waitFor()
+  assert.deepEqual(h.writes, [], 'filters and steps never write learner state')
+
   stage = 'SRS answer survives opening and closing the full-window map'
-  await node(page, id.section).dblclick({ delay: 100 })
-  await scope(page, id.section)
+  await node(page, section.vectors).dblclick({ delay: 100 })
+  await scope(page, section.vectors)
   await node(page, id.memory).click()
   await mapSelection(page, id.memory)
   await closeMap(page)
@@ -363,8 +427,10 @@ try {
   await physicsRow.click()
   await selectedTitle(page, 'Physik')
   await openMap(page)
-  await node(page, id.physicsRoot).dblclick({ delay: 100 })
-  await scope(page, id.physicsRoot)
+  // The subject root is no map node; selecting it leads to the root board.
+  await scope(page, mapRoot)
+  await node(page, section.stageUnit).dblclick({ delay: 100 })
+  await scope(page, section.stageUnit)
   await node(page, id.physicsGoal).click()
   await mapSelection(page, id.physicsGoal)
   await closeMap(page)
@@ -373,9 +439,13 @@ try {
   await h.changePersonalCurriculum()
   await page.getByTestId('learner-active-goal-banner').filter({ hasText: 'Kräfte beschreiben' }).waitFor()
   await openMap(page)
-  await scope(page, id.physicsRoot)
+  // With one subject, the stage unit has a single tree node and keeps its ID.
+  await scope(page, section.physicsStage)
   await page.getByRole('button', { name: 'Eine Ebene auftauchen', exact: true }).click()
-  assert.equal(await page.locator(`[data-entry-id="${id.mathRoot}"]`).count(), 0, 'reloaded native Personal Curriculum removes unselected subject')
+  await node(page, section.physicsStage).waitFor()
+  assert.equal(await page.locator(`[data-entry-id="${section.vectors}"], [data-entry-id="${section.stageUnit}"]`).count(), 0,
+    'reloaded native Personal Curriculum removes unselected subject')
+  assert.equal(await page.getByTestId('learner-map-subject-filter').count(), 0, 'a single subject needs no filter')
   await closeMap(page)
   assert.equal(await sidebar.locator(`[data-goal-id="${id.mathRoot}"]`).count(), 0)
   assert.deepEqual(h.writes.map(write => write.body), [
@@ -397,7 +467,8 @@ try {
     await mapOpener(m.page).focus()
     await m.page.keyboard.press('Enter')
     await mapDialog(m.page).waitFor()
-    await scope(m.page, id.section)
+    await scope(m.page, section.vectors)
+    await m.page.getByTestId('learner-map-construction-notice').waitFor()
     await fillsWindow(m.page, `${width}px`)
     await m.page.getByRole('button', { name: 'Diese Ebene einpassen', exact: true }).click()
     await node(m.page, id.foundation).focus()
@@ -426,22 +497,22 @@ try {
   stage = 'native App double-click with normal motion'
   const animated = await open(1440, false, 'no-preference')
   await openMap(animated.page)
-  await scope(animated.page, id.section)
+  await scope(animated.page, section.vectors)
   await animated.page.getByRole('button', { name: 'Eine Ebene auftauchen', exact: true }).click()
-  await scope(animated.page, id.mathRoot)
-  await node(animated.page, id.section).dblclick({ delay: 100 })
-  await scope(animated.page, id.section)
-  await mapSelection(animated.page, id.section)
+  await scope(animated.page, section.stageUnit)
+  await node(animated.page, section.vectors).dblclick({ delay: 100 })
+  await scope(animated.page, section.vectors)
+  await mapSelection(animated.page, section.vectors)
 
   stage = 'Escape closes the full-window map without leaving the map level'
   await node(animated.page, id.foundation).focus()
   await animated.page.keyboard.press('Escape')
   await mapDialog(animated.page).waitFor({ state: 'hidden' })
-  await selectedTitle(animated.page, 'Vektoren')
+  await selectedTitle(animated.page, 'Vektorrechnung')
   await focusedTestId(animated.page, 'learner-current-goal')
   await openMap(animated.page)
-  await scope(animated.page, id.section)
-  await mapSelection(animated.page, id.section)
+  await scope(animated.page, section.vectors)
+  await mapSelection(animated.page, section.vectors)
   // Escape outside the map surface uses the dialog's own close request.
   await mapDialog(animated.page).getByRole('button', { name: 'Lernkarte schließen', exact: true }).focus()
   await animated.page.keyboard.press('Escape')
@@ -464,6 +535,58 @@ try {
   assert.deepEqual(failed.errors, [])
   assert.deepEqual(failed.unexpected, [])
   await failed.context.close()
+
+  stage = 'a unit too large for a graph is a compact list with the same selection contract'
+  const unitMap = await open(1440)
+  const unitPage = unitMap.page
+  await unitPage.goto(`${origin}/scripts/fixtures/learnerUnitMapUi.html?mode=list`)
+  const largeUnit = 'composition:fx-phys:structure:physics-seki'
+  await scope(unitPage, largeUnit)
+  const list = unitPage.getByTestId('learning-map-compact-list')
+  await list.waitFor()
+  assert.ok((await list.getByRole('note').innerText()).includes('noch nicht weiter unterteilt'), 'the list explains that the unit is not subdivided yet')
+  assert.equal(await list.locator('.lum-list-item').count(), 205)
+  assert.equal(await unitPage.locator('.react-flow__node').count(), 0, 'no graph layout for the large board')
+  assert.equal(await unitPage.getByRole('button', { name: 'Diese Ebene einpassen', exact: true }).count(), 0)
+  assert.equal(await node(unitPage, 'force-003').getAttribute('aria-pressed'), 'true', 'the selected goal is revealed in the list')
+  assert.equal(await list.locator('[data-entry-id="force-002"]').getAttribute('data-active-goal'), 'true', 'the active goal stays marked')
+  assert.equal(await list.locator('[data-entry-id="force-001"] .lum-node-state').getAttribute('class'), 'lum-node-icon lum-node-state is-explicit',
+    'progress is shown on list rows')
+  await node(unitPage, 'force-150').click()
+  await unitPage.getByTestId('unit-map-selected').filter({ hasText: 'force-150' }).waitFor()
+  assert.equal(await node(unitPage, 'force-150').getAttribute('aria-pressed'), 'true')
+  await unitPage.getByRole('button', { name: 'Eine Ebene auftauchen', exact: true }).click()
+  await scope(unitPage, mapRoot)
+  assert.equal(await list.count(), 0, 'small boards stay graphs')
+  await node(unitPage, largeUnit).dblclick({ delay: 100 })
+  await scope(unitPage, largeUnit)
+  await node(unitPage, 'force-010').dblclick({ delay: 100, modifiers: ['Shift'] })
+  await scope(unitPage, mapRoot)
+  await unitPage.screenshot({ path: join(artifacts, '04-unit-map-root.png') })
+  await node(unitPage, largeUnit).dblclick({ delay: 100 })
+  await scope(unitPage, largeUnit)
+  await unitPage.screenshot({ path: join(artifacts, '05-unit-map-list.png') })
+
+  stage = 'a tree without Mathematics and Physics gets a notice instead of a map'
+  await unitPage.goto(`${origin}/scripts/fixtures/learnerUnitMapUi.html?mode=other`)
+  const unavailable = unitPage.getByTestId('learner-map-subjects-unavailable')
+  await unavailable.waitFor()
+  assert.ok((await unavailable.innerText()).includes('vorerst nur für Mathematik und Physik'))
+  assert.equal(await unitPage.locator('.lum-app').count(), 0)
+  await unavailable.getByRole('button', { name: 'Zum Baum wechseln', exact: true }).click()
+  await unitPage.getByTestId('unit-map-returned').filter({ hasText: 'returned' }).waitFor()
+
+  stage = 'other subjects beside Mathematics are left to the tree and named in the notice'
+  await unitPage.goto(`${origin}/scripts/fixtures/learnerUnitMapUi.html?mode=mixed`)
+  await scope(unitPage, mapRoot)
+  assert.ok((await unitPage.getByTestId('learner-map-construction-notice').innerText()).includes('Deine anderen Fächer findest du im Lernzielbaum.'))
+  assert.deepEqual(await unitPage.locator('.lum-node[data-entry-id]').evaluateAll(nodes => nodes.map(n => n.getAttribute('data-entry-id'))), ['numbers'],
+    'Chemistry is not shown in the map')
+  assert.equal(await unitPage.getByTestId('learner-map-subject-filter').count(), 0)
+  assert.deepEqual(unitMap.errors, [])
+  assert.deepEqual(unitMap.unexpected, [])
+  assert.deepEqual(unitMap.writes, [])
+  await unitMap.context.close()
 
   stage = 'delayed controlled command echo and explicit reveal precedence'
   const commands = await open(1440, false, 'no-preference')

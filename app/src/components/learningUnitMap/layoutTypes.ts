@@ -15,6 +15,12 @@ export type LearningLayoutEdge = {
   sourceHandle: string
   targetHandle: string
   points: LayoutPoint[]
+  /**
+   * Unit maps only: a Rückgriff laid out along the declared order. `source`
+   * and `target` follow the layout; the relation runs from target to source,
+   * so its arrowhead belongs at the start of the route.
+   */
+  reversed?: true
 }
 
 export type LearningScopeLayout = {

@@ -121,7 +121,7 @@ import {
 } from '../utils/cockpitStartRequests'
 import { loadLearnerProfile, LearnerProfileRequestError } from '../utils/learnerProfileRequest'
 import type { LearnerLearningPlansResponse } from '../learnerLearningPlanTypes'
-import type { ResourceLink } from '../landscapeTypes'
+import type { ResourceLink, SkillLandscape } from '../landscapeTypes'
 
 const NativeGoalNavigationMap = lazy(async () => {
   let timeout: ReturnType<typeof setTimeout> | undefined
@@ -141,7 +141,11 @@ const NativeGoalNavigationMap = lazy(async () => {
 export interface LearnerGoalNavigationMapProps {
   rootGoals: UiGoal[]
   goalIndexAll: Map<string, UiGoal>
-  canonicalGoalSources?: readonly { goals: readonly UiGoal[] }[]
+  /** Learner landscapes; the map also reads their declared learning units from `meta`. */
+  canonicalGoalSources?: readonly {
+    goals: readonly UiGoal[]
+    meta?: Pick<SkillLandscape, 'landscapeId' | 'programUnits' | 'goalPlacements'>
+  }[]
   visibleGoalIds: ReadonlySet<string>
   visibleChildrenByParent: ReadonlyMap<string, readonly string[]>
   selectedGoalId: string

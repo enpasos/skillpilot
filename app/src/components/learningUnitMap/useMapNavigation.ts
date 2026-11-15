@@ -6,10 +6,16 @@ import { mapEntryPath, validMapScopePath } from './mapEntryPath'
 type Phase = 'idle' | 'leaving' | 'entering'
 type Gesture = { direction: number; at: number }
 
+/** Whether a board has more children than a graph shows; such a board is a compact list. */
+export function isCompactListScope(fixture: LearningMapFixture, scopeId: string, threshold?: number): boolean {
+  return threshold !== undefined && (fixture.entries[scopeId]?.children ?? []).filter(id => fixture.entries[id]).length > threshold
+}
+
 /** Camera history belongs to a scope, never to its individual visible nodes. */
 export function useMapNavigation(fixture: LearningMapFixture, reducedMotion: boolean,
   layoutScopeKey?: string | null, direction = 'RIGHT', initialScopeId?: string, active = true,
-  focusBoundaryRef?: RefObject<HTMLElement | null>, focusSurfaceRef?: RefObject<HTMLElement | null>) {
+  focusBoundaryRef?: RefObject<HTMLElement | null>, focusSurfaceRef?: RefObject<HTMLElement | null>,
+  compactListThreshold?: number) {
   const flow = useReactFlow()
   const store = useStoreApi()
   const [requestedPath, setPath] = useState(() => {
@@ -33,7 +39,9 @@ export function useMapNavigation(fixture: LearningMapFixture, reducedMotion: boo
   const restoreMapFocus = useRef(false)
   const scopeId = path[path.length - 1]
   const viewKey = `${scopeId}:${direction}`
-  const layoutReady = active && (layoutScopeKey === undefined || layoutScopeKey === viewKey)
+  // A scope shown as a compact list has no graph nodes and hence no camera to place.
+  const withoutCamera = isCompactListScope(fixture, scopeId, compactListThreshold)
+  const layoutReady = active && (withoutCamera || layoutScopeKey === undefined || layoutScopeKey === viewKey)
 
   useEffect(() => {
     const version = ++epoch.current
@@ -46,7 +54,8 @@ export function useMapNavigation(fixture: LearningMapFixture, reducedMotion: boo
       setPhase('entering')
       innerFrame = requestAnimationFrame(async () => {
         const saved = cameras.current.get(viewKey)
-        if (saved) await flow.setViewport(saved, { duration: 0 })
+        if (withoutCamera) { /* A fit without nodes would never settle. */ }
+        else if (saved) await flow.setViewport(saved, { duration: 0 })
         else if (window.matchMedia('(max-width: 760px)').matches || flow.getNodes().length > 16) {
           // A readable point of entry on small screens; the overview fit remains
           // an explicit action, while ordinary panning discovers the surroundings.
@@ -64,8 +73,10 @@ export function useMapNavigation(fixture: LearningMapFixture, reducedMotion: boo
           }
         } else await flow.fitView({ padding: 0.2, minZoom: 0.35, maxZoom: 1.1, duration: 0 })
         if (version !== epoch.current) return
-        cameras.current.set(viewKey, flow.getViewport())
-        if (!initialZooms.current.has(viewKey)) initialZooms.current.set(viewKey, flow.getZoom())
+        if (!withoutCamera) {
+          cameras.current.set(viewKey, flow.getViewport())
+          if (!initialZooms.current.has(viewKey)) initialZooms.current.set(viewKey, flow.getZoom())
+        }
         setZoom(flow.getZoom())
         setCameraKey(viewKey)
         timer.current = setTimeout(() => {
@@ -89,12 +100,12 @@ export function useMapNavigation(fixture: LearningMapFixture, reducedMotion: boo
       cancelAnimationFrame(innerFrame)
       clearTimeout(timer.current)
     }
-  }, [scopeId, viewKey, flow, store, direction, reducedMotion, fixture, layoutReady, active, focusSurfaceRef])
+  }, [scopeId, viewKey, flow, store, direction, reducedMotion, fixture, layoutReady, active, focusSurfaceRef, withoutCamera])
 
   const navigate = useCallback((nextPath: string[], towardId?: string) => {
     if (busy.current || nextPath[nextPath.length - 1] === scopeId) return
     restoreMapFocus.current = !!focusBoundaryRef?.current?.contains(document.activeElement)
-    cameras.current.set(viewKey, flow.getViewport())
+    if (!withoutCamera) cameras.current.set(viewKey, flow.getViewport())
     busy.current = true
     armed.current = false
     unlockAt.current = performance.now() + 750
@@ -110,7 +121,7 @@ export function useMapNavigation(fixture: LearningMapFixture, reducedMotion: boo
       setPhase('entering')
       setPath(nextPath)
     }, reducedMotion ? 0 : 170)
-  }, [flow, reducedMotion, scopeId, viewKey, focusBoundaryRef])
+  }, [flow, reducedMotion, scopeId, viewKey, focusBoundaryRef, withoutCamera])
 
   const enter = useCallback((id: string) => {
     const entry = fixture.entries[id]
