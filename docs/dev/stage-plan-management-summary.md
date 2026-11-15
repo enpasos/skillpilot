@@ -23,7 +23,7 @@ CI-Nachweis gilt weiterhin für den benannten Implementierungscommit.
 
 ## Gesamtstand
 
-**Stand: 15. November 2026, 23:32 MEZ (UTC+01:00).**
+**Stand: 15. November 2026, 23:49 MEZ (UTC+01:00).**
 
 **Fortschritt: K 0/13 und F 0/7 vollständig abgeschlossen · 0 reale Landespläne
 aktiviert · kanonische oberste Lernkarte lokal: 0 Rückpfeile und 0 außenstehende
@@ -33,6 +33,13 @@ Wurzel-, Filter- und Projektionsfunktionen der Oberfläche. Alle 16 Länder sind
 enthalten; zwölf widersprüchliche Dauerkontexte bleiben getrennt von den
 60 zulässigen Kontexten. Davon haben weiterhin 39 regionale oberste Rückgriffe
 und 35 außenstehende Atome. Kein realer Landesplan ist damit abgenommen.
+
+**Getrennte Fachkarten:** Zwölf ergänzende Fälle sichern die Screenshots ab:
+sechs tatsächliche UI-Fachfilter und sechs native Einzelfach-Auswahlen, jeweils
+Mathematik/Physik mit GK, LK und GK+LK. Alle haben oben **0 Rückpfeile und
+0 freistehende eigene Fachziele**. Notwendige Fremdfachvorbereitung bleibt in
+der Lernbasis und als Kontexthinweis sichtbar; innere Rückgriffe und bestehende
+Gruppierungsbefunde werden dadurch nicht als erledigt ausgegeben.
 
 **Offene innere Wirkung:** Bei gleichem aktuellem Reader/UI steigen die
 kanonischen inneren Rückpfeile gegenüber dem Main-Curriculum von 8 / 9 / 9
@@ -115,7 +122,7 @@ bestanden. Keine neue Laufzeitfunktion oder Integration behauptet.**
   integrieren. Umsetzungsdefizite bleiben bis zu
   ihrem eigenen Nachweis sichtbar; die Norm wird nicht auf den Bestand verkürzt.
 
-## 15. November 2026, 23:32 MEZ — Kanonische Lernkarten bereinigt, lokaler Qualitätsabschluss erfolgreich
+## 15. November 2026, 23:49 MEZ — Kanonische Lernkarten bereinigt, lokaler Qualitätsabschluss erfolgreich
 
 **Stand: [Draft-PR #159](https://github.com/enpasos/skillpilot/pull/159) ist offen.
 Die veröffentlichten Inhaltsreviews und die kurze CI sind erfolgreich
@@ -129,6 +136,8 @@ Vollständige PR-CI, Integration und frische Main-CI stehen aus.**
   widersprüchlichen Dauerkontexten. Regionale und innere Befunde bleiben
   offen; insbesondere steigen die inneren kanonischen Pfeile gegenüber main
   wie oben beziffert. Der letzte Prüfcodefix verändert die Lernkarten nicht.
+  Zwölf ergänzende Fälle bestätigen die saubere oberste Ebene auch für die
+  getrennten Fachkarten und echte Einzelfach-Auswahlen.
 - **Ergebnis und Entscheidungen:** Skalar- und Vektorprodukt erhalten gültige
   Plätze in Sek II. Frühe Messgrundlagen und Fremdfachvorbereitung bleiben
   erreichbar. Die Mathematikgruppe „Anwendungen der Integralrechnung“ behält

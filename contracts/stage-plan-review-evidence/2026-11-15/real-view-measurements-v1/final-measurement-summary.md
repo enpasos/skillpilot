@@ -1,6 +1,6 @@
 # Kontrollblatt zur tatsächlichen Lernkarte
 
-Stand: 15. November 2026, 22:32 MEZ. Gemessen ist der installierte Aufgaben-,
+Stand: 15. November 2026, 23:49 MEZ. Gemessen ist der installierte Aufgaben-,
 Routen- und Quellenstand mit Physik `b391f6a7…`. Die letzte Nachmessung bestätigt
 in allen 72 Kontexten den gewöhnlichen Lernumfang gegenüber `ee9829cb…`.
 Nur die drei BY-G9-Kurskontexte verlieren zwei dort nicht gültige Aufgaben;
@@ -14,7 +14,7 @@ Curriculum `64793bdc…` bei demselben aktuellen Code; er behauptet keine
 beobachtete Produktionsoberfläche. Die frühere unpassende Messung mit allen
 Katalogen und künstlicher Wurzel bleibt ausdrücklich zurückgenommen.
 
-## Kanonische Sicht
+## Kanonische gemeinsame Übersicht
 
 Reihenfolge der Zahlen: GK / LK / GK+LK. Innere Ursachen sind über Boards
 hinweg dedupliziert; Pfeile zählen je Board und sind nicht mit Ursachen gleichzusetzen.
@@ -39,6 +39,32 @@ modelliert, um diese Pfeile verschwinden zu lassen.
 Der letzte elektrische Aufgaben-/Routenfix gegenüber `6a77eb45…` fügt genau
 die neue Spannungsaufgabe als Ziel und Bestandteil der Lernbasis hinzu. Es
 entsteht keine neue oberste oder innere Ursache und kein weiteres Außenatom.
+
+## Ergänzung: getrennte Fachkarten
+
+Die 72-Kontext-Messung oben erfasst die gemeinsame Übersicht. Eine ergänzende
+gezielte Prüfung verwendet zusätzlich die tatsächlichen Produktfunktionen
+`createLearnerUnitMapCache` und `filterLearnerUnitMapToSubjects`: sechs
+Fachfilterfälle aus den vorhandenen nativen kanonischen API-Daten sowie sechs
+neu exportierte Einzelfach-Auswahlen mit Gymnasium als gültiger Basis.
+Jeweils sind Mathematik und Physik in GK, LK und GK+LK geprüft.
+Die [kompakten Originalbelege](separate-subject-maps-v1/README.md) trennen die
+Wiederverwendung der bestehenden API-Daten vom neuen Einzelfach-Export.
+
+| Kennzahl | Mathematik GK / LK / GK+LK | Physik GK / LK / GK+LK |
+| --- | --- | --- |
+| Oberste Rückpfeile, beide Messarten | 0 / 0 / 0 | 0 / 0 / 0 |
+| Eigene Fachziele außerhalb der obersten Einheiten, beide Messarten | 0 / 0 / 0 | 0 / 0 / 0 |
+| Eigene Lernatome bei tatsächlicher Einzelfach-Auswahl | 910 / 953 / 967 | 605 / 640 / 662 |
+
+Diese Aussage betrifft die oberste Ebene. Mathematik hat innen weiterhin einen
+Rückpfeil mit vier atomaren Ursachen in Jahrgangsstufe 8. Physik hat in Sek I
+sieben Pfeile mit 13 Ursachen; in Sek II sind es 3 / 4 / 4 Pfeile mit
+10 / 13 / 15 Ursachen. Die Physikanzeige führt 48 / 54 / 54 notwendige
+Mathematikvoraussetzungen als Fremdfach-Kontexthinweise weiter. Sie sind keine
+freistehenden eigenen Physikziele und werden nicht aus der Lernbasis entfernt.
+Auch die bestehenden Diagnosen zu fehlenden beziehungsweise aufgeteilten
+Mitgliedseinheiten bleiben sichtbar; sie sind keine Abnahme realer Landespläne.
 
 ## Landes- und Dauerkontexte
 
