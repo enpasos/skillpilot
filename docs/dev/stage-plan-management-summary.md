@@ -23,7 +23,7 @@ CI-Nachweis gilt weiterhin für den benannten Implementierungscommit.
 
 ## Gesamtstand
 
-**Stand: 15. November 2026, 10:38 MEZ (UTC+01:00).**
+**Stand: 15. November 2026, 12:02 MEZ (UTC+01:00).**
 
 **Fortschritt: K 0/13 und F 0/7 vollständig abgeschlossen · 0 reale Landespläne
 aktiviert · Wirkung auf die vollständigen Stufenrückgriffe noch nicht gemessen.**
@@ -32,54 +32,58 @@ Begrenzte Kanten- und Sichtvergleiche sind noch kein vollständiger Vorher-/Nach
 | Umfang | Stand und verbleibende Arbeit |
 | --- | --- |
 | K1 | Teilreparatur in #157: elementarer Halbleiterpfad und eigener Transistor-Schaltversuch. Eigener Verstärkerversuch und vollständige Stufenplatzierung offen. |
-| K2 | Vier passende Diagrammaufgaben in #157; zusätzlich lokal drei elementare Aufgaben und vier korrigierte Voraussetzungskontexte. Physikrückgriffe und Länderplatzierungen bleiben offen. |
+| K2 | Vier Diagrammaufgaben und drei elementare Aufgaben in #157; die jüngste Korrektur trennt Tabellenkompetenz und Zahlenvorbereitung der anspruchsvolleren Aufgabe. Physikrückgriffe und Länderplatzierungen bleiben offen. |
 | K3–K6, K8–K11 | Fachrecherche und lokale Entwürfe laufen; noch keine abgeschlossene Lieferung dieser Befunde. |
 | K7, K12, K13 | Offen: Rheinland-Pfalz, fachliche Voraussetzungen auf Prüfungsaufgaben und konsistente Stufenausschnitte. Vorliegende Bestandsaufnahmen sind keine Reparatur. |
 | F1, F2, F6 | Grundlage in #157: Planvertrag, Erzeugung und Diagnosekern. Reale Pläne, vollständige Anbindung und ihre Abnahme fehlen. |
-| F3, F4, F7 | Offen: Lernkarte aus erklärten Planeinheiten, Einordnung notwendiger Vorbereitung und zweisprachige Norm. |
+| F3, F4 | Offen: Lernkarte aus erklärten Planeinheiten und Einordnung notwendiger Vorbereitung. |
+| F7 | Zweisprachiger Normkandidat lokal umgesetzt und unabhängig geprüft; noch nicht integriert. |
 | F5 | Fachprüfung teilweise umgesetzt über K1/K2; der vollständige Befundbestand bleibt offen. |
 
-## 15. November 2026, 10:38 MEZ — Halbleiterpfad, Tabellen-/Diagrammaufgaben und Stufenplangrundlage
+## 15. November 2026, 12:02 MEZ — Halbleiterpfad, Tabellen-/Diagrammaufgaben und Stufenplangrundlage
 
-**Stand: lokale Nachweise bestanden; aktualisierte Lieferung für
-[PR #157](https://github.com/enpasos/skillpilot/pull/157). Erfolgreiche vollständige
-PR-CI, Integration und frische Main-CI stehen aus.**
+**Stand: Lokale Korrekturen und Qualitätschecks bestanden. Der bisherige Durchgang
+von [PR #157](https://github.com/enpasos/skillpilot/pull/157) endete mit neun
+erfolgreichen und fünf fehlgeschlagenen Jobs. Die gebündelte Korrektur geht jetzt
+in die erneute vollständige PR-CI; Integration und frische Main-CI stehen aus.**
 
-- **Fortschritt:** K1/K2 teilweise umgesetzt; F1/F2/F6 als Grundlage.
-  **K 0/13, F 0/7 abgeschlossen; 0 reale Landespläne aktiviert.** Die Wirkung
-  auf sämtliche Stufenrückgriffe ist noch nicht gemessen. Lokal sinkt etwa
-  die Zahl vorausgesetzter Kompetenzen für „Tabellen erstellen“ von 27 auf vier.
+- **Fortschritt:** K1/K2 teilweise umgesetzt; F1/F2/F6 als Grundlage mit
+  isolierten Testdaten. **K 0/13, F 0/7 abgeschlossen; 0 reale Landespläne
+  aktiviert.** Die Gesamtwirkung auf Stufenrückgriffe ist noch nicht gemessen.
+  Die jüngste Tabellenkorrektur entfernt vier unnötige fachliche Vorleistungen
+  des elementaren Ziels; die stärkere Aufgabe behält ihre vollständige Vorbereitung.
 - **Ergebnis und Entscheidungen:** Drei neue Physikkompetenzen und drei
-  zugehörige Lernendenaufgaben trennen einfaches Dotierungsmodell,
-  vorgegebene Diodenkennlinien und einen selbst durchgeführten
-  Transistor-Schaltversuch. 33 Quellenzuordnungen sind begrenzt korrigiert.
-  Vier neue Diagrammaufgaben ersetzen eine unbelegte Abdeckung durch eine
-  Algebraaufgabe; vier dadurch fälschlich einbezogene Diagrammziele entfallen
-  aus 18 erzeugten Sichten. Hinzu kommen vier korrigierte elementare
-  Voraussetzungsketten und drei Aufgaben für Tabellenaufbau, Tabellenlesen
-  und Diagrammlesen. Vollständige Zieltexte und Evidenzprofile bleiben erhalten;
-  die Raster verlangen alle fachlichen Kernaspekte und erlauben gleichwertige
-  Antworten. `v1.3` beschreibt den neuen Planvertrag, noch keine aktivierte
-  Paket-Laufzeitversion.
+  Lernendenaufgaben trennen einfaches Dotierungsmodell, vorgegebene
+  Diodenkennlinien und einen selbst durchgeführten Transistor-Schaltversuch.
+  33 Quellenzuordnungen sind begrenzt korrigiert. Vier Diagrammaufgaben ersetzen
+  eine unbelegte Abdeckung durch eine Algebraaufgabe; vier dadurch fälschlich
+  einbezogene Diagrammziele entfallen aus 18 erzeugten Sichten. Vier elementare
+  Voraussetzungsketten und drei Aufgaben für Tabellenaufbau, Tabellenlesen und
+  Diagrammlesen ergänzen den Pfad. Der zweite CI-Durchgang fand eine falsch
+  vorgezogene J6-Voraussetzung am J5-Tabellenziel: Die Zahlenvorbereitung sitzt
+  jetzt ausdrücklich an der anspruchsvolleren Aufgabe. Zieltexte und Raster
+  bleiben vollständig erhalten. `v1.3` beschreibt den Planvertrag, noch keine
+  aktivierte Paket-Laufzeitversion.
 - **Kontrollstellen:**
   [Physik: Kompetenzen, Versuchshandlungen und Bewertungsraster](https://github.com/enpasos/skillpilot/blob/e5154f263880f8699a3130883c07269d4827737a/curricula/DE/Gymnasium/quality/goal-model-review/physics-semiconductor-learning-path-20261115/post-corrected-independent-review-v3/README.md),
-  [Mathematik: elementare Kette, Gegenbeispiele und unveränderte Zielumfänge](https://github.com/enpasos/skillpilot/blob/e5154f263880f8699a3130883c07269d4827737a/curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/k2-elementary-representations-current-v1/README.md),
+  [Mathematik: Tabellenkompetenz, Aufgabengrenze und aktuelle Inhaltsreviews](https://github.com/enpasos/skillpilot/blob/e6eb2add29a325204dae9a24f37d89dc0e2a9425/curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/k2-table-task-boundary-current-v2/README.md),
   [Planvertrag v1.3 und fehlende Anbindung](https://github.com/enpasos/skillpilot/blob/e5154f263880f8699a3130883c07269d4827737a/contracts/curriculum-package/v1.3/README.md).
-- **Nachweise:** Der [gemeinsame lokale Liefernachweis](https://github.com/enpasos/skillpilot/blob/e5154f263880f8699a3130883c07269d4827737a/curricula/DE/Gymnasium/quality/goal-model-review/physics-semiconductor-learning-path-20261115/ci-followup-v6/README.md)
-  verlinkt tatsächliche Befehle, Ausgaben, Fehlversuche und Reviews. Vollständiger
-  Anwendungsbuild mit fünf Lernzielbüchern, 119.906 Schemadateien, alle fünf
-  tief geprüften Fächer sowie unveränderte Mindeststandards für 21 Kataloge und
-  zwölf Routen bestehen. Mathematik bleibt M7 mit 807, Physik mit 481
-  Kompetenzen. Die drei korrigierten Backendtests bestehen; 128 konkrete
-  Zielmengen sind gegen frühere Datenstände abgeglichen. Der erste PR-Lauf
-  scheiterte in sechs Jobs; ihre Ursachen sind lokal behoben. Das sind
-  automatisierte Checks und getrennte Agentenreviews, keine beobachtete
-  Lernwirkung oder bereits erfolgreiche neue Remote-CI.
-- **Nächster Schritt:** Den gemeinsamen Stand in #157 vollständig prüfen,
-  integrieren und nach frischer Main-CI abschließen. Danach die bereits
-  vorbereiteten Fachreparaturen und Normquellen integrieren. Eigener
-  Verstärkerversuch, weitere falsche Kompetenznachweise, Länderplatzierungen
-  und reale Planaktivierung bleiben ausdrücklich Teil des Gesamtauftrags.
+- **Nachweise:** Die [aktuelle lokale Qualitätsberechnung](https://github.com/enpasos/skillpilot/blob/e6eb2add29a325204dae9a24f37d89dc0e2a9425/curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/k2-table-task-boundary-current-v2/integrated-validation/full-quality-and-maturity-comparison.actual.json)
+  bestätigt alle fünf M7-Fächer und unveränderte Reifegrade für alle 21 Kataloge;
+  die Mindeststandards für zwölf Routen halten. Mathematik hat 807, Physik 481
+  vollständig maschinell geprüfte Kompetenzen. Die Lernrouten-Tests bestehen
+  mit 25/25 Fällen. Zwei frische unabhängige Inhaltsreviews bestätigen das
+  Tabellenziel; die [technische Gegenprüfung](https://github.com/enpasos/skillpilot/blob/e6eb2add29a325204dae9a24f37d89dc0e2a9425/curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/k2-table-task-boundary-current-v2/completion-audit/README.md)
+  bestätigt 18 unveränderte Sichten und unveränderte Voraussetzungsmengen für
+  128 Konfigurationen. Der Paketvalidator besteht mit 51 Negativfällen.
+  Veraltete Paket-, Berichts- und Testbindungen sind korrigiert; die
+  Freigabeentscheidungen bleiben erhalten. Das sind lokale automatisierte
+  Checks und getrennte Agentenreviews, keine beobachtete Lernwirkung oder
+  bereits erfolgreiche neue Remote-CI.
+- **Nächster Schritt:** Den erneuten vollständigen CI-Durchgang von #157
+  auswerten und die Lieferung nach Merge plus frischer Main-CI abschließen. Danach die vorbereiteten Fachreparaturen und Normquellen
+  integrieren. Eigener Verstärkerversuch, weitere falsche Kompetenznachweise,
+  Länderplatzierungen und reale Planaktivierung bleiben Teil des Gesamtauftrags.
 
 ## 15. November 2026, 09:09 MEZ — Offene Ausgangslieferungen integriert
 

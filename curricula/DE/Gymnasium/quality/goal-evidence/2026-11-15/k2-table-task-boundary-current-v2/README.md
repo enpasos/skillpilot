@@ -105,3 +105,12 @@ bytegleich geprüft. Dieser Nachweis erteilt keine neue Publikationsfreigabe.
 Die Originale einschließlich Fehlversuch und früherem Ledger sind im dortigen
 Archiv erhalten; das große, reproduzierbare generierte Modell wird nicht
 zusätzlich eingecheckt.
+
+Der [terminale zweite CI-Durchgang](integrated-validation/second-ci-terminal-jobs.actual.json)
+am bisherigen Kopf `161acc0d` endet mit neun erfolgreichen und fünf
+fehlgeschlagenen Jobs. Auch der letzte Backendjob ist erfolgreich beendet.
+Die gebündelten Korrekturen werden erst danach gepusht; der fehlgeschlagene
+Lauf wird weder abgebrochen noch als erfolgreiche Abnahme der Korrektur gezählt.
+Dokumentationslinks, Indexabdeckung und Terminologie bestehen lokal; die
+zunächst ungültigen relativen Links außerhalb des veröffentlichten `docs/`-Baums
+sind durch konkrete GitHub-Commitlinks ersetzt, der Fehlversuch bleibt erhalten.
