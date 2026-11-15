@@ -67,8 +67,12 @@ export default function LearnerGoalNavigationMap(props: LearnerGoalNavigationMap
     <button type="button" onClick={props.onReturnToTree}>{english ? 'Return to tree' : 'Zum Baum wechseln'}</button>
   </div>
   if (!mapSubjects.length) return <div className="learner-map-status" role="status" data-testid="learner-map-subjects-unavailable">
-    <p>{english ? 'For now, the learning map is available for Mathematics and Physics only. Your other subjects are in the goal tree.'
-      : 'Die Lernkarte gibt es vorerst nur für Mathematik und Physik. Deine anderen Fächer findest du im Lernzielbaum.'}</p>
+    {/* The package-consumer edition carries no preview subjects (src/packageConsumer). */}
+    <p>{!UNIT_MAP_PREVIEW_SUBJECT_IDS.length
+      ? english ? 'The learning map is not available in this edition. Your subjects are in the goal tree.'
+        : 'Die Lernkarte ist in dieser Ausgabe nicht verfügbar. Deine Fächer findest du im Lernzielbaum.'
+      : english ? 'For now, the learning map is available for Mathematics and Physics only. Your other subjects are in the goal tree.'
+        : 'Die Lernkarte gibt es vorerst nur für Mathematik und Physik. Deine anderen Fächer findest du im Lernzielbaum.'}</p>
     <button type="button" onClick={props.onReturnToTree}>{english ? 'Return to tree' : 'Zum Baum wechseln'}</button>
   </div>
 

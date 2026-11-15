@@ -102,6 +102,10 @@ PACKAGE_CONSUMER_SOURCE_REPLACEMENTS.set(
   path.resolve(APP_ROOT, 'src', 'components', 'LearnerGoalFeedbackAction'),
   path.resolve(APP_ROOT, 'src', 'packageConsumer', 'learnerGoalFeedbackUnavailable.tsx'),
 )
+PACKAGE_CONSUMER_SOURCE_REPLACEMENTS.set(
+  path.resolve(APP_ROOT, 'src', 'components', 'learningUnitMap', 'learnerUnitMapPreviewSubjects'),
+  path.resolve(APP_ROOT, 'src', 'packageConsumer', 'learnerUnitMapPreviewSubjects.ts'),
+)
 
 const stripModuleExtension = (value: string): string => value.replace(/\.(?:[cm]?[jt]sx?)$/u, '')
 const splitModuleSpecifier = (value: string): { path: string; suffix: string } => {
