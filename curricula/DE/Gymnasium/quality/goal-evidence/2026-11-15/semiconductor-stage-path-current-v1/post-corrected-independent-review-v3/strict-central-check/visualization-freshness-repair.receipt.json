@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-11-15T06:45:24.700813Z",
+  "status": "NATIVE_METADATA_REFRESH_AND_TARGETED_FRESHNESS_PASS",
+  "firstCompleteCheck": "strict-central-check/attempt-1/execution.json",
+  "firstCompleteCheckExitCode": 1,
+  "firstCompleteCheckBlockers": 1,
+  "metadataOnly": true,
+  "recordCountBefore": 512,
+  "recordCountAfter": 512,
+  "beforeLedgerPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/semiconductor-stage-path-current-v1/post-corrected-independent-review-v3/strict-central-check/physik.qa.before-native-refresh.json",
+  "beforeLedgerSha256": "sha256:92749098e621be63daa5877b4d4c94870491d45dd63dd0e0b53810030618fd56",
+  "afterLedgerPath": "curricula/DE/Gymnasium/quality/goal-visualization-qa/physik.qa.json",
+  "afterLedgerSha256": "sha256:39e65d3825c42161b3d50ef23df86ee4099957c3af60fabbf926797d29927176",
+  "rowSetEqual": true,
+  "allAssetHashFieldsPreserved": true,
+  "allExistingReviewAuthorityFieldsPreserved": true,
+  "fieldChanges": [
+    {
+      "goalId": "7f0798cb-5966-5dcb-beb3-84f637ab6139",
+      "field": "description",
+      "before": "Dieses Cluster bündelt das Ladungsträgermodell des p-n-Übergangs, die experimentelle Diodenkennlinie und die Funktionsdeutung einfacher Gleichrichterschaltungen als drei getrennt prüfbare Kompetenzen.",
+      "after": "Die lernende Person bearbeitet die getrennt prüfbaren Kompetenzen zum funktionalen Diodenverhalten, zum einfachen p-n-Modell, zur eigenen Kennlinienmessung und zur Gleichrichtung."
+    }
+  ],
+  "recordOrdering": "Native deterministic German title/id sort; manually appended new records are placed in that order.",
+  "actualCurrentContentCheck": {
+    "goalId": "7f0798cb-5966-5dcb-beb3-84f637ab6139",
+    "assetPath": "curricula/DE/Gymnasium/visualizations/physik/7f0798cb-5966-5dcb-beb3-84f637ab6139/7f0798cb-5966-5dcb-beb3-84f637ab6139.png",
+    "assetSha256": "sha256:deeb8e911db4e9f01769ca82154271da4d0b42d6db8224aef8694555dc94068b",
+    "reviewer": "Codex actual informed full-resolution image and current cluster-description/children read",
+    "finding": "The current overview correctly separates mobile hole/electron circles and fixed acceptor/donor squares, neutral outer zones and space charge; its schematic characteristic supports functional reading and safe measurement guidance without original data; its complete ideal half-wave circuit has consistent source/load references and unsmoothed output. The new functional child is represented by the curve; the cluster overview does not impose prior pn mastery on that independently prepared child. No image change or blanket reapproval is needed.",
+    "limitations": "This specific full-raster current content check preserves all prior bound AI/human fields. It claims no new mobile-legibility review of the unchanged legacy overview, no actual learner experiment and no human approval."
+  },
+  "rootSequencing": "No second standalone full central CLI. After targeted V freshness, root performs the already-required full curriculum-status generation, which invokes the complete deep-understanding check internally; inspect actual five CQR-303 results and unchanged M7 floors.",
+  "targetedChecks": [
+    {
+      "command": "npm --prefix app run check:goal-visualization-qa -- --subject=physik",
+      "exitCode": 0,
+      "stdout": "Goal visualization QA ledgers are up to date (1 subject file(s))."
+    },
+    {
+      "command": "app/node_modules/.bin/tsx curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/semiconductor-stage-path-current-v1/materialize-reviewed-bindings.mts",
+      "exitCode": 0,
+      "stdout": "Actual current bindings verified:22semantic inputs and8individually recorded current review inputs; frozenV9 and unrelatedraw records untouched."
+    }
+  ]
+}

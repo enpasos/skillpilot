@@ -263,6 +263,11 @@ function buildCanonical(): JsonRecord {
     if (goalId === ids.assessment) {
       const examData = goal.examData as JsonRecord
       examData.coveredGoalIds = rewriteRequirement(examData.coveredGoalIds, childRequirements)
+      // K2 follow-up: this algebra task supplies no diagram evidence.
+      const diagramMisconceptionId = 'd668c22d-caeb-5e91-8980-721c931a2bcf'
+      goal.requires = stringArray(goal.requires).filter((goalId) => goalId !== diagramMisconceptionId)
+      examData.coveredGoalIds = stringArray(examData.coveredGoalIds)
+        .filter((goalId) => goalId !== diagramMisconceptionId)
     }
   }
 
@@ -751,9 +756,11 @@ function buildAssessmentBlueprint(): string {
   const after = `${ids.transformation} (Terme im Bereich rationaler Zahlen äquivalent umformen)`
   if (text.includes(before)) text = text.replace(before, after)
   else if (!text.includes(after)) throw new Error('J7 blueprint is neither in Batch010 before nor after state')
+  // K2 follow-up: Task 5 assesses algebra only; never recreate its retired diagram claim.
   const legacyNote =
     '- Offene Altlast außerhalb dieses engen Splits: `d668c22d-caeb-5e91-8980-721c931a2bcf` bezeichnet derzeit Diagramm-Missverständnisse, während Aufgabe 5 einen Distributivgesetzfehler prüft. Der Verweis bleibt auf ausdrückliche Product-Owner-Entscheidung in diesem Split unverändert und benötigt eine separate fachliche Adjudikation.'
-  if (!text.includes(legacyNote)) text = `${text.trimEnd()}\n${legacyNote}\n`
+  text = text.replace(legacyNote, '- K2-Diagrammkorrektur: Aufgabe 5 prüft den Distributivgesetzfehler, nicht Diagramm-Missverständnisse. `d668c22d-caeb-5e91-8980-721c931a2bcf` ist deshalb aus ihren Voraussetzungen und ihrer Abdeckung entfernt. Die vier eigenständigen Diagrammprüfungen unter `diagram-route-repair-20261115-v1/` haben eigene IDs und eine unabhängige maschinelle Inhaltsfreigabe vom 15. November 2026; diese ist keine menschliche oder praktische Erprobung.')
+  text = text.replace('<br>d668c22d-caeb-5e91-8980-721c931a2bcf (Missverständnisse erklären und korrigieren)', '')
   return text
 }
 

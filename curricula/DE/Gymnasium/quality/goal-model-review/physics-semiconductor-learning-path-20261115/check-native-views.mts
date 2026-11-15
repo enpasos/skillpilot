@@ -1,0 +1,11 @@
+// SPDX-License-Identifier: Apache-2.0
+// Reproduction of the actual bounded compiler invocation; run from the repository root.
+import assert from 'node:assert/strict'
+import {readFileSync, readdirSync,writeFileSync} from 'node:fs'
+import {resolve} from 'node:path'
+import {compileCompositionView,normalizeCompositionView} from '../../../../../../app/src/utils/authoring/compositionViewAuthoring.ts'
+import {normalizeCanonicalLandscape} from '../../../../../../app/src/utils/authoring/canonicalAuthoring.ts'
+const root=process.cwd();const read=(p:string)=>JSON.parse(readFileSync(resolve(root,p),'utf8'))
+const phys=read('curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json');const math=read('curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json');const kinds=new Map(read('curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json').decisions.map((d:any)=>[d.goalId,d.semanticKind]));const decorated={...phys,goals:phys.goals.map((g:any)=>({...g,semanticKind:kinds.get(g.id)}))};const np=normalizeCanonicalLandscape(decorated);const nm=normalizeCanonicalLandscape(math);const universe=normalizeCanonicalLandscape({...decorated,goals:[...math.goals,...decorated.goals]});const dir='curricula/DE/Gymnasium/composition-views/physik';const paths=readdirSync(dir).filter(p=>p.endsWith('.view.json')).map(p=>dir+'/'+p);paths.push('app/scripts/config/goal-books/navigation/de-gym-physics-national-atlas.view.json');const rows=[]
+for(const path of paths){const result=compileCompositionView(normalizeCompositionView(read(path)),np,universe,new Map([[phys.landscapeId,np],[math.landscapeId,nm]]));const errors=result.findings.filter((f:any)=>f.severity==='error');rows.push({path,errors});if(errors.length)console.log(path,JSON.stringify(errors))}
+const report={schemaVersion:1,checkedAt:new Date().toISOString(),scope:'70 current Physics and national atlas composition views; native compiler with current Physics semantic kinds and actual foreign Mathematics.',rows};writeFileSync('tmp/physics-semiconductor-20261115/physics-view-compile.json',JSON.stringify(report,null,2)+'\n');assert(rows.every(r=>r.errors.length===0));console.log('Native bounded Physics compiler passed: '+rows.length+' views, zero errors.')

@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-15T05:23:51.329164Z",
+  "authority": "Actual distinct native A/B raw machine reviews; no human approval",
+  "nativeSummarize": {
+    "command": "npm --prefix app run quality:goal-description-rollout-batch -- summarize --config curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-15/semiconductor-stage-path-corrected7-v2.config.json --write",
+    "exitCode": 0,
+    "stdout": "Standalone dual summary materialized: physik-semiconductor-stage-path-corrected7-20261115-v2; goals=7; requiresSynthesis=7"
+  },
+  "rounds": [
+    {
+      "round": "round-a",
+      "recordCount": 7,
+      "descriptionDecisions": {
+        "keep": 6,
+        "revise": 1,
+        "block": 0,
+        "split_review": 0
+      },
+      "profileRecommendations": {
+        "none": 6,
+        "revise": 1
+      },
+      "actualNativeValidation": {
+        "tool": "app/scripts/validateGoalDescriptionReviewCampaignResults.ts",
+        "exitCode": 0,
+        "stdout": "Goal-description review campaign results valid: 7"
+      },
+      "goals": [
+        {
+          "goalId": "7badac4d-2874-5b3a-87e8-bf8f4440b2a6",
+          "recordId": "physik-semiconductor-corrected7-v2-a-sol-ultra-20261115-045108.goal-1",
+          "decision": "keep",
+          "profileRecommendation": "none"
+        },
+        {
+          "goalId": "dc55adac-91a5-5cc3-ab47-be008480616f",
+          "recordId": "physik-semiconductor-corrected7-v2-a-sol-ultra-20261115-045108.goal-2",
+          "decision": "keep",
+          "profileRecommendation": "none"
+        },
+        {
+          "goalId": "3b586f2a-60e2-5019-aa08-6a47616a1f1f",
+          "recordId": "physik-semiconductor-corrected7-v2-a-sol-ultra-20261115-045108.goal-3",
+          "decision": "keep",
+          "profileRecommendation": "none"
+        },
+        {
+          "goalId": "853dbe54-85b0-59ab-8f3a-000c2b7746ec",
+          "recordId": "physik-semiconductor-corrected7-v2-a-sol-ultra-20261115-045108.goal-4",
+          "decision": "keep",
+          "profileRecommendation": "none"
+        },
+        {
+          "goalId": "7d4d6a39-0c78-5fb0-b7bf-182ed00972f7",
+          "recordId": "physik-semiconductor-corrected7-v2-a-sol-ultra-20261115-045108.goal-5",
+          "decision": "keep",
+          "profileRecommendation": "none"
+        },
+        {
+          "goalId": "af50bb9a-fd7b-50f5-9698-48c4efe99032",
+          "recordId": "physik-semiconductor-corrected7-v2-a-sol-ultra-20261115-045108.goal-6",
+          "decision": "revise",
+          "profileRecommendation": "revise"
+        },
+        {
+          "goalId": "c2af45aa-e3fc-5119-9159-c5a260b4135a",
+          "recordId": "physik-semiconductor-corrected7-v2-a-sol-ultra-20261115-045108.goal-7",
+          "decision": "keep",
+          "profileRecommendation": "none"
+        }
+      ]
+    },
+    {
+      "round": "round-b",
+      "recordCount": 7,
+      "descriptionDecisions": {
+        "keep": 5,
+        "revise": 2,
+        "block": 0,
+        "split_review": 0
+      },
+      "profileRecommendations": {
+        "none": 4,
+        "revise": 3
+      },
+      "actualNativeValidation": {
+        "tool": "app/scripts/validateGoalDescriptionReviewCampaignResults.ts",
+        "exitCode": 0,
+        "stdout": "Goal-description review campaign results valid: 7"
+      },
+      "goals": [
+        {
+          "goalId": "7badac4d-2874-5b3a-87e8-bf8f4440b2a6",
+          "recordId": "physik-semiconductor-stage-path-corrected7-20261115-v2-first-pass-b.batch-001.gpt61sol-ultra.7badac4d-2874-5b3a-87e8-bf8f4440b2a6",
+          "decision": "revise",
+          "profileRecommendation": "revise"
+        },
+        {
+          "goalId": "dc55adac-91a5-5cc3-ab47-be008480616f",
+          "recordId": "physik-semiconductor-stage-path-corrected7-20261115-v2-first-pass-b.batch-001.gpt61sol-ultra.dc55adac-91a5-5cc3-ab47-be008480616f",
+          "decision": "keep",
+          "profileRecommendation": "none"
+        },
+        {
+          "goalId": "3b586f2a-60e2-5019-aa08-6a47616a1f1f",
+          "recordId": "physik-semiconductor-stage-path-corrected7-20261115-v2-first-pass-b.batch-001.gpt61sol-ultra.3b586f2a-60e2-5019-aa08-6a47616a1f1f",
+          "decision": "keep",
+          "profileRecommendation": "none"
+        },
+        {
+          "goalId": "853dbe54-85b0-59ab-8f3a-000c2b7746ec",
+          "recordId": "physik-semiconductor-stage-path-corrected7-20261115-v2-first-pass-b.batch-001.gpt61sol-ultra.853dbe54-85b0-59ab-8f3a-000c2b7746ec",
+          "decision": "keep",
+          "profileRecommendation": "none"
+        },
+        {
+          "goalId": "7d4d6a39-0c78-5fb0-b7bf-182ed00972f7",
+          "recordId": "physik-semiconductor-stage-path-corrected7-20261115-v2-first-pass-b.batch-001.gpt61sol-ultra.7d4d6a39-0c78-5fb0-b7bf-182ed00972f7",
+          "decision": "keep",
+          "profileRecommendation": "revise"
+        },
+        {
+          "goalId": "af50bb9a-fd7b-50f5-9698-48c4efe99032",
+          "recordId": "physik-semiconductor-stage-path-corrected7-20261115-v2-first-pass-b.batch-001.gpt61sol-ultra.af50bb9a-fd7b-50f5-9698-48c4efe99032",
+          "decision": "revise",
+          "profileRecommendation": "revise"
+        },
+        {
+          "goalId": "c2af45aa-e3fc-5119-9159-c5a260b4135a",
+          "recordId": "physik-semiconductor-stage-path-corrected7-20261115-v2-first-pass-b.batch-001.gpt61sol-ultra.c2af45aa-e3fc-5119-9159-c5a260b4135a",
+          "decision": "keep",
+          "profileRecommendation": "none"
+        }
+      ]
+    }
+  ],
+  "acceptedSubstantiveFindings": [
+    "Representative known-material classification cannot universally identify an unknown semiconductor from one intermediate conductivity value. Adopt exact B proposed bilingual wording and repair P.",
+    "Amplification must compare named like quantities; supplied current gain does not establish voltage gain without input voltage. Adopt exact B proposed bilingual wording; retain A alternative as dissent.",
+    "Transistor own construction and controlled own switching observation remain required when prescribed; unsupported quantitative measurement mastery must not be smuggled in through P or the task.",
+    "The scalar assessment passing threshold does not separately enforce essential P. Repair compensatory analytic rubrics for changed tasks without adding runtime flags or learner-state fields."
+  ],
+  "nativeLimitation": "Current strict native manifest/resolution implementations require two current keeps or the narrow keep_current keep/revise rejected-revision dissent. Adopting a proposed revision changes current fingerprints and therefore needs bounded genuine current confirmations under this unchanged protocol."
+}

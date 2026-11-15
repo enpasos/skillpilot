@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-11-15T05:37:03.211675Z",
+  "reviewer": "Codex semiconductor QA agent, independent actual informed current-content machine review of delivery-authored task",
+  "goalId": "8670cff6-fe9c-5f7e-8cba-d170134965a6",
+  "result": "machine-content-review-pass",
+  "releaseReadiness": "Author may apply machine-content release metadata without altering the exact reviewed scientific projection. Current native D/P/A/M/V, graph, routes and CI remain separate requirements.",
+  "humanApproval": false,
+  "learnerExecutionClaim": false,
+  "reason": "Actually read complete final DE/EN task, solution and all5 criteria; actually viewed final360/680 browser image renders. All three stated points are interpreted through A/K and signedI references, including smallpositive forward current and smallnegative reverse current. Threshold rebuttal and component/temperature/range limits are separately required, so numerical polarity answers cannot compensate missing scope understanding. The exact displayed curve is supplied model/task data, not actual learner measurement. No pn model or quantitative measurement technique is required.",
+  "reviewedContent": {
+    "coveredGoalIds": [
+      "dc55adac-91a5-5cc3-ab47-be008480616f"
+    ],
+    "coveredStrands": [
+      "LI_MATERIE",
+      "LI_TECHNIK"
+    ],
+    "demandLevels": [
+      "AB1",
+      "AB2",
+      "AB3"
+    ],
+    "taskContent": "![Aufgabenmaterial: Schaltung und Kennlinie](/assets/goal-visualizations/physik/8670cff6-fe9c-5f7e-8cba-d170134965a6/8670cff6-fe9c-5f7e-8cba-d170134965a6.png)\n\n**Material:** Ein sicherer einfacher Serienkreis enthält eine Kleinspannungsquelle, einen strombegrenzenden Widerstand und eine Diode. Ein Pfeil kennzeichnet die technische Stromrichtung von Anode A nach Kathode K; U_D ist als Spannung A gegen K definiert. Eine vorgegebene, für diese Diode bei konstanter Temperatur aufgenommene Kennlinie enthält die Werte U_D = −1,0 V: I_D = −0,001 mA; +0,2 V: +0,001 mA; +0,6 V: +2 mA. Weitere Messungen werden nicht verlangt.\n\n1. Lesen Sie für U_D = +0,6 V, +0,2 V und −1,0 V jeweils Stromrichtung und Stromstärke ab. Ordnen Sie Durchlass- und Sperrpolung zu und erklären Sie das Verhalten im Serienkreis. Benennen Sie die verwendete Vorzeichenrichtung und unterscheiden Sie einen nennenswerten Nutzstrom von einem sehr kleinen, aber nicht exakt verschwindenden Strom. Reicht positive Diodenspannung allein als Begründung für einen nennenswerten Strom? (3 BE)\n2. Ein Lernender behauptet: „Jede Diode schaltet bei genau 0,7 V ein; vorher fließt exakt kein Strom.“ Prüfen Sie das mit den vorgegebenen Daten. Erläutern Sie außerdem die Aussagegrenzen dieser Kennlinie hinsichtlich Bauteil, Temperatur und Messbereich; übertragen Sie sie nicht ungeprüft auf andere Dioden oder Spannungen außerhalb des dargestellten Bereichs. (2 BE)",
+    "solutionContent": "1. Durchlassfall +0,6 V (1 BE): A ist positiver als K. Es fließen +2 mA in der festgelegten technischen Bezugsrichtung A nach K; das ist im Aufgabenbeispiel ein nennenswerter Serienkreisstrom.\n2. Kleiner positiver Fall +0,2 V (1 BE): Trotz positiver Diodenspannung zeigt die Kennlinie nur +0,001 mA von A nach K. Dieser sehr kleine Strom ist nicht exakt null; positive Polung allein belegt keinen nennenswerten Nutzstrom.\n3. Sperrfall −1,0 V (1 BE): K ist positiver als A. Der Strom ist −0,001 mA bezüglich A nach K, fließt also sehr klein von K nach A. Er ist nicht exakt null und kein nennenswerter Nutzstrom. Die Strombegrenzung bleibt Bestandteil des vorgegebenen Kreises.\n4. Universelle Schwelle widerlegt (1 BE): Schon +0,2 V zeigen kleinen, nicht verschwindenden Strom, +0,6 V bereits deutlich größeren Strom. Die Daten widerlegen ein universelles exaktes Einschalten bei 0,7 V samt exakt stromlosem Bereich davor; sie beweisen keine andere universelle Schwelle.\n5. Geltungsgrenzen (1 BE): Die Kurve gilt für das angegebene Bauteil bei der betrachteten konstanten Temperatur im dargestellten Messbereich. Weder alle Dioden noch andere Temperaturen oder außerhalb liegende Spannungen beziehungsweise Durchbruchverhalten sind dadurch festgelegt. Vorgegebene Daten bescheinigen keine selbst ausgeführte Messung.\n\nJedes fachliche Kriterium wird getrennt mit 0 oder 1 BE bewertet. Die Kriterien können nicht durch zusätzliche Zahlen, Formulierungen oder andere Punkte ausgeglichen werden. Fachlich gleichwertige Begründungen zählen. Isolierte Rechen-, Einheiten- oder Schreibfehler ohne Folgen für das begründete Verständnis verursachen keinen eigenen Abzug. Teilpunkte geben Rückmeldung zu den schon gezeigten und noch fehlenden Aspekten.",
+    "scoring": {
+      "maxPoints": 5,
+      "passingPoints": 5,
+      "steps": [
+        {
+          "id": "diode-forward-appreciable",
+          "points": 1,
+          "description": "Bei +0,6 V Durchlasspolung, Bezug A nach K und nennenswerter Strom datenbasiert gedeutet."
+        },
+        {
+          "id": "diode-forward-small",
+          "points": 1,
+          "description": "Bei +0,2 V kleinen nicht verschwindenden Strom erkannt; positive Polung nicht mit stets nennenswertem Strom gleichgesetzt."
+        },
+        {
+          "id": "diode-reverse-nonzero",
+          "points": 1,
+          "description": "Bei −1,0 V Sperrpolung und kleinen nicht verschwindenden Strom entgegen der Bezugsrichtung gedeutet."
+        },
+        {
+          "id": "diode-threshold-evidence",
+          "points": 1,
+          "description": "Universelle exakte 0,7-V-Schwelle und exakt stromlosen Bereich anhand der vorgegebenen Daten widerlegt."
+        },
+        {
+          "id": "diode-applicability",
+          "points": 1,
+          "description": "Gültigkeit auf Bauteil, Temperatur und dargestellten Messbereich begrenzt; keine ungeprüfte Extrapolation."
+        }
+      ]
+    },
+    "taskContentEn": "![Assessment material: circuit and characteristic](/assets/goal-visualizations/physik/8670cff6-fe9c-5f7e-8cba-d170134965a6/8670cff6-fe9c-5f7e-8cba-d170134965a6.png)\n\n**Material:** A safe simple series circuit contains a low-voltage source, a current-limiting resistor and a diode. An arrow defines conventional current from anode A to cathode K; U_D is the voltage of A relative to K. A supplied characteristic, recorded for this diode at constant temperature, includes U_D = −1.0 V: I_D = −0.001 mA; +0.2 V: +0.001 mA; +0.6 V: +2 mA. No further measurements are required.\n\n1. Read current direction and magnitude for U_D = +0.6 V, +0.2 V and −1.0 V. Identify forward and reverse bias and explain behaviour in the series circuit. Name the sign convention and distinguish appreciable useful current from very small but nonzero current. Does positive diode voltage alone establish an appreciable current? (3 points)\n2. A learner claims: “Every diode switches on at exactly 0.7 V; before that the current is exactly zero.” Check this against the supplied data. Also explain the characteristic's evidential limits for component, temperature and measured range; do not transfer it uncritically to other diodes or voltages outside the displayed range. (2 points)",
+    "solutionContentEn": "1. Forward case +0.6 V (1 point): A is positive relative to K. The +2 mA current follows the defined conventional reference A to K and is appreciable in this assessment's series circuit.\n2. Small positive case +0.2 V (1 point): Despite positive diode voltage, the curve gives only +0.001 mA from A to K. This very small current is nonzero; positive bias alone does not establish appreciable useful current.\n3. Reverse case −1.0 V (1 point): K is more positive than A. Current is −0.001 mA relative to A to K, so it flows very slightly from K to A. It is nonzero and not appreciable useful current. Current limitation remains part of the supplied circuit.\n4. Universal threshold rebuttal (1 point): At +0.2 V the current is already nonzero, while +0.6 V produces a much larger current. These data refute universal exact switching at 0.7 V with zero current beforehand; they do not establish another universal threshold.\n5. Applicability limits (1 point): The curve describes the supplied component at the stated constant temperature within the displayed measured range. It does not determine every diode, other temperatures, or voltages and breakdown behaviour outside that range. Supplied data do not certify a personally performed measurement.\n\nEach scientific criterion is scored separately with 0 or 1 point. Additional numbers, wording or other points cannot compensate for a missing criterion. Scientifically equivalent reasoning earns credit. Isolated calculation, unit or notation slips without consequences for the justified understanding do not cause a separate deduction. Partial scores provide feedback on aspects already demonstrated and those still missing."
+  },
+  "reviewedContentSha256": "sha256:27321ec834984fde942e9ae4de411496cecff87777022718bfa636f4dddb2d85",
+  "contentProjectionContract": "Exact examData excluding only reviewStatus,reviewNote,sourceArtifactPath; digest is UTF8 sorted-key compact JSON. Release metadata cannot modify reviewed scientific task, solution, scoring or coverage.",
+  "assets": [
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/physik/8670cff6-fe9c-5f7e-8cba-d170134965a6/8670cff6-fe9c-5f7e-8cba-d170134965a6.png",
+      "sha256": "sha256:58b5229211e08dcf07b5f200967254cbb6898ba06806fe8027cced91d13faabe",
+      "inspection": "Actual earlier full/mobile inspection retained only after byte equality; functional360/680 actually re-rendered and viewed in this review turn."
+    }
+  ],
+  "essentialCriterionOmissionAudit": [
+    {
+      "criterionId": "diode-forward-appreciable",
+      "maximumWithoutCriterion": 4,
+      "passingPoints": 5,
+      "result": "cannot pass without this scored essential scientific criterion"
+    },
+    {
+      "criterionId": "diode-forward-small",
+      "maximumWithoutCriterion": 4,
+      "passingPoints": 5,
+      "result": "cannot pass without this scored essential scientific criterion"
+    },
+    {
+      "criterionId": "diode-reverse-nonzero",
+      "maximumWithoutCriterion": 4,
+      "passingPoints": 5,
+      "result": "cannot pass without this scored essential scientific criterion"
+    },
+    {
+      "criterionId": "diode-threshold-evidence",
+      "maximumWithoutCriterion": 4,
+      "passingPoints": 5,
+      "result": "cannot pass without this scored essential scientific criterion"
+    },
+    {
+      "criterionId": "diode-applicability",
+      "maximumWithoutCriterion": 4,
+      "passingPoints": 5,
+      "result": "cannot pass without this scored essential scientific criterion"
+    }
+  ],
+  "limitations": [
+    "A content design review is not observed learner performance, human approval, real-host acceptance or a claim that every unrelated legacy assessment is perfect.",
+    "Prior actual raw reviews/releases remain historical; their insufficient whole-group grading conclusion is not silently reused."
+  ],
+  "readability": "At680px curve/circuit references and annotations are clear. At360px small plot annotations are compact; the authoritative task independently restates every numeric point, signed reference and component condition in selectable text. Circuit geometry remains visible. No claim of all annotation text being large at360px."
+}

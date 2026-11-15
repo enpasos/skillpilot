@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-11-15T05:44:00.566705Z",
+  "reviewer": "Codex semiconductor QA, actual independent current full DE/EN read of delivery-authored interpretation-only task",
+  "goalId": "88f27aab-8724-5a4d-8543-e49ebcb54b8e",
+  "result": "machine-content-review-pass",
+  "humanApproval": false,
+  "learnerExecutionClaim": false,
+  "releaseReadiness": "Author may set current machine-content-reviewed release metadata, preserving exact scientific content below. Actual execution has a separate new stable goal and assessment; no historical interpretation result is upgraded.",
+  "reason": "Actually read both complete tasks, both complete solutions, current interpretation-only7d and its corrected P, and all5essential criteria. The given complete plan and thin-base model support causal control/load-path and carrier interpretation, supply/control distinction, all3supplied states, genuinely changed sensor mapping and bounded electronic-switching conclusions. The100kΩ base reference gives the opened-control case a definite physical condition. Supplied numerical uncertainties are interpreted only as supplied data; no own meter/uncertainty procedure is demanded. All5scientific criteria are necessary for pass5; numeric reading cannot compensate omitted carrier mechanism, energy or transfer. No mixedS/D selector remains and no personal experiment is certified.",
+  "reviewedContent": {
+    "coveredGoalIds": [
+      "7d4d6a39-0c78-5fb0-b7bf-182ed00972f7"
+    ],
+    "coveredStrands": [
+      "LI_FELDER",
+      "LI_TECHNIK"
+    ],
+    "demandLevels": [
+      "AB1",
+      "AB2",
+      "AB3"
+    ],
+    "taskContent": "Material und Anschlussplan: Eine geprüfte, strombegrenzte 5-V-Lehrversorgung speist eine LED mit 330-Ω-Vorwiderstand: +5 V → Widerstand → LED-Anode; LED-Kathode → Kollektor C eines geeigneten npn-Lehrtransistors; Emitter E → 0 V. Der Basiseingang B ist über 10 kΩ mit dem zwischen 0 V und +5 V umschaltbaren Steuerausgang verbunden. Ein 100-kΩ-Widerstand verbindet B dauerhaft mit 0 V; beim Öffnen des Steuerzweigs bleibt dieser feste Bezug bestehen. Alle 0-V-Anschlüsse sind verbunden. Das Datenblatt bezeichnet die tatsächlichen B/C/E-Pins eindeutig; die Bauteilorientierung wird nicht geraten. Im vereinfachten Materialmodell besitzt der Transistor eine dünne p-dotierte Basis zwischen n-dotiertem Emitter und Kollektor. Geeignete Basis-Emitter-Ansteuerung ermöglicht Ladungsträgertransport vom Emitter durch die dünne Basis zum Kollektor; ein kleiner Steuerstrom kann so den Laststrom beeinflussen. Die Lastenergie stammt aus der 5-V-Versorgung.\n\nDie folgenden Demonstrationsdaten sind vorgegeben. Die Aufgabe prüft ihre Deutung und bescheinigt keinen selbst hergestellten Aufbau und keine eigenen Beobachtungen.\n\n1. Verfolge B, C und E sowie Steuer- und Lastpfad am vollständigen Anschlussplan. Erkläre den Ladungsträgertransport durch die dünne Basis im vorgegebenen Modell und unterscheide die Energiequelle der LED von der Steuerwirkung des Basiszweigs. (2 BE)\n2. Analysiere die vorgegebenen Demonstrationsdaten: Steuerung 0 V → I_B = 0,00±0,01 mA, I_C = 0,0±0,1 mA, LED aus; Steuerung 5 V → I_B = 0,42±0,02 mA, I_C = 8,1±0,3 mA, LED an; Steuerverbindung zum 10-kΩ-Widerstand unterbrochen, 100-kΩ-Bezug erhalten → LED aus. Erkläre alle drei Zustände am gelieferten Plan. Begründe die elektronische Schaltwirkung, ohne aus zwei Betriebspunkten einen universellen konstanten Verstärkungsfaktor abzuleiten. Eine eigene Messung oder Unsicherheitsbestimmung wird nicht verlangt. (2 BE)\n3. Ein Sensor liefert im Hellen 5 V und im Dunkeln 0 V. Sage die LED-Zustände voraus und erkläre die Änderung beim Tausch dieser Sensorwirkung. (1 BE)",
+    "taskContentEn": "Material and complete connection plan: A checked, current-limited 5 V teaching supply drives an LED through a 330 Ω resistor: +5 V → resistor → LED anode; LED cathode → collector C of a suitable npn teaching transistor; emitter E → 0 V. Base B connects through 10 kΩ to a control output selectable between 0 V and +5 V. A 100 kΩ resistor permanently connects B to 0 V; this reference remains when the control branch is opened. All 0 V terminals are common. The datasheet explicitly identifies actual B/C/E pins; orientation must not be guessed. In the supplied simplified semiconductor model, a thin p-type base lies between n-type emitter and collector. Appropriate base-emitter drive permits carrier transport from the emitter through the thin base to the collector, so a small control current can influence load current. Load energy comes from the 5 V supply.\n\nThe following demonstration data are supplied. This task assesses their interpretation and certifies neither personal construction nor personal observations.\n\n1. Identify B, C and E and trace control and load paths in the complete plan. Explain carrier transport through the thin base in the supplied model and distinguish the LED's energy source from control by the base branch. (2 points)\n2. Analyse these supplied demonstration data: control 0 V → I_B = 0.00±0.01 mA, I_C = 0.0±0.1 mA, LED off; control 5 V → I_B = 0.42±0.02 mA, I_C = 8.1±0.3 mA, LED on; control connection to the 10 kΩ resistor interrupted with the 100 kΩ reference retained → LED off. Explain all three states using the supplied plan. Justify electronic switching without inferring a universal constant gain from two operating points. No personal measurement or uncertainty determination is required. (2 points)\n3. A sensor outputs 5 V in light and 0 V in darkness. Predict the LED states and explain what changes when the sensor response is reversed. (1 point)",
+    "solutionContent": "1. Steuer-/Lastpfad und dünne Basis (1 BE): B, C und E sind durch das Datenblatt bestimmt. Steuerpfad: Steuerausgang–10 kΩ–B–E–0 V; Lastpfad: Versorgung–330 Ω–LED–C–E–0 V. Geeignete Basis-Emitter-Ansteuerung ermöglicht im gelieferten Modell Ladungsträgertransport vom Emitter durch die dünne Basis zum Kollektor. Anschlussnamen allein ersetzen diese kausale Erklärung nicht.\n2. Energie und Steuerung (1 BE): Die 5-V-Versorgung liefert die Lastenergie. Der Basiszweig beeinflusst den Ladungsträgertransport und steuert den Laststrom; er erzeugt die LED-Energie nicht.\n3. Drei gelieferte Zustände deuten (1 BE): Bei 0 V fehlt die geeignete Ansteuerung, LED aus. Bei 5 V ermöglicht sie den Laststrom, LED an. Nach Öffnen nur der Steuerverbindung bleibt die Basis über 100 kΩ mit 0 V verbunden, LED aus; die Stellung der abgetrennten Quelle bestimmt dann nicht mehr die Basisansteuerung. Die Zahlen sind gelieferte Daten, keine eigenen Messungen.\n4. Geänderte Sensorwirkung (1 BE): Hell liefert zunächst 5 V und LED an; Dunkel liefert 0 V und LED aus. Die umgekehrte Ausgangszuordnung kehrt die Zustände um. Entscheidend ist die konkrete Ansteuerung, keine universelle Hell-Dunkel-Regel.\n5. Elektronisches Schalten und Aussagegrenze (1 BE): Die Ansteuerung beeinflusst elektronisch den Trägertransport, ohne dass ein mechanischer Kontakt bewegt wird. Die gegebenen Schaltpunkte belegen keinen universellen konstanten Stromverstärkungsfaktor.\n\nJedes fachliche Kriterium wird getrennt mit 0 oder 1 BE bewertet. Fachlich gleichwertige Begründungen zählen. Isolierte Rechen-, Einheiten- oder Schreibfehler ohne Folgen für das begründete Verständnis verursachen keinen eigenen Abzug. Teilpunkte geben Rückmeldung; eine richtige Materialdeutung bescheinigt keine eigene Versuchsdurchführung.",
+    "solutionContentEn": "1. Control/load paths and thin base (1 point): The datasheet determines B, C and E. Control path: control output–10 kΩ–B–E–0 V; load path: supply–330 Ω–LED–C–E–0 V. In the supplied model, suitable base-emitter drive enables carrier transport from emitter through the thin base to collector. Merely naming pins does not replace this causal explanation.\n2. Energy and control (1 point): The 5 V source supplies load energy. The base branch affects carrier transport and controls load current; it does not create the LED's energy.\n3. Interpret three supplied states (1 point): At 0 V suitable drive is absent and the LED is off. At 5 V drive enables load current and the LED is on. Opening only the control connection leaves the base connected to 0 V through 100 kΩ and the LED off; the disconnected source's setting no longer determines base drive. The numbers are supplied data, not personal measurements.\n4. Changed sensor response (1 point): Light initially produces 5 V and LED on; darkness produces 0 V and LED off. Reversing the output mapping reverses these states. Actual drive is decisive, not a universal light/dark rule.\n5. Electronic switching and evidential limit (1 point): Drive electronically affects carrier transport without moving a mechanical contact. The supplied switching points do not establish a universal constant current-gain factor.\n\nEach scientific criterion is scored separately with 0 or 1 point. Scientifically equivalent reasoning earns credit. Isolated calculation, unit or notation slips without consequences for the justified understanding cause no separate deduction. Partial scores provide feedback; correct material interpretation does not certify personal experimental execution.",
+    "scoring": {
+      "maxPoints": 5,
+      "passingPoints": 5,
+      "steps": [
+        {
+          "id": "switch-paths-thin-base",
+          "points": 1,
+          "description": "Steuer-/Lastpfad und B/C/E mit kausalem Ladungsträgertransport durch die dünne Basis erklärt."
+        },
+        {
+          "id": "switch-energy-control",
+          "points": 1,
+          "description": "Versorgung als Lastenergiequelle und Basiszweig als Steuerung unterschieden."
+        },
+        {
+          "id": "switch-supplied-states",
+          "points": 1,
+          "description": "Alle drei gelieferten Zustände am vollständigen Plan samt festem Basisbezug gedeutet."
+        },
+        {
+          "id": "switch-sensor-transfer",
+          "points": 1,
+          "description": "Geänderte und umgekehrte Sensor-Ausgangszuordnung schaltungsspezifisch begründet."
+        },
+        {
+          "id": "switch-electronic-limits",
+          "points": 1,
+          "description": "Elektronische Trägersteuerung vom mechanischen Kontakt unterschieden; keine universelle Stromverstärkung aus zwei Schaltpunkten."
+        }
+      ]
+    }
+  },
+  "reviewedContentSha256": "sha256:4ebf640570930a78a7d665abbf65a729b89a40a73508626f71baeb7d0d245934",
+  "contentProjectionContract": "Exact examData excluding only reviewStatus,reviewNote,sourceArtifactPath; UTF8 sorted-key compact JSON digest.",
+  "essentialCriterionOmissionAudit": [
+    {
+      "criterionId": "switch-paths-thin-base",
+      "maximumWithoutCriterion": 4,
+      "passingPoints": 5,
+      "result": "cannot pass missing or contradicted essential science"
+    },
+    {
+      "criterionId": "switch-energy-control",
+      "maximumWithoutCriterion": 4,
+      "passingPoints": 5,
+      "result": "cannot pass missing or contradicted essential science"
+    },
+    {
+      "criterionId": "switch-supplied-states",
+      "maximumWithoutCriterion": 4,
+      "passingPoints": 5,
+      "result": "cannot pass missing or contradicted essential science"
+    },
+    {
+      "criterionId": "switch-sensor-transfer",
+      "maximumWithoutCriterion": 4,
+      "passingPoints": 5,
+      "result": "cannot pass missing or contradicted essential science"
+    },
+    {
+      "criterionId": "switch-electronic-limits",
+      "maximumWithoutCriterion": 4,
+      "passingPoints": 5,
+      "result": "cannot pass missing or contradicted essential science"
+    }
+  ],
+  "actualScopeBoundary": {
+    "interpretationOrdinaryId": "7d4d6a39-0c78-5fb0-b7bf-182ed00972f7",
+    "interpretationAssessmentId": "88f27aab-8724-5a4d-8543-e49ebcb54b8e",
+    "separateActualExecutionOrdinaryId": "77ab31a9-8961-511c-8637-06e98023d869",
+    "separateActualExecutionAssessmentId": "2cfd5c6a-a16a-5f90-aab7-b27b29271f72",
+    "rationale": "MasteryId stores learner+globalgoal only and frontier reuses it across scope changes. A D interpretation result cannot evidence later required actual construction. Separate stable identities preserve historical interpretation results without an extra learner flag or mastery transfer."
+  },
+  "limitations": [
+    "No observed learner performance, human approval, real-host acceptance or automatically inherited experimental execution.",
+    "New actual-execution task was authored by QA and requires a distinct actual independent review by root; this receipt does not self-approve that separate task."
+  ]
+}

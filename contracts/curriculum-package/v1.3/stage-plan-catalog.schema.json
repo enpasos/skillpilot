@@ -1,0 +1,84 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "catalogFormatVersion",
+    "revision",
+    "plans",
+    "views"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "https://skillpilot.com/schemas/curriculum-package/v1.3/stage-plan-catalog.schema.json"
+    },
+    "catalogFormatVersion": {
+      "const": "1.0"
+    },
+    "revision": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000,
+      "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+    },
+    "plans": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "planId",
+          "path"
+        ],
+        "properties": {
+          "planId": {
+            "$ref": "#/$defs/id"
+          },
+          "path": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._/-]*$"
+          }
+        }
+      }
+    },
+    "views": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "viewId",
+          "path",
+          "outputPath"
+        ],
+        "properties": {
+          "viewId": {
+            "$ref": "#/$defs/id"
+          },
+          "path": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._/-]*$"
+          },
+          "outputPath": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._/-]*$"
+          }
+        }
+      }
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/curriculum-package/v1.3/stage-plan-catalog.schema.json",
+  "title": "SkillPilot stage-plan file catalog 1.0 - candidate",
+  "description": "One file manifest for authored stage plans, full subject trees and tree-free excerpts. The loader additionally requires an independent activation inventory, complete canonical Gymnasium inventory, exact authored directory membership, safe paths and semantic validation. Paths are repository-relative; plans live under stage-plans/plans, views under stage-plans/views. Outputs are owned compatibility views; national and other legacy views remain unowned.",
+  "$defs": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 300,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:+-]*$"
+    }
+  }
+}

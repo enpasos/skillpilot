@@ -1,5 +1,33 @@
 # AGENTS.md – Skill Graph Memory & Design Guide
 
+## Current execution mandate: stage plans and pedagogical repairs
+
+On **15 November 2026**, the Product Owner delegated the resolution and
+implementation of the model, stage-plan and pedagogical findings recorded in
+`docs/dev/stage-plan-units-handover-2026-11-15.md` to the implementing agents.
+The owner reviews concrete results and intervenes when needed; do not return
+ordinary modelling, subject-review, goal-splitting, assessment-authoring or
+necessary implementation decisions to the owner as unresolved assignments.
+Research educational practice and primary sources, explain the chosen
+solution, and implement the corresponding atomic goals, prerequisites,
+assessments and projections with current evidence. Evidence-based new wording
+and bridge goals are permitted; invented official source claims are not.
+
+This mandate supersedes the handover's earlier owner-approval reservations
+for this work. It does not waive source fidelity, genuine independent reviews,
+immutable evidence, learner-result contracts or existing quality floors. A
+missing assessment must be repaired with an appropriate task and coverage,
+never with a fictitious prerequisite or a relaxed gate. Curriculum edits do
+not themselves write or transfer learner mastery.
+
+The delivery target is **integrated `main` with a fresh fully successful CI
+run**, not a collection of open PRs. The owner explicitly authorized completing
+and integrating #153 and #156 after successful CI, and bringing the subsequent
+deliveries to `main`; use PRs as intermediate reviewable deliveries and keep
+their number small. Delegate suitable work to **GPT 6.1 Sol Ultra**. This
+development mandate does not authorize unrelated production deployments,
+provider publication, credential changes or changes to the retained sources.
+
 ## 0. OpenAI review retired — successor development is authorized
 
 The submitted `skillpilot-coach-v1` **1.0.0** was **REJECTED**. On

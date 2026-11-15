@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:648855b6eebbd29352498577232b532b0c8671a5b8c1687034487dc4ae350861",
+  "reviewInputFingerprint": "sha256:2257bebc44fb003659d9d84ab909f963c22ef33d1b1ce2f50d69df87119a5f87",
+  "goalCount": 3,
+  "rounds": {
+    "first": {
+      "campaignId": "physik-semiconductor-applicability-current3-20261115-v5-a",
+      "roundId": "physik-semiconductor-applicability-current3-20261115-v5-first-pass-a",
+      "independenceGroupId": "physik-semiconductor-applicability-current3-20261115-v5-independent-a",
+      "runIds": [
+        "physik-semiconductor-applicability-current3-20261115-v5-first-pass-a.batch-001.sol-ultra-current-confirmation"
+      ],
+      "providers": [
+        "openai-codex"
+      ],
+      "modelIdentities": [
+        "openai-codex::gpt-6.1-sol::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "physik-semiconductor-applicability-current3-20261115-v5-b",
+      "roundId": "physik-semiconductor-applicability-current3-20261115-v5-first-pass-b",
+      "independenceGroupId": "physik-semiconductor-applicability-current3-20261115-v5-independent-b",
+      "runIds": [
+        "physik-semiconductor-applicability-current3-20261115-v5-first-pass-b.actual-sol-ultra-b-20261115T070947Z"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6.1-sol::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 3,
+    "unavailable": 0,
+    "requiresSynthesis": 3
+  },
+  "goals": [
+    {
+      "goalId": "77ab31a9-8961-511c-8637-06e98023d869",
+      "firstRecordId": "physik-semiconductor-applicability-current3-20261115-v5-first-pass-a.batch-001.sol-ultra-current-confirmation.goal-1",
+      "secondRecordId": "physik-semiconductor-applicability-current3-20261115-v5-first-pass-b.actual-sol-ultra-b-20261115T070947Z.1",
+      "firstRunId": "physik-semiconductor-applicability-current3-20261115-v5-first-pass-a.batch-001.sol-ultra-current-confirmation",
+      "secondRunId": "physik-semiconductor-applicability-current3-20261115-v5-first-pass-b.actual-sol-ultra-b-20261115T070947Z",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "dc55adac-91a5-5cc3-ab47-be008480616f",
+      "firstRecordId": "physik-semiconductor-applicability-current3-20261115-v5-first-pass-a.batch-001.sol-ultra-current-confirmation.goal-2",
+      "secondRecordId": "physik-semiconductor-applicability-current3-20261115-v5-first-pass-b.actual-sol-ultra-b-20261115T070947Z.2",
+      "firstRunId": "physik-semiconductor-applicability-current3-20261115-v5-first-pass-a.batch-001.sol-ultra-current-confirmation",
+      "secondRunId": "physik-semiconductor-applicability-current3-20261115-v5-first-pass-b.actual-sol-ultra-b-20261115T070947Z",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "df010b2b-b182-5f7e-bbe4-49b72e48c27a",
+      "firstRecordId": "physik-semiconductor-applicability-current3-20261115-v5-first-pass-a.batch-001.sol-ultra-current-confirmation.goal-3",
+      "secondRecordId": "physik-semiconductor-applicability-current3-20261115-v5-first-pass-b.actual-sol-ultra-b-20261115T070947Z.3",
+      "firstRunId": "physik-semiconductor-applicability-current3-20261115-v5-first-pass-a.batch-001.sol-ultra-current-confirmation",
+      "secondRunId": "physik-semiconductor-applicability-current3-20261115-v5-first-pass-b.actual-sol-ultra-b-20261115T070947Z",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

@@ -49,6 +49,8 @@ These pages describe durable manual or semi-automated review processes. Their le
   Older atomic-goal review workflow reference.
 - [Relation Checks](relation-checks.md)
   Relation-check scope and CI enforcement profile.
+- [Stage-plan foundation: independent role and label review (DE, 15 November 2026)](stage-plan-foundation-role-review-2026-11-15.md)
+  Reproduced counterexamples and checked correction; no real Land-plan acceptance.
 - [MEM SPARQL Consistency Audit](mem-sparql-consistency.md)
   Durable process reference for the non-blocking live MEM/FWU endpoint comparison.
 - [MEM SPARQL Consistency Runbook](mem-sparql-consistency-runbook.md)
@@ -117,6 +119,8 @@ Diese Seiten beschreiben dauerhafte manuelle oder teilautomatisierte Prüfprozes
   Ältere Prozessreferenz für die Prüfung atomarer Lernziele.
 - [Relationsprüfungen](relation-checks.de.md)
   Prüfumfang und CI-Durchsetzungsprofil für Relationen.
+- [Stufenplangrundlage: unabhängige Rollen- und Namensprüfung (15. November 2026)](stage-plan-foundation-role-review-2026-11-15.md)
+  Reproduzierte Gegenbeispiele und geprüfte Korrektur; keine Abnahme realer Landespläne.
 - [MEM-SPARQL-Konsistenzaudit](mem-sparql-consistency.de.md)
   Dauerhafte Prozessreferenz für den nicht-blockierenden Live-Abgleich mit dem MEM/FWU-Endpunkt.
 - [MEM-SPARQL-Konsistenz-Runbook](mem-sparql-consistency-runbook.de.md)

@@ -1,0 +1,983 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-11-15T07:17:20.045Z",
+  "actualTool": "loadGoalDescriptionRolloutBase plus exact same native subset builder; one full current atlas load, zero PDF builds, zero full central invocations",
+  "goalIds": [
+    "7badac4d-2874-5b3a-87e8-bf8f4440b2a6",
+    "9f265f49-1342-5ba7-9c5d-54e97fdb2f19",
+    "2084b7d4-300d-5fa0-8b8d-c480c40f853e",
+    "658cf33d-a0c2-5d47-801a-3dbcd5cac074",
+    "853dbe54-85b0-59ab-8f3a-000c2b7746ec",
+    "7d4d6a39-0c78-5fb0-b7bf-182ed00972f7",
+    "af50bb9a-fd7b-50f5-9698-48c4efe99032",
+    "c2af45aa-e3fc-5119-9159-c5a260b4135a",
+    "3857891b-d328-585b-9936-85c7aff122ee",
+    "4a42cddd-7827-5204-87e5-8d9eac7792f1",
+    "3b586f2a-60e2-5019-aa08-6a47616a1f1f",
+    "77ab31a9-8961-511c-8637-06e98023d869",
+    "dc55adac-91a5-5cc3-ab47-be008480616f",
+    "df010b2b-b182-5f7e-bbe4-49b72e48c27a"
+  ],
+  "allCurrentPagesExact": true,
+  "currentFreshApplicabilityPages": 3,
+  "retainedExactCurrentPages": 11,
+  "sourceBindings": {
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "compositionViewPath": "app/scripts/config/goal-books/de-gym-physics-national-atlas.sources.json",
+    "semanticKindLedgerPath": "curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json",
+    "goalVisualizationQaPath": "curricula/DE/Gymnasium/quality/goal-visualization-qa/physik.qa.json",
+    "landscapeDigest": "sha256:1c9881163081ec6f38b5fa84e094f43527d27767a35a3311a87205bcb06c9018",
+    "compositionViewDigest": "sha256:da83f49ceae468d04716a12b29bf2b10bff0732a1c6ec6c7a3020db6f61e199c",
+    "semanticKindLedgerDigest": "sha256:6240f9dbf9526a0a960438fba318da4a72e68c8f53465cf95512c25fc81f0045",
+    "goalVisualizationQaDigest": "sha256:f3ad934b937a7f7831943e1c39367e9fe5130c67b8110d386266096e186649a0",
+    "compositionViewManifestPath": "app/scripts/config/goal-books/de-gym-physics-national-atlas.sources.json",
+    "compositionViewManifestDigest": "sha256:da83f49ceae468d04716a12b29bf2b10bff0732a1c6ec6c7a3020db6f61e199c",
+    "compositionViewSources": [
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-bb-gk.view.json",
+        "viewId": "de-bb-gym-physics-gk",
+        "scope": {
+          "courseProfile": "GK",
+          "jurisdiction": "DE-BB",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:67de3e86061ae2fc5ec5fa9a900cc8dc0ac5d43e6154dc8722bb08f79d9a6c85",
+        "projectionFingerprint": "sha256:e682975cbfc2503ce908ad8f15d8e9cec092e927aefc5fc220ca627364c210e4"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-bb-lk.view.json",
+        "viewId": "de-bb-gym-physics-lk",
+        "scope": {
+          "courseProfile": "LK",
+          "jurisdiction": "DE-BB",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:fec8b44b61e40bbf4a79c5627ea21edda2e248fdd751692539cfc8127dc8ccf8",
+        "projectionFingerprint": "sha256:25d1afb0d928b66ca31ef23bccdcf8313783c79a373c9cacf4814da8b52d7584"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-bb-sekii-gk.view.json",
+        "viewId": "de-bb-gym-sekii-physics-gk",
+        "scope": {
+          "courseProfile": "GK",
+          "jurisdiction": "DE-BB",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII"
+        },
+        "digest": "sha256:bc820ca7009dc6eaadd9de75d96e1ccb2a3b2803f10aafec019530a39ee13846",
+        "projectionFingerprint": "sha256:ce33ac8d516328d895c4361f7f1bae6749494dee83ba67b5d59dceb145e81060"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-bb-sekii-lk.view.json",
+        "viewId": "de-bb-gym-sekii-physics-lk",
+        "scope": {
+          "courseProfile": "LK",
+          "jurisdiction": "DE-BB",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII"
+        },
+        "digest": "sha256:45cda5b67b96a899a26445650c76dd14d2c2f671a0481593c4beb6ed35ea7eed",
+        "projectionFingerprint": "sha256:08fca307b1cda56164f08db2a37433470d1036802e0656a948e63ab98490f1c1"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-be-gk.view.json",
+        "viewId": "de-be-gym-physics-gk",
+        "scope": {
+          "courseProfile": "GK",
+          "jurisdiction": "DE-BE",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:64e7e07b78bc6c01016c31426e4c6a1cd03db134530655464ece9d3ac953da4e",
+        "projectionFingerprint": "sha256:c2b2a0b28f81ebaaf401b834197294505be4636d6dcbd937a06534178e2231dd"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-be-lk.view.json",
+        "viewId": "de-be-gym-physics-lk",
+        "scope": {
+          "courseProfile": "LK",
+          "jurisdiction": "DE-BE",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:bf1c18d95872de56e49e503fc487635e9aaed2a94fcab804826f9137ae6ef8fa",
+        "projectionFingerprint": "sha256:c6fba67f51f8b2250f23a6e8984bba96a88ea9afb41559983562aea8edb6a5d5"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-be-sekii-gk.view.json",
+        "viewId": "de-be-gym-sekii-physics-gk",
+        "scope": {
+          "courseProfile": "GK",
+          "jurisdiction": "DE-BE",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII"
+        },
+        "digest": "sha256:45378cf4e9b1caaa9066deb0c370e26e1343da1e9c6e13de5f6a8a5a6ca3fffd",
+        "projectionFingerprint": "sha256:ca4ecfe166bc9b471f381b61ac04c0edf3ad50683b8517e16ed6332ded0f31d4"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-be-sekii-lk.view.json",
+        "viewId": "de-be-gym-sekii-physics-lk",
+        "scope": {
+          "courseProfile": "LK",
+          "jurisdiction": "DE-BE",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII"
+        },
+        "digest": "sha256:8c5c697090c234441bf636a1727d8e1e11d03d4fdd51e4b3f2c50865c7850875",
+        "projectionFingerprint": "sha256:e34d513c0d8b7ac60b01e32a836285b2ffcd7ad8e7abe7b3ede191f7585186cf"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-bw-gk.view.json",
+        "viewId": "de-bw-gym-physics-gk",
+        "scope": {
+          "courseProfile": "GK",
+          "jurisdiction": "DE-BW",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:89209f4cb221b2d7b3663773a06d1e0b834b36e93d88cded810edb34e2e79f00",
+        "projectionFingerprint": "sha256:ef93b2c9a4da5b5606431c41800544d0f5be7e01f17dad08ada170edb7769adb"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-bw-lk.view.json",
+        "viewId": "de-bw-gym-physics-lk",
+        "scope": {
+          "courseProfile": "LK",
+          "jurisdiction": "DE-BW",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:6321424fee0e8b3631dfd5a3a6adc086f5285de141b8247ccfe9512fb45c9cc9",
+        "projectionFingerprint": "sha256:029b03ecfe63eb949106bc5850ca157dbb98bba8e5107be19ec6116e79696497"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-bw-sekii-gk.view.json",
+        "viewId": "de-bw-gym-sekii-physics-gk",
+        "scope": {
+          "courseProfile": "GK",
+          "jurisdiction": "DE-BW",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII"
+        },
+        "digest": "sha256:8a95c3236f7e593d43fc33cd4565a934aa27df155fcc7c62cc89c5fe45001421",
+        "projectionFingerprint": "sha256:48cff16ae7989f7133e06d978447465b7223b96d24f8b6d41266c50bbc1e3f9f"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-bw-sekii-lk.view.json",
+        "viewId": "de-bw-gym-sekii-physics-lk",
+        "scope": {
+          "courseProfile": "LK",
+          "jurisdiction": "DE-BW",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII"
+        },
+        "digest": "sha256:680e10f0fa046e7461b60952c4acfa789770741867c3de9d3a9f0b90857a2afb",
+        "projectionFingerprint": "sha256:7e65357c01471d3400f65c25f6fe01a69a85336a539c2dfdafaa2deaf87b92b2"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-by-gk.view.json",
+        "viewId": "de-by-gym-physics-gk",
+        "scope": {
+          "courseProfile": "GK",
+          "jurisdiction": "DE-BY",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:278583236eb2a6ec22f6f6bec3a6970d3af408f312ae48d7038854f010f7140a",
+        "projectionFingerprint": "sha256:3962ab30f0fba07a684d5b80719682f183380aa3303e7c168d5346186723a32f"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-by-lk.view.json",
+        "viewId": "de-by-gym-physics-lk",
+        "scope": {
+          "courseProfile": "LK",
+          "jurisdiction": "DE-BY",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:ce58e33f99652168ebd05518683b219a996d9d99eb1fe308641ab1c14333b9b1",
+        "projectionFingerprint": "sha256:52640cfcd2beb1a63bdc0cc065089f9228343f353bcc3a437a1fbf93373350de"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-by-sekii-gk.view.json",
+        "viewId": "de-by-gym-sekii-physics-gk",
+        "scope": {
+          "courseProfile": "GK",
+          "jurisdiction": "DE-BY",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII"
+        },
+        "digest": "sha256:80f29e687becc39754791aba747d97e00c50e4ba65f901b2c2f7fb433e4db7b7",
+        "projectionFingerprint": "sha256:aa8969ba97c9b7e97675fa556435fc3d976f39f6f5c1c97eafca8dcb4136d481"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-by-sekii-lk.view.json",
+        "viewId": "de-by-gym-sekii-physics-lk",
+        "scope": {
+          "courseProfile": "LK",
+          "jurisdiction": "DE-BY",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII"
+        },
+        "digest": "sha256:dcca0c28ef5d77061ce6a06e843e109082a0abc53d6381a7633ec21c524c01cd",
+        "projectionFingerprint": "sha256:0917259a89ebaa0303485ceab7e072e9542daaafa2effd0955f283725869f9c2"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-hb-gk.view.json",
+        "viewId": "de-hb-gym-physics-gk",
+        "scope": {
+          "courseProfile": "GK",
+          "jurisdiction": "DE-HB",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:ddc4f1ed1f3355b864b49a04d87d10322021e3f4ef50bb05d9951239b081d506",
+        "projectionFingerprint": "sha256:c1129e1aa8d8386858c51805b20882cd5bab4cbf5f9088560852102910679072"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-hb-lk.view.json",
+        "viewId": "de-hb-gym-physics-lk",
+        "scope": {
+          "courseProfile": "LK",
+          "jurisdiction": "DE-HB",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:e0f0cfd427b737ae67faeeda494c9eecbe74b7250cc406b0a2691f791cb5c017",
+        "projectionFingerprint": "sha256:5973345ae2ffa17d32617e09b3fd9465e98024c3811c3812d1515f3d9f2ee309"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-hb-sekii-gk.view.json",
+        "viewId": "de-hb-gym-sekii-physics-gk",
+        "scope": {
+          "courseProfile": "GK",
+          "jurisdiction": "DE-HB",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII"
+        },
+        "digest": "sha256:9b3d26b2e26f2fbeff48f9a83ff11acc31844888f770ef2bb4ce50c9580a166e",
+        "projectionFingerprint": "sha256:c85000822d0ae51a9bce59ead6987733049bb1ed6024c40e3faaeb35ef4756da"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-hb-sekii-lk.view.json",
+        "viewId": "de-hb-gym-sekii-physics-lk",
+        "scope": {
+          "courseProfile": "LK",
+          "jurisdiction": "DE-HB",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII"
+        },
+        "digest": "sha256:15862d28f21a7f9f134c59f31e742b83c1d0f95ea0911b569a6a4c4f2d9747ac",
+        "projectionFingerprint": "sha256:7242a8d8ef79f06df7df878ec6c66748fd2b4396d61b3e0f07079a2c4a92c3e7"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-he-gk.view.json",
+        "viewId": "de-he-gym-physics-gk",
+        "scope": {
+          "courseProfile": "GK",
+          "jurisdiction": "DE-HE",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:60e09e1d62e644c46dc62d21f303472acc051380aeb276a551fad76a6fd98eed",
+        "projectionFingerprint": "sha256:1a29c64c932b688fb7cf17602fc5ae0ef1646283a7c3a7d325281cbe78b2c8ac"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-he-lk.view.json",
+        "viewId": "de-he-gym-physics-lk",
+        "scope": {
+          "courseProfile": "LK",
+          "jurisdiction": "DE-HE",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:d189362ace44636f96cc5ec03de7c041efa74cab844b19232fb9dd72adc53c66",
+        "projectionFingerprint": "sha256:f1dacc1109bd08631a6d9abf52ce2b62db7423a201ab7c626dfa3a5aee8d2bb6"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-he-sekii-gk.view.json",
+        "viewId": "de-he-gym-sekii-physics-gk",
+        "scope": {
+          "courseProfile": "GK",
+          "jurisdiction": "DE-HE",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII"
+        },
+        "digest": "sha256:f9ad98067fe0df2bdcb9ab04e49f08ad0646b96c4a2fbb52a84f6c5e2031583d",
+        "projectionFingerprint": "sha256:d2147331b70c655e6da3951a25af81bf70f5ad19efe38b877cccedc274eb85dd"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-he-sekii-lk.view.json",
+        "viewId": "de-he-gym-sekii-physics-lk",
+        "scope": {
+          "courseProfile": "LK",
+          "jurisdiction": "DE-HE",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII"
+        },
+        "digest": "sha256:7ae46b8d1e360c15de406867eb7c2ad8211ecf5f93b181ab7bdcfa617d0e4204",
+        "projectionFingerprint": "sha256:93fcec287489a155fc87fd57566b7acc75bf8ba8b770154aebf317b22bcc7d55"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-hh-gk.view.json",
+        "viewId": "de-hh-gym-physics-gk",
+        "scope": {
+          "courseProfile": "GK",
+          "jurisdiction": "DE-HH",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:5980c2db424eeba999f9e504afec7db4090cacfd6fd20288e2e31846f4f717ee",
+        "projectionFingerprint": "sha256:f5baf3e83babeaf26c5a0043a19bca6a54f72abc14f694c6453499b3be2cf7df"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-hh-lk.view.json",
+        "viewId": "de-hh-gym-physics-lk",
+        "scope": {
+          "courseProfile": "LK",
+          "jurisdiction": "DE-HH",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:176cc4288abd3e2be739e89e2b9739bed68b74a7edf0f5fe1bfc012cf4db52a5",
+        "projectionFingerprint": "sha256:5a5de4dca662f0f7e430b22cef151f5f048475f4421fcd6c2b7861ed1061813f"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-hh-sekii-gk.view.json",
+        "viewId": "de-hh-gym-sekii-physics-gk",
+        "scope": {
+          "courseProfile": "GK",
+          "jurisdiction": "DE-HH",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII"
+        },
+        "digest": "sha256:779bd78090fa0550a76089e673485b10c165cd470b641f0ffd7885b4f33260e4",
+        "projectionFingerprint": "sha256:8c716bbcd672c1b95dc4bd4ef24e9995b7f7cf5dbf64b44513067540c7a46c1d"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-hh-sekii-lk.view.json",
+        "viewId": "de-hh-gym-sekii-physics-lk",
+        "scope": {
+          "courseProfile": "LK",
+          "jurisdiction": "DE-HH",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII"
+        },
+        "digest": "sha256:842704a45274438779c7c8ed0ca81b1a06f376b90df6855a1cf5cf4416e3b756",
+        "projectionFingerprint": "sha256:264e75a2aa5a82f011ebe97a92c90fc58522665fb0d3b06a9f73ec054507e2ee"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-mv-gk.view.json",
+        "viewId": "de-mv-gym-physics-gk",
+        "scope": {
+          "courseProfile": "GK",
+          "jurisdiction": "DE-MV",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:22e03b107ae4eb68b7e256defed8a77475e0fe7493b19503cab5f7ed2b1a5e21",
+        "projectionFingerprint": "sha256:186a16b803edeafdc7a09e2be49cebb08bc7ce2e980fd7971e643dc4bfb5edd2"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-mv-lk.view.json",
+        "viewId": "de-mv-gym-physics-lk",
+        "scope": {
+          "courseProfile": "LK",
+          "jurisdiction": "DE-MV",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:c7595e7523f33731153168edb8a3c16a16e6528c91aed0bf3c0c854c06905137",
+        "projectionFingerprint": "sha256:690050070feefb93feef039ac663466d6dc35586b1167cf69d7b9e5141957e19"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-mv-sekii-gk.view.json",
+        "viewId": "de-mv-gym-sekii-physics-gk",
+        "scope": {
+          "courseProfile": "GK",
+          "jurisdiction": "DE-MV",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII"
+        },
+        "digest": "sha256:a7c6f04b4e7040cd8fd54c5663f6b232fa539ed8ba54d4363a442da658ed9706",
+        "projectionFingerprint": "sha256:14f408f5013c8ea4eff049b04146a3f1dd66cfe8afab2bbffeadefd3854d0c44"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-mv-sekii-lk.view.json",
+        "viewId": "de-mv-gym-sekii-physics-lk",
+        "scope": {
+          "courseProfile": "LK",
+          "jurisdiction": "DE-MV",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII"
+        },
+        "digest": "sha256:a824b7773b9b68c9d9c9104acfd3755118485bd591afe754822aed3db0156d0d",
+        "projectionFingerprint": "sha256:f277610a98c88458a48585f3b3abe60363b093d746a3473dfde0abe87135f669"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-ni-gk.view.json",
+        "viewId": "de-ni-gym-physics-gk",
+        "scope": {
+          "courseProfile": "GK",
+          "jurisdiction": "DE-NI",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:2207ed849a1928440ec741a15b6b8e582eef8caa06705a2bdb7ddd866230eb73",
+        "projectionFingerprint": "sha256:1ce09b1260b41b4bbf5ac2f6614c71b8862dd8ed9d7fd5930ca3ec5dc7b9da56"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-ni-lk.view.json",
+        "viewId": "de-ni-gym-physics-lk",
+        "scope": {
+          "courseProfile": "LK",
+          "jurisdiction": "DE-NI",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:ebed6818538d79f5abb83e7d7580aaf7610780c464eb28a1f29cc57cd644a0f0",
+        "projectionFingerprint": "sha256:8ea71fc985a0037accda8d3369bd39913916e5b34e7436d4f8d92ccc57220344"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-ni-sekii-gk.view.json",
+        "viewId": "de-ni-gym-sekii-physics-gk",
+        "scope": {
+          "courseProfile": "GK",
+          "jurisdiction": "DE-NI",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII"
+        },
+        "digest": "sha256:0eaf8bb67b402cd1b5ac8f188cfc525d121b74a1568d0a054dc51ecd010b7d53",
+        "projectionFingerprint": "sha256:baa7558212ec477c3e0aeecfde56e3ba7b7914958a7456f1a6a9c3ddc124af92"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-ni-sekii-lk.view.json",
+        "viewId": "de-ni-gym-sekii-physics-lk",
+        "scope": {
+          "courseProfile": "LK",
+          "jurisdiction": "DE-NI",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII"
+        },
+        "digest": "sha256:784f3196cd475154de3de8dc670cecf1568a88c26aa9914528aec0aa40672dfc",
+        "projectionFingerprint": "sha256:8d226abb338183cc11f5fc2e671a5152ea220df0fa3541011f316c050c2036ef"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-nw-gk.view.json",
+        "viewId": "de-nw-gym-physics-gk",
+        "scope": {
+          "courseProfile": "GK",
+          "jurisdiction": "DE-NW",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:c603f840603fa61282808611d122627337a56e57a85e1ee71904ab5d123e2365",
+        "projectionFingerprint": "sha256:1feaed55cad84c549124273a643fcee47547ed67ef186179b0f6ef930ebfe461"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-nw-lk.view.json",
+        "viewId": "de-nw-gym-physics-lk",
+        "scope": {
+          "courseProfile": "LK",
+          "jurisdiction": "DE-NW",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:3e38288ed7b772b1946e1f74e4b5d93720b5459f5b85724f9c9df7569ab7a792",
+        "projectionFingerprint": "sha256:878b1eaebd6ed18d3e3e01a8e62f77a84bc39f636b039570d430fb62d2f4906d"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-nw-sekii-gk.view.json",
+        "viewId": "de-nw-gym-sekii-physics-gk",
+        "scope": {
+          "courseProfile": "GK",
+          "jurisdiction": "DE-NW",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII"
+        },
+        "digest": "sha256:2505f4ef91131dbb6b503d8d62251f63e2ce0a1e7e0fd7b94840b50266a45c4b",
+        "projectionFingerprint": "sha256:5818d5d5f48390b3a853dadfa48c1cd88a604250805610d835f91fd5b3d5627b"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-nw-sekii-lk.view.json",
+        "viewId": "de-nw-gym-sekii-physics-lk",
+        "scope": {
+          "courseProfile": "LK",
+          "jurisdiction": "DE-NW",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII"
+        },
+        "digest": "sha256:5a3a247e9722b2d5ac2e08af34e2a4ea5558268ac5ea2b2012ee9ec2bc2459fa",
+        "projectionFingerprint": "sha256:f06b91c12aee64fc8081646e8d0d1ae35517d070375fbdeddbc0e8ccdd386d22"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-rp-gk.view.json",
+        "viewId": "de-rp-gym-physics-gk",
+        "scope": {
+          "courseProfile": "GK",
+          "jurisdiction": "DE-RP",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:a342c345ae01e5b3707a6b5219b9222acc5e9afa6fc0610654441a72461d3b1a",
+        "projectionFingerprint": "sha256:975b38c1330d3437139139923db5004ff180cf9ae5c5d5b6d694ad0fc0d2b9f7"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-rp-lk.view.json",
+        "viewId": "de-rp-gym-physics-lk",
+        "scope": {
+          "courseProfile": "LK",
+          "jurisdiction": "DE-RP",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:0848cf6958a70bd8a16006c24e30a38c311d0484396c6a47cb232c26835c6274",
+        "projectionFingerprint": "sha256:b56540ea886e80f16441addd546c8ba966f7879d6b397a9e0c74eb9eb01f95ae"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-rp-sekii-gk.view.json",
+        "viewId": "de-rp-gym-sekii-physics-gk",
+        "scope": {
+          "courseProfile": "GK",
+          "jurisdiction": "DE-RP",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII"
+        },
+        "digest": "sha256:ca57dc0fd4cfd938757a143b5bdc05cbff4397ad9e69d861b15ba17d480520ca",
+        "projectionFingerprint": "sha256:b0d2691e7ea149a13236314970ac5a4a529bede9fb2fc524c42b83c8b73c456d"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-rp-sekii-lk.view.json",
+        "viewId": "de-rp-gym-sekii-physics-lk",
+        "scope": {
+          "courseProfile": "LK",
+          "jurisdiction": "DE-RP",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII"
+        },
+        "digest": "sha256:17178c1c47374267afc2af3d97b549a57ec45188767d2d8b6b4fc810afb24b08",
+        "projectionFingerprint": "sha256:cc2273863a67626d40df0423ac701aaeb09b37f550c8b05ce810b738221a7ae3"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-sh-gk.view.json",
+        "viewId": "de-sh-gym-physics-gk",
+        "scope": {
+          "courseProfile": "GK",
+          "jurisdiction": "DE-SH",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:e61615be84f22dd5d9a02c4b344292333934da409a5f82af4d129f5a0b4f6f18",
+        "projectionFingerprint": "sha256:622191e5b72297c472be4aab4d371f6029f3fdd01f9c854bc732da0ef83bd230"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-sh-lk.view.json",
+        "viewId": "de-sh-gym-physics-lk",
+        "scope": {
+          "courseProfile": "LK",
+          "jurisdiction": "DE-SH",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:f01cc5b3c2262d9a7f0177a7c65d6f1cb4ea3d3eca4022a39613096d792e63d9",
+        "projectionFingerprint": "sha256:8918e12af793ca5a689d4d242c1e1440e4529d1945997f7a7873d9b545471fa7"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-sh-sekii-gk.view.json",
+        "viewId": "de-sh-gym-sekii-physics-gk",
+        "scope": {
+          "courseProfile": "GK",
+          "jurisdiction": "DE-SH",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII"
+        },
+        "digest": "sha256:e263d1fc6ab83ad9751bd1caad0331ccbfca5ba21f84d7cdaa68533e298c426e",
+        "projectionFingerprint": "sha256:807de263647f75ca62213f7db82446a7bc9be0002b3f8b667ed8ace8adb89cb4"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-sh-sekii-lk.view.json",
+        "viewId": "de-sh-gym-sekii-physics-lk",
+        "scope": {
+          "courseProfile": "LK",
+          "jurisdiction": "DE-SH",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII"
+        },
+        "digest": "sha256:335c9d36ede87837682652281ba2141384d4b9f228e66121acf54e758c052c15",
+        "projectionFingerprint": "sha256:1348d0cc7b9feda35cc8f279a1c72fce033adc6efd17d1fb9daf4faa70efd1eb"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-sl-gk.view.json",
+        "viewId": "de-sl-gym-physics-gk",
+        "scope": {
+          "courseProfile": "GK",
+          "jurisdiction": "DE-SL",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:6343c92dbccc6483aa6b8eb26784fc1bda8a4178909311ca84d4ca309a807ceb",
+        "projectionFingerprint": "sha256:e58e676191da934baa2372cee5ee77cd07642cecc694d70b206b2e916387093d"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-sl-lk.view.json",
+        "viewId": "de-sl-gym-physics-lk",
+        "scope": {
+          "courseProfile": "LK",
+          "jurisdiction": "DE-SL",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:b63d68ed1c178d434d831cda51313e4884932842f812c923ec9533017b8c73a2",
+        "projectionFingerprint": "sha256:f172f5de53cd6d5eddfe9f2f7e4ed1d7af076cbbd9990604e0321442ebed584d"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-sl-sekii-gk.view.json",
+        "viewId": "de-sl-gym-sekii-physics-gk",
+        "scope": {
+          "courseProfile": "GK",
+          "jurisdiction": "DE-SL",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII"
+        },
+        "digest": "sha256:b79b9397b417f6302ea1d096ab70b6774e7e546f1ab4813125a3acc61d0973de",
+        "projectionFingerprint": "sha256:d375aca35750b6a63103c8854bc719305787adfe0933483b4847fc4d815d80ae"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-sl-sekii-lk.view.json",
+        "viewId": "de-sl-gym-sekii-physics-lk",
+        "scope": {
+          "courseProfile": "LK",
+          "jurisdiction": "DE-SL",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII"
+        },
+        "digest": "sha256:af17d7dff7aaf2ff063017c7192a086929a47d16ea79d76d306537ddfc2813e0",
+        "projectionFingerprint": "sha256:28da80813c2a883f448782940fd03a96dd4448ae925011a41d4aa3d67642fa76"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-sn-gk.view.json",
+        "viewId": "de-sn-gym-physics-gk",
+        "scope": {
+          "courseProfile": "GK",
+          "jurisdiction": "DE-SN",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:c1cb8c7c309e67e8d24a8e5e49ded16824693591e7cc2ec3ffecf1ba19f008e1",
+        "projectionFingerprint": "sha256:cc4c55b9cf40027acbc93ebe0886710d051c126d0b7e19c2f52568274ad8f087"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-sn-lk.view.json",
+        "viewId": "de-sn-gym-physics-lk",
+        "scope": {
+          "courseProfile": "LK",
+          "jurisdiction": "DE-SN",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:b3c8f9915449479a63d3f06124b724c285be2b5599636f908cbe4fcd9d8fca03",
+        "projectionFingerprint": "sha256:4bc5571d822047546f919e71d0f9f6c800623717363770a1fce5fce209a3b2fd"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-sn-sekii-gk.view.json",
+        "viewId": "de-sn-gym-sekii-physics-gk",
+        "scope": {
+          "courseProfile": "GK",
+          "jurisdiction": "DE-SN",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII"
+        },
+        "digest": "sha256:6d1feeb227c1ef603b76eabac2361c3d8d25697595b857882c18313af46297e8",
+        "projectionFingerprint": "sha256:68d321927c1b6fc798156a68326a1c078c5e6ae4d7713395897cdf3bbacc9cbd"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-sn-sekii-lk.view.json",
+        "viewId": "de-sn-gym-sekii-physics-lk",
+        "scope": {
+          "courseProfile": "LK",
+          "jurisdiction": "DE-SN",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII"
+        },
+        "digest": "sha256:b85cf3ccf1ba72c6cf1fbc398ebcc9cab9fba4b5f75225c188ee5d2a365352d7",
+        "projectionFingerprint": "sha256:c3481fa343920fafca2463908e972f652586735166f42b2b3536a64c275e2208"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-st-gk.view.json",
+        "viewId": "de-st-gym-physics-gk",
+        "scope": {
+          "courseProfile": "GK",
+          "jurisdiction": "DE-ST",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:97ee113bad229f5978fc3b8b84f72f0c087e22a810f147e7a47a42490e422aad",
+        "projectionFingerprint": "sha256:ebe765cb0a565cf94316570b9f636f4ec07552cd766ca4b804691b9243b75a53"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-st-lk.view.json",
+        "viewId": "de-st-gym-physics-lk",
+        "scope": {
+          "courseProfile": "LK",
+          "jurisdiction": "DE-ST",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:cb983d9f9a8b4c12a0b3a659c0ee5cacede926c54207c242a00a204d38bc5ac8",
+        "projectionFingerprint": "sha256:b0dd52f1750c6f92e05152dfc3727bafb445e6dfd395fcd5b2872935ab6e508c"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-st-sekii-gk.view.json",
+        "viewId": "de-st-gym-sekii-physics-gk",
+        "scope": {
+          "courseProfile": "GK",
+          "jurisdiction": "DE-ST",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII"
+        },
+        "digest": "sha256:22b97a444a928b8a3dde256754777b24e165d841aad7981b607dc484f1831abf",
+        "projectionFingerprint": "sha256:8a215f30589271bbdb226fc95098998ce54710b4f64fd2c26bf699afbb139255"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-st-sekii-lk.view.json",
+        "viewId": "de-st-gym-sekii-physics-lk",
+        "scope": {
+          "courseProfile": "LK",
+          "jurisdiction": "DE-ST",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII"
+        },
+        "digest": "sha256:d93892556bc3dd60fd00c754906b263805cdaca3cb9d978172cdd30b16f85086",
+        "projectionFingerprint": "sha256:21281fb1ae6cd737c9407b89e6f571c80a672aecbb24787cc2d7f3780b0203e4"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-th-gk.view.json",
+        "viewId": "de-th-gym-physics-gk",
+        "scope": {
+          "courseProfile": "GK",
+          "jurisdiction": "DE-TH",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:b037780309d79fa80b2b7ba81ef0926f96adfc6a573df0a6a525141d892f9ef4",
+        "projectionFingerprint": "sha256:b6241e509abeb97648e50143f0b5d602d473d02ef21d87f8f04072683d462bbe"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-th-lk.view.json",
+        "viewId": "de-th-gym-physics-lk",
+        "scope": {
+          "courseProfile": "LK",
+          "jurisdiction": "DE-TH",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:cd59a4587da3f6baee3cff2474a2eb2d2cbc27162c472da279a0f0abb7ad3c3f",
+        "projectionFingerprint": "sha256:2a328223441bf97377eaf18a78b4c169c22281923075070f135886dd8e377956"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-th-sekii-gk.view.json",
+        "viewId": "de-th-gym-sekii-physics-gk",
+        "scope": {
+          "courseProfile": "GK",
+          "jurisdiction": "DE-TH",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII"
+        },
+        "digest": "sha256:63f436e598551b683c02a901c6a3eb7831bfc9ac89c1567c6a9b358bf053f323",
+        "projectionFingerprint": "sha256:93c3ea434ca7339338f6820000438a42fbc5ecc1e0729ad4737c5ef17b838055"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-th-sekii-lk.view.json",
+        "viewId": "de-th-gym-sekii-physics-lk",
+        "scope": {
+          "courseProfile": "LK",
+          "jurisdiction": "DE-TH",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII"
+        },
+        "digest": "sha256:b3b0f28f8aac621718a0a8a83b613f4660cf5b7ab36ba075f337f019cccb85ef",
+        "projectionFingerprint": "sha256:eddb21f8773d86c2c95d427672fb803676621768e594c216557b60e63207ff8f"
+      }
+    ],
+    "navigationOwnership": "canonical-composition-view-v1",
+    "navigationViewPath": "app/scripts/config/goal-books/navigation/de-gym-physics-national-atlas.view.json",
+    "navigationViewDigest": "sha256:f8cc01317d93b38f620eacad20a12224feb8dec4c29e06cfaa437d0bb8eadfe2",
+    "navigationProjectionFingerprint": "sha256:d9f404ab130e2c81bbbc3bb54e39e8389786ee79824ee86c4e9ad198d2b686bf",
+    "durationModelPolicyPath": "curricula/DE/Gymnasium/provenance/gymnasium-physics-duration-model-policy.json",
+    "durationModelPolicyDigest": "sha256:4ce63ae199036bc76e3d718f36af052ce9904cd7ff7720cd93bd952ca2fa77d0",
+    "externalLandscapes": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "digest": "sha256:35fcf8115fe898b187018da3e1109afc570c9f42f5958f34e89c522ecbad3940"
+      }
+    ],
+    "evidenceReviewSources": [
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/semiconductor-stage-path-current-v1/post-corrected-independent-review-v3/retained-current-p-v2.review.jsonl",
+        "digest": "sha256:8b6be61723585b7aae454be4c217119500c337fa98b53c141a92e2aa80080a36"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/semiconductor-stage-path-current-v1/post-corrected-independent-review-v3/positive-evidence.review.jsonl",
+        "digest": "sha256:86d91e715d49c73e5123ce55d12a9a478e176db7fb91da598f36d1b9c46c998a"
+      }
+    ],
+    "goalFingerprintRuleVersion": "goal-evidence-v1"
+  },
+  "sourcePins": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+      "sha256": "sha256:232de7625efb87beca686aba8985b5f654602d810e9df2e2e97b19b734a66ec4"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "sha256": "sha256:6a4cb98a7b316400c1bdba4d08e5979497af33d92806a5a3a53efbabea3154a1"
+    }
+  ],
+  "rows": [
+    {
+      "goalId": "7badac4d-2874-5b3a-87e8-bf8f4440b2a6",
+      "batchId": "physik-semiconductor-stage-path-current10-20261115-v3",
+      "reviewedPageFingerprint": "sha256:cdec272b6fd639fcd2d18f4c398a280874d16cb3c3150ac0d0730e69acc85402",
+      "currentPageFingerprint": "sha256:cdec272b6fd639fcd2d18f4c398a280874d16cb3c3150ac0d0730e69acc85402",
+      "exactCurrentPageEqual": true,
+      "changedFields": [],
+      "reviewedModelDigest": "sha256:e62f0b96da8e4bf0a9a7702416e79c771c0c573909eb90221969b28365be2cdb",
+      "currentSubsetModelDigest": "sha256:92ac6010d5f9f9c96d595538fd0a61d647beffebd93af9a82bd9be241a4b16d1"
+    },
+    {
+      "goalId": "9f265f49-1342-5ba7-9c5d-54e97fdb2f19",
+      "batchId": "physik-semiconductor-stage-path-current10-20261115-v3",
+      "reviewedPageFingerprint": "sha256:24a9f14bac05a4497a0872e7bf77e2cdb4937579f596259f8db2f338ec2cbb70",
+      "currentPageFingerprint": "sha256:24a9f14bac05a4497a0872e7bf77e2cdb4937579f596259f8db2f338ec2cbb70",
+      "exactCurrentPageEqual": true,
+      "changedFields": [],
+      "reviewedModelDigest": "sha256:e62f0b96da8e4bf0a9a7702416e79c771c0c573909eb90221969b28365be2cdb",
+      "currentSubsetModelDigest": "sha256:92ac6010d5f9f9c96d595538fd0a61d647beffebd93af9a82bd9be241a4b16d1"
+    },
+    {
+      "goalId": "2084b7d4-300d-5fa0-8b8d-c480c40f853e",
+      "batchId": "physik-semiconductor-stage-path-current10-20261115-v3",
+      "reviewedPageFingerprint": "sha256:078bcd7469eeb83042a275d2de6781534cd089d2701470bb45cb51180220158b",
+      "currentPageFingerprint": "sha256:078bcd7469eeb83042a275d2de6781534cd089d2701470bb45cb51180220158b",
+      "exactCurrentPageEqual": true,
+      "changedFields": [],
+      "reviewedModelDigest": "sha256:e62f0b96da8e4bf0a9a7702416e79c771c0c573909eb90221969b28365be2cdb",
+      "currentSubsetModelDigest": "sha256:92ac6010d5f9f9c96d595538fd0a61d647beffebd93af9a82bd9be241a4b16d1"
+    },
+    {
+      "goalId": "658cf33d-a0c2-5d47-801a-3dbcd5cac074",
+      "batchId": "physik-semiconductor-stage-path-current10-20261115-v3",
+      "reviewedPageFingerprint": "sha256:0402e6b0098d5ce64ee59f5137761e949f9f997e2cf7467d7841656e66b8f03e",
+      "currentPageFingerprint": "sha256:0402e6b0098d5ce64ee59f5137761e949f9f997e2cf7467d7841656e66b8f03e",
+      "exactCurrentPageEqual": true,
+      "changedFields": [],
+      "reviewedModelDigest": "sha256:e62f0b96da8e4bf0a9a7702416e79c771c0c573909eb90221969b28365be2cdb",
+      "currentSubsetModelDigest": "sha256:92ac6010d5f9f9c96d595538fd0a61d647beffebd93af9a82bd9be241a4b16d1"
+    },
+    {
+      "goalId": "853dbe54-85b0-59ab-8f3a-000c2b7746ec",
+      "batchId": "physik-semiconductor-stage-path-current10-20261115-v3",
+      "reviewedPageFingerprint": "sha256:55b284bb82d48d99160b807cb4e765f6815c50ef71e8e92844c00f6814a08cc2",
+      "currentPageFingerprint": "sha256:55b284bb82d48d99160b807cb4e765f6815c50ef71e8e92844c00f6814a08cc2",
+      "exactCurrentPageEqual": true,
+      "changedFields": [],
+      "reviewedModelDigest": "sha256:e62f0b96da8e4bf0a9a7702416e79c771c0c573909eb90221969b28365be2cdb",
+      "currentSubsetModelDigest": "sha256:92ac6010d5f9f9c96d595538fd0a61d647beffebd93af9a82bd9be241a4b16d1"
+    },
+    {
+      "goalId": "7d4d6a39-0c78-5fb0-b7bf-182ed00972f7",
+      "batchId": "physik-semiconductor-stage-path-current10-20261115-v3",
+      "reviewedPageFingerprint": "sha256:47ccccb19f0cc0a8cfa8cddf38f1e231b943e912f8dcca0be0b213a000fdf2a2",
+      "currentPageFingerprint": "sha256:47ccccb19f0cc0a8cfa8cddf38f1e231b943e912f8dcca0be0b213a000fdf2a2",
+      "exactCurrentPageEqual": true,
+      "changedFields": [],
+      "reviewedModelDigest": "sha256:e62f0b96da8e4bf0a9a7702416e79c771c0c573909eb90221969b28365be2cdb",
+      "currentSubsetModelDigest": "sha256:92ac6010d5f9f9c96d595538fd0a61d647beffebd93af9a82bd9be241a4b16d1"
+    },
+    {
+      "goalId": "af50bb9a-fd7b-50f5-9698-48c4efe99032",
+      "batchId": "physik-semiconductor-stage-path-current10-20261115-v3",
+      "reviewedPageFingerprint": "sha256:09557adbc593a652bd6df312a6a08dcdf1927a30f30b4f788cbc6e33c9b8fc05",
+      "currentPageFingerprint": "sha256:09557adbc593a652bd6df312a6a08dcdf1927a30f30b4f788cbc6e33c9b8fc05",
+      "exactCurrentPageEqual": true,
+      "changedFields": [],
+      "reviewedModelDigest": "sha256:e62f0b96da8e4bf0a9a7702416e79c771c0c573909eb90221969b28365be2cdb",
+      "currentSubsetModelDigest": "sha256:92ac6010d5f9f9c96d595538fd0a61d647beffebd93af9a82bd9be241a4b16d1"
+    },
+    {
+      "goalId": "c2af45aa-e3fc-5119-9159-c5a260b4135a",
+      "batchId": "physik-semiconductor-stage-path-current10-20261115-v3",
+      "reviewedPageFingerprint": "sha256:22c0bcbcd0927ac88ad57adc280af918dbfe5960b4f9ed35e74a549767083cf1",
+      "currentPageFingerprint": "sha256:22c0bcbcd0927ac88ad57adc280af918dbfe5960b4f9ed35e74a549767083cf1",
+      "exactCurrentPageEqual": true,
+      "changedFields": [],
+      "reviewedModelDigest": "sha256:e62f0b96da8e4bf0a9a7702416e79c771c0c573909eb90221969b28365be2cdb",
+      "currentSubsetModelDigest": "sha256:92ac6010d5f9f9c96d595538fd0a61d647beffebd93af9a82bd9be241a4b16d1"
+    },
+    {
+      "goalId": "3857891b-d328-585b-9936-85c7aff122ee",
+      "batchId": "physik-semiconductor-retained-pages-current3-20261115-v4",
+      "reviewedPageFingerprint": "sha256:71ac2e77ea75c676426a9e7a64f0705f5f11314ffb651cf931c6c073ce985f61",
+      "currentPageFingerprint": "sha256:71ac2e77ea75c676426a9e7a64f0705f5f11314ffb651cf931c6c073ce985f61",
+      "exactCurrentPageEqual": true,
+      "changedFields": [],
+      "reviewedModelDigest": "sha256:d2c70b74b4e911642816bde87cfcda29e5089114478e2fbaad837062f0b7f661",
+      "currentSubsetModelDigest": "sha256:35513801046a6a71ddd9ee8020f3c1a0622d50d79538ff2e92c46583381cb265"
+    },
+    {
+      "goalId": "4a42cddd-7827-5204-87e5-8d9eac7792f1",
+      "batchId": "physik-semiconductor-retained-pages-current3-20261115-v4",
+      "reviewedPageFingerprint": "sha256:987c8e45c5c943560aabc859ddda58fd16334ee7df23ea9572501060768b4e17",
+      "currentPageFingerprint": "sha256:987c8e45c5c943560aabc859ddda58fd16334ee7df23ea9572501060768b4e17",
+      "exactCurrentPageEqual": true,
+      "changedFields": [],
+      "reviewedModelDigest": "sha256:d2c70b74b4e911642816bde87cfcda29e5089114478e2fbaad837062f0b7f661",
+      "currentSubsetModelDigest": "sha256:35513801046a6a71ddd9ee8020f3c1a0622d50d79538ff2e92c46583381cb265"
+    },
+    {
+      "goalId": "3b586f2a-60e2-5019-aa08-6a47616a1f1f",
+      "batchId": "physik-semiconductor-retained-pages-current3-20261115-v4",
+      "reviewedPageFingerprint": "sha256:dee86f4fc31cab2f1c3de1b3689fc9b48af8867821507b932e6ac3f26b15f45f",
+      "currentPageFingerprint": "sha256:dee86f4fc31cab2f1c3de1b3689fc9b48af8867821507b932e6ac3f26b15f45f",
+      "exactCurrentPageEqual": true,
+      "changedFields": [],
+      "reviewedModelDigest": "sha256:d2c70b74b4e911642816bde87cfcda29e5089114478e2fbaad837062f0b7f661",
+      "currentSubsetModelDigest": "sha256:35513801046a6a71ddd9ee8020f3c1a0622d50d79538ff2e92c46583381cb265"
+    },
+    {
+      "goalId": "77ab31a9-8961-511c-8637-06e98023d869",
+      "batchId": "physik-semiconductor-applicability-current3-20261115-v5",
+      "reviewedPageFingerprint": "sha256:327634a74214cfe976f11151401898a0dc1f61341b0b52046b06b206a119175b",
+      "currentPageFingerprint": "sha256:327634a74214cfe976f11151401898a0dc1f61341b0b52046b06b206a119175b",
+      "exactCurrentPageEqual": true,
+      "changedFields": [],
+      "reviewedModelDigest": "sha256:fa9e124a6e540e2b45b373103cf655a0d56a9cf269af0e0a99587fe32fc07a0e",
+      "currentSubsetModelDigest": "sha256:fa9e124a6e540e2b45b373103cf655a0d56a9cf269af0e0a99587fe32fc07a0e"
+    },
+    {
+      "goalId": "dc55adac-91a5-5cc3-ab47-be008480616f",
+      "batchId": "physik-semiconductor-applicability-current3-20261115-v5",
+      "reviewedPageFingerprint": "sha256:322b98b4b5b253f377a7e3e67e7e47668c1ae68897037baa60eeb4bc6f58ed7e",
+      "currentPageFingerprint": "sha256:322b98b4b5b253f377a7e3e67e7e47668c1ae68897037baa60eeb4bc6f58ed7e",
+      "exactCurrentPageEqual": true,
+      "changedFields": [],
+      "reviewedModelDigest": "sha256:fa9e124a6e540e2b45b373103cf655a0d56a9cf269af0e0a99587fe32fc07a0e",
+      "currentSubsetModelDigest": "sha256:fa9e124a6e540e2b45b373103cf655a0d56a9cf269af0e0a99587fe32fc07a0e"
+    },
+    {
+      "goalId": "df010b2b-b182-5f7e-bbe4-49b72e48c27a",
+      "batchId": "physik-semiconductor-applicability-current3-20261115-v5",
+      "reviewedPageFingerprint": "sha256:87674e2bad6ef04e019a00d02a1f73cfe6ea07758d4db657909430bdc9c0bb04",
+      "currentPageFingerprint": "sha256:87674e2bad6ef04e019a00d02a1f73cfe6ea07758d4db657909430bdc9c0bb04",
+      "exactCurrentPageEqual": true,
+      "changedFields": [],
+      "reviewedModelDigest": "sha256:fa9e124a6e540e2b45b373103cf655a0d56a9cf269af0e0a99587fe32fc07a0e",
+      "currentSubsetModelDigest": "sha256:fa9e124a6e540e2b45b373103cf655a0d56a9cf269af0e0a99587fe32fc07a0e"
+    }
+  ],
+  "note": "The three applicability-bound pages use their actual new current A/B campaign. Eleven remaining exact page objects retain the actual prior current independent confirmations. Earlier bundles, run records and failed central execution are immutable. No global source digest is disguised as a new blind review."
+}

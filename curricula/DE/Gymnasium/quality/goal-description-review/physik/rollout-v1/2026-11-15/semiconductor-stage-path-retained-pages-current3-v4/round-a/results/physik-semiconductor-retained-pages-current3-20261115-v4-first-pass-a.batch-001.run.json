@@ -1,0 +1,48 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-retained-pages-current3-v4-a-sol-ultra-20261115-062305",
+  "campaignId": "physik-semiconductor-retained-pages-current3-20261115-v4-a",
+  "roundId": "physik-semiconductor-retained-pages-current3-20261115-v4-first-pass-a",
+  "batchId": "physik-semiconductor-retained-pages-current3-20261115-v4-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:1df3bb137e114dd2b4f7227ce962c4d6025b8bae0634e12834204a4620fd68a3",
+  "bundleFingerprint": "sha256:2ce99b539ae11482691197b67b0e3b95f0937fd435dbcd5f767da9983d0164d1",
+  "bookDigest": "sha256:d2c70b74b4e911642816bde87cfcda29e5089114478e2fbaad837062f0b7f661",
+  "provider": "OpenAI",
+  "model": "gpt-6.1-sol",
+  "role": "subject_reviewer",
+  "promptFamilyId": "skillpilot-informed-current-description-confirmation",
+  "promptFingerprint": "sha256:ce69922483c803d783fc99c7d83413ba30a592a228409391314ad84e27e92521",
+  "criteriaFingerprint": "sha256:94aeb7d25d49737ff021b039b0117acaf4d42f80bb3cd3fc628bc52640860906",
+  "generationParametersFingerprint": "sha256:8ab15be76f3ec7e21c9be8fb04c74a8aa5d1e09d15af27d0b56d9bbe7f80f84b",
+  "independenceGroupId": "physik-semiconductor-retained-pages-current3-20261115-v4-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "3857891b-d328-585b-9936-85c7aff122ee",
+    "4a42cddd-7827-5204-87e5-8d9eac7792f1",
+    "3b586f2a-60e2-5019-aa08-6a47616a1f1f"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:1df3bb137e114dd2b4f7227ce962c4d6025b8bae0634e12834204a4620fd68a3"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:ce69922483c803d783fc99c7d83413ba30a592a228409391314ad84e27e92521"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:94aeb7d25d49737ff021b039b0117acaf4d42f80bb3cd3fc628bc52640860906"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    }
+  ],
+  "startedAt": "2026-11-15T06:23:05Z",
+  "completedAt": "2026-11-15T06:26:08Z",
+  "status": "completed",
+  "outputDigest": "sha256:899ff0e3c97a2f31719374aee3eb2c1516ee5a8e2c15713341af561403a01506",
+  "toolchainVersion": "codex-native-tsx4.21.0-node20.20.2"
+}

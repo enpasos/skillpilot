@@ -1,0 +1,182 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-11-15T05:46:19.509023+00:00",
+  "reviewer": "Codex root agent; actual independent informed current-content machine review; task/P authored by semiconductor_qa, canonical integration and SVG by semiconductor_delivery",
+  "result": "machine-content-review-pass",
+  "goalId": "2cfd5c6a-a16a-5f90-aab7-b27b29271f72",
+  "coveredOrdinaryGoalId": "77ab31a9-8961-511c-8637-06e98023d869",
+  "humanApproval": false,
+  "learnerExecutionClaim": false,
+  "releaseReadiness": "Author may apply release/visual acceptance metadata only. This review binds the exact scientific content and stimulus below; native gates, integration and remote CI remain separate.",
+  "canonicalInput": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "sha256": "sha256:b71d43f3c6aca9861611c5d4c6a0070d589d169f758962ca5adaab696a302151"
+  },
+  "ordinaryGoalReviewed": {
+    "id": "77ab31a9-8961-511c-8637-06e98023d869",
+    "title": "Transistorschaltung selbst aufbauen und untersuchen",
+    "titleEn": "Personally Assemble and Investigate a Transistor Circuit",
+    "description": "Die lernende Person kann eine vollständig vorgegebene einfache Transistorschaltung unter Aufsicht mit strombegrenzter Kleinspannung selbst aufbauen, ihre Schaltwirkung durch gezieltes Verändern der Ansteuerung und einen Kontrollversuch anhand eigener Beobachtungen untersuchen und funktional begründen sowie die Ergebnisse auf eine geänderte Eingangszuordnung übertragen.",
+    "descriptionEn": "The learner can personally assemble a fully specified simple transistor circuit under supervision using current-limited low voltage, investigate and functionally explain its switching behaviour through deliberate changes of drive and a control trial using their own observations, and transfer the findings to a changed input mapping.",
+    "requires": [
+      "69f8f59c-b0c3-5b0b-82db-834a0e655736"
+    ],
+    "applicability": {
+      "jurisdiction": [
+        "DE-BY"
+      ]
+    }
+  },
+  "securedPreparationActuallyRead": [
+    {
+      "goalId": "69f8f59c-b0c3-5b0b-82db-834a0e655736",
+      "title": "Zwischen Stromkreis und Schaltplan übersetzen",
+      "description": "Die lernende Person kann einen einfachen realen Stromkreis mit fachüblichen Schaltsymbolen als Schaltplan darstellen, einen vorgegebenen Schaltplan als Aufbau umsetzen und erklären, dass der Plan elektrische Verbindungen statt räumlicher Anordnung codiert.",
+      "requires": [
+        "7ca44ba0-b77e-52bf-8562-f67b44767172"
+      ]
+    },
+    {
+      "goalId": "7ca44ba0-b77e-52bf-8562-f67b44767172",
+      "title": "Offene und geschlossene Stromkreise aufbauen und deuten",
+      "description": "Die lernende Person kann mit einer sicheren Kleinspannungsquelle einfache offene und geschlossene Stromkreise aufbauen und anhand des durchgehenden leitfähigen Weges begründen, ob ein angeschlossener Verbraucher wirken kann.",
+      "requires": [
+        "5c44b9ba-9b05-4774-95d5-073230d3fc4f"
+      ]
+    },
+    {
+      "goalId": "5c44b9ba-9b05-4774-95d5-073230d3fc4f",
+      "title": "Warum Physik? – Weltverständnis & Zukunft",
+      "description": "Der 'Big Picture'-Einstieg: Warum das Smartphone funktioniert, wie Ärzte ohne Skalpell in den Körper schauen (MRT), warum Sterne leuchten und wie wir die Energiekrise lösen. Überblick über die Relevanz der Themenfelder von der Mechanik bis zur Quantenphysik für dein Leben. Hier geht es um Orientierung und Interesse; fachliches Detailwissen wird weder vorausgesetzt noch geprüft.",
+      "requires": []
+    }
+  ],
+  "reason": "Actual full DE/EN task, solution, five separate scientific criteria, ordinary promise and P proposal read. The new identity requires genuinely observed personal safe construction and controlled own observations; a supplied table or theoretical interpretation cannot substitute for execution. The complete supplied circuit and already secured circuit/diagram and open/closed-circuit competencies prepare acquisition without microscopic transistor theory, quantitative meter technique or component-value calculation. The permanent100kΩ B-to-common0V pull-down gives a defined input when only T is opened; restoring T and reversing the supplied input mapping require actual further controlled checks. The schematic agrees with the written plan:330Ω LED branch,10kΩ base resistor, common return, correct npn emitter direction and labelled A/K/B/C/E. No LED results are pre-filled. Equivalent correct explanations are accepted without cosmetic perfection. An unexpected observation is documented and investigated rather than replaced by invented desired data.",
+  "reviewedContent": {
+    "coveredGoalIds": [
+      "77ab31a9-8961-511c-8637-06e98023d869"
+    ],
+    "coveredStrands": [
+      "LI_TECHNIK"
+    ],
+    "demandLevels": [
+      "AB1",
+      "AB2",
+      "AB3"
+    ],
+    "taskContent": "![Vorgegebener Aufbau: Transistorschalter](/assets/goal-visualizations/physik/77ab31a9-8961-511c-8637-06e98023d869/77ab31a9-8961-511c-8637-06e98023d869.png)\n\n**Vollständiges Material und Anschlussplan:** Eine geprüfte, strombegrenzte 5-V-Lehrversorgung speist eine LED mit 330-Ω-Vorwiderstand: +5 V → Widerstand → LED-Anode; LED-Kathode → Kollektor C eines geeigneten npn-Lehrtransistors; Emitter E → 0 V. Basis B ist über 10 kΩ mit dem zwischen 0 V und +5 V umschaltbaren Steuerausgang verbunden. Ein 100-kΩ-Widerstand verbindet B dauerhaft mit 0 V und hält B bei unterbrochenem Steuerzweig auf niedrigem Bezug. Alle 0-V-Anschlüsse sind verbunden. Ein mitgeliefertes Datenblatt bezeichnet die tatsächlichen B/C/E-Pins eindeutig. Bauteile und Ströme sind von der Lehrkraft für diesen Aufbau geprüft; Werte müssen nicht berechnet werden. Der Transistor wird funktional als elektronisch ansteuerbares Bauteil untersucht; ein mikroskopisches Halbleitermodell und eigene Strom-/Spannungsmessungen sind nicht Gegenstand dieser Aufgabe.\n\n**Durchführung:** Verwenden Sie nur die bezeichneten berührungssicheren Lehrbauteile unter Aufsicht. Stecken Sie ausschließlich bei ausgeschalteter Versorgung um und lassen Sie den Aufbau vor jeder Inbetriebnahme kontrollieren. Diese Aufgabe verlangt einen tatsächlich selbst hergestellten Aufbau und eigene beobachtete Ergebnisse. Ein fremder Bericht, eine bereitgestellte Tabelle oder die bloße Behauptung einer Durchführung ersetzt diese Evidenz nicht.\n\n1. Stellen Sie den vollständigen Aufbau nach Plan selbst her. Stellen Sie nacheinander 0 V und 5 V am vorgegebenen Steuerausgang ein und dokumentieren Sie Ihre tatsächlich beobachteten LED-Zustände. Ordnen Sie Steuer- und Lastpfad zu und begründen Sie die funktionale Schaltwirkung anhand Ihrer Beobachtungen.\n2. Schalten Sie aus und unterbrechen Sie nur die Verbindung vom Steuerausgang zum 10-kΩ-Widerstand; die 100-kΩ-Verbindung von B nach 0 V bleibt bestehen. Sagen Sie für die unverändert auf 5 V gestellte Steuerquelle den LED-Zustand voraus. Prüfen Sie dies nach Freigabe tatsächlich und vergleichen Sie mit dem wiederhergestellten Steuerzweig. Dokumentieren und erklären Sie auch eine unerwartete Beobachtung; eine Fehlerursache darf nicht erfunden werden.\n3. Ein neuer vorgegebener Sensor liefert im Hellen 0 V und im Dunkeln 5 V; seine Wirkung ist gegenüber der zuerst verwendeten Zuordnung Hell→5 V/Dunkel→ 0 V umgekehrt. Sagen Sie die LED-Zustände für beide Zuordnungen voraus und überprüfen Sie sie selbst mit den entsprechenden 0-/5-V-Einstellungen desselben Steuerausgangs. Ein zusätzlicher Sensoraufbau wird nicht verlangt. Begründen Sie den Vergleich aus tatsächlicher Ansteuerung und eigenen Beobachtungen. Benennen Sie, was diese Ein-/Aus-Versuche zur Schaltfunktion belegen und welche quantitative Verstärkungsbehauptung sie nicht begründen.",
+    "taskContentEn": "![Supplied setup: transistor switch](/assets/goal-visualizations/physik/77ab31a9-8961-511c-8637-06e98023d869/77ab31a9-8961-511c-8637-06e98023d869.png)\n\n**Complete material and connection plan:** A checked, current-limited 5 V teaching supply drives an LED through a 330 Ω resistor: +5 V → resistor → LED anode; LED cathode → collector C of a suitable npn teaching transistor; emitter E → 0 V. Base B connects through 10 kΩ to a control output selectable between 0 V and +5 V. A 100 kΩ resistor permanently connects B to 0 V, providing a low reference when the control branch is interrupted. All 0 V terminals are common. A supplied datasheet explicitly identifies the actual B/C/E pins. The teacher has checked components and currents for this setup; no component-value calculation is required. Investigate the transistor functionally as an electronically controlled component; a microscopic semiconductor model and personal current/voltage measurements are outside this task.\n\n**Procedure:** Use only the specified touch-safe teaching components under supervision. Reconnect only with supply off and obtain inspection before switching on. This task requires an actually assembled personal setup and personally observed results. Another person's report, a supplied table or a mere claim of execution cannot replace that evidence.\n\n1. Personally assemble the complete setup from the plan. Set the supplied control output to 0 V and 5 V in turn and document the LED states you actually observe. Identify control and load paths and justify the functional switching behaviour using your observations.\n2. Switch off and interrupt only the connection from control output to the 10 kΩ resistor; leave the 100 kΩ connection from B to 0 V intact. Predict the LED state with the control source still set to 5 V. After inspection, actually test this and compare it with the restored control branch. Document and explain any unexpected observation as well; do not invent a fault cause.\n3. A fresh supplied sensor produces 0 V in light and 5 V in darkness, reversing the initial light→5 V/darkness→ 0 V mapping. Predict LED states for both mappings and personally check them with the corresponding 0/5 V settings of the same control output. No extra sensor assembly is required. Justify the comparison from actual drive and your own observations. State what these on/off trials establish about switching and which quantitative gain claim they do not establish.",
+    "solutionContent": "1. Eigener sicherer Aufbau (1 BE): Der tatsächlich beobachtete eigene Aufbau entspricht dem vollständigen Plan einschließlich eindeutig identifizierter Pins, gemeinsamer 0 V, Strombegrenzung, LED-Vorwiderstand, Basiswiderstand und Pull-down. Ausschalten beim Umstecken und Freigabe vor Inbetriebnahme sind beachtet. Ein fremdes Protokoll oder eine theoretische Deutung genügt nicht.\n2. Eigene kontrollierte Schaltbeobachtung (1 BE): Die Person variiert den bezeichneten Steuerausgang selbst zwischen 0 V und 5 V und dokumentiert beide eigenen Zustände. Beim geprüften funktionsfähigen Aufbau gilt 0 V→LED aus und 5 V→LED an. Abweichungen werden ehrlich erfasst, geprüft und gegebenenfalls nach sicherer Korrektur erneut untersucht; gewünschte Ergebnisse dürfen nicht erfunden werden.\n3. Tatsächlicher Kontrollversuch (1 BE): Nach sicherem Öffnen des Steuerzweigs bleibt B über 100 kΩ auf 0 V, die LED ist auch bei auf 5 V gestellter, aber getrennter Steuerquelle aus. Wiederherstellung der Verbindung stellt die passende Ansteuerung wieder her. Vorhersage und eigene Prüfung beider Zustände werden verbunden; die bloße Schalterstellung der nicht mehr verbundenen Quelle genügt nicht als Ursache.\n4. Frische Zuordnung selbst geprüft (1 BE): Für Hell→5 V/Dunkel→ 0 V folgt Hell an/Dunkel aus; für die umgekehrte Zuordnung Hell aus/Dunkel an. Die Person überprüft die entsprechenden Einstellungen selbst und begründet das Ergebnis aus der tatsächlichen Eingangswirkung, statt eine feste Hell-Dunkel-Regel zu wiederholen.\n5. Funktionale Evidenz und Aussagegrenze (1 BE): Die Person verknüpft den vollständigen Lastpfad mit der 5-V-Versorgung und die beobachtete Änderung mit dem angeschlossenen Steuerpfad. Der Transistor beeinflusst elektronisch die Leitung, ohne einen mechanischen Kontakt zu bewegen; der Steuereingang erzeugt keine Lastenergie. Die eigenen kontrollierten Zustände belegen die Schaltwirkung dieses Aufbaus, aber keinen universellen konstanten Strom- oder Spannungsverstärkungsfaktor. Weder mikroskopische Trägertheorie noch unvorbereitete eigene Messverfahren sind erforderlich.\n\nJedes dieser wesentlichen Kriterien wird unabhängig mit 0 oder 1 BE bewertet. Fachlich gleichwertige gültige Erklärungen und Darstellungen zählen. Ein isolierter Schreib-, Einheiten- oder Rechenfehler ohne Einfluss auf das nachgewiesene Verständnis ist kein eigener Abzug. Teilbewertungen geben fachliche Rückmeldung. Eine nicht tatsächlich beobachtete eigene Durchführung wird niemals aus einer korrekten Textantwort erschlossen.",
+    "solutionContentEn": "1. Safe personal assembly (1 point): The actually observed personal setup matches the complete plan, including identified pins, common 0 V, current limitation, LED resistor, base resistor and pull-down. Reconnection occurs with power off and inspection precedes switching on. Someone else's protocol or theoretical interpretation is insufficient.\n2. Personal controlled switching observation (1 point): The learner personally varies the specified control between 0 V and 5 V and documents both observed states. In the checked functioning setup, 0 V→LED off and 5 V→LED on. Deviations are honestly recorded, investigated and, if appropriate, retested after safe correction; desired results must not be invented.\n3. Actual control trial (1 point): With the control branch safely opened, B stays at 0 V through 100 kΩ and the LED is off even when the disconnected control source is set to 5 V. Restoring the connection restores appropriate drive. Predictions and actual tests are connected for both states; the setting of a disconnected source alone is not a sufficient cause.\n4. Personally checked fresh mapping (1 point): For light→5 V/darkness→ 0 V, light gives on and darkness off; the reversed mapping gives light off and darkness on. The learner personally checks the corresponding settings and explains outcomes from actual input action rather than repeating a fixed light/dark rule.\n5. Functional evidence and limit (1 point): The learner connects the complete load path with the 5 V source and the observed change with the connected control path. The transistor electronically affects conduction without moving a mechanical contact; the control input does not create load energy. Personally controlled states establish this setup's switching behaviour, not a universal constant current- or voltage-gain factor. Neither microscopic carrier theory nor unprepared personal measurement methods are required.\n\nEach essential criterion is scored independently with 0 or 1 point. Scientifically equivalent valid explanations and representations earn credit. An isolated notation, unit or calculation slip without consequences for the demonstrated understanding causes no separate deduction. Partial scores provide scientific feedback. A correct written answer is never used to infer personal execution that was not actually observed.",
+    "scoring": {
+      "maxPoints": 5,
+      "passingPoints": 5,
+      "steps": [
+        {
+          "id": "experiment-personal-assembly",
+          "points": 1,
+          "description": "Tatsächlich beobachteten sicheren eigenen Aufbau nach vollständigem Plan nachgewiesen."
+        },
+        {
+          "id": "experiment-own-switching",
+          "points": 1,
+          "description": "Steuerung tatsächlich selbst variiert und beide eigenen Schaltzustände nachvollziehbar dokumentiert."
+        },
+        {
+          "id": "experiment-open-control",
+          "points": 1,
+          "description": "Offenen und wiederhergestellten Steuerzweig tatsächlich kontrolliert untersucht und mit dem definierten Basisbezug erklärt."
+        },
+        {
+          "id": "experiment-fresh-mapping",
+          "points": 1,
+          "description": "Geänderte Sensor-Ausgangszuordnung vorausgesagt, selbst mit der gelieferten Steuerung überprüft und begründet."
+        },
+        {
+          "id": "experiment-evidence-boundary",
+          "points": 1,
+          "description": "Funktionale Steuer-/Lastwirkung aus eigenen Beobachtungen erklärt; Energiequelle und begrenzte Aussagekraft unterschieden."
+        }
+      ]
+    }
+  },
+  "reviewedContentSha256": "sha256:8d344b18de0155504f685d9091e064ca9676e1b77df4b31a51e7db35370712cb",
+  "contentProjectionContract": "Exact examData excluding only reviewStatus,reviewNote,sourceArtifactPath; SHA-256 of UTF-8 JSON with recursively sorted keys, unescaped Unicode and separators comma/colon. Metadata release cannot change task, solution, scoring or coverage.",
+  "bodyHashes": {
+    "taskContent": "sha256:288a1e3f21d4505728bb346ddfee4629adeaadc5b77618f84789ccd616ba5fd8",
+    "taskContentEn": "sha256:7019343bdddbb41dfbce750f386f4891e23773301f5fc2756661bdd2194698a2",
+    "solutionContent": "sha256:728cca74028d3cf16122e8bbd18367d26cbafa4690f0eff6807c2c362b32bcb2",
+    "solutionContentEn": "sha256:aea183ae4873097a999752cbc9c229de43dd6225e4fc0cabfa9a8ea96d56e7c5"
+  },
+  "counterexampleScoreChecks": [
+    {
+      "missingCriterionId": "experiment-personal-assembly",
+      "allOtherCriteriaMaxScore": 4,
+      "passingPoints": 5,
+      "passes": false
+    },
+    {
+      "missingCriterionId": "experiment-own-switching",
+      "allOtherCriteriaMaxScore": 4,
+      "passingPoints": 5,
+      "passes": false
+    },
+    {
+      "missingCriterionId": "experiment-open-control",
+      "allOtherCriteriaMaxScore": 4,
+      "passingPoints": 5,
+      "passes": false
+    },
+    {
+      "missingCriterionId": "experiment-fresh-mapping",
+      "allOtherCriteriaMaxScore": 4,
+      "passingPoints": 5,
+      "passes": false
+    },
+    {
+      "missingCriterionId": "experiment-evidence-boundary",
+      "allOtherCriteriaMaxScore": 4,
+      "passingPoints": 5,
+      "passes": false
+    }
+  ],
+  "executionBoundaryCheck": {
+    "case": "Correct theory text without observed own assembly, controlled states, physical open/restored trial or fresh own check",
+    "generousUpperBoundPoints": 1,
+    "passingPoints": 5,
+    "passes": false,
+    "note": "The evidence-boundary criterion itself also refers to own observations; granting its point here is only a conservative upper bound, not an instruction to award it without evidence."
+  },
+  "positiveCheck": {
+    "case": "Observed safe own construction; documented controlled0/5V states; actually tested open/restored T with retained pull-down; personally checked reversed mapping; correct functional explanation and limited claim",
+    "points": 5,
+    "passingPoints": 5,
+    "passes": true,
+    "actualLearnerPerformance": false
+  },
+  "actuallyViewedAsset": {
+    "path": "curricula/DE/Gymnasium/visualizations/physik/77ab31a9-8961-511c-8637-06e98023d869/77ab31a9-8961-511c-8637-06e98023d869.png",
+    "sha256": "sha256:29631652dceecf06bddf9ded1c7dbb0627d5a8af2d086cf013ae8504b9603fff",
+    "publicCopyByteIdentical": true
+  },
+  "actualViewportInspections": [
+    {
+      "width": 360,
+      "path": "curricula/DE/Gymnasium/quality/goal-model-review/physics-semiconductor-learning-path-20261115/post-corrected-independent-review-v3/root-new-transistor-review/width-360.png",
+      "sha256": "sha256:bb352f9228b9409ae04dac23065cc8d93fff912b8e35adf0036470021577b94a"
+    },
+    {
+      "width": 680,
+      "path": "curricula/DE/Gymnasium/quality/goal-model-review/physics-semiconductor-learning-path-20261115/post-corrected-independent-review-v3/root-new-transistor-review/width-680.png",
+      "sha256": "sha256:143d595f192d4640b9a3be0002e6cc3bede13065f2b18c24b1009dfc9bb75083"
+    }
+  ],
+  "readability": "Actually inspected original PNG and Chromium renders at360px/680px. Numeric values, endpoints, T break point, pull-down, common return and safety instructions remain legible with no clipping. Figure text is German; the full English task states every connection and instruction. No claim of a separately translated English figure or client-host acceptance.",
+  "sourceScopeCheck": {
+    "url": "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/10/physik",
+    "actuallyOpened": "2026-11-15; Ph10 profile and5.1, displayed source lines270-300",
+    "finding": "The NTG profile distinguishes personally performed semiconductor experiments from explanatory simple models. This concrete switching experiment is a bounded component; it is not a complete amplifier experiment or whole-profile source approval.",
+    "noOtherLandSourceClaim": true
+  },
+  "stableResultBoundary": "New ordinary and assessment IDs are distinct from7d4d6a39/88f27aab interpretation IDs. Existing global binary results are retained without migration or new experimental credit. No additional learner-result field or hidden assessment rule is introduced."
+}

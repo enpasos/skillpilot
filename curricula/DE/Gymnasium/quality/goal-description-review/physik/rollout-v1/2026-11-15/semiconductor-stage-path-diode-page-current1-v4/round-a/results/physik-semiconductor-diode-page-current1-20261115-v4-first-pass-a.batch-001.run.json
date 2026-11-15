@@ -1,0 +1,46 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-diode-page-current1-v4-a-sol-ultra-20261115-061652",
+  "campaignId": "physik-semiconductor-diode-page-current1-20261115-v4-a",
+  "roundId": "physik-semiconductor-diode-page-current1-20261115-v4-first-pass-a",
+  "batchId": "physik-semiconductor-diode-page-current1-20261115-v4-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:786d4b72057b7c4444191ed94ffdd438152e9eabfad572e25db48f448daf342e",
+  "bundleFingerprint": "sha256:e43d061f553cd81c2aed9eade685939268added70d723f95a24acd4b31c9e815",
+  "bookDigest": "sha256:572346f34429d46379eeeb42d612f50decf327d85c257acf0263f3d8e32f9516",
+  "provider": "OpenAI",
+  "model": "gpt-6.1-sol",
+  "role": "subject_reviewer",
+  "promptFamilyId": "skillpilot-informed-current-description-confirmation",
+  "promptFingerprint": "sha256:ce69922483c803d783fc99c7d83413ba30a592a228409391314ad84e27e92521",
+  "criteriaFingerprint": "sha256:0c215583a407bcaa4c4c9ff03077cd2dc7059706a199df56080e8b3c106892c1",
+  "generationParametersFingerprint": "sha256:8ab15be76f3ec7e21c9be8fb04c74a8aa5d1e09d15af27d0b56d9bbe7f80f84b",
+  "independenceGroupId": "physik-semiconductor-diode-page-current1-20261115-v4-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "dc55adac-91a5-5cc3-ab47-be008480616f"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:786d4b72057b7c4444191ed94ffdd438152e9eabfad572e25db48f448daf342e"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:ce69922483c803d783fc99c7d83413ba30a592a228409391314ad84e27e92521"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:0c215583a407bcaa4c4c9ff03077cd2dc7059706a199df56080e8b3c106892c1"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    }
+  ],
+  "startedAt": "2026-11-15T06:16:52Z",
+  "completedAt": "2026-11-15T06:18:03Z",
+  "status": "completed",
+  "outputDigest": "sha256:23c6a8624743258b1b9aa8a7ed4a1f441d99050a8c73a81428f6221b19649833",
+  "toolchainVersion": "codex-native-tsx4.21.0-node20.20.2"
+}

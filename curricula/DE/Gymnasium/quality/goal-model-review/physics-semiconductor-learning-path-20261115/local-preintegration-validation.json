@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-11-15",
+  "scope": "Bounded K1 local authoring verification; integrated QA/Main CI belongs to the parent delivery.",
+  "checks": [
+    {
+      "command": "app/node_modules/.bin/tsx app/scripts/testPhysicsSemiconductorSourceRepair.ts",
+      "exitCode": 0,
+      "result": "32 exact source clauses,4 mappings,4 retained source inputs,70 exact viewpaths; unrelated-source and scope guards pass."
+    },
+    {
+      "command": "app/node_modules/.bin/tsx tmp/physics-semiconductor-20261115/check-physics-views.mts",
+      "exitCode": 0,
+      "result": "70 current Physics and atlas views compile with actual native compiler, current semantic kinds and foreign Mathematics; zero errors.",
+      "receipt": "native-view-compile.json"
+    },
+    {
+      "command": "app/node_modules/.bin/tsx app/scripts/reportPhysicsSemiconductorLearningPath.ts --compare tmp/physics-semiconductor-20261115/before.json --goal 9f265f49-1342-5ba7-9c5d-54e97fdb2f19 --goal dc55adac-91a5-5cc3-ab47-be008480616f --goal a8d99168-62cc-5771-bb5d-9ba833d84193 --goal 8670cff6-fe9c-5f7e-8cba-d170134965a6 --goal 4a42cddd-7827-5204-87e5-8d9eac7792f1 --output curricula/DE/Gymnasium/quality/goal-model-review/physics-semiconductor-learning-path-20261115/after.json",
+      "exitCode": 0,
+      "result": "Current complete21-catalog reference/cycle input resolution and bounded69Physics-view diagnosis; no claim of full stage-order gate."
+    },
+    {
+      "command": "app/node_modules/.bin/tsx app/scripts/testPhysicsAssessmentProjection.ts",
+      "exitCode": 1,
+      "result": "69runtime trees,complete tasks/solutions/scoring,3246upper practice pairs,source-backed lower placements pass. Final CQR104 fails only on120motivation-route occurrences(4uniquegoals) after justified removal of false requires. Zero missingterminal/prerequisite/materialclosure routes. Needs separate motivation-vs-prerequisite policy correction; false edges must not be restored."
+    }
+  ],
+  "sourceInputMutation": false,
+  "learnerStateMutation": false,
+  "frozenV9Mutation": false
+}

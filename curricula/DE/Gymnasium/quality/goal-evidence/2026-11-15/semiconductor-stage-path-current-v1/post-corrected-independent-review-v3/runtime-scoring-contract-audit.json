@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-15T05:23:51.329164Z",
+  "reviewer": "Codex actual source read and actual A/B findings; separate read-only Sol Ultra rubric audit",
+  "method": "Static inspection, not a claim of executing native learner/host behaviour.",
+  "sourcePins": [
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/connectors/claude/v1/mcp/ClaudeV1McpContractAdapter.java",
+      "sha256": "sha256:dee5986b2c4c8fddc06edb8fb466e714aeac659782cf73dd0c81ba332f74d7b7"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV1McpContractAdapter.java",
+      "sha256": "sha256:f646c1f9f77b9f7022184ee6e5097a9b55c4075288dac79f1f886e8d048330cf"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/landscape/ExamData.java",
+      "sha256": "sha256:28d545feecb8390748509bbad10fd96f116960017f554f5c3208b96a365b352d"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/completion/CompletionEvaluator.java",
+      "sha256": "sha256:b878fb7b2d3257a37ec856c980f0cfb49a92930b8c56431fcd16d271e7c6f6fa"
+    },
+    {
+      "path": "ai/claude/plugin/skillpilot-coach-v1/skills/skillpilot-coach-v1/SKILL.md",
+      "sha256": "sha256:25c4558cdec7a636624680b995e63fc8405349f6846760913557b4055346636d"
+    }
+  ],
+  "findings": [
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/connectors/claude/v1/mcp/ClaudeV1McpContractAdapter.java",
+      "locator": "applyExamMasteryRules",
+      "finding": "Capability bound to connection/goal/state, finite scalar score within released max, score >= passing. No per-criterion or P qualification input."
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV1McpContractAdapter.java",
+      "locator": "setMastery active exam branch",
+      "finding": "Evaluation capability and scalar earnedPoints checked against max/passing; no separate essential-evidence gate."
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/landscape/ExamData.java",
+      "locator": "Scoring/Step",
+      "finding": "Authored max, pass and descriptive weighted steps; no fake required-evidence field."
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/completion/CompletionEvaluator.java",
+      "locator": "evaluateAutomaticGraph",
+      "finding": "Passed-assessment recognition consumes binary mastery. coveredGoalIds is not a separate runtime per-criterion qualification."
+    },
+    {
+      "path": "ai/claude/plugin/skillpilot-coach-v1/skills/skillpilot-coach-v1/SKILL.md",
+      "locator": "Exams steps1,4,5",
+      "finding": "Exam workflow replaces ordinary completion, grades every released criterion, calls mastery on a pass. Pre-submission task must not disclose passing threshold or rubric; equivalent scientific reasoning gets equal credit."
+    }
+  ],
+  "conclusion": "The published scalar pass must itself imply essential understanding. No hidden P check rescues compensatory points. Essential-only analytic criteria with max=pass preserve feedback while preventing an absent criterion from being compensated. This is an authored task/rubric repair; learner-result storage and recognition rules remain unchanged.",
+  "acceptedDesign": {
+    "amplifier144": "Two genuine cases, four independently scored essential scientific criteria per case, each1, max/pass8. Corrected unclipped case establishes current gain; clipping is not falsely assigned constant actual gain.",
+    "dopingA8": "Five essential scientific criteria only, max/pass5.",
+    "functional8670": "Five essential scientific criteria only, max/pass5.",
+    "band1ab": "Six essential scientific criteria only, max/pass6.",
+    "gradingFairness": "No cosmetic or incidental arithmetic points. Isolated nonconsequential calculation/unit/notation slips do not lose a conceptual criterion; equivalent scientifically valid arguments receive full relevant credit. Missing or contradicted essential science does not."
+  },
+  "actualOldCounterexamples": [
+    "Amplifier: correct numerical voltages2 + clipping4 + bias transfer3 =9>=8 while omitting energy and causal inversion.",
+    "Band: omit accessible unoccupied states2 and thermal excitation2, retain12>=12; or omit neutral charge account1 at15.",
+    "Doping: the three broad4point groups do not prevent partial transfer credit from compensating missing ion/motion understanding.",
+    "Functional: both polarity groups8 plus partial threshold rebuttal1 can reach9 while applicability/range evidence is missing."
+  ],
+  "limitations": [
+    "No actual learner performance, human approval or host acceptance was observed.",
+    "Historical passed learner results are not rewritten or broadened by these curriculum edits.",
+    "Unchanged legacy tasks are not thereby declared perfect; the c61 explicit indivisible core is retained honestly rather than opportunistically redesigned."
+  ]
+}

@@ -1,0 +1,132 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "semiconductor-stage-path-applicability-current3-v5-20261115-informed-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "Codex informed synthesis after actual complete reading and native validation of both fresh independently delegated current A/B reviews; machine evidence only",
+  "synthesizedAt": "2026-11-15T07:14:20.655Z",
+  "batch": {
+    "batchId": "physik-semiconductor-applicability-current3-20261115-v5",
+    "batchManifestDigest": "sha256:0fe005d79f420ed6e1f362d272914dd8976b04873b61ef64af7f5ad623aadb8a",
+    "configDigest": "sha256:7f8ee5d82f33a3733374ee03e774c45165a3a155810a374ea333f57c6096a5d9",
+    "bundleFingerprint": "sha256:648855b6eebbd29352498577232b532b0c8671a5b8c1687034487dc4ae350861",
+    "bookDigest": "sha256:fa9e124a6e540e2b45b373103cf655a0d56a9cf269af0e0a99587fe32fc07a0e",
+    "reviewInputFingerprint": "sha256:2257bebc44fb003659d9d84ab909f963c22ef33d1b1ce2f50d69df87119a5f87",
+    "dualSummaryDigest": "sha256:4c8e567ab957d2725b625906eb33d8bc8164f47863dd78b8e97fdb3fdf9e254c",
+    "canonicalLandscapeDigest": "sha256:232de7625efb87beca686aba8985b5f654602d810e9df2e2e97b19b734a66ec4"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-semiconductor-applicability-current3-20261115-v5-a",
+      "campaignDigest": "sha256:604b1f30b6d14395e1efa3f7aae80eb846f1c434027efff50aff7c4c23a93319",
+      "roundId": "physik-semiconductor-applicability-current3-20261115-v5-first-pass-a",
+      "independenceGroupId": "physik-semiconductor-applicability-current3-20261115-v5-independent-a",
+      "reviewInputFingerprint": "sha256:2257bebc44fb003659d9d84ab909f963c22ef33d1b1ce2f50d69df87119a5f87",
+      "batchId": "physik-semiconductor-applicability-current3-20261115-v5-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:54873de1a3ff3a1e4edbb9a2c755283bd5d3d23422e2c5f8c4d049656225dd1a",
+      "runId": "physik-semiconductor-applicability-current3-20261115-v5-first-pass-a.batch-001.sol-ultra-current-confirmation",
+      "runManifestDigest": "sha256:5c332bd23d080e82d194dd01f2a8ef917db9342c29bda8fc054495bd0f09b678",
+      "resultsDigest": "sha256:1d47df5c87e48fe257de8d39e02433fa1768c27a00af9d48e003c91fbe740b86"
+    },
+    "second": {
+      "campaignId": "physik-semiconductor-applicability-current3-20261115-v5-b",
+      "campaignDigest": "sha256:c13c02f229c49f6fc293fdf869cb5539745f872a6ec1634e49a11a59ded25b97",
+      "roundId": "physik-semiconductor-applicability-current3-20261115-v5-first-pass-b",
+      "independenceGroupId": "physik-semiconductor-applicability-current3-20261115-v5-independent-b",
+      "reviewInputFingerprint": "sha256:2257bebc44fb003659d9d84ab909f963c22ef33d1b1ce2f50d69df87119a5f87",
+      "batchId": "physik-semiconductor-applicability-current3-20261115-v5-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:ad471b5eb338a85dbfaff903e81ce89804de60f36015e64bc000db69be5af1b7",
+      "runId": "physik-semiconductor-applicability-current3-20261115-v5-first-pass-b.actual-sol-ultra-b-20261115T070947Z",
+      "runManifestDigest": "sha256:b665f57fa24654e4d29b74fac5621e427dd8a2781f8a9bf8f805858b20ccbc3c",
+      "resultsDigest": "sha256:595a72148a8d540e1862a88b498f70a11773eeeadf49bff5a3dc5aede2a0b135"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "semiconductor-stage-path-applicability-current3-v5-20261115-informed-synthesis-decision-001",
+      "goalId": "77ab31a9-8961-511c-8637-06e98023d869",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:2b3142ed4628d0360456b5f05ed98f4c513c31e03ba50946aaace1e170ed6fc9",
+      "pageFingerprint": "sha256:327634a74214cfe976f11151401898a0dc1f61341b0b52046b06b206a119175b",
+      "goalReviewContextFingerprint": "sha256:631069e0a4553f2c9f594f104be0734cd84485d7fb9dbcb11316b7b4d0542486",
+      "finalText": {
+        "titleDe": "Transistorschaltung selbst aufbauen und untersuchen",
+        "titleEn": "Personally Assemble and Investigate a Transistor Circuit",
+        "descriptionDe": "Die lernende Person kann eine vollständig vorgegebene einfache Transistorschaltung unter Aufsicht mit strombegrenzter Kleinspannung selbst aufbauen, ihre Schaltwirkung durch gezieltes Verändern der Ansteuerung und einen Kontrollversuch anhand eigener Beobachtungen untersuchen und funktional begründen sowie die Ergebnisse auf eine geänderte Eingangszuordnung übertragen.",
+        "descriptionEn": "The learner can personally assemble a fully specified simple transistor circuit under supervision using current-limited low voltage, investigate and functionally explain its switching behaviour through deliberate changes of drive and a control trial using their own observations, and transfer the findings to a changed input mapping."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-semiconductor-applicability-current3-20261115-v5-first-pass-a.batch-001.sol-ultra-current-confirmation.goal-1",
+          "recordDigest": "sha256:84ed84c2da1ad6adc61aaa42a510801f63d14b664eb66ed91dc5984c988ccc6b"
+        },
+        "second": {
+          "recordId": "physik-semiconductor-applicability-current3-20261115-v5-first-pass-b.actual-sol-ultra-b-20261115T070947Z.1",
+          "recordDigest": "sha256:031d5add918c65bea41dfe1b14ef97d8a964096bafe3949eb3c6a14f366095dd"
+        }
+      },
+      "rationaleDe": "Beide tatsächlichen aktuellen Runden bestätigen den sicheren eigenen Aufbau, eigene kontrollierte Schaltbeobachtungen, den geöffneten und wiederhergestellten Steuerzweig bei festem Basisbezug sowie eine tatsächlich selbst geprüfte geänderte Eingangszuordnung. B wird für die deutliche Trennung von eigener Versuchsevidenz und Textdeutung sowie ehrliche unerwartete Beobachtungen gewählt; A bestätigt konkrete Freigabe vor dem Einschalten und die gelieferten Bauteilangaben. Die aktuelle BY-Grenze verhindert falsche bundesweite Vererbung. Die Quelle wird nur für die begrenzte Schalterkomponente beansprucht, nicht als vollständiger Nachweis des amtlichen Schalter-und-Verstärkerbereichs. Das gelesene vollständige DE/EN-Material mit fünf einzeln notwendigen Kriterien bleibt Inhaltskandidat; keine tatsächliche Lernendenleistung oder menschliche Freigabe wird behauptet.",
+      "rationaleEn": "Both actual current rounds confirm safe personal assembly, controlled personal switching observations, opening and restoring the control branch while retaining its base reference, and a genuinely personally tested changed input mapping. B is selected for clearly separating personal experimental evidence from textual interpretation and recording unexpected observations honestly; A supports inspection before power-on and the supplied component references. The current BY boundary prevents false nationwide inheritance. The source claim covers only the bounded switching component, not the whole official switching-and-amplification scope. The complete DE/EN material with five individually essential criteria remains content-candidate evidence; neither learner execution nor human approval is asserted."
+    },
+    {
+      "decisionId": "semiconductor-stage-path-applicability-current3-v5-20261115-informed-synthesis-decision-002",
+      "goalId": "dc55adac-91a5-5cc3-ab47-be008480616f",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:7aed81db95b80531a3f77110669facc91ad106fda0b54e1146f84644d711f6c6",
+      "pageFingerprint": "sha256:322b98b4b5b253f377a7e3e67e7e47668c1ae68897037baa60eeb4bc6f58ed7e",
+      "goalReviewContextFingerprint": "sha256:28b3fb50b2b663a11dd1848aed52fc45fe9ede2b59f84316d1667028ecd89bca",
+      "finalText": {
+        "titleDe": "Durchlass- und Sperrverhalten einer Diode an einer Kennlinie erklären",
+        "titleEn": "Explain Forward and Reverse Diode Behaviour Using a Characteristic",
+        "descriptionDe": "Die lernende Person kann aus einer vorgegebenen qualitativen Strom-Spannungs-Kennlinie einer Diode ihr Durchlass- und Sperrverhalten ablesen und damit für beide Polungen bei angegebener Diodenspannung im dargestellten Kennlinienbereich vorhersagen, ob in einem einfachen Stromkreis ein nennenswerter Strom fließt.",
+        "descriptionEn": "The learner can read forward and reverse diode behaviour from a supplied qualitative current–voltage characteristic and use it, for either polarity at a stated diode voltage within the displayed characteristic range, to predict whether an appreciable current flows in a simple circuit."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-semiconductor-applicability-current3-20261115-v5-first-pass-a.batch-001.sol-ultra-current-confirmation.goal-2",
+          "recordDigest": "sha256:151b9bdd92f0736f42a73818b3114356c4231f0c4bbd95d4778353ec03dde596"
+        },
+        "second": {
+          "recordId": "physik-semiconductor-applicability-current3-20261115-v5-first-pass-b.actual-sol-ultra-b-20261115T070947Z.2",
+          "recordDigest": "sha256:9c15bcd43a1c2a53b1cfa3c2b2e1f7aaa48cf4e5d99d3b3ee89d7ecf2127ad4f"
+        }
+      },
+      "rationaleDe": "Beide tatsächlichen aktuellen Runden bestätigen konkrete Kennlinienpunkte bei angegebener Diodenspannung, A/K- und Strombezug, kleinen gegenüber nennenswertem Durchlassstrom, kleinen vorzeichenrichtigen Sperrstrom und die Bauteil-/Temperatur-/Bereichsgrenze. B wird für den Bezug auf die beschrifteten kleinen Werte nahe der Achse und die neue Kurve mit gespiegelten Anschlüssen gewählt; A bestätigt dieselbe Abgrenzung von pn-Modell und eigener Messung. Das vollständige DE/EN-Assessment und fünf einzeln wesentliche Kriterien wurden tatsächlich mitgeliefert und gelesen. Die Seite zeigt direkte Sek-I-Zuordnung für BW/BY/SL/SN; HE in der kanonischen Anwendbarkeit bezeichnet hier notwendige Vorbereitung und wird nicht als selbst geprüfte amtliche HE-Quellenklausel ausgegeben. Unverändertes P und reale Bildbytes bleiben erhalten.",
+      "rationaleEn": "Both actual current rounds confirm use of concrete characteristic points at a stated diode voltage, A/K and current references, small versus appreciable forward current, small correctly signed reverse current and component/temperature/range limits. B is selected for interpreting labelled tiny values near the axis and transfer to a new curve with mirrored terminals; A supports the same distinction from pn modelling and personal measurement. The full DE/EN assessment with five individually essential criteria was actually supplied and read. The page presents direct SekI scope for BW/BY/SL/SN; canonical HE applicability represents necessary preparation here and is not presented as an independently verified official HE source clause. Unchanged P and actual image bytes are retained."
+    },
+    {
+      "decisionId": "semiconductor-stage-path-applicability-current3-v5-20261115-informed-synthesis-decision-003",
+      "goalId": "df010b2b-b182-5f7e-bbe4-49b72e48c27a",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:c6efec78796cfdcaf140097dab80920d856bd38f6b3d0c45ed70772e151a6feb",
+      "pageFingerprint": "sha256:87674e2bad6ef04e019a00d02a1f73cfe6ea07758d4db657909430bdc9c0bb04",
+      "goalReviewContextFingerprint": "sha256:80091ed23deb30cb60580533071f00f87a00e32f23cfe70e2e4bdd67651bfc03",
+      "finalText": {
+        "titleDe": "Bändermodell und Dotierung",
+        "titleEn": "Band Model and Doping",
+        "descriptionDe": "Die lernende Person kann das qualitative Bändermodell für Leiter und Halbleiter beschreiben und erklären, wie Dotierung die Leitfähigkeit beeinflusst.",
+        "descriptionEn": "The learner can describe the qualitative band model for conductors and semiconductors and explain how doping influences conductivity."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-semiconductor-applicability-current3-20261115-v5-first-pass-a.batch-001.sol-ultra-current-confirmation.goal-3",
+          "recordDigest": "sha256:38fcf43c5b71aea1f0a04feb68c0caea1924f270b4f64e62a884d70bf39e6f9a"
+        },
+        "second": {
+          "recordId": "physik-semiconductor-applicability-current3-20261115-v5-first-pass-b.actual-sol-ultra-b-20261115T070947Z.3",
+          "recordDigest": "sha256:89b79f4222fe0fcdc92c086cefa47b096adb84a8dd50c289e7f9254054da47c2"
+        }
+      },
+      "rationaleDe": "Beide tatsächlichen aktuellen Runden bestätigen den vollständigen fortgeschrittenen kausalen Band-/Dotierungskern: erreichbare unbesetzte Zustände, Bandlücke, thermische Paare, Donator-/Akzeptorniveaus, bewegliche Träger und ortsfeste Gegenladungen bei Gesamtneutralität. B wird für den expliziten Wechsel Donator zu Akzeptor und die Abgrenzung zusätzlicher Niveaus von thermischer Paaranregung gewählt; A bestätigt Energiehöhe statt räumlicher Bahn und begrenzte Leitfähigkeitsprognosen. Vollständiges DE/EN-Assessment mit realem A-C-Stimulus und sechs einzeln notwendigen Kriterien wurde tatsächlich gelesen. Nur die unzutreffende BY-Anwendbarkeit entfällt; wissenschaftlicher Wortlaut, Identität und P bleiben erhalten. Generische alte Q4-Vorlagen zählen nicht als neue positive Inhaltsevidenz. Die aktuelle Seitenprüfung behauptet keinen vollständigen amtlichen Abgleich der übrigen Landeszuordnungen.",
+      "rationaleEn": "Both actual current rounds confirm the complete advanced causal band/doping competence: accessible unoccupied states, a band gap, thermal pairs, donor/acceptor levels, mobile carriers and fixed countercharges preserving neutrality. B is selected for explicit donor-to-acceptor transfer and distinguishing additional levels from thermal pair excitation; A supports energy height rather than spatial trajectory and bounded conductivity predictions. The full DE/EN assessment with its actual A-C stimulus and six individually essential criteria was read. Only unsupported BY applicability is removed; scientific wording, identity and P are retained. Generic legacy Q4 templates do not count as new positive content evidence. Current page review does not claim a complete official cross-check of the remaining jurisdiction assignments."
+    }
+  ],
+  "manifestFingerprint": "sha256:607217f43c4c1347b8f7219d6725c0d02fe44bab4b1e4a3947b0b6a2f9a89c7d"
+}

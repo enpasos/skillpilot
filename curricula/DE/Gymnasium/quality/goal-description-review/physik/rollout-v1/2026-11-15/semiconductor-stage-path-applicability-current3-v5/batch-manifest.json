@@ -1,0 +1,56 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "physik-semiconductor-applicability-current3-20261115-v5",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-15/semiconductor-stage-path-applicability-current3-v5.config.json",
+  "configDigest": "sha256:7f8ee5d82f33a3733374ee03e774c45165a3a155810a374ea333f57c6096a5d9",
+  "goalIds": [
+    "77ab31a9-8961-511c-8637-06e98023d869",
+    "dc55adac-91a5-5cc3-ab47-be008480616f",
+    "df010b2b-b182-5f7e-bbe4-49b72e48c27a"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 481,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/semiconductor-stage-path-current-v1/post-corrected-independent-review-v3/current-review.goal-book.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:499eeeccfac066112aacdda8877a805184cf5401b6bde53f5efcb2a2d1737a0d"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:fa9e124a6e540e2b45b373103cf655a0d56a9cf269af0e0a99587fe32fc07a0e",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:648855b6eebbd29352498577232b532b0c8671a5b8c1687034487dc4ae350861",
+    "reviewInputFingerprint": "sha256:2257bebc44fb003659d9d84ab909f963c22ef33d1b1ce2f50d69df87119a5f87",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "physik-semiconductor-applicability-current3-20261115-v5-a",
+        "campaignDigest": "sha256:604b1f30b6d14395e1efa3f7aae80eb846f1c434027efff50aff7c4c23a93319",
+        "roundId": "physik-semiconductor-applicability-current3-20261115-v5-first-pass-a",
+        "independenceGroupId": "physik-semiconductor-applicability-current3-20261115-v5-independent-a",
+        "batchId": "physik-semiconductor-applicability-current3-20261115-v5-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:54873de1a3ff3a1e4edbb9a2c755283bd5d3d23422e2c5f8c4d049656225dd1a"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "physik-semiconductor-applicability-current3-20261115-v5-b",
+        "campaignDigest": "sha256:c13c02f229c49f6fc293fdf869cb5539745f872a6ec1634e49a11a59ded25b97",
+        "roundId": "physik-semiconductor-applicability-current3-20261115-v5-first-pass-b",
+        "independenceGroupId": "physik-semiconductor-applicability-current3-20261115-v5-independent-b",
+        "batchId": "physik-semiconductor-applicability-current3-20261115-v5-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:ad471b5eb338a85dbfaff903e81ce89804de60f36015e64bc000db69be5af1b7"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

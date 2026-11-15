@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-11-15T04:32:34.778639Z",
+  "reviewer": "Codex semiconductor QA agent; actual independent informed current-input machine review",
+  "goalId": "144007cb-e2bc-5c82-bf9d-dda705b15257",
+  "result": "machine-content-review-pass",
+  "releaseReadiness": "The author may apply the reviewed machine-content release metadata; content/scoring below remain exact. Native gates and final current status remain separate.",
+  "humanApproval": false,
+  "learnerExecutionClaim": false,
+  "reason": "Tatsächliche Lektüre vollständiger DE/EN-Aufgaben, Tabelle, Lösungen und5/4/3-Bewertung. Tatsächlich angesehenes npn-Kollektordiagramm hat konsistente Strom- und Spannungsrichtungen,1kΩ an10V, Emitter0V und explizit gegebene U_R=R_C I_C sowie U_C=10V−U_R. Arbeitspunkt und Kennlinie sind Material, kein vorausgesetztes unbekanntes Widerstandsnetz. Nachgerechnet:50µA→5V,40/60µA→6/4V; formale−10..110µA ergibt11..−1V, tatsächlich0,2..10V begrenzt;80µA→2V mit1,8/8V Spielraum; verschoben50±30µA→8..2V ohne Begrenzung. Ziel entwickelt den gelieferten Last-/Ausgangszusammenhang, verlangt keine vorherige allgemeine Kirchhoff-/Ohm- oder Messkompetenz. Kleinsignalgrenzen, schaltungsspezifische Umkehr und Energieversorgung werden selbständig erklärt; kein behaupteter realer Aufbau.",
+  "reviewedContent": {
+    "coveredGoalIds": [
+      "af50bb9a-fd7b-50f5-9698-48c4efe99032"
+    ],
+    "coveredStrands": [
+      "LI_TECHNIK"
+    ],
+    "demandLevels": [
+      "AB1",
+      "AB2",
+      "AB3"
+    ],
+    "taskContent": "![Aufgabenmaterial: Kollektorzweig](/assets/goal-visualizations/physik/144007cb-e2bc-5c82-bf9d-dda705b15257/144007cb-e2bc-5c82-bf9d-dda705b15257-collector-20261115.png)\n\nMaterial: Eine vorgegebene npn-Emitterschaltung besitzt einen Emitter an 0 V, einen Kollektorwiderstand von 1,0 kΩ an +10 V und eine Basisvorspannung mit überlagertem kleinem Eingangssignal. Der Ausgang ist die Kollektorspannung gegen 0 V. Nur für den aktiven Bereich dieses Modells gilt I_C = 100 I_B. Für den markierten Kollektorzweig sind die Modellbeziehungen U_R = R_C · I_C und U_C = 10 V − U_R vorgegeben: Widerstandsspannung und Ausgangsspannung ergänzen sich zur festen Versorgungsspannung. Die Arbeitspunkte und Eingangsänderungen sind vorgegeben, nicht aus einem unbekannten Widerstandsnetz zu bestimmen. Die Ausgangsgrenzen sind 0,2 V bei Sättigung und 10 V bei Sperren. Die Kennlinie ist als Tabelle gegeben:\n\n| I_B in µA | 0 | 20 | 40 | 50 | 60 | 80 | 98 |\n|---|---:|---:|---:|---:|---:|---:|---:|\n| I_C in mA | 0 | 2 | 4 | 5 | 6 | 8 | 9,8 |\n| U_C in V | 10 | 8 | 6 | 5 | 4 | 2 | 0,2 |\n\n1. Der Arbeitspunkt liegt bei I_B = 50 µA. Das Eingangssignal ändert I_B um ±10 µA. Bestimme mit der Tabelle die Ausgangsspannung im Arbeitspunkt und an beiden Signalextremen. Erkläre Signalverstärkung, Phasenumkehr und die Energiequelle des Ausgangs, indem du Kollektorstrom, Spannungsabfall und Ausgangsspannung mit der vorgegebenen Modellbeziehung verknüpfst. (5 BE)\n2. Bei gleicher Eingangssignalform wächst die Amplitude auf ±60 µA. Prognostiziere anhand der gegebenen Grenzen die Ausgangsform und begründe, warum die aktive Modellbeziehung nicht unbeschränkt fortgesetzt werden darf. (4 BE)\n3. Ein anderer Arbeitspunkt liegt bei I_B = 80 µA und das Signal schwankt um ±30 µA. Beurteile die Symmetrie der verfügbaren Aussteuerung und schlage eine im Material mögliche Änderung vor, die dieses Signal ohne Begrenzung übertragen kann. (3 BE)",
+    "taskContentEn": "![Assessment material: collector branch](/assets/goal-visualizations/physik/144007cb-e2bc-5c82-bf9d-dda705b15257/144007cb-e2bc-5c82-bf9d-dda705b15257-collector-20261115.png)\n\nMaterial: A supplied npn common-emitter circuit has its emitter at 0 V and a 1.0 kΩ collector resistor connected to +10 V. A small input signal is superimposed on the base bias. The output is collector voltage relative to 0 V. Only in this model's active region does I_C = 100 I_B apply. The marked collector branch is supplied with model relations U_R = R_C · I_C and U_C = 10 V − U_R: resistor voltage and output voltage add to the fixed supply voltage. Bias points and input variations are provided, not to be determined from an unspecified resistor network. Output limits are 0.2 V in saturation and 10 V at cutoff. The characteristic is given as a table:\n\n| I_B in µA | 0 | 20 | 40 | 50 | 60 | 80 | 98 |\n|---|---:|---:|---:|---:|---:|---:|---:|\n| I_C in mA | 0 | 2 | 4 | 5 | 6 | 8 | 9.8 |\n| U_C in V | 10 | 8 | 6 | 5 | 4 | 2 | 0.2 |\n\n1. At a bias of I_B = 50 µA the input changes I_B by ±10 µA. Use the table to determine output voltage at bias and both signal extremes. Explain signal amplification, phase inversion and the output's energy source by connecting collector current, resistor voltage drop and output voltage using the supplied model relation. (5 points)\n2. With the same input waveform its amplitude grows to ±60 µA. Predict the output shape from the supplied limits and explain why the active-region relation cannot be extrapolated without limits. (4 points)\n3. Another bias is I_B = 80 µA with a ±30 µA signal. Assess the symmetry of available output swing and propose a change allowed by the material that transmits this signal without clipping. (3 points)",
+    "solutionContent": "1. Arbeitspunkt 5 V; bei 40 µA: 6 V, bei 60 µA: 4 V (2 BE). Kleine Basisstromänderung ±10 µA steuert hier ±1 mA Kollektorstrom; Energie kommt aus der 10-V-Versorgung, nicht als neu erzeugte Energie aus dem Basisstrom (2 BE). Größerer Basisstrom bedeutet größeren Spannungsabfall am Kollektorwiderstand und kleinere Ausgangsspannung: Phasenumkehr dieser Emitterschaltung (1 BE); kein universeller Satz über jeden Verstärker.\n2. Die lineare Fortsetzung ergäbe I_B = −10 bis 110 µA und U_C = 11 bis −1 V (1 BE). Tatsächlich begrenzen Sperren bei 10 V und Sättigung bei 0,2 V die beiden Seiten (2 BE). Die Signalform wird abgeschnitten/verzerrt; konstante Verstärkung gilt nicht dort (1 BE).\n3. Bei 80 µA liegt U_C bei 2 V, also nur 1,8 V bis zur unteren Grenze, aber 8 V nach oben (1 BE). ±30 µA würde aktiv 5 bis −1 V verlangen und wird unten begrenzt (1 BE). Beispielsweise den Arbeitspunkt auf 50 µA verschieben: 20 bis 80 µA liefert 8 bis 2 V ohne Begrenzung (1 BE). Auch eine begründet kleinere Amplitude ist zulässig, wenn ausdrücklich der ursprüngliche Amplitudenanspruch aufgegeben wird.",
+    "solutionContentEn": "1. Bias 5 V; at 40 µA: 6 V; at 60 µA: 4 V (2 points). A small ±10 µA base-current change controls ±1 mA collector-current change here; energy comes from the 10 V supply, not newly created in the base branch (2 points). Increasing base current increases the collector-resistor drop and decreases output voltage: phase inversion of this common-emitter circuit (1 point), not every amplifier.\n2. Linear extrapolation gives I_B = −10 to 110 µA and U_C = 11 to −1 V (1 point). Cutoff at 10 V and saturation at 0.2 V instead limit the two sides (2 points). The waveform clips/distorts and constant gain no longer applies (1 point).\n3. At 80 µA, U_C is 2 V: only 1.8 V to the lower limit but 8 V upwards (1 point). ±30 µA would demand 5 to −1 V in the active model and clips at the lower limit (1 point). Shift bias to 50 µA: 20 to 80 µA yields 8 to 2 V without clipping (1 point). A justified smaller amplitude is acceptable only if the original amplitude requirement is explicitly relinquished.",
+    "scoring": {
+      "maxPoints": 12,
+      "passingPoints": 8,
+      "steps": [
+        {
+          "id": "amplifier-functional-signal",
+          "points": 5,
+          "description": "Arbeitspunkt/Extrema, Stromsteuerung, Energiequelle und schaltungsspezifische Phasenumkehr erklärt."
+        },
+        {
+          "id": "amplifier-clipping",
+          "points": 4,
+          "description": "Beide Ausgangsgrenzen auf den Signalverlauf angewandt; aktive Kennlinie nicht unbeschränkt extrapoliert."
+        },
+        {
+          "id": "amplifier-bias-transfer",
+          "points": 3,
+          "description": "Asymmetrische Aussteuerung erkannt und wirksame materialgestützte Korrektur begründet."
+        }
+      ]
+    }
+  },
+  "reviewedContentSha256": "sha256:629e4325e470e536b867e21fd0747882a3da2cf289d7e5784080500d6e7ea06e",
+  "contentProjectionContract": "Exact examData excluding only reviewStatus,reviewNote,sourceArtifactPath; metadata release cannot modify the reviewed task, solution, scoring or coverage.",
+  "actuallyViewedAsset": {
+    "path": "curricula/DE/Gymnasium/visualizations/physik/144007cb-e2bc-5c82-bf9d-dda705b15257/144007cb-e2bc-5c82-bf9d-dda705b15257-collector-20261115.png",
+    "sha256": "sha256:60ffc047e9cf529a96a3fe39c88aa4ac675693ef5aca9c273f7954ebfb4034db"
+  },
+  "actualViewportInspections": [
+    {
+      "width": 360,
+      "path": "curricula/DE/Gymnasium/quality/goal-model-review/physics-semiconductor-learning-path-20261115/post-independent-review-v2/144007cb-e2bc-5c82-bf9d-dda705b15257-collector-360.png",
+      "sha256": "sha256:3e9f110f884605bba272566b917c7500db6c9e9b9caa1f8517233a21222dd323"
+    },
+    {
+      "width": 680,
+      "path": "curricula/DE/Gymnasium/quality/goal-model-review/physics-semiconductor-learning-path-20261115/post-independent-review-v2/144007cb-e2bc-5c82-bf9d-dda705b15257-collector-680.png",
+      "sha256": "sha256:17ab9781c2a884c28b6756d61205eca00005235d14d8a057ffb5f06eb043f854"
+    }
+  ],
+  "readability": "Actually viewed full resolution and actual360px/680px Chromium image renders; essential diagrams, sign references, occupancy legend and supplied relations are readable with no clipping. No actual-host or human-trial claim."
+}

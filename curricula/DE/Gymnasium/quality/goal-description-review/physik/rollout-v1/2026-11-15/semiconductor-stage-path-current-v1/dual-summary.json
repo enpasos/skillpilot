@@ -1,0 +1,272 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:485e32ed5338d31e8ee9dfec7d244c762e152721407e71c410041ef06ab43d67",
+  "reviewInputFingerprint": "sha256:56084f839f6fb11c4d24e7901b76f4fc2e7a2edfee450ffb9159d91528aa6658",
+  "goalCount": 13,
+  "rounds": {
+    "first": {
+      "campaignId": "physik-semiconductor-stage-path-current-20261115-v1-a",
+      "roundId": "physik-semiconductor-stage-path-current-20261115-v1-first-pass-a",
+      "independenceGroupId": "physik-semiconductor-stage-path-current-20261115-v1-independent-a",
+      "runIds": [
+        "physik-semiconductor-stage-path-current-20261115-v1-first-pass-a.batch-001.sol-ultra-a.native-20261115"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6.1-sol::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "physik-semiconductor-stage-path-current-20261115-v1-b",
+      "roundId": "physik-semiconductor-stage-path-current-20261115-v1-first-pass-b",
+      "independenceGroupId": "physik-semiconductor-stage-path-current-20261115-v1-independent-b",
+      "runIds": [
+        "physik-semiconductor-stage-path-current-20261115-v1-d-b-sol-ultra"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-6.1-sol::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 13,
+    "unavailable": 0,
+    "requiresSynthesis": 13
+  },
+  "goals": [
+    {
+      "goalId": "7badac4d-2874-5b3a-87e8-bf8f4440b2a6",
+      "firstRecordId": "physik-semiconductor-stage-path-current-20261115-v1-first-pass-a.batch-001.sol-ultra-a.native-20261115.goal-001",
+      "secondRecordId": "physik-semiconductor-stage-path-current-20261115-v1-d-b-sol-ultra.goal-001",
+      "firstRunId": "physik-semiconductor-stage-path-current-20261115-v1-first-pass-a.batch-001.sol-ultra-a.native-20261115",
+      "secondRunId": "physik-semiconductor-stage-path-current-20261115-v1-d-b-sol-ultra",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "9f265f49-1342-5ba7-9c5d-54e97fdb2f19",
+      "firstRecordId": "physik-semiconductor-stage-path-current-20261115-v1-first-pass-a.batch-001.sol-ultra-a.native-20261115.goal-002",
+      "secondRecordId": "physik-semiconductor-stage-path-current-20261115-v1-d-b-sol-ultra.goal-002",
+      "firstRunId": "physik-semiconductor-stage-path-current-20261115-v1-first-pass-a.batch-001.sol-ultra-a.native-20261115",
+      "secondRunId": "physik-semiconductor-stage-path-current-20261115-v1-d-b-sol-ultra",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "dc55adac-91a5-5cc3-ab47-be008480616f",
+      "firstRecordId": "physik-semiconductor-stage-path-current-20261115-v1-first-pass-a.batch-001.sol-ultra-a.native-20261115.goal-003",
+      "secondRecordId": "physik-semiconductor-stage-path-current-20261115-v1-d-b-sol-ultra.goal-003",
+      "firstRunId": "physik-semiconductor-stage-path-current-20261115-v1-first-pass-a.batch-001.sol-ultra-a.native-20261115",
+      "secondRunId": "physik-semiconductor-stage-path-current-20261115-v1-d-b-sol-ultra",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "2084b7d4-300d-5fa0-8b8d-c480c40f853e",
+      "firstRecordId": "physik-semiconductor-stage-path-current-20261115-v1-first-pass-a.batch-001.sol-ultra-a.native-20261115.goal-004",
+      "secondRecordId": "physik-semiconductor-stage-path-current-20261115-v1-d-b-sol-ultra.goal-004",
+      "firstRunId": "physik-semiconductor-stage-path-current-20261115-v1-first-pass-a.batch-001.sol-ultra-a.native-20261115",
+      "secondRunId": "physik-semiconductor-stage-path-current-20261115-v1-d-b-sol-ultra",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "3857891b-d328-585b-9936-85c7aff122ee",
+      "firstRecordId": "physik-semiconductor-stage-path-current-20261115-v1-first-pass-a.batch-001.sol-ultra-a.native-20261115.goal-005",
+      "secondRecordId": "physik-semiconductor-stage-path-current-20261115-v1-d-b-sol-ultra.goal-005",
+      "firstRunId": "physik-semiconductor-stage-path-current-20261115-v1-first-pass-a.batch-001.sol-ultra-a.native-20261115",
+      "secondRunId": "physik-semiconductor-stage-path-current-20261115-v1-d-b-sol-ultra",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "4a42cddd-7827-5204-87e5-8d9eac7792f1",
+      "firstRecordId": "physik-semiconductor-stage-path-current-20261115-v1-first-pass-a.batch-001.sol-ultra-a.native-20261115.goal-006",
+      "secondRecordId": "physik-semiconductor-stage-path-current-20261115-v1-d-b-sol-ultra.goal-006",
+      "firstRunId": "physik-semiconductor-stage-path-current-20261115-v1-first-pass-a.batch-001.sol-ultra-a.native-20261115",
+      "secondRunId": "physik-semiconductor-stage-path-current-20261115-v1-d-b-sol-ultra",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "3b586f2a-60e2-5019-aa08-6a47616a1f1f",
+      "firstRecordId": "physik-semiconductor-stage-path-current-20261115-v1-first-pass-a.batch-001.sol-ultra-a.native-20261115.goal-007",
+      "secondRecordId": "physik-semiconductor-stage-path-current-20261115-v1-d-b-sol-ultra.goal-007",
+      "firstRunId": "physik-semiconductor-stage-path-current-20261115-v1-first-pass-a.batch-001.sol-ultra-a.native-20261115",
+      "secondRunId": "physik-semiconductor-stage-path-current-20261115-v1-d-b-sol-ultra",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "df010b2b-b182-5f7e-bbe4-49b72e48c27a",
+      "firstRecordId": "physik-semiconductor-stage-path-current-20261115-v1-first-pass-a.batch-001.sol-ultra-a.native-20261115.goal-008",
+      "secondRecordId": "physik-semiconductor-stage-path-current-20261115-v1-d-b-sol-ultra.goal-008",
+      "firstRunId": "physik-semiconductor-stage-path-current-20261115-v1-first-pass-a.batch-001.sol-ultra-a.native-20261115",
+      "secondRunId": "physik-semiconductor-stage-path-current-20261115-v1-d-b-sol-ultra",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "853dbe54-85b0-59ab-8f3a-000c2b7746ec",
+      "firstRecordId": "physik-semiconductor-stage-path-current-20261115-v1-first-pass-a.batch-001.sol-ultra-a.native-20261115.goal-009",
+      "secondRecordId": "physik-semiconductor-stage-path-current-20261115-v1-d-b-sol-ultra.goal-009",
+      "firstRunId": "physik-semiconductor-stage-path-current-20261115-v1-first-pass-a.batch-001.sol-ultra-a.native-20261115",
+      "secondRunId": "physik-semiconductor-stage-path-current-20261115-v1-d-b-sol-ultra",
+      "firstDecision": "revise",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "658cf33d-a0c2-5d47-801a-3dbcd5cac074",
+      "firstRecordId": "physik-semiconductor-stage-path-current-20261115-v1-first-pass-a.batch-001.sol-ultra-a.native-20261115.goal-010",
+      "secondRecordId": "physik-semiconductor-stage-path-current-20261115-v1-d-b-sol-ultra.goal-010",
+      "firstRunId": "physik-semiconductor-stage-path-current-20261115-v1-first-pass-a.batch-001.sol-ultra-a.native-20261115",
+      "secondRunId": "physik-semiconductor-stage-path-current-20261115-v1-d-b-sol-ultra",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "7d4d6a39-0c78-5fb0-b7bf-182ed00972f7",
+      "firstRecordId": "physik-semiconductor-stage-path-current-20261115-v1-first-pass-a.batch-001.sol-ultra-a.native-20261115.goal-011",
+      "secondRecordId": "physik-semiconductor-stage-path-current-20261115-v1-d-b-sol-ultra.goal-011",
+      "firstRunId": "physik-semiconductor-stage-path-current-20261115-v1-first-pass-a.batch-001.sol-ultra-a.native-20261115",
+      "secondRunId": "physik-semiconductor-stage-path-current-20261115-v1-d-b-sol-ultra",
+      "firstDecision": "block",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "af50bb9a-fd7b-50f5-9698-48c4efe99032",
+      "firstRecordId": "physik-semiconductor-stage-path-current-20261115-v1-first-pass-a.batch-001.sol-ultra-a.native-20261115.goal-012",
+      "secondRecordId": "physik-semiconductor-stage-path-current-20261115-v1-d-b-sol-ultra.goal-012",
+      "firstRunId": "physik-semiconductor-stage-path-current-20261115-v1-first-pass-a.batch-001.sol-ultra-a.native-20261115",
+      "secondRunId": "physik-semiconductor-stage-path-current-20261115-v1-d-b-sol-ultra",
+      "firstDecision": "block",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "c2af45aa-e3fc-5119-9159-c5a260b4135a",
+      "firstRecordId": "physik-semiconductor-stage-path-current-20261115-v1-first-pass-a.batch-001.sol-ultra-a.native-20261115.goal-013",
+      "secondRecordId": "physik-semiconductor-stage-path-current-20261115-v1-d-b-sol-ultra.goal-013",
+      "firstRunId": "physik-semiconductor-stage-path-current-20261115-v1-first-pass-a.batch-001.sol-ultra-a.native-20261115",
+      "secondRunId": "physik-semiconductor-stage-path-current-20261115-v1-d-b-sol-ultra",
+      "firstDecision": "block",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

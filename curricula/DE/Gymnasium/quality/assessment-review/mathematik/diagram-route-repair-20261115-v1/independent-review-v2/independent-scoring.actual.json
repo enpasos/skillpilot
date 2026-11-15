@@ -1,0 +1,353 @@
+{
+  "method": "Reviewer read the full actual constructed responses and independently applied all new anchors; JSON arithmetic checks below do not perform semantic grading.",
+  "independentCounterexampleJudgements": [
+    {
+      "id": "R1",
+      "criterionScores": {
+        "axes-a-axis-meaning": 2,
+        "axes-a-scaled-reading": 2,
+        "axes-b-axis-distinction": 1,
+        "axes-b-unit-factor": 2,
+        "axes-b-context-reading": 2
+      },
+      "independentlyConfirmedTotal": 9,
+      "pass": false,
+      "authorTotalAgrees": true
+    },
+    {
+      "id": "R2",
+      "criterionScores": {
+        "trends-a-maximum": 2,
+        "trends-a-equality": 2,
+        "trends-a-rate": 2,
+        "trends-a-comparison": 2,
+        "trends-b-plateau": 2,
+        "trends-b-change-context": 2,
+        "trends-future-boundary": 0,
+        "trends-cause-boundary": 0
+      },
+      "independentlyConfirmedTotal": 12,
+      "pass": false,
+      "authorTotalAgrees": true
+    },
+    {
+      "id": "R3a",
+      "criterionScores": {
+        "correction-a-correct": 2,
+        "correction-a-alternative": 2,
+        "correction-a-reason": 0,
+        "correction-b-correct": 2,
+        "correction-b-alternative": 2,
+        "correction-b-reason": 0
+      },
+      "independentlyConfirmedTotal": 8,
+      "pass": false,
+      "authorTotalAgrees": true
+    },
+    {
+      "id": "R3b",
+      "criterionScores": {
+        "correction-a-correct": 2,
+        "correction-a-alternative": 2,
+        "correction-a-reason": 2,
+        "correction-b-correct": 2,
+        "correction-b-alternative": 0,
+        "correction-b-reason": 0
+      },
+      "independentlyConfirmedTotal": 8,
+      "pass": false,
+      "authorTotalAgrees": true
+    },
+    {
+      "id": "R4",
+      "criterionScores": {
+        "claims-a-actual-comparison": 2,
+        "claims-a-mechanism": 1,
+        "claims-b-rate-evidence": 2,
+        "claims-b-spacing-mechanism": 2
+      },
+      "independentlyConfirmedTotal": 7,
+      "pass": false,
+      "authorTotalAgrees": true
+    },
+    {
+      "id": "R4-threshold-variant",
+      "criterionScores": {
+        "claims-a-actual-comparison": 2,
+        "claims-a-mechanism": 1,
+        "claims-b-rate-evidence": 2,
+        "claims-b-spacing-mechanism": 2
+      },
+      "independentlyConfirmedTotal": 7,
+      "pass": false,
+      "authorTotalAgrees": true
+    }
+  ],
+  "independentPositiveJudgements": [
+    {
+      "assessmentId": "f4fda40d-dca5-510b-bd6d-f7874b3d7b9b",
+      "criterionScores": {
+        "axes-a-axis-meaning": 2,
+        "axes-a-scaled-reading": 2,
+        "axes-b-axis-distinction": 2,
+        "axes-b-unit-factor": 2,
+        "axes-b-context-reading": 2
+      },
+      "independentlyConfirmedTotal": 10,
+      "pass": true,
+      "authorTotalAgrees": true
+    },
+    {
+      "assessmentId": "d9c49084-084e-5142-859c-33c53403ccf1",
+      "criterionScores": {
+        "trends-a-maximum": 2,
+        "trends-a-equality": 2,
+        "trends-a-rate": 2,
+        "trends-a-comparison": 2,
+        "trends-b-plateau": 2,
+        "trends-b-change-context": 2,
+        "trends-future-boundary": 2,
+        "trends-cause-boundary": 2
+      },
+      "independentlyConfirmedTotal": 16,
+      "pass": true,
+      "authorTotalAgrees": true
+    },
+    {
+      "assessmentId": "c76fae5e-70e6-5f20-9abe-e9e790d95324",
+      "criterionScores": {
+        "claims-a-actual-comparison": 2,
+        "claims-a-mechanism": 2,
+        "claims-b-rate-evidence": 2,
+        "claims-b-spacing-mechanism": 2
+      },
+      "independentlyConfirmedTotal": 8,
+      "pass": true,
+      "authorTotalAgrees": true
+    },
+    {
+      "assessmentId": "57bf531d-0920-5424-bef4-f704f5462477",
+      "criterionScores": {
+        "correction-a-correct": 2,
+        "correction-a-alternative": 2,
+        "correction-a-reason": 2,
+        "correction-b-correct": 2,
+        "correction-b-alternative": 2,
+        "correction-b-reason": 2
+      },
+      "independentlyConfirmedTotal": 12,
+      "pass": true,
+      "authorTotalAgrees": true
+    }
+  ],
+  "arithmeticOnlyEssentialCriterionBounds": [
+    {
+      "assessmentId": "f4fda40d-dca5-510b-bd6d-f7874b3d7b9b",
+      "criterionId": "axes-a-axis-meaning",
+      "maxWhenOmitted": 8,
+      "maxWhenPartial": 9,
+      "passing": 10,
+      "omissionFails": true,
+      "partialFails": true
+    },
+    {
+      "assessmentId": "f4fda40d-dca5-510b-bd6d-f7874b3d7b9b",
+      "criterionId": "axes-a-scaled-reading",
+      "maxWhenOmitted": 8,
+      "maxWhenPartial": 9,
+      "passing": 10,
+      "omissionFails": true,
+      "partialFails": true
+    },
+    {
+      "assessmentId": "f4fda40d-dca5-510b-bd6d-f7874b3d7b9b",
+      "criterionId": "axes-b-axis-distinction",
+      "maxWhenOmitted": 8,
+      "maxWhenPartial": 9,
+      "passing": 10,
+      "omissionFails": true,
+      "partialFails": true
+    },
+    {
+      "assessmentId": "f4fda40d-dca5-510b-bd6d-f7874b3d7b9b",
+      "criterionId": "axes-b-unit-factor",
+      "maxWhenOmitted": 8,
+      "maxWhenPartial": 9,
+      "passing": 10,
+      "omissionFails": true,
+      "partialFails": true
+    },
+    {
+      "assessmentId": "f4fda40d-dca5-510b-bd6d-f7874b3d7b9b",
+      "criterionId": "axes-b-context-reading",
+      "maxWhenOmitted": 8,
+      "maxWhenPartial": 9,
+      "passing": 10,
+      "omissionFails": true,
+      "partialFails": true
+    },
+    {
+      "assessmentId": "d9c49084-084e-5142-859c-33c53403ccf1",
+      "criterionId": "trends-a-maximum",
+      "maxWhenOmitted": 14,
+      "maxWhenPartial": 15,
+      "passing": 16,
+      "omissionFails": true,
+      "partialFails": true
+    },
+    {
+      "assessmentId": "d9c49084-084e-5142-859c-33c53403ccf1",
+      "criterionId": "trends-a-equality",
+      "maxWhenOmitted": 14,
+      "maxWhenPartial": 15,
+      "passing": 16,
+      "omissionFails": true,
+      "partialFails": true
+    },
+    {
+      "assessmentId": "d9c49084-084e-5142-859c-33c53403ccf1",
+      "criterionId": "trends-a-rate",
+      "maxWhenOmitted": 14,
+      "maxWhenPartial": 15,
+      "passing": 16,
+      "omissionFails": true,
+      "partialFails": true
+    },
+    {
+      "assessmentId": "d9c49084-084e-5142-859c-33c53403ccf1",
+      "criterionId": "trends-a-comparison",
+      "maxWhenOmitted": 14,
+      "maxWhenPartial": 15,
+      "passing": 16,
+      "omissionFails": true,
+      "partialFails": true
+    },
+    {
+      "assessmentId": "d9c49084-084e-5142-859c-33c53403ccf1",
+      "criterionId": "trends-b-plateau",
+      "maxWhenOmitted": 14,
+      "maxWhenPartial": 15,
+      "passing": 16,
+      "omissionFails": true,
+      "partialFails": true
+    },
+    {
+      "assessmentId": "d9c49084-084e-5142-859c-33c53403ccf1",
+      "criterionId": "trends-b-change-context",
+      "maxWhenOmitted": 14,
+      "maxWhenPartial": 15,
+      "passing": 16,
+      "omissionFails": true,
+      "partialFails": true
+    },
+    {
+      "assessmentId": "d9c49084-084e-5142-859c-33c53403ccf1",
+      "criterionId": "trends-future-boundary",
+      "maxWhenOmitted": 14,
+      "maxWhenPartial": 15,
+      "passing": 16,
+      "omissionFails": true,
+      "partialFails": true
+    },
+    {
+      "assessmentId": "d9c49084-084e-5142-859c-33c53403ccf1",
+      "criterionId": "trends-cause-boundary",
+      "maxWhenOmitted": 14,
+      "maxWhenPartial": 15,
+      "passing": 16,
+      "omissionFails": true,
+      "partialFails": true
+    },
+    {
+      "assessmentId": "c76fae5e-70e6-5f20-9abe-e9e790d95324",
+      "criterionId": "claims-a-actual-comparison",
+      "maxWhenOmitted": 6,
+      "maxWhenPartial": 7,
+      "passing": 8,
+      "omissionFails": true,
+      "partialFails": true
+    },
+    {
+      "assessmentId": "c76fae5e-70e6-5f20-9abe-e9e790d95324",
+      "criterionId": "claims-a-mechanism",
+      "maxWhenOmitted": 6,
+      "maxWhenPartial": 7,
+      "passing": 8,
+      "omissionFails": true,
+      "partialFails": true
+    },
+    {
+      "assessmentId": "c76fae5e-70e6-5f20-9abe-e9e790d95324",
+      "criterionId": "claims-b-rate-evidence",
+      "maxWhenOmitted": 6,
+      "maxWhenPartial": 7,
+      "passing": 8,
+      "omissionFails": true,
+      "partialFails": true
+    },
+    {
+      "assessmentId": "c76fae5e-70e6-5f20-9abe-e9e790d95324",
+      "criterionId": "claims-b-spacing-mechanism",
+      "maxWhenOmitted": 6,
+      "maxWhenPartial": 7,
+      "passing": 8,
+      "omissionFails": true,
+      "partialFails": true
+    },
+    {
+      "assessmentId": "57bf531d-0920-5424-bef4-f704f5462477",
+      "criterionId": "correction-a-correct",
+      "maxWhenOmitted": 10,
+      "maxWhenPartial": 11,
+      "passing": 12,
+      "omissionFails": true,
+      "partialFails": true
+    },
+    {
+      "assessmentId": "57bf531d-0920-5424-bef4-f704f5462477",
+      "criterionId": "correction-a-alternative",
+      "maxWhenOmitted": 10,
+      "maxWhenPartial": 11,
+      "passing": 12,
+      "omissionFails": true,
+      "partialFails": true
+    },
+    {
+      "assessmentId": "57bf531d-0920-5424-bef4-f704f5462477",
+      "criterionId": "correction-a-reason",
+      "maxWhenOmitted": 10,
+      "maxWhenPartial": 11,
+      "passing": 12,
+      "omissionFails": true,
+      "partialFails": true
+    },
+    {
+      "assessmentId": "57bf531d-0920-5424-bef4-f704f5462477",
+      "criterionId": "correction-b-correct",
+      "maxWhenOmitted": 10,
+      "maxWhenPartial": 11,
+      "passing": 12,
+      "omissionFails": true,
+      "partialFails": true
+    },
+    {
+      "assessmentId": "57bf531d-0920-5424-bef4-f704f5462477",
+      "criterionId": "correction-b-alternative",
+      "maxWhenOmitted": 10,
+      "maxWhenPartial": 11,
+      "passing": 12,
+      "omissionFails": true,
+      "partialFails": true
+    },
+    {
+      "assessmentId": "57bf531d-0920-5424-bef4-f704f5462477",
+      "criterionId": "correction-b-reason",
+      "maxWhenOmitted": 10,
+      "maxWhenPartial": 11,
+      "passing": 12,
+      "omissionFails": true,
+      "partialFails": true
+    }
+  ],
+  "profileCoverageReading": "Cases jointly cover required facets; no requirement that every minor subfacet be perfect twice."
+}

@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "physik-semiconductor-stage-path-current10-20261115-v3-resolution-2084b7d4-300d-5fa0-8b8d-c480c40f853e",
+  "goal": {
+    "goalId": "2084b7d4-300d-5fa0-8b8d-c480c40f853e",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:edd5475b51161db1b42bc550bc5d9f2c74c0a8f7c1d9d8ac2852266567faaba7",
+    "pageFingerprint": "sha256:078bcd7469eeb83042a275d2de6781534cd089d2701470bb45cb51180220158b",
+    "goalReviewContextFingerprint": "sha256:170a920fa44be6e48a45e5cb8bb26d80174345083f5b1b3d5364f5b1c7417123",
+    "finalText": {
+      "titleDe": "Sperrschicht und Polung am p-n-Übergang erklären",
+      "titleEn": "Explain Depletion Layer and Bias at a p–n Junction",
+      "descriptionDe": "Die lernende Person kann mit einem einfachen Ladungsträgermodell die Entstehung der Sperrschicht am p-n-Übergang und ihre Veränderung bei Durchlass- und Sperrpolung erklären.",
+      "descriptionEn": "The learner can use a simple charge-carrier model to explain depletion-layer formation at a p–n junction and its change under forward and reverse bias."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-semiconductor-stage-path-current10-20261115-v3-a",
+      "campaignDigest": "sha256:11ca59c6807a7e95d0f6a4e909714935834d2d5e6737e01929e063af63cb0b6d",
+      "roundId": "physik-semiconductor-stage-path-current10-20261115-v3-first-pass-a",
+      "independenceGroupId": "physik-semiconductor-stage-path-current10-20261115-v3-independent-a",
+      "reviewInputFingerprint": "sha256:4d6a60705ac2ebfb36b2016c333dc86eff58dd64bcb055dd9daa0d67bc5083e6",
+      "goalReviewContextFingerprint": "sha256:170a920fa44be6e48a45e5cb8bb26d80174345083f5b1b3d5364f5b1c7417123",
+      "batchId": "physik-semiconductor-stage-path-current10-20261115-v3-first-pass-a.batch-001",
+      "runId": "physik-semiconductor-current10-v3-a-sol-ultra-20261115-060022",
+      "runManifestDigest": "sha256:dbad396bb89d476870a87ca293ca37b238254202a54e7a0efa1ba54e698c715a",
+      "resultsDigest": "sha256:e4110b0c5f7fdcd820ee99858c862c5ff035b67b14d9f948694009af2c60922b",
+      "recordId": "physik-semiconductor-current10-v3-a-sol-ultra-20261115-060022.goal-3",
+      "recordDigest": "sha256:b74a11d636712e9f794079833d4031da025d97d1ed968f37188aba590b86141f"
+    },
+    "second": {
+      "campaignId": "physik-semiconductor-stage-path-current10-20261115-v3-b",
+      "campaignDigest": "sha256:61703027d8664ace80bfb12ee74f2636da8f7fa4097ba89d0af0c36b35932734",
+      "roundId": "physik-semiconductor-stage-path-current10-20261115-v3-first-pass-b",
+      "independenceGroupId": "physik-semiconductor-stage-path-current10-20261115-v3-independent-b",
+      "reviewInputFingerprint": "sha256:4d6a60705ac2ebfb36b2016c333dc86eff58dd64bcb055dd9daa0d67bc5083e6",
+      "goalReviewContextFingerprint": "sha256:170a920fa44be6e48a45e5cb8bb26d80174345083f5b1b3d5364f5b1c7417123",
+      "batchId": "physik-semiconductor-stage-path-current10-20261115-v3-first-pass-b.batch-001",
+      "runId": "physik-semiconductor-stage-path-current10-20261115-v3-first-pass-b.batch-001.informed-current-b-gpt61sol-ultra",
+      "runManifestDigest": "sha256:a4a19c222341631edc7025143c6cdeab186ba29cb460609c21057ec2e1cc6ff4",
+      "resultsDigest": "sha256:02bf34ea3f02d720105a0e228fbfdd2907c78a89b53f9d64332e5a97b6d16386",
+      "recordId": "physik-semiconductor-stage-path-current10-20261115-v3-first-pass-b.batch-001.informed-current-b-gpt61sol-ultra.2084b7d4-300d-5fa0-8b8d-c480c40f853e",
+      "recordDigest": "sha256:a62f920648bcb358d57281bdf4e5a0fb46dbd469f8cd420e34da4c92adbebb44"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:2cf6976c79a5ae77f11f780fd0076e44d40dacb5434aa297043bcf70e1e6d5cf"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "physik-semiconductor-current10-20261115-v3-informed-synthesis",
+    "manifestDigest": "sha256:9bdf3121d56ff83c09947fb460e06eccbf42743e00b27aa78a7492ba97593733",
+    "manifestFingerprint": "sha256:591f8f9ece037ae9fcf0320e7760d000af5e84791b0a67eac773ea3bf3dc4bc6",
+    "decisionId": "physik-semiconductor-current10-20261115-v3-informed-synthesis-decision-003"
+  },
+  "synthesis": {
+    "synthesisId": "physik-semiconductor-current10-20261115-v3-informed-synthesis-decision-003",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex informed synthesis after actual complete reading and native validation of both distinct current A/B confirmations; machine evidence only",
+    "synthesizedAt": "2026-11-15T06:08:39.000Z",
+    "rationaleDe": "Beide aktuellen Runden bestätigen die gesicherte einfache Trägerbasis und die neue qualitative p-n-Feld-/Barrierenbildung. B wird wegen der expliziten Unterscheidung zwischen Trägerverarmung und lokaler Ladungsfreiheit sowie der unabhängig gespiegelten Polung gewählt; A bestätigt dieselbe kausale Raumladungserklärung.",
+    "rationaleEn": "Both current rounds confirm the secured elementary carrier basis and newly learned qualitative pn field/barrier formation. B is selected for explicitly distinguishing carrier depletion from local absence of charge and independently mirrored bias; A supports the same causal space-charge explanation.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Am p-n-Kontakt diffundieren bewegliche Mehrheitsladungsträger und rekombinieren. Zurückbleibende ortsfeste Ionen bilden eine Raumladungszone mit innerem Feld und Barriere: Trägerverarmung ist nicht lokale Ladungsfreiheit. Geeignete äußere Polung verkleinert oder vergrößert Barriere und Zonenbreite.",
+      "essentialUnderstandingEn": "At a p-n contact, mobile majority carriers diffuse and recombine. Remaining fixed ions form a space-charge region with an internal field and barrier: carrier depletion is not local absence of charge. Suitable external bias reduces or increases the barrier and region width.",
+      "observablePerformanceDe": "Die lernende Person konstruiert für eine vorgegebene p/n-Anordnung eine kausale Erklärung der Trägerverarmung, kennzeichnet die Vorzeichen der ortsfesten Ionen und begründet die Feldrichtung von der positiven n-seitigen zur negativen p-seitigen Raumladung. Sie erklärt die qualitative Änderung bei beiden Anschlusskombinationen.",
+      "observablePerformanceEn": "For a supplied p/n arrangement, the learner constructs a causal explanation of carrier depletion, marks the signs of fixed ions, and justifies field direction from the positive n-side to the negative p-side space charge. They explain qualitative changes for both terminal combinations.",
+      "transferExpectationDe": "Bei gespiegelter n/p-Anordnung und unabhängig davon geänderten Anschlussvorzeichen bestimmt die lernende Person Durchlass- oder Sperrpolung aus Materialart und Anschluss, prognostiziert die Barrierenänderung und erklärt, weshalb normale Durchlassleitung keine völlig verschwindende Raumladungszone voraussetzt.",
+      "transferExpectationEn": "For a mirrored n/p arrangement with independently changed terminal signs, the learner identifies forward or reverse bias from material type and connection, predicts the barrier change, and explains why ordinary forward conduction does not require the space-charge region to disappear completely."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-ed14d4afd5ab24080552755ef06ead203ed80ff0ee5bc8922c499511db3697b4",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der zweiten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the second round.",
+        "disposition": "accepted_second"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:ae3fa1226835c54450d23c09a07388a916ea4f084287d8fc60b87dbddd5241c6"
+}

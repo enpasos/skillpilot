@@ -1,0 +1,76 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "semiconductor-stage-path-diode-page-current1-v4-20261115-informed-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "Codex informed synthesis after complete actual reading and native validation of both distinct current A/B confirmations; machine evidence only",
+  "synthesizedAt": "2026-11-15T06:21:12.000Z",
+  "batch": {
+    "batchId": "physik-semiconductor-diode-page-current1-20261115-v4",
+    "batchManifestDigest": "sha256:1b06262b4c74156b77bc53aff08f71d9f4741bc764f522c0af84594de8755872",
+    "configDigest": "sha256:714324192be56f96300be419a0dc3fa9e05b7c0280cf1cd78bcdba568f1e6a80",
+    "bundleFingerprint": "sha256:e43d061f553cd81c2aed9eade685939268added70d723f95a24acd4b31c9e815",
+    "bookDigest": "sha256:572346f34429d46379eeeb42d612f50decf327d85c257acf0263f3d8e32f9516",
+    "reviewInputFingerprint": "sha256:b6ba0d5e1be0507c74f17ab37bdb75c64a6b9fbff92764784c543da5dd9c98b2",
+    "dualSummaryDigest": "sha256:4912b7838b483bb8fa7f5fbb1b63ca09b3d654eaf730b632c4d2176877866e47",
+    "canonicalLandscapeDigest": "sha256:920b742ec894a1c889e67feca2227b416ec7dcada880dfa6f76efb7a6016dbb7"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-semiconductor-diode-page-current1-20261115-v4-a",
+      "campaignDigest": "sha256:695d3a62d648a45896e255a0b33c3cad150e7a4a019689871d4429eff4a23311",
+      "roundId": "physik-semiconductor-diode-page-current1-20261115-v4-first-pass-a",
+      "independenceGroupId": "physik-semiconductor-diode-page-current1-20261115-v4-independent-a",
+      "reviewInputFingerprint": "sha256:b6ba0d5e1be0507c74f17ab37bdb75c64a6b9fbff92764784c543da5dd9c98b2",
+      "batchId": "physik-semiconductor-diode-page-current1-20261115-v4-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:786d4b72057b7c4444191ed94ffdd438152e9eabfad572e25db48f448daf342e",
+      "runId": "physik-diode-page-current1-v4-a-sol-ultra-20261115-061652",
+      "runManifestDigest": "sha256:53851ca435e289c899bbfbe02c1ab518f0fecd0e73297d6fe8a7762c528fcea1",
+      "resultsDigest": "sha256:23c6a8624743258b1b9aa8a7ed4a1f441d99050a8c73a81428f6221b19649833"
+    },
+    "second": {
+      "campaignId": "physik-semiconductor-diode-page-current1-20261115-v4-b",
+      "campaignDigest": "sha256:74e0d0c2d90dd0a6b1ab320a5b9c32d4a9b2e4bab387aaa7d1b7d84229002cea",
+      "roundId": "physik-semiconductor-diode-page-current1-20261115-v4-first-pass-b",
+      "independenceGroupId": "physik-semiconductor-diode-page-current1-20261115-v4-independent-b",
+      "reviewInputFingerprint": "sha256:b6ba0d5e1be0507c74f17ab37bdb75c64a6b9fbff92764784c543da5dd9c98b2",
+      "batchId": "physik-semiconductor-diode-page-current1-20261115-v4-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:2e66e03a9d83b52d54572b19998040284945a1666d9bddb9af1ea47799bed5ba",
+      "runId": "physik-semiconductor-diode-page-current1-20261115-v4-first-pass-b.batch-001.informed-page-current-b-gpt61sol-ultra",
+      "runManifestDigest": "sha256:9c88cb22943930e741ab11b36c6d9ca43feddac518f72c5de2da74de248b0344",
+      "resultsDigest": "sha256:503aa1b6c33b1cbae98c5b526811e23691f568b35a71b38bd7cafac38f8b74f9"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "semiconductor-stage-path-diode-page-current1-v4-20261115-informed-synthesis-decision-001",
+      "goalId": "dc55adac-91a5-5cc3-ab47-be008480616f",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:7aed81db95b80531a3f77110669facc91ad106fda0b54e1146f84644d711f6c6",
+      "pageFingerprint": "sha256:b36920357f4ebcee01a318409425c4a695cab04b59763cf237c604d5a6b30b44",
+      "goalReviewContextFingerprint": "sha256:3bd27948cc57e208cb1ffbd9383d94a8f6725a6f575910cc8fe586b87141efbe",
+      "finalText": {
+        "titleDe": "Durchlass- und Sperrverhalten einer Diode an einer Kennlinie erklären",
+        "titleEn": "Explain Forward and Reverse Diode Behaviour Using a Characteristic",
+        "descriptionDe": "Die lernende Person kann aus einer vorgegebenen qualitativen Strom-Spannungs-Kennlinie einer Diode ihr Durchlass- und Sperrverhalten ablesen und damit für beide Polungen bei angegebener Diodenspannung im dargestellten Kennlinienbereich vorhersagen, ob in einem einfachen Stromkreis ein nennenswerter Strom fließt.",
+        "descriptionEn": "The learner can read forward and reverse diode behaviour from a supplied qualitative current–voltage characteristic and use it, for either polarity at a stated diode voltage within the displayed characteristic range, to predict whether an appreciable current flows in a simple circuit."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-diode-page-current1-v4-a-sol-ultra-20261115-061652.goal-1",
+          "recordDigest": "sha256:a5bb73791257e5fc8f4e9eb2249cc1e72c0f591793c276e4f64c8c034e44e61c"
+        },
+        "second": {
+          "recordId": "physik-semiconductor-diode-page-current1-20261115-v4-first-pass-b.batch-001.informed-page-current-b-gpt61sol-ultra.dc55adac-91a5-5cc3-ab47-be008480616f",
+          "recordDigest": "sha256:f3db98867653eb8fded8c016a99d8a684f2f18f38d8bc8e81de54ea5607569a8"
+        }
+      },
+      "rationaleDe": "Beide tatsächlich gelesenen aktuellen seitengebundenen Bestätigungen halten Wortlaut, P und fachlichen Umfang für angemessen. B wird für die explizite Verknüpfung von A/K-Bezug, kleinem und nennenswertem Durchlassstrom sowie neuer Kennlinie und Bereichsgrenze gewählt; A bestätigt dieselben Bezüge und die aktuelle5/5-Aufgabe. Die geänderte Brotkrumen-Sammelbezeichnung ist redaktionell, keine fachliche Reparatur. Kein historischer Seitenhash wird überschrieben und keine eigene Messung oder Quellenvollständigkeit daraus abgeleitet.",
+      "rationaleEn": "Both actually read current page-bound confirmations find the wording, P and scientific scope appropriate. B is selected for explicitly connecting A/K references, small versus appreciable forward current, a new characteristic and range limits; A supports the same references and current5/5 task. The changed breadcrumb group label is editorial, not a scientific repair. No historical page hash is overwritten, and no personal measurement or complete source mapping is inferred."
+    }
+  ],
+  "manifestFingerprint": "sha256:7b70153fc7f78da324b823d69bc43672f23fd70153434363f3cb2ccc373895fd"
+}

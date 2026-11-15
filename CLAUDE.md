@@ -12,6 +12,17 @@ file: §0 provider/release decisions (dated log), §2 graph model and Personal
 Curriculum, §3 `Goal` fields, §4 mastery, §5 frontier, §7 conventions for new
 goals, §10 layers A/B/C, §11 ID and privacy, §12 AI adapters.
 
+**Current execution mandate (15 November 2026):** agents own the resolution
+and implementation of the model, stage-plan and pedagogical findings in
+`docs/dev/stage-plan-units-handover-2026-11-15.md`; the Product Owner reviews
+concrete results. Its earlier owner-approval reservations do not block the
+delegated work. Use primary-source and didactic research, appropriate atomic
+goals and real assessment coverage; preserve all quality floors, immutable
+evidence and learner-result contracts. Deliver to `main` with fresh successful
+CI, including #153 and #156 after their checks pass. Keep PRs few and
+intermediate; delegate suitable work to GPT 6.1 Sol Ultra. See the opening
+mandate in `AGENTS.md` for the exact scope.
+
 ## What SkillPilot is
 
 Open-source learning platform that models curricula as **skill graphs** (DAG of

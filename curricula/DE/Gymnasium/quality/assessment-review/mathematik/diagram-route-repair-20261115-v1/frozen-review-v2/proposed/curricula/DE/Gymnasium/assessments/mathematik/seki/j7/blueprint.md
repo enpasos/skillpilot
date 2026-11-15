@@ -1,0 +1,38 @@
+# J7 Mathematics Exam Blueprint v6 candidate
+
+Status: Task 2 v6 remains `needs_review`; Task 4 v5 is promoted, Task 7 remains on v4, Tasks 5 and 6 on v3, and Tasks 1 and 3 on v1.
+
+Total if Task 2 v6 is later released: 41 BE
+Time: 60 minutes
+
+| Task | Source | BE | Focus | Covered goals |
+| --- | --- | ---: | --- | --- |
+| 1 | `draft_v1.md` | 5 | Geschwindigkeit aus Messwerten berechnen, Einheiten wechseln und Messunsicherheit realistisch benennen. | 37bf2eb6-75a0-44c1-a988-ca0e203cb072 (Geschwindigkeit als abgeleitete Größe verwenden)<br>c3cce9a1-9adc-4470-b2d8-aea81d6d7b65 (Messungen in Umwelt und Quellenmaterial durchführen)<br>314854a0-4e97-462e-9486-9fd83652e91d (Taschenrechner situationsgerecht nutzen) |
+| 2 | `draft_v6.md` – `needs_review` | 8 | Rauminhalt, äußeren Oberflächeninhalt und Dichte des geraden Prismas getrennt berechnen und deuten. | 68fb0e78-34f2-5572-8db6-e7f5ebcff70f (Volumen gerader Prismen berechnen)<br>f1348d40-3872-5e44-8892-3600c811796f (Oberflächeninhalt gerader Prismen berechnen)<br>2345ae25-5805-4c72-b830-32e63cc6262a (Dichte als abgeleitete Größe verwenden) |
+| 3 | `draft_v1.md` | 5 | Umfang und Flächeninhalt von Kreis und Kreisteilen berechnen und Ergebnisse mit Einheiten angeben. | 8064088b-dc0a-4a67-ad63-360fdcc9869d (Umfang und Flächeninhalt von Kreisen und Kreisteilen berechnen) |
+| 4 | `draft_v5.md` | 7 | Proportionale Funktionen, Dreisatz und Funktionsbegriff in einem linearen Kostenkontext nutzen. | 7dea79d2-67f2-4d92-b6cc-ad1b953dca3d (Funktionen als eindeutige Zuordnungen charakterisieren)<br>f3167cab-bb23-4bb9-8a27-22e3c5015d44 (Proportionale Funktionen als Ursprungsgeraden deuten und darstellen)<br>093397e0-eec8-45bb-9a5a-a24827876df5 (Dreisatz in proportionalen Sachsituationen anwenden) |
+| 5 | `draft_v3.md` | 7 | Termwerte berechnen, Terme äquivalent umformen und ein typisches Distributivgesetz-Missverständnis korrigieren. | 2c4830e6-a8d5-48d0-9202-3b7d18a419c2 (Terme im Bereich rationaler Zahlen äquivalent umformen)<br>a6469c01-6ca3-5eb2-a82c-94f3d0560b32 (Termwerte durch Einsetzen berechnen) |
+| 6 | `draft_v3.md` | 4 | Einfache Zinsrechnung und Prozentrechnung in einem alltagsnahen Finanzkontext anwenden. | bd8fd6d5-7155-45a5-96f0-008a4e9acb3a (Einfache Zinsrechnung im Prozentkontext anwenden)<br>804d7443-9976-5d81-a47d-1601f42f7e0e (Prozentrechnungen in anspruchsvolleren Sachzusammenhängen anwenden) |
+| 7 | `draft_v4.md` | 5 | Daten aus einer Sekundärquelle entnehmen, Boxplot-Kenngrößen bestimmen und Verteilungen kritisch vergleichen. | b819973b-4cad-48a4-9f7e-f74b5e75ea6c (Datenverteilungen mithilfe von Kenngrößen und Boxplots vergleichen und deuten)<br>bc1a4cba-a8a8-5e59-9f3f-1e8fe7918004 (Statistische Daten aus Sekundärquellen entnehmen) |
+
+Design notes:
+
+- Each task has a coherent local context or a clearly marked technical purpose.
+- `coveredGoalIds` are intentionally narrow and task-specific.
+- Each task includes at least one explanation, checking, misconception, representation-change, or model-limit element where appropriate.
+- The v2 change is limited to Task 4 currency typesetting. Amounts use a German decimal comma, explicit spacing and upright `EUR` inside mathematical markup.
+- The v3 change applies the same convention to every currency amount in Tasks 5 and 6 and their solutions.
+- The v4 change gives Task 7 an explicit table header and GFM delimiter row so its unchanged data render as a table in both cockpit and chat.
+- The v5 change removes only the unnecessary prescribed method `mit einem Dreisatz` from Task 4. The calculation, result, point allocation, prerequisites and covered goals stay unchanged.
+- The v6 candidate splits Task 2's volume and surface-area evidence, adds a context interpretation for each, and changes its score from 7 to 8 BE. Its passing rule still needs an independent per-goal adequacy review; v1's simulated release cannot be reused.
+- All other task wording, mathematical requirements and scoring remain unchanged.
+- K2-Diagrammkorrektur: Aufgabe 5 prüft den Distributivgesetzfehler, nicht Diagramm-Missverständnisse. `d668c22d-caeb-5e91-8980-721c931a2bcf` ist deshalb aus ihren Voraussetzungen und ihrer Abdeckung entfernt. Die vier eigenständigen Diagrammprüfungen unter `diagram-route-repair-20261115-v1/` haben eigene IDs; ihre Freigabe und Routenwirksamkeit benötigen aktuelle unabhängige Prüfung.
+
+## Eigenständige Diagrammprüfungen – Entwurf
+
+Diese vier Prüfungen sind zusätzliche lokale Endpunkte, keine Erweiterung des oben beschriebenen 60-Minuten-Prüfungssatzes. Jede erfasst genau ein bestehendes Diagrammziel mit zwei Fällen. Aktueller Status: `needs_review`; keine Aktivierung oder Prüfungsfreigabe.
+
+- `f4fda40d-dca5-510b-bd6d-f7874b3d7b9b`: Diagramme lesen: Zeitverlauf und Budget → `80c232f1-8f72-5829-9dbe-5a610ccab3be`.
+- `d9c49084-084e-5142-859c-33c53403ccf1`: Kennwerte und Trends: Gleichstand und Plateau → `496f16a0-c031-5753-b988-d6cd3cab595e`.
+- `c76fae5e-70e6-5f20-9abe-e9e790d95324`: Diagrammaussagen prüfen: Höhe und Zeitabstände → `fcfbff12-bd03-52ec-b242-a693212b3d2b`.
+- `57bf531d-0920-5424-bef4-f704f5462477`: Diagrammfehler erklären und klarer darstellen → `d668c22d-caeb-5e91-8980-721c931a2bcf`.

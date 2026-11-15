@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-11-15T04:32:34.778639Z",
+  "reviewer": "Codex semiconductor QA agent; actual independent informed current-input machine review",
+  "goalId": "1abfd5ef-1f42-5b71-8c9a-80c0a6b0322e",
+  "result": "machine-content-review-pass",
+  "releaseReadiness": "The author may apply the reviewed machine-content release metadata; content/scoring below remain exact. Native gates and final current status remain separate.",
+  "humanApproval": false,
+  "learnerExecutionClaim": false,
+  "reason": "Tatsächliche Lektüre vollständiger DE/EN-Aufgaben, Lösungen und analytischer6/5/5-Bewertung. Echtes A/B/C-Banddiagramm liefert besetzte/unbesetzte Zustände, Energierichtung, T=0-Baseline und ein besetztes Donatorniveau ohne fertige Stoffklassen. Die Aufgaben verlangen Leiter-/Halbleiterdeutung sowie n-/p-Transfer, Energielage versus räumliche Schicht und neutrale Träger-/Ionenbilanz. Anschließende thermische Anregung wird von der T=0-Ausgangsbesetzung getrennt. Pass12/16: Ausfall eines vollständigen6- oder5-Punkte-Teils erlaubt höchstens10 beziehungsweise11Punkte und damit kein Bestehen; keine versteckte Alles-oder-nichts-Regel. df010 bleibt vollständig unverändert.",
+  "reviewedContent": {
+    "coveredGoalIds": [
+      "df010b2b-b182-5f7e-bbe4-49b72e48c27a"
+    ],
+    "coveredStrands": [
+      "LI_MATERIE",
+      "LI_TECHNIK"
+    ],
+    "demandLevels": [
+      "AB1",
+      "AB2",
+      "AB3"
+    ],
+    "taskContent": "![Aufgabenmaterial: Bandmodelle A–C](/assets/goal-visualizations/physik/1abfd5ef-1f42-5b71-8c9a-80c0a6b0322e/1abfd5ef-1f42-5b71-8c9a-80c0a6b0322e-bands-20261115.png)\n\n**Material:** Die Abbildung zeigt drei vereinfachte Bändermodelle. Dunkel markierte Zustände sind besetzt, helle Bandbereiche unbesetzt. Die Ausgangsbesetzungen gelten für T = 0 K; anschließend wird qualitativ erklärt, was geringe thermische Anregung bewirken kann. Die Höhe gibt eine Energie an, keine räumliche Schicht im Material. In C liegt ein zusätzliches besetztes Niveau dicht unter dem oberen Band; die Hauptbandlücke bleibt bestehen.\n\n1. Ordnen Sie A einem Leiter und B einem undotierten Halbleiter zu und erklären Sie die Zuordnung über erreichbare unbesetzte Energiezustände und die Bandlücke. (6 BE)\n2. Deuten Sie C als n-Dotierung und erklären Sie, wie aus dem Zusatzniveau leichter anregbare bewegliche Elektronen bereitgestellt werden und dadurch die Leitfähigkeit beeinflusst wird. (5 BE)\n3. Skizzieren Sie analog die qualitative Wirkung einer p-Dotierung mit Akzeptorniveaus und Löchern. Erklären Sie, warum Dotierung keine beliebige Erzeugung elektrischer Ladung bedeutet. (5 BE)",
+    "solutionContent": "1. A ist ein Leiter (1 BE), B ein undotierter Halbleiter (1 BE). Im teilweise besetzten Band von A liegen erreichbare unbesetzte Zustände nahe besetzten Zuständen (2 BE). Bei B trennt die Bandlücke das volle untere vom leeren oberen Band; thermische Anregung kann Elektronen in das obere Band bringen und Löcher zurücklassen (2 BE).\n2. C beschreibt n-Dotierung (1 BE). Das besetzte Zusatzniveau liegt nahe unter dem Leitungsband; die nötige Anregungsenergie ist kleiner als über die Hauptbandlücke (2 BE). Dadurch können zusätzliche bewegliche Elektronen ins Leitungsband gelangen und die Leitfähigkeit beeinflussen, ohne die Hauptbandlücke zu beseitigen (2 BE).\n3. Akzeptorniveaus liegen nahe oberhalb des Valenzbands (2 BE). Die Aufnahme eines Elektrons aus diesem Band hinterlässt einen beweglichen positiv wirksamen fehlenden Elektronenplatz, ein Loch (2 BE). Die Ladungsbilanz einschließlich der ortsfesten Dotierionen bleibt neutral; weder Protonen noch elektrische Ladung werden neu erzeugt (1 BE). Eine Darstellung als Energiebereiche darf nicht als räumliche Schichtung gedeutet werden.",
+    "scoring": {
+      "maxPoints": 16,
+      "passingPoints": 12,
+      "steps": [
+        {
+          "id": "band_model_1",
+          "points": 6,
+          "description": "Leiter-/Halbleiterzuordnung: 2 BE; erreichbare unbesetzte Zustände: 2 BE; Bandlücke und thermische Anregung: 2 BE."
+        },
+        {
+          "id": "band_model_2",
+          "points": 5,
+          "description": "n-Zuordnung: 1 BE; Lage/Anregungsenergie des Zusatzniveaus: 2 BE; mobile Elektronen und erhaltene Hauptbandlücke: 2 BE."
+        },
+        {
+          "id": "band_model_3",
+          "points": 5,
+          "description": "Akzeptorniveau: 2 BE; Lochentstehung: 2 BE; neutrale vollständige Ladungsbilanz: 1 BE."
+        }
+      ]
+    },
+    "taskContentEn": "![Assessment material: band models A–C](/assets/goal-visualizations/physik/1abfd5ef-1f42-5b71-8c9a-80c0a6b0322e/1abfd5ef-1f42-5b71-8c9a-80c0a6b0322e-bands-20261115.png)\n\n**Material:** The figure shows three simplified band models. Dark states are occupied and pale band regions unoccupied. Initial occupations refer to T = 0 K; explain qualitatively what a small thermal excitation can then cause. Height denotes energy, not a spatial layer in the material. In C an additional occupied level lies close below the upper band; the main band gap remains.\n\n1. Assign A to a conductor and B to an undoped semiconductor, explaining the assignment through accessible unoccupied states and the band gap. (6 points)\n2. Interpret C as n-type doping and explain how the additional level makes mobile electrons more easily available through excitation, affecting conductivity. (5 points)\n3. Sketch the corresponding qualitative effect of p-type doping with acceptor levels and holes. Explain why doping does not mean arbitrary creation of electric charge. (5 points)",
+    "solutionContentEn": "1. A is a conductor (1 point), B an undoped semiconductor (1 point). In the partly occupied band of A, accessible unoccupied states lie close to occupied states (2 points). In B a gap separates the full lower band from the empty upper band; thermal excitation can bring electrons into the upper band and leave holes behind (2 points).\n2. C represents n-type doping (1 point). The occupied additional level lies close below the conduction band, requiring less excitation energy than across the main band gap (2 points). Additional mobile electrons can therefore enter the conduction band and affect conductivity without eliminating the main gap (2 points).\n3. Acceptor levels lie close above the valence band (2 points). Taking up an electron from that band leaves a mobile positively acting missing-electron site, a hole (2 points). Charge balance including fixed dopant ions remains neutral; neither protons nor charge are created (1 point). Energy ranges must not be interpreted as spatial layers."
+  },
+  "reviewedContentSha256": "sha256:69d61de7f0422a2da15fe951ad39f07590272e3daab1f2947ce1b5f703dc4cee",
+  "contentProjectionContract": "Exact examData excluding only reviewStatus,reviewNote,sourceArtifactPath; metadata release cannot modify the reviewed task, solution, scoring or coverage.",
+  "actuallyViewedAsset": {
+    "path": "curricula/DE/Gymnasium/visualizations/physik/1abfd5ef-1f42-5b71-8c9a-80c0a6b0322e/1abfd5ef-1f42-5b71-8c9a-80c0a6b0322e-bands-20261115.png",
+    "sha256": "sha256:c140f7cddb84fc38ec04d302818001ad2c175620ac1b6e08c51880beb6f63fde"
+  },
+  "actualViewportInspections": [
+    {
+      "width": 360,
+      "path": "curricula/DE/Gymnasium/quality/goal-model-review/physics-semiconductor-learning-path-20261115/post-independent-review-v2/1abfd5ef-1f42-5b71-8c9a-80c0a6b0322e-bands-360.png",
+      "sha256": "sha256:9f951a581921dc7846a2b2ea5fcbc81de807d1d895c699a65119a1bac8af69db"
+    },
+    {
+      "width": 680,
+      "path": "curricula/DE/Gymnasium/quality/goal-model-review/physics-semiconductor-learning-path-20261115/post-independent-review-v2/1abfd5ef-1f42-5b71-8c9a-80c0a6b0322e-bands-680.png",
+      "sha256": "sha256:fc7189fc770decca0973015736ea57823f44821a6ce2ef00e0cece857c0423b9"
+    }
+  ],
+  "readability": "Actually viewed full resolution and actual360px/680px Chromium image renders; essential diagrams, sign references, occupancy legend and supplied relations are readable with no clipping. No actual-host or human-trial claim."
+}

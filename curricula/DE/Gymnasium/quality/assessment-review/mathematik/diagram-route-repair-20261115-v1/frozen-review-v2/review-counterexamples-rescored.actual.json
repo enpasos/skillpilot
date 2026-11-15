@@ -1,0 +1,128 @@
+{
+  "method": "Actual author judgement on the independent reviewer’s constructed answer patterns; arithmetic totals are computed here. Not automated semantic grading or learner evidence. Independent v2 review remains required.",
+  "examples": [
+    {
+      "reviewCounterexampleId": "R1",
+      "assessmentId": "f4fda40d-dca5-510b-bd6d-f7874b3d7b9b",
+      "originalV1Total": 15,
+      "originalV1Max": 16,
+      "originalV1PassingPoints": 13,
+      "originalV1Passed": true,
+      "v2CriterionScores": {
+        "axes-a-axis-meaning": 2,
+        "axes-a-scaled-reading": 2,
+        "axes-b-axis-distinction": 1,
+        "axes-b-unit-factor": 2,
+        "axes-b-context-reading": 2
+      },
+      "v2Total": 9,
+      "v2Max": 10,
+      "v2PassingPoints": 10,
+      "v2Passed": false,
+      "authorReason": "Explicitly denies a category axis. This contradicts the category/quantity distinction criterion; other money calculations cannot replace it."
+    },
+    {
+      "reviewCounterexampleId": "R2",
+      "assessmentId": "d9c49084-084e-5142-859c-33c53403ccf1",
+      "originalV1Total": 21,
+      "originalV1Max": 24,
+      "originalV1PassingPoints": 21,
+      "originalV1Passed": true,
+      "v2CriterionScores": {
+        "trends-a-maximum": 2,
+        "trends-a-equality": 2,
+        "trends-a-rate": 2,
+        "trends-a-comparison": 2,
+        "trends-b-plateau": 2,
+        "trends-b-change-context": 2,
+        "trends-future-boundary": 0,
+        "trends-cause-boundary": 0
+      },
+      "v2Total": 12,
+      "v2Max": 16,
+      "v2PassingPoints": 16,
+      "v2Passed": false,
+      "authorReason": "Correct displayed features/rates, but claims certain future decrease and a proven pump cause."
+    },
+    {
+      "reviewCounterexampleId": "R3a",
+      "assessmentId": "57bf531d-0920-5424-bef4-f704f5462477",
+      "originalV1Total": 14,
+      "originalV1Max": 16,
+      "originalV1PassingPoints": 13,
+      "originalV1Passed": true,
+      "v2CriterionScores": {
+        "correction-a-correct": 2,
+        "correction-a-alternative": 2,
+        "correction-a-reason": 0,
+        "correction-b-correct": 2,
+        "correction-b-alternative": 2,
+        "correction-b-reason": 0
+      },
+      "v2Total": 8,
+      "v2Max": 12,
+      "v2PassingPoints": 12,
+      "v2Passed": false,
+      "authorReason": "Both alternatives are drawable and correct, but neither is linked to why its intended comparison becomes clearer."
+    },
+    {
+      "reviewCounterexampleId": "R3b",
+      "assessmentId": "57bf531d-0920-5424-bef4-f704f5462477",
+      "originalV1Total": 13,
+      "originalV1Max": 16,
+      "originalV1PassingPoints": 13,
+      "originalV1Passed": true,
+      "v2CriterionScores": {
+        "correction-a-correct": 2,
+        "correction-a-alternative": 2,
+        "correction-a-reason": 2,
+        "correction-b-correct": 2,
+        "correction-b-alternative": 0,
+        "correction-b-reason": 0
+      },
+      "v2Total": 8,
+      "v2Max": 12,
+      "v2PassingPoints": 12,
+      "v2Passed": false,
+      "authorReason": "Case B proposes the unchanged count chart. Copied data do not demonstrate a coherent proportion alternative or its benefit."
+    },
+    {
+      "reviewCounterexampleId": "R4",
+      "assessmentId": "c76fae5e-70e6-5f20-9abe-e9e790d95324",
+      "originalV1Total": 14,
+      "originalV1Max": 16,
+      "originalV1PassingPoints": 13,
+      "originalV1Passed": true,
+      "v2CriterionScores": {
+        "claims-a-actual-comparison": 2,
+        "claims-a-mechanism": 1,
+        "claims-b-rate-evidence": 2,
+        "claims-b-spacing-mechanism": 2
+      },
+      "v2Total": 7,
+      "v2Max": 8,
+      "v2PassingPoints": 8,
+      "v2Passed": false,
+      "authorReason": "Case A only lists the 30 L start and visible heights; it never connects them to the false ratio inference."
+    },
+    {
+      "reviewCounterexampleId": "R4-threshold-variant",
+      "assessmentId": "c76fae5e-70e6-5f20-9abe-e9e790d95324",
+      "originalV1Total": 13,
+      "originalV1Max": 16,
+      "originalV1PassingPoints": 13,
+      "originalV1Passed": true,
+      "v2CriterionScores": {
+        "claims-a-actual-comparison": 2,
+        "claims-a-mechanism": 1,
+        "claims-b-rate-evidence": 2,
+        "claims-b-spacing-mechanism": 2
+      },
+      "v2Total": 7,
+      "v2Max": 8,
+      "v2PassingPoints": 8,
+      "v2Passed": false,
+      "authorReason": "Case A only names the axis start. This is partial mechanism recognition, not a demonstrated mechanism link."
+    }
+  ]
+}

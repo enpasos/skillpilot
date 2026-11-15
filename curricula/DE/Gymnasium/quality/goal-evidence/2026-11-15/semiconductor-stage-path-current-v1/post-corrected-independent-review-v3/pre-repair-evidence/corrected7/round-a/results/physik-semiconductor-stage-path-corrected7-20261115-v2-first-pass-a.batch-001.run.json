@@ -1,0 +1,56 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-semiconductor-corrected7-v2-a-sol-ultra-20261115-045108",
+  "campaignId": "physik-semiconductor-stage-path-corrected7-20261115-v2-a",
+  "roundId": "physik-semiconductor-stage-path-corrected7-20261115-v2-first-pass-a",
+  "batchId": "physik-semiconductor-stage-path-corrected7-20261115-v2-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:86e2bc289faa10eeb590687fe30076bf8ef57c128926a507fc0faaf16e5f5544",
+  "bundleFingerprint": "sha256:9a92487041e29e2740f57fe629934a26e27d0806512e4fa717952aa7b49a6595",
+  "bookDigest": "sha256:3e25a8e65112ad3470b226d38916c2e874be5e689b4893797e6bde6b43c454f3",
+  "provider": "OpenAI",
+  "model": "gpt-6.1-sol",
+  "role": "subject_reviewer",
+  "promptFamilyId": "skillpilot-goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:86100f0f8167b9200d928996ea5deba46b15575e01ea8720487589055357fe64",
+  "generationParametersFingerprint": "sha256:de78f55b6de544cb2985d97d51417e3bd5273a80e5d5bed56b95967151532673",
+  "independenceGroupId": "physik-semiconductor-stage-path-corrected7-20261115-v2-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "7badac4d-2874-5b3a-87e8-bf8f4440b2a6",
+    "dc55adac-91a5-5cc3-ab47-be008480616f",
+    "3b586f2a-60e2-5019-aa08-6a47616a1f1f",
+    "853dbe54-85b0-59ab-8f3a-000c2b7746ec",
+    "7d4d6a39-0c78-5fb0-b7bf-182ed00972f7",
+    "af50bb9a-fd7b-50f5-9698-48c4efe99032",
+    "c2af45aa-e3fc-5119-9159-c5a260b4135a"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:86e2bc289faa10eeb590687fe30076bf8ef57c128926a507fc0faaf16e5f5544"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:86100f0f8167b9200d928996ea5deba46b15575e01ea8720487589055357fe64"
+    },
+    {
+      "role": "book_model",
+      "digest": "sha256:6cb7d47c7160edf66626eec53ea39954eff012640daa5b6e6f46e61d2df8ec00"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    }
+  ],
+  "startedAt": "2026-11-15T04:51:08Z",
+  "completedAt": "2026-11-15T04:58:49Z",
+  "status": "completed",
+  "outputDigest": "sha256:e75e344f5288623397881064b04562a773174110f4b9d1e8f6f36a9bb280d508",
+  "toolchainVersion": "codex-native-tsx4.21.0-node20.20.2"
+}

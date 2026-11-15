@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-11-15T05:37:03.211675Z",
+  "reviewer": "Codex semiconductor QA agent, independent actual informed current-content machine review of delivery-authored task",
+  "goalId": "a8d99168-62cc-5771-bb5d-9ba833d84193",
+  "result": "machine-content-review-pass",
+  "releaseReadiness": "Author may apply machine-content release metadata without altering the exact reviewed scientific projection. Current native D/P/A/M/V, graph, routes and CI remain separate requirements.",
+  "humanApproval": false,
+  "learnerExecutionClaim": false,
+  "reason": "Actually read complete final DE/EN task, solution and all5 separate scientific criteria. The supplied four/five/three-electron model leads to donor mobileelectron and fixedpositiveion, acceptor mobilehole and fixednegativeion, both neutral charge accounts and actual hole motion by neighbouring electrons. Each missing or contradicted essential account prevents max5/pass5; harmless wording or arithmetic is not a separate criterion. n/p is not a net crystal charge. This fixes the earlier broad-group omission reasoning that was insufficient.",
+  "reviewedContent": {
+    "coveredGoalIds": [
+      "9f265f49-1342-5ba7-9c5d-54e97fdb2f19"
+    ],
+    "coveredStrands": [
+      "LI_MATERIE",
+      "LI_TECHNIK"
+    ],
+    "demandLevels": [
+      "AB1",
+      "AB2",
+      "AB3"
+    ],
+    "taskContent": "**Material:** Ein vereinfachtes Bindungsmodell: Silizium hat vier Außenelektronen und bildet vier Elektronenpaarbindungen. Ein eingebautes Phosphoratom hat fünf Außenelektronen, ein Boratom drei. Die eingebauten Atome sind zunächst neutral. Bei der betrachteten Temperatur geben die Donatoren ihr zusätzliches Elektron als bewegliches Elektron ab; die Akzeptoren nehmen ein Elektron aus einer benachbarten Bindung auf.\n\n1. Erklären Sie für beide Dotierungen, wie der bewegliche Ladungsträger entsteht und welche Ladung das ortsfeste Dotierion trägt. Begründen Sie für jeden Fall, weshalb das Material als Ganzes neutral bleibt. Ein Loch ist dabei genau zu deuten. (4 BE)\n2. Ein Lernender sagt: „Bei p-Dotierung wandern positive Borionen durch den Kristall; ein Loch ist ein kleiner Hohlraum oder ein Proton.“ Widerlegen Sie die Aussagen und beschreiben Sie die Bewegung eines Lochs durch das Nachrücken benachbarter Bindungselektronen. (1 BE)",
+    "solutionContent": "1. Donator und bewegliches Elektron (1 BE): Das Phosphoratom hat gegenüber den vier Bindungen ein zusätzliches Außenelektron. Seine Abgabe stellt im vorgegebenen Modell ein bewegliches negatives Elektron bereit.\n2. Donatorion und Neutralität (1 BE): Nach der Abgabe bleibt das Donatorion positiv und ortsfest. Seine positive Ladung und das bewegliche negative Elektron gleichen sich aus; n bedeutet keine negative Nettoladung des ganzen Materials.\n3. Akzeptor und Lochentstehung (1 BE): Das Boratom nimmt ein Elektron aus einer benachbarten Bindung auf. Dort bleibt ein positiv wirksamer fehlender Bindungselektronenplatz, ein Loch, als beweglicher Träger zurück.\n4. Akzeptorion, Neutralität und Ortsfestigkeit (1 BE): Der Akzeptor wird durch das aufgenommene Elektron negativ; er bleibt im Gitter ortsfest. Negatives Ion und positiv wirksames Loch gleichen sich aus, ohne dass Dotierionen durch den Kristall wandern oder das ganze Material positiv geladen wird.\n5. Lochbewegung (1 BE): Benachbarte Bindungselektronen besetzen nacheinander den fehlenden Platz. Dadurch verlagert sich die Fehlstelle entgegengesetzt zur Elektronenbewegung. Ein Loch ist weder ein Hohlraum noch ein Proton.\n\nJedes fachliche Kriterium wird getrennt mit 0 oder 1 BE bewertet. Die Kriterien können nicht durch zusätzliche Zahlen, Formulierungen oder andere Punkte ausgeglichen werden. Fachlich gleichwertige Begründungen zählen. Isolierte Rechen-, Einheiten- oder Schreibfehler ohne Folgen für das begründete Verständnis verursachen keinen eigenen Abzug. Teilpunkte geben Rückmeldung zu den schon gezeigten und noch fehlenden Aspekten.",
+    "scoring": {
+      "maxPoints": 5,
+      "passingPoints": 5,
+      "steps": [
+        {
+          "id": "doping-donor-mobile",
+          "points": 1,
+          "description": "Zusätzliches Donatorelektron und seine Freisetzung als beweglicher negativer Träger kausal erklärt."
+        },
+        {
+          "id": "doping-donor-balance",
+          "points": 1,
+          "description": "Ortsfestes positives Donatorion und neutrale Bilanz mit dem beweglichen Elektron erklärt."
+        },
+        {
+          "id": "doping-acceptor-hole",
+          "points": 1,
+          "description": "Elektronenaufnahme des Akzeptors und dadurch entstehender fehlender Bindungselektronenplatz als Loch erklärt."
+        },
+        {
+          "id": "doping-acceptor-balance",
+          "points": 1,
+          "description": "Ortsfestes negatives Akzeptorion, neutrale Bilanz mit dem Loch und fehlende Ionenwanderung erklärt."
+        },
+        {
+          "id": "doping-hole-motion",
+          "points": 1,
+          "description": "Lochbewegung durch nachrückende Bindungselektronen erklärt; Hohlraum- und Protonenbild verworfen."
+        }
+      ]
+    },
+    "taskContentEn": "**Material:** A simplified bond model: silicon has four outer electrons and forms four electron-pair bonds. An incorporated phosphorus atom has five outer electrons, a boron atom three. Incorporated atoms are initially neutral. At the temperature considered, donors release their extra electron as a mobile electron; acceptors take up an electron from a neighbouring bond.\n\n1. Explain for each doping case how the mobile carrier forms and which charge the fixed dopant ion carries. Explain for each case why the material remains neutral overall and precisely interpret a hole. (4 points)\n2. A learner says: “In p-type silicon positive boron ions travel through the crystal; a hole is a small cavity or a proton.” Refute these claims and describe hole motion through neighbouring bond electrons filling the vacancy. (1 point)",
+    "solutionContentEn": "1. Donor and mobile electron (1 point): Phosphorus has one outer electron beyond the four bonds. Releasing it supplies a mobile negative electron in the given model.\n2. Donor ion and neutrality (1 point): After release the donor ion is positive and fixed. Its positive charge balances the mobile negative electron; n does not mean a negative net charge of the whole material.\n3. Acceptor and hole formation (1 point): Boron takes up an electron from a neighbouring bond. A positively acting missing bond-electron site, a hole, remains there as the mobile carrier.\n4. Acceptor ion, neutrality and fixed position (1 point): The accepted electron makes the acceptor negative; it remains fixed in the lattice. The negative ion balances the positively acting hole, without dopant-ion migration or a positively charged crystal overall.\n5. Hole motion (1 point): Neighbouring bond electrons successively fill the vacancy, making the missing-electron site move opposite to the electrons. A hole is neither a cavity nor a proton.\n\nEach scientific criterion is scored separately with 0 or 1 point. Additional numbers, wording or other points cannot compensate for a missing criterion. Scientifically equivalent reasoning earns credit. Isolated calculation, unit or notation slips without consequences for the justified understanding do not cause a separate deduction. Partial scores provide feedback on aspects already demonstrated and those still missing."
+  },
+  "reviewedContentSha256": "sha256:cba0d4d065d5b5f0609ede0173bb91654ffda9c548c2f3b64049a4f4d4a53578",
+  "contentProjectionContract": "Exact examData excluding only reviewStatus,reviewNote,sourceArtifactPath; digest is UTF8 sorted-key compact JSON. Release metadata cannot modify reviewed scientific task, solution, scoring or coverage.",
+  "assets": [],
+  "essentialCriterionOmissionAudit": [
+    {
+      "criterionId": "doping-donor-mobile",
+      "maximumWithoutCriterion": 4,
+      "passingPoints": 5,
+      "result": "cannot pass without this scored essential scientific criterion"
+    },
+    {
+      "criterionId": "doping-donor-balance",
+      "maximumWithoutCriterion": 4,
+      "passingPoints": 5,
+      "result": "cannot pass without this scored essential scientific criterion"
+    },
+    {
+      "criterionId": "doping-acceptor-hole",
+      "maximumWithoutCriterion": 4,
+      "passingPoints": 5,
+      "result": "cannot pass without this scored essential scientific criterion"
+    },
+    {
+      "criterionId": "doping-acceptor-balance",
+      "maximumWithoutCriterion": 4,
+      "passingPoints": 5,
+      "result": "cannot pass without this scored essential scientific criterion"
+    },
+    {
+      "criterionId": "doping-hole-motion",
+      "maximumWithoutCriterion": 4,
+      "passingPoints": 5,
+      "result": "cannot pass without this scored essential scientific criterion"
+    }
+  ],
+  "limitations": [
+    "A content design review is not observed learner performance, human approval, real-host acceptance or a claim that every unrelated legacy assessment is perfect.",
+    "Prior actual raw reviews/releases remain historical; their insufficient whole-group grading conclusion is not silently reused."
+  ]
+}

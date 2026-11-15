@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:2ce99b539ae11482691197b67b0e3b95f0937fd435dbcd5f767da9983d0164d1",
+  "reviewInputFingerprint": "sha256:5ba72deb3da925686b593fc813179bea08fc3b9e05eda33610ef06377978d594",
+  "goalCount": 3,
+  "rounds": {
+    "first": {
+      "campaignId": "physik-semiconductor-retained-pages-current3-20261115-v4-a",
+      "roundId": "physik-semiconductor-retained-pages-current3-20261115-v4-first-pass-a",
+      "independenceGroupId": "physik-semiconductor-retained-pages-current3-20261115-v4-independent-a",
+      "runIds": [
+        "physik-retained-pages-current3-v4-a-sol-ultra-20261115-062305"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6.1-sol::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "physik-semiconductor-retained-pages-current3-20261115-v4-b",
+      "roundId": "physik-semiconductor-retained-pages-current3-20261115-v4-first-pass-b",
+      "independenceGroupId": "physik-semiconductor-retained-pages-current3-20261115-v4-independent-b",
+      "runIds": [
+        "physik-semiconductor-retained-pages-current3-20261115-v4-first-pass-b.batch-001.informed-current3-b-gpt61sol-ultra"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6.1-sol::gpt-6.1-sol; reasoning_effort=ultra; informed own-history current three-page confirmation; sampling controls not exposed"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 3,
+    "unavailable": 0,
+    "requiresSynthesis": 3
+  },
+  "goals": [
+    {
+      "goalId": "3857891b-d328-585b-9936-85c7aff122ee",
+      "firstRecordId": "physik-retained-pages-current3-v4-a-sol-ultra-20261115-062305.goal-1",
+      "secondRecordId": "physik-semiconductor-retained-pages-current3-20261115-v4-first-pass-b.batch-001.informed-current3-b-gpt61sol-ultra.3857891b-d328-585b-9936-85c7aff122ee",
+      "firstRunId": "physik-retained-pages-current3-v4-a-sol-ultra-20261115-062305",
+      "secondRunId": "physik-semiconductor-retained-pages-current3-20261115-v4-first-pass-b.batch-001.informed-current3-b-gpt61sol-ultra",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "4a42cddd-7827-5204-87e5-8d9eac7792f1",
+      "firstRecordId": "physik-retained-pages-current3-v4-a-sol-ultra-20261115-062305.goal-2",
+      "secondRecordId": "physik-semiconductor-retained-pages-current3-20261115-v4-first-pass-b.batch-001.informed-current3-b-gpt61sol-ultra.4a42cddd-7827-5204-87e5-8d9eac7792f1",
+      "firstRunId": "physik-retained-pages-current3-v4-a-sol-ultra-20261115-062305",
+      "secondRunId": "physik-semiconductor-retained-pages-current3-20261115-v4-first-pass-b.batch-001.informed-current3-b-gpt61sol-ultra",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "3b586f2a-60e2-5019-aa08-6a47616a1f1f",
+      "firstRecordId": "physik-retained-pages-current3-v4-a-sol-ultra-20261115-062305.goal-3",
+      "secondRecordId": "physik-semiconductor-retained-pages-current3-20261115-v4-first-pass-b.batch-001.informed-current3-b-gpt61sol-ultra.3b586f2a-60e2-5019-aa08-6a47616a1f1f",
+      "firstRunId": "physik-retained-pages-current3-v4-a-sol-ultra-20261115-062305",
+      "secondRunId": "physik-semiconductor-retained-pages-current3-20261115-v4-first-pass-b.batch-001.informed-current3-b-gpt61sol-ultra",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

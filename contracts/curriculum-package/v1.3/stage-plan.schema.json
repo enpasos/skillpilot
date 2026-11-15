@@ -1,0 +1,162 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/curriculum-package/v1.3/stage-plan.schema.json",
+  "title": "SkillPilot stage plan 1.0 - candidate",
+  "description": "Candidate stage-plan support, not the complete learning-unit successor contract. One authority per school form, Land and duration; no course-specific plan duplication. Semantic validation additionally enforces the two-stage root, sibling references and SekII after SekI.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "planFormatVersion",
+    "planId",
+    "scope",
+    "rootUnit",
+    "units",
+    "subjectViews"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "https://skillpilot.com/schemas/curriculum-package/v1.3/stage-plan.schema.json"
+    },
+    "planFormatVersion": {
+      "const": "1.0"
+    },
+    "planId": {
+      "$ref": "#/$defs/id"
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schoolForm",
+        "jurisdiction",
+        "durationModel"
+      ],
+      "properties": {
+        "schoolForm": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "jurisdiction": {
+          "type": "string",
+          "pattern": "^DE-[A-Z]{2}$"
+        },
+        "durationModel": {
+          "$ref": "#/$defs/nonBlankText"
+        }
+      }
+    },
+    "rootUnit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "label",
+        "children"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "label": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "children": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        }
+      }
+    },
+    "units": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "$ref": "#/$defs/unit"
+      }
+    },
+    "subjectViews": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 10000,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "landscapeId",
+          "courseProfile",
+          "viewId"
+        ],
+        "properties": {
+          "landscapeId": {
+            "$ref": "#/$defs/id"
+          },
+          "courseProfile": {
+            "$ref": "#/$defs/nonBlankText"
+          },
+          "viewId": {
+            "$ref": "#/$defs/id"
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 300,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:+-]*$"
+    },
+    "nonBlankText": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000,
+      "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+    },
+    "unit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "label",
+        "kind",
+        "stage",
+        "parentUnitId",
+        "after"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "label": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "kind": {
+          "const": "stage"
+        },
+        "stage": {
+          "enum": [
+            "SekI",
+            "SekII"
+          ]
+        },
+        "parentUnitId": {
+          "$ref": "#/$defs/id"
+        },
+        "after": {
+          "type": "array",
+          "maxItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        }
+      }
+    }
+  }
+}

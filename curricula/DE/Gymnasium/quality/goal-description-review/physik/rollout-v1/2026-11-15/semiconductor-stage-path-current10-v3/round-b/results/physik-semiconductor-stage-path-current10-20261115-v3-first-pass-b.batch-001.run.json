@@ -1,0 +1,56 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-semiconductor-stage-path-current10-20261115-v3-first-pass-b.batch-001.informed-current-b-gpt61sol-ultra",
+  "campaignId": "physik-semiconductor-stage-path-current10-20261115-v3-b",
+  "roundId": "physik-semiconductor-stage-path-current10-20261115-v3-first-pass-b",
+  "batchId": "physik-semiconductor-stage-path-current10-20261115-v3-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:ff6ac00d7293469f53a33c43fd9c2cbd6dc8a1e8d517273891eeaf17b950a6a8",
+  "bundleFingerprint": "sha256:44d71b174792204e99ec4d10800fb490dc6810b53ea92accd40aab8f7805c4c4",
+  "bookDigest": "sha256:e62f0b96da8e4bf0a9a7702416e79c771c0c573909eb90221969b28365be2cdb",
+  "provider": "OpenAI",
+  "model": "gpt-6.1-sol",
+  "modelVersion": "gpt-6.1-sol; reasoning_effort=ultra; informed own-history current confirmation; sampling controls not exposed",
+  "role": "subject_reviewer",
+  "promptFamilyId": "informed-current-description-confirmation-v3",
+  "promptFingerprint": "sha256:ce69922483c803d783fc99c7d83413ba30a592a228409391314ad84e27e92521",
+  "criteriaFingerprint": "sha256:fe3fe17a84a3cde28b0c0607b5d9b75bf8f5388cd4974fd64858a818cf16bdda",
+  "generationParametersFingerprint": "sha256:145f98fe8654cdbb4577db9a99bddd4a8ed08aec047f96e5e20a2e1e091c4cf1",
+  "independenceGroupId": "physik-semiconductor-stage-path-current10-20261115-v3-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "7badac4d-2874-5b3a-87e8-bf8f4440b2a6",
+    "9f265f49-1342-5ba7-9c5d-54e97fdb2f19",
+    "2084b7d4-300d-5fa0-8b8d-c480c40f853e",
+    "df010b2b-b182-5f7e-bbe4-49b72e48c27a",
+    "658cf33d-a0c2-5d47-801a-3dbcd5cac074",
+    "853dbe54-85b0-59ab-8f3a-000c2b7746ec",
+    "7d4d6a39-0c78-5fb0-b7bf-182ed00972f7",
+    "af50bb9a-fd7b-50f5-9698-48c4efe99032",
+    "c2af45aa-e3fc-5119-9159-c5a260b4135a",
+    "77ab31a9-8961-511c-8637-06e98023d869"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:ff6ac00d7293469f53a33c43fd9c2cbd6dc8a1e8d517273891eeaf17b950a6a8"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:ce69922483c803d783fc99c7d83413ba30a592a228409391314ad84e27e92521"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:fe3fe17a84a3cde28b0c0607b5d9b75bf8f5388cd4974fd64858a818cf16bdda"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    }
+  ],
+  "startedAt": "2026-11-15T06:00:32Z",
+  "completedAt": "2026-11-15T06:08:38Z",
+  "status": "completed",
+  "outputDigest": "sha256:02bf34ea3f02d720105a0e228fbfdd2907c78a89b53f9d64332e5a97b6d16386",
+  "toolchainVersion": "tsx-4.21.0-node-20.20.2"
+}

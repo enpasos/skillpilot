@@ -1,0 +1,269 @@
+# AI review input: Physik: aktuelle Anwendbarkeit von Experiment, Diode und Bändermodell
+
+- Book ID: `de-gym-physik-applicability-current3-20261115-v5`
+- Book edition: `curricular-atomic-v1`
+- Publication mode: `review`
+- BookModel digest: `sha256:fa9e124a6e540e2b45b373103cf655a0d56a9cf269af0e0a99587fe32fc07a0e`
+- Selected goals: 3
+
+The PDF and this Markdown are parallel review surfaces. The normalized JSON is authoritative for exact IDs, relationships, fingerprints, and evidence-profile fields.
+
+## Page 1: Transistorschaltung selbst aufbauen und untersuchen
+
+- Full learning-goal ID: `77ab31a9-8961-511c-8637-06e98023d869`
+- Goal fingerprint: `sha256:2b3142ed4628d0360456b5f05ed98f4c513c31e03ba50946aaace1e170ed6fc9`
+- Page fingerprint: `sha256:327634a74214cfe976f11151401898a0dc1f61341b0b52046b06b206a119175b`
+- Topic path: Physik > Sekundarstufe I > Halbleiterbauelemente: Grundlagen
+
+### Canonical description
+
+Die lernende Person kann eine vollständig vorgegebene einfache Transistorschaltung unter Aufsicht mit strombegrenzter Kleinspannung selbst aufbauen, ihre Schaltwirkung durch gezieltes Verändern der Ansteuerung und einen Kontrollversuch anhand eigener Beobachtungen untersuchen und funktional begründen sowie die Ergebnisse auf eine geänderte Eingangszuordnung übertragen.
+
+### Visualization
+
+/assets/goal-visualizations/physik/77ab31a9-8961-511c-8637-06e98023d869/77ab31a9-8961-511c-8637-06e98023d869.png
+
+- original digest: `sha256:29631652dceecf06bddf9ded1c7dbb0627d5a8af2d086cf013ae8504b9603fff`
+- QA status: `review_candidate`
+- approved for public publication: `false`
+
+### Direct prerequisites
+
+- None
+
+### Direct reverse prerequisites
+
+- None
+
+### Prerequisites outside this book
+
+- Zwischen Stromkreis und Schaltplan übersetzen — `69f8f59c-b0c3-5b0b-82db-834a0e655736` (outside this book)
+
+### Direct reverse prerequisites outside this book
+
+- Prüfungsaufgabe: Transistorschaltung selbst untersuchen — `2cfd5c6a-a16a-5f90-aab7-b27b29271f72` (outside this book)
+
+### Evidence-profile candidate
+
+Status: `needs_human_review`; profile fingerprint: `sha256:6bed8872f34c032063870d4ebef5479c054877064e4fa275b36279d061469b93`
+Contract: `positive-understanding-evidence-v2`; authority: `ai_candidate`; evidence level: `E1`; maximum claim scope: `G1`
+Archetype: `experiment`
+
+**Positive understanding expectations**
+
+- `personal-safe-construction`
+  - Essential understanding (DE): Ein tatsächlich hergestellter sicherer Aufbau muss zum vollständigen Plan passen; Pinbezug, gemeinsamer Rückleiter, Strombegrenzung und definierter Basisbezug sind konkrete Bedingungen eines aussagefähigen Versuchs.
+  - Essential understanding (EN): An actually assembled safe setup must match the complete plan; pin references, common return, current limitation and a defined base reference are concrete conditions for an informative experiment.
+  - Observable performance (DE): Stellt unter Aufsicht mit ausgeschalteter Versorgung selbst den vollständigen Aufbau her und lässt ihn vor Inbetriebnahme kontrollieren; ein fremder Bericht zählt nicht als Eigenaufbau.
+  - Observable performance (EN): Personally assembles the complete circuit under supervision with power off and obtains inspection before switching on; another person's report does not count as personal construction.
+- `controlled-own-observation`
+  - Essential understanding (DE): Gezielte Änderung des angeschlossenen Steuersignals und ein geeigneter Kontrollversuch trennen beobachtete Schaltwirkung von bloßer Vermutung; die Versorgung liefert die Lastenergie.
+  - Essential understanding (EN): Deliberate changes to the connected control signal and an appropriate control trial distinguish observed switching from conjecture; the supply provides load energy.
+  - Observable performance (DE): Variiert selbst 0/5 V, dokumentiert eigene Lastzustände, untersucht tatsächlich den offenen und wiederhergestellten Steuerzweig und begründet den Zusammenhang funktional aus dem Plan und eigenen Beobachtungen.
+  - Observable performance (EN): Personally varies 0/5 V, documents their own load states, actually tests the open and restored control branch and justifies the functional relationship using the plan and observations.
+- `fresh-experimental-transfer`
+  - Essential understanding (DE): Eine veränderte Sensor-Ausgangszuordnung ändert die passende Schaltprognose; ein abgeschalteter oder getrennter Steuerpfad ist nicht durch einen bloß angezeigten Quellenwert ersetzt.
+  - Essential understanding (EN): Changing the sensor-output mapping changes the appropriate switching prediction; a disconnected control path is not replaced by a source value merely shown on its setting.
+  - Observable performance (DE): Prognostiziert und prüft eine neue umgekehrte Zuordnung mit der gelieferten Steuerung selbst, vergleicht sie mit dem Kontrollversuch und begrenzt Schlüsse auf die tatsächlich untersuchte Schaltwirkung statt universeller quantitativer Verstärkung.
+  - Observable performance (EN): Personally predicts and checks a fresh reversed mapping using the supplied control, compares it with the control trial and limits conclusions to the switching actually investigated rather than universal quantitative gain.
+
+**Coverage expectations**
+
+- required expectations: `personal-safe-construction`, `controlled-own-observation`, `fresh-experimental-transfer`
+- alternative expectation groups: None
+- minimum independent demonstrations: 2
+- fresh variation required: true
+- independent transfer required: true
+
+**Variation axes**
+
+- `connected-versus-open-control`: Angeschlossener und tatsächlich geöffneter Steuerzweig bei definierter Basis-Pull-down-Verbindung. / Connected and actually opened control branch with a defined base pull-down.
+- `reversed-input-mapping`: Neue umgekehrte Hell-Dunkel-Ausgangszuordnung mit tatsächlichen eigenen Kontrollstellungen. / Fresh reversed light/dark output mapping with actual personal control settings.
+
+**Application cases**
+
+- `own-setup-and-two-inputs`
+  - Task demand (DE): Baue einen neuen vollständig vorgegebenen strombegrenzten Kleinspannungs-Transistorschalter unter Aufsicht selbst nach Plan auf. Prüfe nach Freigabe selbst beide gelieferten Steuerwerte und dokumentiere die tatsächlich beobachteten Lastzustände; begründe Steuer-/Lastpfad funktional.
+  - Task demand (EN): Personally assemble a fresh fully supplied current-limited low-voltage transistor switch from the plan under supervision. After inspection, personally test both supplied input values and document actual load observations; explain control/load paths functionally.
+  - Expected performance (DE): Echter sicherer Eigenaufbau und eigene gezielte Variation sind beobachtet. Die Person verbindet dokumentierte Zustände mit dem tatsächlich angeschlossenen Eingang und der Versorgungsenergie; fremde Daten oder bloße Selbstaussage ersetzen die Durchführung nicht.
+  - Expected performance (EN): Safe personal assembly and deliberate personal variation are actually observed. The learner connects documented states to the actually connected input and supply energy; supplied data or a mere self-claim do not replace execution.
+  - Understanding focus (DE): Tatsächliche Aufbau- und Durchführungsevidenz, nicht zusätzliches mikroskopisches Modellwissen.
+  - Understanding focus (EN): Actual assembly and execution evidence, not additional microscopic model knowledge.
+- `own-open-control-and-fresh-mapping`
+  - Task demand (DE): Öffne nach Ausschalten den bezeichneten Steuerzweig, lasse den definierten Basisbezug bestehen und prognostiziere und prüfe den Zustand nach Freigabe tatsächlich. Stelle die Verbindung sicher wieder her und prüfe anschließend selbst eine neue umgekehrte Sensor-Ausgangszuordnung mit derselben gelieferten Steuerung.
+  - Task demand (EN): With power off, open the specified control branch while retaining the defined base reference, then predict and actually check the state after inspection. Safely restore the connection and personally test a fresh reversed sensor-output mapping using the same supplied control.
+  - Expected performance (DE): Die Person führt den Kontrollversuch und die neue Variation selbst aus, dokumentiert eigene Ergebnisse, verbindet die Befunde mit vollständigem beziehungsweise unterbrochenem Steuerpfad und erklärt die geänderte Zuordnung. Unerwartete Befunde werden ehrlich untersucht; keine fiktiven Messwerte oder universellen Verstärkungsfaktoren werden behauptet.
+  - Expected performance (EN): The learner personally performs the control trial and fresh variation, records their results, connects outcomes with complete or interrupted control paths and explains the changed mapping. Unexpected findings are investigated honestly; no invented measurements or universal gain factors are claimed.
+  - Understanding focus (DE): Physikalisch veränderter Steuerpfad und neuer Eingangszusammenhang verlangen eigene experimentelle Übertragung.
+  - Understanding focus (EN): A physically changed control path and fresh input relationship require personal experimental transfer.
+## Page 2: Durchlass- und Sperrverhalten einer Diode an einer Kennlinie erklären
+
+- Full learning-goal ID: `dc55adac-91a5-5cc3-ab47-be008480616f`
+- Goal fingerprint: `sha256:7aed81db95b80531a3f77110669facc91ad106fda0b54e1146f84644d711f6c6`
+- Page fingerprint: `sha256:322b98b4b5b253f377a7e3e67e7e47668c1ae68897037baa60eeb4bc6f58ed7e`
+- Topic path: Physik > Sekundarstufe I > Halbleiterbauelemente: Grundlagen
+
+### Canonical description
+
+Die lernende Person kann aus einer vorgegebenen qualitativen Strom-Spannungs-Kennlinie einer Diode ihr Durchlass- und Sperrverhalten ablesen und damit für beide Polungen bei angegebener Diodenspannung im dargestellten Kennlinienbereich vorhersagen, ob in einem einfachen Stromkreis ein nennenswerter Strom fließt.
+
+### Visualization
+
+/assets/goal-visualizations/physik/dc55adac-91a5-5cc3-ab47-be008480616f/dc55adac-91a5-5cc3-ab47-be008480616f.png
+
+- original digest: `sha256:3faaff055424e4a6a40827d798caf3e176aa020a38942b59fc5381b97f5e7bc6`
+- QA status: `review_candidate`
+- approved for public publication: `false`
+
+### Direct prerequisites
+
+- None
+
+### Direct reverse prerequisites
+
+- None
+
+### Prerequisites outside this book
+
+- Achsen, Skalen und Einheiten lesen — `80c232f1-8f72-5829-9dbe-5a610ccab3be` (outside this book)
+- Zwischen Stromkreis und Schaltplan übersetzen — `69f8f59c-b0c3-5b0b-82db-834a0e655736` (outside this book)
+
+### Direct reverse prerequisites outside this book
+
+- Prüfungsaufgabe: Diodenpolung aus einer Kennlinie beurteilen — `8670cff6-fe9c-5f7e-8cba-d170134965a6` (outside this book)
+- Die Gleichrichterfunktion einer Diodenschaltung erklären — `3b586f2a-60e2-5019-aa08-6a47616a1f1f` (outside this book)
+
+### Evidence-profile candidate
+
+Status: `needs_human_review`; profile fingerprint: `sha256:e0ab44a99f075c8c9304487ed076080c53beccd72021104cd80118e6cfb7dd6d`
+Contract: `positive-understanding-evidence-v2`; authority: `ai_candidate`; evidence level: `E1`; maximum claim scope: `G1`
+Archetype: `representation`
+
+**Positive understanding expectations**
+
+- `voltage-point-and-polarity`
+  - Essential understanding (DE): Polung ordnet einen Bereich der vorgegebenen Kennlinie zu; erst die angegebene Diodenspannung und die zugehörige Stromangabe entscheiden über nennenswerten Strom. Positive Spannung allein genügt nicht.
+  - Essential understanding (EN): Polarity selects a region of the supplied characteristic; the stated diode voltage and corresponding current determine whether current is appreciable. Positive voltage alone is insufficient.
+  - Observable performance (DE): Verknüpft die markierten A/K-Bezüge des neuen Schaltplans mit konkreten Punkten der Kennlinie und unterscheidet kleinen sowie nennenswerten Durchlassstrom vom kleinen Sperrstrom.
+  - Observable performance (EN): Connects marked A/K references in a new circuit diagram with specific characteristic points and distinguishes small and appreciable forward currents from small reverse current.
+- `range-and-transfer`
+  - Essential understanding (DE): Kennlinien sind an Bauteil, Temperatur und dargestellten Spannungsbereich gebunden. Ein kleiner Sperrstrom ist nicht exakt null; ein Diagramm begründet weder eine universelle 0,7 V-Schwelle noch Prognosen außerhalb seines Bereichs.
+  - Essential understanding (EN): Characteristics are bound to component, temperature and plotted voltage range. Small reverse current is not exactly zero; one plot establishes neither a universal 0.7 V threshold nor predictions beyond its range.
+  - Observable performance (DE): Überträgt die Punktdeutung auf gespiegelte Beschaltung und eine andere gegebene Kennlinie; benennt fehlende Grundlage außerhalb des Bereichs statt zu extrapolieren.
+  - Observable performance (EN): Transfers point interpretation to a mirrored circuit and another supplied characteristic; identifies missing evidence outside the range instead of extrapolating.
+
+**Coverage expectations**
+
+- required expectations: `voltage-point-and-polarity`, `range-and-transfer`
+- alternative expectation groups: None
+- minimum independent demonstrations: 2
+- fresh variation required: true
+- independent transfer required: true
+
+**Variation axes**
+
+- `forward-position`: Zwei positive Diodenspannungen auf flachem und steilem Teil derselben Kennlinie. / Two positive diode voltages on shallow and steep parts of the same characteristic.
+- `new-diode-layout`: Neue Kennlinie mit anderem Durchlassanstieg und gespiegelten A/K-Anschlüssen; alle Spannungen beziehen sich auf A gegen K. / Fresh characteristic with a different forward rise and mirrored A/K terminals; all voltages reference A relative to K.
+
+**Application cases**
+
+- `three-stated-operating-points`
+  - Task demand (DE): Ein geschlossener strombegrenzter Kleinspannungskreis und eine Kennlinie für eine Diode bei konstanter Temperatur sind vorgegeben. U_D ist A gegen K, I_D A nach K. Die dargestellte Kennlinie reicht von −1 V bis +0,8 V und gibt bei +0,2 V einen sehr kleinen positiven, bei +0,6 V einen nennenswerten positiven und bei −0,8 V einen sehr kleinen negativen Strom an. Deute alle drei Betriebspunkte im Schaltplan und prüfe: Positive Diodenspannung bedeutet immer nennenswerten Strom.
+  - Task demand (EN): A closed current-limited low-voltage circuit and a characteristic for one diode at fixed temperature are supplied. U_D references A to K and I_D A to K. The plotted range is −1 V to +0.8 V, giving very small positive current at +0.2 V, appreciable positive current at +0.6 V and very small negative current at −0.8 V. Interpret all three operating points in the circuit and assess: Positive diode voltage always means appreciable current.
+  - Expected performance (DE): Beide positiven Spannungen sind Durchlasspolung, aber nur der steile Betriebspunkt zeigt hier nennenswerten Strom. Der negative Punkt ist Sperrpolung mit kleinem Strom gegen die Bezugsrichtung. Die Person begründet jede Aussage am angegebenen Punkt, lehnt die pauschale Durchlassregel ab und behauptet keine exakte Null.
+  - Expected performance (EN): Both positive voltages represent forward bias, but only the steep-branch point shows appreciable current here. The negative point is reverse bias with small current opposite the reference. The learner justifies every conclusion at the stated point, rejects the blanket forward-bias rule and claims no exact zero.
+  - Understanding focus (DE): Gleiche Polung, unterschiedliche Stromaussage: tatsächliche Kennlinienanwendung statt Polungsetikett.
+  - Understanding focus (EN): Same polarity, different current conclusion: actual characteristic use rather than a polarity label.
+- `mirrored-second-characteristic`
+  - Task demand (DE): Eine neue Diode ist räumlich gespiegelt; A/K bleiben bezeichnet. Ihre bereitgestellte Kennlinie bei festgehaltener Temperatur reicht von −1 V bis +2,4 V. Bei +0,6 V ist der Strom sehr klein, bei +2,1 V nennenswert; bei −0,7 V ist ein sehr kleiner negativer Strom angegeben. Bestimme die drei Fälle und beurteile Prognosen für −3 V sowie die allgemeine 0,7 V-Regel.
+  - Task demand (EN): A new diode is mirrored spatially while A/K remain labelled. Its supplied fixed-temperature characteristic ranges from −1 V to +2.4 V. Current is very small at +0.6 V and appreciable at +2.1 V; a very small negative current is given at −0.7 V. Determine all three cases and assess predictions for −3 V and the universal 0.7 V rule.
+  - Expected performance (DE): Die Person bestimmt Polung und Strom jeweils aus Anschlussdefinition und neuer Kennlinie. Die geänderte Durchlasslage widerlegt eine universelle Schwelle. Für −3 V liegt kein dargestellter Wert vor; ohne weitere Daten wird weder fortgesetzte Sperrung noch Durchbruch behauptet. Es werden keine eigenen Messungen ausgegeben.
+  - Expected performance (EN): The learner determines polarity and current from terminal definitions and the new curve. The shifted forward rise refutes a universal threshold. No plotted value exists for −3 V; without more data neither continued blocking nor breakdown is claimed. No personal measurements are asserted.
+  - Understanding focus (DE): Echter Bauteil-/Layoutwechsel und explizite Bereichsgrenze bei bereitgestellten Daten.
+  - Understanding focus (EN): A genuine component/layout change and explicit range boundary with supplied data.
+## Page 3: Bändermodell und Dotierung
+
+- Full learning-goal ID: `df010b2b-b182-5f7e-bbe4-49b72e48c27a`
+- Goal fingerprint: `sha256:c6efec78796cfdcaf140097dab80920d856bd38f6b3d0c45ed70772e151a6feb`
+- Page fingerprint: `sha256:87674e2bad6ef04e019a00d02a1f73cfe6ea07758d4db657909430bdc9c0bb04`
+- Topic path: Physik > Bundeslandspezifische Ergänzungen > Stufenübergreifend > Weitere fachliche Ziele
+
+### Canonical description
+
+Die lernende Person kann das qualitative Bändermodell für Leiter und Halbleiter beschreiben und erklären, wie Dotierung die Leitfähigkeit beeinflusst.
+
+### Visualization
+
+/assets/goal-visualizations/physik/df010b2b-b182-5f7e-bbe4-49b72e48c27a/df010b2b-b182-5f7e-bbe4-49b72e48c27a.jpg
+
+- original digest: `sha256:4c77a7de6f56e0861747efedce8744ca0a45dcd5c1c1fcc7d3fced1792492e43`
+- QA status: `review_candidate`
+- approved for public publication: `false`
+
+### Direct prerequisites
+
+- None
+
+### Direct reverse prerequisites
+
+- None
+
+### Prerequisites outside this book
+
+- Leiter, Nichtleiter und Halbleiter — `7badac4d-2874-5b3a-87e8-bf8f4440b2a6` (outside this book)
+
+### Direct reverse prerequisites outside this book
+
+- Prüfungsaufgabe: Halbleiter im Bändermodell deuten — `1abfd5ef-1f42-5b71-8c9a-80c0a6b0322e` (outside this book)
+- Supraleitung qualitativ verstehen — `853dbe54-85b0-59ab-8f3a-000c2b7746ec` (outside this book)
+- Quantenphysikalische Bändermodelle — `658cf33d-a0c2-5d47-801a-3dbcd5cac074` (outside this book)
+
+### Evidence-profile candidate
+
+Status: `needs_human_review`; profile fingerprint: `sha256:65feae0b8b2da5caf257f1e305e183d77e16f4504725e315bbe07a7125f3f344`
+Contract: `positive-understanding-evidence-v2`; authority: `ai_candidate`; evidence level: `E1`; maximum claim scope: `G1`
+Archetype: `representation`
+
+**Positive understanding expectations**
+
+- `band-occupancy-and-gap-explain-conduction`
+  - Essential understanding (DE): Teilweise besetzte oder überlappende Bänder erlauben bei Leitern leicht verfügbare Zustandswechsel; beim Halbleiter trennt eine endliche Bandlücke Valenz- und Leitungsband, sodass Anregung Ladungsträger bereitstellt.
+  - Essential understanding (EN): Partly filled or overlapping bands permit readily available state changes in conductors; in a semiconductor a finite band gap separates valence and conduction bands, so excitation supplies charge carriers.
+  - Observable performance (DE): Die lernende Person deutet ein unbekanntes qualitatives Banddiagramm, ordnet es begründet Leiter oder Halbleiter zu und behandelt Energiebänder nicht als räumliche Bahnen.
+  - Observable performance (EN): The learner interprets an unfamiliar qualitative band diagram, justifies its classification as conductor or semiconductor, and does not treat energy bands as spatial trajectories.
+- `doping-changes-carrier-population-not-net-charge`
+  - Essential understanding (DE): Donator- beziehungsweise Akzeptordotierung erhöht die Zahl verfügbarer Elektronen beziehungsweise Löcher und verändert so die Leitfähigkeit, ohne den Kristall als Ganzes dauerhaft elektrisch aufzuladen.
+  - Essential understanding (EN): Donor or acceptor doping increases the number of available electrons or holes and thus changes conductivity without permanently giving the crystal a net electric charge.
+  - Observable performance (DE): Die lernende Person erklärt für n- und p-Dotierung Ladungsträgerart und Leitfähigkeitsänderung, bilanziert die Neutralität und grenzt die Wirkung von thermischer Anregung ab.
+  - Observable performance (EN): The learner explains carrier type and conductivity change for n- and p-type doping, accounts for neutrality, and distinguishes the effect from thermal excitation.
+
+**Coverage expectations**
+
+- required expectations: `band-occupancy-and-gap-explain-conduction`, `doping-changes-carrier-population-not-net-charge`
+- alternative expectation groups: None
+- minimum independent demonstrations: 2
+- fresh variation required: true
+- independent transfer required: true
+
+**Variation axes**
+
+- `band-structure`: überlappende Bänder oder endliche Bandlücke / overlapping bands or a finite band gap
+- `doping-type`: Donator- oder Akzeptordotierung / donor or acceptor doping
+- `carrier-change`: Dotierung oder thermische Anregung / doping or thermal excitation
+
+**Application cases**
+
+- `unknown-band-diagrams-and-donor`
+  - Task demand (DE): Deute zwei qualitative Diagramme: A zeigt ein teilweise besetztes Band, B ein gefülltes Valenzband, eine kleine Lücke und ein leeres Leitungsband. Ordne A und B zu und erkläre für B die Wirkung einer Donatordotierung.
+  - Task demand (EN): Interpret two qualitative diagrams: A shows a partly filled band; B shows a filled valence band, a small gap, and an empty conduction band. Classify A and B and explain donor doping for B.
+  - Expected performance (DE): A wird als Leiter, B als Halbleiter gedeutet. Donatoren stellen leicht anregbare Elektronen bereit, erhöhen die Elektronendichte im Leitungsband und typischerweise die Leitfähigkeit; zurückbleibende gebundene Ionen erhalten zusammen mit den Elektronen die Gesamtneutralität.
+  - Expected performance (EN): A is interpreted as a conductor and B as a semiconductor. Donors supply easily excited electrons, increasing electron density in the conduction band and typically conductivity; the remaining bound ions preserve overall neutrality together with the electrons.
+  - Understanding focus (DE): Bandstruktur, verfügbare Ladungsträger und Neutralität werden kausal verbunden.
+  - Understanding focus (EN): Band structure, available carriers, and neutrality are connected causally.
+- `acceptor-versus-heating-transfer`
+  - Task demand (DE): Vergleiche für denselben Halbleiter Akzeptordotierung bei gleicher Temperatur mit einer Temperaturerhöhung ohne Dotierung. Sage jeweils die verfügbaren Ladungsträger voraus und erkläre, warum beide Leitfähigkeitsänderungen nicht derselbe Mechanismus sind.
+  - Task demand (EN): For the same semiconductor, compare acceptor doping at constant temperature with raising temperature without doping. Predict the available carriers in each case and explain why the two conductivity changes are not the same mechanism.
+  - Expected performance (DE): Akzeptoren erzeugen überwiegend Löcher als Mehrheitsladungsträger; Erwärmung regt Elektron-Loch-Paare über die Bandlücke an. Beide können die Trägerzahl erhöhen, doch nur Dotierung legt den Mehrheitsladungsträgertyp gezielt fest; Mobilitätsänderungen begrenzen eine reine Trägerzahldeutung.
+  - Expected performance (EN): Acceptors produce holes as majority carriers; heating excites electron-hole pairs across the gap. Both may increase carrier population, but only doping deliberately establishes the majority-carrier type; mobility changes limit a carrier-count-only explanation.
+  - Understanding focus (DE): Dotierung und thermische Anregung werden trotz ähnlicher Messwirkung modellseitig unterschieden.
+  - Understanding focus (EN): Doping and thermal excitation are distinguished at the model level despite similar measurement effects.
