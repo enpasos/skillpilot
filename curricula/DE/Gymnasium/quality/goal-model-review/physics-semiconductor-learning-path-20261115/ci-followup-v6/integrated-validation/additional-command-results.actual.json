@@ -1,0 +1,33 @@
+{
+  "observedAt": "2026-11-15T09:17:27.199350+00:00",
+  "results": [
+    {
+      "command": "python scripts/validate_schemas.py",
+      "workingDirectory": ".",
+      "exitCode": 0,
+      "checkedFiles": 119906,
+      "log": "final-schema.actual.log"
+    },
+    {
+      "command": "python scripts/validate_goal_ids_uuid.py",
+      "workingDirectory": ".",
+      "exitCode": 0,
+      "checkedFiles": 1023,
+      "checkedGoals": 31815,
+      "log": "final-uuid.actual.log"
+    },
+    {
+      "command": "npm run lint",
+      "workingDirectory": "app",
+      "exitCode": 0,
+      "log": "final-app-lint.actual.log"
+    },
+    {
+      "command": "python tmp/semiconductor-ci-qa-20261115/run_checked.py final-sequential-quality npm run quality:curriculum-status",
+      "exitCode": 143,
+      "successfulCompletionClaimed": false,
+      "interruptionCause": "not established; no completed status receipt",
+      "log": "final-sequential-quality.actual.log"
+    }
+  ]
+}

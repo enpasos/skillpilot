@@ -1,0 +1,57 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "mathematik-k2-elementary-representations-current-20261115-v1-first-pass-b-actual-d19e11a2-4d0c-44d9-918f-309084628d6e",
+  "campaignId": "mathematik-k2-elementary-representations-current-20261115-v1-b",
+  "roundId": "mathematik-k2-elementary-representations-current-20261115-v1-first-pass-b",
+  "bundleFingerprint": "sha256:7f06b11c0e67a86bb5dd73c37e6b421f2bc4c8a550909e41bf72ff267e5d805f",
+  "bookDigest": "sha256:4c602f7d633b549266e1ae5acf04c30dea9037a3c5c716982d961609f25ff12c",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "independenceGroupId": "mathematik-k2-elementary-representations-current-20261115-v1-independent-b",
+  "batchId": "mathematik-k2-elementary-representations-current-20261115-v1-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:ff66ccb02a02294fa9890bbba7651081ae6e14c40ed739028e5178a32fa5b833",
+  "provider": "OpenAI",
+  "model": "gpt-6.1-sol",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "generationParametersFingerprint": "sha256:9fc44faa2b52bde1bb1ad3b4ca20ffd54a6d998b96990e458ee02c88910e57bb",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "f39c49c7-003b-471a-a33e-6cfea1d7b7b1",
+    "c9df47fa-81a9-4890-91b7-2cc80da813cb",
+    "5e7d5ff2-b92c-4989-85bc-8d87ad7edadd",
+    "0c2ddfcd-1399-41ad-aaed-4f061812602a"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_pdf",
+      "digest": "sha256:bd3e68033ef126ad3d63ec543e162b7efb634f8235ae626d802b617e36bc9fad"
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "digest": "sha256:19694e07240eef7d0e7dc299ad51921c6adbc449fb235dd2dff90e5cfa821a20"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:ff66ccb02a02294fa9890bbba7651081ae6e14c40ed739028e5178a32fa5b833"
+    }
+  ],
+  "startedAt": "2026-11-15T08:30:27Z",
+  "completedAt": "2026-11-15T08:33:16Z",
+  "status": "completed",
+  "outputDigest": "sha256:a96a770f88e015d9d21e903aa972c4042c68408f1b5299326214a5b62c2fdf0d",
+  "toolchainVersion": "codex-independent-review-v1"
+}

@@ -1,0 +1,56 @@
+{
+  "status": "six-native-P-checks-and-native-D-prepare-check-pass",
+  "checks": [
+    {
+      "config": "current-5e7d5ff2.config.json",
+      "invocation": "./app/node_modules/.bin/tsx app/scripts/positiveGoalEvidenceReview.ts --config=curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/k2-elementary-representations-current-v1/current-5e7d5ff2.config.json --mode=check",
+      "exitCode": 0,
+      "output": "# Positive Goal Evidence Review: canonical-math-k2-elementary-current-5e7d5ff2-20261115-v1\nScope: Actual independently content-reviewed K2 elementary current prerequisite context, 5e7d5ff2\nConfigured goals: 1\nApproved: 0\nNeeds human review: 1\nRejected: 0\nBlocking issues: 0\n"
+    },
+    {
+      "config": "current-0c2ddfcd.config.json",
+      "invocation": "./app/node_modules/.bin/tsx app/scripts/positiveGoalEvidenceReview.ts --config=curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/k2-elementary-representations-current-v1/current-0c2ddfcd.config.json --mode=check",
+      "exitCode": 0,
+      "output": "# Positive Goal Evidence Review: canonical-math-k2-elementary-current-0c2ddfcd-20261115-v1\nScope: Actual independently content-reviewed K2 elementary current prerequisite context, 0c2ddfcd\nConfigured goals: 1\nApproved: 0\nNeeds human review: 1\nRejected: 0\nBlocking issues: 0\n"
+    },
+    {
+      "config": "current-f39c49c7.config.json",
+      "invocation": "./app/node_modules/.bin/tsx app/scripts/positiveGoalEvidenceReview.ts --config=curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/k2-elementary-representations-current-v1/current-f39c49c7.config.json --mode=check",
+      "exitCode": 0,
+      "output": "# Positive Goal Evidence Review: canonical-math-k2-elementary-current-f39c49c7-20261115-v1\nScope: Actual independently content-reviewed K2 elementary current prerequisite context, f39c49c7\nConfigured goals: 1\nApproved: 0\nNeeds human review: 1\nRejected: 0\nBlocking issues: 0\n"
+    },
+    {
+      "config": "current-c9df47fa.config.json",
+      "invocation": "./app/node_modules/.bin/tsx app/scripts/positiveGoalEvidenceReview.ts --config=curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/k2-elementary-representations-current-v1/current-c9df47fa.config.json --mode=check",
+      "exitCode": 0,
+      "output": "# Positive Goal Evidence Review: canonical-math-k2-elementary-current-c9df47fa-20261115-v1\nScope: Actual independently content-reviewed K2 elementary current prerequisite context, c9df47fa\nConfigured goals: 1\nApproved: 0\nNeeds human review: 1\nRejected: 0\nBlocking issues: 0\n"
+    },
+    {
+      "config": "retained/image-bound-four-retained.config.json",
+      "invocation": "./app/node_modules/.bin/tsx app/scripts/positiveGoalEvidenceReview.ts --config=curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/k2-elementary-representations-current-v1/retained/image-bound-four-retained.config.json --mode=check",
+      "exitCode": 0,
+      "output": "# Positive Goal Evidence Review: canonical-math-positive-understanding-evidence-m7-functions-diagrams-next10-image-six-20260923-v1\nScope: Exact unchanged retained records from curricula/DE/Gymnasium/quality/goal-evidence/m7-functions-diagrams-next10-p-20260923-v1/image-bound-six.config.json; excludes only the reviewed four elementary K2 current inputs.\nConfigured goals: 4\nApproved: 0\nNeeds human review: 4\nRejected: 0\nBlocking issues: 0\n"
+    },
+    {
+      "config": "retained/remainder-two-retained.config.json",
+      "invocation": "./app/node_modules/.bin/tsx app/scripts/positiveGoalEvidenceReview.ts --config=curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/k2-elementary-representations-current-v1/retained/remainder-two-retained.config.json --mode=check",
+      "exitCode": 0,
+      "output": "# Positive Goal Evidence Review: canonical-math-positive-understanding-evidence-m7-vready-remainder-image-five-20260923-v1\nScope: Exact unchanged retained records from curricula/DE/Gymnasium/quality/goal-evidence/m7-five-png-two-text-current-20260923-v1/retained/rest-ed5.config.json; excludes only the reviewed four elementary K2 current inputs.\nConfigured goals: 2\nApproved: 0\nNeeds human review: 2\nRejected: 0\nBlocking issues: 0\n"
+    }
+  ],
+  "firstDPrepare": {
+    "exitCode": 1,
+    "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/k2-elementary-representations-current-v1/native-D-first-prepare.failed.actual.log",
+    "reason": "The overview catalog's deliberate foreign contains roots cannot be loaded as a standalone GoalBook external source."
+  },
+  "finalDPrepare": {
+    "invocation": "./app/node_modules/.bin/tsx app/scripts/materializeGoalDescriptionRolloutBatch.ts prepare --config curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-11-15/k2-elementary-representations-current-v1.config.json",
+    "exitCode": 0,
+    "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/k2-elementary-representations-current-v1/native-D-prepare.actual.log",
+    "nativePreparedCheck": {
+      "invocation": "./app/node_modules/.bin/tsx app/scripts/materializeGoalDescriptionRolloutBatch.ts check --config curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-11-15/k2-elementary-representations-current-v1.config.json",
+      "exitCode": 0,
+      "output": "Standalone goal-description batch valid: mathematik-k2-elementary-representations-current-20261115-v1; goals=4"
+    }
+  }
+}

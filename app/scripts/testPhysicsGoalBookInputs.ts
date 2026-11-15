@@ -2214,8 +2214,11 @@ for (const [taskId, essentialIds] of SEMICONDUCTOR_ESSENTIAL_CRITERIA) {
 for (const taskId of ['8670cff6-fe9c-5f7e-8cba-d170134965a6', '1abfd5ef-1f42-5b71-8c9a-80c0a6b0322e',
   '144007cb-e2bc-5c82-bf9d-dda705b15257', '2cfd5c6a-a16a-5f90-aab7-b27b29271f72']) {
   const content = assessmentDataFor(taskId)?.taskContent as string
-  const stimulus = content.match(/!\[[^\]]+\]\((\/assets\/goal-visualizations\/physik\/[^)]+)\)/u)?.[1]
+  const stimulus = content.match(/!\[[^\]]+\]\((\/assets\/(?:goal-visualizations|assessment-materials)\/physik\/[^)]+)\)/u)?.[1]
   assert(stimulus, `${taskId}: the described diagram must actually be supplied`)
+  const expectedRoot = taskId === '2cfd5c6a-a16a-5f90-aab7-b27b29271f72'
+    ? '/assets/goal-visualizations/physik/' : '/assets/assessment-materials/physik/'
+  assert(stimulus.startsWith(expectedRoot), `${taskId}: primary goal image and assessment-only stimulus must use their declared roots`)
   assert(existsSync(resolve(repoRoot, 'app/public', stimulus.slice(1))), `${taskId}: missing diagram stimulus`)
 }
 // Undo the three added semiconductor atoms and explicit advanced band target,

@@ -31,6 +31,7 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.ArrayDeque;
 import java.util.LinkedHashMap;
@@ -1777,6 +1778,32 @@ public class LearnerControllerIntegrationTest {
                 .get().satisfies(mastery -> assertThat(mastery.getValue()).isEqualTo(1.0));
     }
 
+    private JsonNode reviewedSeedFixtureScopes() throws Exception {
+        // Independently replayed before/first/current ID sets, with reviewed per-scope deltas.
+        // A same-size substitution must fail as well as an incorrect total.
+        return objectMapper.readTree(Path.of("../curricula/DE/Gymnasium/quality/goal-model-review/"
+                + "backend-reviewed-seed-fixture-repair-20261115/seed-scope-comparison.actual.json").toFile())
+                .path("scopes");
+    }
+
+    private void assertReviewedSeedFixture(SoftAssertions softly, JsonNode fixtures, String landscapeId,
+            String jurisdiction, String stage, String duration, String course, RequiredLearningProjection projection) {
+        String key = String.join("|", landscapeId, jurisdiction, stage, duration, course);
+        assertThat(fixtures.has(key)).as("reviewed seed fixture exists for %s", key).isTrue();
+        JsonNode fixture = fixtures.path(key);
+        softly.assertThat(projection.seedAtomicGoalIds()).as(key + " exact reviewed seed identities")
+                .containsExactlyInAnyOrderElementsOf(jsonTextValues(fixture.path("currentSeedAtomicGoalIds")));
+        List<String> addedIds = jsonTextValues(fixture.path("addedSeedAtomicGoalIds"));
+        List<String> removedIds = jsonTextValues(fixture.path("removedSeedAtomicGoalIds"));
+        if (!addedIds.isEmpty()) {
+            softly.assertThat(projection.seedAtomicGoalIds()).as(key + " reviewed added seeds").containsAll(addedIds);
+        }
+        if (!removedIds.isEmpty()) {
+            softly.assertThat(projection.seedAtomicGoalIds()).as(key + " reviewed removed seeds")
+                    .doesNotContainAnyElementsOf(removedIds);
+        }
+    }
+
     @Test
     void learnerStateUsesReviewedMathSekIDurationProjectionForAtomicTotals() throws Exception {
         // Reviewed canonical seeds were enumerated from each matched Sek-I view,
@@ -1784,24 +1811,25 @@ public class LearnerControllerIntegrationTest {
         // Preserve those seed counts, including local assessments. Full learning
         // totals additionally include the independently checked prerequisite demand.
         String[][] scopes = {
-                { "DE-BB", "243", "243" },
-                { "DE-BE", "239", "239" },
-                { "DE-BW", "269", "269" },
-                { "DE-BY", "229", "229" },
-                { "DE-HB", "217", "217" },
-                { "DE-HE", "327", "354" },
-                { "DE-HH", "239", "239" },
-                { "DE-MV", "238", "238" },
-                { "DE-NI", "238", "238" },
-                { "DE-NW", "238", "238" },
-                { "DE-RP", "269", "281" },
-                { "DE-SH", "262", "268" },
-                { "DE-SL", "241", "241" },
-                { "DE-SN", "238", "238" },
-                { "DE-ST", "238", "238" },
-                { "DE-TH", "239", "239" }
+                { "DE-BB", "250", "250" },
+                { "DE-BE", "246", "246" },
+                { "DE-BW", "276", "276" },
+                { "DE-BY", "233", "233" },
+                { "DE-HB", "224", "224" },
+                { "DE-HE", "326", "351" },
+                { "DE-HH", "246", "246" },
+                { "DE-MV", "245", "245" },
+                { "DE-NI", "245", "245" },
+                { "DE-NW", "245", "245" },
+                { "DE-RP", "265", "277" },
+                { "DE-SH", "261", "267" },
+                { "DE-SL", "248", "248" },
+                { "DE-SN", "245", "245" },
+                { "DE-ST", "245", "245" },
+                { "DE-TH", "246", "246" }
         };
         SoftAssertions softly = new SoftAssertions();
+        JsonNode reviewedFixtures = reviewedSeedFixtureScopes();
 
         for (String[] scope : scopes) {
             String jurisdiction = scope[0];
@@ -1848,6 +1876,8 @@ public class LearnerControllerIntegrationTest {
             }
             softly.assertThat(g8Projection.seedAtomicGoalIds()).as(jurisdiction + " G8 reviewed seeds").hasSize(Integer.parseInt(scope[1]));
             softly.assertThat(g9Projection.seedAtomicGoalIds()).as(jurisdiction + " G9 reviewed seeds").hasSize(Integer.parseInt(scope[2]));
+            assertReviewedSeedFixture(softly, reviewedFixtures, CANONICAL_MATH_ID, jurisdiction, "SekI", "G8", "GK", g8Projection);
+            assertReviewedSeedFixture(softly, reviewedFixtures, CANONICAL_MATH_ID, jurisdiction, "SekI", "G9", "GK", g9Projection);
             softly.assertThat(g8Total).as(jurisdiction + " G8 closed learning total").isEqualTo(g8Projection.expectedLearningGoalIds().size());
             softly.assertThat(g9Total).as(jurisdiction + " G9 closed learning total").isEqualTo(g9Projection.expectedLearningGoalIds().size());
         }
@@ -1866,14 +1896,15 @@ public class LearnerControllerIntegrationTest {
         // "Ganzrationale Funktionen ueber Term und Graph beschreiben" is
         // preparation only outside BY, NW and NI and leaves S in all six scopes.
         String[][] scopes = {
-                { "DE-HE", "GK", "752", "759" },
-                { "DE-HE", "LK", "891", "898" },
-                { "DE-RP", "GK", "689", "697" },
-                { "DE-RP", "LK", "803", "811" },
-                { "DE-SH", "GK", "668", "675" },
-                { "DE-SH", "LK", "765", "772" }
+                { "DE-HE", "GK", "751", "756" },
+                { "DE-HE", "LK", "890", "895" },
+                { "DE-RP", "GK", "685", "693" },
+                { "DE-RP", "LK", "799", "807" },
+                { "DE-SH", "GK", "667", "674" },
+                { "DE-SH", "LK", "764", "771" }
         };
         SoftAssertions softly = new SoftAssertions();
+        JsonNode reviewedFixtures = reviewedSeedFixtureScopes();
 
         for (String[] scope : scopes) {
             String jurisdiction = scope[0];
@@ -1930,6 +1961,8 @@ public class LearnerControllerIntegrationTest {
                     .hasSize(Integer.parseInt(scope[2]));
             softly.assertThat(g9Projection.seedAtomicGoalIds()).as(jurisdiction + " " + courseProfile + " G9 reviewed seeds")
                     .hasSize(Integer.parseInt(scope[3]));
+            assertReviewedSeedFixture(softly, reviewedFixtures, CANONICAL_MATH_ID, jurisdiction, "CrossStage", "G8", courseProfile, g8Projection);
+            assertReviewedSeedFixture(softly, reviewedFixtures, CANONICAL_MATH_ID, jurisdiction, "CrossStage", "G9", courseProfile, g9Projection);
             softly.assertThat(g8Total).as(jurisdiction + " " + courseProfile + " G8 closed learning total")
                     .isEqualTo(g8Projection.expectedLearningGoalIds().size());
             softly.assertThat(g9Total).as(jurisdiction + " " + courseProfile + " G9 closed learning total")
@@ -1989,16 +2022,16 @@ public class LearnerControllerIntegrationTest {
                 { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-SN", "65", "65" },
                 { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-ST", "63", "63" },
                 { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-TH", "67", "67" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-BW", "151", "151" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-BY", "117", "117" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-HB", "142", "142" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-HE", "150", "150" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-HH", "142", "142" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-MV", "148", "148" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-SL", "150", "150" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-SN", "150", "150" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-ST", "148", "148" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-TH", "146", "146" }
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-BW", "155", "155" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-BY", "123", "123" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-HB", "144", "144" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-HE", "154", "154" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-HH", "144", "144" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-MV", "150", "150" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-SL", "154", "154" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-SN", "154", "154" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-ST", "150", "150" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-TH", "148", "148" }
         };
         // The verified applicability-cache refresh exposes these already-authored
         // Sek-I targets. Bind their identities as well as both duration totals.
@@ -2019,6 +2052,7 @@ public class LearnerControllerIntegrationTest {
                         "35dd0a33-e5d5-53b9-8438-3d339173db1b", "3f477f0d-4f79-5eed-8671-fb2667d60910",
                         "6367d45e-919e-4c19-bcd9-7770a2d51139", "a24c41ce-68c5-56a7-8235-ef9a7dba7042"));
         SoftAssertions softly = new SoftAssertions();
+        JsonNode reviewedFixtures = reviewedSeedFixtureScopes();
 
         for (String[] scope : scopes) {
             String subject = scope[0];
@@ -2072,6 +2106,8 @@ public class LearnerControllerIntegrationTest {
                     .hasSize(Integer.parseInt(scope[3]));
             softly.assertThat(g9Projection.seedAtomicGoalIds()).as(subject + " " + jurisdiction + " G9 reviewed seeds")
                     .hasSize(Integer.parseInt(scope[4]));
+            assertReviewedSeedFixture(softly, reviewedFixtures, subjectLandscapeId, jurisdiction, "SekI", "G8", "GK", g8Projection);
+            assertReviewedSeedFixture(softly, reviewedFixtures, subjectLandscapeId, jurisdiction, "SekI", "G9", "GK", g9Projection);
             softly.assertThat(g8Total).as(subject + " " + jurisdiction + " G8 closed learning total")
                     .isEqualTo(g8Projection.expectedLearningGoalIds().size());
             softly.assertThat(g9Total).as(subject + " " + jurisdiction + " G9 closed learning total")

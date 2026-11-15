@@ -1,0 +1,45 @@
+{
+  "observedAt": "2026-11-15T09:31:56.711397+00:00",
+  "reviewer": "/root",
+  "status": "bounded-fixture-repair-accepted-after-source-and-actual-output-review",
+  "reviewedManifest": {
+    "path": "curricula/DE/Gymnasium/quality/goal-model-review/backend-reviewed-seed-fixture-repair-20261115/manifest.actual.json",
+    "sha256": "sha256:37494b8fff9c2e297a50ea9a01c24fe4c8f28ba2d1d93a2f8e5f48b41fddd16f",
+    "pins": 30,
+    "mismatches": 0
+  },
+  "nativeDatasetReproduction": {
+    "command": "materialize_seed_comparison.py --baseline-results <archived native-before> --first-results <archived native-first>",
+    "exitCode": 0,
+    "scopes": 128,
+    "baselineMatches": 128,
+    "oldCIFailurePairs": 64,
+    "unchangedBioChemScopes": 64
+  },
+  "ownBeforeAfterComparison": {
+    "scopes": 128,
+    "comparedFields": [
+      "seedAtomicGoalIds",
+      "targetGoalIds",
+      "requiredByPaths"
+    ],
+    "allEqual": true
+  },
+  "terminalXML": {
+    "tests": "3",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0"
+  },
+  "sourceReview": [
+    "Only three existing test methods plus one exact-identity helper and Path import changed; production logic remains unchanged.",
+    "Existing counts and all full closure/DTO/applicability assertions are retained. Complete expected identities now also reject same-size replacement.",
+    "Empty added/removed lists are skipped only for redundant delta assertions; complete identity equality always runs.",
+    "All 20 affected distinct goal objects are retained in the canonical catalogs; the union of 14 added seeds includes existing basic classification, while six removed seed IDs remain canonical.",
+    "HE G9 loses only a route-completion construction target; the source/placement limitation remains explicit, no new official G9 coverage claimed."
+  ],
+  "limitations": [
+    "Three focused integration methods passed; the complete backend suite must pass in the fresh PR CI.",
+    "No learner results or official sources changed. Integration remains the implementing root agent responsibility."
+  ]
+}

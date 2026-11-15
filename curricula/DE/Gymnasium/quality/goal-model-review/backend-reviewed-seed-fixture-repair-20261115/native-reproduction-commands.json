@@ -1,0 +1,64 @@
+[
+  {
+    "dataset": "baseline",
+    "kind": "equivalent-reproduction-command-for-recorded-successful-native-task",
+    "snapshotCommand": [
+      "python3",
+      "curricula/DE/Gymnasium/quality/goal-model-review/backend-reviewed-seed-fixture-repair-20261115/materialize_runtime_snapshot.py",
+      "--ref",
+      "a7c7e9ceb26f06194e25f29e32941d4e4cb17c32",
+      "--destination",
+      "tmp/backend-reviewed-seed-fixtures-20261115/before-root"
+    ],
+    "environment": {
+      "GRADLE_USER_HOME": "/tmp/skillpilot-plan-gradle-20261022"
+    },
+    "replayCommand": [
+      "./gradlew",
+      "--project-cache-dir",
+      "../tmp/backend-reviewed-seed-fixtures-20261115/gradle-project-cache",
+      "--console=plain",
+      "--no-daemon",
+      "-q",
+      "-I",
+      "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-model-review/backend-reviewed-seed-fixture-repair-20261115/replay-native-seeds.init.gradle",
+      "replayReviewedSeedFixtures",
+      "-PreviewedSeedRoot=/home/enpasos/projects/skillpilot/tmp/backend-reviewed-seed-fixtures-20261115/before-root",
+      "-PreviewedSeedRequests=/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-model-review/backend-reviewed-seed-fixture-repair-20261115/exact-native-request-configurations.actual.json",
+      "-PreviewedSeedResults=/home/enpasos/projects/skillpilot/tmp/backend-reviewed-seed-fixtures-20261115/reproduced-baseline.json"
+    ],
+    "snapshotWorkingDirectory": ".",
+    "replayWorkingDirectory": "backend"
+  },
+  {
+    "dataset": "first-reviewed",
+    "kind": "equivalent-reproduction-command-for-recorded-successful-native-task",
+    "snapshotCommand": [
+      "python3",
+      "curricula/DE/Gymnasium/quality/goal-model-review/backend-reviewed-seed-fixture-repair-20261115/materialize_runtime_snapshot.py",
+      "--ref",
+      "5bf8228635aed4eee780fdb98f4b7ee2af6d480a",
+      "--destination",
+      "tmp/backend-reviewed-seed-fixtures-20261115/first-root"
+    ],
+    "environment": {
+      "GRADLE_USER_HOME": "/tmp/skillpilot-plan-gradle-20261022"
+    },
+    "replayCommand": [
+      "./gradlew",
+      "--project-cache-dir",
+      "../tmp/backend-reviewed-seed-fixtures-20261115/gradle-project-cache",
+      "--console=plain",
+      "--no-daemon",
+      "-q",
+      "-I",
+      "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-model-review/backend-reviewed-seed-fixture-repair-20261115/replay-native-seeds.init.gradle",
+      "replayReviewedSeedFixtures",
+      "-PreviewedSeedRoot=/home/enpasos/projects/skillpilot/tmp/backend-reviewed-seed-fixtures-20261115/first-root",
+      "-PreviewedSeedRequests=/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-model-review/backend-reviewed-seed-fixture-repair-20261115/exact-native-request-configurations.actual.json",
+      "-PreviewedSeedResults=/home/enpasos/projects/skillpilot/tmp/backend-reviewed-seed-fixtures-20261115/reproduced-first-reviewed.json"
+    ],
+    "snapshotWorkingDirectory": ".",
+    "replayWorkingDirectory": "backend"
+  }
+]

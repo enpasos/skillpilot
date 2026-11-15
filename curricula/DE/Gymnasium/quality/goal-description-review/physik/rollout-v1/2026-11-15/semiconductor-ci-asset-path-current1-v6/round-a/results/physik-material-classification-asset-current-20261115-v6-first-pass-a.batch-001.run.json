@@ -1,0 +1,51 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-asset-current-v6-a-native-20261115T082750Z",
+  "campaignId": "physik-material-classification-asset-current-20261115-v6-a",
+  "roundId": "physik-material-classification-asset-current-20261115-v6-first-pass-a",
+  "batchId": "physik-material-classification-asset-current-20261115-v6-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:25a6c64dcd1eae1b52517805bde70273b10e5109f270cf760632c25953b8d10c",
+  "bundleFingerprint": "sha256:8173d924e40ec8db2a08ec14da06891f2a06858d6cb01135e0eca1d7b78391a0",
+  "bookDigest": "sha256:8dd93ae5db64046f567305ec6ec88f7365ba8afe546081c5a9683a4989d87b7d",
+  "provider": "OpenAI",
+  "model": "gpt-6.1-sol",
+  "modelVersion": "requested GPT 6.1 Sol Ultra; no runtime attestation",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:2c0a1b58ee45eaa3a50328f8aca4171cc311f8ddce2ae087002dd4e968569b72",
+  "independenceGroupId": "physik-material-classification-asset-current-20261115-v6-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "7badac4d-2874-5b3a-87e8-bf8f4440b2a6"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_pdf",
+      "digest": "sha256:ba78c513fb48fee78fae23d71568867e04b558e4cd4dccef8bb8a0bbe06b0d7a"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:25a6c64dcd1eae1b52517805bde70273b10e5109f270cf760632c25953b8d10c"
+    }
+  ],
+  "startedAt": "2026-11-15T08:27:50Z",
+  "completedAt": "2026-11-15T08:28:53Z",
+  "status": "completed",
+  "outputDigest": "sha256:23481691ab8e582452dc6d3f814d50fa191382e04c4383b945a10afa29555af6",
+  "toolchainVersion": "codex-native-description-review-v1"
+}

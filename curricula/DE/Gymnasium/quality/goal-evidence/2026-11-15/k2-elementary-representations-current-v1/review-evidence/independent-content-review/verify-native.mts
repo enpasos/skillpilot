@@ -1,0 +1,26 @@
+import {readFileSync,readdirSync,writeFileSync} from 'node:fs';
+import {resolve} from 'node:path';
+import {createHash} from 'node:crypto';
+import {KnowledgeContextIndex} from '../../../app/scripts/lib/knowledgeContext.ts';
+import {evaluateGraphIntegrity} from '../../../app/scripts/curriculumGraphIntegrity.ts';
+const root=process.cwd();const base=resolve(root,'tmp/elementary-diagram-delivery-20261115');const out=resolve(base,'independent-final-review');
+const read=(p:string)=>JSON.parse(readFileSync(p,'utf8'));const sha=(p:string)=>'sha256:'+createHash('sha256').update(readFileSync(p)).digest('hex');
+const catalog=readdirSync(resolve(base,'inputs/catalog')).filter(x=>x.endsWith('.de.json')).sort().map(x=>read(resolve(base,'inputs/catalog',x)));
+const proposed=read(resolve(base,'proposed/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json'));
+const afterCatalog=catalog.map(x=>x.landscapeId===proposed.landscapeId?proposed:x);
+const before=new KnowledgeContextIndex(catalog),after=new KnowledgeContextIndex(afterCatalog);
+const oldGoals=new Map<string,any>(catalog.flatMap(d=>d.goals.map((g:any)=>[g.id,g])));
+const oldMath=catalog.find(x=>x.landscapeId===proposed.landscapeId);const newGoals=new Map<string,any>(proposed.goals.map((g:any)=>[g.id,g]));
+const objectChanges=oldMath.goals.filter((g:any)=>JSON.stringify(g)!==JSON.stringify(newGoals.get(g.id))).map((g:any)=>({id:g.id,changedKeys:[...new Set([...Object.keys(g),...Object.keys(newGoals.get(g.id))])].filter(k=>JSON.stringify(g[k])!==JSON.stringify(newGoals.get(g.id)[k]))}));
+const changedContexts=[];
+for(const [id,g] of oldGoals){if(g.type!=='atomic'||g.contains?.length)continue;const a=before.resolveAtomicGoal(id),b=after.resolveAtomicGoal(id);const wa=new Set(before.securedKeys(a)),wb=new Set(after.securedKeys(b));if(wa.size===wb.size&&[...wa].every(x=>wb.has(x)))continue;changedContexts.push({id,title:g.title,before:wa.size,after:wb.size,removed:[...wa].filter(x=>!wb.has(x)),added:[...wb].filter(x=>!wa.has(x))})}
+const resolveId=(prefix:string)=>[...oldGoals.keys()].find(x=>x.startsWith(prefix))!;const key=(prefix:string)=>after.resolveAtomicGoal(resolveId(prefix));
+const has=(goalPrefix:string,prereqPrefix:string)=>after.securedKeys(key(goalPrefix)).some(x=>after.graph.goal(x).id.startsWith(prereqPrefix));
+const threeCatalog=structuredClone(afterCatalog);for(const d of threeCatalog)for(const g of d.goals)if(g.id.startsWith('0c2ddfcd'))g.requires=g.requires.filter((x:string)=>!x.startsWith('4eeab7d5'));
+const three=new KnowledgeContextIndex(threeCatalog);const threeW=three.securedKeys(three.resolveAtomicGoal(resolveId('0c2ddfcd')));
+const checks=afterCatalog.map(d=>({subject:d.subject,landscapeId:d.landscapeId,...evaluateGraphIntegrity(afterCatalog,d.landscapeId)}));
+const manifest=read(resolve(base,'candidate-manifest.actual.json'));const failures=manifest.files.filter((f:any)=>sha(resolve(base,f.path))!==f.sha256||readFileSync(resolve(base,f.path)).length!==f.bytes);
+const report={reviewer:'/root/elementary_diagram_content_review',manifestSha256:sha(resolve(base,'candidate-manifest.actual.json')),sealedInputCount:manifest.files.length,sealedInputFailures:failures,objectChanges,newGoalIds:[...newGoals.keys()].filter(x=>!oldGoals.has(x)),changedContexts,oldTask6DeepEqual:JSON.stringify(oldGoals.get(resolveId('47c515c9')))===JSON.stringify(newGoals.get(resolveId('47c515c9'))),arithmeticWitness:{threeEdgeHas4ee:threeW.some(x=>three.graph.goal(x).id.startsWith('4eeab7d5')),finalHas4ee:has('0c2ddfcd','4eeab7d5'),lineHas4ee:has('f6b13b8e','4eeab7d5'),readDiagramHas4ee:has('5e7d5ff2','4eeab7d5')},task6Witness:{frequency:has('47c515c9','91571d3f'),units:has('47c515c9','ca623958'),pi:has('47c515c9','8a691345'),percent:has('47c515c9','71d43fcc'),mirror:has('47c515c9','2f3d24e7'),pattern:has('47c515c9','8cb18560')},graphChecks:checks};
+writeFileSync(resolve(out,'native-check.actual.json'),JSON.stringify(report,null,2)+'\n');
+if(failures.length||checks.some(x=>x.status!=='pass')||!report.oldTask6DeepEqual||changedContexts.length!==5||report.arithmeticWitness.threeEdgeHas4ee||!report.arithmeticWitness.finalHas4ee)throw Error('Independent verification failed');
+console.log(JSON.stringify({sealedInputs:manifest.files.length,objectChanges,changedContexts:changedContexts.map(({id,before,after})=>({id,before,after})),arithmeticWitness:report.arithmeticWitness,task6Witness:report.task6Witness,graphPass:checks.length},null,2));

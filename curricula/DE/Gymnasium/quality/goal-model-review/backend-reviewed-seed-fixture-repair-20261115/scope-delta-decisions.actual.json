@@ -1,0 +1,2577 @@
+{
+  "status": "actual-native-seed-delta-decisions-before-fixture-update",
+  "noNewOfficialSourceClaims": true,
+  "seedAndRequiredPreparationAreSeparate": true,
+  "HEG9": {
+    "decision": "Accept the measured removal of the route-derived construction seed after the reviewed reading prerequisite repair. This is not a deletion of a canonical competency or a changed official source claim. The new construction assessment stays prerequisiteOnly/supportOnly in all three generated HE G9 views. Necessary canonical preparation is checked separately by the unchanged closure assertions.",
+    "formerOnlyInboundOrdinaryGoal": "c9df47fa-81a9-4890-91b7-2cc80da813cb",
+    "oldRequires": [
+      "f39c49c7-003b-471a-a33e-6cfea1d7b7b1"
+    ],
+    "currentRequires": [
+      "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+      "f6b13b8e-1ecd-5420-905d-21290aa996a6"
+    ],
+    "constructionFullObjectUnchangedExceptRequires": true,
+    "durationMappingWitnesses": [
+      {
+        "mapping": {
+          "legacyGoalId": "he-math-seki-kc-7-3-zuordnungen-j5-6-02-118a1d42",
+          "canonicalGoalId": "f39c49c7-003b-471a-a33e-6cfea1d7b7b1",
+          "matchType": "exact",
+          "reviewDecisionId": "he-math-seki-kc-7-3-zuordnungen-j5-6-02-118a1d42"
+        },
+        "sourceGoal": {
+          "id": "he-math-seki-kc-7-3-zuordnungen-j5-6-02-118a1d42",
+          "passageId": "kc-7-3-zuordnungen-j5_6",
+          "topicCode": "KC-7.3.ZUORDNUNGEN.J5_6",
+          "title": "Darstellung der Zuordnungen in Schaubildern und Tabellen und in sprachlicher Form",
+          "description": "Die lernende Person kann den im Kerncurriculum ausgewiesenen Schwerpunkt \"Darstellung der Zuordnungen in Schaubildern und Tabellen und in sprachlicher Form\" im Kontext Zuordnungen und ihre Darstellungen (Jahrgangsstufe 5/6) fachgerecht bearbeiten.",
+          "sourceText": "Darstellung der Zuordnungen in Schaubildern und Tabellen und in sprachlicher Form",
+          "sourceSpan": "Darstellung der Zuordnungen in Schaubildern und Tabellen und in sprachlicher Form",
+          "parentBulletText": "Darstellung der Zuordnungen in Schaubildern und Tabellen und in sprachlicher Form",
+          "sourceRef": "Kerncurriculum Mathematik Sek I Gymnasium, Kap. 7.3, Zuordnungen und ihre Darstellungen, Jahrgangsstufe 5/6",
+          "granularity": "officialContentFocus",
+          "tags": [
+            "source:DE-HE",
+            "sourceDocument:KC",
+            "subject:Mathematik",
+            "stage:SekI",
+            "kc:7.3",
+            "contentField:zuordnungen-und-ihre-darstellungen",
+            "gradeBand:J5_6"
+          ],
+          "requires": [],
+          "contains": [],
+          "type": "atomic"
+        }
+      },
+      {
+        "mapping": {
+          "legacyGoalId": "he-math-seki-g8-7g-1-18-d54709f9",
+          "canonicalGoalId": "f39c49c7-003b-471a-a33e-6cfea1d7b7b1",
+          "matchType": "exact",
+          "reviewDecisionId": "he-math-seki-g8-7g-1-18-d54709f9"
+        },
+        "sourceGoal": {
+          "id": "he-math-seki-g8-7g-1-18-d54709f9",
+          "passageId": "g8-7g-1",
+          "topicCode": "G8-7G.1",
+          "title": "Einführung in den Gebrauch der Tabellenkalkulation, Eingabe von Zahlen mit Formatierung, Her...",
+          "description": "Die lernende Person kann den im G8-Lehrplan ausgewiesenen Schwerpunkt \"Einführung in den Gebrauch der Tabellenkalkulation, Eingabe von Zahlen mit Formatierung, Herstellen von Tabellen, Erstellen von graphischen Darstellungen aus Tabellen, Benutzen von Formeln in den Zellen\" im Kontext G8 7G.1 Funktionen fachgerecht bearbeiten.",
+          "sourceText": "Einführung in den Gebrauch der Tabellenkalkulation, Eingabe von Zahlen mit Formatierung, Herstellen von Tabellen, Erstellen von graphischen Darstellungen aus Tabellen, Benutzen von Formeln in den Zellen",
+          "sourceSpan": "Einführung in den Gebrauch der Tabellenkalkulation, Eingabe von Zahlen mit Formatierung, Herstellen von Tabellen, Erstellen von graphischen Darstellungen aus Tabellen, Benutzen von Formeln in den Zellen",
+          "parentBulletText": "Einführung in den Gebrauch der Tabellenkalkulation, Eingabe von Zahlen mit Formatierung, Herstellen von Tabellen, Erstellen von graphischen Darstellungen aus Tabellen, Benutzen von Formeln in den Zellen",
+          "sourceRef": "Lehrplan Gymnasium G8 Mathematik, G8 7G.1 Funktionen",
+          "granularity": "legacyGradeTopicFocus",
+          "tags": [
+            "source:DE-HE",
+            "sourceDocument:G8",
+            "subject:Mathematik",
+            "stage:SekI",
+            "legacy:G8",
+            "durationModel:G8",
+            "grade:7"
+          ],
+          "requires": [],
+          "contains": [],
+          "type": "atomic"
+        }
+      }
+    ],
+    "generatorWitnesses": [
+      {
+        "path": "app/scripts/generateMathDurationCompositionViews.ts",
+        "function": "mapping loop, lines 708-724",
+        "meaning": "Only source goals carrying an explicit durationModel and grade enter raw duration target buckets; the common KC gradeBand source has neither."
+      },
+      {
+        "path": "app/scripts/generateMathDurationCompositionViews.ts",
+        "function": "completeSek1RouteBuckets",
+        "meaning": "Adds applicable canonical prerequisites to target year buckets; old c9.requires pulled f39 into HE G9."
+      },
+      {
+        "path": "app/scripts/generateMathDurationCompositionViews.ts",
+        "function": "filterAssessmentsWithoutTargetPrerequisites",
+        "meaning": "Does not promote the construction assessment when its direct curricular prerequisite is absent from the reviewed generated target projection."
+      }
+    ],
+    "views": [
+      {
+        "input": {
+          "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-seki-g9.view.json",
+          "sha256": "sha256:6aa84772db7f8a2d0a69742ccac55c10ccfaac9cc2a38eecb3d37687eac56b79"
+        },
+        "references": [
+          {
+            "kind": "goalEntry",
+            "goalId": "54ce7136-5bdd-5d36-b0a5-f9a781bff82a",
+            "projectionRole": "prerequisiteOnly"
+          }
+        ]
+      },
+      {
+        "input": {
+          "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-gk-g9.view.json",
+          "sha256": "sha256:bafad96be2a0f071e99b6d10ef9ac6eb90457c8dbd10665c0df2f4084a58bd35"
+        },
+        "references": [
+          {
+            "kind": "goalEntry",
+            "goalId": "54ce7136-5bdd-5d36-b0a5-f9a781bff82a",
+            "projectionRole": "prerequisiteOnly"
+          }
+        ]
+      },
+      {
+        "input": {
+          "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-lk-g9.view.json",
+          "sha256": "sha256:96aeb166740c77fddccc2eaa9eea54b34adfecbe237ad8af26c40b970ff8c235"
+        },
+        "references": [
+          {
+            "kind": "goalEntry",
+            "goalId": "54ce7136-5bdd-5d36-b0a5-f9a781bff82a",
+            "projectionRole": "prerequisiteOnly"
+          }
+        ]
+      }
+    ],
+    "sourceInputs": [
+      {
+        "path": "curricula/DE/Gymnasium/input/HE/lower-secondary/source-extraction/DE_HE_MATHEMATIK_SEKI_KC_G8_G9.source-extraction.json",
+        "sha256": "sha256:3ec1451c515f4bc70d97690331ca66f922d933355c4326e1dc4100a95e3e664c"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/hessen_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+        "sha256": "sha256:167120e1f19f954ab90880f562f399324628a809ddb37b4b52513204a13e1026"
+      }
+    ]
+  },
+  "MathFirstWave": {
+    "addedAssessmentIds": [
+      "57bf531d-0920-5424-bef4-f704f5462477",
+      "c76fae5e-70e6-5f20-9abe-e9e790d95324",
+      "d9c49084-084e-5142-859c-33c53403ccf1",
+      "f4fda40d-dca5-510b-bd6d-f7874b3d7b9b"
+    ],
+    "routeDerivedAdvancedSeedRemovals": [
+      "496f16a0-c031-5753-b988-d6cd3cab595e",
+      "80c232f1-8f72-5829-9dbe-5a610ccab3be",
+      "d668c22d-caeb-5e91-8980-721c931a2bcf",
+      "fcfbff12-bd03-52ec-b242-a693212b3d2b"
+    ],
+    "historicalReproduction": "The native 5bf data replay exactly reproduces all 44 old Math CI count failures, before the later elementary extension."
+  },
+  "Physics": {
+    "decision": "The 20 affected Sek-I seeds use the source-bounded simple semiconductor model and released tasks instead of the upper-stage band-model examination. Diode targets apply in BW/BY/HE/SL/SN; transistor targets apply in BY. No Physics catalog or runtime change is made by this repair.",
+    "reviewEvidenceRoot": "curricula/DE/Gymnasium/quality/goal-model-review/physics-semiconductor-learning-path-20261115",
+    "historicalReproduction": "All 20 old Physics CI expected/actual count pairs reproduce with exact source commit 5bf; all current Physics seed sets equal that replay."
+  },
+  "scopeGroups": [
+    {
+      "subject": "Mathematik",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BB",
+        "stage": "SekI",
+        "durationModel": "G8",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 243,
+      "currentSeeds": 250,
+      "addedIds": [
+        "148a0b27-5895-5331-ab90-bf40c0ee5d5c",
+        "4f265904-c805-57c3-8b40-25a1d32c7e7f",
+        "54ce7136-5bdd-5d36-b0a5-f9a781bff82a",
+        "57bf531d-0920-5424-bef4-f704f5462477",
+        "c76fae5e-70e6-5f20-9abe-e9e790d95324",
+        "d9c49084-084e-5142-859c-33c53403ccf1",
+        "f4fda40d-dca5-510b-bd6d-f7874b3d7b9b"
+      ],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 86
+    },
+    {
+      "subject": "Mathematik",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BB",
+        "stage": "SekI",
+        "durationModel": "G9",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 243,
+      "currentSeeds": 250,
+      "addedIds": [
+        "148a0b27-5895-5331-ab90-bf40c0ee5d5c",
+        "4f265904-c805-57c3-8b40-25a1d32c7e7f",
+        "54ce7136-5bdd-5d36-b0a5-f9a781bff82a",
+        "57bf531d-0920-5424-bef4-f704f5462477",
+        "c76fae5e-70e6-5f20-9abe-e9e790d95324",
+        "d9c49084-084e-5142-859c-33c53403ccf1",
+        "f4fda40d-dca5-510b-bd6d-f7874b3d7b9b"
+      ],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 86
+    },
+    {
+      "subject": "Mathematik",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BE",
+        "stage": "SekI",
+        "durationModel": "G8",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 239,
+      "currentSeeds": 246,
+      "addedIds": [
+        "148a0b27-5895-5331-ab90-bf40c0ee5d5c",
+        "4f265904-c805-57c3-8b40-25a1d32c7e7f",
+        "54ce7136-5bdd-5d36-b0a5-f9a781bff82a",
+        "57bf531d-0920-5424-bef4-f704f5462477",
+        "c76fae5e-70e6-5f20-9abe-e9e790d95324",
+        "d9c49084-084e-5142-859c-33c53403ccf1",
+        "f4fda40d-dca5-510b-bd6d-f7874b3d7b9b"
+      ],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 81
+    },
+    {
+      "subject": "Mathematik",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BE",
+        "stage": "SekI",
+        "durationModel": "G9",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 239,
+      "currentSeeds": 246,
+      "addedIds": [
+        "148a0b27-5895-5331-ab90-bf40c0ee5d5c",
+        "4f265904-c805-57c3-8b40-25a1d32c7e7f",
+        "54ce7136-5bdd-5d36-b0a5-f9a781bff82a",
+        "57bf531d-0920-5424-bef4-f704f5462477",
+        "c76fae5e-70e6-5f20-9abe-e9e790d95324",
+        "d9c49084-084e-5142-859c-33c53403ccf1",
+        "f4fda40d-dca5-510b-bd6d-f7874b3d7b9b"
+      ],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 81
+    },
+    {
+      "subject": "Mathematik",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BW",
+        "stage": "SekI",
+        "durationModel": "G8",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 269,
+      "currentSeeds": 276,
+      "addedIds": [
+        "148a0b27-5895-5331-ab90-bf40c0ee5d5c",
+        "4f265904-c805-57c3-8b40-25a1d32c7e7f",
+        "54ce7136-5bdd-5d36-b0a5-f9a781bff82a",
+        "57bf531d-0920-5424-bef4-f704f5462477",
+        "c76fae5e-70e6-5f20-9abe-e9e790d95324",
+        "d9c49084-084e-5142-859c-33c53403ccf1",
+        "f4fda40d-dca5-510b-bd6d-f7874b3d7b9b"
+      ],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 206
+    },
+    {
+      "subject": "Mathematik",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BW",
+        "stage": "SekI",
+        "durationModel": "G9",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 269,
+      "currentSeeds": 276,
+      "addedIds": [
+        "148a0b27-5895-5331-ab90-bf40c0ee5d5c",
+        "4f265904-c805-57c3-8b40-25a1d32c7e7f",
+        "54ce7136-5bdd-5d36-b0a5-f9a781bff82a",
+        "57bf531d-0920-5424-bef4-f704f5462477",
+        "c76fae5e-70e6-5f20-9abe-e9e790d95324",
+        "d9c49084-084e-5142-859c-33c53403ccf1",
+        "f4fda40d-dca5-510b-bd6d-f7874b3d7b9b"
+      ],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 206
+    },
+    {
+      "subject": "Mathematik",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BY",
+        "stage": "SekI",
+        "durationModel": "G8",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 229,
+      "currentSeeds": 233,
+      "addedIds": [
+        "57bf531d-0920-5424-bef4-f704f5462477",
+        "c76fae5e-70e6-5f20-9abe-e9e790d95324",
+        "d9c49084-084e-5142-859c-33c53403ccf1",
+        "f4fda40d-dca5-510b-bd6d-f7874b3d7b9b"
+      ],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 56
+    },
+    {
+      "subject": "Mathematik",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BY",
+        "stage": "SekI",
+        "durationModel": "G9",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 229,
+      "currentSeeds": 233,
+      "addedIds": [
+        "57bf531d-0920-5424-bef4-f704f5462477",
+        "c76fae5e-70e6-5f20-9abe-e9e790d95324",
+        "d9c49084-084e-5142-859c-33c53403ccf1",
+        "f4fda40d-dca5-510b-bd6d-f7874b3d7b9b"
+      ],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 56
+    },
+    {
+      "subject": "Mathematik",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HB",
+        "stage": "SekI",
+        "durationModel": "G8",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 217,
+      "currentSeeds": 224,
+      "addedIds": [
+        "148a0b27-5895-5331-ab90-bf40c0ee5d5c",
+        "4f265904-c805-57c3-8b40-25a1d32c7e7f",
+        "54ce7136-5bdd-5d36-b0a5-f9a781bff82a",
+        "57bf531d-0920-5424-bef4-f704f5462477",
+        "c76fae5e-70e6-5f20-9abe-e9e790d95324",
+        "d9c49084-084e-5142-859c-33c53403ccf1",
+        "f4fda40d-dca5-510b-bd6d-f7874b3d7b9b"
+      ],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 69
+    },
+    {
+      "subject": "Mathematik",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HB",
+        "stage": "SekI",
+        "durationModel": "G9",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 217,
+      "currentSeeds": 224,
+      "addedIds": [
+        "148a0b27-5895-5331-ab90-bf40c0ee5d5c",
+        "4f265904-c805-57c3-8b40-25a1d32c7e7f",
+        "54ce7136-5bdd-5d36-b0a5-f9a781bff82a",
+        "57bf531d-0920-5424-bef4-f704f5462477",
+        "c76fae5e-70e6-5f20-9abe-e9e790d95324",
+        "d9c49084-084e-5142-859c-33c53403ccf1",
+        "f4fda40d-dca5-510b-bd6d-f7874b3d7b9b"
+      ],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 69
+    },
+    {
+      "subject": "Mathematik",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HE",
+        "stage": "SekI",
+        "durationModel": "G8",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 327,
+      "currentSeeds": 326,
+      "addedIds": [
+        "148a0b27-5895-5331-ab90-bf40c0ee5d5c",
+        "4f265904-c805-57c3-8b40-25a1d32c7e7f",
+        "54ce7136-5bdd-5d36-b0a5-f9a781bff82a"
+      ],
+      "removedIds": [
+        "496f16a0-c031-5753-b988-d6cd3cab595e",
+        "80c232f1-8f72-5829-9dbe-5a610ccab3be",
+        "d668c22d-caeb-5e91-8980-721c931a2bcf",
+        "fcfbff12-bd03-52ec-b242-a693212b3d2b"
+      ],
+      "currentRequiredPreparationCount": 82
+    },
+    {
+      "subject": "Mathematik",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HE",
+        "stage": "SekI",
+        "durationModel": "G9",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 354,
+      "currentSeeds": 351,
+      "addedIds": [
+        "148a0b27-5895-5331-ab90-bf40c0ee5d5c",
+        "4f265904-c805-57c3-8b40-25a1d32c7e7f"
+      ],
+      "removedIds": [
+        "496f16a0-c031-5753-b988-d6cd3cab595e",
+        "80c232f1-8f72-5829-9dbe-5a610ccab3be",
+        "d668c22d-caeb-5e91-8980-721c931a2bcf",
+        "f39c49c7-003b-471a-a33e-6cfea1d7b7b1",
+        "fcfbff12-bd03-52ec-b242-a693212b3d2b"
+      ],
+      "currentRequiredPreparationCount": 87
+    },
+    {
+      "subject": "Mathematik",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HH",
+        "stage": "SekI",
+        "durationModel": "G8",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 239,
+      "currentSeeds": 246,
+      "addedIds": [
+        "148a0b27-5895-5331-ab90-bf40c0ee5d5c",
+        "4f265904-c805-57c3-8b40-25a1d32c7e7f",
+        "54ce7136-5bdd-5d36-b0a5-f9a781bff82a",
+        "57bf531d-0920-5424-bef4-f704f5462477",
+        "c76fae5e-70e6-5f20-9abe-e9e790d95324",
+        "d9c49084-084e-5142-859c-33c53403ccf1",
+        "f4fda40d-dca5-510b-bd6d-f7874b3d7b9b"
+      ],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 80
+    },
+    {
+      "subject": "Mathematik",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HH",
+        "stage": "SekI",
+        "durationModel": "G9",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 239,
+      "currentSeeds": 246,
+      "addedIds": [
+        "148a0b27-5895-5331-ab90-bf40c0ee5d5c",
+        "4f265904-c805-57c3-8b40-25a1d32c7e7f",
+        "54ce7136-5bdd-5d36-b0a5-f9a781bff82a",
+        "57bf531d-0920-5424-bef4-f704f5462477",
+        "c76fae5e-70e6-5f20-9abe-e9e790d95324",
+        "d9c49084-084e-5142-859c-33c53403ccf1",
+        "f4fda40d-dca5-510b-bd6d-f7874b3d7b9b"
+      ],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 80
+    },
+    {
+      "subject": "Mathematik",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-MV",
+        "stage": "SekI",
+        "durationModel": "G8",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 238,
+      "currentSeeds": 245,
+      "addedIds": [
+        "148a0b27-5895-5331-ab90-bf40c0ee5d5c",
+        "4f265904-c805-57c3-8b40-25a1d32c7e7f",
+        "54ce7136-5bdd-5d36-b0a5-f9a781bff82a",
+        "57bf531d-0920-5424-bef4-f704f5462477",
+        "c76fae5e-70e6-5f20-9abe-e9e790d95324",
+        "d9c49084-084e-5142-859c-33c53403ccf1",
+        "f4fda40d-dca5-510b-bd6d-f7874b3d7b9b"
+      ],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 81
+    },
+    {
+      "subject": "Mathematik",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-MV",
+        "stage": "SekI",
+        "durationModel": "G9",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 238,
+      "currentSeeds": 245,
+      "addedIds": [
+        "148a0b27-5895-5331-ab90-bf40c0ee5d5c",
+        "4f265904-c805-57c3-8b40-25a1d32c7e7f",
+        "54ce7136-5bdd-5d36-b0a5-f9a781bff82a",
+        "57bf531d-0920-5424-bef4-f704f5462477",
+        "c76fae5e-70e6-5f20-9abe-e9e790d95324",
+        "d9c49084-084e-5142-859c-33c53403ccf1",
+        "f4fda40d-dca5-510b-bd6d-f7874b3d7b9b"
+      ],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 81
+    },
+    {
+      "subject": "Mathematik",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-NI",
+        "stage": "SekI",
+        "durationModel": "G8",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 238,
+      "currentSeeds": 245,
+      "addedIds": [
+        "148a0b27-5895-5331-ab90-bf40c0ee5d5c",
+        "4f265904-c805-57c3-8b40-25a1d32c7e7f",
+        "54ce7136-5bdd-5d36-b0a5-f9a781bff82a",
+        "57bf531d-0920-5424-bef4-f704f5462477",
+        "c76fae5e-70e6-5f20-9abe-e9e790d95324",
+        "d9c49084-084e-5142-859c-33c53403ccf1",
+        "f4fda40d-dca5-510b-bd6d-f7874b3d7b9b"
+      ],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 81
+    },
+    {
+      "subject": "Mathematik",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-NI",
+        "stage": "SekI",
+        "durationModel": "G9",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 238,
+      "currentSeeds": 245,
+      "addedIds": [
+        "148a0b27-5895-5331-ab90-bf40c0ee5d5c",
+        "4f265904-c805-57c3-8b40-25a1d32c7e7f",
+        "54ce7136-5bdd-5d36-b0a5-f9a781bff82a",
+        "57bf531d-0920-5424-bef4-f704f5462477",
+        "c76fae5e-70e6-5f20-9abe-e9e790d95324",
+        "d9c49084-084e-5142-859c-33c53403ccf1",
+        "f4fda40d-dca5-510b-bd6d-f7874b3d7b9b"
+      ],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 81
+    },
+    {
+      "subject": "Mathematik",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-NW",
+        "stage": "SekI",
+        "durationModel": "G8",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 238,
+      "currentSeeds": 245,
+      "addedIds": [
+        "148a0b27-5895-5331-ab90-bf40c0ee5d5c",
+        "4f265904-c805-57c3-8b40-25a1d32c7e7f",
+        "54ce7136-5bdd-5d36-b0a5-f9a781bff82a",
+        "57bf531d-0920-5424-bef4-f704f5462477",
+        "c76fae5e-70e6-5f20-9abe-e9e790d95324",
+        "d9c49084-084e-5142-859c-33c53403ccf1",
+        "f4fda40d-dca5-510b-bd6d-f7874b3d7b9b"
+      ],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 81
+    },
+    {
+      "subject": "Mathematik",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-NW",
+        "stage": "SekI",
+        "durationModel": "G9",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 238,
+      "currentSeeds": 245,
+      "addedIds": [
+        "148a0b27-5895-5331-ab90-bf40c0ee5d5c",
+        "4f265904-c805-57c3-8b40-25a1d32c7e7f",
+        "54ce7136-5bdd-5d36-b0a5-f9a781bff82a",
+        "57bf531d-0920-5424-bef4-f704f5462477",
+        "c76fae5e-70e6-5f20-9abe-e9e790d95324",
+        "d9c49084-084e-5142-859c-33c53403ccf1",
+        "f4fda40d-dca5-510b-bd6d-f7874b3d7b9b"
+      ],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 81
+    },
+    {
+      "subject": "Mathematik",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-RP",
+        "stage": "SekI",
+        "durationModel": "G8",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 269,
+      "currentSeeds": 265,
+      "addedIds": [],
+      "removedIds": [
+        "496f16a0-c031-5753-b988-d6cd3cab595e",
+        "80c232f1-8f72-5829-9dbe-5a610ccab3be",
+        "d668c22d-caeb-5e91-8980-721c931a2bcf",
+        "fcfbff12-bd03-52ec-b242-a693212b3d2b"
+      ],
+      "currentRequiredPreparationCount": 126
+    },
+    {
+      "subject": "Mathematik",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-RP",
+        "stage": "SekI",
+        "durationModel": "G9",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 281,
+      "currentSeeds": 277,
+      "addedIds": [],
+      "removedIds": [
+        "496f16a0-c031-5753-b988-d6cd3cab595e",
+        "80c232f1-8f72-5829-9dbe-5a610ccab3be",
+        "d668c22d-caeb-5e91-8980-721c931a2bcf",
+        "fcfbff12-bd03-52ec-b242-a693212b3d2b"
+      ],
+      "currentRequiredPreparationCount": 126
+    },
+    {
+      "subject": "Mathematik",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SH",
+        "stage": "SekI",
+        "durationModel": "G8",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 262,
+      "currentSeeds": 261,
+      "addedIds": [
+        "148a0b27-5895-5331-ab90-bf40c0ee5d5c",
+        "4f265904-c805-57c3-8b40-25a1d32c7e7f",
+        "54ce7136-5bdd-5d36-b0a5-f9a781bff82a"
+      ],
+      "removedIds": [
+        "496f16a0-c031-5753-b988-d6cd3cab595e",
+        "80c232f1-8f72-5829-9dbe-5a610ccab3be",
+        "d668c22d-caeb-5e91-8980-721c931a2bcf",
+        "fcfbff12-bd03-52ec-b242-a693212b3d2b"
+      ],
+      "currentRequiredPreparationCount": 0
+    },
+    {
+      "subject": "Mathematik",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SH",
+        "stage": "SekI",
+        "durationModel": "G9",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 268,
+      "currentSeeds": 267,
+      "addedIds": [
+        "148a0b27-5895-5331-ab90-bf40c0ee5d5c",
+        "4f265904-c805-57c3-8b40-25a1d32c7e7f",
+        "54ce7136-5bdd-5d36-b0a5-f9a781bff82a"
+      ],
+      "removedIds": [
+        "496f16a0-c031-5753-b988-d6cd3cab595e",
+        "80c232f1-8f72-5829-9dbe-5a610ccab3be",
+        "d668c22d-caeb-5e91-8980-721c931a2bcf",
+        "fcfbff12-bd03-52ec-b242-a693212b3d2b"
+      ],
+      "currentRequiredPreparationCount": 0
+    },
+    {
+      "subject": "Mathematik",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SL",
+        "stage": "SekI",
+        "durationModel": "G8",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 241,
+      "currentSeeds": 248,
+      "addedIds": [
+        "148a0b27-5895-5331-ab90-bf40c0ee5d5c",
+        "4f265904-c805-57c3-8b40-25a1d32c7e7f",
+        "54ce7136-5bdd-5d36-b0a5-f9a781bff82a",
+        "57bf531d-0920-5424-bef4-f704f5462477",
+        "c76fae5e-70e6-5f20-9abe-e9e790d95324",
+        "d9c49084-084e-5142-859c-33c53403ccf1",
+        "f4fda40d-dca5-510b-bd6d-f7874b3d7b9b"
+      ],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 82
+    },
+    {
+      "subject": "Mathematik",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SL",
+        "stage": "SekI",
+        "durationModel": "G9",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 241,
+      "currentSeeds": 248,
+      "addedIds": [
+        "148a0b27-5895-5331-ab90-bf40c0ee5d5c",
+        "4f265904-c805-57c3-8b40-25a1d32c7e7f",
+        "54ce7136-5bdd-5d36-b0a5-f9a781bff82a",
+        "57bf531d-0920-5424-bef4-f704f5462477",
+        "c76fae5e-70e6-5f20-9abe-e9e790d95324",
+        "d9c49084-084e-5142-859c-33c53403ccf1",
+        "f4fda40d-dca5-510b-bd6d-f7874b3d7b9b"
+      ],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 82
+    },
+    {
+      "subject": "Mathematik",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SN",
+        "stage": "SekI",
+        "durationModel": "G8",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 238,
+      "currentSeeds": 245,
+      "addedIds": [
+        "148a0b27-5895-5331-ab90-bf40c0ee5d5c",
+        "4f265904-c805-57c3-8b40-25a1d32c7e7f",
+        "54ce7136-5bdd-5d36-b0a5-f9a781bff82a",
+        "57bf531d-0920-5424-bef4-f704f5462477",
+        "c76fae5e-70e6-5f20-9abe-e9e790d95324",
+        "d9c49084-084e-5142-859c-33c53403ccf1",
+        "f4fda40d-dca5-510b-bd6d-f7874b3d7b9b"
+      ],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 81
+    },
+    {
+      "subject": "Mathematik",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SN",
+        "stage": "SekI",
+        "durationModel": "G9",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 238,
+      "currentSeeds": 245,
+      "addedIds": [
+        "148a0b27-5895-5331-ab90-bf40c0ee5d5c",
+        "4f265904-c805-57c3-8b40-25a1d32c7e7f",
+        "54ce7136-5bdd-5d36-b0a5-f9a781bff82a",
+        "57bf531d-0920-5424-bef4-f704f5462477",
+        "c76fae5e-70e6-5f20-9abe-e9e790d95324",
+        "d9c49084-084e-5142-859c-33c53403ccf1",
+        "f4fda40d-dca5-510b-bd6d-f7874b3d7b9b"
+      ],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 81
+    },
+    {
+      "subject": "Mathematik",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-ST",
+        "stage": "SekI",
+        "durationModel": "G8",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 238,
+      "currentSeeds": 245,
+      "addedIds": [
+        "148a0b27-5895-5331-ab90-bf40c0ee5d5c",
+        "4f265904-c805-57c3-8b40-25a1d32c7e7f",
+        "54ce7136-5bdd-5d36-b0a5-f9a781bff82a",
+        "57bf531d-0920-5424-bef4-f704f5462477",
+        "c76fae5e-70e6-5f20-9abe-e9e790d95324",
+        "d9c49084-084e-5142-859c-33c53403ccf1",
+        "f4fda40d-dca5-510b-bd6d-f7874b3d7b9b"
+      ],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 81
+    },
+    {
+      "subject": "Mathematik",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-ST",
+        "stage": "SekI",
+        "durationModel": "G9",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 238,
+      "currentSeeds": 245,
+      "addedIds": [
+        "148a0b27-5895-5331-ab90-bf40c0ee5d5c",
+        "4f265904-c805-57c3-8b40-25a1d32c7e7f",
+        "54ce7136-5bdd-5d36-b0a5-f9a781bff82a",
+        "57bf531d-0920-5424-bef4-f704f5462477",
+        "c76fae5e-70e6-5f20-9abe-e9e790d95324",
+        "d9c49084-084e-5142-859c-33c53403ccf1",
+        "f4fda40d-dca5-510b-bd6d-f7874b3d7b9b"
+      ],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 81
+    },
+    {
+      "subject": "Mathematik",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-TH",
+        "stage": "SekI",
+        "durationModel": "G8",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 239,
+      "currentSeeds": 246,
+      "addedIds": [
+        "148a0b27-5895-5331-ab90-bf40c0ee5d5c",
+        "4f265904-c805-57c3-8b40-25a1d32c7e7f",
+        "54ce7136-5bdd-5d36-b0a5-f9a781bff82a",
+        "57bf531d-0920-5424-bef4-f704f5462477",
+        "c76fae5e-70e6-5f20-9abe-e9e790d95324",
+        "d9c49084-084e-5142-859c-33c53403ccf1",
+        "f4fda40d-dca5-510b-bd6d-f7874b3d7b9b"
+      ],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 86
+    },
+    {
+      "subject": "Mathematik",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-TH",
+        "stage": "SekI",
+        "durationModel": "G9",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 239,
+      "currentSeeds": 246,
+      "addedIds": [
+        "148a0b27-5895-5331-ab90-bf40c0ee5d5c",
+        "4f265904-c805-57c3-8b40-25a1d32c7e7f",
+        "54ce7136-5bdd-5d36-b0a5-f9a781bff82a",
+        "57bf531d-0920-5424-bef4-f704f5462477",
+        "c76fae5e-70e6-5f20-9abe-e9e790d95324",
+        "d9c49084-084e-5142-859c-33c53403ccf1",
+        "f4fda40d-dca5-510b-bd6d-f7874b3d7b9b"
+      ],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 86
+    },
+    {
+      "subject": "Mathematik",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HE",
+        "stage": "CrossStage",
+        "durationModel": "G8",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 752,
+      "currentSeeds": 751,
+      "addedIds": [
+        "148a0b27-5895-5331-ab90-bf40c0ee5d5c",
+        "4f265904-c805-57c3-8b40-25a1d32c7e7f",
+        "54ce7136-5bdd-5d36-b0a5-f9a781bff82a"
+      ],
+      "removedIds": [
+        "496f16a0-c031-5753-b988-d6cd3cab595e",
+        "80c232f1-8f72-5829-9dbe-5a610ccab3be",
+        "d668c22d-caeb-5e91-8980-721c931a2bcf",
+        "fcfbff12-bd03-52ec-b242-a693212b3d2b"
+      ],
+      "currentRequiredPreparationCount": 89
+    },
+    {
+      "subject": "Mathematik",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HE",
+        "stage": "CrossStage",
+        "durationModel": "G9",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 759,
+      "currentSeeds": 756,
+      "addedIds": [
+        "148a0b27-5895-5331-ab90-bf40c0ee5d5c",
+        "4f265904-c805-57c3-8b40-25a1d32c7e7f"
+      ],
+      "removedIds": [
+        "496f16a0-c031-5753-b988-d6cd3cab595e",
+        "80c232f1-8f72-5829-9dbe-5a610ccab3be",
+        "d668c22d-caeb-5e91-8980-721c931a2bcf",
+        "f39c49c7-003b-471a-a33e-6cfea1d7b7b1",
+        "fcfbff12-bd03-52ec-b242-a693212b3d2b"
+      ],
+      "currentRequiredPreparationCount": 90
+    },
+    {
+      "subject": "Mathematik",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HE",
+        "stage": "CrossStage",
+        "durationModel": "G8",
+        "courseProfile": "LK"
+      },
+      "baselineSeeds": 891,
+      "currentSeeds": 890,
+      "addedIds": [
+        "148a0b27-5895-5331-ab90-bf40c0ee5d5c",
+        "4f265904-c805-57c3-8b40-25a1d32c7e7f",
+        "54ce7136-5bdd-5d36-b0a5-f9a781bff82a"
+      ],
+      "removedIds": [
+        "496f16a0-c031-5753-b988-d6cd3cab595e",
+        "80c232f1-8f72-5829-9dbe-5a610ccab3be",
+        "d668c22d-caeb-5e91-8980-721c931a2bcf",
+        "fcfbff12-bd03-52ec-b242-a693212b3d2b"
+      ],
+      "currentRequiredPreparationCount": 10
+    },
+    {
+      "subject": "Mathematik",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HE",
+        "stage": "CrossStage",
+        "durationModel": "G9",
+        "courseProfile": "LK"
+      },
+      "baselineSeeds": 898,
+      "currentSeeds": 895,
+      "addedIds": [
+        "148a0b27-5895-5331-ab90-bf40c0ee5d5c",
+        "4f265904-c805-57c3-8b40-25a1d32c7e7f"
+      ],
+      "removedIds": [
+        "496f16a0-c031-5753-b988-d6cd3cab595e",
+        "80c232f1-8f72-5829-9dbe-5a610ccab3be",
+        "d668c22d-caeb-5e91-8980-721c931a2bcf",
+        "f39c49c7-003b-471a-a33e-6cfea1d7b7b1",
+        "fcfbff12-bd03-52ec-b242-a693212b3d2b"
+      ],
+      "currentRequiredPreparationCount": 11
+    },
+    {
+      "subject": "Mathematik",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-RP",
+        "stage": "CrossStage",
+        "durationModel": "G8",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 689,
+      "currentSeeds": 685,
+      "addedIds": [],
+      "removedIds": [
+        "496f16a0-c031-5753-b988-d6cd3cab595e",
+        "80c232f1-8f72-5829-9dbe-5a610ccab3be",
+        "d668c22d-caeb-5e91-8980-721c931a2bcf",
+        "fcfbff12-bd03-52ec-b242-a693212b3d2b"
+      ],
+      "currentRequiredPreparationCount": 82
+    },
+    {
+      "subject": "Mathematik",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-RP",
+        "stage": "CrossStage",
+        "durationModel": "G9",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 697,
+      "currentSeeds": 693,
+      "addedIds": [],
+      "removedIds": [
+        "496f16a0-c031-5753-b988-d6cd3cab595e",
+        "80c232f1-8f72-5829-9dbe-5a610ccab3be",
+        "d668c22d-caeb-5e91-8980-721c931a2bcf",
+        "fcfbff12-bd03-52ec-b242-a693212b3d2b"
+      ],
+      "currentRequiredPreparationCount": 83
+    },
+    {
+      "subject": "Mathematik",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-RP",
+        "stage": "CrossStage",
+        "durationModel": "G8",
+        "courseProfile": "LK"
+      },
+      "baselineSeeds": 803,
+      "currentSeeds": 799,
+      "addedIds": [],
+      "removedIds": [
+        "496f16a0-c031-5753-b988-d6cd3cab595e",
+        "80c232f1-8f72-5829-9dbe-5a610ccab3be",
+        "d668c22d-caeb-5e91-8980-721c931a2bcf",
+        "fcfbff12-bd03-52ec-b242-a693212b3d2b"
+      ],
+      "currentRequiredPreparationCount": 36
+    },
+    {
+      "subject": "Mathematik",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-RP",
+        "stage": "CrossStage",
+        "durationModel": "G9",
+        "courseProfile": "LK"
+      },
+      "baselineSeeds": 811,
+      "currentSeeds": 807,
+      "addedIds": [],
+      "removedIds": [
+        "496f16a0-c031-5753-b988-d6cd3cab595e",
+        "80c232f1-8f72-5829-9dbe-5a610ccab3be",
+        "d668c22d-caeb-5e91-8980-721c931a2bcf",
+        "fcfbff12-bd03-52ec-b242-a693212b3d2b"
+      ],
+      "currentRequiredPreparationCount": 37
+    },
+    {
+      "subject": "Mathematik",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SH",
+        "stage": "CrossStage",
+        "durationModel": "G8",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 668,
+      "currentSeeds": 667,
+      "addedIds": [
+        "148a0b27-5895-5331-ab90-bf40c0ee5d5c",
+        "4f265904-c805-57c3-8b40-25a1d32c7e7f",
+        "54ce7136-5bdd-5d36-b0a5-f9a781bff82a"
+      ],
+      "removedIds": [
+        "496f16a0-c031-5753-b988-d6cd3cab595e",
+        "80c232f1-8f72-5829-9dbe-5a610ccab3be",
+        "d668c22d-caeb-5e91-8980-721c931a2bcf",
+        "fcfbff12-bd03-52ec-b242-a693212b3d2b"
+      ],
+      "currentRequiredPreparationCount": 37
+    },
+    {
+      "subject": "Mathematik",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SH",
+        "stage": "CrossStage",
+        "durationModel": "G9",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 675,
+      "currentSeeds": 674,
+      "addedIds": [
+        "148a0b27-5895-5331-ab90-bf40c0ee5d5c",
+        "4f265904-c805-57c3-8b40-25a1d32c7e7f",
+        "54ce7136-5bdd-5d36-b0a5-f9a781bff82a"
+      ],
+      "removedIds": [
+        "496f16a0-c031-5753-b988-d6cd3cab595e",
+        "80c232f1-8f72-5829-9dbe-5a610ccab3be",
+        "d668c22d-caeb-5e91-8980-721c931a2bcf",
+        "fcfbff12-bd03-52ec-b242-a693212b3d2b"
+      ],
+      "currentRequiredPreparationCount": 37
+    },
+    {
+      "subject": "Mathematik",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SH",
+        "stage": "CrossStage",
+        "durationModel": "G8",
+        "courseProfile": "LK"
+      },
+      "baselineSeeds": 765,
+      "currentSeeds": 764,
+      "addedIds": [
+        "148a0b27-5895-5331-ab90-bf40c0ee5d5c",
+        "4f265904-c805-57c3-8b40-25a1d32c7e7f",
+        "54ce7136-5bdd-5d36-b0a5-f9a781bff82a"
+      ],
+      "removedIds": [
+        "496f16a0-c031-5753-b988-d6cd3cab595e",
+        "80c232f1-8f72-5829-9dbe-5a610ccab3be",
+        "d668c22d-caeb-5e91-8980-721c931a2bcf",
+        "fcfbff12-bd03-52ec-b242-a693212b3d2b"
+      ],
+      "currentRequiredPreparationCount": 20
+    },
+    {
+      "subject": "Mathematik",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SH",
+        "stage": "CrossStage",
+        "durationModel": "G9",
+        "courseProfile": "LK"
+      },
+      "baselineSeeds": 772,
+      "currentSeeds": 771,
+      "addedIds": [
+        "148a0b27-5895-5331-ab90-bf40c0ee5d5c",
+        "4f265904-c805-57c3-8b40-25a1d32c7e7f",
+        "54ce7136-5bdd-5d36-b0a5-f9a781bff82a"
+      ],
+      "removedIds": [
+        "496f16a0-c031-5753-b988-d6cd3cab595e",
+        "80c232f1-8f72-5829-9dbe-5a610ccab3be",
+        "d668c22d-caeb-5e91-8980-721c931a2bcf",
+        "fcfbff12-bd03-52ec-b242-a693212b3d2b"
+      ],
+      "currentRequiredPreparationCount": 20
+    },
+    {
+      "subject": "Biologie",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BW",
+        "stage": "SekI",
+        "durationModel": "G8",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 83,
+      "currentSeeds": 83,
+      "addedIds": [],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 3
+    },
+    {
+      "subject": "Biologie",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BW",
+        "stage": "SekI",
+        "durationModel": "G9",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 83,
+      "currentSeeds": 83,
+      "addedIds": [],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 3
+    },
+    {
+      "subject": "Biologie",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BY",
+        "stage": "SekI",
+        "durationModel": "G8",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 131,
+      "currentSeeds": 131,
+      "addedIds": [],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 3
+    },
+    {
+      "subject": "Biologie",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BY",
+        "stage": "SekI",
+        "durationModel": "G9",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 131,
+      "currentSeeds": 131,
+      "addedIds": [],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 3
+    },
+    {
+      "subject": "Biologie",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HB",
+        "stage": "SekI",
+        "durationModel": "G8",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 99,
+      "currentSeeds": 99,
+      "addedIds": [],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 0
+    },
+    {
+      "subject": "Biologie",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HB",
+        "stage": "SekI",
+        "durationModel": "G9",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 99,
+      "currentSeeds": 99,
+      "addedIds": [],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 0
+    },
+    {
+      "subject": "Biologie",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HE",
+        "stage": "SekI",
+        "durationModel": "G8",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 130,
+      "currentSeeds": 130,
+      "addedIds": [],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 3
+    },
+    {
+      "subject": "Biologie",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HE",
+        "stage": "SekI",
+        "durationModel": "G9",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 130,
+      "currentSeeds": 130,
+      "addedIds": [],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 3
+    },
+    {
+      "subject": "Biologie",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-NI",
+        "stage": "SekI",
+        "durationModel": "G8",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 109,
+      "currentSeeds": 109,
+      "addedIds": [],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 3
+    },
+    {
+      "subject": "Biologie",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-NI",
+        "stage": "SekI",
+        "durationModel": "G9",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 109,
+      "currentSeeds": 109,
+      "addedIds": [],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 3
+    },
+    {
+      "subject": "Biologie",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-RP",
+        "stage": "SekI",
+        "durationModel": "G8",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 80,
+      "currentSeeds": 80,
+      "addedIds": [],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 3
+    },
+    {
+      "subject": "Biologie",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-RP",
+        "stage": "SekI",
+        "durationModel": "G9",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 80,
+      "currentSeeds": 80,
+      "addedIds": [],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 3
+    },
+    {
+      "subject": "Biologie",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SL",
+        "stage": "SekI",
+        "durationModel": "G8",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 61,
+      "currentSeeds": 61,
+      "addedIds": [],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 0
+    },
+    {
+      "subject": "Biologie",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SL",
+        "stage": "SekI",
+        "durationModel": "G9",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 61,
+      "currentSeeds": 61,
+      "addedIds": [],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 0
+    },
+    {
+      "subject": "Biologie",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BB",
+        "stage": "SekI",
+        "durationModel": "G8",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 82,
+      "currentSeeds": 82,
+      "addedIds": [],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 3
+    },
+    {
+      "subject": "Biologie",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BB",
+        "stage": "SekI",
+        "durationModel": "G9",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 82,
+      "currentSeeds": 82,
+      "addedIds": [],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 3
+    },
+    {
+      "subject": "Biologie",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BE",
+        "stage": "SekI",
+        "durationModel": "G8",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 82,
+      "currentSeeds": 82,
+      "addedIds": [],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 3
+    },
+    {
+      "subject": "Biologie",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BE",
+        "stage": "SekI",
+        "durationModel": "G9",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 82,
+      "currentSeeds": 82,
+      "addedIds": [],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 3
+    },
+    {
+      "subject": "Biologie",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HH",
+        "stage": "SekI",
+        "durationModel": "G8",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 78,
+      "currentSeeds": 78,
+      "addedIds": [],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 3
+    },
+    {
+      "subject": "Biologie",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HH",
+        "stage": "SekI",
+        "durationModel": "G9",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 78,
+      "currentSeeds": 78,
+      "addedIds": [],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 3
+    },
+    {
+      "subject": "Biologie",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-MV",
+        "stage": "SekI",
+        "durationModel": "G8",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 155,
+      "currentSeeds": 155,
+      "addedIds": [],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 4
+    },
+    {
+      "subject": "Biologie",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-MV",
+        "stage": "SekI",
+        "durationModel": "G9",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 155,
+      "currentSeeds": 155,
+      "addedIds": [],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 4
+    },
+    {
+      "subject": "Biologie",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-NW",
+        "stage": "SekI",
+        "durationModel": "G8",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 102,
+      "currentSeeds": 102,
+      "addedIds": [],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 3
+    },
+    {
+      "subject": "Biologie",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-NW",
+        "stage": "SekI",
+        "durationModel": "G9",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 102,
+      "currentSeeds": 102,
+      "addedIds": [],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 3
+    },
+    {
+      "subject": "Biologie",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SH",
+        "stage": "SekI",
+        "durationModel": "G8",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 96,
+      "currentSeeds": 96,
+      "addedIds": [],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 3
+    },
+    {
+      "subject": "Biologie",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SH",
+        "stage": "SekI",
+        "durationModel": "G9",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 96,
+      "currentSeeds": 96,
+      "addedIds": [],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 3
+    },
+    {
+      "subject": "Biologie",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SN",
+        "stage": "SekI",
+        "durationModel": "G8",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 169,
+      "currentSeeds": 169,
+      "addedIds": [],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 4
+    },
+    {
+      "subject": "Biologie",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SN",
+        "stage": "SekI",
+        "durationModel": "G9",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 169,
+      "currentSeeds": 169,
+      "addedIds": [],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 4
+    },
+    {
+      "subject": "Biologie",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-ST",
+        "stage": "SekI",
+        "durationModel": "G8",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 166,
+      "currentSeeds": 166,
+      "addedIds": [],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 3
+    },
+    {
+      "subject": "Biologie",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-ST",
+        "stage": "SekI",
+        "durationModel": "G9",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 166,
+      "currentSeeds": 166,
+      "addedIds": [],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 3
+    },
+    {
+      "subject": "Biologie",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-TH",
+        "stage": "SekI",
+        "durationModel": "G8",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 171,
+      "currentSeeds": 171,
+      "addedIds": [],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 4
+    },
+    {
+      "subject": "Biologie",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-TH",
+        "stage": "SekI",
+        "durationModel": "G9",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 171,
+      "currentSeeds": 171,
+      "addedIds": [],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 4
+    },
+    {
+      "subject": "Chemie",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BB",
+        "stage": "SekI",
+        "durationModel": "G8",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 95,
+      "currentSeeds": 95,
+      "addedIds": [],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 0
+    },
+    {
+      "subject": "Chemie",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BB",
+        "stage": "SekI",
+        "durationModel": "G9",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 95,
+      "currentSeeds": 95,
+      "addedIds": [],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 0
+    },
+    {
+      "subject": "Chemie",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BE",
+        "stage": "SekI",
+        "durationModel": "G8",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 95,
+      "currentSeeds": 95,
+      "addedIds": [],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 0
+    },
+    {
+      "subject": "Chemie",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BE",
+        "stage": "SekI",
+        "durationModel": "G9",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 95,
+      "currentSeeds": 95,
+      "addedIds": [],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 0
+    },
+    {
+      "subject": "Chemie",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BW",
+        "stage": "SekI",
+        "durationModel": "G8",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 85,
+      "currentSeeds": 85,
+      "addedIds": [],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 0
+    },
+    {
+      "subject": "Chemie",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BW",
+        "stage": "SekI",
+        "durationModel": "G9",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 85,
+      "currentSeeds": 85,
+      "addedIds": [],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 0
+    },
+    {
+      "subject": "Chemie",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BY",
+        "stage": "SekI",
+        "durationModel": "G8",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 104,
+      "currentSeeds": 104,
+      "addedIds": [],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 0
+    },
+    {
+      "subject": "Chemie",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BY",
+        "stage": "SekI",
+        "durationModel": "G9",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 104,
+      "currentSeeds": 104,
+      "addedIds": [],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 0
+    },
+    {
+      "subject": "Chemie",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HB",
+        "stage": "SekI",
+        "durationModel": "G8",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 88,
+      "currentSeeds": 88,
+      "addedIds": [],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 0
+    },
+    {
+      "subject": "Chemie",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HB",
+        "stage": "SekI",
+        "durationModel": "G9",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 88,
+      "currentSeeds": 88,
+      "addedIds": [],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 0
+    },
+    {
+      "subject": "Chemie",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HE",
+        "stage": "SekI",
+        "durationModel": "G8",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 105,
+      "currentSeeds": 105,
+      "addedIds": [],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 0
+    },
+    {
+      "subject": "Chemie",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HE",
+        "stage": "SekI",
+        "durationModel": "G9",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 105,
+      "currentSeeds": 105,
+      "addedIds": [],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 0
+    },
+    {
+      "subject": "Chemie",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HH",
+        "stage": "SekI",
+        "durationModel": "G8",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 61,
+      "currentSeeds": 61,
+      "addedIds": [],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 0
+    },
+    {
+      "subject": "Chemie",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HH",
+        "stage": "SekI",
+        "durationModel": "G9",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 61,
+      "currentSeeds": 61,
+      "addedIds": [],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 0
+    },
+    {
+      "subject": "Chemie",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-MV",
+        "stage": "SekI",
+        "durationModel": "G8",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 63,
+      "currentSeeds": 63,
+      "addedIds": [],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 0
+    },
+    {
+      "subject": "Chemie",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-MV",
+        "stage": "SekI",
+        "durationModel": "G9",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 63,
+      "currentSeeds": 63,
+      "addedIds": [],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 0
+    },
+    {
+      "subject": "Chemie",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-NI",
+        "stage": "SekI",
+        "durationModel": "G8",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 90,
+      "currentSeeds": 90,
+      "addedIds": [],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 0
+    },
+    {
+      "subject": "Chemie",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-NI",
+        "stage": "SekI",
+        "durationModel": "G9",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 90,
+      "currentSeeds": 90,
+      "addedIds": [],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 0
+    },
+    {
+      "subject": "Chemie",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-NW",
+        "stage": "SekI",
+        "durationModel": "G8",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 63,
+      "currentSeeds": 63,
+      "addedIds": [],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 0
+    },
+    {
+      "subject": "Chemie",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-NW",
+        "stage": "SekI",
+        "durationModel": "G9",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 63,
+      "currentSeeds": 63,
+      "addedIds": [],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 0
+    },
+    {
+      "subject": "Chemie",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-RP",
+        "stage": "SekI",
+        "durationModel": "G8",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 62,
+      "currentSeeds": 62,
+      "addedIds": [],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 0
+    },
+    {
+      "subject": "Chemie",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-RP",
+        "stage": "SekI",
+        "durationModel": "G9",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 62,
+      "currentSeeds": 62,
+      "addedIds": [],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 0
+    },
+    {
+      "subject": "Chemie",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SH",
+        "stage": "SekI",
+        "durationModel": "G8",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 63,
+      "currentSeeds": 63,
+      "addedIds": [],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 0
+    },
+    {
+      "subject": "Chemie",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SH",
+        "stage": "SekI",
+        "durationModel": "G9",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 63,
+      "currentSeeds": 63,
+      "addedIds": [],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 0
+    },
+    {
+      "subject": "Chemie",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SL",
+        "stage": "SekI",
+        "durationModel": "G8",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 65,
+      "currentSeeds": 65,
+      "addedIds": [],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 0
+    },
+    {
+      "subject": "Chemie",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SL",
+        "stage": "SekI",
+        "durationModel": "G9",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 65,
+      "currentSeeds": 65,
+      "addedIds": [],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 0
+    },
+    {
+      "subject": "Chemie",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SN",
+        "stage": "SekI",
+        "durationModel": "G8",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 65,
+      "currentSeeds": 65,
+      "addedIds": [],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 0
+    },
+    {
+      "subject": "Chemie",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SN",
+        "stage": "SekI",
+        "durationModel": "G9",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 65,
+      "currentSeeds": 65,
+      "addedIds": [],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 0
+    },
+    {
+      "subject": "Chemie",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-ST",
+        "stage": "SekI",
+        "durationModel": "G8",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 63,
+      "currentSeeds": 63,
+      "addedIds": [],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 0
+    },
+    {
+      "subject": "Chemie",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-ST",
+        "stage": "SekI",
+        "durationModel": "G9",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 63,
+      "currentSeeds": 63,
+      "addedIds": [],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 0
+    },
+    {
+      "subject": "Chemie",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-TH",
+        "stage": "SekI",
+        "durationModel": "G8",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 67,
+      "currentSeeds": 67,
+      "addedIds": [],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 0
+    },
+    {
+      "subject": "Chemie",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-TH",
+        "stage": "SekI",
+        "durationModel": "G9",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 67,
+      "currentSeeds": 67,
+      "addedIds": [],
+      "removedIds": [],
+      "currentRequiredPreparationCount": 0
+    },
+    {
+      "subject": "Physik",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BW",
+        "stage": "SekI",
+        "durationModel": "G8",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 151,
+      "currentSeeds": 155,
+      "addedIds": [
+        "7badac4d-2874-5b3a-87e8-bf8f4440b2a6",
+        "8670cff6-fe9c-5f7e-8cba-d170134965a6",
+        "9f265f49-1342-5ba7-9c5d-54e97fdb2f19",
+        "a8d99168-62cc-5771-bb5d-9ba833d84193",
+        "dc55adac-91a5-5cc3-ab47-be008480616f"
+      ],
+      "removedIds": [
+        "1abfd5ef-1f42-5b71-8c9a-80c0a6b0322e"
+      ],
+      "currentRequiredPreparationCount": 169
+    },
+    {
+      "subject": "Physik",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BW",
+        "stage": "SekI",
+        "durationModel": "G9",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 151,
+      "currentSeeds": 155,
+      "addedIds": [
+        "7badac4d-2874-5b3a-87e8-bf8f4440b2a6",
+        "8670cff6-fe9c-5f7e-8cba-d170134965a6",
+        "9f265f49-1342-5ba7-9c5d-54e97fdb2f19",
+        "a8d99168-62cc-5771-bb5d-9ba833d84193",
+        "dc55adac-91a5-5cc3-ab47-be008480616f"
+      ],
+      "removedIds": [
+        "1abfd5ef-1f42-5b71-8c9a-80c0a6b0322e"
+      ],
+      "currentRequiredPreparationCount": 169
+    },
+    {
+      "subject": "Physik",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BY",
+        "stage": "SekI",
+        "durationModel": "G8",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 117,
+      "currentSeeds": 123,
+      "addedIds": [
+        "2cfd5c6a-a16a-5f90-aab7-b27b29271f72",
+        "77ab31a9-8961-511c-8637-06e98023d869",
+        "7badac4d-2874-5b3a-87e8-bf8f4440b2a6",
+        "8670cff6-fe9c-5f7e-8cba-d170134965a6",
+        "9f265f49-1342-5ba7-9c5d-54e97fdb2f19",
+        "a8d99168-62cc-5771-bb5d-9ba833d84193",
+        "dc55adac-91a5-5cc3-ab47-be008480616f"
+      ],
+      "removedIds": [
+        "1abfd5ef-1f42-5b71-8c9a-80c0a6b0322e"
+      ],
+      "currentRequiredPreparationCount": 163
+    },
+    {
+      "subject": "Physik",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BY",
+        "stage": "SekI",
+        "durationModel": "G9",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 117,
+      "currentSeeds": 123,
+      "addedIds": [
+        "2cfd5c6a-a16a-5f90-aab7-b27b29271f72",
+        "77ab31a9-8961-511c-8637-06e98023d869",
+        "7badac4d-2874-5b3a-87e8-bf8f4440b2a6",
+        "8670cff6-fe9c-5f7e-8cba-d170134965a6",
+        "9f265f49-1342-5ba7-9c5d-54e97fdb2f19",
+        "a8d99168-62cc-5771-bb5d-9ba833d84193",
+        "dc55adac-91a5-5cc3-ab47-be008480616f"
+      ],
+      "removedIds": [
+        "1abfd5ef-1f42-5b71-8c9a-80c0a6b0322e"
+      ],
+      "currentRequiredPreparationCount": 163
+    },
+    {
+      "subject": "Physik",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HB",
+        "stage": "SekI",
+        "durationModel": "G8",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 142,
+      "currentSeeds": 144,
+      "addedIds": [
+        "7badac4d-2874-5b3a-87e8-bf8f4440b2a6",
+        "9f265f49-1342-5ba7-9c5d-54e97fdb2f19",
+        "a8d99168-62cc-5771-bb5d-9ba833d84193"
+      ],
+      "removedIds": [
+        "1abfd5ef-1f42-5b71-8c9a-80c0a6b0322e"
+      ],
+      "currentRequiredPreparationCount": 169
+    },
+    {
+      "subject": "Physik",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HB",
+        "stage": "SekI",
+        "durationModel": "G9",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 142,
+      "currentSeeds": 144,
+      "addedIds": [
+        "7badac4d-2874-5b3a-87e8-bf8f4440b2a6",
+        "9f265f49-1342-5ba7-9c5d-54e97fdb2f19",
+        "a8d99168-62cc-5771-bb5d-9ba833d84193"
+      ],
+      "removedIds": [
+        "1abfd5ef-1f42-5b71-8c9a-80c0a6b0322e"
+      ],
+      "currentRequiredPreparationCount": 169
+    },
+    {
+      "subject": "Physik",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HE",
+        "stage": "SekI",
+        "durationModel": "G8",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 150,
+      "currentSeeds": 154,
+      "addedIds": [
+        "7badac4d-2874-5b3a-87e8-bf8f4440b2a6",
+        "8670cff6-fe9c-5f7e-8cba-d170134965a6",
+        "9f265f49-1342-5ba7-9c5d-54e97fdb2f19",
+        "a8d99168-62cc-5771-bb5d-9ba833d84193",
+        "dc55adac-91a5-5cc3-ab47-be008480616f"
+      ],
+      "removedIds": [
+        "1abfd5ef-1f42-5b71-8c9a-80c0a6b0322e"
+      ],
+      "currentRequiredPreparationCount": 169
+    },
+    {
+      "subject": "Physik",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HE",
+        "stage": "SekI",
+        "durationModel": "G9",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 150,
+      "currentSeeds": 154,
+      "addedIds": [
+        "7badac4d-2874-5b3a-87e8-bf8f4440b2a6",
+        "8670cff6-fe9c-5f7e-8cba-d170134965a6",
+        "9f265f49-1342-5ba7-9c5d-54e97fdb2f19",
+        "a8d99168-62cc-5771-bb5d-9ba833d84193",
+        "dc55adac-91a5-5cc3-ab47-be008480616f"
+      ],
+      "removedIds": [
+        "1abfd5ef-1f42-5b71-8c9a-80c0a6b0322e"
+      ],
+      "currentRequiredPreparationCount": 169
+    },
+    {
+      "subject": "Physik",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HH",
+        "stage": "SekI",
+        "durationModel": "G8",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 142,
+      "currentSeeds": 144,
+      "addedIds": [
+        "7badac4d-2874-5b3a-87e8-bf8f4440b2a6",
+        "9f265f49-1342-5ba7-9c5d-54e97fdb2f19",
+        "a8d99168-62cc-5771-bb5d-9ba833d84193"
+      ],
+      "removedIds": [
+        "1abfd5ef-1f42-5b71-8c9a-80c0a6b0322e"
+      ],
+      "currentRequiredPreparationCount": 169
+    },
+    {
+      "subject": "Physik",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HH",
+        "stage": "SekI",
+        "durationModel": "G9",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 142,
+      "currentSeeds": 144,
+      "addedIds": [
+        "7badac4d-2874-5b3a-87e8-bf8f4440b2a6",
+        "9f265f49-1342-5ba7-9c5d-54e97fdb2f19",
+        "a8d99168-62cc-5771-bb5d-9ba833d84193"
+      ],
+      "removedIds": [
+        "1abfd5ef-1f42-5b71-8c9a-80c0a6b0322e"
+      ],
+      "currentRequiredPreparationCount": 169
+    },
+    {
+      "subject": "Physik",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-MV",
+        "stage": "SekI",
+        "durationModel": "G8",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 148,
+      "currentSeeds": 150,
+      "addedIds": [
+        "7badac4d-2874-5b3a-87e8-bf8f4440b2a6",
+        "9f265f49-1342-5ba7-9c5d-54e97fdb2f19",
+        "a8d99168-62cc-5771-bb5d-9ba833d84193"
+      ],
+      "removedIds": [
+        "1abfd5ef-1f42-5b71-8c9a-80c0a6b0322e"
+      ],
+      "currentRequiredPreparationCount": 169
+    },
+    {
+      "subject": "Physik",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-MV",
+        "stage": "SekI",
+        "durationModel": "G9",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 148,
+      "currentSeeds": 150,
+      "addedIds": [
+        "7badac4d-2874-5b3a-87e8-bf8f4440b2a6",
+        "9f265f49-1342-5ba7-9c5d-54e97fdb2f19",
+        "a8d99168-62cc-5771-bb5d-9ba833d84193"
+      ],
+      "removedIds": [
+        "1abfd5ef-1f42-5b71-8c9a-80c0a6b0322e"
+      ],
+      "currentRequiredPreparationCount": 169
+    },
+    {
+      "subject": "Physik",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SL",
+        "stage": "SekI",
+        "durationModel": "G8",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 150,
+      "currentSeeds": 154,
+      "addedIds": [
+        "7badac4d-2874-5b3a-87e8-bf8f4440b2a6",
+        "8670cff6-fe9c-5f7e-8cba-d170134965a6",
+        "9f265f49-1342-5ba7-9c5d-54e97fdb2f19",
+        "a8d99168-62cc-5771-bb5d-9ba833d84193",
+        "dc55adac-91a5-5cc3-ab47-be008480616f"
+      ],
+      "removedIds": [
+        "1abfd5ef-1f42-5b71-8c9a-80c0a6b0322e"
+      ],
+      "currentRequiredPreparationCount": 169
+    },
+    {
+      "subject": "Physik",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SL",
+        "stage": "SekI",
+        "durationModel": "G9",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 150,
+      "currentSeeds": 154,
+      "addedIds": [
+        "7badac4d-2874-5b3a-87e8-bf8f4440b2a6",
+        "8670cff6-fe9c-5f7e-8cba-d170134965a6",
+        "9f265f49-1342-5ba7-9c5d-54e97fdb2f19",
+        "a8d99168-62cc-5771-bb5d-9ba833d84193",
+        "dc55adac-91a5-5cc3-ab47-be008480616f"
+      ],
+      "removedIds": [
+        "1abfd5ef-1f42-5b71-8c9a-80c0a6b0322e"
+      ],
+      "currentRequiredPreparationCount": 169
+    },
+    {
+      "subject": "Physik",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SN",
+        "stage": "SekI",
+        "durationModel": "G8",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 150,
+      "currentSeeds": 154,
+      "addedIds": [
+        "7badac4d-2874-5b3a-87e8-bf8f4440b2a6",
+        "8670cff6-fe9c-5f7e-8cba-d170134965a6",
+        "9f265f49-1342-5ba7-9c5d-54e97fdb2f19",
+        "a8d99168-62cc-5771-bb5d-9ba833d84193",
+        "dc55adac-91a5-5cc3-ab47-be008480616f"
+      ],
+      "removedIds": [
+        "1abfd5ef-1f42-5b71-8c9a-80c0a6b0322e"
+      ],
+      "currentRequiredPreparationCount": 169
+    },
+    {
+      "subject": "Physik",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SN",
+        "stage": "SekI",
+        "durationModel": "G9",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 150,
+      "currentSeeds": 154,
+      "addedIds": [
+        "7badac4d-2874-5b3a-87e8-bf8f4440b2a6",
+        "8670cff6-fe9c-5f7e-8cba-d170134965a6",
+        "9f265f49-1342-5ba7-9c5d-54e97fdb2f19",
+        "a8d99168-62cc-5771-bb5d-9ba833d84193",
+        "dc55adac-91a5-5cc3-ab47-be008480616f"
+      ],
+      "removedIds": [
+        "1abfd5ef-1f42-5b71-8c9a-80c0a6b0322e"
+      ],
+      "currentRequiredPreparationCount": 169
+    },
+    {
+      "subject": "Physik",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-ST",
+        "stage": "SekI",
+        "durationModel": "G8",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 148,
+      "currentSeeds": 150,
+      "addedIds": [
+        "7badac4d-2874-5b3a-87e8-bf8f4440b2a6",
+        "9f265f49-1342-5ba7-9c5d-54e97fdb2f19",
+        "a8d99168-62cc-5771-bb5d-9ba833d84193"
+      ],
+      "removedIds": [
+        "1abfd5ef-1f42-5b71-8c9a-80c0a6b0322e"
+      ],
+      "currentRequiredPreparationCount": 169
+    },
+    {
+      "subject": "Physik",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-ST",
+        "stage": "SekI",
+        "durationModel": "G9",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 148,
+      "currentSeeds": 150,
+      "addedIds": [
+        "7badac4d-2874-5b3a-87e8-bf8f4440b2a6",
+        "9f265f49-1342-5ba7-9c5d-54e97fdb2f19",
+        "a8d99168-62cc-5771-bb5d-9ba833d84193"
+      ],
+      "removedIds": [
+        "1abfd5ef-1f42-5b71-8c9a-80c0a6b0322e"
+      ],
+      "currentRequiredPreparationCount": 169
+    },
+    {
+      "subject": "Physik",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-TH",
+        "stage": "SekI",
+        "durationModel": "G8",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 146,
+      "currentSeeds": 148,
+      "addedIds": [
+        "7badac4d-2874-5b3a-87e8-bf8f4440b2a6",
+        "9f265f49-1342-5ba7-9c5d-54e97fdb2f19",
+        "a8d99168-62cc-5771-bb5d-9ba833d84193"
+      ],
+      "removedIds": [
+        "1abfd5ef-1f42-5b71-8c9a-80c0a6b0322e"
+      ],
+      "currentRequiredPreparationCount": 169
+    },
+    {
+      "subject": "Physik",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-TH",
+        "stage": "SekI",
+        "durationModel": "G9",
+        "courseProfile": "GK"
+      },
+      "baselineSeeds": 146,
+      "currentSeeds": 148,
+      "addedIds": [
+        "7badac4d-2874-5b3a-87e8-bf8f4440b2a6",
+        "9f265f49-1342-5ba7-9c5d-54e97fdb2f19",
+        "a8d99168-62cc-5771-bb5d-9ba833d84193"
+      ],
+      "removedIds": [
+        "1abfd5ef-1f42-5b71-8c9a-80c0a6b0322e"
+      ],
+      "currentRequiredPreparationCount": 169
+    }
+  ]
+}

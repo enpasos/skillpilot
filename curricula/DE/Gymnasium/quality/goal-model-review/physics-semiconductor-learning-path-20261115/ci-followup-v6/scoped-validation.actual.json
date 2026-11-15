@@ -1,0 +1,38 @@
+{
+  "base": "5bf8228635aed4eee780fdb98f4b7ee2af6d480a",
+  "scope": "Seven affected Physics asset owners; unrelated catalog/assets excluded explicitly",
+  "checks": [
+    {
+      "name": "exact PR-head seven-goal asset reproduction",
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "Goal visualization asset check failed with 20 issue(s):\n- curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json:7badac4d-2874-5b3a-87e8-bf8f4440b2a6: image filename must be 7badac4d-2874-5b3a-87e8-bf8f4440b2a6.png.\n- curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json:7badac4d-2874-5b3a-87e8-bf8f4440b2a6: url must use the exact path schema <subject>/7badac4d-2874-5b3a-87e8-bf8f4440b2a6/7badac4d-2874-5b3a-87e8-bf8f4440b2a6.png.\n- curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json:77ab31a9-8961-511c-8637-06e98023d869: missing canonical provider prompt curricula/DE/Gymnasium/visualizations/physik/77ab31a9-8961-511c-8637-06e98023d869/prompt.de.md.\n- curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json:9f265f49-1342-5ba7-9c5d-54e97fdb2f19: missing canonical provider prompt curricula/DE/Gymnasium/visualizations/physik/9f265f49-1342-5ba7-9c5d-54e97fdb2f19/prompt.de.md.\n- curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json:dc55adac-91a5-5cc3-ab47-be008480616f: missing canonical provider prompt curricula/DE/Gymnasium/visualizations/physik/dc55adac-91a5-5cc3-ab47-be008480616f/prompt.de.md.\n- curricula/DE/Gymnasium/visualizations/physik/144007cb-e2bc-5c82-bf9d-dda705b15257/144007cb-e2bc-5c82-bf9d-dda705b15257-collector-20261115.png: orphan image has no canonical primary goal-visualization link.\n- curricula/DE/Gymnasium/visualizations/physik/1abfd5ef-1f42-5b71-8c9a-80c0a6b0322e/1abfd5ef-1f42-5b71-8c9a-80c0a6b0322e-bands-20261115.png: orphan image has no canonical primary goal-visualization link.\n- curricula/DE/Gymnasium/visualizations/physik/7badac4d-2874-5b3a-87e8-bf8f4440b2a6/7badac4d-2874-5b3a-87e8-bf8f4440b2a6-elementary-20261115.png: orphan image has no canonical primary goal-visualization link.\n- curricula/DE/Gymnasium/visualizations/physik/7badac4d-2874-5b3a-87e8-bf8f4440b2a6/7badac4d-2874-5b3a-87e8-bf8f4440b2a6.jpg: orphan image has no canonical primary goal-visualization link.\n- curricula/DE/Gymnasium/visualizations/physik/8670cff6-fe9c-5f7e-8cba-d170134965a6/8670cff6-fe9c-5f7e-8cba-d170134965a6.png: orphan image has no canonical primary goal-visualization link.\n- app/public/assets/goal-visualizations/physik/144007cb-e2bc-5c82-bf9d-dda705b15257/144007cb-e2bc-5c82-bf9d-dda705b15257-collector-20261115.png: orphan image has no canonical primary goal-visualization link.\n- app/public/assets/goal-visualizations/physik/1abfd5ef-1f42-5b71-8c9a-80c0a6b0322e/1abfd5ef-1f42-5b71-8c9a-80c0a6b0322e-bands-20261115.png: orphan image has no canonical primary goal-visualization link.\n- app/public/assets/goal-visualizations/physik/7badac4d-2874-5b3a-87e8-bf8f4440b2a6/7badac4d-2874-5b3a-87e8-bf8f4440b2a6-elementary-20261115.png: orphan image has no canonical primary goal-visualization link.\n- app/public/assets/goal-visualizations/physik/7badac4d-2874-5b3a-87e8-bf8f4440b2a6/7badac4d-2874-5b3a-87e8-bf8f4440b2a6.jpg: orphan image has no canonical primary goal-visualization link.\n- app/public/assets/goal-visualizations/physik/8670cff6-fe9c-5f7e-8cba-d170134965a6/8670cff6-fe9c-5f7e-8cba-d170134965a6.png: orphan image has no canonical primary goal-visualization link.\n- backend/src/main/resources/static/assets/goal-visualizations/physik/144007cb-e2bc-5c82-bf9d-dda705b15257/144007cb-e2bc-5c82-bf9d-dda705b15257-collector-20261115.png: orphan image has no canonical primary goal-visualization link.\n- backend/src/main/resources/static/assets/goal-visualizations/physik/1abfd5ef-1f42-5b71-8c9a-80c0a6b0322e/1abfd5ef-1f42-5b71-8c9a-80c0a6b0322e-bands-20261115.png: orphan image has no canonical primary goal-visualization link.\n- backend/src/main/resources/static/assets/goal-visualizations/physik/7badac4d-2874-5b3a-87e8-bf8f4440b2a6/7badac4d-2874-5b3a-87e8-bf8f4440b2a6-elementary-20261115.png: orphan image has no canonical primary goal-visualization link.\n- backend/src/main/resources/static/assets/goal-visualizations/physik/7badac4d-2874-5b3a-87e8-bf8f4440b2a6/7badac4d-2874-5b3a-87e8-bf8f4440b2a6.jpg: orphan image has no canonical primary goal-visualization link.\n- backend/src/main/resources/static/assets/goal-visualizations/physik/8670cff6-fe9c-5f7e-8cba-d170134965a6/8670cff6-fe9c-5f7e-8cba-d170134965a6.png: orphan image has no canonical primary goal-visualization link.\n"
+    },
+    {
+      "name": "bounded repaired seven-goal asset reproduction",
+      "exitCode": 0,
+      "stdout": "Goal visualization asset check passed for 4 link(s) in 1 landscape(s).\n",
+      "stderr": ""
+    },
+    {
+      "name": "negative missing canonical primary",
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "Goal visualization asset check failed with 1 issue(s):\n- curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json:7badac4d-2874-5b3a-87e8-bf8f4440b2a6: missing canonical asset curricula/DE/Gymnasium/visualizations/physik/7badac4d-2874-5b3a-87e8-bf8f4440b2a6/7badac4d-2874-5b3a-87e8-bf8f4440b2a6.png.\n"
+    },
+    {
+      "name": "negative changed historical bytes",
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "Goal visualization asset check failed with 1 issue(s):\n- curricula/DE/Gymnasium/visualizations/physik/7badac4d-2874-5b3a-87e8-bf8f4440b2a6/7badac4d-2874-5b3a-87e8-bf8f4440b2a6-elementary-20261115.png: pinned historical asset hash changed.\n"
+    },
+    {
+      "name": "negative unrelated orphan raster",
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "Goal visualization asset check failed with 1 issue(s):\n- curricula/DE/Gymnasium/visualizations/physik/7badac4d-2874-5b3a-87e8-bf8f4440b2a6/unexpected.png: orphan image has no canonical primary goal-visualization link.\n"
+    }
+  ],
+  "canonicalOnlyFourUrlSubstitutions": true,
+  "assessmentRasterAndSvgBytesExact": true
+}

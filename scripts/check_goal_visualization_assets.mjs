@@ -90,7 +90,7 @@ if (historicalAssetManifest.schemaVersion !== 1 || !Array.isArray(historicalAsse
   for (const entry of historicalAssetManifest.assets) {
     const relativePath = entry?.path
     if (typeof relativePath !== 'string'
-      || !/^([a-z0-9-]+)\/([0-9a-f-]{36})\/\2\.(png|jpe?g|webp|svg)$/u.test(relativePath)
+      || !/^([a-z0-9-]+)\/([0-9a-f-]{36})\/\2(?:-[a-z0-9]+)*\.(png|jpe?g|webp|svg)$/u.test(relativePath)
       || !/^[0-9a-f]{64}$/u.test(entry?.sha256 ?? '')
       || historicalAssets.has(relativePath)) {
       fail(`Invalid or duplicate historical visualization asset: ${String(relativePath)}.`)
@@ -225,8 +225,9 @@ for (const landscapePath of landscapePaths) {
   }
 }
 
-// Exact, hash-bound exceptions retain old published URLs after a newer image
-// becomes the canonical primary. They are not evidence for current image QA.
+// Exact, hash-bound exceptions retain old published or review-bound URLs after
+// a primary replacement or assessment-material relocation. They are not evidence
+// for current image QA; current primary paths still use the exact UUID filename.
 for (const [relativePath, expectedHash] of historicalAssets) {
   if (expectedAssetRelativePaths.has(relativePath)) {
     fail(`${relativePath}: historical asset is still a current primary link.`)

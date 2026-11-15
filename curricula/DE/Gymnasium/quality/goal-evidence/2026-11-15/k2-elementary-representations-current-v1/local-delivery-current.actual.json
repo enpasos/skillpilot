@@ -1,0 +1,151 @@
+{
+  "recordedAt": "2026-11-15T08:52:13.815283+00:00",
+  "status": "locally-validated-Math-delivery-global-root-QA-main-integration-and-fresh-CI-pending",
+  "nativeD": {
+    "actualIndependentRounds": 2,
+    "actualRecordsPerRound": 4,
+    "allSourceDecisions": "keep",
+    "allProfileRecommendations": "none",
+    "strictCurrentResolutions": 4,
+    "newCentralMathSupersessions": 4,
+    "evidenceSelections": [
+      "first",
+      "second",
+      "first",
+      "first"
+    ],
+    "otherSubjectSectionsPreserved": true,
+    "indexPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-11-15/k2-elementary-representations-current-v1/resolution-index.json"
+  },
+  "assessmentTasks": {
+    "new": 3,
+    "ordinaryGoalsAdded": 0,
+    "oldTask6IdentityAndContractUnchanged": true,
+    "sixSourceReleaseLabelsOnly": true
+  },
+  "durationGenerator": {
+    "generatedViews": 18,
+    "changedViews": 9,
+    "changedFileNames": [
+      "de-he-seki-g9.view.json",
+      "de-he-gk-g9.view.json",
+      "de-he-lk-g9.view.json",
+      "de-rp-seki-g8.view.json",
+      "de-rp-seki-g9.view.json",
+      "de-rp-gk-g8.view.json",
+      "de-rp-gk-g9.view.json",
+      "de-rp-lk-g8.view.json",
+      "de-rp-lk-g9.view.json"
+    ],
+    "reviewedSplitPlacementsUnchanged": true,
+    "nativeReproducibilityCheck": "pass"
+  },
+  "currentG17": {
+    "catalogs": 21,
+    "goals": 6541,
+    "passes": 21,
+    "registeredCompleteInventory": true
+  },
+  "currentFocusedRuntimeSchema": {
+    "catalogs": 21,
+    "goals": 6541,
+    "status": "pass"
+  },
+  "protectedSemanticRoutes": {
+    "MathSekIGoals": 281,
+    "MathSekIIGoals": 526,
+    "MathOrdinaryTotal": 807,
+    "MathFindings": 0,
+    "directRequiredPassing": 4,
+    "registeredScopes": 12,
+    "otherPendingScopesUnchanged": true
+  },
+  "packageAndTransparency": {
+    "MathGoals": 1262,
+    "MathOrdinary807IdentitySetUnchanged": true,
+    "packageV12NativeGeneratorAndCheck": "pass",
+    "currentTransparencyCanonicalGoals": 6541,
+    "additionalLayerAFieldsChangedHere": [
+      "goalVisualizations.canonicalGoalCount"
+    ],
+    "otherMetadataPreserved": true
+  },
+  "compositionValidator": {
+    "command": "npm --prefix app run validate:composition-views",
+    "scope": "354 actual views, including all88Math",
+    "status": "pass",
+    "exitCode": 0,
+    "validatedViews": 354,
+    "MathViewCount": 88,
+    "errors": 0,
+    "warnings": 2388,
+    "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/k2-elementary-representations-current-v1/local-composition-check.actual.log",
+    "sha256": "sha256:dc6d7c94960e9f4262f4340db0b1b99a50e01aa88929cd1b71e408dade9e58d6"
+  },
+  "fullQAandBuildOwnership": "root; no central status/build run by this agent",
+  "mainIntegrationAndFreshCIClaimed": false,
+  "activatedRealStagePlansByThisDelivery": 0,
+  "commands": [
+    {
+      "command": "npm --prefix app run generate:math-duration-composition-views",
+      "exitCode": 1,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/k2-elementary-representations-current-v1/local-duration-generate.actual.log",
+      "sha256": "sha256:8efd02c2146127f35fba21fb598a9b1ac8812b37a58ba53ad5736ccb414f3cb3"
+    },
+    {
+      "command": "native current canonical input refresh via sha256WithoutLearningUnitLayer",
+      "exitCode": 0,
+      "evidencePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/k2-elementary-representations-current-v1/duration-input-refresh.actual.json"
+    },
+    {
+      "command": "npm --prefix app run generate:math-duration-composition-views",
+      "exitCode": 0,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/k2-elementary-representations-current-v1/local-duration-generate-retry.actual.log",
+      "sha256": "sha256:aa7e4f3b6727918d21d8dce8100a4d5a4e6c2fdacfa3640ec7a12009023b471f"
+    },
+    {
+      "command": "npm --prefix app run check:math-duration-composition-views",
+      "exitCode": 0,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/k2-elementary-representations-current-v1/local-duration-check.actual.log",
+      "sha256": "sha256:f3fb8697720a77b16b058482905a5285a487ed08636a9a68e216930eb3da4338"
+    },
+    {
+      "command": "./app/node_modules/.bin/tsx tmp/elementary-diagram-delivery-20261115/check_current_graph_and_routes.mts",
+      "exitCode": 0,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/k2-elementary-representations-current-v1/local-current-graph-and-routes.actual.log",
+      "sha256": "sha256:d0ca15632f5524b44144ab12261efc5f264bb5a7a707e788d015d728432259cf"
+    },
+    {
+      "command": "npm --prefix app run validate:composition-views",
+      "exitCode": 0,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/k2-elementary-representations-current-v1/local-composition-check.actual.log",
+      "errors": 0,
+      "warnings": 2388
+    }
+  ],
+  "nativeSynthesisCommands": [
+    {
+      "command": "materializeGoalDescriptionRolloutBatch.ts summarize --config <current batch> --write",
+      "exitCode": 0,
+      "goalCount": 4,
+      "requiresSynthesis": 4
+    },
+    {
+      "command": "materializeGoalDescriptionRolloutSynthesisManifest.ts --config <current batch> --authoring <current synthesis-authoring.json> --write",
+      "exitCode": 0,
+      "decisions": 4,
+      "manifestFingerprint": "sha256:8da2f0dced5276454b0de4795c7cb2ac9b41d41e50e8862fec7123ea1e8a214b"
+    },
+    {
+      "command": "materializeGoalDescriptionRolloutResolutions.ts --config <current batch> --synthesis-manifest <current synthesis-decisions.json> --write",
+      "exitCode": 0,
+      "strict": 4,
+      "deferred": 0
+    },
+    {
+      "command": "materializeGoalDescriptionRolloutBatch.ts finalize --config <current batch> --write",
+      "exitCode": 0,
+      "strict": 4
+    }
+  ]
+}

@@ -1,0 +1,615 @@
+{
+  "reviewer": "/root/elementary_diagram_content_review",
+  "method": "Independent semantic reviewer judgments on explicit complete answer counterexamples, not a claim that an LLM grader was executed. Vectors are minimum adequate/full-versus-inadequate core decisions for these concrete answers; point calibration within failed answers is reviewer judgment.",
+  "baselineCompleteResponses": {
+    "construct-tables": {
+      "A": "Temperature measurements. A transposed table has first row Time/h: 0, 1/2, 3/2 and second row Temperature/°C: -3/2, 1/2, -1/2. The third data column means a measured temperature of minus one half degree Celsius after one and a half hours.",
+      "B": "Club choices. A table has columns Club and Number of people and rows Music 6, Robotics 11, Drama 8. Club names are categories, not physical quantities; the count names people and can be dimensionless."
+    },
+    "read-tables": {
+      "A": "The highest recorded temperature is 1.5 °C at 0.5 h. The difference is 1.5-(-2.5)=4 K. The recorded value rises from -2.5 at 0 h to 1.5 at 0.5 h, then falls to -0.5 at 1.5 h. No measurement at 1 h or 3 h is given, so neither temperature is established.",
+      "B": "Two bottles cost EUR4, four cost EUR8; EUR8-EUR4=EUR4. Among those shown pairs the smaller pair has half as many bottles and half the price of the larger pair."
+    },
+    "read-diagrams": {
+      "A": "The horizontal axis is time in hours, vertical is temperature in °C. At 0 h the mark is -1/2 °C, and at 1/2 h it is +1/2 °C. Adjacent vertical ticks, e.g. 0 and 0.5, represent half a degree; the first point lies below zero.",
+      "B": "Club categories are vertical and number of people is horizontal. Drama corresponds to 6 people, music to 10. The adjacent tick labels 4 and 6 differ by 2 people; the labels drama/music identify categories, not times or measured temperatures."
+    }
+  },
+  "counterexamples": [
+    {
+      "assessmentKey": "construct-tables",
+      "caseId": "adequate-equivalent-baseline",
+      "completeResponseDefinition": "Use both baseline parts unchanged except for the explicit replacement below.",
+      "replacement": "No replacement: full baseline answer.",
+      "criterionVector": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "total": 8,
+      "passes": true,
+      "reviewerReason": "Both independent cases show all four target performances with adequate supporting explanations.",
+      "kind": "fairness",
+      "appliesTo": "Both DE and EN equivalent responses; dataset labels translated as in localized task."
+    },
+    {
+      "assessmentKey": "read-tables",
+      "caseId": "adequate-equivalent-baseline",
+      "completeResponseDefinition": "Use both baseline parts unchanged except for the explicit replacement below.",
+      "replacement": "No replacement: full baseline answer.",
+      "criterionVector": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "total": 8,
+      "passes": true,
+      "reviewerReason": "Both independent cases show all four target performances with adequate supporting explanations.",
+      "kind": "fairness",
+      "appliesTo": "Both DE and EN equivalent responses; dataset labels translated as in localized task."
+    },
+    {
+      "assessmentKey": "read-diagrams",
+      "caseId": "adequate-equivalent-baseline",
+      "completeResponseDefinition": "Use both baseline parts unchanged except for the explicit replacement below.",
+      "replacement": "No replacement: full baseline answer.",
+      "criterionVector": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "total": 8,
+      "passes": true,
+      "reviewerReason": "Both independent cases show all four target performances with adequate supporting explanations.",
+      "kind": "fairness",
+      "appliesTo": "Both DE and EN equivalent responses; dataset labels translated as in localized task."
+    },
+    {
+      "assessmentKey": "construct-tables",
+      "caseId": "equivalent-time-unit",
+      "completeResponseDefinition": "Use both baseline parts unchanged except for the explicit replacement below.",
+      "replacement": "A table uses Time/min 0,30,90 and Temperature/°C -1.5,0.5,-0.5; explicitly says 90 min = 1.5 h and explains that measurement.",
+      "criterionVector": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "total": 8,
+      "passes": true,
+      "reviewerReason": "Correctly labelled equivalent time units retain pairs and quantity meanings.",
+      "kind": "fairness",
+      "appliesTo": "Both DE and EN equivalent responses; dataset labels translated as in localized task."
+    },
+    {
+      "assessmentKey": "construct-tables",
+      "caseId": "case-a-omitted",
+      "completeResponseDefinition": "Use both baseline parts unchanged except for the explicit replacement below.",
+      "replacement": "Delete all of A; retain full B.",
+      "criterionVector": [
+        0,
+        0,
+        2,
+        2
+      ],
+      "total": 4,
+      "passes": false,
+      "reviewerReason": "Categorical construction cannot compensate for the missing independent measurement table.",
+      "kind": "attack",
+      "appliesTo": "Both DE and EN equivalent responses; dataset labels translated as in localized task."
+    },
+    {
+      "assessmentKey": "construct-tables",
+      "caseId": "case-b-omitted",
+      "completeResponseDefinition": "Use both baseline parts unchanged except for the explicit replacement below.",
+      "replacement": "Delete all of B; retain full A.",
+      "criterionVector": [
+        2,
+        2,
+        0,
+        0
+      ],
+      "total": 4,
+      "passes": false,
+      "reviewerReason": "The measurement table cannot compensate for missing categorical construction.",
+      "kind": "attack",
+      "appliesTo": "Both DE and EN equivalent responses; dataset labels translated as in localized task."
+    },
+    {
+      "assessmentKey": "construct-tables",
+      "caseId": "bare-list",
+      "completeResponseDefinition": "Use both baseline parts unchanged except for the explicit replacement below.",
+      "replacement": "A is only prose: 0 h -1.5 °C; 0.5 h +0.5 °C; 1.5 h -0.5 °C. Add a title and a correct sentence explaining the final measurement, but no table.",
+      "criterionVector": [
+        0,
+        1,
+        2,
+        2
+      ],
+      "total": 5,
+      "passes": false,
+      "reviewerReason": "The requested table is not constructed; meaningful quantities alone do not establish tabular structure.",
+      "kind": "attack",
+      "appliesTo": "Both DE and EN equivalent responses; dataset labels translated as in localized task."
+    },
+    {
+      "assessmentKey": "construct-tables",
+      "caseId": "independent-sorting",
+      "completeResponseDefinition": "Use both baseline parts unchanged except for the explicit replacement below.",
+      "replacement": "A has headed columns Time/h 0,0.5,1.5 and Temperature/°C -1.5,-0.5,+0.5. It separately explains the original final measurement correctly.",
+      "criterionVector": [
+        0,
+        2,
+        2,
+        2
+      ],
+      "total": 6,
+      "passes": false,
+      "reviewerReason": "Sorting temperatures independently destroys two associations. Correct labels and a final explanatory sentence cannot restore the table.",
+      "kind": "attack",
+      "appliesTo": "Both DE and EN equivalent responses; dataset labels translated as in localized task."
+    },
+    {
+      "assessmentKey": "construct-tables",
+      "caseId": "headings-and-unit-omission",
+      "completeResponseDefinition": "Use both baseline parts unchanged except for the explicit replacement below.",
+      "replacement": "A has exactly the correct 3 by 2 numeric table, but no title, headers, units or measurement explanation.",
+      "criterionVector": [
+        2,
+        0,
+        2,
+        2
+      ],
+      "total": 6,
+      "passes": false,
+      "reviewerReason": "Correct paired entries do not compensate for missing naming and quantity meanings.",
+      "kind": "attack",
+      "appliesTo": "Both DE and EN equivalent responses; dataset labels translated as in localized task."
+    },
+    {
+      "assessmentKey": "construct-tables",
+      "caseId": "rate-confusion",
+      "completeResponseDefinition": "Use both baseline parts unchanged except for the explicit replacement below.",
+      "replacement": "A has the correct titled and labelled table but explains: after 1.5 h the temperature changes at -0.5 °C per hour.",
+      "criterionVector": [
+        2,
+        1,
+        2,
+        2
+      ],
+      "total": 7,
+      "passes": false,
+      "reviewerReason": "The table is intact, but the requested contextual explanation confuses temperature and rate.",
+      "kind": "attack",
+      "appliesTo": "Both DE and EN equivalent responses; dataset labels translated as in localized task."
+    },
+    {
+      "assessmentKey": "construct-tables",
+      "caseId": "fictitious-category-unit",
+      "completeResponseDefinition": "Use both baseline parts unchanged except for the explicit replacement below.",
+      "replacement": "B table labels Club in °C and Number in h; explanation says Robotics 11 means 11 hours of robotics.",
+      "criterionVector": [
+        2,
+        2,
+        2,
+        0
+      ],
+      "total": 6,
+      "passes": false,
+      "reviewerReason": "Systematic wrong quantity kinds invalidate the category/count criterion despite retained numeric pairs.",
+      "kind": "attack",
+      "appliesTo": "Both DE and EN equivalent responses; dataset labels translated as in localized task."
+    },
+    {
+      "assessmentKey": "construct-tables",
+      "caseId": "missing-category-explanation",
+      "completeResponseDefinition": "Use both baseline parts unchanged except for the explicit replacement below.",
+      "replacement": "Keep B table and fitting title, but delete its category/count explanation.",
+      "criterionVector": [
+        2,
+        2,
+        2,
+        1
+      ],
+      "total": 7,
+      "passes": false,
+      "reviewerReason": "Labels show partial evidence; the explicit explanation demand remains unperformed.",
+      "kind": "attack",
+      "appliesTo": "Both DE and EN equivalent responses; dataset labels translated as in localized task."
+    },
+    {
+      "assessmentKey": "construct-tables",
+      "caseId": "isolated-transcription",
+      "completeResponseDefinition": "Use both baseline parts unchanged except for the explicit replacement below.",
+      "replacement": "A table accidentally writes -0.6 °C in the final cell, but labels it correctly and explicitly explains that the original 1.5 h note is -0.5 °C and the third column pairs these two original readings.",
+      "criterionVector": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "total": 8,
+      "passes": true,
+      "reviewerReason": "The remaining answer independently establishes the correct pair and meaning; the one-cell transcription slip need not fail an adequate core.",
+      "kind": "fairness",
+      "appliesTo": "Both DE and EN equivalent responses; dataset labels translated as in localized task."
+    },
+    {
+      "assessmentKey": "read-tables",
+      "caseId": "kelvin-and-common-price",
+      "completeResponseDefinition": "Use both baseline parts unchanged except for the explicit replacement below.",
+      "replacement": "A uses difference 4 K, not °C. B uses the two given prices/difference and explains EUR4/2=EUR8/4=EUR2 per bottle among the shown entries.",
+      "criterionVector": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "total": 8,
+      "passes": true,
+      "reviewerReason": "Kelvin differences and common unit-price descriptions are mathematically equivalent.",
+      "kind": "fairness",
+      "appliesTo": "Both DE and EN equivalent responses; dataset labels translated as in localized task."
+    },
+    {
+      "assessmentKey": "read-tables",
+      "caseId": "conditional-estimate",
+      "completeResponseDefinition": "Use both baseline parts unchanged except for the explicit replacement below.",
+      "replacement": "After the full A baseline, add: if a straight line is assumed between the last two measured points, the estimate at 1 h is 0.5 °C; this is an assumption, not an additional measurement.",
+      "criterionVector": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "total": 8,
+      "passes": true,
+      "reviewerReason": "An explicitly conditional interpolation does not misrepresent the recorded evidence.",
+      "kind": "fairness",
+      "appliesTo": "Both DE and EN equivalent responses; dataset labels translated as in localized task."
+    },
+    {
+      "assessmentKey": "read-tables",
+      "caseId": "directed-difference",
+      "completeResponseDefinition": "Use both baseline parts unchanged except for the explicit replacement below.",
+      "replacement": "A explicitly states T(0)-T(0.5)=-4 K, equivalently the later reading is 4 K higher; all remaining A/B baseline content retained.",
+      "criterionVector": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "total": 8,
+      "passes": true,
+      "reviewerReason": "The direction is explicit, so a signed difference is valid.",
+      "kind": "fairness",
+      "appliesTo": "Both DE and EN equivalent responses; dataset labels translated as in localized task."
+    },
+    {
+      "assessmentKey": "read-tables",
+      "caseId": "isolated-arithmetic-slip",
+      "completeResponseDefinition": "Use both baseline parts unchanged except for the explicit replacement below.",
+      "replacement": "A reads every sign, maximum/time and trend correctly and writes 1.5-(-2.5)=3 °C as the one erroneous arithmetic evaluation; the correct subtraction setup is visible. All B evidence is adequate.",
+      "criterionVector": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "total": 8,
+      "passes": true,
+      "reviewerReason": "A correct setup and independent correct sign/association/trend evidence identify an isolated arithmetic slip, rather than systematic wrong interpretation.",
+      "kind": "fairness",
+      "appliesTo": "Both DE and EN equivalent responses; dataset labels translated as in localized task."
+    },
+    {
+      "assessmentKey": "read-tables",
+      "caseId": "read-only-no-relation",
+      "completeResponseDefinition": "Use both baseline parts unchanged except for the explicit replacement below.",
+      "replacement": "A gives maximum/time and difference only, no development or statement about unmeasured times. B gives prices and difference only, no relationship statement.",
+      "criterionVector": [
+        2,
+        0,
+        2,
+        0
+      ],
+      "total": 4,
+      "passes": false,
+      "reviewerReason": "Accurate reading and subtraction cannot compensate for either omitted verbal relationship performance.",
+      "kind": "attack",
+      "appliesTo": "Both DE and EN equivalent responses; dataset labels translated as in localized task."
+    },
+    {
+      "assessmentKey": "read-tables",
+      "caseId": "unjustified-continuation",
+      "completeResponseDefinition": "Use both baseline parts unchanged except for the explicit replacement below.",
+      "replacement": "A otherwise follows baseline but claims: the table proves temperature is 0.5 °C at 1 h and will be -3.5 °C at 3 h.",
+      "criterionVector": [
+        2,
+        1,
+        2,
+        2
+      ],
+      "total": 7,
+      "passes": false,
+      "reviewerReason": "The supplied readings do not establish either unseen value; no explicit model assumption is given.",
+      "kind": "attack",
+      "appliesTo": "Both DE and EN equivalent responses; dataset labels translated as in localized task."
+    },
+    {
+      "assessmentKey": "read-tables",
+      "caseId": "systematic-sign-error",
+      "completeResponseDefinition": "Use both baseline parts unchanged except for the explicit replacement below.",
+      "replacement": "A claims the first value is +2.5 °C, hence the maximum is 2.5 at 0 h and the initial temperature falls to 1.5 at 0.5 h.",
+      "criterionVector": [
+        0,
+        1,
+        2,
+        2
+      ],
+      "total": 5,
+      "passes": false,
+      "reviewerReason": "This systematically misreads the negative sign and ordering; it is not a fair isolated-slip exception.",
+      "kind": "attack",
+      "appliesTo": "Both DE and EN equivalent responses; dataset labels translated as in localized task."
+    },
+    {
+      "assessmentKey": "read-tables",
+      "caseId": "systematic-repairing",
+      "completeResponseDefinition": "Use both baseline parts unchanged except for the explicit replacement below.",
+      "replacement": "A consistently interprets the last two entries as -0.5 °C at 0.5 h and +1.5 °C at 1.5 h; places the maximum at 1.5 h, gives an initial rise of 2 K, and describes the measured sequence as monotonically increasing. Neither unseen time is claimed measured. B unchanged.",
+      "criterionVector": [
+        0,
+        1,
+        2,
+        2
+      ],
+      "total": 5,
+      "passes": false,
+      "reviewerReason": "Two associations, the maximum/time and the nonmonotonic pattern are systematically changed; no independent correct mapping evidence makes this an isolated transcription slip.",
+      "kind": "attack",
+      "appliesTo": "Both DE and EN equivalent responses; dataset labels translated as in localized task."
+    },
+    {
+      "assessmentKey": "read-tables",
+      "caseId": "wrong-money-unit",
+      "completeResponseDefinition": "Use both baseline parts unchanged except for the explicit replacement below.",
+      "replacement": "B says two bottles cost 4 bottles and four bottles cost 8 bottles, difference 4 bottles. A correct ratio sentence remains.",
+      "criterionVector": [
+        2,
+        2,
+        0,
+        2
+      ],
+      "total": 6,
+      "passes": false,
+      "reviewerReason": "A monetary price is confused with the input count, invalidating the value/unit reading criterion.",
+      "kind": "attack",
+      "appliesTo": "Both DE and EN equivalent responses; dataset labels translated as in localized task."
+    },
+    {
+      "assessmentKey": "read-tables",
+      "caseId": "unbounded-ratio",
+      "completeResponseDefinition": "Use both baseline parts unchanged except for the explicit replacement below.",
+      "replacement": "B reads and subtracts correctly, then says the table proves every quantity up to 1000 bottles always costs EUR2 each.",
+      "criterionVector": [
+        2,
+        2,
+        2,
+        1
+      ],
+      "total": 7,
+      "passes": false,
+      "reviewerReason": "A pattern for supplied entries is stretched into an unsupported universal claim.",
+      "kind": "attack",
+      "appliesTo": "Both DE and EN equivalent responses; dataset labels translated as in localized task."
+    },
+    {
+      "assessmentKey": "read-tables",
+      "caseId": "case-b-omitted",
+      "completeResponseDefinition": "Use both baseline parts unchanged except for the explicit replacement below.",
+      "replacement": "Delete B completely; A unchanged.",
+      "criterionVector": [
+        2,
+        2,
+        0,
+        0
+      ],
+      "total": 4,
+      "passes": false,
+      "reviewerReason": "No amount of performance on A substitutes for the second independent case.",
+      "kind": "attack",
+      "appliesTo": "Both DE and EN equivalent responses; dataset labels translated as in localized task."
+    },
+    {
+      "assessmentKey": "read-diagrams",
+      "caseId": "equivalent-fractions",
+      "completeResponseDefinition": "Use both baseline parts unchanged except for the explicit replacement below.",
+      "replacement": "No change to baseline: negative/positive halves in A are equivalent to the displayed decimal values; B count remains dimensionless with named people.",
+      "criterionVector": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "total": 8,
+      "passes": true,
+      "reviewerReason": "Equivalent fractions and entity-named counts preserve the intended reading.",
+      "kind": "fairness",
+      "appliesTo": "Both DE and EN equivalent responses; dataset labels translated as in localized task."
+    },
+    {
+      "assessmentKey": "read-diagrams",
+      "caseId": "equivalent-kelvin",
+      "completeResponseDefinition": "Use both baseline parts unchanged except for the explicit replacement below.",
+      "replacement": "A names the plotted Celsius scale, then gives the corresponding temperature values as 272.65 K at 0 h and 273.65 K at 0.5 h, explicitly converting from -0.5/+0.5 °C and explaining the original half-degree ticks.",
+      "criterionVector": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "total": 8,
+      "passes": true,
+      "reviewerReason": "A correct explicit optional conversion retains the actual diagram meaning; Kelvin is not required.",
+      "kind": "fairness",
+      "appliesTo": "Both DE and EN equivalent responses; dataset labels translated as in localized task."
+    },
+    {
+      "assessmentKey": "read-diagrams",
+      "caseId": "axis-roles-only",
+      "completeResponseDefinition": "Use both baseline parts unchanged except for the explicit replacement below.",
+      "replacement": "A/B name axes and units correctly but omit every asked point/bar value and every scale explanation.",
+      "criterionVector": [
+        2,
+        0,
+        2,
+        0
+      ],
+      "total": 4,
+      "passes": false,
+      "reviewerReason": "Axis naming cannot compensate for either omitted independent value/scale reading.",
+      "kind": "attack",
+      "appliesTo": "Both DE and EN equivalent responses; dataset labels translated as in localized task."
+    },
+    {
+      "assessmentKey": "read-diagrams",
+      "caseId": "scale-phrase-only",
+      "completeResponseDefinition": "Use both baseline parts unchanged except for the explicit replacement below.",
+      "replacement": "A says merely uniform scale with units; B says merely steps of two, without asked readings or a concrete tick pair.",
+      "criterionVector": [
+        1,
+        0,
+        1,
+        0
+      ],
+      "total": 2,
+      "passes": false,
+      "reviewerReason": "Generic phrases neither read the actual positions nor show adequate chart-specific axis meaning.",
+      "kind": "attack",
+      "appliesTo": "Both DE and EN equivalent responses; dataset labels translated as in localized task."
+    },
+    {
+      "assessmentKey": "read-diagrams",
+      "caseId": "negative-erased",
+      "completeResponseDefinition": "Use both baseline parts unchanged except for the explicit replacement below.",
+      "replacement": "A identifies axes correctly but reads +0.5 °C at 0 h and +0.5 at 0.5 h, saying below zero means positive because the point is above the bottom axis.",
+      "criterionVector": [
+        2,
+        0,
+        2,
+        2
+      ],
+      "total": 6,
+      "passes": false,
+      "reviewerReason": "The systematic sign error survives a direct explanation; it is not an isolated slip.",
+      "kind": "attack",
+      "appliesTo": "Both DE and EN equivalent responses; dataset labels translated as in localized task."
+    },
+    {
+      "assessmentKey": "read-diagrams",
+      "caseId": "tick-count",
+      "completeResponseDefinition": "Use both baseline parts unchanged except for the explicit replacement below.",
+      "replacement": "B gives drama 3 and music 5 people and says one line step is one person, while correctly identifying category/count axes.",
+      "criterionVector": [
+        2,
+        2,
+        2,
+        0
+      ],
+      "total": 6,
+      "passes": false,
+      "reviewerReason": "Counting grid intervals without the stated factor gives wrong count values and scale meaning.",
+      "kind": "attack",
+      "appliesTo": "Both DE and EN equivalent responses; dataset labels translated as in localized task."
+    },
+    {
+      "assessmentKey": "read-diagrams",
+      "caseId": "category-as-quantity",
+      "completeResponseDefinition": "Use both baseline parts unchanged except for the explicit replacement below.",
+      "replacement": "B treats the vertical category positions as 1 h,2 h,3 h and the horizontal axis as temperature, while retaining the numbers 6 and 10.",
+      "criterionVector": [
+        2,
+        2,
+        0,
+        1
+      ],
+      "total": 5,
+      "passes": false,
+      "reviewerReason": "Retaining bar endpoint numbers does not establish category/count semantics.",
+      "kind": "attack",
+      "appliesTo": "Both DE and EN equivalent responses; dataset labels translated as in localized task."
+    },
+    {
+      "assessmentKey": "read-diagrams",
+      "caseId": "case-a-omitted",
+      "completeResponseDefinition": "Use both baseline parts unchanged except for the explicit replacement below.",
+      "replacement": "Delete A completely; B unchanged.",
+      "criterionVector": [
+        0,
+        0,
+        2,
+        2
+      ],
+      "total": 4,
+      "passes": false,
+      "reviewerReason": "A full bar-chart response cannot compensate for missing signed measurement-chart reading.",
+      "kind": "attack",
+      "appliesTo": "Both DE and EN equivalent responses; dataset labels translated as in localized task."
+    },
+    {
+      "assessmentKey": "read-diagrams",
+      "caseId": "case-b-omitted",
+      "completeResponseDefinition": "Use both baseline parts unchanged except for the explicit replacement below.",
+      "replacement": "Delete B completely; A unchanged.",
+      "criterionVector": [
+        2,
+        2,
+        0,
+        0
+      ],
+      "total": 4,
+      "passes": false,
+      "reviewerReason": "A full numeric-axis response cannot compensate for missing categorical chart reading.",
+      "kind": "attack",
+      "appliesTo": "Both DE and EN equivalent responses; dataset labels translated as in localized task."
+    },
+    {
+      "assessmentKey": "read-diagrams",
+      "caseId": "draw-instead-of-read",
+      "completeResponseDefinition": "Use both baseline parts unchanged except for the explicit replacement below.",
+      "replacement": "Replace all requested readings/explanations by a new correct-looking sketch, with no labelled values or textual interpretation.",
+      "criterionVector": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "total": 0,
+      "passes": false,
+      "reviewerReason": "Construction does not by itself perform the specified axes/value/scale reading; no diagram-construction coverage is claimed.",
+      "kind": "attack",
+      "appliesTo": "Both DE and EN equivalent responses; dataset labels translated as in localized task."
+    }
+  ],
+  "scalarEnumeration": {
+    "vectors": 81,
+    "passingVectors": [
+      [
+        2,
+        2,
+        2,
+        2
+      ]
+    ]
+  },
+  "summary": {
+    "cases": 34,
+    "fairnessPasses": 11,
+    "attacksRejected": 23,
+    "attackFalsePasses": 0
+  }
+}
