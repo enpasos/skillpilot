@@ -23,7 +23,7 @@ CI-Nachweis gilt weiterhin für den benannten Implementierungscommit.
 
 ## Gesamtstand
 
-**Stand: 15. November 2026, 22:40 MEZ (UTC+01:00).**
+**Stand: 15. November 2026, 22:51 MEZ (UTC+01:00).**
 
 **Fortschritt: K 0/13 und F 0/7 vollständig abgeschlossen · 0 reale Landespläne
 aktiviert · kanonische oberste Lernkarte lokal: 0 Rückpfeile und 0 außenstehende
@@ -45,9 +45,11 @@ dem vorherigen geprüften Kandidaten keine weiteren äußeren oder inneren
 Rückgriffsursachen hinzu.
 
 **Qualitätsabschluss:** Alle vier Mathematik-/Physikroutenprofile bestehen,
-einschließlich 80 Physik-Projektionskontexten. Nachweisprofile, Atomarität,
-Merkkarten und Bilder bestehen aktuell für 485/485 reguläre Physikziele.
-Zwei geänderte Beschreibungskontexte erhalten noch aktuelle unabhängige Reviews.
+einschließlich 80 Physik-Projektionskontexten. Alle fünf Inhaltsbereiche einschließlich
+Beschreibungen bestehen jetzt für 485/485 reguläre Physikziele. Die zwei
+geänderten Beschreibungskontexte sind jeweils zweimal aktuell unabhängig
+bewertet und nativ aufgelöst; sämtliche 107 alten Reviewindizes bleiben
+bytegleich.
 Der letzte volle Status war M4: sieben abweichende Länderfelder blockierten M7.
 Die Ursache ist jetzt im bestehenden Quellenmodell behoben, ohne eine
 Qualitätsgrenze zu senken. Der zunächst zu breite Cacheabgleich wurde verworfen:
@@ -55,8 +57,8 @@ Bayerische Operationalisierungen werden nicht ohne direkte Quellenbindung in
 anderen Landesansichten zusätzlich verpflichtend. Die erneute 72-Kontext-
 Messung bestätigt unveränderten gewöhnlichen Lernumfang, keine neuen
 Rückgriffsursachen und keine neuen Außenatome; nur BY-G9 verliert zwei dort
-nicht gültige Aufgaben. Der vollständige Qualitätslauf folgt nach den zwei
-aktuellen Reviewauflösungen.
+nicht gültige Aufgaben. Der neue vollständige Qualitätslauf über 21 Kataloge und zwölf Routen
+läuft noch; dessen Ergebnis wird als nächster Nachweis ergänzt.
 
 **Messgrenze:** Bei identischem aktuellem Code zeigt das Main-Curriculum oben
 jeweils einen Rückpfeil mit 43 atomaren Ursachen gegenüber null im Kandidaten;
@@ -78,7 +80,7 @@ Unterrichtsabnahme; Rohbelege bleiben erhalten.
 | F7 | Zweisprachiger Normkandidat lokal umgesetzt und unabhängig geprüft; noch nicht integriert. |
 | F5 | Fachprüfung teilweise umgesetzt über K1/K2; der vollständige Befundbestand bleibt offen. |
 
-## 15. November 2026, 22:40 MEZ — Zielnorm und Bestandsaufnahme abgeglichen
+## 15. November 2026, 22:51 MEZ — Zielnorm und Bestandsaufnahme abgeglichen
 
 **Stand: Abgeschlossener Dokumentationsreview im Lieferumfang von
 [Draft-PR #159](https://github.com/enpasos/skillpilot/pull/159); Dokumentchecks
@@ -109,12 +111,12 @@ bestanden. Keine neue Laufzeitfunktion oder Integration behauptet.**
   integrieren. Umsetzungsdefizite bleiben bis zu
   ihrem eigenen Nachweis sichtbar; die Norm wird nicht auf den Bestand verkürzt.
 
-## 15. November 2026, 22:40 MEZ — Kanonische Lernkarten bereinigt, Qualitätsabschluss läuft
+## 15. November 2026, 22:51 MEZ — Kanonische Lernkarten bereinigt, Qualitätsabschluss läuft
 
 **Stand: [Draft-PR #159](https://github.com/enpasos/skillpilot/pull/159) ist offen.
 Die bisherigen sechs erfolgreichen Draft-CI-Jobs und acht übersprungenen Jobs
-sind keine vollständige Abnahme. Dieser veröffentlichte Zwischenstand bleibt ein Draft: zwei aktuelle
-Beschreibungskontexte und der abschließende volle Qualitätslauf sind noch offen.**
+sind keine vollständige Abnahme. Dieser veröffentlichte Zwischenstand bleibt ein Draft: Die zwei aktuellen
+Beschreibungskontexte sind aufgelöst; der abschließende volle Qualitätslauf läuft noch.**
 
 - **Fortschritt:** K 0/13, F 0/7 abgeschlossen, 0 reale Landespläne aktiviert.
   Die kanonische oberste Karte hat in allen drei Kursvarianten null Rückpfeile
@@ -137,7 +139,9 @@ Beschreibungskontexte und der abschließende volle Qualitätslauf sind noch offe
   eigene Vorbefassung ist offengelegt. Die native Gesamtauswertung vor der letzten Länderfeld-Korrektur
   bestand für alle 485 regulären Ziele in Beschreibung, Nachweisprofil,
   Atomarität, Merkkarten und Bildern; die zwei dadurch geänderten
-  Beschreibungskontexte werden aktuell nochmals unabhängig bewertet. Das belegt keine Unterrichtswirkung.
+  Beschreibungskontexte sind inzwischen jeweils zweimal aktuell unabhängig
+  bewertet und nativ integriert. Der frische Fünf-Bereiche-Lauf besteht
+  wieder für alle 485 Ziele. Das belegt keine Unterrichtswirkung.
   Für die zwei echten bayerischen Erwerbslücken sind eine präzisierte
   Stromstärkerubrik und eine neue Spannungsaufgabe ohne zusätzliche
   Kondensatortheorie unabhängig geprüft und übernommen. Jede Aufgabe prüft
@@ -154,8 +158,9 @@ Beschreibungskontexte und der abschließende volle Qualitätslauf sind noch offe
   notwendige Vorbereitung lassen die neuen nativen Gegenproben weiterhin
   scheitern. Der volle Qualitätsabschluss erfordert noch die frische Abnahme
   der sieben korrigierten Länderfelder und ihrer tatsächlichen Verbraucher.
-- **Nächster Schritt:** Die zwei aktuellen Reviewauflösungen und den vollen Qualitätsnachweis
-  ergänzen und den finalen Stand nach dem laufenden Draft-CI-Durchgang pushen. Danach vollständige PR-CI, Merge und frische
+- **Nächster Schritt:** Den abschließenden vollen Qualitätsnachweis ergänzen. Die aktuellen
+  Reviewänderungen werden auf ausdrücklichen Wunsch sofort in denselben
+  Draft-PR gepusht; dadurch startet nur dessen kurze CI neu. Danach vollständige PR-CI, Merge und frische
   Main-CI. Weitere Fachpakete und reale Planaktivierungen folgen auf dieser Basis.
 
 ## 15. November 2026, 15:38 MEZ — Abnahme an den tatsächlichen Lernkarten konkretisiert

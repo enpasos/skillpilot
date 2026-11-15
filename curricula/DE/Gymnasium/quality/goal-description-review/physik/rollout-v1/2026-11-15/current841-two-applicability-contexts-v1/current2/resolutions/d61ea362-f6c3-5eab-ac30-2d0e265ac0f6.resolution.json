@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "physics-current841-two-source-boundary-20261115-d61ea362-f6c3-5eab-ac30-2d0e265ac0f6",
+  "goal": {
+    "goalId": "d61ea362-f6c3-5eab-ac30-2d0e265ac0f6",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:178e3f845a82a3f40f6b74550bce4c26a65a20987a211462a7cf863b1dc38422",
+    "pageFingerprint": "sha256:da4d9dae62d92b8f88cfa101ee3021f94874cae8fefdbb130545d4b54db202b7",
+    "goalReviewContextFingerprint": "sha256:036b4db67535032c9d306bbc7bcb25364774e24751064f0d643b254db0e1d5bb",
+    "finalText": {
+      "titleDe": "Geschwindigkeitspfeile aus einer Video-Bildfolge bestimmen und vergleichen",
+      "titleEn": "Determine and compare velocity arrows from a video sequence",
+      "descriptionDe": "Die lernende Person kann in einer zeitlich und räumlich kalibrierten Bildfolge einer zweidimensionalen Bewegung aus den Ortsänderungen über kurze gleiche Zeitintervalle maßstäbliche Geschwindigkeitspfeile konstruieren, die Näherung für den jeweiligen Zeitpunkt benennen und Änderungen der Geschwindigkeit grafisch bestimmen.",
+      "descriptionEn": "The learner can construct scaled velocity arrows from displacements over short equal intervals in a spatially and temporally calibrated image sequence of a two-dimensional motion, state the approximation involved in assigning them to instants, and determine velocity changes graphically."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physics-two-current841-source-boundary-20261115-first-pass-a",
+      "campaignDigest": "sha256:4aad18fdaf6d6066d2f97f20daf0146016bd1cef0e195e2efe177c6c025ee46a",
+      "roundId": "independent-a-boundary2",
+      "independenceGroupId": "physics-two-current841-source-boundary-20261115-independent-a",
+      "reviewInputFingerprint": "sha256:1f9012e885adbbe7e379fd99be88de9cb63323885641a61c8ce06f1dc14e52ab",
+      "goalReviewContextFingerprint": "sha256:036b4db67535032c9d306bbc7bcb25364774e24751064f0d643b254db0e1d5bb",
+      "batchId": "independent-a-boundary2.batch-001",
+      "runId": "physics-current2-source-boundary-a-original18-20261115",
+      "runManifestDigest": "sha256:e307ab5e945cb78ba077029f17136f9b29ee2e609cbbc5f624c1646118bd96dd",
+      "resultsDigest": "sha256:4fbbd6a51d3725ec9ae20730fdc7b7ee738d38cc42890f6a209f10fdc81042a2",
+      "recordId": "physics-current2-source-boundary-a-original18-20261115.goal-002",
+      "recordDigest": "sha256:0732ea004b84bcdf1d4f30b11315f2a4be14d17820de21dea46f711949fdfac9"
+    },
+    "second": {
+      "campaignId": "physics-two-current841-source-boundary-20261115-first-pass-b",
+      "campaignDigest": "sha256:89323d82b3dbb40a4eb7abb6ddb75b8b92525c3800bcdbc91739143104ed4cde",
+      "roundId": "independent-b-boundary2",
+      "independenceGroupId": "physics-two-current841-source-boundary-20261115-independent-b",
+      "reviewInputFingerprint": "sha256:1f9012e885adbbe7e379fd99be88de9cb63323885641a61c8ce06f1dc14e52ab",
+      "goalReviewContextFingerprint": "sha256:036b4db67535032c9d306bbc7bcb25364774e24751064f0d643b254db0e1d5bb",
+      "batchId": "independent-b-boundary2.batch-001",
+      "runId": "physics-current2-source-boundary-b-20261115",
+      "runManifestDigest": "sha256:a1a21ea5cb6b50570b94e5b31cd7843f04fd536d70382a74076f43003a101cbf",
+      "resultsDigest": "sha256:26f9bae8374ec4d552ebf5669194344e6f39098acda67aae6e5498ccc450e3f7",
+      "recordId": "physics-current2-source-boundary-b-20261115.goal-002",
+      "recordDigest": "sha256:140598b001a5fecbdf72bd5b6e81dd30c06a00baa43cf8c3fe42e4f778c72ec8"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:212100f641735e73bb243abbf859075e2ea36dbab97cc1b4f844e3698a2936f0"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "physics-current841-two-source-boundary-20261115-actual-ai-synthesis",
+    "manifestDigest": "sha256:5b349c24343db86eeb4abc45dd8dbdc2efe24ac909ebc89bf2b25f7e9e47aed9",
+    "manifestFingerprint": "sha256:fc9ba10fef4ce0968ef81231aa1b9273f33123ff1b56ac1ce9e9b2335a0aabb0",
+    "decisionId": "physics-current841-two-source-boundary-20261115-actual-ai-synthesis-002"
+  },
+  "synthesis": {
+    "synthesisId": "physics-current841-two-source-boundary-20261115-actual-ai-synthesis-002",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "codex-physics-release-agent-reading-actual-independent-A-B-current-two-source-boundary-20261115",
+    "synthesizedAt": "2026-11-15T21:44:43.392781+00:00",
+    "rationaleDe": "Beide tatsächlichen unabhängigen Erstbewertungen dieser exakten aktuellen Eingaberevision behalten den Text und empfehlen keine Profiländerung. Der aktuelle begrenzte BY-Kontext und die ausdrückliche Mapping-Grenze erhalten den eigenen Quellenumfang. Die ganze DE/EN-Beschreibung und das unveränderte vollständige P verlangen eigene maßstäbliche Auswertung zweier neuer realer, bereits kalibrierter Bildfolgen, Zeitpunktnäherung und grafische gerichtete Geschwindigkeitsänderung. Beide Reviewer haben die korrekte Pfeildifferenz tatsächlich gesehen; gleiche Beträge mit Richtungswechsel sind ein eigener Transferfall. Eigenständige Kalibrierung oder Versuchsdurchführung werden diesem Ziel nicht zusätzlich aufgebürdet. Beide ursprünglichen Reviewer legen ihre eigene frühere D18/D10- beziehungsweise Aufgaben-/Routenarbeit offen und blieben zu fremden Voten blind; keine zusätzlichen historisch unexponierten Personen werden behauptet. Alte Reviewbytes bleiben unverändert. Dies ist eine AI-Synthese, keine amtliche Quellen-/Projektionsfreigabe, menschliche Freigabe oder Lernendenleistung.",
+    "rationaleEn": "Both actual independent first evaluations of this exact current input revision retain the text and recommend no profile change. The current bounded BY context and explicit mapping boundary preserve the own-source scope. The whole DE/EN description and unchanged complete profile require own scaled analysis of two fresh real already-calibrated image sequences, approximate time assignment and graphical directed velocity change. Both reviewers actually saw the correct difference arrow; equal magnitudes with changed direction form a separate transfer case. Independent calibration or conducting an experiment are not added to this goal. Both original reviewers disclose their own earlier D18/D10 or task/route work and remained blind to counterpart verdicts; no additional historically unexposed persons are claimed. Historical review bytes remain unchanged. This is AI synthesis, not official-source/projection approval, human approval or learner performance.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Ein räumlich und zeitlich kalibriertes Ortsänderungsstück über ein kurzes Intervall liefert einen maßstäblichen mittleren Geschwindigkeitspfeil, der einen Zeitpunkt nur näherungsweise repräsentiert. Geschwindigkeit hat Betrag und Richtung; ihr Änderungspfeil ergibt sich als grafische Differenz und kann auch bei gleichem Betrag ungleich null sein.",
+      "essentialUnderstandingEn": "A spatially and temporally calibrated displacement over a short interval yields a scaled average-velocity arrow that represents an instant only approximately. Velocity has magnitude and direction; its change is a graphical difference and can be nonzero even when the magnitudes are equal.",
+      "observablePerformanceDe": "Die Person wertet eine neue reale, bereits kalibrierte zweidimensionale Bildfolge aus, dokumentiert zwei kurze gleich lange Fenster und deren Zeitzuordnung und konstruiert selbst maßstäbliche Geschwindigkeitspfeile. Sie verschiebt die Pfeile ohne Richtungs- oder Längenänderung zu gemeinsamen Anfängen und zeichnet Δv von der ersten zur zweiten Spitze, mit einer zur Bildauflösung passenden Interpretation.",
+      "observablePerformanceEn": "The learner analyzes a fresh real, already calibrated two-dimensional image sequence, documents two short equal-duration windows and their timing and independently constructs scaled velocity arrows. They translate the arrows without changing direction or length to common tails and draw Δv from the first to the second arrowhead, interpreting it within image resolution.",
+      "transferExpectationDe": "In einem zweiten neuen Clip mit ungefähr gleichem Geschwindigkeitsbetrag, aber einer unabhängig veränderten Bewegungsrichtung zeigt die Person durch eigene maßstäbliche Konstruktion eine Geschwindigkeitsänderung. Sie begründet, warum die Differenz der Beträge dafür nicht genügt und warum die endlichen Fenster keine exakten momentanen Werte liefern.",
+      "transferExpectationEn": "In a second fresh clip with approximately equal speed but an independently changed motion direction, the learner demonstrates velocity change through their own scaled construction. They explain why subtracting magnitudes is insufficient and why finite windows do not yield exact instantaneous values."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-ac0637fc7d03bccb43d6c5b09d598cbf361b8df76e271588042e56a5c7bc7d54",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:563662ab149fe551217a5988f977fac9091fe8652c40e18da9867af080e4b150"
+}

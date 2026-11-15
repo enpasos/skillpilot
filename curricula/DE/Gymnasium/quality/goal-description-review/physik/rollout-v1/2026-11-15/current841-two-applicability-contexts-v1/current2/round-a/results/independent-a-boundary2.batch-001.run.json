@@ -1,0 +1,52 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physics-current2-source-boundary-a-original18-20261115",
+  "campaignId": "physics-two-current841-source-boundary-20261115-first-pass-a",
+  "roundId": "independent-a-boundary2",
+  "batchId": "independent-a-boundary2.batch-001",
+  "batchInputFingerprint": "sha256:445ff31e6d027a834d43fae22dcddaec68304d8289cdb348de4263390d5b52c8",
+  "bundleFingerprint": "sha256:29ac3af8ec43107b29bbb098afcefff67f4a4892ae07a27bc0c9d1636ec9d57c",
+  "bookDigest": "sha256:6623a57534b3114f3d41310727360706f327b784d853dcd7d1e54f173dc5b4d8",
+  "provider": "OpenAI Codex delegated agent; effective deployment not independently attested",
+  "model": "gpt-6.1-sol (requested); effective deployment not independently attested",
+  "modelVersion": "not exposed by session interface",
+  "role": "didactic_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:c07c60b700f9b0103e68cf2a0902f564ab73407914c972f5eced3afea3150133",
+  "criteriaFingerprint": "sha256:2cc4c090c15972aab7f30edc551fff627d400d054e7c07885241e3fd237f9a3c",
+  "generationParametersFingerprint": "sha256:189fa8d2ac7ea0816e4ef60b4739e805f8c59c857c1b5674ecf118ec70b720ba",
+  "independenceGroupId": "physics-two-current841-source-boundary-20261115-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "677a192d-8bbe-57fc-bb7a-1c1ed5fba32b",
+    "d61ea362-f6c3-5eab-ac30-2d0e265ac0f6"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:790d29d4605b9011ff8d7ce0ac5ad11d2d506c22a9ddc42973b7d6a0128dfe39"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:507775fc4360ce471260c039ce05b5843c3ddd1d9dce1532d689ae513b7ee96c"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:c07c60b700f9b0103e68cf2a0902f564ab73407914c972f5eced3afea3150133"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:2cc4c090c15972aab7f30edc551fff627d400d054e7c07885241e3fd237f9a3c"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:445ff31e6d027a834d43fae22dcddaec68304d8289cdb348de4263390d5b52c8"
+    }
+  ],
+  "startedAt": "2026-11-15T21:31:28Z",
+  "completedAt": "2026-11-15T21:36:45.154326+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:4fbbd6a51d3725ec9ae20730fdc7b7ee738d38cc42890f6a209f10fdc81042a2",
+  "toolchainVersion": "codex-native-goal-description-review-v2"
+}

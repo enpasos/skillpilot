@@ -97,3 +97,12 @@ werden als eigene aktuelle Nachweise gebunden. Der Integrationsstand und der
 konkrete erfolgreiche Main-CI-Lauf werden im fortlaufenden Management Summary
 geführt; die hier erhaltenen lokalen Inhaltsreviews allein sind keine
 Integrations- oder Unterrichtsabnahme.
+
+Die zwei durch die Quellenvererbungsgrenze geänderten Beschreibungskontexte
+sind anschließend tatsächlich zweimal unabhängig bewertet und nativ aufgelöst.
+[Der frische vollständige Inhaltslauf](current841-source-boundary-full-deep-final.actual.json)
+besteht auf `b391f6a7…` für D, P, A, M und V jeweils mit 485/485 Zielen und
+sechs bestandenen Pflichtchecks ohne Blocker. Genau zwei neue zielbezogene
+Auflösungen ersetzen die betreffenden alten Claims; alle 107 alten
+Reviewindizes bleiben bytegleich. Der volle 21-Katalog-/12-Routenabschluss
+und Remote-CI sind davon getrennte Nachweise.
