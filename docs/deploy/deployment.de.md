@@ -13,6 +13,13 @@ Der reguläre Produktionsbefehl lautet:
 ./deploy_skillpilot.sh
 ```
 
+Bleibt der Commit nach dem Git-Update unverändert, fragt das Skript
+`Trotzdem erneut ausrollen? [j/N]`. Mit `j` wird derselbe Stand erneut ausgerollt;
+`n`, Enter oder das Ende der Eingabe beenden den Lauf vor Build und
+Service-Neustart. Neue Commits werden wie bisher direkt ausgerollt.
+Der explizite Aufruf mit `SKILLPILOT_SKIP_GIT_UPDATE=1` bleibt ohne diese
+Rückfrage, da er den bereits ausgewählten Arbeitsbaum verwendet.
+
 Der Produktionshost muss Poppler (`pdfinfo`, `pdftohtml`),
 Fontconfig (`fc-list`, `fc-match`) sowie Liberation Sans/Mono in allen vier
 Schnitten (Regular/Bold/Italic/Bold-Italic) für den Bau der Lernzielbücher und deren
@@ -102,6 +109,7 @@ Der Deployment-Prozess führt derzeit alle folgenden Schritte aus:
     das Deployment nicht auf einen bereits verifizierten Commit und Arbeitsbaum fixiert.
 4.  Holen des neuesten Codes aus Git und – falls sich `HEAD` geändert hat – Neustart der frisch
     ausgecheckten Deployment-Engine, sofern das Git-Update nicht explizit übersprungen wurde.
+    Bei unverändertem Commit zwischen Abbruch (Standard) und erneutem Rollout wählen.
 5.  Validieren des OpenAI-V1-Release-Vertrags und etwaiger expliziter Public-URL-Overrides
     vor dem Kopieren von Assets, dem Bauen oder dem Neustart des Dienstes.
 6.  Bereitstellen der **Curriculum-Decks** aus `curricula/.../json/` sowohl in die statischen Frontend- als auch in die Backend-Datenordner.
@@ -158,13 +166,41 @@ echo "Pruefe Voraussetzungen fuer das Datenbank-Backup..."
 # before the checkout can be updated (scripts/lib/deploy_database_backup.sh).
 
 if [ "${SKILLPILOT_SKIP_GIT_UPDATE:-0}" = "1" ]; then
-  echo "Ueberspringe Git-Update (SKILLPILOT_SKIP_GIT_UPDATE=1)."
+  echo "Überspringe Git-Update (SKILLPILOT_SKIP_GIT_UPDATE=1)."
 else
+  deployment_engine_commit_before_pull="$(git rev-parse HEAD)"
+
   echo "Stash local changes..."
   git stash
 
   echo "Hole Updates..."
   git pull
+
+  deployment_engine_commit_after_pull="$(git rev-parse HEAD)"
+  if [ "${deployment_engine_commit_after_pull}" != "${deployment_engine_commit_before_pull}" ]; then
+    echo "Repository wurde aktualisiert; starte die frisch ausgecheckte Deployment-Engine neu."
+    export SKILLPILOT_SKIP_GIT_UPDATE=1
+    exec "${PROJECT_ROOT}/scripts/deploy.sh"
+  fi
+
+  echo "Keine neuen GitHub-Änderungen: Der ausgecheckte Commit ist unverändert."
+  while true; do
+    printf 'Trotzdem erneut ausrollen? [j/N] '
+    read -r deployment_repeat_answer || deployment_repeat_answer=""
+    case "${deployment_repeat_answer}" in
+      j|J|ja|Ja|JA|y|Y|yes|Yes|YES)
+        echo "Erneuter Rollout des unveränderten Stands."
+        break
+        ;;
+      ""|n|N|nein|Nein|NEIN|no|No|NO)
+        echo "Rollout abgebrochen; kein Build und kein Service-Neustart."
+        exit 0
+        ;;
+      *)
+        echo "Bitte j oder n eingeben. Enter bricht den Rollout ab."
+        ;;
+    esac
+  done
 fi
 
 echo "Pruefe konsistente OpenAI-Plugin-V1-Versionierung..."

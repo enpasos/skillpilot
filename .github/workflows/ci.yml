@@ -126,6 +126,7 @@ jobs:
             scripts/install_openai_v1_mtls_edge.sh \
             scripts/verify_openai_v1_mtls_edge.sh
           PYTHONDONTWRITEBYTECODE=1 python3 -B scripts/test_deploy_database_backup.py
+          PYTHONDONTWRITEBYTECODE=1 python3 -B scripts/test_deploy_no_changes.py
           ./deploy_skillpilot.sh --help | grep -Fq 'openai-mcp coach'
           ln -s "${GITHUB_WORKSPACE}/deploy_skillpilot.sh" \
             "${RUNNER_TEMP}/deploy_skillpilot.sh"

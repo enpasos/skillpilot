@@ -333,6 +333,25 @@ else
     export SKILLPILOT_SKIP_GIT_UPDATE=1
     exec "${PROJECT_ROOT}/scripts/deploy.sh"
   fi
+
+  echo "Keine neuen GitHub-Änderungen: Der ausgecheckte Commit ist unverändert."
+  while true; do
+    printf 'Trotzdem erneut ausrollen? [j/N] '
+    read -r deployment_repeat_answer || deployment_repeat_answer=""
+    case "${deployment_repeat_answer}" in
+      j|J|ja|Ja|JA|y|Y|yes|Yes|YES)
+        echo "Erneuter Rollout des unveränderten Stands."
+        break
+        ;;
+      ""|n|N|nein|Nein|NEIN|no|No|NO)
+        echo "Rollout abgebrochen; kein Build und kein Service-Neustart."
+        exit 0
+        ;;
+      *)
+        echo "Bitte j oder n eingeben. Enter bricht den Rollout ab."
+        ;;
+    esac
+  done
 fi
 
 echo "Prüfe konsistente OpenAI-Plugin-V1-Versionierung..."
