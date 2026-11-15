@@ -23,7 +23,7 @@ CI-Nachweis gilt weiterhin für den benannten Implementierungscommit.
 
 ## Gesamtstand
 
-**Stand: 15. November 2026, 12:02 MEZ (UTC+01:00).**
+**Stand: 15. November 2026, 13:20 MEZ (UTC+01:00).**
 
 **Fortschritt: K 0/13 und F 0/7 vollständig abgeschlossen · 0 reale Landespläne
 aktiviert · Wirkung auf die vollständigen Stufenrückgriffe noch nicht gemessen.**
@@ -40,12 +40,39 @@ Begrenzte Kanten- und Sichtvergleiche sind noch kein vollständiger Vorher-/Nach
 | F7 | Zweisprachiger Normkandidat lokal umgesetzt und unabhängig geprüft; noch nicht integriert. |
 | F5 | Fachprüfung teilweise umgesetzt über K1/K2; der vollständige Befundbestand bleibt offen. |
 
-## 15. November 2026, 12:02 MEZ — Halbleiterpfad, Tabellen-/Diagrammaufgaben und Stufenplangrundlage
+## 15. November 2026, 13:20 MEZ — Rollout bei unverändertem Git-Stand
 
-**Stand: Lokale Korrekturen und Qualitätschecks bestanden. Der bisherige Durchgang
-von [PR #157](https://github.com/enpasos/skillpilot/pull/157) endete mit neun
-erfolgreichen und fünf fehlgeschlagenen Jobs. Die gebündelte Korrektur geht jetzt
-in die erneute vollständige PR-CI; Integration und frische Main-CI stehen aus.**
+**Stand: Lokal umgesetzt und getestet; Lieferung mit
+[PR #157](https://github.com/enpasos/skillpilot/pull/157). Integration und frische
+Main-CI stehen aus. Kein Produktionsrollout durchgeführt.**
+
+- **Fortschritt:** Zusatzauftrag des Product Owners; K 0/13 und F 0/7
+  abgeschlossen, 0 reale Landespläne aktiviert, Gesamtwirkung auf Rückgriffe
+  weiterhin nicht gemessen.
+- **Ergebnis und Entscheidung:** `./deploy_skillpilot.sh` bietet bei
+  unverändertem Commit Abbruch oder erneuten Rollout an. `j` setzt fort;
+  `n`, Enter oder Eingabeende brechen vor Build und Service-Neustart ab.
+  Neue Commits und der ausdrücklich gewählte Git-Übersprung behalten ihren Ablauf.
+- **Kontrollstellen:** [Betriebsanleitung](../deploy/deployment.de.md),
+  [Auswahl im Deployment-Skript](https://github.com/enpasos/skillpilot/blob/a7f0fa82afee1f74b4689ed02db98246d72377b0/scripts/deploy.sh),
+  [automatisierte Verhaltenstests](https://github.com/enpasos/skillpilot/blob/a7f0fa82afee1f74b4689ed02db98246d72377b0/scripts/test_deploy_no_changes.py).
+- **Nachweise:** Shell-Syntaxprüfung erfolgreich; sechs neue Verhaltenstests
+  bestehen einschließlich Wiederholung, Abbruch, fehlerhaftem Git-Pull und
+  Neustart der aktualisierten Engine. Die neun bestehenden Backup-Tests und
+  neun CI-Aufteilungstests bestehen ebenfalls. Die neuen Verhaltenstests sind
+  in den vorhandenen CI-Job aufgenommen; die lokalen Tests führen keinen echten
+  Rollout aus.
+- **Nächster Schritt:** Gemeinsam mit den begrenzten CI-Korrekturen integrieren;
+  Abschluss erst nach frischer erfolgreicher Main-CI.
+
+## 15. November 2026, 13:20 MEZ — Halbleiterpfad, Tabellen-/Diagrammaufgaben und Stufenplangrundlage
+
+**Stand: Der dritte vollständige Durchgang von
+[PR #157](https://github.com/enpasos/skillpilot/pull/157) ist mit 13 erfolgreichen
+und einem fehlgeschlagenen Job beendet. Der Fehler betrifft einen veralteten
+erzeugten Quellenbericht; die Korrektur und alle 21 nachfolgenden lokalen Checks
+sind abgeschlossen. Die Korrekturen benötigen einen neuen vollständigen
+PR-Durchgang; Integration und frische Main-CI stehen aus.**
 
 - **Fortschritt:** K1/K2 teilweise umgesetzt; F1/F2/F6 als Grundlage mit
   isolierten Testdaten. **K 0/13, F 0/7 abgeschlossen; 0 reale Landespläne
@@ -63,7 +90,12 @@ in die erneute vollständige PR-CI; Integration und frische Main-CI stehen aus.*
   vorgezogene J6-Voraussetzung am J5-Tabellenziel: Die Zahlenvorbereitung sitzt
   jetzt ausdrücklich an der anspruchsvolleren Aufgabe. Zieltexte und Raster
   bleiben vollständig erhalten. `v1.3` beschreibt den Planvertrag, noch keine
-  aktivierte Paket-Laufzeitversion.
+  aktivierte Paket-Laufzeitversion. Der jetzt aufgefallene Quellenbericht
+  berücksichtigt lokal auch die drei bereits eingeführten elementaren Aufgaben;
+  bestehende Quellenbewertungen und die 807 relevanten Kompetenzen bleiben
+  unverändert. Eine zusätzliche Testkorrektur prüft die tatsächlichen Felder
+  der Gemini-Lernkartenantwort: Ein zufälliges Wort in einem undurchsichtigen
+  Zugriffstoken ist kein Datenleck.
 - **Kontrollstellen:**
   [Physik: Kompetenzen, Versuchshandlungen und Bewertungsraster](https://github.com/enpasos/skillpilot/blob/e5154f263880f8699a3130883c07269d4827737a/curricula/DE/Gymnasium/quality/goal-model-review/physics-semiconductor-learning-path-20261115/post-corrected-independent-review-v3/README.md),
   [Mathematik: Tabellenkompetenz, Aufgabengrenze und aktuelle Inhaltsreviews](https://github.com/enpasos/skillpilot/blob/e6eb2add29a325204dae9a24f37d89dc0e2a9425/curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/k2-table-task-boundary-current-v2/README.md),
@@ -79,9 +111,15 @@ in die erneute vollständige PR-CI; Integration und frische Main-CI stehen aus.*
   Veraltete Paket-, Berichts- und Testbindungen sind korrigiert; die
   Freigabeentscheidungen bleiben erhalten. Das sind lokale automatisierte
   Checks und getrennte Agentenreviews, keine beobachtete Lernwirkung oder
-  bereits erfolgreiche neue Remote-CI.
-- **Nächster Schritt:** Den erneuten vollständigen CI-Durchgang von #157
-  auswerten und die Lieferung nach Merge plus frischer Main-CI abschließen. Danach die vorbereiteten Fachreparaturen und Normquellen
+  bereits erfolgreiche vollständige Remote-CI. Der korrigierte Gemini-Vertragstest
+  besteht lokal mit acht Tests und erkennt alle 20 absichtlich eingebauten
+  Datenlecks. Der erneut gestartete Gemini-Workflow besteht am unveränderten
+  PR-Kopf; dies belegt noch nicht die Integration der Testkorrektur.
+  Nach der Berichtsaktualisierung bestehen alle 21 nachfolgenden lokalen
+  Curriculum-Checks, einschließlich der strengen Qualitäts- und M7-Regeln.
+- **Nächster Schritt:** Die begrenzten Berichts-/Testkorrekturen und die gewünschte
+  Rollout-Auswahl gemeinsam liefern und #157 erst nach erfolgreicher
+  PR-CI integrieren. Die Lieferung wird nach frischer Main-CI abgeschlossen. Danach die vorbereiteten Fachreparaturen und Normquellen
   integrieren. Eigener Verstärkerversuch, weitere falsche Kompetenznachweise,
   Länderplatzierungen und reale Planaktivierung bleiben Teil des Gesamtauftrags.
 
