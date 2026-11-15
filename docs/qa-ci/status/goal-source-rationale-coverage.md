@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 > Source of truth: `app/public/data/goal-source-rationales-math-public.json`
 
-Generated: 2026-11-15T06:02:32.206Z
+Generated: 2026-11-15T11:49:45.722Z
 
 Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung schon skaliert. Er ist ein Status- und Arbeitslisten-Artefakt: offene Eintraege blockieren die Runtime nicht, machen aber sichtbar, welche Ziel- und Relationstexte noch aufgebaut werden muessen.
 
@@ -16,10 +16,10 @@ Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung sch
 
 | Metric | Value |
 | --- | --- |
-| Alle Mathematik-Ziele | 1259 |
-| Atomare Blattleernziele | 985 |
+| Alle Mathematik-Ziele | 1262 |
+| Atomare Blattleernziele | 988 |
 | Davon relevant fuer Quellenbegruendung | 807 |
-| Memory-/Nicht-Content-Blattziele | 178 |
+| Memory-/Nicht-Content-Blattziele | 181 |
 | Clusterziele | 274 |
 | Runtime-Quellenbegruendungen | 754 |
 | Runtime-Ziele mit klassischem Quellenweg | 754 |
@@ -30,8 +30,8 @@ Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung sch
 | Relevante Blattziele mit Runtime-Classic-Gap | 0 |
 | Cluster mit direkter Runtime-Quellenbegruendung | 0/274 |
 | Cluster ohne direkte Runtime-Quellenbegruendung | 274 |
-| contains-Relationen mit Begruendungstext | 0/1394 |
-| requires-Relationen mit Begruendungstext | 0/1570 |
+| contains-Relationen mit Begruendungstext | 0/1397 |
+| requires-Relationen mit Begruendungstext | 0/1576 |
 
 ## Interpretation
 
