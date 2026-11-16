@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict'
+import { createHash } from 'node:crypto'
 import { readFileSync } from 'node:fs'
 import { createElement } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
@@ -589,7 +590,59 @@ for (const prismChildId of [canonicalMathPrismVolumeGoalId, canonicalMathPrismSu
 
 const genericVisibleJ8StructureId = 'composition:de-de-gym-seki-math:structure:j8'
 const genericJ8FractionsStructureId = 'composition:de-de-gym-seki-math:structure:j8-fractions'
+const genericJ9PowersStructureId = 'composition:de-de-gym-seki-math:structure:j9-powers'
+const canonicalIntegerExponentGoalId = '6596405a-9728-41df-9163-53670ec2a937'
+const canonicalPowerFunctionGoalId = '66077296-a8f8-4645-938b-7c3424cb2f14'
 const genericJ8ScopeGoalIds = buildGoalContainsClosure([canonicalMathJ8GoalId], mathGoalById)
+// The persisted canonical scope keeps all 48 members (40 atoms), independently
+// of how the repaired current view groups its visible members.
+assert.equal(genericJ8ScopeGoalIds.size, 48)
+assert.equal(
+  createHash('sha256').update(`${[...genericJ8ScopeGoalIds].sort().join('\n')}\n`).digest('hex'),
+  'c0209d5435bb65d340103b84f675e5480955eb84bd002edfce2bd5a106a02783',
+  'Current presentation groups must not narrow or expand the persisted canonical J8 selection.',
+)
+assert.equal([...genericJ8ScopeGoalIds].filter((id) => mathGoalById.get(id)?.type === 'atomic').length, 40)
+assert.ok(genericJ8ScopeGoalIds.has(canonicalIntegerExponentGoalId))
+assert.ok(!genericJ8ScopeGoalIds.has(canonicalPowerFunctionGoalId))
+
+const renderedLeavesBelow = (rootId: string, children: Map<string, string[]>): Set<string> => {
+  const leaves = new Set<string>()
+  const visited = new Set<string>()
+  const pending = [rootId]
+  while (pending.length > 0) {
+    const id = pending.pop()!
+    if (visited.has(id)) continue
+    visited.add(id)
+    const childIds = children.get(id) ?? []
+    if (childIds.length === 0) leaves.add(id)
+    else pending.push(...childIds)
+  }
+  return leaves
+}
+
+const assertCompleteScopeMarkers = (
+  markers: Set<string>,
+  scope: Set<string>,
+  children: Map<string, string[]>,
+): void => {
+  for (const markerId of markers) {
+    const leaves = renderedLeavesBelow(markerId, children)
+    assert.ok(leaves.size > 0)
+    assert.ok([...leaves].every((id) => scope.has(id)), `${markerId}: a complete marker must not include an unselected leaf`)
+    for (const otherMarkerId of markers) {
+      if (markerId === otherMarkerId) continue
+      const descendants = new Set<string>([otherMarkerId])
+      const pending = [otherMarkerId]
+      while (pending.length > 0) {
+        for (const id of children.get(pending.pop()!) ?? []) {
+          if (!descendants.has(id)) { descendants.add(id); pending.push(id) }
+        }
+      }
+      assert.ok(!descendants.has(markerId), 'A complete scope marker must not repeat a marked ancestor.')
+    }
+  }
+}
 const genericJ8ScopeMarkerGoalIds = buildRenderedScopeMarkerGoalIds(
   mathGoalById,
   mathChildrenByParent,
@@ -599,8 +652,15 @@ const genericJ8ScopeMarkerGoalIds = buildRenderedScopeMarkerGoalIds(
 
 assert.deepStrictEqual(
   Array.from(genericJ8ScopeMarkerGoalIds),
-  [genericVisibleJ8StructureId],
-  'A hidden canonical J8 planned scope must mark the visible generic Sek-I Jahrgangsstufe 8 structure, not a partial child cluster.',
+  [genericVisibleJ8StructureId, genericJ9PowersStructureId],
+  'The unchanged canonical J8 scope needs both complete current groups: J8 and the separately placed integer-exponent laws.',
+)
+assertCompleteScopeMarkers(genericJ8ScopeMarkerGoalIds, genericJ8ScopeGoalIds, mathChildrenByParent)
+assert.deepEqual([...renderedLeavesBelow(genericJ9PowersStructureId, mathChildrenByParent)], [canonicalIntegerExponentGoalId])
+assert.ok(
+  [...renderedLeavesBelow('composition:de-de-gym-seki-math:structure:j9', mathChildrenByParent)]
+    .some((id) => !genericJ8ScopeGoalIds.has(id)),
+  'The broader J9 group contains unselected goals and must not replace the precise powers marker.',
 )
 assert.ok(
   !genericJ8ScopeMarkerGoalIds.has(genericJ8FractionsStructureId),
@@ -671,6 +731,7 @@ const bavariaProjectedMathEntries = normalizeLearnerProjectedEntries(
 const bavariaMathGoalById = new Map(bavariaProjectedMathEntries[0].goals.map((goal) => [goal.id, goal] as const))
 const bavariaMathChildrenByParent = buildDirectChildrenMap(bavariaMathGoalById)
 const bavariaVisibleJ8StructureId = 'composition:de-by-gym-math-gk:structure:gk-sek-i-j8'
+const bavariaJ8AdditionalCompetenciesId = 'composition:de-by-gym-math-gk:structure:gk-sek-i-j8-weitere-kompetenzen'
 const bavariaPlannedJ8ScopeGoalIds = buildGoalContainsClosure([canonicalMathJ8GoalId], bavariaMathGoalById)
 const bavariaScopeDescendantCounts = buildRenderedScopeDescendantCountMap(
   bavariaMathGoalById,
@@ -682,6 +743,15 @@ const bavariaScopeMarkerGoalIds = buildRenderedScopeMarkerGoalIds(
   bavariaMathChildrenByParent,
   bavariaPlannedJ8ScopeGoalIds,
   [canonicalMathJ8GoalId],
+)
+assert.deepEqual([...bavariaPlannedJ8ScopeGoalIds].sort(), [...genericJ8ScopeGoalIds].sort(),
+  'Changing the visible Land grouping must preserve every persisted canonical J8 scope member.')
+assertCompleteScopeMarkers(bavariaScopeMarkerGoalIds, bavariaPlannedJ8ScopeGoalIds, bavariaMathChildrenByParent)
+assert.deepEqual(
+  [...renderedLeavesBelow(bavariaVisibleJ8StructureId, bavariaMathChildrenByParent)]
+    .filter((id) => !bavariaPlannedJ8ScopeGoalIds.has(id)),
+  ['e2174adb-545f-5119-8f23-45f67e358d70'],
+  'The current BY J8 group also contains a new acquisition task outside the persisted legacy J8 selection.',
 )
 
 assert.ok(
@@ -698,8 +768,8 @@ assert.ok(
 )
 assert.deepStrictEqual(
   Array.from(bavariaScopeMarkerGoalIds),
-  [bavariaVisibleJ8StructureId],
-  'A hidden canonical J8 planned scope must produce exactly one visible scope marker on Jahrgangsstufe 8.',
+  [bavariaJ8AdditionalCompetenciesId],
+  'The legacy J8 selection must mark its complete current BY subgroup rather than imply selection of the additional acquisition task.',
 )
 assert.ok(
   !bavariaScopeMarkerGoalIds.has(canonicalMathJ8AxisInterceptGoalId),

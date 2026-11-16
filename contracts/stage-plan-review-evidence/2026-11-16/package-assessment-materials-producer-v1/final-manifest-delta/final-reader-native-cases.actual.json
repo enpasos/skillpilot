@@ -1,0 +1,180 @@
+{
+  "at": "2026-11-16T02:55:34.993643+00:00",
+  "status": "PASS_BOUNDED_NATIVE_RUNTIME_AND_SCHEMA_CATALOG_READER_DELTA",
+  "caseCount": 18,
+  "cases": [
+    {
+      "name": "actual-ZIP-new-version-capability-checks-have-only-preexisting-catalog-only-exam-warning",
+      "status": "PASS",
+      "diagnostics": [
+        "EXAM_NODES_UNVERIFIED"
+      ],
+      "boundary": "Existing full-package wrapper separately checks schema-valid examData payloads and exact examNodes capability; the catalog-only warning is preserved here, not waived in source."
+    },
+    {
+      "name": "actual-ZIP-schema-catalog-native-manifest-and-bootstrap-bindings-pass",
+      "status": "PASS"
+    },
+    {
+      "name": "original-minimal-runtime10-remains-valid",
+      "status": "PASS"
+    },
+    {
+      "name": "runtime13-empty-review-and-material-collections-still-declare-contract-capabilities",
+      "status": "PASS"
+    },
+    {
+      "name": "runtime13-rejects-missing-learningUnitsV1",
+      "status": "PASS",
+      "diagnostics": [
+        "CAPABILITY_MISMATCH",
+        "CATALOG_SCHEMA"
+      ]
+    },
+    {
+      "name": "runtime10-rejects-forged-learningUnitsV1",
+      "status": "PASS",
+      "diagnostics": [
+        "CAPABILITY_MISMATCH",
+        "CATALOG_SCHEMA"
+      ]
+    },
+    {
+      "name": "runtime13-rejects-missing-assessmentMaterialsV1",
+      "status": "PASS",
+      "diagnostics": [
+        "CAPABILITY_MISMATCH",
+        "CATALOG_SCHEMA"
+      ]
+    },
+    {
+      "name": "runtime10-rejects-forged-assessmentMaterialsV1",
+      "status": "PASS",
+      "diagnostics": [
+        "CAPABILITY_MISMATCH",
+        "CATALOG_SCHEMA"
+      ]
+    },
+    {
+      "name": "runtime13-schema-rejects-wrong-runtime-version",
+      "status": "PASS",
+      "diagnostics": [
+        "CAPABILITY_MISMATCH",
+        "CATALOG_SCHEMA"
+      ]
+    },
+    {
+      "name": "runtime13-rejects-nonarray-learning-unit-reviews",
+      "status": "PASS",
+      "diagnostics": [
+        "CAPABILITY_MISMATCH",
+        "CATALOG_SCHEMA"
+      ]
+    },
+    {
+      "name": "runtime13-does-not-enable-superseded-completion11-capability",
+      "status": "PASS",
+      "diagnostics": [
+        "CAPABILITY_MISMATCH",
+        "CATALOG_SCHEMA"
+      ]
+    },
+    {
+      "name": "runtime13-rejects-unknown-capability",
+      "status": "PASS",
+      "diagnostics": [
+        "CATALOG_SCHEMA"
+      ]
+    },
+    {
+      "name": "actual-schema-binding-rejects-wrong-version",
+      "status": "PASS",
+      "diagnostics": [
+        "TRUSTED_CONTRACT_CATALOG_BINDING_MISMATCH"
+      ]
+    },
+    {
+      "name": "actual-schema-binding-rejects-wrong-profile",
+      "status": "PASS",
+      "diagnostics": [
+        "TRUSTED_CONTRACT_CATALOG_BINDING_MISMATCH"
+      ]
+    },
+    {
+      "name": "actual-schema-binding-rejects-wrong-schema-hash",
+      "status": "PASS",
+      "diagnostics": [
+        "TRUSTED_CONTRACT_CATALOG_BINDING_MISMATCH"
+      ]
+    },
+    {
+      "name": "actual-schema-binding-rejects-wrong-schema-ID",
+      "status": "PASS",
+      "diagnostics": [
+        "TRUSTED_CONTRACT_CATALOG_BINDING_MISMATCH"
+      ]
+    },
+    {
+      "name": "actual-schema-binding-rejects-missing-schema-binding",
+      "status": "PASS",
+      "diagnostics": [
+        "TRUSTED_CONTRACT_CATALOG_BINDING_MISSING"
+      ]
+    },
+    {
+      "name": "actual-schema-binding-cannot-grant13-without13-bootstrap-schema",
+      "status": "PASS",
+      "diagnostics": [
+        "TRUSTED_CONTRACT_CATALOG_BINDING_MISMATCH"
+      ]
+    }
+  ],
+  "sourcePins": [
+    {
+      "path": "scripts/validate_curriculum_runtime_catalog_contract.py",
+      "sha256": "b168ca171c24df5abb075b36c70aa67e869521799445ed59c8653d41928fe95c"
+    },
+    {
+      "path": "scripts/validate_curriculum_schema_catalog_contract.py",
+      "sha256": "02dbe21ebec4d943f0a801191ff8723ceb3e37b5dd4c3ef39df05afc1f362cf2"
+    }
+  ],
+  "inputDrift": [],
+  "actualZipMetadataSelection": {
+    "path": "/dev/shm/skillpilot-pr159-package-v13-20261116/package-final/skillpilot-curriculum-de-gymnasium-mathematik-0.1.0-runtime.1.json.zip",
+    "archiveBytes": 1687936166,
+    "parentRecordedArchiveSHA256": "6284da913445717841c861ab0fce5d6c9217f9b277789037db7f7accef1cb9eb",
+    "selectedEntries": {
+      "manifest": {
+        "entry": "skillpilot-curriculum-de-gymnasium-mathematik-0.1.0-runtime.1.json/metadata/manifest.json",
+        "bytes": 688230,
+        "sha256": "3c39aeaa87b1e043100152e87262710f6178a6d84c490ddb30939c078119398e"
+      },
+      "schemaCatalog": {
+        "entry": "skillpilot-curriculum-de-gymnasium-mathematik-0.1.0-runtime.1.json/schemas/catalog.json",
+        "bytes": 9406,
+        "sha256": "33ef8f451eedd94e3521c6f01c425704ce4c58bb7bdd9e0e363a03d466be7965"
+      },
+      "runtimeCatalog": {
+        "entry": "skillpilot-curriculum-de-gymnasium-mathematik-0.1.0-runtime.1.json/data/runtime/catalog.json",
+        "bytes": 538804,
+        "sha256": "24ae8727923762c6a52f183b08e56a8dbaf04f28e315191175e5535fdf2629ba"
+      },
+      "resourceIndex": {
+        "entry": "skillpilot-curriculum-de-gymnasium-mathematik-0.1.0-runtime.1.json/data/resources/resource-index.json",
+        "bytes": 1305016,
+        "sha256": "a107d0c066d926b0aeb3e3e6d46394d7a75d7dd337e94e0e3cf21c67bbf40e48"
+      },
+      "redistributionReview": {
+        "entry": "skillpilot-curriculum-de-gymnasium-mathematik-0.1.0-runtime.1.json/metadata/provenance/redistribution-review.json",
+        "bytes": 1097969,
+        "sha256": "0e10da2b7fb1fabaa0bdf5bae398a1c40030ce72eb09ebc4f21ebf7ed5397d14"
+      }
+    },
+    "selectedArchiveFileDescriptorStable": true,
+    "wholeArchiveRehashed": false
+  },
+  "method": "Actual selected metadata from the existing real ZIP plus own in-memory negative version/profile/capability/hash mutations; direct unchanged native validator APIs. Legacy minimal fixture separately identified.",
+  "wholeZipConsumerPipelineOrRightsApprovalClaimed": false,
+  "sourceWrites": false
+}

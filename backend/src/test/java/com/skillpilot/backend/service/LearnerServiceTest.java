@@ -2440,7 +2440,8 @@ public class LearnerServiceTest {
                     .forEach(goalId -> collectAtomicGoalIds(goalId, canonicalGoals, sourceJ8AtomicGoalIds));
             assertThat(sourceJ8AtomicGoalIds)
                     .as(viewId)
-                    .hasSize(55)
+                    .hasSize(56)
+                    .contains("e2174adb-545f-5119-8f23-45f67e358d70")
                     .containsAll(directExamRequirementIds);
         }
         CompositionStructureResolution j8Scope = compositionViewService
@@ -2453,7 +2454,8 @@ public class LearnerServiceTest {
         Set<String> additionalCompetencyAtomicGoalIds = new LinkedHashSet<>();
         additionalCompetencies.referencedGoalIds()
                 .forEach(goalId -> collectAtomicGoalIds(goalId, canonicalGoals, additionalCompetencyAtomicGoalIds));
-        assertThat(j8AtomicGoalIds).hasSize(55);
+        // The current reviewed algebra-validity task accompanies the J8 goal.
+        assertThat(j8AtomicGoalIds).hasSize(56).contains("e2174adb-545f-5119-8f23-45f67e358d70");
         assertThat(additionalCompetencyAtomicGoalIds)
                 .isNotEmpty()
                 .doesNotContainAnyElementsOf(allExamTaskIds);
@@ -2480,7 +2482,7 @@ public class LearnerServiceTest {
 
         var resumedCoachState = learnerService.getCoachLearnerState(learnerId);
 
-        assertThat(resumedCoachState.goals().scope().total_atomic()).isEqualTo(55);
+        assertThat(resumedCoachState.goals().scope().total_atomic()).isEqualTo(56);
         assertThat(resumedCoachState.goals().scope().mastered_atomic())
                 .isEqualTo(formerlyCompletedAtomicGoalIds.size());
         assertThat(resumedCoachState.stateMachine().requiredAction()).isEqualTo("setActiveGoal");
@@ -2495,7 +2497,7 @@ public class LearnerServiceTest {
 
         // Task 5 -> cylinder mantle -> circle circumference is a real Main
         // requirement chain. Circumference belongs to the complete learning
-        // set L, while the selected J8 contains-focus still has exactly 55 atoms.
+        // set L, while the selected J8 contains-focus has exactly 56 atoms.
         String cylinderMantleId = "f65ab452-1884-57b0-9be3-c7d9e4944891";
         String circleCircumferenceId = "4dbb8e8e-c0b5-5d51-8897-0024d77e8602";
         assertThat(canonicalGoals.get(J8_EXAM_TASK_5_ID).getRequires()).contains(cylinderMantleId);
@@ -2508,12 +2510,12 @@ public class LearnerServiceTest {
         assertCanonicalRequirementPath(learningScope.requiredByPaths().get(circleCircumferenceId), canonicalGoals);
         assertThat(assertMathFocusAtomicTargets(learner, List.of(COMPOSITION_MERGED_DE_J8_SCOPE_ID)))
                 .containsExactlyInAnyOrderElementsOf(j8AtomicGoalIds)
-                .hasSize(55)
+                .hasSize(56)
                 .doesNotContain(circleCircumferenceId);
 
         var coachState = learnerService.getCoachLearnerState(learnerId);
 
-        assertThat(coachState.goals().scope().total_atomic()).isEqualTo(55);
+        assertThat(coachState.goals().scope().total_atomic()).isEqualTo(56);
         assertThat(coachState.goals().scope().mastered_atomic())
                 .isEqualTo(coachState.goals().scope().total_atomic() - remainingExamTaskIds.size());
         assertThat(coachState.goals().scope().total_atomic()
@@ -2830,7 +2832,7 @@ public class LearnerServiceTest {
         learnerService.setPlannedGoals(
                 learnerId,
                 new LinkedHashSet<>(List.of(
-                        CANONICAL_E_ONE_SCOPE_ID,
+                        "composition:de-de-gym-math-lk:structure:math-v7-retained-source-c9d92f32-167a-4006-a940-b8063a6ed434",
                         COMPOSITION_DE_PHYSICS_LK_ROOT_SCOPE_ID)));
         String activeGoalId = learnerService.getLearnerState(learnerId).frontier().stream()
                 .filter(goal -> "atomic".equals(goal.type()))
@@ -3049,7 +3051,7 @@ public class LearnerServiceTest {
         excludedAuthoredAtoms.removeAll(learningScope.learningAtomicGoalIds());
         assertThat(excludedAuthoredAtoms).containsExactlyInAnyOrderElementsOf(supportOnlyAssessments);
         authoredJ8Atoms.removeAll(supportOnlyAssessments);
-        assertThat(currentAtoms).containsExactlyInAnyOrderElementsOf(authoredJ8Atoms).hasSize(53);
+        assertThat(currentAtoms).containsExactlyInAnyOrderElementsOf(authoredJ8Atoms).hasSize(60);
         Set<String> precedingAtoms = currentAtoms;
         for (FrontierGoal option : state.stateMachine().goalOptions()) {
             Set<String> optionAtoms = assertMathFocusAtomicTargets(learner, option.selectionGoalIds());

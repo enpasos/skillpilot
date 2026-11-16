@@ -1,0 +1,120 @@
+{
+  "id": "c2a6ce42-ba20-55c4-b958-c9edb4b98c4c",
+  "title": "Prüfungsaufgabe: Zeitverlauf, Spektrum und Filterwirkung koordinieren",
+  "titleEn": "Assessment: Coordinate time traces, spectra and filtering",
+  "description": "Die lernende Person kann die bereitgestellten unabhängigen Fälle zu diesem Ziel selbstständig auswerten, fachlich begründen und ihre Aussagegrenzen benennen.",
+  "descriptionEn": "The learner can independently analyse the supplied distinct cases for this goal, justify the scientific reasoning and state the limits of the conclusions.",
+  "type": "atomic",
+  "contains": [],
+  "requires": [
+    "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+    "ee48e811-4c9c-5080-9836-8403fc9f0810",
+    "f06c581a-7157-584e-a692-99bcd613cff9",
+    "f2e42af5-67a6-477e-82ea-e65b09cc6cb3"
+  ],
+  "weight": 1,
+  "tags": [
+    "GK",
+    "LK",
+    "Practice",
+    "Assessment",
+    "canonical"
+  ],
+  "dimensionTags": {
+    "framework": "canonical-gymnasium-physics",
+    "demandLevel": "AB3",
+    "processCompetencies": [
+      "PK2_MODELLIEREN",
+      "PK3_MATHEMATISIEREN",
+      "PK4_KOMMUNIZIEREN"
+    ],
+    "guidingIdeas": [
+      "LI_WELLEN",
+      "LI_TECHNIK"
+    ],
+    "phase": "GLOBAL",
+    "area": "Biophysik",
+    "topicCode": "CANONICAL.PHYSICS.PRACTICE.SPECTRUM_PHASE_AND_FILTER_TRANSFER"
+  },
+  "applicability": {
+    "jurisdiction": [
+      "DE-BB",
+      "DE-BE",
+      "DE-BW",
+      "DE-BY",
+      "DE-HB",
+      "DE-HE",
+      "DE-HH",
+      "DE-MV",
+      "DE-NI",
+      "DE-NW",
+      "DE-RP",
+      "DE-SH",
+      "DE-SL",
+      "DE-SN",
+      "DE-ST",
+      "DE-TH"
+    ]
+  },
+  "extendedData": {
+    "applicabilityFromRequires": true,
+    "applicabilityMappingInheritance": "boundary"
+  },
+  "examData": {
+    "reviewStatus": "released",
+    "coveredGoalIds": [
+      "f06c581a-7157-584e-a692-99bcd613cff9"
+    ],
+    "coveredStrands": [
+      "LI_WELLEN",
+      "LI_TECHNIK"
+    ],
+    "demandLevels": [
+      "AB1",
+      "AB2",
+      "AB3"
+    ],
+    "taskContent": "**Material S 1:** ![Vorgegebene zeitliche Komponenten F undH](/assets/assessment-materials/physik/f06c581a-7157-584e-a692-99bcd613cff9/spectrum-components.png)\n**Material S 2:** ![Neues Eingangsspektrum vor Filterung](/assets/assessment-materials/physik/f06c581a-7157-584e-a692-99bcd613cff9/spectrum-filter-input.png)\nBeide sind eigene synthetische Modelle, keine aufgenommenen Klänge. SVG-Versionen gleicher Namen sind mitgeliefert. Einseitige Spitzenamplituden in relativen Einheiten(a.u.), keine Leistungswerte, keine Gleichkomponente. Es ist kein Hörversuch erforderlich.\n\n**A — Zeit und Spektrum selbst verbinden:** Der gemeinsame Wiederholungszeitraum der Komponenten aus S 1 ist 4,0 ms; F:250 Hz mit Amplitude 1 undH:500 Hz mit Amplitude 0,5; beide starten bei t=0 mit gleichem Nullaufwärtsdurchgang. Gerundete Tabellenwerte:\n|t/ms|0|0,5|1|1,5|2|2,5|3|3,5|4|\n|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|\n|F/a.u.|0|0,71|1|0,71|0|−0,71|−1|−0,71|0|\n|H/a.u.|0|0,50|0|−0,50|0|0,50|0|−0,50|0|\nKonstruiere eigene Zeitdiagramme für X=F+H und den reinen TonZ=F; zeichne jeweils das Amplitudenspektrum, identifiziere Grund-/Oberton und vergleiche Grundperiode, Tonhöhe und Klangfarbe im Modell.\nAls neuer Phasenfall giltY=F−H: Dies entspricht nur einer Vorzeichenumkehr des zeitlichen Obertons(Phasenverschiebungπ), nicht einer Änderung seines Amplitudenbetrags. Konstruiere Y und sein Spektrum. Was kann ein Amplitudenspektrum allein über X/Y entscheiden, was bleibt ohne Phasen offen? Behaupte aus gleichen Amplituden allein weder eine eindeutige Zeitkurve noch eine zwingend gleiche oder andere individuelle Klangwahrnehmung.\n\n**B — unabhängige Filterwirkung:** S 2 enthält 400 Hz/0,8,800 Hz/0,6,1200 Hz/0,4, Komponenten jeweils mit gleichem Nullaufwärtsdurchgang bei t=0. Ein idealer Tiefpass entfernt 800 und 1200 Hz vollständig und erhält die 400-Hz-Komponente samt Phase und Amplitude. Zeichne das Ausgangsspektrum und einen passenden qualitativen Zeitverlauf. Bestimme die neue Grundperiode und vergleiche zum Eingang Tonhöhe, spektrale Klangstruktur und mögliche Pegel-/Lautstärkeänderung getrennt. In diesem stationären Modell bei gleichem Verstärkungsfaktor verringert Entfernen nichtverschwindender harmonischer Komponenten den Effektivwert; keine quantitative Lautheitsskala ist gegeben. Begrenze, was ohne Phasen-/Kalibrier-/Hörbedingungen nicht eindeutig folgt. Fourierintegration wird nicht verlangt.",
+    "taskContentEn": "**Material S 1:** ![Supplied time components F andH](/assets/assessment-materials/physik/f06c581a-7157-584e-a692-99bcd613cff9/spectrum-components.png)\n**Material S 2:** ![Fresh input spectrum before filtering](/assets/assessment-materials/physik/f06c581a-7157-584e-a692-99bcd613cff9/spectrum-filter-input.png)\nBoth are own synthetic models, not recorded sounds; matching SVG versions are supplied. Use one-sided peak amplitudes in relative units(a.u.), not powers, with no DC component. No listening experiment is needed.\n\n**A — construct coordinated representations:** S 1 components repeat every 4.0 ms: F has 250 Hz/amplitude 1, H 500 Hz/amplitude 0.5; both start at an upward zero crossing at t=0. Rounded values:\n|t/ms|0|0.5|1|1.5|2|2.5|3|3.5|4|\n|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|\n|F/a.u.|0|0.71|1|0.71|0|−0.71|−1|−0.71|0|\n|H/a.u.|0|0.50|0|−0.50|0|0.50|0|−0.50|0|\nConstruct your own time graphs for X=F+H and pure toneZ=F; draw each amplitude spectrum, identify fundamental/overtone and compare period, pitch and timbre in the model.\nA fresh phase case isY=F−H: only the time-domain overtone changes sign(phase shiftπ), not its amplitude magnitude. Construct Y and its spectrum. What do amplitude-only spectra establish about X/Y, and what remains unknown without phases? Equal amplitudes alone establish neither one unique time curve nor necessarily equal/different individual timbre perception.\n\n**B — independent filtering:** S 2 has 400 Hz/0.8,800 Hz/0.6,1200 Hz/0.4, all at the same upward zero crossing at t=0. An ideal low-pass removes 800/1200 Hz completely and preserves 400 Hz phase/amplitude. Draw the output spectrum and a compatible qualitative time trace. Determine its fundamental period and separately compare pitch, spectral timbre structure and possible level/loudness changes. In this stationary model at unchanged gain, removing nonzero harmonics lowers RMS amplitude; no quantitative loudness scale is supplied. Bound claims where phases, calibration or listening conditions are missing. Fourier integration is not required.",
+    "solutionContent": "A: X=(0;1,21;1;0,21;0;−0,21;−1;−1,21;0), Y=(0;0,21;1;1,21;0;−1,21;−1;−0,21;0) aus den gerundeten Tabellen;Z=F. X/Y haben Grundfrequenz 250 Hz, Grundperiode 4 ms und Spektrallinien 250 Hz/1,500 Hz/0,5. Z hat nur 250 Hz/1. Im Modell gleiche Grundtonhöhe, aber Z gegenüber komplexem X andere spektrale Klangstruktur. X/Y haben dasselbe Amplitudenspektrum trotz verschiedener Zeitformen; relative Phase ist keine Spektralamplitude. Ohne Phasen keine eindeutige Rückrekonstruktion oder universelle Wahrnehmungsaussage. B: nur 400 Hz/0,8, sinusförmiger Verlauf mit gegebener Phase, T=1/400 s=2,5 ms. Grundfrequenz und Modelltonhöhe bleiben zum B-Eingang gleich, höhere Obertöne verschwinden, spektrale Klangstruktur wird einfacher. Effektivpegel kann hier sinken; gleiche Grundtonamplitude bedeutet nicht gleiche Gesamtamplitude, und ohne bedingte Wahrnehmungsrelation folgt kein numerisches Lautheitsverhältnis. Bei unbekannten verbleibenden Phasen wird die genaue Punktkurve nicht aus Amplituden allein behauptet.\n\nDE: Je Schritt 2 Punkte bei vollständig tragfähiger Evidenz; 1 nur bei einem isolierten kleinen Rechen-, Rundungs- oder Zeichenfehler, wenn alle ausdrücklich genannten wesentlichen Handlungen/Deutungen vorhanden sind; 0 sobald eine davon fehlt oder durch eine zentrale Fehlvorstellung ersetzt wird. Kein fehlender Fall oder Transfer darf kompensiert werden. Gleichwertige Wege und konsistente Folgefehler fair behandeln; keine doppelte Bestrafung desselben Folgefehlers. Maßgeblich ist nur die Schrittsumme. EN: Each step earns 2 for complete sound evidence, 1 only for an isolated minor arithmetic, rounding or drawing error with every named essential action/interpretation present, and 0 if any is absent or replaced by a central misconception. Missing cases/transfers cannot be compensated. Accept equivalent methods and consistent follow-through without penalizing the same consequential error twice. Use only the step sum. Maximum 12; Bestehen 11. Jede wesentliche Auslassung erzwingt in ihrem Schritt 0 und insgesamt höchstens 10; ein einzelner kleiner Fehler bei vorhandenen Kernen besteht mit 11.",
+    "solutionContentEn": "A from rounded values: X=(0,1.21,1,0.21,0,−0.21,−1,−1.21,0), Y=(0,0.21,1,1.21,0,−1.21,−1,−0.21,0), Z=F. X/Y have fundamental 250 Hz, period 4 ms and lines 250 Hz/1,500 Hz/0.5;Z has only 250 Hz/1. The model fundamental pitch agrees, while pureZ and complexX have different spectral timbre structures. X/Y share amplitude spectra despite different time shapes; relative phase is not amplitude. Missing phases preclude unique reconstruction or universal perception claims. B retains only 400 Hz/0.8, a sine-like trace with supplied phase and T=2.5 ms. Its fundamental/model pitch is unchanged from B input, overtones disappear and spectral structure simplifies. RMS level can decrease here; equal fundamental amplitude is not equal total amplitude. No numerical loudness ratio follows without a conditional perceptual relation, and unknown phases prevent an exact pointwise reconstruction from amplitudes alone.\n\nDE: Je Schritt 2 Punkte bei vollständig tragfähiger Evidenz; 1 nur bei einem isolierten kleinen Rechen-, Rundungs- oder Zeichenfehler, wenn alle ausdrücklich genannten wesentlichen Handlungen/Deutungen vorhanden sind; 0 sobald eine davon fehlt oder durch eine zentrale Fehlvorstellung ersetzt wird. Kein fehlender Fall oder Transfer darf kompensiert werden. Gleichwertige Wege und konsistente Folgefehler fair behandeln; keine doppelte Bestrafung desselben Folgefehlers. Maßgeblich ist nur die Schrittsumme. EN: Each step earns 2 for complete sound evidence, 1 only for an isolated minor arithmetic, rounding or drawing error with every named essential action/interpretation present, and 0 if any is absent or replaced by a central misconception. Missing cases/transfers cannot be compensated. Accept equivalent methods and consistent follow-through without penalizing the same consequential error twice. Use only the step sum. Maximum 12; pass 11. An essential omission forces its step to 0 and total at most 10; one minor error with all cores present passes at 11.",
+    "scoring": {
+      "maxPoints": 12,
+      "passingPoints": 11,
+      "steps": [
+        {
+          "id": "spectrum-phase-and-filter-transfer_1",
+          "points": 2,
+          "description": "DE: X/Z-Zeitdiagramme aus tatsächlichen Komponenten selbst konstruieren, Werte/Zeiten/relative Einheiten korrekt; passende einseitige Amplitudenspektren zeichnen. EN: Construct X/Z time graphs from supplied components with times/relative units and matching one-sided amplitude spectra. DE: Je Schritt 2 Punkte bei vollständig tragfähiger Evidenz; 1 nur bei einem isolierten kleinen Rechen-, Rundungs- oder Zeichenfehler, wenn alle ausdrücklich genannten wesentlichen Handlungen/Deutungen vorhanden sind; 0 sobald eine davon fehlt oder durch eine zentrale Fehlvorstellung ersetzt wird. Kein fehlender Fall oder Transfer darf kompensiert werden. Gleichwertige Wege und konsistente Folgefehler fair behandeln; keine doppelte Bestrafung desselben Folgefehlers. Maßgeblich ist nur die Schrittsumme. EN: Each step earns 2 for complete sound evidence, 1 only for an isolated minor arithmetic, rounding or drawing error with every named essential action/interpretation present, and 0 if any is absent or replaced by a central misconception. Missing cases/transfers cannot be compensated. Accept equivalent methods and consistent follow-through without penalizing the same consequential error twice. Use only the step sum."
+        },
+        {
+          "id": "spectrum-phase-and-filter-transfer_2",
+          "points": 2,
+          "description": "DE: Grundfrequenz, Grundperiode und Oberton in A korrekt identifizieren; Grundtonhöhe, spektrale Klangstruktur und Amplitude als verschiedene Aussagen deuten. EN: Identify A fundamental, period, overtone and distinguish fundamental pitch, spectral timbre structure and amplitude. DE: Je Schritt 2 Punkte bei vollständig tragfähiger Evidenz; 1 nur bei einem isolierten kleinen Rechen-, Rundungs- oder Zeichenfehler, wenn alle ausdrücklich genannten wesentlichen Handlungen/Deutungen vorhanden sind; 0 sobald eine davon fehlt oder durch eine zentrale Fehlvorstellung ersetzt wird. Kein fehlender Fall oder Transfer darf kompensiert werden. Gleichwertige Wege und konsistente Folgefehler fair behandeln; keine doppelte Bestrafung desselben Folgefehlers. Maßgeblich ist nur die Schrittsumme. EN: Each step earns 2 for complete sound evidence, 1 only for an isolated minor arithmetic, rounding or drawing error with every named essential action/interpretation present, and 0 if any is absent or replaced by a central misconception. Missing cases/transfers cannot be compensated. Accept equivalent methods and consistent follow-through without penalizing the same consequential error twice. Use only the step sum."
+        },
+        {
+          "id": "spectrum-phase-and-filter-transfer_3",
+          "points": 2,
+          "description": "DE: Unabhängigen relativen Phasenfall Y tatsächlich konstruieren und mit X vergleichen; gleiche Spektralamplituden bei verschiedenen Zeitformen, fehlende eindeutige Rückrekonstruktion ohne Phasen erklären. EN: Actually construct independent relative-phase Y, compare X and explain equal amplitudes/different traces and nonunique phase-free reconstruction. DE: Je Schritt 2 Punkte bei vollständig tragfähiger Evidenz; 1 nur bei einem isolierten kleinen Rechen-, Rundungs- oder Zeichenfehler, wenn alle ausdrücklich genannten wesentlichen Handlungen/Deutungen vorhanden sind; 0 sobald eine davon fehlt oder durch eine zentrale Fehlvorstellung ersetzt wird. Kein fehlender Fall oder Transfer darf kompensiert werden. Gleichwertige Wege und konsistente Folgefehler fair behandeln; keine doppelte Bestrafung desselben Folgefehlers. Maßgeblich ist nur die Schrittsumme. EN: Each step earns 2 for complete sound evidence, 1 only for an isolated minor arithmetic, rounding or drawing error with every named essential action/interpretation present, and 0 if any is absent or replaced by a central misconception. Missing cases/transfers cannot be compensated. Accept equivalent methods and consistent follow-through without penalizing the same consequential error twice. Use only the step sum."
+        },
+        {
+          "id": "spectrum-phase-and-filter-transfer_4",
+          "points": 2,
+          "description": "DE: Neuen B-Filterfall durch eigenes Ausgangsspektrum und qualitativen Zeitverlauf mit erhaltener 400-Hz-Phase/Amplitude übertragen; entfernte Komponenten korrekt kennzeichnen. EN: Transfer to B with own output spectrum/time trace, retained 400 Hz phase/amplitude and removed harmonics. DE: Je Schritt 2 Punkte bei vollständig tragfähiger Evidenz; 1 nur bei einem isolierten kleinen Rechen-, Rundungs- oder Zeichenfehler, wenn alle ausdrücklich genannten wesentlichen Handlungen/Deutungen vorhanden sind; 0 sobald eine davon fehlt oder durch eine zentrale Fehlvorstellung ersetzt wird. Kein fehlender Fall oder Transfer darf kompensiert werden. Gleichwertige Wege und konsistente Folgefehler fair behandeln; keine doppelte Bestrafung desselben Folgefehlers. Maßgeblich ist nur die Schrittsumme. EN: Each step earns 2 for complete sound evidence, 1 only for an isolated minor arithmetic, rounding or drawing error with every named essential action/interpretation present, and 0 if any is absent or replaced by a central misconception. Missing cases/transfers cannot be compensated. Accept equivalent methods and consistent follow-through without penalizing the same consequential error twice. Use only the step sum."
+        },
+        {
+          "id": "spectrum-phase-and-filter-transfer_5",
+          "points": 2,
+          "description": "DE: B-Grundperiode 2,5 ms und unveränderte Grundtonhöhe von veränderter spektraler Klangstruktur sowie möglichem Effektivpegel unterscheiden. EN: Distinguish 2.5 ms period/unchanged fundamental pitch from changed spectral structure and possible RMS level. DE: Je Schritt 2 Punkte bei vollständig tragfähiger Evidenz; 1 nur bei einem isolierten kleinen Rechen-, Rundungs- oder Zeichenfehler, wenn alle ausdrücklich genannten wesentlichen Handlungen/Deutungen vorhanden sind; 0 sobald eine davon fehlt oder durch eine zentrale Fehlvorstellung ersetzt wird. Kein fehlender Fall oder Transfer darf kompensiert werden. Gleichwertige Wege und konsistente Folgefehler fair behandeln; keine doppelte Bestrafung desselben Folgefehlers. Maßgeblich ist nur die Schrittsumme. EN: Each step earns 2 for complete sound evidence, 1 only for an isolated minor arithmetic, rounding or drawing error with every named essential action/interpretation present, and 0 if any is absent or replaced by a central misconception. Missing cases/transfers cannot be compensated. Accept equivalent methods and consistent follow-through without penalizing the same consequential error twice. Use only the step sum."
+        },
+        {
+          "id": "spectrum-phase-and-filter-transfer_6",
+          "points": 2,
+          "description": "DE: In beiden Fällen Amplituden-/Phasen-/Leistungskonventionen und begrenzte Wahrnehmungsaussagen einhalten; weder eindeutige Phase aus Beträgen noch numerische/universelle Lautheit behaupten. EN: Respect amplitude/phase/power conventions and perceptual limits in both cases, without inventing phase or numerical/universal loudness. DE: Je Schritt 2 Punkte bei vollständig tragfähiger Evidenz; 1 nur bei einem isolierten kleinen Rechen-, Rundungs- oder Zeichenfehler, wenn alle ausdrücklich genannten wesentlichen Handlungen/Deutungen vorhanden sind; 0 sobald eine davon fehlt oder durch eine zentrale Fehlvorstellung ersetzt wird. Kein fehlender Fall oder Transfer darf kompensiert werden. Gleichwertige Wege und konsistente Folgefehler fair behandeln; keine doppelte Bestrafung desselben Folgefehlers. Maßgeblich ist nur die Schrittsumme. EN: Each step earns 2 for complete sound evidence, 1 only for an isolated minor arithmetic, rounding or drawing error with every named essential action/interpretation present, and 0 if any is absent or replaced by a central misconception. Missing cases/transfers cannot be compensated. Accept equivalent methods and consistent follow-through without penalizing the same consequential error twice. Use only the step sum."
+        }
+      ]
+    },
+    "reviewNote": "Begrenzte Inhaltsfreigabe nach tatsächlicher unabhängiger informierter Root-Prüfung der vollständigen DE/EN-Aufgabe, Lösung, sechs unkompensierbaren Zweipunktkriterien, drei ganzen P-Profilen, tatsächlichen Diagrammen und Primärquellen. Exakte Belege: curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/physics-q1-acquisition-current-v1/three-material-root-review/review.actual.json; curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/physics-q1-acquisition-current-v1/retained-artifact-map.actual.json. CIE-Fremdmaterial bleibt getrennt CC-BY-SA-4.0 attribuiert; eigene Spektrenstimuli CC-BY-4.0. Keine native M7-/Routing-/Main-CI-, Runtime- oder Unterrichtsabnahme und kein Lernendenergebnistransfer."
+  },
+  "phase": "GLOBAL"
+}

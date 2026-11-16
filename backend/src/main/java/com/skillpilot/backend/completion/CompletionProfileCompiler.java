@@ -142,8 +142,9 @@ public final class CompletionProfileCompiler {
 
     /**
      * Compiles direct atomic prerequisite edges for automatic completion. Every
-     * assessment in the complete context remains an obligation until mastered.
-     * Orientation, cards and ordinary goals have no additional protected status.
+     * assessment and memory goal in the complete context remains an explicit
+     * obligation until graded or verified recall confirms mastery. Orientation
+     * and ordinary goals have no additional protected status.
      */
     public CompiledAutomaticCompletion compileAutomatic(
             Map<String, LearningGoal> canonicalGoals,
@@ -154,10 +155,12 @@ public final class CompletionProfileCompiler {
         CompiledCompletionGraph graph = compileGraph(canonicalGoals, resolvedScopeTargetIds, level2TargetIds,
                 List.of(), List.of(), false);
         Set<String> assessments = new TreeSet<>();
+        Set<String> explicitObligations = new TreeSet<>();
         for (String id : graph.contextGoalIds()) {
             if (isAssessment(canonicalGoals.get(id))) assessments.add(id);
+            if (isAssessment(canonicalGoals.get(id)) || isMemory(canonicalGoals.get(id))) explicitObligations.add(id);
         }
-        return new CompiledAutomaticCompletion(graph, assessments, curriculumGeneration);
+        return new CompiledAutomaticCompletion(graph, assessments, explicitObligations, curriculumGeneration);
     }
 
     public CompiledCompletionProfile compile(

@@ -248,7 +248,7 @@
     "check:he-math-duration-projection": "tsx scripts/reportHeMathDurationProjection.ts --check",
     "apply:he-math-duration-projection": "tsx scripts/reportHeMathDurationProjection.ts --apply",
     "generate:math-duration-composition-views": "tsx scripts/generateMathDurationCompositionViews.ts --write",
-    "check:math-duration-composition-views": "tsx scripts/generateMathDurationCompositionViews.ts --check",
+    "check:math-duration-composition-views": "tsx scripts/testMathDurationStagePlacementPolicy.ts && tsx scripts/generateMathDurationCompositionViews.ts --check",
     "generate:german-seki-composition-views": "tsx scripts/generateGermanSekICompositionViews.ts --write",
     "check:german-seki-composition-views": "tsx scripts/generateGermanSekICompositionViews.ts --check",
     "generate:history-seki-composition-views": "tsx scripts/generateHistorySekICompositionViews.ts --write",

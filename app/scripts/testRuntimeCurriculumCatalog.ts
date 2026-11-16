@@ -342,6 +342,34 @@ assert.equal(
   `https://api.example.test/api/ui/curriculum-resources/packages/${PACKAGE_ID}/1.2.3/resources/${RESOURCE_ID}`,
 )
 assert.equal(resolveGoalResourceHref(packageState, { id: 'wrong-owner', landscapeId: ROOT_ID }, { resourceId: RESOURCE_ID }), undefined)
+const materialFixture = fixture()
+materialFixture.packages[0].capabilities.push('assessmentMaterialsV1')
+const materialUrl = '/assets/assessment-materials/mathematik/fixture/basic-functions.svg'
+materialFixture.resources.push({
+  ...materialFixture.resources[0], resourceId: 'assessment-stimulus', resourceKind: 'assessment-material',
+  mediaType: 'image/svg+xml', publicUrl: materialUrl,
+  href: `/api/ui/curriculum-resources/packages/${PACKAGE_ID}/1.2.3/resources/assessment-stimulus`,
+  delivery: 'embedded', runtimeRequired: true, bytes: 512, sha256: 'd'.repeat(64),
+})
+const materialCatalog = parseRuntimeCurriculumCatalog(materialFixture)
+assert.match(resolveGoalResourceHref({ ...packageState, catalog: materialCatalog },
+  { id: GOAL_ID, landscapeId: ROOT_ID }, { url: materialUrl }) ?? '', /\/resources\/assessment-stimulus$/u)
+assert.match(resolveGoalResourceHref({ ...packageState, catalog: materialCatalog },
+  { id: 'another-task-using-the-same-original-stimulus', landscapeId: ROOT_ID }, { url: materialUrl }) ?? '', /\/resources\/assessment-stimulus$/u)
+assert.equal(resolveGoalResourceHref({ ...packageState, catalog: materialCatalog },
+  { id: 'wrong-owner', landscapeId: ROOT_ID }, { resourceId: 'assessment-stimulus' }), undefined)
+for (const mutate of [
+  (candidate: typeof materialFixture) => { candidate.packages[0].capabilities = [] },
+  (candidate: typeof materialFixture) => { candidate.resources.at(-1)!.runtimeRequired = false },
+  (candidate: typeof materialFixture) => { candidate.resources.at(-1)!.delivery = 'external' },
+  (candidate: typeof materialFixture) => { candidate.resources.at(-1)!.mediaType = 'text/html' },
+  (candidate: typeof materialFixture) => { candidate.resources.at(-1)!.publicUrl = '/assets/assessment-materials/../poison.svg' },
+  (candidate: typeof materialFixture) => { candidate.resources.at(-1)!.sha256 = 'changed' },
+]) {
+  const invalidMaterial = clone(materialFixture)
+  mutate(invalidMaterial)
+  assert.throws(() => parseRuntimeCurriculumCatalog(invalidMaterial), 'Invalid or optional assessment stimuli must fail closed.')
+}
 assert.equal(
   resolveGoalResourceHref(
     packageState,

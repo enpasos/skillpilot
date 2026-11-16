@@ -1,0 +1,35 @@
+// Read-only, bounded native prerequisite analysis. No authored source is changed.
+import { readFileSync, readdirSync, writeFileSync } from 'node:fs'
+import { createHash } from 'node:crypto'
+import { KnowledgeContextIndex } from '../../app/scripts/lib/knowledgeContext.ts'
+const out='tmp/k2-current-downstream-demand-audit-20261116'
+const paths=readdirSync('curricula/DE/Gymnasium/canonical').filter(p=>p.endsWith('.json')).sort().map(p=>'curricula/DE/Gymnasium/canonical/'+p)
+const catalog=paths.map(p=>JSON.parse(readFileSync(p,'utf8')))
+const rawGoals=catalog.flatMap(d=>d.goals)
+const id=(prefix:string)=>{const rows=rawGoals.filter(g=>g.id.startsWith(prefix));if(rows.length!==1)throw Error(prefix);return rows[0].id}
+const target=id('c2a6ce42'), profile=id('f06c581a')
+const added=['4eeab7d5','ee48e811','f2e42af5'].map(id)
+const scenarios=[{name:'actual-PR159-no-edits',swap:false,local:false},{name:'actual-PR159-plus-local-c2a-preparation',swap:false,local:true},{name:'hypothetical-K2-plus-local-c2a-preparation',swap:true,local:true}]
+let before:any
+const results=scenarios.map(s=>{
+ const docs=structuredClone(catalog)
+ if(s.swap)for(const p of ['ae67bcf1','10aad90e']){const g=docs.flatMap(d=>d.goals).find(g=>g.id===id(p));g.requires=g.requires.map(q=>q===id('80c232f1')?id('5e7d5ff2'):q)}
+ if(s.local)docs.flatMap(d=>d.goals).find(g=>g.id===target).requires.push(...added)
+ const idx=new KnowledgeContextIndex(docs)
+ if(!before)before=idx
+ const key=idx.resolveAtomicGoal(target),fkey=idx.resolveAtomicGoal(profile)
+ const reach=idx.graph.reach(key),fr=idx.graph.reach(fkey)
+ const describe=(k:string)=>({key:k,title:idx.graph.goal(k).title})
+ const obligation=(gid:string)=>({goalId:gid,title:idx.graph.goal(idx.resolveAtomicGoal(gid)).title,inAssessmentReach:reach.has(idx.resolveAtomicGoal(gid)),inOrdinaryTargetReach:fr.has(idx.resolveAtomicGoal(gid))})
+ const newlyRedundant=[]
+ for(const g of docs.flatMap(d=>d.goals)){
+  if(g.contains?.length)continue
+  const k=idx.resolveAtomicGoal(g.id),prev=before.graph.directAtomicRequires(k),now=idx.graph.directAtomicRequires(k)
+  for(const r of now){const ws=now.filter(q=>q!==r&&idx.graph.reach(q).has(r));const old=prev.some(q=>q!==r&&before.graph.reach(q).has(r));if(ws.length&&!old)newlyRedundant.push({goalId:g.id,requirement:r,witnesses:ws})}
+ }
+ const direct=idx.graph.directAtomicRequires(key)
+ return {...s,target,profile,assessmentReachSize:reach.size,ordinaryTargetReachSize:fr.size,obligations:added.map(obligation),assessmentDirect:direct.map(k=>({...describe(k),redundancyWitnesses:direct.filter(q=>q!==k&&idx.graph.reach(q).has(k)).map(describe)})),ordinaryTargetReach:[...fr].sort().map(describe),newlyRedundant}
+})
+const result={status:'read-only-author-preparation-probe-not-M7-acceptance',baseCommit:'2fc979d30e53cf654c72f4d863a7d635bd515133',engine:'native KnowledgeContextIndex / UnitGraph on all current 21 canonical documents',pins:paths.map(p=>({path:p,sha256:createHash('sha256').update(readFileSync(p)).digest('hex')})),results}
+writeFileSync(out+'/local-preparation-probe.actual.json',JSON.stringify(result,null,2)+'\n')
+console.log(JSON.stringify(results.map(({name,assessmentReachSize,ordinaryTargetReachSize,obligations,newlyRedundant})=>({name,assessmentReachSize,ordinaryTargetReachSize,obligations,newlyRedundant})),null,2))

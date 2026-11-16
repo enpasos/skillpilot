@@ -1480,7 +1480,7 @@ assert.deepEqual(foreignContainsEdges, [], 'Physics canonical contains must rema
 // Current, independently reviewed repairs may change a goal's preparation.
 // V9 transfers unchanged goals individually; it does not require preserving an
 // older whole-catalog prerequisite inventory. Resolve the actual foreign edges.
-assert.equal(foreignRequiresEdges.length, 158, 'the current Physics inventory has 158 direct cross-subject prerequisites')
+assert.equal(foreignRequiresEdges.length, 161, 'the current Physics inventory has 161 direct cross-subject prerequisites')
 foreignRequiresEdges.forEach(({ ownerId, goalId }) => {
   assert(mathGoalIds.has(goalId) || chemistryGoalIds.has(goalId),
     `foreign prerequisite ${goalId} has no configured canonical owner`)
@@ -1498,6 +1498,26 @@ assert.deepEqual(foreignRequiresEdges.filter(({ goalId }) => chemistryGoalIds.ha
   { ownerId: 'db47ac91-7bb0-5ba3-b39d-e2d6fc98396e', goalId: '5dd180f1-f1c8-5f76-9c9a-ea3fc3d921bf' },
 ])
 assert(!foreignRequiresEdges.some(({ goalId }) => goalId === '71cec9fb-3751-4d61-8b34-c5adbbf6e5f2'))
+const spectrumTransferAssessmentId = 'c2a6ce42-ba20-55c4-b958-c9edb4b98c4c'
+const spectrumTransferGoalId = 'f06c581a-7157-584e-a692-99bcd613cff9'
+const spectrumTransferMathPreparation = [
+  '4eeab7d5-eeb3-579b-845e-1c52ffe9e89f', // Add/subtract the signed decimal time samples.
+  'ee48e811-4c9c-5080-9836-8403fc9f0810', // Compute the reciprocal frequency for the period.
+  'f2e42af5-67a6-477e-82ea-e65b09cc6cb3', // Convert the resulting seconds to milliseconds.
+]
+const spectrumTransferAssessment = rawGoalById.get(spectrumTransferAssessmentId)
+assert(spectrumTransferAssessment, 'the released spectrum-transfer assessment is missing')
+assert.deepEqual(spectrumTransferAssessment.requires,
+  [...spectrumTransferMathPreparation, spectrumTransferGoalId].sort(compareCodePoints),
+  'the existing independent spectrum task needs its own arithmetic and unit preparation')
+const spectrumTransferPreparation = collectWholeMaterialPrerequisiteClosure(preparationLandscape, spectrumTransferAssessmentId)
+assert.deepEqual([...spectrumTransferPreparation.unresolvedReferences], [])
+for (const goalId of [spectrumTransferGoalId, ...spectrumTransferMathPreparation]) {
+  assert(spectrumTransferPreparation.atomicGoalIds.has(goalId),
+    `spectrum-transfer task preparation lost ${goalId}`)
+}
+assert.deepEqual((spectrumTransferAssessment.examData as { coveredGoalIds: string[] }).coveredGoalIds,
+  [spectrumTransferGoalId], 'necessary Mathematics preparation must not become assessment coverage')
 const mathFixtureGoal = rawMathLandscape.goals.find(({ id }) => id === '000b2764-c5d9-5521-b39e-fc15a4aa72e2')
 assert(mathFixtureGoal, 'known mathematics source-fingerprint fixture is missing')
 const mathFixtureKey = `${String(rawMathLandscape.landscapeId)}:${String(mathFixtureGoal.id)}`

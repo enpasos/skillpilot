@@ -1,0 +1,77 @@
+{
+  "at": "2026-11-16T01:21:27.509116+00:00",
+  "status": "LOCAL_HARDENED_JAVA_PASS",
+  "exitCode": 0,
+  "testClasses": [
+    {
+      "name": "com.skillpilot.backend.controller.PackageCurriculumResourceControllerTest",
+      "tests": "6",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.skillpilot.backend.curriculumpackage.JsonCurriculumPackageLoaderTest",
+      "tests": "13",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.skillpilot.backend.curriculumpackage.LearningUnitPackageLoaderTest",
+      "tests": "11",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.skillpilot.backend.curriculumpackage.PackageCurriculumResourceStateTest",
+      "tests": "6",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.skillpilot.backend.curriculumpackage.StaticAssessmentSvgTest",
+      "tests": "24",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    }
+  ],
+  "tests": 60,
+  "failureCount": 0,
+  "command": "./gradlew --project-cache-dir ../tmp/package-material-java-ci-repair-20261116/cache --init-script ../tmp/package-material-java-ci-repair-20261116/focused-tests.init.gradle --console=plain --no-daemon test -x processResources",
+  "resources": "Own isolated build resources/main symlink to existing backend/build/resources/main; processResources excluded to avoid duplicate multi-GB assets. Synthetic fixture tests and actual unchanged repo SVG. No fresh full backend or remote CI claim.",
+  "sourcePins": [
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/curriculumpackage/JsonCurriculumPackageLoader.java",
+      "sha256": "7863990c6d8fb6cb1fbcc4cd0c2c98f947b069951b61b00050e00362241e28d4"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/curriculumpackage/PackageCurriculumResourceState.java",
+      "sha256": "d17b2b5396a4871186dde1f55c6acdb26b465bcbfa995a37065aa52687afa009"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/curriculumpackage/StaticAssessmentSvg.java",
+      "sha256": "38b125dce064e85b5fc2e9386c35110a442e08f58b4dac3a731cf8be6fcf1ac4"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/controller/PackageCurriculumResourceController.java",
+      "sha256": "aa785c55e242291488e2c8737c892792a0304e2bf897a90eccd4c4b25cea60c8"
+    },
+    {
+      "path": "backend/src/test/java/com/skillpilot/backend/curriculumpackage/StaticAssessmentSvgTest.java",
+      "sha256": "197cd6ab2ebecd2a63849c1c63283794033e401a5f849769e25ff794cc4349a5"
+    },
+    {
+      "path": "backend/src/test/java/com/skillpilot/backend/curriculumpackage/LearningUnitPackageLoaderTest.java",
+      "sha256": "351436194d93a4f4a92a71179254656fadf4f3368549e64650dbf04c7b1d7668"
+    },
+    {
+      "path": "backend/src/test/java/com/skillpilot/backend/controller/PackageCurriculumResourceControllerTest.java",
+      "sha256": "43d3e0c995d1176f2ada4c9fe329b6ad3a857d4b5a4e8cfd274c60f0150e73f2"
+    }
+  ],
+  "followup": "Retains original 54-case proof separately; extends PNG materials and repairs independently identified escaped-attribute/namespace loopholes; 5 focused classes selected explicitly to avoid launching unrelated JVMs."
+}

@@ -1,0 +1,91 @@
+{
+  "at": "2026-11-16T03:40:26.263876+00:00",
+  "decision": "ACCEPT_BOUNDED_AUTOMATIC_MEMORY_EXPLICIT_OBLIGATION_FIX",
+  "reviewerTask": "/root/physics_release_finish",
+  "scope": "Three production completion classes and their direct test delta; no curriculum, learner-result, pinned smoke-helper or gate edits by reviewer.",
+  "sourcePins": [
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/completion/CompiledAutomaticCompletion.java",
+      "sha256": "25a3a30bc877a4dcad9a67fe2d66987baa61ab27a77c516fdd4e78fb6ccdb27e"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/completion/CompletionProfileCompiler.java",
+      "sha256": "e45ea91359d4834f09740b2cc468d7aea3a30ab48da3d597e31182b06ef1c5e5"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/completion/CompletionEvaluator.java",
+      "sha256": "9ae28cd1c440106a3100079cb9e5693de868b3b6f22d98cf0ac0fb0f747606af"
+    },
+    {
+      "path": "backend/src/test/java/com/skillpilot/backend/completion/AutomaticCompletionTest.java",
+      "sha256": "b7dd748a8e041012fc45e6fe6de9273091d505d272b7d008ebb44e33346c1547"
+    }
+  ],
+  "pinnedSmokeHelpersUnchanged": [
+    {
+      "path": "scripts/run_package_consumer_smoke.py",
+      "sha256": "c40c514cd12a4578bd406c425fb4ad6a37c19a8c4f722b15d609bcda37560c74"
+    },
+    {
+      "path": "scripts/package_consumer_smoke_http.py",
+      "sha256": "7a9c5943480e9d223367dc4c54164029d936d557d8072c623c669ad5a471668a"
+    }
+  ],
+  "actualObservedFailure": {
+    "reportPath": "tmp/package-v13-assessment-material-ci-repair-20261116/41-correlated-current-consumer-report.actual.json",
+    "reportSHA256": "da3a448395c2da38482cc171c0c5889afdc0296f00a6e90f44415284f3c823a1",
+    "zipSHA256": "6284da913445717841c861ab0fce5d6c9217f9b277789037db7f7accef1cb9eb",
+    "runnerSHA256": "c40c514cd12a4578bd406c425fb4ad6a37c19a8c4f722b15d609bcda37560c74",
+    "status": "9 passed,1 failed,5 not-run; cards.verified-recall-loaded fails after actual orientation1.0 saved.",
+    "actualDiagnosticPath": "tmp/package-v13-assessment-material-ci-repair-20261116/44-branch-diagnostic-result.actual.json",
+    "actualDiagnosticSHA256": "6be83786fd81f0f1b1ed346d4554d768b0060535511ac6cb01d576df1e29575e",
+    "diagnosticFacts": "Memory4eef remains in target/scope/visible/L, mastery0, prerequisites met, but completedWork=true. No prerequisite catch caused this actual failure."
+  },
+  "cause": "Automatic compiler/evaluator retained only assessments as explicit demand roots, so the unmastered memory goal was waived for no_remaining_demand. Its real single prerequisite was orientation65365, already explicitly completed. Both fixture goals are outside the two valid learning-unit memberships; no evidence supports weakening or choosing another smoke fixture.",
+  "acceptedRepair": "Compiler derives explicit obligations as assessment union existing isMemory predicate only within the actual compiled context. Automatic graph preserves that union, evaluator starts demand there, propagates full transitive demand, and requires every explicit obligation mastered even outside target IDs. Assessment IDs/counts remain separate; orientations and ordinary goals receive no new protection. Reviewed-profile evaluation is unchanged.",
+  "independentNativeEvidence": {
+    "before": "Actual old41er compiled Completion classes from the RAM runner were retained and executed on the two actual fixture goals with only orientation in the mastery input: complete=true, memory waived, assessmentCount0.",
+    "after": "All three exact new source files independently compiled in a TMP overlay, same actual pair: complete=false, memory pending, assessmentCount0. No learner was created or modified.",
+    "compileAndRunExitCodes": {
+      "beforeCompile": 0,
+      "beforeRun": 0,
+      "afterCompile": 0,
+      "afterRun": 0
+    },
+    "afterCheckCount": 13,
+    "coverage": [
+      "Actual fixture memory remains explicit until trusted mastery input is supplied",
+      "Memory does not become an assessment and creates no self blocker",
+      "Automatic profile wrapper preserves memory obligation",
+      "Actual complete1310-goal Mathematics context retains memory demand",
+      "Unrelated memory outside actual compiled context does not widen or block scope",
+      "Supporting memory outside target IDs still prevents complete",
+      "Open memory retains transitive ordinary demand through mastered intermediate work",
+      "Discharged ordinary work becomes a context waiver, not invented mastery"
+    ],
+    "readOnlyScope": "Pure native compiler/evaluator calls on actual package goals plus clearly named synthetic graph countercases. No verified-recall HTTP success, full fresh consumer run or main CI is inferred."
+  },
+  "reviewedEvaluatorBodyByteIdenticalToHEAD": true,
+  "policyBasis": "AGENTS.md current explicit memory/assessment recognition boundary: memory goals are never implicit; required card targets remain independently explicit.",
+  "unrelatedOpenFinding": {
+    "status": "OPEN_UNFIXED_SEPARATE_MECHANISM_COUNTEREXAMPLE",
+    "path": "navigation-open-finding",
+    "finding": "A constructed empty visible navigation node can be reclassified as an atomic default completion target although structural seed classification excluded it. Native validateContext then rejects the unknown node.",
+    "notActual41or44Cause": true,
+    "noProductionFixIncludedOrRequestedAsPartOfThisDelivery": true
+  },
+  "notClaimed": [
+    "full learner verified-recall journey after fix",
+    "new source/classification/assessment authorization",
+    "global recognition/learning-unit rollout/R5 completion",
+    "fresh PR or main CI completion"
+  ],
+  "sourceAndGitWritesByReviewer": false,
+  "parentSuiteEvidence": {
+    "path": "tmp/package-v13-assessment-material-ci-repair-20261116/45-memory-explicit-completion-regression.actual.log",
+    "sha256": "77c4fb50d12b6fdc8863ba0d939329687d72827b58079ad20a6a7ef4388df454",
+    "exitPath": "tmp/package-v13-assessment-material-ci-repair-20261116/45-memory-explicit-completion-regression.actual.exit",
+    "exitCode": 0,
+    "method": "Parent/Biology executed run retained separately; not re-executed by reviewer."
+  }
+}

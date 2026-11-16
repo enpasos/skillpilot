@@ -17,8 +17,7 @@ import {
 } from './lib/learnerFacingCompositionLabels'
 import {
   collectCanonicalMathSek1ReviewedExamRouteFindings,
-  hasUnavailableCurricularAtomicAssessmentPrerequisite,
-  isAssessmentExplicitlyOutsideJurisdiction,
+  collectCanonicalMathSek1AssessmentCollectionFindings,
 } from './lib/canonicalMathSek1ReviewedExamRoutes'
 
 interface CompositionViewValidationFinding extends CompositionViewFinding {
@@ -693,11 +692,7 @@ const collectCanonicalMathSek1ExamVisibilityFindings = (
   if (!isCanonicalMathSek1LearnerScope(view)) return []
   if (!landscape) return []
 
-  const goalById = new Map(landscape.goals.map((goal) => [goal.id, goal]))
   const visibleGoalIds = collectSourceGoalIds(rootNodes)
-  const curricularAtomicGoalIds = new Set(landscape.goals
-    .filter((goal) => goal.semanticKind === 'curricularAtomic')
-    .map((goal) => goal.id))
   const findings: CompositionViewFinding[] = []
 
   if (!visibleGoalIds.has(CANONICAL_MATH_SEK1_MOTIVATION_GOAL_ID)) {
@@ -718,41 +713,12 @@ const collectCanonicalMathSek1ExamVisibilityFindings = (
     })
   }
 
-  expectedCanonicalMathSek1ExamYears(view).forEach((year) => {
-    const folderId = CANONICAL_MATH_SEK1_EXAM_FOLDER_IDS_BY_YEAR[year]
-    const folder = goalById.get(folderId)
-    if (!visibleGoalIds.has(folderId)) {
-      findings.push({
-        code: 'CPV-211',
-        severity: 'error',
-        goalId: folderId,
-        message: `Sek-I-Route ist learner-facing nicht vollständig: Prüfungsordner für Jahrgangsstufe ${year} fehlt in der Composition View.`,
-      })
-      return
-    }
-
-    const missingTaskGoalIds = (folder?.contains ?? [])
-      .filter((taskId) => !visibleGoalIds.has(taskId))
-      // Shared year folders contain land-specific exams. A resolved land scope
-      // must still require every applicable task, but not another land's task.
-      // The national catalog (no jurisdiction) continues to require all tasks.
-      .filter((taskId) => !isAssessmentExplicitlyOutsideJurisdiction(
-        goalById.get(taskId), view.scope.jurisdiction,
-      ))
-      .filter((taskId) => !hasUnavailableCurricularAtomicAssessmentPrerequisite(
-        goalById.get(taskId),
-        curricularAtomicGoalIds,
-        visibleGoalIds,
-      ))
-    if (missingTaskGoalIds.length > 0) {
-      findings.push({
-        code: 'CPV-211',
-        severity: 'error',
-        goalId: folderId,
-        message: `Sek-I-Route ist learner-facing nicht vollständig: ${missingTaskGoalIds.length} Aufgabenknoten unter Prüfungen Jahrgangsstufe ${year} fehlen in der Composition View.`,
-      })
-    }
-  })
+  findings.push(...collectCanonicalMathSek1AssessmentCollectionFindings(
+    view, landscape, rootNodes,
+    Object.fromEntries(expectedCanonicalMathSek1ExamYears(view).map((year) => [
+      year, CANONICAL_MATH_SEK1_EXAM_FOLDER_IDS_BY_YEAR[year],
+    ])),
+  ))
 
   return findings
 }

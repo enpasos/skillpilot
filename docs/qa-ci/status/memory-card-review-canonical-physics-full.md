@@ -39,8 +39,8 @@ Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger.
 
 | Scope | View | Visible goals | Visible memory goals | Checked memory-required goals | Missing visible memory goals |
 | --- | --- | --- | --- | --- | --- |
-| Physik Gymnasium GK (DE-HE) | `curricula/DE/Gymnasium/composition-views/physik/de-he-gk.view.json` | 586 | 5 | 108 | 0 |
-| Physik Gymnasium LK (DE-HE) | `curricula/DE/Gymnasium/composition-views/physik/de-he-lk.view.json` | 675 | 5 | 127 | 0 |
+| Physik Gymnasium GK (DE-HE) | `curricula/DE/Gymnasium/composition-views/physik/de-he-gk.view.json` | 587 | 5 | 108 | 0 |
+| Physik Gymnasium LK (DE-HE) | `curricula/DE/Gymnasium/composition-views/physik/de-he-lk.view.json` | 676 | 5 | 127 | 0 |
 
 ## Memory-Required Goals
 

@@ -1,0 +1,371 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/curriculum-package/v1.3/resource-index.schema.json",
+  "title": "SkillPilot required curriculum resources v1.3",
+  "description": "Closed embedded visualizations and exact assessment stimuli, plus optional external tools.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "indexFormatVersion",
+    "resources"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "https://skillpilot.com/schemas/curriculum-package/v1.3/resource-index.schema.json"
+    },
+    "indexFormatVersion": {
+      "const": "1.3"
+    },
+    "resources": {
+      "type": "array",
+      "minItems": 0,
+      "maxItems": 1000000,
+      "x-skillpilot-listSemantics": "ordered",
+      "items": {
+        "$ref": "#/$defs/resource"
+      }
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 300,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:+-]*$"
+    },
+    "nonBlankText": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000000,
+      "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+    },
+    "languageTag": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 64,
+      "pattern": "^[A-Za-z]{2,8}(?:-[A-Za-z0-9]{1,8})*$"
+    },
+    "packageRelativePath": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 240,
+      "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(?:/|$))(?!.*//)[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "embeddedImageResource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "resourceId",
+        "landscapeId",
+        "ownerGoalId",
+        "order",
+        "resourceKind",
+        "resourceType",
+        "delivery",
+        "runtimeRequired",
+        "artifactPath",
+        "publicUrl",
+        "mediaType",
+        "bytes",
+        "sha256",
+        "role",
+        "title",
+        "provider",
+        "description",
+        "altText",
+        "language",
+        "license",
+        "reviewStatus"
+      ],
+      "properties": {
+        "resourceId": {
+          "$ref": "#/$defs/id"
+        },
+        "landscapeId": {
+          "$ref": "#/$defs/id"
+        },
+        "ownerGoalId": {
+          "$ref": "#/$defs/id"
+        },
+        "order": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100000
+        },
+        "resourceKind": {
+          "const": "goal-visualization"
+        },
+        "resourceType": {
+          "const": "image"
+        },
+        "delivery": {
+          "const": "embedded"
+        },
+        "runtimeRequired": {
+          "const": true
+        },
+        "artifactPath": {
+          "$ref": "#/$defs/packageRelativePath"
+        },
+        "publicUrl": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000,
+          "pattern": "^/assets/(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(?:/|$))(?!.*//)[A-Za-z0-9._/-]+\\.(?:jpe?g|png)$"
+        },
+        "mediaType": {
+          "enum": [
+            "image/jpeg",
+            "image/png"
+          ]
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 67108864
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "role": {
+          "const": "primary"
+        },
+        "title": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "provider": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "description": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "altText": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "language": {
+          "$ref": "#/$defs/languageTag"
+        },
+        "license": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "reviewStatus": {
+          "$ref": "#/$defs/id"
+        }
+      }
+    },
+    "externalToolResource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "resourceId",
+        "landscapeId",
+        "ownerGoalId",
+        "order",
+        "resourceKind",
+        "resourceType",
+        "delivery",
+        "runtimeRequired",
+        "externalUrl",
+        "mediaType",
+        "bytes",
+        "sha256",
+        "title",
+        "provider",
+        "description",
+        "language"
+      ],
+      "properties": {
+        "resourceId": {
+          "$ref": "#/$defs/id"
+        },
+        "landscapeId": {
+          "$ref": "#/$defs/id"
+        },
+        "ownerGoalId": {
+          "$ref": "#/$defs/id"
+        },
+        "order": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100000
+        },
+        "resourceKind": {
+          "const": "tool"
+        },
+        "resourceType": {
+          "$ref": "#/$defs/id"
+        },
+        "delivery": {
+          "const": "external"
+        },
+        "runtimeRequired": {
+          "const": false
+        },
+        "externalUrl": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000,
+          "format": "uri",
+          "pattern": "^https://"
+        },
+        "mediaType": {
+          "const": "text/html"
+        },
+        "bytes": {
+          "type": "null"
+        },
+        "sha256": {
+          "type": "null"
+        },
+        "title": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "provider": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "description": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "language": {
+          "$ref": "#/$defs/languageTag"
+        },
+        "license": {
+          "$ref": "#/$defs/nonBlankText"
+        }
+      }
+    },
+    "resource": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/embeddedImageResource"
+        },
+        {
+          "$ref": "#/$defs/externalToolResource"
+        },
+        {
+          "$ref": "#/$defs/embeddedAssessmentMaterial"
+        }
+      ]
+    },
+    "embeddedAssessmentMaterial": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "resourceId",
+        "landscapeId",
+        "ownerGoalId",
+        "order",
+        "resourceKind",
+        "resourceType",
+        "delivery",
+        "runtimeRequired",
+        "artifactPath",
+        "publicUrl",
+        "mediaType",
+        "bytes",
+        "sha256",
+        "title",
+        "provider",
+        "description",
+        "language",
+        "license"
+      ],
+      "properties": {
+        "resourceId": {
+          "$ref": "#/$defs/id"
+        },
+        "landscapeId": {
+          "$ref": "#/$defs/id"
+        },
+        "ownerGoalId": {
+          "$ref": "#/$defs/id"
+        },
+        "order": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100000
+        },
+        "resourceKind": {
+          "const": "assessment-material"
+        },
+        "resourceType": {
+          "const": "image"
+        },
+        "delivery": {
+          "const": "embedded"
+        },
+        "runtimeRequired": {
+          "const": true
+        },
+        "artifactPath": {
+          "$ref": "#/$defs/packageRelativePath"
+        },
+        "publicUrl": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000,
+          "pattern": "^(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(?:/|$))(?!.*//)/assets/assessment-materials/[A-Za-z0-9._/-]+\\.(?:svg|png)$"
+        },
+        "mediaType": {
+          "enum": [
+            "image/svg+xml",
+            "image/png"
+          ]
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 67108864
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "title": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "provider": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "description": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/nonBlankText"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "language": {
+          "$ref": "#/$defs/languageTag"
+        },
+        "license": {
+          "$ref": "#/$defs/nonBlankText"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "mediaType": {
+                "const": "image/svg+xml"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "bytes": {
+                "maximum": 4194304
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

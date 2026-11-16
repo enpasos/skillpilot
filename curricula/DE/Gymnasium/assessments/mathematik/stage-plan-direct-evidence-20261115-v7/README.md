@@ -1,0 +1,7 @@
+# Eigene überprüfte Aufgabenquelle vom 15. November 2026
+
+`reviewed-assessments.json` ist die bytegleiche Materialisierung der bereits erhaltenen eigenen Autorenquelle `curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/math-stage-direct-evidence-current8-v7/retained-reviewed-assessments.json` am von 43 kanonischen Aufgaben bereits deklarierten Quellpfad. SHA-256: `6dee2b982037800fd21344087d936de27699458b5da38fdcd0aa7b52ab8f47c2`.
+
+Die Quelldatei bezeichnet ihre 44 Autorenobjekte ausdrücklich als überprüfte Entwürfe für die Reviewhistorie. Sie behauptet keine aktuelle Freigabe. Der aktuelle Freigabestatus steht in der kanonischen Aufgabe und den damaligen unabhängigen Review-/Releasebelegen unter `curricula/DE/Gymnasium/quality/assessment-review/mathematik/stage-plan-direct-evidence-20261115-v7/`. Das zusätzliche 44. Quellenobjekt wird dadurch kein neues aktives Ziel. Es werden weder ein amtlicher Ursprung noch eine amtliche Aufgabe behauptet.
+
+Am 16. November wurden alle 43 Referenzen unabhängig mit dieser erhaltenen Quelle verglichen: beide Sprachen der Aufgabe und Lösung, das vollständige Raster, Zielabdeckung, Voraussetzungen und alle anderen fachlichen Zielfelder sind exakt gleich. Unterschiede beschränken sich auf dokumentierte Autoren-/Freigabemetadaten und die nachgetragenen Beschreibungen zu Inhaltssträngen und Anforderungsbereichen. Die Quelle, kanonische Aufgaben, Raster und Medien bleiben unverändert. Der Export transportiert die tatsächliche Quelle; er ersetzt keine Reviews und schreibt keine Lernergebnisse.

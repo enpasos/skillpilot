@@ -7,11 +7,11 @@ import java.util.Set;
 public final class CompiledAutomaticCompletion extends CompiledCompletionGraph {
     private final String curriculumGeneration;
 
-    CompiledAutomaticCompletion(CompiledCompletionGraph graph, Set<String> assessments,
+    CompiledAutomaticCompletion(CompiledCompletionGraph graph, Set<String> assessments, Set<String> explicitObligations,
             String curriculumGeneration) {
         super(graph.goalIds(), java.util.stream.IntStream.range(0, graph.size())
                         .mapToObj(graph::prerequisiteIndices).toArray(int[][]::new),
-                graph.order(), graph.targetGoalIds(), assessments, assessments, List.of());
+                graph.order(), graph.targetGoalIds(), assessments, explicitObligations, List.of());
         this.curriculumGeneration = curriculumGeneration;
     }
 

@@ -1,0 +1,159 @@
+{
+  "at": "2026-11-16T02:31:18.386Z",
+  "status": "PASS_EXACT_NATIVE_ROLE_CLASSIFICATION_DELTA",
+  "method": "TypeScript AST extracts exact current private helpers and exact assessment-source branch; real current ledger, target profile and actual byte-bound model source. No source edits and no duplicate full package/ZIP build.",
+  "sourcePath": "app/scripts/buildFullStandaloneCurriculumPackage.ts",
+  "sourceSHA256": "e6e24d058bc427caefaab0491425f61d750e873abb783693ad2be62d508880dc",
+  "extractedHelpers": [
+    "compareCodeUnits",
+    "fail",
+    "runtimeRequiredFor",
+    "mediaTypeForPath",
+    "assertDecisionState",
+    "assertRedistributionReviewDerivedState",
+    "decisionClassifier",
+    "attachManifestFile"
+  ],
+  "extractedBranchSHA256": "35bc359ef6612f8b932e42fda858706f99bcb99b364a9ba0dbf09f23de971928",
+  "extractedBranch": "if (assessmentByPath.has(path)) {\n      const expected = assessmentByPath.get(path) as BuildInputAssessment\n      if (entry.bytes !== expected.bytes || entry.sha256 !== expected.sha256) fail(`Assessment source drift in release model: ${path}`)\n      consumedAssessmentPaths.add(path)\n      const structuredAuthorSource = materialProfile && mediaTypeForPath(path) === 'application/json'\n        && ['data/assessment-sources/stage-plan-direct-evidence-20261115-v7/reviewed-assessments.json',\n          'data/assessment-sources/task64-digital-correction-20261115-v1/reviewed-assessment.json'].includes(path)\n      const role = requiredRole(structuredAuthorSource ? 'provenance-report' : 'package-documentation')\n      attachManifestFile(entry, role, classify(role.role, path), { kind: 'excluded-generated' })\n    } else fail('not a bound assessment input');",
+  "ledgerSHA256": "0e10da2b7fb1fabaa0bdf5bae398a1c40030ce72eb09ebc4f21ebf7ed5397d14",
+  "profileSHA256": "b4e0f5551a456610fbe3bdc3a43b68012151c4e6b402eb897f499aef7e15b995",
+  "caseCount": 22,
+  "cases": [
+    {
+      "name": "actual-exact-bound-JSON-source-manifest-remains-content-and-pending",
+      "status": "PASS",
+      "manifest": {
+        "path": "data/assessment-sources/stage-plan-direct-evidence-20261115-v7/reviewed-assessments.json",
+        "role": "provenance-report",
+        "mediaType": "application/json",
+        "bytes": 431267,
+        "sha256": "6dee2b982037800fd21344087d936de27699458b5da38fdcd0aa7b52ab8f47c2",
+        "runtimeRequired": false,
+        "licenseExpression": null,
+        "provenanceClass": "skillpilot-authored",
+        "redistributionStatus": "review-required",
+        "semanticBinding": {
+          "kind": "excluded-generated"
+        }
+      }
+    },
+    {
+      "name": "second-exact-actual-JSON-source-manifest-and-complete-two-file-inventory",
+      "status": "PASS",
+      "manifest": {
+        "path": "data/assessment-sources/task64-digital-correction-20261115-v1/reviewed-assessment.json",
+        "role": "provenance-report",
+        "mediaType": "application/json",
+        "bytes": 27311,
+        "sha256": "14b26923a759aaea118bedb2c3264706faaff3fc92575b955a80f5a8272eb13b",
+        "runtimeRequired": false,
+        "licenseExpression": null,
+        "provenanceClass": "skillpilot-authored",
+        "redistributionStatus": "review-required",
+        "semanticBinding": {
+          "kind": "excluded-generated"
+        }
+      }
+    },
+    {
+      "name": "second-JSON-source-inactive-lane-rejected",
+      "status": "PASS",
+      "rejection": "Role package-documentation does not permit application/json for data/assessment-sources/task64-digital-correction-20261115-v1/reviewed-assessment.json."
+    },
+    {
+      "name": "second-JSON-source-byte-drift-rejected",
+      "status": "PASS",
+      "rejection": "Assessment source drift in release model: data/assessment-sources/task64-digital-correction-20261115-v1/reviewed-assessment.json"
+    },
+    {
+      "name": "second-JSON-similar-path-rejected",
+      "status": "PASS",
+      "rejection": "Role package-documentation does not permit application/json for data/assessment-sources/task64-digital-correction-20261115-v1/reviewed-assessment.json.backup.json."
+    },
+    {
+      "name": "older-runtime-cannot-use-new-JSON-role",
+      "status": "PASS",
+      "rejection": "Role package-documentation does not permit application/json for data/assessment-sources/stage-plan-direct-evidence-20261115-v7/reviewed-assessments.json."
+    },
+    {
+      "name": "exact-file-not-in-build-input-rejected",
+      "status": "PASS",
+      "rejection": "not a bound assessment input"
+    },
+    {
+      "name": "expected-byte-count-drift-rejected",
+      "status": "PASS",
+      "rejection": "Assessment source drift in release model: data/assessment-sources/stage-plan-direct-evidence-20261115-v7/reviewed-assessments.json"
+    },
+    {
+      "name": "expected-source-hash-drift-rejected",
+      "status": "PASS",
+      "rejection": "Assessment source drift in release model: data/assessment-sources/stage-plan-direct-evidence-20261115-v7/reviewed-assessments.json"
+    },
+    {
+      "name": "actual-source-hash-drift-rejected",
+      "status": "PASS",
+      "rejection": "Assessment source drift in release model: data/assessment-sources/stage-plan-direct-evidence-20261115-v7/reviewed-assessments.json"
+    },
+    {
+      "name": "similar-JSON-path-cannot-enter-exact-role:data/assessment-sources/stage-plan-direct-evidence-20261115-v7/reviewed-assessments.json.backup.json",
+      "status": "PASS",
+      "rejection": "Role package-documentation does not permit application/json for data/assessment-sources/stage-plan-direct-evidence-20261115-v7/reviewed-assessments.json.backup.json."
+    },
+    {
+      "name": "similar-provenance-path-does-not-get-file-override:data/assessment-sources/stage-plan-direct-evidence-20261115-v7/reviewed-assessments.json.backup.json",
+      "status": "PASS",
+      "fallbackClass": "generated-metadata"
+    },
+    {
+      "name": "similar-JSON-path-cannot-enter-exact-role:data/assessment-sources/stage-plan-direct-evidence-20261115-v7/reviewed-assessments.json/child.json",
+      "status": "PASS",
+      "rejection": "Role package-documentation does not permit application/json for data/assessment-sources/stage-plan-direct-evidence-20261115-v7/reviewed-assessments.json/child.json."
+    },
+    {
+      "name": "similar-provenance-path-does-not-get-file-override:data/assessment-sources/stage-plan-direct-evidence-20261115-v7/reviewed-assessments.json/child.json",
+      "status": "PASS",
+      "fallbackClass": "generated-metadata"
+    },
+    {
+      "name": "similar-JSON-path-cannot-enter-exact-role:data/assessment-sources/stage-plan-direct-evidence-20261115-v8/reviewed-assessments.json",
+      "status": "PASS",
+      "rejection": "Role package-documentation does not permit application/json for data/assessment-sources/stage-plan-direct-evidence-20261115-v8/reviewed-assessments.json."
+    },
+    {
+      "name": "similar-provenance-path-does-not-get-file-override:data/assessment-sources/stage-plan-direct-evidence-20261115-v8/reviewed-assessments.json",
+      "status": "PASS",
+      "fallbackClass": "generated-metadata"
+    },
+    {
+      "name": "similar-JSON-path-cannot-enter-exact-role:data/assessment-sources/stage-plan-direct-evidence-20261115-v7/reviewed-assessment.json",
+      "status": "PASS",
+      "rejection": "Role package-documentation does not permit application/json for data/assessment-sources/stage-plan-direct-evidence-20261115-v7/reviewed-assessment.json."
+    },
+    {
+      "name": "similar-provenance-path-does-not-get-file-override:data/assessment-sources/stage-plan-direct-evidence-20261115-v7/reviewed-assessment.json",
+      "status": "PASS",
+      "fallbackClass": "generated-metadata"
+    },
+    {
+      "name": "normal-markdown-source-keeps-original-text-only-role",
+      "status": "PASS"
+    },
+    {
+      "name": "technical-provenance-metadata-classification-unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "broadened-directory-override-rejected-by-native-closed-policy",
+      "status": "PASS",
+      "rejection": "Redistribution path-classification overrides differ from the closed package policy."
+    },
+    {
+      "name": "new-file-override-not-accepted-in-runtime12-review",
+      "status": "PASS",
+      "rejection": "Redistribution path-classification overrides differ from the closed package policy."
+    }
+  ],
+  "fullPackageOrConsumerApprovalClaimed": false
+}

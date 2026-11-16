@@ -1,0 +1,264 @@
+{
+  "at": "2026-11-16T02:01:11.700410+00:00",
+  "status": "PASS_CURRENT_SCHEMA_PROFILE_AND_REDISTRIBUTION_FOLLOWUP",
+  "checkCount": 43,
+  "checks": [
+    {
+      "name": "independent-actual-DE-EN-body-use-inventory",
+      "status": "PASS",
+      "uniqueFiles": 28,
+      "taskUrlPairs": 31,
+      "svgFiles": 18,
+      "pngFiles": 10,
+      "svgUses": 19,
+      "pngUses": 12
+    },
+    {
+      "name": "all28-byte-exact-originals-and-owned-source-bindings",
+      "status": "PASS"
+    },
+    {
+      "name": "schema-rejects-material-external-delivery",
+      "status": "PASS"
+    },
+    {
+      "name": "schema-rejects-material-false-runtime-required",
+      "status": "PASS"
+    },
+    {
+      "name": "schema-rejects-material-external-url-injection",
+      "status": "PASS"
+    },
+    {
+      "name": "schema-rejects-material-path-traversal",
+      "status": "PASS"
+    },
+    {
+      "name": "schema-rejects-material-dot-path",
+      "status": "PASS"
+    },
+    {
+      "name": "schema-rejects-material-script-media",
+      "status": "PASS"
+    },
+    {
+      "name": "schema-rejects-material-unknown-authority-field",
+      "status": "PASS"
+    },
+    {
+      "name": "historical-v1-resource-schema-does-not-accept-new-material-lane",
+      "status": "PASS"
+    },
+    {
+      "name": "schema-rejects-missing-material-capability",
+      "status": "PASS"
+    },
+    {
+      "name": "schema-rejects-wrong-runtime-version",
+      "status": "PASS"
+    },
+    {
+      "name": "schema-rejects-unknown-capability",
+      "status": "PASS"
+    },
+    {
+      "name": "python-svg-rejects-external-fill",
+      "status": "PASS",
+      "rejection": "Assessment SVG has an external CSS resource",
+      "exception": "ValueError"
+    },
+    {
+      "name": "python-svg-rejects-escaped-external-fill",
+      "status": "PASS",
+      "rejection": "Assessment SVG contains an event or base URL",
+      "exception": "ValueError"
+    },
+    {
+      "name": "python-svg-rejects-escaped-external-filter",
+      "status": "PASS",
+      "rejection": "Assessment SVG contains an event or base URL",
+      "exception": "ValueError"
+    },
+    {
+      "name": "python-svg-rejects-foreign-xhtml-refresh",
+      "status": "PASS",
+      "rejection": "Assessment SVG has a foreign element outside permitted metadata",
+      "exception": "ValueError"
+    },
+    {
+      "name": "python-svg-rejects-svg-tiny-handler",
+      "status": "PASS",
+      "rejection": "Assessment SVG contains a non-static element",
+      "exception": "ValueError"
+    },
+    {
+      "name": "python-svg-rejects-metadata-xhtml",
+      "status": "PASS",
+      "rejection": "Assessment SVG has a foreign element outside permitted metadata",
+      "exception": "ValueError"
+    },
+    {
+      "name": "python-svg-rejects-external-image",
+      "status": "PASS",
+      "rejection": "Assessment SVG contains a non-static element",
+      "exception": "ValueError"
+    },
+    {
+      "name": "python-svg-rejects-event-attribute",
+      "status": "PASS",
+      "rejection": "Assessment SVG contains an event or base URL",
+      "exception": "ValueError"
+    },
+    {
+      "name": "python-svg-rejects-css-import",
+      "status": "PASS",
+      "rejection": "Assessment SVG contains active or escaped CSS",
+      "exception": "ValueError"
+    },
+    {
+      "name": "task-use-reader-rejects-nonreleased",
+      "status": "PASS",
+      "rejection": "Required task media must belong to a released task",
+      "exception": "ValueError"
+    },
+    {
+      "name": "task-use-reader-rejects-unsupported-gif",
+      "status": "PASS",
+      "rejection": "Unresolved or unsupported local task-image URL: /assets/assessment-materials/math/x.gif",
+      "exception": "ValueError"
+    },
+    {
+      "name": "task-use-reader-rejects-query-alias",
+      "status": "PASS",
+      "rejection": "Unresolved or unsupported local task-image URL: /assets/assessment-materials/math/x.svg?x=1",
+      "exception": "ValueError"
+    },
+    {
+      "name": "missing-native-source-asset",
+      "status": "PASS",
+      "rejection": "Repository input must be a regular non-symlink file: tmp/pr159-package13-producer-independent-review-20261116/no-such-material.svg",
+      "exception": "ReviewError"
+    },
+    {
+      "name": "wrong-native-source-asset-hash",
+      "status": "PASS",
+      "rejection": "Asset hash drift for app/public/assets/assessment-materials/mathematik/22842d80-de9d-5dad-9819-6ae6e9ca61be/graph-a-antiderivative.svg: expected 0000000000000000000000000000000000000000000000000000000000000000, got 862764800fccd62109be522586c67120be5df0e2fe5edc16f7b60c913d0e5a9d",
+      "exception": "ReviewError"
+    },
+    {
+      "name": "compiler-rejects-public-root-escape",
+      "status": "PASS",
+      "rejection": "Unsafe package-relative path: ../private.svg",
+      "exception": "CompilationError"
+    },
+    {
+      "name": "prior-actual-native-model-and-closure-proofs-retained-not-replayed",
+      "status": "PASS",
+      "logSHA256": "3c65d21d34f5fc537d848bd27c8f069e57c0df108d65197db1a2b79d17288314"
+    },
+    {
+      "name": "current-full-profile-all-trusted-schema-byte-bindings",
+      "status": "PASS"
+    },
+    {
+      "name": "actual-ledger-and-fresh-generator-baseline-exact-864-pending-and-no-material-prompts",
+      "status": "PASS",
+      "materialDecisions": 28,
+      "publicationReady": false
+    },
+    {
+      "name": "redistribution-rejects-missing-provenance",
+      "status": "PASS",
+      "diagnostics": [
+        "ASSET_PROVENANCE_DRIFT",
+        "SCHEMA"
+      ]
+    },
+    {
+      "name": "redistribution-rejects-source-sha-drift",
+      "status": "PASS",
+      "diagnostics": [
+        "ASSET_PROVENANCE_DRIFT"
+      ]
+    },
+    {
+      "name": "redistribution-rejects-lost-shared-use",
+      "status": "PASS",
+      "diagnostics": [
+        "ASSET_PROVENANCE_DRIFT",
+        "SCHEMA"
+      ]
+    },
+    {
+      "name": "redistribution-rejects-invented-prompt",
+      "status": "PASS",
+      "diagnostics": [
+        "SCHEMA"
+      ]
+    },
+    {
+      "name": "redistribution-rejects-automatic-apache-rights",
+      "status": "PASS",
+      "diagnostics": [
+        "ASSET_AUTOMATIC_ALLOWED_FORBIDDEN",
+        "SCHEMA",
+        "SUMMARY_DRIFT"
+      ]
+    },
+    {
+      "name": "redistribution-rejects-fictitious-human-approval",
+      "status": "PASS",
+      "diagnostics": [
+        "ALLOWED_EVIDENCE_INCOMPLETE",
+        "SCHEMA",
+        "SUMMARY_DRIFT"
+      ]
+    },
+    {
+      "name": "redistribution-rejects-asset-hash-rebinding",
+      "status": "PASS",
+      "diagnostics": [
+        "ASSET_HASH_DRIFT"
+      ]
+    },
+    {
+      "name": "redistribution-rejects-foreign-owner",
+      "status": "PASS",
+      "diagnostics": [
+        "ASSET_DEFINITION_DRIFT"
+      ]
+    },
+    {
+      "name": "redistribution-rejects-extra-material-prompt-policy",
+      "status": "PASS",
+      "diagnostics": [
+        "SCHEMA"
+      ]
+    },
+    {
+      "name": "redistribution-rejects-publication-overclaim",
+      "status": "PASS",
+      "diagnostics": [
+        "SUMMARY_DRIFT"
+      ]
+    },
+    {
+      "name": "redistribution-stale-authored-material-source",
+      "status": "PASS",
+      "rejection": "Assessment material authored-source hash drift",
+      "exception": "ReviewError"
+    },
+    {
+      "name": "redistribution-material-foreign-owner-source",
+      "status": "PASS",
+      "rejection": "Assessment material declaration drift: ownerGoalId",
+      "exception": "ReviewError"
+    }
+  ],
+  "inputDrift": [],
+  "readOnlyInputs": true,
+  "sourceWrites": false,
+  "conformanceContentDigest": "sha256:4e371d4e3fa31ccabfc9b32e061ada55d18fc8a8ebf1f087d9a6109469645a04",
+  "actualLedgerSHA256": "c0e411d396c5fdda3cfd24775adca9e0f08c36dd38842d15819a04ac2ddcb8f6",
+  "boundary": "Original native-model reconstruction and closure probes retained from the prior run; fresh final-schema/profile/ledger and in-memory adversarial mutations. No fixture result is presented as a browser/host or learner-flow measurement; no rights/publication/plan activation or remote CI approval."
+}

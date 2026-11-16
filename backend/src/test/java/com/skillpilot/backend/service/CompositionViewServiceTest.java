@@ -1698,9 +1698,24 @@ class CompositionViewServiceTest {
                         .stream().map(exams::get).toList());
                 for (String branchId : assessmentBranches) {
                     assertThat(allNodes).as(context + " expandable assessment branch " + branchId)
-                            .filteredOn(node -> branchId.equals(node.get("goalId")))
-                            .singleElement().satisfies(node -> assertThat(node)
-                                    .containsEntry("kind", "canonicalSubtree"));
+                            .filteredOn(node -> branchId.equals(node.get("goalId"))
+                                    || ("existing-assessment-path-" + branchId).equals(node.get("id")))
+                            .singleElement().satisfies(node -> {
+                                if ("canonicalSubtree".equals(node.get("kind"))) {
+                                    assertThat(node).containsEntry("goalId", branchId);
+                                } else {
+                                    assertThat(node).containsEntry("kind", "structure")
+                                            .containsEntry("id", "existing-assessment-path-" + branchId);
+                                    // The Q1 collection was materialized when its
+                                    // other assessments moved to their source-backed
+                                    // content branches. Its retained Coulomb task
+                                    // remains in this exact, expandable collection.
+                                    assertThat(branchId).isEqualTo("549a427d-f10a-5537-990e-6fdd7466848b");
+                                    assertThat(flattenCompositionNodes((List<Map<String, Object>>) node.get("children")))
+                                            .extracting(child -> child.get("goalId"))
+                                            .contains("716acf20-d882-5152-9735-099876d631b4");
+                                }
+                            });
                 }
                 Map<String, String> expectedParents = Map.of(
                         "physics-b034-transistor", "b034-preserved-rootNodes-0-children-13-children-6",

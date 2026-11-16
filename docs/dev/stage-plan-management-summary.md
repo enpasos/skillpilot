@@ -23,7 +23,7 @@ CI-Nachweis gilt weiterhin für den benannten Implementierungscommit.
 
 ## Gesamtstand
 
-**Stand: 16. November 2026, 00:38 MEZ (UTC+01:00).**
+**Stand: 16. November 2026, 04:51 MEZ (UTC+01:00).**
 
 **Fortschritt: K 0/13 und F 0/7 vollständig abgeschlossen · 0 reale Landespläne
 aktiviert · kanonische oberste Lernkarte lokal: 0 Rückpfeile und 0 außenstehende
@@ -51,31 +51,41 @@ als behobener Lernfluss ausgegeben. Der letzte Aufgaben-/Routenfix fügt gegenü
 dem vorherigen geprüften Kandidaten keine weiteren äußeren oder inneren
 Rückgriffsursachen hinzu.
 
-**Qualitätsabschluss:** Alle vier Mathematik-/Physikroutenprofile bestehen,
-einschließlich 80 Physik-Projektionskontexten. Alle fünf Inhaltsbereiche einschließlich
-Beschreibungen bestehen jetzt für 485/485 reguläre Physikziele. Die zwei
-geänderten Beschreibungskontexte sind jeweils zweimal aktuell unabhängig
-bewertet und nativ aufgelöst; sämtliche 107 alten Reviewindizes bleiben
-bytegleich.
-Ein vorheriger vollständiger Zwischenlauf endete für Physik auf M1: Die
-Quellenprüfung zählte zwei ausschließlich bayerische Ziele in 14 anderen
-Ländern mit. Der korrigierte Prüfcode folgt jetzt der tatsächlichen atomaren
-Backend-Auswahl einschließlich direkter Quellenzuordnungen. Ein erster,
-zu enger Filter wurde anhand einer tatsächlich ausgelieferten bayerischen
-Mathematikaufgabe verworfen. Die gezielte Quellenprüfung besteht nun für alle
-zehn ausgebauten Fächer; die elf M0-Fächer behalten ihre bisherigen Warnungen.
-Alle 26 konfigurierten Regeln der vier Mathematik-/Physikrouten bestehen.
-Unbelegte Ziele und vorhandene leere Ansichten scheitern weiterhin an nativen
-Gegenproben. Dieser letzte Fix ändert keine Lernziele, Ansichten oder
-Laufzeitdateien. **Der vollständige lokale Nachlauf ist seit 23:30 MEZ erfolgreich:**
-Alle 21 Katalog- und zwölf Routen-Mindeststände bleiben erhalten; Mathematik
-und Physik erreichen M7. Die vollständige PR-CI hat am letzten Commit einen Fehler im Lernzielbuch-Build
-aufgedeckt. Sechs Jobs bestanden, ein Job scheiterte, sieben abhängige Jobs
-wurden ausgelassen. Die vier Zusatzworkflows sind erfolgreich. Der Buch-Export
-ist gezielt korrigiert und unabhängig geprüft. Alle fünf Bücher wurden mit
-`--force` neu gerendert und vollständig validiert: insgesamt 2.457 Zielseiten.
-Die aktualisierte Physik-Inputsuite besteht. Erneute vollständige PR-CI, Merge
-und frische Main-CI stehen aus.
+**Qualität und Integration:** Der letzte vollständige lokale Qualitätslauf
+besteht für alle 21 Kataloge und zwölf Routen; Mathematik und Physik bleiben M7.
+Die Quellenstelle „einfache Ungleichungen“ in Schleswig-Holstein wurde anhand
+der offiziellen Fachanforderungen korrigiert; 659/659 zugeordnete Ziele sind
+nun belegt. 354 Zusammensetzungsansichten bestehen ohne Fehler.
+Auch nach der Ergänzung einer bereits freigegebenen Stoßaufgabe in vier
+hessischen Physiksichten besteht der frische vollständige Qualitätsnachlauf.
+In zwölf Hessen-Fällen wächst die Lernbasis jeweils nur um diese Aufgabe.
+
+Der vollständige GitHub-Lauf auf dem bisher gepushten Stand endete mit
+**acht erfolgreichen und sechs fehlgeschlagenen Jobs**. Der ursprünglich
+gemeldete Buchfehler ist darin behoben: fünf Bücher mit 2.457 Zielseiten
+und ihre Publikationsbindungen bestehen. Die weiteren Korrekturen sind
+gebündelt lokal geprüft. Der gemeinsame Paketvertrag 1.3 erhält die
+fehlende Mitlieferung von 28 vorhandenen Aufgabenbildern bei 31 Verwendungen;
+Originaldateien und Bildadressen bleiben erhalten. Der neue Modellexport und
+seine Quellenbindungen bestehen lokal. Die gezielten Java-Tests bestehen mit
+60 Fällen; alle 17 ursprünglichen Backend-Testfehler sind auch im gemeinsamen
+Nachlauf behoben. TypeScript-, Lint- und Paket-Provisionierungstests bestehen.
+Die tatsächliche reproduzierbare ZIP-Datei besteht sämtliche sechs unabhängigen
+Paketkontrollen sowie Installation, Verifikation und Aktivierung. Der native
+Anwendungstest hat eine falsche Freistellung eines offenen Lernkartenziels
+aufgedeckt. Die begrenzte Laufzeitkorrektur erhält Lernkarten und ihre
+Voraussetzungen als explizite Pflichten, getrennt von Prüfungsaufgaben und ohne
+gespeicherte Lernergebnisse zu ändern. Der Completion-Testlauf besteht mit
+136 ausgeführten Tests; eine unverändert optionale Performancemessung ist
+übersprungen. Der unabhängige Review bestätigt die Korrektur. Der frische
+Anwendungstest besteht vollständig mit 15/15 Funktionschecks, Browser und
+Isolation. Sein getrennt versionierter Nachweis für Vertrag 1.3 kontrolliert
+die tatsächlich genutzte lernerspezifische Datenroute; der historische Runner
+bleibt erhalten. Der Abschlussbericht akzeptiert den frisch selbst ausgeführten
+Nachweis. Alle technischen Paketgates bestehen; die gesonderte menschliche
+Freigabe zur Paketweiterverteilung bleibt offen. Neue PR-CI, Merge und
+frische Main-CI stehen noch aus.
+Keine Deploymentreife behauptet.
 
 **Messgrenze:** Bei identischem aktuellem Code zeigt das Main-Curriculum oben
 jeweils einen Rückpfeil mit 43 atomaren Ursachen gegenüber null im Kandidaten;
@@ -88,7 +98,7 @@ Unterrichtsabnahme; Rohbelege bleiben erhalten.
 
 | Umfang | Stand und verbleibende Arbeit |
 | --- | --- |
-| K1 | Elementarer Halbleiterpfad und eigener Transistor-Schaltversuch in #157. Eigener Verstärkerversuch und weitere Nachweise in #159 geprüft; vollständige Länder- und Stufenplatzierung bleibt offen. |
+| K1 | Elementarer Halbleiterpfad und eigener Transistor-Schaltversuch in #157; Verstärkerversuch in #159. Die ursprünglichen Länder-Stufenfälle sind aktuell geprüft. Eine eigene Prüfungsaufgabe zur Materialklassifikation fehlt noch; einzelne Quellenrollen und spätere Jahrgangsplätze bleiben offen. |
 | K2 | Vier Diagrammaufgaben und drei elementare Aufgaben in #157; die jüngste Korrektur trennt Tabellenkompetenz und Zahlenvorbereitung der anspruchsvolleren Aufgabe. Physikrückgriffe und Länderplatzierungen bleiben offen. |
 | K4, K6, K8 | Ursprüngliche Fachbefunde unabhängig als behoben eingeordnet; Abschluss wartet auf Merge und frische Main-CI. Die begrenzte K6-Routenabsicherung schließt die allgemeine Einheitenanerkennung nicht ab. |
 | K3, K5, K9–K11 | Fachrecherche und Teilreparaturen in #159; Länderbreite, einzelne Jahrgangszuordnungen und regionale Rückgriffe bleiben offen. |
@@ -102,6 +112,64 @@ Der [unabhängige Abgleich des Restauftrags](https://github.com/enpasos/skillpil
 trennt die ursprünglichen Einzelbefunde von den weiterhin offenen inneren
 Rückgriffen und realen Landesplänen. K4/K6/K8 sowie F7 sind damit konkrete
 Abschlusskandidaten, noch keine integrierten Abschlüsse.
+
+## 16. November 2026, 04:51 MEZ — Kanonische Lernlandkarten und CI-Nachprüfung
+
+**Stand: [PR #159](https://github.com/enpasos/skillpilot/pull/159) bleibt offen.
+Der ursprüngliche Buchfehler ist remote behoben. Der Nachtrag für die sechs
+weiteren fehlgeschlagenen Jobs ist lokal geprüft und zur PR-CI bereit.
+Paketbau, Paketvalidierung, Installation sowie der frische Anwendungstest
+mit 15/15 Funktionschecks, Browser und Isolation bestehen.
+Neue PR-CI, Merge und frische Main-CI stehen aus.**
+
+- **Fortschritt:** K 0/13, F 0/7 abgeschlossen, 0 reale Landespläne aktiviert.
+  Kanonisch oben: 0 Rückpfeile und 0 freistehende eigene Fachziele, auch in den
+  zwölf getrennten Fachkartenfällen. Regional bleiben 39/60 Fälle mit obersten
+  Rückgriffen und 35/60 mit Außenatomen offen. Die inneren kanonischen Pfeile
+  bleiben mit 11/12/12 gegenüber 8/9/9 auf main eine ausdrückliche Restaufgabe.
+- **Ergebnis:** Skalar- und Vektorprodukt liegen gültig in Sek II; frühe
+  Messgrundlagen und notwendige Fremdfachvorbereitung bleiben erreichbar.
+  Gegenüber main enthält das Paket 57 neue Physik- und 44 Mathematikaufgaben.
+  Aufgabeninhalt, Rubriken, Quellenrollen und Platzierungen wurden getrennt
+  geprüft. Die Jahrgangs-/Phasenstruktur ist im gemeinsamen Planvertrag
+  vorbereitet; damit ist noch kein realer Landesplan aktiviert.
+- **Entscheidungen im CI-Nachtrag:** Drei echte Rechenvoraussetzungen ergänzen
+  ausschließlich die Spektrumsaufgabe. 58 fehlende Astronomie-Aufgabenplätze
+  werden ergänzt; eine vorhandene Stoßaufgabe kommt in vier HE-Sichten hinzu.
+  In allen zwölf HE-Kontexten wächst die atomare Lernbasis nur um diese Aufgabe.
+  Mathematik erhält 16 ausdrückliche Quellenbindungen für materialisierte
+  Aufgabengruppen; der Generator reproduziert 18 Sichten. Die SH-Quelle zu
+  einfachen Ungleichungen ist korrigiert, ohne eine offizielle Jahrgangsstufe
+  zu erfinden. Vertrag 1.3 transportiert 28 vorhandene Aufgabenbilder bei
+  31 Aufgaben-Bild-Zuordnungen; Bilddateien und Aufgaben bleiben unverändert.
+  Die beiden historischen JSON-Autorenquellen erhalten genau begrenzte
+  Herkunftsnachweise im Paket; eigene Aufgaben bleiben als Inhalt klassifiziert.
+  Die Abschlussautomatik muss offene Lernkarten bis zum bestätigten Abruf
+  erforderlich halten; sie werden dadurch nicht zu Prüfungsaufgaben umdeklariert.
+  Der getrennt versionierte Browsernachweis bindet die genaue lernerspezifische
+  Datenroute; historische Runner und sämtliche Schutzprüfungen bleiben erhalten.
+  Die Deployment-Abfrage bei unverändertem GitHub-Stand ist ebenfalls enthalten; Standard ist Abbruch, erneutes Ausrollen
+  bleibt ausdrücklich wählbar.
+- **Drei Kontrollstellen:** [Tatsächliche Kartenwirkung samt Messgrenzen](https://github.com/enpasos/skillpilot/blob/fix/stage-plan-next-delivery-20261115/contracts/stage-plan-review-evidence/2026-11-16/final-view-effects-native-v1/README.md),
+  [Quellenentscheidung und reproduzierbare Mathematiksichten](https://github.com/enpasos/skillpilot/blob/fix/stage-plan-next-delivery-20261115/contracts/stage-plan-review-evidence/2026-11-16/math-duration-generator-ci-repair-v1/README.md),
+  [CI-Reparaturen, Paketvertrag und Laufzeitnachweise](https://github.com/enpasos/skillpilot/blob/fix/stage-plan-next-delivery-20261115/contracts/stage-plan-review-evidence/2026-11-16/ci-followup-fixes-v1/README.md).
+- **Nachweise:** Lokal bestehen 354 Ansichtskontrollen, alle 21 Katalog- und
+  zwölf Routen-Mindeststände (Mathematik/Physik M7), Schema- und JSON-Kontrollen
+  über 120.706 Dateien,
+  TypeScript und Lint. [Alle 17 ursprünglichen Backend-Testfehler](https://github.com/enpasos/skillpilot/blob/fix/stage-plan-next-delivery-20261115/contracts/stage-plan-review-evidence/2026-11-16/backend-ci-test-repair-v1/README.md)
+  bestehen im gemeinsamen Nachlauf. Hinzu kommen 60 Java-Pakettests sowie
+  unabhängige Modell-, Quellen- und Sicherheitsreviews. Die
+  [Lernkartenkorrektur](https://github.com/enpasos/skillpilot/blob/fix/stage-plan-next-delivery-20261115/contracts/stage-plan-review-evidence/2026-11-16/memory-explicit-completion-v1/README.md)
+  hat 136 bestandene Completion-Tests und 13 unabhängige Gegenprüfungen.
+  Der [tatsächliche Paketnachweis](https://github.com/enpasos/skillpilot/blob/fix/stage-plan-next-delivery-20261115/contracts/stage-plan-review-evidence/2026-11-16/package-assessment-materials-pipeline-v1/README.md)
+  bindet die reproduzierbare ZIP-Datei und den frischen vollständigen Anwendungstest;
+  frühere Fehlversuche bleiben getrennt erhalten. Der letzte Remote-Lauf
+  hat acht erfolgreiche und sechs fehlgeschlagene Jobs; darin bestehen bereits
+  alle fünf Bücher mit 2.457 Zielseiten. Automatisierte Checks und Agentenreviews
+  belegen keine Unterrichtswirkung und ersetzen keine frische Main-CI.
+- **Nächster Schritt:** Den geprüften Nachtrag gemeinsam pushen,
+  vollständige PR-CI abwarten, integrieren und frische
+  Main-CI nachweisen. Danach folgen die offenen Fachpakete und realen Pläne.
 
 ## 15. November 2026, 22:51 MEZ — Zielnorm und Bestandsaufnahme abgeglichen
 
@@ -133,70 +201,6 @@ bestanden. Keine neue Laufzeitfunktion oder Integration behauptet.**
 - **Nächster Schritt:** Die präzisierte Norm mit dem geprüften Fachpaket
   integrieren. Umsetzungsdefizite bleiben bis zu
   ihrem eigenen Nachweis sichtbar; die Norm wird nicht auf den Bestand verkürzt.
-
-## 16. November 2026, 00:38 MEZ — Kanonische Lernkarten bereinigt, CI-Buchfehler lokal behoben
-
-**Stand: [PR #159](https://github.com/enpasos/skillpilot/pull/159) ist bereit zur
-Prüfung. Der Fehler der vollständigen CI im Lernzielbuch-Export ist lokal
-behoben. Der Neubau und die Validierung aller fünf Bücher sowie die aktualisierte
-Physik-Inputsuite bestehen. Der vollständige lokale Curriculum-Qualitätslauf
-bleibt bei unveränderten Fachdaten gültig. Neue PR-CI, Integration und frische
-Main-CI stehen aus.**
-
-- **Fortschritt:** K 0/13, F 0/7 abgeschlossen, 0 reale Landespläne aktiviert.
-  Die kanonische oberste Karte hat in GK, LK und GK+LK null Rückpfeile und
-  null Außenatome. Die 72-Kontext-Messung trennt 60 zulässige von zwölf
-  widersprüchlichen Dauerkontexten. Regionale und innere Befunde bleiben
-  offen; insbesondere steigen die inneren kanonischen Pfeile gegenüber main
-  wie oben beziffert. Der letzte Prüfcodefix verändert die Lernkarten nicht.
-  Zwölf ergänzende Fälle bestätigen die saubere oberste Ebene auch für die
-  getrennten Fachkarten und echte Einzelfach-Auswahlen.
-- **Ergebnis und Entscheidungen:** Skalar- und Vektorprodukt erhalten gültige
-  Plätze in Sek II. Frühe Messgrundlagen und Fremdfachvorbereitung bleiben
-  erreichbar. Die Mathematikgruppe „Anwendungen der Integralrechnung“ behält
-  alle zehn Kinder einschließlich der drei bisher verdeckten Q4-Ziele.
-  Sieben notwendige Chemiegrundlagen stehen in Bayern innerhalb der Physikeinheit,
-  ohne die Lernbasis zu vergrößern. Die bayerischen Ziele zu Versuch und Video
-  bleiben auf die belegten Quellen begrenzt. Die Quellenprüfung zählt die
-  tatsächlich ausgewählten atomaren Ziele; leere Ansichten erhalten keine
-  Ersatzmenge, und notwendige Vorbereitung wird nicht zum curricularen Ziel erklärt.
-  Der CI-Nachtrag bindet Chemie als externe Buchquelle ein, löst notwendige
-  Fremdfachziele auf und hält sie aus den Physikbuchseiten heraus. Der Buchbestand
-  erhält die drei neuen zulässigen Ziele: 484 Seiten, 115 bestehende Kapitel.
-  Die reine Vorbereitungsbrücke bleibt außerhalb dieser Buchausgabe. Die
-  neuen bayerischen Erwerbsziele behalten ausschließlich ihre belegte
-  Länderzuordnung; breite Quellansichten erweitern sie nicht auf andere Länder.
-  [Fehler, Korrektur und unabhängige Gegenproben](https://github.com/enpasos/skillpilot/blob/fix/stage-plan-next-delivery-20261115/contracts/stage-plan-review-evidence/2026-11-16/goal-book-ci-repair-v1/README.md)
-  sind getrennt vom Curriculum-Abschluss nachprüfbar.
-- **Aufgaben und Inhaltsreviews:** Gegenüber main enthält #159 57 neue Physik-
-  und 44 neue Mathematikaufgaben. Ursprüngliche Aufgabenverträge bleiben bei
-  Rücknahme unbelegter Vollabdeckung erhalten. Die fünf Inhaltsbereiche bestehen
-  nativ für alle 485 regulären Physikziele. Die zehn präzisierten Kontexte und
-  die zwei zuletzt veränderten Beschreibungskontexte sind jeweils zweimal
-  aktuell unabhängig bewertet; die Vorbefassung der Reviewer ist offengelegt.
-  Eine präzisierte Stromstärkerubrik und die neue Spannungsaufgabe prüfen jeweils
-  zwei eigenständige Fälle; eine fehlende Kernleistung verhindert das Bestehen.
-  Die unabhängige Platzierungsprüfung umfasst alle 69 Ansichten und 68 Plätze.
-  Inhaltsreviews und automatisierte Checks belegen keine Unterrichtswirkung.
-- **Kontrollstellen:** [Reale Kartenwirkung und offene innere Befunde](https://github.com/enpasos/skillpilot/blob/fix/stage-plan-next-delivery-20261115/contracts/stage-plan-review-evidence/2026-11-15/real-view-measurements-v1/final-measurement-summary.md),
-  [Aufgaben, Inhaltsreviews und Quellenentscheidung](https://github.com/enpasos/skillpilot/tree/fix/stage-plan-next-delivery-20261115/curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/physics-q1-acquisition-current-v1),
-  [Bewertung der Architekturkritik](graph-definition-documentation-review-2026-11-15.md).
-- **Automatisierte Nachweise:** Projektions- und Lernkartentests, verschachtelte
-  Planmaterialisierung, TypeScript und Lint bestehen. Die gezielte Quellenprüfung
-  besteht für alle zehn ausgebauten Fächer; die elf M0-Fächer behalten ihren
-  bisherigen Stand. Alle 26 konfigurierten Regeln der vier Mathematik-/Physikrouten
-  bestehen. Native Gegenproben weisen unbelegte Ziele, leere Ansichten sowie
-  fehlende Aufgaben und Vorbereitung weiterhin zurück. Die unabhängige Prüfung
-  des letzten Fixes umfasst auch den tatsächlich ausgelieferten bayerischen
-  Mathematikfall und ein gültiges Atom hinter einem unpassenden Elternknoten.
-  Der [vollständige lokale Abschluss](https://github.com/enpasos/skillpilot/blob/fix/stage-plan-next-delivery-20261115/curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/physics-q1-acquisition-current-v1/current841-runtime-scope-official-full21-and-protected-floors.actual.json)
-  besteht seit 23:30 MEZ mit unveränderten Mindestständen für 21 Kataloge und
-  zwölf Routen, darunter Mathematik und Physik M7; Eingangsdrift: null.
-  Das bedeutet keine Hochstufung der elf M0-Fächer oder bestandene Einzelregel
-  für deren weiterhin ausgewiesene Befunde.
-- **Nächster Schritt:** Vollständige PR-CI auf dem finalen Stand ausführen,
-  mergen und frische Main-CI abwarten.
-  Weitere Fachpakete und reale Planaktivierungen folgen auf dieser Basis.
 
 ## 15. November 2026, 15:38 MEZ — Abnahme an den tatsächlichen Lernkarten konkretisiert
 

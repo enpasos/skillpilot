@@ -1,0 +1,78 @@
+{
+  "verifiedAt": "2026-11-16T03:51:18.346882+00:00",
+  "localTechnicalPipeline": "passed-in-explicit-sections",
+  "finalReadinessProcessExit": 0,
+  "zipSha256": "6284da913445717841c861ab0fce5d6c9217f9b277789037db7f7accef1cb9eb",
+  "runner": {
+    "id": "skillpilot-package-consumer-smoke",
+    "scriptBytes": 100546,
+    "scriptSha256": "3b3269ff3469c1e92beddcdbe5ce554d240071da9f0b878d3b757e42723272a2",
+    "version": "1.1.0"
+  },
+  "consumerStatus": "passed",
+  "functionalSummary": {
+    "failed": 0,
+    "notRun": 0,
+    "passed": 15,
+    "required": 15
+  },
+  "browserStatus": "passed",
+  "assembly": {
+    "assemblyBytes": 496453245,
+    "assemblySha256": "0716049097846434c9cc1e44c5131f0f3680f650ff492dfe404ff9f18d9d4f0d",
+    "backendBytes": 90869881,
+    "backendSha256": "b4d3430264cb417e42f9ac0457c66402f1d157b0e3f76d6da93fc5812e6e8d37",
+    "configurationBytes": 1638,
+    "configurationSha256": "8165e6166473ac75f6f8d893174c98d96cf3e55ae0bfcded36d763c9c2c76525",
+    "consumer": "SkillPilot",
+    "consumerApiVersion": "0.1.0",
+    "frontendBytes": 5964065,
+    "frontendSha256": "ce856d7c9eb815b1165011940c62351913012d0a997f3c44e8eb79d3423097b6"
+  },
+  "evidenceBundle": {
+    "bytes": 37161401,
+    "sha256": "cdd3b71921b6a5ad6081b8060337b04290772903ad6c2a5bedc00afd675bcda5"
+  },
+  "readinessConsumerEvidence": {
+    "assemblyBytes": 496453245,
+    "assemblySha256": "0716049097846434c9cc1e44c5131f0f3680f650ff492dfe404ff9f18d9d4f0d",
+    "bytes": 7857,
+    "evidenceBundleBytes": 37161401,
+    "evidenceBundleSha256": "cdd3b71921b6a5ad6081b8060337b04290772903ad6c2a5bedc00afd675bcda5",
+    "freshReport": true,
+    "provenance": "self-executed",
+    "reportName": "package-consumer-smoke-report.json",
+    "runnerExitCode": 0,
+    "runnerScriptBytes": 100546,
+    "runnerScriptSha256": "3b3269ff3469c1e92beddcdbe5ce554d240071da9f0b878d3b757e42723272a2",
+    "runnerTimedOut": false,
+    "schemaSha256": "c689c949bc77e56e0f9a092d3339c9a25eb24fcea37d9238889ac6b74fbaf3ed",
+    "sha256": "eb1b9fe8eab210fe2603e04bc22c5337c34fd016de9b09fd5bfe9d2c56be1b45",
+    "status": "accepted"
+  },
+  "readinessDecision": {
+    "blockingCheckIds": [
+      "publication.redistribution-cleared"
+    ],
+    "primaryReasonCode": "REDISTRIBUTION_REVIEW_REQUIRED",
+    "standaloneProfileReady": false,
+    "status": "not-ready-incomplete"
+  },
+  "completeForPolicy": true,
+  "checkResults": {
+    "input.parse-and-container-safe": "pass",
+    "identity.target-contract-declared": "pass",
+    "contract.manifest-schema": "pass",
+    "contract.target-values": "pass",
+    "contract.trusted-bindings": "pass",
+    "contract.profile-roles": "pass",
+    "contract.inventory-bytes": "pass",
+    "catalog.runtime-catalog": "pass",
+    "catalog.offline-schema-catalog": "pass",
+    "standalone.hard-reference-closure": "pass",
+    "standalone.content-digest": "pass",
+    "publication.redistribution-cleared": "fail",
+    "consumer.hermetic-package-only": "pass"
+  },
+  "reviewStatus": "Only human publication/rights clearance remains blocked. No deployment, publication, merge or main-CI success is claimed."
+}

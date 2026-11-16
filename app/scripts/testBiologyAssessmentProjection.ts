@@ -5,7 +5,9 @@ import { tmpdir } from 'node:os'
 import { resolve } from 'node:path'
 import type { SkillLandscape } from '../src/landscapeTypes'
 import { buildApplicabilityCompilation } from './applicabilityCompiler'
+import { loadCurrentCurriculumCatalog } from './currentCurriculumCatalog'
 import { collectRenderedAtomicGoalIdsFromCompositionView, evaluateRouteProfile, createRouteProfiles } from './generateCurriculumQualityStatus'
+import { liveVerificationInputs } from './lib/verificationInputSnapshot'
 
 const routeProfiles = createRouteProfiles()
 const root = resolve(import.meta.dirname, '../..')
@@ -52,25 +54,65 @@ try {
 }
 
 const compilation = buildApplicabilityCompilation()
-const measured = evaluateRouteProfile(landscape, {
+const compiledProfile = {
   ...profile, compositionViewStage: 'SekII', compositionViewApplicabilityMode: 'compiled-jurisdiction',
-}, compilation).rules.find(rule => rule.id === 'CQR-104')!
+} as const
+const measured = evaluateRouteProfile(landscape, compiledProfile, compilation).rules.find(rule => rule.id === 'CQR-104')!
 assert.equal(measured.status, 'fail', 'Restoring a collection must not hide the remaining applicability and state-view gaps.')
 assert.equal(measured.metrics?.projectionScopesWithoutExpectedTerminalAutonomyGoals, 5,
   'Five jurisdictions still lack a genuinely applicable endpoint; visibility is not applicability evidence.')
 assert(!measured.details?.some(detail => detail.includes('de-de-gym-biology-gk.view.json')
   && detail.includes('e8caebd4-57bc-5c2f-881d-0b1693777c64')),
   'The GK view must not be required to expose the LK-only ENG/ECG assessment.')
-assert(measured.details?.some(detail => detail.includes('de-st-gym-sekii-biology-gk.view.json')
-  && detail.includes('1d0c84df-8040-5cab-8a7c-359366937e44')),
+// Global rule details are capped at 20; unrelated stage-structure findings may
+// consume that budget. Check the actual state view independently so the missing
+// endpoint assertion cannot depend on the order or number of other findings.
+const stateViewPath = resolve(root, 'curricula/DE/Gymnasium/composition-views/biologie/de-st-gym-sekii-biology-gk.view.json')
+const stateEndpointIds = [
+  '1d0c84df-8040-5cab-8a7c-359366937e44',
+  '7c7f147c-2b64-5b0c-90c1-ea9a9bf4b03a',
+]
+for (const id of stateEndpointIds) {
+  assert(expectedGk.includes(id), `${id} must be an independently authored GK assessment.`)
+  assert(byId.get(id)?.applicability?.jurisdiction?.includes('DE-ST'),
+    `${id} must be explicitly applicable to the learner's state.`)
+  assert(compilation.reports.find(report => report.landscapeId === landscape.landscapeId)
+    ?.goals.find(goal => goal.goalId === id)?.compiledApplicability.jurisdiction?.includes('DE-ST'),
+    `${id} must be independently applicable in Sachsen-Anhalt.`)
+}
+const stateMeasured = evaluateRouteProfile(landscape, compiledProfile, compilation, undefined, [stateViewPath])
+  .rules.find(rule => rule.id === 'CQR-104')!
+assert.equal(stateMeasured.status, 'fail')
+assert.equal(stateMeasured.metrics?.projectionScopesMissingTerminalAutonomyGoals, 1)
+assert(stateEndpointIds.every(id => stateMeasured.details?.some(detail =>
+  detail.startsWith('Missing terminal autonomy goal(s):')
+  && detail.includes('de-st-gym-sekii-biology-gk.view.json') && detail.includes(id))),
   'A missing independently applicable state-view endpoint must still fail.')
 
-const status = JSON.parse(readFileSync(resolve(root, 'docs/qa-ci/status/curriculum-quality-status.json'), 'utf8'))
-for (const configured of routeProfiles.filter(profile => profile.compositionViewStage)) {
-  const path = status.curricula.find((entry: { landscapeId: string }) => entry.landscapeId === configured.landscapeId)?.path
-  assert(path, `Missing source for ${configured.profileId}`)
-  const source = JSON.parse(readFileSync(resolve(root, path), 'utf8')) as SkillLandscape
-  const rule = evaluateRouteProfile(source, configured, compilation).rules.find(rule => rule.id === 'CQR-104')!
+const stateFixture = mkdtempSync(resolve(tmpdir(), 'biology-state-endpoint-'))
+try {
+  const completeStateView = JSON.parse(readFileSync(stateViewPath, 'utf8'))
+  completeStateView.rootNodes[0].children.push(...stateEndpointIds.map(goalId => ({ kind: 'goalEntry', goalId })))
+  const completeStatePath = resolve(stateFixture, 'complete-state.json')
+  writeFileSync(completeStatePath, JSON.stringify(completeStateView))
+  const completeStateMeasured = evaluateRouteProfile(landscape, compiledProfile, compilation, undefined, [completeStatePath])
+    .rules.find(rule => rule.id === 'CQR-104')!
+  assert.equal(completeStateMeasured.status, 'pass',
+    `Exposing the independently applicable endpoints must satisfy the state-view gate: ${JSON.stringify(completeStateMeasured)}`)
+  assert.equal(completeStateMeasured.metrics?.projectionScopesMissingTerminalAutonomyGoals, 0)
+} finally {
+  rmSync(stateFixture, { recursive: true, force: true })
+}
+
+// Use the producer's complete current catalog: Physics routes also depend on
+// Mathematics preparation and its motivation anchor across subject boundaries.
+const currentCatalog = loadCurrentCurriculumCatalog(liveVerificationInputs).entries
+  .map(entry => entry.landscape as SkillLandscape)
+const configuredProfiles = routeProfiles.filter(profile => profile.compositionViewStage)
+for (const configured of configuredProfiles) {
+  const source = currentCatalog.find(entry => entry.landscapeId === configured.landscapeId)
+  assert(source, `Missing source for ${configured.profileId}`)
+  const rule = evaluateRouteProfile(source, configured, compilation, currentCatalog).rules.find(rule => rule.id === 'CQR-104')!
   assert.equal(rule.status, 'pass', `${configured.profileId}: ${JSON.stringify(rule)}`)
 }
-console.log('Biology assessment projection: 21 GK assessments restored, five LK-only assessments excluded; unresolved endpoint gaps still fail; all eight pinned visibility scopes pass.')
+console.log(`Biology assessment projection: 21 GK assessments restored, five LK-only assessments excluded; unresolved endpoint gaps still fail; all ${configuredProfiles.length} pinned visibility scopes pass.`)

@@ -1,0 +1,32 @@
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.skillpilot.backend.domain.Learner;
+import com.skillpilot.backend.repository.LearnerRepository;
+import com.skillpilot.backend.landscape.*;
+import com.skillpilot.backend.service.*;
+import java.lang.reflect.Proxy;
+import java.nio.file.*;
+import java.util.*;
+import java.util.zip.GZIPOutputStream;
+import java.security.MessageDigest;
+import java.util.HexFormat;
+public class ExportApiInputs {
+ @SuppressWarnings("unchecked") public static void main(String[] args)throws Exception {
+  var mapper=new ObjectMapper().findAndRegisterModules();var properties=new LandscapeProperties();properties.setDirectory(Path.of(args[0],"curricula").toString());
+  var mappings=new GoalMappingService(properties,mapper);var landscapes=new LandscapeService(properties,mapper,mappings);
+  var children=new LinkedHashMap<String,List<String>>();try(var files=Files.list(Path.of(args[0],"curricula/DE/Gymnasium/canonical"))){for(var p:files.filter(x->x.toString().endsWith(".json")).toList())for(var g:mapper.readValue(p.toFile(),SkillLandscape.class).getGoals())children.put(g.getId(),g.getContains()==null?List.of():g.getContains());}
+  var views=new CompositionViewService(properties,mapper,()->children);String root="a0e13c56-c25f-4742-9272-3a1a603ee52e",math="68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",physics="7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
+  var learner=new Learner();learner.setSkillpilotId("read-only-synthetic-f6-probe");learner.setSelectedCurriculum(root);
+  LearnerRepository repo=(LearnerRepository)Proxy.newProxyInstance(LearnerRepository.class.getClassLoader(),new Class<?>[]{LearnerRepository.class},(o,m,a)->{if(m.getName().equals("findById"))return Optional.of(learner);throw new IllegalStateException("Unexpected repository access "+m.getName());});
+  var service=new LearnerService(repo,null,null,null,landscapes,mappings,null,mapper,e->{});var field=LearnerService.class.getDeclaredField("compositionViewService");field.setAccessible(true);field.set(service,views);
+  var input=mapper.readValue(Path.of(args[1]).toFile(),new TypeReference<Map<String,Object>>(){});var contexts=(List<Map<String,Object>>)input.get("contexts");List<Map<String,Object>> results=new ArrayList<>();Map<String,Object> sources=new TreeMap<>(),viewBank=new TreeMap<>();
+  for(var context:contexts){var answer=new LinkedHashMap<>(context);var scope=(Map<String,String>)context.get("scope");var cfg=new LinkedHashMap<String,Object>();cfg.put("selected",true);cfg.put("filterId",scope.getOrDefault("jurisdiction","ALL"));cfg.put("stage",scope.getOrDefault("stage","CrossStage"));if(scope.containsKey("durationModel"))cfg.put("durationModel",scope.get("durationModel"));String profile=scope.getOrDefault("courseProfile","GK");
+   learner.setPersonalCurriculum(mapper.writeValueAsString(Map.of(root,cfg,math,Map.of("selected",true,"filterId",profile),physics,Map.of("selected",true,"filterId",profile))));
+   try{var source=service.getLearnerLandscapeClosure(learner.getSkillpilotId(),root,"de");byte[] b=mapper.writeValueAsBytes(source);String key=HexFormat.of().formatHex(MessageDigest.getInstance("SHA-256").digest(b));sources.putIfAbsent(key,source);answer.put("sourceKey",key);answer.put("status","exported-native-learner-api");
+    for(var subject:Map.of("math",math,"physics",physics).entrySet()){var view=views.findLearnerScopeView(subject.getValue(),scope);if(view==null)throw new IllegalStateException("No matched view");byte[] v=mapper.writeValueAsBytes(view);String vk=HexFormat.of().formatHex(MessageDigest.getInstance("SHA-256").digest(v));viewBank.putIfAbsent(vk,view);answer.put(subject.getKey()+"ViewKey",vk);}
+   }catch(Exception e){answer.put("status","unavailable");answer.put("error",e.getClass().getName()+": "+e.getMessage());}
+   results.add(answer);System.out.println("API "+context.get("id")+" "+answer.get("status"));
+  }
+  try(var out=new GZIPOutputStream(Files.newOutputStream(Path.of(args[2])))){mapper.writeValue(out,Map.of("contexts",results,"sources",sources,"views",viewBank,"reader","actual LearnerService.getLearnerLandscapeClosure; repository proxy permits findById only; no learner persistence"));}
+ }
+}

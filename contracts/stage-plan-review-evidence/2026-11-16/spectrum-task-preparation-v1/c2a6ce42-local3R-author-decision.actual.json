@@ -1,0 +1,75 @@
+{
+  "status": "checked-author-dependency-decision-not-native-QA-acceptance",
+  "author": "k2_current_downstream_demand_audit agent",
+  "baseCommit": "2fc979d30e53cf654c72f4d863a7d635bd515133",
+  "goalId": "c2a6ce42-ba20-55c4-b958-c9edb4b98c4c",
+  "decision": "Add exactly three task-local preparation edges; preserve the complete task, solution, scoring, supplied images, exam coverage and ordinary f06 goal/profile.",
+  "proposedRequires": [
+    "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+    "ee48e811-4c9c-5080-9836-8403fc9f0810",
+    "f06c581a-7157-584e-a692-99bcd613cff9",
+    "f2e42af5-67a6-477e-82ea-e65b09cc6cb3"
+  ],
+  "candidatePath": "tmp/k2-current-downstream-demand-audit-20261116/c2a6ce42-local3R-proposed-goal.json",
+  "candidateRawFileSha256": "sha256:0e0f9a75a97d0806c936142ebe99d61d9d4ab031c5a399eb3a609333f23a3b22",
+  "candidateWholeGoalStableJsonSha256": "sha256:01142474c67f4a6e87c112e42701ed5dc9a8da09d9f80dc0bb41cb959479f9a4",
+  "stableJsonContract": "app/scripts/goalEvidenceProfileModel.ts stableGoalEvidenceJson (object keys localeCompare; array order retained)",
+  "currentWholeGoalStableJsonSha256": "sha256:ea818fd8b3b47cc05f89eeb47f65f02aa52c08060606a49769f3537d4af22d29",
+  "unchangedOutsideRequires": true,
+  "unchangedOutsideRequiresStableJsonSha256": "sha256:5f5664d607c7698f6fb5ecb01cd5a584f35163fbd9d01db505ff1f8752c72f9f",
+  "unchangedExamDataStableJsonSha256": "sha256:feba76dfca5ddbdf751805158e941f725e602a4e17c86abdd91346f67a0eb420",
+  "coveredGoalIdsUnchanged": [
+    "f06c581a-7157-584e-a692-99bcd613cff9"
+  ],
+  "ordinaryTargetGoalId": "f06c581a-7157-584e-a692-99bcd613cff9",
+  "ordinaryTargetWholeGoalStableJsonSha256": "sha256:df7a35dcc2ff14678d22bbc6ed4b1bc2608d5f98c29c836d2e93e94363016bb1",
+  "ordinaryTargetProfileStableJsonSha256": "sha256:65880e1557c4e579f17ea3333454901d3ad4c0d7c626eebd4451d44088736291",
+  "nativeGoalEvidenceSemanticFingerprint": "sha256:6ff4524f1e38b5e2b40dc4e9d5bb559a6dab25d2df4aeb91c406da10843521ba",
+  "nativeGoalEvidenceReviewInputFingerprint": "sha256:4622cb260bb07cfad3bb755d905a0cf1712f63de0fbdc4823f32ee6ce1393d42",
+  "reviewedDemands": [
+    {
+      "requires": "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+      "actualDemand": "A constructs X=F+H and Y=F-H from rounded positive and negative decimal table entries, e.g. 0.71+0.50 and -0.71-0.50.",
+      "readiness": "General signed rational addition/subtraction is neither taught as a new arithmetic skill by the qualitative f06 P nor in current atomic prerequisite reach."
+    },
+    {
+      "requires": "ee48e811-4c9c-5080-9836-8403fc9f0810",
+      "actualDemand": "B independently finds T=1/400 s=0.0025 s.",
+      "readiness": "The period/frequency physical relationship belongs to f06 acquisition; general non-integer division is a preparation skill, absent from the current reach."
+    },
+    {
+      "requires": "f2e42af5-67a6-477e-82ea-e65b09cc6cb3",
+      "actualDemand": "B expresses the computed period in ms: 0.0025 s=2.5 ms; A also coordinates explicitly labelled ms/Hz axes.",
+      "readiness": "General same-quantity unit conversion is absent from current reach; it is distinct from reading a supplied ms label."
+    }
+  ],
+  "reasonForTaskLocalPlacement": "Current f06 P asks qualitative component construction and periodicity; the new released assessment additionally fixes numerical decimal synthesis and reciprocal/unit performances. Put their general Mathematics preparation at the assessment consumer without expanding every f06 learner target.",
+  "assessmentClaim": "Mathematics prerequisites acquire no assessment coverage: examData.coveredGoalIds remains [f06] and no result transfer is asserted.",
+  "imagesActuallyInspected": [
+    "spectrum-components.png",
+    "spectrum-filter-input.png"
+  ],
+  "assetPins": [
+    {
+      "path": "app/public/assets/assessment-materials/physik/f06c581a-7157-584e-a692-99bcd613cff9/spectrum-components.png",
+      "sha256": "sha256:08c29976681d612415975828027355b12111c600e80f7d6eceab7cbd6568b97c"
+    },
+    {
+      "path": "app/public/assets/assessment-materials/physik/f06c581a-7157-584e-a692-99bcd613cff9/spectrum-components.svg",
+      "sha256": "sha256:e5ff34c72b55b7862490fdef18257247a8d4e0f104089c04924304dd0595e427"
+    },
+    {
+      "path": "app/public/assets/assessment-materials/physik/f06c581a-7157-584e-a692-99bcd613cff9/spectrum-filter-input.png",
+      "sha256": "sha256:593802d1cb61b91d6c14e74bb2030e685f80f247ffca9d5900df01bf26e3d487"
+    },
+    {
+      "path": "app/public/assets/assessment-materials/physik/f06c581a-7157-584e-a692-99bcd613cff9/spectrum-filter-input.svg",
+      "sha256": "sha256:a774e8add7b79497df4d35ae4ed3d95560e54c25a6c1c05fad6c67e5c8944cd6"
+    }
+  ],
+  "nativeProbe": "tmp/k2-current-downstream-demand-audit-20261116/local-preparation-probe.actual.json",
+  "limitations": [
+    "This is an author dependency review with an exact proposed object, not final native evidence, independent dual D/P review or fresh M7 acceptance.",
+    "The only hypothetical change is requires; no tracked file has been edited."
+  ]
+}

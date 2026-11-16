@@ -1,0 +1,70 @@
+{
+  "at": "2026-11-16T02:33:42.134439+00:00",
+  "decision": "ACCEPT_BOUNDED_TWO_JSON_SOURCE_ROLE_AND_CLASSIFICATION_DELTA",
+  "reviewerTask": "/root/physics_release_finish",
+  "parentEpoch": "contracts/stage-plan-review-evidence/2026-11-16/package-assessment-materials-producer-v1/epoch1/review-epoch1.actual.json",
+  "scope": "Exact source-role/redistribution delta only. No full model, ZIP, consumer or readiness campaign repeated or claimed.",
+  "actualCompleteJsonAssessmentSourceInventory": [
+    {
+      "artifactPath": "data/assessment-sources/stage-plan-direct-evidence-20261115-v7/reviewed-assessments.json",
+      "bytes": 431267,
+      "sha256": "6dee2b982037800fd21344087d936de27699458b5da38fdcd0aa7b52ab8f47c2",
+      "sourcePath": "curricula/DE/Gymnasium/assessments/mathematik/stage-plan-direct-evidence-20261115-v7/reviewed-assessments.json"
+    },
+    {
+      "artifactPath": "data/assessment-sources/task64-digital-correction-20261115-v1/reviewed-assessment.json",
+      "bytes": 27311,
+      "sha256": "14b26923a759aaea118bedb2c3264706faaff3fc92575b955a80f5a8272eb13b",
+      "sourcePath": "curricula/DE/Gymnasium/assessments/mathematik/task64-digital-correction-20261115-v1/reviewed-assessment.json"
+    }
+  ],
+  "sourceGate": "Both exact paths must already be in buildInputs.assessmentSources and match current bytes/SHA before role selection. Only materialProfile1.3 selects existing provenance-report for these application/json files. Every other JSON assessment path still reaches the unchanged text-only documentation rejection.",
+  "classification": "New1.3-only exact-file overrides classify both sources as skillpilot-data/skillpilot-authored. Non-directory overrides use path equality, directory overrides retain prefix matching. Similar filenames, child paths and foreign directories are not covered.",
+  "rights": "No rights decision changed: all864 asset decisions and all four class decisions remain exactly the original epoch1 values. Data remains review-required with null licenseExpression; technical provenance-report stays generated-metadata, not skillpilot-data. PublicationReady remains false.",
+  "currentLedgerDelta": "Exactly two file override rows added to the previous single existing directory override; every other ledger JSON value is identical to the frozen epoch1 ledger.",
+  "checks": {
+    "actualNativeTsCases": 22,
+    "nativeTsExitCode": 0,
+    "method": "Exact TypeScript AST private helpers and assessment-source branch with real current model source bytes, real target profile and actual ledger; native path/media/rights logic, no rewritten substitute implementation.",
+    "nativePythonLedgerPolicyCases": 15,
+    "pythonExitCode": 0,
+    "historicalContractAndLedgerFilesUnchanged": 127,
+    "modelBuildProfilesCompilerValidatorUnchanged": true,
+    "roleDefinitionMimeListsIdenticalToHistorical12": true,
+    "sourcePinDriftAtEnd": []
+  },
+  "transparentIntermediateHistory": "The earlier one-file role proof remains retained as a superseded intermediate after the complete build-input inventory exposed the second source. An incorrect harness assumption expected software-contracts for technical provenance; its original error log remains, and the corrected test compares the actual unchanged generated-metadata policy. Neither was a source/runtime failure.",
+  "inputPins": [
+    {
+      "path": "app/scripts/buildFullStandaloneCurriculumPackage.ts",
+      "sha256": "e6e24d058bc427caefaab0491425f61d750e873abb783693ad2be62d508880dc"
+    },
+    {
+      "path": "scripts/generate_curriculum_package_redistribution_review.py",
+      "sha256": "c1b546991809b2071098f07d1e6149fa4b70134452dedf138f3ae2d8d1ce9686"
+    },
+    {
+      "path": "scripts/generate_curriculum_package_v13_contracts.py",
+      "sha256": "34b0a83e621ce0471c86520fe55087f7452c5d364633f4889db699e13f5779f5"
+    },
+    {
+      "path": "contracts/curriculum-package/v1.3/package-redistribution-review.schema.json",
+      "sha256": "486e65696ca40e229dc395e88bb21ed30573eccd5039bd598ff6bde58fe6bea3"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/package-redistribution/de-gymnasium-mathematik-v1.3.review.json",
+      "sha256": "0e10da2b7fb1fabaa0bdf5bae398a1c40030ce72eb09ebc4f21ebf7ed5397d14"
+    }
+  ],
+  "modelContentDigest": "sha256:4e371d4e3fa31ccabfc9b32e061ada55d18fc8a8ebf1f087d9a6109469645a04",
+  "profileSHA256": "b4e0f5551a456610fbe3bdc3a43b68012151c4e6b402eb897f499aef7e15b995",
+  "ledgerSHA256": "0e10da2b7fb1fabaa0bdf5bae398a1c40030ce72eb09ebc4f21ebf7ed5397d14",
+  "noSourceOrGitWrites": true,
+  "pythonBytecodeWritesDisabled": true,
+  "pendingSeparateEvidence": [
+    "actual full ZIP/consumer chain run owned by Biology agent",
+    "explicit1.3 readiness-policy review owned by Math agent",
+    "fresh full PR CI and main integration owned by Root"
+  ],
+  "noRightsPublicationPlanOrMasteryApproval": true
+}

@@ -44,6 +44,11 @@ public final class JsonCurriculumPackageLoader {
             "https://skillpilot.com/schemas/curriculum-package/v1.2/learning-unit-coverage-review.schema.json";
     private static final String LEARNING_UNIT_RELEASE_PROFILE = "full-standalone-learning-units-v1";
     private static final String LEARNING_UNIT_CAPABILITY = "learningUnitsV1";
+    private static final String MATERIAL_RUNTIME_VERSION = "1.3";
+    private static final String MATERIAL_RELEASE_PROFILE = "full-standalone-v1.3";
+    private static final String MATERIAL_CAPABILITY = "assessmentMaterialsV1";
+    private static final String MATERIAL_CATALOG_SCHEMA_ID =
+            "https://skillpilot.com/schemas/curriculum-package/v1.3/runtime-catalog.schema.json";
     private static final String LEARNING_UNIT_REVIEW_ROLE = "learning-unit-coverage-review";
     private static final String RELEASE_PROFILE = "full-standalone-v1";
     private static final String PACKAGE_FORMAT_VERSION = "1.0";
@@ -56,7 +61,7 @@ public final class JsonCurriculumPackageLoader {
             "memoryCards",
             "goalVisualizations",
             "embeddedDependencies",
-            "examNodes", COMPLETION_CAPABILITY, LEARNING_UNIT_CAPABILITY);
+            "examNodes", COMPLETION_CAPABILITY, LEARNING_UNIT_CAPABILITY, MATERIAL_CAPABILITY);
 
     private final CurriculumPackageProperties properties;
     private final CurriculumPackageRepository repository;
@@ -172,12 +177,14 @@ public final class JsonCurriculumPackageLoader {
         requireExactText(manifest, "packageFormatVersion", PACKAGE_FORMAT_VERSION, "package manifest");
         String runtimeVersion = requiredText(manifest, "runtimeContractVersion", "package manifest");
         boolean completion = runtimeVersion.equals("1.1");
-        boolean learningUnits = runtimeVersion.equals(LEARNING_UNIT_RUNTIME_VERSION);
+        boolean assessmentMaterials = runtimeVersion.equals(MATERIAL_RUNTIME_VERSION);
+        boolean learningUnits = runtimeVersion.equals(LEARNING_UNIT_RUNTIME_VERSION) || assessmentMaterials;
         if (!completion && !learningUnits && !runtimeVersion.equals(RUNTIME_CONTRACT_VERSION)) {
             throw failure("Unsupported runtime contract version: " + runtimeVersion);
         }
         requireExactText(manifest, "releaseProfile",
                 completion ? COMPLETION_RELEASE_PROFILE
+                        : assessmentMaterials ? MATERIAL_RELEASE_PROFILE
                         : learningUnits ? LEARNING_UNIT_RELEASE_PROFILE : RELEASE_PROFILE,
                 "package manifest");
         requireExactText(manifest, "variant", "json", "package manifest");
@@ -199,6 +206,7 @@ public final class JsonCurriculumPackageLoader {
         JsonNode catalog = readJsonArtifact(installedPackage, catalogFile, verifiedPaths);
         requireExactText(catalog, "$schema",
                 completion ? COMPLETION_CATALOG_SCHEMA_ID
+                        : assessmentMaterials ? MATERIAL_CATALOG_SCHEMA_ID
                         : learningUnits ? LEARNING_UNIT_CATALOG_SCHEMA_ID : RUNTIME_CATALOG_SCHEMA_ID,
                 "runtime catalog");
         requireExactText(catalog, "catalogVersion", runtimeVersion, "runtime catalog");
@@ -220,7 +228,10 @@ public final class JsonCurriculumPackageLoader {
             throw failure("Assessment completion capability requires the exact runtime 1.1 release profile");
         }
         if (learningUnits != capabilities.contains(LEARNING_UNIT_CAPABILITY)) {
-            throw failure("Learning-unit capability requires the exact runtime 1.2 release profile");
+            throw failure("Learning-unit capability requires the exact runtime 1.2 or 1.3 release profile");
+        }
+        if (assessmentMaterials != capabilities.contains(MATERIAL_CAPABILITY)) {
+            throw failure("Assessment-material capability requires the exact runtime 1.3 release profile");
         }
 
         JsonNode indexes = requiredObject(catalog, "artifactIndexes", "runtime catalog");
@@ -414,7 +425,7 @@ public final class JsonCurriculumPackageLoader {
                 .forEach(file -> inventory.add(file.path()));
         if (!learningUnits) {
             if (!inventory.isEmpty() || catalog.has("learningUnitReviews")) {
-                throw failure("Only runtime 1.2 can carry learning-unit coverage reviews");
+                throw failure("Only runtime 1.2 or 1.3 can carry learning-unit coverage reviews");
             }
             return;
         }
@@ -920,6 +931,14 @@ public final class JsonCurriculumPackageLoader {
             JsonNode catalog,
             JsonNode index,
             Map<String, ManifestFile> files) {
+        boolean assessmentMaterials = MATERIAL_RUNTIME_VERSION.equals(
+                requiredText(catalog, "runtimeContractVersion", "runtime catalog"));
+        if (assessmentMaterials) {
+            requireExactText(index, "$schema",
+                    "https://skillpilot.com/schemas/curriculum-package/v1.3/resource-index.schema.json",
+                    "resource index");
+            requireExactText(index, "indexFormatVersion", "1.3", "resource index");
+        }
         Map<String, JsonNode> catalogEntries = indexObjectsById(
                 requiredArray(catalog, "resources", "runtime catalog"),
                 "resourceId",
@@ -941,6 +960,9 @@ public final class JsonCurriculumPackageLoader {
             String landscapeId = requiredText(entry, "landscapeId", context);
             requireExactText(catalogEntry, "landscapeId", landscapeId, "runtime catalog resource " + id);
             String resourceKind = requiredText(entry, "resourceKind", context);
+            if ("assessment-material".equals(resourceKind) && !assessmentMaterials) {
+                throw failure("Assessment material requires runtime 1.3");
+            }
             String catalogResourceKind = requiredText(
                     catalogEntry, "resourceKind", "runtime catalog resource " + id);
             String ownerGoalId = optionalText(entry, "ownerGoalId");
@@ -965,8 +987,26 @@ public final class JsonCurriculumPackageLoader {
                 if (!file.mediaType().equals(mediaType)) {
                     throw failure("Resource mediaType disagrees with manifest for " + id);
                 }
+                if ("assessment-material".equals(resourceKind)) {
+                    requireExactText(entry, "resourceType", "image", context);
+                    boolean supportedMaterial = ("image/svg+xml".equals(mediaType) && path.endsWith(".svg"))
+                            || ("image/png".equals(mediaType) && path.endsWith(".png"));
+                    if (!supportedMaterial || !path.startsWith("assets/assessment-materials/")
+                            || !("/" + path).equals(publicUrl) || externalUrl != null
+                            || ownerGoalId == null || !ownerGoalId.equals(catalogGoalId)
+                            || !"binary-resource".equals(file.semanticBindingKind())
+                            || !id.equals(file.resourceId())
+                            || !entry.path("bytes").canConvertToLong()
+                            || entry.path("bytes").longValue() != file.bytes()
+                            || !file.sha256().equals(requiredText(entry, "sha256", context))) {
+                        throw failure("Assessment material has inconsistent ownership, path or byte bindings: " + id);
+                    }
+                }
                 artifact = artifact(installedPackage, file);
             } else if (delivery.equals("external")) {
+                if ("assessment-material".equals(resourceKind)) {
+                    throw failure("Assessment material must be embedded and runtimeRequired");
+                }
                 requireBoolean(entry, "runtimeRequired", false, context);
                 requireBoolean(catalogEntry, "runtimeRequired", false, "runtime catalog resource " + id);
                 String catalogExternalUrl = normalizeExternalUrl(

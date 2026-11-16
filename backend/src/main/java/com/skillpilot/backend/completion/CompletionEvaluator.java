@@ -9,9 +9,9 @@ import java.util.Set;
 /** Linear work-discharge evaluation over one immutable compiled context and binary mastery. */
 public final class CompletionEvaluator {
     /**
-     * Open assessments retain full transitive prerequisite demand, including
+     * Open assessments and memory goals retain full transitive prerequisite demand, including
      * paths through explicitly mastered intermediate goals.
-     * Every remaining unmastered ordinary node is implicitly complete in this
+     * Every unmastered ordinary node outside that demand is implicitly complete in this
      * context, even when no mastery or assessment exists in the context.
      */
     public CompletionEvaluation evaluateAutomatic(CompiledAutomaticCompletion graph, Set<String> mastery) {
@@ -23,15 +23,15 @@ public final class CompletionEvaluator {
         Objects.requireNonNull(mastery, "mastery");
         boolean[] mastered = new boolean[graph.size()];
         boolean[] needed = new boolean[graph.size()];
-        int[] blockingAssessment = new int[graph.size()];
-        java.util.Arrays.fill(blockingAssessment, -1);
+        int[] blockingObligation = new int[graph.size()];
+        java.util.Arrays.fill(blockingObligation, -1);
         java.util.ArrayDeque<Integer> pending = new java.util.ArrayDeque<>();
         for (int i = 0; i < graph.size(); i++) {
             String id = graph.goalIds().get(i);
             mastered[i] = mastery.contains(id);
-            if (!mastered[i] && graph.assessmentGoalIds().contains(id)) {
+            if (!mastered[i] && graph.protectedGoalIds().contains(id)) {
                 needed[i] = true;
-                blockingAssessment[i] = i;
+                blockingObligation[i] = i;
                 pending.addLast(i);
             }
         }
@@ -40,7 +40,7 @@ public final class CompletionEvaluator {
             for (int prerequisite : graph.prerequisiteIndices(consumer)) {
                 if (needed[prerequisite]) continue;
                 needed[prerequisite] = true;
-                blockingAssessment[prerequisite] = blockingAssessment[consumer];
+                blockingObligation[prerequisite] = blockingObligation[consumer];
                 pending.addLast(prerequisite);
             }
         }
@@ -60,8 +60,8 @@ public final class CompletionEvaluator {
             else if (!needed[i]) {
                 waivedIds.add(id);
                 reasons.put(id, reason);
-            } else if (!graph.assessmentGoalIds().contains(id)) {
-                blockers.put(id, graph.goalIds().get(blockingAssessment[i]));
+            } else if (!graph.protectedGoalIds().contains(id)) {
+                blockers.put(id, graph.goalIds().get(blockingObligation[i]));
             }
             if (graph.targetGoalIds().contains(id)) {
                 if (mastered[i]) masteredTargetCount++;
@@ -71,7 +71,7 @@ public final class CompletionEvaluator {
             if (mastered[i] && graph.assessmentGoalIds().contains(id)) passedAssessments.add(id);
         }
         return new CompletionEvaluation(masteredIds, waivedIds, pendingTargets, passedAssessments, reasons, blockers,
-                pendingTargets.isEmpty() && passedAssessments.size() == graph.assessmentGoalIds().size(),
+                pendingTargets.isEmpty() && graph.protectedGoalIds().stream().allMatch(mastery::contains),
                 graph.targetGoalIds().size(), masteredTargetCount, waivedTargetCount, graph.assessmentGoalIds().size());
     }
 

@@ -1,0 +1,145 @@
+{
+  "at": "2026-11-16T02:47:42.438Z",
+  "status": "PASS_BOUNDED_NATIVE_MANIFEST_ASSET_PROJECTION",
+  "caseCount": 22,
+  "cases": [
+    {
+      "name": "actual28-materials-pass-full-native-ID-path-bytes-hash-media-source-binding-and-projection",
+      "status": "PASS",
+      "files": 28
+    },
+    {
+      "name": "projection-changes-only-provenance-class-without-ledger-mutation-or-rights-upgrade",
+      "status": "PASS"
+    },
+    {
+      "name": "all836-other-asset-decisions-identity-unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "helper-rejects-runtime12",
+      "status": "PASS",
+      "rejection": "Assessment-material provenance is outside the bound runtime 1.3 resource lane: goal-resource:cb567b03-b590-5ae9-9d1e-9864d02fb3af:0"
+    },
+    {
+      "name": "helper-rejects-resourceKind",
+      "status": "PASS",
+      "rejection": "Assessment-material provenance is outside the bound runtime 1.3 resource lane: goal-resource:cb567b03-b590-5ae9-9d1e-9864d02fb3af:0"
+    },
+    {
+      "name": "helper-rejects-provider",
+      "status": "PASS",
+      "rejection": "Assessment-material provenance is outside the bound runtime 1.3 resource lane: goal-resource:cb567b03-b590-5ae9-9d1e-9864d02fb3af:0"
+    },
+    {
+      "name": "helper-rejects-delivery",
+      "status": "PASS",
+      "rejection": "Assessment-material provenance is outside the bound runtime 1.3 resource lane: goal-resource:cb567b03-b590-5ae9-9d1e-9864d02fb3af:0"
+    },
+    {
+      "name": "helper-rejects-runtimeRequired",
+      "status": "PASS",
+      "rejection": "Assessment-material provenance is outside the bound runtime 1.3 resource lane: goal-resource:cb567b03-b590-5ae9-9d1e-9864d02fb3af:0"
+    },
+    {
+      "name": "helper-rejects-nonmaterial-path",
+      "status": "PASS",
+      "rejection": "Assessment-material provenance is outside the bound runtime 1.3 resource lane: goal-resource:cb567b03-b590-5ae9-9d1e-9864d02fb3af:0"
+    },
+    {
+      "name": "four-way-path-binding-input",
+      "status": "PASS",
+      "rejection": "Binary artifact path mismatch for goal-resource:cb567b03-b590-5ae9-9d1e-9864d02fb3af:0."
+    },
+    {
+      "name": "four-way-path-binding-resource",
+      "status": "PASS",
+      "rejection": "Binary artifact path mismatch for goal-resource:cb567b03-b590-5ae9-9d1e-9864d02fb3af:0."
+    },
+    {
+      "name": "four-way-path-binding-decision",
+      "status": "PASS",
+      "rejection": "Binary artifact path mismatch for goal-resource:cb567b03-b590-5ae9-9d1e-9864d02fb3af:0."
+    },
+    {
+      "name": "four-way-byte-binding-input",
+      "status": "PASS",
+      "rejection": "Binary byte-length mismatch for goal-resource:cb567b03-b590-5ae9-9d1e-9864d02fb3af:0."
+    },
+    {
+      "name": "four-way-byte-binding-resource",
+      "status": "PASS",
+      "rejection": "Binary byte-length mismatch for goal-resource:cb567b03-b590-5ae9-9d1e-9864d02fb3af:0."
+    },
+    {
+      "name": "four-way-byte-binding-decision",
+      "status": "PASS",
+      "rejection": "Binary byte-length mismatch for goal-resource:cb567b03-b590-5ae9-9d1e-9864d02fb3af:0."
+    },
+    {
+      "name": "four-way-hash-binding-input",
+      "status": "PASS",
+      "rejection": "Binary SHA-256 mismatch for goal-resource:cb567b03-b590-5ae9-9d1e-9864d02fb3af:0."
+    },
+    {
+      "name": "four-way-hash-binding-resource",
+      "status": "PASS",
+      "rejection": "Binary SHA-256 mismatch for goal-resource:cb567b03-b590-5ae9-9d1e-9864d02fb3af:0."
+    },
+    {
+      "name": "four-way-hash-binding-decision",
+      "status": "PASS",
+      "rejection": "Binary SHA-256 mismatch for goal-resource:cb567b03-b590-5ae9-9d1e-9864d02fb3af:0."
+    },
+    {
+      "name": "missing-review-ID-rejected-before-projection",
+      "status": "PASS",
+      "rejection": "Binary resource sets differ between semantic index, resource index, build inputs, and redistribution review."
+    },
+    {
+      "name": "duplicate-review-ID-rejected-before-projection",
+      "status": "PASS",
+      "rejection": "Binary resource IDs must be unique in every release input."
+    },
+    {
+      "name": "media-type-drift-rejected-before-projection",
+      "status": "PASS",
+      "rejection": "Binary media-type mismatch for goal-resource:cb567b03-b590-5ae9-9d1e-9864d02fb3af:0."
+    },
+    {
+      "name": "wrong-existing-original-source-rejected-before-projection",
+      "status": "PASS",
+      "rejection": "Binary source bytes drifted for goal-resource:cb567b03-b590-5ae9-9d1e-9864d02fb3af:0."
+    }
+  ],
+  "sourcePath": "app/scripts/buildFullStandaloneCurriculumPackage.ts",
+  "sourceSHA256": "a00a2b63b99c75c9d225f79ba976c6699467f6f890e6aa122878ee71e7e50aa9",
+  "extractedBlockSHA256": "c2b07c517724c1b2c4d695a8d449687cda37a165502a923676966d2786da1dae",
+  "extractedHelperNames": [
+    "SHA256_DIGEST_PATTERN",
+    "PACKAGE_PATH_PATTERN",
+    "WINDOWS_RESERVED_SEGMENT",
+    "compareCodeUnits",
+    "fail",
+    "objectValue",
+    "stringValue",
+    "booleanValue",
+    "arrayValue",
+    "withoutDigestPrefix",
+    "assertSafePackagePath",
+    "portablePathKey",
+    "assertNoSymlinkComponents",
+    "resolveRepositoryFile",
+    "fileIntegrity",
+    "sourceEntry",
+    "addEntry",
+    "runtimeRequiredFor",
+    "mediaTypeForPath",
+    "attachManifestFile",
+    "manifestAssetDecision"
+  ],
+  "ledgerSHA256": "0e10da2b7fb1fabaa0bdf5bae398a1c40030ce72eb09ebc4f21ebf7ed5397d14",
+  "method": "Exact current TypeScript AST private helpers and complete four-input binary-binding/application block; real28 resources/semantic records/build inputs/ledger decisions and actual source-file integrity reads. No full ZIP rebuild.",
+  "prerequisiteBoundary": "Full producer also executes actual redistribution checker before this block. Projection helper does not replace that checker or path/byte/schema validation.",
+  "wholePackageOrPublicationApproval": false
+}

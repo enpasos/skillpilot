@@ -1,0 +1,117 @@
+{
+  "at": "2026-11-16T02:31:32.746935+00:00",
+  "status": "PASS_BOUNDED_ROLE_AND_LICENSE_CLASSIFICATION_DELTA",
+  "caseCount": 15,
+  "checks": [
+    {
+      "name": "fresh-import-default-policy-identical-to-epoch1",
+      "status": "PASS"
+    },
+    {
+      "name": "only-runtime13-adds-two-exact-content-file-overrides",
+      "status": "PASS"
+    },
+    {
+      "name": "actual-ledger-delta-only-two-overrides-all864-asset-decisions-byte-value-unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "source-role-fix-does-not-grant-rights-or-publication",
+      "status": "PASS"
+    },
+    {
+      "name": "actual-current-ledger-validates-against-current-source-model-and-schema",
+      "status": "PASS"
+    },
+    {
+      "name": "current-review-schema-is-exact-generator-output",
+      "status": "PASS"
+    },
+    {
+      "name": "native-review-rejects-similar-file",
+      "status": "PASS",
+      "diagnostics": [
+        "PATH_CLASSIFICATION_OVERRIDE_DRIFT",
+        "SCHEMA"
+      ]
+    },
+    {
+      "name": "native-review-rejects-directory-broadening",
+      "status": "PASS",
+      "diagnostics": [
+        "PATH_CLASSIFICATION_OVERRIDE_DRIFT",
+        "SCHEMA"
+      ]
+    },
+    {
+      "name": "native-review-rejects-different-directory",
+      "status": "PASS",
+      "diagnostics": [
+        "PATH_CLASSIFICATION_OVERRIDE_DRIFT",
+        "SCHEMA"
+      ]
+    },
+    {
+      "name": "native-review-rejects-foreign-class",
+      "status": "PASS",
+      "diagnostics": [
+        "PATH_CLASSIFICATION_OVERRIDE_DRIFT",
+        "SCHEMA"
+      ]
+    },
+    {
+      "name": "native-review-rejects-foreign-provenance",
+      "status": "PASS",
+      "diagnostics": [
+        "PATH_CLASSIFICATION_OVERRIDE_DRIFT",
+        "SCHEMA"
+      ]
+    },
+    {
+      "name": "native-review-rejects-wrong-role",
+      "status": "PASS",
+      "diagnostics": [
+        "PATH_CLASSIFICATION_OVERRIDE_DRIFT",
+        "SCHEMA"
+      ]
+    },
+    {
+      "name": "native-review-rejects-missing-exact-source-classification",
+      "status": "PASS"
+    },
+    {
+      "name": "all127-historical-contract-and-ledger-files-still-byte-identical",
+      "status": "PASS"
+    },
+    {
+      "name": "all-actual-model-build-profile-target-profile-compiler-validator-bytes-unchanged",
+      "status": "PASS",
+      "files": 123
+    }
+  ],
+  "inputPins": [
+    {
+      "path": "app/scripts/buildFullStandaloneCurriculumPackage.ts",
+      "sha256": "e6e24d058bc427caefaab0491425f61d750e873abb783693ad2be62d508880dc"
+    },
+    {
+      "path": "scripts/generate_curriculum_package_redistribution_review.py",
+      "sha256": "c1b546991809b2071098f07d1e6149fa4b70134452dedf138f3ae2d8d1ce9686"
+    },
+    {
+      "path": "scripts/generate_curriculum_package_v13_contracts.py",
+      "sha256": "34b0a83e621ce0471c86520fe55087f7452c5d364633f4889db699e13f5779f5"
+    },
+    {
+      "path": "contracts/curriculum-package/v1.3/package-redistribution-review.schema.json",
+      "sha256": "486e65696ca40e229dc395e88bb21ed30573eccd5039bd598ff6bde58fe6bea3"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/package-redistribution/de-gymnasium-mathematik-v1.3.review.json",
+      "sha256": "0e10da2b7fb1fabaa0bdf5bae398a1c40030ce72eb09ebc4f21ebf7ed5397d14"
+    }
+  ],
+  "contentDigest": "sha256:4e371d4e3fa31ccabfc9b32e061ada55d18fc8a8ebf1f087d9a6109469645a04",
+  "sourceWrites": false,
+  "fullPackageBuildOrConsumerReplayClaimed": false
+}

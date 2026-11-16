@@ -2,12 +2,15 @@
 set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-PROFILE="contracts/curriculum-package/v1/profiles/de-gymnasium-mathematik-release-model-v1.profile.json"
+PROFILE="contracts/curriculum-package/v1.3/profiles/de-gymnasium-mathematik-release-model-v1.3.profile.json"
+PACKAGE_PROFILE="contracts/curriculum-package/v1.3/profiles/full-standalone-v1.3.profile.json"
+CONTRACTS_DIR="contracts/curriculum-package/v1.3"
+REDISTRIBUTION_LEDGER="curricula/DE/Gymnasium/quality/package-redistribution/de-gymnasium-mathematik-v1.3.review.json"
 OUTPUT_BASE="tmp/curriculum-release-model"
-OUTPUT_A="${OUTPUT_BASE}/mathematik-a"
-OUTPUT_B="${OUTPUT_BASE}/mathematik-b"
+OUTPUT_A="${OUTPUT_BASE}/mathematik-v1.3-a"
+OUTPUT_B="${OUTPUT_BASE}/mathematik-v1.3-b"
 PACKAGE_OUTPUT="${OUTPUT_BASE}/full-standalone-package"
-PACKAGE_ARCHIVE_ROOT="skillpilot-curriculum-de-gymnasium-mathematik-0.1.0-conformance.3.json"
+PACKAGE_ARCHIVE_ROOT="skillpilot-curriculum-de-gymnasium-mathematik-0.1.0-runtime.1.json"
 PACKAGE_ZIP="${PACKAGE_OUTPUT}/${PACKAGE_ARCHIVE_ROOT}.zip"
 # Keep the shell-owned stdout target outside the Builder's atomically replaced
 # output directory. Otherwise the open report file can be renamed into and
@@ -22,7 +25,7 @@ PACKAGE_INSTALL_REPORT="${PACKAGE_OUTPUT}/provision-install.json"
 PACKAGE_VERIFY_REPORT="${PACKAGE_OUTPUT}/provision-verify.json"
 PACKAGE_ACTIVATE_REPORT="${PACKAGE_OUTPUT}/provision-activate.json"
 PACKAGE_STATUS_REPORT="${PACKAGE_OUTPUT}/provision-status.json"
-EXPECTED_CONTENT_DIGEST="sha256:5db6e33c9118c7382ae439e7713a8ae399a3d5ae6fb3fc8ebe1c125963439049"
+EXPECTED_CONTENT_DIGEST="sha256:4e371d4e3fa31ccabfc9b32e061ada55d18fc8a8ebf1f087d9a6109469645a04"
 cd "${ROOT_DIR}"
 
 SOURCE_PDF_MODE="${SKILLPILOT_SOURCE_PDF_MODE:-strict}"
@@ -47,6 +50,13 @@ esac
 bash scripts/provision_pinned_fwu_ontology.sh
 
 python3 -B scripts/validate_curriculum_release_model_fixtures.py
+python3 -B scripts/generate_curriculum_package_v13_contracts.py --check
+python3 -B scripts/generate_curriculum_package_v13_readiness.py --check
+node scripts/v1.3/package_consumer_browser_smoke.cjs --self-test
+python3 -B scripts/test_assessment_material_package_v13.py
+python3 -B scripts/test_package_readiness_v13.py
+python3 -B scripts/validate_curriculum_package_contracts.py --contracts-dir "${CONTRACTS_DIR}"
+python3 -B scripts/validate_full_standalone_curriculum_package.py --self-test --contracts-dir "${CONTRACTS_DIR}"
 python3 -B scripts/test_prerequisite_reduction_semantic_kind.py
 python3 -B scripts/compile_curriculum_release_model.py \
   --self-test-dependency-emission
@@ -92,9 +102,11 @@ python3 -B scripts/validate_curriculum_release_model.py \
   --release-root "${OUTPUT_A}"
 
 python3 -B scripts/generate_curriculum_package_redistribution_review.py \
+  --runtime-v13-candidate --ledger "${REDISTRIBUTION_LEDGER}" \
   --check \
   --release-root "${OUTPUT_A}"
 python3 -B scripts/generate_curriculum_package_redistribution_review.py \
+  --runtime-v13-candidate --ledger "${REDISTRIBUTION_LEDGER}" \
   --self-test \
   --release-root "${OUTPUT_A}"
 python3 -B scripts/generate_curriculum_source_verification_review.py \
@@ -128,17 +140,20 @@ rm -rf -- "${PACKAGE_OUTPUT}"
 mkdir -p "${PACKAGE_OUTPUT}"
 npm --prefix app run --silent export:full-standalone-package -- \
   --release-root "${OUTPUT_A}" \
+  --package-profile "${PACKAGE_PROFILE}" \
+  --redistribution-review "${REDISTRIBUTION_LEDGER}" \
   --output-dir "${PACKAGE_OUTPUT}" \
   --archive-root "${PACKAGE_ARCHIVE_ROOT}" \
   --supported-skillpilot-software ">=0.1.0 <1.0.0" \
   --zip \
-  --expect-entry-count 1063 \
-  --expect-manifest-file-count 1061 \
-  --expect-binary-asset-count 836 \
+  --expect-entry-count 1107 \
+  --expect-manifest-file-count 1105 \
+  --expect-binary-asset-count 864 \
   --expect-content-digest "${EXPECTED_CONTENT_DIGEST}" \
   > "${PACKAGE_BUILD_REPORT}"
 
 python3 -B scripts/validate_full_standalone_curriculum_package.py \
+  --contracts-dir "${CONTRACTS_DIR}" \
   --zip "${PACKAGE_ZIP}" \
   --report "${PACKAGE_VALIDATION_REPORT}"
 
@@ -182,6 +197,7 @@ if any(gate.get("status") != "passed" for gate in report.get("gates", {}).values
 PY
 
 python3 -B scripts/provision_curriculum_package.py install \
+  --contracts-dir "${CONTRACTS_DIR}" \
   --store "${PACKAGE_STORE}" \
   --zip "${PACKAGE_ZIP}" \
   > "${PACKAGE_INSTALL_REPORT}"
@@ -239,6 +255,7 @@ if len(packages) != 1 or packages[0].get("outerZipSha256") != build.get("zipSha2
 PY
 
 python3 -B scripts/evaluate_curriculum_package_readiness.py \
+  --contracts-dir "${CONTRACTS_DIR}" \
   --zip "${PACKAGE_ZIP}" \
   --consumer-smoke-store "${PACKAGE_STORE}" \
   --consumer-smoke-work-dir "${PACKAGE_CONSUMER_SMOKE_WORK}" \

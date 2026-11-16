@@ -1,0 +1,117 @@
+{
+  "recordedAt": "2026-11-16T01:59:17.752067+00:00",
+  "status": "FOCUSED_CONTRACT_AND_REGRESSION_CHECKS_PASSED_NOT_FULL_PACKAGE_ACCEPTANCE",
+  "commands": [
+    {
+      "command": "python3 -B scripts/evaluate_curriculum_package_readiness.py --self-test",
+      "exitCode": 0
+    },
+    {
+      "command": "python3 -B scripts/test_package_readiness_v13.py",
+      "exitCode": 0,
+      "testMethods": 5
+    },
+    {
+      "command": "python3 -B scripts/validate_schemas.py",
+      "exitCode": 0,
+      "jsonFiles": 120706
+    },
+    {
+      "command": "python3 -B scripts/validate_goal_ids_uuid.py",
+      "exitCode": 0
+    },
+    {
+      "command": "app/node_modules/.bin/tsc -b --pretty false (cwd app)",
+      "exitCode": 0
+    },
+    {
+      "command": "eslint changed TypeScript files (explicit file list in log)",
+      "exitCode": 0
+    }
+  ],
+  "sourcePins": [
+    {
+      "path": "scripts/evaluate_curriculum_package_readiness.py",
+      "sha256": "f375af61fe2f9622dc17ec4003233627b67cff0b6d3bd8b2081dd5425e159713"
+    },
+    {
+      "path": "scripts/generate_curriculum_package_v13_readiness.py",
+      "sha256": "f1692408a765d210c60590e9ff03d0ed059e11f9214483d9f80bddf8a5139f36"
+    },
+    {
+      "path": "scripts/test_package_readiness_v13.py",
+      "sha256": "766df604eb4dde367e579aba94e83587c2babc1d695e3cb66db37f791e5414e7"
+    },
+    {
+      "path": "scripts/validate_schemas.py",
+      "sha256": "1d4fca7cd6e9a3ed7b784d7f54e9e8e78fac7ca503d3dcad08e1e98320fe1154"
+    },
+    {
+      "path": "contracts/curriculum-package/v1.3/package-readiness-report.schema.json",
+      "sha256": "1b688e801ddf52558fe295b1db50dc95d80035a9df82c97d7542dc29a62785e3"
+    },
+    {
+      "path": "contracts/curriculum-package/v1.3/profiles/full-standalone-v1.3.readiness-policy.json",
+      "sha256": "70e0e5fa3cc24a07dc1d9e227a1c34a083334f1b549c2e46e9fb5b28492839e8"
+    },
+    {
+      "path": "contracts/curriculum-package/v1.3/profiles/full-standalone-v1.3.profile.json",
+      "sha256": "b4e0f5551a456610fbe3bdc3a43b68012151c4e6b402eb897f499aef7e15b995"
+    },
+    {
+      "path": "scripts/run_package_consumer_smoke.py",
+      "sha256": "c40c514cd12a4578bd406c425fb4ad6a37c19a8c4f722b15d609bcda37560c74"
+    }
+  ],
+  "scope": {
+    "oldReadinessPolicyBytesChanged": false,
+    "originalConsumerRunnerBytesChanged": false,
+    "newAutomaticRedistributionApprovals": 0,
+    "runtimeLandscapeSchemaExemption": "one exact retained authoring source path plus immutable SHA256; any byte change fails",
+    "newPublicScratchRootOption": false
+  },
+  "evidence": [
+    {
+      "source": "tmp/package-v13-assessment-material-ci-repair-20261116/25-root-readiness-v1-selftest.log",
+      "retained": "contracts/stage-plan-review-evidence/2026-11-16/package-readiness-v13-v1/25-root-readiness-v1-selftest.log",
+      "sha256": "148e15610bcb264fd10ae0f6ec9ce07214068bc5a7737aad9c0e9e472f7080ce",
+      "bytes": 4327
+    },
+    {
+      "source": "tmp/package-v13-assessment-material-ci-repair-20261116/28-root-readiness-v13-hardened-tests.log",
+      "retained": "contracts/stage-plan-review-evidence/2026-11-16/package-readiness-v13-v1/28-root-readiness-v13-hardened-tests.log",
+      "sha256": "4bbca517d61d3f094ad217eb70f61f6be6b7c4d7516779446b882fa2aece7e11",
+      "bytes": 396
+    },
+    {
+      "source": "tmp/pr159-final-schemas.log",
+      "retained": "contracts/stage-plan-review-evidence/2026-11-16/package-readiness-v13-v1/pr159-final-schemas.log",
+      "sha256": "d5e64d7ef86ac4545ff52554902ee0eaf3660d10b3ca23fb19fd244d6cc0729b",
+      "bytes": 373
+    },
+    {
+      "source": "tmp/pr159-final-schemas-repaired.log",
+      "retained": "contracts/stage-plan-review-evidence/2026-11-16/package-readiness-v13-v1/pr159-final-schemas-repaired.log",
+      "sha256": "4d96db0c5855bca4d6b7c16809ad331f7f5967088a99837500ef42a5903da3db",
+      "bytes": 181
+    },
+    {
+      "source": "tmp/pr159-final-goal-ids.log",
+      "retained": "contracts/stage-plan-review-evidence/2026-11-16/package-readiness-v13-v1/pr159-final-goal-ids.log",
+      "sha256": "6a1204731efb1c657289194f1d041bbd330debf627f41819ff64b5349067a657",
+      "bytes": 69
+    },
+    {
+      "source": "tmp/pr159-final-typescript.log",
+      "retained": "contracts/stage-plan-review-evidence/2026-11-16/package-readiness-v13-v1/pr159-final-typescript.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "source": "tmp/pr159-final-eslint.log",
+      "retained": "contracts/stage-plan-review-evidence/2026-11-16/package-readiness-v13-v1/pr159-final-eslint.log",
+      "sha256": "ca82ed1f9d3dc186f6533bee6990c2d4edcaa49bca657401b92931d699d932e5",
+      "bytes": 670
+    }
+  ]
+}

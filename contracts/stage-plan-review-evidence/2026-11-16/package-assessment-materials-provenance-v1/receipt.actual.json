@@ -1,0 +1,122 @@
+{
+  "recordedAt": "2026-11-16T01:48:19.007457+00:00",
+  "status": "ACTUAL_ROOT_GENERATE_CHECK_SELFTEST_PASS_NOT_PUBLICATION_APPROVAL",
+  "modelContentDigest": "sha256:4e371d4e3fa31ccabfc9b32e061ada55d18fc8a8ebf1f087d9a6109469645a04",
+  "counts": {
+    "embedded": 864,
+    "assessmentMaterials": 28,
+    "taskUses": 31,
+    "externalMetadataOnly": 76
+  },
+  "sourcePins": [
+    {
+      "path": "scripts/generate_curriculum_package_redistribution_review.py",
+      "sha256": "735eb1b6b3f587088797ac31aabc1bdd43b00da598843e28b4ae33613903a924"
+    },
+    {
+      "path": "contracts/curriculum-package/v1.3/package-redistribution-review.schema.json",
+      "sha256": "762415742ce57e89c2c677150d3eb2fb917a2662850bcf2c0aae3cc4298dfe4c"
+    },
+    {
+      "path": "contracts/curriculum-package/v1.3/profiles/de-gymnasium-mathematik-release-model-v1.3.profile.json",
+      "sha256": "cc2122bd4a82af9eb9c53147eb190e9de97dbc8544c09c2f06497eb8a0c359f3"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/package-redistribution/de-gymnasium-mathematik-v1.3.review.json",
+      "sha256": "9ad5981e1cdf9bfb8085c6f772e48f48bee64dc02ed115d015c5fe78cd3cbcd7"
+    }
+  ],
+  "commands": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "scripts/generate_curriculum_package_redistribution_review.py",
+        "--runtime-v13-candidate",
+        "--generate",
+        "--release-root",
+        "tmp/package-v13-assessment-material-ci-repair-20261116/model"
+      ],
+      "exitCode": 0
+    },
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "scripts/generate_curriculum_package_redistribution_review.py",
+        "--runtime-v13-candidate",
+        "--check",
+        "--release-root",
+        "tmp/package-v13-assessment-material-ci-repair-20261116/model"
+      ],
+      "exitCode": 0
+    },
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "scripts/generate_curriculum_package_redistribution_review.py",
+        "--runtime-v13-candidate",
+        "--self-test",
+        "--release-root",
+        "tmp/package-v13-assessment-material-ci-repair-20261116/model"
+      ],
+      "exitCode": 0
+    }
+  ],
+  "compatibilityChecks": {
+    "provisionerSelfTest": {
+      "guarantees": 38,
+      "exitCode": 0
+    },
+    "completionV11Regression": {
+      "exitCode": 0
+    }
+  },
+  "sourceBundleReviewScope": "Byte-exact retained authored source matching 43 released tasks, not a new assessment-content approval",
+  "publicationReady": false,
+  "records": [
+    {
+      "source": "tmp/package-v13-assessment-material-ci-repair-20261116/06-independent-source-bundle-review.actual.json",
+      "retained": "contracts/stage-plan-review-evidence/2026-11-16/package-assessment-materials-provenance-v1/06-independent-source-bundle-review.actual.json",
+      "bytes": 13827,
+      "sha256": "d783069206640c4e416d8980d3d4a7439c3424fe240e75b4f02bd341d14fa1bb"
+    },
+    {
+      "source": "tmp/package-v13-assessment-material-ci-repair-20261116/09-material-provenance-negatives.actual.json",
+      "retained": "contracts/stage-plan-review-evidence/2026-11-16/package-assessment-materials-provenance-v1/09-material-provenance-negatives.actual.json",
+      "bytes": 673,
+      "sha256": "77a37adb1875497621682846310fa533d853cc51d99c51f84ffdcef88e37e928"
+    },
+    {
+      "source": "tmp/package-v13-assessment-material-ci-repair-20261116/20-root-redistribution-generate.log",
+      "retained": "contracts/stage-plan-review-evidence/2026-11-16/package-assessment-materials-provenance-v1/20-root-redistribution-generate.log",
+      "bytes": 480,
+      "sha256": "d47c42a94f2d9be723de4d3d68a039d55e4d9a19ab5bf3d148163343f6134b0e"
+    },
+    {
+      "source": "tmp/package-v13-assessment-material-ci-repair-20261116/21-root-provisioner-selftest.log",
+      "retained": "contracts/stage-plan-review-evidence/2026-11-16/package-assessment-materials-provenance-v1/21-root-provisioner-selftest.log",
+      "bytes": 64,
+      "sha256": "4d31bfe4f37d0949a071d3c0102ea6606c21dbee3315e1b26aa1ecce0b961962"
+    },
+    {
+      "source": "tmp/package-v13-assessment-material-ci-repair-20261116/22-root-completion-v11-regression.log",
+      "retained": "contracts/stage-plan-review-evidence/2026-11-16/package-assessment-materials-provenance-v1/22-root-completion-v11-regression.log",
+      "bytes": 107,
+      "sha256": "f732530a90462f5eac75ad6377c57a45b8a53b7fd8b75c4f15838cfefa62993f"
+    },
+    {
+      "source": "tmp/package-v13-assessment-material-ci-repair-20261116/23-root-redistribution-check.log",
+      "retained": "contracts/stage-plan-review-evidence/2026-11-16/package-assessment-materials-provenance-v1/23-root-redistribution-check.log",
+      "bytes": 446,
+      "sha256": "3962f6bb3015737c25e76c07e676fd880371b73a667b21aeef0e052077ab6476"
+    },
+    {
+      "source": "tmp/package-v13-assessment-material-ci-repair-20261116/24-root-redistribution-selftest.log",
+      "retained": "contracts/stage-plan-review-evidence/2026-11-16/package-assessment-materials-provenance-v1/24-root-redistribution-selftest.log",
+      "bytes": 312,
+      "sha256": "d9f3004365609c4b57a9103c3217719c085e83b4e06c454b7155caed50c101c1"
+    }
+  ]
+}

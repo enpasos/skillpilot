@@ -10,6 +10,7 @@ import {
 } from '../src/utils/authoring/compositionViewAuthoring'
 import { normalizeCanonicalLandscape } from '../src/utils/authoring/canonicalAuthoring'
 import { projectOutLearningUnits, sha256WithoutLearningUnitLayer } from './learningUnitLayerProjection'
+import { replayMathDurationStagePlacements, type MathDurationStagePlacementPolicy } from './mathDurationStagePlacementPolicy'
 
 type DurationModel = 'G8' | 'G9'
 
@@ -377,6 +378,13 @@ const shMappingReview = readJson<{ mappings?: MappingEntry[] }>(shMappingPath)
 const baseShGkView = readJson<CompositionView>(resolve(compositionViewDir, 'de-sh-gk.view.json'))
 const baseShLkView = readJson<CompositionView>(resolve(compositionViewDir, 'de-sh-lk.view.json'))
 const splitLayoutPlan = readJson<SplitLayoutPlan>(splitLayoutPlanPath)
+const stagePlacementPolicy = readJson<MathDurationStagePlacementPolicy>(resolve(
+  scriptDir, 'config/math-duration-stage-placement-policy.json',
+))
+if (JSON.stringify(stagePlacementPolicy.views.map(view => view.fileName).sort())
+  !== JSON.stringify([...GENERATED_VIEW_PATHS].sort())) {
+  throw new Error('The Mathematics duration stage-placement policy must cover exactly the generated views')
+}
 const semanticKindLedger = readJson<{ decisions?: SemanticKindDecision[] }>(semanticKindLedgerPath)
 const canonicalMathRelativePath =
   'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json'
@@ -1928,10 +1936,13 @@ const assertGeneratedViewIntegrity = (view: CompositionView) => {
 
 let differences = 0
 for (const fileName of GENERATED_VIEW_PATHS) {
-  const generatedView = generatedViews.get(fileName)
-  if (!generatedView) {
+  const ordinaryGeneratedView = generatedViews.get(fileName)
+  if (!ordinaryGeneratedView) {
     throw new Error(`Missing generator output for ${fileName}`)
   }
+  const generatedView = replayMathDurationStagePlacements(
+    ordinaryGeneratedView, fileName, canonicalMathSha256, stagePlacementPolicy,
+  )
   assertCompleteSek1DirectRequirements(generatedView)
   assertGeneratedViewIntegrity(generatedView)
 

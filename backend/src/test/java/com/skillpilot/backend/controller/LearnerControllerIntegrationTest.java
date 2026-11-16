@@ -824,7 +824,7 @@ public class LearnerControllerIntegrationTest {
         learnerRepository.save(learner);
         completeCanonicalSekTwoPersonalization(CANONICAL_PHYSICS_ID);
         RequiredLearningProjection projection = requiredLearningProjection(learnerRepository.findById(learnerId).orElseThrow());
-        assertThat(hessenLegacyEquivalentTopicIds(projection.seedAtomicGoalIds(), CANONICAL_PHYSICS_ROOT_ID)).hasSize(226);
+        assertThat(hessenLegacyEquivalentTopicIds(projection.seedAtomicGoalIds(), CANONICAL_PHYSICS_ROOT_ID)).hasSize(221);
         long expectedTopicGoals = hessenLegacyEquivalentTopicIds(projection.expectedLearningGoalIds(), CANONICAL_PHYSICS_ROOT_ID).size();
 
         masteryRepository.save(new Mastery(learner, LEGACY_PHYSICS_DIAGRAMS_ID, 1.0));
@@ -837,8 +837,8 @@ public class LearnerControllerIntegrationTest {
                         CANONICAL_PHYSICS_ROOT_ID));
 
         assertThat(response.champion().masteredCount()).isEqualTo(1);
-        // Restore 39 existing HE-equivalent tasks: E 11, Q1 4, Q2 5,
-        // Q3 4, Q4 7 and Abitur 8. Their content and stable IDs are unchanged.
+        // Count the current reviewed targets and their real prerequisite demand;
+        // retired aggregate tasks remain retained without becoming targets again.
         assertThat(response.champion().totalTopicGoals()).isEqualTo(expectedTopicGoals);
     }
 
@@ -989,7 +989,24 @@ public class LearnerControllerIntegrationTest {
                 // The two mapped intermediates retain their earlier preparation.
                 Set.of());
 
+        // The existing released collision assessment must be available in HE;
+        // its missing placement must not make this competency silently dispensable.
+        String collisionAssessmentId = "68061652-d617-5e51-8d2a-1c686c3c49df";
+        assertThat(learnerService.getFilteredAtomicGoalIds(CANONICAL_PHYSICS_ID,
+                CANONICAL_PHYSICS_HE_CROSS_STAGE_GK_PERSONAL_CONFIG, null, false))
+                .contains(collisionAssessmentId);
+        LearningGoal collisionAssessment = landscapeService.getGoalDefinition(collisionAssessmentId);
+        assertThat(collisionAssessment.getRequires()).contains(CANONICAL_PHYSICS_SIMPLE_COLLISIONS_ID);
+        assertThat(collisionAssessment.getExamData().getCoveredGoalIds())
+                .contains(CANONICAL_PHYSICS_SIMPLE_COLLISIONS_ID);
+        assertThat(learnerService.getMastery(learnerId)
+                .getOrDefault(CANONICAL_PHYSICS_SIMPLE_COLLISIONS_ID, 0.0)).isZero();
+        assertThat(learnerService.getUncompactedRichFrontier(learnerId)).extracting(goal -> goal.id())
+                .contains(CANONICAL_PHYSICS_SIMPLE_COLLISIONS_ID, CANONICAL_PHYSICS_INELASTIC_COLLISIONS_ID);
+
         JsonNode root = objectMapper.readTree(responseBody);
+        assertThat(root.path("levelCompletion").path("assessments").findValuesAsText("goalId"))
+                .contains(collisionAssessmentId);
         JsonNode planned = root.path("goals").path("planned");
         JsonNode goalOptions = root.path("stateMachine").path("goalOptions");
         JsonNode frontier = root.path("frontier");
@@ -1699,8 +1716,8 @@ public class LearnerControllerIntegrationTest {
                 "GK", "61684ca7-b725-534f-944b-c7645cea1792",
                 "LK", "79028c45-90ae-57eb-8016-f5a96af18fa2");
         List<String> sharedPracticeTasks = List.of(
-                "0432a422-401b-5134-bf08-05cfd8c7a366", // E: Messmethoden
-                "841edfdb-5e12-5a37-ab12-552a1d8e92ca", // Q1: Elektrostatik
+                "3791c574-2194-52fa-846b-ee1d4e2c5877", // E: digitale Bewegungsmodelle
+                "716acf20-d882-5152-9735-099876d631b4", // Q1: Coulombkraefte
                 "82feb329-c3bc-58ba-a5b0-6ccdf226dbeb", // Q2: Induktion
                 "22bdd29e-00d3-5d43-97d6-8b442b8bfc8c", // Q3: Fotoeffekt
                 "4daef009-6425-526a-8574-4fa75f28f946"); // Q4: Radioaktivitaet
@@ -1711,7 +1728,9 @@ public class LearnerControllerIntegrationTest {
             Set<String> targets = learnerService.getFilteredAtomicGoalIds(
                     CANONICAL_GYMNASIUM_ROOT_ID, personalCurriculum, CANONICAL_PHYSICS_ROOT_ID, false);
             assertThat(targets).as(profile + " tasks from every phase")
-                    .containsAll(sharedPracticeTasks);
+                    .containsAll(sharedPracticeTasks)
+                    .doesNotContain("0432a422-401b-5134-bf08-05cfd8c7a366",
+                            "841edfdb-5e12-5a37-ab12-552a1d8e92ca");
             List<String> expectedTasks = new ArrayList<>(sharedPracticeTasks);
             for (Map.Entry<String, String> branch : examBranches.entrySet()) {
                 LearningGoal offer = goals.get(branch.getValue());
@@ -1779,10 +1798,11 @@ public class LearnerControllerIntegrationTest {
     }
 
     private JsonNode reviewedSeedFixtureScopes() throws Exception {
-        // Independently replayed before/first/current ID sets, with reviewed per-scope deltas.
+        // Retained native API seed IDs bind the original reviewed baseline and
+        // explicit technical deltas. This transport grants no new content approval.
         // A same-size substitution must fail as well as an incorrect total.
-        return objectMapper.readTree(Path.of("../curricula/DE/Gymnasium/quality/goal-model-review/"
-                + "backend-reviewed-seed-fixture-repair-20261115/seed-scope-comparison.actual.json").toFile())
+        return objectMapper.readTree(Path.of("../contracts/stage-plan-review-evidence/2026-11-16/"
+                + "backend-current-seed-fixtures-v1/seed-scope-comparison.actual.json").toFile())
                 .path("scopes");
     }
 
@@ -1811,22 +1831,22 @@ public class LearnerControllerIntegrationTest {
         // Preserve those seed counts, including local assessments. Full learning
         // totals additionally include the independently checked prerequisite demand.
         String[][] scopes = {
-                { "DE-BB", "250", "250" },
-                { "DE-BE", "246", "246" },
-                { "DE-BW", "276", "276" },
-                { "DE-BY", "233", "233" },
-                { "DE-HB", "224", "224" },
-                { "DE-HE", "326", "351" },
-                { "DE-HH", "246", "246" },
-                { "DE-MV", "245", "245" },
-                { "DE-NI", "245", "245" },
-                { "DE-NW", "245", "245" },
-                { "DE-RP", "265", "277" },
-                { "DE-SH", "261", "267" },
-                { "DE-SL", "248", "248" },
-                { "DE-SN", "245", "245" },
-                { "DE-ST", "245", "245" },
-                { "DE-TH", "246", "246" }
+                { "DE-BB", "259", "259" },
+                { "DE-BE", "256", "256" },
+                { "DE-BW", "304", "304" },
+                { "DE-BY", "245", "245" },
+                { "DE-HB", "233", "233" },
+                { "DE-HE", "345", "375" },
+                { "DE-HH", "256", "256" },
+                { "DE-MV", "256", "256" },
+                { "DE-NI", "256", "256" },
+                { "DE-NW", "256", "256" },
+                { "DE-RP", "291", "309" },
+                { "DE-SH", "293", "297" },
+                { "DE-SL", "259", "259" },
+                { "DE-SN", "256", "256" },
+                { "DE-ST", "256", "256" },
+                { "DE-TH", "257", "257" }
         };
         SoftAssertions softly = new SoftAssertions();
         JsonNode reviewedFixtures = reviewedSeedFixtureScopes();
@@ -1896,12 +1916,12 @@ public class LearnerControllerIntegrationTest {
         // "Ganzrationale Funktionen ueber Term und Graph beschreiben" is
         // preparation only outside BY, NW and NI and leaves S in all six scopes.
         String[][] scopes = {
-                { "DE-HE", "GK", "751", "756" },
-                { "DE-HE", "LK", "890", "895" },
-                { "DE-RP", "GK", "685", "693" },
-                { "DE-RP", "LK", "799", "807" },
-                { "DE-SH", "GK", "667", "674" },
-                { "DE-SH", "LK", "764", "771" }
+                { "DE-HE", "GK", "779", "793" },
+                { "DE-HE", "LK", "918", "932" },
+                { "DE-RP", "GK", "716", "726" },
+                { "DE-RP", "LK", "830", "840" },
+                { "DE-SH", "GK", "711", "715" },
+                { "DE-SH", "LK", "809", "813" }
         };
         SoftAssertions softly = new SoftAssertions();
         JsonNode reviewedFixtures = reviewedSeedFixtureScopes();
@@ -2022,16 +2042,16 @@ public class LearnerControllerIntegrationTest {
                 { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-SN", "65", "65" },
                 { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-ST", "63", "63" },
                 { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-TH", "67", "67" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-BW", "155", "155" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-BY", "123", "123" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-HB", "144", "144" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-HE", "154", "154" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-HH", "144", "144" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-MV", "150", "150" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-SL", "154", "154" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-SN", "154", "154" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-ST", "150", "150" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-TH", "148", "148" }
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-BW", "159", "159" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-BY", "128", "128" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-HB", "148", "148" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-HE", "158", "158" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-HH", "148", "148" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-MV", "154", "154" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-SL", "158", "158" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-SN", "158", "158" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-ST", "154", "154" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-TH", "152", "152" }
         };
         // The verified applicability-cache refresh exposes these already-authored
         // Sek-I targets. Bind their identities as well as both duration totals.
@@ -2046,11 +2066,11 @@ public class LearnerControllerIntegrationTest {
                         "965ca297-5dbf-5e58-b5f0-6559a4433646", "c441d9e8-d9d9-5e55-a189-a37345541321"),
                 CANONICAL_CHEMISTRY_ID + ":DE-NI", Set.of(
                         "7964cb36-e9b1-5176-9426-a82041a5b72f", "8576b82b-811a-5e13-b5dc-ec5d42030565",
-                        "965ca297-5dbf-5e58-b5f0-6559a4433646", "fcaf8c9b-bd81-552e-9d91-43649895471e"),
-                CANONICAL_PHYSICS_ID + ":DE-BY", Set.of(
-                        "00e2ddfe-18c1-57a4-86ad-ee467a1a3d61", "1ab5f599-0927-579d-94cc-feecdf3b5603",
-                        "35dd0a33-e5d5-53b9-8438-3d339173db1b", "3f477f0d-4f79-5eed-8671-fb2667d60910",
-                        "6367d45e-919e-4c19-bcd9-7770a2d51139", "a24c41ce-68c5-56a7-8235-ef9a7dba7042"));
+                        "965ca297-5dbf-5e58-b5f0-6559a4433646", "fcaf8c9b-bd81-552e-9d91-43649895471e"));
+        Set<String> formerBroadBavarianPhysicsSeeds = Set.of(
+                "00e2ddfe-18c1-57a4-86ad-ee467a1a3d61", "1ab5f599-0927-579d-94cc-feecdf3b5603",
+                "35dd0a33-e5d5-53b9-8438-3d339173db1b", "3f477f0d-4f79-5eed-8671-fb2667d60910",
+                "6367d45e-919e-4c19-bcd9-7770a2d51139", "a24c41ce-68c5-56a7-8235-ef9a7dba7042");
         SoftAssertions softly = new SoftAssertions();
         JsonNode reviewedFixtures = reviewedSeedFixtureScopes();
 
@@ -2096,6 +2116,12 @@ public class LearnerControllerIntegrationTest {
             assertThat(jsonTextValues(g9State.path("activeFilters"))).contains(jurisdiction, "G9", "GK");
             Set<String> refreshedTargetIds = refreshedApplicabilityTargets.getOrDefault(
                     subjectLandscapeId + ":" + jurisdiction, Set.of());
+            if (CANONICAL_PHYSICS_ID.equals(subjectLandscapeId) && "DE-BY".equals(jurisdiction)) {
+                softly.assertThat(g8Projection.seedAtomicGoalIds()).doesNotContainAnyElementsOf(formerBroadBavarianPhysicsSeeds);
+                softly.assertThat(g9Projection.seedAtomicGoalIds()).doesNotContainAnyElementsOf(formerBroadBavarianPhysicsSeeds);
+                softly.assertThat(g8Projection.expectedLearningGoalIds()).doesNotContainAnyElementsOf(formerBroadBavarianPhysicsSeeds);
+                softly.assertThat(g9Projection.expectedLearningGoalIds()).doesNotContainAnyElementsOf(formerBroadBavarianPhysicsSeeds);
+            }
             if (!refreshedTargetIds.isEmpty()) {
                 softly.assertThat(g8Projection.seedAtomicGoalIds())
                         .as(subject + " " + jurisdiction + " G8 refreshed applicability seeds").containsAll(refreshedTargetIds);

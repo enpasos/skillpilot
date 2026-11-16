@@ -1,10 +1,68 @@
-# Stage-plan authoring contract candidate
+# Common curriculum-package 1.3 candidate
 
-This directory currently contains the stage-plan foundation for works F1,
-F2 and F6 of the [15 November handover](../../../docs/dev/stage-plan-units-handover-2026-11-15.md).
-It is not a released curriculum-package runtime version. Package exporters,
-Java consumers and the shared production index reader still need explicit integration;
-the existing 1.0, 1.1 and 1.2 contracts remain unchanged.
+This unpublished common version contains the stage-plan foundation for works
+F1, F2 and F6 of the [15 November handover](../../../docs/dev/stage-plan-units-handover-2026-11-15.md)
+and the required assessment-material runtime lane. It is one evolving 1.3
+contract. The existing 1.0, 1.1 and 1.2 schemas and profiles remain unchanged;
+the exact 1.2 learning-unit landscape and review definitions are pinned
+components of the 1.3 package profile. Superseded completion 1.1 is not imported.
+
+The runtime candidate adds `assessmentMaterialsV1` alongside `learningUnitsV1`.
+Its closed resource index embeds original SVG/PNG task stimuli as required
+resources, including stimuli referenced directly in either task language.
+Each exact original URL has one resource and binary record. The real declaring
+goal owns that record, or the deterministic first actual task user when no
+resource link declares it. Ownership is not exclusive usage or assessed
+coverage. Every task-to-stimulus association is reconstructed independently;
+shared use never changes task bodies, original URLs or image bytes.
+Exactly those required material records are additional typed roots of the
+runtime package dependency closure. Missing, unused, unowned or unresolved task
+images fail validation. These payload roots are distinct from pedagogical
+`requires`, personal seed targets S and the learner's acquisition basis L;
+exporting an image never adds a learning prerequisite or learner result.
+
+SVG receives bounded static-content validation without DTD/entity/network
+resolution, scripts, foreign active elements, events or external references.
+Only inert Matplotlib SVG 1.1 declaration syntax and local fragment references
+are supported. PNG uses its exact signature. Assessment media provenance binds
+real task sources and the material declaration; it never invents an image
+prompt or grants redistribution approval. The legacy visualization evidence
+requirements remain strict. `generate_curriculum_package_v13_contracts.py`
+derives the new candidate without rewriting earlier contracts.
+
+The package manifest retains its existing general `skillpilot-authored`
+provenance class. The embedded redistribution record preserves the more
+specific assessment-material subtype and its exact source evidence; this
+projection changes neither the review status nor the license decision.
+
+The two JSON authoring sources named in the current build inputs travel as
+provenance records with their original bytes. Exact file overrides keep them
+in the SkillPilot content class with pending redistribution review; ordinary
+technical provenance and the existing text-only documentation role are
+unchanged. Neither source becomes a runtime landscape or learner target.
+
+Model/schema checks alone are not runtime acceptance. Native Java/browser
+checks and the independent package validator must cover the new lane. No real
+Land plan is activated by it, the shared production stage-plan index still
+needs its explicit integration, and no 1.3 FWU-OWL roundtrip or publication is
+claimed by JSON model conformance. The existing stage-plan and learning-unit
+acceptance gates remain required.
+
+Readiness evaluation selects this exact repository-pinned contract explicitly
+with `--contracts-dir contracts/curriculum-package/v1.3`. Its separate policy
+and report schema are reproducibly derived by
+`generate_curriculum_package_v13_readiness.py`; the original readiness policy,
+all thirteen blocking checks, and the pinned fifteen-check package-consumer
+runner remain unchanged. This candidate separately pins runner 1.1.0 and its
+versioned browser helper: the application must request the exact learner-scoped
+landscape closure for the selected learner and subject with a successful GET.
+The former helper expected the general landscape route, although the current
+application correctly uses the learner-scoped route. All fifteen functional
+checks, browser failure checks and isolation requirements remain mandatory;
+the earlier runner and its helper bytes are retained unchanged. A supplied consumer report still cannot establish
+acceptance, and unresolved human redistribution decisions still prevent
+publication. The default evaluator continues to select runtime 1.0; selecting
+1.3 never silently reinterprets an earlier package.
 
 ## Authority and meaning
 

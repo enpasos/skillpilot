@@ -1,0 +1,64 @@
+PASS readiness fixture legacy-subject-export-remains-legacy: not-ready-legacy
+PASS readiness fixture single-target-marker-is-invalid: invalid
+PASS readiness fixture explicit-legacy-readiness-marker-remains-legacy: not-ready-legacy
+PASS readiness fixture formal-contract-is-still-incomplete: not-ready-incomplete
+PASS readiness fixture unsupported-manifest-remains-unsupported: unsupported
+PASS redistribution review is valid-but-not-ready
+PASS readiness semantic guard rejects forged ready decision
+PASS readiness semantic guard rejects self-declared complete evaluator
+PASS readiness semantic guard rejects candidate/unsupported decision
+PASS readiness semantic guard rejects incomplete check set
+PASS readiness semantic guard rejects input-integrity pass without artifact hash
+PASS readiness semantic guard rejects readiness policy hash binding
+PASS readiness semantic guard rejects consumer-evidence schema hash binding
+PASS readiness rejects null legacy annotation manifestDialect
+PASS readiness rejects null legacy annotation targetRuntimeReadiness
+PASS malformed target produces structured invalid report
+PASS readiness policy guard rejects report-schema hash drift
+PASS readiness policy guard rejects consumer-report-schema hash drift
+PASS readiness policy guard rejects consumer-runner hash drift
+PASS readiness policy guard rejects evaluator version drift
+PASS readiness policy guard rejects target/profile drift
+PASS readiness policy guard rejects check-order drift
+PASS consumer assembly/evidence tree digest is canonical
+PASS bounded raw JSON parser rejects 3 cases
+PASS generated safe target ZIP inventory
+PASS canned external consumer report remains unattested
+PASS retained consumer work directory path policy fails closed
+PASS consumer/readiness outputs reject parent/final symlinks and write atomically
+PASS consumer/readiness outputs are disjoint from ZIP/store and aliases
+PASS retained consumer work cannot overlap trusted inputs/outputs
+PASS default consumer work is private/ephemeral and explicit safe work is retained
+PASS pinned-runner failure remains not evaluated
+PASS pinned-runner timeout is bounded and remains not evaluated
+PASS unpinned runner cannot launder canned consumer evidence; fresh output persistence replaces the requested destination
+PASS bound hermetic package-only consumer evidence
+PASS consumer gate can pass without overriding open human release gates
+PASS consumer evidence rejects 29 binding/isolation/functional forgeries
+PASS consumer evidence binds the pinned runner exit status
+PASS consumer evidence replay against a distinct safe ZIP is rejected
+PASS noncanonical consumer evidence is rejected with exact byte binding
+PASS ambiguous consumer evidence yields a structured failed gate
+PASS independent validator structured gate mapping
+PASS independent validator report guard rejects validator identity
+PASS independent validator report guard rejects artifact hash binding
+PASS independent validator report guard rejects manifest hash binding
+PASS independent validator report guard rejects closure digest binding
+PASS independent validator report guard rejects definition index binding
+PASS independent validator report guard rejects incomplete gate set
+PASS independent validator report guard rejects failure without diagnostics
+PASS independent validator report guard rejects exit/report mismatch
+PASS independent validator process maps to not-evaluated: successful exit without report
+PASS independent validator process maps to not-evaluated: unexpected exit code
+PASS independent validator process maps to not-evaluated: bounded timeout
+PASS unsafe legacy ZIP is invalid before dialect readiness
+PASS reserved ZIP path rejected
+PASS ZIP file/directory prefix collision rejected
+PASS nested archive path rejected
+PASS nested archive magic rejected
+PASS normalized duplicate SHA256SUMS path rejected
+PASS compression-ratio bomb rejected
+PASS stat limits precede expensive input hashing
+PASS readiness CLI help documents retained consumer work
+PASS readiness exit matrix (16 cases)
+Curriculum package readiness self-test passed: 5 manifest fixture(s), 6 policy-tamper cases, 7 readiness-report forgeries, 8 validator-report forgeries, 29 consumer-report forgeries, 3 validator-process failures, 3 raw JSON cases, 7 adversarial ZIPs, 2 early-limit inputs, and exit matrix.

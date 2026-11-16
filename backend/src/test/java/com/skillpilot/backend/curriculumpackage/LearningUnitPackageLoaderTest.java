@@ -31,6 +31,122 @@ class LearningUnitPackageLoaderTest {
             "https://skillpilot.com/schemas/curriculum-package/v1.2/learning-unit-coverage-review.schema.json";
     static final String LANDSCAPE = "data/canonical/landscape.json";
     static final String CATALOG = "data/runtime/catalog.json";
+    static final String RESOURCE_INDEX = "data/resources/resource-index.json";
+    static final String STIMULUS_PATH = "assets/assessment-materials/math/functions.svg";
+    static final byte[] STIMULUS = "<svg xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M0 0L1 1\"/></svg>"
+            .getBytes(StandardCharsets.UTF_8);
+
+    @Test void runtime13RetainsLearningUnitsAndServesExactRequiredAssessmentSvg() throws Exception {
+        Fixture fixture = materialFixture();
+        var snapshot = fixture.loader().load();
+        assertThat(snapshot.packages().getFirst().capabilities()).contains("learningUnitsV1", "assessmentMaterialsV1");
+        var reader = new CurriculumPackageArtifactReader(new CurriculumPackageFileReader());
+        var domain = PackageCurriculumDomainState.load(snapshot, reader, mapper);
+        var state = PackageCurriculumResourceState.load(snapshot, domain, reader);
+        assertThat(state.resolvePublicAsset("/" + STIMULUS_PATH)).isPresent().get()
+                .satisfies(resource -> {
+                    assertThat(resource.bytes()).isEqualTo(STIMULUS);
+                    assertThat(resource.mediaType()).isEqualTo("image/svg+xml");
+                });
+        Files.write(fixture.root.resolve(STIMULUS_PATH), "changed".getBytes(StandardCharsets.UTF_8));
+        assertThatThrownBy(() -> state.resolvePublicAsset("/" + STIMULUS_PATH))
+                .isInstanceOf(CurriculumPackageException.class);
+    }
+
+    @Test void materialCapabilityCannotBeUsedInRuntime12OrOmittedFromRuntime13() throws Exception {
+        Fixture fixture = materialFixture();
+        ObjectNode catalog = fixture.read(CATALOG);
+        catalog.put("$schema", "https://skillpilot.com/schemas/curriculum-package/v1.2/runtime-catalog.schema.json")
+                .put("catalogVersion", "1.2").put("runtimeContractVersion", "1.2");
+        fixture.write(CATALOG, catalog);
+        fixture.manifest.put("runtimeContractVersion", "1.2").put("releaseProfile", "full-standalone-learning-units-v1");
+        assertThatThrownBy(() -> fixture.loader().load()).hasMessageContaining("exact runtime 1.3");
+        Fixture missing = materialFixture();
+        ObjectNode missingCatalog = missing.read(CATALOG);
+        ArrayNode capabilities = missingCatalog.withArray("capabilities");
+        capabilities.remove(capabilities.size() - 1);
+        missing.write(CATALOG, missingCatalog);
+        assertThatThrownBy(() -> missing.loader().load()).hasMessageContaining("exact runtime 1.3");
+    }
+
+    @Test void materialCannotEscapeItsOwnerPathOrDeclaredBytes() throws Exception {
+        for (String field : List.of("publicUrl", "sha256", "ownerGoalId", "bytes")) {
+            Fixture fixture = materialFixture();
+            ObjectNode index = fixture.read(RESOURCE_INDEX);
+            ObjectNode material = (ObjectNode) index.withArray("resources").get(0);
+            if (field.equals("bytes")) material.put(field, STIMULUS.length + 1);
+            else material.put(field, field.equals("publicUrl") ? "/assets/assessment-materials/other.svg" : "wrong");
+            fixture.write(RESOURCE_INDEX, index);
+            assertThatThrownBy(() -> fixture.loader().load()).isInstanceOf(CurriculumPackageException.class);
+        }
+    }
+
+    @Test void bytesReboundToAnActiveSvgAreStillRejectedByResourceLoading() throws Exception {
+        Fixture fixture = materialFixture();
+        byte[] active = "<svg xmlns=\"http://www.w3.org/2000/svg\"><script/></svg>".getBytes(StandardCharsets.UTF_8);
+        Files.write(fixture.root.resolve(STIMULUS_PATH), active);
+        ObjectNode index = fixture.read(RESOURCE_INDEX);
+        ((ObjectNode) index.withArray("resources").get(0)).put("bytes", active.length)
+                .put("sha256", CurriculumPackageFileReader.sha256(active));
+        fixture.write(RESOURCE_INDEX, index);
+        var snapshot = fixture.loader().load();
+        var reader = new CurriculumPackageArtifactReader(new CurriculumPackageFileReader());
+        var domain = PackageCurriculumDomainState.load(snapshot, reader, mapper);
+        assertThatThrownBy(() -> PackageCurriculumResourceState.load(snapshot, domain, reader))
+                .hasMessageContaining("active element");
+    }
+
+    @Test void pngAssessmentMaterialKeepsExactBytesAndRejectsDisguisedSvg() throws Exception {
+        byte[] png = java.util.Base64.getDecoder().decode(
+                "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+aZ1sAAAAASUVORK5CYII=");
+        for (byte[] payload : List.of(png, STIMULUS)) {
+            Fixture fixture = materialFixture("assets/assessment-materials/math/plot.png", "image/png", payload);
+            var snapshot = fixture.loader().load();
+            var reader = new CurriculumPackageArtifactReader(new CurriculumPackageFileReader());
+            var domain = PackageCurriculumDomainState.load(snapshot, reader, mapper);
+            if (payload == png) {
+                var state = PackageCurriculumResourceState.load(snapshot, domain, reader);
+                assertThat(state.resolvePublicAsset("/assets/assessment-materials/math/plot.png")).isPresent().get()
+                        .satisfies(resource -> assertThat(resource.bytes()).isEqualTo(png));
+            } else {
+                assertThatThrownBy(() -> PackageCurriculumResourceState.load(snapshot, domain, reader))
+                        .hasMessageContaining("Invalid assessment PNG payload");
+            }
+        }
+    }
+
+    private Fixture materialFixture() throws Exception {
+        return materialFixture(STIMULUS_PATH, "image/svg+xml", STIMULUS);
+    }
+
+    private Fixture materialFixture(String materialPath, String mediaType, byte[] stimulus) throws Exception {
+        Fixture fixture = fixture(true);
+        ObjectNode catalog = fixture.read(CATALOG);
+        catalog.put("$schema", "https://skillpilot.com/schemas/curriculum-package/v1.3/runtime-catalog.schema.json")
+                .put("catalogVersion", "1.3").put("runtimeContractVersion", "1.3");
+        catalog.withArray("capabilities").add("assessmentMaterialsV1");
+        ObjectNode resource = (ObjectNode) catalog.withArray("resources").get(0);
+        resource.put("resourceKind", "assessment-material").put("artifactPath", materialPath)
+                .put("mediaType", mediaType);
+        fixture.write(CATALOG, catalog);
+        ObjectNode index = fixture.read(RESOURCE_INDEX);
+        index.put("$schema", "https://skillpilot.com/schemas/curriculum-package/v1.3/resource-index.schema.json")
+                .put("indexFormatVersion", "1.3");
+        ((ObjectNode) index.withArray("resources").get(0)).put("resourceKind", "assessment-material")
+                .put("resourceType", "image").put("artifactPath", materialPath).put("publicUrl", "/" + materialPath)
+                .put("mediaType", mediaType).put("bytes", stimulus.length)
+                .put("sha256", CurriculumPackageFileReader.sha256(stimulus));
+        fixture.write(RESOURCE_INDEX, index);
+        Files.createDirectories(fixture.root.resolve(materialPath).getParent());
+        Files.write(fixture.root.resolve(materialPath), stimulus);
+        for (JsonNode file : fixture.manifest.withArray("files")) {
+            if (file.path("path").asText().equals("assets/fixture.png")) {
+                ((ObjectNode) file).put("path", materialPath).put("mediaType", mediaType);
+            }
+        }
+        fixture.manifest.put("runtimeContractVersion", "1.3").put("releaseProfile", "full-standalone-v1.3");
+        return fixture;
+    }
 
     @Test void loadsRuntime12PackageWithLearningUnitsAndRetainsReviewRecords() throws Exception {
         Fixture fixture = fixture(true);
