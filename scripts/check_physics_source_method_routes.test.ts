@@ -104,7 +104,15 @@ test('28 cross-stage views teach the methods once in Sek I; 28 Sek-II views reta
     assert.equal(branches.length, 1, `${path}: exactly one acquisition branch`)
     const branch = branches[0]
     const sekI = structures(view.rootNodes).find(node => node.id === 'physics-seki')
-    assert(sekI?.children.includes(branch), `${path}: preparation belongs to the existing Sek-I section`)
+    if (view.scope.jurisdiction === 'DE-HE') {
+      const year7 = sekI?.children.find(node => node.kind === 'structure' && node.id === 'physics-he-seki-j7')
+      assert(year7?.kind === 'structure', `${path}: HE G9 acquisition starts in year 7`)
+      const methodTopic = year7.children.find(node => node.kind === 'structure' && node.id === 'physics-he-seki-methods')
+      assert(methodTopic?.kind === 'structure' && methodTopic.children.includes(branch),
+        `${path}: exactly the existing method branch belongs to the year-7 method topic`)
+    } else {
+      assert(sekI?.children.includes(branch), `${path}: preparation belongs to the existing Sek-I section`)
+    }
     const physicsRoot = structures(view.rootNodes).find(node => node.id === 'physics-root')!
     const sekII = physicsRoot.children.find(node => node.kind === 'structure' && node.id.startsWith('physics-sekii'))
     assert(sekII, `${path}: the dependent Sek-II section remains present`)

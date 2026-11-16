@@ -589,10 +589,13 @@ assert.equal(
 )
 ;[
   hesseLkProjectionRegressionIds.orthogonalProjection,
-  hesseLkProjectionRegressionIds.reflectionArea,
+  // The Hessian topic placement splits this area where its atomic needs
+  // interleave with the surrounding geometry. Require every actual skill,
+  // including its fourth atom, independently of the navigation wrapper.
   'fcd1d180-ddce-5408-8c5d-70e417b179e7',
   'a97c7cce-1343-5d04-926f-4a4f323b3c21',
   '985d5529-a586-50eb-bd7f-2db2be8906d1',
+  '976def9e-c81c-5875-9d87-a1024318ce48',
 ].forEach((goalId) => {
   assert.equal(
     compositionViewExposesGoal(
@@ -601,7 +604,7 @@ assert.equal(
       goalId,
     ),
     true,
-    `The Hessen LK view must expose the canonical target subtree goal ${goalId}.`,
+    `The Hessen LK view must expose the canonical target skill ${goalId}.`,
   )
 })
 

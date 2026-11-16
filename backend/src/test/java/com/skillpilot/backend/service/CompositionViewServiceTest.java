@@ -1644,6 +1644,9 @@ class CompositionViewServiceTest {
         Map<String, String> exams = Map.of(
                 "GK", "61684ca7-b725-534f-944b-c7645cea1792",
                 "LK", "79028c45-90ae-57eb-8016-f5a96af18fa2");
+        Map<String, List<String>> examParts = Map.of(
+                "GK", List.of("abe032d3-97dd-5eaf-964e-0439cea27ac2", "f4eac786-a8e1-5f23-aedf-17bc70fc347f"),
+                "LK", List.of("ed3a6f6b-2ca3-51c2-8f00-58e11eb02401", "320732e8-1c44-5fa4-9a47-972243cfc32a"));
         for (String durationModel : List.of("G8", "G9")) {
             for (String profile : List.of("GK", "LK", "GK+LK")) {
                 String context = "Hessen Physics " + durationModel + " " + profile;
@@ -1670,21 +1673,19 @@ class CompositionViewServiceTest {
                             .containsEntry("label", "Sekundarstufe II ("
                                     + ("GK+LK".equals(profile) ? "GK + LK" : profile) + ")");
                     List<Map<String, Object>> children = (List<Map<String, Object>>) stage.get("children");
-                    // Preparation assessments are an additional upper-stage
-                    // contribution. They do not replace or reorder the five
-                    // existing source-backed phase sections.
-                    assertThat(children).filteredOn(node -> "structure".equals(node.get("kind"))
-                                    && List.of("physics-e-phase", "physics-q1", "physics-q2", "physics-q3", "physics-q4").contains(node.get("id")))
+                    assertThat(children).filteredOn(node -> "structure".equals(node.get("kind")))
                             .extracting(node -> node.get("id"))
-                            .containsExactly("physics-e-phase", "physics-q1", "physics-q2", "physics-q3", "physics-q4");
-                    List<Map<String, Object>> examEntries = children.stream()
-                            .filter(node -> node.get("goalId") instanceof String id && exams.containsValue(id)).toList();
+                            .containsExactly("physics-e-phase", "physics-q1", "physics-q2", "physics-q3", "physics-q4", "physics-he-abitur");
+                    Map<String, Object> abitur = children.stream()
+                            .filter(node -> "physics-he-abitur".equals(node.get("id"))).findFirst().orElseThrow();
+                    assertThat(abitur).containsEntry("kind", "structure").containsEntry("label", "Abiturprüfung");
+                    List<Map<String, Object>> examEntries = (List<Map<String, Object>>) abitur.get("children");
                     List<String> expectedProfiles = "GK+LK".equals(profile) ? List.of("GK", "LK") : List.of(profile);
-                    assertThat(examEntries).extracting(node -> node.get("displayLabel"))
-                            .containsExactlyInAnyOrderElementsOf(expectedProfiles.stream()
-                                    .map(course -> "Abiturprüfung Physik (" + course + ")").toList());
+                    assertThat(examEntries).allSatisfy(node -> assertThat(node).containsEntry("kind", "canonicalSubtree"));
                     assertThat(examEntries).extracting(node -> node.get("goalId"))
-                            .containsExactlyInAnyOrderElementsOf(expectedProfiles.stream().map(exams::get).toList());
+                            .containsExactlyInAnyOrderElementsOf(expectedProfiles.stream().flatMap(course -> examParts.get(course).stream()).toList());
+                    assertThat(flattenCompositionNodes(examEntries)).noneSatisfy(node ->
+                            assertThat(node.get("goalId")).isIn(exams.values()));
                 });
                 Map<String, Object> stage = stages.getFirst();
                 List<Map<String, Object>> allNodes = flattenCompositionNodes(List.of(stage));
@@ -1694,16 +1695,15 @@ class CompositionViewServiceTest {
                         "9dd7c596-a751-523c-acba-916f73e900a5", // Q2
                         "b47a2a23-b56d-5433-9036-075d6bb7c782", // Q3
                         "85bbad98-2f48-5d64-85c4-ab6cf67f24c2")); // Q4
-                assessmentBranches.addAll(("GK+LK".equals(profile) ? List.of("GK", "LK") : List.of(profile))
-                        .stream().map(exams::get).toList());
                 for (String branchId : assessmentBranches) {
                     assertThat(allNodes).as(context + " expandable assessment branch " + branchId)
                             .filteredOn(node -> branchId.equals(node.get("goalId"))
-                                    || ("existing-assessment-path-" + branchId).equals(node.get("id")))
+                                    || ("existing-assessment-path-" + branchId).equals(node.get("id"))
+                                    || ("he-physics-topic-" + branchId).equals(node.get("id")))
                             .singleElement().satisfies(node -> {
                                 if ("canonicalSubtree".equals(node.get("kind"))) {
                                     assertThat(node).containsEntry("goalId", branchId);
-                                } else {
+                                } else if (("existing-assessment-path-" + branchId).equals(node.get("id"))) {
                                     assertThat(node).containsEntry("kind", "structure")
                                             .containsEntry("id", "existing-assessment-path-" + branchId);
                                     // The Q1 collection was materialized when its
@@ -1714,6 +1714,10 @@ class CompositionViewServiceTest {
                                     assertThat(flattenCompositionNodes((List<Map<String, Object>>) node.get("children")))
                                             .extracting(child -> child.get("goalId"))
                                             .contains("716acf20-d882-5152-9735-099876d631b4");
+                                } else {
+                                    assertThat(node).containsEntry("kind", "structure")
+                                            .containsEntry("id", "he-physics-topic-" + branchId);
+                                    assertThat((List<Map<String, Object>>) node.get("children")).isNotEmpty();
                                 }
                             });
                 }
