@@ -1,23 +1,30 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: Apache-2.0
-"""Regroup only the four retained Hessen Physics views; never author goal content.
+"""Regroup Hessen Physics views; never author goal content.
 
 The existing views are the reviewed scope inputs. This bounded, idempotent
 authoring migration opens a canonical group only where its parts need different
 learning places. --check verifies that replay changes neither placements nor
-atomic target/support roles. The HE duration policy remains G9-only.
+atomic target/support roles. --duration-views additionally derives explicit G8/G9
+views from the retained reviewed scopes without writing those four input views.
 """
 import argparse
 import copy
+import hashlib
 import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 DIRECTORY = ROOT / "curricula/DE/Gymnasium/composition-views/physik"
 FILES = [f"de-he-{prefix}{profile}.view.json" for prefix in ("", "sekii-") for profile in ("gk", "lk")]
+G8_SOURCE = ROOT / "curricula/DE/Gymnasium/input/HE/lower-secondary/source-extraction/DE_HE_PHYSIK_SEKI_G8.source-extraction.json"
+G8_SOURCE_SHA256 = "f7d038fb1c3aba9e4bea7b29e21431f49d138cee6297b048cc9024267337217e"
 GOALS = {}
+GOAL_OWNERS = {}
 for source in (ROOT / "curricula/DE/Gymnasium/canonical").glob("*.json"):
-    GOALS.update({goal["id"]: goal for goal in json.loads(source.read_text())["goals"]})
+    document = json.loads(source.read_text())
+    GOALS.update({goal["id"]: goal for goal in document["goals"]})
+    GOAL_OWNERS.update({goal["id"]: document["landscapeId"] for goal in document["goals"]})
 
 
 def walk(nodes):
@@ -229,7 +236,28 @@ def generate(view):
                 years[index]["children"].append(practice)
             practice["children"].append(task)
 
-    upper = root if view["scope"]["stage"] == "SekII" else next(node for node in root["children"] if node.get("id", "").startswith("physics-sekii-"))
+    if view["scope"]["stage"] == "SekII":
+        stage_id = "physics-sekii-" + view["scope"]["courseProfile"].lower()
+        existing = find(stage_id)
+        if existing:
+            upper = existing[2]
+        else:
+            upper = structure(stage_id, root["label"], root["children"])
+            if "labelEn" in root:
+                upper["labelEn"] = root["labelEn"]
+            root["children"] = [upper]
+        root["label"], root["labelEn"] = "Physik", "Physics"
+        # A sole subject wrapper is anchored onto the existing canonical root.
+        # Keep its global support records outside the stage but inside that
+        # authoring wrapper, so the product exposes Physik -> SekII directly.
+        extra_roots = [node for node in result["rootNodes"] if node is not root]
+        if any(node.get("projectionRole") != "prerequisiteOnly"
+               for node in walk(extra_roots) if node["kind"] != "structure"):
+            raise ValueError("Upper-only Physics has an unexpected target outside its subject root")
+        root["children"].extend(extra_roots)
+        result["rootNodes"] = [root]
+    else:
+        upper = next(node for node in root["children"] if node.get("id", "").startswith("physics-sekii-"))
     phases = [find(identifier)[2] for identifier in ("physics-e-phase", "physics-q1", "physics-q2", "physics-q3", "physics-q4")]
     phases[0]["label"] = "Einführungsphase (E1/E2): Mechanik"
     # Existing independently reviewed supplements retain their field wrappers.
@@ -244,6 +272,14 @@ def generate(view):
             if identifier == "physics-final-diode-sekii":
                 node["label"], node["labelEn"] = "Dioden", "Diodes"
             field(label)["children"].append(node)
+    if view["scope"]["stage"] == "SekII":
+        # In an upper-only map, necessary SekI atoms are acquired beside their
+        # first actual consumer. Keeping late risk evaluation inside the same
+        # reaction bundle coarsens that genuine DAG into a visible cycle:
+        # reaction foundations -> applications -> risk evaluation -> bundle.
+        # The risk goal remains in the same reviewed Q4 nuclear-physics field.
+        risk = take("bb5c5eab-2fc1-5336-b8cf-14d147695487")
+        field("Kernphysik")["children"].append(risk)
     for phase in phases:
         # Each canonical field lists its parts, never its identically named root.
         for index, node in enumerate(phase["children"]):
@@ -365,16 +401,221 @@ def sort_tree(nodes, atoms):
     nodes[:] = ordered
 
 
+def check_g8_working_copy(path, expected_digest):
+    """Official PDFs are optional ignored caches; a supplied copy must be exact.
+
+    The committed extraction pins the official URL and digest for reproduction.
+    Deterministic authoring/CI never downloads a source or requires its cache.
+    """
+    if not path.exists():
+        return False
+    if hashlib.sha256(path.read_bytes()).hexdigest() != expected_digest:
+        raise ValueError("G8 Physics source digest mismatch")
+    return True
+
+
+def generate_g8(view):
+    """Use the official G8 topic/year placement, retaining the reviewed scope.
+
+    This is deliberately independent of the G9 regrouping. The input is a
+    reviewed CrossStage view; only its SekI children and duration identity change.
+    Source years stay in the extraction even when a real prerequisite needs an
+    earlier acquisition place. No source/goal/prerequisite record is rewritten.
+    """
+    if hashlib.sha256(G8_SOURCE.read_bytes()).hexdigest() != G8_SOURCE_SHA256:
+        raise ValueError("G8 Physics placement extraction digest mismatch")
+    source = json.loads(G8_SOURCE.read_text())
+    pdf = ROOT / source["sourceDocument"]["path"]
+    check_g8_working_copy(pdf, source["sourceDocument"]["sha256"])
+    if view["scope"].get("stage") != "CrossStage" or view["scope"].get("jurisdiction") != "DE-HE":
+        raise ValueError("G8 Physics authoring requires a reviewed HE CrossStage view")
+    result = copy.deepcopy(view)
+    result["viewId"] = "de-he-gym-physics-" + view["scope"]["courseProfile"].lower() + "-g8"
+    result["scope"]["durationModel"] = "G8"
+    before = role_atoms(view)
+    stage = next(node for node in walk(result["rootNodes"]) if node.get("id") == "physics-seki")
+    original_stage = copy.deepcopy(stage)
+    shifts = []
+
+    def atoms(node):
+        if node.get("projectionRole") == "prerequisiteOnly":
+            return set()
+        if node["kind"] == "structure":
+            return set().union(*(atoms(child) for child in node["children"])) if node["children"] else set()
+        def descend(identifier):
+            children = GOALS[identifier].get("contains", [])
+            return set().union(*(descend(child) for child in children)) if children else {identifier} & before["target"]
+        return descend(node["goalId"])
+
+    def take(identifier, nodes=None):
+        siblings = stage["children"] if nodes is None else nodes
+        for index, node in enumerate(siblings):
+            if node.get("id", node.get("goalId")) == identifier:
+                return siblings.pop(index)
+            if node["kind"] == "structure":
+                found = take(identifier, node["children"])
+                if found:
+                    return found
+        return None
+
+    def extract(identifier, nodes=None):
+        siblings = stage["children"] if nodes is None else nodes
+        for index, node in enumerate(siblings):
+            if identifier not in atoms(node):
+                continue
+            if node.get("goalId") == identifier and not GOALS[identifier].get("contains"):
+                return siblings.pop(index)
+            if node["kind"] != "structure":
+                original = node["goalId"]
+                children = [{"kind": "canonicalSubtree", "goalId": child,
+                             **({"projectionRole": node["projectionRole"]} if "projectionRole" in node else {})}
+                            for child in GOALS[original].get("contains", [])]
+                node = structure("physics-he-g8-open-" + original, GOALS[original]["title"], children)
+                siblings[index] = node
+            found = extract(identifier, node["children"])
+            if found:
+                return found
+        return None
+
+    # Exercises do not determine the source year of their prerequisites. Place
+    # them after their latest required selected learning goal after the repair.
+    tasks = [extract(identifier) for identifier in sorted(atoms(stage))
+             if GOALS[identifier]["title"].startswith("Prüfungsaufgabe:")]
+    years = [structure(f"physics-he-seki-j{year}-g8", f"Jahrgangsstufe {year}G", []) for year in range(6, 10)]
+    source_placement = {}
+    for topic in source["placementTopics"]:
+        children = []
+        for identifier in topic["placementReferences"]:
+            node = take(identifier)
+            if node is None:
+                raise ValueError(f"{view['viewId']}: missing G8 authoring reference {identifier}")
+            children.append(node)
+            for atom in atoms(node):
+                if atom in source_placement:
+                    raise ValueError("Duplicate G8 source placement for " + atom)
+                source_placement[atom] = {"topicCode": topic["topicCode"], "year": topic["year"],
+                                          "printedPage": topic["printedPage"]}
+        label = topic["topicCode"] + " " + topic["title"] + (" (fakultativ)" if topic["status"] == "optional" else "")
+        years[topic["year"] - 6]["children"].append(structure(
+            "physics-he-g8-topic-" + topic["topicCode"].lower().replace(".", "-"), label, children))
+    if atoms(stage):
+        raise ValueError("Unassigned reviewed G8 targets: " + str(sorted(atoms(stage))))
+    # Preserve all authored support references; only emptied structure shells go.
+    support = [copy.deepcopy(node) for node in walk(stage["children"])
+               if node["kind"] != "structure"]
+    stage["children"] = years + support
+    pull_earlier(years, atoms, extract, shifts)
+    for shift in shifts:
+        shift["sourcePlacement"] = source_placement[shift["goalId"]]
+    ownership = {identifier: index for index, year in enumerate(years) for identifier in atoms(year)}
+    for task in tasks:
+        index = max((ownership[identifier] for identifier in prerequisites(task["goalId"])
+                     if identifier in ownership), default=0)
+        practice_id = f"physics-he-g8-practice-{index + 6}"
+        practice = next((node for node in years[index]["children"] if node.get("id") == practice_id), None)
+        if practice is None:
+            practice = structure(practice_id, "Übungen " + years[index]["label"], [])
+            years[index]["children"].append(practice)
+        practice["children"].append(task)
+    for year in years:
+        sort_tree(year["children"], atoms)
+    if role_atoms(result) != before:
+        raise ValueError("G8 authoring changed reviewed atomic target/support roles")
+    if role_atoms({"rootNodes": [original_stage]}) != role_atoms({"rootNodes": [stage]}):
+        raise ValueError("G8 authoring changed reviewed SekI atomic roles")
+    return result, {"earlierDemandPlacements": shifts, "sourcePlacements": source_placement,
+                    "exercisePlacements": {task["goalId"]: years[max((ownership[identifier]
+                        for identifier in prerequisites(task["goalId"]) if identifier in ownership), default=0)]["id"]
+                        for task in tasks}}
+
+
+def seki_excerpt(view, duration):
+    """Keep the resolved stage, not global support freed by removing SekII.
+
+    The complete course view shadows or course-filters several global Physics
+    support references. A course-neutral SekI excerpt must not expose those
+    upper-secondary atoms after deleting that branch. Stage-local references
+    stay exact; outer own-subject support must serve the canonical SekI basis.
+    Foreign support references stay byte-identical and never become targets.
+    """
+    excerpt = copy.deepcopy(view)
+    excerpt["viewId"] = f"de-he-gym-seki-physics-{duration}"
+    excerpt["scope"]["stage"] = "SekI"
+    del excerpt["scope"]["courseProfile"]
+    stage = next(node for node in walk(excerpt["rootNodes"]) if node.get("id") == "physics-seki")
+    stage_roles = role_atoms({"rootNodes": [stage]})
+    required = stage_roles["target"] | {required for seed in stage_roles["target"] for required in prerequisites(seed)}
+    allowed_own_support = required | stage_roles["prerequisiteOnly"]
+    removed = set()
+
+    def canonical_atoms(identifier):
+        children = GOALS[identifier].get("contains", [])
+        return set().union(*(canonical_atoms(child) for child in children)) if children else {identifier}
+
+    def trim(nodes):
+        result = []
+        for node in nodes:
+            if node.get("id", "").startswith("physics-sekii-"):
+                continue
+            if node is stage:
+                result.append(node)
+            elif node["kind"] == "structure":
+                node["children"] = trim(node["children"])
+                result.append(node)
+            elif node.get("projectionRole") == "prerequisiteOnly" and GOAL_OWNERS[node["goalId"]] == view["landscapeId"]:
+                atoms = canonical_atoms(node["goalId"])
+                retained = atoms & allowed_own_support
+                removed.update(atoms - retained)
+                if retained == atoms:
+                    result.append(node)
+                else:
+                    result.extend({"kind": "goalEntry", "goalId": identifier, "projectionRole": "prerequisiteOnly"}
+                                  for identifier in sorted(retained))
+            else:
+                result.append(node)
+        return result
+
+    excerpt["rootNodes"] = trim(excerpt["rootNodes"])
+    if role_atoms(excerpt)["target"] != stage_roles["target"]:
+        raise ValueError("SekI excerpt changed selected target atoms")
+    if removed & required:
+        raise ValueError("SekI excerpt removed necessary acquisition support")
+    return excerpt, {"stageResolvedSupportPruning": [{"goalId": identifier, "title": GOALS[identifier]["title"],
+        "reason": "Global upper-secondary/course support is outside both the SekI canonical learning basis and explicit local SekI support"}
+        for identifier in sorted(removed)]}
+
+
+def duration_outputs():
+    outputs = []
+    for profile in ("gk", "lk"):
+        current = json.loads((DIRECTORY / f"de-he-{profile}.view.json").read_text())
+        g8, report = generate_g8(current)
+        repeated, _ = generate_g8(g8)
+        if repeated != g8:
+            raise ValueError("G8 Physics authoring is not idempotent")
+        g9 = copy.deepcopy(current)
+        g9["viewId"] += "-g9"
+        g9["scope"]["durationModel"] = "G9"
+        for duration, generated in (("g8", g8), ("g9", g9)):
+            outputs.append((DIRECTORY / f"de-he-{profile}-{duration}.view.json", generated,
+                            report if duration == "g8" else {}))
+            if profile == "gk":
+                excerpt, excerpt_report = seki_excerpt(generated, duration)
+                outputs.append((DIRECTORY / f"de-he-seki-{duration}.view.json", excerpt, excerpt_report))
+    return outputs
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     mode = parser.add_mutually_exclusive_group(required=True)
     mode.add_argument("--write", action="store_true")
     mode.add_argument("--check", action="store_true")
     parser.add_argument("--report", type=Path)
+    parser.add_argument("--duration-views", action="store_true", help="derive only explicit G8/G9 views; retained inputs stay byte-identical")
     args = parser.parse_args()
     outputs = []
     report = []
-    for name in FILES:
+    for name in ([] if args.duration_views else FILES):
         path = DIRECTORY / name
         current = json.loads(path.read_text())
         generated, shifts = generate(current)
@@ -383,11 +624,15 @@ def main():
             raise ValueError(name + ": generator is not idempotent")
         outputs.append((path, generated))
         report.append({"file": name, "changed": current != generated, "earlierDemandPlacements": shifts})
+    if args.duration_views:
+        for path, generated, details in duration_outputs():
+            outputs.append((path, generated))
+            report.append({"file": path.name, "changed": not path.exists() or json.loads(path.read_text()) != generated, **details})
     # All four outputs pass preflight before any write.
     for path, generated in outputs:
         if args.write:
             path.write_text(json.dumps(generated, ensure_ascii=False, indent=2) + "\n")
-        elif json.loads(path.read_text()) != generated:
+        elif not path.exists() or json.loads(path.read_text()) != generated:
             raise ValueError(path.name + ": stale Hessen Physics stage placement")
     if args.report:
         args.report.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n")

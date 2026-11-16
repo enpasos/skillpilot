@@ -253,8 +253,12 @@ const preparation = tree([
 const preparationMap = project({ ...preparation, units: unitsOf({ E: 'e', E1: 'e1u', L: 'l', M: 'm', N: 'n' }),
   after: [{ unit: 'l', after: 'e' }] })
 const parentOf = (fixture: LearnerUnitMapFixture, id: string) => fixture.entryPaths?.[id]?.at(-2)
-assert.equal(parentOf(preparationMap, 'pa'), 'E', 'needed by two ordered units: in the earlier one')
-assert.equal(parentOf(preparationMap, 'pb'), 'E', 'needed through another preparation goal: where that one is needed first')
+const requiredFoundations = preparationMap.unitEntryIds['required-foundations:e']
+assert(requiredFoundations)
+assert.equal(parentOf(preparationMap, requiredFoundations), 'E', 'preparation stays in the earliest actual acquisition unit')
+assert.equal(parentOf(preparationMap, 'pa'), requiredFoundations, 'needed by two ordered units: grouped beside topics in the earlier unit')
+assert.equal(parentOf(preparationMap, 'pb'), requiredFoundations, 'transitively needed preparation shares the same actual acquisition place')
+assert.deepEqual(preparationMap.entries[requiredFoundations].children, ['pb', 'pa'], 'foundations retain prerequisite-first order')
 assert.equal(parentOf(preparationMap, 'pc'), preparationMap.rootId, 'needed by two units without order: beside them')
 assert.equal(parentOf(preparationMap, 'pd'), 'E1', 'descends while exactly one earliest child unit needs it')
 assert.equal(parentOf(preparationMap, 'pe'), preparationMap.rootId, 'needed by no placed goal: at the root')
@@ -262,9 +266,35 @@ for (const id of ['pa', 'pb', 'pc', 'pd', 'pe']) assert.equal(preparationMap.ent
 assert.equal(preparationMap.entries.e1.preparation, undefined)
 assert.equal(preparationMap.entries.prep, undefined, 'the synthetic preparation cluster is no map node')
 assertArrowsAmongChildren(preparationMap, 'preparation')
-assert.equal(findRelation(preparationMap, 'E', 'pa', 'e1')?.kind, 'requirement', 'a preparation goal prepares its consumer like any goal')
+assert.equal(findRelation(preparationMap, 'E', requiredFoundations, 'e1')?.kind, 'summary')
+assert(findRelation(preparationMap, 'E', requiredFoundations, 'e1')?.provenance.some(cause => cause.sourceGoalIds.includes('pa')),
+  'the grouping retains the actual prerequisite witness to its consumer')
+assert.equal(findRelation(preparationMap, requiredFoundations, 'pb', 'pa')?.kind, 'requirement',
+  'internal prerequisites remain visible inside the preparation group')
 const preparationFlat = project(preparation)
 for (const id of ['pa', 'pb', 'pc', 'pd', 'pe']) assert.equal(parentOf(preparationFlat, id), preparationFlat.rootId)
+
+// Coarsening all preparation into one group would create a false cycle:
+// p0 -> topic A -> p1 -> topics B/C, with p0 also needed by C.
+const interleavedPreparation = tree([
+  goal('subject', ['E', 'prep']), goal('E', ['A', 'B', 'C']),
+  goal('A', ['a']), goal('B', ['b']), goal('C', ['c']),
+  goal('a', [], ['p0']), goal('b', [], ['p1']), goal('c', [], ['p0', 'p1']),
+  goal('p0'), goal('p1', [], ['a']), preparationCluster('prep', ['p0', 'p1']),
+], ['subject'])
+const interleavedSnapshot = JSON.stringify([...interleavedPreparation.goalIndexAll])
+const stratified = project({ ...interleavedPreparation, units: unitsOf({ E: 'e', A: 'a', B: 'b', C: 'c' }) })
+const earlyFoundation = parentOf(stratified, 'p0'), laterFoundation = parentOf(stratified, 'p1')
+assert.notEqual(earlyFoundation, laterFoundation, 'a topic on the prerequisite path separates preparation groups')
+assert.equal(parentOf(stratified, earlyFoundation), 'E')
+assert.equal(parentOf(stratified, laterFoundation), 'E')
+assert(findRelation(stratified, 'E', earlyFoundation, 'A'))
+assert(findRelation(stratified, 'E', 'A', laterFoundation))
+assert(findRelation(stratified, 'E', laterFoundation, 'B'))
+assert(!findRelation(stratified, 'E', 'A', earlyFoundation))
+assert(!findRelation(stratified, 'E', laterFoundation, 'A'))
+assert.equal(JSON.stringify([...interleavedPreparation.goalIndexAll]), interleavedSnapshot)
+assertArrowsAmongChildren(stratified, 'stratified preparation')
 
 // Units declared by their own goals (learning units) where all of them share one parent.
 const memberMap = project({ ...depth, units: unitsOf({ U: 'u', V: 'v', W: 'w' }), memberUnits: [

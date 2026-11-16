@@ -222,14 +222,25 @@ for (const profile of ['GK', 'LK'] as const) {
   const view = readJson(
     `../../curricula/DE/Gymnasium/composition-views/physik/de-he-sekii-${profile.toLowerCase()}.view.json`,
   ) as CompositionView & PhysicsPlacementView
-  const stage = structure(view, 'physics-root')
+  const authoringRoot = structure(view, 'physics-root')
+  const stageId = `physics-sekii-${profile.toLowerCase()}`
+  const stage = structure(view, stageId)
+  assert.equal(authoringRoot.label, 'Physik')
+  assert.equal(authoringRoot.labelEn, 'Physics')
+  const rootSupport = authoringRoot.children.filter(node => node !== stage)
+  assert(rootSupport.every(node => {
+    const references = flatten([node]).filter(child => child.kind !== 'structure')
+    return references.length > 0 && references.every(child => child.projectionRole === 'prerequisiteOnly')
+  }), 'Only explicit global support records may accompany the stage inside the subject authoring root.')
+  assert.deepEqual(authoringRoot.children.filter(node => !rootSupport.includes(node)), [stage],
+    'Upper-only Physics must expose the same explicit SekII identity as the cross-stage view.')
   assert.equal(stage.label, `Sekundarstufe II (${profile})`)
   assert.equal(stage.labelEn, 'Upper Secondary',
     'Shared English metadata must not conflict when the backend merges GK and LK.')
   // Retained support-only wrappers are authoring records, not visible stage
   // siblings. The materialized root is checked below; an extra target wrapper
   // must still fail instead of being silently exempted with the support records.
-  const supportWrappers = view.rootNodes.filter((node) => node.kind === 'structure' && node !== stage)
+  const supportWrappers = view.rootNodes.filter((node) => node.kind === 'structure' && node !== authoringRoot)
   for (const wrapper of supportWrappers) {
     assert(wrapper.kind === 'structure')
     const references = flatten(wrapper.children).filter((node) => node.kind !== 'structure')
@@ -262,6 +273,13 @@ for (const profile of ['GK', 'LK'] as const) {
     assert(structure(view, parentId).children.includes(structure(view, childId)),
       `${profile}: ${childId} belongs directly under ${parentId}`)
   }
+  const riskGoalId = 'bb5c5eab-2fc1-5336-b8cf-14d147695487'
+  assert(structure(view, 'b034-preserved-rootNodes-0-children-13-children-3').children
+    .some(node => node.kind !== 'structure' && node.goalId === riskGoalId),
+  'Late risk evaluation must remain beside applications in Q4 nuclear physics.')
+  assert(!flatten(structure(view, 'physics-b034-nuclear').children)
+    .some(node => node.kind !== 'structure' && node.goalId === riskGoalId),
+  'Upper-only support acquisition must not be coarsened together with its later risk consumer.')
   assert.equal(structure(view, 'physics-final-diode-sekii').label, 'Dioden')
   assert.equal(structure(view, 'physics-final-diode-sekii').labelEn, 'Diodes')
   const exercises = structure(view, 'physics-b034-assessments')
@@ -312,7 +330,7 @@ for (const profile of ['GK', 'LK'] as const) {
   // Recreate the reported authoring error to verify repair rather than merely
   // accepting already-correct checked-in data. References and roles must survive.
   const regressed = structuredClone(view)
-  const regressedStage = structure(regressed, 'physics-root')
+  const regressedStage = structure(regressed, stageId)
   regressedStage.label = 'Physik'
   delete regressedStage.labelEn
   for (const [id] of destinations) {
@@ -374,8 +392,10 @@ for (const profile of ['GK', 'LK'] as const) {
     assert(repairedExercises.children.some((node) => node.kind !== 'structure' && node.goalId === taskId),
       `Generator replay must restore assessment ${taskId} into Q4 exercises.`)
   }
-  assert.equal(structure(regressed, 'physics-root').label, stage.label)
-  assert.equal(structure(regressed, 'physics-root').labelEn, 'Upper Secondary')
+  assert.equal(structure(regressed, stageId).label, stage.label)
+  assert.equal(structure(regressed, stageId).labelEn, 'Upper Secondary')
+  assert.equal(structure(regressed, 'physics-root').label, 'Physik')
+  assert.equal(structure(regressed, 'physics-root').labelEn, 'Physics')
   assert.equal(structure(regressed, 'physics-final-diode-sekii').labelEn, 'Diodes')
   assert.equal(repairedExercises.labelEn, 'Q4 Practice')
   assert.equal(project(regressed).goals.find((goal) => goal.id === examIds[profile])?.title, `Abiturprüfung Physik (${profile})`)

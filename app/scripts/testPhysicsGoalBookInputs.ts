@@ -16,14 +16,16 @@ import {
 } from '../src/utils/authoring/canonicalAuthoring'
 import {
   compileCompositionView,
+  collectCompositionProjectionRoleGoalIds,
   normalizeCompositionView,
   type CompiledCompositionPreviewNode,
   type CompositionViewNode,
 } from '../src/utils/authoring/compositionViewAuthoring'
 import { buildApplicabilityCompilation } from './applicabilityCompiler'
-import { collectWholeMaterialPrerequisiteClosure, createRouteProfiles, evaluateRouteProfile, routeProfileDefinitions } from './generateCurriculumQualityStatus'
+import { collectRenderedAtomicGoalIdsFromCompositionView, collectWholeMaterialPrerequisiteClosure, createRouteProfiles, evaluateRouteProfile, routeProfileDefinitions } from './generateCurriculumQualityStatus'
 import type { ExamData, SkillLandscape } from '../src/landscapeTypes'
 import { parseSubjectDurationModelPolicy, type GoalBookDurationPolicyViewSource } from './goalBookModel'
+import { loadActiveGymnasiumDurationPolicy } from './gymnasiumDurationPolicy'
 import {
   loadVerifiedPrerequisiteReductionContext,
   reviewBindingGoal,
@@ -126,12 +128,28 @@ const LEGACY_SOURCE_MANIFEST_SCHEMA_PATH = 'contracts/goal-book/v1/goal-book-sou
 const SOURCE_MANIFEST_SCHEMA_PATH = 'contracts/goal-book/v1/goal-book-source-manifest-v2.schema.json'
 const SOURCE_MANIFEST_PATH = 'app/scripts/config/goal-books/de-gym-physics-national-atlas.sources.json'
 const CONFIG_PATH = 'app/scripts/config/goal-books/de-gym-physics-national-atlas.json'
-const DURATION_POLICY_PATH = 'curricula/DE/Gymnasium/provenance/gymnasium-physics-duration-model-policy.json'
+const LEGACY_DURATION_POLICY_PATH = 'curricula/DE/Gymnasium/provenance/gymnasium-physics-duration-model-policy.json'
+const DURATION_POLICY_PATH = 'curricula/DE/Gymnasium/provenance/gymnasium-physics-duration-model-policy-2026-11-16.json'
 const SHARED_DURATION_POLICY_PATH = 'curricula/DE/Gymnasium/provenance/gymnasium-duration-model-policy.json'
 const CURRICULUM_QUALITY_STATUS_PATH = 'docs/qa-ci/status/curriculum-quality-status.json'
 const APPLICABILITY_OVERRIDE_REGISTRY_PATH =
   'curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json'
 const COMPOSITION_VIEW_DIRECTORY = 'curricula/DE/Gymnasium/composition-views/physik'
+const HE_DURATION_VIEW_SPECS = (['g8', 'g9'] as const).flatMap((duration) => [
+  { path: `${COMPOSITION_VIEW_DIRECTORY}/de-he-gk-${duration}.view.json`, viewId: `de-he-gym-physics-gk-${duration}`, stage: 'CrossStage', courseProfile: 'GK', durationModel: duration.toUpperCase() },
+  { path: `${COMPOSITION_VIEW_DIRECTORY}/de-he-lk-${duration}.view.json`, viewId: `de-he-gym-physics-lk-${duration}`, stage: 'CrossStage', courseProfile: 'LK', durationModel: duration.toUpperCase() },
+  { path: `${COMPOSITION_VIEW_DIRECTORY}/de-he-seki-${duration}.view.json`, viewId: `de-he-gym-seki-physics-${duration}`, stage: 'SekI', courseProfile: undefined, durationModel: duration.toUpperCase() },
+])
+const HE_DURATION_VIEW_BY_PATH = new Map(HE_DURATION_VIEW_SPECS.map((spec) => [spec.path, spec]))
+const HE_SEKI_UPPER_SUPPORT_LEAK_IDS = [
+  '09029573-864f-40ca-bf8a-cee7bf6dcb73', '09f2cdbd-64e0-55d2-ada7-1190f4fd50df',
+  '1b833656-cd16-5b21-973a-9810960dcfd2', '206fe51d-cc78-5422-b139-32cc97eb1c37',
+  '330808f6-789a-583d-86df-e271a7683d8b', '38e0ff49-f132-44c8-b17a-73dada5344db',
+  '481ffd56-d585-56fe-b525-ed423e30eed3', '73b309ed-1aab-5778-8494-d9b65f5a352b',
+  'a0aaedcb-41f8-4891-af77-a69a76b8c10d', 'ad984bb6-e225-432a-952d-d83cda40b7f8',
+  'c968d263-8be4-5cf9-b320-e95398fe648f', 'e3bce51c-cfeb-4706-b95e-a22b76e7dd73',
+  'e4b38061-1f28-43ad-8371-a3e7c0e81856',
+]
 const NATIONAL_PHYSICS_VIEW_IDS = new Set([
   'de-de-gym-physics-gk',
   'de-de-gym-physics-lk',
@@ -169,6 +187,7 @@ const EXPECTED_GRAVITATION_GK_VIEW_IDS = new Set([
     `de-${jurisdiction}-gym-physics-gk`,
     `de-${jurisdiction}-gym-sekii-physics-gk`,
   ]),
+  ...HE_DURATION_VIEW_SPECS.filter(({ courseProfile }) => courseProfile === 'GK').map(({ viewId }) => viewId),
 ])
 const EXPECTED_GRAVITATION_LK_VIEW_IDS = new Set([
   'de-de-gym-physics-lk',
@@ -177,6 +196,7 @@ const EXPECTED_GRAVITATION_LK_VIEW_IDS = new Set([
     `de-${jurisdiction}-gym-physics-lk`,
     `de-${jurisdiction}-gym-sekii-physics-lk`,
   ]),
+  ...HE_DURATION_VIEW_SPECS.filter(({ courseProfile }) => courseProfile === 'LK').map(({ viewId }) => viewId),
 ])
 const REVIEWED_NEWTON_ATOMIC_GOAL_IDS = [
   '31a2ef52-114b-4d2c-a720-6ef5a390b6dc',
@@ -1775,7 +1795,7 @@ assert.equal(
 assert.deepEqual(sourceManifest.expectedJurisdictions, EXPECTED_JURISDICTIONS)
 assert.equal(sourceManifest.durationModelPolicyPath, DURATION_POLICY_PATH)
 assert.equal(sourceManifest.expectedCurricularAtomicGoalCount, EXPECTED_ATLAS_TARGET_COUNT)
-assert.equal(sourceManifest.sourcePaths.length, 64)
+assert.equal(sourceManifest.sourcePaths.length, 70)
 assert.deepEqual(
   sourceManifest.sourcePaths,
   [...sourceManifest.sourcePaths].sort(compareCodePoints),
@@ -1785,7 +1805,17 @@ const discoveredStateViewPaths = readdirSync(resolve(repoRoot, COMPOSITION_VIEW_
   .filter((fileName) => /^(?:de-[a-z]{2})-(?:gk|lk|sekii-gk|sekii-lk)\.view\.json$/u.test(fileName))
   .map((fileName) => `${COMPOSITION_VIEW_DIRECTORY}/${fileName}`)
   .sort(compareCodePoints)
-assert.deepEqual(sourceManifest.sourcePaths, discoveredStateViewPaths, 'Physics atlas manifest must bind all and only the 64 state views')
+assert.equal(discoveredStateViewPaths.length, 64, 'the complete 64 duration-neutral state-view floor remains present')
+assert.deepEqual(
+  sourceManifest.sourcePaths.filter((path) => !HE_DURATION_VIEW_BY_PATH.has(path)),
+  discoveredStateViewPaths,
+  'Physics atlas must retain all and only the original 64 duration-neutral state views',
+)
+assert.deepEqual(
+  sourceManifest.sourcePaths.filter((path) => HE_DURATION_VIEW_BY_PATH.has(path)),
+  HE_DURATION_VIEW_SPECS.map(({ path }) => path).sort(compareCodePoints),
+  'Physics atlas must add exactly the six reviewed HE G8/G9 SekI/CrossStage views',
+)
 
 const landscapeWithSemanticKinds = {
   ...landscape,
@@ -1837,7 +1867,7 @@ const allPhysicsViewPaths = readdirSync(resolve(repoRoot, COMPOSITION_VIEW_DIREC
   .filter((fileName) => fileName.endsWith('.view.json'))
   .map((fileName) => `${COMPOSITION_VIEW_DIRECTORY}/${fileName}`)
   .sort(compareCodePoints)
-assert.equal(allPhysicsViewPaths.length, 69, 'Physics projection QA must bind all 69 composition views')
+assert.equal(allPhysicsViewPaths.length, 75, 'Physics projection QA must bind all 69 existing plus six HE duration views')
 const validatedNationalPhysicsViewIds = new Set<string>()
 const validatedStrictBwBySekIViewIds = new Set<string>()
 const validatedGravitationGkViewIds = new Set<string>()
@@ -1880,7 +1910,8 @@ allPhysicsViewPaths.forEach((viewPath) => {
   // shared exercise collections before those filters are applied.
   const hesseGravitationUnitId = `he-physics-topic-${GRAVITATION_ROOT_GOAL_ID}`
   const knownHesseView = ['de-he-gym-physics-gk', 'de-he-gym-physics-lk',
-    'de-he-gym-sekii-physics-gk', 'de-he-gym-sekii-physics-lk'].includes(view.viewId)
+    'de-he-gym-sekii-physics-gk', 'de-he-gym-sekii-physics-lk',
+    ...HE_DURATION_VIEW_SPECS.filter(({ stage }) => stage === 'CrossStage').map(({ viewId }) => viewId)].includes(view.viewId)
   const compiledHesseGravitation = (nodes: CompiledCompositionPreviewNode[]): boolean => nodes.some(node =>
     (node.kind === 'structure' && node.runtimeId === `structure:${hesseGravitationUnitId}`) || compiledHesseGravitation(node.children))
   if (knownHesseView) assert.equal(collectCompositionStructures(view.rootNodes, hesseGravitationUnitId).length, 1,
@@ -2092,7 +2123,10 @@ allPhysicsViewPaths.forEach((viewPath) => {
   const expectedForeignRoots: AuthoredPrerequisiteRoot[] = [
     { goalId: 'c01b1ce9-a667-4a46-b251-ec33ae602b15', kind: 'canonicalSubtree' },
   ]
-  if (view.scope.stage !== 'SekI' && !strictStateUpperScope) {
+  // The two HE Sek-I excerpts retain their CrossStage source's exact support
+  // roots. The existing national Sek-I view keeps its narrower c01b-only floor.
+  const hesseDurationSekI = HE_DURATION_VIEW_BY_PATH.get(viewPath)?.stage === 'SekI'
+  if ((view.scope.stage !== 'SekI' || hesseDurationSekI) && !strictStateUpperScope) {
     expectedForeignRoots.push(
       { goalId: '09f47964-2cd0-410e-93ee-9632b582fc91', kind: 'goalEntry' },
       { goalId: '5a9702f4-7e4d-457d-b98c-f0bafcd1e386', kind: 'canonicalSubtree' },
@@ -2203,12 +2237,12 @@ assert.deepEqual(
 assert.deepEqual(
   [...validatedGravitationGkViewIds].sort(compareCodePoints),
   [...EXPECTED_GRAVITATION_GK_VIEW_IDS].sort(compareCodePoints),
-  'Physics projection QA must bind exactly the 30 GK views with the broad gravitation target',
+  'Physics projection QA must bind all 30 existing GK views plus both HE duration GK views with the broad gravitation target',
 )
 assert.deepEqual(
   [...validatedGravitationLkViewIds].sort(compareCodePoints),
   [...EXPECTED_GRAVITATION_LK_VIEW_IDS].sort(compareCodePoints),
-  'Physics projection QA must bind exactly the 30 matching LK views with the broad gravitation target',
+  'Physics projection QA must bind all 30 existing matching LK views plus both HE duration LK views with the broad gravitation target',
 )
 
 const atlasCurricularAtomicGoalIds = new Set<string>()
@@ -2222,9 +2256,93 @@ sourceManifest.sourcePaths.forEach((sourcePath) => {
     .filter(({ goalId }) => goalId === ATLAS_PREPARATION_ONLY_GOAL_ID).length
   assert.equal(view.landscapeId, LANDSCAPE_ID)
   assert(EXPECTED_JURISDICTIONS.includes(view.scope.jurisdiction as typeof EXPECTED_JURISDICTIONS[number]))
-  assert(view.scope.stage === 'CrossStage' || view.scope.stage === 'SekII')
-  assert(view.scope.courseProfile === 'GK' || view.scope.courseProfile === 'LK')
-  assert.equal(view.scope.durationModel, undefined, `${view.viewId} must stay duration-neutral`)
+  const durationSpec = HE_DURATION_VIEW_BY_PATH.get(sourcePath)
+  if (durationSpec) {
+    assert.equal(view.viewId, durationSpec.viewId)
+    assert.equal(view.scope.jurisdiction, 'DE-HE')
+    assert.equal(view.scope.schoolForm, 'Gymnasium')
+    assert.equal(view.scope.stage, durationSpec.stage)
+    assert.equal(view.scope.courseProfile, durationSpec.courseProfile)
+    assert.equal(view.scope.durationModel, durationSpec.durationModel)
+    if (durationSpec.stage === 'CrossStage') {
+      const original = normalizeCompositionView(readJson(
+        `${COMPOSITION_VIEW_DIRECTORY}/de-he-${durationSpec.courseProfile!.toLowerCase()}.view.json`,
+      ))
+      const originalRoles = collectCompositionProjectionRoleGoalIds(original.rootNodes, physicsAndMathGoalById)
+      const durationRoles = collectCompositionProjectionRoleGoalIds(view.rootNodes, physicsAndMathGoalById)
+      for (const role of ['targetGoalIds', 'prerequisiteOnlyGoalIds'] as const) {
+        const atoms = (ids: Set<string>) => [...ids]
+          .filter((id) => physicsAndMathGoalById.get(id)?.contains.length === 0).sort(compareCodePoints)
+        assert.deepEqual(atoms(durationRoles[role]), atoms(originalRoles[role]),
+          `${view.viewId}: retain the exact canonical atomic ${role} from the reviewed neutral course`)
+      }
+      if (durationSpec.durationModel === 'G9') assert.deepEqual(view.rootNodes, original.rootNodes,
+        'G9 duration alias must retain the entire existing reviewed tree, including every reference payload')
+    } else {
+      const crossStage = normalizeCompositionView(readJson(
+        `${COMPOSITION_VIEW_DIRECTORY}/de-he-gk-${durationSpec.durationModel.toLowerCase()}.view.json`,
+      ))
+      const sourceStages = collectCompositionStructures(crossStage.rootNodes, 'physics-seki')
+      const excerptStages = collectCompositionStructures(view.rootNodes, 'physics-seki')
+      assert.equal(sourceStages.length, 1)
+      assert.deepEqual(excerptStages, sourceStages,
+        `${view.viewId}: preserve every exact lower-stage reference payload and acquisition placement`)
+      const ownAtoms = (ids: Set<string>) => [...ids]
+        .filter((id) => semanticGoalById.get(id)?.contains.length === 0).sort(compareCodePoints)
+      const stageRoles = collectCompositionProjectionRoleGoalIds(sourceStages, physicsAndMathGoalById)
+      const sourceRoles = collectCompositionProjectionRoleGoalIds(crossStage.rootNodes, physicsAndMathGoalById)
+      const sourceTargetIds = new Set(ownAtoms(stageRoles.targetGoalIds))
+      const required = new Set<string>()
+      const pending = [...sourceTargetIds]
+      while (pending.length > 0) {
+        const id = pending.pop()!
+        if (required.has(id)) continue
+        required.add(id)
+        pending.push(...(physicsAndMathGoalById.get(id)?.requires ?? []).map(normalizeGoalRef))
+      }
+      const explicitStageSupport = new Set(ownAtoms(stageRoles.prerequisiteOnlyGoalIds))
+      const expectedSupport = new Set(ownAtoms(sourceRoles.prerequisiteOnlyGoalIds)
+        .filter((id) => required.has(id) || explicitStageSupport.has(id)))
+      explicitStageSupport.forEach((id) => expectedSupport.add(id))
+      assert.deepEqual([...expectedSupport].sort(compareCodePoints),
+        ['13b338eb-f761-5817-9058-11043b9cb253', 'f74c691b-0b76-54e0-8fd6-a22211994e0a'].sort(compareCodePoints),
+        'the stage-resolved excerpt retains both existing own-Physics support atoms')
+      const assertBoundStageRoles = (nodes: CompositionViewNode[]) => {
+        const roles = collectCompositionProjectionRoleGoalIds(nodes, physicsAndMathGoalById)
+        assert.deepEqual(ownAtoms(roles.targetGoalIds), [...sourceTargetIds].sort(compareCodePoints),
+          'SekI excerpt must preserve the exact 134 own target atoms')
+        assert.deepEqual(ownAtoms(roles.prerequisiteOnlyGoalIds), [...expectedSupport].sort(compareCodePoints),
+          'SekI excerpt must preserve exactly the resolved required/explicit own support')
+      }
+      assertBoundStageRoles(view.rootNodes)
+      const renderedOwnVisibleIds = collectRenderedAtomicGoalIdsFromCompositionView(
+        rawLandscape as unknown as SkillLandscape, resolve(repoRoot, sourcePath), [durationSpec.durationModel],
+        true, 'SekI', [], [rawLandscape, rawMathLandscape, rawChemistryLandscape] as unknown as SkillLandscape[],
+      )
+      assert.deepEqual(ownAtoms(renderedOwnVisibleIds), [...sourceTargetIds, ...expectedSupport].sort(compareCodePoints),
+        'actual Sek-I own-Physics visibility agrees with its resolved target/support roles')
+      for (const leakedId of HE_SEKI_UPPER_SUPPORT_LEAK_IDS) {
+        assert(!required.has(leakedId), `${view.viewId}: do not prune a real required preparation ${leakedId}`)
+        assert.throws(() => assertBoundStageRoles([...view.rootNodes,
+          { kind: 'goalEntry', goalId: leakedId, projectionRole: 'prerequisiteOnly' }]),
+        /resolved required\/explicit own support/u,
+        `${view.viewId}: reject reintroduced upper-stage support ${leakedId}`)
+      }
+      for (const supportId of expectedSupport) {
+        const removeSupport = (nodes: CompositionViewNode[]): CompositionViewNode[] => nodes.flatMap((node) => (
+          node.kind === 'structure' ? [{ ...node, children: removeSupport(node.children) }]
+            : collectCompositionProjectionRoleGoalIds([node], physicsAndMathGoalById).prerequisiteOnlyGoalIds.has(supportId) ? [] : [node]
+        ))
+        assert.throws(() => assertBoundStageRoles(removeSupport(view.rootNodes)),
+          /resolved required\/explicit own support/u,
+          `${view.viewId}: reject loss of necessary/explicit preparation ${supportId}`)
+      }
+    }
+  } else {
+    assert(view.scope.stage === 'CrossStage' || view.scope.stage === 'SekII')
+    assert(view.scope.courseProfile === 'GK' || view.scope.courseProfile === 'LK')
+    assert.equal(view.scope.durationModel, undefined, `${view.viewId} must stay duration-neutral`)
+  }
   const expectedRole = sourcePath.endsWith('-sekii-gk.view.json')
     ? 'SekII:GK'
     : sourcePath.endsWith('-sekii-lk.view.json')
@@ -2232,11 +2350,13 @@ sourceManifest.sourcePaths.forEach((sourcePath) => {
       : sourcePath.endsWith('-gk.view.json')
         ? 'CrossStage:GK'
         : 'CrossStage:LK'
-  assert.equal(`${view.scope.stage}:${view.scope.courseProfile}`, expectedRole, `${sourcePath} has the wrong state-view role`)
-  const roleSet = roleCountByJurisdiction.get(view.scope.jurisdiction!) ?? new Set<string>()
-  assert(!roleSet.has(expectedRole), `${view.scope.jurisdiction} has duplicate ${expectedRole} views`)
-  roleSet.add(expectedRole)
-  roleCountByJurisdiction.set(view.scope.jurisdiction!, roleSet)
+  if (!durationSpec) {
+    assert.equal(`${view.scope.stage}:${view.scope.courseProfile}`, expectedRole, `${sourcePath} has the wrong state-view role`)
+    const roleSet = roleCountByJurisdiction.get(view.scope.jurisdiction!) ?? new Set<string>()
+    assert(!roleSet.has(expectedRole), `${view.scope.jurisdiction} has duplicate ${expectedRole} views`)
+    roleSet.add(expectedRole)
+    roleCountByJurisdiction.set(view.scope.jurisdiction!, roleSet)
+  }
   const compilation = compileCompositionView(
     view,
     landscapeWithSemanticKinds,
@@ -2548,7 +2668,10 @@ const durationPolicy = readJson<{
   schemaVersion: number
   updatedAt: string
   decisions: PhysicsDurationDecision[]
-}>(DURATION_POLICY_PATH)
+}>(LEGACY_DURATION_POLICY_PATH)
+assert.equal(sha256(readFileSync(resolve(repoRoot, LEGACY_DURATION_POLICY_PATH), 'utf8')),
+  '80f8697ebdbc457f2accd3f552b84f072d89b5852ebbd5e33b1da8116c6aaa07',
+  'the complete 2026-08-20 Physics snapshot is immutable historical evidence')
 assert.equal(durationPolicy.schemaVersion, 1)
 assert.equal(durationPolicy.updatedAt, '2026-08-20')
 const physicsDurationDecisions = durationPolicy.decisions.filter(({ subject }) => subject === 'Physik')
@@ -2589,7 +2712,7 @@ parseSubjectDurationModelPolicy(
   durationPolicy,
   'Physik',
   [...EXPECTED_JURISDICTIONS],
-  sourceViews,
+  sourceViews.filter(({ durationModel }) => durationModel === null),
 )
 
 const sharedDurationPolicy = readJson<{ decisions: PhysicsDurationDecision[] }>(
@@ -2614,6 +2737,70 @@ sharedPhysicsDecisions.forEach((sharedDecision) => {
     `${sharedDecision.jurisdiction} drifted between the shared legacy policy and Physics atlas snapshot`,
   )
 })
+
+const activeDurationPolicy = readJson<{
+  schemaVersion: number
+  updatedAt: string
+  parentPolicy: { path: string; sha256: string }
+  decisions: PhysicsDurationDecision[]
+}>(DURATION_POLICY_PATH)
+assert.equal(activeDurationPolicy.schemaVersion, 1)
+assert.equal(activeDurationPolicy.updatedAt, '2026-11-16')
+assert.deepEqual(activeDurationPolicy.parentPolicy, {
+  path: LEGACY_DURATION_POLICY_PATH,
+  sha256: sha256(readFileSync(resolve(repoRoot, LEGACY_DURATION_POLICY_PATH), 'utf8')),
+})
+assert.equal(activeDurationPolicy.decisions.length, 17)
+assert.deepEqual(
+  activeDurationPolicy.decisions.filter(({ jurisdiction }) => jurisdiction !== 'DE-HE'),
+  durationPolicy.decisions.filter(({ jurisdiction }) => jurisdiction !== 'DE-HE'),
+  'all fifteen non-Hessen Physics decisions must exactly retain the complete parent rows',
+)
+const activeHeDecisions = activeDurationPolicy.decisions.filter(({ jurisdiction }) => jurisdiction === 'DE-HE')
+assert.equal(activeHeDecisions.length, 2)
+activeHeDecisions.forEach((decision, index) => {
+  assert.equal(decision.subject, 'Physik')
+  assert.equal(decision.status, 'reviewed')
+  assert.equal(decision.stage, 'SekI')
+  assert.equal(decision.decision, 'dual-duration-different-projection')
+  assert.deepEqual(decision.durationModels, ['G8', 'G9'])
+  assert.equal(decision.learnerFacingProjection, 'duration-specific-composition-views')
+  assert.deepEqual(decision.compositionViewIds, HE_DURATION_VIEW_SPECS.map(({ viewId }) => viewId).sort(compareCodePoints))
+  const durationModel = index === 0 ? 'G8' : 'G9'
+  assert.equal(decision.sourceExtractionPath,
+    `curricula/DE/Gymnasium/input/HE/lower-secondary/source-extraction/DE_HE_PHYSIK_SEKI_${durationModel}.source-extraction.json`)
+  const extraction = readJson<{
+    subject: string; jurisdiction: string; stage: string; durationModel?: string
+    sourceDocument: { key: string; official: boolean; path: string; sha256?: string }
+  }>(decision.sourceExtractionPath!)
+  assert.equal(extraction.subject, 'Physik')
+  assert.equal(extraction.jurisdiction, 'DE-HE')
+  assert.equal(extraction.stage, 'SekI')
+  assert.equal(extraction.sourceDocument.key, durationModel)
+  if (durationModel === 'G8') {
+    assert.equal(extraction.durationModel, 'G8')
+    assert.match(extraction.sourceDocument.sha256 ?? '', /^[0-9a-f]{64}$/u)
+  }
+  assert.equal(extraction.sourceDocument.official, true)
+  // Retained PDFs are optional in repository checkouts; their extraction and
+  // official locator stay mandatory. Verify bytes wherever the PDF is present.
+  if (extraction.sourceDocument.sha256 && existsSync(resolve(repoRoot, extraction.sourceDocument.path))) {
+    assert.equal(createHash('sha256').update(readFileSync(resolve(repoRoot, extraction.sourceDocument.path))).digest('hex'),
+      extraction.sourceDocument.sha256)
+  }
+})
+parseSubjectDurationModelPolicy(activeDurationPolicy, 'Physik', [...EXPECTED_JURISDICTIONS], sourceViews)
+const activeOfferingPolicy = loadActiveGymnasiumDurationPolicy(repoRoot)
+assert.deepEqual(
+  activeOfferingPolicy.decisions.filter(({ subject, jurisdiction }) => subject !== 'Physik' || jurisdiction !== 'DE-HE'),
+  sharedDurationPolicy.decisions.filter(({ subject, jurisdiction }) => subject !== 'Physik' || jurisdiction !== 'DE-HE'),
+  'live offerings/readiness must retain every shared non-Hessen row exactly, including the other nine Physics rows',
+)
+assert.deepEqual(
+  activeOfferingPolicy.decisions.filter(({ subject, jurisdiction }) => subject === 'Physik' && jurisdiction === 'DE-HE'),
+  activeHeDecisions,
+  'live offerings/readiness must replace only Hessen Physics with both active source rows',
+)
 
 const curriculumQualityStatus = readJson<{
   curricula: Array<{
@@ -2728,6 +2915,6 @@ assert.equal(
 
 console.log(
   `Physics goal-book inputs verified: ${EXPECTED_COUNTS.total} semantic-kind decisions; `
-  + `${EXPECTED_COUNTS.curricularAtomic} ordinary curricular atoms, ${EXPECTED_ATLAS_TARGET_COUNT} atlas targets in 64 state views; `
+  + `${EXPECTED_COUNTS.curricularAtomic} ordinary curricular atoms, ${EXPECTED_ATLAS_TARGET_COUNT} atlas targets in 64 neutral plus six HE duration state views; `
   + `${EXPECTED_JURISDICTIONS.length} reviewed duration decisions.`,
 )

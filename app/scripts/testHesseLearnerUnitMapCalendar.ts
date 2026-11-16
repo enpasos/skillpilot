@@ -19,7 +19,7 @@ const section = (id: string, children: CompositionView['rootNodes']) => ({ kind:
 const entry = (goalId: string) => ({ kind: 'goalEntry' as const, goalId })
 const mathAtoms = [...[5, 6, 7, 8, 9, 10].map(year => goal(`m${year}`)),
   ...['E', 'Q2', 'Q3', 'abitur'].map(phase => goal(`m${phase}`))]
-const physicsAtoms = [...[7, 8, 10].map(year => goal(`p${year}`, year === 7 ? ['p10'] : [])), goal('pE', ['mQ2']),
+const physicsAtoms = [...[6, 7, 8, 9, 10].map(year => goal(`p${year}`, year === 7 ? ['p10'] : year === 6 ? ['p9'] : [])), goal('pE', ['mQ2']),
   ...['Q1', 'Q4', 'abitur'].map(phase => goal(`p${phase}`))]
 const landscape = (landscapeId: string, atoms: LearningGoal[]): SkillLandscape => ({ landscapeId,
   title: landscapeId === math ? 'Mathematik' : 'Physik', description: 'HE compatibility calendar fixture', locale: 'de',
@@ -31,6 +31,8 @@ const canonicalSnapshot = JSON.stringify(canonical)
 const views = (duration?: 'G8' | 'G9', merged = false): CompositionView[] => {
   const suffix = duration ? `-${duration.toLowerCase()}` : ''
   const mathGk = `de-he-gym-math-gk${suffix}`, mathLk = `de-he-gym-math-lk${suffix}`
+  const physicsSuffix = duration === 'G8' ? '-g8' : ''
+  const physicsGk = `de-he-gym-physics-gk${suffix}`, physicsLk = `de-he-gym-physics-lk${suffix}`
   return [{
     viewId: merged ? `merged:${mathLk}+${mathGk}` : mathGk, landscapeId: math,
     scope: { schoolForm: 'Gymnasium', jurisdiction: 'DE-HE', stage: 'CrossStage', durationModel: duration },
@@ -39,9 +41,10 @@ const views = (duration?: 'G8' | 'G9', merged = false): CompositionView[] => {
     section(merged ? 'sek2-gk-lk' : 'sek2-gk', [section('e-phase', [entry('mE')]), section('q2', [entry('mQ2')]),
       section('q3', [entry('mQ3')]), section('abitur', [entry('mabitur')])])],
   }, {
-    viewId: merged ? 'merged:de-he-gym-physics-lk+de-he-gym-physics-gk' : 'de-he-gym-physics-gk', landscapeId: physics,
-    scope: { schoolForm: 'Gymnasium', jurisdiction: 'DE-HE', stage: 'CrossStage' },
-    rootNodes: [section('physics-seki', [7, 8, 10].map(year => section(`physics-he-seki-j${year}`, [entry(`p${year}`)]))),
+    viewId: merged ? `merged:${physicsLk}+${physicsGk}` : physicsGk, landscapeId: physics,
+    scope: { schoolForm: 'Gymnasium', jurisdiction: 'DE-HE', stage: 'CrossStage', durationModel: duration },
+    rootNodes: [section('physics-seki', (duration === 'G8' ? [6, 7, 8, 9] : [7, 8, 10])
+      .map(year => section(`physics-he-seki-j${year}${physicsSuffix}`, [entry(`p${year}`)]))),
       section(merged ? 'physics-sekii-gk-lk' : 'physics-sekii-gk', [section('physics-e-phase', [entry('pE')]),
         section('physics-q1', [entry('pQ1')]), section('physics-q4', [entry('pQ4')]), section('physics-he-abitur', [entry('pabitur')])])],
   }]
@@ -71,12 +74,12 @@ for (const duration of ['G8', 'G9'] as const) for (const merged of [false, true]
   const value = input(views(duration, merged)), snapshot = JSON.stringify([...value.goalIndexAll])
   const preview = deriveLearnerUnitMapPreview(value, 2)
   const prefix = `he-compat:${duration}`
-  for (const year of [7, 8, ...(duration === 'G9' ? [10] : [])]) {
-    assert.equal(key(value, `j${year}-${duration.toLowerCase()}`, math), key(value, `physics-he-seki-j${year}`, physics))
+  for (const year of duration === 'G8' ? [6, 7, 8, 9] : [7, 8, 10]) {
+    assert.equal(key(value, `j${year}-${duration.toLowerCase()}`, math), key(value, `physics-he-seki-j${year}${duration === 'G8' ? '-g8' : ''}`, physics))
   }
   assert.equal(key(value, 'e-phase', math), key(value, 'physics-e-phase', physics))
   assert.equal(key(value, 'abitur', math), key(value, 'physics-he-abitur', physics))
-  const expected = [[5, 6, 7, 8, 9, 10].map(year => `${prefix}:year:${year}`),
+  const expected = [(duration === 'G8' ? [5, 6, 7, 8, 9] : [5, 6, 7, 8, 9, 10]).map(year => `${prefix}:year:${year}`),
     ['E', 'Q1', 'Q2', 'Q3', 'Q4', 'abitur'].map(phase => `${prefix}:phase:${phase}`)]
   for (const calendar of expected) for (let index = 1; index < calendar.length; index++) {
     assert(preview.after.some(order => order.unit === calendar[index] && order.after === calendar[index - 1]),
@@ -97,12 +100,13 @@ for (const duration of ['G8', 'G9'] as const) for (const merged of [false, true]
   const onlyPhysics = filterLearnerUnitMapToSubjects(fixture, new Set([physics]))
   const physicsYears = (onlyPhysics.scopeRelations?.[onlyPhysics.unitEntryIds.sek1] ?? []).filter(relation => relation.unitOrder === 'declared')
   assert.deepEqual(physicsYears.map(relation => [relation.source, relation.target]).sort(),
-    [[7, 8], [8, 10]].map(([earlier, later]) => [onlyPhysics.unitEntryIds[`${prefix}:year:${earlier}`],
+    (duration === 'G8' ? [[6, 7], [7, 8], [8, 9]] : [[7, 8], [8, 10]]).map(([earlier, later]) => [onlyPhysics.unitEntryIds[`${prefix}:year:${earlier}`],
       onlyPhysics.unitEntryIds[`${prefix}:year:${later}`]]).sort(),
   'The Physics filter closes 7 -> 8 -> 10 across the hidden Mathematics year 9 without a shortcut across retained year 8.')
   assert(physicsYears.every(relation => relation.provenance.length === 0), 'Calendar contraction fabricates no requirement provenance.')
   assert((onlyPhysics.scopeRelations?.[onlyPhysics.unitEntryIds.sek1] ?? []).some(relation => relation.backward
-    && relation.provenance.some(cause => cause.dependentGoalId === 'p7' && cause.sourceGoalIds.includes('p10'))),
+    && relation.provenance.some(cause => cause.dependentGoalId === (duration === 'G8' ? 'p6' : 'p7')
+      && cause.sourceGoalIds.includes(duration === 'G8' ? 'p9' : 'p10'))),
   'A genuine demand against the compressed calendar stays a visible backward edge.')
   assert.deepEqual(onlyPhysics.entries.pE.requires, fixture.entries.pE.requires)
   assert(onlyPhysics.scopeContext?.[onlyPhysics.unitEntryIds.sek2]?.[onlyPhysics.unitEntryIds[`${prefix}:phase:E`]]
@@ -123,6 +127,23 @@ const g8 = input(views('G8')), g9 = input(views('G9'))
 assert.notEqual(key(g8, 'physics-e-phase', physics), key(g9, 'physics-e-phase', physics), 'G8/G9 display contexts have different keys.')
 const neutral = input(views())
 assert(key(neutral, 'physics-e-phase', physics).startsWith('he-compat:duration-neutral:'), 'Neutral Math views must not imply G9.')
+
+// Selecting only Sek II can make the known stage structures the displayed
+// roots. They remain one shared stage, with phases one level below it.
+const singleStage = input(views('G8'))
+const stageRoots = [sectionGoal(singleStage, 'sek2-gk', math), sectionGoal(singleStage, 'physics-sekii-gk', physics)]
+  .map(goal => ({ ...goal, tags: [...goal.tags, 'root'] }))
+const singleStageIndex = new Map(singleStage.goalIndexAll)
+stageRoots.forEach(goal => singleStageIndex.set(goal.id, goal))
+const singleStageInput = { ...singleStage, rootGoals: stageRoots, goalIndexAll: singleStageIndex }
+const singleStageTop = deriveLearnerUnitMapPreview(singleStageInput, 1)
+stageRoots.forEach(goal => assert.equal(singleStageTop.units.get(goal.id)?.key, 'sek2'))
+assert(!singleStageTop.units.has(sectionGoal(singleStage, 'e-phase', math).id), 'Stage roots do not flatten phases into depth one.')
+const singleStagePhases = deriveLearnerUnitMapPreview(singleStageInput, 2)
+assert.equal(singleStagePhases.units.get(sectionGoal(singleStage, 'e-phase', math).id)?.key,
+  singleStagePhases.units.get(sectionGoal(singleStage, 'physics-e-phase', physics).id)?.key)
+const singleStageMap = buildLearnerUnitMapProjection({ ...singleStageInput, units: singleStagePhases.units, after: singleStagePhases.after })
+assert.deepEqual(singleStageMap.findings.filter(finding => finding.kind === 'unitInTwoPlaces'), [])
 
 for (const [mathId, physicsId] of [['de-by-gym-math-gk', 'de-by-gym-physics-gk'],
   ['de-de-gym-math-gk', 'de-de-gym-physics-gk'], ['unknown-he-math', 'unknown-he-physics']]) {
@@ -147,9 +168,16 @@ assert(lowerG8.kind === 'structure' && lowerG8.children[0].kind === 'structure')
 lowerG8.children[0].id = 'j10-g8'
 const unsupportedYearInput = input(unsupportedG8Year)
 assert(!key(unsupportedYearInput, 'j10-g8', math).startsWith('he-compat:'), 'G8 Mathematics has no reviewed year-10 identity.')
+const unsupportedPhysicsYear = views('G8')
+const lowerPhysicsG8 = unsupportedPhysicsYear[1].rootNodes[0]
+assert(lowerPhysicsG8.kind === 'structure' && lowerPhysicsG8.children[0].kind === 'structure')
+lowerPhysicsG8.children[0].id = 'physics-he-seki-j10'
+const unsupportedPhysicsInput = input(unsupportedPhysicsYear)
+assert(!key(unsupportedPhysicsInput, 'physics-he-seki-j10', physics).startsWith('he-compat:'),
+  'A G8 Physics view cannot borrow a retained G9 year identity.')
 const physicsOnly = input([views('G9')[1]])
 assert([...deriveLearnerUnitMapPreview(physicsOnly, 2).units.values()].every(unit => !unit.key.startsWith('he-compat:')),
-  'Neutral Physics alone supplies no Mathematics duration context and keeps its existing identities.')
+  'Physics alone needs no cross-subject identity merge and keeps its existing identities.')
 
 const mixed = input(views('G9'))
 const g8Section = structuredClone(sectionGoal(g8, 'j7-g8', math))

@@ -367,8 +367,10 @@ const staticGeneratedStatusRows: GeneratedStatusRegistryRow[] = [
     roleDe: 'Bereitschafts-Audit für Dauermodell-Richtlinien (`G8`/`G9`) und Composition-View-Abdeckung.',
     sourceOfTruth: [
       'app/scripts/reportGymnasiumDurationModelReadiness.ts',
+      'app/scripts/gymnasiumDurationPolicy.ts',
       'docs/qa-ci/status/curriculum-quality-status.json',
       'curricula/DE/Gymnasium/provenance/gymnasium-duration-model-policy.json',
+      'curricula/DE/Gymnasium/provenance/gymnasium-physics-duration-model-policy-2026-11-16.json',
       'curricula/DE/Gymnasium/input/',
       'curricula/DE/Gymnasium/composition-views/',
     ],

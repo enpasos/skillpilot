@@ -28,6 +28,8 @@ const landscapesById = new Map(landscapes.map(landscape => [landscape.landscapeI
 const manifest = readJson('app/scripts/config/goal-books/de-gym-physics-national-atlas.sources.json')
 const views: { path: string, view: CompositionView }[] = manifest.sourcePaths
   .map((path: string) => ({ path, view: readJson(path) }))
+const neutralViews = views.filter(({ view }) => view.scope.durationModel === undefined)
+const hesseDurationViews = views.filter(({ view }) => view.scope.durationModel !== undefined)
 
 const orientation = '5c44b9ba-9b05-4774-95d5-073230d3fc4f'
 const observation = '5355fee0-0477-5570-a234-561477bf77ba'
@@ -67,7 +69,13 @@ const methodsArePreparation = (view: CompositionView): boolean => view.scope.sta
   && methodPreparationJurisdictions.has(String(view.scope.jurisdiction))
 
 test('every atlas view that teaches either astronomy goal teaches all current method prerequisites', () => {
-  assert.equal(views.length, 64)
+  assert.equal(views.length, 70)
+  assert.equal(neutralViews.length, 64, 'retain the complete duration-neutral atlas floor')
+  assert.deepEqual(neutralViews.map(({ path }) => path).sort(), readdirSync(resolve(root, 'curricula/DE/Gymnasium/composition-views/physik'))
+    .filter(name => /^(?:de-[a-z]{2})-(?:gk|lk|sekii-gk|sekii-lk)\.view\.json$/u.test(name))
+    .map(name => `curricula/DE/Gymnasium/composition-views/physik/${name}`).sort())
+  assert.deepEqual(hesseDurationViews.map(({ view }) => [view.scope.jurisdiction, view.scope.durationModel, view.scope.stage, view.scope.courseProfile ?? null]).sort(),
+    ['G8', 'G9'].flatMap(duration => [['DE-HE', duration, 'SekI', null], ['DE-HE', duration, 'CrossStage', 'GK'], ['DE-HE', duration, 'CrossStage', 'LK']]).sort())
   let astronomyViewCount = 0
   for (const { path, view } of views) {
     const roles = collectCompositionProjectionRoleGoalIds(view.rootNodes, byId)
@@ -84,7 +92,11 @@ test('every atlas view that teaches either astronomy goal teaches all current me
       }
     }
   }
-  assert.equal(astronomyViewCount, 60)
+  assert.equal(astronomyViewCount, 64, 'retain all 60 previous astronomy scopes and both HE courses for each duration')
+  assert.equal(neutralViews.filter(({ view }) => {
+    const roles = collectCompositionProjectionRoleGoalIds(view.rootNodes, byId)
+    return astronomy.some(goalId => roles.targetGoalIds.has(goalId))
+  }).length, 60, 'the complete existing astronomy-view floor remains checked')
 })
 
 test('the four AB1 method goals retain their bounded qualitative sequence', () => {
@@ -95,7 +107,32 @@ test('the four AB1 method goals retain their bounded qualitative sequence', () =
   for (const goalId of astronomy) assert(byId.get(goalId)?.requires.includes(sources))
 })
 
-test('28 cross-stage views teach the methods once in Sek I; all 28 Sek-II views retain complete earlier acquisition', () => {
+test('all six HE duration scopes retain source-bound Sek-I years and the same method targets', () => {
+  assert.equal(hesseDurationViews.length, 6)
+  for (const { path, view } of hesseDurationViews) {
+    const sekI = structures(view.rootNodes).find(node => node.id === 'physics-seki')
+    assert(sekI, `${path}: native Sek-I branch required`)
+    assert.deepEqual(sekI.children.filter(node => node.kind === 'structure').map(node => node.id),
+      view.scope.durationModel === 'G8'
+        ? [6, 7, 8, 9].map(year => `physics-he-seki-j${year}-g8`)
+        : [7, 8, 10].map(year => `physics-he-seki-j${year}`))
+    const roles = collectCompositionProjectionRoleGoalIds(sekI.children, byId)
+    for (const goalId of [...methods, orientation]) {
+      assert(roles.targetGoalIds.has(goalId), `${path}: methods remain actual lower-stage acquisition targets`)
+      assert(!roles.prerequisiteOnlyGoalIds.has(goalId), `${path}: no method target downgrade`)
+      assert.equal(referenceCount(view.rootNodes, goalId), 1, `${path}: exactly one method acquisition`)
+    }
+    const branch = structures(sekI.children).find(node => node.id === 'physics-methods-k3-preparation')
+    assert(branch, `${path}: method acquisition branch required`)
+    assert.deepEqual(branch.children, methods.map(goalId => ({ kind: 'goalEntry', goalId, projectionRole: 'target' })))
+    if (view.scope.stage === 'SekI') {
+      assert.equal(structures(view.rootNodes).some(node => node.id.startsWith('physics-sekii')), false,
+        `${path}: genuine Sek-I view must contain no visible upper-stage branch`)
+    }
+  }
+})
+
+test('28 existing plus four HE duration cross-stage views teach methods once in Sek I; all 28 Sek-II views retain earlier acquisition', () => {
   let preparationViews = 0
   for (const { path, view } of views) {
     if (!methodsArePreparation(view)) continue
@@ -106,11 +143,14 @@ test('28 cross-stage views teach the methods once in Sek I; all 28 Sek-II views 
     const branch = branches[0]
     const sekI = structures(view.rootNodes).find(node => node.id === 'physics-seki')
     if (view.scope.jurisdiction === 'DE-HE') {
-      const year7 = sekI?.children.find(node => node.kind === 'structure' && node.id === 'physics-he-seki-j7')
-      assert(year7?.kind === 'structure', `${path}: HE G9 acquisition starts in year 7`)
-      const methodTopic = year7.children.find(node => node.kind === 'structure' && node.id === 'physics-he-seki-methods')
+      const isG8 = view.scope.durationModel === 'G8'
+      const acquisitionYearId = isG8 ? 'physics-he-seki-j6-g8' : 'physics-he-seki-j7'
+      const acquisitionYear = sekI?.children.find(node => node.kind === 'structure' && node.id === acquisitionYearId)
+      assert(acquisitionYear?.kind === 'structure', `${path}: HE acquisition starts in G8 year6/G9 year7`)
+      const methodTopic = acquisitionYear.children.find(node => node.kind === 'structure'
+        && node.id === (isG8 ? 'physics-he-g8-topic-6g-1' : 'physics-he-seki-methods'))
       assert(methodTopic?.kind === 'structure' && methodTopic.children.includes(branch),
-        `${path}: exactly the existing method branch belongs to the year-7 method topic`)
+        `${path}: exactly the existing method branch belongs to its source-bound introductory topic`)
     } else {
       assert(sekI?.children.includes(branch), `${path}: preparation belongs to the existing Sek-I section`)
     }
@@ -128,7 +168,9 @@ test('28 cross-stage views teach the methods once in Sek I; all 28 Sek-II views 
       assert.equal(flattenReferences(view.rootNodes).filter(node => node.goalId === goalId && node.projectionRole === 'prerequisiteOnly').length, 0, path)
     }
   }
-  assert.equal(preparationViews, 28)
+  assert.equal(preparationViews, 32)
+  assert.equal(neutralViews.filter(({ view }) => methodsArePreparation(view)).length, 28,
+    'retain the complete existing cross-stage method preparation floor')
 
   let repaired = 0
   const splitProfiles: string[] = []
@@ -142,7 +184,10 @@ test('28 cross-stage views teach the methods once in Sek I; all 28 Sek-II views 
     if (view.scope.jurisdiction === 'DE-HE') {
       splitProfiles.push(String(view.scope.courseProfile))
       assert.equal(branch, undefined, `${path}: HE must not retain a second astronomy-only acquisition branch`)
-      const stage = structures(view.rootNodes).find(node => node.id === 'physics-root')!
+      const rootStage = structures(view.rootNodes).find(node => node.id === 'physics-root')!
+      const stage = structures(view.rootNodes).find(node => node.id === `physics-sekii-${String(view.scope.courseProfile).toLowerCase()}`)
+      assert(stage && rootStage.children.includes(stage), `${path}: one explicit Sek-II stage must remain a direct subject child`)
+      assert.equal(rootStage.label, 'Physik', `${path}: the subject root must not stand in for the shared stage identity`)
       const introductory = stage.children.find(node => node.kind === 'structure' && node.id === 'physics-e-phase')
       const q4 = stage.children.find(node => node.kind === 'structure' && node.id === 'physics-q4')
       assert(introductory?.kind === 'structure' && q4?.kind === 'structure', path)

@@ -32,8 +32,8 @@ const stageByViewNodeId = new Map<string, (typeof PROVISIONAL_STAGE_PLAN_UNITS)[
 type HesseCompatibilityDuration = 'G8' | 'G9' | 'duration-neutral'
 type HesseCompatibilityView = { landscapeId: string; duration?: HesseCompatibilityDuration }
 /** Explicit preview compatibility records, not activated v1.3 plan bindings.
- * HE Physics retains its G9 source policy; sharing a display calendar with a
- * G8 Mathematics context does not authorize a G8 Physics curriculum. */
+ * Duration-specific Physics identities use the source-backed G8 year nodes;
+ * the retained neutral Physics views keep their G9 year nodes. */
 const hesseCompatibilityViews = new Map<string, HesseCompatibilityView>()
 const registerHesseCourseViews = (gk: string, lk: string, record: HesseCompatibilityView) => {
   for (const id of [gk, lk, `merged:${lk}+${gk}`, `merged:${gk}+${lk}`]) hesseCompatibilityViews.set(id, record)
@@ -46,6 +46,10 @@ registerHesseCourseViews('de-he-gym-sekii-math-gk', 'de-he-gym-sekii-math-lk', {
 for (const duration of ['G8', 'G9'] as const) hesseCompatibilityViews.set(`de-he-gym-seki-math-${duration.toLowerCase()}`,
   { landscapeId: MATHEMATICS_LANDSCAPE_ID, duration })
 registerHesseCourseViews('de-he-gym-physics-gk', 'de-he-gym-physics-lk', { landscapeId: PHYSICS_LANDSCAPE_ID })
+registerHesseCourseViews('de-he-gym-physics-gk-g8', 'de-he-gym-physics-lk-g8', { landscapeId: PHYSICS_LANDSCAPE_ID, duration: 'G8' })
+hesseCompatibilityViews.set('de-he-gym-seki-physics-g8', { landscapeId: PHYSICS_LANDSCAPE_ID, duration: 'G8' })
+registerHesseCourseViews('de-he-gym-physics-gk-g9', 'de-he-gym-physics-lk-g9', { landscapeId: PHYSICS_LANDSCAPE_ID, duration: 'G9' })
+hesseCompatibilityViews.set('de-he-gym-seki-physics-g9', { landscapeId: PHYSICS_LANDSCAPE_ID, duration: 'G9' })
 registerHesseCourseViews('de-he-gym-sekii-physics-gk', 'de-he-gym-sekii-physics-lk', { landscapeId: PHYSICS_LANDSCAPE_ID })
 
 type ReviewedHesseCompatibilityIdentity = LearnerMapUnitIdentity & { calendar: string; position: number }
@@ -66,7 +70,9 @@ const hessePhysicsPhaseNodes = new Map([
   ['physics-e-phase', 'e-phase'], ['physics-q1', 'q1'], ['physics-q2', 'q2'],
   ['physics-q3', 'q3'], ['physics-q4', 'q4'], ['physics-he-abitur', 'abitur'],
 ])
-const hessePhysicsYearNodes = new Map([['physics-he-seki-j7', 7], ['physics-he-seki-j8', 8], ['physics-he-seki-j10', 10]])
+const hessePhysicsYearNodes = new Map<string, { year: number; duration?: HesseCompatibilityDuration }>(
+  [7, 8, 10].map(year => [`physics-he-seki-j${year}`, { year }]))
+for (const year of [6, 7, 8, 9]) hessePhysicsYearNodes.set(`physics-he-seki-j${year}-g8`, { year, duration: 'G8' })
 
 function deriveReviewedHesseCompatibilityIdentities(
   goals: ReadonlyMap<string, UiGoal>, visibleIds: ReadonlySet<string>, language: 'de' | 'en',
@@ -91,10 +97,11 @@ function deriveReviewedHesseCompatibilityIdentities(
     const mathYear = view.landscapeId === MATHEMATICS_LANDSCAPE_ID ? hesseYearNodes.get(node) : undefined
     const physicsYear = view.landscapeId === PHYSICS_LANDSCAPE_ID ? hessePhysicsYearNodes.get(node) : undefined
     if (mathYear?.duration && mathYear.duration !== view.duration) continue
+    if (physicsYear && (physicsYear.duration === 'G8' ? view.duration !== 'G8' : view.duration === 'G8')) continue
     if (view.duration === 'G8' && mathYear?.year === 10) continue
     const duration = view.duration ?? selectedDuration
     const prefix = `he-compat:${duration}`
-    const year = mathYear?.year ?? physicsYear
+    const year = mathYear?.year ?? physicsYear?.year
     if (year !== undefined) {
       identities.set(id, { key: `${prefix}:year:${year}`, calendar: `${prefix}:years`, position: year,
         label: language === 'en' ? `Year ${year}` : `Jahrgangsstufe ${year}` })
@@ -198,7 +205,10 @@ export function deriveLearnerUnitMapPreview(input: LearnerUnitMapPreviewInput, r
   }
   const subjects = new Set(UNIT_MAP_PREVIEW_SUBJECT_IDS)
   const isSection = (goal: UiGoal | undefined): goal is UiGoal => !!goal && isCompositionStructureNode(goal)
-    && !goal.tags?.includes('root')
+    // A single-stage projection may expose its actual stage as a root. Its
+    // explicit identity still belongs to the shared stage calendar; a subject
+    // root or an unknown structure never gains a unit from its title or tag.
+    && (!goal.tags?.includes('root') || stageByViewNodeId.has(viewNodeId(goal) ?? '') || declaredUnits.has(goal.id))
     && !!goal.landscapeId && subjects.has(goal.landscapeId) && !!viewNodeId(goal)
     && (!planBoundViewIds.has(viewId(goal)) || declaredUnits.has(goal.id))
   const children = (id: string) => (visibleChildrenByParent.get(id) ?? []).filter(child => visibleGoalIds.has(child))
@@ -223,7 +233,10 @@ export function deriveLearnerUnitMapPreview(input: LearnerUnitMapPreviewInput, r
   for (const root of rootGoals) {
     // A selected overview can contain the subject roots. Section identity is
     // still restricted to the reviewed map subjects by isSection above.
-    if (visibleGoalIds.has(root.id)) walk(root.id, 0)
+    if (!visibleGoalIds.has(root.id)) continue
+    const depth = isSection(root) ? depthOf.get(root.id) ?? 1 : 0
+    if (depth) depthOf.set(root.id, depth)
+    walk(root.id, depth)
   }
   const maxStep = Math.max(0, ...depthOf.values())
   const step = maxStep === 0 ? 0 : Math.min(maxStep, Math.max(1, Math.round(requestedStep ?? maxStep)))

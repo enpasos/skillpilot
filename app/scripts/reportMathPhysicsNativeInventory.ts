@@ -7,6 +7,7 @@ import { fileURLToPath } from 'node:url'
 import type { LearningGoal, SkillLandscape } from '../src/landscapeTypes'
 import { getOfferedGymnasiumDurationModels, isGymnasiumSubjectOfferedForStageSelection } from '../src/utils/durationModel'
 import { getDisplayCourseProfileFilters } from '../src/utils/filterLabels'
+import { PHYSICS_DURATION_POLICY_PATH } from './gymnasiumDurationPolicy'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
 export const DEFAULT_OUTPUT = 'tmp/learning-units/offered-membership.json'
@@ -180,6 +181,7 @@ export function buildInventory() {
     ...listJson('curricula/DE/Gymnasium/completion-profiles'),
     ...listJson('curricula/DE/Gymnasium/completion-scopes'),
     'curricula/DE/Gymnasium/provenance/gymnasium-duration-model-policy.json',
+    PHYSICS_DURATION_POLICY_PATH, 'app/scripts/gymnasiumDurationPolicy.ts',
     'app/src/generated/gymnasiumDurationOfferings.ts', 'app/src/utils/durationModel.ts',
     'app/src/utils/filterLabels.ts', 'app/scripts/reportMathPhysicsNativeInventory.ts',
     'app/scripts/MathPhysicsNativeProjectionInventory.java', 'app/scripts/mathPhysicsNativeInventory.init.gradle',

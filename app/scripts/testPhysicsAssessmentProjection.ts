@@ -41,7 +41,14 @@ const abiturRootIds = {
   LK: '79028c45-90ae-57eb-8016-f5a96af18fa2',
 } as const
 const hesseStageViewIds = new Set(['de-he-gym-physics-gk', 'de-he-gym-physics-lk',
-  'de-he-gym-sekii-physics-gk', 'de-he-gym-sekii-physics-lk'])
+  'de-he-gym-sekii-physics-gk', 'de-he-gym-sekii-physics-lk',
+  'de-he-gym-physics-gk-g8', 'de-he-gym-physics-lk-g8',
+  'de-he-gym-physics-gk-g9', 'de-he-gym-physics-lk-g9'])
+const newHesseDurationViewIds = new Set([
+  'de-he-gym-physics-gk-g8', 'de-he-gym-physics-lk-g8',
+  'de-he-gym-physics-gk-g9', 'de-he-gym-physics-lk-g9',
+  'de-he-gym-seki-physics-g8', 'de-he-gym-seki-physics-g9',
+])
 const fermiGoalId = '658cf33d-a0c2-5d47-801a-3dbcd5cac074'
 const fermiAssessmentId = '71e8936b-fa8a-50dc-8c47-fca015b85ac5'
 const kinematicsAssessments = [
@@ -169,9 +176,20 @@ let preservedPrerequisiteOnlyPairs = 0
 let filteredPrerequisiteOnlyPairs = 0
 let kinematicsTaskPairs = 0
 let astronomyTaskPairs = 0
+const counts = () => ({ viewCount, fermiScopeViewCount, practiceTaskPairs, abiturTaskPairs,
+  preservedSekITaskPairs, preservedPrerequisiteOnlyPairs, filteredPrerequisiteOnlyPairs,
+  kinematicsTaskPairs, astronomyTaskPairs })
+const newDurationCounts = Object.fromEntries(Object.keys(counts()).map(key => [key, 0])) as ReturnType<typeof counts>
 const jurisdictions = new Set<string>()
 for (const filename of readdirSync(viewDirectory).filter((name) => name.endsWith('.view.json')).sort()) {
   const view = JSON.parse(readFileSync(resolve(viewDirectory, filename), 'utf8')) as CompositionView
+  const previousCounts = counts()
+  const recordDurationCounts = () => {
+    if (!newHesseDurationViewIds.has(view.viewId)) return
+    for (const key of Object.keys(newDurationCounts) as Array<keyof typeof newDurationCounts>) {
+      newDurationCounts[key] += counts()[key] - previousCounts[key]
+    }
+  }
   const course = view.scope.courseProfile
   const [projected] = normalizeLearnerProjectedEntries(applyCompositionViewProjection([canonical], view))
   assert(projected)
@@ -210,10 +228,16 @@ for (const filename of readdirSync(viewDirectory).filter((name) => name.endsWith
       `${view.viewId}: astronomy tasks retain their complete canonical payload`)
   }
 
-  if ((course !== 'GK' && course !== 'LK') || !['SekII', 'CrossStage'].includes(view.scope.stage ?? '')) continue
+  if ((course !== 'GK' && course !== 'LK') || !['SekII', 'CrossStage'].includes(view.scope.stage ?? '')) {
+    recordDurationCounts()
+    continue
+  }
   // Bavaria and Baden-Wuerttemberg author separate course structures; this
   // independent scope list must not silently skip a broken or removed reference.
-  if (['DE-BY', 'DE-BW'].includes(view.scope.jurisdiction ?? '')) continue
+  if (['DE-BY', 'DE-BW'].includes(view.scope.jurisdiction ?? '')) {
+    recordDurationCounts()
+    continue
+  }
   const expectedRootIds = [...practiceRootIds, abiturRootIds[course]]
   const hesseCollection = (rootId: string): string | undefined => {
     if (!hesseStageViewIds.has(view.viewId)) return undefined
@@ -311,18 +335,25 @@ for (const filename of readdirSync(viewDirectory).filter((name) => name.endsWith
       practiceTaskPairs += expectedTasks.length
     }
   }
+  recordDurationCounts()
 }
-assert.equal(viewCount, 60, 'Cover every existing GK/LK and SekII/CrossStage assessment-collection view.')
-assert.equal(fermiScopeViewCount, 69, 'Check exact Fermi assessment target visibility in every Physics composition view.')
+console.log('Physics duration assessment counts:', JSON.stringify({ total: counts(), addedHesseDuration: newDurationCounts }))
+const assertCount = (key: keyof typeof newDurationCounts, legacy: number, added: number, message: string): void => {
+  assert.equal(counts()[key] - newDurationCounts[key], legacy, `${message} Preserve the exact existing-view floor.`)
+  assert.equal(newDurationCounts[key], added, `${message} Check every additional HE duration obligation.`)
+  assert.equal(counts()[key], legacy + added, message)
+}
+assertCount('viewCount', 60, 4, 'Cover every existing GK/LK and SekII/CrossStage assessment-collection view.')
+assertCount('fermiScopeViewCount', 69, 6, 'Check exact Fermi assessment target visibility in every Physics composition view.')
 assert.equal(jurisdictions.size, 14, 'Cover all jurisdictions using these Physics assessment collections.')
-assert.equal(kinematicsTaskPairs, 120, 'Both reviewed kinematics assessments must appear in all 60 shared GK/LK exercise views.')
-assert.equal(astronomyTaskPairs, 136, 'Every existing ordinary astronomy demand needs its applicable task across all 69 views.')
-assert.equal(practiceTaskPairs, 4266,
+assertCount('kinematicsTaskPairs', 120, 8, 'Both reviewed kinematics assessments must appear in all shared GK/LK exercise views.')
+assertCount('astronomyTaskPairs', 136, 8, 'Every existing ordinary astronomy demand needs its applicable task across all views.')
+assertCount('practiceTaskPairs', 4266, 308,
   'Expose every current canonical collection obligation, including the new individual and nested assessments.')
-assert.equal(abiturTaskPairs, 480, 'Every applicable view must expose both Abitur sample exams and all eight proposals.')
-assert.equal(preservedSekITaskPairs, 30, 'Preserve the source-backed Sek-I task placements, including six SL/SN astronomy placements.')
-assert.equal(preservedPrerequisiteOnlyPairs, 161, 'Preserve every existing Q4 prerequisite-only role affected by explicit task references.')
-assert.equal(filteredPrerequisiteOnlyPairs, 48, 'Course and jurisdiction filters must not silently reintroduce these support tasks as targets.')
+assertCount('abiturTaskPairs', 480, 32, 'Every applicable view must expose both Abitur sample exams and all eight proposals.')
+assertCount('preservedSekITaskPairs', 30, 0, 'Preserve the source-backed Sek-I task placements, including six SL/SN astronomy placements.')
+assertCount('preservedPrerequisiteOnlyPairs', 161, 0, 'Preserve every existing Q4 prerequisite-only role affected by explicit task references.')
+assertCount('filteredPrerequisiteOnlyPairs', 48, 0, 'Course and jurisdiction filters must not silently reintroduce these support tasks as targets.')
 const missingAstronomyFixture = mkdtempSync(resolve(tmpdir(), 'physics-missing-astronomy-'))
 try {
   const missingView = JSON.parse(readFileSync(resolve(viewDirectory, 'de-bb-gk.view.json'), 'utf8')) as CompositionView
