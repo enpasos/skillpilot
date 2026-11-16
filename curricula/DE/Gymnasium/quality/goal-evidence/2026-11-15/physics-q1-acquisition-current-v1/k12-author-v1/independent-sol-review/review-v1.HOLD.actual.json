@@ -1,0 +1,302 @@
+{
+  "at": "2026-11-15T18:18:53.713268+00:00",
+  "decision": "HOLD_V1_REQUIRE_FOUR_ORDINARY_PREREQUISITE_REVISIONS",
+  "reviewer": "Independent agent /root/land_stage_excerpts; proposal author is /root",
+  "reviewInputPins": {
+    "proposal.actual.json": "0f097c3b8bd6e43eb2e8f1bc9ec8bae76dda014324e5a5cb7b1ba3b6747addf7",
+    "candidate.canonical.json": "f6880c284398069a1bd0071968716a20cce01121d9221b3f3ca2e26929c29b01",
+    "targets-and-direct-requires.json": "e8341a15c3981475c95be8c655aacd099b6f08d94c6737837a768b98776aaae8"
+  },
+  "structuralEvidence": {
+    "path": "v1.structural-and-full-context.actual.json",
+    "sha256": "884d3a8b3763e628909f71af00286d42258264a1e1d74a5aecad23149f098913",
+    "resolvedGoals": 6625,
+    "canonicalRoots": 21,
+    "allCurrentInputPinsMatch": true,
+    "acyclicContainsAndRequires": true,
+    "allTenAtomicAndTransitivelyMinimal": true,
+    "remainingReachableAssessmentsAcrossTen": 0,
+    "onlyCandidateChanges": "requires on exactly ten ordinary goals"
+  },
+  "primarySource": "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/12/physik/grundlegend-bio",
+  "officialPrerequisiteGraphClaim": false,
+  "sixKeepFourRevise": true,
+  "rows": [
+    {
+      "goalId": "84ddb244-e560-592f-9d43-e84c801fe5b4",
+      "title": "Linsenauge mit geometrischer Optik modellieren",
+      "fullTargetDescription": "Die lernende Person kann das Linsenauge mit Strahlenkonstruktion, Linsengleichung und Simulationen modellieren, Bedingungen scharfen Sehens quantitativ deuten und Modellgrenzen benennen.",
+      "removeOldD441AssessmentPrerequisite": "ACCEPT",
+      "candidateV1Decision": "KEEP",
+      "currentProposedRequires": [
+        "078ce4d2-3193-4cd0-ae59-4fb8ab16e9e5",
+        "0a154cbd-1218-4553-835c-a754e9901bba"
+      ],
+      "securedContextCount": 54,
+      "contentReason": "Qualitative lens/ray-image construction and fractional-formula rearrangement secure the geometric and mathematical inputs. Quantitative eye adaptation, application of the lens equation and using the given simulation are new target learning. Do not require the complete electrical chapter."
+    },
+    {
+      "goalId": "39ef1e8a-9203-5192-8c76-8e0c3322646f",
+      "title": "Farbsehen und additive Farbmischung deuten",
+      "fullTargetDescription": "Die lernende Person kann additive Farbmischung als physiologischen Effekt des Farbsehens erklaeren und graphische Darstellungen empirischer Daten fachlich auswerten.",
+      "removeOldD441AssessmentPrerequisite": "ACCEPT",
+      "candidateV1Decision": "KEEP",
+      "currentProposedRequires": [
+        "cdab9fd1-5054-4a7e-8c9a-4474062ddd23",
+        "5e7d5ff2-b92c-4989-85bc-8d87ad7edadd"
+      ],
+      "securedContextCount": 10,
+      "contentReason": "Physical additive/subtractive distinction and elementary reading of plotted data are pertinent foundations. Retinal receptor interpretation is acquired here. No lens, general electrical field or Q1 assessment prerequisite is necessary."
+    },
+    {
+      "goalId": "41872413-497e-5b88-ac65-365ed7d9851f",
+      "title": "Beugungsbegrenzte Winkelauflösung des Auges abschätzen",
+      "fullTargetDescription": "Die lernende Person kann die Fraunhofer-Beugung an einer Kreisblende nutzen, um aus Wellenlänge und Pupillendurchmesser die beugungsbegrenzte Winkelauflösung des Auges abzuschätzen, und diese ideale optische Grenze von biologischen Einflüssen auf die Sehschärfe unterscheiden.",
+      "removeOldD441AssessmentPrerequisite": "ACCEPT",
+      "candidateV1Decision": "KEEP",
+      "currentProposedRequires": [
+        "709e688c-eb07-5f83-a506-82c9bfe0d89f"
+      ],
+      "securedContextCount": 127,
+      "contentReason": "The existing Rayleigh/resolution competence explicitly includes aperture, wavelength, diffraction and the human eye. Its secured single-slit/wave-optics context supports the new pupil-aperture estimate. Distinguishing the ideal diffraction bound from biological limits is new target learning. A large upstream closure is not itself a reason to add the electrical assessment back."
+    },
+    {
+      "goalId": "f06c581a-7157-584e-a692-99bcd613cff9",
+      "title": "Frequenzspektren von Tönen und Klängen analysieren",
+      "fullTargetDescription": "Die lernende Person kann Zeitdiagramme und Frequenzspektren von Tönen und Klängen miteinander verknüpfen, Grund- und Obertöne identifizieren und den Einfluss der Spektralanteile auf die Klangfarbe erklären.",
+      "removeOldD441AssessmentPrerequisite": "ACCEPT",
+      "candidateV1Decision": "REVISE",
+      "currentProposedRequires": [
+        "e62e48bc-2387-4b2b-8d6f-7a06c8e7580e"
+      ],
+      "securedContextCount": 9,
+      "contentReason": "The proposed instrument goal requires explaining construction, excitation and resonators. Those are not necessary to relate a supplied tone waveform to a spectrum. The existing tonal-properties goal already secures frequency/amplitude distinctions, simple oscillation representations and axes/scales through 80c232. The spectral decomposition, fundamental/overtones and resulting timbre are precisely the new target learning, so no Fourier-calculus prerequisite is inferred.",
+      "requires": [
+        "10aad90e-a1db-42b6-8d1e-1d856e14b47d"
+      ],
+      "reason": "The proposed instrument goal requires explaining construction, excitation and resonators. Those are not necessary to relate a supplied tone waveform to a spectrum. The existing tonal-properties goal already secures frequency/amplitude distinctions, simple oscillation representations and axes/scales through 80c232. The spectral decomposition, fundamental/overtones and resulting timbre are precisely the new target learning, so no Fourier-calculus prerequisite is inferred.",
+      "counterexample": "A learner who can compare simple waveforms and frequency/amplitude but cannot explain how changing an instrument resonator changes its sound can nevertheless learn to read a supplied frequency spectrum and identify harmonics.",
+      "fullReplacementPrerequisites": [
+        {
+          "id": "10aad90e-a1db-42b6-8d1e-1d856e14b47d",
+          "title": "Tonhöhe, Lautstärke und Geräusche unterscheiden",
+          "description": "Die lernende Person kann Töne von Geräuschen anhand einfacher Schwingungsdarstellungen unterscheiden sowie Tonhöhe und Lautstärke als verschiedene Merkmale beschreiben und mit Frequenz beziehungsweise – unter vergleichbaren Bedingungen – Amplitude in Beziehung setzen.",
+          "requires": [
+            "3c82510a-1f12-4eaa-81c2-8599437a5b85",
+            "80c232f1-8f72-5829-9dbe-5a610ccab3be"
+          ]
+        }
+      ],
+      "suggestedClosureCount": 8,
+      "suggestedGraphAcyclic": true,
+      "suggestedDirectEdgesTransitivelyMinimal": true
+    },
+    {
+      "goalId": "8ac61062-f63e-5935-96ae-84014906c368",
+      "title": "Schalldruckpegel und Hoerrisiken quantitativ beurteilen",
+      "fullTargetDescription": "Die lernende Person kann Zusammenhaenge zwischen messbaren Schallgroessen und empfundener Lautstaerke mathematisch nutzen und Gesundheitsgefaehrdungen durch hohe Schalldruckpegel begruendet beurteilen.",
+      "removeOldD441AssessmentPrerequisite": "ACCEPT",
+      "candidateV1Decision": "KEEP",
+      "currentProposedRequires": [
+        "da0837c7-95a7-5a6a-81db-f33cb7f42d85",
+        "3c1d6ce7-099e-4267-9ff2-3d1526209a89"
+      ],
+      "securedContextCount": 57,
+      "contentReason": "The qualitative level-duration hearing-risk goal plus the elementary logarithm goal secure the risk and mathematical inputs for quantitative level reasoning. No logarithm differentiation, integration or natural-log model is needed. Preserve the logarithm requirement; do not convert a qualitative SekI noise source into full quantitative source coverage."
+    },
+    {
+      "goalId": "e19fccd7-6a35-5c9e-86e1-dcca76481e9c",
+      "title": "Elektrische Dipolfelder mit dem EKG verknüpfen",
+      "fullTargetDescription": "Die lernende Person kann elektrische Potenziale und Äquipotentiallinien eines Dipolfeldes experimentell oder in einer Simulation untersuchen und erklären, wie ein zeitlich veränderliches Dipolmodell des Herzens mit den zwischen Oberflächenelektroden gemessenen EKG-Potenzialdifferenzen zusammenhängt und wo die Grenzen dieser Näherung liegen.",
+      "removeOldD441AssessmentPrerequisite": "ACCEPT",
+      "candidateV1Decision": "KEEP",
+      "currentProposedRequires": [
+        "2622bef1-bdbc-504e-b468-b600b2ca3ed8",
+        "4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe"
+      ],
+      "securedContextCount": 93,
+      "contentReason": "Potential/equipotential construction and field superposition secure the physical dipole inputs. Their context retains point-charge/radial-field foundations, so the ECG application can be learned without the mixed examination. Heart-source modelling and the limits of surface-potential interpretation are new target learning."
+    },
+    {
+      "goalId": "d1306bda-35ff-53e9-9458-3cbc128874d8",
+      "title": "Zyklotron und Strahlentherapie fachlich bewerten",
+      "fullTargetDescription": "Die lernende Person kann das Funktionsprinzip des Zyklotrons auf Strahlentherapien beziehen und Nutzen sowie Risiken medizinischer Anwendungen mit physikalischen Kriterien bewerten.",
+      "removeOldD441AssessmentPrerequisite": "ACCEPT",
+      "candidateV1Decision": "REVISE",
+      "currentProposedRequires": [
+        "2d62b444-796e-548d-aeee-cfd9c6665ddc",
+        "bb5c5eab-2fc1-5336-b8cf-14d147695487"
+      ],
+      "securedContextCount": 100,
+      "contentReason": "The complete 2d62 prerequisite additionally requires Synchrotron phase/magnet adjustment and comparison of both accelerators. That independent comparison is not needed for the complete medical-cyclotron target. Electric-field acceleration plus nonrelativistic magnetic circular motion secure the mechanism inputs, and radiation-risk quantities secure evaluation. The cyclotron arrangement and application can be newly taught within this target.",
+      "requires": [
+        "741774ef-15fc-4bcf-a370-e2c5cf4257d0",
+        "3b866aea-3e4d-5f23-91de-759148382710",
+        "bb5c5eab-2fc1-5336-b8cf-14d147695487"
+      ],
+      "reason": "The complete 2d62 prerequisite additionally requires Synchrotron phase/magnet adjustment and comparison of both accelerators. That independent comparison is not needed for the complete medical-cyclotron target. Electric-field acceleration plus nonrelativistic magnetic circular motion secure the mechanism inputs, and radiation-risk quantities secure evaluation. The cyclotron arrangement and application can be newly taught within this target.",
+      "counterexample": "Knowing how an electric field adds particle energy and how a transverse magnetic field fixes radius/period is sufficient to acquire the cyclotron application without already mastering Synchrotron control and a comparison of both machines.",
+      "fullReplacementPrerequisites": [
+        {
+          "id": "741774ef-15fc-4bcf-a370-e2c5cf4257d0",
+          "title": "Geladene Teilchen in homogenen elektrischen Feldern untersuchen",
+          "description": "Die lernende Person kann die Bewegung geladener Teilchen in homogenen elektrischen Feldern untersuchen, die Richtung der Feldkraft aus Feldrichtung und Ladungsvorzeichen bestimmen, Änderungen der elektrischen potenziellen und kinetischen Energie miteinander verknüpfen und einfache Bahnformen aus Anfangsbewegung, Ladungsvorzeichen und Feldrichtung qualitativ deuten.",
+          "requires": [
+            "9f59a088-3939-59e9-821d-167fadfda782"
+          ]
+        },
+        {
+          "id": "3b866aea-3e4d-5f23-91de-759148382710",
+          "title": "Kreisbahnen geladener Teilchen quantitativ bestimmen",
+          "description": "Die lernende Person kann im nichtrelativistischen Modell für ein geladenes Teilchen mit zur Feldrichtung senkrechter Geschwindigkeit in einem homogenen Magnetfeld Bahnradius und Umlaufzeit aus Lorentz- und Zentripetalkraft bestimmen.",
+          "requires": [
+            "8c9394cb-f54a-508d-9750-4c49e31b3fa9"
+          ]
+        },
+        {
+          "id": "bb5c5eab-2fc1-5336-b8cf-14d147695487",
+          "title": "Strahlungsrisiken mit physikalischen Größen beurteilen",
+          "description": "Die lernende Person kann Strahlungsrisiken fachlich beurteilen, indem sie Aktivität als Quellenkenngröße von einer zur Fragestellung passenden Dosisgröße unterscheidet, die Energiedeposition pro Masseneinheit oder eine daraus abgeleitete strahlenschutzbezogene Gewichtung beschreibt, und dabei je nach Expositionssituation Strahlungsart, Expositionsdauer, Geometrie und Abstand, Abschirmung sowie Unsicherheit berücksichtigt.",
+          "requires": [
+            "e5c08365-a0d3-592c-ad8e-d2c2c6e2b717"
+          ]
+        }
+      ],
+      "suggestedClosureCount": 99,
+      "suggestedGraphAcyclic": true,
+      "suggestedDirectEdgesTransitivelyMinimal": true
+    },
+    {
+      "goalId": "db47ac91-7bb0-5ba3-b39d-e2d6fc98396e",
+      "title": "Ruhepotenzial an einer selektiv permeablen Membran modellieren",
+      "fullTargetDescription": "Die lernende Person kann das Ruhepotenzial in einem vereinfachten passiven Membranmodell als Ergebnis des Zusammenspiels von konzentrationsgetriebener Diffusion, elektrischer Gegenwirkung und selektiver Membranpermeabilität modellieren und erläutern, dass aktive Transportprozesse die Konzentrationsgradienten langfristig aufrechterhalten, aber nicht Bestandteil dieses passiven Modells sind.",
+      "removeOldD441AssessmentPrerequisite": "ACCEPT",
+      "candidateV1Decision": "REVISE",
+      "currentProposedRequires": [
+        "5dd180f1-f1c8-5f76-9c9a-ea3fc3d921bf",
+        "1730c01d-8c85-57df-b031-c11e2a0511b1",
+        "ac25ffe3-fd42-592d-a937-79cc13460313"
+      ],
+      "securedContextCount": 96,
+      "contentReason": "ac25 is explicitly a time-stepped motion-model competence, backed by friction-motion/Newton mechanics. Neither that mechanical application nor its implementation is needed before learning the passive diffusion/electric-counteraction model. Remove ac25; a tabular diffusion model can be acquired in the target rather than being treated as previously secured motion-model mastery. This review does not claim that the official spreadsheet component is optional or already covered by the shorter canonical target description.",
+      "requires": [
+        "5dd180f1-f1c8-5f76-9c9a-ea3fc3d921bf",
+        "1730c01d-8c85-57df-b031-c11e2a0511b1"
+      ],
+      "reason": "ac25 is explicitly a time-stepped motion-model competence, backed by friction-motion/Newton mechanics. Neither that mechanical application nor its implementation is needed before learning the passive diffusion/electric-counteraction model. Remove ac25; a tabular diffusion model can be acquired in the target rather than being treated as previously secured motion-model mastery. This review does not claim that the official spreadsheet component is optional or already covered by the shorter canonical target description.",
+      "counterexample": "A learner with particle diffusion and electric potential knowledge can model selective ionic diffusion and opposing electric forces while learning tabular iteration, despite not knowing a frictional motion spreadsheet.",
+      "fullReplacementPrerequisites": [
+        {
+          "id": "5dd180f1-f1c8-5f76-9c9a-ea3fc3d921bf",
+          "title": "Diffusion und Brownsche Bewegung mit dem Teilchenmodell deuten",
+          "description": "Die lernende Person kann Diffusion und Brownsche Bewegung mit dem Teilchenmodell deuten.",
+          "requires": [
+            "988888bb-1f88-55f9-9a44-f3f60469a297"
+          ]
+        },
+        {
+          "id": "1730c01d-8c85-57df-b031-c11e2a0511b1",
+          "title": "Arbeit, Spannung und Potenzial im E-Feld",
+          "description": "Die lernende Person kann die Spannung zwischen zwei Punkten als Potenzialdifferenz und – bei offengelegter Vorzeichenkonvention – über Arbeit beziehungsweise Änderung der potenziellen Energie pro Ladung deuten und im homogenen elektrischen Feld für einen Abstand parallel zu den Feldlinien den Betragszusammenhang |U| = E·d anwenden.",
+          "requires": [
+            "bbee4c52-4e95-5529-990f-706aa99316a3",
+            "c1c71daa-042b-4f4c-8c31-0ac366f5149e",
+            "f08d06dc-139d-5fd2-892c-8cc919b1e4fc"
+          ]
+        }
+      ],
+      "suggestedClosureCount": 91,
+      "suggestedGraphAcyclic": true,
+      "suggestedDirectEdgesTransitivelyMinimal": true
+    },
+    {
+      "goalId": "2825b528-00ee-52d0-870e-686890cb1195",
+      "title": "Nervenleitungs-Messverfahren physikalisch beurteilen",
+      "fullTargetDescription": "Die lernende Person kann die Eignung eines vorgegebenen Verfahrens zur Messung der Signalleitungsgeschwindigkeit in Nervenzellen begründen, indem sie die für dieses Verfahren relevanten elektrischen oder magnetischen Felder abschätzt und gegebenenfalls auftretende Induktionsspannungen aus der zeitlichen Änderung des magnetischen Flusses erklärt.",
+      "removeOldD441AssessmentPrerequisite": "ACCEPT",
+      "candidateV1Decision": "REVISE",
+      "currentProposedRequires": [
+        "d3c153b9-e09b-5668-8386-73105546a7c1",
+        "106417ed-80db-5490-a1ee-bb4160d3f2b4",
+        "eb1ea150-ec6c-5000-bce3-f46c820dccf8",
+        "8da5c981-8216-5fcd-a393-19f392ae2006"
+      ],
+      "securedContextCount": 75,
+      "contentReason": "The new goal must support electric as well as magnetic procedures. A point-charge Coulomb force competence does not secure the electric estimate from a supplied electrode potential difference and separation. That relation is explicitly present in 1730. Preserve experimental evaluation, current-field models and finite-change induction; replace the direct Coulomb requirement with work/voltage/potential. Do not keep Coulomb merely because it is in the same chapter.",
+      "requires": [
+        "d3c153b9-e09b-5668-8386-73105546a7c1",
+        "106417ed-80db-5490-a1ee-bb4160d3f2b4",
+        "eb1ea150-ec6c-5000-bce3-f46c820dccf8",
+        "1730c01d-8c85-57df-b031-c11e2a0511b1"
+      ],
+      "reason": "The new goal must support electric as well as magnetic procedures. A point-charge Coulomb force competence does not secure the electric estimate from a supplied electrode potential difference and separation. That relation is explicitly present in 1730. Preserve experimental evaluation, current-field models and finite-change induction; replace the direct Coulomb requirement with work/voltage/potential. Do not keep Coulomb merely because it is in the same chapter.",
+      "counterexample": "In a supplied electric-stimulation procedure with voltage U and approximate electrode separation d, E approximately U/d is required; calculating force between two isolated point charges does not supply that operation.",
+      "fullReplacementPrerequisites": [
+        {
+          "id": "d3c153b9-e09b-5668-8386-73105546a7c1",
+          "title": "Experimente planen und Messdaten auswerten",
+          "description": "Die lernende Person kann zu einer physikalischen Fragestellung einen einfachen Versuchsaufbau planen, Messdaten strukturiert erfassen und mit passenden Darstellungen oder einfacher Mathematisierung auswerten.",
+          "requires": [
+            "da26294f-4316-5bd5-a37a-bd89397b3b8b",
+            "3ed3279e-c524-5230-a277-dda89493df6d",
+            "15505229-efec-4d01-8e71-acf15f9c2424",
+            "25593605-5e13-55cc-9a05-8f3d737e15e9",
+            "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+            "ee48e811-4c9c-5080-9836-8403fc9f0810"
+          ]
+        },
+        {
+          "id": "106417ed-80db-5490-a1ee-bb4160d3f2b4",
+          "title": "Magnetfeldmodelle für geraden Leiter und lange Spule auswählen und anwenden",
+          "description": "Die lernende Person kann für einen idealisierten langen geraden stromdurchflossenen Leiter in Luft und für das Innere einer idealisierten langen Spule mit homogenem linearem Kern das passende Magnetfeldmodell auswählen, den Betrag mit B = μ₀ · I/(2πr) beziehungsweise B ≈ μ₀ · μᵣ · (N/ℓ) · I bestimmen, die Richtung mit der Rechte-Hand-Regel angeben und die unterschiedlichen Gültigkeitsgrenzen begründen.",
+          "requires": [
+            "0f6b798b-594e-5480-8c5f-95e2486a4d85",
+            "ee48e811-4c9c-5080-9836-8403fc9f0810"
+          ]
+        },
+        {
+          "id": "eb1ea150-ec6c-5000-bce3-f46c820dccf8",
+          "title": "Induktionsgesetz und Lenz’sche Regel",
+          "description": "Die lernende Person kann für eine Spule mit N gleichartigen Windungen die mittlere Induktionsspannung mit U_ind = −N · ΔΦ/Δt bestimmen und für einen geschlossenen Stromkreis die Richtung des Induktionsstroms mit der Lenz’schen Regel als Wirkung gegen die Flussänderung begründen.",
+          "requires": [
+            "1a037489-3c95-540b-8cae-0acd360358ee",
+            "ae20183e-92b5-5521-b8e0-9a8662cf51f5"
+          ]
+        },
+        {
+          "id": "1730c01d-8c85-57df-b031-c11e2a0511b1",
+          "title": "Arbeit, Spannung und Potenzial im E-Feld",
+          "description": "Die lernende Person kann die Spannung zwischen zwei Punkten als Potenzialdifferenz und – bei offengelegter Vorzeichenkonvention – über Arbeit beziehungsweise Änderung der potenziellen Energie pro Ladung deuten und im homogenen elektrischen Feld für einen Abstand parallel zu den Feldlinien den Betragszusammenhang |U| = E·d anwenden.",
+          "requires": [
+            "bbee4c52-4e95-5529-990f-706aa99316a3",
+            "c1c71daa-042b-4f4c-8c31-0ac366f5149e",
+            "f08d06dc-139d-5fd2-892c-8cc919b1e4fc"
+          ]
+        }
+      ],
+      "suggestedClosureCount": 98,
+      "suggestedGraphAcyclic": true,
+      "suggestedDirectEdgesTransitivelyMinimal": true
+    },
+    {
+      "goalId": "c2e0fc31-27a2-5727-9025-a824db9150d2",
+      "title": "Axonsegmente als elektrische Ersatzschaltungen modellieren",
+      "fullTargetDescription": "Die lernende Person kann ein Axonsegment mit Membrankapazität sowie Membran- und Axialwiderstand als elektrische Ersatzschaltung modellieren, mehrere Segmente verknüpfen und begründen, welche passive Signalausbreitung das Modell erklärt und welche zusätzlichen spannungsabhängigen Elemente für aktive Leitung nötig sind.",
+      "removeOldD441AssessmentPrerequisite": "ACCEPT",
+      "candidateV1Decision": "KEEP",
+      "currentProposedRequires": [
+        "8f833b36-4126-52db-b210-79fb0023c7d9",
+        "0b4f2020-8486-5372-9cb9-6e59f698ac2d"
+      ],
+      "securedContextCount": 95,
+      "contentReason": "Series/parallel resistance effects and capacitor charging/discharging secure the passive-circuit inputs. Their context retains voltage/current/capacitance knowledge. Membrane/axial correspondence, connecting segments and distinguishing passive from active propagation are new target learning; no prior biology examination is required."
+    }
+  ],
+  "sourceAndPlacementBoundaries": [
+    "Bavarian grade-12 biophysics source supports thematic/competency interpretation, not an official prerequisite graph.",
+    "This review is no full-source-coverage or SekI placement approval; lens quantitative work and logarithmic sound level must not be inferred from merely qualitative lower-secondary source mentions.",
+    "Deleting false assessment prerequisites does not authorize invented early placement, removal of ordinary foundations, transfer of mastery or modification of retained sources/frozen proof evidence."
+  ],
+  "activeWrites": 0,
+  "learnerResultWrites": 0
+}

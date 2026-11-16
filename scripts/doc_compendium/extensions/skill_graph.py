@@ -29,7 +29,7 @@ def verify_extra_data(extra_json: dict[str, dict[str, Any]], errors: list[str]) 
     counts = {"hart": 0, "teil": 0, "offen": 0, "opt": 0}
     for r in rules:
         counts[r["ampel"]] = counts.get(r["ampel"], 0) + 1
-    if counts != {"hart": 12, "teil": 50, "offen": 55, "opt": 28}:
+    if counts != {"hart": 12, "teil": 50, "offen": 57, "opt": 26}:
         errors.append(f"rules-and-gates.json: unexpected Ampel distribution: {counts}")
     states = rules_data.get("ampelSection", {}).get("states", [])
     state_counts = {state["key"]: state["count"] for state in states}

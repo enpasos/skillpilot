@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 1,
+  "agentTask": "/root/physics_three_d_blind_b",
+  "runId": "physics-current3-blind-b-20261115-52b38f",
+  "reviewerRole": "independent-ai-reviewer-b",
+  "reviewPass": "first_pass",
+  "campaignId": "physics-three-current809-context-20261115-first-pass-b",
+  "roundId": "independent-b",
+  "startUtc": "2026-11-15T17:35:12Z",
+  "endUtc": "2026-11-15T17:38:20Z",
+  "clockEvidence": [
+    {
+      "moment": "start",
+      "source": "tools.exec_command date -u",
+      "observed": "2026-11-15T17:35:12Z"
+    },
+    {
+      "moment": "start",
+      "source": "tools.clock__curr_time",
+      "observed": "2026-11-15 17:35:12 UTC"
+    },
+    {
+      "moment": "validation",
+      "source": "Python datetime.now(timezone.utc)",
+      "observed": "2026-11-15T17:38:20.730322+00:00"
+    },
+    {
+      "moment": "end",
+      "source": "tools.clock__curr_time",
+      "observed": "2026-11-15 17:38:20 UTC"
+    }
+  ],
+  "blindEligible": true,
+  "eligibilityBasis": "Received the review assignment and no desired decision. Read only the named bound review inputs, shared pins, and their referenced native book/model/PDF/render metadata. Did not inspect round-a, the prohibited eligibility-declined file, the other blind-review output directory, separate prior description decisions, canonical diffs, active source/QA files, or repository history. Existing V2 profile content and its embedded metadata were supplied context; the profile bodies were evaluated directly and previous approval/reviewer statements were not treated as authority.",
+  "priorContextUsed": false,
+  "memoryUsed": false,
+  "subdelegated": false,
+  "boundInputsActuallyRead": [
+    "tmp/physics-release809-20261115/three-native-d/round-b/prompt.md",
+    "tmp/physics-release809-20261115/three-native-d/round-b/criteria.md",
+    "tmp/physics-release809-20261115/three-native-d/round-b/contracts/goal-description-review-record.schema.json",
+    "tmp/physics-release809-20261115/three-native-d/round-b/description-review-campaign.json",
+    "tmp/physics-release809-20261115/three-native-d/round-b/batches/independent-b.batch-001.input.jsonl",
+    "tmp/physics-release809-20261115/three-native-d/round-b/review-bundle-manifest.json",
+    "tmp/physics-release809-20261115/three-review-bundle/book-model.json",
+    "tmp/physics-release809-20261115/three-review-bundle/book.pdf",
+    "tmp/physics-release809-20261115/three-review-bundle/book.pdf.render-manifest.json",
+    "tmp/physics-release809-20261115/three-D-input-seal.actual.json"
+  ],
+  "pdfPhysicalPagesActuallyViewed": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "learnerPagesActuallyViewed": [
+    1,
+    2,
+    3
+  ],
+  "imageEvidence": [
+    {
+      "path": "tmp/physics-current3-blind-b-20261115/book-physical-1.png",
+      "sha256": "sha256:78b2193d349b0c81b27c567a35c91c84af1f80ed0d265a1ef89632a27aae4934",
+      "bytes": 90303,
+      "physicalPage": 1,
+      "learnerPage": null,
+      "actuallyViewedWith": "tools.view_image",
+      "derivedFrom": "tmp/physics-release809-20261115/three-review-bundle/book.pdf",
+      "renderCommand": "pdftoppm -f 1 -l 5 -r 130 -png <bound-book.pdf> <output-prefix>"
+    },
+    {
+      "path": "tmp/physics-current3-blind-b-20261115/book-physical-2.png",
+      "sha256": "sha256:908f05905053fbec6bcc48b868872b2bb7951621906e784c53fb267731f4436b",
+      "bytes": 34899,
+      "physicalPage": 2,
+      "learnerPage": null,
+      "actuallyViewedWith": "tools.view_image",
+      "derivedFrom": "tmp/physics-release809-20261115/three-review-bundle/book.pdf",
+      "renderCommand": "pdftoppm -f 1 -l 5 -r 130 -png <bound-book.pdf> <output-prefix>"
+    },
+    {
+      "path": "tmp/physics-current3-blind-b-20261115/book-physical-3.png",
+      "sha256": "sha256:961641f8ea01cbfc07e5364911737be916cc9f7102cf6fc2ad549a48d6e4c74e",
+      "bytes": 448752,
+      "physicalPage": 3,
+      "learnerPage": 1,
+      "actuallyViewedWith": "tools.view_image",
+      "derivedFrom": "tmp/physics-release809-20261115/three-review-bundle/book.pdf",
+      "renderCommand": "pdftoppm -f 1 -l 5 -r 130 -png <bound-book.pdf> <output-prefix>",
+      "goalId": "b615830a-e8b0-5754-81e0-99da98343a8d"
+    },
+    {
+      "path": "tmp/physics-current3-blind-b-20261115/book-physical-4.png",
+      "sha256": "sha256:0d0ad8435febc2d3a0f6e8268b2d46593cf5450b1ec63d9321f67fc583fe87f8",
+      "bytes": 441473,
+      "physicalPage": 4,
+      "learnerPage": 2,
+      "actuallyViewedWith": "tools.view_image",
+      "derivedFrom": "tmp/physics-release809-20261115/three-review-bundle/book.pdf",
+      "renderCommand": "pdftoppm -f 1 -l 5 -r 130 -png <bound-book.pdf> <output-prefix>",
+      "goalId": "bbee4c52-4e95-5529-990f-706aa99316a3"
+    },
+    {
+      "path": "tmp/physics-current3-blind-b-20261115/book-physical-5.png",
+      "sha256": "sha256:f0fc44522672751a84e87cfa242fe6cf7f55145219f09bad24ff3d2793f69b46",
+      "bytes": 437466,
+      "physicalPage": 5,
+      "learnerPage": 3,
+      "actuallyViewedWith": "tools.view_image",
+      "derivedFrom": "tmp/physics-release809-20261115/three-review-bundle/book.pdf",
+      "renderCommand": "pdftoppm -f 1 -l 5 -r 130 -png <bound-book.pdf> <output-prefix>",
+      "goalId": "9f265f49-1342-5ba7-9c5d-54e97fdb2f19"
+    }
+  ],
+  "sourceFidelityAndProjectionLimit": "No external official source pages or compiled nationwide effective projection matrix were supplied or consulted. Kept description decisions do not claim verification of those external mappings.",
+  "outputs": {
+    "records": "tmp/physics-current3-blind-b-20261115/records.jsonl",
+    "explanation": "tmp/physics-current3-blind-b-20261115/review-explanation.md",
+    "validation": "tmp/physics-current3-blind-b-20261115/validation.json"
+  },
+  "decisionCounts": {
+    "keep": 3,
+    "revise": 0,
+    "split_review": 0,
+    "block": 0
+  },
+  "evidenceProfileRecommendationCounts": {
+    "none": 3,
+    "create": 0,
+    "revise": 0
+  },
+  "validationSummary": {
+    "schemaValid": true,
+    "recordCount": 3,
+    "assignedOrderValid": true,
+    "exactCopiedBindingsValid": true,
+    "rawPinsVerified": 9
+  },
+  "authority": "candidate/ai_candidate only; no human approval, learner mastery, publication or release claim",
+  "activeSourceOrQaMutation": false,
+  "startedAtUtc": "2026-11-15T17:35:12Z",
+  "completedAtUtc": "2026-11-15T17:38:20Z",
+  "originalReviewerReceiptPath": "tmp/physics-current3-blind-b-20261115/receipt.json",
+  "normalization": "Only UTC field aliases for native run assembly; original independent receipt retained byte-exact"
+}

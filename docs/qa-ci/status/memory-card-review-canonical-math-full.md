@@ -31,7 +31,7 @@ Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger.
 | cards removed from active decks | 13 |
 | memory goals traced | 6/6 |
 | composition visibility scopes | 2 |
-| memory-required goals checked in views | 17 |
+| memory-required goals checked in views | 16 |
 | memory-required goals without visible memory node | 0 |
 | blocking issues | 0 |
 
@@ -39,8 +39,8 @@ Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger.
 
 | Scope | View | Visible goals | Visible memory goals | Checked memory-required goals | Missing visible memory goals |
 | --- | --- | --- | --- | --- | --- |
-| Mathematik Sek I (DE) | `curricula/DE/Gymnasium/composition-views/mathematik/de-de-seki.view.json` | 310 | 2 | 7 | 0 |
-| Mathematik Sek I (DE-BW) | `curricula/DE/Gymnasium/composition-views/mathematik/de-bw-seki.view.json` | 311 | 2 | 10 | 0 |
+| Mathematik Sek I (DE) | `curricula/DE/Gymnasium/composition-views/mathematik/de-de-seki.view.json` | 314 | 2 | 6 | 0 |
+| Mathematik Sek I (DE-BW) | `curricula/DE/Gymnasium/composition-views/mathematik/de-bw-seki.view.json` | 338 | 2 | 10 | 0 |
 
 ## Memory-Required Goals
 

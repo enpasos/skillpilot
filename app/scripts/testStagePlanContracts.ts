@@ -301,10 +301,14 @@ for (const [file, firstId, secondId] of [['de-bb-gk.view.json', 'sek1', 'sek2-gk
   const first = findStructure(source.rootNodes, firstId), second = findStructure(source.rootNodes, secondId)
   assert(first && second, `Keep the existing stage fragments explicit for ${file}.`)
   const looseSupport: CompositionViewNode[] = []
+  const looseTargets: CompositionViewNode[] = []
   const collectLooseSupport = (nodes: CompositionViewNode[]) => nodes.forEach(node => {
     if (node.kind === 'structure') { if (node.id !== firstId && node.id !== secondId) collectLooseSupport(node.children); return }
-    assert.equal(node.projectionRole, 'prerequisiteOnly', `${file}: a regression test must not choose a stage for a true outside target.`)
-    looseSupport.push(structuredClone(node))
+    // A later real-data package may add true targets outside these fragments.
+    // This role regression neither assigns those targets a stage nor proves the
+    // complete Land view valid; it tests exactly the two existing stage fragments.
+    if (node.projectionRole === 'prerequisiteOnly') looseSupport.push(structuredClone(node))
+    else looseTargets.push(structuredClone(node))
   })
   collectLooseSupport(source.rootNodes)
   assert(looseSupport.length > 0, `${file}: keep actual global support overrides in the reproduction.`)
@@ -327,7 +331,22 @@ for (const [file, firstId, secondId] of [['de-bb-gk.view.json', 'sek1', 'sek2-gk
   const checked = validateStagePlanCatalog(catalog(value))
   assert.deepEqual(checked.findings, [], `${file}: ${JSON.stringify(checked.findings.slice(0, 5))}`)
   const fullPlacements = checked.placementsByViewId.get(value.full.viewId)!
-  assert.deepEqual([...fullPlacements.keys()].sort(), compiledAtomicIds(value, source), `${file}: existing compiler target scope is unchanged.`)
+  const selectedSource = { ...source, rootNodes: [structuredClone(first), structuredClone(second), ...looseSupport] }
+  assert.deepEqual([...fullPlacements.keys()].sort(), compiledAtomicIds(value, selectedSource), `${file}: the explicit existing stage fragments preserve their native compiler target scope.`)
+  const unplacedAtomicIds = compiledAtomicIds(value, source).filter(id => !fullPlacements.has(id))
+  const outsideOnly = { ...source, rootNodes: [...looseTargets, ...looseSupport] }
+  assert.deepEqual(unplacedAtomicIds, looseTargets.length ? compiledAtomicIds(value, outsideOnly) : [], `${file}: every full-view target outside the tested stages is diagnosed explicitly.`)
+  // Preserve the genuine complete-view failure. Adding any of these actual
+  // outside-stage declarations to an authority must fail closed; the fragment
+  // test above never turns their technical practice container into a stage.
+  for (const node of looseTargets) {
+    const complete = structuredClone(value)
+    complete.full.rootNodes.push(structuredClone(node) as typeof complete.full.rootNodes[number])
+    const fullCheck = validateStagePlanCatalog(catalog(complete))
+    assert(fullCheck.findings.some(finding => finding.code === 'SP-PLACEMENT'), `${file}: true outside targets cannot pass as a complete plan.`)
+    assert.equal(fullCheck.placementsByViewId.size, 0)
+  }
+  if (unplacedAtomicIds.length) console.log(`Full-view stage diagnosis remains blocked: ${file}: ${unplacedAtomicIds.join(', ')}`)
   const { prerequisiteOnlyGoalIds } = collectCompositionProjectionRoleGoalIds(source.rootNodes, realGoalCatalog)
   for (const id of prerequisiteOnlyGoalIds) assert(!fullPlacements.has(realGoalCatalog.get(id)!.id), `${file}: effective support ${id} cannot become a seed target.`)
   const derived = checked.viewsById.get(value.excerpt.viewId)!
@@ -446,6 +465,11 @@ const physicsUpper = {
 }
 assert(viewSchema(physicsUpper), JSON.stringify(viewSchema.errors))
 const neutralDurationResult = validateStagePlanCatalog({ ...sharedCatalog(neutralDuration), views: [...sharedCatalog(neutralDuration).views, physicsUpper] })
+const missingSharedUnit = { ...physicsUpper, planBinding: { ...physicsUpper.planBinding, unitIds: ['missing-unit'] } }
+const missingSharedResult = validateStagePlanCatalog({ ...sharedCatalog(neutralDuration), views: [...sharedCatalog(neutralDuration).views, missingSharedUnit] })
+assert(missingSharedResult.findings.some(finding => finding.code === 'SP-EXCERPT'), 'An unknown unit in a shared excerpt is a structured rejection, never an unchecked dereference.')
+assert.equal(missingSharedResult.viewsById.size, 0)
+negativeCases++
 assert.deepEqual(neutralDurationResult.findings, [])
 assert.equal(neutralDurationResult.viewsById.get(physicsUpper.viewId)!.rootNodes.length, 1)
 assert(!Object.hasOwn(neutralDurationResult.viewsById.get(physicsUpper.viewId)!.scope, 'durationModel'), 'Duration-neutral Physics upper views remain duration-neutral after materialization.')
@@ -626,3 +650,6 @@ for (const malformed of [null, {}, { ...valid.plan, units: [null] }, { ...valid.
 }
 
 console.log(`Stage-plan candidate contracts passed: authority/excerpt materialization, source/placement separation, first-need preparation and ${negativeCases} negative cases.`)
+
+// The same required contract gate also exercises nested materialization and diagnosis.
+await import('./testNestedStagePlans')

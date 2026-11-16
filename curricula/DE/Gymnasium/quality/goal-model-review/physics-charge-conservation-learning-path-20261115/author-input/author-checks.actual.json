@@ -1,0 +1,226 @@
+{
+  "at": "2026-11-15T14:47:41.533896+00:00",
+  "identity": "OpenAI GPT author checks; NOT independent review or actual learner scoring",
+  "schemaErrors": [],
+  "checks": [
+    {
+      "name": "A no external charge transfer: total before=0",
+      "actual": 0,
+      "expected": 0,
+      "pass": true
+    },
+    {
+      "name": "A arbitrary separated charges sum0",
+      "actual": 0,
+      "expected": 0,
+      "pass": true
+    },
+    {
+      "name": "B signed total nC",
+      "actual": -4,
+      "expected": -4,
+      "pass": true
+    },
+    {
+      "name": "B each final nC",
+      "actual": -2.0,
+      "expected": -2,
+      "pass": true
+    },
+    {
+      "name": "B final sum nC",
+      "actual": -4,
+      "expected": -4,
+      "pass": true
+    },
+    {
+      "name": "B deltaM nC",
+      "actual": -4,
+      "expected": -4,
+      "pass": true
+    },
+    {
+      "name": "B deltaN nC",
+      "actual": 4,
+      "expected": 4,
+      "pass": true
+    },
+    {
+      "name": "B equal/opposite transfers conserve nC",
+      "actual": 0,
+      "expected": 0,
+      "pass": true
+    },
+    {
+      "name": "Essential block absent 1",
+      "actual": 10,
+      "expected": 10,
+      "pass": true
+    },
+    {
+      "name": "Essential absent cannot pass 1",
+      "actual": false,
+      "expected": false,
+      "pass": true
+    },
+    {
+      "name": "Essential block absent 2",
+      "actual": 10,
+      "expected": 10,
+      "pass": true
+    },
+    {
+      "name": "Essential absent cannot pass 2",
+      "actual": false,
+      "expected": false,
+      "pass": true
+    },
+    {
+      "name": "Essential block absent 3",
+      "actual": 10,
+      "expected": 10,
+      "pass": true
+    },
+    {
+      "name": "Essential absent cannot pass 3",
+      "actual": false,
+      "expected": false,
+      "pass": true
+    },
+    {
+      "name": "Essential block absent 4",
+      "actual": 10,
+      "expected": 10,
+      "pass": true
+    },
+    {
+      "name": "Essential absent cannot pass 4",
+      "actual": false,
+      "expected": false,
+      "pass": true
+    },
+    {
+      "name": "Essential block absent 5",
+      "actual": 10,
+      "expected": 10,
+      "pass": true
+    },
+    {
+      "name": "Essential absent cannot pass 5",
+      "actual": false,
+      "expected": false,
+      "pass": true
+    },
+    {
+      "name": "Essential block absent 6",
+      "actual": 10,
+      "expected": 10,
+      "pass": true
+    },
+    {
+      "name": "Essential absent cannot pass 6",
+      "actual": false,
+      "expected": false,
+      "pass": true
+    },
+    {
+      "name": "One isolated minor can pass",
+      "actual": 11,
+      "expected": 11,
+      "pass": true
+    },
+    {
+      "name": "Two isolated minors do not pass",
+      "actual": false,
+      "expected": false,
+      "pass": true
+    },
+    {
+      "name": "actual runtime rubric bilingual 1",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "actual runtime rubric bilingual 2",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "actual runtime rubric bilingual 3",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "actual runtime rubric bilingual 4",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "actual runtime rubric bilingual 5",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "actual runtime rubric bilingual 6",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "Legacy119 conservation absent still max14",
+      "actual": 14,
+      "expected": 14,
+      "pass": true
+    },
+    {
+      "name": "Legacy119 missing6pt criterion may pass14>=12",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    }
+  ],
+  "count": 30,
+  "schemaSHA256": "9bd6309e2bb78dacd0540169aba48e00cb6a96c383ce9f613ea3c4ff264a15ec",
+  "runtimeRubric": {
+    "maxPoints": 12,
+    "passingPoints": 11,
+    "steps": [
+      {
+        "id": "charge-a-initial-motion",
+        "points": 2,
+        "description": "DE: A1: Neutrale Kugeln über ausgeglichene positive/negative Ladungsanteile erklärt; Elektronenverschiebung A→B mit Abstoßung durch den negativen Stab begründet. Bewegliche positive Atomrümpfe oder falsche Elektronenrichtung sind ein fachlicher Fehler. Alle genannten fachlichen Aspekte dieses Blocks sind wesentlich: 2 BE bei vollständiger fachlicher Richtigkeit; 1 BE ausschließlich für einen isolierten Rechen-, Einheiten- oder Schreibfehler bei vollständig erkennbarem korrektem Modell; sonst 0 BE. Gleichwertige begründete Skizzen, Ladungsbilanzen und Formulierungen anerkennen. Keine zusätzlichen oder mehrfachen Abzüge.\n\nEN: A1: Explain neutral spheres through balanced positive/negative charge contributions; justify electron motion A→B by repulsion from the negative rod. Moving positive atomic cores or a reversed electron direction is a scientific error. All listed scientific aspects of this block are essential: 2 points for fully correct science; 1 point only for an isolated arithmetic, unit or notation slip with the correct model fully evident; otherwise 0 points. Accept equivalent justified sketches, charge balances and wording. No extra or repeated deductions."
+      },
+      {
+        "id": "charge-a-separated-signs",
+        "points": 2,
+        "description": "DE: A2: A positiv durch Elektronenmangel und B negativ durch Elektronenüberschuss; Fortbestehen nach Entfernen des Stabs durch vorheriges Trennen und fehlenden leitenden Rückweg erklärt. Alle genannten fachlichen Aspekte dieses Blocks sind wesentlich: 2 BE bei vollständiger fachlicher Richtigkeit; 1 BE ausschließlich für einen isolierten Rechen-, Einheiten- oder Schreibfehler bei vollständig erkennbarem korrektem Modell; sonst 0 BE. Gleichwertige begründete Skizzen, Ladungsbilanzen und Formulierungen anerkennen. Keine zusätzlichen oder mehrfachen Abzüge.\n\nEN: A2: A positive through electron deficit and B negative through electron excess; explain persistence after rod removal through prior separation and the absence of a conducting return path. All listed scientific aspects of this block are essential: 2 points for fully correct science; 1 point only for an isolated arithmetic, unit or notation slip with the correct model fully evident; otherwise 0 points. Accept equivalent justified sketches, charge balances and wording. No extra or repeated deductions."
+      },
+      {
+        "id": "charge-a-total-conservation",
+        "points": 2,
+        "description": "DE: A3: Gesamtladung der beiden Kugeln vorher und nachher null, mit gleich großen Gegenladungen oder gleichwertiger eindeutiger Bilanz begründet; vorhandene Elektronen werden nur umverteilt, und weder der berührungslose Stab noch das Trennen erzeugt/vernichtet Gesamtladung. Fehlende/falsche Erhaltung oder Ladungsübertragung vom Stab ergibt 0 BE, auch bei richtigen Vorzeichen. Alle genannten fachlichen Aspekte dieses Blocks sind wesentlich: 2 BE bei vollständiger fachlicher Richtigkeit; 1 BE ausschließlich für einen isolierten Rechen-, Einheiten- oder Schreibfehler bei vollständig erkennbarem korrektem Modell; sonst 0 BE. Gleichwertige begründete Skizzen, Ladungsbilanzen und Formulierungen anerkennen. Keine zusätzlichen oder mehrfachen Abzüge.\n\nEN: A3: Explain zero total charge before and after using equal opposite charges or an equivalent unambiguous balance; existing electrons are only redistributed, and neither the non-contacting rod nor separation creates/destroys net charge. Missing/incorrect conservation or charge transfer from the rod earns 0 points even if signs are correct. All listed scientific aspects of this block are essential: 2 points for fully correct science; 1 point only for an isolated arithmetic, unit or notation slip with the correct model fully evident; otherwise 0 points. Accept equivalent justified sketches, charge balances and wording. No extra or repeated deductions."
+      },
+      {
+        "id": "charge-b-signed-balance",
+        "points": 2,
+        "description": "DE: B1: Vorzeichenbehaftete Gesamtbilanz (+2)+(−6)=−4 nC und wegen gleicher Endladungen jeweils −2 nC mit erhaltener Summe dargestellt. Nur ein isolierter arithmetischer/Einheitenfehler bei korrekter Bilanzstruktur und vollständigem richtigen Modell kann 1 BE erhalten. Nullsetzen oder Ignorieren der anfänglichen Nettoladung ist kein kleiner Rechenfehler. Alle genannten fachlichen Aspekte dieses Blocks sind wesentlich: 2 BE bei vollständiger fachlicher Richtigkeit; 1 BE ausschließlich für einen isolierten Rechen-, Einheiten- oder Schreibfehler bei vollständig erkennbarem korrektem Modell; sonst 0 BE. Gleichwertige begründete Skizzen, Ladungsbilanzen und Formulierungen anerkennen. Keine zusätzlichen oder mehrfachen Abzüge.\n\nEN: B1: Show the signed total balance (+2)+(−6)=−4 nC and equal final charges of −2 nC each with the same sum. Only an isolated arithmetic/unit slip with the correct balance structure and complete correct model can earn 1 point. Setting total charge to zero or ignoring the initial net charge is not a minor arithmetic slip. All listed scientific aspects of this block are essential: 2 points for fully correct science; 1 point only for an isolated arithmetic, unit or notation slip with the correct model fully evident; otherwise 0 points. Accept equivalent justified sketches, charge balances and wording. No extra or repeated deductions."
+      },
+      {
+        "id": "charge-b-electron-transfer",
+        "points": 2,
+        "description": "DE: B2: Elektronenübertragung N→M erklärt: Überschuss von N nimmt ab, M erhält Elektronen, sein Mangel verschwindet und wird im Endzustand zum Überschuss. Technische Stromrichtung M→N bei ausdrücklich entgegengesetzter Elektronenbewegung anerkennen. Keine zusätzliche Berechnung der übertragenen Ladungsmenge verlangen. Alle genannten fachlichen Aspekte dieses Blocks sind wesentlich: 2 BE bei vollständiger fachlicher Richtigkeit; 1 BE ausschließlich für einen isolierten Rechen-, Einheiten- oder Schreibfehler bei vollständig erkennbarem korrektem Modell; sonst 0 BE. Gleichwertige begründete Skizzen, Ladungsbilanzen und Formulierungen anerkennen. Keine zusätzlichen oder mehrfachen Abzüge.\n\nEN: B2: Explain electron transfer N→M: N’s excess decreases; M gains electrons, loses its deficit and finally has an excess. Accept conventional current M→N if opposite electron motion is explicitly clear. Do not require an extra calculation of transferred charge. All listed scientific aspects of this block are essential: 2 points for fully correct science; 1 point only for an isolated arithmetic, unit or notation slip with the correct model fully evident; otherwise 0 points. Accept equivalent justified sketches, charge balances and wording. No extra or repeated deductions."
+      },
+      {
+        "id": "charge-b-nonneutral-transfer",
+        "points": 2,
+        "description": "DE: B3: Vernichtungs-/Neutralitätsbehauptung mit dem Umverteilungsmodell und erhaltener Gesamtladung −4 nC widerlegt; Ladungsausgleich nicht mit Neutralität gleichgesetzt. Vergleich zu A erklärt Erhaltung der jeweiligen Gesamtladung bei Trennung versus Ausgleich. Fehlende/falsche Erhaltung, Ladungsvernichtung oder „Ausgleich bedeutet immer neutral“ ergibt 0 BE, unabhängig von richtigen Endzahlen. Alle genannten fachlichen Aspekte dieses Blocks sind wesentlich: 2 BE bei vollständiger fachlicher Richtigkeit; 1 BE ausschließlich für einen isolierten Rechen-, Einheiten- oder Schreibfehler bei vollständig erkennbarem korrektem Modell; sonst 0 BE. Gleichwertige begründete Skizzen, Ladungsbilanzen und Formulierungen anerkennen. Keine zusätzlichen oder mehrfachen Abzüge.\n\nEN: B3: Refute annihilation/neutrality using redistribution and conserved total charge −4 nC; do not equate equalization with neutrality. Comparison with A explains conservation of the respective total charge during separation versus equalization. Missing/incorrect conservation, charge destruction or “equalization always means neutral” earns 0 points regardless of correct final numbers. All listed scientific aspects of this block are essential: 2 points for fully correct science; 1 point only for an isolated arithmetic, unit or notation slip with the correct model fully evident; otherwise 0 points. Accept equivalent justified sketches, charge balances and wording. No extra or repeated deductions."
+      }
+    ]
+  },
+  "status": "PASS focused author checks; independent scientific/DEEN/fair-answer review pending"
+}

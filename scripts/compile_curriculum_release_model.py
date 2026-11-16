@@ -35,6 +35,8 @@ import curriculum_completion_artifacts as completion_artifacts
 import curriculum_package_completion_contracts as completion_contracts
 import curriculum_learning_units as learning_units
 import curriculum_package_learning_unit_contracts as learning_unit_contracts
+import curriculum_package_v13_contracts as v13_contracts
+from curriculum_assessment_materials import validate_static_assessment_svg
 from prerequisite_reduction_semantic_kind import (
     PrerequisiteReductionBindingError,
     load_verified_semantic_kind_bindings,
@@ -1068,7 +1070,11 @@ def schema_validator(path: Path) -> Draft202012Validator:
 
 
 def validate_schema(value: Any, schema_name: str, context: str) -> None:
-    if isinstance(value, dict) and value.get("$schema") in learning_units.LEARNING_UNIT_SCHEMA_IDS:
+    if isinstance(value, dict) and value.get("$schema") in {
+        v13_contracts.RESOURCE_SCHEMA_ID, v13_contracts.CATALOG_SCHEMA_ID, v13_contracts.BUILD_PROFILE_SCHEMA_ID,
+    }:
+        validator = v13_contracts.validators(REPO_ROOT)[value["$schema"]]
+    elif isinstance(value, dict) and value.get("$schema") in learning_units.LEARNING_UNIT_SCHEMA_IDS:
         validator = learning_units.schema_validators(REPO_ROOT)[value["$schema"]]
     elif schema_name == "learning-unit-review":
         validator = learning_units.schema_validators(REPO_ROOT)[learning_unit_contracts.REVIEW_SCHEMA_ID]
@@ -1340,7 +1346,7 @@ def media_type_for_image(path: Path) -> str:
             head = handle.read(8)
     except OSError as error:
         raise CompilationError(f"Cannot inspect image payload {path}: {error}") from error
-    if suffix == ".jpg" and head.startswith(b"\xff\xd8\xff"):
+    if suffix in {".jpg", ".jpeg"} and head.startswith(b"\xff\xd8\xff"):
         return "image/jpeg"
     if suffix == ".png" and head == b"\x89PNG\r\n\x1a\n":
         return "image/png"
@@ -2820,6 +2826,7 @@ def compile_publication_evidence(
 
 def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
     profile = load_json(profile_path)
+    material_profile = v13_contracts.is_build_profile(profile)
     validate_schema(profile, "build-profile", str(profile_path))
     package = profile["package"]
     expected_release_id = f"{package['packageId']}@{package['packageVersion']}"
@@ -3040,6 +3047,17 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
         goal["semanticKind"] = semantic_kind
         semantic_counts[str(semantic_kind)] += 1
 
+        # Keep authoring/review notes in the hash-bound source input, outside
+        # the closed runtime contract. Native consumers likewise expose only
+        # scoring-step id, points and description, not the optional heading.
+        goal.pop("authoringMetadata", None)
+        exam_payload = goal.get("examData")
+        scoring = exam_payload.get("scoring") if isinstance(exam_payload, dict) else None
+        if isinstance(scoring, dict) and isinstance(scoring.get("steps"), list):
+            for step in scoring["steps"]:
+                if isinstance(step, dict):
+                    step.pop("title", None)
+
         extended = goal.get("extendedData")
         if isinstance(extended, dict):
             # Applicability overrides and mastery-migration notes are
@@ -3145,6 +3163,18 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
         compiled["$schema"] = SCHEMA_IDS["composition-view"]
         compiled["viewFormatVersion"] = "1.0"
         compiled["language"] = profile["compositionViews"]["locale"]
+        # The authored placement rationale remains bound by the source file.
+        # Runtime structures use their existing label, id and ordered children;
+        # the v1 view contract does not consume authoring provenance or labelEn.
+        pending_nodes = list(compiled.get("rootNodes", []))
+        while pending_nodes:
+            node = pending_nodes.pop()
+            if isinstance(node, dict) and node.get("kind") == "structure":
+                for field in ("canonicalSourceGoalId", "canonicalSourceNode",
+                              "canonicalSourcePhase", "placementEvidence", "labelEn"):
+                    node.pop(field, None)
+                if isinstance(node.get("children"), list):
+                    pending_nodes.extend(node["children"])
         validate_schema(compiled, "composition-view", str(source_path))
         output_path = f"{profile['compositionViews']['outputDirectory'].rstrip('/')}/{source_path.name}"
         compiled_views.append((output_path, compiled))
@@ -3216,14 +3246,40 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
     resources: list[dict[str, Any]] = []
     binary_inputs: list[dict[str, Any]] = []
     public_root = resolve_repo_path(profile["resources"]["publicAssetRoot"])
+    material_uses = v13_contracts.task_material_uses(source_goals) if material_profile else []
+    material_bindings = profile["resources"].get("assessmentMaterials", []) if material_profile else []
+    material_by_url = {item["url"]: item for item in material_bindings}
+    materials_by_owner: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    if material_profile:
+        if len(material_by_url) != len(material_bindings) or set(material_by_url) != {use["url"] for use in material_uses}:
+            raise CompilationError("Required task-image references and the closed material inventory differ")
+        for item in material_bindings:
+            users = {use["goalId"] for use in material_uses if use["url"] == item["url"]}
+            declarations = sorted((goal["id"], index) for goal in source_goals
+                                  for index, link in enumerate(goal.get("resourceLinks", []))
+                                  if link.get("type") == "assessment-material" and link.get("url") == item["url"])
+            owner = declarations[0][0] if declarations else min(users)
+            if item["ownerGoalId"] != owner or owner not in users:
+                raise CompilationError("Assessment material owner is not its declared or deterministic actual task owner")
+            source_path = source_goal_by_id[owner]["examData"].get("sourceArtifactPath")
+            if item["sourceArtifactPath"] != source_path or sha256_file(resolve_repo_path(source_path))[1] != item["sourceArtifactSha256"]:
+                raise CompilationError("Assessment material author-source binding is stale")
+            materials_by_owner[owner].append(item)
     for goal in goals:
         links = goal.get("resourceLinks")
-        if not isinstance(links, list):
-            continue
-        for order, raw_link in enumerate(links):
+        links = links if isinstance(links, list) else []
+        ordered_links = list(enumerate(links))
+        if material_profile:
+            ordered_links = [(index, link) for index, link in ordered_links if link.get("type") != "assessment-material"]
+            ordered_links.extend((item["order"], {
+                **item, "type": "assessment-material", "resourceType": "image", "lang": item["language"],
+                "_packageResourceId": item["resourceId"],
+            }) for item in materials_by_owner.get(goal["id"], []))
+            ordered_links.sort(key=lambda item: item[0])
+        for order, raw_link in ordered_links:
             if not isinstance(raw_link, dict):
                 raise CompilationError(f"Malformed resource link on goal {goal['id']}")
-            resource_id = f"goal-resource:{goal['id']}:{order}"
+            resource_id = raw_link.get("_packageResourceId", f"goal-resource:{goal['id']}:{order}")
             common = {
                 "resourceId": resource_id,
                 "landscapeId": compiled_landscape["landscapeId"],
@@ -3248,7 +3304,7 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
                     raise CompilationError(f"Invalid embedded resource URL on goal {goal['id']}")
                 artifact_path = url[1:]
                 filename = artifact_path.rsplit("/", 1)[-1]
-                if filename not in {f"{goal['id']}.jpg", f"{goal['id']}.png"}:
+                if filename not in {f"{goal['id']}.jpg", f"{goal['id']}.jpeg", f"{goal['id']}.png"}:
                     raise CompilationError(
                         f"Goal visualization filename does not match owner {goal['id']}"
                     )
@@ -3293,6 +3349,46 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
                         "sha256": digest,
                     }
                 )
+            elif raw_link.get("type") == "assessment-material":
+                if not material_profile:
+                    raise CompilationError("Required assessment material needs the common runtime 1.3 profile")
+                url = raw_link.get("url")
+                prefix = "/" + profile["resources"]["assessmentMaterialOutputPrefix"].rstrip("/") + "/"
+                exam = goal.get("examData")
+                if (raw_link.get("resourceType") != "image" or not isinstance(url, str)
+                        or not url.startswith(prefix) or not url.endswith((".svg", ".png"))
+                        or not isinstance(exam, dict) or exam.get("reviewStatus") != "released"):
+                    raise CompilationError(f"Invalid required SVG assessment material on {goal['id']}")
+                if not any(isinstance(exam.get(field), str) and url in exam[field] for field in ("taskContent", "taskContentEn")):
+                    raise CompilationError(f"Assessment stimulus URL is not bound to {goal['id']}")
+                artifact_path = url[1:]
+                source_path = safe_join(public_root, artifact_path)
+                if not source_path.is_file():
+                    raise CompilationError(f"Missing required assessment material: {source_path}")
+                if url.endswith(".svg"):
+                    try:
+                        validate_static_assessment_svg(source_path.read_bytes())
+                    except (ValueError, UnicodeError) as error:
+                        raise CompilationError(f"Unsafe assessment SVG on {goal['id']}: {error}") from error
+                    media_type = "image/svg+xml"
+                else:
+                    media_type = media_type_for_image(source_path)
+                    if media_type != "image/png":
+                        raise CompilationError("Assessment PNG has incompatible payload bytes")
+                size, digest = sha256_file(source_path)
+                binding = material_by_url[url]
+                if (size, digest, media_type) != (binding["bytes"], binding["sha256"], binding["mediaType"]):
+                    raise CompilationError("Required assessment material bytes differ from the pinned original stimulus")
+                resource = {
+                    **common, "resourceKind": "assessment-material", "resourceType": "image",
+                    "delivery": "embedded", "runtimeRequired": True, "artifactPath": artifact_path,
+                    "publicUrl": url, "mediaType": media_type, "bytes": size, "sha256": digest,
+                    "title": raw_link.get("title"), "provider": raw_link.get("provider"),
+                    "description": raw_link.get("description"), "language": raw_link.get("lang"),
+                    "license": raw_link.get("license"),
+                }
+                binary_inputs.append({"resourceId": resource_id, "sourcePath": str(source_path.relative_to(REPO_ROOT)).replace("\\", "/"),
+                                      "artifactPath": artifact_path, "bytes": size, "sha256": digest})
             else:
                 resource = {
                     **common,
@@ -3313,8 +3409,8 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
                     resource["license"] = raw_link["license"]
             resources.append(resource)
     resource_index = {
-        "$schema": SCHEMA_IDS["resource-index"],
-        "indexFormatVersion": "1.0",
+        "$schema": v13_contracts.RESOURCE_SCHEMA_ID if material_profile else SCHEMA_IDS["resource-index"],
+        "indexFormatVersion": "1.3" if material_profile else "1.0",
         "resources": resources,
     }
     validate_schema(resource_index, "resource-index", "resource index")
@@ -3714,6 +3810,9 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
         )
     )
     seeds = [landscape_key, *[view_keys[view_id] for view_id in sorted(view_keys)]]
+    if material_profile:
+        # Required package payload roots, not pedagogical prerequisite edges.
+        seeds.extend(resource_keys[item["resourceId"]] for item in material_bindings)
     adjacency: dict[str, set[str]] = defaultdict(set)
     for reference in references:
         if reference["strength"] == "hard":
@@ -3852,7 +3951,7 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
         "resources": [
             {
                 "resourceId": resource["resourceId"],
-                "resourceKind": "goal-visualization" if resource["resourceKind"] == "goal-visualization" else "external-tool",
+                "resourceKind": resource["resourceKind"] if resource["delivery"] == "embedded" else "external-tool",
                 "landscapeId": resource["landscapeId"],
                 "goalId": resource["ownerGoalId"],
                 "delivery": resource["delivery"],
@@ -3899,6 +3998,11 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
             {"id": logical_id, "artifactPath": path}
             for _role, logical_id, path, _document in learning_unit_documents
         ]
+    if material_profile:
+        runtime_catalog["$schema"] = v13_contracts.CATALOG_SCHEMA_ID
+        runtime_catalog["catalogVersion"] = v13_contracts.RUNTIME_CONTRACT_VERSION
+        runtime_catalog["runtimeContractVersion"] = v13_contracts.RUNTIME_CONTRACT_VERSION
+        runtime_catalog["capabilities"].append(v13_contracts.CAPABILITY)
     validate_schema(runtime_catalog, "runtime-catalog", "runtime catalog")
     write_json(output_root, runtime_catalog_path, runtime_catalog)
 
@@ -3954,7 +4058,11 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
         record["recordSha256"] = calculate_binary_record(record, normalization)
         binary_records.append(record)
     binary_records.sort(key=lambda item: item["resourceId"])
-    expected_content_counts = publication_profile["expectedCounts"]["contentIndex"]
+    expected_content_counts = dict(publication_profile["expectedCounts"]["contentIndex"])
+    if material_profile:
+        # The historical publication profile pins its original visualization
+        # inventory. The common 1.3 build profile additionally binds task media.
+        expected_content_counts["binaryResources"] = profile["expectedCounts"]["embeddedImages"]
     if (
         len(publication_logical_documents)
         != expected_content_counts["addedLogicalArtifacts"]
@@ -4116,6 +4224,8 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
         build_inputs["completionArtifacts"] = completion_inputs
     if learning_unit_profile:
         build_inputs["learningUnitReviews"] = learning_unit_inputs
+    if material_profile:
+        build_inputs["assessmentMaterialUses"] = [{**use, "resourceId": material_by_url[use["url"]]["resourceId"]} for use in material_uses]
     write_json(output_root, "metadata/build-inputs.json", build_inputs)
 
     summary = {

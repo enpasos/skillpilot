@@ -1,0 +1,174 @@
+{
+  "at": "2026-11-16T02:57:00.684807+00:00",
+  "status": "PASS_BOUNDED_NATIVE_ASSET_BYTES_EXPECTATION_PROJECTION",
+  "sourcePath": "scripts/validate_full_standalone_curriculum_package.py",
+  "sourceSHA256": "0bba8c4a810e7e97879b34d7f2c7889860131af80bdaa713e192c689cca9f14e",
+  "caseCount": 24,
+  "cases": [
+    {
+      "name": "actual-ZIP-all28-subtype-ledger-to-general-manifest-bindings-pass-without-input-mutation",
+      "status": "PASS"
+    },
+    {
+      "name": "native-asset-binding-rejects-wrong-runtime-version",
+      "status": "PASS",
+      "diagnostics": [
+        "REDISTRIBUTION_ASSET_BINDING_MISMATCH"
+      ]
+    },
+    {
+      "name": "native-asset-binding-rejects-wrong-release-profile",
+      "status": "PASS",
+      "diagnostics": [
+        "REDISTRIBUTION_ASSET_BINDING_MISMATCH"
+      ]
+    },
+    {
+      "name": "native-asset-binding-rejects-wrong-resource-kind",
+      "status": "PASS",
+      "diagnostics": [
+        "REDISTRIBUTION_ASSET_BINDING_MISMATCH"
+      ]
+    },
+    {
+      "name": "native-asset-binding-rejects-wrong-resource-provider",
+      "status": "PASS",
+      "diagnostics": [
+        "REDISTRIBUTION_ASSET_BINDING_MISMATCH"
+      ]
+    },
+    {
+      "name": "native-asset-binding-rejects-wrong-decision-provider",
+      "status": "PASS",
+      "diagnostics": [
+        "REDISTRIBUTION_ASSET_BINDING_MISMATCH"
+      ]
+    },
+    {
+      "name": "native-asset-binding-rejects-wrong-delivery",
+      "status": "PASS",
+      "diagnostics": [
+        "REDISTRIBUTION_ASSET_BINDING_MISMATCH"
+      ]
+    },
+    {
+      "name": "native-asset-binding-rejects-optional-material",
+      "status": "PASS",
+      "diagnostics": [
+        "REDISTRIBUTION_ASSET_BINDING_MISMATCH"
+      ]
+    },
+    {
+      "name": "native-asset-binding-rejects-wrong-resource-ID",
+      "status": "PASS",
+      "diagnostics": [
+        "REDISTRIBUTION_ASSET_BINDING_MISMATCH"
+      ]
+    },
+    {
+      "name": "native-asset-binding-rejects-wrong-owner",
+      "status": "PASS",
+      "diagnostics": [
+        "REDISTRIBUTION_ASSET_BINDING_MISMATCH"
+      ]
+    },
+    {
+      "name": "native-asset-binding-rejects-wrong-decision-owner",
+      "status": "PASS",
+      "diagnostics": [
+        "REDISTRIBUTION_ASSET_BINDING_MISMATCH"
+      ]
+    },
+    {
+      "name": "native-asset-binding-rejects-wrong-public-URL",
+      "status": "PASS",
+      "diagnostics": [
+        "REDISTRIBUTION_ASSET_BINDING_MISMATCH"
+      ]
+    },
+    {
+      "name": "native-asset-binding-rejects-wrong-resource-path",
+      "status": "PASS",
+      "diagnostics": [
+        "REDISTRIBUTION_ASSET_BINDING_MISMATCH"
+      ]
+    },
+    {
+      "name": "native-asset-binding-rejects-wrong-media-type",
+      "status": "PASS",
+      "diagnostics": [
+        "REDISTRIBUTION_ASSET_BINDING_MISMATCH"
+      ]
+    },
+    {
+      "name": "native-asset-binding-rejects-wrong-byte-count",
+      "status": "PASS",
+      "diagnostics": [
+        "REDISTRIBUTION_ASSET_BINDING_MISMATCH"
+      ]
+    },
+    {
+      "name": "native-asset-binding-rejects-wrong-resource-hash",
+      "status": "PASS",
+      "diagnostics": [
+        "REDISTRIBUTION_ASSET_BINDING_MISMATCH"
+      ]
+    },
+    {
+      "name": "native-asset-binding-rejects-wrong-decision-hash",
+      "status": "PASS",
+      "diagnostics": [
+        "REDISTRIBUTION_ASSET_BINDING_MISMATCH"
+      ]
+    },
+    {
+      "name": "native-asset-binding-rejects-wrong-provenance-source",
+      "status": "PASS",
+      "diagnostics": [
+        "REDISTRIBUTION_ASSET_BINDING_MISMATCH"
+      ]
+    },
+    {
+      "name": "native-asset-binding-rejects-forged-uploader-claim",
+      "status": "PASS",
+      "diagnostics": [
+        "REDISTRIBUTION_ASSET_BINDING_MISMATCH"
+      ]
+    },
+    {
+      "name": "native-asset-binding-rejects-rights-status-upgrade",
+      "status": "PASS",
+      "diagnostics": [
+        "REDISTRIBUTION_ASSET_BINDING_MISMATCH"
+      ]
+    },
+    {
+      "name": "native-asset-binding-rejects-license-upgrade",
+      "status": "PASS",
+      "diagnostics": [
+        "REDISTRIBUTION_ASSET_BINDING_MISMATCH"
+      ]
+    },
+    {
+      "name": "native-asset-binding-rejects-wrong-manifest-class",
+      "status": "PASS",
+      "diagnostics": [
+        "REDISTRIBUTION_ASSET_BINDING_MISMATCH"
+      ]
+    },
+    {
+      "name": "actual-other-legacy-provenance-class-still-valid-without-projection",
+      "status": "PASS"
+    },
+    {
+      "name": "other-provenance-class-mismatch-remains-strictly-rejected",
+      "status": "PASS"
+    }
+  ],
+  "inputDrift": [],
+  "method": "Direct actual validate_deterministic_render_provenance API on actual28 source/index/manifest/ledger tuples selected from the real ZIP; explicit28-resource subset for isolated binding tests, plus one actual legacy tuple. No full ZIP/schema/rights approval is inferred.",
+  "unchangedRightsAndLicenseFieldsCompared": true,
+  "onlyExpectedProvenanceClassProjectedForExact13Tuple": true,
+  "sourceWrites": false,
+  "fullZipValidationReplayed": false
+}

@@ -1,0 +1,76 @@
+{
+  "at": "2026-11-16T01:13:32.407278+00:00",
+  "status": "LOCAL_TARGETED_JAVA_PASS",
+  "exitCode": 0,
+  "testClasses": [
+    {
+      "name": "com.skillpilot.backend.controller.PackageCurriculumResourceControllerTest",
+      "tests": "6",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.skillpilot.backend.curriculumpackage.JsonCurriculumPackageLoaderTest",
+      "tests": "13",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.skillpilot.backend.curriculumpackage.LearningUnitPackageLoaderTest",
+      "tests": "10",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.skillpilot.backend.curriculumpackage.PackageCurriculumResourceStateTest",
+      "tests": "6",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.skillpilot.backend.curriculumpackage.StaticAssessmentSvgTest",
+      "tests": "19",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    }
+  ],
+  "tests": 54,
+  "failureCount": 0,
+  "command": "./gradlew --project-cache-dir ../tmp/package-material-java-ci-repair-20261116/cache --console=plain --no-daemon test -x processResources --tests *StaticAssessmentSvgTest --tests *LearningUnitPackageLoaderTest --tests *JsonCurriculumPackageLoaderTest --tests *PackageCurriculumResourceStateTest --tests *PackageCurriculumResourceControllerTest",
+  "resources": "Own isolated build resources/main symlink to existing backend/build/resources/main; processResources excluded to avoid duplicate multi-GB assets. Synthetic fixture tests and actual unchanged repo SVG. No fresh full backend or remote CI claim.",
+  "sourcePins": [
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/curriculumpackage/JsonCurriculumPackageLoader.java",
+      "sha256": "cae589c2ec83d219508a1d969786086a905f263e487e6e332162dbe3aa6c6c08"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/curriculumpackage/PackageCurriculumResourceState.java",
+      "sha256": "e34db84e1f0df01699f670a61ce4142c99257e75a4793826ba1fc922a4fab6de"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/curriculumpackage/StaticAssessmentSvg.java",
+      "sha256": "b105c934f7192e789015578ec6aff8ebc871ecbf248a00cfebb5f9a26ed94ed7"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/controller/PackageCurriculumResourceController.java",
+      "sha256": "aa785c55e242291488e2c8737c892792a0304e2bf897a90eccd4c4b25cea60c8"
+    },
+    {
+      "path": "backend/src/test/java/com/skillpilot/backend/curriculumpackage/StaticAssessmentSvgTest.java",
+      "sha256": "23c5492d0252fad59b5d799522e9c88735111599c4c07e2a1eb32b27f3f4fda6"
+    },
+    {
+      "path": "backend/src/test/java/com/skillpilot/backend/curriculumpackage/LearningUnitPackageLoaderTest.java",
+      "sha256": "72ec73ff35fa0be43487038347be047a1c6e7828236166ba8496bed243526a60"
+    },
+    {
+      "path": "backend/src/test/java/com/skillpilot/backend/controller/PackageCurriculumResourceControllerTest.java",
+      "sha256": "43d3e0c995d1176f2ada4c9fe329b6ad3a857d4b5a4e8cfd274c60f0150e73f2"
+    }
+  ]
+}

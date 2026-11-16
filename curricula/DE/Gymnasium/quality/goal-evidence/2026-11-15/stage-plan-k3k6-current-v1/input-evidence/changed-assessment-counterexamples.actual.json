@@ -1,0 +1,31 @@
+{
+  "status": "MANUALLY_REASONED_CRITERIA_REPLAYS_NOT_REAL_LEARNER_TESTS",
+  "cases": [
+    {
+      "case": "d61-supplied-calibration-fair-pass",
+      "facts": "Two actual supplied real clips have checked scales/timing; learner applies those data, independently marks displacements, draws all scaled arrows/changes and explains limits, without personally establishing calibration.",
+      "criterionReplay": "All three ph8_video criteria can be complete:4+5+5=14/14.",
+      "manualReason": "Goal provides a calibrated sequence; applying supplied calibration is the required competence, and own calibration is optional."
+    },
+    {
+      "case": "d61-no-real-artifacts",
+      "facts": "Invented positions and theoretical arrows without either actual clip.",
+      "criterionReplay": "First four-point artifact criterion cannot be complete; at most10/14 even if every other criterion is assumed complete.",
+      "passes": false
+    },
+    {
+      "case": "d675-unresolved-cause-fair-pass",
+      "facts": "Two required own real recordings, all required graphs/fits/refits/sensitivity and synthetic transfer complete; oblique geometry leaves perspective/acceleration nonidentifiable, explicitly explained with a justified independent geometric/measurement-control proposal.",
+      "criterionReplay": "All eight actual criteria can be complete, including the clarified causal boundary in criterion6;32/32 without a fabricated unique cause or extra third recording.",
+      "manualReason": "Residuals measure deviation, not unique cause; a supported unresolved conclusion is scientifically valid."
+    },
+    {
+      "case": "d675-unique-cause-from-residuals-only",
+      "facts": "All products assumed complete, but a unique perspective/physical cause is asserted solely from a residual pattern without discriminating evidence.",
+      "criterionReplay": "Clarified four-point criterion6 cannot receive full credit; at most28/32 when fully unsatisfied, and in all cases less than32.",
+      "passes": false
+    }
+  ],
+  "actualLearnerOrHardwareResultsClaimed": false,
+  "noCoverageOrThresholdRelaxed": true
+}

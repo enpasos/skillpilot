@@ -1,17 +1,41 @@
 // SPDX-License-Identifier: Apache-2.0
 /** Candidate stage-plan contract. Does not replace the learning-unit 1.2 contract. */
+import { stagePlanChildren, stagePlanLeafOrder, stagePlanUnitIds } from './stagePlanHierarchy'
 import { collectCompositionProjectionRoleGoalIds, type CompositionView, type CompositionViewNode, type CompositionStructureNode } from './authoring/compositionViewAuthoring'
 
 export const STAGE_PLAN_SCHEMA = 'https://skillpilot.com/schemas/curriculum-package/v1.3/stage-plan.schema.json'
 export const PLAN_COMPOSITION_SCHEMA = 'https://skillpilot.com/schemas/curriculum-package/v1.3/composition-view.schema.json'
 export type PlanStage = 'SekI' | 'SekII'
+export type PlanPhase = 'E' | 'Q1' | 'Q2' | 'Q3' | 'Q4'
+export type PlanUnitBasis = { kind: 'officialSource'; references: string[] }
+  | { kind: 'reviewedStructure'; references: string[]; rationale: string }
 export interface StagePlanUnit {
   id: string
   label: string
-  kind: 'stage'
+  kind: 'stage' | 'year' | 'phase'
   stage: PlanStage
+  labelEn?: string
+  /** Explicit temporal children; omission preserves the original two-stage contract. */
+  children?: string[]
+  year?: number
+  phase?: PlanPhase
+  /** Evidence for this Land/duration unit, separate from a goal's source assignment. */
+  basis?: PlanUnitBasis
   parentUnitId: string
   after: string[]
+}
+/** Digest-bound generated index bindings; the same v1.3 hierarchy is consumed by map adapters. */
+export interface StagePlanStructureBinding {
+  structureId: string
+  planUnitId: string
+  stage: PlanStage
+  order: number
+  after: string[]
+  kind?: StagePlanUnit['kind']
+  parentUnitId?: string
+  children?: string[]
+  year?: number
+  phase?: PlanPhase
 }
 export interface StagePlan {
   $schema: typeof STAGE_PLAN_SCHEMA
@@ -23,9 +47,11 @@ export interface StagePlan {
   subjectViews: { landscapeId: string; courseProfile: string; viewId: string }[]
 }
 export type PlacementBasis =
-  | { kind: 'officialSource'; sourceStage: PlanStage; references: string[] }
+  | { kind: 'officialSource'; sourceStage: PlanStage; sourceUnitId?: string; references: string[] }
   | { kind: 'canonicalDefault'; canonicalPhase: string }
-  | { kind: 'reviewedPreparation'; sourceStage: PlanStage; references: string[]; rationale: string }
+  | { kind: 'reviewedPreparation'; sourceStage: PlanStage; sourceUnitId?: string; references: string[]; rationale: string }
+  /** Explicit author placement, without claiming an official year/phase assignment. */
+  | { kind: 'reviewedPlacement'; references: string[]; rationale: string }
 export type StagePlanBinding = (
   | { planId: string; planIds?: never }
   /** Explicitly shared duration-neutral authority or excerpt. */
@@ -117,23 +143,59 @@ export function validateStagePlanCatalog({ plans, views, goals }: StagePlanCatal
     for (const [unitIndex, value] of plan.units.entries()) {
       const unitPath = `${path}.units[${unitIndex}]`, unit = record(value)
       if (!unit) { fail('SP-SHAPE', unitPath, 'Expected a unit object.'); continue }
-      exact(unit, ['id', 'label', 'kind', 'stage', 'parentUnitId', 'after'], unitPath)
-      if (!identifier(unit.id) || !text(unit.label) || unit.kind !== 'stage' || !stage(unit.stage)
-        || !identifier(unit.parentUnitId) || !ids(unit.after, `${unitPath}.after`)) {
-        fail('SP-SHAPE', unitPath, 'Invalid stage unit.'); continue
+      exact(unit, ['id', 'label', 'labelEn', 'kind', 'stage', 'parentUnitId', 'after', 'children', 'year', 'phase', 'basis'], unitPath)
+      if (!identifier(unit.id) || !text(unit.label) || (unit.labelEn !== undefined && !text(unit.labelEn))
+        || !['stage', 'year', 'phase'].includes(String(unit.kind)) || !stage(unit.stage)
+        || !identifier(unit.parentUnitId) || !ids(unit.after, `${unitPath}.after`)
+        || (unit.children !== undefined && !ids(unit.children, `${unitPath}.children`))) {
+        fail('SP-SHAPE', unitPath, 'Invalid declared plan unit.'); continue
       }
       if (unitById.has(unit.id) || unit.id === root.id) fail('SP-DUPLICATE', unitPath, 'Duplicate unit ID.')
       unitById.set(unit.id, unit as unknown as StagePlanUnit)
-      if (unit.parentUnitId !== root.id) fail('SP-REF', unitPath, 'A stage must be a direct child of the plan root.')
+      if (unit.kind === 'stage') {
+        if (unit.parentUnitId !== root.id) fail('SP-REF', unitPath, 'A stage must be a direct child of the plan root.')
+        if (unit.year !== undefined || unit.phase !== undefined || unit.basis !== undefined) fail('SP-SHAPE', unitPath, 'Stage identities do not masquerade as year or phase assignments.')
+      } else {
+        if (unit.children !== undefined) fail('SP-SHAPE', unitPath, 'Year and phase units are temporal leaves in this contract.')
+        if (unit.kind === 'year' && (unit.stage !== 'SekI' || !Number.isInteger(unit.year) || Number(unit.year) < 1 || Number(unit.year) > 13 || unit.phase !== undefined)) fail('SP-SHAPE', unitPath, 'A SekI year unit declares its applicable school year.')
+        if (unit.kind === 'phase' && (unit.stage !== 'SekII' || !['E', 'Q1', 'Q2', 'Q3', 'Q4'].includes(String(unit.phase)) || unit.year !== undefined)) fail('SP-SHAPE', unitPath, 'A SekII phase explicitly names E or Q1–Q4; its localized label may reflect the Land.')
+        const evidence = record(unit.basis)
+        if (!evidence || !['officialSource', 'reviewedStructure'].includes(String(evidence.kind))) fail('SP-SOURCE', unitPath, 'A nested temporal unit needs an explicit source or reviewed structural basis.')
+        else {
+          exact(evidence, ['kind', 'references', ...(evidence.kind === 'reviewedStructure' ? ['rationale'] : [])], `${unitPath}.basis`)
+          if (!strings(evidence.references) || !evidence.references.length || new Set(evidence.references).size !== evidence.references.length
+            || evidence.kind === 'reviewedStructure' && !text(evidence.rationale)) fail('SP-SOURCE', unitPath, 'Unit basis needs nonempty references and a rationale for an author-defined structure.')
+        }
+      }
     }
-    const first = [...unitById.values()].filter(unit => unit.stage === 'SekI')
-    const second = [...unitById.values()].filter(unit => unit.stage === 'SekII')
-    if (unitById.size !== 2 || first.length !== 1 || second.length !== 1 || !strings(root.children)
+    const first = [...unitById.values()].filter(unit => unit.kind === 'stage' && unit.stage === 'SekI')
+    const second = [...unitById.values()].filter(unit => unit.kind === 'stage' && unit.stage === 'SekII')
+    if (first.length !== 1 || second.length !== 1 || !strings(root.children)
       || root.children.length !== 2 || root.children[0] !== first[0]?.id || root.children[1] !== second[0]?.id) {
       fail('SP-ROOT', path, 'The full plan root has exactly SekI and SekII, in that order.')
     }
-    for (const unit of unitById.values()) for (const previous of unit.after) {
-      if (!unitById.has(previous) || unitById.get(previous)?.parentUnitId !== unit.parentUnitId) fail('SP-REF', path, 'after must reference a sibling in this plan.')
+    const member = new Map<string, string>()
+    for (const parent of unitById.values()) {
+      const children = parent.children ?? []
+      if (parent.children !== undefined && !children.length) fail('SP-SHAPE', path, 'Omit children for an unsplit legacy stage; an explicit temporal split is nonempty.')
+      let previousOrdinal = -1
+      for (const [index, id] of children.entries()) {
+        const child = unitById.get(id)
+        if (!child || parent.kind !== 'stage' || child.kind === 'stage' || child.parentUnitId !== parent.id || child.stage !== parent.stage) {
+          fail('SP-REF', path, 'A temporal child belongs to exactly its declared parent stage.'); continue
+        }
+        if (member.has(id)) fail('SP-DUPLICATE', path, 'A unit is listed under more than one parent.')
+        member.set(id, parent.id)
+        const ordinal = child.kind === 'year' ? child.year! : ['E', 'Q1', 'Q2', 'Q3', 'Q4'].indexOf(child.phase!)
+        if (ordinal <= previousOrdinal) fail('SP-ORDER', path, 'Years and phases follow their declared temporal order, without duplicate or backward slots.')
+        previousOrdinal = ordinal
+        const expected = index ? [children[index - 1]] : []
+        if (JSON.stringify(child.after) !== JSON.stringify(expected)) fail('SP-ORDER', path, 'Every temporal child declares exactly its preceding sibling; no implicit or redundant order is accepted.')
+      }
+    }
+    for (const unit of unitById.values()) {
+      if (unit.kind !== 'stage' && (!member.has(unit.id) || unitById.get(unit.parentUnitId)?.kind !== 'stage')) fail('SP-REF', path, 'A nested unit must be listed by its parent stage.')
+      for (const previous of unit.after) if (!unitById.has(previous) || unitById.get(previous)?.parentUnitId !== unit.parentUnitId) fail('SP-REF', path, 'after must reference a sibling in this plan.')
     }
     if (first.length === 1 && second.length === 1 && (first[0].after.length !== 0
       || second[0].after.length !== 1 || second[0].after[0] !== first[0].id)) fail('SP-ORDER', path, 'SekII must declare exactly after SekI; SekI has no predecessor.')
@@ -190,19 +252,33 @@ export function validateStagePlanCatalog({ plans, views, goals }: StagePlanCatal
     atomVisiting.delete(id); atomCache.set(id, result)
     return result
   }
-  const basis = (value: unknown, path: string, unit: StagePlanUnit | undefined) => {
+  const basis = (value: unknown, path: string, unit: StagePlanUnit | undefined, plan: StagePlan) => {
     const evidence = record(value)
     if (!evidence) { fail('SP-SHAPE', path, 'Invalid placement basis.'); return }
     if (evidence.kind === 'canonicalDefault') {
       exact(evidence, ['kind', 'canonicalPhase'], path)
       if (!text(evidence.canonicalPhase)) fail('SP-SHAPE', path, 'A provisional canonical default names its phase.')
+      if (unit?.kind !== 'stage' && evidence.canonicalPhase !== (unit?.kind === 'year' ? `J${unit.year}` : unit?.phase)) fail('SP-SOURCE', path, 'A nested canonical default must match its declared year or phase; other placements need explicit review.')
+      return
+    }
+    if (evidence.kind === 'reviewedPlacement') {
+      exact(evidence, ['kind', 'references', 'rationale'], path)
+      if (!strings(evidence.references) || !evidence.references.length || !text(evidence.rationale)) fail('SP-SOURCE', path, 'An author-defined placement needs references and a rationale and asserts no official time assignment.')
       return
     }
     if (evidence.kind !== 'officialSource' && evidence.kind !== 'reviewedPreparation') { fail('SP-SHAPE', path, 'Unknown placement basis.'); return }
-    exact(evidence, ['kind', 'sourceStage', 'references', ...(evidence.kind === 'reviewedPreparation' ? ['rationale'] : [])], path)
+    exact(evidence, ['kind', 'sourceStage', 'sourceUnitId', 'references', ...(evidence.kind === 'reviewedPreparation' ? ['rationale'] : [])], path)
     if (!stage(evidence.sourceStage) || !strings(evidence.references) || !evidence.references.length) fail('SP-SOURCE', path, 'An official source assertion needs a stage and evidence references.')
-    if (evidence.kind === 'officialSource' && unit && evidence.sourceStage !== unit.stage) fail('SP-SOURCE', path, 'A source-stage deviation requires a reviewedPreparation assertion.')
-    if (evidence.kind === 'reviewedPreparation' && (!text(evidence.rationale) || unit?.stage !== 'SekI' || evidence.sourceStage !== 'SekII')) fail('SP-SOURCE', path, 'Early preparation needs a rationale and moves a SekII source target into SekI.')
+    const sourceUnit = typeof evidence.sourceUnitId === 'string' ? plan.units.find(candidate => candidate.id === evidence.sourceUnitId) : undefined
+    if (evidence.sourceUnitId !== undefined && (!sourceUnit || sourceUnit.stage !== evidence.sourceStage)) fail('SP-SOURCE', path, 'Source unit must resolve in this Land/duration plan and agree with the source stage.')
+    if (evidence.kind === 'officialSource' && unit && (evidence.sourceStage !== unit.stage || unit.kind !== 'stage' && evidence.sourceUnitId !== unit.id)) fail('SP-SOURCE', path, 'A nested official assignment names its exact source unit; an earlier placement needs reviewedPreparation.')
+    if (evidence.kind === 'reviewedPreparation') {
+      if (!text(evidence.rationale)) fail('SP-SOURCE', path, 'Early preparation needs a rationale.')
+      const order = stagePlanLeafOrder(plan)
+      if (sourceUnit) {
+        if (!unit || !order.has(sourceUnit.id) || !order.has(unit.id) || order.get(sourceUnit.id)! <= order.get(unit.id)!) fail('SP-SOURCE', path, 'Reviewed preparation retains its later source year or phase and its earlier learning placement.')
+      } else if (unit?.kind !== 'stage' || unit.stage !== 'SekI' || evidence.sourceStage !== 'SekII') fail('SP-SOURCE', path, 'Nested early preparation names its source unit; legacy preparation moves SekII into SekI.')
+    }
   }
   const fullViews = new Map<string, { plans: StagePlan[]; view: Record<string, unknown> }>()
   for (const plan of plansById.values()) for (const authority of plan.subjectViews) {
@@ -254,14 +330,20 @@ export function validateStagePlanCatalog({ plans, views, goals }: StagePlanCatal
     if (scope.schoolForm !== plan.scope.schoolForm || scope.jurisdiction !== plan.scope.jurisdiction
       || (shared ? scope.durationModel !== undefined : scope.durationModel !== plan.scope.durationModel)) fail('SP-SCOPE', path, 'View and plan scope differ; shared authorities must be explicitly duration-neutral.')
     if (shared) {
+      // Check selected identities before comparing their nested signatures.
+      // Invalid input must produce a finding rather than dereference an absent unit.
+      if (isExcerpt && Array.isArray(binding.unitIds)
+        && selectedPlans.some(candidate => (binding.unitIds as unknown[]).some(unitId => !candidate!.units.some(unit => unit.id === unitId)))) {
+        fail('SP-EXCERPT', path, 'A shared excerpt selects only declared stage units in every plan context.'); continue
+      }
       if (!isExcerpt) {
         const selectedIds = fullViews.get(id)?.plans.map(candidate => candidate.planId) ?? []
         if (selectedIds.length !== selectedPlans.length || selectedPlans.some(candidate => !selectedIds.includes(candidate!.planId))) fail('SP-AUTHORITY', path, 'Every declared shared plan must select this authoritative subject view.')
       }
       const signature = (candidate: StagePlan) => JSON.stringify([candidate.scope.schoolForm, candidate.scope.jurisdiction, candidate.rootUnit.children,
-        candidate.rootUnit.children.map(unitId => {
+        stagePlanUnitIds(candidate, isExcerpt && Array.isArray(binding.unitIds) ? binding.unitIds as string[] : candidate.rootUnit.children).map(unitId => {
           const unit = candidate.units.find(entry => entry.id === unitId)!
-          return [unit.id, unit.stage, unit.after]
+          return [unit.id, unit.kind, unit.stage, unit.parentUnitId === candidate.rootUnit.id ? '@root' : unit.parentUnitId, unit.children, unit.year, unit.phase, unit.after]
         })])
       if (selectedPlans.some(candidate => signature(candidate!) !== signature(plan))) fail('SP-SHARING', path, 'Shared duration-neutral authorities require the same Land, declared stage identities and stage order in every selected plan.')
     }
@@ -337,7 +419,7 @@ export function validateStagePlanCatalog({ plans, views, goals }: StagePlanCatal
         let unit = currentUnit
         if (node.planUnitId !== undefined) {
           unit = typeof node.planUnitId === 'string' ? unitById.get(node.planUnitId) : undefined
-          if (!unit || !atRoot || currentUnit || usedUnits.has(unit.id)) fail('SP-REF', nodePath, 'Declare each shared stage exactly once as a view root.')
+          if (!unit || usedUnits.has(unit.id) || (atRoot ? unit.kind !== 'stage' || currentUnit !== undefined : !currentUnit || unit.parentUnitId !== currentUnit.id)) fail('SP-REF', nodePath, 'Declare each shared unit once at its explicit parent; only the two stages are roots.')
           if (unit) usedUnits.add(unit.id)
         } else if (atRoot) fail('SP-ROOT', nodePath, 'Every full-view root references a declared stage.')
         node.children.forEach((child, index) => walk(child, `${nodePath}.children[${index}]`, unit))
@@ -350,7 +432,9 @@ export function validateStagePlanCatalog({ plans, views, goals }: StagePlanCatal
       const role = node.projectionRole ?? 'target'
       if (role === 'target' && !currentUnit) fail('SP-PLACEMENT', nodePath, 'Every target belongs to one declared stage.')
       if (role === 'prerequisiteOnly' && node.placementBasis !== undefined) fail('SP-SOURCE', nodePath, 'A prerequisite-only declaration does not assert a source or learning placement.')
-      if (node.placementBasis !== undefined) basis(node.placementBasis, `${nodePath}.placementBasis`, currentUnit)
+      if (role === 'target' && currentUnit && stagePlanChildren(plan, currentUnit.id).length) fail('SP-PLACEMENT', nodePath, 'In a subdivided stage every atomic target needs one temporal leaf placement, not an ambiguous aggregate placement.')
+      if (role === 'target' && currentUnit?.kind !== 'stage' && node.placementBasis === undefined) fail('SP-SOURCE', nodePath, 'A nested target placement needs an explicit basis.')
+      if (node.placementBasis !== undefined) basis(node.placementBasis, `${nodePath}.placementBasis`, currentUnit, plan)
       const referencedGoal = goals.get(node.goalId)
       if (!referencedGoal) { fail('SP-GOAL-REF', nodePath, `Unknown canonical goal ${node.goalId}.`); return }
       declarations.push({ node: node as unknown as CompositionViewNode, path: nodePath, unit: currentUnit })
@@ -371,9 +455,19 @@ export function validateStagePlanCatalog({ plans, views, goals }: StagePlanCatal
       if ((node.kind !== 'canonicalSubtree' && node.kind !== 'goalEntry') || node.projectionRole === 'prerequisiteOnly') continue
       noteVisibleGoals(node.goalId, declaration.path, node.kind === 'canonicalSubtree', targetGoalIds, declaration.unit)
     }
-    if (usedUnits.size !== 2 || view.rootNodes.length !== 2
+    if (usedUnits.size !== plan.units.length || view.rootNodes.length !== 2
       || record(view.rootNodes[0])?.planUnitId !== plan.rootUnit.children[0]
       || record(view.rootNodes[1])?.planUnitId !== plan.rootUnit.children[1]) fail('SP-ROOT', path, 'A full subject view exposes exactly both stages in plan order.')
+    const encountered = new Map<string, string[]>()
+    const noteUnitOrder = (nodes: unknown[]) => nodes.forEach(raw => {
+      const node = record(raw)
+      if (node?.kind !== 'structure') return
+      const unit = unitById.get(String(node.planUnitId))
+      if (unit) encountered.set(unit.parentUnitId, [...encountered.get(unit.parentUnitId) ?? [], unit.id])
+      if (Array.isArray(node.children)) noteUnitOrder(node.children)
+    })
+    noteUnitOrder(view.rootNodes)
+    for (const unit of plan.units) if (unit.children && JSON.stringify(encountered.get(unit.id) ?? []) !== JSON.stringify(unit.children)) fail('SP-ORDER', path, 'A full view preserves every declared child and their explicit order.')
     placementsByViewId.set(id, placements)
     materialized.set(id, view as unknown as CompositionView)
   }
@@ -409,11 +503,14 @@ export function validateStagePlanCatalog({ plans, views, goals }: StagePlanCatal
   }
   const supportCoverage = new Map<string, Set<string>>()
   for (const [id, { sourceIds, unitIds: selectedIds }] of excerpts) {
-    const unitIds = new Set(selectedIds)
+    const firstSource = materialized.get(sourceIds[0])!
+    const binding = record(firstSource.planBinding)!
+    const sourcePlan = plansById.get(String(binding.planId ?? (binding.planIds as string[])[0]))!
+    const unitIds = new Set(stagePlanUnitIds(sourcePlan, selectedIds))
     const sortedSourceIds = [...sourceIds].sort()
     const candidates = sortedSourceIds.map(sourceId => {
       const source = materialized.get(sourceId)!, fullTargets = targetRolesByViewId.get(sourceId)!
-      const roots = structuredClone(source.rootNodes.filter(node => node.kind === 'structure' && unitIds.has(String(node.planUnitId))))
+      const roots = structuredClone(source.rootNodes.filter(node => node.kind === 'structure' && selectedIds.includes(String(node.planUnitId))))
       const expected = JSON.stringify(stable(projection(roots, fullTargets, sourceIds.length > 1)))
       const localTargets = effectiveRoles(roots).targetGoalIds
       const promoted = new Set([...localTargets].filter(goalId => !fullTargets.has(goalId)))
@@ -454,7 +551,10 @@ export function validateStagePlanCatalog({ plans, views, goals }: StagePlanCatal
 export function getStagePlanStructureMetadata(plan: StagePlan, node: CompositionViewNode) {
   if (node.kind !== 'structure') return undefined
   const unit = plan.units.find(candidate => candidate.id === (node as CompositionStructureNode).planUnitId)
-  return unit ? { planId: plan.planId, planUnitId: unit.id, stage: unit.stage, after: [...unit.after] } : undefined
+  return unit ? { planId: plan.planId, planUnitId: unit.id, stage: unit.stage, after: [...unit.after],
+    ...(plan.units.some(candidate => candidate.kind !== 'stage') ? { kind: unit.kind, parentUnitId: unit.parentUnitId,
+      ...(unit.children ? { children: [...unit.children] } : {}), ...(unit.year !== undefined ? { year: unit.year } : {}),
+      ...(unit.phase ? { phase: unit.phase } : {}) } : {}) } : undefined
 }
 
 export interface StagePlanPreparation {
@@ -475,7 +575,7 @@ export function deriveStagePlanPreparation(
   goals: ReadonlyMap<string, StagePlanGoal>,
 ): { preparations: StagePlanPreparation[]; findings: StagePlanFinding[] } {
   const findings: StagePlanFinding[] = [], prepared = new Map<string, StagePlanPreparation>()
-  const rank = new Map(plan.rootUnit.children.map((id, index) => [id, index]))
+  const rank = stagePlanLeafOrder(plan)
   const canonicalGoals = new Map([...goals.values()].map(goal => [goal.id, goal]))
   const fail = (code: string, path: string, message: string) => findings.push({ code, path, message })
   for (const [targetId, unitId] of targetPlacements) {

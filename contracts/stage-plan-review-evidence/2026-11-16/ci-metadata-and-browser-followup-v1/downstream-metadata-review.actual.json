@@ -1,0 +1,87 @@
+{
+  "reviewer": "/root/biology_endpoint_ci_repair",
+  "atUtc": "2026-11-16T06:49:45.480523+00:00",
+  "decision": "ACCEPT_TWO_BOUNDED_GENERATED_METADATA_REFRESHES",
+  "sourcePins": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "sha256": "306eeed52f6b0b1059264ccb1d4ea23227dd3ddff4d19f2a1ca096511d65a149"
+    },
+    {
+      "path": "app/public/data/goal-source-rationales-math-public.json",
+      "sha256": "71cb33699d024398825467e4ec58e93ba5799196582b017517cebdc8795fa77d"
+    },
+    {
+      "path": "docs/qa-ci/status/goal-source-rationale-coverage.json",
+      "sha256": "9087b7db4bc3b9ebeb3e83bb9826067d6ef6b995a5c09824b30379d24e9e2ace"
+    },
+    {
+      "path": "docs/qa-ci/status/goal-source-rationale-coverage.md",
+      "sha256": "7d0efdf6550d597954cf0fa515d28755ba67b515eea0ba752c96c0d4741f7a2f"
+    },
+    {
+      "path": "docs/legal/ai-transparency-inventory.json",
+      "sha256": "2103bdd549e93ef47ba7fef7786f34cba5959fa08b519b26d07b9be5cb526ab6"
+    },
+    {
+      "path": "app/scripts/reportGoalSourceRationaleCoverage.ts",
+      "sha256": "1e73e1c3ef3e2202c8d897e5dcb38668edcac7f28bccd539acc732470b63ee58"
+    },
+    {
+      "path": "scripts/check_ai_transparency_inventory.mjs",
+      "sha256": "648c7efb203ca206dc4ad1b0923cfc68abce44ded3673a58af87d9336b665ae9"
+    }
+  ],
+  "rationaleCoverage": {
+    "independentCounts": {
+      "totalGoals": 1310,
+      "atomicLeaves": 1032,
+      "relevantAtomicLeaves": 807,
+      "memoryOrNonContentLeaves": 225,
+      "clusters": 278,
+      "containsRelations": 1444,
+      "requiresRelations": 1604,
+      "runtimeItems": 754,
+      "relevantLeavesMissingRuntimeSourceRationale": 53
+    },
+    "all1310RowsCanonicalIdentityTitleTypePhaseAreaAndRuntimeMembershipChecked": true,
+    "embeddedRuntimeSourceIndexUnchanged": true,
+    "relevantDenominatorAndMissingDebtUnchanged": [
+      807,
+      53
+    ],
+    "noNewRouteCoverageClaim": true
+  },
+  "aiInventory": {
+    "exactChangedMeasuredFields": [
+      "goalVisualizations.canonicalGoalCount",
+      "goalVisualizations.fileExtensions",
+      "goalVisualizations.providerCounts",
+      "goalVisualizations.c2paStructure.detected",
+      "goalVisualizations.c2paStructure.notDetectedUrls"
+    ],
+    "independentCanonicalCounts": {
+      "files": 21,
+      "goals": 6657,
+      "links": 2575,
+      "extensions": {
+        "png": 1295,
+        "jpg": 1270,
+        "jpeg": 10
+      }
+    },
+    "allProviderLabelCountsExactlyRecomputedFromCurrentCanonicalLinks": true,
+    "c2paDelta": {
+      "newMissingMarkerURL": "/assets/goal-visualizations/mathematik/78238608-aaaa-4d12-a9de-54f325e9cf6f/78238608-aaaa-4d12-a9de-54f325e9cf6f.jpeg",
+      "actualNewFileSha256": "233c09ed4ad912ee126557fb5bf58cbc16d9dfd78512277f36af7e7c20221fef",
+      "newFileMarkerAbsenceIndependentlyRead": true,
+      "newDetectedCount": 2514,
+      "full2575FileAndBackendPairNormalCheck": "Root reports fresh unmodified checker Exit0; reviewer did not duplicate the whole binary scan."
+    },
+    "allOtherInventoryFieldsByteSemanticUnchanged": true,
+    "scope": "Measurements and shallow markers only; no cryptographic authenticity,provider acceptance,source/image rights or human approval inferred."
+  },
+  "noSourceOrGateChangesByReviewer": true,
+  "noImageByteChangeClaimBeyondReviewedMetadataDelta": true,
+  "actualChecks": "Bounded independent direct input comparisons; Root owns and reported actual normal checker executions."
+}

@@ -9,6 +9,8 @@ import {
 import { validateOrientationOutlooks } from './lib/orientationOutlookValidation'
 import { findExamMarkdownTableIssues } from './lib/examMarkdownValidation'
 import { evaluateDirectAtomicRouteCoverage } from './lib/directAtomicRouteCoverage'
+import { buildRouteCatalogContext } from './lib/routeCatalogContext'
+import { buildEffectiveRequiresEdges } from './generateCurriculumQualityStatus'
 import { canResolveRetainedGymnasiumReference, loadGraphValidationLandscapes, loadRetainedGymnasiumSourceLandscapes } from './lib/graphValidationInventory'
 import { loadSemanticRouteInventory } from './lib/semanticRouteInventory'
 
@@ -116,6 +118,9 @@ const semanticRoutes = await loadSemanticRouteInventory(join(process.cwd(), '..'
 const requiredSemanticProfiles = semanticRoutes.profiles.filter(profile => profile.required)
 const rawSemanticGoalById = new Map(semanticRoutes.goals.map(goal => [goal.id, goal]))
 const mathQaProfiles = semanticRoutes.qaProfiles.filter(profile => profile.landscapeId === CANONICAL_GYM_MATH_LANDSCAPE_ID)
+const canonicalRouteCatalog = parsedLandscapes
+  .filter(entry => entry.file.replaceAll('\\', '/').includes('/DE/Gymnasium/canonical/'))
+  .map(entry => entry.source)
 
 if (existsSync(compatibilityArchiveRegistryPath)) {
   try {
@@ -667,6 +672,10 @@ function validateLandscape(landscape: ParsedLandscape) {
     })
   })
 
+  const hasCanonicalRoutes = semanticRoutes.qaProfiles.some(profile => profile.landscapeId === landscape.landscapeId)
+  const routeContext = hasCanonicalRoutes ? buildRouteCatalogContext(landscape.source, canonicalRouteCatalog).landscape : undefined
+  const routeGoalById = routeContext ? new Map(routeContext.goals.map(goal => [goal.id, goal])) : localMap
+  const routeEffectiveEdges = routeContext ? buildEffectiveRequiresEdges(routeContext) : effectiveEdges
   for (const profile of requiredSemanticProfiles) {
     if (profile.landscapeId !== landscape.landscapeId) continue
 
@@ -674,10 +683,10 @@ function validateLandscape(landscape: ParsedLandscape) {
       const rawGoal = rawSemanticGoalById.get(goal.id)
       return rawGoal !== undefined && profile.goalSelector(rawGoal)
     })
-    const missingAnchorIds = profile.motivationAnchorGoalIds.filter((goalId) => !localMap.has(goalId))
+    const missingAnchorIds = profile.motivationAnchorGoalIds.filter((goalId) => !routeGoalById.has(goalId))
     const anchorLabels = profile.motivationAnchorGoalIds
       .map((goalId) => {
-        const goal = localMap.get(goalId)
+        const goal = routeGoalById.get(goalId)
         return goal ? `${goal.id} (${goal.title})` : goalId
       })
       .join(', ')
@@ -693,7 +702,7 @@ function validateLandscape(landscape: ParsedLandscape) {
 
     scopedGoals.forEach((goal) => {
       if (profile.motivationAnchorGoalIds.includes(goal.id)) return
-      if (profile.motivationAnchorGoalIds.some((anchorGoalId) => hasPathToTarget(goal.id, anchorGoalId, effectiveEdges))) return
+      if (profile.motivationAnchorGoalIds.some((anchorGoalId) => hasPathToTarget(goal.id, anchorGoalId, routeEffectiveEdges))) return
 
       addIssue(
         graphRuleIssueLevel,
@@ -704,7 +713,7 @@ function validateLandscape(landscape: ParsedLandscape) {
   }
 
   for (const profile of semanticRoutes.qaProfiles.filter((candidate) => candidate.landscapeId === landscape.landscapeId)) {
-    const coverage = evaluateDirectAtomicRouteCoverage(landscape.source, profile)
+    const coverage = evaluateDirectAtomicRouteCoverage(landscape.source, profile, canonicalRouteCatalog)
     for (const detail of coverage.details) addIssue('error', landscape.landscapeId, `[CQR-102] ${profile.profileId}: ${detail}`)
   }
 

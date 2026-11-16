@@ -1,0 +1,56 @@
+{
+  "before": {
+    "src/components/learningUnitMap/learnerUnitMapPreview.ts": "6cb6871e263b7bbcb7b537360dd36ef4699cab88c4a081998644d3a98d792089",
+    "src/utils/compositionViewRuntime.ts": "acc2fbda8dc898faaacbfd76d5a641518cd29269186408e6aaa2985dbdec4528",
+    "src/utils/learnerTreeProjection.ts": "a1dea9db24f73b321b2b43288c833c70b7a23ee62c16611030f73aaefbfa3672",
+    "src/utils/personalCurriculumProjection.test.tsx": "9701f034a6b32ad73b6bc96110f30294bdccc53b3edbbcefb3c5f1b622d1e34b",
+    "scripts/testLearnerUnitMapProjection.ts": "3258ad376ace805ee753860f2abaae75aa5cabd7ef1a47b38f460f516ac1a35e",
+    "scripts/testNestedStagePlans.ts": "b7b58b10b628da4caa4ea8c1651ac03696a80e344a1fe8f68a84a68494bb4f94",
+    "scripts/testHessePhysicsTree.ts": "0d8f0e91063d9274f8f34be9f15213458c44ad3e9f0afe0bbac041916e571731",
+    "package.json": "d814899c77c2c121ec1634bd1147b65e5cfde4506930e2c836952825fa3ac7fd"
+  },
+  "after": {
+    "src/components/learningUnitMap/learnerUnitMapPreview.ts": "6cb6871e263b7bbcb7b537360dd36ef4699cab88c4a081998644d3a98d792089",
+    "src/utils/compositionViewRuntime.ts": "acc2fbda8dc898faaacbfd76d5a641518cd29269186408e6aaa2985dbdec4528",
+    "src/utils/learnerTreeProjection.ts": "a1dea9db24f73b321b2b43288c833c70b7a23ee62c16611030f73aaefbfa3672",
+    "src/utils/personalCurriculumProjection.test.tsx": "9701f034a6b32ad73b6bc96110f30294bdccc53b3edbbcefb3c5f1b622d1e34b",
+    "scripts/testLearnerUnitMapProjection.ts": "3258ad376ace805ee753860f2abaae75aa5cabd7ef1a47b38f460f516ac1a35e",
+    "scripts/testNestedStagePlans.ts": "b7b58b10b628da4caa4ea8c1651ac03696a80e344a1fe8f68a84a68494bb4f94",
+    "scripts/testHessePhysicsTree.ts": "0d8f0e91063d9274f8f34be9f15213458c44ad3e9f0afe0bbac041916e571731",
+    "package.json": "d814899c77c2c121ec1634bd1147b65e5cfde4506930e2c836952825fa3ac7fd"
+  },
+  "runs": [
+    {
+      "label": "composition",
+      "command": [
+        "npm",
+        "run",
+        "test:composition-projection-roles"
+      ],
+      "exitCode": 0,
+      "startedAt": "2026-11-15T20:13:10.977769+00:00",
+      "finishedAt": "2026-11-15T20:13:31.151590+00:00"
+    },
+    {
+      "label": "stage-materialization",
+      "command": [
+        "npm",
+        "run",
+        "test:stage-plan-materialization"
+      ],
+      "exitCode": 0,
+      "startedAt": "2026-11-15T20:13:31.151665+00:00",
+      "finishedAt": "2026-11-15T20:13:32.915995+00:00"
+    },
+    {
+      "label": "unit-map",
+      "command": [
+        "node_modules/.bin/tsx",
+        "scripts/testLearnerUnitMapProjection.ts"
+      ],
+      "exitCode": 0,
+      "startedAt": "2026-11-15T20:13:32.916054+00:00",
+      "finishedAt": "2026-11-15T20:13:33.215959+00:00"
+    }
+  ]
+}

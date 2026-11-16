@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-15T15:45:56.869938+00:00",
+  "kind": "blind-review-input-contamination-notice",
+  "reviewerTask": "/root/math_two_current_blind_a",
+  "sourcePath": "tmp/math-v7-active-integration-20261115/two-current1310-round-a/description-review-input.json",
+  "sourceRawSha256": "sha256:909030d2420f2caade305ba10ef298fe20765c524aca96ffb2aae3ea91a3fd5f",
+  "sourceReviewInputFingerprint": "sha256:b1770fff05df2cf554907321ec37681c1c958f5b83ed40163083a2b0614c378d",
+  "blindToOtherReviews": false,
+  "exposure": "Printing the full supplied native review input exposed prior reviewers metadata and substantive rationale embedded in each reviewContext.evidenceProfile before those fields were filtered. No external review file, recommendation file, prior decision ledger, or other reviewer conversation was opened.",
+  "affectedJsonPointers": [
+    "/goals/0/reviewContext/evidenceProfile/reviewer",
+    "/goals/0/reviewContext/evidenceProfile/reason",
+    "/goals/1/reviewContext/evidenceProfile/reviewer",
+    "/goals/1/reviewContext/evidenceProfile/reason"
+  ],
+  "affectedGoalIds": [
+    "78238608-aaaa-4d12-a9de-54f325e9cf6f",
+    "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+  ],
+  "boundaries": "No review decisions or canonical writes were produced. No judgments were sent to other reviewers. Root was informed of the exposure, requested stopping this pass, and will appoint a fresh reviewer with sanitized content. This pass must not count as a genuine blind independent review.",
+  "safeFreshInputGuidance": "Give a fresh reviewer goal texts, canonical context, actual pages/assets, prerequisites, full assessment text/solution/rubric, and reviewContext.evidenceProfile.profile only; remove reviewer, reason, status, dissent, reviewRunIds and other prior judgment metadata. Retain native fingerprints unchanged for transport binding."
+}

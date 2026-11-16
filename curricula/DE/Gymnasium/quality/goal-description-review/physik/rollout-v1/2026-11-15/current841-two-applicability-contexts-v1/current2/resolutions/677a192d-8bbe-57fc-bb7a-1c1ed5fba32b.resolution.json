@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "physics-current841-two-source-boundary-20261115-677a192d-8bbe-57fc-bb7a-1c1ed5fba32b",
+  "goal": {
+    "goalId": "677a192d-8bbe-57fc-bb7a-1c1ed5fba32b",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:47d2b7c07f09b1c94687bf3bb985d04373eeb8acea177731e1c0995a50f34776",
+    "pageFingerprint": "sha256:180c8c619408915fa50745373c4cb1a0d65988bc8481d8dbaf25cfcef23e4d32",
+    "goalReviewContextFingerprint": "sha256:7c73d139d058ca6830d94452142b606cd74a57bdcaec19de1d738f68fbc278b8",
+    "finalText": {
+      "titleDe": "Einen angeleiteten Versuch zur mittleren Beschleunigung planen und auswerten",
+      "titleEn": "Plan and analyze a guided average-acceleration experiment",
+      "descriptionDe": "Die lernende Person kann unter Anleitung einen sicheren geradlinigen Bewegungsversuch mit Sensor oder Video vorab planen und selbst durchführen sowie aus zwei lokalen Geschwindigkeitsmitteln und dem Zeitabstand ihrer Fenstermitten die mittlere Beschleunigung näherungsweise bestimmen. Sie begründet Zeitbasis und Messfenster, deutet Vorzeichen und Messgrenzen und vergleicht eigene neue Ergebnisse bei einer veränderten Versuchsbedingung.",
+      "descriptionEn": "The learner can, with guidance, plan a safe straight-motion experiment using a sensor or video before acquisition, conduct it themselves, and estimate average acceleration from two local average velocities and the time between their window centers. They justify timing and measurement windows, interpret signs and measurement limits, and compare their own fresh results under a changed experimental condition."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physics-two-current841-source-boundary-20261115-first-pass-a",
+      "campaignDigest": "sha256:4aad18fdaf6d6066d2f97f20daf0146016bd1cef0e195e2efe177c6c025ee46a",
+      "roundId": "independent-a-boundary2",
+      "independenceGroupId": "physics-two-current841-source-boundary-20261115-independent-a",
+      "reviewInputFingerprint": "sha256:1f9012e885adbbe7e379fd99be88de9cb63323885641a61c8ce06f1dc14e52ab",
+      "goalReviewContextFingerprint": "sha256:7c73d139d058ca6830d94452142b606cd74a57bdcaec19de1d738f68fbc278b8",
+      "batchId": "independent-a-boundary2.batch-001",
+      "runId": "physics-current2-source-boundary-a-original18-20261115",
+      "runManifestDigest": "sha256:e307ab5e945cb78ba077029f17136f9b29ee2e609cbbc5f624c1646118bd96dd",
+      "resultsDigest": "sha256:4fbbd6a51d3725ec9ae20730fdc7b7ee738d38cc42890f6a209f10fdc81042a2",
+      "recordId": "physics-current2-source-boundary-a-original18-20261115.goal-001",
+      "recordDigest": "sha256:89862dafea9d7e7df0f632353443fd8aeb4e7cf94eec380387b800619883a864"
+    },
+    "second": {
+      "campaignId": "physics-two-current841-source-boundary-20261115-first-pass-b",
+      "campaignDigest": "sha256:89323d82b3dbb40a4eb7abb6ddb75b8b92525c3800bcdbc91739143104ed4cde",
+      "roundId": "independent-b-boundary2",
+      "independenceGroupId": "physics-two-current841-source-boundary-20261115-independent-b",
+      "reviewInputFingerprint": "sha256:1f9012e885adbbe7e379fd99be88de9cb63323885641a61c8ce06f1dc14e52ab",
+      "goalReviewContextFingerprint": "sha256:7c73d139d058ca6830d94452142b606cd74a57bdcaec19de1d738f68fbc278b8",
+      "batchId": "independent-b-boundary2.batch-001",
+      "runId": "physics-current2-source-boundary-b-20261115",
+      "runManifestDigest": "sha256:a1a21ea5cb6b50570b94e5b31cd7843f04fd536d70382a74076f43003a101cbf",
+      "resultsDigest": "sha256:26f9bae8374ec4d552ebf5669194344e6f39098acda67aae6e5498ccc450e3f7",
+      "recordId": "physics-current2-source-boundary-b-20261115.goal-001",
+      "recordDigest": "sha256:48d97e6e3e5e04f16a6979c9e44ca1a5bfd5f670b551fec5363e9009fbfa7236"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:212100f641735e73bb243abbf859075e2ea36dbab97cc1b4f844e3698a2936f0"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "physics-current841-two-source-boundary-20261115-actual-ai-synthesis",
+    "manifestDigest": "sha256:5b349c24343db86eeb4abc45dd8dbdc2efe24ac909ebc89bf2b25f7e9e47aed9",
+    "manifestFingerprint": "sha256:fc9ba10fef4ce0968ef81231aa1b9273f33123ff1b56ac1ce9e9b2335a0aabb0",
+    "decisionId": "physics-current841-two-source-boundary-20261115-actual-ai-synthesis-001"
+  },
+  "synthesis": {
+    "synthesisId": "physics-current841-two-source-boundary-20261115-actual-ai-synthesis-001",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "codex-physics-release-agent-reading-actual-independent-A-B-current-two-source-boundary-20261115",
+    "synthesizedAt": "2026-11-15T21:44:43.392781+00:00",
+    "rationaleDe": "Beide tatsächlichen unabhängigen Erstbewertungen dieser exakten aktuellen Eingaberevision behalten den Text und empfehlen keine Profiländerung. Der aktuelle begrenzte BY-Kontext mit ausdrücklicher Mapping-Grenze passt intern zur als eigene BY-Operationalisierung gekennzeichneten Kompetenz. Die ganze DE/EN-Beschreibung und das unveränderte vollständige P verlangen vor der Erfassung dokumentierte angeleitete Planung, eigene reale Messungen, korrekt unterschiedene Fensterbreite/Mittenabstände und eine zweite echte Variation mit ehrlichem Auflösungsvergleich. Beide Reviewer haben die numerisch richtige Illustration und tatsächliche Buchseite gesehen und unterscheiden deren fertige Lehrrechnung von realer Lernendenevidenz. Beide ursprünglichen Reviewer legen ihre eigene frühere D18/D10- beziehungsweise Aufgaben-/Routenarbeit offen und blieben zu fremden Voten blind; keine zusätzlichen historisch unexponierten Personen werden behauptet. Alte Reviewbytes bleiben unverändert. Dies ist eine AI-Synthese, keine amtliche Quellen-/Projektionsfreigabe, menschliche Freigabe oder Lernendenleistung.",
+    "rationaleEn": "Both actual independent first evaluations of this exact current input revision retain the text and recommend no profile change. The current bounded BY context with an explicit mapping boundary is internally consistent with the competence labelled as an own BY operationalization. The whole DE/EN description and unchanged complete profile require advance documented guided planning, own real measurements, correctly distinguished window widths/center separations, and a second actual variation with an honest resolution-bounded comparison. Both reviewers actually saw the numerically correct illustration and book page and distinguish a worked teaching example from real learner evidence. Both original reviewers disclose their own earlier D18/D10 or task/route work and remained blind to counterpart verdicts; no additional historically unexposed persons are claimed. Historical review bytes remain unchanged. This is AI synthesis, not official-source/projection approval, human approval or learner performance.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Ein angeleiteter Beschleunigungsversuch verlangt eigene, vorab begründete Planung und reale Erfassung. Zwei kurze lokale Geschwindigkeitsmittel werden näherungsweise ihren Fenstermitten zugeordnet; ihre Differenz geteilt durch den Abstand dieser Mitten schätzt eine mittlere Beschleunigung und beweist keinen überall konstanten Verlauf.",
+      "essentialUnderstandingEn": "A guided acceleration experiment requires the learner’s own justified advance planning and real acquisition. Two short-window average velocities are approximately assigned to their window centers; their difference divided by the separation of those centers estimates average acceleration without establishing a globally constant course.",
+      "observablePerformanceDe": "Die Person dokumentiert vor der Erfassung ihren sicheren angeleiteten Aufbau, Skala, positive Achse, tatsächliche Zeitbasis und Fensterregel, führt den Versuch selbst aus und legt prüfbare Rohdaten vor. Sie berechnet vorzeichenrichtig lokale Geschwindigkeitsmittel und Δv/Δt in m/s², unterscheidet Fensterbreite und Mittenabstand und begrenzt die Aussage mit der tatsächlichen Auflösung.",
+      "observablePerformanceEn": "Before acquisition the learner documents their safe guided setup, scale, positive axis, actual timing and window rule, conducts the experiment themselves and presents checkable raw data. They compute signed local average velocities and Δv/Δt in m/s², distinguish window width from center separation and limit the inference using actual resolution.",
+      "transferExpectationDe": "Vor einem zweiten eigenständig ausgeführten Durchgang passt die Person unter erlaubter Anleitung den Plan für eine geänderte Anfangsgeschwindigkeit oder Neigung an und erfasst neue Daten. Sie begründet einen auflösbaren Unterschied oder eine Übereinstimmung innerhalb der Messgrenzen, statt aus der Veränderung zwangsläufig eine andere Beschleunigung oder eine bestimmte Fehlerursache zu behaupten.",
+      "transferExpectationEn": "Before a second self-conducted run the learner adapts the plan, with allowed guidance, for changed initial velocity or inclination and acquires fresh data. They justify either a resolved difference or agreement within measurement limits rather than assuming that the change must alter acceleration or prove a particular error cause."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-e99fe42ec1cacc9aec9938b55fb377562a9d6062347a08515592a789ed12fe26",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:4d08664486ab6a32b6291571c4e371783ae0091e86de8cade1956dcf0e0975f6"
+}

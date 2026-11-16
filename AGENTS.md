@@ -546,11 +546,15 @@ curricular-level terminology. Personalization Levels 1–4, QA maturity and goal
   second shortcut. Valid direct and implicit competence remains globally effective
   while a later or parent exam is open. Exams and cards always need their own
   explicit results; a parent pass never passes them implicitly.
-- An explicitly authored whole-unit requirement belongs to the course. An atomic
-  prerequisite does not automatically impose the entire foreign unit. Whether
-  unit requirements guide recommendations or technically block starts, including
-  direct assessment attempts, remains undecided; no new hard gate is authorized
-  by this concept alone. Independent branches may proceed in parallel.
+- **Whole-unit order (B9, 14 November 2026).** Only an explicitly authored
+  `after` states the intended full completion of one unit before another
+  starts; it is order, never a new whole-unit prerequisite type. Atomic
+  prerequisites demand only their competencies. The former undecided access
+  profile is retired in the binding target model: `after` blocks no starts
+  or direct assessment attempts and changes neither frontier nor mastery.
+  Task availability, authentication, scope and session binding remain their
+  own contracts. This does not claim removal of historical code paths;
+  independent branches may proceed in parallel.
 - Preserve effective atomic acyclicity and transitive minimality. When whole-unit
   sequencing is intended, additionally check the projected block graph at every
   relevant boundary: atomic acyclicity alone does not guarantee a unit order.
@@ -600,7 +604,9 @@ curricular-level terminology. Personalization Levels 1–4, QA maturity and goal
   `docs/dev/mathematics-physics-learning-units-plan.md` (Mathematics first, then
   Physics). The catalog of units is derived in-house, block by block, from the
   canonical graph and the design sheet; an external proposal is at most a
-  recorded origin, never a contract. Whole-unit access locks stay undecided.
+  recorded origin, never a contract. The whole-unit access question left open
+  at that date was retired by B9 on 14 November 2026; only declared `after`
+  orders whole-unit completion, without need or access locks.
 - **Unit contract (Product Owner, 12 November 2026).** Learning units are part
   of the landscape and live in the existing placement layer; the Product Owner
   rejected a separate catalog file beside the landscape as a bolt-on and asked
@@ -768,8 +774,9 @@ curricular-level terminology. Personalization Levels 1–4, QA maturity and goal
   inherit it to every atomic goal and `CQR-001` rejects it; inheritance stays
   the reading of transition data outside the canonical Gymnasium catalog.
   Until the follow-up work in section 10 of the document is done, the tools
-  enforce the unit contract of 12 November and Graph Definition §11 to §13
-  describe the implemented state.
+  enforce the unit contract of 12 November. Graph Definition §11 to §13
+  distinguish the binding target model from that implemented compatibility
+  contract; target wording does not assert completed migration.
   A first, surface-only step is implemented: the learner map
   (`app/src/components/learningUnitMap/learnerUnitMapProjection.ts` and
   `learnerUnitMapPreview.ts`) renders the learner's graph as units and atomic
@@ -781,6 +788,35 @@ curricular-level terminology. Personalization Levels 1–4, QA maturity and goal
   stages across the subjects through a provisional table of view node ids
   (`PROVISIONAL_STAGE_PLAN_UNITS`), to be removed once plan units are
   declared. `buildLearnerMapProjection` is kept but no longer rendered.
+
+
+- **Stage authority and normative precedence (15 November 2026).** The F7
+  bilingual Graph Definition source states the binding target model and
+  labels the previous 1.2 ownership representation as compatibility. One
+  shared plan per Land and duration model governs all selected subjects;
+  course profiles may select contributions but cannot contradict the stage
+  of a stable goal. Its full root has only Sekundarstufe I and II, exactly
+  II `after` I; orientation, practice and assessment goals belong inside
+  these stages. A single-stage view is a derived excerpt; the nationwide
+  canonical structure is no Land plan. `Geführt in` means source-evidenced
+  curricular assignment; `steht in` means learning placement. A canonical
+  phase may justify an explicitly provisional default, never official
+  coverage. A support reference's authored position asserts no stage.
+  Necessary atoms outside the carried seed targets receive one derived
+  placement at their earliest actual need in the closed personal scope,
+  independently of mastery. Already carried late targets are not silently
+  moved; their backflows remain findings until explicitly repaired.
+  E1 to E4 apply per declaration layer and to derived preparation. R4 is
+  E1; R1 to R5 govern units with assessments. Assessment-free units only
+  order and recognize nothing. `GD-U14`'s formerly open access profile is
+  retired in the target model, without claiming historical code removal.
+  The stage-plan foundation under `contracts/curriculum-package/v1.3/` is
+  not a published package version. Zero real Land plans are activated;
+  shared production-reader migration remains open. Subject-unit migration,
+  B3/B13 acceptance, packages, recognition and learning-mode runtime require
+  F8 to F13 and their own evidence. Existing atomic G17 across the complete
+  21-root catalog, immutable V9 evidence, quality floors, focus rules,
+  learner results and recognition semantics remain unchanged.
 
 This is concept documentation plus a static authoring contract and validator,
 not an implemented runtime or access policy. See `docs/concept/skill-graph/learning-units.md`,

@@ -3,7 +3,9 @@ import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 
 import { normalizeCanonicalLandscape } from '../src/utils/authoring/canonicalAuthoring'
+import { compileCompositionView, normalizeCompositionView, type CompositionViewNode } from '../src/utils/authoring/compositionViewAuthoring'
 import {
+  collectCanonicalMathSek1AssessmentCollectionFindings,
   collectCanonicalMathSek1ReviewedExamRouteFindings,
   hasUnavailableCurricularAtomicAssessmentPrerequisite,
   isAssessmentExplicitlyOutsideJurisdiction,
@@ -146,3 +148,63 @@ assert.equal(isAssessmentExplicitlyOutsideJurisdiction(
 ), false, 'Every explicitly included land retains its assessment requirement.')
 
 console.log('Canonical Mathematics Sek-I reviewed exam-route regression tests passed, including exact assessment target and jurisdiction applicability.')
+
+// Real materialized J9/J10 collections retain their authored source identity.
+// Check the actual preview and every applicable endpoint, not a folder label.
+const materializedScopes: Array<[string, string[]]> = [
+  ['de-de-seki', ['10']], ['de-hb-gk', ['10']], ['de-hb-lk', ['10']],
+  ['de-sh-gk', ['9', '10']], ['de-sh-lk', ['9', '10']],
+  ['de-sh-gk-g8', ['9']], ['de-sh-lk-g8', ['9']], ['de-sh-seki-g8', ['9']],
+  ['de-sh-gk-g9', ['9', '10']], ['de-sh-lk-g9', ['9', '10']], ['de-sh-seki-g9', ['9', '10']],
+]
+const materializedFolderIds: Record<string, string> = {
+  '9': 'f6c9c2b8-3dbd-4839-972f-c60f33c44b63',
+  '10': 'cb20dd6b-c4ff-4a1b-9636-3b3d6ea86aa8',
+}
+const semanticLedger = JSON.parse(readFileSync(resolve(process.cwd(),
+  '../curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json'), 'utf8')) as {
+    decisions: Array<{ goalId: string; semanticKind: string }>
+  }
+const semanticKinds = new Map(semanticLedger.decisions.map((decision) => [decision.goalId, decision.semanticKind]))
+const currentLandscape = { ...landscape, goals: landscape.goals.map((goal) => ({
+  ...goal, semanticKind: semanticKinds.get(goal.id),
+})) }
+for (const [name, years] of materializedScopes) {
+  const view = normalizeCompositionView(JSON.parse(readFileSync(resolve(process.cwd(),
+    `../curricula/DE/Gymnasium/composition-views/mathematik/${name}.view.json`), 'utf8')))
+  const folders = Object.fromEntries(years.map((year) => [year, materializedFolderIds[year]]))
+  const evaluate = (candidate: typeof view) => collectCanonicalMathSek1AssessmentCollectionFindings(
+    candidate, currentLandscape, compileCompositionView(candidate, currentLandscape).compiledRootNodes, folders,
+  )
+  assert.deepEqual(evaluate(view), [], `${name}: materialized source collections must keep every applicable task visible.`)
+  if (name !== 'de-de-seki') continue
+  const folderId = materializedFolderIds['10']
+  const visitNodes = (nodes: CompositionViewNode[], action: (node: CompositionViewNode) => void): void => {
+    for (const node of nodes) { action(node); if (node.kind === 'structure') visitNodes(node.children, action) }
+  }
+  const noBinding = structuredClone(view)
+  visitNodes(noBinding.rootNodes, (node) => { if (node.canonicalSourceGoalId === folderId) delete node.canonicalSourceGoalId })
+  assert(evaluate(noBinding).some((finding) => finding.code === 'CPV-211'),
+    'The same label and all task IDs cannot replace an explicit source-collection binding.')
+  const emptyCollection = structuredClone(view)
+  visitNodes(emptyCollection.rootNodes, (node) => {
+    if (node.kind === 'structure' && node.canonicalSourceGoalId === folderId) node.children = []
+  })
+  assert(evaluate(emptyCollection).some((finding) => finding.code === 'CPV-211'),
+    'An empty declared source collection must fail.')
+  const sourceTaskIds = new Set(currentLandscape.goals.find((goal) => goal.id === folderId)!.contains)
+  let removedTaskId = ''
+  const missingTask = structuredClone(view)
+  visitNodes(missingTask.rootNodes, (node) => {
+    if (node.kind !== 'structure' || node.canonicalSourceGoalId !== folderId) return
+    const index = node.children.findIndex((child) => child.kind !== 'structure'
+      && typeof child.goalId === 'string' && sourceTaskIds.has(child.goalId))
+    assert(index >= 0)
+    removedTaskId = String(node.children[index].goalId)
+    node.children.splice(index, 1)
+  })
+  assert(removedTaskId)
+  assert(evaluate(missingTask).some((finding) => finding.code === 'CPV-211' && finding.message.includes('Aufgabenknoten')),
+    'Removing a required real task must still fail even though its source-bound collection remains.')
+}
+console.log('Materialized assessment collections passed: 16 real J9/J10 collections in 11 views, explicit source binding and missing-task negative checks.')

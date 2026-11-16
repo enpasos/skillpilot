@@ -1,10 +1,11 @@
 // Exact reviewed source-component overlay. No writes, registry mutation or broad source inheritance.
 import config from './config/physics-final-diode-mapping-overrides.json'
 import semiconductorConfig from './config/physics-semiconductor-mapping-overrides.json'
+import amplifierConfig from './config/physics-k3-amplifier-mapping-overrides.json'
 type Decision={sourceGoalId:string;canonicalGoalIds:string[];rationale:string;reviewedAt:string;reviewer:string}
 type Mapping={legacyGoalId:string;canonicalGoalId:string;matchType:string;reviewDecisionId:string}
 export function applyPhysicsFinalDiodeMappings(decisions:Decision[],mappings:Mapping[]){
- for(const active of [config, semiconductorConfig])for(const row of active.overrides){const d=decisions.find(d=>d.sourceGoalId===row.sourceGoalId);if(!d)continue
+ for(const active of [config, semiconductorConfig, amplifierConfig])for(const row of active.overrides){const d=decisions.find(d=>d.sourceGoalId===row.sourceGoalId);if(!d)continue
   d.canonicalGoalIds=d.canonicalGoalIds.filter(id=>!row.removeGoalIds.includes(id))
   for(const id of row.addGoalIds)if(!d.canonicalGoalIds.includes(id))d.canonicalGoalIds.push(id)
   d.rationale=row.rationale;d.reviewedAt=active.reviewedAt;d.reviewer=active.reviewer

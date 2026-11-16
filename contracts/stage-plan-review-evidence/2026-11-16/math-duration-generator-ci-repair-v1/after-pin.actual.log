@@ -1,0 +1,32 @@
+
+> skillpilot@0.0.0 check:math-duration-composition-views
+> tsx scripts/generateMathDurationCompositionViews.ts --check
+
+changed de-he-seki-g8.view.json {"5":64,"6":28,"7":46,"8":64,"9":59} filteredAssessments=12
+changed de-he-seki-g9.view.json {"5":46,"6":32,"7":34,"8":49,"9":61,"10":61} filteredAssessments=20
+changed de-he-gk-g8.view.json {"5":58,"6":27,"7":37,"8":55,"9":45} filteredAssessments=12
+changed de-he-gk-g9.view.json {"5":41,"6":32,"7":27,"8":42,"9":37,"10":46} filteredAssessments=20
+changed de-he-lk-g8.view.json {"5":58,"6":27,"7":37,"8":55,"9":45} filteredAssessments=12
+changed de-he-lk-g9.view.json {"5":41,"6":32,"7":27,"8":42,"9":37,"10":46} filteredAssessments=20
+changed de-rp-seki-g8.view.json {"orientierungsstufe":110,"klasse7-8":47,"klasse9-10-msa":64} filteredAssessments=25
+changed de-rp-seki-g9.view.json {"orientierungsstufe":110,"klasse7-8":47,"klasse9-10-msa":71} filteredAssessments=29
+changed de-rp-gk-g8.view.json {"orientierungsstufe":107,"klasse7-8":47,"klasse9-10-msa":64} filteredAssessments=25
+changed de-rp-gk-g9.view.json {"orientierungsstufe":107,"klasse7-8":47,"klasse9-10-msa":68} filteredAssessments=29
+changed de-rp-lk-g8.view.json {"orientierungsstufe":107,"klasse7-8":47,"klasse9-10-msa":64} filteredAssessments=25
+changed de-rp-lk-g9.view.json {"orientierungsstufe":107,"klasse7-8":47,"klasse9-10-msa":68} filteredAssessments=29
+changed de-sh-seki-g8.view.json {"jg5-6":73,"jg7-9":102,"jg10":37} filteredAssessments=28
+changed de-sh-seki-g9.view.json {"jg5-6":73,"jg7-9":102,"jg10":37} filteredAssessments=32
+changed de-sh-gk-g8.view.json {"jg5-6":73,"jg7-9":98,"jg10":36} filteredAssessments=28
+/home/enpasos/projects/skillpilot/app/scripts/generateMathDurationCompositionViews.ts:1910
+    throw new Error(
+          ^
+
+
+Error: de-sh-gym-math-gk-g9 fails composition compilation: CPV-005: Kanonisches Ziel erscheint mehrfach im kompilierten Baum: 632a3837-7381-5701-9cfa-4ae15ccae8ba | CPV-006: Kanonisches Ziel hat mehr als einen sichtbaren Parent im kompilierten Baum: 632a3837-7381-5701-9cfa-4ae15ccae8ba
+    at assertGeneratedViewIntegrity (/home/enpasos/projects/skillpilot/app/scripts/generateMathDurationCompositionViews.ts:1910:11)
+    at <anonymous> (/home/enpasos/projects/skillpilot/app/scripts/generateMathDurationCompositionViews.ts:1936:3)
+    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)
+
+Node.js v20.20.2

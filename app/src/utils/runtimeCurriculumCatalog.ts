@@ -64,7 +64,7 @@ export interface RuntimeCatalogResource {
   resourceId: string
   landscapeId: string
   ownerGoalId: string
-  resourceKind: 'goal-visualization' | 'external-tool'
+  resourceKind: 'goal-visualization' | 'assessment-material' | 'external-tool'
   delivery: 'embedded' | 'external'
   mediaType: string
   publicUrl?: string
@@ -357,7 +357,7 @@ export const parseRuntimeCurriculumCatalog = (raw: unknown): RuntimeCurriculumCa
     }
     const resourceKind = asString(item.resourceKind, `resources[${index}].resourceKind`)
     const delivery = asString(item.delivery, `resources[${index}].delivery`)
-    if (resourceKind !== 'goal-visualization' && resourceKind !== 'external-tool') throw new Error(`resources[${index}].resourceKind is invalid`)
+    if (!['goal-visualization', 'assessment-material', 'external-tool'].includes(resourceKind)) throw new Error(`resources[${index}].resourceKind is invalid`)
     if (delivery !== 'embedded' && delivery !== 'external') throw new Error(`resources[${index}].delivery is invalid`)
     const mediaType = asString(item.mediaType, `resources[${index}].mediaType`)
     if (!MEDIA_TYPE_PATTERN.test(mediaType)) throw new Error(`resources[${index}].mediaType is invalid`)
@@ -365,7 +365,15 @@ export const parseRuntimeCurriculumCatalog = (raw: unknown): RuntimeCurriculumCa
     if (delivery === 'embedded') assertSafeEmbeddedHref(href, `resources[${index}].href`)
     if (delivery === 'external' && !/^https:\/\/[^\s]+$/u.test(href)) throw new Error(`resources[${index}].href must be HTTPS`)
     const publicUrl = asOptionalString(item.publicUrl, `resources[${index}].publicUrl`)
-    if (delivery === 'embedded' && (!publicUrl?.startsWith('/assets/goal-visualizations/') || publicUrl.includes('..'))) {
+    const assessmentMaterial = resourceKind === 'assessment-material'
+    if (assessmentMaterial && (delivery !== 'embedded' || !['image/svg+xml', 'image/png'].includes(mediaType) || item.runtimeRequired !== true
+      || !packageById.get(packageId)?.capabilities.includes('assessmentMaterialsV1'))) {
+      throw new Error(`resources[${index}] has invalid required assessment metadata`)
+    }
+    const validEmbeddedUrl = assessmentMaterial
+      ? /^\/assets\/assessment-materials\/(?!.*(?:\/\.|\\|\/\/))[A-Za-z0-9._/-]+\.(?:svg|png)$/u.test(publicUrl ?? '')
+      : !!publicUrl?.startsWith('/assets/goal-visualizations/')
+    if (delivery === 'embedded' && (!validEmbeddedUrl || publicUrl?.includes('..'))) {
       throw new Error(`resources[${index}].publicUrl is invalid`)
     }
     if (delivery === 'external' && publicUrl && !/^https:\/\/[^\s]+$/u.test(publicUrl)) {
@@ -375,6 +383,9 @@ export const parseRuntimeCurriculumCatalog = (raw: unknown): RuntimeCurriculumCa
     const sha256 = asOptionalString(item.sha256, `resources[${index}].sha256`)
     if (delivery === 'embedded' && (bytes === undefined || !sha256 || !SHA256_PATTERN.test(sha256))) {
       throw new Error(`resources[${index}] has incomplete embedded integrity metadata`)
+    }
+    if (assessmentMaterial && (bytes === undefined || bytes <= 0 || bytes > (mediaType === 'image/svg+xml' ? 4 : 64) * 1024 * 1024)) {
+      throw new Error(`resources[${index}] has invalid assessment byte limits`)
     }
     if (delivery === 'external' && (bytes !== undefined || sha256 !== undefined || item.runtimeRequired !== false)) {
       throw new Error(`resources[${index}] has invalid external metadata`)
@@ -386,7 +397,7 @@ export const parseRuntimeCurriculumCatalog = (raw: unknown): RuntimeCurriculumCa
       resourceId: asId(item.resourceId, `resources[${index}].resourceId`),
       landscapeId,
       ownerGoalId: asId(item.ownerGoalId, `resources[${index}].ownerGoalId`),
-      resourceKind,
+      resourceKind: resourceKind as RuntimeCatalogResource['resourceKind'],
       delivery,
       mediaType,
       publicUrl,
@@ -584,7 +595,7 @@ export const resolveGoalResourceHref = (
   if (state.mode !== 'package' || !goal.landscapeId) return undefined
   const matches = state.catalog.resources.filter((entry) => (
     entry.landscapeId === goal.landscapeId
-    && entry.ownerGoalId === goal.id
+    && (entry.ownerGoalId === goal.id || (entry.resourceKind === 'assessment-material' && link.url === entry.publicUrl))
     && (
       (link.resourceId && entry.resourceId === link.resourceId)
       || (link.url && (entry.publicUrl === link.url || (entry.delivery === 'external' && entry.href === link.url)))

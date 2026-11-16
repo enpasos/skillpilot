@@ -25,7 +25,7 @@ export function generateStagePlanViews(args: string[], repositoryRoot = resolve(
   if (!mode || !inventoryPath) throw new Error('Usage: generateStagePlanViews.ts (--write|--check) --inventory <repository-relative activation.json> [--catalog <repository-relative catalog.json>]')
   const result = buildStagePlanMaterialization({ repositoryRoot, inventoryPath, catalogPath })
   const applied = applyStagePlanMaterialization(repositoryRoot, result, mode)
-  console.log(`Stage-plan compatibility projections: ${result.index.plans.length} plans, ${result.index.views.length} views, ${applied.changed.length} written, ${applied.checked} artifacts checked.`)
+  console.log(`Stage-plan compatibility projections: ${result.index.plans.length} plans, ${result.index.plans.reduce((count, entry) => count + entry.plan.units.length, 0)} declared units, ${result.index.views.length} views, ${applied.changed.length} written, ${applied.checked} artifacts checked.`)
   return applied
 }
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {

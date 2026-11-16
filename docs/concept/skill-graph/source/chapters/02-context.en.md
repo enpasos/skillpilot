@@ -10,10 +10,10 @@ The general goal model distinguishes four semantic layers and one presentation l
 | Layer | Meaning | Example and boundary |
 | --- | --- | --- |
 | Goals | Concrete competencies and subject clusters; `requires` and `contains` live here. | Solving a linear equation; foundations of linear functions. |
-| Programs | Years, semesters, modules, phases, other structural units, and learning units (kind `learningUnit`). | Year 8 is an organizational container, not a competence. |
-| Placements | Contextual link from a goal into a program unit. | The same goal is acquired in Year 8 in one program and in Year 9 in another. |
+| Units and programs | Canonical subject units (declared clusters with a learning promise and `after`), shared Land plan units (stages, years, phases), and organizational program units (temporarily including `learningUnit` under contract 1.2). | Year 8 and course phase Q1 are plan units, not competencies. |
+| Placements | Land-plan binding (*carried in* vs. *placed in*) and contextual link from a goal into a program unit. | The same goal is acquired in Year 8 in one program and in Year 9 in another. |
 | Competency axes | Domain taxonomies and cross-cutting categories. | K1 “Mathematical reasoning” is a category; “identifying gaps in an argument” can be a concrete goal. |
-| Composition view | Reviewed upper structure of the visible tree for a resolved educational scope. | A state-specific view references canonical subtrees without copying their goals. |
+| Projection and map view | Reviewed structure of the goal tree and learner map for a resolved educational scope. | A Land plan references canonical subtrees without copying goals; the learner map contracts non-unit clusters along `contains`. |
 :::
 
 ### Identity Across Different Placements {#sec:identity-across-contexts}
@@ -26,7 +26,7 @@ Legacy trees may still contain year and phase nodes as a compatibility scaffold.
 
 A *projection* derives a visible tree or another navigable view from the curriculum data. It is evaluated for a *resolved context* in which dimensions such as jurisdiction, school form, stage, duration model, and course profile are fixed.
 
-In the target model, `programUnits` form an explicit tree or forest of program units, and `goalPlacements` attach goals to those units. A `primary` placement supplies the default program anchor; `secondary` indicates additional structural relevance, and `assessed` marks an assessment reference. Secondary and assessment placements never create extra visible copies of the same goal. Relation `own` records without context that a learning unit directly owns an atomic goal (Section~@ref{sec:unit-representation}); it is not a program anchor.
+In the target model, `programUnits` form an explicit tree or forest of program units, and `goalPlacements` attach goals to those units. A `primary` placement supplies the default program anchor; `secondary` indicates additional structural relevance, and `assessed` marks an assessment reference. Secondary and assessment placements never create extra visible copies of the same goal. In the existing 1.2 compatibility contract, relation `own` records without context that a learning unit directly owns an atomic goal (Section~@ref{sec:unit-representation}); it is not a program anchor.
 
 Within a resolved context, exactly one matching primary placement yields a unique anchor. When no primary placement matches, the view must not invent a parent node. Multiple matching primary placements require an explicitly reviewed resolution contract; otherwise the projection is ambiguous. Context fields never alter the goal ID.
 
@@ -49,6 +49,20 @@ Compilation should run early, in this order:
 5. Emit the compiled artifact for the runtime.
 
 The closure condition from Section~@ref{par:projection-closure} applies even when a view selects only a subset of canonical atoms. That makes structural validation possible before any user interface renders a tree.
+
+
+
+#### Goal tree and learner map.
+
+The same resolved projection drives two coordinated presentations without a second data source. The **goal tree** (*Lernzielbaum*) displays all structure nodes, units, non-unit clusters, and atomic goals. The **learner map** (*Lernkarte*) displays **units and atomic goals only**: every cluster that is not declared as a unit is contracted along `contains`, so indirectly contained child units and atomic goals move up as direct children of the nearest enclosing unit (or the root), while subjects act as filters rather than units of their own. Inside an opened unit on the learner map, arrows run exclusively between its direct children from aggregated sibling `after` declarations and crossing atomic `requires` paths; any backflows against unit order remain visible and are never hidden.
+
+#### Land Authority, Source Assignment, and Learning Placement.
+
+The binding target model has one authoritative plan per Land and duration model across the selected subjects. Its full root has exactly two children, Sekundarstufe I and Sekundarstufe II, with exactly one declared `after` from II to I (Z3); beneath Sekundarstufe I lie the year units applicable to the Land and duration model, and beneath Sekundarstufe II lie the phase units `E` and `Q1` to `Q4` ordered by sibling `after`. Orientation goals, practice tasks, and assessments have a justified place inside these stages; nothing sits beside them. Course profiles select subject contributions, never contradictory stages for the same canonical goal. A single-stage view is a derived excerpt and requires no artificial empty counterpart stage. The nationwide view remains the canonical structure and is no Land plan.
+
+**Carried in** (*geführt in*) means the curricular assignment evidenced by the Land's source. **Placed in** (*steht in*) means the didactic learning placement. Explicitly justified earlier preparation may change the learning placement without overwriting the original source assignment; it creates no new official obligation. Necessary prerequisites from the closed scope $L$ outside the Land plan's carried targets receive their derived learning placement deterministically at **earliest actual need** (in the earliest plan unit of any dependent goal in $L$), whereas carried late targets are never moved forward silently. Without Land evidence a canonical marker such as `dimensionTags.phase` may justify only an explicitly provisional **default assignment**. It substitutes for neither Land evidence nor source coverage and does not override an authoritative view. Routes inspect evaluated learning placement; source checks continue to inspect source evidence. Divergent existing readers remain an implementation finding until migrated together.
+
+The existing [stage-plan foundation](repo:contracts/curriculum-package/v1.3/README.md) separates shared plans, subject authorities, and excerpts; generated compatibility views are not a second authoring authority. The `v1.3` directory here denotes a development contract for stage plans, not a published curriculum-package version or completed migration of production readers. No real Land plan is activated yet.
 
 #### Canonical identity is preserved.
 
@@ -105,6 +119,10 @@ This compile-time validity check is distinct from later Level~3 focus selection:
 Under the Product Owner decision of 11 November 2026, these hard errors belong to validation, curriculum QA, and native acceptance rather than to learner reads. When the canonical graph of a learning context is not strictly compilable, the runtime keeps the reviewed seed scope without the derived closure, claims no learning basis, offers no goal whose prerequisite demand is broken, and logs the failure once per curriculum and error code; learner state, results, and export stay readable. Errors in the seed selection itself remain hard errors. The rule covers the many non-canonical curricula whose root cluster contains and requires its own orientation goal and changes none of their data.
 
 *Transition-data example:* Suppose a Physics goal $g$ requires a Mathematics cluster $k$. Its canonical atomic basis and transitive prerequisites are resolved prior to display filters. A subject-local `prerequisiteOnly` reference to $k$ may remain in Physics, yet every genuinely required atom still receives an acquisition target in the full Personal Curriculum -- whether in Mathematics or as derived preparation -- without manual per-atom references or enrolling an entire extra subject. Canonical identity, provenance, and mastery remain intact.
+
+
+
+The authored position of a `prerequisiteOnly` reference asserts neither an official stage nor a learning placement. In the target model a necessary atom that the selected plan does not carry as a seed target receives exactly one derived learning placement in the plan unit of its earliest actual need within the full $L$. Full canonical paths are traversed independently of mastery; neither an entire subject nor an entire unit is added. Already carried targets are not silently moved: earlier demand for a later carried target remains a backflow until an evidenced subject-matter correction or explicitly justified preparation resolves it. Z4/E2 apply equally to preparation and carried targets. This shared placement derivation across all readers is not fully implemented in production yet.
 
 ### Applicability Is Not Placement {#sec:applicability-vs-placement}
 

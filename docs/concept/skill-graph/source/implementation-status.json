@@ -1,10 +1,13 @@
 {
   "schemaVersion": 1,
   "stand": {
-    "lead": { "de": "Stand dieser Fassung.", "en": "Status of this edition." },
+    "lead": {
+      "de": "Stand dieser Fassung.",
+      "en": "Status of this edition."
+    },
     "body": {
-      "de": "**Aktueller Kandidat, 13. November 2026:** [PR #141](https://github.com/enpasos/skillpilot/pull/141) führt die Gymnasium-Folgearbeiten auf der aktualisierten Main-Basis `2ad03c810c` zusammen. Die 12 HART / 50 TEIL / 55 OFFEN / 28 OPT/DOK und die vier Pflichtscopes von `GVR-012` gehören zu diesem noch nicht auf main integrierten Kandidaten. Lokale Gate-, Negativ-, Dokument- und PDF-Prüfungen sind im [Folgearbeitsnachweis](repo:docs/dev/cqr-gvr-hard-gate-plan-2026-11-12.md) belegt. Abschließende Remote-CI und Main-Abnahme sind hier nicht als abgeschlossen ausgewiesen; die frühere CI von PR #131 belegt diese Änderungen nicht. Dieser Anhang hält fest, an welchen Repository-Ständen die Aussagen des Dokuments geprüft wurden und wo die gelesene Implementierung vom beschriebenen Modell abweicht ([GD-D01](@rule{GD-D01})). Diese gemeinsame Single-Source-Fassung führt die Konzeptkorrektur vom 4. November, die Festlegung der atomaren Normalform und die Meilensteinzuordnung vom 8. November, die Präzisierung des Projektionsvertrags vom 9. November den geschlossenen persönlichen Lernumfang vom 10. November sowie die Entscheidungen vom 11. November 2026 zu nicht strikt kompilierbaren Lernkontexten und zur Gültigkeit von Lerneinheiten und vom 12. November 2026 zur vollständigen aktuellen Zielzustandsprüfung und zur Darstellung von Lerneinheiten für Web und PDF zusammen. Seit dem 11. November 2026 setzt `CQR-001` zudem `G17` für den kanonischen Gymnasialkatalog durch. Die mit PR #131 ausgelieferte CQR-/GVR-Härtung ist auf main integriert und durch die nachstehend datierten CI-Belege abgesichert; ihre genauen Bereiche und die beiden verbleibenden Lücken stehen im Regelregister. Backend und WebGUI verwenden nun die feste atomare Voraussetzungshülle; der Hüllencompiler [PersonalCurriculumLearningScope.java](repo:backend/src/main/java/com/skillpilot/backend/completion/PersonalCurriculumLearningScope.java) nutzt die vorhandene kanonische Normalisierung. Lokale Regressionen prüfen Lernbarkeit, Planung, Fokus, Referenzfehler und die Auslieferung fachfremder Grundlagen. Vollständige native, Curriculum- und Remote-CI-Abnahme sowie die Anwendbarkeitsprüfung des aktuellen Zustands bleiben getrennt erforderlich. Die neue globale Anwendungsanerkennung ist **noch nicht implementiert**. Ein lesbarer Beleg oder ein erfolgreicher Dokumentbuild beweist weder Laufzeitkonformität noch Deployment.",
-      "en": "**Current candidate, 13 November 2026:** [PR #141](https://github.com/enpasos/skillpilot/pull/141) brings together the Gymnasium follow-up work on the updated main baseline `2ad03c810c`. The 12 HARD / 50 PARTIAL / 55 OPEN / 28 OPT/DOC rows and four required `GVR-012` scopes belong to this candidate, which has not been integrated into main. Local gate, negative-case, documentation, and PDF checks are evidenced in the [follow-up record](repo:docs/dev/cqr-gvr-hard-gate-plan-2026-11-12.md). Final remote CI and main acceptance are not recorded here as complete; the earlier CI for PR #131 does not evidence these changes. This appendix records the repository states against which the specification's claims were audited and documents where the inspected implementation diverges from the normative model ([GD-D01](@rule{GD-D01})). This unified Single-Source edition consolidates the 4 November concept correction, the 8 November atomic normal-form mandate and milestone mapping, the 9 November projection contract clarification, the 10 November closed Personal Curriculum learning scope, the 11 November 2026 decisions on non-compilable learning contexts and on learning-unit validity, and the 12 November 2026 decisions on complete current target-state validation and on the representation of learning units across Web and PDF. Since 11 November 2026, `CQR-001` also enforces `G17` for the canonical Gymnasium catalog. The CQR/GVR hardening delivered in PR #131 is integrated into main and supported by the dated CI evidence below; its exact domains and two remaining gaps are recorded in the rule registry. Both backend and WebGUI now evaluate the fixed atomic prerequisite closure; the closure compiler [PersonalCurriculumLearningScope.java](repo:backend/src/main/java/com/skillpilot/backend/completion/PersonalCurriculumLearningScope.java) reuses canonical normalization. Local regression tests cover learnability, planning, focus, reference errors, and cross-subject prerequisite delivery. Full native, curriculum, and remote-CI acceptance as well as applicability validation of the current state remain separate steps. Global application recognition ($\\Meff$) is **not yet implemented**. Readable documentation evidence or a green document build proves neither runtime conformance nor production deployment."
+      "de": "**Zielnorm und Bestand sind verschiedene Aussagen.** Die Kapitel beschreiben den verbindlichen Zielzustand einschließlich globaler Anerkennung, erklärter Einheiten und E1 bis E4. Eine noch fehlende Implementierung schwächt diese Norm nicht ab. Dieser Anhang beschreibt dagegen datierte Implementierungs- und Abnahmebefunde.\n\n**Gezielter Abgleich, 15. November 2026:** Die gelesene Hauptlinie ist `64793bdc2270ce67feced439ae20ef03a59e2abe`; die laufende Implementierung liegt in [Draft-PR #159](https://github.com/enpasos/skillpilot/pull/159), beim Abgleich mit veröffentlichtem Kopf `34ee40b4b3` und weiteren lokalen Arbeiten. #153 und #156 sowie das Fachpaket #157 sind integriert. Der neue Draft-Lauf von #159 besteht sechs Jobs und überspringt acht; das ist keine vollständige PR- oder Main-Abnahme. Der [fortlaufende Managementstand](repo:docs/dev/stage-plan-management-summary.md) trennt die geprüften Lieferstände, tatsächlichen Kartenmessungen und offenen Schritte. Null reale Landespläne sind aktiviert; die ausführbare Stufenplan-Grundlage v1.3 und ihre Erweiterung um innere Einheiten sind weder ein veröffentlichtes Gesamtpaket noch bereits die vollständige Zielnorm.\n\n**Lokaler Umsetzungsnachtrag, 16. November 2026:** Der Kandidat in [PR #159](https://github.com/enpasos/skillpilot/pull/159) schützt im tatsächlich kompilierten automatischen Abschlusskontext jetzt Prüfungs- und Memorierziele gemeinsam: Ein offenes Memorierziel und seine transitive Vorbereitung dürfen nicht allein wegen fehlender Prüfungsnachfrage als `no_remaining_demand` freigestellt werden. Das gilt auch für notwendige Memorierziele außerhalb der Zielmenge; sie verhindern den Kontextabschluss, bis ihr ausdrücklicher Abschluss vorliegt. Prüfungszähler bleiben getrennt. Der Fix schreibt keine Beherrschung und begründet weder eigene Einheitenabdeckung noch R5 oder globale revisionsgebundene Anerkennung ($\\Meff$). Der historische reviewgebundene Evaluator bleibt unverändert. Dies ist ein lokaler Implementierungsstand; neue vollständige PR-CI, Integration und frische erfolgreiche Main-CI stehen aus.\n\n**Korrektur eines historischen Laufzeitbefunds:** Der in der früheren Tabelle beschriebene Traversierungsstopp an gemeisterten Zwischenzielen wurde bereits am 7. November 2026 mit `dbef64ed0810be092669becdeab9e07ab35477e1` behoben. Der Commit ist Vorfahr der gelesenen Hauptlinie; der aktuelle Evaluator trägt offene Nachfrage über diese Zwischenziele weiter. Daraus folgen weder globale, revisionsgebundene Anerkennung ($\\Meff$) noch R2-/R5-Abnahme. Die opaken Cluster-Kompatibilitätspfade und der `isCoreForPrereqs`-Filter bestehen weiterhin; der strikte kanonische Seedpfad weist Cluster zusätzlich ausdrücklich zurück. Dies ist ein gezielter Codeabgleich, keine pauschale Produktionsabnahme.\n\n**Register und Nachweisgrenzen:** Die aktuelle F7-Norm zählt 145 Regelgruppen: 12 HART, 50 TEIL, 57 OFFEN und 26 OPT/DOK. Diese Einordnung bezeichnet den belegten Durchsetzungsumfang ganzer Regelgruppen, nicht den Anteil implementierter Software oder bestandener Tests. M7 umfasst maschinelle Qualitätsprüfungen und gebundene inhaltliche Reviewevidenz, aber keine nachgewiesene Unterrichtswirkung oder menschliche Erprobung. Die historischen Auditstände unten bleiben erhalten; ihre damaligen Befundzahlen sind keine neue Messung des laufenden Fachpakets. PR #141 ist inzwischen integriert; seine frühere Kennzeichnung als offener Kandidat wird nur noch als Geschichte geführt.",
+      "en": "**Target specification and current implementation make different claims.** The chapters describe the binding target state, including global recognition, declared units, and E1 to E4. Missing implementation does not weaken that specification. This appendix instead records dated implementation and acceptance findings.\n\n**Targeted reconciliation, 15 November 2026:** The inspected mainline is `64793bdc2270ce67feced439ae20ef03a59e2abe`; implementation continues in [draft PR #159](https://github.com/enpasos/skillpilot/pull/159), with published head `34ee40b4b3` at the time of inspection and further local work. #153, #156, and subject delivery #157 are integrated. The new draft run for #159 passes six jobs and skips eight; this is not complete PR or mainline acceptance. The [continuous management record](repo:docs/dev/stage-plan-management-summary.md) separates verified deliveries, actual map measurements, and open work. Zero real Land plans are activated; the executable v1.3 stage-plan foundation and its nested-unit extension are neither a published complete package nor the fully implemented target specification.\n\n**Local implementation follow-up, 16 November 2026:** The candidate in [PR #159](https://github.com/enpasos/skillpilot/pull/159) now jointly protects assessment and memory goals within the actually compiled automatic completion context: an open memory goal and its transitive preparation must not be waived as `no_remaining_demand` merely because no open assessment demands them. This also applies to necessary memory goals outside the target set; they prevent context completion until explicitly completed. Assessment counters remain separate. The fix writes no mastery and establishes neither own-unit coverage, R5, nor global revision-bound recognition ($\\Meff$). The historical review-bound evaluator remains unchanged. This is a local implementation state; a new complete PR CI run, integration, and fresh successful mainline CI remain outstanding.\n\n**Correction of a historical runtime finding:** The traversal stop at mastered intermediate goals described in the former table was already fixed on 7 November 2026 by `dbef64ed0810be092669becdeab9e07ab35477e1`. That commit is an ancestor of the inspected mainline; the current evaluator carries open demand through these intermediate goals. This establishes neither global revision-bound recognition ($\\Meff$) nor R2/R5 acceptance. Opaque cluster compatibility paths and the `isCoreForPrereqs` filter remain; the strict canonical-seed path additionally rejects clusters explicitly. This is a targeted code inspection, not blanket production acceptance.\n\n**Registry and evidence boundaries:** The current F7 target specification lists 145 rule groups: 12 HARD, 50 PARTIAL, 57 OPEN, and 26 OPT/DOC. These grades describe evidenced enforcement of whole rule groups, not the fraction of implemented software or passing tests. M7 comprises machine quality checks and bound content-review evidence, but does not establish classroom effectiveness or human trials. Historical audit states below remain preserved; their finding counts are not a new measurement of the ongoing subject delivery. PR #141 is now integrated; its former designation as an open candidate is retained only as history."
     }
   },
   "poDecisionsLead": {
@@ -55,6 +58,10 @@
     {
       "de": "**13. November 2026 (GVR-012 ab M7):** Die stärkere semantische Routenprüfung wird künftig für alle registrierten QA-Scopes der jeweils M7-verpflichteten Fächer verbindlich. Heute sind das sieben Scopes von fünf M7-Fächern; vier sind abgesichert. Die Aktivierung der vollständigen M7-Pflicht wartet auf den evidenzbasierten Abschluss der drei übrigen M7-Scopes. Das Gesamtinventar bleibt zwölf; die fünf M6-Scopes werden beim späteren M7-Aufstieg verpflichtend. Bestehende Pflichtscopes und Pins bleiben auch bei späteren Statusänderungen geschützt. Bis zur vollständigen technischen Durchsetzung bleibt GVR-012 TEIL; diese Zielentscheidung ist weder Aktivierung noch Passevidenz und senkt keinen Floor.",
       "en": "**13 November 2026 (GVR-012 from M7):** The stronger semantic route check shall become mandatory for every registered QA scope of each subject obligated to meet M7. Today this covers seven scopes of five M7 subjects; four are secured. Activation of the complete M7 obligation waits for evidence-backed closure of the other three M7 scopes. The full inventory remains twelve; the five M6 scopes become mandatory on later promotion to M7. Existing required scopes and pins remain protected even through later status changes. GVR-012 stays PARTIAL until complete technical enforcement; this target decision neither activates the obligation nor supplies pass evidence or lowers any floor."
+    },
+    {
+      "de": "**14./15. November 2026:** B1 bis B16 und die delegierten Stufenentscheidungen M1 bis M8 sind die verbindliche Zielnorm; sie lösen das offene Einheits-Zugangsprofil ab. after ordnet ohne Bedarf und ohne Mastery. Ein gemeinsamer Landes-/Dauermodellplan, zwei Wurzelstufen, abgeleitete Ausschnitte, erhaltene Quellenzuordnung und frühester Vorbereitungsbedarf sind verbindlich. Die künftige Einführung und Umstellung fachlicher Einheiten, ihre Cluster- und Prüfungsumzüge, Paketträger, produktiven Leser und neue Anerkennung folgen F8 bis F13 mit eigenen Nachweisen. Notwendige aktuelle Ziel-, Aufgaben-, Rubrik- und Deckungsreparaturen bleiben im delegierten K1–K13-Auftrag bereits jetzt zulässig; sie brauchen geeignete Aufgaben und aktuelle unabhängige Nachweise und dürfen falsche Voraussetzungen oder Abdeckung nicht bis F8 konservieren.",
+      "en": "**14/15 November 2026:** B1 to B16 and delegated stage decisions M1 to M8 form the binding target specification; they supersede the open whole-unit access profile. after orders without demand or mastery. A shared Land/duration plan, two root stages, derived excerpts, preserved source assignment, and earliest preparation demand are binding. Future introduction and migration of subject units, their cluster and assessment moves, package carriers, production readers, and new recognition follow F8 to F13 with their own evidence. Necessary current goal, task, rubric, and coverage repairs remain authorized now under delegated K1–K13; they require suitable tasks and current independent evidence and must not preserve false prerequisites or coverage until F8."
     }
   ],
   "auditedCommitsLead": {
@@ -62,8 +69,8 @@
     "en": "Audited repository states."
   },
   "auditedCommitsIntro": {
-    "de": "Die technischen Befunde dieses Anhangs und des Regelregisters sind an die nachstehend benannten Repository-Stände gebunden. Die CQR-/GVR-Auslieferung wurde gesondert bis zum Hauptlinienstand vom 13. November 2026 abgeglichen; die übrigen historischen Laufzeitbefunde wurden dabei nicht erneut geprüft. Kein früherer Lauf ersetzt einen frischen Gesamtabnahmelauf über einem späteren `HEAD`:",
-    "en": "The technical findings in this appendix and in the rule registry are anchored to the repository states listed below. CQR/GVR delivery was separately reconciled through the mainline state of 13 November 2026; the remaining historical runtime findings were not re-audited in that work. No earlier run substitutes for fresh full-system acceptance on a later `HEAD`:"
+    "de": "Die historischen technischen Befunde sind an die nachstehend benannten Repository-Stände gebunden. Der gezielte Abgleich vom 15. November korrigiert ausdrücklich die Traversierungsaussage und prüft die benannten Kompatibilitätspfade; er wiederholt nicht sämtliche Curriculum- und Laufzeitprüfungen. Frühere CI-Läufe ersetzen keine frische Gesamtabnahme eines späteren HEAD.",
+    "en": "Historical technical findings are bound to the repository states listed below. The targeted 15 November reconciliation explicitly corrects the traversal claim and inspects the named compatibility paths; it does not rerun every curriculum and runtime check. Earlier CI runs do not replace fresh complete acceptance of a later HEAD."
   },
   "auditedCommits": [
     {
@@ -99,8 +106,12 @@
       "en": "`7d13eb82a5` -- Mainline baseline for this targeted documentation reconciliation after #136; its PR head `67d36185` passed [Docs #790](https://github.com/enpasos/skillpilot/actions/runs/43423688281). The documentation check evidences delivery-record consistency, not additional curriculum or runtime acceptance."
     },
     {
-      "de": "`2ad03c810c` -- Aktualisierte Main-Basis des offenen [PR #141](https://github.com/enpasos/skillpilot/pull/141), kein Integrationsnachweis für dessen Folgearbeiten. Der Kandidat besitzt lokale Nachweise für direkte Gates und Negativfälle sowie konsistente Web-/PDF-Dokumentation. Die neuen GD-Einstufungen und `GVR-012` mit vier direkt verpflichtenden Scopes im Inventar von zwölf werden nicht der historischen Main-CI `2129b207f4` zugerechnet; abschließende Remote-CI und Main-Abnahme sind im [Liefernachweis](repo:docs/dev/cqr-gvr-hard-gate-plan-2026-11-12.md) getrennt zu führen.",
-      "en": "`2ad03c810c` -- Updated main baseline of open [PR #141](https://github.com/enpasos/skillpilot/pull/141), not evidence that its follow-up work has been integrated. The candidate has local evidence for direct gates and negative cases and consistent Web/PDF documentation. The new GD classifications and four directly required `GVR-012` scopes in an inventory of twelve are not attributed to historical main CI at `2129b207f4`; final remote CI and main acceptance must be tracked separately in the [delivery record](repo:docs/dev/cqr-gvr-hard-gate-plan-2026-11-12.md)."
+      "de": "`2ad03c810c` -- Damals aktualisierte Main-Basis des noch offenen [PR #141](https://github.com/enpasos/skillpilot/pull/141), kein Integrationsnachweis für dessen Folgearbeiten. Der Kandidat besitzt lokale Nachweise für direkte Gates und Negativfälle sowie konsistente Web-/PDF-Dokumentation. Die neuen GD-Einstufungen und `GVR-012` mit vier direkt verpflichtenden Scopes im Inventar von zwölf werden nicht der historischen Main-CI `2129b207f4` zugerechnet; abschließende Remote-CI und Main-Abnahme sind im [Liefernachweis](repo:docs/dev/cqr-gvr-hard-gate-plan-2026-11-12.md) getrennt zu führen.",
+      "en": "`2ad03c810c` -- Then-updated main baseline of the still-open [PR #141](https://github.com/enpasos/skillpilot/pull/141), not evidence that its follow-up work has been integrated. The candidate has local evidence for direct gates and negative cases and consistent Web/PDF documentation. The new GD classifications and four directly required `GVR-012` scopes in an inventory of twelve are not attributed to historical main CI at `2129b207f4`; final remote CI and main acceptance must be tracked separately in the [delivery record](repo:docs/dev/cqr-gvr-hard-gate-plan-2026-11-12.md)."
+    },
+    {
+      "de": "`64793bdc2270ce67feced439ae20ef03a59e2abe` — Hauptlinie beim gezielten Dokumentreview am 15. November 2026. `CompletionEvaluator`, Cluster-Kompatibilität und `isCoreForPrereqs` wurden neu gelesen; der Traversierungsfix `dbef64ed0810be092669becdeab9e07ab35477e1` ist enthalten. [Reviewbefund und Prüfgrenzen](repo:docs/dev/graph-definition-documentation-review-2026-11-15.md). Der aktive Draft #159 und lokale Nachfolger sind eigene Lieferstände.",
+      "en": "`64793bdc2270ce67feced439ae20ef03a59e2abe` — Mainline at the targeted documentation review on 15 November 2026. `CompletionEvaluator`, cluster compatibility, and `isCoreForPrereqs` were inspected anew; traversal fix `dbef64ed0810be092669becdeab9e07ab35477e1` is included. [Review findings and boundaries](repo:docs/dev/graph-definition-documentation-review-2026-11-15.md). Active draft #159 and local successors are separate delivery states."
     }
   ],
   "nov9Finding": {
@@ -115,40 +126,52 @@
   },
   "boundaryTable": [
     {
-      "area": { "de": "Abschlussrechnung (Transitivität)", "en": "Completion traversal (transitivity)" },
+      "area": {
+        "de": "Abschlussrechnung (Transitivität)",
+        "en": "Completion traversal (transitivity)"
+      },
       "spec": {
         "de": "Vollständige transitive offene Nachfrage $N_U=\\operatorname{Reach}_{\\Rat}^{*}(P_U\\setminus M)$ ohne Stopp an gemeisterten Zwischenzielen.",
         "en": "Full transitive open demand $N_U=\\operatorname{Reach}_{\\Rat}^{*}(P_U\\setminus M)$ without stopping at mastered intermediate goals."
       },
       "repoStatus": {
-        "de": "`CompletionEvaluator.evaluateAutomaticGraph` stoppt an gemeisterten Zwischenzielen: In $\\nd{Q}\\to\\nd{B}\\to\\nd{A}$ mit nur $\\nd{B}$ gemeistert wird $\\nd{A}$ dort entlassen, während die neue Formel $\\nd{A}$ für die offene Prüfung $\\nd{Q}$ benötigt hält. Der historische Profilpfad im selben Service ist ein anderer Algorithmus und setzt den neuen Vertrag ebenfalls nicht um.",
-        "en": "`CompletionEvaluator.evaluateAutomaticGraph` stops at mastered intermediate goals: in $\\nd{Q}\\to\\nd{B}\\to\\nd{A}$ with only $\\nd{B}$ mastered, $\\nd{A}$ is released there, whereas the new formula keeps $\\nd{A}$ needed for open assessment $\\nd{Q}$. The legacy profile path in the same service is a different algorithm and likewise does not implement the new contract."
+        "de": "**Historischer Befund korrigiert am 15. November 2026.** Seit `dbef64ed08` vom 7. November trägt `CompletionEvaluator.evaluateAutomaticGraph` offene Prüfungsnachfrage durch bereits gemeisterte Zwischenziele weiter. In $\\nd{Q}\\to\\nd{B}\\to\\nd{A}$ mit nur $\\nd{B}$ gemeistert bleibt $\\nd{A}$ benötigt. `AutomaticCompletionTest` und `AutomaticLearningPlanCompletionProjectionTest` enthalten diesen Gegenfall ausdrücklich. Der Profilpfad trägt transitive Verbraucher ebenfalls weiter. **Nachtrag vom 16. November 2026, lokaler Kandidat in PR #159:** Die offene Nachfrage beginnt jetzt bei unvollständigen Prüfungs- und Memorierzielen des tatsächlich kompilierten Kontexts; notwendige Memorierziele außerhalb der Zielmenge verhindern ebenfalls den Kontextabschluss. Gültige lokale Einheitenverträge und globale Anerkennung sind damit weiterhin nicht umgesetzt. Neue vollständige PR- und Main-CI stehen aus.",
+        "en": "**Historical finding corrected on 15 November 2026.** Since `dbef64ed08` of 7 November, `CompletionEvaluator.evaluateAutomaticGraph` carries open assessment demand through mastered intermediate goals. In $\\nd{Q}\\to\\nd{B}\\to\\nd{A}$ with only $\\nd{B}$ mastered, $\\nd{A}$ remains required. `AutomaticCompletionTest` and `AutomaticLearningPlanCompletionProjectionTest` explicitly contain this counterexample. The profile path also carries transitive consumers forward. **Follow-up of 16 November 2026, local candidate in PR #159:** Open demand now starts from incomplete assessment and memory goals in the actually compiled context; necessary memory goals outside the target set also prevent context completion. Valid local unit contracts and global recognition remain unimplemented. New complete PR and mainline CI runs remain outstanding."
       }
     },
     {
-      "area": { "de": "Geschützte Ziele und lokale Deckung", "en": "Protected goals and local coverage" },
+      "area": {
+        "de": "Geschützte Ziele und lokale Deckung",
+        "en": "Protected goals and local coverage"
+      },
       "spec": {
         "de": "Die Schutzmenge $P_U=Q_U\\cup A_{\\mathrm{mem},U}$ schützt alle eigenen Prüfungs- und Memorierziele; jedes eigene Inhaltsziel verlangt lokale Prüfungsdeckung in $\\Own(U)$, ohne reine Aggregate oder Elternsynthesen zu künstlichen Verträgen über alle Nachkommen zu machen.",
         "en": "The protected set $P_U=Q_U\\cup A_{\\mathrm{mem},U}$ protects all own assessment and memory goals; every own content goal requires local assessment coverage within $\\Own(U)$, without turning pure aggregates or parent syntheses into artificial contracts over descendants."
       },
       "repoStatus": {
-        "de": "Der bisherige automatische Pfad beginnt allein bei offenen Prüfungszielen; der gemeinsame Schutz ausgewählter Memorierziele und die lokale Vertragsdeckung sind in der Laufzeit noch nicht umgesetzt. Für die in den kanonischen Gymnasialfächern verfassten Lerneinheiten prüft `validate:learning-units` R1, R3 und den Eindeutigkeitsanteil von R4 fail-closed in der Pflicht-Curriculum-CI und kontrolliert beanspruchte R2-Nachweise (`coverageReviews` der Einheit); R2 als Meilensteingate und R5 bleiben offen.",
-        "en": "The existing automatic path starts solely from open assessment goals; joint protection of selected memory goals and own-unit assessment coverage are not yet implemented in runtime evaluation. For the learning units authored in the canonical Gymnasium landscapes, `validate:learning-units` checks R1, R3, and the uniqueness part of R4 fail-closed in required curriculum CI and verifies claimed R2 evidence (the unit's `coverageReviews`); R2 as a milestone gate and R5 remain open."
+        "de": "**16. November 2026, lokaler Kandidat in PR #159:** `CompiledAutomaticCompletion`, `CompletionProfileCompiler` und `CompletionEvaluator` schützen im tatsächlich kompilierten Kontext Prüfungs- und Memorierziele bis zu ihrem ausdrücklichen Abschluss; Orientierung und gewöhnliche Ziele erhalten dadurch keinen zusätzlichen Schutz. Offene Memorierziele behalten ihre transitive Vorbereitung und können auch außerhalb der Zielmenge den Kontextabschluss verhindern. Der Prüfungszähler zählt weiterhin nur Prüfungen; weder ein fehlender Verbraucher noch der Kontextwechsel schreibt Beherrschung. Dieser begrenzte Fix setzt die eigene lokale Vertragsdeckung einer Einheit nicht um. Die neue vollständige PR-CI, Integration und frische Main-CI stehen aus. Für die in den kanonischen Gymnasialfächern verfassten Lerneinheiten prüft `validate:learning-units` R1, R3 und den Eindeutigkeitsanteil von R4 fail-closed in der Pflicht-Curriculum-CI und kontrolliert beanspruchte R2-Nachweise (`coverageReviews` der Einheit); R2 als Meilensteingate und R5 bleiben offen.",
+        "en": "**16 November 2026, local candidate in PR #159:** `CompiledAutomaticCompletion`, `CompletionProfileCompiler`, and `CompletionEvaluator` protect assessment and memory goals within the actually compiled context until explicitly completed; orientation and ordinary goals receive no additional protection from this change. Open memory goals retain their transitive preparation and can prevent context completion even outside the target set. The assessment counter still counts assessments only; neither an absent consumer nor a context switch writes mastery. This bounded fix does not implement own-unit assessment coverage. A new complete PR CI run, integration, and fresh mainline CI remain outstanding. For the learning units authored in the canonical Gymnasium landscapes, `validate:learning-units` checks R1, R3, and the uniqueness part of R4 fail-closed in required curriculum CI and verifies claimed R2 evidence (the unit's `coverageReviews`); R2 as a milestone gate and R5 remain open."
       }
     },
     {
-      "area": { "de": "Globale Wirkung ($\\Meff$)", "en": "Global recognition ($\\Meff$)" },
+      "area": {
+        "de": "Globale Wirkung ($\\Meff$)",
+        "en": "Global recognition ($\\Meff$)"
+      },
       "spec": {
         "de": "Personen- und revisionsgebundene globale Vereinigung $\\Meff=M\\cup\\bigcup_{U\\in\\mathcal U_{\\mathrm{valid}}}I_U$ wirkt dauerhaft auf Folge-Frontier, Fokuswechsel und Gesamtfortschritt ohne synthetische `Mastery`-Datensätze.",
         "en": "Person- and revision-bound global union $\\Meff=M\\cup\\bigcup_{U\\in\\mathcal U_{\\mathrm{valid}}}I_U$ acts durably across downstream frontiers, focus switches, and cumulative progress without writing synthetic `Mastery` records."
       },
       "repoStatus": {
-        "de": "**Noch nicht implementiert.** Bisherige kontextbezogene Freistellung ist nicht die dauerhaft vertragsgebundene Menge $\\Meff$; Folge-Frontier, Gesamt-IST, Vertragsrevision und historische Bedeutung müssen gemeinsam umgesetzt und geprüft werden. Eine [Referenzrechnung](repo:app/scripts/lib/learningUnitRecognition.ts) der Mengengleichungen prüft sie an den gemeinsamen Konformitätsfällen samt Invarianten über alle Lernstände; das Backend verwendet sie nicht, und die Bindung an Vertragsstände (R5) fehlt ihr.",
-        "en": "**Not yet implemented.** Context-local legacy exemption is not the durable contract-bound set $\\Meff$; downstream frontier, cumulative progress, contract revision binding, and historical meaning must be implemented and verified together. A [reference evaluation](repo:app/scripts/lib/learningUnitRecognition.ts) of the set equations checks them against the shared conformance cases, including invariants over all learner states; the backend does not use it, and it has no binding to contract states (R5)."
+        "de": "**Noch nicht implementiert.** Bisherige kontextbezogene Freistellung ist nicht die dauerhaft vertragsgebundene Menge $\\Meff$; Folge-Frontier, Gesamt-IST, Vertragsrevision und historische Bedeutung müssen gemeinsam umgesetzt und geprüft werden. Eine [Referenzrechnung](repo:app/scripts/lib/learningUnitRecognition.ts) der Mengengleichungen prüft sie an den gemeinsamen Konformitätsfällen samt Invarianten über alle Lernstände; das Backend verwendet sie nicht, und die Bindung an Vertragsstände (R5) fehlt ihr. Ein veränderter abgeleiteter Freistellungsstatus ist nicht mit dem Verlust gespeicherter ausdrücklicher Lernergebnisse gleichzusetzen.",
+        "en": "**Not yet implemented.** Context-local legacy exemption is not the durable contract-bound set $\\Meff$; downstream frontier, cumulative progress, contract revision binding, and historical meaning must be implemented and verified together. A [reference evaluation](repo:app/scripts/lib/learningUnitRecognition.ts) of the set equations checks them against the shared conformance cases, including invariants over all learner states; the backend does not use it, and it has no binding to contract states (R5). A changed derived discharge status is not equivalent to losing stored explicit learner results."
       }
     },
     {
-      "area": { "de": "Atomare Normalform und Minimalität (G17)", "en": "Atomic normal form and minimality (G17)" },
+      "area": {
+        "de": "Atomare Normalform und Minimalität (G17)",
+        "en": "Atomic normal form and minimality (G17)"
+      },
       "spec": {
         "de": "Vollständige atomare Normalform $R\\subseteq A\\times A$ und transitive Minimalität als Pflichtbasis vor Reifegrad M1; vollständige deterministische Prüfung des aktuellen Fachbestands einschließlich notwendiger fachfremder Voraussetzungen und vererbender Vorfahren.",
         "en": "Complete atomic normal form $R\\subseteq A\\times A$ and transitive minimality as mandatory baseline before maturity level M1; complete deterministic validation of the current subject inventory including necessary cross-subject prerequisites and inheriting ancestors."
@@ -159,7 +182,10 @@
       }
     },
     {
-      "area": { "de": "Clustererfüllung ($\\Sat$)", "en": "Cluster satisfaction ($\\Sat$)" },
+      "area": {
+        "de": "Clustererfüllung ($\\Sat$)",
+        "en": "Cluster satisfaction ($\\Sat$)"
+      },
       "spec": {
         "de": "Der normative Kern verlangt alle atomaren Nachfahren $\\Atoms(g)\\subseteq\\Meff$.",
         "en": "The normative core requires all atomic descendants $\\Atoms(g)\\subseteq\\Meff$."
@@ -170,7 +196,10 @@
       }
     },
     {
-      "area": { "de": "Memorierung und Kartenfälligkeit", "en": "Memorization and card due state" },
+      "area": {
+        "de": "Memorierung und Kartenfälligkeit",
+        "en": "Memorization and card due state"
+      },
       "spec": {
         "de": "Der eigene erfolgreiche Abschlussabruf (`RecallPassed`) begründet den Zielabschluss; spätere SRS-Kartenfälligkeit ist kein Mastery-Entzug, und gewöhnliche Ziele erhalten keine Wiederholungsfälligkeit ([GD-D03](@rule{GD-D03})).",
         "en": "Verified completion recall (`RecallPassed`) establishes memory-goal completion; subsequent SRS card due dates never revoke completed mastery, and ordinary goals carry no review-due expiry ([GD-D03](@rule{GD-D03}))."
@@ -181,29 +210,38 @@
       }
     },
     {
-      "area": { "de": "Rekursive Lerneinheiten (`LearningUnit`)", "en": "Recursive learning units (`LearningUnit`)" },
+      "area": {
+        "de": "Rekursive Lerneinheiten (`LearningUnit`)",
+        "en": "Recursive learning units (`LearningUnit`)"
+      },
       "spec": {
-        "de": "Rekursive Ziel- und Kinderstruktur mit eindeutigem Ersterwerb $\\Own(U)$, abgeleitetem Abschluss $\\Complete(U)$ und getrenntem optionalem Zeit-/Budgetprofil; Einheitssperren und direkter Prüfungszugang darunter bleiben unentschieden.",
-        "en": "Recursive target and child hierarchy with unique direct ownership $\\Own(U)$, derived completion $\\Complete(U)$, and separate optional calendar/budget planning; technical unit locks and direct assessment entry under them remain undecided."
+        "de": "Erklärte Cluster mit eindeutigen eigenen Zielen und Untereinheiten (E1/R4), abgeleitetem Abschluss, after-Ordnung (E2 bis E4) und getrenntem optionalem Zeitbudget. B9 hebt das frühere Ganzheits-Zugangsprofil auf.",
+        "en": "Declared clusters with unique own goals and child units (E1/R4), derived completion, after ordering (E2 to E4), and a separate optional time budget. B9 retires the former whole-unit access profile."
       },
       "repoStatus": {
-        "de": "Verbindliches Strukturkonzept; **noch keine behauptete Laufzeitfunktion**. Lerneinheiten werden in der Platzierungsschicht ihrer Skill-Landschaft deklariert und vom [Curriculum-Paketvertrag 1.2](repo:contracts/curriculum-package/v1.2/README.md) getragen (Abschnitt~@ref{sec:unit-representation}). [validateLearningUnits.ts](repo:app/scripts/validateLearningUnits.ts) und der unabhängige Paketvalidator prüfen R1, R3 und den Eindeutigkeitsanteil von R4 fail-closed (Abschnitt~@ref{sec:why-graph-not-enough}). Die kanonische Mathematik enthält seit dem 13. November 2026 zwei Einheiten mit R2-Nachweis: einen Piloten zum Skalarprodukt mit einer für ihn geschriebenen Prüfung und die Einheit „Natürliche Zahlen verstehen und darstellen“ mit fünf Zielen und zwei Prüfungen. Die kanonische Physik enthält die Einheit „Gleichmäßig beschleunigte Bewegung modellieren“ mit zwei Zielen und einer Prüfung. Die Wiederverwendung der Reviews aus dem eingefrorenen Reduktionsnachweis entscheidet sich je Ziel und hängt nicht an der Einheitenschicht. Es fehlen die abgeleitete Anerkennung zur Laufzeit, die Weitergabe der neuen Felder über die Backend-API und eine Blockzyklusprüfung einer Einheitsfolge.",
-        "en": "Binding domain-structure specification; **not yet a claimed runtime feature**. Learning units are declared in the placement layer of their skill landscape and carried by [curriculum-package contract 1.2](repo:contracts/curriculum-package/v1.2/README.md) (Section~@ref{sec:unit-representation}). [validateLearningUnits.ts](repo:app/scripts/validateLearningUnits.ts) and the independent package validator check R1, R3, and the uniqueness part of R4 fail-closed (Section~@ref{sec:why-graph-not-enough}). Since 13 November 2026 canonical Mathematics contains two units with reviewed coverage (R2): a pilot on the dot product with one assessment written for it, and the unit \"Understanding and representing natural numbers\" with five goals and two assessments. Canonical Physics contains the unit \"Modelling motion with constant acceleration\" with two goals and one assessment. Review reuse from the frozen prerequisite-reduction proof is decided per goal and does not depend on the learning-unit layer. Still missing: derived recognition at runtime, pass-through of the new fields by the backend API, and a block-cycle check of a unit sequence."
+        "de": "Kompatibilitätsstand des 12.-November-Vertrags; das Zielmodell der erklärten Cluster ersetzt ihn erst mit F9/F10. Verbindliches Strukturkonzept; **noch keine behauptete Laufzeitfunktion**. Lerneinheiten werden in der Platzierungsschicht ihrer Skill-Landschaft deklariert und vom [Curriculum-Paketvertrag 1.2](repo:contracts/curriculum-package/v1.2/README.md) getragen (Abschnitt~@ref{sec:unit-representation}). [validateLearningUnits.ts](repo:app/scripts/validateLearningUnits.ts) und der unabhängige Paketvalidator prüfen R1, R3 und den Eindeutigkeitsanteil von R4 fail-closed (Abschnitt~@ref{sec:why-graph-not-enough}). Die kanonische Mathematik enthält seit dem 13. November 2026 zwei Einheiten mit R2-Nachweis: einen Piloten zum Skalarprodukt mit einer für ihn geschriebenen Prüfung und die Einheit „Natürliche Zahlen verstehen und darstellen“ mit fünf Zielen und zwei Prüfungen. Die kanonische Physik enthält die Einheit „Gleichmäßig beschleunigte Bewegung modellieren“ mit zwei Zielen und einer Prüfung. Die Wiederverwendung der Reviews aus dem eingefrorenen Reduktionsnachweis entscheidet sich je Ziel und hängt nicht an der Einheitenschicht. Es fehlen die abgeleitete Anerkennung zur Laufzeit, die Weitergabe der neuen Felder über die Backend-API und eine Blockzyklusprüfung einer Einheitsfolge.",
+        "en": "Compatibility footprint of the 12 November contract; the declared-cluster target model replaces it only with F9/F10. Binding domain-structure specification; **not yet a claimed runtime feature**. Learning units are declared in the placement layer of their skill landscape and carried by [curriculum-package contract 1.2](repo:contracts/curriculum-package/v1.2/README.md) (Section~@ref{sec:unit-representation}). [validateLearningUnits.ts](repo:app/scripts/validateLearningUnits.ts) and the independent package validator check R1, R3, and the uniqueness part of R4 fail-closed (Section~@ref{sec:why-graph-not-enough}). Since 13 November 2026 canonical Mathematics contains two units with reviewed coverage (R2): a pilot on the dot product with one assessment written for it, and the unit \"Understanding and representing natural numbers\" with five goals and two assessments. Canonical Physics contains the unit \"Modelling motion with constant acceleration\" with two goals and one assessment. Review reuse from the frozen prerequisite-reduction proof is decided per goal and does not depend on the learning-unit layer. Still missing: derived recognition at runtime, pass-through of the new fields by the backend API, and a block-cycle check of a unit sequence."
       }
     },
     {
-      "area": { "de": "Direkte Clusterreferenzen in Sichten", "en": "Direct cluster references in views" },
+      "area": {
+        "de": "Direkte Clusterreferenzen in Sichten",
+        "en": "Direct cluster references in views"
+      },
       "spec": {
         "de": "Eine Kompositionssicht macht einen kanonischen Cluster niemals zum Atom; $\\Atoms(g)$ bleibt erhalten ([GD-X09](@rule{GD-X09})).",
         "en": "A composition view never turns a canonical cluster into an atom; $\\Atoms(g)$ is preserved ([GD-X09](@rule{GD-X09}))."
       },
       "repoStatus": {
-        "de": "Am Stand `68db5bf499` behandeln `LearnerService` und `CompletionCanonicalGraphResolver` direkte `goalEntry`-Referenzen auf kanonische Cluster noch als kinderlose Laufzeitatome; Korrektur und nativer Nachweis stehen aus.",
-        "en": "At audited state `68db5bf499`, `LearnerService` and `CompletionCanonicalGraphResolver` still treat direct `goalEntry` references to canonical clusters as childless runtime atoms; fix and native verification remain open."
+        "de": "Am erneut gelesenen Hauptlinienstand `64793bdc2270` bestehen in `LearnerService` und `CompletionCanonicalGraphResolver` Kompatibilitätspfade, die einen direkten `goalEntry`-Cluster als kinderloses Laufzeitatom behandeln. Der strikte kanonische Seedpfad des Resolvers verwirft einen Cluster dagegen mit `TARGET_NOT_ATOMIC`. Die Kritik darf deshalb nicht alle Resolverpfade gleichsetzen; vollständige Erhaltung der atomaren Basis in jedem unterstützten Projektionspfad bleibt offen.",
+        "en": "At re-inspected mainline `64793bdc2270`, `LearnerService` and `CompletionCanonicalGraphResolver` retain compatibility paths that treat a direct `goalEntry` cluster as a childless runtime atom. The resolver strict canonical-seed path instead rejects a cluster with `TARGET_NOT_ATOMIC`. The critique must therefore distinguish resolver paths; preserving the atomic basis across every supported projection path remains open."
       }
     },
     {
-      "area": { "de": "Persönlicher Lernumfang ($L=\\Closure(S)$)", "en": "Personal Curriculum scope ($L=\\Closure(S)$)" },
+      "area": {
+        "de": "Persönlicher Lernumfang ($L=\\Closure(S)$)",
+        "en": "Personal Curriculum scope ($L=\\Closure(S)$)"
+      },
       "spec": {
         "de": "Gültige Ausgangsziele $S$ werden im unbeschnittenen kanonischen Graphen abgeschlossen ($L=\\Closure(S)$), unabhängig von Mastery fixiert und mit abgeleiteten Zielrollen für notwendige Atome versehen.",
         "en": "Valid seed targets $S$ are closed on the unpruned canonical graph ($L=\\Closure(S)$), fixed independently of mastery, and assigned derived target roles for necessary prerequisite atoms."
@@ -214,7 +252,10 @@
       }
     },
     {
-      "area": { "de": "Fokus und Filtermodi (Normal vs. Strikt)", "en": "Focus and filter modes (normal vs. strict)" },
+      "area": {
+        "de": "Fokus und Filtermodi (Normal vs. Strikt)",
+        "en": "Focus and filter modes (normal vs. strict)"
+      },
       "spec": {
         "de": "Level-3-Fokus begrenzt Kandidaten bei festem Level-2-Nenner $L$; Normalmodus prüft im Fokus, strikter Modus global; Fokusausweitung erfolgt erst nach tatsächlichem Fokusabschluss.",
         "en": "Level 3 focus narrows candidate goals while keeping Level 2 denominator $L$ fixed; normal mode checks prerequisites inside focus, strict mode checks globally; focus widening is offered only after actual focus completion."
@@ -225,18 +266,24 @@
       }
     },
     {
-      "area": { "de": "Didaktische Routen ($O_k\\to a\\to Z_k$)", "en": "Didactic routes ($O_k\\to a\\to Z_k$)" },
+      "area": {
+        "de": "Didaktische Routen ($O_k\\to a\\to Z_k$)",
+        "en": "Didactic routes ($O_k\\to a\\to Z_k$)"
+      },
       "spec": {
         "de": "Jedes nicht ausgenommene Atom liegt innerhalb seines Routenprofils auf einer direkten atomaren Kette von Orientierungsanker zu terminalem Autonomieziel.",
         "en": "Every non-exempt atomic goal lies on a direct atomic prerequisite path from an orientation anchor to a terminal autonomy goal within its route profile."
       },
       "repoStatus": {
-        "de": "`CQR-101/102/103` werden in allen zwölf konfigurierten QA-Profilen für zehn Gymnasialfächer direkt hart erzwungen; `CQR-102` prüft atomare Erreichbarkeit. `CQR-104` erzwingt Endpunktsichtbarkeit nur in acht dieser zwölf Scopes. Die stärkere semantische Routenprüfung `GVR-012` gilt im Folgearbeitsstand für vier Scopes: Mathematik Sek I/Sek II sowie Biologie und Physik Sek II. Zwei weitere Scopes haben Routenbefunde (Physik Sek I 5, Chemie 3); sechs Scopes haben kein vollständiges aktuelles Ledger. Curricula ohne Routenprofil bleiben höchstens M2. Der frühere Hauptlinienstand `2129b207f4` belegt die ausgelieferte Basis; er ist keine CI-Evidenz für spätere Änderungen. Die Ownerentscheidung vom 13. November 2026 verlangt künftig alle Scopes der jeweils M7-verpflichteten Fächer (heute sieben), mit Aktivierung erst nach evidenzbasiertem Lückenschluss. Der heutige Stand ist vier von sieben M7-Scopes bzw. vier von zwölf Inventarscopes; fünf M6-Scopes werden beim späteren M7-Aufstieg verpflichtend. Die zwölfteilige Diagnose bleibt von dieser künftigen Aufstiegsprüfung getrennt. Die Physik-Lane enthält nun auch die reviewten expliziten Stage-Targets. Weitere 43 nur über Unterbäume geerbte Sek-II-Targets bleiben separat als Abgleichslücke ausgewiesen, davon 42 ohne Terminalroute; das ist keine vollständige Stage-Target-Abdeckung.",
-        "en": "`CQR-101/102/103` are directly hard-enforced in all twelve configured QA profiles across ten Gymnasium subjects; `CQR-102` checks atomic reachability. `CQR-104` enforces endpoint visibility only in eight of those twelve scopes. In the follow-up working state, the stronger semantic route check `GVR-012` applies to four scopes: Mathematics lower/upper secondary, Biology and Physics upper secondary. Two other scopes have route findings (Physics lower secondary 5, Chemistry 3); six scopes lack complete current ledgers. Curricula without route profiles cap at M2. The earlier mainline state `2129b207f4` evidences the delivered baseline; it is not CI evidence for later changes. The Product Owner decision of 13 November 2026 requires every scope of subjects obligated to meet M7 in future (currently seven), with activation only after evidence-backed gap closure. Current coverage is four of seven M7 scopes, or four of twelve inventory scopes; five M6 scopes become mandatory on later promotion to M7. The twelve-scope diagnostic remains separate from this future promotion check. The Physics lane now also includes reviewed explicit stage targets. Another 43 upper-secondary targets inherited only through subtrees remain separate alignment debt, 42 without terminal routes; this is not complete stage-target coverage."
+        "de": "Historische Diagnosezahlen des Folgearbeitsstands vom 13. November; keine frische Messung der laufenden Curriculumsreparatur: `CQR-101/102/103` werden in allen zwölf konfigurierten QA-Profilen für zehn Gymnasialfächer direkt hart erzwungen; `CQR-102` prüft atomare Erreichbarkeit. `CQR-104` erzwingt Endpunktsichtbarkeit nur in acht dieser zwölf Scopes. Die stärkere semantische Routenprüfung `GVR-012` gilt im Folgearbeitsstand für vier Scopes: Mathematik Sek I/Sek II sowie Biologie und Physik Sek II. Zwei weitere Scopes haben Routenbefunde (Physik Sek I 5, Chemie 3); sechs Scopes haben kein vollständiges aktuelles Ledger. Curricula ohne Routenprofil bleiben höchstens M2. Der frühere Hauptlinienstand `2129b207f4` belegt die ausgelieferte Basis; er ist keine CI-Evidenz für spätere Änderungen. Die Ownerentscheidung vom 13. November 2026 verlangt künftig alle Scopes der jeweils M7-verpflichteten Fächer (heute sieben), mit Aktivierung erst nach evidenzbasiertem Lückenschluss. Der heutige Stand ist vier von sieben M7-Scopes bzw. vier von zwölf Inventarscopes; fünf M6-Scopes werden beim späteren M7-Aufstieg verpflichtend. Die zwölfteilige Diagnose bleibt von dieser künftigen Aufstiegsprüfung getrennt. Die Physik-Lane enthält nun auch die reviewten expliziten Stage-Targets. Weitere 43 nur über Unterbäume geerbte Sek-II-Targets bleiben separat als Abgleichslücke ausgewiesen, davon 42 ohne Terminalroute; das ist keine vollständige Stage-Target-Abdeckung.",
+        "en": "Historical diagnostic counts from the 13 November follow-up state; not a fresh measurement of the ongoing curriculum repair: `CQR-101/102/103` are directly hard-enforced in all twelve configured QA profiles across ten Gymnasium subjects; `CQR-102` checks atomic reachability. `CQR-104` enforces endpoint visibility only in eight of those twelve scopes. In the follow-up working state, the stronger semantic route check `GVR-012` applies to four scopes: Mathematics lower/upper secondary, Biology and Physics upper secondary. Two other scopes have route findings (Physics lower secondary 5, Chemistry 3); six scopes lack complete current ledgers. Curricula without route profiles cap at M2. The earlier mainline state `2129b207f4` evidences the delivered baseline; it is not CI evidence for later changes. The Product Owner decision of 13 November 2026 requires every scope of subjects obligated to meet M7 in future (currently seven), with activation only after evidence-backed gap closure. Current coverage is four of seven M7 scopes, or four of twelve inventory scopes; five M6 scopes become mandatory on later promotion to M7. The twelve-scope diagnostic remains separate from this future promotion check. The Physics lane now also includes reviewed explicit stage targets. Another 43 upper-secondary targets inherited only through subtrees remain separate alignment debt, 42 without terminal routes; this is not complete stage-target coverage."
       }
     },
     {
-      "area": { "de": "Prüfungsaufgaben und Anwendungsdeckung", "en": "Assessment tasks and application coverage" },
+      "area": {
+        "de": "Prüfungsaufgaben und Anwendungsdeckung",
+        "en": "Assessment tasks and application coverage"
+      },
       "spec": {
         "de": "Freigebende Prüfungen müssen jede anerkannte wesentliche Kompetenz unter jeder Bestehenskombination unabhängig abverlangen ([GD-A08](@rule{GD-A08})).",
         "en": "Releasing assessments must require independent application of every recognized essential competence under every passing score combination ([GD-A08](@rule{GD-A08}))."
@@ -247,18 +294,24 @@
       }
     },
     {
-      "area": { "de": "Optionale Erwerbs- und Zeitplanung", "en": "Optional acquisition and time planning" },
+      "area": {
+        "de": "Optionale Erwerbs- und Zeitplanung",
+        "en": "Optional acquisition and time planning"
+      },
       "spec": {
         "de": "Optionale Kalenderstufen prüfen strukturelle Abschlusszeugen über $B_\\pi$ und $\\Work+\\Reserve\\le\\Budget$ nur unter ausdrücklich deklarierten Schätzannahmen $\\Theta_\\pi$.",
         "en": "Optional calendar periods verify structural completion witnesses over $B_\\pi$ and $\\Work+\\Reserve\\le\\Budget$ only under explicitly declared estimation assumptions $\\Theta_\\pi$."
       },
       "repoStatus": {
-        "de": "Optionales Planungsprofil (`GD-P01`--`GD-P11`); kein produktives Curriculum- oder Laufzeit-Budgetgate behauptet, und `weight` bedeutet niemals Minuten.",
-        "en": "Optional planning profile (`GD-P01`--`GD-P11`); no productive curriculum or runtime budget gate is claimed, and `weight` never denotes minutes."
+        "de": "Das Zeit-/Budgetprofil bleibt optional (GD-P01–P04 und GD-P06–P11). GD-P05 enthält daneben die verbindliche E2-Pflicht erklärter Planeinheiten, noch ohne produktives hartes Gate. Kein produktives Curriculum- oder Laufzeit-Budgetgate wird behauptet; weight bedeutet niemals Minuten.",
+        "en": "The time/budget profile remains optional (GD-P01–P04 and GD-P06–P11). GD-P05 additionally contains binding E2 for declared plan units, without a production hard gate yet. No production curriculum or runtime budget gate is claimed; weight never denotes minutes."
       }
     },
     {
-      "area": { "de": "Gesamt-IST vs. Periodenleistung", "en": "Cumulative progress vs. period completions" },
+      "area": {
+        "de": "Gesamt-IST vs. Periodenleistung",
+        "en": "Cumulative progress vs. period completions"
+      },
       "spec": {
         "de": "Der Gesamt-IST zählt $\\lvert T_{\\mathrm{Plan}}\\cap\\Meff\\rvert$ (mit optionalem nur-ausdrücklichem Planzähler $\\lvert T_{\\mathrm{Plan}}\\cap M\\rvert$ samt Kennzeichnung), laufende Perioden zählen allein datierte ausdrückliche Abschlüsse.",
         "en": "Cumulative plan progress counts $\\lvert T_{\\mathrm{Plan}}\\cap\\Meff\\rvert$ (with an optional clearly labelled explicit-only plan counter $\\lvert T_{\\mathrm{Plan}}\\cap M\\rvert$), while active periods count only reliably dated explicit completions."
@@ -269,7 +322,10 @@
       }
     },
     {
-      "area": { "de": "Reifegrade M0--M7 und Qualitäts-Floors", "en": "Maturity levels M0--M7 and quality floors" },
+      "area": {
+        "de": "Reifegrade M0--M7 und Qualitäts-Floors",
+        "en": "Maturity levels M0--M7 and quality floors"
+      },
       "spec": {
         "de": "Maschinelle Curriculum-QA M0--M7 bleibt strikt getrennt von menschlicher Freigabe, Erprobung und Laufzeitkonformität.",
         "en": "Automated phase-1 curriculum QA M0--M7 remains strictly separated from human sign-off, learner trials, and runtime conformance."
@@ -278,13 +334,30 @@
         "de": "CI schützt zehn Gymnasialfächer über [checkCurriculumMaturityFloors.ts](repo:app/scripts/checkCurriculumMaturityFloors.ts) (5 auf M7, 5 auf M6) samt Status-Diff; ungeschützte Experimentalstände bleiben auf M0 berichtbar, reine `docs/**`-Änderungen sind in `ci.yml` ausgenommen.",
         "en": "CI protects ten Gymnasium subjects via [checkCurriculumMaturityFloors.ts](repo:app/scripts/checkCurriculumMaturityFloors.ts) (5 at M7, 5 at M6) plus status-file diffing; unfloored experimental landscapes remain reportable at M0, and `docs/**`-only changes are exempted in `ci.yml`."
       }
+    },
+    {
+      "area": {
+        "de": "Erklärte Planeinheiten und after (Zielnorm vom 15. November)",
+        "en": "Declared plan units and after (15 November target specification)"
+      },
+      "spec": {
+        "de": "Gemeinsame Land-/Dauermodellautorität, Z3, E1 bis E4 und frühester tatsächlicher Vorbereitungsbedarf; keine Sperre und keine Mastery aus Ordnung.",
+        "en": "Shared Land/duration authority, Z3, E1 to E4, and earliest actual preparation demand; no locks or mastery from order."
+      },
+      "repoStatus": {
+        "de": "Stufenplan-Grundlage und automatisierte Testfälle vorhanden; null echte Landespläne aktiviert. Der alte 1.2-Validator prüft die drei bisherigen fachlichen Einheiten, nicht die vollständige Zielnorm. Gemeinsame produktive Leser, Paketexport und Lernfluss F13 stehen aus.",
+        "en": "Stage-plan foundation and automated cases exist; zero real Land plans activated. The old 1.2 validator checks the three existing subject units, not the full target specification. Shared production readers, package export, and F13 learning flow remain pending."
+      }
     }
   ],
   "codeAnchors": {
-    "lead": { "de": "Prüfbare Codeanker.", "en": "Inspectable code anchors." },
+    "lead": {
+      "de": "Prüfbare Codeanker.",
+      "en": "Inspectable code anchors."
+    },
     "body": {
-      "de": "[PersonalCurriculumLearningScope.java](repo:backend/src/main/java/com/skillpilot/backend/completion/PersonalCurriculumLearningScope.java); [CompletionEvaluator.java](repo:backend/src/main/java/com/skillpilot/backend/completion/CompletionEvaluator.java); [LearnerService.java](repo:backend/src/main/java/com/skillpilot/backend/service/LearnerService.java); [useSrsMastery.ts](repo:app/src/hooks/useSrsMastery.ts); [validateGraph.ts](repo:app/scripts/validateGraph.ts); [validateLearningUnits.ts](repo:app/scripts/validateLearningUnits.ts); [learningUnitContracts.ts](repo:app/scripts/lib/learningUnitContracts.ts); [learningUnitRecognition.ts](repo:app/scripts/lib/learningUnitRecognition.ts); [Mastery.java](repo:backend/src/main/java/com/skillpilot/backend/domain/Mastery.java). Die verlinkte Hauptlinie entwickelt sich weiter. Das erzeugte Build-Manifest bindet die bei der jeweiligen Dokumentkompilierung tatsächlich gelesenen Eingabedateien per SHA-256.",
-      "en": "[PersonalCurriculumLearningScope.java](repo:backend/src/main/java/com/skillpilot/backend/completion/PersonalCurriculumLearningScope.java); [CompletionEvaluator.java](repo:backend/src/main/java/com/skillpilot/backend/completion/CompletionEvaluator.java); [LearnerService.java](repo:backend/src/main/java/com/skillpilot/backend/service/LearnerService.java); [useSrsMastery.ts](repo:app/src/hooks/useSrsMastery.ts); [validateGraph.ts](repo:app/scripts/validateGraph.ts); [validateLearningUnits.ts](repo:app/scripts/validateLearningUnits.ts); [learningUnitContracts.ts](repo:app/scripts/lib/learningUnitContracts.ts); [learningUnitRecognition.ts](repo:app/scripts/lib/learningUnitRecognition.ts); [Mastery.java](repo:backend/src/main/java/com/skillpilot/backend/domain/Mastery.java). The linked `main` branch continues to evolve. The generated build manifest binds the exact input files read during each document build via SHA-256."
+      "de": "[PersonalCurriculumLearningScope.java](repo:backend/src/main/java/com/skillpilot/backend/completion/PersonalCurriculumLearningScope.java); [CompletionEvaluator.java](repo:backend/src/main/java/com/skillpilot/backend/completion/CompletionEvaluator.java); [LearnerService.java](repo:backend/src/main/java/com/skillpilot/backend/service/LearnerService.java); [useSrsMastery.ts](repo:app/src/hooks/useSrsMastery.ts); [validateGraph.ts](repo:app/scripts/validateGraph.ts); [validateLearningUnits.ts](repo:app/scripts/validateLearningUnits.ts); [learningUnitContracts.ts](repo:app/scripts/lib/learningUnitContracts.ts); [learningUnitRecognition.ts](repo:app/scripts/lib/learningUnitRecognition.ts); [Mastery.java](repo:backend/src/main/java/com/skillpilot/backend/domain/Mastery.java). Die verlinkte Hauptlinie entwickelt sich weiter. Das erzeugte Build-Manifest bindet die bei der jeweiligen Dokumentkompilierung tatsächlich gelesenen Eingabedateien per SHA-256. Das Build-Manifest bindet gelesene Dokumentquellen; bloße Links zu Code sind kein neuer Codeaudit.",
+      "en": "[PersonalCurriculumLearningScope.java](repo:backend/src/main/java/com/skillpilot/backend/completion/PersonalCurriculumLearningScope.java); [CompletionEvaluator.java](repo:backend/src/main/java/com/skillpilot/backend/completion/CompletionEvaluator.java); [LearnerService.java](repo:backend/src/main/java/com/skillpilot/backend/service/LearnerService.java); [useSrsMastery.ts](repo:app/src/hooks/useSrsMastery.ts); [validateGraph.ts](repo:app/scripts/validateGraph.ts); [validateLearningUnits.ts](repo:app/scripts/validateLearningUnits.ts); [learningUnitContracts.ts](repo:app/scripts/lib/learningUnitContracts.ts); [learningUnitRecognition.ts](repo:app/scripts/lib/learningUnitRecognition.ts); [Mastery.java](repo:backend/src/main/java/com/skillpilot/backend/domain/Mastery.java). The linked `main` branch continues to evolve. The generated build manifest binds the exact input files read during each document build via SHA-256. The build manifest binds document inputs actually read; links to code alone are not a fresh code audit."
     }
   },
   "sources": {
@@ -297,7 +370,10 @@
   },
   "sourceMappingTable": [
     {
-      "part": { "de": "Formaler Kern und Filter (§§1--5)", "en": "Formal core and filters (§§1--5)" },
+      "part": {
+        "de": "Formaler Kern und Filter (§§1--5)",
+        "en": "Formal core and filters (§§1--5)"
+      },
       "sources": {
         "de": "`source/chapters/00-frontmatter.{de,en}.md`, `source/chapters/01-core.{de,en}.md` ([spec-manifest.json](repo:docs/concept/skill-graph/source/spec-manifest.json)).",
         "en": "`source/chapters/00-frontmatter.{de,en}.md`, `source/chapters/01-core.{de,en}.md` ([spec-manifest.json](repo:docs/concept/skill-graph/source/spec-manifest.json))."
@@ -308,7 +384,10 @@
       }
     },
     {
-      "part": { "de": "Schichten und Migration (§6)", "en": "Layers and migration (§6)" },
+      "part": {
+        "de": "Schichten und Migration (§6)",
+        "en": "Layers and migration (§6)"
+      },
       "sources": {
         "de": "`source/chapters/02-context.{de,en}.md`; [General Goal System and Migration](repo:docs/concept/skill-graph/general-goal-system-and-migration.md); [Canonical Gymnasium Rollout](repo:docs/concept/skill-graph/canonical-gymnasium-rollout.md).",
         "en": "`source/chapters/02-context.{de,en}.md`; [General Goal System and Migration](repo:docs/concept/skill-graph/general-goal-system-and-migration.md); [Canonical Gymnasium Rollout](repo:docs/concept/skill-graph/canonical-gymnasium-rollout.md)."
@@ -319,7 +398,10 @@
       }
     },
     {
-      "part": { "de": "Sichten und persönliche Auswahl (§7)", "en": "Views and personal selection (§7)" },
+      "part": {
+        "de": "Sichten und persönliche Auswahl (§7)",
+        "en": "Views and personal selection (§7)"
+      },
       "sources": {
         "de": "`source/chapters/02-context.{de,en}.md`; [View Projection and Goal Placement](repo:docs/concept/skill-graph/view-projection-and-goal-placement.md); [Levels of Personalization](repo:docs/concept/levels-of-personalization.md).",
         "en": "`source/chapters/02-context.{de,en}.md`; [View Projection and Goal Placement](repo:docs/concept/skill-graph/view-projection-and-goal-placement.md); [Levels of Personalization](repo:docs/concept/levels-of-personalization.md)."
@@ -330,7 +412,10 @@
       }
     },
     {
-      "part": { "de": "Zieltypen und Evidenz (§8)", "en": "Goal types and mastery evidence (§8)" },
+      "part": {
+        "de": "Zieltypen und Evidenz (§8)",
+        "en": "Goal types and mastery evidence (§8)"
+      },
       "sources": {
         "de": "`source/chapters/02-context.{de,en}.md`; [Node Types](repo:docs/concept/skill-graph/node-types.md); [AGENTS.md](repo:AGENTS.md).",
         "en": "`source/chapters/02-context.{de,en}.md`; [Node Types](repo:docs/concept/skill-graph/node-types.md); [AGENTS.md](repo:AGENTS.md)."
@@ -341,18 +426,24 @@
       }
     },
     {
-      "part": { "de": "Rekursive Lerneinheiten (§11)", "en": "Recursive learning units (§11)" },
+      "part": {
+        "de": "Rekursive Lerneinheiten (§11)",
+        "en": "Recursive learning units (§11)"
+      },
       "sources": {
-        "de": "`source/chapters/03-learning-units.{de,en}.md` ([source/README.md](repo:docs/concept/skill-graph/source/README.md)); [Gestaltungskriterien und Beispiele](repo:docs/concept/skill-graph/learning-unit-design-and-examples.md); [Laufzeitschema](repo:docs/landscape-runtime.schema.json); [Curriculum-Paketvertrag 1.2](repo:contracts/curriculum-package/v1.2/README.md).",
-        "en": "`source/chapters/03-learning-units.{de,en}.md` ([source/README.md](repo:docs/concept/skill-graph/source/README.md)); [Learning-Unit Design Criteria and Examples](repo:docs/concept/skill-graph/learning-unit-design-and-examples.md); [runtime schema](repo:docs/landscape-runtime.schema.json); [curriculum-package contract 1.2](repo:contracts/curriculum-package/v1.2/README.md)."
+        "de": "`source/chapters/03-learning-units.{de,en}.md` ([source/README.md](repo:docs/concept/skill-graph/source/README.md)); [Gestaltungskriterien und Beispiele](repo:docs/concept/skill-graph/learning-unit-design-and-examples.md); [Laufzeitschema](repo:docs/landscape-runtime.schema.json); [Curriculum-Paketvertrag 1.2](repo:contracts/curriculum-package/v1.2/README.md). [Einheitenkonzept](repo:docs/concept/skill-graph/learning-unit-wiring-concept-2026-11-14.md); [Stufenplan-Grundlage](repo:contracts/curriculum-package/v1.3/README.md).",
+        "en": "`source/chapters/03-learning-units.{de,en}.md` ([source/README.md](repo:docs/concept/skill-graph/source/README.md)); [Learning-Unit Design Criteria and Examples](repo:docs/concept/skill-graph/learning-unit-design-and-examples.md); [runtime schema](repo:docs/landscape-runtime.schema.json); [curriculum-package contract 1.2](repo:contracts/curriculum-package/v1.2/README.md). [Einheitenkonzept](repo:docs/concept/skill-graph/learning-unit-wiring-concept-2026-11-14.md); [Stufenplan-Grundlage](repo:contracts/curriculum-package/v1.3/README.md)."
       },
       "role": {
-        "de": "Kanonische Single-Source-Definition rekursiver `LearningUnit`-Einheiten, eindeutiger Ersterwerbszuordnung $\\Own(U)$, abgeleiteten Abschlusses $\\Complete(U)$ und offener Einheitszugangspolitik; Gestaltungskriterien und durchgearbeitete Kandidaten.",
-        "en": "Canonical single-source definition of recursive `LearningUnit`s, unique direct ownership $\\Own(U)$, derived completion $\\Complete(U)$, and undecided unit-entry policy; design criteria and worked candidates."
+        "de": "Zielnorm erklärter fachlicher Einheiten und Planeinheiten, E1 bis E4, abgeleiteter Abschluss und erhaltene lokale Anerkennungsrechnung; bestehende 1.2-Darstellung ausdrücklich als Kompatibilität, Zugangsprofil aufgehoben.",
+        "en": "Target specification of declared subject and plan units, E1 to E4, derived completion and preserved local recognition computation; existing 1.2 representation explicitly labeled compatibility, access profile retired."
       }
     },
     {
-      "part": { "de": "Optionale Zeitplanung (§§9, 12)", "en": "Optional time and budget planning (§§9, 12)" },
+      "part": {
+        "de": "Optionale Zeitplanung (§§9, 12)",
+        "en": "Optional time and budget planning (§§9, 12)"
+      },
       "sources": {
         "de": "`source/chapters/04-planning.{de,en}.md`; [Curriculum Time Axis and Pacing](repo:docs/concept/didactic/curriculum-time-axis-and-pacing.md); [Unified Learning Plan Status](repo:docs/concept/didactic/unified-learning-plan-status.md).",
         "en": "`source/chapters/04-planning.{de,en}.md`; [Curriculum Time Axis and Pacing](repo:docs/concept/didactic/curriculum-time-axis-and-pacing.md); [Unified Learning Plan Status](repo:docs/concept/didactic/unified-learning-plan-status.md)."
@@ -363,7 +454,10 @@
       }
     },
     {
-      "part": { "de": "Implizite Beherrschung (§13)", "en": "Implicit mastery and local contracts (§13)" },
+      "part": {
+        "de": "Implizite Beherrschung (§13)",
+        "en": "Implicit mastery and local contracts (§13)"
+      },
       "sources": {
         "de": "`source/chapters/05-assessment.{de,en}.md`; [Completion Semantics Clarification (2026-11-04)](repo:docs/concept/skill-graph/completion-semantics-clarification-2026-11-04.md); [Exam Preparation Planning](repo:docs/concept/runtime-workflows/exam-preparation-planning.md).",
         "en": "`source/chapters/05-assessment.{de,en}.md`; [Completion Semantics Clarification (2026-11-04)](repo:docs/concept/skill-graph/completion-semantics-clarification-2026-11-04.md); [Exam Preparation Planning](repo:docs/concept/runtime-workflows/exam-preparation-planning.md)."
@@ -374,7 +468,10 @@
       }
     },
     {
-      "part": { "de": "Herkunft und Materialien (§10)", "en": "Provenance and learning materials (§10)" },
+      "part": {
+        "de": "Herkunft und Materialien (§10)",
+        "en": "Provenance and learning materials (§10)"
+      },
       "sources": {
         "de": "[Source and Resource Links](repo:docs/concept/skill-graph/source-and-resource-links.md); [Content Integration](repo:docs/concept/skill-graph/content-integration.md); [Human-Readable Source Rationales](repo:docs/concept/skill-graph/human-readable-source-rationales.md).",
         "en": "[Source and Resource Links](repo:docs/concept/skill-graph/source-and-resource-links.md); [Content Integration](repo:docs/concept/skill-graph/content-integration.md); [Human-Readable Source Rationales](repo:docs/concept/skill-graph/human-readable-source-rationales.md)."
@@ -385,7 +482,10 @@
       }
     },
     {
-      "part": { "de": "Bilder und Zielbücher (§10)", "en": "Visualizations and goal books (§10)" },
+      "part": {
+        "de": "Bilder und Zielbücher (§10)",
+        "en": "Visualizations and goal books (§10)"
+      },
       "sources": {
         "de": "[Atomic Goal Visualizations](repo:docs/concept/skill-graph/atomic-goal-visualizations.md); [Learning-Goal Book and Evidence-Review Pipeline](repo:docs/concept/skill-graph/learning-goal-book-and-evidence-review-pipeline.md).",
         "en": "[Atomic Goal Visualizations](repo:docs/concept/skill-graph/atomic-goal-visualizations.md); [Learning-Goal Book and Evidence-Review Pipeline](repo:docs/concept/skill-graph/learning-goal-book-and-evidence-review-pipeline.md)."
@@ -396,7 +496,10 @@
       }
     },
     {
-      "part": { "de": "Validierung und QA (§§3, 10, Anhang A)", "en": "Validation and curriculum QA (§§3, 10, Appendix A)" },
+      "part": {
+        "de": "Validierung und QA (§§3, 10, Anhang A)",
+        "en": "Validation and curriculum QA (§§3, 10, Appendix A)"
+      },
       "sources": {
         "de": "[Graph Validation Rules](repo:docs/qa-ci/graph-validation-rules.md); [Curriculum Quality Maturity and Routes](repo:docs/qa-ci/curriculum-quality-maturity-and-routes.md); [Semantic Atomicity Review](repo:docs/qa-ci/semantic-atomicity-review.md).",
         "en": "[Graph Validation Rules](repo:docs/qa-ci/graph-validation-rules.md); [Curriculum Quality Maturity and Routes](repo:docs/qa-ci/curriculum-quality-maturity-and-routes.md); [Semantic Atomicity Review](repo:docs/qa-ci/semantic-atomicity-review.md)."
@@ -407,7 +510,10 @@
       }
     },
     {
-      "part": { "de": "Austausch und Rechte (§10)", "en": "Package interchange and licensing (§10)" },
+      "part": {
+        "de": "Austausch und Rechte (§10)",
+        "en": "Package interchange and licensing (§10)"
+      },
       "sources": {
         "de": "[Dual Curriculum Package Releases](repo:docs/concept/skill-graph/dual-curriculum-package-releases.md); [MEM/FWU Roundtrip Plan](repo:docs/concept/skill-graph/mem-fwu-roundtrip-plan.md); [LICENSING.md](repo:LICENSING.md).",
         "en": "[Dual Curriculum Package Releases](repo:docs/concept/skill-graph/dual-curriculum-package-releases.md); [MEM/FWU Roundtrip Plan](repo:docs/concept/skill-graph/mem-fwu-roundtrip-plan.md); [LICENSING.md](repo:LICENSING.md)."
@@ -418,7 +524,10 @@
       }
     },
     {
-      "part": { "de": "Regelregister, Glossar und Build (Anhänge A--F)", "en": "Rule registry, glossary, and build (Appendices A--F)" },
+      "part": {
+        "de": "Regelregister, Glossar und Build (Anhänge A--F)",
+        "en": "Rule registry, glossary, and build (Appendices A--F)"
+      },
       "sources": {
         "de": "`source/rules-and-gates.json`, [glossary-and-symbols.json](repo:docs/concept/skill-graph/source/glossary-and-symbols.json), [implementation-status.json](repo:docs/concept/skill-graph/source/implementation-status.json), [figures.json](repo:docs/concept/skill-graph/source/figures.json), [Glossary](repo:docs/concept/glossary.md).",
         "en": "`source/rules-and-gates.json`, [glossary-and-symbols.json](repo:docs/concept/skill-graph/source/glossary-and-symbols.json), [implementation-status.json](repo:docs/concept/skill-graph/source/implementation-status.json), [figures.json](repo:docs/concept/skill-graph/source/figures.json), [Glossary](repo:docs/concept/glossary.md)."

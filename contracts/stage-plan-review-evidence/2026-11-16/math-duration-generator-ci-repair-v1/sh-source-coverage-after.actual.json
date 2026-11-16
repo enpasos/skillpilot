@@ -1,0 +1,632 @@
+{
+  "status": "PASS_CURRENT_NATIVE_SOURCE_COVERAGE",
+  "goal": {
+    "goalId": "f17935b0-189f-5e0c-988d-ce508b710097",
+    "title": "Lineare Ungleichungen lösen und Lösungsmengen darstellen",
+    "goalType": "atomic",
+    "compiledApplicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "evidence": [
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-BB",
+        "kind": "mapping",
+        "source": "curricula/DE/Gymnasium/mapping/DE-BB/lower-secondary/bb_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+        "mappingStrength": "exact"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-BB",
+        "kind": "mapping",
+        "source": "curricula/DE/Gymnasium/mapping/DE-BB/lower-secondary/bb_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+        "mappingStrength": "partial"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-BB",
+        "kind": "mapping",
+        "source": "curricula/DE/Gymnasium/mapping/DE-BB/lower-secondary/bb_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+        "mappingStrength": "exact"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-BB",
+        "kind": "mapping",
+        "source": "curricula/DE/Gymnasium/mapping/DE-BB/lower-secondary/bb_math_lower_secondary_to_canonical_math.json",
+        "mappingStrength": "partial"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-BB",
+        "kind": "mapping",
+        "source": "curricula/DE/Gymnasium/mapping/DE-BB/lower-secondary/bb_math_lower_secondary_to_canonical_math.json",
+        "mappingStrength": "partial"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-BB",
+        "kind": "mapping",
+        "source": "curricula/DE/Gymnasium/mapping/DE-BB/upper-secondary/bb_math_upper_secondary_to_canonical_math.json",
+        "mappingStrength": "partial"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-BB",
+        "kind": "requires-closure",
+        "source": "required by 17c9e061-fe52-5553-be81-fec7a525fcbd"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-BB",
+        "kind": "requires-closure",
+        "source": "required by df9ecf0f-f4c9-5859-b99e-11cb62f6bb35"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-BE",
+        "kind": "mapping",
+        "source": "curricula/DE/Gymnasium/mapping/DE-BE/lower-secondary/be_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+        "mappingStrength": "exact"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-BE",
+        "kind": "mapping",
+        "source": "curricula/DE/Gymnasium/mapping/DE-BE/lower-secondary/be_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+        "mappingStrength": "partial"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-BE",
+        "kind": "mapping",
+        "source": "curricula/DE/Gymnasium/mapping/DE-BE/lower-secondary/be_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+        "mappingStrength": "exact"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-BE",
+        "kind": "mapping",
+        "source": "curricula/DE/Gymnasium/mapping/DE-BE/lower-secondary/be_math_lower_secondary_to_canonical_math.json",
+        "mappingStrength": "partial"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-BE",
+        "kind": "mapping",
+        "source": "curricula/DE/Gymnasium/mapping/DE-BE/lower-secondary/be_math_lower_secondary_to_canonical_math.json",
+        "mappingStrength": "partial"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-BE",
+        "kind": "mapping",
+        "source": "curricula/DE/Gymnasium/mapping/DE-BE/upper-secondary/be_math_upper_secondary_to_canonical_math.json",
+        "mappingStrength": "partial"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-BE",
+        "kind": "requires-closure",
+        "source": "required by 17c9e061-fe52-5553-be81-fec7a525fcbd"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-BE",
+        "kind": "requires-closure",
+        "source": "required by df9ecf0f-f4c9-5859-b99e-11cb62f6bb35"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-BW",
+        "kind": "mapping",
+        "source": "curricula/DE/Gymnasium/mapping/DE-BW/lower-secondary/bw_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+        "mappingStrength": "partial"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-BW",
+        "kind": "mapping",
+        "source": "curricula/DE/Gymnasium/mapping/DE-BW/lower-secondary/bw_math_lower_secondary_to_canonical_math.json",
+        "mappingStrength": "partial"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-BW",
+        "kind": "mapping",
+        "source": "curricula/DE/Gymnasium/mapping/DE-BW/lower-secondary/bw_math_lower_secondary_to_canonical_math.json",
+        "mappingStrength": "partial"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-BW",
+        "kind": "mapping",
+        "source": "curricula/DE/Gymnasium/mapping/DE-BW/lower-secondary/bw_math_lower_secondary_to_canonical_math.json",
+        "mappingStrength": "partial"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-BW",
+        "kind": "mapping",
+        "source": "curricula/DE/Gymnasium/mapping/DE-BW/upper-secondary/bw_math_upper_secondary_to_canonical_math.json",
+        "mappingStrength": "partial"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-BW",
+        "kind": "provenance",
+        "source": "curricula/DE/Gymnasium/input/BW/lower-secondary/ (curricula/DE/Gymnasium/provenance/source-landscape-registry.json#6232b783-199c-4c50-92f2-9fb31277e619)"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-BW",
+        "kind": "requires-closure",
+        "source": "required by 17c9e061-fe52-5553-be81-fec7a525fcbd"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-BW",
+        "kind": "requires-closure",
+        "source": "required by df9ecf0f-f4c9-5859-b99e-11cb62f6bb35"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-BY",
+        "kind": "mapping",
+        "source": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_math_source_extraction_to_canonical_math.review.json",
+        "mappingStrength": "partial"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-BY",
+        "kind": "requires-closure",
+        "source": "required by df9ecf0f-f4c9-5859-b99e-11cb62f6bb35"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-HB",
+        "kind": "mapping",
+        "source": "curricula/DE/Gymnasium/mapping/DE-HB/lower-secondary/hb_math_lower_secondary_to_canonical_math.json",
+        "mappingStrength": "partial"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-HB",
+        "kind": "requires-closure",
+        "source": "required by 17c9e061-fe52-5553-be81-fec7a525fcbd"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-HB",
+        "kind": "requires-closure",
+        "source": "required by df9ecf0f-f4c9-5859-b99e-11cb62f6bb35"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-HE",
+        "kind": "mapping",
+        "source": "curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/hessen_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+        "mappingStrength": "exact"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-HE",
+        "kind": "mapping",
+        "source": "curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/hessen_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+        "mappingStrength": "partial"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-HE",
+        "kind": "mapping",
+        "source": "curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/hessen_math_lower_secondary_to_canonical_math.json",
+        "mappingStrength": "partial"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-HE",
+        "kind": "mapping",
+        "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_math_upper_secondary_to_canonical_math.json",
+        "mappingStrength": "exact"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-HE",
+        "kind": "provenance",
+        "source": "curricula/DE/Gymnasium/input/DE-HE/lower-secondary/ (curricula/DE/Gymnasium/provenance/source-landscape-registry.json#b167b4cd-4b78-4c84-a721-6b2adbbcab3c)"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-HE",
+        "kind": "requires-closure",
+        "source": "required by 17c9e061-fe52-5553-be81-fec7a525fcbd"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-HE",
+        "kind": "requires-closure",
+        "source": "required by df9ecf0f-f4c9-5859-b99e-11cb62f6bb35"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-HH",
+        "kind": "mapping",
+        "source": "curricula/DE/Gymnasium/mapping/DE-HH/lower-secondary/hh_math_lower_secondary_to_canonical_math.json",
+        "mappingStrength": "partial"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-HH",
+        "kind": "mapping",
+        "source": "curricula/DE/Gymnasium/mapping/DE-HH/lower-secondary/hh_math_lower_secondary_to_canonical_math.json",
+        "mappingStrength": "partial"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-HH",
+        "kind": "mapping",
+        "source": "curricula/DE/Gymnasium/mapping/DE-HH/upper-secondary/hh_math_upper_secondary_to_canonical_math.json",
+        "mappingStrength": "partial"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-HH",
+        "kind": "requires-closure",
+        "source": "required by 17c9e061-fe52-5553-be81-fec7a525fcbd"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-HH",
+        "kind": "requires-closure",
+        "source": "required by df9ecf0f-f4c9-5859-b99e-11cb62f6bb35"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-MV",
+        "kind": "mapping",
+        "source": "curricula/DE/Gymnasium/mapping/DE-MV/lower-secondary/mv_math_lower_secondary_to_canonical_math.json",
+        "mappingStrength": "partial"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-MV",
+        "kind": "mapping",
+        "source": "curricula/DE/Gymnasium/mapping/DE-MV/lower-secondary/mv_math_lower_secondary_to_canonical_math.json",
+        "mappingStrength": "partial"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-MV",
+        "kind": "mapping",
+        "source": "curricula/DE/Gymnasium/mapping/DE-MV/upper-secondary/mv_math_upper_secondary_to_canonical_math.json",
+        "mappingStrength": "partial"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-MV",
+        "kind": "requires-closure",
+        "source": "required by 17c9e061-fe52-5553-be81-fec7a525fcbd"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-MV",
+        "kind": "requires-closure",
+        "source": "required by df9ecf0f-f4c9-5859-b99e-11cb62f6bb35"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-NI",
+        "kind": "mapping",
+        "source": "curricula/DE/Gymnasium/mapping/DE-NI/lower-secondary/ni_math_lower_secondary_to_canonical_math.json",
+        "mappingStrength": "partial"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-NI",
+        "kind": "mapping",
+        "source": "curricula/DE/Gymnasium/mapping/DE-NI/lower-secondary/ni_math_lower_secondary_to_canonical_math.json",
+        "mappingStrength": "partial"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-NI",
+        "kind": "mapping",
+        "source": "curricula/DE/Gymnasium/mapping/DE-NI/upper-secondary/ni_math_upper_secondary_to_canonical_math.json",
+        "mappingStrength": "partial"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-NI",
+        "kind": "requires-closure",
+        "source": "required by 17c9e061-fe52-5553-be81-fec7a525fcbd"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-NI",
+        "kind": "requires-closure",
+        "source": "required by df9ecf0f-f4c9-5859-b99e-11cb62f6bb35"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-NW",
+        "kind": "mapping",
+        "source": "curricula/DE/Gymnasium/mapping/DE-NW/lower-secondary/nrw_math_lower_secondary_to_canonical_math.json",
+        "mappingStrength": "partial"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-NW",
+        "kind": "mapping",
+        "source": "curricula/DE/Gymnasium/mapping/DE-NW/lower-secondary/nrw_math_lower_secondary_to_canonical_math.json",
+        "mappingStrength": "partial"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-NW",
+        "kind": "mapping",
+        "source": "curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary/nrw_math_upper_secondary_to_canonical_math.json",
+        "mappingStrength": "partial"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-NW",
+        "kind": "requires-closure",
+        "source": "required by 17c9e061-fe52-5553-be81-fec7a525fcbd"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-NW",
+        "kind": "requires-closure",
+        "source": "required by df9ecf0f-f4c9-5859-b99e-11cb62f6bb35"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-RP",
+        "kind": "mapping",
+        "source": "curricula/DE/Gymnasium/mapping/DE-RP/lower-secondary/rp_math_lower_secondary_to_canonical_math.json",
+        "mappingStrength": "partial"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-RP",
+        "kind": "mapping",
+        "source": "curricula/DE/Gymnasium/mapping/DE-RP/lower-secondary/rp_math_lower_secondary_to_canonical_math.json",
+        "mappingStrength": "partial"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-RP",
+        "kind": "mapping",
+        "source": "curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_math_upper_secondary_to_canonical_math.json",
+        "mappingStrength": "partial"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-RP",
+        "kind": "requires-closure",
+        "source": "required by 17c9e061-fe52-5553-be81-fec7a525fcbd"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-RP",
+        "kind": "requires-closure",
+        "source": "required by df9ecf0f-f4c9-5859-b99e-11cb62f6bb35"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-SH",
+        "kind": "mapping",
+        "source": "curricula/DE/Gymnasium/mapping/DE-SH/lower-secondary/sh_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+        "mappingStrength": "exact"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-SH",
+        "kind": "requires-closure",
+        "source": "required by 17c9e061-fe52-5553-be81-fec7a525fcbd"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-SL",
+        "kind": "mapping",
+        "source": "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_math_lower_secondary_to_canonical_math.json",
+        "mappingStrength": "partial"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-SL",
+        "kind": "mapping",
+        "source": "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_math_lower_secondary_to_canonical_math.json",
+        "mappingStrength": "partial"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-SL",
+        "kind": "mapping",
+        "source": "curricula/DE/Gymnasium/mapping/DE-SL/upper-secondary/sl_math_upper_secondary_to_canonical_math.json",
+        "mappingStrength": "partial"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-SL",
+        "kind": "requires-closure",
+        "source": "required by 17c9e061-fe52-5553-be81-fec7a525fcbd"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-SL",
+        "kind": "requires-closure",
+        "source": "required by df9ecf0f-f4c9-5859-b99e-11cb62f6bb35"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-SN",
+        "kind": "mapping",
+        "source": "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_math_lower_secondary_to_canonical_math.json",
+        "mappingStrength": "partial"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-SN",
+        "kind": "mapping",
+        "source": "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_math_lower_secondary_to_canonical_math.json",
+        "mappingStrength": "partial"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-SN",
+        "kind": "mapping",
+        "source": "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_math_lower_secondary_to_canonical_math.json",
+        "mappingStrength": "partial"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-SN",
+        "kind": "mapping",
+        "source": "curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/sn_math_upper_secondary_to_canonical_math.json",
+        "mappingStrength": "partial"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-SN",
+        "kind": "requires-closure",
+        "source": "required by 17c9e061-fe52-5553-be81-fec7a525fcbd"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-SN",
+        "kind": "requires-closure",
+        "source": "required by df9ecf0f-f4c9-5859-b99e-11cb62f6bb35"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-ST",
+        "kind": "mapping",
+        "source": "curricula/DE/Gymnasium/mapping/DE-ST/lower-secondary/st_math_lower_secondary_to_canonical_math.json",
+        "mappingStrength": "partial"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-ST",
+        "kind": "mapping",
+        "source": "curricula/DE/Gymnasium/mapping/DE-ST/lower-secondary/st_math_lower_secondary_to_canonical_math.json",
+        "mappingStrength": "partial"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-ST",
+        "kind": "mapping",
+        "source": "curricula/DE/Gymnasium/mapping/DE-ST/upper-secondary/st_math_upper_secondary_to_canonical_math.json",
+        "mappingStrength": "partial"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-ST",
+        "kind": "requires-closure",
+        "source": "required by 17c9e061-fe52-5553-be81-fec7a525fcbd"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-ST",
+        "kind": "requires-closure",
+        "source": "required by df9ecf0f-f4c9-5859-b99e-11cb62f6bb35"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-TH",
+        "kind": "mapping",
+        "source": "curricula/DE/Gymnasium/mapping/DE-TH/lower-secondary/th_math_lower_secondary_to_canonical_math.json",
+        "mappingStrength": "partial"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-TH",
+        "kind": "mapping",
+        "source": "curricula/DE/Gymnasium/mapping/DE-TH/lower-secondary/th_math_lower_secondary_to_canonical_math.json",
+        "mappingStrength": "partial"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-TH",
+        "kind": "mapping",
+        "source": "curricula/DE/Gymnasium/mapping/DE-TH/upper-secondary/th_math_upper_secondary_to_canonical_math.json",
+        "mappingStrength": "partial"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-TH",
+        "kind": "requires-closure",
+        "source": "required by 17c9e061-fe52-5553-be81-fec7a525fcbd"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-TH",
+        "kind": "requires-closure",
+        "source": "required by df9ecf0f-f4c9-5859-b99e-11cb62f6bb35"
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "dimension": "jurisdiction",
+      "value": "DE-SH",
+      "kind": "mapping",
+      "source": "curricula/DE/Gymnasium/mapping/DE-SH/lower-secondary/sh_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "mappingStrength": "exact"
+    },
+    {
+      "dimension": "jurisdiction",
+      "value": "DE-SH",
+      "kind": "requires-closure",
+      "source": "required by 17c9e061-fe52-5553-be81-fec7a525fcbd"
+    }
+  ],
+  "sh": {
+    "jurisdiction": "DE-SH",
+    "labelDe": "Schleswig-Holstein",
+    "labelEn": "Schleswig-Holstein",
+    "visibleGoals": 1141,
+    "visibleAtomicGoals": 659,
+    "visibleClusterGoals": 482,
+    "viewAtomicGoals": 659,
+    "sourceBackedAtomicGoals": 659,
+    "surrogateBackedAtomicGoals": 0,
+    "unsupportedAssignedAtomicGoals": 0,
+    "partialSourceLinkedAtomicGoals": 0,
+    "sourceAtomicGoals": 620,
+    "sourceMappedToViewAtomicGoals": 620,
+    "unmappedSourceAtomicGoals": 0,
+    "sourceExtractedGoals": 620,
+    "sourceUnregisteredGoals": 0,
+    "sourceExtractedAtomicGoals": 620,
+    "sourceUnregisteredAtomicGoals": 0,
+    "sourceOriginalGoals": 620,
+    "sourceFullyCoveredOriginalGoals": 620,
+    "sourcePartiallyCoveredOriginalGoals": 0,
+    "sourceUncoveredOriginalGoals": 0,
+    "errors": 0,
+    "warnings": 0,
+    "diagnosticPartialOnlyWarnings": 532,
+    "atomicCoveragePercent": 91.9,
+    "sourceBackedCoveragePercent": 100,
+    "sourceReverseCoveragePercent": 100,
+    "status": "covered"
+  }
+}

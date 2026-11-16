@@ -106,7 +106,7 @@ Vorfahren- und Nachfahrenbeziehungen ergeben sich über Pfade aus einer oder meh
 
 *EN: `requires`* — siehe [Graph-Definition](repo:docs/concept/skill-graph/graph-definition.md)
 
-Die modellierte Voraussetzungsrelation $R$: $(g, p)$ bedeutet, dass Lernziel $g$ die Voraussetzung $p$ unmittelbar benötigt. Der Pfeil zeigt vom abhängigen Ziel zur Voraussetzung; $p$ muss sitzen, bevor $g$ bearbeitet wird. Die Relation muss azyklisch sein. Im verbindlichen Zielzustand verlaufen sämtliche modellierten `requires`-Kanten zwischen **atomaren** Zielen ($R \subseteq A \times A$); bestehende Voraussetzungen auf Clustern werden während der Migration über `contains`-Vererbung und atomare Expansion ausgewertet.
+Die modellierte Voraussetzungsrelation $R$: $(g, p)$ bedeutet, dass Lernziel $g$ die Voraussetzung $p$ unmittelbar benötigt. Der Pfeil zeigt vom abhängigen Ziel zur Voraussetzung; $p$ muss sitzen, bevor $g$ bearbeitet wird. Die Relation muss azyklisch sein. Im verbindlichen Zielzustand verlaufen sämtliche modellierten `requires`-Kanten zwischen **atomaren** Zielen ($R \subseteq A \times A$), und keine `requires`-Kante zeigt auf ein Prüfungsziel; bestehende Voraussetzungen auf Clustern werden während der Migration über `contains`-Vererbung und atomare Expansion ausgewertet.
 
 Sowohl `contains` als auch `requires` speichern direkte Kanten; abgeleitete Beziehungen werden berechnet und nicht als zusätzliche Kantenarten modelliert.
 
@@ -166,3 +166,57 @@ Ein atomares Ziel, an dem Lernende selbstständig Probleme lösen – typischerw
 *EN: Route coverage* — siehe [Context & Views](repo:docs/concept/skill-graph/context-and-views.en.md)
 
 Die Eigenschaft, dass jedes routenrelevante atomare Lernziel auf mindestens einem Voraussetzungspfad zwischen einem Motivationsanker und einem terminalen Autonomieziel liegt. Die intendierte Lernrichtung verläuft von Orientierung über Verstehen (und begleitendes Memorieren bei Bedarf) zur selbstständigen Anwendung.
+
+### Planeinheit {unnumbered=true}
+
+*EN: Plan unit* — siehe [Lerneinheiten](repo:docs/concept/skill-graph/learning-units.md) und [Sichtenprojektion](repo:docs/concept/skill-graph/view-projection-and-goal-placement.md)
+
+Erklärte Einheit im gemeinsamen Plan eines Landes und Dauermodells über die gewählten Fächer (`SekI`, `SekII` mit `SekII after SekI`, darunter Jahrgänge bzw. `E` und `Q1`–`Q4`); ordnet den Lernweg nach E1–E4, erzeugt keine neue Kompetenz und erkennt selbst nichts implizit an.
+
+### Fachliche Einheit {unnumbered=true}
+
+*EN: Subject unit* — siehe [Lerneinheiten](repo:docs/concept/skill-graph/learning-units.md)
+
+Erklärter Cluster der kanonischen Fachlandschaft mit Lernversprechen und Revision; gilt in allen Bundesländern (fachliche Blatteinheiten liegen in allen 16 Ländern ungeteilt in einer Planeinheit). Eine **Einheit mit Prüfungen** (mit eigenen Prüfungen und gültigen vollständigen `coverageReviews`) belegt zusätzlich die selbstständige Anwendung ihrer eigenen Inhaltsziele nach R1–R5.
+
+### `after` {unnumbered=true}
+
+*EN: `after`* — siehe [Einheitsordnung](repo:docs/concept/skill-graph/learning-unit-progression.md)
+
+Erklärte Reihenfolge zwischen Geschwistereinheiten derselben Elterneinheit: Die vorausgehende Einheit ist im vorgesehenen Lernfluss vollständig erledigt, bevor die nachfolgende beginnt. `after` vererbt Reihenfolge statt Bedarf, erzeugt keine technische Zugangssperre, schreibt keine Mastery und erweitert keinen Wissenskontext.
+
+### Rückgriff {unnumbered=true}
+
+*EN: Backflow* — siehe [Einheitsordnung](repo:docs/concept/skill-graph/learning-unit-progression.md)
+
+Ein Ziel einer früheren Einheit oder Planeinheit setzt direkt oder transitiv ein Ziel einer späteren voraus. Das verletzt E2/E3 (auch bei Vorbereitung); Darstellung, Lernkarte und Fokus dürfen Rückgriffe niemals ausblenden.
+
+### Vorbereitung {unnumbered=true}
+
+*EN: Preparation* — siehe [Kontext und Sichten](repo:docs/concept/skill-graph/context-and-views.en.md)
+
+Ein notwendiges Atom außerhalb der im Landesplan geführten Ausgangsziele erhält im geschlossenen persönlichen Umfang $L$ deterministisch einen abgeleiteten Lernplatz am **frühesten tatsächlichen Bedarf**. Eine didaktisch begründete frühere Vorbereitung eines geführten Ziels bleibt ausdrücklich gekennzeichnet (`reviewedPreparation`), ohne die amtliche Quellenzuordnung zu überschreiben.
+
+### Zusatzbedarf {unnumbered=true}
+
+*EN: Additional demand* — siehe [Kontext und Sichten](repo:docs/concept/skill-graph/context-and-views.en.md)
+
+Notwendige Voraussetzungsatome in $L$ außerhalb der gewählten fachlichen Ausgangsziele $S$. Nur diese tatsächlich benötigten Atome werden ergänzt, unabhängig vom aktuellen Mastery-Stand; eine Anzeige nach Einheiten zieht niemals unbenötigte Geschwister einer fremden Einheit mit.
+
+### Geführt in / steht in {unnumbered=true}
+
+*EN: Carried in / placed in* — siehe [Kontext und Sichten](repo:docs/concept/skill-graph/context-and-views.en.md)
+
+*Geführt in* bezeichnet die amtlich belegte curriculare Quellenzuordnung (`officialSource`); *steht in* bezeichnet den didaktischen Lernplatz in einer Planeinheit. Frühere Vorbereitung oder eine vorläufige kanonische Standardmarke erzeugt keinen Landesbeleg und schreibt kein Lernergebnis.
+
+### Standardzuordnung {unnumbered=true}
+
+*EN: Default assignment* — siehe [Kontext und Sichten](repo:docs/concept/skill-graph/context-and-views.en.md)
+
+Ausdrücklich als vorläufig gekennzeichnete didaktische Einordnung (`canonicalDefault`) aus einer kanonischen Marke wie `dimensionTags.phase`, solange ein amtlicher Landesbeleg fehlt. Ersetzt weder Quellenbeleg noch Abdeckungsprüfung und überschreibt keine maßgebliche Sicht.
+
+### Prüfungslücke {unnumbered=true}
+
+*EN: Assessment gap* — siehe [Implizite Beherrschung](repo:docs/concept/skill-graph/assessment-gated-completion.md)
+
+Ein eigenes Inhaltsziel einer Einheit mit Prüfungen ohne geeignete geprüfte Aufgaben- und Rasterabdeckung bleibt ein nicht bestandener Befund (R1/R2). Die Reparatur liefert eine tragfähige Prüfung samt unabhängigem Review, niemals fiktive Voraussetzungen oder gelockerte Qualitätsgates.

@@ -1,0 +1,727 @@
+{
+  "recordedAtUtc": "2026-11-16T07:16:28.320581+00:00",
+  "baseHead": "b81b585d0898ced7ace252cacf41135890bce477",
+  "sourcePins": [
+    {
+      "path": "scripts/check_physics_source_method_routes.test.ts",
+      "sha256": "344aba9dfad3d1696ff6f02b373f738f6aa113fcd64dcd7d6e34729475d20b3a"
+    },
+    {
+      "path": "app/scripts/testPhysicsSemiconductorSourceRepair.ts",
+      "sha256": "6f6f9a6818431d11454b4aebc32a9fbd7ca6a5110ea0bafff1f6f2ca8d3a5c0a"
+    },
+    {
+      "path": "app/scripts/physicsFinalDiodeMappings.ts",
+      "sha256": "280411d6500da5deb96cda78f7433a25b9274dfe87923abca2a39c9becb5f02e"
+    },
+    {
+      "path": "app/scripts/config/physics-k3-amplifier-mapping-overrides.json",
+      "sha256": "c98bfe120e966a4ef00f50cd4965f2c3756fe598e18ff20118e747cb08805d39"
+    },
+    {
+      "path": "app/public/data/goal-source-rationales-physics-public.json",
+      "sha256": "723d6e27a8a3cc371224b8243409032cc4ebe8e68b89e7e0a137089bf0185fe9"
+    },
+    {
+      "path": "app/scripts/testPersonalCurriculumProjectionUi.ts",
+      "sha256": "1c45bfe30851f5a0fe7bdfd177d837b5a0ae74f342734226c3a0bf4e88cf9644"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physik-rollout-status.json",
+      "sha256": "ace0fe7feb62c77cd4c41baf36917cce83ff6ea54e6fded8018c4a87aca56e4b"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physik-rollout-status.md",
+      "sha256": "5c08a4baa2333ff7736defe0f9e731c9c941a6f2645f717abb61f9b74fa65c20"
+    },
+    {
+      "path": "docs/qa-ci/status/goal-source-rationale-coverage.json",
+      "sha256": "9087b7db4bc3b9ebeb3e83bb9826067d6ef6b995a5c09824b30379d24e9e2ace"
+    },
+    {
+      "path": "docs/qa-ci/status/goal-source-rationale-coverage.md",
+      "sha256": "7d0efdf6550d597954cf0fa515d28755ba67b515eea0ba752c96c0d4741f7a2f"
+    },
+    {
+      "path": "docs/legal/ai-transparency-inventory.json",
+      "sha256": "2103bdd549e93ef47ba7fef7786f34cba5959fa08b519b26d07b9be5cb526ab6"
+    },
+    {
+      "path": "docs/dev/stage-plan-management-summary.md",
+      "sha256": "5250d9669b13a7b6f8430edfce7049c3768d24aae73d6df5929d17d548fec2c5"
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "sha256": "b3bf6c4a322158df7b815f22d71ee3038d15f49f34a7880213ee5e459ad9b75e"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "sha256": "306eeed52f6b0b1059264ccb1d4ea23227dd3ddff4d19f2a1ca096511d65a149"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+      "sha256": "c511aeaee9167c0c3ca07c996b1c0d67e4fef330a8c781ae3e8d563005a90a4a"
+    }
+  ],
+  "downstreamCommands": {
+    "head": "b81b585d0898ced7ace252cacf41135890bce477",
+    "workflowSha256": "b3bf6c4a322158df7b815f22d71ee3038d15f49f34a7880213ee5e459ad9b75e",
+    "note": "Exact downstream workflow commands; local environment and generated files, not remote acceptance.",
+    "results": [
+      {
+        "job": "curriculum-integrated-build",
+        "name": "Check goal visualization rollout coverage",
+        "command": "npm run check:goal-visualization-rollout-coverage\nnpm run check:goal-visualization-rollout-coverage:physik\nnpm run check:goal-visualization-rollout-coverage:chemie\nnpm run check:goal-visualization-qa-coverage-parity\n",
+        "workingDirectory": "app",
+        "startedAtUtc": "2026-11-16T06:22:16.566968+00:00",
+        "exitCode": 0,
+        "finishedAtUtc": "2026-11-16T06:22:19.975435+00:00",
+        "log": "tmp/pr159-ci-round3/downstream-01.actual.log"
+      },
+      {
+        "job": "curriculum-integrated-build",
+        "name": "Test full standalone curriculum package builder",
+        "command": "npm run test:full-standalone-package-builder",
+        "workingDirectory": "app",
+        "startedAtUtc": "2026-11-16T06:22:19.975829+00:00",
+        "exitCode": 0,
+        "finishedAtUtc": "2026-11-16T06:22:21.024842+00:00",
+        "log": "tmp/pr159-ci-round3/downstream-02.actual.log"
+      },
+      {
+        "job": "curriculum-integrated-build",
+        "name": "Build integrated application artifact",
+        "command": "npm run build:application",
+        "workingDirectory": "app",
+        "startedAtUtc": "2026-11-16T06:37:01.171736+00:00",
+        "previousAttempt": {
+          "log": "tmp/pr159-ci-round3/downstream-03.interrupted.actual.log",
+          "runnerExitCode": 143,
+          "commandExitCode": null,
+          "accepted": false
+        },
+        "exitCode": 0,
+        "finishedAtUtc": "2026-11-16T06:42:32.153445+00:00",
+        "log": "tmp/pr159-ci-round3/downstream-03.actual.log"
+      },
+      {
+        "job": "curriculum-integrated-build",
+        "name": "Build package-only consumer frontend",
+        "command": "npm run build:package-consumer -- --out-dir ../tmp/package-consumer-ci/frontend",
+        "workingDirectory": "app",
+        "startedAtUtc": "2026-11-16T06:42:32.154120+00:00",
+        "exitCode": 0,
+        "finishedAtUtc": "2026-11-16T06:43:05.535553+00:00",
+        "log": "tmp/pr159-ci-round3/downstream-04.actual.log"
+      },
+      {
+        "job": "curriculum-integrated-build",
+        "name": "Check Goal Source Rationale Build Artifact",
+        "command": "npm run check:goal-source-rationales:build-artifact",
+        "workingDirectory": "app",
+        "startedAtUtc": "2026-11-16T06:43:05.536138+00:00",
+        "exitCode": 0,
+        "finishedAtUtc": "2026-11-16T06:43:06.075516+00:00",
+        "log": "tmp/pr159-ci-round3/downstream-05.actual.log"
+      },
+      {
+        "job": "graph-validation",
+        "name": "Check Goal Source Rationale All-Relevant Report",
+        "command": "npm run check:goal-source-rationales:math-all-relevant",
+        "workingDirectory": "app",
+        "startedAtUtc": "2026-11-16T06:43:06.076044+00:00",
+        "exitCode": 0,
+        "finishedAtUtc": "2026-11-16T06:43:06.892402+00:00",
+        "log": "tmp/pr159-ci-round3/downstream-06.actual.log"
+      },
+      {
+        "job": "graph-validation",
+        "name": "Check Goal Source Rationale Coverage Report",
+        "command": "npm run check:goal-source-rationale-coverage",
+        "workingDirectory": "app",
+        "startedAtUtc": "2026-11-16T06:43:06.892888+00:00",
+        "exitCode": 1,
+        "finishedAtUtc": "2026-11-16T06:43:07.774359+00:00",
+        "log": "tmp/pr159-ci-round3/downstream-07.actual.log"
+      },
+      {
+        "job": "graph-validation",
+        "name": "Check Goal Source Rationale Gap Issues",
+        "command": "npm run check:goal-source-rationale-gap-issues",
+        "workingDirectory": "app",
+        "startedAtUtc": "2026-11-16T06:43:07.774815+00:00",
+        "exitCode": 0,
+        "finishedAtUtc": "2026-11-16T06:43:08.715469+00:00",
+        "log": "tmp/pr159-ci-round3/downstream-08.actual.log"
+      },
+      {
+        "job": "graph-validation",
+        "name": "Check Goal Source Rationale Mapping Batch 01",
+        "command": "npm run check:goal-source-rationale-mapping-batch-01",
+        "workingDirectory": "app",
+        "startedAtUtc": "2026-11-16T06:43:08.716132+00:00",
+        "exitCode": 0,
+        "finishedAtUtc": "2026-11-16T06:43:09.330109+00:00",
+        "log": "tmp/pr159-ci-round3/downstream-09.actual.log"
+      },
+      {
+        "job": "graph-validation",
+        "name": "Check Generated Documentation Notices",
+        "command": "npm run check:generated-doc-notices",
+        "workingDirectory": "app",
+        "startedAtUtc": "2026-11-16T06:43:09.330695+00:00",
+        "exitCode": 0,
+        "finishedAtUtc": "2026-11-16T06:43:13.356907+00:00",
+        "log": "tmp/pr159-ci-round3/downstream-10.actual.log"
+      },
+      {
+        "job": "graph-validation",
+        "name": "Check Generated Status Registry",
+        "command": "npm run check:generated-status-registry",
+        "workingDirectory": "app",
+        "startedAtUtc": "2026-11-16T06:43:13.357545+00:00",
+        "exitCode": 0,
+        "finishedAtUtc": "2026-11-16T06:43:14.441042+00:00",
+        "log": "tmp/pr159-ci-round3/downstream-11.actual.log"
+      },
+      {
+        "job": "graph-validation",
+        "name": "Check Documentation Links",
+        "command": "npm run check:docs-links",
+        "workingDirectory": "app",
+        "startedAtUtc": "2026-11-16T06:43:14.441545+00:00",
+        "exitCode": 0,
+        "finishedAtUtc": "2026-11-16T06:43:18.561172+00:00",
+        "log": "tmp/pr159-ci-round3/downstream-12.actual.log"
+      },
+      {
+        "job": "graph-validation",
+        "name": "Check Documentation Index Coverage",
+        "command": "npm run check:docs-indexes",
+        "workingDirectory": "app",
+        "startedAtUtc": "2026-11-16T06:43:18.561698+00:00",
+        "exitCode": 0,
+        "finishedAtUtc": "2026-11-16T06:43:22.637563+00:00",
+        "log": "tmp/pr159-ci-round3/downstream-13.actual.log"
+      },
+      {
+        "job": "graph-validation",
+        "name": "Check Terminology",
+        "command": "npm run check:terminology",
+        "workingDirectory": "app",
+        "startedAtUtc": "2026-11-16T06:43:22.638150+00:00",
+        "exitCode": 0,
+        "finishedAtUtc": "2026-11-16T06:46:11.986492+00:00",
+        "log": "tmp/pr159-ci-round3/downstream-14.actual.log"
+      },
+      {
+        "job": "graph-validation",
+        "name": "Validate Composition Views",
+        "command": "npm run validate:composition-views",
+        "workingDirectory": "app",
+        "startedAtUtc": "2026-11-16T06:46:11.987080+00:00",
+        "exitCode": 0,
+        "finishedAtUtc": "2026-11-16T06:50:58.438500+00:00",
+        "log": "tmp/pr159-ci-round3/downstream-15.actual.log"
+      },
+      {
+        "job": "graph-validation",
+        "name": "Test Composition Projection Roles",
+        "command": "npm run test:composition-projection-roles",
+        "workingDirectory": "app",
+        "startedAtUtc": "2026-11-16T06:50:58.439167+00:00",
+        "exitCode": 0,
+        "finishedAtUtc": "2026-11-16T06:51:18.514702+00:00",
+        "log": "tmp/pr159-ci-round3/downstream-16.actual.log"
+      },
+      {
+        "job": "graph-validation",
+        "name": "Test Declared Stage-Plan Contracts",
+        "command": "npm run test:stage-plan-contracts",
+        "workingDirectory": "app",
+        "startedAtUtc": "2026-11-16T06:51:18.515179+00:00",
+        "exitCode": 0,
+        "finishedAtUtc": "2026-11-16T06:51:29.478861+00:00",
+        "log": "tmp/pr159-ci-round3/downstream-17.actual.log"
+      },
+      {
+        "job": "graph-validation",
+        "name": "Check stage-plan compatibility materialization",
+        "command": "npm run test:stage-plan-materialization",
+        "workingDirectory": "app",
+        "startedAtUtc": "2026-11-16T06:51:29.479672+00:00",
+        "exitCode": 0,
+        "finishedAtUtc": "2026-11-16T06:51:31.244828+00:00",
+        "log": "tmp/pr159-ci-round3/downstream-18.actual.log"
+      },
+      {
+        "job": "graph-validation",
+        "name": "Test declared stage-plan learning-flow diagnosis",
+        "command": "npm run test:stage-plan-learning-flow",
+        "workingDirectory": "app",
+        "startedAtUtc": "2026-11-16T06:51:31.245478+00:00",
+        "exitCode": 0,
+        "finishedAtUtc": "2026-11-16T06:51:31.817177+00:00",
+        "log": "tmp/pr159-ci-round3/downstream-19.actual.log"
+      },
+      {
+        "job": "graph-validation",
+        "name": "Test Course-Level Mapping Consistency",
+        "command": "npm run test:course-level-mapping-consistency",
+        "workingDirectory": "app",
+        "startedAtUtc": "2026-11-16T06:51:31.817836+00:00",
+        "exitCode": 0,
+        "finishedAtUtc": "2026-11-16T06:51:32.414236+00:00",
+        "log": "tmp/pr159-ci-round3/downstream-20.actual.log"
+      },
+      {
+        "job": "graph-validation",
+        "name": "Test Physics Source Method Routes",
+        "command": "npm run test:physics-source-method-routes",
+        "workingDirectory": "app",
+        "startedAtUtc": "2026-11-16T06:51:32.414830+00:00",
+        "exitCode": 1,
+        "finishedAtUtc": "2026-11-16T06:53:19.900605+00:00",
+        "log": "tmp/pr159-ci-round3/downstream-21.actual.log"
+      },
+      {
+        "job": "graph-validation",
+        "name": "Test Physics Semiconductor Learning-Path Diagnosis",
+        "command": "npm run test:physics-semiconductor-learning-path",
+        "workingDirectory": "app",
+        "startedAtUtc": "2026-11-16T06:53:19.901262+00:00",
+        "exitCode": 0,
+        "finishedAtUtc": "2026-11-16T06:53:20.354905+00:00",
+        "log": "tmp/pr159-ci-round3/downstream-22.actual.log"
+      },
+      {
+        "job": "graph-validation",
+        "name": "Test Physics Semiconductor Source Repair",
+        "command": "npm run test:physics-semiconductor-source-repair",
+        "workingDirectory": "app",
+        "startedAtUtc": "2026-11-16T06:53:20.355477+00:00",
+        "exitCode": 1,
+        "finishedAtUtc": "2026-11-16T06:53:21.056646+00:00",
+        "log": "tmp/pr159-ci-round3/downstream-23.actual.log"
+      },
+      {
+        "job": "graph-validation",
+        "name": "Check Memory-Card Reviews",
+        "command": "npm run quality:memory-card-review:check:all",
+        "workingDirectory": "app",
+        "startedAtUtc": "2026-11-16T06:53:21.057330+00:00",
+        "exitCode": 0,
+        "finishedAtUtc": "2026-11-16T06:53:26.719067+00:00",
+        "log": "tmp/pr159-ci-round3/downstream-24.actual.log"
+      },
+      {
+        "job": "graph-validation",
+        "name": "Test strict deep curriculum QA and M7 transitions",
+        "command": "npm run test:deep-understanding-rollout",
+        "workingDirectory": "app",
+        "startedAtUtc": "2026-11-16T06:53:26.719683+00:00",
+        "exitCode": 0,
+        "finishedAtUtc": "2026-11-16T06:58:16.930423+00:00",
+        "log": "tmp/pr159-ci-round3/downstream-25.actual.log"
+      },
+      {
+        "job": "graph-validation",
+        "name": "Test repository source availability",
+        "command": "npm run test:repository-source-availability",
+        "workingDirectory": "app",
+        "startedAtUtc": "2026-11-16T06:58:16.931243+00:00",
+        "exitCode": 0,
+        "finishedAtUtc": "2026-11-16T06:58:17.565291+00:00",
+        "log": "tmp/pr159-ci-round3/downstream-26.actual.log"
+      },
+      {
+        "job": "graph-validation",
+        "name": "Test source extraction inventory",
+        "command": "npm run test:source-extraction-inventory",
+        "workingDirectory": "app",
+        "startedAtUtc": "2026-11-16T06:58:17.566246+00:00",
+        "exitCode": 0,
+        "finishedAtUtc": "2026-11-16T06:58:19.071919+00:00",
+        "log": "tmp/pr159-ci-round3/downstream-27.actual.log"
+      },
+      {
+        "job": "graph-validation",
+        "name": "Verify committed curriculum quality status",
+        "command": "git fetch --no-tags --depth=1 origin \"${MATURITY_POLICY_BASE#origin/}\"\nnpm run quality:curriculum-status\nnpm run check:curriculum-maturity-floors -- --base-ref \"${MATURITY_POLICY_BASE}\"\ngit diff --exit-code -- ../docs/qa-ci/status\ntest -z \"$(git ls-files --others --exclude-standard -- ../docs/qa-ci/status)\"\n",
+        "workingDirectory": "app",
+        "startedAtUtc": "2026-11-16T06:58:19.072559+00:00",
+        "exitCode": 0,
+        "finishedAtUtc": "2026-11-16T07:04:32.698905+00:00",
+        "log": "tmp/pr159-ci-round3/downstream-28.actual.log"
+      }
+    ]
+  },
+  "frontendArtifactChecks": [
+    {
+      "command": "npm run test:learner-map-build",
+      "cwd": "app",
+      "startedAtUtc": "2026-11-16T06:42:58.997395+00:00",
+      "exitCode": 0,
+      "finishedAtUtc": "2026-11-16T06:42:59.424979+00:00",
+      "log": "tmp/pr159-ci-round3/frontend-test-learner-map-build.actual.log",
+      "logSha256": "de1aef10d814aabfd7ddf54ccb4857fec944e587de8e4d4c09df6c8f7388722e"
+    },
+    {
+      "command": "npm run test:service-worker-update-lifecycle",
+      "cwd": "app",
+      "startedAtUtc": "2026-11-16T06:42:59.425610+00:00",
+      "exitCode": 0,
+      "finishedAtUtc": "2026-11-16T06:43:03.875203+00:00",
+      "log": "tmp/pr159-ci-round3/frontend-test-service-worker-update-lifecycle.actual.log",
+      "logSha256": "6f6314e54144674155195cbabb1cfb2fbf031b38c1e32e90e0a35edf40577b87"
+    },
+    {
+      "command": "npm run check:ai-transparency-inventory",
+      "cwd": "app",
+      "startedAtUtc": "2026-11-16T06:43:03.875742+00:00",
+      "exitCode": 1,
+      "finishedAtUtc": "2026-11-16T06:43:32.396385+00:00",
+      "log": "tmp/pr159-ci-round3/frontend-check-ai-transparency-inventory.actual.log",
+      "logSha256": "6e6ec635db5702ebe3f0b066d92749c2ffc179053fc71f66ebc145c37371d80d"
+    },
+    {
+      "command": "npm run check:frontend-shell-assets",
+      "cwd": "app",
+      "startedAtUtc": "2026-11-16T06:43:32.397147+00:00",
+      "exitCode": 0,
+      "finishedAtUtc": "2026-11-16T06:43:32.603374+00:00",
+      "log": "tmp/pr159-ci-round3/frontend-check-frontend-shell-assets.actual.log",
+      "logSha256": "c916dec6d8aa49ced2cb5eced42f6ba7fb81c54bc09e9f5485088cffb0de79e4"
+    },
+    {
+      "command": "npm run check:ai-transparency-artifact",
+      "cwd": "app",
+      "startedAtUtc": "2026-11-16T06:43:32.603989+00:00",
+      "exitCode": 0,
+      "finishedAtUtc": "2026-11-16T06:43:33.199201+00:00",
+      "log": "tmp/pr159-ci-round3/frontend-check-ai-transparency-artifact.actual.log",
+      "logSha256": "751db094434901b505a8f1538b44edc6248f53d8ffe653f9672c8078cf4fc9c4"
+    }
+  ],
+  "intentionalGeneratedReportRepairs": {
+    "recordedAtUtc": "2026-11-16T06:47:01.901943+00:00",
+    "commands": [
+      {
+        "command": "npm --prefix app run quality:goal-source-rationale-coverage",
+        "observedTerminalExitCode": 0,
+        "evidenceBasis": "actual exec-command or write-stdin terminal result observed by root",
+        "log": "tmp/pr159-ci-round3/source-coverage-generate.actual.log",
+        "logSha256": "26821d63eb1c3b6a828f69b976ab178d61544cf27508454b1cbce9ff744df659",
+        "outputPins": [
+          {
+            "path": "docs/qa-ci/status/goal-source-rationale-coverage.json",
+            "sha256": "9087b7db4bc3b9ebeb3e83bb9826067d6ef6b995a5c09824b30379d24e9e2ace"
+          },
+          {
+            "path": "docs/qa-ci/status/goal-source-rationale-coverage.md",
+            "sha256": "7d0efdf6550d597954cf0fa515d28755ba67b515eea0ba752c96c0d4741f7a2f"
+          }
+        ]
+      },
+      {
+        "command": "npm --prefix app run check:goal-source-rationale-coverage",
+        "observedTerminalExitCode": 0,
+        "evidenceBasis": "actual exec-command or write-stdin terminal result observed by root",
+        "log": "tmp/pr159-ci-round3/source-coverage-recheck.actual.log",
+        "logSha256": "96777a774bd130acb8b6bdd0bfa19939520cf3917912b75f6b57d43c77e12883",
+        "outputPins": [
+          {
+            "path": "docs/qa-ci/status/goal-source-rationale-coverage.json",
+            "sha256": "9087b7db4bc3b9ebeb3e83bb9826067d6ef6b995a5c09824b30379d24e9e2ace"
+          },
+          {
+            "path": "docs/qa-ci/status/goal-source-rationale-coverage.md",
+            "sha256": "7d0efdf6550d597954cf0fa515d28755ba67b515eea0ba752c96c0d4741f7a2f"
+          }
+        ]
+      },
+      {
+        "command": "node scripts/check_ai_transparency_inventory.mjs --emit-layer-a-patch",
+        "observedTerminalExitCode": 0,
+        "evidenceBasis": "actual exec-command or write-stdin terminal result observed by root",
+        "log": "tmp/pr159-ci-round3/ai-inventory-patch.actual.log",
+        "logSha256": "96b8e9eee8c62837053e1a569f55206c6cfddf9c3b3d63ea190b0d3a3f475d72",
+        "outputPins": [
+          {
+            "path": "docs/legal/ai-transparency-inventory.json",
+            "sha256": "2103bdd549e93ef47ba7fef7786f34cba5959fa08b519b26d07b9be5cb526ab6"
+          }
+        ]
+      },
+      {
+        "command": "npm --prefix app run check:ai-transparency-inventory",
+        "observedTerminalExitCode": 0,
+        "evidenceBasis": "actual exec-command or write-stdin terminal result observed by root",
+        "log": "tmp/pr159-ci-round3/ai-inventory-recheck.actual.log",
+        "logSha256": "8f7510fed29856b12621792c8a40413a78828df56b41c34bb89b6c1551d1d41f",
+        "outputPins": [
+          {
+            "path": "docs/legal/ai-transparency-inventory.json",
+            "sha256": "2103bdd549e93ef47ba7fef7786f34cba5959fa08b519b26d07b9be5cb526ab6"
+          }
+        ]
+      }
+    ],
+    "candidateStatusBaseline": "The two intentionally regenerated source coverage reports are staged before the exact workflow status-reproducibility comparison. This checks regeneration against the candidate index, not the superseded HEAD reports."
+  },
+  "physicsRepairReceipt": "physics-author-receipt.actual.json",
+  "resolution": "The two failed Physics steps were repaired and their exact normal commands passed on final pinned bytes in the separate physics author receipt. The two initially stale downstream reports were regenerated or refreshed only in measured fields; their normal checks subsequently exited zero. All other listed downstream steps exited zero on this candidate. The first interrupted build has no claimed successful exit; its complete retry passed.",
+  "archive": {
+    "path": "downstream-checks.evidence.actual.tar.gz",
+    "sha256": "d801b0b3975901bea2f27da60700ddae972f0963c39039409d624567acc1457d",
+    "bytes": 297265,
+    "entries": [
+      {
+        "path": "ai-inventory-layer-a.patch",
+        "sha256": "2675fbb1676f5d8a12828c58864cafb753812a069e075eeccf2b2a6397bcd6c8",
+        "bytes": 74904
+      },
+      {
+        "path": "ai-inventory-patch.actual.log",
+        "sha256": "96b8e9eee8c62837053e1a569f55206c6cfddf9c3b3d63ea190b0d3a3f475d72",
+        "bytes": 112
+      },
+      {
+        "path": "ai-inventory-recheck.actual.log",
+        "sha256": "8f7510fed29856b12621792c8a40413a78828df56b41c34bb89b6c1551d1d41f",
+        "bytes": 282
+      },
+      {
+        "path": "downstream-01.actual.log",
+        "sha256": "a0cbd399ec340612fed671d5a81fc96f84d158c4b556178d188e77d1a2c193fc",
+        "bytes": 1651
+      },
+      {
+        "path": "downstream-02.actual.log",
+        "sha256": "d6355b75d8b1fbd88d76b46d2287cb047444170604b3967174bbc91370957b15",
+        "bytes": 252
+      },
+      {
+        "path": "downstream-03.actual.log",
+        "sha256": "4d28640c1f98e2f3b8d47669e89999a1481559223f757326c187ef05f343824f",
+        "bytes": 19739
+      },
+      {
+        "path": "downstream-03.interrupted.actual.log",
+        "sha256": "ba681026698a9e0c2200f88d9a9e3248003f23a6a84530b29c7ac4f9c2f09926",
+        "bytes": 19713
+      },
+      {
+        "path": "downstream-04.actual.log",
+        "sha256": "c337642b474a963399d266bd746f2cadb19e12e9aeb0aea2f07fa774a21bce49",
+        "bytes": 18480
+      },
+      {
+        "path": "downstream-05.actual.log",
+        "sha256": "79e508b4d5621d393d93c7773c3946e0b3b1fc48f77b52ba9015cf848500895c",
+        "bytes": 257
+      },
+      {
+        "path": "downstream-06.actual.log",
+        "sha256": "17234e4a04564166101bd7d4f0d8e23b6bcd98c66dac627f7800b5cdc6321576",
+        "bytes": 213
+      },
+      {
+        "path": "downstream-07.actual.log",
+        "sha256": "ec1023315931014baa04a6b0fa7ed0f859c197f3dc1c8c181541100e3ca07db8",
+        "bytes": 367
+      },
+      {
+        "path": "downstream-08.actual.log",
+        "sha256": "e69c9191702c69a92e94f9c6808019b9b9e75391622523c077391d9040052bed",
+        "bytes": 250
+      },
+      {
+        "path": "downstream-09.actual.log",
+        "sha256": "9fc6d224bdd0ec22745b61858a5cd1c2300ae20bf4f1f5e3594bbf44e8f25e90",
+        "bytes": 271
+      },
+      {
+        "path": "downstream-10.actual.log",
+        "sha256": "843bd384f0bc0a812e1aa43e00f27be63eceff9c4d6fc62c43fd0c0b65af424b",
+        "bytes": 2163
+      },
+      {
+        "path": "downstream-11.actual.log",
+        "sha256": "525a19c2b4bc8a023ecf7306b3ba2d8f27a9f95b141c5e9628a289ee7525736f",
+        "bytes": 189
+      },
+      {
+        "path": "downstream-12.actual.log",
+        "sha256": "7255d663914f13ed93c2e1bf7a4375b21fd00bda83d9dba20c63cbafa53bc090",
+        "bytes": 2123
+      },
+      {
+        "path": "downstream-13.actual.log",
+        "sha256": "8280f01812fcdf945ccd49e63e174212ffaece2508d2b1fdfb028ddbe5dfdf9a",
+        "bytes": 2135
+      },
+      {
+        "path": "downstream-14.actual.log",
+        "sha256": "b312d590439c5f5ba57fa6f148f2a5421788e7c002402a303980a4490315c60b",
+        "bytes": 160
+      },
+      {
+        "path": "downstream-15.actual.log",
+        "sha256": "a1c2b8e141494ddc98fd27ad2d3d921b33eb46a2cd2d6b8bce42a2fc7eb1e62a",
+        "bytes": 799410
+      },
+      {
+        "path": "downstream-16.actual.log",
+        "sha256": "75183b299a3e0396613866ad9e0edb8dcdca35a417e82fe5c292e8317da55a8a",
+        "bytes": 722
+      },
+      {
+        "path": "downstream-17.actual.log",
+        "sha256": "3c208f69fab9cdfcec48de95fa6d6d7598aa5d279d4e716d973a48a50d7aa0f4",
+        "bytes": 453
+      },
+      {
+        "path": "downstream-18.actual.log",
+        "sha256": "ba6693de81413592779423778be03dfa2cd5306287ec8dd1219d8025c33fe38a",
+        "bytes": 1094
+      },
+      {
+        "path": "downstream-19.actual.log",
+        "sha256": "c0d42dac7d13ee0ef22b00f902c4091fc5fe5f0228a0fa0f7edb69984002e1d5",
+        "bytes": 358
+      },
+      {
+        "path": "downstream-20.actual.log",
+        "sha256": "03f9f6711595d5d474656bd4ad7b0b07ff5c3c258a8d2f4e0516c6528661dddf",
+        "bytes": 194
+      },
+      {
+        "path": "downstream-21.actual.log",
+        "sha256": "28ef9f4e5e08106f2abbebf2c5b74618f4d1dfdc13467f40d77eadb22a351473",
+        "bytes": 6255
+      },
+      {
+        "path": "downstream-22.actual.log",
+        "sha256": "59c950b29049dfbd8d533e553ce12fa2aee04b29c1bbd6aa3229f7a2d2420fbd",
+        "bytes": 1065
+      },
+      {
+        "path": "downstream-23.actual.log",
+        "sha256": "384151491424c58ca7a0521507309760dd76cb036b660737d48733d19a922d43",
+        "bytes": 6268
+      },
+      {
+        "path": "downstream-24.actual.log",
+        "sha256": "2d85d30412444df0304bf4bdd5fd98a768d02dacd0519acd03abecdbe60b4591",
+        "bytes": 261534
+      },
+      {
+        "path": "downstream-25.actual.log",
+        "sha256": "eca746d104bb0e4b14050ec877a5a4f6488b65c6f52127d9a0818c695367ccdf",
+        "bytes": 582
+      },
+      {
+        "path": "downstream-26.actual.log",
+        "sha256": "9145a48d5379796eeaaad839a16dc67775d0a89539cf9ec5ee818c5336e31e8d",
+        "bytes": 222
+      },
+      {
+        "path": "downstream-27.actual.log",
+        "sha256": "3e010853b52c26add373bb1b1f85bc3740fa3c4f552e21f4758071d59c4c799e",
+        "bytes": 195
+      },
+      {
+        "path": "downstream-28.actual.log",
+        "sha256": "afa6580ef671351dc11d41cb2a2912fb7ba878845c2bf2236c06b8e8ae0c1972",
+        "bytes": 263462
+      },
+      {
+        "path": "downstream-repairs.actual.json",
+        "sha256": "5eb34923d9753bec33e9c55d8d357e6490f52d521a5d6446919264872277ff1d",
+        "bytes": 3035
+      },
+      {
+        "path": "downstream.actual.json",
+        "sha256": "30ff1cacdf397342ab4955e62f5598a297e3c4f391cecf4362c7de2e987edf49",
+        "bytes": 12044
+      },
+      {
+        "path": "frontend-artifact-checks.actual.json",
+        "sha256": "28e6bfe1fef85605705ef575acf0162d13e33a86247336f9f47c585afa590c18",
+        "bytes": 1920
+      },
+      {
+        "path": "frontend-check-ai-transparency-artifact.actual.log",
+        "sha256": "751db094434901b505a8f1538b44edc6248f53d8ffe653f9672c8078cf4fc9c4",
+        "bytes": 188
+      },
+      {
+        "path": "frontend-check-ai-transparency-inventory.actual.log",
+        "sha256": "6e6ec635db5702ebe3f0b066d92749c2ffc179053fc71f66ebc145c37371d80d",
+        "bytes": 26176
+      },
+      {
+        "path": "frontend-check-frontend-shell-assets.actual.log",
+        "sha256": "c916dec6d8aa49ced2cb5eced42f6ba7fb81c54bc09e9f5485088cffb0de79e4",
+        "bytes": 203
+      },
+      {
+        "path": "frontend-test-learner-map-build.actual.log",
+        "sha256": "de1aef10d814aabfd7ddf54ccb4857fec944e587de8e4d4c09df6c8f7388722e",
+        "bytes": 166
+      },
+      {
+        "path": "frontend-test-service-worker-update-lifecycle.actual.log",
+        "sha256": "6f6314e54144674155195cbabb1cfb2fbf031b38c1e32e90e0a35edf40577b87",
+        "bytes": 155
+      },
+      {
+        "path": "remote-ci-terminal.actual.json",
+        "sha256": "963040ab29fff783865a572d9457c8708d4ddb79883a2f4761d2f19c95c2fb3a",
+        "bytes": 2603
+      },
+      {
+        "path": "remote-job-133122374409.actual.log",
+        "sha256": "ce0c735ae98fd370ce51315413dbec9c74b26cf2131fcd6050ed6b00493de1e6",
+        "bytes": 158136
+      },
+      {
+        "path": "remote-job-133122374448.actual.log",
+        "sha256": "74d076c9b0a38ea115f7c5921e90dec90bfff8541d3d2dfa52b7b187ae48a2b7",
+        "bytes": 215311
+      },
+      {
+        "path": "remote-job-133122374504.actual.log",
+        "sha256": "66dad790d57c64ff90825ed47daaabb48967065f5bb94168bd95ba7dc30a57a1",
+        "bytes": 113252
+      },
+      {
+        "path": "retain_evidence.py",
+        "sha256": "9aeac919c0d5b0a9b34d95e8a391689c88b09e41146b9e30771be031f6336b94",
+        "bytes": 4075
+      },
+      {
+        "path": "run_frontend_artifact_checks.py",
+        "sha256": "708c02393ded03f3b8b087f65c14c247e6710b76ce81896ff7a1ffb2c6bc5411",
+        "bytes": 1094
+      },
+      {
+        "path": "run_remaining.py",
+        "sha256": "db2780ab89bd954764f8db01d50f6201ab0b0955405f8ce4072daed863444825",
+        "bytes": 2953
+      },
+      {
+        "path": "source-coverage-generate.actual.log",
+        "sha256": "26821d63eb1c3b6a828f69b976ab178d61544cf27508454b1cbce9ff744df659",
+        "bytes": 229
+      },
+      {
+        "path": "source-coverage-recheck.actual.log",
+        "sha256": "96777a774bd130acb8b6bdd0bfa19939520cf3917912b75f6b57d43c77e12883",
+        "bytes": 243
+      }
+    ]
+  },
+  "limits": "Local commands and actual independent reviews, not a new complete remote CI result or main acceptance. No new real Land plan, curriculum/source approval or learner mastery change."
+}

@@ -1,0 +1,571 @@
+{
+  "purpose": "Complete exact before/after current assessment content for separate genuine independent inspection; no ordinary D row invented",
+  "assessments": [
+    {
+      "assessmentId": "6345871e-eab4-59c1-a3b6-8456ab9bd7df",
+      "before": {
+        "id": "6345871e-eab4-59c1-a3b6-8456ab9bd7df",
+        "shortKey": "canonical_physics_k6_video_models",
+        "title": "Videoanalyse: eigene Kalibrierung und unabhängiger Wurftransfer",
+        "titleEn": "Video analysis: own calibration and independent projectile transfer",
+        "description": "Die lernende Person kann ein eigenes frisches Video auswerten und an einem unabhängigen kalibrierten Wurfdatensatz Modell, Komponenten und Unsicherheiten prüfen.",
+        "descriptionEn": "The learner can analyze their own fresh video and check model, components, and uncertainties in an independent calibrated projectile dataset.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "Practice",
+          "Assessment",
+          "canonical"
+        ],
+        "contains": [],
+        "requires": [
+          "d67502e3-5e0a-595b-a24b-65b1c40de36e"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-physics",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "PK3_MATHEMATISIEREN"
+          ],
+          "guidingIdeas": [],
+          "phase": "GLOBAL",
+          "area": "Messdaten und Bewegung",
+          "topicCode": "CANONICAL.PHYSICS.PRACTICE.K6.VIDEO_MODELS"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "examData": {
+          "reviewStatus": "needs_review",
+          "reviewNote": "V3-Autorrevision nach unabhängigem REVISE R3: volle eigene Video-/Fit-/Sensitivitätsleistung bleibt erhalten; echte daraus erzeugte Orts-/Geschwindigkeitsdiagramme sind in DE/EN und zwingenden Kriterien ausdrücklich gefordert. Noch keine unabhängige v3-Abnahme.",
+          "coveredGoalIds": [
+            "d67502e3-5e0a-595b-a24b-65b1c40de36e"
+          ],
+          "coveredStrands": [],
+          "demandLevels": [
+            "AB1",
+            "AB2"
+          ],
+          "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/physik/k6-measurement-rate-20261115-v3/video-models.md",
+          "taskContent": "**A – eigene gleichförmige Aufnahme (8 BE).** Erstelle selbst ein neues, sicheres Video einer annähernd gleichförmigen geradlinigen Bewegung auf einem Tisch. Kamera ruht, geprüfte Längenskala liegt in der Bewegungsebene; tatsächliche Zeitstempel oder verifizierte konstante Bildrate dokumentieren. Reiche Originalvideo, Aufbau, Kalibrierung und mindestens acht selbst markierte Positionen ein. Wähle Achse/Nullpunkt, passe selbst x=A+B·t mit einem dokumentierten digitalen Verfahren an und berichte A/B mit Einheiten, Residuen, mindestens eine selbst gerechnete Intervallgeschwindigkeit und begrenzte Messunsicherheit. Ein perfekt vorgegebener Beispieldatensatz ersetzt die eigene Erfassung nicht.\n\n**Verbindliche Diagrammprodukte zu A:** Erzeuge aus deinen eigenen Videodaten ein beschriftetes Orts-Zeit-Diagramm x(t)=s(t) und ein Geschwindigkeits-Zeit-Diagramm v_x(t)=v(t). Im Ortsdiagramm müssen die tatsächlich markierten Messpunkte und die separat gekennzeichnete Fitgerade erkennbar sein. Das Geschwindigkeitsdiagramm enthält die aus allen benachbarten Messpunkten bestimmten Intervallmittel mit ihrem Zeitfensterbezug; bei automatischer Berechnung bleibt mindestens eine eigene Kontrollrechnung nötig. Ein Mittel darf als waagerechter Abschnitt über seinem Fenster oder als Punkt an dessen Mitte mit ausdrücklich erklärter Näherung dargestellt werden. Kennzeichne einen zusätzlich gezeichneten Modellwert v=B getrennt von diesen Datenmitteln. Achsen, Einheiten, Messauflösung und die Herkunft jedes Diagramms aus der eigenen Rohdatentabelle müssen nachvollziehbar sein. Eine Parametertabelle, zwei Einzelgeschwindigkeiten oder nur eine Modellformel ersetzen diese Diagramme nicht.\n\n**B – unabhängige eigene Wurfaufnahme und Parameterfit (16 BE).** Plane und erfasse unabhängig von A eine kurze sichere Wurfbewegung, zum Beispiel einen von einem niedrigen Tisch in eine gepolsterte Auffangzone rollenden weichen Ball. Aufbau und Sicherung dürfen begleitet werden; du führst Aufnahme, Kalibrierung und Auswertung selbst aus. Die feste Kamera sieht die Bewegung möglichst frontal. Lege Referenzlänge und beide Achsen in dieselbe Bewegungsebene, wähle den Zeitnullpunkt frei bei einem tatsächlich sichtbaren Frame und markiere mindestens zehn Positionen während des freien Flugs. Reiche das Originalvideo, unbearbeitete Frame-/Zeit-/Pixel-Tabelle, Referenzmessung und deren Auflösung ein.\n\nEntscheide aus Daten und physikalischem Modell, welche Komponente näherungsweise linear und welche quadratisch modelliert werden soll. Schätze sämtliche Parameter selbst durch getrennte dokumentierte Fits x=A+B·t und y=C+D·t+E·t². Es werden keine Parameterwerte vorgegeben. Liefere Fit-Einstellungen, A/B/C/D/E mit Einheiten, Residuen beider Komponenten und interpretiere B, D und a_y=2E. Vergleiche den vertikalen quadratischen Fit mit einem vertikalen linearen Fit anhand seiner Residuen. Berechne mindestens zwei Geschwindigkeitsintervalle jeder Komponente selbst und kennzeichne die Zeitintervalle; eine Mittelpunktzuordnung ist bei konstantem Beschleunigungsmodell erklärbar, allgemein nur eine Näherung.\n\n**Verbindliche Diagrammprodukte zu B:** Reiche die vier fachlich getrennten Darstellungen x(t), y(t), v_x(t) und v_y(t) aus dieser echten Wurfaufnahme ein; eine gemeinsame Bildtafel ist gleichwertig. Beide Ortsdarstellungen zeigen eigene Messpunkte und getrennt gekennzeichnete Modellkurven. Beide Geschwindigkeitsdarstellungen zeigen die aus allen benachbarten Rohpunkten gewonnenen Intervallmittel mit tatsächlichen Zeitfenstern beziehungsweise begründetem Mittelpunktbezug; zusätzlich eingezeichnete Modellverläufe v_x=B und v_y=D+2E·t müssen davon unterschieden werden. Beschrifte alle Achsen mit Größen und Einheiten und ordne Punkte, Intervalle, Modell und Auflösung nachprüfbar der eigenen Rohdatentabelle zu. Die mindestens zwei eigenen Intervall-Kontrollrechnungen je Komponente bleiben nötig. Vier Formeln ohne Bewegungsdiagramme oder gegebene C-Daten bestehen diesen Teil nicht.\n\nBestimme eine **quantitative Parametersensitivität**: markiere mindestens ersten, mittleren und letzten Flugpunkt unabhängig ein zweites Mal und fitte erneut; variiere außerdem die Referenzlänge um ihre begründete Ableseunsicherheit. Berichte mindestens die so entstehenden Bereiche für B und a_y mit Einheiten und erläutere, was sie abdecken. Trenne zufälliges Tracking, gemeinsame Kalibrierskalierung und mögliche Perspektive/Physik. Ein paar Sensitivitätsvarianten sind weder garantierte Fehlergrenzen noch ein statistisches Konfidenzintervall. Behaupte keine aus Residuen allein eindeutig bewiesene Ursache. Ein unbekannter Abwurfzeitpunkt wird ohne sichtbares Abwurfereignis oder andere ausreichende Zusatzinformation nicht rekonstruiert. Keine Fit-Parameter aus Material C als Ergebnis der eigenen Aufnahme übernehmen.\n\n**C – unabhängiger numerischer Transfer (8 BE).** Die beigefügte CSV enthält ausdrücklich synthetische, leicht gestörte Aufgabedaten, keine realen Messungen. Bildrate50fps, Referenz100px=(0,500±0,005)m, x rechts/y oben, Pixelmarkierungsauflösung±1px. Frames100,105,110,115,120,125,130,135,140; xpx=41,76,115,150,189,224,263,298,337; ypx=900,885,848,795,718,626,510,379,224. Wähle t=0 beiFrame100. Fitte die beiden Komponenten selbst, gib Parameter/Einheiten und Residuen an und berechne zwei Intervallgeschwindigkeiten. Fitte zusätzlich mit Referenz0,495m und0,505m sowie zwei gegensätzlichen Trackingvarianten: Für y an den beiden äußeren Frames je +1px und am mittleren Frame−1px, beziehungsweise umgekehrt. Berichte die beobachtete Sensitivität von B und a_y und ihre Grenzen. Auch ein korrekter Transferdatensatz ersetzt keines der beiden realen Artefakte.\n\n[Originale CSV-Aufgabedaten](/assets/assessment-materials/physik/k6-measurement-rate-20261115-v3/projectile-fit-transfer.csv)\n![Synthetische Rohpunkte ohne vorgegebene Fitparameter](/assets/assessment-materials/physik/k6-measurement-rate-20261115-v3/projectile-fit-transfer.png)",
+          "taskContentEn": "**A – own uniform-motion recording (8 points).** Make your own fresh safe video of approximately uniform straight motion on a table. Keep the camera stationary, place a checked length scale in the motion plane, and document actual timestamps or a verified constant frame rate. Submit the original video, setup, calibration, and at least eight positions marked by you. Choose axis/origin, independently fit x=A+B·t using a documented digital method, and report A/B with units, residuals, at least one interval velocity calculated by you, and bounded measurement uncertainty. A supplied perfect dataset does not replace your own acquisition.\n\n**Mandatory diagram products for A:** Produce a labelled position-time graph x(t)=s(t) and a velocity-time graph v_x(t)=v(t) from your own video data. The position graph must show the actual marked data points and a separately identified fitted line. The velocity graph contains averages calculated from every adjacent pair of measured positions, with their time-window relation; automated calculation still requires at least one calculation checked by you. An average may be shown as a horizontal segment spanning its window or as a midpoint marker with the approximation explicitly explained. Distinguish any additional model velocity v=B from those data averages. Axes, units, measurement resolution, and each graph’s derivation from your own raw table must be traceable. A parameter table, two isolated velocities, or only a model expression does not replace these graphs.\n\n**B – independent own projectile recording and parameter fitting (16 points).** Independently of A, plan and record a short safe projectile motion, for example a soft ball rolling from a low table into a padded catch area. Setup and safety may be guided; perform the recording, calibration, and analysis yourself. Use a stationary nearly frontal camera. Put the reference length and both axes in the motion plane, freely choose time zero at a visible frame, and mark at least ten positions during free flight. Submit original video, unmodified frame/time/pixel table, reference measurement, and its resolution.\n\nUse data and physics to choose an approximately linear component and a quadratic component. Estimate all parameters yourself in separate documented fits x=A+B·t and y=C+D·t+E·t²; no parameter values are supplied. Submit fit settings, A/B/C/D/E with units, both residual series, and interpretations of B, D, and a_y=2E. Compare the vertical quadratic fit with a vertical linear fit using residuals. Calculate at least two interval velocities for each component yourself and label their intervals; midpoint assignment can be justified for a constant-acceleration model but is generally an approximation.\n\n**Mandatory diagram products for B:** Submit four scientifically distinct representations x(t), y(t), v_x(t), and v_y(t) from this actual projectile recording; one combined figure is equally acceptable. Both position graphs show your measured points and separately identified fitted curves. Both velocity graphs show averages from every adjacent pair of raw points with actual time windows or a justified midpoint relation; distinguish any added model curves v_x=B and v_y=D+2E·t from these averages. Label all axes with quantities and units and make the link between points, intervals, model, resolution, and your own raw table checkable. At least two interval calculations checked by you per component remain required. Four formulas without motion graphs, or supplied C data, do not satisfy this part.\n\nDetermine **quantitative parameter sensitivity**: independently re-mark at least the first, middle, and last flight positions and refit; also vary the reference length by its justified reading uncertainty. Report at least the resulting ranges of B and a_y with units and explain their scope. Distinguish tracking scatter, common calibration scaling, and possible perspective/physical effects. A few sensitivity variants are neither guaranteed error bounds nor a statistical confidence interval. Do not assert a uniquely established cause from residuals alone. Do not reconstruct an unknown launch time without a visible launch event or other sufficient information. Do not copy parameters from C as results of your own recording.\n\n**C – independent numerical transfer (8 points).** The attached CSV explicitly contains synthetic slightly perturbed task data, not real measurements. Frame rate50fps, reference100px=(0.500±0.005)m, x rightward/y upward, marking resolution±1px. Frames100,105,110,115,120,125,130,135,140; xpx=41,76,115,150,189,224,263,298,337; ypx=900,885,848,795,718,626,510,379,224. Choose t=0 at frame100. Independently fit both components and give parameters/units and residuals; calculate two interval velocities. Also refit with reference lengths0.495m and0.505m and two opposite tracking variants: add1px to y at both outer frames and subtract1px at the middle frame, then reverse those changes. Report the observed sensitivity of B and a_y and its limitations. Correct transfer calculations do not replace either real artifact.\n\n[Original CSV task data](/assets/assessment-materials/physik/k6-measurement-rate-20261115-v3/projectile-fit-transfer.csv)\n![Synthetic raw points without supplied fit parameters](/assets/assessment-materials/physik/k6-measurement-rate-20261115-v3/projectile-fit-transfer.en.png)",
+          "solutionContent": "A/B werden an den tatsächlich eingereichten verschiedenen Originalaufnahmen geprüft. Kein fester Zahlenwert ist für diese eigenen Daten vorgeschrieben. Vollständig sind die eigene Kalibrier-/Zeit-/Trackingkette, selbst geschätzte Parameter mit Einheiten (A,C:m; B,D:m/s; E:m/s²), getrennte Residuen und physikalische Deutung. A erfordert einen tatsächlichen linearen Fit, B einen tatsächlichen unabhängigen linearen/quadratischen Komponentenfit und einen Vergleich des vertikalen linearen Alternativmodells. Einsetzen in schon angegebene numerische Terme, Übernahme der C-Werte oder ein Video ohne aus ihm nachvollziehbar bestimmte Parameter genügt nicht. Für B müssen re-markierte Daten und geänderte Längenskala nachweislich erneut angepasst werden, mindestens Bereiche von B und a_y resultieren; bloß „Messfehler vorhanden“ genügt nicht. Eine angenommene ideale g-Zahl darf den gemessenen Fit nicht ersetzen.\n\nC: Die neun Zeiten reichen in0,1-s-Schritten von0bis0,8s; Maßstab nominal0,005m/px. Ungewichteter digitaler Kleinste-Quadrate-Fit ergibt ungefähr A=0,20056m, B=1,85000m/s; C=4,50082m, D=−0,29999m/s, E=−4,90314m/s², also a_y=−9,8063m/s². Rundungen und äquivalente nachvollziehbare Fits sind zulässig. Die x-Residuen sind ungefähr +0,00444/−0,00556m alternierend; y-Residuen sind im Millimeterbereich. Die mittleren Geschwindigkeiten in den ersten zwei Intervallen betragen vx=1,75und1,95m/s sowie vy=−0,75und−1,85m/s. Sie sind nicht einfach den linken Intervallendpunkten als Momentangeschwindigkeiten zuzuordnen. Der vertikale lineare Fit zeigt ein deutlich systematisches Bogenmuster; die beobachtete Krümmung ist nicht durch±1px allein erklärt.\n\nReferenzskalierung0,495/0,505m multipliziert alle Orts-, Geschwindigkeits- und Beschleunigungsparameter gemeinsam mit0,99/1,01; allein daraus B=1,8315bis1,8685m/s und a_y≈−9,9043bis−9,7082m/s². Die zwei vorgeschriebenen Trackingvarianten ergeben abweichende Krümmungsparameter, im Rechenbeleg exakt ausgewiesen. Diese wenigen Varianten sind Sensitivitätsbeispiele, keine vollständige Extremaloptimierung aller Pixelkombinationen und keine95%-Intervalle. Das Vorzeichen von D bezieht sich auf den frei gewählten ersten Filmframe, nicht automatisch auf den Abwurf.\n\nZwingende Auswerteprodukte A: ein aus den eigenen markierten Positionen erzeugtes x(t)-Diagramm mit Messpunkten und separat markierter Fitgerade sowie ein aus denselben Rohdaten erzeugtes v(t)-Diagramm sämtlicher benachbarter Intervallmittel. Zwingende Produkte B: getrennte x(t)- und y(t)-Messpunkt-/Fitdarstellungen und v_x(t)-/v_y(t)-Darstellungen aller benachbarten Intervallmittel. Eine gemeinsame mehrteilige Bildtafel genügt, sofern jede Größe, Achse, Einheit und Daten-/Modelllegende eindeutig ist. Dargestellte Intervallmittel gehören zu ihrem Messfenster; eine Darstellung an der Fenstermitte muss ihren Näherungscharakter nennen. Die gezeichneten Modellwerte B beziehungsweise D+2E·t werden aus den eigenen Fitparametern gewonnen und als Modell erkennbar von den Rohdatenmitteln getrennt. Die Auflösung darf als nachvollziehbare Legendenangabe beziehungsweise geeignete Markierung erscheinen; ein formales Konfidenzband wird nicht verlangt. Beurteilt werden die Diagramme anhand derselben echten Rohdatentabelle, aus der Fits und Kontrollrechnungen stammen. Fehlendes x(t)/v(t) in A oder eine fehlende B-Komponentendarstellung verhindert die volle Punktzahl, auch bei richtigen Fitparametern, Residuen und Sensitivitäten.",
+          "solutionContentEn": "Assess A/B against the two genuinely submitted distinct original recordings. No fixed numerical answer is prescribed for individual data. Complete performance includes the learner’s calibration/time/tracking chain, independently estimated parameters with units (A,C:m; B,D:m/s; E:m/s²), separate residuals, and physical interpretation. A requires an actual linear fit; B requires an actual independent linear/quadratic component fit and comparison with a vertical linear alternative. Substitution into supplied numerical expressions, copying C values, or a video without parameters traceably obtained from it is insufficient. In B, independently re-marked data and changed reference lengths must actually be refitted, producing at least ranges of B and a_y; merely stating that measurement error exists is insufficient. An assumed ideal gravitational acceleration must not replace the measured fit.\n\nC: Nine times run from0to0.8s in0.1-s steps; nominal scale0.005m/px. An unweighted digital least-squares fit gives approximately A=0.20056m, B=1.85000m/s; C=4.50082m, D=−0.29999m/s, E=−4.90314m/s², hence a_y=−9.8063m/s². Rounding and equivalent documented fits are acceptable. x residuals alternate approximately +0.00444/−0.00556m; y residuals are millimetres in size. Average velocities over the first two intervals are vx=1.75and1.95m/s and vy=−0.75and−1.85m/s. They are not automatically instantaneous velocities at left endpoints. The vertical linear fit has a clear systematic curved residual pattern;±1px alone does not explain the observed curvature.\n\nReference scaling0.495/0.505m multiplies all position, velocity, and acceleration parameters together by0.99/1.01; this alone gives B=1.8315to1.8685m/s and a_y≈−9.9043to−9.7082m/s². The two prescribed tracking variants change the curvature estimate, exactly recorded in the numeric receipt. These few variants are sensitivity examples, not complete optimization over every pixel combination or95% intervals. D’s sign refers to the freely chosen first video frame, not automatically to launch.\n\nMandatory A products: an x(t) graph generated from the learner’s marked positions with measured points and a separately identified fitted line, plus a v(t) graph of every adjacent interval average generated from the same raw data. Mandatory B products: separate x(t)/y(t) measured-point and fitted-curve representations and v_x(t)/v_y(t) representations of all adjacent interval averages. A single multi-panel figure is sufficient if every quantity, axis, unit, and data/model legend is unambiguous. Interval averages belong to their windows; plotting them at window centers must state the approximation. Drawn model velocities B or D+2E·t use the learner’s fitted parameters and are clearly distinguished from raw-data averages. Resolution may be documented in a traceable legend or suitable marks; no formal confidence band is required. Assess graphs against the same actual raw table used for fits and check calculations. Missing A x(t)/v(t) or any B component representation prevents full credit even with correct fitted parameters, residuals, and sensitivity results.",
+          "scoring": {
+            "maxPoints": 32,
+            "passingPoints": 32,
+            "steps": [
+              {
+                "id": "video_models_v2_1",
+                "points": 4,
+                "description": "Eigenes Originalvideo A mit überprüfbarer Kalibrierung, Zeitbasis und mindestens acht selbst markierten Punkten. / EN: Own original video A with checkable calibration/time base and at least eight self-marked points."
+              },
+              {
+                "id": "video_models_v2_2",
+                "points": 4,
+                "description": "A: selbstständiger linearer Parameterfit mit Einheiten, Residuen, eigener Intervallrechnung und begrenzter Unsicherheit; zwingend aus den eigenen Rohvideodaten erzeugte, beschriftete x(t)- und v(t)-Diagramme mit Messpunkt-/Modelltrennung und vollständigem Zeitfensterbezug. / EN: A: independent linear parameter fit with units, residuals, own interval calculation, and bounded uncertainty; mandatory labelled x(t) and v(t) graphs generated from the own raw video data, distinguishing measured data/model and showing all velocity time windows."
+              },
+              {
+                "id": "video_models_v2_3",
+                "points": 4,
+                "description": "Unabhängige eigene reale Wurfaufnahme B mit Originalvideo, Maßstab, Zeit-/Pixelrohdaten und mindestens zehn Flugpunkten. / EN: Independent own real projectile recording B with original video, scale, raw time/pixel data, and at least ten flight points."
+              },
+              {
+                "id": "video_models_v2_4",
+                "points": 4,
+                "description": "B: beide Komponenten selbst angepasst; alle fünf Parameter mit Einheiten, Fit-Einstellungen und getrennten Residuen aus der tatsächlichen Aufnahme; zwingend alle vier aus derselben Rohdatentabelle erzeugten beschrifteten x(t), y(t), v_x(t), v_y(t)-Darstellungen, Messpunkt-/Modelltrennung und nachvollziehbare Intervallzuordnung. / EN: B: fits both components independently; all five parameters with units, fit settings, and separate residuals from the actual recording; mandatory labelled x(t), y(t), v_x(t), v_y(t) representations generated from that same raw table, distinguishing measured data/model and giving traceable interval timing."
+              },
+              {
+                "id": "video_models_v2_5",
+                "points": 4,
+                "description": "B: lineares vertikales Alternativmodell anhand Residuen geprüft; Geschwindigkeitsintervalle, Beschleunigung und frei gewählte Anfangswerte korrekt gedeutet. / EN: B: checks a vertical linear alternative using residuals; correctly interprets interval velocities, acceleration, and freely chosen initial values."
+              },
+              {
+                "id": "video_models_v2_6",
+                "points": 4,
+                "description": "B: reale Re-Markierungen und Kalibrierunsicherheit tatsächlich neu gefittet; quantitative Bereiche von B und a_y mit begrenzter, nichtstatistischer Aussage. / EN: B: actually refits real re-markings and calibration uncertainty; gives quantitative B/a_y ranges with a bounded nonstatistical interpretation."
+              },
+              {
+                "id": "video_models_v2_7",
+                "points": 4,
+                "description": "C: aus Rohdaten selbstständige lineare/quadratische Fits mit Einheiten, Residuen und zwei Intervallgeschwindigkeiten. / EN: C: independent linear/quadratic fits from raw data with units, residuals, and two interval velocities."
+              },
+              {
+                "id": "video_models_v2_8",
+                "points": 4,
+                "description": "C: beide Kalibrier- und beide Trackingvarianten neu gefittet, Sensitivität quantitativ berichtet und nicht als garantierte Grenze/Konfidenz ausgegeben. / EN: C: refits both calibration and both tracking variants, reports sensitivity quantitatively, and does not label it a guaranteed bound/confidence interval."
+              }
+            ]
+          }
+        }
+      },
+      "after": {
+        "id": "6345871e-eab4-59c1-a3b6-8456ab9bd7df",
+        "shortKey": "canonical_physics_k6_video_models",
+        "title": "Videoanalyse: eigene Kalibrierung und unabhängiger Wurftransfer",
+        "titleEn": "Video analysis: own calibration and independent projectile transfer",
+        "description": "Die lernende Person kann ein eigenes frisches Video auswerten und an einem unabhängigen kalibrierten Wurfdatensatz Modell, Komponenten und Unsicherheiten prüfen.",
+        "descriptionEn": "The learner can analyze their own fresh video and check model, components, and uncertainties in an independent calibrated projectile dataset.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "Practice",
+          "Assessment",
+          "canonical"
+        ],
+        "contains": [],
+        "requires": [
+          "d67502e3-5e0a-595b-a24b-65b1c40de36e"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-physics",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "PK3_MATHEMATISIEREN"
+          ],
+          "guidingIdeas": [],
+          "phase": "GLOBAL",
+          "area": "Messdaten und Bewegung",
+          "topicCode": "CANONICAL.PHYSICS.PRACTICE.K6.VIDEO_MODELS"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "examData": {
+          "reviewStatus": "needs_review",
+          "reviewNote": "V3-Autorrevision nach unabhängigem REVISE R3: volle eigene Video-/Fit-/Sensitivitätsleistung bleibt erhalten; echte daraus erzeugte Orts-/Geschwindigkeitsdiagramme sind in DE/EN und zwingenden Kriterien ausdrücklich gefordert. Noch keine unabhängige v3-Abnahme.",
+          "coveredGoalIds": [
+            "d67502e3-5e0a-595b-a24b-65b1c40de36e"
+          ],
+          "coveredStrands": [],
+          "demandLevels": [
+            "AB1",
+            "AB2"
+          ],
+          "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/physik/k3k6-content-correction-20261115-v1/video-models.md",
+          "taskContent": "**A – eigene gleichförmige Aufnahme (8 BE).** Erstelle selbst ein neues, sicheres Video einer annähernd gleichförmigen geradlinigen Bewegung auf einem Tisch. Kamera ruht, geprüfte Längenskala liegt in der Bewegungsebene; tatsächliche Zeitstempel oder verifizierte konstante Bildrate dokumentieren. Reiche Originalvideo, Aufbau, Kalibrierung und mindestens acht selbst markierte Positionen ein. Wähle Achse/Nullpunkt, passe selbst x=A+B·t mit einem dokumentierten digitalen Verfahren an und berichte A/B mit Einheiten, Residuen, mindestens eine selbst gerechnete Intervallgeschwindigkeit und begrenzte Messunsicherheit. Ein perfekt vorgegebener Beispieldatensatz ersetzt die eigene Erfassung nicht.\n\n**Verbindliche Diagrammprodukte zu A:** Erzeuge aus deinen eigenen Videodaten ein beschriftetes Orts-Zeit-Diagramm x(t)=s(t) und ein Geschwindigkeits-Zeit-Diagramm v_x(t)=v(t). Im Ortsdiagramm müssen die tatsächlich markierten Messpunkte und die separat gekennzeichnete Fitgerade erkennbar sein. Das Geschwindigkeitsdiagramm enthält die aus allen benachbarten Messpunkten bestimmten Intervallmittel mit ihrem Zeitfensterbezug; bei automatischer Berechnung bleibt mindestens eine eigene Kontrollrechnung nötig. Ein Mittel darf als waagerechter Abschnitt über seinem Fenster oder als Punkt an dessen Mitte mit ausdrücklich erklärter Näherung dargestellt werden. Kennzeichne einen zusätzlich gezeichneten Modellwert v=B getrennt von diesen Datenmitteln. Achsen, Einheiten, Messauflösung und die Herkunft jedes Diagramms aus der eigenen Rohdatentabelle müssen nachvollziehbar sein. Eine Parametertabelle, zwei Einzelgeschwindigkeiten oder nur eine Modellformel ersetzen diese Diagramme nicht.\n\n**B – unabhängige eigene Wurfaufnahme und Parameterfit (16 BE).** Plane und erfasse unabhängig von A eine kurze sichere Wurfbewegung, zum Beispiel einen von einem niedrigen Tisch in eine gepolsterte Auffangzone rollenden weichen Ball. Aufbau und Sicherung dürfen begleitet werden; du führst Aufnahme, Kalibrierung und Auswertung selbst aus. Die feste Kamera sieht die Bewegung möglichst frontal. Lege Referenzlänge und beide Achsen in dieselbe Bewegungsebene, wähle den Zeitnullpunkt frei bei einem tatsächlich sichtbaren Frame und markiere mindestens zehn Positionen während des freien Flugs. Reiche das Originalvideo, unbearbeitete Frame-/Zeit-/Pixel-Tabelle, Referenzmessung und deren Auflösung ein.\n\nEntscheide aus Daten und physikalischem Modell, welche Komponente näherungsweise linear und welche quadratisch modelliert werden soll. Schätze sämtliche Parameter selbst durch getrennte dokumentierte Fits x=A+B·t und y=C+D·t+E·t². Es werden keine Parameterwerte vorgegeben. Liefere Fit-Einstellungen, A/B/C/D/E mit Einheiten, Residuen beider Komponenten und interpretiere B, D und a_y=2E. Vergleiche den vertikalen quadratischen Fit mit einem vertikalen linearen Fit anhand seiner Residuen. Berechne mindestens zwei Geschwindigkeitsintervalle jeder Komponente selbst und kennzeichne die Zeitintervalle; eine Mittelpunktzuordnung ist bei konstantem Beschleunigungsmodell erklärbar, allgemein nur eine Näherung.\n\n**Verbindliche Diagrammprodukte zu B:** Reiche die vier fachlich getrennten Darstellungen x(t), y(t), v_x(t) und v_y(t) aus dieser echten Wurfaufnahme ein; eine gemeinsame Bildtafel ist gleichwertig. Beide Ortsdarstellungen zeigen eigene Messpunkte und getrennt gekennzeichnete Modellkurven. Beide Geschwindigkeitsdarstellungen zeigen die aus allen benachbarten Rohpunkten gewonnenen Intervallmittel mit tatsächlichen Zeitfenstern beziehungsweise begründetem Mittelpunktbezug; zusätzlich eingezeichnete Modellverläufe v_x=B und v_y=D+2E·t müssen davon unterschieden werden. Beschrifte alle Achsen mit Größen und Einheiten und ordne Punkte, Intervalle, Modell und Auflösung nachprüfbar der eigenen Rohdatentabelle zu. Die mindestens zwei eigenen Intervall-Kontrollrechnungen je Komponente bleiben nötig. Vier Formeln ohne Bewegungsdiagramme oder gegebene C-Daten bestehen diesen Teil nicht.\n\nBestimme eine **quantitative Parametersensitivität**: markiere mindestens ersten, mittleren und letzten Flugpunkt unabhängig ein zweites Mal und fitte erneut; variiere außerdem die Referenzlänge um ihre begründete Ableseunsicherheit. Berichte mindestens die so entstehenden Bereiche für B und a_y mit Einheiten und erläutere, was sie abdecken. Trenne zufälliges Tracking, gemeinsame Kalibrierskalierung und mögliche Perspektive/Physik. Ein paar Sensitivitätsvarianten sind weder garantierte Fehlergrenzen noch ein statistisches Konfidenzintervall. Behaupte keine aus Residuen allein eindeutig bewiesene Ursache. Ein unbekannter Abwurfzeitpunkt wird ohne sichtbares Abwurfereignis oder andere ausreichende Zusatzinformation nicht rekonstruiert. Keine Fit-Parameter aus Material C als Ergebnis der eigenen Aufnahme übernehmen.\n\n**C – unabhängiger numerischer Transfer (8 BE).** Die beigefügte CSV enthält ausdrücklich synthetische, leicht gestörte Aufgabedaten, keine realen Messungen. Bildrate50fps, Referenz100px=(0,500±0,005)m, x rechts/y oben, Pixelmarkierungsauflösung±1px. Frames100,105,110,115,120,125,130,135,140; xpx=41,76,115,150,189,224,263,298,337; ypx=900,885,848,795,718,626,510,379,224. Wähle t=0 beiFrame100. Fitte die beiden Komponenten selbst, gib Parameter/Einheiten und Residuen an und berechne zwei Intervallgeschwindigkeiten. Fitte zusätzlich mit Referenz0,495m und0,505m sowie zwei gegensätzlichen Trackingvarianten: Für y an den beiden äußeren Frames je +1px und am mittleren Frame−1px, beziehungsweise umgekehrt. Berichte die beobachtete Sensitivität von B und a_y und ihre Grenzen. Auch ein korrekter Transferdatensatz ersetzt keines der beiden realen Artefakte.\n\n[Originale CSV-Aufgabedaten](/assets/assessment-materials/physik/k6-measurement-rate-20261115-v3/projectile-fit-transfer.csv)\n![Synthetische Rohpunkte ohne vorgegebene Fitparameter](/assets/assessment-materials/physik/k6-measurement-rate-20261115-v3/projectile-fit-transfer.png)\n\nFür beide realen Fälle A/B gilt: Ein Residuenmuster allein trennt Perspektive und reale Beschleunigung nicht eindeutig. Ein anhand der tatsächlichen Daten begründet offengelassener Ursachenvergleich ist vollständig gültig. Nenne zusätzlich, welche kontrollierte geometrische Information (z. B. verifizierte ebene Kalibrierung/Ausrichtung) oder unabhängige Bewegungsmessung eine Unterscheidung erlauben könnte. Ein bloß weiteres ungeprüftes Video genügt nicht automatisch; eine zusätzliche tatsächliche dritte Aufnahme oder Messung wird hier nicht verlangt.",
+          "taskContentEn": "**A – own uniform-motion recording (8 points).** Make your own fresh safe video of approximately uniform straight motion on a table. Keep the camera stationary, place a checked length scale in the motion plane, and document actual timestamps or a verified constant frame rate. Submit the original video, setup, calibration, and at least eight positions marked by you. Choose axis/origin, independently fit x=A+B·t using a documented digital method, and report A/B with units, residuals, at least one interval velocity calculated by you, and bounded measurement uncertainty. A supplied perfect dataset does not replace your own acquisition.\n\n**Mandatory diagram products for A:** Produce a labelled position-time graph x(t)=s(t) and a velocity-time graph v_x(t)=v(t) from your own video data. The position graph must show the actual marked data points and a separately identified fitted line. The velocity graph contains averages calculated from every adjacent pair of measured positions, with their time-window relation; automated calculation still requires at least one calculation checked by you. An average may be shown as a horizontal segment spanning its window or as a midpoint marker with the approximation explicitly explained. Distinguish any additional model velocity v=B from those data averages. Axes, units, measurement resolution, and each graph’s derivation from your own raw table must be traceable. A parameter table, two isolated velocities, or only a model expression does not replace these graphs.\n\n**B – independent own projectile recording and parameter fitting (16 points).** Independently of A, plan and record a short safe projectile motion, for example a soft ball rolling from a low table into a padded catch area. Setup and safety may be guided; perform the recording, calibration, and analysis yourself. Use a stationary nearly frontal camera. Put the reference length and both axes in the motion plane, freely choose time zero at a visible frame, and mark at least ten positions during free flight. Submit original video, unmodified frame/time/pixel table, reference measurement, and its resolution.\n\nUse data and physics to choose an approximately linear component and a quadratic component. Estimate all parameters yourself in separate documented fits x=A+B·t and y=C+D·t+E·t²; no parameter values are supplied. Submit fit settings, A/B/C/D/E with units, both residual series, and interpretations of B, D, and a_y=2E. Compare the vertical quadratic fit with a vertical linear fit using residuals. Calculate at least two interval velocities for each component yourself and label their intervals; midpoint assignment can be justified for a constant-acceleration model but is generally an approximation.\n\n**Mandatory diagram products for B:** Submit four scientifically distinct representations x(t), y(t), v_x(t), and v_y(t) from this actual projectile recording; one combined figure is equally acceptable. Both position graphs show your measured points and separately identified fitted curves. Both velocity graphs show averages from every adjacent pair of raw points with actual time windows or a justified midpoint relation; distinguish any added model curves v_x=B and v_y=D+2E·t from these averages. Label all axes with quantities and units and make the link between points, intervals, model, resolution, and your own raw table checkable. At least two interval calculations checked by you per component remain required. Four formulas without motion graphs, or supplied C data, do not satisfy this part.\n\nDetermine **quantitative parameter sensitivity**: independently re-mark at least the first, middle, and last flight positions and refit; also vary the reference length by its justified reading uncertainty. Report at least the resulting ranges of B and a_y with units and explain their scope. Distinguish tracking scatter, common calibration scaling, and possible perspective/physical effects. A few sensitivity variants are neither guaranteed error bounds nor a statistical confidence interval. Do not assert a uniquely established cause from residuals alone. Do not reconstruct an unknown launch time without a visible launch event or other sufficient information. Do not copy parameters from C as results of your own recording.\n\n**C – independent numerical transfer (8 points).** The attached CSV explicitly contains synthetic slightly perturbed task data, not real measurements. Frame rate50fps, reference100px=(0.500±0.005)m, x rightward/y upward, marking resolution±1px. Frames100,105,110,115,120,125,130,135,140; xpx=41,76,115,150,189,224,263,298,337; ypx=900,885,848,795,718,626,510,379,224. Choose t=0 at frame100. Independently fit both components and give parameters/units and residuals; calculate two interval velocities. Also refit with reference lengths0.495m and0.505m and two opposite tracking variants: add1px to y at both outer frames and subtract1px at the middle frame, then reverse those changes. Report the observed sensitivity of B and a_y and its limitations. Correct transfer calculations do not replace either real artifact.\n\n[Original CSV task data](/assets/assessment-materials/physik/k6-measurement-rate-20261115-v3/projectile-fit-transfer.csv)\n![Synthetic raw points without supplied fit parameters](/assets/assessment-materials/physik/k6-measurement-rate-20261115-v3/projectile-fit-transfer.en.png)\n\nFor both real cases A/B: a residual pattern alone does not uniquely distinguish perspective from real acceleration. A causal comparison justifiably left unresolved using the actual data is fully valid. Also state which controlled geometric information (for example verified planar calibration/alignment) or independent motion measurement could distinguish them. Merely adding another unchecked video is not automatically sufficient; no actual third recording or measurement is required here.",
+          "solutionContent": "A/B werden an den tatsächlich eingereichten verschiedenen Originalaufnahmen geprüft. Kein fester Zahlenwert ist für diese eigenen Daten vorgeschrieben. Vollständig sind die eigene Kalibrier-/Zeit-/Trackingkette, selbst geschätzte Parameter mit Einheiten (A,C:m; B,D:m/s; E:m/s²), getrennte Residuen und physikalische Deutung. A erfordert einen tatsächlichen linearen Fit, B einen tatsächlichen unabhängigen linearen/quadratischen Komponentenfit und einen Vergleich des vertikalen linearen Alternativmodells. Einsetzen in schon angegebene numerische Terme, Übernahme der C-Werte oder ein Video ohne aus ihm nachvollziehbar bestimmte Parameter genügt nicht. Für B müssen re-markierte Daten und geänderte Längenskala nachweislich erneut angepasst werden, mindestens Bereiche von B und a_y resultieren; bloß „Messfehler vorhanden“ genügt nicht. Eine angenommene ideale g-Zahl darf den gemessenen Fit nicht ersetzen.\n\nC: Die neun Zeiten reichen in0,1-s-Schritten von0bis0,8s; Maßstab nominal0,005m/px. Ungewichteter digitaler Kleinste-Quadrate-Fit ergibt ungefähr A=0,20056m, B=1,85000m/s; C=4,50082m, D=−0,29999m/s, E=−4,90314m/s², also a_y=−9,8063m/s². Rundungen und äquivalente nachvollziehbare Fits sind zulässig. Die x-Residuen sind ungefähr +0,00444/−0,00556m alternierend; y-Residuen sind im Millimeterbereich. Die mittleren Geschwindigkeiten in den ersten zwei Intervallen betragen vx=1,75und1,95m/s sowie vy=−0,75und−1,85m/s. Sie sind nicht einfach den linken Intervallendpunkten als Momentangeschwindigkeiten zuzuordnen. Der vertikale lineare Fit zeigt ein deutlich systematisches Bogenmuster; die beobachtete Krümmung ist nicht durch±1px allein erklärt.\n\nReferenzskalierung0,495/0,505m multipliziert alle Orts-, Geschwindigkeits- und Beschleunigungsparameter gemeinsam mit0,99/1,01; allein daraus B=1,8315bis1,8685m/s und a_y≈−9,9043bis−9,7082m/s². Die zwei vorgeschriebenen Trackingvarianten ergeben abweichende Krümmungsparameter, im Rechenbeleg exakt ausgewiesen. Diese wenigen Varianten sind Sensitivitätsbeispiele, keine vollständige Extremaloptimierung aller Pixelkombinationen und keine95%-Intervalle. Das Vorzeichen von D bezieht sich auf den frei gewählten ersten Filmframe, nicht automatisch auf den Abwurf.\n\nZwingende Auswerteprodukte A: ein aus den eigenen markierten Positionen erzeugtes x(t)-Diagramm mit Messpunkten und separat markierter Fitgerade sowie ein aus denselben Rohdaten erzeugtes v(t)-Diagramm sämtlicher benachbarter Intervallmittel. Zwingende Produkte B: getrennte x(t)- und y(t)-Messpunkt-/Fitdarstellungen und v_x(t)-/v_y(t)-Darstellungen aller benachbarten Intervallmittel. Eine gemeinsame mehrteilige Bildtafel genügt, sofern jede Größe, Achse, Einheit und Daten-/Modelllegende eindeutig ist. Dargestellte Intervallmittel gehören zu ihrem Messfenster; eine Darstellung an der Fenstermitte muss ihren Näherungscharakter nennen. Die gezeichneten Modellwerte B beziehungsweise D+2E·t werden aus den eigenen Fitparametern gewonnen und als Modell erkennbar von den Rohdatenmitteln getrennt. Die Auflösung darf als nachvollziehbare Legendenangabe beziehungsweise geeignete Markierung erscheinen; ein formales Konfidenzband wird nicht verlangt. Beurteilt werden die Diagramme anhand derselben echten Rohdatentabelle, aus der Fits und Kontrollrechnungen stammen. Fehlendes x(t)/v(t) in A oder eine fehlende B-Komponentendarstellung verhindert die volle Punktzahl, auch bei richtigen Fitparametern, Residuen und Sensitivitäten.\n\nVolle Evidenz erlaubt ausdrücklich „mit diesen Daten nicht eindeutig entscheidbar“ bei begründeter Unsicherheits-/Identifizierbarkeitsgrenze. Eine Ursache wird nur bei tatsächlich hinreichender unabhängiger Kontrolle eindeutig behauptet; die passende Kontrollinformation darf als begründeter Vorschlag benannt werden, ohne zusätzlichen Pflichtversuch.",
+          "solutionContentEn": "Assess A/B against the two genuinely submitted distinct original recordings. No fixed numerical answer is prescribed for individual data. Complete performance includes the learner’s calibration/time/tracking chain, independently estimated parameters with units (A,C:m; B,D:m/s; E:m/s²), separate residuals, and physical interpretation. A requires an actual linear fit; B requires an actual independent linear/quadratic component fit and comparison with a vertical linear alternative. Substitution into supplied numerical expressions, copying C values, or a video without parameters traceably obtained from it is insufficient. In B, independently re-marked data and changed reference lengths must actually be refitted, producing at least ranges of B and a_y; merely stating that measurement error exists is insufficient. An assumed ideal gravitational acceleration must not replace the measured fit.\n\nC: Nine times run from0to0.8s in0.1-s steps; nominal scale0.005m/px. An unweighted digital least-squares fit gives approximately A=0.20056m, B=1.85000m/s; C=4.50082m, D=−0.29999m/s, E=−4.90314m/s², hence a_y=−9.8063m/s². Rounding and equivalent documented fits are acceptable. x residuals alternate approximately +0.00444/−0.00556m; y residuals are millimetres in size. Average velocities over the first two intervals are vx=1.75and1.95m/s and vy=−0.75and−1.85m/s. They are not automatically instantaneous velocities at left endpoints. The vertical linear fit has a clear systematic curved residual pattern;±1px alone does not explain the observed curvature.\n\nReference scaling0.495/0.505m multiplies all position, velocity, and acceleration parameters together by0.99/1.01; this alone gives B=1.8315to1.8685m/s and a_y≈−9.9043to−9.7082m/s². The two prescribed tracking variants change the curvature estimate, exactly recorded in the numeric receipt. These few variants are sensitivity examples, not complete optimization over every pixel combination or95% intervals. D’s sign refers to the freely chosen first video frame, not automatically to launch.\n\nMandatory A products: an x(t) graph generated from the learner’s marked positions with measured points and a separately identified fitted line, plus a v(t) graph of every adjacent interval average generated from the same raw data. Mandatory B products: separate x(t)/y(t) measured-point and fitted-curve representations and v_x(t)/v_y(t) representations of all adjacent interval averages. A single multi-panel figure is sufficient if every quantity, axis, unit, and data/model legend is unambiguous. Interval averages belong to their windows; plotting them at window centers must state the approximation. Drawn model velocities B or D+2E·t use the learner’s fitted parameters and are clearly distinguished from raw-data averages. Resolution may be documented in a traceable legend or suitable marks; no formal confidence band is required. Assess graphs against the same actual raw table used for fits and check calculations. Missing A x(t)/v(t) or any B component representation prevents full credit even with correct fitted parameters, residuals, and sensitivity results.\n\nFull evidence explicitly permits \"not uniquely decidable from these data\" with a justified uncertainty/identifiability limit. A cause is uniquely asserted only with actually sufficient independent control; appropriate control information may be proposed with justification without an additional mandatory experiment.",
+          "scoring": {
+            "maxPoints": 32,
+            "passingPoints": 32,
+            "steps": [
+              {
+                "id": "video_models_v2_1",
+                "points": 4,
+                "description": "Eigenes Originalvideo A mit überprüfbarer Kalibrierung, Zeitbasis und mindestens acht selbst markierten Punkten. / EN: Own original video A with checkable calibration/time base and at least eight self-marked points."
+              },
+              {
+                "id": "video_models_v2_2",
+                "points": 4,
+                "description": "A: selbstständiger linearer Parameterfit mit Einheiten, Residuen, eigener Intervallrechnung und begrenzter Unsicherheit; zwingend aus den eigenen Rohvideodaten erzeugte, beschriftete x(t)- und v(t)-Diagramme mit Messpunkt-/Modelltrennung und vollständigem Zeitfensterbezug. / EN: A: independent linear parameter fit with units, residuals, own interval calculation, and bounded uncertainty; mandatory labelled x(t) and v(t) graphs generated from the own raw video data, distinguishing measured data/model and showing all velocity time windows."
+              },
+              {
+                "id": "video_models_v2_3",
+                "points": 4,
+                "description": "Unabhängige eigene reale Wurfaufnahme B mit Originalvideo, Maßstab, Zeit-/Pixelrohdaten und mindestens zehn Flugpunkten. / EN: Independent own real projectile recording B with original video, scale, raw time/pixel data, and at least ten flight points."
+              },
+              {
+                "id": "video_models_v2_4",
+                "points": 4,
+                "description": "B: beide Komponenten selbst angepasst; alle fünf Parameter mit Einheiten, Fit-Einstellungen und getrennten Residuen aus der tatsächlichen Aufnahme; zwingend alle vier aus derselben Rohdatentabelle erzeugten beschrifteten x(t), y(t), v_x(t), v_y(t)-Darstellungen, Messpunkt-/Modelltrennung und nachvollziehbare Intervallzuordnung. / EN: B: fits both components independently; all five parameters with units, fit settings, and separate residuals from the actual recording; mandatory labelled x(t), y(t), v_x(t), v_y(t) representations generated from that same raw table, distinguishing measured data/model and giving traceable interval timing."
+              },
+              {
+                "id": "video_models_v2_5",
+                "points": 4,
+                "description": "B: lineares vertikales Alternativmodell anhand Residuen geprüft; Geschwindigkeitsintervalle, Beschleunigung und frei gewählte Anfangswerte korrekt gedeutet. / EN: B: checks a vertical linear alternative using residuals; correctly interprets interval velocities, acceleration, and freely chosen initial values."
+              },
+              {
+                "id": "video_models_v2_6",
+                "points": 4,
+                "description": "B: reale Re-Markierungen und Kalibrierunsicherheit tatsächlich neu gefittet; quantitative Bereiche von B und a_y mit begrenzter, nichtstatistischer Aussage. / EN: B: actually refits real re-markings and calibration uncertainty; gives quantitative B/a_y ranges with a bounded nonstatistical interpretation. Ursachenvergleich A/B: begründet offene Zuordnung zählt vollständig; zusätzliche unterscheidende Kontrollinformation benennen, keine eindeutige Ursache aus Residuen allein erfinden. / EN: A/B causal comparison may remain justifiably unresolved for full credit; identify discriminating control information and invent no unique cause from residuals alone."
+              },
+              {
+                "id": "video_models_v2_7",
+                "points": 4,
+                "description": "C: aus Rohdaten selbstständige lineare/quadratische Fits mit Einheiten, Residuen und zwei Intervallgeschwindigkeiten. / EN: C: independent linear/quadratic fits from raw data with units, residuals, and two interval velocities."
+              },
+              {
+                "id": "video_models_v2_8",
+                "points": 4,
+                "description": "C: beide Kalibrier- und beide Trackingvarianten neu gefittet, Sensitivität quantitativ berichtet und nicht als garantierte Grenze/Konfidenz ausgegeben. / EN: C: refits both calibration and both tracking variants, reports sensitivity quantitatively, and does not label it a guaranteed bound/confidence interval."
+              }
+            ]
+          }
+        }
+      },
+      "changedExamDataFields": [
+        "scoring",
+        "solutionContent",
+        "solutionContentEn",
+        "sourceArtifactPath",
+        "taskContent",
+        "taskContentEn"
+      ],
+      "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/physik/k3k6-content-correction-20261115-v1/video-models.md"
+    },
+    {
+      "assessmentId": "fbaeed34-81a0-5955-9777-bf103002feee",
+      "before": {
+        "id": "fbaeed34-81a0-5955-9777-bf103002feee",
+        "title": "Prüfungsaufgabe: Geschwindigkeitspfeile in einem echten Bewegungsvideo konstruieren",
+        "description": "Die lernende Person kann an einem tatsächlich ausgewerteten Bewegungsvideo räumliche und zeitliche Skalen nutzen, Geschwindigkeitspfeile maßstäblich bestimmen und ihre Änderung grafisch deuten.",
+        "type": "atomic",
+        "contains": [],
+        "requires": [
+          "d61ea362-f6c3-5eab-ac30-2d0e265ac0f6"
+        ],
+        "tags": [
+          "GK",
+          "LK",
+          "canonical",
+          "SekI",
+          "Assessment",
+          "Practice"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BY"
+          ]
+        },
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-physics",
+          "demandLevel": "AB2",
+          "phase": "GLOBAL",
+          "area": "Mechanik",
+          "topicCode": "CANONICAL.PHYSICS.BY.PH8.FBAEED34",
+          "processCompetencies": [
+            "PK1_EXPERIMENTIEREN",
+            "PK3_MATHEMATISIEREN"
+          ]
+        },
+        "examData": {
+          "reviewStatus": "needs_review",
+          "coveredGoalIds": [
+            "d61ea362-f6c3-5eab-ac30-2d0e265ac0f6"
+          ],
+          "taskContent": "Nimm mit einer feststehenden Kamera von oben ein kurzes Video auf, in dem ein flacher Gegenstand auf einer ebenen Fläche zuerst annähernd geradlinig und anschließend in eine andere Richtung bewegt wird. Lege ein Lineal oder ein kariertes Blatt in dieselbe Bewegungsebene. Notiere die tatsächliche Bildrate; falls sie variabel ist, verwende die tatsächlichen Zeitstempel. Ein vorgelegtes reales Video mit sichtbarer Längenskala und tatsächlichen Zeitangaben ist ebenso zulässig. Ein erfundenes Positionsprotokoll genügt nicht.\n1. Importiere das Video in eine geeignete Software und dokumentiere die Kalibrierung. Markiere für zwei kurze, gleich lange Zeitintervalle vor und nach dem Richtungswechsel jeweils denselben Punkt des Körpers und exportiere ein Bild mit den Markierungen. Vermeide Intervalle, die den Richtungswechsel selbst überdecken.\n2. Bestimme für jedes der beiden Intervalle die räumliche Verschiebung und die verstrichene Zeit. Konstruiere die beiden Geschwindigkeitspfeile als Verschiebungspfeil geteilt durch die Intervalllänge mit derselben eingezeichneten Pfeilskala. Gib Betrag und Bewegungsrichtung an.\n3. Trage die beiden Geschwindigkeitspfeile von demselben Anfangspunkt aus ab und konstruiere grafisch den Änderungspfeil vom Ende des ersten zum Ende des zweiten Pfeils. Deute ihn. Erkläre an deinen Messintervallen, weshalb die Pfeile zunächst Intervallgeschwindigkeiten und nur näherungsweise Geschwindigkeiten an den Intervallmitten darstellen. Benenne eine konkrete Fehlerquelle deines Videos.\n4. Wiederhole die Auswertung unabhängig an einem zweiten neuen realen Clip oder einer zweiten neuen echten Aufnahme: diesmal mit annähernd gleichem Geschwindigkeitsbetrag, aber anderer Bewegungsrichtung. Dokumentiere erneut Kalibrierung, beide Messfenster und Pfeile; erkläre an den tatsächlichen Pfeilen, warum der Änderungspfeil trotzdem ungleich null sein kann. Der zweite Clip darf vorgelegt sein, darf aber keine fertigen Geschwindigkeitspfeile oder Ergebnisse liefern.",
+          "solutionContent": "Die Lösung muss das reale Video, tatsächliche Zeit- und Längenskala sowie zwei nachvollziehbare Ortsdifferenzen enthalten. Jeder Geschwindigkeitspfeil hat die Richtung der entsprechenden Ortsänderung und den Betrag Verschiebungslänge geteilt durch Zeitintervall. Die beiden Pfeile werden mit derselben Skala gezeichnet. Nach Verschieben auf denselben Anfangspunkt führt der Änderungspfeil von der Spitze des ersten zur Spitze des zweiten Geschwindigkeitspfeils; er beschreibt die Vektoränderung, nicht die zurückgelegte Strecke. Auch bei gleichem Geschwindigkeitsbetrag kann die Richtungsänderung einen nicht verschwindenden Änderungspfeil erzeugen. Die endlichen Messfenster liefern Mittelwerte; die Zuordnung zur Intervallmitte ist bei kurzen Fenstern und hinreichend gleichmäßiger Bewegung eine Näherung. Individuelle Werte werden am echten Artefakt geprüft. Perspektivfehler, Punktwahl, Zeitstempel oder Bildunschärfe werden konkret an der eigenen Auswertung erläutert. Ein formal passendes Zahlenbeispiel ohne reales Artefakt besteht nicht.\nDer zweite neue reale Clip wird getrennt ausgewertet. Gleiche Beträge genügen nicht für gleiche Geschwindigkeitsvektoren; bei verschiedener Richtung ist der Änderungspfeil nicht null. Die tatsächlichen Frames, Skalen und Pfeile müssen die Begründung tragen, keine bloß behauptete Wiederholung.",
+          "scoring": {
+            "maxPoints": 14,
+            "passingPoints": 14,
+            "steps": [
+              {
+                "id": "ph8_video_1",
+                "points": 4,
+                "description": "Zwei neue reale Clips mit tatsächlicher räumlicher/zeitlicher Kalibrierung und dokumentierten Messfenstern vorgelegt. / EN: Two fresh real clips with actual spatial/temporal calibration and documented measurement windows."
+              },
+              {
+                "id": "ph8_video_2",
+                "points": 5,
+                "description": "Ortsänderung und Zeitintervalle korrekt verwendet sowie beide Geschwindigkeitspfeile maßstäblich mit Betrag und Richtung konstruiert / EN: Correct displacements/durations and scaled velocity arrows with magnitudes/directions in both clips."
+              },
+              {
+                "id": "ph8_video_3",
+                "points": 5,
+                "description": "Geschwindigkeitsänderung grafisch richtig konstruiert und gedeutet, Intervall-/Zeitpunktnäherung und konkrete Messgrenze erläutert / EN: Correct graphical velocity-change construction and interpretation, midpoint limits, concrete measurement limits, and independent equal-speed direction-change transfer."
+              }
+            ]
+          },
+          "reviewNote": "Aus dem Quellenstrom übernommener und bilingual konkretisierter Autorenvorschlag; unabhängiges Review ausstehend.",
+          "coveredStrands": [
+            "LI_BEWEGUNG"
+          ],
+          "demandLevels": [
+            "AB1",
+            "AB2"
+          ],
+          "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/physik/k6-measurement-rate-20261115-v3/by-ph8-video-arrows.md",
+          "taskContentEn": "Use a stationary overhead camera to record a short real video of a flat object moving approximately straight and then in a different direction on a level surface. Put a ruler or grid in the same plane. Record the actual frame rate or actual timestamps if variable. A supplied real video with visible length scale and actual timing is equally acceptable. Invented positions are insufficient.\n1. Import the video in suitable software and document calibration. Mark the same body point over two short equal-duration windows before and after the turn, avoiding windows spanning the turn. Export frames with the marks.\n2. Find both displacements and durations. Construct both velocity arrows as displacement divided by window duration using the same drawn arrow scale. Give magnitudes and directions.\n3. Place both arrows at one origin and draw the change arrow from the first arrowhead to the second. Interpret it and explain why these are interval averages and only approximate midpoint velocities. Identify one concrete error source in this video.\n4. Independently repeat the analysis on a second fresh real clip or recording, now with approximately equal speed magnitude but different motion direction. Again document calibration, windows, and arrows; explain from the actual arrows why the velocity change can be nonzero. This supplied second clip may contain no finished velocity arrows or results.",
+          "solutionContentEn": "Require both real source clips, actual time/length scales, and two traceable displacement measurements in each. Each velocity arrow has the displacement direction and displacement magnitude divided by duration, using the same arrow scale. With both arrows moved to the same origin, the change arrow runs from the first arrowhead to the second; it represents velocity change, not traveled distance. Equal speed magnitude with different direction can yield nonzero change. Finite windows give averages; midpoint assignment is an approximation for short windows with sufficiently smooth motion. Assess individual values against actual frames. Explain perspective, tracking, timing, or blur using concrete evidence. A formal numerical example without real clips does not pass. The fresh second clip must have its own measured arrows and direction-change interpretation, not merely a claimed repetition."
+        },
+        "titleEn": "Assessment: construct velocity arrows in a real motion video",
+        "descriptionEn": "The learner can use spatial and temporal scales in an actually analyzed motion video to construct scaled velocity arrows and interpret their graphical change.",
+        "weight": 1,
+        "sourceRef": "SkillPilot-eigene Operationalisierung nach LehrplanPLUS Bayern Physik8, Lernbereich3.1; Quellenextraktion Ph8.3.2 und Ph8.3.3. Keine wortgleiche amtliche Kompetenzbehauptung."
+      },
+      "after": {
+        "id": "fbaeed34-81a0-5955-9777-bf103002feee",
+        "title": "Prüfungsaufgabe: Geschwindigkeitspfeile in einem echten Bewegungsvideo konstruieren",
+        "description": "Die lernende Person kann an einem tatsächlich ausgewerteten Bewegungsvideo räumliche und zeitliche Skalen nutzen, Geschwindigkeitspfeile maßstäblich bestimmen und ihre Änderung grafisch deuten.",
+        "type": "atomic",
+        "contains": [],
+        "requires": [
+          "d61ea362-f6c3-5eab-ac30-2d0e265ac0f6"
+        ],
+        "tags": [
+          "GK",
+          "LK",
+          "canonical",
+          "SekI",
+          "Assessment",
+          "Practice"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BY"
+          ]
+        },
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-physics",
+          "demandLevel": "AB2",
+          "phase": "GLOBAL",
+          "area": "Mechanik",
+          "topicCode": "CANONICAL.PHYSICS.BY.PH8.FBAEED34",
+          "processCompetencies": [
+            "PK1_EXPERIMENTIEREN",
+            "PK3_MATHEMATISIEREN"
+          ]
+        },
+        "examData": {
+          "reviewStatus": "needs_review",
+          "coveredGoalIds": [
+            "d61ea362-f6c3-5eab-ac30-2d0e265ac0f6"
+          ],
+          "taskContent": "Die räumliche und zeitliche Kalibrierung einschließlich tatsächlicher Zeitbasis, Längenmaßstab und Auflösung wird für beide echten Clips passend bereitgestellt. Verwende und dokumentiere diese Information; selbstständiges Herstellen der Kalibrierung ist keine Bestehensbedingung. Eine eigene Aufnahme/Kalibrierung ist freiwillig gleichwertig, wenn ihre tatsächlichen Angaben geprüft sind.\n\nNimm mit einer feststehenden Kamera von oben ein kurzes Video auf, in dem ein flacher Gegenstand auf einer ebenen Fläche zuerst annähernd geradlinig und anschließend in eine andere Richtung bewegt wird. Lege ein Lineal oder ein kariertes Blatt in dieselbe Bewegungsebene. Notiere die tatsächliche Bildrate; falls sie variabel ist, verwende die tatsächlichen Zeitstempel. Ein vorgelegtes reales Video mit sichtbarer Längenskala und tatsächlichen Zeitangaben ist ebenso zulässig. Ein erfundenes Positionsprotokoll genügt nicht.\n1. Importiere das Video in eine geeignete Software und dokumentiere die angewandte bereitgestellte oder freiwillig selbst hergestellte Kalibrierung. Markiere für zwei kurze, gleich lange Zeitintervalle vor und nach dem Richtungswechsel jeweils denselben Punkt des Körpers und exportiere ein Bild mit den Markierungen. Vermeide Intervalle, die den Richtungswechsel selbst überdecken.\n2. Bestimme für jedes der beiden Intervalle die räumliche Verschiebung und die verstrichene Zeit. Konstruiere die beiden Geschwindigkeitspfeile als Verschiebungspfeil geteilt durch die Intervalllänge mit derselben eingezeichneten Pfeilskala. Gib Betrag und Bewegungsrichtung an.\n3. Trage die beiden Geschwindigkeitspfeile von demselben Anfangspunkt aus ab und konstruiere grafisch den Änderungspfeil vom Ende des ersten zum Ende des zweiten Pfeils. Deute ihn. Erkläre an deinen Messintervallen, weshalb die Pfeile zunächst Intervallgeschwindigkeiten und nur näherungsweise Geschwindigkeiten an den Intervallmitten darstellen. Benenne eine konkrete Fehlerquelle deines Videos.\n4. Wiederhole die Auswertung unabhängig an einem zweiten neuen realen Clip oder einer zweiten neuen echten Aufnahme: diesmal mit annähernd gleichem Geschwindigkeitsbetrag, aber anderer Bewegungsrichtung. Dokumentiere erneut Kalibrierung, beide Messfenster und Pfeile; erkläre an den tatsächlichen Pfeilen, warum der Änderungspfeil trotzdem ungleich null sein kann. Der zweite Clip darf vorgelegt sein, darf aber keine fertigen Geschwindigkeitspfeile oder Ergebnisse liefern.",
+          "solutionContent": "Die Lösung muss das reale Video, tatsächliche Zeit- und Längenskala sowie zwei nachvollziehbare Ortsdifferenzen enthalten. Jeder Geschwindigkeitspfeil hat die Richtung der entsprechenden Ortsänderung und den Betrag Verschiebungslänge geteilt durch Zeitintervall. Die beiden Pfeile werden mit derselben Skala gezeichnet. Nach Verschieben auf denselben Anfangspunkt führt der Änderungspfeil von der Spitze des ersten zur Spitze des zweiten Geschwindigkeitspfeils; er beschreibt die Vektoränderung, nicht die zurückgelegte Strecke. Auch bei gleichem Geschwindigkeitsbetrag kann die Richtungsänderung einen nicht verschwindenden Änderungspfeil erzeugen. Die endlichen Messfenster liefern Mittelwerte; die Zuordnung zur Intervallmitte ist bei kurzen Fenstern und hinreichend gleichmäßiger Bewegung eine Näherung. Individuelle Werte werden am echten Artefakt geprüft. Perspektivfehler, Punktwahl, Zeitstempel oder Bildunschärfe werden konkret an der eigenen Auswertung erläutert. Ein formal passendes Zahlenbeispiel ohne reales Artefakt besteht nicht.\nDer zweite neue reale Clip wird getrennt ausgewertet. Gleiche Beträge genügen nicht für gleiche Geschwindigkeitsvektoren; bei verschiedener Richtung ist der Änderungspfeil nicht null. Die tatsächlichen Frames, Skalen und Pfeile müssen die Begründung tragen, keine bloß behauptete Wiederholung.\nDie bereitgestellte geprüfte Kalibrierung korrekt anzuwenden erfüllt die Kalibrierungsanforderung vollständig; eine selbst hergestellte Kalibrierung oder eigene Aufnahme ist kein Zusatzkriterium.",
+          "scoring": {
+            "maxPoints": 14,
+            "passingPoints": 14,
+            "steps": [
+              {
+                "id": "ph8_video_1",
+                "points": 4,
+                "description": "Zwei neue reale Clips mit nachvollziehbar angewandter bereitgestellter (oder freiwillig selbst hergestellter) räumlicher/zeitlicher Kalibrierung und dokumentierten Messfenstern; keine Pflicht zu eigener Kalibrierung. / EN: Two fresh real clips with traceably applied supplied (or optional independently established) spatial/temporal calibration and documented windows; no independent calibration requirement."
+              },
+              {
+                "id": "ph8_video_2",
+                "points": 5,
+                "description": "Ortsänderung und Zeitintervalle korrekt verwendet sowie beide Geschwindigkeitspfeile maßstäblich mit Betrag und Richtung konstruiert / EN: Correct displacements/durations and scaled velocity arrows with magnitudes/directions in both clips."
+              },
+              {
+                "id": "ph8_video_3",
+                "points": 5,
+                "description": "Geschwindigkeitsänderung grafisch richtig konstruiert und gedeutet, Intervall-/Zeitpunktnäherung und konkrete Messgrenze erläutert / EN: Correct graphical velocity-change construction and interpretation, midpoint limits, concrete measurement limits, and independent equal-speed direction-change transfer."
+              }
+            ]
+          },
+          "reviewNote": "Aus dem Quellenstrom übernommener und bilingual konkretisierter Autorenvorschlag; unabhängiges Review ausstehend.",
+          "coveredStrands": [
+            "LI_BEWEGUNG"
+          ],
+          "demandLevels": [
+            "AB1",
+            "AB2"
+          ],
+          "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/physik/k3k6-content-correction-20261115-v1/by-ph8-video-arrows.md",
+          "taskContentEn": "Appropriate spatial and temporal calibration, including actual timing, length scale, and resolution, is supplied for both real clips. Use and document it; independently establishing calibration is not a pass requirement. An own recording/calibration is an equally valid optional route when its actual information is checked.\n\nUse a stationary overhead camera to record a short real video of a flat object moving approximately straight and then in a different direction on a level surface. Put a ruler or grid in the same plane. Record the actual frame rate or actual timestamps if variable. A supplied real video with visible length scale and actual timing is equally acceptable. Invented positions are insufficient.\n1. Import the video in suitable software and document the supplied or optional independently established calibration used. Mark the same body point over two short equal-duration windows before and after the turn, avoiding windows spanning the turn. Export frames with the marks.\n2. Find both displacements and durations. Construct both velocity arrows as displacement divided by window duration using the same drawn arrow scale. Give magnitudes and directions.\n3. Place both arrows at one origin and draw the change arrow from the first arrowhead to the second. Interpret it and explain why these are interval averages and only approximate midpoint velocities. Identify one concrete error source in this video.\n4. Independently repeat the analysis on a second fresh real clip or recording, now with approximately equal speed magnitude but different motion direction. Again document calibration, windows, and arrows; explain from the actual arrows why the velocity change can be nonzero. This supplied second clip may contain no finished velocity arrows or results.",
+          "solutionContentEn": "Require both real source clips, actual time/length scales, and two traceable displacement measurements in each. Each velocity arrow has the displacement direction and displacement magnitude divided by duration, using the same arrow scale. With both arrows moved to the same origin, the change arrow runs from the first arrowhead to the second; it represents velocity change, not traveled distance. Equal speed magnitude with different direction can yield nonzero change. Finite windows give averages; midpoint assignment is an approximation for short windows with sufficiently smooth motion. Assess individual values against actual frames. Explain perspective, tracking, timing, or blur using concrete evidence. A formal numerical example without real clips does not pass. The fresh second clip must have its own measured arrows and direction-change interpretation, not merely a claimed repetition.\nCorrectly applying the supplied checked calibration fully meets the calibration requirement; independently establishing calibration or recording a clip is not an additional criterion."
+        },
+        "titleEn": "Assessment: construct velocity arrows in a real motion video",
+        "descriptionEn": "The learner can use spatial and temporal scales in an actually analyzed motion video to construct scaled velocity arrows and interpret their graphical change.",
+        "weight": 1,
+        "sourceRef": "SkillPilot-eigene Operationalisierung nach LehrplanPLUS Bayern Physik8, Lernbereich3.1; Quellenextraktion Ph8.3.2 und Ph8.3.3. Keine wortgleiche amtliche Kompetenzbehauptung."
+      },
+      "changedExamDataFields": [
+        "scoring",
+        "solutionContent",
+        "solutionContentEn",
+        "sourceArtifactPath",
+        "taskContent",
+        "taskContentEn"
+      ],
+      "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/physik/k3k6-content-correction-20261115-v1/by-ph8-video-arrows.md"
+    },
+    {
+      "assessmentId": "04f643c6-74f5-56e9-a9c7-ea39ae98db31",
+      "before": null,
+      "after": {
+        "id": "04f643c6-74f5-56e9-a9c7-ea39ae98db31",
+        "shortKey": "canonical_physics_personal_lens_screen_two_defocus_investigations",
+        "title": "Prüfungsaufgabe: Zwei eigene Linse-Schirm-Untersuchungen begründet vergleichen",
+        "titleEn": "Assessment: Compare two personal lens-screen investigations with evidence",
+        "description": "Zwei persönlich durchgeführte sichere Linse-Schirm-Untersuchungen mit tatsächlichen Rohdaten, geänderter optischer Bedingung und begrenztem Modell-/Messvergleich.",
+        "descriptionEn": "Two personally performed safe lens-screen investigations with actual raw measurements, changed optical conditions, and a bounded model/measurement comparison.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "Practice",
+          "Assessment",
+          "canonical"
+        ],
+        "type": "atomic",
+        "contains": [],
+        "requires": [
+          "ce14a7e7-7e2a-517f-a465-78ba3fbe414d"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-physics",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "PK1_EXPERIMENTIEREN",
+            "PK2_MODELLIEREN",
+            "PK4_KOMMUNIZIEREN"
+          ],
+          "guidingIdeas": [
+            "LI_WELLEN",
+            "LI_FELDER",
+            "LI_TECHNIK"
+          ],
+          "phase": "GLOBAL",
+          "area": "Biophysik",
+          "topicCode": "CANONICAL_PHYSICS_BIOPHYSICS_VISUAL_IMPAIRMENTS_EXPERIMENT"
+        },
+        "extendedData": {
+          "applicabilityFromRequires": true,
+          "applicabilityMappingInheritance": "boundary"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "examData": {
+          "reviewStatus": "needs_review",
+          "coveredGoalIds": [
+            "ce14a7e7-7e2a-517f-a465-78ba3fbe414d"
+          ],
+          "coveredStrands": [
+            "LI_WELLEN"
+          ],
+          "demandLevels": [
+            "AB1",
+            "AB2",
+            "AB3"
+          ],
+          "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/physik/k3k6-content-correction-20261115-v1/personal-lens-screen-investigations.md",
+          "taskContent": "Führe zwei eigene sichere Linse-Schirm-Untersuchungen an einer realen optischen Bank durch. Eine bloße Planung, Simulation, fremde Messreihe oder Beispielrechnung genügt für keinen der beiden Fälle. Verwende ein schwaches LED-Objekt (z. B. beleuchteter Pfeil), eine dünne Sammellinse in Halterung, eine Abstandsskala und einen verschiebbaren Messschirm. Kein Sonnenlicht und kein Laser; weder in die Quelle noch durch die Linse in eine helle Quelle sehen. Die Lehrkraft prüft den standfesten Aufbau. Gegebene tatsächliche Brennweite f und ihre begründete Unsicherheit/Herstellerangabe, Skalenauflösung und etwaiger Bezugspunktversatz werden dokumentiert; erfundene Genauigkeiten sind unzulässig. Es wird kein echtes Auge bestrahlt.\n\nDas Modellauge bleibt in jedem Fall entspannt: Brennweite und Modellnetzhautposition werden während dieses Falls festgehalten. Die feste Modellnetzhaut ist eine getrennt markierte Position b_R hinter der Linse. Ein zweiter verschiebbarer Messschirm sucht den Schärfeort b, ohne die feste Modellnetzhaut als „Korrektur“ zu versetzen. Ein vorübergehend in den Strahlengang gestellter Netzhautschirm darf zur Suche mit dem zweiten Schirm entfernt werden; seine vermessene Position bleibt markiert und unverändert. Abstände werden von derselben begründeten Linsenebene aus gemessen.\n\nA – eigenes Modell mit Fokus vor der Netzhaut: Plane eine geeignete sichere Anordnung, etwa g≈10f und b_R≈1,2f. Dies sind Aufbauhilfen, keine Messresultate. Stelle den Aufbau selbst her und protokolliere tatsächliches f mit seinem Unsicherheitsbereich, selbst gemessenes g, fest markiertes b_R und Skalen-/Ablesegrenzen. Suche den schärfsten Bildort unabhängig von b_R persönlich. Löse und positioniere den Messschirm mindestens dreimal neu, beurteile die Schärfe nach einem vorher notierten Kriterium und notiere sämtliche tatsächlichen b-Ablesungen samt unscharf/scharf-Grenzen. Reiche datierte Rohdaten und eine Skizze beziehungsweise Aufnahme des eigenen Aufbaus ein. Benutze 1/f=1/g+1/b für eine Vorhersage aus den tatsächlichen Eingaben; vergleiche Vorhersagebereich und Messbereich mit Einheiten. Beschreibe anhand der Lage zu b_R, welche Kurzsichtigkeitsdeutung dieses entspannte vereinfachte Modell trägt.\n\nB – unabhängige neue Durchführung bei veränderter optischer Bedingung: Dokumentiere vor der zweiten Untersuchung ein anderes entspanntes Modellauge, etwa mit derselben Linse, nun b_R≈0,8f und g≈3f. Die geänderte Netzhautlage wird vor dem neuen Fall eingestellt und während B festgehalten. Eine andere geeignete Linse mit passend gewähltem festem b_R ist gleichwertig. Stelle die tatsächlich geänderten Bedingungen selbst ein, miss g und b_R neu und suche den scharfen Bildort in drei neuen persönlichen Positionierungen erneut. Keine A-Werte als B-Messung kopieren. Reiche die zweite eigene Skizze/Änderungsdokumentation und sämtliche neuen b-Rohablesungen ein. Berechne eine neue Vorhersage und vergleiche sie mit dieser eigenen Messung einschließlich ihrer tatsächlichen Grenzen. Prüfe zusätzlich den Fernobjekt-Grenzfall b→f relativ zur festen B-Netzhaut: Ein allein bei einem nahen Objekt fehlender Fokus genügt nicht für eine Weitsichtigkeitsdeutung.\n\nBeide Fälle: Trenne Wiederholungsstreuung von systematischen Grenzen wie Abstandsskala/Linsenebene, nicht scharf bestimmbarer Schirmposition, Brennweitenangabe und endlicher Linsendicke. Ein Taschenrechner oder digitales Werkzeug darf die Rechnung übernehmen. Eine Intervallhilfe ist zulässig: Nur wenn für den gesamten Eingabebereich g_min > f_max > 0 gilt, liegt b=fg/(g−f) bei f_min,g_max am unteren und bei f_max,g_min am oberen Rand. Ist diese Voraussetzung verletzt oder nicht gesichert, darf kein endliches Vorhersageband aus dieser Intervallhilfe behauptet werden; benenne die ungeeignete beziehungsweise unzureichend aufgelöste Modell-/Messlage und führe eine geeignete eigene Kontrolle oder Neueinstellung mit tatsächlich neuen Eingaben aus. Erläutere die Bedeutung und Grenzen dieses Vorhersagebands; es ist kein statistisches Konfidenzintervall. Begründe Übereinstimmung, auflösbare Abweichung oder fehlende Auflösbarkeit anhand tatsächlicher Daten. Bei nicht auflösbarer Lagezuordnung dokumentiere einen eigenen gezielten Kontrollschritt und dessen Ergebnis; weder passende Zahlen noch ein gewünschter Unterschied dürfen erfunden werden. Benenne, was das vereinfachte entspannte Modell erklärt und was es über Akkommodation, ein bestimmtes reales Auge, Diagnose oder Brillenverordnung nicht aussagt. Zwei vollständige echte Durchführungen und der begrenzte Modell-/Messvergleich sind erforderlich; gelieferte Zahlenbeispiele ersetzen sie nicht.",
+          "taskContentEn": "Carry out two personal safe lens-screen investigations on a real optical bench. Planning alone, a simulation, someone else's measurements, or a sample calculation is insufficient for either case. Use a low-power LED object (for example an illuminated arrow), a mounted thin converging lens, a distance scale, and a movable measuring screen. Use no sunlight or laser; do not look into the source or through the lens towards a bright source. The teacher checks the stable setup. Document the supplied actual focal length f with its justified uncertainty/manufacturer specification, scale resolution, and any reference-plane offset; do not invent accuracy. No real eye is illuminated.\n\nWithin each case the model eye stays relaxed: focal length and model-retina position remain fixed. The model retina is a separately marked fixed position b_R behind the lens. A second movable measuring screen finds the sharp image distance b without moving the fixed model retina as a \"correction\". A retinal screen temporarily placed in the beam may be removed when using the second screen; its measured position stays marked and unchanged. Measure distances from the same justified lens reference plane.\n\nA – own model with focus in front of the retina: Plan a suitable safe arrangement, for example g≈10f and b_R≈1.2f. These are setup aids, not measured results. Personally assemble it and record actual f and its uncertainty range, personally measured g, fixed marked b_R, and scale/reading limits. Personally find the sharpest image independently of b_R. Release and reposition the measuring screen at least three times, judge sharpness by a criterion written down in advance, and record every actual b reading with blurry/sharp bounds. Submit dated raw measurements and a sketch or photograph of your own setup. Use 1/f=1/g+1/b to predict from your actual inputs; compare prediction and measurement ranges with units. Use focus position relative to b_R to explain which myopia interpretation this relaxed simplified model supports.\n\nB – independently fresh execution under changed optical conditions: Before the second investigation document a different relaxed model eye, for example the same lens with b_R≈0.8f and g≈3f. Set the changed retina position before the new case and hold it fixed throughout B. Another suitable lens with an appropriately selected fixed b_R is equally valid. Personally set the actual changed conditions, remeasure g and b_R, and find the focus again using three fresh personal screen positionings. Do not copy A values as B measurements. Submit a second own sketch/change record and every fresh b reading. Calculate a new prediction and compare it with this own measurement including its actual limits. Also consider the distant-object limit b→f relative to B's fixed retina: failure to focus a near object alone is insufficient to infer hyperopia.\n\nBoth cases: Separate repeatability scatter from systematic limits such as the distance scale/lens reference plane, an imprecise sharp-screen location, focal-length specification, and finite lens thickness. A calculator or digital tool may perform arithmetic. An interval aid is allowed: Only when g_min > f_max > 0 holds over the entire input range does b=fg/(g−f) have its lower boundary at f_min,g_max and its upper boundary at f_max,g_min. If this condition fails or is not established, do not claim a finite prediction band from this interval aid; identify the unsuitable or insufficiently resolved model/measurement situation and perform an appropriate own control or reset with genuinely fresh inputs. Explain the meaning and limits of this prediction band; it is no statistical confidence interval. Justify agreement, a resolved difference, or lack of resolution using actual evidence. If position classification is unresolved, document an own targeted control and its result; never invent matching numbers or a desired difference. State what the simplified relaxed model explains and what it does not establish about accommodation, a particular real eye, diagnosis, or spectacle prescription. Two complete actual executions and a bounded model/measurement comparison are necessary; supplied numerical examples cannot replace them.",
+          "solutionContent": "Die Lösung wird an den beiden tatsächlich eingereichten persönlichen Aufbauten und ihren Rohdaten geprüft. Es gibt keine vorgeschriebenen gemessenen b-Werte. Für jede Wiederholung muss derselbe vorher definierte Schärfebegriff verwendet werden. Modellnetzhautposition und unabhängig gesuchte Bildlage dürfen nicht gleichgesetzt werden. Die Linse-Schirm-Abstände sind konsistent auf dieselbe Referenzebene zu beziehen. Bei positivem f<g gilt b=fg/(g−f). Unterschiedliche zulässige Unsicherheitsverfahren sind gleichwertig, wenn ihre Annahmen und Grenzen nachvollziehbar sind.\n\nAnalytische Prüfreferenz, KEIN Ersatz für eigene Messungen: g_A=10f liefert b_A=10f/9≈1,111f, also vor b_RA=1,2f; g_B=3f liefert b_B=1,5f, also hinter b_RB=0,8f. Auch im B-Fernobjekt-Grenzfall liegt f hinter 0,8f, weshalb das ausdrücklich entspannte Modell eine Weitsichtigkeitsdeutung trägt. Entsprechende andere reale geeignete Einstellungen sind zulässig. Der Vergleich erfolgt mit den tatsächlichen statt mit diesen idealen Aufbauverhältnissen. Eine begründete reale Abweichung ist keine Einladung zu gewünschten Zahlen. Ein unaufgelöster Lagebefund wird mit tatsächlich durchgeführter Kontrolle und begrenzter Schlussfolgerung bewertet.\n\nJedes Kriterium erhält 0–2 BE, volle 20/20 BE sind erforderlich. Volle Kriterienpunkte setzen sämtliche genannten eigenständigen Leistungen voraus; fehlt eine eigene Durchführung, Rohdaten, die unabhängige B-Änderung oder der begründete Modellvergleich, kann die entsprechende volle Punktzahl nicht vergeben werden. Gleichwertige fachlich korrekte Darstellungen und begründete unerwartete Messausgänge sind zulässig; folgenlose isolierte Schreib-/Rechenfehler sind kein zusätzliches Hindernis. Gelieferte Beispielwerte können ausschließlich die Rechnung erläutern und niemals eine reale Durchführung ersetzen.\nDie Intervallrandhilfe ist nur bei g_min > f_max > 0 über der gesamten Unsicherheitsbox anwendbar. Andernfalls können Nennernullstelle/virtuelle Bereiche auftreten; eine endliche Schranke darf nicht erfunden werden. Tatsächlich neue geeignete Einstellungen oder eigene Kontrollen werden dokumentiert.",
+          "solutionContentEn": "Assess against the two actually submitted personal setups and raw records. No measured b values are prescribed. Every repetition uses the same sharpness criterion defined in advance. Do not equate the fixed model-retina position with the independently located image. Use the same justified lens reference plane for distances. For positive f<g, b=fg/(g−f). Different valid uncertainty methods are equivalent when their assumptions and limits are traceable.\n\nAnalytic checking reference, NOT a replacement for personal measurements: g_A=10f gives b_A=10f/9≈1.111f, before b_RA=1.2f; g_B=3f gives b_B=1.5f, behind b_RB=0.8f. Even in B's distant-object limit, f lies behind 0.8f, supporting hyperopia in this explicitly relaxed model. Other suitable actual settings are equally valid. Compare actual values rather than these ideal setup ratios. A justified real discrepancy is no invitation to invent expected numbers. An unresolved position finding is assessed through a genuinely performed control and a bounded conclusion.\n\nEach criterion scores 0–2 points; 20/20 is required. Full criterion credit requires every stated personal performance; a missing execution, raw record, independently changed B condition, or justified model comparison prevents full credit for the corresponding criterion. Scientifically equivalent representations and justified unexpected outcomes are valid; isolated inconsequential notation/arithmetic slips create no additional barrier. Supplied example values may illustrate arithmetic only and never replace real execution.\nThe interval-boundary aid applies only when g_min > f_max > 0 over the entire uncertainty box. Otherwise the denominator can cross zero or enter a virtual-image region; do not invent a finite bound. Document genuinely fresh suitable settings or own controls.",
+          "scoring": {
+            "maxPoints": 20,
+            "passingPoints": 20,
+            "steps": [
+              {
+                "id": "a-own-setup",
+                "points": 2,
+                "description": "A: eigener sicherer Aufbau mit f/g/fester b_R, vorherigem Schärfekriterium und nachvollziehbarer Dokumentation; Planung allein genügt nicht. / EN: A: personal safe setup with f/g/fixed b_R, prior sharpness criterion, and traceable documentation; planning alone is insufficient."
+              },
+              {
+                "id": "a-own-raw",
+                "points": 2,
+                "description": "A: drei tatsächliche eigene neue Schirmpositionierungen mit allen Rohablesungen und Schärfe-/Ablesegrenzen; keine Beispieldaten. / EN: A: three actual own screen repositionings with every raw reading and sharpness/reading limits; no sample data."
+              },
+              {
+                "id": "a-prediction",
+                "points": 2,
+                "description": "A: Vorhersage aus tatsächlichen f/g-Eingaben mit Einheiten und begründetem Unsicherheitsbereich; keine vorher vorgegebene Bildweite. / EN: A: prediction from actual f/g inputs with units and justified uncertainty range; no previously supplied image distance."
+              },
+              {
+                "id": "a-comparison",
+                "points": 2,
+                "description": "A: eigener Mess-/Modellvergleich relativ zur festen Modellnetzhaut, datengestützte Kurzsichtigkeitsdeutung oder begründet offener Befund samt tatsächlichem Kontrollschritt. / EN: A: own model/measurement comparison relative to the fixed model retina, evidence-based myopia interpretation or justified unresolved conclusion with actual control."
+              },
+              {
+                "id": "b-changed-own-setup",
+                "points": 2,
+                "description": "B: vorab dokumentierte tatsächlich geänderte optische Bedingung selbst eingestellt; neue g/b_R-Messung und während B feste entspannte Modellnetzhaut. / EN: B: personally sets an actually changed optical condition documented in advance; fresh g/b_R measurements and fixed relaxed model retina throughout B."
+              },
+              {
+                "id": "b-own-raw",
+                "points": 2,
+                "description": "B: drei neue tatsächliche eigene Schärfesuchen mit vollständigen neuen Rohablesungen; A-Kopie oder gelieferte Werte bestehen nicht. / EN: B: three fresh actual own focus searches with all new raw readings; copied A or supplied values do not pass."
+              },
+              {
+                "id": "b-prediction-comparison",
+                "points": 2,
+                "description": "B: eigene neue Linsengleichungs-Vorhersage und quantitativer Vergleich mit eigenen B-Daten/Messgrenzen; auch ehrliche Abweichung oder fehlende Auflösbarkeit wird fair begründet. / EN: B: new own lens-equation prediction and quantitative comparison with own B measurements/limits; honest difference or lack of resolution is fairly justified."
+              },
+              {
+                "id": "b-far-limit",
+                "points": 2,
+                "description": "B: Fernobjekt-Grenzfall b→f gegenüber fester B-Netzhaut geprüft; Weitsichtigkeitsmodell wird von bloß fehlender Nahakkommodation getrennt. / EN: B: checks distant-object limit b→f against fixed B retina; distinguishes the hyperopia model from merely inadequate near accommodation."
+              },
+              {
+                "id": "uncertainty-controls",
+                "points": 2,
+                "description": "In beiden Fällen tatsächliche Streuung und systematische Skalen-/Linsenebenen-/Brennweiten-/Schärfegrenzen unterschieden; Vorhersageband und Messbereich nicht als sichere universelle Fehlergrenze ausgegeben. / EN: In both cases distinguishes actual scatter and systematic scale/reference-plane/focal-length/sharpness limits; prediction and measurement bands are not universal guaranteed error bounds. Die Intervallhilfe darf nur bei g_min > f_max > 0 als endliches Band verwendet werden. / EN: The interval aid gives a finite band only when g_min > f_max > 0."
+              },
+              {
+                "id": "model-boundary",
+                "points": 2,
+                "description": "Vergleicht beide eigenen Durchführungen und erklärt die feste Netzhaut als Modellbezug; keine klinische Diagnose, Brillenverordnung oder Behauptung vollständig nachgebildeter Akkommodation. / EN: Compares both personal executions and explains fixed retina as a model reference; no clinical diagnosis, spectacle prescription, or claim of fully modelled accommodation."
+              }
+            ]
+          }
+        }
+      },
+      "changedExamDataFields": [
+        "coveredGoalIds",
+        "coveredStrands",
+        "demandLevels",
+        "reviewStatus",
+        "scoring",
+        "solutionContent",
+        "solutionContentEn",
+        "sourceArtifactPath",
+        "taskContent",
+        "taskContentEn"
+      ],
+      "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/physik/k3k6-content-correction-20261115-v1/personal-lens-screen-investigations.md"
+    }
+  ],
+  "newCe14TaskMustActuallyBeRead": true,
+  "allChangedTasksIncluded": true
+}

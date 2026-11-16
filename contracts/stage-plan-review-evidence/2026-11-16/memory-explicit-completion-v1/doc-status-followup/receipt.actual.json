@@ -1,0 +1,324 @@
+{
+  "recordedAt": "2026-11-16T03:45:31.136754+00:00",
+  "status": "LOCAL_BILINGUAL_DOCUMENTATION_FOLLOWUP_BUILD_AND_CHECKS_PASS",
+  "scope": "Six implementation-status text fields only; dated local PR159 memory protection followup, no normative or historical review changes.",
+  "authoredSource": {
+    "path": "docs/concept/skill-graph/source/implementation-status.json",
+    "beforeSha256": "c29a87ba238caa41622af0d84a85e103683ba95aa3334501d53daec99bc6b869",
+    "afterSha256": "0f4704c651ebff568a69ef038e6bde1c500034d6c2b4bbad196fee198f89bc2d",
+    "retainedBefore": "implementation-status.before.json.gz",
+    "byteExactBeforeRestorationVerified": true
+  },
+  "changedJsonPaths": [
+    "stand.body.de",
+    "stand.body.en",
+    "boundaryTable[0].repoStatus.de",
+    "boundaryTable[0].repoStatus.en",
+    "boundaryTable[1].repoStatus.de",
+    "boundaryTable[1].repoStatus.en"
+  ],
+  "normativeSpecificationAndOtherSourceFieldsUnchanged": true,
+  "runtimeFixPins": [
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/completion/CompiledAutomaticCompletion.java",
+      "bytes": 886,
+      "sha256": "25a3a30bc877a4dcad9a67fe2d66987baa61ab27a77c516fdd4e78fb6ccdb27e"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/completion/CompletionProfileCompiler.java",
+      "bytes": 23014,
+      "sha256": "e45ea91359d4834f09740b2cc468d7aea3a30ab48da3d597e31182b06ef1c5e5"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/completion/CompletionEvaluator.java",
+      "bytes": 7593,
+      "sha256": "9ae28cd1c440106a3100079cb9e5693de868b3b6f22d98cf0ac0fb0f747606af"
+    }
+  ],
+  "commands": [
+    {
+      "name": "build",
+      "argv": [
+        "python3",
+        "-B",
+        "docs/concept/skill-graph/build_spec.py",
+        "--web-and-tex",
+        "--pdfs",
+        "--texmf",
+        "/tmp/skillpilot-g17-document-texmf-lex9aorl/usr/share/texlive/texmf-dist"
+      ],
+      "cwd": ".",
+      "exitCode": 0,
+      "stdout": "build.stdout.txt.gz"
+    },
+    {
+      "name": "generated",
+      "argv": [
+        "python3",
+        "-B",
+        "docs/concept/skill-graph/build_spec.py",
+        "--web-and-tex",
+        "--check",
+        "--check-untracked-outputs"
+      ],
+      "cwd": ".",
+      "exitCode": 0,
+      "stdout": "generated.stdout.txt.gz"
+    },
+    {
+      "name": "links",
+      "argv": [
+        "./node_modules/.bin/tsx",
+        "scripts/checkMarkdownLinks.ts",
+        "docs"
+      ],
+      "cwd": "app",
+      "exitCode": 0,
+      "stdout": "links.stdout.txt.gz"
+    },
+    {
+      "name": "indexes",
+      "argv": [
+        "./node_modules/.bin/tsx",
+        "scripts/checkDocsIndexes.ts"
+      ],
+      "cwd": "app",
+      "exitCode": 0,
+      "stdout": "indexes.stdout.txt.gz"
+    },
+    {
+      "name": "notices",
+      "argv": [
+        "./node_modules/.bin/tsx",
+        "scripts/checkGeneratedMarkdownNotices.ts"
+      ],
+      "cwd": "app",
+      "exitCode": 0,
+      "stdout": "notices.stdout.txt.gz"
+    },
+    {
+      "name": "terminology",
+      "argv": [
+        "./node_modules/.bin/tsx",
+        "scripts/checkTerminology.ts"
+      ],
+      "cwd": "app",
+      "exitCode": 0,
+      "stdout": "terminology.stdout.txt.gz"
+    },
+    {
+      "name": "status-registry",
+      "argv": [
+        "./node_modules/.bin/tsx",
+        "scripts/generateGeneratedStatusRegistry.ts",
+        "--check"
+      ],
+      "cwd": "app",
+      "exitCode": 0,
+      "stdout": "status-registry.stdout.txt.gz"
+    }
+  ],
+  "texEnvironment": {
+    "version": "This is LuaHBTeX, Version 1.14.0 (TeX Live 2022/dev/Debian)",
+    "texmf": "/tmp/skillpilot-g17-document-texmf-lex9aorl/usr/share/texlive/texmf-dist",
+    "existingFormat": {
+      "path": "tmp/skill-graph-tex-format/lualatex.fmt",
+      "bytes": 4555437,
+      "sha256": "6afb485d476f60866599c555bcd1101ec98d68817a9b8037d7f0e37b21666d3d"
+    }
+  },
+  "generatedOutputsChanged": [
+    {
+      "path": "docs/concept/skill-graph/compendium-appendix.en.md",
+      "beforeSha256": "c9e45ed60a4ee53e1d912a8a36cbb7e8b0250cd399470ea8b59e6a1a111edd72",
+      "afterSha256": "e1454a2298ca876f531e0fdabeb915b7bc09b4857f08be66e2b0ec8c56bd90fb"
+    },
+    {
+      "path": "docs/concept/skill-graph/compendium-appendix.de.md",
+      "beforeSha256": "7fd2cfe8f8f1096877f275aac7bd60d612bdcda08687497ff655363a0e47882e",
+      "afterSha256": "4f72cec1e160d054bc7529b1dac9feb0370ade4cccd1b18aa5e86b0ecb9d9448"
+    },
+    {
+      "path": "docs/concept/skill-graph/skillpilot-graph-definition.pdf",
+      "beforeSha256": "6374f75e3e86d8ce91d30f7fb406251efa671725753f9af6e5760f64eb730c4a",
+      "afterSha256": "1174d361c48eef728065cf74d948d697bbf3b4f3901ba6d8d02c7819b45a3bf5"
+    },
+    {
+      "path": "docs/concept/skill-graph/skillpilot-graph-definition.de.pdf",
+      "beforeSha256": "6374f75e3e86d8ce91d30f7fb406251efa671725753f9af6e5760f64eb730c4a",
+      "afterSha256": "1174d361c48eef728065cf74d948d697bbf3b4f3901ba6d8d02c7819b45a3bf5"
+    },
+    {
+      "path": "docs/concept/skill-graph/skillpilot-graph-definition.en.pdf",
+      "beforeSha256": "270c01b7e069cf5ca9b6bdf81b6bd9247ca1e92146cee3fc31ee19291898a9b1",
+      "afterSha256": "94dd9a2da41d4e067b33c98d641c3c99a9492284e9324116ea9ea4b812cb0aa2"
+    },
+    {
+      "path": "docs/concept/skill-graph/skillpilot-graph-definition.build.json",
+      "beforeSha256": "2b7cc1198c0535d9c64dd7f4cd27391377e8a3ef83baf15ba7a500ab171ad05c",
+      "afterSha256": "bfe30c3500feb13539e9db7b822297df57746054fe9d511d68d75eb04cd4fff3"
+    },
+    {
+      "path": "tmp/skill-graph-document/de/skillpilot-graph-definition.de.tex",
+      "beforeSha256": "34090483e5a61ebda23b01b36c8bdce78dfc553047556536752f7db3a66770b8",
+      "afterSha256": "957af008f2cd5a676a02e16d69174327c2211c3984e0b2f4f1435289da045073"
+    },
+    {
+      "path": "tmp/skill-graph-document/en/skillpilot-graph-definition.en.tex",
+      "beforeSha256": "9383c5f51a2ad15df7093c544a7f68e37f3b15c837edd0c43c972c53752e5153",
+      "afterSha256": "ac4d26c8d23dbc55e94b857bcd3c039773b7a4d27d9a6a2af966254c772e19fa"
+    }
+  ],
+  "pdfs": [
+    {
+      "language": "de",
+      "path": "docs/concept/skill-graph/skillpilot-graph-definition.de.pdf",
+      "bytes": 9174554,
+      "sha256": "1174d361c48eef728065cf74d948d697bbf3b4f3901ba6d8d02c7819b45a3bf5",
+      "pages": 121,
+      "latexPasses": 3,
+      "overflows": 0,
+      "warnings": 0,
+      "actualTextExtractionChecked": true
+    },
+    {
+      "language": "en",
+      "path": "docs/concept/skill-graph/skillpilot-graph-definition.en.pdf",
+      "bytes": 9138820,
+      "sha256": "94dd9a2da41d4e067b33c98d641c3c99a9492284e9324116ea9ea4b812cb0aa2",
+      "pages": 114,
+      "latexPasses": 3,
+      "overflows": 0,
+      "warnings": 0,
+      "actualTextExtractionChecked": true
+    }
+  ],
+  "germanDefaultPdfAliasIsByteIdentical": true,
+  "webPagesMaterialized": 16,
+  "webPagesChanged": 2,
+  "figures": {
+    "count": 37,
+    "allUnchanged": true,
+    "regenerationRun": false,
+    "sha256ByPath": {
+      "docs/concept/skill-graph/assets/graph-definition/16-recursive-learning-unit.png": "e1476c1a257dfffa19d2dbf3c9de449c088a41a9554b2e67ca4f260fad495fe1",
+      "docs/concept/skill-graph/assets/graph-definition/15-shared-local-assessments.de.png": "7fe2bca9500651020add9ac0d0e7691b2fd32ae8388df14606afdd9656f16ec9",
+      "docs/concept/skill-graph/assets/graph-definition/02-contains-relation.png": "b2c479b31f27bd54d04c26c7668827e42ed91a83256e3d27043900a67b3f68b1",
+      "docs/concept/skill-graph/assets/graph-definition/13-atomic-expansion.png": "e6f3cca26086995a030a080fe83c5743fc2a15444c9f9a32e8e2103444ea82af",
+      "docs/concept/skill-graph/assets/graph-definition/12-calendar-planning.png": "d66668eca4f4019706956e216ef6e555af2303967b4e0e85a8d14077e4e1edb2",
+      "docs/concept/skill-graph/assets/graph-definition/09-local-recognition.en.png": "7bef1783adb51c9c31991d904889247cd2f31c8f98f7f87cec9cd2820f823f50",
+      "docs/concept/skill-graph/assets/graph-definition/13-atomic-expansion.de.png": "e6f3cca26086995a030a080fe83c5743fc2a15444c9f9a32e8e2103444ea82af",
+      "docs/concept/skill-graph/assets/graph-definition/00-title-skill-graph.png": "b9fe84251b4615d3e7f7e51a4f1c3e2d60fa454b8307be1a12881b0b98bc7f1f",
+      "docs/concept/skill-graph/assets/graph-definition/09-local-recognition.de.png": "ccfe333d6ddebd977193ae8a0ad58f75e5027122195202a5bc8c50a917fc9603",
+      "docs/concept/skill-graph/assets/graph-definition/04-effective-requires.png": "d43ab2cf8a8b4bcf78b7fe5047c1339fa43abda5226861ed475036ca0b50c792",
+      "docs/concept/skill-graph/assets/graph-definition/11-plan-period.en.png": "c144128d171a07397933f4e339175a933ba428371d69a791c37757a9bee66f4e",
+      "docs/concept/skill-graph/assets/graph-definition/14-inherited-redundancy.png": "ce452d9d054ecf0dc21e39a07f02dd0742d8701d5ee71717e57a679999d8a597",
+      "docs/concept/skill-graph/assets/graph-definition/16-recursive-learning-unit.de.png": "e1476c1a257dfffa19d2dbf3c9de449c088a41a9554b2e67ca4f260fad495fe1",
+      "docs/concept/skill-graph/assets/graph-definition/10-protected-support.de.png": "f7744c3b8dfd7ff7bae4e8605dd25074774be5585557273d90710b543e62278d",
+      "docs/concept/skill-graph/assets/graph-definition/03-direct-requires.png": "c778b88906ef62fe2fa135ad421ae4912995c3cfb934f11240d37d4b0e5e10df",
+      "docs/concept/skill-graph/assets/graph-definition/10-protected-support.png": "f7744c3b8dfd7ff7bae4e8605dd25074774be5585557273d90710b543e62278d",
+      "docs/concept/skill-graph/assets/graph-definition/15-shared-local-assessments.png": "7fe2bca9500651020add9ac0d0e7691b2fd32ae8388df14606afdd9656f16ec9",
+      "docs/concept/skill-graph/assets/graph-definition/08-transitive-demand.de.png": "458f5e9d4b56f34f15761d534112959d09cc2fc845b46b2108a3cadfe77747b7",
+      "docs/concept/skill-graph/assets/graph-definition/12-calendar-planning.en.png": "4793ce54dd1aaeb85228dbbba0a69c72f575f948345876471fa4627333711e89",
+      "docs/concept/skill-graph/assets/graph-definition/14-inherited-redundancy.de.png": "ce452d9d054ecf0dc21e39a07f02dd0742d8701d5ee71717e57a679999d8a597",
+      "docs/concept/skill-graph/assets/graph-definition/08-transitive-demand.en.png": "3ba4e34549740c2efd3d37c80bf5f8f712628f417f3d9424a2314fdf6284621c",
+      "docs/concept/skill-graph/assets/graph-definition/15-shared-local-assessments.en.png": "a8ec0b5c5127c201d6f30dcb73ff912805ccaab9cc9d5b4c92cfadc7feeacb39",
+      "docs/concept/skill-graph/assets/graph-definition/10-protected-support.en.png": "964bf229a36691b81cc774801d16ad84e9c298a5858ee1ac6f37e4af818b79f3",
+      "docs/concept/skill-graph/assets/graph-definition/00-title-skill-graph.en.png": "e9a2066f303769139edd9e4f3c4054698688ea58916f291938ce92e8ed1033c9",
+      "docs/concept/skill-graph/assets/graph-definition/07-filter-modes.png": "46fe549c7ade3727941c7d9caf02fe998b14f8b5a945082e1e50301a91a7186a",
+      "docs/concept/skill-graph/assets/graph-definition/13-atomic-expansion.en.png": "885eb84ee3d6cc5aab9788525a7ad1fde5a3a335a97db3599ed8c4e1449433a2",
+      "docs/concept/skill-graph/assets/graph-definition/01-skill-graph-overview.png": "9333afb53153540a8a2c77212c711b2fdbd6bb547aaba946cb140463c843666e",
+      "docs/concept/skill-graph/assets/graph-definition/12-calendar-planning.de.png": "d66668eca4f4019706956e216ef6e555af2303967b4e0e85a8d14077e4e1edb2",
+      "docs/concept/skill-graph/assets/graph-definition/11-plan-period.de.png": "f007421be4dd58a4fc6ea843fff1f4750039b5facc9aa8d4ac5ec6ce8c6f4089",
+      "docs/concept/skill-graph/assets/graph-definition/05-validity-and-cycles.png": "61ef10fc5f966f74c0a0b4ac47e3d88bf1a069720bc04490ee46bd8af0093469",
+      "docs/concept/skill-graph/assets/graph-definition/11-plan-period.png": "f007421be4dd58a4fc6ea843fff1f4750039b5facc9aa8d4ac5ec6ce8c6f4089",
+      "docs/concept/skill-graph/assets/graph-definition/14-inherited-redundancy.en.png": "966237a7276d8abd704f84fe93bf967d104770efe0581f8b436c4d974d6e7e93",
+      "docs/concept/skill-graph/assets/graph-definition/06-available-next-goals.png": "9a32ffbe58e84e862a2d820c46331dd7fdb226fabe529b4fb40b2ed204413d02",
+      "docs/concept/skill-graph/assets/graph-definition/08-transitive-demand.png": "458f5e9d4b56f34f15761d534112959d09cc2fc845b46b2108a3cadfe77747b7",
+      "docs/concept/skill-graph/assets/graph-definition/09-local-recognition.png": "ccfe333d6ddebd977193ae8a0ad58f75e5027122195202a5bc8c50a917fc9603",
+      "docs/concept/skill-graph/assets/graph-definition/00-title-skill-graph.de.png": "b9fe84251b4615d3e7f7e51a4f1c3e2d60fa454b8307be1a12881b0b98bc7f1f",
+      "docs/concept/skill-graph/assets/graph-definition/16-recursive-learning-unit.en.png": "a532000276e5d8c50e63caf85f82d7f01190d30d75e23a3d7ff24112fd3ceb28"
+    }
+  },
+  "retainedLogs": [
+    {
+      "path": "build.stdout.txt.gz",
+      "originalBytes": 368,
+      "originalSha256": "027f462361535503a3f12273b6ca73448c78d18d8fe9fd0a6e572dce3c222076",
+      "storedSha256": "f5c31b6cb733ab6fb9a10699f009cf1c2742fa6dcb02b4b27d7f0de36cd37192",
+      "encoding": "gzip",
+      "byteExactRestorationVerified": true
+    },
+    {
+      "path": "generated.stdout.txt.gz",
+      "originalBytes": 139,
+      "originalSha256": "f175dda6be9a92f4b8ac4721b510995f8c87e91fe1479ee842a11362132091e4",
+      "storedSha256": "66d08b5eb44a915c60959fd9c407bd089269ee4dd982f9ebaacebbcd83b050d0",
+      "encoding": "gzip",
+      "byteExactRestorationVerified": true
+    },
+    {
+      "path": "links.stdout.txt.gz",
+      "originalBytes": 42,
+      "originalSha256": "70a7e5316a80ee72d044f4e4b2f5301ef212ea8c61c7b0f783f8f4d5ac1c0fc8",
+      "storedSha256": "8fae435dfa8dfb979cb8459c4d679db2fbc0dcf34a89d547e34f91cca3677351",
+      "encoding": "gzip",
+      "byteExactRestorationVerified": true
+    },
+    {
+      "path": "indexes.stdout.txt.gz",
+      "originalBytes": 57,
+      "originalSha256": "38e1683328bb739f5fc792fbe472a38b9bd3304b35de780540eb6843c968406a",
+      "storedSha256": "3ce5154a4451d3d466b0b866fa228fc596f5b6c755380f2c061c6983d9fcefe4",
+      "encoding": "gzip",
+      "byteExactRestorationVerified": true
+    },
+    {
+      "path": "notices.stdout.txt.gz",
+      "originalBytes": 54,
+      "originalSha256": "b261ee1ecc11929d59d227e2b30a2dbf79fb78d166144fce9434b76a27f98178",
+      "storedSha256": "f4a5442de69df6eca789d708ce101bfdac5ebe91349d970c37b56736ed503a3e",
+      "encoding": "gzip",
+      "byteExactRestorationVerified": true
+    },
+    {
+      "path": "terminology.stdout.txt.gz",
+      "originalBytes": 87,
+      "originalSha256": "51a7072d9d285c7713256dea1e1be6bad19a4ccb4f32dfee6eaa4e1050a2aac2",
+      "storedSha256": "08f97f9bf398f2720366f12f57b53115260b7abb7c3884fc9bdda1ff826c526c",
+      "encoding": "gzip",
+      "byteExactRestorationVerified": true
+    },
+    {
+      "path": "status-registry.stdout.txt.gz",
+      "originalBytes": 79,
+      "originalSha256": "e3bcdcd2cf44ae322d0c114c03f679cb81772ba5baf613cc058d787399c1244c",
+      "storedSha256": "0cf218a3082367203e08952a8bdc1d983ce6903b7802848ac4714325bf4af6f6",
+      "encoding": "gzip",
+      "byteExactRestorationVerified": true
+    },
+    {
+      "path": "de.lualatex.log.gz",
+      "originalBytes": 80174,
+      "originalSha256": "bd014eac13c7caee64c569815b1c286baecba490546cc478117d3f5503a9fbe9",
+      "storedSha256": "188e672918d5fc6a0db52103c9d884594c61ac1a21d07e53814ed166f3cded33",
+      "encoding": "gzip",
+      "byteExactRestorationVerified": true
+    },
+    {
+      "path": "en.lualatex.log.gz",
+      "originalBytes": 80544,
+      "originalSha256": "1effe87dbb84986f8495dcc8cd6cfc4cb230ea02eda3c56b5ad421e15c546324",
+      "storedSha256": "cb292b437d0cb6c10209e68a76f77ed3a354f0734df4a8c94407780edb8501ab",
+      "encoding": "gzip",
+      "byteExactRestorationVerified": true
+    }
+  ],
+  "pdfTextProbeCorrection": "The initial literal EN token check encountered PDF line wrapping inside no_remaining_demand. The actual extraction showed no_ followed by remaining_demand on the next line. Whitespace normalization confirmed the same exact token and dated text in both PDFs; no source or PDF correction was needed.",
+  "limits": [
+    "Generated Web/TeX/PDF/build files remain ignored outputs under the existing source-only registry; no generated artifact was added to Git.",
+    "No other compendium or diagram generation was invoked.",
+    "Own-unit coverage, R5 and global revision-bound recognition remain open; this documentation followup grants none of them.",
+    "No runtime tests, native package-consumer completion, content approval, remote CI, merge, publication or production acceptance are claimed."
+  ]
+}

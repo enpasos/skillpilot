@@ -77,6 +77,10 @@ DETERMINISTIC_RENDER_PROVIDER = (
 DETERMINISTIC_RENDER_PROVENANCE_CLASS = "skillpilot-authored-deterministic-render"
 DETERMINISTIC_RENDER_PROVENANCE_SOURCE = "hash-bound-skillpilot-source-render"
 DETERMINISTIC_RENDER_CONTRACT_ID = "rsvg-convert-fixed-png-v1"
+ASSESSMENT_MATERIAL_PROVENANCE_CLASS = "skillpilot-authored-assessment-material"
+ASSESSMENT_MATERIAL_PROFILE_PATH = (
+    "contracts/curriculum-package/v1.3/profiles/de-gymnasium-mathematik-release-model-v1.3.profile.json"
+)
 
 PATH_CLASSIFICATION_OVERRIDES: tuple[dict[str, str], ...] = (
     {
@@ -593,6 +597,60 @@ def deterministic_render_evidence(
     }
 
 
+def assessment_material_base(
+    item: dict[str, Any], declaration: dict[str, Any], goals: list[dict[str, Any]],
+) -> dict[str, Any]:
+    """Bind an own assessment source without inventing an image prompt or rights approval."""
+    matches = [row for row in declaration["resources"]["assessmentMaterials"]
+               if row["resourceId"] == item["resourceId"]]
+    if len(matches) != 1:
+        raise ReviewError("Assessment material has no unique current source declaration")
+    declared = matches[0]
+    for field in ("ownerGoalId", "order", "title", "provider", "description", "language", "license",
+                  "mediaType", "bytes", "sha256"):
+        if item.get(field) != declared.get(field):
+            raise ReviewError(f"Assessment material declaration drift: {field}")
+    url = declared["url"]
+    if (item.get("publicUrl") != url or item.get("artifactPath") != url.removeprefix("/")
+            or not url.startswith("/assets/assessment-materials/")
+            or item.get("mediaType") not in {"image/svg+xml", "image/png"}
+            or item.get("provider") != "SkillPilot" or item.get("license") != CONTENT_LICENSE_ID):
+        raise ReviewError("Assessment material is outside its declared own-source lane")
+    declared_source = repo_file(declared["sourceArtifactPath"])
+    if sha256_file(declared_source) != declared["sourceArtifactSha256"]:
+        raise ReviewError("Assessment material authored-source hash drift")
+    uses = [goal for goal in goals if any(
+        url in goal.get("examData", {}).get(field, "") for field in ("taskContent", "taskContentEn"))]
+    if item["ownerGoalId"] not in {goal["id"] for goal in uses}:
+        raise ReviewError("Assessment material owner has no actual task reference")
+    sources: dict[str, str] = {}
+    for goal in uses:
+        exam = goal["examData"]
+        if exam.get("reviewStatus") != "released" or not isinstance(exam.get("sourceArtifactPath"), str):
+            raise ReviewError("Assessment material needs a released task with an authored source")
+        source_path = exam["sourceArtifactPath"]
+        if not source_path.startswith("curricula/DE/Gymnasium/assessments/mathematik/"):
+            raise ReviewError("Assessment material source is outside the own Mathematics assessment tree")
+        sources[source_path] = "sha256:" + sha256_file(repo_file(source_path))
+    if declared["sourceArtifactPath"] not in sources:
+        raise ReviewError("Declared authored source is not used by an actual assessment")
+    base = {
+        "resourceId": item["resourceId"], "ownerGoalId": item["ownerGoalId"],
+        "artifactPath": item["artifactPath"], "mediaType": item["mediaType"], "bytes": item["bytes"],
+        "assetSha256": "sha256:" + item["sha256"], "provider": item["provider"],
+        "legacyLicenseNote": item["license"], "provenanceClass": ASSESSMENT_MATERIAL_PROVENANCE_CLASS,
+        "provenanceSource": "hash-bound-assessment-source", "userProvided": False,
+        "assessmentMaterialEvidence": {
+            "declarationPath": ASSESSMENT_MATERIAL_PROFILE_PATH,
+            "declarationSha256": "sha256:" + sha256_file(repo_file(ASSESSMENT_MATERIAL_PROFILE_PATH)),
+            "sources": [{"path": path, "sha256": value} for path, value in sorted(sources.items())],
+            "useGoalIds": sorted(goal["id"] for goal in uses),
+        },
+    }
+    base["provenanceFingerprint"] = digest(base)
+    return base
+
+
 def load_source_model(release_root: Path) -> SourceModel:
     if not release_root.is_dir() or release_root.is_symlink():
         raise ReviewError(f"Release-model root must be a regular directory: {release_root}")
@@ -647,12 +705,18 @@ def load_source_model(release_root: Path) -> SourceModel:
     target_non_binary_roles = tuple(sorted(set(target_roles) - {"binary-asset"}))
 
     resources = require_list(resource_index.get("resources"), "resource index resources")
+    material_candidate = TARGET_PROFILE_ID == "full-standalone-v1.3"
+    material_declaration = (read_json(repo_file(ASSESSMENT_MATERIAL_PROFILE_PATH))
+                            if material_candidate else None)
+    material_goals = (read_json(repo_file(material_declaration["canonicalLandscape"]["sourcePath"]))["goals"]
+                      if material_declaration else [])
     embedded = [
         item
         for item in resources
         if isinstance(item, dict)
         and item.get("delivery") == "embedded"
-        and item.get("resourceKind") == "goal-visualization"
+        and (item.get("resourceKind") == "goal-visualization"
+             or (material_candidate and item.get("resourceKind") == "assessment-material"))
         and item.get("resourceType") == "image"
     ]
     external_count = sum(
@@ -709,9 +773,9 @@ def load_source_model(release_root: Path) -> SourceModel:
         if artifact_path in artifact_paths:
             raise ReviewError(f"Duplicate embedded artifactPath {artifact_path!r}")
         artifact_paths.add(artifact_path)
-        ai_assisted_native = validate_image_license_input(
-            provider, legacy_license_note, resource_id
-        )
+        is_material = item.get("resourceKind") == "assessment-material"
+        ai_assisted_native = False if is_material else validate_image_license_input(
+            provider, legacy_license_note, resource_id)
 
         build_item = build_by_id[resource_id]
         expected_build = {
@@ -729,6 +793,11 @@ def load_source_model(release_root: Path) -> SourceModel:
         if not isinstance(source_path, str):
             raise ReviewError(f"Build input {resource_id!r} has no sourcePath")
         verify_asset_source(source_path, byte_count, asset_sha256)
+        if is_material:
+            if source_path != "app/public" + item["publicUrl"]:
+                raise ReviewError("Assessment material build source does not match its original public URL")
+            asset_bases.append(assessment_material_base(item, material_declaration, material_goals))
+            continue
 
         import_evidence = user_import_prompt_evidence(
             provider, owner_goal_id, source_path, byte_count, asset_sha256
@@ -1179,7 +1248,8 @@ def validate_decision_policy(
         required_kinds: set[str]
         if asset:
             required_kinds = {"project-license-decision"}
-            if decision.get("provenanceClass") != DETERMINISTIC_RENDER_PROVENANCE_CLASS:
+            if decision.get("provenanceClass") not in {
+                    DETERMINISTIC_RENDER_PROVENANCE_CLASS, ASSESSMENT_MATERIAL_PROVENANCE_CLASS}:
                 required_kinds.add("provider-terms-review")
             if decision.get("userProvided") is True:
                 required_kinds.add("uploader-rights-attestation")
@@ -1443,6 +1513,7 @@ def validate_review(
         "promptSha256": "ASSET_PROVENANCE_DRIFT",
         "deterministicRenderEvidence": "ASSET_PROVENANCE_DRIFT",
         "userProvidedImportEvidence": "ASSET_PROVENANCE_DRIFT",
+        "assessmentMaterialEvidence": "ASSET_PROVENANCE_DRIFT",
         "provenanceFingerprint": "ASSET_PROVENANCE_DRIFT",
     }
     for resource_id in sorted(set(expected_by_id) & set(actual_by_id)):
@@ -2045,6 +2116,34 @@ def run_self_test(
         lambda value: value["summary"].update({"publicationReady": True}),
     )
 
+    if TARGET_PROFILE_ID == "full-standalone-v1.3":
+        material_indexes = [i for i, value in enumerate(review["assetDecisions"])
+                            if value["provenanceClass"] == ASSESSMENT_MATERIAL_PROVENANCE_CLASS]
+        declaration = read_json(repo_file(ASSESSMENT_MATERIAL_PROFILE_PATH))
+        if len(material_indexes) != len(declaration["resources"]["assessmentMaterials"]):
+            raise ReviewError("Assessment-material source declarations are not completely reviewed")
+        for index in material_indexes:
+            value = fresh_review["assetDecisions"][index]
+            if ({key: value[key] for key in DECISION_FIELDS} != pending_decision()
+                    or "promptPath" in value or "promptSha256" in value):
+                raise ReviewError("Assessment provenance invented a prompt or redistribution approval")
+        material_index = material_indexes[0]
+        case("material-source-evidence-loss", "ASSET_PROVENANCE_DRIFT",
+             lambda value: value["assetDecisions"][material_index].pop("assessmentMaterialEvidence"))
+        case("material-declaration-hash-drift", "ASSET_PROVENANCE_DRIFT",
+             lambda value: value["assetDecisions"][material_index]["assessmentMaterialEvidence"].update(
+                 {"declarationSha256": "sha256:" + "0" * 64}))
+        case("material-source-hash-drift", "ASSET_PROVENANCE_DRIFT",
+             lambda value: value["assetDecisions"][material_index]["assessmentMaterialEvidence"]["sources"][0].update(
+                 {"sha256": "sha256:" + "0" * 64}))
+        case("material-task-use-loss", "ASSET_PROVENANCE_DRIFT",
+             lambda value: value["assetDecisions"][material_index]["assessmentMaterialEvidence"]["useGoalIds"].clear())
+        case("material-automatic-rights-approval", "ASSET_AUTOMATIC_ALLOWED_FORBIDDEN",
+             lambda value: value["assetDecisions"][material_index].update(automatic_apache_decision(source.root_license)))
+        case("material-fictitious-prompt", "SCHEMA",
+             lambda value: value["assetDecisions"][material_index].update(
+                 {"promptPath": "invented.md", "promptSha256": "sha256:" + "0" * 64}))
+
     stale_completed = copy.deepcopy(review["assetDecisions"][0])
     stale_completed["decisionStatus"] = "human-approved"
     stale_completed["provenanceFingerprint"] = f"sha256:{'0' * 64}"
@@ -2110,6 +2209,32 @@ def select_learning_unit_candidate() -> None:
                         for spec in CLASS_SPECS)
 
 
+def select_runtime_v13_candidate() -> None:
+    """Select unpublished 1.3; existing ledgers and all rights decisions remain untouched."""
+    global PROFILE_ID, TARGET_PROFILE_ID, TARGET_PROFILE_PATH, SCHEMA_ID, REVIEW_ID, CLASS_SPECS, PATH_CLASSIFICATION_OVERRIDES
+    if TARGET_PROFILE_ID == "full-standalone-v1.3":
+        return
+    PROFILE_ID = "de-gymnasium-mathematik-release-model-v1.3"
+    TARGET_PROFILE_ID = "full-standalone-v1.3"
+    TARGET_PROFILE_PATH = "contracts/curriculum-package/v1.3/profiles/full-standalone-v1.3.profile.json"
+    SCHEMA_ID = SCHEMA_ID.replace("/v1/", "/v1.3/")
+    REVIEW_ID = "de-gymnasium-mathematik-v1.3"
+    PATH_CLASSIFICATION_OVERRIDES = (*PATH_CLASSIFICATION_OVERRIDES, {
+        "role": "provenance-report",
+        "pathPrefix": "data/assessment-sources/stage-plan-direct-evidence-20261115-v7/reviewed-assessments.json",
+        "classId": "skillpilot-data",
+        "provenanceClass": "skillpilot-authored",
+    }, {
+        "role": "provenance-report",
+        "pathPrefix": "data/assessment-sources/task64-digital-correction-20261115-v1/reviewed-assessment.json",
+        "classId": "skillpilot-data",
+        "provenanceClass": "skillpilot-authored",
+    })
+    CLASS_SPECS = tuple({**spec, "artifactRoles": spec["artifactRoles"] +
+                        (["learning-unit-coverage-review"] if spec["classId"] == "skillpilot-data" else [])}
+                       for spec in CLASS_SPECS)
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     action = parser.add_mutually_exclusive_group(required=True)
@@ -2131,14 +2256,27 @@ def main() -> int:
     parser.add_argument("--completion-candidate", action="store_true", help="bind the reviewed completion-capable runtime profile; no publication approval")
     parser.add_argument("--learning-unit-candidate", action="store_true",
                         help="bind the runtime-1.2 learning-unit profile; no publication approval")
+    parser.add_argument("--runtime-v13-candidate", action="store_true",
+                        help="bind unpublished runtime 1.3 and exact assessment-material provenance")
     args = parser.parse_args()
-    if args.completion_candidate and args.learning_unit_candidate:
-        parser.error("Runtime 1.1 and 1.2 candidates are separate contracts")
+    if sum((args.completion_candidate, args.learning_unit_candidate, args.runtime_v13_candidate)) > 1:
+        parser.error("Runtime candidates require one exact profile")
     if args.ledger is None:
         args.ledger = (DEFAULT_LEDGER.with_name("de-gymnasium-mathematik-completion-v1.review.json")
                        if args.completion_candidate
                        else DEFAULT_LEDGER.with_name("de-gymnasium-mathematik-learning-units-v1.review.json")
-                       if args.learning_unit_candidate else DEFAULT_LEDGER)
+                       if args.learning_unit_candidate
+                       else DEFAULT_LEDGER.with_name("de-gymnasium-mathematik-v1.3.review.json")
+                       if args.runtime_v13_candidate else DEFAULT_LEDGER)
+    if args.runtime_v13_candidate:
+        if args.ledger.resolve() in {
+                DEFAULT_LEDGER.resolve(),
+                DEFAULT_LEDGER.with_name("de-gymnasium-mathematik-learning-units-v1.review.json").resolve(),
+                DEFAULT_LEDGER.with_name("de-gymnasium-mathematik-completion-v1.review.json").resolve()}:
+            parser.error("Runtime 1.3 must preserve all earlier review ledgers")
+        select_runtime_v13_candidate()
+        if args.schema == DEFAULT_SCHEMA:
+            args.schema = CONTRACT_ROOT.parent / "v1.3/package-redistribution-review.schema.json"
     if args.learning_unit_candidate:
         if args.ledger.resolve() == DEFAULT_LEDGER.resolve():
             parser.error("Learning-unit candidates must use a separate ledger; the existing V1 review is preserved")

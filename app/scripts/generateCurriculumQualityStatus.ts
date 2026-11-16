@@ -1,5 +1,7 @@
 import { validateSemanticAtomicityRecordShape } from './lib/semanticAtomicityRecordValidation'
 import { evaluateDirectAtomicRouteCoverage } from './lib/directAtomicRouteCoverage'
+import { buildRouteCatalogContext, restrictForeignRouteSupport } from './lib/routeCatalogContext'
+import { materializeNationalStageProjection, PHYSICS_NATIONAL_STAGE_EXPOSURE_SOURCES } from './lib/nationalStageProjection'
 import { createHash } from 'node:crypto'
 import { existsSync, mkdirSync, readdirSync, readFileSync, realpathSync, statSync, writeFileSync } from 'node:fs'
 import { dirname, isAbsolute, join, relative, resolve } from 'node:path'
@@ -100,6 +102,7 @@ interface JurisdictionCoverageEntry {
 
 interface JurisdictionCoverage {
   dimension: 'jurisdiction'
+  emptyCanonicalViewProjection?: boolean
   totalJurisdictions: number
   totalAtomicGoals: number
   rawAtomicGoals: number
@@ -924,6 +927,8 @@ const CANONICAL_GYM_MATH_SEK1_EXAM_FOLDER_IDS = [
   'f6c9c2b8-3dbd-4839-972f-c60f33c44b63',
   'cb20dd6b-c4ff-4a1b-9636-3b3d6ea86aa8',
 ]
+const CANONICAL_GYM_MATH_SEK1_DIRECT_EVIDENCE_CLUSTER_ID = 'a58ab751-8d16-54dc-839d-efafbf3030c6'
+const CANONICAL_GYM_MATH_SEK2_DIRECT_EVIDENCE_CLUSTER_ID = 'd7290a35-dc08-588b-86d5-0cc725355b64'
 const CANONICAL_GYM_MATH_SEK2_MOTIVATION_GOAL_ID = '71cec9fb-3751-4d61-8b34-c5adbbf6e5f2'
 const CANONICAL_GYM_MATH_SEK2_PRACTICE_CLUSTER_IDS = [
   '28b45b93-11e1-5a96-97a1-4cfee171802b',
@@ -938,12 +943,24 @@ const CANONICAL_GYM_MATH_SEK2_PRACTICE_CLUSTER_IDS = [
 const CANONICAL_GYM_PHYSICS_LANDSCAPE_ID = '7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a'
 const CANONICAL_GYM_PHYSICS_MOTIVATION_GOAL_ID = '5c44b9ba-9b05-4774-95d5-073230d3fc4f'
 const CANONICAL_GYM_PHYSICS_SEK1_PRACTICE_CLUSTER_ID = '21ab0854-4d67-5233-9495-ae208e152a3c'
+const CANONICAL_GYM_PHYSICS_SHARED_PRACTICE_CLUSTER_ID = '4ad7303d-22ad-56e6-aee0-f05b2ca42a07'
+// Eligibility as an assessment endpoint does not assign a stage: each actual
+// composition view must still expose the task in the checked stage.
+const CANONICAL_GYM_PHYSICS_CURRENT_PRACTICE_CLUSTER_IDS = [
+  '5630f93b-82ce-5d76-a781-31accc6854e9',
+  '7bdd1853-164e-54ca-8255-497ea8edd1f1',
+  'cc308bcc-435b-527d-b898-efafdf47c48a',
+  '2a5dfdf6-73e7-5336-a37f-cbf2dabec55e',
+]
 const CANONICAL_GYM_PHYSICS_SEK2_PRACTICE_CLUSTER_IDS = [
   '424b07df-bf66-5d7f-99f5-f28b32ad1f22',
   '549a427d-f10a-5537-990e-6fdd7466848b',
   '9dd7c596-a751-523c-acba-916f73e900a5',
   'b47a2a23-b56d-5433-9036-075d6bb7c782',
   '85bbad98-2f48-5d64-85c4-ab6cf67f24c2',
+  CANONICAL_GYM_PHYSICS_SHARED_PRACTICE_CLUSTER_ID,
+  '8e5c7195-eb30-55c1-a19a-630742620ba0',
+  ...CANONICAL_GYM_PHYSICS_CURRENT_PRACTICE_CLUSTER_IDS,
 ]
 const CANONICAL_GYM_CHEMISTRY_LANDSCAPE_ID = 'c436b994-8f44-5134-b9f8-0c9f5d6a5ba0'
 const CANONICAL_GYM_CHEMISTRY_MOTIVATION_GOAL_ID = 'a9c22adc-b543-5b0c-a2d8-3189facdff08'
@@ -1160,10 +1177,10 @@ export const routeProfileDefinitions: RouteProfile[] = [
     landscapeId: CANONICAL_GYM_MATH_LANDSCAPE_ID,
     label: 'Sekundarstufe I',
     motivationAnchorGoalIds: [CANONICAL_GYM_MATH_SEK1_MOTIVATION_GOAL_ID],
-    terminalAutonomyClusterIds: CANONICAL_GYM_MATH_SEK1_EXAM_FOLDER_IDS,
+    terminalAutonomyClusterIds: [...CANONICAL_GYM_MATH_SEK1_EXAM_FOLDER_IDS, CANONICAL_GYM_MATH_SEK1_DIRECT_EVIDENCE_CLUSTER_ID],
     terminalAutonomyClusterIdsByDurationModel: {
-      G8: CANONICAL_GYM_MATH_SEK1_EXAM_FOLDER_IDS.slice(0, 5),
-      G9: CANONICAL_GYM_MATH_SEK1_EXAM_FOLDER_IDS,
+      G8: [...CANONICAL_GYM_MATH_SEK1_EXAM_FOLDER_IDS.slice(0, 5), CANONICAL_GYM_MATH_SEK1_DIRECT_EVIDENCE_CLUSTER_ID],
+      G9: [...CANONICAL_GYM_MATH_SEK1_EXAM_FOLDER_IDS, CANONICAL_GYM_MATH_SEK1_DIRECT_EVIDENCE_CLUSTER_ID],
     },
     compositionViewStage: 'SekI',
     goalSelector: (goal) => isAtomicGoal(goal)
@@ -1177,7 +1194,7 @@ export const routeProfileDefinitions: RouteProfile[] = [
     landscapeId: CANONICAL_GYM_MATH_LANDSCAPE_ID,
     label: 'Sekundarstufe II',
     motivationAnchorGoalIds: [CANONICAL_GYM_MATH_SEK2_MOTIVATION_GOAL_ID],
-    terminalAutonomyClusterIds: CANONICAL_GYM_MATH_SEK2_PRACTICE_CLUSTER_IDS,
+    terminalAutonomyClusterIds: [...CANONICAL_GYM_MATH_SEK2_PRACTICE_CLUSTER_IDS, CANONICAL_GYM_MATH_SEK2_DIRECT_EVIDENCE_CLUSTER_ID],
     goalSelector: (goal) => isAtomicGoal(goal) && isCanonicalGymMathSek2Goal(goal) && !isMemoryGoal(goal),
     clusterSelector: isCanonicalGymMathSek2Goal,
   },
@@ -1185,8 +1202,13 @@ export const routeProfileDefinitions: RouteProfile[] = [
     profileId: 'canonical-physics-sek1',
     landscapeId: CANONICAL_GYM_PHYSICS_LANDSCAPE_ID,
     label: 'Sekundarstufe I',
-    motivationAnchorGoalIds: [CANONICAL_GYM_PHYSICS_MOTIVATION_GOAL_ID],
-    terminalAutonomyClusterIds: [CANONICAL_GYM_PHYSICS_SEK1_PRACTICE_CLUSTER_ID],
+    motivationAnchorGoalIds: [CANONICAL_GYM_PHYSICS_MOTIVATION_GOAL_ID, '65365dce-f33f-49d8-9516-42f75883aa86'],
+    terminalAutonomyClusterIds: [
+      CANONICAL_GYM_PHYSICS_SEK1_PRACTICE_CLUSTER_ID,
+      CANONICAL_GYM_PHYSICS_SHARED_PRACTICE_CLUSTER_ID,
+      '8e5c7195-eb30-55c1-a19a-630742620ba0',
+      ...CANONICAL_GYM_PHYSICS_CURRENT_PRACTICE_CLUSTER_IDS,
+    ],
     compositionViewStage: 'SekI',
     compositionViewApplicabilityMode: 'compiled-jurisdiction',
     compositionViewRoutePathMode: 'visible-atomic',
@@ -1708,7 +1730,7 @@ function buildAtomicDirectRequiresEdges(landscape: SkillLandscape): Map<string, 
   return edges
 }
 
-function buildEffectiveRequiresEdges(landscape: SkillLandscape): Map<string, string[]> {
+export function buildEffectiveRequiresEdges(landscape: SkillLandscape): Map<string, string[]> {
   const goalById = new Map(landscape.goals.map((goal) => [goal.id, goal]))
   const parentByChild = buildParentByChild(landscape.goals)
   const directEdges = buildDirectRequiresEdges(landscape)
@@ -1946,14 +1968,16 @@ function evaluateRouteEndpointCompositionVisibility(
   reverseEffectiveEdges: Map<string, string[]>,
   atomicDirectEdges: Map<string, string[]>,
   reverseAtomicDirectEdges: Map<string, string[]>,
+  canonicalCatalog: readonly SkillLandscape[],
+  ownGoalIds: ReadonlySet<string>,
+  compositionViewFiles?: readonly string[],
 ): RuleResult | null {
   if (!profile.compositionViewStage) return null
   const goalById = new Map(landscape.goals.map((goal) => [goal.id, goal]))
-  const applicabilityReport = applicabilityCompilation.reports.find(
-    (report) => report.landscapeId === profile.landscapeId,
-  )
+  const contextGoalIds = new Set(landscape.goals.map(goal => goal.id))
   const compiledJurisdictionsByGoalId = new Map(
-    (applicabilityReport?.goals ?? []).map((goal) => [
+    applicabilityCompilation.reports.flatMap(report => report.goals)
+      .filter(goal => contextGoalIds.has(goal.goalId)).map((goal) => [
       goal.goalId,
       new Set(goal.compiledApplicability.jurisdiction ?? []),
     ]),
@@ -1974,7 +1998,7 @@ function evaluateRouteEndpointCompositionVisibility(
       .map((decision) => decision.goalId))
     : null
 
-  const viewEntries = readCompositionViewFilesForLandscapeId(profile.landscapeId)
+  const viewEntries = (compositionViewFiles ?? readCompositionViewFilesForLandscapeId(profile.landscapeId))
     .map((file) => ({ file, view: normalizeCompositionView(loadJson<unknown>(file)) }))
     .filter(({ view }) => view.landscapeId === profile.landscapeId
       && (view.scope.stage === profile.compositionViewStage || view.scope.stage === 'CrossStage'))
@@ -1995,6 +2019,7 @@ function evaluateRouteEndpointCompositionVisibility(
   const missingDirectTerminalRouteScopes: string[] = []
   const missingJurisdictionStageAuthorityScopes: string[] = []
   const ambiguousJurisdictionStageAuthorityScopes: string[] = []
+  const invalidNationalExposureFamilyScopes: string[] = []
   const uniqueGoalsMissingEffectiveMotivationRoute = new Set<string>()
   const uniqueGoalsMissingDirectMotivationRoute = new Set<string>()
   const uniqueGoalsMissingEffectiveTerminalRoute = new Set<string>()
@@ -2027,6 +2052,7 @@ function evaluateRouteEndpointCompositionVisibility(
   let nationalTargetAtomicGoalOccurrencesExcludedByJurisdictionStageAuthority = 0
   let nationalSelectedGoalOccurrencesExcludedByJurisdictionStageAuthority = 0
   let nationalPrerequisiteOnlyGoalOccurrencesImportedByJurisdictionStageAuthority = 0
+  let nationalStageTargetGoalOccurrencesMaterializedFromFullExposure = 0
   let minRequiredTerminalAutonomyGoals = Number.POSITIVE_INFINITY
   let maxRequiredTerminalAutonomyGoals = 0
   const selectedGoalIds = new Set(selectedGoals.map((goal) => goal.id))
@@ -2034,11 +2060,9 @@ function evaluateRouteEndpointCompositionVisibility(
   viewEntries.forEach(({ file, view }) => {
     // CrossStage explicitly means the entire authored view, including both
     // school stages. Its root is not inferred from year, phase or display labels.
-    const matchingStageStructures = enforceProjectionLocalRoutes
-      ? profile.compositionViewStage === 'CrossStage'
-        ? view.rootNodes.filter((node) => node.kind === 'structure')
-        : collectCompositionStageStructures(view.rootNodes, profile.compositionViewStage!)
-      : []
+    const matchingStageStructures = profile.compositionViewStage === 'CrossStage'
+      ? view.rootNodes.filter((node) => node.kind === 'structure')
+      : collectCompositionStageStructures(view.rootNodes, profile.compositionViewStage!)
     const scopedTerminalGoals = terminalAutonomyGoalsForRouteScope(
       goalById,
       profile,
@@ -2071,21 +2095,25 @@ function evaluateRouteEndpointCompositionVisibility(
         file,
         scopeFilters,
         false,
-        enforceProjectionLocalRoutes ? profile.compositionViewStage : undefined,
-        enforceProjectionLocalRoutes ? profile.motivationAnchorGoalIds : [],
+        profile.compositionViewStage,
+        profile.motivationAnchorGoalIds,
+        canonicalCatalog,
       )
       const visibleAtomicGoalIds = collectRenderedAtomicGoalIdsFromCompositionView(
         landscape,
         file,
         scopeFilters,
         true,
-        enforceProjectionLocalRoutes ? profile.compositionViewStage : undefined,
-        enforceProjectionLocalRoutes ? profile.motivationAnchorGoalIds : [],
+        profile.compositionViewStage,
+        profile.motivationAnchorGoalIds,
+        canonicalCatalog,
       )
       if (useCompiledJurisdiction && jurisdiction) {
         removeGoalsOutsideCompiledProjection(visibleTargetAtomicGoalIds)
         removeGoalsOutsideCompiledProjection(visibleAtomicGoalIds)
       }
+      restrictForeignRouteSupport(visibleAtomicGoalIds, visibleTargetAtomicGoalIds,
+        ownGoalIds, effectiveEdges, profile.motivationAnchorGoalIds)
       let jurisdictionStageTargetAuthorityGoalIds: Set<string> | null = null
       let jurisdictionStageVisibleAuthorityGoalIds: Set<string> | null = null
       if (useCompiledJurisdiction && enforceProjectionLocalRoutes && !viewJurisdiction && jurisdiction) {
@@ -2114,6 +2142,7 @@ function evaluateRouteEndpointCompositionVisibility(
             false,
             profile.compositionViewStage,
             profile.motivationAnchorGoalIds,
+            canonicalCatalog,
           )
           const visibleGoalIds = collectRenderedAtomicGoalIdsFromCompositionView(
             landscape,
@@ -2122,9 +2151,12 @@ function evaluateRouteEndpointCompositionVisibility(
             true,
             profile.compositionViewStage,
             profile.motivationAnchorGoalIds,
+            canonicalCatalog,
           )
           removeGoalsOutsideCompiledProjection(targetGoalIds)
           removeGoalsOutsideCompiledProjection(visibleGoalIds)
+          restrictForeignRouteSupport(visibleGoalIds, targetGoalIds,
+            ownGoalIds, effectiveEdges, profile.motivationAnchorGoalIds)
           return { file: authorityFile, targetGoalIds, visibleGoalIds }
         })
 
@@ -2151,26 +2183,73 @@ function evaluateRouteEndpointCompositionVisibility(
           jurisdictionStageTargetAuthorityGoalIds = new Set(jurisdictionStageTargetGoalIds)
           jurisdictionStageVisibleAuthorityGoalIds = new Set(jurisdictionStageVisibleGoalIds)
 
-          const prerequisiteOnlySupportGoalIds = new Set(
-            Array.from(visibleAtomicGoalIds)
-              .filter((goalId) => !visibleTargetAtomicGoalIds.has(goalId)),
-          )
-          const excludedTargetGoalIds = Array.from(visibleTargetAtomicGoalIds)
-            .filter((goalId) => !jurisdictionStageTargetGoalIds.has(goalId))
-          nationalTargetAtomicGoalOccurrencesExcludedByJurisdictionStageAuthority += excludedTargetGoalIds.length
-          nationalSelectedGoalOccurrencesExcludedByJurisdictionStageAuthority += excludedTargetGoalIds
-            .filter((goalId) => selectedGoalIds.has(goalId))
-            .length
-          const jurisdictionPrerequisiteOnlySupportGoalIds = Array.from(jurisdictionStageVisibleGoalIds)
-            .filter((goalId) => !jurisdictionStageTargetGoalIds.has(goalId))
-          nationalPrerequisiteOnlyGoalOccurrencesImportedByJurisdictionStageAuthority += (
-            jurisdictionPrerequisiteOnlySupportGoalIds.length
-          )
-          excludedTargetGoalIds.forEach((goalId) => visibleTargetAtomicGoalIds.delete(goalId))
-          visibleAtomicGoalIds.clear()
-          visibleTargetAtomicGoalIds.forEach((goalId) => visibleAtomicGoalIds.add(goalId))
-          prerequisiteOnlySupportGoalIds.forEach((goalId) => visibleAtomicGoalIds.add(goalId))
-          jurisdictionPrerequisiteOnlySupportGoalIds.forEach((goalId) => visibleAtomicGoalIds.add(goalId))
+          // A national/[Land] row is a compatibility audit: the actual learner
+          // API selects the Land view directly. Materialize the same Land stage
+          // against the explicit national full-view exposure boundary, rather
+          // than intersecting two incompatible national and Land stage cuts.
+          if (profile.landscapeId === CANONICAL_GYM_PHYSICS_LANDSCAPE_ID) {
+            const nationalExposureFamily = viewEntries
+              .filter(({ view: source }) => !source.scope.jurisdiction && source.scope.stage === 'CrossStage')
+              .map(({ file: sourceFile, view: source }) => {
+                const sourceFilters = [source.scope.courseProfile, source.scope.durationModel]
+                  .filter((value): value is string => typeof value === 'string' && value.trim().length > 0)
+                const targetGoalIds = collectRenderedAtomicGoalIdsFromCompositionView(
+                  landscape, sourceFile, sourceFilters, false, 'CrossStage', profile.motivationAnchorGoalIds, canonicalCatalog,
+                )
+                const visibleGoalIds = collectRenderedAtomicGoalIdsFromCompositionView(
+                  landscape, sourceFile, sourceFilters, true, 'CrossStage', profile.motivationAnchorGoalIds, canonicalCatalog,
+                )
+                removeGoalsOutsideCompiledProjection(targetGoalIds)
+                removeGoalsOutsideCompiledProjection(visibleGoalIds)
+                restrictForeignRouteSupport(visibleGoalIds, targetGoalIds,
+                  ownGoalIds, effectiveEdges, profile.motivationAnchorGoalIds)
+                return { viewId: source.viewId, landscapeId: source.landscapeId, scope: source.scope, targetGoalIds, visibleGoalIds }
+              })
+            const materialized = materializeNationalStageProjection({
+              landscapeId: landscape.landscapeId,
+              scope: view.scope,
+              defaultProjection: { targetGoalIds: visibleTargetAtomicGoalIds, visibleGoalIds: visibleAtomicGoalIds },
+              jurisdiction,
+              sourceViewIds: PHYSICS_NATIONAL_STAGE_EXPOSURE_SOURCES[view.viewId] ?? [],
+              nationalExposureFamily,
+              stageAuthorities: authorityProjectionSets,
+            })
+            invalidNationalExposureFamilyScopes.push(...materialized.errors.map(error => `${scopeLabel}: ${error}`))
+            const beforeTargets = new Set(visibleTargetAtomicGoalIds)
+            nationalTargetAtomicGoalOccurrencesExcludedByJurisdictionStageAuthority += [...beforeTargets]
+              .filter(id => !materialized.projection.targetGoalIds.has(id)).length
+            nationalSelectedGoalOccurrencesExcludedByJurisdictionStageAuthority += [...beforeTargets]
+              .filter(id => selectedGoalIds.has(id) && !materialized.projection.targetGoalIds.has(id)).length
+            nationalStageTargetGoalOccurrencesMaterializedFromFullExposure += [...materialized.projection.targetGoalIds]
+              .filter(id => !beforeTargets.has(id)).length
+            nationalPrerequisiteOnlyGoalOccurrencesImportedByJurisdictionStageAuthority += [...materialized.projection.visibleGoalIds]
+              .filter(id => !materialized.projection.targetGoalIds.has(id) && !visibleAtomicGoalIds.has(id)).length
+            visibleTargetAtomicGoalIds.clear()
+            materialized.projection.targetGoalIds.forEach(id => visibleTargetAtomicGoalIds.add(id))
+            visibleAtomicGoalIds.clear()
+            materialized.projection.visibleGoalIds.forEach(id => visibleAtomicGoalIds.add(id))
+          } else {
+            const prerequisiteOnlySupportGoalIds = new Set(
+              Array.from(visibleAtomicGoalIds)
+                .filter((goalId) => !visibleTargetAtomicGoalIds.has(goalId)),
+            )
+            const excludedTargetGoalIds = Array.from(visibleTargetAtomicGoalIds)
+              .filter((goalId) => !jurisdictionStageTargetGoalIds.has(goalId))
+            nationalTargetAtomicGoalOccurrencesExcludedByJurisdictionStageAuthority += excludedTargetGoalIds.length
+            nationalSelectedGoalOccurrencesExcludedByJurisdictionStageAuthority += excludedTargetGoalIds
+              .filter((goalId) => selectedGoalIds.has(goalId))
+              .length
+            const jurisdictionPrerequisiteOnlySupportGoalIds = Array.from(jurisdictionStageVisibleGoalIds)
+              .filter((goalId) => !jurisdictionStageTargetGoalIds.has(goalId))
+            nationalPrerequisiteOnlyGoalOccurrencesImportedByJurisdictionStageAuthority += (
+              jurisdictionPrerequisiteOnlySupportGoalIds.length
+            )
+            excludedTargetGoalIds.forEach((goalId) => visibleTargetAtomicGoalIds.delete(goalId))
+            visibleAtomicGoalIds.clear()
+            visibleTargetAtomicGoalIds.forEach((goalId) => visibleAtomicGoalIds.add(goalId))
+            prerequisiteOnlySupportGoalIds.forEach((goalId) => visibleAtomicGoalIds.add(goalId))
+            jurisdictionPrerequisiteOnlySupportGoalIds.forEach((goalId) => visibleAtomicGoalIds.add(goalId))
+          }
         }
       }
       if (enforceProjectionLocalRoutes) {
@@ -2400,7 +2479,8 @@ function evaluateRouteEndpointCompositionVisibility(
         uniqueTerminalPrerequisitesMissingFromProjection.add(pair.split('->')[1] ?? pair)
       })
 
-      if (enforceProjectionLocalRoutes && matchingStageStructures.length !== 1) {
+      if ((enforceProjectionLocalRoutes || profile.compositionViewStage !== 'CrossStage')
+        && matchingStageStructures.length !== 1) {
         invalidStageStructureScopes.push(
           `${scopeLabel}: expected 1 ${profile.compositionViewStage} structure, got ${matchingStageStructures.length}`,
         )
@@ -2456,6 +2536,7 @@ function evaluateRouteEndpointCompositionVisibility(
     && invalidStageStructureScopes.length === 0
     && missingJurisdictionStageAuthorityScopes.length === 0
     && ambiguousJurisdictionStageAuthorityScopes.length === 0
+    && invalidNationalExposureFamilyScopes.length === 0
     && missingMotivationScopes.length === 0
     && missingTerminalScopes.length === 0
     && unexpectedTerminalScopes.length === 0
@@ -2497,6 +2578,8 @@ function evaluateRouteEndpointCompositionVisibility(
       nationalTargetAtomicGoalOccurrencesExcludedByJurisdictionStageAuthority,
       nationalSelectedGoalOccurrencesExcludedByJurisdictionStageAuthority,
       nationalPrerequisiteOnlyGoalOccurrencesImportedByJurisdictionStageAuthority,
+      nationalStageTargetGoalOccurrencesMaterializedFromFullExposure,
+      nationalProjectionScopesWithInvalidExposureFamily: invalidNationalExposureFamilyScopes.length,
       projectionScopesWithIncompleteExplicitTerminalPrerequisites: terminalPrerequisiteClosureScopes.length,
       explicitTerminalPrerequisiteOccurrencesMissingFromProjection: terminalPrerequisiteOccurrencesMissingFromProjection,
       projectionScopesWithIncompleteWholeMaterialCoverageBindings: terminalMaterialCoverageBindingScopes.length,
@@ -2538,6 +2621,7 @@ function evaluateRouteEndpointCompositionVisibility(
       ...ambiguousJurisdictionStageAuthorityScopes.map(
         (scope) => `Ambiguous jurisdiction-specific stage-placement authority for national projection: ${scope}`,
       ),
+      ...invalidNationalExposureFamilyScopes.map(scope => `Invalid national stage exposure family: ${scope}`),
       ...missingMotivationScopes.map((scope) => `Missing motivation anchor(s): ${scope}`),
       ...emptyExpectedTerminalScopes.map((scope) => `No applicable terminal autonomy goal: ${scope}`),
       ...missingTerminalScopes.map((scope) => `Missing terminal autonomy goal(s): ${scope}`),
@@ -2650,9 +2734,16 @@ export function evaluateRouteProfile(
   landscape: SkillLandscape,
   profile: RouteProfile,
   applicabilityCompilation: ApplicabilityCompilationResult,
+  canonicalCatalog?: readonly SkillLandscape[],
+  compositionViewFiles?: readonly string[],
 ): ScopeStatus {
+  // Preserve the subject's selection predicates while resolving its real
+  // prerequisites across the current catalog. This never authors a view role.
+  const ownGoalIds = new Set(landscape.goals.map(goal => goal.id))
+  const sourceCatalog = canonicalCatalog ?? [landscape]
+  if (canonicalCatalog) landscape = buildRouteCatalogContext(landscape, canonicalCatalog).landscape
   const goalById = new Map(landscape.goals.map((goal) => [goal.id, goal]))
-  const selectedGoals = landscape.goals.filter(profile.goalSelector)
+  const selectedGoals = landscape.goals.filter(goal => ownGoalIds.has(goal.id) && profile.goalSelector(goal))
   const effectiveEdges = buildEffectiveRequiresEdges(landscape)
   const reverseEffectiveEdges = buildReverseEdges(effectiveEdges)
   const atomicDirectEdges = buildAtomicDirectRequiresEdges(landscape)
@@ -2671,10 +2762,12 @@ export function evaluateRouteProfile(
   const missingEffectiveTerminal = selectedGoals.filter((goal) =>
     !terminalGoalIds.some((terminalId) => hasReverseEffectivePath(goal.id, terminalId)))
 
-  const { missingDirectMotivation, missingDirectTerminal, configurationIssues } = evaluateDirectAtomicRouteCoverage(landscape, profile)
+  const { missingDirectMotivation, missingDirectTerminal, configurationIssues } = evaluateDirectAtomicRouteCoverage(landscape, {
+    ...profile, goalSelector: goal => ownGoalIds.has(goal.id) && profile.goalSelector(goal),
+  })
 
   const scopedClusterRequires = landscape.goals.filter((goal) =>
-    !isAtomicGoal(goal) && profile.clusterSelector(goal) && (goal.requires?.length ?? 0) > 0)
+    ownGoalIds.has(goal.id) && !isAtomicGoal(goal) && profile.clusterSelector(goal) && (goal.requires?.length ?? 0) > 0)
 
   const terminalAutonomyGoalsWithoutExamData = terminalAutonomyGoals.filter((goal) => !goal.examData)
   const terminalAutonomyGoalsWithWeakExamData = terminalAutonomyGoals
@@ -2693,6 +2786,9 @@ export function evaluateRouteProfile(
     reverseEffectiveEdges,
     atomicDirectEdges,
     reverseAtomicDirectEdges,
+    sourceCatalog,
+    ownGoalIds,
+    compositionViewFiles,
   )
 
   const rules: RuleResult[] = [
@@ -4137,14 +4233,16 @@ export function collectRenderedAtomicGoalIdsFromCompositionView(
   includePrerequisiteOnly = false,
   compositionStage?: CompositionRouteStage,
   additionalVisibleGoalIds: string[] = [],
+  canonicalCatalog: readonly SkillLandscape[] = [landscape],
 ): Set<string> {
-  const entry = {
-    meta: landscape,
-    goals: landscape.goals.map((goal) => convertLearningGoal(goal, { landscapeId: landscape.landscapeId })),
-  }
+  const entries = canonicalCatalog.map(source => ({
+    meta: source,
+    goals: source.goals.map(goal => convertLearningGoal(goal, { landscapeId: source.landscapeId })),
+  }))
   const rawView = loadJson<unknown>(viewFile)
   const normalizedView = normalizeCompositionView(rawView)
-  const projectedEntry = applyCompositionViewProjection([entry], normalizedView)[0]
+  const projectedEntry = applyCompositionViewProjection(entries, normalizedView)
+    .find(entry => entry.meta.landscapeId === landscape.landscapeId)
   if (!projectedEntry) return new Set<string>()
 
   const goalById = new Map(projectedEntry.goals.map((goal) => [goal.id, goal]))
@@ -4196,9 +4294,11 @@ export function collectRenderedAtomicGoalIdsFromCompositionView(
     .filter((goalId) => fullVisibleGoalIds.has(goalId))
     .forEach(addRenderedAtomicGoal)
   if (includePrerequisiteOnly) {
-    const sourceGoalById = new Map(entry.goals.map((goal) => [goal.id, goal]))
-    const sourceRoot = entry.goals.find((goal) => (goal.tags ?? []).includes('root') && goal.contains.length > 0)
-    const sourceRootByLandscapeId = new Map(sourceRoot ? [[landscape.landscapeId, sourceRoot.id]] : [])
+    const sourceGoalById = new Map(entries.flatMap(entry => entry.goals.map(goal => [goal.id, goal] as const)))
+    const sourceRootByLandscapeId = new Map(entries.flatMap(entry => {
+      const root = entry.goals.find(goal => (goal.tags ?? []).includes('root') && goal.contains.length > 0)
+      return root ? [[entry.meta.landscapeId, root.id] as const] : []
+    }))
     const { prerequisiteOnlyGoalIds } = collectCompositionProjectionRoleGoalIds(
       normalizedView.rootNodes,
       sourceGoalById,
@@ -4275,38 +4375,110 @@ export function collectRenderedAtomicGoalIdsFromCompositionView(
   return atomicGoalIds
 }
 
-function readCompositionViewAtomicGoalIds(report: CoverageReport): {
+/** Mirror LearnerService.matchesStateFilter for atomic seeds. Selection uses raw
+ * provenance/direct mappings, never the subsequent CQR source-quality verdict
+ * or the compiler's assessment-requires evidence (which replaces raw evidence).
+ */
+export function sourceCoverageAtomicScopeMatcher(landscape: SkillLandscape) {
+  const sourceJurisdictions = readSourceLandscapeJurisdictionById()
+  const mappingsByState = new Map<string, Set<string>>()
+  for (const mappingFile of readAllGoalMappingFiles()) {
+    if (mappingFile.targetLandscapeId !== landscape.landscapeId || !mappingFile.sourceLandscapeId) continue
+    const state = sourceJurisdictions.get(mappingFile.sourceLandscapeId)
+    if (!state) continue
+    const ids = mappingsByState.get(state) ?? new Set<string>()
+    for (const mapping of mappingFile.mappings ?? []) if (mapping.canonicalGoalId) ids.add(mapping.canonicalGoalId)
+    mappingsByState.set(state, ids)
+  }
+  const provenanceFile = resolve(repoRoot, 'curricula/DE/Gymnasium/provenance/canonical-goal-provenance-registry.json')
+  const registry = existsSync(provenanceFile)
+    ? loadJson<{ landscapes?: Array<{ landscapeId: string; goalProvenance?: Record<string, Record<string, unknown>> }> }>(provenanceFile)
+      .landscapes?.find(source => source.landscapeId === landscape.landscapeId)?.goalProvenance ?? {}
+    : {}
+  const strings = (value: unknown): string[] => typeof value === 'string'
+    ? [value] : Array.isArray(value) ? value.filter((item): item is string => typeof item === 'string') : []
+  return (goal: LearningGoal, scope: CompositionView['scope']): boolean => {
+    const state = normalizeJurisdiction(scope.jurisdiction)
+    if (state) {
+      const embedded = (goal.extendedData as { provenance?: unknown } | undefined)?.provenance
+      const embeddedEntries = embedded && typeof embedded === 'object' && !Array.isArray(embedded)
+        ? Object.fromEntries(Object.entries(embedded).filter(([, value]) => value !== null && value !== undefined)) : {}
+      const provenance = { ...(registry[goal.id] ?? {}), ...embeddedEntries }
+      const hasProvenance = ['sourceLandscapeId', 'additionalSourceLandscapeIds', 'crossSubjectPrerequisiteLandscapeIds']
+        .some(key => strings(provenance[key]).some(id => sourceJurisdictions.get(id) === state))
+      const explicit = goal.applicability?.jurisdiction?.some(value => normalizeJurisdiction(value) === state) ?? false
+      if (!explicit && !hasProvenance && !mappingsByState.get(state)?.has(goal.id)) return false
+    }
+    // Existing general runtime rule: the authored Bavarian Mathematics view
+    // owns course selection; legacy goal GK/LK tags do not narrow it further.
+    // LearnerService.java:10860-10866. This is not a goal-specific exception.
+    const viewOwnsCourse = state === 'DE-BY' && landscape.landscapeId === CANONICAL_GYM_MATH_LANDSCAPE_ID
+    const tags = goal.tags ?? []
+    const releaseCourse = (goal as LearningGoal & { release?: { courseLevel?: string } }).release?.courseLevel?.trim().toUpperCase()
+    const courseMatches = (course: string): boolean => tags.length === 0 || tags.includes(course)
+      || releaseCourse === course || (!tags.includes('GK') && !tags.includes('LK') && !releaseCourse)
+    if (!viewOwnsCourse && scope.courseProfile) {
+      const course = scope.courseProfile.trim().toUpperCase()
+      if (course === 'GK+LK' ? !courseMatches('GK') && !courseMatches('LK') : !courseMatches(course)) return false
+    }
+    if (scope.durationModel) {
+      const duration = scope.durationModel.trim().toUpperCase()
+      const explicitDuration = goal.applicability?.durationModel
+      if (explicitDuration !== undefined) {
+        if (!explicitDuration.some(value => value.trim().toUpperCase() === duration)) return false
+      } else {
+        const durationTags = tags.map(tag => tag.trim().toUpperCase().replace(/^DURATION-?MODEL:/u, ''))
+          .filter(tag => tag === 'G8' || tag === 'G9')
+        if (durationTags.length && !durationTags.includes(duration)) return false
+      }
+    }
+    return true
+  }
+}
+
+export function readCompositionViewAtomicGoalIds(report: CoverageReport, compositionViewFiles?: readonly string[]): {
+  canonicalViewPresent: boolean
   canonicalViewAtomicGoalIds: Set<string>
   viewAtomicGoalIdsByJurisdiction: Map<string, Set<string>>
 } {
   const landscape = readLandscapeForReport(report)
-  const viewFiles = readCompositionViewFilesForReport(report)
+  const viewFiles = compositionViewFiles ?? readCompositionViewFilesForReport(report)
+  const canonicalViewFiles = viewFiles.filter((file) => file.split(/[\\/]/).pop()?.toLowerCase().startsWith('de-de'))
+  const canonicalViewPresent = canonicalViewFiles.length > 0
   const canonicalViewAtomicGoalIds = new Set<string>()
   const viewAtomicGoalIdsByJurisdiction = new Map<string, Set<string>>()
   if (!landscape || viewFiles.length === 0) {
-    return { canonicalViewAtomicGoalIds, viewAtomicGoalIdsByJurisdiction }
+    return { canonicalViewPresent, canonicalViewAtomicGoalIds, viewAtomicGoalIdsByJurisdiction }
   }
+  const goalById = new Map(landscape.goals.map(goal => [goal.id, goal]))
+  const root = landscape.goals.find(goal => goal.tags?.includes('root'))
+  const roots = root ? new Map([[landscape.landscapeId, root.id]]) : new Map<string, string>()
+  const matchesScope = sourceCoverageAtomicScopeMatcher(landscape)
 
   const addViewAtoms = (target: Set<string>, file: string) => {
-    collectRenderedAtomicGoalIdsFromCompositionView(landscape, file).forEach((goalId) => target.add(goalId))
+    const view = normalizeCompositionView(loadJson<unknown>(file))
+    // Apply the declared view scope to target atoms. Ineligible parents never
+    // prune eligible atomic seeds; prerequisiteOnly support never becomes a target.
+    const roles = collectCompositionProjectionRoleGoalIds(view.rootNodes, goalById, roots)
+    for (const id of roles.targetGoalIds) {
+      const goal = goalById.get(id)
+      if (goal && isAtomicGoal(goal) && matchesScope(goal, view.scope)) target.add(id)
+    }
   }
 
-  viewFiles
-    .filter((file) => file.split(/[\\/]/).pop()?.toLowerCase().startsWith('de-de'))
-    .forEach((file) => addViewAtoms(canonicalViewAtomicGoalIds, file))
+  canonicalViewFiles.forEach((file) => addViewAtoms(canonicalViewAtomicGoalIds, file))
 
   Object.keys(JURISDICTION_LABELS).forEach((jurisdiction) => {
     const prefix = jurisdiction.toLowerCase()
     const target = new Set<string>()
-    viewFiles
-      .filter((file) => file.split(/[\\/]/).pop()?.toLowerCase().startsWith(prefix))
-      .forEach((file) => addViewAtoms(target, file))
-    if (target.size > 0) {
+    const jurisdictionViewFiles = viewFiles.filter((file) => file.split(/[\\/]/).pop()?.toLowerCase().startsWith(prefix))
+    jurisdictionViewFiles.forEach((file) => addViewAtoms(target, file))
+    if (jurisdictionViewFiles.length > 0) {
       viewAtomicGoalIdsByJurisdiction.set(jurisdiction, target)
     }
   })
 
-  return { canonicalViewAtomicGoalIds, viewAtomicGoalIdsByJurisdiction }
+  return { canonicalViewPresent, canonicalViewAtomicGoalIds, viewAtomicGoalIdsByJurisdiction }
 }
 
 function normalizeJurisdiction(value: unknown): string | null {
@@ -5419,7 +5591,7 @@ function readReverseSourceCoverageByJurisdiction(
 
   for (const [jurisdiction, sourceLandscapeIds] of sourceLandscapeIdsByJurisdiction.entries()) {
     const explicitViewAtomicGoalIds = viewAtomicGoalIdsByJurisdiction.get(jurisdiction)
-    const viewAtomicGoalIds = explicitViewAtomicGoalIds && explicitViewAtomicGoalIds.size > 0
+    const viewAtomicGoalIds = explicitViewAtomicGoalIds !== undefined
       ? explicitViewAtomicGoalIds
       : new Set(
         report.goals
@@ -5517,8 +5689,9 @@ function readReverseSourceCoverageByJurisdiction(
   return result
 }
 
-function readJurisdictionCoverageByLandscapeId(
+export function readJurisdictionCoverageByLandscapeId(
   applicabilityCompilation: ApplicabilityCompilationResult,
+  compositionViewFilesByLandscapeId?: ReadonlyMap<string, readonly string[]>,
 ): Map<string, JurisdictionCoverage> {
   const coverageByLandscapeId = new Map<string, JurisdictionCoverage>()
   const surrogateEntriesByKey = readAcceptedSurrogateEvidenceByKey()
@@ -5528,14 +5701,15 @@ function readJurisdictionCoverageByLandscapeId(
     const landscape = readLandscapeForReport(report)
     const canonicalGoalById = new Map((landscape?.goals ?? []).map((goal) => [goal.id, goal]))
     const {
+      canonicalViewPresent,
       canonicalViewAtomicGoalIds,
       viewAtomicGoalIdsByJurisdiction,
-    } = readCompositionViewAtomicGoalIds(report)
+    } = readCompositionViewAtomicGoalIds(report, compositionViewFilesByLandscapeId?.get(report.landscapeId))
     const reverseSourceCoverageByJurisdiction = readReverseSourceCoverageByJurisdiction(
       report,
       viewAtomicGoalIdsByJurisdiction,
     )
-    const canonicalAtomicGoalIds = canonicalViewAtomicGoalIds.size > 0
+    const canonicalAtomicGoalIds = canonicalViewPresent
       ? canonicalViewAtomicGoalIds
       : new Set(rawAtomicGoals.map((goal) => goal.goalId))
     const sourceCoverageAtomicGoalIds = new Set(
@@ -5553,7 +5727,7 @@ function readJurisdictionCoverageByLandscapeId(
       const visibleGoals = report.goals.filter((goal) =>
         (goal.compiledApplicability.jurisdiction ?? []).includes(projection.value))
       const viewAtomicGoalIds = viewAtomicGoalIdsByJurisdiction.get(projection.value)
-      const visibleAtomicGoalReports = (viewAtomicGoalIds && viewAtomicGoalIds.size > 0
+      const visibleAtomicGoalReports = (viewAtomicGoalIds !== undefined
         ? rawAtomicGoals.filter((goal) => viewAtomicGoalIds.has(goal.goalId))
         : visibleGoals.filter((goal) => goal.goalType === 'atomic' && canonicalAtomicGoalIds.has(goal.goalId)))
         .filter((goal) => sourceCoverageAtomicGoalIds.has(goal.goalId))
@@ -5667,6 +5841,7 @@ function readJurisdictionCoverageByLandscapeId(
         && entry.errors === 0).length
     coverageByLandscapeId.set(report.landscapeId, {
       dimension: 'jurisdiction',
+      emptyCanonicalViewProjection: canonicalViewPresent && canonicalViewAtomicGoalIds.size === 0,
       totalJurisdictions: jurisdictions.length,
       totalAtomicGoals,
       rawAtomicGoals: rawAtomicGoals.length,
@@ -5858,7 +6033,7 @@ function evaluateSourceSnapshotIngestion(
   )
 }
 
-function evaluateJurisdictionCoverage(coverage: JurisdictionCoverage | undefined): RuleResult {
+export function evaluateJurisdictionCoverage(coverage: JurisdictionCoverage | undefined): RuleResult {
   if (!coverage) {
     return makeRule('CQR-003', 'not_configured', 'No Bundesland coverage projection is available for this curriculum.')
   }
@@ -5873,7 +6048,9 @@ function evaluateJurisdictionCoverage(coverage: JurisdictionCoverage | undefined
     ? Math.min(...coverage.jurisdictions.map((entry) => entry.sourceBackedAtomicGoals))
     : 0
   const fullCoverageJurisdictions = coverage.sourceCompleteJurisdictions
-  const status: RuleStatus = errored.length > 0
+  const emptyCanonicalViewProjection = coverage.emptyCanonicalViewProjection === true
+  const status: RuleStatus = emptyCanonicalViewProjection
+    || errored.length > 0
     || unsupported.length > 0
     || sourceUnmapped.length > 0
     ? 'fail'
@@ -5889,6 +6066,7 @@ function evaluateJurisdictionCoverage(coverage: JurisdictionCoverage | undefined
       : `${fullCoverageJurisdictions}/${coverage.totalJurisdictions} declared Bundesland projection(s) have source-backed atom-level view coverage, no unsupported assignments, and complete source-to-view mapping.`,
     {
       totalJurisdictions: coverage.totalJurisdictions,
+      emptyCanonicalViewProjection: emptyCanonicalViewProjection ? 1 : 0,
       coveredJurisdictions: coverage.coveredJurisdictions,
       sourceBackedJurisdictions: coverage.sourceBackedJurisdictions,
       sourceCompleteJurisdictions: coverage.sourceCompleteJurisdictions,
@@ -5917,6 +6095,7 @@ function evaluateJurisdictionCoverage(coverage: JurisdictionCoverage | undefined
       totalAtomicGoals: coverage.totalAtomicGoals,
     },
     [
+      ...(emptyCanonicalViewProjection ? ['Existing national composition views expose no source-coverage targets. Registered source obligations remain required.'] : []),
       ...errored.map((entry) => `${entry.jurisdiction}: ${entry.errors} projection error(s), ${entry.sourceBackedAtomicGoals}/${entry.visibleAtomicGoals} source-backed view atomic goal(s)`),
       ...unsupported.map((entry) => `${entry.jurisdiction}: ${entry.unsupportedAssignedAtomicGoals} assigned atomic goal(s) without source-backed Lehrplan evidence`),
       ...sourceUnmapped.map((entry) => `${entry.jurisdiction}: ${entry.unmappedSourceAtomicGoals} source Lehrplan atom(s) do not map into the Bundesland view`),
@@ -6254,6 +6433,7 @@ function renderMarkdownDe(status: StatusDocument): string {
 
 async function generateStatus(inputs: VerificationInputReader, assertCurrent: () => void) {
   const shouldCheck = process.argv.includes('--check')
+  inputs.readText(resolve(repoRoot, 'app/scripts/lib/nationalStageProjection.ts'))
   for (const path of PHYSICS_QA_SELECTOR_INPUT_PATHS) inputs.readText(resolve(repoRoot, path))
   const routeProfiles = createRouteProfiles(repoRoot, inputs)
   const { entries, sources } = loadCurrentCurriculumCatalog(inputs)
@@ -6305,6 +6485,7 @@ async function generateStatus(inputs: VerificationInputReader, assertCurrent: ()
         landscape,
         profile,
         applicabilityCompilation,
+        loadedLandscapes.map(entry => entry.landscape),
       )))
       if (scopes.length === 0) {
         curriculumRules.push(makeRule(

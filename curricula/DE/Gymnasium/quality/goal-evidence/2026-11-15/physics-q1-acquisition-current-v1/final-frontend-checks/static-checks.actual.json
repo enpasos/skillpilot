@@ -1,0 +1,29 @@
+{
+  "runs": [
+    {
+      "label": "typescript",
+      "command": [
+        "node_modules/.bin/tsc",
+        "-b",
+        "--pretty",
+        "false"
+      ],
+      "exitCode": 0,
+      "startedAt": "2026-11-15T20:13:10.974324+00:00",
+      "finishedAt": "2026-11-15T20:13:28.199685+00:00"
+    },
+    {
+      "label": "changed-eslint",
+      "command": [
+        "node_modules/.bin/eslint",
+        "src/components/learningUnitMap/learnerUnitMapPreview.ts",
+        "src/utils/compositionViewRuntime.ts",
+        "src/utils/learnerTreeProjection.ts",
+        "src/utils/personalCurriculumProjection.test.tsx"
+      ],
+      "exitCode": 0,
+      "startedAt": "2026-11-15T20:13:28.199760+00:00",
+      "finishedAt": "2026-11-15T20:13:30.179685+00:00"
+    }
+  ]
+}

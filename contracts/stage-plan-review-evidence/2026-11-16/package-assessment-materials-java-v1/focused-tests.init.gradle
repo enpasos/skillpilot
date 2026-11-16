@@ -1,0 +1,5 @@
+allprojects {
+    tasks.withType(Test).configureEach {
+        include '**/StaticAssessmentSvgTest.class', '**/LearningUnitPackageLoaderTest.class', '**/JsonCurriculumPackageLoaderTest.class', '**/PackageCurriculumResourceStateTest.class', '**/PackageCurriculumResourceControllerTest.class'
+    }
+}

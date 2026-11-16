@@ -1,0 +1,35 @@
+{
+  "source": "app/scripts/generateCurriculumQualityStatus.ts",
+  "sourceSha256": "a8bc1683f8a82dd75f464c2ded8c92938de256228a7e613804edb269c7fca3ab",
+  "probe": "tmp/math-task43-metadata-final-20261115/native-current-math-cqr-probe.mts",
+  "probeSha256": "8a3a0bd82d06dbf54c5a18c5e0f9a6ec79457fca10bca4a453ff8d1549592182",
+  "changes": [
+    {
+      "before": "const scriptDir = dirname(fileURLToPath(import.meta.url))",
+      "after": "const scriptDir = \"/home/enpasos/projects/skillpilot/app/scripts\""
+    },
+    {
+      "before": "const statusDir = resolve(repoRoot, 'docs/qa-ci/status')",
+      "after": "const statusDir = resolve(repoRoot, 'tmp/math-task43-metadata-final-20261115/cqr-current-math')"
+    },
+    {
+      "before": "await generateDeepUnderstandingRollout(undefined, prerequisiteReductionContext)",
+      "after": "await generateDeepUnderstandingRollout('tmp/math-task43-metadata-final-20261115/math-deep-current.config.json', prerequisiteReductionContext)"
+    },
+    {
+      "before": "  const deepUnderstandingReport = await generateDeepUnderstandingRollout('tmp/math-task43-metadata-final-20261115/math-deep-current.config.json', prerequisiteReductionContext)",
+      "after": "  const deepUnderstandingReport = await generateDeepUnderstandingRollout('tmp/math-task43-metadata-final-20261115/math-deep-current.config.json', prerequisiteReductionContext)\n  writeFileSync(resolve(repoRoot, 'tmp/math-task43-metadata-final-20261115/math-deep-current.actual.json'), JSON.stringify(deepUnderstandingReport, null, 2) + '\\n')"
+    },
+    {
+      "before": "const curricula = loadedLandscapes\n    .map",
+      "after": "const curricula = loadedLandscapes\n    .filter(({ landscape }) => landscape.landscapeId === CANONICAL_GYM_MATH_LANDSCAPE_ID)\n    .map"
+    },
+    {
+      "before": "await withVerificationInputSnapshot(generateStatus)",
+      "after": "await runMathProbe()"
+    }
+  ],
+  "additionalInstrumentation": "Absolute imports, unchanged original repo root, exact active Math config equality, before/after21catalog+Mathviews+config input pins, no production writes.",
+  "ruleBodiesChanged": false,
+  "all21CanonicalGraphChecksRetained": true
+}

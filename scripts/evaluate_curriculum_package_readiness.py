@@ -42,6 +42,7 @@ if str(SCRIPT_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPT_DIR))
 
 import validate_curriculum_package_contracts as package_contracts  # noqa: E402
+import curriculum_package_contract_selection as contract_selection  # noqa: E402
 from jsonschema import Draft202012Validator  # noqa: E402
 
 
@@ -175,6 +176,8 @@ CONSUMER_RUNNER_PATH = SCRIPT_DIR / "run_package_consumer_smoke.py"
 CONSUMER_RUNNER_TIMEOUT_SECONDS = 30 * 60
 CONSUMER_RUNNER_ID = "skillpilot-package-consumer-smoke"
 CONSUMER_RUNNER_VERSION = "1.0.0"
+CONSUMER_V13_RUNNER_PATH = SCRIPT_DIR / "run_package_consumer_smoke_v13.py"
+CONSUMER_V13_RUNNER_VERSION = "1.1.0"
 CONSUMER_API_VERSION = "0.1.0"
 FUNCTIONAL_CHECK_IDS = [
     "app-shell.served",
@@ -286,6 +289,8 @@ class TrustedContracts:
     trusted_schema_metadata: dict[str, tuple[str, str, int]]
     manifest_schema_bytes: int
     profile_bytes: int
+    contract_dir: Path = CONTRACT_DIR
+    policy_path: Path = POLICY_PATH
 
 
 def sha256_bytes(data: bytes) -> str:
@@ -298,6 +303,18 @@ def sha256_file(path: Path) -> str:
         for chunk in iter(lambda: handle.read(1024 * 1024), b""):
             digest.update(chunk)
     return digest.hexdigest()
+
+
+def trusted_consumer_runner_binding(material_contract: bool) -> dict[str, Any]:
+    """Select only the two repository-owned runners; policy input cannot pick code."""
+    path = CONSUMER_V13_RUNNER_PATH if material_contract else CONSUMER_RUNNER_PATH
+    return {
+        "id": CONSUMER_RUNNER_ID,
+        "version": CONSUMER_V13_RUNNER_VERSION if material_contract else CONSUMER_RUNNER_VERSION,
+        "path": path.relative_to(REPO_ROOT).as_posix(),
+        "bytes": path.stat().st_size,
+        "sha256": sha256_file(path),
+    }
 
 
 def sha256_file_bounded(path: Path, limit: int) -> tuple[int, str]:
@@ -460,10 +477,17 @@ def validate_policy_contract(
         },
         "readiness policy",
     )
+    material_contract = profile.get("profileId") == "full-standalone-v1.3"
+    policy_id = "full-standalone-v1.3-readiness-v1" if material_contract else POLICY_ID
+    policy_scope = "json-full-standalone-v1.3" if material_contract else POLICY_SCOPE
+    report_schema_id = REPORT_SCHEMA_ID.replace("/v1/", "/v1.3/") if material_contract else REPORT_SCHEMA_ID
+    consumer_schema_id = (CONSUMER_REPORT_SCHEMA_ID.replace("/v1/", "/v1.3/")
+                          if material_contract else CONSUMER_REPORT_SCHEMA_ID)
+    expected_runner_binding = trusted_consumer_runner_binding(material_contract)
     if (
         policy.get("policyFormatVersion") != 1
-        or policy.get("policyId") != POLICY_ID
-        or policy.get("scope") != POLICY_SCOPE
+        or policy.get("policyId") != policy_id
+        or policy.get("scope") != policy_scope
     ):
         raise ReadinessError("Unexpected readiness-policy identity")
 
@@ -504,28 +528,21 @@ def validate_policy_contract(
 
     report_binding = policy.get("reportSchema")
     if report_binding != {
-        "id": REPORT_SCHEMA_ID,
+        "id": report_schema_id,
         "sha256": report_schema_sha256,
     }:
         raise ReadinessError("Readiness policy report-schema binding is stale")
-    if report_schema.get("$id") != REPORT_SCHEMA_ID:
+    if report_schema.get("$id") != report_schema_id:
         raise ReadinessError("Unexpected readiness-report schema $id")
     consumer_report_binding = policy.get("consumerSmokeReportSchema")
     if consumer_report_binding != {
-        "id": CONSUMER_REPORT_SCHEMA_ID,
+        "id": consumer_schema_id,
         "sha256": consumer_report_schema_sha256,
     }:
         raise ReadinessError("Readiness policy consumer-report schema binding is stale")
-    if consumer_report_schema.get("$id") != CONSUMER_REPORT_SCHEMA_ID:
+    if consumer_report_schema.get("$id") != consumer_schema_id:
         raise ReadinessError("Unexpected consumer-smoke-report schema $id")
     consumer_runner_binding = policy.get("consumerSmokeRunner")
-    expected_runner_binding = {
-        "id": CONSUMER_RUNNER_ID,
-        "version": CONSUMER_RUNNER_VERSION,
-        "path": "scripts/run_package_consumer_smoke.py",
-        "bytes": CONSUMER_RUNNER_PATH.stat().st_size,
-        "sha256": sha256_file(CONSUMER_RUNNER_PATH),
-    }
     if consumer_runner_binding != expected_runner_binding:
         raise ReadinessError(
             "Readiness policy consumer runner binding is stale or the pinned runner changed"
@@ -602,7 +619,7 @@ def validate_policy_contract(
         ) from error
     if (
         consumer_runner.get("id", {}).get("const") != CONSUMER_RUNNER_ID
-        or consumer_runner.get("version", {}).get("const") != CONSUMER_RUNNER_VERSION
+        or consumer_runner.get("version", {}).get("const") != expected_runner_binding["version"]
         or consumer_report_version.get("const") != 1
         or consumer_application.get("consumerApiVersion", {}).get("const")
         != CONSUMER_API_VERSION
@@ -670,7 +687,16 @@ def validate_policy_contract(
         raise ReadinessError("Consumer poison-sentinel schema differs from evaluator")
 
 
-def trusted_contracts() -> TrustedContracts:
+def trusted_contracts(contract_dir: Path = CONTRACT_DIR) -> TrustedContracts:
+    contract_dir = contract_dir.resolve()
+    material_contract = contract_dir == CONTRACT_DIR.parent / "v1.3"
+    if contract_dir != CONTRACT_DIR and not material_contract:
+        raise ReadinessError("Unsupported readiness contract directory")
+    profile_path = contract_selection.profile_path(contract_dir)
+    policy_path = (contract_dir / "profiles/full-standalone-v1.3.readiness-policy.json"
+                   if material_contract else POLICY_PATH)
+    report_schema_path = contract_dir / "package-readiness-report.schema.json"
+    consumer_schema_path = contract_dir / "package-consumer-smoke-report.schema.json"
     try:
         installed_jsonschema_version = distribution_version("jsonschema")
     except PackageNotFoundError as error:
@@ -681,10 +707,10 @@ def trusted_contracts() -> TrustedContracts:
         )
 
     manifest_schema = load_trusted_json(MANIFEST_SCHEMA_PATH)
-    profile = load_trusted_json(PROFILE_PATH)
-    policy = load_trusted_json(POLICY_PATH)
-    report_schema = load_trusted_json(REPORT_SCHEMA_PATH)
-    consumer_report_schema = load_trusted_json(CONSUMER_REPORT_SCHEMA_PATH)
+    profile = load_trusted_json(profile_path)
+    policy = load_trusted_json(policy_path)
+    report_schema = load_trusted_json(report_schema_path)
+    consumer_report_schema = load_trusted_json(consumer_schema_path)
     Draft202012Validator.check_schema(manifest_schema)
     Draft202012Validator.check_schema(report_schema)
     Draft202012Validator.check_schema(consumer_report_schema)
@@ -697,11 +723,13 @@ def trusted_contracts() -> TrustedContracts:
                 filename,
             ) in package_contracts.TRUSTED_SCHEMA_BINDINGS.items()
         }
+        if material_contract:
+            trusted_schema_paths["runtimeCatalogSchema"] = contract_dir / "runtime-catalog.schema.json"
         roles = package_contracts.validate_trusted_contract(
             manifest_schema,
             profile,
             MANIFEST_SCHEMA_PATH,
-            PROFILE_PATH,
+            profile_path,
             trusted_schema_paths,
         )
     except (
@@ -715,12 +743,12 @@ def trusted_contracts() -> TrustedContracts:
         ) from error
 
     manifest_schema_sha256 = sha256_file(MANIFEST_SCHEMA_PATH)
-    profile_sha256 = sha256_file(PROFILE_PATH)
-    report_schema_sha256 = sha256_file(REPORT_SCHEMA_PATH)
-    consumer_report_schema_sha256 = sha256_file(CONSUMER_REPORT_SCHEMA_PATH)
+    profile_sha256 = sha256_file(profile_path)
+    report_schema_sha256 = sha256_file(report_schema_path)
+    consumer_report_schema_sha256 = sha256_file(consumer_schema_path)
     trusted_schema_metadata = {
         binding_name: (
-            package_contracts.TRUSTED_SCHEMA_BINDINGS[binding_name][0],
+            load_trusted_json(path)["$id"],
             sha256_file(path),
             path.stat().st_size,
         )
@@ -750,7 +778,9 @@ def trusted_contracts() -> TrustedContracts:
         consumer_report_schema_sha256=consumer_report_schema_sha256,
         trusted_schema_metadata=trusted_schema_metadata,
         manifest_schema_bytes=MANIFEST_SCHEMA_PATH.stat().st_size,
-        profile_bytes=PROFILE_PATH.stat().st_size,
+        profile_bytes=profile_path.stat().st_size,
+        contract_dir=contract_dir,
+        policy_path=policy_path,
     )
 
 
@@ -1141,21 +1171,25 @@ def execute_consumer_runner(
     contracts: TrustedContracts,
     persist_report_path: Path | None,
     *,
-    runner_path: Path = CONSUMER_RUNNER_PATH,
+    runner_path: Path | None = None,
     timeout_seconds: float = CONSUMER_RUNNER_TIMEOUT_SECONDS,
     expected_runner_binding: dict[str, Any] | None = None,
     persistent_work_dir: Path | None = None,
 ) -> ConsumerEvidenceContext:
     """Execute one exactly pinned runner and capture only its fresh private report."""
 
+    material_contract = contracts.contract_dir == CONTRACT_DIR.parent / "v1.3"
+    trusted_binding = trusted_consumer_runner_binding(material_contract)
+    if runner_path is None:
+        runner_path = REPO_ROOT / trusted_binding["path"]
     runner_metadata = runner_path.lstat()
     if stat.S_ISLNK(runner_metadata.st_mode) or not stat.S_ISREG(runner_metadata.st_mode):
         raise ReadinessError("Pinned consumer runner is not a regular file")
     runner = runner_path.resolve(strict=True)
     runner_binding = {
         "id": CONSUMER_RUNNER_ID,
-        "version": CONSUMER_RUNNER_VERSION,
-        "path": "scripts/run_package_consumer_smoke.py",
+        "version": trusted_binding["version"],
+        "path": trusted_binding["path"],
         "bytes": runner_metadata.st_size,
         "sha256": sha256_file(runner),
     }
@@ -2574,6 +2608,7 @@ def run_full_validator_process(
     loaded: LoadedInput,
     *,
     validator_path: Path = FULL_VALIDATOR_PATH,
+    contracts_dir: Path = CONTRACT_DIR,
     timeout_seconds: float = FULL_VALIDATOR_TIMEOUT_SECONDS,
 ) -> dict[str, Any]:
     """Run the independent validator without importing it or trusting stdout."""
@@ -2622,7 +2657,7 @@ def run_full_validator_process(
             "--zip",
             str(loaded.path.resolve()),
             "--contracts-dir",
-            str(CONTRACT_DIR.resolve()),
+            str(contracts_dir.resolve()),
             "--report",
             str(report_path),
         ]
@@ -2730,12 +2765,14 @@ def evaluate_full_validator_gates(
     loaded: LoadedInput,
     *,
     validator_path: Path = FULL_VALIDATOR_PATH,
+    contracts_dir: Path = CONTRACT_DIR,
     timeout_seconds: float = FULL_VALIDATOR_TIMEOUT_SECONDS,
 ) -> dict[str, tuple[str, str, str]]:
     try:
         report = run_full_validator_process(
             loaded,
             validator_path=validator_path,
+            contracts_dir=contracts_dir,
             timeout_seconds=timeout_seconds,
         )
         return map_full_validator_gates(report)
@@ -3089,7 +3126,7 @@ def evaluate_loaded_input(
                 "The independent validator is not run until target-contract and finished-ZIP inventory checks pass.",
             )
         else:
-            mapped_gates = evaluate_full_validator_gates(loaded)
+            mapped_gates = evaluate_full_validator_gates(loaded, contracts_dir=contracts.contract_dir)
             for check_id in validator_check_ids:
                 result, code, message = mapped_gates[check_id]
                 record(check_id, result, code, message)
@@ -3131,12 +3168,12 @@ def evaluate_loaded_input(
         and checks_by_id[CONSUMER_CHECK_IDS[0]]["result"] in {"pass", "fail"}
     )
     report = {
-        "$schema": REPORT_SCHEMA_ID,
+        "$schema": contracts.report_schema["$id"],
         "reportFormatVersion": "1.1",
         "scope": policy["scope"],
         "policy": {
             "id": policy["policyId"],
-            "sha256": sha256_file(POLICY_PATH),
+            "sha256": sha256_file(contracts.policy_path),
             "requiredCheckIds": REQUIRED_CHECK_IDS,
         },
         "evaluator": {
@@ -3202,8 +3239,8 @@ def validate_report_semantics(
         )
 
     expected_policy = {
-        "id": POLICY_ID,
-        "sha256": sha256_file(POLICY_PATH),
+        "id": contracts.policy["policyId"],
+        "sha256": sha256_file(contracts.policy_path),
         "requiredCheckIds": REQUIRED_CHECK_IDS,
     }
     if report["policy"] != expected_policy:
@@ -3352,8 +3389,10 @@ def evaluate_path(
     consumer_report_path: Path | None = None,
     consumer_store_path: Path | None = None,
     consumer_work_dir: Path | None = None,
+    *,
+    contracts_dir: Path = CONTRACT_DIR,
 ) -> dict[str, Any]:
-    contracts = trusted_contracts()
+    contracts = trusted_contracts(contracts_dir)
     if not path.is_file():
         raise ReadinessError(f"Input is not a regular file: {path}")
     if kind == "manifest":
@@ -5270,10 +5309,13 @@ def parse_args() -> argparse.Namespace:
         choices=STATUS_VOCABULARY,
         help="Return success only when the exact status is produced (for CI fixtures)",
     )
+    parser.add_argument("--contracts-dir", type=Path, default=CONTRACT_DIR,
+                        help="Exact repository-pinned v1 or v1.3 readiness contract directory")
     parser.add_argument("--compact", action="store_true", help="Print compact JSON")
     args = parser.parse_args()
     if args.self_test and (
-        args.report is not None
+        args.contracts_dir.resolve() != CONTRACT_DIR
+        or args.report is not None
         or args.consumer_smoke_report is not None
         or args.consumer_smoke_store is not None
         or args.consumer_smoke_work_dir is not None
@@ -5329,6 +5371,7 @@ def main() -> int:
             args.consumer_smoke_report,
             args.consumer_smoke_store,
             args.consumer_smoke_work_dir,
+            contracts_dir=args.contracts_dir,
         )
         output = stable_json(report, pretty=not args.compact)
         if args.report is not None:

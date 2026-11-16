@@ -1,0 +1,64 @@
+{
+  "runId": "physics-current3-blind-a-20261115",
+  "agentTask": "/root/physics_three_d_blind_a",
+  "reviewerIdentity": "Codex independent blind reviewer A",
+  "blindEligible": true,
+  "startedAtUtc": "2026-11-15T17:30:35.612262854Z",
+  "completedAtUtc": "2026-11-15T17:34:30.311152Z",
+  "receiptRecordedAtUtc": "2026-11-15T17:40:21.281934Z",
+  "actualEvidenceWindow": {
+    "kind": "observed_artifact_to_original_validation_seal_timestamp",
+    "startMeaning": "Actual filesystem kernel birth time of book-page-01.png, the first PDF raster produced by this reviewer. This bounds the artifact/visual-review phase; it is not a measured beginning of the earlier prompt, criteria or batch reading.",
+    "endMeaning": "Actual sealedAt application timestamp from this reviewer's original input-output-seal.json after its direct schema/binding validation. It denotes the original validation/seal-recording phase; it is not a claim of an independently measured end to every file write.",
+    "exactInitialReadingStartRecorded": false,
+    "initialReadingStartExplanation": "No initial clock reading was taken before the original textual input review. That earlier reading occurred before the first PDF raster and is not assigned an invented exact timestamp.",
+    "coverage": "The original PDF-raster generation, subsequent actual visual inspection, candidate writing and direct validation lie in or are associated with this observed artifact/validation window. Earlier text-input reading is outside the precisely observed start."
+  },
+  "clockEvidence": [
+    {
+      "source": "GNU stat --printf birth=%w on existing first raster, independently checked in this receipt turn",
+      "path": "tmp/physics-current3-blind-a-20261115/book-page-01.png",
+      "observedLocalKernelBirthTime": "2026-11-15 18:30:35.612262854 +0100",
+      "utcEquivalent": "2026-11-15T17:30:35.612262854Z",
+      "meaning": "Kernel birth time of first reviewer-created PDF raster; exact original text-reading start unknown."
+    },
+    {
+      "source": "Original validation.json validatedAt field, reread without mutation",
+      "path": "tmp/physics-current3-blind-a-20261115/validation.json",
+      "observedValue": "2026-11-15T17:34:30.310792+00:00",
+      "utcEquivalent": "2026-11-15T17:34:30.310792Z"
+    },
+    {
+      "source": "Original input-output-seal.json sealedAt field, reread without mutation",
+      "path": "tmp/physics-current3-blind-a-20261115/input-output-seal.json",
+      "observedValue": "2026-11-15T17:34:30.311152+00:00",
+      "utcEquivalent": "2026-11-15T17:34:30.311152Z",
+      "kernelSealModifiedTimeUtc": "2026-11-15T17:34:30.319929538Z",
+      "meaning": "Application seal timestamp preceded final filesystem persistence by about nine milliseconds; the native run bound uses the recorded application event."
+    },
+    {
+      "source": "clock.curr_time read during receipt-only verification",
+      "observedValue": "2026-11-15 17:39:31 UTC",
+      "meaning": "Current receipt turn only; not evidence of the original review start."
+    }
+  ],
+  "actualEligibility": {
+    "selfConfirmed": true,
+    "reviewPass": "first_pass",
+    "basis": "This agent independently reviewed exactly the supplied three current descriptions and their bound context. This agent did not author those existing descriptions or profiles and did not inspect separate earlier review outputs, round-b files, QA diagnoses, adjudications, canonical diffs or broad repository history.",
+    "currentProfileContextCaveat": "The mandatory current V2 profile objects contained retrospective metadata and rationale. These were disclosed in the original explanation, treated only as supplied context and not as prior-review authority. No referenced earlier P artifact was opened.",
+    "permittedInputs": "Bound round-a prompt, criteria, record schema, campaign, three-record batch, review-bundle manifest, pin-only input seal, native current PDF and selected/directly related navigation entries from its bound book model."
+  },
+  "methodsAndScopeLimits": [
+    "Original review only: actual visual inspection of all five native PDF pages, three goal-specific bilingual understanding/performance/transfer chains, standalone JSON-schema and exact-binding validation.",
+    "This additional receipt records clock/eligibility evidence only; it performs no new subject review, learner assessment, source/projection certification, activation or human approval.",
+    "No round-b content was opened in this receipt turn.",
+    "All pre-existing review bytes, renders, scripts, validation records and original seals remain unchanged."
+  ],
+  "originalArtifactDigests": {
+    "reviewJsonl": "sha256:049928d37cb69d8402f8381ddf27fc76d184cf6eccc9e0170a477a0b95c05906",
+    "validationJson": "sha256:bf40fe6af704e6dea71d2f2ec15e55dd873e84eab5fd8d9446db182d4a48ce07",
+    "inputOutputSealJson": "sha256:e9d2cfbcac937b0c1f16b31d318f329bf77c985090ca8851c17e2b2f6aca8cbc",
+    "firstPdfRaster": "sha256:1193278f4e03de768908cbf6c6bca3ee2200dac6af83b35f0985d189709ac540"
+  }
+}

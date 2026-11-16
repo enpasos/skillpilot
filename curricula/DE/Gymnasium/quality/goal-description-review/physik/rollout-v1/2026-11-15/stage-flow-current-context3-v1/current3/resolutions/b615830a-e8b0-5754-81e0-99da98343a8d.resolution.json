@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "physics-stage-flow-current-context3-20261115-v1-b615830a-e8b0-5754-81e0-99da98343a8d",
+  "goal": {
+    "goalId": "b615830a-e8b0-5754-81e0-99da98343a8d",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:b7fd41467577af57ba1137045b65bf277b264c84ee55810adae49bd0209153ba",
+    "pageFingerprint": "sha256:b7d814823e4a07713dcd0448abe040eef04af90f40dad40f44a190b6bbc411cc",
+    "goalReviewContextFingerprint": "sha256:f71671f19f620b251fd8e2b371bba74fa9ab04b0491e4d775185e6bf76b103ad",
+    "finalText": {
+      "titleDe": "Signifikante Stellen korrekt verwenden",
+      "titleEn": "Use Significant Figures Correctly",
+      "descriptionDe": "Die lernende Person kann Rechenergebnisse passend zur angegebenen Genauigkeit beziehungsweise Unsicherheit der Eingangsdaten auf eine sinnvolle Zahl signifikanter Stellen runden, Zwischenwerte mit ausreichender Genauigkeit weiterführen und Scheingenauigkeit vermeiden.",
+      "descriptionEn": "The learner can round calculated results to a meaningful number of significant figures consistent with the stated precision or uncertainty of the input data, carry intermediate values with sufficient precision, and avoid false precision."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physics-three-current809-context-20261115-first-pass-a",
+      "campaignDigest": "sha256:e8b9bbb3c252188990050f9f3c2d0450554e0a76e10299430be5b7b0cd6c5cbf",
+      "roundId": "independent-a",
+      "independenceGroupId": "physics-three-current809-context-20261115-independent-a",
+      "reviewInputFingerprint": "sha256:cd6e9e929ded1506fb32754b8e8b1d501f4ff22accdddd22db37205c644df179",
+      "goalReviewContextFingerprint": "sha256:f71671f19f620b251fd8e2b371bba74fa9ab04b0491e4d775185e6bf76b103ad",
+      "batchId": "independent-a.batch-001",
+      "runId": "physics-current3-blind-a-20261115",
+      "runManifestDigest": "sha256:73b1c833899dc34ab4a87f24f2c757f002329564b1db2d1d81174a56bb40f7c0",
+      "resultsDigest": "sha256:049928d37cb69d8402f8381ddf27fc76d184cf6eccc9e0170a477a0b95c05906",
+      "recordId": "physics-current3-blind-a-20261115.goal-001",
+      "recordDigest": "sha256:b8b07731fa7a46984dd38f7cf1db616fddccfbf977d2f8c7d4408b51a2141619"
+    },
+    "second": {
+      "campaignId": "physics-three-current809-context-20261115-first-pass-b",
+      "campaignDigest": "sha256:c41b051bab1924556e8f15a34d23e8c75089fcbc127a7357887e735ccbf0f102",
+      "roundId": "independent-b",
+      "independenceGroupId": "physics-three-current809-context-20261115-independent-b",
+      "reviewInputFingerprint": "sha256:cd6e9e929ded1506fb32754b8e8b1d501f4ff22accdddd22db37205c644df179",
+      "goalReviewContextFingerprint": "sha256:f71671f19f620b251fd8e2b371bba74fa9ab04b0491e4d775185e6bf76b103ad",
+      "batchId": "independent-b.batch-001",
+      "runId": "physics-current3-blind-b-20261115-52b38f",
+      "runManifestDigest": "sha256:94c730b60b6e8a2036fee594fbee8b70cd3e96c56d9a0cf9c09d7e53edbce85b",
+      "resultsDigest": "sha256:c7c614e887aefb2efc2143d73baf6ba307fe694614f90061088538cb5e687cb4",
+      "recordId": "physics-current3-blind-b-20261115-52b38f.001",
+      "recordDigest": "sha256:0e07fc9d8349d025b9f999e7a8e16884651e4407dbe2c8a2b04d4857b7d8a65e"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:7e8c7aacdcfa000651b5a94ce380b9ae876b144e8a001d0ec5d8cac6d4ff4763"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "physics-stage-flow-current-context3-20261115-v1-actual-ai-synthesis",
+    "manifestDigest": "sha256:1ae8e008ae5729450f443c42c0e12ac92a2331411e8ecdd03f5de76ee91ef8e6",
+    "manifestFingerprint": "sha256:a6c05629a2ee05ee0638bc619d7d7b223a253e8718724ff2092f2d0e3af25d65",
+    "decisionId": "physics-stage-flow-current-context3-20261115-v1-actual-ai-synthesis-001"
+  },
+  "synthesis": {
+    "synthesisId": "physics-stage-flow-current-context3-20261115-v1-actual-ai-synthesis-001",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "codex-physics-release-agent-reading-actual-independent-A-B-current-context3-20261115",
+    "synthesizedAt": "2026-11-15T17:41:39.625007+00:00",
+    "rationaleDe": "Beide tatsächlich unabhängig neu gelesenen Erstpässe behalten den aktuellen DE/EN-Text und empfehlen keine P-Änderung. Schutzstellen verhindern zusätzliche Rundungsfehler; Endstellen behaupten nur durch Daten beziehungsweise explizite Unsicherheit gestützte Genauigkeit. Beide neuen Evidenzketten verlangen eigene Rechnung und einen sachlichen Wechsel von impliziter Stelleninformation zu ausdrücklicher Unsicherheit, ohne Fehlerfortpflanzung als neues Ziel einzuführen. Auswahl der vollständigen A-Evidenz ist eine explizite KI-Synthese. Das aktuelle BY-Applicability-Feld ist im gelesenen Kontext gebunden; Länder-/Quellenfreigabe und realer Erwerb werden hierdurch nicht behauptet.",
+    "rationaleEn": "Both genuinely independent fresh first passes keep the current bilingual text and recommend no P change. Guard digits prevent additional rounding error; reported final digits assert only precision supported by the data or explicit uncertainty. Both new evidence chains require personal calculation and a substantive change from implicit digit information to explicit uncertainty without adding uncertainty propagation as another goal. Selecting the complete A evidence is explicit AI synthesis. The current BY applicability field is bound in the supplied context; this does not certify jurisdiction/source mappings or actual learner acquisition.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Die angegebenen Ergebnisziffern behaupten eine Genauigkeit, die durch die Eingangsdaten gedeckt sein muss. Explizite Unsicherheiten begrenzen diese Aussage genauer als eine bloße Ziffernzählregel. Zusätzliche Rechenstellen in Zwischenwerten schützen das Endergebnis vor vermeidbaren Rundungsfehlern, schaffen aber keine zusätzliche Messinformation.",
+      "essentialUnderstandingEn": "The reported result digits make a precision claim that the input data must support. Explicit uncertainties constrain this claim more precisely than a simple digit-counting rule. Extra calculation digits in intermediate values protect the final result from avoidable rounding errors but do not create additional measurement information.",
+      "observablePerformanceDe": "Die lernende Person wählt in einer selbstständig bearbeiteten Rechnung die durch die vorgegebenen Messdaten oder Unsicherheiten gestützte Enddarstellung mit Einheit, begründet die letzte sinnvolle Stelle und verwirft überzählige Rechnerziffern. In einer mehrstufigen Rechnung führt sie Schutzstellen weiter und erklärt anhand eines Vergleichs, wie frühes Runden das Endergebnis verändern kann.",
+      "observablePerformanceEn": "In an independently solved calculation, the learner chooses a final representation with units supported by the supplied measurements or uncertainties, justifies the last meaningful digit, and rejects excessive calculator digits. In a multi-step calculation, the learner retains guard digits and explains through a comparison how early rounding can change the final result.",
+      "transferExpectationDe": "In einer unabhängig vorgelegten neuen Rechnung ist statt einer bloß aus der Schreibweise erschlossenen Genauigkeit eine ausdrückliche Ergebnisunsicherheit vorgegeben. Die lernende Person passt die letzte Ergebnisstelle an diese Unsicherheit an, auch wenn eine mechanische Anwendung der kleinsten Stellenzahl eine andere Rundung nahelegen würde, und führt die Zwischenwerte weiterhin ausreichend genau.",
+      "transferExpectationEn": "In an independently presented fresh calculation, an explicit result uncertainty is supplied instead of precision being inferred only from the written digits. The learner aligns the last reported digit with this uncertainty even when mechanically applying the smallest digit count would suggest a different rounding, while continuing to carry intermediate values with sufficient precision."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-6fc7aafbc690fc39d25aca2a25c7424e13b7d23d2ce7c327fb9a77a529614b29",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:7e752744f457a462fce987ab078e7cb6a8e940088c9354a1b5b2c924f892094a"
+}

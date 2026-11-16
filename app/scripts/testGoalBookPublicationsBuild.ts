@@ -70,6 +70,28 @@ try {
     import.meta.url,
   ))
   const prerequisiteReductionContext = await loadVerifiedPrerequisiteReductionContext()
+  const physicsConfigPath = fileURLToPath(new URL(
+    './config/goal-books/de-gym-physics-national-atlas.json',
+    import.meta.url,
+  ))
+  const physicsBook = (await loadGoalBookBuildInputs(physicsConfigPath, undefined, prerequisiteReductionContext)).model
+  const restingPotentialPage = physicsBook.pages.find(
+    (page) => page.goalId === 'db47ac91-7bb0-5ba3-b39d-e2d6fc98396e',
+  )
+  const diffusionPrerequisite = restingPotentialPage?.externalPrerequisites.find(
+    ({ goalId }) => goalId === '5dd180f1-f1c8-5f76-9c9a-ea3fc3d921bf',
+  )
+  assert.equal(diffusionPrerequisite?.landscapeId, 'c436b994-8f44-5134-b9f8-0c9f5d6a5ba0',
+    'the actual Physics publication resolves its required Chemistry competency')
+  assert.equal(diffusionPrerequisite?.canonicalUrl,
+    'https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&edition=curricular-atomic-v1#goal-5dd180f1-f1c8-5f76-9c9a-ea3fc3d921bf')
+  assert.equal(physicsBook.pages.some(({ goalId }) => goalId === diffusionPrerequisite?.goalId), false,
+    'a foreign prerequisite stays a linked competency rather than becoming a Physics book page')
+  for (const goalId of ['677a192d-8bbe-57fc-bb7a-1c1ed5fba32b', 'd61ea362-f6c3-5eab-ac30-2d0e265ac0f6']) {
+    assert.deepEqual(physicsBook.pages.find((page) => page.goalId === goalId)
+      ?.applicability?.map(({ jurisdiction }) => jurisdiction), ['DE-BY'],
+    'Bavarian acquisition goals must not receive unsupported country labels from containing views')
+  }
   const biologyBook = (await loadGoalBookBuildInputs(biologyConfigPath, undefined, prerequisiteReductionContext)).model
   const biologyMethodsPage = biologyBook.pages.find(
     (page) => page.goalId === 'd97f6957-fbc9-569c-8648-f7df5eb9dfd8',

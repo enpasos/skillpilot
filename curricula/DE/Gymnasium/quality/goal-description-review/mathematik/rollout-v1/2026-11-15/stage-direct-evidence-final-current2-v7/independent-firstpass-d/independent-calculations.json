@@ -1,0 +1,211 @@
+{
+  "inputSHA256": "b49dbdd220fde1618ec31888d8ee0bd799e90cadaa3c9265e158c8c023de7913",
+  "prerequisites": [
+    {
+      "goalId": "78238608-aaaa-4d12-a9de-54f325e9cf6f",
+      "distinctPrerequisiteCount": 52,
+      "missingReferences": [],
+      "cycles": []
+    },
+    {
+      "goalId": "f76d00dc-6b31-59cd-b01a-3610eadc9908",
+      "distinctPrerequisiteCount": 56,
+      "missingReferences": [],
+      "cycles": []
+    }
+  ],
+  "allSuppliedPrerequisitesInUnion": 60,
+  "exponentialExactCalculations": [
+    {
+      "case": "f",
+      "a": "2",
+      "b": "3",
+      "exactValues": {
+        "-2": "3/4",
+        "-1": "3/2",
+        "0": "3",
+        "1": "6",
+        "2": "12"
+      },
+      "monotonicity": "strictly increasing",
+      "reason": "For h>0, sign(F(x+h)-F(x))=sign(b)*sign(a^h-1), since a^x>0."
+    },
+    {
+      "case": "g",
+      "a": "1/2",
+      "b": "-2",
+      "exactValues": {
+        "-2": "-8",
+        "-1": "-4",
+        "0": "-2",
+        "1": "-1",
+        "2": "-1/2"
+      },
+      "monotonicity": "strictly increasing",
+      "reason": "For h>0, sign(F(x+h)-F(x))=sign(b)*sign(a^h-1), since a^x>0."
+    },
+    {
+      "case": "positive-decay",
+      "a": "1/3",
+      "b": "3",
+      "exactValues": {
+        "-2": "27",
+        "-1": "9",
+        "0": "3",
+        "1": "1",
+        "2": "1/3"
+      },
+      "monotonicity": "strictly decreasing",
+      "reason": "For h>0, sign(F(x+h)-F(x))=sign(b)*sign(a^h-1), since a^x>0."
+    },
+    {
+      "case": "negative-growth-base",
+      "a": "2",
+      "b": "-3",
+      "exactValues": {
+        "-2": "-3/4",
+        "-1": "-3/2",
+        "0": "-3",
+        "1": "-6",
+        "2": "-12"
+      },
+      "monotonicity": "strictly decreasing",
+      "reason": "For h>0, sign(F(x+h)-F(x))=sign(b)*sign(a^h-1), since a^x>0."
+    },
+    {
+      "case": "negative-decay-base",
+      "a": "1/3",
+      "b": "-3",
+      "exactValues": {
+        "-2": "-27",
+        "-1": "-9",
+        "0": "-3",
+        "1": "-1",
+        "2": "-1/3"
+      },
+      "monotonicity": "strictly increasing",
+      "reason": "For h>0, sign(F(x+h)-F(x))=sign(b)*sign(a^h-1), since a^x>0."
+    },
+    {
+      "case": "fresh-negative-decay",
+      "a": "4/9",
+      "b": "-7/2",
+      "exactValues": {
+        "-2": "-567/32",
+        "-1": "-63/8",
+        "0": "-7/2",
+        "1": "-14/9",
+        "2": "-56/81"
+      },
+      "monotonicity": "strictly increasing",
+      "reason": "For h>0, sign(F(x+h)-F(x))=sign(b)*sign(a^h-1), since a^x>0."
+    },
+    {
+      "case": "fresh-negative-growth-base",
+      "a": "3/2",
+      "b": "-5/3",
+      "exactValues": {
+        "-2": "-20/27",
+        "-1": "-10/9",
+        "0": "-5/3",
+        "1": "-5/2",
+        "2": "-15/4"
+      },
+      "monotonicity": "strictly decreasing",
+      "reason": "For h>0, sign(F(x+h)-F(x))=sign(b)*sign(a^h-1), since a^x>0."
+    }
+  ],
+  "exponentialCasesByReasoning": [
+    "For a>0,a!=1,b!=0, a^x>0 and f(0)=b. Hence the range is positive or negative according to b, with no zero.",
+    "For a>1, a^x tends to 0 as x tends to minus infinity; for 0<a<1, it tends to 0 as x tends to plus infinity. Multiplication by negative b changes the side of approach, not that x-direction.",
+    "The four monotonicity regimes require both a and b. For example -3*(1/3)^0=-3 and -3*(1/3)^1=-1, and the arbitrary-h sign proof establishes increase everywhere.",
+    "5*1^x=5 and 0*2^x=0 are constant. 2*(-3)^x is not real at x=1/2, so it does not define a real function on all R.",
+    "Changing only -2 to +2 reflects g across the x-axis; the new values at x=-1,0,1 are 4,2,1. It is positive and strictly decreasing."
+  ],
+  "monotonicityOwnProofs": [
+    "Write x=y+h with h>0. Then x^3-y^3=h*(3*(y+h/2)^2+h^2/4)>0, because the h^2/4 summand is strictly positive. This proves strict increase without using a false derivative converse.",
+    "For k=-x^3 the same difference is strictly negative. f_prime(0)=k_prime(0)=0, so both proposed strict converses fail.",
+    "For every epsilon>0, f(-epsilon)=-epsilon^3<0=f(0)<epsilon^3=f(epsilon). Such points exist in every neighbourhood: no local maximum or minimum at 0. A single fixed distant sample pair would not by itself prove this.",
+    "On [1,3], x^2 and -x^2 are continuous and differentiable inside; 2x>0 and -2x<0 on (1,3). The strict conclusions hold on the closed interval.",
+    "Why interval is essential: on D=(-2,-1) union (1,2), set H(x)=x on the left component and H(x)=x-10 on the right. H_prime=1 on D, but H(-3/2)=-3/2>H(3/2)=-17/2; hence H is not increasing on all D.",
+    "Why endpoint continuity matters for a closed-interval version: set J(1)=100 and J(x)=x for 1<x<=3. The interior derivative is 1 but J is not increasing on [1,3]. The authored u,v check explicitly includes continuity."
+  ],
+  "singleCoreOmissionBounds": [
+    {
+      "assessmentId": "d143245a-a423-5699-bf00-4c520cd64b86",
+      "blockId": "theorem-direction",
+      "counterfactual": "one expressly required core missing or mathematically wrong; all other blocks perfect",
+      "maximumTotalUnderWrittenRubric": 18,
+      "passes": false
+    },
+    {
+      "assessmentId": "d143245a-a423-5699-bf00-4c520cd64b86",
+      "blockId": "strict-cubic",
+      "counterfactual": "one expressly required core missing or mathematically wrong; all other blocks perfect",
+      "maximumTotalUnderWrittenRubric": 18,
+      "passes": false
+    },
+    {
+      "assessmentId": "d143245a-a423-5699-bf00-4c520cd64b86",
+      "blockId": "nonconverse",
+      "counterfactual": "one expressly required core missing or mathematically wrong; all other blocks perfect",
+      "maximumTotalUnderWrittenRubric": 18,
+      "passes": false
+    },
+    {
+      "assessmentId": "d143245a-a423-5699-bf00-4c520cd64b86",
+      "blockId": "no-extremum",
+      "counterfactual": "one expressly required core missing or mathematically wrong; all other blocks perfect",
+      "maximumTotalUnderWrittenRubric": 18,
+      "passes": false
+    },
+    {
+      "assessmentId": "d143245a-a423-5699-bf00-4c520cd64b86",
+      "blockId": "falling-nonconverse-transfer",
+      "counterfactual": "one expressly required core missing or mathematically wrong; all other blocks perfect",
+      "maximumTotalUnderWrittenRubric": 18,
+      "passes": false
+    },
+    {
+      "assessmentId": "64dafd7e-2f33-5987-a927-181b1c5f529d",
+      "blockId": "compare-positive-growth-and-negative-decay-base",
+      "counterfactual": "one expressly required core missing or mathematically wrong; all other blocks perfect",
+      "maximumTotalUnderWrittenRubric": 18,
+      "passes": false
+    },
+    {
+      "assessmentId": "64dafd7e-2f33-5987-a927-181b1c5f529d",
+      "blockId": "match-described-graph-to-one-parameter-pair",
+      "counterfactual": "one expressly required core missing or mathematically wrong; all other blocks perfect",
+      "maximumTotalUnderWrittenRubric": 18,
+      "passes": false
+    },
+    {
+      "assessmentId": "64dafd7e-2f33-5987-a927-181b1c5f529d",
+      "blockId": "classify-degenerate-and-nondegenerate-cases",
+      "counterfactual": "one expressly required core missing or mathematically wrong; all other blocks perfect",
+      "maximumTotalUnderWrittenRubric": 18,
+      "passes": false
+    },
+    {
+      "assessmentId": "64dafd7e-2f33-5987-a927-181b1c5f529d",
+      "blockId": "all-four-regimes",
+      "counterfactual": "one expressly required core missing or mathematically wrong; all other blocks perfect",
+      "maximumTotalUnderWrittenRubric": 18,
+      "passes": false
+    },
+    {
+      "assessmentId": "64dafd7e-2f33-5987-a927-181b1c5f529d",
+      "blockId": "required-digital-visualization-and-parameter-check",
+      "counterfactual": "one expressly required core missing or mathematically wrong; all other blocks perfect",
+      "maximumTotalUnderWrittenRubric": 18,
+      "passes": false
+    }
+  ],
+  "digitalOmissionBounds": {
+    "noDigitalDisplayMaximum": 16,
+    "missingOneEssentialDigitalComponentMaximum": 18,
+    "passingPoints": 19,
+    "enforcementScope": "These bounds follow the written content rubric; no runtime or server enforcement was inspected."
+  }
+}

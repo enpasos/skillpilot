@@ -1453,7 +1453,8 @@ export function buildApplicabilityCompilation(
     const refreshRequiresDerivedApplicability = (): boolean => {
       let changed = false
       for (const goal of canonical.landscape.goals) {
-        if (!isAtomicGoal(goal) || !isApplicabilityFromRequiresEnabled(goal)) continue
+        if (!isAtomicGoal(goal) || !isApplicabilityFromRequiresEnabled(goal)
+          || isApplicabilityProjectionExcluded(goal)) continue
         const key = goalKey(canonical.landscape.landscapeId, goal.id)
         const refs = (assessmentBasisByGoalKey.get(key) ?? goal.requires ?? []).map((rawReq) =>
           resolveCanonicalReference(rawReq, canonical.landscape.landscapeId))

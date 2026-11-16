@@ -1,5 +1,75 @@
-import type { CompositionViewFinding } from '../../src/utils/authoring/compositionViewAuthoring'
+import type { CompiledCompositionPreviewNode, CompositionView, CompositionViewFinding, CompositionViewNode } from '../../src/utils/authoring/compositionViewAuthoring'
 import type { CanonicalAuthoringLandscape } from '../../src/utils/authoring/canonicalAuthoring'
+
+/** A reviewed subtree may be materialized to retain only the tasks that belong
+ * in this scope. Its explicit source identity, a visible nonempty structure
+ * and an actual task from the source collection are all required. Labels and
+ * generated identifier spelling never establish this authoring relationship.
+ * The caller must still check every independently applicable task endpoint. */
+export const hasVisibleMaterializedAssessmentCollection = (
+  view: CompositionView,
+  roots: CompiledCompositionPreviewNode[],
+  sourceCollectionId: string,
+  sourceTaskIds: ReadonlySet<string>,
+): boolean => {
+  const declaredIds: string[] = []
+  const inspect = (node: CompositionViewNode): void => {
+    if (node.kind !== 'structure') return
+    if (node.canonicalSourceGoalId === sourceCollectionId) declaredIds.push(node.id)
+    node.children.forEach(inspect)
+  }
+  view.rootNodes.forEach(inspect)
+  if (declaredIds.length !== 1 || sourceTaskIds.size === 0) return false
+  const matches: CompiledCompositionPreviewNode[] = []
+  const visit = (node: CompiledCompositionPreviewNode): void => {
+    if (node.kind === 'structure' && node.runtimeId === `structure:${declaredIds[0]}`) matches.push(node)
+    node.children.forEach(visit)
+  }
+  roots.forEach(visit)
+  if (matches.length !== 1) return false
+  const descendants = [...matches[0].children]
+  while (descendants.length > 0) {
+    const node = descendants.pop()!
+    if (node.sourceGoalId && sourceTaskIds.has(node.sourceGoalId)) return true
+    descendants.push(...node.children)
+  }
+  return false
+}
+
+export const collectCanonicalMathSek1AssessmentCollectionFindings = (
+  view: CompositionView,
+  landscape: CanonicalAuthoringLandscape,
+  roots: CompiledCompositionPreviewNode[],
+  foldersByYear: Readonly<Record<string, string>>,
+): CompositionViewFinding[] => {
+  const byId = new Map(landscape.goals.map((goal) => [goal.id, goal]))
+  const visible = new Set<string>()
+  const visit = (node: CompiledCompositionPreviewNode): void => {
+    if (node.sourceGoalId) visible.add(node.sourceGoalId)
+    node.children.forEach(visit)
+  }
+  roots.forEach(visit)
+  const curricularAtoms = new Set(landscape.goals.filter((goal) => goal.semanticKind === 'curricularAtomic').map((goal) => goal.id))
+  const findings: CompositionViewFinding[] = []
+  for (const [year, folderId] of Object.entries(foldersByYear)) {
+    const folder = byId.get(folderId)
+    if (!folder || (!visible.has(folderId) && !hasVisibleMaterializedAssessmentCollection(
+      view, roots, folderId, new Set(folder.contains),
+    ))) {
+      findings.push({ code: 'CPV-211', severity: 'error', goalId: folderId,
+        message: `Sek-I-Route ist learner-facing nicht vollständig: Prüfungsordner für Jahrgangsstufe ${year} fehlt in der Composition View.` })
+      continue
+    }
+    const missingTasks = folder.contains.filter((id) => !visible.has(id))
+      .filter((id) => !isAssessmentExplicitlyOutsideJurisdiction(byId.get(id), view.scope.jurisdiction))
+      .filter((id) => !hasUnavailableCurricularAtomicAssessmentPrerequisite(byId.get(id), curricularAtoms, visible))
+    if (missingTasks.length > 0) {
+      findings.push({ code: 'CPV-211', severity: 'error', goalId: folderId,
+        message: `Sek-I-Route ist learner-facing nicht vollständig: ${missingTasks.length} Aufgabenknoten unter Prüfungen Jahrgangsstufe ${year} fehlen in der Composition View.` })
+    }
+  }
+  return findings
+}
 
 /** Only a nonempty, explicit jurisdiction list can waive another land's exam.
  * Missing scope, missing tasks and malformed applicability remain required. */

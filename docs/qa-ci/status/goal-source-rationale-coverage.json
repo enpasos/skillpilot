@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-15T11:49:45.722Z",
+  "generatedAt": "2026-11-16T06:43:42.355Z",
   "generator": "app/scripts/reportGoalSourceRationaleCoverage.ts",
   "request": {
     "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
@@ -783,13 +783,13 @@
     }
   },
   "summary": {
-    "totalGoals": 1262,
-    "atomicLeaves": 988,
+    "totalGoals": 1310,
+    "atomicLeaves": 1032,
     "relevantAtomicLeaves": 807,
-    "memoryOrNonContentLeaves": 181,
-    "clusters": 274,
-    "containsRelations": 1397,
-    "requiresRelations": 1576,
+    "memoryOrNonContentLeaves": 225,
+    "clusters": 278,
+    "containsRelations": 1444,
+    "requiresRelations": 1604,
     "runtimeItems": 754,
     "runtimeItemsInLandscape": 754,
     "runtimeItemsMissingFromLandscape": 0,
@@ -800,7 +800,7 @@
     "relevantLeavesMissingRuntimeSourceRationale": 53,
     "relevantLeavesWithRuntimeClassicGap": 0,
     "clustersWithDirectRuntimeSourceRationale": 0,
-    "clustersWithoutDirectRuntimeSourceRationale": 274,
+    "clustersWithoutDirectRuntimeSourceRationale": 278,
     "containsRelationRationalesImplemented": 0,
     "requiresRelationRationalesImplemented": 0,
     "relevantLeafClassicCoveragePercent": 93.4,
@@ -12067,6 +12067,22 @@
         "classification": "cluster_aggregate_pending"
       },
       {
+        "id": "72c22362-17b9-5b6a-804e-286819e380ef",
+        "shortKey": "math_retained_mixed_assessments_20261115",
+        "title": "Erhaltene gemischte Prüfungsaufgaben ohne vollständigen Einzelzielnachweis",
+        "type": "cluster",
+        "phase": "GLOBAL",
+        "area": "unknown",
+        "topicCode": null,
+        "pathTitles": [
+          "Erhaltene gemischte Prüfungsaufgaben ohne vollständigen Einzelzielnachweis"
+        ],
+        "runtimeCovered": false,
+        "classicSourceRoute": false,
+        "memSparqlStatus": null,
+        "classification": "cluster_aggregate_pending"
+      },
+      {
         "id": "c01b1ce9-a667-4a46-b251-ec33ae602b15",
         "shortKey": "canonical_math_module",
         "title": "Mathematik",
@@ -15939,6 +15955,59 @@
         "classification": "cluster_aggregate_pending"
       },
       {
+        "id": "07d2a9a3-189f-5f74-861a-59b56ee5d102",
+        "shortKey": "math_stage_v2_assessments",
+        "title": "Prüfungsaufgaben zu Grundlagen und Funktionen",
+        "type": "cluster",
+        "phase": "GLOBAL",
+        "area": "unknown",
+        "topicCode": null,
+        "pathTitles": [
+          "Mathematik",
+          "Prüfungsaufgaben zu Grundlagen und Funktionen"
+        ],
+        "runtimeCovered": false,
+        "classicSourceRoute": false,
+        "memSparqlStatus": null,
+        "classification": "cluster_aggregate_pending"
+      },
+      {
+        "id": "d7290a35-dc08-588b-86d5-0cc725355b64",
+        "shortKey": null,
+        "title": "Prüfungsaufgabe zu zusammengesetzten trigonometrischen Funktionen",
+        "type": "cluster",
+        "phase": "E",
+        "area": "unknown",
+        "topicCode": null,
+        "pathTitles": [
+          "Mathematik",
+          "Prüfungsaufgaben zu Grundlagen und Funktionen",
+          "Prüfungsaufgabe zu zusammengesetzten trigonometrischen Funktionen"
+        ],
+        "runtimeCovered": false,
+        "classicSourceRoute": false,
+        "memSparqlStatus": null,
+        "classification": "cluster_aggregate_pending"
+      },
+      {
+        "id": "a58ab751-8d16-54dc-839d-efafbf3030c6",
+        "shortKey": null,
+        "title": "Prüfungsaufgaben zu mathematischen Grundlagen und Funktionen",
+        "type": "cluster",
+        "phase": "GLOBAL",
+        "area": "unknown",
+        "topicCode": null,
+        "pathTitles": [
+          "Mathematik",
+          "Prüfungsaufgaben zu Grundlagen und Funktionen",
+          "Prüfungsaufgaben zu mathematischen Grundlagen und Funktionen"
+        ],
+        "runtimeCovered": false,
+        "classicSourceRoute": false,
+        "memSparqlStatus": null,
+        "classification": "cluster_aggregate_pending"
+      },
+      {
         "id": "ecce03e4-0082-41e1-95bd-0244e76ed292",
         "shortKey": "canonical_math_sek1_later_geometry_circle_bodies",
         "title": "Spätere Figuren-, Abbildungs- und Satzgeometrie",
@@ -17168,8 +17237,8 @@
       }
     ],
     "relationRationales": {
-      "containsRelationsPending": 1397,
-      "requiresRelationsPending": 1576
+      "containsRelationsPending": 1444,
+      "requiresRelationsPending": 1604
     }
   },
   "rows": [
@@ -17339,6 +17408,107 @@
       "classicSourceRoute": true,
       "memSparqlStatus": "mem_sparql_not_configured",
       "classification": "covered_runtime_classic_mem_pending"
+    },
+    {
+      "id": "72c22362-17b9-5b6a-804e-286819e380ef",
+      "shortKey": "math_retained_mixed_assessments_20261115",
+      "title": "Erhaltene gemischte Prüfungsaufgaben ohne vollständigen Einzelzielnachweis",
+      "type": "cluster",
+      "phase": "GLOBAL",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Erhaltene gemischte Prüfungsaufgaben ohne vollständigen Einzelzielnachweis"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "cluster_aggregate_pending"
+    },
+    {
+      "id": "af7905d0-e684-5ea3-99ac-8a045455370e",
+      "shortKey": "canonical_math_sek1_practice_j10_task_1",
+      "title": "Aufgabe 1 (Jahrgangsstufe 10, 10 BE)",
+      "type": "atomic",
+      "phase": "J10",
+      "area": "Mathematik",
+      "topicCode": "CANONICAL.MATH.SEK1.PRACTICE.J10.TASK.1",
+      "pathTitles": [
+        "Erhaltene gemischte Prüfungsaufgaben ohne vollständigen Einzelzielnachweis",
+        "Aufgabe 1 (Jahrgangsstufe 10, 10 BE)"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
+      "id": "c9d7546d-3d4a-5f68-b609-831ee8de8877",
+      "shortKey": "canonical_math_sek1_practice_j10_task_2",
+      "title": "Aufgabe 2 (Jahrgangsstufe 10, 12 BE)",
+      "type": "atomic",
+      "phase": "J10",
+      "area": "Mathematik",
+      "topicCode": "CANONICAL.MATH.SEK1.PRACTICE.J10.TASK.2",
+      "pathTitles": [
+        "Erhaltene gemischte Prüfungsaufgaben ohne vollständigen Einzelzielnachweis",
+        "Aufgabe 2 (Jahrgangsstufe 10, 12 BE)"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
+      "id": "ec707244-9dde-510c-8c1e-955f23016231",
+      "shortKey": "canonical_math_sek1_practice_j9_task_2",
+      "title": "Aufgabe 2 (Jahrgangsstufe 9, 10 BE)",
+      "type": "atomic",
+      "phase": "J9",
+      "area": "Mathematik",
+      "topicCode": "CANONICAL.MATH.SEK1.PRACTICE.J9.TASK.2",
+      "pathTitles": [
+        "Erhaltene gemischte Prüfungsaufgaben ohne vollständigen Einzelzielnachweis",
+        "Aufgabe 2 (Jahrgangsstufe 9, 10 BE)"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
+      "id": "2f626446-4b32-5674-a687-9cd754bdfede",
+      "shortKey": "canonical_math_sek1_practice_j10_task_3",
+      "title": "Aufgabe 3 (Jahrgangsstufe 10, 18 BE)",
+      "type": "atomic",
+      "phase": "J10",
+      "area": "Mathematik",
+      "topicCode": "CANONICAL.MATH.SEK1.PRACTICE.J10.TASK.3",
+      "pathTitles": [
+        "Erhaltene gemischte Prüfungsaufgaben ohne vollständigen Einzelzielnachweis",
+        "Aufgabe 3 (Jahrgangsstufe 10, 18 BE)"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
+      "id": "567e352a-af31-53b0-ac9d-cbcafa0622b7",
+      "shortKey": "canonical_math_sek1_practice_j9_task_7",
+      "title": "Aufgabe 7 (Jahrgangsstufe 9, 5 BE)",
+      "type": "atomic",
+      "phase": "J9",
+      "area": "Mathematik",
+      "topicCode": "CANONICAL.MATH.SEK1.PRACTICE.J9.TASK.7",
+      "pathTitles": [
+        "Erhaltene gemischte Prüfungsaufgaben ohne vollständigen Einzelzielnachweis",
+        "Aufgabe 7 (Jahrgangsstufe 9, 5 BE)"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
     },
     {
       "id": "c01b1ce9-a667-4a46-b251-ec33ae602b15",
@@ -31932,63 +32102,6 @@
       "classification": "cluster_aggregate_pending"
     },
     {
-      "id": "af7905d0-e684-5ea3-99ac-8a045455370e",
-      "shortKey": "canonical_math_sek1_practice_j10_task_1",
-      "title": "Aufgabe 1 (Jahrgangsstufe 10, 10 BE)",
-      "type": "atomic",
-      "phase": "J10",
-      "area": "Mathematik",
-      "topicCode": "CANONICAL.MATH.SEK1.PRACTICE.J10.TASK.1",
-      "pathTitles": [
-        "Mathematik",
-        "Jahrgangsstufe 10",
-        "Prüfungen Jahrgangsstufe 10",
-        "Aufgabe 1 (Jahrgangsstufe 10, 10 BE)"
-      ],
-      "runtimeCovered": false,
-      "classicSourceRoute": false,
-      "memSparqlStatus": null,
-      "classification": "non_content_or_memory"
-    },
-    {
-      "id": "c9d7546d-3d4a-5f68-b609-831ee8de8877",
-      "shortKey": "canonical_math_sek1_practice_j10_task_2",
-      "title": "Aufgabe 2 (Jahrgangsstufe 10, 12 BE)",
-      "type": "atomic",
-      "phase": "J10",
-      "area": "Mathematik",
-      "topicCode": "CANONICAL.MATH.SEK1.PRACTICE.J10.TASK.2",
-      "pathTitles": [
-        "Mathematik",
-        "Jahrgangsstufe 10",
-        "Prüfungen Jahrgangsstufe 10",
-        "Aufgabe 2 (Jahrgangsstufe 10, 12 BE)"
-      ],
-      "runtimeCovered": false,
-      "classicSourceRoute": false,
-      "memSparqlStatus": null,
-      "classification": "non_content_or_memory"
-    },
-    {
-      "id": "2f626446-4b32-5674-a687-9cd754bdfede",
-      "shortKey": "canonical_math_sek1_practice_j10_task_3",
-      "title": "Aufgabe 3 (Jahrgangsstufe 10, 18 BE)",
-      "type": "atomic",
-      "phase": "J10",
-      "area": "Mathematik",
-      "topicCode": "CANONICAL.MATH.SEK1.PRACTICE.J10.TASK.3",
-      "pathTitles": [
-        "Mathematik",
-        "Jahrgangsstufe 10",
-        "Prüfungen Jahrgangsstufe 10",
-        "Aufgabe 3 (Jahrgangsstufe 10, 18 BE)"
-      ],
-      "runtimeCovered": false,
-      "classicSourceRoute": false,
-      "memSparqlStatus": null,
-      "classification": "non_content_or_memory"
-    },
-    {
       "id": "b1166cc7-dca0-5ac4-b0c4-9a7196186a2a",
       "shortKey": "canonical_math_sek1_practice_j10_task_4",
       "title": "Aufgabe 4 (Jahrgangsstufe 10, 8 BE)",
@@ -36874,25 +36987,6 @@
       "classification": "non_content_or_memory"
     },
     {
-      "id": "ec707244-9dde-510c-8c1e-955f23016231",
-      "shortKey": "canonical_math_sek1_practice_j9_task_2",
-      "title": "Aufgabe 2 (Jahrgangsstufe 9, 10 BE)",
-      "type": "atomic",
-      "phase": "J9",
-      "area": "Mathematik",
-      "topicCode": "CANONICAL.MATH.SEK1.PRACTICE.J9.TASK.2",
-      "pathTitles": [
-        "Mathematik",
-        "Jahrgangsstufe 9",
-        "Prüfungen Jahrgangsstufe 9",
-        "Aufgabe 2 (Jahrgangsstufe 9, 10 BE)"
-      ],
-      "runtimeCovered": false,
-      "classicSourceRoute": false,
-      "memSparqlStatus": null,
-      "classification": "non_content_or_memory"
-    },
-    {
       "id": "8a360e18-c40f-5e77-a445-1311a8f8430e",
       "shortKey": "canonical_math_sek1_practice_j9_task_3",
       "title": "Aufgabe 3 (Jahrgangsstufe 9, 6 BE)",
@@ -36962,25 +37056,6 @@
         "Jahrgangsstufe 9",
         "Prüfungen Jahrgangsstufe 9",
         "Aufgabe 6 (Jahrgangsstufe 9, 13 BE)"
-      ],
-      "runtimeCovered": false,
-      "classicSourceRoute": false,
-      "memSparqlStatus": null,
-      "classification": "non_content_or_memory"
-    },
-    {
-      "id": "567e352a-af31-53b0-ac9d-cbcafa0622b7",
-      "shortKey": "canonical_math_sek1_practice_j9_task_7",
-      "title": "Aufgabe 7 (Jahrgangsstufe 9, 5 BE)",
-      "type": "atomic",
-      "phase": "J9",
-      "area": "Mathematik",
-      "topicCode": "CANONICAL.MATH.SEK1.PRACTICE.J9.TASK.7",
-      "pathTitles": [
-        "Mathematik",
-        "Jahrgangsstufe 9",
-        "Prüfungen Jahrgangsstufe 9",
-        "Aufgabe 7 (Jahrgangsstufe 9, 5 BE)"
       ],
       "runtimeCovered": false,
       "classicSourceRoute": false,
@@ -37980,6 +38055,895 @@
       "pathTitles": [
         "Mathematik",
         "Lernkarten - Sek I Kernformeln"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
+      "id": "07d2a9a3-189f-5f74-861a-59b56ee5d102",
+      "shortKey": "math_stage_v2_assessments",
+      "title": "Prüfungsaufgaben zu Grundlagen und Funktionen",
+      "type": "cluster",
+      "phase": "GLOBAL",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Prüfungsaufgaben zu Grundlagen und Funktionen"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "cluster_aggregate_pending"
+    },
+    {
+      "id": "d7290a35-dc08-588b-86d5-0cc725355b64",
+      "shortKey": null,
+      "title": "Prüfungsaufgabe zu zusammengesetzten trigonometrischen Funktionen",
+      "type": "cluster",
+      "phase": "E",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Prüfungsaufgaben zu Grundlagen und Funktionen",
+        "Prüfungsaufgabe zu zusammengesetzten trigonometrischen Funktionen"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "cluster_aggregate_pending"
+    },
+    {
+      "id": "d363a3d4-deb1-5e63-87d0-ad4cac6919dd",
+      "shortKey": "math_stage_v2_affine_trig_chain",
+      "title": "Transformierte Sinus- und Kosinusmodelle mit der Kettenregel prüfen",
+      "type": "atomic",
+      "phase": "E",
+      "area": "Analysis",
+      "topicCode": "CANONICAL.MATH.E.TRIGONOMETRIC.CHAIN_RULE_TRANSFORMED_SINE_COSINE",
+      "pathTitles": [
+        "Mathematik",
+        "Prüfungsaufgaben zu Grundlagen und Funktionen",
+        "Prüfungsaufgabe zu zusammengesetzten trigonometrischen Funktionen",
+        "Transformierte Sinus- und Kosinusmodelle mit der Kettenregel prüfen"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
+      "id": "a58ab751-8d16-54dc-839d-efafbf3030c6",
+      "shortKey": null,
+      "title": "Prüfungsaufgaben zu mathematischen Grundlagen und Funktionen",
+      "type": "cluster",
+      "phase": "GLOBAL",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Prüfungsaufgaben zu Grundlagen und Funktionen",
+        "Prüfungsaufgaben zu mathematischen Grundlagen und Funktionen"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "cluster_aggregate_pending"
+    },
+    {
+      "id": "e2174adb-545f-5119-8f23-45f67e358d70",
+      "shortKey": null,
+      "title": "Definitionsbereich, Umformungen und Lösungsmenge prüfen",
+      "type": "atomic",
+      "phase": "J8",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Prüfungsaufgaben zu Grundlagen und Funktionen",
+        "Prüfungsaufgaben zu mathematischen Grundlagen und Funktionen",
+        "Definitionsbereich, Umformungen und Lösungsmenge prüfen"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
+      "id": "90ec67fc-0400-5f2c-ae8e-059ff67fc0b3",
+      "shortKey": null,
+      "title": "Faktor-, Summen- und Potenzregel nachvollziehbar anwenden",
+      "type": "atomic",
+      "phase": "J10",
+      "area": "Analysis",
+      "topicCode": "CANONICAL.MATH.SEK1.J10.7B",
+      "pathTitles": [
+        "Mathematik",
+        "Prüfungsaufgaben zu Grundlagen und Funktionen",
+        "Prüfungsaufgaben zu mathematischen Grundlagen und Funktionen",
+        "Faktor-, Summen- und Potenzregel nachvollziehbar anwenden"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
+      "id": "3e0017bd-f305-5d25-91fd-62b772c3e757",
+      "shortKey": null,
+      "title": "Ganzrationale Terme anhand von Nullstellen und Randverhalten Graphen zuordnen",
+      "type": "atomic",
+      "phase": "J10",
+      "area": "Analysis",
+      "topicCode": "CANONICAL.MATH.SEK1.J10.4",
+      "pathTitles": [
+        "Mathematik",
+        "Prüfungsaufgaben zu Grundlagen und Funktionen",
+        "Prüfungsaufgaben zu mathematischen Grundlagen und Funktionen",
+        "Ganzrationale Terme anhand von Nullstellen und Randverhalten Graphen zuordnen"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
+      "id": "82c1deff-b359-5813-9aae-8843df3bc2a1",
+      "shortKey": null,
+      "title": "Mehrstufige Baumdiagramme und Pfadregeln eigenständig anwenden",
+      "type": "atomic",
+      "phase": "J10",
+      "area": "Probability",
+      "topicCode": "CANONICAL.MATH.SEK1.J10.2A",
+      "pathTitles": [
+        "Mathematik",
+        "Prüfungsaufgaben zu Grundlagen und Funktionen",
+        "Prüfungsaufgaben zu mathematischen Grundlagen und Funktionen",
+        "Mehrstufige Baumdiagramme und Pfadregeln eigenständig anwenden"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
+      "id": "bc53c4e9-46b3-579e-8504-c6510732f218",
+      "shortKey": null,
+      "title": "Mittlere und momentane Änderungsrate begründet unterscheiden",
+      "type": "atomic",
+      "phase": "J10",
+      "area": "Analysis",
+      "topicCode": "CANONICAL.MATH.SEK1.J10.7A",
+      "pathTitles": [
+        "Mathematik",
+        "Prüfungsaufgaben zu Grundlagen und Funktionen",
+        "Prüfungsaufgaben zu mathematischen Grundlagen und Funktionen",
+        "Mittlere und momentane Änderungsrate begründet unterscheiden"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
+      "id": "d143245a-a423-5699-bf00-4c520cd64b86",
+      "shortKey": null,
+      "title": "Monotoniesatz und fehlende Umkehrung eigenständig prüfen",
+      "type": "atomic",
+      "phase": "J10",
+      "area": "Analysis",
+      "topicCode": "CANONICAL.MATH.SEK1.J10.CALCULUS.MONOTONICITY_THEOREM",
+      "pathTitles": [
+        "Mathematik",
+        "Prüfungsaufgaben zu Grundlagen und Funktionen",
+        "Prüfungsaufgaben zu mathematischen Grundlagen und Funktionen",
+        "Monotoniesatz und fehlende Umkehrung eigenständig prüfen"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
+      "id": "bc87680f-ece0-542d-a5fb-e75ea122d675",
+      "shortKey": null,
+      "title": "Nullproduktgleichungen lösen und fehlerhafte Schlüsse prüfen",
+      "type": "atomic",
+      "phase": "J9",
+      "area": "Algebra",
+      "topicCode": "CANONICAL.MATH.SEK1.J9.EQUATIONS.ZERO_PRODUCT",
+      "pathTitles": [
+        "Mathematik",
+        "Prüfungsaufgaben zu Grundlagen und Funktionen",
+        "Prüfungsaufgaben zu mathematischen Grundlagen und Funktionen",
+        "Nullproduktgleichungen lösen und fehlerhafte Schlüsse prüfen"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
+      "id": "373e3278-683a-553d-8cdc-090a36ab17cc",
+      "shortKey": "math_stage_v3_assessment_308f19e2",
+      "title": "Prüfungsaufgabe: Asymptotisches Verhalten exponentieller Funktionen deuten",
+      "type": "atomic",
+      "phase": "J10",
+      "area": "Analysis",
+      "topicCode": "CANONICAL.MATH.SEK1.J10.EXPONENTIAL.TIME.ASYMPTOTICS",
+      "pathTitles": [
+        "Mathematik",
+        "Prüfungsaufgaben zu Grundlagen und Funktionen",
+        "Prüfungsaufgaben zu mathematischen Grundlagen und Funktionen",
+        "Prüfungsaufgabe: Asymptotisches Verhalten exponentieller Funktionen deuten"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
+      "id": "d09afa07-f7fc-5148-92a9-f9a89c9257d5",
+      "shortKey": "math_stage_v3_assessment_6a4716bd",
+      "title": "Prüfungsaufgabe: Aus Graphen ganzrationaler Funktionen Rückschlüsse auf Grad oder Funktionsterm ziehen",
+      "type": "atomic",
+      "phase": "J10",
+      "area": "Analysis",
+      "topicCode": "CANONICAL.MATH.SEK1.J10.POLYNOMIAL.GRAPH_TO_DEGREE_OR_TERM",
+      "pathTitles": [
+        "Mathematik",
+        "Prüfungsaufgaben zu Grundlagen und Funktionen",
+        "Prüfungsaufgaben zu mathematischen Grundlagen und Funktionen",
+        "Prüfungsaufgabe: Aus Graphen ganzrationaler Funktionen Rückschlüsse auf Grad oder Funktionsterm ziehen"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
+      "id": "e3f4187c-3570-5056-9990-4486f87d1a0e",
+      "shortKey": "math_stage_v3_assessment_367a59ce",
+      "title": "Prüfungsaufgabe: Begriffe des Zinseszinses erläutern",
+      "type": "atomic",
+      "phase": "J10",
+      "area": "Arithmetic",
+      "topicCode": "CANONICAL.MATH.SEK1.J10.INTEREST.COMPOUND_TERMS",
+      "pathTitles": [
+        "Mathematik",
+        "Prüfungsaufgaben zu Grundlagen und Funktionen",
+        "Prüfungsaufgaben zu mathematischen Grundlagen und Funktionen",
+        "Prüfungsaufgabe: Begriffe des Zinseszinses erläutern"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
+      "id": "a8dfd3ce-7e43-560c-8ac1-c8b1ee7c5547",
+      "shortKey": "math_stage_v3_assessment_82597dfb",
+      "title": "Prüfungsaufgabe: Einheitskreis und Bogenmass für trigonometrische Funktionen nutzen",
+      "type": "atomic",
+      "phase": "J10",
+      "area": "Analysis",
+      "topicCode": "CANONICAL.MATH.SEK1.J10.TRIGONOMETRIC.UNIT_CIRCLE",
+      "pathTitles": [
+        "Mathematik",
+        "Prüfungsaufgaben zu Grundlagen und Funktionen",
+        "Prüfungsaufgaben zu mathematischen Grundlagen und Funktionen",
+        "Prüfungsaufgabe: Einheitskreis und Bogenmass für trigonometrische Funktionen nutzen"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
+      "id": "7b27715c-c768-5bed-bf3e-94dacd905ee7",
+      "shortKey": "math_stage_v3_assessment_c088fd81",
+      "title": "Prüfungsaufgabe: Exponentialgleichungen mit Logarithmen lösen",
+      "type": "atomic",
+      "phase": "J10",
+      "area": "Analysis",
+      "topicCode": "CANONICAL.MATH.SEK1.J10.EXPONENTIAL.EQUATIONS",
+      "pathTitles": [
+        "Mathematik",
+        "Prüfungsaufgaben zu Grundlagen und Funktionen",
+        "Prüfungsaufgaben zu mathematischen Grundlagen und Funktionen",
+        "Prüfungsaufgabe: Exponentialgleichungen mit Logarithmen lösen"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
+      "id": "cb7142e0-f370-5f8b-b6c5-75f83d42a302",
+      "shortKey": "math_stage_v3_assessment_3010d965",
+      "title": "Prüfungsaufgabe: Exponentielle Zunahme und Abnahme beschreiben und von linearem Wachstum abgrenzen",
+      "type": "atomic",
+      "phase": "J10",
+      "area": "Analysis",
+      "topicCode": "CANONICAL.MATH.SEK1.J10.EXPONENTIAL_CHARACTERISTICS",
+      "pathTitles": [
+        "Mathematik",
+        "Prüfungsaufgaben zu Grundlagen und Funktionen",
+        "Prüfungsaufgaben zu mathematischen Grundlagen und Funktionen",
+        "Prüfungsaufgabe: Exponentielle Zunahme und Abnahme beschreiben und von linearem Wachstum abgrenzen"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
+      "id": "bae1464d-4b32-5492-b65b-32c7de3fa11e",
+      "shortKey": "math_stage_v3_assessment_31207307",
+      "title": "Prüfungsaufgabe: Exponentielles Wachstum in Graphen, Tabellen und Kontexten deuten",
+      "type": "atomic",
+      "phase": "J10",
+      "area": "Analysis",
+      "topicCode": "CANONICAL.MATH.SEK1.J10.EXPONENTIAL.GROWTH.GRAPHS",
+      "pathTitles": [
+        "Mathematik",
+        "Prüfungsaufgaben zu Grundlagen und Funktionen",
+        "Prüfungsaufgaben zu mathematischen Grundlagen und Funktionen",
+        "Prüfungsaufgabe: Exponentielles Wachstum in Graphen, Tabellen und Kontexten deuten"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
+      "id": "b214caea-13d3-5789-9434-f31d0fd606a3",
+      "shortKey": "math_stage_v3_assessment_42e19186",
+      "title": "Prüfungsaufgabe: Exponentielles Wachstum in Termen, Tabellen und Graphen beschreiben",
+      "type": "atomic",
+      "phase": "J10",
+      "area": "Analysis",
+      "topicCode": "CANONICAL.MATH.SEK1.J10.1",
+      "pathTitles": [
+        "Mathematik",
+        "Prüfungsaufgaben zu Grundlagen und Funktionen",
+        "Prüfungsaufgaben zu mathematischen Grundlagen und Funktionen",
+        "Prüfungsaufgabe: Exponentielles Wachstum in Termen, Tabellen und Graphen beschreiben"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
+      "id": "fe35c5da-c953-5f5e-b1a4-b0dce641a889",
+      "shortKey": "math_stage_v3_assessment_0500f77f",
+      "title": "Prüfungsaufgabe: Funktionsterme aus trigonometrischen Graphen bestimmen",
+      "type": "atomic",
+      "phase": "J10",
+      "area": "Analysis",
+      "topicCode": "CANONICAL.MATH.SEK1.J10.TRIGONOMETRIC.TERMS_FROM_GRAPHS",
+      "pathTitles": [
+        "Mathematik",
+        "Prüfungsaufgaben zu Grundlagen und Funktionen",
+        "Prüfungsaufgaben zu mathematischen Grundlagen und Funktionen",
+        "Prüfungsaufgabe: Funktionsterme aus trigonometrischen Graphen bestimmen"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
+      "id": "64dafd7e-2f33-5987-a927-181b1c5f529d",
+      "shortKey": "math_stage_v3_assessment_78238608",
+      "title": "Prüfungsaufgabe: Graphverlauf exponentieller Funktionen der Form $b\\cdot a^x$ anhand von $a$ und $b$ beschreiben",
+      "type": "atomic",
+      "phase": "J10",
+      "area": "Analysis",
+      "topicCode": "CANONICAL.MATH.SEK1.J10.EXPONENTIAL.GRAPH_SHAPE",
+      "pathTitles": [
+        "Mathematik",
+        "Prüfungsaufgaben zu Grundlagen und Funktionen",
+        "Prüfungsaufgaben zu mathematischen Grundlagen und Funktionen",
+        "Prüfungsaufgabe: Graphverlauf exponentieller Funktionen der Form $b\\cdot a^x$ anhand von $a$ und $b$ beschreiben"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
+      "id": "a68fcfd9-675c-59a0-8dde-ee90bb374483",
+      "shortKey": "math_stage_v3_assessment_674baaa8",
+      "title": "Prüfungsaufgabe: Komplementwinkelbeziehung von Sinus und Kosinus herleiten",
+      "type": "atomic",
+      "phase": "J10",
+      "area": "Geometry",
+      "topicCode": "CANONICAL.MATH.SEK1.J10.TRIGONOMETRY.IDENTITIES.COMPLEMENT_IDENTITY",
+      "pathTitles": [
+        "Mathematik",
+        "Prüfungsaufgaben zu Grundlagen und Funktionen",
+        "Prüfungsaufgaben zu mathematischen Grundlagen und Funktionen",
+        "Prüfungsaufgabe: Komplementwinkelbeziehung von Sinus und Kosinus herleiten"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
+      "id": "e4462b8c-ed2f-5daf-98bf-bebd78bd7662",
+      "shortKey": "math_stage_v3_assessment_aed3ca99",
+      "title": "Prüfungsaufgabe: Logarithmen als Umkehrung exponentieller Zusammenhänge nutzen",
+      "type": "atomic",
+      "phase": "J10",
+      "area": "Analysis",
+      "topicCode": "CANONICAL.MATH.SEK1.J10.LOGARITHMS",
+      "pathTitles": [
+        "Mathematik",
+        "Prüfungsaufgaben zu Grundlagen und Funktionen",
+        "Prüfungsaufgaben zu mathematischen Grundlagen und Funktionen",
+        "Prüfungsaufgabe: Logarithmen als Umkehrung exponentieller Zusammenhänge nutzen"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
+      "id": "6f4d30a4-2e49-5281-8c50-233efb402a09",
+      "shortKey": "math_stage_v3_assessment_3c1d6ce7",
+      "title": "Prüfungsaufgabe: Logarithmus definieren und einfache Werte bestimmen",
+      "type": "atomic",
+      "phase": "J10",
+      "area": "Analysis",
+      "topicCode": "CANONICAL.MATH.SEK1.J10.LOGARITHM_INTRO",
+      "pathTitles": [
+        "Mathematik",
+        "Prüfungsaufgaben zu Grundlagen und Funktionen",
+        "Prüfungsaufgaben zu mathematischen Grundlagen und Funktionen",
+        "Prüfungsaufgabe: Logarithmus definieren und einfache Werte bestimmen"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
+      "id": "911c3dd4-5756-52f4-a1e3-177ddd86a601",
+      "shortKey": "math_stage_v3_assessment_2850e8f6",
+      "title": "Prüfungsaufgabe: Monotonie und Extrema mit der ersten Ableitung untersuchen",
+      "type": "atomic",
+      "phase": "J10",
+      "area": "Analysis",
+      "topicCode": "CANONICAL.MATH.SEK1.J10.7C.EXTREMA",
+      "pathTitles": [
+        "Mathematik",
+        "Prüfungsaufgaben zu Grundlagen und Funktionen",
+        "Prüfungsaufgaben zu mathematischen Grundlagen und Funktionen",
+        "Prüfungsaufgabe: Monotonie und Extrema mit der ersten Ableitung untersuchen"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
+      "id": "71169b14-8363-576e-9e51-002f51da08e3",
+      "shortKey": "math_stage_v3_assessment_3f3557a8",
+      "title": "Prüfungsaufgabe: Parabeln als Ortslinien mit Brennpunkt und Leitgerade beschreiben",
+      "type": "atomic",
+      "phase": "J9",
+      "area": "Geometry",
+      "topicCode": "CANONICAL.MATH.SEK1.J9.2B3",
+      "pathTitles": [
+        "Mathematik",
+        "Prüfungsaufgaben zu Grundlagen und Funktionen",
+        "Prüfungsaufgaben zu mathematischen Grundlagen und Funktionen",
+        "Prüfungsaufgabe: Parabeln als Ortslinien mit Brennpunkt und Leitgerade beschreiben"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
+      "id": "843f23ee-f0c4-5a57-b99f-9ac35af73bf4",
+      "shortKey": "math_stage_v3_assessment_c74d0c7e",
+      "title": "Prüfungsaufgabe: Parameter exponentieller Funktionen aus Gleichung und Werten deuten",
+      "type": "atomic",
+      "phase": "J10",
+      "area": "Analysis",
+      "topicCode": "CANONICAL.MATH.SEK1.J10.EXPONENTIAL.PARAMETERS",
+      "pathTitles": [
+        "Mathematik",
+        "Prüfungsaufgaben zu Grundlagen und Funktionen",
+        "Prüfungsaufgaben zu mathematischen Grundlagen und Funktionen",
+        "Prüfungsaufgabe: Parameter exponentieller Funktionen aus Gleichung und Werten deuten"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
+      "id": "9dbb9fd3-a93f-53ca-82d6-bf0e0e16e9d9",
+      "shortKey": "math_stage_v3_assessment_7f11ffe0",
+      "title": "Prüfungsaufgabe: Periodische Realsituationen mit Sinus- und Kosinusfunktionen modellieren und Modelle variieren",
+      "type": "atomic",
+      "phase": "J10",
+      "area": "Analysis",
+      "topicCode": "CANONICAL.MATH.SEK1.J10.TRIGONOMETRIC.MODELLING",
+      "pathTitles": [
+        "Mathematik",
+        "Prüfungsaufgaben zu Grundlagen und Funktionen",
+        "Prüfungsaufgaben zu mathematischen Grundlagen und Funktionen",
+        "Prüfungsaufgabe: Periodische Realsituationen mit Sinus- und Kosinusfunktionen modellieren und Modelle variieren"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
+      "id": "7b88b182-fcba-59dc-ba62-0fa3bfb7ebe2",
+      "shortKey": "math_stage_v3_assessment_30c013ac",
+      "title": "Prüfungsaufgabe: Potenzfunktionen mit ganzzahligen Exponenten beschreiben",
+      "type": "atomic",
+      "phase": "J9",
+      "area": "Algebra",
+      "topicCode": "CANONICAL.MATH.SEK1.J9.5C",
+      "pathTitles": [
+        "Mathematik",
+        "Prüfungsaufgaben zu Grundlagen und Funktionen",
+        "Prüfungsaufgaben zu mathematischen Grundlagen und Funktionen",
+        "Prüfungsaufgabe: Potenzfunktionen mit ganzzahligen Exponenten beschreiben"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
+      "id": "17e73e5b-ae25-5b4c-bd05-b06381dacdb7",
+      "shortKey": "math_stage_v3_assessment_d9725eb6",
+      "title": "Prüfungsaufgabe: Pythagoreische trigonometrische Beziehung herleiten",
+      "type": "atomic",
+      "phase": "J10",
+      "area": "Geometry",
+      "topicCode": "CANONICAL.MATH.SEK1.J10.TRIGONOMETRY.IDENTITIES.PYTHAGOREAN_IDENTITY",
+      "pathTitles": [
+        "Mathematik",
+        "Prüfungsaufgaben zu Grundlagen und Funktionen",
+        "Prüfungsaufgaben zu mathematischen Grundlagen und Funktionen",
+        "Prüfungsaufgabe: Pythagoreische trigonometrische Beziehung herleiten"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
+      "id": "acc08105-b740-5a7d-abe2-dca33991b16b",
+      "shortKey": "math_stage_v3_assessment_5743b8f9",
+      "title": "Prüfungsaufgabe: Quadratische Funktionen aus Punkten oder Bedingungen bestimmen",
+      "type": "atomic",
+      "phase": "J9",
+      "area": "Analysis",
+      "topicCode": "CANONICAL.MATH.SEK1.J9.2B1",
+      "pathTitles": [
+        "Mathematik",
+        "Prüfungsaufgaben zu Grundlagen und Funktionen",
+        "Prüfungsaufgaben zu mathematischen Grundlagen und Funktionen",
+        "Prüfungsaufgabe: Quadratische Funktionen aus Punkten oder Bedingungen bestimmen"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
+      "id": "d09278a9-70cf-5c22-8eb4-a28118651649",
+      "shortKey": "math_stage_v3_assessment_a7ccb7a9",
+      "title": "Prüfungsaufgabe: Quadratische Funktionen in Anwendungen modellieren und lösen",
+      "type": "atomic",
+      "phase": "J9",
+      "area": "Analysis",
+      "topicCode": "CANONICAL.MATH.SEK1.J9.2B2",
+      "pathTitles": [
+        "Mathematik",
+        "Prüfungsaufgaben zu Grundlagen und Funktionen",
+        "Prüfungsaufgaben zu mathematischen Grundlagen und Funktionen",
+        "Prüfungsaufgabe: Quadratische Funktionen in Anwendungen modellieren und lösen"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
+      "id": "9a42d9cd-2c17-514b-879e-2686b29d86f2",
+      "shortKey": "math_stage_v3_assessment_e322310f",
+      "title": "Prüfungsaufgabe: Quadratische Terme mit binomischen Formeln umformen",
+      "type": "atomic",
+      "phase": "GLOBAL",
+      "area": "Algebra",
+      "topicCode": "CANONICAL.MATH.SEK1.3A2",
+      "pathTitles": [
+        "Mathematik",
+        "Prüfungsaufgaben zu Grundlagen und Funktionen",
+        "Prüfungsaufgaben zu mathematischen Grundlagen und Funktionen",
+        "Prüfungsaufgabe: Quadratische Terme mit binomischen Formeln umformen"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
+      "id": "ba2d707f-d95c-55ac-b978-60c51424d367",
+      "shortKey": "math_stage_v3_assessment_283ec44e",
+      "title": "Prüfungsaufgabe: Randverhalten ganzrationaler Funktionen aus dem Term begründen",
+      "type": "atomic",
+      "phase": "J10",
+      "area": "Analysis",
+      "topicCode": "CANONICAL.MATH.SEK1.J10.POLYNOMIAL.END_BEHAVIOUR",
+      "pathTitles": [
+        "Mathematik",
+        "Prüfungsaufgaben zu Grundlagen und Funktionen",
+        "Prüfungsaufgaben zu mathematischen Grundlagen und Funktionen",
+        "Prüfungsaufgabe: Randverhalten ganzrationaler Funktionen aus dem Term begründen"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
+      "id": "0b2c68f9-f9d4-57c1-af56-3b7d639f1631",
+      "shortKey": "math_stage_v3_assessment_3e4032bd",
+      "title": "Prüfungsaufgabe: Scheitelpunkte quadratischer Funktionen bestimmen",
+      "type": "atomic",
+      "phase": "GLOBAL",
+      "area": "Analysis",
+      "topicCode": "CANONICAL.MATH.SEK1.3A1",
+      "pathTitles": [
+        "Mathematik",
+        "Prüfungsaufgaben zu Grundlagen und Funktionen",
+        "Prüfungsaufgaben zu mathematischen Grundlagen und Funktionen",
+        "Prüfungsaufgabe: Scheitelpunkte quadratischer Funktionen bestimmen"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
+      "id": "cb567b03-b590-5ae9-9d1e-9864d02fb3af",
+      "shortKey": "sine_cosine_basic_functions_two_independent_cases",
+      "title": "Prüfungsaufgabe: Sinus und Kosinus selbst darstellen und Zuordnungsfehler begründen",
+      "type": "atomic",
+      "phase": "J10",
+      "area": "Analysis",
+      "topicCode": "CANONICAL.MATH.SEK1.J10.3",
+      "pathTitles": [
+        "Mathematik",
+        "Prüfungsaufgaben zu Grundlagen und Funktionen",
+        "Prüfungsaufgaben zu mathematischen Grundlagen und Funktionen",
+        "Prüfungsaufgabe: Sinus und Kosinus selbst darstellen und Zuordnungsfehler begründen"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
+      "id": "9b3485cb-c631-5b2e-8abe-eb55d4f0d89e",
+      "shortKey": "math_stage_v3_assessment_0190e463",
+      "title": "Prüfungsaufgabe: Symmetrie ganzrationaler Funktionsgraphen am Term prüfen",
+      "type": "atomic",
+      "phase": "J10",
+      "area": "Analysis",
+      "topicCode": "CANONICAL.MATH.SEK1.J10.POLYNOMIAL.SYMMETRY_FROM_TERM",
+      "pathTitles": [
+        "Mathematik",
+        "Prüfungsaufgaben zu Grundlagen und Funktionen",
+        "Prüfungsaufgaben zu mathematischen Grundlagen und Funktionen",
+        "Prüfungsaufgabe: Symmetrie ganzrationaler Funktionsgraphen am Term prüfen"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
+      "id": "aca3f4d8-87e9-5733-b6e8-bc595b09c746",
+      "shortKey": "math_stage_v3_assessment_4cba85d3",
+      "title": "Prüfungsaufgabe: Tangensquotient herleiten",
+      "type": "atomic",
+      "phase": "J10",
+      "area": "Geometry",
+      "topicCode": "CANONICAL.MATH.SEK1.J10.TRIGONOMETRY.IDENTITIES.TANGENT_QUOTIENT",
+      "pathTitles": [
+        "Mathematik",
+        "Prüfungsaufgaben zu Grundlagen und Funktionen",
+        "Prüfungsaufgaben zu mathematischen Grundlagen und Funktionen",
+        "Prüfungsaufgabe: Tangensquotient herleiten"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
+      "id": "af7ec286-0ce4-5a36-bcaa-23b1a9c55b8e",
+      "shortKey": "math_stage_v3_assessment_06bdbecb",
+      "title": "Prüfungsaufgabe: Tangenten als lineare Approximationen nutzen",
+      "type": "atomic",
+      "phase": "J10",
+      "area": "Analysis",
+      "topicCode": "CANONICAL.MATH.SEK1.J10.DERIVATIVE.LINEAR_APPROXIMATION",
+      "pathTitles": [
+        "Mathematik",
+        "Prüfungsaufgaben zu Grundlagen und Funktionen",
+        "Prüfungsaufgaben zu mathematischen Grundlagen und Funktionen",
+        "Prüfungsaufgabe: Tangenten als lineare Approximationen nutzen"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
+      "id": "ec3467b0-a62e-51f5-a99d-6dd524a8fc86",
+      "shortKey": "math_stage_v3_assessment_b43a1e45",
+      "title": "Prüfungsaufgabe: Tangenten- und Normalengleichungen in einfachen Fällen aufstellen",
+      "type": "atomic",
+      "phase": "J10",
+      "area": "Analysis",
+      "topicCode": "CANONICAL.MATH.SEK1.J10.7D",
+      "pathTitles": [
+        "Mathematik",
+        "Prüfungsaufgaben zu Grundlagen und Funktionen",
+        "Prüfungsaufgaben zu mathematischen Grundlagen und Funktionen",
+        "Prüfungsaufgabe: Tangenten- und Normalengleichungen in einfachen Fällen aufstellen"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
+      "id": "1a7fda7f-4ebf-5efc-9a74-c6372a9ab866",
+      "shortKey": "math_stage_v3_assessment_eb28b403",
+      "title": "Prüfungsaufgabe: Transformationen von Potenz- und Wurzelfunktionsgraphen beschreiben",
+      "type": "atomic",
+      "phase": "J9",
+      "area": "Algebra",
+      "topicCode": "CANONICAL.MATH.SEK1.J9.POWER_ROOT_FUNCTIONS.TRANSFORMATIONS",
+      "pathTitles": [
+        "Mathematik",
+        "Prüfungsaufgaben zu Grundlagen und Funktionen",
+        "Prüfungsaufgaben zu mathematischen Grundlagen und Funktionen",
+        "Prüfungsaufgabe: Transformationen von Potenz- und Wurzelfunktionsgraphen beschreiben"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
+      "id": "967e0b4a-8b18-541f-8ba0-2bc24982a470",
+      "shortKey": "math_stage_v3_assessment_46bdcc16",
+      "title": "Prüfungsaufgabe: Trigonometrische Graphen und Periodizität deuten",
+      "type": "atomic",
+      "phase": "J10",
+      "area": "Analysis",
+      "topicCode": "CANONICAL.MATH.SEK1.J10.TRIGONOMETRIC.GRAPHS",
+      "pathTitles": [
+        "Mathematik",
+        "Prüfungsaufgaben zu Grundlagen und Funktionen",
+        "Prüfungsaufgaben zu mathematischen Grundlagen und Funktionen",
+        "Prüfungsaufgabe: Trigonometrische Graphen und Periodizität deuten"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
+      "id": "b3249d3b-5e4f-5bec-a9f2-bd1a69c300b7",
+      "shortKey": "math_stage_v3_assessment_c19d1f8f",
+      "title": "Prüfungsaufgabe: Verdoppelungs- und Halbwertszeiten bestimmen und deuten",
+      "type": "atomic",
+      "phase": "J10",
+      "area": "Analysis",
+      "topicCode": "CANONICAL.MATH.SEK1.J10.EXPONENTIAL.TIME.ASYMPTOTICS",
+      "pathTitles": [
+        "Mathematik",
+        "Prüfungsaufgaben zu Grundlagen und Funktionen",
+        "Prüfungsaufgaben zu mathematischen Grundlagen und Funktionen",
+        "Prüfungsaufgabe: Verdoppelungs- und Halbwertszeiten bestimmen und deuten"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
+      "id": "5641d6c9-429d-5758-b9ba-3422b4f29950",
+      "shortKey": "math_stage_v3_assessment_27b63e2e",
+      "title": "Prüfungsaufgabe: Wachstums- und Abklingvorgänge exponentiell modellieren und Ergebnisse im Kontext bewerten",
+      "type": "atomic",
+      "phase": "J10",
+      "area": "Analysis",
+      "topicCode": "CANONICAL.MATH.SEK1.J10.EXPONENTIAL_MODELLING",
+      "pathTitles": [
+        "Mathematik",
+        "Prüfungsaufgaben zu Grundlagen und Funktionen",
+        "Prüfungsaufgaben zu mathematischen Grundlagen und Funktionen",
+        "Prüfungsaufgabe: Wachstums- und Abklingvorgänge exponentiell modellieren und Ergebnisse im Kontext bewerten"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
+      "id": "0dc1352a-c0d1-5231-af77-ca2284c4a27c",
+      "shortKey": "math_stage_v3_assessment_ad66009f",
+      "title": "Prüfungsaufgabe: Wendestellen und Krümmungsverhalten mit Ableitungen beschreiben",
+      "type": "atomic",
+      "phase": "J10",
+      "area": "Analysis",
+      "topicCode": "CANONICAL.MATH.SEK1.J10.DERIVATIVE.INFLECTION_CURVATURE",
+      "pathTitles": [
+        "Mathematik",
+        "Prüfungsaufgaben zu Grundlagen und Funktionen",
+        "Prüfungsaufgaben zu mathematischen Grundlagen und Funktionen",
+        "Prüfungsaufgabe: Wendestellen und Krümmungsverhalten mit Ableitungen beschreiben"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
+      "id": "0220bbbc-c51f-5f7c-92e6-9ea2598baf74",
+      "shortKey": "math_stage_v3_assessment_66077296",
+      "title": "Prüfungsaufgabe: Wurzelfunktionen graphisch untersuchen",
+      "type": "atomic",
+      "phase": "J9",
+      "area": "Algebra",
+      "topicCode": "CANONICAL.MATH.SEK1.J9.ROOT_FUNCTIONS.GRAPHS",
+      "pathTitles": [
+        "Mathematik",
+        "Prüfungsaufgaben zu Grundlagen und Funktionen",
+        "Prüfungsaufgaben zu mathematischen Grundlagen und Funktionen",
+        "Prüfungsaufgabe: Wurzelfunktionen graphisch untersuchen"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
+      "id": "c992f67a-f901-503c-994f-5eb5b03b2950",
+      "shortKey": null,
+      "title": "Sinus- und Kosinusableitungen rechnerisch und grafisch prüfen",
+      "type": "atomic",
+      "phase": "J10",
+      "area": "Analysis",
+      "topicCode": "CANONICAL.MATH.SEK1.J10.7E",
+      "pathTitles": [
+        "Mathematik",
+        "Prüfungsaufgaben zu Grundlagen und Funktionen",
+        "Prüfungsaufgaben zu mathematischen Grundlagen und Funktionen",
+        "Sinus- und Kosinusableitungen rechnerisch und grafisch prüfen"
       ],
       "runtimeCovered": false,
       "classicSourceRoute": false,

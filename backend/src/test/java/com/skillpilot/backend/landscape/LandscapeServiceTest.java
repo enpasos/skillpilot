@@ -1303,7 +1303,8 @@ class LandscapeServiceTest {
                                 .containsExactlyInAnyOrder(
                                                 "e4b38061-1f28-43ad-8371-a3e7c0e81856",
                                                 "d6dc0e02-831d-4894-a61a-852bcc74f147",
-                                                "c5807a37-129e-5df6-8989-482bc7f5683e");
+                                                "c5807a37-129e-5df6-8989-482bc7f5683e",
+                                                "a8dc0290-9f80-5763-8943-e16b8d2aa860");
                 assertThat(pilot.getGoalPlacements())
                                 .extracting(GoalPlacement::getUnitId)
                                 .contains(

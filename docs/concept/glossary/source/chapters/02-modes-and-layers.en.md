@@ -12,13 +12,13 @@ The default type: conceptual or procedural competence, coached and practised in 
 
 *DE: Sich merken*
 
-A spaced-repetition goal for facts, vocabulary, notation, or selected formulas. It is mastered only when no required card is due **and** every required card has passed an unaided verified recall test.
+A spaced-repetition goal for facts, vocabulary, notation, or selected formulas. Controlled unaided recall (*Verified Recall*) across **all required cards** of a fully resolved deck establishes permanent goal mastery; subsequent SRS review due dates do not withdraw established mastery.
 
 ### Exam {unnumbered=true}
 
 *DE: Selbstständig Probleme lösen, Prüfungsknoten*
 
-A goal carrying `examData`: an independent assessment or practice task with a model solution and scoring scheme. `requires` gates access to the task and drives targeted remediation after an unsuccessful attempt.
+A goal carrying `examData`: an independent assessment or practice task with a model solution and scoring scheme. In the target model no `requires` edge points to an `Exam` goal (assessments are endpoints of prerequisite paths). Own recognition assessments of declared **units with assessments** (`coverageReviews`) substantiate independent application of own content goals under R1–R5, whereas standalone practice tasks and Abitur exams inside assessment-free outer units remain selectable as usual without triggering implicit recognition.
 
 ### `examData` and scoring {unnumbered=true}
 
@@ -58,31 +58,31 @@ SkillPilot separates five layers that older legacy graphs sometimes mixed:
 | Layer | Holds | Example |
 | --- | --- | --- |
 | Goal layer | assessable competences and content clusters | "lineare Funktionen verknüpfen" |
-| Program layer | structural units and learning units | `Jahrgang 8`, `E-Phase`, module, track, exam, learning unit |
-| Placement layer | links from goals into program units, including learning-unit ownership | "this goal belongs to Q1" |
+| Unit & program layer | canonical unit clusters, shared Land plan units, and `programUnits` | `SekI`/`SekII`, `Jahrgang 8`, `Q1`, subject unit |
+| Placement layer | Land-plan bindings (*carried in* vs. *placed in*) and `goalPlacements` | "carried in Q1, prepared at earliest need" |
 | Competency-axis layer | taxonomy entries | `K1 Mathematisch argumentieren` |
-| Composition-view layer | scope-specific learner-facing trees | `DE-BY / Gymnasium / SekII / Mathematik / LK` |
+| Projection & map layer | goal tree and learner map from Land plans / `.view.json` | `DE-BY / Gymnasium / G9 / SekII / Mathematik / LK` |
 :::
 
 ### Program unit {unnumbered=true}
 
 *DE: Programmeinheit* — see [View Projection and Goal Placement](repo:docs/concept/skill-graph/view-projection-and-goal-placement.md)
 
-An explicit structural container (year, semester, module, phase, track, exam section) forming an ordered tree via `parentUnitId` and `order`. A content goal must never be reused as a stand-in for a program unit. A `programUnits` entry of kind `learningUnit` declares a learning unit instead of a structural container (see below).
+An explicit organizational structural container (year, semester, module, phase, track, exam section) forming an ordered tree via `parentUnitId` and `order`. A content goal must never be reused as a stand-in for a program unit. Under compatibility contract 1.2, a `programUnits` entry of kind `learningUnit` temporarily declares a learning unit before subject units move to declared clusters after `F8`.
 
 ### Learning unit {unnumbered=true}
 
-*DE: Lerneinheit* — see [Learning Units](repo:docs/concept/skill-graph/learning-units.md) and [Optional Planning (§12)](repo:docs/concept/skill-graph/planning-and-budget.en.md)
+*DE: Lerneinheit* — see [Learning Units](repo:docs/concept/skill-graph/learning-units.md) and [Unit Ordering (§11.5)](repo:docs/concept/skill-graph/learning-unit-progression.md)
 
-A recursively composed educational whole with a stated learning outcome, motivational introduction, constituent goals or subunits, and a reviewed completion rule (`LearningUnit`). A year, semester, or arbitrary navigation cluster does not become a learning unit solely by grouping goals. Since the Product Owner decision of 12 November 2026, a learning unit is declared in the placement layer as a `programUnits` entry of kind `learningUnit` with learning promise and revision; it owns atomic goals through `goalPlacements` of relation `own` and names the unit that requires it as a child through `parentUnitId` ([field reference](repo:docs/dev/landscape-json-field-reference.md)).
+A recursively composed educational whole in the three-tier progression **Cluster $\to$ Unit $\to$ Unit with assessments**. In the binding target model, a subject unit is declared as a canonical cluster with a learning promise, `revision`, sibling `after` order, and optional `coverageReviews`; own goals (`Own(U)`) and direct child units derive from `contains`, and leaf subject units stay whole inside one plan unit across all 16 Bundesländer. Until migration (`F8`–`F11`), the three existing canonical units use compatibility contract 1.2 (`programUnits` of kind `learningUnit` with `own` placements and `parentUnitId`; see [field reference](repo:docs/dev/landscape-json-field-reference.md)).
 
-Each target has one direct acquisition owner in the resolved unit hierarchy; parent units aggregate descendants. Completion follows from required children and the unit's own goal-type obligations without a stored unit-mastery result. An open parent exam does not reopen completed child competencies, and passing a parent exam never passes protected child exams or cards. Effective competence remains global, and individual recognition can precede complete unit completion; it is only sound inside units that satisfy the validity rules R1–R5 of 11 November 2026 ([Graph Definition §13.3](repo:docs/concept/skill-graph/assessment-gated-completion.md#sec-why-graph-not-enough)). This revised concept is not yet implemented in the runtime; see also [Learning Unit Progression](repo:docs/concept/skill-graph/learning-unit-progression.md).
+Every unit obeys the ordering rules **E1–E4** without imposing technical access locks via `after`. Completion derives from child units and own obligations without a stored unit-mastery value. Implicit recognition of own content goals applies exclusively inside declared **units with assessments** (with own assessments and valid complete `coverageReviews`) satisfying R1–R5 ([Graph Definition §13.3](repo:docs/concept/skill-graph/assessment-gated-completion.md#sec-why-graph-not-enough)); runtime adaptation (`F12`/`F13`) remains pending.
 
 ### Goal placement {unnumbered=true}
 
 *DE: Zielplatzierung* — see [View Projection and Goal Placement](repo:docs/concept/skill-graph/view-projection-and-goal-placement.md)
 
-An entry attaching an unchanged goal to a program unit under a reviewed context (`primary`, `secondary`, `assessed`). A placement never re-parents the content `contains` tree and never creates a duplicate occurrence in the default tree. Relation `own` records, without context, that a learning unit directly owns an atomic goal; it attaches nothing to the program tree.
+An entry attaching an unchanged goal to a program unit under a reviewed context (`primary`, `secondary`, `assessed`). A placement never re-parents the content `contains` tree and never creates a duplicate occurrence in the default tree. Under compatibility contract 1.2, relation `own` temporarily records direct learning-unit ownership without attaching anything to the program tree.
 
 ### Competency axis {unnumbered=true}
 
@@ -135,7 +135,7 @@ The small set of contextual choices made before navigating content: school form,
 
 *DE: aufgelöster Kontext* — see [View Projection and Goal Placement](repo:docs/concept/skill-graph/view-projection-and-goal-placement.md)
 
-A fully determined combination such as `DE-HE / Gymnasium / SekII / Mathematik / LK`. Default trees, single-occurrence validity, and coverage checks are always evaluated relative to one resolved scope.
+A fully determined combination such as `DE-HE / Gymnasium / G9 / SekII / Mathematik / LK`. Default trees, single-occurrence validity, and coverage checks are always evaluated relative to one resolved scope.
 
 ### Default tree {unnumbered=true}
 
@@ -147,13 +147,19 @@ The single tree a learner sees for a resolved scope. Every visible edge comes fr
 
 *DE: Inhaltsbaum, Programmbaum, Kompetenzsicht* — see [View Projection and Goal Placement](repo:docs/concept/skill-graph/view-projection-and-goal-placement.md)
 
-The three classic view families, each with one structural source of truth (`contains` for content, `programUnits` + `goalPlacements` for program, `competencyCatalog` + `competencyRefs` for competency axes), complemented by the scope-specific composition view as the preferred learner-facing default.
+The three classic view families, each with one structural source of truth (`contains` for content, `programUnits` + `goalPlacements` for program, `competencyCatalog` + `competencyRefs` for competency axes), complemented by the scope-specific goal tree and learner map.
+
+### Goal tree and learner map {unnumbered=true}
+
+*DE: Lernzielbaum und Lernkarte* — see [View Projection and Goal Placement](repo:docs/concept/skill-graph/view-projection-and-goal-placement.md)
+
+Two coordinated presentations of the same resolved projection: the **goal tree** shows all structure nodes, units, non-unit clusters, and atomic goals. The **learner map** contracts all non-unit clusters along `contains`, displays units and atomic goals only (with subjects acting as filters), and draws arrows strictly between direct children of the opened unit from sibling `after` and crossing atomic `requires` without hiding backflows.
 
 ### `phase` {unnumbered=true}
 
 *DE: Phase* — see [Graph Definition](repo:docs/concept/skill-graph/graph-definition.md)
 
-Compatibility metadata (`E`, `Q1`–`Q4`, …) used for badges, filtering, or migration tooling. `phase` is explicitly **not** canonical graph semantics and never implies parentage.
+Compatibility metadata (`E`, `Q1`–`Q4`, …) used for badges, filtering, or provisional default assignments (`canonicalDefault`) while Land source evidence is absent. `phase` is explicitly **not** canonical graph semantics, substitutes for no source proof, and never implies parentage.
 
 ### `ALL` {unnumbered=true}
 

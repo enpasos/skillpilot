@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 > Source of truth: `app/public/data/goal-source-rationales-math-public.json`
 
-Generated: 2026-11-15T11:49:45.722Z
+Generated: 2026-11-16T06:43:42.355Z
 
 Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung schon skaliert. Er ist ein Status- und Arbeitslisten-Artefakt: offene Eintraege blockieren die Runtime nicht, machen aber sichtbar, welche Ziel- und Relationstexte noch aufgebaut werden muessen.
 
@@ -16,11 +16,11 @@ Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung sch
 
 | Metric | Value |
 | --- | --- |
-| Alle Mathematik-Ziele | 1262 |
-| Atomare Blattleernziele | 988 |
+| Alle Mathematik-Ziele | 1310 |
+| Atomare Blattleernziele | 1032 |
 | Davon relevant fuer Quellenbegruendung | 807 |
-| Memory-/Nicht-Content-Blattziele | 181 |
-| Clusterziele | 274 |
+| Memory-/Nicht-Content-Blattziele | 225 |
+| Clusterziele | 278 |
 | Runtime-Quellenbegruendungen | 754 |
 | Runtime-Ziele mit klassischem Quellenweg | 754 |
 | Runtime-Ziele mit MEM/FWU-konsistenter Route | 260 |
@@ -28,10 +28,10 @@ Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung sch
 | Relevante Blattziele mit MEM/FWU-konsistenter Route | 260/807 (32.2%) |
 | Relevante Blattziele ohne Runtime-Quellenbegruendung | 53 |
 | Relevante Blattziele mit Runtime-Classic-Gap | 0 |
-| Cluster mit direkter Runtime-Quellenbegruendung | 0/274 |
-| Cluster ohne direkte Runtime-Quellenbegruendung | 274 |
-| contains-Relationen mit Begruendungstext | 0/1397 |
-| requires-Relationen mit Begruendungstext | 0/1576 |
+| Cluster mit direkter Runtime-Quellenbegruendung | 0/278 |
+| Cluster ohne direkte Runtime-Quellenbegruendung | 278 |
+| contains-Relationen mit Begruendungstext | 0/1444 |
+| requires-Relationen mit Begruendungstext | 0/1604 |
 
 ## Interpretation
 
@@ -232,6 +232,7 @@ Weitere 414 Eintraege stehen in der JSON-Begleitdatei.
 | Abstände und Längen im Raum (Bestands-ID) | Q2 | unknown | - | Abstände und Längen im Raum (Bestands-ID) |
 | Abstände, Beträge und Mittelpunkte im Raum (Bestands-ID) (canonical_math_sek1_j9_vector_distances_midpoints) | J9 | Geometry | CANONICAL.MATH.SEK1.J9.8C | Abstände, Beträge und Mittelpunkte im Raum (Bestands-ID) |
 | Bestände und Mittelwerte (Bestands-ID) | Q1 | unknown | - | Bestände und Mittelwerte (Bestands-ID) |
+| Erhaltene gemischte Prüfungsaufgaben ohne vollständigen Einzelzielnachweis (math_retained_mixed_assessments_20261115) | GLOBAL | unknown | - | Erhaltene gemischte Prüfungsaufgaben ohne vollständigen Einzelzielnachweis |
 | Mathematik (canonical_math_module) | GLOBAL | Mathematik | CANONICAL.MATH | Mathematik |
 | Abiturprüfung Mathematik (GK) (abi_gk_offer_2026) | Abitur | unknown | - | Mathematik > Abiturprüfung Mathematik (GK) |
 | Teil 1: Hilfsmittelfrei | Abitur | unknown | - | Mathematik > Abiturprüfung Mathematik (GK) > Teil 1: Hilfsmittelfrei |
@@ -288,9 +289,8 @@ Weitere 414 Eintraege stehen in der JSON-Begleitdatei.
 | Frühe Zahlvorstellungen und Zahlendarstellungen (canonical_math_sek1_early_number_representations) | GLOBAL | Arithmetic | CANONICAL.MATH.SEK1.EARLY.NUMBERS | Mathematik > Frühe Zahlvorstellungen und Zahlendarstellungen |
 | Funktionenscharen, Argumentieren und komplexe Zahlen | Q4 | unknown | - | Mathematik > Funktionenscharen, Argumentieren und komplexe Zahlen |
 | Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) (canonical_math_sek2_parameters_argumentation_complex) | GLOBAL | Analysis | CANONICAL.MATH.SEK2.PARAMETERS.ARGUMENTATION.COMPLEX | Mathematik > Funktionenscharen, Argumentieren und komplexe Zahlen > Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) |
-| Funktionenscharen und Parameteruntersuchungen (Sek II) (canonical_math_sek2_function_families_parameters) | GLOBAL | Analysis | CANONICAL.MATH.SEK2.FUNCTION_FAMILIES.PARAMETERS | Mathematik > Funktionenscharen, Argumentieren und komplexe Zahlen > Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) > Funktionenscharen und Parameteruntersuchungen (Sek II) |
 
-Weitere 214 Eintraege stehen in der JSON-Begleitdatei.
+Weitere 218 Eintraege stehen in der JSON-Begleitdatei.
 
 ## Sources
 

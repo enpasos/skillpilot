@@ -1,0 +1,141 @@
+{
+  "recordType": "independent-content-review",
+  "reviewer": "math-final-current-blind-d-20261115",
+  "reviewPass": "first-pass",
+  "firstPass": true,
+  "blindToOtherReviews": true,
+  "completedAt": "2026-11-15T16:38:35.018527+00:00",
+  "scopeStatement": "Only the named current-content-only.json, its two explicitly referenced original images and physical PDF pages 3/4 were read. No other review, native input, author evidence, complete canonical file, neighbour input or outside source was read. No other reviewer was contacted. Product files and Git were not modified.",
+  "inputs": [
+    {
+      "role": "current-content-only",
+      "path": "/home/enpasos/projects/skillpilot/tmp/math-v7-final-current2-activation-20261115/current-content-only.json",
+      "sha256": "b49dbdd220fde1618ec31888d8ee0bd799e90cadaa3c9265e158c8c023de7913"
+    },
+    {
+      "role": "actual-original-image",
+      "goalId": "78238608-aaaa-4d12-a9de-54f325e9cf6f",
+      "path": "/home/enpasos/projects/skillpilot/app/public/assets/goal-visualizations/mathematik/78238608-aaaa-4d12-a9de-54f325e9cf6f/78238608-aaaa-4d12-a9de-54f325e9cf6f.jpeg",
+      "sha256": "233c09ed4ad912ee126557fb5bf58cbc16d9dfd78512277f36af7e7c20221fef",
+      "visuallyInspected": true
+    },
+    {
+      "role": "actual-original-image",
+      "goalId": "f76d00dc-6b31-59cd-b01a-3610eadc9908",
+      "path": "/home/enpasos/projects/skillpilot/app/public/assets/goal-visualizations/mathematik/f76d00dc-6b31-59cd-b01a-3610eadc9908/f76d00dc-6b31-59cd-b01a-3610eadc9908.jpg",
+      "sha256": "3a875467d089ea2b0a1c949eb158833e5e549f59745fa66eb75b1ac4d0cee42e",
+      "visuallyInspected": true
+    },
+    {
+      "role": "actual-two-goal-pdf",
+      "path": "/home/enpasos/projects/skillpilot/tmp/math-v7-final-current2-activation-20261115/book-two-final.pdf",
+      "sha256": "761e376a368422acd916c967abb9327eae13b08c21a86dfef96c4479c995e10c",
+      "physicalPagesVisuallyInspected": [
+        3,
+        4
+      ]
+    }
+  ],
+  "contentCoverage": {
+    "completeBilingualTargetGoals": 2,
+    "completeBilingualEvidenceProfiles": 2,
+    "prerequisiteGoalTextsRead": 60,
+    "assessmentTasksSolutionsRubricsRead": 2,
+    "originalImagesVisuallyInspected": 2,
+    "physicalPDFPagesVisuallyInspected": [
+      3,
+      4
+    ]
+  },
+  "goals": [
+    {
+      "goalId": "78238608-aaaa-4d12-a9de-54f325e9cf6f",
+      "decision": "keep",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Für a>0, a≠1 und b≠0 verknüpft b den y-Achsenabschnitt und das Vorzeichen mit vertikaler Skalierung beziehungsweise Spiegelung. Die Basis entscheidet über die x-Richtung der Annäherung an 0; erst Basis und Vorzeichen von b gemeinsam entscheiden über strenges Steigen oder Fallen. Konstante Randfälle sind von nichtkonstantem exponentiellem Verhalten zu trennen.",
+        "essentialUnderstandingEn": "For a>0, a≠1 and b≠0, b connects the y-intercept and sign with vertical scaling or reflection. The base determines the x-direction of approach to zero; strict increase or decrease is determined jointly by the base and the sign of b. Constant boundary cases must be distinguished from nonconstant exponential behaviour.",
+        "observablePerformanceDe": "Die lernende Person leitet für positive und negative Vorfaktoren Definitions-/Wertebereich, Achsenabschnitt, Vorzeichen, beide Grenzrichtungen und Monotonie aus dem Term her, begründet die vier Regime für beliebige Eingabewertabstände, erstellt eigene verständliche Kurven und kontrolliert anschließend ihre Aussagen mit einer tatsächlich digitalen Darstellung einschließlich Vorzeichenwechsel.",
+        "observablePerformanceEn": "The learner derives domain/range, intercept, sign, both limiting directions and monotonicity from expressions with positive and negative coefficients, justifies the four regimes for arbitrary input differences, produces intelligible own curves and subsequently checks the predictions with an actual digital display including a coefficient-sign change.",
+        "transferExpectationDe": "Bei einer neuen Basis und einem neuen Vorfaktor muss dieselbe kohärente Merkmalskombination gelingen; die Auswahl eines Terms aus Graphmerkmalen und die Fehlerdiagnose bei negativen Vorfaktoren dürfen nicht durch Ablesen der mitgelieferten positiven Beispielkurven ersetzt werden.",
+        "transferExpectationEn": "The same coherent combination of features must work for a new base and coefficient; selecting an expression from graph features and diagnosing negative-coefficient errors must not be replaced by reading the supplied positive example curves."
+      },
+      "rationale": "Die vollständige DE/EN-Kompetenz ist eine zusammenhängende Parameter-zu-Graph-Kompetenz und muss nicht gespalten werden. Die 52 verschiedenen vorbereitenden Ziele liefern über lineare Graphen/Funktionswerte und Potenz-/Wurzelschreibweisen einen tragfähigen Einstieg; reale Exponentialgraphen und ihre Asymptotik werden hier als neuer Inhalt erworben. Die fünf Aufgabenblöcke erfassen positive/negative Lage, alle vier strengen Monotonierichtungen mit globaler Begründung, beide Grenzrichtungen, Definitions-/Wertebereich, inverse Zuordnung, konstante beziehungsweise unzulässige Fälle, beide eigenen Kurven und den verpflichtenden digitalen Parametervergleich. Die eigene Rechenkontrolle bestätigt insbesondere das leicht verwechselbare negative Zerfallsbasis-Regime. Kein ausdrücklich verlangter Kern kann gemäß schriftlicher Rubrik ausgelassen werden und dennoch 19/20 erreichen. Das existierende dreiteilige P ist für diesen Inhalt angemessen; kein zusätzliches P und keine fachliche P-Änderung ist nötig.",
+      "evidenceProfileRecommendation": "none",
+      "preparationFinding": {
+        "distinctPrerequisiteCount": 52,
+        "missingReferences": [],
+        "cycles": [],
+        "decision": "adequate for acquisition of the target content"
+      },
+      "assessmentFinding": {
+        "assessmentId": "64dafd7e-2f33-5987-a927-181b1c5f529d",
+        "blocks": 5,
+        "maximumPoints": 20,
+        "passingPoints": 19,
+        "oneMissingCoreMaximum": 18,
+        "noDigitalEvidenceMaximum": 16,
+        "missingEssentialDigitalComponentMaximum": 18,
+        "writtenRubricCoverage": "complete",
+        "serverEnforcementInspected": false
+      },
+      "bilingualParity": "Target title, description, P, task, solution and rubric are materially equivalent in DE/EN.",
+      "fairEquivalentAnswers": "The task and rubric accept learner-chosen correct check points, alternative suitable windows, any suitable graphing tool, separate or combined digital displays and intelligible sketches. A readable digital graph can carry multiple documentation items. The mathematical global justification may be phrased through arbitrary x<y, an arbitrary h>0, or an equivalent order/reflection argument; fixed sample values alone are insufficient.",
+      "visualFinding": "Original and PDF page 3 agree. The equal-scale positive examples have the correct intercept 3, f(-2)=0.75, f(1)=6, f(2)=12 and g(-2)=12, g(1)=1.5, g(2)=0.75. Growth/decay labels are tied to the displayed positive b=3, not stated as a universal rule for negative b. The teaching image is not sufficient as the learner digital submission. No content clipping or substantive plotting contradiction was observed."
+    },
+    {
+      "goalId": "f76d00dc-6b31-59cd-b01a-3610eadc9908",
+      "decision": "keep",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Ein überall strikt positives beziehungsweise negatives Ableitungsvorzeichen auf einem Intervall ist hinreichend für strenges Steigen beziehungsweise Fallen. Voraussetzung und Folgerung dürfen nicht vertauscht werden: differenzierbare streng monotone Funktionen können an einzelnen Stellen die Ableitung 0 haben.",
+        "essentialUnderstandingEn": "A derivative that is strictly positive or strictly negative throughout an interval is sufficient for strict increase or strict decrease. Premise and conclusion must not be reversed: differentiable strictly monotone functions may have derivative zero at individual points.",
+        "observablePerformanceDe": "Die lernende Person formuliert beide hinreichenden Implikationen, prüft bei einem abgeschlossenen Beispielintervall zusätzlich Stetigkeit und innere Differenzierbarkeit, beweist die strenge kubische Monotonie unabhängig von der falschen Umkehrung und widerlegt beide strikten Umkehrungen am Ableitungswert 0.",
+        "observablePerformanceEn": "The learner states both sufficient implications, additionally checks continuity and interior differentiability on a closed example interval, proves strict cubic monotonicity independently of the false converse and refutes both strict converses using a zero derivative.",
+        "transferExpectationDe": "Die logische Prüfung muss auch nach Vorzeichen-Spiegelung funktionieren. Eine waagerechte Tangente ist dabei anhand beliebig naher Funktionswerte von einem lokalen Extremum zu unterscheiden; ein isolierter Ableitungswert erlaubt keine globale Monotonieaussage.",
+        "transferExpectationEn": "The logical check must also work after sign reflection. A horizontal tangent must be distinguished from a local extremum using arbitrarily nearby function values; an isolated derivative value does not establish global monotonicity."
+      },
+      "rationale": "Die Satzrichtung und die Prüfung ihrer behaupteten strikten Umkehrung bilden eine fachlich kohärente logische Kompetenz. Die 56 verschiedenen Voraussetzungen enthalten den Ableitungsbegriff, die elementaren Regeln und zuvor bearbeitete Monotonie/Extremwerte quadratischer Funktionen; eine zirkuläre Voraussetzung des zu lernenden Satzes liegt im Pack nicht vor. Die Aufgaben prüfen beide Vorzeichenrichtungen tatsächlich an ±x² auf [1,3], liefern einen nichtzirkulären strengen Monotoniebeweis für x³, verlangen die entscheidende Nullstelle der Ableitung und übertragen die Gegenbeispielprüfung auf −x³. Die Nebenprüfung zum fehlenden Extremum verhindert eine typische Fehlvorstellung. Die eigenen algebraischen Belege bestätigen Satz und Gegenfälle. Jeder notwendige Blockkern ist über die 2/4-Obergrenze bei fehlendem Kern und 19/20 Bestehensgrenze nicht kompensierbar. Das bestehende zweiteilige P benennt die beiden wesentlichen Verständnisse bereits angemessen.",
+      "evidenceProfileRecommendation": "none",
+      "preparationFinding": {
+        "distinctPrerequisiteCount": 56,
+        "missingReferences": [],
+        "cycles": [],
+        "decision": "adequate for acquisition of the target content"
+      },
+      "assessmentFinding": {
+        "assessmentId": "d143245a-a423-5699-bf00-4c520cd64b86",
+        "blocks": 5,
+        "maximumPoints": 20,
+        "passingPoints": 19,
+        "oneMissingCoreMaximum": 18,
+        "writtenRubricCoverage": "complete",
+        "serverEnforcementInspected": false
+      },
+      "bilingualParity": "Target title, description, P, task, solution and rubric preserve both sign directions, interval assumptions and both failed strict converses in DE/EN.",
+      "fairEquivalentAnswers": "The supplied cubic factorisation is optional material, not the sole valid method. A mathematically complete independent order argument or a correct theorem-based proof that handles the isolated derivative zero is equivalent; neither an unsupported appeal to f_prime≥0 nor the false strict converse proves strictness. The requested decreasing transfer may use sign reflection of the already proved increase. For the extremum check, ±epsilon for every epsilon>0 is a valid concise answer; a single distant sample pair alone is not a local proof.",
+      "visualFinding": "Original and PDF page 4 agree. The illustration states both sufficient derivative-sign implications and displays x³ with derivative 3x² and the horizontal tangent at 0. The implication direction and increasing counterexample are correct. The falling non-converse is supplied and assessed in the complete bilingual text even though the illustration uses only the increasing counterexample. No substantive mathematical error or clipping was observed."
+    }
+  ],
+  "crossCuttingObservations": [
+    {
+      "severity": "nonblocking-editorial",
+      "goalId": "65365dce-f33f-49d8-9516-42f75883aa86",
+      "finding": "The English description of this distant orientation prerequisite omits the final German explanation that the entry concerns orientation/interest and neither requires nor tests detailed subject knowledge. This is a real local parity omission in the supplied preparation text, but it changes neither of the two reviewed mathematical target competencies nor their assessment coverage. No revision of either target P is recommended for it."
+    },
+    {
+      "severity": "scope-limit",
+      "finding": "The packet contains source/applicability metadata, but no external official curriculum or alignment source was permitted for this blind pass. This report therefore does not independently verify official-source attribution or all-Land placement."
+    },
+    {
+      "severity": "scope-limit",
+      "finding": "The review checks authored assessment content and scoring instructions. It does not certify runtime enforcement, executed fresh variation, actual learner mastery, main integration, CI or activation. Those technical bindings and decisions belong to the integrator."
+    }
+  ],
+  "supportingArtifacts": [
+    "independent-calculations.py",
+    "independent-calculations.json",
+    "report.md",
+    "pdf-page-3.png",
+    "pdf-page-4.png"
+  ],
+  "activationClaimed": false
+}

@@ -276,3 +276,20 @@ curricula/DE/Gymnasium/quality/assessment-review/mathematik/diagram-route-repair
 # Sealed K2 native knowledge-context captures retain renderer blank lines at EOF.
 curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/k2-elementary-representations-current-v1/native-current-contexts/*.md -text -whitespace
 curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/k2-elementary-representations-current-v1/review-evidence/candidate/native-contexts/*.md -text -whitespace
+# Reviewed assessment stimuli retain their exact generator bytes and CSV line endings.
+app/public/assets/assessment-materials/mathematik/sine-cosine-basic-functions-20261115-v1/basic-functions-unlabelled.svg -text -whitespace
+app/public/assets/assessment-materials/physik/k6-measurement-rate-20261115-v3/projectile-fit-transfer.csv -text whitespace=cr-at-eol
+# Preserve the CIE source metadata's exact reviewed CRLF response bytes.
+curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/physics-q1-acquisition-current-v1/three-material-author/CIE_xyz_1931_2deg.csv_metadata.json -text -whitespace
+
+# Preserve sealed assessment SVGs and captured review/patch bytes exactly.
+app/public/assets/assessment-materials/physik/39ef1e8a-9203-5192-8c76-8e0c3322646f/cie1931-color-matching.svg -text -whitespace
+app/public/assets/assessment-materials/physik/f06c581a-7157-584e-a692-99bcd613cff9/spectrum-components.svg -text -whitespace
+app/public/assets/assessment-materials/physik/f06c581a-7157-584e-a692-99bcd613cff9/spectrum-filter-input.svg -text -whitespace
+contracts/stage-plan-review-evidence/2026-11-15/documentation-critique-review-v1/build-review/post-review-own-macro.patch -text -whitespace
+contracts/stage-plan-review-evidence/2026-11-15/documentation-critique-review-v1/sol-source-review/source-review.patch -text -whitespace
+contracts/stage-plan-review-evidence/2026-11-15/documentation-critique-review-v1/whitepaper-text.diff -text -whitespace
+curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-15/q1-whole-current-context10-refined-v2/reviewer-evidence/a/review-explanation.md -text -whitespace
+curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-15/q1-whole-current-context18-v1/reviewer-evidence/a/review-explanation.md -text -whitespace
+curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/physics-q1-acquisition-current-v1/three-material-author/build_proposal.py -text -whitespace
+curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/physics-q1-acquisition-current-v1/three-material-author/build_tasks.py -text -whitespace

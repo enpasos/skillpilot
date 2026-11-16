@@ -1,0 +1,39 @@
+{
+  "recordedAt": "2026-11-15T10:01:13.937933+00:00",
+  "attempts": [
+    {
+      "command": "python3 scripts/build_compendia.py --compendium skill-graph --compendium skill-graph-architecture --compendium glossary --all",
+      "exitCode": 1,
+      "reason": "Local TeX installation lacks luaotfload-main; no PDF acceptance from this attempt.",
+      "log": "initial-missing-tex-dependency.actual.json"
+    },
+    {
+      "command": "python3 scripts/build_compendia.py --compendium skill-graph --compendium skill-graph-architecture --compendium glossary --all --texmf tmp/skill-graph-document/tex-dependencies-20261104/extracted/usr/share/texlive/texmf-dist",
+      "exitCode": 0,
+      "webPages": 44,
+      "pdfs": 6,
+      "passesPerPdf": 3,
+      "reportedOverflowsOrWarnings": 0,
+      "log": "full-compendia-build.actual.txt"
+    }
+  ],
+  "buildManifests": [
+    {
+      "source": "docs/concept/skill-graph/skillpilot-graph-definition.build.json",
+      "copy": "integrated-validation/skillpilot-graph-definition.build.json",
+      "sha256": "3c6dda44bf9c9fd470862709c4519ea5187f910f6839241732f0b4603cfbe581"
+    },
+    {
+      "source": "docs/concept/skill-graph/skillpilot-skill-graph-architecture.build.json",
+      "copy": "integrated-validation/skillpilot-skill-graph-architecture.build.json",
+      "sha256": "d86e82f297a8182b2205c8612ba1bda993c961c791cc47bd181d5b1e57c1e58c"
+    },
+    {
+      "source": "docs/concept/skillpilot-glossary.build.json",
+      "copy": "integrated-validation/skillpilot-glossary.build.json",
+      "sha256": "e2232f18c22b3b42d28d980cdc513a800b7a205b4774e0109fb21da3aa265bce"
+    }
+  ],
+  "remoteCiClaim": false,
+  "learnerEffectivenessClaim": false
+}

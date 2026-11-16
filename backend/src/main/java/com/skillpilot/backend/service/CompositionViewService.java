@@ -3,6 +3,7 @@ package com.skillpilot.backend.service;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.composition.CourseProfileCompositionViewMerger;
+import com.skillpilot.backend.composition.StagePlanRuntimeIndex;
 import com.skillpilot.backend.curriculumpackage.PackageCompositionViewState;
 import com.skillpilot.backend.landscape.LandscapeProperties;
 import com.skillpilot.backend.landscape.LearningGoal;
@@ -23,8 +24,11 @@ import java.util.Set;
 import java.util.stream.Stream;
 import java.util.function.Supplier;
 import org.springframework.util.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class CompositionViewService {
+    private static final Logger LOG = LoggerFactory.getLogger(CompositionViewService.class);
 
     private static final Path COMPOSITION_VIEW_ROOT = Path.of("DE", "Gymnasium", "composition-views");
     private static final TypeReference<Map<String, Object>> MAP_TYPE = new TypeReference<>() {
@@ -56,6 +60,7 @@ public class CompositionViewService {
     private final PackageCompositionViewState packageState;
     private final Supplier<Map<String, List<String>>> canonicalGraphSupplier;
     private volatile RepositoryViewIndex repositoryViewIndex;
+    private volatile StagePlanRuntimeIndex stagePlanRuntimeIndex;
     private final Object mergedViewCacheLock = new Object();
     private final Map<List<Map<String, Object>>, List<Map<String, Object>>> mergedViewRoots =
             new LinkedHashMap<>(16, 0.75f, true);
@@ -522,6 +527,12 @@ public class CompositionViewService {
         if (matches.isEmpty()) {
             return null;
         }
+        // An activated plan is the placement authority for its explicit scope.
+        // Its generated projection supersedes compatibility views of that scope;
+        // mixing both trees would duplicate placements in a combined course.
+        if (matches.stream().anyMatch(match -> stagePlanRuntimeIndex().owns(asString(match.view().get("viewId"))))) {
+            matches = matches.stream().filter(match -> stagePlanRuntimeIndex().owns(asString(match.view().get("viewId")))).toList();
+        }
 
         if (isCombinedCourseProfileRequest(normalizedRequestedScope)) {
             MatchScore bestScore = matches.get(0).score();
@@ -532,11 +543,11 @@ public class CompositionViewService {
                     .map(ViewMatch::view)
                     .toList();
             if (mergeCandidates.size() > 1 && bestScore.courseFallbackCount() > 0) {
-                return mergeViews(landscapeId, requestedScope, mergeCandidates);
+                return stagePlanRuntimeIndex().bind(mergeViews(landscapeId, requestedScope, mergeCandidates), normalizedRequestedScope);
             }
         }
 
-        return Collections.unmodifiableMap(new LinkedHashMap<>(matches.get(0).view()));
+        return deepFreezeMap(stagePlanRuntimeIndex().bind(matches.get(0).view(), normalizedRequestedScope));
     }
 
     private static boolean hasExactLearnerAnchorScope(
@@ -715,6 +726,27 @@ public class CompositionViewService {
         }
     }
 
+    private StagePlanRuntimeIndex stagePlanRuntimeIndex() {
+        StagePlanRuntimeIndex current = stagePlanRuntimeIndex;
+        if (current != null) return current;
+        synchronized (this) {
+            current = stagePlanRuntimeIndex;
+            if (current == null) {
+                try {
+                    current = new StagePlanRuntimeIndex(Path.of(properties.getDirectory()), objectMapper);
+                } catch (IllegalStateException error) {
+                    // Plan metadata is optional presentation, never permission to
+                    // make state/results unreadable (owner decision 11 November).
+                    // The strict reader and materialization checks still reject it.
+                    LOG.warn("STAGE_PLAN_INDEX_UNAVAILABLE: {}; compatibility views remain readable without declared plan metadata", error.getMessage());
+                    current = StagePlanRuntimeIndex.unavailable(Path.of(properties.getDirectory()), objectMapper);
+                }
+                stagePlanRuntimeIndex = current;
+            }
+            return current;
+        }
+    }
+
     private RepositoryViewIndex loadRepositoryViewIndex() {
         Path baseDir = Path.of(properties.getDirectory()).resolve(COMPOSITION_VIEW_ROOT);
         if (!Files.isDirectory(baseDir)) {
@@ -740,9 +772,7 @@ public class CompositionViewService {
                                 normalizeValue(asString(view.get("landscapeId"))),
                                 ignored -> new ArrayList<>())
                         .add(view);
-                mutableByViewId.putIfAbsent(
-                        normalizeValue(asString(view.get("viewId"))),
-                        view);
+                mutableByViewId.putIfAbsent(normalizeValue(asString(view.get("viewId"))), view);
             }
             Map<String, List<Map<String, Object>>> byLandscapeId =
                     new LinkedHashMap<>();
@@ -760,7 +790,7 @@ public class CompositionViewService {
         try {
             Map<String, Object> view = objectMapper.readValue(path.toFile(), MAP_TYPE);
             validateProjectionRoles(view.get("rootNodes"), path, "rootNodes");
-            return view;
+            return stagePlanRuntimeIndex().instrument(path, view);
         } catch (IOException e) {
             throw new IllegalStateException("Failed to parse composition view " + path, e);
         }

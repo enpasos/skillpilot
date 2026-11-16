@@ -10,7 +10,7 @@ $$
 \mathcal G=(G,C,R),\qquad C,R\subseteq G\times G.
 $$
 
-$G$ ist die Menge der Lernziele. $C$ steht für `contains`: Ein Ziel enthält ein anderes. $R$ steht für `requires`: Ein Ziel setzt ein anderes voraus. Es gibt genau diese beiden *ausdrücklich verfassten* Kantenarten im Skill-Graphen; nur sie werden von Autorinnen und Autoren gespeichert. Abgeleitete Relationen, curriculare Platzierungen, Quellenzuordnungen und Nachweise sind andere Modellschichten.
+$G$ ist die Menge der Lernziele. $C$ steht für `contains`: Ein Ziel enthält ein anderes. $R$ steht für `requires`: Ein Ziel setzt ein anderes voraus. Es gibt genau diese beiden *ausdrücklich verfassten* Kantenarten im Skill-Graphen; nur diese beiden werden im Zielkern gespeichert. Die Einheitenschicht erklärt daneben `after` in ihrem eigenen Vertrag. Abgeleitete Relationen, curriculare Platzierungen, Quellenzuordnungen und Nachweise sind andere Modellschichten.
 
 Ein Paar $(x,y)$ ist gerichtet. Für jede Relation $X$ auf $G$ bezeichnet
 
@@ -27,6 +27,10 @@ $k\xrightarrow{\mathtt{contains}}c$: Der Cluster $k$ enthält das Ziel $c$. $g\x
 :::
 
 ::figure{id="fig:overview"}
+
+
+
+Daneben wird in der Einheitenschicht `after` ausdrücklich erklärt (Abschnitt~@ref{sec:unit-progression}): `U after V` ordnet den gesamten Umfang von U nach dem von V, ohne fachlichen Bedarf zu behaupten. Diese Relation ist weder eine zusätzliche `requires`-Kante noch eine Lernergebnisart. `requires` ist die besondere atomare Reihenfolge, die zusätzlich Bedarf ausdrückt. Ein `after` verändert weder Frontier noch Voraussetzungsabschluss, Fortschrittsnenner oder Mastery. Im verbindlichen Zielmodell zeigt keine Voraussetzung auf ein Prüfungsziel; vorhandene Gegenbeispiele sind fachlich zu reparierende Befunde, keine bereits behobenen Daten.
 
 ### Attribute und stabile Identität {#sec:core-attributes}
 
@@ -233,7 +237,7 @@ Seit dem 11. November 2026 führt `CQR-001` im [Statusgenerator](repo:app/script
 
 Die vorausgehende CQR/GVR-Basishärtung ist seit dem 13. November 2026 über [PR #131](https://github.com/enpasos/skillpilot/pull/131) auf `main`. Der spätere Integrationsstand `2129b207f4` bestand nach den Folgeänderungen am eingefrorenen Reviewnachweis und der Mathematikprüfung alle 14 Jobs von [CI #2315](https://github.com/enpasos/skillpilot/actions/runs/43398052180). Der [Liefernachweis](repo:docs/dev/cqr-gvr-hard-gate-plan-2026-11-12.md) hält die getrennten PR- und Main-Läufe fest. Damit ist die technische Durchsetzung im jeweiligen Prüfumfang belegt; die vier fehlenden Sichtbarkeitsscopes von `CQR-104` und die fachliche Erweiterung von `GVR-012` bleiben offen. Diese QA-Evidenz belegt weder menschliche Erprobung noch die Umsetzung weitergehender Laufzeitverträge.
 
-**Aktueller Kandidat:** Die Folgearbeiten stehen in [PR #141](https://github.com/enpasos/skillpilot/pull/141) auf der aktualisierten Main-Basis `2ad03c810c` und sind noch nicht auf main integriert. Die neue Bilanz 12 HART / 50 TEIL / 55 OFFEN / 28 OPT/DOK und `GVR-012` mit vier direkt verpflichtenden Scopes im Inventar von zwölf beschreiben diesen lokal geprüften Kandidaten. Die lokale Evidenz steht im [Folgearbeitsnachweis](repo:docs/dev/cqr-gvr-hard-gate-plan-2026-11-12.md); abschließende Remote-CI und Main-Abnahme sind hier nicht als abgeschlossen ausgewiesen. Die historische CI #2315 gilt ausschließlich für ihren damaligen Stand.
+**Historischer Auditstand, 13. November 2026:** Die Folgearbeiten stehen in [PR #141](https://github.com/enpasos/skillpilot/pull/141) auf der aktualisierten Main-Basis `2ad03c810c` und sind noch nicht auf main integriert. Die neue Bilanz 12 HART / 50 TEIL / 55 OFFEN / 28 OPT/DOK und `GVR-012` mit vier direkt verpflichtenden Scopes im Inventar von zwölf beschreiben diesen lokal geprüften Kandidaten. Die lokale Evidenz steht im [Folgearbeitsnachweis](repo:docs/dev/cqr-gvr-hard-gate-plan-2026-11-12.md); abschließende Remote-CI und Main-Abnahme sind hier nicht als abgeschlossen ausgewiesen. Die historische CI #2315 gilt ausschließlich für ihren damaligen Stand.
 
 Die Ownerentscheidung vom 13. November 2026 legt für die Einstufung aller `GD-*`-Regeln den kanonischen Gymnasialkatalog mit 21 Wurzeln fest. Pflichten ab M5, M6 oder M7 werden gegen ihre jeweilige Schwelle geprüft; aktuell sind zehn Fächer auf M6/M7 gebunden, davon fünf auf M7. Nichtkanonische Landschaften sind außerhalb dieses Arbeitsprogramms. Eine harte Einstufung verlangt weiterhin die vollständige Durchsetzung aller Teilpflichten der Zeile: offene Laufzeitverträge, semantische Routenlücken und allgemeine Prüfungsdeckung werden durch die Bereichsentscheidung nicht geschlossen.
 

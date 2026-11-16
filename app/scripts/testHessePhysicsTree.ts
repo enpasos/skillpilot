@@ -226,10 +226,20 @@ for (const profile of ['GK', 'LK'] as const) {
   assert.equal(stage.label, `Sekundarstufe II (${profile})`)
   assert.equal(stage.labelEn, 'Upper Secondary',
     'Shared English metadata must not conflict when the backend merges GK and LK.')
-  assert.deepEqual(view.rootNodes.filter((node) => node.kind === 'structure'), [stage],
-    'Pure Hessen Sek II must have one visible stage wrapper, not supplemental root siblings.')
+  // Retained support-only wrappers are authoring records, not visible stage
+  // siblings. The materialized root is checked below; an extra target wrapper
+  // must still fail instead of being silently exempted with the support records.
+  const supportWrappers = view.rootNodes.filter((node) => node.kind === 'structure' && node !== stage)
+  for (const wrapper of supportWrappers) {
+    assert(wrapper.kind === 'structure')
+    const references = flatten(wrapper.children).filter((node) => node.kind !== 'structure')
+    assert(references.length > 0 && references.every((node) => node.projectionRole === 'prerequisiteOnly'),
+      `${view.viewId}: additional root wrappers may contain only explicit prerequisite-only references.`)
+  }
   assert.deepEqual(stage.children.filter((node) => node.kind === 'structure').map((node) => node.id),
-    ['physics-e-phase', 'physics-q1', 'physics-q2', 'physics-q3', 'physics-q4'])
+    ['physics-e-phase', 'physics-q1', 'physics-q2', 'physics-q3', 'physics-q4',
+      'physics-methods-k3-upper-preparation-assessments'],
+    'Keep the reviewed E/Q order and the explicit upper-stage preparation tasks; no official phase is invented for them.')
 
   for (const [childId, parentId] of destinations) {
     assert(structure(view, parentId).children.includes(structure(view, childId)),
@@ -242,6 +252,11 @@ for (const profile of ['GK', 'LK'] as const) {
 
   const projected = project(view)
   const goalById = new Map(projected.goals.map((goal) => [goal.id, goal]))
+  for (const wrapper of supportWrappers) {
+    assert(wrapper.kind === 'structure')
+    assert(!projected.goals.some((goal) => goal.extendedData?.compositionNodeId === wrapper.id),
+      `${view.viewId}: a support-only wrapper must not materialize as a learner unit.`)
+  }
   const projectedExercises = projected.goals.find((goal) => goal.extendedData?.compositionNodeId === exercises.id)
   assert(projectedExercises, 'The authored Q4 exercise section must be materialized in the learner tree.')
   const exerciseDescendants = new Set<string>()

@@ -50,7 +50,7 @@ public class PackageCurriculumResourceController {
         return versioned(resourceState.resolveResource(packageId, packageVersion, resourceId));
     }
 
-    @GetMapping({"/ai-assets/**", "/assets/goal-visualizations/**"})
+    @GetMapping({"/ai-assets/**", "/assets/goal-visualizations/**", "/assets/assessment-materials/**"})
     public ResponseEntity<Resource> getPublicAsset(HttpServletRequest request) {
         String publicUrl = extractPublicUrl(request);
         if (publicUrl == null) {
@@ -92,6 +92,8 @@ public class PackageCurriculumResourceController {
                 .eTag('"' + artifact.sha256() + '"')
                 .contentLength(bytes.length)
                 .contentType(MediaType.parseMediaType(artifact.mediaType()))
+                .header("X-Content-Type-Options", "nosniff")
+                .header("Content-Security-Policy", "default-src 'none'; style-src 'unsafe-inline'; sandbox")
                 .body(resource);
     }
 
@@ -103,7 +105,8 @@ public class PackageCurriculumResourceController {
         if (pathWithinMapping == null || bestMatchPattern == null) {
             return null;
         }
-        if (pathWithinMapping.startsWith("/assets/goal-visualizations/")) {
+        if (pathWithinMapping.startsWith("/assets/goal-visualizations/")
+                || pathWithinMapping.startsWith("/assets/assessment-materials/")) {
             return pathWithinMapping;
         }
         if (!pathWithinMapping.startsWith("/ai-assets/")) {

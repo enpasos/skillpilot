@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: Apache-2.0
 import type { LearningGoal, SkillLandscape } from '../../src/landscapeTypes'
+import { buildRouteCatalogContext } from './routeCatalogContext'
 
 export interface DirectAtomicRouteProfile {
   motivationAnchorGoalIds: string[]
@@ -8,7 +9,9 @@ export interface DirectAtomicRouteProfile {
 }
 
 /** CQR-102 reachability only. This does not claim GVR-012 semantic route order. */
-export function evaluateDirectAtomicRouteCoverage(landscape: SkillLandscape, profile: DirectAtomicRouteProfile) {
+export function evaluateDirectAtomicRouteCoverage(landscape: SkillLandscape, profile: DirectAtomicRouteProfile, canonicalCatalog?: readonly SkillLandscape[]) {
+  const ownGoalIds = new Set(landscape.goals.map(goal => goal.id))
+  if (canonicalCatalog) landscape = buildRouteCatalogContext(landscape, canonicalCatalog).landscape
   const goals = new Map(landscape.goals.map(goal => [goal.id, goal]))
   const atomic = (goal: LearningGoal) => !goal.contains?.length
   const terminal = (goal: LearningGoal | undefined): goal is LearningGoal => !!goal && atomic(goal)
@@ -60,7 +63,7 @@ export function evaluateDirectAtomicRouteCoverage(landscape: SkillLandscape, pro
   const terminalGoalIds = profile.terminalAutonomyClusterIds.flatMap(id => goals.get(id)?.contains ?? [])
     .map(id => goals.get(id)).filter(terminal)
     .map(goal => goal.id)
-  const selectedGoals = landscape.goals.filter(profile.goalSelector)
+  const selectedGoals = landscape.goals.filter(goal => ownGoalIds.has(goal.id) && profile.goalSelector(goal))
   if (!selectedGoals.length) configurationIssues.push('No selected atomic route goals.')
   for (const goal of selectedGoals) if (!atomic(goal)) configurationIssues.push(`Selected route goal is not atomic: ${goal.id}`)
   for (const id of duplicates(terminalGoalIds)) configurationIssues.push(`Duplicate atomic terminal endpoint: ${id}`)

@@ -1,0 +1,763 @@
+{
+  "at": "2026-11-15T18:45:04.062404+00:00",
+  "reviewer": "root; actual independent reading of all eight retained task, solution and scoring bodies against current complete German goal statements",
+  "kind": "bounded current content disposition; not classroom validation, blind D review or native gate acceptance",
+  "inputPins": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+      "sha256": "1ab730054209aa710b34e852bf3eab4f84e16f348b003fcaba6e2b2988c6b2b1"
+    },
+    {
+      "path": "tmp/physics-q1-successor-integration-20261115/canonical.candidate.json",
+      "sha256": "d0ff49b423af679233a19be8b6e3e77925ce47a05844608d1cb302b03e8895d5"
+    },
+    {
+      "path": "tmp/physics-release809-20261115/q1-whole-goal-review-priorities.actual.json",
+      "sha256": "b586255f3d43f010204b2f901f2235d67c15ebf496ded6c3aa41e38d8d8f3d77"
+    },
+    {
+      "path": "tmp/physics-q1-current-acquisition-20261115-v3/content-candidate.json",
+      "sha256": "9bf270c86a09fd40cfe577fc7a0bf11c1016be95faccc62315adbc62c028a3b9"
+    }
+  ],
+  "canonicalCatalogPins": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+      "sha256": "0de1cfc92fd15d6633575f6f1da9aa78027feec4383e45f50ca738744977fe5e",
+      "goals": 484
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+      "sha256": "e29c271e797956c4679e211034b6ad83a0e5a45ef1da25f3d39166657eaf4b5d",
+      "goals": 742
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHINESISCH.de.json",
+      "sha256": "6ec98972436881fa0593838493c0aa098afe508fa6dde063e1aa1d2b80563d76",
+      "goals": 192
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_DEUTSCH.de.json",
+      "sha256": "707fdcfd8fea3cffed4435d7d8da6637d6babd396e5697c7a4364a86b32c3142",
+      "goals": 354
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_ENGLISCH.de.json",
+      "sha256": "499e35f99df208be1a9a55958d1b5654d25785390f62f39c47817642024e9b2d",
+      "goals": 130
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_FRANZOESISCH.de.json",
+      "sha256": "39422cfdea218d3b1e925aae539315038d8b223d1b837b9ac1f8931fb81d2b4c",
+      "goals": 331
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_GESCHICHTE.de.json",
+      "sha256": "a2701a5dce37546c6b90b0306801767241de6269fd76f736d9db306225784fa7",
+      "goals": 217
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_GRIECHISCH.de.json",
+      "sha256": "d9ab127073034c0df30dea5df21345118325b20bd80ccffa72aeb1013bcb8709",
+      "goals": 198
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+      "sha256": "ea83b25661d5fcdd5f6aacabbe2fb193b9074457cf7e8022dc6914a5ea0adfb4",
+      "goals": 282
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_ITALIENISCH.de.json",
+      "sha256": "1ae4bebedc761be3c7a572c6b31dd82c7bb5bef893a15fc5b593bb57db7c1ef0",
+      "goals": 8
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_LATEIN.de.json",
+      "sha256": "f9dc6081ede69dab7f856bed3d7b28c803a8d40376c069b30dd2bf3924a9b33c",
+      "goals": 176
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "sha256": "306eeed52f6b0b1059264ccb1d4ea23227dd3ddff4d19f2a1ca096511d65a149",
+      "goals": 1310
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MUSIK.de.json",
+      "sha256": "214baa8ea209ef2ff0f7d28861cccedce4226a491ef6f5a903417580a4c1b7dc",
+      "goals": 76
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_OVERVIEW.de.json",
+      "sha256": "9c9acd716ca0a4e4bae3a020f93cd180ddb639390783be72a912d94f1cd9a1cf",
+      "goals": 1
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+      "sha256": "1ab730054209aa710b34e852bf3eab4f84e16f348b003fcaba6e2b2988c6b2b1",
+      "goals": 809
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLITIKWIRTSCHAFT.de.json",
+      "sha256": "1227445d498ab26138fc0dbb81cbe4138c40380d8f61d222b88bfeba58969cb7",
+      "goals": 512
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLNISCH.de.json",
+      "sha256": "be6bfaf34f64c93f2723d0532bcffe218e725248d32ace8be9073f52bbdd9b68",
+      "goals": 5
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_RUSSISCH.de.json",
+      "sha256": "f085a7023c9f65ebcc27ea8f4fcd4c15a29987b2eaa3afc1a61d1c28f9bd0bc9",
+      "goals": 8
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_SPANISCH.de.json",
+      "sha256": "5dc31897813aa32f3bfca8e397b82a6e179d3547af18ddea82ae39df27990a5c",
+      "goals": 83
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_TSCHECHISCH.de.json",
+      "sha256": "91037164f5cfda3d3fd5ae805312fa99c58692334225009f623ce67c5fbee41f",
+      "goals": 5
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+      "sha256": "a9d9bb678fc6f124bbdc102eec9cec2315913f5c837bcae5fd8f4bfa940a05a7",
+      "goals": 702
+    }
+  ],
+  "rows": [
+    {
+      "id": "5e64eacd-5204-5028-af23-02a43377c56e",
+      "title": "RC-Kreis und Dielektrika modellieren",
+      "originalExamDataSha256CanonicalJson": "b020102a56779db4c8472d62771c3bf336ba587987343747d11150d0717871b6",
+      "wholeGoalClaimsWithdrawn": [
+        "73b309ed-1aab-5778-8494-d9b65f5a352b",
+        "09f2cdbd-64e0-55d2-ada7-1190f4fd50df",
+        "330808f6-789a-583d-86df-e271a7683d8b"
+      ],
+      "currentWholeGoalTexts": [
+        {
+          "id": "73b309ed-1aab-5778-8494-d9b65f5a352b",
+          "title": "Polarisation und Dielektrika deuten",
+          "description": "Die lernende Person kann Polarisation in Nichtleitern erklären und materialabhängige Permittivität in Berechnungen nutzen."
+        },
+        {
+          "id": "09f2cdbd-64e0-55d2-ada7-1190f4fd50df",
+          "title": "Methode: Lösungsansatz für DGL (Exponentialfunktion)",
+          "description": "Die lernende Person kann bei einfachen physikalischen Differenzialgleichungen, in denen die Änderungsrate proportional zur Zustandsgröße ist (z. B. bei der RC-Entladung), einen passenden Exponentialansatz wählen und durch Ableiten prüfen, ob er die Differenzialgleichung und die Anfangsbedingung erfüllt."
+        },
+        {
+          "id": "330808f6-789a-583d-86df-e271a7683d8b",
+          "title": "Differenzialgleichung des RC-Kreises lösen",
+          "description": "Die lernende Person kann für die Entladung eines Kondensators aus einer konsistenten Strom- und Spannungskonvention sowie den Beziehungen U_R = RI und Q = CU die Differenzialgleichung aufstellen, sie mit der Anfangsbedingung lösen und die exponentielle Lösung einschließlich der Zeitkonstante RC physikalisch deuten."
+        }
+      ],
+      "contentFindings": [
+        "Polarisation in Nichtleitern wird nicht erklärt; der Quotient der Kapazitäten allein deckt 73b309ed nicht vollständig ab.",
+        "09f2cdbd verlangt die Wahl eines Exponentialansatzes und dessen Prüfung durch Ableiten samt Anfangsbedingung. Kein Teilauftrag verlangt dies.",
+        "330808f6 verlangt eine selbst aufgestellte Entlade-DGL aus konsistenter Strom-/Spannungskonvention, Lösung und Deutung. Gegeben ist bereits eine Lade-DGL, die nur qualitativ erläutert werden soll."
+      ],
+      "scoreOmissionCounterexamples": [
+        {
+          "stepId": "s1",
+          "omittedPoints": 8,
+          "remainingPoints": 22,
+          "stillPasses": true
+        },
+        {
+          "stepId": "s2",
+          "omittedPoints": 7,
+          "remainingPoints": 23,
+          "stillPasses": true
+        },
+        {
+          "stepId": "s3",
+          "omittedPoints": 8,
+          "remainingPoints": 22,
+          "stillPasses": true
+        },
+        {
+          "stepId": "s4",
+          "omittedPoints": 7,
+          "remainingPoints": 23,
+          "stillPasses": true
+        }
+      ],
+      "acceptedNewTaskIdsByClaim": {
+        "73b309ed-1aab-5778-8494-d9b65f5a352b": [
+          "c851ec7f-31cc-5fd5-a38a-7f242bcf8cd1"
+        ],
+        "09f2cdbd-64e0-55d2-ada7-1190f4fd50df": [
+          "7653d84d-124c-5ad0-a5d9-394d51ec0e8b"
+        ],
+        "330808f6-789a-583d-86df-e271a7683d8b": [
+          "7653d84d-124c-5ad0-a5d9-394d51ec0e8b"
+        ]
+      },
+      "incomingRequiresAfterK12Repair": [],
+      "decision": "WITHDRAW_WHOLE_CLAIMS_AND_EXCLUDE_FROM_ACTIVE_ASSESSMENT_ROUTES_PRESERVE_HISTORICAL_TASK_CONTRACT"
+    },
+    {
+      "id": "72ee642f-7574-517e-abd6-17d699b05af6",
+      "title": "Linearbeschleuniger und Relativitaetsgrenze",
+      "originalExamDataSha256CanonicalJson": "3d82371790843b0027c4223d076907d219def5f001bb811fc323cc940c620994",
+      "wholeGoalClaimsWithdrawn": [
+        "74a74132-fa39-541c-8d3c-696cf228452d",
+        "8d34228c-da38-5c1e-97cc-571f3eafb9f4"
+      ],
+      "currentWholeGoalTexts": [
+        {
+          "id": "74a74132-fa39-541c-8d3c-696cf228452d",
+          "title": "Linearbeschleuniger modellieren",
+          "description": "Die lernende Person kann lineare Beschleunigerstufen über die Energiezunahme einer Ladung im elektrischen Feld klassisch modellieren und begründen, warum bei Geschwindigkeiten, die nicht mehr klein gegenüber der Lichtgeschwindigkeit sind, relativistische Beziehungen für Energie und Impuls erforderlich werden."
+        },
+        {
+          "id": "8d34228c-da38-5c1e-97cc-571f3eafb9f4",
+          "title": "Exkurs: Relativistische Energie und Impuls im Linearbeschleuniger",
+          "description": "Die lernende Person kann am Beispiel eines Linearbeschleunigers erläutern, warum klassische Energie- und Impulsbeziehungen für Geschwindigkeiten nahe der Lichtgeschwindigkeit versagen, und die historische Bezeichnung „relativistische Massenzunahme“ so einordnen, dass die Ruhemasse invariant bleibt und die Zunahme von Energie und Impuls relativistisch beschrieben wird."
+        }
+      ],
+      "contentFindings": [
+        "8d34228c verlangt relativistische Energie UND Impuls sowie die Einordnung der historischen Massenzunahme bei invariabler Ruhemasse. Diese wesentlichen Zielbestandteile werden weder erhoben noch bewertet.",
+        "Auch für 74a74132 kann die gesamte qualitative Begründung des Modellwechsels entfallen und die Aufgabe trotzdem bestanden werden. Die Energie- und Geschwindigkeitsrechnungen allein tragen keine ganze Zielaussage."
+      ],
+      "scoreOmissionCounterexamples": [
+        {
+          "stepId": "s1",
+          "omittedPoints": 8,
+          "remainingPoints": 22,
+          "stillPasses": true
+        },
+        {
+          "stepId": "s2",
+          "omittedPoints": 8,
+          "remainingPoints": 22,
+          "stillPasses": true
+        },
+        {
+          "stepId": "s3",
+          "omittedPoints": 7,
+          "remainingPoints": 23,
+          "stillPasses": true
+        },
+        {
+          "stepId": "s4",
+          "omittedPoints": 7,
+          "remainingPoints": 23,
+          "stillPasses": true
+        }
+      ],
+      "acceptedNewTaskIdsByClaim": {
+        "74a74132-fa39-541c-8d3c-696cf228452d": [
+          "2df9d685-3f11-5124-b769-a4bad14a34f4"
+        ],
+        "8d34228c-da38-5c1e-97cc-571f3eafb9f4": [
+          "2df9d685-3f11-5124-b769-a4bad14a34f4"
+        ]
+      },
+      "incomingRequiresAfterK12Repair": [],
+      "decision": "WITHDRAW_WHOLE_CLAIMS_AND_EXCLUDE_FROM_ACTIVE_ASSESSMENT_ROUTES_PRESERVE_HISTORICAL_TASK_CONTRACT"
+    },
+    {
+      "id": "783c1ffe-d983-5c5a-8897-2c88fc64147c",
+      "title": "Kondensator, Feldenergie und Millikan-Versuch",
+      "originalExamDataSha256CanonicalJson": "50a0d2ca7a4d886a49967e94b072e5d44d0ba455162eb6c4a4428eba316680c7",
+      "wholeGoalClaimsWithdrawn": [
+        "9f59a088-3939-59e9-821d-167fadfda782",
+        "0b4f2020-8486-5372-9cb9-6e59f698ac2d",
+        "fd9fd8ad-c4a1-5552-9ea0-1878e0636f20",
+        "0f803c37-8191-5a07-9b31-9603ded98fe2",
+        "e3bce51c-cfeb-4706-b95e-a22b76e7dd73",
+        "38e0ff49-f132-44c8-b17a-73dada5344db"
+      ],
+      "currentWholeGoalTexts": [
+        {
+          "id": "9f59a088-3939-59e9-821d-167fadfda782",
+          "title": "Kondensator und Feld im Plattenkondensator",
+          "description": "Die lernende Person kann das Feld eines idealisierten Plattenkondensators fern von Randeffekten als homogen beschreiben, seine Feldstärke bestimmen und bei vollständiger Füllung mit einem homogenen Dielektrikum die Kapazität mit $C=\\varepsilon_0\\varepsilon_r\\frac{A}{d}$ berechnen sowie ihre Abhängigkeit von Geometrie und Dielektrikum erläutern."
+        },
+        {
+          "id": "0b4f2020-8486-5372-9cb9-6e59f698ac2d",
+          "title": "Auf- und Entladen eines Kondensators",
+          "description": "Die lernende Person kann elektrische Stromstärke als durch einen Leiterquerschnitt transportierte Ladung pro Zeitintervall deuten, Richtung und zeitlichen Verlauf des Stroms beim Auf- und Entladen eines Kondensators qualitativ erklären und vorhersagen, wie bei gleicher Anfangsspannung ein größerer Widerstand den Betrag des Anfangsstroms verringert und wie das Produkt aus Widerstand und Kapazität die charakteristische Lade- beziehungsweise Entladezeit festlegt."
+        },
+        {
+          "id": "fd9fd8ad-c4a1-5552-9ea0-1878e0636f20",
+          "title": "Energie des elektrischen Feldes",
+          "description": "Die lernende Person kann die im elektrischen Feld eines Kondensators gespeicherte Energie mithilfe von Ladung, Spannung und Kapazität berechnen und an Anwendungen erläutern, wie beim Laden Energie in das Feld übertragen und beim Entladen an angeschlossene Systeme abgegeben wird."
+        },
+        {
+          "id": "0f803c37-8191-5a07-9b31-9603ded98fe2",
+          "title": "Millikan-Versuch und Elementarladung",
+          "description": "Die lernende Person kann den Millikan-Versuch im Schwebefall erläutern und damit die Quantelung elektrischer Ladung über die Elementarladung e begründen."
+        },
+        {
+          "id": "e3bce51c-cfeb-4706-b95e-a22b76e7dd73",
+          "title": "Flächenladungsdichte nutzen",
+          "description": "Die lernende Person kann die Flächenladungsdichte als Ladung pro Fläche definieren und sie zur Beschreibung geladener Platten im Kondensatormodell verwenden."
+        },
+        {
+          "id": "38e0ff49-f132-44c8-b17a-73dada5344db",
+          "title": "Plattenkondensatorfeld über Flächenladungsdichte herleiten",
+          "description": "Die lernende Person kann den Zusammenhang zwischen Flächenladungsdichte und elektrischer Feldstärke im Plattenkondensator mathematisch herleiten und die Modellannahmen benennen."
+        }
+      ],
+      "contentFindings": [
+        "0b4f2020 verlangt zeitlichen Verlauf, Stromrichtung und Einfluss von R und RC beim Laden/Entladen; die Aufgabe ist vollständig statisch.",
+        "e3bce51c verlangt Definition und Verwendung der Flächenladungsdichte; 38e0ff49 die Herleitung des Feldes daraus. Beides fehlt.",
+        "9f59a088 umfasst neben einer C-Berechnung die Erklärung der Geometrie-/Dielektrikumsabhängigkeit und der homogenen Feldnäherung; fd9fd8ad auch den Energieübertrag bei Laden/Entladen. Diese Teile werden nicht erhoben.",
+        "Ein einzelner Schwebefall mit q/e ungefähr 0,857 kann die Quantelung nach 0f803c37 nicht begründen. Ohne Unsicherheitsgrenzen ist die behauptete Vereinbarkeit mit einem ganzzahligen Vielfachen nicht belegt."
+      ],
+      "scoreOmissionCounterexamples": [
+        {
+          "stepId": "s1",
+          "omittedPoints": 6,
+          "remainingPoints": 19,
+          "stillPasses": true
+        },
+        {
+          "stepId": "s2",
+          "omittedPoints": 6,
+          "remainingPoints": 19,
+          "stillPasses": true
+        },
+        {
+          "stepId": "s3",
+          "omittedPoints": 8,
+          "remainingPoints": 17,
+          "stillPasses": true
+        },
+        {
+          "stepId": "s4",
+          "omittedPoints": 5,
+          "remainingPoints": 20,
+          "stillPasses": true
+        }
+      ],
+      "acceptedNewTaskIdsByClaim": {
+        "9f59a088-3939-59e9-821d-167fadfda782": [
+          "a7972e13-41f9-5f7b-bc43-5fe2699a4823"
+        ],
+        "0b4f2020-8486-5372-9cb9-6e59f698ac2d": [
+          "381f58b8-af55-5ee7-856f-e5c0f4359b31"
+        ],
+        "fd9fd8ad-c4a1-5552-9ea0-1878e0636f20": [
+          "0236971f-8465-50bf-8c0f-cbb71a69bcf4"
+        ],
+        "0f803c37-8191-5a07-9b31-9603ded98fe2": [
+          "93208b0d-2956-5aae-8aa4-bcef718f06a4"
+        ],
+        "e3bce51c-cfeb-4706-b95e-a22b76e7dd73": [
+          "09c50c4c-fb3a-52f4-947f-a9bf3c083772"
+        ],
+        "38e0ff49-f132-44c8-b17a-73dada5344db": [
+          "09c50c4c-fb3a-52f4-947f-a9bf3c083772"
+        ]
+      },
+      "incomingRequiresAfterK12Repair": [],
+      "decision": "WITHDRAW_WHOLE_CLAIMS_AND_EXCLUDE_FROM_ACTIVE_ASSESSMENT_ROUTES_PRESERVE_HISTORICAL_TASK_CONTRACT"
+    },
+    {
+      "id": "841edfdb-5e12-5a37-ab12-552a1d8e92ca",
+      "title": "Elektrostatik und Potenzial",
+      "originalExamDataSha256CanonicalJson": "8cc785306d7a58a3390f6b7b5c064672f30201e0478075ee5d598bac3ada8fd1",
+      "wholeGoalClaimsWithdrawn": [
+        "455c65ca-814a-56ad-918a-013155883c52",
+        "1730c01d-8c85-57df-b031-c11e2a0511b1",
+        "2622bef1-bdbc-504e-b468-b600b2ca3ed8",
+        "25998fed-ea4d-4c3e-b606-e965b5d7f290",
+        "f3de5922-dd45-4fb6-87c1-525d1952dd89",
+        "9fb1dd85-11b7-4a5a-b124-27fea8d1788e",
+        "e3bce51c-cfeb-4706-b95e-a22b76e7dd73"
+      ],
+      "currentWholeGoalTexts": [
+        {
+          "id": "455c65ca-814a-56ad-918a-013155883c52",
+          "title": "Quantitative Superposition elektrischer Felder",
+          "description": "Die lernende Person kann elektrische Feldstärken vektoriell addieren und Fälle mit parallelen oder orthogonalen Feldern berechnen."
+        },
+        {
+          "id": "1730c01d-8c85-57df-b031-c11e2a0511b1",
+          "title": "Arbeit, Spannung und Potenzial im E-Feld",
+          "description": "Die lernende Person kann die Spannung zwischen zwei Punkten als Potenzialdifferenz und – bei offengelegter Vorzeichenkonvention – über Arbeit beziehungsweise Änderung der potenziellen Energie pro Ladung deuten und im homogenen elektrischen Feld für einen Abstand parallel zu den Feldlinien den Betragszusammenhang |U| = E·d anwenden."
+        },
+        {
+          "id": "2622bef1-bdbc-504e-b468-b600b2ca3ed8",
+          "title": "Elektrisches Potenzial berechnen",
+          "description": "Die lernende Person kann in vorgegebenen elektrischen Feldern bei festgelegtem Potenzialnullpunkt Potenziale an Punkten bestimmen, Spannungen als Potenzialdifferenzen berechnen sowie Äquipotentiallinien konstruieren und zur Darstellung und Auswertung der Felder deuten."
+        },
+        {
+          "id": "25998fed-ea4d-4c3e-b606-e965b5d7f290",
+          "title": "Ladungserhaltung erläutern",
+          "description": "Die lernende Person kann elektrische Ladung als Erhaltungsgröße beschreiben und Ladungsumverteilungen in abgeschlossenen Systemen fachlich deuten."
+        },
+        {
+          "id": "f3de5922-dd45-4fb6-87c1-525d1952dd89",
+          "title": "Feldlinienbilder von Ladungs- und Leiteranordnungen deuten",
+          "description": "Die lernende Person kann Feldlinienbilder eines elektrischen Dipols sowie von Leitern im elektrostatischen Gleichgewicht anhand von Tangentenrichtung und relativer Liniendichte deuten und daraus Feldfreiheit im Inneren eines Faraday-Käfigs sowie lokale Feldverstärkung an Spitzen qualitativ erklären."
+        },
+        {
+          "id": "9fb1dd85-11b7-4a5a-b124-27fea8d1788e",
+          "title": "Influenz bei Leitern untersuchen",
+          "description": "Die lernende Person kann Influenz bei Leitern experimentell beschreiben, die Ladungsverschiebung im äußeren elektrischen Feld erklären und das Ergebnis mit Feldlinienbildern verknüpfen."
+        },
+        {
+          "id": "e3bce51c-cfeb-4706-b95e-a22b76e7dd73",
+          "title": "Flächenladungsdichte nutzen",
+          "description": "Die lernende Person kann die Flächenladungsdichte als Ladung pro Fläche definieren und sie zur Beschreibung geladener Platten im Kondensatormodell verwenden."
+        }
+      ],
+      "contentFindings": [
+        "25998fed fordert Ladungserhaltung/Umverteilung, f3de5922 Dipol-/Leiterfeldlinien samt Faraday-Käfig und Spitzen, 9fb1dd85 Influenzexperiment und Ladungsverschiebung, e3bce51c Flächenladungsdichte. Keiner dieser Zielbestandteile wird erhoben.",
+        "455c65ca verlangt auch orthogonale Superposition; geliefert wird nur der kollineare Fall. 2622bef1 verlangt Potenzialnullpunkt und Äquipotentiallinien; beides fehlt. Für 1730c01d fehlt die explizite Vorzeichenkonvention.",
+        "Die Musterlösung benutzt eine 15-mm-Strecke vollständig parallel zum homogenen Feld in einem 8-mm-Plattenspalt. Das ist innerhalb dieses Spalts unmöglich; 3000 V übersteigen die Plattenspannung 1600 V. Eine längere schräge Strecke würde eine Projektion erfordern und rechtfertigt E*s nicht."
+      ],
+      "scoreOmissionCounterexamples": [
+        {
+          "stepId": "s1",
+          "omittedPoints": 8,
+          "remainingPoints": 22,
+          "stillPasses": true
+        },
+        {
+          "stepId": "s2",
+          "omittedPoints": 7,
+          "remainingPoints": 23,
+          "stillPasses": true
+        },
+        {
+          "stepId": "s3",
+          "omittedPoints": 8,
+          "remainingPoints": 22,
+          "stillPasses": true
+        },
+        {
+          "stepId": "s4",
+          "omittedPoints": 7,
+          "remainingPoints": 23,
+          "stillPasses": true
+        }
+      ],
+      "acceptedNewTaskIdsByClaim": {
+        "455c65ca-814a-56ad-918a-013155883c52": [
+          "5307fc57-f913-5e44-893d-b9130f656cf5"
+        ],
+        "1730c01d-8c85-57df-b031-c11e2a0511b1": [
+          "a7972e13-41f9-5f7b-bc43-5fe2699a4823"
+        ],
+        "2622bef1-bdbc-504e-b468-b600b2ca3ed8": [
+          "61225322-fa5b-5414-b7da-ca90c9035adb"
+        ],
+        "25998fed-ea4d-4c3e-b606-e965b5d7f290": [
+          "9fe94c34-8100-5f4c-b646-69c1983f8adc"
+        ],
+        "f3de5922-dd45-4fb6-87c1-525d1952dd89": [
+          "c4edaf29-7c0c-5c86-bfc8-b5e0f3fbe96b"
+        ],
+        "9fb1dd85-11b7-4a5a-b124-27fea8d1788e": [
+          "c4edaf29-7c0c-5c86-bfc8-b5e0f3fbe96b"
+        ],
+        "e3bce51c-cfeb-4706-b95e-a22b76e7dd73": [
+          "09c50c4c-fb3a-52f4-947f-a9bf3c083772"
+        ]
+      },
+      "incomingRequiresAfterK12Repair": [],
+      "decision": "WITHDRAW_WHOLE_CLAIMS_AND_EXCLUDE_FROM_ACTIVE_ASSESSMENT_ROUTES_PRESERVE_HISTORICAL_TASK_CONTRACT"
+    },
+    {
+      "id": "8ff2a728-fba3-538e-83e9-69bdd8e1369e",
+      "title": "Prüfungsaufgabe: Stromstärke und Spannung als Ladungsgrößen deuten",
+      "originalExamDataSha256CanonicalJson": "361e3f2009832377c7302d50b9a5c6a18a7c40960e2ebc67f4909c863c0688f1",
+      "wholeGoalClaimsWithdrawn": [
+        "1730c01d-8c85-57df-b031-c11e2a0511b1"
+      ],
+      "currentWholeGoalTexts": [
+        {
+          "id": "1730c01d-8c85-57df-b031-c11e2a0511b1",
+          "title": "Arbeit, Spannung und Potenzial im E-Feld",
+          "description": "Die lernende Person kann die Spannung zwischen zwei Punkten als Potenzialdifferenz und – bei offengelegter Vorzeichenkonvention – über Arbeit beziehungsweise Änderung der potenziellen Energie pro Ladung deuten und im homogenen elektrischen Feld für einen Abstand parallel zu den Feldlinien den Betragszusammenhang |U| = E·d anwenden."
+        }
+      ],
+      "contentFindings": [
+        "1730c01d verlangt Spannung als Potenzialdifferenz und eine offengelegte Vorzeichenkonvention für Arbeit/Änderung der potenziellen Energie. Die reine positive W/q-Rechnung und Betragsformel erheben diese Teile nicht.",
+        "Die gesamte 5-Punkte-Aufgabe zur elektrischen Arbeit und Spannungsdeutung kann fehlen; 10 von 15 Punkten bestehen bei Schwelle 9. Das ist kein vollständiger Erwerbsnachweis für 1730c01d."
+      ],
+      "scoreOmissionCounterexamples": [
+        {
+          "stepId": "electric_quantities_1",
+          "omittedPoints": 5,
+          "remainingPoints": 10,
+          "stillPasses": true
+        },
+        {
+          "stepId": "electric_quantities_2",
+          "omittedPoints": 5,
+          "remainingPoints": 10,
+          "stillPasses": true
+        },
+        {
+          "stepId": "electric_quantities_3",
+          "omittedPoints": 5,
+          "remainingPoints": 10,
+          "stillPasses": true
+        }
+      ],
+      "acceptedNewTaskIdsByClaim": {
+        "1730c01d-8c85-57df-b031-c11e2a0511b1": [
+          "a7972e13-41f9-5f7b-bc43-5fe2699a4823"
+        ]
+      },
+      "incomingRequiresAfterK12Repair": [],
+      "decision": "WITHDRAW_WHOLE_CLAIMS_AND_EXCLUDE_FROM_ACTIVE_ASSESSMENT_ROUTES_PRESERVE_HISTORICAL_TASK_CONTRACT"
+    },
+    {
+      "id": "ba29e928-a287-5de7-b3fe-5c8c3731363b",
+      "title": "Magnetfeld, Leiterkraft und Lorentzkraft",
+      "originalExamDataSha256CanonicalJson": "36e65a53a25ec5a78bbd47b5fb5759a6b6929ca93c80bbc41d4df069ca407573",
+      "wholeGoalClaimsWithdrawn": [
+        "c6355a22-24cf-5d8b-88af-ea11711460fb",
+        "8c9394cb-f54a-508d-9750-4c49e31b3fa9"
+      ],
+      "currentWholeGoalTexts": [
+        {
+          "id": "c6355a22-24cf-5d8b-88af-ea11711460fb",
+          "title": "Kraft auf stromdurchflossene Leiter",
+          "description": "Die lernende Person kann Betrag und Richtung der Kraft auf ein gerades stromdurchflossenes Leiterstück im homogenen Magnetfeld mit F = B · I · ℓ · sin(α) bestimmen, wobei α der Winkel zwischen Strom- und Feldrichtung ist, und bei senkrechter Anordnung B aus einer Kraftmessung mit B = F/(I · ℓ) ermitteln."
+        },
+        {
+          "id": "8c9394cb-f54a-508d-9750-4c49e31b3fa9",
+          "title": "Lorentzkraft auf freie Ladungen",
+          "description": "Die lernende Person kann den Betrag der magnetischen Lorentzkraft auf frei bewegte Ladungen mit $F_L=|q|vB\\sin(\\alpha)$ berechnen, ihre Richtung aus $\\vec v\\times\\vec B$ unter Beachtung des Ladungsvorzeichens bestimmen und unter Vernachlässigung anderer Kräfte für die Grenzfälle eines parallelen oder senkrechten Eintritts in ein homogenes Magnetfeld die geradlinige beziehungsweise kreisförmige Bahn qualitativ deuten."
+        }
+      ],
+      "contentFindings": [
+        "c6355a22 verlangt Betrag und Richtung einschließlich Winkelabhängigkeit sowie B aus einer Kraftmessung. Die Aufgabe berechnet nur einen ungerichteten Kraftbetrag ohne spezifizierte Leiterorientierung.",
+        "8c9394cb verlangt Richtung unter Ladungsvorzeichen, Winkel und parallelen/senkrechten Grenzfall. Ein Radius aus vorausgesetzter Kreisbewegung und ein allgemeiner Vergleich mit Leiterkraft reichen nicht.",
+        "Die Musterlösung F=B*I*l setzt eine nicht im Material festgelegte senkrechte Leiteranordnung voraus."
+      ],
+      "scoreOmissionCounterexamples": [
+        {
+          "stepId": "s1",
+          "omittedPoints": 5,
+          "remainingPoints": 20,
+          "stillPasses": true
+        },
+        {
+          "stepId": "s2",
+          "omittedPoints": 6,
+          "remainingPoints": 19,
+          "stillPasses": true
+        },
+        {
+          "stepId": "s3",
+          "omittedPoints": 8,
+          "remainingPoints": 17,
+          "stillPasses": true
+        },
+        {
+          "stepId": "s4",
+          "omittedPoints": 6,
+          "remainingPoints": 19,
+          "stillPasses": true
+        }
+      ],
+      "acceptedNewTaskIdsByClaim": {
+        "c6355a22-24cf-5d8b-88af-ea11711460fb": [
+          "d9d0fc38-14e7-5a81-8ffc-241e77d06aa8"
+        ],
+        "8c9394cb-f54a-508d-9750-4c49e31b3fa9": [
+          "cb45d084-4e0f-5926-958c-f1d0ce456906"
+        ]
+      },
+      "incomingRequiresAfterK12Repair": [],
+      "decision": "WITHDRAW_WHOLE_CLAIMS_AND_EXCLUDE_FROM_ACTIVE_ASSESSMENT_ROUTES_PRESERVE_HISTORICAL_TASK_CONTRACT"
+    },
+    {
+      "id": "d8442d03-8b7e-54b7-9d9a-dc31ce541daa",
+      "title": "Magnetische Messverfahren und Technik",
+      "originalExamDataSha256CanonicalJson": "e196a8ada548d4f68c4d3e0514484301cd7d1a0d5d327e1cbd6e3758718aba10",
+      "wholeGoalClaimsWithdrawn": [
+        "d02438ba-0cc9-5993-831e-5e44d35e32c4",
+        "58db62d4-458f-5e2d-9ca0-968e09f4944b",
+        "b39ae8fb-4358-5866-8adf-3d5365368eeb",
+        "52bdabb2-d9a1-56e6-bccf-ff58f299c739"
+      ],
+      "currentWholeGoalTexts": [
+        {
+          "id": "d02438ba-0cc9-5993-831e-5e44d35e32c4",
+          "title": "Drehmoment auf Magnetnadeln und Dipole",
+          "description": "Die lernende Person kann das Drehmoment auf Magnetnadeln und magnetische Dipole im homogenen Feld mit M = mu * B * sin(alpha) berechnen und die Ausrichtung im Feld fachlich begründen."
+        },
+        {
+          "id": "58db62d4-458f-5e2d-9ca0-968e09f4944b",
+          "title": "Gaußsches Verfahren anwenden",
+          "description": "Die lernende Person kann das Messverfahren von Gauß (Ablenkungsmethode in Hauptlage und Schwingungsmethode) zur Bestimmung der Horizontalintensität des Erdmagnetfeldes beschreiben und anwenden."
+        },
+        {
+          "id": "b39ae8fb-4358-5866-8adf-3d5365368eeb",
+          "title": "Hall-Effekt anwenden",
+          "description": "Die lernende Person kann die Hall-Spannung in einem stromdurchflossenen Leiter im Magnetfeld bestimmen und aus ihrem Betrag beziehungsweise Vorzeichen erklären, wie der Hall-Effekt zur Messung von Magnetfeldern oder zur Bestimmung des Ladungsträgertyps genutzt wird."
+        },
+        {
+          "id": "52bdabb2-d9a1-56e6-bccf-ff58f299c739",
+          "title": "Kernspintomografie (MRT)",
+          "description": "Die lernende Person kann qualitativ erklären, wie ein statisches Magnetfeld eine Netto-Kernspinmagnetisierung ausrichtet, eine resonante Hochfrequenzanregung sie auslenkt und Magnetfeldgradienten die bei der Relaxation gemessenen Signale räumlich für ein MRT-Bild codieren."
+        }
+      ],
+      "contentFindings": [
+        "58db62d4 verlangt die Gaußsche Ablenkungs- und Schwingungsmethode; beide fehlen vollständig.",
+        "52bdabb2 verlangt Netto-Kernspinmagnetisierung, resonante HF-Anregung, Relaxation und räumliche Codierung durch Gradienten. Eine Homogenitätsprüfung belegt das nicht.",
+        "b39ae8fb verlangt auch die Erklärung von Betrag/Vorzeichen der Hall-Spannung und deren Messbedeutung. Ein positives Kalibrierdiagramm allein deckt das nicht vollständig. d02438ba verlangt neben dem Drehmoment die Begründung der Ausrichtung; diese wird nicht erfragt.",
+        "Die ausdrücklich strenge Anforderung unter 2 Prozent ist bei genau 2 Prozent Maximalabweichung vom Mittelwert nicht erfüllt. Die Musterlösung erklärt den Grenzwert fälschlich für knapp ausreichend. Bei Deutung als gesamte Schwankungsbreite ergeben sich sogar 4 Prozent."
+      ],
+      "scoreOmissionCounterexamples": [
+        {
+          "stepId": "s1",
+          "omittedPoints": 8,
+          "remainingPoints": 22,
+          "stillPasses": true
+        },
+        {
+          "stepId": "s2",
+          "omittedPoints": 5,
+          "remainingPoints": 25,
+          "stillPasses": true
+        },
+        {
+          "stepId": "s3",
+          "omittedPoints": 7,
+          "remainingPoints": 23,
+          "stillPasses": true
+        },
+        {
+          "stepId": "s4",
+          "omittedPoints": 5,
+          "remainingPoints": 25,
+          "stillPasses": true
+        },
+        {
+          "stepId": "s5",
+          "omittedPoints": 5,
+          "remainingPoints": 25,
+          "stillPasses": true
+        }
+      ],
+      "acceptedNewTaskIdsByClaim": {
+        "d02438ba-0cc9-5993-831e-5e44d35e32c4": [
+          "349586d0-68ce-5485-97a5-0c73f71bbd72"
+        ],
+        "58db62d4-458f-5e2d-9ca0-968e09f4944b": [
+          "789d70ff-8ec2-5b9d-8fa0-9926cb97feab"
+        ],
+        "b39ae8fb-4358-5866-8adf-3d5365368eeb": [
+          "f5ca019e-c6f8-5392-b2f5-b0c31d075737"
+        ],
+        "52bdabb2-d9a1-56e6-bccf-ff58f299c739": [
+          "f0c35076-ae05-574b-83b5-7419bf712a80"
+        ]
+      },
+      "incomingRequiresAfterK12Repair": [],
+      "decision": "WITHDRAW_WHOLE_CLAIMS_AND_EXCLUDE_FROM_ACTIVE_ASSESSMENT_ROUTES_PRESERVE_HISTORICAL_TASK_CONTRACT"
+    },
+    {
+      "id": "db5f4121-d4b1-5006-b2da-6e76aac72bf5",
+      "title": "Elektronenablenkung im elektrischen Feld",
+      "originalExamDataSha256CanonicalJson": "00908090324b03bdc145b00993ffb452f3cde424533b141ca0f971b4d8a079d6",
+      "wholeGoalClaimsWithdrawn": [
+        "5fda8623-69e0-5503-9c6d-86d054a8cf91",
+        "0f803c37-8191-5a07-9b31-9603ded98fe2"
+      ],
+      "currentWholeGoalTexts": [
+        {
+          "id": "5fda8623-69e0-5503-9c6d-86d054a8cf91",
+          "title": "Braunsche Röhre (Oszilloskop)",
+          "description": "Die lernende Person kann erklären, wie in der Braunschen Röhre das von einer Ablenkspannung erzeugte elektrische Feld die vertikale Lage des Elektronenstrahls auf dem Leuchtschirm bestimmt und eine Zeitbasis den Strahl horizontal führt, sodass ein Oszilloskop den zeitlichen Spannungsverlauf darstellt; eine magnetische Ablenkung kann sie davon qualitativ unterscheiden."
+        },
+        {
+          "id": "0f803c37-8191-5a07-9b31-9603ded98fe2",
+          "title": "Millikan-Versuch und Elementarladung",
+          "description": "Die lernende Person kann den Millikan-Versuch im Schwebefall erläutern und damit die Quantelung elektrischer Ladung über die Elementarladung e begründen."
+        }
+      ],
+      "contentFindings": [
+        "0f803c37 verlangt Millikan-Schwebefall und Quantelung; es gibt weder Tropfen noch einen entsprechenden Auftrag.",
+        "5fda8623 verlangt Zeitbasis, zeitlichen Spannungsverlauf und qualitative Abgrenzung magnetischer Ablenkung. Eine statische Flugbahnrechnung erfasst diese wesentlichen Teile nicht."
+      ],
+      "scoreOmissionCounterexamples": [
+        {
+          "stepId": "s1",
+          "omittedPoints": 6,
+          "remainingPoints": 19,
+          "stillPasses": true
+        },
+        {
+          "stepId": "s2",
+          "omittedPoints": 6,
+          "remainingPoints": 19,
+          "stillPasses": true
+        },
+        {
+          "stepId": "s3",
+          "omittedPoints": 8,
+          "remainingPoints": 17,
+          "stillPasses": true
+        },
+        {
+          "stepId": "s4",
+          "omittedPoints": 5,
+          "remainingPoints": 20,
+          "stillPasses": true
+        }
+      ],
+      "acceptedNewTaskIdsByClaim": {
+        "5fda8623-69e0-5503-9c6d-86d054a8cf91": [
+          "a2a7d916-83c6-5ed6-90f2-5c4d9e36abf3"
+        ],
+        "0f803c37-8191-5a07-9b31-9603ded98fe2": [
+          "93208b0d-2956-5aae-8aa4-bcef718f06a4"
+        ]
+      },
+      "incomingRequiresAfterK12Repair": [],
+      "decision": "WITHDRAW_WHOLE_CLAIMS_AND_EXCLUDE_FROM_ACTIVE_ASSESSMENT_ROUTES_PRESERVE_HISTORICAL_TASK_CONTRACT"
+    }
+  ],
+  "numericCounterexamples": {
+    "841edfdb": {
+      "gapMeters": "0.008",
+      "pathAssumedParallelMeters": "0.015",
+      "impossibleInsideGap": true,
+      "field_V_per_m": "2.00E+5",
+      "solutionPotentialDifference_V": "3000"
+    },
+    "d8442d03": {
+      "maxDeviationPercent": "2.00",
+      "requiredStrictlyBelowPercent": "2",
+      "passes": false,
+      "fullRangePercent": "4.00"
+    },
+    "783c1ffe": {
+      "q_over_e": "0.8573033707865168539325842697",
+      "uncertaintySupplied": false
+    }
+  },
+  "totals": {
+    "tasks": 8,
+    "claimOccurrences": 27,
+    "uniqueWholeGoals": 24,
+    "currentCatalogsChecked": 21,
+    "incomingRequiresAfterK12Repair": 0
+  },
+  "requiredImplementation": [
+    "Retain every old task ID, taskContent, solutionContent, scoring and existing learner result unchanged.",
+    "Remove the unsupported current coveredGoalIds, record this disposition, and put the tasks in excluded historical placement with native applicability exclusion.",
+    "Use already independently accepted replacement tasks only on routes whose genuine prerequisite closure permits them. Do not enlarge ordinary learner scope just to make a task available.",
+    "Revalidate final whole-task contracts, 21-catalog reference graph, native applicability, real views, assessment routes and quality gates."
+  ],
+  "limits": [
+    "This record does not accept every unaffected old task or old claim.",
+    "The earlier limited disposition on 8ff2a728 withdrew bbee only; this current review newly withdraws the remaining 1730 claim. History remains intact.",
+    "No official source claim, curriculum quality floor, immutable V9 registry or learner result is modified by this review."
+  ]
+}

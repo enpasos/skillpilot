@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:29ac3af8ec43107b29bbb098afcefff67f4a4892ae07a27bc0c9d1636ec9d57c",
+  "reviewInputFingerprint": "sha256:1f9012e885adbbe7e379fd99be88de9cb63323885641a61c8ce06f1dc14e52ab",
+  "goalCount": 2,
+  "rounds": {
+    "first": {
+      "campaignId": "physics-two-current841-source-boundary-20261115-first-pass-a",
+      "roundId": "independent-a-boundary2",
+      "independenceGroupId": "physics-two-current841-source-boundary-20261115-independent-a",
+      "runIds": [
+        "physics-current2-source-boundary-a-original18-20261115"
+      ],
+      "providers": [
+        "OpenAI Codex delegated agent; effective deployment not independently attested"
+      ],
+      "modelIdentities": [
+        "OpenAI Codex delegated agent; effective deployment not independently attested::gpt-6.1-sol (requested); effective deployment not independently attested::not exposed by session interface"
+      ]
+    },
+    "second": {
+      "campaignId": "physics-two-current841-source-boundary-20261115-first-pass-b",
+      "roundId": "independent-b-boundary2",
+      "independenceGroupId": "physics-two-current841-source-boundary-20261115-independent-b",
+      "runIds": [
+        "physics-current2-source-boundary-b-20261115"
+      ],
+      "providers": [
+        "OpenAI Codex delegated agent; effective deployment not independently attested"
+      ],
+      "modelIdentities": [
+        "OpenAI Codex delegated agent; effective deployment not independently attested::gpt-6.1-sol (requested); effective deployment not independently attested::not exposed by session interface"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI Codex delegated agent; effective deployment not independently attested"
+    ],
+    "sharedModelIdentities": [
+      "OpenAI Codex delegated agent; effective deployment not independently attested::gpt-6.1-sol (requested); effective deployment not independently attested::not exposed by session interface"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 2,
+    "unavailable": 0,
+    "requiresSynthesis": 2
+  },
+  "goals": [
+    {
+      "goalId": "677a192d-8bbe-57fc-bb7a-1c1ed5fba32b",
+      "firstRecordId": "physics-current2-source-boundary-a-original18-20261115.goal-001",
+      "secondRecordId": "physics-current2-source-boundary-b-20261115.goal-001",
+      "firstRunId": "physics-current2-source-boundary-a-original18-20261115",
+      "secondRunId": "physics-current2-source-boundary-b-20261115",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "d61ea362-f6c3-5eab-ac30-2d0e265ac0f6",
+      "firstRecordId": "physics-current2-source-boundary-a-original18-20261115.goal-002",
+      "secondRecordId": "physics-current2-source-boundary-b-20261115.goal-002",
+      "firstRunId": "physics-current2-source-boundary-a-original18-20261115",
+      "secondRunId": "physics-current2-source-boundary-b-20261115",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

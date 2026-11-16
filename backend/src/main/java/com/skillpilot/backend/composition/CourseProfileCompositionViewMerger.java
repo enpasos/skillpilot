@@ -72,8 +72,12 @@ public final class CourseProfileCompositionViewMerger {
         for (List<Map<String, Object>> source : sourceRoots) {
             expectedTargets.addAll(graph.targets(source));
         }
+        MergeState state = new MergeState();
         List<Map<String, Object>> merged = mergeSiblings(
-                sourceRoots.stream().flatMap(List::stream).toList(), new MergeState());
+                sourceRoots.stream().flatMap(List::stream).toList(), state);
+        // A support reference has no placement authority. When its actual
+        // target is encountered later, keep that authored target's position.
+        merged = withoutRedundantReferences(merged, state.discardedLeaves);
         merged = preserveCommonExclusions(merged, expectedTargets, graph);
         Set<String> actualTargets = graph.targets(merged);
         boolean changed;
@@ -111,6 +115,13 @@ public final class CourseProfileCompositionViewMerger {
             throw new IllegalStateException("Subtree deduplication changes resolved course-profile target union");
         }
         return freeze(result);
+    }
+
+    /** Uses the very same native role resolution for a raw-pinned plan artifact. */
+    static Set<String> resolvedAtomicTargets(List<Map<String, Object>> nodes, Map<String, List<String>> canonicalChildren) {
+        Set<String> targets = new LinkedHashSet<>(new ProjectionGraph(canonicalChildren).targets(nodes));
+        targets.removeIf(id -> !canonicalChildren.get(id).isEmpty());
+        return targets;
     }
 
     private static List<Map<String, Object>> preserveCommonExclusions(
@@ -261,7 +272,8 @@ public final class CourseProfileCompositionViewMerger {
     }
 
     public static List<Map<String, Object>> merge(List<Map<String, Object>> nodes) {
-        return freeze(mergeSiblings(nodes, new MergeState()));
+        MergeState state = new MergeState();
+        return freeze(withoutRedundantReferences(mergeSiblings(nodes, state), state.discardedLeaves));
     }
 
     /**
@@ -284,7 +296,8 @@ public final class CourseProfileCompositionViewMerger {
         if (goalCoverageResolver == null) {
             throw new IllegalArgumentException("goalCoverageResolver must not be null");
         }
-        List<Map<String, Object>> merged = mergeSiblings(nodes, new MergeState());
+        MergeState state = new MergeState();
+        List<Map<String, Object>> merged = withoutRedundantReferences(mergeSiblings(nodes, state), state.discardedLeaves);
         return freeze(removeRedundantNestedReferences(merged, goalCoverageResolver, false));
     }
 
@@ -864,6 +877,9 @@ public final class CourseProfileCompositionViewMerger {
     private static final class MergeState {
 
         private final Map<String, Map<String, Object>> retainedLeaves = new LinkedHashMap<>();
+        // Tree traversal copies node maps, so compare the discarded support
+        // reference by value. Its role differs from the retained actual target.
+        private final Set<Map<String, Object>> discardedLeaves = new HashSet<>();
 
         private Map<String, Object> retainLeaf(Map<String, Object> candidate) {
             String key = leafIdentity(candidate);
@@ -874,6 +890,13 @@ public final class CourseProfileCompositionViewMerger {
             }
             validateLeafMetadata(List.of(retained, candidate));
             List<Map<String, Object>> sources = List.of(new LinkedHashMap<>(retained), candidate);
+            if (!isTarget(retained) && isTarget(candidate)) {
+                Map<String, Object> replacement = new LinkedHashMap<>(preferredSource(sources));
+                applyTargetDominantProjectionRole(replacement, sources);
+                discardedLeaves.add(retained);
+                retainedLeaves.put(key, replacement);
+                return replacement;
+            }
             boolean candidateIsPreferred = "canonicalSubtree".equals(candidate.get("kind"))
                     && !"canonicalSubtree".equals(retained.get("kind"));
             if (candidateIsPreferred) {

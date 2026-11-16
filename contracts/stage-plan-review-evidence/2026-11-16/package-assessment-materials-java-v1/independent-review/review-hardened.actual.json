@@ -1,0 +1,124 @@
+{
+  "at": "2026-11-16T01:36:09.432525+00:00",
+  "reviewerTask": "/root/physics_release_finish",
+  "decision": "ACCEPT_BOUNDED_HARDENED_JAVA_13_CONSUMER",
+  "boundary": "Independent source review and focused actual validator probes only. No approval of Python/TypeScript/schema producer, complete package conformance, plan activation, deployment, full backend suite, PR CI or main CI.",
+  "sourcePins": [
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/curriculumpackage/JsonCurriculumPackageLoader.java",
+      "sha256": "7863990c6d8fb6cb1fbcc4cd0c2c98f947b069951b61b00050e00362241e28d4"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/curriculumpackage/PackageCurriculumResourceState.java",
+      "sha256": "d17b2b5396a4871186dde1f55c6acdb26b465bcbfa995a37065aa52687afa009"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/curriculumpackage/StaticAssessmentSvg.java",
+      "sha256": "38b125dce064e85b5fc2e9386c35110a442e08f58b4dac3a731cf8be6fcf1ac4"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/controller/PackageCurriculumResourceController.java",
+      "sha256": "aa785c55e242291488e2c8737c892792a0304e2bf897a90eccd4c4b25cea60c8"
+    },
+    {
+      "path": "backend/src/test/java/com/skillpilot/backend/curriculumpackage/StaticAssessmentSvgTest.java",
+      "sha256": "197cd6ab2ebecd2a63849c1c63283794033e401a5f849769e25ff794cc4349a5"
+    },
+    {
+      "path": "backend/src/test/java/com/skillpilot/backend/curriculumpackage/LearningUnitPackageLoaderTest.java",
+      "sha256": "351436194d93a4f4a92a71179254656fadf4f3368549e64650dbf04c7b1d7668"
+    },
+    {
+      "path": "backend/src/test/java/com/skillpilot/backend/controller/PackageCurriculumResourceControllerTest.java",
+      "sha256": "43d3e0c995d1176f2ada4c9fe329b6ad3a857d4b5a4e8cfd274c60f0150e73f2"
+    }
+  ],
+  "nativeIndependentProbes": {
+    "before": {
+      "receiptPath": "tmp/pr159-package-svg-independent-review-20261116/rejection-before.actual.json",
+      "sha256": "d7b39073cde02f58b5e8916d0157344eb8a3998aa28380d5f99c7d09e850e4b7",
+      "fourPreviouslyAcceptedCases": [
+        "escaped-external-fill",
+        "escaped-external-filter",
+        "foreign-xhtml-meta-refresh",
+        "svg-tiny-handler"
+      ],
+      "originalCompiledPolicyRetained": true,
+      "oldSourceWasNotCaptured": true
+    },
+    "after": {
+      "logPath": "tmp/pr159-package-svg-independent-review-20261116/svg-policy-probe-after.actual.log",
+      "sha256": "4ebaffcff2a211392c8e6691fd3a4fe98c5b187f052490cba587884c554433ab",
+      "fiveNegativeCasesRejected": true,
+      "localFragmentPositiveAccepted": true
+    },
+    "actualPositiveCorpus": {
+      "manifestPath": "tmp/pr159-package-svg-independent-review-20261116/svg-positive-corpus.inputs.actual.json",
+      "sha256": "a2412557a60456b0cc68be65dd5c175a04f4a9528fb116b5fbb555cc7deb0bdb",
+      "uniqueExistingSvgFiles": 19,
+      "allAcceptedByActualUnmodifiedCurrentPolicy": true,
+      "bytesComparedBeforeAndAfter": true,
+      "packageInventoryClaim": false
+    }
+  },
+  "sourceReviewFindings": [
+    "Runtime 1.3 couples exact release profile, catalog schema, resource-index version/schema and assessmentMaterialsV1; pre-1.3 cannot opt into this lane. Existing 1.0/1.1/1.2 profile choices remain exact.",
+    "Required material is embedded, runtimeRequired, image/svg+xml with .svg or image/png with .png, bound by resource ID, owner, exact original public path, manifest role, byte length and SHA. A source owner is not an exclusive-use relationship.",
+    "Resource activation and delivery both readVerified; SVG validation does not rewrite served bytes. PNG requires its eight-byte magic and remains in its exact material lane.",
+    "XML parser disables external DTD/schema/entity resolution and XInclude. Static element allowlist rejects handlers/active elements; foreign RDF/DC/CC namespaces are confined to SVG metadata. All attribute backslashes and external href/src, URL CSS and active CSS are rejected. Fixed Matplotlib declaration is stripped only for validation, not delivery.",
+    "Controller is package-mode conditional, uses the bound asset map without generic fallback, sends original bytes with nosniff and restrictive sandbox CSP."
+  ],
+  "parentExecutedTests": {
+    "receiptPath": "contracts/stage-plan-review-evidence/2026-11-16/package-assessment-materials-java-v1/hardened-receipt.actual.json",
+    "sha256": "dd6266cac81d2238ddb622f8ca7968f623d39618f01d2c006f6a6f3707041ccb",
+    "status": "Parent actual run; independently read five retained XML outcomes and matched all seven current source/test pins. Not re-executed by reviewer.",
+    "testClasses": 5,
+    "tests": 60,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xml": [
+      {
+        "path": "contracts/stage-plan-review-evidence/2026-11-16/package-assessment-materials-java-v1/hardened-TEST-com.skillpilot.backend.controller.PackageCurriculumResourceControllerTest.xml.gz",
+        "sha256": "889bb8922e1c1a7e9c6eee2d4902a2022cc3ea01ad675dbbf96116366c6d4b5a",
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "path": "contracts/stage-plan-review-evidence/2026-11-16/package-assessment-materials-java-v1/hardened-TEST-com.skillpilot.backend.curriculumpackage.JsonCurriculumPackageLoaderTest.xml.gz",
+        "sha256": "ef0298c75f5b54ce0df3820820a8b9e5cba17c0d5d9f179b558e900ab2e84350",
+        "tests": 13,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "path": "contracts/stage-plan-review-evidence/2026-11-16/package-assessment-materials-java-v1/hardened-TEST-com.skillpilot.backend.curriculumpackage.LearningUnitPackageLoaderTest.xml.gz",
+        "sha256": "76416e5fa94d918ee7c527b7580303cf804b2fd1889a7f70dbf4a1e87c6944eb",
+        "tests": 11,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "path": "contracts/stage-plan-review-evidence/2026-11-16/package-assessment-materials-java-v1/hardened-TEST-com.skillpilot.backend.curriculumpackage.PackageCurriculumResourceStateTest.xml.gz",
+        "sha256": "516efbe71c3621a047ce468ba89eed2ecd5912addb252a91fabb3d049c6354ca",
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "path": "contracts/stage-plan-review-evidence/2026-11-16/package-assessment-materials-java-v1/hardened-TEST-com.skillpilot.backend.curriculumpackage.StaticAssessmentSvgTest.xml.gz",
+        "sha256": "50d910848943612579f6adaf017ba976a0e3f8dac1d9cc332ac35c621ebe333e",
+        "tests": 24,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    ]
+  },
+  "remainingRiskScope": "Conservative static SVG policy is not a general arbitrary-SVG renderer; package producer/schema alignment still requires its own actual conformance. No arbitrary browser behavior or network exploit is claimed from validator rejection/acceptance."
+}

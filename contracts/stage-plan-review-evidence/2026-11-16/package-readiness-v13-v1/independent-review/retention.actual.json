@@ -1,0 +1,146 @@
+{
+  "formatVersion": 1,
+  "reviewer": "/root/math_duration_ci_repair",
+  "finding": "NO_FINDINGS_IN_REVIEWED_SCOPE",
+  "probeCount": 62,
+  "originalReceiptSha256": "cd56c174d61442c01dd457d246f72624303ea91bd3a534f68b018b7ed5ededd9",
+  "reviewedProfileSha256": "b4e0f5551a456610fbe3bdc3a43b68012151c4e6b402eb897f499aef7e15b995",
+  "sourceWrites": false,
+  "acceptanceLimit": "Technical review only. No real package-consumer run, independent content approval, remote CI or publication is claimed. Synthetic reports cannot confer acceptance.",
+  "additionalObservedCommands": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "scripts/generate_curriculum_package_v13_readiness.py",
+        "--check"
+      ],
+      "exitCode": 0,
+      "output": "Runtime 1.3 readiness bindings verified; unchanged base gates and runner pins retained."
+    },
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "scripts/test_package_readiness_v13.py"
+      ],
+      "exitCode": 0,
+      "tests": 5,
+      "result": "OK",
+      "elapsedSeconds": 4.202,
+      "rawLogRetained": false
+    }
+  ],
+  "originalArtifacts": [
+    {
+      "originalPath": "tmp/readiness-schema-independent-review-20261116-v1/argv-sentinel.argv.json",
+      "originalBytes": 409,
+      "originalSha256": "5ac304bd75407d9802a966ad38f721d89b03454f5ca3c0b716638b1446b2ac10",
+      "storedPath": "original-probes/argv-sentinel.argv.json.gz",
+      "storedBytes": 217,
+      "storedSha256": "951b127966be848dc66c9661e780b0330a7fb9c84a723c86951182fb4c874e84",
+      "encoding": "gzip",
+      "byteExactRestorationVerified": true
+    },
+    {
+      "originalPath": "tmp/readiness-schema-independent-review-20261116-v1/argv-sentinel.py",
+      "originalBytes": 106,
+      "originalSha256": "520834eeb0fe8cb2f4071177c5edf9e5d58ec7a2e974015aa8af4305c6f7b9b3",
+      "storedPath": "original-probes/argv-sentinel.py",
+      "storedBytes": 106,
+      "storedSha256": "520834eeb0fe8cb2f4071177c5edf9e5d58ec7a2e974015aa8af4305c6f7b9b3",
+      "encoding": "identity",
+      "byteExactRestorationVerified": true
+    },
+    {
+      "originalPath": "tmp/readiness-schema-independent-review-20261116-v1/external-all-passing-consumer-report.json",
+      "originalBytes": 7586,
+      "originalSha256": "5df389c5dfa3b392d0f54a2c43feeecdcf176182000ce95a8defc69901fcc3b7",
+      "storedPath": "original-probes/external-all-passing-consumer-report.json.gz",
+      "storedBytes": 2309,
+      "storedSha256": "be9f57fb3d6625121f7fbd182be8f57a930d5677a92a87c15571ebd81177ae47",
+      "encoding": "gzip",
+      "byteExactRestorationVerified": true
+    },
+    {
+      "originalPath": "tmp/readiness-schema-independent-review-20261116-v1/fake-full-standalone-v1.3.manifest.json",
+      "originalBytes": 15286,
+      "originalSha256": "a03e96908e82c1a7a02631d74d058f3bf8d7c95815d05de0a51725ffda4913df",
+      "storedPath": "original-probes/fake-full-standalone-v1.3.manifest.json.gz",
+      "storedBytes": 1904,
+      "storedSha256": "b19b36c126514681abf781662dd6ee5f3728eba292293b1df19fc3bb8fa548b3",
+      "encoding": "gzip",
+      "byteExactRestorationVerified": true
+    },
+    {
+      "originalPath": "tmp/readiness-schema-independent-review-20261116-v1/full-standalone-v1.1.manifest.json",
+      "originalBytes": 15281,
+      "originalSha256": "1f4880f5b4916644ecc4e654bbc71889eda9c57c175f8ac354a26b1e02daa378",
+      "storedPath": "original-probes/full-standalone-v1.1.manifest.json.gz",
+      "storedBytes": 1902,
+      "storedSha256": "923092cc9fcd966673733172ff475c2bf69fee577a200d086b7f5646b0ee032a",
+      "encoding": "gzip",
+      "byteExactRestorationVerified": true
+    },
+    {
+      "originalPath": "tmp/readiness-schema-independent-review-20261116-v1/full-standalone-v1.2.manifest.json",
+      "originalBytes": 15281,
+      "originalSha256": "7d704a1f8ae51742edbf98dcbcb4f6873a2330aab872fe839777b1e610951f86",
+      "storedPath": "original-probes/full-standalone-v1.2.manifest.json.gz",
+      "storedBytes": 1902,
+      "storedSha256": "23a1f838d9a4ab721cdae9cbb9b46f37ca0e1bb860d0084beef2add1e8b09ed0",
+      "encoding": "gzip",
+      "byteExactRestorationVerified": true
+    },
+    {
+      "originalPath": "tmp/readiness-schema-independent-review-20261116-v1/full-standalone-v1.manifest.json",
+      "originalBytes": 15279,
+      "originalSha256": "18c50615133aeda3755813524ca80a7df83b448aff3f8d0922d693797eb64b88",
+      "storedPath": "original-probes/full-standalone-v1.manifest.json.gz",
+      "storedBytes": 1896,
+      "storedSha256": "e642ca2c61d90ee8a9fd1927be4f6b20555f963e9c4a0c12eece8ea514806b8c",
+      "encoding": "gzip",
+      "byteExactRestorationVerified": true
+    },
+    {
+      "originalPath": "tmp/readiness-schema-independent-review-20261116-v1/probe.py",
+      "originalBytes": 10638,
+      "originalSha256": "68c0709d85cfca04c3483a94151cdbbb0cd23bd1e0a21de85493a307c578e4be",
+      "storedPath": "original-probes/probe.py",
+      "storedBytes": 10638,
+      "storedSha256": "68c0709d85cfca04c3483a94151cdbbb0cd23bd1e0a21de85493a307c578e4be",
+      "encoding": "identity",
+      "byteExactRestorationVerified": true
+    },
+    {
+      "originalPath": "tmp/readiness-schema-independent-review-20261116-v1/receipt.actual.json",
+      "originalBytes": 22425,
+      "originalSha256": "cd56c174d61442c01dd457d246f72624303ea91bd3a534f68b018b7ed5ededd9",
+      "storedPath": "original-probes/receipt.actual.json.gz",
+      "storedBytes": 3975,
+      "storedSha256": "2f67b8d80ab666b277119e931028004765284294aa4fb1618f7078ab336746bc",
+      "encoding": "gzip",
+      "byteExactRestorationVerified": true
+    },
+    {
+      "originalPath": "tmp/readiness-schema-independent-review-20261116-v1/synthetic-original-fixture.zip",
+      "originalBytes": 16801,
+      "originalSha256": "bc491b0033d1efe93bbc311b57793448b4703fc5b472b2a646587c267f340a86",
+      "storedPath": "original-probes/synthetic-original-fixture.zip.gz",
+      "storedBytes": 11866,
+      "storedSha256": "575200d155323c79910614a81e64e84825ccc24612971229e7a08812a9bccaac",
+      "encoding": "gzip",
+      "byteExactRestorationVerified": true
+    },
+    {
+      "originalPath": "tmp/readiness-schema-independent-review-20261116-v1/untrusted-identical-profile/profiles/full-standalone-v1.3.profile.json",
+      "originalBytes": 18426,
+      "originalSha256": "b4e0f5551a456610fbe3bdc3a43b68012151c4e6b402eb897f499aef7e15b995",
+      "storedPath": "original-probes/untrusted-identical-profile/profiles/full-standalone-v1.3.profile.json.gz",
+      "storedBytes": 2993,
+      "storedSha256": "914b6a28703ec426b066e3da52ff22ccf3a2246e211ab9f346b60894d73bb72e",
+      "encoding": "gzip",
+      "byteExactRestorationVerified": true
+    }
+  ]
+}

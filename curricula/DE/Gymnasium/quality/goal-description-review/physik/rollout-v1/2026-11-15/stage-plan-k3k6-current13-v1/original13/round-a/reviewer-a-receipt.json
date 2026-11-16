@@ -1,0 +1,42 @@
+{
+  "reviewer": "independent-reviewer-a",
+  "runId": "physics-k3k6-current13-20261115-first-pass-a",
+  "completedAtUtc": "2026-11-15T11:46:14.564754+00:00",
+  "recordPath": "tmp/physics-native-integration-k3k6-20261115/native-d/round-a/results/physics-k3k6-current13-20261115-first-pass-a.batch-001.records.jsonl",
+  "recordCount": 13,
+  "decisionCounts": {
+    "keep": 9,
+    "revise": 4
+  },
+  "profileRecommendationCounts": {
+    "none": 10,
+    "revise": 3
+  },
+  "recordAuthority": "candidate/ai_candidate only",
+  "blindBoundary": "Only AGENTS.md, bound round-a input files and the native validator source were read; no other review, adjudication, canonical diff, prior conclusion, live curriculum, or external source was consulted. Supplied current evidence profiles were treated as review context, not authority.",
+  "sourceVerificationBoundary": "No effective composition-view/source mapping was supplied or independently verified; judgments concern the supplied bounded competence text and context. No learner mastery or human approval is asserted.",
+  "checks": [
+    {
+      "command": "Python jsonschema.Draft202012Validator(bound_record_schema).validate(record) for every serialized JSONL record",
+      "result": "PASS: 13 records satisfy the bound schema"
+    },
+    {
+      "command": "Python exact comparison of ordered goal IDs and every supplied current-text, goal/page fingerprint, bundleFingerprint and bookDigest binding",
+      "result": "PASS: exactly 13 ordered unique records; exact copied bindings"
+    },
+    {
+      "command": "Native campaign validator inspected at app/scripts/validateGoalDescriptionReviewCampaignResults.ts",
+      "result": "Not invoked by reviewer: required run manifest is outside authorized reviewer writes; parent can assemble the run manifest and run native validation."
+    }
+  ],
+  "sourceRawSha256": {
+    "tmp/physics-native-integration-k3k6-20261115/native-d/round-a/prompt.md": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+    "tmp/physics-native-integration-k3k6-20261115/native-d/round-a/criteria.md": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+    "tmp/physics-native-integration-k3k6-20261115/native-d/round-a/description-review-campaign.json": "sha256:e1501659cd3a99010d26c438ae2646ded4ddc254893845c0c969f7acd412a775",
+    "tmp/physics-native-integration-k3k6-20261115/native-d/round-a/review-bundle-manifest.json": "sha256:d994e5e87e3d6af321c9efb1f50a5a835b13843092b5dda3619eb855c8b6afa7",
+    "tmp/physics-native-integration-k3k6-20261115/native-d/round-a/description-review-input.json": "sha256:cdcb64e6efeaf5dca4f6f4739b1a96fa638587855c7112ade54d729f2173de1d",
+    "tmp/physics-native-integration-k3k6-20261115/native-d/round-a/contracts/goal-description-review-record.schema.json": "sha256:b1d5fe108f157ebcb3e6b5c5f0376b3f4d88da935fab9aab79fac8a49b50b7ff",
+    "tmp/physics-native-integration-k3k6-20261115/native-d/round-a/batches/physics-k3k6-current13-20261115-first-pass-a.batch-001.input.jsonl": "sha256:ed1ea61b4a9258bf9e6a15a47d972324749749271a16e74ed556098417c7b895"
+  },
+  "outputRawSha256": "sha256:7c5234697a9106db9696815e301d49ab1a0ab6a31cca1ddfbcec66429f5b5b4c"
+}

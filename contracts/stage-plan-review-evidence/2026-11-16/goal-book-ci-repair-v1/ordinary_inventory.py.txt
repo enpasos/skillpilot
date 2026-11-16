@@ -1,0 +1,87 @@
+import json, subprocess, hashlib
+from pathlib import Path
+from collections import defaultdict
+from datetime import datetime, timezone
+
+base=Path('curricula/DE/Gymnasium')
+captured_inputs={}
+def read(path):
+ path=str(path);raw=Path(path).read_bytes();digest='sha256:'+hashlib.sha256(raw).hexdigest()
+ assert path not in captured_inputs or captured_inputs[path]==digest,'Input changed while reading: '+path
+ captured_inputs[path]=digest
+ return json.loads(raw)
+reg=read(base/'provenance/source-landscape-registry.json')
+statebyland={e['landscapeId']:e.get('jurisdiction') for e in reg['entries']}
+provbyland={e['landscapeId']:e.get('goalProvenance',{}) for e in read(base/'provenance/canonical-goal-provenance-registry.json')['landscapes']}
+overridesbyland={e['landscapeId']:e.get('goalApplicabilityOverrides',{}) for e in read(base/'provenance/canonical-goal-applicability-override-registry.json')['landscapes']}
+configs=[f'app/scripts/config/goal-books/de-gym-{name}-national-atlas.json' for name in ['math','physics','chemistry','biology']]+['app/scripts/config/goal-books/de-gym-economics-current-canonical.json']
+ordinary={};allgoals={};configsbyland={}
+for configpath in configs:
+ config=read(configpath);obj=read(config['landscapePath']);land=obj['landscapeId']
+ ledger=read(config['semanticKindLedgerPath'])
+ wanted={d['goalId'] for d in ledger['decisions'] if d['semanticKind']=='curricularAtomic'}
+ ordinary[land]={g['id']:g for g in obj['goals'] if g['id'] in wanted}
+ allgoals[land]={g['id']:g for g in obj['goals']}
+ configsbyland[land]=config
+rawbygoal=defaultdict(lambda:defaultdict(list));mappingcount=0
+paths=subprocess.check_output(['rg','--files','curricula/DE'],text=True).splitlines()
+for path in paths:
+ parts=Path(path).parts
+ if 'mapping' not in parts or 'quality' in parts or not path.endswith('.json') or path.endswith('.review.json'):continue
+ obj=read(path);land=obj.get('targetLandscapeId');state=statebyland.get(obj.get('sourceLandscapeId'))
+ if any(key in obj for key in ['reviewId','sourceExtractionPath','decisions']):continue
+ if land not in ordinary or not state or not state.startswith('DE-'):continue
+ mappingcount+=1
+ for m in obj.get('mappings',[]):
+  goalid=m.get('canonicalGoalId')
+  if goalid in allgoals[land]:rawbygoal[(land,goalid)][state].append(path)
+for land,goals in allgoals.items():
+ for goalid,g in goals.items():
+  for source,overrides in [('registry',overridesbyland.get(land,{}).get(goalid,{})),('embedded',g.get('extendedData',{}).get('applicabilityOverrides',{}))]:
+   for state in overrides.get('jurisdiction',[]):rawbygoal[(land,goalid)][state].append(source+':applicabilityOverride')
+  provenance={**provbyland.get(land,{}).get(goalid,{}),**{k:v for k,v in g.get('extendedData',{}).get('provenance',{}).items() if v is not None}}
+  for key in ['sourceLandscapeId','additionalSourceLandscapeIds','crossSubjectPrerequisiteLandscapeIds']:
+   value=provenance.get(key,[]);sources=[value] if isinstance(value,str) else value
+   for source in sources:
+    state=statebyland.get(source)
+    if state and state.startswith('DE-'):rawbygoal[(land,goalid)][state].append('provenance:'+source)
+universe={goalid:g for goals in allgoals.values() for goalid,g in goals.items()}
+targetstatesbygoal=defaultdict(set)
+def viewtargets(nodes):
+ assignments={}
+ def add(goalid,priority,distance,role):
+  candidate=(priority,-distance,role=='target')
+  if candidate>assignments.get(goalid,(-1,-999999,False)):assignments[goalid]=candidate
+ def visit(node):
+  if node['kind']=='structure':
+   for child in node['children']:visit(child)
+   return
+  assert node['kind']!='landscapeEntry'
+  role=node.get('projectionRole','target');goalid=node['goalId']
+  if node['kind']=='goalEntry':add(goalid,2,0,role);return
+  pending=[(goalid,0)];seen={}
+  for current,distance in pending:
+   if seen.get(current,999999)<=distance:continue
+   seen[current]=distance;add(current,1,distance,role)
+   for child in universe.get(current,{}).get('contains',[]):pending.append((child.split(':')[-1],distance+1))
+ for node in nodes:visit(node)
+ return {goalid for goalid,(_,_,target) in assignments.items() if target}
+for land,config in configsbyland.items():
+ if 'compositionViewManifestPath' in config:paths=read(config['compositionViewManifestPath'])['sourcePaths']
+ else:paths=[config['compositionViewPath']]
+ for path in paths:
+  view=read(path);state=view['scope'].get('jurisdiction')
+  for goalid in viewtargets(view['rootNodes']):targetstatesbygoal[(land,goalid)].add(state)
+removed=[];boundarycounts={}
+for land,goals in ordinary.items():
+ boundarycounts[land]=sum(g.get('extendedData',{}).get('applicabilityMappingInheritance')=='boundary' for g in goals.values())
+ for goalid,g in goals.items():
+  ap=g.get('applicability',{}).get('jurisdiction')
+  if ap is None:continue
+  for state,sources in rawbygoal[(land,goalid)].items():
+   if state not in ap:removed.append({'landscapeId':land,'goalId':goalid,'title':g['title'],'state':state,'applicability':ap,'isTargetInActualBookSourceStateView':state in targetstatesbygoal[(land,goalid)],'boundary':g.get('extendedData',{}).get('applicabilityMappingInheritance')=='boundary','rawSources':sources})
+report={'method':'Current runtime raw direct mappings (excluding review documents exactly as GoalMappingService) + registry/embedded provenance and applicability overrides compared with explicit canonical jurisdiction on the five registered books curricularAtomic ledger inventory; independent explicit projection-role interpretation used to check actual source-state target membership; no compiler or QA rerun.','ordinaryCounts':{land:len(goals) for land,goals in ordinary.items()},'boundaryOrdinaryCounts':boundarycounts,'mappedFilesConsidered':mappingcount,'rawOrdinaryOutsideAPCount':len(removed),'actualBookSourceTargetRawOrdinaryOutsideAPCount':sum(r['isTargetInActualBookSourceStateView'] for r in removed),'rawOrdinaryOutsideAP':removed,'knownAssessmentFallback':{'goalId':'2f8a3a90-717d-5ac1-b54e-facca26e9008','rawStates':sorted(rawbygoal[('68a8ac50-f5f5-4e24-8aa9-5e408ca01ced','2f8a3a90-717d-5ac1-b54e-facca26e9008')])}}
+for path,digest in captured_inputs.items():assert 'sha256:'+hashlib.sha256(Path(path).read_bytes()).hexdigest()==digest,'Input changed after reading: '+path
+report.update({'reviewedAt':datetime.now(timezone.utc).isoformat(),'head':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),'inputPins':captured_inputs})
+Path('tmp/goalbook-external-input-independent-20261116/ordinary-raw-source-selection-inventory.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
+print(json.dumps({key:value for key,value in report.items() if key!='inputPins'},ensure_ascii=False,indent=2))

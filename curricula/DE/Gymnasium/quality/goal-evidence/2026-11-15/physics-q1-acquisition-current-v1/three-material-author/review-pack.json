@@ -1,0 +1,319 @@
+{
+  "status": "AUTHOR_REVIEW_PACKET_NOT_INDEPENDENT_ACCEPTANCE",
+  "wholeProfiles": [
+    {
+      "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+      "schemaVersion": 2,
+      "reviewId": "physics-current837-informed-neutral-p10-20261115-v2",
+      "goalFingerprintRuleVersion": "goal-evidence-v1",
+      "profileRuleVersion": "positive-understanding-evidence-v2",
+      "reviewCriteriaFingerprint": "sha256:8d64a50ede312df08795f6fddec82c1c3bcc8b77e50dad62220c201c819fd460",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "goalId": "39ef1e8a-9203-5192-8c76-8e0c3322646f",
+      "goalFingerprint": "sha256:e3b8890f03b7470a89105333c214c31eb8db08eff4d5b077ffe742f5184c3985",
+      "reviewInputFingerprint": "sha256:f63669a228d19ff113ae734a9d125555e77db3ac754b668b19359095ac6ca99c",
+      "profileFingerprint": "sha256:e1acde712df2f8ea876a4557b4d2ebb11b30ae9802fb6df261d4ff72da6c4bf2",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "reviewedAt": "2026-11-15T18:34:26.122Z",
+      "reviewer": "codex-physics-release-finish-author-of-bounded-profile-successor-pending-independent-informed-review",
+      "reason": "Current supplied competence and full positive-evidence profile context. Scientific conditions and limitations are explicit in this record; no previous description-review decisions or reviewer diagnoses are supplied. This candidate does not certify learner performance, classroom effectiveness, source mapping or human approval.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "reviewRunIds": [],
+      "dissent": [
+        "The supplied CIE curves describe standardized XYZ colour matching, not direct individual S/M/L cone sensitivities. The separate SML triples are explicitly synthetic. An empirical graph cannot be replaced by synthetic triples."
+      ],
+      "profile": {
+        "archetype": "data",
+        "expectations": [
+          {
+            "id": "reiz-und-wahrnehmung",
+            "essentialUnderstandingDe": "Additive Mischung überlagert Licht; die Farbwahrnehmung beruht auf dem gemeinsamen Antwortmuster verschiedener Zapfentypen und ist keine neue mittlere Lichtwellenlänge.",
+            "essentialUnderstandingEn": "Additive mixing superposes light; colour perception depends on the joint response pattern of different cone types and is not a new mean wavelength of light.",
+            "observablePerformanceDe": "Verknüpft ein gegebenes spektrales oder Zapfenantwort-Diagramm mit einem Farbvergleich und erklärt, wie verschiedene Lichtzusammensetzungen dasselbe Antwortmuster erzeugen können.",
+            "observablePerformanceEn": "Connects a supplied spectral or cone-response graph to a colour comparison and explains how different light compositions can produce the same response pattern."
+          },
+          {
+            "id": "grafik-auswertung",
+            "essentialUnderstandingDe": "Empirische Antwort- oder Abgleichdaten gelten für bestimmte Reize und Beobachtungsbedingungen; ein vereinfachtes Antwortmodell ersetzt nicht das vollständige Sehsystem.",
+            "essentialUnderstandingEn": "Empirical response or matching data apply to specified stimuli and viewing conditions; a simplified response model does not replace the complete visual system.",
+            "observablePerformanceDe": "Liest Achsen, relative Antwortwerte und Vergleichsbedingungen korrekt, konstruiert einen passenden Vergleich und begrenzt seine Schlussfolgerung bei veränderter Empfängerausstattung.",
+            "observablePerformanceEn": "Reads axes, relative response values, and comparison conditions correctly, constructs an appropriate comparison, and limits the conclusion when receptor equipment changes."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "reiz-und-wahrnehmung",
+            "grafik-auswertung"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "reiz-empfaenger",
+            "textDe": "Verschiedene Lichtzusammensetzungen bei gleichem Empfänger gegenüber verändertem Empfänger bei festen Reizen.",
+            "textEn": "Different light compositions for the same observer versus a changed observer for fixed stimuli."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "gleiches-antwortmuster",
+            "taskDemandDe": "Materialgraph /assets/assessment-materials/physik/39ef1e8a-9203-5192-8c76-8e0c3322646f/cie1931-color-matching.svg (SHA256 85c0ad8df856bd15b156619f35d2d73105a736de19ea5234d112c1e8bea9fb7b). Source: CIE 2019, DOI10.25039/CIE.DS.xvudnb9b; source CSV SHA256 fa663e3535a7e0763a745993a1f0a192eb0275ac46ad2d1befd7626841e713c1; CC BY-SA4.0. Die tatsächlich mitgelieferte Grafik stellt die standardisierten CIE1931-Farbabgleichfunktionen x̄,ȳ,z̄ des2°-Normalbeobachters für photopische Farbabgleichbedingungen dar: λ in nm und dimensionslose relative Gewichtung. Sie wurde aus den veröffentlichten1-nm-Werten gezeichnet, nicht aus Messungen an dieser lernenden Person. Diese XYZ-Gewichtungen sind keine direkt gemessenen individuellen Zapfenempfindlichkeiten. Lies bei450nm und600nm je die drei Gewichtungen näherungsweise ab, vergleiche die Antwortmuster und benenne die begrenzte Aussage des standardisierten Farbabgleichs. Erkläre, warum aus drei Abgleichwerten nicht ein eindeutiges Spektrum oder die individuelle Wahrnehmung rekonstruiert wird. Getrennter synthetischer Modellteil bei festem Adaptationszustand: SML-Antworten R=(0,1,4),G=(0,3,2),Y=(0,4,6), Antworten im gegebenen schwachen linearen Modell additiv, Spektren R+G undY verschieden. Konstruiere R+G und erkläre die mögliche Farbübereinstimmung in diesem Empfängermodell, ohne XYZ undSML gleichzusetzen.",
+            "taskDemandEn": "Materialgraph /assets/assessment-materials/physik/39ef1e8a-9203-5192-8c76-8e0c3322646f/cie1931-color-matching.svg (SHA256 85c0ad8df856bd15b156619f35d2d73105a736de19ea5234d112c1e8bea9fb7b). Source: CIE 2019, DOI10.25039/CIE.DS.xvudnb9b; source CSV SHA256 fa663e3535a7e0763a745993a1f0a192eb0275ac46ad2d1befd7626841e713c1; CC BY-SA4.0. The actually supplied graph plots the standardized CIE1931 XYZ colour-matching functions of the2° standard observer under photopic matching conditions: wavelength in nm and dimensionless relative weight. It is plotted from the published1nm values, not measurements of this learner. XYZ matching weights are not directly measured individual cone sensitivities. Read the three approximate weights at450nm and600nm, compare their patterns and state the limits of standardized matching. Explain why three matching values do not reconstruct a unique spectrum or individual perception. Separate synthetic model at fixed adaptation: SML responses R=(0,1,4),G=(0,3,2),Y=(0,4,6), additive in the supplied weak linear model, with different R+G andY spectra. Construct R+G and explain a possible match in this receiver model without equating XYZ andSML.",
+            "expectedPerformanceDe": "Nennt Quelle,2°-Beobachter, photopischen Modellbereich und Achsen. Aus tatsächlich geliefertem Graphen näherungsweise450nm:(x̄,ȳ,z̄)=(0,34;0,04;1,77),600nm:(1,06;0,63;0,00); begründet unterschiedliche standardisierte Abgleichmuster statt individuelle Zapfenwerte zu behaupten. Rohwerte sind450:(0,3362;0,038;1,77211),600:(1,0622;0,631;0,0008), sinnvolle grafische Näherungen sind gültig. Trennt standardisierten empirisch fundierten Farbabgleich von der synthetischen SML-Konstruktion R+G=(0,4,6)=Y. Gleiche Modellantworten trotz unterschiedlicher Spektren bedeuten keine neu entstandene mittlere Wellenlänge und keinen Beweis individueller Farbgleichheit.",
+            "expectedPerformanceEn": "Identifies source,2° observer, photopic model domain and axes. Approximately reads450nm XYZ=(0.34,0.04,1.77),600nm=(1.06,0.63,0.00) from the actual graph and justifies different standardized matching patterns without calling them individual cone sensitivities. Published values are450:(0.3362,0.038,1.77211),600:(1.0622,0.631,0.0008); sensible graphical estimates are valid. Separates empirically founded standardized matching from synthetic SML addition R+G=(0,4,6)=Y. Equal model responses to different spectra create neither a new mean wavelength nor proof of an individual perceptual match.",
+            "understandingFocusDe": "Echte empirische Grafik fachlich auswerten und von einem synthetischen Modell gleicher sensorischer Antworten unterscheiden.",
+            "understandingFocusEn": "Analyze an actual empirical graph scientifically and distinguish it from a synthetic model of equal sensory responses."
+          },
+          {
+            "id": "verringerte-antwortdimension",
+            "taskDemandDe": "Eine zweite konstruierte Messgrafik zeigt bei gleicher Helligkeitsabgleich-Bedingung die Antwortmuster A=(1,3,4), B=(1,1,4) in relativen S/M/L-Einheiten. Ein vereinfachtes Empfängermodell registriert zunächst alle drei, dann nur S und L; andere Signale werden im Fall ausgeschlossen. Vergleiche beide Grafiken und die Unterscheidbarkeit, ohne eine medizinische Diagnose zu stellen.",
+            "taskDemandEn": "A second constructed measurement graph shows response patterns A=(1,3,4), B=(1,1,4) in relative S/M/L units under the same brightness-matching condition. A simplified receiver first registers all three and then only S and L; other signals are excluded in this case. Compare the graphs and discriminability without making a medical diagnosis.",
+            "expectedPerformanceDe": "Liest den Unterschied ausschließlich in M ab, zeichnet für das reduzierte Modell zweimal (1,4) und begründet, weshalb der dort verfügbare Farbinformationsunterschied verschwindet. Mit drei Antworten bleiben A/B unterscheidbar. Verallgemeinert dies nicht auf die gesamte reale Wahrnehmung oder eine konkrete Person; die Grafik modelliert nur diese Reiz-/Empfängerbedingungen.",
+            "expectedPerformanceEn": "Reads the difference as confined to M, plots (1,4) twice for the reduced model, and explains why the available colour-information difference disappears there. With three responses A/B remain distinguishable. Does not generalize to all real perception or a specific person; the graph models only these stimulus/receiver conditions.",
+            "understandingFocusDe": "Die physiologische Kodierung bestimmt, welche Unterschiede aus Reizdaten nutzbar sind.",
+            "understandingFocusEn": "Physiological encoding determines which differences in stimulus data are usable."
+          }
+        ]
+      }
+    },
+    {
+      "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+      "schemaVersion": 2,
+      "reviewId": "physics-current837-informed-neutral-p10-20261115-v2",
+      "goalFingerprintRuleVersion": "goal-evidence-v1",
+      "profileRuleVersion": "positive-understanding-evidence-v2",
+      "reviewCriteriaFingerprint": "sha256:8d64a50ede312df08795f6fddec82c1c3bcc8b77e50dad62220c201c819fd460",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "goalId": "f06c581a-7157-584e-a692-99bcd613cff9",
+      "goalFingerprint": "sha256:30568558572118ec6d55497a22a9e67c54e562741376def0677727ade3de8549",
+      "reviewInputFingerprint": "sha256:33adb25b5d3c3a828ec150b500cf00b34dea4c62a0950faf34a50bf4e405a77e",
+      "profileFingerprint": "sha256:003048d04286720ea3db4705541ab470fc0f43188f8b3e913fd5a4016f861d28",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "reviewedAt": "2026-11-15T18:34:26.122Z",
+      "reviewer": "codex-physics-release-finish-author-of-bounded-profile-successor-pending-independent-informed-review",
+      "reason": "Current supplied competence and full positive-evidence profile context. Scientific conditions and limitations are explicit in this record; no previous description-review decisions or reviewer diagnoses are supplied. This candidate does not certify learner performance, classroom effectiveness, source mapping or human approval.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "reviewRunIds": [],
+      "dissent": [
+        "An amplitude spectrum alone omits phases and generally allows multiple compatible time traces. Any unique construction or pairing needs supplied phases or an explicit convention; otherwise accept the supported set of possibilities."
+      ],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "translate-time-and-frequency-representations",
+            "essentialUnderstandingDe": "Zeitverlauf und Frequenzspektrum codieren dasselbe Signal unterschiedlich. Bei periodischen Klängen bestimmt die Grundfrequenz die Periodendauer; harmonische und weitere Spektralanteile erscheinen mit ihren relativen Amplituden im Spektrum. Ein reines Amplitudenspektrum enthält keine Phaseninformation und legt deshalb im Allgemeinen keinen eindeutigen Zeitverlauf fest.",
+            "essentialUnderstandingEn": "A time trace and frequency spectrum encode the same signal differently. For periodic complex sounds, fundamental frequency determines period, while harmonic and other spectral components appear with their relative amplitudes in the spectrum. An amplitude-only spectrum omits phase information and therefore generally does not determine a unique time trace.",
+            "observablePerformanceDe": "Die lernende Person konstruiert aus angegebenen Komponenten einen qualitativen Zeitverlauf oder ein Spektrum, ordnet zusammengehörige Darstellungen zu und erklärt Frequenz- und Amplitudenkonventionen. Eine eindeutige Konstruktion oder Paarzuordnung nutzt ausdrücklich gegebene Phasen beziehungsweise eine erklärte Konvention; ohne diese Angaben benennt die Person mehrere kompatible Verläufe und die verbleibende Grenze.",
+            "observablePerformanceEn": "The learner constructs a qualitative time trace or spectrum from supplied components, matches corresponding representations, and explains frequency and amplitude conventions. A unique construction or pairing uses explicitly supplied phases or a stated convention; without them the learner identifies compatible alternatives and the remaining limit."
+          },
+          {
+            "id": "separate-pitch-timbre-and-level",
+            "essentialUnderstandingDe": "Tonhöhe folgt vor allem der Grundfrequenz, Klangfarbe der spektralen Struktur und Pegel beziehungsweise Lautstärke der Gesamtsamplitude; diese Eigenschaften können unabhängig verändert werden, soweit das Modell trägt.",
+            "essentialUnderstandingEn": "Pitch follows mainly from fundamental frequency, timbre from spectral structure, and level or loudness from overall amplitude; these properties can be changed independently within the model.",
+            "observablePerformanceDe": "Die lernende Person sagt bei veränderten Grund- oder Obertonanteilen voraus, welche Wahrnehmungsmerkmale sich ändern, und begründet die Aussage aus den Spektren statt aus Instrumentnamen.",
+            "observablePerformanceEn": "The learner predicts which perceptual features change when fundamental or overtone components change and justifies the claim from spectra rather than instrument names."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "translate-time-and-frequency-representations",
+            "separate-pitch-timbre-and-level"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "spectral-change",
+            "textDe": "Geänderte Grundfrequenz oder geänderte relative Obertonanteile",
+            "textEn": "Changed fundamental frequency or changed relative overtone amplitudes"
+          },
+          {
+            "id": "signal-form",
+            "textDe": "Nahezu sinusförmiger Ton oder komplexer periodischer Klang",
+            "textEn": "Nearly sinusoidal tone or complex periodic sound"
+          },
+          {
+            "id": "representation-given",
+            "textDe": "Zeitdiagramm, Spektrum oder Komponentenliste als Ausgangspunkt",
+            "textEn": "Time graph, spectrum, or component list as the starting point"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "match-waveforms-and-spectra",
+            "taskDemandDe": "Drei unbekannte periodische Zeitdiagramme und drei Spektren besitzen teils gleiche Grundfrequenz, aber verschiedene Obertonstärken. Ordne die Paare zu, bestimme Grund- und Obertöne und vergleiche Tonhöhe sowie Klangfarbe. Für die Paarzuordnung sind alle Spektren als phasenbeschriftete Komponentenlisten gegeben; die zugehörigen sinusförmigen Komponenten beginnen bei t=0 mit Phase0 bezogen auf dieselbe Zeitachse. Für die qualitative Konstruktion ist keine Fourierintegration nötig. Gegebene Verständnishilfe: Eine Phasenänderung umπ bedeutet hier die Vorzeichenumkehr nur dieser zeitlichen Obertonkomponente bei denselben Zeitpunkten; ihr Amplitudenbetrag bleibt gleich. Ein zusätzlicher gleiches-Amplitudenspektrum-Fall kehrt so nur einen Oberton um: vergleiche die möglichen Zeitformen und erkläre die nicht eindeutige Rekonstruktion aus Amplituden allein.",
+            "taskDemandEn": "Three unfamiliar periodic time traces and three spectra have partly equal fundamentals but different overtone strengths. Match the pairs, identify fundamental and overtones, and compare pitch and timbre. For pairing, every spectrum includes component phases: all sinusoidal components have phase0 at t=0 on the same time axis. Qualitative construction requires no Fourier integration. Supplied interpretation aid: a phase shift ofπ means sign reversal of only that time-domain overtone at the same instants; its amplitude magnitude stays fixed. An additional same-amplitude-spectrum case reverses only that overtone: compare compatible time shapes and explain why amplitudes alone do not determine a unique reconstruction.",
+            "expectedPerformanceDe": "Die lernende Person nutzt Periodendauer und Linienabstände, ordnet relative Amplituden konsistent zu und erklärt gleiche Tonhöhe bei unterschiedlicher Klangfarbe ohne die Gesamtamplitude mit einem Oberton zu verwechseln. Nutzt die gegebene gemeinsame Phase für die Paarung, erkennt unveränderte Amplituden bei geänderter relativer Phase und lässt ohne Phaseninformation mehrere Zeitformen zu. Aus einem Amplitudenspektrum allein wird keine exakte Wellenform behauptet.",
+            "expectedPerformanceEn": "The learner uses period and line spacing, consistently assigns relative amplitudes, and explains equal pitch with different timbre without confusing overall amplitude with an overtone. Uses the supplied common phase for pairing, recognizes equal amplitudes with changed relative phase and admits multiple time shapes when phases are unknown. Does not claim an exact waveform from amplitudes alone.",
+            "understandingFocusDe": "Der Fall prüft die bidirektionale Übersetzung beider Darstellungen.",
+            "understandingFocusEn": "The case assesses bidirectional translation between the representations."
+          },
+          {
+            "id": "filter-harmonics-preserve-fundamental",
+            "taskDemandDe": "Ein Klang wird durch einen Tiefpass verändert, der höhere Obertöne stark dämpft, die Grundfrequenz aber erhält. Skizziere das neue Spektrum, sage den qualitativen Zeitverlauf voraus und begründe Änderungen von Tonhöhe, Pegel und Klangfarbe. In diesem idealisierten Vergleich lässt der Filter die Phasen der verbleibenden Komponenten unverändert; ausschließlich die angegebenen höheren Harmonischen werden amplitudengedämpft. Ohne diese Zusatzannahme ist die genaue neue Zeitform offen.",
+            "taskDemandEn": "A complex sound is changed by a low-pass filter that strongly attenuates higher overtones but preserves the fundamental. Sketch the new spectrum, predict the qualitative time trace, and justify changes in pitch, level, and timbre. In this idealized comparison the filter leaves the phases of retained components unchanged and only attenuates the specified higher harmonics. Without that added assumption the exact output shape remains open.",
+            "expectedPerformanceDe": "Die lernende Person behält die Grundfrequenz und Periodendauer bei, reduziert die entsprechenden Spektrallinien, erwartet einen glatteren Zeitverlauf und trennt eine mögliche Pegeländerung von der veränderten Klangfarbe. Begrenzt „glatter“ auf die vorgegebene Entfernung höherfrequenter Anteile; dies legt ohne Phasenangaben keine eindeutige Punkt-für-Punkt-Zeitkurve oder universelle Lautheitsänderung fest.",
+            "expectedPerformanceEn": "The learner preserves the fundamental and period, reduces the corresponding spectral lines, expects a smoother time trace, and separates a possible level change from altered timbre. Limits “smoother” to the specified removal of high-frequency components; without phases this gives neither a unique pointwise time curve nor a universal loudness change.",
+            "understandingFocusDe": "Der unabhängige Transfer prüft kausale Vorhersage aus einer spektralen Manipulation.",
+            "understandingFocusEn": "The independent transfer assesses causal prediction from a spectral manipulation."
+          }
+        ]
+      }
+    },
+    {
+      "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+      "schemaVersion": 2,
+      "reviewId": "physics-current837-informed-neutral-p10-20261115-v2",
+      "goalFingerprintRuleVersion": "goal-evidence-v1",
+      "profileRuleVersion": "positive-understanding-evidence-v2",
+      "reviewCriteriaFingerprint": "sha256:8d64a50ede312df08795f6fddec82c1c3bcc8b77e50dad62220c201c819fd460",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "goalId": "8ac61062-f63e-5935-96ae-84014906c368",
+      "goalFingerprint": "sha256:ee73065a5750909c923ca55ed46a8091c29eca8b7a9c7a7e463d73ed29024ff6",
+      "reviewInputFingerprint": "sha256:b2b4e4bb13f3648ab100d304a77aa3b98fe70f66f682f0902c2ea7062cf2c383",
+      "profileFingerprint": "sha256:030674b8445430fecf80e7b6edabff9fa6ae977fe5274473e9020948910debd3",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "reviewedAt": "2026-11-15T18:34:26.122Z",
+      "reviewer": "codex-physics-release-finish-author-of-bounded-profile-successor-pending-independent-informed-review",
+      "reason": "Current supplied competence and full positive-evidence profile context. Scientific conditions and limitations are explicit in this record; no previous description-review decisions or reviewer diagnoses are supplied. This candidate does not certify learner performance, classroom effectiveness, source mapping or human approval.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "reviewRunIds": [],
+      "dissent": [
+        "No current legal, occupational or individual medical threshold is supplied. Only the explicitly bounded physical and conditional loudness-model comparisons are justified. No loud self-experiment."
+      ],
+      "profile": {
+        "archetype": "data",
+        "expectations": [
+          {
+            "id": "level-and-quantity",
+            "essentialUnderstandingDe": "Schalldruckpegel ist ein logarithmisches Maß des Effektivschalldrucks; unter gleichen Ausbreitungsbedingungen skaliert Intensität mit dessen Quadrat. Empfundene Lautstärke hängt zusätzlich etwa von Frequenz und Person ab. Ein quantitativer Lautheitsvergleich benötigt daher eine für die angegebenen Bedingungen bereitgestellte empirische Relation oder Abgleichdatentabelle.",
+            "essentialUnderstandingEn": "Sound pressure level is a logarithmic measure of RMS sound pressure; under equal propagation conditions, intensity scales with its square. Perceived loudness also depends on factors such as frequency and the listener. A quantitative loudness comparison therefore requires an empirical relation or matching-data table supplied for the stated conditions.",
+            "observablePerformanceDe": "Die lernende Person nutzt eine gegebene Pegelrelation oder äquivalente Zuordnungstabelle für einen frischen Zahlenvergleich und berechnet zusätzlich aus einer bereitgestellten bedingten empirischen Lautheitsrelation oder Abgleichdatentabelle einen Lautheitsvergleich; sie trennt Druck-, Intensitäts- und Wahrnehmungsaussagen.",
+            "observablePerformanceEn": "The learner uses a supplied level relation or equivalent lookup table for a fresh numerical comparison and additionally calculates a loudness comparison from a supplied conditional empirical loudness relation or matching-data table, separating pressure, intensity, and perceptual claims."
+          },
+          {
+            "id": "exposure-judgment",
+            "essentialUnderstandingDe": "Gesundheitliche Gefährdung lässt sich nicht aus dem Pegel allein entscheiden; Expositionsdauer, Frequenzbewertung, Spitzen und Unsicherheit begrenzen quantitative Vergleiche.",
+            "essentialUnderstandingEn": "Health hazard cannot be decided from level alone; exposure duration, frequency weighting, peaks and uncertainty limit quantitative comparisons.",
+            "observablePerformanceDe": "Die lernende Person vergleicht vorgegebene Expositionen unter expliziten Annahmen, begründet eine vorsorgliche Verringerung und nennt fehlende Daten, ohne Sicherheit oder einen individuellen Schaden zu bescheinigen.",
+            "observablePerformanceEn": "The learner compares supplied exposures under explicit assumptions, justifies a precautionary reduction and identifies missing data without certifying safety or individual harm."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "level-and-quantity",
+            "exposure-judgment"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "quantity-change",
+            "textDe": "Pegeländerung bei verändertem Schalldruck gegenüber gemeinsamer Pegel-Dauer-Änderung.",
+            "textEn": "Level change with changed pressure versus combined level-duration change."
+          },
+          {
+            "id": "perception-context",
+            "textDe": "Vergleich gleicher Frequenzbedingungen gegenüber unbekannter Frequenzbewertung und Wahrnehmung.",
+            "textEn": "Comparison under equal frequency conditions versus unknown frequency weighting and perception."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "pressure-ratio",
+            "taskDemandDe": "Gegebener Messbericht: derselbe reine1-kHz-Dauerton im Freifeld frontal,70 beziehungsweise90dB SPL, je±1dB; keine Durchführung mit lauten Tönen. Verwende ΔL=20log₁₀(p₂/p₁), bei gleichem Medium I∝p². Zusätzlich ist als begrenzte, empirisch motivierte konventionelle Lautheitsskala N/1sone=2^((L_N/1phon−40)/10) gegeben. Für den1-kHz-Bezugston entspricht L_N zahlenmäßig dem Schalldruckpegel. Quelle dieser historischen Modellrelation: Judith Lang, Umweltinformation Lärm: Technischer Teil, Umweltbundesamt Österreich, UBA94-097(1994),Abschnitt1.2,S.2, https://data.umweltbundesamt.at/fileadmin/site/publikationen/R097.pdf#page=8. Benutze die Beziehung nur oberhalb40phon für diesen Modellvergleich; sie ersetzt keine aktuelle umfassende Lautheitsnorm, individuelle Hörmessung oder Gesundheitsgrenze. Berechne Druck-, Intensitäts- und bedingtes Lautheitsverhältnis und beurteile „hundertmal so laut“. Begrenze Faktoren wegen der Messunsicherheit und der Modellannahmen.",
+            "taskDemandEn": "Supplied report: the same pure1kHz continuous reference tone in a frontal free field at70 and90dB SPL, each±1dB; no loud listening experiment. Use ΔL=20log₁₀(p₂/p₁), with I∝p² in the same medium. Also supplied is the bounded empirically motivated conventional loudness scale N/1sone=2^((L_N/1phon−40)/10). For the1kHz reference tone, loudness level L_N is numerically equal to SPL. Source of this historical model relation: Judith Lang, Umweltinformation Lärm: Technischer Teil, Austrian Environment Agency, UBA94-097(1994),section1.2,p.2, https://data.umweltbundesamt.at/fileadmin/site/publikationen/R097.pdf#page=8. Apply it only above40phon in this model comparison; it replaces neither a current comprehensive loudness standard, an individual hearing test nor a health limit. Calculate pressure, intensity and conditional loudness ratios and assess “one hundred times as loud”. Bound the factors by measurement uncertainty and model assumptions.",
+            "expectedPerformanceDe": "Nominal Druckfaktor10 und Intensitätsfaktor100; bedingtes Lautheitsmodell N70=8sone,N90=32sone, Verhältnis4. Die Werte8/32 sind aus der angegebenen Relation berechnete Modellwerte, keine neuen Versuchsdaten. Bei unabhängigen±1dB-Spannen liegt ΔL zwischen18und22dB: Druckfaktor ungefähr7,94…12,59, Intensitätsfaktor63,1…158,5, bedingtes Lautheitsverhältnis ungefähr3,48…4,59; gleichwertig begründete Unsicherheitsdarstellung zulässig.100 ist kein allgemeines Lautheitsverhältnis. Bei gleicher Dauer höhere physikalische Exposition und begründete vorsorgliche Verringerung, aber keine individuelle Schaden- oder Unbedenklichkeitsdiagnose.",
+            "expectedPerformanceEn": "Nominal pressure ratio10 and intensity ratio100; the conditional loudness model gives N70=8sones,N90=32sones, ratio 4. The values 8 and 32 are calculated model values from the supplied relation, not new experimental observations. Independent±1dB intervals give ΔL18…22dB: pressure ratio about7.94…12.59,intensity63.1…158.5,conditional loudness ratio about3.48…4.59; accept an equivalent justified uncertainty treatment.100 is not a general loudness ratio. At equal duration exposure is physically greater and precautionary reduction is justified, but no individual harm or safety diagnosis follows.",
+            "understandingFocusDe": "Logarithmische Messgröße und empirisch bedingte subjektive Lautheit werden mathematisch verglichen und nicht quantitativ gleichgesetzt.",
+            "understandingFocusEn": "The logarithmic measured quantity and condition-dependent empirical loudness are compared mathematically rather than equated quantitatively."
+          },
+          {
+            "id": "duration-compensation",
+            "taskDemandDe": "Zwei hypothetische, gleichartig frequenzbewertete konstante Schallbelastungen dauern A: 80 dB für 2 h und B: 90 dB für 0,2 h. Gegeben: +10 dB bedeutet zehnfache Intensität; I·t ist hier nur ein vereinfachter Energieexpositionsvergleich. Vergleiche A und B und erkläre, welche Aussagen über Gesundheitsgefahr damit möglich bleiben.",
+            "taskDemandEn": "Two hypothetical, consistently frequency-weighted constant exposures are A: 80 dB for 2 h and B: 90 dB for 0.2 h. Given: +10 dB means tenfold intensity; I·t is only a simplified energy-exposure comparison here. Compare A and B and explain what health-hazard claims remain possible.",
+            "expectedPerformanceDe": "Zeigt im vorgegebenen Modell gleiche Energieexposition, da 10·0,2 h=2 h. Begründet, weshalb gleiche I·t-Werte weder identische Wirkung noch Unbedenklichkeit beweisen: Spitzen, tatsächliches Spektrum, Messfehler und individuelle Empfindlichkeit fehlen. Empfiehlt als begründetes Vorsorgeprinzip geringeren Pegel und kürzere Dauer; kein lautes Selbstexperiment.",
+            "expectedPerformanceEn": "Shows equal energy exposure in the supplied model because 10·0.2 h=2 h. Explains why equal I·t values prove neither identical effect nor safety: peaks, actual spectrum, measurement error and individual sensitivity are missing. Justifies lower level and shorter duration as precautionary principles; no loud self-experiment.",
+            "understandingFocusDe": "Ein rechnerischer Expositionsvergleich ist ein begrenztes Modell, keine medizinische Freigabe.",
+            "understandingFocusEn": "A numerical exposure comparison is a limited model, not medical clearance."
+          }
+        ]
+      }
+    }
+  ],
+  "taskMappings": [
+    {
+      "taskId": "37eba8c7-c4be-5e27-86a1-9699af99387a",
+      "wholeGoalId": "39ef1e8a-9203-5192-8c76-8e0c3322646f",
+      "requiredExpectationIds": [
+        "reiz-und-wahrnehmung",
+        "grafik-auswertung"
+      ],
+      "allEssentialCriteria": [
+        "DE: Gelieferte empirische Grafik tatsächlich lesen: Quelle, Achsen/Einheiten, 2°- und photopische Bedingungen sowie alle drei näherungsweisen Werte bei 450/600 nm korrekt zuordnen. EN: Actually read the empirical graph: source, axes/units, 2°/photopic conditions and all three approximate weights at 450/600 nm.",
+        "DE: Unterschiedliche standardisierte Abgleichmuster fachlich deuten und XYZ-Gewichte ausdrücklich von individuellen SML-Zapfenempfindlichkeiten und einer Messung an sich unterscheiden. EN: Interpret standardized matching patterns and distinguish XYZ weights from individual SML sensitivities or a personal measurement.",
+        "DE: Eigenen beschrifteten R/G/R+G/Y-Vergleich konstruieren und SML-Summe/bedingten Abgleich begründen; keine neue mittlere Wellenlänge und keine Gleichsetzung additiver Licht- mit Pigmentmischung. EN: Construct the labelled comparison and justify SML addition/matching without a new mean wavelength or equating light and pigment mixing.",
+        "DE: Unabhängiges B mit vollständiger und reduzierter Darstellung selbst konstruieren, Unterschied nur inM und gleiche(S, L)-Antworten sowie begrenzte Unterscheidbarkeit begründen. EN: Independently construct full/reduced B representations and justify M-only difference, equal(S, L) and bounded discriminability.",
+        "DE: Physiologisches Prinzip gemeinsamer Rezeptorantworten und Informationsverlust bei Spektralabbildung auf wenige Antworten in beiden Fällen erläutern; Spektrum nicht eindeutig rückerschließen. EN: Explain joint receptor coding and compression in both cases without unique spectral reconstruction.",
+        "DE: Empirischen Befund und synthetische Modellrechnung getrennt begrenzen: keine empirische Bestätigung aus Tripeln, keine individuelle Diagnose oder universelle Farbübereinstimmung, relevante Adaptations-/Reizbedingungen nennen. EN: Separately bound empirical findings/synthetic calculations, avoiding empirical proof from triples, diagnosis or universal matching and naming relevant adaptation/stimulus conditions."
+      ],
+      "omissionCounteranswer": "Omit one actual required graph interpretation, representation construction, independent transfer, model distinction or uncertainty conclusion: its direct0/2 cap yields at most10/12, below11.",
+      "ownMinorError": "All required cores present with one isolated arithmetic/rounding/drawing slip yields11/12."
+    },
+    {
+      "taskId": "c2a6ce42-ba20-55c4-b958-c9edb4b98c4c",
+      "wholeGoalId": "f06c581a-7157-584e-a692-99bcd613cff9",
+      "requiredExpectationIds": [
+        "translate-time-and-frequency-representations",
+        "separate-pitch-timbre-and-level"
+      ],
+      "allEssentialCriteria": [
+        "DE: X/Z-Zeitdiagramme aus tatsächlichen Komponenten selbst konstruieren, Werte/Zeiten/relative Einheiten korrekt; passende einseitige Amplitudenspektren zeichnen. EN: Construct X/Z time graphs from supplied components with times/relative units and matching one-sided amplitude spectra.",
+        "DE: Grundfrequenz, Grundperiode und Oberton in A korrekt identifizieren; Grundtonhöhe, spektrale Klangstruktur und Amplitude als verschiedene Aussagen deuten. EN: Identify A fundamental, period, overtone and distinguish fundamental pitch, spectral timbre structure and amplitude.",
+        "DE: Unabhängigen relativen Phasenfall Y tatsächlich konstruieren und mit X vergleichen; gleiche Spektralamplituden bei verschiedenen Zeitformen, fehlende eindeutige Rückrekonstruktion ohne Phasen erklären. EN: Actually construct independent relative-phase Y, compare X and explain equal amplitudes/different traces and nonunique phase-free reconstruction.",
+        "DE: Neuen B-Filterfall durch eigenes Ausgangsspektrum und qualitativen Zeitverlauf mit erhaltener 400-Hz-Phase/Amplitude übertragen; entfernte Komponenten korrekt kennzeichnen. EN: Transfer to B with own output spectrum/time trace, retained 400 Hz phase/amplitude and removed harmonics.",
+        "DE: B-Grundperiode 2,5 ms und unveränderte Grundtonhöhe von veränderter spektraler Klangstruktur sowie möglichem Effektivpegel unterscheiden. EN: Distinguish 2.5 ms period/unchanged fundamental pitch from changed spectral structure and possible RMS level.",
+        "DE: In beiden Fällen Amplituden-/Phasen-/Leistungskonventionen und begrenzte Wahrnehmungsaussagen einhalten; weder eindeutige Phase aus Beträgen noch numerische/universelle Lautheit behaupten. EN: Respect amplitude/phase/power conventions and perceptual limits in both cases, without inventing phase or numerical/universal loudness."
+      ],
+      "omissionCounteranswer": "Omit one actual required graph interpretation, representation construction, independent transfer, model distinction or uncertainty conclusion: its direct0/2 cap yields at most10/12, below11.",
+      "ownMinorError": "All required cores present with one isolated arithmetic/rounding/drawing slip yields11/12."
+    },
+    {
+      "taskId": "3efcce48-2a2d-5d81-958c-aa216eccaea3",
+      "wholeGoalId": "8ac61062-f63e-5935-96ae-84014906c368",
+      "requiredExpectationIds": [
+        "level-and-quantity",
+        "exposure-judgment"
+      ],
+      "allEssentialCriteria": [
+        "DE: A-Druck- und Intensitätsverhältnisse aus passenden logarithmischen/quadratischen Beziehungen mit Einheiten und unterschiedlichen Größen bestimmen. EN: Determine A pressure/intensity ratios using the appropriate logarithmic/squared relations, units and distinct quantities.",
+        "DE: Gelieferte bedingte Lautheitsrelation tatsächlich quantitativ auf 70/90 dB anwenden, 8/32 sone undFaktor 4 gegen 10/100 unterscheiden; Modellwerte nicht als neue Messdaten ausgeben. EN: Quantitatively apply the supplied conditional relation, give 8/32 sones/ratio 4 and distinguish 10/100 without calling model values new observations.",
+        "DE: Aus den tatsächlichen Intervallen konservatives ΔL und drei Verhältnisbereiche begründen; keine statistische Konfidenz oder exakte Faktoren erfinden. EN: Justify conservative ΔL/three ratio intervals from supplied bounds without invented confidence or exactness.",
+        "DE: Unabhängigen B-Pegel-Dauer-Transfer selbst auswerten: gleiche modellierte Energieexposition, aber unter 1-kHz-Bedingung 16/32 sone und andere momentane Lautheit; Dauer nicht mit Lautheit gleichsetzen. EN: Independently solve the B level-duration transfer, equal model energy exposure but 16/32 sones/different instantaneous loudness under 1 kHz; do not equate duration and loudness.",
+        "DE: Neue C-Frequenzgrenze und historische Modellgrenze ausdrücklich erklären; SPL/Phon nicht universell gleichsetzen oder 8/32 sone übertragen. EN: Explain fresh C frequency and historical-model limits without universal SPL/phon equivalence or transfer of 8/32 sones.",
+        "DE: Physikalisch begründetes, beschränktes Risikourteil über beide Expositionsfälle, fehlende Daten und konkrete Vorsorge; keine individuelle Diagnose, Unbedenklichkeit oder aktuelle Rechtsgrenze ableiten. EN: Give a physically grounded bounded exposure judgement, missing information and specific precaution, without individual diagnosis, safety or current legal-limit claims."
+      ],
+      "omissionCounteranswer": "Omit one actual required graph interpretation, representation construction, independent transfer, model distinction or uncertainty conclusion: its direct0/2 cap yields at most10/12, below11.",
+      "ownMinorError": "All required cores present with one isolated arithmetic/rounding/drawing slip yields11/12."
+    }
+  ],
+  "notACompleteAssessmentGapInventory": true,
+  "materialManifest": "tmp/physics-current10-neutral-P-context-20261115-v2/task-material-targets.actual.json",
+  "knownParentFinalGateScope": "Native final840 plus12 metadata-cache removals; true D18 contexts pending; active QA remains frozen."
+}

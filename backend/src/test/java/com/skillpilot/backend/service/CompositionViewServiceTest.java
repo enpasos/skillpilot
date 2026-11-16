@@ -1658,14 +1658,23 @@ class CompositionViewServiceTest {
                                 : "de-he-gym-sekii-physics-" + profile.toLowerCase(java.util.Locale.ROOT));
                 List<Map<String, Object>> roots = (List<Map<String, Object>>) match.get("rootNodes");
                 List<Map<String, Object>> stages = roots.stream()
-                        .filter(node -> "structure".equals(node.get("kind"))).toList();
+                        .filter(node -> "structure".equals(node.get("kind")) && "physics-root".equals(node.get("id"))).toList();
+                List<Map<String, Object>> outsideStage = flattenCompositionNodes(roots.stream()
+                        .filter(node -> !"physics-root".equals(node.get("id"))).toList());
+                assertThat(outsideStage).as(context + " references outside the stage remain support only")
+                        .filteredOn(node -> !"structure".equals(node.get("kind")))
+                        .allSatisfy(node -> assertThat(node).containsEntry("projectionRole", "prerequisiteOnly"));
                 assertThat(stages).as(context + " sole stage wrapper").singleElement().satisfies(stage -> {
                     assertThat(stage).containsEntry("id", "physics-root")
                             .containsEntry("labelEn", "Upper Secondary")
                             .containsEntry("label", "Sekundarstufe II ("
                                     + ("GK+LK".equals(profile) ? "GK + LK" : profile) + ")");
                     List<Map<String, Object>> children = (List<Map<String, Object>>) stage.get("children");
-                    assertThat(children).filteredOn(node -> "structure".equals(node.get("kind")))
+                    // Preparation assessments are an additional upper-stage
+                    // contribution. They do not replace or reorder the five
+                    // existing source-backed phase sections.
+                    assertThat(children).filteredOn(node -> "structure".equals(node.get("kind"))
+                                    && List.of("physics-e-phase", "physics-q1", "physics-q2", "physics-q3", "physics-q4").contains(node.get("id")))
                             .extracting(node -> node.get("id"))
                             .containsExactly("physics-e-phase", "physics-q1", "physics-q2", "physics-q3", "physics-q4");
                     List<Map<String, Object>> examEntries = children.stream()
@@ -1689,9 +1698,24 @@ class CompositionViewServiceTest {
                         .stream().map(exams::get).toList());
                 for (String branchId : assessmentBranches) {
                     assertThat(allNodes).as(context + " expandable assessment branch " + branchId)
-                            .filteredOn(node -> branchId.equals(node.get("goalId")))
-                            .singleElement().satisfies(node -> assertThat(node)
-                                    .containsEntry("kind", "canonicalSubtree"));
+                            .filteredOn(node -> branchId.equals(node.get("goalId"))
+                                    || ("existing-assessment-path-" + branchId).equals(node.get("id")))
+                            .singleElement().satisfies(node -> {
+                                if ("canonicalSubtree".equals(node.get("kind"))) {
+                                    assertThat(node).containsEntry("goalId", branchId);
+                                } else {
+                                    assertThat(node).containsEntry("kind", "structure")
+                                            .containsEntry("id", "existing-assessment-path-" + branchId);
+                                    // The Q1 collection was materialized when its
+                                    // other assessments moved to their source-backed
+                                    // content branches. Its retained Coulomb task
+                                    // remains in this exact, expandable collection.
+                                    assertThat(branchId).isEqualTo("549a427d-f10a-5537-990e-6fdd7466848b");
+                                    assertThat(flattenCompositionNodes((List<Map<String, Object>>) node.get("children")))
+                                            .extracting(child -> child.get("goalId"))
+                                            .contains("716acf20-d882-5152-9735-099876d631b4");
+                                }
+                            });
                 }
                 Map<String, String> expectedParents = Map.of(
                         "physics-b034-transistor", "b034-preserved-rootNodes-0-children-13-children-6",

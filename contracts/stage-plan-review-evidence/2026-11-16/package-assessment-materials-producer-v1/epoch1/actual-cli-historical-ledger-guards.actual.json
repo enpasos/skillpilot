@@ -1,0 +1,42 @@
+{
+  "at": "2026-11-16T02:07:26.866897+00:00",
+  "status": "PASS_REAL_CLI_REFUSALS",
+  "cases": [
+    {
+      "case": "old-ledger-write-refusal",
+      "ledger": "curricula/DE/Gymnasium/quality/package-redistribution/de-gymnasium-mathematik-v1.review.json",
+      "before": {
+        "exists": true,
+        "sha256": "cdc9bf84ec9e1236d7931eea54abf67ecaf83143a634f082f6a4348bfbdb98d4"
+      },
+      "exitCode": 2,
+      "stderr": "usage: generate_curriculum_package_redistribution_review.py\n       [-h] (--generate | --check | --self-test) [--release-root RELEASE_ROOT]\n       [--ledger LEDGER] [--schema SCHEMA] [--completion-candidate]\n       [--learning-unit-candidate] [--runtime-v13-candidate]\ngenerate_curriculum_package_redistribution_review.py: error: Runtime 1.3 must preserve all earlier review ledgers\n"
+    },
+    {
+      "case": "old-ledger-write-refusal",
+      "ledger": "curricula/DE/Gymnasium/quality/package-redistribution/de-gymnasium-mathematik-learning-units-v1.review.json",
+      "before": {
+        "exists": false,
+        "sha256": null
+      },
+      "exitCode": 2,
+      "stderr": "usage: generate_curriculum_package_redistribution_review.py\n       [-h] (--generate | --check | --self-test) [--release-root RELEASE_ROOT]\n       [--ledger LEDGER] [--schema SCHEMA] [--completion-candidate]\n       [--learning-unit-candidate] [--runtime-v13-candidate]\ngenerate_curriculum_package_redistribution_review.py: error: Runtime 1.3 must preserve all earlier review ledgers\n"
+    },
+    {
+      "case": "old-ledger-write-refusal",
+      "ledger": "curricula/DE/Gymnasium/quality/package-redistribution/de-gymnasium-mathematik-completion-v1.review.json",
+      "before": {
+        "exists": false,
+        "sha256": null
+      },
+      "exitCode": 2,
+      "stderr": "usage: generate_curriculum_package_redistribution_review.py\n       [-h] (--generate | --check | --self-test) [--release-root RELEASE_ROOT]\n       [--ledger LEDGER] [--schema SCHEMA] [--completion-candidate]\n       [--learning-unit-candidate] [--runtime-v13-candidate]\ngenerate_curriculum_package_redistribution_review.py: error: Runtime 1.3 must preserve all earlier review ledgers\n"
+    },
+    {
+      "case": "mutually-exclusive-version-selection",
+      "exitCode": 2,
+      "stderr": "usage: generate_curriculum_package_redistribution_review.py\n       [-h] (--generate | --check | --self-test) [--release-root RELEASE_ROOT]\n       [--ledger LEDGER] [--schema SCHEMA] [--completion-candidate]\n       [--learning-unit-candidate] [--runtime-v13-candidate]\ngenerate_curriculum_package_redistribution_review.py: error: Runtime candidates require one exact profile\n"
+    }
+  ],
+  "allThreeHistoricalLedgerPathsUnchangedIncludingAbsentOnes": true
+}

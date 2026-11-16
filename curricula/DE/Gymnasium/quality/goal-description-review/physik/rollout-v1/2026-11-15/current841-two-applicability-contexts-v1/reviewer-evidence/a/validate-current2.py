@@ -1,0 +1,57 @@
+from pathlib import Path
+import json,hashlib,datetime,collections,importlib.metadata
+from jsonschema import Draft202012Validator
+root=Path('tmp/physics-release840-20261115/current2-source-boundary');r=root/'native-d/round-a';out=Path('tmp/physics-current2-source-boundary-a-original18-20261115');run='physics-current2-source-boundary-a-original18-20261115'
+sha=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest();now=lambda:datetime.datetime.now(datetime.timezone.utc).isoformat()
+sealIn=json.loads((root/'current2-review-input-seal.actual.json').read_text());before=json.loads((out/'input-pins.before.json').read_text());elig=json.loads((out/'eligibility-initial.json').read_text())
+a=[json.loads(s) for s in (r/'batches/independent-a-boundary2.batch-001.input.jsonl').read_text().splitlines()];c=json.loads((r/'description-review-campaign.json').read_text());bm=json.loads((root/'review-bundle/book-model.json').read_text());ctx=json.loads((root/'native21-current2-contexts.json').read_text());ps=[json.loads(s) for s in (root/'current2-P-context.jsonl').read_text().splitlines()];rs=[json.loads(s) for s in (out/'records.jsonl').read_text().splitlines()]
+schema=json.loads((r/'contracts/goal-description-review-record.schema.json').read_text());Draft202012Validator.check_schema(schema);v=Draft202012Validator(schema);errs=[{'ordinal':i,'path':list(e.path),'message':e.message} for i,q in enumerate(rs,1) for e in v.iter_errors(q)]
+checks={}
+checks['twoSchemaValidRecords']=len(rs)==len(a)==c['goalCount']==2 and not errs
+checks['assignedOrder']=[q['goalId'] for q in rs]==c['batches'][0]['goalIds']==a[0]['batchGoalIds']
+checks['uniqueGoalAndRecordIds']=len({q['goalId'] for q in rs})==len({q['recordId'] for q in rs})==2
+keys=['goalId','goalFingerprint','pageFingerprint','currentTitleDe','currentTitleEn','currentDescriptionDe','currentDescriptionEn']
+checks['exactCurrentTextAndGoalBindings']=all(all(q[k]==x['goal'][k] for k in keys) for q,x in zip(rs,a))
+checks['exactCampaignRoundBindings']=all(q['campaignId']==c['campaignId'] and q['roundId']==c['roundId'] for q in rs)
+checks['exactBundleBookBindings']=all(q['bundleFingerprint']==x['bundleFingerprint']==c['bundleFingerprint']==sealIn['bundleFingerprint'] and q['bookDigest']==x['bookDigest']==c['bookDigest']==sealIn['bookDigest']==bm['digest'] for q,x in zip(rs,a))
+checks['locallyAssignedRunId']=all(q['runId']==run for q in rs)
+checks['suppliedRunIdAbsent']='runId' not in c and all('runId' not in x for x in a)
+checks['schemaDigestMatchesCampaign']='sha256:'+sha(r/'contracts/goal-description-review-record.schema.json')==c['recordSchemaDigest']
+checks['promptDigestMatchesCampaign']='sha256:'+sha(r/'prompt.md')==c['promptFingerprint']
+checks['criteriaDigestMatchesCampaign']='sha256:'+sha(r/'criteria.md')==c['criteriaFingerprint']
+checks['inputSealRawDigest']=sha(root/'current2-review-input-seal.actual.json')=='e208944f2cc265f7c932cb9246b5ffda88dd4f512c8b2ae68c49a3af7ef95cca'
+checks['candidateAiAuthorityOnly']=all(q['recordStatus']=='candidate' and q['reviewAuthority']=='ai_candidate' for q in rs)
+checks['exactlySixEvidenceFieldsEach']=all(len(q['understandingEvidence'])==6 for q in rs)
+checks['distinctGoalSpecificChains']=rs[0]['understandingEvidence']!=rs[1]['understandingEvidence']
+checks['noReplacementForKeep']=all('proposedDescriptionDe' not in q and 'proposedDescriptionEn' not in q for q in rs)
+checks['profileContract']=all(q['evidenceProfileContract']=='positive-understanding-evidence-v2' for q in rs)
+checks['jsonlOnlyTerminalNewline']=len((out/'records.jsonl').read_text().splitlines())==2 and (out/'records.jsonl').read_bytes().endswith(b'\n')
+checks['wholePMatchesBoundContext']=all(p==x['goal']['reviewContext']['evidenceProfile'] for p,x in zip(ps,a))
+checks['nativeContextMatchesCurrentGoalDescriptions']=len(ctx['contexts'])==2 and all(x['goal']['goalId']==y['goalId']==y['nativeContext']['goal']['id'] and x['goal']['currentDescriptionDe']==y['nativeContext']['goal']['description'] for x,y in zip(a,ctx['contexts']))
+checks['suppliedCatalogRootCount21']=ctx['catalogRoots']==21
+checks['sourceApplicabilityBoundaryFieldsPresent']=all(g['canonicalContext']['applicability']=={'jurisdiction':['DE-BY']} and g['canonicalContext']['applicabilitySemantics']['mappingInheritance']=='boundary' and 'BY.PH8.' in g['canonicalContext']['dimensionTags']['topicCode'] and 'SkillPilot-eigene Operationalisierung' in g['canonicalContext']['sourceRef'] for g in [x['goal'] for x in a])
+originals=[]
+for x in a:
+ g=x['goal'];p=Path('app/public'+g['reviewContext']['page']['visualization']['url']);originals.append({'goalId':g['goalId'],'path':str(p),'sha256':sha(p),'matchesBoundDigest':'sha256:'+sha(p)==g['reviewContext']['page']['visualization']['originalDigest']})
+checks['twoOriginalImagesMatchBoundDigests']=len(originals)==2 and all(x['matchesBoundDigest'] for x in originals)
+pages=sorted(out.glob('physical-page-*.jpg'));checks['fourPhysicalPdfPagesRendered']=len(pages)==4
+checks['ownPriorExposureExplicit']=elig['sameExistingReviewer'] and not elig['historicallyUnexposedPerson'] and bool(elig['priorOwnInvolvement'])
+checks['otherReviewerBlindnessExplicit']=not elig['counterpartOldOrCurrentOutputsSeen'] and not elig['oldOwnReviewOutputsReopened'] and not elig['adjudicationsOrCanonicalDiffsSeen']
+after={p:sha(p) for p in before['files']};drift=[p for p,h in before['files'].items() if after[p]!=h]
+allowed=sealIn['sharedAllowedInputPaths']+sealIn['roundAllowedInputPaths']['a'];pinmap={p['path']:p for p in sealIn['pins']}
+checks['allowedCurrentInputPinsUnchanged']=len(allowed)==24 and all(after[p]==pinmap[p]['sha256'] for p in allowed) and not drift
+checks['noRoundBPathReadForPinning']=not any('/round-b/' in p for p in before['files'])
+with (out/'input-pins.after.json').open('x') as f:f.write(json.dumps({'utc':now(),'files':after,'changedFiles':drift,'allowedSealedInputCount':24},indent=2)+'\n')
+val={'runId':run,'validatedAtUtc':now(),'validator':{'name':'python-jsonschema','version':importlib.metadata.version('jsonschema'),'dialect':'2020-12','schemaPath':str(r/'contracts/goal-description-review-record.schema.json')},'checks':checks,'allChecksPassed':all(checks.values()),'schemaErrors':errs,'recordCount':2,'decisionCounts':dict(collections.Counter(q['decision'] for q in rs)),'profileRecommendationCounts':dict(collections.Counter(q['evidenceProfileRecommendation'] for q in rs)),'limitations':'Structure, bindings and allowed byte integrity only; not a scientific, historical-freshness, actual-viewing, official-source/projection, learner-result, human, release, CI or main acceptance proof. sourceApplicabilityBoundaryFieldsPresent checks supplied metadata values, not official truth or runtime mapping behavior.'}
+with (out/'validation.json').open('x') as f:f.write(json.dumps(val,ensure_ascii=False,indent=2)+'\n')
+if not val['allChecksPassed']:print(json.dumps(val,ensure_ascii=False,indent=2));raise SystemExit(1)
+receipt={'agentTask':'/root/physics_release_finish/physics_eighteen_fresh_a','runId':run,'runIdOrigin':'locally assigned current execution ID; absent from supplied campaign/batch','campaignId':c['campaignId'],'roundId':c['roundId'],'independenceGroupId':c['independenceGroupId'],'startedAtUtc':'2026-11-15T21:31:28Z','startMeaning':'first own UTC clock observation after accepting this new task; sole entry read, current seal and 24 allowed pins checked, then eligibility written before whole-current-goal review','endedAtUtc':now(),'endMeaning':'two-record review and successful formal validation complete with final unchanged current-input hashes; receipt and output seal are emitted by this final sealing step','eligibility':{**elig,'reaffirmedAtCompletion':True,'noEligibilityRejectionTriggered':True},'priorOwnInvolvement':{'ownD18AndD10Reviewed':True,'sameExistingReviewer':True,'historicallyUnexposedPerson':False,'oldOwnOutputsOpenedOrCompared':False,'otherReviewerOutputsOpenedOrInferred':False,'separateTaskOrRouteReviewPerformed':False,'earlierOwnBytesRehashed':False,'limitation':'Own remembered D18/D10 work cannot be erased. First-pass claim is limited to first assessment of exact current two-goal bytes, blind to counterpart outputs; not a new independent person. No old outputs were reopened or written.'},'entry':{'path':str(root/'neutral-reviewer-a-start.md'),'sha256':sha(root/'neutral-reviewer-a-start.md'),'outputPathOverride':str(out)},'inputSeal':{'path':str(root/'current2-review-input-seal.actual.json'),'sha256':sha(root/'current2-review-input-seal.actual.json')},'bundleFingerprint':c['bundleFingerprint'],'bookDigest':c['bookDigest'],'inputPinsBefore':{'path':str(out/'input-pins.before.json'),'sha256':sha(out/'input-pins.before.json'),'allowedContentFiles':24,'includingEntryAndSeal':len(before['files']),'suppliedPinsMatchedBeforeContentReview':True},'inputPinsAfter':{'path':str(out/'input-pins.after.json'),'sha256':sha(out/'input-pins.after.json'),'allowedContentFiles':24,'includingEntryAndSeal':len(after),'unchanged':not drift},'currentContentRead':{'wholeBilingualGoals':2,'wholePProfilesAndWrappers':2,'native21Current2ContextsEntireFile':True,'standalonePContextJsonlEntireFile':True,'nativePromptCriteriaAndDSchema':True,'nativeCriterionCount':10,'sixUnderstandingEvidenceFieldsPerRecord':True,'officialExcerptsOrEffectiveProjectionEvidenceSupplied':False},'actuallyViewed':{'tool':'view_image','manualAttestation':True,'pdf':{'source':str(root/'review-bundle/book.pdf'),'physicalPages':[1,2,3,4],'frontMatter':[1,2],'goalPhysicalPages':[3,4],'renderCommand':'pdftoppm -jpeg -r 110 [allowed book.pdf] [own new output]/physical-page','renderedFiles':[str(p) for p in pages]},'originalImages':originals,'allFourPagesAndBothOriginalsActuallyDisplayed':True},'validation':{'path':str(out/'validation.json'),'sha256':sha(out/'validation.json'),'allChecksPassed':True},'outputs':{s:{'path':str(out/s),'sha256':sha(out/s)} for s in ['records.jsonl','review-explanation.md','eligibility-initial.json']},'authority':{'recordStatus':'candidate','reviewAuthority':'ai_candidate','officialSourceOrProjectionApproval':False,'learnerEvidenceOrMasteryClaimed':False,'globalStyleApproval':False,'humanApproval':False,'releaseCIOrMainAcceptanceClaimed':False,'sourceCurriculumQARegistryGitOrLearnerWrites':False}}
+with (out/'receipt.json').open('x') as f:f.write(json.dumps(receipt,ensure_ascii=False,indent=2)+'\n')
+for p in out.glob('*.json'):json.loads(p.read_text())
+for s in (out/'records.jsonl').read_text().splitlines():json.loads(s)
+name='input-output-sha256-seal.json';outputs={str(p):sha(p) for p in sorted(out.rglob('*')) if p.is_file() and p.name!=name}
+result={'sealedAtUtc':now(),'agentTask':receipt['agentTask'],'runId':run,'inputFiles':after,'allowedCurrentContentCount':24,'entryAndSealAdditionallyPinned':True,'inputBeforeAfterEqual':not drift,'outputFiles':outputs,'selfHashExcluded':True,'historicallyUnexposedPerson':False,'counterpartBlindnessOnly':True,'authorityLimit':'Byte seal and current-review candidates only; no official source/projection, learner-result, human, style, release, CI or main approval.'}
+with (out/name).open('x') as f:f.write(json.dumps(result,ensure_ascii=False,indent=2)+'\n')
+json.loads((out/name).read_text())
+print('All',len(checks),'checks passed. Two candidate records; 24 content inputs + entry/seal unchanged.')
+for s in ['records.jsonl','receipt.json',name]:print(s,sha(out/s))

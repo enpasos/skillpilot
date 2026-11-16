@@ -1,0 +1,389 @@
+{
+  "createdAtUtc": "2026-11-16T05:24:35.706666+00:00",
+  "checkpoint": "4286f492507f4273b96a02a73aba495c27bbc2b0",
+  "baseline": "b5d770e58bcaa81ae637150177e18f93248ea72f",
+  "candidateSourcePins": [
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+      "sha256": "23dacadeec2a665184833631a7812312799b5dac98b17b12e79e28c2e8fe3507"
+    },
+    {
+      "path": "backend/src/test/java/com/skillpilot/backend/service/AutomaticCompletionAtomicDomainTest.java",
+      "sha256": "151eba734a453b71b5e5c0bb54af0cd3ec977bca8d56013b00dcbd50c6db61fc"
+    }
+  ],
+  "focused": {
+    "exit": 0,
+    "tests": 40,
+    "passed": 40,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "fullCompletion": {
+    "exit": 0,
+    "classes": 16,
+    "tests": 137,
+    "passed": 136,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 1
+  },
+  "publicB5Replay": {
+    "exit": 0,
+    "contexts": 28,
+    "publicStates": 56,
+    "actualAutomaticCompileCalls": 168,
+    "compilationFailures": 0,
+    "unknownOrClusterTargets": 0,
+    "scope": "HE only, mathematics/physics, G8/G9, applicable stages/courses, default+narrow actual focus; not universal"
+  },
+  "callerAudit": {
+    "callInstances": 16,
+    "sourceLinesWithCalls": 14,
+    "path": "11-isAtomicGoal-callsite-audit.actual.json"
+  },
+  "beforeAfterGuard": {
+    "reconstructedCandidateWithoutGuard": "expected actual NullPointerException confirmed",
+    "fixedCandidate": "same new regression passes",
+    "notBaselineProduction": true
+  },
+  "integration": "local-only sparse-worktree evidence; no commit/push/merge or CI-success claim by this agent",
+  "files": [
+    {
+      "path": "01-focused-null-navigation-regression.actual.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "01-focused-null-navigation-regression.actual.log",
+      "bytes": 13524,
+      "sha256": "1db098c4ad68d3f6da98319eb294bbb14aeee5423fbe8546735a1fce30144efe"
+    },
+    {
+      "path": "02-focused40-summary.actual.json",
+      "bytes": 971,
+      "sha256": "3f23e72e0a2d7be28683f7701f052054318ce01dd56879ff08720294ed3cf278"
+    },
+    {
+      "path": "03-classpath-export.actual.log",
+      "bytes": 1047,
+      "sha256": "7427c01e15d94dcd1765608490f2608ebc8a06b30fd4ef49b3c516c009fddd3d"
+    },
+    {
+      "path": "04-baseline-data-drift.actual.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "05-full-completion-suite.actual.exit",
+      "bytes": 2,
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+    },
+    {
+      "path": "05-full-completion-suite.actual.log",
+      "bytes": 26072,
+      "sha256": "7c40e27d89a8ce87b08a85ac7159bda888cbcad16540c5c02d8f718abdc630cd"
+    },
+    {
+      "path": "06-baseline-service-javac.actual.log",
+      "bytes": 206,
+      "sha256": "f3448e4262a434e8ed3fe27290dec9e7ed08dc411cc8e9ebc5889c91012974c2"
+    },
+    {
+      "path": "06-public-harness-javac.actual.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "07-b5-public-real-view-results.actual.json",
+      "bytes": 60794,
+      "sha256": "7961afb520eec09957b4a644c92664cef5e6671e8459d17b233eff1ddd82bfe6"
+    },
+    {
+      "path": "07-b5-public-replay-command.actual.json",
+      "bytes": 35117,
+      "sha256": "6283154d8eea88aa5b3109c6c7623d3b55ffd85d65bc600754e064a943fe285a"
+    },
+    {
+      "path": "07-b5-public-replay.actual.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "07-b5-public-replay.actual.log",
+      "bytes": 333116,
+      "sha256": "281d658711d01ce76139af47b74bc45487eac770e89e0b2c39d3b98ee0134731"
+    },
+    {
+      "path": "08-baseline-fixture-drift.actual.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "09-full-completion-suite-fixtures-bound.actual.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "09-full-completion-suite-fixtures-bound.actual.log",
+      "bytes": 30822,
+      "sha256": "1c54e728ab1e191d4a930cd22e50c38e4816c74815e15b5aeda3a0782d3a6c1d"
+    },
+    {
+      "path": "10-b5-public-reachability-summary.actual.json",
+      "bytes": 1108,
+      "sha256": "da4354c05c423a7b11354915c410a1739a06733d27fe32d89ad76546c1668788"
+    },
+    {
+      "path": "11-isAtomicGoal-callsite-audit.actual.json",
+      "bytes": 5442,
+      "sha256": "0aa319fee0073da1fe634e3bcd19c8415f6c3b6559cfc8349cd398904c9972d9"
+    },
+    {
+      "path": "12-frozen-sourcepins.actual.json",
+      "bytes": 1353,
+      "sha256": "2d4ff6d76667ab1d697ec67b98ffff453b126c7d0991e8f532d4ea418ab9873c"
+    },
+    {
+      "path": "13-check-commands.actual.json",
+      "bytes": 1623,
+      "sha256": "ff3245ee958aa762e3ada4f70898735e8bc699c26220b38d27fa58303cf0fa14"
+    },
+    {
+      "path": "14-null-guard-before-after.actual.json",
+      "bytes": 813,
+      "sha256": "2a0ada504159c861099e7db635f211b802f7d3cbd87d9c68979b0ad2dcd53b77"
+    },
+    {
+      "path": "14-null-guard-before-after.actual.log",
+      "bytes": 439,
+      "sha256": "e5a0aa35bc868528188cc8064e2f52a5d5f8255a2b655956907f226f0eca45e7"
+    },
+    {
+      "path": "15-full-completion-summary.actual.json",
+      "bytes": 24658,
+      "sha256": "e4132844dff96b236daad2b009bb5714a39b0afc89a5c7c6d857db44d6742f72"
+    },
+    {
+      "path": "NullNavigationRegressionReplay.java",
+      "bytes": 704,
+      "sha256": "14c5b704c9d5f0d0c5ba65ef03f586676f1e47704d4984311545c2f98438f1df"
+    },
+    {
+      "path": "PublicAtomicDomainReplay.java",
+      "bytes": 7099,
+      "sha256": "46f3d9e97ff853acfd1c81f1eb0c59e2058147b43fa33b1acec6e83b1c608108"
+    },
+    {
+      "path": "README.md",
+      "bytes": 7356,
+      "sha256": "eced2ef6e3b1c8c81bf2dbdbe58b132ce64fa0d7ac94cd04e467557003fe028a"
+    },
+    {
+      "path": "audit-classpath.init.gradle",
+      "bytes": 242,
+      "sha256": "31f25224a9f7c682d1e4eba17afaf1cfa76ad1d9bcf9d352ccf8a4be159095d8"
+    },
+    {
+      "path": "baseline-source/com/skillpilot/backend/service/LearnerService.java",
+      "bytes": 637533,
+      "sha256": "ccb063bb5b1a11161ca8f3b327d067381b78342901a7471be28a553eaf012a7f"
+    },
+    {
+      "path": "candidate-source/backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+      "bytes": 638166,
+      "sha256": "23dacadeec2a665184833631a7812312799b5dac98b17b12e79e28c2e8fe3507"
+    },
+    {
+      "path": "candidate-source/backend/src/test/java/com/skillpilot/backend/service/AutomaticCompletionAtomicDomainTest.java",
+      "bytes": 6915,
+      "sha256": "151eba734a453b71b5e5c0bb54af0cd3ec977bca8d56013b00dcbd50c6db61fc"
+    },
+    {
+      "path": "focused-junit/TEST-com.skillpilot.backend.composition.StagePlanRuntimeIndexTest.xml",
+      "bytes": 2619,
+      "sha256": "dd38defd3529673dff40cecb8e72bbc626e6f6bca4b3f7d477f320cb70208017"
+    },
+    {
+      "path": "focused-junit/TEST-com.skillpilot.backend.service.AutomaticCompletionAtomicDomainTest.xml",
+      "bytes": 1233,
+      "sha256": "4fe11ea492724314447b1808ddf853459ceeb6bea556313005c57280888fea13"
+    },
+    {
+      "path": "focused-junit/TEST-com.skillpilot.backend.service.PackageCompositionViewConsumerTest.xml",
+      "bytes": 3725,
+      "sha256": "40beb92ba10cb8d04d1dc4eee9fd79ad6e5e45796930f6718f4109dd82d9c32e"
+    },
+    {
+      "path": "focused-junit/TEST-com.skillpilot.backend.service.PersonalCurriculumLearningScopeIntegrationTest.xml",
+      "bytes": 4647,
+      "sha256": "43d514d0076c15d5dcc77b33c34a52d3a4c82b22f878c5da586eee8200a62a07"
+    },
+    {
+      "path": "full-completion-junit/TEST-com.skillpilot.backend.completion.AutomaticCompletionApplicationServiceTest.xml",
+      "bytes": 1495,
+      "sha256": "f8e5b2d85d2183d700ca23c4a95d7891f828fb448c063a25b736c4bad0dfffb6"
+    },
+    {
+      "path": "full-completion-junit/TEST-com.skillpilot.backend.completion.AutomaticCompletionTest.xml",
+      "bytes": 3254,
+      "sha256": "e1bb3c6ff9a80ceaa5ba0f688dfbd1d5fd7ac723fa908f72687833cfd7c7d531"
+    },
+    {
+      "path": "full-completion-junit/TEST-com.skillpilot.backend.completion.AutomaticLearningPlanCompletionProjectionTest.xml",
+      "bytes": 1762,
+      "sha256": "9bb50d9ebf2a3c3c5ea164431c6b548cd755bc767de21d2d4d731bf7664923b2"
+    },
+    {
+      "path": "full-completion-junit/TEST-com.skillpilot.backend.completion.CanonicalRequiredLearningGateTest.xml",
+      "bytes": 70298,
+      "sha256": "24ab58476b1874b329e82049b23a76fc46a201fc5e740f8b0c8c1788ca632c16"
+    },
+    {
+      "path": "full-completion-junit/TEST-com.skillpilot.backend.completion.CompletionApplicabilityTest.xml",
+      "bytes": 847,
+      "sha256": "f130e30807eb566028fa9c8c18340fb827269d58b4769c2a0bd298b58762e8cb"
+    },
+    {
+      "path": "full-completion-junit/TEST-com.skillpilot.backend.completion.CompletionApplicationServiceTest.xml",
+      "bytes": 1440,
+      "sha256": "b2ae4c32cc87ba8dba4fc4ed1a1b533da557ef53e12b1295c806702c594d0e28"
+    },
+    {
+      "path": "full-completion-junit/TEST-com.skillpilot.backend.completion.CompletionCanonicalGraphResolverTest.xml",
+      "bytes": 3121,
+      "sha256": "209462bf87375e48a044faf40e87c00e9989f2d16e8de4ab8608a49879031900"
+    },
+    {
+      "path": "full-completion-junit/TEST-com.skillpilot.backend.completion.CompletionCatalogTest.xml",
+      "bytes": 6488,
+      "sha256": "bef5907bc5dae1ced51060d5b9b28668c33ec9b19e7340af504aed4ee1b39b9a"
+    },
+    {
+      "path": "full-completion-junit/TEST-com.skillpilot.backend.completion.CompletionCoreTest.xml",
+      "bytes": 4928,
+      "sha256": "50ce8feb10891bbd35c7af347fc6f04db397333fdb11e2be22b2aa2b22eef984"
+    },
+    {
+      "path": "full-completion-junit/TEST-com.skillpilot.backend.completion.CompletionPerformanceTest.xml",
+      "bytes": 553,
+      "sha256": "1827345ba2ba00c75ac6b25a4b3b3f3900952438d18fcd95299f0b001bea95d6"
+    },
+    {
+      "path": "full-completion-junit/TEST-com.skillpilot.backend.completion.CompletionResponseProjectionTest.xml",
+      "bytes": 701,
+      "sha256": "b9fdab690e5d2ccfb3ad1f4566b286857d2b0bae09ae4cc701a12367454435c7"
+    },
+    {
+      "path": "full-completion-junit/TEST-com.skillpilot.backend.completion.CompletionTelemetryTest.xml",
+      "bytes": 1035,
+      "sha256": "840e9b82a08f5117e1d72a4b65a848ee16a1e0379514353fa49d5d54e3d6f115"
+    },
+    {
+      "path": "full-completion-junit/TEST-com.skillpilot.backend.completion.CompletionWarmupRunnerTest.xml",
+      "bytes": 3267,
+      "sha256": "ccf09de0c1a43d67eb8a92783b5938ee8b6da7d3c9b2771383dc0a6b96883eaf"
+    },
+    {
+      "path": "full-completion-junit/TEST-com.skillpilot.backend.completion.LearningPlanCompletionProjectionTest.xml",
+      "bytes": 1805,
+      "sha256": "3ab3c390534c201a6a683f4176a137648b0f31d12f3da8123d3bc7280291c4e2"
+    },
+    {
+      "path": "full-completion-junit/TEST-com.skillpilot.backend.completion.PersonalCurriculumLearningScopeTest.xml",
+      "bytes": 2034,
+      "sha256": "d0e66b9b34a78ea78ae1ae9b39ecc0be1958f0c6265efce143d90c8fac60bc73"
+    },
+    {
+      "path": "full-completion-junit/TEST-com.skillpilot.backend.completion.PrerequisiteTopologyReuseTest.xml",
+      "bytes": 1228,
+      "sha256": "314f34f70d030d53eeb4f71ab211e8512407a64cb1956be10db8998579e004fa"
+    },
+    {
+      "path": "full-suite-missing-fixture-junit/TEST-com.skillpilot.backend.completion.AutomaticCompletionApplicationServiceTest.xml",
+      "bytes": 1493,
+      "sha256": "da3949e19bd5269f2a9b77148751197e7ee0a87b8a3c0ff9f59d20c74a01bfee"
+    },
+    {
+      "path": "full-suite-missing-fixture-junit/TEST-com.skillpilot.backend.completion.AutomaticCompletionTest.xml",
+      "bytes": 3254,
+      "sha256": "38caed64b149fe9716bf1e3973502bd6dc59a41bd41e4fada867d4e04574d2a7"
+    },
+    {
+      "path": "full-suite-missing-fixture-junit/TEST-com.skillpilot.backend.completion.AutomaticLearningPlanCompletionProjectionTest.xml",
+      "bytes": 1763,
+      "sha256": "9d257e028f34213a7642401dc74353ca4e7aa5721dfe1a36c2f864648ca09657"
+    },
+    {
+      "path": "full-suite-missing-fixture-junit/TEST-com.skillpilot.backend.completion.CanonicalRequiredLearningGateTest.xml",
+      "bytes": 70297,
+      "sha256": "c7b3df31f62486f1a15226e4a520bdce89b3e9b7d8363ebeba174f567ce17e59"
+    },
+    {
+      "path": "full-suite-missing-fixture-junit/TEST-com.skillpilot.backend.completion.CompletionApplicabilityTest.xml",
+      "bytes": 848,
+      "sha256": "ed66ebc6bdcb0baaae81067d92badccb7aab263fbfcc5e5022f8d100f9250e9b"
+    },
+    {
+      "path": "full-suite-missing-fixture-junit/TEST-com.skillpilot.backend.completion.CompletionApplicationServiceTest.xml",
+      "bytes": 1439,
+      "sha256": "18fa3c5779fda924817b1c43394a0b5e8dfbfa4b32d6714e02e06b9128509bc4"
+    },
+    {
+      "path": "full-suite-missing-fixture-junit/TEST-com.skillpilot.backend.completion.CompletionCanonicalGraphResolverTest.xml",
+      "bytes": 3121,
+      "sha256": "fb68b24512ad0b8538213ee326231b84a317af7f7aa8b75ac93aa28bf8728f94"
+    },
+    {
+      "path": "full-suite-missing-fixture-junit/TEST-com.skillpilot.backend.completion.CompletionCatalogTest.xml",
+      "bytes": 6482,
+      "sha256": "b0a09965bec9a2b3d298d2bc3c26f9070d2fcc7f0cdc34e4c890cce39d46abfe"
+    },
+    {
+      "path": "full-suite-missing-fixture-junit/TEST-com.skillpilot.backend.completion.CompletionCoreTest.xml",
+      "bytes": 1941,
+      "sha256": "b7ac23f8e4080fa431cf0b4add045f7539bbc59c55b695736147d0c66ac8841b"
+    },
+    {
+      "path": "full-suite-missing-fixture-junit/TEST-com.skillpilot.backend.completion.CompletionPerformanceTest.xml",
+      "bytes": 551,
+      "sha256": "61271c90c37f9e1c3e87c15d75f86a0fb0b3e356f9b39750ea82bcc6f8f1e64e"
+    },
+    {
+      "path": "full-suite-missing-fixture-junit/TEST-com.skillpilot.backend.completion.CompletionResponseProjectionTest.xml",
+      "bytes": 702,
+      "sha256": "c6692010721e9a19652150bcad3636e8bc38e0c86744a479688338a11904ce8c"
+    },
+    {
+      "path": "full-suite-missing-fixture-junit/TEST-com.skillpilot.backend.completion.CompletionTelemetryTest.xml",
+      "bytes": 1035,
+      "sha256": "1173dde55ac4fc19cdf5c3fbf4dafac28d8014f77e444acad5eaa7598125be3e"
+    },
+    {
+      "path": "full-suite-missing-fixture-junit/TEST-com.skillpilot.backend.completion.CompletionWarmupRunnerTest.xml",
+      "bytes": 3267,
+      "sha256": "ed5540b11743386bfc320914ac0ea2b27fc59cb4a970ef63346d561d3e3062e8"
+    },
+    {
+      "path": "full-suite-missing-fixture-junit/TEST-com.skillpilot.backend.completion.LearningPlanCompletionProjectionTest.xml",
+      "bytes": 1805,
+      "sha256": "9e129e6d7893a1098c850dde053a0813e6ae59f5028e08d51670fd0260cf53b5"
+    },
+    {
+      "path": "full-suite-missing-fixture-junit/TEST-com.skillpilot.backend.completion.PersonalCurriculumLearningScopeTest.xml",
+      "bytes": 2034,
+      "sha256": "6617839b84b8a3dcbb67d20900c297f8ecb1f84ff3f0fd59aaaf995210b045a1"
+    },
+    {
+      "path": "full-suite-missing-fixture-junit/TEST-com.skillpilot.backend.completion.PrerequisiteTopologyReuseTest.xml",
+      "bytes": 1228,
+      "sha256": "d9a76a5055ddd114ef7f775c5259328ed9a68c597fedda0cd14fd0dd95099c1d"
+    },
+    {
+      "path": "pre-guard-source/com/skillpilot/backend/service/LearnerService.java",
+      "bytes": 638104,
+      "sha256": "849bd900ede371ccb3995d425097e9be36de994b9f6072b1eca94e47b76f5063"
+    }
+  ]
+}

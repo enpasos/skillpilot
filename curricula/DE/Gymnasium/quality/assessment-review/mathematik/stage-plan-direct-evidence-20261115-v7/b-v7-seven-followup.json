@@ -1,0 +1,363 @@
+{
+  "status": "ACCEPT_BOUNDED_V7_CONTENT",
+  "at": "2026-11-15T15:21:58.201100+01:00",
+  "reviewer": "Second independent full-review author; independent bounded V7 follow-up B",
+  "inputManifest": "tmp/math-stage-v7-content-correction-20261115/sealed-input-manifest.json",
+  "inputManifestSHA256": "4f276a2649d2c4c78c595008d96fa9df54604170487f197345ec7b7544a6a698",
+  "originalReviewManifestSHA256": "752ba1f0aa8dbb375d02a3fe02569e5db4c2d77c598a47bbbf03b73dcf0f4674",
+  "scope": {
+    "fullOrdinaryGoalsDEEN": 7,
+    "fullNativeProfilesDEEN": 7,
+    "fullTaskSolutionPairsDEEN": 7,
+    "actualRuntimeBilingualBlocksRead": 16,
+    "changedBilingualBlocksReviewed": 12,
+    "unchangedTaskObjectsVerified": 37,
+    "totalAssessmentTasks": 44,
+    "totalCandidateGoals": 1308,
+    "SVGsReinspected": 14,
+    "OriginalPNGsReinspected": 1,
+    "syntheticOwnFairFigurePanels": 12
+  },
+  "independence": "No independent A report, author counteranswer analysis, author acceptance rationale or author execution verdict was read. Original own counterexamples and actual current seven tasks/P/solutions/runtime descriptions were read and independently recalculated. Pins establish identity, not content quality.",
+  "gradingBoundary": "All points are explicit written desk judgments of synthetic reviewer answers; no actual evaluator calls, student results, human acceptance, runtime image delivery, waivers or startability are claimed. Synthetic plots are labeled as reviewer examples and never entered into learner records.",
+  "overallReason": "All seven original blockers are concretely closed in the actual current DE/EN runtime descriptions and solutions. The original weak graph/construction omissions now cap below unchanged thresholds, while fair alternatives are explicitly accepted. Independent fresh alternatives and actual synthetic curves satisfy the current cores without forcing author exemplars.",
+  "invariantsEvidence": "independent-change-scope.actual.json",
+  "rows": [
+    {
+      "index": 18,
+      "taskId": "0b2c68f9-f9d4-57c1-af56-3b7d639f1631",
+      "primaryGoalId": "3e4032bd-4d8c-4e72-bfdd-64a34df053c9",
+      "decision": "ACCEPT_BOUNDED_V7_CONTENT",
+      "closesFindings": [
+        "G18"
+      ],
+      "readScope": {
+        "ordinaryDEEN": "full",
+        "nativePDEEN": "full",
+        "taskSolutionDEEN": "full",
+        "runtimeDescriptionDEENBlockIds": [
+          "complete-square-and-sketch",
+          "expand-downward-parabola"
+        ]
+      },
+      "independentMathematics": "x²−6x+5=x²−6x+9−4=(x−3)²−4. −2(x+1)²+8=−2x²−4x+6. Fresh points: f(1)=f(5)=0; g(−3)=g(1)=0. Symmetry axes 3 and −1 with opening factors +1 and −2 match the actual synthetic curves.",
+      "reasoningForClosure": "Both actual DE/EN blocks now require an actual learner-produced curve, identify vertex/axis/shape, and distinguish a feature list from a sketch. They explicitly accept other calculated points and intelligible hand sketches. Original no-drawing answer loses at least2 in each block.",
+      "ownOriginalCounteranswer": "f=(x−3)²−4,S(3,−4),Achsex=3,öffnetaufwärts,f(0)=5 undf(6)=5. g=−2x²−4x+6,S(−1,8),Achsex=−1,öffnetabwärts,g(0)=g(−2)=6. Ich zeichne ausdrücklich keine der beiden Skizzen.",
+      "currentWeakDeskTests": [
+        {
+          "writtenCounteranswerDE": "Die Umformungen, Scheitel, Achsen und alle Punktwerte sind richtig; ich zeichne ausdrücklich keine der beiden Kurven.",
+          "writtenCounteranswerEN": "The conversions, vertices, axes and point values are correct; I explicitly draw neither curve.",
+          "maximumPoints": 4,
+          "passingPoints": 7,
+          "verdict": "REJECT"
+        },
+        {
+          "writtenCounteranswerDE": "Ich zeichne f vollständig, lasse aber die g-Kurve trotz korrekter Ergebnisliste weg.",
+          "maximumPoints": 6,
+          "passingPoints": 7,
+          "verdict": "REJECT"
+        }
+      ],
+      "freshFairAnswer": "A complete response may use the newly drawn panels18a/18b and the checks f(1)=f(5)=0, g(−3)=g(1)=0 instead of every listed exemplar. Completing the square and expansion above justify the equivalent forms. Correct curves with these different points satisfy both blocks for8/8. A single incidental nonessential label slip with intact understanding may receive7/8; no exact-scale demand is introduced.",
+      "syntheticOwnFigureArtifacts": [
+        "fair-sketch-sheet-1.png:panels18a,18b"
+      ],
+      "preservedCoverageAndVariation": "Both P expectations remain protected in two independent upward/downward conversion-and-sketch cases.",
+      "currentDraftStatus": "draft",
+      "maxPoints": 8,
+      "passingPoints": 7,
+      "claimBoundary": "Independent written desk grading only; no real evaluator invocation or learner evidence."
+    },
+    {
+      "index": 23,
+      "taskId": "71169b14-8363-576e-9e51-002f51da08e3",
+      "primaryGoalId": "3f3557a8-7d89-4f96-8a32-e24745c34d82",
+      "decision": "ACCEPT_BOUNDED_V7_CONTENT",
+      "closesFindings": [
+        "F23"
+      ],
+      "readScope": {
+        "ordinaryDEEN": "full",
+        "nativePDEEN": "full",
+        "taskSolutionDEEN": "full",
+        "runtimeDescriptionDEENBlockIds": [
+          "horizontal-directrix",
+          "vertical-directrix-transfer"
+        ]
+      },
+      "independentMathematics": "Equal distances give x²+(y−3)²=(y+3)², hence y=x²/12, and (x−2)²+y²=(x+2)², hence x=y²/8. Fresh, unlisted choices: (±12,12) have distances √(144+81)=15 and12+3=15. (18,±12) have distances √(256+144)=20 and18+2=20. The common origin is halfway along the perpendicular focus/directrix axis in each case.",
+      "reasoningForClosure": "Both DE/EN blocks now state that the points are freely chosen, the listed pairs are examples only, and any correctly generated and justified off-axis points earn equal credit. Algebraic generation is allowed without forcing a particular parabola equation or diagram.",
+      "ownOriginalCounteranswer": "Ich wähle imerstenFall diePunkte(√12,1),(−√12,1): Abstand zumFokus√(12+4)=4, zurLeitgeraden1+3=4. Scheitel(0,0),Achsex=0, nachobenoffen. ImzweitenFall(8,±8): Fokusabstand√(36+64)=10, Leitgeradenabstand8+2=10. Scheitel(0,0),Achsey=0, Öffnungrechts.",
+      "currentWeakDeskTests": [
+        {
+          "writtenCounteranswerDE": "Die Scheitel und Achsen stimmen. Meine seitlichen Punkte nenne ich nur; einen senkrechten Leitgeradenabstand oder eine Gleichabstandsprüfung gebe ich für keinen Fall an.",
+          "maximumPoints": 4,
+          "passingPoints": 7,
+          "verdict": "REJECT"
+        },
+        {
+          "writtenCounteranswerDE": "Ich belege den ersten Fall vollständig, im zweiten nenne ich nur (18,12) und keinen zweiten seitlichen Punkt.",
+          "maximumPoints": 6,
+          "passingPoints": 7,
+          "verdict": "REJECT"
+        }
+      ],
+      "freshFairAnswer": "Im ersten Fall wähle ich (12,12) und (−12,12), im zweiten (18,12) und (18,−12). Die jeweils berechneten gleichen Abstände15 und20 zeigen die Ortslinienzugehörigkeit. Die Scheitel liegen jeweils im Ursprung; die Achsen x=0 und y=0 sowie Öffnung nach oben beziehungsweise rechts folgen aus Fokus und Leitgerade. Diese nicht im Autorbericht aufgeführten Punkte erhalten8/8. Auch die ursprünglichen fairen Paare (±√12,1) und (8,±8) erhalten8/8.",
+      "syntheticOwnFigureArtifacts": [
+        "fair-sketch-sheet-3.png:panel23"
+      ],
+      "preservedCoverageAndVariation": "Both equal-distance and point-generation P expectations remain intact under changed directrix orientation; no model or assessment demand was weakened.",
+      "currentDraftStatus": "draft",
+      "maxPoints": 8,
+      "passingPoints": 7,
+      "claimBoundary": "Independent written desk grading only; no real evaluator invocation or learner evidence."
+    },
+    {
+      "index": 32,
+      "taskId": "a8dfd3ce-7e43-560c-8ac1-c8b1ee7c5547",
+      "primaryGoalId": "82597dfb-0ec6-4a77-abaf-e1d6bdd12041",
+      "decision": "ACCEPT_BOUNDED_V7_CONTENT",
+      "closesFindings": [
+        "G32"
+      ],
+      "readScope": {
+        "ordinaryDEEN": "full",
+        "nativePDEEN": "full",
+        "taskSolutionDEEN": "full",
+        "runtimeDescriptionDEENBlockIds": [
+          "five-sixths-pi-values",
+          "reflection-and-full-turn-properties"
+        ]
+      },
+      "independentMathematics": "5π/6=π−π/6 lies in quadrantII and gives (−√3/2,1/2). Point(.6,.8) is on the unit circle because .36+.64=1. Reflection in the x-axis gives(.6,−.8). Rotation by2π returns to the same point; cosine unchanged and sine sign reversal follow from coordinates.",
+      "reasoningForClosure": "The actual DE/EN descriptions now require the learner’s own circle with the marked directed radian angle and an actual reflection/full-turn construction. A formula or coordinate list alone is expressly insufficient. A clear label θ+2π at the same point is allowed, and θ need not be evaluated numerically.",
+      "ownOriginalCounteranswer": "5π/6liegtimzweitenQuadrantenmitBezugswinkelπ/6,also(cos,sin)=(−√3/2,1/2). FürP=(.6,.8)liegen−θbei(.6,−.8)undθ+2πwiederbei(.6,.8). Spiegelunganx-Achseerhältxundnegierty;Vollumkehrerhältbeide. Daher cos(−θ)=cosθ,sin(−θ)=−sinθundbeide2π-periodisch. EinenEinheitskreiszeichneoderkonstruiereichnicht.",
+      "currentWeakDeskTests": [
+        {
+          "writtenCounteranswerDE": "Alle Winkel-, Koordinaten-, Vorzeichen- und Identitätsaussagen sind richtig. Ich zeichne und konstruiere ausdrücklich keine Kreisfigur.",
+          "writtenCounteranswerEN": "All angles, coordinates, signs and identities are correct. I explicitly draw and construct no circle figure.",
+          "maximumPoints": 4,
+          "passingPoints": 7,
+          "verdict": "REJECT"
+        },
+        {
+          "writtenCounteranswerDE": "Die erste Kreisfigur ist vorhanden; für P und sein Spiegelbild schreibe ich nur die Werte auf und konstruiere keine zweite Figur.",
+          "maximumPoints": 6,
+          "passingPoints": 7,
+          "verdict": "REJECT"
+        }
+      ],
+      "freshFairAnswer": "The actual independently drawn panels32a/32b show the radian angle in the correct quadrant, P and its reflection, and the unambiguous label θ+2π at P. With the geometric explanations above, this deserves8/8 despite no numerical θ and no separate perfectly measured full-turn arrow. The rubric explicitly permits that label form and rough hand sketches.",
+      "syntheticOwnFigureArtifacts": [
+        "fair-sketch-sheet-1.png:panels32a,32b"
+      ],
+      "preservedCoverageAndVariation": "The angle-to-coordinate case and the reflection/full-turn transfer still cover the two original P expectations; both independent constructions are now protected.",
+      "currentDraftStatus": "draft",
+      "maxPoints": 8,
+      "passingPoints": 7,
+      "claimBoundary": "Independent written desk grading only; no real evaluator invocation or learner evidence."
+    },
+    {
+      "index": 35,
+      "taskId": "5641d6c9-429d-5758-b9ba-3422b4f29950",
+      "primaryGoalId": "27b63e2e-6a34-483e-8e5a-fe0f49670d1d",
+      "decision": "ACCEPT_BOUNDED_V7_CONTENT",
+      "closesFindings": [
+        "F35"
+      ],
+      "readScope": {
+        "ordinaryDEEN": "full",
+        "nativePDEEN": "full",
+        "taskSolutionDEEN": "full",
+        "runtimeDescriptionDEENBlockIds": [
+          "own-decay-data-variation",
+          "own-growth-data-long-horizon"
+        ]
+      },
+      "independentMathematics": "80·2^(−6/4)=28.2842712475mg;80·2^(−12/4)=10mg, so strict below10 requires t>12. Half-life5 gives80·2^(−6/5)=34.8220225318mg. Growth day3=172.8 (0.2 below173), day10=619.17364224; changed factor1.1 gives259.37424601. The ratio173/144=1.2013888889 supports an approximate, not exact fit.",
+      "reasoningForClosure": "The DE/EN decay block expressly accepts any suitable pair of concrete limits, rather than all four examples; both changed-parameter extra curves are optional. The growth block still requires the original own sketch and actual numerical/contextual comparison, and explicitly says a missing additional1.1 curve cannot reduce a complete answer.",
+      "ownOriginalCounteranswer": "M=80·2^(−t/4),M6≈28.284mg;M12=10mg,erstt>12darunter. Mit5h:34.822mg,langsamer. Eigeneskizzeab80,positivfallendabflachend. ZweiGrenzen:erneuteZufuhrundindividuellunterschiedlicherAbbau. Population:N=100·1.2^twegenQuotienten≈1.2;N3=172.8statt173,N10≈619.174. EigeneSkizzesteigt. Mit1.1:N10≈259.374. BegrenzterLebensraumverhindertbeliebiglang×1.2. IchzeichnekeinezweitezusätzlicheKurvefür1.1.",
+      "currentWeakDeskTests": [
+        {
+          "writtenCounteranswerDE": "Rechnung und beide Originalskizzen sind richtig; ich nenne als einzige reale Grenze nur eine erneute Zufuhr und keine zweite Grenze.",
+          "maximumPoints": 6,
+          "passingPoints": 7,
+          "verdict": "REJECT"
+        },
+        {
+          "writtenCounteranswerDE": "Ich nenne zwei Grenzen und beide Prognosen, zeichne jedoch keine ursprüngliche Wachstumskurve.",
+          "maximumPoints": 6,
+          "passingPoints": 7,
+          "verdict": "REJECT"
+        }
+      ],
+      "freshFairAnswer": "The original fair response with exactly two limits and no extra1.1 curve now earns8/8 when accompanied by the own original curves in panels35a/35b. A fresh valid pair is delayed absorption/distribution and a changing elimination rate; the independent values above, strict t>12 statement, and resources-based horizon explanation remain required. Neither all four model-limit examples nor optional changed-parameter curves are forced.",
+      "syntheticOwnFigureArtifacts": [
+        "fair-sketch-sheet-2.png:panels35a,35b"
+      ],
+      "preservedCoverageAndVariation": "All three P expectations remain: multiplicative structure, coordinated numeric/graphic contextual interpretation, and varied assumptions/limits in independent decay and growth cases.",
+      "currentDraftStatus": "draft",
+      "maxPoints": 8,
+      "passingPoints": 7,
+      "claimBoundary": "Independent written desk grading only; no real evaluator invocation or learner evidence."
+    },
+    {
+      "index": 36,
+      "taskId": "64dafd7e-2f33-5987-a927-181b1c5f529d",
+      "primaryGoalId": "78238608-aaaa-4d12-a9de-54f325e9cf6f",
+      "decision": "ACCEPT_BOUNDED_V7_CONTENT",
+      "closesFindings": [
+        "G36"
+      ],
+      "readScope": {
+        "ordinaryDEEN": "full",
+        "nativePDEEN": "full",
+        "taskSolutionDEEN": "full",
+        "runtimeDescriptionDEENBlockIds": [
+          "compare-positive-growth-and-negative-decay-base",
+          "match-described-graph-to-one-parameter-pair",
+          "classify-degenerate-and-nondegenerate-cases",
+          "all-four-regimes"
+        ]
+      },
+      "independentMathematics": "For f=3·2^x: f(−2)=.75,f(0)=3,f(1)=6; range(0,∞), increasing, limit0 left. For g=−2·.5^x: g(−2)=−8,g(0)=−2,g(2)=−.5; range(−∞,0), increasing, limit0 right. h1 fits all inverse-match features. Constants5 and0 are boundary cases; r is negative/decreasing, and a negative base fails atx=.5. All four sign/base regimes remain correctly classified.",
+      "reasoningForClosure": "The first actual DE/EN block now demands both own curves and states that missing either makes the core incomplete. The curve must show intercept, side of axis, monotonicity and asymptotic direction. Feature lists cannot replace it; different check points and optional digital checking remain allowed.",
+      "ownOriginalCounteranswer": "f:D=R,W=(0,∞),f0=3,strengsteigend,links0vonoben,rechts∞. g:D=R,W=(−∞,0),g0=−2,g(−1)=−4,g1=−1,strengsteigend,links−∞,rechts0vonunten. h1passt;h2hatfalschesVorzeichen,h3steigtundnähertsichrechts0. p=5,q=0konstant;r0=−.5,negativfallend,links0;sbeix=.5nichtreell. VierPaare:3→6auf,3→1ab,−3→−6ab,−3→−1auf,dennMultiplikationmitagewichtetVorzeichenvonb;letzterFallwiderlegtBehauptung. IchzeichnekeinenGraphen.",
+      "currentWeakDeskTests": [
+        {
+          "writtenCounteranswerDE": "Ich beantworte alle vier Fälle vollständig und korrekt in Worten und Formeln, zeichne jedoch weder f noch g.",
+          "writtenCounteranswerEN": "I answer all four cases correctly in words and formulas but draw neither f nor g.",
+          "maximumPoints": 14,
+          "passingPoints": 15,
+          "verdict": "REJECT"
+        },
+        {
+          "writtenCounteranswerDE": "Ich zeichne nur f und gebe für g alle korrekten Merkmale an.",
+          "maximumPoints": 14,
+          "passingPoints": 15,
+          "verdict": "REJECT"
+        },
+        {
+          "writtenCounteranswerDE": "Ich zeichne nur g und gebe für f alle korrekten Merkmale an.",
+          "maximumPoints": 14,
+          "passingPoints": 15,
+          "verdict": "REJECT"
+        }
+      ],
+      "freshFairAnswer": "The own panels36a/36b use fresh check points (−2,.75),(1,6) and (−2,−8),(2,−.5), with required intercepts3 and−2. Together with correct domain/range/limit justifications and complete other three cases, they deserve16/16 without a digital graph check or the author’s exact g(−1),g(1) pair. One nonessential presentation slip may still yield15/16.",
+      "syntheticOwnFigureArtifacts": [
+        "fair-sketch-sheet-2.png:panels36a,36b"
+      ],
+      "preservedCoverageAndVariation": "All original three P expectations, minimum3 independent demonstrations, full four-regime comparison and all boundary cases remain unchanged; only the missing graphical evidence is added to its block.",
+      "currentDraftStatus": "draft",
+      "maxPoints": 16,
+      "passingPoints": 15,
+      "claimBoundary": "Independent written desk grading only; no real evaluator invocation or learner evidence."
+    },
+    {
+      "index": 38,
+      "taskId": "9dbb9fd3-a93f-53ca-82d6-bf0e0e16e9d9",
+      "primaryGoalId": "7f11ffe0-7c43-4507-9101-50374a60b0e8",
+      "decision": "ACCEPT_BOUNDED_V7_CONTENT",
+      "closesFindings": [
+        "G38"
+      ],
+      "readScope": {
+        "ordinaryDEEN": "full",
+        "nativePDEEN": "full",
+        "taskSolutionDEEN": "full",
+        "runtimeDescriptionDEENBlockIds": [
+          "ferris-wheel-height-model",
+          "tide-baseline-shift-model-variation"
+        ]
+      },
+      "independentMathematics": "The equivalent sine model14+12sin(π(t−10)/20) gives heights2,14,26,14,2,14,26,14,2 at0,10,...,80s. It has period40, minimumstart2, and both full cycles. Water baseline3.2 and3.5 with amplitude1.1 and period12 explain the later0.3 shift. The gap12→24 remains unobserved; no jump time is implied.",
+      "reasoningForClosure": "The repaired DE/EN wheel block protects an actual own two-complete-period curve with units and correctly repeated extrema/midline crossings. Complete formula/value lists expressly fail without it. Equivalent phase/sign forms and intelligible imprecise sketches remain accepted. The existing V5 water block is byte-identical.",
+      "ownOriginalCounteranswer": "h(t)=14−12cos(πt/20),Grundniveau14m,Amplitude12m,Periode40s,StartimMinimum2m. h10=14maufsteigenderMittelliniendurchgang,h20=26mMaximum. IchlassedieSkizzeaus. Wasser:w1=3.2+1.1sin(πt/6)auf[0,12],prüft3.2,4.3,3.2,2.1,3.2. Unverändertbei24,27,30,33,36jedesmal.3munterdenneuenDaten. w2=3.5+1.1sin(π(t−24)/6)auf[24,36],selbeAmplitudeundPeriode. DieFensterhabenverschiedeneGrundniveaus;derVerlaufinderLückeundderZeitpunkteinesmöglichenWechselsistunbekannt,insbesonderekeinbelegterSprungbei12.",
+      "currentWeakDeskTests": [
+        {
+          "writtenCounteranswerDE": "h=14−12cos(πt/20) und sämtliche Parameter und Höhen sind richtig; ich zeichne keine Kurve. Den Wasserfall bearbeite ich vollständig korrekt.",
+          "maximumPoints": 6,
+          "passingPoints": 7,
+          "verdict": "REJECT"
+        },
+        {
+          "writtenCounteranswerDE": "Ich zeichne nur einen vollständigen Zyklus auf0≤t≤40s; alle Rechnungen und der Wasserfall stimmen.",
+          "maximumPoints": 6,
+          "passingPoints": 7,
+          "verdict": "REJECT"
+        }
+      ],
+      "freshFairAnswer": "The independent panel38 draws the equivalent sine form over0–80s, shows the minimumstart, maxima at20/60 and repeated minima at0/40/80, with time/height units. With h(10)=14m rising and h(20)=26m maximum, and the complete unchanged water-window answer, it deserves8/8. A copied list of these nine values alone still fails. A small secondary label slip with the two cycles and all cores clear may receive7/8.",
+      "syntheticOwnFigureArtifacts": [
+        "fair-sketch-sheet-3.png:panel38"
+      ],
+      "preservedCoverageAndVariation": "The original three modeling P expectations and two varied contexts survive unchanged; the exact later-water reasoning and domain separation are retained.",
+      "currentDraftStatus": "draft",
+      "maxPoints": 8,
+      "passingPoints": 7,
+      "claimBoundary": "Independent written desk grading only; no real evaluator invocation or learner evidence."
+    },
+    {
+      "index": 40,
+      "taskId": "0220bbbc-c51f-5f7c-92e6-9ea2598baf74",
+      "primaryGoalId": "66077296-a8f8-4645-938b-7c3424cb2f14",
+      "decision": "ACCEPT_BOUNDED_V7_CONTENT",
+      "closesFindings": [
+        "G40"
+      ],
+      "readScope": {
+        "ordinaryDEEN": "full",
+        "nativePDEEN": "full",
+        "taskSolutionDEEN": "full",
+        "runtimeDescriptionDEENBlockIds": [
+          "square-root-from-formula",
+          "cube-root-from-partial-graph"
+        ]
+      },
+      "independentMathematics": "For sqrt(x−2)+1, x−2≥0 gives domain[2,∞), nonnegative root gives range[1,∞). Fresh points(27,6),(38,7) follow fromsqrt25=5,sqrt36=6. Forcuberoot(x)−2, domain/rangeR, intercept(0,−2); fresh left points(−27,−5),(−1/8,−2.5) follow from(−3)^3 and(−.5)^3. Center symmetry is about(0,−2), not the origin.",
+      "reasoningForClosure": "Both actual DE/EN blocks now protect a real own graph or completed left branch; lists of points and statements that one could draw do not suffice. They explicitly allow other points or a justified central-symmetry construction, forbid treating the clipped edge as a domain boundary, and accept intelligible hand sketches.",
+      "ownOriginalCounteranswer": "f:D=[2,∞),W=[1,∞),wegenx−2≥0undnichtnegativerWurzel. (2,1),(3,2),(6,3)liegenaufdemsteigendenGraphenmitRandpunkt(2,1). g:D=W=R,weilKubikwurzelalleReellenannimmt;strengsteigend,y-Achsenschnitt(0,−2),Graphsetztlinksfort. Ichzeichnef nichtunderweiteredenabgeschnitteneng-Graphennicht.",
+      "currentWeakDeskTests": [
+        {
+          "writtenCounteranswerDE": "Mengen, Monotonie, Rand-/Achsenschnittpunkte und alle positiven wie negativen Punktwerte sind korrekt; ich zeichne f nicht und ergänze g nicht.",
+          "writtenCounteranswerEN": "All sets, monotonicity, endpoints/intercepts and positive/negative point values are correct; I neither draw f nor complete g.",
+          "maximumPoints": 4,
+          "passingPoints": 7,
+          "verdict": "REJECT"
+        },
+        {
+          "writtenCounteranswerDE": "f ist vollständig gezeichnet; für g nenne ich nur neue negative Punktwerte, lasse aber die linke Kurve weg.",
+          "maximumPoints": 6,
+          "passingPoints": 7,
+          "verdict": "REJECT"
+        },
+        {
+          "writtenCounteranswerDE": "g ist korrekt ergänzt; für f liefere ich nur Mengen und Punkte.",
+          "maximumPoints": 6,
+          "passingPoints": 7,
+          "verdict": "REJECT"
+        }
+      ],
+      "freshFairAnswer": "The independently drawn panels40a/40b use fresh, unlisted points(27,6),(38,7), and(−27,−5),(−1/8,−2.5). The orange completion joins the existing right-side shape through(0,−2); plotted frame edges are not asserted as endpoints. Together with the domain/range and monotonicity justifications above, this satisfies8/8. A construction reflecting the given right branch about(0,−2) is equally valid without requiring exactly(−1,−3),(−8,−4).",
+      "syntheticOwnFigureArtifacts": [
+        "fair-sketch-sheet-3.png:panels40a,40b"
+      ],
+      "preservedCoverageAndVariation": "Both original nativeP expectations are covered in independent square-root construction and cube-root completion, with no relaxation of radicand/domain or signed-root semantics.",
+      "currentDraftStatus": "draft",
+      "maxPoints": 8,
+      "passingPoints": 7,
+      "claimBoundary": "Independent written desk grading only; no real evaluator invocation or learner evidence."
+    }
+  ],
+  "remainingBlockersInBoundedScope": [],
+  "explicitNonAcceptance": [
+    "No complete end-to-end public-service or real-evaluator acceptance",
+    "No runtime assessment-image availability acceptance",
+    "No prerequisite waiver/backflow acceptance",
+    "No stage-view or ordinary-requires acceptance",
+    "No learner-result transfer or write",
+    "No release-state change",
+    "No integration/main-CI completion"
+  ]
+}

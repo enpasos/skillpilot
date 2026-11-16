@@ -1,0 +1,334 @@
+{
+  "kind": "Reviewer calculations and constructed rubric examples; not learner results",
+  "calculations": {
+    "288_A": {
+      "I_2_5_A": 2.0,
+      "I_5_7_A": -2.0,
+      "I_2_7_A": 0.4,
+      "net_charge_2_7_C": 2
+    },
+    "288_B": {
+      "P_pulse_A": 3.0,
+      "P_cycle_A": 1.0,
+      "R_pulse_A": 6.0,
+      "R_cycle_A": 2.0,
+      "P_complete_cycles": 5.0,
+      "P_elapsed_complete_cycle_s": 30.0,
+      "R_charge_12_s_C": 24.0
+    },
+    "d964_A": {
+      "U_BA_V": -60.0,
+      "phi_B_V": -50.0,
+      "positive_deltaE_uJ": -119.99999999999999,
+      "positive_W_uJ": 119.99999999999999,
+      "negative_deltaE_uJ": 119.99999999999999,
+      "negative_W_uJ": -119.99999999999999,
+      "reverse_U_AB_V": 60.0,
+      "reverse_positive_deltaE_uJ": 119.99999999999999,
+      "reverse_positive_W_uJ": -119.99999999999999,
+      "shifted_phi_A_V": 90,
+      "shifted_phi_B_V": 30.0
+    },
+    "d964_B": {
+      "straight_distance_m": 0.1,
+      "parallel_distance_m": 0.06,
+      "U_QP_V": -90.0,
+      "phi_Q_V": -90.0,
+      "negative_deltaE_uJ": 359.99999999999994,
+      "negative_W_uJ": -359.99999999999994,
+      "wrong_full_distance_voltage_magnitude_V": 150.0,
+      "perpendicular_U_V": 0,
+      "perpendicular_W_uJ": 0.0
+    }
+  },
+  "counterexamples": [
+    {
+      "taskId": "28884133-b448-5eb2-a589-8907a78d7687",
+      "kind": "constructed-missing-core-upper-bound",
+      "step": "k1",
+      "constructedResponseDefect": "Uses counter readings divided by absolute clock times instead of matching net differences and interval durations.",
+      "maximumStepScores": [
+        1,
+        4,
+        4,
+        4
+      ],
+      "maximumTotal": 13,
+      "passes": false,
+      "meaning": "Reviewer-constructed counterexample, not an actual learner result; absent whole evidence can receive0, so1 is a conservative bound."
+    },
+    {
+      "taskId": "28884133-b448-5eb2-a589-8907a78d7687",
+      "kind": "constructed-missing-core-upper-bound",
+      "step": "k2",
+      "constructedResponseDefect": "States that negative interval current must be replaced by its magnitude, or omits reference-direction reversal entirely.",
+      "maximumStepScores": [
+        4,
+        1,
+        4,
+        4
+      ],
+      "maximumTotal": 13,
+      "passes": false,
+      "meaning": "Reviewer-constructed counterexample, not an actual learner result; absent whole evidence can receive0, so1 is a conservative bound."
+    },
+    {
+      "taskId": "28884133-b448-5eb2-a589-8907a78d7687",
+      "kind": "constructed-missing-core-upper-bound",
+      "step": "k3",
+      "constructedResponseDefect": "Omits the pulse-versus-cycle distinction or excludes the pause when finding cycle averages.",
+      "maximumStepScores": [
+        4,
+        4,
+        1,
+        4
+      ],
+      "maximumTotal": 13,
+      "passes": false,
+      "meaning": "Reviewer-constructed counterexample, not an actual learner result; absent whole evidence can receive0, so1 is a conservative bound."
+    },
+    {
+      "taskId": "28884133-b448-5eb2-a589-8907a78d7687",
+      "kind": "constructed-missing-core-upper-bound",
+      "step": "k4",
+      "constructedResponseDefect": "Omits the new unknown charge/time calculation or the complete-cycle limitation.",
+      "maximumStepScores": [
+        4,
+        4,
+        4,
+        1
+      ],
+      "maximumTotal": 13,
+      "passes": false,
+      "meaning": "Reviewer-constructed counterexample, not an actual learner result; absent whole evidence can receive0, so1 is a conservative bound."
+    },
+    {
+      "taskId": "28884133-b448-5eb2-a589-8907a78d7687",
+      "kind": "constructed-independent-context-omitted",
+      "context": "A",
+      "maximumStepScores": [
+        0,
+        0,
+        4,
+        4
+      ],
+      "maximumTotal": 8,
+      "passes": false,
+      "meaning": "No checkable own evidence for two omitted context steps."
+    },
+    {
+      "taskId": "28884133-b448-5eb2-a589-8907a78d7687",
+      "kind": "constructed-independent-context-omitted",
+      "context": "B",
+      "maximumStepScores": [
+        4,
+        4,
+        0,
+        0
+      ],
+      "maximumTotal": 8,
+      "passes": false,
+      "meaning": "No checkable own evidence for two omitted context steps."
+    },
+    {
+      "taskId": "28884133-b448-5eb2-a589-8907a78d7687",
+      "kind": "constructed-one-minor-error-all-cores-present",
+      "step": "k1",
+      "stepScores": [
+        3,
+        4,
+        4,
+        4
+      ],
+      "total": 15,
+      "passes": true,
+      "meaning": "Only an isolated minor slip; no explicit misconception; consistent follow-through not penalised twice."
+    },
+    {
+      "taskId": "28884133-b448-5eb2-a589-8907a78d7687",
+      "kind": "constructed-one-minor-error-all-cores-present",
+      "step": "k2",
+      "stepScores": [
+        4,
+        3,
+        4,
+        4
+      ],
+      "total": 15,
+      "passes": true,
+      "meaning": "Only an isolated minor slip; no explicit misconception; consistent follow-through not penalised twice."
+    },
+    {
+      "taskId": "28884133-b448-5eb2-a589-8907a78d7687",
+      "kind": "constructed-one-minor-error-all-cores-present",
+      "step": "k3",
+      "stepScores": [
+        4,
+        4,
+        3,
+        4
+      ],
+      "total": 15,
+      "passes": true,
+      "meaning": "Only an isolated minor slip; no explicit misconception; consistent follow-through not penalised twice."
+    },
+    {
+      "taskId": "28884133-b448-5eb2-a589-8907a78d7687",
+      "kind": "constructed-one-minor-error-all-cores-present",
+      "step": "k4",
+      "stepScores": [
+        4,
+        4,
+        4,
+        3
+      ],
+      "total": 15,
+      "passes": true,
+      "meaning": "Only an isolated minor slip; no explicit misconception; consistent follow-through not penalised twice."
+    },
+    {
+      "taskId": "d96479ce-5d3e-57e9-83f4-a8ba2e7ddaa8",
+      "kind": "constructed-missing-core-upper-bound",
+      "step": "k1",
+      "constructedResponseDefect": "Claims field work equals potential-energy change or omits the negative-charge sign decision entirely.",
+      "maximumStepScores": [
+        1,
+        4,
+        4,
+        4
+      ],
+      "maximumTotal": 13,
+      "passes": false,
+      "meaning": "Reviewer-constructed counterexample, not an actual learner result; absent whole evidence can receive0, so1 is a conservative bound."
+    },
+    {
+      "taskId": "d96479ce-5d3e-57e9-83f4-a8ba2e7ddaa8",
+      "kind": "constructed-missing-core-upper-bound",
+      "step": "k2",
+      "constructedResponseDefect": "Claims that adding80V to all potentials changes voltage/work, or omits reversal/reference reasoning.",
+      "maximumStepScores": [
+        4,
+        1,
+        4,
+        4
+      ],
+      "maximumTotal": 13,
+      "passes": false,
+      "meaning": "Reviewer-constructed counterexample, not an actual learner result; absent whole evidence can receive0, so1 is a conservative bound."
+    },
+    {
+      "taskId": "d96479ce-5d3e-57e9-83f4-a8ba2e7ddaa8",
+      "kind": "constructed-missing-core-upper-bound",
+      "step": "k3",
+      "constructedResponseDefect": "Uses the full10cm to claim150V without field-parallel projection, or omits the independent oblique case.",
+      "maximumStepScores": [
+        4,
+        4,
+        1,
+        4
+      ],
+      "maximumTotal": 13,
+      "passes": false,
+      "meaning": "Reviewer-constructed counterexample, not an actual learner result; absent whole evidence can receive0, so1 is a conservative bound."
+    },
+    {
+      "taskId": "d96479ce-5d3e-57e9-83f4-a8ba2e7ddaa8",
+      "kind": "constructed-missing-core-upper-bound",
+      "step": "k4",
+      "constructedResponseDefect": "Omits the perpendicular endpoint prediction or extends one constant E unchanged to a non-uniform field.",
+      "maximumStepScores": [
+        4,
+        4,
+        4,
+        1
+      ],
+      "maximumTotal": 13,
+      "passes": false,
+      "meaning": "Reviewer-constructed counterexample, not an actual learner result; absent whole evidence can receive0, so1 is a conservative bound."
+    },
+    {
+      "taskId": "d96479ce-5d3e-57e9-83f4-a8ba2e7ddaa8",
+      "kind": "constructed-independent-context-omitted",
+      "context": "A",
+      "maximumStepScores": [
+        0,
+        0,
+        4,
+        4
+      ],
+      "maximumTotal": 8,
+      "passes": false,
+      "meaning": "No checkable own evidence for two omitted context steps."
+    },
+    {
+      "taskId": "d96479ce-5d3e-57e9-83f4-a8ba2e7ddaa8",
+      "kind": "constructed-independent-context-omitted",
+      "context": "B",
+      "maximumStepScores": [
+        4,
+        4,
+        0,
+        0
+      ],
+      "maximumTotal": 8,
+      "passes": false,
+      "meaning": "No checkable own evidence for two omitted context steps."
+    },
+    {
+      "taskId": "d96479ce-5d3e-57e9-83f4-a8ba2e7ddaa8",
+      "kind": "constructed-one-minor-error-all-cores-present",
+      "step": "k1",
+      "stepScores": [
+        3,
+        4,
+        4,
+        4
+      ],
+      "total": 15,
+      "passes": true,
+      "meaning": "Only an isolated minor slip; no explicit misconception; consistent follow-through not penalised twice."
+    },
+    {
+      "taskId": "d96479ce-5d3e-57e9-83f4-a8ba2e7ddaa8",
+      "kind": "constructed-one-minor-error-all-cores-present",
+      "step": "k2",
+      "stepScores": [
+        4,
+        3,
+        4,
+        4
+      ],
+      "total": 15,
+      "passes": true,
+      "meaning": "Only an isolated minor slip; no explicit misconception; consistent follow-through not penalised twice."
+    },
+    {
+      "taskId": "d96479ce-5d3e-57e9-83f4-a8ba2e7ddaa8",
+      "kind": "constructed-one-minor-error-all-cores-present",
+      "step": "k3",
+      "stepScores": [
+        4,
+        4,
+        3,
+        4
+      ],
+      "total": 15,
+      "passes": true,
+      "meaning": "Only an isolated minor slip; no explicit misconception; consistent follow-through not penalised twice."
+    },
+    {
+      "taskId": "d96479ce-5d3e-57e9-83f4-a8ba2e7ddaa8",
+      "kind": "constructed-one-minor-error-all-cores-present",
+      "step": "k4",
+      "stepScores": [
+        4,
+        4,
+        4,
+        3
+      ],
+      "total": 15,
+      "passes": true,
+      "meaning": "Only an isolated minor slip; no explicit misconception; consistent follow-through not penalised twice."
+    }
+  ]
+}

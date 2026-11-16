@@ -455,6 +455,7 @@ test('source coverage visibility follows composition target roles, not requires-
     },
     requires: [],
     contains,
+    applicability: { jurisdiction: [JURISDICTION] },
   })
   const landscape: SkillLandscape = {
     landscapeId: LANDSCAPE,
@@ -488,6 +489,36 @@ test('source coverage visibility follows composition target roles, not requires-
     [...collectAuthoritativeTargetAtomicGoalIds(landscape, view)].sort(),
     ['target'],
   )
+})
+
+test('source coverage targets match actual HE/BB exclusions and raw BY Mathematics bindings', () => {
+  const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
+  const read = (file: string) => JSON.parse(readFileSync(resolve(root, file), 'utf8'))
+  const physics = read('curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json') as SkillLandscape
+  const byOnly = ['d61ea362-f6c3-5eab-ac30-2d0e265ac0f6', '677a192d-8bbe-57fc-bb7a-1c1ed5fba32b']
+  const physicsView = (name: string) => read(`curricula/DE/Gymnasium/composition-views/physik/${name}.view.json`)
+  for (const name of ['de-he-gk', 'de-he-lk', 'de-bb-gk', 'de-bb-lk']) {
+    const selected = collectAuthoritativeTargetAtomicGoalIds(physics, physicsView(name))
+    for (const id of byOnly) assert(!selected.has(id), `${name}: a broad subtree cannot select a BY-only atom`)
+  }
+  for (const name of ['de-by-gk', 'de-by-lk']) {
+    const selected = collectAuthoritativeTargetAtomicGoalIds(physics, physicsView(name))
+    for (const id of byOnly) assert(selected.has(id), `${name}: actual BY targets must remain visible`)
+  }
+  // A really exposed but unsupported HE atom stays in the denominator. Scope
+  // selection must not depend on the subsequent source-coverage verdict.
+  const unsupported = structuredClone(physics)
+  unsupported.goals.find(goal => goal.id === byOnly[0])!.applicability = { jurisdiction: ['DE-BY', 'DE-HE'] }
+  assert(collectAuthoritativeTargetAtomicGoalIds(unsupported, physicsView('de-he-gk')).has(byOnly[0]))
+
+  const math = read('curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json') as SkillLandscape
+  const mappedTask = '2f8a3a90-717d-5ac1-b54e-facca26e9008'
+  assert(!math.goals.find(goal => goal.id === mappedTask)!.applicability?.jurisdiction?.includes('DE-BY'))
+  const mathView = (name: string) => read(`curricula/DE/Gymnasium/composition-views/mathematik/${name}.view.json`)
+  assert(collectAuthoritativeTargetAtomicGoalIds(math, mathView('de-by-lk')).has(mappedTask),
+    'Raw direct BY mapping retains the actual LK target even when applicability omits BY')
+  assert(!collectAuthoritativeTargetAtomicGoalIds(math, mathView('de-by-gk')).has(mappedTask),
+    'The course rule must not invent a target absent from the authored GK projection')
 })
 
 test('APV-202 is based only on source evidence', () => {
@@ -733,4 +764,36 @@ test('assessment, practice, examData, and chains through them fail closed', () =
     [['assessment-hop', 'terminal-direct'], ['ordinary-start', 'assessment-hop']],
   )
   assert.equal(coverage.hasCoverageBackedJurisdictionEvidence(start), false)
+})
+
+
+test('excluded assessment endpoints stay excluded during requires and explicit-basis refresh', () => {
+  const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
+  const catalog = getAllJsonFiles(resolve(repoRoot, 'curricula/DE/Gymnasium/canonical'))
+    .map(file => ({ file, landscape: JSON.parse(readFileSync(file, 'utf8')) as SkillLandscape }))
+  const physics = catalog.find(entry => entry.landscape.landscapeId === '7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a')!.landscape
+  const root = physics.goals.find(goal => goal.tags?.includes('root'))!
+  const prerequisite = 'e5bc2227-d900-585f-8ac0-9d3f1cb40e27'
+  const fixture = (id: string, excluded: boolean, explicitBasis: boolean): LearningGoal => ({
+    id, title: id, type: 'atomic', contains: [], requires: [prerequisite], tags: ['Practice', 'Assessment'],
+    extendedData: {
+      applicabilityFromRequires: true,
+      ...(excluded ? { applicabilityProjection: 'excluded' } : {}),
+      ...(explicitBasis ? { assessmentApplicabilityBasis: { kind: 'allOfGoalApplicability', goalRefs: [prerequisite] } } : {}),
+    },
+  }) as LearningGoal
+  const hidden = [fixture('fixture-excluded-requires-endpoint', true, false), fixture('fixture-excluded-basis-endpoint', true, true)]
+  const live = fixture('fixture-live-requires-endpoint', false, false)
+  physics.goals.push(...hidden, live)
+  root.contains!.push(...hidden.map(goal => goal.id), live.id)
+  const report = buildApplicabilityCompilation(catalog).reports.find(row => row.landscapeId === physics.landscapeId)!
+  const goals = new Map(report.goals.map(goal => [goal.goalId, goal]))
+  for (const endpoint of hidden) {
+    assert.deepEqual(goals.get(endpoint.id)!.compiledApplicability, {}, 'Excluded endpoints must not be resurrected by either derived predicate')
+    assert.deepEqual(goals.get(endpoint.id)!.evidence, [])
+  }
+  assert.deepEqual(goals.get(live.id)!.compiledApplicability, goals.get(prerequisite)!.compiledApplicability,
+    'Ordinary active assessment-requires derivation remains in force')
+  assert(goals.get(live.id)!.evidence.some(entry => entry.kind === 'assessment-requires'))
+  assert.equal(report.findings.filter(finding => finding.severity === 'error' && [...hidden, live].some(goal => goal.id === finding.goalId)).length, 0)
 })

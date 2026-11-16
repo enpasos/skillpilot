@@ -1,0 +1,684 @@
+{
+  "signedAt": "2026-11-15T18:50:47.196539+00:00",
+  "reviewer": "Independent agent /root/land_stage_excerpts; not old-task author, replacement-task author or root-disposition author",
+  "decision": "boundedHistoricalDispositionAcceptedWithClarifications",
+  "scope": "Independent actual content reading of all eight original task/solution/scoring bodies versus all24 current whole-goal texts, plus the19 concrete successor bodies actually mapped to these claims. Not a blind D/P acceptance of all27 new tasks, route test, native applicability check or CI result.",
+  "inputPins": [
+    {
+      "path": "tmp/physics-q1-root-nine-review-20261115/old-eight-coverage-disposition.actual.json",
+      "sha256": "bddc7b95aa63fc788e2573507d97a7a5510081a7a762063338a8e4f6c77c3eb7"
+    },
+    {
+      "path": "tmp/physics-release809-20261115/q1-whole-goal-review-priorities.actual.json",
+      "sha256": "b586255f3d43f010204b2f901f2235d67c15ebf496ded6c3aa41e38d8d8f3d77"
+    },
+    {
+      "path": "tmp/physics-q1-successor-integration-20261115/canonical.candidate.json",
+      "sha256": "0ee07f2a91e3ac9f33d07db9808bb2c5cbbc662daac954c73323367f19472ef6"
+    }
+  ],
+  "counts": {
+    "oldTasks": 8,
+    "withdrawnCurrentClaimOccurrences": 27,
+    "distinctWholeGoals": 24,
+    "totalNewTasksReportedByAuthor": 27,
+    "concreteMappedReplacementTasksActuallyRead": 19
+  },
+  "numericIndependentChecks": {
+    "electrostaticGap": {
+      "gap_m": "0.008",
+      "pathLength_m": "0.015",
+      "field_V_per_m": "2.00E+5",
+      "solutionParallelPotentialDifference_V": "3000",
+      "physicalMaximumPotentialDifferenceForTwoPointsInsideIdealGap_V": "1600",
+      "conclusion": "15 mm total path may fit obliquely/parallel to plates. A 15 mm displacement projection ALONG E cannot lie inside an 8 mm ideal gap. The statement is underdetermined without orientation; the worked Es=3000 V assumption is incompatible with that geometry."
+    },
+    "strictMrtBoundary": {
+      "mean_T": "0.600",
+      "maxRelativeDeviation": "0.02",
+      "strictlyBelow2Percent": false,
+      "peakToPeakRelativeRange": "0.04",
+      "conclusion": "Exactly 2% does not meet a strictly less-than-2% bound; interpreting fluctuation as full range gives 4%. Unspecified rounding/measurement errors cannot establish that the true field is below the bound."
+    },
+    "millikan": {
+      "E_V_per_m": "171428.5714285714285714285714",
+      "q_C": "1.3734E-19",
+      "q_over_e": "0.8573033707865168539325842697",
+      "uncertaintyProvided": false,
+      "conclusion": "Arithmetic is consistent with q/e approximately0.857. Agreement with n=1 requires an uncertainty/model-error allowance not supplied; a single derived charge cannot substantiate the whole quantization goal. Do not describe the calculation itself as false."
+    }
+  },
+  "rows": [
+    {
+      "taskId": "5e64eacd-5204-5028-af23-02a43377c56e",
+      "title": "RC-Kreis und Dielektrika modellieren",
+      "decision": "WITHDRAW_ALL_CURRENT_WHOLE_GOAL_CLAIMS",
+      "ownContentReason": "The old task estimates a charging time and capacitance ratio and qualitatively reads an already supplied charging ODE. It neither elicits dielectric polarization nor selects/verifies an exponential ansatz nor derives/solves the signed discharging ODE. All three current whole-goal claims are unsupported. Some RC estimation practice remains physically usable; withdrawal is about whole-goal evidence, not universal uselessness.",
+      "withdrawnClaimIds": [
+        "73b309ed-1aab-5778-8494-d9b65f5a352b",
+        "09f2cdbd-64e0-55d2-ada7-1190f4fd50df",
+        "330808f6-789a-583d-86df-e271a7683d8b"
+      ],
+      "replacementTaskIds": [
+        "7653d84d-124c-5ad0-a5d9-394d51ec0e8b",
+        "c851ec7f-31cc-5fd5-a38a-7f242bcf8cd1"
+      ]
+    },
+    {
+      "taskId": "72ee642f-7574-517e-abd6-17d699b05af6",
+      "title": "Linearbeschleuniger und Relativitaetsgrenze",
+      "decision": "WITHDRAW_ALL_CURRENT_WHOLE_GOAL_CLAIMS",
+      "ownContentReason": "The two nonrelativistic speed calculations are numerically reasonable and both exceed the stated0.30c limit. The task never elicits relativistic momentum or interpretation of invariant rest mass; qualitative model-change reasoning can be omitted while still passing. Thus the complete current accelerator and relativistic-excursus claims cannot remain.",
+      "withdrawnClaimIds": [
+        "74a74132-fa39-541c-8d3c-696cf228452d",
+        "8d34228c-da38-5c1e-97cc-571f3eafb9f4"
+      ],
+      "replacementTaskIds": [
+        "2df9d685-3f11-5124-b769-a4bad14a34f4"
+      ]
+    },
+    {
+      "taskId": "783c1ffe-d983-5c5a-8897-2c88fc64147c",
+      "title": "Kondensator, Feldenergie und Millikan-Versuch",
+      "decision": "WITHDRAW_ALL_CURRENT_WHOLE_GOAL_CLAIMS",
+      "ownContentReason": "Static capacitance/energy and one force balance do not cover charge/discharge dynamics, sigma definition, field derivation, geometry/model-limit explanation or energy transfers. The q/e arithmetic is correct but the proposed uncertainty explanation is not supported by supplied uncertainty information. Whole Millikan quantization is not demonstrated by one drop.",
+      "withdrawnClaimIds": [
+        "9f59a088-3939-59e9-821d-167fadfda782",
+        "0b4f2020-8486-5372-9cb9-6e59f698ac2d",
+        "fd9fd8ad-c4a1-5552-9ea0-1878e0636f20",
+        "0f803c37-8191-5a07-9b31-9603ded98fe2",
+        "e3bce51c-cfeb-4706-b95e-a22b76e7dd73",
+        "38e0ff49-f132-44c8-b17a-73dada5344db"
+      ],
+      "replacementTaskIds": [
+        "0236971f-8465-50bf-8c0f-cbb71a69bcf4",
+        "09c50c4c-fb3a-52f4-947f-a9bf3c083772",
+        "381f58b8-af55-5ee7-856f-e5c0f4359b31",
+        "93208b0d-2956-5aae-8aa4-bcef718f06a4",
+        "a7972e13-41f9-5f7b-bc43-5fe2699a4823"
+      ]
+    },
+    {
+      "taskId": "841edfdb-5e12-5a37-ab12-552a1d8e92ca",
+      "title": "Elektrostatik und Potenzial",
+      "decision": "WITHDRAW_ALL_CURRENT_WHOLE_GOAL_CLAIMS",
+      "ownContentReason": "The solution uses an impossible15mm field-parallel projection inside an8mm ideal plate gap; without an orientation the work is underdetermined. Other whole claims are also unelicited: orthogonal superposition, potential reference/equipotentials, charge conservation, dipole/conductor/Faraday/tip field interpretation, induction experiment and sigma. A 15mm oblique path itself is not inherently impossible.",
+      "withdrawnClaimIds": [
+        "455c65ca-814a-56ad-918a-013155883c52",
+        "1730c01d-8c85-57df-b031-c11e2a0511b1",
+        "2622bef1-bdbc-504e-b468-b600b2ca3ed8",
+        "25998fed-ea4d-4c3e-b606-e965b5d7f290",
+        "f3de5922-dd45-4fb6-87c1-525d1952dd89",
+        "9fb1dd85-11b7-4a5a-b124-27fea8d1788e",
+        "e3bce51c-cfeb-4706-b95e-a22b76e7dd73"
+      ],
+      "replacementTaskIds": [
+        "09c50c4c-fb3a-52f4-947f-a9bf3c083772",
+        "5307fc57-f913-5e44-893d-b9130f656cf5",
+        "61225322-fa5b-5414-b7da-ca90c9035adb",
+        "9fe94c34-8100-5f4c-b646-69c1983f8adc",
+        "a7972e13-41f9-5f7b-bc43-5fe2699a4823",
+        "c4edaf29-7c0c-5c86-bfc8-b5e0f3fbe96b"
+      ]
+    },
+    {
+      "taskId": "8ff2a728-fba3-538e-83e9-69bdd8e1369e",
+      "title": "Prüfungsaufgabe: Stromstärke und Spannung als Ladungsgrößen deuten",
+      "decision": "WITHDRAW_ALL_CURRENT_WHOLE_GOAL_CLAIMS",
+      "ownContentReason": "The three positive-number computations can be useful practice. The current1730 whole target additionally requires potential-difference interpretation and disclosed work/potential-energy sign convention. Those are not mandatory in the supplied solution/rubric; the complete work/voltage subtask can be omitted and10/15 still passes threshold9. The earlier withdrawn current/charge claim is not silently restored.",
+      "withdrawnClaimIds": [
+        "1730c01d-8c85-57df-b031-c11e2a0511b1"
+      ],
+      "replacementTaskIds": [
+        "a7972e13-41f9-5f7b-bc43-5fe2699a4823"
+      ]
+    },
+    {
+      "taskId": "ba29e928-a287-5de7-b3fe-5c8c3731363b",
+      "title": "Magnetfeld, Leiterkraft und Lorentzkraft",
+      "decision": "WITHDRAW_ALL_CURRENT_WHOLE_GOAL_CLAIMS",
+      "ownContentReason": "The conductor-force solution assumes a perpendicular wire orientation that the material does not supply. The radius calculation is internally consistent under the stated circular-path model, but no vector direction/charge-sign/angle/parallel limit or B-from-force measurement is elicited. Neither full conductor-force nor full Lorentz-force target is proven.",
+      "withdrawnClaimIds": [
+        "c6355a22-24cf-5d8b-88af-ea11711460fb",
+        "8c9394cb-f54a-508d-9750-4c49e31b3fa9"
+      ],
+      "replacementTaskIds": [
+        "cb45d084-4e0f-5926-958c-f1d0ce456906",
+        "d9d0fc38-14e7-5a81-8ffc-241e77d06aa8"
+      ]
+    },
+    {
+      "taskId": "d8442d03-8b7e-54b7-9d9a-dc31ce541daa",
+      "title": "Magnetische Messverfahren und Technik",
+      "decision": "WITHDRAW_ALL_CURRENT_WHOLE_GOAL_CLAIMS",
+      "ownContentReason": "The strict homogeneity verdict is mathematically wrong. More broadly, no Gaussian deflection/oscillation procedure or MRT net-magnetization/HF/relaxation/spatial-coding chain appears; Hall polarity/carrier interpretation and dipole alignment are also missing. Linear calibration and one torque magnitude are valid partial exercises, not those four whole competencies.",
+      "withdrawnClaimIds": [
+        "d02438ba-0cc9-5993-831e-5e44d35e32c4",
+        "58db62d4-458f-5e2d-9ca0-968e09f4944b",
+        "b39ae8fb-4358-5866-8adf-3d5365368eeb",
+        "52bdabb2-d9a1-56e6-bccf-ff58f299c739"
+      ],
+      "replacementTaskIds": [
+        "349586d0-68ce-5485-97a5-0c73f71bbd72",
+        "789d70ff-8ec2-5b9d-8fa0-9926cb97feab",
+        "f0c35076-ae05-574b-83b5-7419bf712a80",
+        "f5ca019e-c6f8-5392-b2f5-b0c31d075737"
+      ]
+    },
+    {
+      "taskId": "db5f4121-d4b1-5006-b2da-6e76aac72bf5",
+      "title": "Elektronenablenkung im elektrischen Feld",
+      "decision": "WITHDRAW_ALL_CURRENT_WHOLE_GOAL_CLAIMS",
+      "ownContentReason": "The static electron trajectory calculations are usable under the model. A static deflection does not establish the timebase and voltage-versus-time representation of a CRT or distinguish magnetic deflection. The Millikan claim has no corresponding droplet/quantization material at all.",
+      "withdrawnClaimIds": [
+        "5fda8623-69e0-5503-9c6d-86d054a8cf91",
+        "0f803c37-8191-5a07-9b31-9603ded98fe2"
+      ],
+      "replacementTaskIds": [
+        "93208b0d-2956-5aae-8aa4-bcef718f06a4",
+        "a2a7d916-83c6-5ed6-90f2-5c4d9e36abf3"
+      ]
+    }
+  ],
+  "contractAndScoringChecks": [
+    {
+      "oldTaskId": "5e64eacd-5204-5028-af23-02a43377c56e",
+      "oldExamDataCanonicalJsonSha256": "b020102a56779db4c8472d62771c3bf336ba587987343747d11150d0717871b6",
+      "taskSolutionScoringUnchangedInCurrentTmp837": {
+        "taskContent": true,
+        "solutionContent": true,
+        "scoring": true
+      },
+      "essentialStepCanBeOmittedAndStillPass": [
+        {
+          "stepId": "s1",
+          "remainingPoints": 22,
+          "passingPoints": 18
+        },
+        {
+          "stepId": "s2",
+          "remainingPoints": 23,
+          "passingPoints": 18
+        },
+        {
+          "stepId": "s3",
+          "remainingPoints": 22,
+          "passingPoints": 18
+        },
+        {
+          "stepId": "s4",
+          "remainingPoints": 23,
+          "passingPoints": 18
+        }
+      ]
+    },
+    {
+      "oldTaskId": "72ee642f-7574-517e-abd6-17d699b05af6",
+      "oldExamDataCanonicalJsonSha256": "3d82371790843b0027c4223d076907d219def5f001bb811fc323cc940c620994",
+      "taskSolutionScoringUnchangedInCurrentTmp837": {
+        "taskContent": true,
+        "solutionContent": true,
+        "scoring": true
+      },
+      "essentialStepCanBeOmittedAndStillPass": [
+        {
+          "stepId": "s1",
+          "remainingPoints": 22,
+          "passingPoints": 18
+        },
+        {
+          "stepId": "s2",
+          "remainingPoints": 22,
+          "passingPoints": 18
+        },
+        {
+          "stepId": "s3",
+          "remainingPoints": 23,
+          "passingPoints": 18
+        },
+        {
+          "stepId": "s4",
+          "remainingPoints": 23,
+          "passingPoints": 18
+        }
+      ]
+    },
+    {
+      "oldTaskId": "783c1ffe-d983-5c5a-8897-2c88fc64147c",
+      "oldExamDataCanonicalJsonSha256": "50a0d2ca7a4d886a49967e94b072e5d44d0ba455162eb6c4a4428eba316680c7",
+      "taskSolutionScoringUnchangedInCurrentTmp837": {
+        "taskContent": true,
+        "solutionContent": true,
+        "scoring": true
+      },
+      "essentialStepCanBeOmittedAndStillPass": [
+        {
+          "stepId": "s1",
+          "remainingPoints": 19,
+          "passingPoints": 15
+        },
+        {
+          "stepId": "s2",
+          "remainingPoints": 19,
+          "passingPoints": 15
+        },
+        {
+          "stepId": "s3",
+          "remainingPoints": 17,
+          "passingPoints": 15
+        },
+        {
+          "stepId": "s4",
+          "remainingPoints": 20,
+          "passingPoints": 15
+        }
+      ]
+    },
+    {
+      "oldTaskId": "841edfdb-5e12-5a37-ab12-552a1d8e92ca",
+      "oldExamDataCanonicalJsonSha256": "8cc785306d7a58a3390f6b7b5c064672f30201e0478075ee5d598bac3ada8fd1",
+      "taskSolutionScoringUnchangedInCurrentTmp837": {
+        "taskContent": true,
+        "solutionContent": true,
+        "scoring": true
+      },
+      "essentialStepCanBeOmittedAndStillPass": [
+        {
+          "stepId": "s1",
+          "remainingPoints": 22,
+          "passingPoints": 18
+        },
+        {
+          "stepId": "s2",
+          "remainingPoints": 23,
+          "passingPoints": 18
+        },
+        {
+          "stepId": "s3",
+          "remainingPoints": 22,
+          "passingPoints": 18
+        },
+        {
+          "stepId": "s4",
+          "remainingPoints": 23,
+          "passingPoints": 18
+        }
+      ]
+    },
+    {
+      "oldTaskId": "8ff2a728-fba3-538e-83e9-69bdd8e1369e",
+      "oldExamDataCanonicalJsonSha256": "361e3f2009832377c7302d50b9a5c6a18a7c40960e2ebc67f4909c863c0688f1",
+      "taskSolutionScoringUnchangedInCurrentTmp837": {
+        "taskContent": true,
+        "solutionContent": true,
+        "scoring": true
+      },
+      "essentialStepCanBeOmittedAndStillPass": [
+        {
+          "stepId": "electric_quantities_1",
+          "remainingPoints": 10,
+          "passingPoints": 9
+        },
+        {
+          "stepId": "electric_quantities_2",
+          "remainingPoints": 10,
+          "passingPoints": 9
+        },
+        {
+          "stepId": "electric_quantities_3",
+          "remainingPoints": 10,
+          "passingPoints": 9
+        }
+      ]
+    },
+    {
+      "oldTaskId": "ba29e928-a287-5de7-b3fe-5c8c3731363b",
+      "oldExamDataCanonicalJsonSha256": "36e65a53a25ec5a78bbd47b5fb5759a6b6929ca93c80bbc41d4df069ca407573",
+      "taskSolutionScoringUnchangedInCurrentTmp837": {
+        "taskContent": true,
+        "solutionContent": true,
+        "scoring": true
+      },
+      "essentialStepCanBeOmittedAndStillPass": [
+        {
+          "stepId": "s1",
+          "remainingPoints": 20,
+          "passingPoints": 15
+        },
+        {
+          "stepId": "s2",
+          "remainingPoints": 19,
+          "passingPoints": 15
+        },
+        {
+          "stepId": "s3",
+          "remainingPoints": 17,
+          "passingPoints": 15
+        },
+        {
+          "stepId": "s4",
+          "remainingPoints": 19,
+          "passingPoints": 15
+        }
+      ]
+    },
+    {
+      "oldTaskId": "d8442d03-8b7e-54b7-9d9a-dc31ce541daa",
+      "oldExamDataCanonicalJsonSha256": "e196a8ada548d4f68c4d3e0514484301cd7d1a0d5d327e1cbd6e3758718aba10",
+      "taskSolutionScoringUnchangedInCurrentTmp837": {
+        "taskContent": true,
+        "solutionContent": true,
+        "scoring": true
+      },
+      "essentialStepCanBeOmittedAndStillPass": [
+        {
+          "stepId": "s1",
+          "remainingPoints": 22,
+          "passingPoints": 18
+        },
+        {
+          "stepId": "s2",
+          "remainingPoints": 25,
+          "passingPoints": 18
+        },
+        {
+          "stepId": "s3",
+          "remainingPoints": 23,
+          "passingPoints": 18
+        },
+        {
+          "stepId": "s4",
+          "remainingPoints": 25,
+          "passingPoints": 18
+        },
+        {
+          "stepId": "s5",
+          "remainingPoints": 25,
+          "passingPoints": 18
+        }
+      ]
+    },
+    {
+      "oldTaskId": "db5f4121-d4b1-5006-b2da-6e76aac72bf5",
+      "oldExamDataCanonicalJsonSha256": "00908090324b03bdc145b00993ffb452f3cde424533b141ca0f971b4d8a079d6",
+      "taskSolutionScoringUnchangedInCurrentTmp837": {
+        "taskContent": true,
+        "solutionContent": true,
+        "scoring": true
+      },
+      "essentialStepCanBeOmittedAndStillPass": [
+        {
+          "stepId": "s1",
+          "remainingPoints": 19,
+          "passingPoints": 15
+        },
+        {
+          "stepId": "s2",
+          "remainingPoints": 19,
+          "passingPoints": 15
+        },
+        {
+          "stepId": "s3",
+          "remainingPoints": 17,
+          "passingPoints": 15
+        },
+        {
+          "stepId": "s4",
+          "remainingPoints": 20,
+          "passingPoints": 15
+        }
+      ]
+    }
+  ],
+  "concreteReplacementCoverage": [
+    {
+      "taskId": "0236971f-8465-50bf-8c0f-cbb71a69bcf4",
+      "title": "Prüfungsaufgabe: Feldenergie und Energietransfer bilanzieren",
+      "currentCoveredGoalIds": [
+        "fd9fd8ad-c4a1-5552-9ea0-1878e0636f20"
+      ],
+      "relevantOldGoalIds": [
+        "fd9fd8ad-c4a1-5552-9ea0-1878e0636f20"
+      ],
+      "examDataCanonicalJsonSha256": "aa47005ce1462da795a67066b02e8ad48308dc836de2d23ba5de12cf0ac75992",
+      "taskSolutionAndEssentialRubricRead": true
+    },
+    {
+      "taskId": "09c50c4c-fb3a-52f4-947f-a9bf3c083772",
+      "title": "Prüfungsaufgabe: Plattenfeld aus Flächenladung herleiten",
+      "currentCoveredGoalIds": [
+        "38e0ff49-f132-44c8-b17a-73dada5344db",
+        "e3bce51c-cfeb-4706-b95e-a22b76e7dd73"
+      ],
+      "relevantOldGoalIds": [
+        "38e0ff49-f132-44c8-b17a-73dada5344db",
+        "e3bce51c-cfeb-4706-b95e-a22b76e7dd73"
+      ],
+      "examDataCanonicalJsonSha256": "e8632477bc870f406959745f5f2f5d2458305a445ec012a4d4a5ebc7112ba551",
+      "taskSolutionAndEssentialRubricRead": true
+    },
+    {
+      "taskId": "2df9d685-3f11-5124-b769-a4bad14a34f4",
+      "title": "Prüfungsaufgabe: Linearbeschleuniger klassisch und relativistisch prüfen",
+      "currentCoveredGoalIds": [
+        "74a74132-fa39-541c-8d3c-696cf228452d",
+        "8d34228c-da38-5c1e-97cc-571f3eafb9f4"
+      ],
+      "relevantOldGoalIds": [
+        "74a74132-fa39-541c-8d3c-696cf228452d",
+        "8d34228c-da38-5c1e-97cc-571f3eafb9f4"
+      ],
+      "examDataCanonicalJsonSha256": "4eba3ef1afe2c7d4bb67998c77b87dbc4e927959b684b684323b32881b953a6d",
+      "taskSolutionAndEssentialRubricRead": true
+    },
+    {
+      "taskId": "349586d0-68ce-5485-97a5-0c73f71bbd72",
+      "title": "Prüfungsaufgabe: Dipoldrehmoment und stabile Ausrichtung",
+      "currentCoveredGoalIds": [
+        "d02438ba-0cc9-5993-831e-5e44d35e32c4"
+      ],
+      "relevantOldGoalIds": [
+        "d02438ba-0cc9-5993-831e-5e44d35e32c4"
+      ],
+      "examDataCanonicalJsonSha256": "f404d2cba2f10501270d0a5ccf1e5c0cbd68c25f903d98d42450cbb029825bd9",
+      "taskSolutionAndEssentialRubricRead": true
+    },
+    {
+      "taskId": "381f58b8-af55-5ee7-856f-e5c0f4359b31",
+      "title": "Prüfungsaufgabe: RC-Stromrichtung und Zeitmaßstab erklären",
+      "currentCoveredGoalIds": [
+        "0b4f2020-8486-5372-9cb9-6e59f698ac2d"
+      ],
+      "relevantOldGoalIds": [
+        "0b4f2020-8486-5372-9cb9-6e59f698ac2d"
+      ],
+      "examDataCanonicalJsonSha256": "2db0c4e9cccdffca503d58ae0a0d630fcac177f40c6131f1ac22d2fb0e7bbc78",
+      "taskSolutionAndEssentialRubricRead": true
+    },
+    {
+      "taskId": "5307fc57-f913-5e44-893d-b9130f656cf5",
+      "title": "Prüfungsaufgabe: Feldvektoren mit Richtung berechnen",
+      "currentCoveredGoalIds": [
+        "455c65ca-814a-56ad-918a-013155883c52"
+      ],
+      "relevantOldGoalIds": [
+        "455c65ca-814a-56ad-918a-013155883c52"
+      ],
+      "examDataCanonicalJsonSha256": "0438da4295234ad85635581120e9fee69ebc246a82d6c4ee88791c59f3b04ba5",
+      "taskSolutionAndEssentialRubricRead": true
+    },
+    {
+      "taskId": "61225322-fa5b-5414-b7da-ca90c9035adb",
+      "title": "Prüfungsaufgabe: Potenziale und Äquipotenziallinien konstruieren",
+      "currentCoveredGoalIds": [
+        "2622bef1-bdbc-504e-b468-b600b2ca3ed8"
+      ],
+      "relevantOldGoalIds": [
+        "2622bef1-bdbc-504e-b468-b600b2ca3ed8"
+      ],
+      "examDataCanonicalJsonSha256": "9d813cf6126e98e1be53ae29a90ba9fd02af1acd4fdc1b07dbd035d3565d0d08",
+      "taskSolutionAndEssentialRubricRead": true
+    },
+    {
+      "taskId": "7653d84d-124c-5ad0-a5d9-394d51ec0e8b",
+      "title": "Prüfungsaufgabe: RC-Differenzialgleichung herleiten und überprüfen",
+      "currentCoveredGoalIds": [
+        "09f2cdbd-64e0-55d2-ada7-1190f4fd50df",
+        "330808f6-789a-583d-86df-e271a7683d8b"
+      ],
+      "relevantOldGoalIds": [
+        "09f2cdbd-64e0-55d2-ada7-1190f4fd50df",
+        "330808f6-789a-583d-86df-e271a7683d8b"
+      ],
+      "examDataCanonicalJsonSha256": "153c93df59adac1b8ac4663aeddefe10021c65ccf32f4bde6383ef3067c75d00",
+      "taskSolutionAndEssentialRubricRead": true
+    },
+    {
+      "taskId": "789d70ff-8ec2-5b9d-8fa0-9926cb97feab",
+      "title": "Prüfungsaufgabe: Zwei Gauß-Messungen zur Feldbestimmung kombinieren",
+      "currentCoveredGoalIds": [
+        "58db62d4-458f-5e2d-9ca0-968e09f4944b"
+      ],
+      "relevantOldGoalIds": [
+        "58db62d4-458f-5e2d-9ca0-968e09f4944b"
+      ],
+      "examDataCanonicalJsonSha256": "3b8207dee3ade7722de0615473720f7a16b132126a52f1ea660a09682dbdb2a6",
+      "taskSolutionAndEssentialRubricRead": true
+    },
+    {
+      "taskId": "93208b0d-2956-5aae-8aa4-bcef718f06a4",
+      "title": "Prüfungsaufgabe: Schwebedaten und Ladungsquantelung auswerten",
+      "currentCoveredGoalIds": [
+        "0f803c37-8191-5a07-9b31-9603ded98fe2"
+      ],
+      "relevantOldGoalIds": [
+        "0f803c37-8191-5a07-9b31-9603ded98fe2"
+      ],
+      "examDataCanonicalJsonSha256": "553357e1963f034ef632f8d4ff56e57b7c3778b68c1d49a173c8cf1d53297c04",
+      "taskSolutionAndEssentialRubricRead": true
+    },
+    {
+      "taskId": "9fe94c34-8100-5f4c-b646-69c1983f8adc",
+      "title": "Prüfungsaufgabe: Reibung, Wechselwirkung und Ladungsbilanz",
+      "currentCoveredGoalIds": [
+        "a6e48b88-51ed-5942-bdb8-8d2192652e0d",
+        "25998fed-ea4d-4c3e-b606-e965b5d7f290"
+      ],
+      "relevantOldGoalIds": [
+        "25998fed-ea4d-4c3e-b606-e965b5d7f290"
+      ],
+      "examDataCanonicalJsonSha256": "09516a620bd0fa5fdca01c3254156889f6272a633fab83d9e51ff476ca8256ea",
+      "taskSolutionAndEssentialRubricRead": true
+    },
+    {
+      "taskId": "a2a7d916-83c6-5ed6-90f2-5c4d9e36abf3",
+      "title": "Prüfungsaufgabe: Spannung und Zeitbasis in der Braunschen Röhre",
+      "currentCoveredGoalIds": [
+        "5fda8623-69e0-5503-9c6d-86d054a8cf91"
+      ],
+      "relevantOldGoalIds": [
+        "5fda8623-69e0-5503-9c6d-86d054a8cf91"
+      ],
+      "examDataCanonicalJsonSha256": "8c5982f8ac55cd231fbfb469d47219c9c67d64b2e7277c49d4f9493f3f10a00d",
+      "taskSolutionAndEssentialRubricRead": true
+    },
+    {
+      "taskId": "a7972e13-41f9-5f7b-bc43-5fe2699a4823",
+      "title": "Prüfungsaufgabe: Spannung, Feld und Plattengeometrie verknüpfen",
+      "currentCoveredGoalIds": [
+        "1730c01d-8c85-57df-b031-c11e2a0511b1",
+        "9f59a088-3939-59e9-821d-167fadfda782"
+      ],
+      "relevantOldGoalIds": [
+        "1730c01d-8c85-57df-b031-c11e2a0511b1",
+        "9f59a088-3939-59e9-821d-167fadfda782"
+      ],
+      "examDataCanonicalJsonSha256": "d5223d2d200b2ada3d4eea9219545d882301d29259133e673a25f5ae1635f119",
+      "taskSolutionAndEssentialRubricRead": true
+    },
+    {
+      "taskId": "c4edaf29-7c0c-5c86-bfc8-b5e0f3fbe96b",
+      "title": "Prüfungsaufgabe: Influenz, Feldlinien und Abschirmung prüfen",
+      "currentCoveredGoalIds": [
+        "9fb1dd85-11b7-4a5a-b124-27fea8d1788e",
+        "f3de5922-dd45-4fb6-87c1-525d1952dd89"
+      ],
+      "relevantOldGoalIds": [
+        "9fb1dd85-11b7-4a5a-b124-27fea8d1788e",
+        "f3de5922-dd45-4fb6-87c1-525d1952dd89"
+      ],
+      "examDataCanonicalJsonSha256": "7583bf7c16a2cbf01b2bfc44b404116dfc4e60d8bdc37cf86537cf25af643b91",
+      "taskSolutionAndEssentialRubricRead": true
+    },
+    {
+      "taskId": "c851ec7f-31cc-5fd5-a38a-7f242bcf8cd1",
+      "title": "Prüfungsaufgabe: Polarisation unter fester Ladung und Spannung",
+      "currentCoveredGoalIds": [
+        "73b309ed-1aab-5778-8494-d9b65f5a352b"
+      ],
+      "relevantOldGoalIds": [
+        "73b309ed-1aab-5778-8494-d9b65f5a352b"
+      ],
+      "examDataCanonicalJsonSha256": "460650a5d4948516267b8ec4690c711232acb283651307f0989f7552f59aab27",
+      "taskSolutionAndEssentialRubricRead": true
+    },
+    {
+      "taskId": "cb45d084-4e0f-5926-958c-f1d0ce456906",
+      "title": "Prüfungsaufgabe: Lorentzkraft und kontrollierte Bahnenvergleiche",
+      "currentCoveredGoalIds": [
+        "9854589c-5feb-4942-b90f-311ddf36eb78",
+        "8c9394cb-f54a-508d-9750-4c49e31b3fa9"
+      ],
+      "relevantOldGoalIds": [
+        "8c9394cb-f54a-508d-9750-4c49e31b3fa9"
+      ],
+      "examDataCanonicalJsonSha256": "3e6880e65ece8d12f8f40c6a24de402c3cb9eedc439a6a004c40191f51c62d49",
+      "taskSolutionAndEssentialRubricRead": true
+    },
+    {
+      "taskId": "d9d0fc38-14e7-5a81-8ffc-241e77d06aa8",
+      "title": "Prüfungsaufgabe: Leiterkraft mit Winkel und Nullpunktfehler auswerten",
+      "currentCoveredGoalIds": [
+        "c6355a22-24cf-5d8b-88af-ea11711460fb"
+      ],
+      "relevantOldGoalIds": [
+        "c6355a22-24cf-5d8b-88af-ea11711460fb"
+      ],
+      "examDataCanonicalJsonSha256": "0260ee060622059ded0195af8f15f56aec0bf66fd419c6572c88c0fdd191a679",
+      "taskSolutionAndEssentialRubricRead": true
+    },
+    {
+      "taskId": "f0c35076-ae05-574b-83b5-7419bf712a80",
+      "title": "Prüfungsaufgabe: Die MRT-Signalkette an drei Situationen erklären",
+      "currentCoveredGoalIds": [
+        "52bdabb2-d9a1-56e6-bccf-ff58f299c739"
+      ],
+      "relevantOldGoalIds": [
+        "52bdabb2-d9a1-56e6-bccf-ff58f299c739"
+      ],
+      "examDataCanonicalJsonSha256": "5a9963e15966d4414e3b9c36c37a1a7ef16b431994d798875b73ba4b45ab097a",
+      "taskSolutionAndEssentialRubricRead": true
+    },
+    {
+      "taskId": "f5ca019e-c6f8-5392-b2f5-b0c31d075737",
+      "title": "Prüfungsaufgabe: Hall-Spannung, Kalibrierung und Trägervorzeichen",
+      "currentCoveredGoalIds": [
+        "b39ae8fb-4358-5866-8adf-3d5365368eeb"
+      ],
+      "relevantOldGoalIds": [
+        "b39ae8fb-4358-5866-8adf-3d5365368eeb"
+      ],
+      "examDataCanonicalJsonSha256": "b92cdbf83edea248345b4127e1024741d2128c49ee3e86b31b7e5319c923cb3f",
+      "taskSolutionAndEssentialRubricRead": true
+    }
+  ],
+  "overallOwnDecision": "Withdrawing every current whole-goal claim is justified. All24 distinct affected goals have explicit, concretely stronger replacement coverage through19 of the27 new tasks. Historical exclusion of the eight immutable old contracts is a defensible bounded product decision, not the only logically possible response: several old bodies retain value as partial practice. It must not erase learner results or rewrite task/solution/scoring bytes, and successor availability must still be established on genuine routes.",
+  "importantLimits": [
+    "No inference that every old numerical calculation or every old task body is physically wrong.",
+    "No claim that mere successor task count proves coverage; the mapped target-specific bodies and core-enforcing rubrics were read.",
+    "No new whole-task D/P, source, native route/applicability or CI acceptance for the27 replacements.",
+    "The reported zero incoming requires on21 catalogs after K12 is Root evidence and was not rerun as part of this bounded content review."
+  ],
+  "activeWrites": 0,
+  "learnerResultWrites": 0
+}

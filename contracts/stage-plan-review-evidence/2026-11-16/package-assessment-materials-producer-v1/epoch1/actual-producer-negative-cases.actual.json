@@ -1,0 +1,22 @@
+{
+  "at": "2026-11-16T02:02:24.053931+00:00",
+  "status": "PASS_ACTUAL_PRODUCER_NEGATIVE_CASES",
+  "cases": [
+    {
+      "case": "missing-actual-task-stimulus-declaration",
+      "status": "REJECTED_BY_ACTUAL_COMPILER",
+      "error": "Required task-image references and the closed material inventory differ",
+      "profileSHA256": "11c4e60326a5f86483eb762a265c01cf7712e58e64e6da355e95bc30f98d11bb",
+      "destination": "tmp/pr159-package13-producer-independent-review-20261116/negative-model-missing-actual-task-stimulus-declaration"
+    },
+    {
+      "case": "unused-orphan-stimulus-declaration",
+      "status": "REJECTED_BY_ACTUAL_COMPILER",
+      "error": "Required task-image references and the closed material inventory differ",
+      "profileSHA256": "1680642abefbd5f250d5a7eb525420aa84b6f59fb88f21a21765f9b584645ab4",
+      "destination": "tmp/pr159-package13-producer-independent-review-20261116/negative-model-unused-orphan-stimulus-declaration"
+    }
+  ],
+  "sourceWrites": false,
+  "onlyTmpProfileAndOutputWrites": true
+}

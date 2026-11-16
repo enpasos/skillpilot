@@ -229,7 +229,7 @@
                 "order": {
                   "type": "integer",
                   "minimum": 0,
-                  "maximum": 1
+                  "maximum": 1000
                 },
                 "after": {
                   "type": "array",
@@ -239,10 +239,42 @@
                   },
                   "maxItems": 1,
                   "uniqueItems": true
+                },
+                "kind": {
+                  "enum": [
+                    "stage",
+                    "year",
+                    "phase"
+                  ]
+                },
+                "parentUnitId": {
+                  "$ref": "#/$defs/id"
+                },
+                "year": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 13
+                },
+                "phase": {
+                  "enum": [
+                    "E",
+                    "Q1",
+                    "Q2",
+                    "Q3",
+                    "Q4"
+                  ]
+                },
+                "children": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/$defs/id"
+                  },
+                  "uniqueItems": true,
+                  "maxItems": 13
                 }
               }
             },
-            "maxItems": 2
+            "maxItems": 1000
           },
           "placements": {
             "type": "array",

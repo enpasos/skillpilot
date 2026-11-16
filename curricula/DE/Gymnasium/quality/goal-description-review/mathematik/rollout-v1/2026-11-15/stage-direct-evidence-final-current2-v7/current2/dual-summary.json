@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:f09e6f9549882125fac6620f510af5e432334806a82dc83edef7acc9f8d6ab93",
+  "reviewInputFingerprint": "sha256:84861a6c4489ba62110778cc1674a7ff6a733f66f393d4990d24f72ee84b47e3",
+  "goalCount": 2,
+  "rounds": {
+    "first": {
+      "campaignId": "math-current2-final-firstpass-v7-20261115-a",
+      "roundId": "math-current2-final-firstpass-v7-round-a",
+      "independenceGroupId": "math-current2-final-firstpass-v7-independent-a",
+      "runIds": [
+        "math-final-current2-v7-real-firstpass-c-20261115"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex independently delegated first-pass reviewer C; exact model build not exposed in seal::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "math-current2-final-firstpass-v7-20261115-b",
+      "roundId": "math-current2-final-firstpass-v7-round-b",
+      "independenceGroupId": "math-current2-final-firstpass-v7-independent-b",
+      "runIds": [
+        "math-final-current2-v7-real-firstpass-d-20261115"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex independently delegated first-pass reviewer D; exact model build not exposed in seal::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 2,
+    "unavailable": 0,
+    "requiresSynthesis": 2
+  },
+  "goals": [
+    {
+      "goalId": "78238608-aaaa-4d12-a9de-54f325e9cf6f",
+      "firstRecordId": "math-final-current2-v7-real-firstpass-c-20261115-78238608-aaaa-4d12-a9de-54f325e9cf6f",
+      "secondRecordId": "math-final-current2-v7-real-firstpass-d-20261115-78238608-aaaa-4d12-a9de-54f325e9cf6f",
+      "firstRunId": "math-final-current2-v7-real-firstpass-c-20261115",
+      "secondRunId": "math-final-current2-v7-real-firstpass-d-20261115",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "f76d00dc-6b31-59cd-b01a-3610eadc9908",
+      "firstRecordId": "math-final-current2-v7-real-firstpass-c-20261115-f76d00dc-6b31-59cd-b01a-3610eadc9908",
+      "secondRecordId": "math-final-current2-v7-real-firstpass-d-20261115-f76d00dc-6b31-59cd-b01a-3610eadc9908",
+      "firstRunId": "math-final-current2-v7-real-firstpass-c-20261115",
+      "secondRunId": "math-final-current2-v7-real-firstpass-d-20261115",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

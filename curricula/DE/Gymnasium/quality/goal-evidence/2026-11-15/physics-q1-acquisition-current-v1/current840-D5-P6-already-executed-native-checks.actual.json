@@ -1,0 +1,49 @@
+{
+  "recordedAt": "2026-11-15T20:13:52.119897+00:00",
+  "timingBoundary": "Records actual already-executed commands observed during this turn; no invented exact command start/end times and no additional rerun.",
+  "checks": [
+    {
+      "command": "tsx app/scripts/semanticAtomicityReview.ts --config=curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-physics-full.config.json --mode=check",
+      "exitCode": 0,
+      "ordinary": 485,
+      "atomic": 485,
+      "missing": 0,
+      "stale": 0
+    },
+    {
+      "command": "tsx app/scripts/memoryCardReview.ts --config=curricula/DE/Gymnasium/quality/memory-card-review/canonical-physics-full.config.json --mode=check",
+      "exitCode": 0,
+      "ordinary": 485,
+      "noMemory": 357,
+      "memoryRequired": 128,
+      "primaryCards": 146,
+      "keptCards": 146,
+      "missing": 0,
+      "stale": 0,
+      "nativeLog": "tmp/physics-release840-20261115/memory-after-D5.log"
+    },
+    {
+      "command": "tsx app/scripts/generateGoalVisualizationQaLedgers.ts --subjects physik --check",
+      "exitCode": 0,
+      "currentSubjectFiles": 1
+    },
+    {
+      "command": "tsx tmp/physics-release840-20261115/check-refined-P485.mts",
+      "exitCode": 0,
+      "ordinary": 485,
+      "configs": 87,
+      "errors": 0,
+      "inputDrift": 0,
+      "fullReceipt": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/physics-q1-acquisition-current-v1/current840-refined-P485-native.actual.json"
+    },
+    {
+      "command": "tsx tmp/physics-release840-20261115/materialize-current18-native.mts curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-15/q1-whole-current-context18-v1",
+      "exitCode": 0,
+      "actualCampaignGoals": 18,
+      "resolvedUnchangedGoals": 8,
+      "humanApproval": false
+    }
+  ],
+  "fullFinalDeepAndCqrPending": true,
+  "mainCiClaim": false
+}

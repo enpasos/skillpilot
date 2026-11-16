@@ -1,0 +1,132 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physics-stage-flow-current-context3-20261115-v1-actual-ai-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "codex-physics-release-agent-reading-actual-independent-A-B-current-context3-20261115",
+  "synthesizedAt": "2026-11-15T17:41:39.625007+00:00",
+  "batch": {
+    "batchId": "physics-stage-flow-current-context3-20261115-v1",
+    "batchManifestDigest": "sha256:0769aca3411b9173e68b94ed95607d696dee1176128d2bfea03ae14ca5a1201c",
+    "configDigest": "sha256:2c95e150c618a9a9129f10331777402893e933c0d00c9a24c372539e94fcfc02",
+    "bundleFingerprint": "sha256:2179a365422fefa852a60f71dfafcf81ac89e5676d3bfc24b73b09a93c23a93a",
+    "bookDigest": "sha256:f10841d0c888555d7a10e139392d2d1c73561bc17eb8c5d825f2d89696e85c51",
+    "reviewInputFingerprint": "sha256:cd6e9e929ded1506fb32754b8e8b1d501f4ff22accdddd22db37205c644df179",
+    "dualSummaryDigest": "sha256:7e8c7aacdcfa000651b5a94ce380b9ae876b144e8a001d0ec5d8cac6d4ff4763",
+    "canonicalLandscapeDigest": "sha256:1ab730054209aa710b34e852bf3eab4f84e16f348b003fcaba6e2b2988c6b2b1"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physics-three-current809-context-20261115-first-pass-a",
+      "campaignDigest": "sha256:e8b9bbb3c252188990050f9f3c2d0450554e0a76e10299430be5b7b0cd6c5cbf",
+      "roundId": "independent-a",
+      "independenceGroupId": "physics-three-current809-context-20261115-independent-a",
+      "reviewInputFingerprint": "sha256:cd6e9e929ded1506fb32754b8e8b1d501f4ff22accdddd22db37205c644df179",
+      "batchId": "independent-a.batch-001",
+      "batchInputFingerprint": "sha256:6e0108bc04f2713a56a57604dba7b56ebceb775b2f78fd4dc31e088a5432e5ca",
+      "runId": "physics-current3-blind-a-20261115",
+      "runManifestDigest": "sha256:73b1c833899dc34ab4a87f24f2c757f002329564b1db2d1d81174a56bb40f7c0",
+      "resultsDigest": "sha256:049928d37cb69d8402f8381ddf27fc76d184cf6eccc9e0170a477a0b95c05906"
+    },
+    "second": {
+      "campaignId": "physics-three-current809-context-20261115-first-pass-b",
+      "campaignDigest": "sha256:c41b051bab1924556e8f15a34d23e8c75089fcbc127a7357887e735ccbf0f102",
+      "roundId": "independent-b",
+      "independenceGroupId": "physics-three-current809-context-20261115-independent-b",
+      "reviewInputFingerprint": "sha256:cd6e9e929ded1506fb32754b8e8b1d501f4ff22accdddd22db37205c644df179",
+      "batchId": "independent-b.batch-001",
+      "batchInputFingerprint": "sha256:57853735cbef003ec0b7749407014afe5d6009fa7d638c4ee3fca7725ae06d57",
+      "runId": "physics-current3-blind-b-20261115-52b38f",
+      "runManifestDigest": "sha256:94c730b60b6e8a2036fee594fbee8b70cd3e96c56d9a0cf9c09d7e53edbce85b",
+      "resultsDigest": "sha256:c7c614e887aefb2efc2143d73baf6ba307fe694614f90061088538cb5e687cb4"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physics-stage-flow-current-context3-20261115-v1-actual-ai-synthesis-001",
+      "goalId": "b615830a-e8b0-5754-81e0-99da98343a8d",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:b7fd41467577af57ba1137045b65bf277b264c84ee55810adae49bd0209153ba",
+      "pageFingerprint": "sha256:b7d814823e4a07713dcd0448abe040eef04af90f40dad40f44a190b6bbc411cc",
+      "goalReviewContextFingerprint": "sha256:f71671f19f620b251fd8e2b371bba74fa9ab04b0491e4d775185e6bf76b103ad",
+      "finalText": {
+        "titleDe": "Signifikante Stellen korrekt verwenden",
+        "titleEn": "Use Significant Figures Correctly",
+        "descriptionDe": "Die lernende Person kann Rechenergebnisse passend zur angegebenen Genauigkeit beziehungsweise Unsicherheit der Eingangsdaten auf eine sinnvolle Zahl signifikanter Stellen runden, Zwischenwerte mit ausreichender Genauigkeit weiterführen und Scheingenauigkeit vermeiden.",
+        "descriptionEn": "The learner can round calculated results to a meaningful number of significant figures consistent with the stated precision or uncertainty of the input data, carry intermediate values with sufficient precision, and avoid false precision."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physics-current3-blind-a-20261115.goal-001",
+          "recordDigest": "sha256:b8b07731fa7a46984dd38f7cf1db616fddccfbf977d2f8c7d4408b51a2141619"
+        },
+        "second": {
+          "recordId": "physics-current3-blind-b-20261115-52b38f.001",
+          "recordDigest": "sha256:0e07fc9d8349d025b9f999e7a8e16884651e4407dbe2c8a2b04d4857b7d8a65e"
+        }
+      },
+      "rationaleDe": "Beide tatsächlich unabhängig neu gelesenen Erstpässe behalten den aktuellen DE/EN-Text und empfehlen keine P-Änderung. Schutzstellen verhindern zusätzliche Rundungsfehler; Endstellen behaupten nur durch Daten beziehungsweise explizite Unsicherheit gestützte Genauigkeit. Beide neuen Evidenzketten verlangen eigene Rechnung und einen sachlichen Wechsel von impliziter Stelleninformation zu ausdrücklicher Unsicherheit, ohne Fehlerfortpflanzung als neues Ziel einzuführen. Auswahl der vollständigen A-Evidenz ist eine explizite KI-Synthese. Das aktuelle BY-Applicability-Feld ist im gelesenen Kontext gebunden; Länder-/Quellenfreigabe und realer Erwerb werden hierdurch nicht behauptet.",
+      "rationaleEn": "Both genuinely independent fresh first passes keep the current bilingual text and recommend no P change. Guard digits prevent additional rounding error; reported final digits assert only precision supported by the data or explicit uncertainty. Both new evidence chains require personal calculation and a substantive change from implicit digit information to explicit uncertainty without adding uncertainty propagation as another goal. Selecting the complete A evidence is explicit AI synthesis. The current BY applicability field is bound in the supplied context; this does not certify jurisdiction/source mappings or actual learner acquisition."
+    },
+    {
+      "decisionId": "physics-stage-flow-current-context3-20261115-v1-actual-ai-synthesis-002",
+      "goalId": "bbee4c52-4e95-5529-990f-706aa99316a3",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:e318637bf0f1eb11f347167b4ca4ea7e6c67ceeb6e5a124d4efbdb7369d9c8a8",
+      "pageFingerprint": "sha256:ca4daa7d22b69c75f62d44808e0a8d176e24b2e17108980364c8a1467b0869fe",
+      "goalReviewContextFingerprint": "sha256:1caa69ee69d49082f9a2d58bb17b9ad25e9c66cd68b9fd8403181f4f4fe5f1f7",
+      "finalText": {
+        "titleDe": "Elektrische Stromstärke als Ladungsrate deuten",
+        "titleEn": "Interpret electric current as a rate of charge transfer",
+        "descriptionDe": "Die lernende Person kann die mittlere elektrische Stromstärke als netto durch einen festgelegten Querschnitt transportierte Ladung pro Zeitintervall mit I = ΔQ/Δt deuten, Berechnungen durchführen und den Einheitenzusammenhang 1 A = 1 C/s erklären.",
+        "descriptionEn": "The learner can interpret average electric current as the net charge transported through a specified cross-section per time interval using I = ΔQ/Δt, perform calculations, and explain the unit relation 1 A = 1 C/s."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physics-current3-blind-a-20261115.goal-002",
+          "recordDigest": "sha256:d57cd0ac9ffb4643a4164569fd9eeb642bcb4c01320947b3fae9c2a23233f18b"
+        },
+        "second": {
+          "recordId": "physics-current3-blind-b-20261115-52b38f.002",
+          "recordDigest": "sha256:f3440f27287afc28fd5c1c16556dafb00fc02594bd02e39d02bfef01845ec908"
+        }
+      },
+      "rationaleDe": "Beide echten neuen unabhängigen Erstpässe bestätigen mittlere Nettoladung pro festgelegtem Querschnitt und Intervall, Bezugsvorzeichen und A=C/s. A konkretisiert Puls-/Pausenintervalle, B ergänzt unabhängig Rücktransport oder Pausen; beide bleiben innerhalb desselben Ratenkerns und des vollständigen unveränderten P. Die aktuellen Ladungsmodell-/Messwertraten-Prärequisiten sind im Kontext exakt gebunden. Auswahl der A-Evidenz ergänzt keine Momentanstrom-/Differentialrechnung und ist KI-Synthese, keine menschliche Freigabe, Schülerleistung oder eigenständige Quellen-/Projektionsabnahme.",
+      "rationaleEn": "Both actual fresh independent first passes confirm mean net charge through a specified cross-section and interval, reference signs and A=C/s. A specifies pulse/pause averaging; B independently adds return transfer or pauses. Both stay within the same rate competence and unchanged full P. The current charge-model and measured-rate prerequisites are exactly bound in context. Selecting A adds no instantaneous-current calculus and is AI synthesis, not human approval, learner performance, or separate source/projection acceptance."
+    },
+    {
+      "decisionId": "physics-stage-flow-current-context3-20261115-v1-actual-ai-synthesis-003",
+      "goalId": "9f265f49-1342-5ba7-9c5d-54e97fdb2f19",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:410b31ca80e7b62e6c838bd844e0b066002e25a54d261d0f090d8067aefc8ddd",
+      "pageFingerprint": "sha256:6297ccc7d8a89937760ace8dd1714f70180487c3b149aa44b49db8505952eb3a",
+      "goalReviewContextFingerprint": "sha256:6fde073ad338153e6c674c8b2ee27ca12a38353a904486cac400b46931a4ff80",
+      "finalText": {
+        "titleDe": "Dotierung mit einem einfachen Ladungsträgermodell erklären",
+        "titleEn": "Explain Doping with a Simple Charge-Carrier Model",
+        "descriptionDe": "Die lernende Person kann an einem vorgegebenen einfachen Bindungsmodell für Silizium erklären, wie n- und p-Dotierung die Zahl beweglicher Elektronen beziehungsweise Löcher erhöhen, und bewegliche Ladungsträger von ortsfesten Ionen im insgesamt neutralen Material unterscheiden.",
+        "descriptionEn": "The learner can use a supplied simple bond model of silicon to explain how n-type and p-type doping increase the number of mobile electrons or holes, and distinguish mobile charge carriers from fixed ions in an overall neutral material."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physics-current3-blind-a-20261115.goal-003",
+          "recordDigest": "sha256:e11a9de9420d1417c30d5142bbad44f7ae7452b480720492484c2fd8c7749f2e"
+        },
+        "second": {
+          "recordId": "physics-current3-blind-b-20261115-52b38f.003",
+          "recordDigest": "sha256:474761c592bb28f5093c24aeb96f2fde807b0cc1fcc5c5ccdb502e27205c8833"
+        }
+      },
+      "rationaleDe": "Beide tatsächlich getrennten Erstpässe behalten die aktuelle modellgebundene DE/EN-Beschreibung. Donator und Akzeptor liefern mobile Elektronen beziehungsweise Fehlstellen mit jeweils ortsfestem Gegenion; die Gesamtneutralität bleibt notwendig. Beide neu formulierten Evidenzketten verlangen eigenes Ableiten und einen anders angeordneten Loch-/Elektronennachrückfall; Protonen, wandernde Dotierionen und Nettoaufladung scheitern. Die aktuelle Ladungsumverteilungs-Vorbereitung ist im Kontext gebunden. Auswahl der A-Evidenz führt weder Bandmodell noch p-n-Übergang ein und gewährt keine Länder-/Quellenfreigabe, Lernendenbeherrschung oder menschliche Autorität.",
+      "rationaleEn": "Both genuinely separate first passes keep the current model-bounded bilingual description. Donors and acceptors produce mobile electrons or vacancies with a fixed counter-ion; overall neutrality remains essential. Both newly authored evidence chains require independent derivation and a rearranged vacancy/electron-transfer case; protons, mobile dopant ions and net crystal charging fail. Current charge-redistribution preparation is bound in context. Selecting A introduces neither band theory nor the p-n junction and grants no jurisdiction/source certification, learner mastery or human authority."
+    }
+  ],
+  "manifestFingerprint": "sha256:a6c05629a2ee05ee0638bc619d7d7b223a253e8718724ff2092f2d0e3af25d65"
+}

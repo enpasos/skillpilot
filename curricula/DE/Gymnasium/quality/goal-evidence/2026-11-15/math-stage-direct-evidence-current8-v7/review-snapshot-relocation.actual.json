@@ -1,0 +1,18 @@
+{
+  "at": "2026-11-15T17:32:37.435829+00:00",
+  "reason": "PR159 quick-check job132888594385 failed the existing runtime schema because a historical44-goal review snapshot was stored in the live curriculum discovery tree. Relocate this review-only artifact into the established quality evidence boundary without changing bytes or validation policy.",
+  "failedHead": "b4fdf1eced811dd73ab1cc9bc434a8cd80a3861a",
+  "failedRun": "https://github.com/enpasos/skillpilot/actions/runs/43739263424",
+  "oldPath": "curricula/DE/Gymnasium/assessments/mathematik/stage-plan-direct-evidence-20261115-v7/reviewed-assessments.json",
+  "newPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/math-stage-direct-evidence-current8-v7/retained-reviewed-assessments.json",
+  "sha256BeforeAndAfter": "6dee2b982037800fd21344087d936de27699458b5da38fdcd0aa7b52ab8f47c2",
+  "bytes": 431267,
+  "goalCount": 44,
+  "fileBytesUnchanged": true,
+  "canonicalFilesUnchanged": true,
+  "schemaAndDiscoveryRulesUnchanged": true,
+  "nativeBeforeRejected": true,
+  "nativeAfterAccepted": true,
+  "nativeDiscoveryContractPassed": true,
+  "limitation": "Historical review snapshot only; not a new assessment release, new native current input binding, or successful remote CI."
+}

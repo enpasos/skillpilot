@@ -32,16 +32,9 @@ const views: { path: string, view: CompositionView }[] = manifest.sourcePaths
 const orientation = '5c44b9ba-9b05-4774-95d5-073230d3fc4f'
 const observation = '5355fee0-0477-5570-a234-561477bf77ba'
 const units = '3ed3279e-c524-5230-a277-dda89493df6d'
-const mathUnits = 'f2e42af5-67a6-477e-82ea-e65b09cc6cb3'
-const mathRationalAddition = '4eeab7d5-eeb3-579b-845e-1c52ffe9e89f'
-const mathRationalMultiplication = 'ee48e811-4c9c-5080-9836-8403fc9f0810'
 const models = 'e5bc2227-d900-585f-8ac0-9d3f1cb40e27'
 const sources = 'd2e6f87d-795b-5631-a7cc-0bfb5dc5142e'
 const methods = [observation, units, models, sources]
-const mathMethodPrerequisites = new Map([
-  [units, [mathUnits]],
-  [sources, [mathRationalAddition, mathRationalMultiplication]],
-])
 const astronomy = [
   '982df2f3-e040-5f4b-b668-0fe05d994b29',
   '6ae54ff9-dc3b-563b-b2ee-09a0f0d00162',
@@ -59,108 +52,71 @@ const referenceCount = (nodes: CompositionViewNode[], goalId: string): number =>
 const flattenReferences = (nodes: CompositionViewNode[]): Exclude<CompositionViewNode, CompositionStructureNode>[] =>
   nodes.flatMap(node => (node.kind === 'structure' ? flattenReferences(node.children) : [node]))
 
-// Rule of the top-down correction pass of 14 November 2026 (approved by the Product Owner for
-// goals without source evidence and applied to the method goals under his delegation of the same
-// day): a goal is a target of a stage only where the Land's source carries it for that stage.
-// The 14 Länder below have no goal-level source evidence
-// for the four methods in either stage, so their 28 cross-stage views reference each method once
-// as prerequisiteOnly preparation instead of a visible target branch. The support is declared in
-// the Sek-II section, where astronomy consumes it, and makes no statement about Sek I; RP keeps
-// its two retained Sek-I supports (observation, models) unchanged. Learner availability then
-// follows from the Personal Curriculum closure rule of 10 November 2026 (necessary prerequisites
-// become learning targets), covered by ProjectionRoleLearnerServiceTest
-// .omittedOrPrerequisiteOnlyPhysicsMethodsBecomeRequiredLearnableAstronomyPreparation.
-// Single-stage Sek-II views and the BW/BY cross-stage views keep the methods as targets.
+// The 15 November K3 acquisition repair makes the necessary AB1 methods explicit
+// learning targets. This is reviewed preparation for the selected curriculum,
+// not an assertion that each Land independently names the whole method goal.
+// The 28 cross-stage views put them in Sek I; the 28 single-stage Sek-II views
+// retain their narrow astronomy focus. Neither role presence nor compilation
+// certifies mastery, task coverage, source completeness or a runtime frontier.
 const methodPreparationJurisdictions = new Set([
   'DE-BB', 'DE-BE', 'DE-HB', 'DE-HE', 'DE-HH', 'DE-MV', 'DE-NI',
   'DE-NW', 'DE-RP', 'DE-SH', 'DE-SL', 'DE-SN', 'DE-ST', 'DE-TH',
 ])
 const methodsArePreparation = (view: CompositionView): boolean => view.scope.stage === 'CrossStage'
   && methodPreparationJurisdictions.has(String(view.scope.jurisdiction))
-const isSekIIStageLabel = (label: string) => /^Sekundarstufe II(?:$|[\s(:\-–])/u.test(label)
 
-test('every atlas view that teaches either astronomy goal also teaches its complete method prerequisites', () => {
+test('every atlas view that teaches either astronomy goal teaches all current method prerequisites', () => {
   assert.equal(views.length, 64)
   let astronomyViewCount = 0
-  let preparationViewCount = 0
   for (const { path, view } of views) {
     const roles = collectCompositionProjectionRoleGoalIds(view.rootNodes, byId)
     if (!astronomy.some(goalId => roles.targetGoalIds.has(goalId))) continue
     astronomyViewCount++
-    const preparation = methodsArePreparation(view)
-    if (preparation) preparationViewCount++
     for (const goalId of [...methods, orientation]) {
-      if (preparation && goalId !== orientation) {
-        // Replaces "learnable target" for these 28 views only: present as preparation.
-        assert(roles.prerequisiteOnlyGoalIds.has(goalId), `${path}: method must be present as prerequisiteOnly: ${goalId}`)
-        assert(!roles.targetGoalIds.has(goalId), `${path}: method must not be a stage target here: ${goalId}`)
-        continue
-      }
       assert(roles.targetGoalIds.has(goalId), `${path}: prerequisite must be learnable: ${goalId}`)
-      assert(!roles.prerequisiteOnlyGoalIds.has(goalId), `${path}: hidden prerequisite: ${goalId}`)
+      assert(!roles.prerequisiteOnlyGoalIds.has(goalId), `${path}: method must not remain hidden support: ${goalId}`)
     }
     for (const goalId of methods) {
       for (const requiredId of byId.get(goalId)?.requires ?? []) {
-        if (mathMethodPrerequisites.get(goalId)?.includes(requiredId)) {
-          // These authored mathematics prerequisites resolve across subjects;
-          // physics method prerequisites must still be visible targets below.
-          const mathGoal = landscapesById.get('68a8ac50-f5f5-4e24-8aa9-5e408ca01ced')?.goals
-            .find(goal => goal.id === requiredId)
-          assert(mathGoal, `${path}: missing canonical mathematics prerequisite: ${requiredId}`)
-          assert.equal(byId.get(requiredId), mathGoal, `${path}: unresolved mathematics prerequisite: ${requiredId}`)
-          assert(roles.prerequisiteOnlyGoalIds.has(requiredId), `${path}: omitted mathematics prerequisite: ${requiredId}`)
-          assert(!roles.targetGoalIds.has(requiredId), `${path}: mathematics prerequisite became a physics target: ${requiredId}`)
-          continue
-        }
-        if (preparation) {
-          assert(roles.targetGoalIds.has(requiredId) || roles.prerequisiteOnlyGoalIds.has(requiredId),
-            `${path}: omitted method dependency: ${goalId} -> ${requiredId}`)
-          continue
-        }
+        assert(byId.has(requiredId), `${path}: unresolved method prerequisite: ${requiredId}`)
         assert(roles.targetGoalIds.has(requiredId), `${path}: omitted method dependency: ${goalId} -> ${requiredId}`)
       }
     }
   }
   assert.equal(astronomyViewCount, 60)
-  assert.equal(preparationViewCount, 28)
 })
 
-test('the four method goals form a bounded sequence after the existing orientation and mathematics foundation', () => {
+test('the four AB1 method goals retain their bounded qualitative sequence', () => {
   assert.deepEqual(byId.get(observation)?.requires, [orientation])
-  assert.deepEqual(byId.get(units)?.requires, [orientation, mathUnits])
+  assert.deepEqual(byId.get(units)?.requires, [orientation])
   assert.deepEqual(byId.get(models)?.requires, [observation])
-  assert.deepEqual(byId.get(sources)?.requires, [models, units, mathRationalAddition, mathRationalMultiplication])
+  assert.deepEqual(byId.get(sources)?.requires, [models, units])
   for (const goalId of astronomy) assert(byId.get(goalId)?.requires.includes(sources))
 })
 
-test('28 Sek-II astronomy branches teach the methods; 28 cross-stage views reference them once as preparation', () => {
+test('28 cross-stage views teach the methods once in Sek I; 28 Sek-II views retain astronomy preparation', () => {
   let preparationViews = 0
   for (const { path, view } of views) {
     if (!methodsArePreparation(view)) continue
     preparationViews++
-    assert.equal(structures(view.rootNodes).filter(node => node.id === methodStructureId).length, 0,
-      `${path}: no method branch in a cross-stage view of these Länder`)
-    const roles = collectCompositionProjectionRoleGoalIds(view.rootNodes, byId)
+    assert.equal(structures(view.rootNodes).filter(node => node.id === methodStructureId).length, 0, path)
+    const branches = structures(view.rootNodes).filter(node => node.id === 'physics-methods-k3-preparation')
+    assert.equal(branches.length, 1, `${path}: exactly one acquisition branch`)
+    const branch = branches[0]
+    const sekI = structures(view.rootNodes).find(node => node.id === 'physics-seki')
+    assert(sekI?.children.includes(branch), `${path}: preparation belongs to the existing Sek-I section`)
     const physicsRoot = structures(view.rootNodes).find(node => node.id === 'physics-root')!
-    const sekIIStages = physicsRoot.children
-      .filter((node): node is CompositionStructureNode => node.kind === 'structure' && isSekIIStageLabel(node.label))
-    assert.equal(sekIIStages.length, 1, `${path}: exactly one Sek-II section`)
-    const sekIIReferences = flattenReferences(sekIIStages[0].children)
-    const rpRetainedSekISupport = view.scope.jurisdiction === 'DE-RP' ? [observation, models] : []
+    const sekII = physicsRoot.children.find(node => node.kind === 'structure' && node.id.startsWith('physics-sekii'))
+    assert(sekII, `${path}: the dependent Sek-II section remains present`)
+    const sekIIndex = physicsRoot.children.indexOf(sekI!)
+    const sekIIIndex = physicsRoot.children.indexOf(sekII)
+    assert(sekIIndex >= 0 && sekIIIndex >= 0, `${path}: both stages must be direct subject children`)
+    assert(sekIIndex < sekIIIndex,
+      `${path}: method stage must precede the dependent astronomy stage`)
+    assert.deepEqual(branch.children, methods.map(goalId => ({kind: 'goalEntry', goalId, projectionRole: 'target'})), path)
     for (const goalId of methods) {
       assert.equal(referenceCount(view.rootNodes, goalId), 1, `${path}: exactly one method reference: ${goalId}`)
-      const reference = flattenReferences(view.rootNodes).find(node => node.goalId === goalId)
-      assert.deepEqual(reference, { kind: 'goalEntry', goalId, projectionRole: 'prerequisiteOnly' }, path)
-      assert(!roles.targetGoalIds.has(goalId), `${path}: method must never be a target here: ${goalId}`)
-      const declaredInSekII = sekIIReferences.includes(reference!)
-      if (rpRetainedSekISupport.includes(goalId)) {
-        assert(!declaredInSekII, `${path}: RP keeps its retained Sek-I support only: ${goalId}`)
-      } else {
-        assert(declaredInSekII, `${path}: method support must be declared in the Sek-II section: ${goalId}`)
-      }
-    }
-    for (const goalId of [...astronomy, orientation]) {
-      assert(roles.targetGoalIds.has(goalId), `${path}: must remain a target: ${goalId}`)
+      assert.equal(flattenReferences(view.rootNodes).filter(node => node.goalId === goalId && node.projectionRole === 'prerequisiteOnly').length, 0, path)
     }
   }
   assert.equal(preparationViews, 28)
@@ -169,58 +125,64 @@ test('28 Sek-II astronomy branches teach the methods; 28 cross-stage views refer
   for (const { path, view } of views) {
     const branch = structures(view.rootNodes).find(node => node.id === methodStructureId)
     if (!branch) continue
-    assert.equal(view.scope.stage, 'SekII', `${path}: method branches remain only in single-stage Sek-II views`)
+    assert.equal(view.scope.stage, 'SekII', path)
     repaired++
     const parent = structures(view.rootNodes).find(node => node.children.includes(branch))
     assert.equal(parent?.label, 'Astrophysik', path)
-    assert.deepEqual(branch.children.map(node => node.goalId), methods, path)
-    for (const node of branch.children) {
-      assert.equal(node.kind, 'goalEntry', path)
-      assert.equal(node.projectionRole, 'target', path)
-      assert.equal(referenceCount(view.rootNodes, String(node.goalId)), 1,
-        `${path}: unexpected method reference count`)
-    }
+    assert.deepEqual(branch.children, methods.map(goalId => ({kind: 'goalEntry', goalId, projectionRole: 'target'})), path)
+    for (const goalId of methods) assert.equal(referenceCount(view.rootNodes, goalId), 1, path)
     const localRoles = collectCompositionProjectionRoleGoalIds(parent!.children, byId)
     for (const goalId of [...methods, ...astronomy]) {
-      assert(localRoles.targetGoalIds.has(goalId), `${path}: method and astronomy target must share their visible focus`)
+      assert(localRoles.targetGoalIds.has(goalId), `${path}: methods and astronomy must share their visible focus`)
     }
-    // Orientation already belongs to the subject entry. It must not be copied
-    // into each narrow focus; this route starts after that regular orientation.
     assert.equal(referenceCount(branch.children, orientation), 0, path)
   }
   assert.equal(repaired, 28)
 })
 
-test('RP preserves its original Sek-I supports and references the two other methods once as preparation', () => {
+test('RP retains its experiment bridge and complete Sek-I lens preparation alongside visible methods', () => {
   const rp = views.filter(({ view }) => view.scope.jurisdiction === 'DE-RP' && view.scope.stage === 'CrossStage')
   assert.equal(rp.length, 2)
   const withoutSekII = (nodes: CompositionViewNode[]): CompositionViewNode[] => nodes.flatMap(node => (
     node.kind !== 'structure' ? [node]
-      : /^Sekundarstufe II(?:$|[\s(:\-–])/u.test(node.label) ? []
+      : node.id.startsWith('physics-sekii') ? []
         : [{ ...node, children: withoutSekII(node.children) }]
   ))
-  const terminal = '44985d9f-7b49-52e4-86ec-eddc7b70429f'
+  const experimentPlanning = 'd3c153b9-e09b-5668-8386-73105546a7c1'
+  const retired = '44985d9f-7b49-52e4-86ec-eddc7b70429f'
+  const acquisitions = new Map([
+    ['a6f40821-695f-5c38-a572-3bc912e3d8e7', '6a4c6042-052b-502b-a39a-0ed8941247ac'],
+    ['2437c7ee-3d59-544a-b9a0-8c5de0af54ad', '078ce4d2-3193-4cd0-ae59-4fb8ab16e9e5'],
+    ['e5504ffe-b83f-50cd-87bb-2538ae0bfb75', models],
+  ])
+  assert.equal(byId.get(retired)?.extendedData?.applicabilityProjection, 'excluded')
+  assert.deepEqual(byId.get(retired)?.examData?.coveredGoalIds, [])
   for (const { path, view } of rp) {
-    const root = structures(view.rootNodes).find(node => node.id === 'physics-root')!
-    const support = structures(view.rootNodes).find(node => node.id === 'physics-seki-route-prerequisites')!
-    assert.deepEqual(root.children[1], { kind: 'goalEntry', goalId: observation, projectionRole: 'prerequisiteOnly' }, path)
-    assert.deepEqual(support.children.filter(node => node.kind === 'goalEntry' && node.goalId === models),
-      [{ kind: 'goalEntry', goalId: models, projectionRole: 'prerequisiteOnly' }], path)
+    const physicsRoot = structures(view.rootNodes).find(node => node.id === 'physics-root')!
+    assert.deepEqual(physicsRoot.children.filter(node => node.kind === 'goalEntry' && node.goalId === experimentPlanning),
+      [{ kind: 'goalEntry', goalId: experimentPlanning, projectionRole: 'prerequisiteOnly' }], path)
     const stageRoles = collectCompositionProjectionRoleGoalIds(withoutSekII(view.rootNodes), byId)
-    for (const id of [observation, models]) {
-      assert(stageRoles.prerequisiteOnlyGoalIds.has(id), `${path}: lost Sek-I support ${id}`)
-      assert(!stageRoles.targetGoalIds.has(id), `${path}: unintended Sek-I method target ${id}`)
+    assert(stageRoles.prerequisiteOnlyGoalIds.has(experimentPlanning), `${path}: the distinct experiment bridge must remain`)
+    assert(!stageRoles.targetGoalIds.has(experimentPlanning), `${path}: bridge must not silently become a source target`)
+    for (const id of methods) {
+      assert(stageRoles.targetGoalIds.has(id), `${path}: lost learnable Sek-I method ${id}`)
+      assert(!stageRoles.prerequisiteOnlyGoalIds.has(id), `${path}: method still hidden as support ${id}`)
     }
-    assert(stageRoles.targetGoalIds.has(terminal), path)
-    for (const id of byId.get(terminal)?.requires ?? []) {
-      assert(stageRoles.targetGoalIds.has(id) || stageRoles.prerequisiteOnlyGoalIds.has(id),
-        `${path}: existing refraction/lens assessment lost prerequisite ${id}`)
+    assert(!stageRoles.targetGoalIds.has(retired), `${path}: withdrawn mixed task must not regain a live claim`)
+    for (const [taskId, coveredGoalId] of acquisitions) {
+      const task = byId.get(taskId)
+      assert(stageRoles.targetGoalIds.has(taskId), `${path}: the actual acquisition task must remain visible: ${taskId}`)
+      assert.equal(task?.examData?.reviewStatus, 'released', path)
+      assert.deepEqual(task?.examData?.coveredGoalIds, [coveredGoalId], path)
+      for (const id of task?.requires ?? []) {
+        assert(stageRoles.targetGoalIds.has(id) || stageRoles.prerequisiteOnlyGoalIds.has(id),
+          `${path}: current refraction/lens/model acquisition lost prerequisite ${id}`)
+      }
     }
     const compiled = compileCompositionView(view, physics, universe, landscapesById)
     const countVisible = (nodes: typeof compiled.compiledRootNodes, id: string): number => nodes.reduce(
       (count, node) => count + Number(node.sourceGoalId === id) + countVisible(node.children, id), 0)
-    // Since 14 November 2026 no method is a visible target in RP's cross-stage tree.
-    for (const id of methods) assert.equal(countVisible(compiled.compiledRootNodes, id), 0, path)
+    for (const id of methods) assert.equal(countVisible(compiled.compiledRootNodes, id), 1, path)
     assert.deepEqual(compiled.findings.filter(finding => finding.severity === 'error'), [], path)
   }
 })

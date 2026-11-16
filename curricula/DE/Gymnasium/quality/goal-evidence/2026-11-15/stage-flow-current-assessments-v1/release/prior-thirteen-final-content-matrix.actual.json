@@ -1,0 +1,476 @@
+{
+  "at": "2026-11-15T15:43:03.619253+00:00",
+  "reviewer": "OpenAI GPT Codex AI independent content reviewer, not a human classroom trial",
+  "scope": "13 current Physics route tasks plus additional 4ab metadata case; full DE/EN where supplied, complete actual runtime rubrics, covered ordinary P, actual linked materials; no automatic release or native grader acceptance",
+  "sourceCapturedAt": "2026-11-15T15:04:15.835924+00:00",
+  "currentSourcePin": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "sha256": "2075d1e6594313699942078f3699f04a3335efd33f6380cbf466ec54e08fd4d9"
+  },
+  "inputManifestSHA256": "6c48a5d396aff603049a609572318f240f8ea72f99c453ab577f3a49ed9f0410",
+  "fullInputSHA256": "139270cd4b677e7981e96afe67301d53dbcccb5279401e3e123eaadceec648c7",
+  "decisions": [
+    {
+      "id": "367b17f8-972a-5f3e-8915-8cfe743132a3",
+      "title": "Prüfungsaufgabe: Eine Bewegung digital auswerten",
+      "decision": "REJECT_FULL_P",
+      "blocker": "B1",
+      "coveredGoalIds": [
+        "72effc66-87f4-5f5e-8d36-1547677365fb"
+      ],
+      "points": [
+        11,
+        18
+      ],
+      "rationale": "Der vollständige Unsicherheitsblock kann fehlen: 7+5=12 Punkte erreichen die Schwelle 11/18. Die vorgegebenen Positionen ersetzen außerdem keine eigene Videoerfassung.",
+      "ownCounterexampleOrAlternative": "Die drei Geschwindigkeiten sind 4,95; 4,85; 5,10 m/s. Referenzkorrektur 1,96/2,00=0,98. Eine Antwort mit Workflow und Geschwindigkeiten, aber ohne zufällige/systematische Unsicherheiten besteht dennoch.",
+      "englishParity": "Keine englische Aufgaben-/Lösungsfassung vorhanden. Historischen Vertrag unverändert erhalten; kein Voll-P-Release."
+    },
+    {
+      "id": "020e9dd3-7f3d-55d8-bcdd-a8da0f779cdf",
+      "title": "Prüfungsaufgabe: Befund und physikalische Deutung trennen",
+      "decision": "ACCEPT_CONTENT",
+      "blocker": null,
+      "coveredGoalIds": [
+        "5355fee0-0477-5570-a234-561477bf77ba"
+      ],
+      "points": [
+        8,
+        8
+      ],
+      "rationale": "Zwei eigenständige Kontexte prüfen Befund, Modell-Deutung und geeigneten Kontrollbefund; alle acht Kriterien sind wesentlich.",
+      "ownCounterexampleOrAlternative": "A3 bleibt trotz „weil“ abgelesener Befund. B3 kann Ablesung und Bezug auf eine Vorhersage enthalten; diese begründete Trennung ist fair. Die Behauptung direkt gesehener Luftteilchen ist kein Befund.",
+      "englishParity": "Vollständige DE/EN-Parität. Die Laufzeitkriterien sind deutsch; keine erfundenen englischen Rubrikfelder."
+    },
+    {
+      "id": "2ff1abd4-1399-5e5a-aa91-7c6948e77ed1",
+      "title": "Prüfungsaufgabe: Gemeinsame SI-Bezüge sinnvoll nutzen",
+      "decision": "ACCEPT_CONTENT",
+      "blocker": null,
+      "coveredGoalIds": [
+        "3ed3279e-c524-5230-a277-dda89493df6d"
+      ],
+      "points": [
+        8,
+        8
+      ],
+      "rationale": "Zwei Kontexte prüfen den gemeinsamen SI-Bezug und Größen/Einheiten, acht wesentliche Kriterien.",
+      "ownCounterexampleOrAlternative": "80 cm=0,80 m beschreibt denselben Wert, keine unterschiedliche Genauigkeit allein wegen der Schreibweise. m·s⁻¹ ist als m/s fair. kg als Krafteinheit oder 80>0,80 als Längenvergleich scheitert.",
+      "englishParity": "DE/EN vollständig gleichwertig; die vorgegebene Geschwindigkeit 0,5 m/s erzeugt keinen neuen Rechen-Prerequisite-Claim."
+    },
+    {
+      "id": "c19d58dc-2c6e-53a9-8c74-991b55e6f2d0",
+      "title": "Prüfungsaufgabe: Eigene Stromverstärkermessungen begründet auswerten",
+      "decision": "ACCEPT_CONTENT",
+      "blocker": null,
+      "coveredGoalIds": [
+        "d8b2b349-b83a-5225-a180-1afe205750cd"
+      ],
+      "points": [
+        9,
+        9
+      ],
+      "rationale": "Eigener Aufbau und eigene Messungen in zwei Versorgungsfällen, Wiederholung, Arbeitspunktprüfung und verschiedene Verstärkungsbegriffe sind jeweils unabdingbar.",
+      "ownCounterexampleOrAlternative": "Bei 5 V und mindestens 10 MΩ zieht das Voltmeter höchstens 0,5 µA=0,0005 mA, 1/20 der 0,01-mA-Auflösung. Beispielpunkte IB=5/10/15 µA und IC=1,10/2,40/3,75 mA geben q=240 und g=265 am mittleren Punkt. Eine tatsächliche zweite Reihe darf abweichende Verstärkung liefern. Papierkopie der ersten Reihe oder Energieerzeugung durch den Transistor scheitert.",
+      "englishParity": "DE/EN und neun tatsächliche Kriterien vollständig gelesen. Kein Hardwareversuch behauptet. Lehrerprüfung des konkreten Moduls bleibt realer Aufgabenteil."
+    },
+    {
+      "id": "a6f40821-695f-5c38-a572-3bc912e3d8e7",
+      "title": "Prüfungsaufgabe: Brechung und scheinbare Lage in drei Anordnungen",
+      "decision": "ACCEPT_CONTENT",
+      "blocker": null,
+      "coveredGoalIds": [
+        "6a4c6042-052b-502b-a39a-0ed8941247ac"
+      ],
+      "points": [
+        12,
+        12
+      ],
+      "rationale": "Drei Anordnungen verlangen Brechungsrichtung und scheinbare Lage; der dritte Fall prüft eine vertikale Grenzfläche und die normale Einzelstrahl-Falle.",
+      "ownCounterexampleOrAlternative": "Wasser→Luft ergibt paraxial 3/4 der wirklichen Tiefe; Luft→Wasser scheinbar 4/3 des Abstands. Ein normaler Strahl wird nicht abgelenkt, bestimmt aber allein keine scheinbare Tiefe. „Immer näher“ scheitert. Fachlich stimmige qualitative Konstruktionen ohne zusätzliche Formeln sind fair.",
+      "englishParity": "DE/EN vollständig gleichwertig, zwölf wesentliche Kriterien."
+    },
+    {
+      "id": "2437c7ee-3d59-544a-b9a0-8c5de0af54ad",
+      "title": "Prüfungsaufgabe: Reelle und virtuelle Linsenbilder selbst konstruieren",
+      "decision": "ACCEPT_CONTENT",
+      "blocker": null,
+      "coveredGoalIds": [
+        "078ce4d2-3193-4cd0-ae59-4fb8ab16e9e5"
+      ],
+      "points": [
+        18,
+        18
+      ],
+      "rationale": "Drei eigene vollständige Strahlkonstruktionen aus ungelösten Ausgangsbildern prüfen Sammel-/Zerstreuungslinse, virtuell/reell und Modellgrenzen.",
+      "ownCounterexampleOrAlternative": "A: b=3 cm, m=−0,5, h=−1 cm. B: b=−2 cm, m=2, h=4 cm. C: b=−4/3 cm, m=1/3, h=2/3 cm. Nur auswendig genannte Eigenschaften ohne Konstruktion oder physikalische Strahlen als rückwärtige Verlängerungen reichen nicht. Andere korrekte Hauptstrahlen sind fair.",
+      "englishParity": "DE/EN vollständig gleichwertig. Ausgangs-PNG tatsächlich visuell geprüft; 18 wesentliche Kriterien."
+    },
+    {
+      "id": "fbaeed34-81a0-5955-9777-bf103002feee",
+      "title": "Prüfungsaufgabe: Geschwindigkeitspfeile in einem echten Bewegungsvideo konstruieren",
+      "decision": "ACCEPT_CONTENT",
+      "blocker": null,
+      "coveredGoalIds": [
+        "d61ea362-f6c3-5eab-ac30-2d0e265ac0f6"
+      ],
+      "points": [
+        14,
+        14
+      ],
+      "rationale": "Zwei echte unabhängig ausgewertete Clips, gemeinsame Pfeilskala, lokale Zeitfenster und Vektordifferenz; bereitgestellte geprüfte Kalibrierung ist ausdrücklich zulässig.",
+      "ownCounterexampleOrAlternative": "v1=(0,4;0), v2=(0;0,4) m/s: Δv=(−0,4;0,4), Betrag≈0,566 m/s trotz gleicher Beträge. Δ|v|=0 als Vektoränderung scheitert. Kein Zwang zu eigener Aufnahme bei zulässigem bereitgestelltem Clip.",
+      "englishParity": "Aktuelle DE/EN und alle 14 Punkte frisch gelesen. V3 wegen geänderter Kalibrierungsformulierung nicht pauschal wiederverwendet."
+    },
+    {
+      "id": "7c2a3450-9b82-54e6-b302-358a964b34ec",
+      "title": "Prüfungsaufgabe: Einen angeleiteten Beschleunigungsversuch planen, durchführen und vergleichen",
+      "decision": "ACCEPT_CONTENT",
+      "blocker": null,
+      "coveredGoalIds": [
+        "677a192d-8bbe-57fc-bb7a-1c1ed5fba32b"
+      ],
+      "points": [
+        16,
+        16
+      ],
+      "rationale": "Angeleiteter eigener Versuch, eigener Plan vor Datenerhebung und ein zweiter geänderter Versuch sind jeweils notwendig; beide dürfen dasselbe messbare a ergeben.",
+      "ownCounterexampleOrAlternative": "Fenster 0,10–0,20 und 0,50–0,60 s haben Mittelpunkte 0,15/0,55 s, Abstand 0,40 s. v=0,4/1,2 ergibt a=2; v=0,6/1,4 ebenfalls a=2 m/s². Später erfundener Plan oder nur umgedrehte Achse als neuer Versuch scheitert.",
+      "englishParity": "DE/EN vollständig. Inhaltliche V3-Felder exakt gleich und alle 125 alten Pins geprüft; trotzdem aktuelle Volllektüre durchgeführt."
+    },
+    {
+      "id": "e5504ffe-b83f-50cd-87bb-2538ae0bfb75",
+      "title": "Prüfungsaufgabe: Zwei Modelle nutzen und begrenzen",
+      "decision": "ACCEPT_CONTENT",
+      "blocker": null,
+      "coveredGoalIds": [
+        "e5bc2227-d900-585f-8ac0-9d3f1cb40e27"
+      ],
+      "points": [
+        8,
+        8
+      ],
+      "rationale": "Zwei unabhängige Modelle verlangen Vorhersage, Modellcharakter und begründete Grenzen; tatsächliches Material-PNG gelesen.",
+      "ownCounterexampleOrAlternative": "Schatten wächst bei Hindernis näher an der Punktquelle. Bei festem N und T steigt Gasdruck beim Komprimieren; die Punktzeichnung ist kein maßstäblicher Film. Eine fachlich begründete Grenze wie Eigenvolumen ODER Wechselwirkungen genügt, da eine verlangt wird. Nur richtige Vorhersage ohne Modellgrenze scheitert.",
+      "englishParity": "DE/EN vollständig gleichwertig, acht wesentliche Kriterien."
+    },
+    {
+      "id": "84d4167d-415b-5c06-9d1f-23200b793837",
+      "title": "Prüfungsaufgabe: Quellen fachlich ordnen und prüfen",
+      "decision": "ACCEPT_CONTENT",
+      "blocker": null,
+      "coveredGoalIds": [
+        "d2e6f87d-795b-5631-a7cc-0bfb5dc5142e"
+      ],
+      "points": [
+        8,
+        8
+      ],
+      "rationale": "Zwei ausdrücklich fiktive Quellenkarten verlangen Informationsauswahl, Zuordnung und unabhängige physikalische Prüfung einer zutreffenden und einer überzogenen Werbeaussage.",
+      "ownCounterexampleOrAlternative": "8 W/40 W bei je 800 lm ergeben nach einer Stunde 8/40 Wh, Faktor 5. Aus 12 W elektrisch→9 W mechanisch folgt höchstens 9 W Nutzleistung im Wasser, nicht genau 9 W und nicht 12 W. „Alle Werbung falsch“ scheitert; 28,8/144 kJ ist eine faire Alternative.",
+      "englishParity": "DE/EN vollständig gleichwertig; acht wesentliche Kriterien."
+    },
+    {
+      "id": "0432a422-401b-5134-bf08-05cfd8c7a366",
+      "title": "Messmethoden und Datenanalyse in Aufgaben anwenden",
+      "decision": "REJECT_FULL_P",
+      "blocker": "B2",
+      "coveredGoalIds": [
+        "8aff7aac-321b-5172-ac55-877876bfd2cd",
+        "f6b1d812-ce8b-5852-b417-e6c29b533c7a",
+        "b615830a-e8b0-5754-81e0-99da98343a8d",
+        "f23fdfa9-38b6-5157-8301-ed302476c456",
+        "264dc31c-ec92-5e39-a8b8-16f1d74366d4",
+        "75b9ca4c-178e-5df2-adc4-f7f78e9d28e5",
+        "691c11d0-fa6a-5d2e-a19c-086e89c3c233",
+        "72effc66-87f4-5f5e-8d36-1547677365fb",
+        "ac25ffe3-fd42-592d-a937-79cc13460313"
+      ],
+      "points": [
+        18,
+        30
+      ],
+      "rationale": "Neun Voll-P-Claims sind durch die schriftliche Aktivität nicht gesichert. Digitale Sensorerfassung und tatsächliche Tabellenkalkulations-Implementierung finden nicht statt; vollständige Unsicherheit/Linearisierung kann fehlen.",
+      "ownCounterexampleOrAlternative": "30−7=23≥18: Auslassen des gesamten Unsicherheitsblocks besteht. Mittelwert 1,42 s und halbe Spannweite 0,02 s sind korrekt. Ein bloßer Euler-Schritt ist keine implementierte Simulation mit Parameter-/Zeitschrittvariation. Der offene Euler-Auftrag lässt explizites s1=0 und semiimplizites s1=0,08 m zu; die Lösung darf diese Konvention nicht unfair verengen.",
+      "englishParity": "Keine englische Aufgaben-/Lösungsfassung vorhanden. Historischen Vertrag unverändert erhalten; kein Statuswechsel als Reparatur."
+    },
+    {
+      "id": "d441ee2f-9230-5751-832b-5b0b5cf14605",
+      "title": "Q1-Klausuraufgaben Physik selbstständig lösen",
+      "decision": "REJECT_FULL_P",
+      "blocker": "B3",
+      "coveredGoalIds": [
+        "a6e48b88-51ed-5942-bdb8-8d2192652e0d",
+        "98e42cda-9e5d-5910-b2c0-3e631fd20c78",
+        "4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe",
+        "1730c01d-8c85-57df-b031-c11e2a0511b1",
+        "9f59a088-3939-59e9-821d-167fadfda782",
+        "0b4f2020-8486-5372-9cb9-6e59f698ac2d",
+        "fd9fd8ad-c4a1-5552-9ea0-1878e0636f20",
+        "0f803c37-8191-5a07-9b31-9603ded98fe2",
+        "741774ef-15fc-4bcf-a370-e2c5cf4257d0",
+        "5fda8623-69e0-5503-9c6d-86d054a8cf91",
+        "58db62d4-458f-5e2d-9ca0-968e09f4944b",
+        "d02438ba-0cc9-5993-831e-5e44d35e32c4",
+        "9854589c-5feb-4942-b90f-311ddf36eb78",
+        "0f6b798b-594e-5480-8c5f-95e2486a4d85",
+        "106417ed-80db-5490-a1ee-bb4160d3f2b4",
+        "c6355a22-24cf-5d8b-88af-ea11711460fb",
+        "8c9394cb-f54a-508d-9750-4c49e31b3fa9",
+        "52bdabb2-d9a1-56e6-bccf-ff58f299c739",
+        "455c65ca-814a-56ad-918a-013155883c52",
+        "73b309ed-1aab-5778-8494-d9b65f5a352b",
+        "2622bef1-bdbc-504e-b468-b600b2ca3ed8",
+        "330808f6-789a-583d-86df-e271a7683d8b",
+        "09f2cdbd-64e0-55d2-ada7-1190f4fd50df",
+        "74a74132-fa39-541c-8d3c-696cf228452d",
+        "8d34228c-da38-5c1e-97cc-571f3eafb9f4",
+        "3b866aea-3e4d-5f23-91de-759148382710",
+        "b39ae8fb-4358-5866-8adf-3d5365368eeb",
+        "0924162b-46d0-5c56-93bc-33e1f5ac6886",
+        "966782e5-690d-4fae-bbab-fa3fa30525c3",
+        "2d62b444-796e-548d-aeee-cfd9c6665ddc",
+        "7fe6f8a1-5580-4e37-bf8e-9772964a6b0a",
+        "3f17d0d2-562d-4c1c-9ebc-1a1a43f28f9c",
+        "25998fed-ea4d-4c3e-b606-e965b5d7f290",
+        "f3de5922-dd45-4fb6-87c1-525d1952dd89",
+        "9fb1dd85-11b7-4a5a-b124-27fea8d1788e",
+        "e3bce51c-cfeb-4706-b95e-a22b76e7dd73",
+        "38e0ff49-f132-44c8-b17a-73dada5344db"
+      ],
+      "points": [
+        18,
+        30
+      ],
+      "rationale": "Platzhalter ohne bestimmtes Material, Daten oder auswertbare Einzelsituation beansprucht 37 vollständig gelesene gewöhnliche Ziele. Es existiert keine bestimmte Musterantwort auf eine tatsächliche Klausur.",
+      "ownCounterexampleOrAlternative": "Die Aufforderung, irgendeine materialgebundene Klausur zu bearbeiten, und ein generisches 30/18-Raster beweisen weder Millikan-/Hall-Versuch noch MRT, Feldmodelle oder die übrigen 37 P. Fehlendes Material kann durch keine wohlwollende Rasterauslegung ergänzt werden.",
+      "englishParity": "Keine englische Aufgaben-/Lösungsfassung vorhanden. Explizite historische Rücknahme/Supersession statt Freigabe oder Verstecken."
+    },
+    {
+      "id": "6345871e-eab4-59c1-a3b6-8456ab9bd7df",
+      "title": "Videoanalyse: eigene Kalibrierung und unabhängiger Wurftransfer",
+      "decision": "ACCEPT_CONTENT",
+      "blocker": null,
+      "coveredGoalIds": [
+        "d67502e3-5e0a-595b-a24b-65b1c40de36e"
+      ],
+      "points": [
+        32,
+        32
+      ],
+      "rationale": "Zwei eigene neue Videoaufnahmen mit Kalibrierung, Rohdaten, allen verlangten Daten-/Modellgraphen, Re-Markierung und Sensitivitäts-Neufits sowie unabhängigem synthetischem Transfer; alle acht 4-Punkte-Blöcke wesentlich.",
+      "ownCounterexampleOrAlternative": "Transfer-LS: A≈0,200556; B=1,85; C≈4,500818; D≈−0,299989; E≈−4,903139 und ay≈−9,806277. Fehlendes vy-Diagramm oder keine tatsächliche Re-Markierung verhindert 32/32. Korrekt unaufgelöste Ursache mit sinnvoller diskriminierender Zusatzmessung ist fair; kein erzwungener unbewiesener Kausalbefund.",
+      "englishParity": "Aktuelle DE/EN/Rubrik frisch gelesen; keine pauschale V3-Übernahme bei Textdrift. CSV und DE/EN-PNG tatsächlich gelesen. Präzise Metadatenreparatur coveredStrands=[LI_BEWEGUNG] ist durch das vollständige primäre P d675 belegt."
+    }
+  ],
+  "additionalMetadataCase": {
+    "id": "4ab1cf6d-b808-5b86-9291-85df0b9f2496",
+    "decision": "DO_NOT_ADD_FULL_P_COVERAGE",
+    "rationale": "Vollständig gelesene DE/EN-Aufgabe ist konkrete sinnvolle Übung, aber fehlende coveredGoalIds lassen sich nicht als bloßer Metadatenfehler reparieren: alle drei Diagramme zusammen 8 Punkte können fehlen und 28≥22/36 besteht. Damit ist volles e4b-P nicht garantiert.",
+    "ownNumerics": {
+      "peakTimeS": 1.5,
+      "peakHeightM": 31.25,
+      "timesAt25M": "(3±√5)/2 s",
+      "impactTimeS": 4,
+      "impactVelocityMPerS": -25,
+      "downwardStartImpactTimeS": 1
+    },
+    "preserveLegacyContract": true
+  },
+  "freshness": [
+    {
+      "id": "367b17f8-972a-5f3e-8915-8cfe743132a3",
+      "allReviewedPTaskSolutionRubricRequiresCoverageFieldsUnchanged": true,
+      "currentMetadata": {
+        "applicabilityFromRequires": true,
+        "applicabilityMappingInheritance": "boundary"
+      }
+    },
+    {
+      "id": "020e9dd3-7f3d-55d8-bcdd-a8da0f779cdf",
+      "allReviewedPTaskSolutionRubricRequiresCoverageFieldsUnchanged": true,
+      "currentMetadata": {
+        "applicabilityFromRequires": true,
+        "applicabilityMappingInheritance": "boundary"
+      }
+    },
+    {
+      "id": "2ff1abd4-1399-5e5a-aa91-7c6948e77ed1",
+      "allReviewedPTaskSolutionRubricRequiresCoverageFieldsUnchanged": true,
+      "currentMetadata": {
+        "applicabilityFromRequires": true,
+        "applicabilityMappingInheritance": "boundary"
+      }
+    },
+    {
+      "id": "c19d58dc-2c6e-53a9-8c74-991b55e6f2d0",
+      "allReviewedPTaskSolutionRubricRequiresCoverageFieldsUnchanged": true,
+      "currentMetadata": {
+        "applicabilityFromRequires": true,
+        "applicabilityMappingInheritance": "boundary"
+      }
+    },
+    {
+      "id": "a6f40821-695f-5c38-a572-3bc912e3d8e7",
+      "allReviewedPTaskSolutionRubricRequiresCoverageFieldsUnchanged": true,
+      "currentMetadata": {
+        "applicabilityFromRequires": true,
+        "applicabilityMappingInheritance": "boundary"
+      }
+    },
+    {
+      "id": "2437c7ee-3d59-544a-b9a0-8c5de0af54ad",
+      "allReviewedPTaskSolutionRubricRequiresCoverageFieldsUnchanged": true,
+      "currentMetadata": {
+        "applicabilityFromRequires": true,
+        "applicabilityMappingInheritance": "boundary"
+      }
+    },
+    {
+      "id": "fbaeed34-81a0-5955-9777-bf103002feee",
+      "allReviewedPTaskSolutionRubricRequiresCoverageFieldsUnchanged": true,
+      "currentMetadata": {
+        "applicabilityFromRequires": true,
+        "applicabilityMappingInheritance": "boundary"
+      }
+    },
+    {
+      "id": "7c2a3450-9b82-54e6-b302-358a964b34ec",
+      "allReviewedPTaskSolutionRubricRequiresCoverageFieldsUnchanged": true,
+      "currentMetadata": {
+        "applicabilityFromRequires": true,
+        "applicabilityMappingInheritance": "boundary"
+      }
+    },
+    {
+      "id": "e5504ffe-b83f-50cd-87bb-2538ae0bfb75",
+      "allReviewedPTaskSolutionRubricRequiresCoverageFieldsUnchanged": true,
+      "currentMetadata": {
+        "applicabilityFromRequires": true,
+        "applicabilityMappingInheritance": "boundary"
+      }
+    },
+    {
+      "id": "84d4167d-415b-5c06-9d1f-23200b793837",
+      "allReviewedPTaskSolutionRubricRequiresCoverageFieldsUnchanged": true,
+      "currentMetadata": {
+        "applicabilityFromRequires": true,
+        "applicabilityMappingInheritance": "boundary"
+      }
+    },
+    {
+      "id": "0432a422-401b-5134-bf08-05cfd8c7a366",
+      "allReviewedPTaskSolutionRubricRequiresCoverageFieldsUnchanged": true,
+      "currentMetadata": {
+        "applicabilityFromRequires": null,
+        "applicabilityMappingInheritance": null
+      }
+    },
+    {
+      "id": "d441ee2f-9230-5751-832b-5b0b5cf14605",
+      "allReviewedPTaskSolutionRubricRequiresCoverageFieldsUnchanged": true,
+      "currentMetadata": {
+        "applicabilityFromRequires": null,
+        "applicabilityMappingInheritance": null
+      }
+    },
+    {
+      "id": "6345871e-eab4-59c1-a3b6-8456ab9bd7df",
+      "allReviewedPTaskSolutionRubricRequiresCoverageFieldsUnchanged": true,
+      "currentMetadata": {
+        "applicabilityFromRequires": null,
+        "applicabilityMappingInheritance": null
+      }
+    },
+    {
+      "id": "4ab1cf6d-b808-5b86-9291-85df0b9f2496",
+      "allReviewedPTaskSolutionRubricRequiresCoverageFieldsUnchanged": true,
+      "currentMetadata": {
+        "applicabilityFromRequires": true,
+        "applicabilityMappingInheritance": "boundary"
+      }
+    }
+  ],
+  "existingExplicitCoveragePrescan": [
+    {
+      "id": "a9562b05-c54d-5635-9244-3f7dd24a8642",
+      "title": "Bewegungsanalyse und freier Fall",
+      "status": "released",
+      "maxPoints": 25,
+      "passingPoints": 15,
+      "matchedClaims": [
+        "ac25ffe3-fd42-592d-a937-79cc13460313"
+      ]
+    },
+    {
+      "id": "2b9e565f-d9b4-5e23-b5b7-b7977cecff06",
+      "title": "Mehrphasenbewegung und Modellprüfung",
+      "status": "released",
+      "maxPoints": 30,
+      "passingPoints": 18,
+      "matchedClaims": [
+        "f6b1d812-ce8b-5852-b417-e6c29b533c7a"
+      ]
+    },
+    {
+      "id": "0432a422-401b-5134-bf08-05cfd8c7a366",
+      "title": "Messmethoden und Datenanalyse in Aufgaben anwenden",
+      "status": "needs_review",
+      "maxPoints": 30,
+      "passingPoints": 18,
+      "matchedClaims": [
+        "264dc31c-ec92-5e39-a8b8-16f1d74366d4",
+        "691c11d0-fa6a-5d2e-a19c-086e89c3c233",
+        "72effc66-87f4-5f5e-8d36-1547677365fb",
+        "75b9ca4c-178e-5df2-adc4-f7f78e9d28e5",
+        "8aff7aac-321b-5172-ac55-877876bfd2cd",
+        "ac25ffe3-fd42-592d-a937-79cc13460313",
+        "b615830a-e8b0-5754-81e0-99da98343a8d",
+        "f23fdfa9-38b6-5157-8301-ed302476c456",
+        "f6b1d812-ce8b-5852-b417-e6c29b533c7a"
+      ]
+    },
+    {
+      "id": "367b17f8-972a-5f3e-8915-8cfe743132a3",
+      "title": "Prüfungsaufgabe: Eine Bewegung digital auswerten",
+      "status": "needs_review",
+      "maxPoints": 18,
+      "passingPoints": 11,
+      "matchedClaims": [
+        "72effc66-87f4-5f5e-8d36-1547677365fb"
+      ]
+    },
+    {
+      "id": "7f83e25c-38f7-5ac2-8f9c-ec54eeef1026",
+      "title": "E-Phase-Klausuraufgaben Physik selbstständig lösen",
+      "status": "needs_review",
+      "maxPoints": 30,
+      "passingPoints": 18,
+      "matchedClaims": [
+        "264dc31c-ec92-5e39-a8b8-16f1d74366d4",
+        "691c11d0-fa6a-5d2e-a19c-086e89c3c233",
+        "72effc66-87f4-5f5e-8d36-1547677365fb",
+        "75b9ca4c-178e-5df2-adc4-f7f78e9d28e5",
+        "8aff7aac-321b-5172-ac55-877876bfd2cd",
+        "ac25ffe3-fd42-592d-a937-79cc13460313",
+        "b615830a-e8b0-5754-81e0-99da98343a8d",
+        "f23fdfa9-38b6-5157-8301-ed302476c456",
+        "f6b1d812-ce8b-5852-b417-e6c29b533c7a"
+      ]
+    }
+  ],
+  "strictReplacementConclusions": {
+    "a9562b05-c54d-5635-9244-3f7dd24a8642": "Full current task/solution/rubric read. No actual spreadsheet implementation, parameter variation or timestep sensitivity at all; cannot close ac25 despite released label.",
+    "2b9e565f-d9b4-5e23-b5b7-b7977cecff06": "Full current task/solution/rubric read. Entire uncertainty block can be omitted: 30−6=24≥18. Not strict full-P acquisition for f6b.",
+    "6345871e-eab4-59c1-a3b6-8456ab9bd7df": "Concrete next step: separately review exact three new coverage claims 691c sensor acquisition, 72eff digital analysis/uncertainties, 8aff error types against mandatory own recordings/raw tables and mandatory calibration/tracking refits. It can likely close those real deficits without a new atom/task, but requires explicit coverage disposition and current P binding. No claim inferred from requires.",
+    "newTaskPriority": "Author separate strict bilingual measurement task for f6b,b615,f23,75b with two independent contexts, genuine uncertainty notation, final rounding, mean/spread and instrument comparison. Then strict transformation/line fitting for264 and an actual submitted spreadsheet model forac25 with initial conditions, finite differences, parameter/timestep comparison; preserve existing task IDs and learner-result contracts.",
+    "d441withdrawal": "Propose explicit retained historical unsupported placeholder with an auditable full-claim withdrawal/supersession decision, preserving ID/result contract and ordinary goals; keep route gap visible until concrete strict tasks cover actual P. Do not turn a legacy folder move into quality acceptance.",
+    "4ab": "No metadata-only coverage addition. Inspect already strict a8dc0290 full P before authoring a separate full-e4b acquisition assessment."
+  },
+  "boundaries": [
+    "Content acceptance is narrower than released status, compiled applicability, positive/negative learnergrader profiles, D/P review binding, full M7 or fresh CI.",
+    "New893 task authored by this reviewer is excluded from self-review; independent Root full read seal remains9732f29898ccc1abb8b4dfd90e4142b0efa34efd9981dd62bf4f4859f3d21c4c. Its native P/D release remains open.",
+    "No active canonical/view/task/rubric/status changes made by this final audit.",
+    "SEM refresh receipt63907816071cb0954a2339aa028c7703440a2682d3ba641afa026cc6cb5174e2 and separate actual21-catalog loader pass are structural validation, not this content release."
+  ]
+}

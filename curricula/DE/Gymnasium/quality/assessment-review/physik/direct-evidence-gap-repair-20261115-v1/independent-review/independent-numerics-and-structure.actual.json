@@ -1,0 +1,155 @@
+{
+  "executedAt": "2026-11-15T13:05:43.188903+00:00",
+  "method": "Independent Decimal arithmetic from task givens; no author script invoked. Physical directions judged independently, then numeric assertions evaluated.",
+  "coulombChecks": [
+    {
+      "name": "original signed force on right q2 N",
+      "actual": "-0.00000270",
+      "expected": "-0.0000027",
+      "pass": true
+    },
+    {
+      "name": "original signed force on left q1 N",
+      "actual": "0.00000270",
+      "expected": "0.0000027",
+      "pass": true
+    },
+    {
+      "name": "changed signed force on q2 N",
+      "actual": "6.75E-7",
+      "expected": "6.75E-7",
+      "pass": true
+    },
+    {
+      "name": "changed signed force on q1 N",
+      "actual": "-6.75E-7",
+      "expected": "-6.75E-7",
+      "pass": true
+    },
+    {
+      "name": "magnitude ratio",
+      "actual": "0.25",
+      "expected": "0.25",
+      "pass": true
+    },
+    {
+      "name": "A field from force/test charge N/C",
+      "actual": "9E+2",
+      "expected": "900",
+      "pass": true
+    },
+    {
+      "name": "A direct source check N/C",
+      "actual": "9E+2",
+      "expected": "900",
+      "pass": true
+    },
+    {
+      "name": "A fresh +1nC force N",
+      "actual": "9.0E-7",
+      "expected": "9.0E-7",
+      "pass": true
+    },
+    {
+      "name": "B positive probe inference N/C",
+      "actual": "-3E+3",
+      "expected": "-3000",
+      "pass": true
+    },
+    {
+      "name": "B negative probe inference N/C",
+      "actual": "-3E+3",
+      "expected": "-3000",
+      "pass": true
+    },
+    {
+      "name": "B new negative probe force N",
+      "actual": "0.0000150",
+      "expected": "0.000015",
+      "pass": true
+    },
+    {
+      "name": "B incorrect claim field N/C",
+      "actual": "3.0E+3",
+      "expected": "3000",
+      "pass": true
+    },
+    {
+      "name": "B corrected force on +1nC N",
+      "actual": "-0.000003",
+      "expected": "-0.000003",
+      "pass": true
+    }
+  ],
+  "rayleighReferences": [
+    {
+      "referenceApertureMetres": "0.0025",
+      "radians": "0.0002684",
+      "arcminutes": 0.9226912332786777
+    },
+    {
+      "referenceApertureMetres": "0.0030",
+      "radians": "0.0002236666666666666666666666667",
+      "arcminutes": 0.7689093610655647
+    },
+    {
+      "referenceApertureMetres": "0.0035",
+      "radians": "0.0001917142857142857142857142857",
+      "arcminutes": 0.659065166627627
+    }
+  ],
+  "syntheticAngleFixture": {
+    "warning": "Synthetic calculation fixture only; no own-eye or learner measurement occurred.",
+    "sMetres": [
+      "0.00056",
+      "0.00064"
+    ],
+    "criterionDistanceBracketMetres": [
+      "1.8",
+      "2.4"
+    ],
+    "distanceBracketAfterGeometryMetres": [
+      "1.78",
+      "2.42"
+    ],
+    "thetaRadians": [
+      "0.0002314049586776859504132231405",
+      "0.0003595505617977528089887640449"
+    ],
+    "thetaArcminutes": [
+      0.7955116494378373,
+      1.2360437827541355
+    ],
+    "overlapWithReferenceModelRadians": [
+      0.00023140495867768595,
+      0.0002684
+    ]
+  },
+  "practicalScaleCheck": {
+    "sMetres": ".0006",
+    "distancesForAngles2eMinus4To5eMinus4Metres": [
+      3.0,
+      1.2
+    ],
+    "notEmpiricalValidation": true
+  },
+  "candidateStructure": [
+    {
+      "assessmentId": "716acf20-d882-5152-9735-099876d631b4",
+      "candidateEqualsStandalone": true,
+      "maxAndPassing": 16,
+      "stepCount": 8,
+      "allFourFullTextsAndBilingualRuntimeDescriptionsPresent": true,
+      "singleMatchingRequiredAndCoveredOrdinaryGoal": "8da5c981-8216-5fcd-a393-19f392ae2006"
+    },
+    {
+      "assessmentId": "a0f83a92-bf9e-5325-a914-4b5f09ac67e7",
+      "candidateEqualsStandalone": true,
+      "maxAndPassing": 20,
+      "stepCount": 10,
+      "allFourFullTextsAndBilingualRuntimeDescriptionsPresent": true,
+      "singleMatchingRequiredAndCoveredOrdinaryGoal": "6d882aac-9658-5f0d-bf3d-9338f0143bbc"
+    }
+  ],
+  "boundary": "Desk calculation and content checks only; no learner, own-eye, hardware, clinical or native curriculum QA evidence."
+}

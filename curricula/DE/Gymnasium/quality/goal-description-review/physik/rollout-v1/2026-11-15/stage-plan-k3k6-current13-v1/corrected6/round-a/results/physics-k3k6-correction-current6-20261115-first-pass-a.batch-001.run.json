@@ -1,0 +1,56 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physics-k3k6-correction-current6-20261115-first-pass-a",
+  "campaignId": "physics-k3k6-correction-current6-20261115-a",
+  "roundId": "physics-k3k6-correction-current6-20261115-first-pass-a",
+  "batchId": "physics-k3k6-correction-current6-20261115-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:537d375a55b70043a822d670bc7f721adb8654840b0cf94f49285818add97e62",
+  "bundleFingerprint": "sha256:34f29f0e837f4dcc6f55b3f31998e83c3ee9126b372363aeb82c876b126338d7",
+  "bookDigest": "sha256:20dea5324f0fa57e171704e4229fc8821107a2562650f082f24080e8ea550150",
+  "provider": "OpenAI Codex delegated agent; effective deployment not independently attested",
+  "model": "gpt-6.1-sol (requested); effective deployment not independently attested",
+  "modelVersion": "not exposed by session interface",
+  "role": "didactic_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:50c688077cac717955f0b26ff604445aaabe249c9a4f3bececaab6dbdaff67f7",
+  "independenceGroupId": "physics-k3k6-correction-current6-20261115-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "d67502e3-5e0a-595b-a24b-65b1c40de36e",
+    "bbee4c52-4e95-5529-990f-706aa99316a3",
+    "8da5c981-8216-5fcd-a393-19f392ae2006",
+    "ce14a7e7-7e2a-517f-a465-78ba3fbe414d",
+    "d61ea362-f6c3-5eab-ac30-2d0e265ac0f6",
+    "677a192d-8bbe-57fc-bb7a-1c1ed5fba32b"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:53b5ee67564d74cbf049a25e177bd24004c54a62b11742b3810717f4e20f858e"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:69247a95db0a7a4b9a247b24193b1ce3362433b222e656e779f6c3cd9e1695a0"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:537d375a55b70043a822d670bc7f721adb8654840b0cf94f49285818add97e62"
+    }
+  ],
+  "startedAt": "2026-11-15T12:07:37Z",
+  "completedAt": "2026-11-15T12:16:26Z",
+  "status": "completed",
+  "outputDigest": "sha256:535f7480c0d8322279512e3eef933af76ea7250a67e6a1d07a4e2d0a678d0c4a",
+  "toolchainVersion": "codex-native-goal-description-review-v2"
+}

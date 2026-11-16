@@ -718,6 +718,7 @@ const mediaTypeForPath = (path: string) => {
   if (path.endsWith('.txt') || basename(path) === 'LICENSE') return 'text/plain'
   if (path.endsWith('.jpg') || path.endsWith('.jpeg')) return 'image/jpeg'
   if (path.endsWith('.png')) return 'image/png'
+  if (path.startsWith('assets/assessment-materials/') && path.endsWith('.svg')) return 'image/svg+xml'
   fail(`No closed media-type mapping for ${path}.`)
 }
 
@@ -844,20 +845,32 @@ const assertRedistributionReviewDerivedState = (
     review.summary.humanReviewItemCount !== humanReviewItemCount
     || review.summary.publicationReady !== publicationReady
   ) fail('Redistribution summary readiness is forged or stale.')
-  const override = review.pathClassificationOverrides[0]
-  if (
-    review.pathClassificationOverrides.length !== 1
-    || Object.keys(override).sort(compareCodeUnits).join('\n') !== [
-      'classId',
-      'pathPrefix',
-      'provenanceClass',
-      'role',
-    ].join('\n')
-    || override.role !== 'package-documentation'
-    || override.pathPrefix !== 'data/assessment-sources/'
-    || override.classId !== 'skillpilot-data'
-    || override.provenanceClass !== 'skillpilot-authored'
-  ) {
+  const expectedOverrides = [{
+    role: 'package-documentation',
+    pathPrefix: 'data/assessment-sources/',
+    classId: 'skillpilot-data',
+    provenanceClass: 'skillpilot-authored',
+  }]
+  if (review.targetReleaseProfile.profileId === 'full-standalone-v1.3') {
+    expectedOverrides.push({
+      role: 'provenance-report',
+      pathPrefix: 'data/assessment-sources/stage-plan-direct-evidence-20261115-v7/reviewed-assessments.json',
+      classId: 'skillpilot-data',
+      provenanceClass: 'skillpilot-authored',
+    }, {
+      role: 'provenance-report',
+      pathPrefix: 'data/assessment-sources/task64-digital-correction-20261115-v1/reviewed-assessment.json',
+      classId: 'skillpilot-data',
+      provenanceClass: 'skillpilot-authored',
+    })
+  }
+  if (review.pathClassificationOverrides.length !== expectedOverrides.length
+    || review.pathClassificationOverrides.some((override, index) => {
+      const expected = expectedOverrides[index]
+      return Object.keys(override).sort(compareCodeUnits).join('\n') !== ['classId', 'pathPrefix', 'provenanceClass', 'role'].join('\n')
+        || override.role !== expected.role || override.pathPrefix !== expected.pathPrefix
+        || override.classId !== expected.classId || override.provenanceClass !== expected.provenanceClass
+    })) {
     fail('Redistribution path-classification overrides differ from the closed package policy.')
   }
 }
@@ -928,7 +941,8 @@ const decisionClassifier = (review: RedistributionReview, expectedExternalResour
 
   const classify = (role: string, path: string) => {
     const overrides = review.pathClassificationOverrides
-      .filter((override) => override.role === role && path.startsWith(override.pathPrefix))
+      .filter((override) => override.role === role && (override.pathPrefix.endsWith('/')
+        ? path.startsWith(override.pathPrefix) : path === override.pathPrefix))
       .sort((left, right) => right.pathPrefix.length - left.pathPrefix.length)
     if (overrides.length > 1 && overrides[0].pathPrefix.length === overrides[1].pathPrefix.length) {
       fail(`Ambiguous redistribution path classification for ${path}.`)
@@ -984,6 +998,19 @@ const attachManifestFile = (
     redistributionStatus: decision.redistributionStatus,
     semanticBinding,
   }
+}
+
+const manifestAssetDecision = (decision: AssetDecision, resource: JsonObject, materialProfile: boolean): AssetDecision => {
+  if (decision.provenanceClass !== 'skillpilot-authored-assessment-material') return decision
+  if (!materialProfile || resource.resourceKind !== 'assessment-material'
+    || resource.delivery !== 'embedded' || resource.runtimeRequired !== true
+    || resource.provider !== 'SkillPilot'
+    || !decision.artifactPath.startsWith('assets/assessment-materials/')) {
+    fail(`Assessment-material provenance is outside the bound runtime 1.3 resource lane: ${decision.resourceId}`)
+  }
+  // The unchanged manifest uses the general class; the embedded review retains
+  // the exact authored-assessment subtype and its hash-bound source evidence.
+  return { ...decision, provenanceClass: 'skillpilot-authored' }
 }
 
 const defaultArchiveRoot = (packageVersion: string) => `skillpilot-curriculum-de-gymnasium-mathematik-${packageVersion}.json`
@@ -1085,12 +1112,13 @@ export const createFullStandalonePackagePlan = (
   const profile = readJson<FullStandaloneProfile>(profilePath, 'full-standalone release profile')
   const completionProfile = profile.profileId === 'full-standalone-completion-v1'
   // Runtime 1.2 (learning units) is a sibling extension of 1.0, not a superset of 1.1.
-  const learningUnitProfile = profile.profileId === 'full-standalone-learning-units-v1'
-  const extensionDirectory = completionProfile ? 'v1.1' : learningUnitProfile ? 'v1.2' : 'v1'
-  if (profile.profileFormatVersion !== 1 || !['full-standalone-v1', 'full-standalone-completion-v1', 'full-standalone-learning-units-v1'].includes(profile.profileId)) fail('Unsupported full-standalone release profile identity.')
-  if (profile.compatibility.runtimeContractVersion !== (completionProfile ? '1.1' : learningUnitProfile ? '1.2' : '1.0')) fail('Release profile and runtime contract version differ.')
+  const materialProfile = profile.profileId === 'full-standalone-v1.3'
+  const learningUnitProfile = profile.profileId === 'full-standalone-learning-units-v1' || materialProfile
+  const extensionDirectory = materialProfile ? 'v1.3' : completionProfile ? 'v1.1' : learningUnitProfile ? 'v1.2' : 'v1'
+  if (profile.profileFormatVersion !== 1 || !['full-standalone-v1', 'full-standalone-completion-v1', 'full-standalone-learning-units-v1', 'full-standalone-v1.3'].includes(profile.profileId)) fail('Unsupported full-standalone release profile identity.')
+  if (profile.compatibility.runtimeContractVersion !== (materialProfile ? '1.3' : completionProfile ? '1.1' : learningUnitProfile ? '1.2' : '1.0')) fail('Release profile and runtime contract version differ.')
   if (profile.compatibility.variant !== 'json') fail('Full-standalone profile variant must be json.')
-  const expectedSchemaCount = options.expectedTrustedSchemaCount ?? (completionProfile ? 26 : learningUnitProfile ? 25 : 22)
+  const expectedSchemaCount = options.expectedTrustedSchemaCount ?? (materialProfile ? 27 : completionProfile ? 26 : learningUnitProfile ? 25 : 22)
   if (profile.trustedContractSchemas.length !== expectedSchemaCount) {
     fail(`Expected ${expectedSchemaCount} complete trusted schemas, profile declares ${profile.trustedContractSchemas.length}.`)
   }
@@ -1196,7 +1224,7 @@ export const createFullStandalonePackagePlan = (
         '--release-root', releaseRoot,
         '--ledger', reviewPath,
         ...(completionProfile ? ['--completion-candidate'] : []),
-        ...(learningUnitProfile ? ['--learning-unit-candidate'] : []),
+        ...(materialProfile ? ['--runtime-v13-candidate'] : learningUnitProfile ? ['--learning-unit-candidate'] : []),
         '--schema', resolve(repositoryRoot, `contracts/curriculum-package/${extensionDirectory}/package-redistribution-review.schema.json`),
       ],
       'redistribution review checker',
@@ -1323,7 +1351,10 @@ export const createFullStandalonePackagePlan = (
       const expected = assessmentByPath.get(path) as BuildInputAssessment
       if (entry.bytes !== expected.bytes || entry.sha256 !== expected.sha256) fail(`Assessment source drift in release model: ${path}`)
       consumedAssessmentPaths.add(path)
-      const role = requiredRole('package-documentation')
+      const structuredAuthorSource = materialProfile && mediaTypeForPath(path) === 'application/json'
+        && ['data/assessment-sources/stage-plan-direct-evidence-20261115-v7/reviewed-assessments.json',
+          'data/assessment-sources/task64-digital-correction-20261115-v1/reviewed-assessment.json'].includes(path)
+      const role = requiredRole(structuredAuthorSource ? 'provenance-report' : 'package-documentation')
       attachManifestFile(entry, role, classify(role.role, path), { kind: 'excluded-generated' })
     } else if (path === 'metadata/build-inputs.json') {
       const role = requiredRole('provenance-report')
@@ -1386,7 +1417,7 @@ export const createFullStandalonePackagePlan = (
     attachManifestFile(
       entry,
       role,
-      decision,
+      manifestAssetDecision(decision, resource, materialProfile),
       { kind: 'binary-resource', resourceId },
       undefined,
       booleanValue(resource.runtimeRequired, `resource ${resourceId} runtimeRequired`),

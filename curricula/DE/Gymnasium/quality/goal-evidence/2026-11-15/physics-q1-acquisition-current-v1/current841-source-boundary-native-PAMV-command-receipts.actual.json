@@ -1,0 +1,44 @@
+{
+  "recordedAt": "2026-11-15T21:30:19.289944+00:00",
+  "timingMeaning": "Records actual completed commands and observed zero exits; does not invent precise command start/end timestamps.",
+  "canonicalPhysicsSHA256": "b391f6a72d6fee14cc5836cd42ad9a46f30ff9dbc07b23a5dd7e0f47c7467173",
+  "checks": [
+    {
+      "id": "A",
+      "command": "tsx app/scripts/semanticAtomicityReview.ts --config=curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-physics-full.config.json --mode=check",
+      "exitCode": 0,
+      "logPath": "tmp/physics-release840-20261115/source-boundary-native-A.log",
+      "logSHA256": "72d917946b6ac65121fafabe394d258c3bf262f5e4cf9a519005514f103064f6",
+      "logBytes": 315
+    },
+    {
+      "id": "M",
+      "command": "tsx app/scripts/memoryCardReview.ts --config=curricula/DE/Gymnasium/quality/memory-card-review/canonical-physics-full.config.json --mode=check",
+      "exitCode": 0,
+      "logPath": "tmp/physics-release840-20261115/source-boundary-native-M.log",
+      "logSHA256": "8819b1745af4b2b54cc3e900bc6a3f4fea543a07196fe195cd9508036505bd4f",
+      "logBytes": 38533
+    },
+    {
+      "id": "V",
+      "command": "tsx app/scripts/generateGoalVisualizationQaLedgers.ts --subjects physik --check",
+      "exitCode": 0,
+      "logPath": "tmp/physics-release840-20261115/source-boundary-native-V.log",
+      "logSHA256": "d5dd066915f98b2427bd60be89081b04791f6d28b0b13da4fa0fdbbbcca23b84",
+      "logBytes": 66
+    },
+    {
+      "id": "P485",
+      "command": "tsx tmp/physics-release840-20261115/check-source-boundary-P485.mts",
+      "exitCode": 0,
+      "logPath": "tmp/physics-release840-20261115/source-boundary-native-P485.log",
+      "logSHA256": "adf29d24f753af79d88669a6b3d6dcfe2545c12a85878d37d5733922c4fb4b08",
+      "logBytes": 83
+    }
+  ],
+  "currentOrdinaryDenominator": 485,
+  "SEMStrictCurrent": 841,
+  "descriptionReviewPendingExactlyTwoCurrentContexts": true,
+  "sourceOrReviewBytesWritten": false,
+  "learnerOrHumanOrMainCIClaim": false
+}

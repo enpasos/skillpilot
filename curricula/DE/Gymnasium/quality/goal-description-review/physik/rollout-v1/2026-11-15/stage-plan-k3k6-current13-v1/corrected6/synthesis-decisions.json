@@ -1,0 +1,216 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physics-k3k6-corrected-current-six-20261115-v1-actual-ai-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "codex-physics-current13-integration-agent-reading-actual-independent-A-B-and-root-dispositions-20261115",
+  "synthesizedAt": "2026-11-15T12:41:05.039327+00:00",
+  "batch": {
+    "batchId": "physics-k3k6-corrected-current-six-20261115-v1",
+    "batchManifestDigest": "sha256:83f1497e1ff81827adc301948876743bc7bf879d03049fba0df2a908459e6b33",
+    "configDigest": "sha256:e21d7363a589099d0f1d1ec38fd5cc9df91b96f8a49692fba281e79a5173b42a",
+    "bundleFingerprint": "sha256:34f29f0e837f4dcc6f55b3f31998e83c3ee9126b372363aeb82c876b126338d7",
+    "bookDigest": "sha256:20dea5324f0fa57e171704e4229fc8821107a2562650f082f24080e8ea550150",
+    "reviewInputFingerprint": "sha256:fe8d73cb85c7b78b721f2803261cb355af1abe39ebc2ffc840c767ed3c641292",
+    "dualSummaryDigest": "sha256:21d532f97faa249993a2eb00508be471b5e6a676e4c0b0df7f74d39e1b0bc670",
+    "canonicalLandscapeDigest": "sha256:c5e73a34db6ca83f7a29b0410cadcc03e82d37922113ebad9103b73757a3c48d"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physics-k3k6-correction-current6-20261115-a",
+      "campaignDigest": "sha256:7f7666138c63b9c3f371fe5f01aff6a9d09e81982a53b4c7eec86cd14e7ea281",
+      "roundId": "physics-k3k6-correction-current6-20261115-first-pass-a",
+      "independenceGroupId": "physics-k3k6-correction-current6-20261115-independent-a",
+      "reviewInputFingerprint": "sha256:fe8d73cb85c7b78b721f2803261cb355af1abe39ebc2ffc840c767ed3c641292",
+      "batchId": "physics-k3k6-correction-current6-20261115-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:537d375a55b70043a822d670bc7f721adb8654840b0cf94f49285818add97e62",
+      "runId": "physics-k3k6-correction-current6-20261115-first-pass-a",
+      "runManifestDigest": "sha256:42bea9202a0216fa4c8c995fa4f60bf809fca770c9e3eda328f9c83d679fea14",
+      "resultsDigest": "sha256:535f7480c0d8322279512e3eef933af76ea7250a67e6a1d07a4e2d0a678d0c4a"
+    },
+    "second": {
+      "campaignId": "physics-k3k6-correction-current6-20261115-b",
+      "campaignDigest": "sha256:2fa7689691d93baf76942e86f1d23e9ce1c1542d50e9a645f959bfb5f247a0a1",
+      "roundId": "physics-k3k6-correction-current6-20261115-first-pass-b",
+      "independenceGroupId": "physics-k3k6-correction-current6-20261115-independent-b",
+      "reviewInputFingerprint": "sha256:fe8d73cb85c7b78b721f2803261cb355af1abe39ebc2ffc840c767ed3c641292",
+      "batchId": "physics-k3k6-correction-current6-20261115-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:46a1430ccbcd9d63b705fa2d9f01e97a3b269bd57840ea5a379c700559cbdfcf",
+      "runId": "physics-k3k6-correction-current6-20261115-first-pass-b-run",
+      "runManifestDigest": "sha256:abb5fc14dfb802d4285d8834b30933fea23c14767c5dcfdb42b550d4ead5d0b5",
+      "resultsDigest": "sha256:c856b61e6ba58ae07507d68719e66f027c443157960292ddf158fb167d4d4691"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physics-k3k6-corrected-current-six-20261115-v1-actual-ai-synthesis-001",
+      "goalId": "d67502e3-5e0a-595b-a24b-65b1c40de36e",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:0d5cef647aee1e97824bc8d632e7f0154020a6e5914129bf9027d0cf333cb6db",
+      "pageFingerprint": "sha256:1049e8e4177e127b3208c85bea6d853b85da284cb7175182a13c145d1482795a",
+      "goalReviewContextFingerprint": "sha256:df3df83774edb191445c90d9f50c2c391bf466160f3ca5b0f4fec0b2dacb9249",
+      "finalText": {
+        "titleDe": "Bewegungen mit Videoanalyse untersuchen",
+        "titleEn": "Investigate motion using video analysis",
+        "descriptionDe": "Die lernende Person kann ein Bewegungsvideo räumlich und zeitlich kalibrieren, daraus Orts-Zeit-Daten sowie s(t)- und v(t)-Diagramme gewinnen und Modelle einer gleichförmigen oder geworfenen Bewegung unter Berücksichtigung der Messunsicherheit prüfen.",
+        "descriptionEn": "The learner can calibrate a motion video spatially and temporally, obtain position-time data and s(t) and v(t) graphs from it, and test models of uniform or projectile motion while accounting for measurement uncertainty."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physics-k3k6-correction-current6-20261115-first-pass-a.a.001",
+          "recordDigest": "sha256:994f7807ce742b126a677a49419ad6656b865a84116dc4f653efadf96d78c002"
+        },
+        "second": {
+          "recordId": "physics-k3k6-correction-current6-20261115-first-pass-b-run.1",
+          "recordDigest": "sha256:65f39578670449f76ab9a1691e60effbe754fcb4b670b58b900f8ba68e31a650"
+        }
+      },
+      "rationaleDe": "Beide frischen KEEP-Runden bestätigen die vollständige eigene Video-/Diagramm-/Modellkette sowie realen zweikomponentigen Wurftransfer. Perspektive und reale Beschleunigung werden ohne unabhängige Kontrolle nicht eindeutig zugeordnet; offene Ursache mit brauchbarer Kontrollinformation ist vollwertig. Alte ursprüngliche Profil-none-Differenzen bleiben als Historie erhalten und werden nicht auf die Korrektur umgebunden. Beide tatsächlichen vollständigen Records wurden gelesen. Auswahl der RundeA ist ausdrückliche AI-Synthese; keine menschliche Annahme, kein Lernerversuch und keine Quellen-/Projektionsfreigabe wird behauptet.",
+      "rationaleEn": "Both fresh KEEP rounds confirm the complete personal video/graph/model chain and real two-component projectile transfer. Perspective and physical acceleration are not uniquely assigned without independent control; an unresolved cause with useful control information is fully valid. Earlier profile-none differences remain historical and are not rebound to corrected content. Both actual complete records were read. Selecting roundA is explicit AI synthesis; no human acceptance, learner trial, or source/projection approval is claimed."
+    },
+    {
+      "decisionId": "physics-k3k6-corrected-current-six-20261115-v1-actual-ai-synthesis-002",
+      "goalId": "bbee4c52-4e95-5529-990f-706aa99316a3",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:e318637bf0f1eb11f347167b4ca4ea7e6c67ceeb6e5a124d4efbdb7369d9c8a8",
+      "pageFingerprint": "sha256:64f3ec01d3c3226a603611bb0f28c68fb462f0256f332e612eb71058b2394789",
+      "goalReviewContextFingerprint": "sha256:6076cdbb0dbab1bff46979f956317580e3b024da9259fa70d86d4168275842ff",
+      "finalText": {
+        "titleDe": "Elektrische Stromstärke als Ladungsrate deuten",
+        "titleEn": "Interpret electric current as a rate of charge transfer",
+        "descriptionDe": "Die lernende Person kann die mittlere elektrische Stromstärke als netto durch einen festgelegten Querschnitt transportierte Ladung pro Zeitintervall mit I = ΔQ/Δt deuten, Berechnungen durchführen und den Einheitenzusammenhang 1 A = 1 C/s erklären.",
+        "descriptionEn": "The learner can interpret average electric current as the net charge transported through a specified cross-section per time interval using I = ΔQ/Δt, perform calculations, and explain the unit relation 1 A = 1 C/s."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physics-k3k6-correction-current6-20261115-first-pass-a.a.002",
+          "recordDigest": "sha256:6be36d798827f38d1ab36850a9fcb4f21afa9612b6e8011b981b32b9d878314a"
+        },
+        "second": {
+          "recordId": "physics-k3k6-correction-current6-20261115-first-pass-b-run.2",
+          "recordDigest": "sha256:2aa63909e2405125ad7ae1de85c6e6bc7a4c711063de14aaeed6476a59aed728"
+        }
+      },
+      "rationaleDe": "Beide frischen KEEP-Runden bestätigen Nettoladung durch festgelegten Querschnitt, Bezugsrichtung und ausgewähltes Intervall. Der unabhängige Puls-/Pausenfall trennt Puls- und Zyklusmittel; Rechnen/Umstellen bleibt derselben Größe zugeordnet. Das frühere B-KEEP gegenüber A-Präzisierung bleibt historisch sichtbar, ohne die aktuellen einstimmigen Runden zu ersetzen. Beide tatsächlichen vollständigen Records wurden gelesen. Auswahl der RundeA ist ausdrückliche AI-Synthese; keine menschliche Annahme, kein Lernerversuch und keine Quellen-/Projektionsfreigabe wird behauptet.",
+      "rationaleEn": "Both fresh KEEP rounds confirm net charge through a specified cross-section, reference direction, and selected interval. Independent pulse/pause transfer distinguishes pulse and cycle averages; calculation and rearrangement remain parts of the same quantity. Earlier B-KEEP versus A-refinement dissent remains visible without replacing the unanimous current rounds. Both actual complete records were read. Selecting roundA is explicit AI synthesis; no human acceptance, learner trial, or source/projection approval is claimed."
+    },
+    {
+      "decisionId": "physics-k3k6-corrected-current-six-20261115-v1-actual-ai-synthesis-003",
+      "goalId": "8da5c981-8216-5fcd-a393-19f392ae2006",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:33688c40b02055c62707f43b3c87ecab9b49f288973e259d4ad1702410d49807",
+      "pageFingerprint": "sha256:c678855b79951157da7db41f0aefa85dc83832d31ff4f87e8307b959fd90726e",
+      "goalReviewContextFingerprint": "sha256:86b3720f45d7c04354ad4671c6bdb9560bda0eb6b12adc39ce3caa79e06bad16",
+      "finalText": {
+        "titleDe": "Coulomb'sches Gesetz",
+        "titleEn": "Coulomb's Law",
+        "descriptionDe": "Die lernende Person kann Betrag und Richtung der elektrostatischen Kraft zwischen Punktladungen mit dem Coulomb'schen Gesetz bestimmen und den Zusammenhang zwischen Kraft, Probeladung und elektrischer Feldstärke begründen.",
+        "descriptionEn": "The learner can determine the magnitude and direction of the electrostatic force between point charges using Coulomb's law and justify the relationship between force, test charge, and electric field strength."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physics-k3k6-correction-current6-20261115-first-pass-a.a.003",
+          "recordDigest": "sha256:0ad3e17302b33b9f23d90e896e0b013267ff0e20d8b84f60e4ff8fd2acfda61f"
+        },
+        "second": {
+          "recordId": "physics-k3k6-correction-current6-20261115-first-pass-b-run.3",
+          "recordDigest": "sha256:55ad8be4d1c9ef831414b8eabc0e304272392f250fcbe6dcee8f81816c3621b6"
+        }
+      },
+      "rationaleDe": "Beide frischen KEEP-Runden bestätigen elektrostatische Punktladungen mit festem Medium und passendem gegebenem k, Kraftbetrag und Richtung, Wechselwirkung sowie1/r². Der unabhängige Probeladungsfall prüft vorzeichenrichtiges F/q und Quellenfeldunabhängigkeit. Der konkrete Assessmentnachweis wird gesondert ergänzt; eine generische Q1-Vorlage beweist ihn nicht. Beide tatsächlichen vollständigen Records wurden gelesen. Auswahl der RundeA ist ausdrückliche AI-Synthese; keine menschliche Annahme, kein Lernerversuch und keine Quellen-/Projektionsfreigabe wird behauptet.",
+      "rationaleEn": "Both fresh KEEP rounds confirm electrostatic point charges with fixed medium and supplied appropriate k, force magnitude/direction, interaction, and inverse-square scaling. Independent test-charge transfer checks signed F/q and source-field independence. A concrete assessment is supplied separately; a generic Q1 template does not establish it. Both actual complete records were read. Selecting roundA is explicit AI synthesis; no human acceptance, learner trial, or source/projection approval is claimed."
+    },
+    {
+      "decisionId": "physics-k3k6-corrected-current-six-20261115-v1-actual-ai-synthesis-004",
+      "goalId": "ce14a7e7-7e2a-517f-a465-78ba3fbe414d",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:630d40ac6d9158e8133956770f9ae895cbd5edc24201eca32633eb4bc02053af",
+      "pageFingerprint": "sha256:8e5d51877f9e77596fad5e3f4d4db370cf55c0ac659924f92cd329ea7b941ae9",
+      "goalReviewContextFingerprint": "sha256:4c7e60648ea83410d7212e27a3dee5d79f207f481d472be26ac71bc8f830d11c",
+      "finalText": {
+        "titleDe": "Sehschwaechen mit dem Linse-Schirm-Modell untersuchen",
+        "titleEn": "Investigate Visual Impairments Using a Lens-and-Screen Model",
+        "descriptionDe": "Die lernende Person kann Kurz- und Weitsichtigkeit in einem vereinfachten entspannten Linse-Schirm-Modell experimentell anhand der Lage des scharfen Bildes zur festen Modellnetzhaut untersuchen und gemessene Bildweiten mit Vorhersagen der Linsengleichung vergleichen.",
+        "descriptionEn": "The learner can experimentally investigate short-sightedness and long-sightedness in a simplified relaxed lens-and-screen eye model by relating the sharp image location to a fixed model retina, and compare measured image distances with predictions from the lens equation."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physics-k3k6-correction-current6-20261115-first-pass-a.a.004",
+          "recordDigest": "sha256:a5b0f71d61b9a52e0a9495634ecee5c68c9e12b6c2b7c4fb43779e63069ca88a"
+        },
+        "second": {
+          "recordId": "physics-k3k6-correction-current6-20261115-first-pass-b-run.4",
+          "recordDigest": "sha256:5c6429dfaada18870d230b9176d730f7b7f45f8b24bd0e4106e44b0d2aa29a12"
+        }
+      },
+      "rationaleDe": "Beide frischen KEEP-Runden bestätigen ausdrücklich vereinfachtes entspanntes Modell, feste Modellnetzhaut und unabhängig real gesuchten Schärfeort. Zwei persönliche geänderte Versuche mit neuen Rohdaten, quantitativem Mess-/Modellvergleich und Fernobjektgrenze sind notwendig. Rootverworfene frühere Beschreiben-oder-Durchführen-Alternativen bleiben Historie und rechtfertigen keinen Ersatz echter Eigenleistung. Beide tatsächlichen vollständigen Records wurden gelesen. Auswahl der RundeA ist ausdrückliche AI-Synthese; keine menschliche Annahme, kein Lernerversuch und keine Quellen-/Projektionsfreigabe wird behauptet.",
+      "rationaleEn": "Both fresh KEEP rounds confirm the simplified relaxed model, fixed model retina, and independently located actual focus. Two personal changed trials with fresh raw readings, quantitative measurement/model comparison, and the distant-object limit are required. Earlier describe-or-perform alternatives rejected by root remain historical and never substitute for personal execution. Both actual complete records were read. Selecting roundA is explicit AI synthesis; no human acceptance, learner trial, or source/projection approval is claimed."
+    },
+    {
+      "decisionId": "physics-k3k6-corrected-current-six-20261115-v1-actual-ai-synthesis-005",
+      "goalId": "d61ea362-f6c3-5eab-ac30-2d0e265ac0f6",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:178e3f845a82a3f40f6b74550bce4c26a65a20987a211462a7cf863b1dc38422",
+      "pageFingerprint": "sha256:442e7721dbd9a31d41b950f2a160eb0ace007566b3d04fc541b97432c6938839",
+      "goalReviewContextFingerprint": "sha256:a8e4406b33c2cf88c712d2a7ea6c2fca064155f7b839e58a86a3126123a7fe77",
+      "finalText": {
+        "titleDe": "Geschwindigkeitspfeile aus einer Video-Bildfolge bestimmen und vergleichen",
+        "titleEn": "Determine and compare velocity arrows from a video sequence",
+        "descriptionDe": "Die lernende Person kann in einer zeitlich und räumlich kalibrierten Bildfolge einer zweidimensionalen Bewegung aus den Ortsänderungen über kurze gleiche Zeitintervalle maßstäbliche Geschwindigkeitspfeile konstruieren, die Näherung für den jeweiligen Zeitpunkt benennen und Änderungen der Geschwindigkeit grafisch bestimmen.",
+        "descriptionEn": "The learner can construct scaled velocity arrows from displacements over short equal intervals in a spatially and temporally calibrated image sequence of a two-dimensional motion, state the approximation involved in assigning them to instants, and determine velocity changes graphically."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physics-k3k6-correction-current6-20261115-first-pass-a.a.005",
+          "recordDigest": "sha256:cd2d307837b0a6f8d0ae6e9a5a123b99ee56610f7101b3860bbd2bc2b58c5395"
+        },
+        "second": {
+          "recordId": "physics-k3k6-correction-current6-20261115-first-pass-b-run.5",
+          "recordDigest": "sha256:2848d0f706b16b174228350848587eb084825c898254cf3626424c4083949ddf"
+        }
+      },
+      "rationaleDe": "Beide frischen KEEP-Runden bestätigen Auswertung bereits geprüfter Kalibrierung, eigene maßstäbliche Geschwindigkeitspfeile und grafisches Δv. Der zweite echte Clip variiert Richtung bei ähnlichem Betrag; die Zeitpunktzuordnung bleibt Näherung. Eigenständiges Erstellen einer Kalibrierung ist keine neue Beherrschungspflicht. Beide tatsächlichen vollständigen Records wurden gelesen. Auswahl der RundeA ist ausdrückliche AI-Synthese; keine menschliche Annahme, kein Lernerversuch und keine Quellen-/Projektionsfreigabe wird behauptet.",
+      "rationaleEn": "Both fresh KEEP rounds confirm using already checked calibration, personal scaled velocity arrows, and graphical delta-v. The second real clip varies direction at similar speed; assignment to an instant remains approximate. Independently establishing calibration is not an additional mastery obligation. Both actual complete records were read. Selecting roundA is explicit AI synthesis; no human acceptance, learner trial, or source/projection approval is claimed."
+    },
+    {
+      "decisionId": "physics-k3k6-corrected-current-six-20261115-v1-actual-ai-synthesis-006",
+      "goalId": "677a192d-8bbe-57fc-bb7a-1c1ed5fba32b",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:47d2b7c07f09b1c94687bf3bb985d04373eeb8acea177731e1c0995a50f34776",
+      "pageFingerprint": "sha256:fc9d992b45f517654670820f9d8ae15b542c25a87353e2beee7ba8b760f40fdd",
+      "goalReviewContextFingerprint": "sha256:ff893087cb042fc22d34b5a2f0341db14f159e1c46e510b5a9059e0088f61598",
+      "finalText": {
+        "titleDe": "Einen angeleiteten Versuch zur mittleren Beschleunigung planen und auswerten",
+        "titleEn": "Plan and analyze a guided average-acceleration experiment",
+        "descriptionDe": "Die lernende Person kann unter Anleitung einen sicheren geradlinigen Bewegungsversuch mit Sensor oder Video vorab planen und selbst durchführen sowie aus zwei lokalen Geschwindigkeitsmitteln und dem Zeitabstand ihrer Fenstermitten die mittlere Beschleunigung näherungsweise bestimmen. Sie begründet Zeitbasis und Messfenster, deutet Vorzeichen und Messgrenzen und vergleicht eigene neue Ergebnisse bei einer veränderten Versuchsbedingung.",
+        "descriptionEn": "The learner can, with guidance, plan a safe straight-motion experiment using a sensor or video before acquisition, conduct it themselves, and estimate average acceleration from two local average velocities and the time between their window centers. They justify timing and measurement windows, interpret signs and measurement limits, and compare their own fresh results under a changed experimental condition."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physics-k3k6-correction-current6-20261115-first-pass-a.a.006",
+          "recordDigest": "sha256:1b172e40e59560231e7ed6773a51d87a60805d5a6a079daca43b0ccbd2744de5"
+        },
+        "second": {
+          "recordId": "physics-k3k6-correction-current6-20261115-first-pass-b-run.6",
+          "recordDigest": "sha256:a35476c35d8f8fa9df3b5713e33e8c42bfb88baa67ffc1e56c79af334d8bcb89"
+        }
+      },
+      "rationaleDe": "Beide frischen KEEP-Runden bestätigen angeleitete Vorabplanung, eigene Sensor-oder-Video-Erfassung und lokale Δv-Schätzung mit Fenstermittenabstand. Der zweite echte geänderte Durchgang bleibt nötig; auflösbare Änderung und begründete Übereinstimmung innerhalb tatsächlicher Grenzen sind fair. Kein globaler Fit oder gewünschter Unterschied wird verlangt. Beide tatsächlichen vollständigen Records wurden gelesen. Auswahl der RundeA ist ausdrückliche AI-Synthese; keine menschliche Annahme, kein Lernerversuch und keine Quellen-/Projektionsfreigabe wird behauptet.",
+      "rationaleEn": "Both fresh KEEP rounds confirm guided prior planning, personal sensor-or-video acquisition, and a local delta-v estimate using window-center separation. A genuinely changed second trial remains necessary; resolved differences and justified agreement within actual limits are equally valid. No global fit or desired difference is required. Both actual complete records were read. Selecting roundA is explicit AI synthesis; no human acceptance, learner trial, or source/projection approval is claimed."
+    }
+  ],
+  "manifestFingerprint": "sha256:c9b4a47b4afac5e28757d34eabc1f1380320d0ba4a7b9c9d6d9438233649052f"
+}

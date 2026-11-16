@@ -65,16 +65,73 @@ class AutomaticCompletionTest {
         assertThat(result.masteredGoalIds()).containsExactly("B");
     }
 
-    @Test void ordinaryTerminalGoalsOrientationAndCardsHaveNoExtraProtection() {
+    @Test void ordinaryTerminalsAndOrientationMayBeWaivedButMemoryRemainsExplicit() {
         var orientation = atom("orientation", "a");
         orientation.setSemanticKind("orientation");
         var cards = atom("cards", "a");
         cards.setNodeKind("memory");
         var compiled = compile(graph(atom("a"), atom("ordinary", "a"), orientation, cards, exam("exam")));
         var result = evaluator.evaluateAutomatic(compiled, Set.of());
-        assertThat(compiled.protectedGoalIds()).containsExactly("exam");
-        assertThat(result.waivedGoalIds()).containsExactly("a", "cards", "ordinary", "orientation");
-        assertThat(result.pendingTargetGoalIds()).containsExactly("exam");
+        assertThat(compiled.protectedGoalIds()).containsExactly("cards", "exam");
+        assertThat(compiled.assessmentGoalIds()).containsExactly("exam");
+        assertThat(result.waivedGoalIds()).containsExactly("ordinary", "orientation");
+        assertThat(result.pendingTargetGoalIds()).containsExactly("a", "cards", "exam");
+        assertThat(result.requiredAssessmentCount()).isEqualTo(1);
+        assertThat(result.blockedByGoalIds()).containsEntry("a", "cards").doesNotContainKey("cards");
+    }
+
+    @Test void openMemoryRetainsTransitivePreparationThroughAMasteredIntermediate() {
+        var cards = atom("cards", "b");
+        cards.setSemanticKind("memory");
+        var graph = graph(atom("a"), atom("b", "a"), cards);
+        var open = evaluate(graph, Set.of("b"));
+        assertThat(open.waivedGoalIds()).isEmpty();
+        assertThat(open.pendingTargetGoalIds()).containsExactly("a", "cards");
+        assertThat(open.blockedByGoalIds()).containsEntry("a", "cards").doesNotContainKey("cards");
+        assertThat(open.requiredAssessmentCount()).isZero();
+        assertThat(open.complete()).isFalse();
+        var done = evaluate(graph, Set.of("cards"));
+        assertThat(done.masteredGoalIds()).containsExactly("cards");
+        assertThat(done.waivedGoalIds()).containsExactly("a", "b");
+        assertThat(done.complete()).isTrue();
+    }
+
+    @Test void supportingMemoryOutsideTargetsStillNeedsItsOwnResultInBothAutomaticAdapters() {
+        var cards = atom("cards", "a");
+        cards.setNodeKind("memory");
+        var outside = atom("outside-cards");
+        outside.setNodeKind("memory");
+        var graph = graph(atom("a"), cards, atom("target", "cards"), outside);
+        var compiled = compiler.compileAutomatic(graph, Set.of("target"), Set.of("target"), "generation");
+        assertThat(compiled.contextGoalIds()).containsExactly("a", "cards", "target");
+        assertThat(compiled.protectedGoalIds()).containsExactly("cards");
+        assertThat(compiled.assessmentGoalIds()).isEmpty();
+        var result = evaluator.evaluateAutomatic(compiled, Set.of());
+        assertThat(result.pendingTargetGoalIds()).isEmpty();
+        assertThat(result.waivedGoalIds()).containsExactly("target");
+        assertThat(result.complete()).isFalse();
+        assertThat(result.requiredAssessmentCount()).isZero();
+        assertThat(result.masteredAssessmentGoalIds()).isEmpty();
+
+        var definition = new CompletionProfileDefinition(1, "automatic:scope", "v1",
+                Map.of("de", "Bereich", "en", "Scope"), "scope", Map.of(), List.of(), null, List.of());
+        var runtimeProfile = compiler.compileAutomaticProfile(definition, graph, Set.of("target"),
+                Set.of("target"), "generation");
+        assertThat(evaluator.evaluate(runtimeProfile, Set.of())).isEqualTo(result);
+        assertThat(evaluator.evaluate(runtimeProfile, Set.of("cards")).complete()).isTrue();
+    }
+
+    @Test void sharedPreparationRemainsOpenUntilBothAssessmentAndMemoryAreDone() {
+        var cards = atom("cards", "a");
+        cards.setNodeKind("memory");
+        var graph = graph(atom("a"), cards, exam("q", "a"));
+        assertThat(evaluate(graph, Set.of("q")).pendingTargetGoalIds()).containsExactly("a", "cards");
+        assertThat(evaluate(graph, Set.of("cards")).pendingTargetGoalIds()).containsExactly("a", "q");
+        var done = evaluate(graph, Set.of("cards", "q"));
+        assertThat(done.waivedGoalIds()).containsExactly("a");
+        assertThat(done.masteredAssessmentGoalIds()).containsExactly("q");
+        assertThat(done.requiredAssessmentCount()).isEqualTo(1);
+        assertThat(done.complete()).isTrue();
     }
 
     @Test void anAssessmentFreeScopeCompletesWithoutAnyStoredMastery() {

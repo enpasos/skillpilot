@@ -1,0 +1,469 @@
+{
+  "recordedAt": "2026-11-16T00:42:05.299516+00:00",
+  "head": "2fc979d30e53cf654c72f4d863a7d635bd515133",
+  "originalCI": {
+    "path": "tmp/pr159-ci-2379-curriculum-failed.actual.log",
+    "sha256": "7798307d8ca39e0dd8f561edd71287273134f6b20900b50c7098366cd49df6c9",
+    "firstFailure": "Invalid reviewed split-layout plan: tracked file exists, canonical projected input pin stale after reviewed stage/assessment changes"
+  },
+  "splitPolicyDelta": {
+    "oldPin": "9aba1abc276c96faa879c96729731604043463ea12ea0a74d5bc1b734d114dc4",
+    "newPin": "74b91ecf3f3b31e60d9362506231bd4e713e5d0441988d1400298e555482fd66",
+    "allOtherPolicyFieldsUnchanged": true,
+    "reviewBindingsEdited": false
+  },
+  "canonicalDelta": {
+    "sinceCommit": "a44c157b536680985dca30737b560b10c7633a04",
+    "addedGoals": 48,
+    "removedGoals": 0,
+    "changedExistingGoals": 17,
+    "changedGoalFieldCounts": {
+      "applicability": 5,
+      "extendedData": 5,
+      "examData": 5,
+      "requires": 9,
+      "contains": 3,
+      "resourceLinks": 1
+    },
+    "goalPlacementsAdded": 31,
+    "otherTopLevelChangedFields": []
+  },
+  "hiddenSubsequentFailures": [
+    "Ordinary generator lacks already reviewed v2/v3 placements and assessment routes; 18 stale outputs",
+    "SH-G9 ordinary generation inherits a J10 assessment again while it is explicitly placed in E, causing CPV-005/006",
+    "Six current SH duration views omit explicit existing prerequisites; unpruned Personal Curriculum learning basis already contains them",
+    "Eight SH views use 16 unreleased structure IDs with prose outside package ID alphabet"
+  ],
+  "repair": {
+    "stagePlacementOperations": 174,
+    "sharedSourceNodes": 50,
+    "viewCount": 18,
+    "unchangedDurationViews": 12,
+    "changedDurationViews": 6,
+    "asciiOnlyStructureIdsChanged": 16,
+    "idRepairViews": 8,
+    "newExplicitTargetPlacements": 22,
+    "learningBasisPreservedForAllSixViews": true,
+    "canonicalGoalsEdgesAndAssessmentEdits": 0,
+    "checkWeakening": false,
+    "newContentReviewClaim": false,
+    "learnerResultWrites": 0
+  },
+  "tests": [
+    {
+      "command": "cd app && npm run check:math-duration-composition-views",
+      "exitCode": 0,
+      "log": "tmp/math-duration-ci-repair-20261116-v1/final-duration-check.actual.log",
+      "logSha256": "f1bf977ceed4ff11a5cb3f2e5f40510bcf4f6d17edb3c29d8da12914e51d86d3"
+    },
+    {
+      "command": "cd app && npx tsc --noEmit --target es2022 --module esnext --moduleResolution bundler --skipLibCheck --types node scripts/mathDurationStagePlacementPolicy.ts scripts/testMathDurationStagePlacementPolicy.ts",
+      "exitCode": 0,
+      "log": "tmp/math-duration-ci-repair-20261116-v1/policy-typecheck.actual.log",
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": "cd app && npm run check:canonical-math-scope-coverage",
+      "exitCode": 0,
+      "log": "tmp/math-duration-ci-repair-20261116-v1/check-canonical-math-scope-coverage.actual.log",
+      "logSha256": "049e14e9ea9f7be84f30763d2ce14695685067b149a284dbb7a8927eabdc2a8e"
+    },
+    {
+      "command": "cd app && npm run check:gymnasium-duration-readiness",
+      "exitCode": 0,
+      "log": "tmp/math-duration-ci-repair-20261116-v1/check-gymnasium-duration-readiness.actual.log",
+      "logSha256": "931507e7da7c9e6632d33cb3a6cae93d42c8453828e6bf88d8c36343082e91ac"
+    },
+    {
+      "command": "cd app && npm run check:math-duration-policy-readiness",
+      "exitCode": 0,
+      "log": "tmp/math-duration-ci-repair-20261116-v1/final-math-duration-policy-readiness.actual.log",
+      "logSha256": "10939d2e6c81665f5a2db5cc66e6798c0bd117d93d3134f7af7a079b1b81e438"
+    },
+    {
+      "command": "cd app && npm run check:m6-duration-policy-readiness",
+      "exitCode": 0,
+      "log": "tmp/math-duration-ci-repair-20261116-v1/final-m6-duration-policy-readiness.actual.log",
+      "logSha256": "c05bb8d2c46954422d12cf99d9f7396a05138c7ba8374a3d6b7506b6af9aedda"
+    },
+    {
+      "command": "cd app && npm run check:gymnasium-duration-offerings",
+      "exitCode": 0,
+      "log": "tmp/math-duration-ci-repair-20261116-v1/check-gymnasium-duration-offerings.actual.log",
+      "logSha256": "becb399e54dcb98dc5a9ebcbf775c8d80abe37826e517a8fe2a856f6ba06aabe"
+    },
+    {
+      "command": "app/node_modules/.bin/tsx tmp/math-duration-ci-repair-20261116-v1/check-learning-basis.mts",
+      "exitCode": 0,
+      "log": "tmp/math-duration-ci-repair-20261116-v1/learning-basis-check.actual.log",
+      "logSha256": "bd772ab34bb4f45725250e8823e00296dfe74ff9a6be5ca89f62c85e0ec24356"
+    }
+  ],
+  "durationViews": [
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-gk-g8.view.json",
+      "beforeSHA256": "33bd3b50535f117bdc44bbd5a2f75c3ee573c5f92d23c44ace9780c75f55a30c",
+      "afterSHA256": "33bd3b50535f117bdc44bbd5a2f75c3ee573c5f92d23c44ace9780c75f55a30c",
+      "changed": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-gk-g9.view.json",
+      "beforeSHA256": "55be2355cc98c84c811a68145fd776fbbeda210b3778836133fa78546c70c18b",
+      "afterSHA256": "55be2355cc98c84c811a68145fd776fbbeda210b3778836133fa78546c70c18b",
+      "changed": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-lk-g8.view.json",
+      "beforeSHA256": "f1555817f5b6ddd42025c1299757c51a311c2d53cab06b24d5afe35cb9c89715",
+      "afterSHA256": "f1555817f5b6ddd42025c1299757c51a311c2d53cab06b24d5afe35cb9c89715",
+      "changed": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-lk-g9.view.json",
+      "beforeSHA256": "44e0c80fa6c1c68bc07c35548b8efbf1be80cd0ebe1a9e46baf6f7aa1b7b2aed",
+      "afterSHA256": "44e0c80fa6c1c68bc07c35548b8efbf1be80cd0ebe1a9e46baf6f7aa1b7b2aed",
+      "changed": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-seki-g8.view.json",
+      "beforeSHA256": "f5d8dc1d9e8078264bd0de73980baa9f88be6ed96e4cead958014ceab75bd545",
+      "afterSHA256": "f5d8dc1d9e8078264bd0de73980baa9f88be6ed96e4cead958014ceab75bd545",
+      "changed": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-seki-g9.view.json",
+      "beforeSHA256": "2562722e525e9e41b62a437cf78c081231f43192550c00a009dcf4db21d8a3a1",
+      "afterSHA256": "2562722e525e9e41b62a437cf78c081231f43192550c00a009dcf4db21d8a3a1",
+      "changed": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-gk-g8.view.json",
+      "beforeSHA256": "9867b96289043859bbb79df49db296feb9c36a120347439103f3da1568bc3fac",
+      "afterSHA256": "9867b96289043859bbb79df49db296feb9c36a120347439103f3da1568bc3fac",
+      "changed": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-gk-g9.view.json",
+      "beforeSHA256": "c509e15787aa821af66f5f8341fa09701ef601b5a3b8cdc45a7732c00a799a11",
+      "afterSHA256": "c509e15787aa821af66f5f8341fa09701ef601b5a3b8cdc45a7732c00a799a11",
+      "changed": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-lk-g8.view.json",
+      "beforeSHA256": "0869ad06849dff6c8e6acd12d1ad6fb1cc7e1385b6b426e92cf77c6ca6647c07",
+      "afterSHA256": "0869ad06849dff6c8e6acd12d1ad6fb1cc7e1385b6b426e92cf77c6ca6647c07",
+      "changed": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-lk-g9.view.json",
+      "beforeSHA256": "15a9c9399ec6af30f67482248df8621dba97de1cb79bfbfacd6738bf585531d3",
+      "afterSHA256": "15a9c9399ec6af30f67482248df8621dba97de1cb79bfbfacd6738bf585531d3",
+      "changed": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-seki-g8.view.json",
+      "beforeSHA256": "89d1186bcaba1e4d95f2bc7c9a422e8ad9849a684947e00708caf8332d8431f4",
+      "afterSHA256": "89d1186bcaba1e4d95f2bc7c9a422e8ad9849a684947e00708caf8332d8431f4",
+      "changed": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-seki-g9.view.json",
+      "beforeSHA256": "1195947afb300eb38337d7f6ef99bdc62d7ca5cc8809c8adb03d6f6c156f2449",
+      "afterSHA256": "1195947afb300eb38337d7f6ef99bdc62d7ca5cc8809c8adb03d6f6c156f2449",
+      "changed": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk-g8.view.json",
+      "beforeSHA256": "774cd37d360e92e3141882e3f56d1909a7ca26e115a2828565b8db9a3abc63c5",
+      "afterSHA256": "cf0f1f77d1c2ce26878f2ae17342895137fb8519891482fcb78c370ea13e14c2",
+      "changed": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk-g9.view.json",
+      "beforeSHA256": "373be0987a7cf6c2aae7a6c40d6de7bc14f9a4a317c4758e416c7723063dd644",
+      "afterSHA256": "42505fe335907144c7ee050c09e813b1dd3dd96a27f52951707da7ae60168fe7",
+      "changed": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-lk-g8.view.json",
+      "beforeSHA256": "fc2d3d5ac84387d4bd556b3e57e86521d4fbd8bf9e46b4ef542c3589cc8f71db",
+      "afterSHA256": "2d7cbfe772ccb42abb5090d9aa5ab99726a962629b961920c9e126cd1b23c4d4",
+      "changed": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-lk-g9.view.json",
+      "beforeSHA256": "4e01a1326e9f628df744e74635cffa2befb85b4f502e9c1fb66aff4fe6095898",
+      "afterSHA256": "7e102d7764dc0b1e55386f9ecf6e8d0a89aac8a155ad91e344a11c5406ed0ad9",
+      "changed": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-seki-g8.view.json",
+      "beforeSHA256": "9e8538c29b6cd3a8dcb370d4b3f1d7f83d3e960f3c9fd0500729e79b3707d9fe",
+      "afterSHA256": "206c4e95ff85bcc6f0d74b1fc75b69a4be80009c77ef9c59e21125939ee72eba",
+      "changed": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-seki-g9.view.json",
+      "beforeSHA256": "f0b207e2c4a5f79de684532a5ddaec60afb1b4afe5ffd6d9c88b7842eceb990e",
+      "afterSHA256": "e0856a564d460f797a1b21e28f2943c50c352d5d8b8598d3d20287ba570484c2",
+      "changed": true
+    }
+  ],
+  "sourcePins": [
+    {
+      "path": "app/package.json",
+      "bytes": 36133,
+      "sha256": "9a8b8b627b8cf45faabfe2c2add698282eb96727c5244dbdc01df9632f5b003a"
+    },
+    {
+      "path": "app/scripts/config/math-duration-split-spanning-tree-policy.json",
+      "bytes": 69974,
+      "sha256": "bc525180b07d605e089be941233176bf4755acab8abf6a9b91e179df6036cd60"
+    },
+    {
+      "path": "app/scripts/config/math-duration-stage-placement-policy.json",
+      "bytes": 122840,
+      "sha256": "127f0bb69970207d06d89c2190d87412e9f3026943113cafd025130d4ce6dd43"
+    },
+    {
+      "path": "app/scripts/generateMathDurationCompositionViews.ts",
+      "bytes": 78839,
+      "sha256": "d3df50a396a1c3fd179d201f315b8079db12aa302e95adfaab9bbf2569c069cc"
+    },
+    {
+      "path": "app/scripts/learningUnitLayerProjection.ts",
+      "bytes": 5523,
+      "sha256": "a0d866dbe7487d2b35635e855a78c675b20532829e4bc71893adf3e434043245"
+    },
+    {
+      "path": "app/scripts/mathDurationStagePlacementPolicy.ts",
+      "bytes": 3391,
+      "sha256": "399de6db53aad8050bdca786655f4ba36cbfbe7d1c37a135a090b47bac63ee28"
+    },
+    {
+      "path": "app/scripts/testMathDurationStagePlacementPolicy.ts",
+      "bytes": 3001,
+      "sha256": "fb8e2c4f1ca2631cc4299a6072c1f5abc5bd34003a32b3797f0c75c6a3e0e1ae"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "bytes": 4296099,
+      "sha256": "306eeed52f6b0b1059264ccb1d4ea23227dd3ddff4d19f2a1ca096511d65a149"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-gk-g8.view.json",
+      "bytes": 85400,
+      "sha256": "33bd3b50535f117bdc44bbd5a2f75c3ee573c5f92d23c44ace9780c75f55a30c"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-gk-g9.view.json",
+      "bytes": 90799,
+      "sha256": "55be2355cc98c84c811a68145fd776fbbeda210b3778836133fa78546c70c18b"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-gk.view.json",
+      "bytes": 65249,
+      "sha256": "003e31b13a82b927a376652c78b0da0c85f80b33e83d6b7efdaee22821e4d11e"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-lk-g8.view.json",
+      "bytes": 80889,
+      "sha256": "f1555817f5b6ddd42025c1299757c51a311c2d53cab06b24d5afe35cb9c89715"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-lk-g9.view.json",
+      "bytes": 86288,
+      "sha256": "44e0c80fa6c1c68bc07c35548b8efbf1be80cd0ebe1a9e46baf6f7aa1b7b2aed"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-lk.view.json",
+      "bytes": 60738,
+      "sha256": "7c7f54ac256257531f5d564a8a9f27f65b1d835d6f534cc32449f25f17cd0312"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-seki-g8.view.json",
+      "bytes": 51971,
+      "sha256": "f5d8dc1d9e8078264bd0de73980baa9f88be6ed96e4cead958014ceab75bd545"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-seki-g9.view.json",
+      "bytes": 59122,
+      "sha256": "2562722e525e9e41b62a437cf78c081231f43192550c00a009dcf4db21d8a3a1"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-gk-g8.view.json",
+      "bytes": 77884,
+      "sha256": "9867b96289043859bbb79df49db296feb9c36a120347439103f3da1568bc3fac"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-gk-g9.view.json",
+      "bytes": 79914,
+      "sha256": "c509e15787aa821af66f5f8341fa09701ef601b5a3b8cdc45a7732c00a799a11"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-gk.view.json",
+      "bytes": 52699,
+      "sha256": "c836d81f666ef0b08ffe54c79913f3f2051ebc0bad751193f5753e10a78d7dc9"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-lk-g8.view.json",
+      "bytes": 77411,
+      "sha256": "0869ad06849dff6c8e6acd12d1ad6fb1cc7e1385b6b426e92cf77c6ca6647c07"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-lk-g9.view.json",
+      "bytes": 79441,
+      "sha256": "15a9c9399ec6af30f67482248df8621dba97de1cb79bfbfacd6738bf585531d3"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-lk.view.json",
+      "bytes": 52226,
+      "sha256": "0ca44a82736e29a6f900ab2430aed56cfb65c17c316f9a8d2b4d19e7d34f872a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-seki-g8.view.json",
+      "bytes": 47379,
+      "sha256": "89d1186bcaba1e4d95f2bc7c9a422e8ad9849a684947e00708caf8332d8431f4"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-seki-g9.view.json",
+      "bytes": 50613,
+      "sha256": "1195947afb300eb38337d7f6ef99bdc62d7ca5cc8809c8adb03d6f6c156f2449"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk-g8.view.json",
+      "bytes": 92499,
+      "sha256": "cf0f1f77d1c2ce26878f2ae17342895137fb8519891482fcb78c370ea13e14c2"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk-g9.view.json",
+      "bytes": 94428,
+      "sha256": "42505fe335907144c7ee050c09e813b1dd3dd96a27f52951707da7ae60168fe7"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk.view.json",
+      "bytes": 62654,
+      "sha256": "4598a24564d13dc0c9bda841498cf034a36a3b470f02714d5e9173dbd7fc3b8c"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-lk-g8.view.json",
+      "bytes": 94400,
+      "sha256": "2d7cbfe772ccb42abb5090d9aa5ab99726a962629b961920c9e126cd1b23c4d4"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-lk-g9.view.json",
+      "bytes": 96330,
+      "sha256": "7e102d7764dc0b1e55386f9ecf6e8d0a89aac8a155ad91e344a11c5406ed0ad9"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-lk.view.json",
+      "bytes": 64557,
+      "sha256": "f460c6ae21e194fa95cd3bb134638fce25d54f4d147043e651bf80224892f020"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-seki-g8.view.json",
+      "bytes": 51204,
+      "sha256": "206c4e95ff85bcc6f0d74b1fc75b69a4be80009c77ef9c59e21125939ee72eba"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-seki-g9.view.json",
+      "bytes": 52934,
+      "sha256": "e0856a564d460f797a1b21e28f2943c50c352d5d8b8598d3d20287ba570484c2"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/HE/lower-secondary/source-extraction/DE_HE_MATHEMATIK_SEKI_KC_G8_G9.source-extraction.json",
+      "bytes": 817433,
+      "sha256": "3ec1451c515f4bc70d97690331ca66f922d933355c4326e1dc4100a95e3e664c"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/RP/lower-secondary/source-extraction/DE_RP_MATHEMATIK_SEKI_RAHMENLEHRPLAN_2007.source-extraction.json",
+      "bytes": 322940,
+      "sha256": "9b419872be53efe0da1f2feae08a0594ac66d10cfd56c36aad78daa3535055fd"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/SH/lower-secondary/source-json/DE_SHL_S_GYM_1_MATHEMATIK.de.json.snapshot",
+      "bytes": 137449,
+      "sha256": "e1dae16f35642336a368e0c125d1b954cbdf0f598dba815724c34ca9d2edd11a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/hessen_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "bytes": 789840,
+      "sha256": "167120e1f19f954ab90880f562f399324628a809ddb37b4b52513204a13e1026"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-RP/lower-secondary/rp_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "bytes": 549553,
+      "sha256": "2c6c42f7eea284ffbcd8973b4e299ec0370b02c6c8199922111c207ef455daa6"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-SH/lower-secondary/sh_math_lower_secondary_to_canonical_math.json",
+      "bytes": 19553,
+      "sha256": "27a7d9450daa4887f301922f7319aaac7c389fcda70ad32a9a8fe98bc7511529"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/mathematik-f65-he-year-source-decision-20260929.md",
+      "bytes": 3881,
+      "sha256": "2fa52dcf70491496aee392184021c8c2c83516ccf4233df86f203561158a331d"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/mathematik-j10-analysis-source-stage-decisions-20260929.md",
+      "bytes": 11923,
+      "sha256": "cd2a7bd122f4e3560eb7a90238461e99aabe94124223d9150e6130d8b975e8fa"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/assessment-review/mathematik/sl-j10-sphere-b23-source-audit-20260929-v1.md",
+      "bytes": 2786,
+      "sha256": "e0c6b1d22647a4d0a1052f5bb3e8b105902e9f9d8f88d432e7cc20d947ea2686"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/canonical-math-058bf6de-structural-split-2026-08-27.adjudication.json",
+      "bytes": 15232,
+      "sha256": "19cc1a2d0b8d48f8717f20e58732ae6f18e0825743620fc75fccdf891a8396e0"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-28/batch-012-j6-volume-structural-split-1-v1/source-edge-adjudication.json",
+      "bytes": 35429,
+      "sha256": "b06d7d4f2309cd15b3fbe488927cc856e165ac05ea063653b64b00284ab6103f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-05/batch-032v-approved-graph-split-final-recheck-5-v1/duration-layout-adjudication.json",
+      "bytes": 4455,
+      "sha256": "28069fb72f663f403d0c7072329323f8cfcbe491c12231f534de39e4caf4f1fb"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-06/batch-038-derivative-applications-and-exponentials-20-v1/duration-scope-adjudication-v3.json",
+      "bytes": 3084,
+      "sha256": "2e7f0b537d8dbcbf71cf5d9410be0100784e33e8dc08b09796564379b877f19d"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-28/m7-j10-derivative-split-20260928-v1/duration-layout-adjudication.json",
+      "bytes": 2996,
+      "sha256": "08459a78076ee2d232ecc30b1e586043a79457bf4a10d382a75e7ff2ae65e3e9"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-28/m7-j10-sphere-split-source-audit-20260928-v1/duration-layout-adjudication.json",
+      "bytes": 4375,
+      "sha256": "91a8608338694d28a41aa94908fac9478e2c8dd941594137439c6696e7714367"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-28/m7-vector-shared-operations-20260928-v1/duration-layout-adjudication.json",
+      "bytes": 4228,
+      "sha256": "85483d13e13b26fe7179c88fe79bd232b7a2447212655bd6331294eb75ee1c77"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+      "bytes": 423426,
+      "sha256": "eaba484467fda572a48e980d29213d14e85ca3067f9976be067b7d24bf2f5e00"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-09-29/he-g9-j8-body-placements-decision.md",
+      "bytes": 1237,
+      "sha256": "0abfeb3a4321709bb27df059121c09b0e08ce41c0ef935c0968cf3bf8eb2ef60"
+    }
+  ],
+  "limits": [
+    "Local targeted CI repair; no full-QA claim, no new independent content review, no remote/main acceptance.",
+    "Native full-map/year/phase measurements and full 21-catalog QA are handled separately by the parent delivery.",
+    "Three exposed ordinary goals have no direct coveredGoalIds assessment in the existing canonical file; exposure itself neither adds coverage nor grants mastery."
+  ]
+}

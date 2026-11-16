@@ -28,6 +28,37 @@ class CourseProfileCompositionViewMergerTest {
     }
 
     @Test
+    void actualTargetPlacementWinsOverASupportHintInEitherTraversalOrder() {
+        var hint = Map.<String, Object>of("kind", "structure", "id", "early-hint", "label", "Hint",
+                "children", List.of(reference("goalEntry", "shared", "prerequisiteOnly")));
+        var target = Map.<String, Object>of("kind", "structure", "id", "authored-late-target", "label", "Target",
+                "children", List.of(reference("goalEntry", "shared", "target")));
+        for (var source : List.of(List.of(hint, target), List.of(target, hint))) {
+            assertThat(CourseProfileCompositionViewMerger.mergeViews(List.of(source), ROLE_GRAPH))
+                    .filteredOn(node -> !((List<?>) node.get("children")).isEmpty())
+                    .containsExactly(target);
+            assertThat(CourseProfileCompositionViewMerger.mergeViews(source.stream().map(List::of).toList(), ROLE_GRAPH))
+                    .filteredOn(node -> !((List<?>) node.get("children")).isEmpty())
+                    .containsExactly(target);
+        }
+        assertThat(hint.get("children")).isEqualTo(List.of(reference("goalEntry", "shared", "prerequisiteOnly")));
+    }
+
+    @Test
+    void duplicateTrueTargetsKeepTheirExistingAuthoredPrecedence() {
+        var early = Map.<String, Object>of("kind", "structure", "id", "true-early", "label", "Early",
+                "children", List.of(reference("goalEntry", "shared", "target")));
+        var late = Map.<String, Object>of("kind", "structure", "id", "true-late", "label", "Late",
+                "children", List.of(reference("goalEntry", "shared", "target")));
+        assertThat(CourseProfileCompositionViewMerger.mergeViews(List.of(List.of(late, early)), ROLE_GRAPH))
+                .filteredOn(node -> !((List<?>) node.get("children")).isEmpty()).containsExactly(late);
+        assertThat(CourseProfileCompositionViewMerger.mergeViews(List.of(List.of(early, late)), ROLE_GRAPH))
+                .filteredOn(node -> !((List<?>) node.get("children")).isEmpty()).containsExactly(early);
+        // In particular, an already carried late target is never moved early
+        // merely because another goal needs it; that backflow remains visible.
+    }
+
+    @Test
     void inheritedTargetInOneProfileSurvivesDirectExclusionInAnother() {
         var broad = reference("canonicalSubtree", "root", "target");
         var exclusion = reference("goalEntry", "advanced", "prerequisiteOnly");

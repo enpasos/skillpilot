@@ -122,17 +122,20 @@ public final class PackageCurriculumResourceState {
             ResourceBinding binding = new ResourceBinding(descriptor, routeKey);
             String href;
             if ("embedded".equals(descriptor.delivery())) {
-                if (!"goal-visualization".equals(descriptor.resourceKind())
-                        || !"goal-visualization".equals(descriptor.catalogResourceKind())
+                boolean assessmentMaterial = "assessment-material".equals(descriptor.resourceKind());
+                String lane = assessmentMaterial ? "assessment-material" : "goal-visualization";
+                String prefix = assessmentMaterial ? "/assets/assessment-materials/" : "/assets/goal-visualizations/";
+                if (!lane.equals(descriptor.resourceKind())
+                        || !lane.equals(descriptor.catalogResourceKind())
                         || descriptor.publicUrl() == null
-                        || !descriptor.publicUrl().startsWith("/assets/goal-visualizations/")) {
-                    throw failure("Embedded package resource is outside the supported goal-visualization lane: "
+                        || !descriptor.publicUrl().startsWith(prefix)) {
+                    throw failure("Embedded package resource is outside the supported " + lane + " lane: "
                             + descriptor.resourceId());
                 }
                 requireCapability(
                         packageCapabilities,
                         descriptor.packageId(),
-                        "goalVisualizations",
+                        assessmentMaterial ? "assessmentMaterialsV1" : "goalVisualizations",
                         "embedded resource " + descriptor.resourceId());
                 String ownerLandscapeId = descriptor.ownerGoalId() == null
                         ? null
@@ -142,6 +145,14 @@ public final class PackageCurriculumResourceState {
                             + descriptor.resourceId());
                 }
                 CurriculumRuntimeSnapshot.Artifact artifact = requireEmbeddedResourceArtifact(descriptor);
+                if (assessmentMaterial) {
+                    if (!("/" + artifact.relativePath()).equals(descriptor.publicUrl())) {
+                        throw failure("Assessment-material URL differs from its bound artifact path");
+                    }
+                    validateAssessmentMaterial(descriptor,
+                            artifactReader.readVerified(artifact, "image/svg+xml".equals(descriptor.mediaType())
+                                    ? StaticAssessmentSvg.MAX_BYTES : MAX_IMAGE_BYTES));
+                }
                 if (artifact.bytes() > MAX_IMAGE_BYTES) {
                     throw failure("Embedded package image exceeds the runtime byte limit: "
                             + descriptor.resourceId());
@@ -240,6 +251,9 @@ public final class PackageCurriculumResourceState {
         CurriculumRuntimeSnapshot.ResourceDescriptor descriptor = binding.descriptor();
         CurriculumRuntimeSnapshot.Artifact artifact = requireEmbeddedResourceArtifact(descriptor);
         byte[] bytes = artifactReader.readVerified(artifact, MAX_IMAGE_BYTES);
+        if ("assessment-material".equals(descriptor.resourceKind())) {
+            validateAssessmentMaterial(descriptor, bytes);
+        }
         return new ResolvedArtifact(
                 bytes,
                 descriptor.mediaType(),
@@ -358,12 +372,29 @@ public final class PackageCurriculumResourceState {
                 || !descriptor.resourceId().equals(artifact.resourceId())
                 || !descriptor.packageId().equals(artifact.packageId())
                 || !descriptor.mediaType().equals(artifact.mediaType())
-                || !("image/jpeg".equals(descriptor.mediaType())
-                        || "image/png".equals(descriptor.mediaType()))) {
+                || !("assessment-material".equals(descriptor.resourceKind())
+                        ? ("image/svg+xml".equals(descriptor.mediaType()) && artifact.relativePath().endsWith(".svg"))
+                            || ("image/png".equals(descriptor.mediaType()) && artifact.relativePath().endsWith(".png"))
+                        : "image/jpeg".equals(descriptor.mediaType()) || "image/png".equals(descriptor.mediaType()))) {
             throw failure("Embedded resource is not a supported runtime image artifact: "
                     + descriptor.resourceId());
         }
         return artifact;
+    }
+
+    private static void validateAssessmentMaterial(
+            CurriculumRuntimeSnapshot.ResourceDescriptor descriptor, byte[] bytes) {
+        if ("image/svg+xml".equals(descriptor.mediaType())) {
+            StaticAssessmentSvg.validate(bytes);
+        } else if ("image/png".equals(descriptor.mediaType())) {
+            byte[] signature = {(byte) 0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a};
+            if (bytes.length < signature.length) throw failure("Invalid assessment PNG payload");
+            for (int i = 0; i < signature.length; i++) {
+                if (bytes[i] != signature[i]) throw failure("Invalid assessment PNG payload");
+            }
+        } else {
+            throw failure("Unsupported assessment material media type");
+        }
     }
 
     private static String requirePackageVersion(Map<String, String> packageVersions, String packageId) {

@@ -1,0 +1,110 @@
+{
+  "status": "ACCEPT_EXACT_PROPOSED_SOURCE_MAPPING_CORRECTION",
+  "reviewedAt": "2026-11-16T00:56:36.123324+00:00",
+  "reviewer": "independent-agent:/root",
+  "author": "independent-agent:/root/math_duration_ci_repair",
+  "reviewScope": "Exactly the proposed T081 mapping and current decision, not a maturity, runtime, learner-result or publication acceptance.",
+  "priorParticipation": "Root coordinates CI work and provided its own source assessment before the author wrote the exact proposal. This is a disclosed independent source and object review, not a blind review.",
+  "proposal": {
+    "path": "tmp/math-duration-ci-repair-20261116-v1/sh-T081-exact-proposed-live-objects.json",
+    "sha256": "4a6a7d17b19892efd65409933eb9ca60ccae61a3ffe964ff4bef99ee2ea879c3",
+    "retainedPath": "exact-proposed-live-objects.json"
+  },
+  "primarySource": {
+    "path": "curricula/DE/Gymnasium/input/SH/Fachanforderungen_Mathematik_Sekundarstufe_2024_barrierearm.pdf",
+    "sha256": "17d35f8bb5129819c7de5040c5edfbe355e58cfcd01f43f694029b3b841e0d28",
+    "pageIndex0": 37,
+    "printedPage": 38,
+    "inspected": "Original page rendered with pdftoppm and visually inspected; full page text and table-level legend read independently.",
+    "officialIndexUrl": "https://fachportal.lernnetz.de/sh/faecher/mathematik/fachanforderungen.html",
+    "liveWebEvidence": "Official IQSH index fetched during this review and lists the 2024 Sekundarstufe PDF. Its download link failed in the web tool; no new remote PDF byte-identity claim is made."
+  },
+  "canonicalInput": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "sha256": "306eeed52f6b0b1059264ccb1d4ea23227dd3ddff4d19f2a1ca096511d65a149",
+    "goalId": "f17935b0-189f-5e0c-988d-ce508b710097",
+    "completeGoal": {
+      "id": "f17935b0-189f-5e0c-988d-ce508b710097",
+      "shortKey": "canonical_math_sek1_solve_linear_inequalities",
+      "title": "Lineare Ungleichungen lösen und Lösungsmengen darstellen",
+      "titleEn": "Solve linear inequalities and represent solution sets",
+      "description": "Die lernende Person kann lineare Ungleichungen mit Äquivalenzumformungen lösen, bei Multiplikation oder Division durch negative Zahlen die Ordnungsrichtung korrekt umkehren und die Lösungsmenge auf der Zahlengeraden oder in Intervallschreibweise darstellen.",
+      "descriptionEn": "The learner can solve linear inequalities using equivalent transformations, correctly reverse the inequality when multiplying or dividing by a negative number, and represent the solution set on a number line or using interval notation.",
+      "weight": 1,
+      "core": true,
+      "tags": [
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.1",
+          "K2.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "J8",
+        "area": "Algebra",
+        "topicCode": "CANONICAL.MATH.SEK1.2A2"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "sourceRef": "KC G9",
+      "requires": [
+        "325771e1-602d-4bca-a199-a8f39a2d3dee"
+      ],
+      "contains": [],
+      "type": "atomic",
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "f17935b0-189f-5e0c-988d-ce508b710097",
+          "title": "Visualisierung: Lineare Ungleichungen lösen und Lösungsmengen darstellen",
+          "url": "/assets/goal-visualizations/mathematik/f17935b0-189f-5e0c-988d-ce508b710097/f17935b0-189f-5e0c-988d-ce508b710097.png",
+          "provider": "ChatGPT/Codex imagegen (model/version not exposed)",
+          "description": "Visualisierung zum Lernziel: Lineare Ungleichungen lösen und Lösungsmengen darstellen.",
+          "altText": "Die Ungleichung −2x < 6 wird durch Division beider Seiten durch −2 mit umgekehrter Ordnungsrichtung zu x > −3; auf der Zahlengeraden ist −3 ausgeschlossen und der Strahl zeigt nach rechts.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
+    }
+  },
+  "findings": [
+    "The source table explicitly includes simple inequalities in the compulsory content column; the same row requires solving inequalities and interpreting their solution sets.",
+    "The entry is printed normally, without the gray or bold higher-level styling. The document legend states that this baseline applies at all requirement levels.",
+    "Equivalent transformations and reversing order under a negative factor operationalize the linear case correctly. Number-line or interval representation is an alternative, not a claimed compulsory official notation.",
+    "The previous target 325771e1 is about equations and cannot by itself cover the distinct inequality skill. The exact replacement f17935b0 matches this bounded source item.",
+    "The source establishes Sekundarstufe I, not an exact J8 placement. No advanced inequality class, official year, new competence or mastery is claimed.",
+    "Retained source extraction K023 truncates the competency sentence. The intact original PDF is the controlling evidence; retained extraction and PDF must not change."
+  ],
+  "decision": "Accept only the exact proposed objects above; retain the prior mapping/decision and record the new dated corrective review. Other mappings and all canonical goal/task/media bytes remain unchanged.",
+  "humanReview": false,
+  "qualityGateRelaxation": false
+}

@@ -1,0 +1,429 @@
+{
+  "at": "2026-11-15T22:32:20.773085+00:00",
+  "status": "PASS_FINAL_CURRENT21_MACHINE_QA_AND_UNCHANGED_PROTECTED_FLOORS",
+  "commandResults": {
+    "officialGeneratorExit": 0,
+    "protectedFloorsExit": 0,
+    "inputDrift": 0
+  },
+  "officialRun": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/physics-q1-acquisition-current-v1/current841-runtime-scope-official-full21-and-protected-floors.actual.json",
+    "sha256": "785ee9eae0e29b63d336c21a71491f960343b5ac40bec4922801d0189677876f"
+  },
+  "logs": [
+    {
+      "sourcePath": "tmp/physics-release840-20261115/official-full21-runtime-scope.stdout.log",
+      "retainedPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/physics-q1-acquisition-current-v1/current841-final-native-release-status-v1/official-curriculum-status.stdout.txt",
+      "bytes": 262719,
+      "sha256": "46ec6cc71a96b7e180d3ea100b2988177bb3d0aefb07745e9c40eac7efe6d782",
+      "byteIdentical": true
+    },
+    {
+      "sourcePath": "tmp/physics-release840-20261115/official-maturity-floors-runtime-scope.stdout.log",
+      "retainedPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/physics-q1-acquisition-current-v1/current841-final-native-release-status-v1/official-maturity-floors.stdout.txt",
+      "bytes": 177,
+      "sha256": "1a8bd87893f926d1906fe147307fffd8b78d22dd8bcde58b17966fe4cea26fbe",
+      "byteIdentical": true
+    },
+    {
+      "sourcePath": "tmp/physics-release840-20261115/official-full21-runtime-scope-wrapper.stdout.log",
+      "retainedPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/physics-q1-acquisition-current-v1/current841-final-native-release-status-v1/official-run-wrapper.stdout.txt",
+      "bytes": 362,
+      "sha256": "34f61cc028796e1bd325ff153bc78d94108bd009b4f29f3f327416a5bcfc4e18",
+      "byteIdentical": true
+    }
+  ],
+  "finalStatusArtifacts": [
+    {
+      "path": "docs/qa-ci/status/curriculum-quality-status.json",
+      "sha256": "0a6aa420d4daedafaa6805f96eda256694e085862648be4910d4608f7cc32495"
+    },
+    {
+      "path": "docs/qa-ci/status/curriculum-quality-status.md",
+      "sha256": "1bf71554a748d1c1e6de794003971b7b6b1de9294f5f5bc278005d20598d1164"
+    },
+    {
+      "path": "docs/qa-ci/status/curriculum-quality-status.de.md",
+      "sha256": "536564dcffb733772f0e168ad18a173a343f226f4cb2b0bafb87d5e59c8bc341"
+    }
+  ],
+  "floorPolicy": {
+    "path": "app/scripts/config/curriculum-maturity-floor-policy.json",
+    "sha256": "ab71dc368bbe4e3e77a5f8aa8e2ad21585af0af7c8961c3a08af76e9b9faa77d"
+  },
+  "catalogCount": 21,
+  "maturityCounts": {
+    "M0": 11,
+    "M1": 0,
+    "M2": 0,
+    "M3": 0,
+    "M4": 0,
+    "M5": 0,
+    "M6": 5,
+    "M7": 5
+  },
+  "catalogGrades": [
+    {
+      "subject": "Biologie",
+      "maturity": "M7"
+    },
+    {
+      "subject": "Chemie",
+      "maturity": "M7"
+    },
+    {
+      "subject": "Chinesisch",
+      "maturity": "M0"
+    },
+    {
+      "subject": "Deutsch",
+      "maturity": "M6"
+    },
+    {
+      "subject": "Englisch",
+      "maturity": "M0"
+    },
+    {
+      "subject": "Französisch",
+      "maturity": "M0"
+    },
+    {
+      "subject": "Geschichte",
+      "maturity": "M6"
+    },
+    {
+      "subject": "Griechisch",
+      "maturity": "M0"
+    },
+    {
+      "subject": "Gymnasium (Deutschland)",
+      "maturity": "M0"
+    },
+    {
+      "subject": "Informatik",
+      "maturity": "M6"
+    },
+    {
+      "subject": "Italienisch",
+      "maturity": "M0"
+    },
+    {
+      "subject": "Latein",
+      "maturity": "M6"
+    },
+    {
+      "subject": "Mathematik",
+      "maturity": "M7"
+    },
+    {
+      "subject": "Musik",
+      "maturity": "M0"
+    },
+    {
+      "subject": "Physik",
+      "maturity": "M7"
+    },
+    {
+      "subject": "Politik und Wirtschaft",
+      "maturity": "M6"
+    },
+    {
+      "subject": "Polnisch",
+      "maturity": "M0"
+    },
+    {
+      "subject": "Russisch",
+      "maturity": "M0"
+    },
+    {
+      "subject": "Spanisch",
+      "maturity": "M0"
+    },
+    {
+      "subject": "Tschechisch",
+      "maturity": "M0"
+    },
+    {
+      "subject": "Wirtschaftswissenschaften",
+      "maturity": "M7"
+    }
+  ],
+  "protectedScopeFloors": [
+    {
+      "subject": "Biologie",
+      "scopeId": "canonical-biology-sek2",
+      "currentMaturity": "M4",
+      "minimumMaturity": "M4",
+      "compositionVisibilityRequired": false
+    },
+    {
+      "subject": "Chemie",
+      "scopeId": "canonical-chemistry-sek2",
+      "currentMaturity": "M4",
+      "minimumMaturity": "M4",
+      "compositionVisibilityRequired": false
+    },
+    {
+      "subject": "Deutsch",
+      "scopeId": "canonical-german-crossstage",
+      "currentMaturity": "M4",
+      "minimumMaturity": "M4",
+      "compositionVisibilityRequired": true
+    },
+    {
+      "subject": "Geschichte",
+      "scopeId": "canonical-history-crossstage",
+      "currentMaturity": "M4",
+      "minimumMaturity": "M4",
+      "compositionVisibilityRequired": true
+    },
+    {
+      "subject": "Informatik",
+      "scopeId": "canonical-informatics-crossstage",
+      "currentMaturity": "M4",
+      "minimumMaturity": "M4",
+      "compositionVisibilityRequired": true
+    },
+    {
+      "subject": "Latein",
+      "scopeId": "canonical-latin-crossstage",
+      "currentMaturity": "M4",
+      "minimumMaturity": "M4",
+      "compositionVisibilityRequired": true
+    },
+    {
+      "subject": "Mathematik",
+      "scopeId": "canonical-math-sek1",
+      "currentMaturity": "M4",
+      "minimumMaturity": "M4",
+      "compositionVisibilityRequired": true
+    },
+    {
+      "subject": "Mathematik",
+      "scopeId": "canonical-math-sek2",
+      "currentMaturity": "M4",
+      "minimumMaturity": "M4",
+      "compositionVisibilityRequired": false
+    },
+    {
+      "subject": "Physik",
+      "scopeId": "canonical-physics-sek1",
+      "currentMaturity": "M4",
+      "minimumMaturity": "M4",
+      "compositionVisibilityRequired": true
+    },
+    {
+      "subject": "Physik",
+      "scopeId": "canonical-physics-sek2",
+      "currentMaturity": "M4",
+      "minimumMaturity": "M4",
+      "compositionVisibilityRequired": false
+    },
+    {
+      "subject": "Politik und Wirtschaft",
+      "scopeId": "canonical-politics-economics-crossstage",
+      "currentMaturity": "M4",
+      "minimumMaturity": "M4",
+      "compositionVisibilityRequired": true
+    },
+    {
+      "subject": "Wirtschaftswissenschaften",
+      "scopeId": "canonical-economics-crossstage",
+      "currentMaturity": "M4",
+      "minimumMaturity": "M4",
+      "compositionVisibilityRequired": true
+    }
+  ],
+  "catalogInvariantChecks": {
+    "CQR-001": {
+      "passed": 21,
+      "total": 21
+    },
+    "CQR-002": {
+      "passed": 21,
+      "total": 21
+    },
+    "CQR-501": {
+      "passed": 21,
+      "total": 21
+    }
+  },
+  "globalRuleCounts": {
+    "pass": 235,
+    "warn": 18,
+    "fail": 4,
+    "not_configured": 65
+  },
+  "subjectAndRouteResults": [
+    {
+      "subject": "Physik",
+      "maturity": "M7",
+      "subjectRuleCount": 11,
+      "subjectRulesPass": 11,
+      "sourceJurisdictionsComplete": 16,
+      "sourceJurisdictionsDeclared": 16,
+      "sourceAtoms": 6289,
+      "sourceAtomsMapped": 6289,
+      "unsupportedAssignedAtoms": 0,
+      "ordinaryDeep": {
+        "expectedGoals": 485,
+        "remaining": 0,
+        "strictComplete": 485,
+        "currentDescriptionResolutions": 485,
+        "currentPositiveEvidenceProfiles": 485,
+        "currentSemanticAtomicityDecisions": 485,
+        "currentMemoryReviewDecisions": 485,
+        "currentVisualizationQaRecords": 485,
+        "deferredVisualizations": 0,
+        "requiredChecksPassed": 6,
+        "requiredChecksTotal": 6,
+        "blockingIssues": 0
+      },
+      "activeApplicabilityWarnings": 0,
+      "configuredRouteRules": 13,
+      "configuredRouteRulesPass": 13,
+      "scopes": [
+        {
+          "scopeId": "canonical-physics-sek1",
+          "maturity": "M4"
+        },
+        {
+          "scopeId": "canonical-physics-sek2",
+          "maturity": "M4"
+        }
+      ],
+      "compositionVisibilityChecks": [
+        {
+          "scopeId": "canonical-physics-sek1",
+          "rule": "CQR-104",
+          "status": "pass",
+          "evaluatedProjectionScopes": 80
+        }
+      ]
+    },
+    {
+      "subject": "Mathematik",
+      "maturity": "M7",
+      "subjectRuleCount": 11,
+      "subjectRulesPass": 11,
+      "sourceJurisdictionsComplete": 16,
+      "sourceJurisdictionsDeclared": 16,
+      "sourceAtoms": 9978,
+      "sourceAtomsMapped": 9978,
+      "unsupportedAssignedAtoms": 0,
+      "ordinaryDeep": {
+        "expectedGoals": 807,
+        "remaining": 0,
+        "strictComplete": 807,
+        "currentDescriptionResolutions": 807,
+        "currentPositiveEvidenceProfiles": 807,
+        "currentSemanticAtomicityDecisions": 807,
+        "currentMemoryReviewDecisions": 807,
+        "currentVisualizationQaRecords": 807,
+        "deferredVisualizations": 0,
+        "requiredChecksPassed": 6,
+        "requiredChecksTotal": 6,
+        "blockingIssues": 0
+      },
+      "activeApplicabilityWarnings": 0,
+      "configuredRouteRules": 13,
+      "configuredRouteRulesPass": 13,
+      "scopes": [
+        {
+          "scopeId": "canonical-math-sek1",
+          "maturity": "M4"
+        },
+        {
+          "scopeId": "canonical-math-sek2",
+          "maturity": "M4"
+        }
+      ],
+      "compositionVisibilityChecks": [
+        {
+          "scopeId": "canonical-math-sek1",
+          "rule": "CQR-104",
+          "status": "pass",
+          "evaluatedProjectionScopes": 54
+        }
+      ]
+    }
+  ],
+  "currentCriticalPins": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+      "sha256": "b391f6a72d6fee14cc5836cd42ad9a46f30ff9dbc07b23a5dd7e0f47c7467173"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "sha256": "306eeed52f6b0b1059264ccb1d4ea23227dd3ddff4d19f2a1ca096511d65a149"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+      "sha256": "74ef8b842ece81aca7db9d83436b6910078f4bfb74ee1337106448cca6c75d7b"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json",
+      "sha256": "5bf12b05b5444badb146351489896ad059344285822075226e210f43dfdfdb1d"
+    },
+    {
+      "path": "app/scripts/generateCurriculumQualityStatus.ts",
+      "sha256": "ffe2b5e59ee80677ecdef7f4d0b2f2095d60c5eb1a69125d73da9f4de63767c1"
+    },
+    {
+      "path": "app/scripts/testCurriculumQualityStatus.ts",
+      "sha256": "294ad2d71a353514a4f8c64c3912999df9ca593c353b8c1b9421a6e5dd182fe4"
+    },
+    {
+      "path": "app/scripts/testSourceCoverageScopeNative.ts",
+      "sha256": "48460e295b7d190f322d3eca90e243962b9c5b2af007af37efa5a962383119a3"
+    }
+  ],
+  "sourceScopeFinalEvidence": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/physics-q1-acquisition-current-v1/current841-source-scope-reader-final-v1/independent-review-binding.actual.json",
+    "sha256": "7c4d748d9f7b27a402b8db6ff6a1fa209dc828c0120ce841e7df87717e3f0391"
+  },
+  "actualFinalApiPack": {
+    "path": "contracts/stage-plan-review-evidence/2026-11-15/real-view-measurements-v1/api-ui-b391-final-lossless/retention-seal.actual.json",
+    "sha256": "e3075be9a4227bfd63cb8e74f34e8ab5e098a46f908c05c3cd24c266e01bf4f1"
+  },
+  "currentD2Index": {
+    "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-15/current841-two-applicability-contexts-v1/resolution-index.json",
+    "sha256": "3c07bea98c86e1913fc99d0859c5ea4960a7540e1c4bf3a4f8009c2e38249a88"
+  },
+  "freshDeepProof": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/physics-q1-acquisition-current-v1/current841-source-boundary-full-deep-final.actual.json",
+    "sha256": "b072f42e63a698177aa4f92622b84ff06a0744788093626330eb7245c17218e6"
+  },
+  "historicalFailuresPreserved": [
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/physics-q1-acquisition-current-v1/current840-official-full21-and-protected-floors.actual.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/physics-q1-acquisition-current-v1/current841-source-boundary-official-full21-and-protected-floors.actual.json"
+  ],
+  "ownerMapBoundary": {
+    "nationalTopArrows": [
+      0,
+      0,
+      0
+    ],
+    "nationalOutsideAtoms": [
+      0,
+      0,
+      0
+    ],
+    "nationalInnerArrows": [
+      11,
+      12,
+      12
+    ],
+    "nationalInnerDistinctAtomicCauses": [
+      27,
+      30,
+      32
+    ],
+    "remainingRegionalAndInnerFindings": "Retained explicitly; M7 is machine quality, not universal zero-backflow or human effectiveness."
+  },
+  "mainCIOrMergeClaimed": false,
+  "learnerResultsWritten": false,
+  "gateOrFloorPolicyRelaxed": false,
+  "retainedV9Rebound": false,
+  "activeQAStable": true
+}

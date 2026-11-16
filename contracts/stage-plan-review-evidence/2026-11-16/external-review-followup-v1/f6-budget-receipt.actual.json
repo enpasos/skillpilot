@@ -1,0 +1,78 @@
+{
+  "at": "2026-11-16T05:19:55.765804+00:00",
+  "status": "PASS_FOCUSED_FAIL_CLOSED_SELECTION_BUDGET_DELTA",
+  "parentLocalCheckpoint": "4286f492507f4273b96a02a73aba495c27bbc2b0",
+  "priorReceiptPreserved": "../receipt.actual.json",
+  "priorReceiptSha256": "17e313084fe1681f8455892ceb190102d6aeb3c603b874d76fea3169df88cb2b",
+  "sourcePins": [
+    {
+      "path": "app/src/utils/stagePlanReport.ts",
+      "beforeSha256": "58b276cf8bc63d396a152c7acee87b64604ab8ca7e095f77fb90849a4bcccd57",
+      "afterSha256": "7843e94386142601133d38b221990462b43de6d2221ff8b28aff4f95b4969232"
+    },
+    {
+      "path": "app/scripts/testStagePlanLearningFlowReport.ts",
+      "beforeSha256": "a591c0c146b73f0759bcc68066c2059d7adbc4fc0ceeb4d254b1092e89ab239d",
+      "afterSha256": "9aad37039c3cb0a12ca4422d0b0653138176250fc79ff603e004b1ea52d3d145"
+    }
+  ],
+  "operationalLimit": 1024,
+  "counting": "Exact BigInt sum of complete per-plan products of actual independent course/omission choices, before Cartesian enumeration or evaluation of any scope.",
+  "onExcess": {
+    "code": "SPR-SELECTION-LIMIT",
+    "status": "invalid-input",
+    "scopes": [],
+    "partialProofAccepted": false
+  },
+  "executedBoundaryCases": [
+    "Existing15 selections for2 subjects;9 with both and6 single-subject.",
+    "Existing30 selections across2 declared duration contexts.",
+    "Complete inventory1023+1=1024 accepted with1024 scope results.",
+    "Complete inventory1023+1+1=1025 rejected with no scope results.",
+    "Small earlier plan plus later4095-scope plan rejected before any passing-prefix results.",
+    "40-subject count4^40-1 checked exactly, above Number safe integer range, and rejected before enumeration."
+  ],
+  "commands": [
+    {
+      "name": "learning-flow",
+      "cwd": "app",
+      "command": "./node_modules/.bin/tsx scripts/testStagePlanLearningFlowReport.ts",
+      "exitCode": 0,
+      "stdout": "learning-flow.stdout.txt",
+      "stdoutSha256": "6422ebf50b48160a0b7215e289310f0ee3d37763b6a2edfe9f44c43b17629214"
+    },
+    {
+      "name": "materialization",
+      "cwd": "app",
+      "command": "./node_modules/.bin/tsx scripts/testStagePlanMaterialization.ts",
+      "exitCode": 0,
+      "stdout": "materialization.stdout.txt",
+      "stdoutSha256": "5c77de59f1918e254601eee96df01e8f6b5a40e1b850cdeb45793ac740c1c905"
+    },
+    {
+      "name": "nested",
+      "cwd": "app",
+      "command": "./node_modules/.bin/tsx scripts/testNestedStagePlans.ts",
+      "exitCode": 0,
+      "stdout": "nested.stdout.txt",
+      "stdoutSha256": "9ee2cfac4373179bae019c79c555f23aead5b3d80fcbc95b8e28224ba851fe07"
+    },
+    {
+      "name": "eslint",
+      "cwd": "app",
+      "command": "./node_modules/.bin/eslint --config /home/enpasos/projects/skillpilot/app/eslint.config.js src/utils/stagePlanReport.ts scripts/testStagePlanLearningFlowReport.ts",
+      "exitCode": 0,
+      "stdout": "eslint.stdout.txt",
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "typecheck",
+      "cwd": "app",
+      "command": "./node_modules/.bin/tsc --noEmit --strict --skipLibCheck --target ES2022 --module ESNext --moduleResolution bundler --allowImportingTsExtensions --types node src/utils/stagePlanReport.ts scripts/testStagePlanLearningFlowReport.ts",
+      "exitCode": 0,
+      "stdout": "typecheck.stdout.txt",
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "limits": "Operational bound for the pilot, not acceptance or performance evidence for large20-subject plans. No truncation, dominance reduction, native learner replay, remote CI, commit or push by this agent."
+}

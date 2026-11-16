@@ -1,0 +1,77 @@
+import assert from 'node:assert/strict'
+import { readFileSync, writeFileSync } from 'node:fs'
+import { gunzipSync } from 'node:zlib'
+import { prepareLandscapeEntries } from '../../../app/src/hooks/useLandscapes'
+import { buildGoalIndex } from '../../../app/src/hooks/useGoalIndex'
+import { applyCompositionViewProjection, applyPersonalCurriculumProjection, deriveRuntimeGoalPlacementFilters, shouldApplyLearnerPlacementFallback, selectCompositionManagedLandscapeIds } from '../../../app/src/utils/compositionViewRuntime'
+import { applyGoalPlacementProjection } from '../../../app/src/utils/goalPlacementProjection'
+import { goalMatchesFilter } from '../../../app/src/utils/goalFilters'
+import { normalizeLearnerProjectedEntries, normalizeLearnerVisibleChildrenMap, collapseLearnerSubjectRoots } from '../../../app/src/utils/learnerTreeProjection'
+import { buildDirectChildrenMap, buildVisibleChildrenMap } from '../../../app/src/utils/treeProjectionRuntime'
+import { createLearnerUnitMapCache } from '../../../app/src/components/learningUnitMap/learnerUnitMapPreview'
+import { filterLearnerUnitMapToSubjects } from '../../../app/src/components/learningUnitMap/learnerUnitMapProjection'
+
+import { buildTreeCompletionProgressMap } from '../../../app/src/utils/treeCompletionProgress'
+
+const [bankPath, output, mode] = process.argv.slice(2)
+const bank = JSON.parse(gunzipSync(readFileSync(bankPath)).toString())
+const subjects = { mathematics: '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced', physics: '7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a' }
+const contexts = mode === 'subject-only' ? bank.contexts : bank.contexts.filter((context:any) => context.id.startsWith('canonical:'))
+const reports:any[] = []
+for (const context of contexts) {
+  const source = prepareLandscapeEntries(bank.sources[context.sourceKey])
+  const root = source.find(entry => entry.meta.personalCurriculumProjection)?.meta.personalCurriculumProjection!.rootLandscapeId!
+  const learning = new Set(source.flatMap(entry => entry.meta.personalCurriculumProjection?.targetGoalIds ?? []))
+  const seeds = new Set(source.flatMap(entry => entry.meta.personalCurriculumProjection?.seedAtomicGoalIds ?? []))
+  const views = [bank.views[context.mathViewKey], bank.views[context.physicsViewKey]]
+  const matched = new Map(views.map((view:any) => [view.landscapeId, view]))
+  const personal:any = context.personalCurriculumConfig ?? { [root]: { selected: true, filterId: 'ALL', stage: 'CrossStage' },
+    [subjects.mathematics]: { selected: true, filterId: context.scope.courseProfile }, [subjects.physics]: { selected: true, filterId: context.scope.courseProfile } }
+  const managed = selectCompositionManagedLandscapeIds('learner', matched.keys())
+  let entries = source.filter(entry => matched.has(entry.meta.landscapeId) || shouldApplyLearnerPlacementFallback(entry.meta.landscapeId, managed))
+    .map(entry => matched.has(entry.meta.landscapeId) ? entry : applyGoalPlacementProjection([entry], deriveRuntimeGoalPlacementFilters({landscapeId:entry.meta.landscapeId,activeFilter:'ALL',learnerPersonalCurriculum:JSON.stringify(personal)}))[0] ?? entry)
+  entries = views.reduce((current:any, view:any) => applyCompositionViewProjection(current, view), entries)
+  entries = applyPersonalCurriculumProjection(normalizeLearnerProjectedEntries(entries), source)
+  const { goalIndexAll:index, globalRootGoals } = buildGoalIndex(entries.flatMap(entry => entry.goals))
+  const filtered = globalRootGoals.filter(goal => goalMatchesFilter(goal, 'ALL'))
+  const localRoots = filtered.filter(goal => goal.landscapeId === root), roots = localRoots.length ? localRoots : filtered
+  const children = matched.has(root) ? buildDirectChildrenMap(index) : normalizeLearnerVisibleChildrenMap(index, buildVisibleChildrenMap(index,'ALL',personal,'content',root))
+  const {childrenByParent} = collapseLearnerSubjectRoots(index, children), visible = new Set<string>()
+  const visit = (id:string) => { if(visible.has(id))return;visible.add(id);(childrenByParent.get(id)??[]).forEach(visit) }
+  roots.forEach(goal => visit(goal.id))
+  const progress=buildTreeCompletionProgressMap(index,childrenByParent,()=>0,new Map())
+  const input = {rootGoals:roots,goalIndexAll:index,canonicalGoalIndexAll:index,visibleGoalIds:visible,visibleChildrenByParent:childrenByParent,landscapeSources:source}
+  const project = createLearnerUnitMapCache(), deepest = project(input, null)
+  for (const [subject, subjectId] of Object.entries(subjects)) {
+    if(mode==='subject-only'&&subjectId!==context.selectedSubject)continue
+    const primary = [...learning].filter(id => index.get(id)?.landscapeId === subjectId)
+    const rows:any[] = []
+    for (const step of new Set([1, deepest.maxStep])) {
+      const full = project(input, step), fixture = filterLearnerUnitMapToSubjects(full.fixture, new Set([subjectId]))
+      const units = new Set(Object.values(fixture.unitEntryIds))
+      const fullUnits = new Set(Object.values(full.fixture.unitEntryIds))
+      const fullOutside = [...learning].filter(id => !(full.fixture.entryPaths?.[id]??[]).some(part=>fullUnits.has(part)))
+      const outside = primary.filter(id => !(fixture.entryPaths?.[id]??[]).some(part=>units.has(part)))
+      const boards = Object.entries(fixture.scopeRelations??{}).map(([id,relations])=>({boardId:id,title:fixture.entries[id]?.title,
+        backward:relations.filter(relation=>relation.backward)}))
+      const rootBoard = boards.find(board=>board.boardId===fixture.rootId)
+      const atomCauses=(relations:any[])=>[...new Set(relations.flatMap(relation=>relation.provenance.map((p:any)=>p.dependentGoalId+' -> '+p.requiredGoalId)))]
+      const rootHidden = new Set(Object.values(fixture.scopeContext?.[fixture.rootId]??{}).flatMap(requirements=>requirements.flatMap(p=>p.sourceGoalIds)))
+      rows.push({step:full.step,maxStep:full.maxStep,topBackward:rootBoard?.backward.length??0,topAtomicCauseCount:atomCauses(rootBoard?.backward??[]).length,topAtomicCauses:atomCauses(rootBoard?.backward??[]),
+        primaryLearning:primary.length,primaryOutsideUnitGoalIds:outside,hiddenOtherSubjectLearning:[...learning].filter(id=>index.get(id)?.landscapeId!==subjectId).length,
+        fullMapAllLearningOutsideUnitGoalIds:fullOutside,
+        rootOutsideContextRequiredGoalIds:[...rootHidden].sort(),innerBoards:boards.filter(board=>board.boardId!==fixture.rootId&&board.backward.length).map(board=>({boardId:board.boardId,title:board.title,
+          arrows:board.backward.length,atomicCauses:atomCauses(board.backward)})),findings:fixture.findings})
+    }
+    assert.equal(roots[0]?.landscapeId,root)
+    reports.push({contextId:context.id,subject,subjectId,profile:context.scope.courseProfile,mode,
+      actualBaseLandscapeId:root,actualVisibleRootIds:roots.map(goal=>goal.id),personalCurriculumConfig:personal,
+      apiSourceOrder:source.map(entry=>entry.meta.landscapeId),totalS:seeds.size,totalL:learning.size,
+      seedAtomicGoalIds:[...seeds].sort(),learningAtomicGoalIds:[...learning].sort(),
+      progressDenominators:roots.map(goal=>({goalId:goal.id,total:progress.get(goal.id)?.totalCount,open:progress.get(goal.id)?.openCount})),
+      uiSubjectFilterFunction:'filterLearnerUnitMapToSubjects',productProjectionFunction:'createLearnerUnitMapCache (includes memberUnits)',rows})
+    console.log(JSON.stringify({profile:context.scope.courseProfile,subject,mode,rows:rows.map(row=>({step:row.step,top:row.topBackward,topCauses:row.topAtomicCauseCount,
+      primary:row.primaryLearning,outside:row.primaryOutsideUnitGoalIds.length,inner:row.innerBoards.map((board:any)=>({title:board.title,arrows:board.arrows,causes:board.atomicCauses.length})),outsideContext:row.rootOutsideContextRequiredGoalIds.length}))}))
+  }
+}
+writeFileSync(output,JSON.stringify({at:new Date().toISOString(),bankPath,mode,readOnly:true,reports},null,2)+'\n')

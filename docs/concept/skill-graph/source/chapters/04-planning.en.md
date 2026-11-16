@@ -2,8 +2,8 @@
 
 This section answers two planning questions: can the goals of a schedule be acquired in the proposed temporal sequence at all, and does the available time suffice? Both checks evaluate a reference plan rather than a learner's stored state.
 
-:::principle {title="Status: Optional Planning Profile"}
-Learning units carry domain coherence and recursive completion. An optional schedule assigns their acquisition targets to planning periods -- such as school years or semesters -- and checks available time capacity. That calendar assignment neither defines learning units nor alters base skill-graph validity or stored mastery, nor does it introduce technical unit locks. No production cross-subject budget validator is claimed.
+:::principle {title="Status: Optional Schedule and Budget Profile"}
+Canonical subject learning units and shared Land plan units (stages, years, phases) govern structural composition and `after` ordering in Section~@ref{sec:learning-units}. Separately, an optional **dated schedule and budget plan** assigns acquisition targets to calendar planning periods $S_i$ (such as semesters or teaching weeks) and checks available study time. That scheduling profile alters neither base skill-graph validity nor stored mastery, introduces no technical unit locks, and claims no production cross-subject budget validator.
 :::
 
 A domain learning unit may be acquired at different times across educational programs. Here a planning period denotes a scheduled interval -- figuratively a construction stage: competencies remain the building blocks and retain their domain prerequisites. Nothing here requires completing every subject of one calendar year before any later goal becomes accessible.
@@ -70,6 +70,8 @@ $$
 
 It succeeds if and only if its fixed point contains all of $S_i$. Because satisfying additional prerequisites can never revoke availability of a still-open goal, any batch added simultaneously can also be acquired one goal at a time; conversely, no valid completion witness can fail this iteration prematurely. The procedure is a *hypothetical* traversal that alters no learner data; on a purely atomic DAG, prerequisite-respecting topological order recovers the familiar special case.
 
+Whereas a dated reference schedule tests feasibility relative to a declared entry basis $B_\pi$, explicitly declared **plan units** of a Land plan already belong to the binding ordering model in Section~@ref{sec:unit-progression}: on the closed Personal Curriculum $L=\Closure(S)$, any prerequisite backflow into a later plan unit directly violates E2/E3 (`GD-P05`) and must never be masked by an assumed entry basis $B_\pi$. Enforcement follows the four-step progression of diagnostic reporting, subject-matter repair, a ratchet, and a hard zero-backflow gate; the existing stage-plan report activates no real Land plan yet and replaces neither source nor content review.
+
 ### Effort, Reserve, and Budget {#sec:workload-budget anchors="123-workload-feasibility"}
 
 Structural feasibility does not yet prove that a school year affords enough time. Every workload claim must state reference learners, entry conditions, target and elective selections, calendar exclusions, estimation method, and uncertainty. Collecting those declared estimation assumptions of plan $\pi$ into $\Theta_\pi$, let $\widehat t_h(\Theta_\pi) \ge 0$ denote the estimated duration of an actual activity $h$ under $\Theta_\pi$. All quantities must share one calibrated time unit:
@@ -98,7 +100,7 @@ An aggregate budget alone is insufficient whenever individual subjects, rooms, o
 
 Under this optional profile, a schedule and acquisition plan is valid when it is both structurally feasible and workload-feasible under its declared assumptions; without calibrated effort estimates, only the structural claim is admissible. Every feasibility claim binds the plan, curriculum revision, resolved scope, and estimation assumptions, without guaranteeing uniform learning speed across individuals.
 
-Completion of a domain learning unit still follows the recursive goal-type and child-unit obligations from Section~@ref{sec:learning-units}. One calendar period may host several learning units, and one learning unit may span multiple calendar periods; nothing in this scheduling profile makes the entire preceding year a universal prerequisite for every subsequent goal.
+Completion of a domain learning unit follows the recursive goal-type and child-unit obligations from Section~@ref{sec:learning-units}. A purely calendar planning period $S_i$ may span several subject units or cut across a unit in time; declared plan units of a Land plan, by contrast, obey E1 to E4, and subject leaf units introduced after `F8` are cut so that they sit whole inside one plan unit across all 16 Bundesländer (that cross-Land check remains pending for the three existing 1.2 units). Nothing in this scheduling profile makes the entire preceding year a universal prerequisite for every subsequent goal.
 
 :::sources
 [Learning Units](repo:docs/concept/skill-graph/learning-units.md); [Graph Definition](repo:docs/concept/skill-graph/graph-definition.md); [Curriculum Time Axis, Buffer Planning, and Pacing](repo:docs/concept/didactic/curriculum-time-axis-and-pacing.md).

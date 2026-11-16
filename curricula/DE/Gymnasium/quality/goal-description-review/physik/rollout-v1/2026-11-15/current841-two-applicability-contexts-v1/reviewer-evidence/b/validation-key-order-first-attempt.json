@@ -1,0 +1,189 @@
+{
+  "atUtc": "2026-11-15T21:39:25.525Z",
+  "checks": [
+    {
+      "id": "exact-outer-input-seal",
+      "pass": true,
+      "evidence": "Raw SHA256"
+    },
+    {
+      "id": "two-jsonl-records",
+      "pass": true,
+      "evidence": "Exactly two independently authored description candidates"
+    },
+    {
+      "id": "assigned-order",
+      "pass": true,
+      "evidence": "Native campaign batch order"
+    },
+    {
+      "id": "batch-digest",
+      "pass": true,
+      "evidence": "Raw batch bytes"
+    },
+    {
+      "id": "schema-digest",
+      "pass": true,
+      "evidence": "Raw bound record schema bytes"
+    },
+    {
+      "id": "prompt-digest",
+      "pass": true,
+      "evidence": "Raw bound prompt bytes"
+    },
+    {
+      "id": "criteria-digest",
+      "pass": true,
+      "evidence": "Raw bound criteria bytes"
+    },
+    {
+      "id": "ajv2020-native-record-schema",
+      "pass": true,
+      "evidence": [
+        {
+          "goalId": "677a192d-8bbe-57fc-bb7a-1c1ed5fba32b",
+          "pass": true,
+          "errors": []
+        },
+        {
+          "goalId": "d61ea362-f6c3-5eab-ac30-2d0e265ac0f6",
+          "pass": true,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "id": "exact-text-and-goal-page-bindings-1",
+      "pass": true,
+      "evidence": "Exact supplied whole DE/EN texts and fingerprints, no rewording in current-text fields"
+    },
+    {
+      "id": "exact-campaign-round-bundle-book-1",
+      "pass": true,
+      "evidence": "All supplied current campaign/bundle/book bindings"
+    },
+    {
+      "id": "native-input-equals-batch-1",
+      "pass": false,
+      "evidence": "Both supplied whole native input copies agree"
+    },
+    {
+      "id": "book-page-equals-bound-page-1",
+      "pass": false,
+      "evidence": "Full selected native page context, not only title"
+    },
+    {
+      "id": "manifest-fingerprints-1",
+      "pass": true,
+      "evidence": "Manifest, goal, page and supplied whole P bindings agree"
+    },
+    {
+      "id": "whole-p-exact-copy-1",
+      "pass": false,
+      "evidence": "Entire supplied profile record matches current context"
+    },
+    {
+      "id": "native21-context-1",
+      "pass": true,
+      "evidence": "Supplied current whole goal and prerequisite context agree"
+    },
+    {
+      "id": "current-source-scope-internally-coherent-1",
+      "pass": true,
+      "evidence": "Checks supplied declarations only; no official-source or runtime-projection approval"
+    },
+    {
+      "id": "six-authored-bilingual-fields-1",
+      "pass": true,
+      "evidence": "Positive goal-specific understanding/performance/transfer in DE/EN"
+    },
+    {
+      "id": "candidate-only-1",
+      "pass": true,
+      "evidence": "No human/source/learner-result/release approval"
+    },
+    {
+      "id": "original-image-binding-1",
+      "pass": true,
+      "evidence": "Exact supplied original image bytes"
+    },
+    {
+      "id": "exact-text-and-goal-page-bindings-2",
+      "pass": true,
+      "evidence": "Exact supplied whole DE/EN texts and fingerprints, no rewording in current-text fields"
+    },
+    {
+      "id": "exact-campaign-round-bundle-book-2",
+      "pass": true,
+      "evidence": "All supplied current campaign/bundle/book bindings"
+    },
+    {
+      "id": "native-input-equals-batch-2",
+      "pass": false,
+      "evidence": "Both supplied whole native input copies agree"
+    },
+    {
+      "id": "book-page-equals-bound-page-2",
+      "pass": false,
+      "evidence": "Full selected native page context, not only title"
+    },
+    {
+      "id": "manifest-fingerprints-2",
+      "pass": true,
+      "evidence": "Manifest, goal, page and supplied whole P bindings agree"
+    },
+    {
+      "id": "whole-p-exact-copy-2",
+      "pass": false,
+      "evidence": "Entire supplied profile record matches current context"
+    },
+    {
+      "id": "native21-context-2",
+      "pass": true,
+      "evidence": "Supplied current whole goal and prerequisite context agree"
+    },
+    {
+      "id": "current-source-scope-internally-coherent-2",
+      "pass": true,
+      "evidence": "Checks supplied declarations only; no official-source or runtime-projection approval"
+    },
+    {
+      "id": "six-authored-bilingual-fields-2",
+      "pass": true,
+      "evidence": "Positive goal-specific understanding/performance/transfer in DE/EN"
+    },
+    {
+      "id": "candidate-only-2",
+      "pass": true,
+      "evidence": "No human/source/learner-result/release approval"
+    },
+    {
+      "id": "original-image-binding-2",
+      "pass": true,
+      "evidence": "Exact supplied original image bytes"
+    },
+    {
+      "id": "book-digest-consistency",
+      "pass": true,
+      "evidence": "Exact supplied digest fields; semantic digest algorithm not reimplemented"
+    },
+    {
+      "id": "native21-source-canonical-binding",
+      "pass": true,
+      "evidence": "Supplied context binding only; full canonical files not opened"
+    },
+    {
+      "id": "four-physical-page-artifacts",
+      "pass": true,
+      "evidence": "Four own rasterizations; actual view_image inspection separately recorded in receipt"
+    },
+    {
+      "id": "allowed-before-after-input-pins-unchanged",
+      "pass": true,
+      "evidence": "24 allowed content files plus exact outer seal; no counterpart files opened or hashed"
+    }
+  ],
+  "allChecksPass": false,
+  "checkCount": 34,
+  "bindingLimit": "All supplied bindings compared exactly and raw bytes hashed; no undisclosed semantic fingerprint regeneration or official-source validation claimed."
+}

@@ -3,6 +3,7 @@ import type { UiGoal } from '../src/goalTypes'
 import { buildLearnerUnitMapProjection, filterLearnerUnitMapToSubjects, type LearnerMapUnitIdentity,
   type LearnerUnitMapFixture, type LearnerUnitMapProjectionInput } from '../src/components/learningUnitMap/learnerUnitMapProjection'
 import { buildDirectChildrenMap } from '../src/utils/treeProjectionRuntime'
+import { deriveLearnerUnitMapPreview, PHYSICS_LANDSCAPE_ID } from '../src/components/learningUnitMap/learnerUnitMapPreview'
 
 // Small hand-made learner trees: every cluster is a tree node, every leaf an atomic goal.
 const subjectA = 'subject-a'
@@ -21,6 +22,37 @@ const tree = (goals: UiGoal[], rootIds: string[]) => {
   const visit = (id: string) => { if (visibleGoalIds.has(id)) return; visibleGoalIds.add(id); (visibleChildrenByParent.get(id) ?? []).forEach(visit) }
   rootIds.forEach(visit)
   return { rootGoals: rootIds.map(id => goalIndexAll.get(id)!), goalIndexAll, canonicalGoalIndexAll: goalIndexAll, visibleGoalIds, visibleChildrenByParent }
+}
+
+// The actual UI may select one overview root above its subject roots. Existing
+// subject sections remain units, and foreign preparation keeps its identity.
+{
+  const preparationIds = ['chem-orientation', 'chem-safety', 'chem-lab', 'chem-substances',
+    'chem-observed-states', 'chem-particles', 'chem-diffusion']
+  const chemistryId = 'foreign-chemistry'
+  const foreign = preparationIds.map((id, index) => goal(id, [], index ? [preparationIds[index - 1]] : [], chemistryId))
+  const section: UiGoal = { ...goal('physics-section', [...preparationIds, 'membrane-model'], [], PHYSICS_LANDSCAPE_ID),
+    tags: ['synthetic:program-unit'], extendedData: { syntheticStructureKind: 'compositionView',
+      compositionViewId: 'authored-physics', compositionNodeId: 'physics-sekii-gk' } }
+  const foreignSection: UiGoal = { ...goal('foreign-section', ['foreign-extra'], [], chemistryId),
+    tags: ['synthetic:program-unit'], extendedData: { syntheticStructureKind: 'compositionView',
+      compositionViewId: 'not-selected-chemistry', compositionNodeId: 'chemistry-year' } }
+  const input = tree([goal('overview', ['physics-root', 'foreign-section'], [], 'overview-landscape'),
+    { ...goal('physics-root', [section.id], [], PHYSICS_LANDSCAPE_ID),
+      tags: ['root', 'synthetic:program-unit'], extendedData: { syntheticStructureKind: 'compositionView',
+        compositionViewId: 'authored-physics', compositionNodeId: 'physics-root' } }, section, foreignSection,
+    ...foreign, goal('membrane-model', [], [preparationIds.at(-1)!], PHYSICS_LANDSCAPE_ID),
+    goal('foreign-extra', [], [], chemistryId)], ['overview'])
+  const before = JSON.stringify([...input.goalIndexAll])
+  const preview = deriveLearnerUnitMapPreview(input)
+  assert.equal(preview.maxStep, 1, 'A transparent overview must not conceal the existing subject unit.')
+  assert(preview.units.has(section.id))
+  assert(!preview.units.has('physics-root'), 'A synthetic subject root under an overview never becomes an additional unit.')
+  assert(!preview.units.has(foreignSection.id), 'Traversing the overview does not invent units for another subject.')
+  const fixture = buildLearnerUnitMapProjection({ ...input, units: preview.units, after: preview.after })
+  for (const id of preparationIds) assert(fixture.entryPaths![id].includes(fixture.unitEntryIds.sek2))
+  assert.equal(Object.keys(fixture.entries).filter(id => preparationIds.includes(id)).length, 7)
+  assert.equal(JSON.stringify([...input.goalIndexAll]), before, 'Overview traversal cannot change the canonical learning basis.')
 }
 const unitsOf = (entries: Record<string, string>) => new Map<string, LearnerMapUnitIdentity>(Object.entries(entries).map(([node, key]) => [node, { key }]))
 const project = (input: Omit<LearnerUnitMapProjectionInput, 'units'> & { units?: LearnerUnitMapProjectionInput['units'] }) =>

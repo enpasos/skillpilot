@@ -76,6 +76,19 @@ class PackageCurriculumResourceControllerTest {
     }
 
     @Test
+    void assessmentStimulusUsesTheExactPackageUrlBytesAndRestrictedResponse() throws Exception {
+        String svg = "<svg xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M0 0L1 1\"/></svg>";
+        String url = "/assets/assessment-materials/math/functions.svg";
+        when(state.resolvePublicAsset(url)).thenReturn(Optional.of(artifact(svg, "image/svg+xml", "functions.svg")));
+        MockMvc mvc = MockMvcBuilders.standaloneSetup(controller).build();
+        mvc.perform(get(url)).andExpect(status().isOk()).andExpect(content().string(svg))
+                .andExpect(content().contentType("image/svg+xml"))
+                .andExpect(header().string("X-Content-Type-Options", "nosniff"))
+                .andExpect(header().string("Content-Security-Policy", "default-src 'none'; style-src 'unsafe-inline'; sandbox"));
+        mvc.perform(get("/assets/assessment-materials/math/missing.svg")).andExpect(status().isNotFound());
+    }
+
+    @Test
     void malformedOrUnknownPublicAliasesFailClosed() {
         MockHttpServletRequest traversal = mappedRequest(
                 "/ai-assets/../secret.png", "/ai-assets/**");

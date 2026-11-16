@@ -16,7 +16,7 @@
 
 Every piece of content that belongs to a learning goal, be it an explanation, an example, a task, a memory card, a goal image, or a sentence of the coach, addresses a learner who knows some things and does not yet know others. This chapter defines that knowledge as a projection of the skill graph and states what the graph must provide for it.
 
-**Status, 13 November 2026.** Concept and Product Owner requirement. The derivation exists as a repository tool (`npm --prefix app run knowledge-context`, [knowledgeContext.ts](https://github.com/enpasos/skillpilot/blob/main/app/scripts/lib/knowledgeContext.ts)). Nothing else is implemented: no gate, no generation pipeline, and no coach uses the context. The numbers come from that tool on that day. This page changes no learning goals, graph edges, assessments, or coach behaviour.
+**Implementation status:** Deterministic derivation is implemented as a repository tool (`npm --prefix app run knowledge-context`, [knowledgeContext.ts](https://github.com/enpasos/skillpilot/blob/main/app/scripts/lib/knowledgeContext.ts)); the figures in [13.3](#sec-sga-kc-prototype) come from the 13 November 2026 run. Validation gates, generation pipelines, and live coach delivery follow in stages per [13.6](#sec-sga-kc-order).
 
 <a id="the-requirement"></a>
 <a id="sec-sga-kc-requirement"></a>
@@ -46,11 +46,13 @@ Let $g$ be an atomic learning goal. Its **secured goals** $W(g)$ are the atomic 
 
 One rule of use applies to generator, reviewer, and coach alike: **what some goal of the catalog develops may be used only if that goal is secured for $g$.** What $g$ itself develops is the subject of the work. What no goal of the catalog develops counts as baseline knowledge, such as everyday and primary-school knowledge, and is judged by review.
 
-Only ordinary goals are listed. Assessment, memory, and orientation goals on a prerequisite path carry the path, but they develop no subject matter of their own. An area is a cluster directly below the subject root of the landscape, or a separate root.
+Only ordinary content goals are listed. Memory and orientation goals on a prerequisite path carry the path without developing subject matter of their own; in the target model no `requires` edge points to an assessment goal (assessments are endpoints of prerequisite paths, and any legacy edge onto an assessment is a repair finding). An area is a cluster directly below the subject root of the landscape, or a separate root.
 
 The projection has two renderings with a fixed order of entries. The **core** consists of goal, builds on, leads to, and not yet; it accompanies the coach. The **full** rendering adds the secured goals; it accompanies generation and review.
 
 The same definition covers the other kinds of nodes. An assessment or memory goal $q$ develops nothing; its content may use $W(q)$. The knowledge context of a learning unit is the union of the contexts of its own goals and assessments; nothing is written for a unit by hand. Because the prerequisite relation is canonical, the knowledge context is the same in every curriculum context.
+
+**Interplay of `requires` and `after` across unit boundaries:** Only atomic `requires` paths enter the knowledge context; a sibling `after` declaration ([Unit Progression](learning-unit-progression.md)) adds zero goals to $W(g)$ and never unlocks subject matter for tasks, cards, images, or explanations. Conversely, in an E3-compliant unit hierarchy for two distinct child units at their smallest common parent, the prerequisite branch precedes the dependent branch in `after`. When either branch is an own atom, atomic demand itself provides the order instead. `after` describes block order in the intended learning flow; only `requires` secures exact conceptual usability.
 
 Nothing new is stored for the knowledge context. It is a projection of `contains`, `requires`, titles, and descriptions, as the frontier is a projection of prerequisites and mastery.
 

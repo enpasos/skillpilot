@@ -34,6 +34,8 @@ import curriculum_completion_artifacts as completion_artifacts
 import curriculum_package_completion_contracts as completion_contracts
 import curriculum_learning_units as learning_units
 import curriculum_package_learning_unit_contracts as learning_unit_contracts
+import curriculum_package_v13_contracts as v13_contracts
+from curriculum_assessment_materials import validate_static_assessment_svg
 from prerequisite_reduction_semantic_kind import (
     PrerequisiteReductionBindingError,
     load_verified_semantic_kind_bindings,
@@ -1403,7 +1405,7 @@ def image_media_type(path: Path) -> str:
             head = handle.read(8)
     except OSError as error:
         raise ValidationError(f"Cannot inspect image {path}: {error}") from error
-    if path.suffix.lower() == ".jpg" and head.startswith(b"\xff\xd8\xff"):
+    if path.suffix.lower() in {".jpg", ".jpeg"} and head.startswith(b"\xff\xd8\xff"):
         return "image/jpeg"
     if path.suffix.lower() == ".png" and head == b"\x89PNG\r\n\x1a\n":
         return "image/png"
@@ -1695,12 +1697,12 @@ def validate_schema_registry_coverage(
             paths = {(field,) for field in schemas[schema_name]["properties"]}
         else:
             schema = schemas[schema_name]
-            if schema.get("$id") in (completion_contracts.CATALOG_SCHEMA_ID, learning_unit_contracts.CATALOG_SCHEMA_ID):
+            if schema.get("$id") in (completion_contracts.CATALOG_SCHEMA_ID, learning_unit_contracts.CATALOG_SCHEMA_ID, v13_contracts.CATALOG_SCHEMA_ID):
                 schema = completion_artifacts.schema_for_coverage(REPO_ROOT, schema)
             paths = schema_field_paths(schema)
             if schema.get("$id") == completion_contracts.CATALOG_SCHEMA_ID:
                 paths.add(("completionArtifacts", "*"))
-            if schema.get("$id") == learning_unit_contracts.CATALOG_SCHEMA_ID:
+            if schema.get("$id") in (learning_unit_contracts.CATALOG_SCHEMA_ID, v13_contracts.CATALOG_SCHEMA_ID):
                 paths.add(("learningUnitReviews", "*"))
         require(paths, f"No reachable fields found in {schema_name}")
         paths_by_role[role] = paths
@@ -1777,6 +1779,7 @@ def load_trusted_context(profile_path: Path) -> TrustedContext:
     require(isinstance(profile, dict), "Build profile must be an object")
     completion = "completion" in profile
     learning = "learningUnits" in profile
+    material = v13_contracts.is_build_profile(profile)
     schema_files = dict(SCHEMA_FILES)
     if completion:
         schema_files["build-profile"] = CONTRACT_ROOT.parent / "v1.1/release-model-build-profile.schema.json"
@@ -1788,6 +1791,10 @@ def load_trusted_context(profile_path: Path) -> TrustedContext:
         schema_files["runtime-catalog"] = learning_dir / "runtime-catalog.schema.json"
         schema_files["compiled-landscape"] = learning_dir / "compiled-landscape.schema.json"
         schema_files["learning-unit-review"] = learning_dir / "learning-unit-coverage-review.schema.json"
+    if material:
+        for name in ("build-profile", "runtime-catalog", "resource-index"):
+            filename = "release-model-build-profile.schema.json" if name == "build-profile" else name + ".schema.json"
+            schema_files[name] = CONTRACT_ROOT.parent / "v1.3" / filename
     schemas: dict[str, dict[str, Any]] = {}
     validators: dict[str, Draft202012Validator] = {}
     for name, path in schema_files.items():
@@ -1808,6 +1815,8 @@ def load_trusted_context(profile_path: Path) -> TrustedContext:
             schema_id = learning_unit_contracts.CATALOG_SCHEMA_ID
         if learning and name == "compiled-landscape":
             schema_id = learning_unit_contracts.LANDSCAPE_SCHEMA_ID
+        if material and name == "runtime-catalog": schema_id = v13_contracts.CATALOG_SCHEMA_ID
+        if material and name == "resource-index": schema_id = v13_contracts.RESOURCE_SCHEMA_ID
         require(
             schemas[name].get("$id") == schema_id,
             f"Unexpected $id in trusted {name} schema",
@@ -1822,6 +1831,12 @@ def load_trusted_context(profile_path: Path) -> TrustedContext:
         validators["runtime-catalog"] = offline[learning_unit_contracts.CATALOG_SCHEMA_ID]
         validators["compiled-landscape"] = offline[learning_unit_contracts.LANDSCAPE_SCHEMA_ID]
         validators["learning-unit-review"] = offline[learning_unit_contracts.REVIEW_SCHEMA_ID]
+    if material:
+        offline = v13_contracts.validators(REPO_ROOT)
+        for name, schema_id in (("runtime-catalog", v13_contracts.CATALOG_SCHEMA_ID),
+                                ("resource-index", v13_contracts.RESOURCE_SCHEMA_ID),
+                                ("build-profile", v13_contracts.BUILD_PROFILE_SCHEMA_ID)):
+            validators[name] = offline[schema_id]
     validate_schema(profile, validators["build-profile"], str(profile_path))
 
     contracts = profile["contracts"]
@@ -3376,6 +3391,7 @@ def build_expected_publication_evidence(
 
 def build_expected_model(context: TrustedContext, release_root: Path) -> dict[str, Any]:
     profile = context.profile
+    material_profile = v13_contracts.is_build_profile(profile)
     package = profile["package"]
     release_id = package["releaseId"]
     package_id = package["packageId"]
@@ -3489,6 +3505,16 @@ def build_expected_model(context: TrustedContext, release_root: Path) -> dict[st
         )
         goal["semanticKind"] = semantic_kind
         semantic_counts[str(semantic_kind)] += 1
+
+        # Validate the original SEM binding before projecting authoring notes
+        # and optional scoring headings out of the closed runtime payload.
+        goal.pop("authoringMetadata", None)
+        exam_payload = goal.get("examData")
+        scoring = exam_payload.get("scoring") if isinstance(exam_payload, dict) else None
+        if isinstance(scoring, dict) and isinstance(scoring.get("steps"), list):
+            for step in scoring["steps"]:
+                if isinstance(step, dict):
+                    step.pop("title", None)
 
         extended = goal.get("extendedData")
         if isinstance(extended, dict):
@@ -3610,6 +3636,15 @@ def build_expected_model(context: TrustedContext, release_root: Path) -> dict[st
         compiled["$schema"] = SCHEMA_IDS["composition-view"]
         compiled["viewFormatVersion"] = "1.0"
         compiled["language"] = profile["compositionViews"]["locale"]
+        pending_nodes = list(compiled.get("rootNodes", []))
+        while pending_nodes:
+            node = pending_nodes.pop()
+            if isinstance(node, dict) and node.get("kind") == "structure":
+                for field in ("canonicalSourceGoalId", "canonicalSourceNode",
+                              "canonicalSourcePhase", "placementEvidence", "labelEn"):
+                    node.pop(field, None)
+                if isinstance(node.get("children"), list):
+                    pending_nodes.extend(node["children"])
         validate_schema(
             compiled,
             context.validators["composition-view"],
@@ -3716,16 +3751,55 @@ def build_expected_model(context: TrustedContext, release_root: Path) -> dict[st
     resources: list[dict[str, Any]] = []
     binary_inputs: list[dict[str, Any]] = []
     public_root = resolve_repo_path(profile["resources"]["publicAssetRoot"])
+    material_uses = []
+    material_bindings = profile["resources"].get("assessmentMaterials", []) if material_profile else []
+    material_by_url = {item["url"]: item for item in material_bindings}
+    materials_by_owner: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    if material_profile:
+        # Independent task-body traversal; no compiler or producer inventory is imported.
+        for source_goal in source_goal_by_id.values():
+            found: dict[str, list[str]] = {}
+            for field in ("taskContent", "taskContentEn"):
+                body = source_goal.get("examData", {}).get(field, "")
+                if isinstance(body, str):
+                    for token in re.findall(r"/assets/assessment-materials/[^\s)\"'<>]+", body):
+                        require(re.fullmatch(r"/assets/assessment-materials/[A-Za-z0-9._/-]+\.(?:svg|png)", token) is not None,
+                                "Unresolved local task-image URL: " + token)
+                    for url in sorted(set(re.findall(r"/assets/assessment-materials/[A-Za-z0-9._/-]+\.(?:svg|png)", body))):
+                        require(source_goal["examData"].get("reviewStatus") == "released", "Required material is not bound to a released task")
+                        found.setdefault(url, []).append(field)
+            material_uses.extend({"goalId": source_goal["id"], "url": url, "taskFields": fields} for url, fields in sorted(found.items()))
+        material_uses.sort(key=lambda item: (item["url"], item["goalId"]))
+        require(len(material_bindings) == len(material_by_url) and set(material_by_url) == {use["url"] for use in material_uses},
+                "The closed material plan does not cover exactly the actual task stimuli")
+        for item in material_bindings:
+            owners = {use["goalId"] for use in material_uses if use["url"] == item["url"]}
+            declarations = sorted((source_goal["id"], index) for source_goal in source_goal_by_id.values()
+                                  for index, link in enumerate(source_goal.get("resourceLinks", []))
+                                  if link.get("type") == "assessment-material" and link.get("url") == item["url"])
+            owner = declarations[0][0] if declarations else min(owners)
+            require(item["ownerGoalId"] == owner and owner in owners, "Required material has no valid originating task owner")
+            source_path = source_goal_by_id[owner]["examData"].get("sourceArtifactPath")
+            require(item["sourceArtifactPath"] == source_path
+                    and sha256_file(resolve_repo_path(source_path))[1] == item["sourceArtifactSha256"],
+                    "Assessment material source-artifact evidence is stale")
+            materials_by_owner[owner].append(item)
     for goal in goals:
         links = goal.get("resourceLinks")
-        if not isinstance(links, list):
-            continue
-        for order, raw_link in enumerate(links):
+        links = links if isinstance(links, list) else []
+        ordered_links = list(enumerate(links))
+        if material_profile:
+            ordered_links = [(index, link) for index, link in ordered_links if link.get("type") != "assessment-material"]
+            ordered_links.extend((item["order"], {**item, "type": "assessment-material", "resourceType": "image",
+                                                "lang": item["language"], "_packageResourceId": item["resourceId"]})
+                                 for item in materials_by_owner.get(goal["id"], []))
+            ordered_links.sort(key=lambda item: item[0])
+        for order, raw_link in ordered_links:
             require(
                 isinstance(raw_link, dict),
                 f"Malformed resource link on goal {goal['id']}",
             )
-            resource_id = f"goal-resource:{goal['id']}:{order}"
+            resource_id = raw_link.get("_packageResourceId", f"goal-resource:{goal['id']}:{order}")
             common = {
                 "resourceId": resource_id,
                 "landscapeId": landscape_id,
@@ -3755,7 +3829,7 @@ def build_expected_model(context: TrustedContext, release_root: Path) -> dict[st
                 )
                 filename = artifact_path.rsplit("/", 1)[-1]
                 require(
-                    filename in {f"{goal['id']}.jpg", f"{goal['id']}.png"},
+                    filename in {f"{goal['id']}.jpg", f"{goal['id']}.jpeg", f"{goal['id']}.png"},
                     f"Visualization filename does not equal its owner goal ID: {url}",
                 )
                 source_image_path = safe_join(public_root, artifact_path)
@@ -3797,6 +3871,44 @@ def build_expected_model(context: TrustedContext, release_root: Path) -> dict[st
                         "sha256": digest,
                     }
                 )
+            elif raw_link.get("type") == "assessment-material":
+                require(material_profile, "Required assessment material needs the common runtime 1.3 profile")
+                url = raw_link.get("url")
+                prefix = "/" + profile["resources"]["assessmentMaterialOutputPrefix"].rstrip("/") + "/"
+                exam = goal.get("examData")
+                require(isinstance(url, str) and url.startswith(prefix) and url.endswith((".svg", ".png"))
+                        and raw_link.get("resourceType") == "image" and isinstance(exam, dict)
+                        and exam.get("reviewStatus") == "released",
+                        f"Invalid required SVG task material on {goal['id']}")
+                require(any(isinstance(exam.get(field), str) and url in exam[field] for field in ("taskContent", "taskContentEn")),
+                        f"Original stimulus is not bound to its task owner {goal['id']}")
+                artifact_path = url[1:]
+                source_material = safe_join(public_root, artifact_path)
+                require(source_material.is_file(), f"Missing required task SVG: {source_material}")
+                if url.endswith(".svg"):
+                    try:
+                        validate_static_assessment_svg(source_material.read_bytes())
+                    except (ValueError, UnicodeError) as error:
+                        raise ValidationError(f"Unsafe assessment SVG on {goal['id']}: {error}") from error
+                    media_type = "image/svg+xml"
+                else:
+                    media_type = image_media_type(source_material)
+                    require(media_type == "image/png", "Assessment PNG has incompatible bytes")
+                size, digest = sha256_file(source_material)
+                original = material_by_url[url]
+                require((size, digest, media_type) == (original["bytes"], original["sha256"], original["mediaType"]),
+                        "Task material differs from the exactly pinned original bytes")
+                resource = {
+                    **common, "resourceKind": "assessment-material", "resourceType": "image",
+                    "delivery": "embedded", "runtimeRequired": True, "artifactPath": artifact_path,
+                    "publicUrl": url, "mediaType": media_type, "bytes": size, "sha256": digest,
+                    "title": raw_link.get("title"), "provider": raw_link.get("provider"),
+                    "description": raw_link.get("description"), "language": raw_link.get("lang"),
+                    "license": raw_link.get("license"),
+                }
+                binary_inputs.append({"resourceId": resource_id,
+                                      "sourcePath": str(source_material.relative_to(REPO_ROOT)).replace("\\", "/"),
+                                      "artifactPath": artifact_path, "bytes": size, "sha256": digest})
             else:
                 external_url = raw_link.get("url")
                 require(
@@ -3833,8 +3945,8 @@ def build_expected_model(context: TrustedContext, release_root: Path) -> dict[st
         "Multiple visualization resources claim the same embedded artifact path",
     )
     resource_index = {
-        "$schema": SCHEMA_IDS["resource-index"],
-        "indexFormatVersion": "1.0",
+        "$schema": v13_contracts.RESOURCE_SCHEMA_ID if material_profile else SCHEMA_IDS["resource-index"],
+        "indexFormatVersion": "1.3" if material_profile else "1.0",
         "resources": resources,
     }
     validate_schema(
@@ -3875,6 +3987,7 @@ def build_expected_model(context: TrustedContext, release_root: Path) -> dict[st
         "cardIndex": card_index,
         "cardIndexPath": card_index_path,
         "resources": resources,
+        "assessmentMaterialUses": [{**use, "resourceId": material_by_url[use["url"]]["resourceId"]} for use in material_uses],
         "resourceIndex": resource_index,
         "resourceIndexPath": resource_index_path,
         "binaryInputs": sorted(binary_inputs, key=lambda item: item["resourceId"]),
@@ -3943,6 +4056,7 @@ def validate_reference_registry_contract(
 
 def complete_expected_model(context: TrustedContext, model: dict[str, Any]) -> None:
     profile = context.profile
+    material_profile = v13_contracts.is_build_profile(profile)
     package = profile["package"]
     package_id = model["packageId"]
     release_id = model["releaseId"]
@@ -4378,6 +4492,9 @@ def complete_expected_model(context: TrustedContext, model: dict[str, Any]) -> N
     require(len(reference_ids) == len(set(reference_ids)), "Duplicate closure reference")
 
     seeds = [landscape_key, *[view_keys[view_id] for view_id in sorted(view_keys)]]
+    if material_profile:
+        required_material_ids = {use["resourceId"] for use in model["assessmentMaterialUses"]}
+        seeds.extend(resource_keys[resource_id] for resource_id in sorted(required_material_ids))
     adjacency: dict[str, set[str]] = defaultdict(set)
     for reference in references:
         if reference["strength"] == "hard":
@@ -4521,8 +4638,8 @@ def complete_expected_model(context: TrustedContext, model: dict[str, Any]) -> N
             {
                 "resourceId": resource["resourceId"],
                 "resourceKind": (
-                    "goal-visualization"
-                    if resource["resourceKind"] == "goal-visualization"
+                    resource["resourceKind"]
+                    if resource["delivery"] == "embedded"
                     else "external-tool"
                 ),
                 "landscapeId": resource["landscapeId"],
@@ -4572,6 +4689,11 @@ def complete_expected_model(context: TrustedContext, model: dict[str, Any]) -> N
             {"id": logical_id, "artifactPath": path}
             for _role, logical_id, path, _document in learning_unit_documents
         ]
+    if material_profile:
+        runtime_catalog["$schema"] = v13_contracts.CATALOG_SCHEMA_ID
+        runtime_catalog["catalogVersion"] = v13_contracts.RUNTIME_CONTRACT_VERSION
+        runtime_catalog["runtimeContractVersion"] = v13_contracts.RUNTIME_CONTRACT_VERSION
+        runtime_catalog["capabilities"].append(v13_contracts.CAPABILITY)
 
     logical_documents: list[tuple[str, str, str, Any]] = [
         ("canonical-landscape", landscape_id, model["landscapePath"], landscape),
@@ -4696,9 +4818,9 @@ def complete_expected_model(context: TrustedContext, model: dict[str, Any]) -> N
     content_index["contentDigest"] = semantic_content_digest(
         content_index, context.normalization
     )
-    publication_content_counts = context.publication_profile["expectedCounts"][
-        "contentIndex"
-    ]
+    publication_content_counts = dict(context.publication_profile["expectedCounts"]["contentIndex"])
+    if material_profile:
+        publication_content_counts["binaryResources"] = profile["expectedCounts"]["embeddedImages"]
     require(
         len(model["publication"]["logicalDocuments"])
         == publication_content_counts["addedLogicalArtifacts"]
@@ -4844,6 +4966,8 @@ def complete_expected_model(context: TrustedContext, model: dict[str, Any]) -> N
         build_inputs["completionArtifacts"] = completion_inputs
     if learning_unit_profile:
         build_inputs["learningUnitReviews"] = model["learningUnitInputs"]
+    if material_profile:
+        build_inputs["assessmentMaterialUses"] = model["assessmentMaterialUses"]
     conformance = {
         "reportFormatVersion": "1.0",
         "releaseId": release_id,
@@ -5764,7 +5888,7 @@ def validate_cross_document_integrity(
         landscape = documents_by_path[model["landscapePath"]]
         completion_artifacts.validate_package_documents(
             completion_documents, {goal["id"]: goal for goal in landscape["goals"]})
-    if catalog.get("runtimeContractVersion") == learning_unit_contracts.RUNTIME_CONTRACT_VERSION:
+    if catalog.get("runtimeContractVersion") in (learning_unit_contracts.RUNTIME_CONTRACT_VERSION, v13_contracts.RUNTIME_CONTRACT_VERSION):
         review_documents = [
             (learning_unit_contracts.REVIEW_ROLE, entry["id"], entry["artifactPath"], documents_by_path[entry["artifactPath"]])
             for entry in catalog.get("learningUnitReviews", [])
@@ -6327,6 +6451,39 @@ def run_adversarial_self_tests(
         ),
     )
 
+    authored_goal_landscape = copy.deepcopy(model["landscape"])
+    authored_goal_landscape["goals"][0]["authoringMetadata"] = {"reviewNote": "authoring only"}
+    expect_rejection(
+        "closed-schema-authoring-metadata",
+        lambda: validate_schema(authored_goal_landscape,
+                                context.validators["compiled-landscape"], "authoring metadata"),
+    )
+    titled_rubric_landscape = copy.deepcopy(model["landscape"])
+    rubric_goal = next(goal for goal in titled_rubric_landscape["goals"]
+                      if isinstance(goal.get("examData"), dict)
+                      and isinstance(goal["examData"].get("scoring"), dict)
+                      and goal["examData"]["scoring"].get("steps"))
+    rubric_goal["examData"]["scoring"]["steps"][0]["title"] = "authoring heading"
+    expect_rejection(
+        "closed-schema-rubric-heading",
+        lambda: validate_schema(titled_rubric_landscape,
+                                context.validators["compiled-landscape"], "rubric heading"),
+    )
+    authored_view = copy.deepcopy(model["views"][0][1])
+    pending_nodes = list(authored_view["rootNodes"])
+    while pending_nodes:
+        node = pending_nodes.pop()
+        if node.get("kind") == "structure":
+            node["placementEvidence"] = {"reviewNote": "authoring only"}
+            break
+    else:
+        raise ValidationError("Authoring-view mutation needs a structure node")
+    expect_rejection(
+        "closed-schema-view-authoring-evidence",
+        lambda: validate_schema(authored_view,
+                                context.validators["composition-view"], "view authoring evidence"),
+    )
+
     reordered_landscape = dict(model["landscape"])
     reordered_goals = list(model["landscape"]["goals"])
     reordered_goals[0], reordered_goals[1] = reordered_goals[1], reordered_goals[0]
@@ -6625,7 +6782,7 @@ def run_adversarial_self_tests(
             incomplete_catalog, model["runtimeCatalog"], "adversarial runtime catalog"
         ),
     )
-    expected_case_count = 49
+    expected_case_count = 52
     if model.get("prerequisiteReductionProof") is not None:
         # Exercise the actual artifact comparison against the independently
         # reconstructed model, then restore the exact validated output bytes.

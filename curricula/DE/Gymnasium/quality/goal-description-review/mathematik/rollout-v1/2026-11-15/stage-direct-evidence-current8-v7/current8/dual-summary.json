@@ -1,0 +1,183 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:ce531431eec6a80bafcebe46a3f4f2f63dff6eb7e55df6c96893b24997af706d",
+  "reviewInputFingerprint": "sha256:d00bc400b600329f17767b7caec5e997310969bb763654247004d737fe076afd",
+  "goalCount": 8,
+  "rounds": {
+    "first": {
+      "campaignId": "math-current8-context-v7-20261115-a",
+      "roundId": "math-current8-context-v7-round-a",
+      "independenceGroupId": "math-current8-context-v7-independent-a",
+      "runIds": [
+        "math-current8-v7-root-a-actual-current-context-review-20261115"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex root current session; exact backend model build not exposed::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "math-current8-context-v7-20261115-b",
+      "roundId": "math-current8-context-v7-round-b",
+      "independenceGroupId": "math-current8-context-v7-independent-b",
+      "runIds": [
+        "math-current8-v7-b-actual-current-context-review-20261115"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex current session; exact backend model build not exposed::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 8,
+    "unavailable": 0,
+    "requiresSynthesis": 8
+  },
+  "goals": [
+    {
+      "goalId": "31207307-0cf9-4a56-bf14-90196dc2b3d4",
+      "firstRecordId": "math-current8-v7-root-a-actual-current-context-review-20261115-31207307-0cf9-4a56-bf14-90196dc2b3d4",
+      "secondRecordId": "math-current8-v7-b-actual-current-context-review-20261115-31207307-0cf9-4a56-bf14-90196dc2b3d4",
+      "firstRunId": "math-current8-v7-root-a-actual-current-context-review-20261115",
+      "secondRunId": "math-current8-v7-b-actual-current-context-review-20261115",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "c74d0c7e-44e2-46ab-8f95-b8dc45fcfae7",
+      "firstRecordId": "math-current8-v7-root-a-actual-current-context-review-20261115-c74d0c7e-44e2-46ab-8f95-b8dc45fcfae7",
+      "secondRecordId": "math-current8-v7-b-actual-current-context-review-20261115-c74d0c7e-44e2-46ab-8f95-b8dc45fcfae7",
+      "firstRunId": "math-current8-v7-root-a-actual-current-context-review-20261115",
+      "secondRunId": "math-current8-v7-b-actual-current-context-review-20261115",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "42e19186-6769-41ac-a7bf-ab39bdb50661",
+      "firstRecordId": "math-current8-v7-root-a-actual-current-context-review-20261115-42e19186-6769-41ac-a7bf-ab39bdb50661",
+      "secondRecordId": "math-current8-v7-b-actual-current-context-review-20261115-42e19186-6769-41ac-a7bf-ab39bdb50661",
+      "firstRunId": "math-current8-v7-root-a-actual-current-context-review-20261115",
+      "secondRunId": "math-current8-v7-b-actual-current-context-review-20261115",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "3c1d6ce7-099e-4267-9ff2-3d1526209a89",
+      "firstRecordId": "math-current8-v7-root-a-actual-current-context-review-20261115-3c1d6ce7-099e-4267-9ff2-3d1526209a89",
+      "secondRecordId": "math-current8-v7-b-actual-current-context-review-20261115-3c1d6ce7-099e-4267-9ff2-3d1526209a89",
+      "firstRunId": "math-current8-v7-root-a-actual-current-context-review-20261115",
+      "secondRunId": "math-current8-v7-b-actual-current-context-review-20261115",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "3010d965-b9b9-4dc5-9d04-d706725e9a30",
+      "firstRecordId": "math-current8-v7-root-a-actual-current-context-review-20261115-3010d965-b9b9-4dc5-9d04-d706725e9a30",
+      "secondRecordId": "math-current8-v7-b-actual-current-context-review-20261115-3010d965-b9b9-4dc5-9d04-d706725e9a30",
+      "firstRunId": "math-current8-v7-root-a-actual-current-context-review-20261115",
+      "secondRunId": "math-current8-v7-b-actual-current-context-review-20261115",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "78238608-aaaa-4d12-a9de-54f325e9cf6f",
+      "firstRecordId": "math-current8-v7-root-a-actual-current-context-review-20261115-78238608-aaaa-4d12-a9de-54f325e9cf6f",
+      "secondRecordId": "math-current8-v7-b-actual-current-context-review-20261115-78238608-aaaa-4d12-a9de-54f325e9cf6f",
+      "firstRunId": "math-current8-v7-root-a-actual-current-context-review-20261115",
+      "secondRunId": "math-current8-v7-b-actual-current-context-review-20261115",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "c088fd81-fe4f-4282-99af-ebc0d1a7d202",
+      "firstRecordId": "math-current8-v7-root-a-actual-current-context-review-20261115-c088fd81-fe4f-4282-99af-ebc0d1a7d202",
+      "secondRecordId": "math-current8-v7-b-actual-current-context-review-20261115-c088fd81-fe4f-4282-99af-ebc0d1a7d202",
+      "firstRunId": "math-current8-v7-root-a-actual-current-context-review-20261115",
+      "secondRunId": "math-current8-v7-b-actual-current-context-review-20261115",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "aed3ca99-815b-40b8-ae91-e11bf92f51da",
+      "firstRecordId": "math-current8-v7-root-a-actual-current-context-review-20261115-aed3ca99-815b-40b8-ae91-e11bf92f51da",
+      "secondRecordId": "math-current8-v7-b-actual-current-context-review-20261115-aed3ca99-815b-40b8-ae91-e11bf92f51da",
+      "firstRunId": "math-current8-v7-root-a-actual-current-context-review-20261115",
+      "secondRunId": "math-current8-v7-b-actual-current-context-review-20261115",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

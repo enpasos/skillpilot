@@ -30,7 +30,7 @@ Without embedding opaque JSON blobs or Base64 media literals, the semantic bundl
 
 - Goal identity (`id`, `shortKey`, `title`, `description`), atomic/cluster classification, `weight`, `core`, and dimension metadata;
 - Direct `contains` composition and didactic `requires` prerequisites;
-- Program structure (`programUnits`), `goalPlacements`, competency axes (`competencyCatalog`, `competencyRefs`), and learner-facing composition views;
+- Program and unit structure (`programUnits`, `goalPlacements`, plus declared unit metadata `after`, `coverageReviews`, `revision`), competency axes (`competencyCatalog`, `competencyRefs`), and learner-facing Land-plan/composition views (currently serialized via contract 1.2 relationships; extended to declared cluster units in package step `F8`);
 - Official source/provenance references plus `goal-visualization` references (`schema:ImageObject`) paired with byte-identical SHA-256 image sidecars (learner mastery state stays strictly outside public curriculum bundles).
 
 <a id="sec-sga-mf-profile"></a>

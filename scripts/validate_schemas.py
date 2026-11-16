@@ -1,5 +1,6 @@
 import copy
 from bisect import bisect_left
+import hashlib
 import json
 import jsonschema
 import os
@@ -11,6 +12,22 @@ import sys
 CURRICULA_DIR = "curricula"
 SCHEMA_PATH = "docs/landscape-runtime.schema.json"
 COMPILED_SCHEMA_PATH = "contracts/curriculum-package/v1/compiled-landscape.schema.json"
+
+# This exact authoring source is restored at the sourcePath already declared by
+# released tasks. Its retained bytes contain draft author objects, not a runtime
+# landscape. Never exempt the assessment directory or arbitrary goal collections.
+RETAINED_AUTHORED_SOURCE = (
+    "curricula/DE/Gymnasium/assessments/mathematik/"
+    "stage-plan-direct-evidence-20261115-v7/reviewed-assessments.json"
+)
+RETAINED_AUTHORED_SOURCE_SHA256 = "6dee2b982037800fd21344087d936de27699458b5da38fdcd0aa7b52ab8f47c2"
+
+
+def validate_retained_authored_source(file_path, raw):
+    relative = os.path.relpath(file_path, Path(__file__).resolve().parents[1])
+    if Path(relative).as_posix() != RETAINED_AUTHORED_SOURCE:
+        return None
+    return hashlib.sha256(raw).hexdigest() == RETAINED_AUTHORED_SOURCE_SHA256
 
 
 def curriculum_symlink_errors(repo_root="."):
@@ -550,6 +567,13 @@ def looks_like_runtime_landscape(file_path, data):
 
 
 def validate_landscape_discovery_contract():
+    retained_path = Path(__file__).resolve().parents[1] / RETAINED_AUTHORED_SOURCE
+    retained_raw = retained_path.read_bytes()
+    if (validate_retained_authored_source(retained_path, retained_raw) is not True
+            or validate_retained_authored_source(retained_path, retained_raw + b" ") is not False
+            or validate_retained_authored_source(retained_path.with_name("other.json"), retained_raw) is not None):
+        print("❌ Exact retained authored-source binding failed")
+        return False
     cases = [
         ("curricula/example.json", {"landscapeId": "current", "goals": []}, True),
         ("curricula/legacy.json", {"id": "legacy", "goals": []}, True),
@@ -590,11 +614,17 @@ def validate_landscape_discovery_contract():
 
 def validate_file(file_path, schema):
     try:
-        with open(file_path, 'r', encoding='utf-8') as f:
-            data = json.load(f)
+        raw = Path(file_path).read_bytes()
+        data = json.loads(raw.decode('utf-8'))
     except Exception as e:
         print(f"❌ skipping {file_path}: Failed to load JSON: {e}")
         return False
+
+    retained_binding = validate_retained_authored_source(file_path, raw)
+    if retained_binding is not None:
+        if not retained_binding:
+            print(f"❌ {file_path}: retained authored-source bytes changed")
+        return retained_binding
 
     if not looks_like_runtime_landscape(file_path, data):
         # Quality artifacts remain JSON-checked, while goal collections outside

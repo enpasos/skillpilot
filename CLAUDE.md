@@ -23,6 +23,18 @@ CI, including #153 and #156 after their checks pass. Keep PRs few and
 intermediate; delegate suitable work to GPT 6.1 Sol Ultra. See the opening
 mandate in `AGENTS.md` for the exact scope.
 
+Maintain `docs/dev/stage-plan-management-summary.md` after each implementation
+package, with date, local time and timezone, K1–K13/F1–F7 progress, decisions,
+inspection links and actual evidence. An open entry links its PR; completion
+requires the integrated implementation commit and fresh successful main CI.
+A small documentation-only completion commit or short PR is allowed afterwards.
+
+The bilingual Graph Definition is the target norm for shared Land/duration
+plans and E1–E4. Distinguish source assignment from learning placement: `after`
+orders units but adds no prerequisite, mastery or atomic-frontier lock. Keep
+the existing compatibility runtime explicit; the later unit migration and
+runtime work F8–F13 are separate from the current K1–K13/F1–F7 delivery.
+
 ## What SkillPilot is
 
 Open-source learning platform that models curricula as **skill graphs** (DAG of

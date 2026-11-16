@@ -119,6 +119,7 @@ const ATOMICITY_REVIEW_PATH = 'curricula/DE/Gymnasium/quality/semantic-atomicity
 const LEDGER_PATH = 'curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json'
 const MATH_PROFILE_PATH = 'contracts/curriculum-package/v1/profiles/de-gymnasium-mathematik-v1.profile.json'
 const MATH_LANDSCAPE_PATH = 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json'
+const CHEMISTRY_LANDSCAPE_PATH = 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json'
 const LEDGER_SCHEMA_PATH = 'contracts/curriculum-package/v1/curriculum-ontology-profile.schema.json'
 const LEGACY_SOURCE_MANIFEST_SCHEMA_PATH = 'contracts/goal-book/v1/goal-book-source-manifest.schema.json'
 const SOURCE_MANIFEST_SCHEMA_PATH = 'contracts/goal-book/v1/goal-book-source-manifest-v2.schema.json'
@@ -391,6 +392,11 @@ const BAVARIA_PH10_1_GOAL_IDS = [
 ] as const
 const BAVARIA_MOTOR_TRANSFORMER_ASSESSMENT_ID = '11c964ff-be82-5d02-8cd7-ccb41cda8f4f'
 const GENERIC_SEKI_ASSESSMENT_ID = '3631c8f7-ff48-57ff-b7ee-8397ff1d166a'
+const WITHDRAWN_ROUTE_ASSESSMENT_IDS = new Set([
+  '8ff2a728-fba3-538e-83e9-69bdd8e1369e',
+  '367b17f8-972a-5f3e-8915-8cfe743132a3',
+  '44985d9f-7b49-52e4-86ec-eddc7b70429f',
+])
 
 const CQR104_ROUTE_ASSESSMENT_EVIDENCE = new Map<string, Map<string, string[]>>([
   ['924e1187-a067-5eb6-8d8d-85525ee6c837', new Map([
@@ -585,15 +591,29 @@ const KINEMATICS_ASSESSMENT_IDS = new Set([
   '6ea3fb3c-abdc-568f-ab13-97c36dc274e4',
 ])
 const EXPECTED_COUNTS: SemanticKindLedger['counts'] = {
-  curricularAtomic: 481,
-  curricularArea: 112,
-  practiceAssessment: 168,
+  curricularAtomic: 485,
+  curricularArea: 113,
+  practiceAssessment: 231,
   programStructure: 1,
   memory: 5,
   runtimeSupport: 4,
   orientation: 2,
-  total: 773,
+  total: 841,
 }
+// One reviewed measurement-rate atom is preparation only in the atlas's
+// current source views. It remains an ordinary curricular goal in the ledger.
+const ATLAS_PREPARATION_ONLY_GOAL_ID = '13b338eb-f761-5817-9058-11043b9cb253'
+const EXPECTED_ATLAS_TARGET_COUNT = 484
+const STAGE_PLAN_ADDED_NATIONAL_TARGET_IDS = [
+  '3ed3279e-c524-5230-a277-dda89493df6d',
+  '5355fee0-0477-5570-a234-561477bf77ba',
+  '677a192d-8bbe-57fc-bb7a-1c1ed5fba32b',
+  '72effc66-87f4-5f5e-8d36-1547677365fb',
+  'd2e6f87d-795b-5631-a7cc-0bfb5dc5142e',
+  'd61ea362-f6c3-5eab-ac30-2d0e265ac0f6',
+  'd8b2b349-b83a-5225-a180-1afe205750cd',
+  'e5bc2227-d900-585f-8ac0-9d3f1cb40e27',
+]
 // Approved final diode/astronomy splits: exactly eight children replace three
 // mixed content leaves, and six new singleton-coverage assessment tasks are added.
 const FINAL_SPLIT_CHILD_IDS = [
@@ -641,10 +661,10 @@ const FINAL_SPLIT_ASSESSMENT_COVERAGE = new Map([
 // 25+20+10+5+5 occurrences. The 2026-11-15 semiconductor/source corrections
 // additionally change actual projected targets; these current counts come from
 // the native CQR-104 measurement, including every selector-excluded occurrence.
-const EXPECTED_PHYSICS_SEKI_PROJECTED_ROUTE_TARGET_OCCURRENCES = 6420
-const EXPECTED_PHYSICS_SEKI_PROFILE_SELECTED_TARGET_OCCURRENCES = 6256
-const EXPECTED_PHYSICS_SEKI_PROFILE_SELECTOR_EXCLUDED_OCCURRENCES = 164
-const EXPECTED_PHYSICS_SEKI_PROFILE_SELECTOR_EXCLUDED_UNIQUE_GOALS = 54
+const EXPECTED_PHYSICS_SEKI_PROJECTED_ROUTE_TARGET_OCCURRENCES = 6880
+const EXPECTED_PHYSICS_SEKI_PROFILE_SELECTED_TARGET_OCCURRENCES = 6577
+const EXPECTED_PHYSICS_SEKI_PROFILE_SELECTOR_EXCLUDED_OCCURRENCES = 303
+const EXPECTED_PHYSICS_SEKI_PROFILE_SELECTOR_EXCLUDED_UNIQUE_GOALS = 53
 const EXPECTED_PHYSICS_SEKI_ADDED_TARGET_OCCURRENCES = new Map([
   [FINAL_SPLIT_CHILD_IDS[0], 25], // p-n model
   [FINAL_SPLIT_CHILD_IDS[1], 20], // diode experiment
@@ -782,6 +802,43 @@ const atomicityFingerprint = (goal: CanonicalAuthoringGoal, ruleVersion: string)
   return `sha256:${sha256(stableAtomicityJson(payload))}`
 }
 
+// The reviewed stage-plan repairs retain their explicit practice classification,
+// including pure task containers with nested assessment subtrees.
+const STAGE_PLAN_PRACTICE_GOAL_IDS = new Set([
+  '85bbad98-2f48-5d64-85c4-ab6cf67f24c2', // Übungen Q4
+  '020e9dd3-7f3d-55d8-bcdd-a8da0f779cdf', // Prüfungsaufgabe: Befund und physikalische Deutung trennen
+  '2ff1abd4-1399-5e5a-aa91-7c6948e77ed1', // Prüfungsaufgabe: Gemeinsame SI-Bezüge sinnvoll nutzen
+  'e5504ffe-b83f-50cd-87bb-2538ae0bfb75', // Prüfungsaufgabe: Zwei Modelle nutzen und begrenzen
+  '84d4167d-415b-5c06-9d1f-23200b793837', // Prüfungsaufgabe: Quellen fachlich ordnen und prüfen
+  'c19d58dc-2c6e-53a9-8c74-991b55e6f2d0', // Prüfungsaufgabe: Eigene Stromverstärkermessungen begründet auswerten
+  'a6f40821-695f-5c38-a572-3bc912e3d8e7', // Prüfungsaufgabe: Brechung und scheinbare Lage in drei Anordnungen
+  '2437c7ee-3d59-544a-b9a0-8c5de0af54ad', // Prüfungsaufgabe: Reelle und virtuelle Linsenbilder selbst konstruieren
+  'a344295c-c346-58ea-8c69-f3e9caa9c7b6', // Messwerte: Änderungen im passenden Zeitintervall
+  'cd182a3c-be23-5f5a-87f6-0898ea16cb74', // Eigene Bewegungsmessung und unabhängiges Geschwindigkeitsprotokoll
+  'a8dc0290-9f80-5763-8943-e16b8d2aa860', // Beschleunigungsprotokoll: Geschwindigkeit, Ort und Modellgrenzen
+  '28884133-b448-5eb2-a589-8907a78d7687', // Stromstärke: Nettoänderung, Puls und Zyklus
+  '6345871e-eab4-59c1-a3b6-8456ab9bd7df', // Videoanalyse: eigene Kalibrierung und unabhängiger Wurftransfer
+  'fbaeed34-81a0-5955-9777-bf103002feee', // Prüfungsaufgabe: Geschwindigkeitspfeile in einem echten Bewegungsvideo konstruieren
+  '7c2a3450-9b82-54e6-b302-358a964b34ec', // Prüfungsaufgabe: Einen angeleiteten Beschleunigungsversuch planen, durchführen und vergleichen
+  '04f643c6-74f5-56e9-a9c7-ea39ae98db31', // Prüfungsaufgabe: Zwei eigene Linse-Schirm-Untersuchungen begründet vergleichen
+  '716acf20-d882-5152-9735-099876d631b4', // Prüfungsaufgabe: Coulombkräfte und Quellenfeld in zwei Fällen begründen
+  'a0f83a92-bf9e-5325-a914-4b5f09ac67e7', // Prüfungsaufgabe: Eigene Augenauflösung unter zwei Bedingungen untersuchen
+  '8939373f-a243-54e4-99c6-7a18f212edcf', // Prüfungsaufgabe: Ladung trennen und beim Ausgleich erhalten
+  '4ad7303d-22ad-56e6-aee0-f05b2ca42a07', // Gemeinsame Grundlagen- und Methodenübungen
+  '8e5c7195-eb30-55c1-a19a-630742620ba0', // Eigenständige Methodenübungen der E-Phase
+  '5630f93b-82ce-5d76-a781-31accc6854e9', // Grundlagenaufgaben zu Sonnensystem und Galaxien
+  '14cc61c4-4909-5671-b1ee-930a02cb9f51', // Sonnensystem: Rollen und Umlaufstruktur in zwei Fällen
+  '50521f0d-71b1-51cf-b30d-650e3abf3036', // Sternsysteme und Galaxien in zwei Kontexten einordnen
+  '0521c3ce-999b-5b35-bb3c-7042f24a30ce', // Prüfungsaufgabe: Messreihen, Unsicherheit und Gerätewahl
+  'de1ed3f0-80b2-5544-9971-c8392f76a3e8', // Prüfungsaufgabe: Zwei Messkurven linearisieren
+  '3791c574-2194-52fa-846b-ee1d4e2c5877', // Prüfungsaufgabe: Zwei Bewegungsmodelle in der Tabellenkalkulation
+  'b4175564-4397-5c08-90ba-4f13231a75ec', // Feldbilder und Magnetfeldmodelle eigenständig anwenden
+  'e0932fef-9e1c-5c95-b00c-7589e76d0e83', // Flussänderung und technische Induktion eigenständig erklären
+  '7bdd1853-164e-54ca-8255-497ea8edd1f1', // Messgenauigkeit untersuchen
+  'cc308bcc-435b-527d-b898-efafdf47c48a', // Messdaten und Bewegungen digital modellieren
+  '2a5dfdf6-73e7-5336-a37f-cbf2dabec55e', // Magnetfelder und Induktion anwenden
+])
+
 const explicitClassification = (
   goal: CanonicalAuthoringGoal,
   reviewedAtomicGoalIds: ReadonlySet<string>,
@@ -802,6 +859,10 @@ const explicitClassification = (
         ? 'reviewed-current-structural-split-curricular-atomic'
         : new Set([
           ...FINAL_SPLIT_CHILD_IDS,
+          'd8b2b349-b83a-5225-a180-1afe205750cd', // Independently reviewed own transistor experiment.
+          '13b338eb-f761-5817-9058-11043b9cb253', // Measurement-rate preparation atom.
+          'd61ea362-f6c3-5eab-ac30-2d0e265ac0f6', // Video velocity acquisition.
+          '677a192d-8bbe-57fc-bb7a-1c1ed5fba32b', // Guided acceleration experiment.
           '7d4d6a39-0c78-5fb0-b7bf-182ed00972f7', // Narrowed prerequisite: pn model only.
           // Final astronomy package: four operationalised descriptions and one narrowed prerequisite.
           '4c5c7cb1-f238-52c8-b82c-159c6c299c0e',
@@ -852,10 +913,26 @@ const explicitClassification = (
         decisionBasis: 'reviewed-current-pilot-runtime-support',
       }
     }
-    if (goal.contains.every((goalId) => goalsById.get(goalId)?.examData !== undefined)) {
+    if (goal.id === '151edbf8-eb68-5ef7-8786-43e56a281b0b') {
+      assert.equal((goal.extendedData as Record<string, unknown>).applicabilityProjection, 'excluded')
+      return {
+        semanticKind: 'curricularArea',
+        decisionBasis: 'reviewed-current-post-split-curricular-area',
+      }
+    }
+    const isAssessmentSubtree = (goalId: string, ancestors = new Set<string>()): boolean => {
+      const child = goalsById.get(goalId)
+      assert(child, `missing practice subtree ${goalId}`)
+      assert(!ancestors.has(goalId), `cyclic practice subtree ${goalId}`)
+      if (child.examData !== undefined) return true
+      const nextAncestors = new Set([...ancestors, goalId])
+      return child.contains.length > 0
+        && child.contains.every((id) => isAssessmentSubtree(id, nextAncestors))
+    }
+    if (goal.contains.every((goalId) => isAssessmentSubtree(goalId))) {
       return {
         semanticKind: 'practiceAssessment',
-        decisionBasis: goal.id === '85bbad98-2f48-5d64-85c4-ab6cf67f24c2'
+        decisionBasis: STAGE_PLAN_PRACTICE_GOAL_IDS.has(goal.id)
           ? 'reviewed-current-post-split-practice-assessment'
           : 'reviewed-current-pilot-practice-assessment',
       }
@@ -884,6 +961,7 @@ const explicitClassification = (
     return {
       semanticKind: 'practiceAssessment',
       decisionBasis: (POST_SPLIT_PRACTICE_ASSESSMENT_GOAL_IDS.has(goal.id)
+        || STAGE_PLAN_PRACTICE_GOAL_IDS.has(goal.id)
         || FINAL_SPLIT_ASSESSMENT_COVERAGE.has(goal.id)
         || SEMICONDUCTOR_ASSESSMENT_COVERAGE.has(goal.id)
         || ['0f5346d6-de1b-5e38-aaba-68db205e594b', '4a58df57-f791-502f-8b8d-9ba155e46035', 'f61c424e-f091-5f9d-9d58-c1bd29733fc8'].includes(goal.id))
@@ -1012,13 +1090,15 @@ const collectAuthoredProjectionGoalIds = (
 
 const rawLandscape = readJson<Record<string, unknown> & { goals: Array<Record<string, unknown>> }>(LANDSCAPE_PATH)
 const rawMathLandscape = readJson<Record<string, unknown> & { goals: Array<Record<string, unknown>> }>(MATH_LANDSCAPE_PATH)
+const rawChemistryLandscape = readJson<Record<string, unknown> & { goals: Array<Record<string, unknown>> }>(CHEMISTRY_LANDSCAPE_PATH)
 const mathLandscape = normalizeCanonicalLandscape(rawMathLandscape)
+const chemistryLandscape = normalizeCanonicalLandscape(rawChemistryLandscape)
 const preparationLandscape = {
   ...rawLandscape,
-  goals: [...rawLandscape.goals, ...rawMathLandscape.goals],
+  goals: [...rawLandscape.goals, ...rawMathLandscape.goals, ...rawChemistryLandscape.goals],
 } as unknown as SkillLandscape
 assert.equal(new Set(preparationLandscape.goals.map(({ id }) => id)).size, preparationLandscape.goals.length,
-  'the full Physics/Math preparation universe must have unique goal IDs')
+  'the full Physics/Math/Chemistry preparation universe must have unique goal IDs')
 
 function assertReviewedPreparation(
   assessmentId: string,
@@ -1148,7 +1228,9 @@ CQR104_ROUTE_ASSESSMENT_EVIDENCE.forEach((evidenceByGoalId, assessmentId) => {
   } | undefined
   // These reviewed tasks use the coverage IDs as preparation seeds, but a
   // transitive reduction may remove their redundant direct prerequisite edges.
-  assertReviewedPreparation(assessmentId, [...evidenceByGoalId.keys()])
+  if (!WITHDRAWN_ROUTE_ASSESSMENT_IDS.has(assessmentId)) {
+    assertReviewedPreparation(assessmentId, [...evidenceByGoalId.keys()])
+  }
   const extendedData = assessment.extendedData as Record<string, unknown> | undefined
   assert.equal(
     extendedData?.applicabilityFromRequires,
@@ -1160,11 +1242,19 @@ CQR104_ROUTE_ASSESSMENT_EVIDENCE.forEach((evidenceByGoalId, assessmentId) => {
     undefined,
     `CQR-104 route assessment ${assessmentId} must not carry a jurisdiction override`,
   )
-  assert.deepEqual(
-    [...evidenceByGoalId.keys()].sort(compareCodePoints),
-    [...((examData?.coveredGoalIds ?? []) as string[])].sort(compareCodePoints),
-    `CQR-104 route assessment ${assessmentId} needs an explicit task-content evidence binding for every covered goal`,
-  )
+  if (WITHDRAWN_ROUTE_ASSESSMENT_IDS.has(assessmentId)) {
+    // Retain the historical material below, without reviving its withdrawn
+    // whole-competence claim or treating it as a current acquisition route.
+    assert.deepEqual(examData?.coveredGoalIds, [])
+    assert.equal(extendedData?.applicabilityProjection, 'excluded')
+    assert.deepEqual(parentIdsByChild.get(assessmentId), ['151edbf8-eb68-5ef7-8786-43e56a281b0b'])
+  } else {
+    assert.deepEqual(
+      [...evidenceByGoalId.keys()].sort(compareCodePoints),
+      [...((examData?.coveredGoalIds ?? []) as string[])].sort(compareCodePoints),
+      `CQR-104 route assessment ${assessmentId} needs an explicit task-content evidence binding for every covered goal`,
+    )
+  }
   const taskContent = String(examData?.taskContent ?? '')
   evidenceByGoalId.forEach((evidenceSnippets, coveredGoalId) => {
     evidenceSnippets.forEach((snippet) => {
@@ -1369,6 +1459,7 @@ assert.equal(
   sha256(readFileSync(resolve(repoRoot, fingerprintContract.canonicalJsonProfilePath), 'utf8')),
 )
 const mathGoalIds = new Set(mathLandscape.goals.map(({ id }) => id))
+const chemistryGoalIds = new Set(chemistryLandscape.goals.map(({ id }) => id))
 const foreignContainsEdges: Array<{ ownerId: string; goalId: string }> = []
 const foreignRequiresEdges: Array<{ ownerId: string; goalId: string }> = []
 rawLandscape.goals.forEach((goal) => {
@@ -1386,28 +1477,47 @@ rawLandscape.goals.forEach((goal) => {
   }
 })
 assert.deepEqual(foreignContainsEdges, [], 'Physics canonical contains must remain subject-internal')
-const reviewedForeignRequiresEdges = rawLandscape.goals.flatMap((goal) => {
-  const reviewed = reviewBindingGoal(prerequisiteReductionContext, `${LANDSCAPE_ID}:${String(goal.id)}`, goal)
-  return ((reviewed.requires ?? []) as string[])
-    .filter((id) => !rawGoalById.has(id))
-    .map((goalId) => ({ ownerId: String(goal.id), goalId }))
-})
-assert.equal(reviewedForeignRequiresEdges.length, 162, 'the historical reviewed Physics raw-link inventory has 162 cross-subject prerequisites')
-reviewedForeignRequiresEdges.forEach(({ ownerId, goalId }) => {
-  assert(mathGoalIds.has(goalId), `reviewed foreign prerequisite ${goalId} is not canonical mathematics`)
+// Current, independently reviewed repairs may change a goal's preparation.
+// V9 transfers unchanged goals individually; it does not require preserving an
+// older whole-catalog prerequisite inventory. Resolve the actual foreign edges.
+assert.equal(foreignRequiresEdges.length, 161, 'the current Physics inventory has 161 direct cross-subject prerequisites')
+foreignRequiresEdges.forEach(({ ownerId, goalId }) => {
+  assert(mathGoalIds.has(goalId) || chemistryGoalIds.has(goalId),
+    `foreign prerequisite ${goalId} has no configured canonical owner`)
   const current = collectWholeMaterialPrerequisiteClosure(preparationLandscape, ownerId)
   assert.deepEqual([...current.unresolvedReferences], [], `unresolved current foreign preparation for ${ownerId}`)
-  assert(current.atomicGoalIds.has(goalId), `current full preparation lost reviewed foreign demand ${ownerId}->${goalId}`)
+  assert(current.atomicGoalIds.has(goalId), `current full preparation lost direct foreign demand ${ownerId}->${goalId}`)
 })
 assert.equal(
   new Set(foreignRequiresEdges.map(({ goalId }) => goalId)).size,
-  53,
-  'Physics cross-subject prerequisites retain 53 existing mathematics goals after removing the unsupported negative-exponent demand',
+  57,
+  'Physics directly requires 56 Mathematics atoms and one Chemistry atom',
 )
-foreignRequiresEdges.forEach(({ goalId }) => {
-  assert(mathGoalIds.has(goalId), `Physics cross-subject prerequisite ${goalId} is not canonical mathematics`)
-})
+assert.equal(new Set(foreignRequiresEdges.filter(({ goalId }) => mathGoalIds.has(goalId)).map(({ goalId }) => goalId)).size, 56)
+assert.deepEqual(foreignRequiresEdges.filter(({ goalId }) => chemistryGoalIds.has(goalId)), [
+  { ownerId: 'db47ac91-7bb0-5ba3-b39d-e2d6fc98396e', goalId: '5dd180f1-f1c8-5f76-9c9a-ea3fc3d921bf' },
+])
 assert(!foreignRequiresEdges.some(({ goalId }) => goalId === '71cec9fb-3751-4d61-8b34-c5adbbf6e5f2'))
+const spectrumTransferAssessmentId = 'c2a6ce42-ba20-55c4-b958-c9edb4b98c4c'
+const spectrumTransferGoalId = 'f06c581a-7157-584e-a692-99bcd613cff9'
+const spectrumTransferMathPreparation = [
+  '4eeab7d5-eeb3-579b-845e-1c52ffe9e89f', // Add/subtract the signed decimal time samples.
+  'ee48e811-4c9c-5080-9836-8403fc9f0810', // Compute the reciprocal frequency for the period.
+  'f2e42af5-67a6-477e-82ea-e65b09cc6cb3', // Convert the resulting seconds to milliseconds.
+]
+const spectrumTransferAssessment = rawGoalById.get(spectrumTransferAssessmentId)
+assert(spectrumTransferAssessment, 'the released spectrum-transfer assessment is missing')
+assert.deepEqual(spectrumTransferAssessment.requires,
+  [...spectrumTransferMathPreparation, spectrumTransferGoalId].sort(compareCodePoints),
+  'the existing independent spectrum task needs its own arithmetic and unit preparation')
+const spectrumTransferPreparation = collectWholeMaterialPrerequisiteClosure(preparationLandscape, spectrumTransferAssessmentId)
+assert.deepEqual([...spectrumTransferPreparation.unresolvedReferences], [])
+for (const goalId of [spectrumTransferGoalId, ...spectrumTransferMathPreparation]) {
+  assert(spectrumTransferPreparation.atomicGoalIds.has(goalId),
+    `spectrum-transfer task preparation lost ${goalId}`)
+}
+assert.deepEqual((spectrumTransferAssessment.examData as { coveredGoalIds: string[] }).coveredGoalIds,
+  [spectrumTransferGoalId], 'necessary Mathematics preparation must not become assessment coverage')
 const mathFixtureGoal = rawMathLandscape.goals.find(({ id }) => id === '000b2764-c5d9-5521-b39e-fc15a4aa72e2')
 assert(mathFixtureGoal, 'known mathematics source-fingerprint fixture is missing')
 const mathFixtureKey = `${String(rawMathLandscape.landscapeId)}:${String(mathFixtureGoal.id)}`
@@ -1457,8 +1567,8 @@ assert.deepEqual(ledger.counts, EXPECTED_COUNTS)
 assert.equal(ledger.decisions.length, EXPECTED_COUNTS.total)
 assert.deepEqual(
   ledger.decisions.map(({ goalId }) => goalId),
-  [...ledger.decisions.map(({ goalId }) => goalId)].sort(compareCodePoints),
-  'Physics semantic-kind decisions must stay sorted by goal ID',
+  landscape.goals.map(({ id }) => id),
+  'Physics semantic-kind decisions must follow the complete current canonical inventory',
 )
 const decisionByGoalId = new Map<string, SemanticKindDecision>()
 const actualCounts: SemanticKindLedger['counts'] = {
@@ -1519,6 +1629,11 @@ ledger.decisions.forEach((decision) => {
 })
 assert.equal(decisionByGoalId.size, goalById.size, 'semantic-kind ledger must bind every Physics goal exactly once')
 assert.deepEqual(actualCounts, EXPECTED_COUNTS)
+const kinematicsReviewPath = 'curricula/DE/Gymnasium/quality/assessment-review/physics-kinematics-20261022/review.json'
+// This immutable receipt binds the original material review, not today's
+// narrowed/withdrawn coverage or the current acquisition-contract approval.
+assert.equal(sha256(readFileSync(resolve(repoRoot, kinematicsReviewPath), 'utf8')),
+  '2e85f07f92316968378141ce61ef911589b8859c3df2b5b392ed4c7bb216e46e')
 const kinematicsReview = readJson<{
   reviewMethod: string
   result: string
@@ -1527,7 +1642,7 @@ const kinematicsReview = readJson<{
     goalId: string; sourceFingerprint: string; bodyHashes: Record<string, string>
     requires: string[]; coveredGoalIds: string[]
   }>
-}>('curricula/DE/Gymnasium/quality/assessment-review/physics-kinematics-20261022/review.json')
+}>(kinematicsReviewPath)
 assert.equal(kinematicsReview.reviewMethod, 'independent-ai-counterreview')
 assert.equal(kinematicsReview.result, 'accepted')
 assert.equal(kinematicsReview.humanApproval, false, 'AI counterreview must never become human approval')
@@ -1537,7 +1652,6 @@ const rawPhysicsAndMathGoals = new Map([...rawMathLandscape.goals, ...rawLandsca
   .map((goal) => [String(goal.id), goal]))
 for (const reviewed of kinematicsReview.assessments) {
   const goal = rawGoalById.get(reviewed.goalId)!
-  const reviewedGoal = reviewBindingGoal(prerequisiteReductionContext, `${LANDSCAPE_ID}:${reviewed.goalId}`, goal)
   const exam = goal.examData as {
     reviewStatus: string; coveredGoalIds: string[]; taskContent: string; taskContentEn: string
     solutionContent: string; solutionContentEn: string
@@ -1545,15 +1659,19 @@ for (const reviewed of kinematicsReview.assessments) {
   }
   assert.equal(exam.reviewStatus, 'released')
   assert.equal(decisionByGoalId.get(reviewed.goalId)?.semanticKind, 'practiceAssessment')
-  assert.equal(reviewed.sourceFingerprint, sourceFingerprint(reviewedGoal, fingerprintContract), 'independent task review must bind its verified historical goal')
   assert.equal((goal.extendedData as Record<string, unknown>).applicabilityFromRequires, true)
   for (const field of kinematicsBodyFields) {
     assert(exam[field].trim().length > 500, `${reviewed.goalId}: missing complete bilingual ${field}`)
     assert.equal(reviewed.bodyHashes[field], `sha256:${sha256(exam[field])}`, `${reviewed.goalId}: stale independent ${field} review`)
   }
-  assert.deepEqual(reviewedGoal.requires, reviewed.requires)
-  assertReviewedPreparation(reviewed.goalId, reviewed.requires)
-  assert.deepEqual(exam.coveredGoalIds, reviewed.coveredGoalIds)
+  assert.deepEqual(goal.requires, ['e4b38061-1f28-43ad-8371-a3e7c0e81856'])
+  assertReviewedPreparation(reviewed.goalId, goal.requires as string[])
+  assert.deepEqual(exam.coveredGoalIds, reviewed.goalId === '4ab1cf6d-b808-5b86-9291-85df0b9f2496'
+    ? [] : ['d6dc0e02-831d-4894-a61a-852bcc74f147'])
+  if (reviewed.goalId === '4ab1cf6d-b808-5b86-9291-85df0b9f2496') {
+    assert.equal((goal.extendedData as Record<string, unknown>).applicabilityProjection, 'excluded')
+    assert.deepEqual(parentIdsByChild.get(reviewed.goalId), ['151edbf8-eb68-5ef7-8786-43e56a281b0b'])
+  }
   assert.equal(exam.scoring.maxPoints, 36)
   assert.equal(exam.scoring.passingPoints, 22)
   assert.equal(exam.scoring.steps.length, 36)
@@ -1561,7 +1679,7 @@ for (const reviewed of kinematicsReview.assessments) {
   assert(exam.scoring.steps.every(({ points }) => points === 1))
   assert.equal(exam.scoring.steps.reduce((sum, { points }) => sum + points, 0), 36)
   const prerequisiteIds = new Set<string>()
-  const pending = [...reviewed.requires]
+  const pending = [...goal.requires as string[]]
   while (pending.length) {
     const id = normalizeGoalRef(pending.pop()!)
     if (prerequisiteIds.has(id)) continue
@@ -1581,11 +1699,10 @@ for (const reviewed of kinematicsReview.assessments) {
 }
 assert.deepEqual(rawGoalById.get('4ab1cf6d-b808-5b86-9291-85df0b9f2496')?.requires,
   ['e4b38061-1f28-43ad-8371-a3e7c0e81856'])
-assert.deepEqual(reviewBindingGoal(prerequisiteReductionContext, `${LANDSCAPE_ID}:6ea3fb3c-abdc-568f-ab13-97c36dc274e4`,
-  rawGoalById.get('6ea3fb3c-abdc-568f-ab13-97c36dc274e4')!).requires,
-  ['e4b38061-1f28-43ad-8371-a3e7c0e81856', '971beafa-6ba5-4c82-ac8b-7ebf66eec3dd'])
+assert.deepEqual(rawGoalById.get('6ea3fb3c-abdc-568f-ab13-97c36dc274e4')?.requires,
+  ['e4b38061-1f28-43ad-8371-a3e7c0e81856'])
 assert.deepEqual((rawGoalById.get('6ea3fb3c-abdc-568f-ab13-97c36dc274e4')?.examData as { coveredGoalIds: string[] }).coveredGoalIds,
-  ['e4b38061-1f28-43ad-8371-a3e7c0e81856', 'd6dc0e02-831d-4894-a61a-852bcc74f147'])
+  ['d6dc0e02-831d-4894-a61a-852bcc74f147'])
 const incompleteBilingualAtomicGoals = ledger.decisions
   .filter(({ semanticKind }) => semanticKind === 'curricularAtomic')
   .flatMap(({ goalId }) => {
@@ -1612,7 +1729,10 @@ assert.deepEqual(config, {
   compositionViewManifestPath: SOURCE_MANIFEST_PATH,
   semanticKindLedgerPath: LEDGER_PATH,
   goalVisualizationQaPath: 'curricula/DE/Gymnasium/quality/goal-visualization-qa/physik.qa.json',
-  externalLandscapePaths: [MATH_LANDSCAPE_PATH],
+  externalLandscapePaths: [
+    MATH_LANDSCAPE_PATH,
+    'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json',
+  ],
   publicationMode: 'review',
   atlasBaseUrl: 'https://skillpilot.com/lernzielbuch',
   evidenceReviewPaths: [],
@@ -1653,7 +1773,7 @@ assert.equal(
 )
 assert.deepEqual(sourceManifest.expectedJurisdictions, EXPECTED_JURISDICTIONS)
 assert.equal(sourceManifest.durationModelPolicyPath, DURATION_POLICY_PATH)
-assert.equal(sourceManifest.expectedCurricularAtomicGoalCount, EXPECTED_COUNTS.curricularAtomic)
+assert.equal(sourceManifest.expectedCurricularAtomicGoalCount, EXPECTED_ATLAS_TARGET_COUNT)
 assert.equal(sourceManifest.sourcePaths.length, 64)
 assert.deepEqual(
   sourceManifest.sourcePaths,
@@ -1679,6 +1799,7 @@ const canonicalGoalOwnerById = new Map<string, string>()
 const physicsAndMathGoalUniverseGoals = [
   [LANDSCAPE_ID, landscapeWithSemanticKinds] as const,
   [mathLandscape.landscapeId, mathLandscape] as const,
+  [chemistryLandscape.landscapeId, chemistryLandscape] as const,
 ].flatMap(([landscapeId, canonicalLandscape]) => canonicalLandscape.goals.map((goal) => {
   const previousOwner = canonicalGoalOwnerById.get(goal.id)
   assert(!previousOwner, `canonical goal ${goal.id} is duplicated in ${previousOwner} and ${landscapeId}`)
@@ -1804,8 +1925,11 @@ allPhysicsViewPaths.forEach((viewPath) => {
       assert.equal(ph10Structures.length, 1, `${view.viewId} must expose exactly one Ph10.1 structure`)
       assert.deepEqual(
         [...collectAuthoredProjectionGoalIds([ph10Structures[0]], semanticGoalById)].sort(compareCodePoints),
-        [...BAVARIA_PH10_1_GOAL_IDS].sort(compareCodePoints),
-        `${view.viewId} must retain the reviewed seven-goal Ph10.1 projection`,
+        [...BAVARIA_PH10_1_GOAL_IDS,
+          'b4175564-4397-5c08-90ba-4f13231a75ec',
+          'e0932fef-9e1c-5c95-b00c-7589e76d0e83',
+        ].sort(compareCodePoints),
+        `${view.viewId} must retain the seven Ph10.1 goals and their two independently reviewed acquisition tasks`,
       )
     }
 
@@ -1872,13 +1996,19 @@ allPhysicsViewPaths.forEach((viewPath) => {
       )
       assert.equal(
         strictRouteStartGoalIds.includes(assessmentId),
-        hasCompleteLocalSupport,
+        !WITHDRAWN_ROUTE_ASSESSMENT_IDS.has(assessmentId) && hasCompleteLocalSupport,
         `${view.viewId} must project ${assessmentId} exactly when all requires are authoritatively visible`,
       )
     })
 
     const visitedPrerequisiteGoalIds = new Set<string>()
     const visitingPrerequisiteGoalIds = new Set<string>()
+    const strictLearningBasisGoalIds = new Set(strictRouteStartGoalIds)
+    strictRouteStartGoalIds.forEach((goalId) => {
+      const closure = collectWholeMaterialPrerequisiteClosure(preparationLandscape, goalId)
+      assert.deepEqual([...closure.unresolvedReferences], [], `${view.viewId}: unresolved learning-basis preparation for ${goalId}`)
+      closure.atomicGoalIds.forEach((id) => strictLearningBasisGoalIds.add(id))
+    })
     let traversedPrerequisiteEdges = 0
     const visitAllPrerequisites = (goalId: string, routePath: string[]) => {
       if (visitingPrerequisiteGoalIds.has(goalId)) {
@@ -1888,9 +2018,9 @@ allPhysicsViewPaths.forEach((viewPath) => {
       visitingPrerequisiteGoalIds.add(goalId)
       const goal = physicsAndMathGoalById.get(goalId)
       assert(goal, `${view.viewId} strict Sek-I route references unknown canonical goal ${goalId}`)
-      // A foreign canonical root is the explicit cross-landscape hand-off:
-      // this Physics view must authoritatively project it, while its internal
-      // learning route remains owned and validated by the Mathematics view.
+      // A foreign canonical root hands off to its configured owner's graph.
+      // The full closure above resolves those atoms; this separate walk checks
+      // Physics paths rather than claiming backend emission or acquisition.
       // Within Physics, no visible local prerequisite may terminate recursion.
       if (!semanticGoalById.has(goalId)) {
         visitingPrerequisiteGoalIds.delete(goalId)
@@ -1903,8 +2033,8 @@ allPhysicsViewPaths.forEach((viewPath) => {
         traversedPrerequisiteEdges += 1
         const nextRoutePath = [...routePath, goalId, requiredGoalId]
         assert(
-          strictSekIProjectionGoalIds.has(requiredGoalId),
-          `${view.viewId} strict Sek-I all-of prerequisite closure leaves its authoritative projection: ${nextRoutePath.join(' -> ')}`,
+          strictLearningBasisGoalIds.has(requiredGoalId),
+          `${view.viewId} strict Sek-I all-of prerequisite closure leaves its native learning basis: ${nextRoutePath.join(' -> ')}`,
         )
         visitAllPrerequisites(requiredGoalId, [...routePath, goalId])
       })
@@ -1978,11 +2108,45 @@ allPhysicsViewPaths.forEach((viewPath) => {
     authoredForeignPrerequisiteRoots.map((root) => ({ ...root, projectionRole: 'prerequisiteOnly' })),
     physicsAndMathGoalById,
   )
+  const chemistryPreparationNodes: Array<Extract<CompositionViewNode, { kind: 'goalEntry' }>> = []
+  const collectChemistryPreparation = (nodes: CompositionViewNode[]) => nodes.forEach((node) => {
+    if (node.kind === 'structure') collectChemistryPreparation(node.children)
+    else if (node.kind === 'goalEntry' && chemistryGoalIds.has(node.goalId)) chemistryPreparationNodes.push(node)
+  })
+  collectChemistryPreparation(view.rootNodes)
+  const expectedChemistryPreparationIds = [
+    'a9c22adc-b543-5b0c-a2d8-3189facdff08',
+    '13d4f336-ab16-54a7-9479-c920b458f385',
+    '416dfd33-8b43-5c49-903c-9847b95e4208',
+    'fcc73fb5-7413-557f-aea3-b9692a66ee75',
+    '326d45bf-9f77-57d5-a054-93e76b034dd5',
+    '988888bb-1f88-55f9-9a44-f3f60469a297',
+    '5dd180f1-f1c8-5f76-9c9a-ea3fc3d921bf',
+  ]
+  assert.deepEqual(chemistryPreparationNodes.map(({ goalId }) => goalId).sort(compareCodePoints),
+    view.scope.jurisdiction === 'DE-BY' ? expectedChemistryPreparationIds.sort(compareCodePoints) : [],
+    `${view.viewId}: the seven reviewed Chemistry preparations retain their actual target placements`)
+  chemistryPreparationNodes.forEach((node) => {
+    assert.equal(node.projectionRole, 'target', 'reviewedPreparation metadata must not rewrite the actual target role')
+    const evidence = node.placementEvidence as {
+      role?: string; consumerGoalId?: string; requiredByPath?: string[]
+    } | undefined
+    assert.equal(evidence?.role, 'reviewedPreparation')
+    assert.equal(evidence?.consumerGoalId, 'db47ac91-7bb0-5ba3-b39d-e2d6fc98396e')
+    const path = evidence?.requiredByPath ?? []
+    assert.equal(path[0], evidence?.consumerGoalId)
+    assert.equal(path.at(-1), node.goalId)
+    path.slice(0, -1).forEach((id, index) => assert(
+      physicsAndMathGoalById.get(id)?.requires.includes(path[index + 1]),
+      `${view.viewId}: invalid reviewed preparation path ${id} -> ${path[index + 1]}`,
+    ))
+    foreignProjectionGoalIds.add(node.goalId)
+  })
   expectedForeignPrerequisiteIds.forEach((goalId) => {
-    assert(mathGoalIds.has(goalId), `${view.viewId} foreign prerequisite ${goalId} is not canonical mathematics`)
+    assert(mathGoalIds.has(goalId) || chemistryGoalIds.has(goalId), `${view.viewId} foreign prerequisite ${goalId} has no configured canonical owner`)
     assert(
       foreignProjectionGoalIds.has(goalId),
-      `${view.viewId} direct foreign prerequisite ${goalId} is absent from its authored prerequisite-only subtrees`,
+      `${view.viewId} direct foreign prerequisite ${goalId} is absent from its authored support/target preparation`,
     )
   })
   authoredForeignPrerequisiteRoots.forEach(({ goalId }) => {
@@ -2039,11 +2203,14 @@ assert.deepEqual(
 )
 
 const atlasCurricularAtomicGoalIds = new Set<string>()
+let atlasPreparationOnlyOccurrences = 0
 const sourceViews: GoalBookDurationPolicyViewSource[] = []
 const roleCountByJurisdiction = new Map<string, Set<string>>()
 sourceManifest.sourcePaths.forEach((sourcePath) => {
   assert(existsSync(resolve(repoRoot, sourcePath)), `missing Physics atlas source ${sourcePath}`)
   const view = normalizeCompositionView(readJson(sourcePath))
+  atlasPreparationOnlyOccurrences += collectAuthoredPrerequisiteRoots(view.rootNodes)
+    .filter(({ goalId }) => goalId === ATLAS_PREPARATION_ONLY_GOAL_ID).length
   assert.equal(view.landscapeId, LANDSCAPE_ID)
   assert(EXPECTED_JURISDICTIONS.includes(view.scope.jurisdiction as typeof EXPECTED_JURISDICTIONS[number]))
   assert(view.scope.stage === 'CrossStage' || view.scope.stage === 'SekII')
@@ -2069,7 +2236,7 @@ sourceManifest.sourcePaths.forEach((sourcePath) => {
   const errors = compilation.findings.filter(({ severity }) => severity === 'error')
   assert.deepEqual(errors, [], `invalid Physics atlas source ${sourcePath}`)
   if (view.scope.jurisdiction === 'DE-HE') {
-    const targetIds = new Set(collectAtomicGoalIds(compilation.compiledRootNodes, semanticGoalById))
+    const targetIds = new Set(collectAtomicGoalIds(compilation.compiledRootNodes, physicsAndMathGoalById))
     for (const goalId of HE_LK_ONLY_QUANTUM_GOAL_IDS) {
       assert.equal(targetIds.has(goalId), view.scope.courseProfile === 'LK',
         `${view.viewId}: HE KC2024 Q3.3 p42 binds hydrogen-like energies and Pauli to LK, not GK`)
@@ -2078,13 +2245,13 @@ sourceManifest.sourcePaths.forEach((sourcePath) => {
     stripHeQuantumOverridesFromClonedView(clone)
     const template = compileCompositionView(clone, landscapeWithSemanticKinds, physicsAndMathGoalUniverse)
     assert.deepEqual(template.findings.filter(({ severity }) => severity === 'error'), [])
-    const templateIds = new Set(collectAtomicGoalIds(template.compiledRootNodes, semanticGoalById))
+    const templateIds = new Set(collectAtomicGoalIds(template.compiledRootNodes, physicsAndMathGoalById))
     assert.deepEqual([...targetIds].filter((id) => !templateIds.has(id)), [], 'template cleanup must not remove targets')
     assert.deepEqual([...templateIds].filter((id) => !targetIds.has(id)).sort(compareCodePoints),
       view.scope.courseProfile === 'GK' ? [...HE_LK_ONLY_QUANTUM_GOAL_IDS].sort(compareCodePoints) : [],
       'BB/BE template cloning removes only the two HE-specific quantum exclusions')
   }
-  collectAtomicGoalIds(compilation.compiledRootNodes, semanticGoalById).forEach((goalId) => {
+  collectAtomicGoalIds(compilation.compiledRootNodes, physicsAndMathGoalById).forEach((goalId) => {
     if (decisionByGoalId.get(goalId)?.semanticKind === 'curricularAtomic') {
       atlasCurricularAtomicGoalIds.add(goalId)
     }
@@ -2104,11 +2271,12 @@ EXPECTED_JURISDICTIONS.forEach((jurisdiction) => {
     `${jurisdiction} must contribute exactly four Physics atlas roles`,
   )
 })
-assert.equal(atlasCurricularAtomicGoalIds.size, EXPECTED_COUNTS.curricularAtomic)
+assert.equal(atlasCurricularAtomicGoalIds.size, EXPECTED_ATLAS_TARGET_COUNT)
+assert(atlasPreparationOnlyOccurrences > 0, 'the omitted target page must have a real authored prerequisite-only placement')
 assert.deepEqual(
   [...reviewedAtomicGoalIds].filter((goalId) => !atlasCurricularAtomicGoalIds.has(goalId)),
-  [],
-  'all reviewed curricular Physics atoms must be visible in the nationwide atlas union',
+  [ATLAS_PREPARATION_ONLY_GOAL_ID],
+  'the nationwide atlas contains all current ordinary targets; only the explicit preparation-only atom has no target page',
 )
 
 const canonicalProfileTargetIds = new Set<string>()
@@ -2128,7 +2296,7 @@ for (const profilePath of [
     `invalid canonical Physics profile ${profilePath}`,
   )
   const profileTargetIds = new Set<string>()
-  collectAtomicGoalIds(compilation.compiledRootNodes, semanticGoalById).forEach((goalId) => {
+  collectAtomicGoalIds(compilation.compiledRootNodes, physicsAndMathGoalById).forEach((goalId) => {
     if (decisionByGoalId.get(goalId)?.semanticKind === 'curricularAtomic') {
       canonicalProfileTargetIds.add(goalId)
       profileTargetIds.add(goalId)
@@ -2144,7 +2312,8 @@ for (const profilePath of [
 // Native projection against the pre-B035 checkpoint proved the exact delta:
 // remove the former mixed atom, add energy and interval probability, keep all
 // other target IDs unchanged. Bind that full prior set, not only the new count.
-assert.equal(canonicalProfileTargetIds.size, 412)
+assert.equal(canonicalProfileTargetIds.size, 420)
+STAGE_PLAN_ADDED_NATIONAL_TARGET_IDS.forEach((id) => assert(canonicalProfileTargetIds.has(id)))
 SEMICONDUCTOR_ADDED_PROFILE_TARGET_IDS.forEach((id) => assert(canonicalProfileTargetIds.has(id)))
 FINAL_SPLIT_PARENT_CHILDREN.forEach((children, parentId) => {
   assert.deepEqual(semanticGoalById.get(parentId)?.contains, children)
@@ -2227,7 +2396,8 @@ for (const taskId of ['8670cff6-fe9c-5f7e-8cba-d170134965a6', '1abfd5ef-1f42-5b7
 // Keep the independently pinned 402 -> 393 -> 392 full-set proof below intact.
 const preFinalProfileTargetIds = new Set([
   ...[...canonicalProfileTargetIds].filter((id) => !FINAL_SPLIT_CHILD_IDS.includes(id)
-    && !SEMICONDUCTOR_ADDED_PROFILE_TARGET_IDS.includes(id) && id !== ROAD_SAFETY_GOAL_ID),
+    && !SEMICONDUCTOR_ADDED_PROFILE_TARGET_IDS.includes(id) && id !== ROAD_SAFETY_GOAL_ID
+    && !STAGE_PLAN_ADDED_NATIONAL_TARGET_IDS.includes(id)),
   ...FINAL_SPLIT_PARENT_CHILDREN.keys(),
 ])
 assert.equal(preFinalProfileTargetIds.size, 402)
@@ -2357,7 +2527,7 @@ assert.deepEqual(
 )
 const navigationGoalIds = new Set([...collectAtomicGoalIds(
   navigationCompilation.compiledRootNodes,
-  semanticGoalById,
+  physicsAndMathGoalById,
 )].filter((goalId) => decisionByGoalId.get(goalId)?.semanticKind === 'curricularAtomic'))
 assert.deepEqual(
   [...navigationGoalIds].sort(compareCodePoints),
@@ -2455,18 +2625,28 @@ const physicsSekIRouteScope = physicsQuality.scopes.find(({ scopeId }) => scopeI
 assert(physicsSekIRouteScope, 'curriculum-quality status lacks canonical Physics Sek-I route scope')
 const routeProjectionRule = physicsSekIRouteScope.rules.find(({ id }) => id === 'CQR-104')
 assert(routeProjectionRule, 'curriculum-quality status lacks Physics Sek-I CQR-104')
+assert.equal(routeProjectionRule.status, 'pass', 'current acquisition routes must retain the protected Physics quality floor')
 const routeMetrics = routeProjectionRule.metrics ?? {}
 const legacyRouteProfile = routeProfileDefinitions.find(profile => profile.profileId === 'canonical-physics-sek1')!
 const currentRouteProfile = createRouteProfiles(repoRoot).find(profile => profile.profileId === legacyRouteProfile.profileId)!
 const currentPhysics = rawLandscape as unknown as SkillLandscape
 const legacySelectedGoalIds = currentPhysics.goals.filter(legacyRouteProfile.goalSelector).map(goal => goal.id)
 const currentSelectedGoalIds = currentPhysics.goals.filter(currentRouteProfile.goalSelector).map(goal => goal.id)
-assert.equal(legacySelectedGoalIds.length, 96)
+assert.equal(legacySelectedGoalIds.length, 99)
 assert.deepEqual(
   [...currentSelectedGoalIds].sort(compareCodePoints),
   [...legacySelectedGoalIds, ...EXPECTED_PHYSICS_SEKI_ADDED_TARGET_OCCURRENCES.keys(),
-    ...SEMICONDUCTOR_ADDED_SEKI_ROUTE_TARGET_IDS].sort(compareCodePoints),
-  'The complete shared Physics Sek-I lane includes the five retained targets, three semiconductor additions and the existing material classification',
+    ...SEMICONDUCTOR_ADDED_SEKI_ROUTE_TARGET_IDS,
+    '8aff7aac-321b-5172-ac55-877876bfd2cd',
+    'f6b1d812-ce8b-5852-b417-e6c29b533c7a',
+    'b615830a-e8b0-5754-81e0-99da98343a8d',
+    'f23fdfa9-38b6-5157-8301-ed302476c456',
+    '75b9ca4c-178e-5df2-adc4-f7f78e9d28e5',
+    '691c11d0-fa6a-5d2e-a19c-086e89c3c233',
+    '72effc66-87f4-5f5e-8d36-1547677365fb',
+    'd8b2b349-b83a-5225-a180-1afe205750cd',
+  ].sort(compareCodePoints),
+  'The current shared Physics Sek-I lane retains the reviewed split/semiconductor targets and the eight reviewed stage-plan additions',
 )
 const addedTargetOccurrences = new Map([...EXPECTED_PHYSICS_SEKI_ADDED_TARGET_OCCURRENCES.keys()].map(goalId => {
   const measured = evaluateRouteProfile(currentPhysics, {
@@ -2539,6 +2719,6 @@ assert.equal(
 
 console.log(
   `Physics goal-book inputs verified: ${EXPECTED_COUNTS.total} semantic-kind decisions; `
-  + `${EXPECTED_COUNTS.curricularAtomic} curricular atoms in 64 state views; `
+  + `${EXPECTED_COUNTS.curricularAtomic} ordinary curricular atoms, ${EXPECTED_ATLAS_TARGET_COUNT} atlas targets in 64 state views; `
   + `${EXPECTED_JURISDICTIONS.length} reviewed duration decisions.`,
 )

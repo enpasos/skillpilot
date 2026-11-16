@@ -1,0 +1,117 @@
+{
+  "at": "2026-11-16T00:28:52.450361+00:00",
+  "status": "PASS_FOCUSED_CURRENT_VIEW_TEST_REPAIR",
+  "changedSourcePaths": [
+    "app/scripts/validateLearnerGoalSelection.ts"
+  ],
+  "productionAndViewChanges": false,
+  "findings": {
+    "genericAdditionalMarker": "Integer-exponent laws6596405a remain selected in the unchanged canonicalJ8scope. j9-powers now contains only that selected atom; unselected power-functions66077296 was relocated by the prior reviewed repair.",
+    "bavariaGrouping": "Current BY J8 has one unselected acquisition task e2174adb. Marking the entire year would expand the legacy selection; its fully selected AdditionalCompetencies subgroup is the complete representative."
+  },
+  "checks": [
+    {
+      "command": "npm run validate:learner-goal-selection",
+      "cwd": "app",
+      "sessionId": 49617,
+      "exitCode": 0,
+      "logPath": "tmp/pr159-j8-planned-scope-diagnosis-20261116/full-learner-selection-step.actual.log"
+    },
+    {
+      "command": "./node_modules/.bin/eslint scripts/validateLearnerGoalSelection.ts",
+      "cwd": "app",
+      "sessionId": 29860,
+      "exitCode": 0,
+      "logPath": "tmp/pr159-j8-planned-scope-diagnosis-20261116/eslint.actual.log"
+    }
+  ],
+  "inputInvariance": [
+    {
+      "path": "app/scripts/validateLearnerGoalSelection.ts",
+      "beforeSHA256": "14e74247ffc41143b21113dd4b4ea9c852d460842cc3d7df08b3b82bb9ec845e",
+      "afterSHA256": "03ff4cae2102c4248d7ba49452852011d877ee46ffc6da80b830aaa2b3e3095b",
+      "unchanged": false
+    },
+    {
+      "path": "app/src/utils/plannedScope.ts",
+      "beforeSHA256": "881ba8312db5282ea33a23bd1fe9351a637a106ab50d556ee2d6c4103d4dafbf",
+      "afterSHA256": "881ba8312db5282ea33a23bd1fe9351a637a106ab50d556ee2d6c4103d4dafbf",
+      "unchanged": true
+    },
+    {
+      "path": "app/src/utils/compositionViewRuntime.ts",
+      "beforeSHA256": "acc2fbda8dc898faaacbfd76d5a641518cd29269186408e6aaa2985dbdec4528",
+      "afterSHA256": "acc2fbda8dc898faaacbfd76d5a641518cd29269186408e6aaa2985dbdec4528",
+      "unchanged": true
+    },
+    {
+      "path": "app/src/utils/learnerTreeProjection.ts",
+      "beforeSHA256": "a1dea9db24f73b321b2b43288c833c70b7a23ee62c16611030f73aaefbfa3672",
+      "afterSHA256": "a1dea9db24f73b321b2b43288c833c70b7a23ee62c16611030f73aaefbfa3672",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "beforeSHA256": "306eeed52f6b0b1059264ccb1d4ea23227dd3ddff4d19f2a1ca096511d65a149",
+      "afterSHA256": "306eeed52f6b0b1059264ccb1d4ea23227dd3ddff4d19f2a1ca096511d65a149",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-de-seki.view.json",
+      "beforeSHA256": "47de663de2e3a3aa97de1ad45fabf1500e33e8f8601d1a535fc9f18ef11a4f58",
+      "afterSHA256": "47de663de2e3a3aa97de1ad45fabf1500e33e8f8601d1a535fc9f18ef11a4f58",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-gk.view.json",
+      "beforeSHA256": "966262d81aa5afc8228d98d9911bb7c5cec046fb53c675cdc024a68ab84f7320",
+      "afterSHA256": "966262d81aa5afc8228d98d9911bb7c5cec046fb53c675cdc024a68ab84f7320",
+      "unchanged": true
+    }
+  ],
+  "originalRemoteFailure": {
+    "runId": 43776063341,
+    "jobId": 133008423863,
+    "head": "2fc979d30e53cf654c72f4d863a7d635bd515133",
+    "logPath": "tmp/pr159-ci-2379-frontend-failed.actual.log",
+    "logSHA256": "74ebc10b420440443a55586d365a20ec63ae79e749ebe1cbec77366ee4f3d486"
+  },
+  "scope": "Test expectations plus complete-scope/whole-subtree/no-redundant-marker guards; no scope changes, hidden edges, relaxed gates or learner-result mutation.",
+  "artifacts": [
+    {
+      "path": "tmp/pr159-j8-planned-scope-diagnosis-20261116/canonical-scope-preservation.actual.json",
+      "sha256": "ba8068534338d78133fa3f6ebbe56c1effaf8a0ea18e4ffaaf3d7a09403cb059",
+      "bytes": 2434
+    },
+    {
+      "path": "tmp/pr159-j8-planned-scope-diagnosis-20261116/current-projection.actual.json",
+      "sha256": "0b77f42f5f8a8a14dcc131231a221740d97aa7373184f1303b5f98b32ef7de02",
+      "bytes": 56175
+    },
+    {
+      "path": "tmp/pr159-j8-planned-scope-diagnosis-20261116/eslint.actual.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "tmp/pr159-j8-planned-scope-diagnosis-20261116/full-learner-selection-step.actual.log",
+      "sha256": "7f1bac7485825faf213f637cd38b9fad794c909ffbcbd7a42c39f8586d40f8cf",
+      "bytes": 152
+    },
+    {
+      "path": "tmp/pr159-j8-planned-scope-diagnosis-20261116/input-pins.before.actual.json",
+      "sha256": "e9ae6142976ceca06d7a635e5c231908b404225d208310d3a917fa7cda2e9e67",
+      "bytes": 1110
+    },
+    {
+      "path": "tmp/pr159-j8-planned-scope-diagnosis-20261116/inspect-current-projection.ts",
+      "sha256": "2b727642b5d13eef5466abf752701627df6224c0b6cf9d8ee330f3907885e601",
+      "bytes": 3363
+    },
+    {
+      "path": "tmp/pr159-j8-planned-scope-diagnosis-20261116/validateLearnerGoalSelection.before.ts",
+      "sha256": "14e74247ffc41143b21113dd4b4ea9c852d460842cc3d7df08b3b82bb9ec845e",
+      "bytes": 36829
+    }
+  ]
+}

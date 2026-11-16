@@ -1,0 +1,145 @@
+{
+  "recordedAt": "2026-11-16T01:27:15.182441+00:00",
+  "status": "FINAL_MATH_GENERATOR_AND_SOURCE_CORRECTION_LOCAL_PASS",
+  "priorTargetedReceipt": {
+    "path": "tmp/math-duration-ci-repair-20261116-v1/receipt.actual.json",
+    "sha256": "8181feefe97b0b16d37b35f89730c9d39e53397b5684066913dfa308cea05337"
+  },
+  "correctionToPriorEpoch": "The first targeted generator pass did not prove full source QA. Subsequent full QA correctly found f179 unsupported as an explicit SH seed; one wrong active T081 mapping was corrected after a genuine independent source review. Original live mapping, retained PDF/extraction and historical reviews are preserved. Root independently reran full21 QA and floors; those are separate evidence.",
+  "independentSourceReview": {
+    "path": "contracts/stage-plan-review-evidence/2026-11-16/sh-simple-inequalities-source-correction-v1/independent-source-review.actual.json",
+    "sha256": "2835876970fd1cea0bb20a20403f482905b2fb1e346af527a499ae9d76696f71"
+  },
+  "focusedNativeCoverage": {
+    "path": "tmp/math-duration-ci-repair-20261116-v1/sh-source-coverage-after.actual.json",
+    "sha256": "3895666b2ce756d8d16c5784f338e98e0c1ec5eab7d92a7edaf1242434ed4b0e",
+    "sourceBackedSH": 659,
+    "visibleSH": 659,
+    "unsupportedAssignedSH": 0
+  },
+  "mathDurationCheck": {
+    "command": "cd app && npm run check:math-duration-composition-views",
+    "exitCode": 0,
+    "viewCount": 18,
+    "negativeCases": 12,
+    "log": "tmp/math-duration-ci-repair-20261116-v1/after-sh-source-correction.actual.log",
+    "logSha256": "f1bf977ceed4ff11a5cb3f2e5f40510bcf4f6d17edb3c29d8da12914e51d86d3"
+  },
+  "newAuthoringMetadata": "Root separately supplied source identity metadata; it is replayed by the same 174 operations and 50 shared nodes, with no extra runtime semantics.",
+  "finalSourcePins": [
+    {
+      "path": "app/package.json",
+      "sha256": "9a8b8b627b8cf45faabfe2c2add698282eb96727c5244dbdc01df9632f5b003a"
+    },
+    {
+      "path": "app/scripts/generateMathDurationCompositionViews.ts",
+      "sha256": "d3df50a396a1c3fd179d201f315b8079db12aa302e95adfaab9bbf2569c069cc"
+    },
+    {
+      "path": "app/scripts/mathDurationStagePlacementPolicy.ts",
+      "sha256": "399de6db53aad8050bdca786655f4ba36cbfbe7d1c37a135a090b47bac63ee28"
+    },
+    {
+      "path": "app/scripts/testMathDurationStagePlacementPolicy.ts",
+      "sha256": "fb8e2c4f1ca2631cc4299a6072c1f5abc5bd34003a32b3797f0c75c6a3e0e1ae"
+    },
+    {
+      "path": "app/scripts/config/math-duration-split-spanning-tree-policy.json",
+      "sha256": "bc525180b07d605e089be941233176bf4755acab8abf6a9b91e179df6036cd60"
+    },
+    {
+      "path": "app/scripts/config/math-duration-stage-placement-policy.json",
+      "sha256": "5510d3c8c7f5140febc3ac40523cbe4e253710183e588ad8b8dc011b1949fc8d"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "sha256": "306eeed52f6b0b1059264ccb1d4ea23227dd3ddff4d19f2a1ca096511d65a149"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-SH/lower-secondary/sh_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sha256": "da75dadc5757efeba57190d4a796d960c70eeb76c14be227a56a825d938546f1"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/SH/lower-secondary/source-extraction/DE_SH_MATHEMATIK_SEKI_FACHANFORDERUNGEN_2024.source-extraction.json",
+      "sha256": "a66cf627e3da9c2d2c67f31c96478e4d691815cc3351ed5f9db09abe43be488d"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/SH/Fachanforderungen_Mathematik_Sekundarstufe_2024_barrierearm.pdf",
+      "sha256": "17d35f8bb5129819c7de5040c5edfbe355e58cfcd01f43f694029b3b841e0d28"
+    }
+  ],
+  "finalDurationViews": [
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-gk-g8.view.json",
+      "sha256": "33bd3b50535f117bdc44bbd5a2f75c3ee573c5f92d23c44ace9780c75f55a30c"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-gk-g9.view.json",
+      "sha256": "55be2355cc98c84c811a68145fd776fbbeda210b3778836133fa78546c70c18b"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-lk-g8.view.json",
+      "sha256": "f1555817f5b6ddd42025c1299757c51a311c2d53cab06b24d5afe35cb9c89715"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-lk-g9.view.json",
+      "sha256": "44e0c80fa6c1c68bc07c35548b8efbf1be80cd0ebe1a9e46baf6f7aa1b7b2aed"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-seki-g8.view.json",
+      "sha256": "f5d8dc1d9e8078264bd0de73980baa9f88be6ed96e4cead958014ceab75bd545"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-seki-g9.view.json",
+      "sha256": "2562722e525e9e41b62a437cf78c081231f43192550c00a009dcf4db21d8a3a1"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-gk-g8.view.json",
+      "sha256": "9867b96289043859bbb79df49db296feb9c36a120347439103f3da1568bc3fac"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-gk-g9.view.json",
+      "sha256": "c509e15787aa821af66f5f8341fa09701ef601b5a3b8cdc45a7732c00a799a11"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-lk-g8.view.json",
+      "sha256": "0869ad06849dff6c8e6acd12d1ad6fb1cc7e1385b6b426e92cf77c6ca6647c07"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-lk-g9.view.json",
+      "sha256": "15a9c9399ec6af30f67482248df8621dba97de1cb79bfbfacd6738bf585531d3"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-seki-g8.view.json",
+      "sha256": "89d1186bcaba1e4d95f2bc7c9a422e8ad9849a684947e00708caf8332d8431f4"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-seki-g9.view.json",
+      "sha256": "1195947afb300eb38337d7f6ef99bdc62d7ca5cc8809c8adb03d6f6c156f2449"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk-g8.view.json",
+      "sha256": "2badabcb106b6b14b098a553cc0cbc634bea3e8347f9ac19fc05a33de434580c"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk-g9.view.json",
+      "sha256": "66603171495c03823ac489d277645c883b774a35bf57b5be5992aa23764fd597"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-lk-g8.view.json",
+      "sha256": "755c05e52eda20ef4517a6be7b5325a4b5c4a3d96d05706832ea4ad7f7e5ec6a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-lk-g9.view.json",
+      "sha256": "ce1574bff0263b39978329354e0439bfef6af8dd368f35fe0bd62dec702a62ad"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-seki-g8.view.json",
+      "sha256": "1ac72ae16114aa17e3c5f669616914cbe6fa11c1268409d95edf861ec72292a5"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-seki-g9.view.json",
+      "sha256": "cab9bec643efed0e13513a390ea4d862ad4e301c2ef48bd5d88761ea78bab561"
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict'
 import './testCurriculumQualityStatus'
-import { readFileSync, readdirSync } from 'node:fs'
+import { mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs'
+import { tmpdir } from 'node:os'
 import { resolve } from 'node:path'
 
 import type { UiGoal } from '../src/goalTypes'
@@ -16,7 +17,9 @@ import { goalMatchesFilters } from '../src/utils/goalFilters'
 import { normalizeLearnerProjectedEntries } from '../src/utils/learnerTreeProjection'
 import { buildVisibleChildrenMap } from '../src/utils/treeProjectionRuntime'
 import { buildApplicabilityCompilation } from './applicabilityCompiler'
-import { evaluateRouteProfile, createRouteProfiles } from './generateCurriculumQualityStatus'
+import { loadCurrentCurriculumCatalog } from './currentCurriculumCatalog'
+import { collectRenderedAtomicGoalIdsFromCompositionView, evaluateRouteProfile, createRouteProfiles } from './generateCurriculumQualityStatus'
+import { liveVerificationInputs } from './lib/verificationInputSnapshot'
 
 const routeProfiles = createRouteProfiles()
 const root = resolve(import.meta.dirname, '../..')
@@ -39,10 +42,23 @@ const abiturRootIds = {
 } as const
 const fermiGoalId = '658cf33d-a0c2-5d47-801a-3dbcd5cac074'
 const fermiAssessmentId = '71e8936b-fa8a-50dc-8c47-fca015b85ac5'
-const kinematicsAssessmentIds = [
-  '4ab1cf6d-b808-5b86-9291-85df0b9f2496',
-  '6ea3fb3c-abdc-568f-ab13-97c36dc274e4',
+const kinematicsAssessments = [
+  { id: 'c5807a37-129e-5df6-8989-482bc7f5683e', maxPoints: 24 },
+  { id: '6ea3fb3c-abdc-568f-ab13-97c36dc274e4', maxPoints: 36 },
 ]
+const retainedVerticalAssessmentId = '4ab1cf6d-b808-5b86-9291-85df0b9f2496'
+assert.equal(canonicalById.get(retainedVerticalAssessmentId)?.extendedData?.applicabilityProjection, 'excluded')
+assert.deepEqual(canonicalById.get(retainedVerticalAssessmentId)?.examData?.coveredGoalIds, [])
+const astronomyAssessments = new Map([
+  ['14cc61c4-4909-5671-b1ee-930a02cb9f51', 'af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93'],
+  ['50521f0d-71b1-51cf-b30d-650e3abf3036', '1b060e79-dc2d-5e4e-abb5-42eca39f9cc7'],
+])
+for (const [taskId, basisId] of astronomyAssessments) {
+  const task = canonicalById.get(taskId)!
+  assert.equal(task.examData?.reviewStatus, 'released')
+  assert.deepEqual(task.requires, [basisId])
+  assert.deepEqual(task.examData?.coveredGoalIds, [basisId])
+}
 const diodeSekIJurisdictions = new Set(['DE-BB', 'DE-BE', 'DE-HB', 'DE-HH', 'DE-MV', 'DE-NI', 'DE-NW', 'DE-SH'])
 const diodeTaskIds = [
   'c61b2a69-b5cd-5785-bb04-5d6bca53b218',
@@ -55,7 +71,11 @@ const expectedSekITasks = (view: CompositionView): Array<{ goalId: string; wrapp
   // Upper-secondary demand alone does not establish a lower-secondary source placement.
   if (diodeSekIJurisdictions.has(jurisdiction)) return []
   const diodeTasks = diodeTaskIds.map((goalId) => ({ goalId, wrapperId: 'physics-final-diode-seki' }))
-  if (['DE-SL', 'DE-SN'].includes(jurisdiction)) return diodeTasks
+  if (['DE-SL', 'DE-SN'].includes(jurisdiction)) return [
+    ...diodeTasks,
+    ...[...astronomyAssessments.keys()].slice(0, jurisdiction === 'DE-SL' ? 2 : 1)
+      .map(goalId => ({ goalId, wrapperId: 'physics-b040-source-local-astronomy' })),
+  ]
   if (['DE-ST', 'DE-TH'].includes(jurisdiction)) return diodeTasks.slice(0, 1)
   if (!jurisdiction) {
     return [{ goalId: '74a32716-2b46-5d96-8b57-3f6edb90e088', wrapperId: 'physics-b034-assessments-seki' }, ...diodeTasks]
@@ -105,6 +125,39 @@ const collectDescendants = (
   return result
 }
 
+const assertAstronomyTargetVisibility = (view: CompositionView, visible: Set<string>): number => {
+  const { targetGoalIds } = collectCompositionProjectionRoleGoalIds(view.rootNodes, canonicalById)
+  const filters = [view.scope.courseProfile, view.scope.jurisdiction].filter((value): value is string => !!value)
+  // Derive obligations from ordinary targets and canonical prerequisites,
+  // independently of whether an assessment reference is present in the view.
+  const pending = [...targetGoalIds].filter(id => {
+    const goal = canonicalById.get(id)
+    return goal && goal.contains.length === 0 && !goal.examData && goalMatchesFilters(goal, filters)
+  })
+  const demanded = new Set<string>()
+  while (pending.length) {
+    const id = pending.pop()!
+    if (demanded.has(id)) continue
+    demanded.add(id)
+    pending.push(...(canonicalById.get(id)?.requires ?? []).map(ref => ref.split(':').at(-1)!))
+  }
+  let expected = 0
+  for (const [taskId, basisId] of astronomyAssessments) {
+    if (!demanded.has(basisId)) continue
+    assert(visible.has(taskId), `${view.viewId}: existing astronomy demand needs its released assessment ${taskId}`)
+    expected++
+  }
+  return expected
+}
+
+const isBesideExistingAstronomyPreparation = (nodes: CompositionView['rootNodes'], taskId: string): boolean => {
+  const basisId = astronomyAssessments.get(taskId)
+  if (!basisId) return false
+  const references = nodes.filter(node => 'goalId' in node).map(node => node.goalId)
+  return (references.includes(taskId) && references.includes(basisId))
+    || nodes.some(node => node.kind === 'structure' && isBesideExistingAstronomyPreparation(node.children, taskId))
+}
+
 let viewCount = 0
 let fermiScopeViewCount = 0
 let practiceTaskPairs = 0
@@ -113,6 +166,7 @@ let preservedSekITaskPairs = 0
 let preservedPrerequisiteOnlyPairs = 0
 let filteredPrerequisiteOnlyPairs = 0
 let kinematicsTaskPairs = 0
+let astronomyTaskPairs = 0
 const jurisdictions = new Set<string>()
 for (const filename of readdirSync(viewDirectory).filter((name) => name.endsWith('.view.json')).sort()) {
   const view = JSON.parse(readFileSync(resolve(viewDirectory, filename), 'utf8')) as CompositionView
@@ -145,6 +199,14 @@ for (const filename of readdirSync(viewDirectory).filter((name) => name.endsWith
     `${view.viewId}: the Fermi assessment must follow exactly its competency's target scope`,
   )
   fermiScopeViewCount++
+  assert(!visible.has(retainedVerticalAssessmentId),
+    `${view.viewId}: the retained mixed task must not become an active assessment target`)
+  astronomyTaskPairs += assertAstronomyTargetVisibility(view, visible)
+  for (const taskId of astronomyAssessments.keys()) {
+    if (!visible.has(taskId)) continue
+    assert.deepEqual(byId.get(taskId)?.examData, canonicalById.get(taskId)?.examData,
+      `${view.viewId}: astronomy tasks retain their complete canonical payload`)
+  }
 
   if ((course !== 'GK' && course !== 'LK') || !['SekII', 'CrossStage'].includes(view.scope.stage ?? '')) continue
   // Bavaria and Baden-Wuerttemberg author separate course structures; this
@@ -154,12 +216,12 @@ for (const filename of readdirSync(viewDirectory).filter((name) => name.endsWith
   const preservedSekITasks = expectedSekITasks(view)
   viewCount++
   if (view.scope.jurisdiction) jurisdictions.add(view.scope.jurisdiction)
-  for (const id of kinematicsAssessmentIds) {
+  for (const { id, maxPoints } of kinematicsAssessments) {
     assert(visible.has(id), `${view.viewId}: the reviewed vector-free kinematics task must remain reachable`)
     assert(ancestorsById.get(id)?.includes(practiceRootIds[0]),
       `${view.viewId}: kinematics assessments belong to the E-phase exercise collection`)
     assert.equal(byId.get(id)?.examData?.reviewStatus, 'released')
-    assert.equal(byId.get(id)?.examData?.scoring.maxPoints, 36)
+    assert.equal(byId.get(id)?.examData?.scoring.maxPoints, maxPoints)
     assert.deepEqual(byId.get(id)?.examData, canonicalById.get(id)?.examData,
       `${view.viewId}: both language bodies and exact scoring must survive projection`)
     kinematicsTaskPairs++
@@ -192,9 +254,14 @@ for (const filename of readdirSync(viewDirectory).filter((name) => name.endsWith
   for (const rootId of expectedRootIds) {
     const sourceRoot = canonicalById.get(rootId)!
     // These CrossStage views keep established Sek-I tasks in their original
-    // sections and explicitly compose the remaining canonical Q4 assessments.
-    const composedQ4Root = projected.goals.find((goal) => goal.extendedData?.compositionNodeId === 'physics-q4-practice')?.id
-    const projectedRootId = rootId === practiceRootIds[4] && composedQ4Root ? composedQ4Root : rootId
+    // sections and explicitly compose Q1 and the remaining Q4 assessments.
+    const composedQ4Root = projected.goals.find((goal) => goal.extendedData?.compositionNodeId === 'physics-q4')?.id
+    // Q1's reviewed repairs place its assessments beside their preparation
+    // within the phase, rather than requiring a duplicate canonical folder.
+    const composedQ1Root = projected.goals.find((goal) => goal.extendedData?.compositionNodeId === 'physics-q1')?.id
+    const projectedRootId = rootId === practiceRootIds[1]
+      ? composedQ1Root
+      : rootId === practiceRootIds[4] && composedQ4Root ? composedQ4Root : rootId
     assert(projectedRootId && visible.has(projectedRootId), `${view.viewId}: missing assessment collection ${sourceRoot.title}`)
     if (view.scope.stage === 'CrossStage') {
       assert((ancestorsById.get(projectedRootId) ?? []).some((id) => /^Sekundarstufe II(?:\s|$)/u.test(byId.get(id)!.title)),
@@ -210,7 +277,8 @@ for (const filename of readdirSync(viewDirectory).filter((name) => name.endsWith
 
     for (const source of expectedTasks) {
       assert(visible.has(source.id), `${view.viewId}: missing task ${source.title} (${source.id})`)
-      assert(collectionIds.has(source.id) || (rootId === practiceRootIds[4] && preservedSekITasks.some((task) => task.goalId === source.id)),
+      assert(collectionIds.has(source.id) || isBesideExistingAstronomyPreparation(view.rootNodes, source.id)
+        || (rootId === practiceRootIds[4] && preservedSekITasks.some((task) => task.goalId === source.id)),
         `${view.viewId}: ${source.title} must remain in its exercise collection or its established Sek-I section`)
       const projectedTask = byId.get(source.id)!
       assert(['', 'released'].includes(source.examData?.reviewStatus ?? ''),
@@ -235,15 +303,39 @@ assert.equal(viewCount, 60, 'Cover every existing GK/LK and SekII/CrossStage ass
 assert.equal(fermiScopeViewCount, 69, 'Check exact Fermi assessment target visibility in every Physics composition view.')
 assert.equal(jurisdictions.size, 14, 'Cover all jurisdictions using these Physics assessment collections.')
 assert.equal(kinematicsTaskPairs, 120, 'Both reviewed kinematics assessments must appear in all 60 shared GK/LK exercise views.')
-assert.equal(practiceTaskPairs, 3246,
-  'Preserve the 3186 prior upper practice placements and the 60 actual placements of the existing band-assessment ID moved to its proper upper collection.')
+assert.equal(astronomyTaskPairs, 136, 'Every existing ordinary astronomy demand needs its applicable task across all 69 views.')
+assert.equal(practiceTaskPairs, 4266,
+  'Expose every current canonical collection obligation, including the new individual and nested assessments.')
 assert.equal(abiturTaskPairs, 480, 'Every applicable view must expose both Abitur sample exams and all eight proposals.')
-assert.equal(preservedSekITaskPairs, 24, 'Preserve the source-backed Sek-I task placements; upper demand alone stays in upper preparation.')
+assert.equal(preservedSekITaskPairs, 30, 'Preserve the source-backed Sek-I task placements, including six SL/SN astronomy placements.')
 assert.equal(preservedPrerequisiteOnlyPairs, 161, 'Preserve every existing Q4 prerequisite-only role affected by explicit task references.')
 assert.equal(filteredPrerequisiteOnlyPairs, 48, 'Course and jurisdiction filters must not silently reintroduce these support tasks as targets.')
+const missingAstronomyFixture = mkdtempSync(resolve(tmpdir(), 'physics-missing-astronomy-'))
+try {
+  const missingView = JSON.parse(readFileSync(resolve(viewDirectory, 'de-bb-gk.view.json'), 'utf8')) as CompositionView
+  const missingTaskId = [...astronomyAssessments.keys()][0]
+  const removeTask = (nodes: CompositionView['rootNodes']): void => {
+    for (let index = nodes.length - 1; index >= 0; index--) {
+      const node = nodes[index]
+      if ('goalId' in node && node.goalId === missingTaskId) nodes.splice(index, 1)
+      else if (node.kind === 'structure') removeTask(node.children)
+    }
+  }
+  removeTask(missingView.rootNodes)
+  const missingViewPath = resolve(missingAstronomyFixture, 'missing.json')
+  writeFileSync(missingViewPath, JSON.stringify(missingView))
+  const missingVisible = collectRenderedAtomicGoalIdsFromCompositionView(canonicalLandscape, missingViewPath, ['GK'])
+  assert.throws(() => assertAstronomyTargetVisibility(missingView, missingVisible),
+    /existing astronomy demand needs its released assessment/,
+    'Removing a task must fail while its independently derived preparation demand remains.')
+} finally {
+  rmSync(missingAstronomyFixture, { recursive: true, force: true })
+}
 const routeProfile = routeProfiles.find((profile) => profile.profileId === 'canonical-physics-sek1')
 assert(routeProfile, 'The actual Physics Sek-I route profile must remain configured.')
-const routeStatus = evaluateRouteProfile(canonicalLandscape, routeProfile, buildApplicabilityCompilation())
+const currentCatalog = loadCurrentCurriculumCatalog(liveVerificationInputs).entries
+  .map(entry => entry.landscape as SkillLandscape)
+const routeStatus = evaluateRouteProfile(canonicalLandscape, routeProfile, buildApplicabilityCompilation(), currentCatalog)
 const compositionRule = routeStatus.rules.find((rule) => rule.id === 'CQR-104')
 assert(compositionRule, 'The actual endpoint-composition rule must run over the current Physics views.')
 assert.equal(compositionRule.status, 'pass', JSON.stringify(compositionRule, null, 2))

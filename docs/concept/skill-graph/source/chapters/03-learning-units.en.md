@@ -1,117 +1,107 @@
-## Learning Units: From Learning Promise to Recursive Completion {#sec:learning-units}
+## Declared Units: Structure, Order, and Evidence {#sec:learning-units}
 
-The skill graph specifies which goals exist and what they require, yet it does not say which goals together form a coherent domain unit that a learner starts and completes as a recognizable whole. That responsibility belongs to a learning unit. This section defines a unit's scope, its derived completion, and the boundaries of prerequisites between whole units; Section~@ref{sec:assessment} builds implicit mastery on top of it.
+This chapter states the binding target model of decisions B1 to B16 of 14 November and the stage decisions of 15 November 2026. Its implementation boundary is explicit: the three existing subject units still use the contract of 12 November; the stage-plan foundation activates no real Land plan yet. Target model, existing structural validator, and production runtime are different evidence claims.
 
-:::principle {title="Domain Unit Rather Than Calendar Bucket"}
-A **learning unit** (German *Lerneinheit*, future technical name `LearningUnit`) binds an understandable learning promise to its own learning goals and, where appropriate, smaller learning units -- its *child units*. The structure is recursive: Mechanics may contain Kinematics and Dynamics, and Kinematics may in turn contain smaller units. School years, semesters, and study weeks are possible scheduling anchors rather than synonyms for a learning unit. Personalization Levels 1--4, QA maturity tiers, and the difficulty field `level` keep their existing meanings.
+:::principle {title="Cluster, Unit, Unit With Assessments"}
+A **cluster** structures goals. An explicitly declared **unit** is a cluster whose goals can be acquired as one continuous block in the intended learning flow. A **unit with assessments** additionally demonstrates independent application of its own content goals through own assessments with reviewed coverage. An assessment-free unit only orders goals and recognizes nothing. Not every cluster is a unit; subjects are filters, not units. Personalization levels, maturity tiers, and difficulty retain their meanings.
 :::
 
-:::principle {title="Purpose: A Secure Foundation Before Building On"}
-A learning unit establishes solid, independent application of its promise before the planned course builds on it. Its assessments are designed to expose essential misconceptions: an exposed gap leads to focused further learning and a fresh, equivalent assessment, whereas a false completion would send learners onward on an unstable foundation. The ordinary grading contract applies unchanged -- there is no hidden pass rule and no second stored outcome; an isolated slip with sound reasoning is judged differently from a missing central understanding. This is a didactic requirement of the unit definition, not a technical access lock (Section~@ref{sec:unit-progression}).
+:::principle {title="Target Model and Existing Contract"}
+Subject units belong to the canonical landscape and hold across all Länder. **Plan units** structure the shared plan of one Land and duration model across the selected subjects, for example stages, years, and phases. Migration of subject units, their assessment clusters, package carriers, and production readers follows F8 (measurement) in F9 to F13. The development directory `contracts/curriculum-package/v1.3/` is not a published curriculum package and does not prove this migration.
 :::
+
+Necessary current subject-matter repairs of goals, prerequisites, tasks, rubrics, and coverage remain authorized now under delegated K1–K13. The F8 boundary concerns future unit introduction and its cluster, assessment, package, and runtime migration; it preserves no false edge or missing assessment. Each such repair needs its own current independent evidence.
 
 ### Motivation and Distinct Domain Claims {#sec:unit-claims}
 
-A learning unit answers first: *What will I be able to do afterwards, and why does it matter?* A motivational opening makes that promise tangible before individual tasks or goals are presented. That opening is a didactic role: when modeled as a genuine orientation goal, it follows the orientation completion contract (Section~@ref{sec:orientation}), whereas a synthetic heading never mints an extra learning goal. Derived unit completion never asserts that a motivational conversation actually took place.
+A learning promise explains: what will I be able to do afterwards, and why is it useful? A motivational opening is a didactic function. Only a genuine orientation goal has its own result contract; a heading creates no goal, and derived completion asserts no actual conversation.
 
-A unit boundary follows a meaningful conceptual transition: which coherent understanding and application must be secure before something new depends on it? An existing assessment, a target quota, a tidy heading, or the density of prerequisite edges is at most an indicator, never the definition. Sparse, transitively minimal chains can form strong units, and shared elementary foundations do not force every later application into one giant unit. Edges are neither added nor removed to make a desired cut fit; a questionable edge is a separate subject-matter finding. A terminal or synthesis unit needs no later consumer to justify it. The [design criteria and worked examples](repo:docs/concept/skill-graph/learning-unit-design-and-examples.md) apply these criteria to two candidates.
+Unit boundaries follow a meaningful conceptual transition. Existing assessments, goal quotas, headings, and edge density do not define them. Sparse prerequisite chains can form strong units. A questionable edge is reviewed on subject-matter grounds rather than retained or changed to fit a desired grouping. Absence of a later consumer proves no completion. The [design criteria](repo:docs/concept/skill-graph/learning-unit-design-and-examples.md) continue to apply.
 
-Relative to its child units, a parent unit may make one of three distinct claims:
+An aggregate groups children without a new own assessment. A synthesis assessment may demonstrate additional integration without artificial content goals or re-passing children. At full rollout own content goals need a responsible subject unit with assessments. Such a unit's assessments lie within its cluster and cover every own content goal under R1 to R5. This also applies to experimental content goals. Until full introduction assessment-free units may order own content goals; this grants no recognition.
 
-- **Summarize (aggregate).** The unit merely groups competencies already acquired in its children; in that case it needs no new assessment of its own.
-- **Integrate (synthesis).** When the unit additionally promises independent integration across child competencies, its own synthesis assessment may test that integrative claim over competencies already acquired in child units, without inventing artificial new content goals. The role of a synthesis assessment is that extra integration proof rather than re-passing every child.
-- **Own domain competencies.** A unit may also introduce genuine new domain competencies of its own, which require their own direct acquisition ownership and valid assessment coverage.
+Assessments must expose essential misconceptions. A gap leads to focused further learning and a fresh equivalent assessment under the ordinary grading contract. There is no hidden pass rule and no second outcome. Missing coverage is an **assessment gap**: it remains a failing finding and is repaired with suitable tasks, solutions, rubrics, and independent review, never through a fictitious prerequisite or relaxed gate.
 
-### Direct Acquisition, Child Units, and Total Scope {#sec:unit-own-children}
+### Own Goals, Child Units, and Total Scope {#sec:unit-own-children}
 
-An authoritative, versioned unit $U$ is specified by three sets:
-
-- $\Own(U)$ denotes the directly assigned atomic *acquisition targets* -- the unit's own goals. Genuine orientation, assessment, and memory goals may belong to $\Own(U)$; synthetic structure markers never do.
-- $\Children(U)$ denotes the mandatory child units -- the *required children* -- after any authored choices have been resolved.
-- $T(U)$ denotes the deduplicated recursive goal set -- the *total scope* -- given by:
+The target contract declares a unit in the placement layer and references its cluster. The atomic descendants of that cluster form $T(U)$. Direct child units are the declared units below it with no intervening unit between them and U. Their set is $\Children(U)$. The remaining atoms form $\Own(U)$; child units and own atoms together are the unit's **children**. Intervening clusters without a unit declaration are skipped.
 
 :::equation {#eq:unit-targets}
 T(U) = \Own(U) \cup \bigcup_{V \in \Children(U)} T(V).
 :::
 
-In Figure~@ref{fig:recursive-unit}, Kinematics owns $\{\nd{a}, \nd{b}, \nd{q_K}, \nd{k_K}\}$, Dynamics owns $\{\nd{d}, \nd{q_D}\}$, and Mechanics owns only the synthesis assessment $\{\nd{q_S}\}$; the total scope of Mechanics spans all seven goals.
+Total scope is non-empty. An aggregate may have no own goals when its children carry the scope. E1 makes each contained atom's smallest unit unique. Overlapping references create neither extra goals nor duplicate progress points. Goals and units without a parent unit are children of an imaginary root. In a full Land plan every goal lies inside one of the two stages; the nationwide canonical structure is no Land plan and may carry goals beside its top units.
 
-Scope and ownership obey five rules:
+#### Representation and Implementation Boundary. {#sec:unit-representation}
 
-- Resolved total scope is non-empty. An empty navigation marker is never a completed learning unit, whereas a pure aggregate may have empty $\Own(U)$ provided its required children carry a non-empty total scope.
-- Every acquisition target has exactly one directly owning unit: the smallest domain-responsible authoritative unit (rule R4 in Section~@ref{sec:why-graph-not-enough}). An ancestor view may display the same stable goals without claiming them again in $\Own(U)$.
-- Overlapping references unite as sets, minting neither duplicate goals nor double-counted progress points.
-- Direct ownership of $\Own(U)$ together with the domain-reviewed meaning of the unit's own assessments forms the unit's *local contract* (Section~@ref{sec:assessment}); switching focus never alters that ownership or contract.
-- Every ordinary content goal in $\Own(U)$ requires an own local assessment consumer -- an assessment owned by $U$ that requires it directly or transitively (R1) -- and at least one such assessment needs reviewed evidence that its tasks and normal grading rubric really test the goal (R2). Section~@ref{sec:why-graph-not-enough} lists all validity conditions R1--R5 and where each is enforced. Without them the local contract is invalid; an ad-hoc waiver mask never substitutes for it.
+In the target model the unit entry names its cluster, learning promise, revision, `after`, and, where applicable, coverage reviews of own assessments. Own goals and child units derive from `contains`; existing `own` and `parentUnitId` are replaced only with F9/F10. A generic or expanded cluster does not declare itself a unit. Goals, prerequisites, and assessment data are not copied.
 
-Embedding reuses the existing program and placement layers or reviewed composition views (Section~@ref{sec:context-model}). Following the Product Owner decision of 12 November 2026, learning units are declared in the placement layer of their skill landscape; the representation follows below. Expanding a UI cluster does not create a learning unit, nor does every `contains` cluster automatically become one; in particular, general cluster satisfaction from Section~@ref{sec:state} remains distinct from the explicitly authorized unit hierarchy defined here.
-
-#### Representation in the Skill Landscape. {#sec:unit-representation}
-
-A learning unit is part of its skill landscape. It lives in the existing placement layer (Section~@ref{sec:placements-projections}); no separate file accompanies the landscape, and goal objects carry no part of the unit contract. Table~@ref{tab:unit-representation} maps the objects of this section and the parts of the local contract (Section~@ref{sec:local-contract}) to their fields; the [runtime schema](repo:docs/landscape-runtime.schema.json) defines them.
-
-:::table {#tab:unit-representation caption="Representation of a learning unit in the placement layer of its skill landscape (Product Owner decision of 12 November 2026)." cols="30mm,46mm,X"}
-| Object | Field | Rule |
+:::table {#tab:unit-representation caption="Existing representation and binding target model; no claim of completed migration." cols="30mm,46mm,X"}
+| Item | Existing contract of 12 November | Binding target model |
 | --- | --- | --- |
-| Unit $U$ | `programUnits` entry with `kind: "learningUnit"`, `id`, `label`, `labelEn` | `id` is a lowercase slug, unique among the program units of the landscape; `label` is in the authoring locale, `labelEn` in English. |
-| Learning promise | `promise`, `promiseEn` | What learners can do independently afterwards and why it matters (Section~@ref{sec:unit-claims}). |
-| $\Own(U)$ | `goalPlacements` entries with `relation: "own"` and the `unitId` of $U$ | Each names an atomic goal of the same landscape and carries exactly `goalId`, `unitId`, and `relation`, hence no `context`; a goal has at most one owning unit (R4). |
-| $\Children(U)$ | `parentUnitId` on each child unit, naming $U$ | Both ends are learning units of the same landscape; a unit has at most one parent, and the hierarchy is acyclic. Every unit named this way is a required child. |
-| $T(U)$, $\Complete(U)$ | not stored | Derived from own placements, the hierarchy, and explicit results (Section~@ref{sec:unit-completion}). |
-| Reviewed meaning of own assessments (R2) | `coverageReviews` on the unit | At most one entry per own assessment: `assessmentGoalId`, `goalIds`, `reference` (review record), `taskRevision`, `rubricRevision`, bound by hash to that assessment's task, solution, and rubric. A review never changes a goal. |
-| Contract revision | `revision` (`YYYY-MM-DD-vN`) | Names one state of the unit's contract; a change of own goals, parent, promise, or coverage reviews is a new revision. Not enforced yet; it becomes a hard rule with the runtime binding of results to a contract revision (R5). |
-| Coverage claim | landscape field `learningUnitCoverage` | `partial` or `complete`; absent means `partial`. Only `complete` requires an owning unit for every atomic goal of the landscape (R4). |
+| Subject unit | `programUnits`, kind `learningUnit`, `promise`, `promiseEn`, `revision` | Declared cluster in the same placement layer; promise and revision remain. |
+| Own goals and children | `goalPlacements` with `relation: own`, no `context`; `parentUnitId` | Derived from cluster scope and nested unit declarations; F9/F10 remain pending. |
+| Coverage reviews | `coverageReviews`, at most one per own assessment, bound to task and rubric hashes and a review record | Still required for units with assessments; historical evidence is never rebound. |
+| Plan units | Stage-plan foundation under `v1.3`, without an activated Land plan | One shared plan per Land and duration model; views are derived excerpts. |
+| Completion and results | No stored unit mastery | Still derived; no writing back to goals and no recognition from `after`. |
 :::
 
-The declaration is closed: a learning unit carries exactly the fields above plus an optional `order`, any other field is a finding, and learning-unit fields on another kind of program unit are rejected as well. Goal kinds, prerequisites, and the coverage claims `coveredGoalIds` of assessments stay on the goals; a unit copies no goal data. Deliberately not representable are whole-unit prerequisites (Section~@ref{sec:unit-progression}), access locks, lists of waived or recognition-eligible goals, optional or alternative child units, and scope-specific ownership: an `own` placement carries no context, so ownership is the same in every resolved context. Calendar-style program units (`program`, `stage`, `year`, `phase`, `semester`, `module`, `track`, `exam`) and the relations `primary`, `secondary`, and `assessed` keep their meaning, and an `own` placement anchors nothing in the program view.
+[Package contract 1.2](repo:contracts/curriculum-package/v1.2/README.md) carries the three existing units through `learningUnitsV1`; the [stage-plan foundation](repo:contracts/curriculum-package/v1.3/README.md) is separate. `validate:learning-units` continues checking the old contract, including R1, R3, and unique `own` assignment. It is not yet a general E1-to-E4 validator of the new model. Changed goals or assessments need current evidence; unchanged historical evidence and the frozen V9 reduction registry remain untouched. A normative change, new placement, or new unit writes no learner result.
 
-[Curriculum-package contract 1.2](repo:contracts/curriculum-package/v1.2/README.md) carries learning units as the capability `learningUnitsV1` and ships each review record with its SHA-256; builds under contract 1.0 or 1.1 project the units out completely ([Dual Curriculum Package Releases](repo:docs/concept/skill-graph/dual-curriculum-package-releases.en.md)). Evidence about goals, edges, and assessments binds the same view, the skill landscape without its learning-unit layer: adding or changing a unit never invalidates it, while any other change still does. The repository validator `validate:learning-units` ([validateLearningUnits.ts](repo:app/scripts/validateLearningUnits.ts)) and the independent package validator enforce the same rules against the same shared conformance cases; Section~@ref{sec:why-graph-not-enough} states which validity rules are enforced, and Appendix~@ref{sec:implementation} records the implementation status. No recognition is derived from learning units yet.
+### Completion Without Additional Stored Unit Mastery {#sec:unit-completion}
 
-### Completion Without Stored Unit Mastery {#sec:unit-completion}
-
-A learning unit is complete if and only if all of its own goals are effectively mastered and every required child unit is complete:
+The full unit is complete exactly when its own goals are satisfied and all required child units are complete:
 
 :::equation {#eq:unit-complete}
 \Complete(U) \iff \bigl(\Own(U) \subseteq \Meff\bigr) \;\land\; \bigwedge_{V \in \Children(U)} \Complete(V).
 :::
 
-Completion is derived from atomic outcomes rather than persisted as a separate `UnitMastery` record that writes results back to children. Assessment and memory goals remain strictly explicit, so passing a parent assessment can replace neither an open child assessment nor missing verified card recall.
+No `UnitMastery` is stored. Assessment and memory goals stay explicit; a parent assessment replaces neither a child assessment nor verified card recall. A synthesis assessment is an additional own obligation. A card collection alone proves no independent application; a child's recall obligation is not moved to the parent to manufacture child completion.
 
-For the three unit forms from Section~@ref{sec:unit-claims}, this means the following. A pure aggregate may carry no assessment of its own, deriving completion from its required children and any other own obligations. A synthesis unit may carry an own synthesis assessment without new content goals; passing that synthesis assessment is then additionally required. A pure flashcard collection establishes no claim of independent domain application, and its explicit recall duties remain mandatory; recall obligations belonging to a child unit must never be hoisted to the parent merely to make the child appear complete.
+Completion of the **portion** required by the Personal Curriculum is not full completion of the whole unit. Only actually needed atoms enter $L$; displaying a unit adds no other assessments or content. The full-unit claim continues to be assessed over the whole $T(U)$.
 
 ::figure{id="fig:recursive-unit"}
 
-### Recognition Before Full Unit Completion {#sec:unit-early-recognition}
+### Recognition Before Overall Completion {#sec:unit-early-recognition}
 
-Under the binding target concept -- which is **not yet implemented** on `main` -- passing an appropriate local assessment can recognize a unit's own content goals before an independent flashcard deck or sibling child unit is finished, provided that no other open own assessment or memory goal of the unit still requires them (Section~@ref{sec:transitive-demand}). That recognition is globally effective, and a still-open parent synthesis assessment does not withdraw it.
+The set computation in Section~@ref{sec:assessment} remains unchanged and is not yet a production global recognition contract. Recognition concerns only own ordinary goals of a valid, revision-bound local assessment contract. While an open own assessment or an open own memory goal still requires a competency, it remains in open demand. An independent card or child unit may stay open without revoking recognition that is already valid. A parent assessment never expands recognition to all descendants; an open synthesis never revokes valid child recognition. Without an own assessment contract a unit recognizes nothing.
 
-Recognition is therefore computed solely over each unit's *own* goals excluding assessment and memory goals. A parent unit never forms an enlarged recognition scope over all of its descendants; otherwise passing a parent assessment could bypass subordinate child assessments or card-recall duties. A parent assessment may attest additional integration without retroactively expanding what child contracts certify. Section~@ref{sec:assessment} states the exact formula and its task-authoring conditions.
+### `after`, Atomic Demand, and Rules E1 to E4 {#sec:unit-progression}
 
-### Prerequisites and the Limits of a Unit Sequence {#sec:unit-progression}
+`U after V` means: in the intended learning flow V is fully complete before U starts. It connects only units that are children of the same unit, including the imaginary root. It orders every atom in U after every atom in V. What is inherited is order, never demand. `requires`, by contrast, connects only atomic goals and requires the designated competency. It does not require whole-unit completion. In the target model no prerequisite points to an assessment goal.
 
-Two kinds of prerequisites must be kept distinct:
-
-- An atomic `requires` edge targeting a competence requires that competence alone rather than completion of its entire owning unit.
-- A *whole-unit prerequisite* is an explicitly authorized dependency between complete learning units: it requires *full completion* of the predecessor unit and belongs to the course composition contract outside the base relations $C$ and $R$.
-
-Neither the compiler nor the coach may conflate those two statements. The current representation (Section~@ref{sec:unit-representation}) cannot express a whole-unit prerequisite; `parentUnitId` states only that a unit is a required child of another.
-
-The unit hierarchy itself must be acyclic. Anyone who further claims an indivisible whole-unit sequence -- in which each unit is completed in full before the next begins -- must also validate the projected unit-dependency graph. Atomic acyclicity alone does not suffice: for $a \to b \to c$ with $\Own(U) = \{a, c\}$ and $\Own(V) = \{b\}$, unit $U$ depends on $V$ via $a \to b$ while $V$ depends on $U$ via $b \to c$. Grouping produces a mutual block cycle, so $U$ and $V$ admit no indivisible whole-unit order; resolving that finding requires re-scoping the unit boundary or explicitly permitting interleaved acquisition rather than inferring silent unit locks from atomic edges.
-
-Atomic normal form $R \subseteq A \times A$ and its complete transitive minimality from Section~@ref{sec:validity} remain in force. The current inventory must pass complete deterministic target-state validation before any milestone pass. That rule implies no automatic minimality rule for a separate whole-unit prerequisite relation yet to be specified.
-
-:::principle {title="Access Profile Still Undecided"}
-A domain acquisition order is not yet a technical access gate. Whether and when a whole-unit prerequisite enforces a hard technical entry lock -- a *unit lock* -- and how deliberate direct assessment attempts behave under it remains **undecided**. Any such profile requires a separate product decision and host verification; the learning-unit definition itself introduces none.
+:::table {#tab:unit-ordering caption="Binding ordering rules; each structure is checked separately." cols="14mm,X"}
+| Rule | Requirement |
+| --- | --- |
+| E1 Tree | Units are nested or share no atoms; each contained goal has at most one smallest unit. In the full Land plan every goal has exactly one learning placement. R4 expresses this uniqueness in local assessment-contract terms. |
+| E2 Learnable in one block | An ordering of all atoms exists that respects every direct and transitive demand and every `after`, with each unit forming one continuous block. |
+| E3 Complete | If a requires b, inspect their smallest common unit, or the imaginary root. If a and b lie in two different child units there, the child of a must lie after the child of b through the declared `after` closure. If at least one child is an own atom, demand itself orders it. |
+| E4 Sparse | Among the children of the same unit, no declared `after` follows already from the other `after` declarations there. Canonical and Land structures are checked separately. |
 :::
 
-Only *if* an explicit gated access profile is later chosen could authorized predecessor units $\operatorname{Pred}(U)$ define:
+E2 is checked at the children of every unit including the imaginary root. A directed edge from child X to child Y arises when X declares `after` Y or an atom in X requires an atom in Y. This child graph must be acyclic; internal child graphs are checked likewise. An atomic DAG alone is insufficient: $a\to b\to c$, $\Own(U)=\{a,c\}$, and $\Own(V)=\{b\}$ create a cycle between U and V. Regrouping or subject-matter-justified finer goals repair it; the diagnosis invents no whole-unit lock.
 
-$$
-\operatorname{Open}(U) = \bigwedge_{V \in \operatorname{Pred}(U)} \operatorname{Cleared}(V), \qquad \operatorname{Cleared}(U) = \operatorname{Open}(U) \land \Complete(U).
-$$
+E3 compares actual atomic demand with declared order. A subject `after` does not become redundant merely because the Land's year order imposes the same order: E4 applies per declaration layer. Subject units are introduced top-down: first coarse parent units free of E1-to-E4 backflows with `after`, then refined leaf units with own assessments that stay whole inside a single plan unit across all 16 Bundesländer; larger parent units whose child units span multiple plan units appear as a single whole only in the nationwide subject overview. Atomic normal form $R\subseteq A\times A$ and its transitive minimality remain separate obligations; the hard G17 check still covers the complete 21 canonical Gymnasium roots. This claims no new E4 gate.
 
-Here $\Complete$ records established evidence whereas $\operatorname{Cleared}$ expresses conditional course policy; neither opening a unit nor computing clearance writes mastery, and this conditional illustration does not settle whether direct assessment attempts remain open inside a locked unit.
+:::principle {title="No Whole-Unit Lock; GD-U14 Is Superseded"}
+The formerly open access profile `GD-U14` with `Open` and `Cleared` is retired in the binding target model by B9 of 14 November 2026. `after` changes neither frontier nor focus rules, direct assessment access, stored outcomes, or recognition. The planned learning mode “unit by unit” only ranks already reachable offers; explicit learner choice and learning-plan priority remain. This runtime selection F13 is not implemented yet. Retirement claims no completed removal of historical code paths.
+:::
+
+#### “Unit by unit” learning mode. {#sec:unit-by-unit}
+
+The target learning mode **“unit by unit”** (*Einheit für Einheit*) uses the unit hierarchy and `after` to rank next-step suggestions over the unchanged set of reachable frontier goals $\Frontier(\Meff)$. Within the active personal scope $L$, a child $X$ (child unit or own atom) counts as **done** (*erledigt*) once all of its atoms in $L$ are effectively mastered ($\Atoms(X)\cap L \subseteq \Meff$); this completes the required portion, whereas $\Complete(U)$ in @eqref{eq:unit-complete} checks all of $T(U)$. Assessment and memory atoms in $L$ count too: an open own assessment leaves this portion open even if all content goals are explicitly mastered. This neither blocks deliberate selection of another goal nor removes a reachable goal from the frontier. A unit is **started** (*begonnen*) when it contains at least one effectively mastered atom in $L$ and is not yet done; an open child is **up next** (*an der Reihe*) when all of its predecessors among the siblings of the same parent unit (from `after` and crossing atomic demand) are done.
+
+Starting at the imaginary root, selection descends recursively to an atomic goal in $\Frontier(\Meff)$, choosing at each level among children that still contain at least one reachable frontier goal by four priority tiers:
+
+1. an open child unit that is both **up next** and already **started** (finish an already started unit coherently);
+2. otherwise an open child (child unit or own atom) that is **up next**;
+3. otherwise an open **started** child unit (when prior skipping left a predecessor open);
+4. otherwise any child still containing a reachable frontier goal.
+
+At genuine zero-progress entry, unresolved orientation goals retain priority (Section~@ref{sec:orientation}); inside a unit with assessments, own assessments naturally follow once their required content goals are done. Explicit learner selection and an active dated schedule retain precedence; runtime implementation (`F13`) remains pending.
+
+For full Land plans Sekundarstufe I and II are the only root children, II `after` I. No atom of the earlier stage may require an atom of the later stage, including transitively and as preparation. A finding is repaired through corrected prerequisites, splitting, evidenced earlier placement, or labeled preparation. No view weakens demand or hides backflows. Introduction follows reporting, cause repair, a ratchet, and a hard gate at zero violations; no new complete Land plan has thereby already been accepted.
 
 :::sources
-[Learning Units](repo:docs/concept/skill-graph/learning-units.md); [Learning-Unit Progression and Access Policy](repo:docs/concept/skill-graph/learning-unit-progression.md); [Graph Definition](repo:docs/concept/skill-graph/graph-definition.md); [Assessment-Gated Completion and Implicit Mastery](repo:docs/concept/skill-graph/assessment-gated-completion.md).
+[Binding unit concept](repo:docs/concept/skill-graph/learning-unit-wiring-concept-2026-11-14.md); [Stage decisions and handover](repo:docs/dev/stage-plan-units-handover-2026-11-15.md); [Stage-plan foundation](repo:contracts/curriculum-package/v1.3/README.md); [Recognition and global completion](repo:docs/concept/skill-graph/assessment-gated-completion.md).
 :::

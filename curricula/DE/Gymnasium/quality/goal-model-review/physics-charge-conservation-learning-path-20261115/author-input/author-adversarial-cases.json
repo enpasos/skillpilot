@@ -1,0 +1,41 @@
+{
+  "identity": "OpenAI GPT author expectations, not independent review or observed runtime scoring",
+  "cases": [
+    {
+      "kind": "weak-conservation-claim",
+      "answerDE": "A ist positiv, B negativ. Der Stab erzeugt zusätzliche Elektronen auf B, während A positive Ladung erhält. B: Die Endladungen sind beide −2 nC; Ladungsausgleich bedeutet, dass positive und negative Teilchen verschwinden.",
+      "answerEN": "A is positive and B negative. The rod creates extra electrons on B while A gains positive charge. B: both final charges are −2 nC; equalization means positive and negative particles disappear.",
+      "expected": "Fail. Correct final signs/numbers do not earn A3 or B3: both explicitly contradict the conserved redistribution model. These essential blocks each earn0."
+    },
+    {
+      "kind": "weak-always-neutral",
+      "answerDE": "FallA: vollständiges korrektes Modell. FallB: Die gegensätzlichen Ladungen gleichen sich aus und danach sind beide Kugeln neutral; Elektronen fließen von N nach M, bis alle Ladungen verschwunden sind.",
+      "answerEN": "Case A: complete correct model. Case B: opposite charges cancel so both spheres become neutral; electrons flow from N to M until all charges disappear.",
+      "expected": "Fail. B1 andB3 are0; B2 is also scientifically incomplete because the surviving electron excess is omitted. A complete A case cannot compensate."
+    },
+    {
+      "kind": "weak-keywords-only",
+      "answerDE": "A positiv, B negativ; Qgesamt=0. B: Qgesamt=−4nC, jeweils−2nC. Ladung bleibt erhalten.",
+      "answerEN": "A positive, B negative; Qtotal=0. B: Qtotal=−4nC, each−2nC. Charge is conserved.",
+      "expected": "Fail. Numbers and a conservation keyword omit the required causal electron-redistribution model, persistence, electron-transfer direction and nonneutral-equalization transfer. Do not award entire blocks by keyword matching."
+    },
+    {
+      "kind": "fair-equivalent-representation",
+      "answerDE": "Eine vollständig beschriftete Skizze zeigt ElektronenA→B, danach A:+q undB:−q; keine Verbindung/kein Ladungsweg zum Stab, Gesamt0. FürB: (+2)+(−6)=−4nC und qM=qN=−2nC. ElektronenN→M, technische StromrichtungM→N. M wechselt vom Mangel zum Überschuss; N behält einen kleineren Überschuss. In beiden Skizzen wird vorhandene Ladung nur umverteilt, nicht vernichtet; gleich geladen ist nicht notwendig neutral.",
+      "answerEN": "A fully labelled sketch shows electronsA→B, then A:+q andB:−q; no connection/charge path to the rod, total0. ForB: (+2)+(−6)=−4nC and qM=qN=−2nC. ElectronsN→M, conventional currentM→N. M changes from deficit to excess; N retains a smaller excess. Both sketches redistribute existing charge without destruction; equally charged does not necessarily mean neutral.",
+      "expected": "Pass12/12 when the labelled sketch also makes the neutral initial state and insulation/persistence clear. Accept conventional-current notation when the opposite electron motion is explicit."
+    },
+    {
+      "kind": "fair-single-minor",
+      "answerDE": "Vollständig korrekte Musterantwort in allen fachlichen Aspekten; nur in der B1-Endzeile steht versehentlich −2mC statt−2nC. Ansatz, übrige Bilanz und B3 nennen konsistent nC.",
+      "answerEN": "Scientifically complete correct model answer; only the final B1 line accidentally says −2mC instead of−2nC. The setup, other balance and B3 consistently use nC.",
+      "expected": "Pass11/12: B1=1, all other blocks2. No additional deduction for the isolated unit typo."
+    },
+    {
+      "kind": "fair-A-no-numeric-magnitude",
+      "answerDE": "FallA verwendet +q und−q mit q>0 und eine vollständige Modellbegründung. Kein Zahlenwert wird fürq erfunden.",
+      "answerEN": "Case A uses +q and−q with q>0 and a complete model explanation. No numerical value is invented forq.",
+      "expected": "Full credit for allA blocks. The material supplies no magnitude; requiring one would be unfair."
+    }
+  ]
+}

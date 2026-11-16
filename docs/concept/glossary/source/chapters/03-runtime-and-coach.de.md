@@ -121,7 +121,7 @@ Ein optionaler Modus, der nach dem Meistern des aktiven Ziels automatisch das er
 
 *EN: Selection strategy* — siehe [Frontier Goal Selection Strategies & Autopilot](repo:docs/concept/didactic/frontier-goal-selection-strategies-autopilot.md)
 
-Die Sortierregel über der berechneten Frontier: `Random` für Abwechslung über Themenbereiche hinweg, `Sequential` für ein lineares Vorgehen entlang der Curriculumstruktur. Gespeichert je Profil zusammen mit Autopilot und `strictMode`.
+Die Sortierregel über der berechneten Frontier: `Random` für Abwechslung über Themenbereiche hinweg, `Sequential` für ein lineares Vorgehen entlang der Baumstruktur sowie als Zielstandard `Einheit für Einheit` (*Unit by unit*, rekursiver Abstieg über begonnene und über `after` an der Reihe liegende Einheiten ohne Frontier-Sperre; Laufzeitumsetzung `F13` offen). Die bestehenden Strategien werden je Profil zusammen mit Autopilot und `strictMode` gespeichert; dies behauptet noch kein gespeichertes F13-Auswahlprofil.
 
 ---
 

@@ -1,0 +1,328 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physics-current840-ten-inputrevision2-20261115-actual-ai-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "codex-release-agent-reading-two-current-inputrevision2-reviews-with-disclosed-own-prior-involvement",
+  "synthesizedAt": "2026-11-15T20:24:42.035896+00:00",
+  "batch": {
+    "batchId": "physics-current840-ten-inputrevision2-20261115",
+    "batchManifestDigest": "sha256:6bdf280e55bcfdc7a3fed88f20e0a2c6d92a018bf0aec782a0d942e1410d84c3",
+    "configDigest": "sha256:bac9473dbb19965652119c4d01fdf8b2c01b1ea5ca36e6d80f24a5df983132b4",
+    "bundleFingerprint": "sha256:009845e47ea3d42fa2d429beb00e25ab9c1986416bdc5f1c5536002b8673941a",
+    "bookDigest": "sha256:61f177eb8b0652f240480bdbe55974473d97691f23ce68051a3ff71d08c2fecf",
+    "reviewInputFingerprint": "sha256:32918a9f275d7029dcb00d9bd7da037a475edd095d92d3e7c72234b2bc192658",
+    "dualSummaryDigest": "sha256:3b96cb2c6bbc978e0318da93de2415e348a8942a42be81a09463949f8f556d23",
+    "canonicalLandscapeDigest": "sha256:6a77eb45c54b065a13b6e0e255f1b79711dd79e41a87923eaef58097d0437f52"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physics-ten-current840-inputrevision2-20261115-first-pass-a",
+      "campaignDigest": "sha256:5a6b758ba25ed063afef07c7d4e8354381e9b0ca3e457ca568eec4d1c4bdfff9",
+      "roundId": "independent-a-inputrevision2",
+      "independenceGroupId": "physics-ten-current840-inputrevision2-20261115-independent-a",
+      "reviewInputFingerprint": "sha256:32918a9f275d7029dcb00d9bd7da037a475edd095d92d3e7c72234b2bc192658",
+      "batchId": "independent-a-inputrevision2.batch-001",
+      "batchInputFingerprint": "sha256:d9231fb5f5abb84ce752c53e21e2d0cc2028c3bed80c56e1f1e9431f2e904a56",
+      "runId": "physics-current10-inputrevision2-a-20261115",
+      "runManifestDigest": "sha256:1d38db4038b4baeae15e3cab356177018300c692b2ee87fb38cbe518bbf7f2f7",
+      "resultsDigest": "sha256:94a8f79bc9b6edd2e63a1333dba18e9a1c181ecfb21788845bd460914b6f4f47"
+    },
+    "second": {
+      "campaignId": "physics-ten-current840-inputrevision2-20261115-first-pass-b",
+      "campaignDigest": "sha256:0f96bcb75764a91f1eb3b13b38955178f15a052ed93888ea87fc443289def7dd",
+      "roundId": "independent-b-inputrevision2",
+      "independenceGroupId": "physics-ten-current840-inputrevision2-20261115-independent-b",
+      "reviewInputFingerprint": "sha256:32918a9f275d7029dcb00d9bd7da037a475edd095d92d3e7c72234b2bc192658",
+      "batchId": "independent-b-inputrevision2.batch-001",
+      "batchInputFingerprint": "sha256:11c29a1e552cdb52e224e49e018662efabbb12240a228a043a9d9466fd7de1ad",
+      "runId": "physics-current10-inputrevision2-b-20261115",
+      "runManifestDigest": "sha256:f540c09dd413976e129de253dde404783870d775392862aa8e165b99884ff593",
+      "resultsDigest": "sha256:1929ed5435c1336d2359a7c1a3cbcae13a19fbf97cfcdcf391bf0e774ea4266b"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physics-current840-ten-inputrevision2-20261115-actual-ai-synthesis-001",
+      "goalId": "39ef1e8a-9203-5192-8c76-8e0c3322646f",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:df98f85400480c120fc58a9071b348a4859c3466c613bc71c30a133e59e1eeed",
+      "pageFingerprint": "sha256:b997dc5a81a4dcc379ee21c838fb90a54b041a33aa393494976b28299f5d807f",
+      "goalReviewContextFingerprint": "sha256:c1384d4aa187f21e7f18a9c12b4581aac6aa5f31a4a361718808cd757954bc04",
+      "finalText": {
+        "titleDe": "Farbsehen und additive Farbmischung deuten",
+        "titleEn": "Interpret Color Vision and Additive Color Mixing",
+        "descriptionDe": "Die lernende Person kann die Farbwirkung additiv überlagerten Lichts mit dem gemeinsamen Antwortmuster verschiedener Zapfentypen erklären und dazugehörige graphische Darstellungen empirischer Daten fachlich auswerten.",
+        "descriptionEn": "The learner can explain the colour appearance of additively superposed light through the joint response pattern of different cone types and scientifically interpret related graphical representations of empirical data."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physics-current10-inputrevision2-a-20261115.goal-001",
+          "recordDigest": "sha256:c61fd3f4468ad588788f5b59babbf6d3751f43696ef55963e1510b40b49e2c82"
+        },
+        "second": {
+          "recordId": "physics-current10-inputrevision2-b-20261115.goal-01",
+          "recordDigest": "sha256:eda94c9c49d73a18ecfd13ff42414cd1d2bc65d04b219e17931678bf074732d6"
+        }
+      },
+      "rationaleDe": "Beide tatsächlichen eigenständigen Bewertungen dieses exakten aktuellen Inputs behalten den Text und sehen keinen Profiländerungsbedarf. Lichtüberlagerung und gemeinsame Zapfenantwort sind getrennt, die empirische Grafikarbeit bleibt auf Farbsehen bezogen. Die eigenen früheren18er-Befunde sind erhalten; die Reviewer kennen keine Gegenstimme, beanspruchen aber keine historische Unbefangenheit. Keine menschliche, amtliche Projektions- oder Lernendenfreigabe.",
+      "rationaleEn": "Both actual independent evaluations of this exact current input retain the text and recommend no profile change. Light superposition and joint cone response are distinguished, while empirical graph work remains scoped to colour vision. Their own earlier18-goal findings remain preserved; they know no counterpart verdict but claim no historical lack of prior involvement. No human, official-projection or learner approval is implied."
+    },
+    {
+      "decisionId": "physics-current840-ten-inputrevision2-20261115-actual-ai-synthesis-002",
+      "goalId": "f06c581a-7157-584e-a692-99bcd613cff9",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:30568558572118ec6d55497a22a9e67c54e562741376def0677727ade3de8549",
+      "pageFingerprint": "sha256:b8e092dae8042977b1893e7f063f982605127a1125d243fabf89180a8f773ea0",
+      "goalReviewContextFingerprint": "sha256:951d11edcd03e3cdcd1537f06a27a426e29a67262faa18e0aeb256e906e657e1",
+      "finalText": {
+        "titleDe": "Frequenzspektren von Tönen und Klängen analysieren",
+        "titleEn": "Analyse frequency spectra of tones and complex sounds",
+        "descriptionDe": "Die lernende Person kann Zeitdiagramme und Frequenzspektren von Tönen und Klängen miteinander verknüpfen, Grund- und Obertöne identifizieren und den Einfluss der Spektralanteile auf die Klangfarbe erklären.",
+        "descriptionEn": "The learner can relate time-domain graphs and frequency spectra of tones and complex sounds, identify fundamental and overtone components, and explain how the spectral components affect timbre."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physics-current10-inputrevision2-a-20261115.goal-002",
+          "recordDigest": "sha256:08275cf27d5bf68a80298422ebfd3efb81fd9fc07412c5628d094246905248d1"
+        },
+        "second": {
+          "recordId": "physics-current10-inputrevision2-b-20261115.goal-02",
+          "recordDigest": "sha256:7ffc42a93114e1540f4d8068f2c2d1778ceadfb187ba74132b9dbcea52fe7ae1"
+        }
+      },
+      "rationaleDe": "Beide tatsächlichen eigenständigen Bewertungen dieses exakten aktuellen Inputs behalten den Text und sehen keinen Profiländerungsbedarf. Zeit-/Spektraldarstellung, Phase und Klangfarbe werden verbunden; relative Amplituden liefern keine unbegründete Pegel-/Lautheitspflicht. Die eigenen früheren18er-Befunde sind erhalten; die Reviewer kennen keine Gegenstimme, beanspruchen aber keine historische Unbefangenheit. Keine menschliche, amtliche Projektions- oder Lernendenfreigabe.",
+      "rationaleEn": "Both actual independent evaluations of this exact current input retain the text and recommend no profile change. Time/spectrum representation, phase and timbre are connected; relative amplitudes do not impose unsupported level/loudness work. Their own earlier18-goal findings remain preserved; they know no counterpart verdict but claim no historical lack of prior involvement. No human, official-projection or learner approval is implied."
+    },
+    {
+      "decisionId": "physics-current840-ten-inputrevision2-20261115-actual-ai-synthesis-003",
+      "goalId": "db47ac91-7bb0-5ba3-b39d-e2d6fc98396e",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:3dca221124a48d4dbf18935e94d6daa9bd697540ed2bfad0da8da60d1c0a062d",
+      "pageFingerprint": "sha256:7ecc54e3b9573899ff1ff38670bd978c8439341e505c744d769574dc86853766",
+      "goalReviewContextFingerprint": "sha256:2cf8ae29090fb6aeea1ed76cab6484b9a3d336423b2442b575b0302067f37451",
+      "finalText": {
+        "titleDe": "Ruhepotenzial an einer selektiv permeablen Membran modellieren",
+        "titleEn": "Model the resting potential across a selectively permeable membrane",
+        "descriptionDe": "Die lernende Person kann das Ruhepotenzial in einem vereinfachten passiven Membranmodell als Ergebnis des Zusammenspiels von konzentrationsgetriebener Diffusion, elektrischer Gegenwirkung und selektiver Membranpermeabilität modellieren und erläutern, dass aktive Transportprozesse die Konzentrationsgradienten langfristig aufrechterhalten, aber nicht Bestandteil dieses passiven Modells sind.",
+        "descriptionEn": "The learner can model the resting potential in a simplified passive membrane model as the result of the interplay among concentration-driven diffusion, electrical opposition, and selective membrane permeability and explain that active transport processes maintain the concentration gradients over time but are not part of this passive model."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physics-current10-inputrevision2-a-20261115.goal-003",
+          "recordDigest": "sha256:42a4e4d6c055e59aea31d89a0bcbc584010d121684275dce7caf1e063eb0f702"
+        },
+        "second": {
+          "recordId": "physics-current10-inputrevision2-b-20261115.goal-03",
+          "recordDigest": "sha256:f9be14f7cfacc1a53289a19f8903ccf98a8eaa55a3aee1d139d8e764443ae94d"
+        }
+      },
+      "rationaleDe": "Beide tatsächlichen eigenständigen Bewertungen dieses exakten aktuellen Inputs behalten den Text und sehen keinen Profiländerungsbedarf. Die konkreten Ein-Ionen-Fälle legen Konzentration, Ladung, Neutralität und Potenzialreferenz fest; der Mehr-Ionen-Gegenfall begrenzt die Gleichgewichtsbehauptung. Die eigenen früheren18er-Befunde sind erhalten; die Reviewer kennen keine Gegenstimme, beanspruchen aber keine historische Unbefangenheit. Keine menschliche, amtliche Projektions- oder Lernendenfreigabe.",
+      "rationaleEn": "Both actual independent evaluations of this exact current input retain the text and recommend no profile change. Specific one-ion cases fix concentration, charge, neutrality and potential reference; a multi-ion counterexample bounds the equilibrium claim. Their own earlier18-goal findings remain preserved; they know no counterpart verdict but claim no historical lack of prior involvement. No human, official-projection or learner approval is implied."
+    },
+    {
+      "decisionId": "physics-current840-ten-inputrevision2-20261115-actual-ai-synthesis-004",
+      "goalId": "c2e0fc31-27a2-5727-9025-a824db9150d2",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:534f4a73f004af0fc19135ef1c3a8084b834781666d8e891a1dec8c1b726dbe3",
+      "pageFingerprint": "sha256:19c70b6b1c1b47f5d4259540c216568a386fa9a56bdf9e0634cda1d195a79b66",
+      "goalReviewContextFingerprint": "sha256:7ef8a00bb5f625bb18466fea0fcd9e570679e6d01e0cefe5b751064da8efb962",
+      "finalText": {
+        "titleDe": "Axonsegmente als elektrische Ersatzschaltungen modellieren",
+        "titleEn": "Model axon segments as equivalent electrical circuits",
+        "descriptionDe": "Die lernende Person kann ein Axonsegment mit Membrankapazität sowie Membran- und Axialwiderstand als elektrische Ersatzschaltung modellieren, mehrere Segmente verknüpfen und begründen, welche passive Signalausbreitung das Modell erklärt und welche zusätzlichen spannungsabhängigen Elemente für aktive Leitung nötig sind.",
+        "descriptionEn": "The learner can model an axon segment as an equivalent electrical circuit with membrane capacitance and membrane and axial resistance, connect multiple segments, and justify which passive signal propagation the model explains and which additional voltage-dependent elements are required for active conduction."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physics-current10-inputrevision2-a-20261115.goal-004",
+          "recordDigest": "sha256:0195231e0d011477b4f38032d8bbe4fbda65e52e54d95cf230d0be057c36e663"
+        },
+        "second": {
+          "recordId": "physics-current10-inputrevision2-b-20261115.goal-04",
+          "recordDigest": "sha256:65283edb92ddf4c216a1ac37e70c653cc3a8581fa0bf7e46bf34e60884fb74da"
+        }
+      },
+      "rationaleDe": "Beide tatsächlichen eigenständigen Bewertungen dieses exakten aktuellen Inputs behalten den Text und sehen keinen Profiländerungsbedarf. Die passive RC-Schaltung wird von einer aktiven Erweiterung mit elektrochemischer Energiequelle und gesteuerter Leitfähigkeit getrennt. Die eigenen früheren18er-Befunde sind erhalten; die Reviewer kennen keine Gegenstimme, beanspruchen aber keine historische Unbefangenheit. Keine menschliche, amtliche Projektions- oder Lernendenfreigabe.",
+      "rationaleEn": "Both actual independent evaluations of this exact current input retain the text and recommend no profile change. The passive RC circuit is distinguished from an active extension with an electrochemical energy source and controlled conductance. Their own earlier18-goal findings remain preserved; they know no counterpart verdict but claim no historical lack of prior involvement. No human, official-projection or learner approval is implied."
+    },
+    {
+      "decisionId": "physics-current840-ten-inputrevision2-20261115-actual-ai-synthesis-005",
+      "goalId": "6367d45e-919e-4c19-bcd9-7770a2d51139",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:00ce60939b3ba2036edea8bb5cabd35e777b0b4ad01bc4eb8986ae9aa8040a51",
+      "pageFingerprint": "sha256:7257d024b0770dbd9651422cbf46d4cef8e85db291cae05dfb174a996428cb47",
+      "goalReviewContextFingerprint": "sha256:e6d0f1c862e52c55f5a3e25c9ffa72675d91a18cd29a46f39c0b5fd4585bbd49",
+      "finalText": {
+        "titleDe": "Einfache optische Instrumente beschreiben",
+        "titleEn": "Describe simple optical instruments",
+        "descriptionDe": "Die lernende Person kann bei einem einfachen Fernrohr oder Mikroskop den Strahlenverlauf durch Objektiv und Okular im jeweiligen Modell deuten und erklären, wie der Aufbau die Beobachtung ermöglicht.",
+        "descriptionEn": "The learner can interpret the ray path through the objective and eyepiece in the relevant model of a simple telescope or microscope and explain how the setup enables observation."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physics-current10-inputrevision2-a-20261115.goal-005",
+          "recordDigest": "sha256:f8b716bc4475e55498becda656387eb4f018af83b49a1edcf6e2f656ccfbacb5"
+        },
+        "second": {
+          "recordId": "physics-current10-inputrevision2-b-20261115.goal-05",
+          "recordDigest": "sha256:a79a4b62481a8d8aa8623b2e69a39b6714315f2f3f909a4d327f0a127c25fb7f"
+        }
+      },
+      "rationaleDe": "Beide tatsächlichen eigenständigen Bewertungen dieses exakten aktuellen Inputs behalten den Text und sehen keinen Profiländerungsbedarf. Drei unabhängige Demonstrationen sind innerhalb eines gewählten Instrumentmodells möglich; die beiden Geometrievarianten werden folgerichtig ausgewertet. Die eigenen früheren18er-Befunde sind erhalten; die Reviewer kennen keine Gegenstimme, beanspruchen aber keine historische Unbefangenheit. Keine menschliche, amtliche Projektions- oder Lernendenfreigabe.",
+      "rationaleEn": "Both actual independent evaluations of this exact current input retain the text and recommend no profile change. Three independent demonstrations can use one chosen instrument model; both geometry variations are interpreted consistently. Their own earlier18-goal findings remain preserved; they know no counterpart verdict but claim no historical lack of prior involvement. No human, official-projection or learner approval is implied."
+    },
+    {
+      "decisionId": "physics-current840-ten-inputrevision2-20261115-actual-ai-synthesis-006",
+      "goalId": "cf570e66-2ce2-5923-9033-c97d74119553",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:5b72e4b8b6eb4010d3ef51330541bcc4fe97c7931105830f35aa75aa6e663cb4",
+      "pageFingerprint": "sha256:41da4101f8a7362c5ba31485daa7861419ee2b2ec090c249bfb37893b95dd819",
+      "goalReviewContextFingerprint": "sha256:cddafa48b00f80e974da3b20f5c388e4ecd64208bc9a76dad6dd17cfcec3a975",
+      "finalText": {
+        "titleDe": "Drehmoment beschreiben",
+        "titleEn": "Describe Torque",
+        "descriptionDe": "Die lernende Person kann das Drehmoment als Maß der Drehwirkung einer Kraft bezüglich einer Achse erklären, aus Kraft und senkrechtem Hebelarm berechnen und an einfachen Hebel- und Alltagsbeispielen anwenden.",
+        "descriptionEn": "The learner can explain torque as a measure of a force’s turning effect about an axis, calculate it from force and perpendicular moment arm, and apply it to simple lever and everyday examples."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physics-current10-inputrevision2-a-20261115.goal-006",
+          "recordDigest": "sha256:70878f36af6f451b2ec5b0dfe5801d345a335142da9d3f2f8a86cfadaf5a7c65"
+        },
+        "second": {
+          "recordId": "physics-current10-inputrevision2-b-20261115.goal-06",
+          "recordDigest": "sha256:94d0fbbbd3f20c0c645b1fea01b4c3f17c04c209f11f2c70b284dab0838bf74e"
+        }
+      },
+      "rationaleDe": "Beide tatsächlichen eigenständigen Bewertungen dieses exakten aktuellen Inputs behalten den Text und sehen keinen Profiländerungsbedarf. Achse und senkrechter Hebelarm präzisieren denselben Drehmomentkern ohne neue Rotationsdynamik-Kompetenz. Die eigenen früheren18er-Befunde sind erhalten; die Reviewer kennen keine Gegenstimme, beanspruchen aber keine historische Unbefangenheit. Keine menschliche, amtliche Projektions- oder Lernendenfreigabe.",
+      "rationaleEn": "Both actual independent evaluations of this exact current input retain the text and recommend no profile change. Axis and perpendicular moment arm clarify the same torque skill without adding a rotational-dynamics competence. Their own earlier18-goal findings remain preserved; they know no counterpart verdict but claim no historical lack of prior involvement. No human, official-projection or learner approval is implied."
+    },
+    {
+      "decisionId": "physics-current840-ten-inputrevision2-20261115-actual-ai-synthesis-007",
+      "goalId": "d02438ba-0cc9-5993-831e-5e44d35e32c4",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:80d78c2b519818d98ae0afed9e82be300dc49337d556a7ed910ae6566b21b16c",
+      "pageFingerprint": "sha256:1eca6ecffecd86ad7ebb23294cc86d06df1443416cdaf1fe917d1a0ec2356deb",
+      "goalReviewContextFingerprint": "sha256:7261bb3f962ddf230a12a09752e0691ae2b6be1498e4e5d3aaafd99108306e4d",
+      "finalText": {
+        "titleDe": "Drehmoment auf Magnetnadeln und Dipole",
+        "titleEn": "Torque on Magnetic Needles and Dipoles",
+        "descriptionDe": "Die lernende Person kann den Betrag des Drehmoments auf Magnetnadeln und magnetische Dipole im homogenen Feld mit M = μ B sin(α) berechnen, wobei α der Winkel zwischen magnetischem Moment und Feld ist, und die Ausrichtung mithilfe des Drehsinns begründen.",
+        "descriptionEn": "The learner can calculate the magnitude of torque on magnetic needles and magnetic dipoles in a uniform field using M = μ B sin(α), where α is the angle between magnetic moment and field, and explain alignment from the rotational sense."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physics-current10-inputrevision2-a-20261115.goal-007",
+          "recordDigest": "sha256:ac039ecdcb1d732ad708c9ab24c8e5814cba8fe7e2ab7b425dd09206d9ea61c6"
+        },
+        "second": {
+          "recordId": "physics-current10-inputrevision2-b-20261115.goal-07",
+          "recordDigest": "sha256:0b287e9096cb1fb4d67ddd5af428a5c7f32e8effa51171d8cb3cecafe2088934"
+        }
+      },
+      "rationaleDe": "Beide tatsächlichen eigenständigen Bewertungen dieses exakten aktuellen Inputs behalten den Text und sehen keinen Profiländerungsbedarf. Betrag, Winkelbezug und Drehsinn sind getrennt; Nullmomentlagen und Dämpfung bleiben konsistent begrenzt. Die eigenen früheren18er-Befunde sind erhalten; die Reviewer kennen keine Gegenstimme, beanspruchen aber keine historische Unbefangenheit. Keine menschliche, amtliche Projektions- oder Lernendenfreigabe.",
+      "rationaleEn": "Both actual independent evaluations of this exact current input retain the text and recommend no profile change. Magnitude, angle convention and rotational sense are distinguished; zero-torque orientations and damping remain consistently bounded. Their own earlier18-goal findings remain preserved; they know no counterpart verdict but claim no historical lack of prior involvement. No human, official-projection or learner approval is implied."
+    },
+    {
+      "decisionId": "physics-current840-ten-inputrevision2-20261115-actual-ai-synthesis-008",
+      "goalId": "58db62d4-458f-5e2d-9ca0-968e09f4944b",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:d1936922d6dce6335fe0b4080d8d7250be4b272cf75071e6ea8b1d1584dad1fe",
+      "pageFingerprint": "sha256:83f991dffa9afc0ec62efb15bdbb7167259e203cd3a9621b077d5ffdec519a4b",
+      "goalReviewContextFingerprint": "sha256:b53ec07cf872a5ce0ce57c91563bc96ad42b47ee033702028fbaf80e87159aff",
+      "finalText": {
+        "titleDe": "Gaußsches Verfahren anwenden",
+        "titleEn": "Apply the Gauss Method",
+        "descriptionDe": "Die lernende Person kann mit dem Gaußschen Verfahren Ablenkungsmessungen in festgelegter Hauptlage und Schwingungsmessungen kombinieren, um die horizontale magnetische Flussdichte B_H des Erdmagnetfeldes zu bestimmen, und die dabei verwendeten Messannahmen erläutern.",
+        "descriptionEn": "The learner can use the Gauss method to combine deflection measurements in a specified principal position with oscillation measurements to determine the horizontal magnetic flux density B_H of the Earth’s field and explain the measurement assumptions used."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physics-current10-inputrevision2-a-20261115.goal-008",
+          "recordDigest": "sha256:7e6358f91238a6deb33035960f127a9e44c5fb16e09eb255ff5159cc978251e9"
+        },
+        "second": {
+          "recordId": "physics-current10-inputrevision2-b-20261115.goal-08",
+          "recordDigest": "sha256:a2c16b6c4b61171984425b25b679589b1ee2733930aec9b77ecbee374c7e3694"
+        }
+      },
+      "rationaleDe": "Beide tatsächlichen eigenständigen Bewertungen dieses exakten aktuellen Inputs behalten den Text und sehen keinen Profiländerungsbedarf. B_H ist eindeutig die horizontale Flussdichte; die Kombination von Ablenkungs- und Schwingungsmessung bestimmt denselben einen Zielwert. Die eigenen früheren18er-Befunde sind erhalten; die Reviewer kennen keine Gegenstimme, beanspruchen aber keine historische Unbefangenheit. Keine menschliche, amtliche Projektions- oder Lernendenfreigabe.",
+      "rationaleEn": "Both actual independent evaluations of this exact current input retain the text and recommend no profile change. B_H unambiguously denotes horizontal flux density; combined deflection and oscillation measurements determine one shared target quantity. Their own earlier18-goal findings remain preserved; they know no counterpart verdict but claim no historical lack of prior involvement. No human, official-projection or learner approval is implied."
+    },
+    {
+      "decisionId": "physics-current840-ten-inputrevision2-20261115-actual-ai-synthesis-009",
+      "goalId": "52bdabb2-d9a1-56e6-bccf-ff58f299c739",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:8bbfb259f628bacccb805ea32e324faa839383c115f57229c5be51f9fce82413",
+      "pageFingerprint": "sha256:ec4c324806559b584c6e725ddf6d023c244b203022beebb783fee9c9f025f15e",
+      "goalReviewContextFingerprint": "sha256:db414e91c71e6aabb60e000375706f1df0e85472e4464bdca464fd5dbed3caeb",
+      "finalText": {
+        "titleDe": "Kernspintomografie (MRT)",
+        "titleEn": "Magnetic Resonance Imaging (MRI)",
+        "descriptionDe": "Die lernende Person kann qualitativ erklären, wie ein statisches Magnetfeld eine Netto-Kernspinmagnetisierung ausrichtet, eine resonante Hochfrequenzanregung sie auslenkt und Magnetfeldgradienten die bei der Relaxation gemessenen Signale räumlich für ein MRT-Bild codieren.",
+        "descriptionEn": "The learner can qualitatively explain how a static magnetic field aligns net nuclear-spin magnetization, resonant radio-frequency excitation tips it, and magnetic-field gradients spatially encode the signals measured during relaxation for an MRI image."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physics-current10-inputrevision2-a-20261115.goal-009",
+          "recordDigest": "sha256:2c6d89b81efb04bd78a49900183f6e17e494f74795cd76c5e775cc595397d1c0"
+        },
+        "second": {
+          "recordId": "physics-current10-inputrevision2-b-20261115.goal-09",
+          "recordDigest": "sha256:1f519db664f9635d41ea66bf0ef421d256dd07c52c607ca5e8b30a7837911e96"
+        }
+      },
+      "rationaleDe": "Beide tatsächlichen eigenständigen Bewertungen dieses exakten aktuellen Inputs behalten den Text und sehen keinen Profiländerungsbedarf. Dauerndes B0, passend zeitlich wirkender Auslesegradient und getrennte überlappende Relaxationsprozesse korrigieren die qualitative Signalkette. Die eigenen früheren18er-Befunde sind erhalten; die Reviewer kennen keine Gegenstimme, beanspruchen aber keine historische Unbefangenheit. Keine menschliche, amtliche Projektions- oder Lernendenfreigabe.",
+      "rationaleEn": "Both actual independent evaluations of this exact current input retain the text and recommend no profile change. Persistent B0, appropriately timed readout gradient and distinct overlapping relaxation processes bound the qualitative signal chain. Their own earlier18-goal findings remain preserved; they know no counterpart verdict but claim no historical lack of prior involvement. No human, official-projection or learner approval is implied."
+    },
+    {
+      "decisionId": "physics-current840-ten-inputrevision2-20261115-actual-ai-synthesis-010",
+      "goalId": "7fe6f8a1-5580-4e37-bf8e-9772964a6b0a",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ed216c96923488c4a2e8197f93ffe3372c00bf5c9afd33d2468905bde1ad967a",
+      "pageFingerprint": "sha256:98230d59683aa7986dec7e572e4ee5abc40a8dc5f7bec1e94241c93e3277a298",
+      "goalReviewContextFingerprint": "sha256:557c6238ee37c41bc3653218180c1636ba35175caa5ffb42469464d4d3ba4d39",
+      "finalText": {
+        "titleDe": "Ladungsträger in Magnetfeldern bei beliebigem Eintrittswinkel beschreiben",
+        "titleEn": "Describe Charged Particles in Magnetic Fields at Arbitrary Entry Angles",
+        "descriptionDe": "Die lernende Person kann im Modell eines zeitlich konstanten homogenen Magnetfeldes ohne weitere Kräfte die Eintrittsgeschwindigkeit eines geladenen Teilchens in feldparallele und feldsenkrechte Komponenten zerlegen und daraus mithilfe der magnetischen Lorentzkraft Gerad-, Kreis- oder Schraubenbahnen qualitativ deuten.",
+        "descriptionEn": "The learner can, in a model with a time-independent uniform magnetic field and no other forces, decompose a charged particle’s entry velocity into field-parallel and field-perpendicular components and use the magnetic Lorentz force to qualitatively interpret straight, circular or helical trajectories."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physics-current10-inputrevision2-a-20261115.goal-010",
+          "recordDigest": "sha256:c7b22e7e7940d1032d342dab3457f9621eb698b4d1781b0cf91068f70e49a8ee"
+        },
+        "second": {
+          "recordId": "physics-current10-inputrevision2-b-20261115.goal-10",
+          "recordDigest": "sha256:a3865c221227a44f361991627c874294f052df9d411a9b471b3ffad11306f259"
+        }
+      },
+      "rationaleDe": "Beide tatsächlichen eigenständigen Bewertungen dieses exakten aktuellen Inputs behalten den Text und sehen keinen Profiländerungsbedarf. Zeitlich konstantes reines B-Feld und unabhängige statische Vergleichsläufe machen den Winkel-/Vorzeichentransfer wohldefiniert. Die eigenen früheren18er-Befunde sind erhalten; die Reviewer kennen keine Gegenstimme, beanspruchen aber keine historische Unbefangenheit. Keine menschliche, amtliche Projektions- oder Lernendenfreigabe.",
+      "rationaleEn": "Both actual independent evaluations of this exact current input retain the text and recommend no profile change. A time-independent pure B field and independent static comparison runs make the angle/sign transfer well-defined. Their own earlier18-goal findings remain preserved; they know no counterpart verdict but claim no historical lack of prior involvement. No human, official-projection or learner approval is implied."
+    }
+  ],
+  "manifestFingerprint": "sha256:7cd51600ec3a66f9ee22ebe5f72eca984006031d6d2a55ea393b0b06be8438bb"
+}

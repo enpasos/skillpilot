@@ -1,0 +1,60 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physics-current10-inputrevision2-a-20261115",
+  "campaignId": "physics-ten-current840-inputrevision2-20261115-first-pass-a",
+  "roundId": "independent-a-inputrevision2",
+  "batchId": "independent-a-inputrevision2.batch-001",
+  "batchInputFingerprint": "sha256:d9231fb5f5abb84ce752c53e21e2d0cc2028c3bed80c56e1f1e9431f2e904a56",
+  "bundleFingerprint": "sha256:009845e47ea3d42fa2d429beb00e25ab9c1986416bdc5f1c5536002b8673941a",
+  "bookDigest": "sha256:61f177eb8b0652f240480bdbe55974473d97691f23ce68051a3ff71d08c2fecf",
+  "provider": "OpenAI Codex delegated agent; effective deployment not independently attested",
+  "model": "gpt-6.1-sol (requested); effective deployment not independently attested",
+  "modelVersion": "not exposed by session interface",
+  "role": "didactic_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:189fa8d2ac7ea0816e4ef60b4739e805f8c59c857c1b5674ecf118ec70b720ba",
+  "independenceGroupId": "physics-ten-current840-inputrevision2-20261115-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "39ef1e8a-9203-5192-8c76-8e0c3322646f",
+    "f06c581a-7157-584e-a692-99bcd613cff9",
+    "db47ac91-7bb0-5ba3-b39d-e2d6fc98396e",
+    "c2e0fc31-27a2-5727-9025-a824db9150d2",
+    "6367d45e-919e-4c19-bcd9-7770a2d51139",
+    "cf570e66-2ce2-5923-9033-c97d74119553",
+    "d02438ba-0cc9-5993-831e-5e44d35e32c4",
+    "58db62d4-458f-5e2d-9ca0-968e09f4944b",
+    "52bdabb2-d9a1-56e6-bccf-ff58f299c739",
+    "7fe6f8a1-5580-4e37-bf8e-9772964a6b0a"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:5c733efce84dfac579a869fd6c4fe36d508a77118c0bc4a2b5ab36440820fa36"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:42c3417164417fbe2d337172cc0d30101127934c0c2a30dbc0cb8bd7bea6d1d0"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:d9231fb5f5abb84ce752c53e21e2d0cc2028c3bed80c56e1f1e9431f2e904a56"
+    }
+  ],
+  "startedAt": "2026-11-15T20:07:21Z",
+  "completedAt": "2026-11-15T20:15:03.908993+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:94a8f79bc9b6edd2e63a1333dba18e9a1c181ecfb21788845bd460914b6f4f47",
+  "toolchainVersion": "codex-native-goal-description-review-v2"
+}

@@ -1,0 +1,1039 @@
+{
+  "status": "PASS",
+  "runId": "physics-k3k6-correction-current6-20261115-first-pass-b-run",
+  "reviewAuthority": "ai_candidate",
+  "recordStatus": "candidate",
+  "reviewKind": "independent_full_assessment_content_review",
+  "startedAtUtc": "2026-11-15T12:19:35Z",
+  "completedAtUtc": "2026-11-15T12:27:41Z",
+  "sealedManifestSha256": "sha256:340fe7670be415ff3c1d4998bbe59afd03bb3c66ccddfebe1c6dc4daec8387fc",
+  "assessmentInputManifestSha256": "sha256:e5c726939e5b31175db2c20b01c376b6fc1f77502a2734c1785e45c5ad595076",
+  "assessmentSupplementSha256": "sha256:5db0cf3cee251c916640c7bbebd7e0bce4ad105643662f71b7b8c8a08b4aa8e6",
+  "newAssessmentSha256": "sha256:25c74212f10024d31ca176ceed14ddfb9b9f7b9e5e65193b05c4cd0bc4e8ecf1",
+  "inputPinValidationPath": "tmp/physics-native-integration-k3k6-correction-v1-20261115/native-d/round-b/results/input-pin-validation.actual.json",
+  "independence": {
+    "otherReviewerOutputsConsulted": false,
+    "roundAOutputsConsulted": false,
+    "oldDispositionsConsulted": false,
+    "authorCounterexampleConclusionsConsulted": false,
+    "packetInternalHistoryLabelsIgnoredAsAuthority": true,
+    "disclosure": "Exact before/after inputs contain incidental author/review-history metadata; those labels were not evidence for this judgment. No separate earlier reviewer output, disposition or author-counterexample conclusion was semantically consulted."
+  },
+  "scopeLimits": [
+    "Content review of exact supplied DE/EN tasks, solutions, scoring and the three coverage claims.",
+    "The numerical probes below are reviewer-generated analytic examples and hypothetical grading probes, never actual learner measurements or actual assessed submissions.",
+    "No claim of full external source mapping, national projection acceptance, human approval, learner mastery, release or integration acceptance."
+  ],
+  "reviews": [
+    {
+      "assessmentId": "6345871e-eab4-59c1-a3b6-8456ab9bd7df",
+      "verdict": "PASS",
+      "reviewAuthority": "ai_candidate",
+      "coveredGoalIds": [
+        "d67502e3-5e0a-595b-a24b-65b1c40de36e"
+      ],
+      "coverageExactlyMatchesReviewedGoal": true,
+      "beforePresent": true,
+      "beforeSha256CanonicalJson": "sha256:40878d7b24cebcb9699f2edcbf7b95f158275d0448357cc44f52f35966093675",
+      "afterSha256CanonicalJson": "sha256:9d5289e9d32aaed361c3a08d8a4cff08d7715bc1c2daecb324d94bfc5073655e",
+      "canonicalJsonHashRule": "UTF-8 JSON, ensure_ascii=false, sorted keys, compact separators; raw file pins remain authoritative inputs",
+      "sourceArtifactPath": "tmp/physics-native-integration-k3k6-correction-v1-20261115/payload/curricula/DE/Gymnasium/assessments/physik/k3k6-content-correction-20261115-v1/video-models.md",
+      "sourceArtifactSha256": "sha256:110c9556ce9d40ddcd5445bb2052f4d0fc62f8bdd3be21a3e060c5cacd588390",
+      "fullDeEnTaskSolutionPresentVerbatimInSourceArtifact": true,
+      "allBeforeAfterTaskSolutionRubricFieldsRead": true,
+      "maxPoints": 32,
+      "passingPoints": 32,
+      "stepOrder": [
+        "video_models_v2_1",
+        "video_models_v2_2",
+        "video_models_v2_3",
+        "video_models_v2_4",
+        "video_models_v2_5",
+        "video_models_v2_6",
+        "video_models_v2_7",
+        "video_models_v2_8"
+      ],
+      "coreGates": [
+        {
+          "stepId": "video_models_v2_1",
+          "maximumPoints": 4,
+          "coreGate": "Eigenes Originalvideo A mit überprüfbarer Kalibrierung, Zeitbasis und mindestens acht selbst markierten Punkten. / EN: Own original video A with checkable calibration/time base and at least eight self-marked points."
+        },
+        {
+          "stepId": "video_models_v2_2",
+          "maximumPoints": 4,
+          "coreGate": "A: selbstständiger linearer Parameterfit mit Einheiten, Residuen, eigener Intervallrechnung und begrenzter Unsicherheit; zwingend aus den eigenen Rohvideodaten erzeugte, beschriftete x(t)- und v(t)-Diagramme mit Messpunkt-/Modelltrennung und vollständigem Zeitfensterbezug. / EN: A: independent linear parameter fit with units, residuals, own interval calculation, and bounded uncertainty; mandatory labelled x(t) and v(t) graphs generated from the own raw video data, distinguishing measured data/model and showing all velocity time windows."
+        },
+        {
+          "stepId": "video_models_v2_3",
+          "maximumPoints": 4,
+          "coreGate": "Unabhängige eigene reale Wurfaufnahme B mit Originalvideo, Maßstab, Zeit-/Pixelrohdaten und mindestens zehn Flugpunkten. / EN: Independent own real projectile recording B with original video, scale, raw time/pixel data, and at least ten flight points."
+        },
+        {
+          "stepId": "video_models_v2_4",
+          "maximumPoints": 4,
+          "coreGate": "B: beide Komponenten selbst angepasst; alle fünf Parameter mit Einheiten, Fit-Einstellungen und getrennten Residuen aus der tatsächlichen Aufnahme; zwingend alle vier aus derselben Rohdatentabelle erzeugten beschrifteten x(t), y(t), v_x(t), v_y(t)-Darstellungen, Messpunkt-/Modelltrennung und nachvollziehbare Intervallzuordnung. / EN: B: fits both components independently; all five parameters with units, fit settings, and separate residuals from the actual recording; mandatory labelled x(t), y(t), v_x(t), v_y(t) representations generated from that same raw table, distinguishing measured data/model and giving traceable interval timing."
+        },
+        {
+          "stepId": "video_models_v2_5",
+          "maximumPoints": 4,
+          "coreGate": "B: lineares vertikales Alternativmodell anhand Residuen geprüft; Geschwindigkeitsintervalle, Beschleunigung und frei gewählte Anfangswerte korrekt gedeutet. / EN: B: checks a vertical linear alternative using residuals; correctly interprets interval velocities, acceleration, and freely chosen initial values."
+        },
+        {
+          "stepId": "video_models_v2_6",
+          "maximumPoints": 4,
+          "coreGate": "B: reale Re-Markierungen und Kalibrierunsicherheit tatsächlich neu gefittet; quantitative Bereiche von B und a_y mit begrenzter, nichtstatistischer Aussage. / EN: B: actually refits real re-markings and calibration uncertainty; gives quantitative B/a_y ranges with a bounded nonstatistical interpretation. Ursachenvergleich A/B: begründet offene Zuordnung zählt vollständig; zusätzliche unterscheidende Kontrollinformation benennen, keine eindeutige Ursache aus Residuen allein erfinden. / EN: A/B causal comparison may remain justifiably unresolved for full credit; identify discriminating control information and invent no unique cause from residuals alone."
+        },
+        {
+          "stepId": "video_models_v2_7",
+          "maximumPoints": 4,
+          "coreGate": "C: aus Rohdaten selbstständige lineare/quadratische Fits mit Einheiten, Residuen und zwei Intervallgeschwindigkeiten. / EN: C: independent linear/quadratic fits from raw data with units, residuals, and two interval velocities."
+        },
+        {
+          "stepId": "video_models_v2_8",
+          "maximumPoints": 4,
+          "coreGate": "C: beide Kalibrier- und beide Trackingvarianten neu gefittet, Sensitivität quantitativ berichtet und nicht als garantierte Grenze/Konfidenz ausgegeben. / EN: C: refits both calibration and both tracking variants, reports sensitivity quantitatively, and does not label it a guaranteed bound/confidence interval."
+        }
+      ],
+      "beforeAfterAssessment": "The exact before text is retained and explicit bounded causal identifiability is added in task/solution and step 6. This neither removes the original real A/B data, six mandatory graph products, fits and sensitivities nor requires a third recording.",
+      "rubricConclusion": "Passing equals the sum of all maxima. Therefore no missing required performance can be compensated by unrelated points. Partial-point schedules are not fully specified; the failure probes deliberately use generous upper ceilings rather than pretending to assign a unique partial grade.",
+      "scoreProbes": [
+        {
+          "id": "complete-real-A-B-plus-C-open-cause",
+          "vectorKind": "positive_contract_probe",
+          "scoreVector": [
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          "sum": 32,
+          "threshold": 32,
+          "passes": true,
+          "reason": "Hypothetical submission has both actual independent recordings, all linked graphs/fits and refits, numeric C work, and explicitly leaves perspective versus real acceleration unresolved with a discriminating control proposal. A third measurement is not required."
+        },
+        {
+          "id": "harmless-inconsequential-label-slip",
+          "vectorKind": "positive_contract_probe",
+          "scoreVector": [
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          "sum": 32,
+          "threshold": 32,
+          "passes": true,
+          "reason": "All scientific products and links are intact; a panel caption has a harmless isolated spelling mistake while quantities, units and timing remain unambiguous. The criteria assess physics performance rather than typographic perfection. Rounding of fitted numerical values is expressly permitted."
+        },
+        {
+          "id": "no-real-A",
+          "vectorKind": "generous_failure_ceiling",
+          "scoreVector": [
+            3,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          "sum": 31,
+          "threshold": 32,
+          "passes": false,
+          "reason": "Even granting every other criterion its maximum, absence of the original A recording prevents full video_models_v2_1. C calculations cannot replace it."
+        },
+        {
+          "id": "no-independent-real-B",
+          "vectorKind": "generous_failure_ceiling",
+          "scoreVector": [
+            4,
+            4,
+            3,
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          "sum": 31,
+          "threshold": 32,
+          "passes": false,
+          "reason": "Missing independent real projectile recording prevents full video_models_v2_3 even if every other step were credited maximally."
+        },
+        {
+          "id": "A-graphs-missing-correct-fit",
+          "vectorKind": "generous_failure_ceiling",
+          "scoreVector": [
+            4,
+            3,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          "sum": 31,
+          "threshold": 32,
+          "passes": false,
+          "reason": "Fit parameters, residuals and two isolated velocities do not replace A x(t)/v(t) graphs; step 2 cannot be full."
+        },
+        {
+          "id": "B-one-component-graph-missing",
+          "vectorKind": "generous_failure_ceiling",
+          "scoreVector": [
+            4,
+            4,
+            4,
+            3,
+            4,
+            4,
+            4,
+            4
+          ],
+          "sum": 31,
+          "threshold": 32,
+          "passes": false,
+          "reason": "A missing y(t), v_x(t), or v_y(t) representation prevents full step 4 even with correct five fit parameters."
+        },
+        {
+          "id": "B-no-linear-alternative-or-misidentified-launch",
+          "vectorKind": "generous_failure_ceiling",
+          "scoreVector": [
+            4,
+            4,
+            4,
+            4,
+            3,
+            4,
+            4,
+            4
+          ],
+          "sum": 31,
+          "threshold": 32,
+          "passes": false,
+          "reason": "Failure to test vertical linear alternative or unjustified launch interpretation leaves step 5 incomplete."
+        },
+        {
+          "id": "B-no-real-refit-or-invented-cause",
+          "vectorKind": "generous_failure_ceiling",
+          "scoreVector": [
+            4,
+            4,
+            4,
+            4,
+            4,
+            3,
+            4,
+            4
+          ],
+          "sum": 31,
+          "threshold": 32,
+          "passes": false,
+          "reason": "Either a missing actual re-mark/reference refit or claiming perspective uniquely from residuals prevents full step 6."
+        },
+        {
+          "id": "C-only-supplied-fit-numbers",
+          "vectorKind": "generous_failure_ceiling",
+          "scoreVector": [
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            3,
+            4
+          ],
+          "sum": 31,
+          "threshold": 32,
+          "passes": false,
+          "reason": "Copying solution parameters without own raw-data fit/interval work fails full step 7."
+        },
+        {
+          "id": "C-no-tracking-refits-or-false-95-percent-band",
+          "vectorKind": "generous_failure_ceiling",
+          "scoreVector": [
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            3
+          ],
+          "sum": 31,
+          "threshold": 32,
+          "passes": false,
+          "reason": "Missing required refits or presenting this sensitivity as guaranteed/95% uncertainty prevents full step 8."
+        }
+      ],
+      "contentBlockers": []
+    },
+    {
+      "assessmentId": "fbaeed34-81a0-5955-9777-bf103002feee",
+      "verdict": "PASS",
+      "reviewAuthority": "ai_candidate",
+      "coveredGoalIds": [
+        "d61ea362-f6c3-5eab-ac30-2d0e265ac0f6"
+      ],
+      "coverageExactlyMatchesReviewedGoal": true,
+      "beforePresent": true,
+      "beforeSha256CanonicalJson": "sha256:01bdc4a5201209c991ec7a49eeee4c40a94adf3a33731bc126cc66a1b9d4ab27",
+      "afterSha256CanonicalJson": "sha256:9082785399782ba8fb5bbf66b5baca34f0a09d4947c9877b929819bc8af843fb",
+      "canonicalJsonHashRule": "UTF-8 JSON, ensure_ascii=false, sorted keys, compact separators; raw file pins remain authoritative inputs",
+      "sourceArtifactPath": "tmp/physics-native-integration-k3k6-correction-v1-20261115/payload/curricula/DE/Gymnasium/assessments/physik/k3k6-content-correction-20261115-v1/by-ph8-video-arrows.md",
+      "sourceArtifactSha256": "sha256:5a3d5d3b831b2da19dc50aaea31cb296530cd321f0c35ac19063cd1ff2d0c7bf",
+      "fullDeEnTaskSolutionPresentVerbatimInSourceArtifact": true,
+      "allBeforeAfterTaskSolutionRubricFieldsRead": true,
+      "maxPoints": 14,
+      "passingPoints": 14,
+      "stepOrder": [
+        "ph8_video_1",
+        "ph8_video_2",
+        "ph8_video_3"
+      ],
+      "coreGates": [
+        {
+          "stepId": "ph8_video_1",
+          "maximumPoints": 4,
+          "coreGate": "Zwei neue reale Clips mit nachvollziehbar angewandter bereitgestellter (oder freiwillig selbst hergestellter) räumlicher/zeitlicher Kalibrierung und dokumentierten Messfenstern; keine Pflicht zu eigener Kalibrierung. / EN: Two fresh real clips with traceably applied supplied (or optional independently established) spatial/temporal calibration and documented windows; no independent calibration requirement."
+        },
+        {
+          "stepId": "ph8_video_2",
+          "maximumPoints": 5,
+          "coreGate": "Ortsänderung und Zeitintervalle korrekt verwendet sowie beide Geschwindigkeitspfeile maßstäblich mit Betrag und Richtung konstruiert / EN: Correct displacements/durations and scaled velocity arrows with magnitudes/directions in both clips."
+        },
+        {
+          "stepId": "ph8_video_3",
+          "maximumPoints": 5,
+          "coreGate": "Geschwindigkeitsänderung grafisch richtig konstruiert und gedeutet, Intervall-/Zeitpunktnäherung und konkrete Messgrenze erläutert / EN: Correct graphical velocity-change construction and interpretation, midpoint limits, concrete measurement limits, and independent equal-speed direction-change transfer."
+        }
+      ],
+      "beforeAfterAssessment": "The corrected opening, solution and step 1 explicitly accept checked supplied spatial/temporal calibration. Own recording and independent calibration remain optional. The independent two-clip analysis, arrow construction, timing approximation and changed-direction transfer remain necessary.",
+      "rubricConclusion": "Passing equals the sum of all maxima. Therefore no missing required performance can be compensated by unrelated points. Partial-point schedules are not fully specified; the failure probes deliberately use generous upper ceilings rather than pretending to assign a unique partial grade.",
+      "scoreProbes": [
+        {
+          "id": "supplied-calibration-own-two-clip-analysis",
+          "vectorKind": "positive_contract_probe",
+          "scoreVector": [
+            4,
+            5,
+            5
+          ],
+          "sum": 14,
+          "threshold": 14,
+          "passes": true,
+          "reason": "Two actual fresh supplied clips are independently tracked; both pairs of arrows and both graphical changes are constructed with checked supplied timing/scale. No own recording or independent calibration is demanded."
+        },
+        {
+          "id": "optional-own-recordings-equally-valid",
+          "vectorKind": "positive_contract_probe",
+          "scoreVector": [
+            4,
+            5,
+            5
+          ],
+          "sum": 14,
+          "threshold": 14,
+          "passes": true,
+          "reason": "Own checked calibration/recordings are a valid optional form, not a higher threshold."
+        },
+        {
+          "id": "harmless-nonsemantic-slip",
+          "vectorKind": "positive_contract_probe",
+          "scoreVector": [
+            4,
+            5,
+            5
+          ],
+          "sum": 14,
+          "threshold": 14,
+          "passes": true,
+          "reason": "The actual arrows, scale, windows and explanation establish all criteria; an inconsequential copied frame-label typo that is resolved unambiguously by the visible frames adds no new criterion."
+        },
+        {
+          "id": "missing-real-second-clip",
+          "vectorKind": "generous_failure_ceiling",
+          "scoreVector": [
+            3,
+            5,
+            5
+          ],
+          "sum": 13,
+          "threshold": 14,
+          "passes": false,
+          "reason": "Generous ceiling: step 1 cannot be full without two real clips. Steps 2/3 also concern both clips, so the actual possible score can only be lower."
+        },
+        {
+          "id": "invented-displacements-no-real-artifact",
+          "vectorKind": "generous_failure_ceiling",
+          "scoreVector": [
+            3,
+            5,
+            5
+          ],
+          "sum": 13,
+          "threshold": 14,
+          "passes": false,
+          "reason": "Algebraically matching positions without real source clips cannot satisfy full ph8_video_1."
+        },
+        {
+          "id": "wrong-or-unscaled-velocity",
+          "vectorKind": "generous_failure_ceiling",
+          "scoreVector": [
+            4,
+            4,
+            5
+          ],
+          "sum": 13,
+          "threshold": 14,
+          "passes": false,
+          "reason": "Wrong Δr/Δt or absent common velocity-arrow scale prevents full ph8_video_2."
+        },
+        {
+          "id": "equal-speed-means-delta-v-zero",
+          "vectorKind": "generous_failure_ceiling",
+          "scoreVector": [
+            4,
+            5,
+            4
+          ],
+          "sum": 13,
+          "threshold": 14,
+          "passes": false,
+          "reason": "Using only the difference of speeds instead of a vector difference fails ph8_video_3 even when both speed magnitudes are 0.5 m/s."
+        },
+        {
+          "id": "interval-mean-called-exact-instantaneous",
+          "vectorKind": "generous_failure_ceiling",
+          "scoreVector": [
+            4,
+            5,
+            4
+          ],
+          "sum": 13,
+          "threshold": 14,
+          "passes": false,
+          "reason": "No midpoint approximation/measurement limit leaves ph8_video_3 incomplete."
+        }
+      ],
+      "contentBlockers": []
+    },
+    {
+      "assessmentId": "04f643c6-74f5-56e9-a9c7-ea39ae98db31",
+      "verdict": "PASS",
+      "reviewAuthority": "ai_candidate",
+      "coveredGoalIds": [
+        "ce14a7e7-7e2a-517f-a465-78ba3fbe414d"
+      ],
+      "coverageExactlyMatchesReviewedGoal": true,
+      "beforePresent": false,
+      "beforeSha256CanonicalJson": null,
+      "afterSha256CanonicalJson": "sha256:b48766b82c4d85ca512ab246f9038812a145c64e3b650224f26e1ad58da1f8a6",
+      "canonicalJsonHashRule": "UTF-8 JSON, ensure_ascii=false, sorted keys, compact separators; raw file pins remain authoritative inputs",
+      "sourceArtifactPath": "tmp/physics-native-integration-k3k6-correction-v1-20261115/payload/curricula/DE/Gymnasium/assessments/physik/k3k6-content-correction-20261115-v1/personal-lens-screen-investigations.md",
+      "sourceArtifactSha256": "sha256:53c60b3d9168d3998eaee26a6cd7b4c825ea84dcf5c2fac9350d93aef522b1e9",
+      "fullDeEnTaskSolutionPresentVerbatimInSourceArtifact": true,
+      "allBeforeAfterTaskSolutionRubricFieldsRead": true,
+      "maxPoints": 20,
+      "passingPoints": 20,
+      "stepOrder": [
+        "a-own-setup",
+        "a-own-raw",
+        "a-prediction",
+        "a-comparison",
+        "b-changed-own-setup",
+        "b-own-raw",
+        "b-prediction-comparison",
+        "b-far-limit",
+        "uncertainty-controls",
+        "model-boundary"
+      ],
+      "coreGates": [
+        {
+          "stepId": "a-own-setup",
+          "maximumPoints": 2,
+          "coreGate": "A: eigener sicherer Aufbau mit f/g/fester b_R, vorherigem Schärfekriterium und nachvollziehbarer Dokumentation; Planung allein genügt nicht. / EN: A: personal safe setup with f/g/fixed b_R, prior sharpness criterion, and traceable documentation; planning alone is insufficient."
+        },
+        {
+          "stepId": "a-own-raw",
+          "maximumPoints": 2,
+          "coreGate": "A: drei tatsächliche eigene neue Schirmpositionierungen mit allen Rohablesungen und Schärfe-/Ablesegrenzen; keine Beispieldaten. / EN: A: three actual own screen repositionings with every raw reading and sharpness/reading limits; no sample data."
+        },
+        {
+          "stepId": "a-prediction",
+          "maximumPoints": 2,
+          "coreGate": "A: Vorhersage aus tatsächlichen f/g-Eingaben mit Einheiten und begründetem Unsicherheitsbereich; keine vorher vorgegebene Bildweite. / EN: A: prediction from actual f/g inputs with units and justified uncertainty range; no previously supplied image distance."
+        },
+        {
+          "stepId": "a-comparison",
+          "maximumPoints": 2,
+          "coreGate": "A: eigener Mess-/Modellvergleich relativ zur festen Modellnetzhaut, datengestützte Kurzsichtigkeitsdeutung oder begründet offener Befund samt tatsächlichem Kontrollschritt. / EN: A: own model/measurement comparison relative to the fixed model retina, evidence-based myopia interpretation or justified unresolved conclusion with actual control."
+        },
+        {
+          "stepId": "b-changed-own-setup",
+          "maximumPoints": 2,
+          "coreGate": "B: vorab dokumentierte tatsächlich geänderte optische Bedingung selbst eingestellt; neue g/b_R-Messung und während B feste entspannte Modellnetzhaut. / EN: B: personally sets an actually changed optical condition documented in advance; fresh g/b_R measurements and fixed relaxed model retina throughout B."
+        },
+        {
+          "stepId": "b-own-raw",
+          "maximumPoints": 2,
+          "coreGate": "B: drei neue tatsächliche eigene Schärfesuchen mit vollständigen neuen Rohablesungen; A-Kopie oder gelieferte Werte bestehen nicht. / EN: B: three fresh actual own focus searches with all new raw readings; copied A or supplied values do not pass."
+        },
+        {
+          "stepId": "b-prediction-comparison",
+          "maximumPoints": 2,
+          "coreGate": "B: eigene neue Linsengleichungs-Vorhersage und quantitativer Vergleich mit eigenen B-Daten/Messgrenzen; auch ehrliche Abweichung oder fehlende Auflösbarkeit wird fair begründet. / EN: B: new own lens-equation prediction and quantitative comparison with own B measurements/limits; honest difference or lack of resolution is fairly justified."
+        },
+        {
+          "stepId": "b-far-limit",
+          "maximumPoints": 2,
+          "coreGate": "B: Fernobjekt-Grenzfall b→f gegenüber fester B-Netzhaut geprüft; Weitsichtigkeitsmodell wird von bloß fehlender Nahakkommodation getrennt. / EN: B: checks distant-object limit b→f against fixed B retina; distinguishes the hyperopia model from merely inadequate near accommodation."
+        },
+        {
+          "stepId": "uncertainty-controls",
+          "maximumPoints": 2,
+          "coreGate": "In beiden Fällen tatsächliche Streuung und systematische Skalen-/Linsenebenen-/Brennweiten-/Schärfegrenzen unterschieden; Vorhersageband und Messbereich nicht als sichere universelle Fehlergrenze ausgegeben. / EN: In both cases distinguishes actual scatter and systematic scale/reference-plane/focal-length/sharpness limits; prediction and measurement bands are not universal guaranteed error bounds. Die Intervallhilfe darf nur bei g_min > f_max > 0 als endliches Band verwendet werden. / EN: The interval aid gives a finite band only when g_min > f_max > 0."
+        },
+        {
+          "stepId": "model-boundary",
+          "maximumPoints": 2,
+          "coreGate": "Vergleicht beide eigenen Durchführungen und erklärt die feste Netzhaut als Modellbezug; keine klinische Diagnose, Brillenverordnung oder Behauptung vollständig nachgebildeter Akkommodation. / EN: Compares both personal executions and explains fixed retina as a model reference; no clinical diagnosis, spectacle prescription, or claim of fully modelled accommodation."
+        }
+      ],
+      "beforeAfterAssessment": "This is a new assessment identity; before is null. The actual two personally performed trials supply experimental evidence rather than adding a fictitious prerequisite. Its coverage claims only ce14; it grants no learner result.",
+      "rubricConclusion": "Passing equals the sum of all maxima. Therefore no missing required performance can be compensated by unrelated points. Partial-point schedules are not fully specified; the failure probes deliberately use generous upper ceilings rather than pretending to assign a unique partial grade.",
+      "scoreProbes": [
+        {
+          "id": "two-own-trials-valid-bands-model-limits",
+          "vectorKind": "positive_contract_probe",
+          "scoreVector": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "sum": 20,
+          "threshold": 20,
+          "passes": true,
+          "reason": "Hypothetical record contains both actual personal changed setups, three newly positioned focus readings in each, quantitative prediction/measurement comparisons, far limit, and real uncertainty/model boundaries."
+        },
+        {
+          "id": "honest-unresolved-position-after-own-control",
+          "vectorKind": "positive_contract_probe",
+          "scoreVector": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "sum": 20,
+          "threshold": 20,
+          "passes": true,
+          "reason": "A actual focus band [10.95,11.35] cm overlaps actual retina band [11.05,11.25] cm. After a genuinely performed sharper-target/reference check the bands still overlap. The learner reports the recorded result and no resolved classification; all required physics and both actual executions remain present."
+        },
+        {
+          "id": "inconsequential-calculation-transcription-slip",
+          "vectorKind": "positive_contract_probe",
+          "scoreVector": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "sum": 20,
+          "threshold": 20,
+          "passes": true,
+          "reason": "A single inconsequential transcription/rounding slip does not change the valid prediction band, comparison or inference and is clear from the complete underlying work. The bilingual solution explicitly allows such slips; 20/20 is about complete competence."
+        },
+        {
+          "id": "only-planned-A-no-real-build",
+          "vectorKind": "generous_failure_ceiling",
+          "scoreVector": [
+            1,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "sum": 19,
+          "threshold": 20,
+          "passes": false,
+          "reason": "Planning alone cannot earn full a-own-setup; every-other-step-maximum ceiling still fails."
+        },
+        {
+          "id": "A-supplied-or-no-three-raw-readings",
+          "vectorKind": "generous_failure_ceiling",
+          "scoreVector": [
+            2,
+            1,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "sum": 19,
+          "threshold": 20,
+          "passes": false,
+          "reason": "a-own-raw requires actual own repositionings and every raw reading; a model example cannot replace it."
+        },
+        {
+          "id": "A-no-quantitative-prediction",
+          "vectorKind": "generous_failure_ceiling",
+          "scoreVector": [
+            2,
+            2,
+            1,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "sum": 19,
+          "threshold": 20,
+          "passes": false,
+          "reason": "A prediction must follow actual f/g, units and justified uncertainty."
+        },
+        {
+          "id": "unresolved-A-no-actual-control",
+          "vectorKind": "generous_failure_ceiling",
+          "scoreVector": [
+            2,
+            2,
+            2,
+            1,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "sum": 19,
+          "threshold": 20,
+          "passes": false,
+          "reason": "Merely saying unresolved without actual targeted control does not fully satisfy a-comparison."
+        },
+        {
+          "id": "B-no-actual-changed-setting",
+          "vectorKind": "generous_failure_ceiling",
+          "scoreVector": [
+            2,
+            2,
+            2,
+            2,
+            1,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "sum": 19,
+          "threshold": 20,
+          "passes": false,
+          "reason": "A fresh label or copied arrangement is not an actually changed own B setup documented in advance."
+        },
+        {
+          "id": "B-copied-A-values",
+          "vectorKind": "generous_failure_ceiling",
+          "scoreVector": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            1,
+            2,
+            2,
+            2,
+            2
+          ],
+          "sum": 19,
+          "threshold": 20,
+          "passes": false,
+          "reason": "Copied A/supplied values cannot fully satisfy b-own-raw."
+        },
+        {
+          "id": "B-no-own-prediction-comparison",
+          "vectorKind": "generous_failure_ceiling",
+          "scoreVector": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            1,
+            2,
+            2,
+            2
+          ],
+          "sum": 19,
+          "threshold": 20,
+          "passes": false,
+          "reason": "Correct qualitative near/far language without own quantitative B comparison fails full b-prediction-comparison."
+        },
+        {
+          "id": "near-blur-called-hyperopia-no-far-test",
+          "vectorKind": "generous_failure_ceiling",
+          "scoreVector": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            1,
+            2,
+            2
+          ],
+          "sum": 19,
+          "threshold": 20,
+          "passes": false,
+          "reason": "Missing b→f against the fixed B retina fails b-far-limit; a near-focus position alone is insufficient."
+        },
+        {
+          "id": "invalid-finite-interval-band",
+          "vectorKind": "generous_failure_ceiling",
+          "scoreVector": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            1,
+            2
+          ],
+          "sum": 19,
+          "threshold": 20,
+          "passes": false,
+          "reason": "For f∈[9.8,10.2], g∈[9.9,10.3] cm, g−f crosses zero. Invented finite corner bounds fail uncertainty-controls even if every other step were maximal."
+        },
+        {
+          "id": "clinical-diagnosis-or-moving-retina-within-trial",
+          "vectorKind": "generous_failure_ceiling",
+          "scoreVector": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            1
+          ],
+          "sum": 19,
+          "threshold": 20,
+          "passes": false,
+          "reason": "Clinical diagnosis or treating moved retina as a focus correction fails the fixed-relaxed-model boundary."
+        }
+      ],
+      "contentBlockers": []
+    }
+  ],
+  "independentNumericalChecks": {
+    "method": "NumPy least squares independently recomputed directly from the raw numbers printed in the task; symbolic monotonicity and counterexamples derived by this reviewer.",
+    "projectile": {
+      "times_s": [
+        0.0,
+        0.1,
+        0.2,
+        0.30000000000000004,
+        0.4,
+        0.5,
+        0.6000000000000001,
+        0.7000000000000001,
+        0.8
+      ],
+      "x_A_m_B_m_per_s": [
+        0.2005555555555551,
+        1.8499999999999999
+      ],
+      "y_C_m_D_m_per_s_E_m_per_s2": [
+        4.5008181818181825,
+        -0.29998917748917764,
+        -4.903138528138527
+      ],
+      "a_y_m_per_s2": -9.806277056277054,
+      "xResiduals_m": [
+        0.004444444444444917,
+        -0.005555555555555092,
+        0.004444444444445028,
+        -0.005555555555555092,
+        0.004444444444444917,
+        -0.00555555555555487,
+        0.004444444444444695,
+        -0.005555555555555092,
+        0.004444444444444917
+      ],
+      "yResiduals_m": [
+        -0.0008181818181824951,
+        0.0032121212121198894,
+        -0.004694805194805696,
+        0.005461038961038334,
+        -0.00632034632034717,
+        0.004961038961037723,
+        -0.0056948051948055856,
+        0.00671212121212017,
+        -0.002818181818182719
+      ],
+      "v_x_interval_m_per_s": [
+        1.7499999999999998,
+        1.9500000000000006,
+        1.7499999999999993,
+        1.9500000000000006,
+        1.7500000000000004,
+        1.9499999999999984,
+        1.7500000000000004,
+        1.9500000000000006
+      ],
+      "v_y_interval_m_per_s": [
+        -0.7500000000000018,
+        -1.849999999999996,
+        -2.6500000000000012,
+        -3.8500000000000023,
+        -4.6,
+        -5.799999999999996,
+        -6.5500000000000025,
+        -7.749999999999999
+      ],
+      "verticalLinearResiduals_m": [
+        -0.458444444444444,
+        -0.11119444444444415,
+        0.12605555555555625,
+        0.2833055555555566,
+        0.32055555555555637,
+        0.2828055555555564,
+        0.12505555555555725,
+        -0.10769444444444298,
+        -0.4604444444444429
+      ],
+      "trackingVariants": [
+        {
+          "outerPixelDelta": 1,
+          "middlePixelDelta": -1,
+          "C_D_E": [
+            4.5052121212121214,
+            -0.33288961038960974,
+            -4.862012987012984
+          ],
+          "a_y": -9.724025974025968
+        },
+        {
+          "outerPixelDelta": -1,
+          "middlePixelDelta": 1,
+          "C_D_E": [
+            4.4964242424242435,
+            -0.2670887445887491,
+            -4.944264069264062
+          ],
+          "a_y": -9.888528138528123
+        }
+      ],
+      "referenceScalingB_m_per_s": [
+        1.8315,
+        1.8684999999999998
+      ],
+      "referenceScalingAccelerationSorted_m_per_s2": [
+        -9.904339826839825,
+        -9.708214285714282
+      ],
+      "conclusion": "Printed reference fits, interval velocities and scale sensitivities agree. Few tracking/scale variants remain sensitivity tests rather than confidence/guaranteed error intervals."
+    },
+    "causeNonidentifiability": {
+      "perspectiveExample": "A uniform physical motion x=t under projective mapping u=x/(1+0.1x) produces u=t/(1+0.1t), with u_second_derivative=-0.2/(1+0.1t)^3.",
+      "indistinguishableAlternative": "An orthographic recording of an actually nonuniform physical motion X=t/(1+0.1t) yields the same image coordinate history.",
+      "result": "One image sequence/residual pattern alone cannot select perspective versus actual acceleration. A geometrically verified planar calibration/alignment or appropriate independent motion measurement adds discriminating information; another unchecked video need not."
+    },
+    "velocityArrows": {
+      "probeOnlyNotMeasured": true,
+      "suppliedWindow_s": 0.1,
+      "clipA_displacements_m": [
+        [
+          0.03,
+          0.04
+        ],
+        [
+          0,
+          0.05
+        ]
+      ],
+      "clipA_velocity_m_per_s": [
+        [
+          0.3,
+          0.4
+        ],
+        [
+          0,
+          0.5
+        ]
+      ],
+      "clipA_deltaVelocity_m_per_s": [
+        -0.3,
+        0.1
+      ],
+      "clipA_deltaMagnitude_m_per_s": 0.31622776601683794,
+      "independentClipB_displacements_m": [
+        [
+          0.05,
+          0
+        ],
+        [
+          0,
+          0.05
+        ]
+      ],
+      "clipB_velocity_m_per_s": [
+        [
+          0.5,
+          0
+        ],
+        [
+          0,
+          0.5
+        ]
+      ],
+      "clipB_deltaVelocity_m_per_s": [
+        -0.5,
+        0.5
+      ],
+      "clipB_deltaMagnitude_m_per_s": 0.7071067811865476,
+      "conclusion": "Equal 0.5 m/s speed magnitudes yield nonzero vector changes. The two supplied calibrated clips still need independent learner marking and construction; own calibration is not added."
+    },
+    "lens": {
+      "intervalProof": "For b=fg/(g-f), db/df=g²/(g-f)²>0 and db/dg=-f²/(g-f)²<0 on the physical g>f>0 region. Thus with g_min>f_max>0, endpoints are b(f_min,g_max), b(f_max,g_min).",
+      "A_example_cm": {
+        "f": [
+          9.8,
+          10.2
+        ],
+        "g": [
+          99.5,
+          100.5
+        ],
+        "predictedB": [
+          10.858875413450939,
+          11.365061590145578
+        ],
+        "retina": 12,
+        "illustrativeThreeReadings": [
+          11.05,
+          11.1,
+          11.15
+        ],
+        "illustrativeMeasuredBand": [
+          10.95,
+          11.25
+        ]
+      },
+      "B_example_cm": {
+        "f": [
+          9.8,
+          10.2
+        ],
+        "g": [
+          29.5,
+          30.5
+        ],
+        "predictedB": [
+          14.439613526570051,
+          15.590673575129532
+        ],
+        "retina": 8,
+        "illustrativeThreeReadings": [
+          14.9,
+          15.0,
+          15.1
+        ],
+        "illustrativeMeasuredBand": [
+          14.7,
+          15.3
+        ],
+        "farLimitF": [
+          9.8,
+          10.2
+        ]
+      },
+      "invalidIntervalCounterexample_cm": {
+        "f": [
+          9.8,
+          10.2
+        ],
+        "g": [
+          9.9,
+          10.3
+        ],
+        "gMinusFRange": [
+          -0.3,
+          0.5
+        ],
+        "finiteBandPermitted": false,
+        "reason": "The box contains g=f, e.g. f=g=10 cm, so a pole destroys a finite full-box prediction band. Fresh actual control/reset is required, not fabricated bounds."
+      },
+      "nearBlurCounterexample": {
+        "f": 1,
+        "g": 3,
+        "retina": 1.2,
+        "nearFocus": 1.5,
+        "farFocus": 1,
+        "result": "The near image is behind the retina but the far limit lies in front: near blur alone does not establish the relaxed hyperopia model."
+      },
+      "fairness": "Two actual own trials and genuine control remain essential. Agreement, resolved difference and unresolved position after own control are equally admissible; no desired measurement result is prescribed. Inconsequential slips are explicitly allowed in both solution languages."
+    }
+  },
+  "summary": "No content blocker found in the exact three contracts. All essential performances have noncompensable all-maxima pass gates. This is an independent machine content candidate, not a human acceptance or learner-result decision.",
+  "clockEvidence": {
+    "source": "tools.clock__curr_time",
+    "startedObservedUtc": "2026-11-15 12:19:35 UTC",
+    "completedObservedUtc": "2026-11-15 12:27:41 UTC"
+  }
+}

@@ -1,117 +1,107 @@
-## Lerneinheiten: vom Lernversprechen zum rekursiven Abschluss {#sec:learning-units}
+## Erklärte Einheiten: Gliederung, Reihenfolge und Nachweis {#sec:learning-units}
 
-Der Skill-Graph sagt, welche Ziele es gibt und was sie voraussetzen. Er sagt nicht, welche Ziele zusammen ein fachliches Ganzes bilden, das eine Person als Thema beginnt und abschließt. Diese Aufgabe übernimmt die Lerneinheit. Dieser Abschnitt definiert ihren Umfang, ihren abgeleiteten Abschluss und die Grenzen von Voraussetzungen zwischen ganzen Einheiten. Abschnitt~@ref{sec:assessment} baut darauf die implizite Beherrschung auf.
+Dieses Kapitel beschreibt das verbindliche Zielmodell der Beschlüsse B1 bis B16 vom 14. November und der Stufenentscheidungen vom 15. November 2026. Die Umsetzungsgrenze ist ausdrücklich: Die drei bisherigen fachlichen Lerneinheiten verwenden weiter den Vertrag vom 12. November; die Stufenplan-Grundlage aktiviert noch keinen echten Landesplan. Zielmodell, vorhandener Strukturvalidator und produktive Laufzeit sind verschiedene Nachweise.
 
-:::principle {title="Fachliche Einheit statt Kalenderschublade"}
-Eine **Lerneinheit** (englisch *learning unit*, künftiger technischer Begriff `LearningUnit`) verbindet ein verständliches Lernversprechen mit eigenen Lernzielen und gegebenenfalls kleineren Lerneinheiten, ihren *Kindeinheiten*. Die Struktur ist rekursiv: Mechanik kann Kinematik und Dynamik enthalten; Kinematik kann ihrerseits weitere Einheiten enthalten. Schuljahr, Semester und Lernwoche sind mögliche Planungsbezüge, keine Synonyme für eine Lerneinheit. Personalisierungsstufen 1--4, QA-Reifegrade und das Schwierigkeitsfeld `level` behalten ihre bisherige Bedeutung.
+:::principle {title="Cluster, Einheit, Einheit mit Prüfungen"}
+Ein **Cluster** gliedert Ziele. Eine ausdrücklich erklärte **Einheit** ist ein Cluster, dessen Ziele im vorgesehenen Lernfluss an einem Stück erworben werden können. Eine **Einheit mit Prüfungen** belegt zusätzlich die selbstständige Anwendung ihrer eigenen Inhaltsziele durch eigene Prüfungen mit geprüfter Deckung. Eine Einheit ohne Prüfungen ordnet nur und erkennt nichts an. Nicht jeder Cluster ist eine Einheit; Fächer sind Filter und keine Einheiten. Personalisierungsstufen, Reifegrade und Schwierigkeit behalten ihre Bedeutung.
 :::
 
-:::principle {title="Zweck: tragfähige Grundlage, bevor darauf aufgebaut wird"}
-Eine Lerneinheit sichert die selbstständige Anwendung ihres Lernversprechens, bevor der geplante Lernweg darauf aufbaut. Ihre Prüfungen sind so angelegt, dass wesentliche Fehlvorstellungen sichtbar werden: Eine erkannte Lücke führt zu gezieltem Weiterlernen und einer frischen, gleichwertigen Prüfung; ein scheinbarer Abschluss würde Lernende dagegen auf unsicherer Grundlage weiterschicken. Es gilt unverändert der reguläre Bewertungsvertrag -- ohne verdeckte Bestehensregel und ohne zweites gespeichertes Ergebnis; eine einzelne Ungenauigkeit bei tragfähiger Begründung wird anders beurteilt als fehlendes zentrales Verständnis. Das ist eine didaktische Anforderung an die Einheitendefinition, keine technische Zugangssperre (Abschnitt~@ref{sec:unit-progression}).
+:::principle {title="Zielmodell und bestehender Vertrag"}
+Fachliche Einheiten gelten in der kanonischen Landschaft in allen Ländern. **Planeinheiten** gliedern den gemeinsamen Plan eines Landes und Dauermodells über die gewählten Fächer, etwa Stufen, Jahrgänge und Phasen. Die Umstellung der fachlichen Einheiten, ihrer Prüfungscluster, Paketträger und produktiven Leser folgt erst nach F8 (Messung) in F9 bis F13. Das Entwicklungsverzeichnis `contracts/curriculum-package/v1.3/` ist kein veröffentlichtes Curriculum-Paket und beweist diese Umstellung nicht.
 :::
+
+Notwendige aktuelle Fachkorrekturen an Zielen, Voraussetzungen, Aufgaben, Rubriken und Deckung bleiben im delegierten K1–K13-Auftrag bereits jetzt zulässig. Die F8-Grenze betrifft die künftige Einheiteneinführung und ihre Cluster-, Prüfungs-, Paket- und Laufzeitmigration; sie konserviert keine fachlich falsche Kante oder fehlende Prüfung. Jede solche Reparatur braucht ihre eigenen aktuellen unabhängigen Nachweise.
 
 ### Motivation und eigener fachlicher Anspruch {#sec:unit-claims}
 
-Die Einheit beantwortet zuerst: *Was kann ich danach, und wozu ist das nützlich?* Ein Motivationsauftakt macht dieses Versprechen verständlich, bevor einzelne Aufgaben oder Ziele angeboten werden. Der Auftakt ist eine didaktische Funktion. Wenn er als echtes Orientierungsziel modelliert ist, gilt dessen eigener Abschlussvertrag (Abschnitt~@ref{sec:orientation}); eine synthetische Überschrift ist dadurch kein zusätzliches Lernziel. Aus einem abgeleiteten Abschluss folgt keine Behauptung, dass ein Motivationsgespräch tatsächlich stattgefunden hat.
+Ein Lernversprechen erklärt: Was kann ich danach, und wozu ist das nützlich? Ein Motivationsauftakt ist eine didaktische Funktion. Nur ein echtes Orientierungsziel hat einen eigenen Ergebnisvertrag; eine Überschrift erzeugt kein Ziel, und abgeleiteter Abschluss behauptet kein tatsächlich geführtes Gespräch.
 
-Eine Einheitsgrenze folgt einem fachlich bedeutsamen Erkenntnisübergang: Welches zusammenhängende Verständnis und welche Anwendung müssen sicher sein, bevor Neues darauf aufbaut? Eine vorhandene Prüfung, eine Zielquote, eine ordentliche Überschrift oder die Dichte der Voraussetzungskanten ist höchstens ein Hinweis, nie die Definition. Auch sparsame, transitiv minimale Ketten können starke Einheiten bilden, und gemeinsame elementare Grundlagen zwingen nicht jede spätere Anwendung in eine einzige riesige Einheit. Kanten werden weder ergänzt noch entfernt, damit ein gewünschter Zuschnitt passt; eine fragwürdige Kante ist ein eigener fachlicher Befund. Eine abschließende Einheit oder Synthese braucht keinen späteren Verbraucher als Rechtfertigung. Die [Gestaltungskriterien und Beispiele](repo:docs/concept/skill-graph/learning-unit-design-and-examples.md) wenden diese Kriterien auf zwei Kandidaten an.
+Die Einheitsgrenze folgt einem fachlich bedeutsamen Erkenntnisübergang. Vorhandene Prüfungen, Zielquoten, Überschriften und Kantendichte definieren sie nicht. Sparsame Voraussetzungsketten können starke Einheiten bilden. Eine fragwürdige Kante wird fachlich geprüft und nicht zugunsten eines gewünschten Zuschnitts erhalten oder geändert. Ein fehlender späterer Verbraucher beweist keinen Abschluss. Die [Gestaltungskriterien](repo:docs/concept/skill-graph/learning-unit-design-and-examples.md) gelten weiter.
 
-Eine größere Einheit kann gegenüber ihren Kindeinheiten drei verschiedene Ansprüche erheben:
+Ein Aggregat fasst Kinder ohne neue eigene Prüfung zusammen. Eine Syntheseprüfung kann zusätzliche Integration belegen, ohne künstliche Inhaltsziele oder erneutes Bestehen der Kinder zu verlangen. Eigene Inhaltsziele brauchen im Endausbau eine zuständige fachliche Einheit mit Prüfungen. Die Prüfungen einer solchen Einheit liegen in ihrem Cluster und decken alle eigenen Inhaltsziele nach R1 bis R5 ab. Das gilt auch für experimentelle Inhaltsziele. Bis zur vollständigen Einführung dürfen Einheiten ohne Prüfungen eigene Inhaltsziele ordnen; daraus entsteht keine Anerkennung.
 
-- **Zusammenfassen (Aggregat).** Die Einheit fasst vorhandene Kompetenzen ihrer Kinder nur zusammen. Dann braucht sie keine neue eigene Prüfung.
-- **Integrieren (Synthese).** Verspricht die Einheit zusätzlich die selbstständige Integration dieser Kompetenzen, kann eine eigene Syntheseprüfung diesen Anspruch prüfen. Sie kann sich dabei auf bereits in Kindern erworbene Kompetenzen beschränken. Für reine Synthese müssen keine künstlichen neuen Inhaltsziele erfunden werden. Die Rolle der Syntheseprüfung ist der zusätzliche Integrationsnachweis, nicht das erneute Bestehen aller Kinder.
-- **Eigene Fachkompetenzen.** Zusätzliche eigene Fachkompetenzen sind ebenfalls möglich; sie brauchen ihre eigene Erwerbszuordnung und gültige Prüfungsdeckung.
+Prüfungen müssen wesentliche Fehlvorstellungen sichtbar machen. Eine Lücke führt zu gezieltem Weiterlernen und einer frischen gleichwertigen Prüfung nach dem regulären Bewertungsvertrag. Es gibt keine verdeckte Bestehensregel und kein zweites Ergebnis. Fehlende Deckung ist eine **Prüfungslücke**: Sie bleibt ein nicht bestandener Befund und wird durch geeignete Aufgaben, Lösungen, Rubriken und unabhängiges Review repariert, niemals durch eine fachlich falsche Voraussetzung oder ein gelockertes Gate.
 
-### Direkter Erwerb, Kinder und Gesamtumfang {#sec:unit-own-children}
+### Eigene Ziele, Untereinheiten und Gesamtumfang {#sec:unit-own-children}
 
-Eine autoritative, versionierte Einheit $U$ wird durch drei Größen beschrieben:
-
-- $\Own(U)$ bezeichnet die direkt zugeordneten atomaren *Erwerbsziele*, kurz: die eigenen Ziele. Echte Orientierungs-, Prüfungs- und Memorierziele können dazugehören; reine Strukturmarker nicht.
-- $\Children(U)$ enthält die verpflichtenden Kindeinheiten, die *Pflichtkinder*. Wahlentscheidungen sind zuvor aufgelöst.
-- $T(U)$ ist die eindeutige gesamte Zielmenge, der *Gesamtumfang*, gegeben durch:
+Der Zielvertrag erklärt eine Einheit in der Platzierungsschicht und verweist auf ihren Cluster. Die atomaren Nachfahren dieses Clusters bilden $T(U)$. Direkte Untereinheiten sind die erklärten Einheiten darunter, zwischen denen und U keine weitere Einheit liegt. Ihre Menge heißt $\Children(U)$. Die übrigen Atome bilden $\Own(U)$; zusammen sind Untereinheiten und eigene Atome die **Kinder** der Einheit. Zwischenliegende Cluster ohne Einheitserklärung werden dabei übersprungen.
 
 :::equation {#eq:unit-targets}
 T(U) = \Own(U) \cup \bigcup_{V \in \Children(U)} T(V).
 :::
 
-In Abbildung~@ref{fig:recursive-unit} hat Kinematik die eigenen Ziele $\{\nd{a}, \nd{b}, \nd{q_K}, \nd{k_K}\}$, Dynamik $\{\nd{d}, \nd{q_D}\}$ und Mechanik nur die Syntheseprüfung $\{\nd{q_S}\}$. Der Gesamtumfang von Mechanik umfasst alle sieben Ziele.
+Der Gesamtumfang ist nicht leer. Ein Aggregat darf leere eigene Ziele haben, wenn seine Kinder den Umfang tragen. E1 macht die kleinste Einheit jedes enthaltenen Atoms eindeutig. Überlappende Referenzen erzeugen weder zusätzliche Ziele noch doppelte Fortschrittspunkte. Ziele und Einheiten ohne übergeordnete Einheit sind Kinder einer gedachten Wurzel. In einem vollständigen Landesplan liegt jedes Ziel unter einer der beiden Stufen; die bundesweite kanonische Gliederung ist kein Landesplan und darf Ziele neben ihren obersten Einheiten führen.
 
-Für Umfang und Zuordnung gelten diese Regeln:
+#### Darstellung und Umsetzungsgrenze. {#sec:unit-representation}
 
-- Der aufgelöste Gesamtumfang ist nicht leer. Ein leerer Navigationsmarker ist keine abgeschlossene Lerneinheit. Ein Aggregat darf dagegen leere eigene Ziele haben, wenn seine Pflichtkinder den Gesamtumfang tragen.
-- Jedes Erwerbsziel hat genau eine direkt zuständige Einheit: die kleinste fachlich zuständige autoritative Einheit (Regel R4 in Abschnitt~@ref{sec:why-graph-not-enough}). Eine Elternansicht darf dieselben stabilen Ziele zeigen, ohne sie erneut als eigene Erwerbsziele zu beanspruchen.
-- Überlappende Referenzen werden als Mengen vereint; sie erzeugen weder zusätzliche Ziele noch doppelte Fortschrittspunkte.
-- Die Zuordnung der eigenen Ziele und die fachlich geprüfte Bedeutung der eigenen Prüfungen bilden den *lokalen Vertrag* der Einheit (Abschnitt~@ref{sec:assessment}). Ein bloßer Fokuswechsel verändert diese Zuordnung und den lokalen Vertrag nicht.
-- Jedes Inhaltsziel in $\Own(U)$ braucht einen eigenen lokalen Prüfungsverbraucher, also eine eigene Prüfung der Einheit, die es direkt oder transitiv voraussetzt (R1), und mindestens eine solche Prüfung braucht einen geprüften Nachweis, dass ihre Aufgaben und ihr reguläres Bewertungsraster das Ziel wirklich prüfen (R2). Abschnitt~@ref{sec:why-graph-not-enough} nennt alle Gültigkeitsbedingungen R1--R5 und wo jede durchgesetzt wird. Ohne sie ist der lokale Vertrag ungültig; eine zusätzliche frei gewählte Anerkennungsmaske ist kein Ersatz.
+Im Zielmodell nennt der Einheiteneintrag Cluster, Lernversprechen, Revision, `after` und gegebenenfalls Deckungsreviews eigener Prüfungen. Eigene Ziele und Untereinheiten ergeben sich aus `contains`; das bisherige `own` und `parentUnitId` werden erst mit F9/F10 ersetzt. Ein gewöhnlicher oder aufgeklappter Cluster erklärt sich dadurch nicht selbst zur Einheit. Ziele, Voraussetzungen und Prüfungsdaten werden nicht kopiert.
 
-Die Einbettung benutzt die vorhandene Programm- und Platzierungsstruktur beziehungsweise die geprüfte Kompositionssicht (Abschnitt~@ref{sec:context-model}). Nach der Entscheidung des Product Owners vom 12. November 2026 werden Lerneinheiten in der Platzierungsschicht ihrer Skill-Landschaft deklariert; die Darstellung folgt unten. Eine fachliche Einheit ist nicht allein deshalb definiert, weil ein Cluster gerade aufgeklappt ist. Ebenso wenig wird jeder beliebige `contains`-Cluster automatisch zur Lerneinheit. Insbesondere bleibt die allgemeine Clustererfüllung aus Abschnitt~@ref{sec:state} von der hier erklärten, ausdrücklich autorisierten Einheitsstruktur unterschieden.
-
-#### Darstellung in der Skill-Landschaft. {#sec:unit-representation}
-
-Eine Lerneinheit ist Teil ihrer Skill-Landschaft. Sie liegt in der vorhandenen Platzierungsschicht (Abschnitt~@ref{sec:placements-projections}); keine eigene Datei begleitet die Landschaft, und Zielobjekte tragen keinen Teil des Einheitsvertrags. Tabelle~@ref{tab:unit-representation} ordnet die Objekte dieses Abschnitts und die Bestandteile des lokalen Vertrags (Abschnitt~@ref{sec:local-contract}) ihren Feldern zu; das [Laufzeitschema](repo:docs/landscape-runtime.schema.json) legt sie fest.
-
-:::table {#tab:unit-representation caption="Darstellung einer Lerneinheit in der Platzierungsschicht ihrer Skill-Landschaft (Entscheidung des Product Owners vom 12. November 2026)." cols="30mm,46mm,X"}
-| Objekt | Feld | Regel |
+:::table {#tab:unit-representation caption="Bestehende Darstellung und verbindliches Zielmodell; keine Behauptung einer abgeschlossenen Migration." cols="30mm,46mm,X"}
+| Gegenstand | Bestehender Vertrag vom 12. November | Verbindliches Zielmodell |
 | --- | --- | --- |
-| Einheit $U$ | `programUnits`-Eintrag mit `kind: "learningUnit"`, `id`, `label`, `labelEn` | `id` ist ein Slug in Kleinbuchstaben, eindeutig unter den Programmeinheiten der Landschaft; `label` steht in der Autorensprache, `labelEn` auf Englisch. |
-| Lernversprechen | `promise`, `promiseEn` | Was Lernende danach selbstständig können und wozu das nützt (Abschnitt~@ref{sec:unit-claims}). |
-| $\Own(U)$ | `goalPlacements`-Einträge mit `relation: "own"` und der `unitId` von $U$ | Jeder nennt ein atomares Ziel derselben Landschaft und trägt genau `goalId`, `unitId` und `relation`, also keinen `context`; ein Ziel hat höchstens eine zuständige Einheit (R4). |
-| $\Children(U)$ | `parentUnitId` an jeder Kindeinheit, die $U$ nennt | Beide Enden sind Lerneinheiten derselben Landschaft; eine Einheit hat höchstens ein Elternteil, und die Hierarchie ist azyklisch. Jede so benannte Einheit ist ein Pflichtkind. |
-| $T(U)$, $\Complete(U)$ | nicht gespeichert | Abgeleitet aus eigenen Platzierungen, Hierarchie und expliziten Ergebnissen (Abschnitt~@ref{sec:unit-completion}). |
-| Geprüfte Bedeutung eigener Prüfungen (R2) | `coverageReviews` an der Einheit | Höchstens ein Eintrag je eigener Prüfung: `assessmentGoalId`, `goalIds`, `reference` (Reviewprotokoll), `taskRevision`, `rubricRevision`, per Hash an Aufgabe, Lösung und Bewertungsraster dieser Prüfung gebunden. Ein Review ändert nie ein Ziel. |
-| Vertragsrevision | `revision` (`YYYY-MM-DD-vN`) | Benennt einen Stand des Einheitsvertrags; eine Änderung der eigenen Ziele, des Elternteils, des Versprechens oder der Deckungsreviews ist eine neue Revision. Noch nicht durchgesetzt; mit der Laufzeitbindung von Ergebnissen an eine Vertragsrevision (R5) wird das zur harten Regel. |
-| Deckungsanspruch | Landschaftsfeld `learningUnitCoverage` | `partial` oder `complete`; fehlt es, gilt `partial`. Nur `complete` verlangt eine zuständige Einheit für jedes atomare Ziel der Landschaft (R4). |
+| Fachliche Einheit | `programUnits`, Art `learningUnit`, `promise`, `promiseEn`, `revision` | Erklärter Cluster in derselben Platzierungsschicht; Lernversprechen und Revision bleiben. |
+| Eigene Ziele und Kinder | `goalPlacements` mit `relation: own`, ohne `context`; `parentUnitId` | Aus Clusterumfang und geschachtelten Einheitserklärungen abgeleitet; F9/F10 stehen aus. |
+| Deckungsreviews | `coverageReviews`, höchstens ein Eintrag je eigener Prüfung, gebunden an Aufgaben- und Raster-Hashes sowie Reviewprotokoll | Für Einheiten mit Prüfungen weiterhin zwingend; historische Nachweise werden nicht umgebunden. |
+| Planeinheiten | Stufenplan-Grundlage unter `v1.3`, ohne aktivierten Landesplan | Ein gemeinsamer Plan pro Land und Dauermodell; Sichten sind daraus abgeleitete Ausschnitte. |
+| Abschluss und Ergebnisse | Keine gespeicherte Einheits-Mastery | Weiter abgeleitet; kein Rückwärtsschreiben auf Ziele und keine Anerkennung aus `after`. |
 :::
 
-Die Deklaration ist geschlossen: Eine Lerneinheit trägt genau die obigen Felder und optional `order`, jedes weitere Feld ist ein Befund, und Lerneinheitsfelder an einer anderen Art von Programmeinheit werden ebenfalls abgelehnt. Zielarten, Voraussetzungen und die Deckungsangaben `coveredGoalIds` der Prüfungen bleiben an den Zielen; eine Einheit kopiert keine Zieldaten. Bewusst nicht darstellbar sind Voraussetzungen ganzer Einheiten (Abschnitt~@ref{sec:unit-progression}), Zugangssperren, Listen erlassener oder anerkennungsfähiger Ziele, wahlweise oder alternative Kindeinheiten und kontextabhängiges Eigentum: Eine `own`-Platzierung trägt keinen Kontext, das Eigentum ist also in jedem aufgelösten Kontext dasselbe. Kalenderartige Programmeinheiten (`program`, `stage`, `year`, `phase`, `semester`, `module`, `track`, `exam`) und die Relationen `primary`, `secondary` und `assessed` behalten ihre Bedeutung, und eine `own`-Platzierung verankert in der Programmsicht nichts.
-
-Der [Curriculum-Paketvertrag 1.2](repo:contracts/curriculum-package/v1.2/README.md) trägt Lerneinheiten als Capability `learningUnitsV1` und liefert jedes Reviewprotokoll mit seinem SHA-256 aus; Bauten nach Vertrag 1.0 oder 1.1 lassen die Einheiten vollständig weg ([Duale Curriculum-Pakete](repo:docs/concept/skill-graph/dual-curriculum-package-releases.en.md)). Nachweise über Ziele, Kanten und Prüfungen binden dieselbe Sicht, die Skill-Landschaft ohne ihre Einheitenschicht: Eine Einheit anzulegen oder zu ändern entwertet sie nie, jede andere Änderung weiterhin. Der Repository-Validator `validate:learning-units` ([validateLearningUnits.ts](repo:app/scripts/validateLearningUnits.ts)) und der unabhängige Paketvalidator setzen dieselben Regeln gegen dieselben gemeinsamen Konformitätsfälle durch; Abschnitt~@ref{sec:why-graph-not-enough} nennt, welche Gültigkeitsregeln durchgesetzt werden, und Anhang~@ref{sec:implementation} hält den Umsetzungsstand fest. Aus Lerneinheiten wird noch keine Anerkennung abgeleitet.
+Der [Paketvertrag 1.2](repo:contracts/curriculum-package/v1.2/README.md) trägt die drei bestehenden Einheiten mit `learningUnitsV1`; die [Stufenplan-Grundlage](repo:contracts/curriculum-package/v1.3/README.md) ist davon getrennt. `validate:learning-units` prüft weiter den alten Vertrag, einschließlich R1, R3 und eindeutiger `own`-Zuordnung. Er ist noch kein allgemeiner E1-bis-E4-Validator des neuen Modells. Geänderte Ziele oder Prüfungen brauchen aktuelle Nachweise; unveränderte historische Nachweise und das eingefrorene V9-Reduktionsregister bleiben unverändert. Eine Normänderung, neue Platzierung oder neue Einheit schreibt kein Lernergebnis.
 
 ### Abschluss ohne zusätzlich gespeicherte Unit-Mastery {#sec:unit-completion}
 
-Die vollständige Einheit ist abgeschlossen genau dann, wenn ihre eigenen Ziele erfüllt und alle verpflichtenden Kinder abgeschlossen sind:
+Die vollständige Einheit ist abgeschlossen genau dann, wenn ihre eigenen Ziele erfüllt und alle verpflichtenden Untereinheiten abgeschlossen sind:
 
 :::equation {#eq:unit-complete}
 \Complete(U) \iff \bigl(\Own(U) \subseteq \Meff\bigr) \;\land\; \bigwedge_{V \in \Children(U)} \Complete(V).
 :::
 
-Der Abschluss wird aus den atomaren Ergebnissen abgeleitet. Es entsteht keine gespeicherte `UnitMastery`, die Ergebnisse auf Kinder zurückschreibt. Prüfungs- und Memorierziele bleiben ausschließlich explizit. Daher kann eine bestandene Elternprüfung keine offene Kindprüfung und keinen fehlenden verifizierten Kartenabruf ersetzen.
+Es entsteht keine gespeicherte `UnitMastery`. Prüfungs- und Memorierziele bleiben explizit; eine Elternprüfung ersetzt weder Kindprüfung noch verifizierten Kartenabruf. Die Syntheseprüfung ist eine eigene zusätzliche Pflicht. Eine Kartensammlung allein belegt keine selbstständige Anwendung; eine Kind-Abrufpflicht wird nicht zum künstlichen Kindabschluss auf die Eltern verschoben.
 
-Für die Formen aus Abschnitt~@ref{sec:unit-claims} bedeutet das Folgendes. Ein reines Aggregat darf ohne eigene Prüfung bestehen: Sein Abschluss folgt aus den Kindern und eventuell anderen eigenen Pflichten. Eine Syntheseeinheit kann dagegen eine eigene Prüfung, aber keine neuen Inhaltsziele haben; ihre Prüfung ist dann zusätzlich erforderlich. Eine reine Kartensammlung begründet keinen Anspruch unabhängiger fachlicher Anwendung; ihre tatsächlichen Abrufpflichten bleiben ausdrücklich zu erfüllen. Eine fachlich zum Kind gehörige Abrufpflicht darf nicht allein zur Erzeugung eines Kindabschlusses auf die Elterneinheit verschoben werden.
+Der Abschluss des im Personal Curriculum benötigten **Anteils** ist kein Vollabschluss der ganzen Einheit. Nur tatsächlich notwendige Atome kommen in $L$; eine Einheitsanzeige fügt keine weiteren Prüfungen oder Inhalte hinzu. Die vollständige Einheitsbehauptung wird weiterhin am ganzen $T(U)$ gemessen.
 
 ::figure{id="fig:recursive-unit"}
 
 ### Anerkennung vor dem Gesamtabschluss {#sec:unit-early-recognition}
 
-Eine passende bestandene Prüfung kann im verbindlichen Zielkonzept -- das auf der Hauptlinie **noch nicht implementiert** ist -- die eigenen Inhaltsziele einer Einheit anerkennen, bevor eine davon unabhängige Karte oder eine andere Kindeinheit abgeschlossen ist, sofern keine andere offene eigene Prüfung und kein offenes eigenes Memorierziel der Einheit sie noch benötigt (Abschnitt~@ref{sec:transitive-demand}). Diese Anerkennung ist global wirksam. Eine noch offene Syntheseprüfung der Elterneinheit nimmt sie nicht zurück.
+Die Mengenrechnung in Abschnitt~@ref{sec:assessment} bleibt unverändert und ist noch kein produktiv eingeführter globaler Anerkennungsvertrag. Anerkennung betrifft nur eigene gewöhnliche Ziele eines gültigen, revisionsgebundenen lokalen Prüfungsvertrags. Solange eine offene eigene Prüfung oder ein offenes eigenes Memorierziel eine Kompetenz noch benötigt, bleibt sie in der offenen Nachfrage. Eine unabhängige Karte oder Kindeinheit darf offen bleiben, ohne eine bereits gültige Anerkennung zurückzunehmen. Eine Elternprüfung vergrößert den Anerkennungsumfang nicht auf alle Nachfahren; eine noch offene Synthese nimmt gültige Kindanerkennung nicht zurück. Ohne eigenen Prüfungsvertrag erkennt eine Einheit nichts an.
 
-Für jede Einheit wird deshalb nur die Anerkennung ihrer *eigenen* Ziele berechnet, soweit sie keine Prüfungs- oder Memorierziele sind. Die Elterneinheit bildet aus allen Nachfahren keinen neuen vergrößerten Anerkennungsumfang. Sonst könnte ihre Prüfung untergeordnete Prüfungs- oder Kartenpflichten unzulässig umgehen. Eine Elternprüfung kann zusätzliche Integration belegen, ohne die ursprüngliche Nachweisbedeutung der Kindverträge rückwirkend zu erweitern. Die genaue Formel und ihre Inhaltsbedingungen stehen in Abschnitt~@ref{sec:assessment}.
+### `after`, atomarer Bedarf und Regeln E1 bis E4 {#sec:unit-progression}
 
-### Voraussetzungen und die Grenze einer Einheitsfolge {#sec:unit-progression}
+`U after V` heißt: Im vorgesehenen Lernfluss ist V vollständig abgeschlossen, bevor U beginnt. Es steht nur zwischen Einheiten, die Kinder derselben Einheit sind, gegebenenfalls der gedachten Wurzel. Es ordnet alle Atome von U nach allen Atomen von V. Vererbt wird Reihenfolge, niemals Bedarf. `requires` steht dagegen ausschließlich zwischen atomaren Zielen und fordert die bezeichnete Kompetenz. Es fordert keinen ganzen Einheitsabschluss. Im Zielmodell zeigt keine Voraussetzung auf ein Prüfungsziel.
 
-Zwei Arten von Voraussetzungen sind zu unterscheiden:
-
-- Ein atomarer `requires`-Bezug auf eine Kompetenz fordert diese Kompetenz. Er fordert nicht automatisch den Abschluss ihrer gesamten Einheit.
-- Eine *Einheitsvoraussetzung* ist eine ausdrücklich autorisierte Voraussetzung zwischen ganzen Lerneinheiten. Sie bedeutet *Vollabschluss* der vorausgesetzten Einheit und gehört zum Kompositionsvertrag außerhalb der bisherigen Grundrelationen $C$ und $R$.
-
-Diese Aussagen dürfen weder im Compiler noch im Coach verwechselt werden. Die aktuelle Darstellung (Abschnitt~@ref{sec:unit-representation}) kann keine Einheitsvoraussetzung ausdrücken; `parentUnitId` sagt nur, dass eine Einheit Pflichtkind einer anderen ist.
-
-Die Einheitshierarchie muss azyklisch sein. Wer darüber hinaus eine ungeteilte Abschlussfolge von Einheiten behauptet, in der jede Einheit vollständig abgeschlossen wird, bevor die nächste beginnt, muss auch deren Voraussetzungsgraphen prüfen. Ein atomarer DAG genügt nicht: Bei $a \to b \to c$, $\Own(U) = \{a, c\}$ und $\Own(V) = \{b\}$ braucht $U$ die Einheit $V$ wegen $a \to b$ und $V$ die Einheit $U$ wegen $b \to c$. Nach Zusammenfassung entsteht also eine Abhängigkeit in beide Richtungen; $U$ und $V$ sind so keine gültige ungeteilte Vollabschlussfolge. Die Diagnose erfordert eine andere Gruppierung oder einen ausdrücklich feineren Erwerbsablauf; sie erzeugt keine stillschweigenden Einheitssperren aus atomaren Kanten.
-
-Die atomare Normalform $R \subseteq A \times A$ und ihre vollständige transitive Minimalität aus Abschnitt~@ref{sec:validity} gelten weiterhin. Der aktuelle Bestand muss die vollständige deterministische Zielzustandsprüfung vor jedem Meilensteinpass bestehen. Daraus folgt noch keine neue Minimalitätsregel für eine erst zu beschließende Relation von Einheitsvoraussetzungen.
-
-:::principle {title="Zugangsprofil noch offen"}
-Eine fachliche Erwerbsordnung ist noch keine technische Zugangssperre. Ob und wann eine Einheitsvoraussetzung einen harten Zugangsschutz, eine *Einheitssperre*, erzwingt, und wie dann direkte Prüfungsversuche behandelt werden, ist **noch nicht entschieden**. Ein solches Profil wäre gesondert zu beschließen und zu prüfen. Die Einheitendefinition führt es nicht ein.
+:::table {#tab:unit-ordering caption="Verbindliche Ordnungsregeln; jede Gliederung wird gesondert geprüft." cols="14mm,X"}
+| Regel | Anforderung |
+| --- | --- |
+| E1 Baum | Einheiten sind ineinander geschachtelt oder ohne gemeinsame Atome; jedes enthaltene Ziel hat höchstens eine kleinste Einheit. Im vollständigen Landesplan hat jedes Ziel genau einen Lernplatz. R4 ist diese Eindeutigkeit in der Sprache des lokalen Prüfungsvertrags. |
+| E2 An einem Stück lernbar | Es gibt eine Reihenfolge aller Atome, die jeden direkten und transitiven Bedarf und jedes `after` einhält und jede Einheit als zusammenhängenden Block enthält. |
+| E3 Vollständig | Braucht a das Ziel b, entscheidet die kleinste Einheit, die beide enthält, beziehungsweise die gedachte Wurzel. Liegen a und b dort in zwei verschiedenen Kind-Einheiten, muss das Kind von a über die erklärte `after`-Hülle nach dem Kind von b liegen. Ist mindestens ein Kind ein eigenes Atom, ordnet der Bedarf selbst. |
+| E4 Sparsam | Unter den Kindern derselben Einheit folgt kein erklärtes `after` schon aus den übrigen dort erklärten `after`. Die kanonische und die Landesgliederung werden getrennt geprüft. |
 :::
 
-Nur *falls* später ein ausdrückliches Sperrprofil gewählt wird, könnte man für autorisierte Vorgängereinheiten $\operatorname{Pred}(U)$ definieren:
+E2 wird an den Kindern jeder Einheit einschließlich der gedachten Wurzel geprüft. Eine gerichtete Kante von Kind X nach Kind Y entsteht, wenn X `after` Y erklärt oder ein Atom in X ein Atom in Y braucht. Dieser Kindgraph muss azyklisch sein; die inneren Kindgraphen werden ebenso geprüft. Ein atomarer DAG allein genügt nicht: Bei $a\to b\to c$, $\Own(U)=\{a,c\}$ und $\Own(V)=\{b\}$ entsteht zwischen U und V ein Kreis. Umgruppierung oder fachlich begründete feinere Ziele reparieren ihn; die Diagnose erfindet keine Einheitssperre.
 
-$$
-\operatorname{Open}(U) = \bigwedge_{V \in \operatorname{Pred}(U)} \operatorname{Cleared}(V), \qquad \operatorname{Cleared}(U) = \operatorname{Open}(U) \land \Complete(U).
-$$
+E3 misst die tatsächlichen atomaren Bedarfe an der erklärten Ordnung. Ein fachliches `after` wird nicht überflüssig, weil die Reihenfolge der Landesjahrgänge dieselbe Ordnung herstellt: E4 gilt je Deklarationsschicht. Fachliche Einheiten werden von oben nach unten eingeführt: zuerst grobe, nach E1 bis E4 rückflussfreie Obereinheiten mit `after`, danach verfeinerte Blatteinheiten mit eigenen Prüfungen, die in allen 16 Bundesländern ungeteilt in genau einer Planeinheit liegen; größere Obereinheiten, deren Kindeinheiten sich auf mehrere Planeinheiten verteilen, erscheinen nur in der bundesweiten Fachsicht als Ganzes. Die atomare Normalform $R\subseteq A\times A$ und ihre transitive Minimalität bleiben eigene Pflichten; die harte G17-Prüfung umfasst unverändert die vollständigen 21 kanonischen Gymnasialwurzeln. Ein neues E4-Gate wird daraus nicht behauptet.
 
-$\Complete$ beschreibt die vorhandenen Nachweise, $\operatorname{Cleared}$ nur die bedingte Kurspolitik. Weder das Öffnen noch diese abgeleitete Freigabe vergibt Mastery. Ob direkte Prüfungen bei geschlossenem Zugang zulässig bleiben, entscheidet diese bloße Beispielgleichung nicht.
+:::principle {title="Keine Einheitssperre; GD-U14 ist abgelöst"}
+Das früher offene Zugangsprofil `GD-U14` mit `Open` und `Cleared` entfällt im verbindlichen Zielmodell durch B9 vom 14. November 2026. `after` ändert weder Frontier noch Fokusregeln, direkten Prüfungszugang, gespeicherte Ergebnisse oder Anerkennung. Die geplante Lernweise „Einheit für Einheit“ reiht nur bereits erreichbare Angebote; ausdrückliche Lernendenwahl und Lernplanvorrang bleiben. Diese Laufzeitwahl F13 ist noch nicht umgesetzt. Die Ablösung behauptet keine erfolgte Entfernung historischer Codepfade.
+:::
+
+#### Lernweise „Einheit für Einheit“. {#sec:unit-by-unit}
+
+Die Ziel-Lernweise **„Einheit für Einheit“** nutzt die Einheitenhierarchie und `after` zur geordneten Vorschlagsauswahl über der unveränderten Menge erreichbarer Frontier-Ziele $\Frontier(\Meff)$. Ein Kindknoten $X$ (Untereinheit oder eigenes Atom) gilt im aktuellen persönlichen Umfang $L$ als **erledigt**, wenn alle in $L$ enthaltenen Atome von $X$ effektiv beherrscht sind ($\Atoms(X)\cap L \subseteq \Meff$); dies ist ein Abschluss des benötigten Anteils, während $\Complete(U)$ aus @eqref{eq:unit-complete} das ganze $T(U)$ prüft. Prüfungs- und Memorieratome in $L$ zählen mit: Eine noch offene eigene Prüfung hält diesen Anteil offen, auch wenn alle Inhaltsziele ausdrücklich gemeistert sind. Das sperrt keine bewusste andere Zielwahl und entfernt kein erreichbares Ziel aus der Frontier. Eine Einheit heißt **begonnen**, wenn sie mindestens ein effektiv beherrschtes Atom in $L$ enthält und noch nicht erledigt ist; ein offenes Kind heißt **an der Reihe**, wenn alle seine Vorgänger unter den Geschwistern derselben Elterneinheit (aus `after` und kreuzendem atomarem Bedarf) erledigt sind.
+
+Ausgehend von der gedachten Wurzel steigt die Auswahl rekursiv bis zu einem atomaren Ziel aus $\Frontier(\Meff)$ ab und wählt auf jeder Ebene unter den Kindern, die noch mindestens ein erreichbares Frontier-Ziel enthalten, nach vier Prioritätsstufen:
+
+1. eine offene Kindeinheit, die sowohl **an der Reihe** als auch bereits **begonnen** ist (angefangene Einheit geschlossen zu Ende führen);
+2. sonst ein offenes Kind (Kindeinheit oder eigenes Atom), das **an der Reihe** ist;
+3. sonst eine offene **begonnene** Kindeinheit (falls früheres Überspringen einen Vorgänger offengelassen hat);
+4. sonst ein beliebiges Kind mit erreichbarem Frontier-Ziel.
+
+Beim echten Null-Fortschritts-Einstieg behalten offene Orientierungsziele ihren Vorrang (Abschnitt~@ref{sec:orientation}); innerhalb einer Einheit mit Prüfungen folgen die eigenen Prüfungen von selbst im Anschluss an ihre vorausgesetzten Inhaltsziele. Ausdrückliche Zielwahl durch Lernende und ein aktiver datierter Zeitplan behalten Vorrang; die Laufzeitumsetzung (`F13`) steht noch aus.
+
+Für die vollständigen Landespläne sind Sekundarstufe I und II die einzigen Wurzelkinder, II `after` I. Kein Atom der früheren Stufe darf ein Atom der späteren benötigen, auch nicht transitiv und auch nicht als Vorbereitung. Ein Befund wird durch fachlich korrigierte Voraussetzungen, Teilung, belegtes Vorziehen oder gekennzeichnete Vorbereitung repariert. Keine Sicht schwächt Bedarf ab oder verdeckt Rückgriffe. Die Einführung folgt Bericht, Ursachenbehebung, Sperrklinke und hartem Gate bei null Verstößen; kein neuer vollständiger Landesplan ist damit bereits abgenommen.
 
 :::sources
-[Lerneinheiten](repo:docs/concept/skill-graph/learning-units.md); [Einheitsfolge und Zugangsprofile](repo:docs/concept/skill-graph/learning-unit-progression.md); [Graph-Definition](repo:docs/concept/skill-graph/graph-definition.md); [Anerkennung und globaler Abschluss](repo:docs/concept/skill-graph/assessment-gated-completion.md).
+[Verbindliches Einheitenkonzept](repo:docs/concept/skill-graph/learning-unit-wiring-concept-2026-11-14.md); [Stufenentscheidungen und Übergabe](repo:docs/dev/stage-plan-units-handover-2026-11-15.md); [Stufenplan-Grundlage](repo:contracts/curriculum-package/v1.3/README.md); [Anerkennung und globaler Abschluss](repo:docs/concept/skill-graph/assessment-gated-completion.md).
 :::

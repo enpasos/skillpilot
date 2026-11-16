@@ -1,0 +1,193 @@
+{
+  "at": "2026-11-16T06:39:05.640131+00:00",
+  "status": "LOCAL_NINE_REQUESTED_FRONTEND_STEPS_AND_FINAL_FALLBACK_ACTION_RECHECK_PASS",
+  "rootCause": "The existing fixture explicitly gives full-plan-root a chemistry child, so the visible full-plan root correctly owns shared preparation beside Chemistry. Old assertions instead described an empty overview and required subject-root preparation. Production projection was correct for the supplied shape.",
+  "productionChanges": false,
+  "modifiedSource": {
+    "path": "app/scripts/testPersonalCurriculumProjectionUi.ts",
+    "sha256": "1c45bfe30851f5a0fe7bdfd177d837b5a0ae74f342734226c3a0bf4e88cf9644"
+  },
+  "focusedReproduction": {
+    "exitCode": 1,
+    "file": "playwright-before.actual.log",
+    "exactFailure": "The preparation branch is shown beneath the subject root the Cockpit displays."
+  },
+  "actualBrowserDiagnosis": {
+    "dom": "actual-dom.before.html",
+    "relations": "dom-relations.before.json",
+    "screenshotTmpOnly": "before.png",
+    "fullPlanRootVisible": true,
+    "placedTargetAndOrientationOnceInSubject": true,
+    "preparationExactlyForeignAndOwnUnplaced": true
+  },
+  "finalCoverage": [
+    "Explicit full-plan parent retains subject and shared preparation as separate children, once each.",
+    "Empty overview stays invisible; displayed subject root keeps all four required canonical atoms and one presentation branch.",
+    "Both own and foreign unplaced prerequisites remain visible despite foreign course/state filters.",
+    "Canonical prerequisite focus actions work in both hierarchy variants.",
+    "Clicking the presentation aggregate preserves the selected canonical atom; aggregate has no focus button.",
+    "Opening required foreign atom retains standalone committed root; no unauthenticated public closure fallback."
+  ],
+  "sequentialCommands": [
+    {
+      "step": "test:learner-cockpit-startup",
+      "command": [
+        "npm",
+        "run",
+        "test:learner-cockpit-startup"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/app",
+      "startedAt": "2026-11-16T06:30:33.609056+00:00",
+      "endedAt": "2026-11-16T06:31:06.977487+00:00",
+      "exitCode": 0,
+      "elapsedSeconds": 33.371,
+      "logPath": "tmp/pr159-personal-curriculum-projection-ui-ci-fix-20261116/01-test-learner-cockpit-startup.actual.log",
+      "logSha256": "05261dffc7192403622d0cb3ac594ee729e02e9a1c1248eca0a58119ed349be0",
+      "testSourceSha256": "4cb6012e10798161299c92724a1f2cb4193c914898c4080b086f3f32ff8925f2"
+    },
+    {
+      "step": "test:learner-map",
+      "command": [
+        "npm",
+        "run",
+        "test:learner-map"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/app",
+      "startedAt": "2026-11-16T06:31:06.978243+00:00",
+      "endedAt": "2026-11-16T06:33:57.399337+00:00",
+      "exitCode": 0,
+      "elapsedSeconds": 170.434,
+      "logPath": "tmp/pr159-personal-curriculum-projection-ui-ci-fix-20261116/02-test-learner-map.actual.log",
+      "logSha256": "49f5067b215c3267f9aafe0e84f322e4adf981deb354cb7c095e6eee43f05068",
+      "testSourceSha256": "4cb6012e10798161299c92724a1f2cb4193c914898c4080b086f3f32ff8925f2"
+    },
+    {
+      "step": "test:goal-book-ui",
+      "command": [
+        "npm",
+        "run",
+        "test:goal-book-ui"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/app",
+      "startedAt": "2026-11-16T06:33:57.399851+00:00",
+      "endedAt": "2026-11-16T06:34:21.481429+00:00",
+      "exitCode": 0,
+      "elapsedSeconds": 24.084,
+      "logPath": "tmp/pr159-personal-curriculum-projection-ui-ci-fix-20261116/03-test-goal-book-ui.actual.log",
+      "logSha256": "c88d2841f82d76a0d59046aa7fa1d40ccc0a81226591630367c2d5b27c138f62",
+      "testSourceSha256": "4cb6012e10798161299c92724a1f2cb4193c914898c4080b086f3f32ff8925f2"
+    },
+    {
+      "step": "test:session-setup-ui",
+      "command": [
+        "npm",
+        "run",
+        "test:session-setup-ui"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/app",
+      "startedAt": "2026-11-16T06:34:21.481957+00:00",
+      "endedAt": "2026-11-16T06:34:40.378869+00:00",
+      "exitCode": 0,
+      "elapsedSeconds": 18.897,
+      "logPath": "tmp/pr159-personal-curriculum-projection-ui-ci-fix-20261116/04-test-session-setup-ui.actual.log",
+      "logSha256": "250b25dc9aa15711cf02ae2b97ad576dec4e8179fd02054cc5998ee5be4455c7",
+      "testSourceSha256": "4cb6012e10798161299c92724a1f2cb4193c914898c4080b086f3f32ff8925f2"
+    },
+    {
+      "step": "test:trainer-navigation-ui",
+      "command": [
+        "npm",
+        "run",
+        "test:trainer-navigation-ui"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/app",
+      "startedAt": "2026-11-16T06:34:40.379366+00:00",
+      "endedAt": "2026-11-16T06:34:52.847104+00:00",
+      "exitCode": 0,
+      "elapsedSeconds": 12.47,
+      "logPath": "tmp/pr159-personal-curriculum-projection-ui-ci-fix-20261116/05-test-trainer-navigation-ui.actual.log",
+      "logSha256": "3314eaf82dab26b32f6835d92a12692e3551446ffa4256157b553fe7c7a64441",
+      "testSourceSha256": "4cb6012e10798161299c92724a1f2cb4193c914898c4080b086f3f32ff8925f2"
+    },
+    {
+      "step": "test:trainer-gymnasium-scope-ui",
+      "command": [
+        "npm",
+        "run",
+        "test:trainer-gymnasium-scope-ui"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/app",
+      "startedAt": "2026-11-16T06:34:52.847758+00:00",
+      "endedAt": "2026-11-16T06:35:02.774735+00:00",
+      "exitCode": 0,
+      "elapsedSeconds": 9.927,
+      "logPath": "tmp/pr159-personal-curriculum-projection-ui-ci-fix-20261116/06-test-trainer-gymnasium-scope-ui.actual.log",
+      "logSha256": "3f4c2617002859a4fe64a049ae2486afc3e72804257bbbf7a949b5f78662721b",
+      "testSourceSha256": "4cb6012e10798161299c92724a1f2cb4193c914898c4080b086f3f32ff8925f2"
+    },
+    {
+      "step": "test:learner-data-management",
+      "command": [
+        "npm",
+        "run",
+        "test:learner-data-management"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/app",
+      "startedAt": "2026-11-16T06:35:02.775222+00:00",
+      "endedAt": "2026-11-16T06:35:08.915087+00:00",
+      "exitCode": 0,
+      "elapsedSeconds": 6.14,
+      "logPath": "tmp/pr159-personal-curriculum-projection-ui-ci-fix-20261116/07-test-learner-data-management.actual.log",
+      "logSha256": "f9629242535f536802602de1fb6656a7bab76f19b3399e0061c8a178bd9da11e",
+      "testSourceSha256": "4cb6012e10798161299c92724a1f2cb4193c914898c4080b086f3f32ff8925f2"
+    },
+    {
+      "step": "test:curriculum-quality-ui",
+      "command": [
+        "npm",
+        "run",
+        "test:curriculum-quality-ui"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/app",
+      "startedAt": "2026-11-16T06:35:08.915601+00:00",
+      "endedAt": "2026-11-16T06:35:41.262839+00:00",
+      "exitCode": 0,
+      "elapsedSeconds": 32.349,
+      "logPath": "tmp/pr159-personal-curriculum-projection-ui-ci-fix-20261116/08-test-curriculum-quality-ui.actual.log",
+      "logSha256": "e4cde80ba78e32ccef5e7b09bed2cd0b848bbba1a29f471e158d469ebd36df88",
+      "testSourceSha256": "4cb6012e10798161299c92724a1f2cb4193c914898c4080b086f3f32ff8925f2"
+    },
+    {
+      "step": "test:personal-curriculum-editor",
+      "command": [
+        "npm",
+        "run",
+        "test:personal-curriculum-editor"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/app",
+      "startedAt": "2026-11-16T06:35:41.263309+00:00",
+      "endedAt": "2026-11-16T06:35:43.215482+00:00",
+      "exitCode": 0,
+      "elapsedSeconds": 1.952,
+      "logPath": "tmp/pr159-personal-curriculum-projection-ui-ci-fix-20261116/09-test-personal-curriculum-editor.actual.log",
+      "logSha256": "f60b0dcb23151f292c88d64dbc813dc4b7d07d9578f33bb8ad176e9550f21b95",
+      "testSourceSha256": "4cb6012e10798161299c92724a1f2cb4193c914898c4080b086f3f32ff8925f2"
+    }
+  ],
+  "finalChangedTestFollowup": {
+    "command": "npm run test:learner-cockpit-startup",
+    "cwd": "/home/enpasos/projects/skillpilot/app",
+    "exitCode": 0,
+    "log": "final-cockpit-startup.actual.log",
+    "testSourceSha256": "1c45bfe30851f5a0fe7bdfd177d837b5a0ae74f342734226c3a0bf4e88cf9644",
+    "reason": "After root independent review requested the same real focus/click actions for the empty-overview variant; other eight unchanged scripts were already terminal PASS."
+  },
+  "finalEslint": {
+    "command": "./node_modules/.bin/eslint scripts/testPersonalCurriculumProjectionUi.ts",
+    "cwd": "/home/enpasos/projects/skillpilot/app",
+    "exitCode": 0,
+    "log": "final-eslint.actual.log"
+  },
+  "gitDiffCheckExitCode": 0,
+  "boundaries": "No production changes, no broad process/port kills or second application/PDF build, no remote CI/Main success or Git mutation."
+}

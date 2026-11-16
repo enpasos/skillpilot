@@ -1,0 +1,116 @@
+{
+  "reviewType": "independent technical read-only delta review of explicit runtime 1.3 versioned consumer adapter",
+  "reviewerAgent": "/root/physics_release_finish",
+  "sealedAt": "2026-11-16T03:49:02.741175+00:00",
+  "decision": "ACCEPT_BOUNDED_VERSIONED_CONSUMER_DELTA",
+  "scope": {
+    "readinessGates": 13,
+    "functionalChecks": 15,
+    "newRunnerVersion": "1.1.0",
+    "runtimeContract": "1.3",
+    "reviewedSourcePins": [
+      {
+        "path": "scripts/run_package_consumer_smoke_v13.py",
+        "bytes": 100546,
+        "sha256": "3b3269ff3469c1e92beddcdbe5ce554d240071da9f0b878d3b757e42723272a2"
+      },
+      {
+        "path": "scripts/v1.3/package_consumer_browser_smoke.cjs",
+        "bytes": 21584,
+        "sha256": "f3bc947aee48eb9bbeac8e9f975b655f35cde6dfbd3f0a947801230ca0a92643"
+      },
+      {
+        "path": "scripts/evaluate_curriculum_package_readiness.py",
+        "bytes": 214525,
+        "sha256": "9675cf9133b8ee63c0f6762f6b911036edabcb20482ee007d2cf7998b91a6775"
+      },
+      {
+        "path": "scripts/generate_curriculum_package_v13_readiness.py",
+        "bytes": 4071,
+        "sha256": "ba154652e407bcd4edb2780d8ba4d8cc35a1e2a45503b23c45133d5643dafa70"
+      },
+      {
+        "path": "scripts/test_package_readiness_v13.py",
+        "bytes": 5109,
+        "sha256": "67205b2cfca933cf62eee7e6edb02178401a7484206902e3f93e8ffb81572fa4"
+      },
+      {
+        "path": "scripts/curriculum_package_contract_selection.py",
+        "bytes": 2751,
+        "sha256": "fc4f5c5c3984a10309134c4ac1a6c450fdb152363c45877789f5753b994509af"
+      },
+      {
+        "path": "contracts/curriculum-package/v1.3/package-readiness-report.schema.json",
+        "bytes": 10221,
+        "sha256": "1b688e801ddf52558fe295b1db50dc95d80035a9df82c97d7542dc29a62785e3"
+      },
+      {
+        "path": "contracts/curriculum-package/v1.3/package-consumer-smoke-report.schema.json",
+        "bytes": 21804,
+        "sha256": "c689c949bc77e56e0f9a092d3339c9a25eb24fcea37d9238889ac6b74fbaf3ed"
+      },
+      {
+        "path": "contracts/curriculum-package/v1.3/profiles/full-standalone-v1.3.readiness-policy.json",
+        "bytes": 2765,
+        "sha256": "efcf18fb5a15e94a6c6738dc48d7a6c7e39018f4eb89e9bbffb4989ce4acfbc7"
+      },
+      {
+        "path": "contracts/curriculum-package/v1.3/profiles/full-standalone-v1.3.profile.json",
+        "bytes": 18426,
+        "sha256": "b4e0f5551a456610fbe3bdc3a43b68012151c4e6b402eb897f499aef7e15b995"
+      },
+      {
+        "path": "app/src/hooks/useLearnerScopedLandscapes.ts",
+        "bytes": 2285,
+        "sha256": "4ea8e1dac8c3e594d2b42cfa2daeec0a67f8736ee495c31462c0985a79798154"
+      }
+    ]
+  },
+  "ownExecutedCommands": [
+    {
+      "argv": [
+        "node",
+        "tmp/pr159-versioned-consumer-independent-20261116/browser-probe.cjs"
+      ],
+      "exitCode": 0,
+      "cases": 23
+    },
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "tmp/pr159-versioned-consumer-independent-20261116/readiness-probe.py"
+      ],
+      "exitCode": 0,
+      "cases": 48
+    }
+  ],
+  "rootExecutedExistingLogs": [
+    {
+      "path": "tmp/pr159-readiness-versioned-consumer-v13-tests.log",
+      "bytes": 563,
+      "sha256": "ba4931fc4361dd5ba27bc5de33ee054eb5e24df263ac0e4618945dbce943382d",
+      "attribution": "Root executed; original output read and retained, not independently re-executed"
+    },
+    {
+      "path": "tmp/pr159-readiness-versioned-consumer-base-selftest.log",
+      "bytes": 4327,
+      "sha256": "148e15610bcb264fd10ae0f6ec9ce07214068bc5a7737aad9c0e9e472f7080ce",
+      "attribution": "Root executed; original output read and retained, not independently re-executed"
+    }
+  ],
+  "findings": [],
+  "conclusions": [
+    "The 13 readiness gates are exactly identical and all blocking; removing or making any one nonblocking is natively rejected.",
+    "The entire runner matches the sealed predecessor after only explicit new runner/schema/helper/version identity replacements; sandbox, store, hashes, isolation, fresh self-execution, 15 functional checks, browser evidence and fail-closed result evaluation remain unchanged.",
+    "Only page-origin API responses, collected from the browser page rather than API setup, satisfy the new exact GET, current learner, current root, numeric HTTP 200 closure predicate. Query strings are accepted without changing exact path identity.",
+    "The catalog-failure guard now additionally rejects attempted learner-scoped landscape fallback; all original package content, default offering, catalog error, no-page-errors and forbidden request assertions remain.",
+    "Consumer report schema is identical apart from explicit schema and runner identities. Readiness schema differs only in explicit identities/title/description. Code selection admits only repository-owned v1 or v1.3 readiness directories; default stays v1.",
+    "129 historical tracked v1/v1.1/v1.2 contracts and sealed original runner/browser/HTTP helper files were compared byte for byte to current HEAD and are unchanged.",
+    "Actual failed epoch 46 remains failed: all 15 functional checks passed but browser assertion failed; its legacy report cannot satisfy the new schema. It is not rebound or relabelled as new success."
+  ],
+  "limits": [
+    "No fresh whole consumer run executed by this reviewer; targeted predicate and policy probes do not establish browser/HTTP success, redistribution clearance, remote CI, integration or human acceptance.",
+    "Earlier independent 62-probe epoch remains historical and unchanged; this receipt describes the new reviewed source epoch only."
+  ]
+}

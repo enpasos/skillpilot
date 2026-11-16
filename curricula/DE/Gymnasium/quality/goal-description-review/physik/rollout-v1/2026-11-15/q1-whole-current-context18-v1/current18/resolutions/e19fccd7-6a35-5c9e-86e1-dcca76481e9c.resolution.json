@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "physics-current18-firstpass-eight-unchanged-20261115-e19fccd7-6a35-5c9e-86e1-dcca76481e9c",
+  "goal": {
+    "goalId": "e19fccd7-6a35-5c9e-86e1-dcca76481e9c",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:1d2c3a50258baaa8083a37088df83e35bbf2c2676c76eae5f4bc3a1431ed4267",
+    "pageFingerprint": "sha256:4d484e41563f65afb1e8d76ac3ae9f1dcf50b8df24667874f0cc091bc465ef9a",
+    "goalReviewContextFingerprint": "sha256:6b0a0d8b79593c896e45b14a810ee88a42ee2a86ab12a5c8b32b72040475dbdf",
+    "finalText": {
+      "titleDe": "Elektrische Dipolfelder mit dem EKG verknüpfen",
+      "titleEn": "Relate electric dipole fields to ECG signals",
+      "descriptionDe": "Die lernende Person kann elektrische Potenziale und Äquipotentiallinien eines Dipolfeldes experimentell oder in einer Simulation untersuchen und erklären, wie ein zeitlich veränderliches Dipolmodell des Herzens mit den zwischen Oberflächenelektroden gemessenen EKG-Potenzialdifferenzen zusammenhängt und wo die Grenzen dieser Näherung liegen.",
+      "descriptionEn": "The learner can investigate electric potentials and equipotential lines of a dipole field experimentally or in a simulation and explain how a time-varying dipole model of the heart relates to ECG potential differences measured between surface electrodes and where this approximation is limited."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physics-eighteen-current840-context-20261115-first-pass-a",
+      "campaignDigest": "sha256:460100326624c0038991f2132295a6ebd9c3a9247005672290cc6c3cedb61384",
+      "roundId": "independent-a",
+      "independenceGroupId": "physics-eighteen-current840-context-20261115-independent-a",
+      "reviewInputFingerprint": "sha256:de64bb0e40ff268b46117e93c5a26926411aa829c167982b414bc24b63cdc94d",
+      "goalReviewContextFingerprint": "sha256:6b0a0d8b79593c896e45b14a810ee88a42ee2a86ab12a5c8b32b72040475dbdf",
+      "batchId": "independent-a.batch-001",
+      "runId": "physics-current18-fresh-a-20261115",
+      "runManifestDigest": "sha256:0ad4c12baaa45eaebc73839de373608da94a0f2c987402f1fdf39786e49fa270",
+      "resultsDigest": "sha256:ef6f6bc2ecc33efd9882eb6de669b796c60219c8c51ddea13996f31652406ef2",
+      "recordId": "physics-current18-fresh-a-20261115.goal-006",
+      "recordDigest": "sha256:a0512f6757106751eaf6d89e96ce87863ddb2bf4279fcdd2f6fad5f06272270f"
+    },
+    "second": {
+      "campaignId": "physics-eighteen-current840-context-20261115-first-pass-b",
+      "campaignDigest": "sha256:a0881cf9406e53ead6492963cb147d6f9bc3bab4f7cc4e3237a631049750f8bd",
+      "roundId": "independent-b",
+      "independenceGroupId": "physics-eighteen-current840-context-20261115-independent-b",
+      "reviewInputFingerprint": "sha256:de64bb0e40ff268b46117e93c5a26926411aa829c167982b414bc24b63cdc94d",
+      "goalReviewContextFingerprint": "sha256:6b0a0d8b79593c896e45b14a810ee88a42ee2a86ab12a5c8b32b72040475dbdf",
+      "batchId": "independent-b.batch-001",
+      "runId": "physics-current18-fresh-b-20261115",
+      "runManifestDigest": "sha256:4d3becb7ab49bdd8049b73e50f1ecbc624cbd565189bbac2567ed4d0261aaf8e",
+      "resultsDigest": "sha256:fbe588dd8101c2b5136d90a7fedf86eee52791034617da22c650ab58258aabfe",
+      "recordId": "physics-current18-fresh-b-20261115.goal-06",
+      "recordDigest": "sha256:93f5f1acee239a904e1259fc4bd53b641cb7459c8fd87f9b3bf282c1a1310f9b"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:52199852d22eeacd30e95c57b9770e1eb5ece78112a8f2c6f03ab6376b5605f6"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "physics-current18-firstpass-eight-unchanged-20261115-actual-ai-synthesis",
+    "manifestDigest": "sha256:cb0fbab7269fc0abb9b50e60000c4e4501e52a1d123992e337ca365b305ea296",
+    "manifestFingerprint": "sha256:1e241c401cb082926e17e4c76f3d5966cd99aae58410de217c602db6c9bfb397",
+    "decisionId": "physics-current18-firstpass-eight-unchanged-20261115-actual-ai-synthesis-004"
+  },
+  "synthesis": {
+    "synthesisId": "physics-current18-firstpass-eight-unchanged-20261115-actual-ai-synthesis-004",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "codex-physics-release-agent-reading-actual-independent-A-B-current-context18-20261115",
+    "synthesizedAt": "2026-11-15T20:11:45.380900+00:00",
+    "rationaleDe": "Beide tatsächlichen unabhängigen aktuellen Erstpassrecords behalten den Text und sehen keinen Profiländerungsbedarf. Potenzialverteilung, Elektrodengeometrie und EKG-Deutung bleiben eine sichere begrenzte Modellanwendung mit Mess-/Modelltrennung. Die unterschiedlichen eigenen Evidenzformulierungen wurden fachlich gelesen; keine amtliche Projektions-, Lernenden- oder menschliche Freigabe folgt daraus.",
+    "rationaleEn": "Both actual independent current first-pass records retain the text and recommend no profile change. Potential distribution, electrode geometry and ECG interpretation remain a safe bounded model application distinguishing measurement and model. Their differing independently written evidence formulations were read substantively; no official projection, learner-result or human approval follows.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Ein EKG erfasst zeitabhängige Potenzialdifferenzen zwischen Oberflächenpunkten. Ein Herzdipol in einem leitfähigen Körpermodell erklärt deren Abhängigkeit von Quellrichtung und Ableitungsgeometrie, ist aber weder direkt gemessener Dipol noch vollständige Beschreibung verteilter Herzquellen.",
+      "essentialUnderstandingEn": "An ECG records time-dependent potential differences between surface locations. A heart dipole in a conducting-body model explains their dependence on source direction and lead geometry, but is neither a directly measured dipole nor a full description of distributed cardiac sources.",
+      "observablePerformanceDe": "Die Person erhebt Potenzialwerte in einer sicheren Simulation oder einem geeigneten beaufsichtigten Modellversuch, zeichnet Äquipotentiallinien und bestimmt die vorzeichenrichtige Differenz eines Elektrodenpaars. Sie verknüpft deren zeitliche Änderung mit einer EKG-Spur und benennt konkrete Leiter- und Dipolgrenzen.",
+      "observablePerformanceEn": "The learner obtains potential values in a safe simulation or suitable supervised model experiment, draws equipotential lines and determines the signed difference for an electrode pair. They connect its time variation to an ECG trace and identify specific conductor and dipole limitations.",
+      "transferExpectationDe": "Bei vertauschten Messanschlüssen beziehungsweise gedrehter Dipolrichtung sagt die Person in einem frischen Fall getrennt Vorzeichen- und Größenänderungen voraus und erklärt, welche Abweichung ein nicht homogener Leiter zusätzlich verursachen könnte.",
+      "transferExpectationEn": "For reversed measurement connections or a rotated dipole direction, the learner separately predicts sign and magnitude changes in a fresh case and explains what additional deviation a nonuniform conductor could cause."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-5162a703335f1c5b3df72258c646d96198b53f3a88318b34eef62ed49dec7b27",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:dcbd8ec6ee4c98c29b3f2721838072a838e474a6a72797201c8fd8ec6b7c6e5b"
+}

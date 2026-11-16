@@ -1,0 +1,844 @@
+{
+  "at": "2026-11-15T18:57:11.804207+00:00",
+  "reviewer": "GPT-6.1 Sol Ultra / independent subagent land_stage_excerpts",
+  "claim": "Bounded contract/runtime analysis; no learner-success, human-approval, route-pass or M7 acceptance claim",
+  "pins": [
+    {
+      "path": "tmp/physics-release837-20261115/review-canonical-final.snapshot.json",
+      "sha256": "d0ff49b423af679233a19be8b6e3e77925ce47a05844608d1cb302b03e8895d5"
+    },
+    {
+      "path": "tmp/physics-release837-20261115/current10-informed-P-v2.review.jsonl",
+      "sha256": "bdd20468b3b4476bb999010fc61e28995adbd01c25f47213d77514a08fa416ab"
+    },
+    {
+      "path": "tmp/physics-release837-20261115/current10-informed-P-v2.config.json",
+      "sha256": "a74e7d8a26be3a09330ce33ba5a6988ca2dfe4de5c6520407f84c933ef5ddb1b"
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "e0563e716506d12f0573b80eb4c0a8fc23ad2a6e20693a0dd7f6f1311f90e502"
+    },
+    {
+      "path": "docs/concept/skill-graph/source/chapters/02-context.de.md",
+      "sha256": "fa84cde18b253f32d8415094f79ec7c67203213d90faa9ec355bd6bb33d32d09"
+    },
+    {
+      "path": "docs/concept/skill-graph/source/chapters/03-learning-units.de.md",
+      "sha256": "9ea8974fca9c50ea255cf0cb8988c329760c3dae8a79d9e3ec2268ad2a3b85cc"
+    },
+    {
+      "path": "docs/concept/skill-graph/source/chapters/05-assessment.de.md",
+      "sha256": "f9a9ed5480359517dcf00646aa7579fa8f974a2f655bc6364e628a080272402e"
+    },
+    {
+      "path": "docs/concept/skill-graph/architecture-source/chapters/08-learning-goal-book.de.md",
+      "sha256": "5763bece673cdce32a79a4c562d731dc154cacbf9045b3db9b68d552dbd59db4"
+    },
+    {
+      "path": "docs/qa-ci/graph-definition-rule-milestone-matrix.md",
+      "sha256": "0a6734c3f7ebd390befc2969520369d57fa208879e7efb17700583eae1b2a307"
+    },
+    {
+      "path": "app/scripts/generateCurriculumQualityStatus.ts",
+      "sha256": "d1f97f6aebbf5b361c24da37058992bd86213a98c7aa36a482d71856b936a79d"
+    },
+    {
+      "path": "app/scripts/lib/directAtomicRouteCoverage.ts",
+      "sha256": "79142450512d1f2f57711cb5287d10b807a7992dc16c332b9da102e1f0eab730"
+    },
+    {
+      "path": "app/scripts/lib/hardLearningRouteValidation.ts",
+      "sha256": "36b42d03a0923fc27e30adb21d8d3f1d515d7a51a97ac76da441c277d2e070ad"
+    },
+    {
+      "path": "app/scripts/positiveGoalEvidenceProfileModel.ts",
+      "sha256": "ee4fa93d31ffc01a86816e94cbd2d1716b7974b00f996ae96c13e518e5b3a190"
+    },
+    {
+      "path": "app/scripts/positiveGoalEvidenceReview.ts",
+      "sha256": "7b9490578e671268a64f6d7684907f9cef02fbfe9b3da672e081845948bc6c0c"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/api/FrontierGoal.java",
+      "sha256": "48d3160cd9cf5df3fc39e23b054d8080d3bab531e2788dd36a04e046335ae5f7"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/content/ContentMaterialResolver.java",
+      "sha256": "143073c210d3800192c0d140e6d477cb5f6b29593df280d885d78921eabf7b87"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/ai/CoachStateProjection.java",
+      "sha256": "6721bb5bfa1e1e8ba085c462ed4fc9669436619331e3853d5e4527062f43dead"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/ai/CoachToolFacade.java",
+      "sha256": "ddb9a069c9e6688644f6b10be67e17f5c3fb475150be306c051d83f0d1e1de1e"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+      "sha256": "ccb063bb5b1a11161ca8f3b327d067381b78342901a7471be28a553eaf012a7f"
+    },
+    {
+      "path": "ai/claude/plugin/skillpilot-coach-v1/skills/skillpilot-coach-v1/SKILL.md",
+      "sha256": "25c4558cdec7a636624680b995e63fc8405349f6846760913557b4055346636d"
+    }
+  ],
+  "goals": [
+    {
+      "goalId": "84ddb244-e560-592f-9d43-e84c801fe5b4",
+      "title": "Linsenauge mit geometrischer Optik modellieren",
+      "description": "Die lernende Person kann das Linsenauge mit Strahlenkonstruktion, Linsengleichung und Simulationen modellieren, Bedingungen scharfen Sehens quantitativ deuten und Modellgrenzen benennen.",
+      "plannedNewStaticTask": false,
+      "staticCoverageGoalIds": [],
+      "P": {
+        "status": "needs_human_review",
+        "reviewAuthority": "ai_candidate",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1"
+      },
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "eye-model-focus",
+            "essentialUnderstandingDe": "Eine dünne Sammellinse und ein Schirm modellieren im paraxialen Bereich Brechung und Netzhautabbildung; scharfes Sehen verlangt Bildlage auf dem Schirm und 1/f=1/g+1/b.",
+            "essentialUnderstandingEn": "A thin converging lens and screen model refraction and retinal imaging in the paraxial regime; sharp vision requires the image on the screen and 1/f=1/g+1/b.",
+            "observablePerformanceDe": "Die lernende Person begründet die Zuordnung von Objekt, Linse und Schirm, konstruiert passende Hauptstrahlen und berechnet eine mit festem Schirm vereinbare Brennweite oder Gegenstandsweite.",
+            "observablePerformanceEn": "The learner justifies the mapping of object, lens and screen, constructs appropriate principal rays and calculates a focal length or object distance compatible with a fixed screen."
+          },
+          {
+            "id": "simulation-and-limits",
+            "essentialUnderstandingDe": "Eine Simulation prüft Konsequenzen der gewählten Modellannahmen, nicht unabhängig deren biologische Wahrheit; das reale Auge besitzt mehrere brechende Flächen und physiologische Grenzen.",
+            "essentialUnderstandingEn": "A simulation tests consequences of chosen model assumptions, not independently their biological truth; the real eye has several refracting surfaces and physiological limits.",
+            "observablePerformanceDe": "Die lernende Person variiert gezielt eine Modellgröße, vergleicht Simulation, Strahlenbild und Rechnung und benennt mindestens eine konkrete Grenze der Übertragung auf das Auge.",
+            "observablePerformanceEn": "The learner varies one model quantity deliberately, compares simulation, ray diagram and calculation and states at least one specific limit of applying the model to an eye."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "eye-model-focus",
+            "simulation-and-limits"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "object-regime",
+            "textDe": "Fernobjekt gegenüber endlicher Gegenstandsweite bei festem Schirm.",
+            "textEn": "Distant object versus finite object distance with a fixed screen."
+          },
+          {
+            "id": "inverse-model-use",
+            "textDe": "Brennweite für ein Objekt bestimmen gegenüber Schärfebereich einer begrenzt veränderlichen Linse vorhersagen.",
+            "textEn": "Finding focal length for an object versus predicting the focus range of a lens with limited adjustability."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "far-near-accommodation",
+            "taskDemandDe": "Ein vereinfachtes Linsenauge hat b=20,0 mm zwischen dünner Linse und festem Netzhautschirm. Konstruiere Fern- und Nahabbildung für paralleles Licht bzw. g=250 mm und bestimme die jeweils notwendige Brennweite. Begründe die Modellzuordnung.",
+            "taskDemandEn": "A simplified lens-eye model has b=20.0 mm between a thin lens and a fixed retinal screen. Construct far and near imaging for parallel light and g=250 mm, and find the focal length required in each case. Justify the model mapping.",
+            "expectedPerformanceDe": "Erhält f=20,0 mm für das Fernobjekt und f=gb/(g+b)≈18,52 mm für das Nahobjekt; zeichnet konvergierende Strahlen mit umgekehrtem reellem Bild auf dem Schirm. Erklärt größere Brechkraft beim Nahfokus bei festem b und nennt etwa vernachlässigte Hornhaut oder Linsendicke.",
+            "expectedPerformanceEn": "Obtains f=20.0 mm for the distant object and f=gb/(g+b)≈18.52 mm for the near object; draws converging rays with an inverted real image on the screen. Explains greater refractive power for near focus at fixed b and identifies, for example, neglected cornea or lens thickness.",
+            "understandingFocusDe": "Schärfe entsteht durch passende Bildlage, nicht allein durch das Vorhandensein einer Sammellinse.",
+            "understandingFocusEn": "Sharpness results from the correct image position, not merely from having a converging lens."
+          },
+          {
+            "id": "limited-accommodation-simulation",
+            "taskDemandDe": "Ein neuer dünner-Linsen-Simulator lässt f nur zwischen 18,0 und 20,0 mm verändern; der Schirm bleibt bei b=20,0 mm. Prognostiziere unabhängig, ob Objekte bei g=100 mm und g=300 mm scharf abbildbar sind. Konfiguriere diese Werte im Simulator, vergleiche die Strahlenschnittlage und erkläre die Grenze des Modells.",
+            "taskDemandEn": "A fresh thin-lens simulator allows f to vary only from 18.0 to 20.0 mm; the screen stays at b=20.0 mm. Independently predict whether objects at g=100 mm and g=300 mm can be focused. Configure these values in the simulator, compare ray intersection positions and explain the model's limit.",
+            "expectedPerformanceDe": "Berechnet f≈16,67 mm bzw. 18,75 mm: das erste liegt außerhalb, das zweite innerhalb des Einstellbereichs. Für g=100 mm und kleinstes f=18 mm liegt das Bild bei b≈21,95 mm hinter dem Schirm; dokumentiert entsprechende Simulatorausgabe. Unterscheidet Modellbereich von einer allgemeinen Aussage über individuelle Sehfähigkeit.",
+            "expectedPerformanceEn": "Calculates f≈16.67 mm and 18.75 mm: the first is outside, the second inside the adjustment range. For g=100 mm and minimum f=18 mm, the image is at b≈21.95 mm behind the screen; records the corresponding simulator output. Distinguishes the model range from a general claim about individual visual ability.",
+            "understandingFocusDe": "Eine inverse Modellvorhersage bleibt an verfügbare Parameter und Idealannahmen gebunden.",
+            "understandingFocusEn": "An inverse model prediction remains bound to available parameters and ideal assumptions."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "39ef1e8a-9203-5192-8c76-8e0c3322646f",
+      "title": "Farbsehen und additive Farbmischung deuten",
+      "description": "Die lernende Person kann additive Farbmischung als physiologischen Effekt des Farbsehens erklaeren und graphische Darstellungen empirischer Daten fachlich auswerten.",
+      "plannedNewStaticTask": true,
+      "staticCoverageGoalIds": [],
+      "P": {
+        "status": "needs_human_review",
+        "reviewAuthority": "ai_candidate",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1"
+      },
+      "profile": {
+        "archetype": "data",
+        "expectations": [
+          {
+            "id": "reiz-und-wahrnehmung",
+            "essentialUnderstandingDe": "Additive Mischung überlagert Licht; die Farbwahrnehmung beruht auf dem gemeinsamen Antwortmuster verschiedener Zapfentypen und ist keine neue mittlere Lichtwellenlänge.",
+            "essentialUnderstandingEn": "Additive mixing superposes light; colour perception depends on the joint response pattern of different cone types and is not a new mean wavelength of light.",
+            "observablePerformanceDe": "Verknüpft ein gegebenes spektrales oder Zapfenantwort-Diagramm mit einem Farbvergleich und erklärt, wie verschiedene Lichtzusammensetzungen dasselbe Antwortmuster erzeugen können.",
+            "observablePerformanceEn": "Connects a supplied spectral or cone-response graph to a colour comparison and explains how different light compositions can produce the same response pattern."
+          },
+          {
+            "id": "grafik-auswertung",
+            "essentialUnderstandingDe": "Empirische Antwort- oder Abgleichdaten gelten für bestimmte Reize und Beobachtungsbedingungen; ein vereinfachtes Antwortmodell ersetzt nicht das vollständige Sehsystem.",
+            "essentialUnderstandingEn": "Empirical response or matching data apply to specified stimuli and viewing conditions; a simplified response model does not replace the complete visual system.",
+            "observablePerformanceDe": "Liest Achsen, relative Antwortwerte und Vergleichsbedingungen korrekt, konstruiert einen passenden Vergleich und begrenzt seine Schlussfolgerung bei veränderter Empfängerausstattung.",
+            "observablePerformanceEn": "Reads axes, relative response values, and comparison conditions correctly, constructs an appropriate comparison, and limits the conclusion when receptor equipment changes."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "reiz-und-wahrnehmung",
+            "grafik-auswertung"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "reiz-empfaenger",
+            "textDe": "Verschiedene Lichtzusammensetzungen bei gleichem Empfänger gegenüber verändertem Empfänger bei festen Reizen.",
+            "textEn": "Different light compositions for the same observer versus a changed observer for fixed stimuli."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "gleiches-antwortmuster",
+            "taskDemandDe": "Pflichtmaterial für diesen Fall ist eine tatsächlich bereitgestellte empirische Grafik zur Farbangleichung oder Zapfenempfindlichkeit mit überprüfbarer Quellenangabe, Achsen/Einheiten und dokumentierten Reiz-/Messbedingungen. Diese Grafik liegt dem Entwurf noch nicht bei und muss vor Durchführung ergänzt werden; synthetische Daten dürfen sie nicht ersetzen. Werte mindestens zwei Werte oder Kurvenabschnitte aus und verknüpfe einen belegten Vergleich mit dem physiologischen Farbsehen. Bearbeite zusätzlich, ausdrücklich getrennt, diesen Modell-Konsistenzteil: bei festem Adaptationszustand relative Antworten (S,M,L) R=(0,1,4), G=(0,3,2), Y=(0,4,6); im schwachen linearen Modell addieren sich Antworten, die Spektren R+G und Y sind verschieden.",
+            "taskDemandEn": "Required material for this case is an actually supplied empirical graph of colour matching or cone sensitivity with a verifiable source citation, axes/units, and documented stimulus/measurement conditions. This graph is not yet included in the draft and must be added before use; synthetic data must not replace it. Analyze at least two values or curve segments and connect one supported comparison to physiological colour vision. Additionally complete this explicitly separate model-consistency component: at fixed adaptation, relative responses (S,M,L) R=(0,1,4), G=(0,3,2), Y=(0,4,6); responses add in the weak linear model, and the spectra of R+G and Y differ.",
+            "expectedPerformanceDe": "Belegt Aussagen zuerst an der tatsächlich gelieferten empirischen Grafik: nennt Quelle und Bedingungen, liest Achsen und mindestens zwei Werte/Abschnitte korrekt, beschreibt den erkennbaren Vergleich und dessen Mess-/Modellgrenze, ohne Zahlen oder Befunde zu erfinden. Ohne die Pflichtgrafik ist dieser Datenteil nicht erbracht. Erst im getrennten Modellteil konstruiert die Person R+G=(0,4,6) und erklärt den möglichen gleichen Farbeindruck zu Y durch gleiche Zapfenantworten trotz verschiedener Spektren, nicht durch Entstehung einer neuen mittleren Wellenlänge. Die synthetischen Tripel bestätigen keine empirische Empfindlichkeitskurve.",
+            "expectedPerformanceEn": "First supports claims using the actual supplied empirical graph: identifies source and conditions, reads axes and at least two values/segments correctly, describes the observed comparison and its measurement/model limits without inventing numbers or findings. Without the required graph, this data component is not demonstrated. Only in the separate model component does the learner construct R+G=(0,4,6) and explain a possible match to Y by equal cone responses despite different spectra, not by creation of a new mean wavelength. Synthetic triples do not establish an empirical sensitivity curve.",
+            "understandingFocusDe": "Echte empirische Grafik fachlich auswerten und von einem synthetischen Modell gleicher sensorischer Antworten unterscheiden.",
+            "understandingFocusEn": "Analyze an actual empirical graph scientifically and distinguish it from a synthetic model of equal sensory responses."
+          },
+          {
+            "id": "verringerte-antwortdimension",
+            "taskDemandDe": "Eine zweite konstruierte Messgrafik zeigt bei gleicher Helligkeitsabgleich-Bedingung die Antwortmuster A=(1,3,4), B=(1,1,4) in relativen S/M/L-Einheiten. Ein vereinfachtes Empfängermodell registriert zunächst alle drei, dann nur S und L; andere Signale werden im Fall ausgeschlossen. Vergleiche beide Grafiken und die Unterscheidbarkeit, ohne eine medizinische Diagnose zu stellen.",
+            "taskDemandEn": "A second constructed measurement graph shows response patterns A=(1,3,4), B=(1,1,4) in relative S/M/L units under the same brightness-matching condition. A simplified receiver first registers all three and then only S and L; other signals are excluded in this case. Compare the graphs and discriminability without making a medical diagnosis.",
+            "expectedPerformanceDe": "Liest den Unterschied ausschließlich in M ab, zeichnet für das reduzierte Modell zweimal (1,4) und begründet, weshalb der dort verfügbare Farbinformationsunterschied verschwindet. Mit drei Antworten bleiben A/B unterscheidbar. Verallgemeinert dies nicht auf die gesamte reale Wahrnehmung oder eine konkrete Person; die Grafik modelliert nur diese Reiz-/Empfängerbedingungen.",
+            "expectedPerformanceEn": "Reads the difference as confined to M, plots (1,4) twice for the reduced model, and explains why the available colour-information difference disappears there. With three responses A/B remain distinguishable. Does not generalize to all real perception or a specific person; the graph models only these stimulus/receiver conditions.",
+            "understandingFocusDe": "Die physiologische Kodierung bestimmt, welche Unterschiede aus Reizdaten nutzbar sind.",
+            "understandingFocusEn": "Physiological encoding determines which differences in stimulus data are usable."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "41872413-497e-5b88-ac65-365ed7d9851f",
+      "title": "Beugungsbegrenzte Winkelauflösung des Auges abschätzen",
+      "description": "Die lernende Person kann die Fraunhofer-Beugung an einer Kreisblende nutzen, um aus Wellenlänge und Pupillendurchmesser die beugungsbegrenzte Winkelauflösung des Auges abzuschätzen, und diese ideale optische Grenze von biologischen Einflüssen auf die Sehschärfe unterscheiden.",
+      "plannedNewStaticTask": false,
+      "staticCoverageGoalIds": [],
+      "P": {
+        "status": "needs_human_review",
+        "reviewAuthority": "ai_candidate",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1"
+      },
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "apply-circular-aperture-limit",
+            "essentialUnderstandingDe": "Für eine ideale Kreisblende liefert das Rayleigh-Kriterium θ_min ≈ 1,22 λ/D im Kleinwinkel- und Fernfeldregime. Größere Wellenlänge verschlechtert, größere wirksame Öffnung verbessert die ideale Winkelauflösung.",
+            "essentialUnderstandingEn": "For an ideal circular aperture, the Rayleigh criterion gives θ_min ≈ 1.22 λ/D in the small-angle far-field regime. Greater wavelength worsens and a larger effective aperture improves ideal angular resolution.",
+            "observablePerformanceDe": "Die lernende Person wählt λ und D in konsistenten Einheiten, berechnet oder skaliert θ_min, prüft Größenordnung und Parameterabhängigkeit und nennt die verwendeten Idealannahmen.",
+            "observablePerformanceEn": "The learner uses λ and D in consistent units, calculates or scales θ_min, checks order of magnitude and parameter dependence, and states the ideal assumptions used."
+          },
+          {
+            "id": "distinguish-optical-and-biological-limits",
+            "essentialUnderstandingDe": "Die Beugungsgrenze ist nur eine optische Untergrenze. Netzhautabtastung, Kontrast, Aberrationen, Beleuchtung und neuronale Verarbeitung können die reale Sehschärfe zusätzlich begrenzen.",
+            "essentialUnderstandingEn": "The diffraction limit is only an optical lower bound. Retinal sampling, contrast, aberrations, illumination, and neural processing can additionally limit real visual acuity.",
+            "observablePerformanceDe": "Die lernende Person vergleicht einen gemessenen Sehschärfewert mit der Beugungsabschätzung und entscheidet begründet, ob eine Abweichung optisch allein erklärt werden kann.",
+            "observablePerformanceEn": "The learner compares a measured visual-acuity value with the diffraction estimate and justifiably decides whether optics alone can explain a discrepancy."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "apply-circular-aperture-limit",
+            "distinguish-optical-and-biological-limits"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "wavelength",
+            "textDe": "Kurze oder lange sichtbare Wellenlänge",
+            "textEn": "Short or long visible wavelength"
+          },
+          {
+            "id": "pupil-diameter",
+            "textDe": "Helle oder dunkle Bedingung mit unterschiedlicher Pupillenweite",
+            "textEn": "Bright or dark condition with different pupil diameter"
+          },
+          {
+            "id": "biological-condition",
+            "textDe": "Hoher oder geringer Kontrast sowie zusätzliche Aberration",
+            "textEn": "High or low contrast and additional aberration"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "green-light-pupil-estimate",
+            "taskDemandDe": "Für λ = 550 nm und D = 3,0 mm schätze die ideale Winkelauflösung des Auges, wandle sie in Bogenminuten um und vergleiche sie mit einem angegebenen Sehschärfewert samt Unsicherheit.",
+            "taskDemandEn": "For λ = 550 nm and D = 3.0 mm, estimate the ideal angular resolution of the eye, convert it to arcminutes, and compare it with a supplied visual-acuity value and uncertainty.",
+            "expectedPerformanceDe": "Die lernende Person rechnet Einheiten korrekt, erhält eine plausible Größenordnung, interpretiert θ als minimale Winkeltrennung und erklärt eine größere reale Schwelle mit möglichen biologischen oder optischen Zusatzgrenzen.",
+            "expectedPerformanceEn": "The learner handles units correctly, obtains a plausible scale, interprets θ as a minimum angular separation, and explains a larger real threshold using possible biological or additional optical limitations.",
+            "understandingFocusDe": "Der Fall prüft Rechnung, Bedeutung und begrenzten Vergleich mit Messung.",
+            "understandingFocusEn": "The case assesses calculation, meaning, and a bounded comparison with measurement."
+          },
+          {
+            "id": "dim-red-light-prediction",
+            "taskDemandDe": "Bei schwachem rotem Licht wird die Pupille größer als bei hellem grünem Licht. Berechne aus gegebenen λ- und D-Werten beide idealen Grenzen, sage die Richtung der Änderung voraus und beurteile, ob die reale Sehschärfe zwingend gleich folgt.",
+            "taskDemandEn": "In dim red light the pupil is larger than in bright green light. Calculate both ideal limits from supplied λ and D values, predict the direction of change, and assess whether real visual acuity must follow in the same way.",
+            "expectedPerformanceDe": "Die lernende Person wägt größere Öffnung gegen längere Wellenlänge ab, stützt die ideale Vorhersage quantitativ und verweigert eine zwingende Aussage zur realen Sehschärfe ohne Kontrast-, Aberrations- und Netzhautdaten.",
+            "expectedPerformanceEn": "The learner weighs the larger aperture against the longer wavelength, supports the ideal prediction quantitatively, and rejects a necessary claim about real acuity without contrast, aberration, and retinal data.",
+            "understandingFocusDe": "Der unabhängige Transfer prüft konkurrierende Parameter und die Modellgrenze.",
+            "understandingFocusEn": "The independent transfer assesses competing parameters and the model boundary."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "f06c581a-7157-584e-a692-99bcd613cff9",
+      "title": "Frequenzspektren von Tönen und Klängen analysieren",
+      "description": "Die lernende Person kann Zeitdiagramme und Frequenzspektren von Tönen und Klängen miteinander verknüpfen, Grund- und Obertöne identifizieren und den Einfluss der Spektralanteile auf die Klangfarbe erklären.",
+      "plannedNewStaticTask": true,
+      "staticCoverageGoalIds": [],
+      "P": {
+        "status": "needs_human_review",
+        "reviewAuthority": "ai_candidate",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1"
+      },
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "translate-time-and-frequency-representations",
+            "essentialUnderstandingDe": "Zeitverlauf und Frequenzspektrum codieren dasselbe Signal unterschiedlich. Bei periodischen Klängen bestimmt die Grundfrequenz die Periodendauer; harmonische und weitere Spektralanteile erscheinen mit ihren relativen Amplituden im Spektrum.",
+            "essentialUnderstandingEn": "A time trace and frequency spectrum encode the same signal differently. For periodic complex sounds, fundamental frequency determines period, while harmonic and other spectral components appear with their relative amplitudes in the spectrum.",
+            "observablePerformanceDe": "Die lernende Person konstruiert aus angegebenen Komponenten einen qualitativen Zeitverlauf oder ein Spektrum, ordnet zusammengehörige Darstellungen zu und erklärt Frequenz- und Amplitudenkonventionen.",
+            "observablePerformanceEn": "The learner constructs a qualitative time trace or spectrum from supplied components, matches corresponding representations, and explains frequency and amplitude conventions."
+          },
+          {
+            "id": "separate-pitch-timbre-and-level",
+            "essentialUnderstandingDe": "Tonhöhe folgt vor allem der Grundfrequenz, Klangfarbe der spektralen Struktur und Pegel beziehungsweise Lautstärke der Gesamtsamplitude; diese Eigenschaften können unabhängig verändert werden, soweit das Modell trägt.",
+            "essentialUnderstandingEn": "Pitch follows mainly from fundamental frequency, timbre from spectral structure, and level or loudness from overall amplitude; these properties can be changed independently within the model.",
+            "observablePerformanceDe": "Die lernende Person sagt bei veränderten Grund- oder Obertonanteilen voraus, welche Wahrnehmungsmerkmale sich ändern, und begründet die Aussage aus den Spektren statt aus Instrumentnamen.",
+            "observablePerformanceEn": "The learner predicts which perceptual features change when fundamental or overtone components change and justifies the claim from spectra rather than instrument names."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "translate-time-and-frequency-representations",
+            "separate-pitch-timbre-and-level"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "spectral-change",
+            "textDe": "Geänderte Grundfrequenz oder geänderte relative Obertonanteile",
+            "textEn": "Changed fundamental frequency or changed relative overtone amplitudes"
+          },
+          {
+            "id": "signal-form",
+            "textDe": "Nahezu sinusförmiger Ton oder komplexer periodischer Klang",
+            "textEn": "Nearly sinusoidal tone or complex periodic sound"
+          },
+          {
+            "id": "representation-given",
+            "textDe": "Zeitdiagramm, Spektrum oder Komponentenliste als Ausgangspunkt",
+            "textEn": "Time graph, spectrum, or component list as the starting point"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "match-waveforms-and-spectra",
+            "taskDemandDe": "Drei unbekannte periodische Zeitdiagramme und drei Spektren besitzen teils gleiche Grundfrequenz, aber verschiedene Obertonstärken. Ordne die Paare zu, bestimme Grund- und Obertöne und vergleiche Tonhöhe sowie Klangfarbe.",
+            "taskDemandEn": "Three unfamiliar periodic time traces and three spectra have partly equal fundamentals but different overtone strengths. Match the pairs, identify fundamental and overtones, and compare pitch and timbre.",
+            "expectedPerformanceDe": "Die lernende Person nutzt Periodendauer und Linienabstände, ordnet relative Amplituden konsistent zu und erklärt gleiche Tonhöhe bei unterschiedlicher Klangfarbe ohne die Gesamtamplitude mit einem Oberton zu verwechseln.",
+            "expectedPerformanceEn": "The learner uses period and line spacing, consistently assigns relative amplitudes, and explains equal pitch with different timbre without confusing overall amplitude with an overtone.",
+            "understandingFocusDe": "Der Fall prüft die bidirektionale Übersetzung beider Darstellungen.",
+            "understandingFocusEn": "The case assesses bidirectional translation between the representations."
+          },
+          {
+            "id": "filter-harmonics-preserve-fundamental",
+            "taskDemandDe": "Ein Klang wird durch einen Tiefpass verändert, der höhere Obertöne stark dämpft, die Grundfrequenz aber erhält. Skizziere das neue Spektrum, sage den qualitativen Zeitverlauf voraus und begründe Änderungen von Tonhöhe, Pegel und Klangfarbe.",
+            "taskDemandEn": "A complex sound is changed by a low-pass filter that strongly attenuates higher overtones but preserves the fundamental. Sketch the new spectrum, predict the qualitative time trace, and justify changes in pitch, level, and timbre.",
+            "expectedPerformanceDe": "Die lernende Person behält die Grundfrequenz und Periodendauer bei, reduziert die entsprechenden Spektrallinien, erwartet einen glatteren Zeitverlauf und trennt eine mögliche Pegeländerung von der veränderten Klangfarbe.",
+            "expectedPerformanceEn": "The learner preserves the fundamental and period, reduces the corresponding spectral lines, expects a smoother time trace, and separates a possible level change from altered timbre.",
+            "understandingFocusDe": "Der unabhängige Transfer prüft kausale Vorhersage aus einer spektralen Manipulation.",
+            "understandingFocusEn": "The independent transfer assesses causal prediction from a spectral manipulation."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "8ac61062-f63e-5935-96ae-84014906c368",
+      "title": "Schalldruckpegel und Hoerrisiken quantitativ beurteilen",
+      "description": "Die lernende Person kann Zusammenhaenge zwischen messbaren Schallgroessen und empfundener Lautstaerke mathematisch nutzen und Gesundheitsgefaehrdungen durch hohe Schalldruckpegel begruendet beurteilen.",
+      "plannedNewStaticTask": true,
+      "staticCoverageGoalIds": [],
+      "P": {
+        "status": "needs_human_review",
+        "reviewAuthority": "ai_candidate",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1"
+      },
+      "profile": {
+        "archetype": "data",
+        "expectations": [
+          {
+            "id": "level-and-quantity",
+            "essentialUnderstandingDe": "Schalldruckpegel ist ein logarithmisches Maß des Effektivschalldrucks; unter gleichen Ausbreitungsbedingungen skaliert Intensität mit dessen Quadrat. Empfundene Lautstärke hängt zusätzlich etwa von Frequenz und Person ab. Ein quantitativer Lautheitsvergleich benötigt daher eine für die angegebenen Bedingungen bereitgestellte empirische Relation oder Abgleichdatentabelle.",
+            "essentialUnderstandingEn": "Sound pressure level is a logarithmic measure of RMS sound pressure; under equal propagation conditions, intensity scales with its square. Perceived loudness also depends on factors such as frequency and the listener. A quantitative loudness comparison therefore requires an empirical relation or matching-data table supplied for the stated conditions.",
+            "observablePerformanceDe": "Die lernende Person nutzt eine gegebene Pegelrelation oder äquivalente Zuordnungstabelle für einen frischen Zahlenvergleich und berechnet zusätzlich aus einer bereitgestellten bedingten empirischen Lautheitsrelation oder Abgleichdatentabelle einen Lautheitsvergleich; sie trennt Druck-, Intensitäts- und Wahrnehmungsaussagen.",
+            "observablePerformanceEn": "The learner uses a supplied level relation or equivalent lookup table for a fresh numerical comparison and additionally calculates a loudness comparison from a supplied conditional empirical loudness relation or matching-data table, separating pressure, intensity, and perceptual claims."
+          },
+          {
+            "id": "exposure-judgment",
+            "essentialUnderstandingDe": "Gesundheitliche Gefährdung lässt sich nicht aus dem Pegel allein entscheiden; Expositionsdauer, Frequenzbewertung, Spitzen und Unsicherheit begrenzen quantitative Vergleiche.",
+            "essentialUnderstandingEn": "Health hazard cannot be decided from level alone; exposure duration, frequency weighting, peaks and uncertainty limit quantitative comparisons.",
+            "observablePerformanceDe": "Die lernende Person vergleicht vorgegebene Expositionen unter expliziten Annahmen, begründet eine vorsorgliche Verringerung und nennt fehlende Daten, ohne Sicherheit oder einen individuellen Schaden zu bescheinigen.",
+            "observablePerformanceEn": "The learner compares supplied exposures under explicit assumptions, justifies a precautionary reduction and identifies missing data without certifying safety or individual harm."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "level-and-quantity",
+            "exposure-judgment"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "quantity-change",
+            "textDe": "Pegeländerung bei verändertem Schalldruck gegenüber gemeinsamer Pegel-Dauer-Änderung.",
+            "textEn": "Level change with changed pressure versus combined level-duration change."
+          },
+          {
+            "id": "perception-context",
+            "textDe": "Vergleich gleicher Frequenzbedingungen gegenüber unbekannter Frequenzbewertung und Wahrnehmung.",
+            "textEn": "Comparison under equal frequency conditions versus unknown frequency weighting and perception."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "pressure-ratio",
+            "taskDemandDe": "Ein bereitgestellter Messbericht desselben Dauertons nennt 70 und 90 dB mit jeweils ±1 dB. Verwende ΔL=20 log₁₀(p₂/p₁) oder die gleichwertige Tabelle: +20 dB bedeutet Druckfaktor 10 und bei gleichem Medium Intensitätsfaktor 100. Vergleiche die Messsituationen und beurteile die Aussage 'hundertmal so laut'. Zusätzlich wird für genau diese Frequenz- und Vergleichsbedingungen eine überprüfbar bezeichnete empirische Zuordnung von Pegel zu Lautheit N auf einer Verhältnisskala, beispielsweise in Sone, mit Werten für 70 und 90 dB bereitgestellt. Berechne daraus das Lautheitsverhältnis und vergleiche es mit Druck- und Intensitätsverhältnis; verallgemeinere die Zuordnung nicht über ihre angegebenen Bedingungen hinaus.",
+            "taskDemandEn": "A supplied report for the same continuous tone gives 70 and 90 dB, each ±1 dB. Use ΔL=20 log₁₀(p₂/p₁) or the equivalent table: +20 dB means pressure factor 10 and, in the same medium, intensity factor 100. Compare the situations and assess the phrase 'one hundred times as loud'. In addition, an identifiably sourced empirical mapping from level to loudness N on a ratio scale, for example in sones, is supplied for these specific frequency and comparison conditions, including values at 70 and 90 dB. Calculate the loudness ratio and compare it with the pressure and intensity ratios; do not generalize the mapping beyond its stated conditions.",
+            "expectedPerformanceDe": "Ermittelt nominal Druckfaktor 10 und Intensitätsfaktor 100, kennzeichnet die Faktoren wegen der Messunsicherheit als Näherungen und berechnet aus den tatsächlich bereitgestellten Lautheitswerten das Verhältnis N_90/N_70. Sie stellt dieses bedingte Wahrnehmungsverhältnis den physikalischen Faktoren gegenüber, ohne 100 als allgemeines Lautheitsverhältnis zu übernehmen. Begründet bei gleicher Dauer die deutlich höhere Schallbelastung und vorsorgliche Reduktion, ohne einen individuellen Hörschaden aus den zwei Werten abzuleiten.",
+            "expectedPerformanceEn": "Finds nominal pressure factor 10 and intensity factor 100, identifies them as approximate due to measurement uncertainty, and calculates N_90/N_70 from the loudness values actually supplied. The learner compares this conditional perceptual ratio with the physical factors without treating 100 as a general loudness ratio. Justifies much greater acoustic exposure at equal duration and precautionary reduction without inferring individual hearing damage from the two values.",
+            "understandingFocusDe": "Logarithmische Messgröße und empirisch bedingte subjektive Lautheit werden mathematisch verglichen und nicht quantitativ gleichgesetzt.",
+            "understandingFocusEn": "The logarithmic measured quantity and condition-dependent empirical loudness are compared mathematically rather than equated quantitatively."
+          },
+          {
+            "id": "duration-compensation",
+            "taskDemandDe": "Zwei hypothetische, gleichartig frequenzbewertete konstante Schallbelastungen dauern A: 80 dB für 2 h und B: 90 dB für 0,2 h. Gegeben: +10 dB bedeutet zehnfache Intensität; I·t ist hier nur ein vereinfachter Energieexpositionsvergleich. Vergleiche A und B und erkläre, welche Aussagen über Gesundheitsgefahr damit möglich bleiben.",
+            "taskDemandEn": "Two hypothetical, consistently frequency-weighted constant exposures are A: 80 dB for 2 h and B: 90 dB for 0.2 h. Given: +10 dB means tenfold intensity; I·t is only a simplified energy-exposure comparison here. Compare A and B and explain what health-hazard claims remain possible.",
+            "expectedPerformanceDe": "Zeigt im vorgegebenen Modell gleiche Energieexposition, da 10·0,2 h=2 h. Begründet, weshalb gleiche I·t-Werte weder identische Wirkung noch Unbedenklichkeit beweisen: Spitzen, tatsächliches Spektrum, Messfehler und individuelle Empfindlichkeit fehlen. Empfiehlt als begründetes Vorsorgeprinzip geringeren Pegel und kürzere Dauer; kein lautes Selbstexperiment.",
+            "expectedPerformanceEn": "Shows equal energy exposure in the supplied model because 10·0.2 h=2 h. Explains why equal I·t values prove neither identical effect nor safety: peaks, actual spectrum, measurement error and individual sensitivity are missing. Justifies lower level and shorter duration as precautionary principles; no loud self-experiment.",
+            "understandingFocusDe": "Ein rechnerischer Expositionsvergleich ist ein begrenztes Modell, keine medizinische Freigabe.",
+            "understandingFocusEn": "A numerical exposure comparison is a limited model, not medical clearance."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "e19fccd7-6a35-5c9e-86e1-dcca76481e9c",
+      "title": "Elektrische Dipolfelder mit dem EKG verknüpfen",
+      "description": "Die lernende Person kann elektrische Potenziale und Äquipotentiallinien eines Dipolfeldes experimentell oder in einer Simulation untersuchen und erklären, wie ein zeitlich veränderliches Dipolmodell des Herzens mit den zwischen Oberflächenelektroden gemessenen EKG-Potenzialdifferenzen zusammenhängt und wo die Grenzen dieser Näherung liegen.",
+      "plannedNewStaticTask": false,
+      "staticCoverageGoalIds": [],
+      "P": {
+        "status": "needs_human_review",
+        "reviewAuthority": "ai_candidate",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1"
+      },
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "independent-review-a-understanding",
+            "essentialUnderstandingDe": "Ein elektrischer Dipol erzeugt eine räumliche Potenzialverteilung, deren Äquipotentiallinien von Dipolrichtung, Abstand und Geometrie abhängen. Im zeitabhängigen Herz-Dipolmodell erfassen zwei Oberflächenelektroden nur die Potenzialdifferenz ihrer Orte; das Signal hängt daher von Dipolentwicklung und Ableitungsrichtung ab, während Körpergeometrie, Leitfähigkeit und räumlich verteilte Quellen die Ein-Dipol-Näherung begrenzen.",
+            "essentialUnderstandingEn": "An electric dipole produces a spatial potential distribution whose equipotential lines depend on dipole direction, distance, and geometry. In the time-dependent heart-dipole model, two surface electrodes capture only the potential difference between their locations; the signal therefore depends on dipole evolution and lead direction, while body geometry, conductivity, and spatially distributed sources limit the single-dipole approximation.",
+            "observablePerformanceDe": "Die lernende Person erhebt in einem sicheren Modellversuch oder einer Simulation Potenziale, konstruiert daraus Äquipotentiallinien, sagt für ein gegebenes Elektrodenpaar Vorzeichen und qualitative Größe der gemessenen Differenz voraus und trennt Messwert, rekonstruierte Potenzialkarte und Herz-Dipolmodell einschließlich konkreter Grenzen.",
+            "observablePerformanceEn": "In a safe model experiment or simulation, the learner obtains potentials, constructs equipotential lines from them, predicts the sign and qualitative magnitude of the measured difference for a given electrode pair, and distinguishes the measured value, the reconstructed potential map, and the heart-dipole model, including concrete limitations."
+          },
+          {
+            "id": "independent-review-b-understanding",
+            "essentialUnderstandingDe": "Ein zeitlich veränderliches elektrisches Dipolmodell des Herzens erzeugt in einem leitfähigen Körpermodell eine räumliche Potenzialverteilung. Ein EKG misst nicht den Dipol direkt, sondern zeitabhängige Potenzialdifferenzen zwischen Oberflächenelektroden, die von Dipolrichtung, -stärke, Elektrodenposition und den Vereinfachungen des Körpermodells abhängen.",
+            "essentialUnderstandingEn": "A time-varying electric dipole model of the heart produces a spatial potential distribution in a conducting body model. An ECG does not measure the dipole directly; it measures time-dependent potential differences between surface electrodes that depend on dipole direction and magnitude, electrode position, and the simplifications of the body model.",
+            "observablePerformanceDe": "Die lernende Person untersucht in einem sicheren Experiment oder einer Simulation Potenzialwerte und Äquipotentiallinien eines Dipolfeldes, sagt für vorgegebene Elektroden die gemessene Potenzialdifferenz voraus und erklärt eine EKG-Spur als modellvermittelte Messung einschließlich konkreter Grenzen der Dipol- und Leiterannahmen.",
+            "observablePerformanceEn": "In a safe experiment or simulation, the learner investigates potential values and equipotential lines of a dipole field, predicts the measured potential difference for specified electrodes, and explains an ECG trace as a model-mediated measurement, including specific limits of the dipole and conductor assumptions."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "independent-review-a-understanding",
+            "independent-review-b-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "changed-physical-condition",
+            "textDe": "Mindestens eine relevante Größe, Geometrie, Rand- oder Anfangsbedingung wird gegenüber dem Ausgangsfall verändert.",
+            "textEn": "At least one relevant quantity, geometry, boundary condition, or initial condition is changed from the original case."
+          },
+          {
+            "id": "changed-evidence-representation",
+            "textDe": "Die fachliche Information liegt in einer anderen geeigneten Darstellung vor, etwa als Diagramm, Datensatz, Skizze, Formel, Simulation oder belegte Quelle.",
+            "textEn": "The scientific information is supplied in another suitable representation, such as a diagram, data set, sketch, formula, simulation, or evidenced source."
+          },
+          {
+            "id": "model-validity-boundary",
+            "textDe": "Ein Fall erfüllt die idealisierenden Annahmen, der andere enthält eine benannte Nichtidealität oder Informationsgrenze.",
+            "textEn": "One case satisfies the idealizing assumptions, while the other contains a stated non-ideality or information limit."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "fresh-independent-case-a",
+            "taskDemandDe": "Werden in einem neuen Fall Elektroden vertauscht oder versetzt beziehungsweise die Dipolrichtung gedreht, sagt die lernende Person die Änderung von Vorzeichen und Amplitude der EKG-Potenzialdifferenz voraus und begründet, welche Abweichungen das vereinfachte Modell nicht erklären kann.",
+            "taskDemandEn": "When a new case reverses or relocates the electrodes or rotates the dipole direction, the learner predicts the change in sign and amplitude of the ECG potential difference and explains which deviations the simplified model cannot account for.",
+            "expectedPerformanceDe": "Die lernende Person erhebt in einem sicheren Modellversuch oder einer Simulation Potenziale, konstruiert daraus Äquipotentiallinien, sagt für ein gegebenes Elektrodenpaar Vorzeichen und qualitative Größe der gemessenen Differenz voraus und trennt Messwert, rekonstruierte Potenzialkarte und Herz-Dipolmodell einschließlich konkreter Grenzen.",
+            "expectedPerformanceEn": "In a safe model experiment or simulation, the learner obtains potentials, constructs equipotential lines from them, predicts the sign and qualitative magnitude of the measured difference for a given electrode pair, and distinguishes the measured value, the reconstructed potential map, and the heart-dipole model, including concrete limitations.",
+            "understandingFocusDe": "Ein elektrischer Dipol erzeugt eine räumliche Potenzialverteilung, deren Äquipotentiallinien von Dipolrichtung, Abstand und Geometrie abhängen. Im zeitabhängigen Herz-Dipolmodell erfassen zwei Oberflächenelektroden nur die Potenzialdifferenz ihrer Orte; das Signal hängt daher von Dipolentwicklung und Ableitungsrichtung ab, während Körpergeometrie, Leitfähigkeit und räumlich verteilte Quellen die Ein-Dipol-Näherung begrenzen.",
+            "understandingFocusEn": "An electric dipole produces a spatial potential distribution whose equipotential lines depend on dipole direction, distance, and geometry. In the time-dependent heart-dipole model, two surface electrodes capture only the potential difference between their locations; the signal therefore depends on dipole evolution and lead direction, while body geometry, conductivity, and spatially distributed sources limit the single-dipole approximation."
+          },
+          {
+            "id": "fresh-independent-case-b",
+            "taskDemandDe": "Bei vertauschten oder versetzten Elektroden, gedrehter Dipolrichtung oder einem nicht homogenen Leitermodell sagt die lernende Person für einen neuen Fall Vorzeichen und qualitative Signaländerung voraus und erläutert, welche Abweichung auf Messgeometrie und welche auf eine Modellgrenze zurückgeht.",
+            "taskDemandEn": "For a new case with swapped or repositioned electrodes, a rotated dipole direction, or a nonuniform conductor model, the learner predicts the sign and qualitative signal change and explains which difference arises from measurement geometry and which from a model limit.",
+            "expectedPerformanceDe": "Die lernende Person untersucht in einem sicheren Experiment oder einer Simulation Potenzialwerte und Äquipotentiallinien eines Dipolfeldes, sagt für vorgegebene Elektroden die gemessene Potenzialdifferenz voraus und erklärt eine EKG-Spur als modellvermittelte Messung einschließlich konkreter Grenzen der Dipol- und Leiterannahmen.",
+            "expectedPerformanceEn": "In a safe experiment or simulation, the learner investigates potential values and equipotential lines of a dipole field, predicts the measured potential difference for specified electrodes, and explains an ECG trace as a model-mediated measurement, including specific limits of the dipole and conductor assumptions.",
+            "understandingFocusDe": "Ein zeitlich veränderliches elektrisches Dipolmodell des Herzens erzeugt in einem leitfähigen Körpermodell eine räumliche Potenzialverteilung. Ein EKG misst nicht den Dipol direkt, sondern zeitabhängige Potenzialdifferenzen zwischen Oberflächenelektroden, die von Dipolrichtung, -stärke, Elektrodenposition und den Vereinfachungen des Körpermodells abhängen.",
+            "understandingFocusEn": "A time-varying electric dipole model of the heart produces a spatial potential distribution in a conducting body model. An ECG does not measure the dipole directly; it measures time-dependent potential differences between surface electrodes that depend on dipole direction and magnitude, electrode position, and the simplifications of the body model."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "d1306bda-35ff-53e9-9458-3cbc128874d8",
+      "title": "Zyklotron und Strahlentherapie fachlich bewerten",
+      "description": "Die lernende Person kann das Funktionsprinzip des Zyklotrons auf Strahlentherapien beziehen und Nutzen sowie Risiken medizinischer Anwendungen mit physikalischen Kriterien bewerten.",
+      "plannedNewStaticTask": false,
+      "staticCoverageGoalIds": [],
+      "P": {
+        "status": "needs_human_review",
+        "reviewAuthority": "ai_candidate",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1"
+      },
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "accelerator-to-dose",
+            "essentialUnderstandingDe": "Im Cyclotron-Modell beschleunigt das elektrische Feld geladene Teilchen, das magnetische Feld lenkt sie ab. Bei Protonentherapie beeinflusst die Strahlenergie die Reichweite und damit die räumliche Energieabgabe.",
+            "essentialUnderstandingEn": "In the cyclotron model the electric field accelerates charged particles and the magnetic field deflects them. In proton therapy beam energy affects range and hence spatial energy deposition.",
+            "observablePerformanceDe": "Erklärt die Funktionskette von Beschleunigung zu Dosisverteilung und legt für einen bereitgestellten Vergleich Modellannahmen und Systemgrenze offen.",
+            "observablePerformanceEn": "Explains the functional chain from acceleration to dose distribution and states model assumptions and system boundary for a supplied comparison."
+          },
+          {
+            "id": "bounded-evaluation",
+            "essentialUnderstandingDe": "Zielabdeckung, Schonung gesunden Gewebes und Empfindlichkeit gegenüber Lage-/Reichweitenunsicherheit sind physikalische Bewertungskriterien; ihr Abwägen ist von gesicherten Daten und klinischen Erfolgsaussagen zu trennen.",
+            "essentialUnderstandingEn": "Target coverage, sparing healthy tissue and sensitivity to position/range uncertainty are physical evaluation criteria; their weighting must be separated from established data and clinical outcome claims.",
+            "observablePerformanceDe": "Vergleicht Daten anhand benannter Kriterien, begründet Nutzen und verbleibende Risiken und formuliert ein bedingtes Urteil mit konkreter Unsicherheitsgrenze.",
+            "observablePerformanceEn": "Compares data using named criteria, justifies benefits and remaining risks and formulates a conditional judgment with a specific uncertainty limit."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "accelerator-to-dose",
+            "bounded-evaluation"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "dose-and-uncertainty",
+            "textDe": "Idealisierte Tiefendosis bei gleicher Zielabdeckung gegenüber veränderter Lage beziehungsweise Reichweite.",
+            "textEn": "Idealized depth dose at equal target coverage versus altered position or range."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "depth-dose-comparison",
+            "taskDemandDe": "Nur Modellwerte relativer Dosis, keine Patientendaten: Verfahren A hat Ziel/gesund davor/gesund dahinter =1,00/0,30/0,20; cyclotronbasierte Protonenoption B =1,00/0,10/0,02. Vergleiche unter gleicher Zielabdeckung und erkläre den Bezug zur Teilchenbeschleunigung.",
+            "taskDemandEn": "Model relative-dose values only, not patient data: method A has target/healthy before/healthy beyond =1.00/0.30/0.20; cyclotron-based proton option B =1.00/0.10/0.02. Compare at equal target coverage and explain the link to particle acceleration.",
+            "expectedPerformanceDe": "Ordnet Energiegewinn dem elektrischen und Ablenkung dem magnetischen Feld zu; verknüpft Protonenenergie mit Reichweite. Begründet anhand der Zahlen geringere Dosis in den betrachteten gesunden Bereichen für B, nicht Risikofreiheit oder klinische Überlegenheit insgesamt.",
+            "expectedPerformanceEn": "Assigns energy gain to the electric field and deflection to the magnetic field; connects proton energy with range. Uses the numbers to justify lower dose in the considered healthy regions for B, not absence of risk or overall clinical superiority.",
+            "understandingFocusDe": "Technisches Wirkprinzip und transparent begrenzter Kriterienvergleich.",
+            "understandingFocusEn": "Technical operating principle and a transparently bounded comparison of criteria."
+          },
+          {
+            "id": "range-robustness",
+            "taskDemandDe": "In einem synthetischen Tiefenmodell endet der nominale Protonenbereich 2 mm vor einem empfindlichen gesunden Bereich; die Lage-/Reichweitenabweichung beträgt ±3 mm. Prüfe die Behauptung, der nominale Kurvenverlauf garantiere vollständige Schonung.",
+            "taskDemandEn": "In a synthetic depth model the nominal proton range ends 2 mm before a sensitive healthy region; position/range deviation is ±3 mm. Assess the claim that the nominal curve guarantees complete sparing.",
+            "expectedPerformanceDe": "Zeigt, dass eine Verschiebung um +3 mm die nominale 2-mm-Lücke um 1 mm überschreiten kann. Verknüpft Energie/Reichweite und Lageunsicherheit mit möglicher Fehlplatzierung der Energieabgabe; verlangt für ein belastbares Urteil Robustheitsdaten, ohne eine Behandlung zu empfehlen.",
+            "expectedPerformanceEn": "Shows that a +3 mm shift can exceed the nominal 2 mm gap by 1 mm. Connects energy/range and position uncertainty with possible misplacement of energy deposition; requires robustness data for a defensible judgment without recommending treatment.",
+            "understandingFocusDe": "Ein günstiger Idealverlauf genügt bei relevanter Unsicherheit nicht für ein Sicherheitsversprechen.",
+            "understandingFocusEn": "A favorable ideal curve does not justify a safety guarantee when uncertainty matters."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "db47ac91-7bb0-5ba3-b39d-e2d6fc98396e",
+      "title": "Ruhepotenzial an einer selektiv permeablen Membran modellieren",
+      "description": "Die lernende Person kann das Ruhepotenzial in einem vereinfachten passiven Membranmodell als Ergebnis des Zusammenspiels von konzentrationsgetriebener Diffusion, elektrischer Gegenwirkung und selektiver Membranpermeabilität modellieren und erläutern, dass aktive Transportprozesse die Konzentrationsgradienten langfristig aufrechterhalten, aber nicht Bestandteil dieses passiven Modells sind.",
+      "plannedNewStaticTask": false,
+      "staticCoverageGoalIds": [],
+      "P": {
+        "status": "needs_human_review",
+        "reviewAuthority": "ai_candidate",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1"
+      },
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "independent-review-a-understanding",
+            "essentialUnderstandingDe": "Im vereinfachten passiven Membranmodell treibt ein Konzentrationsunterschied die Diffusion permeabler Ionen, während die entstehende Ladungstrennung eine elektrische Gegenwirkung aufbaut. Selektive Permeabilität bestimmt, welche Ionen beitragen; das Ruhepotenzial ist ein dynamischer Gleichgewichtszustand des Modells, während aktive Transporte nur die vorausgesetzten Gradienten langfristig erhalten.",
+            "essentialUnderstandingEn": "In the simplified passive membrane model, a concentration difference drives diffusion of permeant ions while the resulting charge separation builds an opposing electrical effect. Selective permeability determines which ions contribute; the resting potential is a dynamic equilibrium state of the model, whereas active transport only maintains the assumed gradients over longer times.",
+            "observablePerformanceDe": "Die lernende Person erstellt oder deutet ein gegebenes passives Membranmodell, sagt Richtung von Diffusion und elektrischer Gegenwirkung voraus, erklärt Vorzeichen und Annäherung des Membranpotenzials und trennt die im Modell enthaltenen passiven Vorgänge ausdrücklich von der langfristigen Wirkung aktiver Transporte.",
+            "observablePerformanceEn": "The learner constructs or interprets a given passive membrane model, predicts the directions of diffusion and electrical opposition, explains the sign and approach of the membrane potential, and explicitly separates the passive processes represented in the model from the long-term action of active transport."
+          },
+          {
+            "id": "independent-review-b-understanding",
+            "essentialUnderstandingDe": "Im vereinfachten passiven Membranmodell treiben Konzentrationsunterschiede Ionen zur Diffusion, während die dadurch entstehende Ladungstrennung eine elektrische Gegenwirkung erzeugt. Selektive Permeabilität bestimmt, welche Ionen beitragen; aktive Transporte erhalten die Gradienten langfristig, gehören aber nicht zur passiven Gleichgewichtsbildung des Modells.",
+            "essentialUnderstandingEn": "In the simplified passive membrane model, concentration differences drive ion diffusion while the resulting charge separation creates an opposing electric effect. Selective permeability determines which ions contribute; active transport maintains the gradients over time but is not part of the model's passive equilibration.",
+            "observablePerformanceDe": "Die lernende Person erstellt oder erläutert für vorgegebene Konzentrationen und Permeabilitäten ein passives Membranmodell, sagt Vorzeichen und Entwicklung des Membranpotenzials voraus, begründet das Gleichgewicht der chemischen und elektrischen Triebkräfte und trennt diese Erklärung von der Rolle aktiver Pumpen.",
+            "observablePerformanceEn": "For given concentrations and permeabilities, the learner constructs or explains a passive membrane model, predicts the sign and development of the membrane potential, justifies the balance of chemical and electrical driving forces, and separates this explanation from the role of active pumps."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "independent-review-a-understanding",
+            "independent-review-b-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "changed-physical-condition",
+            "textDe": "Mindestens eine relevante Größe, Geometrie, Rand- oder Anfangsbedingung wird gegenüber dem Ausgangsfall verändert.",
+            "textEn": "At least one relevant quantity, geometry, boundary condition, or initial condition is changed from the original case."
+          },
+          {
+            "id": "changed-evidence-representation",
+            "textDe": "Die fachliche Information liegt in einer anderen geeigneten Darstellung vor, etwa als Diagramm, Datensatz, Skizze, Formel, Simulation oder belegte Quelle.",
+            "textEn": "The scientific information is supplied in another suitable representation, such as a diagram, data set, sketch, formula, simulation, or evidenced source."
+          },
+          {
+            "id": "model-validity-boundary",
+            "textDe": "Ein Fall erfüllt die idealisierenden Annahmen, der andere enthält eine benannte Nichtidealität oder Informationsgrenze.",
+            "textEn": "One case satisfies the idealizing assumptions, while the other contains a stated non-ideality or information limit."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "fresh-independent-case-a",
+            "taskDemandDe": "Bei umgekehrtem Konzentrationsgradienten oder veränderter selektiver Permeabilität sagt die lernende Person in einem neuen Fall Richtung und qualitative Größe des resultierenden Potenzials voraus und erläutert, wie die Aussage ohne langfristige Aufrechterhaltung der Gradienten begrenzt ist.",
+            "taskDemandEn": "When the concentration gradient is reversed or selective permeability is changed in a new case, the learner predicts the direction and qualitative magnitude of the resulting potential and explains how the claim is limited when the gradients are not maintained over the long term.",
+            "expectedPerformanceDe": "Die lernende Person erstellt oder deutet ein gegebenes passives Membranmodell, sagt Richtung von Diffusion und elektrischer Gegenwirkung voraus, erklärt Vorzeichen und Annäherung des Membranpotenzials und trennt die im Modell enthaltenen passiven Vorgänge ausdrücklich von der langfristigen Wirkung aktiver Transporte.",
+            "expectedPerformanceEn": "The learner constructs or interprets a given passive membrane model, predicts the directions of diffusion and electrical opposition, explains the sign and approach of the membrane potential, and explicitly separates the passive processes represented in the model from the long-term action of active transport.",
+            "understandingFocusDe": "Im vereinfachten passiven Membranmodell treibt ein Konzentrationsunterschied die Diffusion permeabler Ionen, während die entstehende Ladungstrennung eine elektrische Gegenwirkung aufbaut. Selektive Permeabilität bestimmt, welche Ionen beitragen; das Ruhepotenzial ist ein dynamischer Gleichgewichtszustand des Modells, während aktive Transporte nur die vorausgesetzten Gradienten langfristig erhalten.",
+            "understandingFocusEn": "In the simplified passive membrane model, a concentration difference drives diffusion of permeant ions while the resulting charge separation builds an opposing electrical effect. Selective permeability determines which ions contribute; the resting potential is a dynamic equilibrium state of the model, whereas active transport only maintains the assumed gradients over longer times."
+          },
+          {
+            "id": "fresh-independent-case-b",
+            "taskDemandDe": "Bei vertauschtem Konzentrationsgradienten, geänderter Ionenpermeabilität oder blockiertem aktivem Transport sagt die lernende Person in einer neuen Modellsituation voraus, was das passive Modell kurzfristig liefert und was es für die langfristige Aufrechterhaltung nicht erklären kann.",
+            "taskDemandEn": "When the concentration gradient is reversed, ion permeability is changed, or active transport is blocked, the learner predicts in a new model situation what the passive model yields in the short term and what it cannot explain about long-term maintenance.",
+            "expectedPerformanceDe": "Die lernende Person erstellt oder erläutert für vorgegebene Konzentrationen und Permeabilitäten ein passives Membranmodell, sagt Vorzeichen und Entwicklung des Membranpotenzials voraus, begründet das Gleichgewicht der chemischen und elektrischen Triebkräfte und trennt diese Erklärung von der Rolle aktiver Pumpen.",
+            "expectedPerformanceEn": "For given concentrations and permeabilities, the learner constructs or explains a passive membrane model, predicts the sign and development of the membrane potential, justifies the balance of chemical and electrical driving forces, and separates this explanation from the role of active pumps.",
+            "understandingFocusDe": "Im vereinfachten passiven Membranmodell treiben Konzentrationsunterschiede Ionen zur Diffusion, während die dadurch entstehende Ladungstrennung eine elektrische Gegenwirkung erzeugt. Selektive Permeabilität bestimmt, welche Ionen beitragen; aktive Transporte erhalten die Gradienten langfristig, gehören aber nicht zur passiven Gleichgewichtsbildung des Modells.",
+            "understandingFocusEn": "In the simplified passive membrane model, concentration differences drive ion diffusion while the resulting charge separation creates an opposing electric effect. Selective permeability determines which ions contribute; active transport maintains the gradients over time but is not part of the model's passive equilibration."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "2825b528-00ee-52d0-870e-686890cb1195",
+      "title": "Nervenleitungs-Messverfahren physikalisch beurteilen",
+      "description": "Die lernende Person kann die Eignung eines vorgegebenen Verfahrens zur Messung der Signalleitungsgeschwindigkeit in Nervenzellen begründen, indem sie die für dieses Verfahren relevanten elektrischen oder magnetischen Felder abschätzt und gegebenenfalls auftretende Induktionsspannungen aus der zeitlichen Änderung des magnetischen Flusses erklärt.",
+      "plannedNewStaticTask": false,
+      "staticCoverageGoalIds": [],
+      "P": {
+        "status": "needs_human_review",
+        "reviewAuthority": "ai_candidate",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1"
+      },
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "method-bound-field-judgement",
+            "essentialUnderstandingDe": "Eine Leitungsgeschwindigkeitsmessung benötigt zur Ausbreitung passende Weg- und Zeitdifferenzen. Feldstärke und Feldverlauf sind im angegebenen Anregungs- oder Messmodell zu verstehen; eine gemeinsame Auslöse- oder Geräteverzögerung ist von der Ausbreitungszeit zu unterscheiden. Die Eignung folgt aus dem Zusammenhang dieser Angaben, nicht aus einer isolierten Feldzahl.",
+            "essentialUnderstandingEn": "Measuring conduction speed requires distance and time differences that correspond to propagation. Field strength and time course must be understood within the specified stimulation or measurement model; common trigger or instrument delays must be distinguished from propagation time. Suitability follows from the relationship among these data, not from an isolated field value.",
+            "observablePerformanceDe": "Die lernende Person erklärt an einem vorgegebenen Aufbau, welche Signale und Felder welche Funktion haben, schätzt das relevante E- oder B-Feld anhand geeigneter Modelldaten und begründet mit Weg-/Zeitzuordnung sowie zeitlicher Trennbarkeit der Signale ein begrenztes Urteil über das Verfahren.",
+            "observablePerformanceEn": "For a supplied setup, the learner explains the roles of signals and fields, estimates the relevant electric or magnetic field from suitable model data, and uses distance/time correspondence and temporal separation of signals to justify a bounded judgement about the method."
+          },
+          {
+            "id": "induction-role-and-validity",
+            "essentialUnderstandingDe": "Eine zeitliche Flussänderung kann im bezeichneten Stromkreis oder Messpfad eine Induktionsspannung hervorrufen. Je nach Verfahren kann Induktion zur Anregung beitragen oder eine Messstörung erzeugen; ein vorhandenes konstantes Magnetfeld allein erzeugt keine solche Spannung. Eine Kalibrierschleifenspannung ist ohne zusätzliches Gewebemodell keine Membranspannung.",
+            "essentialUnderstandingEn": "A time-varying magnetic flux can generate an induced voltage in the identified circuit or measurement path. Depending on the method, induction can contribute to stimulation or generate interference; a present but constant magnetic field alone does not generate such a voltage. Without an additional tissue model, a calibration-loop voltage is not a membrane voltage.",
+            "observablePerformanceDe": "Im selben Verfahrensfall erklärt die lernende Person, ob und wo eine relevante Flussänderung vorliegt und welche Aussage die daraus gegebene Induktionsspannung trägt. In einer veränderten Mess- oder Feldsituation trennt sie Nutzsignal, Anregung und Störung und begründet, ob die Angaben ein belastbares Urteil erlauben oder welche Information fehlt. Eine zusätzliche quantitative Induktionsrechnung wird nicht vorausgesetzt.",
+            "observablePerformanceEn": "Within the same method case, the learner explains whether and where a relevant flux change occurs and what can be inferred from the resulting supplied induced voltage. In a changed measurement or field situation, they distinguish the useful signal, stimulation, and interference and justify whether the information supports a reliable judgement or what information is missing. An additional quantitative induction calculation is not required."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "method-bound-field-judgement",
+            "induction-role-and-validity"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "delay-and-common-interference",
+            "textDe": "Gemeinsame Geräteverzögerung oder zeitgleicher induktiver Störausschlag statt einer tatsächlich zwischen den Ableitstellen fortlaufenden Signaländerung.",
+            "textEn": "Common instrument delay or simultaneous inductive interference instead of a signal change actually propagating between the recording sites."
+          },
+          {
+            "id": "field-time-course-and-path",
+            "textDe": "Gleicher maximaler magnetischer Fluss mit verändertem Anstieg und anschließendem Plateau; Kalibrierpfad und neuronaler Messpfad bleiben unterschieden.",
+            "textEn": "The same maximum magnetic flux with a changed rise time and subsequent plateau; calibration and neural measurement paths remain distinct."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "electric-stimulus-common-delay",
+            "taskDemandDe": "Arbeite ausschließlich mit vorgegebenen Modelldaten: Ein elektrischer Impuls von 24 mV liegt im homogenen Modell über 2 mm von 0 bis 0,3 ms an. Zwei Ableitstellen im Abstand 0,18 m zeigen korrespondierende Signalmerkmale bei 4 und 7 ms; beide Kanäle haben dieselbe unbekannte Zusatzverzögerung. Der Fluss durch die Messleitungen ist zunächst konstant. Beurteile das Verfahren; in einem frischen Zusatzdatensatz erzeugt ein äußerer Magnetimpuls einen zeitgleichen frühen Ausschlag beider Kanäle, während das verspätete Signalpaar erhalten bleibt.",
+            "taskDemandEn": "Use supplied model data only: an electrical pulse of 24 mV acts across 2 mm in a homogeneous model from 0 to 0.3 ms. Two recording sites 0.18 m apart show corresponding signal features at 4 and 7 ms; both channels have the same unknown additional delay. Flux through the measurement leads is initially constant. Assess the method; in a fresh additional dataset, an external magnetic pulse produces an early simultaneous deflection in both channels while the delayed signal pair remains.",
+            "expectedPerformanceDe": "Die lernende Person schätzt 12 V/m, erläutert den begrenzten Impulsverlauf und begründet die Geschwindigkeit von 60 m/s aus der Zeitdifferenz statt aus einer absoluten Auslösezeit. Sie erklärt, weshalb konstanter Fluss keine Induktionsspannung erfordert, und ordnet im Zusatzfall anhand der gegebenen Leitungsschleifen und Zeitspuren den frühen gemeinsamen Ausschlag der induktiven Störung zu. Ihr Urteil stützt sich auf die Trennung dieses Ausschlags vom um 3 ms versetzten Signalpaar; fehlende Trennbarkeit würde eine sichere Geschwindigkeitsbestimmung verhindern.",
+            "expectedPerformanceEn": "The learner estimates 12 V/m, explains the finite pulse duration, and justifies a speed of 60 m/s from the time difference rather than an absolute trigger time. They explain why constant flux does not require an induced voltage and, in the additional case, use the supplied lead-loop geometry and traces to identify the early common deflection as inductive interference. Their judgement rests on separating that deflection from the signal pair delayed by 3 ms; lack of separability would prevent a reliable speed determination.",
+            "understandingFocusDe": "Feldmodell, Zeitdifferenz und induktive Störung tragen dasselbe Verfahrensurteil. Keine Messung oder Stimulation an Personen; Modelldaten sind keine medizinischen Geräteeinstellungen.",
+            "understandingFocusEn": "The field model, time difference, and inductive interference support the same method judgement. No measurement or stimulation is performed on people; model data are not medical device settings."
+          },
+          {
+            "id": "magnetic-ramp-calibration",
+            "taskDemandDe": "Ein vorgegebener magnetischer Anregungsaufbau besitzt eine separate Kalibrierschleife von 4 cm² senkrecht zum homogenen Feld. Ihr Fluss steigt um 2 µWb in 0,5 ms und bleibt danach konstant. Die zugehörige mittlere Kalibrierspannung von 4 mV sowie zwei zeitversetzte neuronale Antwortspuren sind gegeben. Beurteile die Feld- und Signalangaben. Im neuen Datensatz erreicht derselbe Aufbau denselben Maximalfluss erst nach 2 ms; die gegebene mittlere Kalibrierspannung beträgt 1 mV. Vergleiche die bereitgestellten Antwort-/Störspuren und prüfe die Behauptung, gleicher maximaler B-Wert sichere gleich gute Messbedingungen.",
+            "taskDemandEn": "A supplied magnetic stimulation setup has a separate calibration loop of 4 cm² perpendicular to the homogeneous field. Its flux increases by 2 µWb in 0.5 ms and then remains constant. The associated mean calibration voltage of 4 mV and two delayed neural response traces are supplied. Assess the field and signal information. In a fresh dataset, the same setup reaches the same maximum flux only after 2 ms; the supplied mean calibration voltage is 1 mV. Compare the provided response/interference traces and assess the claim that equal maximum magnetic field ensures equally good measurement conditions.",
+            "expectedPerformanceDe": "Die lernende Person erschließt mit dem gegebenen Fluss-/Flächenmodell eine Feldänderung von 5 mT, beschreibt die verschiedenen Zeitverläufe und erklärt die kleinere gegebene Induktionsspannung bei langsamerem Anstieg sowie ihr Ausbleiben im Plateau. Sie begründet das Messurteil aus den Antwort-/Störspuren, statt allein aus dem Maximalfeld gleiche Anregung oder Zuverlässigkeit zu folgern. Kalibrierspannung und Membranspannung setzt sie nicht gleich; fehlen geeignete Antwortdaten, benennt sie diese Erkenntnisgrenze.",
+            "expectedPerformanceEn": "Using the supplied flux/area model, the learner infers a field change of 5 mT, describes the different time courses, and explains the smaller supplied induced voltage during a slower rise and its absence on the plateau. They justify the measurement judgement from response/interference traces rather than inferring equal stimulation or reliability solely from the maximum field. They do not equate calibration and membrane voltage; if suitable response data are missing, they identify that limit on inference.",
+            "understandingFocusDe": "Die zeitliche Flussänderung und die konkret beobachtete Signaltrennbarkeit bestimmen die begrenzte Schlussfolgerung. Der Fall verlangt keine zusätzliche Beherrschung des quantitativen Induktionsgesetzes oder biologischer Schwellenwerte.",
+            "understandingFocusEn": "Time-varying flux and the specifically observed separation of signals determine the bounded conclusion. The case does not demand additional mastery of the quantitative induction law or biological thresholds."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "c2e0fc31-27a2-5727-9025-a824db9150d2",
+      "title": "Axonsegmente als elektrische Ersatzschaltungen modellieren",
+      "description": "Die lernende Person kann ein Axonsegment mit Membrankapazität sowie Membran- und Axialwiderstand als elektrische Ersatzschaltung modellieren, mehrere Segmente verknüpfen und begründen, welche passive Signalausbreitung das Modell erklärt und welche zusätzlichen spannungsabhängigen Elemente für aktive Leitung nötig sind.",
+      "plannedNewStaticTask": false,
+      "staticCoverageGoalIds": [],
+      "P": {
+        "status": "needs_human_review",
+        "reviewAuthority": "ai_candidate",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1"
+      },
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "construct-passive-axon-circuit",
+            "essentialUnderstandingDe": "Die Membran speichert Ladung wie eine Kapazität, der Membranwiderstand beschreibt Leckstrom und der Axialwiderstand den längsgerichteten Strom zwischen Segmenten. Gekoppelte RC-Segmente erklären zeitlich verzögertes und räumlich abgeschwächtes passives Potenzial.",
+            "essentialUnderstandingEn": "The membrane stores charge like a capacitance, membrane resistance represents leakage, and axial resistance represents longitudinal current between segments. Coupled RC segments explain delayed and spatially attenuated passive potential.",
+            "observablePerformanceDe": "Die lernende Person konstruiert und beschriftet mindestens drei gekoppelte Segmente, verfolgt Strompfade und sagt aus Widerständen und Kapazitäten qualitative Signalverläufe voraus.",
+            "observablePerformanceEn": "The learner constructs and labels at least three coupled segments, traces current paths, and predicts qualitative signal trends from resistances and capacitances."
+          },
+          {
+            "id": "state-passive-model-limit",
+            "essentialUnderstandingDe": "Ein rein passives lineares RC-Netzwerk regeneriert ein abgeschwächtes Signal nicht. Aktionspotenziale benötigen zusätzliche spannungsabhängige, nichtlineare Leitfähigkeiten; deren detaillierte Kinetik ist nicht im passiven Ersatzmodell enthalten.",
+            "essentialUnderstandingEn": "A purely passive linear RC network does not regenerate an attenuated signal. Action potentials require additional voltage-dependent nonlinear conductances; their detailed kinetics are not contained in the passive equivalent model.",
+            "observablePerformanceDe": "Die lernende Person vergleicht Modellvorhersage und aktiv fortgeleiteten Signalverlauf, lokalisiert die fehlende Funktion und ergänzt spannungsabhängige Elemente nur dort, wo die aktive Leitung sie verlangt.",
+            "observablePerformanceEn": "The learner compares the model prediction with an actively propagated signal, locates the missing function, and adds voltage-dependent elements only where active conduction requires them."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "construct-passive-axon-circuit",
+            "state-passive-model-limit"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "segment-parameter",
+            "textDe": "Veränderte Membrankapazität, Membran- oder Axialwiderstand",
+            "textEn": "Changed membrane capacitance, membrane resistance, or axial resistance"
+          },
+          {
+            "id": "segment-geometry",
+            "textDe": "Andere Segmentlänge oder Zahl gekoppelter Segmente",
+            "textEn": "Different segment length or number of coupled segments"
+          },
+          {
+            "id": "conduction-regime",
+            "textDe": "Passive Ausbreitung oder aktive Regeneration an diskreten Stellen",
+            "textEn": "Passive spread or active regeneration at discrete sites"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "passive-pulse-across-segments",
+            "taskDemandDe": "Ein kurzer Strompuls wird in das erste von vier Axonsegmenten eingespeist. Zeichne die Ersatzschaltung, skizziere die Potenziale der Segmente und sage voraus, wie größere Membrankapazität beziehungsweise höherer Membranwiderstand Verzögerung und Abschwächung verändern.",
+            "taskDemandEn": "A short current pulse is injected into the first of four axon segments. Draw the equivalent circuit, sketch segment potentials, and predict how greater membrane capacitance or higher membrane resistance changes delay and attenuation.",
+            "expectedPerformanceDe": "Die lernende Person ordnet Cₘ, Rₘ und Rₐ korrekt an, erwartet passive Verzögerung und Abnahme, trennt die langsamere Aufladung bei größerem Cₘ von der geringeren Leckage bei größerem Rₘ und begründet beide Vorhersagen.",
+            "expectedPerformanceEn": "The learner arranges Cₘ, Rₘ, and Rₐ correctly, expects passive delay and attenuation, distinguishes slower charging with greater Cₘ from reduced leakage with greater Rₘ, and justifies both predictions.",
+            "understandingFocusDe": "Der Fall prüft Schaltungskonstruktion und kausale Parameterwirkung.",
+            "understandingFocusEn": "The case assesses circuit construction and causal parameter effects."
+          },
+          {
+            "id": "myelinated-segment-model-limit",
+            "taskDemandDe": "Ein Signal bleibt entlang eines myelinisierten Axons nahezu erhalten, obwohl ein rein passives Segmentmodell Abnahme vorhersagt. Passe Widerstände und Kapazitäten qualitativ an, erkläre die verbleibende Diskrepanz und markiere nötige aktive Elemente an den Knoten.",
+            "taskDemandEn": "A signal remains nearly preserved along a myelinated axon although a purely passive segment model predicts attenuation. Adjust resistances and capacitances qualitatively, explain the remaining discrepancy, and mark the active elements needed at the nodes.",
+            "expectedPerformanceDe": "Die lernende Person verbindet Myelinisierung mit höherem Membranwiderstand und kleinerer wirksamer Kapazität, erkennt aber, dass dies keine Regeneration erzeugt, und ergänzt spannungsabhängige Leitfähigkeiten als ausdrückliche Modellweiterung.",
+            "expectedPerformanceEn": "The learner connects myelination with greater membrane resistance and smaller effective capacitance but recognizes that this does not create regeneration and adds voltage-dependent conductances as an explicit model extension.",
+            "understandingFocusDe": "Der unabhängige Transfer prüft Modellleistung und Modellgrenze an veränderter Struktur.",
+            "understandingFocusEn": "The independent transfer assesses model capability and limitation under changed structure."
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "capturedAt": "2026-11-16T00:17:43.302083+00:00",
+  "status": "PASS_BOUNDED_RETAINED_REGISTRY_FIX",
+  "changedSourcePaths": [
+    "scripts/config/historical-goal-visualization-assets.json"
+  ],
+  "sourceChange": "Append one exact-hash historical JPG entry superseded by the existing sole primary PNG. All106previousentries and allotherregistryfields unchanged.",
+  "checks": [
+    {
+      "command": "node scripts/check_goal_visualization_assets.mjs",
+      "cwd": ".",
+      "sessionId": 75353,
+      "exitCode": 0,
+      "result": "2575 links in21 canonical landscapes",
+      "logPath": "tmp/pr159-d130-historical-asset-registration-20261116/native-assets-check.actual.log"
+    },
+    {
+      "command": "npm run test:goal-visualization-deploy",
+      "cwd": "app",
+      "exitCode": 0,
+      "result": "Exact bytes, protected historical file/directory aliases, path containment and repeated readonly-source copies PASS.",
+      "logPath": "tmp/pr159-d130-historical-asset-registration-20261116/deploy-retained-byte-contract.actual.log"
+    },
+    {
+      "command": "Targeted append-only/6assetcopy/canonical/checker/deploy-test byte invariance assertions",
+      "exitCode": 0,
+      "evidence": "tmp/pr159-d130-historical-asset-registration-20261116/registry-delta-and-invariance.actual.json"
+    }
+  ],
+  "originalRemoteFailure": {
+    "runId": 43776063341,
+    "jobId": 133008423831,
+    "head": "2fc979d30e53cf654c72f4d863a7d635bd515133",
+    "logPath": "tmp/pr159-ci-2379-integrated-build-failed.actual.log",
+    "logSHA256": "3b23422b0abe421593ce9311d11cb316959bf1abbd47641fca5df2b6285a93de"
+  },
+  "newTestsOrGateChanges": false,
+  "newImageOrContentApproval": false,
+  "boundary": "Local targeted repair validation; fresh remote complete CI and main CI still required.",
+  "artifactPins": [
+    {
+      "path": "tmp/pr159-d130-historical-asset-registration-20261116/deploy-retained-byte-contract.actual.log",
+      "bytes": 266,
+      "sha256": "842aed7382ee60c277ffc0b707eb58d381cc7c364fd3b47139c4429758e92146"
+    },
+    {
+      "path": "tmp/pr159-d130-historical-asset-registration-20261116/input-pins.before.actual.json",
+      "bytes": 2599,
+      "sha256": "dfa422a08e3f4ce5830bed7183fb2e7a1b79949940cd06c0c77e2a353be5ad73"
+    },
+    {
+      "path": "tmp/pr159-d130-historical-asset-registration-20261116/native-assets-check.actual.log",
+      "bytes": 75,
+      "sha256": "d851575002d9b5566ba591b94c8908805b3fe530e5487586452ed4e76df7c5c0"
+    },
+    {
+      "path": "tmp/pr159-d130-historical-asset-registration-20261116/registry-delta-and-invariance.actual.json",
+      "bytes": 4201,
+      "sha256": "38eabdea8df139614610e9e91bedd87ab3bbee672175aed2d91d0e383a8b4110"
+    },
+    {
+      "path": "tmp/pr159-d130-historical-asset-registration-20261116/registry.before.json",
+      "bytes": 35010,
+      "sha256": "7e7626719405eaa5fce8cbf431a557f367c4a0e4f0f1408453c61249a87f55f0"
+    }
+  ]
+}

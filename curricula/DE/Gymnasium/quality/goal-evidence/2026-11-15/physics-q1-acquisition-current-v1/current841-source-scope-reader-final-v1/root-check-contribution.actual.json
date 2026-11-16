@@ -1,0 +1,39 @@
+{
+  "recordedAt": "2026-11-15T22:26:33.566518+00:00",
+  "executedBy": "/root",
+  "evidenceOrigin": "Root direct actual-execution report delivered to release agent; no redundant rerun here.",
+  "observedExecutionWindow": {
+    "stableCandidateAt": "2026-11-15T22:18:42Z",
+    "completedBefore": "2026-11-15T22:20:27Z",
+    "exactIndividualStartEndTimesClaimed": false
+  },
+  "commands": [
+    {
+      "cwd": "app",
+      "command": "./node_modules/.bin/tsc -b",
+      "exitCode": 0
+    },
+    {
+      "cwd": "app",
+      "command": "eslint scripts/generateCurriculumQualityStatus.ts scripts/testCurriculumQualityStatus.ts scripts/testSourceCoverageScopeNative.ts",
+      "exitCode": 0
+    }
+  ],
+  "sourcePins": [
+    {
+      "path": "app/scripts/generateCurriculumQualityStatus.ts",
+      "sha256": "ffe2b5e59ee80677ecdef7f4d0b2f2095d60c5eb1a69125d73da9f4de63767c1"
+    },
+    {
+      "path": "app/scripts/testCurriculumQualityStatus.ts",
+      "sha256": "294ad2d71a353514a4f8c64c3912999df9ca593c353b8c1b9421a6e5dd182fe4"
+    },
+    {
+      "path": "app/scripts/testSourceCoverageScopeNative.ts",
+      "sha256": "48460e295b7d190f322d3eca90e243962b9c5b2af007af37efa5a962383119a3"
+    }
+  ],
+  "rootCodeAndEntireNativeTestRead": true,
+  "independentBDecisionSeparate": true,
+  "mainCIClaimed": false
+}

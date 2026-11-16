@@ -1,0 +1,42 @@
+{
+  "status": "passed",
+  "startedAt": "2026-11-16T00:01:52.618576+00:00",
+  "pins": {
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json": "c511aeaee9167c0c3ca07c996b1c0d67e4fef330a8c781ae3e8d563005a90a4a",
+    "curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json": "d93e7d91b3ebbb5c0d191395fe15541284e89c5fbe67acb8700de229e4dd4059",
+    "app/scripts/generateCurriculumQualityStatus.ts": "ffe2b5e59ee80677ecdef7f4d0b2f2095d60c5eb1a69125d73da9f4de63767c1",
+    "app/scripts/checkCurriculumMaturityFloors.ts": "5a76a26600bd47ad647c0a1286ec60a689d9ee801795c49348e92c492b155b7f"
+  },
+  "commands": [
+    {
+      "name": "curriculum-status",
+      "argv": [
+        "npm",
+        "run",
+        "quality:curriculum-status"
+      ],
+      "cwd": "app",
+      "startedAt": "2026-11-16T00:01:52.618817+00:00",
+      "finishedAt": "2026-11-16T00:08:07.443711+00:00",
+      "exitCode": 0,
+      "logPath": "tmp/spectrum-task-preparation-20261116/curriculum-status.log",
+      "logSha256": "46ec6cc71a96b7e180d3ea100b2988177bb3d0aefb07745e9c40eac7efe6d782"
+    },
+    {
+      "name": "maturity-floors",
+      "argv": [
+        "npm",
+        "run",
+        "check:curriculum-maturity-floors"
+      ],
+      "cwd": "app",
+      "startedAt": "2026-11-16T00:08:07.445627+00:00",
+      "finishedAt": "2026-11-16T00:08:08.536165+00:00",
+      "exitCode": 0,
+      "logPath": "tmp/spectrum-task-preparation-20261116/maturity-floors.log",
+      "logSha256": "1a8bd87893f926d1906fe147307fffd8b78d22dd8bcde58b17966fe4cea26fbe"
+    }
+  ],
+  "finishedAt": "2026-11-16T00:08:08.536469+00:00",
+  "pinDrift": []
+}

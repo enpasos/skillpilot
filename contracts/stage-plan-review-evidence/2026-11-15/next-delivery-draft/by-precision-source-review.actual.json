@@ -1,0 +1,78 @@
+{
+  "status": "ACCEPT_BOUNDED_PARTIAL_SOURCE_MAPPING",
+  "reviewer": "OpenAI GPT independent implementing agent /root/assessment_runtime_scope_repair",
+  "reviewKind": "informed independent source/content comparison; not blind and not human review",
+  "at": "2026-11-15T17:38:40.506178+01:00",
+  "author": "/root",
+  "inputProposal": {
+    "path": "tmp/physics-by-precision-source-repair-20261115/proposal.json",
+    "rawSHA256": "1b90cfd6d88ab84044aa9bcd299e60e5082145a696af24c313a3cd0bf1ae0492"
+  },
+  "wholeRead": {
+    "retainedOriginalGoal": "7c3355b3-7488-53eb-8f04-bd6f18d5c02d",
+    "sourceExtractionAspect": "Ph8.3.1",
+    "canonicalGoals": [
+      "b615830a-e8b0-5754-81e0-99da98343a8d",
+      "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
+      "3ed3279e-c524-5230-a277-dda89493df6d"
+    ],
+    "livePrimarySourceUrl": "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/8/physik",
+    "liveOriginalOpened": true,
+    "liveSection": "Ph8 3.1, first competence bullet",
+    "liveMeaningAndTextMatchesRetained": true,
+    "priorAuthorAndHistoricalVerdictsSeen": true
+  },
+  "decision": {
+    "newMappingMatchTypeMustRemain": "partial",
+    "supports": "Using input measurement accuracy when calculating speed supports appropriate significant-figure rounding of the result. Retaining sufficiently precise intermediate values and avoiding false precision are appropriate explicit didactic operations, without being additional verbatim official requirements.",
+    "sourceDoesNotEstablish": [
+      "complete official equivalence to the entire b615 goal",
+      "an official requirement to use all b615 operations in every Grade8 application",
+      "a universal Grade8 assignment for every use of b615",
+      "global mastery or any retroactive credit from an old task result"
+    ],
+    "existingTwoMappings": "remain partial; the source does not explicitly contain every term/graph-recognition aspect of 971beafa or the explanation of the SI system in 3ed3279e",
+    "newDecisionRationale": "accurately distinguishes partial source support from broader own canonical operationalization; replaces an overbroad historical whole-coverage assertion with an appropriately bounded rationale",
+    "permittedMutation": "exactly one partial mapping row and the existing single source decision; all other rows/decisions and all raw sources stay exact"
+  },
+  "threeCurrentWholeGoalsEqualProposal": true,
+  "threeGoalObjectDigests": [
+    {
+      "goalId": "b615830a-e8b0-5754-81e0-99da98343a8d",
+      "canonicalJsonSHA256": "99426324be278756a2bc7df062bc820a47221caa2e9e9bc34d35bdb43306a4a6"
+    },
+    {
+      "goalId": "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
+      "canonicalJsonSHA256": "310b3ca3347114ba28d92fbad623298f8e1f05a096f35be84a2d787efefe3483"
+    },
+    {
+      "goalId": "3ed3279e-c524-5230-a277-dda89493df6d",
+      "canonicalJsonSHA256": "8a1ba58bb927f765f143ccca9e309e35f2ed059e6c2489dc95a0a8f7ec459f2c"
+    }
+  ],
+  "pins": [
+    {
+      "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Physik.json",
+      "rawSHA256": "6b49157703e7bad2685e09684d94248447da2f066a1c9cafc48bf11e758cbdfc"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_physics_source_extraction_to_canonical_physics.review.json",
+      "rawSHA256": "2874e37012e8f61ca678e90dcc9ffb4f81db1a8fdd6e49978c34c5c23cea05e0"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_PHYSIK_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+      "rawSHA256": "c6771966752d0bb257e1a0fcef7290b92f5eb60534c03458685f2dfc14f32ee7"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+      "rawSHA256": "2075d1e6594313699942078f3699f04a3335efd33f6380cbf466ec54e08fd4d9"
+    }
+  ],
+  "notReviewed": [
+    "other five needs_review BY decisions",
+    "assessment0521 scoring/threshold or task correctness",
+    "plan activation or universal timing",
+    "unrelated applicability overrides"
+  ],
+  "activeWrites": 0
+}

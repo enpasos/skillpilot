@@ -1,0 +1,63 @@
+{
+  "runId": "physics-k3k6-current13-20261115-first-pass-b",
+  "reviewer": "reviewer-b",
+  "recordStatus": "candidate",
+  "reviewAuthority": "ai_candidate",
+  "resultPath": "tmp/physics-native-integration-k3k6-20261115/native-d/round-b/results/physics-k3k6-current13-20261115-first-pass-b.batch-001.records.jsonl",
+  "recordCount": 13,
+  "decisionCounts": {
+    "keep": 10,
+    "revise": 3,
+    "split_review": 0,
+    "block": 0
+  },
+  "evidenceProfileRecommendationCounts": {
+    "none": 12,
+    "revise": 1
+  },
+  "checks": {
+    "boundDraft202012SchemaValid": true,
+    "allRecordsSchemaValid": true,
+    "exactAssignedGoalOrder": true,
+    "exactCampaignBatchAndRunBindings": true,
+    "exactBookBundleGoalPageAndCurrentTextBindings": true,
+    "batchGoalsEqualBoundReviewInputGoals": true,
+    "promptCriteriaAndSchemaRawDigestBindings": true,
+    "allRecordsCandidateAiCandidate": true,
+    "sixSpecificBilingualEvidenceFieldsPerGoal": true,
+    "noDuplicateEvidenceFields": true,
+    "replacementFieldsOnlyForRevise": true,
+    "trailingNewlinePresent": true
+  },
+  "inputFileRawSha256": {
+    "tmp/physics-native-integration-k3k6-20261115/native-d/round-b/prompt.md": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+    "tmp/physics-native-integration-k3k6-20261115/native-d/round-b/criteria.md": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+    "tmp/physics-native-integration-k3k6-20261115/native-d/round-b/description-review-campaign.json": "sha256:ba74b422b27cb56a371f4ca6e96389c0c42f80a6113ea7a6b4d2111735298b39",
+    "tmp/physics-native-integration-k3k6-20261115/native-d/round-b/review-bundle-manifest.json": "sha256:d994e5e87e3d6af321c9efb1f50a5a835b13843092b5dda3619eb855c8b6afa7",
+    "tmp/physics-native-integration-k3k6-20261115/native-d/round-b/description-review-input.json": "sha256:cdcb64e6efeaf5dca4f6f4739b1a96fa638587855c7112ade54d729f2173de1d",
+    "tmp/physics-native-integration-k3k6-20261115/native-d/round-b/contracts/goal-description-review-record.schema.json": "sha256:b1d5fe108f157ebcb3e6b5c5f0376b3f4d88da935fab9aab79fac8a49b50b7ff",
+    "tmp/physics-native-integration-k3k6-20261115/native-d/round-b/batches/physics-k3k6-current13-20261115-first-pass-b.batch-001.input.jsonl": "sha256:834a18f013ae1d469c212fa6f135c8d1bccfd35a1d5449b77b2b75bb40ebe901"
+  },
+  "resultFileRawSha256": "sha256:0837fcb434c2ade5152b33b39e04ea198f1a3ac4efeedbe4adcd31d5f9b52bcb",
+  "resultBytes": 57537,
+  "executedVerificationCommandArgv": [
+    "/home/enpasos/.pyenv/versions/3.12.9/bin/python",
+    "-c",
+    "\nfrom pathlib import Path\nimport collections, hashlib, json, sys\nimport jsonschema\nbase=Path('tmp/physics-native-integration-k3k6-20261115/native-d/round-b')\ncampaign=json.loads((base/'description-review-campaign.json').read_text())\nreview_input=json.loads((base/'description-review-input.json').read_text())\nbundle=json.loads((base/'review-bundle-manifest.json').read_text())\nschema_path=base/'contracts/goal-description-review-record.schema.json'\nschema=json.loads(schema_path.read_text())\nbatch_paths=sorted((base/'batches').glob('*.input.jsonl'))\nrows=[json.loads(line) for f in batch_paths for line in f.read_text().splitlines() if line.strip()]\nrun_id='physics-k3k6-current13-20261115-first-pass-b'\nresult_path=base/'results'/f'{run_id}.batch-001.records.jsonl'\nraw=result_path.read_bytes()\nrecords=[json.loads(line) for line in raw.decode().splitlines() if line.strip()]\njsonschema.Draft202012Validator.check_schema(schema)\nvalidator=jsonschema.Draft202012Validator(schema)\nfor n,record in enumerate(records,1):\n    errors=list(validator.iter_errors(record))\n    assert not errors, [(n,list(e.path),e.message) for e in errors]\nassert raw.endswith(b'\\n')\nassert len(batch_paths)==1\nassert len(records)==len(rows)==campaign['goalCount']==review_input['goalCount']==bundle['selectedGoalCount']==13\nexpected_ids=campaign['batches'][0]['goalIds']\nassert [r['goalId'] for r in records]==expected_ids==[g['goalId'] for g in review_input['goals']]==[g['goalId'] for g in bundle['goals']]\nassert [r['ordinal'] for r in rows]==list(range(1,14))\nassert len({r['recordId'] for r in records})==13\nfor key in ['bundleFingerprint','bookDigest','reviewInputFingerprint']:\n    assert campaign[key]==review_input[key]\nassert bundle['bundleFingerprint']==campaign['bundleFingerprint']\nassert bundle['bookModelDigest']==campaign['bookDigest']\ndef digest(path):\n    return 'sha256:'+hashlib.sha256(path.read_bytes()).hexdigest()\nassert digest(schema_path)==campaign['recordSchemaDigest']==campaign['batches'][0]['recordSchemaDigest']\nassert digest(base/'prompt.md')==campaign['promptFingerprint']==bundle['promptFingerprint']\nassert digest(base/'criteria.md')==campaign['criteriaFingerprint']==bundle['criteriaFingerprint']\nbound_keys=['goalId','goalFingerprint','pageFingerprint','currentTitleDe','currentTitleEn','currentDescriptionDe','currentDescriptionEn']\nfor row,record,goal,manifest_goal in zip(rows,records,review_input['goals'],bundle['goals']):\n    assert row['batchGoalIds']==expected_ids\n    assert row['batchId']==campaign['batches'][0]['batchId']\n    assert row['recordSchemaDigest']==campaign['recordSchemaDigest']\n    assert row['reviewInputFingerprint']==campaign['reviewInputFingerprint']\n    assert row['goal']==goal\n    assert record['runId']==run_id\n    assert record['recordId']==run_id+'.'+goal['goalId']\n    assert record['campaignId']==campaign['campaignId']\n    assert record['roundId']==campaign['roundId']==run_id\n    for key in ['bundleFingerprint','bookDigest']:\n        assert record[key]==row[key]==campaign[key]\n    for key in bound_keys:\n        assert record[key]==goal[key]\n    for key in ['goalId','goalFingerprint','pageFingerprint']:\n        assert record[key]==manifest_goal[key]\n    assert record['recordStatus']=='candidate'\n    assert record['reviewAuthority']=='ai_candidate'\n    assert record['evidenceProfileContract']=='positive-understanding-evidence-v2'\n    assert len(record['understandingEvidence'])==6\nfields=[value for r in records for value in r['understandingEvidence'].values()]\nassert len(set(fields))==len(fields)==78\ninput_paths=[\n    base/'prompt.md',base/'criteria.md',base/'description-review-campaign.json',\n    base/'review-bundle-manifest.json',base/'description-review-input.json',schema_path,*batch_paths\n]\nreport={\n    'runId':run_id,\n    'reviewer':'reviewer-b',\n    'recordStatus':'candidate',\n    'reviewAuthority':'ai_candidate',\n    'resultPath':str(result_path),\n    'recordCount':len(records),\n    'decisionCounts':{k:sum(r['decision']==k for r in records) for k in ['keep','revise','split_review','block']},\n    'evidenceProfileRecommendationCounts':dict(collections.Counter(r['evidenceProfileRecommendation'] for r in records)),\n    'checks':{\n        'boundDraft202012SchemaValid':True,\n        'allRecordsSchemaValid':True,\n        'exactAssignedGoalOrder':True,\n        'exactCampaignBatchAndRunBindings':True,\n        'exactBookBundleGoalPageAndCurrentTextBindings':True,\n        'batchGoalsEqualBoundReviewInputGoals':True,\n        'promptCriteriaAndSchemaRawDigestBindings':True,\n        'allRecordsCandidateAiCandidate':True,\n        'sixSpecificBilingualEvidenceFieldsPerGoal':True,\n        'noDuplicateEvidenceFields':True,\n        'replacementFieldsOnlyForRevise':True,\n        'trailingNewlinePresent':True\n    },\n    'inputFileRawSha256':{str(p):digest(p) for p in input_paths},\n    'resultFileRawSha256':digest(result_path),\n    'resultBytes':len(raw),\n    'executedVerificationCommandArgv':sys.orig_argv,\n    'validationExitCode':0,\n    'validationBoundary':'Bound record schema plus exact ordered supplied bindings only. Parent will assemble the native run manifest and run the native validator. No effective nationwide projection or complete official source mapping is claimed.',\n    'independenceStatement':'Worked from AGENTS.md mandate and the assigned round-b package. No other independent reviewer output, adjudication, canonical diff, or correction draft was consulted. Supplied current evidence profiles were treated as context, not authority.',\n    'externalMaterialsConsulted':[],\n    'startedAtUtc':None,\n    'startTimeLimitation':'An actual start timestamp was not recorded; no child start time is inferred.',\n    'timingScope':'The completed timestamp will be copied from an actual clock tool read after these validation checks.',\n    'writeScope':'Only the assigned records JSONL and reviewer-b-receipt.json were written.'\n}\nprint(json.dumps(report,ensure_ascii=False))\n"
+  ],
+  "validationExitCode": 0,
+  "validationBoundary": "Bound record schema plus exact ordered supplied bindings only. Parent will assemble the native run manifest and run the native validator. No effective nationwide projection or complete official source mapping is claimed.",
+  "independenceStatement": "Worked from AGENTS.md mandate and the assigned round-b package. No other independent reviewer output, adjudication, canonical diff, or correction draft was consulted. Supplied current evidence profiles were treated as context, not authority.",
+  "externalMaterialsConsulted": [],
+  "startedAtUtc": null,
+  "startTimeLimitation": "An actual start timestamp was not recorded; no child start time is inferred.",
+  "timingScope": "The completed timestamp will be copied from an actual clock tool read after these validation checks.",
+  "writeScope": "Only the assigned records JSONL and reviewer-b-receipt.json were written.",
+  "completedAtUtc": "2026-11-15T11:54:03Z",
+  "completionClockRead": {
+    "tool": "clock.curr_time",
+    "response": {
+      "current_time": "2026-11-15 11:54:03 UTC"
+    }
+  }
+}

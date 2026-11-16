@@ -10,7 +10,7 @@ $$
 \mathcal G=(G,C,R),\qquad C,R\subseteq G\times G.
 $$
 
-$G$ is the set of learning goals. $C$ denotes `contains`: one goal contains another. $R$ denotes `requires`: one goal requires another as a prerequisite. Exactly these two *explicitly authored* relation kinds exist in the skill graph; only they are stored by curriculum authors. Derived relations, curricular placements, source mappings, and evidence belong to separate model layers.
+$G$ is the set of learning goals. $C$ denotes `contains`: one goal contains another. $R$ denotes `requires`: one goal requires another as a prerequisite. Exactly these two *explicitly authored* relation kinds exist in the skill graph; only these two relations are persisted in the goal core. The unit layer additionally declares `after` in its own contract. Derived relations, curricular placements, source mappings, and evidence belong to separate model layers.
 
 Each pair $(x,y)$ is directed. For any relation $X$ on $G$,
 
@@ -27,6 +27,10 @@ $k\xrightarrow{\mathtt{contains}}c$: cluster $k$ contains goal $c$. $g\xrightarr
 :::
 
 ::figure{id="fig:overview"}
+
+
+
+The unit layer additionally declares `after` explicitly (Section~@ref{sec:unit-progression}): `U after V` orders all of U after all of V without asserting subject-matter demand. This relation is neither another `requires` edge nor a learner-result kind. `requires` is the special atomic ordering that also expresses demand. An `after` changes neither frontier nor prerequisite closure, progress denominator, or mastery. In the binding target model no prerequisite points to an assessment goal; existing counterexamples are findings requiring subject-matter repair, not already corrected data.
 
 ### Attributes and Stable Identity {#sec:core-attributes}
 
@@ -233,7 +237,7 @@ Since 11 November 2026, `CQR-001` in the [status generator](repo:app/scripts/gen
 
 The earlier CQR/GVR baseline hardening reached `main` on 13 November 2026 through [PR #131](https://github.com/enpasos/skillpilot/pull/131). The later integration state `2129b207f4`, following changes to frozen review evidence and the Mathematics assessment, passed all 14 jobs of [CI #2315](https://github.com/enpasos/skillpilot/actions/runs/43398052180). The [delivery record](repo:docs/dev/cqr-gvr-hard-gate-plan-2026-11-12.md) distinguishes the PR and main runs. This establishes technical enforcement within each declared domain; the four missing visibility scopes of `CQR-104` and broader subject coverage of `GVR-012` remain open. This QA evidence establishes neither human trials nor implementation of broader runtime contracts.
 
-**Current candidate:** The follow-up work is in [PR #141](https://github.com/enpasos/skillpilot/pull/141), based on updated main at `2ad03c810c`, and has not been integrated into main. The new balance of 12 HARD / 50 PARTIAL / 55 OPEN / 28 OPT/DOC and four directly required `GVR-012` scopes in an inventory of twelve describes this locally verified candidate. Local evidence is recorded in the [follow-up record](repo:docs/dev/cqr-gvr-hard-gate-plan-2026-11-12.md); final remote CI and main acceptance are not recorded here as complete. Historical CI #2315 applies only to its original state.
+**Historical audit state, 13 November 2026:** The follow-up work is in [PR #141](https://github.com/enpasos/skillpilot/pull/141), based on updated main at `2ad03c810c`, and has not been integrated into main. The new balance of 12 HARD / 50 PARTIAL / 55 OPEN / 28 OPT/DOC and four directly required `GVR-012` scopes in an inventory of twelve describes this locally verified candidate. Local evidence is recorded in the [follow-up record](repo:docs/dev/cqr-gvr-hard-gate-plan-2026-11-12.md); final remote CI and main acceptance are not recorded here as complete. Historical CI #2315 applies only to its original state.
 
 The Product Owner decision of 13 November 2026 fixes the grading domain of every `GD-*` rule to the 21-root canonical Gymnasium catalog. Obligations from M5, M6, or M7 are assessed against their stated threshold; currently ten subjects are pinned at M6/M7, five of them at M7. Non-canonical landscapes are outside this work programme. A hard grade still requires complete enforcement of every sub-obligation in the row: the domain decision does not close runtime contracts, semantic route gaps, or general assessment-coverage gaps.
 

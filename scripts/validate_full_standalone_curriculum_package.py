@@ -43,6 +43,7 @@ import curriculum_completion_artifacts as completion_artifacts  # noqa: E402
 import curriculum_package_contract_selection as contract_selection  # noqa: E402
 import curriculum_package_learning_unit_contracts as learning_unit_contracts  # noqa: E402
 import curriculum_learning_units as learning_units  # noqa: E402
+from curriculum_assessment_materials import MAX_SVG_BYTES, validate_static_assessment_svg  # noqa: E402
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -1267,6 +1268,7 @@ def inspect_archive(
                     "application/json",
                     "application/schema+json",
                 }
+                is_svg = media_type == "image/svg+xml"
                 if is_json and info.file_size > limits["jsonEntryBytes"]:
                     collector.add(
                         "offlineSchemaCatalog",
@@ -1278,12 +1280,12 @@ def inspect_archive(
                     byte_count, digest, prefix, raw = stream_zip_entry(
                         archive,
                         info,
-                        capture=is_json or relative == "metadata/SHA256SUMS",
+                        capture=is_json or is_svg or relative == "metadata/SHA256SUMS",
                         capture_limit=(
                             (limits["entryCount"] + 1)
                             * (64 + 2 + limits["archivePathBytes"] + 1)
                             if relative == "metadata/SHA256SUMS"
-                            else limits["jsonEntryBytes"]
+                            else MAX_SVG_BYTES if is_svg else limits["jsonEntryBytes"]
                         ),
                     )
                 except (OSError, RuntimeError, zipfile.BadZipFile, EOFError) as error:
@@ -2099,6 +2101,34 @@ def validate_deterministic_render_provenance(
         actual_decision_binding = {
             key: decision.get(key) for key in expected_decision_binding
         }
+        if decision.get("provenanceClass") == "skillpilot-authored-assessment-material":
+            # The unchanged manifest has the general own-content class. Only a
+            # fully bound 1.3 task stimulus may project the more precise ledger
+            # subtype; its pending rights and every other binding stay exact.
+            material_bound = (
+                manifest.get("runtimeContractVersion") == "1.3"
+                and manifest.get("releaseProfile") == "full-standalone-v1.3"
+                and record.get("provenanceClass") == "skillpilot-authored"
+                and resource.get("resourceKind") == "assessment-material"
+                and resource.get("delivery") == "embedded"
+                and resource.get("runtimeRequired") is True
+                and resource.get("provider") == decision.get("provider") == "SkillPilot"
+                and decision.get("provenanceSource") == "hash-bound-assessment-source"
+                and decision.get("userProvided") is False
+                and resource.get("resourceId") == decision.get("resourceId") == resource_id
+                and resource.get("ownerGoalId") == decision.get("ownerGoalId")
+                and isinstance(record_path, str)
+                and record_path.startswith("assets/assessment-materials/")
+                and resource.get("publicUrl") == "/" + record_path
+                and resource.get("artifactPath") == decision.get("artifactPath") == record_path
+                and resource.get("mediaType") == decision.get("mediaType") == record.get("mediaType")
+                and resource.get("mediaType") in ("image/svg+xml", "image/png")
+                and resource.get("bytes") == decision.get("bytes") == record.get("bytes")
+                and resource.get("sha256") == record.get("sha256")
+                and decision.get("assetSha256") == f"sha256:{record.get('sha256')}"
+            )
+            if material_bound:
+                actual_decision_binding["provenanceClass"] = "skillpilot-authored"
         if actual_decision_binding != expected_decision_binding:
             collector.add(
                 "assetBytes",
@@ -2553,6 +2583,13 @@ def validate_content_and_assets(
             collector.add("assetBytes", "JPEG_MAGIC_MISMATCH", f"/{path}", "invalid JPEG signature")
         if media_type == "image/png" and prefix[:8] != b"\x89PNG\r\n\x1a\n":
             collector.add("assetBytes", "PNG_MAGIC_MISMATCH", f"/{path}", "invalid PNG signature")
+        if media_type == "image/svg+xml":
+            try:
+                if indexed is None or indexed.get("resourceKind") != "assessment-material" or not str(path).startswith("assets/assessment-materials/"):
+                    raise ValueError("SVG must be an explicitly owned assessment material")
+                validate_static_assessment_svg(snapshot.raw_documents.get(path, b""))
+            except (ValueError, UnicodeError) as error:
+                collector.add("assetBytes", "ASSESSMENT_SVG_UNSAFE", f"/{path}", str(error))
         try:
             expected_record = dict(resource)
             if resource.get("recordSha256") != binary_record_digest(expected_record, normalization):
@@ -2879,8 +2916,8 @@ def validate_runtime_catalog(
             {
                 "resourceId": indexed.get("resourceId"),
                 "resourceKind": (
-                    "goal-visualization"
-                    if indexed.get("resourceKind") == "goal-visualization"
+                    indexed.get("resourceKind")
+                    if indexed.get("delivery") == "embedded"
                     else "external-tool"
                 ),
                 "landscapeId": indexed.get("landscapeId"),
@@ -2924,6 +2961,40 @@ def validate_runtime_catalog(
 
 def entity_key_id(value: Mapping[str, Any]) -> str:
     return canonical_json_bytes(value).decode("utf-8")
+
+
+def required_assessment_materials(goals: Mapping[str, Mapping[str, Any]], resources: Sequence[Mapping[str, Any]]) -> list[Mapping[str, Any]]:
+    """Derive required payload roots from released tasks, never from claimed seeds."""
+    uses_by_url: dict[str, set[str]] = defaultdict(set)
+    for goal_id, goal in goals.items():
+        exam = goal.get("examData", {})
+        for field in ("taskContent", "taskContentEn"):
+            body = exam.get(field, "") if isinstance(exam, dict) else ""
+            if not isinstance(body, str):
+                continue
+            tokens = re.findall(r"/assets/assessment-materials/[^\s)\"'<>]+", body)
+            for url in tokens:
+                if re.fullmatch(r"/assets/assessment-materials/[A-Za-z0-9._/-]+\.(?:svg|png)", url) is None:
+                    raise ValidationFailure("An actual task image URL is unresolved or unsupported")
+                if exam.get("reviewStatus") != "released":
+                    raise ValidationFailure("Required task media must belong to a released task")
+                uses_by_url[url].add(goal_id)
+    materials = [item for item in resources if item.get("resourceKind") == "assessment-material"]
+    by_url = {item.get("publicUrl"): item for item in materials}
+    if len(by_url) != len(materials) or set(by_url) != set(uses_by_url):
+        raise ValidationFailure("Required task image use differs from the exact material inventory")
+    for url, resource in by_url.items():
+        declaring = sorted((goal_id, order) for goal_id, goal in goals.items()
+                           for order, link in enumerate(goal.get("resourceLinks", []))
+                           if link.get("type") == "assessment-material" and link.get("url") == url)
+        expected_owner = declaring[0][0] if declaring else min(uses_by_url[url])
+        if resource.get("ownerGoalId") != expected_owner or expected_owner not in uses_by_url[url]:
+            raise ValidationFailure("Assessment material ownership does not bind an actual task use")
+        if resource.get("runtimeRequired") is not True or resource.get("delivery") != "embedded":
+            raise ValidationFailure("A required task material cannot be external or optional")
+        if resource.get("artifactPath") != url[1:]:
+            raise ValidationFailure("Required task image path differs from its original URL")
+    return sorted(materials, key=lambda item: str(item["resourceId"]))
 
 
 def validate_reference_registry_contract(registry: FieldRegistry, reference: Mapping[str, Any]) -> None:
@@ -3563,6 +3634,10 @@ def derive_expected_closure(
         raise ValidationFailure("runtime rootLandscapeIds are malformed")
     seeds = [landscape_keys[str(landscape_id)] for landscape_id in root_ids]
     seeds.extend(view_keys[view_id] for view_id in sorted(view_keys))
+    if runtime_catalog.get("runtimeContractVersion") == "1.3":
+        goal_documents = {goal["id"]: goal for _path, _logical_id, landscape in landscape_documents for goal in landscape.get("goals", [])}
+        for resource in required_assessment_materials(goal_documents, resources):
+            seeds.append(resource_keys[resource["resourceId"]])
     seeds.sort(key=canonical_json_bytes)
 
     adjacency: dict[str, set[str]] = defaultdict(set)
@@ -3752,7 +3827,7 @@ def validate_learning_unit_contracts(
             binding = record.get("semanticBinding")
             logical_id = binding.get("logicalId") if isinstance(binding, dict) else None
             reviews.append((learning_unit_contracts.REVIEW_ROLE, logical_id, str(artifact_path), artifact))
-    if manifest.get("runtimeContractVersion") != learning_unit_contracts.RUNTIME_CONTRACT_VERSION:
+    if manifest.get("runtimeContractVersion") not in (learning_unit_contracts.RUNTIME_CONTRACT_VERSION, "1.3"):
         if reviews or any(learning_units.has_learning_unit_content(landscape) for landscape in landscapes):
             collector.add("hardReferenceClosure", "LEARNING_UNIT_RUNTIME_MISMATCH", "/data/canonical",
                           "learning units and coverage reviews require runtime contract 1.2")

@@ -10,6 +10,8 @@ Every canonical learning goal in a SkillPilot skill landscape should be explaina
 - **Classic source route (`classicSourceRoute`):** Binds reviewed `source-to-canonical` mappings (`exact` or `partial`), official syllabus documents, section breadcrumbs, and short statutory locator excerpts.
 - **MEM SPARQL route (`memSparqlRoute`):** Cross-references external Metadata for Educational Media (`MEM`) / FWU ontology alignments ([MEM SPARQL Audit](repo:docs/qa-ci/mem-sparql-consistency.md)) where available.
 
+Official source evidence inside a source rationale evaluates curricular source assignment (*carried in*, `officialSource`); separate domain-modeling and placement rationales remain identifiable as authored decisions. Neither a provisional canonical phase marker (`canonicalDefault` from `dimensionTags.phase`) nor an earlier didactic learning placement (*placed in*, `reviewedPreparation` or derived earliest need in @ref{sec:sga-view-projection}) is ever surfaced as an official Land syllabus proof.
+
 ### Deterministic Ranking, Delivery Modes, and Copyright Discipline {#sec:sga-sr-ranking}
 
 Candidate source records are ranked deterministically:

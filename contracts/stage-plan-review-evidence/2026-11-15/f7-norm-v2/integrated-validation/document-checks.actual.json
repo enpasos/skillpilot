@@ -1,0 +1,41 @@
+{
+  "recordedAt": "2026-11-15T10:06:24.764345+00:00",
+  "checks": [
+    {
+      "command": "python3 scripts/build_compendia.py --verify-sources --check-committed-web --check-untracked-outputs",
+      "workingDirectory": ".",
+      "exitCode": 0,
+      "log": "compendia-freshness.actual.txt",
+      "sha256": "c984b668e542f8cef6649810a8e298960c1e391aebd847611f94219bea1fba17"
+    },
+    {
+      "command": "./node_modules/.bin/tsx scripts/checkMarkdownLinks.ts docs",
+      "workingDirectory": "app",
+      "exitCode": 0,
+      "log": "documentation-links.actual.txt",
+      "sha256": "470d707a20365af926b5c6ae16735e4aeb27d9b9d274cef168acad319ef65879"
+    },
+    {
+      "command": "./node_modules/.bin/tsx scripts/checkDocsIndexes.ts",
+      "workingDirectory": "app",
+      "exitCode": 0,
+      "log": "documentation-indexes.actual.txt",
+      "sha256": "38e1683328bb739f5fc792fbe472a38b9bd3304b35de780540eb6843c968406a"
+    },
+    {
+      "command": "./node_modules/.bin/tsx scripts/checkTerminology.ts",
+      "workingDirectory": "app",
+      "exitCode": 0,
+      "log": "terminology.actual.txt",
+      "sha256": "2787d224ea3abc7bc6ce36a187baa0e5fa5897f430b5f1f55ad0cb6d314d280a"
+    },
+    {
+      "command": "./node_modules/.bin/tsx scripts/checkGeneratedMarkdownNotices.ts",
+      "workingDirectory": "app",
+      "exitCode": 0,
+      "log": "generated-notices.actual.txt",
+      "sha256": "b261ee1ecc11929d59d227e2b30a2dbf79fb78d166144fce9434b76a27f98178"
+    }
+  ],
+  "scope": "Integrated F7 norm sources and generated documents; no curriculum or runtime acceptance."
+}

@@ -1,0 +1,50 @@
+"""Read-only bounded inspection of two exact goals in existing native banks."""
+import datetime
+import gzip
+import hashlib
+import json
+from pathlib import Path
+
+O = Path('tmp/spectrum-task-preparation-20261116/native-effect')
+B = Path('tmp/physics-cqr104-consistent-stage-projection-20261115/boundary-b391-api-ui')
+P = Path('contracts/stage-plan-review-evidence/2026-11-15/real-view-measurements-v1/separate-subject-maps-v1')
+IDS = ['c2a6ce42-ba20-55c4-b958-c9edb4b98c4c', 'f06c581a-7157-584e-a692-99bcd613cff9']
+MATH_IDS = ['4eeab7d5-eeb3-579b-845e-1c52ffe9e89f', 'ee48e811-4c9c-5080-9836-8403fc9f0810', 'f2e42af5-67a6-477e-82ea-e65b09cc6cb3']
+sha = lambda path: hashlib.sha256(Path(path).read_bytes()).hexdigest()
+pin = lambda path: {'path': str(path), 'sha256': sha(path)}
+result = {'at': datetime.datetime.now(datetime.timezone.utc).isoformat(),
+          'status': 'BOUNDED_EXACT_TASK_SCOPE_ADDENDUM_NO_SCOPE_CHANGE',
+          'receiptUnchanged': pin(O / 'native-effect-receipt.actual.json'),
+          'command': 'python3 tmp/spectrum-task-preparation-20261116/native-effect/clarify-task-scope.py',
+          'commandSource': pin(__file__), 'readOnly': True, 'goalIds': IDS, 'banks': {}}
+for label, path in {'beforeCombined72': B / 'api-inputs.json.gz', 'afterCombined72': O / 'api-inputs.json.gz',
+                    'beforeSingleSubject6': P / 'six-api-inputs.json.gz', 'afterSingleSubject6': O / 'six-api-inputs.json.gz'}.items():
+    raw = gzip.decompress(path.read_bytes())
+    bank = json.loads(raw)
+    rows, present = [], []
+    for context in bank['contexts']:
+        sources = bank['sources'][context['sourceKey']]
+        goals = {g['id']: g for source in sources for g in source.get('goals', [])}
+        seeds = {g for source in sources for g in (source.get('personalCurriculumProjection') or {}).get('seedAtomicGoalIds', [])}
+        learning = {g for source in sources for g in (source.get('personalCurriculumProjection') or {}).get('targetGoalIds', [])}
+        state = {goal: {'goals': goal in goals, 'S': goal in seeds, 'L': goal in learning} for goal in IDS}
+        if any(s['goals'] for s in state.values()):
+            present.append(context['id'])
+            assert all(g in goals and g in seeds and g in learning for g in MATH_IDS)
+        if any(s['goals'] for s in state.values()) or context['id'].startswith('canonical:'):
+            rows.append({'id': context['id'], 'goalStates': state})
+    expected = ['DE-BY:G9:CrossStage:GK', 'DE-BY:G9:CrossStage:LK', 'DE-BY:G9:CrossStage:GK+LK'] if 'Combined' in label else []
+    assert present == expected
+    literals = {goal: raw.count(goal.encode()) for goal in IDS}
+    if 'SingleSubject' in label:
+        assert all(count == 0 for count in literals.values())
+    result['banks'][label] = {**pin(path), 'contextCount': len(bank['contexts']), 'presentContexts': present,
+                             'absentContextCount': len(bank['contexts']) - len(present),
+                             'rawExactIdLiteralCounts': literals, 'nationalAndTaskPresentContextRows': rows}
+helpers = [Path('tmp/physics-by-g9-current840-preparation-placement-20261115/ExportApiInputs.java'),
+           Path('tmp/physics-separated-subject-map-proof-20261115/ExportSubjectFocusInputs.java')]
+result['nativeHelperSources'] = [pin(path) for path in helpers]
+result['retainedSingleSubjectHelper'] = pin(P / 'ExportSubjectFocusInputs.java')
+assert sha(helpers[1]) == result['retainedSingleSubjectHelper']['sha256']
+result['interpretation'] = ('The task c2a and covered goal f06 are genuinely absent from the existing national combined and six native single-subject contexts, before and after. Raw single-subject JSON contains zero exact ID literals, so this is no parser/format error. Both goals occur in exported goals/S/L only in the three existing DE-BY G9 combined contexts. These three cases exercise the new demands; the other 69 combined contexts and twelve separate UI cases are unchanged-scope guards. All three required Mathematics atoms already belong to goals/S/L in those BY cases, before and after. No scope expansion or curriculum/projection edit was made. Original receipt and historical evidence remain unchanged.')
+print(json.dumps(result, ensure_ascii=False, indent=2))

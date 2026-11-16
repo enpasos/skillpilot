@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "physics-stage-flow-current-context3-20261115-v1-bbee4c52-4e95-5529-990f-706aa99316a3",
+  "goal": {
+    "goalId": "bbee4c52-4e95-5529-990f-706aa99316a3",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:e318637bf0f1eb11f347167b4ca4ea7e6c67ceeb6e5a124d4efbdb7369d9c8a8",
+    "pageFingerprint": "sha256:ca4daa7d22b69c75f62d44808e0a8d176e24b2e17108980364c8a1467b0869fe",
+    "goalReviewContextFingerprint": "sha256:1caa69ee69d49082f9a2d58bb17b9ad25e9c66cd68b9fd8403181f4f4fe5f1f7",
+    "finalText": {
+      "titleDe": "Elektrische Stromstärke als Ladungsrate deuten",
+      "titleEn": "Interpret electric current as a rate of charge transfer",
+      "descriptionDe": "Die lernende Person kann die mittlere elektrische Stromstärke als netto durch einen festgelegten Querschnitt transportierte Ladung pro Zeitintervall mit I = ΔQ/Δt deuten, Berechnungen durchführen und den Einheitenzusammenhang 1 A = 1 C/s erklären.",
+      "descriptionEn": "The learner can interpret average electric current as the net charge transported through a specified cross-section per time interval using I = ΔQ/Δt, perform calculations, and explain the unit relation 1 A = 1 C/s."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physics-three-current809-context-20261115-first-pass-a",
+      "campaignDigest": "sha256:e8b9bbb3c252188990050f9f3c2d0450554e0a76e10299430be5b7b0cd6c5cbf",
+      "roundId": "independent-a",
+      "independenceGroupId": "physics-three-current809-context-20261115-independent-a",
+      "reviewInputFingerprint": "sha256:cd6e9e929ded1506fb32754b8e8b1d501f4ff22accdddd22db37205c644df179",
+      "goalReviewContextFingerprint": "sha256:1caa69ee69d49082f9a2d58bb17b9ad25e9c66cd68b9fd8403181f4f4fe5f1f7",
+      "batchId": "independent-a.batch-001",
+      "runId": "physics-current3-blind-a-20261115",
+      "runManifestDigest": "sha256:73b1c833899dc34ab4a87f24f2c757f002329564b1db2d1d81174a56bb40f7c0",
+      "resultsDigest": "sha256:049928d37cb69d8402f8381ddf27fc76d184cf6eccc9e0170a477a0b95c05906",
+      "recordId": "physics-current3-blind-a-20261115.goal-002",
+      "recordDigest": "sha256:d57cd0ac9ffb4643a4164569fd9eeb642bcb4c01320947b3fae9c2a23233f18b"
+    },
+    "second": {
+      "campaignId": "physics-three-current809-context-20261115-first-pass-b",
+      "campaignDigest": "sha256:c41b051bab1924556e8f15a34d23e8c75089fcbc127a7357887e735ccbf0f102",
+      "roundId": "independent-b",
+      "independenceGroupId": "physics-three-current809-context-20261115-independent-b",
+      "reviewInputFingerprint": "sha256:cd6e9e929ded1506fb32754b8e8b1d501f4ff22accdddd22db37205c644df179",
+      "goalReviewContextFingerprint": "sha256:1caa69ee69d49082f9a2d58bb17b9ad25e9c66cd68b9fd8403181f4f4fe5f1f7",
+      "batchId": "independent-b.batch-001",
+      "runId": "physics-current3-blind-b-20261115-52b38f",
+      "runManifestDigest": "sha256:94c730b60b6e8a2036fee594fbee8b70cd3e96c56d9a0cf9c09d7e53edbce85b",
+      "resultsDigest": "sha256:c7c614e887aefb2efc2143d73baf6ba307fe694614f90061088538cb5e687cb4",
+      "recordId": "physics-current3-blind-b-20261115-52b38f.002",
+      "recordDigest": "sha256:f3440f27287afc28fd5c1c16556dafb00fc02594bd02e39d02bfef01845ec908"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:7e8c7aacdcfa000651b5a94ce380b9ae876b144e8a001d0ec5d8cac6d4ff4763"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "physics-stage-flow-current-context3-20261115-v1-actual-ai-synthesis",
+    "manifestDigest": "sha256:1ae8e008ae5729450f443c42c0e12ac92a2331411e8ecdd03f5de76ee91ef8e6",
+    "manifestFingerprint": "sha256:a6c05629a2ee05ee0638bc619d7d7b223a253e8718724ff2092f2d0e3af25d65",
+    "decisionId": "physics-stage-flow-current-context3-20261115-v1-actual-ai-synthesis-002"
+  },
+  "synthesis": {
+    "synthesisId": "physics-stage-flow-current-context3-20261115-v1-actual-ai-synthesis-002",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "codex-physics-release-agent-reading-actual-independent-A-B-current-context3-20261115",
+    "synthesizedAt": "2026-11-15T17:41:39.625007+00:00",
+    "rationaleDe": "Beide echten neuen unabhängigen Erstpässe bestätigen mittlere Nettoladung pro festgelegtem Querschnitt und Intervall, Bezugsvorzeichen und A=C/s. A konkretisiert Puls-/Pausenintervalle, B ergänzt unabhängig Rücktransport oder Pausen; beide bleiben innerhalb desselben Ratenkerns und des vollständigen unveränderten P. Die aktuellen Ladungsmodell-/Messwertraten-Prärequisiten sind im Kontext exakt gebunden. Auswahl der A-Evidenz ergänzt keine Momentanstrom-/Differentialrechnung und ist KI-Synthese, keine menschliche Freigabe, Schülerleistung oder eigenständige Quellen-/Projektionsabnahme.",
+    "rationaleEn": "Both actual fresh independent first passes confirm mean net charge through a specified cross-section and interval, reference signs and A=C/s. A specifies pulse/pause averaging; B independently adds return transfer or pauses. Both stay within the same rate competence and unchanged full P. The current charge-model and measured-rate prerequisites are exactly bound in context. Selecting A adds no instantaneous-current calculus and is AI synthesis, not human approval, learner performance, or separate source/projection acceptance.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Die mittlere Stromstärke bezeichnet die vorzeichenbehaftete Nettoladung, die einen gewählten Querschnitt innerhalb eines festgelegten Zeitintervalls passiert, geteilt durch dessen Dauer. Sie beschreibt weder die im Leiter gespeicherte Ladung noch ohne weitere Annahme den Strom zu jedem einzelnen Zeitpunkt. Bezugsrichtung und Intervall legen die Bedeutung des Ergebnisses fest; 1 A bedeutet 1 C/s.",
+      "essentialUnderstandingEn": "Average current is the signed net charge passing a chosen cross-section within a specified time interval divided by its duration. It describes neither charge stored in the conductor nor, without further assumptions, the current at every individual instant. The reference direction and interval determine the meaning of the result; 1 A means 1 C/s.",
+      "observablePerformanceDe": "Aus unabhängig vorgelegten Ladungs-Zeit-Angaben bestimmt die lernende Person die Nettoladungsänderung und die zugehörige Dauer für einen markierten Querschnitt, berechnet I = ΔQ/Δt mit passender Einheit und erklärt Vorzeichen sowie Zahlenwert als Ladungstransport pro Zeit. Sie begründet bei zwei Mittelungsintervallen, warum die Ergebnisse bei ungleichmäßigem Transport unterschiedlich sein können.",
+      "observablePerformanceEn": "From independently supplied charge-time information, the learner determines the net transferred charge and corresponding duration for a marked cross-section, calculates I = ΔQ/Δt with appropriate units, and explains the sign and value as charge transfer per time. For two averaging intervals, the learner explains why the results can differ when transfer is non-uniform.",
+      "transferExpectationDe": "Ein neuer Fall ersetzt gleichmäßigen Transport durch Pulse mit stromlosen Pausen bei gleicher Ladung pro Zyklus. Die lernende Person legt Puls- und Zyklusintervalle selbst passend fest, sagt deren unterschiedliche Mittelwerte voraus und begründet sie mit der einbezogenen Dauer. Wird die Bezugsrichtung umgekehrt, erklärt sie die Vorzeichenänderung bei unverändertem physikalischem Transport.",
+      "transferExpectationEn": "A fresh case replaces steady transfer with pulses separated by zero-current pauses while retaining the same charge per cycle. The learner selects appropriate pulse and cycle intervals, predicts their different average currents, and explains them using the included duration. If the reference direction is reversed, the learner explains the sign reversal while the physical transfer remains unchanged."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-0d8093bb65476c49f86ec286649e66cbb52c710f73e98ef005ba06dd87304587",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:d571dd4df664a323bb5b603a970adceb91c2f309f0175786fe865f5a162ace85"
+}
