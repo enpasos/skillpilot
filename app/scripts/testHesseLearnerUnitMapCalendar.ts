@@ -5,7 +5,7 @@ import type { CompositionView } from '../src/utils/authoring/compositionViewAuth
 import { applyCompositionViewProjection } from '../src/utils/compositionViewRuntime'
 import { collapseLearnerSubjectRoots, normalizeLearnerProjectedEntries } from '../src/utils/learnerTreeProjection'
 import { buildDirectChildrenMap } from '../src/utils/treeProjectionRuntime'
-import { buildLearnerUnitMapProjection } from '../src/components/learningUnitMap/learnerUnitMapProjection'
+import { buildLearnerUnitMapProjection, filterLearnerUnitMapToSubjects } from '../src/components/learningUnitMap/learnerUnitMapProjection'
 import { deriveLearnerUnitMapPreview, MATHEMATICS_LANDSCAPE_ID as math, PHYSICS_LANDSCAPE_ID as physics,
   type LearnerStagePlanMapContext, type LearnerUnitMapViewInput } from '../src/components/learningUnitMap/learnerUnitMapPreview'
 import { STAGE_PLAN_SCHEMA } from '../src/utils/stagePlan'
@@ -19,7 +19,7 @@ const section = (id: string, children: CompositionView['rootNodes']) => ({ kind:
 const entry = (goalId: string) => ({ kind: 'goalEntry' as const, goalId })
 const mathAtoms = [...[5, 6, 7, 8, 9, 10].map(year => goal(`m${year}`)),
   ...['E', 'Q2', 'Q3', 'abitur'].map(phase => goal(`m${phase}`))]
-const physicsAtoms = [...[7, 8, 10].map(year => goal(`p${year}`)), goal('pE', ['mQ2']),
+const physicsAtoms = [...[7, 8, 10].map(year => goal(`p${year}`, year === 7 ? ['p10'] : [])), goal('pE', ['mQ2']),
   ...['Q1', 'Q4', 'abitur'].map(phase => goal(`p${phase}`))]
 const landscape = (landscapeId: string, atoms: LearningGoal[]): SkillLandscape => ({ landscapeId,
   title: landscapeId === math ? 'Mathematik' : 'Physik', description: 'HE compatibility calendar fixture', locale: 'de',
@@ -94,6 +94,23 @@ for (const duration of ['G8', 'G9'] as const) for (const merged of [false, true]
     relation.source === q2 && relation.target === e && relation.backward
     && relation.provenance.some(cause => cause.dependentGoalId === 'pE' && cause.sourceGoalIds.includes('mQ2'))),
   'The genuine Physics-E need for Mathematics-Q2 stays a visible backward requirement after identity merging.')
+  const onlyPhysics = filterLearnerUnitMapToSubjects(fixture, new Set([physics]))
+  const physicsYears = (onlyPhysics.scopeRelations?.[onlyPhysics.unitEntryIds.sek1] ?? []).filter(relation => relation.unitOrder === 'declared')
+  assert.deepEqual(physicsYears.map(relation => [relation.source, relation.target]).sort(),
+    [[7, 8], [8, 10]].map(([earlier, later]) => [onlyPhysics.unitEntryIds[`${prefix}:year:${earlier}`],
+      onlyPhysics.unitEntryIds[`${prefix}:year:${later}`]]).sort(),
+  'The Physics filter closes 7 -> 8 -> 10 across the hidden Mathematics year 9 without a shortcut across retained year 8.')
+  assert(physicsYears.every(relation => relation.provenance.length === 0), 'Calendar contraction fabricates no requirement provenance.')
+  assert((onlyPhysics.scopeRelations?.[onlyPhysics.unitEntryIds.sek1] ?? []).some(relation => relation.backward
+    && relation.provenance.some(cause => cause.dependentGoalId === 'p7' && cause.sourceGoalIds.includes('p10'))),
+  'A genuine demand against the compressed calendar stays a visible backward edge.')
+  assert.deepEqual(onlyPhysics.entries.pE.requires, fixture.entries.pE.requires)
+  assert(onlyPhysics.scopeContext?.[onlyPhysics.unitEntryIds.sek2]?.[onlyPhysics.unitEntryIds[`${prefix}:phase:E`]]
+    ?.some(requirement => requirement.dependentGoalId === 'pE' && requirement.sourceGoalIds.includes('mQ2')),
+  'The hidden Mathematics requirement remains outside context instead of becoming calendar provenance.')
+  assert.deepEqual(filterLearnerUnitMapToSubjects(onlyPhysics, new Set([physics])), onlyPhysics, 'Repeated Physics filtering is idempotent.')
+  const allSubjects = filterLearnerUnitMapToSubjects(fixture, new Set([math, physics]))
+  assert.deepEqual(allSubjects.scopeRelations, fixture.scopeRelations, 'The full Mathematics calendar keeps its exact edges, without new shortcuts.')
   assert.deepEqual(fixture.findings.filter(finding => ['contradictoryAfter', 'afterNotSiblings', 'unitInTwoPlaces', 'nestedUnitKey'].includes(finding.kind)), [])
   assert.equal(JSON.stringify([...value.goalIndexAll]), snapshot, 'Compatibility identity never mutates goals or requires.')
   assert(![...preview.units.values()].some(unit => unit.key.startsWith('plan:')), 'Compatibility is not an activated v1.3 plan.')

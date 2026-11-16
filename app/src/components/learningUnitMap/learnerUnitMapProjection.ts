@@ -554,6 +554,51 @@ export function filterLearnerUnitMapToSubjects(fixture: LearnerUnitMapFixture, s
         ;(scopeRelations[scopeId] ??= []).push({ ...relation, provenance })
       }
     }
+    // Filtering out a sibling does not erase its calendar position. Contract
+    // only declared order paths on this board, stopping at the first retained
+    // unit on each path. Requirements never supply or inherit these edges.
+    const siblings = new Set(fixture.entries[scopeId]?.children ?? [])
+    const declared = new Map<string, Set<string>>()
+    for (const relation of relations) {
+      if (relation.unitOrder !== 'declared' || relation.backward
+        || !siblings.has(relation.source) || !siblings.has(relation.target)
+        || fixture.entries[relation.source]?.kind !== 'unit' || fixture.entries[relation.target]?.kind !== 'unit') continue
+      const next = declared.get(relation.source) ?? new Set<string>()
+      next.add(relation.target)
+      declared.set(relation.source, next)
+    }
+    const contracted = new Map<string, Set<string>>()
+    for (const source of siblings) {
+      if (!kept.has(source) || fixture.entries[source]?.kind !== 'unit') continue
+      const seen = new Set([source]), pending = [...declared.get(source) ?? []], targets = new Set<string>()
+      while (pending.length) {
+        const target = pending.pop()!
+        if (seen.has(target)) continue
+        seen.add(target)
+        if (kept.has(target)) targets.add(target)
+        else pending.push(...declared.get(target) ?? [])
+      }
+      contracted.set(source, targets)
+    }
+    const reachable = (source: string, target: string): boolean => {
+      const seen = new Set<string>(), pending = [source]
+      while (pending.length) {
+        const current = pending.pop()!
+        if (current === target) return true
+        if (seen.has(current)) continue
+        seen.add(current)
+        pending.push(...contracted.get(current) ?? [])
+      }
+      return false
+    }
+    for (const [source, targets] of contracted) for (const target of targets) {
+      if ([...targets].some(middle => middle !== target && reachable(middle, target))) continue
+      const output = scopeRelations[scopeId] ??= []
+      const existing = output.findIndex(relation => relation.source === source && relation.target === target)
+      if (existing >= 0) {
+        if (output[existing].unitOrder !== 'declared') output[existing] = { ...output[existing], unitOrder: 'declared' }
+      } else output.push({ source, target, kind: 'summary', provenance: [], unitOrder: 'declared' })
+    }
   }
   return { ...fixture, entries, entryPaths, scopeRelations, scopeContext,
     subjectIds: fixture.subjectIds.filter(subject => subjects.has(subject)),
