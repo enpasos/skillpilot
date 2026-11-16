@@ -15,6 +15,7 @@ const prerequisite = 'e7c363d4-e02d-4895-8750-ba62c2eb63fe'
 const orientation = 'a9c22adc-b543-5b0c-a2d8-3189facdff08'
 const foreignId = 'foreign-subject'
 const foreignGoalId = 'foreign-required'
+let overviewContainsSubject = true
 const projection = (rootLandscapeId: string, seedAtomicGoalIds: string[], targetGoalIds: string[], requiredByPaths = {}) => ({
   revision: 'atomic-prerequisite-learning-v1', rootLandscapeId, scopeRevision: 'same-personal-configuration',
   seedAtomicGoalIds, targetGoalIds, requiredByPaths,
@@ -23,7 +24,8 @@ const sourceGoal = chemistry.goals.find((goal) => goal.id === prerequisite)!
 const payload = (requestedRoot: string) => [
   ...(requestedRoot === rootId ? [{ landscapeId: rootId, locale: 'de', title: 'Gymnasium', frameworkId: 'canonical-gymnasium',
     personalCurriculumProjection: projection(requestedRoot, [], []),
-    goals: [{ ...chemistryRoot, id: 'full-plan-root', title: 'Gymnasium', contains: [chemistryRoot.id] }] }] : []),
+    goals: [{ ...chemistryRoot, id: 'full-plan-root', title: 'Gymnasium',
+      contains: overviewContainsSubject ? [chemistryRoot.id] : [] }] }] : []),
   { ...chemistry, personalCurriculumProjection: projection(requestedRoot, [target, orientation], [target, orientation, prerequisite],
     { [prerequisite]: [target, prerequisite] }) },
   { ...chemistry, landscapeId: foreignId, title: 'Fremdfach', personalCurriculumProjection: projection(requestedRoot, [], [foreignGoalId],
@@ -67,9 +69,9 @@ try {
   assert.equal(await tree.locator(`[data-goal-id="${foreignGoalId}"]`).count(), 1)
   const preparationRow = tree.locator(`[data-goal-id="personal-curriculum:${rootId}:preparation"]`)
   assert.equal(await preparationRow.locator('button[aria-pressed]').count(), 0)
-  // The full-plan overview lists its subjects without containing them, so the
-  // Cockpit shows the subject root. Targets the authored view places stay in
-  // their branch; only the unplaced ones are collected beside it.
+  // This response explicitly contains the subject beneath a full-plan root.
+  // Shared preparation belongs beside the subject under that displayed root;
+  // the subject's authored targets keep their own branch.
   const preparationBranch = preparationRow.locator('xpath=..')
   const branchGoalIds = async (branch: typeof preparationBranch) =>
     branch.locator('[data-goal-id]').evaluateAll((rows) => rows.map((row) => row.getAttribute('data-goal-id')))
@@ -81,10 +83,16 @@ try {
     assert.equal(subjectGoalIds.filter((goalId) => goalId === placedId).length, 1,
       'An authored target is shown once, in the branch of its subject.')
   }
-  assert(subjectGoalIds.includes(`personal-curriculum:${rootId}:preparation`),
-    'The preparation branch is shown beneath the subject root the Cockpit displays.')
-  assert.equal(await tree.locator('[data-goal-id="full-plan-root"]').count(), 0,
-    'An overview root without goals is not a row of the learner tree.')
+  const fullPlanRow = tree.locator('[data-goal-id="full-plan-root"]')
+  assert.equal(await fullPlanRow.count(), 1,
+    'An overview that explicitly contains its subject remains a visible full-plan root.')
+  const fullPlanGoalIds = await branchGoalIds(fullPlanRow.locator('xpath=..'))
+  for (const childId of [chemistryRoot.id, `personal-curriculum:${rootId}:preparation`]) {
+    assert.equal(fullPlanGoalIds.filter((goalId) => goalId === childId).length, 1,
+      'The full plan presents each subject and its shared preparation exactly once.')
+  }
+  assert(!subjectGoalIds.includes(`personal-curriculum:${rootId}:preparation`),
+    'Shared full-plan preparation is not incorrectly nested inside one subject.')
   await prerequisiteRow.locator('button[aria-pressed]').click()
   assert.equal(await page.getByTestId('focused-goal').innerText(), prerequisite)
   await prerequisiteRow.click()
@@ -101,9 +109,42 @@ try {
   assert.equal(await page.getByTestId('route').innerText(), foreignRoute,
     'Opening a required foreign atom retains the committed standalone curriculum root.')
   await tree.getByText('Fremde notwendige Grundlage', { exact: true }).waitFor()
+
+  // An overview without contains edges is a distinct valid API shape. Its
+  // displayed subject root must retain both authored targets and the otherwise
+  // unplaced own/foreign prerequisites; no invisible overview may own them.
+  overviewContainsSubject = false
+  await page.goto(`${server.baseUrl}/scripts/fixtures/learnerCoreStartupUi.html`)
+  const fallbackPreparation = tree.locator(`[data-goal-id="personal-curriculum:${rootId}:preparation"]`)
+  await fallbackPreparation.waitFor()
+  await page.waitForFunction(({ id, expected }) => {
+    const row = document.querySelector(`[data-goal-id="${id}"]`)
+    const ids = Array.from(row?.parentElement?.querySelectorAll('[data-goal-id]') ?? [])
+      .map((node) => node.getAttribute('data-goal-id'))
+    return expected.every((goalId) => ids.includes(goalId))
+  }, { id: `personal-curriculum:${rootId}:preparation`, expected: [foreignGoalId, prerequisite] })
+  const fallbackSubjectIds = await branchGoalIds(tree.locator(`[data-goal-id="${chemistryRoot.id}"]`).locator('xpath=..'))
+  for (const goalId of [target, orientation, `personal-curriculum:${rootId}:preparation`, prerequisite, foreignGoalId]) {
+    assert.equal(fallbackSubjectIds.filter((id) => id === goalId).length, 1,
+      'With an empty overview every required atom and preparation has one visible subject-root path.')
+  }
+  assert.deepEqual((await branchGoalIds(fallbackPreparation.locator('xpath=..'))).slice(1).sort(),
+    [foreignGoalId, prerequisite].sort(), 'Fallback preparation contains exactly the unplaced required atoms.')
+  assert.equal(await fallbackPreparation.locator('button[aria-pressed]').count(), 0,
+    'Fallback presentation aggregates cannot create a backend focus.')
+  assert.equal(await tree.locator('[data-goal-id="full-plan-root"]').count(), 0,
+    'An overview without target-bearing children is not a visible learner row.')
+  const fallbackPrerequisiteRow = tree.locator(`[data-goal-id="${prerequisite}"]`)
+  await fallbackPrerequisiteRow.locator('button[aria-pressed]').click()
+  assert.equal(await page.getByTestId('focused-goal').innerText(), prerequisite,
+    'The fallback canonical prerequisite retains its real focus action.')
+  await fallbackPrerequisiteRow.click()
+  await fallbackPreparation.click()
+  assert.equal(await page.getByTestId('selected-goal').innerText(), prerequisite,
+    'Clicking fallback preparation cannot select an invented backend goal.')
   assert.deepEqual(publicReads, [], 'Standalone authenticated subjects also use the authoritative learner response.')
   assert.deepEqual(errors, [])
-  console.log('Personal Curriculum browser tree: Chemistry support target, foreign filters, navigation and standalone scope passed.')
+  console.log('Personal Curriculum browser tree: explicit/empty overview, own/foreign preparation, focus and standalone navigation passed.')
 } finally {
   await browser.close()
   await server.close()

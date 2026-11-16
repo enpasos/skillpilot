@@ -23,6 +23,19 @@ type SourceBinding = {
 type SourceReceipt = { bindings: SourceBinding[] }
 type SourceMapping = { decisions: Decision[]; mappings: Mapping[] }
 type SourceExtraction = { sourceGoals: SourceGoal[] }
+type K3Packet = {
+  mappingPath: string
+  sourcePath: string
+  sourceSha256: string
+  records: {
+    sourceGoalId: string
+    beforeDecision: Decision
+    currentDecision: Decision
+    retainedSourceGoal: SourceGoal
+    contentDecision: string
+  }[]
+}
+
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
 const read = (path: string) => readFileSync(resolve(root, path), 'utf8')
@@ -34,9 +47,44 @@ assert.deepEqual(functionalDiodeReceipt.previousAfterDecision, experimentReceipt
   'the actual source-coverage correction retains its prior source decision')
 const currentBindings = new Map([...originalReceipt.bindings, ...experimentReceipt.bindings, ...functionalDiodeReceipt.bindings]
   .map(binding => [`${binding.mappingPath}:${binding.sourceGoal.id}`, binding]))
+// Preserve the historical K1 receipts. Exactly one clause has a later,
+// independently reviewed K3 component; its current target is not an old K1 claim.
+const amplifierConfig = readJson<{
+  reviewedAt: string; reviewer: string; sourceDecisionEvidencePath: string; mappingActivationEvidencePath: string
+  overrides: {sourceGoalId: string; removeGoalIds: string[]; addGoalIds: string[]; rationale: string}[]
+}>('app/scripts/config/physics-k3-amplifier-mapping-overrides.json')
+const k3Packet = readJson<K3Packet>(amplifierConfig.sourceDecisionEvidencePath)
+const amplifierSourceId = 'a4461a25-8e68-5f80-ab23-0c3f61af59db'
+const ownAmplifier = 'd8b2b349-b83a-5225-a180-1afe205750cd'
+const amplifierAssessment = 'c19d58dc-2c6e-53a9-8c74-991b55e6f2d0'
+const k3 = k3Packet.records.find(row => row.sourceGoalId === amplifierSourceId)
+assert(k3, 'the exact retained K3 source packet is required')
+assert.equal(k3.contentDecision, 'ACCEPT_MAPPING_FIT_WITH_STATED_PARTIAL_AND_PROFILE_BOUNDARIES')
+const k1 = functionalDiodeReceipt.bindings[0]
+assert.deepEqual(k3.beforeDecision, k1.afterDecision, 'K3 must retain the actual preceding K1 decision')
+assert.deepEqual(k3.retainedSourceGoal, k1.sourceGoal, 'K3 uses the same retained source clause')
+assert.equal(k3Packet.mappingPath, k1.mappingPath)
+assert.equal(k3Packet.sourcePath, k1.sourceExtractionPath)
+assert.equal(k3Packet.sourceSha256, `sha256:${k1.sourceExtractionSha256}`)
+assert.deepEqual(k3.currentDecision.canonicalGoalIds, [...k1.afterDecision.canonicalGoalIds, ownAmplifier],
+  'only the distinct personally performed amplifier component is added')
+assert.equal(amplifierConfig.reviewedAt, k3.currentDecision.reviewedAt)
+assert.equal(amplifierConfig.reviewer, 'K3/K6 author; independently reviewed by codex-root on 2026-11-15')
+assert.deepEqual(amplifierConfig.overrides, [{
+  sourceGoalId: amplifierSourceId, removeGoalIds: [], addGoalIds: [ownAmplifier], rationale: k3.currentDecision.rationale,
+}])
+const k3Rows = readJson<{changes: {sourceGoalId: string; currentRows: Mapping[]}[]}>(amplifierConfig.mappingActivationEvidencePath)
+  .changes.find(row => row.sourceGoalId === amplifierSourceId)
+assert(k3Rows, 'the actual K3 activation must bind the exact mapping rows')
+const currentAmplifierDecision = {...k3.currentDecision, reviewer: amplifierConfig.reviewer}
+currentBindings.set(`${k1.mappingPath}:${amplifierSourceId}`, {...k1, afterDecision: currentAmplifierDecision})
 const receipt = {bindings: [...currentBindings.values()]}
 const canonical = JSON.parse(read('curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json'))
 const known = new Set(canonical.goals.map((goal: {id: string}) => goal.id))
+const amplifierTask = canonical.goals.find((goal: {id: string}) => goal.id === amplifierAssessment)
+assert.deepEqual(amplifierTask?.requires, [ownAmplifier], 'the amplifier task requires the distinct own-experiment skill')
+assert.deepEqual(amplifierTask?.examData.coveredGoalIds, [ownAmplifier], 'coverage belongs to that skill, not paper interpretation')
+assert.equal(amplifierTask?.examData.reviewStatus, 'released')
 const byPath = new Map<string, SourceMapping>()
 const sourceByPath = new Map<string, SourceExtraction>()
 for (const binding of receipt.bindings) {
@@ -56,7 +104,14 @@ for (const binding of receipt.bindings) {
     legacyGoalId: binding.sourceGoal.id, canonicalGoalId, matchType: 'partial', reviewDecisionId: binding.sourceGoal.id,
   }))
   applyPhysicsFinalDiodeMappings(replay, primitive)
-  assert.deepEqual(replay[0], binding.afterDecision, 'source generator overlay must reproduce the exact current decision')
+  assert.deepEqual(replay[0], binding.afterDecision, 'cold source overlay must reproduce the exact reviewed successor')
+  const once = structuredClone({replay, primitive})
+  applyPhysicsFinalDiodeMappings(replay, primitive)
+  assert.deepEqual({replay, primitive}, once, 'source overlay must be idempotent, including primitive rows and review metadata')
+  if (binding.sourceGoal.id === amplifierSourceId) {
+    assert.deepEqual(primitive, k3Rows.currentRows, 'K3 primitive rows must equal the actual bounded activation')
+    assert.deepEqual(mapping.mappings.filter(row => row.legacyGoalId === amplifierSourceId), k3Rows.currentRows)
+  }
   assert.deepEqual(primitive.map(row => row.canonicalGoalId).sort(), [...current.canonicalGoalIds].sort())
   assert.deepEqual(mapping.mappings.filter(row => row.legacyGoalId === binding.sourceGoal.id)
     .map(row => row.canonicalGoalId).sort(), [...current.canonicalGoalIds].sort())
@@ -64,6 +119,13 @@ for (const binding of receipt.bindings) {
   assert(!current.canonicalGoalIds.includes('df010b2b-b182-5f7e-bbe4-49b72e48c27a'), 'a repaired lower-stage clause must not assert advanced bands')
   assert(!current.canonicalGoalIds.includes('620d4320-6b93-500b-8a62-86d02b1ed1f0'), 'a repaired clause must not silently import all solid-state descendants')
 }
+const priorK1 = [structuredClone(k3.beforeDecision)]
+const priorRows = k3.beforeDecision.canonicalGoalIds.map(canonicalGoalId => ({
+  legacyGoalId: amplifierSourceId, canonicalGoalId, matchType: 'partial', reviewDecisionId: amplifierSourceId,
+}))
+applyPhysicsFinalDiodeMappings(priorK1, priorRows)
+assert.deepEqual(priorK1, [currentAmplifierDecision], 'a cold K1 input must acquire the exact reviewed K3 successor')
+assert.deepEqual(priorRows, k3Rows.currentRows)
 // The exact own-experiment clause must no longer certify only a paper interpretation.
 const experimentBinding = experimentReceipt.bindings[0]
 assert.equal(experimentBinding.sourceGoal.id, 'a4461a25-8e68-5f80-ab23-0c3f61af59db')
@@ -110,6 +172,25 @@ for (const path of viewPaths) {
   const expectedExperiment = (!current.scope.jurisdiction || ['DE', 'DE-BY'].includes(current.scope.jurisdiction)) && current.scope.stage !== 'SekII'
   assert.equal(experimentPaths.length, expectedExperiment ? 2 : 0, `${path}: personal experiment has an exact lower BY/national source scope`)
   assert(experimentPaths.every(path => path.includes('physics-semiconductor-seki')))
+  const amplifierPaths: {goalId: string; ancestors: string[]}[] = []
+  const findAmplifier = (nodes: PhysicsPlacementNode[], ancestors: string[] = []) => nodes.forEach(node => {
+    if (node.goalId === ownAmplifier || node.goalId === amplifierAssessment) {
+      assert.equal(node.kind, 'goalEntry', path)
+      assert.equal(node.projectionRole, 'target', path)
+      amplifierPaths.push({goalId: node.goalId, ancestors})
+    }
+    findAmplifier(node.children ?? [], [...ancestors, ...(node.id ? [node.id] : [])])
+  })
+  findAmplifier(current.rootNodes)
+  // The atlas is book navigation, not a learner acquisition route: it includes
+  // the ordinary amplifier goal, while the new task is on the five real views.
+  const bookNavigation = path === 'app/scripts/config/goal-books/navigation/de-gym-physics-national-atlas.view.json'
+  const expectedAmplifierIds = expectedExperiment ? (bookNavigation ? [ownAmplifier] : [ownAmplifier, amplifierAssessment]) : []
+  assert.deepEqual(amplifierPaths.map(row => row.goalId).sort(), expectedAmplifierIds.sort(),
+    `${path}: the actual acquisition route and the separate book navigation retain their exact source scope`)
+  if (expectedExperiment) {
+    assert(amplifierPaths.find(row => row.goalId === ownAmplifier)?.ancestors.includes('physics-semiconductor-seki'), path)
+  }
   const draft = structuredClone(current)
   const strip = (nodes: PhysicsPlacementNode[]): PhysicsPlacementNode[] => nodes.filter(node => !diodeOwnedIds.has(node.goalId ?? ''))
     .map(node => node.children ? {...node, children: strip(node.children)} : node)

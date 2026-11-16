@@ -23,7 +23,7 @@ CI-Nachweis gilt weiterhin für den benannten Implementierungscommit.
 
 ## Gesamtstand
 
-**Stand: 16. November 2026, 06:35 MEZ (UTC+01:00).**
+**Stand: 16. November 2026, 08:16 MEZ (UTC+01:00).**
 
 **Fortschritt: K 0/13 und F 0/7 vollständig abgeschlossen · 0 reale Landespläne
 aktiviert · kanonische oberste Lernkarte lokal: 0 Rückpfeile und 0 außenstehende
@@ -111,6 +111,18 @@ Quellenprüfung mit 25 Regressionstests. Die erfolgreichen Vorstufen belegen nic
 Erfolg dieser Fach-/Integrationsjobs. Merge und frische Main-CI fehlen.
 Keine Deploymentreife behauptet.
 
+**Aktueller Nachlauf:** Der Lauf für `b81b585d0` endet mit **elf erfolgreichen
+und drei fehlgeschlagenen Jobs**. Der vorliegende Nachtrag behebt die drei
+Fehlerstellen und vier weitere Befunde aus den zuvor nicht erreichten lokalen
+Workflow-Schritten: veraltete erzeugte Berichte, widersprüchliche Browser-Testdaten,
+alte Physik-Testannahmen und den Verlust der aktuellen Transistorzuordnung bei
+kalter Quellengenerierung. Der echte bayerische Generator reproduziert nun genau
+die bereits dokumentierte Ergänzung; andere Quellenzuordnungen bleiben gleich.
+Alle betroffenen Normaltests und der vollständige Qualitätslauf bestehen lokal;
+Mathematik/Physik bleiben M7, alle 21 Katalog- und zwölf Routen-Mindeststände
+bleiben erhalten. Die frische Remote-CI dieses Nachtrags sowie Merge und Main-CI
+stehen noch aus. Dies ist kein weiteres abgeschlossenes K-/F-Paket.
+
 **Messgrenze:** Bei identischem aktuellem Code zeigt das Main-Curriculum oben
 jeweils einen Rückpfeil mit 43 atomaren Ursachen gegenüber null im Kandidaten;
 außen stehen 3 / 0 / 0 gegenüber 0 / 0 / 0 Zielen. Die historischen Main-UI-
@@ -195,24 +207,22 @@ hat sie bisher nur teilweise zurückgenommen. Die fachliche Korrektur samt
 geeigneten Erwerbsnachweisen bleibt offen. Der reparierte technische
 Kursplan-Test beweist weder Versuchskompetenz noch die Güte dieser Aufgabe.
 
-## 16. November 2026, 06:35 MEZ — Reviewbefunde und gebündelte CI-Korrekturen
+## 16. November 2026, 08:16 MEZ — Reviewbefunde und gebündelte CI-Korrekturen
 
 **Stand: [PR #159](https://github.com/enpasos/skillpilot/pull/159) bleibt offen.
-Der Nachtrag `b5d770e58b` ist gepusht. Der neue Buchbau ist erfolgreich;
-der Lauf ist mit zehn erfolgreichen und vier fehlgeschlagenen Jobs beendet.
-Dieser Nachtrag bündelt die vier lokal geprüften Reparaturen, die korrigierte
-innere Reihenfolge und die abgesicherte Diagnose-/Abschlusslogik. Die frische
-CI dieses Nachtrags steht aus.
-Paketbau, Paketvalidierung, Installation sowie der frische Anwendungstest
-mit 15/15 Funktionschecks, Browser und Isolation bestehen.
-Die PR-CI ist nicht bestanden; Merge und frische Main-CI fehlen.**
+Der letzte Lauf für `b81b585d0` endet mit elf erfolgreichen und drei
+fehlgeschlagenen Jobs. Dieser Nachtrag behebt diese drei Fehler und vier
+zusätzliche Befunde aus dem lokalen Nachlauf. Alle betroffenen Normaltests,
+Anwendungs-/Paketbuilds und der vollständige Qualitätslauf bestehen lokal.
+Frische PR-CI, Merge und Main-CI fehlen; frühere Paket- und Browsernachweise
+behalten ihren jeweils gebundenen Implementierungsstand.**
 
 - **Fortschritt:** K 0/13, F 0/7 abgeschlossen, 0 reale Landespläne aktiviert.
   Kanonisch oben: 0 Rückpfeile und 0 freistehende eigene Fachziele, auch in den
   zwölf getrennten Fachkartenfällen. Regional bleiben 39/57 Fälle mit obersten
   Rückgriffen; 35/60 zulässige Gesamtkontexte haben Außenatome. Der gepushte Stand
-  hat innen 11/12/12 Pfeile; die lokale Reihenfolgekorrektur erreicht frisch
-  gemessen wieder 8/9/9. Diese verbleibenden Pfeile bleiben eine Restaufgabe.
+  `b81b585d0` erreicht innen frisch gemessen wieder 8/9/9 Pfeile
+  statt 11/12/12 am vorherigen Kopf. Diese verbleibenden Pfeile bleiben eine Restaufgabe.
 - **Ergebnis:** Skalar- und Vektorprodukt liegen gültig in Sek II; frühe
   Messgrundlagen und notwendige Fremdfachvorbereitung bleiben erreichbar.
   Gegenüber main enthält das Paket 57 neue Physik- und 44 Mathematikaufgaben.
@@ -236,8 +246,19 @@ Die PR-CI ist nicht bestanden; Merge und frische Main-CI fehlen.**
   Datenroute; historische Runner und sämtliche Schutzprüfungen bleiben erhalten.
   Die Deployment-Abfrage bei unverändertem GitHub-Stand ist bereits seit
   #157 auf main; sie ist keine neue Lieferung von #159.
+  Der jüngste Nachlauf aktualisiert sieben öffentliche Physikbeschreibungen
+  und den erzeugten Bildstatusbericht. Der Browser-Test prüft beide gültigen
+  Übersichtsformen mit ihren Vorbereitungszweigen; die Produktionsnavigation
+  bleibt dabei unverändert. Bildabdeckung wird weiterhin getrennt von einer
+  inhaltlichen Bildfreigabe ausgewiesen.
+  Zwei weitere Statusberichte werden ausschließlich mit aktuellen Messwerten
+  abgeglichen; 53 fehlende öffentliche Mathematik-Quellenbegründungen bleiben
+  sichtbar. Die Physik-Tests sichern die aktuellen Erwerbsrouten statt alter
+  zurückgenommener Aufgaben. Ein genau begrenzter Generator-Nachtrag erhält
+  die bereits dokumentierte Transistor-Versuchszuordnung auch bei Neuerzeugung;
+  die historischen K1-Belege und alle übrigen Zuordnungen bleiben unverändert.
 - **Drei Kontrollstellen:** [Frische Kartenwirkung und Nachweise des Nachtrags](https://github.com/enpasos/skillpilot/blob/fix/stage-plan-next-delivery-20261115/contracts/stage-plan-review-evidence/2026-11-16/external-review-followup-v1/README.md),
-  [aktuelle unabhängige K8-Nachprüfung](https://github.com/enpasos/skillpilot/blob/fix/stage-plan-next-delivery-20261115/contracts/stage-plan-review-evidence/2026-11-16/k8-current-delta-independent-v1/README.md),
+  [neue Daten- und Browserkorrekturen mit unabhängigen Reviews](https://github.com/enpasos/skillpilot/blob/fix/stage-plan-next-delivery-20261115/contracts/stage-plan-review-evidence/2026-11-16/ci-metadata-and-browser-followup-v1/README.md),
   [Gesamtauftrag mit Zielzustand und offenen Befunden](stage-plan-units-handover-2026-11-15.md).
 - **Nachweise:** Lokal bestehen 354 Ansichtskontrollen, alle 21 Katalog- und
   zwölf Routen-Mindeststände (Mathematik/Physik M7), Schema- und JSON-Kontrollen
@@ -250,15 +271,19 @@ Die PR-CI ist nicht bestanden; Merge und frische Main-CI fehlen.**
   Der [tatsächliche Paketnachweis](https://github.com/enpasos/skillpilot/blob/fix/stage-plan-next-delivery-20261115/contracts/stage-plan-review-evidence/2026-11-16/package-assessment-materials-pipeline-v1/README.md)
   bindet die reproduzierbare ZIP-Datei und den frischen vollständigen Anwendungstest;
   frühere Fehlversuche bleiben getrennt erhalten. Der vorherige Remote-Lauf
-  hatte acht erfolgreiche und sechs fehlgeschlagene Jobs. Im aktuellen Lauf
-  endet die vollständige CI mit zehn erfolgreichen und vier fehlgeschlagenen
-  Jobs. Die lokale Nachprüfung aller vier Reparaturen besteht. Automatisierte Checks und Agentenreviews
-  belegen keine Unterrichtswirkung und ersetzen keine frische Main-CI.
-- **Nächster Schritt:** Die gebündelten, geprüften Änderungen in #159
-  aktualisieren und die neue vollständige CI abwarten.
-  Die begrenzte K8-Nachprüfung und der frische Kartenlauf liegen lokal vor. Danach vollständige
-  PR-CI, Integration und frische Main-CI; weitere Fachpakete und reale Pläne
-  bleiben Teil des unverkleinerten Gesamtauftrags.
+  hatte acht erfolgreiche und sechs fehlgeschlagene Jobs. Der anschließende
+  Lauf endete mit zehn erfolgreichen und vier fehlgeschlagenen Jobs. Dessen
+  vier Reparaturen bestehen im anschließenden Lauf mit elf erfolgreichen und
+  drei fehlgeschlagenen Jobs. Dessen drei Fehlerstellen und die vier zusätzlichen
+  lokalen Befunde sind nun korrigiert und mit Originalfehlern, normalen Nachtests
+  und unabhängigen Reviews dokumentiert. Der vollständige lokale Nachlauf
+  bestätigt alle 21 Katalog- und zwölf Routen-Mindeststände. Automatisierte
+  Checks und Agentenreviews belegen keine Unterrichtswirkung und ersetzen keine
+  frische Main-CI.
+- **Nächster Schritt:** Diesen gemeinsamen Nachtrag auf #159 pushen, seine
+  vollständige CI abwarten, danach integrieren und die frische Main-CI prüfen.
+  Reale HE-Pläne und weitere Fachreparaturen bleiben im getrennten nächsten
+  Umsetzungspaket Teil des unverkleinerten Gesamtauftrags.
 
 ## 15. November 2026, 22:51 MEZ — Zielnorm und Bestandsaufnahme abgeglichen
 

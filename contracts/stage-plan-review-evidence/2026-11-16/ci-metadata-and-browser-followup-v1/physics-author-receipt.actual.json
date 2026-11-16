@@ -1,0 +1,86 @@
+{
+  "completedAtUtc": "2026-11-16T07:13:01.075846+00:00",
+  "author": "/root/physics_release_finish",
+  "scope": "Two genuine downstream failures; existing curriculum and source decisions preserved. No Git mutation, broad QA or app/publication build by this agent.",
+  "changedFiles": [
+    {
+      "path": "scripts/check_physics_source_method_routes.test.ts",
+      "sha256": "344aba9dfad3d1696ff6f02b373f738f6aa113fcd64dcd7d6e34729475d20b3a"
+    },
+    {
+      "path": "app/scripts/testPhysicsSemiconductorSourceRepair.ts",
+      "sha256": "6f6f9a6818431d11454b4aebc32a9fbd7ca6a5110ea0bafff1f6f2ca8d3a5c0a"
+    },
+    {
+      "path": "app/scripts/physicsFinalDiodeMappings.ts",
+      "sha256": "280411d6500da5deb96cda78f7433a25b9274dfe87923abca2a39c9becb5f02e"
+    },
+    {
+      "path": "app/scripts/config/physics-k3-amplifier-mapping-overrides.json",
+      "sha256": "c98bfe120e966a4ef00f50cd4965f2c3756fe598e18ff20118e747cb08805d39"
+    }
+  ],
+  "commands": [
+    {
+      "command": "npm --prefix app run test:physics-source-method-routes",
+      "log": "methods-after.actual.log",
+      "exitCode": 0,
+      "logSha256": "b2bdf59071bcec892402f9928237a381bc8f973009ba3bc51f1b1633a37c6257"
+    },
+    {
+      "command": "npm --prefix app run test:physics-semiconductor-source-repair",
+      "log": "semiconductor-after.actual.log",
+      "exitCode": 0,
+      "logSha256": "5e14b25eb7724c69a0b3f3a54153af2fe5060ead62ffdd419920ea91ebda53d7"
+    },
+    {
+      "command": "./node_modules/.bin/eslint scripts/physicsFinalDiodeMappings.ts scripts/testPhysicsSemiconductorSourceRepair.ts",
+      "log": "eslint-after.actual.log",
+      "exitCode": 0,
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": "./app/node_modules/.bin/eslint --config app/eslint.config.js scripts/check_physics_source_method_routes.test.ts",
+      "log": "eslint-methods-after.actual.log",
+      "exitCode": 0,
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": "./node_modules/.bin/tsc --noEmit --strict --target ES2023 --module ESNext --moduleResolution bundler --resolveJsonModule --esModuleInterop --skipLibCheck --types node scripts/physicsFinalDiodeMappings.ts scripts/testPhysicsSemiconductorSourceRepair.ts",
+      "log": "targeted-typecheck.actual.log",
+      "exitCode": 0,
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": "git diff --check -- <four owned paths>",
+      "log": "diff-check.actual.log",
+      "exitCode": 0,
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "nativeResults": {
+    "methodTests": 6,
+    "methodPass": 6,
+    "atlasViewsCompiledWithAll21Roots": 64,
+    "sourceClauses": 33,
+    "mappingFiles": 4,
+    "retainedSourceInputs": 4,
+    "viewAndBookPaths": 70,
+    "realAmplifierAcquisitionViews": 5,
+    "bookNavigationIsNotAcquisitionRoute": true
+  },
+  "coldGeneratorProof": "cold-generator-delta.actual.json",
+  "immutableInputCheck": {
+    "fileCount": 316,
+    "drift": []
+  },
+  "historicalReceiptsRebound": false,
+  "newSourceClaimOrReviewAuthorship": false,
+  "temporaryIntermediateFailures": [
+    "semiconductor-implementation-typo.actual.log",
+    "semiconductor-book-scope-countercase.actual.log",
+    "methods-retired-task-countercase.actual.log"
+  ],
+  "preReproductionNote": "The attempted filtered own pre-run actually executed all six method tests (4 failed, 2 passed); its log and the root initial logs are retained as actual failures, not a selective-pass claim.",
+  "remoteCIStatus": "Not re-run by this agent. Parent integrates and runs fresh CI."
+}
