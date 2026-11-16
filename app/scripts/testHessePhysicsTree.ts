@@ -238,8 +238,25 @@ for (const profile of ['GK', 'LK'] as const) {
   }
   assert.deepEqual(stage.children.filter((node) => node.kind === 'structure').map((node) => node.id),
     ['physics-e-phase', 'physics-q1', 'physics-q2', 'physics-q3', 'physics-q4',
-      'physics-methods-k3-upper-preparation-assessments'],
-    'Keep the reviewed E/Q order and the explicit upper-stage preparation tasks; no official phase is invented for them.')
+      'physics-he-abitur'],
+    'Keep the reviewed E/Q order and the separate exam unit; preparation is nested in the introductory phase.')
+  assert(structure(view, 'physics-e-phase').children.includes(
+    structure(view, 'physics-methods-k3-upper-preparation-assessments')),
+  'The existing preparation and assessment branch must remain available in the introductory phase.')
+  const exam = structure(view, 'physics-he-abitur')
+  assert.equal(exam.label, 'Abiturprüfung')
+  const canonicalGoals = new Map(canonicalPhysics.goals.map((goal) => [goal.id, goal]))
+  const expectedExamParts = canonicalGoals.get(examIds[profile])!.contains
+  assert(expectedExamParts.length > 0, `${profile}: the canonical exam must supply actual parts.`)
+  assert.deepEqual(exam.children.map((node) => node.kind === 'canonicalSubtree' ? node.goalId : null).sort(),
+    [...expectedExamParts].sort(), 'The exam unit must list precisely the selected course exam parts.')
+  const examResolution = resolveAtomicGoalDescendants(examIds[profile], canonicalGoals)
+  assert.equal(examResolution.quality.status, 'complete', `${profile}: the complete canonical exam must resolve.`)
+  const expectedExamAtoms = examResolution.atomicGoalIds
+  assert(expectedExamAtoms.length > 0, `${profile}: the exam unit must contain assessable goals.`)
+  const examRoles = collectCompositionProjectionRoleGoalIds(exam.children, canonicalGoals)
+  assert.deepEqual([...examRoles.targetGoalIds].filter((id) => canonicalGoals.get(id)?.type === 'atomic').sort(),
+    [...expectedExamAtoms].sort(), 'Opening the exam root must preserve every selected course exam atom.')
 
   for (const [childId, parentId] of destinations) {
     assert(structure(view, parentId).children.includes(structure(view, childId)),
@@ -249,6 +266,7 @@ for (const profile of ['GK', 'LK'] as const) {
   assert.equal(structure(view, 'physics-final-diode-sekii').labelEn, 'Diodes')
   const exercises = structure(view, 'physics-b034-assessments')
   assert.equal(exercises.label, 'Übungen Q4')
+  assert.equal(exercises.labelEn, 'Q4 Practice')
 
   const projected = project(view)
   const goalById = new Map(projected.goals.map((goal) => [goal.id, goal]))
@@ -281,8 +299,14 @@ for (const profile of ['GK', 'LK'] as const) {
     'Actual learner projection must expose a stage, not Physik -> Physik or supplements at root level.')
   const visibleIds = reachableIds(projected)
   assert.equal(goalById.get(examIds[profile])?.title, `Abiturprüfung Physik (${profile})`)
-  assert(visibleIds.has(examIds[profile]))
+  assert(!visibleIds.has(examIds[profile]), 'The exam unit lists parts instead of repeating its canonical root.')
+  for (const id of [...expectedExamParts, ...expectedExamAtoms]) {
+    assert(visibleIds.has(id), `${profile}: the selected exam part ${id} must remain visible.`)
+  }
   assert(!visibleIds.has(examIds[profile === 'GK' ? 'LK' : 'GK']))
+  for (const id of resolveAtomicGoalDescendants(examIds[profile === 'GK' ? 'LK' : 'GK'], canonicalGoals).atomicGoalIds) {
+    if (!expectedExamAtoms.includes(id)) assert(!visibleIds.has(id), `${profile}: the other course exam atom ${id} must stay outside the view.`)
+  }
   assert(![...visibleIds].some((id) => /belegte Quellenanteile|Source-Supported Components/.test(goalById.get(id)?.title ?? '')))
 
   // Recreate the reported authoring error to verify repair rather than merely
@@ -323,8 +347,11 @@ for (const profile of ['GK', 'LK'] as const) {
     if (taskId === '85bbad98-2f48-5d64-85c4-ab6cf67f24c2') task.displayLabel = 'Übungen'
     structure(regressed, 'physics-q4').children.push(task)
   }
-  const oldExam = flatten(regressed.rootNodes).find((node) => node.kind !== 'structure' && node.goalId === examIds[profile])
-  assert(oldExam && oldExam.kind !== 'structure')
+  // Reconstruct the legacy exam-root reference as well as its wrong label.
+  // The committed exam now lists its parts, but the repair's legacy-label
+  // regression must still run against an actual canonical exam reference.
+  const oldExam: CompositionViewNode = { kind: 'canonicalSubtree', goalId: examIds[profile] }
+  structure(regressed, 'physics-he-abitur').children = [oldExam]
   oldExam.displayLabel = 'Abiturprüfung Physik'
   const rolesBeforeRepair = referenceRoles(regressed)
   const beforeProjection = project(regressed)
@@ -348,6 +375,9 @@ for (const profile of ['GK', 'LK'] as const) {
       `Generator replay must restore assessment ${taskId} into Q4 exercises.`)
   }
   assert.equal(structure(regressed, 'physics-root').label, stage.label)
+  assert.equal(structure(regressed, 'physics-root').labelEn, 'Upper Secondary')
+  assert.equal(structure(regressed, 'physics-final-diode-sekii').labelEn, 'Diodes')
+  assert.equal(repairedExercises.labelEn, 'Q4 Practice')
   assert.equal(project(regressed).goals.find((goal) => goal.id === examIds[profile])?.title, `Abiturprüfung Physik (${profile})`)
   assert.deepEqual(repairHessePhysicsTree(structuredClone(regressed)), regressed, 'Repeated generator repair must be idempotent.')
   assert.deepEqual(repairHessePhysicsTree(structuredClone(view)), view, 'Committed views must already have the corrected shape.')
@@ -357,6 +387,11 @@ for (const profile of ['GK', 'LK'] as const) {
   // Keep the supplement but remove its reviewed destination: never invent a new placement.
   missingDestination.rootNodes.push(structuredClone(structure(view, 'physics-b034-transistor')))
   assert.throws(() => repairHessePhysicsTree(missingDestination), /Missing reviewed HE Physics structure/)
+  const missingExercises = structuredClone(view)
+  assert(removeNode(missingExercises.rootNodes, structure(missingExercises, 'physics-b034-assessments')))
+  structure(missingExercises, 'physics-final-diode-sekii').children.push({ kind: 'goalEntry', goalId: diodeTaskIds[0] })
+  assert.throws(() => repairHessePhysicsTree(missingExercises), /Missing reviewed HE Physics Q4 exercise destination/,
+    'Misplaced diode assessments must fail closed when their Q4 destination is missing.')
   const duplicateStage = structuredClone(view)
   duplicateStage.rootNodes.push(structuredClone(structure(view, 'physics-root')))
   assert.throws(() => repairHessePhysicsTree(duplicateStage), /Duplicate HE Physics structure/)

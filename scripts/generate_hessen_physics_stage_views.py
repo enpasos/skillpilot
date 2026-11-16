@@ -54,6 +54,31 @@ def structure(identifier, label, children):
 def generate(view):
     result = copy.deepcopy(view)
     before = role_atoms(view)
+    # Opening Gravitation must retain its three reviewed GK scope exclusions,
+    # including their authored reference kinds, once each. In particular, a
+    # same-distance target reference must not expose the LK worldview container.
+    if view["scope"]["courseProfile"] == "GK":
+        exclusions = {
+            "16caf92e-2800-57d1-946c-5b92ce848a96": "goalEntry",
+            "89cadf81-143b-5f6b-82bd-29ba20d92a1b": "goalEntry",
+            "423e21b9-0d0c-5709-899d-7ab738b55e36": "canonicalSubtree",
+        }
+        retained_exclusions = set()
+        def retain_gravitation_exclusions(nodes):
+            kept = []
+            for node in nodes:
+                identifier = node.get("goalId")
+                if identifier in exclusions:
+                    if identifier in retained_exclusions:
+                        continue
+                    node["kind"] = exclusions[identifier]
+                    node["projectionRole"] = "prerequisiteOnly"
+                    retained_exclusions.add(identifier)
+                if node["kind"] == "structure":
+                    node["children"] = retain_gravitation_exclusions(node["children"])
+                kept.append(node)
+            return kept
+        result["rootNodes"] = retain_gravitation_exclusions(result["rootNodes"])
     selected = before["target"]
     shifts = []
     def atoms(node):

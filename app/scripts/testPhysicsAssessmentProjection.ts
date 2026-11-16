@@ -40,6 +40,8 @@ const abiturRootIds = {
   GK: '61684ca7-b725-534f-944b-c7645cea1792',
   LK: '79028c45-90ae-57eb-8016-f5a96af18fa2',
 } as const
+const hesseStageViewIds = new Set(['de-he-gym-physics-gk', 'de-he-gym-physics-lk',
+  'de-he-gym-sekii-physics-gk', 'de-he-gym-sekii-physics-lk'])
 const fermiGoalId = '658cf33d-a0c2-5d47-801a-3dbcd5cac074'
 const fermiAssessmentId = '71e8936b-fa8a-50dc-8c47-fca015b85ac5'
 const kinematicsAssessments = [
@@ -213,12 +215,21 @@ for (const filename of readdirSync(viewDirectory).filter((name) => name.endsWith
   // independent scope list must not silently skip a broken or removed reference.
   if (['DE-BY', 'DE-BW'].includes(view.scope.jurisdiction ?? '')) continue
   const expectedRootIds = [...practiceRootIds, abiturRootIds[course]]
+  const hesseCollection = (rootId: string): string | undefined => {
+    if (!hesseStageViewIds.has(view.viewId)) return undefined
+    const nodeId = rootId === abiturRootIds[course] ? 'physics-he-abitur'
+      : [practiceRootIds[0], practiceRootIds[2], practiceRootIds[3]].includes(rootId) ? `he-physics-topic-${rootId}` : undefined
+    if (!nodeId) return undefined
+    const matches = projected.goals.filter(goal => goal.extendedData?.compositionNodeId === nodeId)
+    assert.equal(matches.length, 1, `${view.viewId}: exactly one replacement collection ${nodeId}`)
+    return matches[0].id
+  }
   const preservedSekITasks = expectedSekITasks(view)
   viewCount++
   if (view.scope.jurisdiction) jurisdictions.add(view.scope.jurisdiction)
   for (const { id, maxPoints } of kinematicsAssessments) {
     assert(visible.has(id), `${view.viewId}: the reviewed vector-free kinematics task must remain reachable`)
-    assert(ancestorsById.get(id)?.includes(practiceRootIds[0]),
+    assert(ancestorsById.get(id)?.includes(hesseCollection(practiceRootIds[0]) ?? practiceRootIds[0]),
       `${view.viewId}: kinematics assessments belong to the E-phase exercise collection`)
     assert.equal(byId.get(id)?.examData?.reviewStatus, 'released')
     assert.equal(byId.get(id)?.examData?.scoring.maxPoints, maxPoints)
@@ -259,9 +270,9 @@ for (const filename of readdirSync(viewDirectory).filter((name) => name.endsWith
     // Q1's reviewed repairs place its assessments beside their preparation
     // within the phase, rather than requiring a duplicate canonical folder.
     const composedQ1Root = projected.goals.find((goal) => goal.extendedData?.compositionNodeId === 'physics-q1')?.id
-    const projectedRootId = rootId === practiceRootIds[1]
+    const projectedRootId = hesseCollection(rootId) ?? (rootId === practiceRootIds[1]
       ? composedQ1Root
-      : rootId === practiceRootIds[4] && composedQ4Root ? composedQ4Root : rootId
+      : rootId === practiceRootIds[4] && composedQ4Root ? composedQ4Root : rootId)
     assert(projectedRootId && visible.has(projectedRootId), `${view.viewId}: missing assessment collection ${sourceRoot.title}`)
     if (view.scope.stage === 'CrossStage') {
       assert((ancestorsById.get(projectedRootId) ?? []).some((id) => /^Sekundarstufe II(?:\s|$)/u.test(byId.get(id)!.title)),
@@ -291,7 +302,9 @@ for (const filename of readdirSync(viewDirectory).filter((name) => name.endsWith
     }
 
     if (rootId === abiturRootIds[course]) {
-      assert.equal(children.get(rootId)?.length, 2, `${view.viewId}: both Abitur sample exams must remain reachable`)
+      assert.equal(children.get(projectedRootId)?.length, 2, `${view.viewId}: both Abitur sample exams must remain reachable`)
+      if (hesseStageViewIds.has(view.viewId)) assert.deepEqual([...(children.get(projectedRootId) ?? [])].sort(),
+        [...sourceRoot.contains].sort(), `${view.viewId}: the replacement exam unit retains exactly the canonical sample exams`)
       assert.equal(expectedTasks.length, 8, `${view.viewId}: both Abitur sample exams must retain four proposals`)
       abiturTaskPairs += expectedTasks.length
     } else {

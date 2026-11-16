@@ -16,7 +16,8 @@ type ViewNode = {
 
 // Called only on the mutable HE template clone, before its jurisdiction changes.
 // Preserve every other exclusion, placement and property in the target template.
-export function stripHeQuantumOverridesFromClonedView(view: { rootNodes?: ViewNode[] }) {
+export function stripHeQuantumOverridesFromClonedView(view: { scope?: { jurisdiction?: string }; rootNodes?: ViewNode[] }) {
+  if (view.scope?.jurisdiction !== 'DE-HE') return
   const ids = new Set<string>(HE_LK_ONLY_QUANTUM_GOAL_IDS)
   const visit = (nodes: ViewNode[]) => nodes.forEach((node) => {
     if (node.kind === 'structure' && node.id === 'physics-q3') {
@@ -25,6 +26,17 @@ export function stripHeQuantumOverridesFromClonedView(view: { rootNodes?: ViewNo
         && child.projectionRole === 'prerequisiteOnly'
         && ids.has(child.goalId ?? '')
       ))
+      // The opened canonical atom-model field retains its two base references
+      // explicitly. Strip their HE-only exclusion on this template clone too;
+      // removing just the old phase-level overrides no longer restores them.
+      for (const field of node.children) {
+        if (field.kind !== 'structure' || field.id !== 'he-physics-topic-dd5a8efd-5d11-5388-aa2a-5147dec4348f') continue
+        for (const child of field.children ?? []) {
+          if (child.kind === 'canonicalSubtree' && child.projectionRole === 'prerequisiteOnly' && ids.has(child.goalId ?? '')) {
+            delete child.projectionRole
+          }
+        }
+      }
     }
     visit(node.children ?? [])
   })

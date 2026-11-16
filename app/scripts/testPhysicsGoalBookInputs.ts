@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict'
+import './testHePhysicsQuantumTemplate'
 import { assertFinalPhysicsAtlasPublishedTargets, assertFinalPhysicsAtlasDraftTargets } from './lib/physicsFinalGoalBookAtlasTargets'
 import { createHash } from 'node:crypto'
 import { existsSync, readFileSync, readdirSync } from 'node:fs'
@@ -1877,7 +1878,15 @@ allPhysicsViewPaths.forEach((viewPath) => {
   // Fermi target visibility is checked after learner course/jurisdiction
   // filtering in testPhysicsAssessmentProjection; this preview retains the
   // shared exercise collections before those filters are applied.
+  const hesseGravitationUnitId = `he-physics-topic-${GRAVITATION_ROOT_GOAL_ID}`
+  const knownHesseView = ['de-he-gym-physics-gk', 'de-he-gym-physics-lk',
+    'de-he-gym-sekii-physics-gk', 'de-he-gym-sekii-physics-lk'].includes(view.viewId)
+  const compiledHesseGravitation = (nodes: CompiledCompositionPreviewNode[]): boolean => nodes.some(node =>
+    (node.kind === 'structure' && node.runtimeId === `structure:${hesseGravitationUnitId}`) || compiledHesseGravitation(node.children))
+  if (knownHesseView) assert.equal(collectCompositionStructures(view.rootNodes, hesseGravitationUnitId).length, 1,
+    `${view.viewId}: retain exactly one opened gravitation topic`)
   const gravitationRootIsTarget = visibleGoalIds.has(GRAVITATION_ROOT_GOAL_ID)
+    || (knownHesseView && compiledHesseGravitation(compilation.compiledRootNodes))
   const authoredGravitationProjectionRoots = collectAuthoredPrerequisiteRoots(view.rootNodes)
     .filter(({ goalId }) => GRAVITATION_LK_ONLY_PROJECTION_ROOTS.some((root) => root.goalId === goalId))
     .sort((left, right) => compareCodePoints(left.goalId, right.goalId))

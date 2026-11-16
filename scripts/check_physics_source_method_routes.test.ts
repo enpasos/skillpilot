@@ -56,7 +56,8 @@ const flattenReferences = (nodes: CompositionViewNode[]): Exclude<CompositionVie
 // learning targets. This is reviewed preparation for the selected curriculum,
 // not an assertion that each Land independently names the whole method goal.
 // The 28 cross-stage views put them in Sek I; the 28 single-stage Sek-II views
-// retain their narrow astronomy focus. Neither role presence nor compilation
+// retain acquisition before astronomy. HE introduces them earlier in E, where
+// its existing introductory tasks already need them. Neither role presence nor compilation
 // certifies mastery, task coverage, source completeness or a runtime frontier.
 const methodPreparationJurisdictions = new Set([
   'DE-BB', 'DE-BE', 'DE-HB', 'DE-HE', 'DE-HH', 'DE-MV', 'DE-NI',
@@ -94,7 +95,7 @@ test('the four AB1 method goals retain their bounded qualitative sequence', () =
   for (const goalId of astronomy) assert(byId.get(goalId)?.requires.includes(sources))
 })
 
-test('28 cross-stage views teach the methods once in Sek I; 28 Sek-II views retain astronomy preparation', () => {
+test('28 cross-stage views teach the methods once in Sek I; all 28 Sek-II views retain complete earlier acquisition', () => {
   let preparationViews = 0
   for (const { path, view } of views) {
     if (!methodsArePreparation(view)) continue
@@ -130,11 +131,42 @@ test('28 cross-stage views teach the methods once in Sek I; 28 Sek-II views reta
   assert.equal(preparationViews, 28)
 
   let repaired = 0
-  for (const { path, view } of views) {
+  const splitProfiles: string[] = []
+  const upperPreparationViews = views.filter(({ view }) => view.scope.stage === 'SekII'
+    && methodPreparationJurisdictions.has(String(view.scope.jurisdiction)))
+  assert.equal(upperPreparationViews.length, 28)
+  for (const { path, view } of upperPreparationViews) {
     const branch = structures(view.rootNodes).find(node => node.id === methodStructureId)
-    if (!branch) continue
     assert.equal(view.scope.stage, 'SekII', path)
     repaired++
+    if (view.scope.jurisdiction === 'DE-HE') {
+      splitProfiles.push(String(view.scope.courseProfile))
+      assert.equal(branch, undefined, `${path}: HE must not retain a second astronomy-only acquisition branch`)
+      const stage = structures(view.rootNodes).find(node => node.id === 'physics-root')!
+      const introductory = stage.children.find(node => node.kind === 'structure' && node.id === 'physics-e-phase')
+      const q4 = stage.children.find(node => node.kind === 'structure' && node.id === 'physics-q4')
+      assert(introductory?.kind === 'structure' && q4?.kind === 'structure', path)
+      assert(stage.children.indexOf(introductory) < stage.children.indexOf(q4), `${path}: E acquisition must precede Q4 astronomy`)
+      const acquisition = introductory.children.find(node => node.kind === 'structure'
+        && node.id === 'physics-methods-k3-upper-preparation-assessments')
+      assert(acquisition?.kind === 'structure', `${path}: the existing E preparation and assessment unit must remain`)
+      assert.deepEqual(flattenReferences(acquisition.children).flatMap(node => node.kind !== 'landscapeEntry' && methods.includes(node.goalId) ? [node] : [])
+        .sort((left, right) => left.goalId.localeCompare(right.goalId)),
+      methods.map(goalId => ({kind: 'goalEntry', goalId, projectionRole: 'target'}))
+        .sort((left, right) => left.goalId.localeCompare(right.goalId)), `${path}: all four methods retain explicit target roles`)
+      const earlyRoles = collectCompositionProjectionRoleGoalIds(introductory.children, byId)
+      const q4Roles = collectCompositionProjectionRoleGoalIds(q4.children, byId)
+      for (const goalId of methods) {
+        assert.equal(referenceCount(view.rootNodes, goalId), 1, `${path}: exactly one method reference`)
+        assert(earlyRoles.targetGoalIds.has(goalId), `${path}: missing E acquisition ${goalId}`)
+        assert(!earlyRoles.prerequisiteOnlyGoalIds.has(goalId), `${path}: E acquisition must not become hidden support`)
+        assert(!q4Roles.targetGoalIds.has(goalId), `${path}: Q4 must reuse the earlier method, not duplicate acquisition`)
+      }
+      for (const goalId of astronomy) assert(q4Roles.targetGoalIds.has(goalId), `${path}: astronomy must remain in Q4`)
+      assert.equal(referenceCount(acquisition.children, orientation), 0, path)
+      continue
+    }
+    assert(branch, `${path}: the reviewed astronomy acquisition branch must remain`)
     const parent = structures(view.rootNodes).find(node => node.children.includes(branch))
     assert.equal(parent?.label, 'Astrophysik', path)
     assert.deepEqual(branch.children, methods.map(goalId => ({kind: 'goalEntry', goalId, projectionRole: 'target'})), path)
@@ -146,6 +178,7 @@ test('28 cross-stage views teach the methods once in Sek I; 28 Sek-II views reta
     assert.equal(referenceCount(branch.children, orientation), 0, path)
   }
   assert.equal(repaired, 28)
+  assert.deepEqual(splitProfiles.sort(), ['GK', 'LK'], 'Both HE courses retain the full split acquisition contract.')
 })
 
 test('RP retains its experiment bridge and complete Sek-I lens preparation alongside visible methods', () => {

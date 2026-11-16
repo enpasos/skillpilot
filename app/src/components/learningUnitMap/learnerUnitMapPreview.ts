@@ -5,7 +5,7 @@ import { isCompositionStructureNode } from '../../utils/treeProjectionRuntime'
 import { learnerMapProjectionSignature } from './learnerMapProjection'
 import { buildLearnerUnitMapProjection, type LearnerMapMemberUnit, type LearnerMapUnitIdentity,
   type LearnerMapUnitOrder, type LearnerUnitMapFixture } from './learnerUnitMapProjection'
-import { UNIT_MAP_PREVIEW_SUBJECT_IDS } from './learnerUnitMapPreviewSubjects'
+import { MATHEMATICS_LANDSCAPE_ID, PHYSICS_LANDSCAPE_ID, UNIT_MAP_PREVIEW_SUBJECT_IDS } from './learnerUnitMapPreviewSubjects'
 
 export { MATHEMATICS_LANDSCAPE_ID, PHYSICS_LANDSCAPE_ID, UNIT_MAP_PREVIEW_SUBJECT_IDS } from './learnerUnitMapPreviewSubjects'
 
@@ -28,6 +28,84 @@ export const PROVISIONAL_STAGE_PLAN_UNITS = [
 const STAGE_ORDER = PROVISIONAL_STAGE_PLAN_UNITS.map(stage => stage.key)
 const stageByViewNodeId = new Map<string, (typeof PROVISIONAL_STAGE_PLAN_UNITS)[number]>(
   PROVISIONAL_STAGE_PLAN_UNITS.flatMap(stage => stage.viewNodeIds.map(nodeId => [nodeId, stage] as const)))
+
+type HesseCompatibilityDuration = 'G8' | 'G9' | 'duration-neutral'
+type HesseCompatibilityView = { landscapeId: string; duration?: HesseCompatibilityDuration }
+/** Explicit preview compatibility records, not activated v1.3 plan bindings.
+ * HE Physics retains its G9 source policy; sharing a display calendar with a
+ * G8 Mathematics context does not authorize a G8 Physics curriculum. */
+const hesseCompatibilityViews = new Map<string, HesseCompatibilityView>()
+const registerHesseCourseViews = (gk: string, lk: string, record: HesseCompatibilityView) => {
+  for (const id of [gk, lk, `merged:${lk}+${gk}`, `merged:${gk}+${lk}`]) hesseCompatibilityViews.set(id, record)
+}
+for (const [suffix, duration] of [['', undefined], ['-g8', 'G8'], ['-g9', 'G9']] as const) {
+  registerHesseCourseViews(`de-he-gym-math-gk${suffix}`, `de-he-gym-math-lk${suffix}`,
+    { landscapeId: MATHEMATICS_LANDSCAPE_ID, duration })
+}
+registerHesseCourseViews('de-he-gym-sekii-math-gk', 'de-he-gym-sekii-math-lk', { landscapeId: MATHEMATICS_LANDSCAPE_ID })
+for (const duration of ['G8', 'G9'] as const) hesseCompatibilityViews.set(`de-he-gym-seki-math-${duration.toLowerCase()}`,
+  { landscapeId: MATHEMATICS_LANDSCAPE_ID, duration })
+registerHesseCourseViews('de-he-gym-physics-gk', 'de-he-gym-physics-lk', { landscapeId: PHYSICS_LANDSCAPE_ID })
+registerHesseCourseViews('de-he-gym-sekii-physics-gk', 'de-he-gym-sekii-physics-lk', { landscapeId: PHYSICS_LANDSCAPE_ID })
+
+type ReviewedHesseCompatibilityIdentity = LearnerMapUnitIdentity & { calendar: string; position: number }
+const hesseYearNodes = new Map<string, { year: number; duration?: HesseCompatibilityDuration }>()
+for (const year of [5, 6, 7, 8, 9, 10]) for (const [suffix, duration] of [['', undefined], ['-g8', 'G8'], ['-g9', 'G9']] as const) {
+  if (year === 10 && duration === 'G8') continue
+  hesseYearNodes.set(`j${year}${suffix}`, { year, duration })
+}
+const hessePhaseNodes = new Map([
+  ['e-phase', { phase: 'E', position: 0, de: 'Einführungsphase', en: 'Introductory phase' }],
+  ['q1', { phase: 'Q1', position: 1, de: 'Q1', en: 'Q1' }],
+  ['q2', { phase: 'Q2', position: 2, de: 'Q2', en: 'Q2' }],
+  ['q3', { phase: 'Q3', position: 3, de: 'Q3', en: 'Q3' }],
+  ['q4', { phase: 'Q4', position: 4, de: 'Q4', en: 'Q4' }],
+  ['abitur', { phase: 'abitur', position: 5, de: 'Abiturprüfung', en: 'Abitur examination' }],
+])
+const hessePhysicsPhaseNodes = new Map([
+  ['physics-e-phase', 'e-phase'], ['physics-q1', 'q1'], ['physics-q2', 'q2'],
+  ['physics-q3', 'q3'], ['physics-q4', 'q4'], ['physics-he-abitur', 'abitur'],
+])
+const hessePhysicsYearNodes = new Map([['physics-he-seki-j7', 7], ['physics-he-seki-j8', 8], ['physics-he-seki-j10', 10]])
+
+function deriveReviewedHesseCompatibilityIdentities(
+  goals: ReadonlyMap<string, UiGoal>, visibleIds: ReadonlySet<string>, language: 'de' | 'en',
+): Map<string, ReviewedHesseCompatibilityIdentity> {
+  const durations = new Set<HesseCompatibilityDuration>()
+  let hasMathematicsContext = false
+  for (const [id, goal] of goals) {
+    if (!visibleIds.has(id)) continue
+    const view = hesseCompatibilityViews.get(viewId(goal))
+    if (!view || view.landscapeId !== goal.landscapeId) continue
+    if (view.landscapeId === MATHEMATICS_LANDSCAPE_ID) hasMathematicsContext = true
+    if (view.duration) durations.add(view.duration)
+  }
+  if (!hasMathematicsContext || durations.size > 1) return new Map()
+  // A neutral Physics view may join one explicit selected display context.
+  // Ambiguous mixed-duration input never merges Physics with either duration.
+  const selectedDuration = durations.size === 1 ? [...durations][0] : 'duration-neutral'
+  const identities = new Map<string, ReviewedHesseCompatibilityIdentity>()
+  for (const [id, goal] of goals) {
+    const view = hesseCompatibilityViews.get(viewId(goal)), node = viewNodeId(goal)
+    if (!visibleIds.has(id) || !view || view.landscapeId !== goal.landscapeId || !node) continue
+    const mathYear = view.landscapeId === MATHEMATICS_LANDSCAPE_ID ? hesseYearNodes.get(node) : undefined
+    const physicsYear = view.landscapeId === PHYSICS_LANDSCAPE_ID ? hessePhysicsYearNodes.get(node) : undefined
+    if (mathYear?.duration && mathYear.duration !== view.duration) continue
+    if (view.duration === 'G8' && mathYear?.year === 10) continue
+    const duration = view.duration ?? selectedDuration
+    const prefix = `he-compat:${duration}`
+    const year = mathYear?.year ?? physicsYear
+    if (year !== undefined) {
+      identities.set(id, { key: `${prefix}:year:${year}`, calendar: `${prefix}:years`, position: year,
+        label: language === 'en' ? `Year ${year}` : `Jahrgangsstufe ${year}` })
+      continue
+    }
+    const phase = hessePhaseNodes.get(view.landscapeId === MATHEMATICS_LANDSCAPE_ID ? node : hessePhysicsPhaseNodes.get(node) ?? '')
+    if (phase) identities.set(id, { key: `${prefix}:phase:${phase.phase}`, calendar: `${prefix}:phases`, position: phase.position,
+      label: phase[language] })
+  }
+  return identities
+}
 
 export interface LearnerUnitMapLandscapeSource {
   meta?: { landscapeId?: string; programUnits?: readonly ProgramUnit[]; goalPlacements?: readonly GoalPlacement[] }
@@ -149,10 +227,14 @@ export function deriveLearnerUnitMapPreview(input: LearnerUnitMapPreviewInput, r
   }
   const maxStep = Math.max(0, ...depthOf.values())
   const step = maxStep === 0 ? 0 : Math.min(maxStep, Math.max(1, Math.round(requestedStep ?? maxStep)))
+  const hesseCompatibility = deriveReviewedHesseCompatibilityIdentities(goalIndexAll, visibleGoalIds, language)
+  for (const [id] of hesseCompatibility) if (planBoundViewIds.has(viewId(goalIndexAll.get(id)!))) hesseCompatibility.delete(id)
 
   const keyOf = (goal: UiGoal) => {
     const declared = declaredUnits.get(goal.id)
     if (declared && stagePlanContext) return `plan:${stagePlanContext.plan.planId}:${declared.id}`
+    const compatibility = hesseCompatibility.get(goal.id)
+    if (compatibility) return compatibility.key
     const nodeId = viewNodeId(goal)!
     return stageByViewNodeId.get(nodeId)?.key ?? `${goal.landscapeId}:${viewId(goal)}:${nodeId}`
   }
@@ -163,7 +245,8 @@ export function deriveLearnerUnitMapPreview(input: LearnerUnitMapPreviewInput, r
     const declared = declaredUnits.get(id)
     const stage = planBoundViewIds.has(viewId(goal)) ? undefined : stageByViewNodeId.get(viewNodeId(goal)!)
     units.set(id, declared ? { key: keyOf(goal), label: language === 'en' ? declared.labelEn ?? declared.label : declared.label }
-      : stage ? { key: stage.key, label: stage.label[language] } : { key: keyOf(goal) })
+      : stage ? { key: stage.key, label: stage.label[language] }
+        : hesseCompatibility.has(id) ? { key: keyOf(goal), label: hesseCompatibility.get(id)!.label } : { key: keyOf(goal) })
   }
   const keys = new Set([...units.values()].map(identity => identity.key))
   const after: LearnerMapUnitOrder[] = []
@@ -178,11 +261,28 @@ export function deriveLearnerUnitMapPreview(input: LearnerUnitMapPreviewInput, r
   for (let index = 1; index < STAGE_ORDER.length; index++) {
     if (keys.has(STAGE_ORDER[index]) && keys.has(STAGE_ORDER[index - 1])) after.push({ unit: STAGE_ORDER[index], after: STAGE_ORDER[index - 1] })
   }
+  const compatibilityCalendars = new Map<string, Map<string, ReviewedHesseCompatibilityIdentity>>()
+  for (const [id, identity] of hesseCompatibility) {
+    if (!units.has(id)) continue
+    const calendar = compatibilityCalendars.get(identity.calendar) ?? new Map<string, ReviewedHesseCompatibilityIdentity>()
+    calendar.set(identity.key, identity)
+    compatibilityCalendars.set(identity.calendar, calendar)
+  }
+  // Calendar adjacency follows the union across subjects. Physics 8 -> 10 must
+  // not shortcut a visible Mathematics year 9, nor can partial E/Q sibling
+  // lists remove the known order of another subject's intervening phase.
+  for (const calendar of compatibilityCalendars.values()) {
+    const ordered = [...calendar.values()].sort((left, right) => left.position - right.position)
+    for (let index = 1; index < ordered.length; index++) after.push({ unit: ordered[index].key, after: ordered[index - 1].key })
+  }
   for (const sections of siblingSections) {
-    const unitKeys = sections.filter(id => units.has(id) && !planBoundViewIds.has(viewId(goalIndexAll.get(id)!)))
-      .map(id => units.get(id)!.key)
-    for (let index = 1; index < unitKeys.length; index++) {
-      if (unitKeys[index] !== unitKeys[index - 1]) after.push({ unit: unitKeys[index], after: unitKeys[index - 1] })
+    const unboundSections = sections.filter(id => units.has(id) && !planBoundViewIds.has(viewId(goalIndexAll.get(id)!)))
+    for (let index = 1; index < unboundSections.length; index++) {
+      const previous = unboundSections[index - 1], current = unboundSections[index]
+      const left = hesseCompatibility.get(previous), right = hesseCompatibility.get(current)
+      if (left && right && left.calendar === right.calendar) continue
+      const before = units.get(previous)!.key, unit = units.get(current)!.key
+      if (unit !== before) after.push({ unit, after: before })
     }
   }
 
