@@ -36,22 +36,41 @@ export interface StagePlanDiagnosis {
 }
 const compare = (a: string, b: string) => a < b ? -1 : a > b ? 1 : 0
 const atomic = (goal: StagePlanGoal) => goal.type !== 'cluster' && !goal.contains?.length
+const normalizedProfile = (value: string) => value.trim().toUpperCase()
+/** Operational bound for one complete report, not acceptance of larger plans. */
+export const MAX_STAGE_PLAN_DIAGNOSIS_SCOPES = 1024
 
-/** All full subject-profile combinations dominate the corresponding subject
- * subsets: removing a seed can turn it into preparation, but cannot introduce
- * a later authored placement. No synthetic GK/LK lockstep is assumed. */
-function selections(plan: StagePlan): StagePlan['subjectViews'][] {
+/** Enumerate nonempty subject subsets and independently selected actual course
+ * offerings within this one Land/duration authority. GK+LK uses an authored
+ * combined view when available, otherwise the same GK/LK union as the runtime.
+ * No subject-subset dominance assumption or equal-profile lockstep is needed. */
+function subjectChoices(plan: StagePlan): StagePlan['subjectViews'][][] {
   const subjects = new Map<string, StagePlan['subjectViews']>()
   for (const authority of plan.subjectViews) {
     const entries = subjects.get(authority.landscapeId) ?? []
     entries.push(authority); subjects.set(authority.landscapeId, entries)
   }
-  let combinations: StagePlan['subjectViews'][] = [[]]
-  for (const id of [...subjects.keys()].sort(compare)) {
+  return [...subjects.keys()].sort(compare).map(id => {
     const variants = [...subjects.get(id)!].sort((a, b) => compare(a.courseProfile, b.courseProfile) || compare(a.viewId, b.viewId))
-    combinations = combinations.flatMap(current => variants.map(variant => [...current, variant]))
+    const choices: StagePlan['subjectViews'][] = [[], ...variants.map(variant => [variant])]
+    // Runtime exact matches distinguish ALL from GK+LK. An ALL authority
+    // therefore cannot replace the actual GK/LK fallback union.
+    const explicitCombined = variants.some(variant => normalizedProfile(variant.courseProfile) === 'GK+LK')
+    const gk = variants.filter(variant => normalizedProfile(variant.courseProfile) === 'GK')
+    const lk = variants.filter(variant => normalizedProfile(variant.courseProfile) === 'LK')
+    if (!explicitCombined && gk.length === 1 && lk.length === 1) choices.push([gk[0], lk[0]])
+    return choices
+  })
+}
+function selectionCount(plan: StagePlan): bigint {
+  return subjectChoices(plan).reduce((count, choices) => count * BigInt(choices.length), 1n) - 1n
+}
+function selections(plan: StagePlan): StagePlan['subjectViews'][] {
+  let combinations: StagePlan['subjectViews'][] = [[]]
+  for (const choices of subjectChoices(plan)) {
+    combinations = combinations.flatMap(current => choices.map(choice => [...current, ...choice]))
   }
-  return combinations
+  return combinations.filter(selected => selected.length > 0)
 }
 
 export function diagnoseStagePlanLearningFlow(catalog: StagePlanCatalog): StagePlanDiagnosis {
@@ -60,6 +79,27 @@ export function diagnoseStagePlanLearningFlow(catalog: StagePlanCatalog): StageP
   const result: StagePlanDiagnosis = { contract: 'declared-stage-plan-diagnosis-v1', status: 'invalid-input', findings, scopes: [] }
   if (!catalog.plans.length) findings.push({ code: 'SPR-INVENTORY', path: 'plans', message: 'An empty plan inventory is not a successful stage-order check.' })
   if (findings.length) return result
+  // The catalog permits raw profile names, while runtime matching normalizes
+  // them. Until diagnosis models ambiguous normalized authorities, reject the
+  // complete report rather than skip a union or invent separate offerings.
+  for (const plan of validated.plansById.values()) {
+    const seen = new Set<string>()
+    for (const authority of plan.subjectViews) {
+      const key = JSON.stringify([authority.landscapeId, normalizedProfile(authority.courseProfile)])
+      if (seen.has(key)) findings.push({ code: 'SPR-PROFILE-ALIAS', path: plan.planId,
+        message: `Multiple authorities for subject ${authority.landscapeId} normalize to profile ${normalizedProfile(authority.courseProfile)}; no selections were evaluated.` })
+      seen.add(key)
+    }
+  }
+  if (findings.length) return result
+  // Count the entire validated inventory before constructing any Cartesian
+  // product or evaluating any scope. Over-budget inputs yield no partial proof.
+  const requestedScopes = [...validated.plansById.values()].reduce((count, plan) => count + selectionCount(plan), 0n)
+  if (requestedScopes > BigInt(MAX_STAGE_PLAN_DIAGNOSIS_SCOPES)) {
+    findings.push({ code: 'SPR-SELECTION-LIMIT', path: 'plans',
+      message: `Complete diagnosis requires ${requestedScopes} subject/course selections, exceeding the operational limit ${MAX_STAGE_PLAN_DIAGNOSIS_SCOPES}; no selections were evaluated.` })
+    return result
+  }
 
   const goals = new Map([...catalog.goals.values()].map(goal => [goal.id, goal]))
   const requires = new Map<string, string[]>(), contains = new Map<string, string[]>()

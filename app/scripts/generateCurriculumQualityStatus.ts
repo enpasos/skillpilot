@@ -4379,7 +4379,7 @@ export function collectRenderedAtomicGoalIdsFromCompositionView(
  * provenance/direct mappings, never the subsequent CQR source-quality verdict
  * or the compiler's assessment-requires evidence (which replaces raw evidence).
  */
-function sourceCoverageAtomicScopeMatcher(landscape: SkillLandscape) {
+export function sourceCoverageAtomicScopeMatcher(landscape: SkillLandscape) {
   const sourceJurisdictions = readSourceLandscapeJurisdictionById()
   const mappingsByState = new Map<string, Set<string>>()
   for (const mappingFile of readAllGoalMappingFiles()) {

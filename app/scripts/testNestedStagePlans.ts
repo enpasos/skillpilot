@@ -40,12 +40,16 @@ assert.deepEqual(getStagePlanStructureMetadata(input.plan, (math.rootNodes[0] as
 })
 const diagnosis = diagnoseStagePlanLearningFlow(asCatalog())
 assert.equal(diagnosis.status, 'no-stage-backflows')
-assert.equal(diagnosis.scopes.length, 4)
+assert.equal(diagnosis.scopes.length, 15)
 for (const scope of diagnosis.scopes) {
-  assert.deepEqual(scope.preparation.map(p => [p.goalId, p.planUnitId]), [['bridge', 'y6'], ['foundation', 'y6']])
-  assert.equal(scope.units.find(unit => unit.id === 'lower')!.targetCount, 3)
-  assert.equal(scope.units.find(unit => unit.id === 'lower')!.preparationCount, 2)
-  assert.equal(scope.units.find(unit => unit.id === 'y5')!.targetCount, 1)
+  const mathSelected = scope.subjectSelections.some(subject => subject.landscapeId === NESTED_MATH)
+  const physicsSelected = scope.subjectSelections.some(subject => subject.landscapeId === NESTED_PHYSICS)
+  assert.deepEqual(scope.preparation.map(p => [p.goalId, p.planUnitId]), mathSelected
+    ? [['bridge', 'y6'], ['foundation', 'y6']]
+    : [['bridge', 'y6'], ['foundation', 'y6'], ['m5', 'y6'], ['m6', 'y6'], ['me', 'q1']])
+  assert.equal(scope.units.find(unit => unit.id === 'lower')!.targetCount, (mathSelected ? 2 : 0) + (physicsSelected ? 1 : 0))
+  assert.equal(scope.units.find(unit => unit.id === 'lower')!.preparationCount, mathSelected ? 2 : 4)
+  assert.equal(scope.units.find(unit => unit.id === 'y5')!.targetCount, mathSelected ? 1 : 0)
   assert.equal(scope.units.length, 9)
 }
 assert.equal(JSON.stringify(asCatalog()), original, 'Preparation and reporting never rewrite authored declarations.')
@@ -78,12 +82,16 @@ const withinYear = nestedStagePlanFixture()
 withinYear.goals.get('m6')!.requires = ['bridge']; withinYear.goals.get('m5')!.requires = ['m6']
 const yearReport = diagnoseStagePlanLearningFlow(asCatalog(withinYear))
 assert.equal(yearReport.status, 'backflows-present')
-assert(yearReport.scopes.every(scope => scope.directBackflows.some(flow => flow.fromUnitId === 'y5' && flow.requiredUnitId === 'y6')), 'Same-stage year backflows are real findings, not hidden by their shared stage.')
+assert(yearReport.scopes.every(scope => scope.subjectSelections.some(subject => subject.landscapeId === NESTED_MATH)
+  ? scope.directBackflows.some(flow => flow.fromUnitId === 'y5' && flow.requiredUnitId === 'y6')
+  : scope.directBackflows.length === 0), 'Same-stage year backflows remain visible whenever their own Math targets are selected; a Physics-only scope derives its needed Math preparation.')
 const withinPhase = nestedStagePlanFixture()
 withinPhase.goals.get('mq1')!.requires = []; withinPhase.goals.get('me')!.requires = ['mq3']
 const phaseReport = diagnoseStagePlanLearningFlow(asCatalog(withinPhase))
 assert.equal(phaseReport.status, 'backflows-present')
-assert(phaseReport.scopes.every(scope => scope.directBackflows.some(flow => flow.fromUnitId === 'e' && flow.requiredUnitId === 'q3')))
+assert(phaseReport.scopes.every(scope => scope.subjectSelections.some(subject => subject.landscapeId === NESTED_MATH)
+  ? scope.directBackflows.some(flow => flow.fromUnitId === 'e' && flow.requiredUnitId === 'q3')
+  : scope.directBackflows.length === 0))
 const early = nestedStagePlanFixture()
 early.goals.get('me')!.requires = ['bridge']; early.goals.get('m6')!.requires = ['m5', 'bridge']
 assert.equal(deriveStagePlanPreparation(early.plan, accepted.placementsByViewId.get(math.viewId)!, early.goals).preparations.find(p => p.goalId === 'bridge')!.planUnitId, 'y6')

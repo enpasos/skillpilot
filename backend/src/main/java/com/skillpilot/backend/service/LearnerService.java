@@ -337,9 +337,16 @@ public class LearnerService {
     }
 
     private Set<String> automaticCompletionTargets(String id, GoalProjection projection) {
-        if (AUTOMATIC_COMPLETION_DEFAULT.equals(id)) return projection.targetGoalIds().stream()
-                .filter(goalId -> isAtomicGoal(projection.visibleGoals().get(goalId)))
-                .collect(Collectors.toCollection(LinkedHashSet::new));
+        if (AUTOMATIC_COMPLETION_DEFAULT.equals(id)) {
+            // The validated learning basis owns completion. A display-pruned unit
+            // is navigation, even when none of its children remain visible.
+            if (projection.learningScope() != null) {
+                return new LinkedHashSet<>(projection.learningScope().learningAtomicGoalIds());
+            }
+            return projection.targetGoalIds().stream()
+                    .filter(goalId -> isAtomicGoal(projection.visibleGoals().get(goalId)))
+                    .collect(Collectors.toCollection(LinkedHashSet::new));
+        }
         return projectedAtomicTargetIds(List.of(id.substring(AUTOMATIC_COMPLETION_PREFIX.length())), projection);
     }
 
@@ -6840,7 +6847,8 @@ public class LearnerService {
     }
 
     private boolean isAtomicGoal(LearningGoal goal) {
-        return goal != null && (goal.getContains() == null || goal.getContains().isEmpty());
+        return goal != null && !"cluster".equals(goal.getType())
+                && (goal.getContains() == null || goal.getContains().isEmpty());
     }
 
     /**
@@ -6884,7 +6892,9 @@ public class LearnerService {
         Map<String, Set<String>> parents = new HashMap<>();
         Map<String, Integer> pendingChildren = new HashMap<>();
         for (LearningGoal goal : goals.values()) {
-            if (isAtomicGoal(goal)) continue;
+            // A navigation node without children has no completed child basis.
+            // It must neither crash on null contains nor finish by empty demand.
+            if (isAtomicGoal(goal) || goal.getContains() == null || goal.getContains().isEmpty()) continue;
             Set<String> children = goal.getContains().stream().map(reference -> {
                 String resolved = resolveGoalRef(reference, goals);
                 return resolved == null ? reference : resolved;

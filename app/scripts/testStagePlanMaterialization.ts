@@ -323,7 +323,7 @@ try {
   const reportArguments = ['--inventory', 'activation.json', '--output', 'tmp/stage-flow.json', '--require-no-backflow']
   const report = reportStagePlanLearningFlow([...reportArguments, '--write'], production.root)
   assert.equal(report.status, 'no-stage-backflows')
-  assert.equal(report.scopes.length, 4)
+  assert.equal(report.scopes.length, 6, 'GK, LK and their union are checked separately in each of the two declared duration contexts.')
   assert.equal(report.authority.canonicalDomain, 'canonical-gymnasium-21')
   reportStagePlanLearningFlow([...reportArguments, '--check'], production.root)
   production.write('tmp/stage-flow.json', { stale: true })

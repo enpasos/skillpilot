@@ -1,0 +1,59 @@
+{
+  "at": "2026-11-16T05:13:30.746031+00:00",
+  "reviewer": "/root/math_duration_ci_repair",
+  "result": "ACCEPT_BOUNDED_CI_DIFFS_NO_GATE_WEAKENING_FOUND",
+  "sourceWrites": false,
+  "findings": [
+    "Removing only the global decision sort preserves the current subject-generator ledger order; canonical fingerprint checks, unchanged curricular/total denominators, exact task/rubric and coverage checks, and byte equality remain enforced. The actual no-write generator check passes.",
+    "The two current released assessments independently cover the two actual model atoms; withdrawn coverage of historical4ab is explicitly rejected as candidate evidence while direct task selection remains tested.",
+    "Canonical-wrapper reference mechanics now use a clearly isolated fixture and retain omitted-wrapper, canonical fallback, partial out-of-target, unknown reference and target-safe negatives; no longer claim that historical a956 has obsolete six-reference coverage."
+  ],
+  "actualCommands": [
+    {
+      "cwd": "app",
+      "command": "node --import tsx scripts/applyLearningUnitAssessments.mjs",
+      "exitCode": 0,
+      "writeFlagProvided": false
+    },
+    {
+      "cwd": "app",
+      "command": "./node_modules/.bin/tsx src/utils/coursePlanTopicSelection.test.ts",
+      "exitCode": 0
+    }
+  ],
+  "pins": [
+    {
+      "path": "app/scripts/applyLearningUnitAssessments.mjs",
+      "sha256": "99eb5a1bf845b834af71597c32ad381d4af6ffb2fba4f2ebfa27de4885bb06ad"
+    },
+    {
+      "path": "app/src/utils/coursePlanTopicSelection.test.ts",
+      "sha256": "761e0438f2a6a4b1efad2e01a9e3784789f443408e39794f5f81639e1853d77f"
+    },
+    {
+      "path": "app/src/utils/coursePlanTopicSelection.ts",
+      "sha256": "283cd4592a84eebc16e127ec1e48e2f90d76f113c153da286ebaa8727fdb20f7"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+      "sha256": "c511aeaee9167c0c3ca07c996b1c0d67e4fef330a8c781ae3e8d563005a90a4a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json",
+      "sha256": "d93e7d91b3ebbb5c0d191395fe15541284e89c5fbe67acb8700de229e4dd4059"
+    }
+  ],
+  "logs": [
+    {
+      "path": "course-plan-test.stdout.txt",
+      "bytes": 38,
+      "sha256": "d0e674ec7a264c696298c8b409128cf930c50d7237ece1149f31a38f2792b6b1"
+    },
+    {
+      "path": "learning-unit-check.stdout.txt",
+      "bytes": 4008,
+      "sha256": "d0c6efe5e352dd2d46c44cb19822d129729b0fe89f98e00d6224114fc4063b69"
+    }
+  ],
+  "scopeLimit": "Two local CI diffs only; no new content approval, complete suite, remote CI or main acceptance."
+}

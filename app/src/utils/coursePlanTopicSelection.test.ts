@@ -150,41 +150,50 @@ const physicsReferences = new Map(canonicalPhysics.goals.map((entry) => {
   const converted = convertLearningGoal(entry, { landscapeId: canonicalPhysics.landscapeId })
   return [converted.id, converted] as const
 }))
-const kinematicsTaskIds = ['4ab1cf6d-b808-5b86-9291-85df0b9f2496', '6ea3fb3c-abdc-568f-ab13-97c36dc274e4']
+const kinematicsTaskIds = ['a8dc0290-9f80-5763-8943-e16b8d2aa860', 'c5807a37-129e-5df6-8989-482bc7f5683e']
 const kinematicsTopics = ['e4b38061-1f28-43ad-8371-a3e7c0e81856', 'd6dc0e02-831d-4894-a61a-852bcc74f147']
 const matchingKinematics = new Set(findCoursePlanMatchingTasks(kinematicsTopics, physicsReferences).map(({ id }) => id))
 assert(kinematicsTaskIds.every((id) => matchingKinematics.has(id)),
-  'both reviewed kinematics packages must be usable candidates in the course planner')
+  'both current whole-competence kinematics assessments must be usable candidates in the course planner')
+const withdrawnKinematicsCoverageId = '4ab1cf6d-b808-5b86-9291-85df0b9f2496'
+assert.deepEqual(physicsReferences.get(withdrawnKinematicsCoverageId)?.examData?.coveredGoalIds, [])
+assert.equal(matchingKinematics.has(withdrawnKinematicsCoverageId), false,
+  'historical practice with withdrawn coverage must not be advertised as whole-competence evidence')
+assert.deepEqual(findCoursePlanMatchingTasks([withdrawnKinematicsCoverageId], physicsReferences).map(({ id }) => id),
+  [withdrawnKinematicsCoverageId], 'the historical task remains usable when selected directly')
 assert.deepEqual(analyzeCoursePlanTaskCoverage([...kinematicsTopics, ...kinematicsTaskIds], physicsReferences).uncoveredGoalIds, [],
   'the written kinematics packages cover their explicitly mapped model competencies')
-const freeFallClusterId = '230345f3-c360-4963-b390-ab94e3e2c864'
-const physicsTaskId = 'a9562b05-c54d-5635-9244-3f7dd24a8642'
-const physicsContentIds = [
-  'ce431132-dfc4-42c2-aff6-bd72035190f8', 'e4b38061-1f28-43ad-8371-a3e7c0e81856',
-  '09029573-864f-40ca-bf8a-cee7bf6dcb73', '4a2bf015-052b-4af0-aed7-324259fa1a8a',
-  'ac25ffe3-fd42-592d-a937-79cc13460313',
-]
-const physicsTargets = new Map([physicsTaskId, ...physicsContentIds].map((id) => [id, physicsReferences.get(id)!]))
+// Isolated reference-resolution case: this is not a content review of a
+// historical task or evidence that a written answer proves an experiment.
+const freeFallClusterId = 'fixture-canonical-wrapper'
+const physicsTaskId = 'fixture-wrapper-task'
+const physicsContentIds = ['measurement', 'model', 'experiment', 'application', 'transfer']
+const wrapperReferences = index(
+  ...physicsContentIds.map((id) => goal(id)),
+  goal(freeFallClusterId, ['model', 'experiment']),
+  assessment(physicsTaskId, ['measurement', 'model', 'experiment', 'application', 'transfer', freeFallClusterId], 'released'),
+)
+const physicsTargets = new Map([physicsTaskId, ...physicsContentIds].map((id) => [id, wrapperReferences.get(id)!]))
 assert.equal(physicsTargets.has(freeFallClusterId), false)
-assert.equal(physicsReferences.get(physicsTaskId)?.examData?.coveredGoalIds?.length, 6)
+assert.equal(wrapperReferences.get(physicsTaskId)?.examData?.coveredGoalIds?.length, 6)
 assert.deepEqual(analyzeCoursePlanTaskCoverage([physicsTaskId], physicsTargets).unknownTaskIds, [physicsTaskId],
   'the projected tree alone cannot resolve an omitted canonical coverage wrapper')
-const physicsCoverage = analyzeCoursePlanTaskCoverage([physicsTaskId], physicsTargets, undefined, physicsReferences)
+const physicsCoverage = analyzeCoursePlanTaskCoverage([physicsTaskId], physicsTargets, undefined, wrapperReferences)
 assert.deepEqual(physicsCoverage.coveredGoalIds, physicsContentIds,
-  'six authored roots resolve to five unique, already-visible HE-LK content atoms')
+  'six fixture references resolve to five unique, already-visible atoms')
 assert.deepEqual(physicsCoverage.unavailableGoalIds, [])
 assert.deepEqual(physicsCoverage.unknownTaskIds, [])
-assert.deepEqual(findCoursePlanMatchingTasks(physicsContentIds, physicsTargets, undefined, physicsReferences)
+assert.deepEqual(findCoursePlanMatchingTasks(physicsContentIds, physicsTargets, undefined, wrapperReferences)
   .map((task) => task.id), [physicsTaskId],
   'matching assessment candidates resolve canonical wrappers through the same target-safe lookup')
-assert.deepEqual(resolveCoursePlanReferencedTopics([`physics:${freeFallClusterId}`], physicsTargets, undefined, physicsReferences), {
-  atomicGoalIds: ['e4b38061-1f28-43ad-8371-a3e7c0e81856', '09029573-864f-40ca-bf8a-cee7bf6dcb73'], invalidGoalIds: [],
+assert.deepEqual(resolveCoursePlanReferencedTopics([`physics:${freeFallClusterId}`], physicsTargets, undefined, wrapperReferences), {
+  atomicGoalIds: ['model', 'experiment'], invalidGoalIds: [],
 }, 'qualified references use the same canonical cluster while retaining visible target IDs')
-const partialOutsideReferences = new Map(physicsReferences)
+const partialOutsideReferences = new Map(wrapperReferences)
 partialOutsideReferences.set('outside-course', goal('outside-course'))
 partialOutsideReferences.set(freeFallClusterId, {
-  ...physicsReferences.get(freeFallClusterId)!,
-  contains: [...physicsReferences.get(freeFallClusterId)!.contains, 'outside-course'],
+  ...wrapperReferences.get(freeFallClusterId)!,
+  contains: [...wrapperReferences.get(freeFallClusterId)!.contains, 'outside-course'],
 })
 assert.deepEqual(resolveCoursePlanReferencedTopics([freeFallClusterId], physicsTargets, undefined, partialOutsideReferences), {
   atomicGoalIds: [], invalidGoalIds: [freeFallClusterId],
@@ -194,7 +203,7 @@ assert.deepEqual(analyzeCoursePlanTaskCoverage([physicsTaskId], physicsTargets, 
 assert.deepEqual(resolveCoursePlanReferencedTopics(['outside-course'], physicsTargets, undefined, partialOutsideReferences), {
   atomicGoalIds: [], invalidGoalIds: ['outside-course'],
 }, 'known canonical text cannot promote an unavailable atom into the course target')
-assert(analyzeCoursePlanTaskCoverage([freeFallClusterId, physicsTaskId], physicsTargets, undefined, physicsReferences)
+assert(analyzeCoursePlanTaskCoverage([freeFallClusterId, physicsTaskId], physicsTargets, undefined, wrapperReferences)
   .unavailableGoalIds.includes(freeFallClusterId), 'fallback resolution does not make an invisible root selectable')
 
 const projectedReferences = index(goal('visible-root', ['a', 'hidden']), goal('hidden'),

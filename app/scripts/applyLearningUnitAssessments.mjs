@@ -329,8 +329,9 @@ for (const landscape of landscapes) {
     canonical.goalPlacements.splice(first >= 0 ? first : canonical.goalPlacements.length, 0, ...own)
   }
 
+  // Preserve the existing ledger order, also used by the subject generators.
+  // Only new or changed assessment decisions and their ancestors are authored here.
   // Ancestors of a placed assessment get their current fingerprint.
-  semantic.decisions.sort((a, b) => a.goalId.localeCompare(b.goalId))
   for (const id of touchedAncestors) {
     const ancestor = decisionById.get(id)
     assert(ancestor, `Missing semantic decision for ancestor ${id}`)
