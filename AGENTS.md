@@ -812,8 +812,9 @@ curricular-level terminology. Personalization Levels 1–4, QA maturity and goal
   goals for Mathematics and Physics only, under a visible construction-site
   notice; other subjects appear in the goal tree only, and the tree view is
   unchanged. Units are not declared in the curriculum yet, so this preview
-  takes the sections of the Land views as stand-ins, top-down by a step
-  control, orders sibling sections as the view lists them, and merges the two
+  takes the sections of the Land views as stand-ins, always at the deepest
+  top-down step (the step control was removed on 17 November 2026), orders
+  sibling sections as the view lists them, and merges the two
   stages across the subjects through a provisional table of view node ids
   (`PROVISIONAL_STAGE_PLAN_UNITS`), to be removed once plan units are
   declared. `buildLearnerMapProjection` is kept but no longer rendered.
@@ -1646,6 +1647,19 @@ manufacture historical start timestamps. This is a start signal only: existing
 mastery never substitutes for current content-bound practical evidence or the
 explicit final confirmation required by **Human-tested**. See the binding
 [quality and human-trial concept](docs/concept/curriculum-quality-and-human-trial.md).
+
+**Quality status filter (Product Owner decision, 17 November 2026).** The
+statuses form a ladder: experimental, machine QA, human trial in progress,
+human-tested. The filter names a minimum and keeps the chosen step and every
+later one, in the learning start, the course organization and the curricula
+overview alike. The learning start presets machine QA; a curriculum without a
+status appears only under "All" and is never preselected merely because the
+filter leaves it as the only option. A category whose curricula carry no status
+shows all of them with the filter disabled. The backend reads the status file
+only under the rules version the generator writes
+(`RepositoryCurriculumQualitySnapshotProvider.CURRENT_RULES_VERSION`, bound to
+the checked-in status file by a test): raise both together, otherwise every M7
+subject loses its public quality status.
 
 ---
 
