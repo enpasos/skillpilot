@@ -1,5 +1,4 @@
 import { useMemo, useState } from 'react'
-import { Construction } from 'lucide-react'
 import type { UiGoal } from '../../goalTypes'
 import type { LearnerGoalNavigationMapProps } from '../../views/LearnerView'
 import { buildTreeCompletionProgressMap } from '../../utils/treeCompletionProgress'
@@ -23,15 +22,14 @@ export default function LearnerGoalNavigationMap(props: LearnerGoalNavigationMap
     : new Map(canonicalSource.flatMap(source => source.goals.map(goal => [goal.id, goal] as const))), [canonicalSource])
   const landscapeSources = canonicalGoalSources
   const project = useMemo(() => createLearnerUnitMapCache(), [])
-  const [requestedStep, setRequestedStep] = useState<number | null>(null)
   const [hiddenSubjects, setHiddenSubjects] = useState<readonly string[]>([])
+  // Always the deepest top-down step: every section that can be a unit is one.
   const view = useMemo(() => project({ rootGoals, goalIndexAll, canonicalGoalIndexAll, visibleGoalIds, visibleChildrenByParent,
-    useRawGoalTitles: props.useRawGoalTitles, landscapeSources, language: props.language }, requestedStep),
+    useRawGoalTitles: props.useRawGoalTitles, landscapeSources, language: props.language }, null),
   [project, rootGoals, goalIndexAll, canonicalGoalIndexAll, visibleGoalIds, visibleChildrenByParent, props.useRawGoalTitles,
-    landscapeSources, props.language, requestedStep])
+    landscapeSources, props.language])
   // The map covers Mathematics and Physics only; subjects are filters, not nodes.
   const mapSubjects = useMemo(() => view.fixture.subjectIds.filter(id => UNIT_MAP_PREVIEW_SUBJECT_IDS.includes(id)), [view.fixture])
-  const otherSubjects = view.fixture.subjectIds.length > mapSubjects.length
   const shownSubjects = useMemo(() => {
     const shown = mapSubjects.filter(id => !hiddenSubjects.includes(id))
     return shown.length ? shown : mapSubjects
@@ -76,44 +74,25 @@ export default function LearnerGoalNavigationMap(props: LearnerGoalNavigationMap
     <button type="button" onClick={props.onReturnToTree}>{english ? 'Return to tree' : 'Zum Baum wechseln'}</button>
   </div>
 
-  const notice = <div className="lum-construction-notice" role="note" data-testid="learner-map-construction-notice">
-    <Construction size={16} aria-hidden="true" />
-    <p><strong>{english ? 'Under construction:' : 'Baustelle:'}</strong> {english
-      ? 'This view is still being built. It shows units and learning goals instead of the outline. For now, the sections of the curriculum count as units. The learning map currently covers Mathematics and Physics only.'
-      : 'Diese Ansicht ist im Aufbau. Sie zeigt Einheiten und Lernziele statt der Gliederung. Als Einheiten gelten vorerst die Abschnitte des Lehrplans. Die Lernkarte umfasst derzeit nur Mathematik und Physik.'}
-    {otherSubjects && <> {english ? 'Your other subjects are in the goal tree.' : 'Deine anderen Fächer findest du im Lernzielbaum.'}</>}</p>
-  </div>
-  const toolbar = <>
-    {mapSubjects.length > 1 && <div className="lum-subject-filter" role="group" aria-label={english ? 'Subjects in the map' : 'Fächer in der Karte'}
-      data-testid="learner-map-subject-filter">
-      {mapSubjects.map(subject => {
-        const pressed = shownSubjects.includes(subject)
-        return <button key={subject} type="button" aria-pressed={pressed} data-subject-id={subject}
-          disabled={pressed && shownSubjects.length === 1}
-          title={pressed && shownSubjects.length === 1 ? english ? 'At least one subject stays visible.' : 'Mindestens ein Fach bleibt sichtbar.' : undefined}
-          onClick={() => setHiddenSubjects(current => pressed ? [...current, subject] : current.filter(id => id !== subject))}>
-          {subjectLabel(subject, english)}
-        </button>
-      })}
-    </div>}
-    {view.maxStep > 1 && <label className="lum-step-control" title={english
-      ? 'Units are introduced top down. Step 1 makes only the outermost sections units; every further step adds the sections inside them.'
-      : 'Einheiten werden von oben nach unten eingeführt. Schritt 1 macht nur die äußersten Abschnitte zu Einheiten; jeder weitere Schritt nimmt die Abschnitte darin hinzu.'}>
-      <span className="lum-step-label" aria-hidden="true">{english ? 'Units top down, step' : 'Einheiten von oben, Schritt'}</span>
-      <span className="lum-step-label-short" aria-hidden="true">{english ? 'Step' : 'Schritt'}</span>
-      <select data-testid="learner-map-unit-step" aria-label={english ? 'Units top down, step' : 'Einheiten von oben, Schritt'}
-        value={view.step} onChange={event => setRequestedStep(Number(event.target.value))}>
-        {Array.from({ length: view.maxStep }, (_, index) => index + 1).map(step => <option key={step} value={step}>{step}</option>)}
-      </select>
-    </label>}
-  </>
+  const toolbar = mapSubjects.length > 1 ? <div className="lum-subject-filter" role="group" aria-label={english ? 'Subjects in the map' : 'Fächer in der Karte'}
+    data-testid="learner-map-subject-filter">
+    {mapSubjects.map(subject => {
+      const pressed = shownSubjects.includes(subject)
+      return <button key={subject} type="button" aria-pressed={pressed} data-subject-id={subject}
+        disabled={pressed && shownSubjects.length === 1}
+        title={pressed && shownSubjects.length === 1 ? english ? 'At least one subject stays visible.' : 'Mindestens ein Fach bleibt sichtbar.' : undefined}
+        onClick={() => setHiddenSubjects(current => pressed ? [...current, subject] : current.filter(id => id !== subject))}>
+        {subjectLabel(subject, english)}
+      </button>
+    })}
+  </div> : undefined
 
-  return <div className="learner-native-goal-map" data-testid="native-cockpit-map" data-map-view="units" data-unit-step={view.step}
+  return <div className="learner-native-goal-map" data-testid="native-cockpit-map" data-map-view="units"
     data-selected-goal-id={props.selectedGoalId} data-map-active={props.active}>
     <LearningUnitMap fixture={fixture} embedded active={props.active} headingMode="context"
       rootLabel={english ? 'My learning goals' : 'Meine Lernziele'} language={props.language} learnerProgress={progress} activeGoalId={props.activeGoalId}
       command={command} showInspector={false} compactListThreshold={UNIT_MAP_COMPACT_LIST_THRESHOLD}
-      notice={notice} toolbar={toolbar} onEntrySelect={(goalId) => {
+      toolbar={toolbar} locationBarContainer={props.locationBarContainer} onEntrySelect={(goalId) => {
         const goal = goalIndexAll.get(goalId)
         if (goal && !goal.personalCurriculumProjection?.presentationOnly) props.onSelectGoal(goalId)
       }}
