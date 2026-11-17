@@ -1,0 +1,43 @@
+{
+  "status": "PASS_FOCUSED_INDEPENDENT_REVIEW",
+  "reviewedTestSha256": "511ac8a37cd816796a81718d80502ad16144d8f5bb6458c2b1ae57b549314282",
+  "testUnchangedAtEnd": true,
+  "scope": "Only final HE SekI support correction, from two explicit supports to those two plus exactly three genuinely required method preparations.",
+  "existingAssertionsPreserved": true,
+  "exactDelta": "Only the expected support literal/message plus three explicit required.has assertions differ inside the reviewed stage-support block. Entire old block before/after that span is byte-identical.",
+  "retainedFloors": [
+    "Exact lower-stage tree/reference payload equality against corresponding CrossStage source",
+    "Exact 134 raw own Physics targets and exact five support-role IDs",
+    "Actual rendered own Physics visibility equals targets plus support",
+    "All thirteen forbidden upper-support insertions rejected",
+    "Removing any of the five expected supports rejected"
+  ],
+  "positiveExactGuardCases": 2,
+  "embeddedNegativeCasesPassed": 36,
+  "independentMissingRealDemandNegativesRejected": 6,
+  "nativeFilteredContexts": 6,
+  "nativeRequiredWitnesses": 18,
+  "noNewSeeds": true,
+  "evidence": [
+    "probe.actual.json",
+    "native-method-witnesses.actual.json",
+    "support-guard.diff",
+    "extracted-guard.ts",
+    "reviewed-test.ts"
+  ],
+  "inputPins": {
+    "app/scripts/testPhysicsGoalBookInputs.ts": "511ac8a37cd816796a81718d80502ad16144d8f5bb6458c2b1ae57b549314282",
+    "tmp/pipeline/laender-stufen/gesamt/review/physics-goalbook-test/reviewed-test.ts": "724280de4593fc4d64332927d28f68efc535f334c17b50d6cacae8f8b079189a",
+    "app/src/utils/authoring/compositionViewAuthoring.ts": "e4d9546dfc613c6c40afa1bc1e410137f51cd3b93c622d77dc38c08d1b9cd22b",
+    "app/scripts/generateCurriculumQualityStatus.ts": "dcdd11710b89ec5bae010901e4b927fc46f04e255b266c4308b8a76601d7cc76",
+    "curricula/DE/Gymnasium/composition-views/physik/de-he-gk-g8.view.json": "e6f23f76385eb45fe15fcd459c4bc50650c8e8b9db1c9fdbf9f906deb3c9f460",
+    "curricula/DE/Gymnasium/composition-views/physik/de-he-seki-g8.view.json": "48eba06fa1b2d92210ffe12e5ad876a08966b154672cbeea0457e337a650d382",
+    "curricula/DE/Gymnasium/composition-views/physik/de-he-gk-g9.view.json": "ee442b99de5732c44ee88e83293026e449f0b8598e9a6dfc7be17b95deb26e9d",
+    "curricula/DE/Gymnasium/composition-views/physik/de-he-seki-g9.view.json": "3b3051074adf328ba61aec695a9bd90b9b9ac1460fa18ab08bec707449faaddd"
+  },
+  "limits": [
+    "Focused HE block replay, not the still-running full GoalBook/M7/CQR suite.",
+    "Actual backend capture selects Mathematics and Physics jointly; each supplied R witness is independently rooted in an actual selected Physics seed, so no Math seed is needed to justify these methods.",
+    "The actual filtered Physics seed count is 130 in each HE lower context; the preserved raw view floor is 134. No equivalence between raw declarations and filtered seeds is asserted."
+  ]
+}

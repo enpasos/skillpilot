@@ -155,6 +155,7 @@ export function buildLearnerUnitMapProjection(input: LearnerUnitMapProjectionInp
   }
 
   const preparationIds: string[] = []
+  let preparationTitle: string | undefined
   const aliasOwner = new Map<string, string>()
   const placeLeaf = (id: string, parentId: string, treeParentId?: string) => {
     const existing = parentOf.get(id)
@@ -179,6 +180,7 @@ export function buildLearnerUnitMapProjection(input: LearnerUnitMapProjectionInp
     // Goals that the prerequisite closure adds from outside the plan wait for
     // their place as preparation; their synthetic cluster is no map node.
     if (goal.personalCurriculumProjection?.presentationOnly) {
+      preparationTitle ??= audienceTitle(goal)
       for (const child of children) if (!preparationIds.includes(child)) preparationIds.push(child)
       return
     }
@@ -379,6 +381,82 @@ export function buildLearnerUnitMapProjection(input: LearnerUnitMapProjectionInp
     }
   }
 
+  // Actual prerequisite-closure atoms can have a phase as their earliest
+  // common acquisition place. Give them a presentation unit beside that
+  // phase's topics. This neither selects targets nor claims an authored plan
+  // binding; all atom identities and requirement edges are processed below.
+  // An ambiguous root placement stays explicit, and atomic topic boards stay
+  // atomic rather than gaining a wrapper for every preparation goal.
+  for (const parent of Object.values(entries)) {
+    if (parent.kind !== 'unit' || !parent.children?.some(id => entries[id]?.kind === 'unit')) continue
+    const goals = parent.children.filter(id => entries[id]?.preparation && entries[id].kind !== 'unit')
+    if (!goals.length) continue
+    const preparationSet = new Set(goals)
+    const owner = new Map<string, string>()
+    const indexDescendants = (id: string, child: string) => {
+      owner.set(id, child)
+      entries[id].children?.forEach(descendant => indexDescendants(descendant, child))
+    }
+    parent.children.forEach(child => indexDescendants(child, child))
+    const successors = new Map(parent.children.map(id => [id, new Set<string>()]))
+    const indegree = new Map(parent.children.map(id => [id, 0]))
+    const connect = (source: string, target: string) => {
+      if (source === target || successors.get(source)!.has(target)) return
+      successors.get(source)!.add(target)
+      indegree.set(target, indegree.get(target)! + 1)
+    }
+    for (const [id, target] of owner) {
+      if (entries[id].kind === 'unit') continue
+      for (const dependent of leafDependents(id)) for (const requirement of resolver.directRequirementContext(dependent)) {
+        for (const atom of requirement.sourceGoalIds) {
+          const source = owner.get(atom)
+          if (source) connect(source, target)
+        }
+      }
+    }
+    for (const pair of acceptedPairs) if (pair.parentId === parent.id) connect(pair.earlier, pair.later)
+    const siblingIndex = new Map(parent.children.map((id, index) => [id, index]))
+    const ready = parent.children.filter(id => indegree.get(id) === 0)
+    const ordered: string[] = []
+    while (ready.length) {
+      ready.sort((a, b) => Number(preparationSet.has(b)) - Number(preparationSet.has(a))
+        || siblingIndex.get(a)! - siblingIndex.get(b)!)
+      const id = ready.shift()!
+      ordered.push(id)
+      for (const next of successors.get(id)!) {
+        indegree.set(next, indegree.get(next)! - 1)
+        if (indegree.get(next) === 0) ready.push(next)
+      }
+    }
+    // Never cover an existing board cycle with a new group. Consecutive
+    // preparation blocks in a topological order are convex: a path through a
+    // topic separates the blocks, so contraction cannot create a new cycle.
+    if (ordered.length !== parent.children.length) continue
+    const groups: string[][] = []
+    let current: string[] | undefined
+    for (const id of ordered) {
+      if (!preparationSet.has(id)) { current = undefined; continue }
+      if (!current) { current = []; groups.push(current) }
+      current.push(id)
+    }
+    const replacements = new Map<string, string>()
+    groups.forEach((group, index) => {
+      let key = `required-foundations:${unitKeyByEntryId.get(parent.id) ?? parent.id}${index ? `:${index + 1}` : ''}`
+      while (unitEntryIdByKey.has(key)) key += '_'
+      const id = syntheticUnitId(key)
+      const title = preparationTitle ?? 'Notwendige Grundlagen'
+      entries[id] = { id, title: groups.length > 1 ? `${title} (${index + 1})` : title, description: '', kind: 'unit', unitType: 'unit',
+        children: [], requires: [], position: { x: 0, y: 0 } }
+      unitEntryIdByKey.set(key, id)
+      unitKeyByEntryId.set(id, key)
+      parentOf.set(id, parent.id)
+      childSet.set(id, new Set())
+      group.forEach(goalId => { addChild(id, goalId); replacements.set(goalId, id) })
+    })
+    parent.children = [...new Set(parent.children.map(child => replacements.get(child) ?? child))]
+    childSet.set(parent.id, new Set(parent.children))
+  }
+
   const entryPaths: Record<string, string[]> = Object.create(null)
   entryPaths[rootId] = [rootId]
   const order = [rootId]
@@ -553,6 +631,51 @@ export function filterLearnerUnitMapToSubjects(fixture: LearnerUnitMapFixture, s
       if (sourceKept && (provenance.length || relation.unitOrder === 'declared')) {
         ;(scopeRelations[scopeId] ??= []).push({ ...relation, provenance })
       }
+    }
+    // Filtering out a sibling does not erase its calendar position. Contract
+    // only declared order paths on this board, stopping at the first retained
+    // unit on each path. Requirements never supply or inherit these edges.
+    const siblings = new Set(fixture.entries[scopeId]?.children ?? [])
+    const declared = new Map<string, Set<string>>()
+    for (const relation of relations) {
+      if (relation.unitOrder !== 'declared' || relation.backward
+        || !siblings.has(relation.source) || !siblings.has(relation.target)
+        || fixture.entries[relation.source]?.kind !== 'unit' || fixture.entries[relation.target]?.kind !== 'unit') continue
+      const next = declared.get(relation.source) ?? new Set<string>()
+      next.add(relation.target)
+      declared.set(relation.source, next)
+    }
+    const contracted = new Map<string, Set<string>>()
+    for (const source of siblings) {
+      if (!kept.has(source) || fixture.entries[source]?.kind !== 'unit') continue
+      const seen = new Set([source]), pending = [...declared.get(source) ?? []], targets = new Set<string>()
+      while (pending.length) {
+        const target = pending.pop()!
+        if (seen.has(target)) continue
+        seen.add(target)
+        if (kept.has(target)) targets.add(target)
+        else pending.push(...declared.get(target) ?? [])
+      }
+      contracted.set(source, targets)
+    }
+    const reachable = (source: string, target: string): boolean => {
+      const seen = new Set<string>(), pending = [source]
+      while (pending.length) {
+        const current = pending.pop()!
+        if (current === target) return true
+        if (seen.has(current)) continue
+        seen.add(current)
+        pending.push(...contracted.get(current) ?? [])
+      }
+      return false
+    }
+    for (const [source, targets] of contracted) for (const target of targets) {
+      if ([...targets].some(middle => middle !== target && reachable(middle, target))) continue
+      const output = scopeRelations[scopeId] ??= []
+      const existing = output.findIndex(relation => relation.source === source && relation.target === target)
+      if (existing >= 0) {
+        if (output[existing].unitOrder !== 'declared') output[existing] = { ...output[existing], unitOrder: 'declared' }
+      } else output.push({ source, target, kind: 'summary', provenance: [], unitOrder: 'declared' })
     }
   }
   return { ...fixture, entries, entryPaths, scopeRelations, scopeContext,

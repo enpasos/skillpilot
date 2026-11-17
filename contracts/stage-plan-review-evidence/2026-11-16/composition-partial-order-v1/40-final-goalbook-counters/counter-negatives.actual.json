@@ -1,0 +1,64 @@
+{
+  "status": "PASS",
+  "testSha256": "29a788499049c9a23cb16ea8533a7aada8d588a1ceecb2872d80af18192bc471",
+  "qualityStatusSha256": "de1cffcece4a5eb0dd298337c13422d4d6b66484b8f5a4db3bb1daa0610e65d9",
+  "measuredCountsFileSha256": "f06ea429d01f4d8542ec30cc6da3203b98664adedc0d10ad2cde916a48ab7bb3",
+  "positive": true,
+  "negativeMutations": [
+    {
+      "name": "wrong visibleProjectedRouteTargetGoalOccurrences",
+      "rejected": true,
+      "error": "AssertionError [ERR_ASSERTION]: Physics Sek-I CQR-104 must count every resolved learner-facing target occurrence\n\n9168 !== 9167\n"
+    },
+    {
+      "name": "wrong visibleProfileSelectedAtomicGoalOccurrences",
+      "rejected": true,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n8740 !== 8739\n"
+    },
+    {
+      "name": "wrong visibleProjectedRouteTargetGoalOccurrencesExcludedByProfileSelector",
+      "rejected": true,
+      "error": "AssertionError [ERR_ASSERTION]: The profile selector diagnostic must retain every remaining tag/phase mismatch after the five-target correction\n\n429 !== 428\n"
+    },
+    {
+      "name": "wrong uniqueProjectedRouteTargetsExcludedByProfileSelector",
+      "rejected": true,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n58 !== 57\n"
+    },
+    {
+      "name": "wrong visibleSelectedAtomicGoalOccurrences",
+      "rejected": true,
+      "error": "AssertionError [ERR_ASSERTION]: Every projected route target occurrence must enter the route checks\n\n9168 !== 9167\n"
+    },
+    {
+      "name": "wrong visibleProjectedRouteTargetGoalOccurrencesExcludedFromRouteChecks",
+      "rejected": true,
+      "error": "AssertionError [ERR_ASSERTION]: CQR-104 must fail closed if any projected route target escapes route checks\n\n1 !== 0\n"
+    },
+    {
+      "name": "one of five goal counts lowered",
+      "rejected": true,
+      "error": "AssertionError [ERR_ASSERTION]: The 78 selected occurrences retain exactly the five reviewed targets across the expanded view inventory\n+ actual - expected ... Lines skipped\n\n  Map(5) {\n+   '2084b7d4-300d-5fa0-8b8d-c480c40f853e' => 29,\n-   '2084b7d4-300d-5fa0-8b8d-c480c40f853e' => 30,\n    '3857891b-d328-585b-9936-85c7aff122ee' => 24,\n...\n    '68034218-8f3e-5f7f-ae4e-ed057dd4e44e' => 6,\n    '7d4d6a39-0c78-5fb0-b7bf-182ed00972f7' => 6\n  }"
+    },
+    {
+      "name": "compensating counts still sum78 but wrong identity",
+      "rejected": true,
+      "error": "AssertionError [ERR_ASSERTION]: The 78 selected occurrences retain exactly the five reviewed targets across the expanded view inventory\n+ actual - expected\n\n  Map(5) {\n+   '2084b7d4-300d-5fa0-8b8d-c480c40f853e' => 31,\n+   '3857891b-d328-585b-9936-85c7aff122ee' => 23,\n-   '2084b7d4-300d-5fa0-8b8d-c480c40f853e' => 30,\n-   '3857891b-d328-585b-9936-85c7aff122ee' => 24,\n    '3b586f2a-60e2-5019-aa08-6a47616a1f1f' => 12,\n    '68034218-8f3e-5f7f-ae4e-ed057dd4e44e' => 6,\n    '7d4d6a39-0c78-5fb0-b7bf-182ed00972f7' => 6\n  }"
+    },
+    {
+      "name": "existing route failure labelled pass",
+      "rejected": true,
+      "error": "AssertionError [ERR_ASSERTION]: Physics Sek-I CQR-104 status must reflect all projection-local route failures\n\n'pass' !== 'fail'\n"
+    },
+    {
+      "name": "failed route status",
+      "rejected": true,
+      "error": "AssertionError [ERR_ASSERTION]: current acquisition routes must retain the protected Physics quality floor\n\n'fail' !== 'pass'\n"
+    },
+    {
+      "name": "selector mismatch hidden by aggregate",
+      "rejected": true,
+      "error": "AssertionError [ERR_ASSERTION]: Known Physics Sek-I projection-local DirectTerminalRoute failures must not be removed by profile preselection\n\n1 !== 0\n"
+    }
+  ]
+}

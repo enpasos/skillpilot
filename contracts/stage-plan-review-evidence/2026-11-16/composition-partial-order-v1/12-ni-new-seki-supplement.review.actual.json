@@ -1,0 +1,29 @@
+{
+  "reviewer": "root independent of author he_ephase_validation",
+  "timestamp": "2026-11-17T01:26:00.293017+00:00",
+  "source": {
+    "path": "curricula/DE/Gymnasium/input/NI/lower-secondary/ma_gym_si_kc_druck.pdf",
+    "sha256": "1d4e97a9f0f64bfac1526ab108ddba8bfc7859f4f79db80d1ef6cf5ef96f92f3",
+    "actualPrintedPages": [
+      36,
+      51
+    ],
+    "retainedExtractionPageClaim": 50,
+    "pageClaimCorrection": "The retained extraction cites p.50; the original PDF prints this topic and passage on p.51. Retained extraction is not rewritten."
+  },
+  "finding": "Constant rate of change in linear functions does not substantiate derivatives, elementary differentiation rules, extrema from derivatives, or trigonometric derivatives. Page36 explicitly places derivatives and integrals in Sekundarbereich II.",
+  "excludedNewSupplementAtomicGoalIds": [
+    "7156558c-57f1-4372-9ba7-0640c3f7cb3a",
+    "9f2fc0d1-e1e7-4051-ba70-87ba1dd8dd1c",
+    "2850e8f6-2330-50d3-a577-d519540d9924",
+    "f9fdb733-5838-4983-888a-05624eabbe17"
+  ],
+  "originalSourceTreeAffected": false,
+  "decision": "Exclude precisely these four goals from newly authored NI SekI seed supplements. Preserve original CrossStage target roles and raw historical supplement inventory; do not add bc53 assessment target merely to satisfy a terminal gate.",
+  "checks": {
+    "allFourAreNewMappedSupplements": true,
+    "noneIsOriginalSourceStageTree": true,
+    "primarySourceExplicitlyDefersDerivativesToSekII": true
+  },
+  "pass": true
+}

@@ -1,0 +1,156 @@
+{
+  "status": "PASS independent test-change review; actual V32 data failures remain FAIL",
+  "originalTestSha256": "4c740a21e707a91176375806f5a98ca01b54db6470fb2054cb7a0bc23373559f",
+  "reviewedPlacementGuardFileSha256": "8eb2b423af1b5b3cb0a685f791af9d7bf8dc33fd88fe83b2c18d386129cb8c91",
+  "currentTestSha256": "8eb2b423af1b5b3cb0a685f791af9d7bf8dc33fd88fe83b2c18d386129cb8c91",
+  "currentPlacementGuardMatchesReviewedBytes": true,
+  "inputReport": "tmp/pipeline/laender-stufen/gesamt/review/physics-assessment-projection/original-inputs.actual.json",
+  "original89ViewStructuralControl": {
+    "exitCode": 0,
+    "counts": {
+      "total": {
+        "viewCount": 64,
+        "fermiScopeViewCount": 89,
+        "practiceTaskPairs": 4574,
+        "abiturTaskPairs": 512,
+        "preservedSekITaskPairs": 30,
+        "preservedPrerequisiteOnlyPairs": 161,
+        "filteredPrerequisiteOnlyPairs": 48,
+        "kinematicsTaskPairs": 128,
+        "astronomyTaskPairs": 147
+      },
+      "addedHesseDuration": {
+        "viewCount": 4,
+        "fermiScopeViewCount": 6,
+        "practiceTaskPairs": 308,
+        "abiturTaskPairs": 32,
+        "preservedSekITaskPairs": 0,
+        "preservedPrerequisiteOnlyPairs": 0,
+        "filteredPrerequisiteOnlyPairs": 0,
+        "kinematicsTaskPairs": 8,
+        "astronomyTaskPairs": 8
+      },
+      "addedLandSekI": {
+        "viewCount": 0,
+        "fermiScopeViewCount": 14,
+        "practiceTaskPairs": 0,
+        "abiturTaskPairs": 0,
+        "preservedSekITaskPairs": 0,
+        "preservedPrerequisiteOnlyPairs": 0,
+        "filteredPrerequisiteOnlyPairs": 0,
+        "kinematicsTaskPairs": 0,
+        "astronomyTaskPairs": 3
+      }
+    },
+    "knownExcludedView": "de-th-seki.view.json",
+    "reason": "Missing14cc61 despite actual astronomy demand; exclusion is limited to this isolated review control and does not modify the product test.",
+    "logSha256": "f3c54f7a9fc837ef0d6e6b6e32532bdac451327f5819f70ce714ed9611510f4e"
+  },
+  "negativeMutations": [
+    {
+      "case": "missing-task",
+      "exitCode": 1,
+      "expectedAssertion": "the reviewed vector-free kinematics task must remain reachable",
+      "log": "tmp/pipeline/laender-stufen/gesamt/review/physics-assessment-projection/missing-task.log",
+      "sha256": "3a4f044e53c5688920321fdfe70f4cceac113c06e27d141fe5f97cd17923e161"
+    },
+    {
+      "case": "wrong-payload",
+      "exitCode": 1,
+      "expectedAssertion": "both language bodies and exact scoring must survive projection",
+      "log": "tmp/pipeline/laender-stufen/gesamt/review/physics-assessment-projection/wrong-payload.log",
+      "sha256": "b8efeb49e4ab93b80fdbe1c80e6dee5787ff324fcfc5b483b54da704c46cdaa5"
+    },
+    {
+      "case": "wrong-abitur-place",
+      "exitCode": 1,
+      "expectedAssertion": "must remain in its collection or its established preparation section",
+      "log": "tmp/pipeline/laender-stufen/gesamt/review/physics-assessment-projection/wrong-abitur-place.log",
+      "sha256": "7e1cfe08b0a0f04d2fe337305d4e6d4ad1007a25e62469a71fe7417acb4d3397"
+    },
+    {
+      "case": "wrong-support-role",
+      "exitCode": 1,
+      "expectedAssertion": "must retain its existing prerequisite-only role",
+      "log": "tmp/pipeline/laender-stufen/gesamt/review/physics-assessment-projection/wrong-support-role.log",
+      "sha256": "089e036943599f46e04e59bfd9ba929a4fb7f094a5fbf978de80774b25ed2a3e"
+    }
+  ],
+  "placementGuard": {
+    "status": "PASS-independent-guard-mutations; actualV32findings retained",
+    "actualVisibleAssessmentPairsChecked": 8934,
+    "actualPlacementFindings": [
+      {
+        "view": "de-mv-gk.view.json",
+        "task": "6ea3fb3c-abdc-568f-ab13-97c36dc274e4",
+        "message": "AssertionError [ERR_ASSERTION]: de-mv-gym-physics-gk: assessment 6ea3fb3c-abdc-568f-ab13-97c36dc274e4 is in Sek I before its assessed competency d6dc0e02-831d-4894-a61a-852bcc74f147 in Sek II"
+      },
+      {
+        "view": "de-mv-lk.view.json",
+        "task": "6ea3fb3c-abdc-568f-ab13-97c36dc274e4",
+        "message": "AssertionError [ERR_ASSERTION]: de-mv-gym-physics-lk: assessment 6ea3fb3c-abdc-568f-ab13-97c36dc274e4 is in Sek I before its assessed competency d6dc0e02-831d-4894-a61a-852bcc74f147 in Sek II"
+      },
+      {
+        "view": "de-sl-gk.view.json",
+        "task": "6ea3fb3c-abdc-568f-ab13-97c36dc274e4",
+        "message": "AssertionError [ERR_ASSERTION]: de-sl-gym-physics-gk: assessment 6ea3fb3c-abdc-568f-ab13-97c36dc274e4 is in Sek I before its assessed competency d6dc0e02-831d-4894-a61a-852bcc74f147 in Sek II"
+      },
+      {
+        "view": "de-sl-lk.view.json",
+        "task": "6ea3fb3c-abdc-568f-ab13-97c36dc274e4",
+        "message": "AssertionError [ERR_ASSERTION]: de-sl-gym-physics-lk: assessment 6ea3fb3c-abdc-568f-ab13-97c36dc274e4 is in Sek I before its assessed competency d6dc0e02-831d-4894-a61a-852bcc74f147 in Sek II"
+      },
+      {
+        "view": "de-sn-gk.view.json",
+        "task": "6ea3fb3c-abdc-568f-ab13-97c36dc274e4",
+        "message": "AssertionError [ERR_ASSERTION]: de-sn-gym-physics-gk: assessment 6ea3fb3c-abdc-568f-ab13-97c36dc274e4 is in Sek I before its assessed competency d6dc0e02-831d-4894-a61a-852bcc74f147 in Sek II"
+      },
+      {
+        "view": "de-sn-lk.view.json",
+        "task": "6ea3fb3c-abdc-568f-ab13-97c36dc274e4",
+        "message": "AssertionError [ERR_ASSERTION]: de-sn-gym-physics-lk: assessment 6ea3fb3c-abdc-568f-ab13-97c36dc274e4 is in Sek I before its assessed competency d6dc0e02-831d-4894-a61a-852bcc74f147 in Sek II"
+      }
+    ],
+    "realWitness": {
+      "task": "50328a4f-91e8-5c8b-8d61-8f9c98a5cddf",
+      "covered": "a522c8c0-f3a4-5568-acae-3010ed9feb87",
+      "parent": "composition:de-he-gym-physics-gk:structure:physics-sekii-gk",
+      "taskUnit": "physics-q2",
+      "coveredUnit": "physics-q1"
+    },
+    "mutationChecks": [
+      "actual placement accepted",
+      "array reversal accepted",
+      "explicit reversed after rejected",
+      "transitive reversed after rejected",
+      "covered competency inII rejects task inI",
+      "requires alone not treated as coverage",
+      "old lower-task ancestry move rejected"
+    ],
+    "limits": [
+      "The old lower-placement mutation is performed on the actual projected ancestry; the attempted raw canonical-view move stalled before the assertions and was bounded separately.",
+      "The new placement guard is independent of CQR; known missing TH task is separately rejected by the unchanged demand guard."
+    ]
+  },
+  "rawLowerMoveExperiment": {
+    "case": "lost-seki-place",
+    "file": "de-de-gym-physics-gk.view.json",
+    "goalId": "74a32716-2b46-5d96-8b57-3f6edb90e088",
+    "result": "The raw-view relocation stalled inside earlier projection/normalization before reaching assertions; own process was terminated after85seconds. This is not counted as a rejected assertion. A separate mutation of the actual projected ancestry is rejected by the unchanged lower-placement predicate.",
+    "logSha256": "85d14533445b503aab992ff2344dbf15be76940fc465faf3290bc49547aede50"
+  },
+  "retainedContracts": [
+    "Historical60 shared collection-view floor,69 Fermi-scope floor and all existing task/role counts retained; six HE duration views and fifteen new Land SekI views counted separately.",
+    "Complete canonical task/solution/scoring payload equality retained.",
+    "All eight Abitur proposals per applicable view must belong to exactly one own upper-stage unit; Hessian sample structure still checked exactly.",
+    "Existing lower-stage tasks remain in SekI; obsolete exact wrapper identity is removed.",
+    "Coverage remains distinct from prerequisites; placement uses coverage and declared order, never array position."
+  ],
+  "limits": [
+    "Placement guard checks visible assessed goals; invisible covered goals are not independently enrolled by this test.",
+    "This is an isolated projection/placement review. CQR and the known data repairs are separate and have not been declared passing.",
+    "The review uses original V32 source snapshots. Current live-source drift is reported separately."
+  ],
+  "currentLiveViewDriftFromV32": [],
+  "writes": "Only ignored review artifacts; no product test, curriculum source or live view changed."
+}

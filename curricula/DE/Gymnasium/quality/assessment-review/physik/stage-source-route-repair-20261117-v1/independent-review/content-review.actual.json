@@ -1,0 +1,111 @@
+{
+  "schema": "skillpilot-independent-assessment-review-v1",
+  "reviewer": "/root",
+  "author": "/root/he_ephase_implementation",
+  "status": "pass",
+  "candidateId": "3b7b2b62-e39c-5936-b0d8-5406206e57b6",
+  "pins": {
+    "build-candidate.py": "ec23c35f54d246437f584255b13b6ba756edb084da6eac63a7bd920991c1fa4a",
+    "author-numerics.actual.json": "5f508b257ac1c3cef820863f012759d113705f051eb2d90c4d0e532e40271927",
+    "lens-eye-two-model-simulations.goal.json": "0d8284fd3a36621a53ea04078e7e85427adefc9fc34ea9d9abe0e48785e110a7",
+    "review-request.md": "f573feed13433b697d0f07655dc8051083d26830a76fd5554e0ec658a2b5a024",
+    "reviewed-candidate.goal.json": "b88dc1180cb15d14b8462de2afb121d79b47d31aa9d2fdf0fcb9b21c8bc1c235",
+    "lens-eye-two-model-simulations.md": "f3b1e85c3fb29fe2e6300ac7c0753612a28bd3a9f814972cfdd1ccb975477185"
+  },
+  "numericalRecomputation": [
+    {
+      "case": "A",
+      "sharpF": "18",
+      "signedImageHeight": "-1/5",
+      "nearSharpF": "180/11",
+      "rows": [
+        {
+          "g": 180,
+          "f": "15",
+          "b_sim": "180/11",
+          "delta": "-40/11"
+        },
+        {
+          "g": 180,
+          "f": "18",
+          "b_sim": "20",
+          "delta": "0"
+        },
+        {
+          "g": 180,
+          "f": "20",
+          "b_sim": "45/2",
+          "delta": "5/2"
+        },
+        {
+          "g": 90,
+          "f": "18",
+          "b_sim": "45/2",
+          "delta": "5/2"
+        },
+        {
+          "g": 90,
+          "f": "180/11",
+          "b_sim": "20",
+          "delta": "0"
+        }
+      ]
+    },
+    {
+      "case": "B",
+      "sharpF": "20",
+      "signedImageHeight": "-1/5",
+      "nearSharpF": "120/7",
+      "rows": [
+        {
+          "g": 120,
+          "f": "15",
+          "b_sim": "120/7",
+          "delta": "-48/7"
+        },
+        {
+          "g": 120,
+          "f": "20",
+          "b_sim": "24",
+          "delta": "0"
+        },
+        {
+          "g": 120,
+          "f": "24",
+          "b_sim": "30",
+          "delta": "6"
+        },
+        {
+          "g": 60,
+          "f": "20",
+          "b_sim": "30",
+          "delta": "6"
+        },
+        {
+          "g": 60,
+          "f": "120/7",
+          "b_sim": "24",
+          "delta": "0"
+        }
+      ]
+    }
+  ],
+  "scoringExhaustion": {
+    "cases": 6561,
+    "passingCases": 9,
+    "passingWithMissingCore": 0
+  },
+  "contentReview": {
+    "twoIndependentCases": "Each case independently constructs two rays, derives the lens equation solution, runs and interprets five numerical model cases, and justifies a model limit.",
+    "coverage": "The single covered atom requires ray construction, lens equation, simulation, quantitative sharpness and model limits. All components are required in both cases.",
+    "prerequisites": "Only the actual lens-eye competence is required. No source membership, assessment coverage or new prerequisite is invented to satisfy QA.",
+    "bilingual": "Both task and solution versions inspected in full, including corrected object heights, image heights, central-ray slopes and near-focus values.",
+    "correction": "Author replaced overly large object heights A9/B5 mm with A1.8/B1.0 mm after independent paraxial-consistency objection. Corrected image heights are both -0.2 mm.",
+    "scope": "Own school model task, explicitly not an official examination, biological measurement, medical assertion or evidence of actual learner success.",
+    "rubric": "Missing any core gives zero in that core; threshold23/24 cannot compensate for a missing core. Exhaustive arithmetic check is separate from this content judgment."
+  },
+  "limitations": [
+    "No human learner trial has been performed.",
+    "Review covers the pinned needs_review candidate; release metadata and catalog insertion must be verified separately."
+  ]
+}

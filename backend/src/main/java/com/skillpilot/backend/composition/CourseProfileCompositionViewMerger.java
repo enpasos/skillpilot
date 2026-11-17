@@ -302,9 +302,20 @@ public final class CourseProfileCompositionViewMerger {
     }
 
     private static List<Map<String, Object>> freeze(List<Map<String, Object>> nodes) {
-        return nodes.stream()
+        List<Map<String, Object>> projected = projectChildOrders(nodes);
+        validateUniqueStructureIds(projected, new HashSet<>());
+        return projected.stream()
                 .map(CourseProfileCompositionViewMerger::deepFreeze)
                 .toList();
+    }
+
+    private static void validateUniqueStructureIds(List<Map<String, Object>> nodes, Set<String> seen) {
+        for (Map<String, Object> node : nodes) {
+            if (!"structure".equals(node.get("kind"))) continue;
+            String id = text(node.get("id"));
+            if (!seen.add(id)) throw new IllegalStateException("Duplicate global composition structure ID after merge: " + id);
+            validateUniqueStructureIds(nodeMaps(node.get("children")), seen);
+        }
     }
 
     private static List<Map<String, Object>> removeRedundantNestedReferences(
@@ -326,6 +337,14 @@ public final class CourseProfileCompositionViewMerger {
                 Set<String> overlap = new LinkedHashSet<>(left.goalIds());
                 overlap.retainAll(right.goalIds());
                 if (overlap.isEmpty()) {
+                    continue;
+                }
+                // A concrete, explicit prerequisite acquisition place is not
+                // redundant with a broad support declaration. Keep both; the
+                // flag authorizes no target and the graph must prove a leaf.
+                if ("prerequisiteOnly".equals(left.projectionRole()) && (
+                        isAcquisitionLeaf(left, goalCoverageResolver) && right.goalIds().containsAll(left.goalIds())
+                        || isAcquisitionLeaf(right, goalCoverageResolver) && left.goalIds().containsAll(right.goalIds()))) {
                     continue;
                 }
 
@@ -456,6 +475,13 @@ public final class CourseProfileCompositionViewMerger {
     private static List<Map<String, Object>> mergeSiblings(
             List<Map<String, Object>> nodes,
             MergeState state) {
+        return mergeSiblings(nodes, state, null);
+    }
+
+    private static List<Map<String, Object>> mergeSiblings(
+            List<Map<String, Object>> nodes,
+            MergeState state,
+            Map<String, String> structureAliases) {
         List<NodeGroup> groups = new ArrayList<>();
         for (Map<String, Object> node : nodes) {
             NodeGroup group = groups.stream()
@@ -474,6 +500,15 @@ public final class CourseProfileCompositionViewMerger {
             Map<String, Object> node = mergeGroup(group.nodes(), state);
             if (node != null) {
                 merged.add(node);
+                if (structureAliases != null && "structure".equals(node.get("kind"))) {
+                    for (Map<String, Object> source : group.nodes()) {
+                        String original = text(source.get("id"));
+                        String previous = structureAliases.putIfAbsent(original, text(node.get("id")));
+                        if (previous != null && !previous.equals(node.get("id"))) {
+                            throw new IllegalStateException("Ambiguous composition childOrder identity: " + original);
+                        }
+                    }
+                }
             }
         }
         return merged;
@@ -489,11 +524,22 @@ public final class CourseProfileCompositionViewMerger {
             List<Map<String, Object>> children = sources.stream()
                     .flatMap(source -> nodeMaps(source.get("children")).stream())
                     .toList();
-            merged.put("children", List.copyOf(mergeSiblings(children, state)));
+            Map<String, String> aliases = new LinkedHashMap<>();
+            List<Map<String, Object>> mergedChildren = mergeSiblings(children, state, aliases);
+            merged.put("children", List.copyOf(mergedChildren));
+            mergeChildOrders(merged, sources, aliases);
             return merged;
         }
 
         validateLeafMetadata(sources);
+        // A location-only prerequisite template may omit a target's optional
+        // presentation label. The selected target remains authoritative.
+        sources.stream().filter(CourseProfileCompositionViewMerger::isTarget).findFirst().ifPresent(target -> {
+            for (String field : List.of("displayLabel", "displayLabelEn")) {
+                if (target.containsKey(field)) merged.put(field, target.get(field));
+                else merged.remove(field);
+            }
+        });
         merged.remove("children");
         applyTargetDominantProjectionRole(merged, sources);
         return state.retainLeaf(merged);
@@ -586,9 +632,24 @@ public final class CourseProfileCompositionViewMerger {
     }
 
     private static void validateLeafMetadata(List<Map<String, Object>> sources) {
-        Map<String, Object> expected = leafMetadata(sources.getFirst());
         for (Map<String, Object> source : sources) {
-            if (!leafMetadata(source).equals(expected)) {
+            if (source.containsKey("acquisitionPlacement") && (!Boolean.TRUE.equals(source.get("acquisitionPlacement"))
+                    || !"goalEntry".equals(source.get("kind")) || isTarget(source))) {
+                throw new IllegalStateException("Invalid prerequisite acquisitionPlacement");
+            }
+        }
+        Map<String, Object> authority = sources.stream().filter(CourseProfileCompositionViewMerger::isTarget)
+                .findFirst().orElse(sources.getFirst());
+        Map<String, Object> expected = leafMetadata(authority);
+        for (Map<String, Object> source : sources) {
+            Map<String, Object> candidate = leafMetadata(source);
+            Map<String, Object> compared = new LinkedHashMap<>(expected);
+            if (isTarget(authority) && Boolean.TRUE.equals(source.get("acquisitionPlacement"))) {
+                for (String field : List.of("displayLabel", "displayLabelEn")) {
+                    if (!source.containsKey(field)) compared.remove(field);
+                }
+            }
+            if (!candidate.equals(compared)) {
                 throw conflict(sources.getFirst());
             }
         }
@@ -599,7 +660,122 @@ public final class CourseProfileCompositionViewMerger {
         metadata.remove("children");
         metadata.remove("id");
         metadata.remove("label");
+        // The explicit partial order is validated and merged by child identity,
+        // separately from metadata that must agree verbatim across profiles.
+        metadata.remove("childOrder");
         return metadata;
+    }
+
+    private static void mergeChildOrders(Map<String, Object> merged,
+            List<Map<String, Object>> sources, Map<String, String> aliases) {
+        if (sources.stream().noneMatch(source -> source.containsKey("childOrder"))) return;
+        Map<String, Set<String>> combined = new LinkedHashMap<>();
+        aliases.values().forEach(id -> combined.putIfAbsent(id, new LinkedHashSet<>()));
+        for (Map<String, Object> source : sources) {
+            Set<String> children = new LinkedHashSet<>();
+            for (Map<String, Object> child : nodeMaps(source.get("children"))) {
+                if ("structure".equals(child.get("kind"))) children.add(text(child.get("id")));
+            }
+            if (!source.containsKey("childOrder")) {
+                // Zero or one structural child has no implicit adjacency. A
+                // larger legacy source cannot silently lose its ordering.
+                if (children.size() > 1) throw new IllegalStateException("Conflicting explicit and implicit composition childOrder");
+                continue;
+            }
+            Map<String, Set<String>> order = readChildOrder(source.get("childOrder"), children);
+            for (var entry : order.entrySet()) for (String previous : entry.getValue()) {
+                String unit = aliases.get(entry.getKey()), before = aliases.get(previous);
+                if (unit == null || before == null || unit.equals(before)) {
+                    throw new IllegalStateException("Invalid merged composition childOrder endpoint");
+                }
+                combined.get(unit).add(before);
+            }
+        }
+        merged.put("childOrder", Map.of("after", reducedOrder(combined, combined.keySet())));
+    }
+
+    private static Map<String, Set<String>> readChildOrder(Object raw, Set<String> children) {
+        if (!(raw instanceof Map<?, ?> record) || !record.keySet().equals(Set.of("after"))
+                || !(record.get("after") instanceof List<?> pairs)) {
+            throw new IllegalStateException("Invalid composition childOrder shape");
+        }
+        Map<String, Set<String>> needs = new LinkedHashMap<>();
+        children.forEach(id -> needs.put(id, new LinkedHashSet<>()));
+        for (Object pair : pairs) {
+            if (!(pair instanceof Map<?, ?> fields) || !fields.keySet().equals(Set.of("unit", "after"))
+                    || !(fields.get("unit") instanceof String unit)
+                    || !(fields.get("after") instanceof String previous)
+                    || !children.contains(unit) || !children.contains(previous) || unit.equals(previous)
+                    || !needs.get(unit).add(previous)) {
+                throw new IllegalStateException("Invalid composition childOrder pair");
+            }
+        }
+        for (String unit : children) {
+            if (orderAncestors(needs, unit).contains(unit)) {
+                throw new IllegalStateException("Cyclic composition childOrder");
+            }
+            for (String previous : needs.get(unit)) for (String intermediate : needs.get(unit)) {
+                if (!previous.equals(intermediate) && orderAncestors(needs, intermediate).contains(previous)) {
+                    throw new IllegalStateException("Redundant composition childOrder pair");
+                }
+            }
+        }
+        return needs;
+    }
+
+    private static Set<String> orderAncestors(Map<String, Set<String>> needs, String unit) {
+        Set<String> found = new LinkedHashSet<>();
+        List<String> pending = new ArrayList<>(needs.getOrDefault(unit, Set.of()));
+        while (!pending.isEmpty()) {
+            String previous = pending.removeLast();
+            if (found.add(previous)) pending.addAll(needs.getOrDefault(previous, Set.of()));
+        }
+        return found;
+    }
+
+    private static List<Map<String, Object>> reducedOrder(Map<String, Set<String>> needs, Set<String> surviving) {
+        Map<String, Set<String>> closure = new LinkedHashMap<>();
+        for (String unit : needs.keySet()) {
+            Set<String> ancestors = orderAncestors(needs, unit);
+            if (ancestors.contains(unit)) throw new IllegalStateException("Conflicting cyclic composition childOrder");
+            closure.put(unit, ancestors);
+        }
+        List<Map<String, Object>> pairs = new ArrayList<>();
+        for (String unit : surviving) for (String previous : surviving) {
+            if (!closure.getOrDefault(unit, Set.of()).contains(previous)) continue;
+            boolean redundant = surviving.stream().anyMatch(intermediate -> !intermediate.equals(previous)
+                    && closure.getOrDefault(unit, Set.of()).contains(intermediate)
+                    && closure.getOrDefault(intermediate, Set.of()).contains(previous));
+            if (!redundant) pairs.add(Map.of("unit", unit, "after", previous));
+        }
+        return List.copyOf(pairs);
+    }
+
+    /** Deduplication can remove an empty intermediate wrapper. Preserve its
+     * declared reachability, never derive a new edge from remaining array order. */
+    private static List<Map<String, Object>> projectChildOrders(List<Map<String, Object>> nodes) {
+        List<Map<String, Object>> projected = new ArrayList<>();
+        for (Map<String, Object> node : nodes) {
+            if (!"structure".equals(node.get("kind"))) { projected.add(node); continue; }
+            Map<String, Object> copy = new LinkedHashMap<>(node);
+            List<Map<String, Object>> children = projectChildOrders(nodeMaps(node.get("children")));
+            copy.put("children", children);
+            if (node.get("childOrder") instanceof Map<?, ?> order && order.get("after") instanceof List<?> pairs) {
+                Set<String> surviving = new LinkedHashSet<>();
+                for (Map<String, Object> child : children) if ("structure".equals(child.get("kind"))) surviving.add(text(child.get("id")));
+                Map<String, Set<String>> needs = new LinkedHashMap<>();
+                surviving.forEach(id -> needs.put(id, new LinkedHashSet<>()));
+                for (Object raw : pairs) {
+                    Map<?, ?> pair = (Map<?, ?>) raw;
+                    String unit = (String) pair.get("unit"), previous = (String) pair.get("after");
+                    needs.computeIfAbsent(unit, id -> new LinkedHashSet<>()).add(previous);
+                    needs.putIfAbsent(previous, new LinkedHashSet<>());
+                }
+                copy.put("childOrder", Map.of("after", reducedOrder(needs, surviving)));
+            }
+            projected.add(copy);
+        }
+        return projected;
     }
 
     private static Map<String, Object> leafMetadata(Map<String, Object> node) {
@@ -608,6 +784,7 @@ public final class CourseProfileCompositionViewMerger {
         if (supportsProjectionRole(text(node.get("kind")))) {
             metadata.remove("kind");
             metadata.remove("projectionRole");
+            metadata.remove("acquisitionPlacement");
         }
         return metadata;
     }
@@ -628,9 +805,29 @@ public final class CourseProfileCompositionViewMerger {
         boolean hasTarget = sources.stream().anyMatch(CourseProfileCompositionViewMerger::isTarget);
         boolean hasPrerequisiteOnly = sources.stream()
                 .anyMatch(source -> "prerequisiteOnly".equals(source.get("projectionRole")));
+        sources.stream().filter(CourseProfileCompositionViewMerger::isTarget).findFirst().ifPresent(target -> {
+            for (String field : List.of("displayLabel", "displayLabelEn")) {
+                if (target.containsKey(field)) merged.put(field, target.get(field));
+                else merged.remove(field);
+            }
+        });
         if (hasTarget && hasPrerequisiteOnly) {
             merged.put("projectionRole", "target");
         }
+        if (!hasTarget && "goalEntry".equals(merged.get("kind"))
+                && sources.stream().anyMatch(source -> Boolean.TRUE.equals(source.get("acquisitionPlacement")))) {
+            merged.put("acquisitionPlacement", true);
+        } else {
+            // A target already has a visible place; a subtree/cluster never
+            // inherits a leaf-only acquisition capability.
+            merged.remove("acquisitionPlacement");
+        }
+    }
+
+    private static boolean isAcquisitionLeaf(GoalReference reference,
+            BiFunction<String, String, Set<String>> resolver) {
+        return "goalEntry".equals(reference.kind()) && Boolean.TRUE.equals(reference.node().get("acquisitionPlacement"))
+                && reference.goalIds().equals(resolver.apply("canonicalSubtree", text(reference.node().get("goalId"))));
     }
 
     private static boolean isTarget(Map<String, Object> node) {
@@ -890,6 +1087,19 @@ public final class CourseProfileCompositionViewMerger {
             }
             validateLeafMetadata(List.of(retained, candidate));
             List<Map<String, Object>> sources = List.of(new LinkedHashMap<>(retained), candidate);
+            if (!isTarget(retained) && !isTarget(candidate)) {
+                boolean retainedPlacement = Boolean.TRUE.equals(retained.get("acquisitionPlacement"));
+                boolean candidatePlacement = Boolean.TRUE.equals(candidate.get("acquisitionPlacement"));
+                if (candidatePlacement && !retainedPlacement) {
+                    // The capability belongs to this authored location. Never
+                    // copy it onto an earlier, unmarked exclusion/support ref.
+                    Map<String, Object> replacement = new LinkedHashMap<>(candidate);
+                    discardedLeaves.add(retained);
+                    retainedLeaves.put(key, replacement);
+                    return replacement;
+                }
+                if (retainedPlacement && !candidatePlacement) return null;
+            }
             if (!isTarget(retained) && isTarget(candidate)) {
                 Map<String, Object> replacement = new LinkedHashMap<>(preferredSource(sources));
                 applyTargetDominantProjectionRole(replacement, sources);

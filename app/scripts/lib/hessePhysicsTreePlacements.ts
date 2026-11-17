@@ -50,7 +50,14 @@ export function repairHessePhysicsTree<T extends PhysicsPlacementView>(view: T):
     if (!found?.node.children) throw new Error(`Missing reviewed HE Physics structure: ${id}`)
     return found.node as PhysicsPlacementNode & { children: PhysicsPlacementNode[] }
   }
-  const stage = requireStructure('physics-root')
+  const root = requireStructure('physics-root')
+  const stage = find(`physics-sekii-${profile.toLowerCase()}`)?.node
+    ? requireStructure(`physics-sekii-${profile.toLowerCase()}`)
+    : root
+  if (stage !== root) {
+    root.label = 'Physik'
+    root.labelEn = 'Physics'
+  }
   stage.label = `Sekundarstufe II (${profile})`
   // The established GK/LK merger combines German labels but requires other
   // metadata to match exactly; keep the English stage label profile-neutral.

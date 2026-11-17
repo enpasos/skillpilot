@@ -1,0 +1,29 @@
+{
+  "command": [
+    "npm",
+    "--prefix",
+    "app",
+    "run",
+    "--silent",
+    "export:full-standalone-package",
+    "--",
+    "--release-root",
+    "tmp/pipeline/laender-stufen/gesamt/review/dpk-v13/release-model-final-v7",
+    "--package-profile",
+    "contracts/curriculum-package/v1.3/profiles/full-standalone-v1.3.profile.json",
+    "--redistribution-review",
+    "curricula/DE/Gymnasium/quality/package-redistribution/de-gymnasium-mathematik-v1.3-partial-order-20261116.review.json",
+    "--output-dir",
+    "tmp/pipeline/laender-stufen/gesamt/review/dpk-v13/full-standalone-final-v8",
+    "--archive-root",
+    "skillpilot-curriculum-de-gymnasium-mathematik-0.1.0-runtime.1.json",
+    "--supported-skillpilot-software",
+    ">=0.1.0 <1.0.0",
+    "--zip"
+  ],
+  "startedAt": "2026-11-17T05:14:03.510489+00:00",
+  "seconds": 486.75507736200234,
+  "exitCode": 0,
+  "log": "tmp/pipeline/laender-stufen/gesamt/review/dpk-v13/final-v8-zip-build.log",
+  "status": "PASS"
+}

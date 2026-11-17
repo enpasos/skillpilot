@@ -84,6 +84,11 @@ Diese Seite ist der Einstiegspunkt für die entwicklungsnahe Dokumentation von S
 - [Stufen als Planeinheiten: Übergabe an die Fachprüfung, 15. November 2026](stage-plan-units-handover-2026-11-15.md)
   Iststand, Zielzustand des Modells, Lücken der Dokumente und die curricularen Befunde für Mathematik und Physik.
 - [Fortlaufendes Management Summary zu Lernfluss und Stufenplänen](stage-plan-management-summary.md)
+- [Fachlich begründete Reihenfolgen in den Lernkarten, 16. November 2026](composition-view-partial-orders-2026-11-16.md)
+- [Mathematik: Normalisierung der Ländersichten, 16. November 2026](mathematics-stage-view-normalization-2026-11-16.md)
+- [Mathematik: Zeit- und Quellenbindung der Ansichten, 17. November 2026](mathematics-stage-view-source-units-2026-11-17.md)
+- [Physik: Länder-, Stufen- und Themenansichten, 16. November 2026](physics-stage-view-normalization-2026-11-16.md)
+- [Physik: Zeit- und Quellenbindung der Ansichten, 17. November 2026](physics-stage-view-source-units-2026-11-17.md)
 - [Reale Stufenrückgriffe vor und nach #157, 15. November 2026](stage-plan-real-view-backflows-2026-11-15.md)
   Kurzer Ergebnis-, Qualitäts- und Integrationsstand nach jedem Umsetzungspaket.
 - [Voraussetzungennachweise: wiederverwendbare Batch-Fortsetzung, 9. November 2026](prerequisite-reduction-batches-v6-support-2026-11-09.md)

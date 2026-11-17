@@ -1,0 +1,23 @@
+{
+  "at": "2026-11-16T23:29:08.941972+01:00",
+  "status": "PASS",
+  "codePins": {
+    "scripts/compile_curriculum_release_model.py": "4b5de160d263c22afa9b166782ce9eb65abdd530ade09419404e5111b3394d4a",
+    "scripts/validate_curriculum_release_model.py": "bdbdee6c57f7d29520c55c95e36e77e0faaaed925f36f3a5ec3c8f8a90fa2b7c",
+    "scripts/validate_full_standalone_curriculum_package.py": "ec1ff28f32864eb8c6e4e360ac817a8b962e267b10534c10229232552a217e33",
+    "scripts/curriculum_package_v13_contracts.py": "8bb27594c82ab55847866d82d699b44eed2fd7af45e7646d321ad6025436ac07",
+    "scripts/generate_curriculum_package_v13_contracts.py": "bd3352d06c66271fe55020cde003ef57867eaf6156dfd542b622a77384c3f61e",
+    "contracts/curriculum-package/v1.3/runtime-composition-view.schema.json": "14730c6287a626b9a4a9a664df92ce5a61a58bfcde0cb9f0a79398b954096b38",
+    "contracts/curriculum-package/v1.3/profiles/skillpilot-fwu-field-semantics-partial-order-v1.registry.json": "a8125cab2cdef57fcfdcf897405851ac1710aadc303ed38d96d34cde20c17e49"
+  },
+  "fourNodeDirectedGraphs": 4096,
+  "validReducedDags": 219,
+  "acquisitionCombinations": 32,
+  "releaseFileDispatchCases": 8,
+  "implementations": [
+    "producer",
+    "independent replay",
+    "offline package validator"
+  ],
+  "scope": "Independent semantic probe plus code review; final model, ZIP and OWL builds remain separate evidence."
+}

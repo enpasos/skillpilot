@@ -1,4 +1,5 @@
 import { createHash } from 'node:crypto'
+import { execFileSync } from 'node:child_process'
 import { existsSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -169,7 +170,13 @@ const shMappingPath = resolve(
   repoRoot,
   'curricula/DE/Gymnasium/mapping/DE-SH/lower-secondary/sh_math_lower_secondary_to_canonical_math.json',
 )
-const compositionViewDir = resolve(repoRoot, 'curricula/DE/Gymnasium/composition-views/mathematik')
+const outputDirectoryIndex = process.argv.indexOf('--output-dir')
+if (outputDirectoryIndex >= 0 && !process.argv[outputDirectoryIndex + 1]) {
+  throw new Error('--output-dir requires a directory')
+}
+const compositionViewDir = outputDirectoryIndex >= 0
+  ? resolve(process.argv[outputDirectoryIndex + 1])
+  : resolve(repoRoot, 'curricula/DE/Gymnasium/composition-views/mathematik')
 const splitLayoutPlanPath = resolve(
   scriptDir,
   'config/math-duration-split-spanning-tree-policy.json',
@@ -367,20 +374,25 @@ const canonicalMath = projectOutLearningUnits(readJson<{
 }>(canonicalMathPath))
 const sourceExtraction = readJson<{ sourceGoals?: SourceGoal[] }>(sourceExtractionPath)
 const mappingReview = readJson<{ mappings?: MappingEntry[] }>(mappingPath)
-const baseGkView = readJson<CompositionView>(resolve(compositionViewDir, 'de-he-gk.view.json'))
-const baseLkView = readJson<CompositionView>(resolve(compositionViewDir, 'de-he-lk.view.json'))
-const rpSourceExtraction = readJson<{ sourceGoals?: SourceGoal[] }>(rpSourceExtractionPath)
-const rpMappingReview = readJson<{ mappings?: MappingEntry[] }>(rpMappingPath)
-const baseRpGkView = readJson<CompositionView>(resolve(compositionViewDir, 'de-rp-gk.view.json'))
-const baseRpLkView = readJson<CompositionView>(resolve(compositionViewDir, 'de-rp-lk.view.json'))
-const shSourceJson = readJson<{ goals?: LearningGoal[] }>(shSourceJsonPath)
-const shMappingReview = readJson<{ mappings?: MappingEntry[] }>(shMappingPath)
-const baseShGkView = readJson<CompositionView>(resolve(compositionViewDir, 'de-sh-gk.view.json'))
-const baseShLkView = readJson<CompositionView>(resolve(compositionViewDir, 'de-sh-lk.view.json'))
-const splitLayoutPlan = readJson<SplitLayoutPlan>(splitLayoutPlanPath)
 const stagePlacementPolicy = readJson<MathDurationStagePlacementPolicy>(resolve(
   scriptDir, 'config/math-duration-stage-placement-policy.json',
 ))
+const readBaseView = (fileName: string): CompositionView => {
+  const retained = stagePlacementPolicy.baseViews?.[fileName]
+  if (!retained) throw new Error(`Missing authored Mathematics duration input: ${fileName}`)
+  return structuredClone(retained) as CompositionView
+}
+const baseGkView = readBaseView('de-he-gk.view.json')
+const baseLkView = readBaseView('de-he-lk.view.json')
+const rpSourceExtraction = readJson<{ sourceGoals?: SourceGoal[] }>(rpSourceExtractionPath)
+const rpMappingReview = readJson<{ mappings?: MappingEntry[] }>(rpMappingPath)
+const baseRpGkView = readBaseView('de-rp-gk.view.json')
+const baseRpLkView = readBaseView('de-rp-lk.view.json')
+const shSourceJson = readJson<{ goals?: LearningGoal[] }>(shSourceJsonPath)
+const shMappingReview = readJson<{ mappings?: MappingEntry[] }>(shMappingPath)
+const baseShGkView = readBaseView('de-sh-gk.view.json')
+const baseShLkView = readBaseView('de-sh-lk.view.json')
+const splitLayoutPlan = readJson<SplitLayoutPlan>(splitLayoutPlanPath)
 if (JSON.stringify(stagePlacementPolicy.views.map(view => view.fileName).sort())
   !== JSON.stringify([...GENERATED_VIEW_PATHS].sort())) {
   throw new Error('The Mathematics duration stage-placement policy must cover exactly the generated views')
@@ -1934,8 +1946,7 @@ const assertGeneratedViewIntegrity = (view: CompositionView) => {
   }
 }
 
-let differences = 0
-for (const fileName of GENERATED_VIEW_PATHS) {
+const reviewedViews = GENERATED_VIEW_PATHS.map((fileName) => {
   const ordinaryGeneratedView = generatedViews.get(fileName)
   if (!ordinaryGeneratedView) {
     throw new Error(`Missing generator output for ${fileName}`)
@@ -1944,6 +1955,19 @@ for (const fileName of GENERATED_VIEW_PATHS) {
     ordinaryGeneratedView, fileName, canonicalMathSha256, stagePlacementPolicy,
   )
   assertCompleteSek1DirectRequirements(generatedView)
+  assertGeneratedViewIntegrity(generatedView)
+  return generatedView
+})
+// Normalize the complete generated batch once. Orders are authored against the
+// final direct children, so excerpt pruning cannot leave dangling after edges.
+const normalizedViews = JSON.parse(execFileSync('python3', [
+  resolve(repoRoot, 'scripts/normalize_mathematics_stage_views.py'), '--stdin',
+], { input: JSON.stringify(reviewedViews), encoding: 'utf8', maxBuffer: 128 * 1024 * 1024 })) as CompositionView[]
+if (normalizedViews.length !== GENERATED_VIEW_PATHS.length) throw new Error('Incomplete normalized Mathematics duration batch')
+
+let differences = 0
+for (const [viewIndex, fileName] of GENERATED_VIEW_PATHS.entries()) {
+  const generatedView = normalizedViews[viewIndex]
   assertGeneratedViewIntegrity(generatedView)
 
   const targetPath = resolve(compositionViewDir, fileName)

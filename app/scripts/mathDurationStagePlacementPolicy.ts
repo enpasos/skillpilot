@@ -25,6 +25,9 @@ export interface MathDurationStagePlacementPolicy {
   canonicalSha256WithoutLearningUnitLayer: string
   nodes: Record<string, Node>
   views: ViewRepair[]
+  /** Authored inputs before the generic source-stage presentation transform.
+   * Kept separately from generated outputs so replay never reads its own output. */
+  baseViews?: Record<string, unknown>
 }
 
 export const mathDurationViewSha256 = (value: unknown): string => createHash('sha256')

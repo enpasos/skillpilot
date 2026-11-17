@@ -16,11 +16,85 @@ export type CompositionViewNode =
 
 export type CompositionProjectionRole = 'target' | 'prerequisiteOnly'
 
+/** A complete declaration of the parent's partial child order; omitted pairs
+ * impose no planning order. Goal prerequisites remain a separate relation. */
+export interface CompositionChildOrder {
+  after: { unit: string; after: string }[]
+}
+
 export interface CompositionStructureNode extends Record<string, unknown> {
   kind: 'structure'
   id: string
   label: string
   children: CompositionViewNode[]
+  /** Omission retains legacy sibling order; an empty after explicitly declares no planning order. */
+  childOrder?: CompositionChildOrder
+}
+
+/** Shared source/runtime guard. References name direct structure children only. */
+export function readCompositionChildOrder(value: unknown, childIds: readonly string[]): CompositionChildOrder | undefined {
+  if (value === undefined) return undefined
+  const fail = (message: string): never => { throw new Error(`Invalid composition childOrder: ${message}`) }
+  const object = (item: unknown): item is Record<string, unknown> => !!item && typeof item === 'object' && !Array.isArray(item)
+  if (!object(value) || Object.keys(value).some(key => key !== 'after') || !Array.isArray(value.after)) return fail('expected exactly an after array')
+  const known = new Set(childIds), seen = new Set<string>(), successors = new Map<string, Set<string>>()
+  const after: CompositionChildOrder['after'] = []
+  for (const pair of value.after) {
+    if (!object(pair) || Object.keys(pair).some(key => key !== 'unit' && key !== 'after')
+      || typeof pair.unit !== 'string' || typeof pair.after !== 'string'
+      || !/^[A-Za-z0-9][A-Za-z0-9._:+-]*$/u.test(pair.unit) || !/^[A-Za-z0-9][A-Za-z0-9._:+-]*$/u.test(pair.after)
+      || pair.unit.length > 300 || pair.after.length > 300) return fail('invalid order pair')
+    if (!known.has(pair.unit) || !known.has(pair.after)) return fail('order endpoints must be direct structure children')
+    if (pair.unit === pair.after) return fail('self order')
+    const key = `${pair.unit}\u0000${pair.after}`
+    if (seen.has(key)) return fail('duplicate order pair')
+    seen.add(key)
+    const next = successors.get(pair.after) ?? new Set<string>()
+    next.add(pair.unit); successors.set(pair.after, next)
+    after.push({ unit: pair.unit, after: pair.after })
+  }
+  const active = new Set<string>(), complete = new Set<string>()
+  const visit = (id: string) => {
+    if (active.has(id)) return fail('cycle in declared order')
+    if (complete.has(id)) return
+    active.add(id)
+    for (const next of successors.get(id) ?? []) visit(next)
+    active.delete(id); complete.add(id)
+  }
+  for (const id of known) visit(id)
+  for (const pair of after) {
+    const reachable = new Set<string>(), pending = [...successors.get(pair.after) ?? []].filter(id => id !== pair.unit)
+    while (pending.length) {
+      const id = pending.pop()!
+      if (id === pair.unit) return fail('transitively redundant order pair')
+      if (reachable.has(id)) continue
+      reachable.add(id); pending.push(...successors.get(id) ?? [])
+    }
+  }
+  return { after }
+}
+
+/** Preserve declared reachability through filtered-out intermediates, then
+ * reduce again. Filtering never invents a new sibling adjacency. */
+export function projectCompositionChildOrder(order: CompositionChildOrder, visibleChildIds: readonly string[]): CompositionChildOrder {
+  const needs = new Map<string, Set<string>>()
+  for (const pair of order.after) {
+    const previous = needs.get(pair.unit) ?? new Set<string>()
+    previous.add(pair.after); needs.set(pair.unit, previous)
+  }
+  const ancestors = (id: string) => {
+    const found = new Set<string>(), pending = [...needs.get(id) ?? []]
+    while (pending.length) {
+      const previous = pending.pop()!
+      if (found.has(previous)) continue
+      found.add(previous); pending.push(...needs.get(previous) ?? [])
+    }
+    return found
+  }
+  const closure = new Map(visibleChildIds.map(id => [id, ancestors(id)]))
+  return { after: visibleChildIds.flatMap(unit => visibleChildIds.filter(previous => closure.get(unit)!.has(previous)
+    && !visibleChildIds.some(intermediate => intermediate !== previous && closure.get(unit)!.has(intermediate)
+      && closure.get(intermediate)!.has(previous))).map(after => ({ unit, after }))) }
 }
 
 export interface CompositionCanonicalSubtreeNode extends Record<string, unknown> {
@@ -35,6 +109,8 @@ export interface CompositionGoalEntryNode extends Record<string, unknown> {
   goalId: string
   displayLabel?: string
   projectionRole?: CompositionProjectionRole
+  /** Explicit acquisition place for an atom already in the backend's closed L. */
+  acquisitionPlacement?: true
 }
 
 export interface CompositionLandscapeEntryNode extends Record<string, unknown> {
@@ -359,8 +435,20 @@ export const compileCompositionView = (
 
   const validateNode = (node: CompositionViewNode, path: number[]) => {
     const pathKey = stringifyNodePath(path)
+    if (node.acquisitionPlacement !== undefined && (view.viewFormatVersion !== '1.2'
+      || node.kind !== 'goalEntry' || node.acquisitionPlacement !== true
+      || node.projectionRole !== 'prerequisiteOnly' || path.length < 2)) {
+      findings.push({ code: 'CPV-011', severity: 'error', nodePath: pathKey,
+        message: 'acquisitionPlacement requires a nested explicit prerequisiteOnly goalEntry in view format 1.2.' })
+    }
 
     if (node.kind === 'structure') {
+      try {
+        readCompositionChildOrder(node.childOrder, node.children.filter(child => child.kind === 'structure').map(child => child.id))
+      } catch (error) {
+        findings.push({ code: 'CPV-010', severity: 'error', nodePath: pathKey,
+          message: error instanceof Error ? error.message : String(error) })
+      }
       if (!(node.id ?? '').trim()) {
         findings.push({ code: 'CPV-001', severity: 'error', nodePath: pathKey, message: 'Structure node ohne id.' })
       } else if (structureIds.has(node.id)) {
@@ -445,6 +533,11 @@ export const compileCompositionView = (
           message: `Fehlende kanonische Ziel-Referenz: ${node.goalId}`,
         })
         return
+      }
+
+      if (node.acquisitionPlacement === true && referencedGoal.contains.length > 0) {
+        findings.push({ code: 'CPV-011', severity: 'error', nodePath: pathKey, goalId: node.goalId,
+          message: 'acquisitionPlacement may reference only an atomic goal.' })
       }
 
       if (referencedGoal.semanticKind === 'curricularArea') {

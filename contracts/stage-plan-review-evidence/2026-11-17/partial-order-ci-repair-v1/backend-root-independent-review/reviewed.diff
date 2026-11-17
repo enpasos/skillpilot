@@ -1,0 +1,379 @@
+diff --git a/backend/src/test/java/com/skillpilot/backend/openai/mcp/de/OpenAiDeCoachEndToEndIntegrationTest.java b/backend/src/test/java/com/skillpilot/backend/openai/mcp/de/OpenAiDeCoachEndToEndIntegrationTest.java
+index 84f7ae8050..3ee87b68a8 100644
+--- a/backend/src/test/java/com/skillpilot/backend/openai/mcp/de/OpenAiDeCoachEndToEndIntegrationTest.java
++++ b/backend/src/test/java/com/skillpilot/backend/openai/mcp/de/OpenAiDeCoachEndToEndIntegrationTest.java
+@@ -105,7 +105,7 @@ class OpenAiDeCoachEndToEndIntegrationTest {
+     private static final String CANONICAL_MATHEMATICS_ROOT_FOCUS_ID =
+             "c01b1ce9-a667-4a46-b251-ec33ae602b15";
+     private static final String E_ONE_FOCUS_ID =
+-            "c9d92f32-167a-4006-a940-b8063a6ed434";
++            "composition:de-he-gym-sekii-math-lk:structure:he-upper-0-e-1";
+     private static final String E_PHASE_SCOPE_ID =
+             "composition:de-he-gym-sekii-math-lk:structure:e-phase";
+     private static final String HESSEN_SEKII_MATH_LK_SCOPE_ID =
+@@ -902,8 +902,8 @@ class OpenAiDeCoachEndToEndIntegrationTest {
+         assertThat(objectMapper.readTree(webPersonalizationRead.body()).path("stage").asText())
+                 .isEqualTo("COMPLETE");
+ 
+-        // The canonical root includes required learning outside the authored
+-        // SekII structure. Selecting that structure is a real focus narrowing.
++        // The current authored root also contains acquisition units for required
++        // preparation. The identical target set must not be offered as a new focus.
+         HttpResponse<String> scopeNavigation = callTool(
+                 accessToken,
+                 10,
+@@ -917,7 +917,7 @@ class OpenAiDeCoachEndToEndIntegrationTest {
+         assertThat(scopeNavigationContext.path("options").valueStream()
+                         .map(this::optionGoalIds)
+                         .toList())
+-                .containsExactly(List.of(HESSEN_SEKII_MATH_LK_SCOPE_ID));
++                .isEmpty();
+         assertThat(persistedScopeGoalIds()).containsExactly(CANONICAL_MATHEMATICS_ROOT_FOCUS_ID);
+         Learner scopeLearner = learnerRepository.findById(PERMANENT_SKILLPILOT_ID).orElseThrow();
+         Object projection = ReflectionTestUtils.invokeMethod(learnerService, "getGoalProjection",
+@@ -932,6 +932,9 @@ class OpenAiDeCoachEndToEndIntegrationTest {
+         assertThat(learningScope.learningAtomicGoalIds()).contains(modalValueId);
+         Set<String> canonicalFocusAtoms = assertMathematicsFocusTargets(
+                 CANONICAL_MATHEMATICS_ROOT_FOCUS_ID, projection, learningScope, canonicalGoals);
++        Set<String> outerViewAtoms = assertMathematicsFocusTargets(
++                "composition:de-he-gym-sekii-math-lk:structure:math-root", projection, learningScope, canonicalGoals);
++        assertThat(outerViewAtoms).containsExactlyInAnyOrderElementsOf(canonicalFocusAtoms);
+         Set<String> sekTwoFocusAtoms = assertMathematicsFocusTargets(
+                 HESSEN_SEKII_MATH_LK_SCOPE_ID, projection, learningScope, canonicalGoals);
+         assertThat(canonicalFocusAtoms).containsAll(sekTwoFocusAtoms).contains(modalValueId)
+@@ -1232,8 +1235,8 @@ class OpenAiDeCoachEndToEndIntegrationTest {
+                         OpenAiDeV1McpContractAdapter.GET_NAVIGATION,
+                         OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL);
+ 
+-        // The Cockpit may deliberately narrow the Level-3 focus to one canonical
+-        // subtree. A later unqualified coach request to broaden must publish the
++        // The Cockpit may deliberately narrow the Level-3 focus to the authored
++        // E.1 unit. A later unqualified coach request to broaden must publish the
+         // learner-facing ancestors nearest-first and preserve an active goal that
+         // remains inside the widened scope.
+         HttpResponse<String> narrowFocus = postJson(
+@@ -1271,7 +1274,7 @@ class OpenAiDeCoachEndToEndIntegrationTest {
+                 .startsWith(List.of(E_PHASE_SCOPE_ID), List.of(HESSEN_SEKII_MATH_LK_SCOPE_ID));
+         JsonNode nearestBroaderFocus = broaderNavigation.path("options").get(0);
+         assertThat(nearestBroaderFocus.path("label").asText())
+-                .isEqualTo("E-Phase: Grundlagen der Analysis und mathematische Modelle");
++                .isEqualTo("Einführungsphase");
+         assertThat(broaderNavigation.path("instruction").asText()).contains(
+                 "Geeignete learner-facing Vorfahren stehen zuerst",
+                 "der nächste breitere Fokus an erster Stelle",
+diff --git a/backend/src/test/java/com/skillpilot/backend/service/LearnerServiceTest.java b/backend/src/test/java/com/skillpilot/backend/service/LearnerServiceTest.java
+index 0baa35de73..8e3bfd9363 100644
+--- a/backend/src/test/java/com/skillpilot/backend/service/LearnerServiceTest.java
++++ b/backend/src/test/java/com/skillpilot/backend/service/LearnerServiceTest.java
+@@ -117,14 +117,14 @@ public class LearnerServiceTest {
+             "composition:de-he-gym-math-gk-g9:structure:j10-g9";
+     private static final String COMPOSITION_MERGED_DE_J8_SCOPE_ID =
+             "composition:merged:de-de-gym-math-lk+de-de-gym-math-gk:structure:j8";
+-    private static final String COMPOSITION_MERGED_DE_J8_ADDITIONAL_SCOPE_ID =
+-            "composition:merged:de-de-gym-math-lk+de-de-gym-math-gk:structure:j8-additional-competencies";
+     private static final String COMPOSITION_DE_MATH_LK_ROOT_SCOPE_ID =
+             "composition:de-de-gym-math-lk:structure:math-root";
+     private static final String COMPOSITION_DE_MATH_LK_ANALYSIS_BASICS_SCOPE_ID =
+             "composition:de-de-gym-math-lk:structure:analysis-basics";
+     private static final String COMPOSITION_HE_SEK_TWO_MATH_LK_ROOT_SCOPE_ID =
+             "composition:de-he-gym-sekii-math-lk:structure:sek2-lk";
++    private static final String COMPOSITION_HE_SEK_TWO_MATH_LK_E_ONE_SCOPE_ID =
++            "composition:de-he-gym-sekii-math-lk:structure:he-upper-0-e-1";
+     private static final String COMPOSITION_HE_SEK_TWO_MATH_LK_E_PHASE_SCOPE_ID =
+             "composition:de-he-gym-sekii-math-lk:structure:e-phase";
+     private static final String COMPOSITION_DE_PHYSICS_LK_ROOT_SCOPE_ID =
+@@ -2430,9 +2430,7 @@ public class LearnerServiceTest {
+                 .forEach(directExamRequirementIds::add);
+         for (String viewId : List.of(
+                 "de-de-gym-math-gk",
+-                "de-de-gym-math-lk",
+-                "de-he-gym-math-gk",
+-                "de-he-gym-math-lk")) {
++                "de-de-gym-math-lk")) {
+             CompositionStructureResolution sourceJ8Scope = compositionViewService
+                     .resolveStructureReference("composition:" + viewId + ":structure:j8");
+             Set<String> sourceJ8AtomicGoalIds = new LinkedHashSet<>();
+@@ -2440,22 +2438,46 @@ public class LearnerServiceTest {
+                     .forEach(goalId -> collectAtomicGoalIds(goalId, canonicalGoals, sourceJ8AtomicGoalIds));
+             assertThat(sourceJ8AtomicGoalIds)
+                     .as(viewId)
+-                    .hasSize(56)
+-                    .contains("e2174adb-545f-5119-8f23-45f67e358d70")
+-                    .containsAll(directExamRequirementIds);
++                    .hasSize(50)
++                    .contains("e2174adb-545f-5119-8f23-45f67e358d70");
++            // Earlier geometry foundations have their own acquisition units.
++            assertThat(personalLearningScope(learnerRepository.findById(learnerId).orElseThrow())
++                    .learningAtomicGoalIds()).containsAll(directExamRequirementIds);
+         }
+         CompositionStructureResolution j8Scope = compositionViewService
+                 .resolveStructureReference(COMPOSITION_MERGED_DE_J8_SCOPE_ID);
+-        CompositionStructureResolution additionalCompetencies = compositionViewService
+-                .resolveStructureReference(COMPOSITION_MERGED_DE_J8_ADDITIONAL_SCOPE_ID);
+         Set<String> j8AtomicGoalIds = new LinkedHashSet<>();
+         j8Scope.referencedGoalIds()
+                 .forEach(goalId -> collectAtomicGoalIds(goalId, canonicalGoals, j8AtomicGoalIds));
+-        Set<String> additionalCompetencyAtomicGoalIds = new LinkedHashSet<>();
+-        additionalCompetencies.referencedGoalIds()
+-                .forEach(goalId -> collectAtomicGoalIds(goalId, canonicalGoals, additionalCompetencyAtomicGoalIds));
++        // The former supplementary bundle is now split into subject units.
++        // Preserve its 23 remaining J8 competencies explicitly; its six basic
++        // geometry skills are acquired in earlier years, not deleted from L.
++        Set<String> additionalCompetencyAtomicGoalIds = Set.of(
++                "15512e77-31e3-5222-8a6b-84791618e5ce",
++                "17c9e061-fe52-5553-be81-fec7a525fcbd",
++                "1842da92-ca2c-5fed-a946-e6413a6285bb",
++                "21342eb9-9cfd-4fbf-b28e-60aa2b48f702",
++                "36728db8-da44-4add-97b8-0fdd7cfd9c41",
++                "570d5931-f126-5bb4-8b7f-db236d6b727f",
++                "647ec09d-68ae-57db-9ca4-aeb2da4218f1",
++                "743e5470-ff39-551e-9aba-529656418c66",
++                "74dc4b0d-a167-564c-bdc1-5cf510aee280",
++                "76478e47-5ff9-5de1-b601-5e6e436ad855",
++                "9278bc5e-a77f-5f72-8636-0d0d3e3d32ae",
++                "959cc50b-6c81-4fa1-800f-4804a707b1ee",
++                "96c55cb6-d2c7-5145-8567-b5f570f55a8a",
++                "cf8c5677-f3c5-5563-8f0a-68443fbab7bf",
++                "e02c58a2-2a32-49bd-b110-7b307e0317fb",
++                "e2174adb-545f-5119-8f23-45f67e358d70",
++                "e42c208d-9555-43cc-92f5-5bb4c0688726",
++                "f17935b0-189f-5e0c-988d-ce508b710097",
++                "f6574cdc-e29c-5a8f-a009-9f28b3bcf9be",
++                "f65ab452-1884-57b0-9be3-c7d9e4944891",
++                "f9d284a3-1a47-4aaa-bde2-3dac1c3bb0f0",
++                "fa0b6b69-ce54-4711-90e6-26f27249cd71",
++                "fc34449a-fbf4-574c-884f-ecdf48b42d2e");
+         // The current reviewed algebra-validity task accompanies the J8 goal.
+-        assertThat(j8AtomicGoalIds).hasSize(56).contains("e2174adb-545f-5119-8f23-45f67e358d70");
++        assertThat(j8AtomicGoalIds).hasSize(50).contains("e2174adb-545f-5119-8f23-45f67e358d70");
+         assertThat(additionalCompetencyAtomicGoalIds)
+                 .isNotEmpty()
+                 .doesNotContainAnyElementsOf(allExamTaskIds);
+@@ -2482,7 +2504,7 @@ public class LearnerServiceTest {
+ 
+         var resumedCoachState = learnerService.getCoachLearnerState(learnerId);
+ 
+-        assertThat(resumedCoachState.goals().scope().total_atomic()).isEqualTo(56);
++        assertThat(resumedCoachState.goals().scope().total_atomic()).isEqualTo(50);
+         assertThat(resumedCoachState.goals().scope().mastered_atomic())
+                 .isEqualTo(formerlyCompletedAtomicGoalIds.size());
+         assertThat(resumedCoachState.stateMachine().requiredAction()).isEqualTo("setActiveGoal");
+@@ -2497,7 +2519,7 @@ public class LearnerServiceTest {
+ 
+         // Task 5 -> cylinder mantle -> circle circumference is a real Main
+         // requirement chain. Circumference belongs to the complete learning
+-        // set L, while the selected J8 contains-focus has exactly 56 atoms.
++        // set L, while the selected J8 contains-focus has exactly 50 atoms.
+         String cylinderMantleId = "f65ab452-1884-57b0-9be3-c7d9e4944891";
+         String circleCircumferenceId = "4dbb8e8e-c0b5-5d51-8897-0024d77e8602";
+         assertThat(canonicalGoals.get(J8_EXAM_TASK_5_ID).getRequires()).contains(cylinderMantleId);
+@@ -2510,12 +2532,12 @@ public class LearnerServiceTest {
+         assertCanonicalRequirementPath(learningScope.requiredByPaths().get(circleCircumferenceId), canonicalGoals);
+         assertThat(assertMathFocusAtomicTargets(learner, List.of(COMPOSITION_MERGED_DE_J8_SCOPE_ID)))
+                 .containsExactlyInAnyOrderElementsOf(j8AtomicGoalIds)
+-                .hasSize(56)
++                .hasSize(50)
+                 .doesNotContain(circleCircumferenceId);
+ 
+         var coachState = learnerService.getCoachLearnerState(learnerId);
+ 
+-        assertThat(coachState.goals().scope().total_atomic()).isEqualTo(56);
++        assertThat(coachState.goals().scope().total_atomic()).isEqualTo(50);
+         assertThat(coachState.goals().scope().mastered_atomic())
+                 .isEqualTo(coachState.goals().scope().total_atomic() - remainingExamTaskIds.size());
+         assertThat(coachState.goals().scope().total_atomic()
+@@ -2605,7 +2627,7 @@ public class LearnerServiceTest {
+ 
+     @Test
+     @Transactional
+-    void crossStageStructureRemainsSelectableWhenLearningClosureMakesItNarrowerThanCanonicalRoot() {
++    void crossStageStructureIncludesPreparationAndSuppressesEquivalentNavigation() {
+         Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+         learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
+         learner.setPersonalCurriculum(completedPersonalizationConfig("""
+@@ -2639,8 +2661,8 @@ public class LearnerServiceTest {
+                 .containsOnly("orientation");
+         assertThat(learnerService.getScopeNavigationOptions(learnerId))
+                 .extracting(FrontierGoal::id)
+-                .containsExactly(COMPOSITION_DE_MATH_LK_ROOT_SCOPE_ID);
+-        assertCanonicalMathRootIncludesCircumferenceOutsideStructure(learner);
++                .isEmpty();
++        assertCanonicalMathRootAndStructureIncludeCircumference(learner);
+ 
+         assertThatCode(() -> learnerService.setScope(
+                         learnerId,
+@@ -2655,8 +2677,8 @@ public class LearnerServiceTest {
+     @Transactional
+     void hessenSekTwoLkFocusNavigationWidensEOneToEPhaseAndPreservesActiveGoal() {
+         selectCompletedHessenSekTwoLkCurriculum();
+-        masterMathematicsPrerequisitesOutsideScope(CANONICAL_E_ONE_SCOPE_ID);
+-        learnerService.setPlannedGoals(learnerId, Set.of(CANONICAL_E_ONE_SCOPE_ID));
++        masterMathematicsPrerequisitesOutsideScope(COMPOSITION_HE_SEK_TWO_MATH_LK_E_ONE_SCOPE_ID);
++        learnerService.setPlannedGoals(learnerId, Set.of(COMPOSITION_HE_SEK_TWO_MATH_LK_E_ONE_SCOPE_ID));
+ 
+         String activeGoalId = learnerService.getLearnerState(learnerId).frontier().stream()
+                 .filter(goal -> "atomic".equals(goal.type()))
+@@ -2723,11 +2745,11 @@ public class LearnerServiceTest {
+         assertThat(completedNarrowState.stateMachine().requiredAction()).isEqualTo("setScope");
+         assertThat(completedNarrowState.stateMachine().goalOptions())
+                 .extracting(FrontierGoal::id)
+-                .startsWith(CANONICAL_REPRESENTATION_CLUSTER_ID);
++                .startsWith(COMPOSITION_HE_SEK_TWO_MATH_LK_E_ONE_SCOPE_ID);
+ 
+         var widenedState = learnerService.setScope(
+                 learnerId,
+-                List.of(CANONICAL_REPRESENTATION_CLUSTER_ID));
++                List.of(COMPOSITION_HE_SEK_TWO_MATH_LK_E_ONE_SCOPE_ID));
+ 
+         assertThat(learnerService.getMastery(learnerId))
+                 .containsEntry(CANONICAL_CREATE_REPRESENTATION_ID, 1.0)
+@@ -2772,8 +2794,8 @@ public class LearnerServiceTest {
+                 .containsExactly(CANONICAL_MATH_ROOT_SCOPE_ID);
+         assertThat(learnerService.getScopeNavigationOptions(learnerId))
+                 .extracting(FrontierGoal::id)
+-                .containsExactly(COMPOSITION_DE_MATH_LK_ROOT_SCOPE_ID, COMPOSITION_DE_PHYSICS_LK_ROOT_SCOPE_ID);
+-        assertCanonicalMathRootIncludesCircumferenceOutsideStructure(learner);
++                .containsExactly(COMPOSITION_DE_PHYSICS_LK_ROOT_SCOPE_ID);
++        assertCanonicalMathRootAndStructureIncludeCircumference(learner);
+ 
+         learnerService.setScope(
+                 learnerId,
+@@ -2809,6 +2831,9 @@ public class LearnerServiceTest {
+     @Test
+     @Transactional
+     void multiRootFocusWideningPreservesTheUntouchedPhysicsFocus() {
++        // The complete Physics root now also acquires the Math foundations;
++        // optics provides a genuinely independent focus for the preservation test.
++        String physicsFocusId = "composition:de-de-gym-physics-lk:structure:physics-canonical-lower-optics";
+         Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+         learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
+         learner.setPersonalCurriculum(completedPersonalizationConfig("""
+@@ -2833,7 +2858,12 @@ public class LearnerServiceTest {
+                 learnerId,
+                 new LinkedHashSet<>(List.of(
+                         "composition:de-de-gym-math-lk:structure:math-v7-retained-source-c9d92f32-167a-4006-a940-b8063a6ed434",
+-                        COMPOSITION_DE_PHYSICS_LK_ROOT_SCOPE_ID)));
++                        physicsFocusId)));
++        assertThat(plannedGoalRepository.findByLearner_SkillpilotId(learnerId))
++                .extracting(PlannedGoal::getGoalId)
++                .containsExactlyInAnyOrder(
++                        "composition:de-de-gym-math-lk:structure:math-v7-retained-source-c9d92f32-167a-4006-a940-b8063a6ed434",
++                        physicsFocusId);
+         String activeGoalId = learnerService.getLearnerState(learnerId).frontier().stream()
+                 .filter(goal -> "atomic".equals(goal.type()))
+                 .findFirst()
+@@ -2847,7 +2877,7 @@ public class LearnerServiceTest {
+                 .orElseThrow();
+         assertThat(broaderAnalysis.selectionGoalIds()).containsExactly(
+                 COMPOSITION_DE_MATH_LK_ANALYSIS_BASICS_SCOPE_ID,
+-                COMPOSITION_DE_PHYSICS_LK_ROOT_SCOPE_ID);
++                physicsFocusId);
+ 
+         var widenedState = learnerService.setScope(
+                 learnerId,
+@@ -3025,7 +3055,6 @@ public class LearnerServiceTest {
+                 .extracting(goal -> goal.id())
+                 .containsExactly(
+                         COMPOSITION_SEK_ONE_G9_SCOPE_ID,
+-                        COMPOSITION_HE_G9_MATH_ROOT_SCOPE_ID,
+                         CANONICAL_MATH_ROOT_SCOPE_ID)
+                 .doesNotContain(COMPOSITION_J9_SCOPE_ID);
+         Set<String> currentAtoms = assertMathFocusAtomicTargets(learner, List.of(COMPOSITION_J8_SCOPE_ID));
+@@ -3035,7 +3064,8 @@ public class LearnerServiceTest {
+         compositionViewService.resolveStructureReference(COMPOSITION_J8_SCOPE_ID).referencedGoalIds()
+                 .forEach(id -> collectAtomicGoalIds(id, canonicalGoals, authoredJ8Atoms));
+         Set<String> supportOnlyAssessments = Set.of(
+-                J8_EXAM_TASK_1_ID, J8_EXAM_TASK_4_ID, "a70d4194-1f95-5dc4-884d-8ca856663601");
++                J8_EXAM_TASK_1_ID, J8_EXAM_TASK_4_ID, "a70d4194-1f95-5dc4-884d-8ca856663601",
++                "c34c6132-f85d-59be-8b95-032ddfc0d0de", "0dded9c1-043e-57cb-82fc-792b391e9cb0");
+         JsonNode reviewedView = objectMapper.valueToTree(
+                 compositionViewService.findViewById("de-he-gym-math-gk-g9"));
+         for (String id : supportOnlyAssessments) {
+@@ -3051,7 +3081,9 @@ public class LearnerServiceTest {
+         excludedAuthoredAtoms.removeAll(learningScope.learningAtomicGoalIds());
+         assertThat(excludedAuthoredAtoms).containsExactlyInAnyOrderElementsOf(supportOnlyAssessments);
+         authoredJ8Atoms.removeAll(supportOnlyAssessments);
+-        assertThat(currentAtoms).containsExactlyInAnyOrderElementsOf(authoredJ8Atoms).hasSize(60);
++        // The reviewed Hessen year has 67 authored atoms; these five support
++        // assessments are outside L, leaving 62 actual focus targets.
++        assertThat(currentAtoms).containsExactlyInAnyOrderElementsOf(authoredJ8Atoms).hasSize(62);
+         Set<String> precedingAtoms = currentAtoms;
+         for (FrontierGoal option : state.stateMachine().goalOptions()) {
+             Set<String> optionAtoms = assertMathFocusAtomicTargets(learner, option.selectionGoalIds());
+@@ -4441,9 +4473,26 @@ public class LearnerServiceTest {
+                 throw new AssertionError(
+                         "Scope completion stalled on the already attempted frontier goal " + nextGoal.id() + ".");
+             }
+-            learnerService.setMastery(
+-                    learnerId,
+-                    new MasteryUpdateRequest(Map.of(nextGoal.id(), 1.0), nextGoal.id()));
++            if ("memory".equals(nextGoal.nodeKind())) {
++                // Memory mastery must come from verified recall, even in this
++                // navigation fixture; direct setMastery deliberately cannot grant it.
++                learnerService.setActiveGoal(learnerId, nextGoal.id());
++                boolean saved = false;
++                for (int batch = 0; batch < 100 && !saved; batch += 1) {
++                    var prompt = learnerService.startVerifiedRecallBatch(learnerId, "de", nextGoal.id(), 20);
++                    assertThat(prompt.cards()).isNotEmpty();
++                    List<String> cards = prompt.cards().stream().map(VerifiedRecallPromptCard::cardId).toList();
++                    saved = learnerService.recordVerifiedRecallResultsBatch(learnerId, "de",
++                            new VerifiedRecallBatchResultRequest(nextGoal.id(), prompt.configuredBatchSize(),
++                                    cards, prompt.issuedAt(), cards.stream()
++                                            .map(id -> new VerifiedRecallBatchCardResult(id, true)).toList()))
++                            .masterySaved();
++                }
++                assertThat(saved).as("Verified recall completed %s", nextGoal.id()).isTrue();
++            } else {
++                learnerService.setMastery(learnerId,
++                        new MasteryUpdateRequest(Map.of(nextGoal.id(), 1.0), nextGoal.id()));
++            }
+         }
+         var finalState = learnerService.getLearnerState(learnerId);
+         if (Boolean.TRUE.equals(finalState.goals().scope_completed())) {
+@@ -4718,7 +4767,7 @@ public class LearnerServiceTest {
+         return actual;
+     }
+ 
+-    private void assertCanonicalMathRootIncludesCircumferenceOutsideStructure(Learner learner) {
++    private void assertCanonicalMathRootAndStructureIncludeCircumference(Learner learner) {
+         String cylinderMantleId = "f65ab452-1884-57b0-9be3-c7d9e4944891";
+         String circleCircumferenceId = "4dbb8e8e-c0b5-5d51-8897-0024d77e8602";
+         Map<String, LearningGoal> canonicalGoals = landscapeService.getById(CANONICAL_MATH_LANDSCAPE_ID)
+@@ -4729,9 +4778,8 @@ public class LearnerServiceTest {
+         assertCanonicalRequirementPath(learningScope.requiredByPaths().get(circleCircumferenceId), canonicalGoals);
+         Set<String> structureAtoms = assertMathFocusAtomicTargets(learner, List.of(COMPOSITION_DE_MATH_LK_ROOT_SCOPE_ID));
+         Set<String> canonicalAtoms = assertMathFocusAtomicTargets(learner, List.of(CANONICAL_MATH_ROOT_SCOPE_ID));
+-        assertThat(structureAtoms).contains(cylinderMantleId).doesNotContain(circleCircumferenceId);
+-        assertThat(canonicalAtoms).containsAll(structureAtoms).contains(circleCircumferenceId)
+-                .hasSizeGreaterThan(structureAtoms.size());
++        assertThat(structureAtoms).contains(cylinderMantleId, circleCircumferenceId);
++        assertThat(canonicalAtoms).containsExactlyInAnyOrderElementsOf(structureAtoms);
+     }
+ 
+     private void assertCanonicalRequirementPath(List<String> path, Map<String, LearningGoal> canonicalGoals) {
+diff --git a/curricula/DE/Gymnasium/quality/package-redistribution/de-gymnasium-mathematik-v1.3-partial-order-20261116.review.json b/curricula/DE/Gymnasium/quality/package-redistribution/de-gymnasium-mathematik-v1.3-partial-order-20261116.review.json
+index 7cc4171378..5d1889c71d 100644
+--- a/curricula/DE/Gymnasium/quality/package-redistribution/de-gymnasium-mathematik-v1.3-partial-order-20261116.review.json
++++ b/curricula/DE/Gymnasium/quality/package-redistribution/de-gymnasium-mathematik-v1.3-partial-order-20261116.review.json
+@@ -19537,7 +19537,7 @@
+       "reviewer": null
+     }
+   ],
+-  "contentDigest": "sha256:a3f1339ec3b6bb4c0727b834376f0e06535ee40020a7d04f32aded947bc259ca",
++  "contentDigest": "sha256:c2df283bfd359ba5ecf8bfe2ae1abf311e193871e923035074b493cbac754a8f",
+   "packageId": "org.skillpilot.curriculum.de.gymnasium.mathematik",
+   "pathClassificationOverrides": [
+     {
+diff --git a/scripts/run_curriculum_release_model_conformance.sh b/scripts/run_curriculum_release_model_conformance.sh
+index 922c23df12..655295bb60 100755
+--- a/scripts/run_curriculum_release_model_conformance.sh
++++ b/scripts/run_curriculum_release_model_conformance.sh
+@@ -25,7 +25,7 @@ PACKAGE_INSTALL_REPORT="${PACKAGE_OUTPUT}/provision-install.json"
+ PACKAGE_VERIFY_REPORT="${PACKAGE_OUTPUT}/provision-verify.json"
+ PACKAGE_ACTIVATE_REPORT="${PACKAGE_OUTPUT}/provision-activate.json"
+ PACKAGE_STATUS_REPORT="${PACKAGE_OUTPUT}/provision-status.json"
+-EXPECTED_CONTENT_DIGEST="sha256:a3f1339ec3b6bb4c0727b834376f0e06535ee40020a7d04f32aded947bc259ca"
++EXPECTED_CONTENT_DIGEST="sha256:c2df283bfd359ba5ecf8bfe2ae1abf311e193871e923035074b493cbac754a8f"
+ cd "${ROOT_DIR}"
+ 
+ SOURCE_PDF_MODE="${SKILLPILOT_SOURCE_PDF_MODE:-strict}"

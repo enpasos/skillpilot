@@ -135,6 +135,64 @@ const onlyB = filterLearnerUnitMapToSubjects(mergedMap, new Set([subjectB]))
 assert.deepEqual(rootChildren(onlyB), [stage, 'Y2'])
 assert.deepEqual(children(onlyB, stage), ['x2'])
 
+// Declared sibling calendars survive a subject filter through hidden units.
+// Derived/backward demand and another board never supply calendar bridges.
+{
+  const calendarTree = tree([
+    goal('subjects', ['LEFT', 'RIGHT']), goal('LEFT', ['S', 'H1', 'H2', 'M', 'T', 'H3', 'U']),
+    goal('RIGHT', ['F', 'G']), goal('S', ['s', 's2']), goal('H1', ['h1'], [], subjectB),
+    goal('H2', ['h2'], [], subjectB), goal('M', ['m']), goal('T', ['t', 't2']), goal('H3', ['h3'], [], subjectB), goal('U', ['u']),
+    goal('F', ['f'], [], subjectB), goal('G', ['g']),
+    goal('s', [], ['t']), goal('s2'), goal('h1', [], [], subjectB), goal('h2', [], [], subjectB), goal('h3', [], [], subjectB),
+    goal('m', [], ['h1']), goal('t'), goal('t2', [], ['s2']), goal('u'), goal('f', [], [], subjectB), goal('g'),
+  ], ['subjects'])
+  const calendarUnits = unitsOf({ LEFT: 'left', RIGHT: 'right', S: 's', H1: 'h1', H2: 'h2', H3: 'h3', M: 'm', T: 't', U: 'u', F: 'f', G: 'g' })
+  const calendarOrder = [{ unit: 'h1', after: 's' }, { unit: 'h2', after: 'h1' }, { unit: 't', after: 'h2' },
+    { unit: 'h3', after: 't' }, { unit: 'u', after: 'h3' }, { unit: 'g', after: 'f' }]
+  const calendar = project({ ...calendarTree, units: calendarUnits, after: calendarOrder })
+  // Preserve an independently supplied requirement relation at the same pair
+  // as the newly contracted calendar, without changing its actual provenance.
+  const existingDemand = { source: 'S', target: 'T', kind: 'summary' as const, unitOrder: 'derived' as const,
+    provenance: [{ requiredGoalId: 's2', dependentGoalId: 't2', inherited: false, sourceGoalIds: ['s2'], unresolved: false }] }
+  calendar.scopeRelations!.LEFT.push(existingDemand)
+  const beforeCalendar = JSON.stringify(calendar)
+  const filtered = filterLearnerUnitMapToSubjects(calendar, new Set([subjectA]))
+  const declaredPairs = (fixture: LearnerUnitMapFixture) => relations(fixture, 'LEFT')
+    .filter(relation => relation.unitOrder === 'declared').map(relation => [relation.source, relation.target]).sort()
+  assert.deepEqual(declaredPairs(filtered), [['S', 'T'], ['T', 'U']], 'Several hidden calendar units contract to the next retained sibling.')
+  const bridge = relations(filtered, 'LEFT').find(relation => relation.source === 'T' && relation.target === 'U'
+    && relation.unitOrder === 'declared')
+  assert.deepEqual(bridge?.provenance, [], 'New calendar bridges have no invented requirements.')
+  const enriched = relations(filtered, 'LEFT').filter(relation => relation.source === 'S' && relation.target === 'T')
+  assert.equal(enriched.length, 1, 'One endpoint pair retains one renderer edge, even when it already carries demand.')
+  assert.deepEqual(enriched[0], { ...existingDemand, unitOrder: 'declared' },
+    'Calendar enrichment changes only order metadata; kind, backward marker and actual provenance stay intact.')
+  assert.deepEqual(relations(filtered, 'LEFT').find(relation => relation.backward),
+    relations(calendar, 'LEFT').find(relation => relation.backward), 'Backward demand remains unchanged.')
+  assert(!relations(filtered, 'LEFT').some(relation => relation.source === 'S' && relation.target === 'M'
+    && relation.unitOrder === 'declared'), 'A hidden derived demand is not a declared calendar path.')
+  assert.deepEqual(filtered.scopeContext?.M?.m?.map(requirement => requirement.sourceGoalIds), [['h1']],
+    'The hidden requirement retains its existing outside context.')
+  assert.equal(relations(filtered, 'RIGHT').length, 0, 'A separate sibling board supplies no cross-board calendar relation.')
+  assertArrowsAmongChildren(filtered, 'contracted calendar')
+  for (const [id, entry] of Object.entries(filtered.entries)) assert.deepEqual(entry.requires, calendar.entries[id].requires)
+  assert.deepEqual(filterLearnerUnitMapToSubjects(filtered, new Set([subjectA])), filtered)
+  assert.equal(JSON.stringify(calendar), beforeCalendar, 'Filtering never mutates the full fixture.')
+  assert.deepEqual(filterLearnerUnitMapToSubjects(calendar, new Set([subjectA, subjectB])).scopeRelations, calendar.scopeRelations,
+    'Keeping all subjects preserves the original calendar and all existing relations exactly.')
+  const redundantInput = { ...calendar, scopeRelations: structuredClone(calendar.scopeRelations) }
+  const authoredRedundant = { source: 'S', target: 'U', kind: 'summary' as const, provenance: [], unitOrder: 'declared' as const }
+  redundantInput.scopeRelations!.LEFT.push(authoredRedundant)
+  assert.deepEqual(relations(filterLearnerUnitMapToSubjects(redundantInput, new Set([subjectA])), 'LEFT')
+    .find(relation => relation.source === 'S' && relation.target === 'U'), authoredRedundant,
+  'An existing declared relation is preserved even when redundant; reduction applies only to newly contracted bridges.')
+  const branch = project({ ...calendarTree, units: calendarUnits, after: [...calendarOrder,
+    { unit: 'm', after: 's' }, { unit: 't', after: 'm' }] })
+  const filteredBranch = filterLearnerUnitMapToSubjects(branch, new Set([subjectA]))
+  assert.deepEqual(declaredPairs(filteredBranch), [['M', 'T'], ['S', 'M'], ['T', 'U']],
+    'An alternative retained branch prevents a redundant new S -> T shortcut.')
+}
+
 // A goal reachable through two removed clusters appears once; one under two units is reported.
 const twice = tree([
   goal('subject', ['U', 'U2']), goal('U', ['C1', 'C2']), goal('C1', ['g', 'h']), goal('C2', ['g']), goal('U2', ['g', 'k']),
@@ -195,8 +253,12 @@ const preparation = tree([
 const preparationMap = project({ ...preparation, units: unitsOf({ E: 'e', E1: 'e1u', L: 'l', M: 'm', N: 'n' }),
   after: [{ unit: 'l', after: 'e' }] })
 const parentOf = (fixture: LearnerUnitMapFixture, id: string) => fixture.entryPaths?.[id]?.at(-2)
-assert.equal(parentOf(preparationMap, 'pa'), 'E', 'needed by two ordered units: in the earlier one')
-assert.equal(parentOf(preparationMap, 'pb'), 'E', 'needed through another preparation goal: where that one is needed first')
+const requiredFoundations = preparationMap.unitEntryIds['required-foundations:e']
+assert(requiredFoundations)
+assert.equal(parentOf(preparationMap, requiredFoundations), 'E', 'preparation stays in the earliest actual acquisition unit')
+assert.equal(parentOf(preparationMap, 'pa'), requiredFoundations, 'needed by two ordered units: grouped beside topics in the earlier unit')
+assert.equal(parentOf(preparationMap, 'pb'), requiredFoundations, 'transitively needed preparation shares the same actual acquisition place')
+assert.deepEqual(preparationMap.entries[requiredFoundations].children, ['pb', 'pa'], 'foundations retain prerequisite-first order')
 assert.equal(parentOf(preparationMap, 'pc'), preparationMap.rootId, 'needed by two units without order: beside them')
 assert.equal(parentOf(preparationMap, 'pd'), 'E1', 'descends while exactly one earliest child unit needs it')
 assert.equal(parentOf(preparationMap, 'pe'), preparationMap.rootId, 'needed by no placed goal: at the root')
@@ -204,9 +266,35 @@ for (const id of ['pa', 'pb', 'pc', 'pd', 'pe']) assert.equal(preparationMap.ent
 assert.equal(preparationMap.entries.e1.preparation, undefined)
 assert.equal(preparationMap.entries.prep, undefined, 'the synthetic preparation cluster is no map node')
 assertArrowsAmongChildren(preparationMap, 'preparation')
-assert.equal(findRelation(preparationMap, 'E', 'pa', 'e1')?.kind, 'requirement', 'a preparation goal prepares its consumer like any goal')
+assert.equal(findRelation(preparationMap, 'E', requiredFoundations, 'e1')?.kind, 'summary')
+assert(findRelation(preparationMap, 'E', requiredFoundations, 'e1')?.provenance.some(cause => cause.sourceGoalIds.includes('pa')),
+  'the grouping retains the actual prerequisite witness to its consumer')
+assert.equal(findRelation(preparationMap, requiredFoundations, 'pb', 'pa')?.kind, 'requirement',
+  'internal prerequisites remain visible inside the preparation group')
 const preparationFlat = project(preparation)
 for (const id of ['pa', 'pb', 'pc', 'pd', 'pe']) assert.equal(parentOf(preparationFlat, id), preparationFlat.rootId)
+
+// Coarsening all preparation into one group would create a false cycle:
+// p0 -> topic A -> p1 -> topics B/C, with p0 also needed by C.
+const interleavedPreparation = tree([
+  goal('subject', ['E', 'prep']), goal('E', ['A', 'B', 'C']),
+  goal('A', ['a']), goal('B', ['b']), goal('C', ['c']),
+  goal('a', [], ['p0']), goal('b', [], ['p1']), goal('c', [], ['p0', 'p1']),
+  goal('p0'), goal('p1', [], ['a']), preparationCluster('prep', ['p0', 'p1']),
+], ['subject'])
+const interleavedSnapshot = JSON.stringify([...interleavedPreparation.goalIndexAll])
+const stratified = project({ ...interleavedPreparation, units: unitsOf({ E: 'e', A: 'a', B: 'b', C: 'c' }) })
+const earlyFoundation = parentOf(stratified, 'p0'), laterFoundation = parentOf(stratified, 'p1')
+assert.notEqual(earlyFoundation, laterFoundation, 'a topic on the prerequisite path separates preparation groups')
+assert.equal(parentOf(stratified, earlyFoundation), 'E')
+assert.equal(parentOf(stratified, laterFoundation), 'E')
+assert(findRelation(stratified, 'E', earlyFoundation, 'A'))
+assert(findRelation(stratified, 'E', 'A', laterFoundation))
+assert(findRelation(stratified, 'E', laterFoundation, 'B'))
+assert(!findRelation(stratified, 'E', 'A', earlyFoundation))
+assert(!findRelation(stratified, 'E', laterFoundation, 'A'))
+assert.equal(JSON.stringify([...interleavedPreparation.goalIndexAll]), interleavedSnapshot)
+assertArrowsAmongChildren(stratified, 'stratified preparation')
 
 // Units declared by their own goals (learning units) where all of them share one parent.
 const memberMap = project({ ...depth, units: unitsOf({ U: 'u', V: 'v', W: 'w' }), memberUnits: [

@@ -1,0 +1,35 @@
+Source: https://github.com/enpasos/skillpilot/actions/runs/44037739517/job/133896624134
+Remote exact head: bce7769b25b5c4f37dc68dace3484d21b590b5d6
+Selected unmodified error lines; full log remains linked above.
+
+2026-11-17T07:59:49.0879721Z > tsx scripts/validateLearnerGoalSelection.ts
+2026-11-17T07:59:49.0879912Z 
+2026-11-17T07:59:49.7641607Z node:internal/modules/run_main:123
+2026-11-17T07:59:49.7642166Z     triggerUncaughtException(
+2026-11-17T07:59:49.7642583Z     ^
+2026-11-17T07:59:49.7642724Z 
+2026-11-17T07:59:49.7643337Z AssertionError [ERR_ASSERTION]: The historical prism cluster must contain the two independent competencies exactly once.
+2026-11-17T07:59:49.7644640Z + actual - expected
+2026-11-17T07:59:49.7644878Z 
+2026-11-17T07:59:49.7645246Z + []
+2026-11-17T07:59:49.7645489Z - [
+2026-11-17T07:59:49.7645884Z -   '68fb0e78-34f2-5572-8db6-e7f5ebcff70f',
+2026-11-17T07:59:49.7646285Z -   'f1348d40-3872-5e44-8892-3600c811796f'
+2026-11-17T07:59:49.7646576Z - ]
+2026-11-17T07:59:49.7647244Z     at <anonymous> (/home/runner/work/skillpilot/skillpilot/app/scripts/validateLearnerGoalSelection.ts:577:8)
+2026-11-17T07:59:49.7666137Z     'f1348d40-3872-5e44-8892-3600c811796f'
+2026-11-17T07:59:49.7666582Z   ],
+2026-11-17T07:59:49.7666881Z   operator: 'deepStrictEqual'
+2026-11-17T07:59:49.7667260Z }
+2026-11-17T07:59:49.7667420Z 
+2026-11-17T07:59:49.7667529Z Node.js v20.20.2
+2026-11-17T07:59:49.7917999Z ##[error]Process completed with exit code 1.
+2026-11-17T07:59:49.8130646Z Post job cleanup.
+2026-11-17T07:59:49.8848908Z [command]/usr/bin/git version
+2026-11-17T07:59:49.8884738Z git version 2.56.1
+2026-11-17T07:59:49.8916910Z Temporarily overriding HOME='/home/runner/work/_temp/4aa87373-b25c-4912-b5f5-866c09f221bc' before making global git config changes
+2026-11-17T07:59:49.8918055Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-17T07:59:49.8953646Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/skillpilot/skillpilot
+2026-11-17T07:59:49.8982437Z Removing SSH command configuration
+2026-11-17T07:59:49.8987393Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+

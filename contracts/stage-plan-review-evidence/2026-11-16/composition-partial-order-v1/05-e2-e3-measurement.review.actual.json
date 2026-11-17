@@ -1,0 +1,55 @@
+{
+  "at": "2026-11-16T22:05:01.121Z",
+  "decision": "PASS",
+  "source": "tmp/pipeline/laender-stufen/gesamt/measure-actual-v3.mts",
+  "sha256": "d368be7cff27e97df29c90b06b424964d4059dbf0592ba6918388ab341c69ffd",
+  "sourceUnchanged": true,
+  "cases": [
+    {
+      "name": "own-atom path requires no invented E3 edge",
+      "expectedE2Cycles": 0,
+      "expectedE3Missing": 0
+    },
+    {
+      "name": "own-atom path plus reverse declared order violates E2",
+      "expectedE2Cycles": 1,
+      "expectedE3Missing": 0
+    },
+    {
+      "name": "derived arrow cannot discharge E3",
+      "expectedE2Cycles": 0,
+      "expectedE3Missing": 1
+    },
+    {
+      "name": "declared transitive unit path discharges E3",
+      "expectedE2Cycles": 0,
+      "expectedE3Missing": 0
+    },
+    {
+      "name": "non-convex atom aggregation remains an E2 cycle",
+      "expectedE2Cycles": 1,
+      "expectedE3Missing": 2
+    },
+    {
+      "name": "independent units stay parallel",
+      "expectedE2Cycles": 0,
+      "expectedE3Missing": 0
+    },
+    {
+      "name": "declared cycle is not hidden by absent demand",
+      "expectedE2Cycles": 1,
+      "expectedE3Missing": 0
+    },
+    {
+      "name": "same labels do not merge unit identities",
+      "expectedE2Cycles": 0,
+      "expectedE3Missing": 1
+    },
+    {
+      "name": "opposite declared order contradicts actual unit demand",
+      "expectedE2Cycles": 1,
+      "expectedE3Missing": 1
+    }
+  ],
+  "scope": "Exact measurement-v3 board kernel independently tested; actual216model conformance is separate."
+}

@@ -1,0 +1,197 @@
+diff --git a/app/scripts/testCurriculumOfferingSource.ts b/app/scripts/testCurriculumOfferingSource.ts
+index 36a50ed9d3..6ff05ecc6a 100644
+--- a/app/scripts/testCurriculumOfferingSource.ts
++++ b/app/scripts/testCurriculumOfferingSource.ts
+@@ -395,6 +395,8 @@ assert.equal(
+   'de-he-gym-sekii-math-lk',
+   'The resolved Hessen Mathematics LK upper-secondary scope must use its reviewed Sek-II composition view.',
+ )
++assert.equal((hessenMathSekTwoLkView.scope as Record<string, unknown>).courseProfile, 'LK')
++assert.equal((hessenMathSekTwoLkView.scope as Record<string, unknown>).stage, 'SekII')
+ 
+ const canonicalMathLandscape = JSON.parse(readFileSync(
+   new URL(
+@@ -420,8 +422,8 @@ const projectedMathRootChildTitles = projectedMathRoot.contains.map(
+ )
+ assert.deepEqual(
+   projectedMathRootChildTitles,
+-  ['Sekundarstufe II (LK)'],
+-  'The learner-facing Mathematics root must expose only the authored Sek-II LK structure.',
++  ['Sekundarstufe II'],
++  'The learner-facing Mathematics root must expose the authored stage; LK selection is bound by the view scope.',
+ )
+ for (const canonicalFallbackSibling of [
+   'Sekundarstufe I',
+diff --git a/curricula/DE/Gymnasium/composition-views/mathematik/de-mv-seki.view.json b/curricula/DE/Gymnasium/composition-views/mathematik/de-mv-seki.view.json
+index f564e64308..1b90c02b67 100644
+--- a/curricula/DE/Gymnasium/composition-views/mathematik/de-mv-seki.view.json
++++ b/curricula/DE/Gymnasium/composition-views/mathematik/de-mv-seki.view.json
+@@ -1659,33 +1659,6 @@
+               "id": "math-layout-seki-j7",
+               "label": "Jahrgangsstufe 7",
+               "children": [
+-                {
+-                  "kind": "structure",
+-                  "id": "math-layout-seki-j7-physics-needed-content-c9d92f32-167a-4006-a940-b8063a6ed434",
+-                  "label": "Funktionen und ihre Darstellung",
+-                  "children": [
+-                    {
+-                      "kind": "goalEntry",
+-                      "goalId": "09f47964-2cd0-410e-93ee-9632b582fc91",
+-                      "projectionRole": "prerequisiteOnly",
+-                      "acquisitionPlacement": true
+-                    },
+-                    {
+-                      "kind": "goalEntry",
+-                      "goalId": "c65ecabf-d00b-4e2d-99ae-b64692325ffb",
+-                      "projectionRole": "prerequisiteOnly",
+-                      "acquisitionPlacement": true
+-                    },
+-                    {
+-                      "kind": "goalEntry",
+-                      "goalId": "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+-                      "projectionRole": "prerequisiteOnly"
+-                    }
+-                  ],
+-                  "childOrder": {
+-                    "after": []
+-                  }
+-                },
+                 {
+                   "kind": "structure",
+                   "id": "math-layout-seki-j7-required-foundations-content-058bf6de-6c0e-4298-b054-9e8dff6e6a66",
+@@ -2814,22 +2787,6 @@
+               "id": "math-layout-seki-j9",
+               "label": "Jahrgangsstufe 9",
+               "children": [
+-                {
+-                  "kind": "structure",
+-                  "id": "math-layout-seki-j9-physics-needed-content-1bc118c3-1f05-5f2a-b125-418017180d75",
+-                  "label": "Vektoren addieren, subtrahieren und skalieren",
+-                  "children": [
+-                    {
+-                      "kind": "goalEntry",
+-                      "goalId": "571793bd-34f1-539e-969c-dfcc2dfa96b3",
+-                      "projectionRole": "prerequisiteOnly",
+-                      "acquisitionPlacement": true
+-                    }
+-                  ],
+-                  "childOrder": {
+-                    "after": []
+-                  }
+-                },
+                 {
+                   "kind": "structure",
+                   "id": "math-layout-seki-j9-required-foundations-content-78bcc25b-e48c-471b-9236-6c3b23d48a8b",
+@@ -2838,14 +2795,12 @@
+                     {
+                       "kind": "goalEntry",
+                       "goalId": "19f170e4-b88f-4c06-b72a-ce6923748bb4",
+-                      "projectionRole": "prerequisiteOnly",
+-                      "acquisitionPlacement": true
++                      "projectionRole": "prerequisiteOnly"
+                     },
+                     {
+                       "kind": "goalEntry",
+                       "goalId": "94b48b93-473f-4bc5-8c93-8c1a5e2cd1a6",
+-                      "projectionRole": "prerequisiteOnly",
+-                      "acquisitionPlacement": true
++                      "projectionRole": "prerequisiteOnly"
+                     },
+                     {
+                       "kind": "goalEntry",
+diff --git a/curricula/DE/Gymnasium/composition-views/mathematik/de-sl-seki.view.json b/curricula/DE/Gymnasium/composition-views/mathematik/de-sl-seki.view.json
+index bb9c7e6b8f..d7557736e1 100644
+--- a/curricula/DE/Gymnasium/composition-views/mathematik/de-sl-seki.view.json
++++ b/curricula/DE/Gymnasium/composition-views/mathematik/de-sl-seki.view.json
+@@ -1466,31 +1466,6 @@
+               "id": "math-layout-seki-j7",
+               "label": "Jahrgangsstufe 7",
+               "children": [
+-                {
+-                  "kind": "structure",
+-                  "id": "math-layout-seki-j7-physics-needed-content-c9d92f32-167a-4006-a940-b8063a6ed434",
+-                  "label": "Funktionen und ihre Darstellung",
+-                  "children": [
+-                    {
+-                      "kind": "goalEntry",
+-                      "goalId": "09f47964-2cd0-410e-93ee-9632b582fc91",
+-                      "projectionRole": "prerequisiteOnly"
+-                    },
+-                    {
+-                      "kind": "goalEntry",
+-                      "goalId": "c65ecabf-d00b-4e2d-99ae-b64692325ffb",
+-                      "projectionRole": "prerequisiteOnly"
+-                    },
+-                    {
+-                      "kind": "goalEntry",
+-                      "goalId": "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+-                      "projectionRole": "prerequisiteOnly"
+-                    }
+-                  ],
+-                  "childOrder": {
+-                    "after": []
+-                  }
+-                },
+                 {
+                   "kind": "structure",
+                   "id": "math-layout-seki-j7-required-foundations-content-cba4cad7-926d-5035-a7dd-d450afccccb3",
+diff --git a/curricula/DE/Gymnasium/quality/goal-visualization-review/physik-rollout-status.json b/curricula/DE/Gymnasium/quality/goal-visualization-review/physik-rollout-status.json
+index 0765ab3777..3d0f10f2e8 100644
+--- a/curricula/DE/Gymnasium/quality/goal-visualization-review/physik-rollout-status.json
++++ b/curricula/DE/Gymnasium/quality/goal-visualization-review/physik-rollout-status.json
+@@ -1,6 +1,6 @@
+ {
+   "schemaVersion": 1,
+-  "generatedAt": "2026-11-16T06:20:17.740Z",
++  "generatedAt": "2026-11-17T06:17:50.656Z",
+   "generator": "app/scripts/reportGoalVisualizationRolloutStatus.ts",
+   "request": {
+     "subject": "physik",
+@@ -10,7 +10,7 @@
+     "currentPromptAppendDirPath": "tmp/goal-visualization-prompt-appends/physik-batch-073-regeneration-2"
+   },
+   "summary": {
+-    "totalGoals": 841,
++    "totalGoals": 850,
+     "atomicGoalsInScope": 485,
+     "goalsWithPrimaryVisualization": 485,
+     "coveragePercent": 100,
+diff --git a/curricula/DE/Gymnasium/quality/goal-visualization-review/physik-rollout-status.md b/curricula/DE/Gymnasium/quality/goal-visualization-review/physik-rollout-status.md
+index 1ad3d2e617..bf8a6a5e09 100644
+--- a/curricula/DE/Gymnasium/quality/goal-visualization-review/physik-rollout-status.md
++++ b/curricula/DE/Gymnasium/quality/goal-visualization-review/physik-rollout-status.md
+@@ -8,7 +8,7 @@
+ > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json`
+ > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
+ 
+-Generated: 2026-11-16T06:20:17.740Z
++Generated: 2026-11-17T06:17:50.656Z
+ 
+ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
+ 
+@@ -16,7 +16,7 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
+ 
+ | Metric | Value |
+ | --- | --- |
+-| Alle Ziele in der Landschaft | 841 |
++| Alle Ziele in der Landschaft | 850 |
+ | Atomare Ziele im Visualisierungs-Scope | 485 |
+ | Ziele mit primaerem Visualisierungslink | 485 |
+ | Coverage | 100.0% |
+diff --git a/scripts/test_mathematics_stage_views.py b/scripts/test_mathematics_stage_views.py
+index bc02c73221..c05ec6a1ed 100644
+--- a/scripts/test_mathematics_stage_views.py
++++ b/scripts/test_mathematics_stage_views.py
+@@ -386,7 +386,10 @@ class MathematicsStageViewsTest(unittest.TestCase):
+         for path, digest in policy['currentPhysicsSourcePins'].items():
+             self.assertEqual(hashlib.sha256((ROOT / path).read_bytes()).hexdigest(), digest, path)
+         rows = [row for values in policy['views'].values() for row in values]
+-        self.assertEqual(len({row['goalId'] for row in rows}), 48)
++        # The reviewed MV source-scope correction retired the former demand
++        # for scalar multiplication (571793bd...) from this conditional policy.
++        # The canonical skill and its prerequisites remain in the curriculum.
++        self.assertEqual(len({row['goalId'] for row in rows}), 47)
+         for row in rows:
+             self.assertIn(row['goalId'], n.math_atoms)
+             self.assertEqual(row['requiresPath'][0], row['consumerGoalId'])

@@ -296,7 +296,7 @@ function findStructure(nodes: CompositionViewNode[], id: string): CompositionStr
   }
   return undefined
 }
-for (const [file, firstId, secondId] of [['de-bb-gk.view.json', 'sek1', 'sek2-gk'], ['de-he-gk-g8.view.json', 'sek1-g8', 'sek2-gk']]) {
+for (const [file, firstId, secondId] of [['de-bb-gk.view.json', 'sek1', 'sek-ii'], ['de-he-gk-g8.view.json', 'sek1-g8', 'sek2-gk']]) {
   const source = JSON.parse(readFileSync(new URL(`../../curricula/DE/Gymnasium/composition-views/mathematik/${file}`, import.meta.url), 'utf8')) as CompositionView
   const first = findStructure(source.rootNodes, firstId), second = findStructure(source.rootNodes, secondId)
   assert(first && second, `Keep the existing stage fragments explicit for ${file}.`)
@@ -311,7 +311,9 @@ for (const [file, firstId, secondId] of [['de-bb-gk.view.json', 'sek1', 'sek2-gk
     else looseTargets.push(structuredClone(node))
   })
   collectLooseSupport(source.rootNodes)
-  assert(looseSupport.length > 0, `${file}: keep actual global support overrides in the reproduction.`)
+  if (file === 'de-bb-gk.view.json') assert(looseSupport.length > 0, `${file}: keep actual global support overrides in the reproduction.`)
+  // HE's current normalized tree has no loose global declarations. Its
+  // existing nested roles remain part of the same legacy role-only fixture.
   const value = fixture()
   value.goals = realGoalCatalog
   value.plan.planId = `${source.viewId}-test-plan`
@@ -320,10 +322,19 @@ for (const [file, firstId, secondId] of [['de-bb-gk.view.json', 'sek1', 'sek2-gk
   value.full.viewId = `${source.viewId}-test-authority`; value.full.landscapeId = source.landscapeId
   value.full.scope = { ...value.plan.scope, stage: 'CrossStage', courseProfile: String(source.scope.courseProfile) }
   value.full.planBinding.planId = value.plan.planId
-  value.full.rootNodes = [
+  // This isolated 1.1 fixture tests role specificity only. It is not a
+  // source-format converter: current 1.2 ordering, evidence and acquisition
+  // semantics remain tested at their actual versioned boundaries. Preserve
+  // exactly the current reference kinds, IDs and projection roles here.
+  const roleFixtureNodes = (nodes: CompositionViewNode[]): CompositionViewNode[] => nodes.map(node => node.kind === 'structure'
+    ? { kind: node.kind, id: node.id, label: node.label, children: roleFixtureNodes(node.children),
+      ...(node.planUnitId ? { planUnitId: node.planUnitId } : {}) }
+    : { kind: node.kind, goalId: node.goalId, ...(node.projectionRole ? { projectionRole: node.projectionRole } : {}),
+      ...(node.displayLabel ? { displayLabel: node.displayLabel } : {}) } as CompositionViewNode)
+  value.full.rootNodes = roleFixtureNodes([
     { ...structuredClone(first), planUnitId: value.plan.units[0].id, children: [...structuredClone(first.children), ...looseSupport] },
     { ...structuredClone(second), planUnitId: value.plan.units[1].id },
-  ] as typeof value.full.rootNodes
+  ]) as typeof value.full.rootNodes
   value.plan.subjectViews = [{ landscapeId: source.landscapeId, courseProfile: String(source.scope.courseProfile), viewId: value.full.viewId }]
   value.excerpt.viewId = `${source.viewId}-test-seki`; value.excerpt.landscapeId = source.landscapeId
   value.excerpt.scope = { ...value.full.scope, stage: 'SekI' }

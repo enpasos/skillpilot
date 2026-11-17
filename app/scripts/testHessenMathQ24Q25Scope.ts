@@ -234,18 +234,45 @@ const files = readdirSync(resolve(repoRoot, viewDir)).filter((name) => name.ends
 const root = raw.goals.find((goal) => goal.tags?.includes('root'))
 assert(root, 'Canonical root missing')
 const roots = new Map([[raw.landscapeId, root.id]])
+const newLandSekIFiles = new Set(['bb', 'be', 'by', 'hb', 'hh', 'mv', 'ni', 'nw', 'sl', 'sn', 'st', 'th']
+  .map(state => `de-${state}-seki.view.json`))
+const statisticsSourceIds = ['65cacc1f-e961-5e47-b8fa-764c40c129a7', 'd5054d79-6483-5d8a-a33b-b074f1cd5904']
+assert.deepEqual(statisticsSourceIds.map(id => goalById.get(id)?.title),
+  ['Q3.5 Statistik: Kenngrößen', 'Q3.5 Statistik: Datenanalyse und Modellvergleich'])
 let heGkCount = 0
 let heLkCount = 0
 let endpointCount = 0
 let otherGkEndpointCount = 0
 for (const name of files) {
   const view = normalizeCompositionView(readJson(`${viewDir}/${name}`))
-  assert.deepEqual(compileCompositionView(view, landscape).findings, [], `${name}: invalid current composition`)
+  // Retained canonical source titles can legitimately carry a phase prefix.
+  // Bind the exact known diagnostics; every error and any new warning fails.
+  const expectedSourceWarnings = view.scope.stage === 'SekI' ? []
+    : view.scope.jurisdiction === 'DE-BB' ? statisticsSourceIds.slice(0, 1)
+      : view.scope.jurisdiction === 'DE-NI' ? statisticsSourceIds.slice(1)
+        : !view.scope.jurisdiction || view.scope.jurisdiction === 'DE-NW' ? statisticsSourceIds : []
+  assert.deepEqual(compileCompositionView(view, landscape).findings
+    .map(({ code, severity, goalId }) => ({ code, severity, goalId }))
+    .sort((a, b) => (a.goalId ?? '').localeCompare(b.goalId ?? '')),
+  expectedSourceWarnings.map(goalId => ({ code: 'CPV-102', severity: 'warning', goalId }))
+    .sort((a, b) => a.goalId.localeCompare(b.goalId)), `${name}: unexpected composition finding`)
   const { targetGoalIds: targets, prerequisiteOnlyGoalIds: prerequisites } = collectCompositionProjectionRoleGoalIds(view.rootNodes, goalById, roots)
   const hasRotation = targets.has(rotation)
   assert.equal(targets.has(assessment), hasRotation, `${name}: real endpoint must follow the rotation target exactly`)
   assert.equal(targets.has(cluster), hasRotation, `${name}: assessment folder must follow the rotation target exactly`)
-  assert(!prerequisites.has(assessment) && !prerequisites.has(cluster), `${name}: assessment must not be hidden as prerequisite-only`)
+  if (newLandSekIFiles.has(name)) {
+    assert.equal(view.scope.stage, 'SekI')
+    assert(!hasRotation, `${name}: a new lower-stage selection must not acquire upper-stage rotation targets`)
+    const learning = new Set<string>(), pending = [...targets]
+    while (pending.length) {
+      const id = pending.pop()!
+      if (learning.has(id)) continue
+      learning.add(id)
+      pending.push(...(goalById.get(id)?.requires ?? []).map(normalizeGoalRef))
+    }
+    assert(!learning.has(assessment) && !learning.has(cluster),
+      `${name}: retained upper-stage support declarations must not enter the actual lower-stage learning basis`)
+  } else assert(!prerequisites.has(assessment) && !prerequisites.has(cluster), `${name}: assessment must not be hidden as prerequisite-only`)
   if (hasRotation) {
     endpointCount += 1
     assert(targets.has(sharedAssessment), `${name}: preserve the previous shared endpoint alongside the truthful rotation endpoint`)
@@ -288,7 +315,8 @@ for (const name of files) {
     assert(!prerequisites.has(id), `${name}: excluded LK content/assessment returned as prerequisite-only: ${id}`)
   }
 }
-assert.equal(files.length, 88, 'Update scope regression deliberately when the view catalog changes')
+assert.equal(files.length, 100, 'Preserve the 88 original views and all 12 new lower-stage selections')
+assert.equal(files.filter(name => newLandSekIFiles.has(name)).length, 12)
 assert.equal(heGkCount, 4)
 assert.equal(heLkCount, 4)
 assert.equal(endpointCount, 72)

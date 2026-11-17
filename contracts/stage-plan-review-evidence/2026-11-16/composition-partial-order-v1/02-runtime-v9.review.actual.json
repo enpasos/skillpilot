@@ -1,0 +1,46 @@
+{
+  "at": "2026-11-16T22:59:07.200Z",
+  "decision": "PASS",
+  "pins": [
+    {
+      "path": "app/src/utils/compositionViewRuntime.ts",
+      "sha256": "2f475f398913d2f4a2f1e5131c62872b1f1f6ec0d49553467e646bca91b38c10"
+    },
+    {
+      "path": "app/src/utils/learnerTreeProjection.ts",
+      "sha256": "6560d476af917239080d144d51bbfcaa96cb6fb20b2cdcbc2d1b83a0af1c636e"
+    },
+    {
+      "path": "app/src/hooks/useLandscapes.ts",
+      "sha256": "e91f2132619342aa628524a9d07e029c0b1ab0d80c5314081a5bcfa7ed400e0a"
+    },
+    {
+      "path": "app/scripts/testCompositionPreparationPlacements.ts",
+      "sha256": "be00dd55b79e16d91cea50b87cddc6107f7c2677d2795e0fbd282e6269b721ff"
+    },
+    {
+      "path": "app/src/utils/authoring/compositionViewAuthoring.ts",
+      "sha256": "e4d9546dfc613c6c40afa1bc1e410137f51cd3b93c622d77dc38c08d1b9cd22b"
+    }
+  ],
+  "cases": 128,
+  "ownershipCases": 240,
+  "referenceOrderCases": 4,
+  "phaseCases": 300,
+  "checks": [
+    "300 phase-pair/format/reference/root combinations plus same-entry legacy isolation; closed target singleton preserved",
+    "own-subject authority across 15 depth combinations and all4input orders; foreign fallback and existing-target precedence",
+    "restored source order before goalEntry and real canonicalSubtree despite normalization",
+    "root order survives canonical anchoring",
+    "marked and unmarked references remain distinct",
+    "all16 preparation subsets",
+    "anchored and synthetic root",
+    "hydration from authoritative source",
+    "no acquisition-scope growth",
+    "no support branch without closed targets",
+    "exact authored path",
+    "idempotence",
+    "input/source immutability"
+  ],
+  "limitation": "Pure runtime-function review; chronological placement and real learner-map measurement remain separate."
+}

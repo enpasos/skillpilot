@@ -1,0 +1,14 @@
+{
+  "status": "PASS-independent-read-only-gate-review",
+  "file": "scripts/check_physics_source_method_routes.test.ts",
+  "sha256": "dafb5a83e6888eb692ad925dec3078e3875676ece7ec96ce6b47d7bb29a5afb9",
+  "cases": [
+    "transitive-after accepted",
+    "reversed array position accepted",
+    "removed edge rejected",
+    "reversed after rejected",
+    "own atom exception retained"
+  ],
+  "retention": "Exact four method requires arrays, method/astronomy target floors, once-only explicit method refs and lower/upper placement remain asserted by the full source test. HE retains its narrower source-bound wrapper contract.",
+  "limit": "This independently exercises the extracted order assertion. Parent owns the complete live route regression."
+}

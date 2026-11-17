@@ -1,0 +1,264 @@
+{
+  "schema": "independent-bilingual-atomic-assessment-content-review-v1",
+  "reviewer": "/root/he_ephase_source_review",
+  "author": "/root/he_ephase_validation",
+  "reviewedAt": "2026-11-17T03:36:47.807452+00:00",
+  "status": "PASS",
+  "releaseRecommendation": "APPROVE_RELEASE_OF_REVIEWED_CONTENT",
+  "learnerTrialOrHumanApproval": false,
+  "taskId": "797f5e93-b5fd-5ee3-9fb2-fcc9e1d12a00",
+  "targetGoalId": "3b50255a-6b01-578b-8f5c-4383536a3221",
+  "candidatePins": {
+    "tmp/pipeline/laender-stufen/gesamt/physics/remaining-lower-assessments/author-validation/decay-chains-two-consistency-audits.goal.json": "123e08d157d17b0950b168cc5f784be6f80bc46d5cd076a3d5918fc2da9f886e",
+    "tmp/pipeline/laender-stufen/gesamt/physics/remaining-lower-assessments/author-validation/decay-chains-two-consistency-audits.md": "bca76078c03cb85ca3f792d22f9c896ed73022214daeb8d8e9e18322ba7f4f18"
+  },
+  "retainedOriginalPins": {
+    "tmp/pipeline/laender-stufen/gesamt/review/remaining-lower-assessments/decay-chains-two-consistency-audits-v2.reviewed-candidate.goal.json": "123e08d157d17b0950b168cc5f784be6f80bc46d5cd076a3d5918fc2da9f886e",
+    "tmp/pipeline/laender-stufen/gesamt/review/remaining-lower-assessments/decay-chains-two-consistency-audits-v2.reviewed-material.md": "bca76078c03cb85ca3f792d22f9c896ed73022214daeb8d8e9e18322ba7f4f18"
+  },
+  "reviewedPayloadDigestExcludingOnlyReleaseStatusAndReviewNote": "b20c2b9ec6cf1e9d977400984818c16464bbe84f1c55d4ee6059cffccc3c2fba",
+  "targetDescription": "Die lernende Person kann in einer vorgegebenen Zerfallsreihe die Änderungen von Massenzahl und Kernladungszahl bei den angegebenen Zerfallsarten prüfen und die Konsistenz der aufeinanderfolgenden Nuklide begründen.",
+  "targetGoalDigest": "01477ac2f84e659f50e61c68da442b45df67e4e38cf7d2003b0d1848c2cf93c9",
+  "canonicalDocumentSha256AtReviewTime": "08bea9063bad70aa2e7690c4381a1f41e87f9252d43226ef00850c139ab85c07",
+  "requiresAndCoverage": {
+    "requires": [
+      "3b50255a-6b01-578b-8f5c-4383536a3221"
+    ],
+    "coveredGoalIds": [
+      "3b50255a-6b01-578b-8f5c-4383536a3221"
+    ],
+    "additionalRequiredGoalIds": []
+  },
+  "courseBinding": {
+    "taskCourseTags": [
+      "LK"
+    ],
+    "targetCourseTags": [
+      "LK"
+    ],
+    "exactMatch": true
+  },
+  "independentCalculations": [
+    {
+      "case": "A",
+      "printedLocalDeltas": [
+        [
+          -4,
+          -2
+        ],
+        [
+          0,
+          -1
+        ],
+        [
+          -4,
+          -2
+        ]
+      ],
+      "locallyValid": [
+        true,
+        false,
+        true
+      ],
+      "correctedChain": [
+        [
+          220,
+          90
+        ],
+        [
+          216,
+          88
+        ],
+        [
+          216,
+          89
+        ],
+        [
+          212,
+          87
+        ]
+      ],
+      "conservationBalances": [
+        {
+          "kind": "alpha",
+          "parent": [
+            220,
+            90
+          ],
+          "daughter": [
+            216,
+            88
+          ],
+          "emittedNucleonAndChargeNumbers": [
+            4,
+            2
+          ]
+        },
+        {
+          "kind": "beta_minus",
+          "parent": [
+            216,
+            88
+          ],
+          "daughter": [
+            216,
+            89
+          ],
+          "emittedNucleonAndChargeNumbers": [
+            0,
+            -1
+          ]
+        },
+        {
+          "kind": "alpha",
+          "parent": [
+            216,
+            89
+          ],
+          "daughter": [
+            212,
+            87
+          ],
+          "emittedNucleonAndChargeNumbers": [
+            4,
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "case": "B",
+      "printedLocalDeltas": [
+        [
+          0,
+          1
+        ],
+        [
+          -4,
+          -1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "locallyValid": [
+        true,
+        false,
+        true,
+        true
+      ],
+      "correctedChain": [
+        [
+          180,
+          72
+        ],
+        [
+          180,
+          73
+        ],
+        [
+          176,
+          71
+        ],
+        [
+          176,
+          72
+        ],
+        [
+          176,
+          72
+        ]
+      ],
+      "conservationBalances": [
+        {
+          "kind": "beta_minus",
+          "parent": [
+            180,
+            72
+          ],
+          "daughter": [
+            180,
+            73
+          ],
+          "emittedNucleonAndChargeNumbers": [
+            0,
+            -1
+          ]
+        },
+        {
+          "kind": "alpha",
+          "parent": [
+            180,
+            73
+          ],
+          "daughter": [
+            176,
+            71
+          ],
+          "emittedNucleonAndChargeNumbers": [
+            4,
+            2
+          ]
+        },
+        {
+          "kind": "beta_minus",
+          "parent": [
+            176,
+            71
+          ],
+          "daughter": [
+            176,
+            72
+          ],
+          "emittedNucleonAndChargeNumbers": [
+            0,
+            -1
+          ]
+        },
+        {
+          "kind": "gamma",
+          "parent": [
+            176,
+            72
+          ],
+          "daughter": [
+            176,
+            72
+          ],
+          "emittedNucleonAndChargeNumbers": [
+            0,
+            0
+          ]
+        }
+      ]
+    }
+  ],
+  "manualContentReview": {
+    "completeIndependentPerformances": "A and B each require every local arrow, a full globally corrected chain, and all emission balances; either independently covers the target.",
+    "DE_EN": "All given chains, changes, correction requirements, seven balances, gamma reasoning and marking rules agree.",
+    "physicalValidity": "Examples explicitly formal, not claims of real nuclide existence or decay energetics. Beta charge includes electron and antineutrino; gamma assumes prior excitation. Nucleon count is distinguished from physical mass/rest energy.",
+    "rubric": "A-balance correction inspected: it assesses A only; B-balance separately includes gamma. No absent core or absent whole case can pass.",
+    "genuineCoverage": "The supplied chains and rules assess checking mass/proton-number changes and consistency, exactly matching the canonical goal. No half-life, nuclide lookup, energy or additional science prerequisite is demanded.",
+    "releaseScope": "Approve reviewed content and exact LK course binding; actual source-stage references and route eligibility require separate integration evidence."
+  },
+  "rubric": {
+    "coreCount": 6,
+    "maxPoints": 18,
+    "passingPoints": 17,
+    "enumeratedOutcomes": 729,
+    "passingOutcomes": 7,
+    "noMissingCoreCanPass": true,
+    "oneIsolatedNonconceptualSlipAllowed": true,
+    "noMissingCompleteCaseCanPass": true
+  },
+  "limitations": [
+    "AI independent content and numeric review; no human review or learner effectiveness claim.",
+    "Source-stage task selection and final actual CQR/routes are separate integration checks.",
+    "Release may change only reviewStatus/reviewNote without a new content review."
+  ]
+}

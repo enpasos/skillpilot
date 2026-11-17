@@ -1,0 +1,100 @@
+{
+  "id": "a8dc0290-9f80-5763-8943-e16b8d2aa860",
+  "shortKey": "canonical_physics_k6_acceleration_log",
+  "title": "Beschleunigungsprotokoll: Geschwindigkeit, Ort und Modellgrenzen",
+  "titleEn": "Acceleration log: velocity, position, and model limits",
+  "description": "Die lernende Person kann aus einem Beschleunigungsprotokoll mit Anfangswerten konsistente Bewegungsdarstellungen gewinnen und die Modellgrenzen prüfen.",
+  "descriptionEn": "The learner can obtain consistent motion representations from an acceleration log with initial values and assess model limits.",
+  "weight": 1,
+  "tags": [
+    "GK",
+    "LK",
+    "Practice",
+    "Assessment",
+    "canonical"
+  ],
+  "contains": [],
+  "requires": [
+    "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+  ],
+  "dimensionTags": {
+    "framework": "canonical-gymnasium-physics",
+    "demandLevel": "AB2",
+    "processCompetencies": [
+      "PK3_MATHEMATISIEREN"
+    ],
+    "guidingIdeas": [],
+    "phase": "GLOBAL",
+    "area": "Messdaten und Bewegung",
+    "topicCode": "CANONICAL.PHYSICS.PRACTICE.K6.ACCELERATION_LOG"
+  },
+  "applicability": {
+    "jurisdiction": [
+      "DE-BB",
+      "DE-BE",
+      "DE-BW",
+      "DE-BY",
+      "DE-HB",
+      "DE-HE",
+      "DE-HH",
+      "DE-MV",
+      "DE-NI",
+      "DE-NW",
+      "DE-RP",
+      "DE-SH",
+      "DE-SL",
+      "DE-SN",
+      "DE-ST",
+      "DE-TH"
+    ]
+  },
+  "type": "atomic",
+  "examData": {
+    "reviewStatus": "released",
+    "reviewNote": "Machine content release of exact unchanged full DE/EN assessment and20/20 rubric, based on retained actual independent K6-v2/K6-v3 reviews plus actual integration-agent reading against full current e4b P. Retained review files: curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/stage-plan-k3k6-current-v1/prior-review/k6-v2-content/CONTENT-REVIEW.md and curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/stage-plan-k3k6-current-v1/prior-review/k6-v3-content/CONTENT-REVIEW.md. Root actual direct-claim disposition accepted the necessary two-assessment unit successor. No human acceptance, learner trial, stored-result transfer or final integrated QA claim.",
+    "coveredGoalIds": [
+      "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+    ],
+    "coveredStrands": [],
+    "demandLevels": [
+      "AB1",
+      "AB2"
+    ],
+    "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/physik/k6-measurement-rate-20261115-v3/acceleration-log.md",
+    "taskContent": "A. Ein Wagen auf einer geraden Bahn hat bei t=2 s den Ort s=5 m und v=−1 m/s. Das t-a-Protokoll gibt a=+2 m/s² auf [2;4] s. 1. Konstruiere t-a, t-v und t-s, bestimme die Ortsmarken bei 2,5;3 und 4 s und kennzeichne den Richtungswechsel. Erkläre die a-Fläche als Geschwindigkeitsänderung und die vorzeichenbehafteten v-Flächen als Ortsänderungen. Bestimme Ortsänderung und gesamte Strecke; erkläre, warum sie verschieden sind. Eine Kontrollmarke bei 4 s lautet (7,03±0,05) m. Prüfe die Übereinstimmung. (12 BE)\n\nB. Ein reales Fahrzeug bremst ab t=0 mit v0=6 m/s und a=−2 m/s² bis zum Stillstand. Stelle v(t) und die Ortsänderung ab s0=0 auf. Zeichne die drei Diagramme, bestimme Stoppzeit und Bremsweg. Ein Programm setzt a unverändert bis 5 s fort. Erläutere, was es dann vorhersagt und warum dies ohne zusätzliche Kraftbegründung kein Modell eines stehen bleibenden Fahrzeugs ist. (8 BE)",
+    "taskContentEn": "A. A cart on a straight track is at s=5 m with v=−1 m/s at t=2 s. Its time-acceleration log gives a=+2 m/s² over [2,4] s. 1. Construct all three motion graphs, find positions at 2.5,3,4 s, and mark the reversal. Explain acceleration area as velocity change and signed velocity areas as displacements. Find displacement and total distance and explain the difference. A check mark at 4 s is (7.03±0.05) m. Test agreement. (12 points)\n\nB. A real vehicle brakes from t=0 with v0=6 m/s and a=−2 m/s² until rest. Write v(t) and displacement from s0=0. Draw all three graphs and find stopping time and distance. A program continues the acceleration unchanged until 5 s. Explain its prediction and why, without an additional force explanation, this is not a model of a vehicle remaining at rest. (8 points)",
+    "solutionContent": "A: Mit τ=t−2 s gelten v=−1 m/s+2 m/s²·τ und s=5 m−1 m/s·τ+1 m/s²·τ². Richtungswechsel bei τ=0,5 s, s=4,75 m; a bleibt +2 m/s². s(3 s)=5 m, s(4 s)=7 m. Δs=+2 m; Strecke=0,25+2,25=2,50 m. Flächen unter v: −0,25 m bis zur Umkehr, danach +2,25 m; die a-Fläche ergibt Δv=4 m/s. Kontrollmarke passt innerhalb 0,05 m. B: v=6−2t in SI; s=6t−t², tStopp=3 s, sStopp=9 m. a waagerecht negativ, v fallende Gerade bis 0, s nach unten gekrümmte Parabel bis waagerechtem Scheitel. Fortsetzung: v(5)=−4 m/s und s(5)=5 m; sie sagt Rückwärtsfahrt voraus. Stehenbleiben verlangt nach 3 s v=0 und a=0 im idealen Modell; die frühere Bremsbeschleunigung darf nicht ohne neuen physikalischen Grund fortgeführt werden.",
+    "solutionContentEn": "A: With τ=t−2 s, v=−1 m/s+2 m/s²·τ and s=5 m−1 m/s·τ+1 m/s²·τ². Reversal at τ=0.5 s and s=4.75 m; acceleration remains +2 m/s². s(3 s)=5 m and s(4 s)=7 m. Displacement +2 m; distance 0.25+2.25=2.50 m. Signed velocity areas are −0.25 m then +2.25 m; acceleration area gives Δv=4 m/s. The check agrees within 0.05 m. B: In SI units v=6−2t and s=6t−t²; stopping time 3 s and distance 9 m. Acceleration is constant negative; velocity falls linearly to zero; position is a concave-down parabola with horizontal tangent at the stop. Continuation gives v(5)=−4 m/s and s(5)=5 m, predicting reverse motion. Remaining at rest requires v=0 and a=0 after 3 s in the ideal model; continuing the former braking acceleration requires a new physical reason.",
+    "scoring": {
+      "maxPoints": 20,
+      "passingPoints": 20,
+      "steps": [
+        {
+          "id": "acceleration-log_1",
+          "points": 4,
+          "description": "Anfangswerte mit verschobenem Zeitnullpunkt richtig eingesetzt, drei Diagramme konsistent. / EN: Uses initial values with shifted time origin and constructs consistent graphs."
+        },
+        {
+          "id": "acceleration-log_2",
+          "points": 4,
+          "description": "Umkehr, Ortsmarken, a-Fläche und v-Flächen einschließlich Einheiten richtig erklärt. / EN: Explains reversal, positions, acceleration and velocity areas with units."
+        },
+        {
+          "id": "acceleration-log_3",
+          "points": 4,
+          "description": "Ortsänderung und Strecke getrennt und Kontrollmarke mit Auflösung verglichen. / EN: Distinguishes displacement from distance and compares check mark with resolution."
+        },
+        {
+          "id": "acceleration-log_4",
+          "points": 4,
+          "description": "Bremsgesetze, drei Diagramme, Stoppzeit und Bremsweg richtig bestimmt. / EN: Finds braking laws, three graphs, stopping time, and distance correctly."
+        },
+        {
+          "id": "acceleration-log_5",
+          "points": 4,
+          "description": "Fortgesetztes Modell zahlenmäßig geprüft und sein Geltungsbereich physikalisch begründet. / EN: Checks the extended model numerically and justifies its physical validity interval."
+        }
+      ]
+    }
+  }
+}

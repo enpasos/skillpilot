@@ -1,0 +1,1368 @@
+{
+  "schema": "skillpilot-source-membership-adoption-decisions-v1",
+  "reviewer": "/root",
+  "timeUTC": "2026-11-17T03:10:04.036496+00:00",
+  "input": "tmp/pipeline/laender-stufen/gesamt/review/physics-lower-original-sources/independent-original-review.actual.json",
+  "inputSha256": "1634252f27b4dd4abe74bdaedc682f24c9b27e3ae9e290712a20950efb771834",
+  "scope": "45 newly added lower memberships only; no deletion of original full-course seeds, canonical atoms, or actual prerequisite closure.",
+  "counts": {
+    "exclude_unsubstantiated_new_full_atom_lower_supplement": 26,
+    "retain_reviewed_new_lower_supplement": 19
+  },
+  "principles": [
+    "Full canonical competence must be supported, not just a matching keyword or one part.",
+    "Explicit optional original topics remain optional in source provenance.",
+    "No artificial prerequisite, irrelevant examination, or lowered quality gate substitutes for a valid terminal assessment.",
+    "Excluded lower supplementation does not assert that the related narrower topic is absent.",
+    "Genuine E10 contents must be placed as E10 with its original jurisdiction and duration authority."
+  ],
+  "rows": [
+    {
+      "state": "HH",
+      "goalId": "3b50255a-6b01-578b-8f5c-4383536a3221",
+      "title": "Zerfallsreihen analysieren",
+      "reviewClassification": "supported_lower_operationalization",
+      "decision": "retain_reviewed_new_lower_supplement",
+      "decisionReason": "Original verlangt Erstellen von Zerfallsreihen mit dem Periodensystem; Prüfen von Massenzahl/Kernladung ist eine passende Operationalisierung.",
+      "officialStatus": "supported_lower_operationalization",
+      "originalLowerMembership": {
+        "de-hh-gym-physics-gk": false,
+        "de-hh-gym-physics-lk": false
+      },
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/HH/physik-gym-seki-data.pdf",
+          "pdfPages": [
+            22
+          ],
+          "printedPages": [
+            22
+          ],
+          "sha256": "6cd5c7975b0ce1cc5d6e8365b39c632ea67f01fcd5d7f50bb38fc812e2c4e585"
+        }
+      ]
+    },
+    {
+      "state": "HH",
+      "goalId": "bfea7a23-1ce1-4a42-badd-1fc9bf30124a",
+      "title": "Masse-Energie-Äquivalenz einordnen",
+      "reviewClassification": "supported_lower_operationalization",
+      "decision": "retain_reviewed_new_lower_supplement",
+      "decisionReason": "Original verlangt qualitative Umwandlung Masse/Energie in beide Richtungen. Kanonische Ruheenergieformel ist erklärende Operationalisierung, keine zusätzlich wörtlich belegte Formelpflicht.",
+      "officialStatus": "supported_lower_operationalization",
+      "originalLowerMembership": {
+        "de-hh-gym-physics-gk": false,
+        "de-hh-gym-physics-lk": false
+      },
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/HH/physik-gym-seki-data.pdf",
+          "pdfPages": [
+            22
+          ],
+          "printedPages": [
+            22
+          ],
+          "sha256": "6cd5c7975b0ce1cc5d6e8365b39c632ea67f01fcd5d7f50bb38fc812e2c4e585"
+        }
+      ]
+    },
+    {
+      "state": "MV",
+      "goalId": "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+      "title": "Freier Fall experimentell untersuchen",
+      "reviewClassification": "upper_e10_not_lower_supplement",
+      "decision": "exclude_unsubstantiated_new_full_atom_lower_supplement",
+      "decisionReason": "Vollständiger Bewegungsgesetz-/Freifallinhalt steht ausdrücklich J10/E10. J7-Beschleunigungsarbeit trägt keine Kinematik-/Freifallkompetenz und darf E10 nicht zu SekI machen.",
+      "officialStatus": "upper_e10_not_lower_supplement",
+      "originalLowerMembership": {
+        "de-mv-gym-physics-gk": false,
+        "de-mv-gym-physics-lk": false
+      },
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/MV/Physik_Gymnasium_7_10_2022.pdf",
+          "pdfPages": [
+            43,
+            44
+          ],
+          "printedPages": [
+            39,
+            40
+          ],
+          "sha256": "83efd5c391146abe487269f6d9a984da75e9d7e48c3374d3dab6f989bb0d5bbc"
+        }
+      ]
+    },
+    {
+      "state": "MV",
+      "goalId": "156edddc-ce8d-580d-8d17-d9376d59e60e",
+      "title": "Gravitationsfeld als Feldgröße einführen",
+      "reviewClassification": "upper_e10_not_lower_supplement",
+      "decision": "exclude_unsubstantiated_new_full_atom_lower_supplement",
+      "decisionReason": "Gravitationsfeldstärke und radiale Feldlinien sind ausdrücklich J10/E10. Frühere magnetische Feldlinien sind keine Gravitationsfeld-Evidenz.",
+      "officialStatus": "upper_e10_not_lower_supplement",
+      "originalLowerMembership": {
+        "de-mv-gym-physics-gk": false,
+        "de-mv-gym-physics-lk": false
+      },
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/MV/Physik_Gymnasium_7_10_2022.pdf",
+          "pdfPages": [
+            46
+          ],
+          "printedPages": [
+            42
+          ],
+          "sha256": "83efd5c391146abe487269f6d9a984da75e9d7e48c3374d3dab6f989bb0d5bbc"
+        }
+      ]
+    },
+    {
+      "state": "MV",
+      "goalId": "84ddb244-e560-592f-9d43-e84c801fe5b4",
+      "title": "Linsenauge mit geometrischer Optik modellieren",
+      "reviewClassification": "explicit_optional_lower_extension",
+      "decision": "retain_reviewed_new_lower_supplement",
+      "decisionReason": "J8 nennt Bildentstehung am Auge und Strahlenmodelle/Simulationen verbindlich. Die im kanonischen Atom enthaltene Linsengleichung steht ausdrücklich unter Vorschlägen zur Vertiefung; kein universelles Pflichtniveau behaupten.",
+      "officialStatus": "explicitly_optional_extension",
+      "originalLowerMembership": {
+        "de-mv-gym-physics-gk": false,
+        "de-mv-gym-physics-lk": false
+      },
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/MV/Physik_Gymnasium_7_10_2022.pdf",
+          "pdfPages": [
+            29
+          ],
+          "printedPages": [
+            25
+          ],
+          "sha256": "83efd5c391146abe487269f6d9a984da75e9d7e48c3374d3dab6f989bb0d5bbc"
+        }
+      ]
+    },
+    {
+      "state": "MV",
+      "goalId": "bf8517a9-142b-5789-826a-767f3b277998",
+      "title": "Durchschnitts- und Momentangeschwindigkeit unterscheiden",
+      "reviewClassification": "partial_lower_not_complete_atom",
+      "decision": "exclude_unsubstantiated_new_full_atom_lower_supplement",
+      "decisionReason": "J9 E-Bike nennt Momentan-/Durchschnittsgeschwindigkeit. Kanonische Sekanten- und Tangentensteigungen werden dort nicht voll abgedeckt; feinere Momentanbetrachtung folgt J10/E10.",
+      "officialStatus": "partial_lower_not_complete_atom",
+      "originalLowerMembership": {
+        "de-mv-gym-physics-gk": false,
+        "de-mv-gym-physics-lk": false
+      },
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/MV/Physik_Gymnasium_7_10_2022.pdf",
+          "pdfPages": [
+            40,
+            41,
+            43
+          ],
+          "printedPages": [
+            36,
+            37,
+            39
+          ],
+          "sha256": "83efd5c391146abe487269f6d9a984da75e9d7e48c3374d3dab6f989bb0d5bbc"
+        }
+      ]
+    },
+    {
+      "state": "MV",
+      "goalId": "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+      "title": "Gleichmäßig beschleunigte Bewegung und Beschleunigung",
+      "reviewClassification": "upper_e10_not_lower_supplement",
+      "decision": "exclude_unsubstantiated_new_full_atom_lower_supplement",
+      "decisionReason": "Vollständiger Bewegungsgesetz-/Freifallinhalt steht ausdrücklich J10/E10. J7-Beschleunigungsarbeit trägt keine Kinematik-/Freifallkompetenz und darf E10 nicht zu SekI machen.",
+      "officialStatus": "upper_e10_not_lower_supplement",
+      "originalLowerMembership": {
+        "de-mv-gym-physics-gk": false,
+        "de-mv-gym-physics-lk": false
+      },
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/MV/Physik_Gymnasium_7_10_2022.pdf",
+          "pdfPages": [
+            43,
+            44
+          ],
+          "printedPages": [
+            39,
+            40
+          ],
+          "sha256": "83efd5c391146abe487269f6d9a984da75e9d7e48c3374d3dab6f989bb0d5bbc"
+        }
+      ]
+    },
+    {
+      "state": "MV",
+      "goalId": "e918b31f-6f39-5dee-ade6-3617080fb24f",
+      "title": "Zentripetalkraft als Resultierende herleiten",
+      "reviewClassification": "partial_lower_not_complete_atom",
+      "decision": "exclude_unsubstantiated_new_full_atom_lower_supplement",
+      "decisionReason": "Radialkraftformel und Abhängigkeiten werden J9 E-Bike behandelt. Eine Herleitung der Formel (Teil des kanonischen Atoms) ist dort nicht belegt. Frühere Stromkreiszeilen sind falsch.",
+      "officialStatus": "partial_lower_not_complete_atom",
+      "originalLowerMembership": {
+        "de-mv-gym-physics-gk": false,
+        "de-mv-gym-physics-lk": false
+      },
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/MV/Physik_Gymnasium_7_10_2022.pdf",
+          "pdfPages": [
+            41
+          ],
+          "printedPages": [
+            37
+          ],
+          "sha256": "83efd5c391146abe487269f6d9a984da75e9d7e48c3374d3dab6f989bb0d5bbc"
+        }
+      ]
+    },
+    {
+      "state": "MV",
+      "goalId": "eb30189c-27c6-510b-b235-6543afa18b90",
+      "title": "Einfachen Elektromotor bauen und qualitativ erklären",
+      "reviewClassification": "explicit_optional_lower_extension",
+      "decision": "retain_reviewed_new_lower_supplement",
+      "decisionReason": "J9 enthält Gleichstrommotor/Lorentzkraft; eigener Motorbau ist ausdrücklich ein Vorschlag zur Vertiefung. Als eigene gewählte Erweiterung möglich, keine allgemeine Pflicht.",
+      "officialStatus": "explicitly_optional_extension",
+      "originalLowerMembership": {
+        "de-mv-gym-physics-gk": false,
+        "de-mv-gym-physics-lk": false
+      },
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/MV/Physik_Gymnasium_7_10_2022.pdf",
+          "pdfPages": [
+            37,
+            39
+          ],
+          "printedPages": [
+            33,
+            35
+          ],
+          "sha256": "83efd5c391146abe487269f6d9a984da75e9d7e48c3374d3dab6f989bb0d5bbc"
+        }
+      ]
+    },
+    {
+      "state": "MV",
+      "goalId": "ec7a0a68-730b-5c94-ac72-a937508f8303",
+      "title": "Bahn- und Winkelgeschwindigkeit",
+      "reviewClassification": "upper_e10_not_lower_supplement",
+      "decision": "exclude_unsubstantiated_new_full_atom_lower_supplement",
+      "decisionReason": "J9 behandelt Bahngeschwindigkeit/Umlaufzeit; die kanonisch zusätzlich verpflichtende Winkelgeschwindigkeit steht erst J10/E10. Stromkreis-Mappings tragen den Inhalt nicht.",
+      "officialStatus": "upper_e10_not_lower_supplement",
+      "originalLowerMembership": {
+        "de-mv-gym-physics-gk": false,
+        "de-mv-gym-physics-lk": false
+      },
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/MV/Physik_Gymnasium_7_10_2022.pdf",
+          "pdfPages": [
+            41,
+            46
+          ],
+          "printedPages": [
+            37,
+            42
+          ],
+          "sha256": "83efd5c391146abe487269f6d9a984da75e9d7e48c3374d3dab6f989bb0d5bbc"
+        }
+      ]
+    },
+    {
+      "state": "SL",
+      "goalId": "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+      "title": "Freier Fall experimentell untersuchen",
+      "reviewClassification": "unsupported_new_lower_supplement",
+      "decision": "exclude_unsubstantiated_new_full_atom_lower_supplement",
+      "decisionReason": "Direkte Zuordnungen stammen u.a. aus Einfallswinkel/Einfallslot, falls-Logik und Beschleunigungsarbeit. Die vier Lower-Pläne enthalten keine entsprechende Freifall-/Dreidiagramm-Kinematik.",
+      "officialStatus": "unsupported_new_lower_supplement",
+      "originalLowerMembership": {
+        "de-sl-gym-physics-gk": false,
+        "de-sl-gym-physics-lk": false
+      },
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/SL/LP_PH_gym9_7_2023.pdf",
+          "pdfPages": [
+            20
+          ],
+          "printedPages": [
+            20
+          ],
+          "sha256": "c50c474aed03b4da343dac51cb0cd0932a7815f552dee7470873bec9d353d791"
+        },
+        {
+          "file": "curricula/DE/Gymnasium/input/SL/LP_PH_gym9_8_NW_Zweig_2024.pdf",
+          "pdfPages": [
+            22
+          ],
+          "printedPages": [
+            22
+          ],
+          "sha256": "bf3158666cd23c36a62b9f8da086c7088228fab0a79db0302ac3ee5a71de20d7"
+        },
+        {
+          "file": "curricula/DE/Gymnasium/input/SL/LP_PH_gym9_9_nw_Zweig_2024.pdf",
+          "pdfPages": [
+            12,
+            13
+          ],
+          "printedPages": [
+            12,
+            13
+          ],
+          "sha256": "c807ddf8d7cde70aeeda3d4464a4a05e0bec2a28331b019b4f73192a1fc8d9bb"
+        },
+        {
+          "file": "curricula/DE/Gymnasium/input/SL/LP_PH_gym9_10_nw_Zweig_2026.pdf",
+          "pdfPages": [
+            36,
+            37,
+            38
+          ],
+          "printedPages": [
+            36,
+            37,
+            38
+          ],
+          "sha256": "4acb99b64db1c2092fda569a5bce8c80dbe25cb225c13f29f43ab904e18dbfe2"
+        }
+      ]
+    },
+    {
+      "state": "SL",
+      "goalId": "156edddc-ce8d-580d-8d17-d9376d59e60e",
+      "title": "Gravitationsfeld als Feldgröße einführen",
+      "reviewClassification": "partial_lower_not_complete_atom",
+      "decision": "exclude_unsubstantiated_new_full_atom_lower_supplement",
+      "decisionReason": "Ortsfaktor g=Fg/m und Recherche anderer Himmelskörper sind J8 belegt. Das gesamte ortsabhängige Vektorfeld samt radialen Gravitationsfeldlinien ist nicht belegt; magnetische/elektrische Radialfelder ersetzen diesen Nachweis nicht.",
+      "officialStatus": "partial_lower_not_complete_atom",
+      "originalLowerMembership": {
+        "de-sl-gym-physics-gk": false,
+        "de-sl-gym-physics-lk": false
+      },
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/SL/LP_PH_gym9_8_NW_Zweig_2024.pdf",
+          "pdfPages": [
+            13
+          ],
+          "printedPages": [
+            13
+          ],
+          "sha256": "bf3158666cd23c36a62b9f8da086c7088228fab0a79db0302ac3ee5a71de20d7"
+        },
+        {
+          "file": "curricula/DE/Gymnasium/input/SL/LP_PH_gym9_9_nw_Zweig_2024.pdf",
+          "pdfPages": [
+            23
+          ],
+          "printedPages": [
+            23
+          ],
+          "sha256": "c807ddf8d7cde70aeeda3d4464a4a05e0bec2a28331b019b4f73192a1fc8d9bb"
+        }
+      ]
+    },
+    {
+      "state": "SL",
+      "goalId": "2b700858-bc2e-5ddf-a791-b14d44160480",
+      "title": "Astronomische Beobachtungsmethoden",
+      "reviewClassification": "partial_lower_not_complete_atom",
+      "decision": "exclude_unsubstantiated_new_full_atom_lower_supplement",
+      "decisionReason": "Astronomie ist J10 ein Wahlthema/Praktikum mit Sternkarte, Parallaxe und Helligkeit. Teleskopoptik existiert J9; eine astronomische Spektroskopie als weiterer Pflichtteil dieses Atoms ist nicht belegt.",
+      "officialStatus": "partial_lower_not_complete_atom",
+      "originalLowerMembership": {
+        "de-sl-gym-physics-gk": false,
+        "de-sl-gym-physics-lk": false
+      },
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/SL/LP_PH_gym9_9_nw_Zweig_2024.pdf",
+          "pdfPages": [
+            15
+          ],
+          "printedPages": [
+            15
+          ],
+          "sha256": "c807ddf8d7cde70aeeda3d4464a4a05e0bec2a28331b019b4f73192a1fc8d9bb"
+        },
+        {
+          "file": "curricula/DE/Gymnasium/input/SL/LP_PH_gym9_10_nw_Zweig_2026.pdf",
+          "pdfPages": [
+            33,
+            34
+          ],
+          "printedPages": [
+            33,
+            34
+          ],
+          "sha256": "4acb99b64db1c2092fda569a5bce8c80dbe25cb225c13f29f43ab904e18dbfe2"
+        }
+      ]
+    },
+    {
+      "state": "SL",
+      "goalId": "4a7cbe83-b694-57d3-85ce-1eeca418daaf",
+      "title": "Spektrum elektromagnetischer Wellen",
+      "reviewClassification": "supported_lower_operationalization",
+      "decision": "retain_reviewed_new_lower_supplement",
+      "decisionReason": "J9 ordnet sichtbares Licht/IR/UV sowie Radio- und Röntgenstrahlung nach Wellenlänge und behandelt Anwendungen/Eigenschaften.",
+      "officialStatus": "supported_lower_operationalization",
+      "originalLowerMembership": {
+        "de-sl-gym-physics-gk": false,
+        "de-sl-gym-physics-lk": false
+      },
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/SL/LP_PH_gym9_9_nw_Zweig_2024.pdf",
+          "pdfPages": [
+            15,
+            16
+          ],
+          "printedPages": [
+            15,
+            16
+          ],
+          "sha256": "c807ddf8d7cde70aeeda3d4464a4a05e0bec2a28331b019b4f73192a1fc8d9bb"
+        }
+      ]
+    },
+    {
+      "state": "SL",
+      "goalId": "51de4fd9-6827-5b3d-b2ca-5e27ba961a7f",
+      "title": "Temperatur mit einem geeigneten Thermometer messen",
+      "reviewClassification": "supported_lower_operationalization",
+      "decision": "retain_reviewed_new_lower_supplement",
+      "decisionReason": "J8 Temperaturmessung, Genauigkeit und Kalibrierung eines elektrischen Thermometers tragen die Messkompetenz.",
+      "officialStatus": "supported_lower_operationalization",
+      "originalLowerMembership": {
+        "de-sl-gym-physics-gk": false,
+        "de-sl-gym-physics-lk": false
+      },
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/SL/LP_PH_gym9_8_NW_Zweig_2024.pdf",
+          "pdfPages": [
+            32,
+            33
+          ],
+          "printedPages": [
+            32,
+            33
+          ],
+          "sha256": "bf3158666cd23c36a62b9f8da086c7088228fab0a79db0302ac3ee5a71de20d7"
+        }
+      ]
+    },
+    {
+      "state": "SL",
+      "goalId": "84ddb244-e560-592f-9d43-e84c801fe5b4",
+      "title": "Linsenauge mit geometrischer Optik modellieren",
+      "reviewClassification": "supported_lower_operationalization",
+      "decision": "retain_reviewed_new_lower_supplement",
+      "decisionReason": "J9 NW S.14 enthält Linsengleichung, experimentelle Prüfung, menschliches Auge als optisches System und Sehfehler. Anders als falsche Augenmaß-Zeilen ist dies eine passende Vollbindung.",
+      "officialStatus": "supported_lower_operationalization",
+      "originalLowerMembership": {
+        "de-sl-gym-physics-gk": false,
+        "de-sl-gym-physics-lk": false
+      },
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/SL/LP_PH_gym9_9_nw_Zweig_2024.pdf",
+          "pdfPages": [
+            13,
+            14
+          ],
+          "printedPages": [
+            13,
+            14
+          ],
+          "sha256": "c807ddf8d7cde70aeeda3d4464a4a05e0bec2a28331b019b4f73192a1fc8d9bb"
+        }
+      ]
+    },
+    {
+      "state": "SL",
+      "goalId": "af1094c1-511a-5aae-9e0a-3e9196a82d9a",
+      "title": "Idealen Transformator quantitativ deuten",
+      "reviewClassification": "supported_lower_operationalization",
+      "decision": "retain_reviewed_new_lower_supplement",
+      "decisionReason": "J10 NW enthält Induktion, Spannungs- UND Stromübersetzungsverhältnis, Anwendungen und Energieübertragung.",
+      "officialStatus": "supported_lower_operationalization",
+      "originalLowerMembership": {
+        "de-sl-gym-physics-gk": false,
+        "de-sl-gym-physics-lk": false
+      },
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/SL/LP_PH_gym9_10_nw_Zweig_2026.pdf",
+          "pdfPages": [
+            13,
+            14
+          ],
+          "printedPages": [
+            13,
+            14
+          ],
+          "sha256": "4acb99b64db1c2092fda569a5bce8c80dbe25cb225c13f29f43ab904e18dbfe2"
+        }
+      ]
+    },
+    {
+      "state": "SL",
+      "goalId": "b60f63b6-e70b-5557-9f54-86d42fa80325",
+      "title": "Thermische Ausdehnung fester, flüssiger und gasförmiger Stoffe deuten",
+      "reviewClassification": "supported_lower_operationalization",
+      "decision": "retain_reviewed_new_lower_supplement",
+      "decisionReason": "J8 enthält Ausdehnung fester/flüssiger/gasförmiger Stoffe und Temperaturabhängigkeit.",
+      "officialStatus": "supported_lower_operationalization",
+      "originalLowerMembership": {
+        "de-sl-gym-physics-gk": false,
+        "de-sl-gym-physics-lk": false
+      },
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/SL/LP_PH_gym9_8_NW_Zweig_2024.pdf",
+          "pdfPages": [
+            32,
+            33
+          ],
+          "printedPages": [
+            32,
+            33
+          ],
+          "sha256": "bf3158666cd23c36a62b9f8da086c7088228fab0a79db0302ac3ee5a71de20d7"
+        }
+      ]
+    },
+    {
+      "state": "SL",
+      "goalId": "bf8517a9-142b-5789-826a-767f3b277998",
+      "title": "Durchschnitts- und Momentangeschwindigkeit unterscheiden",
+      "reviewClassification": "partial_lower_not_complete_atom",
+      "decision": "exclude_unsubstantiated_new_full_atom_lower_supplement",
+      "decisionReason": "J7 S.25 fordert lediglich mittlere Geschwindigkeit aus Delta s/Delta t; weder Momentangeschwindigkeit noch Tangentensteigung als vollständiger Atomumfang.",
+      "officialStatus": "partial_lower_not_complete_atom",
+      "originalLowerMembership": {
+        "de-sl-gym-physics-gk": false,
+        "de-sl-gym-physics-lk": false
+      },
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/SL/LP_PH_gym9_7_2023.pdf",
+          "pdfPages": [
+            25
+          ],
+          "printedPages": [
+            25
+          ],
+          "sha256": "c50c474aed03b4da343dac51cb0cd0932a7815f552dee7470873bec9d353d791"
+        }
+      ]
+    },
+    {
+      "state": "SL",
+      "goalId": "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+      "title": "Gleichmäßig beschleunigte Bewegung und Beschleunigung",
+      "reviewClassification": "unsupported_new_lower_supplement",
+      "decision": "exclude_unsubstantiated_new_full_atom_lower_supplement",
+      "decisionReason": "Direkte Zuordnungen stammen u.a. aus Einfallswinkel/Einfallslot, falls-Logik und Beschleunigungsarbeit. Die vier Lower-Pläne enthalten keine entsprechende Freifall-/Dreidiagramm-Kinematik.",
+      "officialStatus": "unsupported_new_lower_supplement",
+      "originalLowerMembership": {
+        "de-sl-gym-physics-gk": false,
+        "de-sl-gym-physics-lk": false
+      },
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/SL/LP_PH_gym9_7_2023.pdf",
+          "pdfPages": [
+            20
+          ],
+          "printedPages": [
+            20
+          ],
+          "sha256": "c50c474aed03b4da343dac51cb0cd0932a7815f552dee7470873bec9d353d791"
+        },
+        {
+          "file": "curricula/DE/Gymnasium/input/SL/LP_PH_gym9_8_NW_Zweig_2024.pdf",
+          "pdfPages": [
+            22
+          ],
+          "printedPages": [
+            22
+          ],
+          "sha256": "bf3158666cd23c36a62b9f8da086c7088228fab0a79db0302ac3ee5a71de20d7"
+        },
+        {
+          "file": "curricula/DE/Gymnasium/input/SL/LP_PH_gym9_9_nw_Zweig_2024.pdf",
+          "pdfPages": [
+            12,
+            13
+          ],
+          "printedPages": [
+            12,
+            13
+          ],
+          "sha256": "c807ddf8d7cde70aeeda3d4464a4a05e0bec2a28331b019b4f73192a1fc8d9bb"
+        },
+        {
+          "file": "curricula/DE/Gymnasium/input/SL/LP_PH_gym9_10_nw_Zweig_2026.pdf",
+          "pdfPages": [
+            36,
+            37,
+            38
+          ],
+          "printedPages": [
+            36,
+            37,
+            38
+          ],
+          "sha256": "4acb99b64db1c2092fda569a5bce8c80dbe25cb225c13f29f43ab904e18dbfe2"
+        }
+      ]
+    },
+    {
+      "state": "SL",
+      "goalId": "e6a50c74-c922-508c-aa27-07bac2566955",
+      "title": "Strahlendosis und Schutz",
+      "reviewClassification": "unsupported_new_lower_supplement",
+      "decision": "exclude_unsubstantiated_new_full_atom_lower_supplement",
+      "decisionReason": "Die beiden direkten Mappingzeilen betreffen thermische Materialausdehnung bzw. Vergrößerungsgeräte. Sie enthalten überhaupt keine Strahlendosis, erst recht keine Energie-/Äquivalent-/Effektivdosisberechnung.",
+      "officialStatus": "unsupported_new_lower_supplement",
+      "originalLowerMembership": {
+        "de-sl-gym-physics-gk": false,
+        "de-sl-gym-physics-lk": false
+      },
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/SL/LP_PH_gym9_8_NW_Zweig_2024.pdf",
+          "pdfPages": [
+            33
+          ],
+          "printedPages": [
+            33
+          ],
+          "sha256": "bf3158666cd23c36a62b9f8da086c7088228fab0a79db0302ac3ee5a71de20d7"
+        },
+        {
+          "file": "curricula/DE/Gymnasium/input/SL/LP_PH_gym9_9_nw_Zweig_2024.pdf",
+          "pdfPages": [
+            15
+          ],
+          "printedPages": [
+            15
+          ],
+          "sha256": "c807ddf8d7cde70aeeda3d4464a4a05e0bec2a28331b019b4f73192a1fc8d9bb"
+        }
+      ]
+    },
+    {
+      "state": "SL",
+      "goalId": "e918b31f-6f39-5dee-ade6-3617080fb24f",
+      "title": "Zentripetalkraft als Resultierende herleiten",
+      "reviewClassification": "unsupported_new_lower_supplement",
+      "decision": "exclude_unsubstantiated_new_full_atom_lower_supplement",
+      "decisionReason": "Stromkreis, elektrisches Radialfeld und thermodynamischer Kreisprozess wurden fälschlich zu Kreisbewegung ausgeweitet. Keine passende Radialkraft-/Winkelgeschwindigkeitsanforderung in diesen vier Lower-Plänen.",
+      "officialStatus": "unsupported_new_lower_supplement",
+      "originalLowerMembership": {
+        "de-sl-gym-physics-gk": false,
+        "de-sl-gym-physics-lk": false
+      },
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/SL/LP_PH_gym9_7_2023.pdf",
+          "pdfPages": [
+            14,
+            15
+          ],
+          "printedPages": [
+            14,
+            15
+          ],
+          "sha256": "c50c474aed03b4da343dac51cb0cd0932a7815f552dee7470873bec9d353d791"
+        },
+        {
+          "file": "curricula/DE/Gymnasium/input/SL/LP_PH_gym9_9_nw_Zweig_2024.pdf",
+          "pdfPages": [
+            23
+          ],
+          "printedPages": [
+            23
+          ],
+          "sha256": "c807ddf8d7cde70aeeda3d4464a4a05e0bec2a28331b019b4f73192a1fc8d9bb"
+        },
+        {
+          "file": "curricula/DE/Gymnasium/input/SL/LP_PH_gym9_10_nw_Zweig_2026.pdf",
+          "pdfPages": [
+            23,
+            24
+          ],
+          "printedPages": [
+            23,
+            24
+          ],
+          "sha256": "4acb99b64db1c2092fda569a5bce8c80dbe25cb225c13f29f43ab904e18dbfe2"
+        }
+      ]
+    },
+    {
+      "state": "SL",
+      "goalId": "eb30189c-27c6-510b-b235-6543afa18b90",
+      "title": "Einfachen Elektromotor bauen und qualitativ erklären",
+      "reviewClassification": "partial_lower_not_complete_atom",
+      "decision": "exclude_unsubstantiated_new_full_atom_lower_supplement",
+      "decisionReason": "J10 NW S.11 fordert Aufbau beschreiben und Funktion des Gleichstrommotors per UVW-Regel erklären; der eigene Motorbau mit Parametervariation aus dem kanonischen Atom ist nicht gefordert. Leiterschaukelbau ist kein Motorbau.",
+      "officialStatus": "partial_lower_not_complete_atom",
+      "originalLowerMembership": {
+        "de-sl-gym-physics-gk": false,
+        "de-sl-gym-physics-lk": false
+      },
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/SL/LP_PH_gym9_10_nw_Zweig_2026.pdf",
+          "pdfPages": [
+            11
+          ],
+          "printedPages": [
+            11
+          ],
+          "sha256": "4acb99b64db1c2092fda569a5bce8c80dbe25cb225c13f29f43ab904e18dbfe2"
+        }
+      ]
+    },
+    {
+      "state": "SL",
+      "goalId": "ec7a0a68-730b-5c94-ac72-a937508f8303",
+      "title": "Bahn- und Winkelgeschwindigkeit",
+      "reviewClassification": "unsupported_new_lower_supplement",
+      "decision": "exclude_unsubstantiated_new_full_atom_lower_supplement",
+      "decisionReason": "Stromkreis, elektrisches Radialfeld und thermodynamischer Kreisprozess wurden fälschlich zu Kreisbewegung ausgeweitet. Keine passende Radialkraft-/Winkelgeschwindigkeitsanforderung in diesen vier Lower-Plänen.",
+      "officialStatus": "unsupported_new_lower_supplement",
+      "originalLowerMembership": {
+        "de-sl-gym-physics-gk": false,
+        "de-sl-gym-physics-lk": false
+      },
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/SL/LP_PH_gym9_7_2023.pdf",
+          "pdfPages": [
+            14,
+            15
+          ],
+          "printedPages": [
+            14,
+            15
+          ],
+          "sha256": "c50c474aed03b4da343dac51cb0cd0932a7815f552dee7470873bec9d353d791"
+        },
+        {
+          "file": "curricula/DE/Gymnasium/input/SL/LP_PH_gym9_9_nw_Zweig_2024.pdf",
+          "pdfPages": [
+            23
+          ],
+          "printedPages": [
+            23
+          ],
+          "sha256": "c807ddf8d7cde70aeeda3d4464a4a05e0bec2a28331b019b4f73192a1fc8d9bb"
+        },
+        {
+          "file": "curricula/DE/Gymnasium/input/SL/LP_PH_gym9_10_nw_Zweig_2026.pdf",
+          "pdfPages": [
+            23,
+            24
+          ],
+          "printedPages": [
+            23,
+            24
+          ],
+          "sha256": "4acb99b64db1c2092fda569a5bce8c80dbe25cb225c13f29f43ab904e18dbfe2"
+        }
+      ]
+    },
+    {
+      "state": "SN",
+      "goalId": "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+      "title": "Freier Fall experimentell untersuchen",
+      "reviewClassification": "supported_lower_operationalization",
+      "decision": "retain_reviewed_new_lower_supplement",
+      "decisionReason": "J9 LB3 enthält beschleunigte Bewegung, Bewegungsgesetze, Diagramme und freien Fall sowie experimentelle Prüfung. Gegenüber den falschen frühen Zeilen ist dies eine tragfähige untere Bindung.",
+      "officialStatus": "supported_lower_operationalization",
+      "originalLowerMembership": {
+        "de-sn-gym-physics-gk": false,
+        "de-sn-gym-physics-lk": false
+      },
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-physik-sachsen-2025.pdf",
+          "pdfPages": [
+            36,
+            37
+          ],
+          "printedPages": [
+            24,
+            25
+          ],
+          "sha256": "8041a30341cca2bc9af6c69b017c34be20655ef7fe6eab162263f9dbd412ece9"
+        }
+      ]
+    },
+    {
+      "state": "SN",
+      "goalId": "156edddc-ce8d-580d-8d17-d9376d59e60e",
+      "title": "Gravitationsfeld als Feldgröße einführen",
+      "reviewClassification": "partial_lower_not_complete_atom",
+      "decision": "exclude_unsubstantiated_new_full_atom_lower_supplement",
+      "decisionReason": "J10 Kosmos nennt Gravitationsgesetz/inverses Quadrat, jedoch kein ortsabhängiges Gravitationsvektorfeld und dessen radiale Feldlinien. Gravitationsfeld erscheint erst im oberen Kursteil.",
+      "officialStatus": "partial_lower_not_complete_atom",
+      "originalLowerMembership": {
+        "de-sn-gym-physics-gk": false,
+        "de-sn-gym-physics-lk": false
+      },
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-physik-sachsen-2025.pdf",
+          "pdfPages": [
+            42,
+            64
+          ],
+          "printedPages": [
+            30,
+            52
+          ],
+          "sha256": "8041a30341cca2bc9af6c69b017c34be20655ef7fe6eab162263f9dbd412ece9"
+        }
+      ]
+    },
+    {
+      "state": "SN",
+      "goalId": "2b700858-bc2e-5ddf-a791-b14d44160480",
+      "title": "Astronomische Beobachtungsmethoden",
+      "reviewClassification": "supported_lower_operationalization",
+      "decision": "retain_reviewed_new_lower_supplement",
+      "decisionReason": "J10 Kosmos benennt ausdrücklich Teleskopbeobachtung und Spektralanalyse astronomischer Informationen.",
+      "officialStatus": "supported_lower_operationalization",
+      "originalLowerMembership": {
+        "de-sn-gym-physics-gk": false,
+        "de-sn-gym-physics-lk": false
+      },
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-physik-sachsen-2025.pdf",
+          "pdfPages": [
+            42
+          ],
+          "printedPages": [
+            30
+          ],
+          "sha256": "8041a30341cca2bc9af6c69b017c34be20655ef7fe6eab162263f9dbd412ece9"
+        }
+      ]
+    },
+    {
+      "state": "SN",
+      "goalId": "4a7cbe83-b694-57d3-85ce-1eeca418daaf",
+      "title": "Spektrum elektromagnetischer Wellen",
+      "reviewClassification": "supported_lower_operationalization",
+      "decision": "retain_reviewed_new_lower_supplement",
+      "decisionReason": "J10 elektromagnetische Wellen/Licht behandelt Spektrum, Frequenz/Wellenlänge und Anwendungen.",
+      "officialStatus": "supported_lower_operationalization",
+      "originalLowerMembership": {
+        "de-sn-gym-physics-gk": false,
+        "de-sn-gym-physics-lk": false
+      },
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-physik-sachsen-2025.pdf",
+          "pdfPages": [
+            43
+          ],
+          "printedPages": [
+            31
+          ],
+          "sha256": "8041a30341cca2bc9af6c69b017c34be20655ef7fe6eab162263f9dbd412ece9"
+        }
+      ]
+    },
+    {
+      "state": "SN",
+      "goalId": "84ddb244-e560-592f-9d43-e84c801fe5b4",
+      "title": "Linsenauge mit geometrischer Optik modellieren",
+      "reviewClassification": "partial_lower_not_complete_atom",
+      "decision": "exclude_unsubstantiated_new_full_atom_lower_supplement",
+      "decisionReason": "J6 Wahlbereich Sehen/Fotografieren enthält Auge/Kamera und qualitative experimentelle Modelle, aber keine quantitative Linsengleichung. Dies trägt nicht den vollständigen kanonischen Atomumfang.",
+      "officialStatus": "partial_lower_not_complete_atom",
+      "originalLowerMembership": {
+        "de-sn-gym-physics-gk": false,
+        "de-sn-gym-physics-lk": false
+      },
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-physik-sachsen-2025.pdf",
+          "pdfPages": [
+            23
+          ],
+          "printedPages": [
+            11
+          ],
+          "sha256": "8041a30341cca2bc9af6c69b017c34be20655ef7fe6eab162263f9dbd412ece9"
+        }
+      ]
+    },
+    {
+      "state": "SN",
+      "goalId": "8ac61062-f63e-5935-96ae-84014906c368",
+      "title": "Schalldruckpegel und Hoerrisiken quantitativ beurteilen",
+      "reviewClassification": "partial_lower_not_complete_atom",
+      "decision": "exclude_unsubstantiated_new_full_atom_lower_supplement",
+      "decisionReason": "J10 Akustik enthält qualitative Lautstärke-Amplitude, Hörbereich und Lärmwirkung. Mathematische Schalldruck-/Pegelbewertung und quantitative Hörrisiken des Atoms sind nicht belegt; ältere Hooke-/Halbleitermappings sind fachfremd.",
+      "officialStatus": "partial_lower_not_complete_atom",
+      "originalLowerMembership": {
+        "de-sn-gym-physics-gk": false,
+        "de-sn-gym-physics-lk": false
+      },
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-physik-sachsen-2025.pdf",
+          "pdfPages": [
+            41
+          ],
+          "printedPages": [
+            29
+          ],
+          "sha256": "8041a30341cca2bc9af6c69b017c34be20655ef7fe6eab162263f9dbd412ece9"
+        }
+      ]
+    },
+    {
+      "state": "SN",
+      "goalId": "ad62f563-4fee-5399-8d9c-03a214658aa9",
+      "title": "Experimentelle Untersuchungen fachgerecht dokumentieren",
+      "reviewClassification": "supported_lower_operationalization",
+      "decision": "retain_reviewed_new_lower_supplement",
+      "decisionReason": "J6 experimentelle Geschwindigkeitsbestimmung fordert Protokollieren; spätere selbstständige Experimente stützen die strukturierte Dokumentation.",
+      "officialStatus": "supported_lower_operationalization",
+      "originalLowerMembership": {
+        "de-sn-gym-physics-gk": false,
+        "de-sn-gym-physics-lk": false
+      },
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-physik-sachsen-2025.pdf",
+          "pdfPages": [
+            21,
+            32
+          ],
+          "printedPages": [
+            9,
+            20
+          ],
+          "sha256": "8041a30341cca2bc9af6c69b017c34be20655ef7fe6eab162263f9dbd412ece9"
+        }
+      ]
+    },
+    {
+      "state": "SN",
+      "goalId": "af1094c1-511a-5aae-9e0a-3e9196a82d9a",
+      "title": "Idealen Transformator quantitativ deuten",
+      "reviewClassification": "partial_lower_not_complete_atom",
+      "decision": "retain_reviewed_new_lower_supplement",
+      "decisionReason": "Eigene nachvollziehbare Idealmodell-Operationalisierung: Original nennt E=UIt/P=UI (J8 S20), Energieerhaltung und Induktion (J9 S23), Spannungs-/Windungsübersetzung und Hochspannungsübertragung (J9 S24), belasteten Transformator (J9 S26). Im ausdrücklich verlustfreien Modell U1I1=U2I2 folgt die gegenläufige Stromübersetzung. Die Stromformel ist keine ausdrücklich gedruckte amtliche Pflicht.",
+      "officialStatus": "own_ideal_model_operationalization",
+      "originalLowerMembership": {
+        "de-sn-gym-physics-gk": false,
+        "de-sn-gym-physics-lk": false
+      },
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-physik-sachsen-2025.pdf",
+          "pdfPages": [
+            36,
+            38
+          ],
+          "printedPages": [
+            24,
+            26
+          ],
+          "sha256": "8041a30341cca2bc9af6c69b017c34be20655ef7fe6eab162263f9dbd412ece9"
+        }
+      ]
+    },
+    {
+      "state": "SN",
+      "goalId": "bf8517a9-142b-5789-826a-767f3b277998",
+      "title": "Durchschnitts- und Momentangeschwindigkeit unterscheiden",
+      "reviewClassification": "partial_lower_not_complete_atom",
+      "decision": "exclude_unsubstantiated_new_full_atom_lower_supplement",
+      "decisionReason": "J9 nennt Durchschnitts-/Momentangeschwindigkeit; die ausgewerteten direkten Mappingzeilen stammen jedoch aus J6-Durchschnittsgeschwindigkeit. Keine vollständige t-s-Sekanten/Tangentenkompetenz im unteren Original belegt.",
+      "officialStatus": "partial_lower_not_complete_atom",
+      "originalLowerMembership": {
+        "de-sn-gym-physics-gk": false,
+        "de-sn-gym-physics-lk": false
+      },
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-physik-sachsen-2025.pdf",
+          "pdfPages": [
+            21,
+            37
+          ],
+          "printedPages": [
+            9,
+            25
+          ],
+          "sha256": "8041a30341cca2bc9af6c69b017c34be20655ef7fe6eab162263f9dbd412ece9"
+        }
+      ]
+    },
+    {
+      "state": "SN",
+      "goalId": "bfea7a23-1ce1-4a42-badd-1fc9bf30124a",
+      "title": "Masse-Energie-Äquivalenz einordnen",
+      "reviewClassification": "partial_lower_not_complete_atom",
+      "decision": "exclude_unsubstantiated_new_full_atom_lower_supplement",
+      "decisionReason": "J10 Kosmos nennt Energiefreisetzung durch Kernfusion, nicht Masse-Energie-Äquivalenz oder E0=mc². Der formale Zusammenhang steht erst im oberen Kurs. Fusion allein ist kein Vollbeleg.",
+      "officialStatus": "partial_lower_not_complete_atom",
+      "originalLowerMembership": {
+        "de-sn-gym-physics-gk": false,
+        "de-sn-gym-physics-lk": false
+      },
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-physik-sachsen-2025.pdf",
+          "pdfPages": [
+            42,
+            49,
+            59
+          ],
+          "printedPages": [
+            30,
+            37,
+            47
+          ],
+          "sha256": "8041a30341cca2bc9af6c69b017c34be20655ef7fe6eab162263f9dbd412ece9"
+        }
+      ]
+    },
+    {
+      "state": "SN",
+      "goalId": "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+      "title": "Gleichmäßig beschleunigte Bewegung und Beschleunigung",
+      "reviewClassification": "supported_lower_operationalization",
+      "decision": "retain_reviewed_new_lower_supplement",
+      "decisionReason": "J9 LB3 enthält beschleunigte Bewegung, Bewegungsgesetze, Diagramme und freien Fall sowie experimentelle Prüfung. Gegenüber den falschen frühen Zeilen ist dies eine tragfähige untere Bindung.",
+      "officialStatus": "supported_lower_operationalization",
+      "originalLowerMembership": {
+        "de-sn-gym-physics-gk": false,
+        "de-sn-gym-physics-lk": false
+      },
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-physik-sachsen-2025.pdf",
+          "pdfPages": [
+            36,
+            37
+          ],
+          "printedPages": [
+            24,
+            25
+          ],
+          "sha256": "8041a30341cca2bc9af6c69b017c34be20655ef7fe6eab162263f9dbd412ece9"
+        }
+      ]
+    },
+    {
+      "state": "SN",
+      "goalId": "e6a50c74-c922-508c-aa27-07bac2566955",
+      "title": "Strahlendosis und Schutz",
+      "reviewClassification": "partial_lower_not_complete_atom",
+      "decision": "exclude_unsubstantiated_new_full_atom_lower_supplement",
+      "decisionReason": "J9 Wahlbereich Radioaktivität enthält Dosimeter, Durchdringung/Reichweite und qualitative Schutzfolgerungen. Energie-/Äquivalent-/Effektivdosis unterscheiden und berechnen ist nicht belegt.",
+      "officialStatus": "partial_lower_not_complete_atom",
+      "originalLowerMembership": {
+        "de-sn-gym-physics-gk": false,
+        "de-sn-gym-physics-lk": false
+      },
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-physik-sachsen-2025.pdf",
+          "pdfPages": [
+            38
+          ],
+          "printedPages": [
+            26
+          ],
+          "sha256": "8041a30341cca2bc9af6c69b017c34be20655ef7fe6eab162263f9dbd412ece9"
+        }
+      ]
+    },
+    {
+      "state": "SN",
+      "goalId": "e918b31f-6f39-5dee-ade6-3617080fb24f",
+      "title": "Zentripetalkraft als Resultierende herleiten",
+      "reviewClassification": "partial_lower_not_complete_atom",
+      "decision": "exclude_unsubstantiated_new_full_atom_lower_supplement",
+      "decisionReason": "J9 Wahlbereich3 nennt Radialkraftformel und Anwendung. Die im vollständigen Atom enthaltene Herleitung ist nicht gefordert; optionale Stellung darf nicht als allgemeine Pflicht ausgegeben werden.",
+      "officialStatus": "partial_lower_not_complete_atom",
+      "originalLowerMembership": {
+        "de-sn-gym-physics-gk": false,
+        "de-sn-gym-physics-lk": false
+      },
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-physik-sachsen-2025.pdf",
+          "pdfPages": [
+            39
+          ],
+          "printedPages": [
+            27
+          ],
+          "sha256": "8041a30341cca2bc9af6c69b017c34be20655ef7fe6eab162263f9dbd412ece9"
+        }
+      ]
+    },
+    {
+      "state": "SN",
+      "goalId": "eb30189c-27c6-510b-b235-6543afa18b90",
+      "title": "Einfachen Elektromotor bauen und qualitativ erklären",
+      "reviewClassification": "partial_lower_not_complete_atom",
+      "decision": "exclude_unsubstantiated_new_full_atom_lower_supplement",
+      "decisionReason": "J7 vergleicht Energiewandler und experimentiert mit Solarzelle/Motor; J8 beschreibt Wärmekraftmaschinen. Eigener Lorentzmotorbau mit Variation ist in keiner dieser Bindungen belegt.",
+      "officialStatus": "partial_lower_not_complete_atom",
+      "originalLowerMembership": {
+        "de-sn-gym-physics-gk": false,
+        "de-sn-gym-physics-lk": false
+      },
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-physik-sachsen-2025.pdf",
+          "pdfPages": [
+            28,
+            31
+          ],
+          "printedPages": [
+            16,
+            19
+          ],
+          "sha256": "8041a30341cca2bc9af6c69b017c34be20655ef7fe6eab162263f9dbd412ece9"
+        }
+      ]
+    },
+    {
+      "state": "SN",
+      "goalId": "ec7a0a68-730b-5c94-ac72-a937508f8303",
+      "title": "Bahn- und Winkelgeschwindigkeit",
+      "reviewClassification": "partial_lower_not_complete_atom",
+      "decision": "exclude_unsubstantiated_new_full_atom_lower_supplement",
+      "decisionReason": "J9 Wahlbereich3 verwendet Bahngeschwindigkeit und Umlaufzeit, aber keine Winkelgeschwindigkeit; diese steht erst im oberen GK-Kurs. Der vollständige kombinierte Atomumfang ist daher nicht lower belegt.",
+      "officialStatus": "partial_lower_not_complete_atom",
+      "originalLowerMembership": {
+        "de-sn-gym-physics-gk": false,
+        "de-sn-gym-physics-lk": false
+      },
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-physik-sachsen-2025.pdf",
+          "pdfPages": [
+            39,
+            48
+          ],
+          "printedPages": [
+            27,
+            36
+          ],
+          "sha256": "8041a30341cca2bc9af6c69b017c34be20655ef7fe6eab162263f9dbd412ece9"
+        }
+      ]
+    },
+    {
+      "state": "ST",
+      "goalId": "51de4fd9-6827-5b3d-b2ca-5e27ba961a7f",
+      "title": "Temperatur mit einem geeigneten Thermometer messen",
+      "reviewClassification": "supported_lower_operationalization",
+      "decision": "retain_reviewed_new_lower_supplement",
+      "decisionReason": "J6 verlangt ausdrücklich geeignetes Thermometer auswählen und sachgerecht verwenden sowie Temperaturmessungen durchführen.",
+      "officialStatus": "supported_lower_operationalization",
+      "originalLowerMembership": {
+        "de-st-gym-physics-gk": false,
+        "de-st-gym-physics-lk": false
+      },
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/ST/FLP_Physik_Gym_01082022_swd.pdf",
+          "pdfPages": [
+            30
+          ],
+          "printedPages": [
+            30
+          ],
+          "sha256": "9154693501a6351a7ce27701b722c261135484a64e9633404cafadf94af983ed"
+        }
+      ]
+    },
+    {
+      "state": "ST",
+      "goalId": "ad62f563-4fee-5399-8d9c-03a214658aa9",
+      "title": "Experimentelle Untersuchungen fachgerecht dokumentieren",
+      "reviewClassification": "supported_lower_operationalization",
+      "decision": "retain_reviewed_new_lower_supplement",
+      "decisionReason": "J6 Strahlenoptik fordert Protokolle ausgewählter Experimente nach vorgegebenem Schema; echte Dokumentationskompetenz.",
+      "officialStatus": "supported_lower_operationalization",
+      "originalLowerMembership": {
+        "de-st-gym-physics-gk": false,
+        "de-st-gym-physics-lk": false
+      },
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/ST/FLP_Physik_Gym_01082022_swd.pdf",
+          "pdfPages": [
+            26,
+            32
+          ],
+          "printedPages": [
+            26,
+            32
+          ],
+          "sha256": "9154693501a6351a7ce27701b722c261135484a64e9633404cafadf94af983ed"
+        }
+      ]
+    },
+    {
+      "state": "ST",
+      "goalId": "b60f63b6-e70b-5557-9f54-86d42fa80325",
+      "title": "Thermische Ausdehnung fester, flüssiger und gasförmiger Stoffe deuten",
+      "reviewClassification": "supported_lower_operationalization",
+      "decision": "retain_reviewed_new_lower_supplement",
+      "decisionReason": "J6 Temperatur/Wärme enthält Längen-/Volumenänderung von Stoffen bei Temperaturänderung mit Teilchenmodell.",
+      "officialStatus": "supported_lower_operationalization",
+      "originalLowerMembership": {
+        "de-st-gym-physics-gk": false,
+        "de-st-gym-physics-lk": false
+      },
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/ST/FLP_Physik_Gym_01082022_swd.pdf",
+          "pdfPages": [
+            30
+          ],
+          "printedPages": [
+            30
+          ],
+          "sha256": "9154693501a6351a7ce27701b722c261135484a64e9633404cafadf94af983ed"
+        }
+      ]
+    },
+    {
+      "state": "ST",
+      "goalId": "bf8517a9-142b-5789-826a-767f3b277998",
+      "title": "Durchschnitts- und Momentangeschwindigkeit unterscheiden",
+      "reviewClassification": "partial_lower_not_complete_atom",
+      "decision": "exclude_unsubstantiated_new_full_atom_lower_supplement",
+      "decisionReason": "J6 Wissensbestand nennt Momentan-/Durchschnittsgeschwindigkeit; Rechenanforderung und Diagrammaufträge betreffen Durchschnitt/Ablesen. Keine kanonische Tangentensteigungsberechnung belegt.",
+      "officialStatus": "partial_lower_not_complete_atom",
+      "originalLowerMembership": {
+        "de-st-gym-physics-gk": false,
+        "de-st-gym-physics-lk": false
+      },
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/ST/FLP_Physik_Gym_01082022_swd.pdf",
+          "pdfPages": [
+            28,
+            29,
+            45
+          ],
+          "printedPages": [
+            28,
+            29,
+            45
+          ],
+          "sha256": "9154693501a6351a7ce27701b722c261135484a64e9633404cafadf94af983ed"
+        }
+      ]
+    },
+    {
+      "state": "TH",
+      "goalId": "37013646-f13a-5faf-954c-940f2fd7502f",
+      "title": "Gezeiten qualitativ erklären",
+      "reviewClassification": "upper_e10_not_lower_supplement",
+      "decision": "exclude_unsubstantiated_new_full_atom_lower_supplement",
+      "decisionReason": "PhysikLP2.2.2 beginnt ausdrücklich Klassenstufe10 (S.21); Gezeiten stehen S.22. Amtliche Oberstufenbroschüre S.4–5/PDF6–7 ordnet das reguläre Gymnasium E10 zu. Der pauschale Generatorbucket2.2→SekI9/10 ist kein Gegenbeleg.",
+      "officialStatus": "upper_e10_not_lower_supplement",
+      "originalLowerMembership": {
+        "de-th-gym-physics-gk": false,
+        "de-th-gym-physics-lk": false
+      },
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/TH/LP_GY_Physik_2012.pdf",
+          "pdfPages": [
+            21,
+            22
+          ],
+          "printedPages": [
+            21,
+            22
+          ],
+          "sha256": "414be5ac7af13a1cfa33f96d9ca3c50f83c1f1cce4abe61b8e62faea1a24ed8d"
+        },
+        {
+          "file": "/home/enpasos/projects/skillpilot/tmp/pipeline/laender-stufen/gesamt/review/physics-lower-original-sources/th-gymnasiale-oberstufe-1.pdf",
+          "pdfPages": [
+            6,
+            7
+          ],
+          "printedPages": [
+            4,
+            5
+          ],
+          "sha256": "217746f21a858daf3f122159535afde8d71b53e8adf04cdf438123983a2be908"
+        }
+      ]
+    },
+    {
+      "state": "TH",
+      "goalId": "ad62f563-4fee-5399-8d9c-03a214658aa9",
+      "title": "Experimentelle Untersuchungen fachgerecht dokumentieren",
+      "reviewClassification": "supported_lower_operationalization",
+      "decision": "retain_reviewed_new_lower_supplement",
+      "decisionReason": "Klassen7/8 verlangen ausdrücklich Dokumentieren physikalischer Erkenntnisse/Beobachtungen in Fachsprache. Retained Seitenanker12/18 liegen vor dem tatsächlichen Wortlaut13/19; Originalseiten sind hier maßgeblich.",
+      "officialStatus": "supported_lower_operationalization",
+      "originalLowerMembership": {
+        "de-th-gym-physics-gk": false,
+        "de-th-gym-physics-lk": false
+      },
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/TH/LP_GY_Physik_2012.pdf",
+          "pdfPages": [
+            13,
+            15,
+            19
+          ],
+          "printedPages": [
+            13,
+            15,
+            19
+          ],
+          "sha256": "414be5ac7af13a1cfa33f96d9ca3c50f83c1f1cce4abe61b8e62faea1a24ed8d"
+        }
+      ]
+    }
+  ],
+  "additionalIndependentEvidence": {
+    "path": "tmp/pipeline/laender-stufen/gesamt/review/physics-lower-original-sources/partial-second-review.actual.json",
+    "sha256": "7fd1310d62f305f6b46e91f4eff130b88fa2a3094490479300e2199f6727b862"
+  }
+}

@@ -1,0 +1,144 @@
+
+> skillpilot@0.0.0 quality:source-coverage-audit:check
+> npm run quality:source-coverage-evidence:test && tsx scripts/generateCurriculumSourceCoverageAudit.ts --check
+
+
+> skillpilot@0.0.0 quality:source-coverage-evidence:test
+> tsx --test scripts/sourceCoverageAndApplicabilityRegression.test.ts
+
+TAP version 13
+# Subtest: active Memory evidence resolves a successor outside the authoring directory and cannot weaken required visibility
+ok 1 - active Memory evidence resolves a successor outside the authoring directory and cannot weaken required visibility
+  ---
+  duration_ms: 5.518427
+  ...
+# Subtest: curriculum discovery excludes QA snapshots while keeping live source and mapping inputs
+ok 2 - curriculum discovery excludes QA snapshots while keeping live source and mapping inputs
+  ---
+  duration_ms: 18.819416
+  ...
+# Subtest: active Memory support follows the final origin scope after prerequisite closure
+ok 3 - active Memory support follows the final origin scope after prerequisite closure
+  ---
+  duration_ms: 13600.811966
+  ...
+# Subtest: applicabilityFromRequires uses all-of intersection semantics
+ok 4 - applicabilityFromRequires uses all-of intersection semantics
+  ---
+  duration_ms: 0.277319
+  ...
+# Subtest: live assessment basis preserves the literal cluster predicate while learning demand is normalized
+ok 5 - live assessment basis preserves the literal cluster predicate while learning demand is normalized
+  ---
+  duration_ms: 22781.203233
+  ...
+# Subtest: assessment seed applicability preserves countries while learning prerequisites cross them
+ok 6 - assessment seed applicability preserves countries while learning prerequisites cross them
+  ---
+  duration_ms: 3878.75703
+  ...
+# Subtest: assessment basis is strict, immutable and confined to flagged atomic assessment endpoints
+ok 7 - assessment basis is strict, immutable and confined to flagged atomic assessment endpoints
+  ---
+  duration_ms: 1.03857
+  ...
+# Subtest: assessment basis rejects unresolved aliases and predicate or child-union cycles
+ok 8 - assessment basis rejects unresolved aliases and predicate or child-union cycles
+  ---
+  duration_ms: 1.069672
+  ...
+# Subtest: assessment basis validates strict reference syntax on nested contains and legacy assessment edges
+ok 9 - assessment basis validates strict reference syntax on nested contains and legacy assessment edges
+  ---
+  duration_ms: 1.235583
+  ...
+# Subtest: first-unit assessment bases reject memory dependencies whose origin graph is outside this component
+ok 10 - first-unit assessment bases reject memory dependencies whose origin graph is outside this component
+  ---
+  duration_ms: 1.31749
+  ...
+# Subtest: first-unit local assessment bases reject foreign dependencies instead of silently compiling an empty result
+ok 11 - first-unit local assessment bases reject foreign dependencies instead of silently compiling an empty result
+  ---
+  duration_ms: 1.060572
+  ...
+# Subtest: empty referenced applicability remains empty instead of using an authored cache fallback
+ok 12 - empty referenced applicability remains empty instead of using an authored cache fallback
+  ---
+  duration_ms: 4248.160104
+  ...
+# Subtest: inherited ordinary prerequisites preserve applicability after atomic materialization
+ok 13 - inherited ordinary prerequisites preserve applicability after atomic materialization
+  ---
+  duration_ms: 15795.591046
+  ...
+# Subtest: source coverage visibility follows composition target roles, not requires-closure applicability
+ok 14 - source coverage visibility follows composition target roles, not requires-closure applicability
+  ---
+  duration_ms: 2244.855436
+  ...
+# Subtest: source coverage targets match actual HE/BB exclusions and raw BY Mathematics bindings
+ok 15 - source coverage targets match actual HE/BB exclusions and raw BY Mathematics bindings
+  ---
+  duration_ms: 258.254824
+  ...
+# Subtest: APV-202 is based only on source evidence
+ok 16 - APV-202 is based only on source evidence
+  ---
+  duration_ms: 0.305717
+  ...
+# Subtest: ordinary direct and recursive ordinary source coverage pass
+ok 17 - ordinary direct and recursive ordinary source coverage pass
+  ---
+  duration_ms: 0.681038
+  ...
+# Subtest: reviewed source coverage survives real atomic transitive reduction
+ok 18 - reviewed source coverage survives real atomic transitive reduction
+  ---
+  duration_ms: 6761.239533
+  ...
+# Subtest: current source paths reject stale evidence, invalid references, and non-atomic hops
+ok 19 - current source paths reject stale evidence, invalid references, and non-atomic hops
+  ---
+  duration_ms: 1.65651
+  ...
+# Subtest: current source paths retain the exact reviewed relationship and jurisdiction
+ok 20 - current source paths retain the exact reviewed relationship and jurisdiction
+  ---
+  duration_ms: 0.335022
+  ...
+# Subtest: current source paths preserve carrier qualification and recursive source backing
+ok 21 - current source paths preserve carrier qualification and recursive source backing
+  ---
+  duration_ms: 0.502733
+  ...
+# Subtest: structural assessment and memory hops do not become source carriers
+ok 22 - structural assessment and memory hops do not become source carriers
+  ---
+  duration_ms: 0.393626
+  ...
+# Subtest: missing, cyclic, and cluster requiredBy routes fail closed
+ok 23 - missing, cyclic, and cluster requiredBy routes fail closed
+  ---
+  duration_ms: 0.229915
+  ...
+# Subtest: assessment, practice, examData, and chains through them fail closed
+ok 24 - assessment, practice, examData, and chains through them fail closed
+  ---
+  duration_ms: 0.290619
+  ...
+# Subtest: excluded assessment endpoints stay excluded during requires and explicit-basis refresh
+ok 25 - excluded assessment endpoints stay excluded during requires and explicit-basis refresh
+  ---
+  duration_ms: 12606.460136
+  ...
+1..25
+# tests 25
+# suites 0
+# pass 25
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 82737.33546
+Curriculum source coverage audit check passed.

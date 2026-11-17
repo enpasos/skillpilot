@@ -1,0 +1,140 @@
+
+> skillpilot@0.0.0 validate:learner-goal-selection
+> tsx scripts/validateLearnerGoalSelection.ts
+
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Complete focus markers must cover every visible selected leaf and no unselected leaf.
++ actual - expected ... Lines skipped
+
+  [
+    '0a154cbd-1218-4553-835c-a754e9901bba',
+    '0c8b59cb-62c0-5cc7-afd0-7e6e89cbee43',
++   '15512e77-31e3-5222-8a6b-84791618e5ce',
++   '2f598bc7-c117-47d7-bb81-0f08ad679b91',
++   '34ba4714-a0ff-4a48-857f-d2481cbe0441',
++   '3f1a97d2-7de6-5799-81f2-39782c3e54d7',
++   '415bd48b-8a76-4d4f-bfdd-d085573e7ac3',
++   '4acca6ef-5344-4dd1-b53d-506907573cf7',
++   '546bf0b3-6921-416b-a2ef-8fd37d429dc7',
++   '5ab17678-bba7-4e6b-9aff-5a909e24d40e',
++   '6596405a-9728-41df-9163-53670ec2a937',
++   '76478e47-5ff9-5de1-b601-5e6e436ad855',
++   '797ee047-b8dd-45cf-880e-98571a56c690',
++   'ae772695-d55e-4cc5-81bc-6605272759b4',
++   'af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186',
++   'bc6e4c14-d4f7-537e-8e83-9b5c0086e807',
++   'be18cef8-ad5b-56d4-9ecf-9ba45bad211e',
++   'c420e0be-1e74-4050-834c-d8da7f41095a',
++   'e09072f9-67d9-412c-b872-24ecbf329232',
++   'f7a9a0b4-ec64-468f-8da4-59c5055eac1d',
++   'fa72cf74-a31e-402e-90d7-422c118f4a5b'
+...
+-   '0d2cfddc-7af6-5709-819f-929e6cf9c192',
+-   '10a77422-6ceb-57ce-a90f-0ebc1179aaae',
+-   '15512e77-31e3-5222-8a6b-84791618e5ce',
+-   '1842da92-ca2c-5fed-a946-e6413a6285bb',
+-   '2f598bc7-c117-47d7-bb81-0f08ad679b91',
+-   '3045f00d-a5b9-547c-b568-593aeac9ffa3',
+-   '34ba4714-a0ff-4a48-857f-d2481cbe0441',
+-   '3f1a97d2-7de6-5799-81f2-39782c3e54d7',
+-   '415bd48b-8a76-4d4f-bfdd-d085573e7ac3',
+-   '4553367f-6265-511b-8632-46d99109e69b',
+-   '4acca6ef-5344-4dd1-b53d-506907573cf7',
+-   '546bf0b3-6921-416b-a2ef-8fd37d429dc7',
+-   '570d5931-f126-5bb4-8b7f-db236d6b727f',
+-   '5ab17678-bba7-4e6b-9aff-5a909e24d40e',
+-   '6596405a-9728-41df-9163-53670ec2a937',
+-   '743e5470-ff39-551e-9aba-529656418c66',
+-   '76478e47-5ff9-5de1-b601-5e6e436ad855',
+-   '797ee047-b8dd-45cf-880e-98571a56c690',
+-   '959cc50b-6c81-4fa1-800f-4804a707b1ee',
+-   '9accf4e2-f92d-5ff1-8d47-dfec33a8a707',
+-   'a70d4194-1f95-5dc4-884d-8ca856663601',
+-   'ae772695-d55e-4cc5-81bc-6605272759b4',
+-   'af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186',
+-   'bc6e4c14-d4f7-537e-8e83-9b5c0086e807',
+-   'be18cef8-ad5b-56d4-9ecf-9ba45bad211e',
+-   'c420e0be-1e74-4050-834c-d8da7f41095a',
+-   'cf8c5677-f3c5-5563-8f0a-68443fbab7bf',
+-   'df9ecf0f-f4c9-5859-b99e-11cb62f6bb35',
+-   'e09072f9-67d9-412c-b872-24ecbf329232',
+...
+    at assertExactRenderedScopeCoverage (/home/enpasos/projects/skillpilot/app/scripts/validateLearnerGoalSelection.ts:707:10)
+    at <anonymous> (/home/enpasos/projects/skillpilot/app/scripts/validateLearnerGoalSelection.ts:861:5)
+    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: [
+    '0a154cbd-1218-4553-835c-a754e9901bba',
+    '0c8b59cb-62c0-5cc7-afd0-7e6e89cbee43',
+    '15512e77-31e3-5222-8a6b-84791618e5ce',
+    '2f598bc7-c117-47d7-bb81-0f08ad679b91',
+    '34ba4714-a0ff-4a48-857f-d2481cbe0441',
+    '3f1a97d2-7de6-5799-81f2-39782c3e54d7',
+    '415bd48b-8a76-4d4f-bfdd-d085573e7ac3',
+    '4acca6ef-5344-4dd1-b53d-506907573cf7',
+    '546bf0b3-6921-416b-a2ef-8fd37d429dc7',
+    '5ab17678-bba7-4e6b-9aff-5a909e24d40e',
+    '6596405a-9728-41df-9163-53670ec2a937',
+    '76478e47-5ff9-5de1-b601-5e6e436ad855',
+    '797ee047-b8dd-45cf-880e-98571a56c690',
+    'ae772695-d55e-4cc5-81bc-6605272759b4',
+    'af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186',
+    'bc6e4c14-d4f7-537e-8e83-9b5c0086e807',
+    'be18cef8-ad5b-56d4-9ecf-9ba45bad211e',
+    'c420e0be-1e74-4050-834c-d8da7f41095a',
+    'e09072f9-67d9-412c-b872-24ecbf329232',
+    'f7a9a0b4-ec64-468f-8da4-59c5055eac1d',
+    'fa72cf74-a31e-402e-90d7-422c118f4a5b'
+  ],
+  expected: [
+    '0a154cbd-1218-4553-835c-a754e9901bba',
+    '0c8b59cb-62c0-5cc7-afd0-7e6e89cbee43',
+    '0d2cfddc-7af6-5709-819f-929e6cf9c192',
+    '10a77422-6ceb-57ce-a90f-0ebc1179aaae',
+    '15512e77-31e3-5222-8a6b-84791618e5ce',
+    '1842da92-ca2c-5fed-a946-e6413a6285bb',
+    '2f598bc7-c117-47d7-bb81-0f08ad679b91',
+    '3045f00d-a5b9-547c-b568-593aeac9ffa3',
+    '34ba4714-a0ff-4a48-857f-d2481cbe0441',
+    '3f1a97d2-7de6-5799-81f2-39782c3e54d7',
+    '415bd48b-8a76-4d4f-bfdd-d085573e7ac3',
+    '4553367f-6265-511b-8632-46d99109e69b',
+    '4acca6ef-5344-4dd1-b53d-506907573cf7',
+    '546bf0b3-6921-416b-a2ef-8fd37d429dc7',
+    '570d5931-f126-5bb4-8b7f-db236d6b727f',
+    '5ab17678-bba7-4e6b-9aff-5a909e24d40e',
+    '6596405a-9728-41df-9163-53670ec2a937',
+    '743e5470-ff39-551e-9aba-529656418c66',
+    '76478e47-5ff9-5de1-b601-5e6e436ad855',
+    '797ee047-b8dd-45cf-880e-98571a56c690',
+    '959cc50b-6c81-4fa1-800f-4804a707b1ee',
+    '9accf4e2-f92d-5ff1-8d47-dfec33a8a707',
+    'a70d4194-1f95-5dc4-884d-8ca856663601',
+    'ae772695-d55e-4cc5-81bc-6605272759b4',
+    'af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186',
+    'bc6e4c14-d4f7-537e-8e83-9b5c0086e807',
+    'be18cef8-ad5b-56d4-9ecf-9ba45bad211e',
+    'c420e0be-1e74-4050-834c-d8da7f41095a',
+    'cf8c5677-f3c5-5563-8f0a-68443fbab7bf',
+    'df9ecf0f-f4c9-5859-b99e-11cb62f6bb35',
+    'e09072f9-67d9-412c-b872-24ecbf329232',
+    'e42c208d-9555-43cc-92f5-5bb4c0688726',
+    'e96bc8e4-463b-5e86-b0c4-2c87b74d68f5',
+    'f6574cdc-e29c-5a8f-a009-9f28b3bcf9be',
+    'f65ab452-1884-57b0-9be3-c7d9e4944891',
+    'f7a9a0b4-ec64-468f-8da4-59c5055eac1d',
+    'fa0b6b69-ce54-4711-90e6-26f27249cd71',
+    'fa72cf74-a31e-402e-90d7-422c118f4a5b',
+    'fbf10244-9e55-597a-98d4-006d972a5c41',
+    'fc34449a-fbf4-574c-884f-ecdf48b42d2e'
+  ],
+  operator: 'deepStrictEqual'
+}
+
+Node.js v20.20.2

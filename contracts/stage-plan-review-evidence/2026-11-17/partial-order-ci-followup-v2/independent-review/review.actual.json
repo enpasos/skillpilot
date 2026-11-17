@@ -1,0 +1,49 @@
+{
+  "decision": "PASS",
+  "reviewer": "kinematics_math_inventory",
+  "author": "root",
+  "reviewedAt": "2026-11-17T08:11:12.580342+00:00",
+  "gitHead": "bce7769b25b5c4f37dc68dace3484d21b590b5d6",
+  "reviewedDiffSha256": "a3c809eb1410b74f515c6ad3a98aa740d509c1ca664cdc97eb895ebd2a9b0477",
+  "files": [
+    {
+      "path": "app/scripts/validateLearnerGoalSelection.ts",
+      "sha256": "5ba7ed7483c713e826c3319898fb13e0e672c10c8bb2b9f4e43ed541f79e6076"
+    },
+    {
+      "path": "docs/qa-ci/status/gymnasium-duration-model-readiness.md",
+      "sha256": "cdf3f6be4fcbf67d63ebd8487ce160b2081408d5a6d3861e1f10cdf370331b4a"
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "sha256": "1a58d54b2b1bef59431bffd7448dd7a26177dfc95004ff5dd1e65a1e4cfb9571"
+    }
+  ],
+  "ownChecks": [
+    {
+      "command": "independent prism-probe.ts",
+      "exitCode": 0,
+      "S": 1,
+      "L": 34,
+      "additionalWitnesses": 33,
+      "actualPrismAcquisitionReachable": true
+    },
+    {
+      "command": "npm run validate:learner-goal-selection",
+      "exitCode": 0,
+      "sessionId": 14303
+    },
+    {
+      "command": "npm run report:gymnasium-duration-readiness -- --check",
+      "exitCode": 0,
+      "sessionId": 71730
+    },
+    {
+      "command": "git diff --check -- <reviewed three files>",
+      "exitCode": 0
+    }
+  ],
+  "initialInconsistentSyntheticFixtureCorrected": true,
+  "runtimeFilesChanged": false,
+  "remoteCiOrMergeClaim": false
+}

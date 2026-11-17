@@ -5,7 +5,7 @@ ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 PROFILE="contracts/curriculum-package/v1.3/profiles/de-gymnasium-mathematik-release-model-v1.3.profile.json"
 PACKAGE_PROFILE="contracts/curriculum-package/v1.3/profiles/full-standalone-v1.3.profile.json"
 CONTRACTS_DIR="contracts/curriculum-package/v1.3"
-REDISTRIBUTION_LEDGER="curricula/DE/Gymnasium/quality/package-redistribution/de-gymnasium-mathematik-v1.3.review.json"
+REDISTRIBUTION_LEDGER="curricula/DE/Gymnasium/quality/package-redistribution/de-gymnasium-mathematik-v1.3-partial-order-20261116.review.json"
 OUTPUT_BASE="tmp/curriculum-release-model"
 OUTPUT_A="${OUTPUT_BASE}/mathematik-v1.3-a"
 OUTPUT_B="${OUTPUT_BASE}/mathematik-v1.3-b"
@@ -25,7 +25,7 @@ PACKAGE_INSTALL_REPORT="${PACKAGE_OUTPUT}/provision-install.json"
 PACKAGE_VERIFY_REPORT="${PACKAGE_OUTPUT}/provision-verify.json"
 PACKAGE_ACTIVATE_REPORT="${PACKAGE_OUTPUT}/provision-activate.json"
 PACKAGE_STATUS_REPORT="${PACKAGE_OUTPUT}/provision-status.json"
-EXPECTED_CONTENT_DIGEST="sha256:4e371d4e3fa31ccabfc9b32e061ada55d18fc8a8ebf1f087d9a6109469645a04"
+EXPECTED_CONTENT_DIGEST="sha256:c2df283bfd359ba5ecf8bfe2ae1abf311e193871e923035074b493cbac754a8f"
 cd "${ROOT_DIR}"
 
 SOURCE_PDF_MODE="${SKILLPILOT_SOURCE_PDF_MODE:-strict}"
@@ -101,26 +101,28 @@ python3 -B scripts/validate_curriculum_release_model.py \
   --profile "${PROFILE}" \
   --release-root "${OUTPUT_A}"
 
-python3 -B scripts/generate_curriculum_package_redistribution_review.py \
-  --runtime-v13-candidate --ledger "${REDISTRIBUTION_LEDGER}" \
-  --check \
-  --release-root "${OUTPUT_A}"
-python3 -B scripts/generate_curriculum_package_redistribution_review.py \
-  --runtime-v13-candidate --ledger "${REDISTRIBUTION_LEDGER}" \
-  --self-test \
-  --release-root "${OUTPUT_A}"
-python3 -B scripts/generate_curriculum_source_verification_review.py \
-  --check \
-  "${SOURCE_VERIFICATION_ARGS[@]}"
-python3 -B scripts/generate_curriculum_source_verification_review.py \
-  --self-test \
-  "${SOURCE_VERIFICATION_ARGS[@]}"
-
+# The independent validator performs negative mutations and restores the model.
+# Finish that process before any second build or consumer reads its directory.
 python3 -B scripts/compile_curriculum_release_model.py \
   --profile "${PROFILE}" \
   --output "${OUTPUT_B}"
 
 diff -qr "${OUTPUT_A}" "${OUTPUT_B}"
+
+python3 -B scripts/generate_curriculum_package_redistribution_review.py \
+  --runtime-v13-candidate --ledger "${REDISTRIBUTION_LEDGER}" \
+  --check \
+  --release-root "${OUTPUT_A}"
+python3 -B scripts/generate_curriculum_package_redistribution_review.py \
+  --runtime-v13-candidate --ledger "${REDISTRIBUTION_LEDGER}" \
+  --self-test \
+  --release-root "${OUTPUT_A}"
+python3 -B scripts/generate_curriculum_source_verification_review.py \
+  --check \
+  "${SOURCE_VERIFICATION_ARGS[@]}"
+python3 -B scripts/generate_curriculum_source_verification_review.py \
+  --self-test \
+  "${SOURCE_VERIFICATION_ARGS[@]}"
 
 if [[ "${SKILLPILOT_FULL_PACKAGE_CONFORMANCE:-false}" != "true" ]]; then
   echo "Curriculum release-model conformance passed: independent model validation, current review bindings, and byte-identical model builds."
@@ -146,8 +148,8 @@ npm --prefix app run --silent export:full-standalone-package -- \
   --archive-root "${PACKAGE_ARCHIVE_ROOT}" \
   --supported-skillpilot-software ">=0.1.0 <1.0.0" \
   --zip \
-  --expect-entry-count 1107 \
-  --expect-manifest-file-count 1105 \
+  --expect-entry-count 1120 \
+  --expect-manifest-file-count 1118 \
   --expect-binary-asset-count 864 \
   --expect-content-digest "${EXPECTED_CONTENT_DIGEST}" \
   > "${PACKAGE_BUILD_REPORT}"

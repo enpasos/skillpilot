@@ -1,0 +1,106 @@
+{
+  "status": "needs_revision",
+  "severity": "P1",
+  "corrects": "review.actual.json direct-route classification; original record retained",
+  "finding": "With metadata already present on composition input, the actual generic SekI application pipeline loses12 of40 valid canonical J8 focus atoms. The current test uses the raw map instead of the runtime map and can pass despite this loss.",
+  "not_a_current_finding": "The v1 zero-of40 direct-route result uses metadata-free composition input followed by a separate L source. In current app input, the existing route metadata guard prevents that additional loss: generic routes all28/40, BY routes all40/40. No separate direct-route repair is justified by this probe.",
+  "true_causes": [
+    "Composition role projection removes prerequisiteOnly children from canonical contains while retaining atoms for prerequisites/acquisition.",
+    "applyPersonalCurriculumProjection restores canonical target-bearing paths only for direct goalEntry clusters. The persisted hidden J8 cluster lacks that marker; LearnerView then calculates its planned scope from the pruned map instead of canonicalGoalSources."
+  ],
+  "scope": "Independent synthetic full-view S/canonical BFS-L over21catalogs; production utilities/order; no backend execution claim.",
+  "evidence": "probe-v2.actual.json",
+  "cases": [
+    {
+      "view": "de-de-seki",
+      "S": 266,
+      "L": 342,
+      "variants": [
+        {
+          "route": null,
+          "expected": 40,
+          "actual": 28,
+          "lost": [
+            "15512e77-31e3-5222-8a6b-84791618e5ce",
+            "1842da92-ca2c-5fed-a946-e6413a6285bb",
+            "570d5931-f126-5bb4-8b7f-db236d6b727f",
+            "743e5470-ff39-551e-9aba-529656418c66",
+            "76478e47-5ff9-5de1-b601-5e6e436ad855",
+            "959cc50b-6c81-4fa1-800f-4804a707b1ee",
+            "cf8c5677-f3c5-5563-8f0a-68443fbab7bf",
+            "e42c208d-9555-43cc-92f5-5bb4c0688726",
+            "f6574cdc-e29c-5a8f-a009-9f28b3bcf9be",
+            "f65ab452-1884-57b0-9be3-c7d9e4944891",
+            "fa0b6b69-ce54-4711-90e6-26f27249cd71",
+            "fc34449a-fbf4-574c-884f-ecdf48b42d2e"
+          ]
+        },
+        {
+          "route": "d64516eb-9dd2-4808-91d0-0040ccdc281f",
+          "expected": 40,
+          "actual": 28,
+          "lost": [
+            "15512e77-31e3-5222-8a6b-84791618e5ce",
+            "1842da92-ca2c-5fed-a946-e6413a6285bb",
+            "570d5931-f126-5bb4-8b7f-db236d6b727f",
+            "743e5470-ff39-551e-9aba-529656418c66",
+            "76478e47-5ff9-5de1-b601-5e6e436ad855",
+            "959cc50b-6c81-4fa1-800f-4804a707b1ee",
+            "cf8c5677-f3c5-5563-8f0a-68443fbab7bf",
+            "e42c208d-9555-43cc-92f5-5bb4c0688726",
+            "f6574cdc-e29c-5a8f-a009-9f28b3bcf9be",
+            "f65ab452-1884-57b0-9be3-c7d9e4944891",
+            "fa0b6b69-ce54-4711-90e6-26f27249cd71",
+            "fc34449a-fbf4-574c-884f-ecdf48b42d2e"
+          ]
+        },
+        {
+          "route": "59d5a330-61be-4590-ab46-cf7cefecd144",
+          "expected": 40,
+          "actual": 28,
+          "lost": [
+            "15512e77-31e3-5222-8a6b-84791618e5ce",
+            "1842da92-ca2c-5fed-a946-e6413a6285bb",
+            "570d5931-f126-5bb4-8b7f-db236d6b727f",
+            "743e5470-ff39-551e-9aba-529656418c66",
+            "76478e47-5ff9-5de1-b601-5e6e436ad855",
+            "959cc50b-6c81-4fa1-800f-4804a707b1ee",
+            "cf8c5677-f3c5-5563-8f0a-68443fbab7bf",
+            "e42c208d-9555-43cc-92f5-5bb4c0688726",
+            "f6574cdc-e29c-5a8f-a009-9f28b3bcf9be",
+            "f65ab452-1884-57b0-9be3-c7d9e4944891",
+            "fa0b6b69-ce54-4711-90e6-26f27249cd71",
+            "fc34449a-fbf4-574c-884f-ecdf48b42d2e"
+          ]
+        }
+      ]
+    },
+    {
+      "view": "de-by-gk",
+      "S": 501,
+      "L": 603,
+      "variants": [
+        {
+          "route": null,
+          "expected": 40,
+          "actual": 40,
+          "lost": []
+        },
+        {
+          "route": "d64516eb-9dd2-4808-91d0-0040ccdc281f",
+          "expected": 40,
+          "actual": 40,
+          "lost": []
+        },
+        {
+          "route": "59d5a330-61be-4590-ab46-cf7cefecd144",
+          "expected": 40,
+          "actual": 40,
+          "lost": []
+        }
+      ]
+    }
+  ],
+  "required_repair": "Compute canonical persisted focus basis separately from current rendered grouping, intersect atomic membership with authoritative closed L; preserve current synthetic-group semantics and route protection. Test actual compositionInput=source and normalize-before-applyPersonal sequence.",
+  "authoritativeApproval": false
+}

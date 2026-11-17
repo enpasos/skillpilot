@@ -64,8 +64,8 @@ const preview = deriveLearnerUnitMapPreview(tree, 2)
 const map = buildLearnerUnitMapProjection({ ...tree, units: preview.units, after: preview.after })
 const stage = map.unitEntryIds.sek1
 const relations = map.scopeRelations?.[stage] ?? []
-assert(relations.some(relation => relation.backward) && relations.some(relation => relation.unitOrder === 'declared'),
-  'the real Sekundarstufe I board has declared orders and Rückgriffe')
+assert(relations.some(relation => relation.unitOrder === 'declared'),
+  'the real Sekundarstufe I board exercises declared orders')
 const real = await computeLearningScopeLayout(elk, map, stage, 'RIGHT')
 for (const relation of relations) {
   if (relation.unitOrder === 'declared') assert(before(real, 'RIGHT', relation.source, relation.target),

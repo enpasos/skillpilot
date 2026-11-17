@@ -1,0 +1,426 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/composition-view/v1.2/composition-view.schema.json",
+  "title": "SkillPilot composition view 1.2 - explicit partial child order",
+  "description": "Learner-facing composition tree with an optional explicit partial order of direct structure children. Array order remains display order; childOrder replaces implicit sibling planning order only for its parent. Goal prerequisites and authoritative stage-plan bindings remain separate.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "viewFormatVersion",
+    "viewId",
+    "landscapeId",
+    "language",
+    "scope",
+    "rootNodes"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "https://skillpilot.com/schemas/composition-view/v1.2/composition-view.schema.json"
+    },
+    "viewFormatVersion": {
+      "const": "1.2"
+    },
+    "viewId": {
+      "$ref": "#/$defs/id"
+    },
+    "landscapeId": {
+      "$ref": "#/$defs/id"
+    },
+    "language": {
+      "$ref": "#/$defs/languageTag"
+    },
+    "title": {
+      "$ref": "#/$defs/nonBlankText"
+    },
+    "scope": {
+      "$ref": "#/$defs/scope"
+    },
+    "rootNodes": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 1000000,
+      "x-skillpilot-listSemantics": "ordered",
+      "items": {
+        "$ref": "#/$defs/node"
+      }
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 300,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:+-]*$"
+    },
+    "nonBlankText": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000,
+      "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+    },
+    "languageTag": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 64,
+      "pattern": "^[A-Za-z]{2,8}(?:-[A-Za-z0-9]{1,8})*$"
+    },
+    "projectionRole": {
+      "type": "string",
+      "enum": [
+        "target",
+        "prerequisiteOnly"
+      ]
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schoolForm"
+      ],
+      "properties": {
+        "schoolForm": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "jurisdiction": {
+          "type": "string",
+          "pattern": "^DE(?:-[A-Z]{2})?$"
+        },
+        "stage": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "courseProfile": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "durationModel": {
+          "$ref": "#/$defs/nonBlankText"
+        }
+      }
+    },
+    "structureNode": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "id",
+        "label",
+        "children"
+      ],
+      "properties": {
+        "kind": {
+          "const": "structure"
+        },
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "label": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "children": {
+          "type": "array",
+          "maxItems": 1000000,
+          "x-skillpilot-listSemantics": "ordered",
+          "items": {
+            "$ref": "#/$defs/node"
+          }
+        },
+        "childOrder": {
+          "$ref": "#/$defs/childOrder"
+        },
+        "labelEn": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "canonicalSourceGoalId": {
+          "$ref": "#/$defs/id"
+        },
+        "originalCanonicalSubtree": {
+          "$ref": "#/$defs/canonicalSubtreeNode"
+        },
+        "canonicalSourceNode": {
+          "$ref": "#/$defs/canonicalSubtreeNode"
+        },
+        "canonicalSourcePhase": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "placementEvidence": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "rationale"
+          ],
+          "properties": {
+            "rationale": {
+              "$ref": "#/$defs/nonBlankText"
+            },
+            "role": {
+              "const": "canonicalDefault"
+            }
+          }
+        }
+      }
+    },
+    "canonicalSubtreeNode": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "goalId"
+      ],
+      "properties": {
+        "kind": {
+          "const": "canonicalSubtree"
+        },
+        "goalId": {
+          "$ref": "#/$defs/id"
+        },
+        "projectionRole": {
+          "$ref": "#/$defs/projectionRole"
+        },
+        "displayLabel": {
+          "$ref": "#/$defs/nonBlankText"
+        }
+      }
+    },
+    "goalEntryNode": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "goalId"
+      ],
+      "properties": {
+        "kind": {
+          "const": "goalEntry"
+        },
+        "goalId": {
+          "$ref": "#/$defs/id"
+        },
+        "projectionRole": {
+          "$ref": "#/$defs/projectionRole"
+        },
+        "displayLabel": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "placementEvidence": {
+          "$ref": "#/$defs/placementEvidence"
+        },
+        "acquisitionPlacement": {
+          "const": true,
+          "description": "Explicit acquisition place for this prerequisite-only atom; only authoritative L membership permits runtime materialization. It never adds a seed target."
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "required": [
+              "acquisitionPlacement"
+            ]
+          },
+          "then": {
+            "required": [
+              "projectionRole"
+            ],
+            "properties": {
+              "projectionRole": {
+                "const": "prerequisiteOnly"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "landscapeEntryNode": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "landscapeId"
+      ],
+      "properties": {
+        "kind": {
+          "const": "landscapeEntry"
+        },
+        "landscapeId": {
+          "$ref": "#/$defs/id"
+        },
+        "displayLabel": {
+          "$ref": "#/$defs/nonBlankText"
+        }
+      }
+    },
+    "node": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/structureNode"
+        },
+        {
+          "$ref": "#/$defs/canonicalSubtreeNode"
+        },
+        {
+          "$ref": "#/$defs/goalEntryNode"
+        },
+        {
+          "$ref": "#/$defs/landscapeEntryNode"
+        }
+      ]
+    },
+    "childOrder": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "after"
+      ],
+      "description": "Presence replaces implicit sibling planning order. An empty after array explicitly declares no additional planning order. References name direct structure children; semantic validation rejects unknown, self, duplicate, cyclic and transitively redundant pairs.",
+      "properties": {
+        "after": {
+          "type": "array",
+          "maxItems": 100000,
+          "uniqueItems": true,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "unit",
+              "after"
+            ],
+            "properties": {
+              "unit": {
+                "$ref": "#/$defs/id"
+              },
+              "after": {
+                "$ref": "#/$defs/id"
+              }
+            }
+          }
+        }
+      }
+    },
+    "existingAssessmentPlacementEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Retained source-only evidence of an existing whole-assessment placement. It grants neither official source assignment nor learner mastery.",
+      "required": [
+        "role",
+        "canonicalPhysicsSha256",
+        "requiresGoalId",
+        "fullOrdinaryPreparationAlreadyDemanded",
+        "sourceClaimBoundary"
+      ],
+      "properties": {
+        "role": {
+          "const": "existingWholeAssessmentAtExistingPreparationDemand"
+        },
+        "canonicalPhysicsSha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "requiresGoalId": {
+          "$ref": "#/$defs/id"
+        },
+        "fullOrdinaryPreparationAlreadyDemanded": {
+          "const": true
+        },
+        "sourceClaimBoundary": {
+          "$ref": "#/$defs/nonBlankText"
+        }
+      }
+    },
+    "reviewedPreparationPlacementEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Retained source-only preparation evidence. This metadata does not change the authored projectionRole or claim an official temporal assignment.",
+      "required": [
+        "role",
+        "consumerGoalId",
+        "requiredByPath",
+        "reviewedCanonicalPhysicsSha256",
+        "reviewedCanonicalOwnerSha256",
+        "rationale",
+        "sourceInterpretation",
+        "sourceURLs",
+        "futureModelGap"
+      ],
+      "properties": {
+        "role": {
+          "const": "reviewedPreparation"
+        },
+        "consumerGoalId": {
+          "$ref": "#/$defs/id"
+        },
+        "requiredByPath": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        },
+        "reviewedCanonicalPhysicsSha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "reviewedCanonicalOwnerSha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "rationale": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "sourceInterpretation": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "sourceURLs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "pattern": "^https?://\\S+$"
+          }
+        },
+        "futureModelGap": {
+          "$ref": "#/$defs/nonBlankText"
+        }
+      }
+    },
+    "placementEvidence": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/existingAssessmentPlacementEvidence"
+        },
+        {
+          "$ref": "#/$defs/reviewedPreparationPlacementEvidence"
+        },
+        {
+          "$ref": "#/$defs/canonicalDefaultPlacementEvidence"
+        }
+      ]
+    },
+    "canonicalDefaultPlacementEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "role",
+        "classification",
+        "sourceInterpretation",
+        "references"
+      ],
+      "properties": {
+        "role": {
+          "const": "canonicalDefault"
+        },
+        "classification": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "sourceInterpretation": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "references": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/nonBlankText"
+          }
+        }
+      }
+    }
+  }
+}

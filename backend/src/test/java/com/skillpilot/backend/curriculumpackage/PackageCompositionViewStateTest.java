@@ -6,6 +6,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.LinkedHashMap;
@@ -94,6 +95,70 @@ class PackageCompositionViewStateTest {
                         "landscape-alpha",
                         Map.of("schoolForm", "Gymnasium", "courseProfile", "GK")))
                 .isNull();
+    }
+
+    @Test
+    void runtimePartialOrderMergePreservesItsOwnSchemaLanguageAndAcquisitionMarkers() throws Exception {
+        CurriculumRuntimeSnapshot snapshot = load(mergeSpec());
+        Map<String, CurriculumRuntimeSnapshot.ViewDescriptor> views = runtimePartialOrderViews(snapshot);
+        PackageCompositionViewState state = PackageCompositionViewState.load(
+                copy(snapshot, views, snapshot.offeringsById()), mapper);
+        var resolved = state.resolveOffering("offering-alpha");
+        for (Map<String, Object> document : List.of(resolved.document(), state.findViewDocumentById(resolved.runtimeViewId()))) {
+            assertThat(document).containsEntry("viewFormatVersion", "1.2").containsEntry("language", "de-DE")
+                    .containsEntry("$schema", "https://skillpilot.com/schemas/curriculum-package/v1.3/runtime-composition-view.schema.json");
+            assertThat(document.get("rootNodes").toString()).contains("acquisitionPlacement=true");
+            assertThatThrownBy(() -> document.put("language", "en"))
+                    .isInstanceOf(UnsupportedOperationException.class);
+        }
+    }
+
+    @Test
+    void runtimePartialOrderMergeRejectsUnknownMixedAndSourceOnlyFormatEnvelopes() throws Exception {
+        CurriculumRuntimeSnapshot snapshot = load(mergeSpec());
+        for (String mutation : List.of("old-version", "unknown-version", "source-schema", "unknown-schema", "missing-language", "wrong-language-type")) {
+            Map<String, CurriculumRuntimeSnapshot.ViewDescriptor> views = runtimePartialOrderViews(snapshot);
+            var original = views.get("view-alpha-secondary");
+            Map<String, Object> document = mapper.readValue(original.json(), new TypeReference<>() {});
+            switch (mutation) {
+                case "old-version" -> document.put("viewFormatVersion", "1.0");
+                case "unknown-version" -> document.put("viewFormatVersion", "9.9");
+                case "source-schema" -> document.put("$schema", "https://skillpilot.com/schemas/composition-view/v1.2/composition-view.schema.json");
+                case "unknown-schema" -> document.put("$schema", "https://example.invalid/view.schema.json");
+                case "missing-language" -> document.remove("language");
+                case "wrong-language-type" -> document.put("language", 42);
+                default -> throw new AssertionError(mutation);
+            }
+            views.put(original.viewId(), new CurriculumRuntimeSnapshot.ViewDescriptor(
+                    original.packageId(), original.viewId(), original.landscapeId(), original.language(),
+                    original.scope(), original.artifact(), mapper.writeValueAsString(document)));
+            assertThatThrownBy(() -> PackageCompositionViewState.load(copy(snapshot, views, snapshot.offeringsById()), mapper))
+                    .as(mutation).isInstanceOf(CurriculumPackageException.class);
+        }
+    }
+
+    private Map<String, CurriculumRuntimeSnapshot.ViewDescriptor> runtimePartialOrderViews(CurriculumRuntimeSnapshot snapshot) throws Exception {
+        Map<String, CurriculumRuntimeSnapshot.ViewDescriptor> views = new LinkedHashMap<>();
+        for (var original : snapshot.viewsById().values()) {
+            String document = mapper.writeValueAsString(Map.of(
+                    "$schema", "https://skillpilot.com/schemas/curriculum-package/v1.3/runtime-composition-view.schema.json",
+                    "viewFormatVersion", "1.2", "language", original.language(),
+                    "viewId", original.viewId(), "landscapeId", original.landscapeId(), "scope", original.scope(),
+                    "rootNodes", List.of(Map.of("kind", "structure", "id", "topic", "label", "Topic", "children", List.of(
+                            Map.of("kind", "goalEntry", "goalId", "goal-alpha"),
+                            Map.of("kind", "goalEntry", "goalId", "unmapped-goal-alpha", "projectionRole", "prerequisiteOnly", "acquisitionPlacement", true))))));
+            views.put(original.viewId(), new CurriculumRuntimeSnapshot.ViewDescriptor(
+                    original.packageId(), original.viewId(), original.landscapeId(), original.language(),
+                    original.scope(), original.artifact(), document));
+        }
+        return views;
+    }
+
+    private static CurriculumPackageTestFixture.PackageSpec mergeSpec() {
+        var base = CurriculumPackageTestFixture.PackageSpec.packageSpec("alpha", 'a');
+        return new CurriculumPackageTestFixture.PackageSpec(base.suffix(), base.packageId(), base.landscapeId(),
+                base.hashCharacter(), base.closureHashCharacter(), base.indexHashCharacter(), base.definitionKey(),
+                base.definitionOwner(), base.definitionDigest(), base.moduleLandscapeId(), true, base.externalUrlScheme());
     }
 
     @Test
@@ -381,6 +446,16 @@ class PackageCompositionViewStateTest {
             for (Path file : files.filter(path -> path.toString().endsWith(".view.json")).sorted().toList()) {
                 String document = Files.readString(file);
                 JsonNode authoredView = mapper.readTree(document);
+                if ("1.2".equals(authoredView.path("viewFormatVersion").asText())) {
+                    // This resolver fixture uses source nodes, but its package
+                    // envelope must match the real compiler's registered runtime
+                    // component. Closed payload projection is tested in Python.
+                    ObjectNode runtime = authoredView.deepCopy();
+                    runtime.put("$schema", "https://skillpilot.com/schemas/curriculum-package/v1.3/runtime-composition-view.schema.json");
+                    runtime.put("language", originalView.language());
+                    stripSourceOnlyViewFixtureFields(runtime.path("rootNodes"));
+                    document = mapper.writeValueAsString(runtime);
+                }
                 String viewId = authoredView.path("viewId").asText();
                 Map<String, String> scope = mapper.convertValue(authoredView.get("scope"), new TypeReference<>() { });
                 assertThat(authoredView.path("landscapeId").asText()).isEqualTo(landscapeId);
@@ -436,8 +511,13 @@ class PackageCompositionViewStateTest {
 
         PackageCompositionViewState state = PackageCompositionViewState.load(candidate, mapper);
 
-        assertThat(state.viewsById()).hasSize(88);
-        assertThat(state.offeringsById()).hasSize(128);
+        int expectedViewCount = mapper.readTree(Files.readString(Path.of(
+                "../contracts/curriculum-package/v1.3/profiles/de-gymnasium-mathematik-release-model-v1.3.profile.json")))
+                .path("expectedCounts").path("views").asInt();
+        long expectedCompositeCount = profilePairs.values().stream()
+                .filter(pair -> pair.keySet().equals(Set.of("GK", "LK"))).count();
+        assertThat(state.viewsById()).hasSize(expectedViewCount);
+        assertThat(state.offeringsById()).hasSize(expectedViewCount + (int) expectedCompositeCount);
         for (var offering : offerings.values()) {
             var resolved = state.resolveOffering(offering.offeringId());
             assertThat(resolved).as(offering.offeringId())
@@ -447,7 +527,20 @@ class PackageCompositionViewStateTest {
         for (var view : views.values()) {
             JsonNode resolvedView = mapper.valueToTree(state.findViewDocumentById(view.viewId()));
             assertThat(resolvedView)
-                    .as("Unchanged authored view %s", view.viewId()).isEqualTo(mapper.readTree(view.json()));
+                    .as("Unchanged package-envelope fixture %s", view.viewId()).isEqualTo(mapper.readTree(view.json()));
+        }
+    }
+
+    private static void stripSourceOnlyViewFixtureFields(JsonNode nodes) {
+        for (JsonNode node : nodes) {
+            if (!(node instanceof ObjectNode object)) continue;
+            if ("structure".equals(object.path("kind").asText())) {
+                object.remove(List.of("canonicalSourceGoalId", "canonicalSourceNode", "canonicalSourcePhase",
+                        "placementEvidence", "labelEn", "originalCanonicalSubtree"));
+                stripSourceOnlyViewFixtureFields(object.path("children"));
+            } else if ("goalEntry".equals(object.path("kind").asText())) {
+                object.remove("placementEvidence");
+            }
         }
     }
 

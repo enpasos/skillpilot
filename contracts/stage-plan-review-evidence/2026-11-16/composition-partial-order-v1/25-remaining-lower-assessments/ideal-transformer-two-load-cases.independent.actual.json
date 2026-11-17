@@ -1,0 +1,100 @@
+{
+  "schema": "independent-bilingual-atomic-assessment-content-review-v1",
+  "reviewer": "/root/he_ephase_source_review",
+  "author": "/root/he_ephase_validation",
+  "reviewedAt": "2026-11-17T03:38:05.192751+00:00",
+  "status": "PASS",
+  "releaseRecommendation": "APPROVE_RELEASE_OF_REVIEWED_CONTENT",
+  "learnerTrialOrHumanApproval": false,
+  "taskId": "f602680f-ea75-5bed-ae87-72f6be34a99b",
+  "targetGoalId": "af1094c1-511a-5aae-9e0a-3e9196a82d9a",
+  "candidatePins": {
+    "tmp/pipeline/laender-stufen/gesamt/physics/remaining-lower-assessments/author-validation/ideal-transformer-two-load-cases.goal.json": "4332a5813f567370d4a1a6ff8fb3487ea6bbd8904b620a8d398cc9d8a6af961a",
+    "tmp/pipeline/laender-stufen/gesamt/physics/remaining-lower-assessments/author-validation/ideal-transformer-two-load-cases.md": "1f2609cb348b0242376bbaac36030368f876ee6f63e9913937cdcd068d45b944"
+  },
+  "retainedOriginalPins": {
+    "tmp/pipeline/laender-stufen/gesamt/review/remaining-lower-assessments/ideal-transformer-two-load-cases.reviewed-candidate.goal.json": "4332a5813f567370d4a1a6ff8fb3487ea6bbd8904b620a8d398cc9d8a6af961a",
+    "tmp/pipeline/laender-stufen/gesamt/review/remaining-lower-assessments/ideal-transformer-two-load-cases.reviewed-material.md": "1f2609cb348b0242376bbaac36030368f876ee6f63e9913937cdcd068d45b944"
+  },
+  "reviewedPayloadDigestExcludingOnlyReleaseStatusAndReviewNote": "3baaa783fd3cbef02e3156709f3b681d46096e542d76a2ee6483b2a93870839b",
+  "targetDescription": "Die lernende Person kann Aufbau und Funktionsprinzip eines Transformators mit Induktion erklären, beim idealen Transformator Spannungs- und Stromstärkeübersetzungen berechnen und die gegenläufige Übersetzung mit Energieerhaltung begründen.",
+  "targetGoalDigest": "d2c7ed3c26de5f9cd1f8ed313a456d4a59cc3b0799820c9651ee071099f09f9b",
+  "canonicalDocumentSha256AtReviewTime": "08bea9063bad70aa2e7690c4381a1f41e87f9252d43226ef00850c139ab85c07",
+  "requiresAndCoverage": {
+    "requires": [
+      "af1094c1-511a-5aae-9e0a-3e9196a82d9a"
+    ],
+    "coveredGoalIds": [
+      "af1094c1-511a-5aae-9e0a-3e9196a82d9a"
+    ],
+    "additionalRequiredGoalIds": []
+  },
+  "courseBinding": {
+    "taskCourseTags": [
+      "GK",
+      "LK"
+    ],
+    "targetCourseTags": [
+      "GK",
+      "LK"
+    ],
+    "exactMatch": true
+  },
+  "independentCalculations": {
+    "cases": [
+      {
+        "case": "A",
+        "N1": 600,
+        "N2": 150,
+        "U1_V": "24",
+        "U2_V": "6",
+        "I1_A": "1/5",
+        "I2_A": "4/5",
+        "U2_over_U1": "1/4",
+        "I2_over_I1": "4",
+        "P1_W": "24/5",
+        "P2_W": "24/5",
+        "conservationAndInverseRatios": true
+      },
+      {
+        "case": "B",
+        "N1": 200,
+        "N2": 500,
+        "U1_V": "12",
+        "U2_V": "30",
+        "I1_A": "3/10",
+        "I2_A": "3/25",
+        "U2_over_U1": "5/2",
+        "I2_over_I1": "2/5",
+        "P1_W": "18/5",
+        "P2_W": "18/5",
+        "conservationAndInverseRatios": true
+      }
+    ],
+    "constantFlux": "dPhi/dt=0 gives no sustained induced secondary voltage.",
+    "bothRatiosGreaterThanOne": "(U2/U1)*(I2/I1)=P2/P1=1 rules this out for the specified lossless loaded model."
+  },
+  "manualContentReview": {
+    "completeIndependentPerformances": "Each case independently requires a labelled source/core/windings/load sketch, causal flux/induction explanation, voltage and current ratios, and a justified energy balance. B additionally checks constant flux.",
+    "DE_EN": "Both languages agree on all values, turns, RMS quantities, steady sinusoidal operation, resistive loads, ignored losses/magnetising current, questions, reference calculations and rubric.",
+    "physicalValidity": "Purely resistive loads and negligible magnetising current explicitly establish power factor1 for this ideal model, so P=U_rms*I_rms legitimately denotes real power. No undefined phase assumption or real DC experiment is introduced.",
+    "genuineCoverage": "Both cases cover transformer structure/function through induction, voltage and current transformations, and inverse ratios justified by conservation, exactly matching the complete target. Formula and modelling assumptions are supplied; no motor construction or unrelated goal is required.",
+    "rubric": "All seven core performances are separately noncompensable, including each complete case and the constant-flux reasoning. Equivalent correct schematic arrangements and ratio derivations remain accepted.",
+    "courseBoundary": "Task and covered transformer target both permit GK and LK, with no course expansion."
+  },
+  "rubric": {
+    "coreCount": 7,
+    "maxPoints": 21,
+    "passingPoints": 20,
+    "enumeratedOutcomes": 2187,
+    "passingOutcomes": 8,
+    "noMissingCoreCanPass": true,
+    "oneIsolatedNonconceptualSlipAllowed": true,
+    "noMissingCompleteCaseCanPass": true
+  },
+  "limitations": [
+    "AI independent content and numeric review; no human review or learner effectiveness claim.",
+    "Source-stage task selection and final actual CQR/routes are separate integration checks.",
+    "Release may change only reviewStatus/reviewNote without a new content review."
+  ]
+}

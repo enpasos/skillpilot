@@ -40,6 +40,11 @@ const ensure: (condition: unknown, message: string) => asserts condition = (cond
 export function validateSemanticRoutePolicy(policy: SemanticRoutePolicy, profiles: readonly QaRouteProfile[] = routeProfileDefinitions): void {
   ensure(policy?.schemaVersion === 1 && Array.isArray(policy.ledgerSources) && Array.isArray(policy.scopes), 'unsupported coverage policy')
   const profilesById = new Map(profiles.map(profile => [profile.profileId, profile]))
+  for (const profile of profiles) {
+    const ids = profile.terminalAutonomyGoalIds
+    ensure(ids === undefined || (Array.isArray(ids) && ids.every(id => typeof id === 'string' && id.trim().length > 0)
+      && new Set(ids).size === ids.length), `invalid explicit terminal goal IDs: ${profile.profileId}`)
+  }
   ensure(profilesById.size === profiles.length, 'duplicate QA scope')
   const ledgerOwners = new Set<string>()
   for (const source of policy.ledgerSources) {
@@ -133,6 +138,8 @@ export function deriveSemanticRouteProfiles(
       scopeLabel: profile.profileId,
       motivationAnchorGoalIds: profile.motivationAnchorGoalIds,
       terminalGoalClusterIds: profile.terminalAutonomyClusterIds,
+      terminalGoalIds: profile.terminalAutonomyGoalIds,
+      explicitTerminalGoalSelector: ownGoal,
       // Preserve Mathematics' established explicit stage boundary. Other scopes
       // use the validator's canonical-node convention: common prerequisite atoms
       // may prove paths, while the selected curricular goals stay QA-scope local.
@@ -165,6 +172,7 @@ export async function loadSemanticRouteInventory(
   checkSemanticRoutePolicyMonotonicity(policy, base.policy)
   const implementationPaths = [
     'app/scripts/auditSemanticLearningRoutes.ts', 'app/scripts/lib/semanticRouteInventory.ts',
+    'app/scripts/lib/explicitAtomicRouteEndpoints.ts',
     'app/scripts/lib/hardLearningRouteValidation.ts', 'app/scripts/lib/graphValidationInventory.ts',
     'app/scripts/generateCurriculumQualityStatus.ts', 'app/scripts/goalBookModel.ts',
     'app/scripts/lib/routeCatalogContext.ts', 'app/scripts/lib/directAtomicRouteCoverage.ts',

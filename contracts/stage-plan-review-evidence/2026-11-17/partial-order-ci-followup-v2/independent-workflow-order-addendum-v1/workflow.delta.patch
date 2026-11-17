@@ -1,0 +1,25 @@
+--- previous-independent-snapshot
++++ reviewed-current-workflow
+@@ -846,16 +846,16 @@
+       - *verify_repository_disk
+       - *use_application_node
+       - *install_application_dependencies
+-      - name: Use Python for curriculum package boundary checks
+-        uses: actions/setup-python@v6
+-        with:
+-          python-version: '3.12'
+-      - name: Install curriculum package validation dependencies
+-        run: python -m pip install -r ../scripts/curriculum_package_validation_requirements.txt
+       - *use_ubuntu_package_sources
+       - *install_pdf_validation_tools
+       - *install_playwright_chromium
+       - *restore_goal_book_publications
++      - name: Use Python for curriculum package boundary checks
++        uses: actions/setup-python@v6
++        with:
++          python-version: '3.12'
++      - name: Install curriculum package validation dependencies
++        run: python -m pip install -r ../scripts/curriculum_package_validation_requirements.txt
+       - name: Prepare generated curriculum runtime assets
+         run: npm run prepare:runtime-assets
+       - name: Check goal visualization runtime assets

@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict'
+import { readPreparationCanonicalGraphs } from './subjectExportPreparationEvidence'
 import { createHash } from 'node:crypto'
 import { readFileSync, readdirSync } from 'node:fs'
 import { basename, dirname, resolve } from 'node:path'
@@ -10,7 +11,9 @@ import {
   buildSubjectExportLicensePolicy,
   canonicalGoalIndex,
   collectExternalCompositionGoalReferences,
+  collectPreparationCanonicalGraphs,
   licenseCategoryForRepoSource,
+  packageContentForRepoSource,
   sanitizeJsonForPackage,
   selectGoalVisualizationAssets,
   subjectExportLicenseEntries,
@@ -252,6 +255,114 @@ collectExternalCompositionGoalReferences([{ path: 'data/views/unknown.view.json'
 } }], local, externalOwners, unknownViewErrors)
 assert.equal(unknownViewErrors.length, 1, 'unknown canonical owners cannot be declared as external prerequisites')
 
+// A foreign acquisition target is supported only by a real prerequisite path
+// from a target consumer in this view, and the package preserves that evidence.
+type PreparationNode = { kind: string; goalId: string; projectionRole: string }
+type AcquisitionNode = PreparationNode & { placementEvidence: {
+  role: string; consumerGoalId: string; requiredByPath: string[]; rationale: string
+} }
+const preparationView = {
+  viewId: 'prepared-view', landscapeId: 'fixture-physics', rootNodes: [
+    { kind: 'goalEntry', goalId: 'local', projectionRole: 'target' },
+    { kind: 'goalEntry', goalId: 'external-entry', projectionRole: 'target', placementEvidence: {
+      role: 'reviewedPreparation', consumerGoalId: 'local',
+      requiredByPath: ['local', 'external-entry'], rationale: 'Acquire the existing prerequisite before its consumer.',
+    } },
+  ] as [PreparationNode, AcquisitionNode],
+}
+const preparationGraph = new Map([['local', { requires: ['external-entry'] }], ['external-entry', { requires: [] }]])
+const preparationViews = [{ path: 'data/views/prepared.view.json', data: preparationView }]
+const preparationErrors: string[] = []
+const preparationRefs = collectExternalCompositionGoalReferences(preparationViews, local, externalOwners, preparationErrors, preparationGraph)
+assert.deepEqual(preparationErrors, [])
+assert.equal(preparationRefs.length, 1)
+assert.deepEqual(validateExternalCompositionGoalReferences(preparationRefs, preparationViews, local, preparationGraph).issues, [])
+const sanitizedPreparation = sanitizeJsonForPackage({
+  ...preparationView, rationale: 'Unrelated source rationale is still omitted.',
+  rootNodes: [preparationView.rootNodes[0], { ...preparationView.rootNodes[1], placementEvidence: {
+    ...preparationView.rootNodes[1].placementEvidence,
+    rationale: 'Placement reviewed in curricula/DE/Gymnasium/review.json.',
+  } }],
+}, 'composition-view') as typeof preparationView & { rationale?: string }
+assert.equal(sanitizedPreparation.rationale, undefined)
+assert.equal(sanitizedPreparation.rootNodes[1].placementEvidence.rationale, 'Placement reviewed in review.json.')
+assert.deepEqual(validateExternalCompositionGoalReferences(preparationRefs,
+  [{ path: preparationViews[0].path, data: sanitizedPreparation }], local, preparationGraph).issues, [],
+  'the finished sanitized payload retains the required acquisition rationale and rewrites its local references')
+for (const change of ['broken-edge', 'missing-consumer', 'wrong-endpoint', 'missing-evidence'] as const) {
+  const altered = structuredClone(preparationView)
+  const graph = new Map(preparationGraph)
+  if (change === 'broken-edge') graph.set('local', { requires: [] })
+  if (change === 'missing-consumer') altered.rootNodes.shift()
+  if (change === 'wrong-endpoint') altered.rootNodes[1].placementEvidence!.requiredByPath = ['local', 'unrelated']
+  if (change === 'missing-evidence') delete (altered.rootNodes[1] as Partial<AcquisitionNode>).placementEvidence
+  const errors: string[] = []
+  collectExternalCompositionGoalReferences([{ path: preparationViews[0].path, data: altered }], local, externalOwners, errors, graph)
+  assert(errors.length > 0, `${change}: unproved external acquisition must fail`)
+}
+const forgedPreparation = structuredClone(preparationRefs)
+;(forgedPreparation[0] as Record<string, unknown>).preparationEvidence = { consumerGoalId: 'local', requiredByPath: ['local', 'other', 'external-entry'] }
+assert(validateExternalCompositionGoalReferences(forgedPreparation, preparationViews, local).issues.length > 0,
+  'changing the declared path independently of its source must fail')
+const indirectPreparation = structuredClone(preparationView)
+indirectPreparation.rootNodes[1].placementEvidence!.requiredByPath = ['local', 'middle', 'external-entry']
+const indirectViews = [{ path: preparationViews[0].path, data: indirectPreparation }]
+const validIndirectGraph = new Map([
+  ['local', { requires: ['middle'] }], ['middle', { requires: ['external-entry'] }], ['external-entry', { requires: [] }],
+])
+const indirectErrors: string[] = []
+const indirectRefs = collectExternalCompositionGoalReferences(indirectViews, local, externalOwners, indirectErrors, validIndirectGraph)
+assert.deepEqual(indirectErrors, [])
+assert.deepEqual(validateExternalCompositionGoalReferences(indirectRefs, indirectViews, local, validIndirectGraph).issues, [])
+for (const missing of [true, false]) {
+  const invalidGraph = new Map(validIndirectGraph)
+  if (missing) invalidGraph.delete('middle')
+  else invalidGraph.set('middle', { requires: [] })
+  const result = validateExternalCompositionGoalReferences(indirectRefs, indirectViews, local, invalidGraph)
+  assert(result.issues.length > 0, 'matching source/declaration cannot authorize a missing or fabricated downstream edge')
+  assert(!result.byViewPath.get(preparationViews[0].path)?.has('external-entry'))
+}
+const graphProof = { schemaVersion: 1, catalogs: [{ landscapeId: 'foreign', canonicalSourceSha256: 'a'.repeat(64),
+  goals: [{ id: 'middle', requires: ['external-entry'], contains: [] }, { id: 'external-entry', requires: [], contains: [] }] }] }
+assert.deepEqual(readPreparationCanonicalGraphs(graphProof, local).issues, [])
+for (const change of ['overlap', 'duplicate', 'cluster', 'source-hash', 'unknown-field']) {
+  const proof = structuredClone(graphProof)
+  if (change === 'overlap') proof.catalogs[0].goals[0].id = 'local'
+  if (change === 'duplicate') proof.catalogs[0].goals.push(proof.catalogs[0].goals[0])
+  if (change === 'cluster') (proof.catalogs[0].goals[0].contains as string[]).push('external-entry')
+  if (change === 'source-hash') proof.catalogs[0].canonicalSourceSha256 = 'invalid'
+  if (change === 'unknown-field') Object.assign(proof.catalogs[0], { trusted: true })
+  const result = readPreparationCanonicalGraphs(proof, local)
+  assert(result.issues.length > 0, change)
+  assert.equal(result.graph.size, 0, 'malformed evidence cannot contribute any graph nodes')
+}
+const mixedPreparations = structuredClone(preparationView)
+mixedPreparations.rootNodes.push({ kind: 'goalEntry', goalId: 'external-entry', projectionRole: 'target' })
+const mixedResult = validateExternalCompositionGoalReferences(preparationRefs,
+  [{ path: preparationViews[0].path, data: mixedPreparations }], local, preparationGraph)
+assert(mixedResult.issues.length > 0)
+assert.equal(mixedResult.byViewPath.get(preparationViews[0].path)?.has('external-entry'), false,
+  'one proved acquisition occurrence never authorizes an unproved second occurrence')
+assert(validateExternalCompositionGoalReferences(preparationRefs,
+  [{ path: preparationViews[0].path, data: { ...preparationView, rootNodes: [preparationView.rootNodes[1]] } }],
+  local, preparationGraph).issues.length > 0, 'package validation also requires the selected local consumer')
+const overriddenConsumerView = { ...preparationView, rootNodes: [
+  { kind: 'canonicalSubtree', goalId: 'consumer-cluster', projectionRole: 'target' },
+  { kind: 'goalEntry', goalId: 'local', projectionRole: 'prerequisiteOnly' },
+  preparationView.rootNodes[1],
+] }
+const overrideGraph = new Map<string, { requires?: string[]; contains?: string[] }>([
+  ...preparationGraph, ['consumer-cluster', { contains: ['local'] }],
+])
+const overrideLocalIds = new Set([...local, 'consumer-cluster'])
+const overrideErrors: string[] = []
+collectExternalCompositionGoalReferences([{ path: preparationViews[0].path, data: overriddenConsumerView }],
+  overrideLocalIds, externalOwners, overrideErrors, overrideGraph)
+assert(overrideErrors.length > 0, 'a specific prerequisite-only override excludes the consumer from the target scope')
+assert(validateExternalCompositionGoalReferences(preparationRefs,
+  [{ path: preparationViews[0].path, data: overriddenConsumerView }], overrideLocalIds, overrideGraph).issues.length > 0,
+  'package validation honors the same source-role specificity')
+
 // Exercise the current regressions with the actual production sanitizer and
 // view resolver. These checks only read the curricula; no QA state is written.
 const canonicalDir = 'curricula/DE/Gymnasium/canonical'
@@ -279,13 +390,46 @@ const physicsViewDir = 'curricula/DE/Gymnasium/composition-views/physik'
 const physicsViews = readdirSync(resolve(repoRoot, physicsViewDir))
   .filter((file) => file.endsWith('.view.json'))
   .map((file) => ({ path: `data/views/${file}`, data: readJson(`${physicsViewDir}/${file}`) }))
+const partialOrderSchema = 'https://skillpilot.com/schemas/composition-view/v1.2/composition-view.schema.json'
+const partialOrderViews = physicsViews.filter(({ data }) => data.$schema === partialOrderSchema)
+assert.equal(partialOrderViews.filter(({ path }) => /\/de-he-/.test(path)).length, 10,
+  'all ten Hessen stage and duration views exercise the source-format 1.2 export route')
+const structureOrders = (nodes: Array<Record<string, unknown>>): Array<{ id: unknown; order: unknown }> => nodes.flatMap(node => [
+  ...(Object.hasOwn(node, 'childOrder') ? [{ id: node.id, order: node.childOrder }] : []),
+  ...structureOrders(Array.isArray(node.children) ? node.children as Array<Record<string, unknown>> : []),
+])
+for (const { path, data } of partialOrderViews) {
+  const original = JSON.stringify(data)
+  const payload = packageContentForRepoSource(resolve(repoRoot, physicsViewDir, basename(path)), 'composition-view')
+  const packaged = JSON.parse(payload.toString('utf8'))
+  assert.equal(packaged.$schema, partialOrderSchema, `${path}: export must retain the source schema`)
+  assert.equal(packaged.viewFormatVersion, '1.2', `${path}: export must not downgrade a new source view`)
+  const sourceOrders = structureOrders(data.rootNodes)
+  assert(sourceOrders.length > 0, `${path}: exercise an authored partial-order payload`)
+  assert.deepEqual(structureOrders(packaged.rootNodes), sourceOrders, `${path}: recursive package sanitation must retain every order endpoint`)
+  assert.deepEqual(unresolvedCompositionGoalReferences(packaged, physicsIds, new Set([
+    ...declaredPhysicsDependencies,
+    ...foreignGoalIds,
+  ])), [], `${path}: retained order metadata must not replace canonical goal references`)
+  assert.equal(JSON.stringify(data), original, `${path}: authoring payload stays unchanged`)
+}
 const physicsViewErrors: string[] = []
 const physicsViewReferences = collectExternalCompositionGoalReferences(
   physicsViews, physicsIds, canonicalGoalIndex(resolve(repoRoot, `${canonicalDir}/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json`)), physicsViewErrors,
 )
 assert.deepEqual(physicsViewErrors, [], 'all external Physics composition prerequisites have canonical owners')
-const validatedPhysicsViewReferences = validateExternalCompositionGoalReferences(physicsViewReferences, physicsViews, physicsIds)
+const validatedPhysicsViewReferences = validateExternalCompositionGoalReferences(physicsViewReferences, physicsViews, physicsIds,
+  new Map<string, { requires?: readonly string[]; contains?: readonly string[] }>([...readPreparationCanonicalGraphs(collectPreparationCanonicalGraphs(physicsViewReferences, physicsIds), physicsIds).graph,
+    ...physics.goals.map(goal => [goal.id, goal] as const)]))
 assert.deepEqual(validatedPhysicsViewReferences.issues, [])
+const packagedPhysicsViews = physicsViews.map(({ path }) => ({ path,
+  data: JSON.parse(packageContentForRepoSource(resolve(repoRoot, physicsViewDir, basename(path)), 'composition-view').toString('utf8')),
+}))
+assert.deepEqual(validateExternalCompositionGoalReferences(physicsViewReferences, packagedPhysicsViews, physicsIds,
+  new Map<string, { requires?: readonly string[]; contains?: readonly string[] }>([
+    ...readPreparationCanonicalGraphs(collectPreparationCanonicalGraphs(physicsViewReferences, physicsIds), physicsIds).graph,
+    ...physics.goals.map(goal => [goal.id, goal] as const),
+  ])).issues, [], 'finished package payloads retain every declared foreign acquisition contract')
 const bbViewPrerequisites = validatedPhysicsViewReferences.byViewPath.get('data/views/de-bb-gk.view.json')
 assert(bbViewPrerequisites?.has('09f47964-2cd0-410e-93ee-9632b582fc91'),
   'the source-bound Mathematics function concept is retained even without a direct Physics prerequisite edge')

@@ -19,6 +19,87 @@ import org.junit.jupiter.api.io.TempDir;
 
 class CompositionViewServiceTest {
 
+    @Test
+    void combinedSelectionAndVirtualLookupPreservePartialOrderFormatAndAcquisitionSemantics(@TempDir Path directory) throws IOException {
+        Path views = directory.resolve("DE/Gymnasium/composition-views/physik");
+        Files.createDirectories(views);
+        for (String profile : List.of("GK", "LK")) {
+            Files.writeString(views.resolve(profile + ".view.json"), """
+                {"$schema":"https://skillpilot.com/schemas/composition-view/v1.2/composition-view.schema.json",
+                 "viewFormatVersion":"1.2","language":"de","viewId":"physics-%s","landscapeId":"physics",
+                 "scope":{"schoolForm":"Gymnasium","stage":"SekII","courseProfile":"%s"},
+                 "rootNodes":[{"kind":"structure","id":"topic","label":"Topic","children":[
+                   {"kind":"goalEntry","goalId":"seed"},
+                   {"kind":"goalEntry","goalId":"preparation","projectionRole":"prerequisiteOnly","acquisitionPlacement":true}]}]}
+                """.formatted(profile, profile));
+        }
+        LandscapeProperties properties = new LandscapeProperties();
+        properties.setDirectory(directory.toString());
+        CompositionViewService service = new CompositionViewService(properties, new ObjectMapper());
+        Map<String, String> scope = Map.of("schoolForm", "Gymnasium", "stage", "SekII", "courseProfile", "GK+LK");
+        Map<String, Object> selected = service.findMatchingView("physics", scope);
+        for (Map<String, Object> merged : List.of(selected, service.findViewById((String) selected.get("viewId")))) {
+            assertThat(merged).containsEntry("viewFormatVersion", "1.2").containsEntry("language", "de")
+                    .containsEntry("$schema", "https://skillpilot.com/schemas/composition-view/v1.2/composition-view.schema.json");
+            assertThat(merged.get("rootNodes").toString()).contains("acquisitionPlacement=true");
+        }
+    }
+
+    @Test
+    void combinedSelectionRejectsUnsupportedAndMixedFormatEnvelopes(@TempDir Path directory) throws IOException {
+        Path views = directory.resolve("DE/Gymnasium/composition-views/physik");
+        Files.createDirectories(views);
+        for (String second : List.of("9.9", "1.0")) {
+            for (String profile : List.of("GK", "LK")) {
+                String version = profile.equals("GK") ? "1.2" : second;
+                Files.writeString(views.resolve(profile + ".view.json"), """
+                    {"$schema":"https://skillpilot.com/schemas/composition-view/v1.2/composition-view.schema.json",
+                     "viewFormatVersion":"%s","language":"de","viewId":"physics-%s","landscapeId":"physics",
+                     "scope":{"schoolForm":"Gymnasium","stage":"SekII","courseProfile":"%s"},
+                     "rootNodes":[{"kind":"goalEntry","goalId":"seed"}]}
+                    """.formatted(version, profile, profile));
+            }
+            LandscapeProperties properties = new LandscapeProperties();
+            properties.setDirectory(directory.toString());
+            CompositionViewService service = new CompositionViewService(properties, new ObjectMapper());
+            assertThatThrownBy(() -> service.findMatchingView("physics", Map.of("schoolForm", "Gymnasium", "stage", "SekII", "courseProfile", "GK+LK")))
+                    .isInstanceOf(IllegalStateException.class).hasMessageContaining("composition view format");
+        }
+    }
+
+    @Test
+    @SuppressWarnings("unchecked")
+    void combinedLegacySubjectPairsRetainSupportedEnvelopesWithoutRequiringNewHeaders() throws IOException {
+        Path directory = Path.of("../curricula/DE/Gymnasium/composition-views");
+        ObjectMapper mapper = new ObjectMapper();
+        Map<String, List<Map<String, Object>>> pairs = new TreeMap<>();
+        try (var files = Files.walk(directory)) {
+            for (Path file : files.filter(path -> path.toString().endsWith(".view.json")).toList()) {
+                Map<String, Object> view = mapper.readValue(file.toFile(), new com.fasterxml.jackson.core.type.TypeReference<>() {});
+                Map<String, Object> scope = new TreeMap<>((Map<String, Object>) view.get("scope"));
+                Object profile = scope.remove("courseProfile");
+                if (!"GK".equals(profile) && !"LK".equals(profile)) continue;
+                pairs.computeIfAbsent(view.get("landscapeId") + "|" + scope, ignored -> new ArrayList<>()).add(view);
+            }
+        }
+        CompositionViewService service = createService();
+        int checked = 0;
+        for (List<Map<String, Object>> sources : pairs.values()) {
+            if (sources.size() != 2 || sources.stream().anyMatch(source -> source.containsKey("viewFormatVersion")
+                    && !"1.0".equals(source.get("viewFormatVersion")))) continue;
+            Map<String, String> scope = new LinkedHashMap<>((Map<String, String>) sources.getFirst().get("scope"));
+            scope.put("courseProfile", "GK+LK");
+            Map<String, Object> merged = service.findMatchingView((String) sources.getFirst().get("landscapeId"), scope);
+            assertThat(merged).isNotNull();
+            for (String field : List.of("viewFormatVersion", "$schema", "language")) {
+                sources.stream().map(source -> source.get(field)).filter(java.util.Objects::nonNull).findFirst()
+                        .ifPresent(value -> assertThat(merged).containsEntry(field, value));
+            }
+            checked++;
+        }
+        assertThat(checked).as("Legacy GK/LK pairs across the other authored subjects").isGreaterThanOrEqualTo(10);
+    }
+
     private static final String CANONICAL_GYMNASIUM_OVERVIEW_ID = "a0e13c56-c25f-4742-9272-3a1a603ee52e";
     private static final String CANONICAL_MATH_ID = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
     private static final String CANONICAL_PHYSICS_ID = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
@@ -575,11 +656,18 @@ class CompositionViewServiceTest {
         @SuppressWarnings("unchecked")
         List<Map<String, Object>> roots = (List<Map<String, Object>>) match.get("rootNodes");
         assertThat(roots).filteredOn(root -> "structure".equals(root.get("kind"))).singleElement().satisfies(root -> {
-            assertThat(root)
-                    .containsEntry("id", "sek2-gk-lk")
-                    .containsEntry("label", "Sekundarstufe II (GK + LK)");
+            assertThat(root).containsEntry("id", "math-root").containsEntry("label", "Mathematik");
+            @SuppressWarnings("unchecked")
+            List<Map<String, Object>> children = (List<Map<String, Object>>) root.get("children");
+            assertThat(children).filteredOn(child -> "structure".equals(child.get("kind")))
+                    .extracting(child -> child.get("id")).containsExactly("sek1", "sek2-gk-lk");
+            Map<String, Object> upperStage = children.stream()
+                    .filter(child -> "sek2-gk-lk".equals(child.get("id"))).findFirst().orElseThrow();
+            // Course profile belongs to the committed scope; the shared stage
+            // keeps its source-neutral label inside the subject wrapper.
+            assertThat(upperStage).containsEntry("label", "Sekundarstufe II");
             List<String> structureIds = new ArrayList<>();
-            collectStructureIds(List.of(root), structureIds);
+            collectStructureIds(List.of(upperStage), structureIds);
             for (String quarter : List.of("q1", "q2", "q3", "q4")) {
                 assertThat(structureIds).filteredOn(quarter::equals).singleElement();
             }
@@ -747,7 +835,7 @@ class CompositionViewServiceTest {
     }
 
     @Test
-    void learnerScopeAcceptsReviewedGenericSekOneViewForCommittedJurisdictionAndDuration() {
+    void learnerScopePrefersReviewedBrandenburgSekOneViewForCommittedJurisdictionAndDuration() {
         CompositionViewService service = createService();
 
         assertThat(service.findLearnerScopeView(
@@ -757,7 +845,12 @@ class CompositionViewServiceTest {
                                 "jurisdiction", "DE-BB",
                                 "stage", "SekI",
                                 "durationModel", "G8")))
-                .containsEntry("viewId", "de-de-gym-seki-math");
+                .containsEntry("viewId", "de-bb-gym-seki-math")
+                .satisfies(view -> {
+                    Map<?, ?> scope = (Map<?, ?>) view.get("scope");
+                    assertThat(scope.get("jurisdiction")).isEqualTo("DE-BB");
+                    assertThat(scope.get("stage")).isEqualTo("SekI");
+                });
     }
 
     @Test
@@ -1644,6 +1737,9 @@ class CompositionViewServiceTest {
         Map<String, String> exams = Map.of(
                 "GK", "61684ca7-b725-534f-944b-c7645cea1792",
                 "LK", "79028c45-90ae-57eb-8016-f5a96af18fa2");
+        Map<String, List<String>> examParts = Map.of(
+                "GK", List.of("abe032d3-97dd-5eaf-964e-0439cea27ac2", "f4eac786-a8e1-5f23-aedf-17bc70fc347f"),
+                "LK", List.of("ed3a6f6b-2ca3-51c2-8f00-58e11eb02401", "320732e8-1c44-5fa4-9a47-972243cfc32a"));
         for (String durationModel : List.of("G8", "G9")) {
             for (String profile : List.of("GK", "LK", "GK+LK")) {
                 String context = "Hessen Physics " + durationModel + " " + profile;
@@ -1657,34 +1753,40 @@ class CompositionViewServiceTest {
                                 ? "merged:de-he-gym-sekii-physics-lk+de-he-gym-sekii-physics-gk"
                                 : "de-he-gym-sekii-physics-" + profile.toLowerCase(java.util.Locale.ROOT));
                 List<Map<String, Object>> roots = (List<Map<String, Object>>) match.get("rootNodes");
-                List<Map<String, Object>> stages = roots.stream()
+                List<Map<String, Object>> subjectRoots = roots.stream()
                         .filter(node -> "structure".equals(node.get("kind")) && "physics-root".equals(node.get("id"))).toList();
-                List<Map<String, Object>> outsideStage = flattenCompositionNodes(roots.stream()
-                        .filter(node -> !"physics-root".equals(node.get("id"))).toList());
+                assertThat(subjectRoots).as(context + " sole subject wrapper").singleElement()
+                        .satisfies(root -> assertThat(root).containsEntry("label", "Physik").containsEntry("labelEn", "Physics"));
+                List<Map<String, Object>> subjectChildren = (List<Map<String, Object>>) subjectRoots.getFirst().get("children");
+                String stageId = "physics-sekii-" + ("GK+LK".equals(profile) ? "gk-lk" : profile.toLowerCase(java.util.Locale.ROOT));
+                List<Map<String, Object>> stages = subjectChildren.stream()
+                        .filter(node -> stageId.equals(node.get("id"))).toList();
+                List<Map<String, Object>> outsideStage = new ArrayList<>(flattenCompositionNodes(roots.stream()
+                        .filter(node -> !"physics-root".equals(node.get("id"))).toList()));
+                outsideStage.addAll(flattenCompositionNodes(subjectChildren.stream()
+                        .filter(node -> !stageId.equals(node.get("id"))).toList()));
                 assertThat(outsideStage).as(context + " references outside the stage remain support only")
                         .filteredOn(node -> !"structure".equals(node.get("kind")))
                         .allSatisfy(node -> assertThat(node).containsEntry("projectionRole", "prerequisiteOnly"));
                 assertThat(stages).as(context + " sole stage wrapper").singleElement().satisfies(stage -> {
-                    assertThat(stage).containsEntry("id", "physics-root")
+                    assertThat(stage).containsEntry("id", stageId)
                             .containsEntry("labelEn", "Upper Secondary")
                             .containsEntry("label", "Sekundarstufe II ("
                                     + ("GK+LK".equals(profile) ? "GK + LK" : profile) + ")");
                     List<Map<String, Object>> children = (List<Map<String, Object>>) stage.get("children");
-                    // Preparation assessments are an additional upper-stage
-                    // contribution. They do not replace or reorder the five
-                    // existing source-backed phase sections.
-                    assertThat(children).filteredOn(node -> "structure".equals(node.get("kind"))
-                                    && List.of("physics-e-phase", "physics-q1", "physics-q2", "physics-q3", "physics-q4").contains(node.get("id")))
+                    assertThat(children).filteredOn(node -> "structure".equals(node.get("kind")))
                             .extracting(node -> node.get("id"))
-                            .containsExactly("physics-e-phase", "physics-q1", "physics-q2", "physics-q3", "physics-q4");
-                    List<Map<String, Object>> examEntries = children.stream()
-                            .filter(node -> node.get("goalId") instanceof String id && exams.containsValue(id)).toList();
+                            .containsExactly("physics-e-phase", "physics-q1", "physics-q2", "physics-q3", "physics-q4", "physics-he-abitur");
+                    Map<String, Object> abitur = children.stream()
+                            .filter(node -> "physics-he-abitur".equals(node.get("id"))).findFirst().orElseThrow();
+                    assertThat(abitur).containsEntry("kind", "structure").containsEntry("label", "Abiturprüfung");
+                    List<Map<String, Object>> examEntries = (List<Map<String, Object>>) abitur.get("children");
                     List<String> expectedProfiles = "GK+LK".equals(profile) ? List.of("GK", "LK") : List.of(profile);
-                    assertThat(examEntries).extracting(node -> node.get("displayLabel"))
-                            .containsExactlyInAnyOrderElementsOf(expectedProfiles.stream()
-                                    .map(course -> "Abiturprüfung Physik (" + course + ")").toList());
+                    assertThat(examEntries).allSatisfy(node -> assertThat(node).containsEntry("kind", "canonicalSubtree"));
                     assertThat(examEntries).extracting(node -> node.get("goalId"))
-                            .containsExactlyInAnyOrderElementsOf(expectedProfiles.stream().map(exams::get).toList());
+                            .containsExactlyInAnyOrderElementsOf(expectedProfiles.stream().flatMap(course -> examParts.get(course).stream()).toList());
+                    assertThat(flattenCompositionNodes(examEntries)).noneSatisfy(node ->
+                            assertThat(node.get("goalId")).isIn(exams.values()));
                 });
                 Map<String, Object> stage = stages.getFirst();
                 List<Map<String, Object>> allNodes = flattenCompositionNodes(List.of(stage));
@@ -1694,16 +1796,15 @@ class CompositionViewServiceTest {
                         "9dd7c596-a751-523c-acba-916f73e900a5", // Q2
                         "b47a2a23-b56d-5433-9036-075d6bb7c782", // Q3
                         "85bbad98-2f48-5d64-85c4-ab6cf67f24c2")); // Q4
-                assessmentBranches.addAll(("GK+LK".equals(profile) ? List.of("GK", "LK") : List.of(profile))
-                        .stream().map(exams::get).toList());
                 for (String branchId : assessmentBranches) {
                     assertThat(allNodes).as(context + " expandable assessment branch " + branchId)
                             .filteredOn(node -> branchId.equals(node.get("goalId"))
-                                    || ("existing-assessment-path-" + branchId).equals(node.get("id")))
+                                    || ("existing-assessment-path-" + branchId).equals(node.get("id"))
+                                    || ("he-physics-topic-" + branchId).equals(node.get("id")))
                             .singleElement().satisfies(node -> {
                                 if ("canonicalSubtree".equals(node.get("kind"))) {
                                     assertThat(node).containsEntry("goalId", branchId);
-                                } else {
+                                } else if (("existing-assessment-path-" + branchId).equals(node.get("id"))) {
                                     assertThat(node).containsEntry("kind", "structure")
                                             .containsEntry("id", "existing-assessment-path-" + branchId);
                                     // The Q1 collection was materialized when its
@@ -1714,6 +1815,10 @@ class CompositionViewServiceTest {
                                     assertThat(flattenCompositionNodes((List<Map<String, Object>>) node.get("children")))
                                             .extracting(child -> child.get("goalId"))
                                             .contains("716acf20-d882-5152-9735-099876d631b4");
+                                } else {
+                                    assertThat(node).containsEntry("kind", "structure")
+                                            .containsEntry("id", "he-physics-topic-" + branchId);
+                                    assertThat((List<Map<String, Object>>) node.get("children")).isNotEmpty();
                                 }
                             });
                 }

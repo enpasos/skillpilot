@@ -7,6 +7,39 @@ contract. The existing 1.0, 1.1 and 1.2 schemas and profiles remain unchanged;
 the exact 1.2 learning-unit landscape and review definitions are pinned
 components of the 1.3 package profile. Superseded completion 1.1 is not imported.
 
+The evolving 1.3 JSON profile also transports source composition views 1.2.
+It explicitly projects them to the closed `runtime-composition-view.schema.json`
+with view format 1.2; every `childOrder` declaration and its local endpoints are
+retained. Authoring-only placement rationale and restoration snapshots remain
+bound by the source inputs rather than becoming runtime fields. The unchanged
+1.0, 1.1 and 1.2 package profiles reject source-view 1.2 instead of discarding
+its order or relabeling it as view 1.0. The ordinary subject export retains the
+source view's schema, format, order and acquisition markers in its separately
+sanitized composition artifact.
+
+The current view inventory is counted in the evolving 1.3 build profile. Its
+`publicationBaseViewCount` preserves the immutable historical publication
+inventory; new views add logical content-index records without changing the
+older publication evidence or contracts.
+The partial-order delivery uses a separate candidate redistribution ledger,
+`de-gymnasium-mathematik-v1.3-partial-order-20261116.review.json`, selected
+explicitly by `--ledger` during review generation and `--redistribution-review`
+during package building. The earlier assessment-material ledger and its sealed
+receipts remain unchanged. Generating over that historical ledger fails closed;
+the new candidate preserves pending human decisions and grants no publication
+permission. General CLI defaults continue to select the original 1.0 contract.
+
+The 1.3 profile pins this runtime view schema in the offline schema catalog and
+uses its own field-semantics registry. Missing and empty declarations differ;
+order pairs form a semantic set, independently of display-array order. Producer
+and independent validator both reject unknown or nonsibling references, self
+edges, duplicates, cycles and transitive redundancy. This transport does not
+activate a stage plan, change canonical prerequisites or write learner results.
+The optional `acquisitionPlacement: true` marker travels only on explicit
+`prerequisiteOnly` atomic goal entries in view format 1.2. It records a reviewed
+learning place for an atom already in the backend's closed acquisition basis;
+neither nesting nor source-only placement evidence supplies that marker.
+
 The runtime candidate adds `assessmentMaterialsV1` alongside `learningUnitsV1`.
 Its closed resource index embeds original SVG/PNG task stimuli as required
 resources, including stimuli referenced directly in either task language.

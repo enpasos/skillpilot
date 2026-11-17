@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict'
+import './testHePhysicsQuantumTemplate'
 import { assertFinalPhysicsAtlasPublishedTargets, assertFinalPhysicsAtlasDraftTargets } from './lib/physicsFinalGoalBookAtlasTargets'
 import { createHash } from 'node:crypto'
 import { existsSync, readFileSync, readdirSync } from 'node:fs'
@@ -6,6 +7,9 @@ import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import Ajv2020 from 'ajv/dist/2020.js'
 import addFormats from 'ajv-formats'
+import { prepareLandscapeEntries } from '../src/hooks/useLandscapes'
+import { applyCompositionViewProjection, applyPersonalCurriculumProjection } from '../src/utils/compositionViewRuntime'
+import { normalizeLearnerProjectedEntries } from '../src/utils/learnerTreeProjection'
 import {
   normalizeCanonicalLandscape,
   normalizeGoalRef,
@@ -15,14 +19,16 @@ import {
 } from '../src/utils/authoring/canonicalAuthoring'
 import {
   compileCompositionView,
+  collectCompositionProjectionRoleGoalIds,
   normalizeCompositionView,
   type CompiledCompositionPreviewNode,
   type CompositionViewNode,
 } from '../src/utils/authoring/compositionViewAuthoring'
 import { buildApplicabilityCompilation } from './applicabilityCompiler'
-import { collectWholeMaterialPrerequisiteClosure, createRouteProfiles, evaluateRouteProfile, routeProfileDefinitions } from './generateCurriculumQualityStatus'
+import { collectRenderedAtomicGoalIdsFromCompositionView, collectWholeMaterialPrerequisiteClosure, createRouteProfiles, evaluateRouteProfile, routeProfileDefinitions, sourceCoverageAtomicScopeMatcher } from './generateCurriculumQualityStatus'
 import type { ExamData, SkillLandscape } from '../src/landscapeTypes'
 import { parseSubjectDurationModelPolicy, type GoalBookDurationPolicyViewSource } from './goalBookModel'
+import { loadActiveGymnasiumDurationPolicy } from './gymnasiumDurationPolicy'
 import {
   loadVerifiedPrerequisiteReductionContext,
   reviewBindingGoal,
@@ -125,12 +131,28 @@ const LEGACY_SOURCE_MANIFEST_SCHEMA_PATH = 'contracts/goal-book/v1/goal-book-sou
 const SOURCE_MANIFEST_SCHEMA_PATH = 'contracts/goal-book/v1/goal-book-source-manifest-v2.schema.json'
 const SOURCE_MANIFEST_PATH = 'app/scripts/config/goal-books/de-gym-physics-national-atlas.sources.json'
 const CONFIG_PATH = 'app/scripts/config/goal-books/de-gym-physics-national-atlas.json'
-const DURATION_POLICY_PATH = 'curricula/DE/Gymnasium/provenance/gymnasium-physics-duration-model-policy.json'
+const LEGACY_DURATION_POLICY_PATH = 'curricula/DE/Gymnasium/provenance/gymnasium-physics-duration-model-policy.json'
+const DURATION_POLICY_PATH = 'curricula/DE/Gymnasium/provenance/gymnasium-physics-duration-model-policy-2026-11-16.json'
 const SHARED_DURATION_POLICY_PATH = 'curricula/DE/Gymnasium/provenance/gymnasium-duration-model-policy.json'
 const CURRICULUM_QUALITY_STATUS_PATH = 'docs/qa-ci/status/curriculum-quality-status.json'
 const APPLICABILITY_OVERRIDE_REGISTRY_PATH =
   'curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json'
 const COMPOSITION_VIEW_DIRECTORY = 'curricula/DE/Gymnasium/composition-views/physik'
+const HE_DURATION_VIEW_SPECS = (['g8', 'g9'] as const).flatMap((duration) => [
+  { path: `${COMPOSITION_VIEW_DIRECTORY}/de-he-gk-${duration}.view.json`, viewId: `de-he-gym-physics-gk-${duration}`, stage: 'CrossStage', courseProfile: 'GK', durationModel: duration.toUpperCase() },
+  { path: `${COMPOSITION_VIEW_DIRECTORY}/de-he-lk-${duration}.view.json`, viewId: `de-he-gym-physics-lk-${duration}`, stage: 'CrossStage', courseProfile: 'LK', durationModel: duration.toUpperCase() },
+  { path: `${COMPOSITION_VIEW_DIRECTORY}/de-he-seki-${duration}.view.json`, viewId: `de-he-gym-seki-physics-${duration}`, stage: 'SekI', courseProfile: undefined, durationModel: duration.toUpperCase() },
+])
+const HE_DURATION_VIEW_BY_PATH = new Map(HE_DURATION_VIEW_SPECS.map((spec) => [spec.path, spec]))
+const HE_SEKI_UPPER_SUPPORT_LEAK_IDS = [
+  '09029573-864f-40ca-bf8a-cee7bf6dcb73', '09f2cdbd-64e0-55d2-ada7-1190f4fd50df',
+  '1b833656-cd16-5b21-973a-9810960dcfd2', '206fe51d-cc78-5422-b139-32cc97eb1c37',
+  '330808f6-789a-583d-86df-e271a7683d8b', '38e0ff49-f132-44c8-b17a-73dada5344db',
+  '481ffd56-d585-56fe-b525-ed423e30eed3', '73b309ed-1aab-5778-8494-d9b65f5a352b',
+  'a0aaedcb-41f8-4891-af77-a69a76b8c10d', 'ad984bb6-e225-432a-952d-d83cda40b7f8',
+  'c968d263-8be4-5cf9-b320-e95398fe648f', 'e3bce51c-cfeb-4706-b95e-a22b76e7dd73',
+  'e4b38061-1f28-43ad-8371-a3e7c0e81856',
+]
 const NATIONAL_PHYSICS_VIEW_IDS = new Set([
   'de-de-gym-physics-gk',
   'de-de-gym-physics-lk',
@@ -168,6 +190,7 @@ const EXPECTED_GRAVITATION_GK_VIEW_IDS = new Set([
     `de-${jurisdiction}-gym-physics-gk`,
     `de-${jurisdiction}-gym-sekii-physics-gk`,
   ]),
+  ...HE_DURATION_VIEW_SPECS.filter(({ courseProfile }) => courseProfile === 'GK').map(({ viewId }) => viewId),
 ])
 const EXPECTED_GRAVITATION_LK_VIEW_IDS = new Set([
   'de-de-gym-physics-lk',
@@ -176,6 +199,7 @@ const EXPECTED_GRAVITATION_LK_VIEW_IDS = new Set([
     `de-${jurisdiction}-gym-physics-lk`,
     `de-${jurisdiction}-gym-sekii-physics-lk`,
   ]),
+  ...HE_DURATION_VIEW_SPECS.filter(({ courseProfile }) => courseProfile === 'LK').map(({ viewId }) => viewId),
 ])
 const REVIEWED_NEWTON_ATOMIC_GOAL_IDS = [
   '31a2ef52-114b-4d2c-a720-6ef5a390b6dc',
@@ -593,12 +617,12 @@ const KINEMATICS_ASSESSMENT_IDS = new Set([
 const EXPECTED_COUNTS: SemanticKindLedger['counts'] = {
   curricularAtomic: 485,
   curricularArea: 113,
-  practiceAssessment: 231,
+  practiceAssessment: 240,
   programStructure: 1,
   memory: 5,
   runtimeSupport: 4,
   orientation: 2,
-  total: 841,
+  total: 850,
 }
 // One reviewed measurement-rate atom is preparation only in the atlas's
 // current source views. It remains an ordinary curricular goal in the ledger.
@@ -661,16 +685,16 @@ const FINAL_SPLIT_ASSESSMENT_COVERAGE = new Map([
 // 25+20+10+5+5 occurrences. The 2026-11-15 semiconductor/source corrections
 // additionally change actual projected targets; these current counts come from
 // the native CQR-104 measurement, including every selector-excluded occurrence.
-const EXPECTED_PHYSICS_SEKI_PROJECTED_ROUTE_TARGET_OCCURRENCES = 6880
-const EXPECTED_PHYSICS_SEKI_PROFILE_SELECTED_TARGET_OCCURRENCES = 6577
-const EXPECTED_PHYSICS_SEKI_PROFILE_SELECTOR_EXCLUDED_OCCURRENCES = 303
-const EXPECTED_PHYSICS_SEKI_PROFILE_SELECTOR_EXCLUDED_UNIQUE_GOALS = 53
+const EXPECTED_PHYSICS_SEKI_PROJECTED_ROUTE_TARGET_OCCURRENCES = 9167
+const EXPECTED_PHYSICS_SEKI_PROFILE_SELECTED_TARGET_OCCURRENCES = 8739
+const EXPECTED_PHYSICS_SEKI_PROFILE_SELECTOR_EXCLUDED_OCCURRENCES = 428
+const EXPECTED_PHYSICS_SEKI_PROFILE_SELECTOR_EXCLUDED_UNIQUE_GOALS = 57
 const EXPECTED_PHYSICS_SEKI_ADDED_TARGET_OCCURRENCES = new Map([
-  [FINAL_SPLIT_CHILD_IDS[0], 25], // p-n model
-  [FINAL_SPLIT_CHILD_IDS[1], 20], // diode experiment
-  [FINAL_SPLIT_CHILD_IDS[2], 10], // rectifier
-  ['7d4d6a39-0c78-5fb0-b7bf-182ed00972f7', 5], // transistor
-  ['68034218-8f3e-5f7f-ae4e-ed057dd4e44e', 5], // reactor
+  [FINAL_SPLIT_CHILD_IDS[0], 30], // p-n model: 25 prior + 5 new lower-view occurrences
+  [FINAL_SPLIT_CHILD_IDS[1], 24], // diode experiment: 20 + 4
+  [FINAL_SPLIT_CHILD_IDS[2], 12], // rectifier: 10 + 2
+  ['7d4d6a39-0c78-5fb0-b7bf-182ed00972f7', 6], // transistor: 5 + 1
+  ['68034218-8f3e-5f7f-ae4e-ed057dd4e44e', 6], // reactor: 5 + 1
 ])
 
 const EXPECTED_DURATION_DECISIONS = new Map<string, {
@@ -805,6 +829,15 @@ const atomicityFingerprint = (goal: CanonicalAuthoringGoal, ruleVersion: string)
 // The reviewed stage-plan repairs retain their explicit practice classification,
 // including pure task containers with nested assessment subtrees.
 const STAGE_PLAN_PRACTICE_GOAL_IDS = new Set([
+  '3b7b2b62-e39c-5936-b0d8-5406206e57b6', // Zwei Linsenaugen konstruieren und simulieren
+  '57a03b38-5ec5-5e4f-b71a-4024bab1584c', // Zwei astronomische Beobachtungsfälle
+  '797f5e93-b5fd-5ee3-9fb2-fcc9e1d12a00', // Zwei Zerfallsreihen prüfen
+  '7cfaf48e-e420-5c09-8ec2-932f0dba4d08', // Zwei Untersuchungen dokumentieren
+  '884bd99b-2373-5174-af7c-c6813b91bd93', // Zwei Ruheenergie-Systemvergleiche
+  'bff1d8b0-fe2e-52e6-a467-dd0b6a1a4a04', // Zwei elektromagnetische Anwendungsspektren
+  'e6a89922-75ce-53dd-9e7b-3a683398431c', // Zwei eigene Motoraufbauten
+  'f41e4e30-794e-5ce4-ba5e-cc72712cd691', // Zwei eigene freie Fallversuche
+  'f602680f-ea75-5bed-ae87-72f6be34a99b', // Zwei ideale Transformatorfälle
   '85bbad98-2f48-5d64-85c4-ab6cf67f24c2', // Übungen Q4
   '020e9dd3-7f3d-55d8-bcdd-a8da0f779cdf', // Prüfungsaufgabe: Befund und physikalische Deutung trennen
   '2ff1abd4-1399-5e5a-aa91-7c6948e77ed1', // Prüfungsaufgabe: Gemeinsame SI-Bezüge sinnvoll nutzen
@@ -1030,6 +1063,7 @@ interface AuthoredPrerequisiteRoot {
 
 const collectAuthoredPrerequisiteRoots = (
   nodes: CompositionViewNode[],
+  includeAcquisitionPlacements = true,
 ): AuthoredPrerequisiteRoot[] => {
   const result: AuthoredPrerequisiteRoot[] = []
   const visit = (node: CompositionViewNode) => {
@@ -1038,7 +1072,8 @@ const collectAuthoredPrerequisiteRoots = (
       return
     }
     if (node.kind === 'landscapeEntry') return
-    if (node.projectionRole === 'prerequisiteOnly') {
+    if (node.projectionRole === 'prerequisiteOnly'
+      && (includeAcquisitionPlacements || node.kind !== 'goalEntry' || node.acquisitionPlacement !== true)) {
       result.push({ goalId: node.goalId, kind: node.kind })
     }
   }
@@ -1133,6 +1168,63 @@ landscape.goals.forEach((goal) => goal.contains.forEach((childId) => {
 }))
 const rawGoalById = new Map(rawLandscape.goals.map((goal) => [String(goal.id), goal]))
 assert.equal(goalById.size, EXPECTED_COUNTS.total, 'canonical Physics goal IDs must be unique')
+const ownTaskActivation = readJson<{ tasks: Array<{
+  id: string; releasedPath: string; releasedSha256: string; contentReview: string
+  sourceArtifactPath: string; sourceArtifactSha256: string; offeredJurisdictions: string[]
+}> }>('curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/nine-offers-activation.actual.json')
+const coveredStrandsFollowup = readJson<{
+  schema: string; status: string; independentPriorApproval: { reviewer: string }
+  changes: Array<{ goalId: string; beforeGoalPath: string; beforeGoalSha256: string
+    currentGoalPath: string; currentGoalSha256: string
+    allowedDelta: { path: string; before: string[]; after: string[] } }>
+}>('curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/metadata-followup/covered-strands-20261117-v1.actual.json')
+assert.equal(coveredStrandsFollowup.schema, 'metadata-only-assessment-covered-strands-followup-v1')
+assert.equal(coveredStrandsFollowup.status, 'APPLIED_APPROVED_METADATA_ONLY')
+assert.equal(coveredStrandsFollowup.independentPriorApproval.reviewer, '/root')
+assert.deepEqual(coveredStrandsFollowup.changes.map(change => change.goalId).sort(compareCodePoints), [
+  'a8dc0290-9f80-5763-8943-e16b8d2aa860', '7cfaf48e-e420-5c09-8ec2-932f0dba4d08',
+  'f41e4e30-794e-5ce4-ba5e-cc72712cd691',
+].sort(compareCodePoints))
+for (const change of coveredStrandsFollowup.changes) {
+  assert.deepEqual(change.allowedDelta, { path: 'examData.coveredStrands', before: [], after: ['LI_BEWEGUNG'] })
+  assert.equal(sha256(readFileSync(resolve(repoRoot, change.beforeGoalPath), 'utf8')), change.beforeGoalSha256)
+  assert.equal(sha256(readFileSync(resolve(repoRoot, change.currentGoalPath), 'utf8')), change.currentGoalSha256)
+  const expected = readJson<{ examData: { coveredStrands: string[] } }>(change.beforeGoalPath)
+  assert.deepEqual(expected.examData.coveredStrands, [])
+  expected.examData.coveredStrands = ['LI_BEWEGUNG']
+  assert.deepEqual(readJson(change.currentGoalPath), expected, `${change.goalId}: no other field may change in the followup`)
+  assert.deepEqual(rawGoalById.get(change.goalId), expected, `${change.goalId}: exact separately approved current payload`)
+}
+assert.deepEqual(ownTaskActivation.tasks.map(task => task.id).sort(compareCodePoints), [
+  '3b7b2b62-e39c-5936-b0d8-5406206e57b6', '57a03b38-5ec5-5e4f-b71a-4024bab1584c',
+  '797f5e93-b5fd-5ee3-9fb2-fcc9e1d12a00', '7cfaf48e-e420-5c09-8ec2-932f0dba4d08',
+  '884bd99b-2373-5174-af7c-c6813b91bd93', 'bff1d8b0-fe2e-52e6-a467-dd0b6a1a4a04',
+  'e6a89922-75ce-53dd-9e7b-3a683398431c', 'f41e4e30-794e-5ce4-ba5e-cc72712cd691',
+  'f602680f-ea75-5bed-ae87-72f6be34a99b',
+].sort(compareCodePoints), 'exact nine independently reviewed own task offerings')
+for (const row of ownTaskActivation.tasks) {
+  const task = rawGoalById.get(row.id)
+  assert(task, `${row.id}: released own assessment exists`)
+  const acceptedRelease = readJson<{ examData: { coveredStrands: string[] } }>(row.releasedPath)
+  const followup = coveredStrandsFollowup.changes.find(change => change.goalId === row.id)
+  if (followup) {
+    assert.deepEqual(acceptedRelease, readJson(followup.beforeGoalPath), `${row.id}: followup starts at the exact original release`)
+    acceptedRelease.examData.coveredStrands = ['LI_BEWEGUNG']
+  }
+  assert.deepEqual(task, acceptedRelease, `${row.id}: exact accepted release plus only its separately approved strand correction`)
+  assert.equal(sha256(readFileSync(resolve(repoRoot, row.releasedPath), 'utf8')), row.releasedSha256)
+  assert.equal(sha256(readFileSync(resolve(repoRoot, row.sourceArtifactPath), 'utf8')), row.sourceArtifactSha256)
+  assert.equal(String(readJson<{ status: string }>(row.contentReview).status).toUpperCase(), 'PASS')
+  const exam = task.examData as { reviewStatus: string; coveredGoalIds: string[] }
+  assert.equal(exam.reviewStatus, 'released')
+  assert.deepEqual(task.requires, exam.coveredGoalIds)
+  assert.equal(exam.coveredGoalIds.length, 1)
+  const extended = task.extendedData as { applicabilityFromRequires?: boolean; applicabilityMappingInheritance: string; applicabilityOverrides: { jurisdiction: string[] } }
+  assert.equal(extended.applicabilityFromRequires, undefined)
+  assert.equal(extended.applicabilityMappingInheritance, 'boundary')
+  assert.deepEqual(extended.applicabilityOverrides.jurisdiction, row.offeredJurisdictions)
+  assert.deepEqual(task.applicability, { jurisdiction: row.offeredJurisdictions })
+}
 // The Fermi competency needs its own real band-model assessment; generic
 // historical exam templates must not claim this newly checked coverage.
 const fermiGoalId = '658cf33d-a0c2-5d47-801a-3dbcd5cac074'
@@ -1774,7 +1866,7 @@ assert.equal(
 assert.deepEqual(sourceManifest.expectedJurisdictions, EXPECTED_JURISDICTIONS)
 assert.equal(sourceManifest.durationModelPolicyPath, DURATION_POLICY_PATH)
 assert.equal(sourceManifest.expectedCurricularAtomicGoalCount, EXPECTED_ATLAS_TARGET_COUNT)
-assert.equal(sourceManifest.sourcePaths.length, 64)
+assert.equal(sourceManifest.sourcePaths.length, 70)
 assert.deepEqual(
   sourceManifest.sourcePaths,
   [...sourceManifest.sourcePaths].sort(compareCodePoints),
@@ -1784,7 +1876,17 @@ const discoveredStateViewPaths = readdirSync(resolve(repoRoot, COMPOSITION_VIEW_
   .filter((fileName) => /^(?:de-[a-z]{2})-(?:gk|lk|sekii-gk|sekii-lk)\.view\.json$/u.test(fileName))
   .map((fileName) => `${COMPOSITION_VIEW_DIRECTORY}/${fileName}`)
   .sort(compareCodePoints)
-assert.deepEqual(sourceManifest.sourcePaths, discoveredStateViewPaths, 'Physics atlas manifest must bind all and only the 64 state views')
+assert.equal(discoveredStateViewPaths.length, 64, 'the complete 64 duration-neutral state-view floor remains present')
+assert.deepEqual(
+  sourceManifest.sourcePaths.filter((path) => !HE_DURATION_VIEW_BY_PATH.has(path)),
+  discoveredStateViewPaths,
+  'Physics atlas must retain all and only the original 64 duration-neutral state views',
+)
+assert.deepEqual(
+  sourceManifest.sourcePaths.filter((path) => HE_DURATION_VIEW_BY_PATH.has(path)),
+  HE_DURATION_VIEW_SPECS.map(({ path }) => path).sort(compareCodePoints),
+  'Physics atlas must add exactly the six reviewed HE G8/G9 SekI/CrossStage views',
+)
 
 const landscapeWithSemanticKinds = {
   ...landscape,
@@ -1814,6 +1916,13 @@ const physicsAndMathGoalUniverse: CanonicalAuthoringLandscape = {
 const physicsAndMathGoalById = new Map(
   physicsAndMathGoalUniverseGoals.map((goal) => [goal.id, goal]),
 )
+const materializationSourceEntries = prepareLandscapeEntries(
+  [rawLandscape, rawMathLandscape, rawChemistryLandscape] as unknown as SkillLandscape[],
+)
+const materializationSeedScopeMatchers = new Map(materializationSourceEntries.flatMap(entry => {
+  const matches = sourceCoverageAtomicScopeMatcher({ ...entry.meta, goals: entry.goals } as SkillLandscape)
+  return entry.goals.map(goal => [goal.id, matches] as const)
+}))
 const effectivePhysicsRequiresByGoalId = new Map<string, string[]>()
 landscapeWithSemanticKinds.goals.forEach((goal) => {
   const effectiveRequires = new Set(goal.requires.map(normalizeGoalRef))
@@ -1836,7 +1945,18 @@ const allPhysicsViewPaths = readdirSync(resolve(repoRoot, COMPOSITION_VIEW_DIREC
   .filter((fileName) => fileName.endsWith('.view.json'))
   .map((fileName) => `${COMPOSITION_VIEW_DIRECTORY}/${fileName}`)
   .sort(compareCodePoints)
-assert.equal(allPhysicsViewPaths.length, 69, 'Physics projection QA must bind all 69 composition views')
+assert.equal(allPhysicsViewPaths.length, 90, 'Physics projection QA must bind all 75 original views and 15 explicit Land SekI excerpts')
+const addedLandSekIStates = ['BB', 'BE', 'BW', 'BY', 'HB', 'HH', 'MV', 'NI', 'NW', 'RP', 'SH', 'SL', 'SN', 'ST', 'TH']
+const addedLandSekIPaths = addedLandSekIStates.map(state => `${COMPOSITION_VIEW_DIRECTORY}/de-${state.toLowerCase()}-seki.view.json`).sort(compareCodePoints)
+assert.deepEqual(allPhysicsViewPaths.filter(path => /\/de-[a-z]{2}-seki\.view\.json$/u.test(path)), addedLandSekIPaths,
+  'All 15 formerly missing Land SekI selections must have their own source-scoped Physics view')
+addedLandSekIPaths.forEach((path) => {
+  const view = normalizeCompositionView(readJson(path))
+  const state = path.match(/\/de-([a-z]{2})-seki\.view\.json$/u)?.[1]?.toUpperCase()
+  assert.equal(view.scope.stage, 'SekI', `${view.viewId}: explicit lower-stage scope`)
+  assert.equal(view.scope.jurisdiction, `DE-${state}`, `${view.viewId}: matching Land scope`)
+  assert.equal(view.scope.courseProfile, undefined, `${view.viewId}: lower-stage excerpt must not imply a course profile`)
+})
 const validatedNationalPhysicsViewIds = new Set<string>()
 const validatedStrictBwBySekIViewIds = new Set<string>()
 const validatedGravitationGkViewIds = new Set<string>()
@@ -1846,6 +1966,9 @@ const roadSafetyExplicitUpperViewIds = new Set([
   'de-de-gym-sekii-physics-gk', 'de-de-gym-sekii-physics-lk',
   'de-rp-gym-sekii-physics-gk', 'de-rp-gym-sekii-physics-lk',
 ])
+const retainedPhysicsProjectionAuthority = readJson<{
+  authorities: Record<string, { prerequisiteOnlyAtomicGoalIds: string[] }>
+}>('scripts/generate_laender_physics_stage_views.memberships.json').authorities
 
 allPhysicsViewPaths.forEach((viewPath) => {
   const view = normalizeCompositionView(readJson(viewPath))
@@ -1862,8 +1985,9 @@ allPhysicsViewPaths.forEach((viewPath) => {
   assert.equal(
     visibleGoalIds.has(ROAD_SAFETY_GOAL_ID),
     view.scope.stage === 'CrossStage'
-      || (view.scope.stage === 'SekII' && !['DE-BW', 'DE-BY'].includes(view.scope.jurisdiction ?? '')),
-    `${view.viewId}: preserve existing road-safety scopes plus the four national/RP additions; SekI and BW/BY SekII remain excluded`,
+      || (view.scope.stage === 'SekII' && !['DE-BW', 'DE-BY'].includes(view.scope.jurisdiction ?? ''))
+      || ['de-bw-gym-seki-physics', 'de-by-gym-seki-physics'].includes(view.viewId),
+    `${view.viewId}: preserve road-safety membership, including the existing source-selected BW/BY lower targets and four national/RP upper additions`,
   )
   if (roadSafetyExplicitUpperViewIds.has(view.viewId)) {
     const directTargets: string[] = []
@@ -1877,12 +2001,33 @@ allPhysicsViewPaths.forEach((viewPath) => {
   // Fermi target visibility is checked after learner course/jurisdiction
   // filtering in testPhysicsAssessmentProjection; this preview retains the
   // shared exercise collections before those filters are applied.
-  const gravitationRootIsTarget = visibleGoalIds.has(GRAVITATION_ROOT_GOAL_ID)
-  const authoredGravitationProjectionRoots = collectAuthoredPrerequisiteRoots(view.rootNodes)
+  const hesseGravitationUnitId = `he-physics-topic-${GRAVITATION_ROOT_GOAL_ID}`
+  const knownHesseView = ['de-he-gym-physics-gk', 'de-he-gym-physics-lk',
+    'de-he-gym-sekii-physics-gk', 'de-he-gym-sekii-physics-lk',
+    ...HE_DURATION_VIEW_SPECS.filter(({ stage }) => stage === 'CrossStage').map(({ viewId }) => viewId)].includes(view.viewId)
+  const compiledHesseGravitation = (nodes: CompiledCompositionPreviewNode[]): boolean => nodes.some(node =>
+    (node.kind === 'structure' && node.runtimeId === `structure:${hesseGravitationUnitId}`) || compiledHesseGravitation(node.children))
+  if (knownHesseView) assert.equal(collectCompositionStructures(view.rootNodes, hesseGravitationUnitId).length, 1,
+    `${view.viewId}: retain exactly one opened gravitation topic`)
+  const gravitationRootIsTarget = EXPECTED_GRAVITATION_GK_VIEW_IDS.has(view.viewId)
+    || EXPECTED_GRAVITATION_LK_VIEW_IDS.has(view.viewId)
+  if (knownHesseView) assert(compiledHesseGravitation(compilation.compiledRootNodes))
+  const gravitationAtomicIds = [...collectAuthoredProjectionGoalIds([
+    { kind: 'canonicalSubtree', goalId: GRAVITATION_ROOT_GOAL_ID },
+  ], semanticGoalById)].filter(id => resolveCanonicalNodeType(semanticGoalById.get(id)!) === 'atomic')
+  if (gravitationRootIsTarget) gravitationAtomicIds.forEach(goalId => {
+    const retainedSupport = retainedPhysicsProjectionAuthority[view.viewId]?.prerequisiteOnlyAtomicGoalIds ?? []
+    const expectedTarget = !retainedSupport.includes(goalId)
+      && (view.scope.courseProfile === 'LK' || !GRAVITATION_LK_ONLY_GOAL_IDS.some(id => id === goalId))
+    assert.equal(visibleGoalIds.has(goalId), expectedTarget,
+      `${view.viewId}: opened gravitation retains the exact reviewed atomic course scope ${goalId}`)
+  })
+  const authoredGravitationProjectionRoots = collectAuthoredPrerequisiteRoots(view.rootNodes, false)
     .filter(({ goalId }) => GRAVITATION_LK_ONLY_PROJECTION_ROOTS.some((root) => root.goalId === goalId))
     .sort((left, right) => compareCodePoints(left.goalId, right.goalId))
   if (view.scope.courseProfile === 'GK') {
     GRAVITATION_LK_ONLY_GOAL_IDS.forEach((goalId) => {
+      if (resolveCanonicalNodeType(semanticGoalById.get(goalId)!) !== 'atomic') return
       assert(
         !visibleGoalIds.has(goalId),
         `${view.viewId} must not expose LK-only gravitation goal ${goalId} as a GK target`,
@@ -1891,7 +2036,11 @@ allPhysicsViewPaths.forEach((viewPath) => {
     if (gravitationRootIsTarget) {
       assert.deepEqual(
         authoredGravitationProjectionRoots,
-        [...GRAVITATION_LK_ONLY_PROJECTION_ROOTS]
+        [...GRAVITATION_LK_ONLY_PROJECTION_ROOTS,
+          ...(['de-de-gym-physics-gk', 'de-de-gym-sekii-physics-gk'].includes(view.viewId)
+            ? ['16caf92e-2800-57d1-946c-5b92ce848a96', '89cadf81-143b-5f6b-82bd-29ba20d92a1b']
+              .map(goalId => ({ goalId, kind: 'canonicalSubtree' as const })) : []),
+        ]
           .sort((left, right) => compareCodePoints(left.goalId, right.goalId)),
         `${view.viewId} must retain all three explicit gravitation prerequisiteOnly overrides`,
       )
@@ -1905,6 +2054,7 @@ allPhysicsViewPaths.forEach((viewPath) => {
       `${view.viewId} must not downgrade LK gravitation targets to prerequisite-only`,
     )
     GRAVITATION_LK_ONLY_GOAL_IDS.forEach((goalId) => {
+      if (resolveCanonicalNodeType(semanticGoalById.get(goalId)!) !== 'atomic') return
       assert(
         visibleGoalIds.has(goalId),
         `${view.viewId} must retain LK gravitation target ${goalId}`,
@@ -1923,14 +2073,25 @@ allPhysicsViewPaths.forEach((viewPath) => {
     if (view.scope.jurisdiction === 'DE-BY') {
       const ph10Structures = collectCompositionStructures([sekIStructure], 'physics-by-ph10-1')
       assert.equal(ph10Structures.length, 1, `${view.viewId} must expose exactly one Ph10.1 structure`)
+      const ph10PreparationIds = [
+        '8c9394cb-f54a-508d-9750-4c49e31b3fa9',
+        'a5f652cc-e091-4c90-bec2-c357ae54fcf1',
+      ]
       assert.deepEqual(
         [...collectAuthoredProjectionGoalIds([ph10Structures[0]], semanticGoalById)].sort(compareCodePoints),
         [...BAVARIA_PH10_1_GOAL_IDS,
           'b4175564-4397-5c08-90ba-4f13231a75ec',
           'e0932fef-9e1c-5c95-b00c-7589e76d0e83',
+          ...ph10PreparationIds,
         ].sort(compareCodePoints),
-        `${view.viewId} must retain the seven Ph10.1 goals and their two independently reviewed acquisition tasks`,
+        `${view.viewId} must retain the seven Ph10.1 goals, their two reviewed tasks, and exactly two conditional preparations`,
       )
+      ph10PreparationIds.forEach(goalId => {
+        const node = ph10Structures[0].children.find(child => child.kind === 'goalEntry' && child.goalId === goalId)
+        assert(node?.kind === 'goalEntry', `${view.viewId}: explicit Ph10.1 preparation ${goalId}`)
+        assert.equal(node.projectionRole, 'prerequisiteOnly')
+        assert.equal(node.acquisitionPlacement, true)
+      })
     }
 
     assert(
@@ -1982,6 +2143,12 @@ allPhysicsViewPaths.forEach((viewPath) => {
       })
       .sort(compareCodePoints)
     assert(strictRouteStartGoalIds.length > 0, `${view.viewId} strict Sek-I route needs target atoms`)
+    const strictLearningBasisGoalIds = new Set(strictRouteStartGoalIds)
+    strictRouteStartGoalIds.forEach((goalId) => {
+      const closure = collectWholeMaterialPrerequisiteClosure(preparationLandscape, goalId)
+      assert.deepEqual([...closure.unresolvedReferences], [], `${view.viewId}: unresolved learning-basis preparation for ${goalId}`)
+      closure.atomicGoalIds.forEach((id) => strictLearningBasisGoalIds.add(id))
+    })
     CQR104_ROUTE_ASSESSMENT_EVIDENCE.forEach((_evidence, assessmentId) => {
       const assessment = semanticGoalById.get(assessmentId)
       assert(assessment, `Missing route assessment ${assessmentId}`)
@@ -1992,7 +2159,7 @@ allPhysicsViewPaths.forEach((viewPath) => {
       )
       const requiredGoalIds = effectivePhysicsRequiresByGoalId.get(assessmentId) ?? []
       const hasCompleteLocalSupport = requiredGoalIds.every((requiredGoalId) =>
-        strictSekIProjectionGoalIds.has(requiredGoalId),
+        strictSekIProjectionGoalIds.has(requiredGoalId) && strictLearningBasisGoalIds.has(requiredGoalId),
       )
       assert.equal(
         strictRouteStartGoalIds.includes(assessmentId),
@@ -2003,12 +2170,6 @@ allPhysicsViewPaths.forEach((viewPath) => {
 
     const visitedPrerequisiteGoalIds = new Set<string>()
     const visitingPrerequisiteGoalIds = new Set<string>()
-    const strictLearningBasisGoalIds = new Set(strictRouteStartGoalIds)
-    strictRouteStartGoalIds.forEach((goalId) => {
-      const closure = collectWholeMaterialPrerequisiteClosure(preparationLandscape, goalId)
-      assert.deepEqual([...closure.unresolvedReferences], [], `${view.viewId}: unresolved learning-basis preparation for ${goalId}`)
-      closure.atomicGoalIds.forEach((id) => strictLearningBasisGoalIds.add(id))
-    })
     let traversedPrerequisiteEdges = 0
     const visitAllPrerequisites = (goalId: string, routePath: string[]) => {
       if (visitingPrerequisiteGoalIds.has(goalId)) {
@@ -2064,17 +2225,21 @@ allPhysicsViewPaths.forEach((viewPath) => {
       .forEach((requiredGoalId) => expectedForeignPrerequisiteIds.add(requiredGoalId))
   })
 
-  const authoredForeignPrerequisiteRoots = collectAuthoredPrerequisiteRoots(view.rootNodes)
+  const declaredForeignPrerequisiteRoots = collectAuthoredPrerequisiteRoots(view.rootNodes, false)
     .map((root) => ({ ...root, goalId: normalizeGoalRef(root.goalId) }))
     .filter(({ goalId }) => !semanticGoalById.has(goalId))
   const authoredForeignPrerequisiteRootById = new Map<string, AuthoredPrerequisiteRoot>()
-  authoredForeignPrerequisiteRoots.forEach((root) => {
-    assert(
-      !authoredForeignPrerequisiteRootById.has(root.goalId),
-      `${view.viewId} duplicates authored prerequisite-only root ${root.goalId}`,
-    )
+  declaredForeignPrerequisiteRoots.forEach((root) => {
+    const previous = authoredForeignPrerequisiteRootById.get(root.goalId)
+    if (previous) {
+      assert.deepEqual(root, previous, `${view.viewId}: repeated support must retain the same canonical role/kind`)
+      assert.equal(root.kind, 'goalEntry', `${view.viewId}: broad legacy support roots must stay unique`)
+      assert.equal(physicsAndMathGoalById.get(root.goalId)?.contains.length, 0,
+        `${view.viewId}: repeated unmarked support must be the identical atomic alias`)
+    }
     authoredForeignPrerequisiteRootById.set(root.goalId, root)
   })
+  const authoredForeignPrerequisiteRoots = [...authoredForeignPrerequisiteRootById.values()]
 
   // Retain the exact legacy support roots and the reviewed shared Mathematics
   // subtree; its descendants supply the newly explicit direct prerequisites.
@@ -2083,7 +2248,10 @@ allPhysicsViewPaths.forEach((viewPath) => {
   const expectedForeignRoots: AuthoredPrerequisiteRoot[] = [
     { goalId: 'c01b1ce9-a667-4a46-b251-ec33ae602b15', kind: 'canonicalSubtree' },
   ]
-  if (view.scope.stage !== 'SekI' && !strictStateUpperScope) {
+  // The two HE Sek-I excerpts retain their CrossStage source's exact support
+  // roots. The existing national Sek-I view keeps its narrower c01b-only floor.
+  const hesseDurationSekI = HE_DURATION_VIEW_BY_PATH.get(viewPath)?.stage === 'SekI'
+  if ((view.scope.stage !== 'SekI' || hesseDurationSekI || addedLandSekIPaths.includes(viewPath)) && !strictStateUpperScope) {
     expectedForeignRoots.push(
       { goalId: '09f47964-2cd0-410e-93ee-9632b582fc91', kind: 'goalEntry' },
       { goalId: '5a9702f4-7e4d-457d-b98c-f0bafcd1e386', kind: 'canonicalSubtree' },
@@ -2099,8 +2267,19 @@ allPhysicsViewPaths.forEach((viewPath) => {
       expectedForeignRoots.push({ goalId: '858113c5-e53b-57bb-b01f-ba95c3ddcb6f', kind: 'goalEntry' })
     }
   }
+  const expectedRootIds = new Set(expectedForeignRoots.map(root => root.goalId))
+  const reviewedForeignSupport = collectAuthoredProjectionGoalIds(
+    expectedForeignRoots.map(root => ({ ...root, projectionRole: 'prerequisiteOnly' })), physicsAndMathGoalById,
+  )
+  authoredForeignPrerequisiteRoots.filter(root => !expectedRootIds.has(root.goalId)).forEach((root) => {
+    const goal = physicsAndMathGoalById.get(root.goalId)
+    assert(goal && goal.contains.length === 0 && root.kind === 'goalEntry',
+      `${view.viewId}: additional support alias must be an atomic entry: ${root.goalId}`)
+    assert(reviewedForeignSupport.has(root.goalId),
+      `${view.viewId}: additional support alias must stay inside its reviewed legacy support: ${root.goalId}`)
+  })
   assert.deepEqual(
-    authoredForeignPrerequisiteRoots.sort((left, right) => compareCodePoints(left.goalId, right.goalId)),
+    authoredForeignPrerequisiteRoots.filter(root => expectedRootIds.has(root.goalId)).sort((left, right) => compareCodePoints(left.goalId, right.goalId)),
     expectedForeignRoots.sort((left, right) => compareCodePoints(left.goalId, right.goalId)),
     `${view.viewId} must retain exactly its reviewed foreign prerequisite roots and node kinds`,
   )
@@ -2124,7 +2303,7 @@ allPhysicsViewPaths.forEach((viewPath) => {
     '5dd180f1-f1c8-5f76-9c9a-ea3fc3d921bf',
   ]
   assert.deepEqual(chemistryPreparationNodes.map(({ goalId }) => goalId).sort(compareCodePoints),
-    view.scope.jurisdiction === 'DE-BY' ? expectedChemistryPreparationIds.sort(compareCodePoints) : [],
+    view.scope.jurisdiction === 'DE-BY' && view.scope.stage !== 'SekI' ? expectedChemistryPreparationIds.sort(compareCodePoints) : [],
     `${view.viewId}: the seven reviewed Chemistry preparations retain their actual target placements`)
   chemistryPreparationNodes.forEach((node) => {
     assert.equal(node.projectionRole, 'target', 'reviewedPreparation metadata must not rewrite the actual target role')
@@ -2162,6 +2341,81 @@ allPhysicsViewPaths.forEach((viewPath) => {
     )
   })
 
+  const markers: Array<Extract<CompositionViewNode, { kind: 'goalEntry' }>> = []
+  const markerParents = new Map<string, string>()
+  const collectMarkers = (nodes: CompositionViewNode[], parent?: string) => nodes.forEach(node => {
+    if (node.kind === 'structure') collectMarkers(node.children, node.id)
+    else if (node.kind === 'goalEntry' && node.acquisitionPlacement === true) {
+      assert(parent, `${view.viewId}: explicit acquisition has an authored unit`)
+      markers.push(node)
+      markerParents.set(node.goalId, parent)
+    }
+  })
+  collectMarkers(view.rootNodes)
+  assert.equal(new Set(markers.map(node => node.goalId)).size, markers.length,
+    `${view.viewId}: one explicit acquisition location per canonical atom`)
+  const actualSeeds = new Set([...visibleGoalIds].filter((id) => {
+    const goal = physicsAndMathGoalById.get(id)
+    if (!goal || goal.contains.length > 0 || resolveCanonicalNodeType(goal) !== 'atomic') return false
+    const matchesScope = materializationSeedScopeMatchers.get(id)
+    assert(matchesScope, `${view.viewId}: canonical owner for projected seed ${id}`)
+    return matchesScope(goal as unknown as SkillLandscape['goals'][number], view.scope)
+  }))
+  const actualLearning = new Set(actualSeeds)
+  const pending = [...actualSeeds]
+  while (pending.length > 0) {
+    const id = pending.pop()!
+    const goal = physicsAndMathGoalById.get(id)
+    assert(goal, `${view.viewId}: unknown canonical learning atom ${id}`)
+    goal.requires.map(normalizeGoalRef).forEach((required) => {
+      if (!actualLearning.has(required)) { actualLearning.add(required); pending.push(required) }
+    })
+  }
+  markers.forEach(node => {
+    assert.equal(view.viewFormatVersion, '1.2')
+    assert.equal(node.projectionRole, 'prerequisiteOnly')
+    assert(!actualSeeds.has(node.goalId),
+      `${view.viewId}: an acquisition template must never create a seed: ${node.goalId}`)
+  })
+  const personalSources = materializationSourceEntries.map(entry => ({ ...entry, meta: { ...entry.meta,
+    personalCurriculumProjection: {
+      revision: 'atomic-prerequisite-learning-v1' as const, rootLandscapeId: LANDSCAPE_ID, scopeRevision: view.viewId,
+      seedAtomicGoalIds: entry.goals.filter(goal => actualSeeds.has(goal.id)).map(goal => goal.id),
+      targetGoalIds: entry.goals.filter(goal => actualLearning.has(goal.id)).map(goal => goal.id), requiredByPaths: {},
+    },
+  } }))
+  const materialized = applyPersonalCurriculumProjection(
+    normalizeLearnerProjectedEntries(applyCompositionViewProjection(materializationSourceEntries, view)), personalSources,
+  )
+  const materializedGoals = new Map(materialized.flatMap(entry => entry.goals).map(goal => [goal.id, goal]))
+  const localRoots = materialized.find(entry => entry.meta.landscapeId === LANDSCAPE_ID)?.goals
+    .filter(goal => goal.tags.includes('root')) ?? []
+  const visited = new Set<string>()
+  const incoming = new Map<string, number>()
+  const actualParents = new Map<string, string | undefined>()
+  const visitMaterialized = (id: string) => {
+    if (visited.has(id)) return
+    visited.add(id)
+    materializedGoals.get(id)?.contains.forEach(child => {
+      incoming.set(child, (incoming.get(child) ?? 0) + 1)
+      actualParents.set(child, materializedGoals.get(id)?.extendedData?.compositionNodeId as string | undefined)
+      visitMaterialized(child)
+    })
+  }
+  localRoots.forEach(goal => visitMaterialized(goal.id))
+  markers.forEach(node => {
+    if (!actualLearning.has(node.goalId)) {
+      assert.equal(incoming.get(node.goalId) ?? 0, 0,
+        `${view.viewId}: dormant acquisition template must stay invisible outside the actual learning basis: ${node.goalId}`)
+      assert(!visited.has(node.goalId), `${view.viewId}: inactive acquisition creates no visible target`)
+      return
+    }
+    assert.equal(incoming.get(node.goalId), 1,
+      `${view.viewId}: active acquisition must materialize exactly once in the real learning tree: ${node.goalId}`)
+    assert.equal(actualParents.get(node.goalId), markerParents.get(node.goalId),
+      `${view.viewId}: needed nonseed must use its authored acquisition unit, not a broad support alias: ${node.goalId}`)
+  })
+
   if (NATIONAL_PHYSICS_VIEW_IDS.has(view.viewId)) {
     REVIEWED_NEWTON_ATOMIC_GOAL_IDS.forEach((goalId) => {
       assert(
@@ -2194,12 +2448,12 @@ assert.deepEqual(
 assert.deepEqual(
   [...validatedGravitationGkViewIds].sort(compareCodePoints),
   [...EXPECTED_GRAVITATION_GK_VIEW_IDS].sort(compareCodePoints),
-  'Physics projection QA must bind exactly the 30 GK views with the broad gravitation target',
+  'Physics projection QA must bind all 30 existing GK views plus both HE duration GK views with the broad gravitation target',
 )
 assert.deepEqual(
   [...validatedGravitationLkViewIds].sort(compareCodePoints),
   [...EXPECTED_GRAVITATION_LK_VIEW_IDS].sort(compareCodePoints),
-  'Physics projection QA must bind exactly the 30 matching LK views with the broad gravitation target',
+  'Physics projection QA must bind all 30 existing matching LK views plus both HE duration LK views with the broad gravitation target',
 )
 
 const atlasCurricularAtomicGoalIds = new Set<string>()
@@ -2213,9 +2467,99 @@ sourceManifest.sourcePaths.forEach((sourcePath) => {
     .filter(({ goalId }) => goalId === ATLAS_PREPARATION_ONLY_GOAL_ID).length
   assert.equal(view.landscapeId, LANDSCAPE_ID)
   assert(EXPECTED_JURISDICTIONS.includes(view.scope.jurisdiction as typeof EXPECTED_JURISDICTIONS[number]))
-  assert(view.scope.stage === 'CrossStage' || view.scope.stage === 'SekII')
-  assert(view.scope.courseProfile === 'GK' || view.scope.courseProfile === 'LK')
-  assert.equal(view.scope.durationModel, undefined, `${view.viewId} must stay duration-neutral`)
+  const durationSpec = HE_DURATION_VIEW_BY_PATH.get(sourcePath)
+  if (durationSpec) {
+    assert.equal(view.viewId, durationSpec.viewId)
+    assert.equal(view.scope.jurisdiction, 'DE-HE')
+    assert.equal(view.scope.schoolForm, 'Gymnasium')
+    assert.equal(view.scope.stage, durationSpec.stage)
+    assert.equal(view.scope.courseProfile, durationSpec.courseProfile)
+    assert.equal(view.scope.durationModel, durationSpec.durationModel)
+    if (durationSpec.stage === 'CrossStage') {
+      const original = normalizeCompositionView(readJson(
+        `${COMPOSITION_VIEW_DIRECTORY}/de-he-${durationSpec.courseProfile!.toLowerCase()}.view.json`,
+      ))
+      const originalRoles = collectCompositionProjectionRoleGoalIds(original.rootNodes, physicsAndMathGoalById)
+      const durationRoles = collectCompositionProjectionRoleGoalIds(view.rootNodes, physicsAndMathGoalById)
+      for (const role of ['targetGoalIds', 'prerequisiteOnlyGoalIds'] as const) {
+        const atoms = (ids: Set<string>) => [...ids]
+          .filter((id) => physicsAndMathGoalById.get(id)?.contains.length === 0).sort(compareCodePoints)
+        assert.deepEqual(atoms(durationRoles[role]), atoms(originalRoles[role]),
+          `${view.viewId}: retain the exact canonical atomic ${role} from the reviewed neutral course`)
+      }
+      if (durationSpec.durationModel === 'G9') assert.deepEqual(view.rootNodes, original.rootNodes,
+        'G9 duration alias must retain the entire existing reviewed tree, including every reference payload')
+    } else {
+      const crossStage = normalizeCompositionView(readJson(
+        `${COMPOSITION_VIEW_DIRECTORY}/de-he-gk-${durationSpec.durationModel.toLowerCase()}.view.json`,
+      ))
+      const sourceStages = collectCompositionStructures(crossStage.rootNodes, 'physics-seki')
+      const excerptStages = collectCompositionStructures(view.rootNodes, 'physics-seki')
+      assert.equal(sourceStages.length, 1)
+      assert.deepEqual(excerptStages, sourceStages,
+        `${view.viewId}: preserve every exact lower-stage reference payload and acquisition placement`)
+      const ownAtoms = (ids: Set<string>) => [...ids]
+        .filter((id) => semanticGoalById.get(id)?.contains.length === 0).sort(compareCodePoints)
+      const stageRoles = collectCompositionProjectionRoleGoalIds(sourceStages, physicsAndMathGoalById)
+      const sourceRoles = collectCompositionProjectionRoleGoalIds(crossStage.rootNodes, physicsAndMathGoalById)
+      const sourceTargetIds = new Set(ownAtoms(stageRoles.targetGoalIds))
+      const required = new Set<string>()
+      const pending = [...sourceTargetIds]
+      while (pending.length > 0) {
+        const id = pending.pop()!
+        if (required.has(id)) continue
+        required.add(id)
+        pending.push(...(physicsAndMathGoalById.get(id)?.requires ?? []).map(normalizeGoalRef))
+      }
+      const explicitStageSupport = new Set(ownAtoms(stageRoles.prerequisiteOnlyGoalIds))
+      const expectedSupport = new Set(ownAtoms(sourceRoles.prerequisiteOnlyGoalIds)
+        .filter((id) => required.has(id) || explicitStageSupport.has(id)))
+      explicitStageSupport.forEach((id) => expectedSupport.add(id))
+      assert.deepEqual([...expectedSupport].sort(compareCodePoints),
+        ['13b338eb-f761-5817-9058-11043b9cb253', 'f74c691b-0b76-54e0-8fd6-a22211994e0a',
+          'b378c8b3-5e83-5abf-8243-b0f345037bfc', 'd3c153b9-e09b-5668-8386-73105546a7c1',
+          'da26294f-4316-5bd5-a37a-bd89397b3b8b'].sort(compareCodePoints),
+        'the stage-resolved excerpt retains the two declared supports and three genuinely required method preparations')
+      for (const neededMethod of ['b378c8b3-5e83-5abf-8243-b0f345037bfc',
+        'd3c153b9-e09b-5668-8386-73105546a7c1', 'da26294f-4316-5bd5-a37a-bd89397b3b8b']) {
+        assert(required.has(neededMethod), `${view.viewId}: added method support must have a real unpruned source-seed requirement`)
+      }
+      const assertBoundStageRoles = (nodes: CompositionViewNode[]) => {
+        const roles = collectCompositionProjectionRoleGoalIds(nodes, physicsAndMathGoalById)
+        assert.deepEqual(ownAtoms(roles.targetGoalIds), [...sourceTargetIds].sort(compareCodePoints),
+          'SekI excerpt must preserve the exact 134 own target atoms')
+        assert.deepEqual(ownAtoms(roles.prerequisiteOnlyGoalIds), [...expectedSupport].sort(compareCodePoints),
+          'SekI excerpt must preserve exactly the resolved required/explicit own support')
+      }
+      assertBoundStageRoles(view.rootNodes)
+      const renderedOwnVisibleIds = collectRenderedAtomicGoalIdsFromCompositionView(
+        rawLandscape as unknown as SkillLandscape, resolve(repoRoot, sourcePath), [durationSpec.durationModel],
+        true, 'SekI', [], [rawLandscape, rawMathLandscape, rawChemistryLandscape] as unknown as SkillLandscape[],
+      )
+      assert.deepEqual(ownAtoms(renderedOwnVisibleIds), [...sourceTargetIds, ...expectedSupport].sort(compareCodePoints),
+        'actual Sek-I own-Physics visibility agrees with its resolved target/support roles')
+      for (const leakedId of HE_SEKI_UPPER_SUPPORT_LEAK_IDS) {
+        assert(!required.has(leakedId), `${view.viewId}: do not prune a real required preparation ${leakedId}`)
+        assert.throws(() => assertBoundStageRoles([...view.rootNodes,
+          { kind: 'goalEntry', goalId: leakedId, projectionRole: 'prerequisiteOnly' }]),
+        /resolved required\/explicit own support/u,
+        `${view.viewId}: reject reintroduced upper-stage support ${leakedId}`)
+      }
+      for (const supportId of expectedSupport) {
+        const removeSupport = (nodes: CompositionViewNode[]): CompositionViewNode[] => nodes.flatMap((node) => (
+          node.kind === 'structure' ? [{ ...node, children: removeSupport(node.children) }]
+            : collectCompositionProjectionRoleGoalIds([node], physicsAndMathGoalById).prerequisiteOnlyGoalIds.has(supportId) ? [] : [node]
+        ))
+        assert.throws(() => assertBoundStageRoles(removeSupport(view.rootNodes)),
+          /resolved required\/explicit own support/u,
+          `${view.viewId}: reject loss of necessary/explicit preparation ${supportId}`)
+      }
+    }
+  } else {
+    assert(view.scope.stage === 'CrossStage' || view.scope.stage === 'SekII')
+    assert(view.scope.courseProfile === 'GK' || view.scope.courseProfile === 'LK')
+    assert.equal(view.scope.durationModel, undefined, `${view.viewId} must stay duration-neutral`)
+  }
   const expectedRole = sourcePath.endsWith('-sekii-gk.view.json')
     ? 'SekII:GK'
     : sourcePath.endsWith('-sekii-lk.view.json')
@@ -2223,11 +2567,13 @@ sourceManifest.sourcePaths.forEach((sourcePath) => {
       : sourcePath.endsWith('-gk.view.json')
         ? 'CrossStage:GK'
         : 'CrossStage:LK'
-  assert.equal(`${view.scope.stage}:${view.scope.courseProfile}`, expectedRole, `${sourcePath} has the wrong state-view role`)
-  const roleSet = roleCountByJurisdiction.get(view.scope.jurisdiction!) ?? new Set<string>()
-  assert(!roleSet.has(expectedRole), `${view.scope.jurisdiction} has duplicate ${expectedRole} views`)
-  roleSet.add(expectedRole)
-  roleCountByJurisdiction.set(view.scope.jurisdiction!, roleSet)
+  if (!durationSpec) {
+    assert.equal(`${view.scope.stage}:${view.scope.courseProfile}`, expectedRole, `${sourcePath} has the wrong state-view role`)
+    const roleSet = roleCountByJurisdiction.get(view.scope.jurisdiction!) ?? new Set<string>()
+    assert(!roleSet.has(expectedRole), `${view.scope.jurisdiction} has duplicate ${expectedRole} views`)
+    roleSet.add(expectedRole)
+    roleCountByJurisdiction.set(view.scope.jurisdiction!, roleSet)
+  }
   const compilation = compileCompositionView(
     view,
     landscapeWithSemanticKinds,
@@ -2243,6 +2589,14 @@ sourceManifest.sourcePaths.forEach((sourcePath) => {
     }
     const clone = structuredClone(view)
     stripHeQuantumOverridesFromClonedView(clone)
+    // In this counterfixture both former exclusions become ordinary targets.
+    // Their conditional acquisition aliases consequently have no independent
+    // placement role and must not override the restored target reference.
+    const removeRestoredTargetTemplates = (nodes: CompositionViewNode[]): CompositionViewNode[] => nodes
+      .filter(node => !(node.kind === 'goalEntry' && node.projectionRole === 'prerequisiteOnly'
+        && node.acquisitionPlacement === true && HE_LK_ONLY_QUANTUM_GOAL_IDS.some(id => id === node.goalId)))
+      .map(node => node.kind === 'structure' ? { ...node, children: removeRestoredTargetTemplates(node.children) } : node)
+    clone.rootNodes = removeRestoredTargetTemplates(clone.rootNodes)
     const template = compileCompositionView(clone, landscapeWithSemanticKinds, physicsAndMathGoalUniverse)
     assert.deepEqual(template.findings.filter(({ severity }) => severity === 'error'), [])
     const templateIds = new Set(collectAtomicGoalIds(template.compiledRootNodes, physicsAndMathGoalById))
@@ -2539,7 +2893,10 @@ const durationPolicy = readJson<{
   schemaVersion: number
   updatedAt: string
   decisions: PhysicsDurationDecision[]
-}>(DURATION_POLICY_PATH)
+}>(LEGACY_DURATION_POLICY_PATH)
+assert.equal(sha256(readFileSync(resolve(repoRoot, LEGACY_DURATION_POLICY_PATH), 'utf8')),
+  '80f8697ebdbc457f2accd3f552b84f072d89b5852ebbd5e33b1da8116c6aaa07',
+  'the complete 2026-08-20 Physics snapshot is immutable historical evidence')
 assert.equal(durationPolicy.schemaVersion, 1)
 assert.equal(durationPolicy.updatedAt, '2026-08-20')
 const physicsDurationDecisions = durationPolicy.decisions.filter(({ subject }) => subject === 'Physik')
@@ -2580,7 +2937,7 @@ parseSubjectDurationModelPolicy(
   durationPolicy,
   'Physik',
   [...EXPECTED_JURISDICTIONS],
-  sourceViews,
+  sourceViews.filter(({ durationModel }) => durationModel === null),
 )
 
 const sharedDurationPolicy = readJson<{ decisions: PhysicsDurationDecision[] }>(
@@ -2605,6 +2962,70 @@ sharedPhysicsDecisions.forEach((sharedDecision) => {
     `${sharedDecision.jurisdiction} drifted between the shared legacy policy and Physics atlas snapshot`,
   )
 })
+
+const activeDurationPolicy = readJson<{
+  schemaVersion: number
+  updatedAt: string
+  parentPolicy: { path: string; sha256: string }
+  decisions: PhysicsDurationDecision[]
+}>(DURATION_POLICY_PATH)
+assert.equal(activeDurationPolicy.schemaVersion, 1)
+assert.equal(activeDurationPolicy.updatedAt, '2026-11-16')
+assert.deepEqual(activeDurationPolicy.parentPolicy, {
+  path: LEGACY_DURATION_POLICY_PATH,
+  sha256: sha256(readFileSync(resolve(repoRoot, LEGACY_DURATION_POLICY_PATH), 'utf8')),
+})
+assert.equal(activeDurationPolicy.decisions.length, 17)
+assert.deepEqual(
+  activeDurationPolicy.decisions.filter(({ jurisdiction }) => jurisdiction !== 'DE-HE'),
+  durationPolicy.decisions.filter(({ jurisdiction }) => jurisdiction !== 'DE-HE'),
+  'all fifteen non-Hessen Physics decisions must exactly retain the complete parent rows',
+)
+const activeHeDecisions = activeDurationPolicy.decisions.filter(({ jurisdiction }) => jurisdiction === 'DE-HE')
+assert.equal(activeHeDecisions.length, 2)
+activeHeDecisions.forEach((decision, index) => {
+  assert.equal(decision.subject, 'Physik')
+  assert.equal(decision.status, 'reviewed')
+  assert.equal(decision.stage, 'SekI')
+  assert.equal(decision.decision, 'dual-duration-different-projection')
+  assert.deepEqual(decision.durationModels, ['G8', 'G9'])
+  assert.equal(decision.learnerFacingProjection, 'duration-specific-composition-views')
+  assert.deepEqual(decision.compositionViewIds, HE_DURATION_VIEW_SPECS.map(({ viewId }) => viewId).sort(compareCodePoints))
+  const durationModel = index === 0 ? 'G8' : 'G9'
+  assert.equal(decision.sourceExtractionPath,
+    `curricula/DE/Gymnasium/input/HE/lower-secondary/source-extraction/DE_HE_PHYSIK_SEKI_${durationModel}.source-extraction.json`)
+  const extraction = readJson<{
+    subject: string; jurisdiction: string; stage: string; durationModel?: string
+    sourceDocument: { key: string; official: boolean; path: string; sha256?: string }
+  }>(decision.sourceExtractionPath!)
+  assert.equal(extraction.subject, 'Physik')
+  assert.equal(extraction.jurisdiction, 'DE-HE')
+  assert.equal(extraction.stage, 'SekI')
+  assert.equal(extraction.sourceDocument.key, durationModel)
+  if (durationModel === 'G8') {
+    assert.equal(extraction.durationModel, 'G8')
+    assert.match(extraction.sourceDocument.sha256 ?? '', /^[0-9a-f]{64}$/u)
+  }
+  assert.equal(extraction.sourceDocument.official, true)
+  // Retained PDFs are optional in repository checkouts; their extraction and
+  // official locator stay mandatory. Verify bytes wherever the PDF is present.
+  if (extraction.sourceDocument.sha256 && existsSync(resolve(repoRoot, extraction.sourceDocument.path))) {
+    assert.equal(createHash('sha256').update(readFileSync(resolve(repoRoot, extraction.sourceDocument.path))).digest('hex'),
+      extraction.sourceDocument.sha256)
+  }
+})
+parseSubjectDurationModelPolicy(activeDurationPolicy, 'Physik', [...EXPECTED_JURISDICTIONS], sourceViews)
+const activeOfferingPolicy = loadActiveGymnasiumDurationPolicy(repoRoot)
+assert.deepEqual(
+  activeOfferingPolicy.decisions.filter(({ subject, jurisdiction }) => subject !== 'Physik' || jurisdiction !== 'DE-HE'),
+  sharedDurationPolicy.decisions.filter(({ subject, jurisdiction }) => subject !== 'Physik' || jurisdiction !== 'DE-HE'),
+  'live offerings/readiness must retain every shared non-Hessen row exactly, including the other nine Physics rows',
+)
+assert.deepEqual(
+  activeOfferingPolicy.decisions.filter(({ subject, jurisdiction }) => subject === 'Physik' && jurisdiction === 'DE-HE'),
+  activeHeDecisions,
+  'live offerings/readiness must replace only Hessen Physics with both active source rows',
+)
 
 const curriculumQualityStatus = readJson<{
   curricula: Array<{
@@ -2657,9 +3078,9 @@ const addedTargetOccurrences = new Map([...EXPECTED_PHYSICS_SEKI_ADDED_TARGET_OC
 assert.deepEqual(
   addedTargetOccurrences,
   EXPECTED_PHYSICS_SEKI_ADDED_TARGET_OCCURRENCES,
-  'The 65 newly selected occurrences must come only from the five existing reviewed targets',
+  'The 78 selected occurrences retain exactly the five reviewed targets across the expanded view inventory',
 )
-assert.equal([...addedTargetOccurrences.values()].reduce((sum, count) => sum + (count ?? 0), 0), 65)
+assert.equal([...addedTargetOccurrences.values()].reduce((sum, count) => sum + (count ?? 0), 0), 78)
 assert.equal(
   routeMetrics.visibleProjectedRouteTargetGoalOccurrences,
   EXPECTED_PHYSICS_SEKI_PROJECTED_ROUTE_TARGET_OCCURRENCES,
@@ -2719,6 +3140,6 @@ assert.equal(
 
 console.log(
   `Physics goal-book inputs verified: ${EXPECTED_COUNTS.total} semantic-kind decisions; `
-  + `${EXPECTED_COUNTS.curricularAtomic} ordinary curricular atoms, ${EXPECTED_ATLAS_TARGET_COUNT} atlas targets in 64 state views; `
+  + `${EXPECTED_COUNTS.curricularAtomic} ordinary curricular atoms, ${EXPECTED_ATLAS_TARGET_COUNT} atlas targets in 64 neutral plus six HE duration state views; `
   + `${EXPECTED_JURISDICTIONS.length} reviewed duration decisions.`,
 )

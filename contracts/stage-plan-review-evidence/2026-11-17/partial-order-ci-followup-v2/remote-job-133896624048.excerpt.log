@@ -1,0 +1,23 @@
+Source: https://github.com/enpasos/skillpilot/actions/runs/44037739517/job/133896624048
+Remote exact head: bce7769b25b5c4f37dc68dace3484d21b590b5d6
+Selected unmodified error lines; full log remains linked above.
+
+2026-11-17T08:00:25.4595348Z   SEMANTIC_ROUTE_POLICY_BASE: 9975a142f7a26f1c4ff31c46a70e149d82a3fce5
+2026-11-17T08:00:25.4595628Z ##[endgroup]
+2026-11-17T08:00:25.5376550Z 
+2026-11-17T08:00:25.5377393Z > skillpilot@0.0.0 check:gymnasium-duration-readiness
+2026-11-17T08:00:25.5377929Z > tsx scripts/reportGymnasiumDurationModelReadiness.ts --check
+2026-11-17T08:00:25.5378146Z 
+2026-11-17T08:00:26.9673653Z docs/qa-ci/status/gymnasium-duration-model-readiness.md is not up to date. Run npm run report:gymnasium-duration-readiness -- --write.
+2026-11-17T08:00:26.9674430Z changed docs/qa-ci/status/gymnasium-duration-model-readiness.md
+2026-11-17T08:00:26.9674860Z M6 subjects: 10; source scopes touching Sek I: 161; all source scopes: 302
+2026-11-17T08:00:26.9847233Z ##[error]Process completed with exit code 1.
+2026-11-17T08:00:26.9992862Z Post job cleanup.
+2026-11-17T08:00:27.0645025Z [command]/usr/bin/git version
+2026-11-17T08:00:27.0673879Z git version 2.56.1
+2026-11-17T08:00:27.0699782Z Temporarily overriding HOME='/home/runner/work/_temp/81e55fee-9b80-49cd-b958-24c075e6d292' before making global git config changes
+2026-11-17T08:00:27.0701027Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-17T08:00:27.0704075Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/skillpilot/skillpilot
+2026-11-17T08:00:27.0727221Z Removing SSH command configuration
+2026-11-17T08:00:27.0731809Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+

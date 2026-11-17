@@ -7,6 +7,14 @@ import { convertLearningGoal } from '../goalTypes'
 export interface LandscapeEntry {
   meta: SkillLandscape
   goals: Goal[]
+  /** Authored presentation only; these atoms are materialized solely when the
+   * backend's closed Personal Curriculum already includes them. */
+  compositionPreparationPlacements?: Array<{
+    goalId: string
+    anchorGoalId?: string
+    ancestors: Goal[]
+    treeOrder: number
+  }>
 }
 
 function normalizeGoalId(ref: string) {

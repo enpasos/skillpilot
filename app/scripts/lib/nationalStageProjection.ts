@@ -80,6 +80,9 @@ export function materializeNationalStageProjection(input: {
       && source.scope.durationModel === input.scope.durationModel
     )).map(source => source.scope.courseProfile))
     const boundProfiles = new Set(sources.map(source => source.scope.courseProfile))
+    if (sources.length !== 2 || boundProfiles.size !== 2 || !boundProfiles.has('GK') || !boundProfiles.has('LK')) {
+      errors.push('Course-neutral exposure requires the complete explicit GK/LK family')
+    }
     if (availableProfiles.size !== boundProfiles.size
       || [...availableProfiles].some(profile => !boundProfiles.has(profile))) {
       errors.push('Incomplete course-neutral national exposure family')
@@ -92,6 +95,17 @@ export function materializeNationalStageProjection(input: {
     visibleGoalIds: new Set([...authority.visibleGoalIds].filter(id => source.visibleGoalIds.has(id))),
   }))
   const projection = projections[0]
+  // A course-neutral source scope exposes the explicitly bound complete course
+  // family. Its exposure is the union of those two full sources; the unique
+  // Land-stage authority still supplies the separate membership boundary.
+  // Support-only in both sources never becomes a target.
+  if (!input.scope.courseProfile) return {
+    projection: {
+      targetGoalIds: new Set(projections.flatMap(candidate => [...candidate.targetGoalIds])),
+      visibleGoalIds: new Set(projections.flatMap(candidate => [...candidate.visibleGoalIds])),
+    },
+    errors: [],
+  }
   if (projections.some(candidate => (
     !setsAgree(candidate.targetGoalIds, projection.targetGoalIds)
     || !setsAgree(candidate.visibleGoalIds, projection.visibleGoalIds)

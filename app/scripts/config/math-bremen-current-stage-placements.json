@@ -1,0 +1,2851 @@
+{
+  "formatVersion": "1.0",
+  "sourcePins": {
+    "curricula/DE/Gymnasium/mapping/DE-HB/lower-secondary/hb_math_lower_secondary_source_extraction_to_canonical_math.review.json": "baf64ef2ea7c852e52b6157cbeb0e86fa9d8d0c5805cd8f1709ee7b0689d139a",
+    "curricula/DE/Gymnasium/input/HB/lower-secondary/source-extraction/DE_HB_MATHEMATIK_SEKI_BILDUNGSPLAN_2006_2022.source-extraction.json": "bd45f9205770ff77d2c1f003baa8422847bd28d7580c44c852f950f5946d2797",
+    "curricula/DE/Gymnasium/mapping/DE-HB/upper-secondary/hb_math_upper_secondary_source_extraction_to_canonical_math.review.json": "2ee4a52c62ec56ee4d69096ba78b5f9e470d9e8a8b1290094a0a21465eb2fca6",
+    "curricula/DE/Gymnasium/input/HB/upper-secondary/source-extraction/DE_HB_MATHEMATIK_SEKII_BILDUNGSPLAN_2022.source-extraction.json": "edf90817fe8e9368a74a8af9258ec073b3b46b84652b39f63bfa833fac65d96e",
+    "curricula/DE/Gymnasium/input/HB/06-12-06_mathe_gy.pdf": "76f230175a036f0819f9cab202770dd3a1f6d3631ced221b17d4b80e00cc3672",
+    "curricula/DE/Gymnasium/input/HB/Gy_Mathe_2006_inhalt_Einschraenkungen.pdf": "4b2e5bc478eb44ed54a0c0c5ce0776a3179b74cf24cd99404f9bbc1bc856a9b5"
+  },
+  "sourceRule": "The 2022 restriction replaces the old year-10 program with the current year-9 contents. Canonical J10 is not official Bremen time authority. Explicitly reviewed current geometry/counting applications are acquired in year 9; remaining old J10 functions are editorial upper-secondary entry preparation, subject to actual earlier prerequisite demand. Source target membership and reference roles remain unchanged.",
+  "rows": [
+    {
+      "goalId": "1ce8af38-082a-477b-af48-b924c92761bf",
+      "title": "Ganzrationale Funktionen über Term und Graph beschreiben",
+      "decision": "upper_no_current_J9_time_authority_for_full_atomic_skill",
+      "mappingWitnessIds": [
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-1-001-e07ac92eb5::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-1-001-e07ac92eb5::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-10-001-8ad5afb6af::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-10-001-8ad5afb6af::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-11-001-ea1e7bc67b::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-11-001-ea1e7bc67b::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-2-001-05d9d769a4::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-2-001-05d9d769a4::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-2-002-c1625ecbaa::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-2-002-c1625ecbaa::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-2-003-d28bfe78f9::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-2-003-d28bfe78f9::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-3-001-784dc01f04::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-3-001-784dc01f04::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-4-001-2af1924c6b::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-4-001-2af1924c6b::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-5-001-64b2e6ed4d::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-5-001-64b2e6ed4d::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-6-001-51a12e1386::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-6-001-51a12e1386::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-6-002-065130f7df::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-6-002-065130f7df::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-6-003-4e1850aaac::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-6-003-4e1850aaac::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-6-004-c915b83ce4::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-6-004-c915b83ce4::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-6-005-993c8af969::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-6-005-993c8af969::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-7-001-b4b970ceda::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-7-001-b4b970ceda::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-8-001-ee779466bb::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-8-001-ee779466bb::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-9-001-de35eea583::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-9-001-de35eea583::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a2-3-001-bfd9751adb::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a2-3-001-bfd9751adb::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a2-6-001-ab5732ca65::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a2-6-001-ab5732ca65::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a2-6-002-e67c305d37::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a2-6-002-e67c305d37::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a2-7-003-795a1908f4::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a2-7-003-795a1908f4::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-1-003-6bd0b07392::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-1-003-6bd0b07392::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-1-004-25920cfdd0::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-1-004-25920cfdd0::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-1-005-18357c041e::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-1-005-18357c041e::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-3-001-856d15d86a::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-3-001-856d15d86a::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-3-005-e642d95226::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-3-005-e642d95226::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-4-001-315ff04cd9::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-4-001-315ff04cd9::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-5-002-d20248a812::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-5-002-d20248a812::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-5-003-6e97cff40d::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-5-003-6e97cff40d::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-6-001-3ca49a3763::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-6-001-3ca49a3763::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-6-002-1240dde086::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-6-002-1240dde086::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-6-003-e1f3beb9f2::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-6-003-e1f3beb9f2::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-6-004-081e6ac7db::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-6-004-081e6ac7db::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-7-001-084e05ab4a::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-7-001-084e05ab4a::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-7-002-126f9cd6f7::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-7-002-126f9cd6f7::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-7-004-efa20e3172::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-7-004-efa20e3172::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-7-006-caaaaae87b::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-7-006-caaaaae87b::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-8-001-aec1175c07::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-8-001-aec1175c07::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-8-002-e670d0e960::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-8-002-e670d0e960::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag1-1-001-dcb20f0b98::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag1-1-001-dcb20f0b98::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag2-1-004-31c75faa48::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag2-1-004-31c75faa48::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag2-8-001-0a489dbc06::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag2-8-001-0a489dbc06::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag3-3-002-ee1b55147a::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag3-3-002-ee1b55147a::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag3-3-003-6f557bef4c::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag3-3-003-6f557bef4c::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag3-3-004-6163e02fc0::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag3-3-004-6163e02fc0::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag3-3-005-95ccdb1688::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag3-3-005-95ccdb1688::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag3-4-001-9e2978b2c2::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag3-4-001-9e2978b2c2::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag4-1-002-6ec26b914d::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag4-1-002-6ec26b914d::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag4-3-002-e2dba14e67::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag4-3-002-e2dba14e67::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag4-3-005-c240217602::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag4-3-005-c240217602::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag4-3-006-e2dba14e67::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag4-3-006-e2dba14e67::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag4-3-007-9be97802f6::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag4-3-007-9be97802f6::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag4-5-001-bbf713ccb5::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag4-5-001-bbf713ccb5::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag5-2-001-9912b1c0c8::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag5-2-001-9912b1c0c8::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag5-2-002-2964c9667c::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag5-2-002-2964c9667c::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag5-4-001-a6c5a60485::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag5-4-001-a6c5a60485::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm1-1-001-5de45ad2df::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm1-1-001-5de45ad2df::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm1-1-002-06e242a79f::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm1-1-002-06e242a79f::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm1-1-003-01f4b137eb::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm1-1-003-01f4b137eb::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm1-2-002-8e940cf653::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm1-2-002-8e940cf653::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm1-2-003-ba5f425fb7::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm1-2-003-ba5f425fb7::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm1-2-004-964f19b607::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm1-2-004-964f19b607::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm1-2-005-ad77e228b0::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm1-2-005-ad77e228b0::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm1-2-006-9379a5a7c5::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm1-2-006-9379a5a7c5::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-1-002-3bc60fb94d::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-1-002-3bc60fb94d::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-1-003-2ccebe0630::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-1-003-2ccebe0630::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-1-004-22d872ff36::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-1-004-22d872ff36::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-10-001-b1669b383a::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-10-001-b1669b383a::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-10-002-4753ee1746::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-10-002-4753ee1746::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-10-003-6bc797f183::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-10-003-6bc797f183::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-3-001-ee0fa8e724::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-3-001-ee0fa8e724::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-3-002-eb8d23ad62::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-3-002-eb8d23ad62::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-4-001-f7fe0af6a7::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-4-001-f7fe0af6a7::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-4-002-a1b8cec56c::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-4-002-a1b8cec56c::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-4-003-76dcce9a99::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-4-003-76dcce9a99::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-5-001-9a9089ec49::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-5-001-9a9089ec49::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-6-001-f24607075f::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-6-001-f24607075f::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-7-001-7251581b20::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-7-001-7251581b20::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-8-001-4a314c7c5f::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-8-001-4a314c7c5f::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-8-002-e537f40f62::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-8-002-e537f40f62::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-9-001-2be33a4c12::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-9-001-2be33a4c12::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-la1-1-004-12590e437d::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-la1-1-004-12590e437d::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-la1-7-001-b41a2a7ba9::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-la1-7-001-b41a2a7ba9::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-la2-1-001-288789cc8c::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-la2-1-001-288789cc8c::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-la3-2-004-02ae9b8c50::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-la3-2-004-02ae9b8c50::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-la4-11-001-6989c73541::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-la4-11-001-6989c73541::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-la4-2-004-885d2dec13::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-la4-2-004-885d2dec13::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-s1-1-002-757f356a54::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-s1-1-002-757f356a54::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-s1-1-003-40cf5f255a::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-s1-1-003-40cf5f255a::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-s1-1-004-d60ab4acc9::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-s1-1-004-d60ab4acc9::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-s1-1-005-25e87111c3::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-s1-1-005-25e87111c3::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-s1-3-001-470283d351::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-s1-3-001-470283d351::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-s1-8-001-9a1a96492d::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-s1-8-001-9a1a96492d::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-s2-6-001-2384d7a915::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-s2-6-001-2384d7a915::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-s3-2-001-e2e26800ee::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-s3-2-001-e2e26800ee::c9d92f32-167a-4006-a940-b8063a6ed434",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-s3-5-001-78cc62b9c1::a668ea17-9226-4074-8f8e-051acbe839eb",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-s3-5-001-78cc62b9c1::c9d92f32-167a-4006-a940-b8063a6ed434"
+      ]
+    },
+    {
+      "goalId": "27b63e2e-6a34-483e-8e5a-fe0f49670d1d",
+      "title": "Wachstums- und Abklingvorgänge exponentiell modellieren und Ergebnisse im Kontext bewerten",
+      "decision": "upper_no_current_J9_time_authority_for_full_atomic_skill",
+      "mappingWitnessIds": [
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-central-activities-5-9-024-705192a19a::27b63e2e-6a34-483e-8e5a-fe0f49670d1d",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-central-activities-5-9-026-c050758763::27b63e2e-6a34-483e-8e5a-fe0f49670d1d",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-process-standards-015-56f5f06a15::27b63e2e-6a34-483e-8e5a-fe0f49670d1d"
+      ]
+    },
+    {
+      "goalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "title": "Monotonie und Extrema mit der ersten Ableitung untersuchen",
+      "decision": "upper_no_current_J9_time_authority_for_full_atomic_skill",
+      "mappingWitnessIds": [
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-042-3e79952ab6::0fd96c54-c629-45aa-a640-e2718890ddf9",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-043-e0e496338d::0fd96c54-c629-45aa-a640-e2718890ddf9",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-content-restriction-standards-008-65dc147ff2::0fd96c54-c629-45aa-a640-e2718890ddf9",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-5-001-64b2e6ed4d::2850e8f6-2330-50d3-a577-d519540d9924"
+      ]
+    },
+    {
+      "goalId": "3010d965-b9b9-4dc5-9d04-d706725e9a30",
+      "title": "Exponentielle Zunahme und Abnahme beschreiben und von linearem Wachstum abgrenzen",
+      "decision": "upper_no_current_J9_time_authority_for_full_atomic_skill",
+      "mappingWitnessIds": [
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-central-activities-5-9-024-705192a19a::3010d965-b9b9-4dc5-9d04-d706725e9a30",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-040-fa52edca01::3010d965-b9b9-4dc5-9d04-d706725e9a30"
+      ]
+    },
+    {
+      "goalId": "302a857d-ad71-4bdf-81f3-851c95aeefe1",
+      "title": "Graphen von Sinus und Kosinus aus dem Einheitskreis ableiten und Periodizität sowie ihren Zusammenhang begründen",
+      "decision": "upper_no_current_J9_time_authority_for_full_atomic_skill",
+      "mappingWitnessIds": []
+    },
+    {
+      "goalId": "3c1d6ce7-099e-4267-9ff2-3d1526209a89",
+      "title": "Logarithmus definieren und einfache Werte bestimmen",
+      "decision": "upper_no_current_J9_time_authority_for_full_atomic_skill",
+      "mappingWitnessIds": [
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-1-001-885972bb52::3c1d6ce7-099e-4267-9ff2-3d1526209a89",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-2-001-118e146551::3c1d6ce7-099e-4267-9ff2-3d1526209a89",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm1-1-004-7d01146c26::3c1d6ce7-099e-4267-9ff2-3d1526209a89"
+      ]
+    },
+    {
+      "goalId": "3d8f5e4c-8f7b-49cf-bd83-1d9876db5bf6",
+      "title": "Zählverfahren und kombinatorische Überlegungen für Wahrscheinlichkeiten nutzen",
+      "decision": "J9_source_backed_counting_or_tree_methods",
+      "mappingWitnessIds": [
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-content-restriction-overview-008-721bbac130::3d8f5e4c-8f7b-49cf-bd83-1d9876db5bf6",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-content-restriction-standards-013-717bae51ea::3d8f5e4c-8f7b-49cf-bd83-1d9876db5bf6",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-process-standards-009-db88e281ba::3d8f5e4c-8f7b-49cf-bd83-1d9876db5bf6"
+      ]
+    },
+    {
+      "goalId": "3e0017bd-f305-5d25-91fd-62b772c3e757",
+      "title": "Ganzrationale Terme anhand von Nullstellen und Randverhalten Graphen zuordnen",
+      "decision": "upper_no_current_J9_time_authority_for_full_atomic_skill",
+      "mappingWitnessIds": []
+    },
+    {
+      "goalId": "42e19186-6769-41ac-a7bf-ab39bdb50661",
+      "title": "Exponentielles Wachstum in Termen, Tabellen und Graphen beschreiben",
+      "decision": "upper_no_current_J9_time_authority_for_full_atomic_skill",
+      "mappingWitnessIds": [
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-040-fa52edca01::42e19186-6769-41ac-a7bf-ab39bdb50661"
+      ]
+    },
+    {
+      "goalId": "46bdcc16-418f-417a-89cf-033d7ae6c8cc",
+      "title": "Trigonometrische Graphen und Periodizität deuten",
+      "decision": "upper_no_current_J9_time_authority_for_full_atomic_skill",
+      "mappingWitnessIds": [
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-031-4fc5ce0edf::2032d24f-13bf-4aa1-81bf-8788e1099c62",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-content-restriction-overview-006-7ff209ceae::2032d24f-13bf-4aa1-81bf-8788e1099c62",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-geometry-standards-004-07d46ae068::2032d24f-13bf-4aa1-81bf-8788e1099c62"
+      ]
+    },
+    {
+      "goalId": "53b47494-ec60-4128-840d-2a4c4bab6d32",
+      "title": "Sinus- und Kosinuswerte für Winkel größer als 2π und für negative Winkel auf den Grundbereich zurückführen",
+      "decision": "upper_no_current_J9_time_authority_for_full_atomic_skill",
+      "mappingWitnessIds": []
+    },
+    {
+      "goalId": "5518ceb3-f668-5b52-a9b1-57653b16ca98",
+      "title": "Funktions- und Ableitungsgraphen in Beziehung setzen",
+      "decision": "upper_no_current_J9_time_authority_for_full_atomic_skill",
+      "mappingWitnessIds": [
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-042-3e79952ab6::0fd96c54-c629-45aa-a640-e2718890ddf9",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-043-e0e496338d::0fd96c54-c629-45aa-a640-e2718890ddf9",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-content-restriction-standards-008-65dc147ff2::0fd96c54-c629-45aa-a640-e2718890ddf9",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-5-001-64b2e6ed4d::5518ceb3-f668-5b52-a9b1-57653b16ca98",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-la1-5-001-9e699a2d8b::5518ceb3-f668-5b52-a9b1-57653b16ca98"
+      ]
+    },
+    {
+      "goalId": "5d17ebb4-4e27-4f9c-8d0b-3520f34b2e11",
+      "title": "Sinus- und Kosinusfunktionen als periodische Funktionen beschreiben",
+      "decision": "upper_no_current_J9_time_authority_for_full_atomic_skill",
+      "mappingWitnessIds": []
+    },
+    {
+      "goalId": "632a3837-7381-5701-9cfa-4ae15ccae8ba",
+      "title": "Funktions- und Ableitungsgraphen wechselseitig deuten",
+      "decision": "upper_no_current_J9_time_authority_for_full_atomic_skill",
+      "mappingWitnessIds": []
+    },
+    {
+      "goalId": "64f37348-20f7-55b1-82a8-8fc388087577",
+      "title": "Eine Kugelleuchte beschichten: Oberfläche erklären und bestimmen",
+      "decision": "J9_source_backed_geometry_or_own_matching_assessment",
+      "mappingWitnessIds": []
+    },
+    {
+      "goalId": "68ffe46f-7b74-58e0-954b-6b2f83345a82",
+      "title": "Das Volumen eines schiefen Prismas mit Cavalieri erklären",
+      "decision": "J9_possible_reviewed_geometry_method_not_named_official_duty",
+      "mappingWitnessIds": []
+    },
+    {
+      "goalId": "6c122f0e-8017-4ec1-91d6-0d7a1c75f8c9",
+      "title": "Raumgeometrische Anwendungen mit Körpern modellieren und lösen",
+      "decision": "J9_source_backed_geometry_or_own_matching_assessment",
+      "mappingWitnessIds": [
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-027-7cab73e45c::9710e996-f6d0-4b8b-b893-592213c91767",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-030-992f1f3f15::6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-031-4fc5ce0edf::9710e996-f6d0-4b8b-b893-592213c91767",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-041-66ebd2a136::9710e996-f6d0-4b8b-b893-592213c91767",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j6-content-standards-017-3cc4a8f06b::6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j8-content-standards-012-41856f5074::9710e996-f6d0-4b8b-b893-592213c91767",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j8-content-standards-013-879bc2a201::9710e996-f6d0-4b8b-b893-592213c91767",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j8-content-standards-021-a12b3068a8::9710e996-f6d0-4b8b-b893-592213c91767",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-content-restriction-overview-005-21243a2fd3::6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-content-restriction-overview-006-7ff209ceae::9710e996-f6d0-4b8b-b893-592213c91767",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-geometry-standards-001-9309018189::6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-geometry-standards-002-1ef0253177::6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-geometry-standards-003-419614a224::6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-geometry-standards-004-07d46ae068::9710e996-f6d0-4b8b-b893-592213c91767"
+      ]
+    },
+    {
+      "goalId": "7156558c-57f1-4372-9ba7-0640c3f7cb3a",
+      "title": "Ableitungsbegriff aus mittleren und momentanen Änderungsraten entwickeln",
+      "decision": "upper_no_current_J9_time_authority_for_full_atomic_skill",
+      "mappingWitnessIds": [
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-042-3e79952ab6::0fd96c54-c629-45aa-a640-e2718890ddf9",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-043-e0e496338d::0fd96c54-c629-45aa-a640-e2718890ddf9",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-content-restriction-standards-008-65dc147ff2::0fd96c54-c629-45aa-a640-e2718890ddf9"
+      ]
+    },
+    {
+      "goalId": "74d29d0c-80b3-4d46-a5f5-3c2f609e8483",
+      "title": "Pyramiden und Kegel darstellen, Netze nutzen und Fachbegriffe verwenden",
+      "decision": "J9_source_backed_geometry_or_own_matching_assessment",
+      "mappingWitnessIds": [
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-027-7cab73e45c::9710e996-f6d0-4b8b-b893-592213c91767",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-030-992f1f3f15::6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-031-4fc5ce0edf::9710e996-f6d0-4b8b-b893-592213c91767",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-041-66ebd2a136::9710e996-f6d0-4b8b-b893-592213c91767",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j6-content-standards-017-3cc4a8f06b::6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j8-content-standards-012-41856f5074::9710e996-f6d0-4b8b-b893-592213c91767",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j8-content-standards-013-879bc2a201::9710e996-f6d0-4b8b-b893-592213c91767",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j8-content-standards-021-a12b3068a8::9710e996-f6d0-4b8b-b893-592213c91767",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-content-restriction-overview-005-21243a2fd3::6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-content-restriction-overview-006-7ff209ceae::9710e996-f6d0-4b8b-b893-592213c91767",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-geometry-standards-001-9309018189::6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-geometry-standards-002-1ef0253177::6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-geometry-standards-003-419614a224::6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-geometry-standards-004-07d46ae068::9710e996-f6d0-4b8b-b893-592213c91767"
+      ]
+    },
+    {
+      "goalId": "7b01d3d8-1fff-5924-b133-5a4825dc742e",
+      "title": "Oberfläche von Kugeln deuten und bestimmen",
+      "decision": "J9_source_backed_geometry_or_own_matching_assessment",
+      "mappingWitnessIds": [
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-027-7cab73e45c::9710e996-f6d0-4b8b-b893-592213c91767",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-030-992f1f3f15::6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-030-992f1f3f15::7b01d3d8-1fff-5924-b133-5a4825dc742e",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-031-4fc5ce0edf::9710e996-f6d0-4b8b-b893-592213c91767",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-041-66ebd2a136::9710e996-f6d0-4b8b-b893-592213c91767",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j6-content-standards-017-3cc4a8f06b::6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j8-content-standards-012-41856f5074::9710e996-f6d0-4b8b-b893-592213c91767",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j8-content-standards-013-879bc2a201::9710e996-f6d0-4b8b-b893-592213c91767",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j8-content-standards-021-a12b3068a8::9710e996-f6d0-4b8b-b893-592213c91767",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-content-restriction-overview-005-21243a2fd3::6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-content-restriction-overview-005-21243a2fd3::7b01d3d8-1fff-5924-b133-5a4825dc742e",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-content-restriction-overview-006-7ff209ceae::9710e996-f6d0-4b8b-b893-592213c91767",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-geometry-standards-001-9309018189::6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-geometry-standards-002-1ef0253177::6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-geometry-standards-003-419614a224::6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-geometry-standards-003-419614a224::7b01d3d8-1fff-5924-b133-5a4825dc742e",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-geometry-standards-004-07d46ae068::9710e996-f6d0-4b8b-b893-592213c91767"
+      ]
+    },
+    {
+      "goalId": "7b860649-373e-5523-9843-ec96b3537f1f",
+      "title": "Volumen von Kegeln berechnen",
+      "decision": "J9_source_backed_geometry_or_own_matching_assessment",
+      "mappingWitnessIds": [
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-027-7cab73e45c::9710e996-f6d0-4b8b-b893-592213c91767",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-030-992f1f3f15::6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-031-4fc5ce0edf::9710e996-f6d0-4b8b-b893-592213c91767",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-041-66ebd2a136::9710e996-f6d0-4b8b-b893-592213c91767",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j6-content-standards-017-3cc4a8f06b::6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j8-content-standards-012-41856f5074::9710e996-f6d0-4b8b-b893-592213c91767",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j8-content-standards-013-879bc2a201::9710e996-f6d0-4b8b-b893-592213c91767",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j8-content-standards-021-a12b3068a8::9710e996-f6d0-4b8b-b893-592213c91767",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-content-restriction-overview-005-21243a2fd3::6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-content-restriction-overview-006-7ff209ceae::9710e996-f6d0-4b8b-b893-592213c91767",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-geometry-standards-001-9309018189::6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-geometry-standards-002-1ef0253177::6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-geometry-standards-003-419614a224::6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-geometry-standards-004-07d46ae068::9710e996-f6d0-4b8b-b893-592213c91767"
+      ]
+    },
+    {
+      "goalId": "7f11ffe0-7c43-4507-9101-50374a60b0e8",
+      "title": "Periodische Realsituationen mit Sinus- und Kosinusfunktionen modellieren und Modelle variieren",
+      "decision": "upper_no_current_J9_time_authority_for_full_atomic_skill",
+      "mappingWitnessIds": [
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-031-4fc5ce0edf::7f11ffe0-7c43-4507-9101-50374a60b0e8",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-content-restriction-overview-006-7ff209ceae::7f11ffe0-7c43-4507-9101-50374a60b0e8",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-geometry-standards-004-07d46ae068::7f11ffe0-7c43-4507-9101-50374a60b0e8"
+      ]
+    },
+    {
+      "goalId": "82597dfb-0ec6-4a77-abaf-e1d6bdd12041",
+      "title": "Einheitskreis und Bogenmass für trigonometrische Funktionen nutzen",
+      "decision": "upper_no_current_J9_time_authority_for_full_atomic_skill",
+      "mappingWitnessIds": [
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-031-4fc5ce0edf::2032d24f-13bf-4aa1-81bf-8788e1099c62",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-content-restriction-overview-006-7ff209ceae::2032d24f-13bf-4aa1-81bf-8788e1099c62",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-geometry-standards-004-07d46ae068::2032d24f-13bf-4aa1-81bf-8788e1099c62"
+      ]
+    },
+    {
+      "goalId": "82c1deff-b359-5813-9aae-8843df3bc2a1",
+      "title": "Mehrstufige Baumdiagramme und Pfadregeln eigenständig anwenden",
+      "decision": "J9_source_backed_counting_or_tree_methods",
+      "mappingWitnessIds": []
+    },
+    {
+      "goalId": "895a60ea-606a-4e77-a5af-ecc13d68e8fb",
+      "title": "Parameter trigonometrischer Funktionen deuten",
+      "decision": "upper_no_current_J9_time_authority_for_full_atomic_skill",
+      "mappingWitnessIds": [
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-031-4fc5ce0edf::2032d24f-13bf-4aa1-81bf-8788e1099c62",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-content-restriction-overview-006-7ff209ceae::2032d24f-13bf-4aa1-81bf-8788e1099c62",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-geometry-standards-004-07d46ae068::2032d24f-13bf-4aa1-81bf-8788e1099c62"
+      ]
+    },
+    {
+      "goalId": "8d30d241-0247-48ac-83d3-4e0de61584d3",
+      "title": "Bogenmass am Einheitskreis veranschaulichen und sicher zwischen Grad- und Bogenmass wechseln",
+      "decision": "upper_no_current_J9_time_authority_for_full_atomic_skill",
+      "mappingWitnessIds": []
+    },
+    {
+      "goalId": "90ec67fc-0400-5f2c-ae8e-059ff67fc0b3",
+      "title": "Faktor-, Summen- und Potenzregel nachvollziehbar anwenden",
+      "decision": "upper_no_current_J9_time_authority_for_full_atomic_skill",
+      "mappingWitnessIds": []
+    },
+    {
+      "goalId": "911c3dd4-5756-52f4-a1e3-177ddd86a601",
+      "title": "Prüfungsaufgabe: Monotonie und Extrema mit der ersten Ableitung untersuchen",
+      "decision": "upper_no_current_J9_time_authority_for_full_atomic_skill",
+      "mappingWitnessIds": []
+    },
+    {
+      "goalId": "926d0551-4537-569e-b6ad-fc33bb17546e",
+      "title": "Ein kugelförmiges Gefäß füllen: Volumen erklären und bestimmen",
+      "decision": "J9_source_backed_geometry_or_own_matching_assessment",
+      "mappingWitnessIds": []
+    },
+    {
+      "goalId": "967e0b4a-8b18-541f-8ba0-2bc24982a470",
+      "title": "Prüfungsaufgabe: Trigonometrische Graphen und Periodizität deuten",
+      "decision": "upper_no_current_J9_time_authority_for_full_atomic_skill",
+      "mappingWitnessIds": []
+    },
+    {
+      "goalId": "9d497a0c-f48d-4a90-8ec8-aeb89ca6d0c5",
+      "title": "Volumen von Prismen und Pyramiden berechnen",
+      "decision": "J9_source_backed_geometry_or_own_matching_assessment",
+      "mappingWitnessIds": [
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-027-7cab73e45c::9710e996-f6d0-4b8b-b893-592213c91767",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-030-992f1f3f15::6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-031-4fc5ce0edf::9710e996-f6d0-4b8b-b893-592213c91767",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-041-66ebd2a136::9710e996-f6d0-4b8b-b893-592213c91767",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j6-content-standards-017-3cc4a8f06b::6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j8-content-standards-012-41856f5074::9710e996-f6d0-4b8b-b893-592213c91767",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j8-content-standards-013-879bc2a201::9710e996-f6d0-4b8b-b893-592213c91767",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j8-content-standards-021-a12b3068a8::9710e996-f6d0-4b8b-b893-592213c91767",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-content-restriction-overview-005-21243a2fd3::6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-content-restriction-overview-006-7ff209ceae::9710e996-f6d0-4b8b-b893-592213c91767",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-geometry-standards-001-9309018189::6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-geometry-standards-002-1ef0253177::6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-geometry-standards-003-419614a224::6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-geometry-standards-004-07d46ae068::9710e996-f6d0-4b8b-b893-592213c91767"
+      ]
+    },
+    {
+      "goalId": "9dbb9fd3-a93f-53ca-82d6-bf0e0e16e9d9",
+      "title": "Prüfungsaufgabe: Periodische Realsituationen mit Sinus- und Kosinusfunktionen modellieren und Modelle variieren",
+      "decision": "upper_no_current_J9_time_authority_for_full_atomic_skill",
+      "mappingWitnessIds": []
+    },
+    {
+      "goalId": "9f2fc0d1-e1e7-4051-ba70-87ba1dd8dd1c",
+      "title": "Grundlegende Ableitungsregeln auf elementare Funktionsterme anwenden",
+      "decision": "upper_no_current_J9_time_authority_for_full_atomic_skill",
+      "mappingWitnessIds": [
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-042-3e79952ab6::0fd96c54-c629-45aa-a640-e2718890ddf9",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-043-e0e496338d::0fd96c54-c629-45aa-a640-e2718890ddf9",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-content-restriction-standards-008-65dc147ff2::0fd96c54-c629-45aa-a640-e2718890ddf9"
+      ]
+    },
+    {
+      "goalId": "a4f6f5e4-f790-48d1-8b49-c9dc048c9d83",
+      "title": "Oberflächeninhalte von Kegeln begründen und berechnen",
+      "decision": "J9_source_backed_geometry_or_own_matching_assessment",
+      "mappingWitnessIds": [
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-027-7cab73e45c::9710e996-f6d0-4b8b-b893-592213c91767",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-030-992f1f3f15::6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-031-4fc5ce0edf::9710e996-f6d0-4b8b-b893-592213c91767",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-041-66ebd2a136::9710e996-f6d0-4b8b-b893-592213c91767",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j6-content-standards-017-3cc4a8f06b::6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j8-content-standards-012-41856f5074::9710e996-f6d0-4b8b-b893-592213c91767",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j8-content-standards-013-879bc2a201::9710e996-f6d0-4b8b-b893-592213c91767",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j8-content-standards-021-a12b3068a8::9710e996-f6d0-4b8b-b893-592213c91767",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-content-restriction-overview-005-21243a2fd3::6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-content-restriction-overview-006-7ff209ceae::9710e996-f6d0-4b8b-b893-592213c91767",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-geometry-standards-001-9309018189::6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-geometry-standards-002-1ef0253177::6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-geometry-standards-003-419614a224::6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-geometry-standards-004-07d46ae068::9710e996-f6d0-4b8b-b893-592213c91767"
+      ]
+    },
+    {
+      "goalId": "a6c8db0a-a8a2-46bf-af04-d73d69d6c8b1",
+      "title": "Trigonometrische Graphen aus Funktionstermen zeichnen",
+      "decision": "upper_no_current_J9_time_authority_for_full_atomic_skill",
+      "mappingWitnessIds": []
+    },
+    {
+      "goalId": "a8dfd3ce-7e43-560c-8ac1-c8b1ee7c5547",
+      "title": "Prüfungsaufgabe: Einheitskreis und Bogenmass für trigonometrische Funktionen nutzen",
+      "decision": "upper_no_current_J9_time_authority_for_full_atomic_skill",
+      "mappingWitnessIds": []
+    },
+    {
+      "goalId": "b1166cc7-dca0-5ac4-b0c4-9a7196186a2a",
+      "title": "Aufgabe 4 (Jahrgangsstufe 10, 8 BE)",
+      "decision": "upper_editorial_until_full_task_scope_is_reviewed_for_J9",
+      "mappingWitnessIds": []
+    },
+    {
+      "goalId": "b214caea-13d3-5789-9434-f31d0fd606a3",
+      "title": "Prüfungsaufgabe: Exponentielles Wachstum in Termen, Tabellen und Graphen beschreiben",
+      "decision": "upper_no_current_J9_time_authority_for_full_atomic_skill",
+      "mappingWitnessIds": []
+    },
+    {
+      "goalId": "b9f2cf6b-f892-46a5-8f0b-2a916f0f2f8e",
+      "title": "Rotationskörper beschreiben und deuten",
+      "decision": "J9_source_backed_geometry_or_own_matching_assessment",
+      "mappingWitnessIds": [
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-027-7cab73e45c::9710e996-f6d0-4b8b-b893-592213c91767",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-030-992f1f3f15::6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-031-4fc5ce0edf::9710e996-f6d0-4b8b-b893-592213c91767",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-041-66ebd2a136::9710e996-f6d0-4b8b-b893-592213c91767",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j6-content-standards-017-3cc4a8f06b::6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j8-content-standards-012-41856f5074::9710e996-f6d0-4b8b-b893-592213c91767",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j8-content-standards-013-879bc2a201::9710e996-f6d0-4b8b-b893-592213c91767",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j8-content-standards-021-a12b3068a8::9710e996-f6d0-4b8b-b893-592213c91767",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-content-restriction-overview-005-21243a2fd3::6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-content-restriction-overview-006-7ff209ceae::9710e996-f6d0-4b8b-b893-592213c91767",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-geometry-standards-001-9309018189::6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-geometry-standards-002-1ef0253177::6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-geometry-standards-003-419614a224::6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-geometry-standards-004-07d46ae068::9710e996-f6d0-4b8b-b893-592213c91767"
+      ]
+    },
+    {
+      "goalId": "bb227e31-0b0b-544a-b5e0-548256a70dec",
+      "title": "Volumen von Kugeln deuten und bestimmen",
+      "decision": "J9_source_backed_geometry_or_own_matching_assessment",
+      "mappingWitnessIds": [
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-027-7cab73e45c::9710e996-f6d0-4b8b-b893-592213c91767",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-030-992f1f3f15::6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-030-992f1f3f15::bb227e31-0b0b-544a-b5e0-548256a70dec",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-031-4fc5ce0edf::9710e996-f6d0-4b8b-b893-592213c91767",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-041-66ebd2a136::9710e996-f6d0-4b8b-b893-592213c91767",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j6-content-standards-017-3cc4a8f06b::6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j8-content-standards-012-41856f5074::9710e996-f6d0-4b8b-b893-592213c91767",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j8-content-standards-013-879bc2a201::9710e996-f6d0-4b8b-b893-592213c91767",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j8-content-standards-021-a12b3068a8::9710e996-f6d0-4b8b-b893-592213c91767",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-content-restriction-overview-005-21243a2fd3::6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-content-restriction-overview-005-21243a2fd3::bb227e31-0b0b-544a-b5e0-548256a70dec",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-content-restriction-overview-006-7ff209ceae::9710e996-f6d0-4b8b-b893-592213c91767",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-geometry-standards-001-9309018189::6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-geometry-standards-002-1ef0253177::6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-geometry-standards-003-419614a224::6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-geometry-standards-003-419614a224::bb227e31-0b0b-544a-b5e0-548256a70dec",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-geometry-standards-004-07d46ae068::9710e996-f6d0-4b8b-b893-592213c91767"
+      ]
+    },
+    {
+      "goalId": "bc53c4e9-46b3-579e-8504-c6510732f218",
+      "title": "Mittlere und momentane Änderungsrate begründet unterscheiden",
+      "decision": "upper_no_current_J9_time_authority_for_full_atomic_skill",
+      "mappingWitnessIds": []
+    },
+    {
+      "goalId": "c8818eae-0c4d-4fa1-9085-04a9c95a668b",
+      "title": "Sinus- und Kosinuswerte am Einheitskreis im Bogenmass deuten und Winkel bestimmen",
+      "decision": "upper_no_current_J9_time_authority_for_full_atomic_skill",
+      "mappingWitnessIds": []
+    },
+    {
+      "goalId": "c992f67a-f901-503c-994f-5eb5b03b2950",
+      "title": "Sinus- und Kosinusableitungen rechnerisch und grafisch prüfen",
+      "decision": "upper_no_current_J9_time_authority_for_full_atomic_skill",
+      "mappingWitnessIds": []
+    },
+    {
+      "goalId": "e5055665-89ae-5be6-8fc7-42a9e991d63d",
+      "title": "Aufgabe 6 (Jahrgangsstufe 10, 10 BE)",
+      "decision": "J9_reviewed_simulation_application_not_official_MonteCarlo_claim",
+      "mappingWitnessIds": []
+    },
+    {
+      "goalId": "e55edcb9-2184-4a24-890e-70cc91028990",
+      "title": "Stochastische Simulationen und Monte-Carlo-Verfahren deuten",
+      "decision": "J9_reviewed_simulation_application_not_official_MonteCarlo_claim",
+      "mappingWitnessIds": [
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-054-e9741a3d7d::c7911f0f-83d4-44ba-9f28-bdc1a5e8cb4a",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j8-content-standards-032-3522853972::c7911f0f-83d4-44ba-9f28-bdc1a5e8cb4a",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j8-content-standards-036-5aa3d22ce4::c7911f0f-83d4-44ba-9f28-bdc1a5e8cb4a",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-content-restriction-standards-012-e0352db78c::c7911f0f-83d4-44ba-9f28-bdc1a5e8cb4a"
+      ]
+    },
+    {
+      "goalId": "efc3506a-5f35-4d77-9498-d70a091a470b",
+      "title": "Baumdiagramme und Pfadregeln für zusammengesetzte Experimente nutzen",
+      "decision": "J9_source_backed_counting_or_tree_methods",
+      "mappingWitnessIds": [
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-054-e9741a3d7d::c7911f0f-83d4-44ba-9f28-bdc1a5e8cb4a",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j8-content-standards-032-3522853972::c7911f0f-83d4-44ba-9f28-bdc1a5e8cb4a",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j8-content-standards-036-5aa3d22ce4::c7911f0f-83d4-44ba-9f28-bdc1a5e8cb4a",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-content-restriction-standards-012-e0352db78c::c7911f0f-83d4-44ba-9f28-bdc1a5e8cb4a"
+      ]
+    },
+    {
+      "goalId": "f9fdb733-5838-4983-888a-05624eabbe17",
+      "title": "Ableitungen von Sinus- und Kosinusfunktionen in einfachen Fällen nutzen",
+      "decision": "upper_no_current_J9_time_authority_for_full_atomic_skill",
+      "mappingWitnessIds": [
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-042-3e79952ab6::0fd96c54-c629-45aa-a640-e2718890ddf9",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-043-e0e496338d::0fd96c54-c629-45aa-a640-e2718890ddf9",
+        "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-content-restriction-standards-008-65dc147ff2::0fd96c54-c629-45aa-a640-e2718890ddf9"
+      ]
+    }
+  ],
+  "decisionRationales": {
+    "upper_no_current_J9_time_authority_for_full_atomic_skill": "2022 J9 functions are linear/quadratic. Geometric Sin/Cos/Tan does not establish periodic functions, radians or calculus; superseded 2006 J10 overview rows do not establish J9.",
+    "J9_source_backed_counting_or_tree_methods": "2022 annex pp1-2 counting/tree methods and retained 2006 J8 p20 multi-stage experiments/path rules.",
+    "J9_source_backed_geometry_or_own_matching_assessment": "2022 annex p1 geometry plus p2 explicit retention of 2006 geometry standards p23. Matching own tasks retain their actual coverage.",
+    "J9_possible_reviewed_geometry_method_not_named_official_duty": "A Cavalieri plausibility argument uses only the retained prism-volume skill; the primary source does not name Cavalieri. Preserve this distinction in placement evidence.",
+    "upper_editorial_until_full_task_scope_is_reviewed_for_J9": "Full own task also includes substitution; the annex alone proves radical/quadratic contents, not every unrestricted substitution task.",
+    "J9_reviewed_simulation_application_not_official_MonteCarlo_claim": "2006 J8 p20 expressly permits stochastic simulations and is not replaced by the 2022 J9 restriction. Monte Carlo is an own operationalization; do not claim that name is mandatory."
+  },
+  "mappingWitnesses": {
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm1-1-001-5de45ad2df::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm1-1-001-5de45ad2df",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 18",
+      "sourceSpan": "S. 18, BM 1.1",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm1-1-001-5de45ad2df::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm1-1-001-5de45ad2df",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 18",
+      "sourceSpan": "S. 18, BM 1.1",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm1-1-002-06e242a79f::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm1-1-002-06e242a79f",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 18",
+      "sourceSpan": "S. 18, BM 1.1",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm1-1-002-06e242a79f::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm1-1-002-06e242a79f",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 18",
+      "sourceSpan": "S. 18, BM 1.1",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm1-1-003-01f4b137eb::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm1-1-003-01f4b137eb",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 18",
+      "sourceSpan": "S. 18, BM 1.1",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm1-1-003-01f4b137eb::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm1-1-003-01f4b137eb",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 18",
+      "sourceSpan": "S. 18, BM 1.1",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm1-2-002-8e940cf653::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm1-2-002-8e940cf653",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 18",
+      "sourceSpan": "S. 18, BM 1.2",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm1-2-002-8e940cf653::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm1-2-002-8e940cf653",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 18",
+      "sourceSpan": "S. 18, BM 1.2",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm1-2-003-ba5f425fb7::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm1-2-003-ba5f425fb7",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 18",
+      "sourceSpan": "S. 18, BM 1.2",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm1-2-003-ba5f425fb7::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm1-2-003-ba5f425fb7",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 18",
+      "sourceSpan": "S. 18, BM 1.2",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm1-2-004-964f19b607::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm1-2-004-964f19b607",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 18",
+      "sourceSpan": "S. 18, BM 1.2",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm1-2-004-964f19b607::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm1-2-004-964f19b607",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 18",
+      "sourceSpan": "S. 18, BM 1.2",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm1-2-005-ad77e228b0::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm1-2-005-ad77e228b0",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 18",
+      "sourceSpan": "S. 18, BM 1.2",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm1-2-005-ad77e228b0::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm1-2-005-ad77e228b0",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 18",
+      "sourceSpan": "S. 18, BM 1.2",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm1-2-006-9379a5a7c5::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm1-2-006-9379a5a7c5",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 18",
+      "sourceSpan": "S. 18, BM 1.2",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm1-2-006-9379a5a7c5::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm1-2-006-9379a5a7c5",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 18",
+      "sourceSpan": "S. 18, BM 1.2",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-1-002-3bc60fb94d::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-1-002-3bc60fb94d",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 19",
+      "sourceSpan": "S. 19, BM 3.1",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-1-002-3bc60fb94d::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-1-002-3bc60fb94d",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 19",
+      "sourceSpan": "S. 19, BM 3.1",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-1-003-2ccebe0630::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-1-003-2ccebe0630",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 19",
+      "sourceSpan": "S. 19, BM 3.1",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-1-003-2ccebe0630::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-1-003-2ccebe0630",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 19",
+      "sourceSpan": "S. 19, BM 3.1",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-1-004-22d872ff36::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-1-004-22d872ff36",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 19",
+      "sourceSpan": "S. 19, BM 3.1",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-1-004-22d872ff36::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-1-004-22d872ff36",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 19",
+      "sourceSpan": "S. 19, BM 3.1",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-3-001-ee0fa8e724::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-3-001-ee0fa8e724",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 19",
+      "sourceSpan": "S. 19, BM 3.3",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-3-001-ee0fa8e724::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-3-001-ee0fa8e724",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 19",
+      "sourceSpan": "S. 19, BM 3.3",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-3-002-eb8d23ad62::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-3-002-eb8d23ad62",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 20",
+      "sourceSpan": "S. 20, BM 3.3",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-3-002-eb8d23ad62::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-3-002-eb8d23ad62",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 20",
+      "sourceSpan": "S. 20, BM 3.3",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-4-001-f7fe0af6a7::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-4-001-f7fe0af6a7",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 20",
+      "sourceSpan": "S. 20, BM 3.4",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-4-001-f7fe0af6a7::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-4-001-f7fe0af6a7",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 20",
+      "sourceSpan": "S. 20, BM 3.4",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-4-002-a1b8cec56c::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-4-002-a1b8cec56c",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 20",
+      "sourceSpan": "S. 20, BM 3.4",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-4-002-a1b8cec56c::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-4-002-a1b8cec56c",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 20",
+      "sourceSpan": "S. 20, BM 3.4",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-4-003-76dcce9a99::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-4-003-76dcce9a99",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 20",
+      "sourceSpan": "S. 20, BM 3.4",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-4-003-76dcce9a99::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-4-003-76dcce9a99",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 20",
+      "sourceSpan": "S. 20, BM 3.4",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-5-001-9a9089ec49::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-5-001-9a9089ec49",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 20",
+      "sourceSpan": "S. 20, BM 3.5",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-5-001-9a9089ec49::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-5-001-9a9089ec49",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 20",
+      "sourceSpan": "S. 20, BM 3.5",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-6-001-f24607075f::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-6-001-f24607075f",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 20",
+      "sourceSpan": "S. 20, BM 3.6",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-6-001-f24607075f::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-6-001-f24607075f",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 20",
+      "sourceSpan": "S. 20, BM 3.6",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-7-001-7251581b20::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-7-001-7251581b20",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 20",
+      "sourceSpan": "S. 20, BM 3.7",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-7-001-7251581b20::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-7-001-7251581b20",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 20",
+      "sourceSpan": "S. 20, BM 3.7",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-8-001-4a314c7c5f::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-8-001-4a314c7c5f",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 20",
+      "sourceSpan": "S. 20, BM 3.8",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-8-001-4a314c7c5f::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-8-001-4a314c7c5f",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 20",
+      "sourceSpan": "S. 20, BM 3.8",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-8-002-e537f40f62::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-8-002-e537f40f62",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 21",
+      "sourceSpan": "S. 21, BM 3.8",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-8-002-e537f40f62::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-8-002-e537f40f62",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 21",
+      "sourceSpan": "S. 21, BM 3.8",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-9-001-2be33a4c12::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-9-001-2be33a4c12",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 21",
+      "sourceSpan": "S. 21, BM 3.9",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-9-001-2be33a4c12::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-9-001-2be33a4c12",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 21",
+      "sourceSpan": "S. 21, BM 3.9",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-10-001-b1669b383a::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-10-001-b1669b383a",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 21",
+      "sourceSpan": "S. 21, BM 3.10",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-10-001-b1669b383a::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-10-001-b1669b383a",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 21",
+      "sourceSpan": "S. 21, BM 3.10",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-10-002-4753ee1746::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-10-002-4753ee1746",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 21",
+      "sourceSpan": "S. 21, BM 3.10",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-10-002-4753ee1746::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-10-002-4753ee1746",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 21",
+      "sourceSpan": "S. 21, BM 3.10",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-10-003-6bc797f183::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-10-003-6bc797f183",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 21",
+      "sourceSpan": "S. 21, BM 3.10",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-10-003-6bc797f183::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-10-003-6bc797f183",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 21",
+      "sourceSpan": "S. 21, BM 3.10",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-1-001-e07ac92eb5::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-1-001-e07ac92eb5",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 21",
+      "sourceSpan": "S. 21, A 1.1",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-1-001-e07ac92eb5::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-1-001-e07ac92eb5",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 21",
+      "sourceSpan": "S. 21, A 1.1",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-2-001-05d9d769a4::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-2-001-05d9d769a4",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 21",
+      "sourceSpan": "S. 21, A 1.2",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-2-001-05d9d769a4::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-2-001-05d9d769a4",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 21",
+      "sourceSpan": "S. 21, A 1.2",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-2-002-c1625ecbaa::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-2-002-c1625ecbaa",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 22",
+      "sourceSpan": "S. 22, A 1.2",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-2-002-c1625ecbaa::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-2-002-c1625ecbaa",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 22",
+      "sourceSpan": "S. 22, A 1.2",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-2-003-d28bfe78f9::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-2-003-d28bfe78f9",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 22",
+      "sourceSpan": "S. 22, A 1.2",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-2-003-d28bfe78f9::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-2-003-d28bfe78f9",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 22",
+      "sourceSpan": "S. 22, A 1.2",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-3-001-784dc01f04::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-3-001-784dc01f04",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 22",
+      "sourceSpan": "S. 22, A 1.3",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-3-001-784dc01f04::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-3-001-784dc01f04",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 22",
+      "sourceSpan": "S. 22, A 1.3",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-4-001-2af1924c6b::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-4-001-2af1924c6b",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 22",
+      "sourceSpan": "S. 22, A 1.4",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-4-001-2af1924c6b::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-4-001-2af1924c6b",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 22",
+      "sourceSpan": "S. 22, A 1.4",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-5-001-64b2e6ed4d::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-5-001-64b2e6ed4d",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 22",
+      "sourceSpan": "S. 22, A 1.5",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-5-001-64b2e6ed4d::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-5-001-64b2e6ed4d",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 22",
+      "sourceSpan": "S. 22, A 1.5",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-6-001-51a12e1386::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-6-001-51a12e1386",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 22",
+      "sourceSpan": "S. 22, A 1.6",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-6-001-51a12e1386::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-6-001-51a12e1386",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 22",
+      "sourceSpan": "S. 22, A 1.6",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-6-002-065130f7df::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-6-002-065130f7df",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 22",
+      "sourceSpan": "S. 22, A 1.6",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-6-002-065130f7df::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-6-002-065130f7df",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 22",
+      "sourceSpan": "S. 22, A 1.6",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-6-003-4e1850aaac::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-6-003-4e1850aaac",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 22",
+      "sourceSpan": "S. 22, A 1.6",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-6-003-4e1850aaac::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-6-003-4e1850aaac",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 22",
+      "sourceSpan": "S. 22, A 1.6",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-6-004-c915b83ce4::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-6-004-c915b83ce4",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 23",
+      "sourceSpan": "S. 23, A 1.6",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-6-004-c915b83ce4::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-6-004-c915b83ce4",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 23",
+      "sourceSpan": "S. 23, A 1.6",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-6-005-993c8af969::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-6-005-993c8af969",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 23",
+      "sourceSpan": "S. 23, A 1.6",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-6-005-993c8af969::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-6-005-993c8af969",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 23",
+      "sourceSpan": "S. 23, A 1.6",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-7-001-b4b970ceda::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-7-001-b4b970ceda",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 23",
+      "sourceSpan": "S. 23, A 1.7",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-7-001-b4b970ceda::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-7-001-b4b970ceda",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 23",
+      "sourceSpan": "S. 23, A 1.7",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-8-001-ee779466bb::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-8-001-ee779466bb",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 23",
+      "sourceSpan": "S. 23, A 1.8",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-8-001-ee779466bb::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-8-001-ee779466bb",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 23",
+      "sourceSpan": "S. 23, A 1.8",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-9-001-de35eea583::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-9-001-de35eea583",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 23",
+      "sourceSpan": "S. 23, A 1.9",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-9-001-de35eea583::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-9-001-de35eea583",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 23",
+      "sourceSpan": "S. 23, A 1.9",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-10-001-8ad5afb6af::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-10-001-8ad5afb6af",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 23",
+      "sourceSpan": "S. 23, A 1.10",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-10-001-8ad5afb6af::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-10-001-8ad5afb6af",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 23",
+      "sourceSpan": "S. 23, A 1.10",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-11-001-ea1e7bc67b::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-11-001-ea1e7bc67b",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 23",
+      "sourceSpan": "S. 23, A 1.11",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-11-001-ea1e7bc67b::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-11-001-ea1e7bc67b",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 23",
+      "sourceSpan": "S. 23, A 1.11",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a2-3-001-bfd9751adb::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a2-3-001-bfd9751adb",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 24",
+      "sourceSpan": "S. 24, A 2.3",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a2-3-001-bfd9751adb::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a2-3-001-bfd9751adb",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 24",
+      "sourceSpan": "S. 24, A 2.3",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a2-6-001-ab5732ca65::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a2-6-001-ab5732ca65",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 25",
+      "sourceSpan": "S. 25, A 2.6",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a2-6-001-ab5732ca65::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a2-6-001-ab5732ca65",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 25",
+      "sourceSpan": "S. 25, A 2.6",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a2-6-002-e67c305d37::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a2-6-002-e67c305d37",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 25",
+      "sourceSpan": "S. 25, A 2.6",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a2-6-002-e67c305d37::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a2-6-002-e67c305d37",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 25",
+      "sourceSpan": "S. 25, A 2.6",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a2-7-003-795a1908f4::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a2-7-003-795a1908f4",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 25",
+      "sourceSpan": "S. 25, A 2.7",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a2-7-003-795a1908f4::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a2-7-003-795a1908f4",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 25",
+      "sourceSpan": "S. 25, A 2.7",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-1-003-6bd0b07392::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-1-003-6bd0b07392",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 25",
+      "sourceSpan": "S. 25, A 3.1",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-1-003-6bd0b07392::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-1-003-6bd0b07392",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 25",
+      "sourceSpan": "S. 25, A 3.1",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-1-004-25920cfdd0::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-1-004-25920cfdd0",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 26",
+      "sourceSpan": "S. 26, A 3.1",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-1-004-25920cfdd0::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-1-004-25920cfdd0",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 26",
+      "sourceSpan": "S. 26, A 3.1",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-1-005-18357c041e::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-1-005-18357c041e",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 26",
+      "sourceSpan": "S. 26, A 3.1",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-1-005-18357c041e::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-1-005-18357c041e",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 26",
+      "sourceSpan": "S. 26, A 3.1",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-3-001-856d15d86a::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-3-001-856d15d86a",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 26",
+      "sourceSpan": "S. 26, A 3.3",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-3-001-856d15d86a::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-3-001-856d15d86a",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 26",
+      "sourceSpan": "S. 26, A 3.3",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-3-005-e642d95226::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-3-005-e642d95226",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 26",
+      "sourceSpan": "S. 26, A 3.3",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-3-005-e642d95226::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-3-005-e642d95226",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 26",
+      "sourceSpan": "S. 26, A 3.3",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-4-001-315ff04cd9::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-4-001-315ff04cd9",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 26",
+      "sourceSpan": "S. 26, A 3.4",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-4-001-315ff04cd9::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-4-001-315ff04cd9",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 26",
+      "sourceSpan": "S. 26, A 3.4",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-5-002-d20248a812::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-5-002-d20248a812",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 26",
+      "sourceSpan": "S. 26, A 3.5",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-5-002-d20248a812::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-5-002-d20248a812",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 26",
+      "sourceSpan": "S. 26, A 3.5",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-5-003-6e97cff40d::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-5-003-6e97cff40d",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 26",
+      "sourceSpan": "S. 26, A 3.5",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-5-003-6e97cff40d::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-5-003-6e97cff40d",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 26",
+      "sourceSpan": "S. 26, A 3.5",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-6-001-3ca49a3763::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-6-001-3ca49a3763",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 26",
+      "sourceSpan": "S. 26, A 3.6",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-6-001-3ca49a3763::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-6-001-3ca49a3763",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 26",
+      "sourceSpan": "S. 26, A 3.6",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-6-002-1240dde086::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-6-002-1240dde086",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 26",
+      "sourceSpan": "S. 26, A 3.6",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-6-002-1240dde086::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-6-002-1240dde086",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 26",
+      "sourceSpan": "S. 26, A 3.6",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-6-003-e1f3beb9f2::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-6-003-e1f3beb9f2",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 27",
+      "sourceSpan": "S. 27, A 3.6",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-6-003-e1f3beb9f2::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-6-003-e1f3beb9f2",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 27",
+      "sourceSpan": "S. 27, A 3.6",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-6-004-081e6ac7db::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-6-004-081e6ac7db",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 27",
+      "sourceSpan": "S. 27, A 3.6",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-6-004-081e6ac7db::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-6-004-081e6ac7db",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 27",
+      "sourceSpan": "S. 27, A 3.6",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-7-001-084e05ab4a::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-7-001-084e05ab4a",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 27",
+      "sourceSpan": "S. 27, A 3.7",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-7-001-084e05ab4a::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-7-001-084e05ab4a",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 27",
+      "sourceSpan": "S. 27, A 3.7",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-7-002-126f9cd6f7::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-7-002-126f9cd6f7",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 27",
+      "sourceSpan": "S. 27, A 3.7",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-7-002-126f9cd6f7::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-7-002-126f9cd6f7",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 27",
+      "sourceSpan": "S. 27, A 3.7",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-7-004-efa20e3172::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-7-004-efa20e3172",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 27",
+      "sourceSpan": "S. 27, A 3.7",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-7-004-efa20e3172::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-7-004-efa20e3172",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 27",
+      "sourceSpan": "S. 27, A 3.7",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-7-006-caaaaae87b::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-7-006-caaaaae87b",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 27",
+      "sourceSpan": "S. 27, A 3.7",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-7-006-caaaaae87b::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-7-006-caaaaae87b",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 27",
+      "sourceSpan": "S. 27, A 3.7",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-8-001-aec1175c07::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-8-001-aec1175c07",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 27",
+      "sourceSpan": "S. 27, A 3.8",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-8-001-aec1175c07::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-8-001-aec1175c07",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 27",
+      "sourceSpan": "S. 27, A 3.8",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-8-002-e670d0e960::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-8-002-e670d0e960",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 27",
+      "sourceSpan": "S. 27, A 3.8",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-8-002-e670d0e960::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-8-002-e670d0e960",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 27",
+      "sourceSpan": "S. 27, A 3.8",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-s1-1-002-757f356a54::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-s1-1-002-757f356a54",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 28",
+      "sourceSpan": "S. 28, S 1.1",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-s1-1-002-757f356a54::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-s1-1-002-757f356a54",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 28",
+      "sourceSpan": "S. 28, S 1.1",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-s1-1-003-40cf5f255a::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-s1-1-003-40cf5f255a",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 28",
+      "sourceSpan": "S. 28, S 1.1",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-s1-1-003-40cf5f255a::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-s1-1-003-40cf5f255a",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 28",
+      "sourceSpan": "S. 28, S 1.1",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-s1-1-004-d60ab4acc9::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-s1-1-004-d60ab4acc9",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 28",
+      "sourceSpan": "S. 28, S 1.1",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-s1-1-004-d60ab4acc9::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-s1-1-004-d60ab4acc9",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 28",
+      "sourceSpan": "S. 28, S 1.1",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-s1-1-005-25e87111c3::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-s1-1-005-25e87111c3",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 28",
+      "sourceSpan": "S. 28, S 1.1",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-s1-1-005-25e87111c3::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-s1-1-005-25e87111c3",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 28",
+      "sourceSpan": "S. 28, S 1.1",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-s1-3-001-470283d351::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-s1-3-001-470283d351",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 29",
+      "sourceSpan": "S. 29, S 1.3",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-s1-3-001-470283d351::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-s1-3-001-470283d351",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 29",
+      "sourceSpan": "S. 29, S 1.3",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-s1-8-001-9a1a96492d::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-s1-8-001-9a1a96492d",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 30",
+      "sourceSpan": "S. 30, S 1.8",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-s1-8-001-9a1a96492d::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-s1-8-001-9a1a96492d",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 30",
+      "sourceSpan": "S. 30, S 1.8",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-s2-6-001-2384d7a915::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-s2-6-001-2384d7a915",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 31",
+      "sourceSpan": "S. 31, S 2.6",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-s2-6-001-2384d7a915::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-s2-6-001-2384d7a915",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 31",
+      "sourceSpan": "S. 31, S 2.6",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-s3-2-001-e2e26800ee::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-s3-2-001-e2e26800ee",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 32",
+      "sourceSpan": "S. 32, S 3.2",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-s3-2-001-e2e26800ee::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-s3-2-001-e2e26800ee",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 32",
+      "sourceSpan": "S. 32, S 3.2",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-s3-5-001-78cc62b9c1::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-s3-5-001-78cc62b9c1",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 32",
+      "sourceSpan": "S. 32, S 3.5",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-s3-5-001-78cc62b9c1::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-s3-5-001-78cc62b9c1",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 32",
+      "sourceSpan": "S. 32, S 3.5",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-la1-1-004-12590e437d::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-la1-1-004-12590e437d",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 33",
+      "sourceSpan": "S. 33, LA 1.1",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-la1-1-004-12590e437d::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-la1-1-004-12590e437d",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 33",
+      "sourceSpan": "S. 33, LA 1.1",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-la1-7-001-b41a2a7ba9::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-la1-7-001-b41a2a7ba9",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 34",
+      "sourceSpan": "S. 34, LA 1.7",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-la1-7-001-b41a2a7ba9::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-la1-7-001-b41a2a7ba9",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 34",
+      "sourceSpan": "S. 34, LA 1.7",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-la2-1-001-288789cc8c::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-la2-1-001-288789cc8c",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 34",
+      "sourceSpan": "S. 34, LA 2.1",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-la2-1-001-288789cc8c::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-la2-1-001-288789cc8c",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 34",
+      "sourceSpan": "S. 34, LA 2.1",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-la3-2-004-02ae9b8c50::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-la3-2-004-02ae9b8c50",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 36",
+      "sourceSpan": "S. 36, LA 3.2",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-la3-2-004-02ae9b8c50::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-la3-2-004-02ae9b8c50",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 36",
+      "sourceSpan": "S. 36, LA 3.2",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-la4-2-004-885d2dec13::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-la4-2-004-885d2dec13",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 37",
+      "sourceSpan": "S. 37, LA 4.2",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-la4-2-004-885d2dec13::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-la4-2-004-885d2dec13",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 37",
+      "sourceSpan": "S. 37, LA 4.2",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-la4-11-001-6989c73541::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-la4-11-001-6989c73541",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 38",
+      "sourceSpan": "S. 38, LA 4.11",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-la4-11-001-6989c73541::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-la4-11-001-6989c73541",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 38",
+      "sourceSpan": "S. 38, LA 4.11",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag1-1-001-dcb20f0b98::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag1-1-001-dcb20f0b98",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 38",
+      "sourceSpan": "S. 38, AG 1.1",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag1-1-001-dcb20f0b98::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag1-1-001-dcb20f0b98",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 38",
+      "sourceSpan": "S. 38, AG 1.1",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag2-1-004-31c75faa48::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag2-1-004-31c75faa48",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 39",
+      "sourceSpan": "S. 39, AG 2.1",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag2-1-004-31c75faa48::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag2-1-004-31c75faa48",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 39",
+      "sourceSpan": "S. 39, AG 2.1",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag2-8-001-0a489dbc06::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag2-8-001-0a489dbc06",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 40",
+      "sourceSpan": "S. 40, AG 2.8",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag2-8-001-0a489dbc06::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag2-8-001-0a489dbc06",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 40",
+      "sourceSpan": "S. 40, AG 2.8",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag3-3-002-ee1b55147a::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag3-3-002-ee1b55147a",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 40",
+      "sourceSpan": "S. 40, AG 3.3",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag3-3-002-ee1b55147a::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag3-3-002-ee1b55147a",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 40",
+      "sourceSpan": "S. 40, AG 3.3",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag3-3-003-6f557bef4c::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag3-3-003-6f557bef4c",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 40",
+      "sourceSpan": "S. 40, AG 3.3",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag3-3-003-6f557bef4c::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag3-3-003-6f557bef4c",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 40",
+      "sourceSpan": "S. 40, AG 3.3",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag3-3-004-6163e02fc0::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag3-3-004-6163e02fc0",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 40",
+      "sourceSpan": "S. 40, AG 3.3",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag3-3-004-6163e02fc0::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag3-3-004-6163e02fc0",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 40",
+      "sourceSpan": "S. 40, AG 3.3",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag3-3-005-95ccdb1688::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag3-3-005-95ccdb1688",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 40",
+      "sourceSpan": "S. 40, AG 3.3",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag3-3-005-95ccdb1688::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag3-3-005-95ccdb1688",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 40",
+      "sourceSpan": "S. 40, AG 3.3",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag3-4-001-9e2978b2c2::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag3-4-001-9e2978b2c2",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 40",
+      "sourceSpan": "S. 40, AG 3.4",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag3-4-001-9e2978b2c2::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag3-4-001-9e2978b2c2",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 40",
+      "sourceSpan": "S. 40, AG 3.4",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag4-1-002-6ec26b914d::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag4-1-002-6ec26b914d",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 41",
+      "sourceSpan": "S. 41, AG 4.1",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag4-1-002-6ec26b914d::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag4-1-002-6ec26b914d",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 41",
+      "sourceSpan": "S. 41, AG 4.1",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag4-3-002-e2dba14e67::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag4-3-002-e2dba14e67",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 41",
+      "sourceSpan": "S. 41, AG 4.3",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag4-3-002-e2dba14e67::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag4-3-002-e2dba14e67",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 41",
+      "sourceSpan": "S. 41, AG 4.3",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag4-3-005-c240217602::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag4-3-005-c240217602",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 41",
+      "sourceSpan": "S. 41, AG 4.3",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag4-3-005-c240217602::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag4-3-005-c240217602",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 41",
+      "sourceSpan": "S. 41, AG 4.3",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag4-3-006-e2dba14e67::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag4-3-006-e2dba14e67",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 41",
+      "sourceSpan": "S. 41, AG 4.3",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag4-3-006-e2dba14e67::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag4-3-006-e2dba14e67",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 41",
+      "sourceSpan": "S. 41, AG 4.3",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag4-3-007-9be97802f6::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag4-3-007-9be97802f6",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 41",
+      "sourceSpan": "S. 41, AG 4.3",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag4-3-007-9be97802f6::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag4-3-007-9be97802f6",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 41",
+      "sourceSpan": "S. 41, AG 4.3",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag4-5-001-bbf713ccb5::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag4-5-001-bbf713ccb5",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 42",
+      "sourceSpan": "S. 42, AG 4.5",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag4-5-001-bbf713ccb5::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag4-5-001-bbf713ccb5",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 42",
+      "sourceSpan": "S. 42, AG 4.5",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag5-2-001-9912b1c0c8::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag5-2-001-9912b1c0c8",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 42",
+      "sourceSpan": "S. 42, AG 5.2",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag5-2-001-9912b1c0c8::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag5-2-001-9912b1c0c8",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 42",
+      "sourceSpan": "S. 42, AG 5.2",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag5-2-002-2964c9667c::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag5-2-002-2964c9667c",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 42",
+      "sourceSpan": "S. 42, AG 5.2",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag5-2-002-2964c9667c::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag5-2-002-2964c9667c",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 42",
+      "sourceSpan": "S. 42, AG 5.2",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag5-4-001-a6c5a60485::a668ea17-9226-4074-8f8e-051acbe839eb": {
+      "stage": "SekII",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag5-4-001-a6c5a60485",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 43",
+      "sourceSpan": "S. 43, AG 5.4",
+      "canonicalGoalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag5-4-001-a6c5a60485::c9d92f32-167a-4006-a940-b8063a6ed434": {
+      "stage": "SekII",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-ag5-4-001-a6c5a60485",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 43",
+      "sourceSpan": "S. 43, AG 5.4",
+      "canonicalGoalId": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-central-activities-5-9-024-705192a19a::27b63e2e-6a34-483e-8e5a-fe0f49670d1d": {
+      "stage": "SekI",
+      "canonicalDistance": 0,
+      "sourceGoalId": "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-central-activities-5-9-024-705192a19a",
+      "sourceRef": "Bildungsplan Mathematik Gymnasium Jahrgangsstufe 5-10, Bremen 2006, S. 8",
+      "sourceSpan": "S. 8, Zentrale mathematische Tätigkeiten der Jahrgänge 5-9",
+      "canonicalGoalId": "27b63e2e-6a34-483e-8e5a-fe0f49670d1d",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-central-activities-5-9-026-c050758763::27b63e2e-6a34-483e-8e5a-fe0f49670d1d": {
+      "stage": "SekI",
+      "canonicalDistance": 0,
+      "sourceGoalId": "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-central-activities-5-9-026-c050758763",
+      "sourceRef": "Bildungsplan Mathematik Gymnasium Jahrgangsstufe 5-10, Bremen 2006, S. 8",
+      "sourceSpan": "S. 8, Zentrale mathematische Tätigkeiten der Jahrgänge 5-9",
+      "canonicalGoalId": "27b63e2e-6a34-483e-8e5a-fe0f49670d1d",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-process-standards-015-56f5f06a15::27b63e2e-6a34-483e-8e5a-fe0f49670d1d": {
+      "stage": "SekI",
+      "canonicalDistance": 0,
+      "sourceGoalId": "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-process-standards-015-56f5f06a15",
+      "sourceRef": "Bildungsplan Mathematik Gymnasium Jahrgangsstufe 5-10, Bremen 2006, S. 22",
+      "sourceSpan": "S. 22, Prozessbezogene Kompetenzen am Ende der Jahrgangsstufe 9",
+      "canonicalGoalId": "27b63e2e-6a34-483e-8e5a-fe0f49670d1d",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-042-3e79952ab6::0fd96c54-c629-45aa-a640-e2718890ddf9": {
+      "stage": "SekI",
+      "canonicalDistance": 1,
+      "sourceGoalId": "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-042-3e79952ab6",
+      "sourceRef": "Bildungsplan Mathematik Gymnasium Jahrgangsstufe 5-10, Bremen 2006, S. 10",
+      "sourceSpan": "S. 10, Wesentliche Inhalte der Jahrgänge 5-9",
+      "canonicalGoalId": "0fd96c54-c629-45aa-a640-e2718890ddf9",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-043-e0e496338d::0fd96c54-c629-45aa-a640-e2718890ddf9": {
+      "stage": "SekI",
+      "canonicalDistance": 1,
+      "sourceGoalId": "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-043-e0e496338d",
+      "sourceRef": "Bildungsplan Mathematik Gymnasium Jahrgangsstufe 5-10, Bremen 2006, S. 10",
+      "sourceSpan": "S. 10, Wesentliche Inhalte der Jahrgänge 5-9",
+      "canonicalGoalId": "0fd96c54-c629-45aa-a640-e2718890ddf9",
+      "matchType": "exact"
+    },
+    "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-content-restriction-standards-008-65dc147ff2::0fd96c54-c629-45aa-a640-e2718890ddf9": {
+      "stage": "SekI",
+      "canonicalDistance": 1,
+      "sourceGoalId": "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-content-restriction-standards-008-65dc147ff2",
+      "sourceRef": "Anlage Einschraenkung der Gueltigkeit des Bildungsplans Mathematik Jahrgangsstufen 5-9, Bremen 2022, S. 2",
+      "sourceSpan": "S. 2, Eingeschränkte Inhaltsstandards für Jahrgang 9",
+      "canonicalGoalId": "0fd96c54-c629-45aa-a640-e2718890ddf9",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-5-001-64b2e6ed4d::2850e8f6-2330-50d3-a577-d519540d9924": {
+      "stage": "SekII",
+      "canonicalDistance": 0,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-5-001-64b2e6ed4d",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 22",
+      "sourceSpan": "S. 22, A 1.5",
+      "canonicalGoalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-central-activities-5-9-024-705192a19a::3010d965-b9b9-4dc5-9d04-d706725e9a30": {
+      "stage": "SekI",
+      "canonicalDistance": 0,
+      "sourceGoalId": "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-central-activities-5-9-024-705192a19a",
+      "sourceRef": "Bildungsplan Mathematik Gymnasium Jahrgangsstufe 5-10, Bremen 2006, S. 8",
+      "sourceSpan": "S. 8, Zentrale mathematische Tätigkeiten der Jahrgänge 5-9",
+      "canonicalGoalId": "3010d965-b9b9-4dc5-9d04-d706725e9a30",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-040-fa52edca01::3010d965-b9b9-4dc5-9d04-d706725e9a30": {
+      "stage": "SekI",
+      "canonicalDistance": 0,
+      "sourceGoalId": "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-040-fa52edca01",
+      "sourceRef": "Bildungsplan Mathematik Gymnasium Jahrgangsstufe 5-10, Bremen 2006, S. 10",
+      "sourceSpan": "S. 10, Wesentliche Inhalte der Jahrgänge 5-9",
+      "canonicalGoalId": "3010d965-b9b9-4dc5-9d04-d706725e9a30",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-2-001-118e146551::3c1d6ce7-099e-4267-9ff2-3d1526209a89": {
+      "stage": "SekII",
+      "canonicalDistance": 0,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-2-001-118e146551",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 26",
+      "sourceSpan": "S. 26, A 3.2",
+      "canonicalGoalId": "3c1d6ce7-099e-4267-9ff2-3d1526209a89",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-1-001-885972bb52::3c1d6ce7-099e-4267-9ff2-3d1526209a89": {
+      "stage": "SekII",
+      "canonicalDistance": 0,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-1-001-885972bb52",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 25",
+      "sourceSpan": "S. 25, A 3.1",
+      "canonicalGoalId": "3c1d6ce7-099e-4267-9ff2-3d1526209a89",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm1-1-004-7d01146c26::3c1d6ce7-099e-4267-9ff2-3d1526209a89": {
+      "stage": "SekII",
+      "canonicalDistance": 0,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm1-1-004-7d01146c26",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 18",
+      "sourceSpan": "S. 18, BM 1.1",
+      "canonicalGoalId": "3c1d6ce7-099e-4267-9ff2-3d1526209a89",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-process-standards-009-db88e281ba::3d8f5e4c-8f7b-49cf-bd83-1d9876db5bf6": {
+      "stage": "SekI",
+      "canonicalDistance": 0,
+      "sourceGoalId": "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-process-standards-009-db88e281ba",
+      "sourceRef": "Bildungsplan Mathematik Gymnasium Jahrgangsstufe 5-10, Bremen 2006, S. 21",
+      "sourceSpan": "S. 21, Prozessbezogene Kompetenzen am Ende der Jahrgangsstufe 9",
+      "canonicalGoalId": "3d8f5e4c-8f7b-49cf-bd83-1d9876db5bf6",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-content-restriction-overview-008-721bbac130::3d8f5e4c-8f7b-49cf-bd83-1d9876db5bf6": {
+      "stage": "SekI",
+      "canonicalDistance": 0,
+      "sourceGoalId": "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-content-restriction-overview-008-721bbac130",
+      "sourceRef": "Anlage Einschraenkung der Gueltigkeit des Bildungsplans Mathematik Jahrgangsstufen 5-9, Bremen 2022, S. 1",
+      "sourceSpan": "S. 1, Eingeschränkte wesentliche Inhalte für Jahrgang 9",
+      "canonicalGoalId": "3d8f5e4c-8f7b-49cf-bd83-1d9876db5bf6",
+      "matchType": "exact"
+    },
+    "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-content-restriction-standards-013-717bae51ea::3d8f5e4c-8f7b-49cf-bd83-1d9876db5bf6": {
+      "stage": "SekI",
+      "canonicalDistance": 0,
+      "sourceGoalId": "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-content-restriction-standards-013-717bae51ea",
+      "sourceRef": "Anlage Einschraenkung der Gueltigkeit des Bildungsplans Mathematik Jahrgangsstufen 5-9, Bremen 2022, S. 2",
+      "sourceSpan": "S. 2, Eingeschränkte Inhaltsstandards für Jahrgang 9",
+      "canonicalGoalId": "3d8f5e4c-8f7b-49cf-bd83-1d9876db5bf6",
+      "matchType": "exact"
+    },
+    "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-040-fa52edca01::42e19186-6769-41ac-a7bf-ab39bdb50661": {
+      "stage": "SekI",
+      "canonicalDistance": 0,
+      "sourceGoalId": "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-040-fa52edca01",
+      "sourceRef": "Bildungsplan Mathematik Gymnasium Jahrgangsstufe 5-10, Bremen 2006, S. 10",
+      "sourceSpan": "S. 10, Wesentliche Inhalte der Jahrgänge 5-9",
+      "canonicalGoalId": "42e19186-6769-41ac-a7bf-ab39bdb50661",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-031-4fc5ce0edf::2032d24f-13bf-4aa1-81bf-8788e1099c62": {
+      "stage": "SekI",
+      "canonicalDistance": 1,
+      "sourceGoalId": "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-031-4fc5ce0edf",
+      "sourceRef": "Bildungsplan Mathematik Gymnasium Jahrgangsstufe 5-10, Bremen 2006, S. 10",
+      "sourceSpan": "S. 10, Wesentliche Inhalte der Jahrgänge 5-9",
+      "canonicalGoalId": "2032d24f-13bf-4aa1-81bf-8788e1099c62",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-content-restriction-overview-006-7ff209ceae::2032d24f-13bf-4aa1-81bf-8788e1099c62": {
+      "stage": "SekI",
+      "canonicalDistance": 1,
+      "sourceGoalId": "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-content-restriction-overview-006-7ff209ceae",
+      "sourceRef": "Anlage Einschraenkung der Gueltigkeit des Bildungsplans Mathematik Jahrgangsstufen 5-9, Bremen 2022, S. 1",
+      "sourceSpan": "S. 1, Eingeschränkte wesentliche Inhalte für Jahrgang 9",
+      "canonicalGoalId": "2032d24f-13bf-4aa1-81bf-8788e1099c62",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-geometry-standards-004-07d46ae068::2032d24f-13bf-4aa1-81bf-8788e1099c62": {
+      "stage": "SekI",
+      "canonicalDistance": 1,
+      "sourceGoalId": "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-geometry-standards-004-07d46ae068",
+      "sourceRef": "Bildungsplan Mathematik Gymnasium Jahrgangsstufe 5-10, Bremen 2006, S. 23",
+      "sourceSpan": "S. 23, Geometrie-Standards für Jahrgang 9 aus bestehender Fassung",
+      "canonicalGoalId": "2032d24f-13bf-4aa1-81bf-8788e1099c62",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-5-001-64b2e6ed4d::5518ceb3-f668-5b52-a9b1-57653b16ca98": {
+      "stage": "SekII",
+      "canonicalDistance": 0,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a1-5-001-64b2e6ed4d",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 22",
+      "sourceSpan": "S. 22, A 1.5",
+      "canonicalGoalId": "5518ceb3-f668-5b52-a9b1-57653b16ca98",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-la1-5-001-9e699a2d8b::5518ceb3-f668-5b52-a9b1-57653b16ca98": {
+      "stage": "SekII",
+      "canonicalDistance": 0,
+      "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-la1-5-001-9e699a2d8b",
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 34",
+      "sourceSpan": "S. 34, LA 1.5",
+      "canonicalGoalId": "5518ceb3-f668-5b52-a9b1-57653b16ca98",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-027-7cab73e45c::9710e996-f6d0-4b8b-b893-592213c91767": {
+      "stage": "SekI",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-027-7cab73e45c",
+      "sourceRef": "Bildungsplan Mathematik Gymnasium Jahrgangsstufe 5-10, Bremen 2006, S. 10",
+      "sourceSpan": "S. 10, Wesentliche Inhalte der Jahrgänge 5-9",
+      "canonicalGoalId": "9710e996-f6d0-4b8b-b893-592213c91767",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-030-992f1f3f15::6248bbd7-c7e8-4f91-b3dc-de885cf5abce": {
+      "stage": "SekI",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-030-992f1f3f15",
+      "sourceRef": "Bildungsplan Mathematik Gymnasium Jahrgangsstufe 5-10, Bremen 2006, S. 10",
+      "sourceSpan": "S. 10, Wesentliche Inhalte der Jahrgänge 5-9",
+      "canonicalGoalId": "6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-031-4fc5ce0edf::9710e996-f6d0-4b8b-b893-592213c91767": {
+      "stage": "SekI",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-031-4fc5ce0edf",
+      "sourceRef": "Bildungsplan Mathematik Gymnasium Jahrgangsstufe 5-10, Bremen 2006, S. 10",
+      "sourceSpan": "S. 10, Wesentliche Inhalte der Jahrgänge 5-9",
+      "canonicalGoalId": "9710e996-f6d0-4b8b-b893-592213c91767",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-041-66ebd2a136::9710e996-f6d0-4b8b-b893-592213c91767": {
+      "stage": "SekI",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-041-66ebd2a136",
+      "sourceRef": "Bildungsplan Mathematik Gymnasium Jahrgangsstufe 5-10, Bremen 2006, S. 10",
+      "sourceSpan": "S. 10, Wesentliche Inhalte der Jahrgänge 5-9",
+      "canonicalGoalId": "9710e996-f6d0-4b8b-b893-592213c91767",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j6-content-standards-017-3cc4a8f06b::6248bbd7-c7e8-4f91-b3dc-de885cf5abce": {
+      "stage": "SekI",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j6-content-standards-017-3cc4a8f06b",
+      "sourceRef": "Bildungsplan Mathematik Gymnasium Jahrgangsstufe 5-10, Bremen 2006, S. 15",
+      "sourceSpan": "S. 15, Inhaltsbezogene Kompetenzen am Ende der Jahrgangsstufe 6",
+      "canonicalGoalId": "6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j8-content-standards-012-41856f5074::9710e996-f6d0-4b8b-b893-592213c91767": {
+      "stage": "SekI",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j8-content-standards-012-41856f5074",
+      "sourceRef": "Bildungsplan Mathematik Gymnasium Jahrgangsstufe 5-10, Bremen 2006, S. 18",
+      "sourceSpan": "S. 18, Inhaltsbezogene Kompetenzen am Ende der Jahrgangsstufe 8",
+      "canonicalGoalId": "9710e996-f6d0-4b8b-b893-592213c91767",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j8-content-standards-013-879bc2a201::9710e996-f6d0-4b8b-b893-592213c91767": {
+      "stage": "SekI",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j8-content-standards-013-879bc2a201",
+      "sourceRef": "Bildungsplan Mathematik Gymnasium Jahrgangsstufe 5-10, Bremen 2006, S. 18",
+      "sourceSpan": "S. 18, Inhaltsbezogene Kompetenzen am Ende der Jahrgangsstufe 8",
+      "canonicalGoalId": "9710e996-f6d0-4b8b-b893-592213c91767",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j8-content-standards-021-a12b3068a8::9710e996-f6d0-4b8b-b893-592213c91767": {
+      "stage": "SekI",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j8-content-standards-021-a12b3068a8",
+      "sourceRef": "Bildungsplan Mathematik Gymnasium Jahrgangsstufe 5-10, Bremen 2006, S. 19",
+      "sourceSpan": "S. 19, Inhaltsbezogene Kompetenzen am Ende der Jahrgangsstufe 8",
+      "canonicalGoalId": "9710e996-f6d0-4b8b-b893-592213c91767",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-content-restriction-overview-005-21243a2fd3::6248bbd7-c7e8-4f91-b3dc-de885cf5abce": {
+      "stage": "SekI",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-content-restriction-overview-005-21243a2fd3",
+      "sourceRef": "Anlage Einschraenkung der Gueltigkeit des Bildungsplans Mathematik Jahrgangsstufen 5-9, Bremen 2022, S. 1",
+      "sourceSpan": "S. 1, Eingeschränkte wesentliche Inhalte für Jahrgang 9",
+      "canonicalGoalId": "6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-content-restriction-overview-006-7ff209ceae::9710e996-f6d0-4b8b-b893-592213c91767": {
+      "stage": "SekI",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-content-restriction-overview-006-7ff209ceae",
+      "sourceRef": "Anlage Einschraenkung der Gueltigkeit des Bildungsplans Mathematik Jahrgangsstufen 5-9, Bremen 2022, S. 1",
+      "sourceSpan": "S. 1, Eingeschränkte wesentliche Inhalte für Jahrgang 9",
+      "canonicalGoalId": "9710e996-f6d0-4b8b-b893-592213c91767",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-geometry-standards-001-9309018189::6248bbd7-c7e8-4f91-b3dc-de885cf5abce": {
+      "stage": "SekI",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-geometry-standards-001-9309018189",
+      "sourceRef": "Bildungsplan Mathematik Gymnasium Jahrgangsstufe 5-10, Bremen 2006, S. 23",
+      "sourceSpan": "S. 23, Geometrie-Standards für Jahrgang 9 aus bestehender Fassung",
+      "canonicalGoalId": "6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-geometry-standards-002-1ef0253177::6248bbd7-c7e8-4f91-b3dc-de885cf5abce": {
+      "stage": "SekI",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-geometry-standards-002-1ef0253177",
+      "sourceRef": "Bildungsplan Mathematik Gymnasium Jahrgangsstufe 5-10, Bremen 2006, S. 23",
+      "sourceSpan": "S. 23, Geometrie-Standards für Jahrgang 9 aus bestehender Fassung",
+      "canonicalGoalId": "6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-geometry-standards-003-419614a224::6248bbd7-c7e8-4f91-b3dc-de885cf5abce": {
+      "stage": "SekI",
+      "canonicalDistance": 2,
+      "sourceGoalId": "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-geometry-standards-003-419614a224",
+      "sourceRef": "Bildungsplan Mathematik Gymnasium Jahrgangsstufe 5-10, Bremen 2006, S. 23",
+      "sourceSpan": "S. 23, Geometrie-Standards für Jahrgang 9 aus bestehender Fassung",
+      "canonicalGoalId": "6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-geometry-standards-004-07d46ae068::9710e996-f6d0-4b8b-b893-592213c91767": {
+      "stage": "SekI",
+      "canonicalDistance": 3,
+      "sourceGoalId": "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-geometry-standards-004-07d46ae068",
+      "sourceRef": "Bildungsplan Mathematik Gymnasium Jahrgangsstufe 5-10, Bremen 2006, S. 23",
+      "sourceSpan": "S. 23, Geometrie-Standards für Jahrgang 9 aus bestehender Fassung",
+      "canonicalGoalId": "9710e996-f6d0-4b8b-b893-592213c91767",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-030-992f1f3f15::7b01d3d8-1fff-5924-b133-5a4825dc742e": {
+      "stage": "SekI",
+      "canonicalDistance": 0,
+      "sourceGoalId": "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-030-992f1f3f15",
+      "sourceRef": "Bildungsplan Mathematik Gymnasium Jahrgangsstufe 5-10, Bremen 2006, S. 10",
+      "sourceSpan": "S. 10, Wesentliche Inhalte der Jahrgänge 5-9",
+      "canonicalGoalId": "7b01d3d8-1fff-5924-b133-5a4825dc742e",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-content-restriction-overview-005-21243a2fd3::7b01d3d8-1fff-5924-b133-5a4825dc742e": {
+      "stage": "SekI",
+      "canonicalDistance": 0,
+      "sourceGoalId": "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-content-restriction-overview-005-21243a2fd3",
+      "sourceRef": "Anlage Einschraenkung der Gueltigkeit des Bildungsplans Mathematik Jahrgangsstufen 5-9, Bremen 2022, S. 1",
+      "sourceSpan": "S. 1, Eingeschränkte wesentliche Inhalte für Jahrgang 9",
+      "canonicalGoalId": "7b01d3d8-1fff-5924-b133-5a4825dc742e",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-geometry-standards-003-419614a224::7b01d3d8-1fff-5924-b133-5a4825dc742e": {
+      "stage": "SekI",
+      "canonicalDistance": 0,
+      "sourceGoalId": "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-geometry-standards-003-419614a224",
+      "sourceRef": "Bildungsplan Mathematik Gymnasium Jahrgangsstufe 5-10, Bremen 2006, S. 23",
+      "sourceSpan": "S. 23, Geometrie-Standards für Jahrgang 9 aus bestehender Fassung",
+      "canonicalGoalId": "7b01d3d8-1fff-5924-b133-5a4825dc742e",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-031-4fc5ce0edf::7f11ffe0-7c43-4507-9101-50374a60b0e8": {
+      "stage": "SekI",
+      "canonicalDistance": 0,
+      "sourceGoalId": "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-031-4fc5ce0edf",
+      "sourceRef": "Bildungsplan Mathematik Gymnasium Jahrgangsstufe 5-10, Bremen 2006, S. 10",
+      "sourceSpan": "S. 10, Wesentliche Inhalte der Jahrgänge 5-9",
+      "canonicalGoalId": "7f11ffe0-7c43-4507-9101-50374a60b0e8",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-content-restriction-overview-006-7ff209ceae::7f11ffe0-7c43-4507-9101-50374a60b0e8": {
+      "stage": "SekI",
+      "canonicalDistance": 0,
+      "sourceGoalId": "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-content-restriction-overview-006-7ff209ceae",
+      "sourceRef": "Anlage Einschraenkung der Gueltigkeit des Bildungsplans Mathematik Jahrgangsstufen 5-9, Bremen 2022, S. 1",
+      "sourceSpan": "S. 1, Eingeschränkte wesentliche Inhalte für Jahrgang 9",
+      "canonicalGoalId": "7f11ffe0-7c43-4507-9101-50374a60b0e8",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-geometry-standards-004-07d46ae068::7f11ffe0-7c43-4507-9101-50374a60b0e8": {
+      "stage": "SekI",
+      "canonicalDistance": 0,
+      "sourceGoalId": "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-geometry-standards-004-07d46ae068",
+      "sourceRef": "Bildungsplan Mathematik Gymnasium Jahrgangsstufe 5-10, Bremen 2006, S. 23",
+      "sourceSpan": "S. 23, Geometrie-Standards für Jahrgang 9 aus bestehender Fassung",
+      "canonicalGoalId": "7f11ffe0-7c43-4507-9101-50374a60b0e8",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-030-992f1f3f15::bb227e31-0b0b-544a-b5e0-548256a70dec": {
+      "stage": "SekI",
+      "canonicalDistance": 0,
+      "sourceGoalId": "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-030-992f1f3f15",
+      "sourceRef": "Bildungsplan Mathematik Gymnasium Jahrgangsstufe 5-10, Bremen 2006, S. 10",
+      "sourceSpan": "S. 10, Wesentliche Inhalte der Jahrgänge 5-9",
+      "canonicalGoalId": "bb227e31-0b0b-544a-b5e0-548256a70dec",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-content-restriction-overview-005-21243a2fd3::bb227e31-0b0b-544a-b5e0-548256a70dec": {
+      "stage": "SekI",
+      "canonicalDistance": 0,
+      "sourceGoalId": "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-content-restriction-overview-005-21243a2fd3",
+      "sourceRef": "Anlage Einschraenkung der Gueltigkeit des Bildungsplans Mathematik Jahrgangsstufen 5-9, Bremen 2022, S. 1",
+      "sourceSpan": "S. 1, Eingeschränkte wesentliche Inhalte für Jahrgang 9",
+      "canonicalGoalId": "bb227e31-0b0b-544a-b5e0-548256a70dec",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-geometry-standards-003-419614a224::bb227e31-0b0b-544a-b5e0-548256a70dec": {
+      "stage": "SekI",
+      "canonicalDistance": 0,
+      "sourceGoalId": "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-geometry-standards-003-419614a224",
+      "sourceRef": "Bildungsplan Mathematik Gymnasium Jahrgangsstufe 5-10, Bremen 2006, S. 23",
+      "sourceSpan": "S. 23, Geometrie-Standards für Jahrgang 9 aus bestehender Fassung",
+      "canonicalGoalId": "bb227e31-0b0b-544a-b5e0-548256a70dec",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-054-e9741a3d7d::c7911f0f-83d4-44ba-9f28-bdc1a5e8cb4a": {
+      "stage": "SekI",
+      "canonicalDistance": 1,
+      "sourceGoalId": "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-054-e9741a3d7d",
+      "sourceRef": "Bildungsplan Mathematik Gymnasium Jahrgangsstufe 5-10, Bremen 2006, S. 10",
+      "sourceSpan": "S. 10, Wesentliche Inhalte der Jahrgänge 5-9",
+      "canonicalGoalId": "c7911f0f-83d4-44ba-9f28-bdc1a5e8cb4a",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j8-content-standards-032-3522853972::c7911f0f-83d4-44ba-9f28-bdc1a5e8cb4a": {
+      "stage": "SekI",
+      "canonicalDistance": 1,
+      "sourceGoalId": "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j8-content-standards-032-3522853972",
+      "sourceRef": "Bildungsplan Mathematik Gymnasium Jahrgangsstufe 5-10, Bremen 2006, S. 20",
+      "sourceSpan": "S. 20, Inhaltsbezogene Kompetenzen am Ende der Jahrgangsstufe 8",
+      "canonicalGoalId": "c7911f0f-83d4-44ba-9f28-bdc1a5e8cb4a",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j8-content-standards-036-5aa3d22ce4::c7911f0f-83d4-44ba-9f28-bdc1a5e8cb4a": {
+      "stage": "SekI",
+      "canonicalDistance": 1,
+      "sourceGoalId": "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j8-content-standards-036-5aa3d22ce4",
+      "sourceRef": "Bildungsplan Mathematik Gymnasium Jahrgangsstufe 5-10, Bremen 2006, S. 20",
+      "sourceSpan": "S. 20, Inhaltsbezogene Kompetenzen am Ende der Jahrgangsstufe 8",
+      "canonicalGoalId": "c7911f0f-83d4-44ba-9f28-bdc1a5e8cb4a",
+      "matchType": "partial"
+    },
+    "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-content-restriction-standards-012-e0352db78c::c7911f0f-83d4-44ba-9f28-bdc1a5e8cb4a": {
+      "stage": "SekI",
+      "canonicalDistance": 1,
+      "sourceGoalId": "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-content-restriction-standards-012-e0352db78c",
+      "sourceRef": "Anlage Einschraenkung der Gueltigkeit des Bildungsplans Mathematik Jahrgangsstufen 5-9, Bremen 2022, S. 2",
+      "sourceSpan": "S. 2, Eingeschränkte Inhaltsstandards für Jahrgang 9",
+      "canonicalGoalId": "c7911f0f-83d4-44ba-9f28-bdc1a5e8cb4a",
+      "matchType": "partial"
+    }
+  }
+}

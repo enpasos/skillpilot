@@ -17,6 +17,7 @@ import Ajv2020 from 'ajv/dist/2020.js'
 import addFormats from 'ajv-formats'
 import {
   createFullStandalonePackagePlan,
+  fullStandaloneTrustedSchemaCount,
   materializeFullStandalonePackage,
   sourceVerificationCheckerArguments,
   type FullStandaloneManifestFile,
@@ -26,6 +27,19 @@ type JsonObject = Record<string, unknown>
 
 const scriptDir = dirname(fileURLToPath(import.meta.url))
 const realRepositoryRoot = resolve(scriptDir, '../..')
+for (const [profileId, count] of [
+  ['full-standalone-v1', 22], ['full-standalone-completion-v1', 26],
+  ['full-standalone-learning-units-v1', 25], ['full-standalone-v1.3', 28],
+] as const) assert.equal(fullStandaloneTrustedSchemaCount(profileId), count)
+assert.throws(() => fullStandaloneTrustedSchemaCount('unknown-profile'), /Unsupported/)
+const runtime13Profile = JSON.parse(readFileSync(resolve(realRepositoryRoot,
+  'contracts/curriculum-package/v1.3/profiles/full-standalone-v1.3.profile.json'), 'utf8')) as {
+  profileId: string; trustedContractSchemas: Array<{ id: string }>
+}
+assert.equal(runtime13Profile.trustedContractSchemas.length, fullStandaloneTrustedSchemaCount(runtime13Profile.profileId))
+assert(runtime13Profile.trustedContractSchemas.some(binding => binding.id
+  === 'https://skillpilot.com/schemas/curriculum-package/v1.3/runtime-composition-view.schema.json'),
+'runtime 1.3 must register its closed partial-order view component')
 const tempParent = resolve(realRepositoryRoot, 'tmp')
 mkdirSync(tempParent, { recursive: true })
 const fixtureRepositoryRoot = mkdtempSync(resolve(tempParent, 'full-package-builder-self-test.'))

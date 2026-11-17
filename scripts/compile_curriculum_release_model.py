@@ -1070,7 +1070,9 @@ def schema_validator(path: Path) -> Draft202012Validator:
 
 
 def validate_schema(value: Any, schema_name: str, context: str) -> None:
-    if isinstance(value, dict) and value.get("$schema") in {
+    if isinstance(value, dict) and value.get("$schema") == v13_contracts.VIEW_SCHEMA_ID:
+        validator = schema_validator(REPO_ROOT / v13_contracts.VIEW_SCHEMA_PATH)
+    elif isinstance(value, dict) and value.get("$schema") in {
         v13_contracts.RESOURCE_SCHEMA_ID, v13_contracts.CATALOG_SCHEMA_ID, v13_contracts.BUILD_PROFILE_SCHEMA_ID,
     }:
         validator = v13_contracts.validators(REPO_ROOT)[value["$schema"]]
@@ -1095,6 +1097,45 @@ def validate_schema(value: Any, schema_name: str, context: str) -> None:
             rendered.append(f"{location}: {error.message}")
         extra = "" if len(errors) <= 20 else f" (+{len(errors) - 20} more)"
         raise CompilationError(f"{context} does not satisfy {schema_name}: {'; '.join(rendered)}{extra}")
+
+
+def compile_composition_view(value: dict[str, Any], locale: str, context: str,
+                             *, allow_partial_order: bool = False) -> dict[str, Any]:
+    """Compile an explicitly supported runtime view without discarding order.
+
+    Only the evolving common 1.3 profile admits source-view 1.2 and projects it
+    to its closed runtime 1.2 view schema. Older profiles reject it. Authoring
+    provenance remains source-bound; planning pairs remain runtime content.
+    """
+    partial = value.get("$schema") == v13_contracts.SOURCE_VIEW_SCHEMA_ID and value.get("viewFormatVersion") == "1.2"
+    if not (allow_partial_order and partial) and (value.get("$schema", SCHEMA_IDS["composition-view"]) != SCHEMA_IDS["composition-view"]
+            or value.get("viewFormatVersion", "1.0") != "1.0"):
+        raise CompilationError(f"{context}: unsupported composition view format for the selected DPK profile; refusing downgrade to 1.0")
+    compiled = copy.deepcopy(value)
+    compiled["$schema"] = v13_contracts.VIEW_SCHEMA_ID if partial else SCHEMA_IDS["composition-view"]
+    compiled["viewFormatVersion"] = "1.2" if partial else "1.0"
+    compiled["language"] = locale
+    pending_nodes = list(compiled.get("rootNodes", []))
+    while pending_nodes:
+        node = pending_nodes.pop()
+        if partial and isinstance(node, dict) and node.get("kind") == "goalEntry":
+            node.pop("placementEvidence", None)
+        if isinstance(node, dict) and node.get("kind") == "structure":
+            if "childOrder" in node and not partial:
+                raise CompilationError(f"{context}: childOrder requires a newer composition view package contract; refusing order loss")
+            # These authored rationale fields are not part of the V1 runtime.
+            for field in ("canonicalSourceGoalId", "canonicalSourceNode",
+                          "canonicalSourcePhase", "placementEvidence", "labelEn", "originalCanonicalSubtree"):
+                node.pop(field, None)
+            if isinstance(node.get("children"), list):
+                pending_nodes.extend(node["children"])
+    validate_schema(compiled, "composition-view", context)
+    if partial:
+        try:
+            v13_contracts.validate_child_orders(compiled)
+        except ValueError as error:
+            raise CompilationError(f"{context}: {error}") from error
+    return compiled
 
 
 def escape_pointer_segment(value: str) -> str:
@@ -3159,23 +3200,12 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
         value = load_json(source_path)
         if not isinstance(value, dict):
             raise CompilationError(f"Composition view must be an object: {source_path}")
-        compiled = copy.deepcopy(value)
-        compiled["$schema"] = SCHEMA_IDS["composition-view"]
-        compiled["viewFormatVersion"] = "1.0"
-        compiled["language"] = profile["compositionViews"]["locale"]
-        # The authored placement rationale remains bound by the source file.
-        # Runtime structures use their existing label, id and ordered children;
-        # the v1 view contract does not consume authoring provenance or labelEn.
-        pending_nodes = list(compiled.get("rootNodes", []))
-        while pending_nodes:
-            node = pending_nodes.pop()
-            if isinstance(node, dict) and node.get("kind") == "structure":
-                for field in ("canonicalSourceGoalId", "canonicalSourceNode",
-                              "canonicalSourcePhase", "placementEvidence", "labelEn"):
-                    node.pop(field, None)
-                if isinstance(node.get("children"), list):
-                    pending_nodes.extend(node["children"])
-        validate_schema(compiled, "composition-view", str(source_path))
+        compiled = compile_composition_view(value, profile["compositionViews"]["locale"], str(source_path),
+                                            allow_partial_order=material_profile)
+        try:
+            v13_contracts.validate_acquisition_placements(compiled, source_goal_by_id)
+        except ValueError as error:
+            raise CompilationError(f"{source_path}: {error}") from error
         output_path = f"{profile['compositionViews']['outputDirectory'].rstrip('/')}/{source_path.name}"
         compiled_views.append((output_path, compiled))
         write_json(output_root, output_path, compiled)
@@ -4061,8 +4091,12 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
     expected_content_counts = dict(publication_profile["expectedCounts"]["contentIndex"])
     if material_profile:
         # The historical publication profile pins its original visualization
-        # inventory. The common 1.3 build profile additionally binds task media.
+        # inventory. Common 1.3 binds current task media and the independently
+        # counted composition-view inventory without rewriting that history.
         expected_content_counts["binaryResources"] = profile["expectedCounts"]["embeddedImages"]
+        expected_content_counts["totalLogicalArtifacts"] += (
+            profile["expectedCounts"]["views"] - profile["compositionViews"]["publicationBaseViewCount"]
+        )
     if (
         len(publication_logical_documents)
         != expected_content_counts["addedLogicalArtifacts"]

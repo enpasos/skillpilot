@@ -1,0 +1,82 @@
+{
+  "reviewedTestHash": "724280de4593fc4d64332927d28f68efc535f334c17b50d6cacae8f8b079189a",
+  "currentTestHash": "724280de4593fc4d64332927d28f68efc535f334c17b50d6cacae8f8b079189a",
+  "extractGuardHash": "bb77fbc3ab18e323a801b2e0774fa333ab48aad9084b8388fe1c38bfd1fed3a0",
+  "v33ManifestHash": "427007d68b1ba28d0aec7a5b11b846cd1f6998918722a70c30fef755154bddf0",
+  "results": [
+    {
+      "case": "all original32+32 raw atomic role bindings",
+      "pass": true,
+      "bindingChecks": 64,
+      "atomicChecks": 1024
+    },
+    {
+      "case": "baseline de-he-gk.view.json",
+      "pass": true,
+      "seeds": 495,
+      "learning": 710,
+      "markers": 177
+    },
+    {
+      "case": "baseline de-he-lk.view.json",
+      "pass": true,
+      "seeds": 584,
+      "learning": 757,
+      "markers": 172
+    },
+    {
+      "case": "baseline de-de-gym-physics-gk.view.json",
+      "pass": true,
+      "seeds": 512,
+      "learning": 754,
+      "markers": 197
+    },
+    {
+      "case": "baseline de-bb-seki.view.json",
+      "pass": true,
+      "seeds": 126,
+      "learning": 191,
+      "markers": 66
+    },
+    {
+      "case": "LK missing actual gravitation atom",
+      "rejected": true,
+      "error": "AssertionError [ERR_ASSERTION]: de-he-gym-physics-lk: opened gravitation retains the exact reviewed atomic course scope 16caf92e-2800-57d1-946c-5b92ce848a96\n\nfalse !== true\n"
+    },
+    {
+      "case": "GK forbidden LK target",
+      "rejected": true,
+      "error": "AssertionError [ERR_ASSERTION]: de-he-gym-physics-gk: opened gravitation retains the exact reviewed atomic course scope 16caf92e-2800-57d1-946c-5b92ce848a96\n\ntrue !== false\n"
+    },
+    {
+      "case": "GK missing original override",
+      "rejected": true,
+      "error": "AssertionError [ERR_ASSERTION]: de-he-gym-physics-gk must retain all three explicit gravitation prerequisiteOnly overrides\n+ actual - expected ... Lines skipped\n\n  [\n    {\n...\n      goalId: '423e21b9-0d0c-5709-899d-7ab738b55e36',\n      kind: 'canonicalSubtree'\n-   },\n-   {\n-     goalId: '89cadf81-143b-5f6b-82bd-29ba20d92a1b',\n-     kind: 'goalEntry'\n    }\n  ]"
+    },
+    {
+      "case": "BB additional marker remains dormant without demand",
+      "pass": true,
+      "goalId": "71e8936b-fa8a-50dc-8c47-fca015b85ac5"
+    },
+    {
+      "case": "BB acquisition changed into target",
+      "rejected": true,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n+ [\n+   {\n+     code: 'CPV-011',\n+     message: 'acquisitionPlacement requires a nested explicit prerequisiteOnly goalEntry in view format 1.2.',\n+     nodePath: '0.0.1.4.0',\n+     severity: 'error'\n+   }\n+ ]\n- []"
+    },
+    {
+      "case": "BB duplicate needed acquisition",
+      "rejected": true,
+      "error": "AssertionError [ERR_ASSERTION]: de-bb-gym-seki-physics: one explicit acquisition location per canonical atom\n\n66 !== 67\n"
+    },
+    {
+      "case": "BB excluded-jurisdiction target cannot activate prerequisite marker",
+      "pass": true,
+      "external": "71e8936b-fa8a-50dc-8c47-fca015b85ac5",
+      "prep": "658cf33d-a0c2-5d47-801a-3dbcd5cac074"
+    },
+    {
+      "case": "BB reordered arrays",
+      "pass": true
+    }
+  ]
+}

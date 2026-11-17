@@ -152,7 +152,16 @@
         "4ad7303d-22ad-56e6-aee0-f05b2ca42a07",
         "7bdd1853-164e-54ca-8255-497ea8edd1f1",
         "cc308bcc-435b-527d-b898-efafdf47c48a",
-        "2a5dfdf6-73e7-5336-a37f-cbf2dabec55e"
+        "2a5dfdf6-73e7-5336-a37f-cbf2dabec55e",
+        "3b7b2b62-e39c-5936-b0d8-5406206e57b6",
+        "57a03b38-5ec5-5e4f-b71a-4024bab1584c",
+        "797f5e93-b5fd-5ee3-9fb2-fcc9e1d12a00",
+        "7cfaf48e-e420-5c09-8ec2-932f0dba4d08",
+        "884bd99b-2373-5174-af7c-c6813b91bd93",
+        "bff1d8b0-fe2e-52e6-a467-dd0b6a1a4a04",
+        "e6a89922-75ce-53dd-9e7b-3a683398431c",
+        "f41e4e30-794e-5ce4-ba5e-cc72712cd691",
+        "f602680f-ea75-5bed-ae87-72f6be34a99b"
       ],
       "requires": [],
       "applicability": {
@@ -58328,7 +58337,9 @@
         "coveredGoalIds": [
           "e4b38061-1f28-43ad-8371-a3e7c0e81856"
         ],
-        "coveredStrands": [],
+        "coveredStrands": [
+          "LI_BEWEGUNG"
+        ],
         "demandLevels": [
           "AB1",
           "AB2"
@@ -63721,6 +63732,996 @@
             }
           ]
         }
+      }
+    },
+    {
+      "id": "3b7b2b62-e39c-5936-b0d8-5406206e57b6",
+      "shortKey": "lens_eye_two_model_simulations",
+      "title": "Prüfungsaufgabe: Zwei Linsenaugen konstruieren und simulieren",
+      "titleEn": "Assessment: Construct and simulate two lens-eye models",
+      "description": "Zwei unabhängige Modellfälle mit Strahlenkonstruktion, quantitativem Schärfekriterium, eigenen Parameterläufen und begründeten Grenzen der Ein-Linsen-Näherung.",
+      "descriptionEn": "Two independent model cases with ray construction, a quantitative sharp-image condition, own parameter runs, and justified limits of the single-lens approximation.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment",
+        "canonical"
+      ],
+      "type": "atomic",
+      "contains": [],
+      "requires": [
+        "84ddb244-e560-592f-9d43-e84c801fe5b4"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_WELLEN",
+          "LI_FELDER",
+          "LI_TECHNIK"
+        ],
+        "phase": "GLOBAL",
+        "area": "Biophysik",
+        "topicCode": "CANONICAL_PHYSICS_BIOPHYSICS_LENS_EYE_TWO_MODEL_SIMULATIONS"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-MV",
+          "DE-SL"
+        ]
+      },
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary",
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-MV",
+            "DE-SL"
+          ]
+        }
+      },
+      "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "84ddb244-e560-592f-9d43-e84c801fe5b4"
+        ],
+        "coveredStrands": [
+          "LI_WELLEN",
+          "LI_FELDER",
+          "LI_TECHNIK"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2",
+          "AB3"
+        ],
+        "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/physik/stage-source-route-repair-20261117-v1/lens-eye-two-model-simulations.md",
+        "taskContent": "Modelliere zwei vereinfachte Linsenaugen A und B. Es handelt sich um eine eigene schulische Modellaufgabe, keine Messung an einem echten Auge. Du benötigst Papier, Lineal und einen Taschenrechner oder eine Tabellenkalkulation. Reiche für A und B jeweils eine eigene Konstruktion, einen nachvollziehbaren Rechenweg, ein selbst berechnetes Simulationsprotokoll und eine begründete Modellkritik ein.\n\nMaterial und Regeln: Eine einzige dünne Sammellinse ersetzt sämtliche brechenden Flächen des Auges. Ihre Ebene liegt bei x=0, die optische Achse bei y=0. Der Gegenstandspfeil steht links bei x=−g mit der Spitze auf y=G. Die ebene Netzhaut liegt rechts im festen Abstand b_R. Alle Längen werden in mm angegeben; g, f und b sind für die hier betrachteten reellen Gegenstände und Bilder positiv. Die Linsengleichung lautet 1/f=1/g+1/b. Ein zur Achse paralleler Strahl läuft hinter der Linse durch den bildseitigen Brennpunkt; ein Strahl durch die Linsenmitte verläuft ungebrochen. Das Modell gilt für achsennahe Strahlen und kleine Öffnungen. Die Netzhaut wird bei der Akkommodation im Modell nicht verschoben; die Brennweite f kann verändert werden. Für eine Simulation stellst du die Eingaben (g,f) ein, berechnest die Ausgabe b_sim=1/(1/f−1/g) und anschließend Δ=b_sim−b_R. Protokolliere die Eingaben, Ausgaben und deine Deutung. Δ=0 ist das quantitative Schärfekriterium dieses Modells. Es ist keine Messunsicherheit vorgegeben; erfinde keine Fehlerbalken.\n\nA: Gegeben sind g=180 mm, G=1,8 mm und b_R=20 mm.\nA1 Zeichne eine beschriftete, bei Bedarf nicht maßstäbliche Strahlenkonstruktion mit Achse, Linse, Gegenstand, Netzhaut und dem bildseitigen Brennpunkt für scharfe Abbildung. Konstruiere von der Gegenstandsspitze den Parallelstrahl und den Mittelpunktstrahl. Zeige ihren gemeinsamen Bildpunkt auf der Netzhaut und kennzeichne die Bildorientierung. Leite die benötigte Brennweite mit der Linsengleichung her und bestimme die Bildhöhe aus der Konstruktion oder ähnlichen Dreiecken.\nA2 Erzeuge ein eigenes Simulationsprotokoll für dieselbe Gegenstandslage mit f=15 mm, 18 mm und 20 mm. Berechne jeweils b_sim und Δ und entscheide begründet, ob der Bildpunkt vor, auf oder hinter der Netzhaut liegt. Ändere danach nur g auf 90 mm und führe mit der zuvor für g=180 mm passenden Brennweite einen neuen Simulationslauf aus. Bestimme anschließend die neue Brennweite für scharfe Abbildung bei unverändertem b_R und überprüfe sie durch einen weiteren Lauf. Beschreibe, welche Modellgröße sich beim Nahsehen ändern muss und in welcher Richtung.\nA3 Beurteile die Behauptung: „Wenn Δ=0 herauskommt, beweist diese Simulation für ein reales Auge ein scharfes Bild bei beliebiger Pupillenöffnung und auch weit außerhalb der optischen Achse.“ Erkläre an mindestens einer ausdrücklich genannten Modellannahme, was die Rechnung tatsächlich zeigt und welche Aussage sie nicht begründet.\n\nB: Bearbeite mit einer neuen eigenen Konstruktion und neuen Rechnungen den zweiten Modellfall g=120 mm, G=1,0 mm und b_R=24 mm. Ein bloßer Verweis auf die Zahlen oder Zeichnung aus A genügt nicht.\nB1 Konstruiere Parallel- und Mittelpunktstrahl für eine scharfe Netzhautabbildung, beschrifte den Brennpunkt und bestimme Brennweite, Bildhöhe und Bildorientierung mit nachvollziehbarer Rechnung.\nB2 Simuliere diese Gegenstandslage für f=15 mm, 20 mm und 24 mm; dokumentiere wieder b_sim, Δ und die Lage des Bildpunkts. Ändere dann nur g auf 60 mm. Teste zunächst die bisher passende Brennweite, ermittle die neue passende Brennweite bei fester Netzhaut und überprüfe sie in einem zusätzlichen Lauf. Vergleiche die nötige Änderung mit deiner Strahlenkonstruktion.\nB3 Eine Mitschülerin verschiebt in ihrer Simulation bei g=60 mm die Netzhaut einfach zum berechneten Bildpunkt und nennt dies „Akkommodation des Modells“. Prüfe, ob sie damit die vereinbarte Modellbedingung erfüllt. Gib stattdessen die zulässige Änderung an. Erkläre außerdem eine weitere Grenze des Ein-Linsen-Modells, die nicht schon allein in „achsennahe Strahlen“ besteht: Was kann dieses vereinfachte optische Modell über das Zusammenspiel der einzelnen brechenden Flächen oder die anschließende Wahrnehmung nicht entscheiden? Begründe deine Grenze, statt nur „ungenau“ zu schreiben.\n\nAndere fachlich gleichwertige Rechen-, Konstruktions- und Simulationswege sind zulässig. Ein Tabellenblatt oder ein kurzes Programm darf verwendet werden; ein fremdes Protokoll oder eine reine Beschreibung ohne selbst berechnete Parameterläufe ersetzt die Simulationen nicht.",
+        "taskContentEn": "Model two simplified lens eyes A and B. This is an original school modelling task, not a measurement on a real eye. Use paper, a ruler, and a calculator or spreadsheet. For each case submit your own ray construction, traceable calculations, a simulation record you calculated yourself, and a justified discussion of model limits.\n\nMaterial and rules: One thin converging lens replaces all refracting surfaces of the eye. Its plane is at x=0 and the optical axis is y=0. An object arrow is on the left at x=−g with its tip at y=G. A flat retina is on the right at the fixed distance b_R. All lengths are in mm; g, f, and b are positive for the real objects and images considered here. The lens equation is 1/f=1/g+1/b. A ray parallel to the axis passes through the image-side focal point after the lens; a ray through the lens centre continues undeviated. The model is restricted to paraxial rays and small apertures. During accommodation in this model the retina does not move; focal length f can change. For a simulation set the inputs (g,f), calculate the output b_sim=1/(1/f−1/g), and then Δ=b_sim−b_R. Record inputs, outputs, and your interpretation. Δ=0 is this model's quantitative sharp-image criterion. No measurement uncertainty is supplied; do not invent error bars.\n\nA: g=180 mm, G=1.8 mm, and b_R=20 mm.\nA1 Draw a labelled ray construction, not necessarily to scale, showing axis, lens, object, retina, and image-side focal point for a sharp image. Construct the parallel ray and central ray from the object tip. Show their common image point on the retina and indicate image orientation. Derive the required focal length using the lens equation and determine image height from the construction or similar triangles.\nA2 Produce your own simulation record for that object position with f=15 mm, 18 mm, and 20 mm. Calculate b_sim and Δ for each and justify whether the image point is before, on, or behind the retina. Then change only g to 90 mm and run the model with the focal length previously suitable for g=180 mm. Determine the new focal length giving a sharp image at unchanged b_R and verify it in another run. Describe which model parameter must change for near vision and in which direction.\nA3 Evaluate: 'If the simulation gives Δ=0, it proves that a real eye has a sharp image for any pupil opening and far from the optical axis.' Refer to at least one explicit model assumption and explain what the calculation does establish and which claim it cannot support.\n\nB: Produce a new construction and new calculations for a second model with g=120 mm, G=1.0 mm, and b_R=24 mm. Merely referring to A's numbers or drawing is insufficient.\nB1 Construct parallel and central rays for a sharp retinal image, label the focal point, and determine focal length, image height, and orientation with traceable calculations.\nB2 Simulate this object position for f=15 mm, 20 mm, and 24 mm, recording b_sim, Δ, and image location. Then change only g to 60 mm. First test the previously suitable focal length, determine the new suitable focal length at a fixed retina, and verify it in an additional run. Relate the required change to your ray construction.\nB3 A classmate simply moves the retina in her g=60 mm simulation to the calculated image point and calls that 'accommodation of the model'. Check whether this satisfies the agreed model condition and state the permitted change instead. Also explain another limit of the single-lens model beyond merely 'paraxial rays': what can this simplified optical model not decide about the contribution of individual refracting surfaces or subsequent perception? Justify the limit rather than merely saying 'inaccurate'.\n\nScientifically equivalent calculation, construction, and simulation methods are accepted. You may use a spreadsheet or short program; somebody else's record or a description without your own calculated parameter runs cannot replace the simulations.",
+        "solutionContent": "A: f=gb_R/(g+b_R)=18 mm. Der Mittelpunktstrahl hat die Steigung −G/g=−0,01 und trifft bei (x=20 mm; y=−0,2 mm) auf die Netzhaut. Der Parallelstrahl verlässt die Linse bei (x=0; y=1,8 mm), läuft durch (x=18 mm; y=0) und trifft denselben Bildpunkt. Das Bild ist reell und umgekehrt, seine Höhe beträgt 0,2 mm (gerichtet B=−0,2 mm). Für f=15,18,20 mm erhält man b_sim=180/11≈16,364;20;22,5 mm, also Δ≈−3,636;0;+2,5 mm: vor/auf/hinter der Netzhaut. Für g=90 mm mit altem f=18 mm gilt b_sim=22,5 mm und Δ=+2,5 mm. Neue passende Brennweite f=180/11≈16,364 mm liefert b_sim=20 mm und Δ=0. Nahsehen verlangt in diesem Modell kleinere Brennweite bei fester Netzhaut. Δ=0 ist nur die Schnittbedingung der modellierten paraxialen Strahlen: große Öffnungen und achsenferne Strahlen werden von den Modellannahmen nicht erfasst; deren Bildqualität folgt daraus nicht.\n\nB: f=20 mm. Der Mittelpunktstrahl hat Steigung −1/120; bei x=24 mm liegt die Spitze bei y=−0,2 mm. Der Parallelstrahl läuft von (x=0; y=1,0 mm) über den Fokus (x=20 mm; y=0) zu demselben Bildpunkt. Reelles umgekehrtes Bild, Höhe 0,2 mm. Für f=15,20,24 mm folgt b_sim=120/7≈17,143;24;30 mm, somit Δ≈−6,857;0;+6 mm: vor/auf/hinter der Netzhaut. Für g=60 mm und altes f=20 mm gilt b_sim=30 mm, Δ=+6 mm. Neue passende Brennweite f=120/7≈17,143 mm liefert b_sim=24 mm und Δ=0. Die neue passende Brennweite liegt zwischen Linse und Netzhaut; der durch sie gehende Parallelstrahl und der neue Mittelpunktstrahl schneiden sich auf der unveränderten Netzhaut. Eine Verschiebung der Netzhaut verletzt die in dieser Aufgabe vereinbarte feste Geometrie und ersetzt keine Brennweitenänderung. Eine einzige Ersatzlinse besitzt keine getrennten Parameter für Hornhaut und Augenlinse und kann deshalb ihre individuellen Beiträge oder Änderungen nicht aus der Rechnung bestimmen. Alternativ ist begründet zulässig: Ein reiner Strahlen-Schnittpunkt beschreibt keine neuronale Verarbeitung/Wahrnehmungsleistung. Eine mathematisch scharfe Modellabbildung ist kein vollständiger Nachweis realer Sehschärfe.\n\nBewertung: Acht Kernleistungen, je maximal 3 BE, insgesamt 24 BE, Bestehensgrenze 23 BE. Je Kernleistung 3 BE bei vollständiger fachlich korrekter Demonstration; 2 BE sind bei vollständig erbrachter Kernleistung mit einem isolierten nicht konzeptionellen Rechen-/Rundungs-/Beschriftungsfehler möglich. Fehlt ein geforderter zentraler Teil (etwa einer der Strahlen, einer der tatsächlichen Parameterläufe, die quantitative Schärfebedingung oder die begründete Modellgrenze), erhält dieser Kern 0 BE. Dadurch kann kein fehlender Kern durch andere Leistungen kompensiert werden. Gleichwertige mathematische Methoden und sinnvolle Rundungen werden akzeptiert; exakte Wörter oder die hier gewählte Reihenfolge sind nicht gefordert. Die zwei Fälle müssen getrennte eigene Darstellungen und Parameterprotokolle enthalten. Es wird eine Modellierungsleistung geprüft, kein realer Augenversuch und keine medizinische Aussage.",
+        "solutionContentEn": "A: f=gb_R/(g+b_R)=18 mm. The central ray has slope −G/g=−0.01 and reaches the retina at (x=20 mm, y=−0.2 mm). The parallel ray leaves the lens at (x=0, y=1.8 mm), passes through (x=18 mm, y=0), and reaches the same image point. The image is real and inverted; its height is 0.2 mm (signed B=−0.2 mm). With f=15,18,20 mm, b_sim=180/11≈16.364;20;22.5 mm, so Δ≈−3.636;0;+2.5 mm: before/on/behind the retina. At g=90 mm with old f=18 mm, b_sim=22.5 mm and Δ=+2.5 mm. The new suitable f=180/11≈16.364 mm gives b_sim=20 mm and Δ=0. Near vision in this model requires a smaller focal length at a fixed retina. Δ=0 only establishes the intersection condition for the modelled paraxial rays: large apertures and off-axis rays are outside the assumptions, so their image quality does not follow.\n\nB: f=20 mm. The central ray has slope −1/120 and reaches y=−0.2 mm at x=24 mm. The parallel ray goes from (x=0, y=1.0 mm) through the focal point (x=20 mm, y=0) to the same image point. The real inverted image has height 0.2 mm. For f=15,20,24 mm, b_sim=120/7≈17.143;24;30 mm, hence Δ≈−6.857;0;+6 mm: before/on/behind the retina. At g=60 mm with old f=20 mm, b_sim=30 mm and Δ=+6 mm. The new suitable f=120/7≈17.143 mm gives b_sim=24 mm and Δ=0. The suitable new focal point is between lens and retina; the parallel ray passing through it and the new central ray intersect at the unchanged retina. Moving the retina violates the fixed geometry agreed in this task and cannot replace a focal-length change. One equivalent lens has no separate parameters for cornea and crystalline lens, so the calculation cannot determine their individual contributions or changes. Alternatively, a justified explanation that a purely optical ray intersection does not describe neural processing or perception is valid. Mathematical sharpness in the model is not full evidence of real visual acuity.\n\nGrading: Eight core performances, each up to 3 points; total 24, passing threshold 23. Award 3 points for a complete scientifically correct demonstration; 2 may be awarded for a fully demonstrated core containing one isolated non-conceptual arithmetic, rounding, or labelling slip. If a central required component is missing (for example one of the rays, one of the actual parameter runs, the quantitative sharp-image condition, or a justified model limit), award 0 for that core. Thus no absent core can be compensated by other performance. Accept equivalent mathematical methods and sensible rounding; exact wording and the reference solution's order are not required. The two cases require separate own representations and parameter records. This assesses modelling, not a real eye experiment or a medical claim.",
+        "scoring": {
+          "maxPoints": 24,
+          "passingPoints": 23,
+          "steps": [
+            {
+              "id": "a-rays",
+              "points": 3,
+              "description": "A: Beide beschrifteten Strahlen, gemeinsamer Netzhautbildpunkt, Bildhöhe und Orientierung nachvollziehbar. / EN: Both labelled rays, common retinal image point, image height, and orientation justified."
+            },
+            {
+              "id": "a-equation",
+              "points": 3,
+              "description": "A: Quantitative Schärfebedingung mit hergeleiteter passender Brennweite bei fester Netzhaut. / EN: Quantitative sharp-image condition with derived suitable focal length at a fixed retina."
+            },
+            {
+              "id": "a-simulation",
+              "points": 3,
+              "description": "A: Drei eigene Parameterläufe sowie Nahvariation mit altem und neuem f, Ausgaben/Δ und begründete Richtungsdeutung. / EN: Three own parameter runs plus near variation with old/new f, outputs/Δ, and justified direction of change."
+            },
+            {
+              "id": "a-limit",
+              "points": 3,
+              "description": "A: Behauptung anhand expliziter Modellannahme begründet begrenzt, keine unzulässige reale Schärfegarantie. / EN: Bounds the claim using an explicit model assumption, without an unwarranted real-eye sharpness guarantee."
+            },
+            {
+              "id": "b-rays",
+              "points": 3,
+              "description": "B: Neue vollständige Strahlenkonstruktion, Bildpunkt, Bildhöhe und Orientierung unabhängig von A. / EN: New complete ray construction, image point, height, and orientation independently of A."
+            },
+            {
+              "id": "b-equation",
+              "points": 3,
+              "description": "B: Neue quantitative Schärfebedingung und passende Brennweite nachvollziehbar hergeleitet. / EN: Independently derives the new quantitative sharp-image condition and suitable focal length."
+            },
+            {
+              "id": "b-simulation",
+              "points": 3,
+              "description": "B: Drei eigene Läufe und Nahvariation mit altem/neuem f, korrekte Geometrie, Δ und Konstruktionsbezug. / EN: Three own runs and near variation with old/new f, correct geometry, Δ, and link to the construction."
+            },
+            {
+              "id": "b-limit",
+              "points": 3,
+              "description": "B: Netzhautverschiebung als Verletzung der vereinbarten Modellbedingung erkannt, zulässige Parameteränderung und begründete weitere Ersatzlinsen-/Wahrnehmungsgrenze. / EN: Identifies the retina move as violating the agreed model, gives the permitted parameter change, and justifies another equivalent-lens/perception limit."
+            }
+          ]
+        },
+        "reviewNote": "Independent bilingual content and complete competency-coverage acceptance by /root: curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/independent-review/lens-eye-two-model-simulations.content-review.actual.json. Separately reviewed own curricular offer: curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/independent-review/offer-bindings.actual.json. Contents, rubric and requires retain the accepted candidate; the exact jurisdiction overrides and boundary are an own offering, not an official task claim. Automated/content review is not a learner trial or evidence of effectiveness; no learner mastery is written or transferred."
+      }
+    },
+    {
+      "id": "57a03b38-5ec5-5e4f-b71a-4024bab1584c",
+      "shortKey": "astronomical_observation_two_evidence_cases",
+      "title": "Prüfungsaufgabe: Zwei astronomische Beobachtungen erklären",
+      "titleEn": "Assessment: Explain two astronomical observations",
+      "description": "An zwei unabhängigen qualitativen Beobachtungsfällen Astronomie als Beobachtungswissenschaft, die Rolle des Teleskops und die Auswertung eines Spektrums erläutern.",
+      "descriptionEn": "Explain astronomy as an observational science, the role of a telescope, and interpretation of a spectrum in two independent qualitative observation cases.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment",
+        "canonical"
+      ],
+      "type": "atomic",
+      "contains": [],
+      "requires": [
+        "2b700858-bc2e-5ddf-a791-b14d44160480"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_KOSMOS"
+        ],
+        "phase": "GLOBAL",
+        "area": "Astronomie",
+        "topicCode": "CANONICAL_PHYSICS_ASTRONOMICAL_OBSERVATION_TWO_EVIDENCE_CASES"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-SN"
+        ]
+      },
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary",
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-SN"
+          ]
+        }
+      },
+      "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "2b700858-bc2e-5ddf-a791-b14d44160480"
+        ],
+        "coveredStrands": [
+          "LI_KOSMOS"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2"
+        ],
+        "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/physik/stage-source-route-repair-20261117-v1/astronomical-observation-two-evidence-cases.md",
+        "taskContent": "Bearbeite zwei unabhängige astronomische Modellfälle. Alle unten genannten Muster und Messprotokolle sind eigens erfundene Unterrichtsdaten; sie gehören zu keinem realen Stern, Nebel oder chemischen Element. Es sind keine Rechnungen, keine eigenen Himmelsbeobachtungen und kein Wissen über reale Elementlinien erforderlich.\n\nMaterial: Ein Spektrometer zerlegt eintreffendes Licht nach Wellenlängen; ein Detektor zeichnet die Helligkeit in Abhängigkeit von der Wellenlänge auf. Im Modell hat jede der Vergleichssubstanzen P und Q ein charakteristisches Muster: P zeigt Linien bei 430, 490 und 610 nm; Q bei 460, 540 und 650 nm. In dünnem selbstleuchtendem Gas können diese Linien hell erscheinen; durchstrahltes kühleres Gas kann an den entsprechenden Stellen dunkle Absorptionslinien hinterlassen. Die Geräte sind im Modell kalibriert, alle angegebenen Linien getrennt aufgelöst. Verschiebungen der Linien und Überlagerungen aus verschiedenen Quellen sind für diese Fälle ausgeschlossen. Die Muster sind Hilfsmittel für Aussagen über das beobachtete Gas; sie beweisen weder die vollständige Zusammensetzung noch sämtliche Eigenschaften des ganzen Objekts.\n\nA — Licht eines fernen Sterns: In einem hellen kontinuierlichen Sternspektrum beobachtet ein Team dunkle Linien bei 430, 490 und 610 nm. Es möchte prüfen, welche der beiden Vergleichssubstanzen zum durchstrahlten Gas vor der helleren Lichtquelle passt.\nA1 Erkläre, warum das Team hier Astronomie als Beobachtungswissenschaft betreibt. Was kommt vom fernen Objekt zum Team, was kann es am Stern selbst nicht nach Belieben verändern, und wie kann es die Verlässlichkeit der eigenen Beobachtung trotzdem prüfen? Nenne einen konkreten sinnvollen Prüfschritt am Instrument oder an der Wiederholung der Beobachtung.\nA2 Erläutere den Beitrag eines Teleskops zwischen Stern und Detektor: Warum hilft das Sammeln und Bündeln des schwachen Lichts? Unterscheide seine Funktion von der Funktion des Spektrometers. „Es vergrößert“ allein genügt nicht. Eine beschriftete Skizze darf deine Erklärung ergänzen.\nA3 Werte das Spektrum anhand des Materials aus. Nenne das passende Vergleichsmuster und belege die Zuordnung mit sämtlichen angegebenen Linien. Erkläre, warum die wellenlängenabhängige Helligkeitsinformation mehr aussagt als nur eine gewöhnliche Direktaufnahme ohne spektrale Auflösung. Begrenze die Schlussfolgerung: Ist damit bewiesen, dass der gesamte Stern ausschließlich aus dieser Substanz besteht?\n\nB — Licht einer Gaswolke: Ein anderes Team beobachtet eine ferne dünne Gaswolke mit hellen Linien bei 460, 540 und 650 nm und ohne starkes kontinuierliches Licht im betrachteten Bereich. Es vergleicht die Linien mit denselben Unterrichtsmustern P und Q.\nB1 Erkläre eigenständig, weshalb auch dies eine beobachtende Untersuchung ist. Prüfe: „Weil das Team die Gaswolke nicht im Labor verändern kann, kann es seine Erklärung überhaupt nicht wissenschaftlich prüfen.“ Nenne einen konkreten beobachtungs- oder instrumentbezogenen Prüfschritt und erläutere, was er prüfen kann.\nB2 Erkläre für diese schwache Gaswolke erneut die unterschiedlichen Beiträge von Teleskop, Spektrometer und Detektor. Welcher Teil sammelt und bündelt Licht, welcher trennt nach Wellenlängen, und welche Information wird aufgezeichnet? Ein Verweis auf die Antwort zu A ersetzt die Erklärung nicht.\nB3 Entscheide mit allen drei Linien, welches Vergleichsmuster passt, und erläutere, wie eine Aussage über das Gas ohne Probenentnahme möglich wird. Prüfe die Behauptung: „Eine einzige gewöhnliche Direktaufnahme ohne spektrale Auflösung würde dieselbe Zuordnung sicher beweisen, und aus drei Linien kennen wir bereits die vollständige Zusammensetzung der ganzen Wolke.“ Gib die vom vorliegenden Spektrum tatsächlich gestützte, engere Aussage an.",
+        "taskContentEn": "Complete two independent astronomical model cases. All patterns and observation records below are original fictional classroom data, not measurements of a real star, nebula, or chemical element. No calculations, personal sky observations, or knowledge of real elemental lines are required.\n\nMaterial: A spectrometer separates incoming light by wavelength; a detector records brightness as a function of wavelength. In this model each comparison substance P and Q has a characteristic pattern: P has lines at 430, 490, and 610 nm; Q at 460, 540, and 650 nm. In thin luminous gas these lines can be bright; cooler gas through which light passes can produce dark absorption lines at the corresponding positions. The model instruments are calibrated and all stated lines are resolved separately. Line shifts and superpositions from different sources are excluded in these cases. The patterns support statements about the observed gas; they do not prove the complete composition or every property of the whole object.\n\nA — Light from a distant star: A team observes dark lines at 430, 490, and 610 nm in a bright continuous stellar spectrum. It wants to check which of the two comparison substances matches the gas being illuminated in front of the brighter light source.\nA1 Explain why this is astronomy as an observational science. What reaches the team from the distant object, what can the team not change at will in the star itself, and how can it still check the reliability of its observation? Name one concrete, sensible check involving the instrument or a repeat observation.\nA2 Explain the telescope's contribution between star and detector: why is collecting and focusing the faint light useful? Distinguish its role from the spectrometer's role. Saying only 'it magnifies' is insufficient. A labelled sketch may support your explanation.\nA3 Interpret the spectrum using the material. Identify the matching reference pattern and support the match with all supplied lines. Explain why wavelength-dependent brightness provides more information than an ordinary direct image without spectral resolution. Bound the inference: does it prove that the entire star consists exclusively of that substance?\n\nB — Light from a gas cloud: Another team observes a distant thin gas cloud with bright lines at 460, 540, and 650 nm and no strong continuous light in the range studied. It compares these lines with the same classroom patterns P and Q.\nB1 Independently explain why this too is an observational investigation. Evaluate: 'Since the team cannot change the gas cloud in a laboratory, it cannot scientifically test its explanation at all.' Give one concrete observation- or instrument-related check and explain what it can test.\nB2 For this faint gas cloud, explain again the distinct contributions of telescope, spectrometer, and detector. Which collects and focuses light, which separates wavelengths, and what information is recorded? Referring to A does not replace the explanation.\nB3 Use all three lines to decide which reference pattern fits and explain how light permits a statement about the gas without collecting a sample. Evaluate: 'A single ordinary direct image without spectral resolution would prove the same identification, and three lines already establish the whole cloud's complete composition.' State the narrower inference actually supported by this spectrum.",
+        "solutionContent": "A1: Das Team empfängt Licht als Information vom Stern bzw. dem durchstrahlten Gas. Es stellt am fernen Stern keine gezielt veränderten Laborbedingungen her, sondern vergleicht Beobachtungen mit überprüfbaren Modellerwartungen. Zum Beispiel kann es die Wellenlängenzuordnung am Instrument mit einer Vergleichslichtquelle kontrollieren oder das Spektrum zu anderer Zeit erneut aufnehmen, um die Wiederholbarkeit der Linien zu prüfen. Eine Kalibrierprüfung prüft die Messzuordnung; eine Wiederholung prüft die Reproduzierbarkeit der Beobachtung. Beides bedeutet nicht, den Stern selbst zu manipulieren. A2: Eine Teleskopöffnung sammelt Licht über eine größere Fläche als ein bloßes Auge bzw. ein kleiner Detektor und führt es dem Instrument zu; dadurch stehen mehr Photonen des schwachen Objekts für die Auswertung zur Verfügung. Die Linse bzw. der Spiegel bündelt das Licht. Erst das Spektrometer trennt die Wellenlängen, der Detektor zeichnet ihre Helligkeiten auf. Eine reine Vergrößerung ersetzt weder das Lichtsammeln noch die spektrale Trennung. A3: Alle drei dunklen Positionen 430, 490, 610 nm passen zu P, keine zum angegebenen Dreiermuster Q. Unter den gegebenen Modellannahmen stützt das P im durchstrahlten Gas. Das Spektrum zeigt selektive Abschwächung an charakteristischen Wellenlängen; eine gewöhnliche Aufnahme integriert dagegen Licht über breitere Bereiche und zeigt dieses Linienmuster nicht. Die Beobachtung beschreibt das beobachtete Gas und beweist weder ausschließlich P im ganzen Stern noch das Fehlen aller anderen Stoffe.\n\nB1: Auch hier wird empfangenes Licht ausgewertet; die ferne Wolke wird nicht für einen kontrollierten Laborversuch verändert. Dennoch sind Aussagen prüfbar: etwa durch wiederholte Aufnahmen, Vergleich der drei erwarteten Linienpositionen mit den Daten oder eine instrumentelle Kalibrierkontrolle. Eine wiederholte Aufnahme kann zeigen, ob das Muster reproduzierbar ist; ein anderes kalibriertes Instrument kann eine rein gerätespezifische Erklärung prüfen. Beobachtung und Modellvergleich sind wissenschaftliche Prüfungen, auch ohne Eingriff ins Objekt. B2: Das Teleskop sammelt und bündelt möglichst viel Licht der schwachen Wolke; das Spektrometer trennt dieses Licht nach Wellenlängen; der Detektor erfasst die Helligkeit je Wellenlänge und damit helle Linien. Diese Funktionen sind verschieden und ergänzen sich. B3: Die hellen Linien 460, 540 und 650 nm passen vollständig zu Q. Das im Licht übermittelte charakteristische Muster stützt unter den Modellbedingungen Q im leuchtenden Gas, ohne dass eine Probe hierher gebracht werden muss. Eine gewöhnliche Direktaufnahme ohne spektrale Auflösung liefert kein aufgelöstes Dreilinienmuster. Drei passende Linien belegen keine vollständige Stoffinventur: Weitere Stoffe könnten unter den Beobachtungsbedingungen keine erfassten Linien liefern. Zulässig ist die engere Aussage, dass das beobachtete Emissionsmuster mit Q übereinstimmt; die gesamte Wolke muss nicht ausschließlich Q enthalten.\n\nGleichwertige konkrete Prüfideen sind zulässig; zusätzliche Aussagen über Temperatur, Entfernung, Bewegung, reale Elemente oder Spektralberechnungen werden weder verlangt noch als Ersatz für die drei Kernleistungen gewertet.\n\nBewertung: 6 Kernleistungen mit je 3 BE; insgesamt 18 BE, Bestehensgrenze 17 BE. Ein Kern erhält 3 BE für eine vollständige fachlich richtige Demonstration. 2 BE sind nur bei vollständig gezeigtem Kern mit einem isolierten nicht konzeptionellen Schreib-, Rechen- oder Rundungsfehler zulässig. Fehlt ein zentraler Teil oder liegt ein konzeptioneller Fehler vor, erhält dieser Kern 0 BE. Damit kann weder ein fehlender Kern noch ein fehlender Fall ausgeglichen werden. Gleichwertige fachlich richtige Begründungen, Darstellungen und Methoden sind zulässig; exakte Wörter der Musterlösung sind nicht verlangt. Beide Fälle brauchen eigenständige Antworten; ein bloßer Verweis auf den anderen Fall ersetzt keine Leistung.",
+        "solutionContentEn": "A1: The team receives light carrying information from the star or the illuminated gas. It does not impose deliberately altered laboratory conditions on the distant star; instead it compares observations with testable model expectations. For example, it can check the instrument's wavelength calibration with a reference light source or repeat the spectrum at another time to test whether the lines recur. Calibration checks the measurement assignment; repetition checks reproducibility. Neither means manipulating the star itself. A2: A telescope aperture gathers light over a larger area than an unaided eye or small detector and directs it to the instrument, making more photons from the faint object available for analysis. A lens or mirror focuses the light. The spectrometer then separates wavelengths, and the detector records their brightness. Magnification alone replaces neither light collection nor spectral separation. A3: All three dark positions, 430, 490, and 610 nm, match P, not Q's supplied three-line pattern. Under the given assumptions this supports P in the illuminated gas. The spectrum reveals selective attenuation at characteristic wavelengths; an ordinary direct image without spectral resolution integrates light over broader ranges and does not resolve this line pattern. The observation concerns the observed gas and proves neither exclusive P throughout the whole star nor the absence of every other substance.\n\nB1: This also analyses received light; the distant cloud is not altered for a controlled laboratory experiment. Nevertheless claims are testable, for example through repeat exposures, comparison of the three expected line positions with data, or instrumental calibration. A repeat observation can test reproducibility; another calibrated instrument can test an explanation specific to one instrument. Observation and model comparison are scientific tests even without intervening in the object. B2: The telescope collects and focuses as much light as possible from the faint cloud; the spectrometer separates it by wavelength; the detector records brightness at each wavelength and thus the bright lines. The functions are distinct and complementary. B3: Bright lines at 460, 540, and 650 nm fully match Q. The characteristic pattern conveyed by light supports Q in the luminous gas under the model conditions without bringing a sample here. An ordinary direct image without spectral resolution does not provide a resolved three-line pattern. Three matching lines do not establish a complete inventory: other substances could fail to produce recorded lines under the observation conditions. The supported narrower statement is that the observed emission pattern agrees with Q; the whole cloud need not consist exclusively of Q.\n\nEquivalent concrete checking ideas are accepted. Additional statements about temperature, distance, motion, real elements, or spectral calculations are neither required nor substitutes for the three core performances.\n\nGrading: 6 core performances worth 3 points each; total 18, passing threshold 17. Award 3 for a complete scientifically correct demonstration. Award 2 only when the core is fully demonstrated with one isolated non-conceptual writing, arithmetic, or rounding slip. A missing central component or a conceptual error earns 0 for that core. Thus neither an absent core nor an absent case can be compensated. Scientifically equivalent explanations, representations, and methods are accepted; the reference solution's exact wording is not required. Both cases require independent answers; merely referring to the other case does not demonstrate a performance.",
+        "scoring": {
+          "maxPoints": 18,
+          "passingPoints": 17,
+          "steps": [
+            {
+              "id": "A-observational",
+              "points": 3,
+              "description": "A: Beobachtung am fernen Objekt von eigenem Laboreingriff unterscheiden und eine konkrete prüfbare Beobachtungs-/Instrumentkontrolle mit Zweck erklären. / EN: A: Distinguish observing the distant object from manipulating it in a laboratory and explain one concrete observational/instrumental check and its purpose."
+            },
+            {
+              "id": "A-telescope",
+              "points": 3,
+              "description": "A: Lichtsammeln/Bündeln durch Teleskop, spektrale Trennung und Detektoraufzeichnung am konkreten Fall eigenständig erklären. / EN: A: Independently explain telescope light collection/focusing, spectral separation, and detector recording in the specific case."
+            },
+            {
+              "id": "A-spectrum",
+              "points": 3,
+              "description": "A: Alle drei Linien passend auswerten, Informationsgewinn gegenüber einer Direktaufnahme ohne spektrale Auflösung erklären und Aussage auf beobachtetes Gas begrenzen. / EN: A: Interpret all three lines, explain the information gained beyond a direct image without spectral resolution, and restrict the inference to the observed gas."
+            },
+            {
+              "id": "B-observational",
+              "points": 3,
+              "description": "B: Beobachtung am fernen Objekt von eigenem Laboreingriff unterscheiden und eine konkrete prüfbare Beobachtungs-/Instrumentkontrolle mit Zweck erklären. / EN: B: Distinguish observing the distant object from manipulating it in a laboratory and explain one concrete observational/instrumental check and its purpose."
+            },
+            {
+              "id": "B-telescope",
+              "points": 3,
+              "description": "B: Lichtsammeln/Bündeln durch Teleskop, spektrale Trennung und Detektoraufzeichnung am konkreten Fall eigenständig erklären. / EN: B: Independently explain telescope light collection/focusing, spectral separation, and detector recording in the specific case."
+            },
+            {
+              "id": "B-spectrum",
+              "points": 3,
+              "description": "B: Alle drei Linien passend auswerten, Informationsgewinn gegenüber einer Direktaufnahme ohne spektrale Auflösung erklären und Aussage auf beobachtetes Gas begrenzen. / EN: B: Interpret all three lines, explain the information gained beyond a direct image without spectral resolution, and restrict the inference to the observed gas."
+            }
+          ]
+        },
+        "reviewNote": "Independent bilingual content and complete competency-coverage acceptance by /root: curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/independent-review/astronomical-observation-two-evidence-cases.content-review.actual.json. Separately reviewed own curricular offer: curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/independent-review/offer-bindings.actual.json. Contents, rubric and requires retain the accepted candidate; the exact jurisdiction overrides and boundary are an own offering, not an official task claim. Automated/content review is not a learner trial or evidence of effectiveness; no learner mastery is written or transferred."
+      }
+    },
+    {
+      "id": "797f5e93-b5fd-5ee3-9fb2-fcc9e1d12a00",
+      "shortKey": "decay_chains_two_consistency_audits",
+      "title": "Prüfungsaufgabe: Zwei Zerfallsreihen auf Konsistenz prüfen",
+      "titleEn": "Assessment: Check two decay chains for consistency",
+      "description": "Zwei unabhängige formale Zerfallsreihen vollständig prüfen, lokale Fehler von Folgefehlern trennen und mit A-/Z-Bilanzen berichtigen.",
+      "descriptionEn": "Fully check two independent formal decay chains, distinguish local errors from propagated errors, and correct them using A/Z balances.",
+      "weight": 1,
+      "tags": [
+        "LK",
+        "Practice",
+        "Assessment",
+        "canonical"
+      ],
+      "type": "atomic",
+      "contains": [],
+      "requires": [
+        "3b50255a-6b01-578b-8f5c-4383536a3221"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_MATERIE"
+        ],
+        "phase": "GLOBAL",
+        "area": "Kernphysik",
+        "topicCode": "CANONICAL_PHYSICS_DECAY_CHAINS_TWO_CONSISTENCY_AUDITS"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HH"
+        ]
+      },
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary",
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-HH"
+          ]
+        }
+      },
+      "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "3b50255a-6b01-578b-8f5c-4383536a3221"
+        ],
+        "coveredStrands": [
+          "LI_MATERIE"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2"
+        ],
+        "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/physik/stage-source-route-repair-20261117-v1/decay-chains-two-consistency-audits.md",
+        "taskContent": "Prüfe zwei vorgegebene Zerfallsreihen. [A,Z] steht für Massenzahl A (Anzahl der Nukleonen) und Kernladungszahl Z (Anzahl der Protonen). Die Zahlen sind eigens gewählte formale Prüfbeispiele, keine Behauptung über die Existenz oder tatsächlichen Zerfallswege dieser Nuklide. Geprüft wird nur die A-/Z-Konsistenz, nicht die energetische Möglichkeit oder Halbwertszeit.\n\nAlle benötigten Regeln: Beim α-Zerfall ändern sich die Kernzahlen um ΔA=−4 und ΔZ=−2; das abgegebene α-Teilchen trägt A=4 und die Ladungszahl +2. Beim β⁻-Zerfall gilt ΔA=0, ΔZ=+1; das Elektron trägt zur A-Bilanz 0 und zur Ladungsbilanz −1 bei, das zusätzlich abgegebene Antineutrino jeweils 0. Bei γ-Abgabe ändern sich A und Z nicht; das Photon trägt jeweils 0 bei. Bei den Bilanzgleichungen ist rechts der Tochterkern samt abgegebenen Teilchen zu berücksichtigen. Für γ ist der vorher angeregte Zustand vorausgesetzt, ohne ihn in [A,Z] gesondert anzugeben.\n\nA: [220,90] —α→ [216,88] —β⁻→ [216,87] —α→ [212,85].\nA1 Prüfe JEDEN gedruckten Pfeil zunächst allein mit seinem gedruckten Start- und Endpaar. Gib ΔA und ΔZ an und entscheide mit der jeweiligen Regel, ob dieser einzelne Schritt stimmt.\nA2 Berichtige anschließend die GESAMTE Reihe vom unveränderten Anfang [220,90] aus. Behalte die drei Zerfallsarten bei. Erkläre, warum ein für sich regelgerechter gedruckter Pfeil trotzdem einen falschen Endkern der Gesamtfolge liefern kann.\nA3 Begründe die Konsistenz deiner berichtigten Folge durch eine A- und eine Ladungsbilanz für jeden der drei Schritte, einschließlich der jeweils abgegebenen Teilchen.\n\nB: [180,72] —β⁻→ [180,73] —α→ [176,72] —β⁻→ [176,73] —γ→ [176,73].\nB1 Erstelle unabhängig von A eine vollständige Prüfung aller vier gedruckten Pfeile mit ΔA, ΔZ und Regelentscheidung.\nB2 Berichtige die ganze Folge ab [180,72], ohne die vier Zerfallsarten zu ändern. Unterscheide ausdrücklich den ersten lokalen Regelverstoß von seinen Auswirkungen auf spätere Kernzahlen.\nB3 Gib für jeden berichtigten Schritt A- und Ladungsbilanz einschließlich der abgegebenen Teilchen an. Erkläre gesondert, warum der γ-Schritt trotz Energieabgabe die hier geprüften beiden Kernzahlen unverändert lässt. Eine Prüfung nur der beiden Endpunkte ersetzt die Prüfung der Zwischenkerne nicht.",
+        "taskContentEn": "Check two supplied decay chains. [A,Z] denotes mass number A (number of nucleons) and atomic number Z (number of protons). These numbers are original formal checking examples, not claims that these nuclides or decay paths exist. Check A/Z consistency only, not energetic feasibility or half-life.\n\nAll required rules: In α decay the nuclear numbers change by ΔA=−4 and ΔZ=−2; the emitted α particle contributes A=4 and charge number +2. In β⁻ decay, ΔA=0 and ΔZ=+1; the electron contributes 0 to the A balance and −1 to the charge balance, and the accompanying antineutrino contributes 0 to both. γ emission leaves A and Z unchanged; the photon contributes 0 to both balances. The right-hand side of each balance includes the daughter nucleus and emitted particles. An initially excited state is assumed for γ emission without being separately displayed in [A,Z].\n\nA: [220,90] —α→ [216,88] —β⁻→ [216,87] —α→ [212,85].\nA1 First check EVERY printed arrow locally using its printed starting and ending pair. Give ΔA and ΔZ and use the relevant rule to decide whether that individual step is correct.\nA2 Then correct the ENTIRE chain from the unchanged starting pair [220,90]. Keep all three decay types. Explain why a printed arrow that is locally consistent can nevertheless give an incorrect final nucleus in the overall sequence.\nA3 Justify your corrected sequence with an A balance and a charge balance for each of its three steps, including emitted particles.\n\nB: [180,72] —β⁻→ [180,73] —α→ [176,72] —β⁻→ [176,73] —γ→ [176,73].\nB1 Independently of A, check all four printed arrows, giving ΔA, ΔZ, and a rule-based decision for each.\nB2 Correct the entire chain from [180,72] without changing its four decay types. Explicitly distinguish the first local rule violation from its effects on later nuclear numbers.\nB3 Give the A and charge balances for every corrected step, including emitted particles. Explain separately why the γ step leaves both nuclear numbers being checked unchanged despite releasing energy. Checking only the two endpoints does not replace checking the intermediate nuclei.",
+        "solutionContent": "A1: Die gedruckten Änderungen sind (−4,−2), (0,−1), (−4,−2). Nur der zweite Pfeil verletzt seine Regel: β⁻ verlangt +1 statt −1 für Z. A2: Die konsistente Folge lautet [220,90]→[216,88]→[216,89]→[212,87]. Der letzte gedruckte α-Schritt ist gegenüber seinem gedruckten Start lokal richtig; dieser Start wurde jedoch vom falschen β⁻-Ergebnis übernommen. Deshalb ist auch der gedruckte Gesamtendpunkt falsch. A3: Schritt 1: 220=216+4 und 90=88+2. Schritt 2: 216=216+0+0 und 88=89−1+0. Schritt 3: 216=212+4 und 89=87+2. In jeder Bilanz sind Kern und Emissionen enthalten.\n\nB1: Gedruckt ergeben sich (0,+1), (−4,−1), (0,+1), (0,0). Nur der zweite Pfeil verletzt lokal die Regel, denn α erfordert ΔZ=−2. B2: [180,72]→[180,73]→[176,71]→[176,72]→[176,72]. Die gedruckten Schritte 3 und 4 wenden ihre Regeln zwar auf die jeweils gedruckten Ausgangszahlen richtig an, übernehmen aber die beim zweiten Schritt erzeugte falsche Kernladungszahl. B3: Schritt 1: 180=180+0+0; 72=73−1+0. Schritt 2: 180=176+4; 73=71+2. Schritt 3: 176=176+0+0; 71=72−1+0. Schritt 4: 176=176+0; 72=72+0. Beim γ-Schritt wird Energie als Photon abgegeben, aber es verlässt kein Nukleon den Kern und die Protonenzahl ändert sich nicht. Daher bleiben A und Z gleich. A ist eine Nukleonenzahl, keine in kg gemessene Kernmasse; aus unverändertem A folgt keine Aussage über unveränderte Ruheenergie.\n\nBewertung: 6 Kernleistungen mit je 3 BE; insgesamt 18 BE, Bestehensgrenze 17 BE. Ein Kern erhält 3 BE für eine vollständige fachlich richtige Demonstration. 2 BE sind nur bei vollständig gezeigtem Kern mit einem isolierten nicht konzeptionellen Schreib-, Rechen- oder Rundungsfehler zulässig. Fehlt ein zentraler Teil oder liegt ein konzeptioneller Fehler vor, erhält dieser Kern 0 BE. Damit kann weder ein fehlender Kern noch ein fehlender Fall ausgeglichen werden. Gleichwertige fachlich richtige Begründungen, Darstellungen und Methoden sind zulässig; exakte Wörter der Musterlösung sind nicht verlangt. Beide Fälle brauchen eigenständige Antworten; ein bloßer Verweis auf den anderen Fall ersetzt keine Leistung.",
+        "solutionContentEn": "A1: The printed changes are (−4,−2), (0,−1), (−4,−2). Only the second arrow violates its rule: β⁻ requires Z to increase by 1 rather than decrease by 1. A2: The consistent chain is [220,90]→[216,88]→[216,89]→[212,87]. The final printed α step is locally correct relative to its printed starting pair, but that starting pair was inherited from the erroneous β⁻ result. Thus the printed overall endpoint is also wrong. A3: Step 1: 220=216+4 and 90=88+2. Step 2: 216=216+0+0 and 88=89−1+0. Step 3: 216=212+4 and 89=87+2. Each balance includes the nucleus and emissions.\n\nB1: The printed changes are (0,+1), (−4,−1), (0,+1), (0,0). Only the second arrow violates its local rule, since α requires ΔZ=−2. B2: [180,72]→[180,73]→[176,71]→[176,72]→[176,72]. Printed steps 3 and 4 correctly apply their rules to their printed starting numbers, but inherit the wrong atomic number produced at step 2. B3: Step 1: 180=180+0+0; 72=73−1+0. Step 2: 180=176+4; 73=71+2. Step 3: 176=176+0+0; 71=72−1+0. Step 4: 176=176+0; 72=72+0. γ emission releases energy as a photon without a nucleon leaving the nucleus or the number of protons changing. Hence A and Z stay unchanged. A counts nucleons; it is not the nuclear mass in kg. Unchanged A does not imply unchanged rest energy.\n\nGrading: 6 core performances worth 3 points each; total 18, passing threshold 17. Award 3 for a complete scientifically correct demonstration. Award 2 only when the core is fully demonstrated with one isolated non-conceptual writing, arithmetic, or rounding slip. A missing central component or a conceptual error earns 0 for that core. Thus neither an absent core nor an absent case can be compensated. Scientifically equivalent explanations, representations, and methods are accepted; the reference solution's exact wording is not required. Both cases require independent answers; merely referring to the other case does not demonstrate a performance.",
+        "scoring": {
+          "maxPoints": 18,
+          "passingPoints": 17,
+          "steps": [
+            {
+              "id": "A-local",
+              "points": 3,
+              "description": "A: Jeden gedruckten Pfeil mit beiden Änderungen und korrekter lokaler Regelentscheidung prüfen. / EN: A: Check every printed arrow using both changes and the correct local rule decision."
+            },
+            {
+              "id": "A-chain",
+              "points": 3,
+              "description": "A: Gesamte Folge korrekt berichtigen und lokalen Fehler von Folgefehlern unterscheiden. / EN: A: Correct the complete chain and distinguish a local error from propagated errors."
+            },
+            {
+              "id": "A-balance",
+              "points": 3,
+              "description": "A: Alle Schritte durch vollständige A-/Ladungsbilanzen begründen. / EN: A: Justify all steps with complete A/charge balances."
+            },
+            {
+              "id": "B-local",
+              "points": 3,
+              "description": "B: Jeden gedruckten Pfeil mit beiden Änderungen und korrekter lokaler Regelentscheidung prüfen. / EN: B: Check every printed arrow using both changes and the correct local rule decision."
+            },
+            {
+              "id": "B-chain",
+              "points": 3,
+              "description": "B: Gesamte Folge korrekt berichtigen und lokalen Fehler von Folgefehlern unterscheiden. / EN: B: Correct the complete chain and distinguish a local error from propagated errors."
+            },
+            {
+              "id": "B-balance",
+              "points": 3,
+              "description": "B: Alle Schritte durch vollständige A-/Ladungsbilanzen begründen; in B zusätzlich γ richtig deuten. / EN: B: Justify all steps with complete A/charge balances; additionally interpret γ correctly in B."
+            }
+          ]
+        },
+        "reviewNote": "Independent bilingual content and complete competency-coverage acceptance by /root/he_ephase_source_review: curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/independent-review/decay-chains-two-consistency-audits.content-review.actual.json. Separately reviewed own curricular offer: curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/independent-review/offer-bindings.actual.json. Contents, rubric and requires retain the accepted candidate; the exact jurisdiction overrides and boundary are an own offering, not an official task claim. Automated/content review is not a learner trial or evidence of effectiveness; no learner mastery is written or transferred."
+      }
+    },
+    {
+      "id": "7cfaf48e-e420-5c09-8ec2-932f0dba4d08",
+      "shortKey": "document_two_provided_investigations",
+      "title": "Prüfungsaufgabe: Zwei Untersuchungen nachvollziehbar dokumentieren",
+      "titleEn": "Assessment: Document two investigations traceably",
+      "description": "Zwei eigene vollständige Versuchsprotokolle aus klar bezeichnetem didaktischem Rohmaterial mit Beobachtung, Messwerten, eigener Auswertung und begrenzten Ergebnissen.",
+      "descriptionEn": "Two own complete reports from explicitly didactic raw material, including observations, measurements, own evaluation, and bounded results.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment",
+        "canonical"
+      ],
+      "type": "atomic",
+      "contains": [],
+      "requires": [
+        "ad62f563-4fee-5399-8d9c-03a214658aa9"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [],
+        "phase": "GLOBAL",
+        "area": "Denk- und Arbeitsweisen",
+        "topicCode": "CANONICAL.PHYSICS.ASSESSMENT.DOCUMENT_TWO_PROVIDED_INVESTIGATIONS"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary",
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      },
+      "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "ad62f563-4fee-5399-8d9c-03a214658aa9"
+        ],
+        "coveredStrands": [
+          "LI_BEWEGUNG"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2",
+          "AB3"
+        ],
+        "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/physik/stage-source-route-repair-20261117-v1/document-two-provided-investigations.md",
+        "taskContent": "Erstelle zu den beiden Materialfällen A und B jeweils ein eigenes vollständiges und gut nachvollziehbares physikalisches Versuchsprotokoll. Die unten ausdrücklich als didaktisch bereitgestellten Aufzeichnungen sind KEINE von dir erhobenen Messungen und keine Behauptung eines tatsächlich beobachteten Versuchs. Du sollst sie selbst auswählen, ordnen, auswerten und dokumentieren; eine übernommene Musterlösung oder bloß ausgefüllte Überschriften genügen nicht. Du musst für diese Dokumentationsaufgabe keinen eigenen Versuch durchführen. Beide Protokolle müssen für eine andere Person verständlich machen, was untersucht wurde, wie es untersucht wurde, welche Beobachtungen/Messwerte vorliegen, wie daraus Ergebnisse entstehen und welche Grenzen diese haben. Trenne bereitgestellte Beobachtungen, eigene Rechnungen, Annahmen und Schlussfolgerungen eindeutig.\n\nMaterial A – Wagen auf einer horizontalen Bahn, ungeordnete didaktische Laborzettel: Fragestellung: „Welche mittlere Geschwindigkeit hat der Wagen im markierten Abschnitt unter den beschriebenen Startbedingungen?“ Zwei Marken A und B wurden mit dem Maßband auf einer ebenen Bahn gesetzt; Abstand zwischen den Marken 0,600 m, geschätzte Ablesegrenze ±0,005 m. Gemessen wird vom Passieren der Marke A durch die vordere Achse bis zum Passieren der Marke B durch dieselbe Achse. Vor A wurde der Wagen jeweils von Hand sanft angeschoben; die Anschubstärke wurde nur angenähert gleich gehalten. Der Wagen rollte in allen gültigen Läufen in dieselbe Richtung durch beide Marken; keine Kollision, Beobachtung der vorderen Achse. Eine Person startete/stoppte eine Stoppuhr; Anzeige in 0,1 s, geschätzte Reaktions-/Zuordnungsgrenze ±0,2 s pro gemessener Gesamtzeit. Vorversuch P: 2,0 s, noch mit verändertem Anschub und vor Festlegung der endgültigen Methode; ausdrücklich kein gültiger Wiederholungslauf. Gültige Läufe A1: 2,4 s; A2: 2,5 s; A3: 2,6 s. Datum der bereitgestellten Aufzeichnung: 14.11.2026. Auswertungsregel: mittlere Geschwindigkeit im Abschnitt v=s/t; berechne sie für jeden gültigen Lauf und anschließend den arithmetischen Mittelwert dieser drei v-Werte. Gib auch die beobachtete Spannweite an. Eine Aussage über die momentane Geschwindigkeit an jedem Bahnpunkt folgt daraus nicht.\n\nProtokoll A: Formuliere die Fragestellung, beschreibe Material/Aufbau und den Messablauf mit den tatsächlichen Bezugspunkten aus den Zetteln. Eine eigene beschriftete Skizze darf den Text ersetzen, wenn sie alle nötigen Angaben enthält. Erstelle eine geordnete Tabelle aller Daten; kennzeichne den Vorversuch, dokumentiere die Begründung seiner getrennten Behandlung und bewahre seinen Wert in der Dokumentation. Zeige deine eigenen Auswertungsschritte mit einer nachvollziehbaren Beispielrechnung, allen drei Ergebnissen, Mittelwert und Spannweite samt Einheiten. Gib die bereitgestellten Messgrenzen korrekt an und unterscheide sie von der beobachteten Streuung. Beantworte die Frage in einem begründeten Ergebnisabsatz und nenne anhand des konkreten Aufbaus eine Grenze; behaupte weder perfekt gleiche Anschubbedingungen noch eine überall konstante Momentangeschwindigkeit.\n\nMaterial B – Eigenständiger zweiter Dokumentationsfall, Fadenpendel: Fragestellung: „Welche Periodendauer zeigt dieses Pendel bei den beschriebenen kleinen Auslenkungen?“ Aufbau: kleines Pendelgewicht an einem Faden, feste Aufhängung; Abstand Aufhängung bis Schwerpunkt 40,0 cm mit Ablesegrenze±0,5 cm. Auslenkung ungefähr 5°; aus Ruhe losgelassen, keine Berührung während der Messung. Eine vollständige Periode wird von der rechten Umkehrlage bis zur nächsten rechten Umkehrlage gezählt. Gemessen wurde für 20 volle Perioden; Start und Stopp erfolgten an derselben rechten Umkehrlage. Stoppuhranzeige 0,1 s; geschätzte Zuordnungs-/Reaktionsgrenze der gesamten Zeit±0,2 s. Gültige Läufe B1: 26,0 s; B2: 25,8 s; B3: 26,2 s. Zusätzlicher Zettel B4: 26,1 s, daneben „Anzahl 15 oder 20? Zählung nicht verlässlich“; der Zeitwert ist dokumentiert, die Periodenzahl aber nicht gesichert. Beobachtung: Ausschläge wurden allmählich kleiner, die Bewegung blieb sichtbar in einer Ebene. Datum der bereitgestellten Aufzeichnung: 15.11.2026. Auswertungsregel: T=t/N, wobei N die verlässlich gezählte Zahl vollständiger Perioden ist. Es soll weder g noch ein Pendelgesetz hergeleitet werden.\n\nProtokoll B: Erstelle unabhängig von A einen vollständigen strukturierten Bericht mit Fragestellung, Aufbau, Messdefinition, Beobachtungen und allen Rohwerten einschließlich B4. Entscheide begründet, welche Werte einen belastbaren Mittelwert von T zulassen; erfinde keine Periodenzahl für B4 und entferne ihn nicht still. Berechne T für jeden gültigen Lauf selbst sowie Mittelwert und Spannweite mit nachvollziehbarer Beispielrechnung und Einheiten. Unterscheide Messgrenzen, beobachtete Streuung und die fehlende Information bei B4. Formuliere ein aus diesen Daten begründetes Ergebnis mit konkreter Grenze. Eine sorgfältig erklärte andere fachtypische Darstellungsform ist gleichwertig, sofern sämtliche Beobachtungen, Messwerte, Auswertung und Ergebnisse für eine andere Person lückenlos nachvollziehbar bleiben.",
+        "taskContentEn": "Write your own complete, traceable physical investigation report for each material case A and B. The records below are explicitly didactic supplied material, NOT measurements you collected or a claim of an actually observed experiment. You must organise, evaluate, and document them yourself; a copied model answer or headings alone is insufficient. You need not perform an experiment for this documentation task. Each report must let another person understand the question, method, observations/data, how results were derived, and their limits. Clearly separate supplied observations, your calculations, assumptions, and conclusions.\n\nMaterial A – Cart on a horizontal track, unordered didactic notes: Question: 'What mean speed does the cart have within the marked section under the stated starting conditions?' Marks A and B were set using a tape measure on a level track; their separation is 0.600 m with estimated reading limit±0.005 m. Timing starts when the front axle passes A and ends when the same axle passes B. Before A the cart was gently pushed by hand; push strength was kept only approximately similar. In all valid trials it passed both marks in the same direction without collision; observers watched the front axle. One person started/stopped a stopwatch displaying 0.1 s; the estimated reaction/assignment limit is±0.2 s for each total interval. Pilot P: 2.0 s, with a different push before the final method was fixed; explicitly not a valid repeat. Valid trials A1: 2.4 s; A2: 2.5 s; A3: 2.6 s. Supplied-record date: 14 November 2026. Analysis rule: mean speed within the section v=s/t; calculate it for each valid trial, then take the arithmetic mean of those three speed values. Also report observed range. This does not determine instantaneous speed at every point.\n\nReport A: State the question, apparatus/setup, and procedure using the reference points in the notes. A labelled sketch may replace text if it contains all required information. Organise all raw data in a table; label the pilot, justify its separate treatment, and retain its value in the report. Show your own evaluation steps, one traceable example, all three results, mean, and range with units. Correctly report the supplied reading limits and distinguish them from observed scatter. Answer the question in a justified conclusion with a setup-specific limitation; claim neither perfectly identical pushes nor constant instantaneous speed throughout.\n\nMaterial B – Independent second documentation case, a simple pendulum: Question: 'What period does this pendulum show at the stated small amplitudes?' Setup: a small mass on a string with a fixed support; pivot-to-centre-of-mass distance 40.0 cm, reading limit±0.5 cm. Amplitude approximately 5°; released from rest with no contact during timing. A full period is counted from the right turning point to the next right turning point. Timing covers 20 complete periods; start and finish occur at the same right turning point. Stopwatch display 0.1 s; estimated reaction/assignment limit for the total interval±0.2 s. Valid trials B1: 26.0 s; B2: 25.8 s; B3: 26.2 s. Additional note B4: 26.1 s, beside '15 or 20 periods? Count unreliable'; time is recorded but period count is not established. Observation: amplitudes gradually decreased and motion remained visibly in one plane. Supplied-record date: 15 November 2026. Analysis rule: T=t/N, where N is the reliably counted number of complete periods. Do not derive g or a pendulum law.\n\nReport B: Independently produce a complete structured report with question, setup, measurement definition, observations, and all raw values including B4. Justify which data support a mean T; do not invent B4's count or silently delete it. Calculate T yourself for each valid trial and the mean and range, with a traceable worked example and units. Distinguish reading limits, observed scatter, and missing information in B4. Give a data-based conclusion with a concrete limitation. Another clearly explained subject-appropriate format is equally valid if another person can trace every observation, measurement, evaluation step, and result.",
+        "solutionContent": "A: Die drei Geschwindigkeiten sind 0,600/2,4=0,250 m/s; 0,600/2,5=0,240 m/s; 0,600/2,6≈0,23077 m/s. Ihr arithmetischer Mittelwert ist ≈0,24026 m/s, sinnvoll etwa 0,24 m/s. Der beobachtete Bereich reicht von ≈0,231 bis 0,250 m/s (Spannweite ≈0,0192 m/s). P bleibt als Vorversuch mit 2,0 s und Begründung im Protokoll, geht aber nicht in den Wiederholungsmittelwert ein. Die Längengrenze ±0,005 m und die geschätzte Zeitzuordnung ±0,2 s sind angegebene Messgrenzen, keine aus drei Wiederholungen berechneten Konfidenzintervalle. Handanschub und manuelles Timing begrenzen Vergleichbarkeit und Präzision; aus Abschnittszeiten folgt keine Momentangeschwindigkeit oder bewiesene Geschwindigkeitskonstanz.\n\nB: T-Werte 1,300 s; 1,290 s; 1,310 s, Mittelwert 1,300 s, beobachteter Bereich 1,290–1,310 s (Spannweite 0,020 s). B4 muss mit 26,1 s und fehlender verlässlicher Zählung dokumentiert bleiben. Erfundenes 15 oder 20 als gesicherte Zahl wäre unzulässig; ohne sicheres N ist B4 kein belastbarer Periodenwert für diesen Mittelwert. Die angegebene Zeitgrenze ±0,2 s für 20 Perioden entspräche allein bei fester Zählung ±0,010 s pro Periode; dies ist optional, keine Pflicht einer zusätzlichen Unsicherheitsrechnung. Berichte kleiner werdende Amplitude, Bezugspunkte und Zählverfahren, ohne eine Ursache oder absolut konstante Periodenlänge zu beweisen. Nachvollziehbares Dokumentieren und Rechnen ist gefragt, kein Beweis des Pendelgesetzes.\n\nIn beiden Berichten sind die vorgegebenen didaktischen Aufzeichnungen als Quelle gekennzeichnet. Die Lernleistung ist die eigene vollständige Dokumentation und Auswertung, keine Behauptung eines persönlichen Versuchs. Eine andere geordnete Darstellung darf gleichwertig sein; es gibt keine Pflicht, bestimmte Überschriften wortgleich zu kopieren.\n\nBewertung: Acht Kernleistungen, jeweils 3 BE bei vollständiger fachlich korrekter Leistung; 2 BE nur bei vollständig erbrachtem Kern mit einem isolierten nicht konzeptionellen Rechen-, Rundungs- oder Beschriftungsfehler. Ein fehlender zentraler geforderter Anteil ergibt 0 BE für den Kern. Maximal 24 BE, bestanden ab 23 BE. Kein fehlender Kern kann durch andere Punkte kompensiert werden. Gleichwertige richtige Methoden und sinnvolle Rundungen sind zulässig, keine exakte Formulierung ist gefordert. Die zwei Fälle müssen unabhängig tatsächlich bearbeitet sein.",
+        "solutionContentEn": "A: Individual speeds are 0.600/2.4=0.250 m/s; 0.600/2.5=0.240 m/s; 0.600/2.6≈0.23077 m/s. Their arithmetic mean is≈0.24026 m/s, reasonably reported as about 0.24 m/s. Observed range is about 0.231–0.250 m/s(width≈0.0192 m/s). Keep pilot P=2.0 s with its reason in the report, but exclude it from the repeat mean. The supplied±0.005 m length limit and estimated±0.2 s timing assignment are measurement limits, not confidence intervals calculated from three repeats. Hand pushing and timing limit comparability and precision; section times determine neither instantaneous speed nor proven constant motion.\n\nB: Periods are 1.300 s,1.290 s,1.310 s; mean 1.300 s, observed range 1.290–1.310 s(width 0.020 s). B4 must remain documented with 26.1 s and its unreliable count. Inventing 15 or 20 as established is invalid; without a known N, B4 cannot support this mean period. A±0.2 s total-time limit over a fixed 20 periods alone corresponds to±0.010 s per period; this is optional, not an additional required uncertainty calculation. Report decreasing amplitude, reference points, and counting method without claiming a proven cause or absolutely constant period. The task needs traceable recording/calculation, not a pendulum-law derivation.\n\nBoth reports identify the didactic supplied records as their source. The learner performance is complete independent documentation and analysis, not a claim of personal experimentation. Another organised representation can be equivalent; no exact section-heading wording is required.\n\nGrading: Eight core performances. Award 3 points for a complete scientifically correct performance; 2 only for a fully demonstrated core with one isolated non-conceptual arithmetic, rounding, or labelling slip. A missing central required component gives 0 for that core. Maximum 24; passing at 23. No absent core can be compensated by other points. Accept equivalent correct methods and sensible rounding; exact wording is not required. Both cases must actually be completed independently.",
+        "scoring": {
+          "maxPoints": 24,
+          "passingPoints": 23,
+          "steps": [
+            {
+              "id": "a-question-method",
+              "points": 3,
+              "description": "A: Frage, Aufbau, Bezugspunkte und Ablauf klar und anhand des Materials nachvollziehbar beschrieben. / EN: A: Clearly and traceably documents question, setup, reference points, and procedure from the material."
+            },
+            {
+              "id": "a-raw-observations",
+              "points": 3,
+              "description": "A: Alle Beobachtungen und Rohwerte mit Einheiten/Messgrenzen, Vorversuch erkennbar erhalten und nachvollziehbar getrennt. / EN: A: Preserves all observations/raw values with units/reading limits;clearly retains and justifies separate pilot handling."
+            },
+            {
+              "id": "a-own-evaluation",
+              "points": 3,
+              "description": "A: Eigene nachvollziehbare Rechnungen mit drei Geschwindigkeiten, deren Mittelwert und Spannweite; Rechenweg/Einheiten vollständig. / EN: A: Own traceable calculations of three speeds, their mean and range, with complete steps/units."
+            },
+            {
+              "id": "a-result-limit",
+              "points": 3,
+              "description": "A: Ergebnis beantwortet die Frage, trennt Streuung/Messgrenzen/Annahmen und begrenzt die Aussage konkret; didaktische Quelle transparent. / EN: A: Conclusion answers the question, distinguishes scatter/reading limits/assumptions, and gives a concrete limitation;didactic source explicit."
+            },
+            {
+              "id": "b-question-method",
+              "points": 3,
+              "description": "B: Eigenständiger vollständiger Aufbau-/Methodenbericht mit Länge, kleinen Auslenkungen und eindeutiger vollständiger Periodenzählung. / EN: B: Independent complete setup/method report with length, small amplitude, and unambiguous full-period counting."
+            },
+            {
+              "id": "b-raw-observations",
+              "points": 3,
+              "description": "B: Sämtliche Beobachtungen/Rohwerte einschließlich ungesichertem B4 nachvollziehbar dokumentiert, keine erfundene Periodenzahl. / EN: B: Traceably documents every observation/raw value including uncertain B4, without inventing a period count."
+            },
+            {
+              "id": "b-own-evaluation",
+              "points": 3,
+              "description": "B: Eigene drei Periodenberechnungen mit Beispiel, Mittelwert und Spannweite; B4 begründet getrennt und nicht still entfernt. / EN: B: Own three period calculations with a worked example, mean, and range;justifiably separates B4 without silently removing it."
+            },
+            {
+              "id": "b-result-limit",
+              "points": 3,
+              "description": "B: Eigenes begründetes Ergebnis mit konkreter Mess-/Beobachtungsgrenze und vollständiger Trennung von Quelle, Rechnung und Schlussfolgerung. / EN: B: Own justified conclusion with a concrete measurement/observation limit and clear distinction between source, calculation, and inference."
+            }
+          ]
+        },
+        "reviewNote": "Independent bilingual content and complete competency-coverage acceptance by /root: curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/independent-review/document-two-provided-investigations.content-review.actual.json. Separately reviewed own curricular offer: curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/independent-review/offer-bindings.actual.json. Contents, rubric and requires retain the accepted candidate; the exact jurisdiction overrides and boundary are an own offering, not an official task claim. Automated/content review is not a learner trial or evidence of effectiveness; no learner mastery is written or transferred."
+      }
+    },
+    {
+      "id": "884bd99b-2373-5174-af7c-c6813b91bd93",
+      "shortKey": "rest_energy_two_system_comparisons",
+      "title": "Prüfungsaufgabe: Ruheenergie und invariante Masse in zwei Systemen",
+      "titleEn": "Assessment: Rest energy and invariant mass in two systems",
+      "description": "Zwei qualitative Energiebilanzen mit begründeter Änderung der invarianten Masse; physische Zustandsänderung und Wechsel des Bezugssystems unterscheiden.",
+      "descriptionEn": "Two qualitative energy balances with justified changes in invariant mass; distinguish a physical change of state from a change of reference frame.",
+      "weight": 1,
+      "tags": [
+        "LK",
+        "Practice",
+        "Assessment",
+        "canonical"
+      ],
+      "type": "atomic",
+      "contains": [],
+      "requires": [
+        "bfea7a23-1ce1-4a42-badd-1fc9bf30124a"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_ENERGIE",
+          "LI_BEWEGUNG"
+        ],
+        "phase": "GLOBAL",
+        "area": "Relativität und Energie",
+        "topicCode": "CANONICAL_PHYSICS_REST_ENERGY_TWO_SYSTEM_COMPARISONS"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HH"
+        ]
+      },
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary",
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-HH"
+          ]
+        }
+      },
+      "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "bfea7a23-1ce1-4a42-badd-1fc9bf30124a"
+        ],
+        "coveredStrands": [
+          "LI_ENERGIE",
+          "LI_BEWEGUNG"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2"
+        ],
+        "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/physik/stage-source-route-repair-20261117-v1/rest-energy-two-system-comparisons.md",
+        "taskContent": "Bearbeite zwei voneinander unabhängige Gedankenexperimente. Verwendet wird E₀=m₀c²: E₀ bezeichnet die Ruheenergie des jeweils ausdrücklich abgegrenzten Körpers bzw. Systems, m₀ seine invariante Masse und c die Vakuumlichtgeschwindigkeit. Es sind qualitative Erklärungen verlangt, keine Zahlenrechnung oder Lorentz-Transformation. Eine passende Gleichung für eine Änderung darf deine Erklärung ergänzen. Licht kann Energie übertragen; es transportiert in diesen Fällen keine Atome oder andere massive Materieteilchen in die Box hinein oder aus ihr heraus. Die jeweils gleich starken entgegengesetzten Lichtpulse übertragen zusammen keinen Nettoimpuls, sodass der betrachtete Körper davor und danach im Labor ruht.\n\nA — Energie aufnehmen: Eine anfangs ruhende geschlossene Box nimmt von außen zwei gleich starke gegenläufige Lichtpulse mit zusammen Q>0 Energie auf. Die Energie bleibt vollständig als innere Energie in der Box; es gibt keinen weiteren Energieaustausch und keine Änderung der äußeren Bewegung. Betrachte als System die Box samt Inhalt, aber ohne die äußeren Lichtquellen.\nA1 Erkläre, wie sich Ruheenergie und invariante Masse dieses Systems verändern. Begründe mit der Bedeutung von E₀=m₀c², statt nur „Energie und Masse sind gleich“ zu schreiben. Prüfe die Aussage: „Keine Materie kam hinzu, also muss die Masse unverändert sein.“\nA2 Beschreibe die Energiebilanz, wenn zusätzlich die äußeren Lichtquellen zum Gesamtsystem gehören. Was nimmt wo zu bzw. ab? Erkläre, weshalb deine Antwort keine Erzeugung von Energie aus dem Nichts bedeutet.\nA3 Nach der Aufnahme betrachten eine im Labor ruhende Person und eine gleichförmig relativ zur Box bewegte Person dieselbe Box im selben inneren Zustand. Welche der Größen m₀, E₀ und Gesamtenergie einschließlich Bewegungsenergie müssen sie gleich und welche dürfen sie unterschiedlich angeben? Unterscheide diesen Wechsel der Beschreibung von der wirklichen Änderung zwischen vor und nach der Aufnahme.\n\nB — Energie abgeben: Ein anderer, anfangs ruhender Körper gibt gespeicherte innere Energie in zwei gleich starken gegenläufigen Lichtpulsen ab. Die Pulse tragen zusammen W>0 Energie fort. Der verbleibende Körper ruht auch danach; außer den Pulsen verlässt nichts den Körper. Betrachte zunächst nur den verbleibenden Körper, ohne die entwichene Strahlung.\nB1 Erkläre unabhängig von A die Änderungen seiner Ruheenergie und invarianten Masse anhand von E₀=m₀c². Prüfe: „Es wurden keine Atome ausgestoßen; deshalb kann der Körper nach der Abgabe keine kleinere Masse haben.“\nB2 Stelle die Energiebilanz für Körper PLUS entwichene Strahlung auf. Prüfe: „Die kleinere Ruheenergie des Körpers zeigt, dass bei der Abgabe Energie vernichtet wurde.“ Trenne die Grenzen des betrachteten Teilsystems vom Gesamtsystem.\nB3 Eine gleichförmig bewegte Beobachterin sieht denselben verbleibenden Körper bewegt. Prüfe: „Weil er für sie mehr Gesamtenergie hat, muss seine invariante Masse größer sein.“ Erkläre, welche Energie zur Formel E₀=m₀c² gehört und was an der Masse invariant ist. Ein bloßer Verweis auf A genügt für keinen Teil von B.",
+        "taskContentEn": "Complete two independent thought experiments. Use E₀=m₀c²: E₀ is the rest energy of the explicitly defined body or system, m₀ its invariant mass, and c the vacuum speed of light. Give qualitative explanations; no numerical calculation or Lorentz transformation is required. An appropriate equation for a change may support your explanation. Light can transfer energy; in these cases it carries no atoms or other massive matter particles into or out of the box. The equal, oppositely directed light pulses transfer no net momentum together, so the body considered is at rest in the laboratory before and after.\n\nA — Absorbing energy: An initially stationary closed box absorbs two equal, opposing light pulses with total energy Q>0 from outside. All this energy remains as internal energy in the box; there is no other energy exchange or change in external motion. Define the system as the box and its contents, excluding the external light sources.\nA1 Explain how this system's rest energy and invariant mass change. Use the meaning of E₀=m₀c² rather than just saying 'energy and mass are the same'. Evaluate: 'No matter entered, so the mass must be unchanged.'\nA2 Describe the energy balance when the external light sources are also included in the overall system. What increases or decreases, and where? Explain why your answer does not create energy from nothing.\nA3 After absorption, an observer at rest in the laboratory and an observer moving uniformly relative to the box examine the same box in the same internal state. Which of m₀, E₀, and total energy including kinetic energy must agree, and which may differ? Distinguish this change of description from the physical change between before and after absorption.\n\nB — Releasing energy: A different initially stationary body releases stored internal energy in two equal, opposing light pulses. Together the pulses carry away energy W>0. The remaining body is also stationary afterwards; nothing other than the pulses leaves it. First consider only the remaining body, excluding the escaped radiation.\nB1 Independently of A, explain the changes in its rest energy and invariant mass using E₀=m₀c². Evaluate: 'No atoms were ejected, so the body cannot have a smaller mass after emission.'\nB2 Give the energy balance for the body PLUS escaped radiation. Evaluate: 'The body's smaller rest energy shows that energy was destroyed during emission.' Distinguish the boundary of the subsystem from that of the overall system.\nB3 An observer moving uniformly sees the same remaining body in motion. Evaluate: 'Since it has more total energy for her, its invariant mass must be larger.' Explain which energy belongs in E₀=m₀c² and what is invariant about the mass. Merely referring to A does not answer any part of B.",
+        "solutionContent": "A1: Die Box samt Inhalt hat nach der Aufnahme mehr Ruheenergie, weil Q als innere Energie im weiterhin ruhenden System bleibt: ΔE₀=Q. Damit ist auch ihre invariante Masse größer, Δm₀=Q/c²>0. Eine rein qualitative Aussage mit dieser Begründung genügt. Die Masse eines zusammengesetzten Systems hängt auch von seinem inneren Energiezustand ab; ein Zufluss von Atomen ist dafür nicht nötig. E₀ ist bereits Energie, und m₀ ist die zugehörige invariante Masse, nicht eine zweite zusätzlich zu E₀ zu addierende Energiereserve.\nA2: Die äußeren Quellen geben zusammen Q Energie ab, die Box gewinnt Q. Bei Einbezug aller beteiligten Teile bleibt die Gesamtenergie erhalten. Die Box allein ist während der Aufnahme energetisch nicht abgeschlossen, auch wenn keine massive Materie die Grenze passiert.\nA3: Für denselben Endzustand sind m₀ und die daraus bestimmte Ruheenergie E₀ für beide Beobachtenden gleich. Die Gesamtenergie im bewegten Bezugssystem enthält zusätzlich die Bewegungsenergie und ist hier größer als die Ruheenergie. Der bloße Bezugssystemwechsel vergrößert m₀ nicht. Dagegen bezeichnet der Vergleich vor/nach der Aufnahme zwei verschiedene physische Zustände; deren invariante Massen dürfen sich unterscheiden.\n\nB1: Im verbleibenden ruhenden Körper sinkt die Ruheenergie um W; ΔE₀=−W und entsprechend Δm₀=−W/c²<0. Wieder genügt eine klare qualitative Begründung. Das Fehlen ausgestoßener Atome erzwingt keine konstante Masse: innere Energie wurde abgegeben.\nB2: Im Labor gilt E₀,vor=E₀,nach+W für Körper und fortgetragene Strahlung. Die Abnahme der Energie des Körpers ist die Energie der Lichtpulse; sie ist nicht vernichtet. Nur das kleinere Teilsystem Körper verliert Energie. Die Summe der Energien des Gesamtsystems bleibt erhalten. Es ist weder notwendig noch richtig, den entwichenen einzelnen Lichtpulsen eine Ruhemasse W/c² zuzuschreiben.\nB3: Die bewegte Beobachterin beschreibt dieselbe invariante Masse m₀ und dieselbe Ruheenergie E₀ des verbliebenen Körpers. Ihre größere Gesamtenergie umfasst seine Bewegung relativ zu ihr. Diese Gesamtenergie darf nicht als E₀ in die Ruheenergieformel eingesetzt werden. Der Bezugssystemwechsel bewirkt keine physische Massenzunahme. Die tatsächliche Massenabnahme in B1 folgt aus der Energieabgabe, nicht aus der Wahl der Beobachterin.\n\nBewertung: 6 Kernleistungen mit je 3 BE; insgesamt 18 BE, Bestehensgrenze 17 BE. Ein Kern erhält 3 BE für eine vollständige fachlich richtige Demonstration. 2 BE sind nur bei vollständig gezeigtem Kern mit einem isolierten nicht konzeptionellen Schreib-, Rechen- oder Rundungsfehler zulässig. Fehlt ein zentraler Teil oder liegt ein konzeptioneller Fehler vor, erhält dieser Kern 0 BE. Damit kann weder ein fehlender Kern noch ein fehlender Fall ausgeglichen werden. Gleichwertige fachlich richtige Begründungen, Darstellungen und Methoden sind zulässig; exakte Wörter der Musterlösung sind nicht verlangt. Beide Fälle brauchen eigenständige Antworten; ein bloßer Verweis auf den anderen Fall ersetzt keine Leistung.",
+        "solutionContentEn": "A1: The box and its contents have greater rest energy after absorption because Q remains as internal energy in a system still at rest: ΔE₀=Q. Its invariant mass is therefore greater too, Δm₀=Q/c²>0. A qualitative statement with this reasoning suffices. The mass of a composite system also depends on its internal energy state; no inflow of atoms is needed. E₀ is already energy and m₀ is the associated invariant mass, not a second energy reserve to add on top of E₀.\nA2: The external sources lose total energy Q and the box gains Q. Including all participating parts conserves total energy. During absorption the box alone is not energetically isolated even though no massive matter crosses its boundary.\nA3: For the same final state, m₀ and the rest energy E₀ determined from it agree for both observers. Total energy in the moving reference frame additionally includes kinetic energy and here exceeds rest energy. Merely changing reference frames does not increase m₀. By contrast, before and after absorption are two different physical states whose invariant masses can differ.\n\nB1: The rest energy of the remaining stationary body decreases by W: ΔE₀=−W, and thus Δm₀=−W/c²<0. A clear qualitative explanation again suffices. The absence of ejected atoms does not force mass to stay constant: internal energy has been released.\nB2: In the laboratory, E₀,before=E₀,after+W for body and escaped radiation. The body's energy decrease is the light pulses' energy, not destroyed energy. Only the smaller subsystem consisting of the body loses energy. The sum of energies in the overall system is conserved. It is neither necessary nor correct to assign the individual escaped light pulses a rest mass W/c².\nB3: The moving observer describes the same invariant mass m₀ and rest energy E₀ of the remaining body. Her greater total energy includes its motion relative to her. That total energy cannot be substituted for E₀ in the rest-energy formula. Changing reference frames causes no physical mass increase. The actual mass decrease in B1 results from emission, not the choice of observer.\n\nGrading: 6 core performances worth 3 points each; total 18, passing threshold 17. Award 3 for a complete scientifically correct demonstration. Award 2 only when the core is fully demonstrated with one isolated non-conceptual writing, arithmetic, or rounding slip. A missing central component or a conceptual error earns 0 for that core. Thus neither an absent core nor an absent case can be compensated. Scientifically equivalent explanations, representations, and methods are accepted; the reference solution's exact wording is not required. Both cases require independent answers; merely referring to the other case does not demonstrate a performance.",
+        "scoring": {
+          "maxPoints": 18,
+          "passingPoints": 17,
+          "steps": [
+            {
+              "id": "A-meaning",
+              "points": 3,
+              "description": "A: Ruheenergie und invariante Masse im konkreten Fall richtig deuten, Änderung begründen und Materiebehauptung widerlegen. / EN: A: Interpret rest energy and invariant mass in the specific case, justify their change, and refute the matter claim."
+            },
+            {
+              "id": "A-conservation",
+              "points": 3,
+              "description": "A: Teil-/Gesamtsystem ausdrücklich trennen und vollständige qualitative Energiebilanz ohne Energieerzeugung/-vernichtung erklären. / EN: A: Explicitly distinguish subsystem and overall system and explain the complete qualitative energy balance without creation/destruction of energy."
+            },
+            {
+              "id": "A-invariance",
+              "points": 3,
+              "description": "A: Gleicher innerer Zustand in verschiedenen Bezugssystemen: invariante Masse/Ruheenergie von bewegungsabhängiger Gesamtenergie unterscheiden. / EN: A: For the same internal state in different frames, distinguish invariant mass/rest energy from motion-dependent total energy."
+            },
+            {
+              "id": "B-meaning",
+              "points": 3,
+              "description": "B: Ruheenergie und invariante Masse im konkreten Fall richtig deuten, Änderung begründen und Materiebehauptung widerlegen. / EN: B: Interpret rest energy and invariant mass in the specific case, justify their change, and refute the matter claim."
+            },
+            {
+              "id": "B-conservation",
+              "points": 3,
+              "description": "B: Teil-/Gesamtsystem ausdrücklich trennen und vollständige qualitative Energiebilanz ohne Energieerzeugung/-vernichtung erklären. / EN: B: Explicitly distinguish subsystem and overall system and explain the complete qualitative energy balance without creation/destruction of energy."
+            },
+            {
+              "id": "B-invariance",
+              "points": 3,
+              "description": "B: Gleicher innerer Zustand in verschiedenen Bezugssystemen: invariante Masse/Ruheenergie von bewegungsabhängiger Gesamtenergie unterscheiden. / EN: B: For the same internal state in different frames, distinguish invariant mass/rest energy from motion-dependent total energy."
+            }
+          ]
+        },
+        "reviewNote": "Independent bilingual content and complete competency-coverage acceptance by /root/he_ephase_source_review: curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/independent-review/rest-energy-two-system-comparisons.content-review.actual.json. Separately reviewed own curricular offer: curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/independent-review/offer-bindings.actual.json. Contents, rubric and requires retain the accepted candidate; the exact jurisdiction overrides and boundary are an own offering, not an official task claim. Automated/content review is not a learner trial or evidence of effectiveness; no learner mastery is written or transferred."
+      }
+    },
+    {
+      "id": "bff1d8b0-fe2e-52e6-a467-dd0b6a1a4a04",
+      "shortKey": "em_spectrum_two_application_maps",
+      "title": "Prüfungsaufgabe: Zwei Spektralkarten und ihre Anwendungen",
+      "titleEn": "Assessment: Two spectrum maps and their applications",
+      "description": "Zwei vollständige Spektren nach Frequenz und Wellenlänge ordnen, Bereiche zuweisen und technische Anwendungen anhand von Welleneigenschaften begründen.",
+      "descriptionEn": "Order two complete spectra by frequency and wavelength, classify their regions, and justify technical applications using wave properties.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment",
+        "canonical"
+      ],
+      "type": "atomic",
+      "contains": [],
+      "requires": [
+        "4a7cbe83-b694-57d3-85ce-1eeca418daaf"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_WELLEN",
+          "LI_TECHNIK"
+        ],
+        "phase": "GLOBAL",
+        "area": "Elektromagnetische Wellen",
+        "topicCode": "CANONICAL_PHYSICS_EM_SPECTRUM_TWO_APPLICATION_MAPS"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-SL",
+          "DE-SN"
+        ]
+      },
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary",
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-SL",
+            "DE-SN"
+          ]
+        }
+      },
+      "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "4a7cbe83-b694-57d3-85ce-1eeca418daaf"
+        ],
+        "coveredStrands": [
+          "LI_WELLEN",
+          "LI_TECHNIK"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2"
+        ],
+        "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/physik/stage-source-route-repair-20261117-v1/em-spectrum-two-application-maps.md",
+        "taskContent": "Erstelle zwei eigene Spektralkarten aus den angegebenen Modellkarten. Dies ist eine Auswertung auf Papier, kein Versuch mit Strahlungsquellen. Alle Wellenlängen gelten im Vakuum. Es gilt c=λf; bei gleicher Ausbreitungsgeschwindigkeit bedeutet kleinere Wellenlänge höhere Frequenz. Einheiten: 1 cm=10⁻² m, 1 mm=10⁻³ m, 1 µm=10⁻⁶ m, 1 nm=10⁻⁹ m.\n\nOrientierung für die Bereichsnamen: Radiowellen umfassen auch Mikrowellen; für diese Übersicht führen wir Mikrowellen (grob 1 mm bis 1 m) separat und nennen den längerwelligen Rest „Radiowellen“. Infrarot liegt grob zwischen 700 nm und 1 mm, sichtbares Licht ungefähr zwischen 400 und 700 nm, Ultraviolett grob zwischen 10 und 400 nm. Typische Röntgenwellenlängen liegen etwa zwischen 0,01 und 10 nm; viele Gammawellenlängen sind kürzer. Diese Grenzen sind Konventionen bzw. Näherungen, keine überall scharfen Naturgrenzen. Röntgen- und Gammastrahlung können sich in der Wellenlänge überlappen. Für die hier angegebenen Quellen nennen wir Strahlung aus Elektronenprozessen Röntgenstrahlung und Strahlung aus Kernübergängen Gammastrahlung. Die Herkunft ist ausdrücklich gegeben und muss nicht erraten werden.\n\nA — Karten in ungeordneter Reihenfolge: a: 600 nm; b: 0,1 nm aus einem Elektronenprozess; c: 3 m; d: 10 µm; e: 0,001 nm aus einem Kernübergang; f: 300 nm; g: 3 cm.\nA1 Zeichne eine vollständige Tabelle oder Achse mit allen sieben Karten in Richtung zunehmender Frequenz. Beschrifte jede Karte mit ihrem Spektralbereich und zeige auch die Richtung zunehmender Wellenlänge. Begründe die entgegengesetzten Richtungen mit c=λf. Frequenzen müssen nicht numerisch berechnet werden.\nA2 Ordne drei technische Anwendungen den passenden Karten und Spektralbereichen zu und begründe jede Zuordnung mit der relevanten Wellen- bzw. Wechselwirkungseigenschaft: Ein gegebenes Radarsystem nutzt gebündelte 3-cm-Wellen und reflektierte Echos; eine Wärmebildkamera erfasst Strahlung um 10 µm, die die betrachteten warmen Gegenstände aussenden; eine industrielle Materialprüfung nutzt Strahlung von 0,1 nm, deren Durchdringung und Abschwächung vom Material abhängen. Erkläre jeweils, welche Information Echo, Emission bzw. Abschwächung zugänglich macht; nur den Bereichsnamen zu nennen reicht nicht.\nA3 Prüfe: „700 nm ist eine für alle Menschen und Bedingungen exakt gleiche Grenze; bei 701 nm kann elektromagnetische Strahlung grundsätzlich nicht mehr existieren.“ Trenne die ungefähre sichtbare Grenze von der Existenz anderer Spektralbereiche.\n\nB — Neue, unabhängig zu bearbeitende Karten: h: 200 nm; i: 30 m; j: 0,0005 nm aus einem Kernübergang; k: 450 nm; l: 3 mm; m: 0,05 nm aus einem Elektronenprozess; n: 100 µm.\nB1 Erstelle eine neue vollständige Ordnung aller sieben Karten nach zunehmender Frequenz, nenne sämtliche Spektralbereiche und beschrifte die Richtung der Wellenlänge. Begründe den Zusammenhang unabhängig von A.\nB2 Ordne folgende Anwendungen passenden Karten/Bereichen zu und begründe sie jeweils: Ein Funksystem überträgt Informationen mit modulierten 30-m-Wellen, die eine passende Antenne sendet/empfängt; eine gedachte Materialanalyse verwendet 200-nm-Strahlung, die der ausdrücklich vorgegebene Stoff absorbiert und daraufhin sichtbares Fluoreszenzlicht aussendet; eine blaue Kontrollleuchte sendet Licht um 450 nm. Erkläre jeweils, weshalb der empfangene Funk, das Fluoreszenzlicht bzw. das sichtbare Signal für diese Anwendung nutzbar ist. Es wird kein UV-Versuch durchgeführt.\nB3 Zwei zusätzliche Modellquellen liefern beide λ=0,02 nm, die erste durch einen Elektronenprozess, die zweite durch einen Kernübergang. Wie heißen sie nach der angegebenen Herkunftskonvention? Vergleiche ihre Frequenzen. Beurteile, ob allein eine starre Wellenlängengrenze die beiden Ursprünge unterscheiden könnte.",
+        "taskContentEn": "Make two spectrum maps of your own using the supplied model cards. This is a paper analysis, not an experiment with radiation sources. All wavelengths are in vacuum. c=λf applies: at the same propagation speed, shorter wavelength means higher frequency. Units: 1 cm=10⁻² m, 1 mm=10⁻³ m, 1 µm=10⁻⁶ m, 1 nm=10⁻⁹ m.\n\nRegion-name guide: Radio waves include microwaves. In this overview we list microwaves (roughly 1 mm to 1 m) separately and call the longer-wavelength remainder 'radio waves'. Infrared lies roughly between 700 nm and 1 mm, visible light approximately between 400 and 700 nm, and ultraviolet roughly between 10 and 400 nm. Typical X-ray wavelengths are about 0.01 to 10 nm; many gamma-ray wavelengths are shorter. These boundaries are conventions or approximations, not universally sharp natural boundaries. X-rays and gamma rays can overlap in wavelength. For the sources specified here, call radiation from electron processes X-rays and radiation from nuclear transitions gamma rays. The origin is explicitly given and need not be guessed.\n\nA — Cards in shuffled order: a: 600 nm; b: 0.1 nm from an electron process; c: 3 m; d: 10 µm; e: 0.001 nm from a nuclear transition; f: 300 nm; g: 3 cm.\nA1 Draw a complete table or axis containing all seven cards in increasing-frequency order. Label every card with its spectral region and also show the direction of increasing wavelength. Explain the opposite directions using c=λf. You do not need to calculate numerical frequencies.\nA2 Assign three technical applications to the appropriate cards and spectral regions, justifying each using the relevant wave or interaction property: a specified radar system uses directed 3-cm waves and reflected echoes; a thermal camera detects radiation near 10 µm emitted by the warm objects being examined; industrial material inspection uses 0.1-nm radiation whose penetration and attenuation depend on the material. Explain what information echoes, emission, or attenuation respectively make accessible; giving only a region name is insufficient.\nA3 Evaluate: '700 nm is an exactly identical boundary for all people and conditions; at 701 nm electromagnetic radiation fundamentally cannot exist.' Distinguish the approximate visible boundary from the existence of other spectral regions.\n\nB — New cards to handle independently: h: 200 nm; i: 30 m; j: 0.0005 nm from a nuclear transition; k: 450 nm; l: 3 mm; m: 0.05 nm from an electron process; n: 100 µm.\nB1 Make a new complete ordering of all seven cards by increasing frequency, name every spectral region, and label the wavelength direction. Explain the relationship independently of A.\nB2 Assign the following applications to appropriate cards/regions and justify each: a radio system conveys information using modulated 30-m waves transmitted/received by a suitable antenna; a hypothetical material analysis uses 200-nm radiation that the explicitly specified material absorbs and then emits visible fluorescence; a blue indicator emits light near 450 nm. Explain why the received radio signal, fluorescent light, or visible signal respectively is useful in that application. No UV experiment is performed.\nB3 Two additional model sources both emit at λ=0.02 nm, the first through an electron process and the second through a nuclear transition. What are they called under the supplied origin convention? Compare their frequencies. Assess whether a rigid wavelength boundary alone could distinguish their origins.",
+        "solutionContent": "A1: Nach zunehmender Frequenz: c (3 m, Radiowellen), g (3 cm, Mikrowellen), d (10 µm, Infrarot), a (600 nm, sichtbares Licht), f (300 nm, Ultraviolett), b (0,1 nm, Röntgenstrahlung), e (0,001 nm, Gammastrahlung). Die Wellenlänge nimmt in dieser Richtung ab; zunehmend ist sie in Gegenrichtung. Bei konstantem c muss f größer werden, wenn λ kleiner wird. A2: Radar→g/Mikrowellen: Die gerichtete Aussendung und Reflexion erzeugen Echos, aus denen das System Informationen über reflektierende Objekte erhält; etwa erlaubt die Laufzeit eine Entfernungsbestimmung (keine Rechnung nötig). Wärmebildkamera→d/Infrarot: Erfasste ausgesandte Strahlung macht Unterschiede der Strahlungsverteilung warmer Gegenstände sichtbar; ohne weitere Kalibrierung ist nicht jede Intensität schon eine eindeutige Temperatur. Materialprüfung→b/Röntgen: Materialabhängige Durchdringung/Abschwächung liefert im Detektor Unterschiede, aus denen sich Strukturen im Prüfstück untersuchen lassen. Keine medizinische Aussage ist erforderlich. A3: Die Sichtbarkeitsgrenze ist ungefähr und hängt auch von Beobachtungsbedingungen ab. Jenseits liegt weiterhin elektromagnetische Strahlung; 701 nm liegt im Grenzbereich zum Infrarot und ist keine Existenzgrenze.\n\nB1: Nach zunehmender Frequenz: i (30 m, Radiowellen), l (3 mm, Mikrowellen), n (100 µm, Infrarot), k (450 nm, sichtbares Licht), h (200 nm, Ultraviolett), m (0,05 nm, Röntgenstrahlung), j (0,0005 nm, Gammastrahlung). Größere Frequenz bedeutet bei konstantem c kleinere Wellenlänge; die Wellenlängenachse zeigt daher in Gegenrichtung. B2: Funksystem→i/Radio: Modulation prägt die Information auf die elektromagnetische Welle; die passende Antenne erlaubt Senden/Empfangen und die Auswertung des empfangenen Signals. Materialanalyse→h/UV: Der gegebene Stoff absorbiert die UV-Strahlung und antwortet mit nachweisbarem sichtbarem Fluoreszenzlicht; dieses Antwortsignal dient der Untersuchung des Stoffes. Es folgt keine Behauptung, dass alle Stoffe so reagieren. Kontrollleuchte→k/sichtbar: Die ausgesandte Wellenlänge liegt im sichtbaren blauen Bereich und ermöglicht ein direkt wahrnehmbares optisches Signal. B3: Nach der gegebenen Konvention liefert Quelle 1 Röntgenstrahlung und Quelle 2 Gammastrahlung. Bei gleicher Vakuumwellenlänge haben beide dieselbe Frequenz c/λ. Die sich überlappenden Bereiche zeigen, dass eine starre Wellenlängengrenze allein hier die Ursprünge nicht identifiziert.\n\nDie zusätzlichen Details zur Kalibrierung, Laufzeit oder Signalauswertung sind mögliche Erläuterungen, keine zusätzlichen Rechen- oder Fachkenntnispflichten. Andere fachlich richtige Eigenschaftsbegründungen derselben gegebenen Anwendungen sind gleichwertig.\n\nBewertung: 6 Kernleistungen mit je 3 BE; insgesamt 18 BE, Bestehensgrenze 17 BE. Ein Kern erhält 3 BE für eine vollständige fachlich richtige Demonstration. 2 BE sind nur bei vollständig gezeigtem Kern mit einem isolierten nicht konzeptionellen Schreib-, Rechen- oder Rundungsfehler zulässig. Fehlt ein zentraler Teil oder liegt ein konzeptioneller Fehler vor, erhält dieser Kern 0 BE. Damit kann weder ein fehlender Kern noch ein fehlender Fall ausgeglichen werden. Gleichwertige fachlich richtige Begründungen, Darstellungen und Methoden sind zulässig; exakte Wörter der Musterlösung sind nicht verlangt. Beide Fälle brauchen eigenständige Antworten; ein bloßer Verweis auf den anderen Fall ersetzt keine Leistung.",
+        "solutionContentEn": "A1: Increasing frequency: c (3 m, radio waves), g (3 cm, microwaves), d (10 µm, infrared), a (600 nm, visible light), f (300 nm, ultraviolet), b (0.1 nm, X-rays), e (0.001 nm, gamma rays). Wavelength decreases in that direction and increases in the reverse direction. At constant c, f must increase as λ decreases. A2: Radar→g/microwaves: directed transmission and reflection produce echoes that provide information about reflecting objects; for example, travel time can determine distance (no calculation required). Thermal camera→d/infrared: detected emitted radiation reveals differences in the radiation pattern of warm objects; without further calibration, intensity alone need not uniquely determine temperature. Material inspection→b/X-rays: material-dependent penetration/attenuation produces detector differences from which structures inside the sample can be investigated. No medical claim is required. A3: The visible boundary is approximate and also depends on observation conditions. Electromagnetic radiation still exists beyond it; 701 nm is near the infrared boundary, not a limit on existence.\n\nB1: Increasing frequency: i (30 m, radio waves), l (3 mm, microwaves), n (100 µm, infrared), k (450 nm, visible light), h (200 nm, ultraviolet), m (0.05 nm, X-rays), j (0.0005 nm, gamma rays). Higher frequency means shorter wavelength at constant c, so the wavelength axis points in the opposite direction. B2: Radio system→i/radio: modulation encodes information on the electromagnetic wave; a suitable antenna allows transmission/reception and evaluation of the received signal. Material analysis→h/UV: the specified material absorbs UV radiation and responds with detectable visible fluorescence, providing a response signal for investigating that material. This does not claim all materials react that way. Indicator→k/visible: the emitted wavelength lies in the visible blue region and permits a directly perceptible optical signal. B3: Under the given convention source 1 produces X-rays and source 2 gamma rays. Equal vacuum wavelengths mean equal frequencies c/λ. The overlapping ranges show that a rigid wavelength boundary alone cannot identify the origins here.\n\nThe extra details about calibration, travel time, or signal processing are possible explanations, not additional calculation or subject-knowledge requirements. Other scientifically sound property-based explanations of the same supplied applications are equivalent.\n\nGrading: 6 core performances worth 3 points each; total 18, passing threshold 17. Award 3 for a complete scientifically correct demonstration. Award 2 only when the core is fully demonstrated with one isolated non-conceptual writing, arithmetic, or rounding slip. A missing central component or a conceptual error earns 0 for that core. Thus neither an absent core nor an absent case can be compensated. Scientifically equivalent explanations, representations, and methods are accepted; the reference solution's exact wording is not required. Both cases require independent answers; merely referring to the other case does not demonstrate a performance.",
+        "scoring": {
+          "maxPoints": 18,
+          "passingPoints": 17,
+          "steps": [
+            {
+              "id": "A-map",
+              "points": 3,
+              "description": "A: Alle sieben Karten samt Bereichen richtig ordnen; beide Achsenrichtungen durch c=λf begründen. / EN: A: Correctly order all seven cards and regions; justify both axis directions using c=λf."
+            },
+            {
+              "id": "A-applications",
+              "points": 3,
+              "description": "A: Alle drei Anwendungen richtig zuordnen und jeweils aus der relevanten Wellen-/Wechselwirkungseigenschaft ihren Informationsnutzen erklären. / EN: A: Assign all three applications correctly and explain their information value using the relevant wave/interaction property."
+            },
+            {
+              "id": "A-boundaries",
+              "points": 3,
+              "description": "A: Den jeweiligen Grenzfall mit der angegebenen Bereichskonvention fachlich begründet beurteilen. / EN: A: Evaluate the case-specific boundary example with scientifically sound reasoning using the given regional convention."
+            },
+            {
+              "id": "B-map",
+              "points": 3,
+              "description": "B: Alle sieben Karten samt Bereichen richtig ordnen; beide Achsenrichtungen durch c=λf begründen. / EN: B: Correctly order all seven cards and regions; justify both axis directions using c=λf."
+            },
+            {
+              "id": "B-applications",
+              "points": 3,
+              "description": "B: Alle drei Anwendungen richtig zuordnen und jeweils aus der relevanten Wellen-/Wechselwirkungseigenschaft ihren Informationsnutzen erklären. / EN: B: Assign all three applications correctly and explain their information value using the relevant wave/interaction property."
+            },
+            {
+              "id": "B-boundaries",
+              "points": 3,
+              "description": "B: Den jeweiligen Grenzfall mit der angegebenen Bereichskonvention fachlich begründet beurteilen. / EN: B: Evaluate the case-specific boundary example with scientifically sound reasoning using the given regional convention."
+            }
+          ]
+        },
+        "reviewNote": "Independent bilingual content and complete competency-coverage acceptance by /root/he_ephase_source_review: curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/independent-review/em-spectrum-two-application-maps.content-review.actual.json. Separately reviewed own curricular offer: curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/independent-review/offer-bindings.actual.json. Contents, rubric and requires retain the accepted candidate; the exact jurisdiction overrides and boundary are an own offering, not an official task claim. Automated/content review is not a learner trial or evidence of effectiveness; no learner mastery is written or transferred."
+      }
+    },
+    {
+      "id": "e6a89922-75ce-53dd-9e7b-3a683398431c",
+      "shortKey": "personal_motor_two_builds",
+      "title": "Prüfungsaufgabe: Zwei eigene Motoraufbauten und Laufvariationen",
+      "titleEn": "Assessment: Two personal motor assemblies and motion variations",
+      "description": "Zwei eigene sichere offene Motoraufbauten mit frischen Startbeobachtungen, kontrollierter Strom-/Feldvariation und vollständiger Leiterkrafterklärung.",
+      "descriptionEn": "Two personal safe open motor assemblies with fresh start observations, controlled current/field variations, and complete conductor-force explanations.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment",
+        "canonical"
+      ],
+      "type": "atomic",
+      "contains": [],
+      "requires": [
+        "eb30189c-27c6-510b-b235-6543afa18b90"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN",
+          "PK2_MODELLIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_FELDER",
+          "LI_TECHNIK"
+        ],
+        "phase": "GLOBAL",
+        "area": "Elektromagnetismus",
+        "topicCode": "CANONICAL.PHYSICS.ASSESSMENT.PERSONAL_MOTOR_TWO_BUILDS"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-MV"
+        ]
+      },
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary",
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-MV"
+          ]
+        }
+      },
+      "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "eb30189c-27c6-510b-b235-6543afa18b90"
+        ],
+        "coveredStrands": [
+          "LI_FELDER",
+          "LI_TECHNIK"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2",
+          "AB3"
+        ],
+        "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/physik/stage-source-route-repair-20261117-v1/personal-motor-two-builds.md",
+        "taskContent": "Baue einen einfachen Elektromotor in zwei unabhängigen eigenen Aufbauten A und B auf und untersuche jeweils eine Veränderung seines Laufs. Du musst beide Aufbauten selbst aus den bereitgestellten offenen Schulbauteilen herstellen, ihre wirklichen Beobachtungen protokollieren und die Funktion mit der Kraft auf stromdurchflossene Leiter im Magnetfeld erklären. Ein fertig gekapselter Motor, eine Simulation, ein fremdes Protokoll oder eine bloße Aufbauplanung ersetzt keine der beiden Leistungen.\n\nBereitgestelltes Material: Ein schulisch erprobter offener Kleinspannungs-Motorbausatz mit drehbar gelagerter Spule, zwei getrennten Kommutatorhälften K1/K2 mit je einem verbundenen Spulenende S1/S2, zwei gegenüberliegenden Bürstenkontakten B1/B2, Halterungen, zwei Ferritmagneten mit gekennzeichnetem N-/S-Pol, Anschlussleitungen und Schalter. Die Lehrkraft stellt eine strombegrenzte Gleichspannungsversorgung mit höchstens 3,0 V und Stromgrenze höchstens 0,3 A bereit und prüft den Aufbau vor jedem Einschalten. Keine Netzspannungsarbeiten, keine Lithiumzellen oder offenen Batteriekurzschlüsse. Nur am ausgeschalteten Aufbau umstecken. Betreibe den Motor nur kurz zur Beobachtung; bei Erwärmung, blockiertem Rotor oder beschädigten Leitungen sofort ausschalten und die Lehrkraft prüfen lassen. Hände, Haare und lose Teile vom Rotor fernhalten. Der niedrige begrenzte Strom ist keine Aufforderung, die Kontakte absichtlich kurzzuschließen.\n\nAufbauvorgabe: S1 ist mit K1, S2 mit K2 verbunden; die Spule und der geteilte Kommutator drehen sich gemeinsam. B1 und B2 liegen gegenüber an den Kommutatorhälften an und sind mit den beiden Polen der Versorgung über den Schalter verbunden. Richte die beiden Magnetpole gegenüber so aus, dass die Spule im Feldspalt frei drehen kann. Welche Spulenseite bei deinem Aufbau nach vorne/hinten liegt, musst du selbst eindeutig skizzieren. Du darfst einen gleichwertigen geprüften offenen Schulbausatz verwenden, wenn du dessen Kontakte, Lagerung, Feldrichtung und Beobachtungen ebenso eindeutig dokumentierst. Ein Handanstoß zum Überwinden einer Totlage ist nach Prüfung erlaubt, muss aber protokolliert werden; er ist keine elektrisch bewirkte selbständige Drehung.\n\nA – Eigener erster Aufbau und Stromumkehr: Baue den Motor selbst auf. Weise für A mindestens einen Lauf nach, bei dem der Rotor nach Loslassen elektrisch selbständig weiterläuft. Nur Stillstand oder fortgesetztes Handdrehen erfüllt die Aufbauleistung nicht. Behebe nötige Fehler mit sicherer Prüfung und führe anschließend die kontrollierte Variation tatsächlich auswertbar durch; bei fehlender Funktion ist Nacharbeit erforderlich, kein erfundener Erfolg. Fertige eine eigene beschriftete Aufbau-/Schaltskizze mit Spule, beiden aktiven Leiterseiten, K1/K2, B1/B2, Schalter und tatsächlichen Versorgungspolen an. Kennzeichne für eine gewählte Rotorstellung Magnetfeld- und Stromrichtung in beiden aktiven Leiterseiten. Lege eine feste Blickrichtung fest, damit „rechts-/linksherum“ eindeutig ist. Sage vor dem Versuch voraus, was bei alleiniger Umkehr der Versorgungspole zu erwarten ist, und begründe dies mit den Leiterkräften.\n\nBeobachte mindestens drei kurze tatsächliche Starts mit Ausgangspolung und drei mit umgekehrter Polung bei gleicher Feldanordnung, Spannungseinstellung und Mechanik. Notiere je Start tatsächliche Laufrichtung beziehungsweise Stillstand, benötigten Anstoß, etwaige Totlage oder Kontaktunterbrechung. Es gibt keine vorgeschriebene Drehzahl. Wähle keine scheinbar passenden Beobachtungen aus; dokumentiere Störungen und führe nach sicherer Prüfung nötige Kontrollen aus. Erkläre mit deiner eigenen Skizze die entgegengesetzten Kräfte an den beiden stromdurchflossenen Leiterseiten und ihre Drehwirkung. Erkläre außerdem, wie die realen Bürsten-/Kommutatorkontakte in deinem Aufbau fortgesetzte Drehung ermöglichen, statt dass der Rotor nur einmal in eine Ruhelage ausschlägt. Vergleiche Vorhersage und wirkliche Beobachtung; falls der Motor nicht zuverlässig läuft, überprüfe und korrigiere nachvollziehbar den eigenen Aufbau, bis eine auswertbare Untersuchung möglich ist. Erfunde keine erfolgreichen Starts.\n\nB – Zweiter eigener Aufbau und Feldumkehr: Für B ist erneut mindestens ein nach Loslassen elektrisch selbständig weiterlaufender Lauf erforderlich. Ein reiner Stillstandsaufbau oder Handdrehen genügt nicht; behebe Fehler und mache die anschließende kontrollierte Variation auswertbar, sonst ist Nacharbeit erforderlich. Schalte aus, zerlege den Aufbau in seine Montagebauteile und baue ihn selbst neu auf. Dieselben geeigneten Teile dürfen wiederverwendet werden; eine unveränderte Übernahme von A samt Daten genügt nicht. Dokumentiere den neuen Aufbau und seine tatsächliche Kontakt-/Feldgeometrie in einer neuen Skizze. Halte diesmal die Versorgungspolung unverändert und kehre nur die Magnetfeldrichtung um, indem du die beiden gegenüberliegenden Pole tauschst. Prüfe vorher, dass der Rotor weiterhin frei liegt und die Feldanordnung technisch gleichwertig ist. Notiere zuerst deine eigene begründete Vorhersage.\n\nUntersuche mit mindestens drei frischen Starts vor und drei nach Feldumkehr, bei sonst gleicher Einstellung. Protokolliere sämtliche Laufrichtungen/Stillstände und Hilfsanstöße sowie begründete Kontrollen. Erkläre an beiden aktiven Leiterseiten erneut Feld-, Strom- und Kraftrichtung sowie Drehwirkung und Kommutierung für B. Werte B eigenständig aus und vergleiche erst danach die beiden untersuchten Eingriffe: Was wird jeweils verändert, was bleibt gleich, und was begründet deine Aussage über den Motorlauf? Eine beobachtete Störung ist kein Beweis gegen die Leiterkraftregel; benenne die tatsächliche begrenzte Beobachtung und kontrolliere mögliche Kontakt-/Totlagenfehler, statt eine passende Erklärung zu erfinden. Reiche zwei datierte tatsächliche Startprotokolle, die beiden eigenen Skizzen, Vorhersagen, Kontrollen und Erklärungen ein.",
+        "taskContentEn": "Build a simple electric motor in two independent personal setups A and B and investigate a change of its motion in each. Assemble both yourself from the supplied open school components, record actual observations, and explain operation using forces on current-carrying conductors in a magnetic field. An enclosed ready-made motor, simulation, somebody else's record, or a plan alone cannot replace either performance.\n\nSupplied equipment: A school-tested open low-voltage motor kit with a supported rotating coil, two separate commutator halves K1/K2 connected to coil ends S1/S2, two opposing brushes B1/B2, holders, two ferrite magnets with marked N/S poles, wires, and a switch. The teacher provides a current-limited DC supply set to at most 3.0 V and at most 0.3 A and checks the circuit before each activation. No mains work, lithium cells, or exposed battery shorts. Reconnect only with power off. Operate briefly for observation; switch off immediately for heating, a blocked rotor, or damaged wires, and ask the teacher to inspect. Keep hands, hair, and loose objects clear of the rotor. Limited low current is not permission to deliberately short contacts.\n\nAssembly specification: S1 connects to K1 and S2 to K2; coil and split commutator rotate together. Opposing brushes B1/B2 contact the commutator and connect to the two supply poles through the switch. Place opposing magnet poles so the coil rotates freely in the gap. Clearly sketch which coil side faces forward/backward in your actual setup. An equivalent checked open school kit is allowed if its contacts, bearings, field direction, and observations are equally explicit. A gentle starting nudge out of a dead position is allowed after inspection but must be recorded; it is not electrically sustained rotation.\n\nA – Personal first assembly and current reversal: Assemble the motor yourself. For A demonstrate at least one run in which the rotor continues rotating electrically on its own after release. Standstill or continued hand-turning does not meet the assembly requirement. Safely diagnose and correct faults, then actually perform an analysable controlled variation; absent motor function requires further work, never invented success. Draw your own labelled setup/circuit showing coil, both active conductor sides, K1/K2, B1/B2, switch, and actual supply polarity. For one chosen rotor position show magnetic-field and current directions on both active conductor sides. Define a fixed viewing direction so clockwise/counterclockwise are unambiguous. Predict before testing the effect of reversing only supply polarity, and justify using conductor forces.\n\nObserve at least three real brief starts with original polarity and three with reversed polarity, keeping field, voltage setting, and mechanics unchanged. Record every start's actual rotation direction or standstill, required nudge, dead position, or contact interruption. No speed is prescribed. Do not select convenient observations; record disturbances and perform necessary controls after safe inspection. Use your own sketch to explain opposite forces on the two active current-carrying sides and their rotational effect. Also explain how your actual brush/commutator contacts permit continued rotation rather than one deflection into a resting position. Compare prediction with observation; if operation is unreliable, traceably check and correct your own assembly until an analysable investigation is possible. Do not invent successful starts.\n\nB – Second personal assembly and field reversal: For B again demonstrate at least one electrically sustained run after release. A stationary assembly or hand-turning is insufficient: correct faults and make the subsequent controlled variation analysable, or undertake further work. Switch off, disassemble into mounting components, and rebuild it yourself. You may reuse suitable parts; leaving A unchanged and copying its data is insufficient. Document the new assembly and actual contact/field geometry in a new sketch. Keep supply polarity fixed this time and reverse only field direction by swapping the opposing poles. First check free rotation and an otherwise technically equivalent field arrangement. Record your own justified prediction before testing.\n\nInvestigate at least three fresh starts before and three after field reversal with other settings unchanged. Record every direction/standstill, nudge, and justified control. Again explain field, current, force, and rotation on both active sides and commutation for B. Analyse B independently before comparing the interventions: what changes, what remains fixed, and what supports your conclusion about motor motion? A disturbed start is not evidence against the conductor-force rule; report the actual bounded observation and control possible contact/dead-position faults instead of inventing a convenient explanation. Submit two dated actual start records, both own sketches, predictions, controls, and explanations.",
+        "solutionContent": "Es sind keine Laufrichtungen ohne tatsächliche Blick-/Wicklungs-/Feldgeometrie als Musterwert vorgeschrieben. Die beiden aktiven Spulenseiten tragen entgegengesetzte Ströme im gemeinsamen Magnetfeld; ihre Kräfte sind entgegengesetzt und erzeugen in geeigneter Rotorstellung eine gemeinsame Drehwirkung. Eine korrekte räumliche Kraftrichtung ergibt sich aus der im jeweiligen Aufbau angewandten Leiterkraftregel. Umkehr allein des Stroms kehrt die Kräfte und damit die Drehwirkung um. Umkehr allein des Magnetfeldes tut dies ebenfalls. Bei gleichzeitiger Strom- und Feldumkehr wäre die ursprüngliche Kraftrichtung wiederhergestellt; diese Zusatzvariation ist nicht verpflichtend und darf die beiden verlangten echten Untersuchungen nicht ersetzen.\n\nDer geteilte Kommutator und die gegenüberliegenden Bürsten verbinden die beiden Spulenenden nach einer halben Umdrehung mit vertauschten äußeren Versorgungspolen. Die dann vertauschte interne Stromrichtung erhält die antreibende Drehwirkung über die veränderte Rotorlage hinweg; eine Skizze oder mündliche räumliche Erläuterung mit nachvollziehbarer eigener Darstellung ist gleichwertig. Eine vorhandene Totlage, ein nötiger kurzer Anstoß oder Kontaktstörungen werden getrennt von elektrisch aufrechterhaltener Drehung dokumentiert. Aus bloßem von Hand gedrehtem Rotor folgt keine Motorfunktion. Ohne mindestens einen elektrisch selbständig weiterlaufenden Lauf nach Loslassen in jedem Aufbau sind die jeweiligen Aufbau-Kerne nicht vollständig; ohne anschließend auswertbare kontrollierte Variation sind auch die Variationskerne nicht vollständig. Ein nicht funktionsfähiger Aufbau verlangt Nacharbeit statt voller Freigabe. Beide eigenen Aufbauten und jeweils die kontrollierte tatsächliche Variation müssen aus den Datensätzen hervorgehen; kopierte oder erfundene Starts sind kein Nachweis. Nicht gefordert sind quantitative Drehzahl-, Wirkungsgrad- oder Transformatorrechnungen.\n\nBewertung: Acht Kernleistungen, jeweils 3 BE bei vollständiger fachlich korrekter Leistung; 2 BE nur bei vollständig erbrachtem Kern mit einem isolierten nicht konzeptionellen Rechen-, Rundungs- oder Beschriftungsfehler. Ein fehlender zentraler geforderter Anteil ergibt 0 BE für den Kern. Maximal 24 BE, bestanden ab 23 BE. Kein fehlender Kern kann durch andere Punkte kompensiert werden. Gleichwertige richtige Methoden und sinnvolle Rundungen sind zulässig, keine exakte Formulierung ist gefordert. Die zwei Fälle müssen unabhängig tatsächlich bearbeitet sein.",
+        "solutionContentEn": "No rotation-direction sample is prescribed without the actual viewing, winding, and field geometry. The two active coil sides carry opposite currents in a common magnetic field; their opposite forces create a common rotational effect at a suitable rotor position. Correct spatial force direction follows the conductor-force rule applied to the actual setup. Reversing only current reverses force and torque; reversing only the magnetic field does so too. Reversing both would restore the original force direction; this extra variation is optional and cannot replace the two required real investigations.\n\nAfter half a turn, the split commutator and opposing brushes connect the two coil ends to swapped external supply poles. The reversed internal current maintains the driving rotational effect as rotor orientation changes. A traceable own sketch or spatial explanation is equally valid. Record dead positions, starting nudges, and contact faults separately from electrically sustained rotation. A rotor turned only by hand does not establish motor operation. Each assembly core requires at least one electrically sustained run after release, and each variation core requires an analysable controlled test after any necessary fault correction. A nonfunctional assembly requires further work rather than full credit. Both personal assemblies and their controlled actual variations must be evident from records; copied or invented starts are not evidence. No quantitative speed, efficiency, or transformer calculations are required.\n\nGrading: Eight core performances. Award 3 points for a complete scientifically correct performance; 2 only for a fully demonstrated core with one isolated non-conceptual arithmetic, rounding, or labelling slip. A missing central required component gives 0 for that core. Maximum 24; passing at 23. No absent core can be compensated by other points. Accept equivalent correct methods and sensible rounding; exact wording is not required. Both cases must actually be completed independently.",
+        "scoring": {
+          "maxPoints": 24,
+          "passingPoints": 23,
+          "steps": [
+            {
+              "id": "a-own-build",
+              "points": 3,
+              "description": "A: Eigener realer geprüfter Aufbau mit mindestens einem nach Loslassen elektrisch selbständig weiterlaufenden Lauf, eigener vollständiger Kontakt-/Feld-/Versorgungsskizze und Blickrichtung; Stillstand/Handdrehen allein ist kein vollständiger Kern. / EN: A: Own real checked assembly with at least one electrically sustained run after release, complete own contact/field/supply sketch and viewing direction; standstill/hand-turning alone cannot complete this core."
+            },
+            {
+              "id": "a-actual-variation",
+              "points": 3,
+              "description": "A: Begründete Vorhersage und mindestens drei echte Starts pro Strompolung, feste übrige Bedingungen, alle Beobachtungen/Kontrollen transparent. / EN: A: Justified prediction and at least three real starts per current polarity, other conditions fixed, all observations/controls transparent."
+            },
+            {
+              "id": "a-force-operation",
+              "points": 3,
+              "description": "A: Beide aktiven Leiterseiten mit richtigen Strom-/Feld-/Kraftrichtungen und gemeinsamer Drehwirkung am eigenen Aufbau erklärt. / EN: A: Explains both active sides with correct current/field/force directions and their common rotational effect in the own assembly."
+            },
+            {
+              "id": "a-commutation-result",
+              "points": 3,
+              "description": "A: Reale Kommutierung und fortgesetzter Antrieb nachvollziehbar erklärt, mit Beobachtungen abgeglichen; Handanstoß/Störung nicht als Motorantrieb ausgegeben. / EN: A: Traceably explains actual commutation/continued drive and compares with observation;does not confuse a nudge/fault with motor drive."
+            },
+            {
+              "id": "b-own-build",
+              "points": 3,
+              "description": "B: Tatsächlich neu selbst montierter Aufbau mit mindestens einem elektrisch selbständig weiterlaufenden Lauf nach Loslassen und eigener neuer Skizze; keine unveränderte A-Übernahme, Stillstand/Handdrehen allein ist kein vollständiger Kern. / EN: B: Actually reassembles personally with at least one electrically sustained run after release and a new clear own sketch; not unchanged A, and standstill/hand-turning alone cannot complete this core."
+            },
+            {
+              "id": "b-actual-variation",
+              "points": 3,
+              "description": "B: Eigene begründete Feldumkehrvorhersage und mindestens drei frische Starts je Feldrichtung bei fester Polung; vollständige Beobachtungen/Kontrollen. / EN: B: Own justified field-reversal prediction and at least three fresh starts per field direction at fixed polarity;complete observations/controls."
+            },
+            {
+              "id": "b-force-operation",
+              "points": 3,
+              "description": "B: Leiterkräfte, Strom-/Feldrichtung, Drehwirkung und Kommutierung erneut am tatsächlichen zweiten Aufbau vollständig erklärt. / EN: B: Again completely explains conductor forces, current/field directions, torque, and commutation in the actual second setup."
+            },
+            {
+              "id": "b-independent-comparison",
+              "points": 3,
+              "description": "B: Eigenständige Auswertung und begrenzter Vergleich beider kontrollierter Variationen mit tatsächlichen Ergebnissen, Störungen nachvollziehbar geprüft. / EN: B: Independent analysis and bounded comparison of controlled variations using actual results and traceable fault checks."
+            }
+          ]
+        },
+        "reviewNote": "Independent bilingual content and complete competency-coverage acceptance by /root: curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/independent-review/personal-motor-two-builds.content-review.actual.json. Separately reviewed own curricular offer: curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/independent-review/offer-bindings.actual.json. Contents, rubric and requires retain the accepted candidate; the exact jurisdiction overrides and boundary are an own offering, not an official task claim. Automated/content review is not a learner trial or evidence of effectiveness; no learner mastery is written or transferred."
+      }
+    },
+    {
+      "id": "f41e4e30-794e-5ce4-ba5e-cc72712cd691",
+      "shortKey": "personal_free_fall_two_series",
+      "title": "Prüfungsaufgabe: Freien Fall in zwei eigenen Messreihen untersuchen",
+      "titleEn": "Assessment: Investigate free fall in two personal measurement series",
+      "description": "Zwei eigene sichere Falluntersuchungen mit Rohdaten, grafischer g-Bestimmung und vollständigen Zeit-Ort-Gesetzen.",
+      "descriptionEn": "Two personal safe fall investigations with raw data, graphical estimates of g, and complete time-position laws.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment",
+        "canonical"
+      ],
+      "type": "atomic",
+      "contains": [],
+      "requires": [
+        "09029573-864f-40ca-bf8a-cee7bf6dcb73"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E",
+        "topicCode": "CANONICAL.PHYSICS.ASSESSMENT.PERSONAL_FREE_FALL_TWO_SERIES"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-SN"
+        ]
+      },
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary",
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-SN"
+          ]
+        }
+      },
+      "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "09029573-864f-40ca-bf8a-cee7bf6dcb73"
+        ],
+        "coveredStrands": [
+          "LI_BEWEGUNG"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2",
+          "AB3"
+        ],
+        "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/physik/stage-source-route-repair-20261117-v1/personal-free-fall-two-series.md",
+        "taskContent": "Untersuche den freien Fall in zwei unabhängigen eigenen Messreihen A und B. Eine Beispieltabelle, ein fremdes Video oder nur ein Versuchsplan ersetzt keine Reihe. Bestimme in beiden Reihen aus eigenen grafisch ausgewerteten Messdaten g und formuliere jeweils ein Zeit-Ort-Gesetz mit ausdrücklich angegebenen Anfangsbedingungen. Ein bestimmter Wert von g darf nicht als Messergebnis vorgegeben oder durch erfundene Daten hergestellt werden.\n\nAufbau: Arbeite auf Fußbodenniveau in einem freien, abgesperrten kleinen Fallbereich über einer weichen Auffangmatte. Verwende einen kleinen weichen, möglichst kompakten Gummigegenstand, keine Steine, Metallgewichte oder zerbrechlichen Gegenstände. Lasse ihn aus höchstens 0,80 m ohne Stoß los; niemand befindet sich darunter. Kein Steigen auf Stühle, kein Fenster-/Treppenversuch. Die Lehrkraft prüft und stellt die sichere Aufnahmetechnik bereit. Bei Video muss eine fest montierte Kamera mindestens 120 tatsächlich aufgenommene Bilder je Sekunde liefern; kläre die reale Aufnahmebildrate, nicht nur die Abspiel- oder Exportbildrate. Eine vertikale kalibrierte Längenskala liegt in derselben Ebene wie die Fallbahn. Erfasse ihren Abstand, den Bezugspunkt am Gegenstand und die räumliche Ablesegrenze. Eine geeignete schulische Lichtschrankenanordnung mit mindestens fünf verlässlich zugeordneten Zeit-Ort-Paaren pro Fall ist gleichwertig. Handgestoppte Gesamtfallzeiten allein genügen nicht.\n\nVorab: Wähle einen nach unten positiven Ort x mit x=0 am tatsächlichen Loslasspunkt. Definiere, wie du den Zeitpunkt des Loslassens identifizierst und wie genau t=0, x=0 und das Loslassen näherungsweise aus Ruhe bestimmbar sind. Notiere ein erwartetes Diagrammbild als Voraussage, nicht als Messwert. Im später zu prüfenden Modell ohne Luftwiderstand gilt x(t)=x_0+v_0 t+(1/2)g t²; die Anfangsbedingungen müssen zu deiner wirklichen Auswertung passen. Das bloße Einsetzen von g=9,81 m/s² ist keine Bestimmung von g.\n\nA – Erste tatsächliche Untersuchung: Wähle eine sichere Fallhöhe zwischen etwa 0,45 und 0,75 m. Miss und dokumentiere sie selbst. Führe mindestens drei frische Loslassversuche unter möglichst gleichen Bedingungen aus. Erfasse für jeden Versuch mindestens fünf eigene Zeit-Ort-Paare zwischen Loslassen und Auffangen, mit Bildnummern beziehungsweise eindeutigen Sensorzeitmarken. Hebe Originalaufnahmen oder Sensorprotokolle auf; eine nachvollziehbare Auswahltabelle genügt für die Abgabe, personenbezogene Aufnahmen sind unnötig. Notiere Streuung, etwaige seitliche Bewegung, Ablesegrenzen und erkennbare Stöße; kennzeichne einen begründet ungültigen Lauf, statt ihn still zu entfernen, und ersetze ihn durch einen weiteren tatsächlichen Versuch.\n\nWerte A grafisch aus: Zeichne eigene beschriftete Diagramme mit Einheiten und sichtbaren Messpunkten. Bei begründetem v_0≈0 und geeignet gesetztem x_0 kann die Auftragung x gegen t² eine Gerade mit Steigung g/2 liefern. Bestimme die Steigung aus einer Ausgleichsgeraden über mehrere Messpunkte, nicht nur durch Verbinden zweier zufälliger Punkte. Alternativ ist eine nachvollziehbare quadratische Anpassung mit überprüften Anfangsbedingungen zulässig. Prüfe anhand der frühen Punkte und deiner Loslassmethode, ob die Annahme v_0≈0 vertretbar ist; ein Anfangsstoß darf nicht als Beleg für das Ruhemodell ausgegeben werden. Bestimme g für die gültigen Läufe, vergleiche die Werte und gib einen nachvollziehbaren Schätzwert samt aus Zeit-/Ortsablesung und Laufstreuung begründeter Größenordnung der Unsicherheit an. Verwende kein unbegründetes Konfidenzintervall. Zeige an einer sinnvollen Änderung der Zeit- oder Ortsgrenzen, wie stark dein ermitteltes g davon abhängt. Formuliere abschließend das zu A passende Zeit-Ort-Gesetz mit deinem ermittelten g, Koordinatenrichtung, Ursprung, Zeitbezug und Anfangsgeschwindigkeit.\n\nB – Zweite unabhängige Untersuchung: Stelle eine andere sichere Fallhöhe zwischen etwa 0,25 und 0,40 m ein, miss sie und beginne eine neue Reihe mit mindestens drei eigenen Loslassversuchen. Verwende denselben Gegenstand und dieselbe sorgfältig geprüfte Skala/Zeitbasis; gleiche technische Hilfsmittel sind erlaubt, kopierte A-Daten nicht. Erzeuge für jeden gültigen B-Lauf wieder mindestens fünf frische Zeit-Ort-Paare, eigene Diagramme und eine eigene grafische Bestimmung von g beziehungsweise begründete quadratische Anpassung. Prüfe die Anfangsbedingungen erneut; übernimm nicht bloß die Freigabe aus A. Bestimme deinen B-Schätzwert samt begründeter Unsicherheitsgrößenordnung, untersuche eine Grenzvariation und formuliere ein eigenes B-Zeit-Ort-Gesetz mit allen Anfangsbedingungen.\n\nVergleiche zum Schluss A und B quantitativ unter Berücksichtigung der ermittelten Unsicherheiten. Erkläre, was die Daten über das gemeinsame Modell nahe der Erdoberfläche zulassen und wo Anfangsstoß, Zeitnullpunkt, Parallaxe oder Luftwiderstand die Aussage begrenzen. Ein abweichender Wert oder eine nicht auflösbare Differenz ist bei ehrlicher, geeigneter Untersuchung und begrenzter Deutung zulässig; ein erwartetes Ergebnis darf nicht erzwungen werden. Reiche beide datierten Rohprotokolle, Aufbau-/Skalenskizze, Messpunkttabellen, Diagramme, Auswertung und die beiden vollständigen Gesetze ein.",
+        "taskContentEn": "Investigate free fall in two independent personal measurement series A and B. A sample table, someone else's video, or a plan alone cannot replace either series. In each series determine g from your own graphically analysed measurements and formulate a time-position law with explicit initial conditions. No prescribed value of g may be presented as measured or manufactured by inventing data.\n\nSetup: Work at floor level in a small clear drop area kept free of people, over a soft catching mat. Use a small soft, preferably compact rubber object, never stones, metal weights, or fragile objects. Release from at most 0.80 m without a push; nobody is beneath it. Do not climb on chairs or use windows or stairways. The teacher checks the setup and provides safe recording equipment. A fixed video camera must record at least 120 actual frames per second; verify the real acquisition rate, not merely playback or export rate. Place a calibrated vertical length scale in the plane of the fall. Record its spacing, the reference point on the object, and spatial reading limits. A suitable school photogate arrangement providing at least five reliably matched time-position pairs per fall is equivalent. Hand-timed total fall durations alone are insufficient.\n\nBefore measuring: Choose downward-positive position x, with x=0 at the actual release point. Define how you identify release and the accuracy of t=0, x=0, and approximate release from rest. Record an expected graph as a prediction, never as data. The model to be tested neglects air resistance: x(t)=x_0+v_0 t+(1/2)g t²; its initial conditions must match your analysis. Simply inserting g=9.81 m/s² does not determine g.\n\nA – First actual investigation: Choose a safe height of approximately 0.45–0.75 m and measure it yourself. Make at least three fresh releases under conditions kept as similar as possible. Record at least five personal time-position pairs per trial between release and catching, including frame numbers or unambiguous sensor timestamps. Retain the original recording/sensor data; a traceable selected-data table is sufficient to submit, and personal images are unnecessary. Note scatter, lateral motion, reading limits, and visible pushes. Mark and justify an invalid trial rather than silently removing it, and replace it with another real trial.\n\nAnalyse A graphically: Draw your own labelled graphs with units and visible measured points. When v_0≈0 and the chosen x_0 are justified, plotting x against t² can give a line with slope g/2. Determine slope from a fitted line across several points, not simply two arbitrary points. A traceable quadratic fit with checked initial conditions is equivalent. Use early points and the release procedure to check whether v_0≈0 is defensible; a push is not evidence for release from rest. Determine g for the valid trials, compare values, and give a traceable estimate with an uncertainty scale justified by time/position readings and trial scatter, without an unsupported confidence interval. Show how a sensible change of time or position limits affects the inferred g. Finally give A's time-position law using your estimated g, axis direction, origin, time reference, and initial velocity.\n\nB – Second independent investigation: Set and measure another safe height of approximately 0.25–0.40 m and begin a new series of at least three personal releases. Use the same object and carefully checked scale/timebase; reusing equipment is allowed, copying A's data is not. For each valid B trial produce at least five fresh time-position pairs, your own graphs, and your own graphical determination of g or justified quadratic fit. Check initial conditions again rather than copying A's conclusion. Give the independent B estimate with a justified uncertainty scale, test a boundary variation, and formulate B's own law with all initial conditions.\n\nFinally compare A and B quantitatively with their estimated uncertainties. Explain what the data support about a common model near Earth's surface and where an initial push, time-zero error, parallax, or drag limits the conclusion. An unexpected value or unresolved difference is acceptable after an honest suitable investigation and a bounded interpretation; do not force the expected result. Submit both dated raw records, setup/scale sketch, measured-point tables, graphs, analysis, and the two complete laws.",
+        "solutionContent": "Es gibt keine vorgegebenen persönlichen Messwerte und keine Vorschrift, exakt g=9,81 m/s² zu erhalten. Jede Reihe benötigt eigene überprüfbare Zeit-/Ortspunkte und einen geeigneten tatsächlichen Aufbau. Für aus Ruhe und am eigenen Ursprung fallende Körper lautet das untersuchte Modell x=(g/2)t². Eine Ausgleichsgerade in x gegen t² mit Steigung m in m/s² liefert g=2 m. Ein verlässlich festgestelltes v_0≠0 darf durch eine eigenständige quadratische Anpassung x=x_0+v_0 t+(g/2)t² berücksichtigt werden; eine unbegründete zusätzliche freie Anpassung ersetzt keine Untersuchung der Loslassbedingungen. Für jede Reihe muss das vollständige eigene Gesetz samt Koordinatenwahl und Anfangsbedingungen nachvollziehbar sein.\n\nZeitverschiebung um eine Bilddauer und Positionsvariation um die reale Ablesegrenze sind mögliche nachvollziehbare Empfindlichkeitsprüfungen, keine garantierten Gesamtfehlergrenzen. Wiederholungsstreuung ersetzt systematische Skalen-/Zeitfehler nicht. Ein Ergebnis außerhalb eines Schulreferenzwertes ist nicht allein falsch; es muss auf geeigneten eigenen Daten beruhen und die begrenzte Gültigkeit des Luftwiderstandsmodells ehrlich prüfen. Aus Beispieldaten oder bloßer Planung kann kein eigener Versuch nachgewiesen werden. Für die Sicherheits-/Machbarkeitsprüfung des Aufgabenmaterials, NICHT als Lernerdaten: Bei g=9,81 m/s² beträgt die ideale Fallzeit für 0,30 m rund 0,247 s und für 0,60 m rund 0,350 s; bei 120 Bildern/s stehen somit rund 30 beziehungsweise 42 Bildintervalle zur Verfügung. Das ermöglicht mehr als fünf räumlich verteilte Messpunkte unterhalb 0,80 m.\n\nBewertung: Acht Kernleistungen, jeweils 3 BE bei vollständiger fachlich korrekter Leistung; 2 BE nur bei vollständig erbrachtem Kern mit einem isolierten nicht konzeptionellen Rechen-, Rundungs- oder Beschriftungsfehler. Ein fehlender zentraler geforderter Anteil ergibt 0 BE für den Kern. Maximal 24 BE, bestanden ab 23 BE. Kein fehlender Kern kann durch andere Punkte kompensiert werden. Gleichwertige richtige Methoden und sinnvolle Rundungen sind zulässig, keine exakte Formulierung ist gefordert. Die zwei Fälle müssen unabhängig tatsächlich bearbeitet sein.",
+        "solutionContentEn": "There are no prescribed personal measurements and no requirement to obtain exactly g=9.81 m/s². Each series needs traceable own time-position data and a suitable real setup. For release from rest at the chosen origin, x=(g/2)t². A fitted line in x versus t² with slope m in m/s² gives g=2 m. A reliably established nonzero v_0 may be handled with an independent quadratic fit x=x_0+v_0 t+(g/2)t²; unjustified extra fit parameters cannot replace investigation of release conditions. Each series needs a traceable complete own law, axis convention, and initial conditions.\n\nShifting time by one frame interval and positions by the actual reading limit are possible transparent sensitivity tests, not guaranteed total-error bounds. Repeat scatter does not replace systematic scale/time errors. A result differing from a school reference is not automatically wrong; it must arise from suitable own data and honestly examine limits of the drag-free model. Sample data or planning alone cannot establish personal execution. For task safety/feasibility checks ONLY, never learner data: with g=9.81 m/s² the ideal fall time is about 0.247 s at 0.30 m and 0.350 s at 0.60 m. At120 frames/s these provide about 30 and 42 frame intervals, respectively, permitting more than five spatially separated points below 0.80 m.\n\nGrading: Eight core performances. Award 3 points for a complete scientifically correct performance; 2 only for a fully demonstrated core with one isolated non-conceptual arithmetic, rounding, or labelling slip. A missing central required component gives 0 for that core. Maximum 24; passing at 23. No absent core can be compensated by other points. Accept equivalent correct methods and sensible rounding; exact wording is not required. Both cases must actually be completed independently.",
+        "scoring": {
+          "maxPoints": 24,
+          "passingPoints": 23,
+          "steps": [
+            {
+              "id": "a-actual-data",
+              "points": 3,
+              "description": "A: Sicherer tatsächlicher Aufbau, kalibrierte reale Zeit-/Ortsskala, mindestens drei eigene gültige Läufe mit je mindestens fünf nachvollziehbaren Paaren. / EN: A: Safe real setup, calibrated actual time/position scale, at least three own valid trials with at least five traceable pairs each."
+            },
+            {
+              "id": "a-graph-g",
+              "points": 3,
+              "description": "A: Eigene beschriftete Messpunktdiagramme, geeignete grafische Steigung/Quadratanpassung und daraus selbst bestimmtes g für die gültigen Läufe. / EN: A: Own labelled measured-point graphs, suitable graphical slope/quadratic fit, and independently inferred g for valid trials."
+            },
+            {
+              "id": "a-initial-law",
+              "points": 3,
+              "description": "A: Loslassbedingungen einschließlich möglichem Anfangsstoß geprüft; eigenes vollständiges Gesetz mit x_0, v_0, g, Zeitbezug und Richtung. / EN: A: Checks release including a possible initial push; complete own law with x_0, v_0, g, time reference, and direction."
+            },
+            {
+              "id": "a-boundaries",
+              "points": 3,
+              "description": "A: Datenbasierter Schätzwert, reale Messgrenzen/Laufstreuung, tatsächliche Grenzvariation und begrenzte Aussage ohne erfundene Präzision. / EN: A: Data-based estimate, real reading limits/scatter, actual boundary variation, and a bounded conclusion without invented precision."
+            },
+            {
+              "id": "b-actual-data",
+              "points": 3,
+              "description": "B: Unabhängige zweite gemessene Höhe, mindestens drei frische eigene gültige Läufe und je mindestens fünf neue Paare, keine A-Datenkopie. / EN: B: Independent measured second height, at least three fresh own valid trials with at least five new pairs each, no copied A data."
+            },
+            {
+              "id": "b-graph-g",
+              "points": 3,
+              "description": "B: Neue eigene Diagramme und eigenständige quantitative grafische g-Bestimmung beziehungsweise begründete Quadratanpassung. / EN: B: New own graphs and independent quantitative graphical g determination or justified quadratic fit."
+            },
+            {
+              "id": "b-initial-law",
+              "points": 3,
+              "description": "B: Anfangsbedingungen erneut tatsächlich geprüft und separates vollständiges B-Zeit-Ort-Gesetz formuliert. / EN: B: Actually rechecks initial conditions and formulates a separate complete B time-position law."
+            },
+            {
+              "id": "b-boundaries-comparison",
+              "points": 3,
+              "description": "B: Eigene Unsicherheits-/Grenzvariation und quantitativer A/B-Vergleich mit begründeter Modellgrenze, kein erzwungenes Ergebnis. / EN: B: Own uncertainty/boundary variation and quantitative A/B comparison with justified model limits, no forced result."
+            }
+          ]
+        },
+        "reviewNote": "Independent bilingual content and complete competency-coverage acceptance by /root: curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/independent-review/personal-free-fall-two-series.content-review.actual.json. Separately reviewed own curricular offer: curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/independent-review/offer-bindings.actual.json. Contents, rubric and requires retain the accepted candidate; the exact jurisdiction overrides and boundary are an own offering, not an official task claim. Automated/content review is not a learner trial or evidence of effectiveness; no learner mastery is written or transferred."
+      }
+    },
+    {
+      "id": "f602680f-ea75-5bed-ae87-72f6be34a99b",
+      "shortKey": "ideal_transformer_two_load_cases",
+      "title": "Prüfungsaufgabe: Zwei ideale Transformatoren unter Last",
+      "titleEn": "Assessment: Two ideal transformers under load",
+      "description": "In zwei unabhängigen Fällen Aufbau und Induktion erklären, Spannungs- und Stromübersetzung berechnen und mit Energieerhaltung begründen.",
+      "descriptionEn": "Explain structure and induction, calculate voltage and current ratios, and justify them using energy conservation in two independent cases.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment",
+        "canonical"
+      ],
+      "type": "atomic",
+      "contains": [],
+      "requires": [
+        "af1094c1-511a-5aae-9e0a-3e9196a82d9a"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_FELDER",
+          "LI_ENERGIE",
+          "LI_TECHNIK"
+        ],
+        "phase": "GLOBAL",
+        "area": "Elektromagnetismus",
+        "topicCode": "CANONICAL_PHYSICS_IDEAL_TRANSFORMER_TWO_LOAD_CASES"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-SL",
+          "DE-SN"
+        ]
+      },
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary",
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-SL",
+            "DE-SN"
+          ]
+        }
+      },
+      "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "af1094c1-511a-5aae-9e0a-3e9196a82d9a"
+        ],
+        "coveredStrands": [
+          "LI_FELDER",
+          "LI_ENERGIE",
+          "LI_TECHNIK"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2"
+        ],
+        "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/physik/stage-source-route-repair-20261117-v1/ideal-transformer-two-load-cases.md",
+        "taskContent": "Bearbeite zwei reine Papiermodelle; es wird kein elektrischer Versuch durchgeführt. Jeder Transformator besitzt zwei elektrisch getrennte Wicklungen mit N₁ bzw. N₂ Windungen auf einem gemeinsamen geschlossenen Eisenkern. Wicklung 1 ist an eine sinusförmige Wechselspannungsquelle angeschlossen, Wicklung 2 versorgt einen rein ohmschen Verbraucher. Betrachtet wird jeweils der stationäre Wechselstrombetrieb nach dem Einschwingen. Alle angegebenen U und I sind positive Effektivwerte. Das Idealmodell vernachlässigt Wicklungs-/Kernverluste, Streufluss und den Magnetisierungsstrom gegenüber dem Laststrom. Wegen der ohmschen Last und des Idealmodells besteht keine Phasenverschiebung zwischen Spannung und Laststrom; die mittlere Wirkleistung ist daher auf beiden Seiten P=UI. Es gilt U₂/U₁=N₂/N₁. Die Energieerhaltung musst du für die Stromübersetzung selbst anwenden. Eine Richtungsangabe zum momentanen Strom oder eine Phasenrechnung ist nicht verlangt.\n\nA — Abwärtstransformator: N₁=600, N₂=150, U₁=24 V, I₂=0,80 A.\nA1 Skizziere beschriftet Quelle, beide getrennten Wicklungen, gemeinsamen Kern und Verbraucher. Erkläre den Weg von der zeitlichen Änderung des magnetischen Flusses bis zur induzierten Sekundärspannung. Warum braucht die Energieübertragung keine leitende Verbindung zwischen den Wicklungen? Eine Zeichnung allein ersetzt die Erklärung nicht.\nA2 Berechne U₂ und leite I₁ mit Energieerhaltung her. Gib U₂/U₁ und I₂/I₁ an. Erkläre an deinen Ergebnissen, warum die beiden Übersetzungen gegenläufig sind.\nA3 Berechne beide Wirkleistungen und beurteile: „Weil die Spannung auf ein Viertel sinkt, geht auch drei Viertel der übertragenen Leistung verloren.“ Grenze deine Antwort ausdrücklich auf das vorgegebene Idealmodell ein.\n\nB — Aufwärtstransformator: Für einen unabhängigen zweiten Transformator gilt N₁=200, N₂=500, U₁=12 V, I₂=0,12 A. Dieselben Modellbedingungen gelten.\nB1 Fertige eine neue beschriftete Skizze an und erkläre erneut eigenständig, wie Wechselstrom, zeitlich veränderlicher gemeinsamer Fluss und Induktion die Sekundärspannung ermöglichen. Prüfe außerdem die Modellbehauptung: „Ein zeitlich konstanter magnetischer Fluss könnte dauerhaft dieselbe Sekundärspannung induzieren.“ Es geht um den Fluss, nicht um den gefährlichen realen Anschluss an eine Gleichspannungsquelle.\nB2 Berechne U₂ und leite I₁ aus Energieerhaltung her. Gib beide Übersetzungsverhältnisse U₂/U₁ und I₂/I₁ an und begründe ihre Gegenläufigkeit.\nB3 Berechne die Wirkleistungen. Beurteile: „Mit mehr Sekundärwindungen kann man gleichzeitig Sekundärspannung und Sekundärstrom gegenüber den Primärwerten erhöhen und so im idealen Transformator Leistung gewinnen.“ Erkläre mit den Zahlen und der Energiequelle, weshalb das nicht zu diesem Modell passt. Bearbeite B vollständig; ein Verweis auf A genügt nicht.",
+        "taskContentEn": "Work with two paper models only; no electrical experiment is performed. Each transformer has two electrically isolated windings of N₁ and N₂ turns on a shared closed iron core. Winding 1 is connected to a sinusoidal AC voltage source; winding 2 supplies a purely resistive load. Consider steady-state AC operation after transients. Every U and I specified is a positive RMS value. The ideal model neglects winding/core losses, leakage flux, and magnetising current relative to load current. With a resistive load and this ideal model, voltage and load current have no phase difference, so mean real power is P=UI on both sides. U₂/U₁=N₂/N₁ applies. Use energy conservation yourself to obtain the current ratio. No instantaneous current direction or phase calculation is required.\n\nA — Step-down transformer: N₁=600, N₂=150, U₁=24 V, I₂=0.80 A.\nA1 Draw a labelled sketch showing the source, both isolated windings, shared core, and load. Explain how time-varying magnetic flux produces the induced secondary voltage. Why does transferring energy require no conducting connection between the windings? A drawing alone does not replace the explanation.\nA2 Calculate U₂ and derive I₁ using energy conservation. Give U₂/U₁ and I₂/I₁. Use your results to explain why the two ratios are inverse.\nA3 Calculate both real powers and evaluate: 'Since voltage falls to one quarter, three quarters of the transferred power are also lost.' Explicitly restrict your answer to the specified ideal model.\n\nB — Step-up transformer: An independent second transformer has N₁=200, N₂=500, U₁=12 V, I₂=0.12 A. The same model conditions apply.\nB1 Make a new labelled sketch and independently explain how alternating current, time-varying shared flux, and induction enable the secondary voltage. Also evaluate the model claim: 'A magnetic flux constant in time could continuously induce the same secondary voltage.' This concerns flux, not an unsafe real connection to a DC supply.\nB2 Calculate U₂ and derive I₁ from energy conservation. Give both ratios U₂/U₁ and I₂/I₁ and justify their inverse relationship.\nB3 Calculate the real powers. Evaluate: 'Adding secondary turns can increase both secondary voltage and secondary current above the primary values and thereby produce a power gain in an ideal transformer.' Use the numbers and the energy source to explain why this is incompatible with the model. Answer B fully; referring to A is insufficient.",
+        "solutionContent": "A1: Die Quelle liegt nur im Primärkreis, der ohmsche Verbraucher nur im Sekundärkreis; der gemeinsame Kern koppelt die Wicklungen magnetisch. Der Wechselbetrieb erzeugt einen zeitlich veränderlichen Fluss, der beide Wicklungen durchsetzt. Nach dem Induktionsprinzip entsteht dadurch eine Spannung in der Sekundärwicklung; bei angeschlossener Last fließt dort Strom. Die Energie kommt aus der Primärquelle und wird elektromagnetisch übertragen, nicht durch Elektronen, die von einer Wicklung in die andere laufen. A2: U₂=24·150/600=6 V. Im verlustlosen stationären Modell ist P₁=P₂, also U₁I₁=U₂I₂. I₁=6·0,80/24=0,20 A. U₂/U₁=1/4 und I₂/I₁=4. Allgemein folgt I₂/I₁=U₁/U₂=N₁/N₂; niedrigere Spannung geht bei gleicher Leistung mit höherer Stromstärke einher. A3: P₁=24·0,20=4,8 W und P₂=6·0,80=4,8 W. Die behauptete Leistungsverminderung ist falsch: Der höhere Sekundärstrom gleicht die kleinere Spannung aus. Dies ist die Bilanz des vorgegebenen Idealmodells; reale Verluste werden hier ausdrücklich nicht modelliert.\n\nB1: Neue Skizze mit 200 Primär- und 500 Sekundärwindungen, Wechselspannungsquelle im Primärkreis, ohmscher Last im Sekundärkreis und gemeinsamem Kern. Zeitlich veränderlicher Fluss koppelt beide getrennten Stromkreise; seine Änderung induziert die Sekundärspannung. Bei zeitlich konstantem Fluss ist dessen Änderungsrate null und daher keine dauernde Induktionsspannung vorhanden. Das ist eine Aussage über Induktion, keine Anschlussanleitung. B2: U₂=12·500/200=30 V. U₁I₁=U₂I₂ ergibt I₁=30·0,12/12=0,30 A. U₂/U₁=2,5 und I₂/I₁=0,4=1/2,5. Die Spannung steigt um den Faktor 2,5, die Stromstärke sinkt auf das 0,4-Fache; der Zusammenhang folgt aus der gleichen übertragenen Leistung. B3: P₁=12·0,30=3,6 W=P₂=30·0,12. Würden bei gleichem Betrieb beide Verhältnisse größer als 1, wäre P₂>P₁; das widerspräche dem verlustlosen Energiehaushalt. Mehr Windungen erzeugen keine zusätzliche Energie. Die Primärquelle liefert die an der Last umgesetzte Leistung.\n\nIn beiden Fällen genügt eine fachlich richtige schematische Zeichnung; eine bestimmte Wicklungsgeometrie wird nicht benotet. Eine Herleitung über die Verhältnisgleichungen ist gleichwertig, sofern die Leistungsbilanz als Begründung der Stromübersetzung erkennbar ist.\n\nBewertung: 7 Kernleistungen mit je 3 BE; insgesamt 21 BE, Bestehensgrenze 20 BE. Ein Kern erhält 3 BE für eine vollständige fachlich richtige Demonstration. 2 BE sind nur bei vollständig gezeigtem Kern mit einem isolierten nicht konzeptionellen Schreib-, Rechen- oder Rundungsfehler zulässig. Fehlt ein zentraler Teil oder liegt ein konzeptioneller Fehler vor, erhält dieser Kern 0 BE. Damit kann weder ein fehlender Kern noch ein fehlender Fall ausgeglichen werden. Gleichwertige fachlich richtige Begründungen, Darstellungen und Methoden sind zulässig; exakte Wörter der Musterlösung sind nicht verlangt. Beide Fälle brauchen eigenständige Antworten; ein bloßer Verweis auf den anderen Fall ersetzt keine Leistung.",
+        "solutionContentEn": "A1: The source belongs only to the primary circuit and the resistive load only to the secondary circuit; the common core magnetically couples the windings. AC operation creates time-varying flux linking both windings. By electromagnetic induction this produces a secondary voltage, and a current flows when the load is connected. Energy comes from the primary source and is transferred electromagnetically, not by electrons travelling from one winding into the other. A2: U₂=24·150/600=6 V. In the lossless steady-state model P₁=P₂, hence U₁I₁=U₂I₂. I₁=6·0.80/24=0.20 A. U₂/U₁=1/4 and I₂/I₁=4. Generally I₂/I₁=U₁/U₂=N₁/N₂: at the same power, lower voltage corresponds to greater current. A3: P₁=24·0.20=4.8 W and P₂=6·0.80=4.8 W. The claimed power reduction is false: greater secondary current compensates for lower voltage. This is the specified ideal model's balance; real losses are explicitly not modelled.\n\nB1: A new sketch shows 200 primary and 500 secondary turns, an AC source in the primary circuit, a resistive load in the secondary circuit, and a shared core. Time-varying flux couples the separate circuits; its change induces the secondary voltage. With flux constant in time, its rate of change is zero and no sustained induced voltage exists. This is a statement about induction, not a connection instruction. B2: U₂=12·500/200=30 V. U₁I₁=U₂I₂ gives I₁=30·0.12/12=0.30 A. U₂/U₁=2.5 and I₂/I₁=0.4=1/2.5. Voltage increases by a factor of 2.5 while current falls to 0.4 times its primary value; the relationship follows from equal transferred power. B3: P₁=12·0.30=3.6 W=P₂=30·0.12. If both ratios exceeded 1 in the same operating state, P₂ would exceed P₁, contradicting the lossless energy balance. More turns create no additional energy. The primary source supplies the power dissipated in the load.\n\nIn both cases a scientifically correct schematic sketch suffices; no particular winding geometry is graded. A derivation using ratios is equivalent provided the power balance is recognisable as the justification for the current ratio.\n\nGrading: 7 core performances worth 3 points each; total 21, passing threshold 20. Award 3 for a complete scientifically correct demonstration. Award 2 only when the core is fully demonstrated with one isolated non-conceptual writing, arithmetic, or rounding slip. A missing central component or a conceptual error earns 0 for that core. Thus neither an absent core nor an absent case can be compensated. Scientifically equivalent explanations, representations, and methods are accepted; the reference solution's exact wording is not required. Both cases require independent answers; merely referring to the other case does not demonstrate a performance.",
+        "scoring": {
+          "maxPoints": 21,
+          "passingPoints": 20,
+          "steps": [
+            {
+              "id": "A-induction",
+              "points": 3,
+              "description": "A: Eigene beschriftete Anordnung und vollständige Erklärung der magnetischen Kopplung/Induktion ohne leitende Wicklungsverbindung. / EN: A: Own labelled arrangement and complete explanation of magnetic coupling/induction without a conducting inter-winding connection."
+            },
+            {
+              "id": "A-ratios",
+              "points": 3,
+              "description": "A: Sekundärspannung und Primärstrom korrekt herleiten, beide Übersetzungen angeben und Gegenläufigkeit aus Energieerhaltung begründen. / EN: A: Correctly derive secondary voltage and primary current, give both ratios, and justify their inverse relationship using energy conservation."
+            },
+            {
+              "id": "A-power",
+              "points": 3,
+              "description": "A: Beide Wirkleistungen auswerten und falsche Leistungsbehauptung mit Idealmodell/Energiequelle begründet zurückweisen. / EN: A: Evaluate both real powers and reject the false power claim with reasoning about the ideal model/energy source."
+            },
+            {
+              "id": "B-induction",
+              "points": 3,
+              "description": "B: Eigene beschriftete Anordnung und vollständige Erklärung der magnetischen Kopplung/Induktion ohne leitende Wicklungsverbindung. / EN: B: Own labelled arrangement and complete explanation of magnetic coupling/induction without a conducting inter-winding connection."
+            },
+            {
+              "id": "B-ratios",
+              "points": 3,
+              "description": "B: Sekundärspannung und Primärstrom korrekt herleiten, beide Übersetzungen angeben und Gegenläufigkeit aus Energieerhaltung begründen. / EN: B: Correctly derive secondary voltage and primary current, give both ratios, and justify their inverse relationship using energy conservation."
+            },
+            {
+              "id": "B-power",
+              "points": 3,
+              "description": "B: Beide Wirkleistungen auswerten und falsche Leistungsbehauptung mit Idealmodell/Energiequelle begründet zurückweisen. / EN: B: Evaluate both real powers and reject the false power claim with reasoning about the ideal model/energy source."
+            },
+            {
+              "id": "b-constant-flux",
+              "points": 3,
+              "description": "B: Zeitlich konstanten Fluss mit verschwindender Induktionsspannung begründen. / EN: B: Explain why flux constant in time gives zero induced voltage."
+            }
+          ]
+        },
+        "reviewNote": "Independent bilingual content and complete competency-coverage acceptance by /root/he_ephase_source_review: curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/independent-review/ideal-transformer-two-load-cases.content-review.actual.json. Separately reviewed own curricular offer: curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/independent-review/offer-bindings.actual.json. Contents, rubric and requires retain the accepted candidate; the exact jurisdiction overrides and boundary are an own offering, not an official task claim. Automated/content review is not a learner trial or evidence of effectiveness; no learner mastery is written or transferred."
       }
     }
   ],

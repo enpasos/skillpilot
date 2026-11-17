@@ -555,6 +555,35 @@ curricular-level terminology. Personalization Levels 1–4, QA maturity and goal
   Task availability, authentication, scope and session binding remain their
   own contracts. This does not claim removal of historical code paths;
   independent branches may proceed in parallel.
+- **Composition child order (16 November 2026).** Source composition format
+  `1.2` supports an optional `structure.childOrder.after` list of
+  `{unit, after}` pairs naming direct structure children. It declares a partial
+  planning order; an empty list declares no additional child order. Actual
+  atomic demand still applies and must satisfy E3. Without this
+  field, legacy sibling-order behavior remains. Checked stage-plan bindings
+  retain priority. Filtering must preserve reachability through removed
+  intermediate children and reduce the visible order transitively. Unknown,
+  self, duplicate, cyclic or transitively redundant declarations fail
+  authoring validation. This changes neither canonical `requires` nor learner
+  scope, frontier, mastery or task access. Do not downgrade the new source
+  format into an older export contract that cannot retain its order.
+  Author a justified partial order, never an adjacency chain copied from the
+  display list. Check E3 against actual cross-unit demand: empty declarations
+  are not a shortcut for leaving required ordering unexplained. Repair an
+  incoherent unit grouping before declaring whole-unit sequencing.
+- **Explicit acquisition placement (16 November 2026).** In composition format
+  `1.2`, a nested atomic `goalEntry` with `projectionRole: prerequisiteOnly`
+  may declare `acquisitionPlacement: true`. This preserves its reviewed learning
+  place as an internal presentation template. Only the backend's closed Personal
+  Curriculum learning basis authorizes materialization, and an already visible
+  target placement wins. Among multiple explicit templates, the goal's owning
+  subject takes precedence over a foreign-subject fallback; wrapper depth
+  across subjects is not curricular authority. Check the combined map for
+  earlier demand and repair inappropriate authored timing. The flag creates
+  no seeds, prerequisites or mastery.
+  Unmarked support entries, global support declarations and broad support
+  subtrees remain scope metadata; their location alone is never acquisition
+  authority. Public views without Personal Curriculum metadata stay unchanged.
 - Preserve effective atomic acyclicity and transitive minimality. When whole-unit
   sequencing is intended, additionally check the projected block graph at every
   relevant boundary: atomic acyclicity alone does not guarantee a unit order.

@@ -12,26 +12,30 @@ const files = readdirSync(canonicalDir).filter(file => file.endsWith('.json')).m
 const catalog = files.map(file => JSON.parse(readFileSync(file, 'utf8')) as SkillLandscape)
 const landscape = catalog.find(candidate => candidate.landscapeId === '7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a')!
 const applicability = buildApplicabilityCompilation(catalog.map((source, index) => ({ file: files[index], landscape: source })))
-// This isolated test fixture declares exactly its two BW scopes. Production
+// This isolated fixture binds the full exposure and the independent BW stage
+// authority. Production
 // continues to enumerate all sixteen supported jurisdictions and all real views.
 const scopedApplicability = { ...applicability, summary: { ...applicability.summary, supportedValues: ['DE-BW'] } }
 const profile = createRouteProfiles().find(candidate => candidate.profileId === 'canonical-physics-sek1')!
 const viewDir = resolve(repository, 'curricula/DE/Gymnasium/composition-views/physik')
 const national = JSON.parse(readFileSync(resolve(viewDir, 'de-de-gym-physics-gk.view.json'), 'utf8')) as CompositionView
 const bw = JSON.parse(readFileSync(resolve(viewDir, 'de-bw-gk.view.json'), 'utf8')) as CompositionView
+const bwStage = JSON.parse(readFileSync(resolve(viewDir, 'de-bw-seki.view.json'), 'utf8')) as CompositionView
 const fixtureParent = resolve(import.meta.dirname, '../node_modules/.tmp')
 mkdirSync(fixtureParent, { recursive: true })
 const fixture = mkdtempSync(resolve(fixtureParent, 'cqr-national-stage-native-'))
 try {
   const nationalFile = resolve(fixture, 'national.view.json'), bwFile = resolve(fixture, 'bw.view.json')
+  const stageFile = resolve(fixture, 'bw-stage.view.json')
   writeFileSync(bwFile, JSON.stringify(bw))
+  writeFileSync(stageFile, JSON.stringify(bwStage))
   const invoke = (candidate: CompositionView) => {
     writeFileSync(nationalFile, JSON.stringify(candidate))
-    return evaluateRouteProfile(landscape, profile, scopedApplicability, catalog, [nationalFile, bwFile])
+    return evaluateRouteProfile(landscape, profile, scopedApplicability, catalog, [nationalFile, bwFile, stageFile])
       .rules.find(rule => rule.id === 'CQR-104')!
   }
   const baseline = invoke(national)
-  assert.equal(baseline.status, 'pass', `The real native two-scope BW fixture must initially pass: ${JSON.stringify(baseline.details)}`)
+  assert.equal(baseline.status, 'pass', `The real native BW fixture must initially pass: ${JSON.stringify(baseline.details)}`)
   const terminal = 'dfd2628f-b44e-51b3-86e8-99158861be8c'
   const prerequisite = '89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2'
   const without = (source: CompositionView, goalId: string, removeContainingSubtrees = false) => {
@@ -62,6 +66,7 @@ try {
   'The actual CQR-104 invocation must reject missing whole-task preparation despite an intact Land route')
   assert.deepEqual(JSON.parse(readFileSync(resolve(viewDir, 'de-de-gym-physics-gk.view.json'), 'utf8')), national)
   assert.deepEqual(JSON.parse(readFileSync(resolve(viewDir, 'de-bw-gk.view.json'), 'utf8')), bw)
+  assert.deepEqual(JSON.parse(readFileSync(resolve(viewDir, 'de-bw-seki.view.json'), 'utf8')), bwStage)
   console.log('Native CQR-104: real BW baseline PASS; missing national terminal FAIL with identical expected counts; missing whole-task preparation FAIL. Active views unchanged.')
 } finally {
   rmSync(fixture, { recursive: true, force: true })

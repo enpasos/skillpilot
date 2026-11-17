@@ -8,6 +8,7 @@ import { normalizeLandscape, type LandscapeEntry } from '../src/hooks/useLandsca
 import type { LearningGoal, SkillLandscape } from '../src/landscapeTypes'
 import { collectMemoryVisibilityReport } from './memoryCardReview'
 import {
+  collectCompositionProjectionRoleGoalIds,
   compileCompositionView,
   getCompositionProjectionRole,
   type CompositionView,
@@ -589,7 +590,9 @@ assert.equal(
 )
 ;[
   hesseLkProjectionRegressionIds.orthogonalProjection,
-  hesseLkProjectionRegressionIds.reflectionArea,
+  // The Hessian topic placement splits this area where its atomic needs
+  // interleave with the surrounding geometry. Require every HE target skill
+  // independently of the navigation wrapper; retain the BW-only exclusion below.
   'fcd1d180-ddce-5408-8c5d-70e417b179e7',
   'a97c7cce-1343-5d04-926f-4a4f323b3c21',
   '985d5529-a586-50eb-bd7f-2db2be8906d1',
@@ -601,9 +604,23 @@ assert.equal(
       goalId,
     ),
     true,
-    `The Hessen LK view must expose the canonical target subtree goal ${goalId}.`,
+    `The Hessen LK view must expose the canonical target skill ${goalId}.`,
   )
 })
+
+const bwOnlyReflectionGoalId = '976def9e-c81c-5875-9d87-a1024318ce48'
+const hesseLkReflectionRoles = collectCompositionProjectionRoleGoalIds(
+  hesseSekundarstufeTwoLkView.rootNodes,
+  new Map(canonicalMathEntry.goals.map((goal) => [goal.id, goal] as const)),
+)
+assert.equal(hesseLkReflectionRoles.targetGoalIds.has(bwOnlyReflectionGoalId), false,
+  'The BW-only reflection atom must not become a Hessian target when the area is materialized.')
+assert.equal(hesseLkReflectionRoles.prerequisiteOnlyGoalIds.has(bwOnlyReflectionGoalId), true,
+  'The existing support-only role of the BW-only reflection atom must be preserved.')
+assert.deepEqual(canonicalMathEntry.goals.find((goal) => goal.id === bwOnlyReflectionGoalId)?.applicability?.jurisdiction,
+  ['DE-BW'], 'The exclusion must remain bound to the actual canonical jurisdiction boundary.')
+assert.equal(compositionViewExposesGoal([canonicalMathEntry], hesseSekundarstufeTwoLkView, bwOnlyReflectionGoalId), false,
+  'The BW-only reflection atom must remain absent from the visible Hessian target projection.')
 
 const canonicalGoalById = new Map(
   canonicalMathEntry.goals.map((goal) => [goal.id, goal] as const),
@@ -836,9 +853,12 @@ assert.equal(
 )
 assert.equal(
   learnerFacingGoalById.get(learnerFacingMathRoot.contains[0])?.title,
-  'Sekundarstufe II (LK)',
+  'Sekundarstufe II',
   'Hessen mathematics LK upper secondary must expose the reviewed Sek-II root.',
 )
+assert.equal(hesseSekundarstufeTwoLkView.scope.stage, 'SekII')
+assert.equal(hesseSekundarstufeTwoLkView.scope.courseProfile, 'LK',
+  'The learner-facing stage title must retain its explicit authored LK scope.')
 const learnerFacingSekundarstufeTwoLk = learnerFacingGoalById.get(
   learnerFacingMathRoot.contains[0],
 )
@@ -864,9 +884,10 @@ while (pendingQ2GoalIds.length > 0) {
   pendingQ2GoalIds.push(...(learnerFacingGoalById.get(goalId)?.contains ?? []))
 }
 [
-  '2ac2e902-a6ad-53c9-b139-d1c63d823023',
   '3016ec37-1c2e-47db-83f5-e767923bc97e',
-  'dd042c27-d513-5352-9de9-2a5923a98e69',
+  'fcd1d180-ddce-5408-8c5d-70e417b179e7',
+  'a97c7cce-1343-5d04-926f-4a4f323b3c21',
+  '985d5529-a586-50eb-bd7f-2db2be8906d1',
 ].forEach((goalId) => {
   assert.equal(
     learnerFacingQ2DescendantIds.has(goalId),
@@ -874,6 +895,44 @@ while (pendingQ2GoalIds.length > 0) {
     `Reviewed Hessen LK Q2 goal ${goalId} must remain below the single learner-facing Q2 phase.`,
   )
 })
+
+const learnerFacingEGoals = learnerFacingSekundarstufeTwoLk.contains
+  .map((goalId) => learnerFacingGoalById.get(goalId))
+  .filter((goal): goal is UiGoal => goal?.title === 'Einführungsphase')
+assert.equal(learnerFacingEGoals.length, 1, 'The explicit Hessen LK view must retain exactly one E phase.')
+const learnerFacingEDescendantIds = new Set<string>()
+const pendingEGoalIds = [...learnerFacingEGoals[0].contains]
+while (pendingEGoalIds.length > 0) {
+  const goalId = pendingEGoalIds.pop()
+  if (!goalId || learnerFacingEDescendantIds.has(goalId)) continue
+  learnerFacingEDescendantIds.add(goalId)
+  pendingEGoalIds.push(...(learnerFacingGoalById.get(goalId)?.contains ?? []))
+}
+// These existing LK targets are acquired in E because the selected Physics E
+// goals need them. Their canonical sources and prerequisite semantics stay intact.
+const hesseEarlyAcquisitionTargetIds = [
+  'c15fe32d-1c83-4127-b1a4-9125af3d8f5d',
+  'dbc13bb0-963b-49a8-a441-2183f4b64c8e',
+  '31be24f0-3ab1-54d2-856d-fa9b7f36552f',
+  '075f1ef2-6860-4b20-9df2-878157eb395e',
+  'be0e8715-3c3a-5ffb-937a-0b6bce4f01d8',
+  'fb7a4fa0-03b5-53b4-bd86-608480b748a1',
+  '2ac2e902-a6ad-53c9-b139-d1c63d823023',
+  '2afba4a2-287d-5e8f-aeee-a3bcf8652236',
+  '94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6',
+  'b9bbd2a8-1379-5ffb-817f-41467d48abef',
+  'e9114fc2-1a87-5ef5-8fa3-7ee4c9bbe0dd',
+  '34604a97-0c64-5b06-81e2-6ac818732d60',
+  '06ce2b1b-e888-5322-9ed9-dfc6d322956a',
+  '3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4',
+  '54541d08-61cc-5a6d-b6d9-d0270a7d1949',
+  'ae5010cc-ea8d-5b14-aa4a-b0f2b5846a75',
+  'cf48c918-f6c1-5429-8da6-14df43f2f550',
+]
+for (const goalId of hesseEarlyAcquisitionTargetIds) {
+  assert(learnerFacingEDescendantIds.has(goalId), `Required early acquisition ${goalId} must be visible in E.`)
+  assert(!learnerFacingQ2DescendantIds.has(goalId), `Early acquisition ${goalId} must not retain a duplicate Q2 placement.`)
+}
 
 const canonicalFallbackSiblingIds = [
   '6e28d5ad-5f18-4a26-8a9e-9ea7e50b0fbb',

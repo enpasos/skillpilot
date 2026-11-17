@@ -1,0 +1,124 @@
+{
+  "at": "2026-11-17T00:05:57.999Z",
+  "status": "PASS",
+  "v4MainSha256": "3b1eb1243549d0f2d04329cb3321f15f0909d5c021bffb190ec2b79ad04705d3",
+  "v3MainSha256": "d368be7cff27e97df29c90b06b424964d4059dbf0592ba6918388ab341c69ffd",
+  "E2E3KernelByteIdentical": true,
+  "kernelSha256": "9ec72ba58e3cca281b6275deb260e86fa606a5b6cb961c4af2b85fa34e4e8236",
+  "productionPredicateExtracted": true,
+  "cases": [
+    {
+      "name": "genuine complete Physics SekII examination",
+      "expected": true,
+      "actual": true
+    },
+    {
+      "name": "SekI never receives Abitur allowance",
+      "expected": false,
+      "actual": false
+    },
+    {
+      "name": "undefined stage never receives Abitur allowance",
+      "expected": false,
+      "actual": false
+    },
+    {
+      "name": "wrong level 0",
+      "expected": false,
+      "actual": false
+    },
+    {
+      "name": "wrong level 2",
+      "expected": false,
+      "actual": false
+    },
+    {
+      "name": "missing actual unit binding",
+      "expected": false,
+      "actual": false
+    },
+    {
+      "name": "wrong source identity",
+      "expected": false,
+      "actual": false
+    },
+    {
+      "name": "ambiguous subunits",
+      "expected": false,
+      "actual": false
+    },
+    {
+      "name": "empty collection",
+      "expected": false,
+      "actual": false
+    },
+    {
+      "name": "non-examination content",
+      "expected": false,
+      "actual": false
+    },
+    {
+      "name": "incomplete actual course collection",
+      "expected": false,
+      "actual": false
+    },
+    {
+      "name": "legacy-looking unit key cannot bypass invalid actual source",
+      "expected": false,
+      "actual": false
+    },
+    {
+      "name": "valid legacy Math branch remains supported",
+      "expected": true,
+      "actual": true
+    }
+  ],
+  "stageSourceTraceCases": [
+    {
+      "name": "synthetic product stage ID absent from goal index still binds actual source stage",
+      "expected": "physics-seki",
+      "actual": "physics-seki"
+    },
+    {
+      "name": "missing source preview",
+      "expected": null,
+      "actual": null
+    },
+    {
+      "name": "preview source missing in index",
+      "expected": null,
+      "actual": null
+    },
+    {
+      "name": "wrong subject source",
+      "expected": null,
+      "actual": null
+    },
+    {
+      "name": "wrong selected source view",
+      "expected": null,
+      "actual": null
+    },
+    {
+      "name": "wrong stage key",
+      "expected": null,
+      "actual": null
+    },
+    {
+      "name": "source without compositionNodeId",
+      "expected": null,
+      "actual": null
+    },
+    {
+      "name": "ambiguous source stage goals",
+      "expected": null,
+      "actual": null
+    },
+    {
+      "name": "foreign subject stage cannot create ambiguity",
+      "expected": "physics-seki",
+      "actual": "physics-seki"
+    }
+  ],
+  "scope": "Independent evaluation of the actual final-main predicate; complements 38 helper mutations. No product/runtime/model changes."
+}

@@ -1,10 +1,12 @@
 // SPDX-License-Identifier: Apache-2.0
 import type { LearningGoal, SkillLandscape } from '../../src/landscapeTypes'
 import { buildRouteCatalogContext } from './routeCatalogContext'
+import { explicitAtomicEndpointApplies, resolveExplicitAtomicRouteEndpoints } from './explicitAtomicRouteEndpoints'
 
 export interface DirectAtomicRouteProfile {
   motivationAnchorGoalIds: string[]
   terminalAutonomyClusterIds: string[]
+  terminalAutonomyGoalIds?: string[]
   goalSelector: (goal: LearningGoal) => boolean
 }
 
@@ -60,10 +62,23 @@ export function evaluateDirectAtomicRouteCoverage(landscape: SkillLandscape, pro
       if (!goals.has(child)) configurationIssues.push(`Missing terminal child ${child} in cluster ${id}`)
     }
   }
-  const terminalGoalIds = profile.terminalAutonomyClusterIds.flatMap(id => goals.get(id)?.contains ?? [])
+  const clusterTerminalIds = profile.terminalAutonomyClusterIds.flatMap(id => goals.get(id)?.contains ?? [])
     .map(id => goals.get(id)).filter(terminal)
     .map(goal => goal.id)
+  const explicit = resolveExplicitAtomicRouteEndpoints(profile.terminalAutonomyGoalIds ?? [], goals,
+    new Set(clusterTerminalIds), ownGoalIds)
+  configurationIssues.push(...explicit.issues)
   const selectedGoals = landscape.goals.filter(goal => ownGoalIds.has(goal.id) && profile.goalSelector(goal))
+  const selectedIds = new Set(selectedGoals.map(goal => goal.id))
+  const learning = new Set<string>(), pending = [...selectedIds, ...clusterTerminalIds]
+  while (pending.length) {
+    const id = pending.pop()!
+    if (learning.has(id)) continue
+    learning.add(id)
+    pending.push(...(edges.get(id) ?? []))
+  }
+  const terminalGoalIds = [...clusterTerminalIds, ...explicit.goals
+    .filter(goal => explicitAtomicEndpointApplies(goal, selectedIds, learning)).map(goal => goal.id)]
   if (!selectedGoals.length) configurationIssues.push('No selected atomic route goals.')
   for (const goal of selectedGoals) if (!atomic(goal)) configurationIssues.push(`Selected route goal is not atomic: ${goal.id}`)
   for (const id of duplicates(terminalGoalIds)) configurationIssues.push(`Duplicate atomic terminal endpoint: ${id}`)

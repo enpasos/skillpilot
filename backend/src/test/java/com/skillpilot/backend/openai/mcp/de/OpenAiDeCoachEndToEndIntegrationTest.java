@@ -105,7 +105,7 @@ class OpenAiDeCoachEndToEndIntegrationTest {
     private static final String CANONICAL_MATHEMATICS_ROOT_FOCUS_ID =
             "c01b1ce9-a667-4a46-b251-ec33ae602b15";
     private static final String E_ONE_FOCUS_ID =
-            "c9d92f32-167a-4006-a940-b8063a6ed434";
+            "composition:de-he-gym-sekii-math-lk:structure:he-upper-0-e-1";
     private static final String E_PHASE_SCOPE_ID =
             "composition:de-he-gym-sekii-math-lk:structure:e-phase";
     private static final String HESSEN_SEKII_MATH_LK_SCOPE_ID =
@@ -902,8 +902,8 @@ class OpenAiDeCoachEndToEndIntegrationTest {
         assertThat(objectMapper.readTree(webPersonalizationRead.body()).path("stage").asText())
                 .isEqualTo("COMPLETE");
 
-        // The canonical root includes required learning outside the authored
-        // SekII structure. Selecting that structure is a real focus narrowing.
+        // The current authored root also contains acquisition units for required
+        // preparation. The identical target set must not be offered as a new focus.
         HttpResponse<String> scopeNavigation = callTool(
                 accessToken,
                 10,
@@ -917,7 +917,7 @@ class OpenAiDeCoachEndToEndIntegrationTest {
         assertThat(scopeNavigationContext.path("options").valueStream()
                         .map(this::optionGoalIds)
                         .toList())
-                .containsExactly(List.of(HESSEN_SEKII_MATH_LK_SCOPE_ID));
+                .isEmpty();
         assertThat(persistedScopeGoalIds()).containsExactly(CANONICAL_MATHEMATICS_ROOT_FOCUS_ID);
         Learner scopeLearner = learnerRepository.findById(PERMANENT_SKILLPILOT_ID).orElseThrow();
         Object projection = ReflectionTestUtils.invokeMethod(learnerService, "getGoalProjection",
@@ -932,6 +932,9 @@ class OpenAiDeCoachEndToEndIntegrationTest {
         assertThat(learningScope.learningAtomicGoalIds()).contains(modalValueId);
         Set<String> canonicalFocusAtoms = assertMathematicsFocusTargets(
                 CANONICAL_MATHEMATICS_ROOT_FOCUS_ID, projection, learningScope, canonicalGoals);
+        Set<String> outerViewAtoms = assertMathematicsFocusTargets(
+                "composition:de-he-gym-sekii-math-lk:structure:math-root", projection, learningScope, canonicalGoals);
+        assertThat(outerViewAtoms).containsExactlyInAnyOrderElementsOf(canonicalFocusAtoms);
         Set<String> sekTwoFocusAtoms = assertMathematicsFocusTargets(
                 HESSEN_SEKII_MATH_LK_SCOPE_ID, projection, learningScope, canonicalGoals);
         assertThat(canonicalFocusAtoms).containsAll(sekTwoFocusAtoms).contains(modalValueId)
@@ -1232,8 +1235,8 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                         OpenAiDeV1McpContractAdapter.GET_NAVIGATION,
                         OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL);
 
-        // The Cockpit may deliberately narrow the Level-3 focus to one canonical
-        // subtree. A later unqualified coach request to broaden must publish the
+        // The Cockpit may deliberately narrow the Level-3 focus to the authored
+        // E.1 unit. A later unqualified coach request to broaden must publish the
         // learner-facing ancestors nearest-first and preserve an active goal that
         // remains inside the widened scope.
         HttpResponse<String> narrowFocus = postJson(
@@ -1271,7 +1274,7 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                 .startsWith(List.of(E_PHASE_SCOPE_ID), List.of(HESSEN_SEKII_MATH_LK_SCOPE_ID));
         JsonNode nearestBroaderFocus = broaderNavigation.path("options").get(0);
         assertThat(nearestBroaderFocus.path("label").asText())
-                .isEqualTo("E-Phase: Grundlagen der Analysis und mathematische Modelle");
+                .isEqualTo("Einführungsphase");
         assertThat(broaderNavigation.path("instruction").asText()).contains(
                 "Geeignete learner-facing Vorfahren stehen zuerst",
                 "der nächste breitere Fokus an erster Stelle",

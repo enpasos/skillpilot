@@ -1,0 +1,19 @@
+--- previous-reviewed
++++ current
+@@ -24,8 +24,14 @@
+         .filter((id) => required.has(id) || explicitStageSupport.has(id)))
+       explicitStageSupport.forEach((id) => expectedSupport.add(id))
+       assert.deepEqual([...expectedSupport].sort(compareCodePoints),
+-        ['13b338eb-f761-5817-9058-11043b9cb253', 'f74c691b-0b76-54e0-8fd6-a22211994e0a'].sort(compareCodePoints),
+-        'the stage-resolved excerpt retains both existing own-Physics support atoms')
++        ['13b338eb-f761-5817-9058-11043b9cb253', 'f74c691b-0b76-54e0-8fd6-a22211994e0a',
++          'b378c8b3-5e83-5abf-8243-b0f345037bfc', 'd3c153b9-e09b-5668-8386-73105546a7c1',
++          'da26294f-4316-5bd5-a37a-bd89397b3b8b'].sort(compareCodePoints),
++        'the stage-resolved excerpt retains the two declared supports and three genuinely required method preparations')
++      for (const neededMethod of ['b378c8b3-5e83-5abf-8243-b0f345037bfc',
++        'd3c153b9-e09b-5668-8386-73105546a7c1', 'da26294f-4316-5bd5-a37a-bd89397b3b8b']) {
++        assert(required.has(neededMethod), `${view.viewId}: added method support must have a real unpruned source-seed requirement`)
++      }
+       const assertBoundStageRoles = (nodes: CompositionViewNode[]) => {
+         const roles = collectCompositionProjectionRoleGoalIds(nodes, physicsAndMathGoalById)
+         assert.deepEqual(ownAtoms(roles.targetGoalIds), [...sourceTargetIds].sort(compareCodePoints),

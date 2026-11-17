@@ -1,0 +1,65 @@
+{
+  "reviewer": "root",
+  "author": "stageplan_gap_inventory",
+  "status": "pass",
+  "recordedAt": "2026-11-17T07:33:39.099893+01:00",
+  "scope": "Only repair of real-data fixture in the legacy stage-plan contract test; new StagePlan1.3 implementation is excluded",
+  "criteria": [
+    "actual BB stage identity, not inferred label",
+    "HE no longer requires nonexistent global support declarations",
+    "legacy fixture retains each current reference kind, goalId, role and displayLabel; strips current1.2 metadata only inside the legacy fixture",
+    "original assertions compare full/excerpt targets with actual native compiler and retain all effective support exclusions",
+    "outside-stage complete-authority negative assertions retained",
+    "modern acquisition and partial-order semantics remain covered by their separate contracts"
+  ],
+  "beforeReproduction": "before-reproduction.actual.json",
+  "checks": [
+    {
+      "command": "npm run test:stage-plan-contracts",
+      "exitCode": 0,
+      "sessionId": 84229
+    },
+    {
+      "command": "npm run test:stage-plan-materialization",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run test:stage-plan-learning-flow",
+      "exitCode": 0
+    }
+  ],
+  "inputs": [
+    {
+      "path": "app/scripts/testStagePlanContracts.ts",
+      "sha256": "cac4544f97e5305a7268658002c2abf6140e160b90e701c16fa7ffdc8d72e2a2"
+    },
+    {
+      "path": "app/src/utils/stagePlan.ts",
+      "sha256": "29fe82505087341a391280fdd487054a8c4835cd60ac9f6318f4f486211b9a92"
+    },
+    {
+      "path": "app/scripts/fixtures/nestedStagePlan.ts",
+      "sha256": "490e0a6397cea7823eec2d2bca7d3eda1958b0d03fd25422b50e66d938cefee8"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-gk.view.json",
+      "sha256": "8787448dc6d8c727687e3f72ac1ce9c79fc3b59d3d4df0ad1e49bc486c8903a4"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-gk-g8.view.json",
+      "sha256": "b56c99654aaff1bab5541f35d790a998976229dfd16106357860a1e49a9ff938"
+    },
+    {
+      "path": "tmp/pipeline/laender-stufen/gesamt/ci/repair-v1/stage-plan-contracts.log",
+      "sha256": "3c208f69fab9cdfcec48de95fa6d6d7598aa5d279d4e716d973a48a50d7aa0f4"
+    },
+    {
+      "path": "tmp/pipeline/laender-stufen/gesamt/ci/repair-v1/test-stage-plan-materialization.log",
+      "sha256": "ba6693de81413592779423778be03dfa2cd5306287ec8dd1219d8025c33fe38a"
+    },
+    {
+      "path": "tmp/pipeline/laender-stufen/gesamt/ci/repair-v1/test-stage-plan-learning-flow.log",
+      "sha256": "c0d42dac7d13ee0ef22b00f902c4091fc5fe5f0228a0fa0f7edb69984002e1d5"
+    }
+  ]
+}

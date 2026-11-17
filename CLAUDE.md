@@ -35,6 +35,27 @@ orders units but adds no prerequisite, mastery or atomic-frontier lock. Keep
 the existing compatibility runtime explicit; the later unit migration and
 runtime work F8–F13 are separate from the current K1–K13/F1–F7 delivery.
 
+Composition source format `1.2` supports explicit partial sibling order through
+`structure.childOrder.after` (`{unit, after}` pairs of direct structure children).
+An empty list declares no additional child order; actual atomic demand still
+applies. Absence retains legacy sibling order.
+Checked stage-plan bindings take priority. Preserve reachability through filtered
+children and reject invalid or redundant order edges. This does not change
+prerequisites, learner scope, frontier, mastery or task access; an older package
+format must not silently discard it. See AGENTS.md §2.4 and
+`contracts/composition-view/v1.2/composition-view.schema.json`.
+Authored order must satisfy E3 for the actual cross-unit demand. Neither a
+display-order chain nor a blanket empty declaration replaces this check;
+incoherent groupings require repair before whole-unit sequencing is declared.
+
+An explicit nested atomic `goalEntry` with `projectionRole: prerequisiteOnly`
+and `acquisitionPlacement: true` retains a learning-place template. Materialize
+it only for an otherwise unplaced atom already in the backend's closed learning
+basis. Prefer an explicit own-subject place over a foreign-subject fallback,
+and validate timing against actual combined-map demand. Unmarked support
+references do not imply acquisition placement; this
+flag never changes seeds, prerequisites, mastery or public-view visibility.
+
 ## What SkillPilot is
 
 Open-source learning platform that models curricula as **skill graphs** (DAG of

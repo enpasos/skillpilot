@@ -1,0 +1,42 @@
+{
+  "schema": "independent-explicit-atomic-endpoints-review-v1",
+  "reviewer": "/root",
+  "author": "/root/he_ephase_source_review",
+  "at": "2026-11-17T03:16:08.462Z",
+  "status": "PASS",
+  "codePins": {
+    "app/scripts/generateCurriculumQualityStatus.ts": "b9fb8cb8e89699ab89142c44adfe04eef2723dd8bcc6c321f018751db9336b56",
+    "app/scripts/lib/explicitAtomicRouteEndpoints.ts": "061b4c2716360fe74f3d5a04e0ce4b61527ddb72c82848972502826859465933",
+    "app/scripts/lib/directAtomicRouteCoverage.ts": "016bbdec2f6bba7149dcec2bf7eb921df7f0179a371b478a28f984a61504527d",
+    "app/scripts/lib/hardLearningRouteValidation.ts": "685d9dc70e87a261c9fcd85a91a79ec2eb94a5bca97d9cf4e31b22082e246068",
+    "app/scripts/lib/semanticRouteInventory.ts": "8cbe571846396b8a3b4f81cd1b35956e83efc54361c7b4d13df5be11f2092b05",
+    "app/scripts/lib/compositionStageRouteMembership.ts": "eef3fa7d16412d40e1b97e9586e817a7cadcbbf02d715431ea19df620cfd6589",
+    "app/scripts/lib/nationalStageProjection.ts": "4f02207f76953c9b401ab532ff762cfc4d009a201e92b07f896b8171b3653aef",
+    "app/scripts/testExplicitAtomicRouteEndpoints.ts": "1a10239f9ad93430d06386b209797fc87901a30995ba15bf0ee4dcef2735e598",
+    "app/scripts/testCompositionStageRouteMembership.ts": "687c5c6e94ca7a2a444e61cb0596ad27dab716e769615d6e561056c7a9fb97f6",
+    "app/scripts/testSemanticRouteInventory.ts": "492ce4be8d090dd57ee7fbbff576a59aa72920deddf19303f15c1ae02581d352",
+    "app/scripts/testDirectAtomicRouteCoverage.ts": "a9ccb00814f4cbee018fda750c686a85fd95b4b4e25ffa5e2e01ae4c45ccbee1"
+  },
+  "inputDrift": [],
+  "truthTableChecks": 64,
+  "configurationCases": 14,
+  "pairedDirectAndHardNegativeCases": [
+    "missing-needed-endpoint",
+    "unreleased-endpoint",
+    "missing-old-mandatory-cluster",
+    "missing-old-mandatory-assessment",
+    "missing-required-preparation",
+    "coverage-without-requires-path"
+  ],
+  "sourceScopeIsolation": "PASS",
+  "review": [
+    "Existing cluster endpoint obligations remain unchanged.",
+    "Configuration errors fail before scope applicability.",
+    "Coverage does not create a prerequisite or a target. An actual requires route is still necessary.",
+    "Explicit inventory eligibility needs assessed selected content and complete preparation/content within the actual learning basis.",
+    "Canonical-stage applicability is distinct from jurisdiction-specific source-stage membership."
+  ],
+  "limitations": [
+    "This review does not certify final country source files, complete CQR execution, or main CI."
+  ]
+}

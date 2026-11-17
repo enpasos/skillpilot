@@ -1,0 +1,106 @@
+TAP version 13
+# Subtest: marking a draft ready starts the complete check for that head
+ok 1 - marking a draft ready starts the complete check for that head
+  ---
+  duration_ms: 2.973279
+  ...
+# Subtest: the quick tier always runs and never waits for another job
+ok 2 - the quick tier always runs and never waits for another job
+  ---
+  duration_ms: 0.283517
+  ...
+# Subtest: every other job belongs to the complete check and cannot be skipped otherwise
+ok 3 - every other job belongs to the complete check and cannot be skipped otherwise
+  ---
+  duration_ms: 0.275816
+  ...
+# Subtest: jobs that consume the goal books wait for the same-run verified build
+ok 4 - jobs that consume the goal books wait for the same-run verified build
+  ---
+  duration_ms: 0.712143
+  ...
+# Subtest: the quick tier only repeats checks; it never is the only place of one
+ok 5 - the quick tier only repeats checks; it never is the only place of one
+  ---
+  duration_ms: 0.595036
+  ...
+# Subtest: the complete check runs the complete backend suite exactly once
+ok 6 - the complete check runs the complete backend suite exactly once
+  ---
+  duration_ms: 0.443326
+  ...
+# Subtest: split jobs keep the environment of the job they were split from
+not ok 7 - split jobs keep the environment of the job they were split from
+  ---
+  duration_ms: 3.3303
+  location: '/home/enpasos/projects/skillpilot/scripts/ci_tiers.test.mjs:96:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected ... Lines skipped
+    
+      [
+        'Reserve disk space for the complete repository',
+    ...
+        'Use Node.js',
+        'Install dependencies',
+    +   'Use Python for curriculum package boundary checks',
+    +   'Install curriculum package validation dependencies',
+        'Use Ubuntu package sources',
+    ...
+        'Install pinned Playwright Chromium',
+        'Restore same-run verified goal-book publications'
+      ]
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    0: 'Reserve disk space for the complete repository'
+    1: 'Checkout'
+    2: 'Verify disk reserve after the complete checkout'
+    3: 'Use Node.js'
+    4: 'Install dependencies'
+    5: 'Use Ubuntu package sources'
+    6: 'Install PDF validation tools'
+    7: 'Install pinned Playwright Chromium'
+    8: 'Restore same-run verified goal-book publications'
+  actual:
+    0: 'Reserve disk space for the complete repository'
+    1: 'Checkout'
+    2: 'Verify disk reserve after the complete checkout'
+    3: 'Use Node.js'
+    4: 'Install dependencies'
+    5: 'Use Python for curriculum package boundary checks'
+    6: 'Install curriculum package validation dependencies'
+    7: 'Use Ubuntu package sources'
+    8: 'Install PDF validation tools'
+    9: 'Install pinned Playwright Chromium'
+    10: 'Restore same-run verified goal-book publications'
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///home/enpasos/projects/skillpilot/scripts/ci_tiers.test.mjs:102:12)
+    Test.runInAsyncScope (node:async_hooks:206:9)
+    Test.run (node:internal/test_runner/test:796:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:526:18)
+    Test.postRun (node:internal/test_runner/test:889:19)
+    Test.run (node:internal/test_runner/test:835:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:526:7)
+  ...
+# Subtest: complete curriculum CI enforces the catalog and policy against the trusted base
+ok 8 - complete curriculum CI enforces the catalog and policy against the trusted base
+  ---
+  duration_ms: 207.329272
+  ...
+# Subtest: every semantic-route consumer fetches and inherits the exact PR or previous-push policy base
+ok 9 - every semantic-route consumer fetches and inherits the exact PR or previous-push policy base
+  ---
+  duration_ms: 0.636239
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 8
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 697.414655

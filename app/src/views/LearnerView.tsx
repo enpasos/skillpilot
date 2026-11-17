@@ -90,7 +90,7 @@ import {
   shouldAutoRevealActiveGoal,
 } from '../utils/learnerGoalSelection'
 import { getNextSingleLearnerFocus } from '../utils/learnerFocus'
-import { buildGoalContainsClosure } from '../utils/plannedScope'
+import { buildCanonicalFocusScope } from '../utils/plannedScope'
 import { collapseLearnerSubjectRoots, normalizeLearnerVisibleChildrenMap } from '../utils/learnerTreeProjection'
 import {
   deliverCoachChatStart,
@@ -1202,8 +1202,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       return new Set<string>()
     }
 
-    return buildGoalContainsClosure(plannedGoals, goalIndexAll)
-  }, [goalIndexAll, plannedGoals])
+    return buildCanonicalFocusScope(plannedGoals, goalIndexAll, canonicalGoalSources)
+  }, [goalIndexAll, plannedGoals, canonicalGoalSources])
 
   useEffect(() => {
     const nextVisibleGoalId = getNextVisibleLearnerGoalSelection({

@@ -1,0 +1,68 @@
+{
+  "status": "PASS",
+  "testSha256": "29a788499049c9a23cb16ea8533a7aada8d588a1ceecb2872d80af18192bc471",
+  "positiveRealReleaseCases": 9,
+  "exactFollowupGoals": 3,
+  "negativeMutations": [
+    {
+      "name": "wrong allowed delta field",
+      "rejected": true,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n  {\n    after: [\n      'LI_BEWEGUNG'\n    ],\n    before: [],\n+   path: 'requires'\n-   path: 'examData.coveredStrands'\n  }"
+    },
+    {
+      "name": "additional strand beyond exact correction",
+      "rejected": true,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n  {\n    after: [\n      'LI_BEWEGUNG',\n+     'LI_ENERGIE'\n    ],\n    before: [],\n    path: 'examData.coveredStrands'\n  }"
+    },
+    {
+      "name": "missing approved change row",
+      "rejected": true,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n  [\n    '7cfaf48e-e420-5c09-8ec2-932f0dba4d08',\n    'a8dc0290-9f80-5763-8943-e16b8d2aa860',\n-   'f41e4e30-794e-5ce4-ba5e-cc72712cd691'\n  ]"
+    },
+    {
+      "name": "foreign fourth goal granted metadata exception",
+      "rejected": true,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n  [\n    '7cfaf48e-e420-5c09-8ec2-932f0dba4d08',\n    'a8dc0290-9f80-5763-8943-e16b8d2aa860',\n+   'e6a89922-75ce-53dd-9e7b-3a683398431c',\n    'f41e4e30-794e-5ce4-ba5e-cc72712cd691'\n  ]"
+    },
+    {
+      "name": "unapproved receipt status",
+      "rejected": true,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n+ actual - expected\n\n+ 'DRAFT'\n- 'APPLIED_APPROVED_METADATA_ONLY'"
+    },
+    {
+      "name": "wrong reviewed current bytes digest",
+      "rejected": true,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n+ actual - expected\n\n+ 'd4d981221a7e749159b4c8dacb1c4d75c8d614e25d73573a4abc6ebd72d8c39b'\n- '0000000000000000000000000000000000000000000000000000000000000000'"
+    },
+    {
+      "name": "altered real prerequisite",
+      "rejected": true,
+      "error": "AssertionError [ERR_ASSERTION]: a8dc0290-9f80-5763-8943-e16b8d2aa860: exact separately approved current payload\n+ actual - expected ... Lines skipped\n\n  {\n    applicability: {\n...\n    },\n    id: 'a8dc0290-9f80-5763-8943-e16b8d2aa860',\n+   requires: [],\n-   requires: [\n-     'e4b38061-1f28-43ad-8371-a3e7c0e81856'\n-   ],\n    shortKey: 'canonical_physics_k6_acceleration_log',\n...\n    type: 'atomic',\n    weight: 1\n  }"
+    },
+    {
+      "name": "altered task description",
+      "rejected": true,
+      "error": "AssertionError [ERR_ASSERTION]: a8dc0290-9f80-5763-8943-e16b8d2aa860: exact separately approved current payload\n+ actual - expected ... Lines skipped\n\n  {\n    applicability: {\n...\n    },\n    contains: [],\n+   description: 'different task',\n-   description: 'Die lernende Person kann aus einem Beschleunigungsprotokoll mit Anfangswerten konsistente Bewegungsdarstellungen gewinnen und die Modellgrenzen prüfen.',\n    descriptionEn: 'The learner can obtain consistent motion representations from an acceleration log with initial values and assess model limits.',\n...\n    type: 'atomic',\n    weight: 1\n  }"
+    },
+    {
+      "name": "altered actual coverage goals",
+      "rejected": true,
+      "error": "AssertionError [ERR_ASSERTION]: a8dc0290-9f80-5763-8943-e16b8d2aa860: exact separately approved current payload\n+ actual - expected ... Lines skipped\n\n  {\n    applicability: {\n...\n    },\n    examData: {\n+     coveredGoalIds: [],\n-     coveredGoalIds: [\n-       'e4b38061-1f28-43ad-8371-a3e7c0e81856'\n-     ],\n      coveredStrands: [\n...\n    type: 'atomic',\n    weight: 1\n  }"
+    },
+    {
+      "name": "unlisted task gains strand change",
+      "rejected": true,
+      "error": "AssertionError [ERR_ASSERTION]: e6a89922-75ce-53dd-9e7b-3a683398431c: exact accepted release plus only its separately approved strand correction\n+ actual - expected ... Lines skipped\n\n  {\n    applicability: {\n...\n      ],\n      coveredStrands: [\n+       'LI_BEWEGUNG'\n-       'LI_FELDER',\n-       'LI_TECHNIK'\n      ],\n...\n    type: 'atomic',\n    weight: 1\n  }"
+    },
+    {
+      "name": "original release content substituted",
+      "rejected": true,
+      "error": "AssertionError [ERR_ASSERTION]: 7cfaf48e-e420-5c09-8ec2-932f0dba4d08: followup starts at the exact original release\n+ actual - expected ... Lines skipped\n\n  {\n    applicability: {\n...\n    },\n    id: '7cfaf48e-e420-5c09-8ec2-932f0dba4d08',\n+   requires: [],\n-   requires: [\n-     'ad62f563-4fee-5399-8d9c-03a214658aa9'\n-   ],\n    shortKey: 'document_two_provided_investigations',\n...\n    type: 'atomic',\n    weight: 1\n  }"
+    },
+    {
+      "name": "prior goal already has a strand",
+      "rejected": true,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n+ [\n+   'LI_BEWEGUNG'\n+ ]\n- []"
+    }
+  ]
+}

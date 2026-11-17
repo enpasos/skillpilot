@@ -8,6 +8,8 @@ import {
   parseSubjectExportVisualizationMetadata,
 } from './subjectExportVisualizationMetadata'
 import { parseSubjectExportSourceReferences } from './subjectExportSourceReferences'
+import { readPreparationEvidence, readPreparationCanonicalGraphs } from './subjectExportPreparationEvidence'
+import { collectCompositionProjectionRoleGoalIds, type CompositionViewNode } from '../src/utils/authoring/compositionViewAuthoring'
 import {
   isSubjectExportGoalVisualizationPath,
   subjectExportGoalVisualizationPath,
@@ -887,6 +889,7 @@ export const validateExternalCompositionGoalReferences = (
   value: JsonValue | undefined,
   views: Array<{ path: string; data: JsonValue }>,
   localGoalIds: ReadonlySet<string>,
+  localGraph: ReadonlyMap<string, { requires?: readonly string[]; contains?: readonly string[] }> = new Map(),
 ) => {
   const isJsonObject = (entry: JsonValue | undefined): entry is Record<string, JsonValue> => (
     entry !== undefined && entry !== null && typeof entry === 'object' && !Array.isArray(entry)
@@ -894,20 +897,26 @@ export const validateExternalCompositionGoalReferences = (
   const issues: string[] = []
   const byViewPath = new Map<string, Set<string>>()
   const declaredOccurrences = new Set<string>()
+  const declaredPreparations = new Map<string, string>()
   if (value === undefined) return { issues, byViewPath }
   if (!Array.isArray(value)) return { issues: ['External composition references must be an array'], byViewPath }
   const viewByPath = new Map(views.map((view) => [view.path, view.data]))
   const keys = ['fromViewId', 'fromViewPath', 'nodeKind', 'projectionRole', 'targetGoalId',
     'targetLandscapeId', 'targetFrameworkId', 'targetSubject', 'targetTitle']
   value.forEach((reference) => {
+    const preparation = isJsonObject(reference) && reference.projectionRole === 'target'
+      ? reference.preparationEvidence : undefined
+    const allowedKeys = preparation ? [...keys, 'preparationEvidence'] : keys
     if (!isJsonObject(reference)
-      || Object.keys(reference).length !== keys.length
-      || !Object.keys(reference).every((key) => keys.includes(key))
+      || Object.keys(reference).length !== allowedKeys.length
+      || !Object.keys(reference).every((key) => allowedKeys.includes(key))
       || !['fromViewId', 'fromViewPath', 'targetGoalId', 'targetLandscapeId', 'targetSubject', 'targetTitle']
         .every((key) => typeof reference[key] === 'string' && String(reference[key]).trim().length > 0)
       || !(reference.targetFrameworkId === null || typeof reference.targetFrameworkId === 'string')
       || !['goalEntry', 'canonicalSubtree'].includes(String(reference.nodeKind))
-      || reference.projectionRole !== 'prerequisiteOnly'
+      || (reference.projectionRole !== 'prerequisiteOnly' && !preparation)
+      || (preparation && (reference.nodeKind !== 'goalEntry' || !isJsonObject(preparation)
+        || Object.keys(preparation).sort().join(',') !== 'consumerGoalId,requiredByPath'))
       || localGoalIds.has(String(reference.targetGoalId))) {
       issues.push(`Malformed external composition reference: ${JSON.stringify(reference)}`)
       return
@@ -917,7 +926,13 @@ export const validateExternalCompositionGoalReferences = (
     const visit = (node: JsonValue) => {
       if (!isJsonObject(node)) return
       if (node.goalId === reference.targetGoalId && node.kind === reference.nodeKind
-        && node.projectionRole === reference.projectionRole) bound = true
+        && node.projectionRole === reference.projectionRole) {
+        const sourceEvidence = preparation
+          ? readPreparationEvidence(node.placementEvidence, String(node.goalId), localGoalIds) : null
+        if (!preparation || (sourceEvidence && isJsonObject(preparation)
+          && sourceEvidence.consumerGoalId === preparation.consumerGoalId
+          && JSON.stringify(sourceEvidence.requiredByPath) === JSON.stringify(preparation.requiredByPath))) bound = true
+      }
       if (Array.isArray(node.children)) node.children.forEach(visit)
     }
     if (isJsonObject(view)
@@ -929,11 +944,26 @@ export const validateExternalCompositionGoalReferences = (
       issues.push(`External composition reference is not bound to its source view: ${reference.fromViewPath}: ${reference.targetGoalId}`)
       return
     }
+    if (preparation && isJsonObject(preparation)) {
+      const path = preparation.requiredByPath
+      const consumer = String(preparation.consumerGoalId)
+      const { targetGoalIds } = collectCompositionProjectionRoleGoalIds(
+        (isJsonObject(view) && Array.isArray(view.rootNodes) ? view.rootNodes : []) as unknown as CompositionViewNode[], localGraph)
+      if (!targetGoalIds.has(consumer) || !Array.isArray(path)
+        || !path.every((id, index) => index === path.length - 1
+          || localGraph.get(String(id))?.requires?.includes(String(path[index + 1])))) {
+        issues.push(`External acquisition has no selected local prerequisite consumer: ${reference.fromViewPath}: ${reference.targetGoalId}`)
+        return
+      }
+    }
     const path = String(reference.fromViewPath)
     const declared = byViewPath.get(path) ?? new Set<string>()
     declared.add(String(reference.targetGoalId))
     byViewPath.set(path, declared)
-    declaredOccurrences.add(JSON.stringify([path, reference.targetGoalId, reference.nodeKind, reference.projectionRole]))
+    const occurrence = JSON.stringify([path, reference.targetGoalId, reference.nodeKind, reference.projectionRole])
+    declaredOccurrences.add(occurrence)
+    if (preparation && isJsonObject(preparation)) declaredPreparations.set(occurrence,
+      JSON.stringify({ consumerGoalId: preparation.consumerGoalId, requiredByPath: preparation.requiredByPath }))
   })
   views.forEach(({ path, data }) => {
     const declared = byViewPath.get(path)
@@ -941,8 +971,10 @@ export const validateExternalCompositionGoalReferences = (
     const invalidGoalIds = new Set<string>()
     const visit = (node: JsonValue) => {
       if (!isJsonObject(node)) return
+      const occurrence = JSON.stringify([path, node.goalId, node.kind, node.projectionRole])
       if (typeof node.goalId === 'string' && declared.has(node.goalId)
-        && !declaredOccurrences.has(JSON.stringify([path, node.goalId, node.kind, node.projectionRole]))) {
+        && (!declaredOccurrences.has(occurrence) || (node.projectionRole === 'target'
+          && declaredPreparations.get(occurrence) !== JSON.stringify(readPreparationEvidence(node.placementEvidence, node.goalId, localGoalIds))))) {
         issues.push(`External composition occurrence has an undeclared node kind or projection role: ${path}: ${node.goalId}`)
         invalidGoalIds.add(node.goalId)
       }
@@ -1587,10 +1619,21 @@ const validatePackage = (zipPath: string, readinessDir: string): PackageValidati
 
     const goalIdSet = new Set(goalIds)
     const viewEntries = entries.filter((entry) => entry.startsWith(`${archiveRoot}/data/views/`) && entry.endsWith('.json'))
+    const preparationCatalogs = readPreparationCanonicalGraphs(externalDependencies.preparationCanonicalGraphs, goalIdSet)
+    const acquisitionReferences = Array.isArray(externalDependencies.viewReferences)
+      ? externalDependencies.viewReferences.filter((reference) => reference !== null && typeof reference === 'object'
+        && !Array.isArray(reference) && reference.projectionRole === 'target') : []
+    const ownerIssues = acquisitionReferences.filter(reference => {
+      const ref = reference as Record<string, JsonValue>
+      return preparationCatalogs.owners.get(String(ref.targetGoalId)) !== ref.targetLandscapeId
+    })
+    check(checks, 'preparation-canonical-graphs-valid', preparationCatalogs.issues.length === 0 && ownerIssues.length === 0,
+      [...preparationCatalogs.issues, ...ownerIssues.map(() => 'Preparation canonical owner mismatch')].join(' | ') || 'ok')
     const externalViewReferences = validateExternalCompositionGoalReferences(
       externalDependencies.viewReferences,
       viewEntries.map((entry) => ({ path: entry.slice(archiveRoot.length + 1), data: readZipEntryJson(zipPath, entry) })),
       goalIdSet,
+      new Map([...preparationCatalogs.graph, ...goals.map(goal => [goal.id, goal] as const)]),
     )
     check(checks, 'external-composition-references-file-valid', externalViewReferences.issues.length === 0,
       externalViewReferences.issues.slice(0, 3).join(' | ') || 'source-bound external composition references')
