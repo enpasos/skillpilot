@@ -22,9 +22,28 @@ er erhält die Dokumentationschecks. Die große CI schließt `docs/dev/**` und
 CI-Nachweis gilt weiterhin für den benannten Implementierungscommit.
 
 <!-- composition-partial-order-20261117:start -->
-## 17. November 2026, 11:10 MEZ (UTC+01:00) — Fachliche Teilordnungen in allen Länderansichten
+## 17. November 2026, 13:53 MEZ (UTC+01:00) — Fachliche Teilordnungen in allen Länderansichten
 
-**Aktueller Lieferstand:** [PR #160](https://github.com/enpasos/skillpilot/pull/160)
+**Aktueller Integrationsstand:** [PR #160](https://github.com/enpasos/skillpilot/pull/160)
+ist am 17. November integriert. Der vollständige
+[PR-CI-Lauf 44062503114](https://github.com/enpasos/skillpilot/actions/runs/44062503114)
+auf `f62482036186a5c3afc9e58059509922d64f0e8a` ist mit **14 erfolgreichen Jobs**
+abgeschlossen. Der integrierte Implementierungscommit
+`05eabe5a43d0b07e3845189b5d14d82326f76ce8` hat exakt denselben Git-Baum.
+Seine frische [Main-CI 44075738245](https://github.com/enpasos/skillpilot/actions/runs/44075738245)
+ist am 17. November um **13:51:57 MEZ mit 14 von 14 erfolgreichen Jobs**
+abgeschlossen. **Diese begrenzte Länderlieferung ist damit abgeschlossen.**
+Die Jobzahl gehört ausschließlich zu diesem CI-Lauf. Der kleine spätere
+Dokumentationsabschluss erhält eigene Dokumentationschecks; der vollständige
+Implementierungsnachweis gilt für den hier genannten Commit.
+Weiterhin sind **K 0/13 und F 0/7 vollständig abgeschlossen** und **0 neue
+reale StagePlans aktiviert**. Die unten dokumentierten Inhaltsreviews,
+Lernendenaufgaben, Kartenmessungen und automatisierten Prüfungen bleiben
+voneinander getrennte Nachweise. Die folgenden CI-Zwischenstände sind
+Historie; ihre damaligen offenen Integrationsschritte gelten nicht als
+Beschreibung des jetzigen Merge-Status.
+
+**Historischer Zwischenstand vor den folgenden CI-Korrekturen:** [PR #160](https://github.com/enpasos/skillpilot/pull/160)
 ist offen. Der vollständige [PR-CI-Lauf 44025354365](https://github.com/enpasos/skillpilot/actions/runs/44025354365)
 endet auf `2c20e11117c130f898b42d929078cd673094590f` mit **10 erfolgreichen
 und 4 fehlgeschlagenen Jobs**. Die frühere Aussage um 06:31, sämtliche lokalen
@@ -153,8 +172,11 @@ PR-CI-Lauf; Merge und Main-CI bleiben offen.
   bindet die aktuelle Korrektur und bewahrt die früheren Gegenbefunde.
   Die Paket-Redistributionsfreigabe bleibt dort, wo menschliche Freigaben
   ausstehen, ausdrücklich offen. Keine Produktionsbereitstellung.
-- **Nächster Schritt:** erfolgreiche vollständige PR-CI, Integration und frische erfolgreiche
-  Main-CI. Erst dann erhält dieser Eintrag Commit- und Runabschluss.
+- **Nächster Schritt:** die Mathematik-Physik-Verzahnung mit den realen
+  Hessen-Plänen für G8/G9 und unabhängig gewählten Kursprofilen zusammenführen,
+  fachliche Voraussetzungen und eigene Aufgaben prüfen sowie die tatsächlichen
+  verschachtelten Karten erneut messen. Dieser getrennte aktive Folgeumfang
+  und die vollständigen K1–K13-/F1–F7-Aufträge sind noch nicht abgeschlossen.
 <!-- composition-partial-order-20261117:end -->
 
 ## 17. November 2026, 06:31 MEZ (UTC+01:00) — Nachtrag zum Abschluss von PR #159
