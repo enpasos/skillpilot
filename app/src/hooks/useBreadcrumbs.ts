@@ -80,7 +80,8 @@ export function useBreadcrumbs({
 
     // Build chain root -> ... -> current using primary parent (global)
     const chain: string[] = []
-    const visited = new Set<string>()
+    // The start counts as visited: a cycle must never repeat it further up the path.
+    const visited = new Set<string>([currentGoal.id])
     let nodeId: string | undefined = currentGoal.id
     while (nodeId) {
       chain.push(nodeId)
