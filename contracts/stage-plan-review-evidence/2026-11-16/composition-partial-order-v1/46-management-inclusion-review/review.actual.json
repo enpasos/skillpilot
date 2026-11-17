@@ -1,0 +1,162 @@
+{
+  "checkedAt": "2026-11-17T05:30:19.786732+00:00",
+  "result": "PASS_WITH_THREE_DOCUMENTATION_CORRECTIONS",
+  "scope": "Independent read-only exact-delta review; no product edits; all historical completion sections retained",
+  "inputs": {
+    "head": {
+      "path": "tmp/pipeline/laender-stufen/gesamt/management-entry/head-before.md",
+      "sha256": "5250d9669b13a7b6f8430edfce7049c3768d24aae73d6df5929d17d548fec2c5",
+      "lineCount": 508
+    },
+    "foreign": {
+      "path": "tmp/pipeline/laender-stufen/gesamt/management-entry/foreign-working-before.md",
+      "sha256": "f69c7eb89baa9c13ea895ce543cadb963e75f3d37c78c9fd5ac9ed2f4797858a",
+      "lineCount": 380
+    },
+    "current": {
+      "path": "docs/dev/stage-plan-management-summary.md",
+      "sha256": "4d96828c352a6b9cd2f5fca2da89a9693a8bd8a1a2b6799bc326f947b1784ca3",
+      "lineCount": 435
+    }
+  },
+  "foreignDelta": {
+    "addedLines": 64,
+    "removedLines": 192,
+    "kind": "Condensation of former open overall summary plus PR159 temporal integration update; no deleted completed-delivery section"
+  },
+  "olderSectionRetention": [
+    {
+      "heading": "## 15. November 2026, 22:51 MEZ — Zielnorm und Bestandsaufnahme abgeglichen",
+      "sha256": "097cd30193595fe428bff1aa4b4eb17447a69627e95a10c7a2f095daa1d931a3",
+      "bytes": 2244,
+      "identicalIn": [
+        "head",
+        "foreign",
+        "current"
+      ]
+    },
+    {
+      "heading": "## 15. November 2026, 15:38 MEZ — Abnahme an den tatsächlichen Lernkarten konkretisiert",
+      "sha256": "fbe0d9095fd5785dd3b83337bc090e90ddec9022a754564e7adc2e1e0597777f",
+      "bytes": 2604,
+      "identicalIn": [
+        "head",
+        "foreign",
+        "current"
+      ]
+    },
+    {
+      "heading": "## 15. November 2026, 15:59 MEZ — Lernbilder an die vorhandene Bildsprache anpassen",
+      "sha256": "c4f18d8e6e1d250f328354245d6c5d4ac3ce86726a44b9b60592e8b7945eba89",
+      "bytes": 2287,
+      "identicalIn": [
+        "head",
+        "foreign",
+        "current"
+      ]
+    },
+    {
+      "heading": "## 15. November 2026, 15:18 MEZ — Modellnorm für Stufenpläne vereinheitlicht",
+      "sha256": "3fba00e9a4cb641fc5a9cd529eba5bf3c396074dce2761dcf37cc207e01d9cfc",
+      "bytes": 2149,
+      "identicalIn": [
+        "head",
+        "foreign",
+        "current"
+      ]
+    },
+    {
+      "heading": "## 15. November 2026, 15:38 MEZ — Rollout bei unverändertem Git-Stand",
+      "sha256": "352922477342d0cc7f70b54f342b32c80f1f8a93d223ceb6bc52e1e5b411d8d0",
+      "bytes": 2000,
+      "identicalIn": [
+        "head",
+        "foreign",
+        "current"
+      ]
+    },
+    {
+      "heading": "## 15. November 2026, 15:38 MEZ — Halbleiterpfad, Diagrammaufgaben und Stufenplangrundlage",
+      "sha256": "e5dcee3a49b8975c466d66e288220fc52a2a2a3dedea04b33d882172cd0b08af",
+      "bytes": 2903,
+      "identicalIn": [
+        "head",
+        "foreign",
+        "current"
+      ]
+    },
+    {
+      "heading": "## 15. November 2026, 09:09 MEZ — Offene Ausgangslieferungen integriert",
+      "sha256": "db33781890625e8fd94f197369655558137bd616737578125934b368ad044a16",
+      "bytes": 1459,
+      "identicalIn": [
+        "head",
+        "foreign",
+        "current"
+      ]
+    }
+  ],
+  "currentDelta": {
+    "foreignBytesPreservedOutsideRootTopBlock": true,
+    "rootTopBlockLines": 55
+  },
+  "retainedCompletedDeliveries": [
+    {
+      "title": "Rollout bei unverändertem Git-Stand",
+      "commit": "a44c157b536680985dca30737b560b10c7633a04",
+      "mainRun": 43718928027,
+      "jobs": "14/14"
+    },
+    {
+      "title": "Halbleiterpfad, Diagrammaufgaben und Stufenplangrundlage",
+      "commit": "a44c157b536680985dca30737b560b10c7633a04",
+      "mainRun": 43718928027,
+      "jobs": "14/14"
+    },
+    {
+      "title": "Offene Ausgangslieferungen integriert",
+      "commit": "a7c7e9ceb26f06194e25f29e32941d4e4cb17c32",
+      "mainRun": 43674399591,
+      "jobs": "14/14",
+      "historicAggregateCorrectionRetained": true
+    }
+  ],
+  "pr159FreshRunReceipt": {
+    "path": "tmp/pipeline/laender-stufen/gesamt/review/pr159-main-ci-current.actual.json",
+    "sha256": "66c901fb18d2bea38977b3ab9df6ffc8bc3040ef1b16517bf7b33afc9bd2a85f",
+    "obtainedBy": "Root fresh read-only CLI workflow metadata plus connector per-run jobs; reviewer read and checked receipt",
+    "run": 43832099252,
+    "commit": "9975a142f7a26f1c4ff31c46a70e149d82a3fce5",
+    "event": "push",
+    "conclusion": "success",
+    "successfulJobs": 14
+  },
+  "requiredCorrections": [
+    {
+      "id": "M1",
+      "location": "## Gesamtstand",
+      "recommendation": "Rename to an explicitly historical overall status dated 16 November 2026 09:40 CET; retain former temporal claims as history."
+    },
+    {
+      "id": "M2",
+      "location": "PR159 integration status",
+      "recommendation": "Append dated completion follow-up binding full commit9975a142f7a26f1c4ff31c46a70e149d82a3fce5 and terminal main CI43832099252 with exactly14 successful jobs. No K/F completion may be inferred solely from CI."
+    },
+    {
+      "id": "M3",
+      "location": "Frühere Zwischenzahlen und Fehlversuche bleiben in den Paketeinträgen...",
+      "recommendation": "Refer to Git history and unchanged evidence instead of claiming all condensed interim values remain in the visible packet entries."
+    }
+  ],
+  "noCorrectionNeeded": [
+    "Restore removed180-line stream of interim implementation/CI attempts",
+    "Change preserved older completed deliveries",
+    "Increase K/F completed counts",
+    "Treat dated local69-test statement as current delivery evidence"
+  ],
+  "limits": [
+    "No rerun of historical test suites; the09:40 local69-test statement is retained historical author reporting, not independently reproduced here.",
+    "PR159 run receipt is fresh Root evidence inspected by this reviewer, not a second network query.",
+    "Root top entry still awaits final package/status follow-up; its factual numeric acceptance evidence belongs to separate retained checks."
+  ]
+}

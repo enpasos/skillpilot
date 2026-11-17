@@ -1,0 +1,31 @@
+{
+  "schema": "agent-observed-terminal-test-receipt-v1",
+  "status": "PASS",
+  "recordedAt": "2026-11-17T05:08:38.541085+00:00",
+  "observer": "/root/he_ephase_source_review",
+  "command": [
+    "npm",
+    "run",
+    "test:curriculum-maturity-floors"
+  ],
+  "cwd": "app",
+  "executionSessionId": 52819,
+  "observedExitCode": 0,
+  "observedTapSummary": {
+    "tests": 140,
+    "pass": 140,
+    "fail": 0,
+    "durationMs": 1536.54
+  },
+  "evidenceBoundary": "Terminal tool output was directly observed in this agent session. No raw TAP logfile was retained; this receipt records the observed result and does not recreate a historical log or execution timestamp. These present source pins identify the unchanged two test modules, not a new execution.",
+  "testModules": [
+    {
+      "path": "app/scripts/testCurriculumMaturityGates.ts",
+      "sha256": "de7b74e02ed3b70d1ac2daf22e3760c035db887eddc5dca4fefad8ba697c5353"
+    },
+    {
+      "path": "app/scripts/testSemanticAtomicityStatusContract.ts",
+      "sha256": "2d1d3e75edb7dce754351b5e247d9c507611cb9318185c63a875beff33724e3e"
+    }
+  ]
+}

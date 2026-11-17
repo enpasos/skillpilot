@@ -1,0 +1,63 @@
+{
+  "status": "PASS_FOCUSED_INDEPENDENT_REVIEW",
+  "reviewedTestSha256": "29a788499049c9a23cb16ea8533a7aada8d588a1ceecb2872d80af18192bc471",
+  "testUnchangedAtEnd": true,
+  "previousReviewedTestSha256": "511ac8a37cd816796a81718d80502ad16144d8f5bb6458c2b1ae57b549314282",
+  "exactScope": "Only the four aggregate counter constants, the same five-ID occurrence map, two terminal count/message lines and the narrowly bounded three-goal coveredStrands release comparison differ. Every byte outside these spans is preserved.",
+  "retainedAssertions": "Exact content/role/coverage/offer guards, original release file hashes, route pass status, zero route-check exclusions, selected-plus-excluded totals, profile-exclusion diagnostics and all previous HE support/gravity floors remain active.",
+  "measuredCounters": {
+    "projected": 9167,
+    "selected": 8739,
+    "selectorExcluded": 428,
+    "selectorExcludedUnique": 57
+  },
+  "fiveGoalOccurrences": [
+    {
+      "id": "2084b7d4-300d-5fa0-8b8d-c480c40f853e",
+      "originalViewOccurrences": 25,
+      "newLowerViewOccurrences": 5,
+      "total": 30
+    },
+    {
+      "id": "3857891b-d328-585b-9936-85c7aff122ee",
+      "originalViewOccurrences": 20,
+      "newLowerViewOccurrences": 4,
+      "total": 24
+    },
+    {
+      "id": "3b586f2a-60e2-5019-aa08-6a47616a1f1f",
+      "originalViewOccurrences": 10,
+      "newLowerViewOccurrences": 2,
+      "total": 12
+    },
+    {
+      "id": "7d4d6a39-0c78-5fb0-b7bf-182ed00972f7",
+      "originalViewOccurrences": 5,
+      "newLowerViewOccurrences": 1,
+      "total": 6
+    },
+    {
+      "id": "68034218-8f3e-5f7f-ae4e-ed057dd4e44e",
+      "originalViewOccurrences": 5,
+      "newLowerViewOccurrences": 1,
+      "total": 6
+    }
+  ],
+  "measurementInputDrift": [],
+  "positiveMetadataCases": 9,
+  "metadataMutationsRejected": 12,
+  "counterMutationsRejected": 11,
+  "evidence": [
+    "counts.actual.json",
+    "metadata-negatives.actual.json",
+    "counter-negatives.actual.json",
+    "last-test-patch.diff",
+    "extracted-release-guard.ts",
+    "extracted-counter-guard.ts",
+    "reviewed-test.ts"
+  ],
+  "limits": [
+    "This focused review is not the author full GoalBook run. The actual CQR measurement independently evaluates all90 view inputs and isolates the15newLowerViews; its relevant lane contains56views/106scopes.",
+    "Mutation replay uses exact extracted final guard code and fixed actual measured results; no production files or canonical data were changed."
+  ]
+}

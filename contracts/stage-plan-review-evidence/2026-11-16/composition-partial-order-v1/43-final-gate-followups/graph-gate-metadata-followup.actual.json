@@ -1,0 +1,26 @@
+{
+  "schema": "passed-gate-metadata-followup-v1",
+  "status": "PASS_WITH_EXACT_METADATA_FOLLOWUP",
+  "recordedAt": "2026-11-17T05:08:38.542809+00:00",
+  "priorTerminalExecution": {
+    "path": "tmp/pipeline/laender-stufen/gesamt/review/source-stage-qa-v7-final-graph-gate.actual.json",
+    "sha256": "bee19bc84366794b9ece9d055af9a949707ac72bc3d71160999f5e179d1618f7"
+  },
+  "priorRawLog": {
+    "path": "tmp/pipeline/laender-stufen/gesamt/review/source-stage-qa-v7-final-graph-gate.log",
+    "sha256": "c0962ebe35490ca0439bc7c5128fb1e722ad55f4e6bdfc477d422892ff477c9a"
+  },
+  "approvedMetadataReceipt": {
+    "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/metadata-followup/covered-strands-20261117-v1.actual.json",
+    "sha256": "728a675846f869fa3e5e6ae6606870d2c3333c823ff98f4a599b495e7db5d70d"
+  },
+  "independentExactDeltaReview": {
+    "path": "tmp/pipeline/laender-stufen/gesamt/review/assessment-strands-root/review.actual.json",
+    "sha256": "ad166863320bed6e68b4fed207066c46b8ca0f925fef6fb089aebef933b30f79"
+  },
+  "followupScope": "Only three examData.coveredStrands arrays changed from [] to [LI_BEWEGUNG]. Task text, rubric, requires, coveredGoalIds, applicability, view structure, role and source membership are unchanged. The already successful graph-gate contract execution is retained; this is a narrow input followup, not a new execution.",
+  "freshQualityGeneration": {
+    "path": "tmp/pipeline/laender-stufen/gesamt/review/source-stage-qa-v8-final-quality.actual.json",
+    "sha256": "6f694892ac989df0abb72f9b05dfc1bd2e1d41124eb3cb29a431d1a0266767b6"
+  }
+}

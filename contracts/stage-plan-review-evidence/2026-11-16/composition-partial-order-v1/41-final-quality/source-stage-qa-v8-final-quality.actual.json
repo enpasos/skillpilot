@@ -1,0 +1,66 @@
+{
+  "command": [
+    "npm",
+    "--prefix",
+    "app",
+    "run",
+    "quality:curriculum-status"
+  ],
+  "startedAt": "2026-11-17T04:53:17.547824+00:00",
+  "finishedAt": "2026-11-17T05:00:01.080363+00:00",
+  "exitCode": 0,
+  "seconds": 403.56071344797965,
+  "log": "tmp/pipeline/laender-stufen/he/logs/gesamt-cqr-source-membership-v8-final-status.txt",
+  "summary": {
+    "curricula": 21,
+    "maturity": {
+      "M0": 11,
+      "M1": 0,
+      "M2": 0,
+      "M3": 0,
+      "M4": 0,
+      "M5": 0,
+      "M6": 5,
+      "M7": 5
+    },
+    "ruleStatus": {
+      "pass": 235,
+      "warn": 18,
+      "fail": 4,
+      "not_configured": 65
+    }
+  },
+  "subjects": [
+    {
+      "title": "Mathematik (Gymnasium, DE)",
+      "maturity": "M7",
+      "scopes": [
+        {
+          "label": "Sekundarstufe I",
+          "maturity": "M4"
+        },
+        {
+          "label": "Sekundarstufe II",
+          "maturity": "M4"
+        }
+      ]
+    },
+    {
+      "title": "Physik (Gymnasium, DE)",
+      "maturity": "M7",
+      "scopes": [
+        {
+          "label": "Sekundarstufe I",
+          "maturity": "M4"
+        },
+        {
+          "label": "Sekundarstufe II",
+          "maturity": "M4"
+        }
+      ]
+    }
+  ],
+  "floorExitCode": 0,
+  "floorLog": "tmp/pipeline/laender-stufen/he/logs/gesamt-cqr-source-membership-v8-final-floors.txt",
+  "status": "PASS"
+}

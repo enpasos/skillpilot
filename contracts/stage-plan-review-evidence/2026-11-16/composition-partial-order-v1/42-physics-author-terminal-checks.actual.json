@@ -1,0 +1,191 @@
+{
+  "schema": "physics-final-author-terminal-checks-v1",
+  "recordedAt": "2026-11-17T05:07:40.381826+00:00",
+  "sourceFreeze": {
+    "path": "tmp/pipeline/laender-stufen/gesamt/physics/frozen-v36/manifest.json",
+    "sha256": "7bda220b99b53938b3f79fa144d8cff370cf2fd8f9f6f0c6ba5a79e6c2037b8d"
+  },
+  "currentCanonicalMetadataFollowup": {
+    "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/metadata-followup/covered-strands-20261117-v1.actual.json",
+    "sha256": "728a675846f869fa3e5e6ae6606870d2c3333c823ff98f4a599b495e7db5d70d"
+  },
+  "checks": [
+    {
+      "name": "All-Land Physics regressions",
+      "status": "PASS",
+      "exitCode": 0,
+      "testCount": 19,
+      "evidence": {
+        "path": "tmp/pipeline/laender-stufen/gesamt/physics/frozen-v36/regressions.log",
+        "sha256": "11c26516b20042dcf843d28afb88e0a539485513f118acefc377a666dd40b7db"
+      },
+      "testSource": {
+        "path": "scripts/test_generate_laender_physics_stage_views.py",
+        "sha256": "887b010e0a6dccaff07e65b79d5ceb34c1840fa30daa96c6e62ac7046d0c341c"
+      }
+    },
+    {
+      "name": "Actual GK/LK source pairs",
+      "status": "PASS",
+      "exitCode": 0,
+      "pairs": 36,
+      "mergeCases": 144,
+      "modes": [
+        "native",
+        "package"
+      ],
+      "traversalOrders": 2,
+      "evidence": {
+        "path": "tmp/pipeline/laender-stufen/gesamt/physics/frozen-v36/pairs.log",
+        "sha256": "fa2de57409cf3f8201cc78aa943154f5cd0bb3fefb70d0a38b40b70c37a0418b"
+      }
+    },
+    {
+      "name": "Native CourseProfileCompositionViewMerger JUnit methods",
+      "status": "PASS",
+      "exitCode": 0,
+      "methods": 28,
+      "evidence": {
+        "path": "tmp/pipeline/laender-stufen/gesamt/physics/frozen-v36/java-merger28/merger.log",
+        "sha256": "49e1ad200d8d72e46d4bff90dd797895d7054c761af8fe40227cfdf657afd634"
+      },
+      "command": {
+        "path": "tmp/pipeline/laender-stufen/gesamt/physics/frozen-v36/java-merger28/command.json",
+        "sha256": "36995dde339aed1148bf1c7b5a225dd22b16a2d2ea11ba4038327ff8f39e53bc"
+      },
+      "sourceBindings": {
+        "path": "tmp/pipeline/laender-stufen/gesamt/physics/frozen-v36/java-merger28/source-binding.json",
+        "sha256": "337367df479fd1d2e10f91ae7dacc97c704a9d3018990ff2c432500f7cbe0fb0"
+      }
+    },
+    {
+      "name": "Full GoalBook V2 historical execution",
+      "status": "FAIL_OLD_FINAL_COUNTER_EXPECTATION",
+      "exitCode": 1,
+      "evidence": {
+        "path": "tmp/pipeline/laender-stufen/gesamt/physics/frozen-v36/goalbook-v2.log",
+        "sha256": "e6536939d4c18b286fca4079f90e32da7616fe4e8d77dda963090648d5d623fe"
+      },
+      "limit": "Execution reached the final counter assertion after earlier test sections; this is not a full-suite PASS."
+    },
+    {
+      "name": "Exact final GoalBook release/followup and full final CQR104 block",
+      "status": "PASS_FOCUSED",
+      "exitCode": 0,
+      "sourceTest": {
+        "path": "app/scripts/testPhysicsGoalBookInputs.ts",
+        "sha256": "29a788499049c9a23cb16ea8533a7aada8d588a1ceecb2872d80af18192bc471"
+      },
+      "evidence": {
+        "path": "tmp/pipeline/laender-stufen/gesamt/physics/frozen-v36/goalbook-focus.log",
+        "sha256": "88b696851c434dd1d9bf7e4ffea3787e2e708ef70e42ac31ac86927a7db70e16"
+      },
+      "extractedSourceBindings": {
+        "path": "tmp/pipeline/laender-stufen/gesamt/physics/frozen-v36/goalbook-focus.generated.mts.binding.json",
+        "sha256": "3ed1e708ecc678ed1eca78a7b81220bd87c08cfe3ea3243858d9bf3b2630ef2a"
+      },
+      "independentReview": {
+        "path": "tmp/pipeline/laender-stufen/gesamt/review/physics-goalbook-final-counters/review.actual.json",
+        "sha256": "d7779169b793e2fba76704408cd5b433311b421c8b2036f2b533ce97e0f04555"
+      },
+      "result": {
+        "status": "PASS",
+        "sourceTestSha256": "29a788499049c9a23cb16ea8533a7aada8d588a1ceecb2872d80af18192bc471",
+        "releaseRows": 9,
+        "strandFollowups": 3,
+        "addedTargetOccurrences": [
+          [
+            "2084b7d4-300d-5fa0-8b8d-c480c40f853e",
+            30
+          ],
+          [
+            "3857891b-d328-585b-9936-85c7aff122ee",
+            24
+          ],
+          [
+            "3b586f2a-60e2-5019-aa08-6a47616a1f1f",
+            12
+          ],
+          [
+            "7d4d6a39-0c78-5fb0-b7bf-182ed00972f7",
+            6
+          ],
+          [
+            "68034218-8f3e-5f7f-ae4e-ed057dd4e44e",
+            6
+          ]
+        ],
+        "metrics": {
+          "relevantCompositionViews": 56,
+          "invalidExplicitTerminalConfigurations": 0,
+          "evaluatedProjectionScopes": 106,
+          "requiredMotivationAnchors": 2,
+          "minimumRequiredTerminalAutonomyGoals": 40,
+          "requiredTerminalAutonomyGoals": 58,
+          "projectionScopesMissingMotivationAnchors": 0,
+          "projectionScopesMissingTerminalAutonomyGoals": 0,
+          "projectionScopesWithUnexpectedTerminalAutonomyGoals": 0,
+          "projectionScopesWithoutExpectedTerminalAutonomyGoals": 0,
+          "terminalGoalsMissingCompiledApplicability": 0,
+          "projectionScopesWithInvalidStageStructure": 0,
+          "nationalProjectionScopesUsingJurisdictionStageAuthority": 51,
+          "nationalProjectionScopesMissingJurisdictionStageAuthority": 0,
+          "nationalProjectionScopesWithAmbiguousJurisdictionStageAuthority": 0,
+          "nationalTargetAtomicGoalOccurrencesExcludedByJurisdictionStageAuthority": 13591,
+          "nationalSelectedGoalOccurrencesExcludedByJurisdictionStageAuthority": 783,
+          "nationalPrerequisiteOnlyGoalOccurrencesImportedByJurisdictionStageAuthority": 178,
+          "nationalStageTargetGoalOccurrencesMaterializedFromFullExposure": 109,
+          "nationalProjectionScopesWithInvalidExposureFamily": 0,
+          "projectionScopesWithInvalidSourceStageAuthority": 0,
+          "projectionScopesWithIncompleteExplicitTerminalPrerequisites": 0,
+          "explicitTerminalPrerequisiteOccurrencesMissingFromProjection": 0,
+          "projectionScopesWithIncompleteWholeMaterialCoverageBindings": 0,
+          "wholeMaterialCoveredGoalOccurrencesWithoutVisiblePrerequisitePath": 0,
+          "projectionScopesWithIncompleteWholeMaterialPrerequisiteClosure": 0,
+          "wholeMaterialPrerequisiteOccurrencesMissingFromProjection": 0,
+          "uniqueExplicitTerminalPrerequisitesMissingFromProjection": 0,
+          "projectionLocalRouteChecksEnabled": 1,
+          "visibleSelectedAtomicGoalOccurrences": 9167,
+          "visibleProfileSelectedAtomicGoalOccurrences": 8739,
+          "visibleProjectedRouteTargetGoalOccurrences": 9167,
+          "visibleProjectedRouteTargetGoalOccurrencesExcludedByProfileSelector": 428,
+          "uniqueProjectedRouteTargetsExcludedByProfileSelector": 57,
+          "visibleProjectedRouteTargetGoalOccurrencesExcludedFromRouteChecks": 0,
+          "projectionScopesMissingEffectiveMotivationRoutes": 0,
+          "projectionScopesMissingDirectMotivationRoutes": 0,
+          "projectionScopesMissingEffectiveTerminalRoutes": 0,
+          "projectionScopesMissingDirectTerminalRoutes": 0,
+          "visibleSelectedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+          "visibleSelectedGoalOccurrencesMissingDirectMotivationRoute": 0,
+          "visibleSelectedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+          "visibleSelectedGoalOccurrencesMissingDirectTerminalRoute": 0,
+          "profileSelectorExcludedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+          "profileSelectorExcludedGoalOccurrencesMissingDirectMotivationRoute": 0,
+          "profileSelectorExcludedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+          "profileSelectorExcludedGoalOccurrencesMissingDirectTerminalRoute": 0,
+          "uniqueVisibleSelectedGoalsMissingEffectiveMotivationRoute": 0,
+          "uniqueVisibleSelectedGoalsMissingDirectMotivationRoute": 0,
+          "uniqueVisibleSelectedGoalsMissingEffectiveTerminalRoute": 0,
+          "uniqueVisibleSelectedGoalsMissingDirectTerminalRoute": 0
+        }
+      },
+      "limit": "Exact AST-extracted final blocks, combined with the separately executed unchanged earlier Full V2 sections. Not a fresh uninterrupted full-suite run."
+    },
+    {
+      "name": "Final documentation links",
+      "status": "PASS",
+      "exitCode": 0,
+      "files": 520,
+      "evidence": {
+        "path": "tmp/pipeline/laender-stufen/gesamt/physics/frozen-v36/docs-links-final.log",
+        "sha256": "745b84cd3acc7a7d6c7f1a0d9d022bc553e9a105107366ad89edc9266fb22066"
+      },
+      "document": {
+        "path": "docs/dev/physics-stage-view-normalization-2026-11-16.md",
+        "sha256": "6b16e234d92ae04ba5ac94d0f3796408ef7a2805bfc9a3f715e5e6c955181caf"
+      }
+    }
+  ],
+  "rootOwnedChecks": "Final all-Land generator --check, complete Physics assessment chain, all-view formal validator, Quality, 216 native/map/HTTP/browser and remote CI are recorded by root or their respective independent reviewer; not claimed by this author summary.",
+  "integrationStatus": "Draft PR #160. No author claim of merge, main CI or learner effectiveness."
+}

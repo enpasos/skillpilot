@@ -22,9 +22,9 @@ er erhält die Dokumentationschecks. Die große CI schließt `docs/dev/**` und
 CI-Nachweis gilt weiterhin für den benannten Implementierungscommit.
 
 <!-- composition-partial-order-20261117:start -->
-## 17. November 2026, 06:03 MEZ (UTC+01:00) — Fachliche Teilordnungen in allen Länderansichten
+## 17. November 2026, 06:31 MEZ (UTC+01:00) — Fachliche Teilordnungen in allen Länderansichten
 
-**Aktueller Lieferstand:** Native Karten- und Browserprüfung bestanden; Mathematik und Physik global M7, geschützte Qualitätsuntergrenzen bestanden. Paketabschluss und GitHub-CI stehen noch aus. PR wird nach den abschließenden lokalen Prüfungen erstellt.
+**Aktueller Lieferstand:** Sämtliche lokalen Fach-, Karten-, Qualitäts- und Paketprüfungen sind abgeschlossen. Mathematik und Physik global M7, geschützte Untergrenzen bestanden. Vollständige PR-CI, Merge und frische Main-CI stehen noch aus. [PR #160](https://github.com/enpasos/skillpilot/pull/160) enthält die gemeinsame Lieferung.
 Dieser Eintrag aktualisiert den Lieferstand der darunter erhaltenen früheren
 Berichte; deren Zahlen und geprüfte Commitbindungen bleiben historische Belege.
 
@@ -59,8 +59,10 @@ Berichte; deren Zahlen und geprüfte Commitbindungen bleiben historische Belege.
 - **Automatisierte Nachweise:** tatsächlicher HTTP-Vergleich aller 432
   Antwortinhalte, 160 Länder-Browserbretter und 60 zusätzliche Hessenbretter
   bestanden; Typechecks, Lint, Schemas, Graph- und Quellenprüfungen sind
-  separat protokolliert. Die vollständigen Qualitäts- und Paketprüfungen
-  werden vor dem Integrationsabschluss abschließend gebunden.
+  separat protokolliert. Die vollständige Qualitätsgenerierung, ihr aktueller Statusvergleich
+  und die geschützten Untergrenzen bestehen. Beide Mathematik-Modellexporte
+  sind in allen 213 Dateien bytegleich; reproduzierbare ZIP und sechs
+  Offlinegates bestehen. Alle Belege sind dauerhaft gebunden.
 - **Kontrollstellen für den Owner:** Hessen G8 und G9 → Physik → E-Phase
   (Wurf bei E.1, verzweigende E.4–E.7); Hessen → Q4 (unabhängige SRT);
   Mathematik/Physik in einem anderen Land → Sek I und Sek II mit den
@@ -71,206 +73,92 @@ Berichte; deren Zahlen und geprüfte Commitbindungen bleiben historische Belege.
   [unabhängige Reviews und aktuelle Kartenmessung](https://github.com/enpasos/skillpilot/blob/main/contracts/stage-plan-review-evidence/2026-11-16/composition-partial-order-v1/README.md).
   Die Paket-Redistributionsfreigabe bleibt dort, wo menschliche Freigaben
   ausstehen, ausdrücklich offen. Keine Produktionsbereitstellung.
-- **Nächster Schritt:** abschließende Qualitätsbindung, ein gemeinsamer PR,
-  erfolgreiche vollständige PR-CI, Integration und frische erfolgreiche
+- **Nächster Schritt:** erfolgreiche vollständige PR-CI, Integration und frische erfolgreiche
   Main-CI. Erst dann erhält dieser Eintrag Commit- und Runabschluss.
 <!-- composition-partial-order-20261117:end -->
 
-## Gesamtstand
+## 17. November 2026, 06:31 MEZ (UTC+01:00) — Nachtrag zum Abschluss von PR #159
 
-**Stand: 16. November 2026, 08:16 MEZ (UTC+01:00).**
+Die beim damaligen Bericht noch laufende Main-CI ist inzwischen abgeschlossen.
+Der zum Merge von [PR #159](https://github.com/enpasos/skillpilot/pull/159)
+ausgelöste [CI-Lauf 43832099252](https://github.com/enpasos/skillpilot/actions/runs/43832099252)
+bindet den Implementierungscommit
+`9975a142f7a26f1c4ff31c46a70e149d82a3fce5` und ist vollständig erfolgreich:
+**14 von 14 Jobs dieses konkreten Laufs**. Status und einzelne Jobs wurden
+am 17. November erneut abgerufen; es wird kein neuer CI-Lauf an diesem Tag
+behauptet. Die technische Integrationsbedingung dieses Pakets ist damit erfüllt.
+Zusätzliche K-/F-Gesamtabschlüsse folgen daraus ohne erneute Inhaltsprüfung
+nicht. Der nachfolgende Bericht bleibt als damaliger Zwischenstand erhalten.
+Die noch laufende Lieferung in PR #160 braucht ihre eigene vollständige
+PR-CI und anschließend ihre eigene frische Main-CI.
+
+## Historischer Gesamtstand vom 16. November 2026, 09:40 MEZ
+
+**Stand: 16. November 2026, 09:40 MEZ (UTC+01:00).**
+
+**Integration:** [PR #159](https://github.com/enpasos/skillpilot/pull/159) ist
+nach einer vollständigen erfolgreichen PR-CI mit **14/14 Jobs** auf `main`
+integriert, Commit `9975a142f7`. Die frische Main-CI läuft. Bis zu ihrem
+vollständigen Erfolg bleibt das Umsetzungspaket offen; die folgenden Zahlen
+sind keine Deployment- oder Unterrichtsabnahme.
 
 **Fortschritt: K 0/13 und F 0/7 vollständig abgeschlossen · 0 reale Landespläne
-aktiviert · kanonische oberste Lernkarte lokal: 0 Rückpfeile und 0 außenstehende
-Atome in GK, LK und GK+LK.**
-Die erneute 72-Kontext-Messung verwendet tatsächliche Backend-Exporte und die
-Wurzel-, Filter- und Projektionsfunktionen der Oberfläche. Die Matrix enthält 57 zulässige regionale Kontexte und drei kanonische
-Kontexte; zwölf widersprüchliche Dauerkontexte werden getrennt diagnostiziert.
-In 39/57 regionalen Kontexten bestehen oberste Rückgriffe. Die 35 Fälle mit
-Außenatomen stammen aus den 60 zulässigen Kontexten; diese Kennzahl ist nicht
-separat neu gemessen. Kein realer Landesplan ist damit abgenommen.
-Die Messung wählt GK, LK und GK+LK fachübergreifend gleichlaufend; gemischte
-Auswahlen wie Mathematik LK mit Physik GK sind damit nicht nachgewiesen.
+aktiviert.** K4, K6, K8 und F7 sind eng abgegrenzte Abschlusskandidaten. Ihre
+aktuellen Eingangsbindungen werden vor dem Abschluss noch einmal gegen den
+integrierten Stand geprüft; laufende CI und Teilumsetzungen werden nicht gezählt.
 
-**Getrennte Fachkarten:** Zwölf ergänzende Fälle sichern die Screenshots ab:
-sechs tatsächliche UI-Fachfilter und sechs native Einzelfach-Auswahlen, jeweils
-Mathematik/Physik mit GK, LK und GK+LK. Alle haben oben **0 Rückpfeile und
-0 freistehende eigene Fachziele**. Notwendige Fremdfachvorbereitung bleibt in
-der Lernbasis und als Kontexthinweis sichtbar; innere Rückgriffe und bestehende
-Gruppierungsbefunde werden dadurch nicht als erledigt ausgegeben.
+**Wirkung der integrierten Kartenreparatur:** Die tatsächlich exportierten
+kanonischen Karten haben oben **0 Rückpfeile und 0 freistehende eigene
+Fachziele** in GK, LK und GK+LK. Zwölf ergänzende Fachkartenfälle sichern
+Mathematik und Physik getrennt ab. Notwendige Fremdfachvorbereitung bleibt
+Teil der Lernbasis. Innen verbleiben **8/9/9 Pfeile mit 20/23/25 atomaren
+Ursachen**; die sieben zusätzlich vom früheren Kandidaten erzeugten Ursachen
+sind entfernt. Im getrennten kanonischen Sek-I-Ausschnitt bleiben sieben
+innere Pfeile und ein Außenatom offen.
 
-**Innere Wirkung am gepushten Stand `b5d770e58b`:** Bei gleichem Reader/UI steigen die
-kanonischen inneren Rückpfeile gegenüber dem Main-Curriculum von 8 / 9 / 9
-auf 11 / 12 / 12; die unterschiedlichen atomaren Ursachen von 20 / 23 / 25
-auf 27 / 30 / 32. Fünf zusätzliche Ursachen gehören zu neuen, fachlich erforderlichen
-Aufgabenabhängigkeiten. Zwei bereits auf main vorhandene Kanten zeigen erst
-durch die neue Containerreihenfolge rückwärts: Das ist eine vom Kandidaten
-erzeugte Verschlechterung der inneren Darstellung. Diese offene Arbeit wird ausdrücklich nicht
-als behobener Lernfluss ausgegeben. Der letzte Aufgaben-/Routenfix fügt gegenüber
-dem vorherigen geprüften Kandidaten keine weiteren äußeren oder inneren
-Rückgriffsursachen hinzu.
+**Länderbreite:** Der letzte vollständige regionale Vergleich vom
+15. November, 23:49 MEZ, enthält **57 zulässige regionale Kontexte, davon 39
+mit obersten Rückgriffen**. Die gesamte 72er-Matrix enthält zusätzlich drei
+kanonische und zwölf widersprüchliche Dauerkontexte. 35/60 zulässige
+Gesamtkontexte haben Außenatome. Diese ältere Messung ist kein frischer
+Gesamtreplay des integrierten Standes und deckt keine unabhängig gemischten
+Fachprofile ab. Die engeren aktuellen Nachmessungen ersetzen sie nicht.
 
-**Lokale Korrektur nach dem Review:** Drei nationale Physiksichten ordnen die
-Methodengrundlagen vor ihren ersten abhängigen Aufgaben ein; die Auswertung
-des Stromverstärkerversuchs steht unmittelbar hinter dem eigenen Versuch.
-Der frische native Backend-/UI-Nachlauf bestätigt **8 / 9 / 9 innere Pfeile
-und 20 / 23 / 25 Ursachen**, also sieben entfernte und keine neuen Ursachen.
-Lernziele, Voraussetzungen, Lernbasis und Fortschrittsnenner bleiben unverändert;
-oben bleiben null Rückpfeile und null Außenatome. Dies beseitigt die zusätzliche
-Verschlechterung, nicht die bereits auf main bestehenden inneren Rückgriffe.
-Der getrennte Sek-I-Ausschnitt hat weiterhin sieben innere Pfeile und ein
-Außenatom; er wird nicht als vollständig bereinigt ausgegeben. Diese Änderungen
-gehören zum vorliegenden Nachtrag; seine neue Remote-CI ist noch offen.
-
-**Qualität und Integration:** Der letzte vollständige lokale Qualitätslauf
-besteht für alle 21 Kataloge und zwölf Routen; Mathematik und Physik bleiben M7.
-Die Quellenstelle „einfache Ungleichungen“ in Schleswig-Holstein wurde anhand
-der offiziellen Fachanforderungen korrigiert; 659/659 zugeordnete Ziele sind
-nun belegt. 354 Zusammensetzungsansichten bestehen ohne Fehler.
-Auch nach der Ergänzung einer bereits freigegebenen Stoßaufgabe in vier
-hessischen Physiksichten besteht der frische vollständige Qualitätsnachlauf.
-In zwölf Hessen-Fällen wächst die Lernbasis jeweils nur um diese Aufgabe.
-
-Der vorherige vollständige GitHub-Lauf endete mit
-**acht erfolgreichen und sechs fehlgeschlagenen Jobs**. Der ursprünglich
-gemeldete Buchfehler ist darin behoben: fünf Bücher mit 2.457 Zielseiten
-und ihre Publikationsbindungen bestehen. Die weiteren Korrekturen sind
-gebündelt lokal geprüft. Der gemeinsame Paketvertrag 1.3 erhält die
-fehlende Mitlieferung von 28 vorhandenen Aufgabenbildern bei 31 Verwendungen;
-Originaldateien und Bildadressen bleiben erhalten. Der neue Modellexport und
-seine Quellenbindungen bestehen lokal. Die gezielten Java-Tests bestehen mit
-60 Fällen; alle 17 ursprünglichen Backend-Testfehler sind auch im gemeinsamen
-Nachlauf behoben. TypeScript-, Lint- und Paket-Provisionierungstests bestehen.
-Die tatsächliche reproduzierbare ZIP-Datei besteht sämtliche sechs unabhängigen
-Paketkontrollen sowie Installation, Verifikation und Aktivierung. Der native
-Anwendungstest hat eine falsche Freistellung eines offenen Lernkartenziels
-aufgedeckt. Die begrenzte Laufzeitkorrektur erhält Lernkarten und ihre
-Voraussetzungen als explizite Pflichten, getrennt von Prüfungsaufgaben und ohne
-gespeicherte Lernergebnisse zu ändern. Der Completion-Testlauf besteht mit
-136 ausgeführten Tests; eine unverändert optionale Performancemessung ist
-übersprungen. Der unabhängige Review bestätigt die Korrektur. Der frische
-Anwendungstest besteht vollständig mit 15/15 Funktionschecks, Browser und
-Isolation. Sein getrennt versionierter Nachweis für Vertrag 1.3 kontrolliert
-die tatsächlich genutzte lernerspezifische Datenroute; der historische Runner
-bleibt erhalten. Der Abschlussbericht akzeptiert den frisch selbst ausgeführten
-Nachweis. Alle technischen Paketgates bestehen; die gesonderte menschliche
-Freigabe zur Paketweiterverteilung bleibt offen. Der vorangegangene Nachtrag
-ist als `b5d770e58b` in #159 gepusht; die oben genannten Paketnachweise binden
-diesen Stand. Die neuen Reparaturen erhalten eigene Nachweise. Im neuen CI-Lauf sind Buchbau und
-Buchverträge erfolgreich; vier nachgelagerte Jobs scheitern aktuell an
-Ledger-Reproduzierbarkeit, Bildstatus-Frische, Trainer-Testdaten und einem
-abweichenden Sichtumfang der Quellenprüfung. Auch der letzte Backend-Job
-ist erfolgreich: Der Lauf endet mit **10 erfolgreichen und 4 fehlgeschlagenen
-Jobs**. Alle vier Korrekturen bestehen lokal, einschließlich der vollständigen
-Quellenprüfung mit 25 Regressionstests. Die erfolgreichen Vorstufen belegen nicht den
-Erfolg dieser Fach-/Integrationsjobs. Merge und frische Main-CI fehlen.
-Keine Deploymentreife behauptet.
-
-**Aktueller Nachlauf:** Der Lauf für `b81b585d0` endet mit **elf erfolgreichen
-und drei fehlgeschlagenen Jobs**. Der vorliegende Nachtrag behebt die drei
-Fehlerstellen und vier weitere Befunde aus den zuvor nicht erreichten lokalen
-Workflow-Schritten: veraltete erzeugte Berichte, widersprüchliche Browser-Testdaten,
-alte Physik-Testannahmen und den Verlust der aktuellen Transistorzuordnung bei
-kalter Quellengenerierung. Der echte bayerische Generator reproduziert nun genau
-die bereits dokumentierte Ergänzung; andere Quellenzuordnungen bleiben gleich.
-Alle betroffenen Normaltests und der vollständige Qualitätslauf bestehen lokal;
-Mathematik/Physik bleiben M7, alle 21 Katalog- und zwölf Routen-Mindeststände
-bleiben erhalten. Die frische Remote-CI dieses Nachtrags sowie Merge und Main-CI
-stehen noch aus. Dies ist kein weiteres abgeschlossenes K-/F-Paket.
-
-**Messgrenze:** Bei identischem aktuellem Code zeigt das Main-Curriculum oben
-jeweils einen Rückpfeil mit 43 atomaren Ursachen gegenüber null im Kandidaten;
-außen stehen 3 / 0 / 0 gegenüber 0 / 0 / 0 Zielen. Die historischen Main-UI-
-Funktionen erkennen unter der tatsächlichen Übersicht keine Stufeneinheiten
-und liefern deshalb keinen vergleichbaren sauberen Stufen-Nenner. Die alten
-41/512-Werte aus vollständigen Katalogen mit künstlicher Wurzel bleiben
-überholte Zwischenmessungen. Kein Wert ist eine Produktions- oder
-Unterrichtsabnahme; Rohbelege bleiben erhalten.
-
-| Umfang | Stand und verbleibende Arbeit |
+| Umfang | Geliefert und noch offen |
 | --- | --- |
-| K1 | Elementarer Halbleiterpfad und eigener Transistor-Schaltversuch in #157; Verstärkerversuch in #159. Die ursprünglichen Länder-Stufenfälle sind aktuell geprüft. Eine eigene Prüfungsaufgabe zur Materialklassifikation fehlt noch; einzelne Quellenrollen und spätere Jahrgangsplätze bleiben offen. |
-| K2 | Vier Diagrammaufgaben und drei elementare Aufgaben in #157; die jüngste Korrektur trennt Tabellenkompetenz und Zahlenvorbereitung der anspruchsvolleren Aufgabe. Physikrückgriffe und Länderplatzierungen bleiben offen. |
-| K4, K6 | Enge Abschlusskandidaten; Abschluss wartet auf Merge und frische Main-CI. Die begrenzte K6-Routenabsicherung schließt die allgemeine Einheitenanerkennung nicht ab. |
-| K8 | Elf alte Review-Eingänge waren geändert. Die neue unabhängige Nachprüfung der acht SH- und zwei HB-Sichten bestätigt nun die ursprüngliche Stufenreparatur am gepushten Stand; innere Reihenfolge und Planaktivierung bleiben offen. Abschluss erst nach Integration und frischer Main-CI. |
-| K3, K5, K9–K11 | Fachrecherche und Teilreparaturen in #159; Länderbreite, einzelne Jahrgangszuordnungen und regionale Rückgriffe bleiben offen. |
-| K7, K12, K13 | Rheinland-Pfalz-Platzierung und weitere Erwerbsrouten in #159 korrigiert. Die vollständige Bereinigung der Befunde zu Voraussetzungen und Stufenausschnitten bleibt offen. |
-| F1, F2, F6 | Grundlage in #157: Planvertrag, Erzeugung und Diagnosekern. Reale Pläne, vollständige Anbindung und ihre Abnahme fehlen. |
-| F3, F4 | Kanonische oberste Karten in #159 bereinigt; vollständige Karten aus realen Planeinheiten und innere Vorbereitungseinordnung bleiben offen. |
-| F7 | Zweisprachiger Normkandidat in #159 veröffentlicht und unabhängig geprüft; noch nicht auf main integriert. |
-| F5 | Fachprüfung teilweise umgesetzt über K1/K2; der vollständige Befundbestand bleibt offen. |
+| K1, K2 | Elementarer Halbleiterpfad und echte Diagrammaufgaben geliefert. Materialklassifikation, weitere Physikanschlüsse und vollständige Länder-/Jahrgangszuordnung bleiben offen. |
+| K4, K6, K8 | Die ursprünglichen begrenzten Stufen-/Voraussetzungsbefunde sind unabhängig geprüft. Abschluss erst nach aktueller Eingangsbindung und frischer grüner Main-CI; weitere innere Rückgriffe bleiben getrennt offen. |
+| K3, K5, K7, K9–K11 | Aufgaben, Quellenrollen und Platzierungen teilweise repariert; weitere Länderfälle und Außenatome bleiben offen. Die historische Freifallaufgabe behauptet weiterhin eigene Versuchs-/Tabellenleistungen, die ihr Text nicht verlangt. |
+| K12, K13 | Physik-Erwerbsrouten und einzelne Stufensichten korrigiert; die vollständige Prüfungsvoraussetzungsbereinigung und Ableitung aller Stufensichten fehlen. |
+| F1, F2 | Gemeinsamer Vertrag 1.3 und verschachtelte Jahre/E-/Q-Phasen vorbereitet. Vollständige Paket-/Laufzeitanbindung und reale Landesplanaktivierung fehlen. Der HE-Pilot umfasst weiterhin G8 und G9. |
+| F3, F4, F6 | Kanonische oberste Karten bereinigt; Diagnose berücksichtigt jetzt echte Fach-/Kurskombinationen. Reale Plankarten, Vorbereitung am ersten Bedarf und gemessene innere Wirkung bleiben offen. Die Berichtgrenze von 1.024 Kombinationen ist ausdrücklich keine Abnahme für 20 Fächer. |
+| F5 | Der vollständige fachliche Befundbestand bleibt offen; einzelne unabhängige Fachreviews ersetzen diesen Abschluss nicht. |
+| F7 | Zweisprachige Zielnorm und Abgrenzung vom Laufzeitbestand sind mit #159 integriert. Abschluss wartet auf frische Main-CI. |
 
-Der [unabhängige Abgleich des Restauftrags](https://github.com/enpasos/skillpilot/blob/fix/stage-plan-next-delivery-20261115/contracts/stage-plan-review-evidence/2026-11-16/current-scope-review-v1/README.md)
-trennt die ursprünglichen Einzelbefunde von den weiterhin offenen inneren
-Rückgriffen und realen Landesplänen. K4/K6 sowie F7 bleiben enge Abschlusskandidaten. Für K8 liegt inzwischen
-eine [neue unabhängige Nachprüfung](https://github.com/enpasos/skillpilot/blob/fix/stage-plan-next-delivery-20261115/contracts/stage-plan-review-evidence/2026-11-16/k8-current-delta-independent-v1/README.md)
-der zehn geänderten Sichten vor: keine Kompositionsfehler, unveränderte volle
-Lernbasis und erhaltene ursprüngliche Stufentrennung. Damit ist auch K8
-wieder ein begrenzter Abschlusskandidat; der historische Review bleibt
-unverändert. Keiner dieser Punkte ist bereits auf main abgeschlossen.
+**Nächstes lokales Paket:** HE-Planquellen sowie Paket- und Laufzeitleser liegen
+getrennt auf `feat/stage-plan-he-runtime-20261116`. 69 gezielte Java-Tests
+bestehen; ein echter Mathematik-Quellenfragment-Replay besteht ebenfalls.
+Das ist noch kein vollständiger aktivierter Landesplan oder erfolgreicher
+vollständiger Paketexport. Echte Hessen-Messungen zeigen, dass Stufenumfang
+nicht aus dem Lernzeitpunkt abgeleitet werden darf. Deshalb erhält die volle
+Autorität ausdrückliche Stufenmitgliedschaften; Jahrgangs-/Phasenplätze bleiben
+eine separate, eindeutige Zuordnung. Die neue Auswahl ist bislang nur im
+Schema und TypeScript-Materialisierer umgesetzt. Sie ist nicht aktiviert.
 
-**Korrektur nach externem Review:** Das Restauftragsaudit bindet `069fd6cf`,
-nicht den jüngsten Push. Die große Kartenmessung stammt vom 15. November,
-23:49 MEZ; für 66/72 Kontexte besteht danach Eingangsgleichheit, kein neuer
-vollständiger Replay. Die sechs HE-CrossStage-Fälle wurden gesondert nachgemessen.
-Der F6-Bericht lässt die GK+LK-Vereinigung innerhalb eines Fachs aus; ein
-isoliertes Gegenbeispiel widerlegt deshalb einen umfassenden Nullbefund.
-Der lokale Nachtrag ersetzt die unbewiesene Dominanzannahme durch
-vollständige Enumeration einschließlich tatsächlicher GK+LK-Angebote.
+Die [Übergabe](stage-plan-units-handover-2026-11-15.md) bleibt die vollständige
+Auftragsliste. Die [unabhängige Restauftragsprüfung](https://github.com/enpasos/skillpilot/blob/9975a142f7a26f1c4ff31c46a70e149d82a3fce5/contracts/stage-plan-review-evidence/2026-11-16/current-scope-review-v1/README.md)
+und der [spätere K8-Nachreview](https://github.com/enpasos/skillpilot/blob/9975a142f7a26f1c4ff31c46a70e149d82a3fce5/contracts/stage-plan-review-evidence/2026-11-16/k8-current-delta-independent-v1/README.md)
+behalten ihre ausdrücklich benannten Prüfstände; sie werden nicht stillschweigend
+zu neuen Gesamtabnahmen erklärt. Frühere Zwischenzahlen und Fehlversuche
+bleiben in der Git-Historie und den unveränderten Belegen erhalten.
 
-Der HE-Pilotumfang bleibt G8 und G9. Eine erste G9-Umsetzung ist eine Reihenfolge,
-keine Abnahme von G8. Die Physikquelle ist bislang G9-gebunden; getrennte
-Physik-Dauersichten fehlen. In der vorläufigen HE-G9-Diagnose haben 148/582
-Physik-GK-Ziele und 17/881 Mathematik-GK-Ziele kein Jahrgangs-/Phasenblatt.
-Dies sind Rollen-/Filterauswertungen, keine neue native Lernkartenmessung.
+## 16. November 2026, 09:40 MEZ — Reviewbefunde und gebündelte CI-Korrekturen
 
-Die Navigation-/Atomkorrektur und F6-Reparatur werden getrennt in einem lokalen
-Sicherungscommit `4286f49250` auf `feat/stage-plan-he-runtime-20261116` gehalten,
-ohne Push. Er sichert auch die flüchtigen Review- und Gegenbeispielbelege;
-der zusätzliche Budgetcheck ist lokal als `048264060f` gesichert. Die sechs
-geprüften Source-/Testdateien sind inzwischen in den lokalen Nachtrag für
-#159 übernommen, ohne einen weiteren PR zu eröffnen.
-Die Navigation-/Atomkorrektur umfasst
-eine geänderte Produktionsdatei und eine neue Testklasse. Der erste Testlauf
-umfasst vier neue und 35 vorhandene Tests aus drei Nachbarklassen, nicht die
-136 Completion-Tests des gepushten Lernkartenfixes. Der globale Helper hat
-16 Aufrufstellen. Der Nullfall ist inzwischen eng korrigiert; dieselben vier
-Testklassen bestehen nun mit 40 Tests. Der frische vollständige Kandidatenlauf besteht separat mit 136 Tests in
-16 Completion-Klassen; eine unverändert optionale Performancemessung ist
-übersprungen. Das ist ein neuer Lauf und kein umbenannter älterer Nachweis. Ein frischer öffentlicher Replay
-am gepushten Stand umfasst 28 reale hessische Konfigurationen mit jeweils
-allgemeinem und engem Fokus: 56 gültige Zustände, 168 Compileraufrufe, kein
-`MISSING_REFERENCE` und kein Cluster als atomare Abschlussanforderung.
-Die Korrektur sichert damit einen konstruierten Grenzfall ab; ein aktueller
-öffentlicher Fehler ist im benannten Umfang nicht reproduziert. Das ist keine
-katalogweite Entwarnung.
-F6 zählt im Entwurf alle nichtleeren Fachauswahlen und tatsächlichen
-Kursvarianten auf: 15 Fälle bei zwei Fächern, davon neun mit beiden Fächern.
-Die gezielten Report-, Materialisierungs- und Nested-Tests bestehen; eine
-reale Mischfallmessung fehlt. Eine exakte Vorabzählung begrenzt den gesamten
-Bericht auf 1.024 Fälle. Größere Inventare liefern ausdrücklich einen Fehler
-und keine Teilergebnisse; damit ist keine Skalierung auf 20 Fächer abgenommen. Der K1-Aufgabenentwurf
-ist wegen zusätzlicher AB1-fremder Anforderungen nicht angenommen; auch das
-zugrunde liegende Evidenzprofil wird auf diese Überforderung geprüft.
-
-**Weitere konkrete Restaufgabe K3/F5:** Die historische Aufgabe
-„Bewegungsanalyse und freier Fall“ (`a9562b05`) behauptet weiterhin Nachweise
-für eigene Versuche beziehungsweise Tabellenkalkulation, die ihr Aufgabentext
-nicht verlangt. Eine Clusterzuordnung führt zudem indirekt eine bereits direkt
-entzogene Abdeckung weiter. Diese Ansprüche bestanden schon auf main; #159
-hat sie bisher nur teilweise zurückgenommen. Die fachliche Korrektur samt
-geeigneten Erwerbsnachweisen bleibt offen. Der reparierte technische
-Kursplan-Test beweist weder Versuchskompetenz noch die Güte dieser Aufgabe.
-
-## 16. November 2026, 08:16 MEZ — Reviewbefunde und gebündelte CI-Korrekturen
-
-**Stand: [PR #159](https://github.com/enpasos/skillpilot/pull/159) bleibt offen.
-Der letzte Lauf für `b81b585d0` endet mit elf erfolgreichen und drei
-fehlgeschlagenen Jobs. Dieser Nachtrag behebt diese drei Fehler und vier
-zusätzliche Befunde aus dem lokalen Nachlauf. Alle betroffenen Normaltests,
-Anwendungs-/Paketbuilds und der vollständige Qualitätslauf bestehen lokal.
-Frische PR-CI, Merge und Main-CI fehlen; frühere Paket- und Browsernachweise
-behalten ihren jeweils gebundenen Implementierungsstand.**
+**Stand: [PR #159](https://github.com/enpasos/skillpilot/pull/159) ist nach
+14/14 erfolgreichen Jobs seiner vollständigen PR-CI auf `main` integriert
+(`9975a142f7`). Die frische Main-CI läuft; das Paket ist noch nicht abgeschlossen.
+Frühere Paket-, Browser- und Fachnachweise behalten ihren jeweils gebundenen
+Implementierungsstand.**
 
 - **Fortschritt:** K 0/13, F 0/7 abgeschlossen, 0 reale Landespläne aktiviert.
   Kanonisch oben: 0 Rückpfeile und 0 freistehende eigene Fachziele, auch in den
@@ -335,8 +223,8 @@ behalten ihren jeweils gebundenen Implementierungsstand.**
   bestätigt alle 21 Katalog- und zwölf Routen-Mindeststände. Automatisierte
   Checks und Agentenreviews belegen keine Unterrichtswirkung und ersetzen keine
   frische Main-CI.
-- **Nächster Schritt:** Diesen gemeinsamen Nachtrag auf #159 pushen, seine
-  vollständige CI abwarten, danach integrieren und die frische Main-CI prüfen.
+- **Nächster Schritt:** Die frische Main-CI bis zum Abschluss prüfen und danach
+  Implementierungscommit und terminalen Lauf im Abschlussvermerk binden.
   Reale HE-Pläne und weitere Fachreparaturen bleiben im getrennten nächsten
   Umsetzungspaket Teil des unverkleinerten Gesamtauftrags.
 

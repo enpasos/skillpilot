@@ -1,7 +1,8 @@
 # Physik: Länder-, Stufen- und Themenansichten
 
-Stand: 17. November 2026. Diese Lieferung ist bis zur Integration und einem
-frischen erfolgreichen `main`-CI-Lauf offen. Lokale Prüfungen und unabhängige
+Stand: 17. November 2026. Die Implementierung wird in [PR #160](https://github.com/enpasos/skillpilot/pull/160)
+geführt; die Lieferung bleibt bis zur Integration und einem frischen
+erfolgreichen `main`-CI-Lauf offen. Lokale Prüfungen und unabhängige
 Quellenprüfung sind keine Lernwirksamkeitsstudie und keine Integration.
 
 Die Ansichten unterscheiden die amtliche Quellenzuordnung eines Ziels von
@@ -136,6 +137,13 @@ leeren Bewegungs-Strang bei der bestehenden Beschleunigungsaufgabe sowie den
 neuen Dokumentations- und Fallaufgaben; Texte, `requires` und `coveredGoalIds`
 werden dadurch nicht verändert. Inhalts-, Angebots- und Folgebelege bleiben
 getrennt erhalten.
+
+Der erhaltene [Quellen- und Aufgabenledger](https://github.com/enpasos/skillpilot/blob/main/contracts/stage-plan-review-evidence/2026-11-16/composition-partial-order-v1/33-physics-final-ledger/scope-and-assessment-deltas.actual.json)
+weist die Aufgaben-Zielmengen getrennt von den 26 ausgeschlossenen, zuvor neu
+behaupteten Sek-I-Vollatomzuordnungen aus. Die spätere
+[Strang-Metadatenprüfung](https://github.com/enpasos/skillpilot/blob/main/contracts/stage-plan-review-evidence/2026-11-16/composition-partial-order-v1/36-final-assessment-strands/review.actual.json)
+bindet genau die drei genannten Änderungen und bewahrt die früheren
+Inhalts- und Releaseobjekte unverändert als Prüfgeschichte.
 
 Auch der Aufgabenplatz folgt der tatsächlich geprüften Kompetenz:
 Die Wurfaufgabe `6ea3fb3c-abdc-568f-ab13-97c36dc274e4` liegt in MV, SL und SN

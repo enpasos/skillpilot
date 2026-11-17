@@ -1,0 +1,79 @@
+{
+  "at": "2026-11-16T23:36:29.237325+00:00",
+  "reviewer": "root; independent of implementation author",
+  "scope": "Two CLI changes only; sealed ledger guard in all profiles and repo-relative successful-output path normalization",
+  "generatorSha256": "76331ece4ac3728b5482825c7f964905d481fc3e4fdb6b4757874c4637f38cb8",
+  "historicalLedgerSha256": "0e10da2b7fb1fabaa0bdf5bae398a1c40030ce72eb09ebc4f21ebf7ed5397d14",
+  "negativeTests": [
+    {
+      "mode": [],
+      "target": "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/package-redistribution/de-gymnasium-mathematik-v1.3.review.json",
+      "exitCode": 2,
+      "sourceReadPrevented": true,
+      "ledgerUnchanged": true
+    },
+    {
+      "mode": [],
+      "target": "curricula/DE/Gymnasium/quality/package-redistribution/../package-redistribution/de-gymnasium-mathematik-v1.3.review.json",
+      "exitCode": 2,
+      "sourceReadPrevented": true,
+      "ledgerUnchanged": true
+    },
+    {
+      "mode": [
+        "--runtime-v13-candidate"
+      ],
+      "target": "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/package-redistribution/de-gymnasium-mathematik-v1.3.review.json",
+      "exitCode": 2,
+      "sourceReadPrevented": true,
+      "ledgerUnchanged": true
+    },
+    {
+      "mode": [
+        "--runtime-v13-candidate"
+      ],
+      "target": "curricula/DE/Gymnasium/quality/package-redistribution/../package-redistribution/de-gymnasium-mathematik-v1.3.review.json",
+      "exitCode": 2,
+      "sourceReadPrevented": true,
+      "ledgerUnchanged": true
+    },
+    {
+      "mode": [
+        "--learning-unit-candidate"
+      ],
+      "target": "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/package-redistribution/de-gymnasium-mathematik-v1.3.review.json",
+      "exitCode": 2,
+      "sourceReadPrevented": true,
+      "ledgerUnchanged": true
+    },
+    {
+      "mode": [
+        "--learning-unit-candidate"
+      ],
+      "target": "curricula/DE/Gymnasium/quality/package-redistribution/../package-redistribution/de-gymnasium-mathematik-v1.3.review.json",
+      "exitCode": 2,
+      "sourceReadPrevented": true,
+      "ledgerUnchanged": true
+    },
+    {
+      "mode": [
+        "--completion-candidate"
+      ],
+      "target": "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/package-redistribution/de-gymnasium-mathematik-v1.3.review.json",
+      "exitCode": 2,
+      "sourceReadPrevented": true,
+      "ledgerUnchanged": true
+    },
+    {
+      "mode": [
+        "--completion-candidate"
+      ],
+      "target": "curricula/DE/Gymnasium/quality/package-redistribution/../package-redistribution/de-gymnasium-mathematik-v1.3.review.json",
+      "exitCode": 2,
+      "sourceReadPrevented": true,
+      "ledgerUnchanged": true
+    }
+  ],
+  "relativeOutputCodeReview": "Path.resolve().relative_to(REPO_ROOT) accepts both absolute and repo-relative candidate paths; generation and validation happen before status printing; no changes to content, human decisions or validation policy",
+  "status": "PASS"
+}
