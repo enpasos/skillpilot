@@ -619,6 +619,34 @@ try {
       )
     })
 
+  // The license is stated at the resource itself, not only on the legal page.
+  const license = page.getByTestId('goal-book-license')
+  assert(await license.isVisible(), 'the goal book states its license on the page')
+  const licenseLink = license.getByTestId('goal-book-license-link')
+  assert(
+    await licenseLink.getAttribute('rel') === 'license'
+      && await licenseLink.getAttribute('href') === 'https://creativecommons.org/licenses/by/4.0/deed.de'
+      && (await licenseLink.innerText()) === 'CC BY 4.0',
+    'the license link is machine-readable and names CC BY 4.0',
+  )
+  assert(
+    (await license.innerText()).includes('Offene Bildungsressource (OER)')
+      && (await license.innerText()).includes('behalten ihre eigenen Bedingungen'),
+    'the notice names the OER status and keeps third-party material apart',
+  )
+  const oerLogo = license.getByTestId('goal-book-license-oer-logo')
+  assert(
+    await oerLogo.getAttribute('href') === '/legal#oer-logo'
+      && await oerLogo.locator('img').getAttribute('src') === '/assets/third-party/oer/global-oer-logo.png',
+    'the third-party OER logo links to its own source and license credit',
+  )
+  const attribution = await license.getByTestId('goal-book-license-attribution').textContent() ?? ''
+  assert(
+    attribution.startsWith('SkillPilot — ') && attribution.includes('https://skillpilot.com/lernzielbuch')
+      && attribution.endsWith('CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)'),
+    `the suggested credit names title, edition, link and license: ${attribution}`,
+  )
+
   const goalBookShell = page.getByTestId('goal-book-shell')
   const qualityStatus = page.getByTestId('goal-book-quality-status')
   await qualityStatus.locator('[data-maturity="M7"]').waitFor()
