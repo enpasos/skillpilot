@@ -17,6 +17,7 @@ SkillPilot represents learning goals and their prerequisites as a shared skill g
 - [Unit Ordering, Rules E1–E4 & Unit-by-Unit Mode (§11.5)](learning-unit-progression.md):
   sibling `after` ordering without access locks, binding rules E1–E4 across subject and plan units, cross-Land leaf wholeness, and the target [“Unit by Unit” learning mode](learning-unit-progression.md#sec-unit-by-unit).
   Decision record & rollout plan (`F1`–`F13`): [Learning units: clusters, `after` and learning flow (DE)](learning-unit-wiring-concept-2026-11-14.md).
+  Concept draft of 17 November 2026, not decided: [Learning units: motivation at the start, assessments at the end (DE)](learning-unit-motivation-concept-2026-11-17.md).
 - [Optional Acquisition & Time Planning (§12)](planning-and-budget.en.md):
   dated multi-period schedules, structural completion witnesses, workload budgets, and the boundary to binding plan units.
 - [Implicit Mastery Through Valid Local Assessments (§13)](assessment-gated-completion.md):
@@ -87,6 +88,7 @@ SkillPilot stellt Lernziele und ihre Voraussetzungen als gemeinsamen Skill-Graph
 - [Einheitsordnung, Regeln E1–E4 & Lernweise „Einheit für Einheit“ (§11.5)](learning-unit-progression.de.md):
   Geschwisterfolge `after` ohne Zugangssperren, verbindliche Ordnungsregeln E1–E4 für Fach- und Planeinheiten, länderübergreifende Blatt-Ganzheit sowie die Ziel-Lernweise [„Einheit für Einheit“](learning-unit-progression.de.md#sec-unit-by-unit).
   Entscheidungsprotokoll & Einführungsplan (`F1`–`F13`): [Lerneinheiten: Cluster, `after` und Lernfluss](learning-unit-wiring-concept-2026-11-14.md).
+  Konzeptentwurf vom 17. November 2026, nicht beschlossen: [Lerneinheiten: Motivation am Anfang, Prüfungen am Ende](learning-unit-motivation-concept-2026-11-17.md).
 - [Optionale Erwerbs- & Zeitplanung (§12)](planning-and-budget.de.md):
   datierte mehrperiodige Erwerbspläne, strukturelle Abschlusszeugen, Arbeitslastbudgets und Abgrenzung zu verbindlichen Planeinheiten.
 - [Implizite Beherrschung durch gültige lokale Prüfungen (§13)](assessment-gated-completion.de.md):

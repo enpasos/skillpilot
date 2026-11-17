@@ -42,6 +42,8 @@ This page is the entry point for durable SkillPilot concepts. Keep implementatio
   Binding concept clarification; implementation and review of existing assessment contracts remain separate.
 - [Decision of 14 November 2026: Learning Units – Clusters, `after` and Learning Flow (DE)](skill-graph/learning-unit-wiring-concept-2026-11-14.md)
   What a learning unit is, how units are ordered and how that order acts in the learning flow; not implemented.
+- [Concept Draft of 17 November 2026: Learning Units – Motivation at the Start, Assessments at the End (DE)](skill-graph/learning-unit-motivation-concept-2026-11-17.md)
+  Every unit with assessments begins with its own motivation goal, wired explicitly in the unit entry and in the graph; not decided, not implemented.
 - [Graph Definition Compendium Appendices (B–F)](skill-graph/compendium-appendix.en.md)
   Current implementation status, verification strategy, glossary/symbols, sources, and single-source build reference.
 - [Architecture & Interchange Compendium (PDF)](skill-graph/skillpilot-skill-graph-architecture.en.pdf)
@@ -156,6 +158,8 @@ Diese Seite ist der Einstiegspunkt für dauerhafte SkillPilot-Konzepte. Umsetzun
   Verbindliche Konzeptkorrektur; Umsetzung und Prüfung bestehender Prüfungsverträge folgen separat.
 - [Festlegung vom 14. November 2026: Lerneinheiten – Cluster, `after` und Lernfluss](skill-graph/learning-unit-wiring-concept-2026-11-14.md)
   Was eine Lerneinheit ist, wie Einheiten geordnet werden und wie diese Ordnung im Lernfluss wirkt; nicht umgesetzt.
+- [Konzeptentwurf vom 17. November 2026: Lerneinheiten – Motivation am Anfang, Prüfungen am Ende](skill-graph/learning-unit-motivation-concept-2026-11-17.md)
+  Jede Einheit mit Prüfungen beginnt mit einem eigenen Motivationsziel, ausdrücklich verdrahtet im Einheiteneintrag und im Graphen; nicht beschlossen, nicht umgesetzt.
 - [Kompendiums-Anhänge zur Graph-Definition (B–F)](skill-graph/compendium-appendix.de.md)
   Aktueller Umsetzungsstand, Prüfstrategie, Glossar/Symbole, Quellen und Single-Source-Build-Referenz.
 - [Architektur- & Austausch-Kompendium (PDF)](skill-graph/skillpilot-skill-graph-architecture.de.pdf)
