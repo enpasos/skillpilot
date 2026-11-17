@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 
 const CC_BY_URL = 'https://creativecommons.org/licenses/by/4.0/'
 const PUBLIC_ORIGIN = 'https://skillpilot.com'
+const OPEN_DATA_URL = 'https://github.com/enpasos/skillpilot'
 
 const copy = {
   de: {
@@ -9,6 +10,9 @@ const copy = {
     licenseHref: `${CC_BY_URL}deed.de`,
     grant: 'Du darfst dieses Lernzielbuch kostenlos nutzen, weitergeben und bearbeiten, auch kommerziell, wenn du die Quelle nennst und Änderungen kennzeichnest.',
     scope: 'Das gilt für die Inhalte von SkillPilot. Amtliche Originalquellen, Zitate und verlinkte Materialien behalten ihre eigenen Bedingungen.',
+    images: 'Die Bilder sind KI-generiert und von SkillPilot kuratiert. Das ist eine Herkunftsangabe; soweit an ihnen Rechte bestehen, gilt auch für sie CC BY 4.0.',
+    openData: 'Die Lehrplandaten liegen bearbeitbar als JSON im',
+    openDataLink: 'öffentlichen Repository',
     attributionSummary: 'So nennst du die Quelle',
     licensing: 'Lizenzhinweise',
     logoCredit: 'OER-Logo: Quelle & Lizenz',
@@ -19,6 +23,9 @@ const copy = {
     licenseHref: CC_BY_URL,
     grant: 'You may use, share and adapt this learning goal book free of charge, also commercially, if you give credit and indicate changes.',
     scope: 'This applies to SkillPilot\'s own content. Official source documents, quotations and linked materials keep their own conditions.',
+    images: 'The images are AI-generated and curated by SkillPilot. This states their origin; as far as rights exist in them, CC BY 4.0 applies to them as well.',
+    openData: 'The curriculum data is available in editable form as JSON in the',
+    openDataLink: 'public repository',
     attributionSummary: 'How to give credit',
     licensing: 'Licensing notes',
     logoCredit: 'OER logo: source & license',
@@ -75,6 +82,10 @@ export const GoalBookLicenseNotice = ({ language, book }: GoalBookLicenseNoticeP
           </a>
         </h2>
         <p className="mt-1">{c.grant} {c.scope}</p>
+        <p className="mt-1" data-testid="goal-book-license-images">
+          {c.images} {c.openData}{' '}
+          <a href={OPEN_DATA_URL} className="underline underline-offset-2 hover:text-text-primary">{c.openDataLink}</a>.
+        </p>
         {book && (
           <details className="mt-2">
             <summary className="cursor-pointer font-medium text-text-primary">{c.attributionSummary}</summary>

@@ -634,6 +634,12 @@ try {
       && (await license.innerText()).includes('behalten ihre eigenen Bedingungen'),
     'the notice names the OER status and keeps third-party material apart',
   )
+  const licenseImages = license.getByTestId('goal-book-license-images')
+  assert(
+    (await licenseImages.innerText()).includes('KI-generiert und von SkillPilot kuratiert. Das ist eine Herkunftsangabe')
+      && await licenseImages.getByRole('link').getAttribute('href') === 'https://github.com/enpasos/skillpilot',
+    'AI origin is stated as provenance and the editable data is linked',
+  )
   const oerLogo = license.getByTestId('goal-book-license-oer-logo')
   assert(
     await oerLogo.getAttribute('href') === '/legal#oer-logo'
