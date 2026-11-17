@@ -21,6 +21,7 @@ import { ThemeToggle } from '../components/ThemeToggle'
 import { InlineMathText } from '../components/InlineMathText'
 import { GoalBookChapterTree } from '../components/GoalBookChapterTree'
 import { GoalBookOriginalSources } from '../components/GoalBookOriginalSources'
+import { GoalBookLicenseNotice } from '../components/GoalBookLicenseNotice'
 import { GoalBookQualityStatus } from '../components/GoalBookQualityStatus'
 import { useLanguage } from '../contexts/LanguageContext'
 import {
@@ -1103,6 +1104,11 @@ export const GoalBookView: React.FC<GoalBookViewProps> = ({ suppliedChapterProje
             </span>
           </a>
         </div>
+
+        <GoalBookLicenseNotice
+          language={language === 'en' ? 'en' : 'de'}
+          book={model ? { title: model.book.title, edition: model.book.edition, route: goalBookRoute(model.book.id) } : undefined}
+        />
 
         <div className="mt-6 flex items-start gap-3 rounded-xl border border-orange-300 bg-orange-50 px-4 py-3 text-sm text-orange-900 dark:border-orange-900 dark:bg-orange-950/40 dark:text-orange-200">
           <FlaskConical className="mt-0.5 shrink-0" size={19} aria-hidden="true" />

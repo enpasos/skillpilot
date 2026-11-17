@@ -207,7 +207,22 @@ type GoalBookCopy = {
   moreApplicabilityScopes: (count: number) => string
   applicabilityDetails: string
   stageLabel: (stage: string) => string
+  license: string
+  licenseText: string
+  credit: string
+  creditText: (title: string, edition: string, bookUrl: string) => string
+  images: string
+  imagesText: string
+  openData: string
+  openDataText: string
 }
+
+// A PDF travels without the site: it states its own license, how to give credit, how the images
+// were made and where the editable data lives. Addresses are printed as text, not as links.
+const CC_BY_NAME = 'CC BY 4.0'
+const CC_BY_ADDRESS = 'creativecommons.org/licenses/by/4.0'
+const OPEN_DATA_ADDRESS = 'github.com/enpasos/skillpilot'
+const DEFAULT_BOOK_ADDRESS = 'skillpilot.com/lernzielbuch'
 
 const copyForLocale = (locale: string): GoalBookCopy => {
   const language = locale.trim().toLowerCase().split(/[-_]/u)[0]
@@ -249,6 +264,14 @@ const copyForLocale = (locale: string): GoalBookCopy => {
         SekII: 'Sek. II',
         CrossStage: 'Sek. I–II',
       }[stage] ?? stage),
+      license: 'Lizenz',
+      licenseText: `Offene Bildungsressource (OER) unter ${CC_BY_NAME} (${CC_BY_ADDRESS}): kostenlos nutzen, weitergeben und bearbeiten, auch kommerziell, mit Quellenangabe und Kennzeichnung von Änderungen. Das gilt für die Inhalte von SkillPilot; amtliche Originalquellen und Zitate behalten ihre eigenen Bedingungen.`,
+      credit: 'Quellenangabe',
+      creditText: (title, edition, bookUrl) => `SkillPilot — ${title}, ${edition}, ${bookUrl}, ${CC_BY_NAME}`,
+      images: 'Bilder',
+      imagesText: `Die Visualisierungen sind KI-generiert und von SkillPilot kuratiert. Das ist eine Herkunftsangabe; soweit an den Bildern Rechte bestehen, gilt auch für sie ${CC_BY_NAME}.`,
+      openData: 'Offene Daten',
+      openDataText: `Die Lehrplandaten liegen bearbeitbar als JSON vor: ${OPEN_DATA_ADDRESS}`,
     }
   }
   if (language === 'en') {
@@ -289,6 +312,14 @@ const copyForLocale = (locale: string): GoalBookCopy => {
         SekII: 'Upper secondary',
         CrossStage: 'Secondary I–II',
       }[stage] ?? stage),
+      license: 'License',
+      licenseText: `Open educational resource (OER) under ${CC_BY_NAME} (${CC_BY_ADDRESS}): use, share and adapt free of charge, also commercially, if you give credit and indicate changes. This applies to SkillPilot's own content; official source documents and quotations keep their own conditions.`,
+      credit: 'Credit',
+      creditText: (title, edition, bookUrl) => `SkillPilot — ${title}, ${edition}, ${bookUrl}, ${CC_BY_NAME}`,
+      images: 'Images',
+      imagesText: `The visualizations are AI-generated and curated by SkillPilot. This states their origin; as far as rights exist in the images, ${CC_BY_NAME} applies to them as well.`,
+      openData: 'Open data',
+      openDataText: `The curriculum data is available in editable form as JSON: ${OPEN_DATA_ADDRESS}`,
     }
   }
   throw new Error(`Unsupported goal-book locale ${locale}; renderer v1 supports de and en`)
@@ -296,6 +327,13 @@ const copyForLocale = (locale: string): GoalBookCopy => {
 
 const MAX_PRINT_APPLICABILITY_GROUPS = 3
 const MAX_PRINT_APPLICABILITY_SCOPES_PER_GROUP = 3
+
+/** The public address of the book as printed text: host and path, without scheme, query or fragment. */
+const coverBookAddress = (model: GoalBookModel): string => {
+  if (!model.book.atlasBaseUrl) return DEFAULT_BOOK_ADDRESS
+  const url = new URL(model.book.atlasBaseUrl)
+  return `${url.host}${url.pathname.replace(/\/+$/u, '')}`
+}
 
 const compactJurisdiction = (jurisdiction: string) => (
   jurisdiction.startsWith('DE-') ? jurisdiction.slice(3) : jurisdiction
@@ -992,6 +1030,10 @@ const renderGoalBookFrontMatter = (
     <dl class="cover-facts">
       <div><dt>${escapeHtml(copy.atomicGoals(model.pages.length))}</dt><dd>${escapeHtml(copy.chapters(model.chapters.length))}</dd></div>
       <div><dt>${escapeHtml(model.book.edition)}</dt><dd><code>${escapeHtml(model.digest)}</code></dd></div>
+      <div class="cover-license"><dt>${escapeHtml(copy.license)}</dt><dd>${escapeHtml(copy.licenseText)}</dd></div>
+      <div class="cover-license"><dt>${escapeHtml(copy.credit)}</dt><dd>${escapeHtml(copy.creditText(model.book.title, model.book.edition, coverBookAddress(model)))}</dd></div>
+      <div class="cover-license"><dt>${escapeHtml(copy.images)}</dt><dd>${escapeHtml(copy.imagesText)}</dd></div>
+      <div class="cover-license"><dt>${escapeHtml(copy.openData)}</dt><dd>${escapeHtml(copy.openDataText)}</dd></div>
     </dl>
     <a class="cover-contents-link" href="#contents">${escapeHtml(copy.openContents)}</a>
     <footer class="front-matter-footer"><span>${escapeHtml(copy.frontMatterPage(1, frontMatterPageCount))}</span></footer>
@@ -1177,6 +1219,7 @@ const STYLES = `
     .cover-facts dt, .cover-facts dd { margin: 0; color: #4b617d; font-size: 8.5pt; }
     .cover-facts dt { font-weight: 700; }
     .cover-facts dd { min-width: 0; overflow-wrap: anywhere; }
+    .cover-facts .cover-license dd { line-height: 1.35; overflow-wrap: break-word; }
     .cover-contents-link { justify-self: start; padding: 2.5mm 4mm; border-radius: 2mm; background: #0878b9; color: #fff; font-size: 10pt; font-weight: 700; text-decoration: none; }
     .contents-page { grid-template-rows: auto minmax(0, 1fr) auto; gap: 4mm; }
     .contents-header { min-width: 0; }

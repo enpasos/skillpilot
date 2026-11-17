@@ -617,6 +617,19 @@ assert.equal(
 )
 assert.match(html, /id="book-cover"/u)
 assert.match(html, /id="contents"/u)
+// A PDF travels without the site, so the cover states license, credit, image origin and open data itself.
+const coverHtml = html.slice(html.indexOf('id="book-cover"'), html.indexOf('id="contents"'))
+assert.equal(coverHtml.match(/<div class="cover-license">/gu)?.length, 4, 'the cover carries four license facts')
+assert.match(coverHtml, /<dt>Lizenz<\/dt><dd>Offene Bildungsressource \(OER\) unter CC BY 4\.0 \(creativecommons\.org\/licenses\/by\/4\.0\)/u)
+assert.match(coverHtml, /amtliche Originalquellen und Zitate behalten ihre eigenen Bedingungen/u,
+  'the license names what it does not cover')
+const coverCredit = /<dt>Quellenangabe<\/dt><dd>([^<]*)<\/dd>/u.exec(coverHtml)?.[1] ?? ''
+assert.ok(coverCredit.startsWith('SkillPilot — ') && coverCredit.includes(`, ${model.book.edition}, `)
+  && coverCredit.endsWith(', CC BY 4.0'), `the credit line names title, edition, address and license: ${coverCredit}`)
+assert.match(coverHtml, /<dt>Bilder<\/dt><dd>Die Visualisierungen sind KI-generiert und von SkillPilot kuratiert\. Das ist eine Herkunftsangabe;/u,
+  'AI origin is stated as provenance, not as a license')
+assert.match(coverHtml, /<dt>Offene Daten<\/dt><dd>[^<]*github\.com\/enpasos\/skillpilot<\/dd>/u)
+assert.equal(/<a [^>]*href="https?:/u.test(coverHtml), false, 'the cover adds no external link to the PDF')
 assert.match(html, /Kanonische Kapitelsicht/u)
 assert.match(html, /Die Gliederung dient der Navigation/u)
 assert.equal(

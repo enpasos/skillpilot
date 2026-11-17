@@ -15,7 +15,9 @@ image proportionally; it does not crop, recolor or redraw the logo.
 This is a third-party asset, **not** part of SkillPilot's Apache-2.0 software or
 CC-BY-4.0 own-content grant. Its attribution, source and CC BY 3.0 license link
 are available at `/legal#oer-logo`, directly linked by the logo and the adjacent
-"Logo & Lizenz" / "Logo & license" label in the landing page's curricula panel.
+"Logo & Lizenz" / "Logo & license" label in the landing page's curricula panel,
+and by the logo and the "OER-Logo: Quelle & Lizenz" / "OER logo: source &
+license" link in the license notice of the learning goal book page.
 Use identifies open educational
 resources; it does not imply UNESCO certification, affiliation or endorsement
 of SkillPilot, its AI hosts or linked third-party materials.
