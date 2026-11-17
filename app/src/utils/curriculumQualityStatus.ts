@@ -1,3 +1,4 @@
+/** Ordered from weakest to strongest evidence; the quality filter reads this order as a ladder. */
 export const curriculumQualityStatuses = [
   'experimental', 'machine_qa', 'human_trial_in_progress', 'human_trial_completed',
 ] as const
@@ -39,10 +40,17 @@ export const getCurriculumQualityStatus = (
     ? status as CurriculumQualityStatus : null
 }
 export const getGymnasiumSubjectQualityStatus = getCurriculumQualityStatus
+/**
+ * The filter names a minimum: a status matches when it is the chosen step or a later one.
+ * A missing status is no quality judgement and matches only 'all'.
+ */
 export const matchesCurriculumQualityFilter = (
   status: CurriculumQualityStatus | null,
   filter: CurriculumQualityFilter,
-): boolean => filter === 'all' || filter === status
+): boolean => filter === 'all' || (
+  status !== null
+  && curriculumQualityStatuses.indexOf(status) >= curriculumQualityStatuses.indexOf(filter)
+)
 export const filterCurriculaByQuality = <Candidate extends CurriculumQualityCandidate>(
   candidates: readonly Candidate[],
   filter: CurriculumQualityFilter,

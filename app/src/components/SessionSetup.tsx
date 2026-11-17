@@ -9,7 +9,6 @@ import { PersonalCurriculumEditor } from './PersonalCurriculumEditor'
 import { SkillpilotIdFilePasswordDialog } from './SkillpilotIdFilePasswordDialog'
 import { LearnerDataManagementDialog } from './LearnerDataManagementDialog'
 import { ThemeToggle } from './ThemeToggle'
-import type { LandscapeSummary } from './CurriculumDropdown'
 import { ArrowRight, Github, ShieldCheck, Send, Compass, ExternalLink, KeyRound, UserPlus, Bot, FileDown, FileUp, Database } from 'lucide-react'
 
 
@@ -91,8 +90,9 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
   })
   const [persistedLearnerLandscapeId, setPersistedLearnerLandscapeId] = useState('')
   const [curriculumSaving, setCurriculumSaving] = useState(false)
+  // The learning start offers at least machine-checked curricula; weaker ones need a deliberate choice.
   const [curriculumQualityFilter, setCurriculumQualityFilter] =
-    useState<CurriculumQualityFilter>('all')
+    useState<CurriculumQualityFilter>('machine_qa')
   const curriculumSelectionRequestRef = React.useRef(0)
   const learnerCheckRequestRef = React.useRef(0)
   const idAcquisitionRequestRef = React.useRef(0)
@@ -152,7 +152,6 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
   const [error, setError] = useState<string | null>(null)
   const [hasCheckedId, setHasCheckedId] = useState(false)
   const [idStepComplete, setIdStepComplete] = useState(false)
-  const [availableCurricula, setAvailableCurricula] = useState<LandscapeSummary[]>([])
   const [selectedCurriculumTitle, setSelectedCurriculumTitle] = useState('')
   const [setupChangedInVisit, setSetupChangedInVisit] = useState(false)
   const [compactCompletedSetupScope, setCompactCompletedSetupScope] = useState('')
@@ -361,7 +360,6 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     setSelectedLandscapeId('')
     setPersistedLearnerLandscapeId('')
     setCurriculumSaving(false)
-    setAvailableCurricula([])
     setSelectedCurriculumTitle('')
     setSetupChangedInVisit(false)
     setCompactCompletedSetupScope('')
@@ -515,10 +513,6 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
       setSkillpilotIdSource('generated')
       setValidatedLearnerId(sanitizedId)
 
-      if (data.availableCurricula) {
-        setAvailableCurricula(data.availableCurricula)
-      }
-
       // Every source fills the same field. The learner advances explicitly
       // through the shared button below, so step 2 never opens implicitly.
       setHasCheckedId(false)
@@ -543,7 +537,6 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
       setSelectedLandscapeId('')
       setPersistedLearnerLandscapeId('')
       setCurriculumSaving(false)
-      setAvailableCurricula([])
       setHasCheckedId(false)
       return false
     }
@@ -1323,7 +1316,6 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                       qualityFilter={curriculumQualityFilter}
                       onQualityFilterChange={setCurriculumQualityFilter}
                       disabled={role === 'learner' && curriculumSaving}
-                      landscapes={availableCurricula}
                       showCompatibilityViews={false}
                       showQualityFilter
                     />

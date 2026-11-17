@@ -242,7 +242,10 @@ export const CurriculumDropdown: React.FC<CurriculumDropdownProps> = ({
         ...visibleCompatibilityLandscapes,
         ...visibleLegacyLandscapes,
     ]
-    const soleLandscapeId = selectableLandscapes.length === 1
+    // A single option is preselected only when it is the only curriculum there is,
+    // not when the quality filter has hidden the others: that choice is the learner's.
+    const narrowedByQuality = qualityFilteredLandscapes.length < categoryFilteredLandscapes.length
+    const soleLandscapeId = selectableLandscapes.length === 1 && !narrowedByQuality
         ? selectableLandscapes[0]?.curriculumId ?? null
         : null
 

@@ -29,6 +29,11 @@ public final class RepositoryCurriculumQualitySnapshotProvider implements Curric
     private static final Logger log = LoggerFactory.getLogger(RepositoryCurriculumQualitySnapshotProvider.class);
     private static final String CANONICAL_GYMNASIUM_OVERVIEW_FRAMEWORK_ID = "canonical-gymnasium-overview";
     private static final String CANONICAL_GYMNASIUM_FRAMEWORK_PREFIX = "canonical-gymnasium";
+    /**
+     * The rules version written by {@code app/scripts/generateCurriculumQualityStatus.ts}. A status of
+     * any other version is not read as current: its M7 entries and trial findings are dropped.
+     */
+    static final String CURRENT_RULES_VERSION = "curriculum-quality-v6";
     private static final List<Path> DEFAULT_STATUS_PATHS = List.of(
             Path.of("docs", "qa-ci", "status", "curriculum-quality-status.json"),
             Path.of("..", "docs", "qa-ci", "status", "curriculum-quality-status.json"));
@@ -71,7 +76,7 @@ public final class RepositoryCurriculumQualitySnapshotProvider implements Curric
             JsonNode root = objectMapper.readTree(statusPath.toFile());
             boolean currentRules = root.path("schemaVersion").isIntegralNumber()
                     && root.path("schemaVersion").intValue() == 1
-                    && "curriculum-quality-v5".equals(text(root, "rulesVersion"));
+                    && CURRENT_RULES_VERSION.equals(text(root, "rulesVersion"));
             JsonNode curricula = root.path("curricula");
             if (!curricula.isArray()) {
                 return CurriculumQualitySnapshot.empty();
