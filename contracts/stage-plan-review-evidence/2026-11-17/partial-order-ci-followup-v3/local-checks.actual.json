@@ -1,0 +1,21 @@
+{
+  "time": "2026-11-17T09:56:58.685651+00:00",
+  "checks": [
+    {
+      "command": [
+        "node",
+        "scripts/check_ai_transparency_inventory.mjs"
+      ],
+      "exitCode": 0,
+      "log": "check-1.log"
+    },
+    {
+      "command": [
+        "node",
+        "scripts/check_ai_transparency_inventory.test.mjs"
+      ],
+      "exitCode": 0,
+      "log": "check-2.log"
+    }
+  ]
+}

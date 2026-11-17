@@ -22,7 +22,7 @@ er erhält die Dokumentationschecks. Die große CI schließt `docs/dev/**` und
 CI-Nachweis gilt weiterhin für den benannten Implementierungscommit.
 
 <!-- composition-partial-order-20261117:start -->
-## 17. November 2026, 09:51 MEZ (UTC+01:00) — Fachliche Teilordnungen in allen Länderansichten
+## 17. November 2026, 11:10 MEZ (UTC+01:00) — Fachliche Teilordnungen in allen Länderansichten
 
 **Aktueller Lieferstand:** [PR #160](https://github.com/enpasos/skillpilot/pull/160)
 ist offen. Der vollständige [PR-CI-Lauf 44025354365](https://github.com/enpasos/skillpilot/actions/runs/44025354365)
@@ -73,6 +73,20 @@ unabhängig freigegeben. Der Vite-Produktionsbau, Typecheck, Lint der geänderte
 TypeScript-Dateien, neun CI-Strukturtests und 42 nachfolgende lokale
 Prüfschritte bestehen; weitere unveränderte Frontend-Prüfungen laufen. Erfolgreiche vollständige
 PR-CI, Merge und frische Main-CI stehen weiterhin aus.
+
+**Dritter CI-Nachtrag:** Im [Lauf 44050515021](https://github.com/enpasos/skillpilot/actions/runs/44050515021)
+auf `a5f0dceeb2bb99aa5b13bbbf3e214b72349f8418` sind abschließend **13 von 14
+Jobs erfolgreich**, einschließlich des Backends. Der Frontendjob scheitert nach erfolgreichen
+UI-Prüfungen und Anwendungsbau ausschließlich am veralteten Zielzähler im
+Transparenzinventar: 6.657 statt 6.666. Die neun neuen Physikprüfungen erklären
+die Differenz. Der korrigierte Zähler ist unabhängig über alle 21 Kanonmodelle
+nachgerechnet; sämtliche anderen Inventurangaben bleiben bytegleich.
+Vollständiger lokaler Inventurcheck und bestehende Negativregressionen bestehen.
+Die [separaten Belege](https://github.com/enpasos/skillpilot/blob/main/contracts/stage-plan-review-evidence/2026-11-17/partial-order-ci-followup-v3/README.md)
+enthalten keine neue inhaltliche oder rechtliche Freigabe. Die zunächst
+protokollierte Beobachtung mit noch laufendem Backend bleibt als Zeitpunktbeleg
+erhalten. Die korrigierte Lieferung benötigt einen neuen vollständigen
+PR-CI-Lauf; Merge und Main-CI bleiben offen.
 
 - **Fortschritt:** weiterhin **K 0/13 und F 0/7 vollständig abgeschlossen**,
   **0 neue reale StagePlans aktiviert**. Geliefert werden 100 Mathematik- und
