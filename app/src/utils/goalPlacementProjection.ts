@@ -331,6 +331,9 @@ export function applyGoalPlacementProjection<T extends ProjectableLandscapeEntry
 
       const unit = unitsById.get(placement.unitId)
       if (!unit) return
+      // The program unit is the landscape itself and is shown as its root goal. A second node for it
+      // would sit below the root and, for a placed root, contain it again: a cycle in `contains`.
+      if (unit.kind === 'program') return
 
       const anchorGoalId = ensureAnchorForUnit(unit.id)
       if (!anchorGoalId || anchorGoalId === placement.goalId) return

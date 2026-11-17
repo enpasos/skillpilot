@@ -278,15 +278,19 @@ try {
   await fillsWindow(page, 'desktop')
   await page.screenshot({ path: join(artifacts, '02-native-map-full-window.png') })
   assert.equal(await page.getByTestId('native-cockpit-map').getAttribute('data-map-view'), 'units')
-  const notice = await page.getByTestId('learner-map-construction-notice').innerText()
-  assert.ok(notice.startsWith('Baustelle:') && notice.includes('Einheiten und Lernziele statt der Gliederung')
-    && notice.includes('Abschnitte des Lehrplans') && notice.includes('nur Mathematik und Physik'), `visible construction-site notice: ${notice}`)
-  assert.equal(await page.locator('[role="note"][data-testid="learner-map-construction-notice"]').isVisible(), true)
+  // The construction-site note is a badge behind the dialog title; its detail is the tooltip, not a row of its own.
+  const notice = mapDialog(page).locator('.learner-learning-map-header [role="note"][data-testid="learner-map-construction-notice"]')
+  assert.equal(await notice.isVisible(), true)
+  assert.ok((await notice.innerText()).startsWith('noch Baustelle'), `visible construction-site badge: ${await notice.innerText()}`)
+  const noticeDetail = await notice.getAttribute('title') ?? ''
+  assert.ok(noticeDetail.includes('Einheiten und Lernziele statt der Gliederung') && noticeDetail.includes('Abschnitte des Lehrplans')
+    && noticeDetail.includes('nur Mathematik und Physik') && noticeDetail.includes('anderen Fächer findest du im Lernzielbaum'),
+  `construction-site detail: ${noticeDetail}`)
+  assert.equal(await page.locator('.lum-app [data-testid="learner-map-construction-notice"]').count(), 0, 'the map itself spends no row on the note')
   const subjectFilter = page.getByTestId('learner-map-subject-filter')
   assert.deepEqual(await subjectFilter.getByRole('button').evaluateAll(buttons => buttons.map(button => [button.textContent, button.getAttribute('aria-pressed')])),
     [['Mathematik', 'true'], ['Physik', 'true']], 'the subject filter offers exactly the subjects present')
-  assert.equal(await page.getByTestId('learner-map-unit-step').inputValue(), '2', 'the deepest top-down step is the default')
-  assert.deepEqual(await page.getByTestId('learner-map-unit-step').locator('option').allTextContents(), ['1', '2'])
+  assert.equal(await page.locator('.lum-toolbar select').count(), 0, 'the map offers no choice of a top-down step')
   assert.equal(await page.getByRole('button', { name: /Zur (bisherigen|alten) Ansicht/u }).count(), 0, 'there is no switch to another map view')
   await page.getByTestId('native-cockpit-map').evaluate(element => element.setAttribute('data-native-map-witness', 'original'))
   assert.equal(await main.getAttribute('data-native-instance-witness'), 'original')
@@ -374,7 +378,7 @@ try {
   await node(page, section.stageUnit).dblclick({ delay: 100 })
   await scope(page, section.stageUnit)
 
-  stage = 'subject filter and top-down step'
+  stage = 'subject filter'
   await page.getByTestId('learner-map-subject-filter').getByRole('button', { name: 'Physik', exact: true }).click()
   await page.locator(`[data-entry-id="${id.physicsGoal}"]`).waitFor({ state: 'detached' })
   assert.equal(await page.getByTestId('learner-map-subject-filter').getByRole('button', { name: 'Mathematik', exact: true }).isDisabled(), true,
@@ -382,18 +386,9 @@ try {
   await scope(page, section.stageUnit)
   await page.getByTestId('learner-map-subject-filter').getByRole('button', { name: 'Physik', exact: true }).click()
   await page.locator(`[data-entry-id="${id.physicsGoal}"]`).waitFor()
-  await page.getByTestId('learner-map-unit-step').selectOption('1')
-  await page.locator('[data-testid="native-cockpit-map"][data-unit-step="1"]').waitFor()
-  await scope(page, section.stageUnit)
-  await page.locator(`[data-entry-id="${id.other}"]`).waitFor()
-  assert.deepEqual((await page.locator('.lum-node[data-entry-id]').evaluateAll(nodes => nodes.map(n => n.getAttribute('data-entry-id')))).sort(),
-    [id.foundation, id.application, id.memory, id.other, id.physicsGoal].sort(), 'step 1: the stage unit holds all its goals directly')
-  assert.equal(await page.getByTestId('learning-map-order-legend').count(), 0, 'without sibling units there is no order to explain')
-  await page.getByTestId('learner-map-unit-step').selectOption('2')
-  await page.locator('[data-testid="native-cockpit-map"][data-unit-step="2"]').waitFor()
   await scope(page, section.stageUnit)
   await node(page, section.vectors).waitFor()
-  assert.deepEqual(h.writes, [], 'filters and steps never write learner state')
+  assert.deepEqual(h.writes, [], 'the subject filter never writes learner state')
 
   stage = 'SRS answer survives opening and closing the full-window map'
   await node(page, section.vectors).dblclick({ delay: 100 })
@@ -576,10 +571,9 @@ try {
   await unavailable.getByRole('button', { name: 'Zum Baum wechseln', exact: true }).click()
   await unitPage.getByTestId('unit-map-returned').filter({ hasText: 'returned' }).waitFor()
 
-  stage = 'other subjects beside Mathematics are left to the tree and named in the notice'
+  stage = 'other subjects beside Mathematics are left to the tree'
   await unitPage.goto(`${origin}/scripts/fixtures/learnerUnitMapUi.html?mode=mixed`)
   await scope(unitPage, mapRoot)
-  assert.ok((await unitPage.getByTestId('learner-map-construction-notice').innerText()).includes('Deine anderen Fächer findest du im Lernzielbaum.'))
   assert.deepEqual(await unitPage.locator('.lum-node[data-entry-id]').evaluateAll(nodes => nodes.map(n => n.getAttribute('data-entry-id'))), ['numbers'],
     'Chemistry is not shown in the map')
   assert.equal(await unitPage.getByTestId('learner-map-subject-filter').count(), 0)

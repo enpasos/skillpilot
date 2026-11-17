@@ -260,17 +260,32 @@ for (const subject of ['Chemie', 'Geschichte', 'Deutsch']) {
     `${subject} remains visible but unavailable under the human-QA filter`,
   )
 }
-const experimentalSubjectSelection = renderEditor('de', {
+const machineMinimumSubjectSelection = renderEditor('de', {
   ...historyPlan,
   options: humanQaOptions,
   displayOptions: humanQaOptions,
-}, 'experimental')
+}, 'machine_qa')
+for (const subject of ['Mathematik', 'Physik', 'Chemie', 'Geschichte', 'Deutsch']) {
+  assert(
+    new RegExp(`<button(?![^>]*disabled="")[^>]*>\\s*${subject}\\s*</button>`).test(
+      machineMinimumSubjectSelection,
+    ),
+    `${subject} is enabled under the machine-QA minimum, which human-tested subjects also satisfy`,
+  )
+}
+// The filter is a minimum: machine-checked subjects alone cannot satisfy "human-tested".
+const machineQaOptions = humanQaOptions.filter((option) => option.qualityStatus === 'machine_qa')
+const emptyFilterSubjectSelection = renderEditor('de', {
+  ...historyPlan,
+  options: machineQaOptions,
+  displayOptions: machineQaOptions,
+}, 'human_trial_completed')
 assert(
-  experimentalSubjectSelection.includes(
+  emptyFilterSubjectSelection.includes(
     'Für diesen Qualitätsfilter sind derzeit nicht genügend Fächer auswählbar.',
   )
-    && experimentalSubjectSelection.includes('Wähle einen anderen Qualitätsfilter.')
-    && !experimentalSubjectSelection.includes('Wähle zwischen 1 und 0 Optionen.'),
+    && emptyFilterSubjectSelection.includes('Wähle einen anderen Qualitätsfilter.')
+    && !emptyFilterSubjectSelection.includes('Wähle zwischen 1 und 0 Optionen.'),
   'an empty subject quality filter has actionable guidance instead of an impossible range',
 )
 

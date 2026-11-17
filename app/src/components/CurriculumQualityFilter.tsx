@@ -8,7 +8,7 @@ export const CurriculumQualityFilter = ({ value, onChange, language = 'de', disa
   value: Filter; onChange: (value: Filter) => void; language?: 'de' | 'en'; disabled?: boolean; statusAvailable?: boolean
 }): React.ReactElement => {
   const copy = getCurriculumQualityCopy(language)
-  return <div role="group" aria-label={copy.label} className="flex flex-wrap gap-1.5">
+  return <div role="group" aria-label={copy.filterLabel} className="flex flex-wrap gap-1.5">
     {(['all', ...curriculumQualityStatuses] as const).map((filter) => <button
       key={filter} type="button" disabled={disabled || (filter !== 'all' && !statusAvailable)} aria-pressed={value === filter}
       onClick={() => onChange(filter)}

@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
+import { createPortal } from 'react-dom'
 import { ArrowDown, ArrowLeft, ArrowRight, ArrowUpRight, ChevronRight, Compass, Expand,
-  Minus, Plus, Search, X } from 'lucide-react'
+  Minus, Plus, Search, Waypoints, X } from 'lucide-react'
 import { Background, BackgroundVariant, MarkerType, MiniMap, ReactFlow, ReactFlowProvider,
   useReactFlow, type Edge, type Viewport } from '@xyflow/react'
 import '@xyflow/react/dist/style.css'
@@ -42,8 +43,11 @@ type MapProps = {
   compactListThreshold?: number
   /** Host controls shown in the location bar. */
   toolbar?: ReactNode
-  /** Host notice shown above the map. */
-  notice?: ReactNode
+  /**
+   * A host element, such as the title row of a dialog, that takes the location bar instead of a row
+   * above the map. `null` means the host element is not mounted yet; omitted, the bar stays in the map.
+   */
+  locationBarContainer?: HTMLElement | null
 }
 
 const EMPTY_LAYOUT: LearningScopeLayout = { positions: {}, ports: {}, edges: [], width: 0, height: 0 }
@@ -74,7 +78,7 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
   active = true, headingMode = 'standard', rootLabel,
   learnerProgress, activeGoalId, initialScopeId, command, showInspector = true, onEntrySelect,
   onSelectionChange, renderSelectionActions, onReturnToTree, onEscape, language = 'de',
-  compactListThreshold, toolbar, notice }: MapProps) {
+  compactListThreshold, toolbar, locationBarContainer }: MapProps) {
   const label = (de: string, en: string) => language === 'en' ? en : de
   const MapContainer = embedded ? 'section' : 'main'
   const reducedMotion = useReducedMotion()
@@ -94,6 +98,7 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
   const [searchOpen, setSearchOpen] = useState(false)
   const [contextTrail, setContextTrail] = useState<string[]>([])
   const [contextLimit, setContextLimit] = useState(12)
+  const [contextOpen, setContextOpen] = useState(false)
   const searchInput = useRef<HTMLInputElement>(null)
   const pendingNodeFocus = useRef<{ id: string; center: boolean } | null>(null)
   const pendingSelectionEcho = useRef<{ entryId: string; nonce: number; baselineKey: string | null } | null>(null)
@@ -114,9 +119,7 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
   const listMode = isCompactListScope(fixture, nav.scopeId, compactListThreshold)
   const activeLayout = listMode ? EMPTY_LAYOUT : layout?.fixture === fixture && layout.key === layoutKey ? layout.data : null
   const scopeTitle = nav.scopeId === fixture.rootId && rootLabel ? rootLabel : scope.title
-  const breadcrumbPath = headingMode === 'context' ? nav.path.slice(0, -1) : nav.path
   const extendedTools = headingMode === 'standard' || visibleIds.length >= 8
-  const showLocationBar = headingMode === 'standard' || nav.path.length > 1 || extendedTools || !!toolbar
   // Very large boards skip the graph layout (listMode above): it would be slow and unreadable.
   const showMinimap = !listMode && (extendedTools || (narrowScreen && !!activeLayout
     && (activeLayout.width * nav.zoom > window.innerWidth - 30 || activeLayout.height * nav.zoom > window.innerHeight / 2)))
@@ -337,7 +340,9 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
   useEffect(() => {
     if (!active) return
     const keys = (event: KeyboardEvent) => {
-      if (!(event.target instanceof Node) || !mapContainer.current?.contains(event.target)) return
+      // The location bar may live in the host's title row, outside the map's own element.
+      if (!(event.target instanceof Node)
+        || !(mapContainer.current?.contains(event.target) || locationBarContainer?.contains(event.target))) return
       if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'f' && searchInput.current) {
         event.preventDefault(); searchInput.current?.focus(); setSearchOpen(true)
       } else if (event.shiftKey && event.key === 'ArrowUp' && event.target instanceof Node
@@ -346,6 +351,7 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
       } else if (event.key === 'Escape') {
         // A consumed Escape must not also close an enclosing dialog.
         if (searchOpen) { event.preventDefault(); setSearchOpen(false); mapSurface.current?.focus({ preventScroll: true }) }
+        else if (contextOpen) { event.preventDefault(); setContextOpen(false) }
         else if (onEscape) { event.preventDefault(); onEscape() }
         else if (selectedId) setSelection(null)
         else goUp()
@@ -353,10 +359,10 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
     }
     window.addEventListener('keydown', keys)
     return () => window.removeEventListener('keydown', keys)
-  }, [active, goUp, onEscape, searchOpen, selectedId])
+  }, [active, contextOpen, goUp, locationBarContainer, onEscape, searchOpen, selectedId])
 
   const setGestureTarget = (target: EventTarget | null) => {
-    if (target instanceof Element && target.closest('.react-flow__minimap, .lum-map-controls')) {
+    if (target instanceof Element && target.closest('.react-flow__minimap, .lum-map-controls, .lum-requirement-context')) {
       gestureOnMap.current = false
       return
     }
@@ -389,30 +395,23 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
         && <button type="button" onClick={() => { setContextLimit(12); setContextTrail(current => [...current, requirement.requiredGoalId]) }}>{label('Vorbereitung ansehen:', 'Inspect prerequisites:')} {contextTitle(requirement.requiredGoalId)}</button>}
     </div>)
 
-  return <MapContainer ref={mapContainer} className={`lum-app${embedded ? ' lum-app--embedded' : ''}${headingMode === 'context' ? ' lum-app--contextual' : ''}`}>
-    {!embedded && <header className="lum-topbar">
-      <button type="button" className="lum-brand" onClick={() => goToDepth(0)} aria-label="Lernkarte Übersicht">
-        <Compass size={19} strokeWidth={1.7} /><strong>SkillPilot</strong><span>Lernkarte</span>
-      </button>
-      <div className="lum-example-picker">{examples && <select aria-label="Beispielkarte" value={exampleId}
-        onChange={event => onExampleChange?.(event.target.value)}>
-        {examples.map(example => <option key={example.id} value={example.id}>{example.label}</option>)}
-      </select>}<span className="lum-demo-badge">Prototyp · Beispieldaten</span></div>
-    </header>}
-    {notice}
-    {showLocationBar && <div className={`lum-location-bar${toolbar ? ' lum-location-bar--toolbar' : ''}`}>
-      {(headingMode === 'standard' || nav.path.length > 1) && <button type="button" className="lum-back" disabled={nav.path.length === 1 || nav.isTransitioning}
+  const locationBar = <div className={`lum-location-bar${toolbar ? ' lum-location-bar--toolbar' : ''}${locationBarContainer ? ' lum-location-bar--hosted' : ''}`}>
+      <button type="button" className="lum-back" disabled={nav.path.length === 1 || nav.isTransitioning}
         onClick={goUp} title={label('Eine Ebene auftauchen · Shift + Doppelklick', 'Go up one level · Shift + double-click')} aria-label={label('Eine Ebene auftauchen', 'Go up one level')}><ArrowLeft size={17} /></button>
-      }
-      {breadcrumbPath.length > 0 && <nav className="lum-breadcrumb" aria-label={label('Aktuelle Kartenebene', 'Current map level')}>
-        {breadcrumbPath.map((id, depth) => <span key={id}>
-          {depth > 0 && <ChevronRight size={12} />}
-          <button type="button" onClick={() => goToDepth(depth)} disabled={nav.isTransitioning}
-            title={fixture.entries[id].title} aria-current={depth === nav.path.length - 1 ? 'page' : undefined}>
-            {depth === 0 ? headingMode === 'context' ? rootLabel ?? fixture.entries[id].title : label('Übersicht', 'Overview') : fixture.entries[id].title}
-          </button>
-        </span>)}
-      </nav>}
+      <nav className="lum-breadcrumb" aria-label={label('Aktuelle Kartenebene', 'Current map level')}>
+        {nav.path.map((id, depth) => {
+          const crumbTitle = depth === 0 ? headingMode === 'context' ? rootLabel ?? fixture.entries[id].title : label('Übersicht', 'Overview') : fixture.entries[id].title
+          const current = depth === nav.path.length - 1
+          return <span key={id} className={current ? 'lum-crumb-current' : undefined}>
+            {depth > 0 && <ChevronRight size={12} />}
+            {current && headingMode === 'context'
+              // The path ends in the level shown; it is the heading of the map and needs no row of its own.
+              ? <h1 title={crumbTitle} aria-current="page">{crumbTitle}</h1>
+              : <button type="button" onClick={() => goToDepth(depth)} disabled={nav.isTransitioning}
+                title={fixture.entries[id].title} aria-current={current ? 'page' : undefined}>{crumbTitle}</button>}
+          </span>
+        })}
+      </nav>
       {extendedTools && <div className="lum-search"><Search size={15} />
         <input ref={searchInput} aria-label={label('In dieser Ebene suchen', 'Search this level')} placeholder={label('In dieser Ebene suchen', 'Search this level')}
           value={query} onFocus={() => setSearchOpen(true)} onChange={event => { setQuery(event.target.value); setSearchOpen(true) }}
@@ -425,12 +424,31 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
           {matches.length > 8 && <small>{matches.length} {label('Treffer · Suche eingrenzen', 'matches · narrow your search')}</small>}
         </div>}
       </div>}
-      {extendedTools && !listMode && <button type="button" className="lum-direction" onClick={() => setDirection(value => value === 'RIGHT' ? 'DOWN' : 'RIGHT')}
-        aria-label={label('Lernrichtung drehen', 'Rotate learning direction')} title={direction === 'RIGHT' ? label('Von links nach rechts · zum Drehen klicken', 'Left to right · click to rotate') : label('Von oben nach unten · zum Drehen klicken', 'Top to bottom · click to rotate')}>
-        {direction === 'RIGHT' ? <ArrowRight size={17} /> : <ArrowDown size={17} />}
-      </button>}
+      <div className="lum-bar-actions">
+        {extendedTools && !listMode && <button type="button" className="lum-direction" onClick={() => setDirection(value => value === 'RIGHT' ? 'DOWN' : 'RIGHT')}
+          aria-label={label('Lernrichtung drehen', 'Rotate learning direction')} title={direction === 'RIGHT' ? label('Von links nach rechts · zum Drehen klicken', 'Left to right · click to rotate') : label('Von oben nach unten · zum Drehen klicken', 'Top to bottom · click to rotate')}>
+          {direction === 'RIGHT' ? <ArrowRight size={17} /> : <ArrowDown size={17} />}
+        </button>}
+        {fixture.scopeRelations && <button type="button" className="lum-context-toggle" data-testid="learning-map-requirement-toggle"
+          aria-expanded={contextOpen} aria-controls="lum-requirement-context" onClick={() => setContextOpen(open => !open)}
+          aria-label={label('Verbindungen und Voraussetzungen', 'Connections and prerequisites')} title={label('Verbindungen und Voraussetzungen', 'Connections and prerequisites')}>
+          <Waypoints size={16} />
+        </button>}
+      </div>
       {toolbar && <div className="lum-toolbar">{toolbar}</div>}
-    </div>}
+    </div>
+
+  return <MapContainer ref={mapContainer} className={`lum-app${embedded ? ' lum-app--embedded' : ''}${headingMode === 'context' ? ' lum-app--contextual' : ''}`}>
+    {!embedded && <header className="lum-topbar">
+      <button type="button" className="lum-brand" onClick={() => goToDepth(0)} aria-label="Lernkarte Übersicht">
+        <Compass size={19} strokeWidth={1.7} /><strong>SkillPilot</strong><span>Lernkarte</span>
+      </button>
+      <div className="lum-example-picker">{examples && <select aria-label="Beispielkarte" value={exampleId}
+        onChange={event => onExampleChange?.(event.target.value)}>
+        {examples.map(example => <option key={example.id} value={example.id}>{example.label}</option>)}
+      </select>}<span className="lum-demo-badge">Prototyp · Beispieldaten</span></div>
+    </header>}
+    {locationBarContainer === undefined ? locationBar : locationBarContainer && createPortal(locationBar, locationBarContainer)}
     <div className="lum-workspace">
       <section className="lum-canvas" data-testid="learning-map-board" data-scope-id={nav.scopeId}
         aria-label={`${label('Lernkarte', 'Learning map')}: ${scopeTitle}`} aria-busy={nav.isTransitioning}
@@ -446,19 +464,15 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
           if (touchDistance.current !== null) nav.recordGesture(distance - touchDistance.current)
           touchDistance.current = distance
         }} onTouchEndCapture={() => { touchDistance.current = null }}>
-        <div className="lum-map-summary"><h1>{scopeTitle}</h1>
-          {headingMode === 'standard' && <span>{visibleIds.length} Bereiche · {activeLayout?.edges.length ?? '…'} Verbindungen</span>}
-          {unitOrderRelations && !listMode && <span className="lum-order-legend" data-testid="learning-map-order-legend">
-            <span><i className="lum-legend-line lum-legend-line--declared" />{label('erklärte Reihenfolge', 'declared order')}</span>
-            <span title={label('Lernziele am Ende des Pfeils brauchen Lernziele an seinem Anfang. Zwischen zwei Einheiten ist dafür noch keine Reihenfolge erklärt.',
-              'Goals at the end of the arrow need goals at its start. Between two units, no order has been declared for this yet.')}>
-              <i className="lum-legend-line lum-legend-line--derived" />{label('Bedarf der Lernziele', 'need of the goals')}</span>
-            {backwardCount > 0 && <span className="lum-legend-backward" title={label('Früheres braucht Späteres: Ein Ziel braucht ein Ziel aus einer Einheit, die nach seiner eigenen Einheit kommt.', 'Earlier needs later: a goal needs a goal from a unit that comes after its own unit.')}>
-              <i className="lum-legend-line lum-legend-line--backward" />{backwardCount} {label(backwardCount === 1 ? 'Rückgriff' : 'Rückgriffe', backwardCount === 1 ? 'backward dependency' : 'backward dependencies')}</span>}
-          </span>}
-        </div>
-        {fixture.scopeRelations && <details className="lum-requirement-context" data-testid="learning-map-requirement-context">
-          <summary>{label('Verbindungen und Voraussetzungen', 'Connections and prerequisites')}{selectedId ? ` · ${contextTitle(selectedId)}` : ''}</summary>
+        {headingMode === 'standard' && <div className="lum-map-summary"><h1>{scopeTitle}</h1>
+          <span>{visibleIds.length} Bereiche · {activeLayout?.edges.length ?? '…'} Verbindungen</span>
+        </div>}
+        {fixture.scopeRelations && contextOpen && <aside id="lum-requirement-context" className="lum-requirement-context" data-testid="learning-map-requirement-context"
+          aria-label={label('Verbindungen und Voraussetzungen', 'Connections and prerequisites')}>
+          <div className="lum-requirement-head">
+            <strong>{label('Verbindungen und Voraussetzungen', 'Connections and prerequisites')}{selectedId ? ` · ${contextTitle(selectedId)}` : ''}</strong>
+            <button type="button" aria-label={label('Schließen', 'Close')} onClick={() => setContextOpen(false)}><X size={15} /></button>
+          </div>
           <div className="lum-requirement-body">
             <p>{label('Pfeile führen von der Vorbereitung zur Anwendung. Gestrichelte Pfeile fassen einzelne Anforderungen zusammen; sie beschreiben Zusammenhänge zwischen Bereichen.', 'Arrows lead from preparation to application. Dashed arrows summarize individual requirements and provide context between sections.')}</p>
             {fixtureHasUnitOrder && <p>{label('Zwischen zwei Einheiten zeigt ein durchgezogener Pfeil die erklärte Reihenfolge: Die eine Einheit kommt nach der anderen. Ein rot gepunkteter Pfeil ist ein Rückgriff: Ziele einer Einheit brauchen Ziele aus einer Einheit, die erst danach kommt.',
@@ -487,7 +501,7 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
               || selectedOutside.length > contextLimit || selectedRelations.some(relation => relation.provenance.length > contextLimit))
               && <button type="button" onClick={() => setContextLimit(value => value + 12)}>{label('Weitere Einträge anzeigen', 'Show more entries')}</button>}
           </div>
-        </details>}
+        </aside>}
         <div ref={mapSurface} tabIndex={-1} className={`lum-flow lum-flow--${nav.phase}`} onDoubleClickCapture={event => {
           if (!event.shiftKey) return
           event.preventDefault()
@@ -532,7 +546,17 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
           <span className="lum-control-divider" />
           <button type="button" onClick={() => void flow.fitView({ padding: 0.16, maxZoom: 1.1, duration: reducedMotion ? 0 : 200 })} aria-label={label('Diese Ebene einpassen', 'Fit this level')} title={label('Gesamte Ebene einpassen', 'Fit entire level')}><Expand size={16} /></button>
         </div>}
-        {!listMode && <span className="lum-map-hint">{direction === 'RIGHT' ? '→' : '↓'} {label('Vorbereitung zur Anwendung', 'Preparation to application')}<span> · {label('Doppelklick hinein · Shift + Doppelklick heraus', 'Double-click in · Shift + double-click out')}</span></span>}
+        {!listMode && <div className="lum-map-footer">
+          {unitOrderRelations && <span className="lum-order-legend" data-testid="learning-map-order-legend">
+            <span><i className="lum-legend-line lum-legend-line--declared" />{label('erklärte Reihenfolge', 'declared order')}</span>
+            <span title={label('Lernziele am Ende des Pfeils brauchen Lernziele an seinem Anfang. Zwischen zwei Einheiten ist dafür noch keine Reihenfolge erklärt.',
+              'Goals at the end of the arrow need goals at its start. Between two units, no order has been declared for this yet.')}>
+              <i className="lum-legend-line lum-legend-line--derived" />{label('Bedarf der Lernziele', 'need of the goals')}</span>
+            {backwardCount > 0 && <span className="lum-legend-backward" title={label('Früheres braucht Späteres: Ein Ziel braucht ein Ziel aus einer Einheit, die nach seiner eigenen Einheit kommt.', 'Earlier needs later: a goal needs a goal from a unit that comes after its own unit.')}>
+              <i className="lum-legend-line lum-legend-line--backward" />{backwardCount} {label(backwardCount === 1 ? 'Rückgriff' : 'Rückgriffe', backwardCount === 1 ? 'backward dependency' : 'backward dependencies')}</span>}
+          </span>}
+          <span className="lum-map-hint">{direction === 'RIGHT' ? '→' : '↓'} {label('Vorbereitung zur Anwendung', 'Preparation to application')}<span> · {label('Doppelklick hinein · Shift + Doppelklick heraus', 'Double-click in · Shift + double-click out')}</span></span>
+        </div>}
       </section>
       {showInspector && inspected && <aside className="lum-inspector" aria-label="Ausgewählter Bereich">
         <div className="lum-inspector-top"><span>{inspected.eyebrow ?? getEntryKindLabel(inspected, language)}</span>

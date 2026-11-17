@@ -12,7 +12,7 @@ import { getPersonalCurriculumSetupCopy } from '../utils/curriculumSetupCopy'
 import { LearnerPlanTodayOverview } from '../components/LearnerPlanTodayOverview'
 import { LearnerActiveGoalBanner } from '../components/LearnerActiveGoalBanner'
 import { LevelCompletionCard } from '../components/LevelCompletionCard'
-import { Settings, Database, Menu, X, Target, Send, Check, MoveRight, BookOpen, ClipboardCheck, PanelLeftClose, PanelLeftOpen, Map as MapIcon } from 'lucide-react'
+import { Settings, Database, Menu, X, Target, Send, Check, MoveRight, BookOpen, ClipboardCheck, PanelLeftClose, PanelLeftOpen, Map as MapIcon, Construction } from 'lucide-react'
 import { InfoModal } from '../components/InfoModal'
 import { LogoutButton } from '../components/LogoutButton'
 import { LearnerDataManagementDialog } from '../components/LearnerDataManagementDialog'
@@ -160,6 +160,8 @@ export interface LearnerGoalNavigationMapProps {
   onEscape?: () => void
   language?: 'de' | 'en'
   useRawGoalTitles?: boolean
+  /** Element in the host's title row that takes the map's path row, so both share one row. `null` while it is not mounted yet. */
+  locationBarContainer?: HTMLElement | null
 }
 
 /** Where focus goes after the full-window learning map closes. */
@@ -445,6 +447,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const learningMapDialogRef = useRef<HTMLDialogElement>(null)
   const learningMapOpenButtonRef = useRef<HTMLButtonElement>(null)
   const learningMapPanelRef = useRef<HTMLDivElement>(null)
+  const [learningMapBarSlot, setLearningMapBarSlot] = useState<HTMLDivElement | null>(null)
   const learningMapSessionRef = useRef<{
     initialSelectionId: string
     mapSelectionId: string | null
@@ -595,6 +598,9 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     [currentGoal, levelCompletion],
   )
   const localizedLanguage = language === 'en' ? 'en' : 'de'
+  const learningMapConstructionDetail = localizedLanguage === 'en'
+    ? 'This view is still being built. It shows units and learning goals instead of the outline. For now, the sections of the curriculum count as units. The learning map currently covers Mathematics and Physics only; your other subjects are in the goal tree.'
+    : 'Diese Ansicht ist im Aufbau. Sie zeigt Einheiten und Lernziele statt der Gliederung. Als Einheiten gelten vorerst die Abschnitte des Lehrplans. Die Lernkarte umfasst derzeit nur Mathematik und Physik; deine anderen Fächer findest du im Lernzielbaum.'
   const localizedLearningPlans = scopedLearningPlans?.status.language === localizedLanguage
     ? scopedLearningPlans
     : null
@@ -4138,10 +4144,25 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         onClose={finishLearningMapSession}
       >
         <header className="learner-learning-map-header">
-          <h2 id="learner-learning-map-title" className="learner-learning-map-title">
-            <MapIcon size={18} aria-hidden="true" />
-            {localizedLanguage === 'en' ? 'Learning map' : 'Lernkarte'}
-          </h2>
+          <div className="learner-learning-map-heading">
+            <h2 id="learner-learning-map-title" className="learner-learning-map-title">
+              <MapIcon size={18} aria-hidden="true" />
+              {localizedLanguage === 'en' ? 'Learning map' : 'Lernkarte'}
+            </h2>
+            {/* The detail stays available as tooltip and to assistive technology; it no longer costs a row. */}
+            <span
+              role="note"
+              data-testid="learner-map-construction-notice"
+              className="learner-learning-map-construction"
+              title={learningMapConstructionDetail}
+            >
+              <Construction size={14} aria-hidden="true" />
+              {localizedLanguage === 'en' ? 'still under construction' : 'noch Baustelle'}
+              <span className="sr-only">: {learningMapConstructionDetail}</span>
+            </span>
+          </div>
+          {/* The map renders its path row here: title, path and controls share one row. */}
+          <div ref={setLearningMapBarSlot} className="learner-learning-map-bar" data-testid="learner-learning-map-bar" />
           <button
             type="button"
             data-testid="learner-learning-map-close"
@@ -4194,6 +4215,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             onReturnToTree: () => closeLearningMap('tree'),
             onEscape: closeLearningMap,
             active: isLearningMapOpen && !isSetupOpen && !isDataManagementOpen && !isModalOpen,
+            locationBarContainer: learningMapBarSlot,
             }
             return renderGoalNavigationMap ? renderGoalNavigationMap(mapProps)
               : <NativeGoalNavigationMap key={`${learnerStateScopeKey}\u0000${learnerTreeScopeKey}`} {...mapProps} />

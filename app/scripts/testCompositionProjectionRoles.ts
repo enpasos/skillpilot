@@ -699,6 +699,50 @@ const [placementProjectedCanonicalMath] = applyGoalPlacementProjection(
 )
 assert.ok(placementProjectedCanonicalMath)
 
+// The program unit is the landscape itself. A root goal placed in it (as in canonical Physics)
+// must not gain a second node that contains the root again: the Explorer path once read
+// "Physik / Gymnasium Physik (DE) / Physik".
+const [placedRootEntry] = applyGoalPlacementProjection([{
+  meta: {
+    ...canonicalMathEntry.meta,
+    landscapeId: 'placed-root',
+    programUnits: [
+      { id: 'program', kind: 'program', label: 'Program' },
+      { id: 'stage', kind: 'stage', label: 'Stage', parentUnitId: 'program', order: 10 },
+    ],
+    goalPlacements: [
+      { goalId: 'placed-root-goal', unitId: 'program', relation: 'primary' },
+      { goalId: 'placed-child', unitId: 'stage', relation: 'primary' },
+    ],
+  },
+  goals: [
+    { ...createGoal('placed-root-goal', 'Subject', ['placed-child']), tags: ['root'] },
+    createGoal('placed-child', 'Topic', ['placed-leaf']),
+    createGoal('placed-leaf', 'Leaf'),
+  ],
+}])
+assert.ok(placedRootEntry)
+const placedRootGoalById = new Map(placedRootEntry.goals.map((goal) => [goal.id, goal] as const))
+assert.equal(
+  placedRootEntry.goals.some((goal) => goal.id.endsWith(':program-unit:program')),
+  false,
+  'the program unit gets no node of its own beside the root goal',
+)
+assert.deepEqual(
+  placedRootGoalById.get('placed-root-goal')?.contains,
+  ['synthetic:placed-root:program-unit:stage'],
+  'units below the program hang directly under the root goal',
+)
+assert.deepEqual(placedRootGoalById.get('synthetic:placed-root:program-unit:stage')?.contains, ['placed-child'])
+const placedRootOpenPath = new Set<string>()
+const assertAcyclicContains = (goalId: string): void => {
+  assert.equal(placedRootOpenPath.has(goalId), false, `contains must stay acyclic at ${goalId}`)
+  placedRootOpenPath.add(goalId)
+  placedRootGoalById.get(goalId)?.contains.forEach(assertAcyclicContains)
+  placedRootOpenPath.delete(goalId)
+}
+placedRootEntry.goals.forEach((goal) => assertAcyclicContains(goal.id))
+
 const [compositionProjectedHesseSekundarstufeTwoLk] =
   applyCompositionViewProjection(
     [placementProjectedCanonicalMath],

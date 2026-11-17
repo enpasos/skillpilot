@@ -82,6 +82,8 @@ export const getCurriculumQualityCopy = (language: 'de' | 'en') => {
   const unknownLabel = maturityCopy[language].unknown
   return {
     label: language === 'de' ? 'QS-Status' : 'QA status', statusLabels,
+    // The filter is a minimum, not a category: it keeps the chosen step and every later one.
+    filterLabel: language === 'de' ? 'QS-Status mindestens' : 'QA status at least',
     filterOptions: { ...statusLabels, all: language === 'de' ? 'Alle' : 'All' } as Record<CurriculumQualityFilter, string>,
     unknownLabel,
     statusTitle: (status: CurriculumQualityStatus | null) => status == null ? unknownLabel

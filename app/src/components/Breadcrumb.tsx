@@ -26,6 +26,7 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({ crumbs }) => {
         return (
           <React.Fragment key={crumb.id}>
             <div
+              data-crumb-id={crumb.id}
               className={`flex items-center rounded-full border border-border-color bg-input-bg transition-colors focus-within:border-sky-400 hover:border-text-secondary ${hasSiblings ? 'pr-0' : 'pr-2'
                 }`}
             >

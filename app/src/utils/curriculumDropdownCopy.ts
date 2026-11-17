@@ -26,10 +26,10 @@ export const getCurriculumDropdownCopy = (
         },
         compatibilityGroupLabel: 'Kompatibilitätsansichten',
         legacyGroupLabel: 'Legacy-Ansichten',
-        qualityFilterLabel: getCurriculumQualityCopy(language).label,
+        qualityFilterLabel: getCurriculumQualityCopy(language).filterLabel,
         qualityFilterOptions: getCurriculumQualityCopy(language).filterOptions,
         qualityStatusUnavailable: 'QS-Status derzeit nicht verfügbar. Alle Curricula dieser Kategorie werden angezeigt.',
-        noQualityMatches: 'Keine Curricula mit diesem QS-Status in dieser Kategorie.',
+        noQualityMatches: 'Keine Curricula mit mindestens diesem QS-Status in dieser Kategorie.',
       }
     : {
         categoryLabels: {
@@ -39,9 +39,9 @@ export const getCurriculumDropdownCopy = (
         },
         compatibilityGroupLabel: 'Compatibility views',
         legacyGroupLabel: 'Legacy views',
-        qualityFilterLabel: getCurriculumQualityCopy(language).label,
+        qualityFilterLabel: getCurriculumQualityCopy(language).filterLabel,
         qualityFilterOptions: getCurriculumQualityCopy(language).filterOptions,
         qualityStatusUnavailable: 'QA status is currently unavailable. All curricula in this category are shown.',
-        noQualityMatches: 'No curricula with this QA status in this category.',
+        noQualityMatches: 'No curricula with at least this QA status in this category.',
       }
 )

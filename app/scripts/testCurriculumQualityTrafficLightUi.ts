@@ -28,7 +28,9 @@ try {
       const button = fixture.getByRole('button', { name: copy.filterOptions[status], exact: true })
       await button.click()
       assert.equal(await button.getAttribute('aria-pressed'), 'true')
-      assert.deepEqual((await options()).sort(), [status, 'unknown'].sort(), 'only server status matches; current unknown selection remains')
+      const atLeast = curriculumQualityStatuses.slice(curriculumQualityStatuses.indexOf(status))
+      assert.deepEqual((await options()).sort(), [...atLeast, 'unknown'].sort(),
+        'the chosen step and every later server status match; the current unknown selection remains')
       assert.equal(await fixture.locator('select').inputValue(), 'unknown')
     }
     await fixture.getByRole('button', { name: copy.filterOptions.all, exact: true }).click()
@@ -69,8 +71,8 @@ try {
       ? 'QS-Status derzeit nicht verfügbar. Alle Curricula dieser Kategorie werden angezeigt.'
       : 'QA status is currently unavailable. All curricula in this category are shown.'
     const noMatchesText = language === 'de'
-      ? 'Keine Curricula mit diesem QS-Status in dieser Kategorie.'
-      : 'No curricula with this QA status in this category.'
+      ? 'Keine Curricula mit mindestens diesem QS-Status in dieser Kategorie.'
+      : 'No curricula with at least this QA status in this category.'
     const options = () => dropdown.locator('select option').evaluateAll((nodes) => (
       nodes.map((node) => (node as HTMLOptionElement).value).filter(Boolean).sort()
     ))

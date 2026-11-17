@@ -89,11 +89,45 @@ class RepositoryCurriculumQualitySnapshotProviderTest {
     }
 
     @Test
+    void supersededRulesVersionIsNotReadAsCurrent() throws Exception {
+        Path status = tempDir.resolve("superseded.json");
+        Files.writeString(status, """
+                {"schemaVersion":1,"rulesVersion":"curriculum-quality-v5","curricula":[
+                  {"landscapeId":"math","subject":"Math","maturity":"M7","humanTrialBlockingFindings":0},
+                  {"landscapeId":"core","subject":"Physics","maturity":"M6","humanTrialBlockingFindings":0}
+                ]}
+                """);
+        var result = new RepositoryCurriculumQualitySnapshotProvider(new ObjectMapper(), List.of(status)).load();
+        assertThat(result.byLandscapeId()).containsOnlyKeys("core");
+        assertThat(result.byLandscapeId().get("core").humanTrialFindingsAvailable()).isFalse();
+    }
+
+    @Test
+    void checkedInStatusIsReadUnderTheCurrentRules() throws Exception {
+        // Generator and reader share one rules version. A bump on the generator side alone
+        // silently removes every M7 subject from the public quality status.
+        Path status = Path.of("..", "docs", "qa-ci", "status", "curriculum-quality-status.json");
+        org.junit.jupiter.api.Assumptions.assumeTrue(Files.isRegularFile(status), "authoring repository status is present");
+        var root = new ObjectMapper().readTree(status.toFile());
+        assertThat(root.path("rulesVersion").asText())
+                .isEqualTo(RepositoryCurriculumQualitySnapshotProvider.CURRENT_RULES_VERSION);
+        List<String> rated = new java.util.ArrayList<>();
+        for (var curriculum : root.path("curricula")) {
+            if (curriculum.path("maturity").asText().matches("M[0-7]") && curriculum.hasNonNull("subject")) {
+                rated.add(curriculum.path("landscapeId").asText());
+            }
+        }
+        var result = new RepositoryCurriculumQualitySnapshotProvider(new ObjectMapper(), List.of(status)).load();
+        assertThat(rated).isNotEmpty();
+        assertThat(result.byLandscapeId().keySet()).containsExactlyInAnyOrderElementsOf(rated);
+    }
+
+    @Test
     void invalidFindingsNeverBecomeAnAvailableZeroCount() throws Exception {
         Path status = tempDir.resolve("counts.json");
         for (String value : List.of("-1", "1.5", "2147483648", "4294967296", "\"0\"", "null")) {
             Files.writeString(status, """
-                    {"schemaVersion":1,"rulesVersion":"curriculum-quality-v5","curricula":[
+                    {"schemaVersion":1,"rulesVersion":"curriculum-quality-v6","curricula":[
                       {"landscapeId":"math","subject":"Math","maturity":"M6","humanTrialBlockingFindings":%s}
                     ]}
                     """.formatted(value));
@@ -106,7 +140,7 @@ class RepositoryCurriculumQualitySnapshotProviderTest {
     void currentHumanNokAndCoreFailuresRemainSeparateFromDeepReviewBacklog() throws Exception {
         Path status = tempDir.resolve("current.json");
         Files.writeString(status, """
-                {"schemaVersion":1,"rulesVersion":"curriculum-quality-v5","curricula":[
+                {"schemaVersion":1,"rulesVersion":"curriculum-quality-v6","curricula":[
                   {"landscapeId":"math","subject":"Math","maturity":"M6","humanTrialBlockingFindings":2,
                    "rules":[{"id":"CQR-303","status":"fail"},{"id":"CQR-001","status":"fail"}]}
                 ]}
