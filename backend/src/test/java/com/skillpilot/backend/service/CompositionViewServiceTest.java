@@ -656,11 +656,18 @@ class CompositionViewServiceTest {
         @SuppressWarnings("unchecked")
         List<Map<String, Object>> roots = (List<Map<String, Object>>) match.get("rootNodes");
         assertThat(roots).filteredOn(root -> "structure".equals(root.get("kind"))).singleElement().satisfies(root -> {
-            assertThat(root)
-                    .containsEntry("id", "sek2-gk-lk")
-                    .containsEntry("label", "Sekundarstufe II (GK + LK)");
+            assertThat(root).containsEntry("id", "math-root").containsEntry("label", "Mathematik");
+            @SuppressWarnings("unchecked")
+            List<Map<String, Object>> children = (List<Map<String, Object>>) root.get("children");
+            assertThat(children).filteredOn(child -> "structure".equals(child.get("kind")))
+                    .extracting(child -> child.get("id")).containsExactly("sek1", "sek2-gk-lk");
+            Map<String, Object> upperStage = children.stream()
+                    .filter(child -> "sek2-gk-lk".equals(child.get("id"))).findFirst().orElseThrow();
+            // Course profile belongs to the committed scope; the shared stage
+            // keeps its source-neutral label inside the subject wrapper.
+            assertThat(upperStage).containsEntry("label", "Sekundarstufe II");
             List<String> structureIds = new ArrayList<>();
-            collectStructureIds(List.of(root), structureIds);
+            collectStructureIds(List.of(upperStage), structureIds);
             for (String quarter : List.of("q1", "q2", "q3", "q4")) {
                 assertThat(structureIds).filteredOn(quarter::equals).singleElement();
             }
@@ -828,7 +835,7 @@ class CompositionViewServiceTest {
     }
 
     @Test
-    void learnerScopeAcceptsReviewedGenericSekOneViewForCommittedJurisdictionAndDuration() {
+    void learnerScopePrefersReviewedBrandenburgSekOneViewForCommittedJurisdictionAndDuration() {
         CompositionViewService service = createService();
 
         assertThat(service.findLearnerScopeView(
@@ -838,7 +845,12 @@ class CompositionViewServiceTest {
                                 "jurisdiction", "DE-BB",
                                 "stage", "SekI",
                                 "durationModel", "G8")))
-                .containsEntry("viewId", "de-de-gym-seki-math");
+                .containsEntry("viewId", "de-bb-gym-seki-math")
+                .satisfies(view -> {
+                    Map<?, ?> scope = (Map<?, ?>) view.get("scope");
+                    assertThat(scope.get("jurisdiction")).isEqualTo("DE-BB");
+                    assertThat(scope.get("stage")).isEqualTo("SekI");
+                });
     }
 
     @Test
@@ -1741,15 +1753,23 @@ class CompositionViewServiceTest {
                                 ? "merged:de-he-gym-sekii-physics-lk+de-he-gym-sekii-physics-gk"
                                 : "de-he-gym-sekii-physics-" + profile.toLowerCase(java.util.Locale.ROOT));
                 List<Map<String, Object>> roots = (List<Map<String, Object>>) match.get("rootNodes");
-                List<Map<String, Object>> stages = roots.stream()
+                List<Map<String, Object>> subjectRoots = roots.stream()
                         .filter(node -> "structure".equals(node.get("kind")) && "physics-root".equals(node.get("id"))).toList();
-                List<Map<String, Object>> outsideStage = flattenCompositionNodes(roots.stream()
-                        .filter(node -> !"physics-root".equals(node.get("id"))).toList());
+                assertThat(subjectRoots).as(context + " sole subject wrapper").singleElement()
+                        .satisfies(root -> assertThat(root).containsEntry("label", "Physik").containsEntry("labelEn", "Physics"));
+                List<Map<String, Object>> subjectChildren = (List<Map<String, Object>>) subjectRoots.getFirst().get("children");
+                String stageId = "physics-sekii-" + ("GK+LK".equals(profile) ? "gk-lk" : profile.toLowerCase(java.util.Locale.ROOT));
+                List<Map<String, Object>> stages = subjectChildren.stream()
+                        .filter(node -> stageId.equals(node.get("id"))).toList();
+                List<Map<String, Object>> outsideStage = new ArrayList<>(flattenCompositionNodes(roots.stream()
+                        .filter(node -> !"physics-root".equals(node.get("id"))).toList()));
+                outsideStage.addAll(flattenCompositionNodes(subjectChildren.stream()
+                        .filter(node -> !stageId.equals(node.get("id"))).toList()));
                 assertThat(outsideStage).as(context + " references outside the stage remain support only")
                         .filteredOn(node -> !"structure".equals(node.get("kind")))
                         .allSatisfy(node -> assertThat(node).containsEntry("projectionRole", "prerequisiteOnly"));
                 assertThat(stages).as(context + " sole stage wrapper").singleElement().satisfies(stage -> {
-                    assertThat(stage).containsEntry("id", "physics-root")
+                    assertThat(stage).containsEntry("id", stageId)
                             .containsEntry("labelEn", "Upper Secondary")
                             .containsEntry("label", "Sekundarstufe II ("
                                     + ("GK+LK".equals(profile) ? "GK + LK" : profile) + ")");

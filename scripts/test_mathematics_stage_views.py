@@ -386,7 +386,10 @@ class MathematicsStageViewsTest(unittest.TestCase):
         for path, digest in policy['currentPhysicsSourcePins'].items():
             self.assertEqual(hashlib.sha256((ROOT / path).read_bytes()).hexdigest(), digest, path)
         rows = [row for values in policy['views'].values() for row in values]
-        self.assertEqual(len({row['goalId'] for row in rows}), 48)
+        # The reviewed MV source-scope correction retired the former demand
+        # for scalar multiplication (571793bd...) from this conditional policy.
+        # The canonical skill and its prerequisites remain in the curriculum.
+        self.assertEqual(len({row['goalId'] for row in rows}), 47)
         for row in rows:
             self.assertIn(row['goalId'], n.math_atoms)
             self.assertEqual(row['requiresPath'][0], row['consumerGoalId'])

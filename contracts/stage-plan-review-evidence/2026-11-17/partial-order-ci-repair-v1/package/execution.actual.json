@@ -1,0 +1,98 @@
+[
+  {
+    "name": "build-a",
+    "command": [
+      "python3",
+      "-B",
+      "scripts/compile_curriculum_release_model.py",
+      "--profile",
+      "contracts/curriculum-package/v1.3/profiles/de-gymnasium-mathematik-release-model-v1.3.profile.json",
+      "--output",
+      "/home/enpasos/projects/skillpilot/tmp/pipeline/laender-stufen/gesamt/ci/repair-v1/package/model-a"
+    ],
+    "startedAt": "2026-11-17T07:29:55.320623+01:00",
+    "finishedAt": "2026-11-17T07:34:49.156725+01:00",
+    "exitCode": 0
+  },
+  {
+    "name": "independent-model-validation",
+    "command": [
+      "python3",
+      "-B",
+      "scripts/validate_curriculum_release_model.py",
+      "--profile",
+      "contracts/curriculum-package/v1.3/profiles/de-gymnasium-mathematik-release-model-v1.3.profile.json",
+      "--release-root",
+      "/home/enpasos/projects/skillpilot/tmp/pipeline/laender-stufen/gesamt/ci/repair-v1/package/model-a"
+    ],
+    "startedAt": "2026-11-17T07:34:49.157106+01:00",
+    "finishedAt": "2026-11-17T07:46:00.694539+01:00",
+    "exitCode": 0
+  },
+  {
+    "name": "build-b",
+    "command": [
+      "python3",
+      "-B",
+      "scripts/compile_curriculum_release_model.py",
+      "--profile",
+      "contracts/curriculum-package/v1.3/profiles/de-gymnasium-mathematik-release-model-v1.3.profile.json",
+      "--output",
+      "/home/enpasos/projects/skillpilot/tmp/pipeline/laender-stufen/gesamt/ci/repair-v1/package/model-b"
+    ],
+    "startedAt": "2026-11-17T07:46:00.694960+01:00",
+    "finishedAt": "2026-11-17T07:50:52.454090+01:00",
+    "exitCode": 0
+  },
+  {
+    "name": "ledger-generate",
+    "command": [
+      "python3",
+      "-B",
+      "scripts/generate_curriculum_package_redistribution_review.py",
+      "--runtime-v13-candidate",
+      "--ledger",
+      "curricula/DE/Gymnasium/quality/package-redistribution/de-gymnasium-mathematik-v1.3-partial-order-20261116.review.json",
+      "--generate",
+      "--release-root",
+      "/home/enpasos/projects/skillpilot/tmp/pipeline/laender-stufen/gesamt/ci/repair-v1/package/model-a"
+    ],
+    "startedAt": "2026-11-17T07:50:54.031549+01:00",
+    "finishedAt": "2026-11-17T07:51:04.599179+01:00",
+    "exitCode": 0
+  },
+  {
+    "name": "ledger-check",
+    "command": [
+      "python3",
+      "-B",
+      "scripts/generate_curriculum_package_redistribution_review.py",
+      "--runtime-v13-candidate",
+      "--ledger",
+      "curricula/DE/Gymnasium/quality/package-redistribution/de-gymnasium-mathematik-v1.3-partial-order-20261116.review.json",
+      "--check",
+      "--release-root",
+      "/home/enpasos/projects/skillpilot/tmp/pipeline/laender-stufen/gesamt/ci/repair-v1/package/model-a"
+    ],
+    "startedAt": "2026-11-17T07:51:04.599508+01:00",
+    "finishedAt": "2026-11-17T07:51:10.435235+01:00",
+    "exitCode": 0
+  },
+  {
+    "name": "ledger-negative-tests",
+    "command": [
+      "python3",
+      "-B",
+      "scripts/generate_curriculum_package_redistribution_review.py",
+      "--runtime-v13-candidate",
+      "--ledger",
+      "curricula/DE/Gymnasium/quality/package-redistribution/de-gymnasium-mathematik-v1.3-partial-order-20261116.review.json",
+      "--self-test",
+      "--release-root",
+      "/home/enpasos/projects/skillpilot/tmp/pipeline/laender-stufen/gesamt/ci/repair-v1/package/model-a"
+    ],
+    "startedAt": "2026-11-17T07:51:10.435675+01:00",
+    "finishedAt": "2026-11-17T07:52:18.735935+01:00",
+    "exitCode": 0
+  }
+]

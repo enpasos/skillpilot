@@ -1,0 +1,48 @@
+
+> skillpilot@0.0.0 check:math-duration-composition-views
+> tsx scripts/testMathDurationStagePlacementPolicy.ts && tsx scripts/generateMathDurationCompositionViews.ts --check && python3 -B ../scripts/generate_mathematics_seki_excerpts.py --check && python3 -B ../scripts/normalize_mathematics_stage_views.py --check && python3 -B ../scripts/test_mathematics_seki_excerpts.py && python3 -B ../scripts/test_mathematics_foreign_acquisition_policy.py && python3 -B ../scripts/test_mathematics_stage_views.py && python3 -B ../scripts/check_mathematics_course_view_pairs.py && python3 -B -m unittest discover -s ../scripts -p test_mathematics_course_view_pairs.py && tsx scripts/testMathematicsStageViewConsumers.ts
+
+Mathematics duration stage-placement replay passed: immutable successful replay and 12 fail-closed cases.
+ok de-he-seki-g8.view.json {"5":0,"6":1,"7":1,"8":37,"9":4} filteredAssessments=13
+ok de-he-seki-g9.view.json {"5":0,"6":1,"7":1,"8":40,"9":8,"10":1} filteredAssessments=21
+ok de-he-gk-g8.view.json {"5":0,"6":1,"7":3,"8":2,"9":20} filteredAssessments=8
+ok de-he-gk-g9.view.json {"5":0,"6":1,"7":3,"8":2,"9":1,"10":1} filteredAssessments=16
+ok de-he-lk-g8.view.json {"5":0,"6":1,"7":3,"8":2,"9":20} filteredAssessments=8
+ok de-he-lk-g9.view.json {"5":0,"6":1,"7":3,"8":2,"9":1,"10":1} filteredAssessments=16
+ok de-rp-seki-g8.view.json {"orientierungsstufe":0,"klasse7-8":0,"klasse9-10-msa":0} filteredAssessments=25
+ok de-rp-seki-g9.view.json {"orientierungsstufe":0,"klasse7-8":0,"klasse9-10-msa":0} filteredAssessments=29
+ok de-rp-gk-g8.view.json {"orientierungsstufe":0,"klasse7-8":0,"klasse9-10-msa":0} filteredAssessments=25
+ok de-rp-gk-g9.view.json {"orientierungsstufe":0,"klasse7-8":0,"klasse9-10-msa":0} filteredAssessments=29
+ok de-rp-lk-g8.view.json {"orientierungsstufe":0,"klasse7-8":0,"klasse9-10-msa":0} filteredAssessments=25
+ok de-rp-lk-g9.view.json {"orientierungsstufe":0,"klasse7-8":0,"klasse9-10-msa":0} filteredAssessments=29
+ok de-sh-seki-g8.view.json {"jg5-6":0,"jg7-9":0,"jg10":0} filteredAssessments=28
+ok de-sh-seki-g9.view.json {"jg5-6":0,"jg7-9":0,"jg10":0} filteredAssessments=32
+ok de-sh-gk-g8.view.json {"jg5-6":0,"jg7-9":0,"jg10":0} filteredAssessments=28
+ok de-sh-gk-g9.view.json {"jg5-6":0,"jg7-9":0,"jg10":0} filteredAssessments=31
+ok de-sh-lk-g8.view.json {"jg5-6":0,"jg7-9":0,"jg10":0} filteredAssessments=28
+ok de-sh-lk-g9.view.json {"jg5-6":0,"jg7-9":0,"jg10":0} filteredAssessments=31
+Mathematics source-stage excerpts: 0 differences / 12 routes
+Mathematics stage views: 0 differences
+Unresolved learning windows: 0; grouping conflicts: 0
+.......
+----------------------------------------------------------------------
+Ran 7 tests in 4.518s
+
+OK
+.....
+----------------------------------------------------------------------
+Ran 5 tests in 0.010s
+
+OK
+.................................
+----------------------------------------------------------------------
+Ran 33 tests in 29.201s
+
+OK
+Mathematics course-pair structure contract: 0 issues / 40 pairs / 100 views
+...
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+OK
+Mathematics source/consumer stage identity: 100 views, 198 stage wrappers PASS

@@ -1801,9 +1801,18 @@ public class LearnerControllerIntegrationTest {
         // Retained native API seed IDs bind the original reviewed baseline and
         // explicit technical deltas. This transport grants no new content approval.
         // A same-size substitution must fail as well as an incorrect total.
-        return objectMapper.readTree(Path.of("../contracts/stage-plan-review-evidence/2026-11-16/"
-                + "backend-current-seed-fixtures-v1/seed-scope-comparison.actual.json").toFile())
+        var scopes = (com.fasterxml.jackson.databind.node.ObjectNode) objectMapper.readTree(
+                Path.of("../contracts/stage-plan-review-evidence/2026-11-16/"
+                        + "backend-current-seed-fixtures-v1/seed-scope-comparison.actual.json").toFile())
                 .path("scopes");
+        // Exact current Sek-I source memberships supersede only their older
+        // fixture rows. The retained original and all other subjects/stages stay
+        // available; this technical transport grants no new content approval.
+        var currentSekOne = objectMapper.readTree(Path.of(
+                "../contracts/stage-plan-review-evidence/2026-11-17/pr160-backend-ci-repair-v1/"
+                        + "sek1-seed-fixtures.actual.json").toFile()).path("scopes");
+        scopes.setAll((com.fasterxml.jackson.databind.node.ObjectNode) currentSekOne);
+        return scopes;
     }
 
     private void assertReviewedSeedFixture(SoftAssertions softly, JsonNode fixtures, String landscapeId,
@@ -1813,6 +1822,10 @@ public class LearnerControllerIntegrationTest {
         JsonNode fixture = fixtures.path(key);
         softly.assertThat(projection.seedAtomicGoalIds()).as(key + " exact reviewed seed identities")
                 .containsExactlyInAnyOrderElementsOf(jsonTextValues(fixture.path("currentSeedAtomicGoalIds")));
+        if (fixture.has("currentLearningAtomicGoalIds")) {
+            softly.assertThat(projection.targetGoalIds()).as(key + " exact independently closed learning identities")
+                    .containsExactlyInAnyOrderElementsOf(jsonTextValues(fixture.path("currentLearningAtomicGoalIds")));
+        }
         List<String> addedIds = jsonTextValues(fixture.path("addedSeedAtomicGoalIds"));
         List<String> removedIds = jsonTextValues(fixture.path("removedSeedAtomicGoalIds"));
         if (!addedIds.isEmpty()) {
@@ -1831,22 +1844,22 @@ public class LearnerControllerIntegrationTest {
         // Preserve those seed counts, including local assessments. Full learning
         // totals additionally include the independently checked prerequisite demand.
         String[][] scopes = {
-                { "DE-BB", "259", "259" },
-                { "DE-BE", "256", "256" },
+                { "DE-BB", "280", "280" },
+                { "DE-BE", "265", "265" },
                 { "DE-BW", "304", "304" },
-                { "DE-BY", "245", "245" },
-                { "DE-HB", "233", "233" },
+                { "DE-BY", "288", "288" },
+                { "DE-HB", "221", "221" },
                 { "DE-HE", "345", "375" },
-                { "DE-HH", "256", "256" },
-                { "DE-MV", "256", "256" },
-                { "DE-NI", "256", "256" },
-                { "DE-NW", "256", "256" },
+                { "DE-HH", "279", "279" },
+                { "DE-MV", "220", "220" },
+                { "DE-NI", "265", "265" },
+                { "DE-NW", "264", "264" },
                 { "DE-RP", "291", "309" },
                 { "DE-SH", "293", "297" },
-                { "DE-SL", "259", "259" },
-                { "DE-SN", "256", "256" },
-                { "DE-ST", "256", "256" },
-                { "DE-TH", "257", "257" }
+                { "DE-SL", "289", "289" },
+                { "DE-SN", "280", "280" },
+                { "DE-ST", "272", "272" },
+                { "DE-TH", "215", "215" }
         };
         SoftAssertions softly = new SoftAssertions();
         JsonNode reviewedFixtures = reviewedSeedFixtureScopes();
@@ -1888,10 +1901,11 @@ public class LearnerControllerIntegrationTest {
                             "5f6496ef-e4d2-5341-8a2c-3293b2e4e25a",
                             "ea664a30-98be-508e-90ac-5304679814ee");
                 } else {
-                    assertThat(g9Targets).doesNotContain(
-                            "baea3966-5d10-53bf-8193-3fcda7b1e73f"); // not an official SL seed
+                    // The reviewed final source ledger maps this atom to SL
+                    // J10. Its earlier preparation-only classification is retired.
+                    assertThat(g9Targets).contains("baea3966-5d10-53bf-8193-3fcda7b1e73f");
                     assertThat(g9Projection.targetGoalIds()).contains("baea3966-5d10-53bf-8193-3fcda7b1e73f");
-                    assertOutsideSeedEntersOnlyAsRequiredPreparation(g9Projection, "baea3966-5d10-53bf-8193-3fcda7b1e73f");
+                    assertThat(g9Projection.requiredByPaths()).doesNotContainKey("baea3966-5d10-53bf-8193-3fcda7b1e73f");
                 }
             }
             softly.assertThat(g8Projection.seedAtomicGoalIds()).as(jurisdiction + " G8 reviewed seeds").hasSize(Integer.parseInt(scope[1]));
@@ -2008,6 +2022,10 @@ public class LearnerControllerIntegrationTest {
         // Reviewed Chemistry B007 splits lab safety and solutions into atoms.
         // The applicable child targets differ by jurisdiction; keep explicit
         // totals for both duration models instead of counting the former clusters.
+        // Physics now uses the exact reviewed Landes-source memberships from
+        // the final unit/source ledger. Pin every added/removed seed identity
+        // and its full canonical learning closure through the retained fixture;
+        // acquisition placements never become source seeds by being earlier.
         String[][] scopes = {
                 { "Biologie", CANONICAL_BIOLOGY_ID, "DE-BW", "83", "83" },
                 { "Biologie", CANONICAL_BIOLOGY_ID, "DE-BY", "131", "131" },
@@ -2042,16 +2060,16 @@ public class LearnerControllerIntegrationTest {
                 { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-SN", "65", "65" },
                 { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-ST", "63", "63" },
                 { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-TH", "67", "67" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-BW", "159", "159" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-BY", "128", "128" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-HB", "148", "148" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-HE", "158", "158" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-HH", "148", "148" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-MV", "154", "154" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-SL", "158", "158" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-SN", "158", "158" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-ST", "154", "154" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-TH", "152", "152" }
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-BW", "156", "156" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-BY", "152", "152" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-HB", "126", "126" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-HE", "130", "130" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-HH", "126", "126" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-MV", "124", "124" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-SL", "152", "152" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-SN", "153", "153" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-ST", "131", "131" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-TH", "136", "136" }
         };
         // The verified applicability-cache refresh exposes these already-authored
         // Sek-I targets. Bind their identities as well as both duration totals.

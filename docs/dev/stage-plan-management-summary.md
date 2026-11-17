@@ -22,9 +22,21 @@ er erhält die Dokumentationschecks. Die große CI schließt `docs/dev/**` und
 CI-Nachweis gilt weiterhin für den benannten Implementierungscommit.
 
 <!-- composition-partial-order-20261117:start -->
-## 17. November 2026, 06:31 MEZ (UTC+01:00) — Fachliche Teilordnungen in allen Länderansichten
+## 17. November 2026, 08:16 MEZ (UTC+01:00) — Fachliche Teilordnungen in allen Länderansichten
 
-**Aktueller Lieferstand:** Sämtliche lokalen Fach-, Karten-, Qualitäts- und Paketprüfungen sind abgeschlossen. Mathematik und Physik global M7, geschützte Untergrenzen bestanden. Vollständige PR-CI, Merge und frische Main-CI stehen noch aus. [PR #160](https://github.com/enpasos/skillpilot/pull/160) enthält die gemeinsame Lieferung.
+**Aktueller Lieferstand:** [PR #160](https://github.com/enpasos/skillpilot/pull/160)
+ist offen. Der vollständige [PR-CI-Lauf 44025354365](https://github.com/enpasos/skillpilot/actions/runs/44025354365)
+endet auf `2c20e11117c130f898b42d929078cd673094590f` mit **10 erfolgreichen
+und 4 fehlgeschlagenen Jobs**. Die frühere Aussage um 06:31, sämtliche lokalen
+Prüfungen seien abgeschlossen, war zu weitgehend: Zwei generierte Mathematik-
+Ausschnitte, der Physik-Visualisierungsstatus und mehrere an die alte Gliederung
+gebundene Testannahmen waren nicht aktuell. Die Korrekturen sind jetzt lokal
+unabhängig geprüft: **240/240 Tests der vier betroffenen Backendklassen**
+bestehen. Die exakten 52 Controller-Fixtures binden Auswahl und unbeschnittene
+Lernbasis; reine Dauer-Kompatibilitätsfälle sind keine amtlichen Angebote.
+Mathematik und Physik
+bleiben im erneut ausgeführten Qualitätsstatus global M7; die geschützten
+Untergrenzen bestehen. Merge und frische erfolgreiche Main-CI stehen aus.
 Dieser Eintrag aktualisiert den Lieferstand der darunter erhaltenen früheren
 Berichte; deren Zahlen und geprüfte Commitbindungen bleiben historische Belege.
 
@@ -49,6 +61,19 @@ Berichte; deren Zahlen und geprüfte Commitbindungen bleiben historische Belege.
   kein erneuter Lauf einer alten Runtime. Exakte native S/L-Vergleiche:
   133 unverändert, 63 quellenbegründete neue Sek-I-Auswahlen, 20 ausschließlich
   durch geprüfte Aufgaben ergänzte Kontexte, 0 unerwartete Umfangsänderungen.
+- **Grenze der bisherigen Messung:** Die 216 Kontexte verwenden gleiche
+  Kursprofile für Mathematik und Physik. Die zusätzliche Hessen-Prüfung mit
+  54 gemischten Kurs-/Stufen-/Dauerkontexten zeigt acht bislang fehlende
+  `after`-Erklärungen beim Erwerb der Produktregel. Diese Fälle gehören zum
+  laufenden Folgepaket; die obigen Nullwerte gelten nicht pauschal für alle
+  Kombinationen. Zusätzlich sind 36 Hessen-Kontexte mit nur einem gewählten
+  Fach nativ erfasst; ihre sichtbaren Karten sind noch nicht abgenommen.
+- **Neu gefundene Folgearbeit:** Die getrennte unabhängige Kinematikprüfung
+  beanstandet die Vollabdeckungsangaben von fünf älteren Aufgaben. Ein sichtbarer
+  kanonischer Physik-Vorbereitungsordner trägt außerdem einen irreführenden
+  GK-Abiturtitel. Beide Befunde sind im aktiven Folgeauftrag erfasst. Die oben
+  genannte M7-Angabe beschreibt den generierten Qualitätsstatus des Bestands;
+  dieser CI-Nachtrag ist keine erneute inhaltliche Vollfreigabe aller Aufgaben.
 - **Aufgaben und Review:** neun neue eigene Physikaufgaben schließen echte
   Prüfungsendpunktlücken in vorhandenen Kompetenzen. Unabhängige inhaltliche
   Agentenreviews prüfen beide Sprachfassungen, Kompetenzabdeckung und Rubriken.
@@ -62,7 +87,11 @@ Berichte; deren Zahlen und geprüfte Commitbindungen bleiben historische Belege.
   separat protokolliert. Die vollständige Qualitätsgenerierung, ihr aktueller Statusvergleich
   und die geschützten Untergrenzen bestehen. Beide Mathematik-Modellexporte
   sind in allen 213 Dateien bytegleich; reproduzierbare ZIP und sechs
-  Offlinegates bestehen. Alle Belege sind dauerhaft gebunden.
+  Offlinegates bestehen. Der CI-Nachtrag reproduziert nach der MV-/SL-Korrektur
+  ebenfalls alle 213 Modelldateien bytegleich und besteht alle sechs Offlinegates
+  mit dem neuen Digest `c2df283bfd35…`. Sechs betroffene native Kontexte behalten
+  exakt S/L und zwölf bytegleiche Kartenfixtures; 18 Stufen- und 822 Innenbretter
+  wurden erneut gemessen. Alle Belege sind dauerhaft gebunden.
 - **Kontrollstellen für den Owner:** Hessen G8 und G9 → Physik → E-Phase
   (Wurf bei E.1, verzweigende E.4–E.7); Hessen → Q4 (unabhängige SRT);
   Mathematik/Physik in einem anderen Land → Sek I und Sek II mit den
@@ -71,6 +100,7 @@ Berichte; deren Zahlen und geprüfte Commitbindungen bleiben historische Belege.
   [Mathematikquellen](mathematics-stage-view-source-units-2026-11-17.md),
   [Physikquellen](physics-stage-view-source-units-2026-11-17.md),
   [unabhängige Reviews und aktuelle Kartenmessung](https://github.com/enpasos/skillpilot/blob/main/contracts/stage-plan-review-evidence/2026-11-16/composition-partial-order-v1/README.md).
+  Zusätzlich: [unabhängige CI-Reparaturreviews, 240 Backendtests und Paketneubau](https://github.com/enpasos/skillpilot/blob/main/contracts/stage-plan-review-evidence/2026-11-17/partial-order-ci-repair-v1/README.md).
   Die Paket-Redistributionsfreigabe bleibt dort, wo menschliche Freigaben
   ausstehen, ausdrücklich offen. Keine Produktionsbereitstellung.
 - **Nächster Schritt:** erfolgreiche vollständige PR-CI, Integration und frische erfolgreiche

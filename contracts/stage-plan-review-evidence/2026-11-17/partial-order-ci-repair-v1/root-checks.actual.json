@@ -1,0 +1,32 @@
+{
+  "recordedAt": "2026-11-17T07:26:14.405220+01:00",
+  "branchHead": "2c20e11117c130f898b42d929078cd673094590f",
+  "sourceHasUncommittedRepair": true,
+  "checks": [
+    {
+      "name": "math-duration",
+      "command": "npm run check:math-duration-composition-views",
+      "exitCode": 0,
+      "sessionId": 15852,
+      "log": "tmp/pipeline/laender-stufen/gesamt/ci/math-duration-repair-v2.log",
+      "sha256": "a3ad89899d084036b620b0de716e82d6e057c8ef2a5d395d222d071919547ea7"
+    },
+    {
+      "name": "offering-source",
+      "command": "npm run test:curriculum-offering-source",
+      "exitCode": 0,
+      "sessionId": null,
+      "log": "tmp/pipeline/laender-stufen/gesamt/ci/repair-v1/offering-source.log",
+      "sha256": "6c155801394fb858cbf1f834e495d29a9a1654037d3a672631263860550f7820"
+    },
+    {
+      "name": "actual-map",
+      "command": "tsx measure-actual-v4.mts repair-v1/native . repair-v1/map",
+      "exitCode": 0,
+      "sessionId": 77638,
+      "log": "tmp/pipeline/laender-stufen/gesamt/ci/repair-v1/map.log",
+      "sha256": "3d1bafbbaf91653eff2118a4c87b568ee039a9186905e9e0a0fb4bb5449f1281"
+    }
+  ],
+  "qualityStatusFullCheck": "still running; not claimed as complete"
+}

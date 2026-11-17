@@ -395,6 +395,8 @@ assert.equal(
   'de-he-gym-sekii-math-lk',
   'The resolved Hessen Mathematics LK upper-secondary scope must use its reviewed Sek-II composition view.',
 )
+assert.equal((hessenMathSekTwoLkView.scope as Record<string, unknown>).courseProfile, 'LK')
+assert.equal((hessenMathSekTwoLkView.scope as Record<string, unknown>).stage, 'SekII')
 
 const canonicalMathLandscape = JSON.parse(readFileSync(
   new URL(
@@ -420,8 +422,8 @@ const projectedMathRootChildTitles = projectedMathRoot.contains.map(
 )
 assert.deepEqual(
   projectedMathRootChildTitles,
-  ['Sekundarstufe II (LK)'],
-  'The learner-facing Mathematics root must expose only the authored Sek-II LK structure.',
+  ['Sekundarstufe II'],
+  'The learner-facing Mathematics root must expose the authored stage; LK selection is bound by the view scope.',
 )
 for (const canonicalFallbackSibling of [
   'Sekundarstufe I',
