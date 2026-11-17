@@ -1,0 +1,28 @@
+Source: https://github.com/enpasos/skillpilot/actions/runs/44037739517/job/133896624147
+Remote exact head: bce7769b25b5c4f37dc68dace3484d21b590b5d6
+Selected unmodified error lines; full log remains linked above.
+
+2026-11-17T08:07:05.5728083Z ##[endgroup]
+2026-11-17T08:07:05.6652380Z 
+2026-11-17T08:07:05.6653186Z > skillpilot@0.0.0 test:full-standalone-package-builder
+2026-11-17T08:07:05.6654502Z > tsx scripts/testFullStandaloneCurriculumPackageBuilder.ts && python3 -B ../scripts/test_composition_view_package_boundary.py
+2026-11-17T08:07:05.6655548Z 
+2026-11-17T08:07:06.4328289Z Full-standalone package builder self-test passed: 49 entries, 8 logical artifacts, 1 binary asset, 2 byte-identical independent ZIPs.
+2026-11-17T08:07:06.6711384Z Traceback (most recent call last):
+2026-11-17T08:07:06.6712359Z   File "/home/runner/work/skillpilot/skillpilot/app/../scripts/test_composition_view_package_boundary.py", line 16, in <module>
+2026-11-17T08:07:06.6713296Z     import compile_curriculum_release_model as compiler
+2026-11-17T08:07:06.6714074Z   File "/home/runner/work/skillpilot/skillpilot/scripts/compile_curriculum_release_model.py", line 34, in <module>
+2026-11-17T08:07:06.6714852Z     import curriculum_completion_artifacts as completion_artifacts
+2026-11-17T08:07:06.6715656Z   File "/home/runner/work/skillpilot/skillpilot/scripts/curriculum_completion_artifacts.py", line 16, in <module>
+2026-11-17T08:07:06.6716350Z     from referencing import Registry, Resource
+2026-11-17T08:07:06.6716862Z ModuleNotFoundError: No module named 'referencing'
+2026-11-17T08:07:06.6982894Z ##[error]Process completed with exit code 1.
+2026-11-17T08:07:06.7119520Z Post job cleanup.
+2026-11-17T08:07:06.7859185Z [command]/usr/bin/git version
+2026-11-17T08:07:06.7896409Z git version 2.56.1
+2026-11-17T08:07:06.7926612Z Temporarily overriding HOME='/home/runner/work/_temp/c1459fc7-0270-442a-98d5-fcb5a0f75072' before making global git config changes
+2026-11-17T08:07:06.7927505Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-17T08:07:06.7931267Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/skillpilot/skillpilot
+2026-11-17T08:07:06.7963353Z Removing SSH command configuration
+2026-11-17T08:07:06.7968754Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+

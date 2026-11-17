@@ -1,0 +1,41 @@
+{
+  "author": "root",
+  "recordedAt": "2026-11-17T09:30:28.221226+01:00",
+  "status": "needs independent review",
+  "files": [
+    {
+      "path": "app/src/utils/plannedScope.ts",
+      "sha256": "sha256:e15d5d3f687cc82ec3fe4e05e1ed7795c15f9013887831ab06f022139f6e79c3"
+    },
+    {
+      "path": "app/src/views/LearnerView.tsx",
+      "sha256": "sha256:bd5721410ed4f2d308fc917b42eccdd77748018eabd731e319aa55c9ab7da41f"
+    },
+    {
+      "path": "app/scripts/validateLearnerGoalSelection.ts",
+      "sha256": "sha256:636dd1be8f86539a638143e2113e2d2971179f41a9dfb4fe693d0e2e508f2bf5"
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "sha256": "sha256:1a58d54b2b1bef59431bffd7448dd7a26177dfc95004ff5dd1e65a1e4cfb9571"
+    },
+    {
+      "path": "docs/qa-ci/status/gymnasium-duration-model-readiness.md",
+      "sha256": "sha256:cdf3f6be4fcbf67d63ebd8487ce160b2081408d5a6d3861e1f10cdf370331b4a"
+    }
+  ],
+  "changes": [
+    "Canonical stored focus reads canonical contains, independently of presentation pruning.",
+    "Synthetic focus retains its current presented subtree, including mixed selections.",
+    "Hidden canonical foci retain leaf markers where no whole current topic group represents them.",
+    "Actual app ordering with source scope metadata, six DE/BY route cases, full S/R closure, 40 J8 atoms, exact visible focus and unchanged L/tree asserted."
+  ],
+  "directRouteCorrection": "The earlier 0/40 observation used a metadata-free composition input and does not reproduce in the current app path. The real DE 28/40 issue persists with correct metadata; BY remains 40/40.",
+  "tests": [
+    "../canonical-focus-repair-v2.log"
+  ],
+  "notClaimed": [
+    "No HTTP acceptance or global learner-results change.",
+    "Remote full CI still pending."
+  ]
+}

@@ -24,6 +24,30 @@ export const buildGoalContainsClosure = (
   return closure
 }
 
+/** A stored canonical focus keeps its membership when presentation moves preparation elsewhere. */
+export const buildCanonicalFocusScope = (
+  rootGoalIds: Iterable<string>,
+  presentedGoals: Map<string, UiGoal>,
+  canonicalSources: readonly { goals: readonly UiGoal[] }[] = [],
+) => {
+  const focusGoals = new Map(presentedGoals)
+  const canonicalIds = new Set<string>()
+  for (const source of canonicalSources) {
+    for (const goal of source.goals) {
+      canonicalIds.add(goal.id)
+      focusGoals.set(goal.id, goal)
+    }
+  }
+  // Synthetic groups retain their current children. This is a focus lookup,
+  // not a change to the visible tree, enrollment, prerequisites or mastery.
+  const scope = new Set<string>()
+  for (const rootId of rootGoalIds) {
+    const goals = canonicalIds.has(rootId) ? focusGoals : presentedGoals
+    for (const id of buildGoalContainsClosure([rootId], goals)) scope.add(id)
+  }
+  return scope
+}
+
 export const buildRenderedScopeDescendantCountMap = (
   allGoals: Map<string, UiGoal>,
   renderedChildrenByParent: Map<string, string[]>,
@@ -78,12 +102,11 @@ export const buildRenderedScopeMarkerGoalIds = (
     renderedGoalIds.add(goalId)
     pendingRenderedIds.push(...(renderedChildrenByParent.get(goalId) ?? []))
   }
-  // A persisted composition alias can cover only part of today's subject root.
-  const hasHiddenPlannedCompositionGoal = Array.from(exactPlannedGoalIds)
-    .some((goalId) => {
-      const goal = allGoals.get(goalId)
-      return !renderedGoalIds.has(goalId) && !!goal && isCompositionStructureNode(goal)
-    })
+  // A persisted canonical focus or composition alias can span only part of
+  // several current groups. Keep precise leaf markers when no complete group
+  // represents those selected atoms.
+  const hasHiddenPlannedGoal = Array.from(exactPlannedGoalIds)
+    .some((goalId) => !renderedGoalIds.has(goalId) && allGoals.has(goalId))
   const statsByGoalId = new Map<string, { scopedConcrete: number; unscopedConcrete: number }>()
   const parentIdsByChild = new Map<string, Set<string>>()
   const renderedPlannedDescendantCache = new Map<string, boolean>()
@@ -149,7 +172,7 @@ export const buildRenderedScopeMarkerGoalIds = (
 
   const isScopeMarkerCandidate = (goalId: string) => {
     if (!renderedGoalIds.has(goalId) || exactPlannedGoalIds.has(goalId)) return false
-    if (scopedGoalIds.has(goalId) && !hasHiddenPlannedCompositionGoal) return false
+    if (scopedGoalIds.has(goalId) && !hasHiddenPlannedGoal) return false
     if (!isFullyCoveredScopeRepresentative(goalId)) return false
     // An exact visible selection must remain the only selected row. A fully
     // covered ancestor is merely an equivalent scope when it has only that
@@ -179,7 +202,7 @@ export const buildRenderedScopeMarkerGoalIds = (
     }
   })
 
-  if (!hasHiddenPlannedCompositionGoal) {
+  if (!hasHiddenPlannedGoal) {
     // Preserve the existing year/phase structure preference for canonical foci.
     const compositionStructureMarkerGoalIds = Array.from(markerGoalIds).filter((goalId) => {
       const goal = allGoals.get(goalId)

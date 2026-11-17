@@ -19,7 +19,9 @@ import { prepareLandscapeEntries } from '../src/hooks/useLandscapes'
 import {
   applyCompositionViewProjection,
   applyMatchedCompositionRouteGoalProjection,
+  applyPersonalCurriculumProjection,
 } from '../src/utils/compositionViewRuntime'
+import { collectCompositionProjectionRoleGoalIds } from '../src/utils/authoring/compositionViewAuthoring'
 import {
   collapseLearnerSubjectRoots,
   normalizeLearnerProjectedEntries,
@@ -27,6 +29,7 @@ import {
 import { buildDirectChildrenMap } from '../src/utils/treeProjectionRuntime'
 import {
   buildGoalContainsClosure,
+  buildCanonicalFocusScope,
   buildRenderedScopeDescendantCountMap,
   buildRenderedScopeMarkerGoalIds,
 } from '../src/utils/plannedScope'
@@ -575,25 +578,72 @@ assert.equal(
   'The historical combined prism ID must remain a non-atomic topic cluster.',
 )
 assert.deepEqual(
-  mathGoalById.get(canonicalMathPrismGoalId)?.contains,
+  canonicalMathLandscape.goals.find((goal: UiGoal) => goal.id === canonicalMathPrismGoalId)?.contains,
   [canonicalMathPrismVolumeGoalId, canonicalMathPrismSurfaceGoalId],
   'The historical prism cluster must contain the two independent competencies exactly once.',
 )
+assert.deepEqual(
+  mathGoalById.get(canonicalMathPrismGoalId)?.contains,
+  [],
+  'A route to the historical cluster must not promote its prerequisite-only children into course targets.',
+)
+const prismPreparationSource = prepareLandscapeEntries([canonicalMathLandscape])
+const prismCanonicalGoals = new Map(prismPreparationSource[0].goals.map((goal) => [goal.id, goal]))
+const prismSeedId = '0dded9c1-043e-57cb-82fc-792b391e9cb0'
+assert.ok(collectCompositionProjectionRoleGoalIds(genericMathSekIView.rootNodes, prismCanonicalGoals)
+  .targetGoalIds.has(prismSeedId), 'The prism fixture must start from a real current view target.')
+const prismRequiredPaths = new Map<string, string[]>([[prismSeedId, [prismSeedId]]])
+const prismQueue = [prismSeedId]
+for (let index = 0; index < prismQueue.length; index += 1) {
+  const id = prismQueue[index]
+  for (const prerequisiteId of [...(prismCanonicalGoals.get(id)?.requires ?? [])].sort()) {
+    assert.ok(prismCanonicalGoals.has(prerequisiteId), 'Every prism prerequisite must resolve in the canonical graph.')
+    if (prismRequiredPaths.has(prerequisiteId)) continue
+    prismRequiredPaths.set(prerequisiteId, [...prismRequiredPaths.get(id)!, prerequisiteId])
+    prismQueue.push(prerequisiteId)
+  }
+}
+assert.equal(prismRequiredPaths.size, 34, 'The synthetic learning basis must close over all canonical prerequisites.')
+prismPreparationSource[0].meta.personalCurriculumProjection = {
+  revision: 'atomic-prerequisite-learning-v1',
+  rootLandscapeId: prismPreparationSource[0].meta.landscapeId,
+  scopeRevision: 'synthetic-prism-bfs-fixture',
+  seedAtomicGoalIds: [prismSeedId],
+  targetGoalIds: [...prismRequiredPaths.keys()].sort(),
+  requiredByPaths: Object.fromEntries([...prismRequiredPaths].filter(([id]) => id !== prismSeedId)),
+}
+const prismPreparationEntries = normalizeLearnerProjectedEntries(applyPersonalCurriculumProjection(
+  compositionProjectedMathEntries,
+  prismPreparationSource,
+))
+const prismPreparationGoals = new Map(prismPreparationEntries.flatMap((entry) => entry.goals.map((goal) => [goal.id, goal] as const)))
+const prismPreparationChildren = buildDirectChildrenMap(prismPreparationGoals)
+const prismPreparationRoot = prismPreparationEntries[0].goals.find((goal) => goal.tags?.includes('root'))!
+const prismPreparationReachable = new Set<string>()
+const visitPrismPreparation = (id: string) => {
+  if (prismPreparationReachable.has(id)) return
+  prismPreparationReachable.add(id)
+  for (const childId of prismPreparationChildren.get(id) ?? []) visitPrismPreparation(childId)
+}
+visitPrismPreparation(prismPreparationRoot.id)
 for (const prismChildId of [canonicalMathPrismVolumeGoalId, canonicalMathPrismSurfaceGoalId]) {
-  const childPath = findVisiblePath(prismChildId, mathRootGoal!.id)
-  assert.ok(childPath, 'Both independent prism competencies must remain reachable after the legacy atomic goal becomes a cluster.')
-  assert.ok(
-    childPath!.includes(canonicalMathPrismGoalId),
-    'Prism volume and surface-area goals must remain under the historical prism path.',
+  assert.equal(
+    compositionProjectedMathEntries.flatMap((entry) => entry.compositionPreparationPlacements ?? [])
+      .filter((placement) => placement.goalId === prismChildId).length,
+    1,
+    'Each independent prism competency must have exactly one authored acquisition placement.',
   )
+  assert.ok(prismPreparationReachable.has(prismChildId),
+    'A prism competency in the canonically closed synthetic learning basis must be reachable through its acquisition placement.')
 }
 
-const genericVisibleJ8StructureId = 'composition:de-de-gym-seki-math:structure:j8'
-const genericJ8FractionsStructureId = 'composition:de-de-gym-seki-math:structure:j8-fractions'
-const genericJ9PowersStructureId = 'composition:de-de-gym-seki-math:structure:j9-powers'
 const canonicalIntegerExponentGoalId = '6596405a-9728-41df-9163-53670ec2a937'
 const canonicalPowerFunctionGoalId = '66077296-a8f8-4645-938b-7c3424cb2f14'
-const genericJ8ScopeGoalIds = buildGoalContainsClosure([canonicalMathJ8GoalId], mathGoalById)
+const canonicalMathGoalById = new Map<string, UiGoal>(prepareLandscapeEntries([canonicalMathLandscape])[0].goals
+  .map((goal) => [goal.id, goal]))
+const genericJ8ScopeGoalIds = buildCanonicalFocusScope(
+  [canonicalMathJ8GoalId], mathGoalById, prepareLandscapeEntries([canonicalMathLandscape]),
+)
 // The persisted canonical scope keeps all 48 members (40 atoms), independently
 // of how the repaired current view groups its visible members.
 assert.equal(genericJ8ScopeGoalIds.size, 48)
@@ -602,7 +652,7 @@ assert.equal(
   'c0209d5435bb65d340103b84f675e5480955eb84bd002edfce2bd5a106a02783',
   'Current presentation groups must not narrow or expand the persisted canonical J8 selection.',
 )
-assert.equal([...genericJ8ScopeGoalIds].filter((id) => mathGoalById.get(id)?.type === 'atomic').length, 40)
+assert.equal([...genericJ8ScopeGoalIds].filter((id) => canonicalMathGoalById.get(id)?.type === 'atomic').length, 40)
 assert.ok(genericJ8ScopeGoalIds.has(canonicalIntegerExponentGoalId))
 assert.ok(!genericJ8ScopeGoalIds.has(canonicalPowerFunctionGoalId))
 
@@ -649,23 +699,20 @@ const genericJ8ScopeMarkerGoalIds = buildRenderedScopeMarkerGoalIds(
   genericJ8ScopeGoalIds,
   [canonicalMathJ8GoalId],
 )
-
-assert.deepStrictEqual(
-  Array.from(genericJ8ScopeMarkerGoalIds),
-  [genericVisibleJ8StructureId, genericJ9PowersStructureId],
-  'The unchanged canonical J8 scope needs both complete current groups: J8 and the separately placed integer-exponent laws.',
-)
+const assertExactRenderedScopeCoverage = (
+  markers: Set<string>, scope: Set<string>, rootId: string, children: Map<string, string[]>,
+): void => {
+  const markedLeaves = new Set([...markers].flatMap((id) => [...renderedLeavesBelow(id, children)]))
+  const selectedVisibleLeaves = [...renderedLeavesBelow(rootId, children)].filter((id) => scope.has(id))
+  assert.deepEqual([...markedLeaves].sort(), selectedVisibleLeaves.sort(),
+    'Complete focus markers must cover every visible selected leaf and no unselected leaf.')
+}
 assertCompleteScopeMarkers(genericJ8ScopeMarkerGoalIds, genericJ8ScopeGoalIds, mathChildrenByParent)
-assert.deepEqual([...renderedLeavesBelow(genericJ9PowersStructureId, mathChildrenByParent)], [canonicalIntegerExponentGoalId])
-assert.ok(
-  [...renderedLeavesBelow('composition:de-de-gym-seki-math:structure:j9', mathChildrenByParent)]
-    .some((id) => !genericJ8ScopeGoalIds.has(id)),
-  'The broader J9 group contains unselected goals and must not replace the precise powers marker.',
-)
-assert.ok(
-  !genericJ8ScopeMarkerGoalIds.has(genericJ8FractionsStructureId),
-  'A hidden canonical J8 planned scope must not collapse to the Bruchterme child cluster in the generic Sek-I view.',
-)
+assertExactRenderedScopeCoverage(genericJ8ScopeMarkerGoalIds, genericJ8ScopeGoalIds, mathRootGoal!.id, mathChildrenByParent)
+assert.ok(genericJ8ScopeMarkerGoalIds.size > 1,
+  'The persisted J8 scope must mark all complete current topic groups, rather than only the fractions group.')
+assert.ok([...genericJ8ScopeMarkerGoalIds].some((id) => renderedLeavesBelow(id, mathChildrenByParent).has(canonicalIntegerExponentGoalId)),
+  'The integer-exponent competency must remain represented in the current J8 focus markers.')
 
 const storedLanguageValues = new Map<string, string>([
   ['skillpilot_lang', 'de'],
@@ -702,7 +749,7 @@ const genericJ8LearnerTreeMarkup = renderToStaticMarkup(
       plannedScopeGoalIds: genericJ8ScopeGoalIds,
       onTogglePlan: () => undefined,
       onSelect: () => undefined,
-      selectedId: genericVisibleJ8StructureId,
+      selectedId: [...genericJ8ScopeMarkerGoalIds][0],
       audience: 'learner',
       structureMode: 'content',
       visibleChildrenByParentOverride: mathChildrenByParent,
@@ -730,9 +777,10 @@ const bavariaProjectedMathEntries = normalizeLearnerProjectedEntries(
 )
 const bavariaMathGoalById = new Map(bavariaProjectedMathEntries[0].goals.map((goal) => [goal.id, goal] as const))
 const bavariaMathChildrenByParent = buildDirectChildrenMap(bavariaMathGoalById)
-const bavariaVisibleJ8StructureId = 'composition:de-by-gym-math-gk:structure:gk-sek-i-j8'
-const bavariaJ8AdditionalCompetenciesId = 'composition:de-by-gym-math-gk:structure:gk-sek-i-j8-weitere-kompetenzen'
-const bavariaPlannedJ8ScopeGoalIds = buildGoalContainsClosure([canonicalMathJ8GoalId], bavariaMathGoalById)
+const bavariaVisibleJ8StructureId = 'composition:de-by-gym-math-gk:structure:math-layout-seki-j8'
+const bavariaPlannedJ8ScopeGoalIds = buildCanonicalFocusScope(
+  [canonicalMathJ8GoalId], bavariaMathGoalById, prepareLandscapeEntries([canonicalMathLandscape]),
+)
 const bavariaScopeDescendantCounts = buildRenderedScopeDescendantCountMap(
   bavariaMathGoalById,
   bavariaMathChildrenByParent,
@@ -766,11 +814,62 @@ assert.ok(
   (bavariaScopeDescendantCounts.get(bavariaVisibleJ8StructureId) ?? 0) > 0,
   'A hidden canonical J8 planned scope must mark the visible Bavaria GK Jahrgangsstufe 8 structure.',
 )
-assert.deepStrictEqual(
-  Array.from(bavariaScopeMarkerGoalIds),
-  [bavariaJ8AdditionalCompetenciesId],
-  'The legacy J8 selection must mark its complete current BY subgroup rather than imply selection of the additional acquisition task.',
-)
+assertExactRenderedScopeCoverage(bavariaScopeMarkerGoalIds, bavariaPlannedJ8ScopeGoalIds,
+  bavariaProjectedMathEntries[0].goals.find((goal) => goal.tags?.includes('root'))!.id, bavariaMathChildrenByParent)
+
+// Exercise the actual app order with a complete, independently constructed
+// canonical prerequisite closure. A canonical focus may span several current
+// presentation groups; a synthetic group must keep its authored visible scope.
+for (const view of [genericMathSekIView, bavariaMathGkView]) {
+  const seedIds = [...collectCompositionProjectionRoleGoalIds(view.rootNodes, canonicalMathGoalById).targetGoalIds]
+    .filter((id) => canonicalMathGoalById.get(id)?.type === 'atomic').sort()
+  const paths = new Map<string, string[]>(seedIds.map((id) => [id, [id]]))
+  const queue = [...seedIds]
+  for (let index = 0; index < queue.length; index += 1) {
+    const id = queue[index]
+    for (const prerequisite of canonicalMathGoalById.get(id)?.requires ?? []) {
+      assert.ok(canonicalMathGoalById.has(prerequisite), 'Every canonical prerequisite must resolve.')
+      if (paths.has(prerequisite)) continue
+      paths.set(prerequisite, [...paths.get(id)!, prerequisite])
+      queue.push(prerequisite)
+    }
+  }
+  const source = prepareLandscapeEntries([canonicalMathLandscape])
+  source[0].meta.personalCurriculumProjection = {
+    revision: 'atomic-prerequisite-learning-v1', rootLandscapeId: source[0].meta.landscapeId,
+    scopeRevision: 'synthetic-full-view-canonical-bfs', seedAtomicGoalIds: seedIds,
+    targetGoalIds: [...paths.keys()].sort(),
+    requiredByPaths: Object.fromEntries([...paths].filter(([id]) => !seedIds.includes(id))),
+  }
+  for (const routeId of [undefined, canonicalMathJ8GoalId, canonicalMathPrismGoalId]) {
+    const presented = applyPersonalCurriculumProjection(normalizeLearnerProjectedEntries(
+      applyMatchedCompositionRouteGoalProjection(applyCompositionViewProjection(source, view), routeId),
+    ), source)
+    const presentedGoals = new Map(presented[0].goals.map((goal) => [goal.id, goal]))
+    const children = buildDirectChildrenMap(presentedGoals)
+    const root = presented[0].goals.find((goal) => goal.tags?.includes('root'))!
+    const before = JSON.stringify(presented)
+    const focus = buildCanonicalFocusScope([canonicalMathJ8GoalId], presentedGoals, source)
+    const focusAtoms = [...focus].filter((id) => paths.has(id) && canonicalMathGoalById.get(id)?.type === 'atomic').sort()
+    const expectedAtoms = [...genericJ8ScopeGoalIds]
+      .filter((id) => paths.has(id) && canonicalMathGoalById.get(id)?.type === 'atomic').sort()
+    assert.equal(expectedAtoms.length, 40)
+    assert.deepEqual(focusAtoms, expectedAtoms,
+      `${view.viewId}/${routeId ?? 'no route'}: retain all 40 canonical J8 atoms in the current learning basis.`)
+    const markers = buildRenderedScopeMarkerGoalIds(presentedGoals, children, focus, [canonicalMathJ8GoalId])
+    assertCompleteScopeMarkers(markers, focus, children)
+    assertExactRenderedScopeCoverage(markers, focus, root.id, children)
+    const visibleAtoms = [...renderedLeavesBelow(root.id, children)]
+      .filter((id) => presentedGoals.get(id)?.type === 'atomic').sort()
+    assert.deepEqual(visibleAtoms, [...paths.keys()].sort(), 'Focus resolution must preserve the complete visible learning basis.')
+    for (const goal of presentedGoals.values()) {
+      if (!goal.id.startsWith('composition:')) continue
+      assert.deepEqual(buildCanonicalFocusScope([goal.id], presentedGoals, source),
+        buildGoalContainsClosure([goal.id], presentedGoals), 'Synthetic group focus must retain its current presentation scope.')
+    }
+    assert.equal(JSON.stringify(presented), before, 'Focus lookup must not rewrite tree, scope metadata, or goals.')
+  }
+}
 assert.ok(
   !bavariaScopeMarkerGoalIds.has(canonicalMathJ8AxisInterceptGoalId),
   'A hidden canonical J8 planned scope must not mark every scoped descendant as a separate planned goal.',
@@ -938,7 +1037,9 @@ for (const { directory, views } of subjectRootCases) {
       )
     }
     if (directory === 'mathematik' || directory === 'physik') {
-      assert.equal(subjectRootIdByAlias.size, 1, `${viewName}: remove the reported duplicate despite prerequisite-only siblings.`)
+      assert.ok((childrenByParent.get(root.id) ?? []).every((id) =>
+        allGoals.get(id)?.title.trim().toLocaleLowerCase('de') !== root.title.trim().toLocaleLowerCase('de')),
+      `${viewName}: no duplicate subject heading may remain below the root.`)
     }
 
     const markup = renderToStaticMarkup(createElement(LanguageProvider, null, createElement(CompetenceTree, {

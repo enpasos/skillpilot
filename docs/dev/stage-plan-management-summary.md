@@ -22,7 +22,7 @@ er erhält die Dokumentationschecks. Die große CI schließt `docs/dev/**` und
 CI-Nachweis gilt weiterhin für den benannten Implementierungscommit.
 
 <!-- composition-partial-order-20261117:start -->
-## 17. November 2026, 08:16 MEZ (UTC+01:00) — Fachliche Teilordnungen in allen Länderansichten
+## 17. November 2026, 09:51 MEZ (UTC+01:00) — Fachliche Teilordnungen in allen Länderansichten
 
 **Aktueller Lieferstand:** [PR #160](https://github.com/enpasos/skillpilot/pull/160)
 ist offen. Der vollständige [PR-CI-Lauf 44025354365](https://github.com/enpasos/skillpilot/actions/runs/44025354365)
@@ -39,6 +39,40 @@ bleiben im erneut ausgeführten Qualitätsstatus global M7; die geschützten
 Untergrenzen bestehen. Merge und frische erfolgreiche Main-CI stehen aus.
 Dieser Eintrag aktualisiert den Lieferstand der darunter erhaltenen früheren
 Berichte; deren Zahlen und geprüfte Commitbindungen bleiben historische Belege.
+
+**Zweiter CI-Nachtrag:** Der anschließende vollständige
+[Lauf 44037739517](https://github.com/enpasos/skillpilot/actions/runs/44037739517)
+auf `bce7769b25b5c4f37dc68dace3484d21b590b5d6` endet mit **11 erfolgreichen
+und 3 fehlgeschlagenen Jobs**. Ursachen sind ein veralteter G8/G9-Bericht,
+alte Navigationsannahmen im Lernzielauswahltest und fehlende Python-
+Abhängigkeiten im integrierten Paketbau. Alle 16 Paketgrenztests bestehen
+nach der Abhängigkeitskorrektur in einer frischen Python-Umgebung.
+
+**Zusätzlich behobener Fokusfehler:** Die unabhängige Gegenprüfung der
+Navigation fand einen echten Laufzeitfehler: In der kanonischen Ansicht
+blieben beim Fokus auf Mathematik J8 nur 28 der 40 kanonischen Atome erhalten.
+Der Fokus liest jetzt bei kanonischen Wurzeln deren kanonische Unterziele;
+synthetische Einheiten behalten ihre tatsächlichen sichtbaren Kinder. Die
+sichtbaren Fokusmarkierungen erfassen genau die ausgewählten Blätter. Der
+unabhängige Review besteht für alle sechs Fälle aus kanonischer bzw.
+bayerischer Ansicht und drei direkten Routen: jeweils **40/40 Fokusatome**,
+vollständig erhaltene Lernbasis, 831 Gleichheitsprüfungen synthetischer
+Gruppen und 30 exakte Markierungsfälle. Die ursprüngliche Gegenprobe mit
+0/40 Atomen bei direkter Route hatte die App-Reihenfolge ohne vorhandene
+Scope-Metadaten nachgebildet; sie ist ausdrücklich kein bestätigter
+Laufzeitfehler. Die korrigierte Gegenprobe und der anschließende Review sind
+getrennt erhalten.
+
+Die Auswahlprüfung bewahrt den exakten kanonischen J8-Umfang mit 48 Knoten
+und 40 Atomen. Die Prisma-Prüfung verwendet ein tatsächlich ausgewähltes
+Kursziel und dessen 34 atomare Lernziele mit 33 kanonischen
+Voraussetzungspfaden. Die Quellverdrahtung von App über useAppCore bis zum
+Fokusmemo ist geprüft. Dies sind UI-Logik- und Quellenprüfungen, keine
+zusätzliche Browser-/HTTP-Abnahme. Der neue Fünfdateistand samt separatem Workflow-Reihenfolgenachtrag ist
+unabhängig freigegeben. Der Vite-Produktionsbau, Typecheck, Lint der geänderten
+TypeScript-Dateien, neun CI-Strukturtests und 42 nachfolgende lokale
+Prüfschritte bestehen; weitere unveränderte Frontend-Prüfungen laufen. Erfolgreiche vollständige
+PR-CI, Merge und frische Main-CI stehen weiterhin aus.
 
 - **Fortschritt:** weiterhin **K 0/13 und F 0/7 vollständig abgeschlossen**,
   **0 neue reale StagePlans aktiviert**. Geliefert werden 100 Mathematik- und
@@ -101,6 +135,8 @@ Berichte; deren Zahlen und geprüfte Commitbindungen bleiben historische Belege.
   [Physikquellen](physics-stage-view-source-units-2026-11-17.md),
   [unabhängige Reviews und aktuelle Kartenmessung](https://github.com/enpasos/skillpilot/blob/main/contracts/stage-plan-review-evidence/2026-11-16/composition-partial-order-v1/README.md).
   Zusätzlich: [unabhängige CI-Reparaturreviews, 240 Backendtests und Paketneubau](https://github.com/enpasos/skillpilot/blob/main/contracts/stage-plan-review-evidence/2026-11-17/partial-order-ci-repair-v1/README.md).
+  Der [zweite CI-Nachtrag mit unabhängigem Fokusreview](https://github.com/enpasos/skillpilot/blob/main/contracts/stage-plan-review-evidence/2026-11-17/partial-order-ci-followup-v2/README.md)
+  bindet die aktuelle Korrektur und bewahrt die früheren Gegenbefunde.
   Die Paket-Redistributionsfreigabe bleibt dort, wo menschliche Freigaben
   ausstehen, ausdrücklich offen. Keine Produktionsbereitstellung.
 - **Nächster Schritt:** erfolgreiche vollständige PR-CI, Integration und frische erfolgreiche

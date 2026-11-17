@@ -1,0 +1,270 @@
+diff --git a/.github/workflows/ci.yml b/.github/workflows/ci.yml
+index 5192c0c90a..86220d210a 100644
+--- a/.github/workflows/ci.yml
++++ b/.github/workflows/ci.yml
+@@ -846,6 +846,12 @@ jobs:
+       - *verify_repository_disk
+       - *use_application_node
+       - *install_application_dependencies
++      - name: Use Python for curriculum package boundary checks
++        uses: actions/setup-python@v6
++        with:
++          python-version: '3.12'
++      - name: Install curriculum package validation dependencies
++        run: python -m pip install -r ../scripts/curriculum_package_validation_requirements.txt
+       - *use_ubuntu_package_sources
+       - *install_pdf_validation_tools
+       - *install_playwright_chromium
+diff --git a/app/scripts/validateLearnerGoalSelection.ts b/app/scripts/validateLearnerGoalSelection.ts
+index 1af89c162e..36dd557840 100644
+--- a/app/scripts/validateLearnerGoalSelection.ts
++++ b/app/scripts/validateLearnerGoalSelection.ts
+@@ -19,7 +19,9 @@ import { prepareLandscapeEntries } from '../src/hooks/useLandscapes'
+ import {
+   applyCompositionViewProjection,
+   applyMatchedCompositionRouteGoalProjection,
++  applyPersonalCurriculumProjection,
+ } from '../src/utils/compositionViewRuntime'
++import { collectCompositionProjectionRoleGoalIds } from '../src/utils/authoring/compositionViewAuthoring'
+ import {
+   collapseLearnerSubjectRoots,
+   normalizeLearnerProjectedEntries,
+@@ -575,25 +577,70 @@ assert.equal(
+   'The historical combined prism ID must remain a non-atomic topic cluster.',
+ )
+ assert.deepEqual(
+-  mathGoalById.get(canonicalMathPrismGoalId)?.contains,
++  canonicalMathLandscape.goals.find((goal: UiGoal) => goal.id === canonicalMathPrismGoalId)?.contains,
+   [canonicalMathPrismVolumeGoalId, canonicalMathPrismSurfaceGoalId],
+   'The historical prism cluster must contain the two independent competencies exactly once.',
+ )
++assert.deepEqual(
++  mathGoalById.get(canonicalMathPrismGoalId)?.contains,
++  [],
++  'A route to the historical cluster must not promote its prerequisite-only children into course targets.',
++)
++const prismPreparationSource = prepareLandscapeEntries([canonicalMathLandscape])
++const prismCanonicalGoals = new Map(prismPreparationSource[0].goals.map((goal) => [goal.id, goal]))
++const prismSeedId = '0dded9c1-043e-57cb-82fc-792b391e9cb0'
++assert.ok(collectCompositionProjectionRoleGoalIds(genericMathSekIView.rootNodes, prismCanonicalGoals)
++  .targetGoalIds.has(prismSeedId), 'The prism fixture must start from a real current view target.')
++const prismRequiredPaths = new Map<string, string[]>([[prismSeedId, [prismSeedId]]])
++const prismQueue = [prismSeedId]
++for (let index = 0; index < prismQueue.length; index += 1) {
++  const id = prismQueue[index]
++  for (const prerequisiteId of [...(prismCanonicalGoals.get(id)?.requires ?? [])].sort()) {
++    assert.ok(prismCanonicalGoals.has(prerequisiteId), 'Every prism prerequisite must resolve in the canonical graph.')
++    if (prismRequiredPaths.has(prerequisiteId)) continue
++    prismRequiredPaths.set(prerequisiteId, [...prismRequiredPaths.get(id)!, prerequisiteId])
++    prismQueue.push(prerequisiteId)
++  }
++}
++assert.equal(prismRequiredPaths.size, 34, 'The synthetic learning basis must close over all canonical prerequisites.')
++prismPreparationSource[0].meta.personalCurriculumProjection = {
++  revision: 'atomic-prerequisite-learning-v1',
++  rootLandscapeId: prismPreparationSource[0].meta.landscapeId,
++  scopeRevision: 'synthetic-prism-bfs-fixture',
++  seedAtomicGoalIds: [prismSeedId],
++  targetGoalIds: [...prismRequiredPaths.keys()].sort(),
++  requiredByPaths: Object.fromEntries([...prismRequiredPaths].filter(([id]) => id !== prismSeedId)),
++}
++const prismPreparationEntries = normalizeLearnerProjectedEntries(applyPersonalCurriculumProjection(
++  compositionProjectedMathEntries,
++  prismPreparationSource,
++))
++const prismPreparationGoals = new Map(prismPreparationEntries.flatMap((entry) => entry.goals.map((goal) => [goal.id, goal] as const)))
++const prismPreparationChildren = buildDirectChildrenMap(prismPreparationGoals)
++const prismPreparationRoot = prismPreparationEntries[0].goals.find((goal) => goal.tags?.includes('root'))!
++const prismPreparationReachable = new Set<string>()
++const visitPrismPreparation = (id: string) => {
++  if (prismPreparationReachable.has(id)) return
++  prismPreparationReachable.add(id)
++  for (const childId of prismPreparationChildren.get(id) ?? []) visitPrismPreparation(childId)
++}
++visitPrismPreparation(prismPreparationRoot.id)
+ for (const prismChildId of [canonicalMathPrismVolumeGoalId, canonicalMathPrismSurfaceGoalId]) {
+-  const childPath = findVisiblePath(prismChildId, mathRootGoal!.id)
+-  assert.ok(childPath, 'Both independent prism competencies must remain reachable after the legacy atomic goal becomes a cluster.')
+-  assert.ok(
+-    childPath!.includes(canonicalMathPrismGoalId),
+-    'Prism volume and surface-area goals must remain under the historical prism path.',
++  assert.equal(
++    compositionProjectedMathEntries.flatMap((entry) => entry.compositionPreparationPlacements ?? [])
++      .filter((placement) => placement.goalId === prismChildId).length,
++    1,
++    'Each independent prism competency must have exactly one authored acquisition placement.',
+   )
++  assert.ok(prismPreparationReachable.has(prismChildId),
++    'A prism competency in the canonically closed synthetic learning basis must be reachable through its acquisition placement.')
+ }
+ 
+-const genericVisibleJ8StructureId = 'composition:de-de-gym-seki-math:structure:j8'
+-const genericJ8FractionsStructureId = 'composition:de-de-gym-seki-math:structure:j8-fractions'
+-const genericJ9PowersStructureId = 'composition:de-de-gym-seki-math:structure:j9-powers'
+ const canonicalIntegerExponentGoalId = '6596405a-9728-41df-9163-53670ec2a937'
+ const canonicalPowerFunctionGoalId = '66077296-a8f8-4645-938b-7c3424cb2f14'
+-const genericJ8ScopeGoalIds = buildGoalContainsClosure([canonicalMathJ8GoalId], mathGoalById)
++const canonicalMathGoalById = new Map<string, UiGoal>(prepareLandscapeEntries([canonicalMathLandscape])[0].goals
++  .map((goal) => [goal.id, goal]))
++const genericJ8ScopeGoalIds = buildGoalContainsClosure([canonicalMathJ8GoalId], canonicalMathGoalById)
+ // The persisted canonical scope keeps all 48 members (40 atoms), independently
+ // of how the repaired current view groups its visible members.
+ assert.equal(genericJ8ScopeGoalIds.size, 48)
+@@ -602,7 +649,7 @@ assert.equal(
+   'c0209d5435bb65d340103b84f675e5480955eb84bd002edfce2bd5a106a02783',
+   'Current presentation groups must not narrow or expand the persisted canonical J8 selection.',
+ )
+-assert.equal([...genericJ8ScopeGoalIds].filter((id) => mathGoalById.get(id)?.type === 'atomic').length, 40)
++assert.equal([...genericJ8ScopeGoalIds].filter((id) => canonicalMathGoalById.get(id)?.type === 'atomic').length, 40)
+ assert.ok(genericJ8ScopeGoalIds.has(canonicalIntegerExponentGoalId))
+ assert.ok(!genericJ8ScopeGoalIds.has(canonicalPowerFunctionGoalId))
+ 
+@@ -649,23 +696,20 @@ const genericJ8ScopeMarkerGoalIds = buildRenderedScopeMarkerGoalIds(
+   genericJ8ScopeGoalIds,
+   [canonicalMathJ8GoalId],
+ )
+-
+-assert.deepStrictEqual(
+-  Array.from(genericJ8ScopeMarkerGoalIds),
+-  [genericVisibleJ8StructureId, genericJ9PowersStructureId],
+-  'The unchanged canonical J8 scope needs both complete current groups: J8 and the separately placed integer-exponent laws.',
+-)
++const assertExactRenderedScopeCoverage = (
++  markers: Set<string>, scope: Set<string>, rootId: string, children: Map<string, string[]>,
++): void => {
++  const markedLeaves = new Set([...markers].flatMap((id) => [...renderedLeavesBelow(id, children)]))
++  const selectedVisibleLeaves = [...renderedLeavesBelow(rootId, children)].filter((id) => scope.has(id))
++  assert.deepEqual([...markedLeaves].sort(), selectedVisibleLeaves.sort(),
++    'Complete focus markers must cover every visible selected leaf and no unselected leaf.')
++}
+ assertCompleteScopeMarkers(genericJ8ScopeMarkerGoalIds, genericJ8ScopeGoalIds, mathChildrenByParent)
+-assert.deepEqual([...renderedLeavesBelow(genericJ9PowersStructureId, mathChildrenByParent)], [canonicalIntegerExponentGoalId])
+-assert.ok(
+-  [...renderedLeavesBelow('composition:de-de-gym-seki-math:structure:j9', mathChildrenByParent)]
+-    .some((id) => !genericJ8ScopeGoalIds.has(id)),
+-  'The broader J9 group contains unselected goals and must not replace the precise powers marker.',
+-)
+-assert.ok(
+-  !genericJ8ScopeMarkerGoalIds.has(genericJ8FractionsStructureId),
+-  'A hidden canonical J8 planned scope must not collapse to the Bruchterme child cluster in the generic Sek-I view.',
+-)
++assertExactRenderedScopeCoverage(genericJ8ScopeMarkerGoalIds, genericJ8ScopeGoalIds, mathRootGoal!.id, mathChildrenByParent)
++assert.ok(genericJ8ScopeMarkerGoalIds.size > 1,
++  'The persisted J8 scope must mark all complete current topic groups, rather than only the fractions group.')
++assert.ok([...genericJ8ScopeMarkerGoalIds].some((id) => renderedLeavesBelow(id, mathChildrenByParent).has(canonicalIntegerExponentGoalId)),
++  'The integer-exponent competency must remain represented in the current J8 focus markers.')
+ 
+ const storedLanguageValues = new Map<string, string>([
+   ['skillpilot_lang', 'de'],
+@@ -702,7 +746,7 @@ const genericJ8LearnerTreeMarkup = renderToStaticMarkup(
+       plannedScopeGoalIds: genericJ8ScopeGoalIds,
+       onTogglePlan: () => undefined,
+       onSelect: () => undefined,
+-      selectedId: genericVisibleJ8StructureId,
++      selectedId: [...genericJ8ScopeMarkerGoalIds][0],
+       audience: 'learner',
+       structureMode: 'content',
+       visibleChildrenByParentOverride: mathChildrenByParent,
+@@ -730,9 +774,8 @@ const bavariaProjectedMathEntries = normalizeLearnerProjectedEntries(
+ )
+ const bavariaMathGoalById = new Map(bavariaProjectedMathEntries[0].goals.map((goal) => [goal.id, goal] as const))
+ const bavariaMathChildrenByParent = buildDirectChildrenMap(bavariaMathGoalById)
+-const bavariaVisibleJ8StructureId = 'composition:de-by-gym-math-gk:structure:gk-sek-i-j8'
+-const bavariaJ8AdditionalCompetenciesId = 'composition:de-by-gym-math-gk:structure:gk-sek-i-j8-weitere-kompetenzen'
+-const bavariaPlannedJ8ScopeGoalIds = buildGoalContainsClosure([canonicalMathJ8GoalId], bavariaMathGoalById)
++const bavariaVisibleJ8StructureId = 'composition:de-by-gym-math-gk:structure:math-layout-seki-j8'
++const bavariaPlannedJ8ScopeGoalIds = buildGoalContainsClosure([canonicalMathJ8GoalId], canonicalMathGoalById)
+ const bavariaScopeDescendantCounts = buildRenderedScopeDescendantCountMap(
+   bavariaMathGoalById,
+   bavariaMathChildrenByParent,
+@@ -766,11 +809,8 @@ assert.ok(
+   (bavariaScopeDescendantCounts.get(bavariaVisibleJ8StructureId) ?? 0) > 0,
+   'A hidden canonical J8 planned scope must mark the visible Bavaria GK Jahrgangsstufe 8 structure.',
+ )
+-assert.deepStrictEqual(
+-  Array.from(bavariaScopeMarkerGoalIds),
+-  [bavariaJ8AdditionalCompetenciesId],
+-  'The legacy J8 selection must mark its complete current BY subgroup rather than imply selection of the additional acquisition task.',
+-)
++assertExactRenderedScopeCoverage(bavariaScopeMarkerGoalIds, bavariaPlannedJ8ScopeGoalIds,
++  bavariaProjectedMathEntries[0].goals.find((goal) => goal.tags?.includes('root'))!.id, bavariaMathChildrenByParent)
+ assert.ok(
+   !bavariaScopeMarkerGoalIds.has(canonicalMathJ8AxisInterceptGoalId),
+   'A hidden canonical J8 planned scope must not mark every scoped descendant as a separate planned goal.',
+@@ -938,7 +978,9 @@ for (const { directory, views } of subjectRootCases) {
+       )
+     }
+     if (directory === 'mathematik' || directory === 'physik') {
+-      assert.equal(subjectRootIdByAlias.size, 1, `${viewName}: remove the reported duplicate despite prerequisite-only siblings.`)
++      assert.ok((childrenByParent.get(root.id) ?? []).every((id) =>
++        allGoals.get(id)?.title.trim().toLocaleLowerCase('de') !== root.title.trim().toLocaleLowerCase('de')),
++      `${viewName}: no duplicate subject heading may remain below the root.`)
+     }
+ 
+     const markup = renderToStaticMarkup(createElement(LanguageProvider, null, createElement(CompetenceTree, {
+diff --git a/docs/qa-ci/status/gymnasium-duration-model-readiness.md b/docs/qa-ci/status/gymnasium-duration-model-readiness.md
+index 4d4b029f90..b9d7741afd 100644
+--- a/docs/qa-ci/status/gymnasium-duration-model-readiness.md
++++ b/docs/qa-ci/status/gymnasium-duration-model-readiness.md
+@@ -123,22 +123,22 @@ The important distinction is source evidence vs. runtime readiness: the source m
+ 
+ | Jurisdiction | Stage | Status | Policy | Source duration evidence | Duration views | Sek-I runtime view | Grade signals | Source goals | Source |
+ | --- | --- | --- | --- | --- | --- | --- | --- | ---: | --- |
+-| `DE-BB` | SekI | `reviewed:duration-neutral-policy` | duration-neutral-projection (G8, G9) | - | - | G8: de-de-gym-seki-math<br>G9: de-de-gym-seki-math | 1-10 | 289 | DE-BB - Mathematik Sekundarstufe I (Brandenburg, RLP 1-10 Source-Extraction) |
+-| `DE-BE` | SekI | `reviewed:duration-neutral-policy` | duration-neutral-projection (G8, G9) | - | - | G8: de-de-gym-seki-math<br>G9: de-de-gym-seki-math | 1-10 | 289 | DE-BE - Mathematik Sekundarstufe I (Berlin, RLP 1-10 Source-Extraction) |
++| `DE-BB` | SekI | `reviewed:duration-neutral-policy` | duration-neutral-projection (G8, G9) | - | - | G8: de-bb-gym-seki-math<br>G9: de-bb-gym-seki-math | 1-10 | 289 | DE-BB - Mathematik Sekundarstufe I (Brandenburg, RLP 1-10 Source-Extraction) |
++| `DE-BE` | SekI | `reviewed:duration-neutral-policy` | duration-neutral-projection (G8, G9) | - | - | G8: de-be-gym-seki-math<br>G9: de-be-gym-seki-math | 1-10 | 289 | DE-BE - Mathematik Sekundarstufe I (Berlin, RLP 1-10 Source-Extraction) |
+ | `DE-BW` | SekI | `reviewed:duration-neutral-policy` | duration-neutral-projection (G8, G9) | - | - | G8: de-bw-gym-seki-math<br>G9: de-bw-gym-seki-math | J5_6, J7_8, J9_10 | 278 | Mathematik Sekundarstufe I (Baden-Wuerttemberg, BP2016 Source-Extraction) |
+-| `DE-BY` | SekI+SekII | `reviewed:single-duration-source-policy` | single-duration-source (G9) | - | - | G8: de-de-gym-seki-math<br>G9: de-de-gym-seki-math | 10, 11, 12, 12/13, 13, 5, 5-13, 6, 7, 8, 9 | 468 | DE-BY - Mathematik Gymnasium (Bayern, LehrplanPLUS Source-Extraction) |
+-| `DE-HB` | SekI | `reviewed:single-duration-source-policy` | single-duration-source (G8) | - | - | G8: de-de-gym-seki-math<br>G9: de-de-gym-seki-math | 5, 5-10, 5-9, 6/8, 9 | 256 | Mathematik Sekundarstufe I (Bremen, Bildungsplan 2006 mit 2022-Einschraenkung Source-Extraction) |
++| `DE-BY` | SekI+SekII | `reviewed:single-duration-source-policy` | single-duration-source (G9) | - | - | G8: de-by-gym-seki-math<br>G9: de-by-gym-seki-math | 10, 11, 12, 12/13, 13, 5, 5-13, 6, 7, 8, 9 | 468 | DE-BY - Mathematik Gymnasium (Bayern, LehrplanPLUS Source-Extraction) |
++| `DE-HB` | SekI | `reviewed:single-duration-source-policy` | single-duration-source (G8) | - | - | G8: de-hb-gym-seki-math<br>G9: de-hb-gym-seki-math | 5, 5-10, 5-9, 6/8, 9 | 256 | Mathematik Sekundarstufe I (Bremen, Bildungsplan 2006 mit 2022-Einschraenkung Source-Extraction) |
+ | `DE-HE` | SekI | `ready:dual-source-and-views` | dual-duration-different-projection (G8, G9) | G8, G9 | G8, G9 | G8: de-he-gym-seki-math-g8<br>G9: de-he-gym-seki-math-g9 | 10, 5, 5/6, 6, 7, 7/8, 8, 9, 9/10, J5_6, J7_8, J9_10 | 601 | Kerncurriculum Mathematik - Sekundarstufe I (Gymnasium) |
+-| `DE-HH` | SekI | `reviewed:single-duration-source-policy` | single-duration-source (G8) | - | - | G8: de-de-gym-seki-math<br>G9: de-de-gym-seki-math | 5/6, 5/6,7/8, 7/8, 9/10 | 438 | Mathematik Sekundarstufe I (Hamburg, Bildungsplan 2022 Source-Extraction) |
+-| `DE-MV` | SekI | `reviewed:single-duration-source-policy` | single-duration-source (G8) | - | - | G8: de-de-gym-seki-math<br>G9: de-de-gym-seki-math | 5/6, 7-10 | 369 | DE-MV - Mathematik Sekundarstufe I (Mecklenburg-Vorpommern, Rahmenplaene 2020/2019 Source-Extraction) |
+-| `DE-NI` | SekI | `reviewed:single-duration-source-policy` | single-duration-source (G9) | - | - | G8: de-de-gym-seki-math<br>G9: de-de-gym-seki-math | 5-10 | 361 | DE-NI - Mathematik Sekundarstufe I (Niedersachsen, Kerncurriculum Source-Extraction) |
+-| `DE-NW` | SekI | `reviewed:single-duration-source-policy` | single-duration-source (G9) | G9 | - | G8: de-de-gym-seki-math<br>G9: de-de-gym-seki-math | - | 207 | DE-NW - Mathematik Sekundarstufe I (Nordrhein-Westfalen, KLP 2019 Source-Extraction) |
++| `DE-HH` | SekI | `reviewed:single-duration-source-policy` | single-duration-source (G8) | - | - | G8: de-hh-gym-seki-math<br>G9: de-hh-gym-seki-math | 5/6, 5/6,7/8, 7/8, 9/10 | 438 | Mathematik Sekundarstufe I (Hamburg, Bildungsplan 2022 Source-Extraction) |
++| `DE-MV` | SekI | `reviewed:single-duration-source-policy` | single-duration-source (G8) | - | - | G8: de-mv-gym-seki-math<br>G9: de-mv-gym-seki-math | 5/6, 7-10 | 369 | DE-MV - Mathematik Sekundarstufe I (Mecklenburg-Vorpommern, Rahmenplaene 2020/2019 Source-Extraction) |
++| `DE-NI` | SekI | `reviewed:single-duration-source-policy` | single-duration-source (G9) | - | - | G8: de-ni-gym-seki-math<br>G9: de-ni-gym-seki-math | 5-10 | 361 | DE-NI - Mathematik Sekundarstufe I (Niedersachsen, Kerncurriculum Source-Extraction) |
++| `DE-NW` | SekI | `reviewed:single-duration-source-policy` | single-duration-source (G9) | G9 | - | G8: de-nw-gym-seki-math<br>G9: de-nw-gym-seki-math | - | 207 | DE-NW - Mathematik Sekundarstufe I (Nordrhein-Westfalen, KLP 2019 Source-Extraction) |
+ | `DE-RP` | SekI | `ready:dual-source-and-views` | dual-duration-different-projection (G8, G9) | - | G8, G9 | G8: de-rp-gym-seki-math-g8<br>G9: de-rp-gym-seki-math-g9 | 5-9/10, 7/8, 9/10 | 255 | DE-RP - Mathematik Sekundarstufe I (Rheinland-Pfalz, Rahmenlehrplan 2007 Source-Extraction) |
+ | `DE-SH` | SekI | `ready:dual-source-and-views` | dual-duration-different-projection (G8, G9) | - | G8, G9 | G8: de-sh-gym-seki-math-g8<br>G9: de-sh-gym-seki-math-g9 | - | 346 | DE-SH - Mathematik Sekundarstufe I (Schleswig-Holstein, Fachanforderungen 2024 Source-Extraction) |
+-| `DE-SL` | SekI | `reviewed:single-duration-source-policy` | single-duration-source (G9) | G9 | - | G8: de-de-gym-seki-math<br>G9: de-de-gym-seki-math | 10, 5-6, 5/6, 5/6,7,8,9, 7, 8, 9 | 818 | DE-SL - Mathematik Sekundarstufe I (Saarland, Gymnasium G9 2023-2026 Source-Extraction) |
+-| `DE-SN` | SekI | `reviewed:single-duration-source-policy` | single-duration-source (G8) | - | - | G8: de-de-gym-seki-math<br>G9: de-de-gym-seki-math | 5-10 | 327 | DE-SN - Mathematik Sekundarstufe I (Sachsen, Lehrplan Gymnasium 2019 Source-Extraction) |
+-| `DE-ST` | SekI | `reviewed:single-duration-source-policy` | single-duration-source (G8) | - | - | G8: de-de-gym-seki-math<br>G9: de-de-gym-seki-math | - | 424 | DE-ST - Mathematik Sekundarstufe I (Sachsen-Anhalt, Fachlehrplan Gymnasium 2019 Source-Extraction) |
+-| `DE-TH` | SekI | `reviewed:single-duration-source-policy` | single-duration-source (G8) | - | - | G8: de-de-gym-seki-math<br>G9: de-de-gym-seki-math | 5-6, 5/6, 7-10 | 356 | DE-TH - Mathematik Sekundarstufe I (Thueringen, Lehrplan Gymnasium 2018/2025 Source-Extraction) |
++| `DE-SL` | SekI | `reviewed:single-duration-source-policy` | single-duration-source (G9) | G9 | - | G8: de-sl-gym-seki-math<br>G9: de-sl-gym-seki-math | 10, 5-6, 5/6, 5/6,7,8,9, 7, 8, 9 | 818 | DE-SL - Mathematik Sekundarstufe I (Saarland, Gymnasium G9 2023-2026 Source-Extraction) |
++| `DE-SN` | SekI | `reviewed:single-duration-source-policy` | single-duration-source (G8) | - | - | G8: de-sn-gym-seki-math<br>G9: de-sn-gym-seki-math | 5-10 | 327 | DE-SN - Mathematik Sekundarstufe I (Sachsen, Lehrplan Gymnasium 2019 Source-Extraction) |
++| `DE-ST` | SekI | `reviewed:single-duration-source-policy` | single-duration-source (G8) | - | - | G8: de-st-gym-seki-math<br>G9: de-st-gym-seki-math | - | 424 | DE-ST - Mathematik Sekundarstufe I (Sachsen-Anhalt, Fachlehrplan Gymnasium 2019 Source-Extraction) |
++| `DE-TH` | SekI | `reviewed:single-duration-source-policy` | single-duration-source (G8) | - | - | G8: de-th-gym-seki-math<br>G9: de-th-gym-seki-math | 5-6, 5/6, 7-10 | 356 | DE-TH - Mathematik Sekundarstufe I (Thueringen, Lehrplan Gymnasium 2018/2025 Source-Extraction) |
+ 
+ ## M6+ Source Matrix
+ 
+@@ -526,17 +526,17 @@ The important distinction is source evidence vs. runtime readiness: the source m
+ | Latein | `DE-SN` | SekI+SekII | `reviewed:single-duration-source-policy` | single-duration-source (G8) | - | - | G8: de-de-gym-seki-latin<br>G9: de-de-gym-seki-latin | - | 880 | Latein Gymnasium (Sachsen, Lehrplan 2019 Source-Extraction) |
+ | Latein | `DE-ST` | SekI+SekII | `reviewed:single-duration-source-policy` | single-duration-source (G8) | - | - | G8: de-de-gym-seki-latin<br>G9: de-de-gym-seki-latin | 10, 7/8, 9 | 264 | Latein Gymnasium (Sachsen-Anhalt, Fachlehrplan 2022 Source-Extraction) |
+ | Latein | `DE-TH` | SekI+SekII | `reviewed:single-duration-source-policy` | single-duration-source (G8) | - | - | G8: de-de-gym-seki-latin<br>G9: de-de-gym-seki-latin | - | 906 | Latein Gymnasium (Thueringen, Lehrplan 2024 Source-Extraction) |
+-| Physik | `DE-BW` | SekI | `reviewed:duration-neutral-policy` | duration-neutral-projection (G8, G9) | - | - | G8: de-de-gym-seki-physics<br>G9: de-de-gym-seki-physics | - | 101 | Physik Sekundarstufe I (Baden-Wuerttemberg, BP2016 V2 Source-Extraction) |
+-| Physik | `DE-BY` | SekI+SekII | `reviewed:single-duration-source-policy` | single-duration-source (G9) | - | - | G8: de-de-gym-seki-physics<br>G9: de-de-gym-seki-physics | - | 301 | DE-BY - Physik Gymnasium (Bayern, LehrplanPLUS Source-Extraction) |
+-| Physik | `DE-HB` | SekI | `reviewed:single-duration-source-policy` | single-duration-source (G8) | - | - | G8: de-de-gym-seki-physics<br>G9: de-de-gym-seki-physics | 10, 5-9 | 68 | DE-HB - Physik Sekundarstufe I (Bremen, Bildungsplan 2006/2022 Source-Extraction) |
++| Physik | `DE-BW` | SekI | `reviewed:duration-neutral-policy` | duration-neutral-projection (G8, G9) | - | - | G8: de-bw-gym-seki-physics<br>G9: de-bw-gym-seki-physics | - | 101 | Physik Sekundarstufe I (Baden-Wuerttemberg, BP2016 V2 Source-Extraction) |
++| Physik | `DE-BY` | SekI+SekII | `reviewed:single-duration-source-policy` | single-duration-source (G9) | - | - | G8: de-by-gym-seki-physics<br>G9: de-by-gym-seki-physics | - | 301 | DE-BY - Physik Gymnasium (Bayern, LehrplanPLUS Source-Extraction) |
++| Physik | `DE-HB` | SekI | `reviewed:single-duration-source-policy` | single-duration-source (G8) | - | - | G8: de-hb-gym-seki-physics<br>G9: de-hb-gym-seki-physics | 10, 5-9 | 68 | DE-HB - Physik Sekundarstufe I (Bremen, Bildungsplan 2006/2022 Source-Extraction) |
+ | Physik | `DE-HE` | SekI | `ready:dual-source-and-views` | dual-duration-different-projection (G8, G9) | G8, G9 | G8, G9 | G8: de-he-gym-seki-physics-g8<br>G9: de-he-gym-seki-physics-g9 | 6 | 0 | Lehrplan Physik – Gymnasialer Bildungsgang, Jahrgangsstufen 6G bis 9G |
+ | Physik | `DE-HE` | SekI | `ready:dual-source-and-views` | dual-duration-different-projection (G8, G9) | G9 | G8, G9 | G8: de-he-gym-seki-physics-g8<br>G9: de-he-gym-seki-physics-g9 | - | 48 | Lehrplan Physik Gymnasium Hessen G9 |
+-| Physik | `DE-HH` | SekI | `reviewed:single-duration-source-policy` | single-duration-source (G8) | - | - | G8: de-de-gym-seki-physics<br>G9: de-de-gym-seki-physics | - | 128 | Physik Sekundarstufe I (Hamburg, Bildungsplan 2022 Source-Extraction) |
+-| Physik | `DE-MV` | SekI | `reviewed:single-duration-source-policy` | single-duration-source (G8) | - | - | G8: de-de-gym-seki-physics<br>G9: de-de-gym-seki-physics | 7, 7-10, 8, 9 | 142 | DE-MV - Physik Sekundarstufe I (Mecklenburg-Vorpommern, Rahmenplan 2022 Source-Extraction) |
+-| Physik | `DE-SL` | SekI | `reviewed:single-duration-source-policy` | single-duration-source (G9) | G9 | - | G8: de-de-gym-seki-physics<br>G9: de-de-gym-seki-physics | 10, 7, 8, 9 | 670 | DE-SL - Physik Sekundarstufe I (Saarland, Gymnasium G9 2023-2026 Source-Extraction) |
+-| Physik | `DE-SN` | SekI | `reviewed:single-duration-source-policy` | single-duration-source (G8) | - | - | G8: de-de-gym-seki-physics<br>G9: de-de-gym-seki-physics | 6, 7 | 276 | DE-SN - Physik Sekundarstufe I (Sachsen, Lehrplan Gymnasium 2019 Source-Extraction) |
+-| Physik | `DE-ST` | SekI | `reviewed:single-duration-source-policy` | single-duration-source (G8) | - | - | G8: de-de-gym-seki-physics<br>G9: de-de-gym-seki-physics | 10, 6, 9 | 387 | DE-ST - Physik Sekundarstufe I (Sachsen-Anhalt, Fachlehrplan Gymnasium 2022 Source-Extraction) |
+-| Physik | `DE-TH` | SekI | `reviewed:single-duration-source-policy` | single-duration-source (G8) | - | - | G8: de-de-gym-seki-physics<br>G9: de-de-gym-seki-physics | 7-10 | 179 | DE-TH - Physik Sekundarstufe I (Thueringen, Lehrplan Gymnasium 2012 Source-Extraction) |
++| Physik | `DE-HH` | SekI | `reviewed:single-duration-source-policy` | single-duration-source (G8) | - | - | G8: de-hh-gym-seki-physics<br>G9: de-hh-gym-seki-physics | - | 128 | Physik Sekundarstufe I (Hamburg, Bildungsplan 2022 Source-Extraction) |
++| Physik | `DE-MV` | SekI | `reviewed:single-duration-source-policy` | single-duration-source (G8) | - | - | G8: de-mv-gym-seki-physics<br>G9: de-mv-gym-seki-physics | 7, 7-10, 8, 9 | 142 | DE-MV - Physik Sekundarstufe I (Mecklenburg-Vorpommern, Rahmenplan 2022 Source-Extraction) |
++| Physik | `DE-SL` | SekI | `reviewed:single-duration-source-policy` | single-duration-source (G9) | G9 | - | G8: de-sl-gym-seki-physics<br>G9: de-sl-gym-seki-physics | 10, 7, 8, 9 | 670 | DE-SL - Physik Sekundarstufe I (Saarland, Gymnasium G9 2023-2026 Source-Extraction) |
++| Physik | `DE-SN` | SekI | `reviewed:single-duration-source-policy` | single-duration-source (G8) | - | - | G8: de-sn-gym-seki-physics<br>G9: de-sn-gym-seki-physics | 6, 7 | 276 | DE-SN - Physik Sekundarstufe I (Sachsen, Lehrplan Gymnasium 2019 Source-Extraction) |
++| Physik | `DE-ST` | SekI | `reviewed:single-duration-source-policy` | single-duration-source (G8) | - | - | G8: de-st-gym-seki-physics<br>G9: de-st-gym-seki-physics | 10, 6, 9 | 387 | DE-ST - Physik Sekundarstufe I (Sachsen-Anhalt, Fachlehrplan Gymnasium 2022 Source-Extraction) |
++| Physik | `DE-TH` | SekI | `reviewed:single-duration-source-policy` | single-duration-source (G8) | - | - | G8: de-th-gym-seki-physics<br>G9: de-th-gym-seki-physics | 7-10 | 179 | DE-TH - Physik Sekundarstufe I (Thueringen, Lehrplan Gymnasium 2012 Source-Extraction) |
+ | Politik und Wirtschaft | `DE-BB` | SekI | `reviewed:duration-neutral-policy` | duration-neutral-projection (G8, G9) | - | - | G8: de-bb-gym-politics-economics-seki<br>G9: de-bb-gym-politics-economics-seki | 1-10 | 113 | Politik und Wirtschaft Sekundarstufe I (Brandenburg, RLP 2015 FULL Source-Extraction) |
+ | Politik und Wirtschaft | `DE-BE` | SekI | `reviewed:duration-neutral-policy` | duration-neutral-projection (G8, G9) | - | - | G8: de-be-gym-politics-economics-seki<br>G9: de-be-gym-politics-economics-seki | 1-10 | 113 | Politik und Wirtschaft Sekundarstufe I (Berlin, RLP 2015 FULL Source-Extraction) |
+ | Politik und Wirtschaft | `DE-HB` | SekI | `reviewed:single-duration-source-policy` | single-duration-source (G8) | - | - | G8: de-hb-gym-politics-economics-seki<br>G9: de-hb-gym-politics-economics-seki | - | 71 | Politik und WAT Sekundarstufe I (Bremen, Bildungsplan FULL Source-Extraction) |

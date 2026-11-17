@@ -1,0 +1,55 @@
+TAP version 13
+# Subtest: marking a draft ready starts the complete check for that head
+ok 1 - marking a draft ready starts the complete check for that head
+  ---
+  duration_ms: 2.511251
+  ...
+# Subtest: the quick tier always runs and never waits for another job
+ok 2 - the quick tier always runs and never waits for another job
+  ---
+  duration_ms: 0.741744
+  ...
+# Subtest: every other job belongs to the complete check and cannot be skipped otherwise
+ok 3 - every other job belongs to the complete check and cannot be skipped otherwise
+  ---
+  duration_ms: 0.462728
+  ...
+# Subtest: jobs that consume the goal books wait for the same-run verified build
+ok 4 - jobs that consume the goal books wait for the same-run verified build
+  ---
+  duration_ms: 1.433786
+  ...
+# Subtest: the quick tier only repeats checks; it never is the only place of one
+ok 5 - the quick tier only repeats checks; it never is the only place of one
+  ---
+  duration_ms: 0.865652
+  ...
+# Subtest: the complete check runs the complete backend suite exactly once
+ok 6 - the complete check runs the complete backend suite exactly once
+  ---
+  duration_ms: 0.627438
+  ...
+# Subtest: split jobs keep the environment of the job they were split from
+ok 7 - split jobs keep the environment of the job they were split from
+  ---
+  duration_ms: 0.900254
+  ...
+# Subtest: complete curriculum CI enforces the catalog and policy against the trusted base
+ok 8 - complete curriculum CI enforces the catalog and policy against the trusted base
+  ---
+  duration_ms: 4.9969
+  ...
+# Subtest: every semantic-route consumer fetches and inherits the exact PR or previous-push policy base
+ok 9 - every semantic-route consumer fetches and inherits the exact PR or previous-push policy base
+  ---
+  duration_ms: 0.820949
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 290.641939

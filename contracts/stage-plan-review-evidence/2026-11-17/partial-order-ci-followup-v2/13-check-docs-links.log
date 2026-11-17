@@ -1,0 +1,35 @@
+
+> skillpilot@0.0.0 precheck:docs-links
+> npm run docs:compendia:web
+
+
+> skillpilot@0.0.0 docs:compendia:web
+> python3 ../scripts/build_compendia.py --web-and-tex
+
+[skill-graph] Verified canonical single-source schemas, terminology, and DE/EN AST parity.
+[skill-graph] Materialized 16 Web Markdown pages and DE/EN LaTeX sources.
+[skill-graph-architecture] Verified canonical single-source schemas, terminology, and DE/EN AST parity.
+[skill-graph-architecture] Materialized 26 Web Markdown pages and DE/EN LaTeX sources.
+[whitepaper] Verified canonical single-source schemas, terminology, and DE/EN AST parity.
+[whitepaper] Materialized 2 Web Markdown pages and DE/EN LaTeX sources.
+[glossary] Verified canonical single-source schemas, terminology, and DE/EN AST parity.
+[glossary] Materialized 2 Web Markdown pages and DE/EN LaTeX sources.
+[didactic] Verified canonical single-source schemas, terminology, and DE/EN AST parity.
+[didactic] Materialized 16 Web Markdown pages and DE/EN LaTeX sources.
+[runtime-workflows] Verified canonical single-source schemas, terminology, and DE/EN AST parity.
+[runtime-workflows] Materialized 20 Web Markdown pages and DE/EN LaTeX sources.
+[production-pipelines] Verified canonical single-source schemas, terminology, and DE/EN AST parity.
+[production-pipelines] Materialized 12 Web Markdown pages and DE/EN LaTeX sources.
+[qa-ci] Verified canonical single-source schemas, terminology, and DE/EN AST parity.
+[qa-ci] Materialized 12 Web Markdown pages and DE/EN LaTeX sources.
+[qa-ci-lanes] Verified canonical single-source schemas, terminology, and DE/EN AST parity.
+[qa-ci-lanes] Materialized 28 Web Markdown pages and DE/EN LaTeX sources.
+[security] Verified canonical single-source schemas, terminology, and DE/EN AST parity.
+[security] Materialized 6 Web Markdown pages and DE/EN LaTeX sources.
+[dev-handbook] Verified canonical single-source schemas, terminology, and DE/EN AST parity.
+[dev-handbook] Materialized 18 Web Markdown pages and DE/EN LaTeX sources.
+
+> skillpilot@0.0.0 check:docs-links
+> tsx scripts/checkMarkdownLinks.ts docs
+
+Markdown link check passed for 520 files.
