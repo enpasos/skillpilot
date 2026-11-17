@@ -40,11 +40,11 @@ Der Kontext wird abgeleitet, bevor Aufgaben, Karten und Bilder der Einheit gesch
 
 ### Lernen, nachweisen und weiterlernen {#sec:sga-ud-loop anchors="3-learn-demonstrate-and-continue-learning"}
 
-Der Lernverlauf beginnt mit einer sinnstiftenden Leitfrage und einem klaren Ausblick: Was kann ich danach, und wozu brauche ich es? Benötigtes Vorwissen wird konkret benannt. Es folgen Erarbeitung und Übung mit Rückmeldung. Der Coach darf erklären, strukturieren und bei Schwierigkeiten unterstützen.
+Eine Leitfrage macht das Lernversprechen greifbar. Was können Lernende am Ende, und wozu brauchen sie es? Für Einheiten mit eigenen Prüfungen ist dafür ein kurzer Auftakt vorgeschlagen. Anschließend benennt der Coach das nötige Vorwissen und begleitet das Erarbeiten und Üben mit Rückmeldungen. [Einheitsauftakt in der Graph-Definition (§8.2)](https://enpasos.github.io/skillpilot/concept/skill-graph/context-and-views.de/#sec-orientation)
 
-Die anschließende Prüfung verlangt die beanspruchte selbstständige Anwendung. Kleinschrittige Hilfe, die genau die entscheidende Modellwahl oder Begründung vorgibt, taugt als Übung, weist aber diese Selbstständigkeit nicht nach. Aufgabenvarianten müssen dasselbe Lernversprechen tragen und dürfen nicht bloß die geübte Oberfläche wiederholen.
+In der Prüfung zeigen Lernende, ob sie das Gelernte selbstständig anwenden können. Wer beispielsweise selbst ein Modell wählen soll, muss diese Entscheidung in der Aufgabe auch treffen können. Beim Üben darf der Coach dabei helfen.
 
-Fehlt der Nachweis, wird die konkrete Lücke erläutert, etwa die Verwechslung zweier Größen. Es folgen gezielte Weiterarbeit und Übung sowie anschließend eine frische Prüfungsvariante mit gleichwertigem Gehalt. Ein Wiederholungsversuch darf das Problem nicht durch Auswendiglernen einer identischen Aufgabe umgehen. Andernorts gültig erworbene Kompetenznachweise werden dadurch nicht gelöscht.
+Verwechselt die Person etwa Geschwindigkeit und Beschleunigung, übt sie gezielt diesen Unterschied. Dieselbe Aufgabe darf sie auch nach der Lösungsanzeige erneut bearbeiten. Eine gleichwertige Aufgabe in einer neuen Situation zeigt besser, ob sie das Modell jetzt selbstständig wählen kann. Für beide Aufgaben gelten dasselbe Lernversprechen und dieselben Bestehensregeln. Bereits erworbene Nachweise anderer Einheiten bleiben gültig.
 
 Im vorgesehenen Lernfluss führen `after` und die Lernweise „Einheit für Einheit" ([Einheitsfolge](repo:docs/concept/skill-graph/learning-unit-progression.md)) geschlossen durch die begonnene Einheit bis zu ihren Nachweisen, ohne technische Einheitssperren aufzubauen: `after` verändert weder atomaren Bedarf noch Mastery oder Frontier, Lernende dürfen Prüfungen jederzeit direkt versuchen, ein nicht bestandener Versuch speichert kein negatives Ergebnis, und auf Prüfungsziele selbst zeigt keine `requires`-Kante späterer Fachziele.
 
@@ -205,17 +205,17 @@ Alle wirksamen Voraussetzungen bleiben maßgeblich, einschließlich Vererbung, C
 
 Vor jeder Implementierungsplanung sind für jeden Kandidaten zu beantworten:
 
-1. Was können Lernende danach selbstständig, und warum ist das bedeutsam?
+1. Was können Lernende danach selbstständig, und wozu brauchen sie es?
 2. Bildet der Kandidat einen kanonischen Cluster (E1), und bleibt er als Blatteinheit in allen 16 Bundesländern ungeteilt in einer einzigen Planeinheit?
 3. Besitzt der gesamte Kindblockgraph aus atomarem Bedarf und `after` an jeder Ebene eine azyklische Ordnung, sodass jede Einheit am Stück lernbar ist (E2)?
 4. Welche konkreten Eingangskompetenzen werden benötigt, stehen sie -- auch fachübergreifend -- rechtzeitig bereit, und ist kreuzender Bedarf zu Geschwistereinheiten vollständig und redundanzfrei durch `after` geordnet, ohne dass `requires` auf Prüfungen zeigt (E3, E4)?
 5. Was sichert der Wissenskontext der Einheit allein über `requires`, was ist noch nicht gesichert, und bleiben alle Aufgaben, Karten, Bilder und Beispiele streng im Kontext?
 6. Welche vorhandenen Ziele gehören direkt zur Einheit (`Own(U)`), welche Kindeinheiten besitzt sie, und gehört jedes Ziel genau einer Einheit direkt an (R4)?
-7. Worin besteht der zentrale Erkenntnisschritt, und soll die Einheit bereits eine **Einheit mit Prüfungen** (`coverageReviews`) oder zunächst eine prüfungsfreie Obereinheit sein?
+7. Worin besteht der zentrale Erkenntnisschritt? Braucht die Einheit eigene Prüfungen mit Deckungsreviews, oder ordnet sie zunächst ihre Untereinheiten? Bei eigenen Prüfungen: Welches Praxisbeispiel eignet sich für den vorgeschlagenen kurzen Auftakt?
 8. Falls Einheit mit Prüfungen: Welche Aufgaben und regulären Bewertungsregeln im Einheits-Cluster weisen das gesamte Versprechen nach, liegt jedes eigene Inhaltsziel (inkl. experimenteller Ziele) auf einem Pfad von einer eigenen Prüfung (R1), und trägt mindestens eine solche Prüfung dafür geprüfte Evidenz (R2)?
 9. Beansprucht jede Prüfung Abdeckung ausschließlich für Ziele, die sie direkt oder transitiv voraussetzt (R3)?
 10. Könnte jemand bestehen, obwohl ihm eine wesentliche Kompetenz fehlt?
-11. Welches gezielte Weiterlernen und welche frische Prüfung folgen auf eine solche Lücke?
+11. Was kann die Person nach einer solchen Lücke gezielt üben? Woran ließe sich in einer gleichwertigen anderen Aufgabe erkennen, dass sie das Gelernte selbstständig anwenden kann?
 12. Sind freie Übungsaufgaben oder Abiturklausuren sauber von eigenen Anerkennungsprüfungen getrennt?
 13. Welche Quellen (*geführt in*) und vollständigen Zielbedeutungen begründen Umfang, Lernplatz (*steht in*) und Grenze?
 

@@ -158,8 +158,8 @@ def transitive_demand(lang="de"):
         arrow(ax, (7.25, y), (9.05, y), active=not passed)
         ax.text(6, y-1.0, r"$N_U = \varnothing$;  $I_U = \{A,B\}$" if passed else
                 r"$N_U = \{Q,B,A\}$;  $I_U = \varnothing$", ha="center")
-    ax.text(6, .16, t(lang, "Unabhängige Ausgangslagen, keine zeitliche Folge. Q → A wäre redundant.",
-                      "Independent starting states, not a temporal sequence. Q → A would be redundant."),
+    ax.text(6, .16, t(lang, "Alle Mengen zeigen den Ausschnitt {Q, B, A}. Der Einstieg ist bereits abgeschlossen.",
+                      "All sets are restricted to {Q, B, A}. The orientation is already complete."),
             ha="center", fontsize=8.7)
     return fig
 
@@ -185,8 +185,8 @@ def local_recognition(lang="de"):
     ax.text(6, 2.0, t(lang, "a ist für q₂ bereits erfüllt", "a is already satisfied for q₂"),
             ha="center", fontsize=8.8, color=BLUE)
     ax.text(6, .78, r"$M = \{q_1\}$;  $I_{U1} = \{a,b\}$;  $M_{eff} = \{q_1,a,b\}$", ha="center")
-    ax.text(6, .26, t(lang, "U2, Fokuswechsel oder Planwahl öffnen die belegte Anwendung nicht erneut.",
-                      "U2, focus changes, or plan switches do not reopen demonstrated application."),
+    ax.text(6, .26, t(lang, "Alle Mengen gelten für die gezeigten Ziele. Beide Einstiege sind bereits abgeschlossen.",
+                      "All sets are restricted to the goals shown. Both orientations are already complete."),
             ha="center", fontsize=9)
     return fig
 
@@ -196,8 +196,8 @@ def protected_support(lang="de"):
     assert demand(vertices, {"q", "a", "k"}, {"q", "k", "h"},
                   {("q", "a"), ("q", "h")}, {"q"}, exams={"q"}) == ({"k"}, {"a"})
     fig, ax = canvas(4.5)
-    boundary(ax, .3, 2.0, 7.45, 5.1, t(lang, "Eigene Erwerbsziele Own(U) = {q, a, k}",
-                                       "Own acquisition goals Own(U) = {q, a, k}"))
+    boundary(ax, .3, 2.0, 7.45, 5.1, t(lang, "Gezeigte eigene Ziele der Einheit U",
+                                       "Own goals of unit U shown here"))
     box(ax, 2.05, 5.6, t(lang, "q · Prüfung", "q · assessment"), "Mastery = 1", "explicit")
     box(ax, 2.05, 3.35, t(lang, "a · gewöhnlich", "a · content"),
         t(lang, "implizit beherrscht", "implicitly mastered"), "implicit")
@@ -212,10 +212,10 @@ def protected_support(lang="de"):
     ax.text(5.95, 4.65, t(lang, "k bleibt eine eigene\nAbschlusspflicht",
                           "k remains an own\ncompletion obligation"), ha="center", fontsize=9)
     ax.text(6, 1.35, r"$P_U = \{q,k\}$;  $N_U = \{k\}$;  $I_U = \{a\}$", ha="center")
-    ax.text(6, .75, t(lang, "Effektiv beherrscht: 2 von 3 eigenen Zielen. Ausdrückliche Mastery: 1 von 3.",
-                      "Effectively mastered: 2 of 3 own goals. Explicit mastery: 1 of 3."), ha="center", fontsize=10)
-    ax.text(6, .22, t(lang, "h zählt nicht zum Nenner. k braucht seinen eigenen verifizierten Abruf.",
-                      "h is outside the denominator. k requires its own verified recall."), ha="center", fontsize=9)
+    ax.text(6, .75, t(lang, "Im Ausschnitt sind 2 von 3 eigenen Zielen erfüllt, davon eines ausdrücklich.",
+                      "Within this view, 2 of 3 own goals are complete, one explicitly."), ha="center", fontsize=10)
+    ax.text(6, .22, t(lang, "Alle Mengen gelten für die gezeigten Ziele. Der Einstieg ist bereits abgeschlossen.",
+                      "All sets are restricted to the goals shown. The orientation is already complete."), ha="center", fontsize=9)
     return fig
 
 
@@ -418,8 +418,8 @@ def shared_local_assessments(lang="de"):
                 ha="center", fontsize=10.5)
         ax.text(3+offset, 1.98, r"$N_U=\varnothing;\ I_U=\{A\}$" if both else
                 r"$N_U=\{Q_2,A\};\ I_U=\varnothing$", ha="center", fontsize=10.5)
-    ax.text(6, 1.04, (r"Derselbe lokale Vertrag: $\operatorname{Own}(U)=\{Q_1,Q_2,A\}$, $P_U=\{Q_1,Q_2\}$." if lang == "de"
-                      else r"Same local contract: $\operatorname{Own}(U)=\{Q_1,Q_2,A\}$, $P_U=\{Q_1,Q_2\}$."),
+    ax.text(6, 1.04, t(lang, "Alle Mengen zeigen den Ausschnitt {Q₁, Q₂, A}. Der Einstieg ist bereits abgeschlossen.",
+                       "All sets are restricted to {Q₁, Q₂, A}. The orientation is already complete."),
             ha="center", fontsize=10)
     ax.text(6, .49, t(lang, "Beide Prüfungen benötigen A. Q₁ bleibt bestanden; erst die offene Nachfrage von Q₂ entfällt.",
                       "Both assessments require A. Q₁ stays passed; only the open demand from Q₂ disappears."),
@@ -483,8 +483,8 @@ def recursive_learning_unit(lang="de"):
                 ha="center", fontsize=10)
         ax.text(3+offset, 2.77, r"$I_K\cup I_D=\{a,b,d\};\ I_S=\varnothing$" if child_done else
                 r"$I_K=I_D=I_S=\varnothing$", ha="center", fontsize=9.8)
-    ax.text(6, 1.68, t(lang, "Eigene Erwerbsziele: Kinematik {a,b,qₖ,kₖ} · Dynamik {d,qᴅ} · Mechanik {qₛ}",
-                       "Own acquisition goals: Kinematics {a,b,qₖ,kₖ} · Dynamics {d,qᴅ} · Mechanics {qₛ}"),
+    ax.text(6, 1.68, t(lang, "Gezeigte eigene Ziele: Kinematik {a,b,qₖ,kₖ} · Dynamik {d,qᴅ} · Mechanik {qₛ}",
+                       "Own goals shown: Kinematics {a,b,qₖ,kₖ} · Dynamics {d,qᴅ} · Mechanics {qₛ}"),
             ha="center", fontsize=8.8)
     ax.text(6, 1.14, t(lang, "Fachliches requires: qₛ → d → b → a; qᴅ → d; qₖ → b. kₖ ist unabhängig.",
                        "Subject requires: qₛ → d → b → a; qᴅ → d; qₖ → b. kₖ is independent."),
@@ -492,9 +492,73 @@ def recursive_learning_unit(lang="de"):
     ax.text(6, .6, t(lang, "Graue Pfeile: Pflichtkinder · Abschluss wird abgeleitet; gespeichert bleiben nur atomare Ergebnisse.",
                      "Grey arrows: required children · Completion is derived; only atomic results remain stored."),
             ha="center", fontsize=8.4)
-    ax.text(6, .12, t(lang, "Kein Eltern-I über Kindziele. Die Einheitshierarchie ist keine zusätzliche Mastery-Ebene.",
-                      "No parent I over child goals. The unit hierarchy is not a second mastery layer."),
+    ax.text(6, .12, t(lang, "Alle Mengen gelten für die gezeigten Ziele. Alle drei Einstiege sind bereits abgeschlossen.",
+                      "All sets are restricted to the goals shown. All three orientations are already complete."),
             ha="center", fontsize=8.5)
+    return fig
+
+
+def unit_entry_paths(lang="de"):
+    own = {"m", "a", "b", "q"}
+    edges = {("q", "b"), ("b", "a"), ("a", "m"), ("a", "p")}
+    paths = closure(own | {"p"}, edges)
+    assert {target for source, target in paths if source == "q"} == {"b", "a", "m", "p"}
+    assert ("m", "p") not in paths
+
+    fig, ax = canvas(3.35)
+    boundary(ax, .16, 2.66, 11.68, 2.64, t(lang, "Lerneinheit", "Learning unit"))
+    ax.text(11.58, 5.01, t(lang, "Pfeile zeigen auf Voraussetzungen", "Arrows point to prerequisites"),
+            ha="right", va="center", fontsize=9.5, color=BLUE)
+    positions = {"m": (1.6, 3.78), "a": (4.54, 3.78), "b": (7.48, 3.78),
+                 "q": (10.42, 3.78), "p": (4.54, 1.53)}
+    roles = {"m": t(lang, "Motivation", "Orientation"),
+             "a": t(lang, "Inhalt", "Content"), "b": t(lang, "Inhalt", "Content"),
+             "q": t(lang, "Prüfung", "Assessment"),
+             "p": t(lang, "Vorwissen", "Prior knowledge")}
+    for goal, (x, y) in positions.items():
+        box(ax, x, y, goal, roles[goal], width=2.05, height=1.06)
+    for dependent, prerequisite in [("q", "b"), ("b", "a"), ("a", "m")]:
+        arrow(ax, (positions[dependent][0]-1.07, 3.78),
+              (positions[prerequisite][0]+1.11, 3.78), color=BLUE)
+    arrow(ax, (4.54, 3.19), (4.54, 2.13), color=BLUE)
+    ax.text(5.94, 1.53, t(lang, "p liegt außerhalb der Einheit.", "p belongs outside this unit."),
+            va="center", fontsize=10)
+    ax.text(.27, .38, t(lang, "Üblicher Lernweg in der Einheit", "Typical learning order within the unit"),
+            va="center", weight="bold")
+    ax.text(8.79, .38, "m   →   a   →   b   →   q", ha="center", va="center")
+    return fig
+
+
+def orientation_outcome(lang="de"):
+    own = {"q", "k", "a", "m"}
+    protected = {"q", "k"}
+    edges = {("q", "a"), ("k", "a"), ("a", "m")}
+    assert demand(own, own, protected, edges, {"q"}, {"q"}) == ({"k", "a", "m"}, set())
+    assert demand(own, own, protected, edges, {"q", "k"}, {"q"}) == (set(), {"a", "m"})
+    assert demand(own, own, protected, edges, {"m", "q"}, {"q"}) == ({"k", "a", "m"}, set())
+
+    fig, ax = canvas(4.15)
+    box(ax, 1.64, 5.98, "q", t(lang, "Prüfung", "Assessment"), width=2.38, height=1.02)
+    box(ax, 1.64, 4.47, "k", t(lang, "Memorierziel", "Memory goal"), width=2.38, height=1.02)
+    box(ax, 5.95, 5.22, "a", t(lang, "Inhalt", "Content"), width=2.48, height=1.02)
+    box(ax, 10.23, 5.22, "m", t(lang, "Motivation", "Orientation"), width=2.68, height=1.02)
+    arrow(ax, (2.92, 5.98), (4.60, 5.44), color=BLUE)
+    arrow(ax, (2.92, 4.47), (4.60, 5.0), color=BLUE)
+    arrow(ax, (7.28, 5.22), (8.77, 5.22), color=BLUE)
+
+    ax.text(.34, 3.35, t(lang, "Ausgangslage", "Learner state"), weight="bold")
+    ax.text(6.52, 3.35, t(lang, "Stand des Einstiegs m", "Status of orientation m"), weight="bold")
+    rows = [(t(lang, "q bestanden, k offen", "q passed, k open"),
+             t(lang, "offen", "open"), MUTED),
+            (t(lang, "q und k bestanden", "q and k passed"),
+             t(lang, "aus dem Vertrag abgeleitet", "cleared by the contract"), BLUE),
+            (t(lang, "q bestanden, k offen, m bestätigt", "q passed, k open, m confirmed"),
+             t(lang, "ausdrücklich abgeschlossen", "explicitly completed"), GREEN)]
+    for index, (outcomes, status, color) in enumerate(rows):
+        y = 2.69 - index * .89
+        ax.plot([.31, 11.69], [y+.38, y+.38], color=GREY, linewidth=1)
+        ax.text(.34, y, outcomes, va="center", fontsize=10.1)
+        ax.text(6.52, y, status, va="center", weight="bold", color=color, fontsize=10.1)
     return fig
 
 
@@ -509,6 +573,8 @@ FIGURES = {
     "14-inherited-redundancy": inherited_redundancy,
     "15-shared-local-assessments": shared_local_assessments,
     "16-recursive-learning-unit": recursive_learning_unit,
+    "17-unit-entry-paths": unit_entry_paths,
+    "18-orientation-outcome": orientation_outcome,
 }
 
 

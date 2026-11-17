@@ -1,32 +1,23 @@
 :::titlebox {title="Scope and Status of This Edition"}
-Complete English reference, as of **15 November 2026**. SkillPilot models learning goals and their relationships: `contains` groups goals into a hierarchy, while `requires` identifies subject-matter prerequisites. Canonical goal identities are preserved across the canonical inventory, the Personal Curriculum, the active focus, and stored learner outcomes. **Learning units** (*Lerneinheiten*) bind a learning promise to directly owned goals and child units; optional schedules allocate their acquisition to available calendar periods and workload budgets. Explicitly verified understanding and independent application demonstrated through valid local assessments both count toward the effective mastered set.
+Edition of **17 November 2026**. This definition follows a learner's question from the shared goal catalog to the next learning decision: *Where do I start, and how can I tell what I can do?* Goals and their prerequisites determine the available paths. In the target model a unit with its own assessments gives a path a beginning and an end. Its orientation goal introduces what the learning is for, and its assessments demonstrate independent application.
 
-**Normative force and implementation.** Atomic normal form $R\subseteq A\times A$ and its complete deterministic validation on the current inventory before any milestone pass are binding. The Product Owner decision of 12 November 2026 replaces the earlier migration-order and preservation obligations with this target-state check. Appendix~@ref{sec:rule-milestones} maps every rule to its validation area, makes actual hard enforcement visible via traffic-light (*Ampel*) status, and delineates existing CI gates. Global application recognition is **not yet implemented** on audited `main`; Appendix~@ref{sec:implementation} documents how current runtime behavior differs. Completion of a learning unit is derived from its own obligations and required child units without persisting an additional mastery tier.
+Section~@ref{sec:learning-units} describes this extension and identifies the open design choices. Appendix~@ref{sec:implementation} records what has been implemented. Appendix~@ref{sec:rule-milestones} identifies the rules enforced by quality checks.
 :::
 
 ## Reader's Guide and Scope {#sec:readers-guide unnumbered=true}
 
-A SkillPilot skill graph describes *what* can be learned and which prerequisites govern it. Four further claims build on that foundation while remaining deliberately separate in the model:
-
-- **Curricular views** determine which of these stable goals apply to a learner and where they sit within an educational program.
-- **Learner state** records for each atomic goal whether it has been achieved.
-- **Learning units** explain subject-matter coherence from a manageable topic up to a broader domain. Their completion is derived recursively from child units and directly owned obligations rather than persisted as a flat flag.
-- **Planning** distributes acquisition and practice across available time.
-
-Deriving implicit mastery connects explicit outcomes, transitive prerequisites, and subject-reviewed local contracts of learning units. All of these claims may reference one another, but none may silently substitute for another.
-
-This reference is intended for joint review and further development of the model. It covers the graph definition in the broad sense: identity, edges, inheritance, validity, availability, projection, goal types, progress, scheduling, completion, provenance, and quality assurance. Complete syllabus texts and concrete task banks are not reproduced here. Worked examples serve as illustrations rather than approved curriculum subgraphs.
+The first chapters introduce the graph and show how to read it for an individual learner. Learning units, scheduling and assessment-based recognition build on that foundation. The examples illustrate the model. Each curriculum defines the content of its subject.
 
 ### The Model in Seven Steps {#sec:seven-steps unnumbered=true}
 
 These seven steps preview the reasoning of the document. Concrete English goal names come from the Mechanics example in the original illustrations, starting in Figure~@ref{fig:overview}.
 
-1. **Goals and two relation kinds.** Every learning goal carries a stable identity. `contains` groups goals: *Kinematics* contains *Velocity*. `requires` states subject prerequisites: *Velocity* requires *Vectors*. Grouping alone never establishes a prerequisite (Sections~@ref{sec:core} and~@ref{sec:relations}).
+1. **Goals and two relation kinds.** Every learning goal carries a stable identity. `contains` groups goals: *Kinematics* contains *Velocity*. `requires` states the preparation a goal needs: *Velocity* requires *Vectors*. Grouping alone never establishes a prerequisite (Sections~@ref{sec:core} and~@ref{sec:relations}).
 2. **Atoms and clusters.** Goals without children are atomic; learner outcomes are stored only on them. Clusters group goals. In the canonical target state, every authored requirement connects an atom to an atom, and none is redundant. Legacy requirements on or toward clusters remain readable as transition data (Sections~@ref{sec:relations} and~@ref{sec:validity}).
-3. **Learner state and frontier.** Each atomic goal has exactly one stored binary result. An open atom becomes available next -- in the *frontier* -- only once all atoms it requires directly or across prerequisite chains are mastered (Section~@ref{sec:state}).
+3. **Learner state and frontier.** An explicit result belongs to an atomic goal. The *frontier* contains the open goals whose prerequisites are satisfied in the scope being considered (Section~@ref{sec:state}).
 4. **Scoped views.** The Personal Curriculum fixes a learner's longer-term scope, while focus selects a temporary working subset. Derivations always run on the full graph first and restrict afterwards. Normal (*optimistic*) mode checks prerequisites inside the scope; strict mode checks all prerequisites globally (Sections~@ref{sec:filters} to~@ref{sec:personal-scope}).
 5. **Goal types.** A goal's pedagogical type defines what counts as achieving it: verified understanding for a content goal, completed motivational entry for an orientation goal, verified recall for a memory goal, and a passed exam for an assessment goal (Section~@ref{sec:goal-types}).
-6. **Learning units.** A learning unit binds a coherent learning promise to its own goals and required child units. Its completion is derived from those obligations rather than stored separately (Section~@ref{sec:learning-units}).
+6. **Learning units.** A unit brings related goals together. In a unit with assessments, the recommended path goes from orientation through content to independent application. Full completion includes the goals of its child units (Section~@ref{sec:learning-units}).
 7. **Implicit mastery.** Once no open assessment and no open memory goal of a learning unit still depends on one of its own content goals, that content goal counts as independently applied -- provided the unit's local contract has passed subject review and is valid. Explicitly verified understanding and application demonstrated in this way together form the effective mastered set; both satisfy later prerequisites and count toward progress (Section~@ref{sec:assessment}).
 
 ### Structure, Status, and Rule Identifiers {#sec:structure-and-status unnumbered=true}
@@ -44,23 +35,13 @@ Each part answers a guiding question and carries its own status. The final colum
 | Appendices~@ref{sec:rule-milestones}--@ref{sec:build} | How is each rule checked, where does the implementation diverge, and what do terms and symbols mean? | Reference | `GD-D` |
 :::
 
-:::table {cols="35mm,X"}
-| Status | Meaning in this reference |
-| --- | --- |
-| Normative core | Binding mathematical graph semantics from `graph-definition.md`; additional validator profiles may impose stricter constraints. |
-| Adjacent contract | Semantics of projection, goal types, provenance, or learning workflows; actual implementation coverage must be verified per rule. |
-| Domain structure | Recursive learning units with a learning promise, directly owned goals, and derived completion; represented in the placement layer of the skill landscape and validated (Section~@ref{sec:unit-representation}), but not a claimed runtime feature today. |
-| Optional profile | Calendar and workload budgeting remain optional. Declared plan units follow E1 to E4; B9 retires the whole-unit access profile. |
-| Not yet implemented | The new implicit-mastery recognition contract is bindingly specified, but not yet deployed; current runtime code follows an earlier demand model (Appendix~@ref{sec:implementation}). |
-:::
-
-Curriculum authors primarily need Sections~@ref{sec:core} to~@ref{sec:validity}, @ref{sec:goal-types}, and~@ref{sec:evidence-context}. Runtime logic primarily rests on Sections~@ref{sec:state}, @ref{sec:filters}, @ref{sec:personal-scope}, and~@ref{sec:assessment}; quality assurance and review additionally rely on Appendices~@ref{sec:rule-milestones} to~@ref{sec:test-strategy}. Sections~@ref{sec:learning-units} and~@ref{sec:levels} address everyone who structures and schedules courses.
+For curriculum authors the main concerns are graph validity, goal types and content provenance. Developers of the learning workflow will find the selection rules in Sections~@ref{sec:state} and~@ref{sec:filters} and the meaning of outcomes in Sections~@ref{sec:goal-types} and~@ref{sec:assessment}. Appendix~@ref{sec:rule-milestones} identifies the available checks for each rule.
 
 ### Reading Conventions {#sec:conventions unnumbered=true}
 
 **Normative force.** “Must”, “must not”, and “binding” denote normative model rules. “Not yet implemented” means bindingly specified, but not yet realized in the runtime. “Optional” marks an additional profile. “Not yet decided” marks an unresolved question; the OPEN traffic light instead denotes a binding obligation without an evidenced hard gate.
 
-**Notation.** Italic uppercase letters denote sets and relations ($G$, $A$, $R$, $M$); italic lowercase letters denote arbitrary goals ($g$, $p$, $a$). Concrete example nodes from a figure are set upright in sans-serif to match the figure labels: in the chain $\nd{Q}\to\nd{B}\to\nd{A}$, $\nd{A}$ is one individual goal rather than the set $A$ of atomic goals. Spelled-out example names such as *Velocity* appear in italics. Arrows always point in the direction of the relation, from cluster to child and from goal to prerequisite. Monospace denotes field and identifier names such as `requires`. Figures~@ref{fig:overview} to~@ref{fig:filters} preserve the original English-labelled illustrations of the core specification; their captions explain every label.
+**Notation.** Italic uppercase letters denote sets and relations ($G$, $A$, $R$, $M$); italic lowercase letters denote arbitrary goals ($g$, $p$, $a$). Concrete example nodes from a figure are set upright in sans-serif to match the figure labels: in the chain $\nd{Q}\to\nd{B}\to\nd{A}$, $\nd{A}$ is one individual goal rather than the set $A$ of atomic goals. Spelled-out example names such as *Velocity* appear in italics. In a graph, a `contains` arrow points from cluster to child and a `requires` arrow from goal to prerequisite. To read a prerequisite path in learning order, start at the other end. Monospace denotes field and identifier names such as `requires`. Figures~@ref{fig:overview} to~@ref{fig:filters} preserve the original English-labelled illustrations of the core specification; their captions explain every label.
 
 **Terminology.** The distinctions below are easily conflated and are therefore used throughout this document with these exact meanings. Appendix~@ref{sec:glossary} provides the complete glossary and symbol index.
 

@@ -1,16 +1,16 @@
 ## Ziele, Identität und Beziehungen {#sec:core}
 
-Die Abschnitte~@ref{sec:core} bis~@ref{sec:filters} bilden den formalen Kern. Dieser Abschnitt führt Ziele und die beiden verfassten Kantenarten ein. Abschnitt~@ref{sec:relations} leitet daraus die Relationen ab, mit denen gerechnet wird, Abschnitt~@ref{sec:validity} nennt die Gültigkeitsbedingungen. Abschnitt~@ref{sec:state} beschreibt den Lernzustand einer Person und Abschnitt~@ref{sec:filters} die Auswertung in einem Ausschnitt des Graphen.
+Ein Lernziel kann zu einem Thema gehören und zugleich Wissen aus einem anderen Thema voraussetzen. Der Graph hält beides getrennt fest. Aus diesen Angaben lässt sich bestimmen, welche Ziele für eine Person als Nächstes erreichbar sind.
 
 ### Das Grundobjekt {#sec:core-object}
 
-Der normative Kern ist ein endlicher gerichteter Graph
+Die Lernziele und ihre Beziehungen bilden einen endlichen gerichteten Graphen
 
 $$
 \mathcal G=(G,C,R),\qquad C,R\subseteq G\times G.
 $$
 
-$G$ ist die Menge der Lernziele. $C$ steht für `contains`: Ein Ziel enthält ein anderes. $R$ steht für `requires`: Ein Ziel setzt ein anderes voraus. Es gibt genau diese beiden *ausdrücklich verfassten* Kantenarten im Skill-Graphen; nur diese beiden werden im Zielkern gespeichert. Die Einheitenschicht erklärt daneben `after` in ihrem eigenen Vertrag. Abgeleitete Relationen, curriculare Platzierungen, Quellenzuordnungen und Nachweise sind andere Modellschichten.
+$G$ ist die Menge der Lernziele. Der Zielgraph speichert genau zwei Arten von Kanten. Mit $C$ (`contains`) verfasst man die Gliederung der Ziele, mit $R$ (`requires`) ihre Voraussetzungen. Platzierungen im Curriculum, Quellenzuordnungen und Nachweise gehören zu den dafür vorgesehenen Modellschichten.
 
 Ein Paar $(x,y)$ ist gerichtet. Für jede Relation $X$ auf $G$ bezeichnet
 
@@ -18,9 +18,9 @@ $$
 X^{-1}=\{(y,x)\mid(x,y)\in X\}
 $$
 
-die Umkehrrelation und $X^+$ die transitive Hülle: $(x,y)\in X^+$ gilt genau dann, wenn ein gerichteter $X$-Pfad mit mindestens einer Kante von $x$ nach $y$ führt. Pfade der Länge null zählen nicht. Eine Relation $X$ heißt *azyklisch*, wenn kein Ziel über einen solchen Pfad zu sich selbst zurückführt, also $\forall g\in G:(g,g)\notin X^+$ gilt. Ein gerichteter azyklischer Graph heißt kurz DAG. Die Vereinigung $C\cup R$ ist *nicht* die Relation, an der pauschal alle DAG-Bedingungen geprüft werden: Beide Kantenarten haben verschiedene Bedeutungen. Abschnitt~@ref{sec:validity} nennt die Relationen, die azyklisch sein müssen.
+die Umkehrrelation. Die transitive Hülle $X^+$ enthält ein Paar $(x,y)$ genau dann, wenn ein gerichteter Pfad aus mindestens einer $X$-Kante von $x$ nach $y$ führt. Die Relation ist *azyklisch*, wenn kein solcher Pfad zu seinem Ausgangsziel zurückkehrt, also $\forall g\in G:(g,g)\notin X^+$. Ein gerichteter azyklischer Graph heißt kurz DAG. Abschnitt~@ref{sec:validity} prüft Gliederung und Voraussetzungen jeweils in ihrer eigenen Bedeutung.
 
-Abbildung~@ref{fig:overview} zeigt beide Kantenarten an einem Beispiel.
+In Abbildung~@ref{fig:overview} liegt das Ziel *Velocity* im Cluster *Kinematics*. Seine Voraussetzung *Vectors* erkennt man an einem eigenen Pfeil.
 
 :::principle {title="Die Pfeilrichtung ist Teil der Definition"}
 $k\xrightarrow{\mathtt{contains}}c$: Der Cluster $k$ enthält das Ziel $c$. $g\xrightarrow{\mathtt{requires}}p$: Das Ziel $g$ setzt $p$ voraus; kurz: $g$ benötigt $p$. Eine Lernablaufdarstellung zeigt dagegen $R^{-1}$: von der Voraussetzung zur darauf aufbauenden Kompetenz. Diese Umkehrung muss beschriftet sein.
@@ -28,9 +28,7 @@ $k\xrightarrow{\mathtt{contains}}c$: Der Cluster $k$ enthält das Ziel $c$. $g\x
 
 ::figure{id="fig:overview"}
 
-
-
-Daneben wird in der Einheitenschicht `after` ausdrücklich erklärt (Abschnitt~@ref{sec:unit-progression}): `U after V` ordnet den gesamten Umfang von U nach dem von V, ohne fachlichen Bedarf zu behaupten. Diese Relation ist weder eine zusätzliche `requires`-Kante noch eine Lernergebnisart. `requires` ist die besondere atomare Reihenfolge, die zusätzlich Bedarf ausdrückt. Ein `after` verändert weder Frontier noch Voraussetzungsabschluss, Fortschrittsnenner oder Mastery. Im verbindlichen Zielmodell zeigt keine Voraussetzung auf ein Prüfungsziel; vorhandene Gegenbeispiele sind fachlich zu reparierende Befunde, keine bereits behobenen Daten.
+Für die Reihenfolge ganzer Einheiten gibt es eine eigene Angabe. `U after V` ordnet alle Ziele von U hinter denen von V im vorgesehenen Lernweg. Ein solcher Planeintrag ändert weder den Bedarf eines Ziels noch den Lernstand der Person (Abschnitt~@ref{sec:unit-progression}). Eine Prüfung kann selbst Voraussetzungen haben. Im Zielmodell dient sie keinem anderen Ziel als Voraussetzung. Bestehende Gegenbeispiele erfordern eine fachliche Korrektur.
 
 ### Attribute und stabile Identität {#sec:core-attributes}
 
@@ -79,7 +77,7 @@ Abschnitt~@ref{sec:goal-types} erläutert, wann ein Ziel des jeweiligen Typs als
 
 ## Containment, Voraussetzungen und Vererbung {#sec:relations}
 
-Aus den beiden verfassten Kantenarten entstehen die Relationen, mit denen Verfügbarkeit, Fortschritt und Abschluss berechnet werden. Tabelle~@ref{tab:relations} gibt die Übersicht; die folgenden Unterabschnitte definieren ihre Einträge der Reihe nach.
+Für die Lernfrontier genügt es nicht, nur die direkt eingetragenen Voraussetzungen eines Ziels abzulesen. Der Graph muss auch die Vorbereitung seiner Voraussetzungen erfassen. Bei älteren Daten kommen Anforderungen an oder von Clustern hinzu. Tabelle~@ref{tab:relations} führt die dafür verwendeten Relationen zusammen.
 
 :::table {#tab:relations caption="Verfasste und abgeleitete Relationen. Im Zielzustand gilt $R=R_A=\Reff=\Rat$; abgeleitet wird dann nur noch die Hülle $\Rat^+$." cols="15mm,45mm,X"}
 | Symbol | Name | Entstehung und Verwendung |
@@ -112,7 +110,7 @@ Jeder Cluster besitzt mindestens ein atomares Blatt: In einem endlichen azyklisc
 
 ### Direkte Anforderungen sind konjunktiv {#sec:direct-requires}
 
-$(g,p)\in R$ bedeutet: $g$ setzt $p$ voraus. Die Kante heißt eine *Anforderung* von $g$, das Ziel $p$ eine *Voraussetzung* von $g$. Mehrere ausgehende Kanten bedeuten *alle* Voraussetzungen, keine Auswahl. Alternativen brauchen einen eigenen Auswahlvertrag außerhalb dieser Relation. Die Relation $R$ muss azyklisch sein. Abbildung~@ref{fig:requires} zeigt vier direkte Anforderungen.
+In $(g,p)\in R$ steht $g$ für das Ziel und $p$ für seine Voraussetzung. Der Pfeil zeigt von $g$ auf das, was vorher erworben oder erledigt sein muss. So kann ein Inhaltsziel auch den motivierenden Einstieg voraussetzen. Mehrere Pfeile von $g$ bedeuten, dass alle genannten Voraussetzungen gelten. Alternativen brauchen eine eigene Auswahlregel. $R$ ist azyklisch. Abbildung~@ref{fig:requires} zeigt ein Ziel mit vier Voraussetzungen.
 
 Nach der verbindlichen Entscheidung vom 8. November 2026 gilt im kanonischen Zielzustand
 
@@ -150,7 +148,7 @@ Mehrere Elternpfade addieren Anforderungen als Mengenvereinigung, ohne Mehrfachz
 
 #### Schritt 2: Atomar expandieren.
 
-Für die Laufzeit wird zuerst auf Atome normalisiert. Jede effektive Voraussetzung wird durch ihre atomare Basis ersetzt:
+Für jedes Atom $a$ werden nun die effektiven Voraussetzungen $p$ in ihre atomare Basis aufgelöst. Ist $p$ selbst atomar, bleibt genau dieses Ziel erhalten:
 
 $$
 \Rat=\{(a,b)\in A\times A\mid \exists p\in G:(a,p)\in\Reff\land b\in\Atoms(p)\}.
@@ -183,7 +181,7 @@ Im vollständig atomar verfassten Zielzustand gilt $\Reff=R=\Rat$: Containment-V
 
 ### Verbindliche Bedingungen {#sec:mandatory-validity anchors="73-atomic-transitive-minimality-and-ordered-migration-g17,73-transitive-minimality"}
 
-Ein vollständiger Graph erfüllt den kanonischen Zielzustand genau dann, wenn neben den Attribut- und Identitätsbedingungen aus Abschnitt~@ref{sec:core} auch die atomare Normalform @eqref{eq:atomic-target}, die Azyklizität und die atomare transitive Minimalität gelten:
+Im kanonischen Graphen müssen Zielidentitäten und Referenzen auflösbar sein und die Attribute aus Abschnitt~@ref{sec:core} vorliegen. Alle verfassten Voraussetzungen erfüllen die atomare Normalform @eqref{eq:atomic-target}. Für die Gültigkeit gelten außerdem zwei Bedingungen:
 
 :::equation {#eq:acyclic}
 \forall g\in G:\ (g,g)\notin C^+,\quad (g,g)\notin R^+,\quad (g,g)\notin\Reff^+,\quad (g,g)\notin\Rat^+,
@@ -203,17 +201,15 @@ Die DAG-Bedingung für $R$ folgt bereits aus derjenigen für $\Reff$, weil $R\su
 
 #### Zur transitiven Minimalität.
 
-In der atomaren Kette $\nd{Q}\to\nd{B}\to\nd{A}$ ist eine zusätzliche Kante $\nd{Q}\to\nd{A}$ redundant und zu entfernen. Die verbleibende Hülle fordert $\nd{A}$ weiterhin, auch wenn $\nd{B}$ bereits gemeistert ist. Transitive Paare werden nicht als zusätzliche Direktkanten gespeichert. Die verbindliche transitive Minimalität vom 4. November 2026 bleibt bestehen; die Entscheidung vom 8. November 2026 legt die atomare Normalform als Zielzustand fest. Die Ownerentscheidung vom 12. November 2026 verlangt dessen vollständige deterministische Prüfung im aktuellen Bestand und hebt die frühere Migrationsreihenfolge und Erhaltungspflicht auf.
+In der atomaren Kette $\nd{Q}\to\nd{B}\to\nd{A}$ muss eine zusätzliche direkte Kante $\nd{Q}\to\nd{A}$ entfallen. Über $\nd{B}$ bleibt $\nd{A}$ weiterhin erreichbar und als Voraussetzung wirksam, auch wenn $\nd{B}$ schon gemeistert ist. Der Beschluss vom 4. November 2026 verlangt diese transitive Minimalität, der vom 8. November die atomare Normalform.
 
-Die interne Prüfbezeichnung `G17` steht hier für die vollständige atomare Normalform und die vollständige transitive Minimalitätsprüfung des deklarierten kanonischen Fachbestands. Sie umfasst den nötigen fachfremden Voraussetzungsbestand und vererbende Vorfahren; ein Teilscan oder ein einzelnes Routenprofil genügt dafür nicht.
+#### G17 als Voraussetzung für die Fachmeilensteine.
 
-#### Vollständige Zielzustandsprüfung in der Meilensteinprüfung.
+Nach dem Beschluss vom 12. November 2026 prüft `G17` vor jedem Fach-Meilenstein `M1`--`M7` den vollständigen aktuellen kanonischen Bestand des Fachs. Dazu gehören die benötigten fachfremden Voraussetzungen und alle Vorfahren, von denen Anforderungen geerbt werden.
 
-Nach der Ownerentscheidung vom 12. November 2026 entscheidet der aktuelle Bestand über die Abnahme. Vor jedem Fach-Meilensteinpass `M1`--`M7` muss die vollständige deterministische Prüfung des deklarierten kanonischen Fachbestands erfolgreich sein. Dazu gehören alle nötigen fachfremden Voraussetzungen und vererbenden Vorfahren; weder eine Stichprobe noch nur die im aktuellen Lernfokus sichtbaren Ziele genügen.
+Erforderlich sind gültige Identitäten und Referenzen, Azyklizität, atomare Endpunkte aller `requires`, konsistente explizite Typen und vollständige transitive Minimalität. Ein Verstoß oder eine unvollständige Prüfung begrenzt das Fach und seine Teilbereiche auf `M0`. Bei unvollständigem Katalog bricht der Statuslauf ab ([GD-C17](@rule{GD-C17})).
 
-Die Prüfung verlangt aufgelöste Identitäten und Referenzen, Azyklizität, atomare Quell- und Zielknoten sämtlicher verfasster `requires`, konsistente explizite Typen sowie vollständige transitive Minimalität. Fehlende oder unvollständige Prüfungen gelten nicht als bestanden. Ein Verstoß setzt das Fach und seine Scope-Meilensteine auf `M0`; ein unvollständiger Katalog bricht den Statuslauf ab ([GD-C17](@rule{GD-C17})).
-
-Eine bestimmte Folge von Bearbeitungsschritten oder die Gleichheit mit einer früheren Voraussetzungshülle, Projektion oder Frontier ist keine Abnahmebedingung mehr. Die aktuellen Scope-, Anwendbarkeits-, Zielmengen-, Frontier-, Abschluss- und Mastery-Regeln bleiben in ihren jeweiligen Prüfgebieten verbindlich; `G17` allein beweist diese zusätzlichen Regeln nicht. Historische Reduktionsnachweise bleiben für diejenigen Reviewbindungen erhalten, die sie tatsächlich verwenden. Sie definieren nicht den aktuellen Prüfkatalog. Quellenbezug und Reviewfrische bleiben erforderlich; Graphänderungen schreiben keine Lernergebnisse.
+Entscheidend ist der geprüfte Zustand, unabhängig von der Migrationsreihenfolge oder der Übereinstimmung mit einer historischen Hülle, Projektion oder Frontier. Die gesonderten Prüfungen für Geltung, Anwendbarkeit, Zielmengen, Frontier, Abschluss, Quellenbezug und Reviewfrische behalten ihre eigenen Maßstäbe. Eine Graphänderung schreibt kein Lernergebnis.
 
 #### Diagnosen im Übergangsbestand sind keine Löschanweisung.
 
@@ -233,11 +229,13 @@ Der bisher unter `G17` verwendete *Entfernungstest* ist ebenfalls eine Diagnose 
 
 #### Was die heutigen Prüfungen belegen.
 
-Seit dem 11. November 2026 führt `CQR-001` im [Statusgenerator](repo:app/scripts/generateCurriculumQualityStatus.ts) den [Entfernungsauditor](repo:app/scripts/auditTransitiveMinimality.ts) für jede deklarierte Wurzel des vollständigen aktuellen kanonischen Gymnasialkatalogs aus, einschließlich der benötigten fachfremden Ziele und ihrer vererbenden Vorfahren. Neben Referenzen und effektivem DAG meldet er jede verfasste Anforderung mit nichtatomarem Quell- oder Voraussetzungsziel, jede redundante verfasste Anforderung und jeden widersprüchlichen expliziten Typ. Sobald die atomare Normalform gilt, fällt das Entfernungskriterium mit @eqref{eq:atomicmin} zusammen; ein Bestehen belegt deshalb `G17` für diese Wurzel. Ein Verstoß setzt das Fach auf `M0` und sperrt damit jeden Meilensteinpass `M1`--`M7`. Das [aktuelle Kataloginventar](repo:app/scripts/currentCurriculumCatalog.ts) wird aus dem Curriculum-Manifest und den Fachdeklarationen der kanonischen Übersicht ermittelt und gegen das vollständige kanonische Verzeichnis geprüft. Der Generator bricht bei einem unvollständigen Katalog ab; historische Reduktionsnachweise bestimmen diesen Prüfumfang nicht. Der direkte CI-Befehl `check:transitive-minimality` prüft alle 21 kanonischen Wurzeln und scheitert bei Verstößen unabhängig von geschützten Floors; Wurzeln außerhalb des kanonischen Gymnasialkatalogs prüft `CQR-001` nicht. Der direkte Befehl `check:curriculum-maturity-floors` prüft zusätzlich fest gebundene einzelne Fach-/Scope-Verpflichtungen gegen die mit `--base-ref` gewählte Git-Basis, statt nur der numerischen Reife zu vertrauen. Ein Bestehen belegt den aktuellen Zustand. Der Reduktionsnachweis dient ausschließlich der Wiederverwendung davon abhängiger Reviewevidenz. Er ist seit dem 12. November 2026 eingefroren: Sein Register hält je Ziel den geprüften Stand fest, ein unverändertes Ziel behält seine Reviews, und für ein geändertes Ziel gelten die strikten Prüfungen gegen die aktuellen Revieweingaben; veraltete Evidenz wird nicht angerechnet (Anhang~@ref{sec:rule-milestones}).
+Seit dem 11. November 2026 führt der [Statusgenerator](repo:app/scripts/generateCurriculumQualityStatus.ts) für `CQR-001` den [Entfernungsauditor](repo:app/scripts/auditTransitiveMinimality.ts) an jeder deklarierten kanonischen Gymnasialwurzel aus. Er meldet fehlerhafte Referenzen, Zyklen im effektiven Graphen, nichtatomare Endpunkte, redundante Anforderungen und widersprüchliche explizite Typen. Bei atomarer Normalform entspricht sein Entfernungskriterium genau @eqref{eq:atomicmin}.
 
-Die vorausgehende CQR/GVR-Basishärtung ist seit dem 13. November 2026 über [PR #131](https://github.com/enpasos/skillpilot/pull/131) auf `main`. Der spätere Integrationsstand `2129b207f4` bestand nach den Folgeänderungen am eingefrorenen Reviewnachweis und der Mathematikprüfung alle 14 Jobs von [CI #2315](https://github.com/enpasos/skillpilot/actions/runs/43398052180). Der [Liefernachweis](repo:docs/dev/cqr-gvr-hard-gate-plan-2026-11-12.md) hält die getrennten PR- und Main-Läufe fest. Damit ist die technische Durchsetzung im jeweiligen Prüfumfang belegt; die vier fehlenden Sichtbarkeitsscopes von `CQR-104` und die fachliche Erweiterung von `GVR-012` bleiben offen. Diese QA-Evidenz belegt weder menschliche Erprobung noch die Umsetzung weitergehender Laufzeitverträge.
+Das [Kataloginventar](repo:app/scripts/currentCurriculumCatalog.ts) gleicht Curriculum-Manifest und Fachdeklarationen mit dem kanonischen Verzeichnis ab. `check:transitive-minimality` prüft alle 21 Wurzeln unabhängig vom vorgeschriebenen Mindestmeilenstein. `check:curriculum-maturity-floors` prüft zusätzlich die fest gebundenen Verpflichtungen einzelner Fächer und Teilbereiche gegen die mit `--base-ref` gewählte Git-Basis. Das am 12. November eingefrorene Reduktionsregister regelt ausschließlich die Wiederverwendung früherer Reviews je Ziel. Bei geändertem Ziel gelten die strikten Prüfungen der aktuellen Revieweingaben (Anhang~@ref{sec:rule-milestones}).
 
-**Historischer Auditstand, 13. November 2026:** Die Folgearbeiten stehen in [PR #141](https://github.com/enpasos/skillpilot/pull/141) auf der aktualisierten Main-Basis `2ad03c810c` und sind noch nicht auf main integriert. Die neue Bilanz 12 HART / 50 TEIL / 55 OFFEN / 28 OPT/DOK und `GVR-012` mit vier direkt verpflichtenden Scopes im Inventar von zwölf beschreiben diesen lokal geprüften Kandidaten. Die lokale Evidenz steht im [Folgearbeitsnachweis](repo:docs/dev/cqr-gvr-hard-gate-plan-2026-11-12.md); abschließende Remote-CI und Main-Abnahme sind hier nicht als abgeschlossen ausgewiesen. Die historische CI #2315 gilt ausschließlich für ihren damaligen Stand.
+Die erste Durchsetzung auf `main` ist für [PR #131](https://github.com/enpasos/skillpilot/pull/131) am 13. November 2026 belegt. Nach Folgeänderungen an Reviewnachweis und Mathematikprüfung bestand `2129b207f4` alle 14 Jobs von [CI #2315](https://github.com/enpasos/skillpilot/actions/runs/43398052180). Der [Liefernachweis](repo:docs/dev/cqr-gvr-hard-gate-plan-2026-11-12.md) ordnet die PR- und Main-Läufe ihren Ständen zu. Er belegt die technischen Prüfungen in ihren jeweiligen Bereichen. Vier Sichtbarkeitsbereiche von `CQR-104` und die Ausweitung von `GVR-012` waren noch offen. Menschliche Erprobung und weitergehende Laufzeitverträge benötigen eigene Nachweise.
+
+**Historischer Auditstand vom 13. November 2026.** Die Einstufung 12 HART / 50 TEIL / 55 OFFEN / 28 OPT/DOK und vier direkt verpflichtende `GVR-012`-Bereiche im Inventar von zwölf gehörten zum damaligen lokal geprüften Kandidaten von [PR #141](https://github.com/enpasos/skillpilot/pull/141) auf Basis `2ad03c810c`. Der [Folgearbeitsnachweis](repo:docs/dev/cqr-gvr-hard-gate-plan-2026-11-12.md) dokumentierte diesen Stand vor seiner Integration. Der frühere Lauf CI #2315 gehört zu seinem eigenen Commit.
 
 Die Ownerentscheidung vom 13. November 2026 legt für die Einstufung aller `GD-*`-Regeln den kanonischen Gymnasialkatalog mit 21 Wurzeln fest. Pflichten ab M5, M6 oder M7 werden gegen ihre jeweilige Schwelle geprüft; aktuell sind zehn Fächer auf M6/M7 gebunden, davon fünf auf M7. Nichtkanonische Landschaften sind außerhalb dieses Arbeitsprogramms. Eine harte Einstufung verlangt weiterhin die vollständige Durchsetzung aller Teilpflichten der Zeile: offene Laufzeitverträge, semantische Routenlücken und allgemeine Prüfungsdeckung werden durch die Bereichsentscheidung nicht geschlossen.
 
@@ -278,13 +276,11 @@ $$
 
 In Worten: Das Atom liegt auf mindestens einem Lernweg, der bei einem Orientierungsanker beginnt und bei einem terminalen Autonomieziel endet. Der Lernweg folgt $R_A^{-1}$, also der Lernablaufrichtung von der Voraussetzung zum darauf aufbauenden Ziel.
 
-Die Buchstaben $O$ und $Z$ (in älteren Fassungen $M$ und $T$) vermeiden hier Verwechslungen mit der Mastery-Menge $M$ sowie den Zielmengen $T(U)$ und $T_\pi$. Die Beschränkung auf $R_A$ verhindert, dass ein Cluster als versteckter Zwischenknoten einen atomaren Routennachweis liefert. Diese Formel ist ein Strukturkriterium, kein Beweis didaktischer Angemessenheit.
+Ob ein Ziel als Einstieg zählt, legt das Routenprofil fest. Für die Einführung der Einheitsmotivation soll ein Profil auch das im Einheiteneintrag benannte Orientierungsziel im passenden Umfang als Anker zulassen. Der Pfad zum Endziel muss weiterhin über atomare Ziele führen. Ob die Aufgaben das versprochene Können belegen, wird am Inhalt geprüft (Abschnitt~@ref{sec:why-graph-not-enough}).
 
-Konkrete Routenprofile schränken zusätzlich die Schulstufe, erlaubte Zieltypen und die Reihenfolge ein: Orientierung am Einstieg, fachliches Lernen, bei Bedarf Unterstützung durch Memorierziele und eine selbstständige Leistung am Ende. Memorierziele werden dadurch nicht überall Pflicht. Die Profilregeln prüfen unterschiedliche Aussagen: vollständige Routen über effektive Voraussetzungen (`CQR-101`), direkt atomare Routen (`CQR-102`) und das Fehlen von `requires` an den selektierten Clustern (`CQR-103`). Der gemeinsame Auswerter von `CQR-102` erzwingt direkt atomare Erreichbarkeit für alle zwölf deklarierten Profile. In vier der zwölf Profile (Mathematik Sek I/Sek II, Biologie und Physik Sek II) erzwingt `GVR-012` zusätzlich den stärkeren semantischen Vertrag vollständiger Routen. Der [gemeinsame semantische Routenbestand](repo:app/scripts/lib/semanticRouteInventory.ts) leitet sechs Kandidaten aus den QA-Profilen und vier vollständigen aktuellen Klassifikationsledgers ab. Physik Sek I und Chemie Sek II bleiben mit 5/3 Routenbefunden diagnostisch; für sechs weitere Scopes fehlt ein vollständiges aktuelles Ledger. Kein Befund wird durch eine neue Klassifikation oder eine schwächere Routenregel behoben. Ausgemusterte GVR-Kennungen bleiben reserviert und sind keine aktiven Sperren. Diese Profilprüfungen sind kein globaler Nachweis der atomaren Normalform für alle Fächer; `CQR-001` und die direkte G17-Sperre umfassen den ausdrücklich begrenzten kanonischen Gymnasialkatalog mit 21 Wurzeln (Abschnitt~@ref{sec:mandatory-validity}).
+Welche Ziele zur Route gehören dürfen, hängt vom Fach und von der Stufe ab. Die Profile prüfen die Erreichbarkeit über effektive Voraussetzungen (`CQR-101`), direkt atomare Pfade (`CQR-102`), die Voraussetzungen an Clustern (`CQR-103`) und die Sichtbarkeit der Endpunkte (`CQR-104`). Die stärkere Prüfung `GVR-012` berücksichtigt zusätzlich Zieltypen, Nebenbedingungen und die Reihenfolge der Vorbereitung. Sie soll künftig für alle registrierten Bereiche der M7-pflichtigen Fächer gelten.
 
-Die [gemeinsame Profilfactory](repo:app/scripts/generateCurriculumQualityStatus.ts) ergänzt die bestehende Physik-Lane um bereits reviewte explizite `goalEntry`-Ziele aus den drei nationalen Stage-Sichten: Sek I von 96 auf 101, Sek II von 306 auf 316 fachliche Atome. Terminals, Graph, Sichten und Rollen bleiben unverändert. Der Audit weist separat 43 nur über Unterbäume geerbte Sek-II-Targets außerhalb dieser Lane aus; 42 haben in der breiteren Diagnose keine Terminalroute. Vier bestandene registrierte Scopes belegen daher keine vollständige Stage-Target-Abdeckung. Diese Abgleichslücke bleibt zusätzlich zu den acht Routenbefunden und sechs fehlenden Ledger-Scopes sichtbar.
-
-**Verbindliches Ausbauziel ab M7 (Ownerentscheidung vom 13. November 2026):** `GVR-012` wird künftig für alle registrierten QA-Scopes der jeweils M7-verpflichteten Fächer verlangt. Heute sind das sieben Scopes von fünf Fächern; vier sind abgesichert, drei haben offene Routen- oder Klassifikationsbefunde. Die vollständige M7-Pflicht wird erst nach deren evidenzbasiertem Abschluss aktiviert. Die fünf M6-Scopes bleiben im zwölfteiligen Inventar und werden beim späteren M7-Aufstieg verpflichtend. Bis zur vollständigen technischen Durchsetzung bleibt `GVR-012` TEIL; vorhandene Pflichtscopes und Pins bleiben geschützt. `4/12` ist weiterhin die Inventarabdeckung, `4/7` die Abdeckung des heutigen M7-Ziels. Die vollständige zwölfteilige Diagnose ist keine M7-Aufstiegsprüfung; ihr Fehlerstatus bei fehlenden M6-Ledgers bleibt aussagekräftig. Ein späteres HART des Gates wertet breitere GD-Regeln nicht automatisch auf.
+Anhang~@ref{sec:implementation} nennt die abgedeckten Bereiche und die offenen Befunde, darunter die Reichweite des Physikprofils in den Stufensichten. Der [Routenbestand](repo:app/scripts/lib/semanticRouteInventory.ts) und die [Erzeugung der QA-Profile](repo:app/scripts/generateCurriculumQualityStatus.ts) dokumentieren, welche Ziele ausgewertet werden.
 
 Eine Übersicht zwischen Clustern kann aus atomaren Routen abgeleitet werden. Beispielsweise bedeutet eine existenzielle Zusammenfassung $k_2\to k_1$:
 
@@ -304,9 +300,9 @@ Die bisherigen Abschnitte beschreiben den Graphen ohne lernende Person. Dieser A
 
 Es gibt genau einen gespeicherten binären Zustand $m:A\to\{0,1\}$, mit $M=\{a\in A\mid m(a)=1\}$. $M$ ist die Menge der ausdrücklichen Erfolge, kurz: die ausdrückliche Mastery. Ein ausdrücklicher Erfolg an einem Inhaltsziel belegt zielgerecht geprüftes Verstehen. Orientierung, Memorierung und Prüfungen verwenden ihren jeweils eigenen Abschlussvertrag (Abschnitt~@ref{sec:goal-types}). Keine Teilbewertung bildet einen dritten Mastery-Zustand.
 
-#### Implizite Beherrschung im Vorgriff.
+#### Anerkennung durch eine Prüfung.
 
-Die Abschnitte~@ref{sec:learning-units} und~@ref{sec:assessment} führen Lerneinheiten und die Ableitung impliziter Beherrschung ein. Hier genügt ihr Ergebnis: Für jede Lerneinheit $U$ mit einem für diese Person dauerhaft gültigen lokalen Vertrag wird die implizite Menge $I_U\subseteq A$ abgeleitet. Der Vertrag bindet die eigenen Erwerbsziele, ihre Revision und die fachlich geprüfte Bedeutung der zugehörigen Prüfungen. Bei Inhaltszielen belegt $I_U$ selbstständige Anwendung. Anschaulich kann eine bestandene Prüfung zu linearen Funktionen die Anwendung der eigenen Inhaltsziele von $U$ belegen, obwohl diese nicht einzeln abgehakt wurden. Eine unabhängige Kartenpflicht oder eine andere Kindeinheit kann noch offen sein; der vollständige Abschluss der Einheit ist keine Voraussetzung dieser Anerkennung. Ein abgeleiteter Orientierungsmarker behält ausschließlich die Bedeutung eines erledigten Einstiegs; er behauptet weder Fachkompetenz noch eine erfolgte Motivationsinteraktion.
+Ein gültiger lokaler Prüfungsvertrag kann für eine Person weitere eigene Ziele einer Einheit $U$ als erfüllt ausweisen. Diese Menge heißt $I_U\subseteq A$. Beispielsweise kann eine Prüfung zu linearen Funktionen belegen, dass die Person erfasste Inhaltsziele selbstständig angewandt hat, auch wenn diese einzeln noch offen waren. Eine unabhängige Kartenpflicht oder eine andere Kindeinheit darf dabei offen sein. Bei einer Orientierung bedeutet die Ableitung allein, dass der Einstieg als erledigt gilt. Die fachlichen und formalen Bedingungen stehen in den Abschnitten~@ref{sec:learning-units} und~@ref{sec:assessment}.
 
 #### Effektiv beherrschte Menge.
 
@@ -316,7 +312,7 @@ $$
 \Meff=M\cup\bigcup_{U\in\mathcal U_{\mathrm{valid}}}I_U.
 $$
 
-Dabei enthält $\mathcal U_{\mathrm{valid}}$ die personen- und revisionsgebundenen, dauerhaft anwendbaren autoritativen lokalen Verträge, nicht nur die gerade sichtbaren Einheiten oder die neuesten Inhaltsfassungen. Die beiden Begründungsarten sind in ihrem effektiven Ergebnis gleichwertig: Sie erfüllen künftige Voraussetzungen, zählen zum IST und bleiben bei Fokus- oder Planwechsel wirksam. $I_U$ erzeugt keinen synthetischen Mastery-Datensatz. Abschnitt~@ref{sec:assessment} definiert die Ableitung und die fachlichen Voraussetzungen des Vertrags.
+$\mathcal U_{\mathrm{valid}}$ umfasst alle für die Person dauerhaft gültigen lokalen Verträge mit ihrer jeweiligen Revision. Ein Wechsel der sichtbaren Einheiten, des Fokus oder des Plans hebt sie nicht auf. Ausdrückliche und gültig abgeleitete Erfolge erfüllen spätere Voraussetzungen und zählen zum Fortschritt. Gespeichert werden die ausdrücklichen Erfolge. Die Ableitung nach Abschnitt~@ref{sec:assessment} lässt diese Daten unverändert.
 
 Alle folgenden Formeln verwenden $\Meff$. In den Originalabbildungen~@ref{fig:frontier} und~@ref{fig:filters} steht $M_A$ für die ausdrückliche Menge $M$. In diesen Beispielen gibt es keine implizite Beherrschung; dort ist $\Meff=M$.
 
@@ -328,7 +324,7 @@ Ein Ziel $g$, ob Atom oder Cluster, ist *erfüllt*, wenn seine gesamte atomare B
 \Sat(g,\Meff)\iff \Atoms(g)\ne\varnothing\ \land\ \Atoms(g)\subseteq\Meff.
 :::
 
-Die Erfüllung wirkt nur vorwärts. Ein bloß gemeistertes abhängiges Inhaltsziel beweist seine Voraussetzungen nicht. Nur ein gültiger lokaler Vertrag trägt die zusätzliche Ableitung. Clusterfortschritt schreibt niemals Ergebnisse seiner Kinder.
+Die Erfüllung eines Clusters wird aus den Ergebnissen seiner Atome berechnet. Dadurch entsteht kein neues Ergebnis an einem Kind. Ebenso führt das Bestehen eines einzelnen Inhaltsziels allein zu keinem Eintrag für seine Voraussetzungen. Eine darüber hinausgehende Anerkennung braucht den gültigen lokalen Vertrag.
 
 ### Globale Frontier {#sec:frontier}
 
@@ -338,7 +334,7 @@ Die *Frontier* ist die Menge der nächsten verfügbaren atomaren Ziele:
 \Frontier(\Meff)=\left\{g\in A\setminus\Meff\;\middle|\; \forall p\in A:\ (g,p)\in\Rat^+\Rightarrow p\in\Meff\right\}.
 :::
 
-Ein Atom gehört also zur Frontier, wenn es selbst noch offen ist und sein gesamter atomarer Bedarf effektiv beherrscht ist: $\ReqAtoms(g)\subseteq\Meff$. Die Frontier fordert die transitiven effektiven atomaren Voraussetzungen. Ein gemeistertes Zwischenziel unterbricht diese Prüfung nicht. Ein teilweise bearbeitetes Ziel ist nicht schon deshalb erfüllt. Ein Cluster als Voraussetzung wird über seine atomare Basis geprüft.
+Ein offenes Atom $g$ ist verfügbar, wenn $\ReqAtoms(g)\subseteq\Meff$. Auch die Grundlage hinter einem bereits gemeisterten Zwischenziel zählt mit. Bei einer Clusteranforderung im Übergangsbestand zählen die Atome ihrer Basis.
 
 Für die Navigation lässt sich zusätzlich eine Clusterverfügbarkeit ableiten. Sie verwendet den atomaren Bedarf $\ReqAtoms(k)$ des Clusters aus @eqref{eq:demand}, also seine eigenen und geerbten Anforderungen, atomar expandiert und transitiv fortgesetzt:
 
@@ -358,9 +354,9 @@ $$
 P(S)=\frac{\sum_{a\in S\cap\Meff}w(a)}{\sum_{a\in S}w(a)}\qquad(S\ne\varnothing).
 $$
 
-Jedes Atom trägt mit seinem effektiven binären Ergebnis bei: ganz oder gar nicht. Für eine leere Zielmenge gibt es keinen solchen Quotienten; die Anzeige braucht „keine Ziele im gewählten Umfang“ statt erfundener 100 %. Für mehrere Cluster wird $S$ als Vereinigung ihrer Zielatome gebildet. Cluster und Kinder dürfen nicht zusätzlich gemeinsam gezählt werden. Ein Fortschritt von beispielsweise 50 % bezeichnet einen Anteil geschaffter Ziele im Umfang, keine halbe Beherrschung eines einzelnen Ziels.
+Jedes Atom trägt mit seinem effektiven binären Ergebnis bei: ganz oder gar nicht. Für eine leere Zielmenge gibt es keinen solchen Quotienten; die Anzeige braucht „keine Ziele im gewählten Umfang“ statt erfundener 100 %. Für mehrere Cluster wird $S$ als Vereinigung ihrer Zielatome gebildet. Cluster und Kinder dürfen nicht zusätzlich gemeinsam gezählt werden. Ein Fortschritt von 50 % bedeutet, dass auf die geschafften Ziele die Hälfte des Gesamtgewichts entfällt.
 
-Davon zu unterscheiden ist die segmentierte Erledigungsanzeige im Lernzielbaum: Sie kann ausdrücklich gespeicherte und implizit abgeleitete Beiträge getrennt ausweisen. Beide zählen in $P(S)$; ein vollständig gefüllter Gesamtbalken bedeutet $P(S)=1$. Eine gesonderte Zahl nur für ausdrückliche Ergebnisse muss ihren abweichenden Zähler benennen.
+Die Erledigungsanzeige im Lernzielbaum kann ausdrückliche und abgeleitete Beiträge getrennt ausweisen. Zusammen ergeben sie $P(S)$. Ein vollständig gefüllter Gesamtbalken entspricht $P(S)=1$. Zählt eine Anzeige nur ausdrückliche Ergebnisse, muss sie dies kenntlich machen.
 
 Bei der Konvention $w(a)=1$ entspricht das Clustergewicht der Zahl seiner eindeutigen atomaren Nachfahren. Das ist eine zulässige konkrete Autorenkonvention, keine Forderung gleicher Gewichte für jede Domäne. Kern- und Erweiterungsanteile können getrennt ausgewiesen werden; der verbindliche Zielumfang des Personal Curriculum entscheidet darüber, was zum Abschluss gehört. Eine aggregierte Zahl ist weder eine kalibrierte Wahrscheinlichkeit noch eine Schulnote. Ein Notenmodell bräuchte eine gesonderte, begründete Abbildung.
 
@@ -404,19 +400,23 @@ Die effektiven Voraussetzungen werden *vor* der Filterung berechnet. Sonst könn
 
 #### Vollständige Voraussetzungsketten in Projektionen. {#par:projection-closure}
 
-Level 2 bezeichnet den längerfristigen Umfang des Personal Curriculum, etwa für ein Bundesland und Kursprofil (Abschnitt~@ref{sec:personal-scope}). Eine geprüfte Kompositionssicht legt dafür die kanonischen Zielreferenzen fest (Abschnitt~@ref{sec:composition-views}). Die Rollenprüfung unterscheidet Lernziele `target` von reinen Voraussetzungshilfen `prerequisiteOnly` (Abschnitt~@ref{sec:projection-roles}). Nach der Ownerentscheidung vom 9. November 2026 muss die Projektion einer ausgewählten atomaren Zielmenge $T\subseteq A$ im zugrunde liegenden Voraussetzungsgraphen mindestens die Menge
+Für den längerfristigen Umfang des Personal Curriculum (Level 2, Abschnitt~@ref{sec:personal-scope}) wählen die geprüften Fächersichten kanonische Ziele aus (Abschnitt~@ref{sec:composition-views}). Innerhalb einer Fächersicht kann ein Ziel die Rolle `target` oder die unterstützende Rolle `prerequisiteOnly` tragen (Abschnitt~@ref{sec:projection-roles}). Die Entscheidung vom 9. November 2026 verlangt, dass der zugrunde liegende Graph für eine Auswahl $T\subseteq A$ mindestens die folgende Menge erhält:
 
 $$
 \Closure(T)=T\cup\{p\in A\mid\exists t\in T:(t,p)\in\Rat^+\}
 $$
 
-und die für ihren vollständigen transitiven Bedarf nötigen kanonischen Voraussetzungsbeziehungen erhalten. $\Closure(T)$ besteht also aus den ausgewählten Zielen und ihrem gesamten atomaren Bedarf (in älteren Fassungen $U(T)$). Anwendbarkeit und geprüfte Level-2-Komposition bestimmen $T$. Sie dürfen unverzichtbare kanonische Zwischenziele nicht entfernen, bevor die Voraussetzungsketten berechnet werden. In Übergangsdaten muss auch die für Vererbung und atomare Expansion nötige kanonische Struktur verfügbar bleiben.
+Zu $\Closure(T)$ (früher $U(T)$) gehören die ausgewählten Atome und ihr gesamter transitiver Bedarf. Auch die kanonischen Verbindungen zwischen ihnen müssen erhalten bleiben. Bei Übergangsdaten gehört dazu die Struktur für Vererbung und atomare Expansion.
 
-Setzt $a$ das Ziel $b$ und $b$ das Ziel $c$ voraus, muss eine Auswahl von $a$ und $c$ deshalb $b$ im zugrunde liegenden Graphen mitführen. Der Bedarf von $a$ an $c$ bleibt erhalten. Geht dieser Pfad verloren, ist die Projektion fehlerhaft; die fehlenden Knoten und Beziehungen müssen erhalten bleiben. Neue `requires`-Kanten in der Kompositionssicht oder abgeschwächte kanonische Voraussetzungen sind keine Korrektur.
+Im Pfad $a\to b\to c$ muss der Graph bei einer Auswahl von $a$ und $c$ das Zwischenziel $b$ mitführen. So bleibt die Voraussetzungskette intakt, auch wenn eine Ansicht $b$ ausblendet. Fehlt $b$ im zugrunde liegenden Graphen, ist die Projektion zu korrigieren. Die Kompositionssicht verfasst dafür keine Ersatzkante.
 
-Diese strukturelle Vollständigkeit verlangt nicht, jeden Knoten im sichtbaren Baum anzuzeigen. Strukturelles Mitladen allein reicht aber nicht: Verfasste Ausgangsreferenzen bleiben hart geprüft. Für notwendige Atome erfüllen eine kompilierte Zielrolle mit geprüftem kanonischem Voraussetzungspfad und dokumentierter Herkunft die Rollenpflicht; eine manuelle Sichtreferenz je Atom ist nicht nötig. Unbekannte Referenzen, Zyklen sowie fehlende oder nicht erreichbare benötigte Atome bleiben Fehler, auch bei vorhandener Mastery. Unbeteiligte `contains`-Nachfahren werden dadurch nicht eingeschrieben. Nach der ausdrücklichen Ownerentscheidung vom 10. November 2026 bildet $L=\Closure(S)$ den persönlichen Lernumfang, wobei $S$ die Vereinigung atomarer Ausgangsziele der gewählten geprüften Fächersichten ist. Zuerst wählen deren geprüfte Kurs-/Landesfilter die gültigen Ausgangsziele $S$; danach entsteht die Hülle im unbeschnittenen kanonischen Graphen. Zusätzliche notwendige Atome bleiben trotz dieser Ausgangsfilter enthalten, unbeteiligte Ziele anderer Kurse oder Länder nicht. Alle notwendigen Atome gehören zu Lernen, Fortschritt und Abschluss. $L$ ist für persönliche Konfiguration und Curriculum-/Projektionsrevision fest, unabhängig von Mastery. Gemeisterte Atome bleiben im Nenner erfüllt; ihre Wiederholung wird nicht verlangt. Ein gemeistertes Zwischenziel unterbricht die transitive Hülle nicht. Eine unbewiesene Eintrittsannahme ist keine erfüllte Lernpflicht.
+Für die persönliche Auswahl gilt seit dem 10. November 2026: Zuerst bestimmen die geprüften Landes- und Kursfilter die atomaren Ausgangsziele $S$ aller gewählten Fächer. Dann wird auf dem unbeschnittenen kanonischen Graphen der Lernumfang $L=\Closure(S)$ gebildet. Jedes einzeln benötigte Atom gehört zu Lernen, Fortschritt und Abschluss, auch wenn es aus einem anderen Kurs oder Fach kommt. Geschwister kommen allein durch ihre Zugehörigkeit zur selben Einheit nicht hinzu. Werden alle Atome eines Faches benötigt, gehören sie alle zu $L$.
 
-Diese ausdrückliche persönliche Kompilationsregel ersetzt nur hier das frühere Verbot der Zielergänzung. Jedes offene notwendige Atom braucht ein tatsächlich erreichbares Erwerbsziel im Gesamtplan. Fachlokales `prerequisiteOnly` bleibt möglich, wenn dieselbe kanonische ID anderswo im Gesamtplan Ziel ist; sie zählt einmal. Die Regel nimmt keine Geschwister, ganzen Fremdeinheiten oder Fächer allein wegen eines benötigten Atoms hinzu. Alle einzeln notwendigen Atome bleiben in $L$, auch wenn das sämtliche Atome eines Faches sind. Die Regel ändert keine amtliche Zuordnung oder Quellenanwendbarkeit. Sie erweitert keinen Fokus und erzeugt, kopiert, überträgt oder löscht keine Mastery. Bestehende zieltypspezifische Abschlussregeln bleiben maßgeblich. Backend und WebGUI setzen diesen persönlichen Lernumfang um. Anwendbarkeitsprüfung und vollständige native, Curriculum- und Remote-Abnahme des aktuellen Zustands bleiben gesondert nachzuweisen.
+Die persönliche Konfiguration und die Curriculum- und Projektionsrevision bestimmen $L$. Ein bereits gemeistertes Ziel bleibt als erfüllt im Nenner und braucht keine Wiederholung. Die Hülle umfasst auch seine Voraussetzungen. Eine angenommene Eingangskenntnis ist noch kein Lernergebnis.
+
+Die Kompilierung prüft die verfassten Ausgangsreferenzen. Für jedes benötigte Atom weist sie die Zielrolle, einen gültigen kanonischen Voraussetzungspfad und die Herkunft aus. Ein offenes Atom braucht einen tatsächlich erreichbaren Erwerbsweg. Ein fachlokal als `prerequisiteOnly` geführtes Ziel kann im Gesamtplan zum Ziel werden und zählt dort mit seiner kanonischen ID genau einmal. Unbekannte Referenzen, Zyklen und fehlende oder unerreichbare notwendige Atome sind Validierungsfehler, unabhängig von bisherigen Ergebnissen.
+
+Nur beim Kompilieren des persönlichen Lernumfangs werden Ziele auf diese Weise ergänzt. Amtliche Lehrplanzuordnung, Quellenanwendbarkeit, Fokus und zieltypspezifische Abschlussregeln behalten ihre Bedeutung. Die Ergänzung erzeugt, überträgt oder löscht keine Mastery. Backend und WebGUI setzen diesen Umfang um. Anwendbarkeitsprüfung und vollständige native, Curriculum- und Remote-Abnahme benötigen eigene aktuelle Nachweise.
 
 ### Normalmodus und strikter Modus {#sec:filter-modes}
 

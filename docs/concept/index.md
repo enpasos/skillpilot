@@ -32,14 +32,14 @@ This page is the entry point for durable SkillPilot concepts. Keep implementatio
   Canonical skill graph vs. educational views, personal curriculum closure $L=\mathrm{Closure}(S)$, understanding/memorisation/assessment goals, time and evidence boundaries.
 - [Learning Units (§§11.1–11.4)](skill-graph/learning-units.md)
   Recursive units with a learning promise, subunits, application assessments, and derived completion; acquired competence remains globally valid.
-- [Learning Unit Progression (§11.5)](skill-graph/learning-unit-progression.md)
-  Explicit dependencies between whole units, valid block ordering, and the separate decision about recommended routes versus technical entry gates. The former [unit-concept address](skill-graph/curriculum-levels.md) and [progression-concept address](skill-graph/curriculum-level-gates.md) remain short compatibility pointers for existing links.
+- [Unit Ordering and Rules E1–E4 (§11.5)](skill-graph/learning-unit-progression.md#sec-unit-progression)
+  Under B9, `after` orders suggestions among reachable goals. Learners can also [choose an available assessment directly](skill-graph/context-and-views.en.md#sec-exams). The former pages on [curriculum levels](skill-graph/curriculum-levels.md) and [level gates](skill-graph/curriculum-level-gates.md) point to the current rules.
 - [Optional Acquisition and Time Planning (§12)](skill-graph/planning-and-budget.en.md)
   Multi-period acquisition plans, structural prerequisite witnesses, and workload budgets.
 - [Assessment-Gated Completion and Global Mastery (§13)](skill-graph/assessment-gated-completion.md)
   Direct assessment access and globally effective mastery through independent application in valid local learning-unit assessments.
 - [Product Decision of 4 November 2026: Mastery via Understanding and Independent Application (DE)](skill-graph/completion-semantics-clarification-2026-11-04.md)
-  Binding concept clarification; implementation and review of existing assessment contracts remain separate.
+  Local evidence of independent application counts toward later prerequisites and overall progress. B9 settled the separate question of unit access on 14 November.
 - [Decision of 14 November 2026: Learning Units – Clusters, `after` and Learning Flow (DE)](skill-graph/learning-unit-wiring-concept-2026-11-14.md)
   What a learning unit is, how units are ordered and how that order acts in the learning flow; not implemented.
 - [Concept Draft of 17 November 2026: Learning Units – Motivation at the Start, Assessments at the End (DE)](skill-graph/learning-unit-motivation-concept-2026-11-17.md)
@@ -148,14 +148,14 @@ Diese Seite ist der Einstiegspunkt für dauerhafte SkillPilot-Konzepte. Umsetzun
   Kanonischer Skill-Graph vs. Bildungssichten, persönlicher Curriculum-Abschluss $L=\mathrm{Closure}(S)$, Verständnis-/Memorier-/Prüfungsziele, Zeit- und Nachweisgrenzen.
 - [Lerneinheiten (§§11.1–11.4)](skill-graph/learning-units.de.md)
   Rekursive Einheiten mit Lernversprechen, Untereinheiten, Anwendungsprüfungen und abgeleitetem Abschluss; erworbene Kompetenzen gelten global weiter.
-- [Einheitsfolge & Zugang (§11.5)](skill-graph/learning-unit-progression.de.md)
-  Explizite Abhängigkeiten zwischen ganzen Einheiten, gültige Blockreihenfolgen und die getrennte Richtlinienentscheidung zwischen empfohlenen Wegen und technischen Startsperren. Die früheren Adressen [curriculum-levels.md](skill-graph/curriculum-levels.md) und [curriculum-level-gates.md](skill-graph/curriculum-level-gates.md) bleiben als kurze Kompatibilitätszeiger erhalten.
+- [Einheitsordnung und Regeln E1–E4 (§11.5)](skill-graph/learning-unit-progression.de.md#sec-unit-progression)
+  Nach B9 ordnet `after` die Vorschläge unter den erreichbaren Zielen. Lernende können auch eine [verfügbare Prüfung direkt wählen](skill-graph/context-and-views.de.md#sec-exams). Die früheren Seiten zu [Curriculum Levels](skill-graph/curriculum-levels.md) und [Level Gates](skill-graph/curriculum-level-gates.md) verweisen auf die geltenden Regeln.
 - [Optionale Erwerbs- und Zeitplanung (§12)](skill-graph/planning-and-budget.de.md)
   Mehrperiodige Erwerbspläne, strukturelle Voraussetzungszeugen und Arbeitslastbudgets.
 - [Prüfungsgebundener Abschluss und implizite Mastery (§13)](skill-graph/assessment-gated-completion.de.md)
   Direkter Prüfungszugang und global wirksame Mastery durch selbstständige Anwendung in gültigen lokalen Lerneinheiten-Prüfungen.
 - [Produktentscheidung vom 4. November 2026: Beherrschung durch Verständnis und selbstständige Anwendung](skill-graph/completion-semantics-clarification-2026-11-04.md)
-  Verbindliche Konzeptkorrektur; Umsetzung und Prüfung bestehender Prüfungsverträge folgen separat.
+  Lokal nachgewiesene selbstständige Anwendung zählt für spätere Voraussetzungen und den Gesamtfortschritt. Die Frage nach dem Zugang zu Einheiten wurde am 14. November mit B9 entschieden.
 - [Festlegung vom 14. November 2026: Lerneinheiten – Cluster, `after` und Lernfluss](skill-graph/learning-unit-wiring-concept-2026-11-14.md)
   Was eine Lerneinheit ist, wie Einheiten geordnet werden und wie diese Ordnung im Lernfluss wirkt; nicht umgesetzt.
 - [Konzeptentwurf vom 17. November 2026: Lerneinheiten – Motivation am Anfang, Prüfungen am Ende](skill-graph/learning-unit-motivation-concept-2026-11-17.md)

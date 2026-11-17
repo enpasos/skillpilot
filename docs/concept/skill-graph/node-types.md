@@ -21,7 +21,7 @@ SkillPilot classifies learning goals into four pedagogical goal kinds that are o
 
 | Node Type | Pedagogical Purpose | Typical Content & Completion Basis |
 | --- | --- | --- |
-| **Orientation** | Meaningful, low-pressure entry into a subject or phase | Concrete possibilities, personal interest follow-up, and explicit learner closure (`semanticKind: "orientation"`, rule `GVR-014`). |
+| **Orientation** | Meaningful, low-pressure introduction | Learners explicitly agree to close the subject introduction. A shorter opening is proposed for units with assessments of their own. |
 | **Understanding** | Conceptual or procedural subject mastery (default) | Assessable `"The learner can ..."` competencies governed by `requires`. |
 | **Memorize** | Durable recall of facts, vocabulary, and formulas | SM-2 spaced-repetition practice plus a mandatory coach-led **verified hard recall** check over all required cards. |
 | **Exam** | Realistic scored assessment simulation | Verbatim `examData` tasks graded strictly by `scoring.steps` under neutral AI Exam Mode supervision. |
@@ -31,7 +31,11 @@ Every atomic goal shares one binary outcome contract: **mastered or not mastered
 <a id="sec-sga-nt-orientation-memorize"></a>
 ### 2.2. Orientation, Understanding, and Memorize Semantics
 
-**Orientation (`semanticKind: "orientation"`):** Checked by `GVR-014` ([Graph Validation Rules](../../qa-ci/graph-validation-rules.md)) to carry zero `requires` and no exam, memory, example, or assessment metadata. Orientation never tests prior knowledge or terminology. In a complete Land plan, orientation goals likewise carry a justified placement inside `SekI` or `SekII` (never floating beside the root stages) and may belong directly to outer units. Completion follows a four-step dialogue: (1) present possibilities and invite an interest or question, (2) respond to a bare label with a tailored follow-up inviting a personal reaction, (3) summarize positively and offer closure, and (4) persist `1` **only after** the learner explicitly agrees to close (never exposing a graded `0/50/100` UI control). At genuine zero-progress entry into a scope, unresolved orientation goals form the sole selectable frontier; learners with existing progress are never reset to the orientation gate (see [Graph Definition §8.2](context-and-views.en.md#sec-orientation) and didactic routes in [§3.3](graph-definition.md)).
+**Orientation (`semanticKind: "orientation"`):** Checked by `GVR-014` ([Graph Validation Rules](../../qa-ci/graph-validation-rules.md)) to carry zero `requires` and no exam, memory, example, or assessment metadata. Orientation never tests prior knowledge or terminology. In a complete Land plan, orientation goals likewise carry a justified placement inside `SekI` or `SekII` (never floating beside the root stages) and may belong directly to outer units.
+
+The existing subject introduction ends when the learner accepts the coach’s offer to close it. A shorter opening is proposed for units with assessments of their own. The coach uses a practical example to show what the learner will be able to do. The learner can ask a question or say “continue” to finish. The backend then stores only the binary outcome. [Orientation dialogue and selection (§8.2)](https://enpasos.github.io/skillpilot/concept/skill-graph/context-and-views.en/#sec-orientation)
+
+If any orientation goals are open in the selected working scope, ordinary entry offers only those goals while the learner has neither curricular progress nor an active curricular goal there. The learner can also choose an available assessment directly.
 
 **Understanding:** The default node kind when no specialized payload is present; availability follows `requires` and optional `applicability`.
 
@@ -49,5 +53,5 @@ Exam nodes embed `examData` (`taskContent`, optional `taskContentEn`, `solutionC
 Scoring, persistence, and **Exam Mode** supervision follow strict rules:
 
 - **Formulas:** $\text{total} = \min(\sum \text{stepPointsAwarded}, \text{scoring.maxPoints})$ and $\text{passed} = (\text{total} \ge \text{scoring.passingPoints})$ (logic errors yield `0` step points; arithmetic slips allow partial step points).
-- **Binary persistence:** On `passed == true`, set mastery to `1.0` immediately after grading (no extra learner confirmation required; never claim persistence if the write fails). On `passed == false`, leave mastery unchanged and persist **no** failed attempt or score (unlimited retries remain available; revealing the solution afterward is a documented evidential trade-off).
+- **Binary persistence.** On `passed == true`, the backend immediately stores `1.0`. The coach confirms success once the write is acknowledged. On `passed == false`, prior mastery is preserved and neither the failed attempt nor its score is stored. Learners may retry the same task any number of times, including after seeing the solution. [Grading and retakes (§8.4)](https://enpasos.github.io/skillpilot/concept/skill-graph/context-and-views.en/#sec-exams)
 - **AI Exam Supervisor workflow:** (1) Show a neutral 2–4 line exam header, deliver `examData.taskContent` **verbatim** without chunking or hints, and append one fixed submission line; (2) accept only readability clarifications until a single complete submission or explicit give-up arrives; (3) grade strictly against `scoring.steps`; (4) persist mastery on pass only; (5) report score, pass/fail, and step feedback, reveal `solutionContent`, switch back to learning-coach mode, and wait for an explicit learner choice before starting new content.

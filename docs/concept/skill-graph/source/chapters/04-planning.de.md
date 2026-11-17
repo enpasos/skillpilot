@@ -6,7 +6,7 @@ Dieser Abschnitt beantwortet zwei Planungsfragen: Lassen sich die Ziele eines Pl
 Kanonische fachliche Lerneinheiten und gemeinsame Landesplaneinheiten (Stufen, Jahrgänge, Phasen) regeln den strukturellen Aufbau und die `after`-Ordnung in Abschnitt~@ref{sec:learning-units}. Davon getrennt ordnet ein optionaler **datierter Zeit- und Budgetplan** Erwerbsziele auf kalendarische Planungsstufen $S_i$ (etwa Halbjahre oder Unterrichtswochen) und prüft die verfügbare Lernzeit. Dieses Zeitprofil verändert weder Grundgraphgültigkeit noch gespeicherte Mastery, führt keine technischen Einheitssperren ein und behauptet keinen produktiven fächerübergreifenden Budgetvalidator.
 :::
 
-Eine fachliche Einheit kann in verschiedenen Bildungsgängen zu anderen Zeiten erworben werden. Eine Planungsstufe bezeichnet hier nur einen geplanten Zeitraum, bildhaft eine Bauetappe: Kompetenzen bleiben die Bauteile, und ihre fachlichen Voraussetzungen bleiben erhalten. Es folgt daraus keine Pflicht, erst alle Fächer eines Kalenderjahres abzuschließen, bevor irgendein späteres Ziel zugänglich wird.
+Zwei Bildungsgänge können dieselbe Einheit zu verschiedenen Zeiten vorsehen. Ein datierter Plan sieht Zeit für den vorgesehenen Einstieg und die benötigten Inhalte vor. Was eine Person bereits erledigt hat und was sie im aktuellen Fokus wählen kann, folgt aus ihrem Lernzustand (Abschnitte~@ref{sec:state} und~@ref{sec:filters}).
 
 ### Plan, Eintrittsbasis und eindeutiger Ersterwerb {#sec:plan-entry anchors="121-plan-scope-and-entry-basis"}
 
@@ -46,7 +46,7 @@ Ein *Abschlusszeuge* einer Planungsstufe ist eine Reihenfolge ihrer Ziele, in de
 a_j \in \Frontier_\pi\!\left(B_\pi \cup S_{<i} \cup \{a_1, \ldots, a_{j-1}\}\right) \qquad (1 \le j \le s_i).
 :::
 
-Setzt etwa $g$ das Ziel $p$ voraus, liegen beide in derselben Planungsstufe und sind ihre übrigen Voraussetzungen schon erfüllt, dann ist die Reihenfolge $p, g$ ein Abschlusszeuge, die Reihenfolge $g, p$ nicht. Hier gilt der globale Prüfbereich. Vererbte, clusterbezogene und nach Referenzauflösung fachübergreifende Anforderungen bleiben erhalten. Ein Normalmodusfilter würde relevante Anforderungen ausblenden können. Der hypothetische Abschlusszeuge verwendet keine direkten Prüfungssprünge und nimmt keine implizite Anerkennung vorweg.
+Ein Beispiel in derselben Unterrichtswoche genügt. Das Ziel $g$ braucht $p$, alle weiteren Voraussetzungen gelten für die Planung als erfüllt. Dann zeigt die Reihenfolge $p, g$, wie beide Ziele erreichbar sind. Für diesen Nachweis zählen auch fachübergreifende und atomar aufgelöste Voraussetzungen. Eine enge persönliche Fokuswahl, ein direkter Prüfungsversuch oder eine erwartete Anerkennung würden die Aussage über den für alle vorgesehenen Erwerbsweg verändern.
 
 Zur Diagnose dienen die benötigten Atome, also der atomare Bedarf aus @eqref{eq:demand} bezüglich der Planrelation:
 
@@ -74,7 +74,7 @@ Während ein datierter Referenzplan diese Machbarkeit relativ zu einer deklarier
 
 ### Aufwand, Reserve und Budget {#sec:workload-budget anchors="123-workload-feasibility"}
 
-Strukturelle Machbarkeit beweist noch nicht, dass ein Schuljahr zeitlich ausreicht. Jede Zeitbehauptung nennt Referenzlernende, Eintrittsbedingungen, Ziel- und Wahlauswahl, Kalender, Schätzmethode und Unsicherheit. Diese deklarierten Schätzannahmen des Plans $\pi$ fassen wir als $\Theta_\pi$ zusammen. Für eine tatsächliche Aktivität $h$ bezeichnet $\widehat t_h(\Theta_\pi) \ge 0$ ihre unter diesen Annahmen geschätzte Dauer. Alle Größen müssen in derselben kalibrierten Zeiteinheit vorliegen:
+Auch eine fachlich mögliche Reihenfolge kann mehr Unterrichtszeit beanspruchen, als im Schuljahr verfügbar ist. Jede Zeitbehauptung nennt Referenzlernende, Eintrittsbedingungen, Ziel- und Wahlauswahl, Kalender, Schätzmethode und Unsicherheit. Diese deklarierten Schätzannahmen des Plans $\pi$ fassen wir als $\Theta_\pi$ zusammen. Für eine tatsächliche Aktivität $h$ bezeichnet $\widehat t_h(\Theta_\pi) \ge 0$ ihre unter diesen Annahmen geschätzte Dauer. Alle Größen müssen in derselben kalibrierten Zeiteinheit vorliegen:
 
 :::equation {#eq:budget}
 \Work_\pi(i; \Theta_\pi) + \Reserve_\pi(i) \le \Budget_\pi(i), \qquad i = 1, \ldots, n_\pi.

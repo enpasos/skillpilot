@@ -1,5 +1,9 @@
 # Produktentscheidung: Beherrschung durch Verständnis und selbständige Anwendung
 
+> **Einordnung vom 17. November 2026.** Die am 4. November beschlossene globale Anerkennung gilt weiter. Eine in ihrer Einheit nachgewiesene Kompetenz erfüllt auch später die Voraussetzungen anderer Ziele. [Geltende Anerkennungsregel (§13)](assessment-gated-completion.de.md#sec-global-effect)
+>
+> Die damals offene Frage nach Startsperren beantwortet B9 vom 14. November. `after` ordnet Vorschläge unter erreichbaren Zielen. Eine verfügbare Prüfung im persönlichen Lernumfang kann die Person weiterhin direkt versuchen. [Einheitsfolge (§11.5)](learning-unit-progression.de.md#sec-unit-progression) · [Direkter Prüfungszugang (§8.4)](context-and-views.de.md#sec-exams)
+
 **4. November 2026.** Dieser Beschluss ersetzt die bisherige Deutung impliziter
 Erledigung als bloßen Entfall von Vorbereitung. Er gilt für die Konzepte;
 die bisherige Implementierung ist noch nicht entsprechend korrigiert.

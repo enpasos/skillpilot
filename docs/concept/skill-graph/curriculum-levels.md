@@ -1,23 +1,5 @@
 # Curriculum Levels — Compatibility Reference
 
-The active concept is [Learning Units](learning-units.md): **Lerneinheit** in
-German, **learning unit** in English, and `LearningUnit` as the conceptual
-technical name. Units are recursive learning promises over stable atomic goals.
+The current term is **learning unit** (*Lerneinheit*). Each unit has a learning promise and can contain child units. Its completion follows from its own goals and its required children. [Learning units (§11)](learning-units.md#sec-unit-completion)
 
-This former curriculum-level page preserves existing links; it no longer
-defines a second active model. Years and semesters are calendar placements,
-not automatically units or recognition contracts. Personalization Levels 1–4,
-QA maturity and goal-difficulty `level` retain their meanings.
-
-Continue with:
-
-- [Learning Units](learning-units.md) for recursive targets, acquisition ownership,
-  own assessment/recall obligations and derived completion;
-- [Learning-Unit Progression and Access Policy](learning-unit-progression.md)
-  for whole-unit prerequisites and the still undecided technical access policy;
-- [Graph Definition §§11–12](graph-definition.md#12-learning-units-and-optional-planning-profiles)
-  for formal unit semantics (§11) and optional calendar/workload profiles (§12);
-- [Learning-Unit Design Criteria and Examples](learning-unit-design-and-examples.md)
-  for the purpose of a unit, boundary criteria and the unit validity rules;
-- [Assessment-Gated Completion](assessment-gated-completion.md) for durable
-  global recognition under immutable own contracts.
+For the order in which units are suggested, see [B9 on unit ordering (§11.5)](learning-unit-progression.md#sec-unit-progression). For calendar dates and workload, see [Optional planning (§12)](planning-and-budget.en.md#sec-levels).

@@ -89,7 +89,10 @@ Choosing “School,” “Higher Education,” or “Languages” is catalog nav
 3. **Learning Focus and Active Goal:** One or more focus roots narrow the temporary working corridor; exactly one atomic goal is the immediate active target. Both focus and active goal are mutable.
 4. **Mastery:** The binary outcome “mastered” or “not yet mastered” belongs to the stable atomic goal ID. Outcomes persist across view and focus changes; cluster progress is derived from them.
 
-`GK` and `LK` denote basic and advanced course profiles (*Grundkurs* and *Leistungskurs*), and SkillPilot also uses them as technical projection labels; wherever official course structures differ, the explicitly declared mapping applies without asserting an identically named official course type. In the Bavarian Mathematics rollout, for instance, `GK` targets the complete compulsory four-hour Mathematics curriculum at elevated level, while `LK` targets those goals plus all five modules of the separate Mathematics *Vertiefungskurs*: using Level~3 focus to work on the three modules actually taught does not remove the other two from the Level~2 target, total progress, or completion, and does not assert that Bavaria offers Mathematics as a selectable *Leistungsfach*. Likewise, under the Product Owner decision of 16 October 2026, the Chemistry rollout includes all authored topics of the applicable scope in the initial target projection while deferring a preceding topic-selection flow -- including Schleswig-Holstein's officially optional medication theme in the interim `GK`/`LK` Chemistry target, while preserving its official optional status without claiming a universal curriculum requirement or learner selection. A course profile is a subject attribute and never implies a school stage; missing stage information remains unresolved.
+Basic (`GK`, Grundkurs) and advanced (`LK`, Leistungskurs) course profiles belong to the selected subject. The school stage is specified separately and stays unresolved if omitted. Two examples illustrate why this matters.
+
+- **Mathematics in Bavaria.** In the SkillPilot model `GK` denotes the compulsory four-hour advanced-level course. `LK` adds all five modules of the separate enrichment course. These technical designations are not Bavarian course names. Focusing on the three modules actually taught leaves the other two in the personal target set, total progress and completion.
+- **Chemistry in Schleswig-Holstein.** Under the decision of 16 October 2026, the interim `GK`/`LK` scope includes all authored topics, including the officially optional medicinal-products theme. Topic selection is planned for a later stage. Its inclusion therefore establishes neither an individual choice nor a universal curriculum requirement.
 
 Changing the Personal Curriculum revalidates the current focus and active goal against the new target set without deleting or writing global mastery outcomes. Configuring the Personal Curriculum is owned by SkillPilot's first-party WebGUI surfaces; the language-model coach connected through the concrete OpenAI V1 adapter reads that scope and neither presents nor mutates it.
 
@@ -106,7 +109,7 @@ A reference inside a composition view may explicitly carry one of two *projectio
 
 When omitted, the role defaults to `target`. Subtree references pass their role down to descendants. Overlapping role assignments are resolved by specificity: a direct `goalEntry` reference overrides subtree inheritance; a nearer subtree root overrides a broader one; only at equal specificity does `target` win. This precedence resolves the role rather than permitting duplicate visible occurrences.
 
-Authored subject roles are never guessed from age or phase. By contrast, the explicitly authorized personal closure rule adds necessary atomic acquisition targets to the full plan $L$ without rewriting authored subject roles or inventing new dependencies. A mathematics goal can be a learning target in Mathematics and supporting prerequisite context in Physics while still being counted once in a joint plan. Its Physics role neither erases Mathematics outcomes nor creates a second competence acquisition. However, a genuinely necessary atom cannot remain mere prerequisite support across the entire Personal Curriculum without an acquisition target. Official curriculum assignment and inclusion as necessary preparation remain distinct claims. The backend and WebGUI implement the closed personal learning basis; applicability validation and complete acceptance of the current state remain separately evidenced.
+Subject views declare their roles explicitly. The Personal Curriculum adds the atomic acquisition targets required by existing prerequisites. A mathematics competence can thus serve as support in Physics and count once as a learning goal in the combined plan. Its canonical ID carries the learner's outcome. Age and phase do not determine subject roles. Inclusion as necessary preparation does not change official curriculum assignment. The backend and WebGUI implement this closed learning scope. Applicability and full acceptance require their own evidence.
 
 At the personal compilation boundary, the Product Owner decision of 10 November 2026 supersedes the earlier blanket requirement of 7 November to manually reference every reachable prerequisite with an explicit role:
 
@@ -114,15 +117,11 @@ At the personal compilation boundary, the Product Owner decision of 10 November 
 - A necessary atom's derived global target role, backed by a checked canonical prerequisite path and recorded provenance, suffices without a manual target or support reference per atom.
 - Unknown references, cycles, and missing, unexposed, or unaccounted required atoms remain hard errors regardless of mastery and focus.
 
-This compile-time validity check is distinct from later Level~3 focus selection: a validly resolved prerequisite outside the active focus still does not block normal mode.
+The decision of 11 November 2026 distinguishes validation from reading a learner record. Validation, curriculum QA and native acceptance treat an invalid closure as an error. If the runtime cannot strictly resolve the canonical graph, it shows the reviewed seed scope, offers no goal with broken demand and claims no derived learning basis. It logs the cause once per curriculum and error code. Learner state, results and export remain readable. An invalid seed selection remains an error. This handling of an invalid closure also covers older curricula whose root contains and requires its own orientation goal.
 
-Under the Product Owner decision of 11 November 2026, these hard errors belong to validation, curriculum QA, and native acceptance rather than to learner reads. When the canonical graph of a learning context is not strictly compilable, the runtime keeps the reviewed seed scope without the derived closure, claims no learning basis, offers no goal whose prerequisite demand is broken, and logs the failure once per curriculum and error code; learner state, results, and export stay readable. Errors in the seed selection itself remain hard errors. The rule covers the many non-canonical curricula whose root cluster contains and requires its own orientation goal and changes none of their data.
+*Example from transitional data.* If a Physics goal $g$ requires the Mathematics cluster $k$, the atomic descendants of $k$ and their prerequisites are resolved before display filters. Physics can continue to reference $k$ as `prerequisiteOnly`. The Personal Curriculum includes the necessary atoms with their canonical provenance and existing mastery. This does not enroll an additional subject or a whole unit.
 
-*Transition-data example:* Suppose a Physics goal $g$ requires a Mathematics cluster $k$. Its canonical atomic basis and transitive prerequisites are resolved prior to display filters. A subject-local `prerequisiteOnly` reference to $k$ may remain in Physics, yet every genuinely required atom still receives an acquisition target in the full Personal Curriculum -- whether in Mathematics or as derived preparation -- without manual per-atom references or enrolling an entire extra subject. Canonical identity, provenance, and mastery remain intact.
-
-
-
-The authored position of a `prerequisiteOnly` reference asserts neither an official stage nor a learning placement. In the target model a necessary atom that the selected plan does not carry as a seed target receives exactly one derived learning placement in the plan unit of its earliest actual need within the full $L$. Full canonical paths are traversed independently of mastery; neither an entire subject nor an entire unit is added. Already carried targets are not silently moved: earlier demand for a later carried target remains a backflow until an evidenced subject-matter correction or explicitly justified preparation resolves it. Z4/E2 apply equally to preparation and carried targets. This shared placement derivation across all readers is not fully implemented in production yet.
+The location of a `prerequisiteOnly` entry determines neither the official stage nor the learning placement. In the target model each required atom without a learning placement in the selected plan receives one at its earliest actual use in $L$. Derivation follows the full canonical paths independently of mastery. If a goal already carried in the plan appears too late, the backflow remains visible until an evidenced subject correction or explicitly justified earlier preparation resolves it. Z4/E2 apply in both cases. Shared placement derivation is not yet in production for every reader.
 
 ### Applicability Is Not Placement {#sec:applicability-vs-placement}
 
@@ -136,7 +135,7 @@ A focus consists of the union of the selected focus roots and their visible desc
 
 Focus widening follows the unique visible parent path. Each backend-published widening option must form a strict superset and add at least one unmastered target goal. With multiple roots, it replaces only the covered branch and carries independent roots forward. The coach adopts the published option verbatim and waits for learner agreement before changing focus.
 
-An automatic widening proposal is offered only once the current focus is genuinely complete; an empty frontier alone may indicate a blocked, incomplete focus rather than completion. After widening, newly included unmastered prerequisites are checked normally: mastering a dependent goal never writes mastery backward. By contrast, application recognition already derived under a valid local contract remains globally effective, so later consumers -- goals requiring that competence -- as well as subsequent plan or focus switches never reopen it.
+The backend proposes widening only after the current focus is complete. An empty frontier can also mean that the remaining goals are blocked. After widening, the backend checks the newly included open prerequisites. Mastering a dependent goal writes no mastery back to its prerequisites. Under the recognition model, application established by a valid local contract remains effective after a change of plan or focus. A new goal requiring that competence can build on it.
 
 :::sources
 [Levels of Personalization](repo:docs/concept/levels-of-personalization.md); [View Projection and Goal Placement](repo:docs/concept/skill-graph/view-projection-and-goal-placement.md).
@@ -144,38 +143,38 @@ An automatic widening proposal is offered only once the current focus is genuine
 
 ## Goal Types and the Meaning of an Outcome {#sec:goal-types}
 
-For each goal, the skill graph receives only the finished binary outcome established under that goal type's workflow. The graph itself does not judge whether an explanation was convincing, an orientation dialogue closed appropriately, or every required flashcard was recalled reliably; those decisions belong to each goal type's completion contract.
+Each atomic goal can carry an explicit binary outcome. The action that warrants recording it depends on the goal type. Under the recognition model, a valid local assessment contract can also establish satisfaction for certain goals without writing another outcome (Section~@ref{sec:assessment}). Table~@ref{tab:goal-types} distinguishes these cases.
 
-Every learning goal has a binary outcome: mastered or not yet mastered. The goal type defines what “mastered” means. For a content goal, it means explicitly established understanding, while valid assessment derivation additionally attests independent application. For orientation, it marks completion of the motivational entry rather than a subject certificate. For memorization, it denotes passing the goal's own controlled recall check over the required cards. For an assessment goal, it denotes passing the assessment. Differences among completion workflows introduce neither partial mastery levels nor parallel goal outcomes. Table~@ref{tab:goal-types} summarizes the four goal types.
-
-:::table {#tab:goal-types caption="The four goal types and the meaning of their binary outcome." cols="27mm,X,X,21mm"}
-| Goal type | What “mastered” means | How the outcome is established | Implicitly derivable |
-| --- | --- | --- | --- |
-| Content goal | Understanding is established; under implicit mastery, independent application is attested. | Sufficiently evidenced mastery in the coach-led workflow (Section~@ref{sec:understanding}) or a valid local contract (Section~@ref{sec:assessment}). | yes |
-| Orientation goal | Motivational entry is completed; not a subject-matter certificate. | Tailored follow-up, positive summary, and learner agreement to close (Section~@ref{sec:orientation}). | marker only |
-| Memory goal | Completion recall over the required card deck is passed. | Verified recall of all required cards without card hints (Section~@ref{sec:memory}). | no |
-| Assessment goal | The assessment is passed. | Rubric-based grading of the single complete submission (Section~@ref{sec:exams}). | no |
+:::table {#tab:goal-types caption="What an explicit outcome establishes and what the target model can derive." cols="26mm,X,X"}
+| Goal type | Explicit outcome | Satisfaction under a valid assessment contract |
+| --- | --- | --- |
+| Content goal | The coach has established the required understanding (Section~@ref{sec:understanding}). | Independent application is established. |
+| Orientation goal | The learner has agreed to close the subject introduction. For a unit opening, the proposal calls for an explicit “continue” (Section~@ref{sec:orientation}). | Only the introduction is settled. |
+| Memory goal | The learner recalled all required cards unaided during completion recall (Section~@ref{sec:memory}). | The goal's own recall check is required. |
+| Assessment goal | The complete submission met the passing threshold under the rubric (Section~@ref{sec:exams}). | The assessment itself must be passed. |
 :::
 
 ### Understanding and Application {#sec:understanding}
 
-A content goal describes conceptual or procedural understanding. Grading must cover the aspects demanded by the goal description. Solving a single task is one piece of evidence rather than automatic mastery of the entire goal: multi-step transfer within one task can suffice, whereas imposing an arbitrary minimum task count would be just as unfounded as crediting every isolated correct answer.
+For a content goal, the learner's performance must demonstrate the understanding specified in its description. A single multi-step transfer task may suffice. A single correct answer is enough if it actually covers all required aspects.
 
-In the coach-led workflow, sufficiently evidenced mastery is persisted immediately, and the coach may report a saved outcome only once persistence is confirmed. Requesting separate learner consent before saving is not domain evidence and is not added as an extra completion gate for ordinary content mastery. Moving on to the next topic remains a separate choice: the coach offers the backend-selected next target and waits for recognizable learner agreement before starting new material.
+Once sufficient evidence is available, the coach records the outcome without asking for separate permission to save it. It can report the pass as saved once persistence is confirmed. It then offers the next topic selected by the backend and begins when the learner agrees.
 
 ### Orientation as a Distinct Completion Contract {#sec:orientation}
 
-A goal authoritatively classified as `orientation` presents concrete possibilities and honest positive perspectives on the upcoming material. It tests neither prior knowledge nor terminology, calculation skills, recall, transfer, or exam performance. Like every learning goal, its outcome is binary; grading personal motivation on a percentage scale would be misleading.
+An atomic orientation goal (`semanticKind: "orientation"`) shows what the upcoming material will help a learner understand or do. Learners can express interests or ask questions. Prior knowledge, terminology and personal motivation are never graded. The existing contract requires orientation goals to have no prerequisites and no assessment or memory data.
 
-The workflow proceeds in three steps:
+**Subject introduction.** A full introduction such as “Why mathematics?” follows this workflow today.
 
-1. **Follow-up.** When the learner picks one of the offered interests, the coach opens a tailored motivational follow-up linking that interest to something concrete the learner can understand, explore, shape, or do, and invites a low-pressure personal reaction, choice, or question. Merely repeating an offered label does not complete orientation.
-2. **Summary.** After a meaningful response to that follow-up -- or an explicit wish to leave orientation -- the coach gives a positive summary together with a separate offer to close.
-3. **Closure.** Only a further learner reply agreeing to that closure establishes the completion marker.
+1. **Follow-up.** When the learner chooses an interest, the follow-up begins. The coach gives a concrete example of something the learner could understand, explore or create and invites a response.
+2. **Summary.** After a substantive response or an explicit wish to leave orientation, the coach summarizes the conversation positively and offers to close.
+3. **Closure.** The goal is complete when the learner accepts that offer.
 
-This workflow must neither be reinterpreted as a subject exam nor transferred to ordinary content goals. Orientation nodes are prerequisite-free atomic entry anchors; assessment and memory metadata never belong on the same node.
+**Proposed unit opening.** The motivation goal in the record of a unit with its own assessments would use a shorter workflow (Section~@ref{sec:unit-claims}). The backend would supply the learning promise and a concrete application. The coach uses the example to show what learners will be able to do after the unit and why it matters. They can ask a question or say “continue” to close the introduction. In this case the backend stores only the binary outcome. The coach sends no conversation text. Section~@ref{sec:transitive-demand} explains how this entry may also be settled without an explicit outcome.
 
-At a genuine zero-progress entry into a projected scope, open orientation goals are the only selectable frontier goals. Learners with established subject progress are not reset to this entry gate.
+**Which goals are selectable today.** If the relevant projected working scope contains open orientation goals, ordinary entry offers only these as long as it contains neither curricular progress nor an active curricular goal. Learners already working on the subject in that scope can continue. A deliberately selected, available assessment remains directly accessible (Section~@ref{sec:exams}).
+
+**Which opening the coach should recommend.** When a learner starts a unit, the backend would recommend that unit’s available opening as appropriate to the chosen topic, learning plan or focus. In the planned unit-by-unit approach, the opening belongs to the unit whose turn it is. Selection among equally ranked units and in other learning approaches remains open. A learner focusing explicitly on a single content goal can leave its motivation outside the focus. As a prerequisite it still belongs to the personal learning scope, but it does not block normal focus. Strict mode checks it even outside the focus (Section~@ref{sec:filter-modes}).
 
 ### Memorization: Practice and Verified Recall {#sec:memory}
 

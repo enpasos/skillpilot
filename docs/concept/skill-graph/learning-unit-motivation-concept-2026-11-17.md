@@ -1,249 +1,212 @@
 # Lerneinheiten: Motivation am Anfang, Prüfungen am Ende
 
-**Stand: 17. November 2026. Konzeptentwurf, nicht beschlossen und nicht
-umgesetzt.** Das Dokument ergänzt die
-[Festlegung vom 14. November 2026](learning-unit-wiring-concept-2026-11-14.md)
-(B1 bis B16) um das Motivationsziel einer Einheit. Die Spalte „Herkunft“ in
-Abschnitt 2 trennt die Richtung, die der Product Owner am 17. November 2026
-vorgegeben hat, von der Ausarbeitung, die er noch nicht bestätigt hat.
-Abschnitt 10 nennt die offenen Entscheidungen.
+**Konzeptentwurf vom 17. November 2026.** Der Product Owner hat die Richtung
+vorgegeben. Die Ausgestaltung steht zur Entscheidung. Der Entwurf ergänzt das
+[bestehende Einheitenkonzept](learning-unit-wiring-concept-2026-11-14.md).
+Die [Graph-Definition (§11)](learning-units.de.md#sec-unit-claims) ordnet die
+Vorgaben und die offenen Ausgestaltungsfragen in das Gesamtmodell ein.
 
-## 1. Zweck
+## 1. Was Lernende vom Einstieg haben
 
-Heute gibt es je Fach und Stufe ein Motivationsziel, etwa „Warum
-Mathematik?“. Jedes Einstiegsziel ohne sonstige Voraussetzung verlangt es.
-Das hat zwei Schwächen:
+> Ein Weg führt schräg nach Nordosten. Wie weit kommst du dabei nach Osten?
+> Am Ende dieser Einheit kannst du diesen Anteil in einer Zeichnung zeigen
+> und damit erklären, was das Skalarprodukt geometrisch bedeutet.
 
-- **Die Motivation steht weit vor dem Stoff.** Ein Ziel vor 47
-  Einstiegszielen der Sekundarstufe II sagt nicht, wozu das einzelne Thema
-  nützt.
-- **Die Einheit mit Prüfungen hat ein Ende, aber keinen Anfang.** Ihre
-  Prüfungen zeigen, was man kann. Ihr Lernversprechen sagt, was man danach
-  kann und wozu; im Lernfluss kommt es nicht vor.
+So könnte der Coach die Einheit „Skalarprodukt über orthogonale Projektion
+deuten“ eröffnen. Die Frage gibt dem Lernen eine Richtung. Wer neugierig ist,
+kann nachfragen. Wer anfangen möchte, kann mit „weiter“ den Einstieg
+abschließen. Die Antwort erarbeitet die Person im Laufe der Einheit.
 
-Jede Einheit mit Prüfungen bekommt deshalb einen eigenen Anfang: ein
-Motivationsziel, das sagt, worum es in der Einheit geht und wozu sie nützt.
+Heute erklärt ein Ziel wie „Warum Mathematik?“ den Wert eines ganzen Fachs.
+Allein in der Sekundarstufe II verlangen 47 Einstiegsziele dieses eine Ziel.
+Jede erklärte Einheit hat bereits ein **Lernversprechen**. Darin steht, was
+man danach kann und wozu das nützt. Der Vorschlag bringt dieses Versprechen genau
+dann ins Gespräch, wenn jemand das Thema beginnt. Am Ende zeigen die eigenen
+Prüfungen der Einheit, ob die Person das Gelernte selbstständig anwenden kann.
 
-## 2. Festlegungen
+## 2. Welche Einheiten einen Auftakt bekommen
 
-| Nr. | Festlegung | Herkunft | Abschnitt |
-| --- | --- | --- | --- |
-| MZ1 | Jede Einheit mit Prüfungen hat genau ein eigenes Motivationsziel. Es steht an ihrem Anfang, ihre Prüfungen stehen an ihrem Ende. | Product Owner | 3 |
-| MZ2 | Das Motivationsziel vermittelt, worum es in der Einheit geht und wozu sie nützt, möglichst mit Praxisbezug. | Product Owner | 5 |
-| MZ3 | Das gilt auch geschachtelt: Hat eine Einheit eigene Prüfungen, hat sie eine eigene Motivation, gleich was ihre Elterneinheit und ihre Untereinheiten haben. | Product Owner | 4.3 |
-| MZ4 | Am Ende liegt jedes Inhaltsziel als eigenes Ziel in einer Einheit mit Motivation und Prüfungen. Maßgeblich ist seine kleinste Einheit. | Product Owner; der zweite Satz ist Vorschlag | 3 |
-| MZ5 | Motivation und Prüfungen stehen ausdrücklich im Einheiteneintrag: Er nennt das Motivationsziel und wie bisher die Abdeckungsreviews der Prüfungen. | Product Owner | 4.1 |
-| MZ6 | Der Fluss durch die Einheit steht als `requires` im Graphen: von der Motivation über die Inhaltsziele zu den Prüfungen. | Product Owner | 4.2 |
-| MZ7 | Jedes eigene Ziel, das kein Ziel aus dem Umfang der Einheit voraussetzt, verlangt die Motivation. Diese Kanten folgen vollständig aus der Regel; ein Werkzeug schreibt und prüft sie. | Vorschlag | 4.2 |
-| MZ8 | Die Motivation verlangt kein Inhaltsziel. Außerhalb der Einheit verlangt kein Ziel ihre Motivation. Nichts verlangt eine Prüfung (B9). Zwischen Einheiten steht weiter `after`. | Vorschlag | 4.2 |
-| MZ9 | Die Motivation einer Einheit verlangt die Motivation der nächsten Einheit mit Prüfungen, in der sie liegt. | Vorschlag, offen | 4.3 |
-| MZ10 | Das Motivationsziel ist ein Orientierungsziel mit eigenem binärem Ergebnis. Es prüft und bewertet nichts. Nach bestandenen Prüfungen der Einheit gilt es als erledigt. | Vorschlag | 5 |
-| MZ11 | Der Coach vermittelt genau die Inhalte aus MZ2. Den Auftrag dazu liefert das Backend aus den Daten der Einheit. | Product Owner; die Ausgestaltung ist Vorschlag | 6 |
-| MZ12 | Von Hand geschrieben werden nur das Lernversprechen und der Praxisbezug. Alles andere leitet das Backend aus dem Graphen ab. | Vorschlag | 5 |
-| MZ13 | Motivationsziele entstehen mit dem Zuschnitt einer Einheit, nicht in einer eigenen Aktion über alle Fächer. | Vorschlag | 9 |
+Der Product Owner hat für den Lernweg Folgendes vorgegeben.
 
-## 3. Aufbau einer Einheit mit Prüfungen
+- **Jede Einheit mit eigenen Prüfungen bekommt genau ein eigenes Motivationsziel**
+  (MZ1). Es führt mit einem möglichst konkreten Beispiel in das Thema und
+  seinen Nutzen ein (MZ2). Das gilt auch für geschachtelte Einheiten mit
+  eigenen Prüfungen (MZ3).
+- **Jedes Inhaltsziel gehört im fertigen Modell als eigenes Ziel zu einer
+  Einheit mit Motivation und Prüfungen** (MZ4). Als zuständig schlagen wir die
+  kleinste Einheit vor, in der das Ziel liegt. Eine übergeordnete Einheit
+  kann zusätzlich prüfen, wie Lernende mehrere Inhalte zusammen anwenden.
+- **Anfang und Ende sind im Einheiteneintrag erkennbar** (MZ5). Er verweist auf
+  das Motivationsziel und nennt wie bisher die Reviews, die die Abdeckung durch
+  seine Prüfungen bestätigen. Der Lernweg von der Motivation über die
+  Inhaltsziele zu den Prüfungen steht als `requires` im Graphen (MZ6).
+- **Der Coach vermittelt das Lernversprechen und seinen Nutzen.** Das Backend
+  liefert ihm dafür die Inhalte der aktiven Einheit (MZ11).
 
-| Teil | Besteht aus | Sagt |
+Die folgenden Abschnitte arbeiten diese Vorgaben als Vorschlag aus. Die
+bisherigen Begriffe reichen aus. Ein Cluster gliedert Ziele, eine Einheit ordnet
+ihren Lernweg, eine Einheit mit eigenen Prüfungen belegt zusätzlich die
+Anwendung ihrer eigenen Inhalte. Eine Einheit, die Untereinheiten nur
+zusammenfasst, braucht keinen eigenen Auftakt. „Einheit abgeschlossen“
+bedeutet weiterhin, dass alle Ziele ihres Umfangs erfüllt sind.
+[Begriffe und Einheitsabschluss](learning-units.de.md#sec-unit-completion)
+
+## 3. Was der Coach sagt und was als erledigt gilt
+
+Autorinnen und Autoren formulieren das Lernversprechen im Einheiteneintrag
+und einen konkreten Praxisbezug am Motivationsziel (MZ12). Das kann eine
+Alltagssituation, eine berufliche Anwendung oder eine spätere fachliche Frage
+sein. Das Backend liefert dem Coach beide Texte. Welche Inhalte dazugehören
+und was die Prüfungen abdecken, entnimmt es den Zielen, Untereinheiten und
+Abdeckungsreviews. Aus `after` lässt sich ablesen, welche Einheiten im Plan
+später vorgesehen sind. Will der Coach sagen „Dort brauchst du das wieder“,
+muss er die konkrete Anwendung benennen können.
+
+Der Coach stellt das Beispiel vor und gibt der Person Gelegenheit zu einer
+Frage oder Reaktion. Ein ausdrückliches „weiter“ genügt zum Abschluss. Eine
+richtige Antwort, Fachbegriffe oder eine Selbsteinschätzung werden dafür
+nicht verlangt. Das passt zu einem kurzen Einstieg vor jeder Einheit. Für
+die ausführlichere Orientierung in einem ganzen Fach gilt der eigene
+[Ablauf mit Vertiefung und Abschlussangebot](context-and-views.de.md#sec-orientation).
+
+Das Motivationsziel ist ein atomares Orientierungsziel
+(`semanticKind: "orientation"`) von SkillPilot. Der Praxisbezug steht als
+Text am Ziel. Felder für Prüfungsaufgaben, Aufgabenbeispiele und Lernkarten
+bleiben leer. Die Herkunft weist den Einstieg als didaktische Entscheidung
+von SkillPilot aus. Der Einstieg kann auf zwei Wegen als erledigt gelten
+(MZ10).
+
+- **Die Person hat den Einstieg erlebt und möchte weiter.** Das Backend
+  speichert nur das binäre Ergebnis am Motivationsziel. Der Coach übermittelt
+  keinen Gesprächstext.
+- **Die Person steigt über eine Prüfung ein.** Nach dem vorgesehenen
+  Anerkennungsmodell kann die Orientierung auch ohne eigenes Ergebnis als
+  erledigt gelten. Dafür muss der Prüfungsvertrag für diese Fassung der
+  Einheit gültig sein. Keine offene eigene Prüfung und kein offenes eigenes
+  Lernkartenziel darf die Motivation noch direkt oder indirekt brauchen.
+  Hat die Person alle Prüfungen bestanden, aber ein offenes Kartenziel braucht
+  den Einstieg noch, bleibt er offen. Eine abgeleitete Erledigung erzeugt
+  keinen Gesprächsnachweis und schreibt kein Ergebnis am Motivationsziel.
+
+Das Anerkennungsmodell ist spezifiziert. Seine produktive Einführung setzt
+unter anderem die Bindung an die geprüfte Fassung voraus (R5). Eine später
+ergänzte Kante darf einem früheren Prüfungsergebnis keine neue Anerkennung
+verleihen. [Prüfungsgebundener Abschluss und offene Nachfrage](assessment-gated-completion.de.md#eq-needed)
+
+## 4. Wie der Auftakt im Graphen steht
+
+Bei den natürlichen Zahlen führen zwei Wege durch die Einheit. Auf dem einen
+stellen Lernende Zahlen dar und ordnen sie, auf dem anderen arbeiten sie mit
+Stellenwerten und runden. Beide Wege sollen mit demselben Motivationsziel
+beginnen. Ein späteres Ziel, etwa das Runden, erreicht die Motivation dann
+bereits über seine Vorbereitung.
+
+**Vorschlag für die Kanten (MZ7 und MZ8).** Jedes eigene Inhaltsziel soll
+seine Motivation direkt oder über weitere Ziele voraussetzen. Dasselbe gilt
+für eigene Übungs-, Prüfungs- und Lernkartenziele. „Eigene Ziele“ gehören
+zur Einheit selbst. Ziele einer Untereinheit haben dort ihren eigenen Platz.
+Das Motivationsziel selbst und eigenständige Orientierungsziele sind von der
+Ableitung ausgenommen.
+
+Ein Werkzeug ermittelt die nötigen Kanten aus den übrigen Voraussetzungen.
+Es ergänzt die gewünschte Verbindung für jedes betroffene Ziel und schreibt
+eine direkte Motivationskante nur dort, wo kein anderer Pfad die Verbindung
+herstellt. Damit funktioniert die Regel auch, wenn das erste eigene
+Inhaltsziel bereits Mathematik aus einer anderen Einheit oder ein Inhaltsziel
+einer Untereinheit braucht. Am fertigen Graphen lassen sich die vollständigen
+Pfade, die Kreisfreiheit und die transitive Minimalität prüfen.
+
+Die Motivation selbst setzt im Vorschlag keine Inhalte voraus. Nur Ziele aus
+ihrer Einheit dürfen sie direkt verlangen. Für jedes eigene Inhaltsziel
+führt der Lernweg weiter zu mindestens einer eigenen Prüfung. Welche ihrer
+Aufgaben dieses Ziel tatsächlich prüft, bestätigt das Abdeckungsreview.
+Prüfungen bleiben Endpunkte. Zwischen Geschwistereinheiten beschreibt
+`after` die vorgesehene Reihenfolge. Die Lernkarte kann beide Beziehungen
+mit ihrer bisherigen Bedeutung zeigen. [Ordnungsregeln B7 bis B9 und B15](learning-unit-wiring-concept-2026-11-14.md)
+
+### Wenn Einheiten ineinanderliegen
+
+Eine äußere Einheit mit eigener Syntheseprüfung erklärt den größeren
+Zusammenhang. Ihre geprüfte Untereinheit erklärt den nächsten konkreten
+Erkenntnisschritt. Eine äußere Prüfung kann dafür auf **Inhalte** der
+Untereinheit zurückgreifen. Zum vollständigen Abschluss der äußeren Einheit
+zählen auch die eigenständigen Prüfungsergebnisse der Untereinheit.
+
+**Offen bleibt, ob die innere Motivation die äußere voraussetzen soll
+(MZ9).** Wer die ganze äußere Einheit beginnt, soll ihren Auftakt zuerst
+erleben. Die mögliche Zusatzkante beträfe aber auch jemanden, der für Physik
+lediglich ein Mathematikziel aus der inneren Einheit braucht. Über die
+Voraussetzungen kämen dann beide Mathematikeinstiege in den persönlichen
+Lernumfang. Bei mehreren Ebenen könnte die Kette länger werden.
+
+Vorerst soll das Backend beim Start der ganzen Einheit deren eigenen
+Auftakt empfehlen. Eine verpflichtende Kante zur äußeren Motivation
+schlagen wir erst dann vor, wenn beide Lernwege an derselben geschachtelten
+Einheit gezeigt haben, dass auch jemand mit diesem Teilbedarf den äußeren
+Einstieg braucht. Als direkte Voraussetzung käme dann das Motivationsziel
+der nächsten umschließenden Einheit mit eigenen Prüfungen infrage. Dafür
+wären die Platzierung beider Ziele im Landesplan und eine eng begrenzte
+Ausnahme von der Regel für voraussetzungsfreie Orientierung (`GVR-014`)
+zu prüfen.
+
+## 5. Was „am Anfang“ für die Auswahl bedeutet
+
+| Wie die Person einsteigt | Was sie erlebt |
+| --- | --- |
+| Sie beginnt eine ganze Einheit. | Der Coach bietet den kurzen Auftakt dieser Einheit an. Bei „Einheit für Einheit“ orientiert sich der Vorschlag an der Einheit, die gemäß Plan und Reihenfolge an der Reihe ist. |
+| Sie setzt einen engen Fokus auf ein einzelnes Inhaltsziel. | Die zugehörige Motivation zählt auch außerhalb des Fokus zum persönlichen Lernumfang. Für den normalen Fokus genügt es, dass die Voraussetzungen innerhalb des Fokus erfüllt sind. Der strikte Modus prüft sie auch außerhalb. |
+| Sie wählt bewusst eine verfügbare Prüfung. | Sie kann die Prüfung direkt versuchen, auch wenn der Einstieg oder ein Teil der Vorbereitung noch offen ist. |
+
+Beim **ersten Start** bietet der normale Lernablauf heute nur offene
+Orientierungsziele an, sofern es im betreffenden Arbeitsbereich welche gibt
+und die Person dort weder fachlichen Fortschritt noch ein aktives fachliches
+Ziel hat.
+Mit vielen Einheitsmotivationen könnte so eine lange Liste von Einstiegen
+entstehen. Für die Empfehlung sollte das Backend die
+ausdrückliche Themenwahl, den aktiven Lernplan oder den gewählten Fokus
+berücksichtigen und den dazu passenden erreichbaren Einstieg anbieten. Ist
+noch kein Thema gewählt, kann „Warum Mathematik?“ als Facheinstieg helfen.
+Für die übrigen Lernweisen und für mehrere gleichrangige Einheiten ist die
+Auswahl noch festzulegen. [Lernweise „Einheit für Einheit“](learning-unit-progression.de.md#sec-unit-by-unit)
+und [Fokusregeln](graph-definition.de.md#sec-filter-modes)
+
+## 6. Woran sich der Vorschlag prüfen lässt
+
+Am 17. November 2026 enthält der kanonische Katalog drei erklärte Einheiten
+mit eigenen Prüfungen. Alle drei haben bereits ein Lernversprechen. Keine
+hat ein eigenes Motivationsziel.
+
+| Einheit | Heutiger Lernweg | Frage an den Entwurf |
 | --- | --- | --- |
-| Anfang | genau einem Motivationsziel | worum es geht und wozu es nützt |
-| Mitte | den eigenen Inhaltszielen, den Untereinheiten und weiteren eigenen Zielen | was zu lernen ist |
-| Ende | den eigenen Prüfungen | dass die eigenen Inhaltsziele selbstständig angewendet werden |
+| Natürliche Zahlen verstehen und darstellen | Zwei Einstiegsziele verlangen „Warum Mathematik?“. Zwei eigene Prüfungen decken die Inhalte ab. | Hilft ein gemeinsamer Auftakt für beide Wege, etwa zwei Einwohnerzahlen für einen Zeitungsbericht zu vergleichen und sinnvoll zu runden? |
+| Skalarprodukt über orthogonale Projektion deuten | Ein eigenes Inhaltsziel braucht Vorwissen von außerhalb. Die Einheit hat eine Prüfung. | Gibt das Wegbeispiel aus Abschnitt 1 diesem einzelnen Lernschritt mit wenigen Sätzen einen Sinn? |
+| Gleichmäßig beschleunigte Bewegung modellieren | Das Einstiegsziel hat drei externe Voraussetzungen, darunter zwei aus der Mathematik. Die Einheit hat zwei Prüfungen. | Wer die Fahrt einer anfahrenden Straßenbahn modellieren will, braucht mathematische Vorbereitung. Welche Einstiege helfen der Person auf diesem Weg? |
 
-Ob eine Einheit Prüfungen hat, zeigt weiter ihr Eintrag (B2). Derselbe
-Eintrag nennt künftig ihr Motivationsziel. Eine Einheit mit Prüfungen ohne
-Motivationsziel ist ungültig. Eine Einheit ohne Prüfungen braucht keines.
+Die beiden Mathematik-Fachziele für Sekundarstufe I und II haben heute 12
+und 47 direkte Verweise aus anderen Zielen. In Physik sind es 29 für „Warum
+Physik?“ und keiner für „Vom Sand zum Smartphone“. Letzteres zeigt, dass ein
+konkreter thematischer Auftakt bereits als eigenständiges Angebot möglich
+ist. [Kanonischer Mathematikkatalog](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json)
+und [Physikkatalog](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json)
 
-**Jedes Inhaltsziel.** Die Prüfungen einer Einheit decken nur ihre eigenen
-Inhaltsziele ab (B3). Maßgeblich ist deshalb die kleinste Einheit eines
-Inhaltsziels: Sie hat Motivation und Prüfungen. Eine Einheit mit Prüfungen
-weiter oben belegt für das Ziel nichts. Übungsaufgaben, Abiturklausuren,
-Lernkarten- und Orientierungsziele dürfen weiter eigene Ziele einer größeren
-Einheit sein.
+**Für eine schrittweise Einführung (MZ13)** würde das Motivationsziel
+jeweils mit dem fachlichen Zuschnitt seiner Einheit entstehen. Eine neue
+Version des Paketvertrags müsste den Verweis im Einheiteneintrag aufnehmen.
+Bevor das erste Einstiegsziel seinen bisherigen Fachanker wechselt, müssten
+die Routenprüfungen (`CQR-101`, `CQR-102`, `CQR-104`, `GVR-012`) gültige
+Einheitsmotivationen im jeweiligen Geltungsbereich erkennen. So könnten die
+heutigen 88 Kanten schrittweise abgelöst werden. Fachorientierungen blieben
+als Angebot ihrer Stufe zugänglich. Eine länderübergreifende fachliche
+Einheit würde dadurch kein stufenspezifisches Fachziel voraussetzen.
 
-**Begriff.** Die Stufen Cluster, Einheit und Einheit mit Prüfungen bleiben.
-Eine Einheit mit Prüfungen hat immer auch eine Motivation; einen vierten
-Begriff braucht es dafür nicht. „Abgeschlossen“ bleibt das Wort für den
-Lernstand: Alle Ziele des Umfangs sind beherrscht.
+Geänderte Zielobjekte brauchen aktuelle Nachweise. Für betroffene Ziele im
+eingefrorenen V9-Register greift die frühere Reviewübertragung nach einer
+Änderung nicht mehr. Neue Ziel-IDs müssen in Paketen, Zählungen und
+Statusdateien berücksichtigt werden. Der kurze Coach-Ablauf wäre in der
+festgelegten Freigabereihenfolge der Anbieter einzuführen.
 
-## 4. Verdrahtung
-
-### 4.1 Im Einheiteneintrag
-
-| Angabe im Eintrag | Stand |
-| --- | --- |
-| Lernversprechen | vorhanden |
-| Abdeckungsreviews: je Prüfung die Inhaltsziele, die sie abdeckt | vorhanden |
-| Motivationsziel | neu |
-
-Am Eintrag allein lässt sich ablesen, ob die Einheit Anfang und Ende hat. Das
-neue Feld steht im Einheiteneintrag der Platzierungsschicht und kommt mit
-einer neuen Version des Paketvertrags. Eine Nebendatei gibt es nicht.
-
-### 4.2 Im Graphen
-
-```text
-Motivation → eigene Inhaltsziele und Untereinheiten → eigene Prüfungen
-```
-
-| Kante | Regel | Wer sie schreibt |
-| --- | --- | --- |
-| eigenes Ziel verlangt die Motivation | Jedes eigene Ziel, das kein Ziel aus dem Umfang der Einheit voraussetzt, verlangt die Motivation (MZ7). | ein Werkzeug |
-| Prüfung verlangt Inhaltsziele | Jedes eigene Inhaltsziel liegt auf einem Voraussetzungspfad einer eigenen Prüfung (R1, unverändert). | Autorin oder Autor, bestätigt durch das Abdeckungsreview |
-| Motivation verlangt die äußere Motivation | nur bei Schachtelung (MZ9) | ein Werkzeug |
-
-Die Regel MZ7 fragt nach Voraussetzungen im Umfang der Einheit, nicht nach
-Voraussetzungen überhaupt. Ein Einstiegsziel, das ein Inhaltsziel einer
-anderen Einheit braucht, verlangt zusätzlich die Motivation seiner eigenen.
-
-Diese Kanten gibt es nicht (MZ8):
-
-- Die Motivation verlangt kein Inhaltsziel.
-- Außerhalb der Einheit verlangt kein Ziel ihre Motivation. Die Kante aus MZ7
-  ist deshalb nie überflüssig, und die transitive Minimalität bleibt.
-- Nichts verlangt eine Prüfung (B9).
-- Zwischen zwei Einheiten steht `after` und kein `requires` (B7, B8).
-
-Die Kanten passen zu B15: Eine Voraussetzung sagt, was vorher gelernt sein
-muss. Die Motivation muss vor dem ersten Inhaltsziel stehen.
-
-Was daraus folgt:
-
-- **Die Motivation ist der erste Schritt der Einheit.** Jedes eigene Ziel
-  braucht sie; mit MZ9 gilt das für den ganzen Umfang. Frontier und Auswahl
-  brauchen dafür keine neue Logik.
-- **Anfang und Ende sind prüfbar.** Jedes eigene Inhaltsziel liegt auf einem
-  Weg von der Motivation der Einheit zu einer ihrer Prüfungen.
-- **Die Lernkarte zeigt den Fluss.** Innerhalb der Einheit zeichnet sie ihn
-  mit den vorhandenen Pfeilen für den Bedarf der Ziele.
-- **Die Motivation gehört zum Lernumfang.** Wer nur ein Ziel der Einheit
-  lernt, bekommt ihre Motivation über den Voraussetzungsabschluss dazu.
-
-### 4.3 Geschachtelte Einheiten
-
-Hat eine Einheit mit Prüfungen eine Untereinheit mit Prüfungen, haben beide
-ihre eigene Motivation (MZ3). Die äußere erklärt den Bogen, die innere das
-Stück.
-
-```text
-äußere Motivation → innere Motivation → innere Inhaltsziele → innere Prüfungen → äußere Prüfungen
-```
-
-Die Motivation der inneren Einheit verlangt die der äußeren (MZ9). Ein
-`after` kann das nicht leisten: Es steht nur zwischen zwei Einheiten.
-Zwischen einem Ziel und einer Einheit ordnet allein der Bedarf der Ziele.
-Ohne die Kante stünde die äußere Motivation nicht vor der Untereinheit.
-
-Liegt zwischen beiden eine Einheit ohne Prüfungen, zählt die nächste
-umschließende Einheit mit Prüfungen. Verteilt ein Land die Untereinheiten auf
-mehrere Planeinheiten, steht die äußere Motivation in der frühesten; das
-folgt aus E3.
-
-## 5. Das Motivationsziel
-
-| Eigenschaft | Festlegung |
-| --- | --- |
-| Zieltyp | Orientierungsziel (`semanticKind: "orientation"`), atomar, eigenes Ziel der Einheit in ihrem Cluster |
-| Inhalt | worum es in der Einheit geht, was man danach kann und wozu das nützt, mit einem Beispiel aus Alltag, Beruf oder späterem Stoff |
-| Ergebnis | ein binäres Ergebnis wie bei jedem atomaren Ziel. Es sagt: Der Einstieg hat stattgefunden. Ein Fachnachweis ist es nicht. |
-| Prüfung | keine. Weder Vorwissen noch Fachbegriffe werden abgefragt, und ob die Motivation verstanden wurde, wird nicht bewertet. |
-| Nach bestandenen Prüfungen | Die Motivation gilt als erledigter Einstieg, auch ohne eigenes Ergebnis. So bleibt die Einheit nicht kurz vor dem Abschluss stehen. Das regelt der bestehende Vertrag des [prüfungsgebundenen Abschlusses](assessment-gated-completion.de.md); er behauptet damit kein geführtes Gespräch. |
-| Daten am Ziel | keine Prüfungs-, Karten- oder Beispieldaten, wie bisher bei Orientierungszielen |
-| Herkunft | ein didaktisches Ziel von SkillPilot, keine Aussage des amtlichen Lehrplans; so wird es ausgewiesen |
-
-Woher die Inhalte kommen (MZ12):
-
-| Was der Einstieg sagt | Quelle |
-| --- | --- |
-| Worum es geht | abgeleitet aus den eigenen Inhaltszielen und Untereinheiten |
-| Was man danach kann | Lernversprechen im Einheiteneintrag |
-| Wozu es nützt | Lernversprechen; der Praxisbezug steht als Text am Motivationsziel |
-| Was die Prüfungen zeigen | abgeleitet aus den eigenen Prüfungen und ihren Abdeckungsreviews |
-| Was darauf aufbaut | abgeleitet aus den Einheiten, die nach ihr liegen, und den Zielen, die ihre Ziele brauchen |
-
-Das Lernversprechen bleibt die eine verfasste Aussage darüber, was man kann
-und wozu. Das Motivationsziel wiederholt es nicht.
-
-## 6. Der Coach
-
-| Punkt | Festlegung |
-| --- | --- |
-| Auftrag | Das Backend liefert zum aktiven Motivationsziel die Inhalte aus Abschnitt 5 als strukturierte Daten. Der Coach erfindet sie nicht. |
-| Vermitteln | kurz sagen, worum es geht, was man danach kann und wozu; ein konkretes Beispiel geben; an Bekanntes anknüpfen |
-| Nicht tun | abfragen, bewerten, Vorwissen testen, Fachbegriffe verlangen |
-| Abschluss | zu einer Reaktion oder Frage einladen. Will die lernende Person weiter, wird das Ergebnis gespeichert. |
-| Daten | Es fließt kein Gesprächstext ins Backend. Gespeichert wird nur das binäre Ergebnis. |
-
-Der heutige Abschlussvertrag der Orientierung
-([Graph-Definition §8.2](context-and-views.de.md#sec-orientation)) ist für
-den einmaligen Einstieg in ein Fach gebaut: Vertiefung, Zusammenfassung und
-ein gesondertes Abschlussangebot. Vor jeder Einheit wäre das zu schwer. Für
-das Motivationsziel einer Einheit gilt der kurze Ablauf dieser Tabelle; die
-Verbote des Vertrags bleiben.
-
-## 7. Was sich an bestehenden Regeln ändert
-
-| Heute | Künftig |
-| --- | --- |
-| [Graph-Definition §11.1](learning-units.de.md#sec-unit-claims): Der Motivationsauftakt ist eine didaktische Funktion und nicht notwendig ein Ziel. | Jede Einheit mit Prüfungen hat ein Orientierungsziel als Motivation. |
-| `GVR-014`: Ein Orientierungsziel hat keine Voraussetzung. | Mit MZ9 darf ein Motivationsziel die Motivation der umschließenden Einheit verlangen und sonst nichts. |
-| `CQR-101`, `CQR-102`, `CQR-104` und `GVR-012`: Routen beginnen an Ankern, die je Fach und Stufe fest eingetragen sind. | Anker ist auch das Motivationsziel, das ein Einheiteneintrag nennt. Das gilt, bevor die erste Einheit umgestellt wird. Sonst verlieren die umgestellten Ziele ihre Route, und Reifegrade fallen. |
-| Graph-Definition §8.2: Abschluss der Orientierung über Vertiefung, Zusammenfassung und Abschlussangebot. | Für Motivationsziele von Einheiten gilt der kurze Ablauf aus Abschnitt 6. |
-| Graph-Definition §8.2: Ohne bisherigen Fortschritt sind offene Orientierungsziele die einzigen wählbaren Ziele. | Es gibt dann viele offene Motivationsziele. In der Lernweise „Einheit für Einheit“ kommt zuerst das der Einheit, die an der Reihe ist. Für die übrigen Lernweisen ist die Regel zu prüfen. |
-| Einheiteneintrag und Paketvertrag ohne Motivationsziel | neues Feld, neue Vertragsversion |
-| keine Regel | Je Einheit mit Prüfungen gibt es genau ein Motivationsziel, und die Kanten aus Abschnitt 4.2 sind vollständig und ohne Überschuss. |
-
-Unverändert bleiben B1 bis B16, E1 bis E4 und R1 bis R5, das `after`, die
-Frontier und das eine binäre Ergebnis je atomarem Ziel. Kein Abschluss
-schreibt ein Ergebnis in ein anderes Ziel.
-
-## 8. Ausgangslage
-
-Gemessen am 17. November 2026 am kanonischen Katalog auf `main`:
-
-| | Mathematik | Physik |
-| --- | --- | --- |
-| Orientierungsziele | 2: „Warum Mathematik?“ für Sekundarstufe I und für Sekundarstufe II | 2: „Warum Physik?“ und „Vom Sand zum Smartphone“ |
-| Ziele, die eines davon verlangen | 12 und 47 | 29 und 0 |
-| Erklärte Einheiten mit Prüfungen | 2 | 1 |
-
-Keine der drei Einheiten hat ein eigenes Motivationsziel:
-
-| Einheit | Einstieg heute | Ende heute |
-| --- | --- | --- |
-| Natürliche Zahlen verstehen und darstellen | Zwei Einstiegsziele verlangen „Warum Mathematik?“. | Zwei Prüfungen setzen die eigenen Inhaltsziele voraus. |
-| Skalarprodukt über orthogonale Projektion deuten | Das Einstiegsziel verlangt ein Inhaltsziel außerhalb der Einheit und keine Motivation. | Eine Prüfung. |
-| Gleichmäßig beschleunigte Bewegung modellieren | Das Einstiegsziel verlangt drei Inhaltsziele außerhalb der Einheit, zwei davon aus der Mathematik, und keine Motivation. | Zwei Prüfungen. |
-
-„Vom Sand zum Smartphone“ ist schon heute ein Einstieg in ein Thema, die
-Festkörperphysik. Kein Ziel verlangt es.
-
-## 9. Umstellung
-
-- **Je Einheit, mit ihrem Zuschnitt (MZ13).** Wird eine Einheit mit Prüfungen
-  geschnitten, entsteht ihr Motivationsziel mit. Wie viele es je Fach werden,
-  ist nicht gemessen.
-- **Zuerst die Regeln.** Die Routenregeln erkennen das Motivationsziel einer
-  Einheit als Anker, bevor die erste Einheit umgestellt wird (Abschnitt 7).
-- **Ein Einstiegsziel wechselt den Anker.** Es behält seine Kante zu „Warum
-  Mathematik?“, bis seine Einheit ein Motivationsziel hat, und verlangt dann
-  dieses. So hat es durchgehend eine Route. Die 88 Kanten auf die heutigen
-  Fachziele verschwinden damit schrittweise.
-- **Das eingefrorene Prüfregister.** Jeder Wechsel ändert das Zielobjekt des
-  Einstiegsziels. Steht das Ziel im eingefrorenen Register der
-  Voraussetzungsprüfung, braucht es eine neue Prüfung dieses Ziels.
-- **Ein neues kanonisches Ziel je Einheit.** Es zieht die Bindungen jedes
-  neuen Ziels nach sich: Zählungen, Paketkette und Statusdateien.
-- **Der Coach.** Die Anweisungen ändern sich in jeder Anbieter-Linie. Das ist
-  Freigabearbeit und folgt der festgelegten Reihenfolge der Linien.
-
-## 10. Offene Entscheidungen
-
-| Frage | Empfehlung |
-| --- | --- |
-| Verlangt die Motivation der inneren Einheit die der äußeren (MZ9)? | Ja. Nur so steht die äußere Motivation vor der Untereinheit, und nur so braucht der ganze Umfang einer Einheit ihre Motivation. `GVR-014` wird dafür um diese eine Kante gelockert. |
-| Was wird aus „Warum Mathematik?“ und „Warum Physik?“? | Sie bleiben Orientierungsziele ihres Fachs in einer Stufe. Ein Fach ist keine Einheit (B1) und braucht deshalb keine Motivation. Keine Motivation einer Einheit verlangt sie: Eine fachliche Einheit gilt in allen Ländern, und die Kante zöge sonst das Fachziel einer Stufe in den Lernumfang einer anderen. Sind alle Einstiegsziele umgestellt, verlangt kein Ziel sie mehr. |
-| Gilt für das Motivationsziel einer Einheit der kurze Ablauf aus Abschnitt 6? | Ja. Der Ablauf in drei Schritten bleibt für die Fachziele. |
-| Wird geprüft, ob die Motivation verstanden wurde? | Nein. Das Ergebnis sagt, dass der Einstieg stattgefunden hat. |
-| Braucht die Einheit mit Motivation und Prüfungen einen eigenen Namen? | Nein (Abschnitt 3). |
-| Wie kommt die Einstiegsregel ohne Fortschritt mit vielen Motivationszielen zurecht? | Über das `after` in der Lernweise „Einheit für Einheit“. Für die übrigen Lernweisen ist das zu klären, bevor die Zahl der Motivationsziele wächst. |
+**Zur Entscheidung stehen** der kurze Abschluss mit „weiter“, die Regel für
+die automatisch abgeleiteten Motivationskanten und die Auswahl beim ersten
+Start. Die zusätzliche Pflicht zwischen innerem und äußerem Einstieg sollte
+erst nach dem Vergleich eines vollständigen Lernwegs mit einem fachfremden
+Teilbedarf entschieden werden.

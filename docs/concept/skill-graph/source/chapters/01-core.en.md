@@ -1,16 +1,16 @@
 ## Goals, Identity, and Relations {#sec:core}
 
-Sections~@ref{sec:core} to~@ref{sec:filters} form the formal core. This section introduces learning goals and the two authored relation kinds. Section~@ref{sec:relations} derives the relations used in computation, while Section~@ref{sec:validity} states the graph validity conditions. Section~@ref{sec:state} models a learner's state and Section~@ref{sec:filters} evaluates availability and diagnostics inside a scoped subset of the graph.
+A goal can belong to one topic while requiring knowledge from another. The graph records these two facts separately. Together they help determine which goals a learner can approach next.
 
 ### The Base Object {#sec:core-object}
 
-The normative core is a finite directed graph
+The goals and their relationships form a finite directed graph
 
 $$
 \mathcal G=(G,C,R),\qquad C,R\subseteq G\times G.
 $$
 
-$G$ is the set of learning goals. $C$ denotes `contains`: one goal contains another. $R$ denotes `requires`: one goal requires another as a prerequisite. Exactly these two *explicitly authored* relation kinds exist in the skill graph; only these two relations are persisted in the goal core. The unit layer additionally declares `after` in its own contract. Derived relations, curricular placements, source mappings, and evidence belong to separate model layers.
+$G$ is the set of learning goals. The skill graph stores exactly two kinds of edge. Authors use $C$ (`contains`) to organise goals and $R$ (`requires`) to state their prerequisites. Curriculum placements, source mappings and evidence are recorded in their respective model layers.
 
 Each pair $(x,y)$ is directed. For any relation $X$ on $G$,
 
@@ -18,9 +18,9 @@ $$
 X^{-1}=\{(y,x)\mid(x,y)\in X\}
 $$
 
-denotes the inverse relation and $X^+$ the transitive closure: $(x,y)\in X^+$ holds if and only if a directed $X$-path of at least one edge leads from $x$ to $y$. Zero-length paths do not count. A relation $X$ is *acyclic* if no goal leads back to itself along such a path, that is, $\forall g\in G:(g,g)\notin X^+$. A directed acyclic graph is called a DAG for short. The raw union $C\cup R$ is *not* the relation against which DAG conditions are checked indiscriminately: the two edge kinds carry distinct semantics. Section~@ref{sec:validity} specifies which relations must be acyclic.
+denotes its inverse. The transitive closure $X^+$ contains a pair $(x,y)$ exactly when a directed path of one or more $X$-edges leads from $x$ to $y$. The relation is *acyclic* if no such path returns to its starting goal, that is, $\forall g\in G:(g,g)\notin X^+$. A directed acyclic graph is called a DAG. Section~@ref{sec:validity} checks the hierarchy and prerequisites according to their respective meanings.
 
-Figure~@ref{fig:overview} illustrates both relation kinds on an example.
+In Figure~@ref{fig:overview}, the goal *Velocity* belongs to the cluster *Kinematics*. A separate arrow identifies its prerequisite *Vectors*.
 
 :::principle {title="Arrow Direction Is Part of the Definition"}
 $k\xrightarrow{\mathtt{contains}}c$: cluster $k$ contains goal $c$. $g\xrightarrow{\mathtt{requires}}p$: goal $g$ requires prerequisite $p$. A learning-flow view instead depicts $R^{-1}$: from prerequisite to the skill building upon it. That inverse direction must be explicitly labelled.
@@ -28,9 +28,7 @@ $k\xrightarrow{\mathtt{contains}}c$: cluster $k$ contains goal $c$. $g\xrightarr
 
 ::figure{id="fig:overview"}
 
-
-
-The unit layer additionally declares `after` explicitly (Section~@ref{sec:unit-progression}): `U after V` orders all of U after all of V without asserting subject-matter demand. This relation is neither another `requires` edge nor a learner-result kind. `requires` is the special atomic ordering that also expresses demand. An `after` changes neither frontier nor prerequisite closure, progress denominator, or mastery. In the binding target model no prerequisite points to an assessment goal; existing counterexamples are findings requiring subject-matter repair, not already corrected data.
+The order of whole units is declared separately. `U after V` places all goals of U after all goals of V in the intended learning sequence. This plan declaration leaves each goal’s demand and the learner’s state unchanged (Section~@ref{sec:unit-progression}). An assessment can itself have prerequisites. In the target model no other goal requires that assessment. Existing counterexamples require subject-matter repair.
 
 ### Attributes and Stable Identity {#sec:core-attributes}
 
@@ -79,7 +77,7 @@ Section~@ref{sec:goal-types} specifies when a goal of each type counts as achiev
 
 ## Containment, Prerequisites, and Inheritance {#sec:relations}
 
-The two authored relation kinds induce the derived relations used to compute availability, progress, and completion. Table~@ref{tab:relations} summarizes them; the subsections below define each entry in order.
+To find the learning frontier, the graph must account for a goal’s direct prerequisites and the preparation those prerequisites require in turn. Older data can also place requirements on or from clusters. Table~@ref{tab:relations} introduces the relations used in this calculation.
 
 :::table {#tab:relations caption="Authored and derived relations. In the canonical target state $R=R_A=\Reff=\Rat$; only the transitive closure $\Rat^+$ remains derived." cols="15mm,45mm,X"}
 | Symbol | Name | Construction and use |
@@ -112,7 +110,7 @@ Every cluster possesses at least one atomic leaf: in a finite acyclic graph, eve
 
 ### Direct Requirements Are Conjunctive {#sec:direct-requires}
 
-$(g,p)\in R$ means that $g$ directly requires $p$. The edge $(g,p)$ is called a *requirement* of $g$, and the goal $p$ is a *prerequisite* of $g$. Multiple outgoing edges are conjunctive: $g$ requires *all* listed prerequisites, not a choice among them. Alternatives require a dedicated selection contract outside this relation. The relation $R$ must be acyclic. Figure~@ref{fig:requires} shows four direct requirements.
+In $(g,p)\in R$, $g$ is the goal and $p$ its prerequisite. The arrow points from $g$ to something that must first be learned or completed. A content goal can therefore require an orientation goal. Several arrows from $g$ mean that all the listed prerequisites apply. Alternatives need a separate selection rule. $R$ is acyclic. Figure~@ref{fig:requires} shows a goal with four prerequisites.
 
 Under the binding decision of 8 November 2026, the canonical target state satisfies
 
@@ -150,7 +148,7 @@ Multiple parent paths combine requirements by set union without duplication. *In
 
 #### Step 2: Expand to atoms.
 
-For runtime evaluation, prerequisites are normalized to atoms first. Every effective prerequisite is replaced by its atomic basis:
+For each atom $a$, each effective prerequisite $p$ is now expanded to its atomic basis. If $p$ is already atomic, this yields just that goal:
 
 $$
 \Rat=\{(a,b)\in A\times A\mid \exists p\in G:(a,p)\in\Reff\land b\in\Atoms(p)\}.
@@ -183,7 +181,7 @@ In the fully atomic-authored target state, $\Reff=R=\Rat$: `contains` ancestors 
 
 ### Mandatory Conditions {#sec:mandatory-validity anchors="73-atomic-transitive-minimality-and-ordered-migration-g17,73-transitive-minimality"}
 
-A complete skill graph satisfies the canonical target state if and only if, alongside the attribute and identity requirements of Section~@ref{sec:core}, atomic normal form @eqref{eq:atomic-target}, acyclicity, and atomic transitive minimality hold:
+In the canonical graph, goal identities and references must resolve and the attributes from Section~@ref{sec:core} must be defined. All authored prerequisites satisfy atomic normal form @eqref{eq:atomic-target}. Validity also requires two conditions:
 
 :::equation {#eq:acyclic}
 \forall g\in G:\ (g,g)\notin C^+,\quad (g,g)\notin R^+,\quad (g,g)\notin\Reff^+,\quad (g,g)\notin\Rat^+,
@@ -203,17 +201,15 @@ The DAG condition on $R$ already follows from that on $\Reff$ because $R\subsete
 
 #### On transitive minimality.
 
-In the atomic chain $\nd{Q}\to\nd{B}\to\nd{A}$, an extra direct edge $\nd{Q}\to\nd{A}$ is redundant and must be removed. The remaining closure still demands $\nd{A}$ even when $\nd{B}$ is already mastered. Transitive pairs are derived rather than stored as additional direct edges. The binding transitive-minimality rule of 4 November 2026 remains in force; the decision of 8 November 2026 fixes atomic normal form as the canonical target state. The Product Owner decision of 12 November 2026 requires complete deterministic validation of that current state and retires the earlier migration-order and preservation obligations.
+In the atomic chain $\nd{Q}\to\nd{B}\to\nd{A}$, an extra direct edge $\nd{Q}\to\nd{A}$ must be removed. The path through $\nd{B}$ still reaches $\nd{A}$, which remains a prerequisite even when $\nd{B}$ has been mastered. The decision of 4 November 2026 requires this transitive minimality and that of 8 November requires atomic normal form.
 
-The internal check identifier `G17` denotes complete atomic normal form plus complete transitive minimality across the declared canonical subject inventory, including required cross-subject prerequisites and inheriting ancestors; a partial scan or a single route profile does not suffice.
+#### G17 as a prerequisite for subject milestones.
 
-#### Complete Target-State Validation in the Milestone Examination.
+Under the decision of 12 November 2026, `G17` checks the subject’s entire current canonical inventory before any subject milestone `M1`--`M7` can pass. This includes the necessary prerequisites from other subjects and every ancestor from which a requirement is inherited.
 
-Under the Product Owner decision of 12 November 2026, acceptance depends on the current inventory. Every subject milestone pass `M1`--`M7` requires successful complete deterministic validation of the declared canonical subject inventory, including all necessary cross-subject prerequisites and inheriting ancestors. Neither a sample nor just the goals visible within the current learner focus suffices.
+The check requires valid identities and references, acyclicity, atomic endpoints for every `requires` edge, consistent explicit types and complete transitive minimality. A violation or incomplete check caps the subject and its scopes at `M0`. An incomplete catalog aborts the status run ([GD-C17](@rule{GD-C17})).
 
-Validation requires resolved identities and references, acyclicity, atomic source and target nodes for every authored `requires`, consistent explicit types, and complete transitive minimality. Missing or incomplete checks never count as passing. A violation caps the subject and its scope milestones at `M0`; an incomplete catalog aborts the status run ([GD-C17](@rule{GD-C17})).
-
-A prescribed sequence of editing steps or equality with a historical prerequisite closure, projection, or frontier is no longer an acceptance condition. Current scope, applicability, target-set, frontier, completion, and mastery rules remain binding in their respective validation areas; `G17` alone does not prove those additional rules. Historical reduction proofs remain available for the review bindings that actually use them, without defining the current validation catalog. Source fidelity and review freshness remain required; graph edits never write learner outcomes.
+Acceptance is based on the state under examination, regardless of the migration order or equivalence with a historical closure, projection or frontier. The separate checks for scope, applicability, target sets, frontier, completion, source fidelity and review freshness retain their own criteria. A graph edit writes no learner result.
 
 #### Diagnostics on transition data are not deletion instructions.
 
@@ -233,11 +229,13 @@ The *edge-removal test* formerly run under `G17` is likewise a diagnostic on tra
 
 #### What current checks establish.
 
-Since 11 November 2026, `CQR-001` in the [status generator](repo:app/scripts/generateCurriculumQualityStatus.ts) runs the [removal auditor](repo:app/scripts/auditTransitiveMinimality.ts) on every declared root of the complete current canonical Gymnasium catalog, including the required cross-subject goals and their inheriting ancestors. Besides references and the effective DAG, it reports every authored requirement with a non-atomic source or prerequisite goal, every redundant authored requirement, and every contradicting explicit type. Once atomic normal form holds, the removal criterion coincides with @eqref{eq:atomicmin}; a pass therefore establishes `G17` for that root. A violation caps the subject at `M0` and thereby blocks every milestone pass `M1`--`M7`. The [current catalog inventory](repo:app/scripts/currentCurriculumCatalog.ts) is derived from the curriculum manifest and the canonical overview's subject declarations and checked against the complete canonical directory. The generator aborts on an incomplete catalog; historical reduction proofs do not determine this validation scope. The direct CI command `check:transitive-minimality` checks all 21 canonical roots and fails on violations independently of protected floors; `CQR-001` does not check roots outside the canonical Gymnasium catalog. The direct `check:curriculum-maturity-floors` command also checks pinned individual subject/scope obligations against the Git base selected through `--base-ref`, rather than trusting numeric maturity alone. A pass certifies the current state. The reduction proof serves only to reuse review evidence that depends on it. It is frozen since 12 November 2026: its registry records the reviewed value per goal, an unchanged goal keeps its reviews, and a changed goal faces strict checks against current review inputs; stale evidence receives no credit (Appendix~@ref{sec:rule-milestones}).
+Since 11 November 2026, the [status generator](repo:app/scripts/generateCurriculumQualityStatus.ts) has run the [removal auditor](repo:app/scripts/auditTransitiveMinimality.ts) on every declared canonical Gymnasium root for `CQR-001`. It reports invalid references, cycles in the effective graph, non-atomic endpoints, redundant requirements and contradictory explicit types. Under atomic normal form its removal criterion is exactly @eqref{eq:atomicmin}.
 
-The earlier CQR/GVR baseline hardening reached `main` on 13 November 2026 through [PR #131](https://github.com/enpasos/skillpilot/pull/131). The later integration state `2129b207f4`, following changes to frozen review evidence and the Mathematics assessment, passed all 14 jobs of [CI #2315](https://github.com/enpasos/skillpilot/actions/runs/43398052180). The [delivery record](repo:docs/dev/cqr-gvr-hard-gate-plan-2026-11-12.md) distinguishes the PR and main runs. This establishes technical enforcement within each declared domain; the four missing visibility scopes of `CQR-104` and broader subject coverage of `GVR-012` remain open. This QA evidence establishes neither human trials nor implementation of broader runtime contracts.
+The [catalog inventory](repo:app/scripts/currentCurriculumCatalog.ts) reconciles the curriculum manifest and subject declarations with the canonical directory. `check:transitive-minimality` checks all 21 roots regardless of their required minimum milestone. `check:curriculum-maturity-floors` also checks pinned subject and scope obligations against the Git base selected by `--base-ref`. The reduction registry frozen on 12 November governs only the reuse of earlier reviews for individual goals. Changed goals face strict checks against current review inputs (Appendix~@ref{sec:rule-milestones}).
 
-**Historical audit state, 13 November 2026:** The follow-up work is in [PR #141](https://github.com/enpasos/skillpilot/pull/141), based on updated main at `2ad03c810c`, and has not been integrated into main. The new balance of 12 HARD / 50 PARTIAL / 55 OPEN / 28 OPT/DOC and four directly required `GVR-012` scopes in an inventory of twelve describes this locally verified candidate. Local evidence is recorded in the [follow-up record](repo:docs/dev/cqr-gvr-hard-gate-plan-2026-11-12.md); final remote CI and main acceptance are not recorded here as complete. Historical CI #2315 applies only to its original state.
+Initial enforcement on `main` is documented for [PR #131](https://github.com/enpasos/skillpilot/pull/131) on 13 November 2026. After follow-up changes to review evidence and the Mathematics assessment, commit `2129b207f4` passed all 14 jobs of [CI #2315](https://github.com/enpasos/skillpilot/actions/runs/43398052180). The [delivery record](repo:docs/dev/cqr-gvr-hard-gate-plan-2026-11-12.md) identifies the revisions checked by PR and main runs. It supports technical enforcement in the respective domains. Four visibility scopes of `CQR-104` and broader `GVR-012` coverage were still open. Human trials and further runtime contracts require their own evidence.
+
+**Historical audit on 13 November 2026.** The tally of 12 HARD / 50 PARTIAL / 55 OPEN / 28 OPT/DOC and four directly required `GVR-012` scopes in an inventory of twelve belonged to the locally checked [PR #141](https://github.com/enpasos/skillpilot/pull/141) candidate based on `2ad03c810c`. The [follow-up record](repo:docs/dev/cqr-gvr-hard-gate-plan-2026-11-12.md) described the candidate before integration. The earlier CI #2315 applies to its own commit.
 
 The Product Owner decision of 13 November 2026 fixes the grading domain of every `GD-*` rule to the 21-root canonical Gymnasium catalog. Obligations from M5, M6, or M7 are assessed against their stated threshold; currently ten subjects are pinned at M6/M7, five of them at M7. Non-canonical landscapes are outside this work programme. A hard grade still requires complete enforcement of every sub-obligation in the row: the domain decision does not close runtime contracts, semantic route gaps, or general assessment-coverage gaps.
 
@@ -278,13 +276,11 @@ $$
 
 In plain terms: the atom lies on at least one learning path starting at an orientation anchor and ending at a terminal autonomy goal. The path follows $R_A^{-1}$, the learning-flow direction from prerequisite to dependent goal.
 
-Writing $O$ and $Z$ (rather than $M$ and $T$ as in earlier editions) avoids collisions with the mastery set $M$ and the target sets $T(U)$ and $T_\pi$. Restricting to $R_A$ prevents a cluster from acting as a hidden intermediate node in an atomic route proof. This formula is a structural connectivity criterion, not a proof of didactic quality.
+The route profile determines which goals count as entry points. To introduce unit orientation, a profile would also admit the orientation goal named in a unit declaration as an anchor in the applicable scope. The path to the endpoint must still run through atomic goals. Content review establishes whether the tasks assess the promised skill (Section~@ref{sec:why-graph-not-enough}).
 
-Concrete route profiles additionally constrain educational stage, admissible goal types, and semantic order: orientation at entry, subject learning, optional support via memory goals where needed, and independent performance at the end. Memory goals do not thereby become mandatory checkpoints everywhere. Profile rules verify distinct claims: complete routes over effective prerequisites (`CQR-101`), direct atomic routes (`CQR-102`), and absence of `requires` on selected clusters (`CQR-103`). The shared `CQR-102` evaluator enforces direct atomic reachability across all twelve declared profiles. In four of the twelve profiles (Mathematics lower/upper secondary, Biology and Physics upper secondary), `GVR-012` additionally enforces the stronger semantic complete-route contract. The [shared semantic route inventory](repo:app/scripts/lib/semanticRouteInventory.ts) derives six candidates from the QA profiles and four complete current classification ledgers. Physics lower secondary and Chemistry upper secondary remain diagnostic with 5/3 route findings; six other scopes lack complete current ledgers. No finding is resolved by reclassification or a weakened route rule. Retired GVR identifiers remain reserved and are not active gates. These profile checks do not constitute a repository-wide proof of atomic normal form across all subjects; `CQR-001` and the direct G17 gate cover the explicitly bounded 21-root canonical Gymnasium catalog (Section~@ref{sec:mandatory-validity}).
+The subject and stage determine which goals may appear along a route. Profiles check reachability through effective prerequisites (`CQR-101`), directly authored atomic paths (`CQR-102`), prerequisites on clusters (`CQR-103`) and endpoint visibility (`CQR-104`). The stronger `GVR-012` check also covers goal types, side prerequisites and the order of preparation. The target is enforcement across all registered scopes of subjects required to reach M7.
 
-The [shared profile factory](repo:app/scripts/generateCurriculumQualityStatus.ts) supplements the established Physics lane with already reviewed explicit `goalEntry` targets from the three national stage views: lower secondary grows from 96 to 101 curricular atoms, upper secondary from 306 to 316. Terminals, graph, views and roles remain unchanged. The audit separately records 43 upper-secondary targets inherited only through subtrees beyond that lane; 42 lack terminal routes in the broader diagnostic. Four passing registered scopes therefore do not prove complete stage-target coverage. This alignment gap remains visible in addition to the eight route findings and six scopes without ledgers.
-
-**Binding expansion target from M7 (Product Owner decision of 13 November 2026):** `GVR-012` shall become mandatory for every registered QA scope of subjects obligated to meet M7. Today this means seven scopes of five subjects; four are secured and three have unresolved route or classification findings. The complete M7 obligation is activated only after evidence-backed closure of those findings. The five M6 scopes remain in the twelve-scope inventory and become mandatory on later promotion to M7. `GVR-012` stays PARTIAL until complete technical enforcement; existing required scopes and pins remain protected. `4/12` still denotes inventory coverage, while `4/7` denotes coverage of the current M7 target. The complete twelve-scope diagnostic is not an M7 promotion check; its failure for missing M6 ledgers remains meaningful. A later HARD gate does not automatically upgrade broader GD rules.
+Appendix~@ref{sec:implementation} records current coverage and outstanding findings, including the reach of the Physics profile in stage views. The [route inventory](repo:app/scripts/lib/semanticRouteInventory.ts) and the [QA profile generator](repo:app/scripts/generateCurriculumQualityStatus.ts) document which goals are examined.
 
 Higher-level dependency summaries between clusters may be derived from atomic routes. For example, an existential summary $k_2\to k_1$ means:
 
@@ -304,9 +300,9 @@ The preceding sections describe the skill graph independently of any learner. Th
 
 Exactly one binary state $m:A\to\{0,1\}$ is persisted, with $M=\{a\in A\mid m(a)=1\}$. $M$ is the set of explicit achievements, or explicit mastery for short. An explicit achievement on a content goal demonstrates verified understanding appropriate to that goal. Orientation, memorization, and assessments each apply their own completion contract (Section~@ref{sec:goal-types}). No partial score creates a third mastery state.
 
-#### Preview of implicit mastery.
+#### Recognition through an assessment.
 
-Sections~@ref{sec:learning-units} and~@ref{sec:assessment} introduce learning units and the derivation of implicit mastery; here only their result is needed. For every learning unit $U$ holding a local contract durably valid for this learner, the implicit set $I_U\subseteq A$ is derived. That contract binds the unit's directly owned acquisition targets, their content revision, and the subject-reviewed evidentiary scope of the unit's assessments. On content goals, $I_U$ demonstrates independent application. Concretely, a passed assessment on linear functions can substantiate independent application of $U$'s own content goals even when those goals were not checked off individually. An independent flashcard obligation or sibling child unit may still be open; full completion of the unit is not a prerequisite for this recognition. A derivatively satisfied orientation marker retains strictly the meaning of a completed entry step; it claims neither subject competence nor that a motivational dialogue occurred.
+A valid local assessment contract can establish that further goals of a unit $U$ are satisfied for a learner. This set is $I_U\subseteq A$. For example, an assessment of linear functions can demonstrate independent application of the unit’s covered content goals even when they have not been completed individually. An independent card obligation or another child unit may still be open. For orientation, the inference means only that the opening counts as done. Sections~@ref{sec:learning-units} and~@ref{sec:assessment} give the subject-matter and formal conditions.
 
 #### Effective mastered set.
 
@@ -316,7 +312,7 @@ $$
 \Meff=M\cup\bigcup_{U\in\mathcal U_{\mathrm{valid}}}I_U.
 $$
 
-Here $\mathcal U_{\mathrm{valid}}$ contains the learner- and revision-bound authoritative local contracts that remain durably applicable, not merely currently visible units or latest content revisions. Both forms of justification carry equal weight in their effective outcome: they satisfy future prerequisites, count toward achieved progress, and remain effective across focus or schedule changes. $I_U$ never writes synthetic rows into explicit mastery storage. Section~@ref{sec:assessment} defines the derivation and the subject-review prerequisites of the contract.
+$\mathcal U_{\mathrm{valid}}$ includes all local contracts that remain valid for the learner, each with its applicable revision. A change of visible units, focus or plan preserves these contracts. Explicit and validly inferred achievements both satisfy later prerequisites and count towards progress. The system stores explicit achievements. The derivation in Section~@ref{sec:assessment} leaves these records intact.
 
 All subsequent formulas use $\Meff$. The original illustrations in Figures~@ref{fig:frontier} and~@ref{fig:filters} write $M_A$ for the explicit set $M$. Those examples involve no implicit mastery, so $\Meff=M$ there.
 
@@ -328,7 +324,7 @@ A goal $g$, whether an atom or a cluster, is *satisfied* when its entire atomic 
 \Sat(g,\Meff)\iff \Atoms(g)\ne\varnothing\ \land\ \Atoms(g)\subseteq\Meff.
 :::
 
-Satisfaction propagates forward only. Mastering a dependent content goal by itself never proves its prerequisites; only a valid local contract supports additional implicit recognition. Cluster progress never writes outcomes back to its children.
+Cluster satisfaction is calculated from the results of its atoms. It creates no new result for a child. Likewise, passing an individual content goal alone does not create a record for its prerequisites. Further recognition requires a valid local contract.
 
 ### Global Frontier {#sec:frontier}
 
@@ -338,7 +334,7 @@ The *frontier* is the set of atomic goals available next:
 \Frontier(\Meff)=\left\{g\in A\setminus\Meff\;\middle|\; \forall p\in A:\ (g,p)\in\Rat^+\Rightarrow p\in\Meff\right\}.
 :::
 
-An atom belongs to the frontier when it is still open itself and its entire atomic demand is effectively mastered: $\ReqAtoms(g)\subseteq\Meff$. The frontier requires all transitive effective atomic prerequisites. A mastered intermediate goal does not short-circuit this check. Partially worked goals do not count as satisfied. A cluster prerequisite is evaluated through its atomic basis.
+An open atom $g$ is available if $\ReqAtoms(g)\subseteq\Meff$. A foundation behind an already mastered intermediate goal still counts. For a cluster prerequisite in transition data, the atoms in its basis count.
 
 For navigation, an analogous cluster availability set may be derived using the cluster's atomic demand $\ReqAtoms(k)$ from @eqref{eq:demand}, covering its own and inherited requirements expanded to atoms and closed transitively:
 
@@ -358,9 +354,9 @@ $$
 P(S)=\frac{\sum_{a\in S\cap\Meff}w(a)}{\sum_{a\in S}w(a)}\qquad(S\ne\varnothing).
 $$
 
-Each atom contributes through its effective binary status: all or nothing. An empty target set admits no such quotient; the UI must report “no goals in the selected scope” rather than a fabricated 100%. Across multiple clusters, $S$ is formed as the set union of their target atoms; clusters and children must never be summed together. A progress figure such as 50% denotes the share of achieved goals in the scope, never half-mastery of an individual goal.
+Each atom contributes through its effective binary status: all or nothing. An empty target set admits no such quotient; the UI must report “no goals in the selected scope” rather than a fabricated 100%. Across multiple clusters, $S$ is formed as the set union of their target atoms; clusters and children must never be summed together. Progress of 50% means that the achieved goals account for half the total weight.
 
-Distinct from that aggregate ratio is the segmented completion indicator in the goal tree, which may display explicitly stored and implicitly derived contributions separately. Both count in $P(S)$; a completely filled total bar means $P(S)=1$. Any separate metric restricted to explicit outcomes must state its narrower numerator.
+The goal tree’s completion display can show explicit and inferred contributions separately. Together they give $P(S)$. A full overall progress bar represents $P(S)=1$. A display counting only explicit results must identify that choice.
 
 Under the convention $w(a)=1$, a cluster's weight equals the count of its unique atomic descendants. That is a sound authoring convention rather than a requirement of uniform weights in every domain. Core and extension shares may be reported separately, while the committed Personal Curriculum determines what belongs to completion. An aggregated ratio is neither a calibrated probability nor a school grade; any grading scheme requires a separate, justified mapping.
 
@@ -404,19 +400,23 @@ Effective prerequisites are computed *before* filtering. Otherwise, a requiremen
 
 #### Complete Prerequisite Chains in Projections. {#par:projection-closure}
 
-Level 2 denotes the longer-term scope of a learner's Personal Curriculum, for instance for a specific jurisdiction and course profile (Section~@ref{sec:personal-scope}). A reviewed composition view specifies the canonical goal references for that scope (Section~@ref{sec:composition-views}), while role validation distinguishes actual learning targets `target` from pure prerequisite helpers `prerequisiteOnly` (Section~@ref{sec:projection-roles}). Under the Product Owner decision of 9 November 2026, projecting a selected atomic target set $T\subseteq A$ must retain in the underlying prerequisite graph at least
+For the longer-term scope of the Personal Curriculum (Level 2, Section~@ref{sec:personal-scope}), reviewed subject views select canonical goals (Section~@ref{sec:composition-views}). Within a subject view, a goal may carry the role `target` or the supporting role `prerequisiteOnly` (Section~@ref{sec:projection-roles}). The decision of 9 November 2026 requires the graph underlying a selection $T\subseteq A$ to retain at least the set below:
 
 $$
 \Closure(T)=T\cup\{p\in A\mid\exists t\in T:(t,p)\in\Rat^+\}
 $$
 
-together with the canonical prerequisite relationships required to preserve their full transitive demand. $\Closure(T)$ thus consists of the selected targets and their complete atomic demand (written $U(T)$ in earlier editions). Applicability and reviewed Level 2 composition determine $T$, but must never prune indispensable canonical intermediate goals before prerequisite chains are computed. On transition data, the canonical structure needed for inheritance and atomic expansion must remain available as well.
+$\Closure(T)$ (formerly $U(T)$) comprises the selected atoms and their entire transitive demand. The canonical links between them must also be retained. For transition data this includes the structure needed for inheritance and atomic expansion.
 
-Consequently, if $a$ requires $b$ and $b$ requires $c$, selecting $a$ and $c$ must retain $b$ in the underlying graph so that $a$'s demand for $c$ is preserved. Losing that path makes the projection invalid; the missing nodes and relationships must be retained rather than worked around by authoring new `requires` edges in the composition view or weakening canonical prerequisites.
+Along the path $a\to b\to c$, selecting $a$ and $c$ must retain the intermediate goal $b$ in the underlying graph. This preserves the prerequisite chain even if a view hides $b$. If $b$ is missing from the underlying graph, the projection needs repair. The composition view introduces no substitute edge.
 
-Structural completeness does not require displaying every retained node in the visible learner tree. Conversely, silent structural loading alone is insufficient: authored seed references remain hard-validated. For required atoms, a compiled target role backed by a verified canonical prerequisite path and recorded provenance satisfies the role obligation without requiring a manual view reference per atom. Unknown references, cycles, and missing or unreachable required atoms remain hard errors even when already mastered. Unrelated `contains` descendants are not enrolled thereby. Under the explicit Product Owner decision of 10 November 2026, $L=\Closure(S)$ forms the personal learning basis, where $S$ is the union of atomic seed targets from the selected reviewed subject scopes. First, their reviewed course and jurisdiction filters select the eligible seeds $S$; next, closure is computed on the unpruned canonical graph. Additional necessary atoms remain included despite those seed filters, whereas unrelated goals from other courses or jurisdictions are excluded. Every necessary atom belongs to learning, progress, and completion. $L$ is fixed by personal configuration and curriculum/projection revision independently of mastery. Mastered atoms remain satisfied in the denominator without requiring repetition; mastered intermediates never truncate the transitive closure; and an unproven entry assumption never satisfies a learning obligation.
+For personal selection, the decision of 10 November 2026 sets the order of operations. First, the reviewed jurisdiction and course filters determine the atomic seed targets $S$ from all selected subjects. The personal scope $L=\Closure(S)$ is then computed on the unpruned canonical graph. Every individually necessary atom belongs to learning, progress and completion, including atoms from another course or subject. Merely belonging to the same unit does not enrol a sibling. If all atoms in a subject are needed, all of them enter $L$.
 
-This explicit personal compile rule supersedes the former blanket ban on automatic target addition solely at the Personal Curriculum boundary. Every open necessary atom requires an actually navigable acquisition target in the overall plan. Subject-local `prerequisiteOnly` references remain admissible when the same canonical ID is targeted elsewhere in the plan, counted once. The rule never enrolls siblings, entire foreign units, or whole subjects merely because one atom is needed, yet retains every individually necessary atom in $L$ even if that spans every atom of a subject. It neither alters official curricular assignment or source applicability nor widens focus or creates, copies, transfers, or deletes mastery; goal-type-specific completion rules remain authoritative. Backend and WebGUI implement this closed personal learning basis, while applicability validation and full native, curriculum, and remote acceptance of the current state remain separately evidenced.
+The personal configuration and the curriculum and projection revision determine $L$. A mastered goal stays satisfied in the denominator and needs no repetition. Closure includes its prerequisites too. Assumed prior knowledge is not evidence of mastery.
+
+Compilation validates the authored seed references. For every necessary atom it establishes the target role, a valid canonical prerequisite path and its provenance. An open atom needs a reachable acquisition path. A goal classed as `prerequisiteOnly` within one subject may be a target in the overall plan and counts once under its canonical ID. Unknown references, cycles and missing or unreachable necessary atoms are validation errors regardless of previous results.
+
+Only compilation of the personal learning basis adds targets in this way. Official curriculum assignments, source applicability, focus and goal-type-specific completion rules retain their meanings. Adding a target creates, transfers or deletes no mastery. The backend and WebGUI implement this scope. Applicability checks and full native, curriculum and remote acceptance need their own current evidence.
 
 ### Normal Mode and Strict Mode {#sec:filter-modes}
 

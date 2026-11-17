@@ -6,7 +6,7 @@ This section answers two planning questions: can the goals of a schedule be acqu
 Canonical subject learning units and shared Land plan units (stages, years, phases) govern structural composition and `after` ordering in Section~@ref{sec:learning-units}. Separately, an optional **dated schedule and budget plan** assigns acquisition targets to calendar planning periods $S_i$ (such as semesters or teaching weeks) and checks available study time. That scheduling profile alters neither base skill-graph validity nor stored mastery, introduces no technical unit locks, and claims no production cross-subject budget validator.
 :::
 
-A domain learning unit may be acquired at different times across educational programs. Here a planning period denotes a scheduled interval -- figuratively a construction stage: competencies remain the building blocks and retain their domain prerequisites. Nothing here requires completing every subject of one calendar year before any later goal becomes accessible.
+Two programs can schedule the same unit at different times. A dated plan allocates time for the intended introduction and the content needed along the way. What a learner has already completed and what they can choose in the current focus depend on their learning state (Sections~@ref{sec:state} and~@ref{sec:filters}).
 
 ### Plan Scope, Entry Basis, and Single Initial Acquisition {#sec:plan-entry anchors="121-plan-scope-and-entry-basis"}
 
@@ -46,7 +46,7 @@ A *completion witness* for a planning period is an ordering of its targets in wh
 a_j \in \Frontier_\pi\!\left(B_\pi \cup S_{<i} \cup \{a_1, \ldots, a_{j-1}\}\right) \qquad (1 \le j \le s_i).
 :::
 
-For instance, if $g$ requires $p$, both lie in the same period, and all of their remaining prerequisites are already satisfied, then $p, g$ is a completion witness whereas $g, p$ is not. Evaluation uses the global check domain, preserving inherited, cluster-expanded, and resolved cross-subject prerequisites; a normal-mode focus filter could mask relevant dependencies. The hypothetical witness uses neither direct-exam shortcuts nor anticipated implicit recognition.
+Consider two goals planned for the same teaching week. Goal $g$ requires $p$ and the plan assumes their other prerequisites have been satisfied. The order $p, g$ shows how both goals can be reached. This check includes cross-subject prerequisites and requirements resolved to atomic goals. Using an individual focus restriction, a direct assessment attempt or anticipated recognition would change what the example establishes about the intended acquisition path.
 
 For diagnostics, define the required atomic demand from @eqref{eq:demand} under the plan relation:
 
@@ -74,7 +74,7 @@ Whereas a dated reference schedule tests feasibility relative to a declared entr
 
 ### Effort, Reserve, and Budget {#sec:workload-budget anchors="123-workload-feasibility"}
 
-Structural feasibility does not yet prove that a school year affords enough time. Every workload claim must state reference learners, entry conditions, target and elective selections, calendar exclusions, estimation method, and uncertainty. Collecting those declared estimation assumptions of plan $\pi$ into $\Theta_\pi$, let $\widehat t_h(\Theta_\pi) \ge 0$ denote the estimated duration of an actual activity $h$ under $\Theta_\pi$. All quantities must share one calibrated time unit:
+Even a feasible learning sequence may require more teaching time than the school year provides. Every workload claim must state reference learners, entry conditions, target and elective selections, calendar exclusions, estimation method, and uncertainty. Collecting those declared estimation assumptions of plan $\pi$ into $\Theta_\pi$, let $\widehat t_h(\Theta_\pi) \ge 0$ denote the estimated duration of an actual activity $h$ under $\Theta_\pi$. All quantities must share one calibrated time unit:
 
 :::equation {#eq:budget}
 \Work_\pi(i; \Theta_\pi) + \Reserve_\pi(i) \le \Budget_\pi(i), \qquad i = 1, \ldots, n_\pi.

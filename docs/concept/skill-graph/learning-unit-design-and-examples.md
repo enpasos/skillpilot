@@ -62,11 +62,11 @@ The context is derived before tasks, cards, and images of the unit are written o
 <a id="sec-sga-ud-loop"></a>
 ### 12.3. Learn, Demonstrate, and Continue Learning
 
-The course starts with a meaningful question and a clear outlook: what can I do afterwards, and what do I need it for? Required prior knowledge is named concretely. Development and practice with feedback follow. The coach may explain, structure, and support when difficulties arise.
+An opening question makes the learning promise concrete. What will learners be able to do, and what will they use it for? A short introduction is proposed for units with assessments of their own. The coach then identifies the prior knowledge learners need and gives feedback as they learn and practise. [Unit orientation in the Graph Definition (§8.2)](https://enpasos.github.io/skillpilot/concept/skill-graph/context-and-views.en/#sec-orientation)
 
-The subsequent assessment demands the claimed independent application. Step-by-step help that supplies exactly the decisive choice of model or reasoning can be practice, but it does not demonstrate this independence. Task variants must carry the same learning promise and must not merely repeat the practised surface.
+In the assessment, learners show whether they can apply what they have learned independently. For example, if they are expected to choose a model, the task must leave that choice to them. The coach can help them make it during practice.
 
-When the evidence is missing, the concrete gap is explained, for example the confusion of two quantities. Suitable further development and practice follow, then a fresh assessment variant with equivalent content. A retry must not sidestep the problem through memorising an identical task. Valid competence evidence obtained elsewhere is not deleted by this.
+A learner who confuses velocity and acceleration can practise that distinction. They may retry the same task after seeing its solution. An equivalent task in a new situation gives better evidence of whether they can now choose the model independently. Both tasks must address the same learning promise and use the same passing criteria. Evidence already earned in other units remains valid.
 
 In the intended learning flow, `after` and the "Unit by Unit" learning mode ([Unit Progression](learning-unit-progression.md)) guide learners coherently through an opened unit up to its assessments without imposing technical unit locks: `after` changes neither atomic demand nor mastery or frontier eligibility, learners may attempt assessments directly at any time, an attempt that is not passed records no negative result, and no `requires` edge of later subject goals points to an assessment goal.
 
@@ -245,17 +245,17 @@ All effective prerequisites remain authoritative, including inheritance, cluster
 
 Before any implementation planning, answer for every candidate:
 
-1. What can learners do independently afterwards, and why does it matter?
+1. What will learners be able to do independently, and what will they use it for?
 2. Is the candidate a canonical cluster (E1), and if it is a leaf unit, does it stay whole inside a single plan unit across all 16 Bundesländer?
 3. Does the complete child-block graph from atomic demand and `after` admit an acyclic order at every level, so every unit can be learned contiguously (E2)?
 4. Which concrete entry competencies are needed, are they available in time (including across subjects), and is crossing demand between sibling units ordered completely and irredundantly via `after` with zero `requires` pointing to assessments (E3, E4)?
 5. What does the unit's knowledge context secure via `requires` alone, what is not yet secured, and do all tasks, cards, images, and examples stay strictly inside that context?
 6. Which existing goals belong directly to the unit (`Own(U)`), which child units does it have, and is every goal owned directly by at most one unit (R4)?
-7. What is the central conceptual step, and should the candidate be a **unit with assessments** (`coverageReviews`) right away or an assessment-free parent unit first?
+7. What is the central insight? Does the unit need assessments of its own with coverage reviews, or will it initially organise its child units? If it has assessments of its own, what practical example would suit the proposed short opening?
 8. If it is a unit with assessments: which tasks and ordinary grading rules inside the unit cluster demonstrate the whole promise, does every own content goal (including experimental goals) lie on a path from an own assessment (R1), and does at least one such assessment carry reviewed evidence for it (R2)?
 9. Does every assessment claim coverage only for goals it requires directly or transitively (R3)?
 10. Could someone pass despite lacking an essential competence?
-11. Which focused further learning and fresh assessment follow such a gap?
+11. What can the learner practise after such a gap? What would demonstrate independent application in a different but equivalent task?
 12. Are standalone practice tasks or Abitur exams cleanly separated from own recognition assessments?
 13. Which official sources (*carried in*) and complete goal meanings justify scope, learning placement (*placed in*), and boundary?
 
