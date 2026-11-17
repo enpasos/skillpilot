@@ -1,0 +1,239 @@
+{
+  "at": "2026-11-17T00:01:15.927Z",
+  "status": "PASS",
+  "pins": {
+    "helper": "4490fa8873ed896ebc662b162954b88a74e894dfbbea92b5d223a5a097218775",
+    "main": "e1b39b138f82a94fdfa1fa548be75de6724b8c648f6e7391994177a9e9160d29"
+  },
+  "cases": [
+    {
+      "name": "exact canonical GK collection without abitur ID substring",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "name": "exact canonical LK collection",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "name": "missing source view",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "name": "ambiguous source view",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "name": "unresolved compositionViewId",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "name": "unresolved compositionNodeId",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "name": "ambiguous node identity",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "name": "missing exam atom",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "name": "extra exam atom",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "name": "non-exam content",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "name": "unknown canonical reference",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "name": "scope exclusion does not prove exam",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "name": "opaque cluster goalEntry does not expand to visible exam atoms",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "name": "canonical contains cycle",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "name": "canonical Physics thematic contents",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "name": "foreign Land context",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "name": "foreign Land view",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "name": "wrong subject",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "name": "wrong stage",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "name": "wrong level 0",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "name": "wrong level 2",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "name": "unresolved source identity",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "name": "missing actual source node",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "name": "unreviewed duration",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "name": "missing unitEntryIds binding",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "name": "wrong source stage node",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "name": "missing preview source",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "name": "ambiguous preview source",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "name": "wrong preview source subjectId",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "name": "wrong preview source compositionViewId",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "name": "wrong preview source compositionNodeId",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "name": "ambiguous actual thematic source",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "name": "source is not an immediate theme child",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "name": "consistent GK/LK de-de-gym-physics-gk",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "name": "consistent GK/LK de-de-gym-physics-lk",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "name": "invalid merged identity de-de-gym-physics-gk+de-de-gym-physics-gk",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "name": "invalid merged identity de-de-gym-physics-gk+de-de-gym-sekii-physics-lk",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "name": "invalid merged identity de-de-gym-physics-gk+foreign-view",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    }
+  ],
+  "scope": "Independent first-pass audit predicate mutations. Does not alter product projection or E2/E3."
+}

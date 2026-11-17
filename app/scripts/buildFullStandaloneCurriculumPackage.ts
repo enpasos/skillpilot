@@ -288,6 +288,18 @@ const scriptDir = dirname(fileURLToPath(import.meta.url))
 const defaultRepositoryRoot = resolve(scriptDir, '../..')
 const DEFAULT_PROFILE_PATH = 'contracts/curriculum-package/v1/profiles/full-standalone-v1.profile.json'
 const DEFAULT_REVIEW_PATH = 'curricula/DE/Gymnasium/quality/package-redistribution/de-gymnasium-mathematik-v1.review.json'
+
+export const fullStandaloneTrustedSchemaCount = (profileId: string): number => {
+  switch (profileId) {
+    case 'full-standalone-v1': return 22
+    case 'full-standalone-completion-v1': return 26
+    case 'full-standalone-learning-units-v1': return 25
+    // Runtime 1.3 registers the closed partial-order view component alongside
+    // the unchanged envelope and the original runtime-view component.
+    case 'full-standalone-v1.3': return 28
+    default: throw new Error(`Unsupported full-standalone profile: ${profileId}`)
+  }
+}
 const DEFAULT_DEFINITION_PROFILE_PATH = 'contracts/curriculum-package/v1/profiles/canonical-definition-record-v1.profile.json'
 const DEFAULT_SOURCE_VERIFICATION_REVIEW_PATH = 'curricula/DE/Gymnasium/quality/source-verification/de-gymnasium-mathematik-v1.review.json'
 const DEFAULT_SOURCE_VERIFICATION_REPORT_PATH = 'docs/qa-ci/status/source-verification-de-gymnasium-mathematik-v1.md'
@@ -1118,7 +1130,7 @@ export const createFullStandalonePackagePlan = (
   if (profile.profileFormatVersion !== 1 || !['full-standalone-v1', 'full-standalone-completion-v1', 'full-standalone-learning-units-v1', 'full-standalone-v1.3'].includes(profile.profileId)) fail('Unsupported full-standalone release profile identity.')
   if (profile.compatibility.runtimeContractVersion !== (materialProfile ? '1.3' : completionProfile ? '1.1' : learningUnitProfile ? '1.2' : '1.0')) fail('Release profile and runtime contract version differ.')
   if (profile.compatibility.variant !== 'json') fail('Full-standalone profile variant must be json.')
-  const expectedSchemaCount = options.expectedTrustedSchemaCount ?? (materialProfile ? 27 : completionProfile ? 26 : learningUnitProfile ? 25 : 22)
+  const expectedSchemaCount = options.expectedTrustedSchemaCount ?? fullStandaloneTrustedSchemaCount(profile.profileId)
   if (profile.trustedContractSchemas.length !== expectedSchemaCount) {
     fail(`Expected ${expectedSchemaCount} complete trusted schemas, profile declares ${profile.trustedContractSchemas.length}.`)
   }

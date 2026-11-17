@@ -70,6 +70,61 @@
               "children": [
                 {
                   "kind": "structure",
+                  "id": "physics-required-preparation-physics-he-seki-j6-g8",
+                  "label": "Notwendige Grundlagen",
+                  "children": [
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "f6b13b8e-1ecd-5420-905d-21290aa996a6",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "cf474eab-1379-4877-907e-58b0892ce734",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "9ef6c4fa-b97a-5d7a-86c1-96690f02d916",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "65365dce-f33f-49d8-9516-42f75883aa86",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "2f3d24e7-2450-55d8-97c2-3e106d2854c6",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "25593605-5e13-55cc-9a05-8f3d737e15e9",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "2231c29b-eb4e-51ae-9cb1-eb033bf16099",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    }
+                  ]
+                },
+                {
+                  "kind": "structure",
                   "id": "physics-he-g8-topic-6g-1",
                   "label": "6G.1 Einstieg: Physik als Naturwissenschaft",
                   "children": [
@@ -198,7 +253,39 @@
                     }
                   ]
                 }
-              ]
+              ],
+              "childOrder": {
+                "after": [
+                  {
+                    "unit": "physics-he-g8-topic-6g-2",
+                    "after": "physics-required-preparation-physics-he-seki-j6-g8"
+                  },
+                  {
+                    "unit": "physics-he-g8-topic-6g-2",
+                    "after": "physics-he-g8-topic-6g-1"
+                  },
+                  {
+                    "unit": "physics-he-g8-topic-6g-3",
+                    "after": "physics-required-preparation-physics-he-seki-j6-g8"
+                  },
+                  {
+                    "unit": "physics-he-g8-topic-6g-3",
+                    "after": "physics-he-g8-topic-6g-1"
+                  },
+                  {
+                    "unit": "physics-he-g8-topic-6g-4",
+                    "after": "physics-he-g8-topic-6g-1"
+                  },
+                  {
+                    "unit": "physics-he-g8-practice-6",
+                    "after": "physics-he-g8-topic-6g-2"
+                  },
+                  {
+                    "unit": "physics-he-g8-practice-6",
+                    "after": "physics-he-g8-topic-6g-3"
+                  }
+                ]
+              }
             },
             {
               "kind": "structure",
@@ -207,9 +294,28 @@
               "children": [
                 {
                   "kind": "structure",
+                  "id": "physics-required-preparation-physics-he-seki-j7-g8",
+                  "label": "Notwendige Grundlagen",
+                  "children": [
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "2331caf2-ccb2-5492-9fc6-48763b848bae",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    }
+                  ]
+                },
+                {
+                  "kind": "structure",
                   "id": "physics-he-g8-topic-7g-1",
                   "label": "7G.1 Optik 2",
                   "children": [
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "b378c8b3-5e83-5abf-8243-b0f345037bfc",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
                     {
                       "kind": "canonicalSubtree",
                       "goalId": "cca06d84-28fe-4b80-9bcd-968dda026e0e"
@@ -241,6 +347,12 @@
                   "id": "physics-he-g8-topic-7g-2",
                   "label": "7G.2 Wärmelehre 2",
                   "children": [
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "80c232f1-8f72-5829-9dbe-5a610ccab3be",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
                     {
                       "kind": "canonicalSubtree",
                       "goalId": "ae67bcf1-f3ee-50d6-9a12-25a159dff659"
@@ -327,7 +439,23 @@
                     }
                   ]
                 }
-              ]
+              ],
+              "childOrder": {
+                "after": [
+                  {
+                    "unit": "physics-he-g8-topic-7g-1",
+                    "after": "physics-required-preparation-physics-he-seki-j7-g8"
+                  },
+                  {
+                    "unit": "physics-he-g8-practice-7",
+                    "after": "physics-he-g8-topic-7g-1"
+                  },
+                  {
+                    "unit": "physics-he-g8-practice-7",
+                    "after": "physics-he-g8-topic-7g-3"
+                  }
+                ]
+              }
             },
             {
               "kind": "structure",
@@ -336,9 +464,256 @@
               "children": [
                 {
                   "kind": "structure",
+                  "id": "physics-required-preparation-physics-he-seki-j8-g8",
+                  "label": "Notwendige Grundlagen",
+                  "children": [
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "fe07241a-b779-5f35-a82d-7aa51ae74f42",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "f6a54a49-b6cf-4ab7-a185-aa08bfcb6c97",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "f2e42af5-67a6-477e-82ea-e65b09cc6cb3",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "ee48e811-4c9c-5080-9836-8403fc9f0810",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "e82d8d3a-9012-5482-afe6-ab0d727a49bb",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "d98849c7-bd0b-50d4-90aa-6293a3adb211",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "d825f7ce-e19b-594a-8181-eff199c21d93",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "cafd6520-c4af-4109-9863-cc49ba6fad4d",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "ca8b2e67-7d14-5baf-8404-26820fe3d548",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "ca623958-c204-5d1b-bdd0-3f76765674cb",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "c1f50bcc-7848-4e49-b9de-0ec030cc6bca",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "b5de0574-93ed-409c-80ee-312211420cd6",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "b44f038c-fb1f-527e-b9ad-382214d0328a",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "b41cb496-dad5-596e-9c23-cdcbdab3ec2e",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "a4c2b831-02f0-5d55-a300-7823a71352c4",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "91571d3f-3651-4477-ba21-320fc4077453",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "8d1bb6ce-2433-4637-94ba-3bdc35fa5b10",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "7c978529-ce62-5adc-897f-24ea80babbc8",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "6ff61721-b2cc-5b1b-ade5-b3c1fd7f7077",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "6b0075bb-f71c-59f6-ab98-fb894568cc26",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "624764d6-becd-5f9b-ada3-0d4f9d143073",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "5d1decb2-b01b-5c85-88fc-9fc255ff9776",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "596345cd-679e-5c7b-955f-e8cb1ec81e96",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "57fbbf31-9b8c-5408-9af5-fbc73acd12bb",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "54148506-c23f-41b8-959b-068dd194cf15",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "4b67bed9-06da-40b2-a306-24e9e7dfd390",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "3fde4db5-9e92-5f3a-98e1-d386a42b9e01",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "2f565855-bcd6-4da5-bc80-4b72a2d93d50",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "2bb4bb91-7929-483a-b735-44275f6b5cdc",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "2ae76eae-799c-463e-9ec9-82327f8209a8",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "1a25ef44-f310-4c23-9ba8-44baec60d3b0",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "191c67db-44a8-4f63-994a-d85e8e301194",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "15505229-efec-4d01-8e71-acf15f9c2424",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "13b338eb-f761-5817-9058-11043b9cb253",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "11e3cf89-9224-5894-8e4a-ae8ff5af0119",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "0a6dab2e-1bbb-5587-adb0-456d3991c327",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "05012547-7263-5bfa-9e7c-df970745a011",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    }
+                  ]
+                },
+                {
+                  "kind": "structure",
                   "id": "physics-he-g8-topic-8g-1",
                   "label": "8G.1 Mechanik",
                   "children": [
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "da26294f-4316-5bd5-a37a-bd89397b3b8b",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "d3c153b9-e09b-5668-8386-73105546a7c1",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
                     {
                       "kind": "canonicalSubtree",
                       "goalId": "e41356c1-968b-435a-af25-b663f080ae5a"
@@ -580,13 +955,142 @@
                     }
                   ]
                 }
-              ]
+              ],
+              "childOrder": {
+                "after": [
+                  {
+                    "unit": "physics-he-g8-topic-8g-1",
+                    "after": "physics-required-preparation-physics-he-seki-j8-g8"
+                  },
+                  {
+                    "unit": "physics-he-g8-topic-8g-2",
+                    "after": "physics-required-preparation-physics-he-seki-j8-g8"
+                  },
+                  {
+                    "unit": "physics-he-g8-topic-8g-3",
+                    "after": "physics-he-g8-topic-8g-1"
+                  },
+                  {
+                    "unit": "physics-he-g8-practice-8",
+                    "after": "physics-he-g8-topic-8g-2"
+                  },
+                  {
+                    "unit": "physics-he-g8-practice-8",
+                    "after": "physics-he-g8-topic-8g-3"
+                  },
+                  {
+                    "unit": "physics-he-g8-practice-8",
+                    "after": "physics-he-g8-topic-8g-4a"
+                  },
+                  {
+                    "unit": "physics-he-g8-practice-8",
+                    "after": "physics-he-g8-topic-8g-4b"
+                  }
+                ]
+              }
             },
             {
               "kind": "structure",
               "id": "physics-he-seki-j9-g8",
               "label": "Jahrgangsstufe 9G",
               "children": [
+                {
+                  "kind": "structure",
+                  "id": "physics-required-preparation-physics-he-seki-j9-g8",
+                  "label": "Notwendige Grundlagen",
+                  "children": [
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "fd860da9-73ba-47cd-a1a8-452424915a80",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "f08d06dc-139d-5fd2-892c-8cc919b1e4fc",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "ec9f2ed4-c9e6-5fb3-a073-75b53127e55d",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "e331a425-e9c6-46eb-89cb-dedf72857974",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "d658e26a-e351-4bca-824e-f346deaa87c5",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "c9112f89-ffaf-40f3-af1f-86a04b5ad4ee",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "71d43fcc-d787-4874-ae4a-2336364e9c0a",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "6596405a-9728-41df-9163-53670ec2a937",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "5bba4ec2-3781-4624-8b62-e24b38f7f76e",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "44cb7404-114e-5b14-b33a-ddee41952d46",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "339a7bf5-f1df-5d5a-9ec4-41f471f0c111",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "2c4830e6-a8d5-48d0-9202-3b7d18a419c2",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "26f668a0-6425-5466-9cf7-6295dd189005",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "199fe2ed-2576-4611-b8de-fd56fb9f78fc",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "02013455-72a0-5213-9509-ed77f7ede62b",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    }
+                  ]
+                },
                 {
                   "kind": "structure",
                   "id": "physics-he-g8-topic-9g-1",
@@ -708,13 +1212,98 @@
                     }
                   ]
                 }
-              ]
+              ],
+              "childOrder": {
+                "after": [
+                  {
+                    "unit": "physics-he-g8-topic-9g-2",
+                    "after": "physics-required-preparation-physics-he-seki-j9-g8"
+                  },
+                  {
+                    "unit": "physics-he-g8-topic-9g-3",
+                    "after": "physics-required-preparation-physics-he-seki-j9-g8"
+                  },
+                  {
+                    "unit": "physics-he-g8-practice-9",
+                    "after": "physics-he-g8-topic-9g-1"
+                  },
+                  {
+                    "unit": "physics-he-g8-practice-9",
+                    "after": "physics-he-g8-topic-9g-2"
+                  },
+                  {
+                    "unit": "physics-he-g8-practice-9",
+                    "after": "physics-he-g8-topic-9g-3"
+                  }
+                ]
+              }
             }
-          ]
+          ],
+          "childOrder": {
+            "after": [
+              {
+                "unit": "physics-he-seki-j7-g8",
+                "after": "physics-he-seki-j6-g8"
+              },
+              {
+                "unit": "physics-he-seki-j8-g8",
+                "after": "physics-he-seki-j7-g8"
+              },
+              {
+                "unit": "physics-he-seki-j9-g8",
+                "after": "physics-he-seki-j8-g8"
+              }
+            ]
+          }
         },
         {
           "kind": "goalEntry",
           "goalId": "13b338eb-f761-5817-9058-11043b9cb253",
+          "projectionRole": "prerequisiteOnly"
+        },
+        {
+          "kind": "goalEntry",
+          "goalId": "075f1ef2-6860-4b20-9df2-878157eb395e",
+          "projectionRole": "prerequisiteOnly"
+        },
+        {
+          "kind": "goalEntry",
+          "goalId": "2ac2e902-a6ad-53c9-b139-d1c63d823023",
+          "projectionRole": "prerequisiteOnly"
+        },
+        {
+          "kind": "goalEntry",
+          "goalId": "34604a97-0c64-5b06-81e2-6ac818732d60",
+          "projectionRole": "prerequisiteOnly"
+        },
+        {
+          "kind": "goalEntry",
+          "goalId": "54541d08-61cc-5a6d-b6d9-d0270a7d1949",
+          "projectionRole": "prerequisiteOnly"
+        },
+        {
+          "kind": "goalEntry",
+          "goalId": "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
+          "projectionRole": "prerequisiteOnly"
+        },
+        {
+          "kind": "goalEntry",
+          "goalId": "cf48c918-f6c1-5429-8da6-14df43f2f550",
+          "projectionRole": "prerequisiteOnly"
+        },
+        {
+          "kind": "goalEntry",
+          "goalId": "e9114fc2-1a87-5ef5-8fa3-7ee4c9bbe0dd",
+          "projectionRole": "prerequisiteOnly"
+        },
+        {
+          "kind": "goalEntry",
+          "goalId": "f242a3e8-55a3-492e-8354-b81b24cdbb78",
+          "projectionRole": "prerequisiteOnly"
+        },
+        {
+          "kind": "goalEntry",
+          "goalId": "fb7a4fa0-03b5-53b4-bd86-608480b748a1",
           "projectionRole": "prerequisiteOnly"
         }
       ]
@@ -724,5 +1313,8 @@
       "goalId": "c01b1ce9-a667-4a46-b251-ec33ae602b15",
       "projectionRole": "prerequisiteOnly"
     }
-  ]
+  ],
+  "$schema": "https://skillpilot.com/schemas/composition-view/v1.2/composition-view.schema.json",
+  "viewFormatVersion": "1.2",
+  "language": "de"
 }

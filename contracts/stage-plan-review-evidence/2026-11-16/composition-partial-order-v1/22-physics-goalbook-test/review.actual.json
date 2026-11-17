@@ -1,0 +1,59 @@
+{
+  "status": "PASS_FOCUSED_INDEPENDENT_REVIEW",
+  "reviewedTestSha256": "724280de4593fc4d64332927d28f68efc535f334c17b50d6cacae8f8b079189a",
+  "unchangedAtProbeEnd": true,
+  "evidence": [
+    "head-floor-comparison.actual.json",
+    "negative-probe.actual.json",
+    "extracted-guards.json",
+    "reviewed-test.ts"
+  ],
+  "method": "Extract exact current TypeScript declaration/guard source; run against immutable actual V33 views with production compiler, scope matcher and personal projection; mutations affect cloned data only. No altered test/module/source files.",
+  "retainedFloors": {
+    "gkBindings": 32,
+    "lkBindings": 32,
+    "atomicRoleAssertions": 1024,
+    "explicitOriginalOverrides": 3,
+    "headConstantDefinitionsExactlyPreserved": 6,
+    "newLowerViewsSeparate": 15
+  },
+  "positiveCases": 4,
+  "negativeMutationsRejected": 5,
+  "conditionalPositiveCases": [
+    "undeclared demand is not created by a marker",
+    "out-of-jurisdiction target does not activate its prerequisite",
+    "reordered arrays preserve behavior"
+  ],
+  "resolvedFindings": [
+    {
+      "finding": "Initial new S builder used only course tags and omitted jurisdiction/owner source authority.",
+      "repair": "Use actual sourceCoverageAtomicScopeMatcher per canonical owner before unpruned prerequisite closure."
+    },
+    {
+      "finding": "First matcher call cast LandscapeEntry to SkillLandscape, losing landscapeId and mapping/provenance/BY-Math rules.",
+      "repair": "Pass entry.meta plus goals, preserving the actual canonical owner."
+    },
+    {
+      "finding": "Initial guard required every declared marker in L, rejecting legitimate inactive templates. Actual BB13b338 has only excluded consumers and is not in backendL.",
+      "repair": "Active markers in L\\S materialize once at authored parent; inactive markers outsideL have no incoming edge and are unreachable. No BB exception."
+    }
+  ],
+  "limits": [
+    "This is not a rerun of the complete GoalBook/M7/CQR suite. The author owns the final full suite after the next source freeze.",
+    "Current accepted source also adds the separately reviewed lens task; canonical hashes below bind the exact catalog used by this focused probe.",
+    "V33 view manifest is immutable. Future Physics source changes require final ordinary test execution; unchanged guard logic need not be reinterpreted as changed data acceptance."
+  ],
+  "inputPins": {
+    "app/scripts/testPhysicsGoalBookInputs.ts": "724280de4593fc4d64332927d28f68efc535f334c17b50d6cacae8f8b079189a",
+    "app/scripts/generateCurriculumQualityStatus.ts": "b9fb8cb8e89699ab89142c44adfe04eef2723dd8bcc6c321f018751db9336b56",
+    "app/src/hooks/useLandscapes.ts": "e91f2132619342aa628524a9d07e029c0b1ab0d80c5314081a5bcfa7ed400e0a",
+    "app/src/utils/compositionViewRuntime.ts": "2f475f398913d2f4a2f1e5131c62872b1f1f6ec0d49553467e646bca91b38c10",
+    "app/src/utils/learnerTreeProjection.ts": "6560d476af917239080d144d51bbfcaa96cb6fb20b2cdcbc2d1b83a0af1c636e",
+    "app/src/utils/authoring/compositionViewAuthoring.ts": "e4d9546dfc613c6c40afa1bc1e410137f51cd3b93c622d77dc38c08d1b9cd22b",
+    "scripts/generate_laender_physics_stage_views.memberships.json": "8bedc843bf130a9eebb1ef9df941a9ba5fc9731c628ff672624a6c2df3cf7ebd",
+    "curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json": "bd290056a5b63bbfd40fd9ba2e013a5733c05476794f8f0aeae1c00243ef3eca",
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json": "08bea9063bad70aa2e7690c4381a1f41e87f9252d43226ef00850c139ab85c07",
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json": "306eeed52f6b0b1059264ccb1d4ea23227dd3ddff4d19f2a1ca096511d65a149",
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json": "e29c271e797956c4679e211034b6ad83a0e5a45ef1da25f3d39166657eaf4b5d"
+  }
+}

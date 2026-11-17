@@ -2,6 +2,7 @@
 # SPDX-License-Identifier: Apache-2.0
 """Regression checks for the explicit, source-bound HE duration projections."""
 import copy
+from collections import Counter
 import json
 from pathlib import Path
 import subprocess
@@ -31,6 +32,213 @@ def year_ownership(view):
                 raise AssertionError("Repeated SekI learning place: " + atom)
             ownership[atom] = int(year["id"].split("-j")[1].split("-")[0])
     return ownership
+
+
+class HessenPhysicsEPhasePlacement(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.views = {name: json.loads((generator.DIRECTORY / name).read_text())
+                     for name in generator.FILES}
+
+    def test_source_numbering_status_and_kinematic_learning_place(self):
+        expected_topics = [
+            ("physics-e1-motion", "E.1 Bewegungen und ihre Beschreibung"),
+            ("physics-e2-newton-and-conservation", "E.2 Newton'sche Axiome und Erhaltungssätze"),
+            ("he-physics-topic-287739a3-6143-55d0-abe7-1a08889e9b49", "E.3 Kreisbewegung (Wurf bei E.1)"),
+            ("he-physics-topic-04d1d2df-a94b-5db4-8d07-cbb512c2e0b9", "E.4 Weitere Bewegungen (nicht verbindlich)"),
+            ("he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089", "E.5 Gravitation (nicht verbindlich)"),
+            ("he-physics-topic-df11eb33-4900-52bf-93b3-eb82ff0f9a28", "E.6 Grundlagen der Thermodynamik (nicht verbindlich)"),
+            ("he-physics-topic-9743baad-9371-52b6-98ee-72bc6dc68701", "E.7 Drehbewegungen (nicht verbindlich)"),
+        ]
+        outputs = {name: generator.generate(view)[0] for name, view in self.views.items()}
+        outputs.update({path.name: view for path, view, _ in generator.duration_outputs()
+                        if view["scope"]["stage"] != "SekI"})
+        self.assertEqual(len(outputs), 8)
+        for name, view in outputs.items():
+            with self.subTest(view=name):
+                phase = find(view, "physics-e-phase")
+                self.assertEqual(phase["label"], "Einführungsphase: Mechanik")
+                actual = [(node["id"], node["label"]) for node in phase["children"]
+                          if node.get("id") in dict(expected_topics)]
+                self.assertEqual(actual, expected_topics)
+                motion = find(view, "physics-e1-motion")
+                motion_atoms = generator.role_atoms({"rootNodes": [motion]})["target"]
+                self.assertTrue({"68c90ba6-c438-463c-9a53-cf61062d416a",
+                                 "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2"} <= motion_atoms)
+                throws = [node for node in generator.walk(phase["children"])
+                          if node.get("goalId") == generator.HORIZONTAL_THROW]
+                self.assertEqual(len(throws), 1)
+                self.assertIn(throws[0], motion["children"])
+                self.assertEqual(throws[0]["displayLabel"], "Waagerechter Wurf und Superposition (aus E.3)")
+                e3 = find(view, expected_topics[2][0])
+                self.assertFalse(motion_atoms & generator.role_atoms({"rootNodes": [e3]})["target"])
+                self.assertIn("Waagerechter Wurf", generator.GOALS["287739a3-6143-55d0-abe7-1a08889e9b49"]["title"])
+
+    def test_repair_preserves_reference_payloads_roles_basis_and_other_units(self):
+        def payloads(view):
+            references = []
+            for node in generator.walk(view["rootNodes"]):
+                if "goalId" not in node:
+                    continue
+                reference = copy.deepcopy(node)
+                if reference["goalId"] == generator.HORIZONTAL_THROW:
+                    reference.pop("displayLabel", None)
+                references.append(json.dumps(reference, sort_keys=True))
+            return Counter(references)
+
+        for name, current in self.views.items():
+            with self.subTest(view=name):
+                # Reproduce the old visible placement with the full reviewed
+                # reference intact; the source canonical goal is not rewritten.
+                legacy = copy.deepcopy(current)
+                for node in generator.walk(find(legacy, "physics-e-phase")["children"]):
+                    if node["kind"] == "structure":
+                        throw = next((child for child in node["children"]
+                                      if child.get("goalId") == generator.HORIZONTAL_THROW), None)
+                        if throw:
+                            node["children"].remove(throw)
+                            break
+                throw.pop("displayLabel", None)
+                find(legacy, "he-physics-topic-287739a3-6143-55d0-abe7-1a08889e9b49")["children"].insert(1, throw)
+                repaired, _ = generator.generate(legacy)
+                self.assertEqual(payloads(repaired), payloads(legacy))
+                self.assertEqual(generator.role_atoms(repaired), generator.role_atoms(legacy))
+                self.assertEqual(atomic_basis(repaired), atomic_basis(legacy))
+                for identifier in ("physics-seki", "physics-q1", "physics-q2", "physics-q3", "physics-q4"):
+                    if any(node.get("id") == identifier for node in generator.walk(legacy["rootNodes"])):
+                        self.assertEqual(find(repaired, identifier), find(legacy, identifier))
+                self.assertEqual(generator.generate(repaired)[0], repaired)
+
+    def test_missing_topic_or_missing_duplicate_or_wrong_throw_reference_fails_closed(self):
+        original = self.views["de-he-gk.view.json"]
+        missing_topic = copy.deepcopy(original)
+        phase = find(missing_topic, "physics-e-phase")
+        phase["children"] = [node for node in phase["children"] if node.get("id") != "physics-e1-motion"]
+        with self.assertRaisesRegex(ValueError, "expected one E-phase authoring topic physics-e1-motion"):
+            generator.generate(missing_topic)
+        for mutation in ("missing", "duplicate", "wrong-kind"):
+            with self.subTest(mutation=mutation):
+                invalid = copy.deepcopy(original)
+                for node in generator.walk(find(invalid, "physics-e-phase")["children"]):
+                    if node["kind"] == "structure":
+                        throw = next((child for child in node["children"]
+                                      if child.get("goalId") == generator.HORIZONTAL_THROW), None)
+                        if throw:
+                            break
+                if mutation == "missing":
+                    node["children"].remove(throw)
+                elif mutation == "duplicate":
+                    node["children"].append(copy.deepcopy(throw))
+                else:
+                    throw["kind"] = "goalEntry"
+                with self.assertRaisesRegex(ValueError, "expected one reviewed horizontal-throw subtree"):
+                    generator.generate(invalid)
+
+    def test_explicit_ephase_policy_and_separate_complete_requirement_candidates(self):
+        expected_topics = [("physics-e2-newton-and-conservation", "physics-e1-motion"),
+            ("he-physics-topic-287739a3-6143-55d0-abe7-1a08889e9b49", "physics-e2-newton-and-conservation")]
+        optional = list(generator.E_PHASE_TOPICS)[3:]
+        e3 = "he-physics-topic-287739a3-6143-55d0-abe7-1a08889e9b49"
+        expected_topics.extend((identifier, "physics-e2-newton-and-conservation" if index == 2 else e3)
+                               for index, identifier in enumerate(optional))
+        outputs = list(self.views.values()) + [view for _, view, _ in generator.duration_outputs()
+                                               if view["scope"]["stage"] != "SekI"]
+        orders = []
+        for view in outputs:
+            with self.subTest(view=view["viewId"]):
+                self.assertEqual(view["$schema"], generator.PARTIAL_ORDER_SCHEMA)
+                self.assertEqual(view["viewFormatVersion"], "1.2")
+                phase = find(view, "physics-e-phase")
+                order, witnesses = generator.ephase_child_order(phase, lambda node: generator.role_atoms({"rootNodes": [node]})["target"])
+                self.assertEqual({(pair["unit"], pair["after"]) for pair in phase["childOrder"]["after"]
+                                  if pair["unit"] in generator.E_PHASE_TOPICS and pair["after"] in generator.E_PHASE_TOPICS}, set(expected_topics))
+                orders.append(phase["childOrder"])
+                pairs = {(pair["unit"], pair["after"]) for pair in order["after"]}
+                self.assertEqual(pairs & {(later, earlier) for later in generator.E_PHASE_TOPICS for earlier in generator.E_PHASE_TOPICS}, set(expected_topics))
+                ancestors = lambda unit: self.order_ancestors(unit, pairs)
+                for unit, previous in pairs:
+                    self.assertFalse(any(previous in ancestors(middle) for middle in ancestors(unit) if middle != previous), (unit, previous))
+                for left in optional:
+                    for right in optional:
+                        self.assertNotIn(right, ancestors(left))
+                ownership = {atom: node["id"] for node in phase["children"] if node["kind"] == "structure"
+                             for atom in generator.role_atoms({"rootNodes": [node]})["target"]}
+                for dependent, unit in ownership.items():
+                    for required in generator.prerequisites(dependent):
+                        if required in ownership and ownership[required] != unit:
+                            self.assertIn(ownership[required], ancestors(unit), (dependent, required))
+                for record in witnesses:
+                    witness = record["witness"]
+                    self.assertEqual(witness["kind"], "canonicalRequirement")
+                    self.assertIn(witness["requiredGoalId"], generator.prerequisites(witness["dependentGoalId"]))
+                    self.assertEqual(ownership[witness["dependentGoalId"]], record["unit"])
+                    self.assertEqual(ownership[witness["requiredGoalId"]], record["after"])
+        combined = {(p["unit"], p["after"]) for order in orders for p in order["after"]}
+        for unit, _ in combined:
+            self.assertNotIn(unit, self.order_ancestors(unit, combined), "Course-specific preparation must merge without a cycle")
+        for left in optional:
+            for right in optional:
+                if left != right:
+                    self.assertNotIn(right, self.order_ancestors(left, combined), "The optional E.4--E.7 fields stay parallel after profile union")
+
+    @staticmethod
+    def order_ancestors(unit, pairs):
+        found, pending = set(), [previous for later, previous in pairs if later == unit]
+        while pending:
+            previous = pending.pop()
+            if previous in found:
+                continue
+            found.add(previous)
+            pending.extend(earlier for later, earlier in pairs if later == previous)
+        return found
+
+    def test_conflicting_real_demands_cannot_be_covered_with_a_planning_cycle(self):
+        identifiers = list(generator.E_PHASE_TOPICS)[:3]
+        phase = {"children": [generator.structure(identifier, identifier, []) for identifier in identifiers]}
+        atoms = {identifier: {str(index)} for index, identifier in enumerate(identifiers)}
+        with patch.object(generator, "prerequisites", side_effect=lambda atom: {"1"} if atom == "0" else set()):
+            with self.assertRaisesRegex(ValueError, "Cyclic E-phase planning order"):
+                generator.ephase_child_order(phase, lambda node: atoms[node["id"]])
+
+    def test_all_he_thematic_parents_are_partial_and_srt_has_no_invented_q4_predecessor(self):
+        views = list(self.views.values()) + [view for _, view, _ in generator.duration_outputs()]
+        for view in views:
+            for parent in generator.walk(view["rootNodes"]):
+                if parent["kind"] != "structure":
+                    continue
+                groups = [node for node in parent["children"] if node["kind"] == "structure"]
+                if len(groups) < 2:
+                    continue
+                with self.subTest(view=view["viewId"], parent=parent["id"]):
+                    self.assertIn("childOrder", parent)
+                    raw_selected = generator.role_atoms(view)["target"]
+                    seeds = generator.course_seeds(raw_selected, generator.GOALS, view["scope"])
+                    learning = seeds | {p for seed in seeds for p in generator.prerequisites(seed)}
+                    selected = raw_selected & learning
+                    ownership = {atom: node["id"] for node in groups
+                                 for atom in generator.learning_atoms(node, selected, learning)}
+                    pairs = {(pair["unit"], pair["after"]) for pair in parent["childOrder"]["after"]}
+                    actual = {(unit, ownership[required]) for atom, unit in ownership.items()
+                              for required in generator.GOALS[atom].get("requires", []) if required in ownership and ownership[required] != unit}
+                    temporal = parent["id"] in ("physics-root", "physics-seki") or parent["id"].startswith("physics-sekii-")
+                    if not temporal:
+                        # Declared unit progressions cover the direct atomic
+                        # cuts; paths through a loose parent atom remain
+                        # independently demand-ordered rather than inventing
+                        # an extra whole-unit predecessor.
+                        allowed = actual | set(generator.E_PHASE_PLANNING_POLICY if parent["id"] == "physics-e-phase" else [])
+                        for unit, previous in actual:
+                            self.assertIn(previous, self.order_ancestors(unit, pairs))
+                        for unit, previous in pairs:
+                            self.assertIn(previous, self.order_ancestors(unit, allowed))
+            phases = [node for node in generator.walk(view["rootNodes"]) if node.get("id") == "physics-q4"]
+            if phases:
+                q4 = phases[0]
+                srt = next(node for node in q4["children"] if node.get("label") == "Spezielle Relativitätstheorie")
+                self.assertFalse(any(pair["unit"] == srt["id"] for pair in q4["childOrder"]["after"]))
+                srt_atoms = generator.role_atoms({"rootNodes": [srt]})["target"]
+                other_q4 = generator.role_atoms({"rootNodes": [q4]})["target"] - srt_atoms
+                self.assertFalse({required for atom in srt_atoms for required in generator.prerequisites(atom)} & other_q4)
 
 
 class HessenPhysicsDurationViews(unittest.TestCase):

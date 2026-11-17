@@ -1,3 +1,5 @@
+import { explicitAtomicEndpointApplies, resolveExplicitAtomicRouteEndpoints } from './explicitAtomicRouteEndpoints'
+
 export type HardRouteSemanticKind =
   | 'orientation'
   | 'curricularAtomic'
@@ -12,6 +14,8 @@ export interface HardRouteGoal {
   title?: string
   requires?: string[]
   contains?: string[]
+  type?: string
+  examData?: unknown
 }
 
 export interface OrientationMotivationGoal extends HardRouteGoal {
@@ -27,6 +31,8 @@ export interface HardRouteProfile<TGoal extends HardRouteGoal> {
   scopeLabel: string
   motivationAnchorGoalIds: string[]
   terminalGoalClusterIds: string[]
+  terminalGoalIds?: string[]
+  explicitTerminalGoalSelector?: (goal: TGoal) => boolean
   /**
    * Selects every semantic route node that is allowed to prove this scoped
    * route. This is deliberately separate from goalSelector: a stage profile
@@ -226,13 +232,30 @@ export const validateHardDirectAtomicRoutes = <TGoal extends HardRouteGoal>(
     }
   })
 
-  const terminalIds = Array.from(new Set(profile.terminalGoalClusterIds.flatMap((clusterId) => {
+  const clusterTerminalIds = Array.from(new Set(profile.terminalGoalClusterIds.flatMap((clusterId) => {
     if (!goalById.has(clusterId)) {
       findings.push({ goalId: clusterId, message: `Missing terminal cluster for ${profile.scopeLabel}.` })
       return []
     }
     return collectAtomicDescendants(clusterId, goalById)
   })))
+  const explicit = resolveExplicitAtomicRouteEndpoints(profile.terminalGoalIds ?? [], goalById,
+    new Set(clusterTerminalIds), profile.explicitTerminalGoalSelector
+      ? new Set(goals.filter(profile.explicitTerminalGoalSelector).map(goal => goal.id)) : undefined)
+  findings.push(...explicit.issues.map(message => ({ message: `${message} for ${profile.scopeLabel}.` })))
+  const selectedCurricularIds = new Set(goals.filter(profile.goalSelector)
+    .filter(goal => isAtomic(goal) && semanticKindByGoalId.get(goal.id) === 'curricularAtomic').map(goal => goal.id))
+  const sourceLearningBasis = new Set<string>(), pendingLearning = [...selectedCurricularIds, ...clusterTerminalIds]
+  while (pendingLearning.length) {
+    const id = pendingLearning.pop()!
+    if (sourceLearningBasis.has(id)) continue
+    sourceLearningBasis.add(id)
+    pendingLearning.push(...(directAtomicEdges.get(id) ?? []))
+  }
+  explicit.goals.forEach(reportInvalidRequirements)
+  const terminalIds = [...clusterTerminalIds, ...explicit.goals
+    .filter(goal => explicitAtomicEndpointApplies(goal, selectedCurricularIds, sourceLearningBasis))
+    .map(goal => goal.id)]
 
   if (terminalIds.length === 0) {
     findings.push({ message: `No atomic terminal goals configured for ${profile.scopeLabel}.` })

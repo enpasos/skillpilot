@@ -1,0 +1,47 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "name": "actual known title warning accepted",
+      "status": "PASS"
+    },
+    {
+      "name": "array order is not the diagnostic contract",
+      "status": "PASS"
+    },
+    {
+      "name": "real unresolved goal reference still fails",
+      "status": "REJECTED_AS_EXPECTED"
+    },
+    {
+      "name": "duplicate known warning is not silently accepted",
+      "status": "REJECTED_AS_EXPECTED"
+    },
+    {
+      "name": "other known statistics title in wrong jurisdiction fails",
+      "status": "REJECTED_AS_EXPECTED"
+    },
+    {
+      "name": "missing expected canonical warning fails",
+      "status": "REJECTED_AS_EXPECTED"
+    },
+    {
+      "name": "extra CPV102 for another goal fails",
+      "status": "REJECTED_AS_EXPECTED"
+    },
+    {
+      "name": "known goal error cannot pass as warning",
+      "status": "REJECTED_AS_EXPECTED"
+    },
+    {
+      "name": "another diagnostic code cannot pass as CPV102",
+      "status": "REJECTED_AS_EXPECTED"
+    }
+  ],
+  "reviewedTestSha256": "2adbd70804db1c093e7b7b6db00f281d5fc9c08d7489f24c47447d15bdcabc0c",
+  "inputPins": {
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json": "306eeed52f6b0b1059264ccb1d4ea23227dd3ddff4d19f2a1ca096511d65a149",
+    "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-gk.view.json": "8787448dc6d8c727687e3f72ac1ce9c79fc3b59d3d4df0ad1e49bc486c8903a4"
+  },
+  "limits": "Focused independent actual compiler mutations plus exact diagnostic predicate; full 100-view suite was executed separately by Root. No live source edits."
+}

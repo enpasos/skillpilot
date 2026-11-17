@@ -25,6 +25,8 @@ test('semantic coverage accounts for every shared QA scope and preserves four re
     const shared = routeProfiles.find(candidate => candidate.profileId === profile.profileId)!
     assert.equal(profile.motivationAnchorGoalIds, shared.motivationAnchorGoalIds)
     assert.equal(profile.terminalGoalClusterIds, shared.terminalAutonomyClusterIds)
+    assert.equal(profile.terminalGoalIds, shared.terminalAutonomyGoalIds,
+      'hard semantic routes retain the same explicit assessment endpoints as CQR')
   }
 })
 

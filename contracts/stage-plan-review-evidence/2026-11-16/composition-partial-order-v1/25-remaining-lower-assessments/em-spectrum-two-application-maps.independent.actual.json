@@ -1,0 +1,220 @@
+{
+  "schema": "independent-bilingual-atomic-assessment-content-review-v1",
+  "reviewer": "/root/he_ephase_source_review",
+  "author": "/root/he_ephase_validation",
+  "reviewedAt": "2026-11-17T03:39:13.517906+00:00",
+  "status": "PASS",
+  "releaseRecommendation": "APPROVE_RELEASE_OF_REVIEWED_CONTENT",
+  "learnerTrialOrHumanApproval": false,
+  "taskId": "bff1d8b0-fe2e-52e6-a467-dd0b6a1a4a04",
+  "targetGoalId": "4a7cbe83-b694-57d3-85ce-1eeca418daaf",
+  "candidatePins": {
+    "tmp/pipeline/laender-stufen/gesamt/physics/remaining-lower-assessments/author-validation/em-spectrum-two-application-maps.goal.json": "10fecdf9681f2ae5529e8f84ab9c898ce2edc59bf8aa3cd9610e3c9b4f81adc0",
+    "tmp/pipeline/laender-stufen/gesamt/physics/remaining-lower-assessments/author-validation/em-spectrum-two-application-maps.md": "ba2f299c8266a60b35b6d637249025814b3899ac354f73125b7b3f00bc7974fd"
+  },
+  "retainedOriginalPins": {
+    "tmp/pipeline/laender-stufen/gesamt/review/remaining-lower-assessments/em-spectrum-two-application-maps.reviewed-candidate.goal.json": "10fecdf9681f2ae5529e8f84ab9c898ce2edc59bf8aa3cd9610e3c9b4f81adc0",
+    "tmp/pipeline/laender-stufen/gesamt/review/remaining-lower-assessments/em-spectrum-two-application-maps.reviewed-material.md": "ba2f299c8266a60b35b6d637249025814b3899ac354f73125b7b3f00bc7974fd"
+  },
+  "reviewedPayloadDigestExcludingOnlyReleaseStatusAndReviewNote": "a7f728532958599a372b36c56b3c9b1e67a398ca17e1755c9856ce4b90372252",
+  "targetDescription": "Die lernende Person kann das elektromagnetische Spektrum nach Frequenz und Wellenlänge geordnet darstellen, typische Bereiche einordnen, technische Anwendungen passenden Spektralbereichen zuordnen und die Zuordnung anhand relevanter Welleneigenschaften begründen.",
+  "targetGoalDigest": "99a35225ca4dc4f06d16952138ffe60a8811f30b82fbd3a234c140611b28d964",
+  "canonicalDocumentSha256AtReviewTime": "08bea9063bad70aa2e7690c4381a1f41e87f9252d43226ef00850c139ab85c07",
+  "requiresAndCoverage": {
+    "requires": [
+      "4a7cbe83-b694-57d3-85ce-1eeca418daaf"
+    ],
+    "coveredGoalIds": [
+      "4a7cbe83-b694-57d3-85ce-1eeca418daaf"
+    ],
+    "additionalRequiredGoalIds": []
+  },
+  "courseBinding": {
+    "taskCourseTags": [
+      "GK",
+      "LK"
+    ],
+    "targetCourseTags": [
+      "GK",
+      "LK"
+    ],
+    "exactMatch": true
+  },
+  "independentCalculations": {
+    "cases": [
+      {
+        "case": "A",
+        "increasingFrequencyOrder": [
+          "c",
+          "g",
+          "d",
+          "a",
+          "f",
+          "b",
+          "e"
+        ],
+        "increasingWavelengthOrder": [
+          "e",
+          "b",
+          "f",
+          "a",
+          "d",
+          "g",
+          "c"
+        ],
+        "cards": [
+          {
+            "card": "c",
+            "wavelength_m": "3",
+            "region": "radio",
+            "independentFrequency_Hz": "299792458/3"
+          },
+          {
+            "card": "g",
+            "wavelength_m": "3/100",
+            "region": "microwave",
+            "independentFrequency_Hz": "29979245800/3"
+          },
+          {
+            "card": "d",
+            "wavelength_m": "1/100000",
+            "region": "infrared",
+            "independentFrequency_Hz": "29979245800000"
+          },
+          {
+            "card": "a",
+            "wavelength_m": "3/5000000",
+            "region": "visible",
+            "independentFrequency_Hz": "1498962290000000/3"
+          },
+          {
+            "card": "f",
+            "wavelength_m": "3/10000000",
+            "region": "ultraviolet",
+            "independentFrequency_Hz": "2997924580000000/3"
+          },
+          {
+            "card": "b",
+            "wavelength_m": "1/10000000000",
+            "region": "X-ray",
+            "independentFrequency_Hz": "2997924580000000000"
+          },
+          {
+            "card": "e",
+            "wavelength_m": "1/1000000000000",
+            "region": "gamma",
+            "independentFrequency_Hz": "299792458000000000000"
+          }
+        ]
+      },
+      {
+        "case": "B",
+        "increasingFrequencyOrder": [
+          "i",
+          "l",
+          "n",
+          "k",
+          "h",
+          "m",
+          "j"
+        ],
+        "increasingWavelengthOrder": [
+          "j",
+          "m",
+          "h",
+          "k",
+          "n",
+          "l",
+          "i"
+        ],
+        "cards": [
+          {
+            "card": "i",
+            "wavelength_m": "30",
+            "region": "radio",
+            "independentFrequency_Hz": "149896229/15"
+          },
+          {
+            "card": "l",
+            "wavelength_m": "3/1000",
+            "region": "microwave",
+            "independentFrequency_Hz": "299792458000/3"
+          },
+          {
+            "card": "n",
+            "wavelength_m": "1/10000",
+            "region": "infrared",
+            "independentFrequency_Hz": "2997924580000"
+          },
+          {
+            "card": "k",
+            "wavelength_m": "9/20000000",
+            "region": "visible",
+            "independentFrequency_Hz": "5995849160000000/9"
+          },
+          {
+            "card": "h",
+            "wavelength_m": "1/5000000",
+            "region": "ultraviolet",
+            "independentFrequency_Hz": "1498962290000000"
+          },
+          {
+            "card": "m",
+            "wavelength_m": "1/20000000000",
+            "region": "X-ray",
+            "independentFrequency_Hz": "5995849160000000000"
+          },
+          {
+            "card": "j",
+            "wavelength_m": "1/2000000000000",
+            "region": "gamma",
+            "independentFrequency_Hz": "599584916000000000000"
+          }
+        ]
+      }
+    ],
+    "numericFrequenciesAreReviewerChecksNotLearnerRequirements": true,
+    "applicationAssignments": {
+      "A": {
+        "radar": "g/microwave/reflected echo",
+        "thermalCamera": "d/infrared/emission pattern",
+        "materialInspection": "b/X-ray/material-dependent attenuation"
+      },
+      "B": {
+        "radioSystem": "i/radio/modulated received signal",
+        "fluorescenceAnalysis": "h/ultraviolet/specifically given absorption and visible response",
+        "indicator": "k/visible/directly visible signal"
+      }
+    },
+    "equalWavelengthOriginPair": {
+      "wavelength_m": "1/50000000000",
+      "frequency_Hz": "14989622900000000000",
+      "electronProcess": "X-ray under supplied convention",
+      "nuclearTransition": "gamma under supplied convention"
+    },
+    "boundary": "701nm is near a conventional visible/infrared boundary, not an existence limit; visibility has no universal sharp700nm cutoff."
+  },
+  "manualContentReview": {
+    "completeIndependentPerformances": "Each case independently orders all seven standard regions in both coordinate directions, applies three technical contexts with property-based explanations, and addresses the limited meaning of region boundaries.",
+    "DE_EN": "All14 card wavelengths, electron/nuclear origins, units, ordering directions, six applications, two boundary questions and solution/rubric requirements agree.",
+    "physicalValidity": "Radio includes microwaves; their separated presentation is explicitly conventional. X/gamma overlap and origin-based naming are correctly scoped. Infrared emission does not imply uncalibrated exact temperatures; fluorescence is a supplied property of the chosen material, not all materials.",
+    "genuineCoverage": "The whole target is assessed twice: frequency/wavelength ordering, typical regions, technical application classification and wave/interaction-property justification. No frequency arithmetic, radiation experiment, medical claim, spectroscopy theory or extra goal is required.",
+    "rubric": "All three applications and every card are central parts within their respective case cores. Optional details about travel time/calibration are explicitly not extra obligations; scientifically equivalent property explanations are accepted.",
+    "courseBoundary": "Task and target both permit GK/LK with exact course binding."
+  },
+  "rubric": {
+    "coreCount": 6,
+    "maxPoints": 18,
+    "passingPoints": 17,
+    "enumeratedOutcomes": 729,
+    "passingOutcomes": 7,
+    "noMissingCoreCanPass": true,
+    "oneIsolatedNonconceptualSlipAllowed": true,
+    "noMissingCompleteCaseCanPass": true
+  },
+  "limitations": [
+    "AI independent content and numeric review; no human review or learner effectiveness claim.",
+    "Source-stage task selection and final actual CQR/routes are separate integration checks.",
+    "Release may change only reviewStatus/reviewNote without a new content review."
+  ]
+}

@@ -32,7 +32,7 @@ test('a G8 upper-stage assessment is not a lower-stage endpoint, but a wrong ear
     for (let index = nodes.length - 1; index >= 0; index--) {
       const node = nodes[index]
       if (node.goalId === endpoint) { assert.equal(moved, undefined); moved = nodes.splice(index, 1)[0]; continue }
-      if (node.id === 'sh-sek1-g8') lower = node as { children: unknown[] }
+      if (node.id === 'sek1') lower = node as { children: unknown[] }
       if (node.children) visit(node.children as typeof nodes)
     }
   }

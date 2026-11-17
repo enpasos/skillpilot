@@ -5,6 +5,7 @@ import {
   collectCompositionProjectionRoleGoalIds,
   getCompositionProjectionRole,
   normalizeCompositionView,
+  readCompositionChildOrder,
   type CompositionStructureNode,
   type CompositionView,
   type CompositionViewNode,
@@ -456,9 +457,14 @@ const createSyntheticStructureGoal = ({
   inheritedRequires: [],
   extendedData: {
     treeOrder,
+    compositionSourceOrder: treeOrder,
+    compositionViewFormatVersion: view.viewFormatVersion,
     syntheticStructureKind: 'compositionView',
     compositionViewId: view.viewId,
     compositionNodeId: node.id,
+    ...(node.childOrder !== undefined ? { compositionChildOrder: readCompositionChildOrder(
+      node.childOrder, node.children.filter(child => child.kind === 'structure').map(child => child.id),
+    ), compositionChildOrderChildIds: node.children.filter(child => child.kind === 'structure').map(child => child.id) } : {}),
     // Runtime metadata is resolved from the raw-pinned v1.3 index by the same
     // composition endpoint, including native GK/LK merges. It is not inferred
     // from a label, canonical phase or the position of a support reference.
@@ -673,6 +679,7 @@ const applyAnchoredProjection = ({
   referencedGoalById = strippedGoalById,
   rootGoalIdByLandscapeId,
   anchorGoalId,
+  anchorStructure,
   nodes,
   referencedGoalIds,
   ensureRootTag = false,
@@ -685,6 +692,7 @@ const applyAnchoredProjection = ({
   referencedGoalById?: Map<string, UiGoal>
   rootGoalIdByLandscapeId: Map<string, string>
   anchorGoalId: string
+  anchorStructure?: CompositionStructureNode
   nodes: CompositionViewNode[]
   referencedGoalIds: Set<string>
   ensureRootTag?: boolean
@@ -718,6 +726,15 @@ const applyAnchoredProjection = ({
 
   const finalAnchorChildIds = [...preservedAnchorChildren, ...childIds]
   anchorGoal.contains = finalAnchorChildIds
+  if (anchorStructure && view.viewFormatVersion === '1.2') {
+    anchorGoal.extendedData = { ...anchorGoal.extendedData, compositionViewFormatVersion: view.viewFormatVersion }
+  }
+  if (anchorStructure?.childOrder !== undefined) {
+    const childIds = anchorStructure.children.filter(child => child.kind === 'structure').map(child => child.id)
+    anchorGoal.extendedData = { ...anchorGoal.extendedData, compositionViewId: view.viewId,
+      compositionChildOrder: readCompositionChildOrder(anchorStructure.childOrder, childIds),
+      compositionChildOrderChildIds: childIds }
+  }
   if (ensureRootTag && !(anchorGoal.tags ?? []).includes(ROOT_TAG)) {
     anchorGoal.tags = [...(anchorGoal.tags ?? []), ROOT_TAG]
   }
@@ -947,9 +964,13 @@ export const applyCompositionViewProjection = (
         extendedData: {
           ...(maybeOpaque.extendedData ?? {}),
           ...(presentation.displayLabel ? { compositionDisplayLabel: presentation.displayLabel } : {}),
-          ...(typeof presentation.treeOrder === 'number' ? { treeOrder: presentation.treeOrder } : {}),
+          ...(typeof presentation.treeOrder === 'number' ? {
+            treeOrder: presentation.treeOrder,
+            compositionSourceOrder: presentation.treeOrder,
+          } : {}),
           ...(presentation.opaque ? { compositionEntryKind: 'goalEntry' } : {}),
           compositionViewId: view.viewId,
+          compositionViewFormatVersion: view.viewFormatVersion,
         },
       }
     })
@@ -963,6 +984,28 @@ export const applyCompositionViewProjection = (
     const projectedGoalById = new Map([...goalByIdAcrossEntries]
       .filter(([goalId]) => !prerequisiteOnlyGoalIds.has(goalId)))
     strippedGoalById.forEach((goal, goalId) => projectedGoalById.set(goalId, goal))
+
+    const withPreparationPlacements = (projected: LandscapeEntry, nodes: CompositionViewNode[], anchorGoalId?: string): LandscapeEntry => {
+      const placements: NonNullable<LandscapeEntry['compositionPreparationPlacements']> = []
+      // Scope exclusions are not learning places. Only an explicit acquisition
+      // declaration provides a template, and it never supplies target authority.
+      if (view.viewFormatVersion === '1.2') {
+        const visit = (node: CompositionViewNode, treeOrder: number, ancestors: UiGoal[]) => {
+          if (node.kind === 'goalEntry' && getCompositionProjectionRole(node) === 'prerequisiteOnly'
+            && node.acquisitionPlacement === true
+            && ancestors.length > 0 && prerequisiteOnlyGoalIds.has(node.goalId)
+            && !(goalByIdAcrossEntries.get(node.goalId)?.contains.length)) {
+            placements.push({ goalId: node.goalId, ...(anchorGoalId ? { anchorGoalId } : {}), ancestors, treeOrder })
+          }
+          if (node.kind !== 'structure') return
+          const template = createSyntheticStructureGoal({ entry, view, node, contains: [], treeOrder,
+            isRoot: !anchorGoalId && ancestors.length === 0 })
+          node.children.forEach((child, index) => visit(child, index, [...ancestors, template]))
+        }
+        nodes.forEach((node, index) => visit(node, index, []))
+      }
+      return { ...projected, compositionPreparationPlacements: placements }
+    }
 
     if (authoredRootGoal) {
       const rootProjectionNodes = view.rootNodes.length === 1
@@ -978,13 +1021,15 @@ export const applyCompositionViewProjection = (
         referencedGoalById: projectedGoalById,
         rootGoalIdByLandscapeId,
         anchorGoalId: authoredRootGoal.id,
+        ...(rootProjectionNodes !== view.rootNodes && view.rootNodes[0]?.kind === 'structure'
+          ? { anchorStructure: view.rootNodes[0] } : {}),
         nodes: rootProjectionNodes,
         referencedGoalIds,
         ensureRootTag: true,
         preserveExistingChildren: false,
       })
       if (anchoredRootEntry) {
-        return anchoredRootEntry
+        return withPreparationPlacements(anchoredRootEntry, rootProjectionNodes, authoredRootGoal.id)
       }
     }
 
@@ -1000,20 +1045,21 @@ export const applyCompositionViewProjection = (
         referencedGoalById: projectedGoalById,
         rootGoalIdByLandscapeId,
         anchorGoalId: stageAnchorGoal.id,
+        anchorStructure: rootStructure,
         nodes: rootStructure.children,
         referencedGoalIds,
       })
       if (anchoredStageEntry) {
-        return anchoredStageEntry
+        return withPreparationPlacements(anchoredStageEntry, rootStructure.children, stageAnchorGoal.id)
       }
     }
 
     const syntheticGoals = buildSyntheticGoals(entry, view, projectedGoalById, rootGoalIdByLandscapeId)
 
-    return {
+    return withPreparationPlacements({
       ...entry,
       goals: [...syntheticGoals, ...strippedGoals],
-    }
+    }, view.rootNodes)
   })
 }
 
@@ -1104,6 +1150,71 @@ export const applyPersonalCurriculumProjection = (
     }
   })
 
+  const displayedRootsNow = () => {
+    const roots = result.flatMap(entry => entry.goals.filter(goal => goal.tags?.includes(ROOT_TAG)))
+    const localRoots = result.find(entry => entry.meta.landscapeId === scope.rootLandscapeId)?.goals
+      .filter(goal => goal.tags?.includes(ROOT_TAG)) ?? []
+    const presentsGoals = (goal: UiGoal) => goal.contains.length > 0
+    return [localRoots.filter(presentsGoals), roots.filter(presentsGoals), localRoots, roots]
+      .find(candidates => candidates.length > 0) ?? []
+  }
+  const reachable = new Set<string>()
+  const markReachable = (id: string) => {
+    if (reachable.has(id)) return
+    reachable.add(id)
+    goalById.get(id)?.contains.forEach(markReachable)
+  }
+  displayedRootsNow().forEach(root => markReachable(root.id))
+  const placements = result.flatMap(entry => (entry.compositionPreparationPlacements ?? []).map(placement => ({ entry, placement })))
+    .sort((left, right) => {
+      // Wrapper depth is incomparable across subjects. A declared acquisition
+      // place in the goal's own subject takes precedence over a foreign-subject
+      // fallback; curricular timing still needs validation in the combined map.
+      const owned = ({ entry, placement }: typeof left) =>
+        sourceGoalById.get(placement.goalId)?.landscapeId === entry.meta.landscapeId
+      return Number(owned(right)) - Number(owned(left))
+        || right.placement.ancestors.length - left.placement.ancestors.length
+    })
+  const attachTemplate = (parent: UiGoal, child: UiGoal) => {
+    if (parent.contains.includes(child.id)) return
+    const order = child.extendedData?.compositionSourceOrder
+    const sourceView = child.extendedData?.compositionViewId
+    const following = typeof order === 'number' && typeof sourceView === 'string'
+      ? parent.contains.findIndex(id => {
+        const sibling = goalById.get(id)?.extendedData
+        return sibling?.compositionViewId === sourceView && typeof sibling.compositionSourceOrder === 'number' && sibling.compositionSourceOrder > order
+      }) : -1
+    // Restoring an initially empty branch preserves its authored list position.
+    // It neither adds an after edge nor reorders unrelated subject children.
+    if (following < 0) parent.contains.push(child.id)
+    else parent.contains.splice(following, 0, child.id)
+  }
+  for (const { entry, placement } of placements) {
+    // The authoritative closed basis is the only acquisition authority. Never
+    // move a target already placed by its reviewed target view into a support
+    // location, and never make an unselected support atom visible.
+    if (!targetIds.has(placement.goalId) || reachable.has(placement.goalId) || !placement.ancestors.length) continue
+    let parent = placement.anchorGoalId ? goalById.get(placement.anchorGoalId) : undefined
+    if (placement.anchorGoalId && !parent) continue
+    for (const template of placement.ancestors) {
+      let goal = goalById.get(template.id)
+      if (!goal) {
+        goal = { ...template, contains: [], tags: [...(template.tags ?? [])], extendedData: { ...template.extendedData } }
+        entry.goals.push(goal)
+        goalById.set(goal.id, goal)
+      }
+      if (parent) attachTemplate(parent, goal)
+      parent = goal
+    }
+    if (parent && !parent.contains.includes(placement.goalId)) parent.contains.push(placement.goalId)
+    const atom = goalById.get(placement.goalId)!
+    atom.extendedData = { ...atom.extendedData, treeOrder: placement.treeOrder }
+    displayedRootsNow().forEach(root => markReachable(root.id))
+    // Existing roots may already have been visited before their new children.
+    placement.ancestors.forEach(goal => markReachable(goal.id))
+    markReachable(placement.goalId)
+  }
+
   // A collapsed canonical cluster remains structural. It cannot substitute
   // for its atoms or add a false leaf to progress totals.
   const keepCache = new Map<string, boolean>()
@@ -1131,16 +1242,12 @@ export const applyPersonalCurriculumProjection = (
     }
   })
 
-  const roots = result.flatMap((entry) => entry.goals.filter((goal) => goal.tags?.includes(ROOT_TAG)))
   const fullPlanEntry = result.find((entry) => entry.meta.landscapeId === scope.rootLandscapeId)
-  const localRoots = fullPlanEntry?.goals.filter((goal) => goal.tags?.includes(ROOT_TAG)) ?? []
   // The authored overview of a multi-subject plan leaves its own root without
   // children: the cockpit then displays the subject roots of the other entries.
   // Placement must follow those roots, or every authored target counts as
   // unplaced and collapses into one flat preparation branch.
-  const presentsGoals = (goal: UiGoal) => goal.contains.length > 0
-  const displayedRoots = [localRoots.filter(presentsGoals), roots.filter(presentsGoals), localRoots, roots]
-    .find((candidates) => candidates.length > 0) ?? []
+  const displayedRoots = displayedRootsNow()
   const fullPlanRoot = displayedRoots[0]
   const seen = new Set<string>()
   const visit = (goal: UiGoal) => {

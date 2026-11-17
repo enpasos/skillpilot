@@ -1,0 +1,211 @@
+{
+  "status": "PASS_READ_ONLY_DELIVERY_SCOPE_AUDIT",
+  "snapshot": "tmp/pipeline/laender-stufen/gesamt/review/delivery-manifest-final/inventory.actual.json",
+  "snapshotSha256": "fc029eecd4ebb393801dac7ddae84edb5a81a39d8f23add4529e435816fa3e2d",
+  "snapshotCounts": {
+    "capturedAt": "2026-11-17T05:51:55.499365+01:00",
+    "trackedChangedCount": 231,
+    "untrackedFileCount": 319,
+    "fileCount": 550,
+    "totalBytes": 90098784
+  },
+  "findings": [],
+  "scopeClassification": "Changed product code, 190 Mathematics/Physics views, narrow Physics task release/reviews, generative authoring inputs, package contracts/consumers, QA outputs, design documentation and root-owned retention evidence are all explained by the authorized work. The pre-existing management-summary change is separately owned/preserved by root.",
+  "binaryAssessment": {
+    "count": 8,
+    "files": [
+      {
+        "path": "contracts/stage-plan-review-evidence/2026-11-16/composition-partial-order-v1/34-final-native-maps/browser-he-v3/CrossStage-G8-GK-LK-e-phase.png",
+        "state": "untracked",
+        "bytes": 116764,
+        "sha256": "666d6554f728c256654600d92390c8a6e2a02655b53c9ba9738b5eccbaca346b",
+        "binary": true
+      },
+      {
+        "path": "contracts/stage-plan-review-evidence/2026-11-16/composition-partial-order-v1/34-final-native-maps/browser-he-v3/CrossStage-G9-GK-LK-e-phase.png",
+        "state": "untracked",
+        "bytes": 116780,
+        "sha256": "d4a1268fb21f042735b9f2e98a0f5bb51181239cee6d893b6ae37bc5ccc6ea12",
+        "binary": true
+      },
+      {
+        "path": "contracts/stage-plan-review-evidence/2026-11-16/composition-partial-order-v1/34-final-native-maps/browser-he-v3/CrossStage-G9-GK-LK-e1.png",
+        "state": "untracked",
+        "bytes": 72131,
+        "sha256": "f4060e10d8bd0803dadebd9894bc5860d7d7af9246fc9fd277f65e4802e1fb64",
+        "binary": true
+      },
+      {
+        "path": "contracts/stage-plan-review-evidence/2026-11-16/composition-partial-order-v1/34-final-native-maps/browser-he-v3/CrossStage-G9-GK-LK-q4.png",
+        "state": "untracked",
+        "bytes": 102668,
+        "sha256": "e06cfcb8e1ebfae41b7dbc4a4dcfa98deca5f93a8507e8b36bc460ec7b72c83b",
+        "binary": true
+      },
+      {
+        "path": "contracts/stage-plan-review-evidence/2026-11-16/composition-partial-order-v1/34-final-native-maps/browser-v2/DE-BY_G9_CrossStage_GK-LK-mathematik-sek2-stage.png",
+        "state": "untracked",
+        "bytes": 50879,
+        "sha256": "dd1dab7bda7e6c55a43b432b211874e46c8653f745cbe6bdf0157c5f169e847e",
+        "binary": true
+      },
+      {
+        "path": "contracts/stage-plan-review-evidence/2026-11-16/composition-partial-order-v1/34-final-native-maps/browser-v2/DE-NW_G9_CrossStage_GK-LK-physik-sek1-stage.png",
+        "state": "untracked",
+        "bytes": 50694,
+        "sha256": "87fec96beb5d2605fd8ab3cb30b0931fded95e3c19e4c4c50ad57a7bdde66c12",
+        "binary": true
+      },
+      {
+        "path": "contracts/stage-plan-review-evidence/2026-11-16/composition-partial-order-v1/34-final-native-maps/browser-v2/canonical_unspecified_CrossStage_GK-LK-physik-sek2-stage.png",
+        "state": "untracked",
+        "bytes": 61972,
+        "sha256": "9fb64993d8558deb586a3979fc34c222b4e23c3549b03b5dc1e159fd2c8fcb6a",
+        "binary": true
+      },
+      {
+        "path": "contracts/stage-plan-review-evidence/2026-11-16/composition-partial-order-v1/probes/physics-course-filter/input.json.gz",
+        "state": "untracked",
+        "bytes": 1267728,
+        "sha256": "2f8a8c8aa6d765647c14f72ddd9bd46878815006c1e410b2d4b54f2bc105dc3f",
+        "binary": true
+      }
+    ],
+    "conclusion": "Seven bounded PNG acceptance screenshots and one 1.27MB compressed JSON test fixture, all within the explicitly retained evidence capsule. No generated ZIP/package archive or new symlink in the deliverable set."
+  },
+  "absoluteLocalPaths": {
+    "newProductiveCodeHits": 0,
+    "newIgnoredEvidenceDependenciesInProductiveCode": 0,
+    "capturedEvidenceHits": 96,
+    "note": "Captured audit outputs and retained reproducibility probes contain original local paths. They are not imported by production code or the mandatory npm gates; some historical probes need their documented local inputs to rerun."
+  },
+  "npmGateAudit": {
+    "removedScriptKeys": [],
+    "changedScripts": [
+      {
+        "key": "test:learner-map-unit-view",
+        "command": "tsx scripts/testCompositionChildOrder.ts && tsx scripts/testCompositionPreparationPlacements.ts && tsx scripts/testLearnerUnitMapProjection.ts && tsx scripts/testLearnerUnitMapPreview.ts && tsx scripts/testHesseLearnerUnitMapCalendar.ts && tsx scripts/testLearnerUnitMapLayout.ts",
+        "oldTokensRetainedInOrder": true,
+        "referencedFilesExist": true,
+        "mandatoryCiScript": "test:learner-map"
+      },
+      {
+        "key": "test:physics-assessment-projection",
+        "command": "tsx scripts/testPhysicsAssessmentProjection.ts && python3 -B ../scripts/generate_hessen_physics_stage_views.py --check && python3 -B ../scripts/generate_hessen_physics_stage_views.py --check --duration-views && python3 -B -m unittest discover -s ../scripts -p test_generate_hessen_physics_stage_views.py && tsx scripts/testPhysicsStageViewProjection.ts && python3 ../scripts/generate_laender_physics_stage_views.py --check && python3 ../scripts/test_generate_laender_physics_stage_views.py",
+        "oldTokensRetainedInOrder": true,
+        "referencedFilesExist": true,
+        "mandatoryCiScript": "test:physics-assessment-projection"
+      },
+      {
+        "key": "test:graph-gate-contracts",
+        "command": "tsx --test scripts/testGraphValidationRetirement.ts scripts/testDirectAtomicRouteCoverage.ts scripts/testCompositionStageRouteMembership.ts scripts/testExplicitAtomicRouteEndpoints.ts && tsx scripts/testBiologyAssessmentProjection.ts && python3 -B ../scripts/test_normalize_local_atomic_prerequisites.py && npm run test:historical-review-receipts",
+        "oldTokensRetainedInOrder": true,
+        "referencedFilesExist": true,
+        "mandatoryCiScript": "test:graph-gate-contracts"
+      },
+      {
+        "key": "check:math-duration-composition-views",
+        "command": "tsx scripts/testMathDurationStagePlacementPolicy.ts && tsx scripts/generateMathDurationCompositionViews.ts --check && python3 -B ../scripts/generate_mathematics_seki_excerpts.py --check && python3 -B ../scripts/normalize_mathematics_stage_views.py --check && python3 -B ../scripts/test_mathematics_seki_excerpts.py && python3 -B ../scripts/test_mathematics_foreign_acquisition_policy.py && python3 -B ../scripts/test_mathematics_stage_views.py && python3 -B ../scripts/check_mathematics_course_view_pairs.py && python3 -B -m unittest discover -s ../scripts -p test_mathematics_course_view_pairs.py && tsx scripts/testMathematicsStageViewConsumers.ts",
+        "oldTokensRetainedInOrder": true,
+        "referencedFilesExist": true,
+        "mandatoryCiScript": "check:math-duration-composition-views"
+      },
+      {
+        "key": "test:full-standalone-package-builder",
+        "command": "tsx scripts/testFullStandaloneCurriculumPackageBuilder.ts && python3 -B ../scripts/test_composition_view_package_boundary.py",
+        "oldTokensRetainedInOrder": true,
+        "referencedFilesExist": true,
+        "mandatoryCiScript": "test:full-standalone-package-builder"
+      }
+    ],
+    "workflowChanged": false,
+    "packageConformance": "Existing mandatory ci.yml invokes run_curriculum_release_model_conformance.sh; it now selects v1.3 and runs its contract self-tests, independent validator, second build and review checks. Existing v1/v1.2 checks remain. Full hermetic package lane stays in owl-ci as before.",
+    "shellSyntax": "PASS via gesamt-final-v4-package-script-syntax"
+  },
+  "immutableBoundaries": {
+    "retainedOfficialSourceFilesChanged": 0,
+    "publishedLegacyPackageV1V11V12FilesChanged": 0
+  },
+  "largeFilesOver1MiB": [
+    {
+      "path": "app/scripts/config/math-duration-stage-placement-policy.json",
+      "state": "modified",
+      "bytes": 1514361,
+      "sha256": "e0a03a873c597b2759c2e699dbb2468c1dd0008e60eeb822b59bf8b85c8b5a93",
+      "binary": false
+    },
+    {
+      "path": "app/scripts/config/math-seki-source-membership.json",
+      "state": "untracked",
+      "bytes": 3744755,
+      "sha256": "2c3fe3c0dcadc59c57bcd48d41b0949ca8f2228e2e7de4bbceeca37161c13ae0",
+      "binary": false
+    },
+    {
+      "path": "app/scripts/config/math-stage-view-authority.json",
+      "state": "untracked",
+      "bytes": 2715897,
+      "sha256": "bab98dbe7af55272363ae2d21ecf2a55b0d3377b4e3185de3632ba497513385a",
+      "binary": false
+    },
+    {
+      "path": "contracts/stage-plan-review-evidence/2026-11-16/composition-partial-order-v1/31-final-source-freeze/math-source-ledger.actual.json",
+      "state": "untracked",
+      "bytes": 4868778,
+      "sha256": "5b976d1d7890df3dde139a31356093a1c0b7a7a364d165fd010c1f735282898e",
+      "binary": false
+    },
+    {
+      "path": "contracts/stage-plan-review-evidence/2026-11-16/composition-partial-order-v1/33-physics-final-ledger/unit-source-ledger.actual.json",
+      "state": "untracked",
+      "bytes": 13861192,
+      "sha256": "70325885ee544522d4c8bd994fd8d1d2ef2038f8d1211db717798dc490180249",
+      "binary": false
+    },
+    {
+      "path": "contracts/stage-plan-review-evidence/2026-11-16/composition-partial-order-v1/probes/physics-course-filter/input.json.gz",
+      "state": "untracked",
+      "bytes": 1267728,
+      "sha256": "2f8a8c8aa6d765647c14f72ddd9bd46878815006c1e410b2d4b54f2bc105dc3f",
+      "binary": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+      "state": "modified",
+      "bytes": 3749653,
+      "sha256": "1a3944f255ae9c9f6976b12d448df4b2712e45df4757ee0c6ee6a8969ad660ad",
+      "binary": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/package-redistribution/de-gymnasium-mathematik-v1.3-partial-order-20261116.review.json",
+      "state": "untracked",
+      "bytes": 1097969,
+      "sha256": "f02bd89d39f3fb57519dfe7d55e841ee067540b089c580ed9cf2fe375d349881",
+      "binary": false
+    },
+    {
+      "path": "docs/qa-ci/status/curriculum-quality-status.json",
+      "state": "modified",
+      "bytes": 2913177,
+      "sha256": "42430c96cc5c7178391cdee30feee53dbf234922ad07b7cf51f21f5a26818fe2",
+      "binary": false
+    },
+    {
+      "path": "scripts/generate_laender_physics_stage_views.memberships.json",
+      "state": "untracked",
+      "bytes": 4130148,
+      "sha256": "8bedc843bf130a9eebb1ef9df941a9ba5fc9731c628ff672624a6c2df3cf7ebd",
+      "binary": false
+    }
+  ],
+  "knownPendingWork": [
+    "Root continues final retention and management documentation; snapshot is not a global write freeze.",
+    "QA is applying the authorized three coveredStrands metadata corrections and regenerating final quality status.",
+    "Final generated-status registry and final root-doc checks follow the completed QA/doc outputs."
+  ],
+  "limitations": [
+    "This is a delivery-scope and CI-wiring audit, not a fresh remote CI run or replacement for semantic/content reviews.",
+    "Root owns byte-exact preservation of the pre-existing management-summary diff; this audit does not independently reconstruct that unrelated original hunk.",
+    "No Git-index or versioned-file mutation was performed."
+  ]
+}

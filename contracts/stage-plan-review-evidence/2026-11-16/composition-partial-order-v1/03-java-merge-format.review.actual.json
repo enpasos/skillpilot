@@ -1,0 +1,40 @@
+{
+  "at": "2026-11-16T23:01:35.134227+00:00",
+  "decision": "PASS",
+  "pins": {
+    "backend/src/main/java/com/skillpilot/backend/composition/CourseProfileCompositionViewMerger.java": "80da5c574b66423370c1dea60c9c43962f96069aafe47d9d36c34a9f99394b34",
+    "backend/src/main/java/com/skillpilot/backend/composition/CompositionViewFormatMetadata.java": "5a66d823fa85f49e84581b360a16b8644628ab7b786c0f1387112035749b95ff",
+    "backend/src/main/java/com/skillpilot/backend/service/CompositionViewService.java": "9b02730bdebe4a3269207f267608ac05f49d17ece792d3b8f2ae55095d234912"
+  },
+  "sourceUnchanged": true,
+  "commands": [
+    {
+      "cmd": [
+        "javac",
+        "-d",
+        "/home/enpasos/projects/skillpilot/tmp/pipeline/laender-stufen/gesamt/review/java-order/classes-v5",
+        "/home/enpasos/projects/skillpilot/backend/src/main/java/com/skillpilot/backend/composition/CourseProfileCompositionViewMerger.java",
+        "/home/enpasos/projects/skillpilot/backend/src/main/java/com/skillpilot/backend/composition/CompositionViewFormatMetadata.java",
+        "/home/enpasos/projects/skillpilot/tmp/pipeline/laender-stufen/gesamt/review/java-order/IndependentMergerProbeV5.java"
+      ],
+      "exitCode": 0,
+      "seconds": 1.8247094690159429,
+      "stdout": "",
+      "stderr": "Note: /home/enpasos/projects/skillpilot/tmp/pipeline/laender-stufen/gesamt/review/java-order/IndependentMergerProbeV5.java uses unchecked or unsafe operations.\nNote: Recompile with -Xlint:unchecked for details.\n"
+    },
+    {
+      "cmd": [
+        "java",
+        "-cp",
+        "/home/enpasos/projects/skillpilot/tmp/pipeline/laender-stufen/gesamt/review/java-order/classes-v5",
+        "IndependentMergerProbeV5"
+      ],
+      "exitCode": 0,
+      "seconds": 5.471083110984182,
+      "stdout": "PASS independent locality cases=4 envelope cases=54\nPASS independent Java order review: 32768 DAG/dedup/filter cases; explicit/missing/empty semantics; source/union conflicts, profile aliases and acquisition-role promotion and actual SH target-label authority in both input orders.\n",
+      "stderr": ""
+    }
+  ],
+  "scope": "32768 independent merger/filter/order oracle cases, four marker-location cases, two global identity negatives, closed source/runtime envelope matrix. Service helper invocation manually reviewed. PackageState authored separately and excluded from independence.",
+  "previousProbeCorrection": "V4 wrongly required removal of every empty wrapper; V5 checks actual acquisition reference locality and permits retained empty legacy structure."
+}

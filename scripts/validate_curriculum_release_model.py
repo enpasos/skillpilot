@@ -1686,9 +1686,11 @@ def validate_schema_registry_coverage(
     if registry.value.get("registryId") == "skillpilot-fwu-field-semantics-completion-v1":
         role_schemas.update({role: "completion-artifact" for role in completion_contracts.ROLES.values()})
         runtime_roles.update(completion_contracts.ROLES.values())
-    if registry.value.get("registryId") == learning_unit_contracts.REGISTRY_ID:
+    if registry.value.get("registryId") in (learning_unit_contracts.REGISTRY_ID, v13_contracts.REGISTRY_ID):
         role_schemas.update({role: "learning-unit-review" for role in learning_unit_contracts.ROLES.values()})
         runtime_roles.update(learning_unit_contracts.ROLES.values())
+    if registry.value.get("registryId") == v13_contracts.REGISTRY_ID:
+        role_schemas["composition-view"] = "composition-view-partial-order"
     for role, schema_name in role_schemas.items():
         if role not in runtime_roles:
             continue
@@ -1768,6 +1770,86 @@ class TrustedContext:
     validators: dict[str, Draft202012Validator]
 
 
+def expected_composition_view(value: dict[str, Any], locale: str,
+                              validator: Draft202012Validator, context: str,
+                              *, partial_order_validator: Draft202012Validator | None = None) -> dict[str, Any]:
+    """Independently reconstruct a view supported by the selected DPK profile."""
+    partial = value.get("$schema") == v13_contracts.SOURCE_VIEW_SCHEMA_ID and value.get("viewFormatVersion") == "1.2"
+    require((partial_order_validator is not None and partial)
+            or (value.get("$schema", SCHEMA_IDS["composition-view"]) == SCHEMA_IDS["composition-view"]
+                and value.get("viewFormatVersion", "1.0") == "1.0"),
+            f"{context}: unsupported composition view format for the selected DPK profile; refusing downgrade to 1.0")
+    compiled = copy.deepcopy(value)
+    compiled["$schema"] = v13_contracts.VIEW_SCHEMA_ID if partial else SCHEMA_IDS["composition-view"]
+    compiled["viewFormatVersion"] = "1.2" if partial else "1.0"
+    compiled["language"] = locale
+    pending_nodes = list(compiled.get("rootNodes", []))
+    while pending_nodes:
+        node = pending_nodes.pop()
+        if partial and isinstance(node, dict) and node.get("kind") == "goalEntry":
+            node.pop("placementEvidence", None)
+        if isinstance(node, dict) and node.get("kind") == "structure":
+            require(partial or "childOrder" not in node,
+                    f"{context}: childOrder requires a newer composition view package contract; refusing order loss")
+            for field in ("canonicalSourceGoalId", "canonicalSourceNode",
+                          "canonicalSourcePhase", "placementEvidence", "labelEn", "originalCanonicalSubtree"):
+                node.pop(field, None)
+            if isinstance(node.get("children"), list):
+                pending_nodes.extend(node["children"])
+    validate_schema(compiled, partial_order_validator if partial else validator, context)
+    if partial:
+        # Independent reconstruction: compute sibling reachability explicitly;
+        # do not call the producer's child-order validator.
+        pending = list(compiled["rootNodes"])
+        seen_structures: set[str] = set()
+        while pending:
+            node = pending.pop()
+            if node["kind"] != "structure":
+                continue
+            require(node["id"] not in seen_structures, f"{context}: duplicate composition structure identity")
+            seen_structures.add(node["id"])
+            pending.extend(node["children"])
+            declaration = node.get("childOrder")
+            if declaration is None:
+                continue
+            identities = [child["id"] for child in node["children"] if child["kind"] == "structure"]
+            positions = {identifier: index for index, identifier in enumerate(identities)}
+            reach = [[False] * len(identities) for _ in identities]
+            pairs = declaration["after"]
+            for pair in pairs:
+                require(pair["unit"] in positions and pair["after"] in positions,
+                        f"{context}: childOrder endpoint is not a direct structure sibling")
+                require(pair["unit"] != pair["after"], f"{context}: self composition childOrder")
+                reach[positions[pair["after"]]][positions[pair["unit"]]] = True
+            for middle in range(len(identities)):
+                for left in range(len(identities)):
+                    if reach[left][middle]:
+                        for right in range(len(identities)):
+                            reach[left][right] = reach[left][right] or reach[middle][right]
+            require(not any(reach[index][index] for index in range(len(identities))),
+                    f"{context}: cyclic composition childOrder")
+            for pair in pairs:
+                left, right = positions[pair["after"]], positions[pair["unit"]]
+                require(not any(reach[left][middle] and reach[middle][right] for middle in range(len(identities))),
+                        f"{context}: transitively redundant composition childOrder")
+    return compiled
+
+
+def validate_acquisition_placements(view: Mapping[str, Any], goals: Mapping[str, Any]) -> None:
+    def visit(nodes: Sequence[Mapping[str, Any]], nested: bool) -> None:
+        for node in nodes:
+            if "acquisitionPlacement" in node:
+                goal = goals.get(node.get("goalId"))
+                require(view.get("$schema") == v13_contracts.VIEW_SCHEMA_ID and view.get("viewFormatVersion") == "1.2"
+                        and node.get("kind") == "goalEntry" and node.get("projectionRole") == "prerequisiteOnly"
+                        and node.get("acquisitionPlacement") is True and nested
+                        and isinstance(goal, dict) and goal.get("type") == "atomic" and not goal.get("contains"),
+                        "acquisitionPlacement is not a nested preparation entry of a defined atomic goal")
+            if node.get("kind") == "structure":
+                visit(node["children"], True)
+    visit(view["rootNodes"], False)
+
+
 def load_trusted_context(profile_path: Path) -> TrustedContext:
     try:
         profile_path = profile_path.resolve(strict=True)
@@ -1792,6 +1874,7 @@ def load_trusted_context(profile_path: Path) -> TrustedContext:
         schema_files["compiled-landscape"] = learning_dir / "compiled-landscape.schema.json"
         schema_files["learning-unit-review"] = learning_dir / "learning-unit-coverage-review.schema.json"
     if material:
+        schema_files["composition-view-partial-order"] = REPO_ROOT / v13_contracts.VIEW_SCHEMA_PATH
         for name in ("build-profile", "runtime-catalog", "resource-index"):
             filename = "release-model-build-profile.schema.json" if name == "build-profile" else name + ".schema.json"
             schema_files[name] = CONTRACT_ROOT.parent / "v1.3" / filename
@@ -3632,24 +3715,10 @@ def build_expected_model(context: TrustedContext, release_root: Path) -> dict[st
     ):
         value = load_json(source_view_path)
         require(isinstance(value, dict), f"Composition view is not an object: {source_view_path}")
-        compiled = copy.deepcopy(value)
-        compiled["$schema"] = SCHEMA_IDS["composition-view"]
-        compiled["viewFormatVersion"] = "1.0"
-        compiled["language"] = profile["compositionViews"]["locale"]
-        pending_nodes = list(compiled.get("rootNodes", []))
-        while pending_nodes:
-            node = pending_nodes.pop()
-            if isinstance(node, dict) and node.get("kind") == "structure":
-                for field in ("canonicalSourceGoalId", "canonicalSourceNode",
-                              "canonicalSourcePhase", "placementEvidence", "labelEn"):
-                    node.pop(field, None)
-                if isinstance(node.get("children"), list):
-                    pending_nodes.extend(node["children"])
-        validate_schema(
-            compiled,
-            context.validators["composition-view"],
-            str(source_view_path),
-        )
+        compiled = expected_composition_view(value, profile["compositionViews"]["locale"],
+                                             context.validators["composition-view"], str(source_view_path),
+                                             partial_order_validator=context.validators.get("composition-view-partial-order"))
+        validate_acquisition_placements(compiled, source_goal_by_id)
         require(
             compiled["landscapeId"] == landscape_id,
             f"Composition view targets another landscape: {source_view_path}",
@@ -4821,6 +4890,9 @@ def complete_expected_model(context: TrustedContext, model: dict[str, Any]) -> N
     publication_content_counts = dict(context.publication_profile["expectedCounts"]["contentIndex"])
     if material_profile:
         publication_content_counts["binaryResources"] = profile["expectedCounts"]["embeddedImages"]
+        publication_content_counts["totalLogicalArtifacts"] += (
+            profile["expectedCounts"]["views"] - profile["compositionViews"]["publicationBaseViewCount"]
+        )
     require(
         len(model["publication"]["logicalDocuments"])
         == publication_content_counts["addedLogicalArtifacts"]
@@ -5039,7 +5111,10 @@ def expected_json_documents(model: Mapping[str, Any]) -> dict[str, tuple[str | N
     }
     for output_path, view in model["views"]:
         require(output_path not in documents, f"Duplicate output path: {output_path}")
-        documents[output_path] = ("composition-view", view)
+        documents[output_path] = (
+            "composition-view-partial-order" if view.get("$schema") == v13_contracts.VIEW_SCHEMA_ID
+            else "composition-view", view,
+        )
     for output_path, deck in model["decks"]:
         require(output_path not in documents, f"Duplicate output path: {output_path}")
         documents[output_path] = ("card-deck", deck)
@@ -6481,7 +6556,9 @@ def run_adversarial_self_tests(
     expect_rejection(
         "closed-schema-view-authoring-evidence",
         lambda: validate_schema(authored_view,
-                                context.validators["composition-view"], "view authoring evidence"),
+                                context.validators["composition-view-partial-order"]
+                                if authored_view.get("$schema") == v13_contracts.VIEW_SCHEMA_ID
+                                else context.validators["composition-view"], "view authoring evidence"),
     )
 
     reordered_landscape = dict(model["landscape"])

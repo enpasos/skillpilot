@@ -1,0 +1,113 @@
+{
+  "schema": "skillpilot-independent-assessment-content-review-v1",
+  "reviewer": "/root",
+  "author": "/root/he_ephase_implementation",
+  "status": "PASS",
+  "candidateId": "f41e4e30-794e-5ce4-ba5e-cc72712cd691",
+  "coveredGoalId": "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+  "candidatePath": "tmp/pipeline/laender-stufen/gesamt/physics/remaining-assessments/sealed-v2/personal-free-fall-two-series.goal.json",
+  "candidateSha256": "54709a76569bce1694ce931614239589482dd65de5e51da68c8de802f04ced33",
+  "canonicalGoalAtReview": {
+    "id": "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+    "title": "Freier Fall experimentell untersuchen",
+    "titleEn": "Investigate Free Fall Experimentally",
+    "description": "Die lernende Person kann den freien Fall nahe der Erdoberfläche experimentell untersuchen, Messdaten grafisch auswerten, daraus im Modell ohne Luftwiderstand die Gravitationsbeschleunigung bestimmen und unter Angabe der Anfangsbedingungen ein Zeit-Ort-Gesetz formulieren.",
+    "descriptionEn": "The learner can experimentally investigate free fall near Earth's surface, graphically analyze measurement data, use a model that neglects air resistance to determine gravitational acceleration, and formulate a time-position law with stated initial conditions.",
+    "weight": 0.9,
+    "tags": [
+      "GK",
+      "LK",
+      "canonical",
+      "cross-subject:mathematics"
+    ],
+    "contains": [],
+    "requires": [
+      "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+    ],
+    "dimensionTags": {
+      "framework": "hessen-kc-2024-physics",
+      "demandLevel": "AB1",
+      "processCompetencies": [],
+      "guidingIdeas": [],
+      "phase": "E"
+    },
+    "shortKey": "canonical_physics_determine_free_fall_acceleration",
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "type": "atomic",
+    "resourceLinks": [
+      {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+        "title": "Visualisierung: Freier Fall experimentell untersuchen",
+        "url": "/assets/goal-visualizations/physik/09029573-864f-40ca-bf8a-cee7bf6dcb73/09029573-864f-40ca-bf8a-cee7bf6dcb73.jpg",
+        "provider": "Google Gemini / Nano Banana Pro",
+        "description": "Visualisierung zum Lernziel: Freier Fall experimentell untersuchen.",
+        "altText": "Didaktische Visualisierung zum Lernziel \"Freier Fall experimentell untersuchen\". Die lernende Person kann den freien Fall nahe der Erdoberfläche experimentell untersuchen, Messdaten grafisch auswerten, daraus im Modell ohne Luftwiderstand die Gravitationsbeschleunigung bestimmen und unter Angabe der Anfangsbedingungen ein Zeit-Ort-Gesetz formulieren.",
+        "lang": "de",
+        "license": "AI-generated, SkillPilot-curated",
+        "reviewStatus": "pilot"
+      }
+    ]
+  },
+  "reviewMethod": "Both complete language versions, solutions and all scoring cores manually read; independent numerical and vector calculations plus exhaustive rubric enumeration.",
+  "contentReview": [
+    "Both independent real series require three fresh valid releases with five measured time-position pairs each, own graphs and independent g determination.",
+    "Time origin, position origin, initial velocity, actual acquisition rate, reading limits, sensitivity and drag/model limits are explicitly treated. No pre-filled table can substitute for personal execution.",
+    "The solution permits justified unexpected measured results, avoids forcing9.81, distinguishes repeat scatter from systematic errors and requires both complete own laws."
+  ],
+  "independentCalculations": {
+    "idealFeasibilityOnly": [
+      {
+        "heightM": 0.25,
+        "fallSeconds": 0.22576182049286544,
+        "frameIntervalsAt120Hz": 27.091418459143853
+      },
+      {
+        "heightM": 0.3,
+        "fallSeconds": 0.24730968341474896,
+        "frameIntervalsAt120Hz": 29.677162009769877
+      },
+      {
+        "heightM": 0.6,
+        "fallSeconds": 0.3497487083913345,
+        "frameIntervalsAt120Hz": 41.969845006960135
+      },
+      {
+        "heightM": 0.8,
+        "fallSeconds": 0.4038550218769218,
+        "frameIntervalsAt120Hz": 48.462602625230616
+      }
+    ],
+    "slopeRelation": "For x=(g/2)t^2, fitted slope of x against t^2 is g/2; actual initial conditions and observed data must be checked.",
+    "notLearnerMeasurements": true
+  },
+  "rubricCombinations": 6561,
+  "passingCombinations": 9,
+  "passingWithAbsentCore": 0,
+  "scopeReview": "Only the actual covered atom is a prerequisite. Task course tags equal the covered competence course tags. No irrelevant ordinary prerequisite is added.",
+  "limitations": [
+    "No actual learner execution or human trial has occurred.",
+    "This is candidate content review; final release metadata, source scopes and actual projections are checked separately."
+  ]
+}

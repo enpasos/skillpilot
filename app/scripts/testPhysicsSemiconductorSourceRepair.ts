@@ -5,7 +5,7 @@ import { readFileSync, readdirSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { applyPhysicsFinalDiodeMappings } from './physicsFinalDiodeMappings'
-import { diodeOwnedIds, preserveFinalDiodePlacementsFromCurrent } from './lib/physicsFinalDiodeViewPlacements'
+import { diodeChildren, diodeOwnedIds, expectedDiodeTargets, preserveFinalDiodePlacementsFromCurrent } from './lib/physicsFinalDiodeViewPlacements'
 import { preserveB034PlacementsFromCurrent } from './lib/physicsB034ViewPlacements'
 import type { PhysicsPlacementNode, PhysicsPlacementView } from './lib/physicsViewPlacementTypes'
 
@@ -143,6 +143,67 @@ const unrelated = [{sourceGoalId: 'unrelated-no-semiconductor-claim', canonicalG
 const original = structuredClone(unrelated)
 applyPhysicsFinalDiodeMappings(unrelated, [])
 assert.deepEqual(unrelated, original, 'unrelated source decisions must stay untouched')
+const lowerMembership = readJson<{ views: Record<string, { sourceSelectedLowerAtomicGoalIds: string[] }> }>(
+  'scripts/generate_laender_physics_stage_views.memberships.json')
+for (const [viewId, jurisdiction, durationModel] of [
+  ['de-he-gym-physics-gk-g8', 'DE-HE', 'G8'],
+  ['de-he-gym-physics-gk-g9', 'DE-HE', 'G9'],
+  ['de-rp-gym-physics-gk', 'DE-RP', undefined],
+] as const) {
+  const sourceSeeds = lowerMembership.views[viewId]?.sourceSelectedLowerAtomicGoalIds
+  assert(sourceSeeds, `${viewId}: reviewed original lower-stage membership is required`)
+  assert(diodeChildren.every(id => !sourceSeeds.includes(id)), `${viewId}: upper diode targets are not lower source seeds`)
+  assert.deepEqual(expectedDiodeTargets({ jurisdiction, stage: 'SekI', durationModel }), [],
+    `${viewId}: standalone lower scope must not inherit CrossStage diode targets`)
+}
+const findNode = (nodes: PhysicsPlacementNode[], id: string): PhysicsPlacementNode | undefined =>
+  nodes.find(node => node.id === id) ?? nodes.map(node => findNode(node.children ?? [], id)).find(Boolean)
+const takeNode = (nodes: PhysicsPlacementNode[], id: string): PhysicsPlacementNode | undefined => {
+  for (let index = 0; index < nodes.length; index++) {
+    if (nodes[index].id === id) return nodes.splice(index, 1)[0]
+    const child = takeNode(nodes[index].children ?? [], id)
+    if (child) return child
+  }
+}
+const referenceContexts = (nodes: PhysicsPlacementNode[], goalId: string, ancestors: PhysicsPlacementNode[] = []):
+  { node: PhysicsPlacementNode; ancestors: PhysicsPlacementNode[] }[] => nodes.flatMap(node => [
+    ...(node.goalId === goalId ? [{ node, ancestors }] : []),
+    ...referenceContexts(node.children ?? [], goalId, [...ancestors, node]),
+  ])
+const assertLowerExperimentPlaces = (view: PhysicsPlacementView, goalId: string, taskId?: string) => {
+  const goal = referenceContexts(view.rootNodes, goalId)
+  assert.equal(goal.length, 1, 'The own experiment retains one exact source placement.')
+  assert(goal[0].ancestors.some(node => node.id === 'physics-semiconductor-seki'))
+  const places = taskId ? [...goal, ...referenceContexts(view.rootNodes, taskId)] : goal
+  assert.equal(places.length, taskId ? 2 : 1, 'The assessment retains one exact source placement.')
+  for (const place of places) {
+    assert(place.ancestors.some(node => node.label === 'Sekundarstufe I'), 'The experiment and its assessment remain in SekI.')
+    assert(!place.ancestors.some(node => /^Sekundarstufe II(?:\s|$)/u.test(String(node.label))))
+    if (view.scope.jurisdiction === 'DE-BY') {
+      assert(place.ancestors.some(node => node.id === 'physics-by-year-10'), 'BY Ph10.5.1 retains its reviewed J10 placement.')
+    }
+  }
+  if (!taskId) return
+  const task = places[1]
+  let shared = 0
+  while (shared < Math.min(goal[0].ancestors.length, task.ancestors.length)
+    && goal[0].ancestors[shared].id === task.ancestors[shared].id) shared++
+  if (shared === goal[0].ancestors.length && shared === task.ancestors.length) return
+  const parent = goal[0].ancestors[shared - 1]
+  const before = goal[0].ancestors[shared]?.id
+  const after = task.ancestors[shared]?.id
+  assert(parent && before && after, 'Separated experiment and assessment need a common source unit.')
+  const edges = (parent.childOrder as { after?: { unit: string; after: string }[] } | undefined)?.after ?? []
+  const reachable = new Set([before])
+  for (let changed = true; changed;) {
+    changed = false
+    for (const edge of edges) if (reachable.has(edge.after) && !reachable.has(edge.unit)) {
+      reachable.add(edge.unit)
+      changed = true
+    }
+  }
+  assert(reachable.has(after), 'The separate assessment unit must explicitly follow the experiment unit.')
+}
 // A generator draft that lacks the new references must restore the reviewed exact stage path,
 // without copying an unrelated whole view or inventing a missing stage anchor.
 const viewPaths = readdirSync(resolve(root, 'curricula/DE/Gymnasium/composition-views/physik'))
@@ -158,7 +219,19 @@ for (const path of viewPaths) {
     })
     findPrep(current.rootNodes)
     assert.equal(paths.length, 1)
-    assert.equal(paths[0].at(-1), 'physics-q4', `${path}: advanced preparation belongs inside Q4, not beside E/Q1-Q4`)
+    assert(paths[0].includes('physics-q4'), `${path}: advanced preparation belongs inside Q4, including its subject topics`)
+    const misplaced = structuredClone(current)
+    const preparation = takeNode(misplaced.rootNodes, 'physics-semiconductor-sekii')
+    assert(preparation)
+    misplaced.rootNodes.push(preparation)
+    assert.throws(() => preserveFinalDiodePlacementsFromCurrent(structuredClone(misplaced), misplaced),
+      /HE supplemental preparation must be inside Q4/u, 'A topic wrapper must not waive the Q4 boundary.')
+  }
+  if (current.scope.stage === 'SekI' && ['DE-HE', 'DE-RP'].includes(current.scope.jurisdiction ?? '')) {
+    const expanded = structuredClone(current)
+    expanded.rootNodes.push({ kind: 'goalEntry', goalId: diodeChildren[0], projectionRole: 'target' })
+    assert.throws(() => preserveFinalDiodePlacementsFromCurrent(structuredClone(expanded), expanded),
+      /current explicit target-role matrix incomplete or wrong/u, 'An upper-stage diode target must not be added to the lower source scope.')
   }
   const experimentPaths: string[][] = []
   const findExperiments = (nodes: PhysicsPlacementNode[], path: string[] = []) => nodes.forEach(node => {
@@ -171,7 +244,17 @@ for (const path of viewPaths) {
   findExperiments(current.rootNodes)
   const expectedExperiment = (!current.scope.jurisdiction || ['DE', 'DE-BY'].includes(current.scope.jurisdiction)) && current.scope.stage !== 'SekII'
   assert.equal(experimentPaths.length, expectedExperiment ? 2 : 0, `${path}: personal experiment has an exact lower BY/national source scope`)
-  assert(experimentPaths.every(path => path.includes('physics-semiconductor-seki')))
+  if (expectedExperiment) {
+    assertLowerExperimentPlaces(current, '77ab31a9-8961-511c-8637-06e98023d869', '2cfd5c6a-a16a-5f90-aab7-b27b29271f72')
+    if (current.scope.jurisdiction === 'DE-BY') {
+      const unordered = structuredClone(current)
+      const year = findNode(unordered.rootNodes, 'physics-by-year-10')
+      assert(year)
+      year.childOrder = { after: [] }
+      assert.throws(() => assertLowerExperimentPlaces(unordered, '77ab31a9-8961-511c-8637-06e98023d869', '2cfd5c6a-a16a-5f90-aab7-b27b29271f72'),
+        /assessment unit must explicitly follow/u)
+    }
+  }
   const amplifierPaths: {goalId: string; ancestors: string[]}[] = []
   const findAmplifier = (nodes: PhysicsPlacementNode[], ancestors: string[] = []) => nodes.forEach(node => {
     if (node.goalId === ownAmplifier || node.goalId === amplifierAssessment) {
@@ -189,28 +272,37 @@ for (const path of viewPaths) {
   assert.deepEqual(amplifierPaths.map(row => row.goalId).sort(), expectedAmplifierIds.sort(),
     `${path}: the actual acquisition route and the separate book navigation retain their exact source scope`)
   if (expectedExperiment) {
-    assert(amplifierPaths.find(row => row.goalId === ownAmplifier)?.ancestors.includes('physics-semiconductor-seki'), path)
+    assertLowerExperimentPlaces(current, ownAmplifier, bookNavigation ? undefined : amplifierAssessment)
   }
   const draft = structuredClone(current)
   const strip = (nodes: PhysicsPlacementNode[]): PhysicsPlacementNode[] => nodes.filter(node => !diodeOwnedIds.has(node.goalId ?? ''))
     .map(node => node.children ? {...node, children: strip(node.children)} : node)
     .filter(node => !(node.id?.startsWith('physics-semiconductor-') && node.children?.length === 0))
   draft.rootNodes = strip(draft.rootNodes)
-  if (current.scope.jurisdiction === 'DE-BW' && current.scope.stage === 'CrossStage') {
-    const find = (nodes: PhysicsPlacementNode[]): PhysicsPlacementNode | undefined => nodes.find(node => node.id === 'physics-final-diode-seki')
-      ?? nodes.map(node => find(node.children ?? [])).find(Boolean)
-    const currentWrapper = find(current.rootNodes)
-    assert(currentWrapper, 'BW must retain its explicit functional/experimental lower wrapper')
+  if (current.scope.jurisdiction === 'DE-BW' && current.scope.stage !== 'SekII') {
+    const functional = referenceContexts(current.rootNodes, 'dc55adac-91a5-5cc3-ab47-be008480616f')
+    const experimental = referenceContexts(current.rootNodes, diodeChildren[1])
+    assert.equal(functional.length, 1, 'BW retains exactly one functional diode reference')
+    assert.equal(experimental.length, 1, 'BW retains exactly one experimental diode reference')
+    for (const context of [...functional, ...experimental]) {
+      assert.equal(context.node.projectionRole, 'target')
+      assert(context.ancestors.some(node => node.label === 'Sekundarstufe I'), 'BW diode source is lower-secondary')
+      assert(context.ancestors.some(node => node.label === 'Jahrgangsstufen 9/10'), 'BW3.3.2(9) retains its reviewed year band')
+      assert(!context.ancestors.some(node => /^Sekundarstufe II(?:\s|$)/u.test(String(node.label))))
+    }
+    const currentWrapper = functional[0].ancestors.at(-1)!
+    assert(currentWrapper.id && currentWrapper.id === experimental[0].ancestors.at(-1)?.id,
+      'BW functional interpretation and experiment retain their shared electronics topic')
     assert(currentWrapper.children, 'the functional wrapper must contain its references')
     assert(!currentWrapper.children.some(node => node.goalId === '7f0798cb-5966-5dcb-beb3-84f637ab6139'),
       'BW must not expose an unused pn model through broad parent support')
     const stale = structuredClone(current)
-    const staleWrapper = find(stale.rootNodes)
+    const staleWrapper = findNode(stale.rootNodes, currentWrapper.id)
     assert(staleWrapper?.children)
     staleWrapper.children.push({kind: 'canonicalSubtree', goalId: '7f0798cb-5966-5dcb-beb3-84f637ab6139', projectionRole: 'prerequisiteOnly'})
     assert.throws(() => preserveFinalDiodePlacementsFromCurrent(structuredClone(stale), stale), /unneeded BW lower parent support/u)
     // A stale generated parent must be removed rather than restored from the reviewed view.
-    const draftWrapper = find(draft.rootNodes)
+    const draftWrapper = findNode(draft.rootNodes, currentWrapper.id)
     assert(draftWrapper?.children)
     draftWrapper.children.push({kind: 'canonicalSubtree', goalId: '7f0798cb-5966-5dcb-beb3-84f637ab6139', projectionRole: 'prerequisiteOnly'})
   }

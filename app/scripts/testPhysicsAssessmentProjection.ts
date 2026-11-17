@@ -49,6 +49,8 @@ const newHesseDurationViewIds = new Set([
   'de-he-gym-physics-gk-g9', 'de-he-gym-physics-lk-g9',
   'de-he-gym-seki-physics-g8', 'de-he-gym-seki-physics-g9',
 ])
+const newLandSekIViewIds = new Set(['bb', 'be', 'bw', 'by', 'hb', 'hh', 'mv', 'ni', 'nw', 'rp', 'sh', 'sl', 'sn', 'st', 'th']
+  .map(state => `de-${state}-gym-seki-physics`))
 const fermiGoalId = '658cf33d-a0c2-5d47-801a-3dbcd5cac074'
 const fermiAssessmentId = '71e8936b-fa8a-50dc-8c47-fca015b85ac5'
 const kinematicsAssessments = [
@@ -167,6 +169,44 @@ const isBesideExistingAstronomyPreparation = (nodes: CompositionView['rootNodes'
     || nodes.some(node => node.kind === 'structure' && isBesideExistingAstronomyPreparation(node.children, taskId))
 }
 
+// Assessment coverage is not a prerequisite edge. It still determines which
+// content an exercise belongs with: do not schedule it before the competency
+// it assesses. Compare authored partial orders, never sibling-array positions.
+const assertAssessmentPlacement = (
+  viewId: string, task: UiGoal, byId: Map<string, UiGoal>, ancestorsById: Map<string, string[]>,
+): void => {
+  const taskPath = ancestorsById.get(task.id)
+  if (!taskPath) return
+  const stage = (path: string[]) => path.map(id => byId.get(id)!.title)
+    .find(title => /^Sekundarstufe (?:I|II)(?:\s|$)/u.test(title))
+  for (const reference of task.examData?.coveredGoalIds ?? []) {
+    const covered = reference.split(':').at(-1)!
+    const coveredPath = ancestorsById.get(covered)
+    if (!coveredPath) continue
+    assert(!(stage(taskPath)?.match(/^Sekundarstufe I(?:\s|$)/u)
+      && stage(coveredPath)?.match(/^Sekundarstufe II(?:\s|$)/u)),
+    `${viewId}: assessment ${task.id} is in Sek I before its assessed competency ${covered} in Sek II`)
+    let index = 0
+    while (index < Math.min(taskPath.length, coveredPath.length) && taskPath[index] === coveredPath[index]) index++
+    if (!index || index === Math.min(taskPath.length, coveredPath.length)) continue
+    const parent = byId.get(taskPath[index - 1])!
+    const order = parent.extendedData?.compositionChildOrder as { after: Array<{ unit: string; after: string }> } | undefined
+    if (!order) continue
+    const taskUnit = byId.get(taskPath[index])?.extendedData?.compositionNodeId as string | undefined
+    const coveredUnit = byId.get(coveredPath[index])?.extendedData?.compositionNodeId as string | undefined
+    if (!taskUnit || !coveredUnit) continue
+    const pending = [coveredUnit], reached = new Set<string>()
+    while (pending.length) {
+      const current = pending.pop()!
+      if (reached.has(current)) continue
+      reached.add(current)
+      pending.push(...order.after.filter(pair => pair.unit === current).map(pair => pair.after))
+    }
+    assert(!reached.has(taskUnit),
+      `${viewId}: assessment ${task.id} precedes its assessed competency ${covered} by declared after order`)
+  }
+}
+
 let viewCount = 0
 let fermiScopeViewCount = 0
 let practiceTaskPairs = 0
@@ -180,14 +220,17 @@ const counts = () => ({ viewCount, fermiScopeViewCount, practiceTaskPairs, abitu
   preservedSekITaskPairs, preservedPrerequisiteOnlyPairs, filteredPrerequisiteOnlyPairs,
   kinematicsTaskPairs, astronomyTaskPairs })
 const newDurationCounts = Object.fromEntries(Object.keys(counts()).map(key => [key, 0])) as ReturnType<typeof counts>
+const newLandCounts = { ...newDurationCounts }
 const jurisdictions = new Set<string>()
 for (const filename of readdirSync(viewDirectory).filter((name) => name.endsWith('.view.json')).sort()) {
   const view = JSON.parse(readFileSync(resolve(viewDirectory, filename), 'utf8')) as CompositionView
   const previousCounts = counts()
   const recordDurationCounts = () => {
-    if (!newHesseDurationViewIds.has(view.viewId)) return
-    for (const key of Object.keys(newDurationCounts) as Array<keyof typeof newDurationCounts>) {
-      newDurationCounts[key] += counts()[key] - previousCounts[key]
+    const added = newHesseDurationViewIds.has(view.viewId) ? newDurationCounts
+      : newLandSekIViewIds.has(view.viewId) ? newLandCounts : undefined
+    if (!added) return
+    for (const key of Object.keys(added) as Array<keyof typeof added>) {
+      added[key] += counts()[key] - previousCounts[key]
     }
   }
   const course = view.scope.courseProfile
@@ -209,6 +252,9 @@ for (const filename of readdirSync(viewDirectory).filter((name) => name.endsWith
   }
   projected.goals.filter((goal) => goal.tags?.includes('root')).forEach((goal) => visit(goal.id))
   const { targetGoalIds, prerequisiteOnlyGoalIds } = collectCompositionProjectionRoleGoalIds(view.rootNodes, canonicalById)
+  for (const id of visible) if (byId.get(id)?.examData) {
+    assertAssessmentPlacement(view.viewId, byId.get(id)!, byId, ancestorsById)
+  }
 
   // Composition previews retain shared exercise collections across courses.
   // Check the assessment's exact target scope in the final learner tree,
@@ -253,8 +299,9 @@ for (const filename of readdirSync(viewDirectory).filter((name) => name.endsWith
   if (view.scope.jurisdiction) jurisdictions.add(view.scope.jurisdiction)
   for (const { id, maxPoints } of kinematicsAssessments) {
     assert(visible.has(id), `${view.viewId}: the reviewed vector-free kinematics task must remain reachable`)
-    assert(ancestorsById.get(id)?.includes(hesseCollection(practiceRootIds[0]) ?? practiceRootIds[0]),
-      `${view.viewId}: kinematics assessments belong to the E-phase exercise collection`)
+    const hesseKinematicsCollection = hesseCollection(practiceRootIds[0])
+    if (hesseKinematicsCollection) assert(ancestorsById.get(id)?.includes(hesseKinematicsCollection),
+      `${view.viewId}: Hessian kinematics assessments belong to the E-phase exercise collection`)
     assert.equal(byId.get(id)?.examData?.reviewStatus, 'released')
     assert.equal(byId.get(id)?.examData?.scoring.maxPoints, maxPoints)
     assert.deepEqual(byId.get(id)?.examData, canonicalById.get(id)?.examData,
@@ -277,8 +324,6 @@ for (const filename of readdirSync(viewDirectory).filter((name) => name.endsWith
   for (const preservedSekITask of preservedSekITasks) {
     assert(visible.has(preservedSekITask.goalId), `${view.viewId}: previously visible Sek-I assessment disappeared`)
     const ancestors = (ancestorsById.get(preservedSekITask.goalId) ?? []).map((id) => byId.get(id)!)
-    assert(ancestors.some((goal) => goal.extendedData?.compositionNodeId === preservedSekITask.wrapperId),
-      `${view.viewId}: preserve the existing Sek-I assessment wrapper and its stable reference`)
     assert(ancestors.some((goal) => /^Sekundarstufe I(?:\s|$)/u.test(goal.title)),
       `${view.viewId}: assessment must remain in Sek I after restoring the Q4 collection`)
     assert(!ancestors.some((goal) => /^Sekundarstufe II(?:\s|$)/u.test(goal.title)),
@@ -288,23 +333,22 @@ for (const filename of readdirSync(viewDirectory).filter((name) => name.endsWith
 
   for (const rootId of expectedRootIds) {
     const sourceRoot = canonicalById.get(rootId)!
-    // These CrossStage views keep established Sek-I tasks in their original
-    // sections and explicitly compose Q1 and the remaining Q4 assessments.
-    const composedQ4Root = projected.goals.find((goal) => goal.extendedData?.compositionNodeId === 'physics-q4')?.id
-    // Q1's reviewed repairs place its assessments beside their preparation
-    // within the phase, rather than requiring a duplicate canonical folder.
-    const composedQ1Root = projected.goals.find((goal) => goal.extendedData?.compositionNodeId === 'physics-q1')?.id
-    const projectedRootId = hesseCollection(rootId) ?? (rootId === practiceRootIds[1]
-      ? composedQ1Root
-      : rootId === practiceRootIds[4] && composedQ4Root ? composedQ4Root : rootId)
-    assert(projectedRootId && visible.has(projectedRootId), `${view.viewId}: missing assessment collection ${sourceRoot.title}`)
-    if (view.scope.stage === 'CrossStage') {
-      assert((ancestorsById.get(projectedRootId) ?? []).some((id) => /^Sekundarstufe II(?:\s|$)/u.test(byId.get(id)!.title)),
+    // The source collections define exact task obligations. Their old Hessian
+    // E/Q folder names do not define other Länder's source-backed year units.
+    const isAbitur = rootId === abiturRootIds[course]
+    const abiturUnits = isAbitur ? projected.goals.filter(goal => visible.has(goal.id)
+      && goal.extendedData?.compositionNodeId && goal.title === 'Abiturprüfung') : []
+    if (isAbitur) assert.equal(abiturUnits.length, 1,
+      `${view.viewId}: exactly one dedicated Abitur unit must remain visible`)
+    const projectedRootId = isAbitur ? abiturUnits[0].id : hesseCollection(rootId)
+    if (projectedRootId) {
+      assert(visible.has(projectedRootId), `${view.viewId}: missing assessment collection ${sourceRoot.title}`)
+      assert((ancestorsById.get(projectedRootId) ?? []).some(id => /^Sekundarstufe II(?:\s|$)/u.test(byId.get(id)!.title)),
         `${view.viewId}: ${sourceRoot.title} must remain in Sek II`)
+      assert((children.get(projectedRootId)?.length ?? 0) > 0,
+        `${view.viewId}: ${sourceRoot.title} became an empty placeholder`)
     }
-    assert((children.get(projectedRootId)?.length ?? 0) > 0,
-      `${view.viewId}: ${sourceRoot.title} became an empty placeholder instead of an expandable collection`)
-    const collectionIds = collectDescendants(projectedRootId, byId, children)
+    const collectionIds = projectedRootId ? collectDescendants(projectedRootId, byId, children) : undefined
     const expectedTasks = [...collectDescendants(rootId, canonicalById)]
       .map((id) => canonicalById.get(id)!)
       .filter((goal) => goal.examData && goalMatchesFilters(goal, filters) && !prerequisiteOnlyGoalIds.has(goal.id))
@@ -312,9 +356,17 @@ for (const filename of readdirSync(viewDirectory).filter((name) => name.endsWith
 
     for (const source of expectedTasks) {
       assert(visible.has(source.id), `${view.viewId}: missing task ${source.title} (${source.id})`)
-      assert(collectionIds.has(source.id) || isBesideExistingAstronomyPreparation(view.rootNodes, source.id)
-        || (rootId === practiceRootIds[4] && preservedSekITasks.some((task) => task.goalId === source.id)),
-        `${view.viewId}: ${source.title} must remain in its exercise collection or its established Sek-I section`)
+      const ancestors = (ancestorsById.get(source.id) ?? []).map(id => byId.get(id)!)
+      const establishedLowerTask = rootId === practiceRootIds[4]
+        && preservedSekITasks.some(task => task.goalId === source.id)
+      const astronomyPreparation = isBesideExistingAstronomyPreparation(view.rootNodes, source.id)
+      if (collectionIds) assert(collectionIds.has(source.id) || astronomyPreparation || establishedLowerTask,
+        `${view.viewId}: ${source.title} must remain in its collection or its established preparation section`)
+      assert(ancestors.some(goal => goal.extendedData?.compositionNodeId
+        && !/^Sekundarstufe (?:I|II)(?:\s|$)/u.test(goal.title) && goal.title !== 'Physik'),
+        `${view.viewId}: ${source.title} needs an authored learning unit`)
+      assert.equal(ancestors.filter(goal => /^Sekundarstufe (?:I|II)(?:\s|$)/u.test(goal.title)).length, 1,
+        `${view.viewId}: ${source.title} needs exactly one stage placement; source timing is checked by the Land generator`)
       const projectedTask = byId.get(source.id)!
       assert(['', 'released'].includes(source.examData?.reviewStatus ?? ''),
         `${source.title}: assessment review status must permit the existing GoalCard presentation`)
@@ -326,9 +378,10 @@ for (const filename of readdirSync(viewDirectory).filter((name) => name.endsWith
     }
 
     if (rootId === abiturRootIds[course]) {
-      assert.equal(children.get(projectedRootId)?.length, 2, `${view.viewId}: both Abitur sample exams must remain reachable`)
-      if (hesseStageViewIds.has(view.viewId)) assert.deepEqual([...(children.get(projectedRootId) ?? [])].sort(),
-        [...sourceRoot.contains].sort(), `${view.viewId}: the replacement exam unit retains exactly the canonical sample exams`)
+      assert.deepEqual([...collectionIds!].filter(id => byId.get(id)?.examData).sort(),
+        expectedTasks.map(task => task.id).sort(), `${view.viewId}: the Abitur unit retains exactly both sample exams' proposals`)
+      if (hesseStageViewIds.has(view.viewId)) assert.deepEqual([...(children.get(projectedRootId!) ?? [])].sort(),
+        [...sourceRoot.contains].sort(), `${view.viewId}: the Hessian exam unit retains exactly the canonical sample exams`)
       assert.equal(expectedTasks.length, 8, `${view.viewId}: both Abitur sample exams must retain four proposals`)
       abiturTaskPairs += expectedTasks.length
     } else {
@@ -337,12 +390,13 @@ for (const filename of readdirSync(viewDirectory).filter((name) => name.endsWith
   }
   recordDurationCounts()
 }
-console.log('Physics duration assessment counts:', JSON.stringify({ total: counts(), addedHesseDuration: newDurationCounts }))
+console.log('Physics duration assessment counts:', JSON.stringify({ total: counts(), addedHesseDuration: newDurationCounts, addedLandSekI: newLandCounts }))
 const assertCount = (key: keyof typeof newDurationCounts, legacy: number, added: number, message: string): void => {
-  assert.equal(counts()[key] - newDurationCounts[key], legacy, `${message} Preserve the exact existing-view floor.`)
+  assert.equal(counts()[key] - newDurationCounts[key] - newLandCounts[key], legacy, `${message} Preserve the exact existing-view floor.`)
   assert.equal(newDurationCounts[key], added, `${message} Check every additional HE duration obligation.`)
-  assert.equal(counts()[key], legacy + added, message)
+  assert.equal(counts()[key], legacy + added + newLandCounts[key], message)
 }
+assert.equal(newLandCounts.fermiScopeViewCount, 15, 'Check each additional source-backed Land Sek-I view.')
 assertCount('viewCount', 60, 4, 'Cover every existing GK/LK and SekII/CrossStage assessment-collection view.')
 assertCount('fermiScopeViewCount', 69, 6, 'Check exact Fermi assessment target visibility in every Physics composition view.')
 assert.equal(jurisdictions.size, 14, 'Cover all jurisdictions using these Physics assessment collections.')

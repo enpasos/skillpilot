@@ -91,6 +91,13 @@ const REDUNDANT_STAGE_SUFFIX_PATTERN = /\s+\((Sek I|Sek II)\)$/u
 const SEK1_PARENT_LABEL_PATTERN = /^Sekundarstufe I$/u
 const SEK2_PARENT_LABEL_PATTERN = /^Sekundarstufe II(?: \((?:GK|LK)\))?$/u
 const REQUIRED_CANONICAL_MATH_SCOPES: RequiredCanonicalMathScope[] = [
+  // These source-bound Land excerpts replace the former DE-default Sek-I fallback.
+  // Require their exact scopes and identities so a missing excerpt cannot
+  // silently fall back to the canonical selection again.
+  ...['BB', 'BE', 'BY', 'HB', 'HH', 'MV', 'NI', 'NW', 'SL', 'SN', 'ST', 'TH'].map((state) => ({
+    expectedViewId: `de-${state.toLowerCase()}-gym-seki-math`,
+    scope: { schoolForm: 'Gymnasium', jurisdiction: `DE-${state}`, stage: 'SekI' },
+  })),
   {
     expectedViewId: 'de-de-gym-seki-math',
     scope: { schoolForm: 'Gymnasium', stage: 'SekI' },

@@ -12,11 +12,32 @@ import argparse
 import copy
 import hashlib
 import json
+from functools import cache
 from pathlib import Path
+from generate_physics_partial_orders import partial_order, acquisition_placements, contextual_targets, course_seeds
 
 ROOT = Path(__file__).resolve().parents[1]
 DIRECTORY = ROOT / "curricula/DE/Gymnasium/composition-views/physik"
 FILES = [f"de-he-{prefix}{profile}.view.json" for prefix in ("", "sekii-") for profile in ("gk", "lk")]
+HORIZONTAL_THROW = "82b5df3d-b1a7-4c6f-bd62-18fbbbe097a3"
+PARTIAL_ORDER_SCHEMA = "https://skillpilot.com/schemas/composition-view/v1.2/composition-view.schema.json"
+E_PHASE_TOPICS = {
+    "physics-e1-motion": "E.1 Bewegungen und ihre Beschreibung",
+    "physics-e2-newton-and-conservation": "E.2 Newton'sche Axiome und Erhaltungssätze",
+    "he-physics-topic-287739a3-6143-55d0-abe7-1a08889e9b49": "E.3 Kreisbewegung (Wurf bei E.1)",
+    "he-physics-topic-04d1d2df-a94b-5db4-8d07-cbb512c2e0b9": "E.4 Weitere Bewegungen (nicht verbindlich)",
+    "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089": "E.5 Gravitation (nicht verbindlich)",
+    "he-physics-topic-df11eb33-4900-52bf-93b3-eb82ff0f9a28": "E.6 Grundlagen der Thermodynamik (nicht verbindlich)",
+    "he-physics-topic-9743baad-9371-52b6-98ee-72bc6dc68701": "E.7 Drehbewegungen (nicht verbindlich)",
+}
+E_PHASE_PLANNING_POLICY = [
+    ("physics-e2-newton-and-conservation", "physics-e1-motion"),
+    ("he-physics-topic-287739a3-6143-55d0-abe7-1a08889e9b49", "physics-e2-newton-and-conservation"),
+    ("he-physics-topic-04d1d2df-a94b-5db4-8d07-cbb512c2e0b9", "he-physics-topic-287739a3-6143-55d0-abe7-1a08889e9b49"),
+    ("he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089", "he-physics-topic-287739a3-6143-55d0-abe7-1a08889e9b49"),
+    ("he-physics-topic-df11eb33-4900-52bf-93b3-eb82ff0f9a28", "physics-e2-newton-and-conservation"),
+    ("he-physics-topic-9743baad-9371-52b6-98ee-72bc6dc68701", "he-physics-topic-287739a3-6143-55d0-abe7-1a08889e9b49"),
+]
 G8_SOURCE = ROOT / "curricula/DE/Gymnasium/input/HE/lower-secondary/source-extraction/DE_HE_PHYSIK_SEKI_G8.source-extraction.json"
 G8_SOURCE_SHA256 = "f7d038fb1c3aba9e4bea7b29e21431f49d138cee6297b048cc9024267337217e"
 GOALS = {}
@@ -60,6 +81,9 @@ def structure(identifier, label, children):
 
 def generate(view):
     result = copy.deepcopy(view)
+    result["$schema"] = PARTIAL_ORDER_SCHEMA
+    result["viewFormatVersion"] = "1.2"
+    result.setdefault("language", "de")
     before = role_atoms(view)
     # Opening Gravitation must retain its three reviewed GK scope exclusions,
     # including their authored reference kinds, once each. In particular, a
@@ -259,7 +283,7 @@ def generate(view):
     else:
         upper = next(node for node in root["children"] if node.get("id", "").startswith("physics-sekii-"))
     phases = [find(identifier)[2] for identifier in ("physics-e-phase", "physics-q1", "physics-q2", "physics-q3", "physics-q4")]
-    phases[0]["label"] = "Einführungsphase (E1/E2): Mechanik"
+    phases[0]["label"] = "Einführungsphase: Mechanik"
     # Existing independently reviewed supplements retain their field wrappers.
     field = lambda label: next(node for node in walk(phases[4]["children"]) if node["kind"] == "structure" and node.get("label") == label)
     for identifier, label in (
@@ -295,6 +319,25 @@ def generate(view):
                 practice = structure("physics-he-practice-" + phase["id"], "Weitere Übungen und Anwendungen", [])
                 phase["children"].append(practice)
             practice["children"].extend(loose)
+    # KC 2024, printed pp.25, 27, 30--31: E.1--E.3 are binding topics;
+    # E.4--E.7 are not binding. A different learning order is permitted where
+    # subject requirements allow it. Kinematic superposition needs no Newtonian
+    # dynamics, so its existing reviewed subtree is acquired alongside E.1.
+    # Its canonical E.3 source identity remains intact; the display label makes
+    # the earlier learning place explicit. E.3 names its remaining content.
+    for identifier, label in E_PHASE_TOPICS.items():
+        matches = [node for node in walk(phases[0]["children"])
+                   if node.get("id") == identifier and node["kind"] == "structure"]
+        if len(matches) != 1:
+            raise ValueError(f"{view['viewId']}: expected one E-phase authoring topic {identifier}")
+        matches[0]["label"] = label
+    motion = find("physics-e1-motion")[2]
+    throws = [node for node in walk(phases[0]["children"]) if node.get("goalId") == HORIZONTAL_THROW]
+    if len(throws) != 1 or throws[0]["kind"] != "canonicalSubtree":
+        raise ValueError(f"{view['viewId']}: expected one reviewed horizontal-throw subtree in E phase")
+    throw = take(HORIZONTAL_THROW)
+    throw["displayLabel"] = "Waagerechter Wurf und Superposition (aus E.3)"
+    motion["children"].append(throw)
     exam_id = "61684ca7-b725-534f-944b-c7645cea1792" if view["scope"]["courseProfile"] == "GK" else "79028c45-90ae-57eb-8016-f5a96af18fa2"
     exam = take("physics-he-abitur", True)
     if not exam:
@@ -321,17 +364,24 @@ def generate(view):
                      lambda identifier: extract(identifier, phase["children"]), shifts, nested=False)
     result["rootNodes"] = clean(result["rootNodes"])
     sort_tree(result["rootNodes"], atoms)
+    _, applicable_learning, contextual_shifts = contextual_targets(result, GOALS,
+        selected, prerequisites, extract, structure, within_consumer_unit=True)
+    shifts.extend(contextual_shifts)
+    acquisition_placements(result, GOALS, selected, prerequisites, structure,
+                           consumer_seeds=selected & applicable_learning)
+    author_partial_orders(result, lambda node: learning_atoms(node, selected & applicable_learning, applicable_learning))
     after = role_atoms(result)
     # Opening a subtree changes reference distance. Retain the reviewed atomic
     # exclusion explicitly whenever that change would otherwise win a role tie.
     for identifier in sorted(before["prerequisiteOnly"] & after["target"]):
         result["rootNodes"].append({"kind": "goalEntry", "goalId": identifier, "projectionRole": "prerequisiteOnly"})
     after = role_atoms(result)
-    if before != after:
+    if before["target"] != after["target"] or not before["prerequisiteOnly"] <= after["prerequisiteOnly"] or not (after["prerequisiteOnly"] - before["prerequisiteOnly"]) <= {p for atom in selected for p in prerequisites(atom)}:
         raise ValueError(f"{view['viewId']}: atomic projection roles changed: " + str({role: (before[role] - after[role], after[role] - before[role]) for role in before}))
     return result, shifts
 
 
+@cache
 def prerequisites(identifier):
     found = set()
     queue = list(GOALS[identifier].get("requires", []))
@@ -342,6 +392,105 @@ def prerequisites(identifier):
         found.add(required)
         queue.extend(GOALS[required].get("requires", []))
     return found
+
+
+def ephase_child_order(phase, atoms):
+    """Minimal explicit planning DAG: real demands plus reviewed E.1--E.3 order.
+
+    Array order remains display order. In particular no E.4--E.7 total order
+    follows from their numbering or their nonbinding official source status.
+    """
+    groups = [node for node in phase["children"] if node["kind"] == "structure"]
+    identifiers = [node["id"] for node in groups]
+    ownership = {}
+    for node in groups:
+        for identifier in atoms(node):
+            if identifier in ownership:
+                raise ValueError("Repeated E-phase atomic learning place: " + identifier)
+            ownership[identifier] = node["id"]
+    needs = {identifier: set() for identifier in identifiers}
+    witnesses = {}
+    for dependent, unit in sorted(ownership.items()):
+        for required in sorted(prerequisites(dependent)):
+            previous = ownership.get(required)
+            if previous is None or previous == unit:
+                continue
+            needs[unit].add(previous)
+            witnesses.setdefault((unit, previous), {"kind": "canonicalRequirement", "dependentGoalId": dependent,
+                                                     "requiredGoalId": required})
+    fixed = [("physics-e2-newton-and-conservation", "physics-e1-motion"),
+             ("he-physics-topic-287739a3-6143-55d0-abe7-1a08889e9b49", "physics-e2-newton-and-conservation")]
+    for unit, previous in fixed:
+        if unit not in needs or previous not in needs:
+            raise ValueError("Missing reviewed E.1--E.3 planning anchor")
+        needs[unit].add(previous)
+        witnesses.setdefault((unit, previous), {"kind": "reviewedLearningOrder", "basis": "E.1 before E.2 before E.3"})
+
+    closure = {}
+    def ancestors(identifier, active=None):
+        if identifier in closure:
+            return closure[identifier]
+        active = set() if active is None else active
+        if identifier in active:
+            raise ValueError("Cyclic E-phase planning order")
+        active.add(identifier)
+        result = set(needs[identifier])
+        for previous in needs[identifier]:
+            result.update(ancestors(previous, active))
+        active.remove(identifier)
+        closure[identifier] = result
+        return result
+    for identifier in identifiers:
+        ancestors(identifier)
+    pairs = [{"unit": unit, "after": previous} for unit in identifiers for previous in identifiers
+             if previous in closure[unit]
+             and not any(intermediate != previous and previous in closure[intermediate]
+                         for intermediate in closure[unit])]
+    return {"after": pairs}, [{**pair, "witness": witnesses[(pair["unit"], pair["after"])]} for pair in pairs]
+
+
+def learning_atoms(node, selected, learning=None):
+    if node.get("acquisitionPlacement") is True:
+        return {node["goalId"]} if learning is None else {node["goalId"]} & learning
+    if node["kind"] == "structure":
+        return set().union(*(learning_atoms(c, selected, learning) for c in node["children"])) if node["children"] else set()
+    return role_atoms({"rootNodes": [node]})["target"] & selected
+
+
+def author_partial_orders(view, atoms):
+    """No thematic sibling acquires a planning edge from display order.
+
+    Only the source's stages, school years and E/Q phases have a calendar order.
+    Other structures declare no whole-unit order unless a separately reviewed
+    policy says so. Atomic demand remains independently visible on the map.
+    """
+    def visit(node):
+        if node["kind"] != "structure":
+            return
+        for child in node["children"]:
+            visit(child)
+        groups = [child for child in node["children"] if child["kind"] == "structure"]
+        if len(groups) < 2:
+            node.pop("childOrder", None)
+            return
+        if node["id"] == "physics-e-phase" and view["scope"].get("jurisdiction") == "DE-HE":
+            # Explicit owner-reviewed whole-topic plan: mandatory kinematics,
+            # then dynamics, then the mandatory combined-motion topic; optional
+            # branches follow their chosen introductory topic. Atomic requires
+            # alone never create a whole-topic completion policy.
+            node["childOrder"], _ = partial_order(groups, atoms, lambda atom: set(GOALS[atom].get("requires", [])), E_PHASE_PLANNING_POLICY)
+            return
+        temporal = []
+        if node["id"] == "physics-root":
+            temporal = [child["id"] for child in groups if child["id"] == "physics-seki" or child["id"].startswith("physics-sekii-")]
+        elif node["id"] == "physics-seki":
+            temporal = [child["id"] for child in groups if child["id"].startswith("physics-he-seki-j")]
+        elif node["id"].startswith("physics-sekii-"):
+            temporal = [child["id"] for child in groups if child["id"] in
+                        ("physics-e-phase", "physics-q1", "physics-q2", "physics-q3", "physics-q4", "physics-he-abitur")]
+        node["childOrder"], _ = partial_order(groups, atoms, lambda atom: set(GOALS[atom].get("requires", [])), list(zip(temporal[1:], temporal[:-1])))
+    for root in view["rootNodes"]:
+        visit(root)
 
 
 def pull_earlier(groups, atoms, extract, shifts, nested=True):
@@ -519,6 +668,11 @@ def generate_g8(view):
         practice["children"].append(task)
     for year in years:
         sort_tree(year["children"], atoms)
+    applicable_seeds = course_seeds(before["target"], GOALS, result["scope"])
+    applicable_learning = applicable_seeds | {p for a in applicable_seeds for p in prerequisites(a)}
+    acquisition_placements(result, GOALS, before["target"], prerequisites, structure,
+                           consumer_seeds=before["target"] & applicable_learning)
+    author_partial_orders(result, lambda node: learning_atoms(node, before["target"] & applicable_learning, applicable_learning))
     if role_atoms(result) != before:
         raise ValueError("G8 authoring changed reviewed atomic target/support roles")
     if role_atoms({"rootNodes": [original_stage]}) != role_atoms({"rootNodes": [stage]}):
@@ -576,6 +730,15 @@ def seki_excerpt(view, duration):
         return result
 
     excerpt["rootNodes"] = trim(excerpt["rootNodes"])
+    # Removing the upper stage also removes its calendar-order endpoint. The
+    # excerpt declares only the surviving stage/year/topic partial orders.
+    acquisition_placements(excerpt, GOALS, stage_roles["target"], prerequisites, structure)
+    author_partial_orders(excerpt, lambda node: learning_atoms(node, stage_roles["target"]))
+    # The retained stage-only source excerpt is headerless and carries no
+    # partial-order declaration. Do not upgrade its unused contract metadata.
+    if excerpt.get("$schema") == PARTIAL_ORDER_SCHEMA and not any("childOrder" in node for node in walk(excerpt["rootNodes"])):
+        for field in ("$schema", "viewFormatVersion", "language"):
+            excerpt.pop(field, None)
     if role_atoms(excerpt)["target"] != stage_roles["target"]:
         raise ValueError("SekI excerpt changed selected target atoms")
     if removed & required:
@@ -623,7 +786,17 @@ def main():
         if generated != repeated:
             raise ValueError(name + ": generator is not idempotent")
         outputs.append((path, generated))
-        report.append({"file": name, "changed": current != generated, "earlierDemandPlacements": shifts})
+        phase = next(node for node in walk(generated["rootNodes"]) if node.get("id") == "physics-e-phase")
+        raw_seeds = role_atoms(generated)["target"]
+        applicable_seeds = course_seeds(raw_seeds, GOALS, generated["scope"])
+        applicable_learning = applicable_seeds | {p for seed in applicable_seeds for p in prerequisites(seed)}
+        current_atoms = lambda node: learning_atoms(node, raw_seeds & applicable_learning, applicable_learning)
+        report.append({"file": name, "changed": current != generated, "earlierDemandPlacements": shifts,
+                       "ephaseRequirementOrderCandidates": ephase_child_order(phase, current_atoms)[1],
+                       "declaredPartialOrders": [{"parentId": node["id"], "declaredOrderPairs": node["childOrder"]["after"], "requirementOrderCandidates": partial_order(
+                           node["children"], current_atoms, prerequisites,
+                           [(pair["unit"], pair["after"]) for pair in node["childOrder"]["after"]])[1]}
+                           for node in walk(generated["rootNodes"]) if "childOrder" in node]})
     if args.duration_views:
         for path, generated, details in duration_outputs():
             outputs.append((path, generated))

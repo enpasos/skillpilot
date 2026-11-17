@@ -1,0 +1,153 @@
+{
+  "schema": "independent-bilingual-atomic-assessment-content-review-v1",
+  "reviewer": "/root/he_ephase_source_review",
+  "author": "/root/he_ephase_validation",
+  "reviewedAt": "2026-11-17T03:37:27.951558+00:00",
+  "status": "PASS",
+  "releaseRecommendation": "APPROVE_RELEASE_OF_REVIEWED_CONTENT",
+  "learnerTrialOrHumanApproval": false,
+  "taskId": "884bd99b-2373-5174-af7c-c6813b91bd93",
+  "targetGoalId": "bfea7a23-1ce1-4a42-badd-1fc9bf30124a",
+  "candidatePins": {
+    "tmp/pipeline/laender-stufen/gesamt/physics/remaining-lower-assessments/author-validation/rest-energy-two-system-comparisons.goal.json": "7b2b21fd2f8569d6efd43ba0f5386b380a456eaa876039de00e294dbc5398454",
+    "tmp/pipeline/laender-stufen/gesamt/physics/remaining-lower-assessments/author-validation/rest-energy-two-system-comparisons.md": "7884e98d95dcbe9073ddcea2c63f0f954127d598c4993084f2a94b8ad148ebbf"
+  },
+  "retainedOriginalPins": {
+    "tmp/pipeline/laender-stufen/gesamt/review/remaining-lower-assessments/rest-energy-two-system-comparisons.reviewed-candidate.goal.json": "7b2b21fd2f8569d6efd43ba0f5386b380a456eaa876039de00e294dbc5398454",
+    "tmp/pipeline/laender-stufen/gesamt/review/remaining-lower-assessments/rest-energy-two-system-comparisons.reviewed-material.md": "7884e98d95dcbe9073ddcea2c63f0f954127d598c4993084f2a94b8ad148ebbf"
+  },
+  "reviewedPayloadDigestExcludingOnlyReleaseStatusAndReviewNote": "3b10a594ac6b88344e07d7a337c894af87f83b788318002a91ff32309c64a097",
+  "targetDescription": "Die lernende Person kann die Masse-Energie-Äquivalenz E₀ = m₀c² als Beziehung zwischen Ruheenergie und invarianter Masse fachlich einordnen und an qualitativen Beispielen deuten.",
+  "targetGoalDigest": "42d2b1d46f4a787f3c32d3cb0bf477d0062b733ca29e5c01db2f46214a84312d",
+  "canonicalDocumentSha256AtReviewTime": "08bea9063bad70aa2e7690c4381a1f41e87f9252d43226ef00850c139ab85c07",
+  "requiresAndCoverage": {
+    "requires": [
+      "bfea7a23-1ce1-4a42-badd-1fc9bf30124a"
+    ],
+    "coveredGoalIds": [
+      "bfea7a23-1ce1-4a42-badd-1fc9bf30124a"
+    ],
+    "additionalRequiredGoalIds": []
+  },
+  "courseBinding": {
+    "taskCourseTags": [
+      "LK"
+    ],
+    "targetCourseTags": [
+      "LK"
+    ],
+    "exactMatch": true
+  },
+  "independentCalculations": {
+    "taskIsQualitativeNoNumericalOrLorentzCalculationRequired": true,
+    "A": {
+      "restEnergyChange": "+Q",
+      "invariantMassChange": "+Q/c^2",
+      "sourcePlusBoxEnergyChange": "-Q+Q=0"
+    },
+    "B": {
+      "restEnergyChange": "-W",
+      "invariantMassChange": "-W/c^2",
+      "remainingBodyPlusRadiationEnergyChange": "-W+W=0"
+    },
+    "frameComparison": "At the same physical state, invariant mass and rest energy agree. Total energy increases for an observer moving relative to the massive body. Do not insert total moving energy for E0.",
+    "independentRationalChecks": [
+      {
+        "cInArbitraryReviewUnits": 1,
+        "initialMass": 2,
+        "transfer": "1/2",
+        "absorbedMass": "5/2",
+        "emittedMass": "3/2",
+        "fourFrameCasesVerified": true
+      },
+      {
+        "cInArbitraryReviewUnits": 1,
+        "initialMass": 10,
+        "transfer": "5/2",
+        "absorbedMass": "25/2",
+        "emittedMass": "15/2",
+        "fourFrameCasesVerified": true
+      },
+      {
+        "cInArbitraryReviewUnits": 1,
+        "initialMass": 100,
+        "transfer": "25",
+        "absorbedMass": "125",
+        "emittedMass": "75",
+        "fourFrameCasesVerified": true
+      },
+      {
+        "cInArbitraryReviewUnits": 3,
+        "initialMass": 2,
+        "transfer": "9/2",
+        "absorbedMass": "5/2",
+        "emittedMass": "3/2",
+        "fourFrameCasesVerified": true
+      },
+      {
+        "cInArbitraryReviewUnits": 3,
+        "initialMass": 10,
+        "transfer": "45/2",
+        "absorbedMass": "25/2",
+        "emittedMass": "15/2",
+        "fourFrameCasesVerified": true
+      },
+      {
+        "cInArbitraryReviewUnits": 3,
+        "initialMass": 100,
+        "transfer": "225",
+        "absorbedMass": "125",
+        "emittedMass": "75",
+        "fourFrameCasesVerified": true
+      },
+      {
+        "cInArbitraryReviewUnits": 7,
+        "initialMass": 2,
+        "transfer": "49/2",
+        "absorbedMass": "5/2",
+        "emittedMass": "3/2",
+        "fourFrameCasesVerified": true
+      },
+      {
+        "cInArbitraryReviewUnits": 7,
+        "initialMass": 10,
+        "transfer": "245/2",
+        "absorbedMass": "25/2",
+        "emittedMass": "15/2",
+        "fourFrameCasesVerified": true
+      },
+      {
+        "cInArbitraryReviewUnits": 7,
+        "initialMass": 100,
+        "transfer": "1225",
+        "absorbedMass": "125",
+        "emittedMass": "75",
+        "fourFrameCasesVerified": true
+      }
+    ],
+    "radiationNuance": "Individual light pulses have zero invariant mass; a two-pulse system can have nonzero invariant mass. The solution carefully rejects assigning W/c^2 to individual pulses, and does not demand a mass for the combined radiation."
+  },
+  "manualContentReview": {
+    "completeIndependentPerformances": "Both A and B separately require meaning of rest energy/invariant mass, a correctly bounded energy balance, and physical-state versus frame comparison. Neither case relies on an answer from the other.",
+    "DE_EN": "All system boundaries, equal opposite pulses, assumptions, qualitative questions, optional equations, invariant/total-energy distinctions and rubric statements agree.",
+    "physicalValidity": "Equal opposite pulse momenta permit before/after laboratory rest. Internal energy changes composite-system invariant mass without atom transfer. Including sources or escaped radiation preserves total energy. A closed box is correctly distinguished from an energetically isolated system.",
+    "genuineCoverage": "Explicitly assesses E0=m0c^2 as a relation of rest energy to invariant mass using two qualitative examples, matching the entire canonical target. No Lorentz transformation, nuclear reaction calculation or extra goal is required.",
+    "courseBoundary": "Task is LK-only exactly like the target; the earlier GK tag was removed before this approval.",
+    "rubric": "Six independent core criteria cover meaning, conservation and invariance in each case; a conceptual error or absent core gets0, so no omitted case/core can pass."
+  },
+  "rubric": {
+    "coreCount": 6,
+    "maxPoints": 18,
+    "passingPoints": 17,
+    "enumeratedOutcomes": 729,
+    "passingOutcomes": 7,
+    "noMissingCoreCanPass": true,
+    "oneIsolatedNonconceptualSlipAllowed": true,
+    "noMissingCompleteCaseCanPass": true
+  },
+  "limitations": [
+    "AI independent content and numeric review; no human review or learner effectiveness claim.",
+    "Source-stage task selection and final actual CQR/routes are separate integration checks.",
+    "Release may change only reviewStatus/reviewNote without a new content review."
+  ]
+}

@@ -1,7 +1,9 @@
 import { validateSemanticAtomicityRecordShape } from './lib/semanticAtomicityRecordValidation'
 import { evaluateDirectAtomicRouteCoverage } from './lib/directAtomicRouteCoverage'
+import { explicitAtomicEndpointApplies, resolveExplicitAtomicRouteEndpoints } from './lib/explicitAtomicRouteEndpoints'
 import { buildRouteCatalogContext, restrictForeignRouteSupport } from './lib/routeCatalogContext'
 import { materializeNationalStageProjection, PHYSICS_NATIONAL_STAGE_EXPOSURE_SOURCES } from './lib/nationalStageProjection'
+import { collectCompositionStageLearningBasis, collectExplicitAtomicSupportReferences, compositionStageAuthorityScopes, materializeCompositionStageMembership, restrictCompositionStageRouteSupport, selectCompositionStageAuthorities } from './lib/compositionStageRouteMembership'
 import { createHash } from 'node:crypto'
 import { existsSync, mkdirSync, readdirSync, readFileSync, realpathSync, statSync, writeFileSync } from 'node:fs'
 import { dirname, isAbsolute, join, relative, resolve } from 'node:path'
@@ -31,7 +33,7 @@ import { loadOptionalHistoricalReviewContext } from './optionalHistoricalReviewC
 import { withVerificationInputSnapshot, type VerificationInputReader } from './lib/verificationInputSnapshot'
 import { evaluateGraphIntegrity, requireCompleteCurrentCatalog } from './curriculumGraphIntegrity'
 import { createReviewedRequiresClosureCoverageChecker } from './sourceCoverageEvidence'
-import { shouldRequireCanonicalMathSek1AssessmentEndpoint } from './lib/canonicalMathSek1ReviewedExamRoutes'
+import { hasUnavailableCurricularAtomicAssessmentPrerequisite, shouldRequireCanonicalMathSek1AssessmentEndpoint } from './lib/canonicalMathSek1ReviewedExamRoutes'
 import { createRepositorySourceAvailability } from './repositorySourceAvailability'
 import { loadPhysicsQaStageTargets, PHYSICS_QA_SELECTOR_INPUT_PATHS } from './lib/physicsQaStageTargets'
 
@@ -885,6 +887,7 @@ export interface RouteProfile {
   label: string
   motivationAnchorGoalIds: string[]
   terminalAutonomyClusterIds: string[]
+  terminalAutonomyGoalIds?: string[]
   terminalAutonomyClusterIdsByDurationModel?: Partial<Record<DurationModel, string[]>>
   compositionViewStage?: 'SekI' | 'SekII' | 'CrossStage'
   compositionViewApplicabilityMode?: 'compiled-jurisdiction'
@@ -1208,6 +1211,24 @@ export const routeProfileDefinitions: RouteProfile[] = [
       CANONICAL_GYM_PHYSICS_SHARED_PRACTICE_CLUSTER_ID,
       '8e5c7195-eb30-55c1-a19a-630742620ba0',
       ...CANONICAL_GYM_PHYSICS_CURRENT_PRACTICE_CLUSTER_IDS,
+    ],
+    // Existing released tasks may live in subject units or an upper-stage
+    // collection. Eligibility is independent of that compatibility placement;
+    // every projection still checks its actual source scope and whole demand.
+    terminalAutonomyGoalIds: [
+      'a8dc0290-9f80-5763-8943-e16b8d2aa860',
+      'b34f3e03-bbe7-5ede-941c-3f26c9b07bb8',
+      'b3b365f4-4988-57d5-97cd-5d8446483ef7',
+      '3efcce48-2a2d-5d81-958c-aa216eccaea3',
+      '3b7b2b62-e39c-5936-b0d8-5406206e57b6',
+      '57a03b38-5ec5-5e4f-b71a-4024bab1584c',
+      '797f5e93-b5fd-5ee3-9fb2-fcc9e1d12a00',
+      '7cfaf48e-e420-5c09-8ec2-932f0dba4d08',
+      '884bd99b-2373-5174-af7c-c6813b91bd93',
+      'bff1d8b0-fe2e-52e6-a467-dd0b6a1a4a04',
+      'e6a89922-75ce-53dd-9e7b-3a683398431c',
+      'f41e4e30-794e-5ce4-ba5e-cc72712cd691',
+      'f602680f-ea75-5bed-ae87-72f6be34a99b',
     ],
     compositionViewStage: 'SekI',
     compositionViewApplicabilityMode: 'compiled-jurisdiction',
@@ -1894,6 +1915,7 @@ function terminalAutonomyGoalsForRouteScope(
 
   return clusterIds
     .flatMap((clusterId) => goalById.get(clusterId)?.contains ?? [])
+    .concat(profile.terminalAutonomyGoalIds ?? [])
     .map((goalId) => goalById.get(goalId))
     .filter((goal): goal is LearningGoal => !!goal)
     .filter((goal) => isAtomicGoal(goal) && !isMemoryGoal(goal))
@@ -1971,8 +1993,10 @@ function evaluateRouteEndpointCompositionVisibility(
   canonicalCatalog: readonly SkillLandscape[],
   ownGoalIds: ReadonlySet<string>,
   compositionViewFiles?: readonly string[],
+  explicitTerminalConfigurationIssues: readonly string[] = [],
 ): RuleResult | null {
   if (!profile.compositionViewStage) return null
+  const explicitTerminalGoalIds = new Set(profile.terminalAutonomyGoalIds ?? [])
   const goalById = new Map(landscape.goals.map((goal) => [goal.id, goal]))
   const contextGoalIds = new Set(landscape.goals.map(goal => goal.id))
   const compiledJurisdictionsByGoalId = new Map(
@@ -2020,6 +2044,7 @@ function evaluateRouteEndpointCompositionVisibility(
   const missingJurisdictionStageAuthorityScopes: string[] = []
   const ambiguousJurisdictionStageAuthorityScopes: string[] = []
   const invalidNationalExposureFamilyScopes: string[] = []
+  const invalidSourceStageAuthorityScopes: string[] = []
   const uniqueGoalsMissingEffectiveMotivationRoute = new Set<string>()
   const uniqueGoalsMissingDirectMotivationRoute = new Set<string>()
   const uniqueGoalsMissingEffectiveTerminalRoute = new Set<string>()
@@ -2058,17 +2083,13 @@ function evaluateRouteEndpointCompositionVisibility(
   const selectedGoalIds = new Set(selectedGoals.map((goal) => goal.id))
 
   viewEntries.forEach(({ file, view }) => {
+    const explicitSupportReferences = collectExplicitAtomicSupportReferences(view.rootNodes,
+      new Set(landscape.goals.filter(isAtomicGoal).map(goal => goal.id)))
     // CrossStage explicitly means the entire authored view, including both
     // school stages. Its root is not inferred from year, phase or display labels.
     const matchingStageStructures = profile.compositionViewStage === 'CrossStage'
       ? view.rootNodes.filter((node) => node.kind === 'structure')
       : collectCompositionStageStructures(view.rootNodes, profile.compositionViewStage!)
-    const scopedTerminalGoals = terminalAutonomyGoalsForRouteScope(
-      goalById,
-      profile,
-      view.scope,
-      terminalAutonomyGoals,
-    )
     const viewJurisdiction = typeof view.scope.jurisdiction === 'string'
       ? view.scope.jurisdiction
       : null
@@ -2076,11 +2097,18 @@ function evaluateRouteEndpointCompositionVisibility(
       ? (viewJurisdiction ? [viewJurisdiction] : [...applicabilityCompilation.summary.supportedValues])
       : [null]
 
-    projectionJurisdictions.forEach((jurisdiction) => {
+    const projectionContexts = projectionJurisdictions.flatMap(jurisdiction => {
+      const requested = { ...view.scope, ...(jurisdiction ? { jurisdiction } : {}) }
+      const scopes = profile.compositionViewStage === 'CrossStage' ? [requested]
+        : compositionStageAuthorityScopes(viewEntries, profile.landscapeId, requested, profile.compositionViewStage!)
+      return scopes.map(scope => ({ jurisdiction, scope }))
+    })
+    projectionContexts.forEach(({ jurisdiction, scope }) => {
       evaluatedProjectionScopes += 1
-      const scopeLabel = `${toRepoPath(file)}${jurisdiction ? ` [${jurisdiction}]` : ''}`
+      const scopeLabel = `${toRepoPath(file)}${jurisdiction ? ` [${jurisdiction}]` : ''}${scope.durationModel && scope.durationModel !== view.scope.durationModel ? ` [${scope.durationModel}]` : ''}`
+      const scopedTerminalGoals = terminalAutonomyGoalsForRouteScope(goalById, profile, scope, terminalAutonomyGoals)
 
-      const scopeFilters = [view.scope.courseProfile, view.scope.durationModel]
+      const scopeFilters = [scope.courseProfile, scope.durationModel]
         .filter((value): value is string => typeof value === 'string' && value.trim().length > 0)
       const removeGoalsOutsideCompiledProjection = (goalIds: Set<string>) => {
         if (!useCompiledJurisdiction || !jurisdiction) return
@@ -2095,7 +2123,7 @@ function evaluateRouteEndpointCompositionVisibility(
         file,
         scopeFilters,
         false,
-        profile.compositionViewStage,
+        'CrossStage',
         profile.motivationAnchorGoalIds,
         canonicalCatalog,
       )
@@ -2104,7 +2132,7 @@ function evaluateRouteEndpointCompositionVisibility(
         file,
         scopeFilters,
         true,
-        profile.compositionViewStage,
+        'CrossStage',
         profile.motivationAnchorGoalIds,
         canonicalCatalog,
       )
@@ -2114,13 +2142,60 @@ function evaluateRouteEndpointCompositionVisibility(
       }
       restrictForeignRouteSupport(visibleAtomicGoalIds, visibleTargetAtomicGoalIds,
         ownGoalIds, effectiveEdges, profile.motivationAnchorGoalIds)
+      const explicitCourseSupportExclusions = new Set([...explicitSupportReferences]
+        .filter(id => !visibleTargetAtomicGoalIds.has(id)))
       let jurisdictionStageTargetAuthorityGoalIds: Set<string> | null = null
       let jurisdictionStageVisibleAuthorityGoalIds: Set<string> | null = null
+      const sourceStageAuthorities = (authorityEntries: typeof viewEntries) => authorityEntries.map(
+        ({ file: authorityFile, view: authorityView }) => {
+          const authorityScopeFilters = [authorityView.scope.courseProfile, authorityView.scope.durationModel ?? scope.durationModel]
+            .filter((value): value is string => typeof value === 'string' && value.trim().length > 0)
+          // An explicit stage view declares source membership over its complete
+          // tree. Its required learning places may cross the displayed stage.
+          const targetGoalIds = collectRenderedAtomicGoalIdsFromCompositionView(
+            landscape, authorityFile, authorityScopeFilters, false, 'CrossStage',
+            profile.motivationAnchorGoalIds, canonicalCatalog,
+          )
+          const visibleGoalIds = collectRenderedAtomicGoalIdsFromCompositionView(
+            landscape, authorityFile, authorityScopeFilters, true, 'CrossStage',
+            profile.motivationAnchorGoalIds, canonicalCatalog,
+          )
+          removeGoalsOutsideCompiledProjection(targetGoalIds)
+          removeGoalsOutsideCompiledProjection(visibleGoalIds)
+          restrictForeignRouteSupport(visibleGoalIds, targetGoalIds,
+            ownGoalIds, effectiveEdges, profile.motivationAnchorGoalIds)
+          if (enforceProjectionLocalRoutes) restrictCompositionStageRouteSupport(
+            visibleGoalIds, targetGoalIds, effectiveEdges, profile.motivationAnchorGoalIds,
+          )
+          return { file: authorityFile, targetGoalIds, visibleGoalIds }
+        },
+      )
+      if (view.scope.stage === 'CrossStage' && profile.compositionViewStage !== 'CrossStage'
+        && !(useCompiledJurisdiction && enforceProjectionLocalRoutes && !viewJurisdiction && jurisdiction)) {
+        const authorities = sourceStageAuthorities(selectCompositionStageAuthorities(
+          viewEntries, profile.landscapeId, scope, profile.compositionViewStage!,
+        ))
+        const materialized = materializeCompositionStageMembership(
+          { targetGoalIds: visibleTargetAtomicGoalIds, visibleGoalIds: visibleAtomicGoalIds }, authorities,
+        )
+        invalidSourceStageAuthorityScopes.push(...materialized.errors.map(error => `${scopeLabel}: ${error}`))
+        jurisdictionStageTargetAuthorityGoalIds = materialized.authority
+          ? new Set(materialized.authority.targetGoalIds) : null
+        jurisdictionStageVisibleAuthorityGoalIds = materialized.authority
+          ? new Set(materialized.authority.visibleGoalIds) : null
+        visibleTargetAtomicGoalIds.clear()
+        materialized.projection.targetGoalIds.forEach(id => visibleTargetAtomicGoalIds.add(id))
+        visibleAtomicGoalIds.clear()
+        materialized.projection.visibleGoalIds.forEach(id => visibleAtomicGoalIds.add(id))
+      }
       if (useCompiledJurisdiction && enforceProjectionLocalRoutes && !viewJurisdiction && jurisdiction) {
         // A jurisdiction-resolved national view gets its stage boundary and explicit
         // prerequisite-only support from the matching state view. State targets that
         // the national view does not itself expose are never imported as hidden path nodes.
-        const jurisdictionViewEntries = viewEntries.filter(({ view: jurisdictionView }) => {
+        const jurisdictionViewEntries = profile.compositionViewStage !== 'CrossStage'
+          ? selectCompositionStageAuthorities(viewEntries, profile.landscapeId,
+            scope, profile.compositionViewStage!)
+          : viewEntries.filter(({ view: jurisdictionView }) => {
           if (jurisdictionView.scope.jurisdiction !== jurisdiction) return false
           if (
             typeof view.scope.courseProfile === 'string'
@@ -2132,7 +2207,9 @@ function evaluateRouteEndpointCompositionVisibility(
           ) return false
           return true
         })
-        const authorityProjectionSets = jurisdictionViewEntries.map(({ file: authorityFile, view: authorityView }) => {
+        const authorityProjectionSets = profile.compositionViewStage !== 'CrossStage'
+          ? sourceStageAuthorities(jurisdictionViewEntries)
+          : jurisdictionViewEntries.map(({ file: authorityFile, view: authorityView }) => {
           const authorityScopeFilters = [authorityView.scope.courseProfile, authorityView.scope.durationModel]
             .filter((value): value is string => typeof value === 'string' && value.trim().length > 0)
           const targetGoalIds = collectRenderedAtomicGoalIdsFromCompositionView(
@@ -2191,7 +2268,7 @@ function evaluateRouteEndpointCompositionVisibility(
             const nationalExposureFamily = viewEntries
               .filter(({ view: source }) => !source.scope.jurisdiction && source.scope.stage === 'CrossStage')
               .map(({ file: sourceFile, view: source }) => {
-                const sourceFilters = [source.scope.courseProfile, source.scope.durationModel]
+                const sourceFilters = [source.scope.courseProfile, source.scope.durationModel ?? scope.durationModel]
                   .filter((value): value is string => typeof value === 'string' && value.trim().length > 0)
                 const targetGoalIds = collectRenderedAtomicGoalIdsFromCompositionView(
                   landscape, sourceFile, sourceFilters, false, 'CrossStage', profile.motivationAnchorGoalIds, canonicalCatalog,
@@ -2252,6 +2329,16 @@ function evaluateRouteEndpointCompositionVisibility(
           }
         }
       }
+      // Explicit support-only assessment declarations have a separate scope
+      // meaning in the Mathematics endpoint contract. Preserve those raw roles
+      // while projection-local route paths use only actually required support.
+      const declaredVisibleAtomicGoalIds = new Set(visibleAtomicGoalIds)
+      const sourceLearningBasis = collectCompositionStageLearningBasis(visibleTargetAtomicGoalIds,
+        effectiveEdges, profile.motivationAnchorGoalIds)
+      if (enforceProjectionLocalRoutes && profile.compositionViewStage !== 'CrossStage') {
+        restrictCompositionStageRouteSupport(visibleAtomicGoalIds, visibleTargetAtomicGoalIds,
+          effectiveEdges, profile.motivationAnchorGoalIds)
+      }
       if (enforceProjectionLocalRoutes) {
         visibleTargetAtomicGoalIds.forEach((goalId) => {
           if (!visibleAtomicGoalIds.has(goalId)) {
@@ -2272,14 +2359,27 @@ function evaluateRouteEndpointCompositionVisibility(
         // A wholly missing exam still fails unless CPV-211's exact prerequisite
         // condition makes it inapplicable in this target projection.
         .filter((goal) => !mathSek1CurricularAtomicGoalIds
+          || (jurisdictionStageTargetAuthorityGoalIds?.has(goal.id) && !explicitCourseSupportExclusions.has(goal.id)
+            && !hasUnavailableCurricularAtomicAssessmentPrerequisite(goal,
+              mathSek1CurricularAtomicGoalIds, visibleTargetAtomicGoalIds))
           || shouldRequireCanonicalMathSek1AssessmentEndpoint(
             goal,
             mathSek1CurricularAtomicGoalIds,
-            visibleAtomicGoalIds,
+            declaredVisibleAtomicGoalIds,
+            // Prerequisite applicability follows this actual course target
+            // space. The independent endpoint-membership clause above must
+            // not enroll a different course's curricular prerequisites here.
             visibleTargetAtomicGoalIds,
           ))
         .filter((goal) => !useCompiledJurisdiction
           || (!!jurisdiction && compiledJurisdictionsByGoalId.get(goal.id)?.has(jurisdiction)))
+        // An explicit released endpoint is eligible, not universally enrolled.
+        // If the task is not itself selected, its complete real prerequisite
+        // and assessed-content demand must belong to this S→requires basis.
+        // This check cannot import a missing exposed preparation atom.
+        .filter((goal) => !explicitTerminalGoalIds.has(goal.id)
+          || explicitAtomicEndpointApplies(goal, visibleTargetAtomicGoalIds, sourceLearningBasis,
+            visibleTargetAtomicGoalIds.has(goal.id)))
         .filter((goal) => !enforceProjectionLocalAssessmentRequires
           || !jurisdictionStageTargetAuthorityGoalIds
           || jurisdictionStageTargetAuthorityGoalIds.has(goal.id))
@@ -2333,6 +2433,7 @@ function evaluateRouteEndpointCompositionVisibility(
             const extendedData = goalById.get(terminalId)?.extendedData as Record<string, unknown> | undefined
             const overrides = extendedData?.applicabilityOverrides as Record<string, unknown> | undefined
             return profile.landscapeId === CANONICAL_GYM_ECONOMICS_LANDSCAPE_ID
+              || explicitTerminalGoalIds.has(terminalId)
               || Array.isArray(overrides?.jurisdiction)
               || (
                 enforceProjectionLocalAssessmentRequires
@@ -2531,12 +2632,14 @@ function evaluateRouteEndpointCompositionVisibility(
   })
 
   const pass = viewFiles.length > 0
+    && explicitTerminalConfigurationIssues.length === 0
     && evaluatedProjectionScopes > 0
     && terminalGoalsMissingCompiledApplicability.length === 0
     && invalidStageStructureScopes.length === 0
     && missingJurisdictionStageAuthorityScopes.length === 0
     && ambiguousJurisdictionStageAuthorityScopes.length === 0
     && invalidNationalExposureFamilyScopes.length === 0
+    && invalidSourceStageAuthorityScopes.length === 0
     && missingMotivationScopes.length === 0
     && missingTerminalScopes.length === 0
     && unexpectedTerminalScopes.length === 0
@@ -2560,6 +2663,7 @@ function evaluateRouteEndpointCompositionVisibility(
       : 'Route endpoints or projection-local routes are missing, unexpected, or not applicability-bound in at least one learner-facing projection scope.',
     {
       relevantCompositionViews: viewFiles.length,
+      invalidExplicitTerminalConfigurations: explicitTerminalConfigurationIssues.length,
       evaluatedProjectionScopes,
       requiredMotivationAnchors: profile.motivationAnchorGoalIds.length,
       minimumRequiredTerminalAutonomyGoals: Number.isFinite(minRequiredTerminalAutonomyGoals)
@@ -2580,6 +2684,7 @@ function evaluateRouteEndpointCompositionVisibility(
       nationalPrerequisiteOnlyGoalOccurrencesImportedByJurisdictionStageAuthority,
       nationalStageTargetGoalOccurrencesMaterializedFromFullExposure,
       nationalProjectionScopesWithInvalidExposureFamily: invalidNationalExposureFamilyScopes.length,
+      projectionScopesWithInvalidSourceStageAuthority: invalidSourceStageAuthorityScopes.length,
       projectionScopesWithIncompleteExplicitTerminalPrerequisites: terminalPrerequisiteClosureScopes.length,
       explicitTerminalPrerequisiteOccurrencesMissingFromProjection: terminalPrerequisiteOccurrencesMissingFromProjection,
       projectionScopesWithIncompleteWholeMaterialCoverageBindings: terminalMaterialCoverageBindingScopes.length,
@@ -2612,6 +2717,7 @@ function evaluateRouteEndpointCompositionVisibility(
       uniqueVisibleSelectedGoalsMissingDirectTerminalRoute: uniqueGoalsMissingDirectTerminalRoute.size,
     },
     [
+      ...explicitTerminalConfigurationIssues,
       ...(viewFiles.length === 0 ? ['No relevant composition view found for configured route scope.'] : []),
       ...terminalGoalsMissingCompiledApplicability.map((goalId) => `Missing compiled applicability: ${goalId}`),
       ...invalidStageStructureScopes.map((scope) => `Invalid stage-local composition structure: ${scope}`),
@@ -2622,6 +2728,7 @@ function evaluateRouteEndpointCompositionVisibility(
         (scope) => `Ambiguous jurisdiction-specific stage-placement authority for national projection: ${scope}`,
       ),
       ...invalidNationalExposureFamilyScopes.map(scope => `Invalid national stage exposure family: ${scope}`),
+      ...invalidSourceStageAuthorityScopes.map(scope => `Invalid source-stage membership authority: ${scope}`),
       ...missingMotivationScopes.map((scope) => `Missing motivation anchor(s): ${scope}`),
       ...emptyExpectedTerminalScopes.map((scope) => `No applicable terminal autonomy goal: ${scope}`),
       ...missingTerminalScopes.map((scope) => `Missing terminal autonomy goal(s): ${scope}`),
@@ -2750,12 +2857,20 @@ export function evaluateRouteProfile(
   const reverseAtomicDirectEdges = buildReverseEdges(atomicDirectEdges)
   const hasEffectivePath = createPathChecker(effectiveEdges)
   const hasReverseEffectivePath = createPathChecker(reverseEffectiveEdges)
-  const terminalAutonomyGoals = profile.terminalAutonomyClusterIds
+  const clusterTerminalAutonomyGoals = profile.terminalAutonomyClusterIds
     .flatMap((clusterId) => goalById.get(clusterId)?.contains ?? [])
     .map((goalId) => goalById.get(goalId))
     .filter((goal): goal is LearningGoal => !!goal)
     .filter((goal) => isAtomicGoal(goal) && !isMemoryGoal(goal))
-  const terminalGoalIds = terminalAutonomyGoals.map((goal) => goal.id)
+  const explicitTerminals = resolveExplicitAtomicRouteEndpoints(profile.terminalAutonomyGoalIds ?? [], goalById,
+    new Set(clusterTerminalAutonomyGoals.map(goal => goal.id)), ownGoalIds)
+  const terminalAutonomyGoals = [...clusterTerminalAutonomyGoals, ...explicitTerminals.goals]
+  const globalSelectedIds = new Set(selectedGoals.map(goal => goal.id))
+  const globalLearningBasis = collectCompositionStageLearningBasis(new Set([
+    ...globalSelectedIds, ...clusterTerminalAutonomyGoals.map(goal => goal.id),
+  ]), effectiveEdges, profile.motivationAnchorGoalIds)
+  const terminalGoalIds = [...clusterTerminalAutonomyGoals, ...explicitTerminals.goals
+    .filter(goal => explicitAtomicEndpointApplies(goal, globalSelectedIds, globalLearningBasis))].map(goal => goal.id)
 
   const missingEffectiveMotivation = selectedGoals.filter((goal) =>
     !profile.motivationAnchorGoalIds.some((anchorId) => hasEffectivePath(goal.id, anchorId)))
@@ -2789,6 +2904,7 @@ export function evaluateRouteProfile(
     sourceCatalog,
     ownGoalIds,
     compositionViewFiles,
+    explicitTerminals.issues,
   )
 
   const rules: RuleResult[] = [
@@ -6434,6 +6550,9 @@ function renderMarkdownDe(status: StatusDocument): string {
 async function generateStatus(inputs: VerificationInputReader, assertCurrent: () => void) {
   const shouldCheck = process.argv.includes('--check')
   inputs.readText(resolve(repoRoot, 'app/scripts/lib/nationalStageProjection.ts'))
+  inputs.readText(resolve(repoRoot, 'app/scripts/lib/explicitAtomicRouteEndpoints.ts'))
+  inputs.readText(resolve(repoRoot, 'app/scripts/lib/compositionStageRouteMembership.ts'))
+  inputs.readText(resolve(repoRoot, 'app/src/utils/learnerCompositionScopeMatching.ts'))
   for (const path of PHYSICS_QA_SELECTOR_INPUT_PATHS) inputs.readText(resolve(repoRoot, path))
   const routeProfiles = createRouteProfiles(repoRoot, inputs)
   const { entries, sources } = loadCurrentCurriculumCatalog(inputs)

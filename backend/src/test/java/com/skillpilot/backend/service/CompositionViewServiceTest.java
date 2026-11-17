@@ -19,6 +19,87 @@ import org.junit.jupiter.api.io.TempDir;
 
 class CompositionViewServiceTest {
 
+    @Test
+    void combinedSelectionAndVirtualLookupPreservePartialOrderFormatAndAcquisitionSemantics(@TempDir Path directory) throws IOException {
+        Path views = directory.resolve("DE/Gymnasium/composition-views/physik");
+        Files.createDirectories(views);
+        for (String profile : List.of("GK", "LK")) {
+            Files.writeString(views.resolve(profile + ".view.json"), """
+                {"$schema":"https://skillpilot.com/schemas/composition-view/v1.2/composition-view.schema.json",
+                 "viewFormatVersion":"1.2","language":"de","viewId":"physics-%s","landscapeId":"physics",
+                 "scope":{"schoolForm":"Gymnasium","stage":"SekII","courseProfile":"%s"},
+                 "rootNodes":[{"kind":"structure","id":"topic","label":"Topic","children":[
+                   {"kind":"goalEntry","goalId":"seed"},
+                   {"kind":"goalEntry","goalId":"preparation","projectionRole":"prerequisiteOnly","acquisitionPlacement":true}]}]}
+                """.formatted(profile, profile));
+        }
+        LandscapeProperties properties = new LandscapeProperties();
+        properties.setDirectory(directory.toString());
+        CompositionViewService service = new CompositionViewService(properties, new ObjectMapper());
+        Map<String, String> scope = Map.of("schoolForm", "Gymnasium", "stage", "SekII", "courseProfile", "GK+LK");
+        Map<String, Object> selected = service.findMatchingView("physics", scope);
+        for (Map<String, Object> merged : List.of(selected, service.findViewById((String) selected.get("viewId")))) {
+            assertThat(merged).containsEntry("viewFormatVersion", "1.2").containsEntry("language", "de")
+                    .containsEntry("$schema", "https://skillpilot.com/schemas/composition-view/v1.2/composition-view.schema.json");
+            assertThat(merged.get("rootNodes").toString()).contains("acquisitionPlacement=true");
+        }
+    }
+
+    @Test
+    void combinedSelectionRejectsUnsupportedAndMixedFormatEnvelopes(@TempDir Path directory) throws IOException {
+        Path views = directory.resolve("DE/Gymnasium/composition-views/physik");
+        Files.createDirectories(views);
+        for (String second : List.of("9.9", "1.0")) {
+            for (String profile : List.of("GK", "LK")) {
+                String version = profile.equals("GK") ? "1.2" : second;
+                Files.writeString(views.resolve(profile + ".view.json"), """
+                    {"$schema":"https://skillpilot.com/schemas/composition-view/v1.2/composition-view.schema.json",
+                     "viewFormatVersion":"%s","language":"de","viewId":"physics-%s","landscapeId":"physics",
+                     "scope":{"schoolForm":"Gymnasium","stage":"SekII","courseProfile":"%s"},
+                     "rootNodes":[{"kind":"goalEntry","goalId":"seed"}]}
+                    """.formatted(version, profile, profile));
+            }
+            LandscapeProperties properties = new LandscapeProperties();
+            properties.setDirectory(directory.toString());
+            CompositionViewService service = new CompositionViewService(properties, new ObjectMapper());
+            assertThatThrownBy(() -> service.findMatchingView("physics", Map.of("schoolForm", "Gymnasium", "stage", "SekII", "courseProfile", "GK+LK")))
+                    .isInstanceOf(IllegalStateException.class).hasMessageContaining("composition view format");
+        }
+    }
+
+    @Test
+    @SuppressWarnings("unchecked")
+    void combinedLegacySubjectPairsRetainSupportedEnvelopesWithoutRequiringNewHeaders() throws IOException {
+        Path directory = Path.of("../curricula/DE/Gymnasium/composition-views");
+        ObjectMapper mapper = new ObjectMapper();
+        Map<String, List<Map<String, Object>>> pairs = new TreeMap<>();
+        try (var files = Files.walk(directory)) {
+            for (Path file : files.filter(path -> path.toString().endsWith(".view.json")).toList()) {
+                Map<String, Object> view = mapper.readValue(file.toFile(), new com.fasterxml.jackson.core.type.TypeReference<>() {});
+                Map<String, Object> scope = new TreeMap<>((Map<String, Object>) view.get("scope"));
+                Object profile = scope.remove("courseProfile");
+                if (!"GK".equals(profile) && !"LK".equals(profile)) continue;
+                pairs.computeIfAbsent(view.get("landscapeId") + "|" + scope, ignored -> new ArrayList<>()).add(view);
+            }
+        }
+        CompositionViewService service = createService();
+        int checked = 0;
+        for (List<Map<String, Object>> sources : pairs.values()) {
+            if (sources.size() != 2 || sources.stream().anyMatch(source -> source.containsKey("viewFormatVersion")
+                    && !"1.0".equals(source.get("viewFormatVersion")))) continue;
+            Map<String, String> scope = new LinkedHashMap<>((Map<String, String>) sources.getFirst().get("scope"));
+            scope.put("courseProfile", "GK+LK");
+            Map<String, Object> merged = service.findMatchingView((String) sources.getFirst().get("landscapeId"), scope);
+            assertThat(merged).isNotNull();
+            for (String field : List.of("viewFormatVersion", "$schema", "language")) {
+                sources.stream().map(source -> source.get(field)).filter(java.util.Objects::nonNull).findFirst()
+                        .ifPresent(value -> assertThat(merged).containsEntry(field, value));
+            }
+            checked++;
+        }
+        assertThat(checked).as("Legacy GK/LK pairs across the other authored subjects").isGreaterThanOrEqualTo(10);
+    }
+
     private static final String CANONICAL_GYMNASIUM_OVERVIEW_ID = "a0e13c56-c25f-4742-9272-3a1a603ee52e";
     private static final String CANONICAL_MATH_ID = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
     private static final String CANONICAL_PHYSICS_ID = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";

@@ -146,7 +146,8 @@
         "sourceDirectory",
         "outputDirectory",
         "locale",
-        "defaultViewId"
+        "defaultViewId",
+        "publicationBaseViewCount"
       ],
       "properties": {
         "sourceDirectory": {
@@ -160,6 +161,10 @@
         },
         "defaultViewId": {
           "$ref": "#/$defs/id"
+        },
+        "publicationBaseViewCount": {
+          "const": 88,
+          "description": "Immutable historical publication inventory; current view count is bound separately in expectedCounts.views."
         }
       }
     },

@@ -25,6 +25,8 @@ import {
   type DeterministicZip32Entry,
 } from './deterministicZip32'
 import { projectOutLearningUnits } from './learningUnitLayerProjection'
+import { readPreparationEvidence } from './subjectExportPreparationEvidence'
+import { collectCompositionProjectionRoleGoalIds, type CompositionViewNode } from '../src/utils/authoring/compositionViewAuthoring'
 import {
   legacySubjectExportGoalVisualizationPath,
   subjectExportGoalVisualizationPath,
@@ -1034,9 +1036,14 @@ export const sanitizeJsonForPackage = (
   }
 
   if (value && typeof value === 'object') {
+    // This rationale is part of a validated acquisition-placement contract,
+    // rather than an optional source excerpt. Keep it in composition views;
+    // its text still passes through the normal repository-locator rewriting.
+    const preparationEvidence = category === 'composition-view' && parentKey === 'placementEvidence'
+      && value.role === 'reviewedPreparation'
     return Object.fromEntries(
       Object.entries(value)
-        .filter(([key]) => !shouldOmitPackageJsonKey(key, category))
+        .filter(([key]) => !shouldOmitPackageJsonKey(key, category) || (preparationEvidence && key === 'rationale'))
         .map(([key, child]) => [key, sanitizeJsonForPackage(child, category, key, urlRewrites)]),
     )
   }
@@ -1506,7 +1513,7 @@ export const selectCardDeckFiles = (
 }
 
 const goalVisualizationMediaType = (extension: string, content: Buffer) => {
-  if (extension === '.jpg') {
+  if (extension === '.jpg' || extension === '.jpeg') {
     return content.length >= 3
       && content[0] === 0xff
       && content[1] === 0xd8
@@ -1583,8 +1590,8 @@ export const selectGoalVisualizationAssets = (
       }
 
       const extension = extname(packagePath).toLowerCase()
-      if (extension !== '.jpg' && extension !== '.png') {
-        errors.push(`${context}: only .jpg and .png assets are supported.`)
+      if (extension !== '.jpg' && extension !== '.jpeg' && extension !== '.png') {
+        errors.push(`${context}: only .jpg, .jpeg and .png assets are supported.`)
         return
       }
       const expectedPackagePath = legacySubjectExportGoalVisualizationPath(subjectSlug, goalId, extension)
@@ -1620,6 +1627,9 @@ export const selectGoalVisualizationAssets = (
       }
 
       seenPackagePaths.add(packagePath)
+      // .jpeg and .jpg have identical media semantics. Keep the existing
+      // package .jpg path contract and transport the original bytes unchanged.
+      const packagedExtension = extension === '.jpeg' ? '.jpg' : extension
       assets.push({
         sourcePublicUrl: publicUrl,
         sourcePath: absoluteAssetPath,
@@ -1627,8 +1637,8 @@ export const selectGoalVisualizationAssets = (
         record: {
           goalId,
           order,
-          packagePath: subjectExportGoalVisualizationPath(subjectSlug, goalId, extension),
-          publicUrl: `/${subjectExportGoalVisualizationPath(subjectSlug, goalId, extension)}`,
+          packagePath: subjectExportGoalVisualizationPath(subjectSlug, goalId, packagedExtension),
+          publicUrl: `/${subjectExportGoalVisualizationPath(subjectSlug, goalId, packagedExtension)}`,
           mediaType,
           bytes: inspected.bytes,
           sha256: inspected.sha256,
@@ -1860,8 +1870,32 @@ export const collectExternalCompositionGoalReferences = (
   localGoalIds: ReadonlySet<string>,
   externalIndex: ReadonlyMap<string, SubjectExportExternalGoalOwner>,
   errors: string[],
+  preparationGraph?: ReadonlyMap<string, { requires?: readonly string[]; contains?: readonly string[] }>,
 ): JsonValue[] => {
   const references: JsonValue[] = []
+  let graph = preparationGraph
+  const preparationIsRequired = (node: Record<string, JsonValue>, view: Record<string, JsonValue>) => {
+    const evidence = readPreparationEvidence(node.placementEvidence, String(node.goalId), localGoalIds)
+    if (!evidence || node.kind !== 'goalEntry') return null
+    graph ??= new Map(walkFiles(resolveRepoPath('curricula/DE/Gymnasium/canonical'))
+      .filter(path => extname(path).toLowerCase() === '.json')
+      .flatMap(path => {
+        const data = jsonObject(readJson(path))
+        return (Array.isArray(data.goals) ? data.goals : []).filter(isJsonObject)
+          .filter(goal => typeof goal.id === 'string')
+          .map(goal => [String(goal.id), {
+            requires: Array.isArray(goal.requires) ? goal.requires.filter((id): id is string => typeof id === 'string') : [],
+            contains: Array.isArray(goal.contains) ? goal.contains.filter((id): id is string => typeof id === 'string') : [],
+          }] as const)
+      }))
+    if (!evidence.requiredByPath.every((id, i, path) => i === path.length - 1
+      || graph!.get(id)?.requires?.includes(path[i + 1]))) return null
+    // The claimed local consumer must actually occur in this view's target
+    // subtree; an unrelated local goal cannot authorize an external target.
+    const { targetGoalIds } = collectCompositionProjectionRoleGoalIds(
+      (Array.isArray(view.rootNodes) ? view.rootNodes : []) as unknown as CompositionViewNode[], graph)
+    return targetGoalIds.has(evidence.consumerGoalId) ? evidence : null
+  }
   views.forEach(({ path, data }) => {
     if (!isJsonObject(data)) return
     const fromViewId = typeof data.viewId === 'string' ? data.viewId : data.id
@@ -1869,12 +1903,13 @@ export const collectExternalCompositionGoalReferences = (
       if (!isJsonObject(node)) return
       if (typeof node.goalId === 'string' && !localGoalIds.has(node.goalId)) {
         const owner = externalIndex.get(node.goalId)
+        const preparation = node.projectionRole === 'target' ? preparationIsRequired(node, data) : null
         if (!owner || !owner.targetLandscapeId || !owner.targetSubject || !owner.targetTitle) {
           errors.push(`Unresolved external composition reference from ${path} to ${node.goalId}`)
         } else if (typeof fromViewId !== 'string'
           || !['goalEntry', 'canonicalSubtree'].includes(String(node.kind))
-          || node.projectionRole !== 'prerequisiteOnly') {
-          errors.push(`External composition reference must be an explicit prerequisiteOnly goal in ${path}: ${node.goalId}`)
+          || (node.projectionRole !== 'prerequisiteOnly' && !preparation)) {
+          errors.push(`External composition reference needs an explicit prerequisite role or verified acquisition path in ${path}: ${node.goalId}`)
         } else {
           const { goalId, ...metadata } = owner
           references.push({
@@ -1884,6 +1919,7 @@ export const collectExternalCompositionGoalReferences = (
             projectionRole: node.projectionRole,
             targetGoalId: goalId,
             ...metadata,
+            ...(preparation ? { preparationEvidence: preparation } : {}),
           })
         }
       }
@@ -1892,6 +1928,27 @@ export const collectExternalCompositionGoalReferences = (
     if (Array.isArray(data.rootNodes)) data.rootNodes.forEach(visit)
   })
   return references
+}
+
+// Canonical graph evidence is separate from the placement's claimed path. Only
+// foreign atoms occurring on acquisition paths are included, with unchanged
+// requires edges and the digest of their originating canonical document.
+export const collectPreparationCanonicalGraphs = (references: JsonValue[], localGoalIds: ReadonlySet<string>): JsonValue => {
+  const needed = new Set(references.flatMap(reference => {
+    if (!isJsonObject(reference) || !isJsonObject(reference.preparationEvidence)) return []
+    const path = reference.preparationEvidence.requiredByPath
+    return Array.isArray(path) ? path.filter((id): id is string => typeof id === 'string' && !localGoalIds.has(id)) : []
+  }))
+  const catalogs: JsonValue[] = []
+  for (const file of walkFiles(resolveRepoPath('curricula/DE/Gymnasium/canonical')).filter(path => extname(path) === '.json')) {
+    const bytes = readFileSync(file)
+    const source = jsonObject(JSON.parse(bytes.toString('utf8')))
+    const goals = (Array.isArray(source.goals) ? source.goals : []).filter(isJsonObject)
+      .filter(goal => typeof goal.id === 'string' && needed.has(goal.id))
+      .map(goal => ({ id: goal.id, requires: goal.requires ?? [], contains: goal.contains ?? [] }))
+    if (goals.length) catalogs.push({ landscapeId: source.landscapeId, canonicalSourceSha256: sha256(bytes), goals })
+  }
+  return { schemaVersion: 1, catalogs }
 }
 
 const collectExternalGoalReferences = (
@@ -2478,9 +2535,11 @@ const main = () => {
     archiveRoot,
     'data/dependencies/external-goal-references.json',
     {
-      note: 'Cross-subject graph and authored prerequisite-only composition references. Target metadata identifies canonical owners outside this subject package.',
+      note: 'Cross-subject references and verified acquisition placements. Preparation graph excerpts verify all acquisition-path edges; they do not import learner results or make this package standalone.',
       references: externalGoalReferences,
       viewReferences: externalViewGoalReferences,
+      preparationCanonicalGraphs: collectPreparationCanonicalGraphs(externalViewGoalReferences,
+        new Set((Array.isArray(canonicalData.goals) ? canonicalData.goals : []).filter(isJsonObject).map(goal => String(goal.id)))),
     },
     'external-dependencies',
     SKILLPILOT_DATA_LICENSE_CATEGORY,

@@ -79,6 +79,12 @@ def build_profile_schema() -> dict:
     schema["$id"] = contracts.BUILD_PROFILE_SCHEMA_ID
     schema["properties"]["$schema"] = {"const": contracts.BUILD_PROFILE_SCHEMA_ID}
     schema["title"] = "Common 1.3 release model with required assessment material"
+    views = schema["properties"]["compositionViews"]
+    views["required"].append("publicationBaseViewCount")
+    views["properties"]["publicationBaseViewCount"] = {
+        "const": load(UNITS / "profiles/de-gymnasium-mathematik-learning-units-release-model-v1.profile.json")["expectedCounts"]["views"],
+        "description": "Immutable historical publication inventory; current view count is bound separately in expectedCounts.views.",
+    }
     schema["properties"]["resources"]["required"].append("assessmentMaterialOutputPrefix")
     schema["properties"]["resources"]["properties"]["assessmentMaterialOutputPrefix"] = {"const": "assets/assessment-materials"}
     fields = {name: {"type": "string", "minLength": 1} for name in (
@@ -90,6 +96,62 @@ def build_profile_schema() -> dict:
         "type": "array", "maxItems": 100000, "items": {"type": "object", "additionalProperties": False,
         "required": list(fields), "properties": fields}}
     return schema
+
+
+def runtime_view_schema() -> dict:
+    schema = copy.deepcopy(load(BASE / "composition-view.schema.json"))
+    source = load(ROOT / contracts.SOURCE_VIEW_SCHEMA_PATH)
+    schema["$id"] = contracts.VIEW_SCHEMA_ID
+    schema["title"] = "Common 1.3 runtime composition view with explicit partial child order"
+    schema["properties"]["$schema"] = {"const": contracts.VIEW_SCHEMA_ID}
+    schema["properties"]["viewFormatVersion"] = {"const": "1.2"}
+    schema["$defs"]["childOrder"] = copy.deepcopy(source["$defs"]["childOrder"])
+    schema["$defs"]["structureNode"]["properties"]["childOrder"] = {"$ref": "#/$defs/childOrder"}
+    goal_entry = schema["$defs"]["goalEntryNode"]
+    goal_entry["properties"]["acquisitionPlacement"] = {"const": True}
+    goal_entry["dependentSchemas"] = {"acquisitionPlacement": {
+        "required": ["projectionRole"], "properties": {"projectionRole": {"const": "prerequisiteOnly"}},
+    }}
+    return schema
+
+
+def field_registry() -> dict:
+    registry = copy.deepcopy(load(UNITS / "profiles/skillpilot-fwu-field-semantics-learning-units-v1.registry.json"))
+    registry["registryId"] = contracts.REGISTRY_ID
+    registry["version"] = "1.3.0"
+    registry["description"] = "Unpublished common 1.3 extension: unchanged learning-unit semantics plus explicit local composition-child partial order. Missing and empty declarations differ; after edges are a set, not display order or goal prerequisites."
+    entries = {entry["entryId"]: entry for entry in registry["entries"]}
+    container = copy.deepcopy(entries["goal.dimension-tags"])
+    container.update({"entryId": "view.child-order", "artifactRole": "composition-view",
+                      "pathPattern": "/rootNodes/**/childOrder", "cardinality": {"presence": "optional"},
+                      "dynamicMapKeys": {"policy": "enumerated", "allowedKeys": ["after"], "keyNormalization": "unicode-code-point-order"}})
+    container["rdfMapping"]["canonicalJsonLiteral"].update({"predicate": "sp:compositionChildOrderJson",
+        "coreGap": "Explicit partial planning order of local composition children is distinct from atomic prerequisite demand.",
+        "subtreeProjection": "exclude-more-specific-descendants"})
+    container["reverseMapping"]["onMissing"] = "preserve-missing"
+    container["reverseMapping"]["mergePolicy"] = "merge-more-specific-descendants-reject-conflicts"
+    edges = copy.deepcopy(entries["goal.tags"])
+    edges.update({"entryId": "view.child-order-after", "artifactRole": "composition-view",
+                  "pathPattern": "/rootNodes/**/childOrder/after", "cardinality": {"presence": "required", "minItems": 0, "maxItems": 100000},
+                  "dataType": {"jsonTypes": ["array"], "itemJsonTypes": ["object"], "format": "none"}})
+    edges["rdfMapping"] = {"strategy": "registered-canonical-json-literal", "canonicalJsonLiteral": {
+        "predicate": "sp:compositionChildAfterJson", "datatype": "xsd:string", "coreGap": "Local composition order pairs have no atomic-prerequisite meaning.",
+        "maxBytes": 1048576, "granularity": "single-field-value", "subtreeProjection": "complete-value"}}
+    edges["reverseMapping"] = {"mode": "canonical-json-parse", "roundtrip": "exact", "onMissing": "error", "onAmbiguous": "error"}
+    registry["entries"].extend([container, edges])
+    for name in ("unit", "after"):
+        endpoint = copy.deepcopy(entries["view.node-id"])
+        endpoint.update({"entryId": f"view.child-order-endpoint-{name}",
+                         "pathPattern": f"/rootNodes/**/childOrder/after/*/{name}", "cardinality": {"presence": "required"}})
+        endpoint["rdfMapping"]["construction"]["predicate"] = "sp:compositionChildOrder" + name.title()
+        endpoint["reverseMapping"]["onMissing"] = "error"
+        registry["entries"].append(endpoint)
+    acquisition = copy.deepcopy(entries["goal.core"])
+    acquisition.update({"entryId": "view.node-acquisition-placement", "artifactRole": "composition-view",
+                        "pathPattern": "/rootNodes/**/acquisitionPlacement"})
+    acquisition["rdfMapping"]["construction"]["predicate"] = "sp:viewNodeAcquisitionPlacement"
+    registry["entries"].append(acquisition)
+    return registry
 
 
 def material_bindings(source: dict, value: dict) -> list[dict]:
@@ -136,9 +198,11 @@ def build_profile() -> dict:
     value = copy.deepcopy(load(UNITS / "profiles/de-gymnasium-mathematik-learning-units-release-model-v1.profile.json"))
     value["$schema"] = contracts.BUILD_PROFILE_SCHEMA_ID
     value["profileId"] = contracts.BUILD_PROFILE_ID
+    value["contracts"]["fieldSemanticsRegistryPath"] = "contracts/curriculum-package/v1.3/profiles/" + contracts.FIELD_REGISTRY_NAME
     value["package"]["packageVersion"] = "0.1.0-runtime.1"
     value["package"]["releaseId"] = value["package"]["packageId"] + "@" + value["package"]["packageVersion"]
     value["resources"]["assessmentMaterialOutputPrefix"] = "assets/assessment-materials"
+    value["compositionViews"]["publicationBaseViewCount"] = value["expectedCounts"]["views"]
     source = load(ROOT / value["canonicalLandscape"]["sourcePath"])
     materials = material_bindings(source, value)
     value["resources"]["assessmentMaterials"] = materials
@@ -161,16 +225,18 @@ def build_profile() -> dict:
 
 def generated() -> dict[Path, bytes]:
     schemas = {"resource-index.schema.json": resource_schema(), "runtime-catalog.schema.json": catalog_schema(),
-               "release-model-build-profile.schema.json": build_profile_schema()}
+               "release-model-build-profile.schema.json": build_profile_schema(),
+               "runtime-composition-view.schema.json": runtime_view_schema()}
     profile = copy.deepcopy(load(UNITS / "profiles/full-standalone-learning-units-v1.profile.json"))
     profile["profileId"] = contracts.PROFILE_ID
     profile["description"] = "Unpublished common 1.3 runtime: pinned learning-unit definitions and required, byte-exact assessment stimuli; stage-plan activation remains separately gated."
     profile["compatibility"]["runtimeContractVersion"] = "1.3"
-    for name in ("resource-index.schema.json", "runtime-catalog.schema.json"):
+    for name in ("resource-index.schema.json", "runtime-catalog.schema.json", "runtime-composition-view.schema.json"):
         profile["trustedContractSchemas"].append({"id": schemas[name]["$id"], "sha256": hashlib.sha256(raw(schemas[name])).hexdigest()})
     for role in profile["roles"]:
         if role["role"] == "runtime-catalog": role["validationSchemaIds"] = [contracts.CATALOG_SCHEMA_ID]
         if role["role"] == "resource-index": role["validationSchemaIds"] = [contracts.RESOURCE_SCHEMA_ID]
+        if role["role"] == "composition-view": role["validationSchemaIds"].append(contracts.VIEW_SCHEMA_ID)
         if role["role"] == "binary-asset": role["mediaTypes"].append("image/svg+xml")
     review = copy.deepcopy(load(UNITS / "package-redistribution-review.schema.json"))
     review = json.loads(json.dumps(review).replace("https://skillpilot.com/schemas/curriculum-package/v1.2/package-redistribution-review.schema.json", contracts.REVIEW_SCHEMA_ID)
@@ -222,6 +288,7 @@ def generated() -> dict[Path, bytes]:
     result = {OUTPUT / name: raw(value) for name, value in schemas.items()}
     result[OUTPUT / "profiles" / f"{contracts.PROFILE_ID}.profile.json"] = raw(profile)
     result[OUTPUT / "profiles" / f"{contracts.BUILD_PROFILE_ID}.profile.json"] = raw(build_profile())
+    result[OUTPUT / "profiles" / contracts.FIELD_REGISTRY_NAME] = raw(field_registry())
     result[OUTPUT / "package-redistribution-review.schema.json"] = raw(review)
     return result
 

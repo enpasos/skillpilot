@@ -8,11 +8,15 @@ import { deriveSemanticRouteProfiles } from './lib/semanticRouteInventory'
 import { loadVerifiedPrerequisiteReductionContext, reviewBindingGoal } from './prerequisiteReductionProof'
 import { buildApplicabilityCompilation, intersectApplicabilityJurisdictions } from './applicabilityCompiler'
 import type { SkillLandscape } from '../src/landscapeTypes'
+import { prepareLandscapeEntries, type LandscapeEntry } from '../src/hooks/useLandscapes'
+import { applyCompositionViewProjection, applyPersonalCurriculumProjection } from '../src/utils/compositionViewRuntime'
+import { normalizeLearnerProjectedEntries } from '../src/utils/learnerTreeProjection'
 import { normalizeCanonicalLandscape } from '../src/utils/authoring/canonicalAuthoring'
 import {
   collectCompositionProjectionRoleGoalIds,
   compileCompositionView,
   normalizeCompositionView,
+  type CompositionViewNode,
 } from '../src/utils/authoring/compositionViewAuthoring'
 
 const routeProfiles = createRouteProfiles()
@@ -24,6 +28,21 @@ const raw = readJson('curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MA
 const landscape = normalizeCanonicalLandscape(raw)
 const goalById = new Map(landscape.goals.map((goal) => [goal.id, goal]))
 const rawGoalById = new Map(raw.goals.map((goal) => [goal.id, goal]))
+const physics = readJson('curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json') as SkillLandscape
+const allRawGoals = new Map([...raw.goals, ...physics.goals].map(goal => [goal.id, goal]))
+const allGoalById = new Map([...landscape.goals, ...normalizeCanonicalLandscape(physics).goals].map(goal => [goal.id, goal]))
+const foreignDemand = readJson('app/scripts/config/math-foreign-acquisition-demand.json') as {
+  views: Record<string, { goalId: string, consumerGoalId: string, requiresPath: string[], physicsViewId: string }[]>
+}
+const nodes = (roots: CompositionViewNode[]): CompositionViewNode[] => roots.flatMap(node =>
+  [node, ...(node.kind === 'structure' ? nodes(node.children) : [])])
+const reachable = (entries: LandscapeEntry[]) => {
+  const index = new Map(entries.flatMap(entry => entry.goals.map(goal => [goal.id, goal] as const)))
+  const found = new Set<string>()
+  const visit = (id: string) => { if (found.has(id)) return; found.add(id); index.get(id)?.contains.forEach(visit) }
+  entries.flatMap(entry => entry.goals).filter(goal => goal.tags.includes('root')).forEach(goal => visit(goal.id))
+  return found
+}
 const common = [
   '61686d85-0301-550e-bab9-bd9411c3e7ce', '5dabf0b3-89b1-59a6-ae57-014f92becd3b',
   '6517427b-cf4e-5ebf-9a76-e1035617687c', 'dd6c5e08-0cc6-53c0-b317-ebaba277c776',
@@ -221,11 +240,46 @@ for (const name of readdirSync(resolve(repoRoot, viewDir)).filter((name) => name
   }
   checkedHe += 1
   assert.deepEqual(compileCompositionView(view, landscape).findings, [], `${name}: invalid composition`)
+  const physicsView = normalizeCompositionView(readJson(`curricula/DE/Gymnasium/composition-views/physik/${name}`))
+  const physicsTargets = collectCompositionProjectionRoleGoalIds(physicsView.rootNodes, allGoalById).targetGoalIds
   for (const id of [...common, ...tasks]) assert(targetGoalIds.has(id), `${name}: common content or endpoint missing: ${id}`)
   for (const id of lkOnly) {
     assert(!targetGoalIds.has(id), `${name}: LK-only Q2.1 content is a GK target`)
-    assert(!prerequisiteOnlyGoalIds.has(id), `${name}: LK-only content hidden as a prerequisite`)
+    if (prerequisiteOnlyGoalIds.has(id)) {
+      // A conditional Physics acquisition template is not a Mathematics demand.
+      // Ordinary support refs remain forbidden, as do fictitious foreign witnesses.
+      const refs = nodes(view.rootNodes).filter(node => node.kind !== 'structure' && node.goalId === id)
+      assert.equal(refs.length, 1, `${name}: ambiguous LK-only preparation reference: ${id}`)
+      assert(refs[0].kind === 'goalEntry' && refs[0].projectionRole === 'prerequisiteOnly'
+        && refs[0].acquisitionPlacement === true, `${name}: LK-only content hidden as ordinary support: ${id}`)
+      const witnesses = foreignDemand.views[view.viewId]?.filter(witness => witness.goalId === id) ?? []
+      assert(witnesses.length > 0, `${name}: LK-only acquisition template has no foreign demand: ${id}`)
+      for (const witness of witnesses) {
+        assert.equal(witness.physicsViewId, physicsView.viewId, `${name}: foreign demand refers to another Physics scope`)
+        assert(physics.goals.some(goal => goal.id === witness.consumerGoalId), `${name}: missing Physics consumer`)
+        assert(physicsTargets.has(witness.consumerGoalId), `${name}: foreign consumer is not a selected Physics target`)
+        assert.equal(witness.requiresPath[0], witness.consumerGoalId)
+        assert.equal(witness.requiresPath.at(-1), id)
+        assert(witness.requiresPath.length > 1)
+        for (let i = 1; i < witness.requiresPath.length; i++) {
+          assert(allRawGoals.get(witness.requiresPath[i - 1])?.requires
+            .some(required => required.split(':').at(-1) === witness.requiresPath[i]),
+          `${name}: fictitious foreign preparation witness for ${id}`)
+        }
+      }
+    }
   }
+  const mathSeeds = [...targetGoalIds].filter(id => !goalById.get(id)?.contains.length)
+  const mathLearning = new Set(mathSeeds.flatMap(id => [id, ...ancestorClosure(id)]))
+  for (const id of lkOnly) assert(!mathLearning.has(id), `${name}: GK Mathematics alone requires LK-only Q2.1 content: ${id}`)
+  const source = prepareLandscapeEntries([raw])
+  const personal = source.map(entry => ({ ...entry, meta: { ...entry.meta, personalCurriculumProjection: {
+    revision: 'atomic-prerequisite-learning-v1' as const, rootLandscapeId: raw.landscapeId, scopeRevision: name,
+    seedAtomicGoalIds: mathSeeds, targetGoalIds: [...mathLearning], requiredByPaths: {},
+  } } }))
+  const visible = reachable(applyPersonalCurriculumProjection(
+    normalizeLearnerProjectedEntries(applyCompositionViewProjection(source, view)), personal))
+  for (const id of lkOnly) assert(!visible.has(id), `${name}: an unused foreign template became visible in GK Mathematics alone: ${id}`)
   for (const id of [...common, ...tasks]) {
     for (const predecessor of goalById.get(id)!.requires) {
       assert(targetGoalIds.has(predecessor) || prerequisiteOnlyGoalIds.has(predecessor), `${name}: direct route prerequisite missing: ${predecessor}`)

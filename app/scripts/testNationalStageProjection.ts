@@ -60,6 +60,12 @@ const noPrerequisite = materializeNationalStageProjection({ ...input, nationalEx
 })) })
 assert(!noPrerequisite.projection.visibleGoalIds.has('support'),
   'missing whole-task preparation remains missing; neither canonical requires nor a Land path auto-imports it')
+const differingCourses = materializeNationalStageProjection({ ...input, nationalExposureFamily: [family[0], {
+  ...family[1], targetGoalIds: set('lower'), visibleGoalIds: set('lower', 'motion'),
+}] })
+assert.deepEqual(differingCourses.errors, [])
+assert.deepEqual(differingCourses.projection, bw.projection,
+  'the explicitly complete neutral GK/LK family can expose content from either course, without widening the Land authority')
 
 const rejects: Array<[string, Parameters<typeof materializeNationalStageProjection>[0], RegExp]> = [
   ['missing binding', { ...input, sourceViewIds: [] }, /binding/],
@@ -75,8 +81,8 @@ const rejects: Array<[string, Parameters<typeof materializeNationalStageProjecti
   ['missing stage authority', { ...input, stageAuthorities: [] }, /Missing jurisdiction/],
   ['different target authority', { ...input, stageAuthorities: [lowerBW, { ...lowerBW, targetGoalIds: set('lower') }] }, /Ambiguous jurisdiction/],
   ['different support authority', { ...input, stageAuthorities: [lowerBW, { ...lowerBW, visibleGoalIds: set('lower') }] }, /Ambiguous jurisdiction/],
-  ['neutral family differs in relevant targets', { ...input, nationalExposureFamily: [family[0], { ...family[1], targetGoalIds: set('lower') }] }, /Ambiguous relevant/],
-  ['neutral family differs in relevant support', { ...input, nationalExposureFamily: [family[0], { ...family[1], visibleGoalIds: set('lower', 'motion', 'terminal') }] }, /Ambiguous relevant/],
+  ['unknown neutral course', { ...input, nationalExposureFamily: family.map(source => ({ ...source,
+    scope: { ...source.scope, courseProfile: 'UNKNOWN' } })) }, /complete explicit GK\/LK/],
 ]
 for (const [label, candidate, expected] of rejects) {
   const result = materializeNationalStageProjection(candidate)
@@ -88,4 +94,4 @@ const specificCourse = materializeNationalStageProjection({
 })
 assert.deepEqual(specificCourse.errors, [])
 assert.deepEqual(specificCourse.projection, bw.projection)
-console.log('National stage compatibility materialization: BW/HE/default, isolated and neutral families, missing endpoint/preparation and 15 fail-closed cases passed.')
+console.log('National stage compatibility materialization: BW/HE/default, exact neutral GK/LK union, missing endpoint/preparation and 14 fail-closed cases passed.')

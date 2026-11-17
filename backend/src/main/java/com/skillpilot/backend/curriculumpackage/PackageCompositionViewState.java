@@ -5,6 +5,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.composition.CourseProfileCompositionViewMerger;
+import com.skillpilot.backend.composition.CompositionViewFormatMetadata;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -478,7 +479,14 @@ public final class PackageCompositionViewState {
                 .toList();
         String runtimeViewId = "offering-view:" + sha256(
                 offering.offeringId() + "\u0000" + String.join("\u0000", offering.viewIds()));
-        Map<String, Object> merged = new LinkedHashMap<>();
+        Map<String, Object> formatMetadata;
+        try {
+            formatMetadata = CompositionViewFormatMetadata.mergeRuntimeViews(offering.viewIds().stream()
+                    .map(viewId -> views.get(viewId).document()).toList());
+        } catch (IllegalStateException exception) {
+            throw failure(exception.getMessage(), exception);
+        }
+        Map<String, Object> merged = new LinkedHashMap<>(formatMetadata);
         merged.put("viewId", runtimeViewId);
         merged.put("landscapeId", offering.landscapeId());
         merged.put("scope", offering.scope());

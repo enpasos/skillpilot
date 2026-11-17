@@ -1,0 +1,129 @@
+{
+  "id": "3b7b2b62-e39c-5936-b0d8-5406206e57b6",
+  "shortKey": "lens_eye_two_model_simulations",
+  "title": "Prüfungsaufgabe: Zwei Linsenaugen konstruieren und simulieren",
+  "titleEn": "Assessment: Construct and simulate two lens-eye models",
+  "description": "Zwei unabhängige Modellfälle mit Strahlenkonstruktion, quantitativem Schärfekriterium, eigenen Parameterläufen und begründeten Grenzen der Ein-Linsen-Näherung.",
+  "descriptionEn": "Two independent model cases with ray construction, a quantitative sharp-image condition, own parameter runs, and justified limits of the single-lens approximation.",
+  "weight": 1,
+  "tags": [
+    "GK",
+    "LK",
+    "Practice",
+    "Assessment",
+    "canonical"
+  ],
+  "type": "atomic",
+  "contains": [],
+  "requires": [
+    "84ddb244-e560-592f-9d43-e84c801fe5b4"
+  ],
+  "dimensionTags": {
+    "framework": "canonical-gymnasium-physics",
+    "demandLevel": "AB2",
+    "processCompetencies": [
+      "PK2_MODELLIEREN",
+      "PK4_KOMMUNIZIEREN"
+    ],
+    "guidingIdeas": [
+      "LI_WELLEN",
+      "LI_FELDER",
+      "LI_TECHNIK"
+    ],
+    "phase": "GLOBAL",
+    "area": "Biophysik",
+    "topicCode": "CANONICAL_PHYSICS_BIOPHYSICS_LENS_EYE_TWO_MODEL_SIMULATIONS"
+  },
+  "applicability": {
+    "jurisdiction": [
+      "DE-BB",
+      "DE-BE",
+      "DE-BW",
+      "DE-BY",
+      "DE-HB",
+      "DE-HE",
+      "DE-HH",
+      "DE-MV",
+      "DE-NI",
+      "DE-NW",
+      "DE-RP",
+      "DE-SH",
+      "DE-SL",
+      "DE-SN",
+      "DE-ST",
+      "DE-TH"
+    ]
+  },
+  "extendedData": {
+    "applicabilityFromRequires": true,
+    "applicabilityMappingInheritance": "boundary"
+  },
+  "examData": {
+    "reviewStatus": "released",
+    "coveredGoalIds": [
+      "84ddb244-e560-592f-9d43-e84c801fe5b4"
+    ],
+    "coveredStrands": [
+      "LI_WELLEN",
+      "LI_FELDER",
+      "LI_TECHNIK"
+    ],
+    "demandLevels": [
+      "AB1",
+      "AB2",
+      "AB3"
+    ],
+    "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/physik/stage-source-route-repair-20261117-v1/lens-eye-two-model-simulations.md",
+    "taskContent": "Modelliere zwei vereinfachte Linsenaugen A und B. Es handelt sich um eine eigene schulische Modellaufgabe, keine Messung an einem echten Auge. Du benötigst Papier, Lineal und einen Taschenrechner oder eine Tabellenkalkulation. Reiche für A und B jeweils eine eigene Konstruktion, einen nachvollziehbaren Rechenweg, ein selbst berechnetes Simulationsprotokoll und eine begründete Modellkritik ein.\n\nMaterial und Regeln: Eine einzige dünne Sammellinse ersetzt sämtliche brechenden Flächen des Auges. Ihre Ebene liegt bei x=0, die optische Achse bei y=0. Der Gegenstandspfeil steht links bei x=−g mit der Spitze auf y=G. Die ebene Netzhaut liegt rechts im festen Abstand b_R. Alle Längen werden in mm angegeben; g, f und b sind für die hier betrachteten reellen Gegenstände und Bilder positiv. Die Linsengleichung lautet 1/f=1/g+1/b. Ein zur Achse paralleler Strahl läuft hinter der Linse durch den bildseitigen Brennpunkt; ein Strahl durch die Linsenmitte verläuft ungebrochen. Das Modell gilt für achsennahe Strahlen und kleine Öffnungen. Die Netzhaut wird bei der Akkommodation im Modell nicht verschoben; die Brennweite f kann verändert werden. Für eine Simulation stellst du die Eingaben (g,f) ein, berechnest die Ausgabe b_sim=1/(1/f−1/g) und anschließend Δ=b_sim−b_R. Protokolliere die Eingaben, Ausgaben und deine Deutung. Δ=0 ist das quantitative Schärfekriterium dieses Modells. Es ist keine Messunsicherheit vorgegeben; erfinde keine Fehlerbalken.\n\nA: Gegeben sind g=180 mm, G=1,8 mm und b_R=20 mm.\nA1 Zeichne eine beschriftete, bei Bedarf nicht maßstäbliche Strahlenkonstruktion mit Achse, Linse, Gegenstand, Netzhaut und dem bildseitigen Brennpunkt für scharfe Abbildung. Konstruiere von der Gegenstandsspitze den Parallelstrahl und den Mittelpunktstrahl. Zeige ihren gemeinsamen Bildpunkt auf der Netzhaut und kennzeichne die Bildorientierung. Leite die benötigte Brennweite mit der Linsengleichung her und bestimme die Bildhöhe aus der Konstruktion oder ähnlichen Dreiecken.\nA2 Erzeuge ein eigenes Simulationsprotokoll für dieselbe Gegenstandslage mit f=15 mm, 18 mm und 20 mm. Berechne jeweils b_sim und Δ und entscheide begründet, ob der Bildpunkt vor, auf oder hinter der Netzhaut liegt. Ändere danach nur g auf 90 mm und führe mit der zuvor für g=180 mm passenden Brennweite einen neuen Simulationslauf aus. Bestimme anschließend die neue Brennweite für scharfe Abbildung bei unverändertem b_R und überprüfe sie durch einen weiteren Lauf. Beschreibe, welche Modellgröße sich beim Nahsehen ändern muss und in welcher Richtung.\nA3 Beurteile die Behauptung: „Wenn Δ=0 herauskommt, beweist diese Simulation für ein reales Auge ein scharfes Bild bei beliebiger Pupillenöffnung und auch weit außerhalb der optischen Achse.“ Erkläre an mindestens einer ausdrücklich genannten Modellannahme, was die Rechnung tatsächlich zeigt und welche Aussage sie nicht begründet.\n\nB: Bearbeite mit einer neuen eigenen Konstruktion und neuen Rechnungen den zweiten Modellfall g=120 mm, G=1,0 mm und b_R=24 mm. Ein bloßer Verweis auf die Zahlen oder Zeichnung aus A genügt nicht.\nB1 Konstruiere Parallel- und Mittelpunktstrahl für eine scharfe Netzhautabbildung, beschrifte den Brennpunkt und bestimme Brennweite, Bildhöhe und Bildorientierung mit nachvollziehbarer Rechnung.\nB2 Simuliere diese Gegenstandslage für f=15 mm, 20 mm und 24 mm; dokumentiere wieder b_sim, Δ und die Lage des Bildpunkts. Ändere dann nur g auf 60 mm. Teste zunächst die bisher passende Brennweite, ermittle die neue passende Brennweite bei fester Netzhaut und überprüfe sie in einem zusätzlichen Lauf. Vergleiche die nötige Änderung mit deiner Strahlenkonstruktion.\nB3 Eine Mitschülerin verschiebt in ihrer Simulation bei g=60 mm die Netzhaut einfach zum berechneten Bildpunkt und nennt dies „Akkommodation des Modells“. Prüfe, ob sie damit die vereinbarte Modellbedingung erfüllt. Gib stattdessen die zulässige Änderung an. Erkläre außerdem eine weitere Grenze des Ein-Linsen-Modells, die nicht schon allein in „achsennahe Strahlen“ besteht: Was kann dieses vereinfachte optische Modell über das Zusammenspiel der einzelnen brechenden Flächen oder die anschließende Wahrnehmung nicht entscheiden? Begründe deine Grenze, statt nur „ungenau“ zu schreiben.\n\nAndere fachlich gleichwertige Rechen-, Konstruktions- und Simulationswege sind zulässig. Ein Tabellenblatt oder ein kurzes Programm darf verwendet werden; ein fremdes Protokoll oder eine reine Beschreibung ohne selbst berechnete Parameterläufe ersetzt die Simulationen nicht.",
+    "taskContentEn": "Model two simplified lens eyes A and B. This is an original school modelling task, not a measurement on a real eye. Use paper, a ruler, and a calculator or spreadsheet. For each case submit your own ray construction, traceable calculations, a simulation record you calculated yourself, and a justified discussion of model limits.\n\nMaterial and rules: One thin converging lens replaces all refracting surfaces of the eye. Its plane is at x=0 and the optical axis is y=0. An object arrow is on the left at x=−g with its tip at y=G. A flat retina is on the right at the fixed distance b_R. All lengths are in mm; g, f, and b are positive for the real objects and images considered here. The lens equation is 1/f=1/g+1/b. A ray parallel to the axis passes through the image-side focal point after the lens; a ray through the lens centre continues undeviated. The model is restricted to paraxial rays and small apertures. During accommodation in this model the retina does not move; focal length f can change. For a simulation set the inputs (g,f), calculate the output b_sim=1/(1/f−1/g), and then Δ=b_sim−b_R. Record inputs, outputs, and your interpretation. Δ=0 is this model's quantitative sharp-image criterion. No measurement uncertainty is supplied; do not invent error bars.\n\nA: g=180 mm, G=1.8 mm, and b_R=20 mm.\nA1 Draw a labelled ray construction, not necessarily to scale, showing axis, lens, object, retina, and image-side focal point for a sharp image. Construct the parallel ray and central ray from the object tip. Show their common image point on the retina and indicate image orientation. Derive the required focal length using the lens equation and determine image height from the construction or similar triangles.\nA2 Produce your own simulation record for that object position with f=15 mm, 18 mm, and 20 mm. Calculate b_sim and Δ for each and justify whether the image point is before, on, or behind the retina. Then change only g to 90 mm and run the model with the focal length previously suitable for g=180 mm. Determine the new focal length giving a sharp image at unchanged b_R and verify it in another run. Describe which model parameter must change for near vision and in which direction.\nA3 Evaluate: 'If the simulation gives Δ=0, it proves that a real eye has a sharp image for any pupil opening and far from the optical axis.' Refer to at least one explicit model assumption and explain what the calculation does establish and which claim it cannot support.\n\nB: Produce a new construction and new calculations for a second model with g=120 mm, G=1.0 mm, and b_R=24 mm. Merely referring to A's numbers or drawing is insufficient.\nB1 Construct parallel and central rays for a sharp retinal image, label the focal point, and determine focal length, image height, and orientation with traceable calculations.\nB2 Simulate this object position for f=15 mm, 20 mm, and 24 mm, recording b_sim, Δ, and image location. Then change only g to 60 mm. First test the previously suitable focal length, determine the new suitable focal length at a fixed retina, and verify it in an additional run. Relate the required change to your ray construction.\nB3 A classmate simply moves the retina in her g=60 mm simulation to the calculated image point and calls that 'accommodation of the model'. Check whether this satisfies the agreed model condition and state the permitted change instead. Also explain another limit of the single-lens model beyond merely 'paraxial rays': what can this simplified optical model not decide about the contribution of individual refracting surfaces or subsequent perception? Justify the limit rather than merely saying 'inaccurate'.\n\nScientifically equivalent calculation, construction, and simulation methods are accepted. You may use a spreadsheet or short program; somebody else's record or a description without your own calculated parameter runs cannot replace the simulations.",
+    "solutionContent": "A: f=gb_R/(g+b_R)=18 mm. Der Mittelpunktstrahl hat die Steigung −G/g=−0,01 und trifft bei (x=20 mm; y=−0,2 mm) auf die Netzhaut. Der Parallelstrahl verlässt die Linse bei (x=0; y=1,8 mm), läuft durch (x=18 mm; y=0) und trifft denselben Bildpunkt. Das Bild ist reell und umgekehrt, seine Höhe beträgt 0,2 mm (gerichtet B=−0,2 mm). Für f=15,18,20 mm erhält man b_sim=180/11≈16,364;20;22,5 mm, also Δ≈−3,636;0;+2,5 mm: vor/auf/hinter der Netzhaut. Für g=90 mm mit altem f=18 mm gilt b_sim=22,5 mm und Δ=+2,5 mm. Neue passende Brennweite f=180/11≈16,364 mm liefert b_sim=20 mm und Δ=0. Nahsehen verlangt in diesem Modell kleinere Brennweite bei fester Netzhaut. Δ=0 ist nur die Schnittbedingung der modellierten paraxialen Strahlen: große Öffnungen und achsenferne Strahlen werden von den Modellannahmen nicht erfasst; deren Bildqualität folgt daraus nicht.\n\nB: f=20 mm. Der Mittelpunktstrahl hat Steigung −1/120; bei x=24 mm liegt die Spitze bei y=−0,2 mm. Der Parallelstrahl läuft von (x=0; y=1,0 mm) über den Fokus (x=20 mm; y=0) zu demselben Bildpunkt. Reelles umgekehrtes Bild, Höhe 0,2 mm. Für f=15,20,24 mm folgt b_sim=120/7≈17,143;24;30 mm, somit Δ≈−6,857;0;+6 mm: vor/auf/hinter der Netzhaut. Für g=60 mm und altes f=20 mm gilt b_sim=30 mm, Δ=+6 mm. Neue passende Brennweite f=120/7≈17,143 mm liefert b_sim=24 mm und Δ=0. Die neue passende Brennweite liegt zwischen Linse und Netzhaut; der durch sie gehende Parallelstrahl und der neue Mittelpunktstrahl schneiden sich auf der unveränderten Netzhaut. Eine Verschiebung der Netzhaut verletzt die in dieser Aufgabe vereinbarte feste Geometrie und ersetzt keine Brennweitenänderung. Eine einzige Ersatzlinse besitzt keine getrennten Parameter für Hornhaut und Augenlinse und kann deshalb ihre individuellen Beiträge oder Änderungen nicht aus der Rechnung bestimmen. Alternativ ist begründet zulässig: Ein reiner Strahlen-Schnittpunkt beschreibt keine neuronale Verarbeitung/Wahrnehmungsleistung. Eine mathematisch scharfe Modellabbildung ist kein vollständiger Nachweis realer Sehschärfe.\n\nBewertung: Acht Kernleistungen, je maximal 3 BE, insgesamt 24 BE, Bestehensgrenze 23 BE. Je Kernleistung 3 BE bei vollständiger fachlich korrekter Demonstration; 2 BE sind bei vollständig erbrachter Kernleistung mit einem isolierten nicht konzeptionellen Rechen-/Rundungs-/Beschriftungsfehler möglich. Fehlt ein geforderter zentraler Teil (etwa einer der Strahlen, einer der tatsächlichen Parameterläufe, die quantitative Schärfebedingung oder die begründete Modellgrenze), erhält dieser Kern 0 BE. Dadurch kann kein fehlender Kern durch andere Leistungen kompensiert werden. Gleichwertige mathematische Methoden und sinnvolle Rundungen werden akzeptiert; exakte Wörter oder die hier gewählte Reihenfolge sind nicht gefordert. Die zwei Fälle müssen getrennte eigene Darstellungen und Parameterprotokolle enthalten. Es wird eine Modellierungsleistung geprüft, kein realer Augenversuch und keine medizinische Aussage.",
+    "solutionContentEn": "A: f=gb_R/(g+b_R)=18 mm. The central ray has slope −G/g=−0.01 and reaches the retina at (x=20 mm, y=−0.2 mm). The parallel ray leaves the lens at (x=0, y=1.8 mm), passes through (x=18 mm, y=0), and reaches the same image point. The image is real and inverted; its height is 0.2 mm (signed B=−0.2 mm). With f=15,18,20 mm, b_sim=180/11≈16.364;20;22.5 mm, so Δ≈−3.636;0;+2.5 mm: before/on/behind the retina. At g=90 mm with old f=18 mm, b_sim=22.5 mm and Δ=+2.5 mm. The new suitable f=180/11≈16.364 mm gives b_sim=20 mm and Δ=0. Near vision in this model requires a smaller focal length at a fixed retina. Δ=0 only establishes the intersection condition for the modelled paraxial rays: large apertures and off-axis rays are outside the assumptions, so their image quality does not follow.\n\nB: f=20 mm. The central ray has slope −1/120 and reaches y=−0.2 mm at x=24 mm. The parallel ray goes from (x=0, y=1.0 mm) through the focal point (x=20 mm, y=0) to the same image point. The real inverted image has height 0.2 mm. For f=15,20,24 mm, b_sim=120/7≈17.143;24;30 mm, hence Δ≈−6.857;0;+6 mm: before/on/behind the retina. At g=60 mm with old f=20 mm, b_sim=30 mm and Δ=+6 mm. The new suitable f=120/7≈17.143 mm gives b_sim=24 mm and Δ=0. The suitable new focal point is between lens and retina; the parallel ray passing through it and the new central ray intersect at the unchanged retina. Moving the retina violates the fixed geometry agreed in this task and cannot replace a focal-length change. One equivalent lens has no separate parameters for cornea and crystalline lens, so the calculation cannot determine their individual contributions or changes. Alternatively, a justified explanation that a purely optical ray intersection does not describe neural processing or perception is valid. Mathematical sharpness in the model is not full evidence of real visual acuity.\n\nGrading: Eight core performances, each up to 3 points; total 24, passing threshold 23. Award 3 points for a complete scientifically correct demonstration; 2 may be awarded for a fully demonstrated core containing one isolated non-conceptual arithmetic, rounding, or labelling slip. If a central required component is missing (for example one of the rays, one of the actual parameter runs, the quantitative sharp-image condition, or a justified model limit), award 0 for that core. Thus no absent core can be compensated by other performance. Accept equivalent mathematical methods and sensible rounding; exact wording and the reference solution's order are not required. The two cases require separate own representations and parameter records. This assesses modelling, not a real eye experiment or a medical claim.",
+    "scoring": {
+      "maxPoints": 24,
+      "passingPoints": 23,
+      "steps": [
+        {
+          "id": "a-rays",
+          "points": 3,
+          "description": "A: Beide beschrifteten Strahlen, gemeinsamer Netzhautbildpunkt, Bildhöhe und Orientierung nachvollziehbar. / EN: Both labelled rays, common retinal image point, image height, and orientation justified."
+        },
+        {
+          "id": "a-equation",
+          "points": 3,
+          "description": "A: Quantitative Schärfebedingung mit hergeleiteter passender Brennweite bei fester Netzhaut. / EN: Quantitative sharp-image condition with derived suitable focal length at a fixed retina."
+        },
+        {
+          "id": "a-simulation",
+          "points": 3,
+          "description": "A: Drei eigene Parameterläufe sowie Nahvariation mit altem und neuem f, Ausgaben/Δ und begründete Richtungsdeutung. / EN: Three own parameter runs plus near variation with old/new f, outputs/Δ, and justified direction of change."
+        },
+        {
+          "id": "a-limit",
+          "points": 3,
+          "description": "A: Behauptung anhand expliziter Modellannahme begründet begrenzt, keine unzulässige reale Schärfegarantie. / EN: Bounds the claim using an explicit model assumption, without an unwarranted real-eye sharpness guarantee."
+        },
+        {
+          "id": "b-rays",
+          "points": 3,
+          "description": "B: Neue vollständige Strahlenkonstruktion, Bildpunkt, Bildhöhe und Orientierung unabhängig von A. / EN: New complete ray construction, image point, height, and orientation independently of A."
+        },
+        {
+          "id": "b-equation",
+          "points": 3,
+          "description": "B: Neue quantitative Schärfebedingung und passende Brennweite nachvollziehbar hergeleitet. / EN: Independently derives the new quantitative sharp-image condition and suitable focal length."
+        },
+        {
+          "id": "b-simulation",
+          "points": 3,
+          "description": "B: Drei eigene Läufe und Nahvariation mit altem/neuem f, korrekte Geometrie, Δ und Konstruktionsbezug. / EN: Three own runs and near variation with old/new f, correct geometry, Δ, and link to the construction."
+        },
+        {
+          "id": "b-limit",
+          "points": 3,
+          "description": "B: Netzhautverschiebung als Verletzung der vereinbarten Modellbedingung erkannt, zulässige Parameteränderung und begründete weitere Ersatzlinsen-/Wahrnehmungsgrenze. / EN: Identifies the retina move as violating the agreed model, gives the permitted parameter change, and justifies another equivalent-lens/perception limit."
+        }
+      ]
+    },
+    "reviewNote": "Independent AI content-and-complete-coverage review by /root, author /root/he_ephase_implementation: curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/independent-review/content-review.actual.json. Two bilingual model cases, ten parameter runs, two ray intersections and 6561 rubric combinations independently recomputed; this is machine/content QA, not a learner trial or human effectiveness claim. The wording correction from the internal term Vertragsverletzung to the agreed model condition is included in the final reviewed candidate. No learner mastery is written or transferred."
+  }
+}

@@ -3,6 +3,7 @@ package com.skillpilot.backend.service;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.composition.CourseProfileCompositionViewMerger;
+import com.skillpilot.backend.composition.CompositionViewFormatMetadata;
 import com.skillpilot.backend.composition.StagePlanRuntimeIndex;
 import com.skillpilot.backend.curriculumpackage.PackageCompositionViewState;
 import com.skillpilot.backend.landscape.LandscapeProperties;
@@ -998,6 +999,7 @@ public class CompositionViewService {
             String landscapeId,
             Map<String, String> requestedScope,
             List<Map<String, Object>> views) {
+        Map<String, Object> formatMetadata = CompositionViewFormatMetadata.mergeSourceViews(views);
         List<Map<String, Object>> mergedRootNodes = mergedRoots(views);
         List<String> sourceViewIds = views.stream()
                 .map(view -> asString(view.get("viewId")))
@@ -1006,6 +1008,7 @@ public class CompositionViewService {
                 .toList();
 
         Map<String, Object> merged = new LinkedHashMap<>();
+        merged.putAll(formatMetadata);
         merged.put("viewId", "merged:" + String.join("+", sourceViewIds));
         merged.put("landscapeId", landscapeId);
         merged.put("scope", Collections.unmodifiableMap(new LinkedHashMap<>(requestedScope)));
@@ -1013,6 +1016,7 @@ public class CompositionViewService {
         merged.put("mergedFromViewIds", sourceViewIds);
         return Collections.unmodifiableMap(merged);
     }
+
 
     /**
      * Only the structural merge is shared: scope/landscape envelopes are rebuilt

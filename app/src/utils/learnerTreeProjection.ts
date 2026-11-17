@@ -389,6 +389,17 @@ export function normalizeLearnerProjectedEntries<T extends { goals: UiGoal[] }>(
       tags: Array.isArray(goal.tags) ? [...goal.tags] : [],
     }))
     const goalById = new Map<string, UiGoal>(clonedGoals.map((goal) => [goal.id, goal]))
+    const authoredPlacements = new Set<string>()
+    const retainAuthoredPlacement = (id: string) => {
+      if (authoredPlacements.has(id)) return
+      authoredPlacements.add(id)
+      goalById.get(id)?.contains.forEach(retainAuthoredPlacement)
+    }
+    // A reviewed composition placement may intentionally precede or differ
+    // from a canonical phase. Legacy phase hints cannot prune that placement.
+    for (const goal of clonedGoals) {
+      if (goal.extendedData?.compositionViewFormatVersion === '1.2') retainAuthoredPlacement(goal.id)
+    }
     const relevanceCache = new Map<string, boolean>()
     const normalizedChildrenCache = new Map<string, string[]>()
 
@@ -407,7 +418,7 @@ export function normalizeLearnerProjectedEntries<T extends { goals: UiGoal[] }>(
 
       const sortedChildren = goal.contains ?? []
       const phaseContext = detectExplicitPhaseContext(goal) ?? inheritedPhaseContext
-      const phaseFilteredChildIds = !phaseContext
+      const phaseFilteredChildIds = authoredPlacements.has(goal.id) || !phaseContext
         ? sortedChildren
         : sortedChildren.filter((childId) =>
           isGoalRelevantInPhaseContext(childId, phaseContext, goalById, relevanceCache),

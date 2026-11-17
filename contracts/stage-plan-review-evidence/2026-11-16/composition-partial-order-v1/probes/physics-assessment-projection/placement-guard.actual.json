@@ -1,0 +1,56 @@
+{
+  "status": "PASS-independent-guard-mutations; actualV32findings retained",
+  "actualVisibleAssessmentPairsChecked": 8934,
+  "actualPlacementFindings": [
+    {
+      "view": "de-mv-gk.view.json",
+      "task": "6ea3fb3c-abdc-568f-ab13-97c36dc274e4",
+      "message": "AssertionError [ERR_ASSERTION]: de-mv-gym-physics-gk: assessment 6ea3fb3c-abdc-568f-ab13-97c36dc274e4 is in Sek I before its assessed competency d6dc0e02-831d-4894-a61a-852bcc74f147 in Sek II"
+    },
+    {
+      "view": "de-mv-lk.view.json",
+      "task": "6ea3fb3c-abdc-568f-ab13-97c36dc274e4",
+      "message": "AssertionError [ERR_ASSERTION]: de-mv-gym-physics-lk: assessment 6ea3fb3c-abdc-568f-ab13-97c36dc274e4 is in Sek I before its assessed competency d6dc0e02-831d-4894-a61a-852bcc74f147 in Sek II"
+    },
+    {
+      "view": "de-sl-gk.view.json",
+      "task": "6ea3fb3c-abdc-568f-ab13-97c36dc274e4",
+      "message": "AssertionError [ERR_ASSERTION]: de-sl-gym-physics-gk: assessment 6ea3fb3c-abdc-568f-ab13-97c36dc274e4 is in Sek I before its assessed competency d6dc0e02-831d-4894-a61a-852bcc74f147 in Sek II"
+    },
+    {
+      "view": "de-sl-lk.view.json",
+      "task": "6ea3fb3c-abdc-568f-ab13-97c36dc274e4",
+      "message": "AssertionError [ERR_ASSERTION]: de-sl-gym-physics-lk: assessment 6ea3fb3c-abdc-568f-ab13-97c36dc274e4 is in Sek I before its assessed competency d6dc0e02-831d-4894-a61a-852bcc74f147 in Sek II"
+    },
+    {
+      "view": "de-sn-gk.view.json",
+      "task": "6ea3fb3c-abdc-568f-ab13-97c36dc274e4",
+      "message": "AssertionError [ERR_ASSERTION]: de-sn-gym-physics-gk: assessment 6ea3fb3c-abdc-568f-ab13-97c36dc274e4 is in Sek I before its assessed competency d6dc0e02-831d-4894-a61a-852bcc74f147 in Sek II"
+    },
+    {
+      "view": "de-sn-lk.view.json",
+      "task": "6ea3fb3c-abdc-568f-ab13-97c36dc274e4",
+      "message": "AssertionError [ERR_ASSERTION]: de-sn-gym-physics-lk: assessment 6ea3fb3c-abdc-568f-ab13-97c36dc274e4 is in Sek I before its assessed competency d6dc0e02-831d-4894-a61a-852bcc74f147 in Sek II"
+    }
+  ],
+  "realWitness": {
+    "task": "50328a4f-91e8-5c8b-8d61-8f9c98a5cddf",
+    "covered": "a522c8c0-f3a4-5568-acae-3010ed9feb87",
+    "parent": "composition:de-he-gym-physics-gk:structure:physics-sekii-gk",
+    "taskUnit": "physics-q2",
+    "coveredUnit": "physics-q1"
+  },
+  "mutationChecks": [
+    "actual placement accepted",
+    "array reversal accepted",
+    "explicit reversed after rejected",
+    "transitive reversed after rejected",
+    "covered competency inII rejects task inI",
+    "requires alone not treated as coverage",
+    "old lower-task ancestry move rejected"
+  ],
+  "limits": [
+    "The old lower-placement mutation is performed on the actual projected ancestry; the attempted raw canonical-view move stalled before the assertions and was bounded separately.",
+    "The new placement guard is independent of CQR; known missing TH task is separately rejected by the unchanged demand guard."
+  ]
+}

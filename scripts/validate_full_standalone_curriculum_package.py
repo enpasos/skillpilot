@@ -3078,6 +3078,71 @@ def collect_active_dependency_entries(
     return active
 
 
+def validate_view_acquisition_placements(view: Mapping[str, Any], goals: Mapping[str, Any]) -> None:
+    pending = [(node, (index,)) for index, node in enumerate(view.get("rootNodes", []))]
+    while pending:
+        node, path = pending.pop()
+        if "acquisitionPlacement" in node:
+            target = goals.get(node.get("goalId"))
+            if (view.get("viewFormatVersion") != "1.2" or node.get("kind") != "goalEntry"
+                    or node.get("projectionRole") != "prerequisiteOnly" or node["acquisitionPlacement"] is not True
+                    or len(path) < 2 or not isinstance(target, dict)
+                    or target.get("type") != "atomic" or target.get("contains")):
+                raise ValidationFailure("acquisitionPlacement requires a defined atomic prerequisite at a nested learning place")
+        for index, child in enumerate(node.get("children", [])):
+            pending.append((child, (*path, index)))
+
+
+def validate_runtime_composition_view(view: Mapping[str, Any], goals: Mapping[str, Any]) -> None:
+    """Check packaged view semantics from packaged goals, without producer code."""
+    validate_view_acquisition_placements(view, goals)
+    if view.get("viewFormatVersion") != "1.2":
+        return
+    pending = list(view.get("rootNodes", []))
+    structures: set[str] = set()
+    while pending:
+        node = pending.pop()
+        if node.get("kind") != "structure":
+            continue
+        if node["id"] in structures:
+            raise ValidationFailure("duplicate composition structure identity")
+        structures.add(node["id"])
+        pending.extend(node["children"])
+        if "childOrder" not in node:
+            continue
+        ids = [child["id"] for child in node["children"] if child.get("kind") == "structure"]
+        successors = {identifier: set() for identifier in ids}
+        indegrees = {identifier: 0 for identifier in ids}
+        for pair in node["childOrder"]["after"]:
+            before, after = pair["after"], pair["unit"]
+            if before not in successors or after not in successors or before == after or after in successors[before]:
+                raise ValidationFailure("invalid composition childOrder sibling pair")
+            successors[before].add(after)
+            indegrees[after] += 1
+        ready = [identifier for identifier in ids if not indegrees[identifier]]
+        visited = 0
+        while ready:
+            current = ready.pop()
+            visited += 1
+            for following in successors[current]:
+                indegrees[following] -= 1
+                if not indegrees[following]:
+                    ready.append(following)
+        if visited != len(ids):
+            raise ValidationFailure("cyclic composition childOrder")
+        for before, followers in successors.items():
+            for after in followers:
+                reachable: set[str] = set()
+                queue = list(followers - {after})
+                while queue:
+                    current = queue.pop()
+                    if current == after:
+                        raise ValidationFailure("transitively redundant composition childOrder")
+                    if current not in reachable:
+                        reachable.add(current)
+                        queue.extend(successors[current])
+
+
 def derive_expected_closure(
     manifest: Mapping[str, Any],
     documents: PackageDocuments,
@@ -3574,6 +3639,9 @@ def derive_expected_closure(
                 emit_view_nodes(view_key, children, (*current, "children"))
 
     for _artifact_path, view in view_documents:
+        validate_runtime_composition_view(view, {
+            goal_id: definition_bodies[entity_key_id(key)] for goal_id, key in goal_keys.items()
+        })
         view_key = view_keys[view["viewId"]]
         hard(view_key, pointer("landscapeId"), "view.landscape-id", landscape_keys[view["landscapeId"]])
         emit_view_nodes(view_key, view.get("rootNodes", []))

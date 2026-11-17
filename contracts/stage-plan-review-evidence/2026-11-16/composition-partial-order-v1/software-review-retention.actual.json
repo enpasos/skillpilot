@@ -1,0 +1,1519 @@
+{
+  "recordedAt": "2026-11-17T05:58:37.326739+01:00",
+  "state": "frozen-software-review-checkpoint; final curriculum/model/ZIP/main-CI acceptance pending",
+  "originalBytesPreserved": true,
+  "artifacts": [
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/core-order-final.review.actual.json",
+      "retained": "01-ts-order-core.review.actual.json",
+      "sha256": "2ba6151f0bc7fa2a1a5ad887d03f28d8fcb78a7aa4a7c41be20849f23241cb53",
+      "bytes": 1157,
+      "reviewAuthority": "independent review by he_ephase_source_review"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/preparation-runtime/review-v6.actual.json",
+      "retained": "02-runtime-v9.review.actual.json",
+      "sha256": "2215563066501a484f486a104cc5829365a11cdaeb1ed7a0bcf9c7184a7c219d",
+      "bytes": 1808,
+      "reviewAuthority": "independent review by he_ephase_source_review"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/java-order/review-v5.actual.json",
+      "retained": "03-java-merge-format.review.actual.json",
+      "sha256": "e7c48cc5ecfc0495a5136005084366168f670c1bdaaefbc2bb28b0173b94351d",
+      "bytes": 2563,
+      "reviewAuthority": "independent review by he_ephase_source_review; PackageState excluded"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/dpk-v13/root-independent-review-v2.actual.json",
+      "retained": "04-dpk-v13-root-independent.review.actual.json",
+      "sha256": "7e5036db2023ab8344a390b21c4784be6ef78914cb523cada6e9c6762a70eb33",
+      "bytes": 1375,
+      "reviewAuthority": "independent review by root of package code authored by he_ephase_source_review"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/e2-e3-measurement-v3.review.actual.json",
+      "retained": "05-e2-e3-measurement.review.actual.json",
+      "sha256": "c18a72780b34dcebffd87b8ace0dd5267a779d817269cddb339535e9f2c9c8c0",
+      "bytes": 1556,
+      "reviewAuthority": "independent review by he_ephase_source_review"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/core-contract-probe.mts",
+      "retained": "probes/core-contract-probe.mts",
+      "sha256": "64f6ec0f2823fe51693eac4266c1cafda03c862326d4ed4bc8a37596aa54cac5",
+      "bytes": 1970
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/preparation-runtime/independent-probe-v6.mts",
+      "retained": "probes/independent-runtime-probe-v6.mts",
+      "sha256": "a57fa647b1aadc3861d9463e37bffd86f13bae4c60adbe0955b4478411e39537",
+      "bytes": 13552
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/java-order/IndependentMergerProbeV5.java",
+      "retained": "probes/IndependentMergerProbeV5.java",
+      "sha256": "6d93e2ec08db6a4b1143127b9fddd8f4d807aa439c70ac2bd4efe30e08fc3db8",
+      "bytes": 13209
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/package-envelope-root/review.actual.json",
+      "retained": "06-package-envelope-root-independent.review.actual.json",
+      "sha256": "658bf4cc4ec67452f395882753dfe73d05a5aa08896c0cf53caba24bdbe5ce9a",
+      "bytes": 797,
+      "reviewAuthority": "independent review by root of PackageCompositionViewState authored by he_ephase_source_review"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/package-envelope-root/RootPackageEnvelopeReview.java",
+      "retained": "probes/RootPackageEnvelopeReview.java",
+      "sha256": "5f0dfc55d662303736615d849cdbcf6bf94e825ecd73f572d9ed3b21ddc0a507",
+      "bytes": 5871,
+      "reviewAuthority": "independent review by root of PackageCompositionViewState authored by he_ephase_source_review"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/package-envelope-root/command-1.log",
+      "retained": "probes/root-package-envelope-command-1.log",
+      "sha256": "4af3c42e81ef07dbde7efbcad715c8db628d2b3aec87f03c8d20f70930d18ca5",
+      "bytes": 123,
+      "reviewAuthority": "independent review by root of PackageCompositionViewState authored by he_ephase_source_review"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/dpk-v13/ledger-root-review-v3.actual.json",
+      "retained": "07-ledger-root-independent.review.actual.json",
+      "sha256": "a1f6d0d761aec2d652488a4b2241c8274db46c0f86a504d2f87c41ec289585c6",
+      "bytes": 3045,
+      "reviewAuthority": "independent review by root of redistribution CLI guard authored by he_ephase_source_review"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/measurement-board-v4/final-review.actual.json",
+      "retained": "08-measurement-v4-helper.review.actual.json",
+      "sha256": "dfc5785f370d1c86ce8c5b939bea656c80e4aaa2d7b70c803e78f02d23846ce8",
+      "bytes": 5210,
+      "reviewAuthority": "he_ephase_source_review independently reviews root-authored measurement adapter"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/measurement-board-v4/main-integration-review.actual.json",
+      "retained": "09-measurement-v4-main.review.actual.json",
+      "sha256": "486704151d8d166c54e758cfc5bc47b87f3b204ec97e063eff15908e9098c015",
+      "bytes": 1951,
+      "reviewAuthority": "he_ephase_source_review independently reviews root-authored measurement adapter"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/measurement-board-v4/final-helper.ts",
+      "retained": "probes/final-helper.ts",
+      "sha256": "4490fa8873ed896ebc662b162954b88a74e894dfbbea92b5d223a5a097218775",
+      "bytes": 3985,
+      "reviewAuthority": "he_ephase_source_review independently reviews root-authored measurement adapter"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/measurement-board-v4/final-helper.ts",
+      "retained": "probes/measurement-board-semantics-v4.ts",
+      "sha256": "4490fa8873ed896ebc662b162954b88a74e894dfbbea92b5d223a5a097218775",
+      "bytes": 3985,
+      "reviewAuthority": "he_ephase_source_review independently reviews root-authored measurement adapter"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/measurement-board-v4/final-main.mts",
+      "retained": "probes/measure-actual-v4.mts",
+      "sha256": "e1b39b138f82a94fdfa1fa548be75de6724b8c648f6e7391994177a9e9160d29",
+      "bytes": 27186,
+      "reviewAuthority": "he_ephase_source_review independently reviews root-authored measurement adapter"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/measurement-board-v4/final-probe.mts",
+      "retained": "probes/measurement-v4-helper-probe.mts",
+      "sha256": "d39c4815a60e053feb34b605161aae9e2d40940bd272c85830f9b64c650066db",
+      "bytes": 7866,
+      "reviewAuthority": "he_ephase_source_review independently reviews root-authored measurement adapter"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/measurement-board-v4/main-integration-probe.mts",
+      "retained": "probes/measurement-v4-main-probe.mts",
+      "sha256": "602595229d03c4ae7b27b10884de7cea81014db406274721c3a4f89072547db3",
+      "bytes": 2917,
+      "reviewAuthority": "he_ephase_source_review independently reviews root-authored measurement adapter"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/measurement-board-v4/main-stage-final-review.actual.json",
+      "retained": "10-measurement-v4-stage-binding.review.actual.json",
+      "sha256": "6f412036623e80efa2d61fffe827efcc54089dd868adb3b0d1a15bdefd6b5fb5",
+      "bytes": 3008,
+      "reviewAuthority": "he_ephase_source_review independently reviews root-authored final source-stage trace"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/measurement-board-v4/stage-final-main.mts",
+      "retained": "probes/measure-actual-v4-stage-binding.mts",
+      "sha256": "3b1eb1243549d0f2d04329cb3321f15f0909d5c021bffb190ec2b79ad04705d3",
+      "bytes": 27583,
+      "reviewAuthority": "he_ephase_source_review independently reviews root-authored final source-stage trace"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/measurement-board-v4/main-integration-probe-v2.mts",
+      "retained": "probes/measurement-v4-stage-binding-probe.mts",
+      "sha256": "da2183c4414a8cbd87a5e4102c79f638a2dd0c48c19ecef515337099146cb07e",
+      "bytes": 4884,
+      "reviewAuthority": "he_ephase_source_review independently reviews root-authored final source-stage trace"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/physics-course-filter-v2.actual.json",
+      "retained": "11-physics-course-filter.review.actual.json",
+      "sha256": "1b7b73f9ccf594ae1d28e119d024ee47d41b314dfcedc85725d867cff17752a3",
+      "bytes": 1050,
+      "reviewAuthority": "independent review by root of Physics authoring code by he_ephase_implementation"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/physics-filtered-placement-independent.actual.json",
+      "retained": "11-physics-filtered-placement.review.actual.json",
+      "sha256": "736749e5fe31b98fa7847eb89e6d2e197ef9e879103cce921a5dcb86cf16e116",
+      "bytes": 3959,
+      "reviewAuthority": "independent review by root of Physics authoring code by he_ephase_implementation"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/PhysicsCourseFilterProbe.java",
+      "retained": "probes/PhysicsCourseFilterProbe.java",
+      "sha256": "6c35b52c8aa0629c4d468ad09bd0e30a55e9407bdfed09bb1db6b134b846ca01",
+      "bytes": 1681,
+      "reviewAuthority": "independent review by root of Physics authoring code by he_ephase_implementation"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/compare-physics-course-filter.py",
+      "retained": "probes/compare-physics-course-filter.py",
+      "sha256": "c7f0fe1de48d6d36afd81acf012ed119b24b1d90fed986367088fcf8eb2aad81",
+      "bytes": 1680,
+      "reviewAuthority": "independent review by root of Physics authoring code by he_ephase_implementation"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/physics-filtered-placement-independent.py",
+      "retained": "probes/physics-filtered-placement-independent.py",
+      "sha256": "9fc0d6c3eb977d816668d9d58ed44156fd8e347638613bb0af9d0f44010da773",
+      "bytes": 4186,
+      "reviewAuthority": "independent review by root of Physics authoring code by he_ephase_implementation"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/physics-course-filter-v1/native.json",
+      "retained": "probes/physics-course-filter/native.json",
+      "sha256": "86dcb19e05a14139f24eaad4f86798f3797c48c070fadc7d533d6bc1b37944f6",
+      "bytes": 199541,
+      "reviewAuthority": "independent review by root of Physics authoring code by he_ephase_implementation"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/physics-course-filter-v1/command.json",
+      "retained": "probes/physics-course-filter/command.json",
+      "sha256": "754487e70d1f407aeaee9709ded6ff32b828f7592126662566fc292063654670",
+      "bytes": 32159,
+      "reviewAuthority": "independent review by root of Physics authoring code by he_ephase_implementation"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/physics-course-filter-v1/input.json",
+      "retained": "probes/physics-course-filter/input.json.gz",
+      "sha256": "2f8a8c8aa6d765647c14f72ddd9bd46878815006c1e410b2d4b54f2bc105dc3f",
+      "bytes": 1267728,
+      "encoding": "gzip; decompression yields exact original input bytes",
+      "originalSha256": "151882611fc9879562c27961b2e865feb740ad1354e8fc5f4cfa7785eddd8068",
+      "originalBytes": 6658790,
+      "reviewAuthority": "independent review by root"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/ni-new-seki-supplement-review.actual.json",
+      "retained": "12-ni-new-seki-supplement.review.actual.json",
+      "sha256": "b0b225898bcb430639eebab2eea9da86ad0f7eeac30e68e592cef3ab12384531",
+      "bytes": 1510,
+      "reviewAuthority": "root independently reviews newly authored math source memberships by he_ephase_validation against retained official original PDFs"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/three-new-monotony-supplements-review.actual.json",
+      "retained": "12-three-new-monotony-supplements.review.actual.json",
+      "sha256": "c67afa3bc477855dae82e0c76dc83f7df05e7d561474c40e994dd959249af3de",
+      "bytes": 1822,
+      "reviewAuthority": "root independently reviews newly authored math source memberships by he_ephase_validation against retained official original PDFs"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/math-v6-examination-independent.actual.json",
+      "retained": "13-math-v6-examination.review.actual.json",
+      "sha256": "572b2a04935e711a474a4b096e32bb32d6d4830eeda2d8e6415628008c6c2a16",
+      "bytes": 6474,
+      "reviewAuthority": "root independently reviews Math author he_ephase_validation"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/math-v6-examination-independent.py",
+      "retained": "probes/math-v6-examination-independent.py",
+      "sha256": "8b176e7282599f24aeb29af0f9ad0606fdf14b45d8bcad8045486d83cb0d8653",
+      "bytes": 2694,
+      "reviewAuthority": "root"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/root-neutral-exposure.actual.json",
+      "retained": "14-national-neutral-exposure.review.actual.json",
+      "sha256": "66891f2dbd51fbe6b266dc99ac658506a67fc5043aeef6cd35663406abe7b54f",
+      "bytes": 432,
+      "reviewAuthority": "root independently reviews QA author he_ephase_source_review"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/root-neutral-exposure-review.mts",
+      "retained": "probes/root-neutral-exposure-review.mts",
+      "sha256": "f0581d94abe3a6b229f068b2fc502c1d89712d743fcd8f89b10e8d2f476034f0",
+      "bytes": 2876,
+      "reviewAuthority": "root"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/root-source-stage-v4-hb/review.actual.json",
+      "retained": "14-source-stage-v4-hb.review.actual.json",
+      "sha256": "d0315a00d31dbd8d28815616c41582c4521d34b7e0b9efcabe80795d828bd80a",
+      "bytes": 12804,
+      "reviewAuthority": "root independently reviews QA author he_ephase_source_review"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/root-source-stage-review.mts",
+      "retained": "probes/root-source-stage-review.mts",
+      "sha256": "9c0ab73616f007420eec8f2500b5133956bef9ca21c4c2327cbee7a5dbcd1d6c",
+      "bytes": 5112,
+      "reviewAuthority": "root"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/physics-method-gate-independent.actual.json",
+      "retained": "15-physics-method-gate.review.actual.json",
+      "sha256": "b36bdd2e8e3f340af76808a23694042be2a394b2a61e774518ce051dc95fd439",
+      "bytes": 746,
+      "reviewAuthority": "he_ephase_validation independently reviews root"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/physics-method-gate-independent.mts",
+      "retained": "probes/physics-method-gate-independent.mts",
+      "sha256": "27bb03ea6076cd4a700255df351c47753cb6c35d102d82622bd02e566107243a",
+      "bytes": 4044,
+      "reviewAuthority": "he_ephase_validation"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/mathematik/he-q21-regression-independent-review.actual.json",
+      "retained": "15-he-q21-regression.review.actual.json",
+      "sha256": "41f043ad0d416eb0b17caa8c72befb276cd48ed118a769e2f2bb25d3f44daf15",
+      "bytes": 7534,
+      "reviewAuthority": "he_ephase_validation independently reviews root"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/root-diode-preservation.actual.json",
+      "retained": "16-root-diode-preservation.review.actual.json",
+      "sha256": "6b5f83fee61ea69e5151e239fbaf0ecd9b9436cec87a9a6dabdce50d7e0f7df2",
+      "bytes": 1866,
+      "reviewAuthority": "root independently reviews he_ephase_validation"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/root-diode-preservation-review.mts",
+      "retained": "probes/root-diode-preservation-review.mts",
+      "sha256": "65e639970a3d6bf6bc64501fac6c77a94493540298233dd2d50c631c8d2a4bb1",
+      "bytes": 3147,
+      "reviewAuthority": "root"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/semiconductor-test-repair/repair.actual.json",
+      "retained": "16-semiconductor-repair.author.actual.json",
+      "sha256": "00c122a2e28ba3d38f1005dbfb4f1170a2788bc58f2927ab1d03c854d80245da",
+      "bytes": 14983,
+      "reviewAuthority": "author report by he_ephase_validation; independent root review retained separately"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/semiconductor-test-repair/matrix.actual.json",
+      "retained": "16-semiconductor-matrix.author.actual.json",
+      "sha256": "99fee3f75f6cd0eb55b6cbed3b086c82f6a4827592f3704aefbc8eb71abf9143",
+      "bytes": 4166,
+      "reviewAuthority": "author regression comparison by he_ephase_validation"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/protected-curriculum-inputs-v2.actual.json",
+      "retained": "17-protected-curriculum-inputs.actual.json",
+      "sha256": "9b019030d69295de3db7bc78c246d8742f44782ddae85015ad8b42496e5a874d",
+      "bytes": 674,
+      "reviewAuthority": "root git comparison with origin/main; existing-source preservation check"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/physics-assessment-projection/baseline.log",
+      "retained": "probes/physics-assessment-projection/baseline.log",
+      "sha256": "f3c54f7a9fc837ef0d6e6b6e32532bdac451327f5819f70ce714ed9611510f4e",
+      "bytes": 886,
+      "reviewAuthority": "he_ephase_validation independently reviews root"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/physics-assessment-projection/diode-preservation-probe.actual.json",
+      "retained": "probes/physics-assessment-projection/diode-preservation-probe.actual.json",
+      "sha256": "e5dfd8e7abc5a1fa34a502c69181169520cbb369da523881a20837c1c7b0e63f",
+      "bytes": 7269,
+      "reviewAuthority": "he_ephase_validation independently reviews root"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/physics-assessment-projection/diode-preservation-probe.mts",
+      "retained": "probes/physics-assessment-projection/diode-preservation-probe.mts",
+      "sha256": "b26ef4e452c2e1cb550df21e0cb91d745c40d9a5b5e008d4f78655e63f6d281e",
+      "bytes": 774,
+      "reviewAuthority": "he_ephase_validation independently reviews root"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/physics-assessment-projection/independent-review.actual.json",
+      "retained": "probes/physics-assessment-projection/independent-review.actual.json",
+      "sha256": "1cd13573263ae0c3906aa0487a0efda14c3200756ab7d67a0e6e78d4eeda96b5",
+      "bytes": 8236,
+      "reviewAuthority": "he_ephase_validation independently reviews root"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/physics-assessment-projection/lost-seki-place.log",
+      "retained": "probes/physics-assessment-projection/lost-seki-place.log",
+      "sha256": "85d14533445b503aab992ff2344dbf15be76940fc465faf3290bc49547aede50",
+      "bytes": 763,
+      "reviewAuthority": "he_ephase_validation independently reviews root"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/physics-assessment-projection/missing-task.log",
+      "retained": "probes/physics-assessment-projection/missing-task.log",
+      "sha256": "3a4f044e53c5688920321fdfe70f4cceac113c06e27d141fe5f97cd17923e161",
+      "bytes": 684,
+      "reviewAuthority": "he_ephase_validation independently reviews root"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/physics-assessment-projection/original-inputs.actual.json",
+      "retained": "probes/physics-assessment-projection/original-inputs.actual.json",
+      "sha256": "570f31446c5a3227d30f93b6c364bb3d47aa6ae51fd6770e40346f7d0cc0c53d",
+      "bytes": 9271,
+      "reviewAuthority": "he_ephase_validation independently reviews root"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/physics-assessment-projection/original-test.ts",
+      "retained": "probes/physics-assessment-projection/original-test.ts",
+      "sha256": "4c740a21e707a91176375806f5a98ca01b54db6470fb2054cb7a0bc23373559f",
+      "bytes": 24033,
+      "reviewAuthority": "he_ephase_validation independently reviews root"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/physics-assessment-projection/placement-guard.actual.json",
+      "retained": "probes/physics-assessment-projection/placement-guard.actual.json",
+      "sha256": "757c06a1471db9bb0d383a4dbc7e33ca2fb1aecc385a1ac60ac18448af1a7835",
+      "bytes": 2957,
+      "reviewAuthority": "he_ephase_validation independently reviews root"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/physics-assessment-projection/placement-probe.log",
+      "retained": "probes/physics-assessment-projection/placement-probe.log",
+      "sha256": "fa7f4ff4868afd805056647b9870cad14c1fde678ae6e9794df2a5f07f520c10",
+      "bytes": 2641,
+      "reviewAuthority": "he_ephase_validation independently reviews root"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/physics-assessment-projection/placement-probe.mts",
+      "retained": "probes/physics-assessment-projection/placement-probe.mts",
+      "sha256": "ca03aab5aeab5bb9fe63c03f888983207e4e3ea2a69dd9c489f64bbee053c2c6",
+      "bytes": 17124,
+      "reviewAuthority": "he_ephase_validation independently reviews root"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/physics-assessment-projection/prepare-placement-probe.py",
+      "retained": "probes/physics-assessment-projection/prepare-placement-probe.py",
+      "sha256": "dd4db91d28933043497dbbfe6b4b5a7d1dd7092ffb6c5b384b19df8d2c73b162",
+      "bytes": 6746,
+      "reviewAuthority": "he_ephase_validation independently reviews root"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/physics-assessment-projection/prepare-probe.py",
+      "retained": "probes/physics-assessment-projection/prepare-probe.py",
+      "sha256": "26fdc6a2f36fdb89bfb4029fa6c427a268266b390ac85019e7eee48bf52581e0",
+      "bytes": 4735,
+      "reviewAuthority": "he_ephase_validation independently reviews root"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/physics-assessment-projection/probe.mts",
+      "retained": "probes/physics-assessment-projection/probe.mts",
+      "sha256": "eac3c5ad82030171ab7a4acebe7788b70b82292d046cf3d7d6afdaa3c8a24621",
+      "bytes": 25472,
+      "reviewAuthority": "he_ephase_validation independently reviews root"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/physics-assessment-projection/role-probe.mts",
+      "retained": "probes/physics-assessment-projection/role-probe.mts",
+      "sha256": "31f378526d16ca200d91e2d7b5a14eb92e16eb23a073ba0dce181a6852b29e86",
+      "bytes": 25672,
+      "reviewAuthority": "he_ephase_validation independently reviews root"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/physics-assessment-projection/test-with-placement-guard.ts",
+      "retained": "probes/physics-assessment-projection/test-with-placement-guard.ts",
+      "sha256": "8eb2b423af1b5b3cb0a685f791af9d7bf8dc33fd88fe83b2c18d386129cb8c91",
+      "bytes": 26321,
+      "reviewAuthority": "he_ephase_validation independently reviews root"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/physics-assessment-projection/wrong-abitur-place.log",
+      "retained": "probes/physics-assessment-projection/wrong-abitur-place.log",
+      "sha256": "7e1cfe08b0a0f04d2fe337305d4e6d4ad1007a25e62469a71fe7417acb4d3397",
+      "bytes": 731,
+      "reviewAuthority": "he_ephase_validation independently reviews root"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/physics-assessment-projection/wrong-payload.log",
+      "retained": "probes/physics-assessment-projection/wrong-payload.log",
+      "sha256": "b8efeb49e4ab93b80fdbe1c80e6dee5787ff324fcfc5b483b54da704c46cdaa5",
+      "bytes": 37418,
+      "reviewAuthority": "he_ephase_validation independently reviews root"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/physics-assessment-projection/wrong-support-role.log",
+      "retained": "probes/physics-assessment-projection/wrong-support-role.log",
+      "sha256": "089e036943599f46e04e59bfd9ba929a4fb7f094a5fbf978de80774b25ed2a3e",
+      "bytes": 711,
+      "reviewAuthority": "he_ephase_validation independently reviews root"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/math-q24-independent/probe.log",
+      "retained": "probes/math-q24-independent/probe.log",
+      "sha256": "4c98b84ce24d028483f5e62067c333bf5c42c111a2c0aea3d16e4409ff479547",
+      "bytes": 1327,
+      "reviewAuthority": "he_ephase_validation independently reviews root"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/math-q24-independent/probe.mts",
+      "retained": "probes/math-q24-independent/probe.mts",
+      "sha256": "5f6f8edae3ab2fb05d24f51cd2744108b0632c2b46c28442811a94ef9eb49eae",
+      "bytes": 5118,
+      "reviewAuthority": "he_ephase_validation independently reviews root"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/math-q24-independent/review.actual.json",
+      "retained": "probes/math-q24-independent/review.actual.json",
+      "sha256": "e038afab8cd52572a354513352c0731a0811e92268e07e8fb8240c88bd9f2c01",
+      "bytes": 1600,
+      "reviewAuthority": "he_ephase_validation independently reviews root"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/math-q24-independent/reviewed-test.ts",
+      "retained": "probes/math-q24-independent/reviewed-test.ts",
+      "sha256": "2adbd70804db1c093e7b7b6db00f281d5fc9c08d7489f24c47447d15bdcabc0c",
+      "bytes": 21661,
+      "reviewAuthority": "he_ephase_validation independently reviews root"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/physics-lower-original-sources/independent-original-review.actual.json",
+      "retained": "18-physics-lower-original-sources.review.actual.json",
+      "sha256": "1634252f27b4dd4abe74bdaedc682f24c9b27e3ae9e290712a20950efb771834",
+      "bytes": 99466,
+      "reviewAuthority": "he_ephase_validation independently reviews Physics supplements against original sources"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/physics-lower-original-sources/compile-review.py",
+      "retained": "probes/physics-lower-original-source-review.py",
+      "sha256": "34ce856dd6309f6cb9614248aa1aaa1a96c017349d69f5b8f2110b58db79857c",
+      "bytes": 16548,
+      "reviewAuthority": "he_ephase_validation"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/physics-lower-original-sources/membership-description-replay.actual.json",
+      "retained": "18-physics-lower-membership-replay.actual.json",
+      "sha256": "fe420b9c88339215c81e213c1397a562e9bb9f742ba998a4c9293ca73df2891f",
+      "bytes": 835,
+      "reviewAuthority": "he_ephase_validation independent replay of all 90 original memberships and 45 descriptions"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/physics-lower-original-sources/partial-second-review.actual.json",
+      "retained": "18-physics-lower-partial-second.review.actual.json",
+      "sha256": "7fd1310d62f305f6b46e91f4eff130b88fa2a3094490479300e2199f6727b862",
+      "bytes": 43311,
+      "reviewAuthority": "he_ephase_validation original-source second review; own operationalization distinguished"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/physics-lower-original-sources/partial-second-review.py",
+      "retained": "probes/physics-lower-partial-second-review.py",
+      "sha256": "91bef6a74620cf79dfd7aa9992cb8fbcfb1382a3cf71bb50b33d8b5678e5de84",
+      "bytes": 9373,
+      "reviewAuthority": "he_ephase_validation"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/physics-lower-original-sources/root-adoption-decisions.actual.json",
+      "retained": "18-physics-lower-adoption-decisions.actual.json",
+      "sha256": "baa1f62b12ed395d2bf44650dfbdd8afc0a615b08559dc59f1b0e2ddfecf17d6",
+      "bytes": 52575,
+      "reviewAuthority": "root implementation decisions after independent original-source review"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/lens-eye-assessment-independent.actual.json",
+      "retained": "19-lens-eye-assessment-independent.review.actual.json",
+      "sha256": "eb5ba09290b4319713044aad6456d5776b6bbbdab0187f9ffc31ef0d7c0c70c6",
+      "bytes": 3832,
+      "reviewAuthority": "root independently reviews Physics author he_ephase_implementation"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/lens-eye-assessment-independent.py",
+      "retained": "probes/lens-eye-assessment-independent.py",
+      "sha256": "405c5c866cad89b43b6f1688d7613c168668c1eed80589225c12a8eecf0801cd",
+      "bytes": 4269,
+      "reviewAuthority": "root independently recomputes rational values and rubric combinations"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/lens-eye-reviewed-candidate/author-numerics.actual.json",
+      "retained": "19-lens-eye-reviewed-candidate/author-numerics.actual.json",
+      "sha256": "5f508b257ac1c3cef820863f012759d113705f051eb2d90c4d0e532e40271927",
+      "bytes": 1642,
+      "reviewAuthority": "exact author candidate independently reviewed by root; needs_review snapshot before release"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/lens-eye-reviewed-candidate/build-candidate.py",
+      "retained": "19-lens-eye-reviewed-candidate/build-candidate.py",
+      "sha256": "ec23c35f54d246437f584255b13b6ba756edb084da6eac63a7bd920991c1fa4a",
+      "bytes": 20495,
+      "reviewAuthority": "exact author candidate independently reviewed by root; needs_review snapshot before release"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/lens-eye-reviewed-candidate/lens-eye-two-model-simulations.goal.json",
+      "retained": "19-lens-eye-reviewed-candidate/lens-eye-two-model-simulations.goal.json",
+      "sha256": "0d8284fd3a36621a53ea04078e7e85427adefc9fc34ea9d9abe0e48785e110a7",
+      "bytes": 19145,
+      "reviewAuthority": "exact author candidate independently reviewed by root; needs_review snapshot before release"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/lens-eye-reviewed-candidate/lens-eye-two-model-simulations.md",
+      "retained": "19-lens-eye-reviewed-candidate/lens-eye-two-model-simulations.md",
+      "sha256": "f3b1e85c3fb29fe2e6300ac7c0753612a28bd3a9f814972cfdd1ccb975477185",
+      "bytes": 8612,
+      "reviewAuthority": "exact author candidate independently reviewed by root; needs_review snapshot before release"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/lens-eye-reviewed-candidate/review-request.md",
+      "retained": "19-lens-eye-reviewed-candidate/review-request.md",
+      "sha256": "f573feed13433b697d0f07655dc8051083d26830a76fd5554e0ec658a2b5a024",
+      "bytes": 1273,
+      "reviewAuthority": "exact author candidate independently reviewed by root; needs_review snapshot before release"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/lens-eye-reviewed-candidate/reviewed-candidate.goal.json",
+      "retained": "19-lens-eye-reviewed-candidate/reviewed-candidate.goal.json",
+      "sha256": "b88dc1180cb15d14b8462de2afb121d79b47d31aa9d2fdf0fcb9b21c8bc1c235",
+      "bytes": 19120,
+      "reviewAuthority": "exact author candidate independently reviewed by root; needs_review snapshot before release"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/physics-lower-original-sources/th-official-fetch.actual.json",
+      "retained": "18-th-official-source-fetch.actual.json",
+      "sha256": "cfabd5a6b7daa2a97075545e1141f58ad532c45faf78ec1e7fe08436f9c0862c",
+      "bytes": 560,
+      "reviewAuthority": "independent reviewer original official E10 authority URL and digest"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/root-explicit-endpoints-review.actual.json",
+      "retained": "20-root-explicit-endpoints.review.actual.json",
+      "sha256": "efce0c1dc321c7472d48fb2eb4926f14902ed4ff1c3a2ad4b9e9ded33904a779",
+      "bytes": 2513,
+      "reviewAuthority": "root independently reviews endpoint implementation by he_ephase_source_review"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/root-explicit-endpoints-review.mts",
+      "retained": "probes/root-explicit-endpoints-review.mts",
+      "sha256": "91942830df62db6ef619698253867c40ac7600db633b0b9c41f031a6d83ac721",
+      "bytes": 6467,
+      "reviewAuthority": "root"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/final-protected-inputs.actual.json",
+      "retained": "21-final-protected-inputs.actual.json",
+      "sha256": "fa623695923794215b2bb15dd28b88d9df7b6c447b9c7a689186266d77f1a136",
+      "bytes": 1922,
+      "reviewAuthority": "root final catalog/source comparison and exact independently reviewed task release delta"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/check-final-protected-inputs.py",
+      "retained": "probes/check-final-protected-inputs.py",
+      "sha256": "944cd930abed2a40705b70ac0281e6c50bd09664c2249479dc1f7905b2ba3804",
+      "bytes": 3747,
+      "reviewAuthority": "root"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/physics-goalbook-test/review.actual.json",
+      "retained": "22-physics-goalbook-test/review.actual.json",
+      "sha256": "e5aadab5cb4027bde5225f0e39f57007ea8aa7bf7872ed863cd9d3cef2593c46",
+      "bytes": 3845,
+      "reviewAuthority": "he_ephase_validation independently reviews GoalBook test by he_ephase_implementation"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/physics-goalbook-test/head-floor-comparison.actual.json",
+      "retained": "22-physics-goalbook-test/head-floor-comparison.actual.json",
+      "sha256": "72d366a0bc32e72f62653c8b87c2a844f3b13e1410ded6c88b92f38727754abb",
+      "bytes": 516,
+      "reviewAuthority": "he_ephase_validation independently reviews GoalBook test by he_ephase_implementation"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/physics-goalbook-test/negative-probe.actual.json",
+      "retained": "22-physics-goalbook-test/negative-probe.actual.json",
+      "sha256": "c487eea819088814d722fb9113ca18a4095f57184e3aea45eae456b22ffd0b33",
+      "bytes": 3246,
+      "reviewAuthority": "he_ephase_validation independently reviews GoalBook test by he_ephase_implementation"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/physics-goalbook-test/extracted-guards.json",
+      "retained": "22-physics-goalbook-test/extracted-guards.json",
+      "sha256": "bb77fbc3ab18e323a801b2e0774fa333ab48aad9084b8388fe1c38bfd1fed3a0",
+      "bytes": 8492,
+      "reviewAuthority": "he_ephase_validation independently reviews GoalBook test by he_ephase_implementation"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/physics-goalbook-test/reviewed-test.ts",
+      "retained": "22-physics-goalbook-test/reviewed-test.ts",
+      "sha256": "724280de4593fc4d64332927d28f68efc535f334c17b50d6cacae8f8b079189a",
+      "bytes": 164602,
+      "reviewAuthority": "he_ephase_validation independently reviews GoalBook test by he_ephase_implementation"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/physics-goalbook-test/head-test.ts",
+      "retained": "22-physics-goalbook-test/head-test.ts",
+      "sha256": "2cf93ae703ab698a1a15b7e1ecb7d39a01dd4423bc070882c34800b92b0b62a2",
+      "bytes": 155034,
+      "reviewAuthority": "he_ephase_validation independently reviews GoalBook test by he_ephase_implementation"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/physics-goalbook-test/probe.mts",
+      "retained": "22-physics-goalbook-test/probe.mts",
+      "sha256": "9b4d2cddd868c14be06b34183a201e340f732142c56f14ab81f87dae1cad1ed4",
+      "bytes": 22784,
+      "reviewAuthority": "he_ephase_validation independently reviews GoalBook test by he_ephase_implementation"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/physics-goalbook-test/build-probe.mjs",
+      "retained": "22-physics-goalbook-test/build-probe.mjs",
+      "sha256": "a4785f5bff11bb0290debdb7ea7083198347116cee500a0bb6c4f86969cdfbe5",
+      "bytes": 4979,
+      "reviewAuthority": "he_ephase_validation independently reviews GoalBook test by he_ephase_implementation"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/experimental-assessments/document-two-provided-investigations.independent.actual.json",
+      "retained": "23-experimental-assessments/document-two-provided-investigations.independent.actual.json",
+      "sha256": "4026c4c773ef487daf64a10cdb9d7923e9f2318e1698fac7d3197ba102409ca5",
+      "bytes": 4929,
+      "reviewAuthority": "root independently reviews the three experimental and documentation tasks"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/experimental-assessments/personal-free-fall-two-series.independent.actual.json",
+      "retained": "23-experimental-assessments/personal-free-fall-two-series.independent.actual.json",
+      "sha256": "a6eb749e51527dc9f236cf5e3005d703742486c493638a0e5ba8e0ca717014e9",
+      "bytes": 5159,
+      "reviewAuthority": "root independently reviews the three experimental and documentation tasks"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/experimental-assessments/personal-motor-two-builds.independent.actual.json",
+      "retained": "23-experimental-assessments/personal-motor-two-builds.independent.actual.json",
+      "sha256": "6a944c66738ca2f2861fd97b0aebd0eb0310f0b1ecbb975cbefe2e75f427abfd",
+      "bytes": 5903,
+      "reviewAuthority": "root independently reviews the three experimental and documentation tasks"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/astronomy-assessment-independent/astronomical-observation-two-evidence-cases.goal.json",
+      "retained": "24-astronomy-assessment/astronomical-observation-two-evidence-cases.goal.json",
+      "sha256": "20b657f6c85f52eb15282211d0dee28aa4b03186b305f3ac56ef3d5a5a7b95b1",
+      "bytes": 19553,
+      "reviewAuthority": "root independently reviews astronomy author he_ephase_validation"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/astronomy-assessment-independent/review.actual.json",
+      "retained": "24-astronomy-assessment/review.actual.json",
+      "sha256": "0912296a7c4df867115e24571ce182d91f2f9590aa7d0edc76e648e90ee6c22b",
+      "bytes": 2006,
+      "reviewAuthority": "root independently reviews astronomy author he_ephase_validation"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/remaining-lower-assessments/accepted-warnings-nine-offer-delta.actual.json",
+      "retained": "25-remaining-lower-assessments/accepted-warnings-nine-offer-delta.actual.json",
+      "sha256": "a4ff03f12cd0a3343e87280835ecfc0fec0e8f496e7082ccbf1a01dbb4c7d1d0",
+      "bytes": 1477,
+      "reviewAuthority": "he_ephase_source_review independently reviews task content and exact own offers"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/remaining-lower-assessments/accepted-warnings.before.original.json",
+      "retained": "25-remaining-lower-assessments/accepted-warnings.before.original.json",
+      "sha256": "f05627cbac10f5fe8c5a4a688270e0367b9d5862a0118c4271a9a47b13449266",
+      "bytes": 230070,
+      "reviewAuthority": "he_ephase_source_review independently reviews task content and exact own offers"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/remaining-lower-assessments/bind-live-offers-and-warnings.mts",
+      "retained": "25-remaining-lower-assessments/bind-live-offers-and-warnings.mts",
+      "sha256": "a4954d39252652f9fbfd8cd12d8d5fc04dec52bbb5f1386cd35d5fac19ab6959",
+      "bytes": 9290,
+      "reviewAuthority": "he_ephase_source_review independently reviews task content and exact own offers"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/remaining-lower-assessments/decay-chains-two-consistency-audits-v1.original-candidate.goal.json",
+      "retained": "25-remaining-lower-assessments/decay-chains-two-consistency-audits-v1.original-candidate.goal.json",
+      "sha256": "cea05dc2bec0fb44b632c1bb9334031931544511003617c7ee3dd3f909c9217f",
+      "bytes": 12421,
+      "reviewAuthority": "he_ephase_source_review independently reviews task content and exact own offers"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/remaining-lower-assessments/decay-chains-two-consistency-audits-v1.superseded.actual.json",
+      "retained": "25-remaining-lower-assessments/decay-chains-two-consistency-audits-v1.superseded.actual.json",
+      "sha256": "b2744129a9dbd1fd693c077f717a7c5ea1918e1b212126ff061e637124c50b11",
+      "bytes": 559,
+      "reviewAuthority": "he_ephase_source_review independently reviews task content and exact own offers"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/remaining-lower-assessments/decay-chains-two-consistency-audits-v2.independent.actual.json",
+      "retained": "25-remaining-lower-assessments/decay-chains-two-consistency-audits-v2.independent.actual.json",
+      "sha256": "a0d6bc8ab928ca1ba367bd8ff54a066f14f03d5309a7c7272058a1d7944351cc",
+      "bytes": 7158,
+      "reviewAuthority": "he_ephase_source_review independently reviews task content and exact own offers"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/remaining-lower-assessments/decay-chains-two-consistency-audits-v2.reviewed-candidate.goal.json",
+      "retained": "25-remaining-lower-assessments/decay-chains-two-consistency-audits-v2.reviewed-candidate.goal.json",
+      "sha256": "123e08d157d17b0950b168cc5f784be6f80bc46d5cd076a3d5918fc2da9f886e",
+      "bytes": 12411,
+      "reviewAuthority": "he_ephase_source_review independently reviews task content and exact own offers"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/remaining-lower-assessments/decay-chains-two-consistency-audits-v2.reviewed-material.md",
+      "retained": "25-remaining-lower-assessments/decay-chains-two-consistency-audits-v2.reviewed-material.md",
+      "sha256": "bca76078c03cb85ca3f792d22f9c896ed73022214daeb8d8e9e18322ba7f4f18",
+      "bytes": 10175,
+      "reviewAuthority": "he_ephase_source_review independently reviews task content and exact own offers"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/remaining-lower-assessments/decay-chains-two-consistency-audits.independent.actual.json",
+      "retained": "25-remaining-lower-assessments/decay-chains-two-consistency-audits.independent.actual.json",
+      "sha256": "f772dd5761b8bdd1b81e44d6cb2a7722f9f059cc2144ba70ec6f4bd60a3a65a1",
+      "bytes": 6550,
+      "reviewAuthority": "he_ephase_source_review independently reviews task content and exact own offers"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/remaining-lower-assessments/em-spectrum-two-application-maps.independent.actual.json",
+      "retained": "25-remaining-lower-assessments/em-spectrum-two-application-maps.independent.actual.json",
+      "sha256": "974a1c87695f8c57644d545cbbe5f9d30232c40616dfec8566a9dbcf98b5de61",
+      "bytes": 8600,
+      "reviewAuthority": "he_ephase_source_review independently reviews task content and exact own offers"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/remaining-lower-assessments/em-spectrum-two-application-maps.reviewed-candidate.goal.json",
+      "retained": "25-remaining-lower-assessments/em-spectrum-two-application-maps.reviewed-candidate.goal.json",
+      "sha256": "10fecdf9681f2ae5529e8f84ab9c898ce2edc59bf8aa3cd9610e3c9b4f81adc0",
+      "bytes": 18147,
+      "reviewAuthority": "he_ephase_source_review independently reviews task content and exact own offers"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/remaining-lower-assessments/em-spectrum-two-application-maps.reviewed-material.md",
+      "retained": "25-remaining-lower-assessments/em-spectrum-two-application-maps.reviewed-material.md",
+      "sha256": "ba2f299c8266a60b35b6d637249025814b3899ac354f73125b7b3f00bc7974fd",
+      "bytes": 15830,
+      "reviewAuthority": "he_ephase_source_review independently reviews task content and exact own offers"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/remaining-lower-assessments/ideal-transformer-two-load-cases.independent.actual.json",
+      "retained": "25-remaining-lower-assessments/ideal-transformer-two-load-cases.independent.actual.json",
+      "sha256": "ef49838a072d8880c074de011a4dbb3a73f9bb0ac69380bf440cf809dd3994ab",
+      "bytes": 5142,
+      "reviewAuthority": "he_ephase_source_review independently reviews task content and exact own offers"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/remaining-lower-assessments/ideal-transformer-two-load-cases.reviewed-candidate.goal.json",
+      "retained": "25-remaining-lower-assessments/ideal-transformer-two-load-cases.reviewed-candidate.goal.json",
+      "sha256": "4332a5813f567370d4a1a6ff8fb3487ea6bbd8904b620a8d398cc9d8a6af961a",
+      "bytes": 15951,
+      "reviewAuthority": "he_ephase_source_review independently reviews task content and exact own offers"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/remaining-lower-assessments/ideal-transformer-two-load-cases.reviewed-material.md",
+      "retained": "25-remaining-lower-assessments/ideal-transformer-two-load-cases.reviewed-material.md",
+      "sha256": "1f2609cb348b0242376bbaac36030368f876ee6f63e9913937cdcd068d45b944",
+      "bytes": 13536,
+      "reviewAuthority": "he_ephase_source_review independently reviews task content and exact own offers"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/remaining-lower-assessments/measure-new-endpoint-contexts.mts",
+      "retained": "25-remaining-lower-assessments/measure-new-endpoint-contexts.mts",
+      "sha256": "31f6f707c490359aef05fdd168dbc7a808059d2bbbe297bee033d36c80123174",
+      "bytes": 3161,
+      "reviewAuthority": "he_ephase_source_review independently reviews task content and exact own offers"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/remaining-lower-assessments/new-endpoint-contexts.simulated.actual.json",
+      "retained": "25-remaining-lower-assessments/new-endpoint-contexts.simulated.actual.json",
+      "sha256": "73053b3756db60abfd785a15b1189ff728f0080cea783868f195db650a7e96a1",
+      "bytes": 37665,
+      "reviewAuthority": "he_ephase_source_review independently reviews task content and exact own offers"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/remaining-lower-assessments/nine-offer-live-binding.independent.actual.json",
+      "retained": "25-remaining-lower-assessments/nine-offer-live-binding.independent.actual.json",
+      "sha256": "71b0c388226606af7a2b6f6cc75d31868f8cafbfcfd3c29413241783c1ad4038",
+      "bytes": 31490,
+      "reviewAuthority": "he_ephase_source_review independently reviews task content and exact own offers"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/remaining-lower-assessments/nine-offer-metadata.independent.actual.json",
+      "retained": "25-remaining-lower-assessments/nine-offer-metadata.independent.actual.json",
+      "sha256": "aa673e890f28f988748b02a40e5d1b124380f3eea2f4d348d9dc2d63d8c8bac4",
+      "bytes": 39990,
+      "reviewAuthority": "he_ephase_source_review independently reviews task content and exact own offers"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/remaining-lower-assessments/rest-energy-two-system-comparisons.independent.actual.json",
+      "retained": "25-remaining-lower-assessments/rest-energy-two-system-comparisons.independent.actual.json",
+      "sha256": "b237b8e997767ae4bf20692b74b9cd742daddb4210ddd0ee9ca9d547e122ceef",
+      "bytes": 6890,
+      "reviewAuthority": "he_ephase_source_review independently reviews task content and exact own offers"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/remaining-lower-assessments/rest-energy-two-system-comparisons.reviewed-candidate.goal.json",
+      "retained": "25-remaining-lower-assessments/rest-energy-two-system-comparisons.reviewed-candidate.goal.json",
+      "sha256": "7b2b21fd2f8569d6efd43ba0f5386b380a456eaa876039de00e294dbc5398454",
+      "bytes": 16342,
+      "reviewAuthority": "he_ephase_source_review independently reviews task content and exact own offers"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/remaining-lower-assessments/rest-energy-two-system-comparisons.reviewed-material.md",
+      "retained": "25-remaining-lower-assessments/rest-energy-two-system-comparisons.reviewed-material.md",
+      "sha256": "7884e98d95dcbe9073ddcea2c63f0f954127d598c4993084f2a94b8ad148ebbf",
+      "bytes": 14026,
+      "reviewAuthority": "he_ephase_source_review independently reviews task content and exact own offers"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/remaining-lower-assessments/review-common.py",
+      "retained": "25-remaining-lower-assessments/review-common.py",
+      "sha256": "f525d2d2e6d5bb0af15211dc16b87839b21f123e71f0897c5581dee44ed06b2b",
+      "bytes": 5469,
+      "reviewAuthority": "he_ephase_source_review independently reviews task content and exact own offers"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/remaining-lower-assessments/review-decay.py",
+      "retained": "25-remaining-lower-assessments/review-decay.py",
+      "sha256": "0c5be4618fd76ee5b8d840ce2bd87cbd92a031476cfe5c1e663f694004598bed",
+      "bytes": 3039,
+      "reviewAuthority": "he_ephase_source_review independently reviews task content and exact own offers"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/remaining-lower-assessments/review-nine-offers.mts",
+      "retained": "25-remaining-lower-assessments/review-nine-offers.mts",
+      "sha256": "56870405a3fb1d9d2958d27527c1f96f2e9bc7ac3c5221fd58acf1acafa426c5",
+      "bytes": 9980,
+      "reviewAuthority": "he_ephase_source_review independently reviews task content and exact own offers"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/remaining-lower-assessments/review-rest-energy.py",
+      "retained": "25-remaining-lower-assessments/review-rest-energy.py",
+      "sha256": "bde064770c9adf8d739f78f8c296d80b4f04068026c22e20edd3bad1f9861a59",
+      "bytes": 3616,
+      "reviewAuthority": "he_ephase_source_review independently reviews task content and exact own offers"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/remaining-lower-assessments/review-spectrum.py",
+      "retained": "25-remaining-lower-assessments/review-spectrum.py",
+      "sha256": "06266b27aaec0650ec1108fc117ad0f0785a978872dc4bb9e2ff263124d9a3b7",
+      "bytes": 4069,
+      "reviewAuthority": "he_ephase_source_review independently reviews task content and exact own offers"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/remaining-lower-assessments/review-transformer.py",
+      "retained": "25-remaining-lower-assessments/review-transformer.py",
+      "sha256": "db74d060ca77a65280d3eea58ac9a17d87544451d0ee5b326e3e5aa48a3daa12",
+      "bytes": 2713,
+      "reviewAuthority": "he_ephase_source_review independently reviews task content and exact own offers"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/physics/remaining-assessments/sealed-v2/build-candidates.py",
+      "retained": "23-experimental-assessments/sealed-v2/build-candidates.py",
+      "sha256": "4802407be249940d181928252099f49277d4a6e2914801934d081462c0fe4b2b",
+      "bytes": 53419,
+      "reviewAuthority": "exact final candidate independently reviewed by root"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/physics/remaining-assessments/sealed-v2/candidate-summary.actual.json",
+      "retained": "23-experimental-assessments/sealed-v2/candidate-summary.actual.json",
+      "sha256": "d3813c1c356a3572e4ed20f60cdecbd731f741cf7295eac39cdfd448a50dc7c3",
+      "bytes": 1728,
+      "reviewAuthority": "exact final candidate independently reviewed by root"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/physics/remaining-assessments/sealed-v2/document-two-provided-investigations.goal.json",
+      "retained": "23-experimental-assessments/sealed-v2/document-two-provided-investigations.goal.json",
+      "sha256": "40b9a89621596af1e84e20fbc04840e66d44db83274e6d37e44ede5c811b09ad",
+      "bytes": 18836,
+      "reviewAuthority": "exact final candidate independently reviewed by root"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/physics/remaining-assessments/sealed-v2/document-two-provided-investigations.md",
+      "retained": "23-experimental-assessments/sealed-v2/document-two-provided-investigations.md",
+      "sha256": "ed901b752d57e49708480c3bd6ee5201b3dfeca1ae2a4107363226b4239eeee2",
+      "bytes": 9447,
+      "reviewAuthority": "exact final candidate independently reviewed by root"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/physics/remaining-assessments/sealed-v2/manifest.json",
+      "retained": "23-experimental-assessments/sealed-v2/manifest.json",
+      "sha256": "42d4266ddd6206176556c40c2fffd0e66a93b4fad1182f19d997ded8a3ed3fd5",
+      "bytes": 1385,
+      "reviewAuthority": "exact final candidate independently reviewed by root"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/physics/remaining-assessments/sealed-v2/personal-free-fall-two-series.goal.json",
+      "retained": "23-experimental-assessments/sealed-v2/personal-free-fall-two-series.goal.json",
+      "sha256": "54709a76569bce1694ce931614239589482dd65de5e51da68c8de802f04ced33",
+      "bytes": 18641,
+      "reviewAuthority": "exact final candidate independently reviewed by root"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/physics/remaining-assessments/sealed-v2/personal-free-fall-two-series.md",
+      "retained": "23-experimental-assessments/sealed-v2/personal-free-fall-two-series.md",
+      "sha256": "e0d0d76c2c37e7862c7fcd4253b8661309df07d2033426083fe901069700c4df",
+      "bytes": 9798,
+      "reviewAuthority": "exact final candidate independently reviewed by root"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/physics/remaining-assessments/sealed-v2/personal-motor-two-builds.goal.json",
+      "retained": "23-experimental-assessments/sealed-v2/personal-motor-two-builds.goal.json",
+      "sha256": "32dac7cf7a1e8c274c15062430362607224401206d9b70971e56dd03eb35b1e7",
+      "bytes": 21261,
+      "reviewAuthority": "exact final candidate independently reviewed by root"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/physics/remaining-assessments/sealed-v2/personal-motor-two-builds.md",
+      "retained": "23-experimental-assessments/sealed-v2/personal-motor-two-builds.md",
+      "sha256": "c12b9101a7f168d8c8e944d87def5afb20ca69414819e5ff60fca10f5a76a2e2",
+      "bytes": 11072,
+      "reviewAuthority": "exact final candidate independently reviewed by root"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/review-experimental-assessments.py",
+      "retained": "probes/review-experimental-assessments.py",
+      "sha256": "9e513d4399c8de2a4d6adce35d24b57a1432d23e5b0092f3062ae1b08d1eac14",
+      "bytes": 7056,
+      "reviewAuthority": "root final existing-input and exact reviewed-task comparison; no learner trial"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/check-final-protected-inputs-v2.py",
+      "retained": "probes/check-final-protected-inputs-v2.py",
+      "sha256": "f2b7f7e37efe0ed9346e045540cb91f5906073435d64f045dd2ac4cf833fd7df",
+      "bytes": 9220,
+      "reviewAuthority": "root final existing-input and exact reviewed-task comparison; no learner trial"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/final-protected-inputs-v2.actual.json",
+      "retained": "26-final-nine-protected-inputs.actual.json",
+      "sha256": "cc88b56306fdac6b132da3f702ad8a1157f0f9ee61abd1e3794beaad2f92b506",
+      "bytes": 9296,
+      "reviewAuthority": "root final existing-input and exact reviewed-task comparison; no learner trial"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/physics/all-nine-assessments/release-manifest.actual.json",
+      "retained": "26-nine-task-release-manifest.actual.json",
+      "sha256": "7f640ae14b6740dd6213bf9c1cd87bf2c9a667643f78159b0d1703c2140640aa",
+      "bytes": 13534,
+      "reviewAuthority": "root final existing-input and exact reviewed-task comparison; no learner trial"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/remaining-lower-assessments/lens-scope-boundary.actual.json",
+      "retained": "25-remaining-lower-assessments/lens-scope-boundary.actual.json",
+      "sha256": "9a36e05856f6bb03e41b3af9a60d718ebddfef869c3478b529e123757f058cdc",
+      "bytes": 38300,
+      "reviewAuthority": "he_ephase_source_review independently reviews task content and exact own offers"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/remaining-lower-assessments/probe-lens-scope-boundary.mts",
+      "retained": "25-remaining-lower-assessments/probe-lens-scope-boundary.mts",
+      "sha256": "3c1d4429e9425965ff01d4735c786f710e1bcd84ecc6b6933eaae32d89124550",
+      "bytes": 5907,
+      "reviewAuthority": "he_ephase_source_review independently reviews task content and exact own offers"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/source-stage-qa-v6-physics-v35/result.actual.json",
+      "retained": "27-physics-v35-cqr104.actual.json",
+      "sha256": "d5ae6736676bbfc473b06d2571f244f2e1a720a37d4c8f5e794d3939aa0e3f5e",
+      "bytes": 20839,
+      "reviewAuthority": "QA actual V35 projection and route check; temporal source review remains separate"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/root-explicit-endpoints-final-nine-review.actual.json",
+      "retained": "27-root-final-nine-endpoints.review.actual.json",
+      "sha256": "a2c26c39686e8e0e1b1826d0caa82d2cf5d0f50147d5465d87b9b50ff361c604",
+      "bytes": 3646,
+      "reviewAuthority": "root independent final explicit endpoint implementation review"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/root-explicit-endpoints-final-nine-review.mts",
+      "retained": "probes/root-explicit-endpoints-final-nine-review.mts",
+      "sha256": "ab05ed480398531b134c6bbd92133de077990d4bae14dfce798a8e1e24f00e2e",
+      "bytes": 7577,
+      "reviewAuthority": "root independent truth tables, configuration and paired negative cases"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/remaining-lower-assessments/probe-lens-scope-boundary-v35.mts",
+      "retained": "25-remaining-lower-assessments/probe-lens-scope-boundary-v35.mts",
+      "sha256": "3c1d4429e9425965ff01d4735c786f710e1bcd84ecc6b6933eaae32d89124550",
+      "bytes": 5907,
+      "reviewAuthority": "he_ephase_source_review independently reviews task content and exact own offers"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/remaining-lower-assessments/probe-lens-scope-boundary.mts",
+      "retained": "30-final-source-routes/probe-lens-scope-boundary-v36.mts",
+      "sha256": "04f920b2ce7481739566c1e59108244bc345d979915d493b40e223ee19fcb919",
+      "bytes": 5984,
+      "reviewAuthority": "he_ephase_source_review independently reviews task content and exact own offers"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/foreign-demand-retirement/review-v1.actual.json",
+      "retained": "28-foreign-demand-retirement/review-v1.actual.json",
+      "sha256": "6a8adfce4853732c477e55f8fd633f50fe4104c4a9f2130f689e2ad24fa08f87",
+      "bytes": 20294,
+      "reviewAuthority": "he_ephase_source_review independently reviews Math author"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/foreign-demand-retirement/review-v2-final.actual.json",
+      "retained": "28-foreign-demand-retirement/review-v2-final.actual.json",
+      "sha256": "ade095c5bdb1064170ce8eeab79958fcf02d04a4c696a4228d5cd69f4e5dced0",
+      "bytes": 1012,
+      "reviewAuthority": "final63Physics-source-pin and1036demand binding"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/foreign-demand-retirement/v35-retired-demands.original.json",
+      "retained": "28-foreign-demand-retirement/v35-retired-demands.original.json",
+      "sha256": "71ea5d85ad7b913b8e992b02c1e43d047d42f4c2e63f49740abdb756d0303433",
+      "bytes": 49163,
+      "reviewAuthority": "original reviewed3retirement rows"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/review-mv-demand-retirements.py",
+      "retained": "28-foreign-demand-retirement/review-mv-demand-retirements.py",
+      "sha256": "39a83e12ecdeb2389b5a3658effbcb78c10a7b58cde092594986ba56cefae90a",
+      "bytes": 7674,
+      "reviewAuthority": "independent unpruned graph and56negative/positive producer fixtures"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/th-e10-v36/review.actual.json",
+      "retained": "29-th-e10-final/review.actual.json",
+      "sha256": "8ca9941e8a93cc9b939cfb4822a65ba59eaed0e8da422f0d003f662488a5ff0e",
+      "bytes": 78626,
+      "reviewAuthority": "he_ephase_source_review independently checks each E10atom against official source or real unchanged prerequisite path"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/review-th-e10-v36.py",
+      "retained": "29-th-e10-final/review-th-e10-v36.py",
+      "sha256": "07feca7b2ba06b14bb3f84fead08e6ab5807ad9b72bfb7d70f5163f62ff3c60d",
+      "bytes": 4412,
+      "reviewAuthority": "independent source and atomwise placement review"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/physics/frozen-v36/th-e10-witnesses.actual.json",
+      "retained": "29-th-e10-final/author-witnesses.actual.json",
+      "sha256": "e91eeecef0f19fcae9973aad6152daa70b182d7414b7b491835814d76ac05ae3",
+      "bytes": 66594,
+      "reviewAuthority": "Physics author exact E10atom/source/path witnesses"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/source-stage-qa-v7-physics-v36/result.actual.json",
+      "retained": "30-final-source-routes/physics-cqr104.actual.json",
+      "sha256": "61aea3a5de3c9565794816e2ab2236eca0ddb6ade514382e4fa3d8cf1212d6d8",
+      "bytes": 20839,
+      "reviewAuthority": "actual106Physics contexts atV36"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/source-stage-qa-v7-math-final/result.actual.json",
+      "retained": "30-final-source-routes/math-cqr104.actual.json",
+      "sha256": "e65661163a876498f4feedaecb41145f1aa4d44c8bcfc96d2cb86280009ca42a",
+      "bytes": 22530,
+      "reviewAuthority": "actual72Mathematics contexts atV7"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/source-stage-qa-v7-eye-v36/lens-scope-boundary.actual.json",
+      "retained": "30-final-source-routes/eye-scope-boundary.actual.json",
+      "sha256": "bdeca6135a3d3538c4ef07073bdbe58e91f424e95a56a9ab1440e98312f12d23",
+      "bytes": 38276,
+      "reviewAuthority": "actual dormant canonical selection and4Land task-loss negatives"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/physics-v36-live-delta-independent.actual.json",
+      "retained": "31-final-source-freeze/physics-v36-independent-delta.actual.json",
+      "sha256": "14e2a0a9f45c1b3cb2e6493cb78739b9250cba95745688295269aa27fdc9fabc",
+      "bytes": 2194,
+      "reviewAuthority": "root independently compares all90exact reference multisets and live/frozen bytes"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/physics/frozen-v36/manifest.json",
+      "retained": "31-final-source-freeze/physics-v36.manifest.json",
+      "sha256": "7bda220b99b53938b3f79fa144d8cff370cf2fd8f9f6f0c6ba5a79e6c2037b8d",
+      "bytes": 30755,
+      "reviewAuthority": "Physics author final90view freeze"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/mathematik/final-v7/manifest.json",
+      "retained": "31-final-source-freeze/math-v7.manifest.json",
+      "sha256": "da48786bc71bbe2a0846325a865d8644093f620853815f83ca9d9ed8977bf032",
+      "bytes": 44264,
+      "reviewAuthority": "Math author final100view freeze"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/mathematik/final-v7/math-delta.actual.json",
+      "retained": "31-final-source-freeze/math-v7-delta.actual.json",
+      "sha256": "08f445fa8b3ab9e3abc19c4ab3c3536182807e002006c10bede017226b3d9211",
+      "bytes": 46690,
+      "reviewAuthority": "Math author exact100view scope/role/exam preservation comparison"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/mathematik/final-v7/policy-final-delta.actual.json",
+      "retained": "31-final-source-freeze/math-demand-delta.actual.json",
+      "sha256": "28179030a3deaf9373cb38c7e725c0273bbaec77ac1c72503c1ff9bb38961e26",
+      "bytes": 24906,
+      "reviewAuthority": "Math author final current-demand recalculation"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/mathematik/final-v7/post-freeze-check.actual.json",
+      "retained": "31-final-source-freeze/math-live-replay.actual.json",
+      "sha256": "d085a44fe9d14b796d45ddcacafbd3c1554096e8867dc33d9445f939714040ba",
+      "bytes": 602,
+      "reviewAuthority": "actual live normalizer replay and stable inputs"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/mathematik/final-v7/unit-source-ledger.actual.json",
+      "retained": "31-final-source-freeze/math-source-ledger.actual.json",
+      "sha256": "5b976d1d7890df3dde139a31356093a1c0b7a7a364d165fd010c1f735282898e",
+      "bytes": 4868778,
+      "reviewAuthority": "final100views/139timeunits/31source extractions"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/subject-export-v36/result.actual.json",
+      "retained": "32-physics-legacy-export/result.actual.json",
+      "sha256": "a287a6027ba6b38eb9807de084931114d0cb3174f8e457d3022ecfd9457b3756",
+      "bytes": 959,
+      "reviewAuthority": "Math agent actual final Physics legacy export; not standalone acceptance"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/subject-export-v36/build.command.actual.json",
+      "retained": "32-physics-legacy-export/build.command.actual.json",
+      "sha256": "297ff867fe297d9e985cd7a8ef7e66a7c0679194aa488eafc8a0e5012efce747",
+      "bytes": 510,
+      "reviewAuthority": "actual command/output/exit binding"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/subject-export-v36/validate.command.actual.json",
+      "retained": "32-physics-legacy-export/validate.command.actual.json",
+      "sha256": "47c5721a542699263fa77118cf0f83baedcca50e9def7654826c380d5c05a293",
+      "bytes": 589,
+      "reviewAuthority": "actual command/output/exit binding"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/subject-export-v36/validation/subject-export-package-validation-report.json",
+      "retained": "32-physics-legacy-export/validation-report.json",
+      "sha256": "be651e771a4ae6944efd95c7426d5c1e94a96c884285975162428d5e76bad5b9",
+      "bytes": 12714,
+      "reviewAuthority": "strict65-check Physics export result; archive remains local"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/physics/frozen-v36/unit-source-ledger.actual.json",
+      "retained": "33-physics-final-ledger/unit-source-ledger.actual.json",
+      "sha256": "70325885ee544522d4c8bd994fd8d1d2ef2038f8d1211db717798dc490180249",
+      "bytes": 13861192,
+      "reviewAuthority": "author final90view source and explicit curricular placement ledger"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/physics/frozen-v36/scope-and-assessment-deltas.actual.json",
+      "retained": "33-physics-final-ledger/scope-and-assessment-deltas.actual.json",
+      "sha256": "adc534198ce289f2ba9b6745e2f37f1e1cbeaab4ed970633baf7bdcfd069cb14",
+      "bytes": 41010,
+      "reviewAuthority": "author exact source-scope and nine-task delta"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/physics/frozen-v36/course-filter-unchanged-source-binding.actual.json",
+      "retained": "33-physics-final-ledger/course-filter-source-binding.actual.json",
+      "sha256": "231b22901d735b0802037840cb0c9beaea8c06c6a9b48bae0d1acd032cc329f7",
+      "bytes": 1087,
+      "reviewAuthority": "complete unchanged helper source bound to independent4398native comparisons"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/final-v4/native/capture.actual.json",
+      "retained": "34-final-native-maps/native/capture.actual.json",
+      "sha256": "e17ef58f05e11d4f32c809930173625397c7df1f3b983237aa92caaa58ca28ec",
+      "bytes": 63047,
+      "reviewAuthority": "actual root native/HTTP/browser execution; manual root visual inspection identified separately"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/final-v4/map/actual-backend-acceptance.json",
+      "retained": "34-final-native-maps/map/actual-backend-acceptance.json",
+      "sha256": "255e8f206f74c8326502d424d335efdddc034acc88f809e1475a63fa11926efe",
+      "bytes": 4479,
+      "reviewAuthority": "actual root native/HTTP/browser execution; manual root visual inspection identified separately"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/final-v4/http/actual.json",
+      "retained": "34-final-native-maps/http/actual.json",
+      "sha256": "6bec5a53f2641a7d2f287a4ae7304baf608a3dc03aca4f7408b57a2b06726bde",
+      "bytes": 200763,
+      "reviewAuthority": "actual root native/HTTP/browser execution; manual root visual inspection identified separately"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/final-v4/browser-v2/actual.json",
+      "retained": "34-final-native-maps/browser-v2/actual.json",
+      "sha256": "88f6c1755fb555d73a1ebf2290f921fe9ef756e56a6ac9f8f51b8262282e03fa",
+      "bytes": 104283,
+      "reviewAuthority": "actual root native/HTTP/browser execution; manual root visual inspection identified separately"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/final-v4/browser-he-v3/actual.json",
+      "retained": "34-final-native-maps/browser-he-v3/actual.json",
+      "sha256": "03bab30d2e28f16ae9fe2baa7a42d0967ce64d0b4ca0b202997441c452f55cdc",
+      "bytes": 37219,
+      "reviewAuthority": "actual root native/HTTP/browser execution; manual root visual inspection identified separately"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/final-v4/browser-visual-review.actual.json",
+      "retained": "34-final-native-maps/browser-visual-review.actual.json",
+      "sha256": "af5e1d48981637aa1432d18b9ddb9274123392787693eeec24e1730352075118",
+      "bytes": 3953,
+      "reviewAuthority": "actual root native/HTTP/browser execution; manual root visual inspection identified separately"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/final-v4/browser-he-v3/CrossStage-G8-GK-LK-e-phase.png",
+      "retained": "34-final-native-maps/browser-he-v3/CrossStage-G8-GK-LK-e-phase.png",
+      "sha256": "666d6554f728c256654600d92390c8a6e2a02655b53c9ba9738b5eccbaca346b",
+      "bytes": 116764,
+      "reviewAuthority": "actual root native/HTTP/browser execution; manual root visual inspection identified separately"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/final-v4/browser-he-v3/CrossStage-G9-GK-LK-e-phase.png",
+      "retained": "34-final-native-maps/browser-he-v3/CrossStage-G9-GK-LK-e-phase.png",
+      "sha256": "d4a1268fb21f042735b9f2e98a0f5bb51181239cee6d893b6ae37bc5ccc6ea12",
+      "bytes": 116780,
+      "reviewAuthority": "actual root native/HTTP/browser execution; manual root visual inspection identified separately"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/final-v4/browser-he-v3/CrossStage-G9-GK-LK-e1.png",
+      "retained": "34-final-native-maps/browser-he-v3/CrossStage-G9-GK-LK-e1.png",
+      "sha256": "f4060e10d8bd0803dadebd9894bc5860d7d7af9246fc9fd277f65e4802e1fb64",
+      "bytes": 72131,
+      "reviewAuthority": "actual root native/HTTP/browser execution; manual root visual inspection identified separately"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/final-v4/browser-he-v3/CrossStage-G9-GK-LK-q4.png",
+      "retained": "34-final-native-maps/browser-he-v3/CrossStage-G9-GK-LK-q4.png",
+      "sha256": "e06cfcb8e1ebfae41b7dbc4a4dcfa98deca5f93a8507e8b36bc460ec7b72c83b",
+      "bytes": 102668,
+      "reviewAuthority": "actual root native/HTTP/browser execution; manual root visual inspection identified separately"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/final-v4/browser-v2/canonical_unspecified_CrossStage_GK-LK-physik-sek2-stage.png",
+      "retained": "34-final-native-maps/browser-v2/canonical_unspecified_CrossStage_GK-LK-physik-sek2-stage.png",
+      "sha256": "9fb64993d8558deb586a3979fc34c222b4e23c3549b03b5dc1e159fd2c8fcb6a",
+      "bytes": 61972,
+      "reviewAuthority": "actual root native/HTTP/browser execution; manual root visual inspection identified separately"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/final-v4/browser-v2/DE-BY_G9_CrossStage_GK-LK-mathematik-sek2-stage.png",
+      "retained": "34-final-native-maps/browser-v2/DE-BY_G9_CrossStage_GK-LK-mathematik-sek2-stage.png",
+      "sha256": "dd1dab7bda7e6c55a43b432b211874e46c8653f745cbe6bdf0157c5f169e847e",
+      "bytes": 50879,
+      "reviewAuthority": "actual root native/HTTP/browser execution; manual root visual inspection identified separately"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/final-v4/browser-v2/DE-NW_G9_CrossStage_GK-LK-physik-sek1-stage.png",
+      "retained": "34-final-native-maps/browser-v2/DE-NW_G9_CrossStage_GK-LK-physik-sek1-stage.png",
+      "sha256": "87fec96beb5d2605fd8ab3cb30b0931fded95e3c19e4c4c50ad57a7bdde66c12",
+      "bytes": 50694,
+      "reviewAuthority": "actual root native/HTTP/browser execution; manual root visual inspection identified separately"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/check-browser-final-5199.mjs",
+      "retained": "34-final-native-maps/check-browser-final-5199.mjs",
+      "sha256": "e382b4b2671b15d70d8203c62a2b063cb5392c0e5571b84e6da8bc843f6e9141",
+      "bytes": 3751,
+      "reviewAuthority": "root actual read-only browser probe source"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/check-browser-he-final-v4-stable.mjs",
+      "retained": "34-final-native-maps/check-browser-he-final-v4-stable.mjs",
+      "sha256": "b8b1af9f7f1561f304de2f93b1135353d78282c81c6b438a00353431cdc47ce8",
+      "bytes": 8145,
+      "reviewAuthority": "root actual read-only browser probe source"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/physics-goalbook-he-support-v2/build-probe.mjs",
+      "retained": "35-final-goalbook-he-support/build-probe.mjs",
+      "sha256": "b9464ae33c924a98823ee3c8bd9b682ac2658367c99b959203d2408cec565049",
+      "bytes": 5184,
+      "reviewAuthority": "he_ephase_validation independently reviews final GoalBook support assertion and native R witnesses"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/physics-goalbook-he-support-v2/extracted-guard.ts",
+      "retained": "35-final-goalbook-he-support/extracted-guard.ts",
+      "sha256": "9b49249ba636c7c1d49274a2aa900db9209b1ced9047be93d7e5c048dcd4beae",
+      "bytes": 4617,
+      "reviewAuthority": "he_ephase_validation independently reviews final GoalBook support assertion and native R witnesses"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/physics-goalbook-he-support-v2/native-method-witnesses.actual.json",
+      "retained": "35-final-goalbook-he-support/native-method-witnesses.actual.json",
+      "sha256": "8b568d75dd21418736e8aafed0ebca8bbe2f6f34f7138726ba339778032737f2",
+      "bytes": 15877,
+      "reviewAuthority": "he_ephase_validation independently reviews final GoalBook support assertion and native R witnesses"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/physics-goalbook-he-support-v2/probe.actual.json",
+      "retained": "35-final-goalbook-he-support/probe.actual.json",
+      "sha256": "c0025037722a70b2761fa4b18d058d8ee65a289b77dbc3363488542bc08f0f23",
+      "bytes": 6863,
+      "reviewAuthority": "he_ephase_validation independently reviews final GoalBook support assertion and native R witnesses"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/physics-goalbook-he-support-v2/probe.mts",
+      "retained": "35-final-goalbook-he-support/probe.mts",
+      "sha256": "2d0e367414bc52671b7220e74c4ae919671b6b257f2c9ac00cafeaacf832327a",
+      "bytes": 10175,
+      "reviewAuthority": "he_ephase_validation independently reviews final GoalBook support assertion and native R witnesses"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/physics-goalbook-he-support-v2/review-native-witnesses.py",
+      "retained": "35-final-goalbook-he-support/review-native-witnesses.py",
+      "sha256": "2f20864fdc7214d50878c5f232b1a313e3d954a43a96d1287b07d9c4abf9e52b",
+      "bytes": 2718,
+      "reviewAuthority": "he_ephase_validation independently reviews final GoalBook support assertion and native R witnesses"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/physics-goalbook-he-support-v2/review.actual.json",
+      "retained": "35-final-goalbook-he-support/review.actual.json",
+      "sha256": "e2924d3ce2ab53aaebe60ec14798e1979930c46cbe3af93baf813fdc7b9e0ae8",
+      "bytes": 2962,
+      "reviewAuthority": "he_ephase_validation independently reviews final GoalBook support assertion and native R witnesses"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/physics-goalbook-he-support-v2/reviewed-test.ts",
+      "retained": "35-final-goalbook-he-support/reviewed-test.ts",
+      "sha256": "511ac8a37cd816796a81718d80502ad16144d8f5bb6458c2b1ae57b549314282",
+      "bytes": 168708,
+      "reviewAuthority": "he_ephase_validation independently reviews final GoalBook support assertion and native R witnesses"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/physics-goalbook-he-support-v2/support-guard.diff",
+      "retained": "35-final-goalbook-he-support/support-guard.diff",
+      "sha256": "e47012369da0e1fd211b40bdabd2c727d26d94d590f3f63b85a93b3ef6dd7458",
+      "bytes": 1429,
+      "reviewAuthority": "he_ephase_validation independently reviews final GoalBook support assertion and native R witnesses"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/assessment-strands-root/7cfaf48e-e420-5c09-8ec2-932f0dba4d08.after.json",
+      "retained": "36-final-assessment-strands/7cfaf48e-e420-5c09-8ec2-932f0dba4d08.after.json",
+      "sha256": "f84ea2c92a60294dbd973ab1ce3a50948beaf36caa6d6a97b038e0281c6717ab",
+      "bytes": 19490,
+      "reviewAuthority": "root independent exact three-field metadata delta and actual task/rubric classification review"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/assessment-strands-root/7cfaf48e-e420-5c09-8ec2-932f0dba4d08.before.json",
+      "retained": "36-final-assessment-strands/7cfaf48e-e420-5c09-8ec2-932f0dba4d08.before.json",
+      "sha256": "095382f7890a1808259983dfb998eb6cdcd5999c214d420dfcc9827b8220caaf",
+      "bytes": 19465,
+      "reviewAuthority": "root independent exact three-field metadata delta and actual task/rubric classification review"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/assessment-strands-root/a8dc0290-9f80-5763-8943-e16b8d2aa860.after.json",
+      "retained": "36-final-assessment-strands/a8dc0290-9f80-5763-8943-e16b8d2aa860.after.json",
+      "sha256": "d4d981221a7e749159b4c8dacb1c4d75c8d614e25d73573a4abc6ebd72d8c39b",
+      "bytes": 7248,
+      "reviewAuthority": "root independent exact three-field metadata delta and actual task/rubric classification review"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/assessment-strands-root/a8dc0290-9f80-5763-8943-e16b8d2aa860.before.json",
+      "retained": "36-final-assessment-strands/a8dc0290-9f80-5763-8943-e16b8d2aa860.before.json",
+      "sha256": "08144fc112a5eee9bfb0cbf2b4e1080ef081a349f79e4f6e1ef4a354bb034e4d",
+      "bytes": 7223,
+      "reviewAuthority": "root independent exact three-field metadata delta and actual task/rubric classification review"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/assessment-strands-root/f41e4e30-794e-5ce4-ba5e-cc72712cd691.after.json",
+      "retained": "36-final-assessment-strands/f41e4e30-794e-5ce4-ba5e-cc72712cd691.after.json",
+      "sha256": "d8cccd8cb8e0511d1e55bf65ea5a2f490f8d356ed329042478aef13815418b28",
+      "bytes": 19224,
+      "reviewAuthority": "root independent exact three-field metadata delta and actual task/rubric classification review"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/assessment-strands-root/f41e4e30-794e-5ce4-ba5e-cc72712cd691.before.json",
+      "retained": "36-final-assessment-strands/f41e4e30-794e-5ce4-ba5e-cc72712cd691.before.json",
+      "sha256": "16142cc567fff13bbda1a7453cb76829c27a615de4920f81a2bfa433ec17bf02",
+      "bytes": 19199,
+      "reviewAuthority": "root independent exact three-field metadata delta and actual task/rubric classification review"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/assessment-strands-root/review.actual.json",
+      "retained": "36-final-assessment-strands/review.actual.json",
+      "sha256": "ad166863320bed6e68b4fed207066c46b8ca0f925fef6fb089aebef933b30f79",
+      "bytes": 2776,
+      "reviewAuthority": "root independent exact three-field metadata delta and actual task/rubric classification review"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/assessment-strands-root/verify.py",
+      "retained": "36-final-assessment-strands/verify.py",
+      "sha256": "9da869e03afeab233af0191c765ac3f084899e4ebe168b0907e20d5bf7ae3e34",
+      "bytes": 3308,
+      "reviewAuthority": "root independent exact three-field metadata delta and actual task/rubric classification review"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/final-metadata-v1/native/capture.actual.json",
+      "retained": "37-final-metadata-projection/native-capture.actual.json",
+      "sha256": "95565ab47bb728f3fc0ca6391e5e733c40b701441b03da6e834f630ac3170b4c",
+      "bytes": 63047,
+      "reviewAuthority": "fresh root native export with source stability after final metadata repair"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/final-metadata-v1/projection-equivalence.actual.json",
+      "retained": "37-final-metadata-projection/projection-equivalence.actual.json",
+      "sha256": "7e29c81f3cac643058f1f17c6b5149ed9072de2ae6ca863c9df6633c516fac40",
+      "bytes": 91884,
+      "reviewAuthority": "root compares every complete432native payload and216backend scope against fully measured snapshot"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/final-metadata-v1/compare-projection.py",
+      "retained": "37-final-metadata-projection/compare-projection.py",
+      "sha256": "1070552b41bf05a056c22cfd8097c7436d43b8b14f05f18591427e3cf08bb024",
+      "bytes": 2081,
+      "reviewAuthority": "root independent full object comparison source"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/final-metadata-v1/http/actual.json",
+      "retained": "37-final-metadata-projection/http.actual.json",
+      "sha256": "c62c3e6dceb38f32455b3819c83c1e6b3780f4f3d59934266ba67c10b5d46645",
+      "bytes": 200763,
+      "reviewAuthority": "fresh432actual GET responses equal complete final native payloads"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/mathematik/final-v7/manifest-physics-metadata-v8.json",
+      "retained": "37-final-metadata-projection/math-metadata-followup.manifest.json",
+      "sha256": "b4a172ed305f8da94ced3de262bb4f521f7dbc79e0b3b92fa59145a34babf408",
+      "bytes": 41252,
+      "reviewAuthority": "Math author separate unchanged100view and174source-pin followup"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/delivery-manifest-final/review.actual.json",
+      "retained": "38-delivery-manifest/review.actual.json",
+      "sha256": "b9c0596d2fb547def78098bcfdefb669afc2a60b6cc2d76203640c4c7d0d7262",
+      "bytes": 11426,
+      "reviewAuthority": "he_ephase_validation independent delivery inventory and old gate/source preservation review"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/review/delivery-manifest-final/inventory.actual.json",
+      "retained": "38-delivery-manifest/inventory.actual.json",
+      "sha256": "fc029eecd4ebb393801dac7ddae84edb5a81a39d8f23add4529e435816fa3e2d",
+      "bytes": 252556,
+      "reviewAuthority": "reviewed550file inventory snapshot before later evidence-only additions"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/subject-export-final-metadata-v1/result.actual.json",
+      "retained": "39-physics-final-metadata-export/result.actual.json",
+      "sha256": "c5dedd3407529117e88d021cfdd8eccf9a6849295725b82c3590cc6d0696d50b",
+      "bytes": 1661,
+      "reviewAuthority": "he_ephase_validation actual final metadata-bound Physics legacy export with65strict checks; not standalone readiness"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/subject-export-final-metadata-v1/build.command.actual.json",
+      "retained": "39-physics-final-metadata-export/build.command.actual.json",
+      "sha256": "53733f946397a566fef17b7c1049536e4eef133192400ee51eb661c08335574d",
+      "bytes": 537,
+      "reviewAuthority": "he_ephase_validation actual final metadata-bound Physics legacy export with65strict checks; not standalone readiness"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/subject-export-final-metadata-v1/validate.command.actual.json",
+      "retained": "39-physics-final-metadata-export/validate.command.actual.json",
+      "sha256": "493593a218b960b35e22839ba3e4e8e555a3506e5edefa1fe7cc62a50b367923",
+      "bytes": 631,
+      "reviewAuthority": "he_ephase_validation actual final metadata-bound Physics legacy export with65strict checks; not standalone readiness"
+    },
+    {
+      "source": "tmp/pipeline/laender-stufen/gesamt/subject-export-final-metadata-v1/validation/subject-export-package-validation-report.json",
+      "retained": "39-physics-final-metadata-export/validation/subject-export-package-validation-report.json",
+      "sha256": "16ab32a115a6beb482369f5a85befd8641902493be2cbcc6856b5dda1ee60b09",
+      "bytes": 12798,
+      "reviewAuthority": "he_ephase_validation actual final metadata-bound Physics legacy export with65strict checks; not standalone readiness"
+    }
+  ]
+}

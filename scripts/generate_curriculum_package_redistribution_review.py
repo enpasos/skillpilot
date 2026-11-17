@@ -2268,6 +2268,9 @@ def main() -> int:
                        if args.learning_unit_candidate
                        else DEFAULT_LEDGER.with_name("de-gymnasium-mathematik-v1.3.review.json")
                        if args.runtime_v13_candidate else DEFAULT_LEDGER)
+    historical_v13_ledger = DEFAULT_LEDGER.with_name("de-gymnasium-mathematik-v1.3.review.json")
+    if args.generate and args.ledger.resolve() == historical_v13_ledger.resolve():
+        parser.error("The historical runtime 1.3 ledger is retained by sealed evidence; generate a separate candidate with explicit --ledger")
     if args.runtime_v13_candidate:
         if args.ledger.resolve() in {
                 DEFAULT_LEDGER.resolve(),
@@ -2303,7 +2306,7 @@ def main() -> int:
                     print(f"[{item.code}] {item.path}: {item.message}", file=sys.stderr)
                 raise ReviewError("Refusing to write an invalid redistribution review")
             write_json_atomic(args.ledger, review)
-            print(f"Wrote {args.ledger.relative_to(REPO_ROOT)}")
+            print(f"Wrote {args.ledger.resolve().relative_to(REPO_ROOT)}")
             print_summary(review)
             return 0
 

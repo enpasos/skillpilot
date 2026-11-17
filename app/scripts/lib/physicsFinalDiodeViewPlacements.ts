@@ -14,6 +14,9 @@ const own=(id:string|undefined)=>id?.startsWith('physics-final-diode-')||id?.sta
 const assert=(ok:unknown,message:string)=>{if(!ok)throw Error('Final diode view protection: '+message)}
 export function expectedDiodeTargets(scope:GoalPlacementContext):number[]{
  if(!scope.jurisdiction||scope.jurisdiction==='DE')return [0,1,2] // national union, including goal-book atlas; not sixteen state claims
+ // These reviewed standalone lower selections exclude the HE Q4 and RP
+ // upper-secondary electronics targets retained by their CrossStage views.
+ if(scope.stage==='SekI'&&['DE-HE','DE-RP'].includes(scope.jurisdiction))return []
  const lower=scope.stage!=='SekII'
  const matrix:Record<string,number[]> = lower?{'DE-BY':[0,1],'DE-BW':[1],'DE-SL':[0,1,2],'DE-SN':[0,1,2],'DE-ST':[0],'DE-TH':[0],'DE-HE':[0,1,2],'DE-RP':[0]}:{'DE-HE':[0,1,2],'DE-RP':[0],'DE-TH':[0],'DE-SN':scope.courseProfile==='LK'?[0]:[]}
  return matrix[scope.jurisdiction]??[]
@@ -26,16 +29,17 @@ export function preserveFinalDiodePlacementsFromCurrent<T extends PhysicsPlaceme
  const collect=(nodes:PhysicsPlacementNode[],ancestors:{node:PhysicsPlacementNode;index:number}[]=[])=>nodes.forEach((n,index)=>{if(ownedDiodeReference(n,ancestors.some(a=>a.node.id==='physics-final-diode-seki'),ancestors.some(a=>a.node.id==='physics-final-diode-prerequisite-practice')))placements.push({node:structuredClone(n),index,ancestors});collect(n.children??[],[...ancestors,{node:n,index}])})
  collect(current.rootNodes)
  if(current.scope.jurisdiction==='DE-HE'&&current.scope.stage!=='SekI'){
-  for(const p of placements){const i=p.ancestors.findIndex(a=>a.node.id==='physics-semiconductor-sekii');if(i>=0)assert(i>0&&p.ancestors[i-1].node.id==='physics-q4','HE supplemental preparation must be inside Q4')}
+  for(const p of placements){const i=p.ancestors.findIndex(a=>a.node.id==='physics-semiconductor-sekii');if(i>=0)assert(p.ancestors.slice(0,i).some(a=>a.node.id==='physics-q4'),'HE supplemental preparation must be inside Q4')}
  }
  const actual=placements.filter(p=>diodeChildren.includes(p.node.goalId as string)&&p.node.projectionRole!=='prerequisiteOnly').map(p=>diodeChildren.indexOf(p.node.goalId as string)).sort()
  assert(JSON.stringify(actual)===JSON.stringify(expectedDiodeTargets(current.scope)),'current explicit target-role matrix incomplete or wrong')
  // BW's reviewed lower scope needs the explicit functional and experimental atoms,
  // not the whole parent: that support would also expose an unused microscopic pn goal.
- const unusedBwLowerParent=current.scope.jurisdiction==='DE-BW'&&current.scope.stage==='CrossStage'
+ const unusedBwLowerParent=current.scope.jurisdiction==='DE-BW'&&current.scope.stage!=='SekII'
+ const emptyHessenLowerSelection=current.scope.stage==='SekI'&&current.scope.jurisdiction==='DE-HE'
  assert(unusedBwLowerParent
   ? !placements.some(p=>p.node.goalId===diodeParent)
-  : placements.some(p=>p.node.goalId===diodeParent&&p.node.projectionRole==='prerequisiteOnly'),
+  : emptyHessenLowerSelection||placements.some(p=>p.node.goalId===diodeParent&&p.node.projectionRole==='prerequisiteOnly'),
  unusedBwLowerParent?'unneeded BW lower parent support':'parent subtree guard missing')
  assert(placements.filter(p=>p.node.goalId===diodeParent).every(p=>p.node.projectionRole==='prerequisiteOnly'),'legacy parent target would promote unreviewed children')
  const remove=(nodes:PhysicsPlacementNode[],inDiodeSekI=false,inPrerequisitePractice=false):PhysicsPlacementNode[]=>nodes.filter(n=>!ownedDiodeReference(n,inDiodeSekI,inPrerequisitePractice)).map(n=>n.children?{...n,children:remove(n.children,inDiodeSekI||n.id==='physics-final-diode-seki',inPrerequisitePractice||n.id==='physics-final-diode-prerequisite-practice')}:n).filter(n=>!(own(n.id)&&!n.children?.length))

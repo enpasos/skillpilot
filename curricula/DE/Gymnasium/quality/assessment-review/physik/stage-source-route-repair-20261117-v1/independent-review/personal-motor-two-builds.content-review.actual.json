@@ -1,0 +1,174 @@
+{
+  "schema": "skillpilot-independent-assessment-content-review-v1",
+  "reviewer": "/root",
+  "author": "/root/he_ephase_implementation",
+  "status": "PASS",
+  "candidateId": "e6a89922-75ce-53dd-9e7b-3a683398431c",
+  "coveredGoalId": "eb30189c-27c6-510b-b235-6543afa18b90",
+  "candidatePath": "tmp/pipeline/laender-stufen/gesamt/physics/remaining-assessments/sealed-v2/personal-motor-two-builds.goal.json",
+  "candidateSha256": "32dac7cf7a1e8c274c15062430362607224401206d9b70971e56dd03eb35b1e7",
+  "canonicalGoalAtReview": {
+    "id": "eb30189c-27c6-510b-b235-6543afa18b90",
+    "shortKey": "canonical_physics_sek1_simple_electric_motor",
+    "title": "Einfachen Elektromotor bauen und qualitativ erklären",
+    "titleEn": "Build and qualitatively explain a simple electric motor",
+    "description": "Die lernende Person kann einen einfachen Elektromotor aufbauen, seine Funktion mit der Kraft auf stromdurchflossene Leiter im Magnetfeld erklären und Möglichkeiten zur Variation seines Laufs untersuchen.",
+    "descriptionEn": "The learner can build a simple electric motor, explain its operation using the force on current-carrying conductors in a magnetic field, and investigate ways to vary its motion.",
+    "weight": 1,
+    "tags": [
+      "GK",
+      "LK",
+      "canonical",
+      "SekI"
+    ],
+    "contains": [],
+    "requires": [
+      "0f6b798b-594e-5480-8c5f-95e2486a4d85",
+      "a5f652cc-e091-4c90-bec2-c357ae54fcf1"
+    ],
+    "dimensionTags": {
+      "framework": "canonical-gymnasium-physics",
+      "demandLevel": "AB2",
+      "processCompetencies": [
+        "PK1_EXPERIMENTIEREN",
+        "PK2_MODELLIEREN"
+      ],
+      "guidingIdeas": [
+        "LI_FELDER",
+        "LI_TECHNIK"
+      ],
+      "phase": "GLOBAL",
+      "area": "Elektromagnetismus",
+      "topicCode": "CANONICAL.PHYSICS.SEK1.ELECTROMAGNETISM.MOTOR"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "type": "atomic",
+    "competencyRefs": [
+      "PROCESS.PK1_EXPERIMENTIEREN",
+      "PROCESS.PK2_MODELLIEREN"
+    ],
+    "resourceLinks": [
+      {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "eb30189c-27c6-510b-b235-6543afa18b90",
+        "title": "Visualisierung: Einfachen Elektromotor bauen und qualitativ erklären",
+        "url": "/assets/goal-visualizations/physik/eb30189c-27c6-510b-b235-6543afa18b90/eb30189c-27c6-510b-b235-6543afa18b90.jpg",
+        "provider": "Google Gemini / Nano Banana Pro",
+        "description": "Visualisierung zum Lernziel: Einfachen Elektromotor bauen und qualitativ erklären.",
+        "altText": "Didaktische Visualisierung zum Lernziel \"Einfachen Elektromotor bauen und qualitativ erklären\". Die lernende Person kann einen einfachen Elektromotor aufbauen, seine Funktion mit der Kraft auf stromdurchflossene Leiter im Magnetfeld erklären und Möglichkeiten zur Variation seines Laufs untersuchen.",
+        "lang": "de",
+        "license": "AI-generated, SkillPilot-curated",
+        "reviewStatus": "pilot"
+      }
+    ]
+  },
+  "reviewMethod": "Both complete language versions, solutions and all scoring cores manually read; independent numerical and vector calculations plus exhaustive rubric enumeration.",
+  "contentReview": [
+    "Two independently assembled real open motors require fresh observed starts, current reversal in A and field reversal in B, with the other variables held fixed.",
+    "Each case requires own spatial current/field/force explanation, torque and commutation, rather than memorized clockwise labels.",
+    "A functioning electrically sustained run must be demonstrated in each assembly; manual spinning or exclusively failed starts cannot complete the construction core."
+  ],
+  "independentCalculations": {
+    "conductorForceAndTorqueSignCases": [
+      {
+        "currentSign": 1,
+        "fieldSign": 1,
+        "sideTorques": [
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ],
+        "totalTorqueZ": 2
+      },
+      {
+        "currentSign": 1,
+        "fieldSign": -1,
+        "sideTorques": [
+          [
+            0,
+            0,
+            -1
+          ],
+          [
+            0,
+            0,
+            -1
+          ]
+        ],
+        "totalTorqueZ": -2
+      },
+      {
+        "currentSign": -1,
+        "fieldSign": 1,
+        "sideTorques": [
+          [
+            0,
+            0,
+            -1
+          ],
+          [
+            0,
+            0,
+            -1
+          ]
+        ],
+        "totalTorqueZ": -2
+      },
+      {
+        "currentSign": -1,
+        "fieldSign": -1,
+        "sideTorques": [
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ],
+        "totalTorqueZ": 2
+      }
+    ],
+    "supplyPowerUpperBoundW": 0.8999999999999999,
+    "scopeOfSafetyReview": "Content-level plausibility only; no real kit or experiment was tested. The task requires a suitable school kit, teacher inspection, current limit and shutdown on faults."
+  },
+  "rubricCombinations": 6561,
+  "passingCombinations": 9,
+  "passingWithAbsentCore": 0,
+  "scopeReview": "Only the actual covered atom is a prerequisite. Task course tags equal the covered competence course tags. No irrelevant ordinary prerequisite is added.",
+  "limitations": [
+    "No actual learner execution or human trial has occurred.",
+    "This is candidate content review; final release metadata, source scopes and actual projections are checked separately."
+  ]
+}

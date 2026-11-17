@@ -1,0 +1,1858 @@
+{
+  "schema": "independent-original-physics-lower-source-review-v1",
+  "scope": "19 distinct atoms / 45 Land-atom pairs; original retained PDF pages, whole canonical atom descriptions and exact mapping rows; no source/view/goal mutations",
+  "counts": {
+    "pairs": 45,
+    "atoms": 19,
+    "classifications": {
+      "supported_lower_operationalization": 16,
+      "upper_e10_not_lower_supplement": 5,
+      "explicit_optional_lower_extension": 2,
+      "partial_lower_not_complete_atom": 17,
+      "unsupported_new_lower_supplement": 5
+    }
+  },
+  "inputPins": {
+    "curricula/DE/Gymnasium/mapping/DE-HH/lower-secondary/hh_physics_lower_secondary_source_extraction_to_canonical_physics.review.json": "bac6e4742e489cecf444945cd4e06f3b972d5ba7f196195e25ec302fa6ce65f6",
+    "curricula/DE/Gymnasium/input/HH/lower-secondary/source-extraction/DE_HH_PHYSIK_SEKI_BILDUNGSPLAN_2022.source-extraction.json": "50ed2f4cc81e1e106825b69c32a02e263763a323a66978bddf82916d7b18b498",
+    "curricula/DE/Gymnasium/mapping/DE-MV/lower-secondary/mv_physics_lower_secondary_source_extraction_to_canonical_physics.review.json": "1e99271a9301f1ed2c5b15c1ae07bdb2a1e98b2c71cfb11b4915a250bb9ed2c2",
+    "curricula/DE/Gymnasium/input/MV/lower-secondary/source-extraction/DE_MV_PHYSIK_SEKI_RAHMENPLAN_2022.source-extraction.json": "7d83fa679f0bf1bcbd9f3de16505d1a1f29531cd06928785e64dc726ca8c8de5",
+    "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_physics_lower_secondary_source_extraction_to_canonical_physics.review.json": "cb1ae2b549cbfa854ecfecc458dcd94b19805b111a5a2061575ae616e13e9bc0",
+    "curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_PHYSIK_SEKI_GYM9_2023_2026.source-extraction.json": "b8f5865a252b33a51ed679bbaf9bd87983f4f54ad565e0c81cb0ad264a316246",
+    "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_physics_lower_secondary_source_extraction_to_canonical_physics.review.json": "732f6cf69a0912449b62187a44a134f128cba03614bf2d5fd61efd551324d4b0",
+    "curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_PHYSIK_SEKI_LEHRPLAN_GYMNASIUM_2025.source-extraction.json": "ba30127ce25cc3fbf59f3f8573ebe7131c5462bc359556d9df8cd094099ada22",
+    "curricula/DE/Gymnasium/mapping/DE-ST/lower-secondary/st_physics_lower_secondary_source_extraction_to_canonical_physics.review.json": "be7a009d259d09bb41509949da24ee6b3ce64c0be2902a718b57beb5201d1fb2",
+    "curricula/DE/Gymnasium/input/ST/lower-secondary/source-extraction/DE_ST_PHYSIK_SEKI_FACHLEHRPLAN_GYMNASIUM_2022.source-extraction.json": "cf23f90564c41051b5994fd459688572311648db28fb25371ab5ad2b7db6f501",
+    "curricula/DE/Gymnasium/mapping/DE-TH/lower-secondary/th_physics_lower_secondary_source_extraction_to_canonical_physics.review.json": "cdf9f02e696f0e2d3ce673dfcb87e6c6671ae4aa297279734d708ecd9c9b0726",
+    "curricula/DE/Gymnasium/input/TH/lower-secondary/source-extraction/DE_TH_PHYSIK_SEKI_LEHRPLAN_GYMNASIUM_2012.source-extraction.json": "ab0b8d7773e6c45e80c5bdd5ce4bdd7fb45d36ae0992598146ea4b08fe5a256d",
+    "curricula/DE/Gymnasium/input/HH/physik-gym-seki-data.pdf": "6cd5c7975b0ce1cc5d6e8365b39c632ea67f01fcd5d7f50bb38fc812e2c4e585",
+    "curricula/DE/Gymnasium/input/MV/Physik_Gymnasium_7_10_2022.pdf": "83efd5c391146abe487269f6d9a984da75e9d7e48c3374d3dab6f989bb0d5bbc",
+    "curricula/DE/Gymnasium/input/SL/LP_PH_gym9_10_nw_Zweig_2026.pdf": "4acb99b64db1c2092fda569a5bce8c80dbe25cb225c13f29f43ab904e18dbfe2",
+    "curricula/DE/Gymnasium/input/SL/LP_PH_gym9_7_2023.pdf": "c50c474aed03b4da343dac51cb0cd0932a7815f552dee7470873bec9d353d791",
+    "curricula/DE/Gymnasium/input/SL/LP_PH_gym9_8_NW_Zweig_2024.pdf": "bf3158666cd23c36a62b9f8da086c7088228fab0a79db0302ac3ee5a71de20d7",
+    "curricula/DE/Gymnasium/input/SL/LP_PH_gym9_9_nw_Zweig_2024.pdf": "c807ddf8d7cde70aeeda3d4464a4a05e0bec2a28331b019b4f73192a1fc8d9bb",
+    "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-physik-sachsen-2025.pdf": "8041a30341cca2bc9af6c69b017c34be20655ef7fe6eab162263f9dbd412ece9",
+    "curricula/DE/Gymnasium/input/ST/FLP_Physik_Gym_01082022_swd.pdf": "9154693501a6351a7ce27701b722c261135484a64e9633404cafadf94af983ed",
+    "curricula/DE/Gymnasium/input/TH/LP_GY_Physik_2012.pdf": "414be5ac7af13a1cfa33f96d9ca3c50f83c1f1cce4abe61b8e62faea1a24ed8d",
+    "scripts/generate_laender_physics_stage_views.memberships.json": "8bedc843bf130a9eebb1ef9df941a9ba5fc9731c628ff672624a6c2df3cf7ebd",
+    "scripts/generate_laender_physics_stage_views.py": "d2284341aa67ca55a1d6fc6fc270c9c399421c8bae47f00635673b7808f29637"
+  },
+  "inputDrift": [],
+  "stageAuthority": {
+    "TH": {
+      "url": "https://schulportal-thueringen.de/services/lib/download.action?id=1391568",
+      "download": "th-gymnasiale-oberstufe-1.pdf",
+      "printedPages": [
+        4,
+        5
+      ],
+      "pdfPages": [
+        6,
+        7
+      ],
+      "finding": "Reguläres Gymnasium E10; LP2012 Kapitel3 E11 betrifft explizit andere Zugänge."
+    },
+    "MV": {
+      "finding": "J10→E10 established current stage authority, and generator source_unit already maps J10 to E10. A competing false lower mapping must not defeat that source restriction."
+    }
+  },
+  "limitations": [
+    "S means source-compatible operationalization, not every canonical word quoted verbatim in the original.",
+    "P is an unresolved full-atom source claim, not evidence that the topic is entirely absent; no automatic catalog deletion is proposed.",
+    "No original CrossStage target or canonical prerequisite changes are justified by this review.",
+    "Assessment-route inventory is a separate question from source membership.",
+    "SN filename2025 does not mean every retained content page is a2025revision; original page edition labels remain2009/2019."
+  ],
+  "rows": [
+    {
+      "state": "HH",
+      "goalId": "3b50255a-6b01-578b-8f5c-4383536a3221",
+      "title": "Zerfallsreihen analysieren",
+      "canonicalDescription": "Die lernende Person kann in einer vorgegebenen Zerfallsreihe die Änderungen von Massenzahl und Kernladungszahl bei den angegebenen Zerfallsarten prüfen und die Konsistenz der aufeinanderfolgenden Nuklide begründen.",
+      "originalLowerMembership": {
+        "de-hh-gym-physics-gk": false,
+        "de-hh-gym-physics-lk": false
+      },
+      "allNewSupplement": true,
+      "classification": "supported_lower_operationalization",
+      "review": "Original verlangt Erstellen von Zerfallsreihen mit dem Periodensystem; Prüfen von Massenzahl/Kernladung ist eine passende Operationalisierung.",
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/HH/physik-gym-seki-data.pdf",
+          "pdfPages": [
+            22
+          ],
+          "printedPages": [
+            22
+          ],
+          "sha256": "6cd5c7975b0ce1cc5d6e8365b39c632ea67f01fcd5d7f50bb38fc812e2c4e585"
+        }
+      ],
+      "bindingGoalIds": [
+        "hh-physics-seki-bp2022-3-2-licht-materie-122-ed813150"
+      ],
+      "completeBindingInventory": "bindings.actual.json",
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-HH/lower-secondary/hh_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+      "extractionPath": "curricula/DE/Gymnasium/input/HH/lower-secondary/source-extraction/DE_HH_PHYSIK_SEKI_BILDUNGSPLAN_2022.source-extraction.json",
+      "recommendation": "Retain with genuine source and ordinary operationalization; repair actual assessment gap if any."
+    },
+    {
+      "state": "HH",
+      "goalId": "bfea7a23-1ce1-4a42-badd-1fc9bf30124a",
+      "title": "Masse-Energie-Äquivalenz einordnen",
+      "canonicalDescription": "Die lernende Person kann die Masse-Energie-Äquivalenz E₀ = m₀c² als Beziehung zwischen Ruheenergie und invarianter Masse fachlich einordnen und an qualitativen Beispielen deuten.",
+      "originalLowerMembership": {
+        "de-hh-gym-physics-gk": false,
+        "de-hh-gym-physics-lk": false
+      },
+      "allNewSupplement": true,
+      "classification": "supported_lower_operationalization",
+      "review": "Original verlangt qualitative Umwandlung Masse/Energie in beide Richtungen. Kanonische Ruheenergieformel ist erklärende Operationalisierung, keine zusätzlich wörtlich belegte Formelpflicht.",
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/HH/physik-gym-seki-data.pdf",
+          "pdfPages": [
+            22
+          ],
+          "printedPages": [
+            22
+          ],
+          "sha256": "6cd5c7975b0ce1cc5d6e8365b39c632ea67f01fcd5d7f50bb38fc812e2c4e585"
+        }
+      ],
+      "bindingGoalIds": [
+        "hh-physics-seki-bp2022-3-2-licht-materie-112-d816d786"
+      ],
+      "completeBindingInventory": "bindings.actual.json",
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-HH/lower-secondary/hh_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+      "extractionPath": "curricula/DE/Gymnasium/input/HH/lower-secondary/source-extraction/DE_HH_PHYSIK_SEKI_BILDUNGSPLAN_2022.source-extraction.json",
+      "recommendation": "Retain with genuine source and ordinary operationalization; repair actual assessment gap if any."
+    },
+    {
+      "state": "MV",
+      "goalId": "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+      "title": "Freier Fall experimentell untersuchen",
+      "canonicalDescription": "Die lernende Person kann den freien Fall nahe der Erdoberfläche experimentell untersuchen, Messdaten grafisch auswerten, daraus im Modell ohne Luftwiderstand die Gravitationsbeschleunigung bestimmen und unter Angabe der Anfangsbedingungen ein Zeit-Ort-Gesetz formulieren.",
+      "originalLowerMembership": {
+        "de-mv-gym-physics-gk": false,
+        "de-mv-gym-physics-lk": false
+      },
+      "allNewSupplement": true,
+      "classification": "upper_e10_not_lower_supplement",
+      "review": "Vollständiger Bewegungsgesetz-/Freifallinhalt steht ausdrücklich J10/E10. J7-Beschleunigungsarbeit trägt keine Kinematik-/Freifallkompetenz und darf E10 nicht zu SekI machen.",
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/MV/Physik_Gymnasium_7_10_2022.pdf",
+          "pdfPages": [
+            43,
+            44
+          ],
+          "printedPages": [
+            39,
+            40
+          ],
+          "sha256": "83efd5c391146abe487269f6d9a984da75e9d7e48c3374d3dab6f989bb0d5bbc"
+        }
+      ],
+      "bindingGoalIds": [
+        "mv-phys-seki-rp2022-j10-beschleunigt-001-072111f3",
+        "mv-phys-seki-rp2022-j10-beschleunigt-002-7e5ce34c",
+        "mv-phys-seki-rp2022-j10-beschleunigt-003-cad62d07",
+        "mv-phys-seki-rp2022-j10-beschleunigt-005-41807654",
+        "mv-phys-seki-rp2022-j10-beschleunigt-006-f9a0d70c",
+        "mv-phys-seki-rp2022-j10-beschleunigt-007-87ee8d73",
+        "mv-phys-seki-rp2022-j10-beschleunigt-008-546b2775",
+        "mv-phys-seki-rp2022-j10-beschleunigt-009-466b9058",
+        "mv-phys-seki-rp2022-j10-beschleunigt-010-0665d761"
+      ],
+      "completeBindingInventory": "bindings.actual.json",
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-MV/lower-secondary/mv_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+      "extractionPath": "curricula/DE/Gymnasium/input/MV/lower-secondary/source-extraction/DE_MV_PHYSIK_SEKI_RAHMENPLAN_2022.source-extraction.json",
+      "recommendation": "Exclude this newly added lower supplement; keep genuine E10 placement and original CrossStage targets."
+    },
+    {
+      "state": "MV",
+      "goalId": "156edddc-ce8d-580d-8d17-d9376d59e60e",
+      "title": "Gravitationsfeld als Feldgröße einführen",
+      "canonicalDescription": "Die lernende Person kann das Gravitationsfeld als ortsabhängige Vektorgröße erklären, die der Gravitationskraft auf einen Probekörper pro Masse dieses Probekörpers entspricht, und das radialsymmetrische Feld einer zentralen Masse durch nach innen gerichtete Feldlinien darstellen.",
+      "originalLowerMembership": {
+        "de-mv-gym-physics-gk": false,
+        "de-mv-gym-physics-lk": false
+      },
+      "allNewSupplement": true,
+      "classification": "upper_e10_not_lower_supplement",
+      "review": "Gravitationsfeldstärke und radiale Feldlinien sind ausdrücklich J10/E10. Frühere magnetische Feldlinien sind keine Gravitationsfeld-Evidenz.",
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/MV/Physik_Gymnasium_7_10_2022.pdf",
+          "pdfPages": [
+            46
+          ],
+          "printedPages": [
+            42
+          ],
+          "sha256": "83efd5c391146abe487269f6d9a984da75e9d7e48c3374d3dab6f989bb0d5bbc"
+        }
+      ],
+      "bindingGoalIds": [
+        "mv-phys-seki-rp2022-j10-gravitation-002-5935acbd",
+        "mv-phys-seki-rp2022-j10-gravitation-003-436bd34d"
+      ],
+      "completeBindingInventory": "bindings.actual.json",
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-MV/lower-secondary/mv_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+      "extractionPath": "curricula/DE/Gymnasium/input/MV/lower-secondary/source-extraction/DE_MV_PHYSIK_SEKI_RAHMENPLAN_2022.source-extraction.json",
+      "recommendation": "Exclude this newly added lower supplement; keep genuine E10 placement and original CrossStage targets."
+    },
+    {
+      "state": "MV",
+      "goalId": "84ddb244-e560-592f-9d43-e84c801fe5b4",
+      "title": "Linsenauge mit geometrischer Optik modellieren",
+      "canonicalDescription": "Die lernende Person kann das Linsenauge mit Strahlenkonstruktion, Linsengleichung und Simulationen modellieren, Bedingungen scharfen Sehens quantitativ deuten und Modellgrenzen benennen.",
+      "originalLowerMembership": {
+        "de-mv-gym-physics-gk": false,
+        "de-mv-gym-physics-lk": false
+      },
+      "allNewSupplement": true,
+      "classification": "explicit_optional_lower_extension",
+      "review": "J8 nennt Bildentstehung am Auge und Strahlenmodelle/Simulationen verbindlich. Die im kanonischen Atom enthaltene Linsengleichung steht ausdrücklich unter Vorschlägen zur Vertiefung; kein universelles Pflichtniveau behaupten.",
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/MV/Physik_Gymnasium_7_10_2022.pdf",
+          "pdfPages": [
+            29
+          ],
+          "printedPages": [
+            25
+          ],
+          "sha256": "83efd5c391146abe487269f6d9a984da75e9d7e48c3374d3dab6f989bb0d5bbc"
+        }
+      ],
+      "bindingGoalIds": [
+        "mv-phys-seki-rp2022-j8-licht-005-0e12678c"
+      ],
+      "completeBindingInventory": "bindings.actual.json",
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-MV/lower-secondary/mv_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+      "extractionPath": "curricula/DE/Gymnasium/input/MV/lower-secondary/source-extraction/DE_MV_PHYSIK_SEKI_RAHMENPLAN_2022.source-extraction.json",
+      "recommendation": "May retain as explicitly reviewed optional extension; do not claim universal official requirement."
+    },
+    {
+      "state": "MV",
+      "goalId": "bf8517a9-142b-5789-826a-767f3b277998",
+      "title": "Durchschnitts- und Momentangeschwindigkeit unterscheiden",
+      "canonicalDescription": "Die lernende Person kann Durchschnittsgeschwindigkeit für ein endliches Zeitintervall und Momentangeschwindigkeit für einen Zeitpunkt bestimmen, vergleichen und im t-s-Diagramm als Sekanten- beziehungsweise Tangentensteigung deuten.",
+      "originalLowerMembership": {
+        "de-mv-gym-physics-gk": false,
+        "de-mv-gym-physics-lk": false
+      },
+      "allNewSupplement": true,
+      "classification": "partial_lower_not_complete_atom",
+      "review": "J9 E-Bike nennt Momentan-/Durchschnittsgeschwindigkeit. Kanonische Sekanten- und Tangentensteigungen werden dort nicht voll abgedeckt; feinere Momentanbetrachtung folgt J10/E10.",
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/MV/Physik_Gymnasium_7_10_2022.pdf",
+          "pdfPages": [
+            40,
+            41,
+            43
+          ],
+          "printedPages": [
+            36,
+            37,
+            39
+          ],
+          "sha256": "83efd5c391146abe487269f6d9a984da75e9d7e48c3374d3dab6f989bb0d5bbc"
+        }
+      ],
+      "bindingGoalIds": [
+        "mv-phys-seki-rp2022-j9-bewegung-005-411d8eba",
+        "mv-phys-seki-rp2022-j9-ebike-004-70caf2ad",
+        "mv-phys-seki-rp2022-j10-beschleunigt-004-92574af7"
+      ],
+      "completeBindingInventory": "bindings.actual.json",
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-MV/lower-secondary/mv_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+      "extractionPath": "curricula/DE/Gymnasium/input/MV/lower-secondary/source-extraction/DE_MV_PHYSIK_SEKI_RAHMENPLAN_2022.source-extraction.json",
+      "recommendation": "Do not treat current partial mapping as full-atom source proof; independently decide narrow scope correction versus explicitly reviewed own extension."
+    },
+    {
+      "state": "MV",
+      "goalId": "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+      "title": "Gleichmäßig beschleunigte Bewegung und Beschleunigung",
+      "canonicalDescription": "Die lernende Person kann das Modell der gleichmäßig beschleunigten Bewegung mit konstanter Beschleunigung erläutern und in t-s-, t-v- und t-a-Darstellungen beschreiben.",
+      "originalLowerMembership": {
+        "de-mv-gym-physics-gk": false,
+        "de-mv-gym-physics-lk": false
+      },
+      "allNewSupplement": true,
+      "classification": "upper_e10_not_lower_supplement",
+      "review": "Vollständiger Bewegungsgesetz-/Freifallinhalt steht ausdrücklich J10/E10. J7-Beschleunigungsarbeit trägt keine Kinematik-/Freifallkompetenz und darf E10 nicht zu SekI machen.",
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/MV/Physik_Gymnasium_7_10_2022.pdf",
+          "pdfPages": [
+            43,
+            44
+          ],
+          "printedPages": [
+            39,
+            40
+          ],
+          "sha256": "83efd5c391146abe487269f6d9a984da75e9d7e48c3374d3dab6f989bb0d5bbc"
+        }
+      ],
+      "bindingGoalIds": [
+        "mv-phys-seki-rp2022-j10-beschleunigt-001-072111f3",
+        "mv-phys-seki-rp2022-j10-beschleunigt-002-7e5ce34c",
+        "mv-phys-seki-rp2022-j10-beschleunigt-003-cad62d07",
+        "mv-phys-seki-rp2022-j10-beschleunigt-005-41807654",
+        "mv-phys-seki-rp2022-j10-beschleunigt-006-f9a0d70c",
+        "mv-phys-seki-rp2022-j10-beschleunigt-007-87ee8d73",
+        "mv-phys-seki-rp2022-j10-beschleunigt-008-546b2775",
+        "mv-phys-seki-rp2022-j10-beschleunigt-009-466b9058",
+        "mv-phys-seki-rp2022-j10-beschleunigt-010-0665d761"
+      ],
+      "completeBindingInventory": "bindings.actual.json",
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-MV/lower-secondary/mv_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+      "extractionPath": "curricula/DE/Gymnasium/input/MV/lower-secondary/source-extraction/DE_MV_PHYSIK_SEKI_RAHMENPLAN_2022.source-extraction.json",
+      "recommendation": "Exclude this newly added lower supplement; keep genuine E10 placement and original CrossStage targets."
+    },
+    {
+      "state": "MV",
+      "goalId": "e918b31f-6f39-5dee-ade6-3617080fb24f",
+      "title": "Zentripetalkraft als Resultierende herleiten",
+      "canonicalDescription": "Die lernende Person kann für eine gleichförmige Kreisbewegung herleiten, dass die zum Mittelpunkt gerichtete resultierende Kraft den Betrag F_z = mv²/r hat, und bei jeweils konstanten übrigen Größen erklären, wie dieser von Masse, Geschwindigkeit und Radius abhängt.",
+      "originalLowerMembership": {
+        "de-mv-gym-physics-gk": false,
+        "de-mv-gym-physics-lk": false
+      },
+      "allNewSupplement": true,
+      "classification": "partial_lower_not_complete_atom",
+      "review": "Radialkraftformel und Abhängigkeiten werden J9 E-Bike behandelt. Eine Herleitung der Formel (Teil des kanonischen Atoms) ist dort nicht belegt. Frühere Stromkreiszeilen sind falsch.",
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/MV/Physik_Gymnasium_7_10_2022.pdf",
+          "pdfPages": [
+            41
+          ],
+          "printedPages": [
+            37
+          ],
+          "sha256": "83efd5c391146abe487269f6d9a984da75e9d7e48c3374d3dab6f989bb0d5bbc"
+        }
+      ],
+      "bindingGoalIds": [
+        "mv-phys-seki-rp2022-j9-ebike-007-16b92591"
+      ],
+      "completeBindingInventory": "bindings.actual.json",
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-MV/lower-secondary/mv_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+      "extractionPath": "curricula/DE/Gymnasium/input/MV/lower-secondary/source-extraction/DE_MV_PHYSIK_SEKI_RAHMENPLAN_2022.source-extraction.json",
+      "recommendation": "Do not treat current partial mapping as full-atom source proof; independently decide narrow scope correction versus explicitly reviewed own extension."
+    },
+    {
+      "state": "MV",
+      "goalId": "eb30189c-27c6-510b-b235-6543afa18b90",
+      "title": "Einfachen Elektromotor bauen und qualitativ erklären",
+      "canonicalDescription": "Die lernende Person kann einen einfachen Elektromotor aufbauen, seine Funktion mit der Kraft auf stromdurchflossene Leiter im Magnetfeld erklären und Möglichkeiten zur Variation seines Laufs untersuchen.",
+      "originalLowerMembership": {
+        "de-mv-gym-physics-gk": false,
+        "de-mv-gym-physics-lk": false
+      },
+      "allNewSupplement": true,
+      "classification": "explicit_optional_lower_extension",
+      "review": "J9 enthält Gleichstrommotor/Lorentzkraft; eigener Motorbau ist ausdrücklich ein Vorschlag zur Vertiefung. Als eigene gewählte Erweiterung möglich, keine allgemeine Pflicht.",
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/MV/Physik_Gymnasium_7_10_2022.pdf",
+          "pdfPages": [
+            37,
+            39
+          ],
+          "printedPages": [
+            33,
+            35
+          ],
+          "sha256": "83efd5c391146abe487269f6d9a984da75e9d7e48c3374d3dab6f989bb0d5bbc"
+        }
+      ],
+      "bindingGoalIds": [
+        "mv-phys-seki-rp2022-j9-magnetismus-008-ab81c5fd",
+        "mv-phys-seki-rp2022-j9-induktion-001-4fcfef88"
+      ],
+      "completeBindingInventory": "bindings.actual.json",
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-MV/lower-secondary/mv_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+      "extractionPath": "curricula/DE/Gymnasium/input/MV/lower-secondary/source-extraction/DE_MV_PHYSIK_SEKI_RAHMENPLAN_2022.source-extraction.json",
+      "recommendation": "May retain as explicitly reviewed optional extension; do not claim universal official requirement."
+    },
+    {
+      "state": "MV",
+      "goalId": "ec7a0a68-730b-5c94-ac72-a937508f8303",
+      "title": "Bahn- und Winkelgeschwindigkeit",
+      "canonicalDescription": "Die lernende Person kann bei Kreisbewegungen Bahn- und Winkelgeschwindigkeit definieren, berechnen und ihren Zusammenhang v = ωr erklären.",
+      "originalLowerMembership": {
+        "de-mv-gym-physics-gk": false,
+        "de-mv-gym-physics-lk": false
+      },
+      "allNewSupplement": true,
+      "classification": "upper_e10_not_lower_supplement",
+      "review": "J9 behandelt Bahngeschwindigkeit/Umlaufzeit; die kanonisch zusätzlich verpflichtende Winkelgeschwindigkeit steht erst J10/E10. Stromkreis-Mappings tragen den Inhalt nicht.",
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/MV/Physik_Gymnasium_7_10_2022.pdf",
+          "pdfPages": [
+            41,
+            46
+          ],
+          "printedPages": [
+            37,
+            42
+          ],
+          "sha256": "83efd5c391146abe487269f6d9a984da75e9d7e48c3374d3dab6f989bb0d5bbc"
+        }
+      ],
+      "bindingGoalIds": [
+        "mv-phys-seki-rp2022-j9-ebike-006-1b5654df",
+        "mv-phys-seki-rp2022-j10-gravitation-004-97d2aca3"
+      ],
+      "completeBindingInventory": "bindings.actual.json",
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-MV/lower-secondary/mv_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+      "extractionPath": "curricula/DE/Gymnasium/input/MV/lower-secondary/source-extraction/DE_MV_PHYSIK_SEKI_RAHMENPLAN_2022.source-extraction.json",
+      "recommendation": "Exclude this newly added lower supplement; keep genuine E10 placement and original CrossStage targets."
+    },
+    {
+      "state": "SL",
+      "goalId": "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+      "title": "Freier Fall experimentell untersuchen",
+      "canonicalDescription": "Die lernende Person kann den freien Fall nahe der Erdoberfläche experimentell untersuchen, Messdaten grafisch auswerten, daraus im Modell ohne Luftwiderstand die Gravitationsbeschleunigung bestimmen und unter Angabe der Anfangsbedingungen ein Zeit-Ort-Gesetz formulieren.",
+      "originalLowerMembership": {
+        "de-sl-gym-physics-gk": false,
+        "de-sl-gym-physics-lk": false
+      },
+      "allNewSupplement": true,
+      "classification": "unsupported_new_lower_supplement",
+      "review": "Direkte Zuordnungen stammen u.a. aus Einfallswinkel/Einfallslot, falls-Logik und Beschleunigungsarbeit. Die vier Lower-Pläne enthalten keine entsprechende Freifall-/Dreidiagramm-Kinematik.",
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/SL/LP_PH_gym9_7_2023.pdf",
+          "pdfPages": [
+            20
+          ],
+          "printedPages": [
+            20
+          ],
+          "sha256": "c50c474aed03b4da343dac51cb0cd0932a7815f552dee7470873bec9d353d791"
+        },
+        {
+          "file": "curricula/DE/Gymnasium/input/SL/LP_PH_gym9_8_NW_Zweig_2024.pdf",
+          "pdfPages": [
+            22
+          ],
+          "printedPages": [
+            22
+          ],
+          "sha256": "bf3158666cd23c36a62b9f8da086c7088228fab0a79db0302ac3ee5a71de20d7"
+        },
+        {
+          "file": "curricula/DE/Gymnasium/input/SL/LP_PH_gym9_9_nw_Zweig_2024.pdf",
+          "pdfPages": [
+            12,
+            13
+          ],
+          "printedPages": [
+            12,
+            13
+          ],
+          "sha256": "c807ddf8d7cde70aeeda3d4464a4a05e0bec2a28331b019b4f73192a1fc8d9bb"
+        },
+        {
+          "file": "curricula/DE/Gymnasium/input/SL/LP_PH_gym9_10_nw_Zweig_2026.pdf",
+          "pdfPages": [
+            36,
+            37,
+            38
+          ],
+          "printedPages": [
+            36,
+            37,
+            38
+          ],
+          "sha256": "4acb99b64db1c2092fda569a5bce8c80dbe25cb225c13f29f43ab904e18dbfe2"
+        }
+      ],
+      "bindingGoalIds": [
+        "sl-phys-seki-sl-ph-seki-7-2023-p20-002-18ed8094",
+        "sl-phys-seki-sl-ph-seki-8-nw-2024-p15-008-4cee2cb5",
+        "sl-phys-seki-sl-ph-seki-8-nw-2024-p22-003-14de2314",
+        "sl-phys-seki-sl-ph-seki-9-nw-2024-p10-007-014bbf13",
+        "sl-phys-seki-sl-ph-seki-9-nw-2024-p12-001-897ac373",
+        "sl-phys-seki-sl-ph-seki-9-nw-2024-p12-002-27d9a652",
+        "sl-phys-seki-sl-ph-seki-9-nw-2024-p12-008-f9dcd7d1",
+        "sl-phys-seki-sl-ph-seki-9-nw-2024-p12-013-5778600e",
+        "sl-phys-seki-sl-ph-seki-9-nw-2024-p13-002-ca814e6d",
+        "sl-phys-seki-sl-ph-seki-9-nw-2024-p28-007-d192f255",
+        "sl-phys-seki-sl-ph-seki-10-nw-2026-p09-007-eed0210f",
+        "sl-phys-seki-sl-ph-seki-10-nw-2026-p36-010-b144385a",
+        "sl-phys-seki-sl-ph-seki-10-nw-2026-p37-001-7c7e452f",
+        "sl-phys-seki-sl-ph-seki-10-nw-2026-p38-001-0eb5a43a"
+      ],
+      "completeBindingInventory": "bindings.actual.json",
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+      "extractionPath": "curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_PHYSIK_SEKI_GYM9_2023_2026.source-extraction.json",
+      "recommendation": "Exclude this newly added lower supplement, preserving original CrossStage targets and retained sources."
+    },
+    {
+      "state": "SL",
+      "goalId": "156edddc-ce8d-580d-8d17-d9376d59e60e",
+      "title": "Gravitationsfeld als Feldgröße einführen",
+      "canonicalDescription": "Die lernende Person kann das Gravitationsfeld als ortsabhängige Vektorgröße erklären, die der Gravitationskraft auf einen Probekörper pro Masse dieses Probekörpers entspricht, und das radialsymmetrische Feld einer zentralen Masse durch nach innen gerichtete Feldlinien darstellen.",
+      "originalLowerMembership": {
+        "de-sl-gym-physics-gk": false,
+        "de-sl-gym-physics-lk": false
+      },
+      "allNewSupplement": true,
+      "classification": "partial_lower_not_complete_atom",
+      "review": "Ortsfaktor g=Fg/m und Recherche anderer Himmelskörper sind J8 belegt. Das gesamte ortsabhängige Vektorfeld samt radialen Gravitationsfeldlinien ist nicht belegt; magnetische/elektrische Radialfelder ersetzen diesen Nachweis nicht.",
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/SL/LP_PH_gym9_8_NW_Zweig_2024.pdf",
+          "pdfPages": [
+            13
+          ],
+          "printedPages": [
+            13
+          ],
+          "sha256": "bf3158666cd23c36a62b9f8da086c7088228fab0a79db0302ac3ee5a71de20d7"
+        },
+        {
+          "file": "curricula/DE/Gymnasium/input/SL/LP_PH_gym9_9_nw_Zweig_2024.pdf",
+          "pdfPages": [
+            23
+          ],
+          "printedPages": [
+            23
+          ],
+          "sha256": "c807ddf8d7cde70aeeda3d4464a4a05e0bec2a28331b019b4f73192a1fc8d9bb"
+        }
+      ],
+      "bindingGoalIds": [
+        "sl-phys-seki-sl-ph-seki-8-nw-2024-p13-006-02698286"
+      ],
+      "completeBindingInventory": "bindings.actual.json",
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+      "extractionPath": "curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_PHYSIK_SEKI_GYM9_2023_2026.source-extraction.json",
+      "recommendation": "Do not treat current partial mapping as full-atom source proof; independently decide narrow scope correction versus explicitly reviewed own extension."
+    },
+    {
+      "state": "SL",
+      "goalId": "2b700858-bc2e-5ddf-a791-b14d44160480",
+      "title": "Astronomische Beobachtungsmethoden",
+      "canonicalDescription": "Die lernende Person kann Astronomie als Beobachtungswissenschaft beschreiben und Teleskope sowie Spektroskopie als zentrale Zugänge zu astronomischen Objekten erläutern.",
+      "originalLowerMembership": {
+        "de-sl-gym-physics-gk": false,
+        "de-sl-gym-physics-lk": false
+      },
+      "allNewSupplement": true,
+      "classification": "partial_lower_not_complete_atom",
+      "review": "Astronomie ist J10 ein Wahlthema/Praktikum mit Sternkarte, Parallaxe und Helligkeit. Teleskopoptik existiert J9; eine astronomische Spektroskopie als weiterer Pflichtteil dieses Atoms ist nicht belegt.",
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/SL/LP_PH_gym9_9_nw_Zweig_2024.pdf",
+          "pdfPages": [
+            15
+          ],
+          "printedPages": [
+            15
+          ],
+          "sha256": "c807ddf8d7cde70aeeda3d4464a4a05e0bec2a28331b019b4f73192a1fc8d9bb"
+        },
+        {
+          "file": "curricula/DE/Gymnasium/input/SL/LP_PH_gym9_10_nw_Zweig_2026.pdf",
+          "pdfPages": [
+            33,
+            34
+          ],
+          "printedPages": [
+            33,
+            34
+          ],
+          "sha256": "4acb99b64db1c2092fda569a5bce8c80dbe25cb225c13f29f43ab904e18dbfe2"
+        }
+      ],
+      "bindingGoalIds": [
+        "sl-phys-seki-sl-ph-seki-10-nw-2026-p33-002-e3076a39",
+        "sl-phys-seki-sl-ph-seki-10-nw-2026-p33-003-2d1e014c",
+        "sl-phys-seki-sl-ph-seki-10-nw-2026-p33-004-13c9f41c",
+        "sl-phys-seki-sl-ph-seki-10-nw-2026-p33-005-b27b14af",
+        "sl-phys-seki-sl-ph-seki-10-nw-2026-p33-006-811189de",
+        "sl-phys-seki-sl-ph-seki-10-nw-2026-p34-002-f3ea1799",
+        "sl-phys-seki-sl-ph-seki-10-nw-2026-p34-003-76605c44",
+        "sl-phys-seki-sl-ph-seki-10-nw-2026-p34-007-7cdd2c7b",
+        "sl-phys-seki-sl-ph-seki-10-nw-2026-p34-010-d0b4d07c"
+      ],
+      "completeBindingInventory": "bindings.actual.json",
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+      "extractionPath": "curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_PHYSIK_SEKI_GYM9_2023_2026.source-extraction.json",
+      "recommendation": "Do not treat current partial mapping as full-atom source proof; independently decide narrow scope correction versus explicitly reviewed own extension."
+    },
+    {
+      "state": "SL",
+      "goalId": "4a7cbe83-b694-57d3-85ce-1eeca418daaf",
+      "title": "Spektrum elektromagnetischer Wellen",
+      "canonicalDescription": "Die lernende Person kann das elektromagnetische Spektrum nach Frequenz und Wellenlänge geordnet darstellen, typische Bereiche einordnen, technische Anwendungen passenden Spektralbereichen zuordnen und die Zuordnung anhand relevanter Welleneigenschaften begründen.",
+      "originalLowerMembership": {
+        "de-sl-gym-physics-gk": false,
+        "de-sl-gym-physics-lk": false
+      },
+      "allNewSupplement": true,
+      "classification": "supported_lower_operationalization",
+      "review": "J9 ordnet sichtbares Licht/IR/UV sowie Radio- und Röntgenstrahlung nach Wellenlänge und behandelt Anwendungen/Eigenschaften.",
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/SL/LP_PH_gym9_9_nw_Zweig_2024.pdf",
+          "pdfPages": [
+            15,
+            16
+          ],
+          "printedPages": [
+            15,
+            16
+          ],
+          "sha256": "c807ddf8d7cde70aeeda3d4464a4a05e0bec2a28331b019b4f73192a1fc8d9bb"
+        }
+      ],
+      "bindingGoalIds": [
+        "sl-phys-seki-sl-ph-seki-9-nw-2024-p16-003-9e91672e",
+        "sl-phys-seki-sl-ph-seki-9-nw-2024-p16-010-f2d3fdbd",
+        "sl-phys-seki-sl-ph-seki-9-nw-2024-p16-011-832b6176",
+        "sl-phys-seki-sl-ph-seki-9-nw-2024-p16-012-4f737052",
+        "sl-phys-seki-sl-ph-seki-9-nw-2024-p16-014-af09b3c5"
+      ],
+      "completeBindingInventory": "bindings.actual.json",
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+      "extractionPath": "curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_PHYSIK_SEKI_GYM9_2023_2026.source-extraction.json",
+      "recommendation": "Retain with genuine source and ordinary operationalization; repair actual assessment gap if any."
+    },
+    {
+      "state": "SL",
+      "goalId": "51de4fd9-6827-5b3d-b2ca-5e27ba961a7f",
+      "title": "Temperatur mit einem geeigneten Thermometer messen",
+      "canonicalDescription": "Die lernende Person kann für einen gegebenen Messbereich und die benötigte Auflösung ein geeignetes Thermometer auswählen, es in guten thermischen Kontakt mit dem Messobjekt bringen und einen stabilen Temperaturwert mit Einheit fachgerecht ablesen.",
+      "originalLowerMembership": {
+        "de-sl-gym-physics-gk": false,
+        "de-sl-gym-physics-lk": false
+      },
+      "allNewSupplement": true,
+      "classification": "supported_lower_operationalization",
+      "review": "J8 Temperaturmessung, Genauigkeit und Kalibrierung eines elektrischen Thermometers tragen die Messkompetenz.",
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/SL/LP_PH_gym9_8_NW_Zweig_2024.pdf",
+          "pdfPages": [
+            32,
+            33
+          ],
+          "printedPages": [
+            32,
+            33
+          ],
+          "sha256": "bf3158666cd23c36a62b9f8da086c7088228fab0a79db0302ac3ee5a71de20d7"
+        }
+      ],
+      "bindingGoalIds": [
+        "sl-phys-seki-sl-ph-seki-8-nw-2024-p33-002-ab9d7888"
+      ],
+      "completeBindingInventory": "bindings.actual.json",
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+      "extractionPath": "curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_PHYSIK_SEKI_GYM9_2023_2026.source-extraction.json",
+      "recommendation": "Retain with genuine source and ordinary operationalization; repair actual assessment gap if any."
+    },
+    {
+      "state": "SL",
+      "goalId": "84ddb244-e560-592f-9d43-e84c801fe5b4",
+      "title": "Linsenauge mit geometrischer Optik modellieren",
+      "canonicalDescription": "Die lernende Person kann das Linsenauge mit Strahlenkonstruktion, Linsengleichung und Simulationen modellieren, Bedingungen scharfen Sehens quantitativ deuten und Modellgrenzen benennen.",
+      "originalLowerMembership": {
+        "de-sl-gym-physics-gk": false,
+        "de-sl-gym-physics-lk": false
+      },
+      "allNewSupplement": true,
+      "classification": "supported_lower_operationalization",
+      "review": "J9 NW S.14 enthält Linsengleichung, experimentelle Prüfung, menschliches Auge als optisches System und Sehfehler. Anders als falsche Augenmaß-Zeilen ist dies eine passende Vollbindung.",
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/SL/LP_PH_gym9_9_nw_Zweig_2024.pdf",
+          "pdfPages": [
+            13,
+            14
+          ],
+          "printedPages": [
+            13,
+            14
+          ],
+          "sha256": "c807ddf8d7cde70aeeda3d4464a4a05e0bec2a28331b019b4f73192a1fc8d9bb"
+        }
+      ],
+      "bindingGoalIds": [
+        "sl-phys-seki-sl-ph-seki-9-nw-2024-p14-005-ca7084c5",
+        "sl-phys-seki-sl-ph-seki-9-nw-2024-p14-006-2825dde5"
+      ],
+      "completeBindingInventory": "bindings.actual.json",
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+      "extractionPath": "curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_PHYSIK_SEKI_GYM9_2023_2026.source-extraction.json",
+      "recommendation": "Retain with genuine source and ordinary operationalization; repair actual assessment gap if any."
+    },
+    {
+      "state": "SL",
+      "goalId": "af1094c1-511a-5aae-9e0a-3e9196a82d9a",
+      "title": "Idealen Transformator quantitativ deuten",
+      "canonicalDescription": "Die lernende Person kann Aufbau und Funktionsprinzip eines Transformators mit Induktion erklären, beim idealen Transformator Spannungs- und Stromstärkeübersetzungen berechnen und die gegenläufige Übersetzung mit Energieerhaltung begründen.",
+      "originalLowerMembership": {
+        "de-sl-gym-physics-gk": false,
+        "de-sl-gym-physics-lk": false
+      },
+      "allNewSupplement": true,
+      "classification": "supported_lower_operationalization",
+      "review": "J10 NW enthält Induktion, Spannungs- UND Stromübersetzungsverhältnis, Anwendungen und Energieübertragung.",
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/SL/LP_PH_gym9_10_nw_Zweig_2026.pdf",
+          "pdfPages": [
+            13,
+            14
+          ],
+          "printedPages": [
+            13,
+            14
+          ],
+          "sha256": "4acb99b64db1c2092fda569a5bce8c80dbe25cb225c13f29f43ab904e18dbfe2"
+        }
+      ],
+      "bindingGoalIds": [
+        "sl-phys-seki-sl-ph-seki-10-nw-2026-p13-007-772c49f2",
+        "sl-phys-seki-sl-ph-seki-10-nw-2026-p13-009-eb078dc6",
+        "sl-phys-seki-sl-ph-seki-10-nw-2026-p14-001-62b4d90d"
+      ],
+      "completeBindingInventory": "bindings.actual.json",
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+      "extractionPath": "curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_PHYSIK_SEKI_GYM9_2023_2026.source-extraction.json",
+      "recommendation": "Retain with genuine source and ordinary operationalization; repair actual assessment gap if any."
+    },
+    {
+      "state": "SL",
+      "goalId": "b60f63b6-e70b-5557-9f54-86d42fa80325",
+      "title": "Thermische Ausdehnung fester, flüssiger und gasförmiger Stoffe deuten",
+      "canonicalDescription": "Die lernende Person kann aus vergleichenden Beobachtungen erklären, dass sich Länge oder Volumen fester, flüssiger und gasförmiger Stoffe beim Erwärmen meist vergrößern und beim Abkühlen verkleinern, sofern eine Ausdehnung nicht durch starre Begrenzung verhindert wird, und Unterschiede qualitativ deuten.",
+      "originalLowerMembership": {
+        "de-sl-gym-physics-gk": false,
+        "de-sl-gym-physics-lk": false
+      },
+      "allNewSupplement": true,
+      "classification": "supported_lower_operationalization",
+      "review": "J8 enthält Ausdehnung fester/flüssiger/gasförmiger Stoffe und Temperaturabhängigkeit.",
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/SL/LP_PH_gym9_8_NW_Zweig_2024.pdf",
+          "pdfPages": [
+            32,
+            33
+          ],
+          "printedPages": [
+            32,
+            33
+          ],
+          "sha256": "bf3158666cd23c36a62b9f8da086c7088228fab0a79db0302ac3ee5a71de20d7"
+        }
+      ],
+      "bindingGoalIds": [
+        "sl-phys-seki-sl-ph-seki-8-nw-2024-p32-001-248a6074",
+        "sl-phys-seki-sl-ph-seki-8-nw-2024-p33-007-1ecc7d85"
+      ],
+      "completeBindingInventory": "bindings.actual.json",
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+      "extractionPath": "curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_PHYSIK_SEKI_GYM9_2023_2026.source-extraction.json",
+      "recommendation": "Retain with genuine source and ordinary operationalization; repair actual assessment gap if any."
+    },
+    {
+      "state": "SL",
+      "goalId": "bf8517a9-142b-5789-826a-767f3b277998",
+      "title": "Durchschnitts- und Momentangeschwindigkeit unterscheiden",
+      "canonicalDescription": "Die lernende Person kann Durchschnittsgeschwindigkeit für ein endliches Zeitintervall und Momentangeschwindigkeit für einen Zeitpunkt bestimmen, vergleichen und im t-s-Diagramm als Sekanten- beziehungsweise Tangentensteigung deuten.",
+      "originalLowerMembership": {
+        "de-sl-gym-physics-gk": false,
+        "de-sl-gym-physics-lk": false
+      },
+      "allNewSupplement": true,
+      "classification": "partial_lower_not_complete_atom",
+      "review": "J7 S.25 fordert lediglich mittlere Geschwindigkeit aus Delta s/Delta t; weder Momentangeschwindigkeit noch Tangentensteigung als vollständiger Atomumfang.",
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/SL/LP_PH_gym9_7_2023.pdf",
+          "pdfPages": [
+            25
+          ],
+          "printedPages": [
+            25
+          ],
+          "sha256": "c50c474aed03b4da343dac51cb0cd0932a7815f552dee7470873bec9d353d791"
+        }
+      ],
+      "bindingGoalIds": [
+        "sl-phys-seki-sl-ph-seki-7-2023-p25-005-9ad772ee"
+      ],
+      "completeBindingInventory": "bindings.actual.json",
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+      "extractionPath": "curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_PHYSIK_SEKI_GYM9_2023_2026.source-extraction.json",
+      "recommendation": "Do not treat current partial mapping as full-atom source proof; independently decide narrow scope correction versus explicitly reviewed own extension."
+    },
+    {
+      "state": "SL",
+      "goalId": "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+      "title": "Gleichmäßig beschleunigte Bewegung und Beschleunigung",
+      "canonicalDescription": "Die lernende Person kann das Modell der gleichmäßig beschleunigten Bewegung mit konstanter Beschleunigung erläutern und in t-s-, t-v- und t-a-Darstellungen beschreiben.",
+      "originalLowerMembership": {
+        "de-sl-gym-physics-gk": false,
+        "de-sl-gym-physics-lk": false
+      },
+      "allNewSupplement": true,
+      "classification": "unsupported_new_lower_supplement",
+      "review": "Direkte Zuordnungen stammen u.a. aus Einfallswinkel/Einfallslot, falls-Logik und Beschleunigungsarbeit. Die vier Lower-Pläne enthalten keine entsprechende Freifall-/Dreidiagramm-Kinematik.",
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/SL/LP_PH_gym9_7_2023.pdf",
+          "pdfPages": [
+            20
+          ],
+          "printedPages": [
+            20
+          ],
+          "sha256": "c50c474aed03b4da343dac51cb0cd0932a7815f552dee7470873bec9d353d791"
+        },
+        {
+          "file": "curricula/DE/Gymnasium/input/SL/LP_PH_gym9_8_NW_Zweig_2024.pdf",
+          "pdfPages": [
+            22
+          ],
+          "printedPages": [
+            22
+          ],
+          "sha256": "bf3158666cd23c36a62b9f8da086c7088228fab0a79db0302ac3ee5a71de20d7"
+        },
+        {
+          "file": "curricula/DE/Gymnasium/input/SL/LP_PH_gym9_9_nw_Zweig_2024.pdf",
+          "pdfPages": [
+            12,
+            13
+          ],
+          "printedPages": [
+            12,
+            13
+          ],
+          "sha256": "c807ddf8d7cde70aeeda3d4464a4a05e0bec2a28331b019b4f73192a1fc8d9bb"
+        },
+        {
+          "file": "curricula/DE/Gymnasium/input/SL/LP_PH_gym9_10_nw_Zweig_2026.pdf",
+          "pdfPages": [
+            36,
+            37,
+            38
+          ],
+          "printedPages": [
+            36,
+            37,
+            38
+          ],
+          "sha256": "4acb99b64db1c2092fda569a5bce8c80dbe25cb225c13f29f43ab904e18dbfe2"
+        }
+      ],
+      "bindingGoalIds": [
+        "sl-phys-seki-sl-ph-seki-7-2023-p20-002-18ed8094",
+        "sl-phys-seki-sl-ph-seki-8-nw-2024-p15-008-4cee2cb5",
+        "sl-phys-seki-sl-ph-seki-8-nw-2024-p22-003-14de2314",
+        "sl-phys-seki-sl-ph-seki-9-nw-2024-p10-007-014bbf13",
+        "sl-phys-seki-sl-ph-seki-9-nw-2024-p12-001-897ac373",
+        "sl-phys-seki-sl-ph-seki-9-nw-2024-p12-002-27d9a652",
+        "sl-phys-seki-sl-ph-seki-9-nw-2024-p12-008-f9dcd7d1",
+        "sl-phys-seki-sl-ph-seki-9-nw-2024-p12-013-5778600e",
+        "sl-phys-seki-sl-ph-seki-9-nw-2024-p13-002-ca814e6d",
+        "sl-phys-seki-sl-ph-seki-9-nw-2024-p28-007-d192f255",
+        "sl-phys-seki-sl-ph-seki-10-nw-2026-p09-007-eed0210f",
+        "sl-phys-seki-sl-ph-seki-10-nw-2026-p36-010-b144385a",
+        "sl-phys-seki-sl-ph-seki-10-nw-2026-p37-001-7c7e452f",
+        "sl-phys-seki-sl-ph-seki-10-nw-2026-p38-001-0eb5a43a"
+      ],
+      "completeBindingInventory": "bindings.actual.json",
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+      "extractionPath": "curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_PHYSIK_SEKI_GYM9_2023_2026.source-extraction.json",
+      "recommendation": "Exclude this newly added lower supplement, preserving original CrossStage targets and retained sources."
+    },
+    {
+      "state": "SL",
+      "goalId": "e6a50c74-c922-508c-aa27-07bac2566955",
+      "title": "Strahlendosis und Schutz",
+      "canonicalDescription": "Die lernende Person kann Energiedosis, Äquivalentdosis und effektive Dosis unterscheiden, die zur Fragestellung passende Dosisgröße unter benannten Modellannahmen aus gegebenen Daten bestimmen und die Wirksamkeit einer Abschirmung unter sonst vergleichbaren Expositionsbedingungen anhand der Dosisreduktion beurteilen.",
+      "originalLowerMembership": {
+        "de-sl-gym-physics-gk": false,
+        "de-sl-gym-physics-lk": false
+      },
+      "allNewSupplement": true,
+      "classification": "unsupported_new_lower_supplement",
+      "review": "Die beiden direkten Mappingzeilen betreffen thermische Materialausdehnung bzw. Vergrößerungsgeräte. Sie enthalten überhaupt keine Strahlendosis, erst recht keine Energie-/Äquivalent-/Effektivdosisberechnung.",
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/SL/LP_PH_gym9_8_NW_Zweig_2024.pdf",
+          "pdfPages": [
+            33
+          ],
+          "printedPages": [
+            33
+          ],
+          "sha256": "bf3158666cd23c36a62b9f8da086c7088228fab0a79db0302ac3ee5a71de20d7"
+        },
+        {
+          "file": "curricula/DE/Gymnasium/input/SL/LP_PH_gym9_9_nw_Zweig_2024.pdf",
+          "pdfPages": [
+            15
+          ],
+          "printedPages": [
+            15
+          ],
+          "sha256": "c807ddf8d7cde70aeeda3d4464a4a05e0bec2a28331b019b4f73192a1fc8d9bb"
+        }
+      ],
+      "bindingGoalIds": [
+        "sl-phys-seki-sl-ph-seki-8-nw-2024-p33-003-eb89da57",
+        "sl-phys-seki-sl-ph-seki-9-nw-2024-p15-005-6e4ebfc5"
+      ],
+      "completeBindingInventory": "bindings.actual.json",
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+      "extractionPath": "curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_PHYSIK_SEKI_GYM9_2023_2026.source-extraction.json",
+      "recommendation": "Exclude this newly added lower supplement, preserving original CrossStage targets and retained sources."
+    },
+    {
+      "state": "SL",
+      "goalId": "e918b31f-6f39-5dee-ade6-3617080fb24f",
+      "title": "Zentripetalkraft als Resultierende herleiten",
+      "canonicalDescription": "Die lernende Person kann für eine gleichförmige Kreisbewegung herleiten, dass die zum Mittelpunkt gerichtete resultierende Kraft den Betrag F_z = mv²/r hat, und bei jeweils konstanten übrigen Größen erklären, wie dieser von Masse, Geschwindigkeit und Radius abhängt.",
+      "originalLowerMembership": {
+        "de-sl-gym-physics-gk": false,
+        "de-sl-gym-physics-lk": false
+      },
+      "allNewSupplement": true,
+      "classification": "unsupported_new_lower_supplement",
+      "review": "Stromkreis, elektrisches Radialfeld und thermodynamischer Kreisprozess wurden fälschlich zu Kreisbewegung ausgeweitet. Keine passende Radialkraft-/Winkelgeschwindigkeitsanforderung in diesen vier Lower-Plänen.",
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/SL/LP_PH_gym9_7_2023.pdf",
+          "pdfPages": [
+            14,
+            15
+          ],
+          "printedPages": [
+            14,
+            15
+          ],
+          "sha256": "c50c474aed03b4da343dac51cb0cd0932a7815f552dee7470873bec9d353d791"
+        },
+        {
+          "file": "curricula/DE/Gymnasium/input/SL/LP_PH_gym9_9_nw_Zweig_2024.pdf",
+          "pdfPages": [
+            23
+          ],
+          "printedPages": [
+            23
+          ],
+          "sha256": "c807ddf8d7cde70aeeda3d4464a4a05e0bec2a28331b019b4f73192a1fc8d9bb"
+        },
+        {
+          "file": "curricula/DE/Gymnasium/input/SL/LP_PH_gym9_10_nw_Zweig_2026.pdf",
+          "pdfPages": [
+            23,
+            24
+          ],
+          "printedPages": [
+            23,
+            24
+          ],
+          "sha256": "4acb99b64db1c2092fda569a5bce8c80dbe25cb225c13f29f43ab904e18dbfe2"
+        }
+      ],
+      "bindingGoalIds": [
+        "sl-phys-seki-sl-ph-seki-7-2023-p12-004-0a49c732",
+        "sl-phys-seki-sl-ph-seki-7-2023-p14-001-0c1f8ce9",
+        "sl-phys-seki-sl-ph-seki-9-nw-2024-p23-004-bcd8aad9",
+        "sl-phys-seki-sl-ph-seki-9-nw-2024-p23-012-e0d616da",
+        "sl-phys-seki-sl-ph-seki-10-nw-2026-p23-012-23714b94",
+        "sl-phys-seki-sl-ph-seki-10-nw-2026-p23-014-b0250a18",
+        "sl-phys-seki-sl-ph-seki-10-nw-2026-p23-015-aa2db85b",
+        "sl-phys-seki-sl-ph-seki-10-nw-2026-p24-007-67882af5",
+        "sl-phys-seki-sl-ph-seki-10-nw-2026-p24-010-fd4a7bab",
+        "sl-phys-seki-sl-ph-seki-10-nw-2026-p38-003-53a1c98a"
+      ],
+      "completeBindingInventory": "bindings.actual.json",
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+      "extractionPath": "curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_PHYSIK_SEKI_GYM9_2023_2026.source-extraction.json",
+      "recommendation": "Exclude this newly added lower supplement, preserving original CrossStage targets and retained sources."
+    },
+    {
+      "state": "SL",
+      "goalId": "eb30189c-27c6-510b-b235-6543afa18b90",
+      "title": "Einfachen Elektromotor bauen und qualitativ erklären",
+      "canonicalDescription": "Die lernende Person kann einen einfachen Elektromotor aufbauen, seine Funktion mit der Kraft auf stromdurchflossene Leiter im Magnetfeld erklären und Möglichkeiten zur Variation seines Laufs untersuchen.",
+      "originalLowerMembership": {
+        "de-sl-gym-physics-gk": false,
+        "de-sl-gym-physics-lk": false
+      },
+      "allNewSupplement": true,
+      "classification": "partial_lower_not_complete_atom",
+      "review": "J10 NW S.11 fordert Aufbau beschreiben und Funktion des Gleichstrommotors per UVW-Regel erklären; der eigene Motorbau mit Parametervariation aus dem kanonischen Atom ist nicht gefordert. Leiterschaukelbau ist kein Motorbau.",
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/SL/LP_PH_gym9_10_nw_Zweig_2026.pdf",
+          "pdfPages": [
+            11
+          ],
+          "printedPages": [
+            11
+          ],
+          "sha256": "4acb99b64db1c2092fda569a5bce8c80dbe25cb225c13f29f43ab904e18dbfe2"
+        }
+      ],
+      "bindingGoalIds": [
+        "sl-phys-seki-sl-ph-seki-10-nw-2026-p11-009-95e3812d"
+      ],
+      "completeBindingInventory": "bindings.actual.json",
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+      "extractionPath": "curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_PHYSIK_SEKI_GYM9_2023_2026.source-extraction.json",
+      "recommendation": "Do not treat current partial mapping as full-atom source proof; independently decide narrow scope correction versus explicitly reviewed own extension."
+    },
+    {
+      "state": "SL",
+      "goalId": "ec7a0a68-730b-5c94-ac72-a937508f8303",
+      "title": "Bahn- und Winkelgeschwindigkeit",
+      "canonicalDescription": "Die lernende Person kann bei Kreisbewegungen Bahn- und Winkelgeschwindigkeit definieren, berechnen und ihren Zusammenhang v = ωr erklären.",
+      "originalLowerMembership": {
+        "de-sl-gym-physics-gk": false,
+        "de-sl-gym-physics-lk": false
+      },
+      "allNewSupplement": true,
+      "classification": "unsupported_new_lower_supplement",
+      "review": "Stromkreis, elektrisches Radialfeld und thermodynamischer Kreisprozess wurden fälschlich zu Kreisbewegung ausgeweitet. Keine passende Radialkraft-/Winkelgeschwindigkeitsanforderung in diesen vier Lower-Plänen.",
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/SL/LP_PH_gym9_7_2023.pdf",
+          "pdfPages": [
+            14,
+            15
+          ],
+          "printedPages": [
+            14,
+            15
+          ],
+          "sha256": "c50c474aed03b4da343dac51cb0cd0932a7815f552dee7470873bec9d353d791"
+        },
+        {
+          "file": "curricula/DE/Gymnasium/input/SL/LP_PH_gym9_9_nw_Zweig_2024.pdf",
+          "pdfPages": [
+            23
+          ],
+          "printedPages": [
+            23
+          ],
+          "sha256": "c807ddf8d7cde70aeeda3d4464a4a05e0bec2a28331b019b4f73192a1fc8d9bb"
+        },
+        {
+          "file": "curricula/DE/Gymnasium/input/SL/LP_PH_gym9_10_nw_Zweig_2026.pdf",
+          "pdfPages": [
+            23,
+            24
+          ],
+          "printedPages": [
+            23,
+            24
+          ],
+          "sha256": "4acb99b64db1c2092fda569a5bce8c80dbe25cb225c13f29f43ab904e18dbfe2"
+        }
+      ],
+      "bindingGoalIds": [
+        "sl-phys-seki-sl-ph-seki-7-2023-p12-004-0a49c732",
+        "sl-phys-seki-sl-ph-seki-7-2023-p14-001-0c1f8ce9",
+        "sl-phys-seki-sl-ph-seki-9-nw-2024-p23-004-bcd8aad9",
+        "sl-phys-seki-sl-ph-seki-9-nw-2024-p23-012-e0d616da",
+        "sl-phys-seki-sl-ph-seki-10-nw-2026-p23-012-23714b94",
+        "sl-phys-seki-sl-ph-seki-10-nw-2026-p23-014-b0250a18",
+        "sl-phys-seki-sl-ph-seki-10-nw-2026-p23-015-aa2db85b",
+        "sl-phys-seki-sl-ph-seki-10-nw-2026-p24-007-67882af5",
+        "sl-phys-seki-sl-ph-seki-10-nw-2026-p24-010-fd4a7bab",
+        "sl-phys-seki-sl-ph-seki-10-nw-2026-p38-003-53a1c98a"
+      ],
+      "completeBindingInventory": "bindings.actual.json",
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+      "extractionPath": "curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_PHYSIK_SEKI_GYM9_2023_2026.source-extraction.json",
+      "recommendation": "Exclude this newly added lower supplement, preserving original CrossStage targets and retained sources."
+    },
+    {
+      "state": "SN",
+      "goalId": "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+      "title": "Freier Fall experimentell untersuchen",
+      "canonicalDescription": "Die lernende Person kann den freien Fall nahe der Erdoberfläche experimentell untersuchen, Messdaten grafisch auswerten, daraus im Modell ohne Luftwiderstand die Gravitationsbeschleunigung bestimmen und unter Angabe der Anfangsbedingungen ein Zeit-Ort-Gesetz formulieren.",
+      "originalLowerMembership": {
+        "de-sn-gym-physics-gk": false,
+        "de-sn-gym-physics-lk": false
+      },
+      "allNewSupplement": true,
+      "classification": "supported_lower_operationalization",
+      "review": "J9 LB3 enthält beschleunigte Bewegung, Bewegungsgesetze, Diagramme und freien Fall sowie experimentelle Prüfung. Gegenüber den falschen frühen Zeilen ist dies eine tragfähige untere Bindung.",
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-physik-sachsen-2025.pdf",
+          "pdfPages": [
+            36,
+            37
+          ],
+          "printedPages": [
+            24,
+            25
+          ],
+          "sha256": "8041a30341cca2bc9af6c69b017c34be20655ef7fe6eab162263f9dbd412ece9"
+        }
+      ],
+      "bindingGoalIds": [
+        "sn-phys-seki-sn-klassenstufe-9-lb3-074-01-276b70c5",
+        "sn-phys-seki-sn-klassenstufe-9-lb3-074-02-a1f6bc09",
+        "sn-phys-seki-sn-klassenstufe-9-lb3-075-02-6b8d1ade"
+      ],
+      "completeBindingInventory": "bindings.actual.json",
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+      "extractionPath": "curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_PHYSIK_SEKI_LEHRPLAN_GYMNASIUM_2025.source-extraction.json",
+      "recommendation": "Retain with genuine source and ordinary operationalization; repair actual assessment gap if any."
+    },
+    {
+      "state": "SN",
+      "goalId": "156edddc-ce8d-580d-8d17-d9376d59e60e",
+      "title": "Gravitationsfeld als Feldgröße einführen",
+      "canonicalDescription": "Die lernende Person kann das Gravitationsfeld als ortsabhängige Vektorgröße erklären, die der Gravitationskraft auf einen Probekörper pro Masse dieses Probekörpers entspricht, und das radialsymmetrische Feld einer zentralen Masse durch nach innen gerichtete Feldlinien darstellen.",
+      "originalLowerMembership": {
+        "de-sn-gym-physics-gk": false,
+        "de-sn-gym-physics-lk": false
+      },
+      "allNewSupplement": true,
+      "classification": "partial_lower_not_complete_atom",
+      "review": "J10 Kosmos nennt Gravitationsgesetz/inverses Quadrat, jedoch kein ortsabhängiges Gravitationsvektorfeld und dessen radiale Feldlinien. Gravitationsfeld erscheint erst im oberen Kursteil.",
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-physik-sachsen-2025.pdf",
+          "pdfPages": [
+            42,
+            64
+          ],
+          "printedPages": [
+            30,
+            52
+          ],
+          "sha256": "8041a30341cca2bc9af6c69b017c34be20655ef7fe6eab162263f9dbd412ece9"
+        }
+      ],
+      "bindingGoalIds": [
+        "sn-phys-seki-sn-klassenstufe-10-lb2-089-01-be901499",
+        "sn-phys-seki-sn-klassenstufe-10-lb2-089-02-b22ed40e",
+        "sn-phys-seki-sn-klassenstufe-10-lb2-089-03-15ea84a4",
+        "sn-phys-seki-sn-klassenstufe-10-lb2-089-04-5e0ede40",
+        "sn-phys-seki-sn-klassenstufe-10-lb2-090-02-f4088b63",
+        "sn-phys-seki-sn-klassenstufe-10-lb2-091-03-b14b32ff",
+        "sn-phys-seki-sn-klassenstufe-10-lb2-092-01-671ed5ad",
+        "sn-phys-seki-sn-klassenstufe-10-lb2-092-02-d80ad420",
+        "sn-phys-seki-sn-klassenstufe-10-lb2-092-03-8b6444e4",
+        "sn-phys-seki-sn-klassenstufe-10-lb2-092-04-ad696e99",
+        "sn-phys-seki-sn-klassenstufe-10-lb2-092-05-da99fbb7",
+        "sn-phys-seki-sn-klassenstufe-10-lb2-092-06-8a6a35fa",
+        "sn-phys-seki-sn-klassenstufe-10-lb2-092-07-4776231c",
+        "sn-phys-seki-sn-klassenstufe-10-lb2-092-08-bc5fde93",
+        "sn-phys-seki-sn-klassenstufe-10-lb2-093-01-4002a4a4"
+      ],
+      "completeBindingInventory": "bindings.actual.json",
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+      "extractionPath": "curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_PHYSIK_SEKI_LEHRPLAN_GYMNASIUM_2025.source-extraction.json",
+      "recommendation": "Do not treat current partial mapping as full-atom source proof; independently decide narrow scope correction versus explicitly reviewed own extension."
+    },
+    {
+      "state": "SN",
+      "goalId": "2b700858-bc2e-5ddf-a791-b14d44160480",
+      "title": "Astronomische Beobachtungsmethoden",
+      "canonicalDescription": "Die lernende Person kann Astronomie als Beobachtungswissenschaft beschreiben und Teleskope sowie Spektroskopie als zentrale Zugänge zu astronomischen Objekten erläutern.",
+      "originalLowerMembership": {
+        "de-sn-gym-physics-gk": false,
+        "de-sn-gym-physics-lk": false
+      },
+      "allNewSupplement": true,
+      "classification": "supported_lower_operationalization",
+      "review": "J10 Kosmos benennt ausdrücklich Teleskopbeobachtung und Spektralanalyse astronomischer Informationen.",
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-physik-sachsen-2025.pdf",
+          "pdfPages": [
+            42
+          ],
+          "printedPages": [
+            30
+          ],
+          "sha256": "8041a30341cca2bc9af6c69b017c34be20655ef7fe6eab162263f9dbd412ece9"
+        }
+      ],
+      "bindingGoalIds": [
+        "sn-phys-seki-sn-klassenstufe-10-lb2-089-01-be901499",
+        "sn-phys-seki-sn-klassenstufe-10-lb2-089-02-b22ed40e",
+        "sn-phys-seki-sn-klassenstufe-10-lb2-089-03-15ea84a4",
+        "sn-phys-seki-sn-klassenstufe-10-lb2-089-04-5e0ede40",
+        "sn-phys-seki-sn-klassenstufe-10-lb2-090-02-f4088b63",
+        "sn-phys-seki-sn-klassenstufe-10-lb2-091-03-b14b32ff",
+        "sn-phys-seki-sn-klassenstufe-10-lb2-092-01-671ed5ad",
+        "sn-phys-seki-sn-klassenstufe-10-lb2-092-02-d80ad420",
+        "sn-phys-seki-sn-klassenstufe-10-lb2-092-03-8b6444e4",
+        "sn-phys-seki-sn-klassenstufe-10-lb2-092-04-ad696e99",
+        "sn-phys-seki-sn-klassenstufe-10-lb2-092-05-da99fbb7",
+        "sn-phys-seki-sn-klassenstufe-10-lb2-092-06-8a6a35fa",
+        "sn-phys-seki-sn-klassenstufe-10-lb2-092-07-4776231c",
+        "sn-phys-seki-sn-klassenstufe-10-lb2-092-08-bc5fde93",
+        "sn-phys-seki-sn-klassenstufe-10-lb2-093-01-4002a4a4"
+      ],
+      "completeBindingInventory": "bindings.actual.json",
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+      "extractionPath": "curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_PHYSIK_SEKI_LEHRPLAN_GYMNASIUM_2025.source-extraction.json",
+      "recommendation": "Retain with genuine source and ordinary operationalization; repair actual assessment gap if any."
+    },
+    {
+      "state": "SN",
+      "goalId": "4a7cbe83-b694-57d3-85ce-1eeca418daaf",
+      "title": "Spektrum elektromagnetischer Wellen",
+      "canonicalDescription": "Die lernende Person kann das elektromagnetische Spektrum nach Frequenz und Wellenlänge geordnet darstellen, typische Bereiche einordnen, technische Anwendungen passenden Spektralbereichen zuordnen und die Zuordnung anhand relevanter Welleneigenschaften begründen.",
+      "originalLowerMembership": {
+        "de-sn-gym-physics-gk": false,
+        "de-sn-gym-physics-lk": false
+      },
+      "allNewSupplement": true,
+      "classification": "supported_lower_operationalization",
+      "review": "J10 elektromagnetische Wellen/Licht behandelt Spektrum, Frequenz/Wellenlänge und Anwendungen.",
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-physik-sachsen-2025.pdf",
+          "pdfPages": [
+            43
+          ],
+          "printedPages": [
+            31
+          ],
+          "sha256": "8041a30341cca2bc9af6c69b017c34be20655ef7fe6eab162263f9dbd412ece9"
+        }
+      ],
+      "bindingGoalIds": [
+        "sn-phys-seki-sn-klassenstufe-10-lb3-094-04-cdedc97d",
+        "sn-phys-seki-sn-klassenstufe-10-lb3-096-01-e69e7abc"
+      ],
+      "completeBindingInventory": "bindings.actual.json",
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+      "extractionPath": "curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_PHYSIK_SEKI_LEHRPLAN_GYMNASIUM_2025.source-extraction.json",
+      "recommendation": "Retain with genuine source and ordinary operationalization; repair actual assessment gap if any."
+    },
+    {
+      "state": "SN",
+      "goalId": "84ddb244-e560-592f-9d43-e84c801fe5b4",
+      "title": "Linsenauge mit geometrischer Optik modellieren",
+      "canonicalDescription": "Die lernende Person kann das Linsenauge mit Strahlenkonstruktion, Linsengleichung und Simulationen modellieren, Bedingungen scharfen Sehens quantitativ deuten und Modellgrenzen benennen.",
+      "originalLowerMembership": {
+        "de-sn-gym-physics-gk": false,
+        "de-sn-gym-physics-lk": false
+      },
+      "allNewSupplement": true,
+      "classification": "partial_lower_not_complete_atom",
+      "review": "J6 Wahlbereich Sehen/Fotografieren enthält Auge/Kamera und qualitative experimentelle Modelle, aber keine quantitative Linsengleichung. Dies trägt nicht den vollständigen kanonischen Atomumfang.",
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-physik-sachsen-2025.pdf",
+          "pdfPages": [
+            23
+          ],
+          "printedPages": [
+            11
+          ],
+          "sha256": "8041a30341cca2bc9af6c69b017c34be20655ef7fe6eab162263f9dbd412ece9"
+        }
+      ],
+      "bindingGoalIds": [
+        "sn-phys-seki-sn-klassenstufe-6-wb1-019-01-49b711d4",
+        "sn-phys-seki-sn-klassenstufe-6-wb1-019-02-78e18c50",
+        "sn-phys-seki-sn-klassenstufe-6-wb1-019-03-7cac3812"
+      ],
+      "completeBindingInventory": "bindings.actual.json",
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+      "extractionPath": "curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_PHYSIK_SEKI_LEHRPLAN_GYMNASIUM_2025.source-extraction.json",
+      "recommendation": "Do not treat current partial mapping as full-atom source proof; independently decide narrow scope correction versus explicitly reviewed own extension."
+    },
+    {
+      "state": "SN",
+      "goalId": "8ac61062-f63e-5935-96ae-84014906c368",
+      "title": "Schalldruckpegel und Hoerrisiken quantitativ beurteilen",
+      "canonicalDescription": "Die lernende Person kann Zusammenhaenge zwischen messbaren Schallgroessen und empfundener Lautstaerke mathematisch nutzen und Gesundheitsgefaehrdungen durch hohe Schalldruckpegel begruendet beurteilen.",
+      "originalLowerMembership": {
+        "de-sn-gym-physics-gk": false,
+        "de-sn-gym-physics-lk": false
+      },
+      "allNewSupplement": true,
+      "classification": "partial_lower_not_complete_atom",
+      "review": "J10 Akustik enthält qualitative Lautstärke-Amplitude, Hörbereich und Lärmwirkung. Mathematische Schalldruck-/Pegelbewertung und quantitative Hörrisiken des Atoms sind nicht belegt; ältere Hooke-/Halbleitermappings sind fachfremd.",
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-physik-sachsen-2025.pdf",
+          "pdfPages": [
+            41
+          ],
+          "printedPages": [
+            29
+          ],
+          "sha256": "8041a30341cca2bc9af6c69b017c34be20655ef7fe6eab162263f9dbd412ece9"
+        }
+      ],
+      "bindingGoalIds": [
+        "sn-phys-seki-sn-klassenstufe-10-lb1-086-01-b5f27178",
+        "sn-phys-seki-sn-klassenstufe-10-lb1-088-01-1c8c4961"
+      ],
+      "completeBindingInventory": "bindings.actual.json",
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+      "extractionPath": "curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_PHYSIK_SEKI_LEHRPLAN_GYMNASIUM_2025.source-extraction.json",
+      "recommendation": "Do not treat current partial mapping as full-atom source proof; independently decide narrow scope correction versus explicitly reviewed own extension."
+    },
+    {
+      "state": "SN",
+      "goalId": "ad62f563-4fee-5399-8d9c-03a214658aa9",
+      "title": "Experimentelle Untersuchungen fachgerecht dokumentieren",
+      "canonicalDescription": "Die lernende Person kann Beobachtungen, Messwerte, Auswertungsschritte und Ergebnisse einer physikalischen Untersuchung in einem strukturierten Protokoll oder einer fachtypischen Darstellung nachvollziehbar dokumentieren.",
+      "originalLowerMembership": {
+        "de-sn-gym-physics-gk": false,
+        "de-sn-gym-physics-lk": false
+      },
+      "allNewSupplement": true,
+      "classification": "supported_lower_operationalization",
+      "review": "J6 experimentelle Geschwindigkeitsbestimmung fordert Protokollieren; spätere selbstständige Experimente stützen die strukturierte Dokumentation.",
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-physik-sachsen-2025.pdf",
+          "pdfPages": [
+            21,
+            32
+          ],
+          "printedPages": [
+            9,
+            20
+          ],
+          "sha256": "8041a30341cca2bc9af6c69b017c34be20655ef7fe6eab162263f9dbd412ece9"
+        }
+      ],
+      "bindingGoalIds": [
+        "sn-phys-seki-sn-klassenstufe-6-lb2-010-09-19d950fb"
+      ],
+      "completeBindingInventory": "bindings.actual.json",
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+      "extractionPath": "curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_PHYSIK_SEKI_LEHRPLAN_GYMNASIUM_2025.source-extraction.json",
+      "recommendation": "Retain with genuine source and ordinary operationalization; repair actual assessment gap if any."
+    },
+    {
+      "state": "SN",
+      "goalId": "af1094c1-511a-5aae-9e0a-3e9196a82d9a",
+      "title": "Idealen Transformator quantitativ deuten",
+      "canonicalDescription": "Die lernende Person kann Aufbau und Funktionsprinzip eines Transformators mit Induktion erklären, beim idealen Transformator Spannungs- und Stromstärkeübersetzungen berechnen und die gegenläufige Übersetzung mit Energieerhaltung begründen.",
+      "originalLowerMembership": {
+        "de-sn-gym-physics-gk": false,
+        "de-sn-gym-physics-lk": false
+      },
+      "allNewSupplement": true,
+      "classification": "partial_lower_not_complete_atom",
+      "review": "J9 nennt Spannungsübersetzung/Wirkungsgrad, Energieübertragung und im Praktikum belasteten Transformator. Stromübersetzungsverhältnis als eigener Teil des kanonischen Atoms ist nicht explizit ausgeführt; passende didaktische Operationalisierung müsste eigens begründet werden.",
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-physik-sachsen-2025.pdf",
+          "pdfPages": [
+            36,
+            38
+          ],
+          "printedPages": [
+            24,
+            26
+          ],
+          "sha256": "8041a30341cca2bc9af6c69b017c34be20655ef7fe6eab162263f9dbd412ece9"
+        }
+      ],
+      "bindingGoalIds": [
+        "sn-phys-seki-sn-klassenstufe-9-lb2-069-01-a0e23d7f",
+        "sn-phys-seki-sn-klassenstufe-9-lb2-069-02-a15533c3",
+        "sn-phys-seki-sn-klassenstufe-9-lb2-069-03-a22dd1c5",
+        "sn-phys-seki-sn-klassenstufe-9-lb2-069-04-00522794",
+        "sn-phys-seki-sn-klassenstufe-9-lb2-069-05-a256ab17",
+        "sn-phys-seki-sn-klassenstufe-9-lb2-069-06-aef97be9",
+        "sn-phys-seki-sn-klassenstufe-9-lb4-077-01-fed75172",
+        "sn-phys-seki-sn-klassenstufe-9-lb4-078-02-2a69b495"
+      ],
+      "completeBindingInventory": "bindings.actual.json",
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+      "extractionPath": "curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_PHYSIK_SEKI_LEHRPLAN_GYMNASIUM_2025.source-extraction.json",
+      "recommendation": "Do not treat current partial mapping as full-atom source proof; independently decide narrow scope correction versus explicitly reviewed own extension."
+    },
+    {
+      "state": "SN",
+      "goalId": "bf8517a9-142b-5789-826a-767f3b277998",
+      "title": "Durchschnitts- und Momentangeschwindigkeit unterscheiden",
+      "canonicalDescription": "Die lernende Person kann Durchschnittsgeschwindigkeit für ein endliches Zeitintervall und Momentangeschwindigkeit für einen Zeitpunkt bestimmen, vergleichen und im t-s-Diagramm als Sekanten- beziehungsweise Tangentensteigung deuten.",
+      "originalLowerMembership": {
+        "de-sn-gym-physics-gk": false,
+        "de-sn-gym-physics-lk": false
+      },
+      "allNewSupplement": true,
+      "classification": "partial_lower_not_complete_atom",
+      "review": "J9 nennt Durchschnitts-/Momentangeschwindigkeit; die ausgewerteten direkten Mappingzeilen stammen jedoch aus J6-Durchschnittsgeschwindigkeit. Keine vollständige t-s-Sekanten/Tangentenkompetenz im unteren Original belegt.",
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-physik-sachsen-2025.pdf",
+          "pdfPages": [
+            21,
+            37
+          ],
+          "printedPages": [
+            9,
+            25
+          ],
+          "sha256": "8041a30341cca2bc9af6c69b017c34be20655ef7fe6eab162263f9dbd412ece9"
+        }
+      ],
+      "bindingGoalIds": [
+        "sn-phys-seki-sn-klassenstufe-6-lb2-010-07-b1cc6aa4"
+      ],
+      "completeBindingInventory": "bindings.actual.json",
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+      "extractionPath": "curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_PHYSIK_SEKI_LEHRPLAN_GYMNASIUM_2025.source-extraction.json",
+      "recommendation": "Do not treat current partial mapping as full-atom source proof; independently decide narrow scope correction versus explicitly reviewed own extension."
+    },
+    {
+      "state": "SN",
+      "goalId": "bfea7a23-1ce1-4a42-badd-1fc9bf30124a",
+      "title": "Masse-Energie-Äquivalenz einordnen",
+      "canonicalDescription": "Die lernende Person kann die Masse-Energie-Äquivalenz E₀ = m₀c² als Beziehung zwischen Ruheenergie und invarianter Masse fachlich einordnen und an qualitativen Beispielen deuten.",
+      "originalLowerMembership": {
+        "de-sn-gym-physics-gk": false,
+        "de-sn-gym-physics-lk": false
+      },
+      "allNewSupplement": true,
+      "classification": "partial_lower_not_complete_atom",
+      "review": "J10 Kosmos nennt Energiefreisetzung durch Kernfusion, nicht Masse-Energie-Äquivalenz oder E0=mc². Der formale Zusammenhang steht erst im oberen Kurs. Fusion allein ist kein Vollbeleg.",
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-physik-sachsen-2025.pdf",
+          "pdfPages": [
+            42,
+            49,
+            59
+          ],
+          "printedPages": [
+            30,
+            37,
+            47
+          ],
+          "sha256": "8041a30341cca2bc9af6c69b017c34be20655ef7fe6eab162263f9dbd412ece9"
+        }
+      ],
+      "bindingGoalIds": [
+        "sn-phys-seki-sn-klassenstufe-10-lb2-089-03-15ea84a4"
+      ],
+      "completeBindingInventory": "bindings.actual.json",
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+      "extractionPath": "curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_PHYSIK_SEKI_LEHRPLAN_GYMNASIUM_2025.source-extraction.json",
+      "recommendation": "Do not treat current partial mapping as full-atom source proof; independently decide narrow scope correction versus explicitly reviewed own extension."
+    },
+    {
+      "state": "SN",
+      "goalId": "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+      "title": "Gleichmäßig beschleunigte Bewegung und Beschleunigung",
+      "canonicalDescription": "Die lernende Person kann das Modell der gleichmäßig beschleunigten Bewegung mit konstanter Beschleunigung erläutern und in t-s-, t-v- und t-a-Darstellungen beschreiben.",
+      "originalLowerMembership": {
+        "de-sn-gym-physics-gk": false,
+        "de-sn-gym-physics-lk": false
+      },
+      "allNewSupplement": true,
+      "classification": "supported_lower_operationalization",
+      "review": "J9 LB3 enthält beschleunigte Bewegung, Bewegungsgesetze, Diagramme und freien Fall sowie experimentelle Prüfung. Gegenüber den falschen frühen Zeilen ist dies eine tragfähige untere Bindung.",
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-physik-sachsen-2025.pdf",
+          "pdfPages": [
+            36,
+            37
+          ],
+          "printedPages": [
+            24,
+            25
+          ],
+          "sha256": "8041a30341cca2bc9af6c69b017c34be20655ef7fe6eab162263f9dbd412ece9"
+        }
+      ],
+      "bindingGoalIds": [
+        "sn-phys-seki-sn-klassenstufe-9-lb3-074-01-276b70c5",
+        "sn-phys-seki-sn-klassenstufe-9-lb3-074-02-a1f6bc09",
+        "sn-phys-seki-sn-klassenstufe-9-lb3-075-02-6b8d1ade"
+      ],
+      "completeBindingInventory": "bindings.actual.json",
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+      "extractionPath": "curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_PHYSIK_SEKI_LEHRPLAN_GYMNASIUM_2025.source-extraction.json",
+      "recommendation": "Retain with genuine source and ordinary operationalization; repair actual assessment gap if any."
+    },
+    {
+      "state": "SN",
+      "goalId": "e6a50c74-c922-508c-aa27-07bac2566955",
+      "title": "Strahlendosis und Schutz",
+      "canonicalDescription": "Die lernende Person kann Energiedosis, Äquivalentdosis und effektive Dosis unterscheiden, die zur Fragestellung passende Dosisgröße unter benannten Modellannahmen aus gegebenen Daten bestimmen und die Wirksamkeit einer Abschirmung unter sonst vergleichbaren Expositionsbedingungen anhand der Dosisreduktion beurteilen.",
+      "originalLowerMembership": {
+        "de-sn-gym-physics-gk": false,
+        "de-sn-gym-physics-lk": false
+      },
+      "allNewSupplement": true,
+      "classification": "partial_lower_not_complete_atom",
+      "review": "J9 Wahlbereich Radioaktivität enthält Dosimeter, Durchdringung/Reichweite und qualitative Schutzfolgerungen. Energie-/Äquivalent-/Effektivdosis unterscheiden und berechnen ist nicht belegt.",
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-physik-sachsen-2025.pdf",
+          "pdfPages": [
+            38
+          ],
+          "printedPages": [
+            26
+          ],
+          "sha256": "8041a30341cca2bc9af6c69b017c34be20655ef7fe6eab162263f9dbd412ece9"
+        }
+      ],
+      "bindingGoalIds": [
+        "sn-phys-seki-sn-klassenstufe-9-wb1-079-03-1536cad8"
+      ],
+      "completeBindingInventory": "bindings.actual.json",
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+      "extractionPath": "curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_PHYSIK_SEKI_LEHRPLAN_GYMNASIUM_2025.source-extraction.json",
+      "recommendation": "Do not treat current partial mapping as full-atom source proof; independently decide narrow scope correction versus explicitly reviewed own extension."
+    },
+    {
+      "state": "SN",
+      "goalId": "e918b31f-6f39-5dee-ade6-3617080fb24f",
+      "title": "Zentripetalkraft als Resultierende herleiten",
+      "canonicalDescription": "Die lernende Person kann für eine gleichförmige Kreisbewegung herleiten, dass die zum Mittelpunkt gerichtete resultierende Kraft den Betrag F_z = mv²/r hat, und bei jeweils konstanten übrigen Größen erklären, wie dieser von Masse, Geschwindigkeit und Radius abhängt.",
+      "originalLowerMembership": {
+        "de-sn-gym-physics-gk": false,
+        "de-sn-gym-physics-lk": false
+      },
+      "allNewSupplement": true,
+      "classification": "partial_lower_not_complete_atom",
+      "review": "J9 Wahlbereich3 nennt Radialkraftformel und Anwendung. Die im vollständigen Atom enthaltene Herleitung ist nicht gefordert; optionale Stellung darf nicht als allgemeine Pflicht ausgegeben werden.",
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-physik-sachsen-2025.pdf",
+          "pdfPages": [
+            39
+          ],
+          "printedPages": [
+            27
+          ],
+          "sha256": "8041a30341cca2bc9af6c69b017c34be20655ef7fe6eab162263f9dbd412ece9"
+        }
+      ],
+      "bindingGoalIds": [
+        "sn-phys-seki-sn-klassenstufe-9-wb3-081-02-c7cd3206"
+      ],
+      "completeBindingInventory": "bindings.actual.json",
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+      "extractionPath": "curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_PHYSIK_SEKI_LEHRPLAN_GYMNASIUM_2025.source-extraction.json",
+      "recommendation": "Do not treat current partial mapping as full-atom source proof; independently decide narrow scope correction versus explicitly reviewed own extension."
+    },
+    {
+      "state": "SN",
+      "goalId": "eb30189c-27c6-510b-b235-6543afa18b90",
+      "title": "Einfachen Elektromotor bauen und qualitativ erklären",
+      "canonicalDescription": "Die lernende Person kann einen einfachen Elektromotor aufbauen, seine Funktion mit der Kraft auf stromdurchflossene Leiter im Magnetfeld erklären und Möglichkeiten zur Variation seines Laufs untersuchen.",
+      "originalLowerMembership": {
+        "de-sn-gym-physics-gk": false,
+        "de-sn-gym-physics-lk": false
+      },
+      "allNewSupplement": true,
+      "classification": "partial_lower_not_complete_atom",
+      "review": "J7 vergleicht Energiewandler und experimentiert mit Solarzelle/Motor; J8 beschreibt Wärmekraftmaschinen. Eigener Lorentzmotorbau mit Variation ist in keiner dieser Bindungen belegt.",
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-physik-sachsen-2025.pdf",
+          "pdfPages": [
+            28,
+            31
+          ],
+          "printedPages": [
+            16,
+            19
+          ],
+          "sha256": "8041a30341cca2bc9af6c69b017c34be20655ef7fe6eab162263f9dbd412ece9"
+        }
+      ],
+      "bindingGoalIds": [
+        "sn-phys-seki-sn-klassenstufe-7-lb3-041-01-8e07b01e",
+        "sn-phys-seki-sn-klassenstufe-8-lb2-051-01-6fb62957",
+        "sn-phys-seki-sn-klassenstufe-8-lb2-051-02-a6dff88f"
+      ],
+      "completeBindingInventory": "bindings.actual.json",
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+      "extractionPath": "curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_PHYSIK_SEKI_LEHRPLAN_GYMNASIUM_2025.source-extraction.json",
+      "recommendation": "Do not treat current partial mapping as full-atom source proof; independently decide narrow scope correction versus explicitly reviewed own extension."
+    },
+    {
+      "state": "SN",
+      "goalId": "ec7a0a68-730b-5c94-ac72-a937508f8303",
+      "title": "Bahn- und Winkelgeschwindigkeit",
+      "canonicalDescription": "Die lernende Person kann bei Kreisbewegungen Bahn- und Winkelgeschwindigkeit definieren, berechnen und ihren Zusammenhang v = ωr erklären.",
+      "originalLowerMembership": {
+        "de-sn-gym-physics-gk": false,
+        "de-sn-gym-physics-lk": false
+      },
+      "allNewSupplement": true,
+      "classification": "partial_lower_not_complete_atom",
+      "review": "J9 Wahlbereich3 verwendet Bahngeschwindigkeit und Umlaufzeit, aber keine Winkelgeschwindigkeit; diese steht erst im oberen GK-Kurs. Der vollständige kombinierte Atomumfang ist daher nicht lower belegt.",
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-physik-sachsen-2025.pdf",
+          "pdfPages": [
+            39,
+            48
+          ],
+          "printedPages": [
+            27,
+            36
+          ],
+          "sha256": "8041a30341cca2bc9af6c69b017c34be20655ef7fe6eab162263f9dbd412ece9"
+        }
+      ],
+      "bindingGoalIds": [
+        "sn-phys-seki-sn-klassenstufe-9-wb3-081-01-022e6dc9"
+      ],
+      "completeBindingInventory": "bindings.actual.json",
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+      "extractionPath": "curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_PHYSIK_SEKI_LEHRPLAN_GYMNASIUM_2025.source-extraction.json",
+      "recommendation": "Do not treat current partial mapping as full-atom source proof; independently decide narrow scope correction versus explicitly reviewed own extension."
+    },
+    {
+      "state": "ST",
+      "goalId": "51de4fd9-6827-5b3d-b2ca-5e27ba961a7f",
+      "title": "Temperatur mit einem geeigneten Thermometer messen",
+      "canonicalDescription": "Die lernende Person kann für einen gegebenen Messbereich und die benötigte Auflösung ein geeignetes Thermometer auswählen, es in guten thermischen Kontakt mit dem Messobjekt bringen und einen stabilen Temperaturwert mit Einheit fachgerecht ablesen.",
+      "originalLowerMembership": {
+        "de-st-gym-physics-gk": false,
+        "de-st-gym-physics-lk": false
+      },
+      "allNewSupplement": true,
+      "classification": "supported_lower_operationalization",
+      "review": "J6 verlangt ausdrücklich geeignetes Thermometer auswählen und sachgerecht verwenden sowie Temperaturmessungen durchführen.",
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/ST/FLP_Physik_Gym_01082022_swd.pdf",
+          "pdfPages": [
+            30
+          ],
+          "printedPages": [
+            30
+          ],
+          "sha256": "9154693501a6351a7ce27701b722c261135484a64e9633404cafadf94af983ed"
+        }
+      ],
+      "bindingGoalIds": [
+        "st-phys-seki-st-schuljahrgang-6-temperatur-und-warme-075-d1ddbde4",
+        "st-phys-seki-st-schuljahrgang-6-temperatur-und-warme-077-c0f852da"
+      ],
+      "completeBindingInventory": "bindings.actual.json",
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-ST/lower-secondary/st_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+      "extractionPath": "curricula/DE/Gymnasium/input/ST/lower-secondary/source-extraction/DE_ST_PHYSIK_SEKI_FACHLEHRPLAN_GYMNASIUM_2022.source-extraction.json",
+      "recommendation": "Retain with genuine source and ordinary operationalization; repair actual assessment gap if any."
+    },
+    {
+      "state": "ST",
+      "goalId": "ad62f563-4fee-5399-8d9c-03a214658aa9",
+      "title": "Experimentelle Untersuchungen fachgerecht dokumentieren",
+      "canonicalDescription": "Die lernende Person kann Beobachtungen, Messwerte, Auswertungsschritte und Ergebnisse einer physikalischen Untersuchung in einem strukturierten Protokoll oder einer fachtypischen Darstellung nachvollziehbar dokumentieren.",
+      "originalLowerMembership": {
+        "de-st-gym-physics-gk": false,
+        "de-st-gym-physics-lk": false
+      },
+      "allNewSupplement": true,
+      "classification": "supported_lower_operationalization",
+      "review": "J6 Strahlenoptik fordert Protokolle ausgewählter Experimente nach vorgegebenem Schema; echte Dokumentationskompetenz.",
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/ST/FLP_Physik_Gym_01082022_swd.pdf",
+          "pdfPages": [
+            26,
+            32
+          ],
+          "printedPages": [
+            26,
+            32
+          ],
+          "sha256": "9154693501a6351a7ce27701b722c261135484a64e9633404cafadf94af983ed"
+        }
+      ],
+      "bindingGoalIds": [
+        "st-phys-seki-st-schuljahrgang-6-strahlenoptik-023-d2383cf9"
+      ],
+      "completeBindingInventory": "bindings.actual.json",
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-ST/lower-secondary/st_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+      "extractionPath": "curricula/DE/Gymnasium/input/ST/lower-secondary/source-extraction/DE_ST_PHYSIK_SEKI_FACHLEHRPLAN_GYMNASIUM_2022.source-extraction.json",
+      "recommendation": "Retain with genuine source and ordinary operationalization; repair actual assessment gap if any."
+    },
+    {
+      "state": "ST",
+      "goalId": "b60f63b6-e70b-5557-9f54-86d42fa80325",
+      "title": "Thermische Ausdehnung fester, flüssiger und gasförmiger Stoffe deuten",
+      "canonicalDescription": "Die lernende Person kann aus vergleichenden Beobachtungen erklären, dass sich Länge oder Volumen fester, flüssiger und gasförmiger Stoffe beim Erwärmen meist vergrößern und beim Abkühlen verkleinern, sofern eine Ausdehnung nicht durch starre Begrenzung verhindert wird, und Unterschiede qualitativ deuten.",
+      "originalLowerMembership": {
+        "de-st-gym-physics-gk": false,
+        "de-st-gym-physics-lk": false
+      },
+      "allNewSupplement": true,
+      "classification": "supported_lower_operationalization",
+      "review": "J6 Temperatur/Wärme enthält Längen-/Volumenänderung von Stoffen bei Temperaturänderung mit Teilchenmodell.",
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/ST/FLP_Physik_Gym_01082022_swd.pdf",
+          "pdfPages": [
+            30
+          ],
+          "printedPages": [
+            30
+          ],
+          "sha256": "9154693501a6351a7ce27701b722c261135484a64e9633404cafadf94af983ed"
+        }
+      ],
+      "bindingGoalIds": [
+        "st-phys-seki-st-schuljahrgang-6-temperatur-und-warme-069-ab69d8cb"
+      ],
+      "completeBindingInventory": "bindings.actual.json",
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-ST/lower-secondary/st_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+      "extractionPath": "curricula/DE/Gymnasium/input/ST/lower-secondary/source-extraction/DE_ST_PHYSIK_SEKI_FACHLEHRPLAN_GYMNASIUM_2022.source-extraction.json",
+      "recommendation": "Retain with genuine source and ordinary operationalization; repair actual assessment gap if any."
+    },
+    {
+      "state": "ST",
+      "goalId": "bf8517a9-142b-5789-826a-767f3b277998",
+      "title": "Durchschnitts- und Momentangeschwindigkeit unterscheiden",
+      "canonicalDescription": "Die lernende Person kann Durchschnittsgeschwindigkeit für ein endliches Zeitintervall und Momentangeschwindigkeit für einen Zeitpunkt bestimmen, vergleichen und im t-s-Diagramm als Sekanten- beziehungsweise Tangentensteigung deuten.",
+      "originalLowerMembership": {
+        "de-st-gym-physics-gk": false,
+        "de-st-gym-physics-lk": false
+      },
+      "allNewSupplement": true,
+      "classification": "partial_lower_not_complete_atom",
+      "review": "J6 Wissensbestand nennt Momentan-/Durchschnittsgeschwindigkeit; Rechenanforderung und Diagrammaufträge betreffen Durchschnitt/Ablesen. Keine kanonische Tangentensteigungsberechnung belegt.",
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/ST/FLP_Physik_Gym_01082022_swd.pdf",
+          "pdfPages": [
+            28,
+            29,
+            45
+          ],
+          "printedPages": [
+            28,
+            29,
+            45
+          ],
+          "sha256": "9154693501a6351a7ce27701b722c261135484a64e9633404cafadf94af983ed"
+        }
+      ],
+      "bindingGoalIds": [
+        "st-phys-seki-st-schuljahrgang-6-eigenschaften-und-bewegung-von-korpern-und-teilchen-048-7cf285b3",
+        "st-phys-seki-st-schuljahrgang-6-eigenschaften-und-bewegung-von-korpern-und-teilchen-064-3d3b23b8",
+        "st-phys-seki-st-schuljahrgang-9-mechanik-der-punktmasse-279-ec7bf2a4"
+      ],
+      "completeBindingInventory": "bindings.actual.json",
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-ST/lower-secondary/st_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+      "extractionPath": "curricula/DE/Gymnasium/input/ST/lower-secondary/source-extraction/DE_ST_PHYSIK_SEKI_FACHLEHRPLAN_GYMNASIUM_2022.source-extraction.json",
+      "recommendation": "Do not treat current partial mapping as full-atom source proof; independently decide narrow scope correction versus explicitly reviewed own extension."
+    },
+    {
+      "state": "TH",
+      "goalId": "37013646-f13a-5faf-954c-940f2fd7502f",
+      "title": "Gezeiten qualitativ erklären",
+      "canonicalDescription": "Die lernende Person kann Gezeiten qualitativ durch die unterschiedliche Gravitationswirkung von Mond und Sonne auf verschiedene Bereiche der Erde erklären.",
+      "originalLowerMembership": {
+        "de-th-gym-physics-gk": false,
+        "de-th-gym-physics-lk": false
+      },
+      "allNewSupplement": true,
+      "classification": "upper_e10_not_lower_supplement",
+      "review": "PhysikLP2.2.2 beginnt ausdrücklich Klassenstufe10 (S.21); Gezeiten stehen S.22. Amtliche Oberstufenbroschüre S.4–5/PDF6–7 ordnet das reguläre Gymnasium E10 zu. Der pauschale Generatorbucket2.2→SekI9/10 ist kein Gegenbeleg.",
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/TH/LP_GY_Physik_2012.pdf",
+          "pdfPages": [
+            21,
+            22
+          ],
+          "printedPages": [
+            21,
+            22
+          ],
+          "sha256": "414be5ac7af13a1cfa33f96d9ca3c50f83c1f1cce4abe61b8e62faea1a24ed8d"
+        },
+        {
+          "file": "/home/enpasos/projects/skillpilot/tmp/pipeline/laender-stufen/gesamt/review/physics-lower-original-sources/th-gymnasiale-oberstufe-1.pdf",
+          "pdfPages": [
+            6,
+            7
+          ],
+          "printedPages": [
+            4,
+            5
+          ],
+          "sha256": "217746f21a858daf3f122159535afde8d71b53e8adf04cdf438123983a2be908"
+        }
+      ],
+      "bindingGoalIds": [
+        "th-phys-seki-th-2-2-2-bewegungen-krafte-und-erhaltungssatze-173-eb6716f2"
+      ],
+      "completeBindingInventory": "bindings.actual.json",
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-TH/lower-secondary/th_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+      "extractionPath": "curricula/DE/Gymnasium/input/TH/lower-secondary/source-extraction/DE_TH_PHYSIK_SEKI_LEHRPLAN_GYMNASIUM_2012.source-extraction.json",
+      "recommendation": "Exclude this newly added lower supplement; keep genuine E10 placement and original CrossStage targets."
+    },
+    {
+      "state": "TH",
+      "goalId": "ad62f563-4fee-5399-8d9c-03a214658aa9",
+      "title": "Experimentelle Untersuchungen fachgerecht dokumentieren",
+      "canonicalDescription": "Die lernende Person kann Beobachtungen, Messwerte, Auswertungsschritte und Ergebnisse einer physikalischen Untersuchung in einem strukturierten Protokoll oder einer fachtypischen Darstellung nachvollziehbar dokumentieren.",
+      "originalLowerMembership": {
+        "de-th-gym-physics-gk": false,
+        "de-th-gym-physics-lk": false
+      },
+      "allNewSupplement": true,
+      "classification": "supported_lower_operationalization",
+      "review": "Klassen7/8 verlangen ausdrücklich Dokumentieren physikalischer Erkenntnisse/Beobachtungen in Fachsprache. Retained Seitenanker12/18 liegen vor dem tatsächlichen Wortlaut13/19; Originalseiten sind hier maßgeblich.",
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/TH/LP_GY_Physik_2012.pdf",
+          "pdfPages": [
+            13,
+            15,
+            19
+          ],
+          "printedPages": [
+            13,
+            15,
+            19
+          ],
+          "sha256": "414be5ac7af13a1cfa33f96d9ca3c50f83c1f1cce4abe61b8e62faea1a24ed8d"
+        }
+      ],
+      "bindingGoalIds": [
+        "th-phys-seki-th-2-1-1-kraft-druck-und-mechanische-energie-029-28e482ac",
+        "th-phys-seki-th-2-1-2-geladene-korper-stromkreise-elektrische-gro-en-und-elektrische-leitungsvorgange-056-13e3358d",
+        "th-phys-seki-th-2-1-4-lichtausbreitung-und-bildentstehung-117-7793064a"
+      ],
+      "completeBindingInventory": "bindings.actual.json",
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-TH/lower-secondary/th_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+      "extractionPath": "curricula/DE/Gymnasium/input/TH/lower-secondary/source-extraction/DE_TH_PHYSIK_SEKI_LEHRPLAN_GYMNASIUM_2012.source-extraction.json",
+      "recommendation": "Retain with genuine source and ordinary operationalization; repair actual assessment gap if any."
+    }
+  ]
+}

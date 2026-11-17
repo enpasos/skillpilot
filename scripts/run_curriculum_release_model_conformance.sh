@@ -5,7 +5,7 @@ ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 PROFILE="contracts/curriculum-package/v1.3/profiles/de-gymnasium-mathematik-release-model-v1.3.profile.json"
 PACKAGE_PROFILE="contracts/curriculum-package/v1.3/profiles/full-standalone-v1.3.profile.json"
 CONTRACTS_DIR="contracts/curriculum-package/v1.3"
-REDISTRIBUTION_LEDGER="curricula/DE/Gymnasium/quality/package-redistribution/de-gymnasium-mathematik-v1.3.review.json"
+REDISTRIBUTION_LEDGER="curricula/DE/Gymnasium/quality/package-redistribution/de-gymnasium-mathematik-v1.3-partial-order-20261116.review.json"
 OUTPUT_BASE="tmp/curriculum-release-model"
 OUTPUT_A="${OUTPUT_BASE}/mathematik-v1.3-a"
 OUTPUT_B="${OUTPUT_BASE}/mathematik-v1.3-b"
@@ -101,26 +101,28 @@ python3 -B scripts/validate_curriculum_release_model.py \
   --profile "${PROFILE}" \
   --release-root "${OUTPUT_A}"
 
-python3 -B scripts/generate_curriculum_package_redistribution_review.py \
-  --runtime-v13-candidate --ledger "${REDISTRIBUTION_LEDGER}" \
-  --check \
-  --release-root "${OUTPUT_A}"
-python3 -B scripts/generate_curriculum_package_redistribution_review.py \
-  --runtime-v13-candidate --ledger "${REDISTRIBUTION_LEDGER}" \
-  --self-test \
-  --release-root "${OUTPUT_A}"
-python3 -B scripts/generate_curriculum_source_verification_review.py \
-  --check \
-  "${SOURCE_VERIFICATION_ARGS[@]}"
-python3 -B scripts/generate_curriculum_source_verification_review.py \
-  --self-test \
-  "${SOURCE_VERIFICATION_ARGS[@]}"
-
+# The independent validator performs negative mutations and restores the model.
+# Finish that process before any second build or consumer reads its directory.
 python3 -B scripts/compile_curriculum_release_model.py \
   --profile "${PROFILE}" \
   --output "${OUTPUT_B}"
 
 diff -qr "${OUTPUT_A}" "${OUTPUT_B}"
+
+python3 -B scripts/generate_curriculum_package_redistribution_review.py \
+  --runtime-v13-candidate --ledger "${REDISTRIBUTION_LEDGER}" \
+  --check \
+  --release-root "${OUTPUT_A}"
+python3 -B scripts/generate_curriculum_package_redistribution_review.py \
+  --runtime-v13-candidate --ledger "${REDISTRIBUTION_LEDGER}" \
+  --self-test \
+  --release-root "${OUTPUT_A}"
+python3 -B scripts/generate_curriculum_source_verification_review.py \
+  --check \
+  "${SOURCE_VERIFICATION_ARGS[@]}"
+python3 -B scripts/generate_curriculum_source_verification_review.py \
+  --self-test \
+  "${SOURCE_VERIFICATION_ARGS[@]}"
 
 if [[ "${SKILLPILOT_FULL_PACKAGE_CONFORMANCE:-false}" != "true" ]]; then
   echo "Curriculum release-model conformance passed: independent model validation, current review bindings, and byte-identical model builds."

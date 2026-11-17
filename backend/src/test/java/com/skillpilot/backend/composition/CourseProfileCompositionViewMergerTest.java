@@ -17,6 +17,172 @@ import org.junit.jupiter.api.Test;
 
 class CourseProfileCompositionViewMergerTest {
 
+    private static Map<String, Object> orderedStructure(String id, List<Map<String, Object>> children,
+            List<Map<String, Object>> after) {
+        return Map.of("kind", "structure", "id", id, "label", "Themen", "children", children,
+                "childOrder", Map.of("after", after));
+    }
+
+    private static Map<String, Object> orderPair(String unit, String after) {
+        return Map.of("unit", unit, "after", after);
+    }
+
+    private static List<Map<String, Object>> orderChildren() {
+        return List.of("a", "b", "c", "d").stream().map(id -> Map.<String, Object>of(
+                "kind", "structure", "id", id, "label", id,
+                "children", List.of(Map.of("kind", "goalEntry", "goalId", id + "-goal")))).toList();
+    }
+
+    @Test
+    void explicitChildOrdersMapProfileAliasesAndReduceTheCombinedDag() {
+        Map<String, Object> lower = Map.of("kind", "structure", "id", "lower", "label", "Lower",
+                "children", List.of(Map.of("kind", "goalEntry", "goalId", "first")));
+        Map<String, Object> upperGk = Map.of("kind", "structure", "id", "upper-gk", "label", "Upper GK",
+                "children", List.of(Map.of("kind", "goalEntry", "goalId", "gk")));
+        Map<String, Object> upperLk = Map.of("kind", "structure", "id", "upper-lk", "label", "Upper LK",
+                "children", List.of(Map.of("kind", "goalEntry", "goalId", "lk")));
+        var aliases = CourseProfileCompositionViewMerger.merge(List.of(
+                orderedStructure("root", List.of(lower, upperGk), List.of(orderPair("upper-gk", "lower"))),
+                orderedStructure("root", List.of(lower, upperLk), List.of(orderPair("upper-lk", "lower")))));
+        assertThat(aliases.getFirst().get("childOrder"))
+                .isEqualTo(Map.of("after", List.of(orderPair("upper-gk-lk", "lower"))));
+
+        var merged = CourseProfileCompositionViewMerger.merge(List.of(
+                orderedStructure("topics", orderChildren(), List.of(orderPair("b", "a"), orderPair("c", "b"))),
+                orderedStructure("topics", orderChildren(), List.of(orderPair("c", "a"), orderPair("d", "a")))));
+        assertThat(merged.getFirst().get("childOrder"))
+                .isEqualTo(Map.of("after", List.of(orderPair("b", "a"), orderPair("c", "b"), orderPair("d", "a"))));
+    }
+
+    @Test
+    void explicitChildOrderConflictsAndMalformedSourcesFailClosed() {
+        assertThatThrownBy(() -> CourseProfileCompositionViewMerger.merge(List.of(
+                orderedStructure("topics", orderChildren(), List.of(orderPair("b", "a"))),
+                orderedStructure("topics", orderChildren(), List.of(orderPair("a", "b"))))))
+                .isInstanceOf(IllegalStateException.class).hasMessageContaining("cyclic composition childOrder");
+        var implicit = new LinkedHashMap<>(orderedStructure("topics", orderChildren(), List.of()));
+        implicit.remove("childOrder");
+        assertThatThrownBy(() -> CourseProfileCompositionViewMerger.merge(List.of(
+                orderedStructure("topics", orderChildren(), List.of()), implicit)))
+                .isInstanceOf(IllegalStateException.class).hasMessageContaining("explicit and implicit");
+        for (List<Map<String, Object>> pairs : List.of(
+                List.of(orderPair("missing", "a")), List.of(orderPair("topics", "a")),
+                List.of(orderPair("a", "a")), List.of(orderPair("b", "a"), orderPair("b", "a")),
+                List.of(orderPair("a", "b"), orderPair("b", "a")),
+                List.of(orderPair("b", "a"), orderPair("c", "b"), orderPair("c", "a")))) {
+            assertThatThrownBy(() -> CourseProfileCompositionViewMerger.merge(List.of(
+                    orderedStructure("topics", orderChildren(), pairs))))
+                    .isInstanceOf(IllegalStateException.class).hasMessageContaining("composition childOrder");
+        }
+    }
+
+    @Test
+    void explicitChildOrderRetainsReachabilityWhenDeduplicationRemovesAnIntermediate() {
+        var children = List.of(
+                orderedStructure("a", List.of(Map.of("kind", "goalEntry", "goalId", "a-goal")), List.of()),
+                orderedStructure("b", List.of(Map.of("kind", "goalEntry", "goalId", "leaf")), List.of()),
+                orderedStructure("c", List.of(Map.of("kind", "goalEntry", "goalId", "c-goal")), List.of()));
+        var source = orderedStructure("topics", children, List.of(orderPair("b", "a"), orderPair("c", "b")));
+        var broad = orderedStructure("topics", List.of(Map.of("kind", "canonicalSubtree", "goalId", "broad")), List.of());
+        var merged = CourseProfileCompositionViewMerger.mergeViews(List.of(List.of(source), List.of(broad)),
+                Map.of("a-goal", List.of(), "c-goal", List.of(), "leaf", List.of(), "broad", List.of("leaf")), true);
+        assertThat(merged.getFirst().get("childOrder")).isEqualTo(Map.of("after", List.of(orderPair("c", "a"))));
+    }
+
+    @Test
+    void targetDominanceRemovesAcquisitionFlagsInBothSourceOrders() {
+        Map<String, Object> support = Map.of("kind", "goalEntry", "goalId", "leaf",
+                "projectionRole", "prerequisiteOnly", "acquisitionPlacement", true);
+        Map<String, Object> target = Map.of("kind", "goalEntry", "goalId", "leaf", "projectionRole", "target");
+        for (var sources : List.of(List.of(support, target), List.of(target, support))) {
+            assertThat(CourseProfileCompositionViewMerger.merge(sources)).singleElement().satisfies(node ->
+                    assertThat(node).containsEntry("projectionRole", "target").doesNotContainKey("acquisitionPlacement"));
+        }
+    }
+
+    @Test
+    void unlabelledAcquisitionTemplatePreservesTargetLabelAndStillRejectsConflictingLabels() {
+        Map<String, Object> support = Map.of("kind", "goalEntry", "goalId", "leaf",
+                "projectionRole", "prerequisiteOnly", "acquisitionPlacement", true);
+        Map<String, Object> target = Map.of("kind", "canonicalSubtree", "goalId", "leaf",
+                "projectionRole", "target", "displayLabel", "Vektorprodukt definieren");
+        for (var sources : List.of(List.of(support, target), List.of(target, support))) {
+            assertThat(CourseProfileCompositionViewMerger.merge(sources)).singleElement().satisfies(node ->
+                    assertThat(node).containsEntry("projectionRole", "target")
+                            .containsEntry("displayLabel", "Vektorprodukt definieren")
+                            .doesNotContainKey("acquisitionPlacement"));
+        }
+        var conflictingTarget = Map.<String, Object>of("kind", "goalEntry", "goalId", "leaf",
+                "projectionRole", "target", "displayLabel", "Anderer Zieltext");
+        var conflictingTemplate = Map.<String, Object>of("kind", "goalEntry", "goalId", "leaf",
+                "projectionRole", "prerequisiteOnly", "acquisitionPlacement", true, "displayLabel", "Anderer Zieltext");
+        assertThatThrownBy(() -> CourseProfileCompositionViewMerger.merge(List.of(target, conflictingTarget)))
+                .isInstanceOf(IllegalStateException.class);
+        assertThatThrownBy(() -> CourseProfileCompositionViewMerger.merge(List.of(conflictingTemplate, target)))
+                .isInstanceOf(IllegalStateException.class);
+    }
+
+    @Test
+    void prerequisiteLeafRetainsExplicitAcquisitionWithoutPromotingItToATargetOrCluster() {
+        Map<String, Object> marked = Map.of("kind", "goalEntry", "goalId", "leaf",
+                "projectionRole", "prerequisiteOnly", "acquisitionPlacement", true);
+        Map<String, Object> unmarked = Map.of("kind", "goalEntry", "goalId", "leaf", "projectionRole", "prerequisiteOnly");
+        for (var sources : List.of(List.of(marked, unmarked), List.of(unmarked, marked))) {
+            assertThat(CourseProfileCompositionViewMerger.merge(sources)).singleElement().satisfies(node ->
+                    assertThat(node).containsEntry("projectionRole", "prerequisiteOnly").containsEntry("acquisitionPlacement", true));
+        }
+        Map<String, Object> subtree = Map.of("kind", "canonicalSubtree", "goalId", "leaf", "projectionRole", "prerequisiteOnly");
+        assertThat(CourseProfileCompositionViewMerger.merge(List.of(marked, subtree))).singleElement().satisfies(node ->
+                assertThat(node).containsEntry("kind", "canonicalSubtree").containsEntry("projectionRole", "prerequisiteOnly")
+                        .doesNotContainKey("acquisitionPlacement"));
+        assertThatThrownBy(() -> CourseProfileCompositionViewMerger.merge(List.of(Map.of(
+                "kind", "goalEntry", "goalId", "leaf", "projectionRole", "target", "acquisitionPlacement", true))))
+                .isInstanceOf(IllegalStateException.class).hasMessageContaining("acquisitionPlacement");
+    }
+
+    @Test
+    void broadSupportDoesNotEraseAnExplicitPrerequisiteAcquisitionPlace() {
+        Map<String, Object> marked = Map.of("kind", "goalEntry", "goalId", "leaf",
+                "projectionRole", "prerequisiteOnly", "acquisitionPlacement", true);
+        Map<String, Object> support = Map.of("kind", "canonicalSubtree", "goalId", "broad", "projectionRole", "prerequisiteOnly");
+        var sources = List.of(List.of(orderedStructure("topic", List.of(marked), List.of()), support));
+        var merged = CourseProfileCompositionViewMerger.mergeViews(sources,
+                Map.of("leaf", List.of(), "broad", List.of("leaf")), true);
+        assertThat(merged).hasSize(2);
+        assertThat(merged.getFirst().get("children")).isEqualTo(List.of(marked));
+    }
+
+    @Test
+    void acquisitionCapabilityStaysAtItsAuthoredPlaceAcrossGlobalLeafDeduplication() {
+        Map<String, Object> unmarked = Map.of("kind", "goalEntry", "goalId", "leaf", "projectionRole", "prerequisiteOnly");
+        Map<String, Object> marked = Map.of("kind", "goalEntry", "goalId", "leaf", "projectionRole", "prerequisiteOnly", "acquisitionPlacement", true);
+        var early = orderedStructure("j7", List.of(unmarked, Map.of("kind", "goalEntry", "goalId", "early-target")), List.of());
+        var later = orderedStructure("q3", List.of(marked), List.of());
+        for (var sources : List.of(List.of(early, later), List.of(later, early))) {
+            var merged = CourseProfileCompositionViewMerger.mergeViews(List.of(sources, sources),
+                    Map.of("leaf", List.of(), "early-target", List.of()), true);
+            assertThat(merged).filteredOn(node -> "j7".equals(node.get("id"))).singleElement().satisfies(node ->
+                    assertThat(node.get("children")).isEqualTo(List.of(Map.of("kind", "goalEntry", "goalId", "early-target"))));
+            assertThat(merged).filteredOn(node -> "q3".equals(node.get("id"))).singleElement().satisfies(node ->
+                    assertThat(node.get("children")).isEqualTo(List.of(marked)));
+        }
+    }
+
+    @Test
+    void duplicateStructureIdentityUnderDistinctParentsFailsClosedWithoutMergingByTitle() {
+        var left = orderedStructure("preserved-18", List.of(orderedStructure("shared-topic",
+                List.of(Map.of("kind", "goalEntry", "goalId", "gk-target")), List.of())), List.of());
+        var right = orderedStructure("preserved-21", List.of(orderedStructure("shared-topic",
+                List.of(Map.of("kind", "goalEntry", "goalId", "lk-target")), List.of())), List.of());
+        assertThatThrownBy(() -> CourseProfileCompositionViewMerger.mergeViews(List.of(List.of(left), List.of(right)),
+                Map.of("gk-target", List.of(), "lk-target", List.of())))
+                .isInstanceOf(IllegalStateException.class).hasMessageContaining("Duplicate global composition structure ID");
+        var differentIdentity = orderedStructure("preserved-21", List.of(orderedStructure("other-topic",
+                List.of(Map.of("kind", "goalEntry", "goalId", "lk-target")), List.of())), List.of());
+        assertThat(CourseProfileCompositionViewMerger.mergeViews(List.of(List.of(left), List.of(differentIdentity)),
+                Map.of("gk-target", List.of(), "lk-target", List.of()))).hasSize(2);
+    }
+
     private static final Map<String, List<String>> ROLE_GRAPH = Map.of(
             "root", List.of("branch", "shared"),
             "branch", List.of("advanced", "support"),
@@ -147,6 +313,9 @@ class CourseProfileCompositionViewMergerTest {
         String mathematicsLandscapeId = mapper.readTree(curricula.resolve(
                 "canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json").toFile())
                 .path("landscapeId").asText();
+        String physicsLandscapeId = mapper.readTree(curricula.resolve(
+                "canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json").toFile())
+                .path("landscapeId").asText();
         Map<String, List<String>> graph = new LinkedHashMap<>();
         try (var files = Files.list(curricula.resolve("canonical"))) {
             for (Path file : files.filter(path -> path.toString().endsWith(".json")).sorted().toList()) {
@@ -158,9 +327,11 @@ class CourseProfileCompositionViewMergerTest {
             }
         }
         Map<String, Map<String, List<Map<String, Object>>>> groups = new TreeMap<>();
+        int physicsViews = 0;
         try (var files = Files.walk(curricula.resolve("composition-views"))) {
             for (Path file : files.filter(path -> path.toString().endsWith(".view.json")).sorted().toList()) {
                 Map<String, Object> view = mapper.readValue(file.toFile(), new TypeReference<>() {});
+                if (physicsLandscapeId.equals(view.get("landscapeId"))) physicsViews++;
                 Map<String, Object> scope = new TreeMap<>((Map<String, Object>) view.get("scope"));
                 Object profile = scope.remove("courseProfile");
                 if (!"GK".equals(profile) && !"LK".equals(profile)) continue;
@@ -171,6 +342,7 @@ class CourseProfileCompositionViewMergerTest {
             }
         }
         int checked = 0;
+        int physicsPairs = 0;
         for (var entry : groups.entrySet()) {
             if (entry.getValue().size() != 2) continue;
             List<List<Map<String, Object>>> sources = List.of(
@@ -185,11 +357,61 @@ class CourseProfileCompositionViewMergerTest {
                 assertThat(CourseProfileCompositionViewMerger.mergeViews(sources, graph, true))
                         .as(entry.getKey() + " package subtree deduplication").isNotEmpty();
             }
+            if (entry.getKey().startsWith(physicsLandscapeId + "|")) {
+                // The source schema and a single-profile projection cannot
+                // catch one stable unit being packed under different parents
+                // in GK and LK. Exercise the real merged global-ID/role/order
+                // guards in both traversal orders and both consumer modes.
+                for (var order : List.of(sources, List.of(sources.get(1), sources.get(0)))) {
+                    for (boolean deduplicate : new boolean[] {false, true}) {
+                        var physicsMerged = CourseProfileCompositionViewMerger.mergeViews(order, graph, deduplicate);
+                        assertThat(physicsMerged)
+                                .as(entry.getKey() + " traversal=" + (order == sources ? "LK/GK" : "GK/LK")
+                                        + " subtreeDeduplication=" + deduplicate).isNotEmpty();
+                        if (entry.getKey().contains("jurisdiction=DE-HE")) {
+                            assertNoEmptyContextUnits(physicsMerged);
+                        }
+                        if (!entry.getKey().contains("jurisdiction=") || entry.getKey().contains("jurisdiction=DE,")) {
+                            assertFlatCanonicalExaminations(physicsMerged);
+                        }
+                    }
+                }
+                physicsPairs++;
+            }
             assertThat(mapper.writeValueAsString(sources)).as(entry.getKey() + " source immutability")
                     .isEqualTo(before);
             checked++;
         }
         assertThat(checked).as("All currently authored exact GK/LK scope pairs").isGreaterThanOrEqualTo(96);
+        assertThat(physicsViews).as("Complete authored Physics stage-view inventory").isEqualTo(90);
+        assertThat(physicsPairs).as("Every exact Physics GK/LK scope pair").isEqualTo(36);
+    }
+
+    @SuppressWarnings("unchecked")
+    private static void assertNoEmptyContextUnits(List<Map<String, Object>> nodes) {
+        for (var node : nodes) {
+            if (!"structure".equals(node.get("kind"))) continue;
+            var children = (List<Map<String, Object>>) node.get("children");
+            if (node.get("id").toString().startsWith("physics-context-acquisition-")) {
+                assertThat(children).as("No empty filtered-course preparation shell: " + node.get("id")).isNotEmpty();
+            }
+            assertNoEmptyContextUnits(children);
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    private static void assertFlatCanonicalExaminations(List<Map<String, Object>> nodes) {
+        for (var node : nodes) {
+            if (!"structure".equals(node.get("kind"))) continue;
+            var children = (List<Map<String, Object>>) node.get("children");
+            if ("physics-abitur".equals(node.get("id"))) {
+                assertThat(children).as("Exact canonical atomic examination collection").allSatisfy(child ->
+                        assertThat(child.get("kind")).isNotEqualTo("structure"));
+                assertThat(children.stream().filter(child -> !"prerequisiteOnly".equals(child.get("projectionRole"))).toList())
+                        .as("All eight GK and eight LK examination atoms").hasSize(16);
+            }
+            assertFlatCanonicalExaminations(children);
+        }
     }
 
     @Test

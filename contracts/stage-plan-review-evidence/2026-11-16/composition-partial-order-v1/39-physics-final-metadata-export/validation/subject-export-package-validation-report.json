@@ -1,0 +1,390 @@
+{
+  "generatedAt": "2026-11-17T04:56:53.463Z",
+  "markdownReportPath": "tmp/pipeline/laender-stufen/gesamt/subject-export-final-metadata-v1/validation/subject-export-package-validation-report.md",
+  "packageCount": 1,
+  "passed": true,
+  "reportPath": "tmp/pipeline/laender-stufen/gesamt/subject-export-final-metadata-v1/validation/subject-export-package-validation-report.json",
+  "results": [
+    {
+      "archiveRoot": "skillpilot-de-gymnasium-physik-v0.1.0-local.after",
+      "checks": [
+        {
+          "details": "Python evaluator returned the expected not-ready-legacy status.",
+          "id": "target-readiness-evaluator-passed",
+          "passed": true
+        },
+        {
+          "details": "tmp/pipeline/laender-stufen/gesamt/subject-export-final-metadata-v1/readiness/skillpilot-de-gymnasium-physik-v0.1.0-local.after-readiness-report.json",
+          "id": "target-readiness-stdout-matches-report",
+          "passed": true
+        },
+        {
+          "details": "zip",
+          "id": "target-readiness-input-kind-zip",
+          "passed": true
+        },
+        {
+          "details": "cfda9f03bba37a36e5aa9cedda9479a76875cd8efc489a17a5da8eedf25e8b3d / cfda9f03bba37a36e5aa9cedda9479a76875cd8efc489a17a5da8eedf25e8b3d",
+          "id": "target-readiness-zip-sha256-matches",
+          "passed": true
+        },
+        {
+          "details": "legacy-subject-export",
+          "id": "target-readiness-dialect-legacy",
+          "passed": true
+        },
+        {
+          "details": "not-ready-legacy",
+          "id": "target-readiness-status-not-ready-legacy",
+          "passed": true
+        },
+        {
+          "details": "false",
+          "id": "target-readiness-standalone-ready-false",
+          "passed": true
+        },
+        {
+          "details": "pass",
+          "id": "target-readiness-input-integrity-passed",
+          "passed": true
+        },
+        {
+          "details": "717 bounded regular-file entry/entries; 1015994684 uncompressed bytes",
+          "id": "zip-metadata-preflight",
+          "passed": true
+        },
+        {
+          "details": "unzip -tq passed after metadata preflight",
+          "id": "zip-integrity",
+          "passed": true
+        },
+        {
+          "details": "717 unique entry name(s)",
+          "id": "zip-entry-names-unique",
+          "passed": true
+        },
+        {
+          "details": "no case-folded, Unicode-normalized, or file/child collisions",
+          "id": "zip-entry-paths-portably-distinct",
+          "passed": true
+        },
+        {
+          "details": "717 regular file entry/entries",
+          "id": "zip-entry-types-regular-files-only",
+          "passed": true
+        },
+        {
+          "details": "skillpilot-de-gymnasium-physik-v0.1.0-local.after",
+          "id": "single-archive-root",
+          "passed": true
+        },
+        {
+          "details": "skillpilot-de-gymnasium-physik-v0.1.0-local.after",
+          "id": "portable-archive-root",
+          "passed": true
+        },
+        {
+          "details": "Longest entry path: 152",
+          "id": "windows-safe-entry-paths",
+          "passed": true
+        },
+        {
+          "details": "ok",
+          "id": "no-internal-or-source-file-paths",
+          "passed": true
+        },
+        {
+          "details": "ok",
+          "id": "required-package-files-present",
+          "passed": true
+        },
+        {
+          "details": "skillpilot-de-gymnasium-physik-v0.1.0-local.after",
+          "id": "manifest-archive-root-matches",
+          "passed": true
+        },
+        {
+          "details": "715 unique manifest file path(s)",
+          "id": "manifest-file-paths-unique",
+          "passed": true
+        },
+        {
+          "details": "ok",
+          "id": "manifest-file-paths-safe",
+          "passed": true
+        },
+        {
+          "details": "ok",
+          "id": "manifest-license-categories-known",
+          "passed": true
+        },
+        {
+          "details": "ok",
+          "id": "declared-project-license-documents-present",
+          "passed": true
+        },
+        {
+          "details": "715 file record(s); metadata/manifest.json and metadata/SHA256SUMS intentionally excluded",
+          "id": "manifest-file-set-exact",
+          "passed": true
+        },
+        {
+          "details": "ok",
+          "id": "checksum-file-format",
+          "passed": true
+        },
+        {
+          "details": "ok",
+          "id": "checksum-file-covers-package",
+          "passed": true
+        },
+        {
+          "details": "ok",
+          "id": "checksum-file-values-match",
+          "passed": true
+        },
+        {
+          "details": "ok",
+          "id": "manifest-file-records-match",
+          "passed": true
+        },
+        {
+          "details": "embedded checks pass and errors array is empty",
+          "id": "embedded-validation-report-passed",
+          "passed": true
+        },
+        {
+          "details": "25 source record(s)",
+          "id": "source-index-present-and-nonempty",
+          "passed": true
+        },
+        {
+          "details": "44 URL(s)",
+          "id": "source-index-uses-official-http-links",
+          "passed": true
+        },
+        {
+          "details": "6289 source-goal reference(s)",
+          "id": "source-goal-references-present-and-nonempty",
+          "passed": true
+        },
+        {
+          "details": "ok",
+          "id": "source-goal-reference-ids-unique",
+          "passed": true
+        },
+        {
+          "details": "source index version 2",
+          "id": "source-goal-reference-bindings-valid",
+          "passed": true
+        },
+        {
+          "details": "ok",
+          "id": "source-goal-references-have-text-and-official-links",
+          "passed": true
+        },
+        {
+          "details": "161 external reference(s)",
+          "id": "external-goal-references-file-valid",
+          "passed": true
+        },
+        {
+          "details": "ok",
+          "id": "no-internal-repository-references-in-data",
+          "passed": true
+        },
+        {
+          "details": "1 canonical landscape file(s)",
+          "id": "single-canonical-landscape",
+          "passed": true
+        },
+        {
+          "details": "850 goal(s)",
+          "id": "canonical-goals-present-and-unique",
+          "passed": true
+        },
+        {
+          "details": "physik",
+          "id": "manifest-subject-slug-present",
+          "passed": true
+        },
+        {
+          "details": "index and schema present",
+          "id": "goal-visualization-contract-files-present-when-declared",
+          "passed": true
+        },
+        {
+          "details": "518 active link(s)",
+          "id": "canonical-goal-visualization-links-valid",
+          "passed": true
+        },
+        {
+          "details": "1",
+          "id": "goal-visualization-index-schema-version",
+          "passed": true
+        },
+        {
+          "details": "518 valid asset record(s)",
+          "id": "goal-visualization-index-records-valid",
+          "passed": true
+        },
+        {
+          "details": "960231103 total visualization bytes",
+          "id": "goal-visualization-extraction-size-limits",
+          "passed": true
+        },
+        {
+          "details": "unique by goal/link index and package path",
+          "id": "goal-visualization-index-records-unique",
+          "passed": true
+        },
+        {
+          "details": "518/518 index record(s) match",
+          "id": "goal-visualization-index-matches-canonical-links",
+          "passed": true
+        },
+        {
+          "details": "518 packaged asset(s)",
+          "id": "goal-visualization-assets-complete-without-orphans",
+          "passed": true
+        },
+        {
+          "details": "518 image(s) passed path, MIME, magic-byte, byte-length, SHA-256, and manifest checks",
+          "id": "goal-visualization-binaries-and-manifest-valid",
+          "passed": true
+        },
+        {
+          "details": "518 indexed; manifest expects 518; index skillpilot-de-gymnasium-physik-v0.1.0-local.after/data/resources/goal-visualizations.json",
+          "id": "goal-visualization-counts-match-manifest",
+          "passed": true
+        },
+        {
+          "details": "local ok, 0 declared external reference(s)",
+          "id": "canonical-contains-references-resolve",
+          "passed": true
+        },
+        {
+          "details": "local ok, 161 declared external reference(s)",
+          "id": "canonical-requires-references-resolve",
+          "passed": true
+        },
+        {
+          "details": "contains cycle check",
+          "id": "canonical-contains-is-acyclic",
+          "passed": true
+        },
+        {
+          "details": "requires cycle check",
+          "id": "canonical-requires-is-acyclic",
+          "passed": true
+        },
+        {
+          "details": "ok",
+          "id": "preparation-canonical-graphs-valid",
+          "passed": true
+        },
+        {
+          "details": "source-bound external composition references",
+          "id": "external-composition-references-file-valid",
+          "passed": true
+        },
+        {
+          "details": "90 view file(s)",
+          "id": "composition-views-present",
+          "passed": true
+        },
+        {
+          "details": "ok",
+          "id": "composition-view-goal-references-resolve",
+          "passed": true
+        },
+        {
+          "details": "all 16 state lanes",
+          "id": "all-de-state-mapping-lanes-present",
+          "passed": true
+        },
+        {
+          "details": "18173 review mapping source reference(s)",
+          "id": "review-mapping-source-references-resolve",
+          "passed": true
+        },
+        {
+          "details": "6 runtime reference(s)",
+          "id": "canonical-card-references-are-packaged",
+          "passed": true
+        },
+        {
+          "details": "6 deck(s)",
+          "id": "card-index-package-paths-resolve",
+          "passed": true
+        },
+        {
+          "details": "1 report(s), 1 config(s), manifest expects 1",
+          "id": "memory-card-review-audit-count-matches-manifest",
+          "passed": true
+        },
+        {
+          "details": "1 audit config(s)",
+          "id": "memory-card-review-audit-references-resolve",
+          "passed": true
+        },
+        {
+          "details": "outer ZIP SHA-256 cfda9f03bba37a36e5aa9cedda9479a76875cd8efc489a17a5da8eedf25e8b3d",
+          "id": "zip-input-stable",
+          "passed": true
+        }
+      ],
+      "counts": {
+        "canonicalGoals": 850,
+        "cardIndexDecks": 6,
+        "cardRuntimeReferences": 6,
+        "compositionViews": 90,
+        "externalGoalReferences": 161,
+        "files": 717,
+        "goalVisualizationAssets": 518,
+        "goalVisualizationBytes": 960231103,
+        "goalVisualizationIndexAssets": 518,
+        "goalVisualizationLinks": 518,
+        "manifestFiles": 715,
+        "mappingStates": 16,
+        "maxArchivePathLength": 152,
+        "memoryCardReviewAuditConfigs": 1,
+        "memoryCardReviewAuditReports": 1,
+        "reviewMappingFiles": 25,
+        "reviewMappingSourceReferences": 18173,
+        "sourceGoalReferenceSources": 25,
+        "sourceGoalReferences": 6289,
+        "sourceRecords": 25,
+        "sourceUrls": 44,
+        "uniqueFiles": 717,
+        "unresolvedReviewMappingSourceReferences": 0
+      },
+      "errors": [],
+      "passed": true,
+      "targetReadiness": {
+        "inputIntegrity": "pass",
+        "inputZipSha256": "cfda9f03bba37a36e5aa9cedda9479a76875cd8efc489a17a5da8eedf25e8b3d",
+        "manifestDialect": "legacy-subject-export",
+        "primaryReasonCode": "TARGET_PROFILE_NOT_DECLARED",
+        "reportPath": "tmp/pipeline/laender-stufen/gesamt/subject-export-final-metadata-v1/readiness/skillpilot-de-gymnasium-physik-v0.1.0-local.after-readiness-report.json",
+        "reportSha256": "8b1b3c750ef64ed7eb4e42396e815dceafaef393d91c43aa7642d82a777fdc6d",
+        "standaloneProfileReady": false,
+        "status": "not-ready-legacy"
+      },
+      "zipPath": "tmp/pipeline/laender-stufen/gesamt/subject-export-final-metadata-v1/skillpilot-de-gymnasium-physik-v0.1.0-local.after.zip",
+      "zipSha256": "cfda9f03bba37a36e5aa9cedda9479a76875cd8efc489a17a5da8eedf25e8b3d"
+    }
+  ],
+  "targetReadiness": {
+    "inputIntegrity": "pass",
+    "manifestDialect": "legacy-subject-export",
+    "packageCount": 1,
+    "reportCount": 1,
+    "reportPaths": [
+      "tmp/pipeline/laender-stufen/gesamt/subject-export-final-metadata-v1/readiness/skillpilot-de-gymnasium-physik-v0.1.0-local.after-readiness-report.json"
+    ],
+    "standaloneProfileReady": false,
+    "status": "not-ready-legacy"
+  },
+  "validationScope": "legacy-subject-export"
+}

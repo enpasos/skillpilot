@@ -21,6 +21,61 @@ er erhält die Dokumentationschecks. Die große CI schließt `docs/dev/**` und
 `AGENTS.md` bei reinen Änderungen dieser Pfade derzeit aus. Der dokumentierte
 CI-Nachweis gilt weiterhin für den benannten Implementierungscommit.
 
+<!-- composition-partial-order-20261117:start -->
+## 17. November 2026, 06:03 MEZ (UTC+01:00) — Fachliche Teilordnungen in allen Länderansichten
+
+**Aktueller Lieferstand:** Native Karten- und Browserprüfung bestanden; Mathematik und Physik global M7, geschützte Qualitätsuntergrenzen bestanden. Paketabschluss und GitHub-CI stehen noch aus. PR wird nach den abschließenden lokalen Prüfungen erstellt.
+Dieser Eintrag aktualisiert den Lieferstand der darunter erhaltenen früheren
+Berichte; deren Zahlen und geprüfte Commitbindungen bleiben historische Belege.
+
+- **Fortschritt:** weiterhin **K 0/13 und F 0/7 vollständig abgeschlossen**,
+  **0 neue reale StagePlans aktiviert**. Geliefert werden 100 Mathematik- und
+  90 Physik-Composition-Views für alle 16 Länder und die kanonische Sicht,
+  einschließlich der anwendbaren G8-/G9- und Einzelstufenvarianten. Die Länder-
+  und Quellenprüfung verbessert K12/K13 sowie F1–F6, schließt deren gesamten
+  Auftrag aber nicht allein ab.
+- **Modellentscheidung:** explizite fachliche `after`-Teilordnungen ersetzen
+  unbegründete Gesamtabfolgen. Atomare Voraussetzungen bleiben erhalten;
+  erforderliche Grundlagen erhalten einen belegten Erwerbsplatz. Hessen E.1
+  → E.2 → E.3 bleibt geordnet, E.4–E.7 bilden keine gegenseitige Kette.
+  Spezielle Relativitätstheorie erhält keine künstlichen Q4-Vorgänger.
+  Quellenmitgliedschaft, amtliche Zeitgranularität und Lernplatz bleiben getrennt.
+- **Gemessene Kartenwirkung:** 216 native Kontexte, **708 Stufen- und 36.051
+  verschachtelte Bretter**, **0 Rückpfeile, 0 Kreise, 0 fehlende erklärte
+  `after`-Beziehungen**. Der kontrollierte Vergleich derselben aktuellen
+  Messlogik mit eingefrorenen alten Ansichten erfasst 1.148 problematische
+  Bretter mit insgesamt 1.432 Rückpfeil-, 884 Kreis- und 1.666 fehlenden
+  Ordnungsbefunden; Mehrfachvorkommen sind keine eindeutigen Kanten. Dies ist
+  kein erneuter Lauf einer alten Runtime. Exakte native S/L-Vergleiche:
+  133 unverändert, 63 quellenbegründete neue Sek-I-Auswahlen, 20 ausschließlich
+  durch geprüfte Aufgaben ergänzte Kontexte, 0 unerwartete Umfangsänderungen.
+- **Aufgaben und Review:** neun neue eigene Physikaufgaben schließen echte
+  Prüfungsendpunktlücken in vorhandenen Kompetenzen. Unabhängige inhaltliche
+  Agentenreviews prüfen beide Sprachfassungen, Kompetenzabdeckung und Rubriken.
+  Drei Aufgaben erhalten zusätzlich die fachlich geprüfte fehlende
+  Inhaltszuordnung zur Bewegung. Aufgabeninhalte und atomare Voraussetzungen
+  werden dadurch nicht verändert. Das sind keine menschlichen Lernversuche
+  und keine nachgewiesene Lernwirksamkeit.
+- **Automatisierte Nachweise:** tatsächlicher HTTP-Vergleich aller 432
+  Antwortinhalte, 160 Länder-Browserbretter und 60 zusätzliche Hessenbretter
+  bestanden; Typechecks, Lint, Schemas, Graph- und Quellenprüfungen sind
+  separat protokolliert. Die vollständigen Qualitäts- und Paketprüfungen
+  werden vor dem Integrationsabschluss abschließend gebunden.
+- **Kontrollstellen für den Owner:** Hessen G8 und G9 → Physik → E-Phase
+  (Wurf bei E.1, verzweigende E.4–E.7); Hessen → Q4 (unabhängige SRT);
+  Mathematik/Physik in einem anderen Land → Sek I und Sek II mit den
+  quellenbelegten Jahres-/Phasenbändern und vorhandenen Abiturangeboten.
+- **Belege:** [Modell und Laufzeit](composition-view-partial-orders-2026-11-16.md),
+  [Mathematikquellen](mathematics-stage-view-source-units-2026-11-17.md),
+  [Physikquellen](physics-stage-view-source-units-2026-11-17.md),
+  [unabhängige Reviews und aktuelle Kartenmessung](https://github.com/enpasos/skillpilot/blob/main/contracts/stage-plan-review-evidence/2026-11-16/composition-partial-order-v1/README.md).
+  Die Paket-Redistributionsfreigabe bleibt dort, wo menschliche Freigaben
+  ausstehen, ausdrücklich offen. Keine Produktionsbereitstellung.
+- **Nächster Schritt:** abschließende Qualitätsbindung, ein gemeinsamer PR,
+  erfolgreiche vollständige PR-CI, Integration und frische erfolgreiche
+  Main-CI. Erst dann erhält dieser Eintrag Commit- und Runabschluss.
+<!-- composition-partial-order-20261117:end -->
+
 ## Gesamtstand
 
 **Stand: 16. November 2026, 08:16 MEZ (UTC+01:00).**

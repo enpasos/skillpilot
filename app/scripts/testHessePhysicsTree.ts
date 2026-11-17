@@ -5,6 +5,7 @@ import { normalizeLandscape, type LandscapeEntry } from '../src/hooks/useLandsca
 import type { SkillLandscape } from '../src/landscapeTypes'
 import {
   collectCompositionProjectionRoleGoalIds,
+  projectCompositionChildOrder,
   type CompositionStructureNode,
   type CompositionView,
   type CompositionViewNode,
@@ -63,13 +64,17 @@ const referenceRoles = (view: CompositionView) => flatten(view.rootNodes)
   .map((node) => `${node.kind}:${node.goalId}:${node.projectionRole ?? 'target'}`)
   .sort()
 
-const removeNode = (nodes: CompositionViewNode[], selected: CompositionViewNode): boolean => {
+const removeNode = (nodes: CompositionViewNode[], selected: CompositionViewNode, parent?: CompositionStructureNode): boolean => {
   const index = nodes.indexOf(selected)
   if (index >= 0) {
     nodes.splice(index, 1)
+    if (parent?.childOrder !== undefined) {
+      parent.childOrder = projectCompositionChildOrder(parent.childOrder,
+        parent.children.filter(node => node.kind === 'structure').map(node => node.id))
+    }
     return true
   }
-  return nodes.some((node) => node.kind === 'structure' && removeNode(node.children, selected))
+  return nodes.some((node) => node.kind === 'structure' && removeNode(node.children, selected, node))
 }
 
 const project = (view: CompositionView): LandscapeEntry => {
@@ -370,6 +375,7 @@ for (const profile of ['GK', 'LK'] as const) {
   // regression must still run against an actual canonical exam reference.
   const oldExam: CompositionViewNode = { kind: 'canonicalSubtree', goalId: examIds[profile] }
   structure(regressed, 'physics-he-abitur').children = [oldExam]
+  structure(regressed, 'physics-he-abitur').childOrder = { after: [] }
   oldExam.displayLabel = 'Abiturprüfung Physik'
   const rolesBeforeRepair = referenceRoles(regressed)
   const beforeProjection = project(regressed)

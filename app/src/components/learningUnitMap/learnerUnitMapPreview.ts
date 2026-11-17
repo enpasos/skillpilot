@@ -2,6 +2,7 @@ import type { StagePlan, StagePlanStructureBinding, StagePlanUnit } from '../../
 import type { UiGoal } from '../../goalTypes'
 import type { GoalPlacement, ProgramUnit } from '../../landscapeTypes'
 import { isCompositionStructureNode } from '../../utils/treeProjectionRuntime'
+import { projectCompositionChildOrder, readCompositionChildOrder } from '../../utils/authoring/compositionViewAuthoring'
 import { learnerMapProjectionSignature } from './learnerMapProjection'
 import { buildLearnerUnitMapProjection, type LearnerMapMemberUnit, type LearnerMapUnitIdentity,
   type LearnerMapUnitOrder, type LearnerUnitMapFixture } from './learnerUnitMapProjection'
@@ -213,7 +214,7 @@ export function deriveLearnerUnitMapPreview(input: LearnerUnitMapPreviewInput, r
     && (!planBoundViewIds.has(viewId(goal)) || declaredUnits.has(goal.id))
   const children = (id: string) => (visibleChildrenByParent.get(id) ?? []).filter(child => visibleGoalIds.has(child))
   const depthOf = new Map<string, number>()
-  const siblingSections: string[][] = []
+  const siblingSections: { parent: string; sections: string[] }[] = []
   const seen = new Set<string>()
   const walk = (id: string, sectionDepth: number) => {
     if (seen.has(id)) return
@@ -228,7 +229,7 @@ export function deriveLearnerUnitMapPreview(input: LearnerUnitMapPreviewInput, r
       }
       walk(child, section ? sectionDepth + 1 : sectionDepth)
     }
-    if (sections.length > 1) siblingSections.push(sections)
+    if (sections.length > 1) siblingSections.push({ parent: id, sections })
   }
   for (const root of rootGoals) {
     // A selected overview can contain the subject roots. Section identity is
@@ -288,8 +289,29 @@ export function deriveLearnerUnitMapPreview(input: LearnerUnitMapPreviewInput, r
     const ordered = [...calendar.values()].sort((left, right) => left.position - right.position)
     for (let index = 1; index < ordered.length; index++) after.push({ unit: ordered[index].key, after: ordered[index - 1].key })
   }
-  for (const sections of siblingSections) {
+  for (const { parent, sections } of siblingSections) {
+    const parentGoal = goalIndexAll.get(parent)!
     const unboundSections = sections.filter(id => units.has(id) && !planBoundViewIds.has(viewId(goalIndexAll.get(id)!)))
+    // A source declaration is the complete partial planning order for this
+    // parent. Missing pairs impose no order; actual requires remain visible
+    // through the independent map projection. Bound plans always take priority.
+    if (!planBoundViewIds.has(viewId(parentGoal)) && parentGoal.extendedData?.compositionChildOrder !== undefined) {
+      // Keep the source identity inventory: Personal Curriculum pruning may
+      // already have removed an empty intermediate child from contains.
+      const sourceChildIds = parentGoal.extendedData.compositionChildOrderChildIds
+      if (!Array.isArray(sourceChildIds) || !sourceChildIds.every(id => typeof id === 'string')
+        || new Set(sourceChildIds).size !== sourceChildIds.length) throw new Error('Missing source child identities for composition childOrder')
+      const declared = readCompositionChildOrder(parentGoal.extendedData.compositionChildOrder,
+        sourceChildIds)!
+      const byNodeId = new Map(unboundSections.map(id => [viewNodeId(goalIndexAll.get(id)!)!, id]))
+      for (const pair of projectCompositionChildOrder(declared, [...byNodeId.keys()]).after) {
+        const current = byNodeId.get(pair.unit), previous = byNodeId.get(pair.after)
+        if (!current || !previous) continue
+        const unit = units.get(current)!.key, before = units.get(previous)!.key
+        if (unit !== before) after.push({ unit, after: before })
+      }
+      continue
+    }
     for (let index = 1; index < unboundSections.length; index++) {
       const previous = unboundSections[index - 1], current = unboundSections[index]
       const left = hesseCompatibility.get(previous), right = hesseCompatibility.get(current)
@@ -337,7 +359,8 @@ export function createLearnerUnitMapCache() {
     const signature = JSON.stringify([learnerMapProjectionSignature(input), input.language, context, [...input.visibleGoalIds].map(id => {
       const goal = input.goalIndexAll.get(id)
       return [goal?.landscapeId, goal?.extendedData?.syntheticStructureKind, goal?.extendedData?.compositionViewId,
-        goal?.extendedData?.compositionNodeId, goal?.personalCurriculumProjection?.presentationOnly]
+        goal?.extendedData?.compositionNodeId, goal?.extendedData?.compositionChildOrder,
+        goal?.extendedData?.compositionChildOrderChildIds, goal?.personalCurriculumProjection?.presentationOnly]
     })])
     if (previous?.signature !== signature || previous.canonical !== input.canonicalGoalIndexAll || previous.sources !== input.landscapeSources) {
       previous = { signature, canonical: input.canonicalGoalIndexAll, sources: input.landscapeSources, byStep: new Map() }
