@@ -1,5 +1,46 @@
 # Kanonisches Gymnasium Mathematik: Bundesländer-Status
 
+## Aktuelle Stufenzählung vom 19. November 2026
+
+Die folgende eigene Messung zählt eindeutige kanonische **Zielatome des jeweiligen Fachs** in den verfassten Stufenansichten, einschließlich Prüfungs-, Orientierungs- und Lernkartenzielen. Die globale Auflösung von Ziel-/Vorbereitungsrollen erfolgt vor der Auswahl; Bundesland, Kurs und gegebenenfalls Dauer werden an den Atomen gefiltert. Reine Vorbereitung, fremde Fachatome und Strukturknoten zählen nicht mit. Dies sind weder die vollständige Voraussetzungshülle noch Beherrschungsstände oder amtliche Stoffmengen. Sich überschneidende Profil-/Variantenäste bilden eine Mengenvereinigung und werden nicht addiert. Insbesondere bedeutet eine Profilvereinigung keine getroffene Wahl eines bayerischen NTG-, Bio- oder Astrophysikkurses.
+
+Die Länderzeilen verwenden die vorhandenen dauerneutralen Ansichten; die gesonderten Hessenzeilen verwenden ausdrücklich G8 bzw. G9. Sie werden nicht als dieselbe Konfiguration ausgegeben. Die [maschinenlesbare Momentaufnahme](state-stage-atom-counts-2026-11-19.json) bindet kanonische Quelle, gesamtes Ansichteninventar und kanonischen Katalog durch SHA-256. Die Gegenprüfung stimmt für zwölf Hessen- und sechs Bayern-Stufen-/Kursfälle mit der tatsächlichen Composition-Projektion überein. Die Zahlen werden nicht in den alten Rolloutscore oder dessen Count-Gates eingesetzt.
+
+| Land / Dauermodell | Sek I | Sek II GK | Sek II LK |
+| --- | ---: | ---: | ---: |
+| `DE-HE` Hessen | 315 | 475 | 614 |
+| `DE-BY` Bayern | 281 | 193 | 394 |
+| `DE-NW` Nordrhein-Westfalen | 261 | 442 | 552 |
+| `DE-NI` Niedersachsen | 262 | 442 | 552 |
+| `DE-BW` Baden-Württemberg | 291 | 445 | 574 |
+| `DE-BB` Brandenburg | 273 | 455 | 575 |
+| `DE-BE` Berlin | 258 | 452 | 574 |
+| `DE-HB` Bremen | 212 | 452 | 566 |
+| `DE-HH` Hamburg | 276 | 447 | 561 |
+| `DE-MV` Mecklenburg-Vorpommern | 217 | 434 | 544 |
+| `DE-RP` Rheinland-Pfalz | 277 | 431 | 545 |
+| `DE-SH` Schleswig-Holstein | 282 | 420 | 518 |
+| `DE-SL` Saarland | 286 | 434 | 547 |
+| `DE-SN` Sachsen | 277 | 432 | 542 |
+| `DE-ST` Sachsen-Anhalt | 269 | 431 | 542 |
+| `DE-TH` Thüringen | 212 | 433 | 544 |
+| `DE-HE` Hessen G8 | 345 | 474 | 613 |
+| `DE-HE` Hessen G9 | 375 | 474 | 613 |
+
+Reproduzieren vom Repository-Hauptverzeichnis:
+
+```sh
+node app/node_modules/tsx/dist/cli.mjs app/scripts/reportCanonicalMathStateAtomCounts.ts
+```
+
+## Erhaltener Rolloutstand aus April/Mai 2026
+
+> **Historischer Rolloutbericht – redaktionell eingeordnet am 19. November 2026.** Der folgende Snapshot und seine Zahlen bleiben unverändert auf dem angegebenen Stand von April/Mai 2026. Prozentwerte, Count-Gates und nächste Schritte sind damalige Rolloutsteuerung, keine heutigen Qualitäts-, Freigabe- oder Abschlusswerte. Die geänderten November-Ansichten und Einheiten sind darin nicht nachgemessen.
+>
+> Den aktuellen maschinellen Fach-/Länderstand führt der [Curriculum-Qualitätsbericht](../qa-ci/status/curriculum-quality-status.json); den bestätigten Auftrag und die tatsächliche Integration führen [Stufenplan-Übergabe](stage-plan-units-handover-2026-11-15.md) und [Management Summary](stage-plan-management-summary.md). Die [Mathematik-](mathematics-stage-view-normalization-2026-11-16.md) und [Physiklieferung](physics-stage-view-normalization-2026-11-16.md) dokumentieren die neuen Ansichten.
+>
+> Die alten Renderbefehle ersetzen diesen historischen Bericht nicht mit aktuellen Eingaben. Die reparierten Mathematik-/Physikzähler unterstützen Sourceformat 1.2 und bewahren den 1.0-Rückfall. Ihre neue Stufenzählung bleibt vom historischen Rolloutscore getrennt. Ein gemischter Neulauf wäre kein neuer Snapshot dieses alten Berichts.
+
 Snapshot: `2026-05-07T07:44:05Z`
 
 Diese Datei wird generiert aus:

@@ -4,9 +4,7 @@
 
 [![CI](https://github.com/enpasos/skillpilot/actions/workflows/ci.yml/badge.svg)](https://github.com/enpasos/skillpilot/actions/workflows/ci.yml)
 
-SkillPilot navigates you through complex skill landscapes, modeling curricula as a skill graph to provide personalized learning paths and track your mastery.
-
-This project is an invitation to the community to jointly build and bring to life a secure platform for skill landscapes—a shared home where learners, educators, curriculum institutions, and supporting AIs alike can thrive.
+SkillPilot shows how learning goals fit together. When a physics topic calls for a mathematical skill, the map shows where to learn it. You can choose a topic, work on it with a coach and see which goals you have already demonstrated.
 
 ![SkillPilot cartoon](comic1/SkillPilot_Comic.en.jpg)
 
@@ -14,6 +12,7 @@ This project is an invitation to the community to jointly build and bring to lif
 
 ### Learners & teachers
 - [Quickstart](quickstart/story.en.md)
+- [How the coach can help when a concept is new](concept/didactic/feynman-rules.md)
 - [Live app](https://skillpilot.com)
 - [Coach setup: Claude, ChatGPT Desktop (Beta) and Gemini (Beta)](https://skillpilot.com/plugins)
 
@@ -29,8 +28,11 @@ Gemini uses an imported coaching Skill and a connected Custom App in Gemini Web.
 - [Canonical Gymnasium Chemistry rollout status](dev/canonical-gymnasium-chemistry-bundeslaender-status.md)
 
 ### High-level overview
+
 - [Whitepaper](whitepaper/whitepaper.en.md)
 - [Levels of personalization](concept/levels-of-personalization.md)
+- [What passing a unit would demonstrate · proposal for expert review](concept/skill-graph/assessment-gated-completion.md#sec-proposal-unit-assessment)
+- [Review the assessment tasks for Hessian physics E.1 (working paper in German)](concept/skill-graph/unit-assessment-discussion-2026-11-19.de.md)
 
 ### AI learning coaches (Claude, ChatGPT & Gemini / MCP)
 - [Coach product topology](concept/runtime-workflows/skillpilot-owned-coach-architecture.en.md)
@@ -78,9 +80,7 @@ The docs here are organized by intent: concept-level foundations (skill graph an
 
 [![CI](https://github.com/enpasos/skillpilot/actions/workflows/ci.yml/badge.svg)](https://github.com/enpasos/skillpilot/actions/workflows/ci.yml)
 
-SkillPilot navigiert dich durch komplexe Skill-Landschaften, modelliert Curricula als Skill-Graph, berechnet personalisierte Lernpfade und macht deinen Lernfortschritt nachvollziehbar.
-
-Dieses Projekt ist eine Einladung an die Community, gemeinsam eine sichere Plattform für Skill-Landschaften aufzubauen – ein gemeinsames Zuhause für Lernende, Lehrkräfte, Curriculum-Institutionen und unterstützende KI-Systeme.
+SkillPilot zeigt dir, wie Lernziele zusammenhängen. Brauchst du für ein Physikthema eine mathematische Grundlage, siehst du auf der Lernkarte, wo du sie erarbeiten kannst. Du kannst ein Thema auswählen, mit einem Coach daran arbeiten und nachsehen, welche Lernziele du schon nachgewiesen hast.
 
 ![SkillPilot-Comic](comic1/SkillPilot_Comic.de.jpg)
 
@@ -88,6 +88,7 @@ Dieses Projekt ist eine Einladung an die Community, gemeinsam eine sichere Platt
 
 ### Lernende & Lehrkräfte
 - [Schnellstart](quickstart/story.de.md)
+- [Wie der Coach beim Verstehen eines neuen Begriffs helfen kann](concept/didactic/feynman-rules.de.md)
 - [Live-App](https://skillpilot.com)
 - [Coach-Einrichtung: Claude, ChatGPT Desktop (Beta) und Gemini (Beta)](https://skillpilot.com/plugins)
 
@@ -103,8 +104,11 @@ Gemini nutzt einen importierten Coaching-Skill und eine verbundene Custom App in
 - [Kanonisches Gymnasium Chemie: Bundesländer-Status](dev/canonical-gymnasium-chemistry-bundeslaender-status.de.md)
 
 ### Gesamtüberblick
+
 - [Whitepaper](whitepaper/whitepaper.de.md)
 - [Ebenen der Personalisierung](concept/levels-of-personalization.de.md)
+- [Was der Abschluss einer Lerneinheit belegen soll · Vorschlag für die Fachrunde](concept/skill-graph/assessment-gated-completion.de.md#sec-proposal-unit-assessment)
+- [Prüfungsaufgaben für Hessen Physik E.1 · Arbeitsdokument für die Fachrunde](concept/skill-graph/unit-assessment-discussion-2026-11-19.de.md)
 
 ### KI-Lerncoaches (Claude, ChatGPT & Gemini / MCP)
 - [SkillPilot-Lerncoach: Produkt- und Providerarchitektur](concept/runtime-workflows/skillpilot-owned-coach-architecture.md)

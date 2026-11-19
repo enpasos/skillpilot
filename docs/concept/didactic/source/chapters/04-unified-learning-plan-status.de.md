@@ -25,10 +25,10 @@ Beim anschließenden Einstieg in die Lernaufgabe folgt separat:
 
 Die Umsetzung bevorzugt eine einfache, verlässliche Lösung für die üblichen Anwendungssituationen gegenüber einer komplizierten Behandlung sämtlicher Sonderfälle. **Die bewusste Begrenzung betrifft den Funktionsumfang, nicht die Richtigkeit der unterstützten Fälle:** Nicht zuverlässig auswertbare Situationen werden verständlich benannt, statt durch Schätzwerte oder Sonderfallheuristiken verdeckt zu werden. Vorhandene Planstrukturen, Lernzustände und Aktualisierungsmechanismen werden weiterverwendet; das Vorhaben schafft kein neues allgemeines Planungssystem, sondern ersetzt verteilte Berechnungen durch einen gemeinsamen Backend-Baustein.
 
-:::warning{title="Verbindliche Produktkorrektur vom 4. November 2026"}
-Das Gesamt-IST zählt standardmäßig explizite und implizite Beherrschung. Implizit bedeutet den Nachweis selbstständiger Anwendung durch fachlich geeignete Abschlussprüfungen; es bedeutet nicht bloß entfallene Vorbereitung. Ein gültiger Abschluss gilt auch für spätere Voraussetzungen und wird durch neue Verbraucher oder einen Planwechsel nicht aufgehoben. Die Anerkennung entsteht in der verbindlichen Lerneinheit und wirkt global. Tages- und Wochenkontingente zählen weiterhin nur tatsächliche explizite Abschlussereignisse.
+:::warning{title="Geltender Planvertrag vom 4. und 11. November 2026"}
+Der bestätigte Vertrag sieht vor, im Gesamt-IST des atomaren Plans ausdrücklich erreichte Ziele und gültige implizite Anerkennungen zu zählen. Die Anerkennung soll aus fachlich geprüften lokalen Verträgen entstehen und bei einem Wechsel des Plans für weitere Voraussetzungen wirksam bleiben. Das Tages- und Wochenpensum zählt tatsächliche, datierte Abschlüsse.
 
-Die Option „Nur explizit erreichte Lernziele zählen“ betrifft allein das Gesamt-IST des Plans. Der unten beschriebene korrigierte Vertrag ist noch nicht als vollständig implementiert oder deployed bestätigt; die alte Bedarfsstopp-Implementierung und ihre Prüfergebnisse sind kein Nachweis dafür. Siehe [Abschlusskonzept](repo:docs/concept/skill-graph/assessment-gated-completion.md).
+„Nur explizit erreichte Lernziele zählen“ betrifft ausschließlich das Gesamt-IST. Die Laufzeit wertet vorhandene Abschlussprofile aus. Eine vollständige Umsetzung der dauerhaft revisionsgebundenen Anerkennung ist weiterhin offen. Die folgenden Formeln beschreiben diesen bestätigten Planvertrag. Der Vorschlag vom 19. November wird im Abschnitt über die Plananrechnung eigens erläutert. [Beschluss vom 4. November](repo:docs/concept/skill-graph/completion-semantics-clarification-2026-11-04.md)
 :::
 
 ### Fachliche Bedeutung des Status {#sec:plan-status-meaning}
@@ -51,7 +51,7 @@ Ein erfülltes Tagesziel kann mit einem verbleibenden Rückstand zusammenfallen;
 
 #### Mengenbilanz je Fach
 
-Jedes fortschrittswirksame Planziel zählt als eine Einheit; weder tatsächliche Lernzeit noch Schwierigkeitsgewichte gehen ein. Bereits beherrschte, später eingeplante Ziele werden als Vorarbeit berücksichtigt und können einen mengenmäßigen Rückstand innerhalb desselben Fachs ausgleichen.
+In der heutigen Mengenbilanz zählt jede fortschrittswirksame atomare Ziel-ID einmal. Lernzeit und Schwierigkeitsgewichte gehen nicht ein. Bereits erreichte, für später eingeplante Ziele zählen als Vorarbeit und können einen mengenmäßigen Rückstand im selben Fach ausgleichen.
 
 Beispiel: Drei früher eingeplante Ziele sind noch offen, fünf später eingeplante Ziele bereits beherrscht. Mengenmäßig besteht ein Vorsprung von zwei Zielen; die drei früher eingeplanten Ziele bleiben dennoch inhaltlich offen und werden bei der weiteren Zielauswahl berücksichtigt.
 
@@ -83,9 +83,9 @@ Die bei Planerstellung erfasste Ausgangsbasis hält fest, welche vorgesehenen Zi
 - **Deduplizierung:** Mehrere aktive Pläne desselben Fachs werden zusammengeführt; jede Ziel-ID zählt im Fach höchstens einmal mit ihrem frühesten gültigen, fortschrittswirksamen Solltermin. Wiederholungs-/Prüfungsblöcke erzeugen keinen zweiten Sollbeitrag, und Cluster zählen nicht zusätzlich zu ihren atomaren Zielen.
 - **Explizite Planänderungen:** Änderungen von Umfang, Terminen oder Ausgangsbasis erfolgen nur durch ausdrückliche Planänderung. Ein überschrittenes Planende entfernt offene Ziele nicht automatisch aus einem aktiven Plan. Unklare Altbestände werden nicht heuristisch aus dem heutigen Lernstand rekonstruiert, sondern als nicht verlässlich auswertbar gekennzeichnet.
 
-### Implizite Erledigung und optionale Explizit-Zählung {#sec:implicit-completion anchors="34-implizite-erledigung-und-optionale-explizit-zahlung"}
+### Anrechnung im atomaren Lernplan {#sec:implicit-completion anchors="34-implizite-erledigung-und-optionale-explizit-zahlung"}
 
-Seien $M$ die explizit gemeisterten Ziele und $W$ die nach dem [Abschlusskonzept](repo:docs/concept/skill-graph/assessment-gated-completion.md) global anerkannten, noch nicht explizit gemeisterten Ziele. Dann gilt im Standardmodus:
+Im geltenden Vertrag vom 4. und 11. November seien $M$ die explizit gemeisterten Ziele und $W$ die aus gültigen lokalen Verträgen anerkannten Ziele ohne ausdrücklichen Einzelabschluss. Im Standardmodus gilt
 
 $$
 M_{\mathrm{eff}} = M \cup W, \qquad I = |G \cap M_{\mathrm{eff}}|.
@@ -101,6 +101,12 @@ Die Prüfungen einer Lerneinheit müssen die selbstständige Anwendung der anerk
 - **Modellierungsgrenzen:** Ein gewöhnliches Ziel ohne gültige Prüfungsanbindung ist ein Modellierungsfehler, kein automatischer Fortschritt. Prüfungs- und Lernkartenziele bleiben selbst explizite Pflichten. Fehlende oder nicht auflösbare Anerkennungsdaten werden als Einschränkung ausgewiesen; es gibt keinen Rückfall auf die frühere Bedarfsstopp-Rechnung.
 - **Einfachzählung und Periodenkontingent:** Jede ID zählt in $G$ höchstens einmal; ein späterer expliziter Abschluss eines bereits anerkannten Ziels erhöht $I$ nicht erneut, darf aber am Abschlusstag regulär zum Periodenkontingent $H$ beitragen. Die Ableitung von $W$, ein Planwechsel, ein Import oder ein erneutes Anzeigen erzeugen **kein** künstliches Abschlussereignis in $H$.
 - **Lerneinstellung und Plandetails:** Unter *Konfiguration → Lerneinstellungen* ist „Nur explizit erreichte Lernziele zählen“ pro SkillPilot-ID dauerhaft gespeichert (Standard: aus). Hilfetext: *„Für deinen Gesamtplan zählen auch Kompetenzen, deren selbständige Anwendung in Prüfungen nachgewiesen wurde. Mit dieser Einstellung zählen nur direkt abgeschlossene Lernziele. Dein Tages- oder Wochenpensum zählt immer nur direkte Abschlüsse.“* Unter *Plandetails* kann optional `planCreditText` stehen (z. B. *„Im Plan angerechnet: 3 Ziele, davon 2 durch selbständige Anwendung in Prüfungen.“*). Diese Konzeptkorrektur ist keine Freigabe des alten Umsetzungsplans und kein Nachweis einer bereits korrigierten Laufzeitimplementierung.
+
+#### Vorgeschlagener Planauftrag für eine Einheit
+
+Der Entwurf vom 19. November unterscheidet, was eine Person im Plan vereinbart hat. Lautet der Auftrag „Weise die Einheit E.1 nach“, endet diese Arbeit mit den bestandenen Pflichtteilen der benannten Einheitenfassung. Übersprungene Übungen sind dann in diesem Auftrag kein Rückstand. Wurde zusätzlich „Freien Fall experimentell untersuchen“ als eigener Nachweis mit Versuch vereinbart, bleibt dieser Auftrag bis zur tatsächlichen Durchführung offen. Eine Darstellung als „vollständig bearbeitet“ setzt voraus, dass alle vorgesehenen Aktivitäten tatsächlich abgeschlossen wurden.
+
+Für die Empfehlung im Entwurf beschreibt $F_{\mathrm{plan}}$, welche eigenen Inhaltsatome die Fachprüfung der bestandenen Einheitenfassung in vollem Umfang für spätere Voraussetzungen freigibt. $M$ enthält die ausdrücklichen Einzelerfolge. Nur tatsächliche Abschlüsse zählen als datierte Aktivitäten. Ob frühere Planziele zu einer einzigen Einheitenroute oder zu mehreren separaten Aufträgen gehören sollten, steht in einer Liste alter Ziel-IDs nicht. Solche Pläne behalten ihre ursprüngliche Zählweise. Einheitenaufträge erfordern eine ausdrückliche neue Auswahl oder Planrevision. Über diesen Produktvorschlag ist noch zu entscheiden. [Was eine Einheitenprüfung nachweist](repo:docs/concept/skill-graph/assessment-gated-completion.md#sec-proposal-planning-release)
 
 ### Tages- und Wochenbasis {#sec:plan-status-period}
 

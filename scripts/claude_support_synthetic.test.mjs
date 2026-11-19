@@ -102,7 +102,7 @@ test("published historical fallback rejects changed index metadata and archive b
 
 test("historical verification cannot adopt an unknown version or an unpublished successor", async () => {
   const requested = [];
-  for (const version of ["1.1.99", "1.1.13"]) {
+  for (const version of ["1.1.99", "1.1.14"]) {
     await assert.rejects(verifyPublicClaudeHistoricalBuildPublication({
       version, baseUrl: "https://skillpilot.com", fetchImpl: fixtureFetch({ requested }),
     }));

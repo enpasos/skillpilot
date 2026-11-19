@@ -24,7 +24,7 @@ SkillPilot separates local Vite development-server authoring tools by semantic l
 | **Flashcard Editor** ([6](flashcard-editor.md#sec-dev-flashcard-editor)) | `/flashcard-editor` · `/__deck-editor/*` | `*_deck*.json` flashcard decks (`curricula/...` + `app/public/data/`). |
 | **Graph Editor** ([5](graph-editor.md#sec-dev-graph-editor)) | `/graph-editor` · `/__graph-editor/*` | Narrow `requires` refactoring and cluster-to-atomic prerequisite normalization on landscape JSONs. |
 | **Canonical Cluster Editor** | `/canonical-cluster-editor` · `/__canonical-cluster-editor/*` | Canonical `contains` cluster hierarchy, sibling order, and cluster metadata in `curricula/DE/Gymnasium/canonical/`. |
-| **Composition View Editor** | `/composition-view-editor` · `/__composition-view-editor/*` | Scope-specific `*.view.json` upper trees (`structure` nodes + cluster-only `canonicalSubtree` attachments). |
+| **Composition View Editor** | `/composition-view-editor` · `/__composition-view-editor/*` | Scope-specific `*.view.json` upper trees (`structure`, `canonicalSubtree`, and explicit atomic `goalEntry` references). |
 
 All `/__*` file-mutation endpoints exist **exclusively** inside local Vite dev-server middleware (`vite.config.ts`) and are never exposed in production builds.
 
@@ -33,6 +33,6 @@ All `/__*` file-mutation endpoints exist **exclusively** inside local Vite dev-s
 
 Both V1 structural editors use a three-pane layout (left tree navigator, center node/attachment inspector, right live compiled-preview & diagnostics pane):
 
-- **Blocking save validations (reject write):** Malformed JSON, duplicate IDs, `contains` cycles, dangling `goalId` references, authoring atomic goals inline inside `.view.json`, or overlapping `canonicalSubtree` expansions violating single-occurrence projection ([View Projection](../concept/skill-graph/view-projection-and-goal-placement.md)).
-- **Non-blocking warnings (allow save with diagnostic badge):** Unreferenced canonical clusters in a partial draft view, `unplacedInScope` candidates, or pending downstream QA reruns (`npm run validate:graph`, `validate:views`).
+- **Blocking save validations (reject write):** Malformed JSON, duplicate IDs, `contains` cycles, dangling `goalId` references, embedding atomic goal definitions inside `.view.json` instead of resolved `goalEntry.goalId` references, or overlapping `canonicalSubtree` expansions violating single-occurrence projection ([View Projection](../concept/skill-graph/view-projection-and-goal-placement.md)).
+- **Non-blocking warnings (allow save with diagnostic badge):** Unreferenced canonical clusters in a partial draft view, `unplacedInScope` candidates, or pending downstream QA reruns (`npm run validate:graph`, `validate:composition-views`, `validate:view-filters`).
 - **Four-phase implementation sequence:** (1) Read-only compiled tree & diagnostic inspector $\to$ (2) `Canonical Cluster Editor` save pipeline $\to$ (3) `Composition View Editor` `.view.json` authoring $\to$ (4) cross-view coverage diffing (deliberate non-goals: multi-user cloud editing, automatic AI graph rewriting, or editing learner state).

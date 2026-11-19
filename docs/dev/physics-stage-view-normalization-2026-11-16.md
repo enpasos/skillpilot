@@ -1,9 +1,12 @@
 # Physik: Länder-, Stufen- und Themenansichten
 
-Stand: 17. November 2026. Die Implementierung wird in [PR #160](https://github.com/enpasos/skillpilot/pull/160)
-geführt; die Lieferung bleibt bis zur Integration und einem frischen
-erfolgreichen `main`-CI-Lauf offen. Lokale Prüfungen und unabhängige
-Quellenprüfung sind keine Lernwirksamkeitsstudie und keine Integration.
+Stand: 19. November 2026. Die begrenzte Implementierung aus [PR #160](https://github.com/enpasos/skillpilot/pull/160)
+ist seit 17. November als [`05eabe5a43`](https://github.com/enpasos/skillpilot/commit/05eabe5a43d0b07e3845189b5d14d82326f76ce8) auf `main` integriert.
+Die frische [Main-CI 44075738245](https://github.com/enpasos/skillpilot/actions/runs/44075738245)
+bestand mit 14 von 14 Jobs. Dieser Nachweis gilt für den Implementierungscommit;
+die redaktionelle Aktualisierung führt ihn nicht erneut aus. Offene K/F-Arbeiten
+und reale Planaktivierungen bleiben im [Management Summary](stage-plan-management-summary.md)
+getrennt ausgewiesen. Quellenprüfung und Maschinen-QS sind keine Lernwirksamkeitsstudie.
 
 Die Ansichten unterscheiden die amtliche Quellenzuordnung eines Ziels von
 seinem didaktischen Erwerbsplatz. Eine Voraussetzung darf wegen eines konkreten

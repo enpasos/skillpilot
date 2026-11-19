@@ -11,6 +11,19 @@ Lerneinheiten anbieten. Eine Einheit sagt, was man danach selbstständig kann,
 und sichert das durch Prüfungen, die diese Anwendung wirklich verlangen. Das
 bestehende Cockpit und alle bisherigen Lernwege bleiben benutzbar.
 
+**Einordnung vom 19. November 2026.** Lieferstände, Zahlen und offene Schritte
+dieses Plans sind datierte Befunde vom 15. November; den fortgeschriebenen
+Integrationsstand führt das [Management Summary](stage-plan-management-summary.md).
+Die am 4. und 11. November bestätigte atomare Anerkennungsregel bleibt der
+Maßstab der bestehenden Verträge und Prüfungen. Ihre Rechnung mit R1–R5 steht
+in der [Graph-Definition, §13](../concept/skill-graph/assessment-gated-completion.de.md#sec-why-graph-not-enough).
+Die überarbeiteten §11 und §13 enthalten den [Vorschlag zur Einheitenanerkennung](../concept/skill-graph/unit-assessment-discussion-2026-11-19.de.md).
+Er ist noch keine Produktentscheidung und kein neuer Umsetzungsauftrag. Stufe 3
+und ihre Abnahmefälle beschreiben hier weiterhin die bestätigte November-Regel;
+vor ihrer Umsetzung ist dieser Plan mit der Entscheidung über den Vorschlag
+abzugleichen. Diese redaktionelle Einordnung behauptet keine neue Lieferung,
+CI oder Hostabnahme.
+
 ## 1. Entscheidungen
 
 Der Product Owner hat am 12. November 2026 entschieden:
@@ -22,8 +35,10 @@ Der Product Owner hat am 12. November 2026 entschieden:
 - Den Einheitenkatalog leiten wir blockweise selbst aus dem kanonischen Graphen
   und dem [Entwurfsbogen](../concept/skill-graph/learning-unit-design-and-examples.md)
   her. Ein externer Vorschlag ist höchstens benannte Herkunft, kein Vertrag.
-- Technische Sperren ganzer Einheiten bleiben unentschieden. Keine Stufe dieses
-  Plans braucht sie.
+- Einheitenfolgen sind Ordnungen ohne Zugangssperren: Das bestätigte
+  Strukturmodell verwendet `after`, während nur atomare `requires` den
+  Vorwissensbedarf bestimmen. Die frühere offene Sperrenfrage ist damit
+  überholt; dieser Plan führt keine Einheitssperren ein.
 
 - **Ablageort:** Die Einheiten sind Teil der Skill-Landschaft und liegen in der
   vorhandenen Platzierungsschicht (`programUnits`/`goalPlacements`). Eine eigene
@@ -75,11 +90,13 @@ Am 14. November 2026 ist der Product Owner den offenen Empfehlungen gefolgt:
 - **Wissenskontext:** Der nächste Schritt ist die Fachprüfung der 15 Befunde
   aus dem Pilot zur Hinlänglichkeit (Abschnitt 9).
 
-Unverändert gilt die Anerkennungsregel, die der Product Owner am 11. November
+Für die hier geplante Umsetzung gilt die Anerkennungsregel, die der Product Owner am 11. November
 bestätigt hat: Ein eigenes gewöhnliches Ziel einer Einheit ist anerkannt, sobald
 keine offene eigene Prüfung und kein offenes eigenes Lernkartenziel dieser
 Einheit es mehr benötigt, und nur in Einheiten, die R1–R5 erfüllen. Maßgeblich
-sind die Graph Definition §11 und §13 sowie `AGENTS.md` §2.4 und §4.
+sind die [bestätigte Produktentscheidung](../concept/skill-graph/completion-semantics-clarification-2026-11-04.md)
+und die [Rechnung mit R1–R5](../concept/skill-graph/assessment-gated-completion.de.md#sec-why-graph-not-enough).
+Aktuelle Vorschläge in §11 und §13 ändern diesen damaligen Vertragsstand nicht.
 
 ## 2. Was aus PR #83 gilt
 
@@ -123,9 +140,14 @@ Weitere Befunde:
   `programUnits` sind Jahrgangs- und Phasentöpfe.
 - Die Lernkarte im Cockpit ist geliefert
   ([#81](https://github.com/enpasos/skillpilot/pull/81)).
-- Eine Anerkennungsruntime gibt es nicht. `CompletionEvaluator` stoppt weiterhin
-  an gemeisterten Zwischenzielen; der einzige wirksame Altvertrag ist das
-  Completion-Profil `math-dot-product-projection`.
+- Der vollständige versionsgebundene Anerkennungsvertrag einer Einheit ist
+  noch nicht geliefert. Die frühere Aussage, `CompletionEvaluator` stoppe an
+  gemeisterten Zwischenzielen, war bereits am 15. November überholt: Seit
+  `dbef64ed0810be092669becdeab9e07ab35477e1` traversiert er den offenen
+  Voraussetzungsbedarf durch solche Zwischenziele hindurch. Diese bestehende
+  kontextuelle Completion ist keine neue globale Einheitenanerkennung;
+  [Code- und Testprüfung](graph-definition-documentation-review-2026-11-15.md)
+  halten die Abgrenzung fest.
 
 ### Angebotene Konfigurationen
 
@@ -387,24 +409,20 @@ gleichwertige Aufgaben mit je eigenem Raster und Nachweis, Graph Definition
 erfüllen“) und eine Auswahl durch das Backend. Das ist Laufzeitarbeit und
 gehört zu Stufe 3. Bis dahin steht die Einschränkung in jedem Reviewprotokoll.
 
-**P13, „Gleichmäßig beschleunigte Bewegung modellieren“ (13. November).** Die
-Einheit `physics-constant-acceleration` in der kanonischen Physik besitzt zwei
-Ziele der Einführungsphase: das Modell der gleichmäßig beschleunigten Bewegung
-(`e4b38061-1f28-43ad-8371-a3e7c0e81856`) und das Modellieren samt
-Idealisierungen und Grenzen (`d6dc0e02-831d-4894-a61a-852bcc74f147`). Das ist
-das Hauptbeispiel des Entwurfsbogens. Ihre Prüfung
-`c5807a37-129e-5df6-8989-482bc7f5683e` (senkrechter Wurf einer Stahlkugel,
-sieben Teile, 24 BE) verlangt die Gesetze für zwei Achsenwahlen, den höchsten
-Punkt samt der Fehlvorstellung zur Beschleunigung, die drei Diagramme mit der
-Steigungsbeziehung sowie Begründung und Grenzen der Idealisierungen. Zwei
-unabhängige maschinelle Reviewer haben R2 für beide Ziele nach drei Runden für
-denselben Endtext als erfüllt bewertet
-([Review vom 13. November](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/learning-units/physics-constant-acceleration-2026-11-13.md)).
-Die vorhandene Prüfung `4ab1cf6d-b808-5b86-9291-85df0b9f2496` ist mit 22 von
-36 Punkten ohne Scheitel- und Diagrammteil bestehbar; sie bleibt Übungsaufgabe.
-Die neue Prüfung liegt im Cluster „Übungen E-Phase“, den 60 Sichten als
-Teilbaum führen. Physik hält M7. Die Angebotsprüfung meldet einen Befund für
-neun Konfigurationen in Baden-Württemberg und Bayern; er steht in Abschnitt 7.
+**P13, „Gleichmäßig beschleunigte Bewegung modellieren“ (korrigiert am 19. November).**
+Die Unit `physics-constant-acceleration` besitzt weiterhin zwei gewöhnliche
+Ziele: das konstante Beschleunigungsmodell (`e4b38061-1f28-43ad-8371-a3e7c0e81856`)
+und Modellierung samt Idealisierungen (`d6dc0e02-831d-4894-a61a-852bcc74f147`).
+Seit der in #159 integrierten Revision `2026-11-15-v2` hat sie zwei eigene
+Prüfungen: `c5807a37-129e-5df6-8989-482bc7f5683e` trägt bei 24/24 die Deckung
+von d6dc; `a8dc0290-9f80-5763-8943-e16b8d2aa860` trägt bei 20/20 die volle
+Deckung von e4b einschließlich Umkehr, Ortsänderung und Strecke sowie einem
+neuen Bremsfall. Beide Leistungen sind nötig. Die frühere Aussage, c580 allein
+decke beide Ziele, ist ausdrücklich korrigiert. Der
+[gebundene Nachweis der beiden Aufgaben](https://github.com/enpasos/skillpilot/blob/9975a142f7a26f1c4ff31c46a70e149d82a3fce5/curricula/DE/Gymnasium/quality/learning-units/physics-constant-acceleration-2026-11-15-v2.md)
+erhält die früheren unabhängigen Inhaltsreviews und die benannte
+Integrationsentscheidung. Das ist kein neuer Lernerversuch und keine neue
+vollständige Fachabnahme durch diese redaktionelle Korrektur.
 
 Der Zuschnitt ist enger als der Kandidat „Eindimensionale Bewegungen“ aus
 PR #83. Die drei Ziele vor dem Modell (Bewegungen in Diagrammen,
@@ -599,8 +617,10 @@ vor: wann der Arbeitsentfall abgeschaltet wird, wie ein Bestehen an den
 Vertragsstand seiner Einheit gebunden wird (R5) und in welcher Form
 Aufgabenvarianten in den Vertrag kommen. Die Frage zu experimentellen Zielen
 ist entschieden (Abschnitt 5).
-Der erste Lieferschnitt, die Rechnung als reine Funktion mit gemeinsamen
-Abnahmefällen, hängt von keiner dieser Fragen ab.
+Die damalige Vorlage bewertet den ersten Lieferschnitt, die Rechnung als reine
+Funktion mit gemeinsamen Abnahmefällen, als unabhängig von diesen drei Fragen.
+Seit dem Vorschlag vom 19. November ist vor seiner Umsetzung auch die fachliche
+Abschlusssemantik abzugleichen (Einordnung am Anfang dieses Plans).
 
 Davon unabhängig läuft die Einführung des Wissenskontexts (Abschnitt 4). Das
 Werkzeug ist vorhanden, der Pilot zur Hinlänglichkeit durchgeführt

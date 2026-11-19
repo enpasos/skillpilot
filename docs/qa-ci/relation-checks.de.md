@@ -19,10 +19,10 @@ Dieses Kapitel dient als stabiler Kompatibilitäts-Einstiegspunkt für Verweise 
 Der vollständig gepflegte Regelkatalog befindet sich in [Graph-Validierungsregeln (`GVR`/`APV`/`CPV`)](graph-validation-rules.de.md) in Band IV des Qualitätshandbuchs. Maßgeblich dort dokumentiert sind:
 
 - sämtliche implementierten Validatorregeln (`GVR-*`, `APV-*`, `CPV-*`),
-- die ausnahmslose Durchsetzung als Fehler (`npm run validate:graph`),
+- die Fehlerdurchsetzung für Strukturverletzungen und aktive `GVR-*`-Regeln in `npm run validate:graph`,
 - die Sperre für atomare Normalform und transitive Minimalität im vollständigen Katalog (`npm run check:transitive-minimality`, alle 21 kanonischen Wurzeln).
 
-Es gibt keinen umgebungsabhängigen Warnmodus. Die ausgemusterten Kennungen `GVR-004`, `GVR-005`, `GVR-006` und `GVR-013` bleiben für historische Nachweise reserviert.
+Für `validate:graph` gibt es keinen umgebungsabhängigen Warnmodus. Eigene Warnungen und Diagnosen der `APV`-/`CPV`-Prüfer behalten die im Regelkatalog ausgewiesene Stufe. Die ausgemusterten Kennungen `GVR-004`, `GVR-005`, `GVR-006` und `GVR-013` bleiben für historische Nachweise reserviert.
 
 Die direkte Sperre `npm run check:curriculum-maturity-floors` prüft zusätzlich fest gebundene Fach- und Scope-Verpflichtungen gegen die mit `--base-ref` gewählte Git-Basis: beim PR dessen Basis-SHA, beim Push dessen vorherige SHA und lokal `origin/main`. Beide direkten Sperren laufen im vollständigen Job `graph-validation` und in der lokalen Curriculum-Suite.
 

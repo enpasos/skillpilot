@@ -75,7 +75,9 @@ A report, status snapshot, or documentation output produced by a script and carr
 | Learning unit vs personalization level | A recursively composed educational whole with derived completion vs one of the four scope/state layers. |
 | Learning unit vs goal difficulty | A unit of acquisition and completion vs the demand level of one goal (`level`). |
 | Unit completion vs goal availability | Fulfilled child and own obligations vs prerequisites for starting work; the target model has no technical whole-unit locks, and `after` orders without demand or mastery. |
-| Unit vs unit with assessments | Every unit obeys E1–E4 and orders via `after`; only units with an own valid assessment contract and complete current `coverageReviews` implicitly recognize own content goals under R1–R5. |
+| Unit vs unit with assessments | Every unit obeys E1–E4 and orders via `after`; under the applicable recognition concept, implicit individual recognition is bound to an own valid assessment contract, R1–R5 and complete current `coverageReviews`. |
+| Unit qualification vs individual result | In the proposal of 19 November, representative performance can demonstrate a unit while individually unassessed details remain open. Required evidence and individual exams actually taken remain visible. |
+| Planning release vs mastery | Proposed release concerns reviewed whole content goals owned by the passed unit for subsequent planning. It writes neither individual mastery nor new period events; the product decision remains pending. |
 | Carried in vs placed in | Evidenced official source assignment (`officialSource`) vs didactic learning placement inside a plan unit (including justified preparation and derived earliest need in $L$). |
 | Goal tree vs learner map | Full tree including non-unit subject clusters vs `contains`-contracted view showing only units and atomic goals with aggregated child arrows. |
 | QA scope vs learning route | A QA scope is a registered check profile, not a single path walked by a learner. |

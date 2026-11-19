@@ -2,6 +2,8 @@
 
 Dieses Runbook beschreibt die lokale Installation, Verifikation, CAS-Aktivierung und das Rollback fertig gebauter `full-standalone-v1`-JSON-Pakete. Der Provisioner (`scripts/provision_curriculum_package.py`) ist die einzige schreibende Komponente des Package-Stores; die SkillPilot-Runtime liest ausschließlich den exakt gepinnten aktiven Lock und verändert den Store niemals.
 
+**Vertragsauswahl:** Der Provisioner unterstützt die getrennten Verträge 1.0, 1.1, 1.2 und den unveröffentlichten gemeinsamen 1.3-Kandidaten; `--contracts-dir` wählt den exakten Vertrag. 1.2 ergänzt `learningUnitsV1`, 1.3 zusätzlich `assessmentMaterialsV1` und den Transport der expliziten lokalen `childOrder.after`-Ordnung. 1.2 und 1.3 übernehmen die abgelösten 1.1-Completion-Artefakte nicht. Fehlende Einheiten, erforderliche Prüfungsstimuli oder Ordnungsfelder dürfen nicht still in einen älteren Vertrag exportiert werden. Die derzeitige JSON-Konformitätslane wählt 1.3 explizit; weder Installation noch ein Modellpass aktiviert einen Landesstufenplan oder schreibt Lernergebnisse.
+
 ### Sechsstufiges Sicherheitsmodell und Store-Layout {#sec:pp-prov-security}
 
 Ein eingehendes ZIP wird nie direkt als Laufzeitquelle konsumiert:

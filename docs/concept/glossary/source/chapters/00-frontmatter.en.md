@@ -7,6 +7,7 @@ This document defines the core terms SkillPilot coins and relies on, and draws c
 - **Definitions are short on purpose.** Each entry states what the term means and, where it matters, what it is *not*. The linked document stays the normative source; this page never overrides it.
 - **DE** gives the German term used in the app, in German documentation, and by the learning coach. Field names such as `contains`, `requires`, or `applicability` are code identifiers and stay English in both languages.
 - **Terms are grouped by layer**, from curriculum sources up to quality governance, because most misunderstandings come from mixing layers rather than from a single word.
+- **Adopted contracts and proposals remain separate.** The [unit proposal of 19 November 2026](repo:docs/concept/skill-graph/unit-assessment-discussion-2026-11-19.de.md) has not been adopted as a product rule. Its terms support the discussion; existing outcome contracts and quality gates continue to apply.
 
 Two rules explain a large part of the vocabulary below:
 

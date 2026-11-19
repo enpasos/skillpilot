@@ -526,6 +526,21 @@ Reference:
 
 ### 2.4 Recursive learning units
 
+**Documentation status, 19 November 2026.** The two Skill Graph compendia
+describe a proposal for expert review of representative unit assessments.
+The documentation revision is authorized. Adoption of the proposal as the
+product contract and subject review of the Hessian E.1 example are pending.
+The confirmed November contracts in §§2.3–2.4, 4 and 10.2 still govern
+curriculum authoring, learner results, runtime work and QA. The Graph Definition
+keeps the applicable recognition formulas in [§13.2](docs/concept/skill-graph/assessment-gated-completion.md#sec-transitive-demand)
+and [§13.4](docs/concept/skill-graph/assessment-gated-completion.md#sec-global-effect),
+and the applicable validity rules R1–R5 in [§13.3](docs/concept/skill-graph/assessment-gated-completion.md#sec-why-graph-not-enough).
+“Binding target model” below refers to the confirmed November contracts,
+including the 14–15 November ordering and stage-plan decisions; it does not
+adopt the separate unit-assessment proposal of 19 November. The [discussion
+paper](docs/concept/skill-graph/unit-assessment-discussion-2026-11-19.de.md)
+sets out the changes that adoption would require.
+
 The Product Owner confirmed **Lerneinheit** (English **learning unit**,
 conceptual name `LearningUnit`) on **4 November 2026**. This replaces the former
 curricular-level terminology. Personalization Levels 1–4, QA maturity and goal
@@ -626,7 +641,8 @@ curricular-level terminology. Personalization Levels 1–4, QA maturity and goal
   with reviewed coverage. Otherwise the unit's goals stay open, and the
   violation keeps the curriculum from reaching the milestone. A goal that no
   assessment covers therefore stays open *and* is a rule violation; it is never
-  recognized for free (Graph Definition §13.3; `GD-U05`, `GD-U06`, `GD-U15`,
+  recognized for free ([Graph Definition §13.3](docs/concept/skill-graph/assessment-gated-completion.md#sec-why-graph-not-enough);
+  `GD-U05`, `GD-U06`, `GD-U15`,
   `GD-A07`, `GD-A08`, `GD-A10`, `GD-A12`, `GD-A18`).
 - **Resumption (Product Owner, 12 November 2026).** The learning-unit work is
   resumed; the working plan is
@@ -803,9 +819,11 @@ curricular-level terminology. Personalization Levels 1–4, QA maturity and goal
   inherit it to every atomic goal and `CQR-001` rejects it; inheritance stays
   the reading of transition data outside the canonical Gymnasium catalog.
   Until the follow-up work in section 10 of the document is done, the tools
-  enforce the unit contract of 12 November. Graph Definition §11 to §13
-  distinguish the binding target model from that implemented compatibility
-  contract; target wording does not assert completed migration.
+  enforce the unit contract of 12 November. The applicable rules in Graph
+  Definition §§11–13 distinguish the confirmed binding target model from that
+  implemented compatibility contract; target wording does not assert completed
+  migration. The separately marked 19 November proposal has not replaced either
+  contract.
   A first, surface-only step is implemented: the learner map
   (`app/src/components/learningUnitMap/learnerUnitMapProjection.ts` and
   `learnerUnitMapPreview.ts`) renders the learner's graph as units and atomic
@@ -853,7 +871,8 @@ not an implemented runtime or access policy. See `docs/concept/skill-graph/learn
 `docs/concept/skill-graph/learning-unit-progression.md`,
 `docs/concept/skill-graph/learning-unit-design-and-examples.md` (design criteria
 and worked candidates) and Graph Definition §11 (learning units), §12 (optional
-acquisition and time planning) and §13.3 (unit validity rules);
+acquisition and time planning) and [§13.3](docs/concept/skill-graph/assessment-gated-completion.md#sec-why-graph-not-enough)
+(applicable unit validity rules);
 capacity details remain in `docs/concept/didactic/curriculum-time-axis-and-pacing.md`.
 
 ### 2.5 Knowledge context
@@ -1017,7 +1036,8 @@ new implicit credit. Required card targets remain explicit independently.
 stays: implicit mastery is derived per valid local contract of the owning
 learning unit, and an own ordinary goal is recognized once it is no longer
 required by any open own assessment or memory goal of that unit (`N_U`, `I_U`
-in Graph Definition §13). Example: assessments Q1 and Q2 belong to the same
+in [Graph Definition §13.2](docs/concept/skill-graph/assessment-gated-completion.md#sec-transitive-demand)).
+Example: assessments Q1 and Q2 belong to the same
 unit and both require A; when Q1 is passed, A stays open until Q2 is passed as
 well. The alternative recorded on the archived branch of PR #83 as a
 "6 November 2026 target decision" (immediate recognition from the qualified

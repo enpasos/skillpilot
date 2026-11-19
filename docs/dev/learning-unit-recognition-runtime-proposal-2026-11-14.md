@@ -6,12 +6,25 @@ leitet aus gültigen Einheitenverträgen die wirksame Beherrschung ab. Sie ände
 keinen Code und keine Curriculumdaten. Drei Fragen entscheidet der Product
 Owner noch; zu jeder steht eine Empfehlung. Die vierte, E3, ist entschieden.
 
+**Lesestand vom 19. November 2026.** Diese Vorlage bewahrt die offenen
+technischen Alternativen vom 14. November. Sie ist kein beschlossener
+Laufzeitvertrag und kein Bericht über eine inzwischen erfolgte Umsetzung.
+Die am 4. und 11. November bestätigte Regel bleibt der Maßstab der bestehenden
+Verträge; ihre [Rechnung mit R1–R5](../concept/skill-graph/assessment-gated-completion.de.md#sec-why-graph-not-enough)
+steht in §13 der Graph-Definition. Die §§11 und 13
+enthalten den [Vorschlag zur Einheitenanerkennung für die Fachrunde](../concept/skill-graph/unit-assessment-discussion-2026-11-19.de.md).
+Dessen Annahme steht aus. Er würde Einheitenurteil, Einzelbeleg und Planung
+neu verbinden; die hier vorgeschlagenen Ereignisse, Hashbindungen und
+Lieferschnitte sind deshalb vor Umsetzung erneut daran zu prüfen. Die
+folgenden Angaben „heute“ und „nach Stufe 3“ beziehen sich auf die Ausgangslage
+und Zielrechnung dieser Vorlage, nicht auf eine neue Freigabe vom 19. November.
+
 ## 1. Ausgangslage
 
 Normativ gilt seit dem 4. November die
 [Produktentscheidung zur Beherrschung durch Anwendung](../concept/skill-graph/completion-semantics-clarification-2026-11-04.md)
 mit der Rechnung der
-[Graph Definition §13](../concept/skill-graph/assessment-gated-completion.de.md):
+[bestätigten November-Vertragsfassung](../concept/skill-graph/assessment-gated-completion.de.md#sec-why-graph-not-enough):
 
 $$
 M_{\mathrm{eff}} = M \cup \bigcup_{U} I_U, \qquad
@@ -177,8 +190,10 @@ nichts.
 | 3d | Verbraucher hinter demselben Schalter: Lernempfehlung, Plan-IST, Cockpit, Coachkontext; der Arbeitsentfall wird dabei entfernt | keine Änderung, solange der Schalter aus ist |
 | 3e | Einschalten durch den Product Owner; Deployment und Hostabnahme getrennt | Umstellung |
 
-Schnitt 3a hängt von keiner der vier Entscheidungen ab, bis auf die Fälle 7, 8
-und 10 des Plans, die R5 betreffen. Er kann sofort beginnen.
+Nach damaliger Einschätzung hängt Schnitt 3a von keiner der vier Entscheidungen
+ab, bis auf die Fälle 7, 8 und 10 des Plans, die R5 betreffen. Eine Umsetzung
+muss zusätzlich die noch ausstehende Entscheidung über den Vorschlag vom
+19. November berücksichtigen.
 
 ## 5. Grenzen
 

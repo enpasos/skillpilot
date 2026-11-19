@@ -18,7 +18,7 @@ Ein Spaced-Repetition-Ziel für Fakten, Vokabeln, Notation oder ausgewählte For
 
 *EN: Exam*
 
-Ein Ziel mit `examData`: eine eigenständig zu bearbeitende Prüfungs- oder Übungsaufgabe samt Musterlösung und Bewertungsschema. Im Zielmodell zeigt keine `requires`-Kante auf ein `Exam`-Ziel (Prüfungen sind Endpunkte von Voraussetzungspfaden). Eigene Anerkennungsprüfungen erklärter **Einheiten mit Prüfungen** (`coverageReviews`) belegen nach R1–R5 die selbstständige Anwendung eigener Inhaltsziele; freie Übungsaufgaben und Abiturklausuren in prüfungsfreien äußeren Einheiten sind regulär wählbar, lösen aber keine implizite Anerkennung aus.
+Ein Ziel mit `examData`: eine eigenständig zu bearbeitende Prüfungs- oder Übungsaufgabe samt Musterlösung und Bewertungsschema. Im Zielmodell zeigt keine `requires`-Kante auf ein `Exam`-Ziel (Prüfungen sind Endpunkte von Voraussetzungspfaden). Das geltende Anerkennungskonzept bindet die selbstständige Anwendung eigener Inhaltsziele an R1–R5 und die geprüften `coverageReviews` erklärter **Einheiten mit Prüfungen**. Freie Übungsaufgaben und Abiturklausuren bleiben regulär wählbar, begründen aber für sich keine implizite Anerkennung. Der Vorschlag vom 19. November würde den Einheitenabschluss gesondert beurteilen; er erweitert keine vorhandene Prüfungsbedeutung.
 
 ### `examData` und Bewertung {unnumbered=true}
 
@@ -76,7 +76,7 @@ Ein expliziter organisatorischer Strukturcontainer (Jahrgang, Halbjahr, Modul, P
 
 Ein rekursiv aufgebautes pädagogisches Ganzes im dreistufigen Modell **Cluster $\to$ Einheit $\to$ Einheit mit Prüfungen**. Im verbindlichen Zielmodell wird eine fachliche Einheit als kanonischer Cluster mit Lernversprechen, `revision`, Geschwisterfolge `after` und optionalen `coverageReviews` erklärt; eigene Ziele (`Own(U)`) und direkte Untereinheiten leiten sich aus `contains` ab, und Blatteinheiten bleiben in allen 16 Bundesländern ungeteilt in einer Planeinheit. Bis zur Migration (`F8`–`F11`) nutzen die drei bestehenden kanonischen Einheiten den Kompatibilitätsvertrag 1.2 (`programUnits` der Art `learningUnit` mit `own`-Platzierungen und `parentUnitId`; siehe [Feldreferenz](repo:docs/dev/landscape-json-field-reference.md)).
 
-Jede Einheit erfüllt die Ordnungsregeln **E1–E4**, ohne über `after` eine technische Zugangssperre aufzubauen. Der Abschluss folgt aus Untereinheiten und eigenen Zielpflichten ohne gespeicherte Einheits-Mastery. Implizite Anerkennung eigener Inhaltsziele gilt ausschließlich in erklärten **Einheiten mit Prüfungen** (mit eigenen Prüfungen und gültigen vollständigen `coverageReviews`), die R1–R5 erfüllen ([Graph-Definition §13.3](repo:docs/concept/skill-graph/assessment-gated-completion.md#sec-why-graph-not-enough)); die Laufzeitumsetzung (`F12`/`F13`) steht noch aus.
+Jede Einheit erfüllt die Ordnungsregeln **E1–E4**, ohne über `after` eine technische Zugangssperre aufzubauen. Der Abschluss folgt aus Untereinheiten und eigenen Pflichten ohne gespeicherte Einheits-Mastery. Die beschlossene Einzelanerkennung nach R1–R5 und ihre noch unvollständige Umsetzung bleiben von dem repräsentativen Einheitenurteil des Vorschlags vom 19. November getrennt. Der Vorschlag erklärt nicht alle enthaltenen Atome für gemeistert und hebt keine Pflichtprüfung eines Kindes auf ([Einheitennachweis und geltender Anerkennungsvertrag](repo:docs/concept/skill-graph/assessment-gated-completion.md)).
 
 ### Zielplatzierung (`Goal placement`) {unnumbered=true}
 

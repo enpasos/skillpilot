@@ -30,6 +30,7 @@ import { isMastered } from '../goalUiUtils'
 import { useSrsMastery } from '../hooks/useSrsMastery'
 import { useFlashcardSetStatus } from '../hooks/useFlashcardSetStatus'
 import { getSrsFilterTagsForGoal } from '../utils/srsTags'
+import type { FlashcardPracticeRequest } from '../utils/flashcardPractice'
 import { interpolateTemplate } from '../utils/interpolateTemplate'
 import { goalMatchesFilter, isWildcardFilter, splitFilterIds } from '../utils/goalFilters'
 import { normalizeJurisdictionCode } from '../utils/jurisdictionMetadata'
@@ -154,6 +155,9 @@ export interface LearnerGoalNavigationMapProps {
   completionWaivers: ReadonlyMap<string, CompletionTreeWaiver>
   revealRequest?: { entryId: string; nonce: number }
   onSelectGoal: (goalId: string) => void
+  getFlashcardSource?: (goal: UiGoal) => string | undefined
+  onPracticeFlashcards?: (request: FlashcardPracticeRequest) => void
+  onOpenGoal?: (goalId: string) => void
   active: boolean
   onReturnToTree?: () => void
   /** Escape outside the map search closes the full-window map instead of leaving a level. */
@@ -545,7 +549,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const [srsMasteryTick, setSrsMasteryTick] = useState(0);
   const [srsReloadCounter, setSrsReloadCounter] = useState(0)
   const [optimisticSrsMasteryByGoal, setOptimisticSrsMasteryByGoal] = useState<Record<string, number>>({});
-  const [memoryPracticeGoalId, setMemoryPracticeGoalId] = useState<string | null>(null)
+  const [memoryPractice, setMemoryPractice] = useState<FlashcardPracticeRequest | null>(null)
   const [verifiedRecallBatchSizeByGoal, setVerifiedRecallBatchSizeByGoal] = useState<Record<string, number>>({})
 
 
@@ -1078,7 +1082,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   )
 
   useEffect(() => {
-    setMemoryPracticeGoalId(null)
+    setMemoryPractice(current => current?.goalId === currentGoal?.id ? current : null)
   }, [currentGoal?.id])
 
   const buildVerifiedRecallPromptContext = useCallback((goal: UiGoal, batchSize: number) => {
@@ -3811,25 +3815,26 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                           <p className="text-text-secondary">{currentGoal.description}</p>
                         ) : null}
                       </div>
-                      {memoryPracticeGoalId === currentGoal.id ? (
+                      {memoryPractice?.goalId === currentGoal.id ? (
                         <>
                           <button
                             type="button"
-                            onClick={() => setMemoryPracticeGoalId(null)}
+                            onClick={() => setMemoryPractice(null)}
                             className="mb-4 inline-flex items-center gap-2 rounded-lg border border-border-color px-3 py-2 text-sm font-medium text-text-secondary transition-colors hover:bg-slate-50 dark:hover:bg-slate-800"
                           >
                             <MoveRight size={16} className="rotate-180" />
                             {learnerViewCopy.memoryPracticeBackAction}
                           </button>
                           <FlashcardDrill
-                            key={currentGoal.id}
+                            key={`${skillpilotId}:${currentGoal.id}:${getSrsSource(currentGoal)}:${memoryPractice.goalIds?.join(',') ?? 'all'}`}
                             goalId={currentGoal.id}
                             dataSourceUrl={getSrsSource(currentGoal)}
                             skillPilotId={skillpilotId}
-                            titleOverride={getLearnerGoalTitle(currentGoal)}
+                            titleOverride={memoryPractice.title}
                             onSync={syncClientData}
                             reloadSignal={srsReloadCounter}
                             filterTags={getSrsFilterTagsForGoal(currentGoal)}
+                            scopeGoalIds={memoryPractice.goalIds}
                             onStateChange={({ goalId, mastery }) => {
                               setOptimisticSrsMasteryByGoal((current) => {
                                 if (current[goalId] === mastery) return current
@@ -3852,7 +3857,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                           <div className="learner-cockpit-goal-options grid gap-4">
                             <button
                               type="button"
-                              onClick={() => setMemoryPracticeGoalId(currentGoal.id)}
+                              onClick={() => setMemoryPractice({ goalId: currentGoal.id, title: getLearnerGoalTitle(currentGoal) })}
                               className="flex min-h-32 items-start gap-4 rounded-xl border border-border-color bg-slate-50/70 p-5 text-left transition-colors hover:border-sky-300 hover:bg-sky-50/80 dark:bg-slate-950/30 dark:hover:border-sky-800 dark:hover:bg-sky-950/30"
                             >
                               <span className="rounded-lg bg-white p-2 text-sky-700 shadow-sm dark:bg-slate-900 dark:text-sky-300">
@@ -4212,6 +4217,17 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
               entryId: subjectRootIdByAlias.get(navigationRevealRequest.entryId) ?? navigationRevealRequest.entryId,
             } : undefined,
             onSelectGoal: selectMapGoal,
+            getFlashcardSource: getSrsSource,
+            onPracticeFlashcards: request => {
+              if (!visibleGoals.has(request.goalId) || !goalIndexAll.has(request.goalId)) return
+              setMemoryPractice(request)
+              selectMapGoal(request.goalId)
+              closeLearningMap()
+            },
+            onOpenGoal: goalId => {
+              selectMapGoal(goalId)
+              closeLearningMap()
+            },
             onReturnToTree: () => closeLearningMap('tree'),
             onEscape: closeLearningMap,
             active: isLearningMapOpen && !isSetupOpen && !isDataManagementOpen && !isModalOpen,

@@ -366,6 +366,10 @@ window.SKILLPILOT_DOCS_I18N = {
       "en": "quickstart/story.en.md"
     },
     {
+      "de": "quickstart/comic_prompts.de.md",
+      "en": "quickstart/comic_prompts.en.md"
+    },
+    {
       "de": "whitepaper/storyboard.de.md",
       "en": "whitepaper/storyboard.en.md"
     },

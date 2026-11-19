@@ -10,6 +10,8 @@ Teachers can plan a manageable instructional unit directly from the learning-goa
 
 Stage 1 connects existing course planning with the learning-goal book without introducing a second schedule model or centralized class storage. Existing plan sections, local revisions, date checks, and explicit handoff into learner-owned schedules are reused. Subsequent exam-preparation support (@ref{sec:exam-preparation-planning}) adds exam-material vs. task-coverage comparison, a preparation-completion preview, and individually toggleable plan sections.
 
+A local learning section schedules teaching dates and selected goal IDs. Its title might be “Kinematics”. Whether a learner has demonstrated the promise of a particular unit revision is a separate claim. Any future unit assignment would have to identify that claim explicitly when the plan is created.
+
 ### Stage 1 capabilities {#sec:goal-book-planning-stage1}
 
 1. **Course-projected goal selection:** Within the active course context, the teacher selects learning goals using their descriptions and book layout. The authoritative course projection bounds selectable goals; a publicly visible book goal is not automatically part of a specific course, and subject, state, stage, track, and course profile are never re-guessed.

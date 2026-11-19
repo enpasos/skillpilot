@@ -35,6 +35,7 @@ type MapProps = {
   onEntrySelect?: (entryId: string) => void
   onSelectionChange?: (entryId: string | null) => void
   renderSelectionActions?: (entryId: string) => ReactNode
+  renderScopeActions?: (scopeId: string) => ReactNode
   onReturnToTree?: () => void
   /** Hosts such as a full-window dialog own Escape once the map search is closed. */
   onEscape?: () => void
@@ -77,7 +78,7 @@ function useNarrowScreen() {
 function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = false,
   active = true, headingMode = 'standard', rootLabel,
   learnerProgress, activeGoalId, initialScopeId, command, showInspector = true, onEntrySelect,
-  onSelectionChange, renderSelectionActions, onReturnToTree, onEscape, language = 'de',
+  onSelectionChange, renderSelectionActions, renderScopeActions, onReturnToTree, onEscape, language = 'de',
   compactListThreshold, toolbar, locationBarContainer }: MapProps) {
   const label = (de: string, en: string) => language === 'en' ? en : de
   const MapContainer = embedded ? 'section' : 'main'
@@ -317,7 +318,8 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
       ...(edge.reversed ? { markerStart: marker } : { markerEnd: marker }),
       style: { stroke: color, strokeWidth: highlighted ? 1.8 : backward || declared ? 1.5 : 1.1,
         strokeDasharray: backward ? '2 4' : summary ? '5 4' : undefined,
-        opacity: selectedId && !highlighted ? 0.13 : 1 },
+        // Declared year/phase order remains orientation context for every selection.
+        opacity: selectedId && !highlighted && !declared ? 0.13 : 1 },
       zIndex: highlighted ? 2 : backward ? 1 : 0,
       ariaLabel: backward ? language === 'en'
         ? `Backward dependency: ${targetTitle} needs goals from ${sourceTitle}, which comes later`
@@ -467,6 +469,7 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
         {headingMode === 'standard' && <div className="lum-map-summary"><h1>{scopeTitle}</h1>
           <span>{visibleIds.length} Bereiche · {activeLayout?.edges.length ?? '…'} Verbindungen</span>
         </div>}
+        {renderScopeActions && <div className="lum-scope-actions">{renderScopeActions(nav.scopeId)}</div>}
         {fixture.scopeRelations && contextOpen && <aside id="lum-requirement-context" className="lum-requirement-context" data-testid="learning-map-requirement-context"
           aria-label={label('Verbindungen und Voraussetzungen', 'Connections and prerequisites')}>
           <div className="lum-requirement-head">

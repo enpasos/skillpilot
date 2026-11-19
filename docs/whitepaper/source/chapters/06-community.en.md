@@ -34,6 +34,8 @@ Claude access is through the SkillPilot marketplace; the [5-minute Quickstart](h
 
 **SkillPilot is not tied to one particular AI.** Plugins and dedicated provider adapters connect the independent subject-matter core to each AI chat. Alongside the Claude beta, **ChatGPT Desktop (Beta)** is available through the [SkillPilot Git marketplace](https://github.com/enpasos/skillpilot-chatgpt-marketplace). Installation and learning start have been confirmed on Windows. Choose **ChatGPT Desktop** in SkillPilot, prepare its start message and send it in a new desktop chat. The [plugin guide](https://skillpilot.com/plugins#chatgpt-desktop) explains setup and updates. Browser and mobile ChatGPT access have not been confirmed for this route. Further integrations depend on suitable interfaces and reliably supported capabilities at the provider.
 
+A controlled **Gemini (Beta)** web trial with one privately configured account covered learning start, saved progress and continuation in a new chat. Access for other accounts still needs verification.
+
 **Initiator:** The organization behind SkillPilot is **enpasos GmbH**. We invite partners to develop SkillPilot further together — in subject content, teaching, and technology.
 
 **More transparency:** [GitHub](https://github.com/enpasos/skillpilot) · [Documentation](https://enpasos.github.io/skillpilot/) · [Graph definition](https://enpasos.github.io/skillpilot/concept/skill-graph/graph-definition/)

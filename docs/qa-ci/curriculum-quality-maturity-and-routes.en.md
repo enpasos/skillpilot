@@ -15,7 +15,7 @@
 ## 2. Curriculum Quality: Maturity Levels, QA Scopes, and CQR Rules
 
 !!! info "Workbench semantics and 4 November 2026 concept correction"
-    Domain specification for `/quality-dashboard` and the generated snapshots under `docs/qa-ci/status/curriculum-quality-status.json` (producer: `cd app && npm run quality:curriculum-status` via `app/scripts/generateCurriculumQualityStatus.ts`; overview: [Dashboard Status Layer](curriculum-quality-dashboard.md)). **Concept correction, 4 November 2026:** Existing `M7` closeouts or passing route checks do not automatically prove that exam tasks verify independent application of every implicitly recognized competence under [Assessment-Gated Completion](../concept/skill-graph/assessment-gated-completion.md); that authoring obligation requires a dedicated task/rubric review.
+    Domain specification for `/quality-dashboard` and the generated snapshots under `docs/qa-ci/status/curriculum-quality-status.json` (producer: `cd app && npm run quality:curriculum-status` via `app/scripts/generateCurriculumQualityStatus.ts`; overview: [Dashboard Status Layer](curriculum-quality-dashboard.md)). **Concept correction, 4 November 2026:** Existing `M7` closeouts or passing route checks do not automatically prove that exam tasks verify independent application of every implicitly recognized competence; that authoring obligation requires a dedicated task/rubric review. The [existing recognition contract R1–R5](../concept/skill-graph/assessment-gated-completion.md#sec-why-graph-not-enough) remains recorded with its date. The [unit proposal of 19 November](../concept/skill-graph/unit-assessment-discussion-2026-11-19.de.md) does not change existing contracts or QA gates before a product decision and implementation.
 
 **Delivered hardening, 13 November 2026:** Direct enforcement reached `main` in [PR #131](https://github.com/enpasos/skillpilot/pull/131). Following subsequent changes to historical review evidence and the Mathematics assessment, `main` at `2129b207f4` passed all 14 jobs of [CI #2315](https://github.com/enpasos/skillpilot/actions/runs/43398052180). The [delivery record](../dev/cqr-gvr-hard-gate-plan-2026-11-12.md) distinguishes this later integration state from the original PR run and the cancelled CI run of its merge commit. The CQR/GVR register therefore records 22 codes enforced hard within their named domains; `CQR-104` and `GVR-012` remain `PARTIAL` because of the coverage gaps below. This is automated QA, not evidence of human trials or complete implementation of every skill-graph rule.
 
@@ -48,9 +48,9 @@ A **QA scope** audits an explicit learner-facing slice (counting registered QA p
 | Scope ID | Stage | Atoms | Motivation anchor & terminal autonomy |
 | --- | --- | --- | --- |
 | `canonical-math-sek1` | Sek I | 282 | `Warum Mathematik? - Entdecken, Muster & Alltag` -> 38 tasks under `Prüfungen Jahrgangsstufe 5..10` |
-| `canonical-math-sek2` | Sek II | 606 | `Warum Mathematik? - Denken, Muster & Zukunft` -> atomic tasks under `Übungen E-Phase`, `Q1..Q4` & `Prozesskompetenzen` |
-| `canonical-physics-sek1` | Sek I | 101 | `Warum Physik?` -> atomic tasks under `Übungen Sekundarstufe I Physik` |
-| `canonical-physics-sek2` | Sek II | 316 | `Warum Physik?` -> atomic tasks under `Übungen E-Phase` and `Übungen Q1..Q4` |
+| `canonical-math-sek2` | Sek II | 607 | `Warum Mathematik? - Denken, Muster & Zukunft` -> atomic tasks under `Übungen E-Phase`, `Q1..Q4` & `Prozesskompetenzen` |
+| `canonical-physics-sek1` | Sek I | 116 | `Warum Physik?` -> atomic tasks under `Übungen Sekundarstufe I Physik` |
+| `canonical-physics-sek2` | Sek II | 321 | `Warum Physik?` -> atomic tasks under `Übungen E-Phase` and `Übungen Q1..Q4` |
 
 The atom counts are `selectedAtomicGoals` from the [current CQR status](status/curriculum-quality-status.json). They use each QA selector; particularly for Mathematics, they must not be equated with the semantic audit's goals classified exclusively as `curricularAtomic`.
 
@@ -99,13 +99,30 @@ Visibility checking is required in eight scopes. It remains absent in the other 
 | **`CQR-102`** | `M3` | **Atomic Direct Route Coverage:** Identical backward/forward connectivity strictly along direct atomic edges $R \cap (A \times A)$ with zero cluster bridges. |
 | **`CQR-103`** | `M3` | **No Scoped Cluster `requires`:** Zero clusters matched by `clusterSelector` carry authored `requires` (`scopedClusterRequires = 0`). |
 | **`CQR-104`** | `M4` | **Endpoint Visibility:** Motivation and terminal endpoints remain visible in the eight explicitly pinned visibility scopes; four further stage profiles remain a documented gap. |
-| **`CQR-201`** | `M4` | **Terminal Autonomy `examData`:** Every atomic child of configured terminal autonomy clusters carries complete `examData`. |
-| **`CQR-202`** | `M4` | **Task Readiness:** Terminal assessment tasks are concrete and usable rather than placeholders. |
-| **`CQR-203`** | `M5` | **Assessment Metadata:** Terminal assessments specify release status, covered goals, content areas, and demand level. |
+| **`CQR-201`** | Scope `M3` | **Terminal Autonomy `examData`:** Configured atomic terminal autonomy goals carry `examData`; content and metadata are checked by `CQR-202`/`203`. |
+| **`CQR-202`** | `M4` | **Formal Task Readiness:** Nonempty task and solution, populated scoring structure, no detected placeholder, and no explicitly blocking review status. |
+| **`CQR-203`** | `M5` | **Assessment Metadata:** `reviewStatus = "released"` and nonempty lists of covered goals, content areas, and demand levels. |
 | **`CQR-301`** | `M5` | **Semantic Atomicity Review Freshness:** All in-scope content leaves hold fresh fingerprint-matched `atomic` records with zero `missing`, `stale`, `obsolete`, `needs_developer_review`, or `non_atomic` items ([4](semantic-atomicity-review.md#sec-qa-semantic-atomicity)). The producer and standalone check share one record contract; parse errors, invalid statuses, contradictory atomicity decisions, and duplicate records cannot yield a pass. |
 | **`CQR-302`** | `M6` | **Memory-Card Decision Trace:** Default decision `no_memory_needed`; `memory_required` links existing memory nodes visible in `visibilityScopes` and canonical decks under `curricula/DE/Gymnasium/memory-decks/` (neutral `de_gymnasium_*` IDs without state prefixes), while every kept primary card in `*.cards.review.jsonl` traces via `originGoalId` to a `memory_required` goal (`remove` cards are absent from active decks). |
 | **`CQR-303`** | `M7` | **Deep Curriculum QA Completion:** Directly projects `app/scripts/reportDeepUnderstandingRollout.ts`: strict 5-gate `D/P/A/M/V` intersection across all current `curricularAtomic` goals plus 6 passing subject closeout checks (`deferred_provider_limitation` and `deferred_quality_review` remain open; `humanTrialBlockingFindings` is projected separately). |
 | **`CQR-401`** | `M5` | **Composition View Availability:** At least one `.view.json` exists under `curricula/DE/Gymnasium/composition-views/` for the `landscapeId`. |
 | **`CQR-501`** | `M5` | **Applicability Warning Debt:** `activeWarnings + obsoleteAcceptedWarnings = 0` against `docs/qa-ci/applicability-accepted-warnings.json` (`APV-202` counts as diagnostic rather than warning debt). |
 
-**Current reviewed `CQR-302` subject balances (Gymnasium DE):** Mathematics (750 goals: 713 `no_memory_needed` / 37 `memory_required`, 64 cards, 6 nodes), Physics (425: 298 / 127, 148 cards, 5 nodes), Chemistry (376: 322 / 54, 55 cards, 6 nodes), Biology (355: 348 / 7, 17 cards, 1 node), Informatics (207: 198 / 9, 28 cards, 5 nodes, 18 views), Latin (115: 82 / 33, 34 cards, 5 nodes), German (268: 194 / 74, 48 cards, 5 nodes), History (156: 100 / 56, 57 cards, 5 nodes), Politics & Economics (413: 306 / 107, 62 cards, 5 nodes, 14 views), and Economics (303: 250 / 53, 51 cards, 5 nodes).
+**Limits of assessment checks:** `CQR-201`–`203` check the endpoints configured in a profile, not arbitrary unit-completion assessments. A formal scoring structure and declared `coveredGoalIds` do not establish that every claimed goal is necessary to pass or that a coach applies the rubric reliably. `requires` describes preparation rather than assessment coverage. Independent coverage review examines the task, solution, rubric, accepted alternative approaches, and passing combinations. Evaluations of actual submissions and practical trials provide further, separate evidence; `M7` does not replace them.
+
+**CQR-302 balances in the committed snapshot of 17 November 2026:**
+
+Values come from `rules[id=CQR-302].metrics` in [curriculum-quality-status.json](status/curriculum-quality-status.json); primary cards exclude language duplicates. The snapshot records five subjects at M7 and five at M6. M7 denotes machine QA and does not establish human trials.
+
+| Subject | Maturity | Reviewed goals | No memory needed | Memory required | Primary cards | Memory goals |
+| --- | --- | --- | --- | --- | --- | --- |
+| Mathematics | M7 | 807 | 767 | 40 | 64 | 6 |
+| Physics | M7 | 485 | 357 | 128 | 146 | 5 |
+| Chemistry | M7 | 455 | 389 | 66 | 759 | 68 |
+| Biology | M7 | 397 | 387 | 10 | 27 | 3 |
+| Informatics | M6 | 207 | 198 | 9 | 28 | 5 |
+| Latin | M6 | 115 | 82 | 33 | 34 | 5 |
+| German | M6 | 268 | 194 | 74 | 48 | 5 |
+| History | M6 | 156 | 100 | 56 | 57 | 5 |
+| Politics & Economics | M6 | 413 | 306 | 107 | 62 | 5 |
+| Economics | M7 | 346 | 280 | 66 | 67 | 10 |

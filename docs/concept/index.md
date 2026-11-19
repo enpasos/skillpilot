@@ -22,6 +22,8 @@ This page is the entry point for durable SkillPilot concepts. Keep implementatio
 
 ## Skill Graph
 
+Sections 11 and 13 describe the recognition contract in force since 4/11 November. Each also includes a separate proposal for expert review dated 19 November. The Hessian E.1 working paper provides tasks and sample submissions for that proposal.
+
 - [Skill Graph Overview](skill-graph/index.md)
   Entry point for graph semantics, curriculum structure, and supporting contracts.
 - [The SkillPilot Graph Definition (PDF)](skill-graph/skillpilot-graph-definition.en.pdf)
@@ -31,19 +33,21 @@ This page is the entry point for durable SkillPilot concepts. Keep implementatio
 - [Context, Views, Scope and Goal Types (§§6–10)](skill-graph/context-and-views.en.md)
   Canonical skill graph vs. educational views, personal curriculum closure $L=\mathrm{Closure}(S)$, understanding/memorisation/assessment goals, time and evidence boundaries.
 - [Learning Units (§§11.1–11.4)](skill-graph/learning-units.md)
-  Recursive units with a learning promise, subunits, application assessments, and derived completion; acquired competence remains globally valid.
+  Learning promises, entry, required components and two ways to qualify in units with final assessments.
 - [Unit Ordering and Rules E1–E4 (§11.5)](skill-graph/learning-unit-progression.md#sec-unit-progression)
   Under B9, `after` orders suggestions among reachable goals. Learners can also [choose an available assessment directly](skill-graph/context-and-views.en.md#sec-exams). The former pages on [curriculum levels](skill-graph/curriculum-levels.md) and [level gates](skill-graph/curriculum-level-gates.md) point to the current rules.
 - [Optional Acquisition and Time Planning (§12)](skill-graph/planning-and-budget.en.md)
   Multi-period acquisition plans, structural prerequisite witnesses, and workload budgets.
-- [Assessment-Gated Completion and Global Mastery (§13)](skill-graph/assessment-gated-completion.md)
-  Direct assessment access and globally effective mastery through independent application in valid local learning-unit assessments.
+- [Recognition through local assessments (§13)](skill-graph/assessment-gated-completion.md)
+  The contract in force defines recognition of ordinary goals under R1–R5. The proposal of 19 November introduces a judgement about the unit as a whole.
 - [Product Decision of 4 November 2026: Mastery via Understanding and Independent Application (DE)](skill-graph/completion-semantics-clarification-2026-11-04.md)
-  Local evidence of independent application counts toward later prerequisites and overall progress. B9 settled the separate question of unit access on 14 November.
+  Confirmed contract of 4 and 11 November. The 19 November proposal describes what adoption of a different completion rule would change.
 - [Decision of 14 November 2026: Learning Units – Clusters, `after` and Learning Flow (DE)](skill-graph/learning-unit-wiring-concept-2026-11-14.md)
-  What a learning unit is, how units are ordered and how that order acts in the learning flow; not implemented.
+  Dated design of unit boundaries and sibling ordering. The implementation appendix records which parts are in use.
 - [Concept Draft of 17 November 2026: Learning Units – Motivation at the Start, Assessments at the End (DE)](skill-graph/learning-unit-motivation-concept-2026-11-17.md)
-  Every unit with assessments begins with its own motivation goal, wired explicitly in the unit entry and in the graph; not decided, not implemented.
+  Earlier proposal for an authored opening. The 19 November design discusses its role on the guided path and direct entry to an assessment.
+- [What does passing a learning unit demonstrate? (DE)](skill-graph/unit-assessment-discussion-2026-11-19.de.md)
+  Discussion paper of 19 November 2026 on direct entry and representative final assessments, with a Hessian physics example.
 - [Graph Definition Compendium Appendices (B–F)](skill-graph/compendium-appendix.en.md)
   Current implementation status, verification strategy, glossary/symbols, sources, and single-source build reference.
 - [Architecture & Interchange Compendium (PDF)](skill-graph/skillpilot-skill-graph-architecture.en.pdf)
@@ -71,14 +75,15 @@ This page is the entry point for durable SkillPilot concepts. Keep implementatio
 - [Dual Curriculum Package Releases](skill-graph/dual-curriculum-package-releases.en.md)
   Target architecture for equivalent JSON-runtime and FWU-ontology release packages, standalone consumption, and repository decoupling.
 - [Learning-Unit Design Criteria and Examples](skill-graph/learning-unit-design-and-examples.md)
-  Purpose of a unit, criteria for meaningful boundaries and assessments, two worked candidates, and the unit validity rules R1–R5 of 11 November 2026.
+  How to turn a learning promise into tasks and passing criteria, with the nested Hessian kinematics unit E.1 as a worked case.
 - [Knowledge Context](skill-graph/knowledge-context.md)
-  What a learner can be assumed to know at a goal, derived deterministically from the graph for generation, review, and the coach. Concept, not implemented.
+  What a learner can be assumed to know at a goal. Deterministic derivation is implemented as a repository tool; validation gates, generation pipelines and live coach delivery remain separate implementation stages.
 
 ## Didactic & Planning Concepts
 
 - [Didactic & Planning Compendium (PDF)](didactic/skillpilot-didactics-and-planning.en.pdf)
 - [Feynman Technique for Learning](didactic/feynman-rules.md)
+- [Teaching a new concept in the Claude beta (discussion paper, DE)](didactic/claude-beta-erklaeren-2026-11-19.de.md)
 - [Frontier Goal Selection Strategies & Autopilot](didactic/frontier-goal-selection-strategies-autopilot.md)
 - [Curriculum Time Axis, Buffer Planning, and Target-vs-Actual Pacing](didactic/curriculum-time-axis-and-pacing.en.md)
 - [Unified Learning Plan Status](didactic/unified-learning-plan-status.en.md)
@@ -138,6 +143,8 @@ Diese Seite ist der Einstiegspunkt für dauerhafte SkillPilot-Konzepte. Umsetzun
 
 ## Skill-Graph
 
+Die §§11 und 13 beschreiben den geltenden Anerkennungsvertrag vom 4./11. November. Beide Kapitel enthalten außerdem den gesonderten Vorschlag vom 19. November. Im Arbeitsdokument zu Hessen E.1 kann die Fachrunde ihn an Aufgaben und Beispielabgaben prüfen.
+
 - [Skill-Graph-Übersicht](skill-graph/index.md)
   Einstiegspunkt für Graphsemantik, Curriculum-Struktur und begleitende Verträge.
 - [Die Graph-Definition von SkillPilot (PDF)](skill-graph/skillpilot-graph-definition.pdf)
@@ -147,19 +154,21 @@ Diese Seite ist der Einstiegspunkt für dauerhafte SkillPilot-Konzepte. Umsetzun
 - [Kontext, Sichten, Scope und Zielarten (§§6–10)](skill-graph/context-and-views.de.md)
   Kanonischer Skill-Graph vs. Bildungssichten, persönlicher Curriculum-Abschluss $L=\mathrm{Closure}(S)$, Verständnis-/Memorier-/Prüfungsziele, Zeit- und Nachweisgrenzen.
 - [Lerneinheiten (§§11.1–11.4)](skill-graph/learning-units.de.md)
-  Rekursive Einheiten mit Lernversprechen, Untereinheiten, Anwendungsprüfungen und abgeleitetem Abschluss; erworbene Kompetenzen gelten global weiter.
+  Lernversprechen, Einstieg, Pflichtbestandteile und zwei Wege zum Nachweis bei Einheiten mit Abschlussprüfung.
 - [Einheitsordnung und Regeln E1–E4 (§11.5)](skill-graph/learning-unit-progression.de.md#sec-unit-progression)
   Nach B9 ordnet `after` die Vorschläge unter den erreichbaren Zielen. Lernende können auch eine [verfügbare Prüfung direkt wählen](skill-graph/context-and-views.de.md#sec-exams). Die früheren Seiten zu [Curriculum Levels](skill-graph/curriculum-levels.md) und [Level Gates](skill-graph/curriculum-level-gates.md) verweisen auf die geltenden Regeln.
 - [Optionale Erwerbs- und Zeitplanung (§12)](skill-graph/planning-and-budget.de.md)
   Mehrperiodige Erwerbspläne, strukturelle Voraussetzungszeugen und Arbeitslastbudgets.
-- [Prüfungsgebundener Abschluss und implizite Mastery (§13)](skill-graph/assessment-gated-completion.de.md)
-  Direkter Prüfungszugang und global wirksame Mastery durch selbstständige Anwendung in gültigen lokalen Lerneinheiten-Prüfungen.
+- [Anerkennung durch lokale Prüfungen (§13)](skill-graph/assessment-gated-completion.de.md)
+  Der geltende Vertrag definiert die Anerkennung gewöhnlicher Ziele nach R1–R5. Der Vorschlag vom 19. November führt ein Urteil über die Einheit als Ganzes ein.
 - [Produktentscheidung vom 4. November 2026: Beherrschung durch Verständnis und selbstständige Anwendung](skill-graph/completion-semantics-clarification-2026-11-04.md)
-  Lokal nachgewiesene selbstständige Anwendung zählt für spätere Voraussetzungen und den Gesamtfortschritt. Die Frage nach dem Zugang zu Einheiten wurde am 14. November mit B9 entschieden.
+  Bestätigter Vertrag vom 4. und 11. November. Der Entwurf vom 19. November beschreibt, was sich bei einer Übernahme ändern würde.
 - [Festlegung vom 14. November 2026: Lerneinheiten – Cluster, `after` und Lernfluss](skill-graph/learning-unit-wiring-concept-2026-11-14.md)
-  Was eine Lerneinheit ist, wie Einheiten geordnet werden und wie diese Ordnung im Lernfluss wirkt; nicht umgesetzt.
+  Datierte Festlegung zu Einheitsgrenzen und zur Ordnung von Geschwistereinheiten. Der Statusanhang weist den jeweiligen Umsetzungsstand aus.
 - [Konzeptentwurf vom 17. November 2026: Lerneinheiten – Motivation am Anfang, Prüfungen am Ende](skill-graph/learning-unit-motivation-concept-2026-11-17.md)
-  Jede Einheit mit Prüfungen beginnt mit einem eigenen Motivationsziel, ausdrücklich verdrahtet im Einheiteneintrag und im Graphen; nicht beschlossen, nicht umgesetzt.
+  Früherer Entwurf für einen eigenen Motivationsauftakt. Der Vorschlag vom 19. November beschreibt seine Rolle auf dem Lernweg und den direkten Zugang zur Prüfung.
+- [Was weist der Abschluss einer Lerneinheit nach?](skill-graph/unit-assessment-discussion-2026-11-19.de.md)
+  Arbeitsdokument vom 19. November 2026 zu freier Einstiegswahl und repräsentativen Abschlussprüfungen am Beispiel der hessischen Physik.
 - [Kompendiums-Anhänge zur Graph-Definition (B–F)](skill-graph/compendium-appendix.de.md)
   Aktueller Umsetzungsstand, Prüfstrategie, Glossar/Symbole, Quellen und Single-Source-Build-Referenz.
 - [Architektur- & Austausch-Kompendium (PDF)](skill-graph/skillpilot-skill-graph-architecture.de.pdf)
@@ -187,14 +196,15 @@ Diese Seite ist der Einstiegspunkt für dauerhafte SkillPilot-Konzepte. Umsetzun
 - [Duale Curriculum-Pakete](skill-graph/dual-curriculum-package-releases.md)
   Zielarchitektur für äquivalente JSON-Runtime- und FWU-Ontologie-Release-Pakete, Standalone-Nutzung und Repository-Entkopplung.
 - [Entwurfskriterien und Beispiele für Lerneinheiten](skill-graph/learning-unit-design-and-examples.de.md)
-  Didaktischer Zweck einer Lerneinheit, Kriterien für sinnvolle Grenzen und Prüfungen, zwei durchgearbeitete Kandidaten sowie die Gültigkeitsregeln R1–R5 vom 11. November 2026.
+  Wie aus einem Lernversprechen Aufgaben und Bestehenskriterien werden. Mit der geschachtelten Kinematik-Einheit E.1 in Hessen als Prüfstein.
 - [Wissenskontext](skill-graph/knowledge-context.de.md)
-  Was bei Lernenden an einem Ziel vorausgesetzt werden darf, deterministisch aus dem Graphen abgeleitet für Erzeugung, Review und Coach. Konzept, nicht umgesetzt.
+  Was bei Lernenden an einem Ziel vorausgesetzt werden darf. Die deterministische Ableitung ist als Repository-Werkzeug umgesetzt; Gates, Erzeugungspipelines und Live-Übergabe an den Coach folgen gesondert.
 
 ## Didaktik & Planung
 
 - [Didaktik- & Planungs-Kompendium (PDF)](didactic/skillpilot-didactics-and-planning.de.pdf)
 - [Feynman-Methode beim Lernen](didactic/feynman-rules.de.md)
+- [Wie führt der Claude-Coach einen neuen Begriff ein? (Arbeitsvorschlag für die Beta)](didactic/claude-beta-erklaeren-2026-11-19.de.md)
 - [Frontier-Zielauswahlstrategien & Autopilot](didactic/frontier-goal-selection-strategies-autopilot.de.md)
 - [Curriculum-Zeitachse, Pufferplanung und Soll-Ist-Lerntempo](didactic/curriculum-time-axis-and-pacing.md)
 - [Einheitlicher Lernplanstatus](didactic/unified-learning-plan-status.md)

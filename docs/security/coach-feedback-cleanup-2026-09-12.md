@@ -1,121 +1,138 @@
-# Coach feedback: production cleanup, 12 September 2026
+# Coach-Feedback: Produktionsbereinigung vom 12. September 2026
 
-## Decision and scope
+## Entscheidung und Umfang
 
-The Product Owner explicitly required that coach-generated `workFeedback`,
-`outcomeFeedback` and Recall `feedback` stay in the provider chat, and separately
-authorized removing already stored copies from production. The coach judges
-the learner's work and writes its own feedback. SkillPilot Core receives the
-authorized structured result, not parts of the conversation or success message.
+Der Product Owner verlangte ausdrücklich, dass vom Coach erzeugte Felder
+`workFeedback`, `outcomeFeedback` und Recall-`feedback` im Provider-Chat bleiben,
+und autorisierte gesondert die Entfernung bereits gespeicherter Kopien aus der
+Produktion. Der Coach beurteilt die Arbeit der lernenden Person und formuliert
+seine Rückmeldung selbst. Der SkillPilot-Core erhält das autorisierte
+strukturierte Ergebnis, keine Gesprächsteile oder Erfolgsmeldungen.
 
-This is independent of the separate, expressly authorized curriculum-feedback
-inbox. Its submissions, publication data and retention procedure were not
-targets of this operation.
+Davon unabhängig ist der gesondert und ausdrücklich autorisierte Posteingang
+für Curriculum-Feedback. Seine Einreichungen, Publikationsdaten und
+Aufbewahrungsverfahren waren nicht Gegenstand dieser Bereinigung.
 
-Normative rule:
-[provider-neutral coach boundary](../concept/runtime-workflows/provider-neutral-coach-boundary.md).
-Durable development instructions: repository `AGENTS.md`, section 12.1.
+Verbindliche Regel:
+[providerneutrale Coach-Grenze](../concept/runtime-workflows/provider-neutral-coach-boundary.md).
+Dauerhafte Entwicklungsanweisungen: `AGENTS.md` im Repository, Abschnitt 12.1.
 
-## What was actually persisted
+## Was tatsächlich gespeichert wurde
 
-- Claude normal mastery unnecessarily required two feedback strings. The
-  current implementation did not store those strings as mastery data; they
-  entered input validation and replay hashing nevertheless. Removing their
-  collection is required even without a plaintext database copy.
-- OpenAI normal mastery echoed the strings in `completionHandoff` and in the
-  text result. Those results could enter `openai_de_idempotency.response_json`
-  and `response_text`.
-- Both providers' Verified Recall used shared DTOs that accepted feedback.
-  `LearnerService` stored it as `cardId → verifiedRecall → lastFeedback` in
+- Claudes gewöhnlicher Mastery-Aufruf verlangte unnötigerweise zwei
+  Feedbacktexte. Die damalige Implementierung speicherte sie nicht als
+  Mastery-Daten; sie gingen aber in Eingabevalidierung und Replay-Hashing ein.
+  Ihre Erhebung musste auch ohne Klartextkopie in der Datenbank entfallen.
+- OpenAIs gewöhnlicher Mastery-Aufruf gab die Texte in `completionHandoff`
+  und im Textergebnis zurück. Diese Antworten konnten in
+  `openai_de_idempotency.response_json` und `response_text` gelangen.
+- Verified Recall beider Provider verwendete gemeinsame DTOs, die Feedback
+  annahmen. `LearnerService` speicherte es als
+  `cardId → verifiedRecall → lastFeedback` in
   `learner_client_state.client_state`.
-- Legacy `/api/ai/{locale}/sessions/{token}/verified-recall/result` requests
-  could additionally write `requestBody.feedback` to AI trace JSONL files.
+- Anfragen an die frühere Route
+  `/api/ai/{locale}/sessions/{token}/verified-recall/result` konnten außerdem
+  `requestBody.feedback` in AI-Trace-JSONL-Dateien schreiben.
 
-## Production action completed
+## Abgeschlossene Produktionsmaßnahme
 
-On 12 September 2026, before 10:45 UTC, the operation targeted the database
-`skillpilot` used by the running `skillpilot.service`, verified through that
-service's application process. Database credentials and affected text values
-were never printed or exported.
+Am 12. September 2026, vor 10:45 UTC, wurde die vom laufenden
+`skillpilot.service` verwendete Datenbank `skillpilot` bearbeitet. Die Zuordnung
+wurde über den Anwendungsprozess dieses Dienstes geprüft. Datenbankzugangsdaten
+und betroffene Textwerte wurden weder ausgegeben noch exportiert.
 
-| Store | Before | Action and verification |
+| Speicher | Vorher | Maßnahme und Prüfung |
 | --- | --- | --- |
-| `learner_client_state.client_state` | 90 nonempty `verifiedRecall.lastFeedback` fields in 9 of 53 rows | All 90 fields removed; all other parsed JSON values, row keys and timestamps unchanged |
-| `learner.client_state` | 606 rows; no affected field names | Read-only check, no mutation |
-| `claude_v1_session_idempotency.response_payload` | 2 receipts; no affected field names | Read-only check, receipts and replay state retained |
-| Legacy `claude_v1_idempotency` | Empty | No mutation |
-| `openai_de_idempotency.response_json` and `response_text` | Empty | No mutation |
-| AI trace JSONL files | 18 `requestBody.feedback` fields in 2 of 93 files | All 18 fields removed; every other JSON value and record length preserved |
-| Current and rotated application log files | 8 files; no affected field-name matches | Read-only check, no mutation |
+| `learner_client_state.client_state` | 90 nicht leere `verifiedRecall.lastFeedback`-Felder in 9 von 53 Zeilen | Alle 90 Felder entfernt; sämtliche anderen geparsten JSON-Werte, Zeilenschlüssel und Zeitstempel unverändert |
+| `learner.client_state` | 606 Zeilen; keine betroffenen Feldnamen | Nur lesend geprüft, keine Änderung |
+| `claude_v1_session_idempotency.response_payload` | 2 Quittungen; keine betroffenen Feldnamen | Nur lesend geprüft; Quittungen und Replay-Zustand erhalten |
+| Frühere `claude_v1_idempotency` | Leer | Keine Änderung |
+| `openai_de_idempotency.response_json` und `response_text` | Leer | Keine Änderung |
+| AI-Trace-JSONL-Dateien | 18 `requestBody.feedback`-Felder in 2 von 93 Dateien | Alle 18 Felder entfernt; sämtliche anderen JSON-Werte und Datensatzlängen erhalten |
+| Aktuelle und rotierte Anwendungslogs | 8 Dateien; keine Treffer für betroffene Feldnamen | Nur lesend geprüft, keine Änderung |
 
-The counts describe stored fields/copies, not distinct learners or distinct
-assessment events. No learner record, mastery record, card, repetition history,
-session, OAuth credential or replay receipt was deleted.
+Die Zahlen bezeichnen gespeicherte Felder beziehungsweise Kopien, nicht
+unterschiedliche Lernende oder Prüfungsereignisse. Es wurden weder
+Lernenden- oder Mastery-Datensätze noch Karten, Wiederholungshistorien,
+Sessions, OAuth-Zugangsdaten oder Replay-Quittungen gelöscht.
 
-### Database safeguards
+### Schutzmaßnahmen für die Datenbank
 
-The read-only preflight established exactly nine target rows and ninety fields,
-all under the known two-level Recall path. The write transaction required those
-same counts; a changed count or unexpected JSON location would abort it.
+Die lesende Vorprüfung stellte genau neun Zielzeilen und neunzig Felder fest,
+alle unter dem bekannten zweistufigen Recall-Pfad. Die Schreibtransaktion
+verlangte dieselben Zahlen; bei einer geänderten Anzahl oder unerwarteten
+JSON-Position wäre sie abgebrochen worden.
 
-Only `learner_client_state.client_state` was updated. The transformation keeps
-every root card entry, and removes only `lastFeedback` from its
-`verifiedRecall` object. It does not remove the object or alter its other fields.
-The transaction holds a short write-conflict lock on that table, with a two-second
-lock timeout and ten-second statement timeout.
+Geändert wurde ausschließlich `learner_client_state.client_state`. Die
+Transformation erhält jeden Karten-Wurzeleintrag und entfernt nur
+`lastFeedback` aus dessen `verifiedRecall`-Objekt. Das Objekt und seine übrigen
+Felder bleiben erhalten. Die Transaktion hält eine kurze
+Schreibkonfliktsperre auf der Tabelle, mit zwei Sekunden Lock-Timeout und
+zehn Sekunden Statement-Timeout.
 
-Before commit, the complete resulting card-state table was compared with the
-expected sanitized representation, including all unrelated columns and rows.
-The complete mastery table was compared before and after and was unchanged.
-The transaction committed successfully. A separate read-only pass confirmed
-zero remaining affected field names in the inspected database stores.
+Vor dem Commit wurde die gesamte resultierende Kartenstatustabelle mit der
+erwarteten bereinigten Darstellung verglichen, einschließlich aller
+unbeteiligten Spalten und Zeilen. Die vollständige Mastery-Tabelle blieb im
+Vorher-nachher-Vergleich unverändert. Die Transaktion wurde erfolgreich
+committet. Ein gesonderter lesender Prüflauf fand keine betroffenen Feldnamen
+mehr in den untersuchten Datenbankspeichern.
 
-### Trace safeguards
+### Schutzmaßnahmen für Trace-Dateien
 
-The trace pass parsed the JSON, checked the exact Recall-result route, and
-targeted only `requestBody.feedback`. The remover was first validated against
-25 synthetic cases, including Unicode, escaped quotes, newlines, different key
-positions and non-string values.
+Der Trace-Lauf parste das JSON, prüfte die exakte Recall-Ergebnisroute und
+bearbeitete ausschließlich `requestBody.feedback`. Das Entfernungsverfahren
+wurde zuvor an 25 synthetischen Fällen geprüft, darunter Unicode,
+maskierte Anführungszeichen, Zeilenumbrüche, unterschiedliche Feldpositionen
+und Werte anderer Datentypen.
 
-Each existing field plus its adjacent JSON separator was overwritten with
-same-length whitespace in place. No whole log file was replaced, truncated or
-deleted, so append-only logging could continue without losing new records.
-File identity and original record bytes were checked before each write; the
-resulting JSON was checked against the original object minus that one field.
-The subsequent scan of all 93 trace files found none of the four legacy field
-names. No plaintext backup of the removed data was made.
+Jedes vorhandene Feld samt angrenzendem JSON-Trennzeichen wurde an Ort und
+Stelle mit gleich langen Leerzeichen überschrieben. Keine ganze Logdatei
+wurde ersetzt, gekürzt oder gelöscht; die fortlaufende Protokollierung konnte
+ohne Verlust neuer Datensätze weiterlaufen. Dateiidentität und ursprüngliche
+Bytes wurden vor jedem Schreibvorgang geprüft. Das resultierende JSON wurde
+mit dem ursprünglichen Objekt ohne genau dieses Feld verglichen. Der
+anschließende Scan aller 93 Trace-Dateien fand keinen der vier früheren
+Feldnamen. Es wurde keine Klartext-Sicherung der entfernten Daten angelegt.
 
-## Related mastery incident
+## Zugehöriger Mastery-Vorfall
 
-The reported Claude mastery operation had a persisted success receipt with
-`savedMastery = 1.0`; receipt and payload state versions both equalled 98.
-The corresponding mastery row also contained `1.0` after the cleanup. Thus the
-client's failed-tool display did **not** demonstrate that mastery was missing.
-The exact reason for the failed client response remains unproven. A timeout or
-lost response must not be reported as the established cause without evidence.
+Für den gemeldeten Claude-Mastery-Aufruf lag eine gespeicherte Erfolgsquittung
+mit `savedMastery = 1.0` vor; Zustandsversion von Quittung und Nutzdaten war
+jeweils 98. Der zugehörige Mastery-Datensatz enthielt nach der Bereinigung
+ebenfalls `1.0`. Die fehlerhafte Toolanzeige im Client belegte daher **keine
+fehlende Mastery-Speicherung**. Die genaue Ursache der fehlerhaften
+Clientantwort ist weiterhin nicht nachgewiesen. Ein Timeout oder eine verlorene
+Antwort dürfen ohne Beleg nicht als feststehende Ursache ausgegeben werden.
 
-No production assessment was replayed and no mastery was changed to investigate
-or repair the display issue. This document deliberately includes no learner
-identifier, session token, private answer or assessment prose.
+Zur Untersuchung oder Korrektur dieses Anzeigeproblems wurde keine produktive
+Bewertung wiederholt und keine Mastery verändert. Dieses Dokument enthält
+bewusst weder Lernendenkennung, Sessiontoken noch private Antworten oder
+Bewertungstexte.
 
-## Rollout and deletion limits
+## Rollout- und Löschgrenzen
 
-The data cleanup is completed; it is **not a deployment**. The running old
-backend can still accept and recreate the removed fields until the corrected
-backend and provider contracts are rolled out together. The corrected source
-removes both mastery text inputs and echoes, makes Recall DTOs feedback-free,
-stops `lastFeedback` persistence, and prevents assessment request-body logging.
-Regression tests cover schemas, forbidden inputs, persisted state and logging.
+Die Datenbereinigung ist abgeschlossen; sie ist **kein Deployment**. Das zum
+damaligen Zeitpunkt laufende alte Backend konnte die entfernten Felder weiter
+annehmen und erneut erzeugen, bis korrigiertes Backend und Provider-Verträge
+gemeinsam ausgerollt wurden. Der korrigierte Quellstand entfernt beide
+Mastery-Texteingaben und deren Rückgabe, macht Recall-DTOs feedbackfrei,
+beendet die Speicherung von `lastFeedback` und unterbindet das Protokollieren
+der Bewertungsanfragekörper. Regressionstests prüfen Schemata, verbotene
+Eingaben, gespeicherten Zustand und Logging. Dieses historische Protokoll ist
+kein Nachweis für den Zustand eines späteren Deployments.
 
-Old cached provider schemas or instructions can still send the now forbidden
-fields. The new backend rejects them rather than silently accepting the old
-contract. A successor package and refreshed tool catalog must therefore be
-coordinated with backend activation. Published Claude 1.1.3 artifacts and the
-rejected OpenAI 1.0.0 history remain untouched; local successor preparation is
-not marketplace publication or provider acceptance.
+Alte gecachte Provider-Schemata oder Anweisungen können die inzwischen
+verbotenen Felder weiterhin senden. Das neue Backend weist sie zurück, statt
+den alten Vertrag stillschweigend anzunehmen. Nachfolgepaket und aktualisierter
+Toolkatalog müssen daher mit der Backend-Aktivierung abgestimmt werden.
+Veröffentlichte Claude-1.1.3-Artefakte und die abgelehnte OpenAI-1.0.0-Historie
+bleiben unverändert; lokale Nachfolgevorbereitung ist weder
+Marketplace-Veröffentlichung noch Provider-Abnahme.
 
-PostgreSQL updates are logical deletion, not a guarantee of physical erasure
-from WAL, old disk pages, storage snapshots or external backups. No backup
-retention policy or external snapshot was changed. A restore must reapply this
-targeted removal before exposing restored learning state. Provider-side chat
-history and learner-controlled screenshots are outside this server cleanup.
+PostgreSQL-Updates bewirken eine logische Löschung. Sie garantieren keine
+physische Entfernung aus WAL, alten Datenträgerseiten, Speichersnapshots oder
+externen Backups. Keine Backup-Aufbewahrungsregel und kein externer Snapshot
+wurde verändert. Vor der Freigabe wiederhergestellter Lerndaten muss ein
+Restore diese gezielte Entfernung erneut anwenden. Providerseitige
+Chatverläufe und von Lernenden verwahrte Screenshots liegen außerhalb dieser
+Serverbereinigung.

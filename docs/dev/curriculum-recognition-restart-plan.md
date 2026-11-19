@@ -6,6 +6,15 @@
 > und die neue Fachfolge Mathematik → Physik → Chemie → Biologie.
 > Dieses Dokument bleibt mit seinen damaligen Befunden und ID-Listen erhalten;
 > es ist keine konkurrierende Freigabe zur Umsetzung.
+>
+> **Lesehinweis vom 19. November 2026:** Die Folgeplanung steht inzwischen im
+> [Mathematik-/Physik-Plan](mathematics-physics-learning-units-plan.md), ihr
+> Integrationsstand im [Management Summary](stage-plan-management-summary.md).
+> Die bestätigte November-Regel bleibt der Maßstab bestehender Verträge; ihre
+> [Rechnung mit R1–R5](../concept/skill-graph/assessment-gated-completion.de.md#sec-why-graph-not-enough)
+> steht in §13. Die §§11 und 13 beschreiben den noch nicht
+> angenommenen [Vorschlag zur Einheitenanerkennung](../concept/skill-graph/unit-assessment-discussion-2026-11-19.de.md),
+> nicht den damaligen Umsetzungsauftrag dieses Dokuments.
 
 **Stand: 4. November 2026. Historischer Neuplanungsstand.**
 Dieses Dokument plant die Korrektur; es behauptet weder eine bereits korrigierte
@@ -25,7 +34,7 @@ das nächste fachlich ausgebaut wird. Wirtschaft ist keine Erweiterung dieses Au
 Die gemeinsame technische Grundlage entsteht einmal; unabhängige Fächer bleiben nutzbar.
 
 Verbindlich sind die [Produktentscheidung vom 4. November](../concept/skill-graph/completion-semantics-clarification-2026-11-04.md),
-das [Anerkennungskonzept](../concept/skill-graph/assessment-gated-completion.md),
+die [Rechnung der bestätigten November-Vertragsfassung](../concept/skill-graph/assessment-gated-completion.de.md#sec-why-graph-not-enough),
 die [Graph Definition](../concept/skill-graph/graph-definition.md) und die
 [Lerneinheiten](../concept/skill-graph/learning-units.md).
 Direktes Verständnis und durch unabhängige Anwendung anerkannte Kompetenz sind

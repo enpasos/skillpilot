@@ -6,6 +6,8 @@ vorgegeben. Die Ausgestaltung steht zur Entscheidung. Der Entwurf ergänzt das
 Die [Graph-Definition (§11)](learning-units.de.md#sec-unit-claims) ordnet die
 Vorgaben und die offenen Ausgestaltungsfragen in das Gesamtmodell ein.
 
+**Einordnung vom 19. November 2026.** Der motivierende Auftakt gehört im neuen Entwurf zum geführten Lernweg. Wer direkt zur Abschlussprüfung geht, kann die Prüfung ohne vorheriges Motivationsgespräch beginnen. [Lernwege und Abschluss (§11)](learning-units.de.md)
+
 ## 1. Was Lernende vom Einstieg haben
 
 > Ein Weg führt schräg nach Nordosten. Wie weit kommst du dabei nach Osten?
@@ -91,7 +93,7 @@ von SkillPilot aus. Der Einstieg kann auf zwei Wegen als erledigt gelten
 Das Anerkennungsmodell ist spezifiziert. Seine produktive Einführung setzt
 unter anderem die Bindung an die geprüfte Fassung voraus (R5). Eine später
 ergänzte Kante darf einem früheren Prüfungsergebnis keine neue Anerkennung
-verleihen. [Prüfungsgebundener Abschluss und offene Nachfrage](assessment-gated-completion.de.md#eq-needed)
+verleihen. [Prüfungsgebundener Abschluss und offene Nachfrage](compendium-appendix.de.md#eq-needed)
 
 ## 4. Wie der Auftakt im Graphen steht
 

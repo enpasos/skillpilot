@@ -75,7 +75,9 @@ Ein durch ein Skript erzeugter Bericht, Status-Snapshot oder Dokumentations-Buil
 | Lerneinheit vs. Personalisierungsstufe | Rekursive pädagogische Einheit mit abgeleitetem Abschluss vs. eine der vier Umfangs-/Zustandsebenen. |
 | Lerneinheit vs. Zielschwierigkeit | Erwerbs- und Abschlusseinheit vs. Anspruchsniveau eines einzelnen Ziels (`level`). |
 | Einheitsabschluss vs. Zielverfügbarkeit | Erfüllte Kind- und Eigenpflichten vs. Startvoraussetzungen; das Zielmodell enthält keine technischen Einheitssperren, und `after` ordnet ohne Bedarf oder Mastery. |
-| Einheit vs. Einheit mit Prüfungen | Jede Einheit erfüllt E1–E4 und ordnet über `after`; nur Einheiten mit eigenem gültigem Prüfungsvertrag und vollständigen aktuellen `coverageReviews` erkennen eigene Inhaltsziele nach R1–R5 implizit an. |
+| Einheit vs. Einheit mit Prüfungen | Jede Einheit erfüllt E1–E4 und ordnet über `after`; im geltenden Anerkennungskonzept ist implizite Einzelanerkennung an einen eigenen gültigen Prüfungsvertrag, R1–R5 und vollständige aktuelle `coverageReviews` gebunden. |
+| Einheitennachweis vs. Einzelresultat | Im Vorschlag vom 19. November kann die repräsentative Leistung eine Einheit nachweisen, während nie einzeln geprüfte Details offenbleiben. Pflichtbelege und tatsächlich abgelegte Einzelprüfungen bleiben sichtbar. |
+| Planungsfreigabe vs. Mastery | Die vorgeschlagene Freigabe betrifft fachlich geprüfte eigene Inhaltsatome der bestandenen Einheit für die weitere Planung. Sie schreibt weder Einzelmastery noch neue Periodenereignisse; die Produktentscheidung steht aus. |
 | Geführt in vs. steht in | Belegte amtliche Quellenzuordnung (`officialSource`) vs. didaktischer Lernplatz in der Planeinheit (inkl. begründeter Vorarbeit und abgeleitetem frühestem Bedarf in $L$). |
 | Lernzielbaum vs. Lernkarte | Vollständiger Baum inkl. gewöhnlicher Fachcluster vs. entlang `contains` kontrahierte Sicht nur aus Einheiten und atomaren Zielen mit aggregierten Kindpfeilen. |
 | QA-Scope vs. Lernroute | Ein QA-Scope ist ein registriertes Prüfprofil, kein einzelner Lernpfad. |

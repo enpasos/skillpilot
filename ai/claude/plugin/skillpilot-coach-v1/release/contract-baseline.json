@@ -2,23 +2,23 @@
   "schemaVersion": 1,
   "lane": "CLAUDE_PUBLIC_PLUGIN_V1",
   "pluginIdentity": "skillpilot-coach-v1",
-  "pluginVersion": "1.1.13",
+  "pluginVersion": "1.1.14",
   "state": "PRE_SUBMISSION_CANDIDATE",
-  "capturedAt": "2026-10-31",
-  "baseRevision": "e3e12141c117a420450e15feed585b1fd8df7947",
-  "candidateContractSha256": "2bf29cdadf738dcae12a4abd730049c6af88fbaf6a1733ebf04649fb34ebbc57",
+  "capturedAt": "2026-11-19",
+  "baseRevision": "6bdf9474025b390d7dc6432ce756c19792d41590",
+  "candidateContractSha256": "7feaf8043e8a0936ea406352fb58386b5fabb9ee6682e85bb99a59d403a08e8f",
   "digestAlgorithm": "SHA-256 over sorted UTF-8 records for base revision, publication-file digests, deterministic .plugin archive digest and canonical remote-contract JSON including the exact Claude connector-v1 contract-baseline digest",
-  "purpose": "Pins the public Claude plugin v1 submission package and the exact consumed Claude connector-v1 contract baseline independently from Connector Directory listing state and gates.",
+  "purpose": "Pins the local Claude plugin v1 candidate package and retains the unchanged historical Claude connector-v1 contract baseline as a reference. That reference does not certify the updated local backend, which requires separate focused contract tests; Connector Directory and exact-candidate host acceptance remain independent.",
   "archive": {
     "name": "skillpilot-coach-v1.plugin",
     "format": "deterministic-stored-zip",
-    "bytes": 46595,
-    "sha256": "0e99b10635c0a97a43d5f6fbdc0fa437b6da68bb0483515fdf8230e0764090cd",
+    "bytes": 47085,
+    "sha256": "e957bf74c0a751605c9fcf86af0301b61d4d70cc3df019cadf15e8f2c134d3ee",
     "entries": [
       {
         "packagePath": ".claude-plugin/plugin.json",
         "bytes": 480,
-        "sha256": "80c0c6c654df03757364399175ebdba2a4524194906bd4095f75304713401a1c"
+        "sha256": "ceafc05cdd9676ab12fa9537bedc3471f4ec998bca1b3a44544532e9aeef56ae"
       },
       {
         "packagePath": ".mcp.json",
@@ -27,23 +27,23 @@
       },
       {
         "packagePath": "README.md",
-        "bytes": 9156,
-        "sha256": "3736800b63085f88ecabf395e4fcc3d215b0711699e442541dce8c78e0e9465a"
+        "bytes": 9614,
+        "sha256": "f454874f6dcc9ca796e9c3cf2bd65c11528b386eb9886f8bb1e9f6a49f5a1fb4"
       },
       {
         "packagePath": "SETUP.md",
         "bytes": 11695,
-        "sha256": "701a988b641867a735afc507cba918e4de2b1cba0d787ba71da358284d9f6401"
+        "sha256": "206be419e34748277fd934804b8961d5efb952cb5b836e9d769a8122d6f39936"
       },
       {
         "packagePath": "skills/skillpilot-coach-v1/SKILL.md",
-        "bytes": 18404,
-        "sha256": "25c4558cdec7a636624680b995e63fc8405349f6846760913557b4055346636d"
+        "bytes": 18395,
+        "sha256": "d4691390bd62e6bd0cd04e755f5fe860f90b5b565b80b89123eb4a2ce2a5ea28"
       },
       {
         "packagePath": "skills/skillpilot-coach-v1/references/task-closure.md",
-        "bytes": 3498,
-        "sha256": "5d3d37f6f04f06043bb3b99a82f90e08fa51b31b9b65df7fbc653eed375e1469"
+        "bytes": 3539,
+        "sha256": "45f43aeec55260ecf66edcbf93e5bcbece920b05e6f78ddf9c3e36f663ab0311"
       },
       {
         "packagePath": "skills/skillpilot-coach-v1/references/verified-recall.md",
@@ -90,7 +90,7 @@
   "files": [
     {
       "path": "ai/claude/plugin/skillpilot-coach-v1/.claude-plugin/plugin.json",
-      "sha256": "80c0c6c654df03757364399175ebdba2a4524194906bd4095f75304713401a1c"
+      "sha256": "ceafc05cdd9676ab12fa9537bedc3471f4ec998bca1b3a44544532e9aeef56ae"
     },
     {
       "path": "ai/claude/plugin/skillpilot-coach-v1/.mcp.json",
@@ -98,19 +98,19 @@
     },
     {
       "path": "ai/claude/plugin/skillpilot-coach-v1/README.md",
-      "sha256": "3736800b63085f88ecabf395e4fcc3d215b0711699e442541dce8c78e0e9465a"
+      "sha256": "f454874f6dcc9ca796e9c3cf2bd65c11528b386eb9886f8bb1e9f6a49f5a1fb4"
     },
     {
       "path": "ai/claude/plugin/skillpilot-coach-v1/SETUP.md",
-      "sha256": "701a988b641867a735afc507cba918e4de2b1cba0d787ba71da358284d9f6401"
+      "sha256": "206be419e34748277fd934804b8961d5efb952cb5b836e9d769a8122d6f39936"
     },
     {
       "path": "ai/claude/plugin/skillpilot-coach-v1/skills/skillpilot-coach-v1/SKILL.md",
-      "sha256": "25c4558cdec7a636624680b995e63fc8405349f6846760913557b4055346636d"
+      "sha256": "d4691390bd62e6bd0cd04e755f5fe860f90b5b565b80b89123eb4a2ce2a5ea28"
     },
     {
       "path": "ai/claude/plugin/skillpilot-coach-v1/skills/skillpilot-coach-v1/references/task-closure.md",
-      "sha256": "5d3d37f6f04f06043bb3b99a82f90e08fa51b31b9b65df7fbc653eed375e1469"
+      "sha256": "45f43aeec55260ecf66edcbf93e5bcbece920b05e6f78ddf9c3e36f663ab0311"
     },
     {
       "path": "ai/claude/plugin/skillpilot-coach-v1/skills/skillpilot-coach-v1/references/verified-recall.md",

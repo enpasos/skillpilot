@@ -17,3 +17,9 @@ Given sibling goals under one parent cluster (guaranteed acyclic on `requires`),
 {cols="20%,24%,56%"}
 
 Note that default raw content-tree inspection ([View Projection](repo:docs/concept/skill-graph/view-projection-and-goal-placement.md)) preserves authored `contains` / `treeOrder` sequence, whereas `sortSiblingGoalsBalanced` powers the didactic learner navigation view when explicit `treeOrder` overrides are absent.
+
+### Declared Partial Order and Integrated Learning Map {#sec:dev-no-declared-order}
+
+The sorting described above is the competence-tree heuristic. In the state views delivered through [#160](https://github.com/enpasos/skillpilot/pull/160), source format 1.2 `childOrder.after` has a separate role: it declares a reviewed partial order between sibling units. The composition compiler retains it as `compositionChildOrder`. `after` adds neither `requires` nor frontier access and changes no stored mastery. An authorised learning placement for a necessary atom is likewise not an additional order edge.
+
+The integrated learning map delivered through [#153](https://github.com/enpasos/skillpilot/pull/153) and [#162](https://github.com/enpasos/skillpilot/pull/162) displays units, their order, and subject dependencies. The learning-goal tree remains the content navigation. An activated stage plan supplies shared identities and nested years/phases; without activated plan metadata the map projection remains explicitly provisional. Red backward-dependency arrows require curriculum repair and are not hidden through sorting. The [management record](repo:docs/dev/stage-plan-management-summary.md) states current delivery and acceptance boundaries.

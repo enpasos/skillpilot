@@ -74,6 +74,41 @@ class HessenPhysicsEPhasePlacement(unittest.TestCase):
                 self.assertFalse(motion_atoms & generator.role_atoms({"rootNodes": [e3]})["target"])
                 self.assertIn("Waagerechter Wurf", generator.GOALS["287739a3-6143-55d0-abe7-1a08889e9b49"]["title"])
 
+    def test_assessments_are_local_without_importing_later_motion_content(self):
+        obsolete = {"he-physics-topic-424b07df-bf66-5d7f-99f5-f28b32ad1f22",
+                    "physics-current-measurement-5ff392b6", "physics-current-digital-modelling-5ff392b6",
+                    "physics-he-practice-physics-e-phase"}
+        outputs = {name: generator.generate(view)[0] for name, view in self.views.items()}
+        outputs.update({path.name: view for path, view, _ in generator.duration_outputs()
+                        if view["scope"]["stage"] != "SekI"})
+        for name, view in outputs.items():
+            with self.subTest(view=name):
+                phase = find(view, "physics-e-phase")
+                self.assertFalse(obsolete & {node.get("id") for node in generator.walk(phase["children"])})
+                motion = find(view, "physics-e1-motion")
+                direct_motion = {node.get("goalId") for node in motion["children"]}
+                self.assertTrue({"2b9e565f-d9b4-5e23-b5b7-b7977cecff06", "6ea3fb3c-abdc-568f-ab13-97c36dc274e4",
+                                 "c5807a37-129e-5df6-8989-482bc7f5683e"} <= direct_motion)
+                # This existing exam requires E.4 modelling and Newtonian
+                # dynamics. Its sole learning place must preserve those needs
+                # instead of silently moving them into E.1 for its title.
+                mixed = "a9562b05-c54d-5635-9244-3f7dd24a8642"
+                self.assertNotIn(mixed, generator.role_atoms({"rootNodes": [motion]})["target"])
+                cross_topic = find(view, generator.E_PHASE_CROSS_TOPIC_ASSESSMENTS)
+                self.assertEqual(cross_topic["label"], "Themenübergreifende Prüfungen")
+                self.assertIn(mixed, {node.get("goalId") for node in cross_topic["children"]})
+                references = [node for node in generator.walk(phase["children"]) if node.get("goalId") == mixed]
+                self.assertEqual(len(references), 1)
+                for identifier in ("ac25ffe3-fd42-592d-a937-79cc13460313", "30ddb2d7-b991-55fe-9e74-37ffe1048f9f"):
+                    self.assertIn(identifier, generator.role_atoms({"rootNodes": [find(view,
+                        "he-physics-topic-04d1d2df-a94b-5db4-8d07-cbb512c2e0b9")]})["target"])
+                self.assertIn("5fd45dbc-0eb1-591b-99a9-7386336f1456", generator.role_atoms({"rootNodes": [find(view,
+                    "physics-e2-newton-and-conservation")]})["target"])
+                methods = find(view, "he-physics-topic-1e9ec823-384b-5e5f-974c-4ce224d05c19")
+                self.assertTrue({"0521c3ce-999b-5b35-bb3c-7042f24a30ce", "de1ed3f0-80b2-5544-9971-c8392f76a3e8",
+                                 "16bfb017-53d6-5328-a4e3-2e2b4e4398a9"}
+                                <= {node.get("goalId") for node in methods["children"]})
+
     def test_repair_preserves_reference_payloads_roles_basis_and_other_units(self):
         def payloads(view):
             references = []

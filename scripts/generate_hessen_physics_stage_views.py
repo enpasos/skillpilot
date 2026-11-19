@@ -38,6 +38,47 @@ E_PHASE_PLANNING_POLICY = [
     ("he-physics-topic-df11eb33-4900-52bf-93b3-eb82ff0f9a28", "physics-e2-newton-and-conservation"),
     ("he-physics-topic-9743baad-9371-52b6-98ee-72bc6dc68701", "he-physics-topic-287739a3-6143-55d0-abe7-1a08889e9b49"),
 ]
+E_PHASE_CROSS_TOPIC_ASSESSMENTS = "physics-he-ephase-cross-topic-assessments"
+# Learning places follow the work actually assessed in the task and rubric.
+# In particular, a supplied physical context does not turn a measurement or
+# linearisation assessment into a thermodynamics or oscillations assessment.
+E_PHASE_ASSESSMENT_PLACEMENTS = {
+    "physics-e1-motion": (
+        "2b9e565f-d9b4-5e23-b5b7-b7977cecff06",
+        "6ea3fb3c-abdc-568f-ab13-97c36dc274e4",
+        "c5807a37-129e-5df6-8989-482bc7f5683e",
+    ),
+    "physics-e2-newton-and-conservation": (
+        "22561c66-3957-5d55-b07a-25de1f359930",
+        "72649cf5-893c-5f03-88bd-a2497171d434",
+        "be6d4895-65ab-545b-8df9-84e5a308a5e3",
+    ),
+    "he-physics-topic-287739a3-6143-55d0-abe7-1a08889e9b49": ("8320bb17-e6ab-50ea-a965-aa331bfd33e1",),
+    "he-physics-topic-04d1d2df-a94b-5db4-8d07-cbb512c2e0b9": (
+        "dd99528a-bae5-5b78-89e6-c6092c927f8d",
+        "3791c574-2194-52fa-846b-ee1d4e2c5877",
+    ),
+    "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089": (
+        "1b432223-3d59-5586-86a9-2214b4844101",
+        "7e0308d8-a239-5c0f-b2c0-724f21e4da60",
+        "8a1d4093-9832-5010-b1ca-9d32d8c05afa",
+    ),
+    "he-physics-topic-df11eb33-4900-52bf-93b3-eb82ff0f9a28": ("6ba2e47f-7e88-5d30-8f1a-3f4b4f785ca1",),
+    "he-physics-topic-9743baad-9371-52b6-98ee-72bc6dc68701": ("6d25344c-35d7-5853-925d-2bccbaf50630",),
+    "he-physics-topic-1e9ec823-384b-5e5f-974c-4ce224d05c19": (
+        "0521c3ce-999b-5b35-bb3c-7042f24a30ce",
+        "de1ed3f0-80b2-5544-9971-c8392f76a3e8",
+        "16bfb017-53d6-5328-a4e3-2e2b4e4398a9",
+    ),
+    E_PHASE_CROSS_TOPIC_ASSESSMENTS: (
+        # Its present reviewed prerequisite chain includes E.4 spreadsheet
+        # modelling. The title alone must not promote that chain into E.1.
+        "a9562b05-c54d-5635-9244-3f7dd24a8642",
+        "5773ccbe-cd20-5ba0-99a5-7ccd5f42be51",
+        "879491c0-7153-570b-91f4-c61d9fe8a143",
+        "7c0b94b9-2af7-59d4-bfae-278a3418f6a8",
+    ),
+}
 G8_SOURCE = ROOT / "curricula/DE/Gymnasium/input/HE/lower-secondary/source-extraction/DE_HE_PHYSIK_SEKI_G8.source-extraction.json"
 G8_SOURCE_SHA256 = "f7d038fb1c3aba9e4bea7b29e21431f49d138cee6297b048cc9024267337217e"
 GOALS = {}
@@ -358,6 +399,17 @@ def generate(view):
         destination["children"].append(node)
     retained = [node for node in upper["children"] if node not in phases and not atoms(node)]
     upper["children"] = phases + [exam] + retained
+    cross_topic = topic(E_PHASE_CROSS_TOPIC_ASSESSMENTS, "Themenübergreifende Prüfungen")
+    cross_topic["labelEn"] = "Cross-topic assessments"
+    phases[0]["children"].append(cross_topic)
+    for destination, assessment_ids in E_PHASE_ASSESSMENT_PLACEMENTS.items():
+        target = find(destination)[2]
+        for identifier in assessment_ids:
+            references = [node for node in walk(phases[0]["children"])
+                          if node.get("goalId") == identifier and node.get("projectionRole") != "prerequisiteOnly"]
+            if len(references) != 1 or not GOALS[identifier].get("examData"):
+                raise ValueError(f"{view['viewId']}: expected one reviewed E-phase assessment {identifier}")
+            target["children"].append(take(identifier))
     pull_earlier(phases, atoms, lambda identifier: extract(identifier, upper["children"]), shifts)
     for phase in phases:
         pull_earlier([node for node in phase["children"] if node["kind"] == "structure" and atoms(node)], atoms,
@@ -804,7 +856,9 @@ def main():
     # All four outputs pass preflight before any write.
     for path, generated in outputs:
         if args.write:
-            path.write_text(json.dumps(generated, ensure_ascii=False, indent=2) + "\n")
+            payload = (json.dumps(generated, ensure_ascii=False, indent=2) + "\n").encode("utf-8")
+            if not path.exists() or path.read_bytes() != payload:
+                path.write_bytes(payload)
         elif not path.exists() or json.loads(path.read_text()) != generated:
             raise ValueError(path.name + ": stale Hessen Physics stage placement")
     if args.report:

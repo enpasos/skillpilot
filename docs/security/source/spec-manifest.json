@@ -1,9 +1,12 @@
 {
   "schemaVersion": 1,
   "documentId": "skillpilot-security-and-privacy",
-  "documentDate": "2026-11-11",
-  "sourceDateEpoch": "1794355200",
-  "languages": ["de", "en"],
+  "documentDate": "2026-11-19",
+  "sourceDateEpoch": "1795046400",
+  "languages": [
+    "de",
+    "en"
+  ],
   "useMarkdownH4": true,
   "appendixChapters": [],
   "chapters": [
@@ -17,7 +20,7 @@
         "docs/security/skillpilot-security-and-privacy.de.pdf"
       ],
       "babel": "english,ngerman",
-      "kicker": "SkillPilot Sicherheits- & Rechtsdossier · Band V",
+      "kicker": "SkillPilot Sicherheits- & Rechtsdossier · Band VI",
       "title": "Sicherheit, Datenschutz und KI-Transparenz",
       "subtitle": "Pseudonyme Datenhaltung und Löschgrenzen, OpenAI-MCP-Clientbindung\n(mTLS, OAuth, 24h-Lernsession) und EU-KI-Verordnung-Compliance",
       "pdfTitle": "SkillPilot — Sicherheit, Datenschutz und KI-Transparenz (DE)",
@@ -27,7 +30,7 @@
       "tocHeader": "Inhaltsverzeichnis",
       "abstractBox": {
         "title": "Geltungsbereich dieses Dossiers",
-        "body": "Dieser Band vereint die technischen Sicherheits-, Datenschutz- und KI-Transparenznachweise von SkillPilot: das Datenfluss- und Speicherkonzept über Browser, pseudonymes Backend, aktiven Claude-Beta-Pfad und OpenAI-Kandidaten einschließlich 365-Tage-Inaktivitätslöschung, die vierstufige OpenAI-MCP-Clientbindung (HTTPS, Connector-mTLS, OAuth mit PKCE `S256` und 24-Stunden-Lernsession) sowie die strukturierte Compliance-Dokumentation zur europäischen KI-Verordnung (Art. 50 und Anhang III)."
+        "body": "Dieser Band vereint die technischen Sicherheits-, Datenschutz- und KI-Transparenznachweise von SkillPilot: das Datenfluss- und Speicherkonzept über Browser, pseudonymes Backend, aktiven Claude-Beta-Pfad sowie OpenAI- und Gemini-Kandidaten einschließlich 365-Tage-Inaktivitätslöschung, die vierstufige OpenAI-MCP-Clientbindung (HTTPS, Connector-mTLS, profilgebundenes OAuth mit PKCE `S256` und 24-Stunden-Lernsession) sowie die strukturierte Compliance-Dokumentation zur europäischen KI-Verordnung (Art. 50 und Anhang III)."
       },
       "partHeaders": {
         "01-data-privacy": "Datenschutz- & Speicherkonzept",
@@ -35,7 +38,7 @@
         "03-ai-act-compliance": "EU-KI-Verordnung & Transparenz"
       },
       "copyrightFooter": [
-        "Stand: 11. November 2026 · Lizenz: Apache-2.0 (technische Sicherheits- und Compliance-Dokumentation; siehe LICENSING.md).",
+        "Stand: 19. November 2026 · Lizenz: Apache-2.0 (technische Sicherheits- und Compliance-Dokumentation; siehe LICENSING.md).",
         "Technische Architektur- und Bestandsdokumentation — ersetzt keine Rechtsberatung und keine verbindlichen Rechtstexte unter skillpilot.com/privacy bzw. skillpilot.com/legal."
       ]
     },
@@ -44,7 +47,7 @@
         "docs/security/skillpilot-security-and-privacy.en.pdf"
       ],
       "babel": "ngerman,english",
-      "kicker": "SkillPilot Security & Compliance Dossier · Volume V",
+      "kicker": "SkillPilot Security & Compliance Dossier · Volume VI",
       "title": "Security, Data Privacy, and AI Transparency",
       "subtitle": "Pseudonymous Storage and Deletion Boundaries, OpenAI MCP Client Binding\n(mTLS, OAuth, 24h Learning Session), and EU AI Act Compliance",
       "pdfTitle": "SkillPilot — Security, Data Privacy, and AI Transparency (EN)",
@@ -54,7 +57,7 @@
       "tocHeader": "Contents",
       "abstractBox": {
         "title": "Scope of this dossier",
-        "body": "This volume consolidates SkillPilot's technical security, data-privacy, and AI-transparency specifications: the data-flow and storage architecture across browser, pseudonymous backend, active Claude beta lane, and OpenAI integration candidate including the 365-day inactivity deletion boundary; the four-proof OpenAI MCP client-binding architecture (HTTPS, connector mTLS, OAuth with PKCE `S256`, and 24-hour learning sessions); and the EU AI Act compliance assessment (Article 50 transparency and Annex III boundaries)."
+        "body": "This volume consolidates SkillPilot's technical security, data-privacy, and AI-transparency specifications: the data-flow and storage architecture across browser, pseudonymous backend, active Claude beta lane, and OpenAI and Gemini integration candidates including the 365-day inactivity deletion boundary; the four-proof OpenAI MCP client-binding architecture (HTTPS, connector mTLS, profile-bound OAuth with PKCE `S256`, and 24-hour learning sessions); and the EU AI Act compliance assessment (Article 50 transparency and Annex III boundaries)."
       },
       "partHeaders": {
         "01-data-privacy": "Data Privacy & Storage Concept",
@@ -62,7 +65,7 @@
         "03-ai-act-compliance": "EU AI Act & Transparency"
       },
       "copyrightFooter": [
-        "As of 11 November 2026 · License: Apache-2.0 (technical security and compliance documentation; see LICENSING.md).",
+        "As of 19 November 2026 · License: Apache-2.0 (technical security and compliance documentation; see LICENSING.md).",
         "Technical architecture and inventory documentation — does not replace legal advice or the binding public policies at skillpilot.com/privacy and skillpilot.com/legal."
       ]
     }
@@ -75,7 +78,9 @@
   "webPages": [
     {
       "id": "data-privacy",
-      "sources": ["01-data-privacy"],
+      "sources": [
+        "01-data-privacy"
+      ],
       "paths": {
         "en": "docs/security/data-privacy.md",
         "de": "docs/security/data-privacy.de.md"
@@ -91,7 +96,9 @@
     },
     {
       "id": "openai-mcp-client-binding",
-      "sources": ["02-openai-mcp-client-binding"],
+      "sources": [
+        "02-openai-mcp-client-binding"
+      ],
       "paths": {
         "de": "docs/security/openai-mcp-client-binding.md",
         "en": "docs/security/openai-mcp-client-binding.en.md"
@@ -107,7 +114,9 @@
     },
     {
       "id": "ai-act-compliance",
-      "sources": ["03-ai-act-compliance"],
+      "sources": [
+        "03-ai-act-compliance"
+      ],
       "paths": {
         "de": "docs/legal/ki-verordnung-compliance-stand-2026-07-29.md",
         "en": "docs/legal/ki-verordnung-compliance-stand-2026-07-29.en.md"

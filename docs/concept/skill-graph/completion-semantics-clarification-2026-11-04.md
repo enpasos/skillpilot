@@ -1,6 +1,6 @@
 # Produktentscheidung: Beherrschung durch Verständnis und selbständige Anwendung
 
-> **Einordnung vom 17. November 2026.** Die am 4. November beschlossene globale Anerkennung gilt weiter. Eine in ihrer Einheit nachgewiesene Kompetenz erfüllt auch später die Voraussetzungen anderer Ziele. [Geltende Anerkennungsregel (§13)](assessment-gated-completion.de.md#sec-global-effect)
+> **Bestätigte Vertragsfassung vom 4. und 11. November 2026.** Sie gilt bis zu einer neuen Produktentscheidung. Der Konzeptstand vom 19. November trennt den Einheitenabschluss, die Freigabe einzelner Voraussetzungen und den persönlichen Nachweisverlauf. [Aktueller Entwurf (§13)](assessment-gated-completion.de.md)
 >
 > Die damals offene Frage nach Startsperren beantwortet B9 vom 14. November. `after` ordnet Vorschläge unter erreichbaren Zielen. Eine verfügbare Prüfung im persönlichen Lernumfang kann die Person weiterhin direkt versuchen. [Einheitsfolge (§11.5)](learning-unit-progression.de.md#sec-unit-progression) · [Direkter Prüfungszugang (§8.4)](context-and-views.de.md#sec-exams)
 
@@ -85,10 +85,10 @@ Startblockaden sind und ob direkte Prüfungsversuche davon betroffen sind, bleib
 bewusst offen. Die Einteilung muss einen möglichen Ablauf zulassen; atomare
 Zyklenfreiheit allein garantiert noch keine zyklusfreie Folge ganzer Einheiten.
 
-Die [normative Abschlussrechnung](assessment-gated-completion.md) definiert
-die Mengen und die Verbindung zur [Graph-Definition](graph-definition.md).
-[Lerneinheiten](learning-units.md) beschreiben die rekursive Struktur;
-[Abhängigkeiten und Lernweg](learning-unit-progression.md) erläutern die
+Die [geltende Abschlussrechnung](assessment-gated-completion.de.md#sec-transitive-demand) definiert
+die Mengen und die Verbindung zur [Graph-Definition](graph-definition.de.md).
+[Lerneinheiten](learning-units.de.md) beschreiben die rekursive Struktur;
+[Abhängigkeiten und Lernweg](learning-unit-progression.de.md) erläutern die
 separate Entscheidung über Zugang und Reihenfolge. Die Umsetzung folgt später.
 
 ## Verbindliche Anforderung an Prüfungen
@@ -157,8 +157,8 @@ Tragfähig ist die Regel nur in Einheiten, die die Gültigkeitsregeln R1–R5
 erfüllen: Prüfungspfad für jedes eigene gewöhnliche Ziel, geprüfter
 Deckungsnachweis, Deckung nur innerhalb der Voraussetzungen der Prüfung, genau
 eine direkt zuständige Einheit und versionierter Vertrag. Wortlaut und
-Verortung der Regeln stehen in
-[Graph-Definition §13.3](assessment-gated-completion.de.md#sec-why-graph-not-enough).
+Verortung der Regeln stehen in der
+[Graph-Definition, §13.3](assessment-gated-completion.de.md#sec-why-graph-not-enough).
 
 ## Hinweis vom 12. November 2026
 

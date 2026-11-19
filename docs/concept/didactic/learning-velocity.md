@@ -22,15 +22,16 @@
 
 Learning Velocity is a didactic momentum metric reflecting a learner's **consistency over time** — encouraging steady habits (*"don't break the chain"*) rather than isolated cramming bursts.
 
-Conceptually, Learning Velocity is the count of newly mastered **atomic** goals per calendar week $w$:
+The measure of newly achieved goals counts **first evidenced individual outcomes** per calendar week $w$. Let $t_1(g)$ be the time of the first explicit completion, where that date is reliably known.
 
 $$
-\mathrm{velocity}(w) = \bigl|\{\, g \in A \mid \mathrm{mastered}(g) \land \mathrm{achieved\_at}(g) \in w \,\}\bigr|.
+\mathrm{velocity}(w) = \bigl|\{\, g \in A \mid t_1(g) \in w \,\}\bigr|.
 $$
 
 - **Atomic goals only:** Only leaf goals count (never cluster containers), preventing structural double-counting.
 - **Binary goal outcome:** A goal is either mastered or not mastered; there is no partial goal credit. The current storage compatibility threshold `mastery >= 0.9` interprets persisted values and is not a grading scale or permission for partial mastery.
 - **Calendar basis:** The present Cockpit implementation ("recorded completions", see [Daily Learning Progress](../runtime-workflows/daily-learning-progress.en.md)) groups events by `Europe/Berlin` calendar weeks, counts the same goal at most once per day, and keeps legacy undated history visible without backfilling it into the chart.
+- **Units under the proposal of 19 November.** A passed final assessment counts as an actual assessment goal on its completion date. Subject-reviewed clearance for later prerequisites creates no further dated events for skipped learning activities.
 
 <a id="sec-velocity-caveats"></a>
 ### 3.2. Interpretation, design principles, and caveats

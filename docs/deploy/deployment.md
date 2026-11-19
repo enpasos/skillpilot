@@ -35,7 +35,8 @@ copying assets. A missing production dependency therefore cannot leave a new
 
 Learning-goal-book PDFs and their public indexes are generated, not committed.
 The deployment uses `npm ci`, installs the lockfile-matched Playwright Chromium,
-checks that it can launch, and generates/verifies all four books before Vite.
+checks that it can launch, and generates/verifies all five registered books before Vite.
+The five subjects are Mathematics, Physics, Chemistry, Biology and Economics; `app/src/utils/goalBookPublicationRegistry.ts` is authoritative. Own learning-goal-book content is CC-BY-4.0 under the [license allocation](https://github.com/enpasos/skillpilot/blob/main/LICENSING.md).
 Browser OS libraries must already be available; there is no silent fallback to
 a system browser. See [the book build and history-migration runbook](goal-book-build-and-history-cleanup.md),
 especially before using an old production checkout after the one-time Git
@@ -437,7 +438,7 @@ separate operational decisions.
 ## Asset deployment details
 
 - `scripts/deploy_decks.py`
-  - scans `curricula/**/json/` for files matching `_deck*.json`
+  - scans `curricula/**/json/` for filenames ending in `_deck.json`, `_deck.<language>.json` or `_deck_<language>.json` (regex `_deck([._][a-z]{2})?\.json$`)
   - copies them to:
     - `app/public/data/`
     - `backend/src/main/resources/static/data/`
@@ -462,12 +463,12 @@ separate operational decisions.
     communication locale.
 - The canonical OpenAI V1 public values are safe, versioned application
   defaults:
-  - MCP endpoint: `https://mcp-coach-v1.skillpilot.com/mcp`
-  - OAuth resource: `https://mcp-coach-v1.skillpilot.com/mcp`
+  - MCP endpoint: `https://mcp-openai.skillpilot.com/mcp`
+  - OAuth resource: `https://mcp-openai.skillpilot.com/mcp`
   - protected-resource metadata:
-    `https://mcp-coach-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp`
+    `https://mcp-openai.skillpilot.com/.well-known/oauth-protected-resource/mcp`
   V1 binds exactly two active content-addressed MCP Apps UI resources on the
-  fixed widget domain `https://mcp-coach-v1.skillpilot.com`: the image-only
+  fixed widget domain `https://mcp-openai.skillpilot.com`: the image-only
   goal renderer and interactive card learning. Previously advertised image
   hash URIs remain passive and byte-identically readable. The card-review tool
   is app-only and unbound; ordinary tools remain UI-free. Permanent-ID and

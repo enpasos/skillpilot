@@ -16,7 +16,7 @@ Die vor Lernbeginn gewählte Skill-Landschaft; sie spannt das gesamte Zieluniver
 
 *EN: Personal curriculum* — siehe [Learning Workflow](repo:docs/concept/runtime-workflows/learning-workflow.md)
 
-Der bestätigte, längerfristig gültige Ausschnitt des Basiscurriculums für eine lernende Person (Bundesland oder kanonische Sicht, Dauermodell, Schulstufe, Fächer und Kursprofile je Fach). Er bestimmt die lernendenseitige Kompositionssicht und bildet den Kandidatenraum für Fokus, Frontier, Fortschritt und Abschluss, während das Backend bei strikten Prüfungen weiterhin den Gesamtgraphen heranziehen kann.
+Der bestätigte, längerfristig gültige Ausschnitt des Basiscurriculums für eine lernende Person (Bundesland oder kanonische Sicht, Dauermodell, Schulstufe, Fächer und Kursprofile je Fach). Er bestimmt die lernendenseitige Kompositionssicht und bildet den Kandidatenraum für Fokus, Frontier, Fortschritt und Abschluss, während das Backend bei strikten Prüfungen weiterhin den Gesamtgraphen heranziehen kann. Die Auswahl liefert die atomaren Ausgangsziele $S$. Die persönliche Lernbasis $L$ umfasst $S$ und alle im kanonischen Graphen transitiv benötigten Voraussetzungen. Dazu können Ziele eines anderen Fachs gehören. Ein Fokuswechsel ändert diese Lernbasis nicht.
 
 Dieser Zustand gehört verbindlich dem Backend und wird ausschließlich über die SkillPilot-Weboberfläche bzw. das Cockpit bearbeitet – der Chat-Coach fragt ihn weder ab noch verändert er ihn.
 
@@ -59,7 +59,7 @@ $\mathrm{Sat}(g)$ gilt genau dann, wenn die atomare Basis von $g$ nichtleer und 
 
 *EN: Optimistic mode* — siehe [Context & Views](repo:docs/concept/skill-graph/context-and-views.en.md)
 
-Erst auf den gewählten Sichtumfang filtern (einschließlich expliziter `prerequisiteOnly`-Grundlagen), dann Voraussetzungen prüfen. Lernende können direkt im gewählten Umfang starten, ohne pauschal durch ältere Jahrgänge blockiert zu werden. Dies ist der Standardmodus.
+Die Laufzeit leitet Voraussetzungen im Gesamtgraphen ab und ermittelt dort die Erreichbarkeit, auch über ausgeblendete Zwischenziele. Erst danach beschränkt sie die blockierenden Voraussetzungen auf den gewählten Umfang einschließlich der ausgewiesenen Grundlagen. Dies ist der Standardmodus.
 
 ### Strikter / pessimistischer Modus (`Strict mode`) {unnumbered=true}
 
@@ -75,11 +75,23 @@ Die noch unerfüllten effektiven Voraussetzungen eines Ziels, getrennt nach Lüc
 
 ### Beherrschung (`Mastery`) {unnumbered=true}
 
-*EN: Mastery* — siehe [Learning Workflow](repo:docs/concept/runtime-workflows/learning-workflow.md) und [Implizite Beherrschung](repo:docs/concept/skill-graph/assessment-gated-completion.md)
+*EN: Mastery* — siehe [Learning Workflow](repo:docs/concept/runtime-workflows/learning-workflow.md) und [Prüfungsnachweise und Anerkennungsvertrag](repo:docs/concept/skill-graph/assessment-gated-completion.md)
 
 Das einzige gespeicherte Ergebnis für ein atomares Lernziel: **gemeistert oder noch nicht gemeistert** (kodierbar als `0` und `1`, ohne Zwischennoten oder zweite Qualifikationsstufe). Mastery hängt an stabilen Lernziel-IDs und gilt global über alle Kompositionssichten hinweg. Cluster- oder Fachfortschritt ist der gewichtete Anteil eindeutiger gemeisterter atomarer Ziele.
 
-Das verbindliche Konzept vom 4. November 2026 ergänzt die **effektive Beherrschung** $M_{\mathrm{eff}} = M \cup I$: Dabei bezeichnet $I$ die abgeleitete Anerkennung gewöhnlicher Kompetenzen durch selbstständige Anwendung in gültigen lokalen Prüfungsverträgen. Prüfungs- und Memorierziele gelangen niemals nach $I$. Die Laufzeitanpassung an diesen erweiterten Vertrag steht noch aus.
+Die beschlossenen Anerkennungsregeln vom 4. und 11. November 2026 ergänzen die **effektive Beherrschung** $M_{\mathrm{eff}} = M \cup I$: Dabei bezeichnet $I$ die abgeleitete Anerkennung gewöhnlicher Kompetenzen in gültigen lokalen Prüfungsverträgen. Prüfungs- und Memorierziele gelangen niemals nach $I$. Die globale revisionsgebundene Laufzeitumsetzung ist noch unvollständig. Der Vorschlag vom 19. November ersetzt diese geltende Vertragsgrundlage nicht; seine Begriffe unterscheiden Einheitenurteil, direkten Einzelbeleg und Planungsfreigabe.
+
+### Einheitennachweis (Vorschlag vom 19. November 2026) {unnumbered=true}
+
+*EN: Unit qualification (proposal)* — siehe [Einheitenabschluss](repo:docs/concept/skill-graph/learning-units.md#sec-proposal-unit-completion)
+
+Das vorgeschlagene Urteil, dass eine benannte fachliche Einheit auf dem ausgewiesenen Niveau durch die Pflichtbelege ihrer Fassung nachgewiesen ist. Repräsentative Leistungen können dieses Urteil tragen, ohne jedes Detail einzeln zu prüfen. Der Vorschlag zählt alle ausgewiesenen Pflichtkinder mit; ein Ersatz ihrer Prüfungen durch eine Elternprüfung ist gesondert zu entscheiden. Er erzeugt keine nie erbrachten Einzelresultate und keinen Vermerk über einen übersprungenen Auftakt, Kartenabruf oder Versuch. Produktentscheidung und Erprobung stehen aus.
+
+### Planungsfreigabe (Vorschlag vom 19. November 2026) {unnumbered=true}
+
+*EN: Planning release (proposal)* — siehe [Planungsfreigabe](repo:docs/concept/skill-graph/assessment-gated-completion.md#sec-proposal-planning-release)
+
+Im Vorschlag umfasst $F_{\mathrm{plan}}$ ausschließlich eigene gewöhnliche Inhaltsziele einer vollständig bestandenen Einheitenfassung, soweit ihr Fachreview den vollen Anspruch bestätigt. Für jedes Ziel gilt derselbe Maßstab wie bei einem direkten Einzelbeleg. Die Freigabe gilt bei späteren Voraussetzungen auch außerhalb der Einheit. Für Ziele einer anderen Einheit ist deren eigener Nachweis maßgeblich. Das gilt auch für ein Kind, dessen eigene Freigaben schon vor dem Elternabschluss wirken können. Die Freigabe erzeugt weder einen Mastery-Eintrag noch ein datiertes Abschlussereignis.
 
 ### Curriculum-Zeitachse und Stoffverteilungsplan {unnumbered=true}
 

@@ -1,5 +1,7 @@
 ### Titel-Vorschlag für den Strip: *„Wie der Agent seinen Job macht“*
 
+> **Einordnung des ursprünglichen Bildskripts · 19. November 2026:** Der Coach erhält einen autorisierten Lernkontext über eine kurzlebige Lernsession, nicht die dauerhafte SkillPilot-ID. Der Erfolgs-Ping steht für eine zulässige Abschlussmeldung nach den Regeln des jeweiligen Zieltyps; das Backend prüft den Zustandswechsel, nicht unabhängig die fachliche Richtigkeit der Lösung. Ein erfolgreicher Prüfungsnachweis belegt die tatsächlich verlangte Leistung. Die ursprünglichen Bildtexte und Bilder bleiben erhalten.
+
 **Panel 1: Der Auftrag (Start)**
 -   **Bild:** Ein freundlicher, moderner Roboter (der "Agent") ist startklar, wirkt aber noch passiv. Er hält ein leeres Klemmbrett. Neben ihm steht ein menschlicher Nutzer (Schüler), der erwartungsvoll guckt.
 -   **Text:** *„Lektion 1: Bereit, aber blind. Sprach-KIs können toll reden, wissen aber nicht automatisch, wo der Schüler steht. Ohne Karte kein Kurs. Der Agent braucht erst Instruktionen.“*

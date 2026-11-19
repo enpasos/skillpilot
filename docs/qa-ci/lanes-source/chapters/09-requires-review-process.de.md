@@ -9,7 +9,7 @@ Das Report-Werkzeug `app/scripts/generateRequiresReport.ts` (`npm run report:req
 - **`direct requires`:** Unmittelbar am Atomziel selbst hinterlegte Voraussetzungen.
 - **`effective requires`:** Direkte Voraussetzungen zuzüglich aller von Vorgänger-Clustern über `contains` geerbten Voraussetzungen.
 
-Während diese Sicht für die Bestandsmigration unverzichtbar ist, bleibt der verbindliche Zielzustand eine rein atomare Voraussetzungsschicht $R \subseteq A \times A$ ([Graph-Definition](repo:docs/concept/skill-graph/graph-definition.md)).
+Während diese Sicht für die Bestandsmigration unverzichtbar ist, bleibt der verbindliche Zielzustand eine rein atomare Voraussetzungsschicht $R \subseteq A \times A$ ([Graph-Definition](repo:docs/concept/skill-graph/graph-definition.md)). Bei Prüfungszielen bezeichnet `requires` die notwendige Vorbereitung; die behauptete Deckung steht separat in `examData.coveredGoalIds` und benötigt ein Aufgaben-/Rubrikreview. Ein fehlender Deckungsnachweis wird durch eine passende Aufgabe behoben, niemals durch eine zusätzliche fachlich unbegründete Voraussetzungskante.
 
 ### Sechsstufiger Prüf- und Reparaturablauf {#sec:qal-requires-workflow}
 

@@ -66,7 +66,7 @@ Die vorhandene [Stufenplan-Grundlage](repo:contracts/curriculum-package/v1.3/REA
 
 #### Kanonische Identität bleibt erhalten.
 
-Ein kanonischer Cluster darf durch eine direkte Referenz oder ausgeblendete Kinder kein eigenständig prüfbares oder beherrschbares Atom werden. Diese Regel gilt unabhängig davon, ob ein gesondertes `semanticKind`-Review vorliegt. Eine zusammengeklappte Darstellung repräsentiert ihre geprüfte kanonische atomare Zielbasis; Voraussetzungsprüfung, Fortschritt und Abschluss behalten diese Basis. `canonicalSubtree` oder ausdrückliche Referenzen auf die beabsichtigten kanonischen Atome legen sie fest. Eine Projektionsänderung darf einen vorhandenen Ergebniswert unter der Cluster-ID nicht auf Kindziele übertragen.
+Eine zusammengeklappte Darstellung behält die kanonische atomare Basis ihres Clusters. Diese lässt sich über `canonicalSubtree` oder ausdrückliche Referenzen auf die beabsichtigten Atome prüfen. Das Ausblenden von Kindern ändert weder den Knotentyp noch die Ergebnisse der Kinder. Auch für eine als Einheit erklärte Gruppe braucht ein eigener Einheitenabschluss das Lernversprechen und die Pflichten der zugehörigen Fassung.
 
 Ein autoritativ als `curricularArea` klassifizierter Cluster darf nicht über eine direkte `goalEntry`-Referenz als undurchsichtiges, atomar wirkendes Laufzeitziel erscheinen. Eine `canonicalSubtree`-Referenz erhält seine geprüften Nachfahren; alternativ benennt eine explizite Sichtstruktur die beabsichtigten Atomziele. Diese Darstellungsregel verändert keine Projektionsrolle.
 
@@ -87,7 +87,7 @@ Die Auswahl „Schule“, „Hochschule“ oder „Sprachen“ ist zunächst Kat
 1. **Basiscurriculum:** Ein ausdrücklich auswählbares Wurzelcurriculum stellt den Zielbestand bereit.
 2. **Personal Curriculum:** Der längerfristig festgelegte, backendseitig verantwortete Bildungsumfang. Dazu gehören beim Schulcurriculum der Landes- beziehungsweise kanonische Kontext, gegebenenfalls das acht- oder neunjährige gymnasiale Dauermodell (`G8`/`G9`), eine ausdrücklich bestimmte Stufe, die Fächer und deren Kursprofile.
 3. **Lernfokus und aktives Ziel:** Ein oder mehrere Wurzeln begrenzen vorübergehend den Arbeitsbereich; genau ein atomarer Lerngegenstand ist das aktuelle Ziel. Fokus und aktives Ziel sind veränderlich.
-4. **Mastery:** Das binäre Ergebnis „geschafft“ oder „noch nicht geschafft“ gehört zur stabilen atomaren Ziel-ID. Die Ergebnisse bleiben bei Änderungen der Sicht oder des Fokus erhalten. Clusterfortschritt wird daraus abgeleitet.
+4. **Lernergebnisse.** Der ausdrücklich erzielte Erfolg gehört zur stabilen atomaren Ziel-ID. Bei Änderungen der Sicht oder des Fokus bleibt er erhalten. Der Einheitenabschluss wird nach dem geltenden Vertrag aus den eigenen effektiv beherrschten Zielen und den abgeschlossenen Kindern abgeleitet (Abschnitt~@ref{sec:unit-completion}). Ein eigenes Urteil über eine bestandene Einheitenfassung mit gesonderter Planungswirkung ist der Vorschlag vom 19. November (Abschnitt~@ref{sec:proposal-unit-assessment}).
 
 Grundkurs (`GK`) und Leistungskurs (`LK`) sind fachbezogene Kursprofile. Die Schulstufe wird eigens angegeben und bleibt bei fehlender Angabe offen. Zwei Beispiele zeigen, warum diese Unterscheidung wichtig ist.
 
@@ -96,7 +96,7 @@ Grundkurs (`GK`) und Leistungskurs (`LK`) sind fachbezogene Kursprofile. Die Sch
 
 Eine Änderung des Personal Curriculum prüft Fokus und aktives Ziel erneut gegen die neue Zielmenge; sie darf globale Ergebnisse weder löschen noch neu vergeben. Die aktuelle Konfiguration des Personal Curriculum erfolgt über die dafür vorgesehenen Erstparteien-Oberflächen der SkillPilot-WebGUI. Der über den konkreten OpenAI-V1-Adapter angebundene Sprachmodell-Coach liest diesen Rahmen und präsentiert oder ändert diese Konfiguration nicht selbstständig.
 
-Der vollständige persönliche Lernumfang ist nach der Ownerentscheidung vom 10. November 2026 $L = \Closure(S)$ aus Abschnitt~@ref{par:projection-closure}: Ausgangsziele und sämtliche auf dem ungekürzten kanonischen Skill-Graphen notwendigen atomaren Voraussetzungen. Er bleibt unabhängig von Mastery fest; vorhandene gültige Beherrschung zählt als erfüllt, nicht als Anlass zur Streichung oder Wiederholung. Ein enger Fokus reduziert nur den vorübergehenden Arbeitsbereich. Notwendige Ziele außerhalb des Fokus bleiben für Gesamtfortschritt und Abschluss maßgeblich; Fokusabschluss ist kein Abschluss des gesamten Personal Curriculum.
+Der persönliche Lernumfang ist nach der Entscheidung vom 10. November 2026 $L=\Closure(S)$ aus Abschnitt~@ref{par:projection-closure}. Er enthält die Ausgangsziele und alle auf dem kanonischen Graphen notwendigen atomaren Voraussetzungen unabhängig von bisherigen Ergebnissen. Ein enger Fokus begrenzt die aktuelle Arbeit. Innerhalb von $L$ bestimmen ausdrückliche Erfolge und die nach R1–R5 gültig abgeleitete Anerkennung, welche Arbeit noch ansteht. Die gesonderte Planungswirkung eines Einheitenabschlusses ist im Vorschlag vom 19. November beschrieben (Abschnitt~@ref{sec:proposal-planning-release}). Ein Abschluss im Fokus sagt nur etwas über dessen Umfang aus.
 
 ### Zielrolle und Voraussetzungshilfe {#sec:projection-roles}
 
@@ -129,13 +129,15 @@ Der Ort des Eintrags `prerequisiteOnly` bestimmt weder die amtliche Stufe noch d
 
 Bei landesspezifischen Ergänzungen kann eine ausdrücklich deklarierte Vererbungsgrenze verhindern, dass eine breite Quellenzuordnung eines Vorfahren als Quellenbeleg aller neuen Nachfahren ausgegeben wird. Direkte Quellen und Zuordnungen im Ergänzungszweig bleiben maßgeblich. Ebenso kann die Sichtbarkeit eines lokalen Übungs- oder Prüfungsendpunkts unter einem dafür vorgesehenen Vertrag aus seinen Voraussetzungen abgeleitet werden. Das belegt seine Anwendbarkeit, nicht automatisch seine Lehrplanabdeckung.
 
-### Fokuswechsel ohne impliziten Kompetenzerwerb {#sec:focus-switch}
+### Geführte Empfehlung und bewusster Einstieg {#sec:focus-switch}
 
 Ein Fokus besteht aus der Vereinigung der gewählten Wurzeln und ihrer sichtbaren Nachfahren, eingeschränkt auf das Personal Curriculum. Im Normalmodus werden die transitiven effektiven Voraussetzungen innerhalb dieses Fokus geprüft; der ausdrücklich gewählte strikte Modus prüft global. Eine außerhalb liegende Voraussetzung wird im Normalmodus weder zum Hindernis noch dadurch gemeistert. Die formalen Unterschiede der Frontier-Berechnung stehen in Abschnitt~@ref{sec:filter-modes}.
 
 Eine Fokusausweitung folgt dem eindeutigen sichtbaren Elternpfad. Die Backendoption muss eine echte Obermenge liefern und mindestens ein noch offenes Ziel hinzufügen. Bei mehreren Wurzeln ersetzt sie nur den abgedeckten Zweig und bewahrt die unabhängigen Wurzeln. Der Coach übernimmt die veröffentlichte Option vollständig und wartet vor der Änderung auf die Zustimmung der lernenden Person.
 
-Das Backend schlägt eine Ausweitung erst nach dem tatsächlichen Fokusabschluss vor. Eine leere Frontier kann auch bedeuten, dass die verbleibenden Ziele blockiert sind. Nach der Ausweitung prüft das Backend die nun einbezogenen offenen Voraussetzungen. Ein Ergebnis an einem abhängigen Ziel schreibt den Voraussetzungen keine Mastery zu. Im Anerkennungsmodell gilt eine aus einem gültigen lokalen Vertrag belegte Anwendung auch nach einem Fokus- oder Planwechsel. Ein neues Ziel, das diese Kompetenz braucht, kann darauf aufbauen.
+Das Backend schlägt eine Ausweitung erst bei abgeschlossenem Fokus vor. Auch offene Voraussetzungen können eine leere Frontier erklären. Die globale Anerkennung eigener gewöhnlicher Ziele nach dem geltenden Vertrag vom 4./11. November bleibt beim Fokuswechsel wirksam. Die Voraussetzungsprüfung verwendet die effektiv beherrschte Menge im gewählten Modus (Abschnitt~@ref{sec:state}).
+
+**Vorschlag vom 19. November.** Die Person könnte im eigenen Lernumfang eine Einstiegseinheit wählen. Eine vorgeschriebene praktische Leistung und ungedeckte Voraussetzungen bleiben offen. Für die spätere Planung beschreibt Abschnitt~@ref{sec:proposal-planning-release} die Freigabe eigener Inhaltsziele durch ihre zuständige Einheit.
 
 :::sources
 [Personalisierungsstufen](repo:docs/concept/levels-of-personalization.md); [Projektionsrollen und Sichtvertrag](repo:docs/concept/skill-graph/view-projection-and-goal-placement.md).
@@ -143,20 +145,20 @@ Das Backend schlägt eine Ausweitung erst nach dem tatsächlichen Fokusabschluss
 
 ## Zieltypen und die Bedeutung eines Ergebnisses {#sec:goal-types}
 
-Ein ausdrücklich gespeichertes Ergebnis ist je atomarem Ziel binär. Welche Handlung es begründet, hängt vom Zieltyp ab. Im Anerkennungsmodell kann ein gültiger lokaler Prüfungsvertrag darüber hinaus die Erfüllung bestimmter Ziele ableiten, ohne ein weiteres Ergebnis zu speichern (Abschnitt~@ref{sec:assessment}). Tabelle~@ref{tab:goal-types} unterscheidet beides.
+Der Zieltyp bestimmt die geforderte Leistung. In beiden Lernwegen gilt für den Einzelbeleg derselbe fachliche Anspruch. Die dritte Spalte der Tabelle~@ref{tab:goal-types} beschreibt ausschließlich den Vorschlag vom 19. November aus Abschnitt~@ref{sec:proposal-unit-assessment}.
 
-:::table {#tab:goal-types caption="Was ein ausdrücklich gespeichertes Ergebnis belegt und was im Zielmodell ableitbar ist." cols="26mm,X,X"}
-| Zieltyp | Ausdrückliches Ergebnis | Erfüllung aus einem gültigen Prüfungsvertrag |
+:::table {#tab:goal-types caption="Einzelbelege und ihre Rolle beim direkten Nachweis einer Einheit." cols="26mm,X,X"}
+| Zieltyp | Ausdrücklicher Einzelerfolg | Vorschlag für den direkten Einheitenabschluss |
 | --- | --- | --- |
-| Inhaltsziel | Der Coach hat das geforderte Verstehen festgestellt (Abschnitt~@ref{sec:understanding}). | Selbstständige Anwendung ist belegt. |
-| Orientierungsziel | Die Person hat dem Abschluss des Facheinstiegs zugestimmt. Für den Einheitsauftakt ist ein ausdrückliches „weiter“ vorgesehen (Abschnitt~@ref{sec:orientation}). | Nur der Einstieg gilt als erledigt. |
-| Memorierziel | Die Person hat die erforderlichen Karten ohne Hilfe im Abschlussabruf richtig wiedergegeben (Abschnitt~@ref{sec:memory}). | Eigener Abruf erforderlich. |
-| Prüfungsziel | Die vollständige Einreichung erfüllt laut Bewertungsraster die Bestehensgrenze (Abschnitt~@ref{sec:exams}). | Eigene bestandene Prüfung erforderlich. |
+| Inhaltsziel | Die Person hat das geforderte Verstehen oder Können gezeigt (Abschnitt~@ref{sec:understanding}). | Übersprungene Übungen bleiben ohne Einzelergebnis. Für spätere Voraussetzungen zählt die geprüfte Freigabe des ganzen Atoms. |
+| Orientierungsziel | Die Person hat am Auftakt teilgenommen und seinem Abschluss zugestimmt (Abschnitt~@ref{sec:orientation}). | Vor dem Versuch erfährt sie, was sie zeigen soll. Der übersprungene Auftakt bleibt unbesucht. |
+| Memorierziel | Die Person hat die erforderlichen Karten im Abschlussabruf ohne Hilfe wiedergegeben (Abschnitt~@ref{sec:memory}). | Ein ausdrücklich verlangter Abruf bleibt Pflicht. Gewöhnliche Übungskarten dürfen entfallen. |
+| Prüfungsziel | Die Einreichung erfüllt das geltende Bewertungsraster (Abschnitt~@ref{sec:exams}). | Für den Einheitenabschluss zählen alle verlangten Teile in der qualifizierenden Fassung. |
 :::
 
 ### Verstehen und Anwenden {#sec:understanding}
 
-Bei einem Inhaltsziel muss die gezeigte Leistung das in der Beschreibung geforderte Verstehen belegen. Ein einziger mehrschrittiger Transfer kann genügen. Eine richtige Einzelantwort genügt, wenn sie die verlangten Aspekte tatsächlich abdeckt.
+Der Coach kann einen neuen Begriff erklären oder einen Schritt vormachen. Eigenständige Erklärungen und Anwendungen können Verstehen belegen. Verlangt das Einzelziel eine eigene Versuchsdurchführung, braucht auch der Einzelbeleg einen Beleg für diese Durchführung. Der Coach kann ihn im Gespräch mit der Person anhand ihrer eigenen Versuchsdaten und Beobachtungen prüfen. Die Deutung bereitgestellter Daten allein belegt die Auswertung. Welche selbstständigen Leistungen zur Feststellung des ganzen Ziels ausreichen, richtet sich nach Ziel- und Coachvertrag.
 
 Sobald ausreichend Belege vorliegen, speichert der Coach das Ergebnis ohne gesonderte Zustimmung zum Speichern. Erst nach bestätigter Speicherung kann er den Erfolg als gesichert melden. Anschließend bietet er das vom Backend gewählte nächste Thema an und beginnt es, wenn die Person einverstanden ist.
 
@@ -170,7 +172,7 @@ Ein atomares Orientierungsziel (`semanticKind: "orientation"`) zeigt, was sich m
 2. **Zusammenfassung.** Nach einer inhaltlichen Reaktion oder dem ausdrücklichen Wunsch, die Orientierung zu verlassen, fasst der Coach das Gespräch positiv zusammen und bietet den Abschluss an.
 3. **Abschluss.** Erst die Zustimmung zu diesem Angebot schließt das Ziel ab.
 
-**Vorgeschlagener Einheitsauftakt.** Für das Motivationsziel im Eintrag einer Einheit mit eigenen Prüfungen ist ein kürzerer Ablauf vorgesehen (Abschnitt~@ref{sec:unit-claims}). Das Backend soll dem Coach das Lernversprechen und einen konkreten Praxisbezug liefern. An diesem Beispiel zeigt der Coach, was man nach der Einheit kann und wozu es nützt. Die Person kann nachfragen oder mit „weiter“ den Einstieg abschließen. In diesem Fall speichert das Backend nur das binäre Ergebnis. Der Coach sendet keinen Gesprächstext. Abschnitt~@ref{sec:transitive-demand} erklärt die abgeleitete Erledigung ohne eigenes Ergebnis.
+**Vorgeschlagener Einheitsauftakt (17. November).** Beim Erarbeiten einer Einheit stellt der Coach eine konkrete Frage zum Lernversprechen aus dem Einheiteneintrag (Abschnitt~@ref{sec:unit-claims}). In der Kinematik kann eine Kugel von einer Tischkante rollen. Wo wird sie landen? Die Person kann nachfragen oder den Auftakt mit „weiter“ abschließen. Gespeichert wird dann der ausdrückliche Zielerfolg. Wer direkt zum Nachweis geht, erfährt vorab, was zu zeigen ist. Der bestandene Nachweis erzeugt keinen nachträglichen Besuch des Auftakts (Abschnitt~@ref{sec:proposal-unit-assessment}).
 
 **Welche Ziele heute zur Wahl stehen.** Gibt es im relevanten projizierten Arbeitsbereich offene Orientierungsziele, bietet der normale Einstieg nur diese an, solange dort weder fachlicher Fortschritt noch ein aktives fachliches Ziel vorliegt. Wer dort bereits fachlich arbeitet, kann fortfahren. Eine bewusst gewählte verfügbare Prüfung ist weiterhin direkt zugänglich (Abschnitt~@ref{sec:exams}).
 
@@ -224,7 +226,7 @@ Die Punktevergabe folgt den einzelnen Rastervorgaben. Die Gesamtsummenformel all
 
 #### Zugang.
 
-Der normale Lernzugang prüft transitive effektive Voraussetzungen einschließlich der atomaren Erfüllung erforderlicher Cluster. Für Prüfungen gilt zusätzlich der allgemeine *direkte Prüfungszugang*: Fehlende Vorbereitungs-Mastery sperrt einen bewusst gewählten Prüfungsversuch nicht. Aufgabenverfügbarkeit, persönlicher Geltungsbereich und autorisierte Sitzung bleiben erforderlich. Der bestehende direkte Prüfungszugang ist von der neuen, auf der Hauptlinie **noch nicht implementierten** Ableitung globaler impliziter Beherrschung zu trennen.
+Der reguläre Lernweg prüft die transitiven Voraussetzungen im gewählten Fokusmodus. Heute lässt der direkte Prüfungszugang einen bewusst gewählten verfügbaren Prüfungsversuch auch bei offener Vorbereitung zu. Persönlicher Geltungsbereich und autorisierte Sitzung bleiben erforderlich. Im Vorschlag vom 19. November zeigt die Option „Einheit direkt nachweisen“ vor dem Start das Lernversprechen und sämtliche für diese Fassung nötigen Pflichtteile. Ein angebotener Versuch allein belegt noch keinen Abschluss.
 
 #### Ablauf im Prüfungsmodus.
 
@@ -232,7 +234,7 @@ Im Prüfungsmodus erhält die Person die vollständige, unveränderte Aufgabe un
 
 #### Nach der Bewertung.
 
-Nach der Bewertung erhält die Person Ergebnis, Punkte, Begründung und Lösung; neues Material beginnt nach ihrer weiteren Entscheidung. Die unbegrenzte Wiederholung derselben Aufgabe bleibt möglich. Bekannte Lösungen können die Aussagekraft eines Versuchs verringern, erzeugen aber keine zweite Anerkennungsstufe: Vorhandene Prüfungs-Mastery bleibt ein ausdrücklicher Erfolg dieses Prüfungsziels. Weitergehende Anwendungsbeherrschung setzt den gültigen fachlich geprüften lokalen Vertrag voraus; ein alter ungeprüfter Punkteschlüssel genügt dafür nicht automatisch. Es gibt keine zusätzliche pro Lernendem zu speichernde Qualifikationsart oder zweite Teilprüfung.
+Nach der Bewertung erhält die Person Ergebnis, Punkte, Begründung und Lösung. Im bestehenden Ablauf kann sie dieselbe Aufgabe wiederholen. Ein bereits erreichter Einzelerfolg bleibt erhalten. Der Entwurf sieht für einen erneuten qualifizierenden Versuch eine gleichwertige, der Person unbekannte Aufgabe vor. Solange nur die bekannte Aufgabe verfügbar ist, kann sie damit üben. Ob eine ältere Prüfung diese Aussage trägt, ist an ihrer damaligen Fassung zu prüfen (Abschnitt~@ref{sec:proposal-unit-contract}).
 
 :::sources
 [Zieltypen und Prüfungsablauf](repo:docs/concept/skill-graph/node-types.md); [Projektregeln zu Orientierung, Evidenz und Fortsetzung](repo:AGENTS.md); [Backend-Ableitung von Memorier-Mastery](repo:backend/src/main/java/com/skillpilot/backend/service/LearnerService.java); [Frontend-Ableitung von Memorier-Mastery](repo:app/src/hooks/useSrsMastery.ts).
@@ -246,7 +248,7 @@ Die Zeitplanung ist eine zusätzliche Ausführungsplanung und keine fünfte Pers
 
 Verfügbare Kapazität berücksichtigt tatsächliche Unterrichts- oder Lernminuten nach Ferien, Ausfällen und anderen Ausschlüssen. Aktivitäten, geschützte Reserve und verbindliche Fachbudgets müssen darin ohne Doppelzählung Platz finden. Die formale Budgetprüfung und ihre Anforderungen an kalibrierte Aufwandsschätzungen folgen in Abschnitt~@ref{sec:levels}.
 
-Plan-Soll und tatsächliche Zielerreichung verwenden denselben benannten Umfang. Ausdrückliche Ergebnisse und gültig abgeleitete Anwendungsbeherrschung bilden gemeinsam den globalen IST; eine zusätzliche manuelle Unterrichtsabdeckung begründet oder verbirgt keinen Abschluss. Fehlende Ergebnisse bleiben als nicht verfügbar erkennbar. Neue Planrevisionen dürfen historische Ziele, Ergebnisse und frühere Aussagen nicht stillschweigend umdeuten.
+Plan-Soll und tatsächliche Zielerreichung verwenden denselben benannten Umfang. Für den Gesamtfortschritt zählen im geltenden Vertrag ausdrückliche Erfolge und gültig abgeleitete Anerkennung. Im Wochenpensum zählt ein tatsächlicher Prüfungserfolg an seinem Datum einmal. Die Fachrunde diskutiert in Abschnitt~@ref{sec:proposal-period-accounting} einen anderen Planauftrag: Einheitenabschluss und tatsächlich erledigte Einzelarbeit würden getrennt ausgewiesen. Neue Planrevisionen erhalten die Bedeutung früherer Ergebnisse und Termine.
 
 Der dokumentierte lokale Planungspilot und die angestrebte backendseitig maßgebliche Architektur sind getrennt zu betrachten. Insbesondere behauptet die Einheitendefinition noch keine implementierte fachübergreifende Budgetprüfung.
 

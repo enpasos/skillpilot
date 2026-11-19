@@ -3,9 +3,7 @@ import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { convertLearningGoal } from '../src/goalTypes'
 import type { SkillLandscape } from '../src/landscapeTypes'
-import { normalizeCompositionView } from '../src/utils/authoring/compositionViewAuthoring'
-import { applyCompositionViewProjection } from '../src/utils/compositionViewRuntime'
-import { buildVisibleChildrenMap, getRenderedChildIds } from '../src/utils/treeProjectionRuntime'
+import { countStageTargetAtomsFromFile, stageCountSourceBinding } from './lib/stateStageAtomCounts'
 
 type CourseProfile = 'GK' | 'LK'
 
@@ -61,55 +59,19 @@ function countVisibleAtomicGoalsForStage({
   courseProfile,
   stageTitlePrefix,
   viewPath,
+  durationModel,
 }: {
   baseEntry: { meta: SkillLandscape; goals: ReturnType<typeof convertLearningGoal>[] }
   jurisdiction: string
   courseProfile?: CourseProfile
   stageTitlePrefix: string
   viewPath: string
+  durationModel?: string
 }): number {
-  const rawView = JSON.parse(readFileSync(viewPath, 'utf8'))
-  const view = normalizeCompositionView(rawView)
-  const projectedEntry = applyCompositionViewProjection([baseEntry], view)[0]
-  if (!projectedEntry) {
-    throw new Error(`Projection failed for ${viewPath}`)
-  }
-
-  const allGoals = new Map(projectedEntry.goals.map((goal) => [goal.id, goal]))
-  const personalConfig = courseProfile
-    ? { [projectedEntry.meta.landscapeId]: { selected: true, filterId: courseProfile } }
-    : {}
-  const visibleChildrenByParent = buildVisibleChildrenMap(allGoals, jurisdiction, personalConfig, 'all')
-  const stageGoal = projectedEntry.goals.find((goal) =>
-    goal.title.startsWith(stageTitlePrefix) && (goal.tags ?? []).includes('synthetic:program-unit'),
-  )
-
-  if (!stageGoal) {
-    throw new Error(`Stage "${stageTitlePrefix}" not found in ${viewPath}`)
-  }
-
-  const atomicGoalIds = new Set<string>()
-  const visitedGoalIds = new Set<string>()
-
-  const walk = (goalId: string) => {
-    if (visitedGoalIds.has(goalId)) return
-    visitedGoalIds.add(goalId)
-
-    const goal = allGoals.get(goalId)
-    if (!goal) return
-
-    if ((goal.contains ?? []).length === 0) {
-      atomicGoalIds.add(goalId)
-      return
-    }
-
-    for (const childId of getRenderedChildIds(goalId, allGoals, visibleChildrenByParent)) {
-      walk(childId)
-    }
-  }
-
-  walk(stageGoal.id)
-  return atomicGoalIds.size
+  return countStageTargetAtomsFromFile(baseEntry.meta, viewPath, {
+    jurisdiction, courseProfile, durationModel,
+    stage: stageTitlePrefix === 'Sekundarstufe I' ? 'SekI' : 'SekII',
+  })
 }
 
 function countStateRows(): {
@@ -200,6 +162,21 @@ function countStateRows(): {
   }
 }
 
+function hesseDurationRows() {
+  const { landscape } = loadLandscape(loadTracker().landscapePath)
+  return ['G8', 'G9'].map(durationModel => {
+    const suffix = durationModel.toLowerCase()
+    const count = (stage: 'SekI' | 'SekII', courseProfile?: CourseProfile) => {
+      const name = stage === 'SekI' ? `de-he-seki-${suffix}.view.json` : `de-he-${courseProfile!.toLowerCase()}-${suffix}.view.json`
+      return countStageTargetAtomsFromFile(landscape, resolve(compositionViewDir, name), {
+        jurisdiction: 'DE-HE', stage, courseProfile, durationModel,
+      })
+    }
+    return { jurisdiction: 'DE-HE', displayName: 'Hessen', durationModel,
+      sek1: count('SekI'), sek2Gk: count('SekII', 'GK'), sek2Lk: count('SekII', 'LK') }
+  })
+}
+
 function main() {
   const report = countStateRows()
   console.log(
@@ -208,7 +185,11 @@ function main() {
         generatedAt: new Date().toISOString(),
         landscapeId: report.landscapeId,
         landscapeTitle: report.landscapeTitle,
+        sourceInputs: stageCountSourceBinding(loadTracker().landscapePath, compositionViewDir, repoRoot),
+        countingBasis: 'Unique canonical subject target atoms in authored stage views; excludes support-only atoms and synthetic/cluster nodes; overlapping tracks form a set union. No prerequisite closure or learner mastery.',
+        durationBasis: 'State rows use duration-neutral authored views; Hessen G8/G9 are reported separately.',
         rows: report.rows,
+        durationRows: hesseDurationRows(),
       },
       null,
       2,

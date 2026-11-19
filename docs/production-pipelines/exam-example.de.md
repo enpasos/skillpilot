@@ -54,9 +54,28 @@ Temporäre Ähnlichkeits- oder Originalitätsberichte gehören ausschließlich u
 2. **Schritt 1 (QA-Checkliste anlegen):** Prüfbare Kriterien für Formalia, Auswahlmodus, Themenabdeckung, Anforderungsniveau, Originalität, Hilfsmittel und Konsistenz zwischen Aufgabe, Lösung und Bewertung definieren (`checkliste.md`).
 3. **Schritt 2 (Blueprint entwerfen):** `GK`/`LK`-Varianten, Auswahlregeln, Teilaufgaben-Matrix und Komplementarität/Originalität gegenüber bestehenden Beispielen planen.
 4. **Schritt 3 (Aufgabenblatt verfassen):** Eigenständige, nicht kopierte Aufgaben mit realistischem Kontext, sauberer Operatorensprache, konsistenten Einheiten/Daten und rein lernendenseitiger Formulierung erstellen.
-5. **Schritt 4 (Musterlösung & Bewertung erstellen):** Vollständigen Lösungsweg je Teilaufgabe, transparente `BE`-Zuordnung, Begründungen sowie Rundungs-/Toleranzregeln dokumentieren.
+5. **Schritt 4 (Musterlösung & Bewertung erstellen):** Vollständigen Lösungsweg je Teilaufgabe, transparente `BE`-Zuordnung, Begründungen, fachlich zulässige Alternativwege sowie Rundungs-/Toleranzregeln dokumentieren. Soll ein Einzelziel daraus anerkannt werden, prüfen, ob dessen wesentliche Leistung zum Bestehen nötig ist oder durch andere Punkte vollständig ausgeglichen werden kann.
 6. **Schritt 5 (Abschluss-QS durchführen):** Punkt-für-Punkt-Bewertung gegen die Checkliste samt Restrisiken und Status (`draft-ready`, `release candidate`) in `Schritt5_Abschluss_QS.md` festhalten.
 7. **Schritt 6 (Findings erfassen):** Review-Rückmeldungen strukturiert in `findings.md` aufnehmen (ID, Quelle, Beschreibung, Priorität, betroffene Dateien, Akzeptanzkriterium, Status).
 8. **Schritt 7 (Findings abarbeiten):** Umgesetzte Änderungen, Ort, Begründung, Ähnlichkeits-/Originalitätsprüfungen und Folgerisiken in `Schritt7_Finding_Bearbeitung.md` protokollieren.
 9. **Schritt 8 (Re-QS nach Findings):** Status-Delta (`behoben`, `teilweise behoben`, `offen`), betroffene Checklistenpunkte und aktualisierten Releasestatus in `Schritt8_ReQS.md` bestätigen.
-10. **Schritt 9 (Graph-Integration):** Erst nach inhaltlicher Stabilisierung neue Prüfungsknoten mit `examData.taskContent`, `examData.solutionContent` und `examData.scoring` in das Landschafts-JSON eintragen (`docs/concept/skill-graph/node-types.md`). Fachspezifische Guides (`exam-example-authoring-guide.md`) instanziieren diesen Prozess mit konkreten Quellen, Pfaden und aktivem Schritt, ohne den allgemeinen Workflow zu duplizieren.
+10. **Schritt 9 (Graph-Integration):** Erst nach inhaltlicher Stabilisierung neue Prüfungsknoten mit `examData.taskContent`, `examData.solutionContent` und `examData.scoring` in das Landschafts-JSON eintragen ([Knotentypen](../concept/skill-graph/node-types.de.md)). Notwendige Vorbereitung in `requires` und fachlich geprüfte Deckungsansprüche in `examData.coveredGoalIds` getrennt pflegen; der Graphpfad beweist keine Aufgabenabdeckung. Fachspezifische Guides (`exam-example-authoring-guide.md`) instanziieren diesen Prozess mit konkreten Quellen, Pfaden und aktivem Schritt, ohne den allgemeinen Workflow zu duplizieren.
+
+<a id="sec-pp-unit-assessments"></a>
+### 5.3. Bestehende Produktionslane für Einheitenprüfungen
+
+[applyLearningUnitAssessments.mjs](https://github.com/enpasos/skillpilot/blob/main/app/scripts/applyLearningUnitAssessments.mjs) bindet die ausgewählten Mathematik- und Physikaufgaben an ihre Markdown-Quellabschnitte, Aufgaben-/Lösungs- und Rubrikrevisionen sowie die unabhängigen Deckungsreview-Referenzen. Es erzeugt beziehungsweise prüft kanonische Prüfungsknoten, `programUnits`, eigene `goalPlacements` und die betroffenen semantischen Ledger-Fingerprints. Bestehende geprüfte Aufgaben können über ihre exakten Revisionen eingebunden werden; eine zweite abweichende Aufgabenkopie ist kein Ersatz.
+
+```bash
+# Prüft ohne Schreibzugriff, dass der Katalog den Aufgabenquellen entspricht.
+npm --prefix app run check:learning-unit-assessments
+# Nach bewusster Quellen-/Reviewänderung: Projektion aktualisieren, dann prüfen.
+cd app
+node --import tsx scripts/applyLearningUnitAssessments.mjs --write
+npm run check:learning-unit-assessments
+npm run validate:learning-units
+```
+
+Diese technische Synchronisation ist kein neues unabhängiges Inhaltsreview, keine Bewertung einer Lernendenabgabe und keine Erprobung. Die bekannte Physikeinheit `physics-constant-acceleration` bindet zwei Prüfungen; die Deckungsunion entsteht aus deren jeweils geprüften Beiträgen. Pakete transportieren solche Einheiten ab Vertrag 1.2; erforderliche bytegenaue Prüfungsstimuli und explizite Teilordnung gehören zum 1.3-Kandidaten. Fehlende Aufgaben oder Deckungsreviews werden repariert, ohne Voraussetzungskanten als Bewertungsbeweis zu verwenden.
+
+Bei einer erklärten Lerneinheit gelten zusätzlich ihre bestehenden [Vertragsbedingungen R1–R5](../concept/skill-graph/assessment-gated-completion.de.md#sec-why-graph-not-enough). Das unabhängige Review bindet Aufgabe, Lösung, Bewertungsraster und beanspruchte Zieldeckung an die geprüfte Fassung. Eine spätere Erweiterung verleiht früheren Ergebnissen keine zusätzliche Anerkennung. Der [Einheitenvorschlag vom 19. November](../concept/skill-graph/unit-assessment-discussion-2026-11-19.de.md) ist noch keine neue Freigaberegel. Formale CI, fachliches Review, Gegenbewertungen von Abgaben und Erprobung mit Lernenden sind getrennte Nachweise.

@@ -21,6 +21,20 @@ er erhält die Dokumentationschecks. Die große CI schließt `docs/dev/**` und
 `AGENTS.md` bei reinen Änderungen dieser Pfade derzeit aus. Der dokumentierte
 CI-Nachweis gilt weiterhin für den benannten Implementierungscommit.
 
+## 19. November 2026, 08:26 MEZ (UTC+01:00) – Verstehenslernziele im Claude-Coach
+
+Der lokale Kandidat **1.1.14** und die zugehörigen Backend-Anweisungen greifen die Rückmeldung eines Schülers aus der Claude-Beta auf. Bei „Weiß ich noch nicht“ erklärt der Coach einen neuen Begriff an einem Beispiel. Wer eine Vorstellung mitbringt, kann sie besprechen. Eine Rückfrage kann auch nach einer Aufgabe direkt ins Gespräch führen. Zur Durchsicht eignen sich der Einstieg am Fahrradtacho und die Frage, warum bei der Beschleunigung die Sekunde zweimal in der Einheit steht. Ein selbstständiger Nachweis ist weiterhin erforderlich, bevor der Coach ein Fachziel als erreicht speichert. [Beispielgespräche und Fragen für die Erprobung](../concept/didactic/claude-beta-erklaeren-2026-11-19.de.md)
+
+182 automatisierte Paketprüfungen und 78 Backend-Vertragstests bestanden lokal. Die Erprobung im tatsächlichen Claude-Chat mit dem Schüler und die Integration stehen aus. Für K1–K13/F1–F7 kommt damit kein weiterer Abschluss hinzu. Es wurden 0 reale Stufenpläne aktiviert und keine curricularen Kanten geändert. [Claude-Skill](https://github.com/enpasos/skillpilot/blob/main/ai/claude/plugin/skillpilot-coach-v1/skills/skillpilot-coach-v1/SKILL.md#coaching-and-completion) · [Backend-Vertragstests](https://github.com/enpasos/skillpilot/blob/main/backend/src/test/java/com/skillpilot/backend/connectors/claude/v1/mcp/ClaudeV1LearningPlanContractTest.java)
+
+## 18. November 2026, 21:28 MEZ (UTC+01:00) – Hessen, Physik in der Einführungsphase
+
+**Stand der gemeinsamen Erprobung.** Lokaler Arbeitsstand für G8 und G9. Die fachliche Abnahme durch den Product Owner steht aus. K 0/13 und F 0/7 sind vollständig abgeschlossen, 0 zusätzliche reale StagePlans sind aktiviert. Für diese Iteration gibt es bisher weder einen PR noch einen Main-CI-Lauf.
+
+**Ergebnis.** In acht hessischen Physikansichten liegen 17 der 21 zuvor in vier Sammlungen geführten Prüfungen direkt beim Thema oder bei den Methoden. Vier Prüfungen haben einen gemeinsamen Platz auf Phasenebene. Davon öffnet sich „Bewegungsanalyse und freier Fall“ auch direkt aus E.1. Die bestehenden kanonischen Angaben verlangen für diese Aufgabe Tabellenkalkulation, obwohl die Aufgabe rechnerisch gelöst wird. Ob die Aufgabe die hinterlegten Kompetenzen vollständig nachweist, bleibt eine eigene fachliche Frage. Die qualitative Reibung liegt jetzt bei den Kräftebilanzen in E.2. Die beiden Zugänge zum Lernkartenstapel bieten wahlweise die E-Phase oder die zum Thema gehörigen Karten an. Die fünf Ordnungspfeile der Oberstufe bleiben bei der Auswahl einer Einheit lesbar.
+
+**Zur Durchsicht im Cockpit.** In der Einführungsphase den Gesamtstapel öffnen, in E.1 die thematische Kartenauswahl und die Prüfung zum freien Fall ausprobieren und auf der Ebene darüber bei ausgewähltem Q2 die übrigen Pfeile betrachten. Die vorhandenen Prüfungsaufgaben und ihre Bewertungsraster wurden für die Platzierung unabhängig inhaltlich gesichtet. Bei allen acht geänderten Sichten ergab die Messung der verschachtelten Einheiten jeweils null Rückgriffe vor und nach der Änderung. Im G9-Grundkurs verringerte sich die Zahl der sichtbaren Verbindungen auf der Phasenkarte von 15 auf 10. Im echten lokalen Cockpit ließen sich die Originalprüfung und die neun Themenkarten in G8 und G9 mit Grundkurs öffnen. Die eigenständigen Browsertests prüfen auch, dass die letzte Bewertung eines Themenstapels gespeichert wird und den Gesamtstapel offen lässt, solange weitere Karten ausstehen. Die vollständige lokale Physikprüfung bestand für alle 90 Ansichten. Zusätzlich bestanden alle acht Tests zur Einordnung der Methoden. Die übergreifende Strukturprüfung erfasste 387 Ansichten aus 21 kanonischen Landschaften und meldete 0 Fehler und 2.576 Warnungen. Für die nächste Runde hat der Product Owner einen motivierenden Einstieg und einen sichtbaren Übungsabschluss in E.1 angesprochen. [Generatortests](https://github.com/enpasos/skillpilot/blob/main/scripts/test_generate_hessen_physics_stage_views.py) · [Tests der realen Kartenprojektionen](https://github.com/enpasos/skillpilot/blob/main/app/scripts/testHessePhysicsFlashcardActions.ts) · [Browserprüfung der Pfeile](https://github.com/enpasos/skillpilot/blob/main/app/scripts/testNativeLearnerMapUi.ts)
+
 <!-- composition-partial-order-20261117:start -->
 ## 17. November 2026, 13:53 MEZ (UTC+01:00) — Fachliche Teilordnungen in allen Länderansichten
 
@@ -302,18 +316,18 @@ Implementierungsstand.**
   zurückgenommener Aufgaben. Ein genau begrenzter Generator-Nachtrag erhält
   die bereits dokumentierte Transistor-Versuchszuordnung auch bei Neuerzeugung;
   die historischen K1-Belege und alle übrigen Zuordnungen bleiben unverändert.
-- **Drei Kontrollstellen:** [Frische Kartenwirkung und Nachweise des Nachtrags](https://github.com/enpasos/skillpilot/blob/fix/stage-plan-next-delivery-20261115/contracts/stage-plan-review-evidence/2026-11-16/external-review-followup-v1/README.md),
-  [neue Daten- und Browserkorrekturen mit unabhängigen Reviews](https://github.com/enpasos/skillpilot/blob/fix/stage-plan-next-delivery-20261115/contracts/stage-plan-review-evidence/2026-11-16/ci-metadata-and-browser-followup-v1/README.md),
+- **Drei Kontrollstellen:** [Frische Kartenwirkung und Nachweise des Nachtrags](https://github.com/enpasos/skillpilot/blob/9975a142f7a26f1c4ff31c46a70e149d82a3fce5/contracts/stage-plan-review-evidence/2026-11-16/external-review-followup-v1/README.md),
+  [neue Daten- und Browserkorrekturen mit unabhängigen Reviews](https://github.com/enpasos/skillpilot/blob/9975a142f7a26f1c4ff31c46a70e149d82a3fce5/contracts/stage-plan-review-evidence/2026-11-16/ci-metadata-and-browser-followup-v1/README.md),
   [Gesamtauftrag mit Zielzustand und offenen Befunden](stage-plan-units-handover-2026-11-15.md).
 - **Nachweise:** Lokal bestehen 354 Ansichtskontrollen, alle 21 Katalog- und
   zwölf Routen-Mindeststände (Mathematik/Physik M7), Schema- und JSON-Kontrollen
   über 120.706 Dateien,
-  TypeScript und Lint. [Alle 17 ursprünglichen Backend-Testfehler](https://github.com/enpasos/skillpilot/blob/fix/stage-plan-next-delivery-20261115/contracts/stage-plan-review-evidence/2026-11-16/backend-ci-test-repair-v1/README.md)
+  TypeScript und Lint. [Alle 17 ursprünglichen Backend-Testfehler](https://github.com/enpasos/skillpilot/blob/9975a142f7a26f1c4ff31c46a70e149d82a3fce5/contracts/stage-plan-review-evidence/2026-11-16/backend-ci-test-repair-v1/README.md)
   bestehen im gemeinsamen Nachlauf. Hinzu kommen 60 Java-Pakettests sowie
   unabhängige Modell-, Quellen- und Sicherheitsreviews. Die
-  [Lernkartenkorrektur](https://github.com/enpasos/skillpilot/blob/fix/stage-plan-next-delivery-20261115/contracts/stage-plan-review-evidence/2026-11-16/memory-explicit-completion-v1/README.md)
+  [Lernkartenkorrektur](https://github.com/enpasos/skillpilot/blob/9975a142f7a26f1c4ff31c46a70e149d82a3fce5/contracts/stage-plan-review-evidence/2026-11-16/memory-explicit-completion-v1/README.md)
   hat 136 bestandene Completion-Tests und 13 unabhängige Gegenprüfungen.
-  Der [tatsächliche Paketnachweis](https://github.com/enpasos/skillpilot/blob/fix/stage-plan-next-delivery-20261115/contracts/stage-plan-review-evidence/2026-11-16/package-assessment-materials-pipeline-v1/README.md)
+  Der [tatsächliche Paketnachweis](https://github.com/enpasos/skillpilot/blob/9975a142f7a26f1c4ff31c46a70e149d82a3fce5/contracts/stage-plan-review-evidence/2026-11-16/package-assessment-materials-pipeline-v1/README.md)
   bindet die reproduzierbare ZIP-Datei und den frischen vollständigen Anwendungstest;
   frühere Fehlversuche bleiben getrennt erhalten. Der vorherige Remote-Lauf
   hatte acht erfolgreiche und sechs fehlgeschlagene Jobs. Der anschließende
@@ -356,7 +370,7 @@ bestanden. Keine neue Laufzeitfunktion oder Integration behauptet.**
   Alle zehn DE-/EN-PDFs und 80 Webausgaben sind neu gebaut. Quellen-,
   Ausgabe-, Terminologie-, Link- und Indexchecks sowie MkDocs strict bestehen.
   Dies sind weder Prüfungsaufgaben für Lernende noch eine Main-Abnahme.
-  [Erhaltene Review- und Testbelege](https://github.com/enpasos/skillpilot/tree/fix/stage-plan-next-delivery-20261115/contracts/stage-plan-review-evidence/2026-11-15/documentation-critique-review-v1).
+  [Erhaltene Review- und Testbelege](https://github.com/enpasos/skillpilot/tree/9975a142f7a26f1c4ff31c46a70e149d82a3fce5/contracts/stage-plan-review-evidence/2026-11-15/documentation-critique-review-v1).
 - **Nächster Schritt:** Die präzisierte Norm mit dem geprüften Fachpaket
   integrieren. Umsetzungsdefizite bleiben bis zu
   ihrem eigenen Nachweis sichtbar; die Norm wird nicht auf den Bestand verkürzt.

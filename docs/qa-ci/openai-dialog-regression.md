@@ -94,7 +94,7 @@ stoppt. Es gibt keine automatischen kostenpflichtigen Netzwerk-Retries.
 
 Die Berechnung ignoriert günstigere Cache-Lesezugriffe und berücksichtigt den
 dokumentierten Cache-Schreibaufschlag. Modell und Preisannahmen werden gemeinsam
-geprüft. Nach Ablauf der Preisprüfung stoppt der Runner bis zur erneuten Prüfung.
+geprüft. Bei der Prüfung am 19. November 2026 galt der Aktionstarif bis zum 30. November. Die Kalkulation setzt je Million Tokens 5 USD für Eingaben einschließlich Cache-Schreiben und 20 USD für Ausgaben an. Ab dem 1. Dezember verlangt der Runner eine neue Preisprüfung.
 Grundlage sind die offiziellen
 [GPT-5.6-Sol-Preisinformationen](https://developers.openai.com/api/docs/models/gpt-5.6-sol).
 Das lokale Limit ist kein garantiertes Abrechnungslimit des OpenAI-Kontos;

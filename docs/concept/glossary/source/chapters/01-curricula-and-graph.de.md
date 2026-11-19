@@ -177,7 +177,7 @@ Erklärte Einheit im gemeinsamen Plan eines Landes und Dauermodells über die ge
 
 *EN: Subject unit* — siehe [Lerneinheiten](repo:docs/concept/skill-graph/learning-units.md)
 
-Erklärter Cluster der kanonischen Fachlandschaft mit Lernversprechen und Revision; gilt in allen Bundesländern (fachliche Blatteinheiten liegen in allen 16 Ländern ungeteilt in einer Planeinheit). Eine **Einheit mit Prüfungen** (mit eigenen Prüfungen und gültigen vollständigen `coverageReviews`) belegt zusätzlich die selbstständige Anwendung ihrer eigenen Inhaltsziele nach R1–R5.
+Erklärter Cluster der kanonischen Fachlandschaft mit Lernversprechen und Revision; gilt in allen Bundesländern (fachliche Blatteinheiten liegen in allen 16 Ländern ungeteilt in einer Planeinheit). Im geltenden Anerkennungskonzept belegt eine **Einheit mit Prüfungen** mit eigenen Prüfungen und gültigen vollständigen `coverageReviews` die selbstständige Anwendung ihrer eigenen Inhaltsziele nach R1–R5. Der noch unentschiedene Vorschlag vom 19. November trennt davon ein repräsentatives Urteil über die Einheit und eine gesondert begründete Planungsfreigabe ganzer Atome.
 
 ### `after` {unnumbered=true}
 
@@ -217,6 +217,6 @@ Ausdrücklich als vorläufig gekennzeichnete didaktische Einordnung (`canonicalD
 
 ### Prüfungslücke {unnumbered=true}
 
-*EN: Assessment gap* — siehe [Implizite Beherrschung](repo:docs/concept/skill-graph/assessment-gated-completion.md)
+*EN: Assessment gap* — siehe [Prüfungsnachweise und Anerkennungsvertrag](repo:docs/concept/skill-graph/assessment-gated-completion.md)
 
-Ein eigenes Inhaltsziel einer Einheit mit Prüfungen ohne geeignete geprüfte Aufgaben- und Rasterabdeckung bleibt ein nicht bestandener Befund (R1/R2). Die Reparatur liefert eine tragfähige Prüfung samt unabhängigem Review, niemals fiktive Voraussetzungen oder gelockerte Qualitätsgates.
+Nach dem geltenden Anerkennungsvertrag bleibt ein eigenes Inhaltsziel einer Einheit mit Prüfungen ohne geeignete geprüfte Aufgaben- und Rasterabdeckung ein nicht bestandener Befund (R1/R2). Die Reparatur liefert eine tragfähige Prüfung samt unabhängigem Review, niemals fiktive Voraussetzungen oder gelockerte Qualitätsgates. Der Vorschlag vom 19. November hebt keinen solchen Befund auf und stuft kein Gate um.

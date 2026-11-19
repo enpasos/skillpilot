@@ -4,18 +4,30 @@
 > Beschreibungen halten den bisherigen Implementierungs-/Prüfstand fest.
 > Aussagen über Bedarfsstopp an Mastery, implizite Karten, bloßen Arbeitsentfall
 > und globale Verbraucherblockierung gelten nicht für das korrigierte Konzept.
-> Verbindlich sind [die neue Abschlusssemantik](../concept/skill-graph/assessment-gated-completion.md)
-> und [die Produktentscheidung](../concept/skill-graph/completion-semantics-clarification-2026-11-04.md).
-> Die aktuelle Neuplanung steht im [Umsetzungsplan für Lerneinheiten und integrierte Lernkarte](learning-units-implementation-plan.md).
+> Die [Produktentscheidung vom 4. und 11. November](../concept/skill-graph/completion-semantics-clarification-2026-11-04.md)
+> und ihre [Anerkennungsrechnung](../concept/skill-graph/assessment-gated-completion.de.md#sec-why-graph-not-enough)
+> bleiben der Maßstab der bestehenden Verträge.
+> Die Folgeplanung steht inzwischen im [Mathematik-/Physik-Plan](mathematics-physics-learning-units-plan.md).
 > Der nachfolgende historische Stand ist keine Freigabe zur Fortsetzung des alten
 > Rollouts; wiederverwendbare Teile benötigen die dort festgelegte neue Prüfung.
+>
+> **Einordnung vom 19. November 2026:** Dieses Dokument bewahrt den
+> Implementierungs- und Prüfstand vom 31. Oktober. Die Runtime wurde seitdem
+> teilweise korrigiert, etwa beim transitiven Bedarf durch bereits
+> gemeisterte Zwischenziele; die Einzelangaben unten sind keine frische
+> Bestandsprüfung ([Abgleich vom 15. November](graph-definition-documentation-review-2026-11-15.md)).
+> Die heutigen §11 und §13 enthalten den noch nicht angenommenen
+> [Vorschlag zur Einheitenanerkennung](../concept/skill-graph/unit-assessment-discussion-2026-11-19.de.md).
+> Er ist weder die hier beschriebene automatische Completion noch eine
+> bereits aktivierte Laufzeitänderung.
 
 
 Stand: 31. Oktober 2026. Der historische Dateiname bleibt bestehen. Dieses
 Dokument beschreibt jetzt die **allgemeine lokale Bedarfsberechnung**, die
 Cockpit-Bedienung und die Plan-IST-Integration. Grundlage sind der
-[aktuelle Umsetzungsplan](assessment-gated-completion-implementation-plan.md)
-und das [fachliche Konzept](../concept/skill-graph/assessment-gated-completion.md).
+[damalige Umsetzungsplan](assessment-gated-completion-implementation-plan.md).
+Die spätere fachliche Korrektur steht in der
+[Produktentscheidung vom November](../concept/skill-graph/completion-semantics-clarification-2026-11-04.md).
 Prüfnachweise gelten jeweils für den konkret geprüften Commit. Lokale Checks
 belegen weder ein Deployment noch eine tatsächliche Coach-Host-Abnahme.
 

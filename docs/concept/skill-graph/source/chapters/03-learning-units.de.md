@@ -1,6 +1,8 @@
 ## Erklärte Einheiten: Gliederung, Reihenfolge und Nachweis {#sec:learning-units}
 
-Eine Lerneinheit verbindet ein Lernversprechen mit einem zusammenhängenden Lernweg. Hat sie eigene Prüfungen, führt ein eigener Auftakt in das Thema ein und die Prüfungen zeigen am Ende, was die Person selbstständig anwenden kann. Das ist das Zielmodell für den regulären Lernweg.
+**Geltender Struktur- und Anerkennungsvertrag.** Die Abschlussregel @eqref{eq:unit-complete} und die Anerkennung vor dem Gesamtabschluss gelten weiter. Der abgegrenzte Vorschlag vom 19. November steht in Abschnitt~@ref{sec:proposal-unit-completion} und in Abschnitt~@ref{sec:proposal-unit-assessment}. „Zielmodell“ bezeichnet hier bestätigte Zielvorgaben; der Motivationsentwurf vom 17. November ist als Vorschlag gekennzeichnet.
+
+Eine Lerneinheit verbindet ein Lernversprechen mit einem zusammenhängenden Lernweg. Hat sie eigene Prüfungen, führt ein eigener Auftakt in das Thema ein und die Prüfungen zeigen am Ende, was die Person selbstständig anwenden kann. Der Auftakt ist ein Vorschlag vom 17. November für den regulären Lernweg.
 
 :::principle {title="Cluster, Einheit, Einheit mit Prüfungen"}
 Ein **Cluster** gliedert Ziele. Eine ausdrücklich erklärte **Einheit** lässt sich im vorgesehenen Lernfluss an einem Stück bearbeiten. Eine **Einheit mit Prüfungen** belegt die selbstständige Anwendung ihrer eigenen Inhaltsziele durch eigene Prüfungen mit fachlich geprüfter Deckung. Eine prüfungsfreie Einheit kann Ziele und Untereinheiten ordnen. Fächer dienen in der Lernkarte als Filter.
@@ -12,7 +14,7 @@ Fachliche Einheiten beschreiben einen Erkenntnisschritt, der länderübergreifen
 
 ### Motivation und eigener fachlicher Anspruch {#sec:unit-claims}
 
-Das **Lernversprechen** der Einheit sagt, was Lernende danach können und wozu es nützt. Im Zielmodell hat jede Einheit mit eigenen Prüfungen genau ein eigenes **Motivationsziel**. Es ist ein atomares Orientierungsziel. Der Coach erhält das Lernversprechen und die Angaben zur aktiven Einheit vom Backend und zeigt den Nutzen möglichst an einer konkreten Situation. Beim Skalarprodukt könnte der Coach so beginnen: „Dein Weg auf der Karte führt schräg nach Nordosten. Am Ende kannst du zeigen, welcher Teil des Weges dich nach Osten bringt, und damit das Skalarprodukt erklären.“
+Das **Lernversprechen** der Einheit sagt, was Lernende danach können und wozu es nützt. Der **Vorschlag vom 17. November** sieht für jede Einheit mit eigenen Prüfungen genau ein eigenes **Motivationsziel** vor. Es ist ein atomares Orientierungsziel. Der Coach erhält das Lernversprechen und die Angaben zur aktiven Einheit vom Backend und zeigt den Nutzen möglichst an einer konkreten Situation. Beim Skalarprodukt könnte der Coach so beginnen: „Dein Weg auf der Karte führt schräg nach Nordosten. Am Ende kannst du zeigen, welcher Teil des Weges dich nach Osten bringt, und damit das Skalarprodukt erklären.“
 
 Der [Vorschlag für den kurzen Auftakt](repo:docs/concept/skill-graph/learning-unit-motivation-concept-2026-11-17.md) sieht einen von Hand verfassten Praxisbezug am Motivationsziel vor. Seine Herkunft weist ihn als didaktischen Beitrag von SkillPilot aus. Abschnitt~@ref{sec:orientation} beschreibt, wie der Coach diesen Einstieg begleitet und abschließt.
 
@@ -22,7 +24,7 @@ Wie der Graph einen Lernweg abbildet, zeigt ein vereinfachtes Beispiel mit zwei 
 
 **Vorgeschlagene Kantenregel.** Jedes eigene atomare Ziel außer den Orientierungszielen erreicht die Motivation der Einheit über einen Voraussetzungspfad. Das gilt auch für Übungsaufgaben, die als eigene Ziele geführt werden. Die Motivation setzt keine Inhalte voraus. Direkte Verweise auf sie stammen aus der zugehörigen Einheit. Ausgangspunkt sind die übrigen Voraussetzungen. Ein Werkzeug ergänzt die gewünschten Verbindungen und schreibt nur die direkten Motivationskanten, für die kein anderer Pfad besteht. So kann das erste eigene Inhaltsziel sowohl die Motivation als auch Vorwissen aus einer Untereinheit oder einem anderen Fach benötigen. Der vollständige Graph muss azyklisch und transitiv minimal sein.
 
-Hat eine Untereinheit eigene Prüfungen, erhält sie auch ihren eigenen Auftakt. Die äußere Einheit erklärt den größeren Zusammenhang, die innere den konkreten nächsten Schritt. **Offen ist**, ob die innere Motivation die der nächsten umschließenden Einheit mit Prüfungen voraussetzen soll. Vorerst ist beim Start der ganzen Einheit die Empfehlung ihres eigenen Auftakts vorgeschlagen. Eine verpflichtende Kante würde auch für Lernende gelten, die nur ein einzelnes Ziel der inneren Einheit als Vorbereitung für ein anderes Fach benötigen. Eine solche Kante erfordert eine begrenzte Ausnahme von der voraussetzungsfreien Orientierung und verträgliche Platzierungen im jeweiligen Landesplan.
+**Vorschlag vom 17. November.** Hat eine Untereinheit eigene Prüfungen, erhält sie auch ihren eigenen Auftakt. Die äußere Einheit erklärt den größeren Zusammenhang, die innere den konkreten nächsten Schritt. **Offen ist**, ob die innere Motivation die der nächsten umschließenden Einheit mit Prüfungen voraussetzen soll. Vorerst ist beim Start der ganzen Einheit die Empfehlung ihres eigenen Auftakts vorgeschlagen. Eine verpflichtende Kante würde auch für Lernende gelten, die nur ein einzelnes Ziel der inneren Einheit als Vorbereitung für ein anderes Fach benötigen. Eine solche Kante erfordert eine begrenzte Ausnahme von der voraussetzungsfreien Orientierung und verträgliche Platzierungen im jeweiligen Landesplan.
 
 Die Einheitsgrenze folgt einem fachlich bedeutsamen Erkenntnisübergang. Auch wenige, gut begründete Voraussetzungen können einen solchen Übergang tragen. Wo eine Kante fachlich fragwürdig ist, wird ihre Begründung unabhängig vom gewünschten Zuschnitt geprüft. Die [Gestaltungskriterien](repo:docs/concept/skill-graph/learning-unit-design-and-examples.md) beschreiben Beispiele.
 
@@ -42,14 +44,14 @@ Der Gesamtumfang ist nicht leer. Bei einem Aggregat können sämtliche Ziele zu 
 
 #### Darstellung im Einheiteneintrag {#sec:unit-representation}
 
-Der Eintrag in der Platzierungsschicht verweist auf den Cluster und führt Lernversprechen, Revision und gegebenenfalls `after`. Bei einer Einheit mit Prüfungen benennt er zusätzlich das eigene Motivationsziel und die Deckungsreviews der eigenen Prüfungen. Die Referenzen lassen die Ziel- und Prüfungsdaten an ihrer kanonischen Stelle.
+Der Eintrag in der Platzierungsschicht verweist auf den Cluster und führt Lernversprechen, Revision und gegebenenfalls `after`. Bei einer Einheit mit Prüfungen benennt er die Deckungsreviews der eigenen Prüfungen. Der Vorschlag vom 17. November würde eine Referenz auf das eigene Motivationsziel ergänzen. Die Referenzen lassen die Ziel- und Prüfungsdaten an ihrer kanonischen Stelle.
 
 :::table {#tab:unit-representation caption="Einheiteneintrag im bestehenden Vertrag und im Zielmodell." cols="30mm,46mm,X"}
 | Gegenstand | Bestehender Vertrag | Zielmodell |
 | --- | --- | --- |
 | Fachliche Einheit | `programUnits`, Art `learningUnit`, `promise`, `promiseEn`, `revision` | Erklärter Cluster in derselben Platzierungsschicht; Lernversprechen und Revision bleiben. |
 | Eigene Ziele und Kinder | `goalPlacements` mit `relation: own`, ohne `context`, sowie `parentUnitId` | Aus `contains` und den geschachtelten Einheitenerklärungen abgeleitet. |
-| Auftakt | Die drei bestehenden fachlichen Einheiten haben bereits ein Lernversprechen. | Eine Referenz auf genau ein eigenes Motivationsziel je Einheit mit eigenen Prüfungen. |
+| Auftakt (Vorschlag vom 17. November) | Die drei bestehenden fachlichen Einheiten haben bereits ein Lernversprechen. | Eine Referenz auf genau ein eigenes Motivationsziel je Einheit mit eigenen Prüfungen. |
 | Deckungsreviews | `coverageReviews`, höchstens ein Eintrag je eigener Prüfung, gebunden an Aufgaben- und Raster-Hashes sowie Reviewprotokoll | Für Einheiten mit Prüfungen erforderlich. |
 | Planeinheiten | Stufenplan-Grundlage unter `v1.3`, ohne aktivierten Landesplan | Ein gemeinsamer Plan pro Land und Dauermodell; Sichten sind daraus abgeleitete Ausschnitte. |
 | Abschluss und Ergebnisse | Keine gespeicherte Einheits-Mastery | Weiter abgeleitet; kein Rückwärtsschreiben auf Ziele und keine Anerkennung aus `after`. |
@@ -72,6 +74,24 @@ Die Unterscheidung zwischen einem **benötigten Anteil** und der **ganzen Einhei
 Abbildung~@ref{fig:recursive-unit} zeigt zwei Lernstände in der Mechanik. Im ersten sind Kinematik und Dynamik abgeschlossen, die gemeinsame Syntheseprüfung ist noch offen. Im zweiten ist die Syntheseprüfung bestanden, in den Untereinheiten fehlen noch Prüfungen und Kartenabrufe. In beiden Fällen ist die Mechanikeinheit insgesamt offen. Das ergibt sich aus den Zielergebnissen.
 
 ::figure{id="fig:recursive-unit"}
+
+#### Vorschlag vom 19. November: repräsentativer Einheitenabschluss {#sec:proposal-unit-completion}
+
+**Nicht übernommener Vorschlag.** Eine erklärte fachliche Einheit kann ein begrenztes Lernversprechen auf einem benannten Niveau durch repräsentative Abschlussleistungen nachweisen. Das ist eine andere Aussage als die vollständige atomare Erfüllung nach der geltenden Gleichung~@eqref{eq:unit-complete}. Pflichtarbeit an dieser Route würde enden, ohne übersprungene Einzelaktivitäten nachträglich als durchgeführt zu verbuchen. Bestehende atomare Lernaufträge behalten ihren Umfang.
+
+Der vorgeschlagene Vertrag bindet Identität, Lernversprechen, Niveau, Fassung $\rho$, eigene Pflichtbelege $\operatorname{OwnEvidence}(U,\rho)$ und Pflichtkinder $\Children_{\mathrm{req}}(U,\rho)$. **Nur für diesen Vorschlag** gilt:
+
+:::equation {#eq:unit-complete-proposal}
+\begin{aligned}
+\Complete(U,\rho) \iff {}& \operatorname{Valid}(U,\rho)\land\operatorname{OwnEvidence}(U,\rho)\\
+&\land\!\bigwedge_{V\in\Children_{\mathrm{req}}(U,\rho)}\Complete(V,\rho_V).
+\end{aligned}
+:::
+
+$\operatorname{Valid}$ verlangt im Vorschlag einen ausdrücklich erklärten und fachlich freigegebenen Vertrag mit tatsächlichen Pflichten; eine leere Pflichtliste genügt nicht. $\rho_V$ bindet die Fassung des Kindes. Reine Aggregate können reale Pflichtkinder bündeln. Ohne freigegebenen Direktnachweis bleiben die vorgesehenen Einzelpflichten erforderlich. Jede eigenständige Pflichtprüfung braucht ihren eigenen gültigen Erfolg; ausdrücklich ausgewiesene Praxis- oder Abrufpflichten bleiben auf beiden Wegen bestehen. Eine eigene Durchführung ist keine pauschale Zusatzpflicht jeder Einheit. Wo aber der Anspruch eines einzelnen Atoms eine Durchführung verlangt, kann weder ein Gespräch noch die Prüfung dieses ganze Atom allein durch Auswertung bereitgestellter Daten belegen.
+
+Die E.1-Probe verbindet zwei bestehende Kindprüfungen mit den neuen eigenen Teilen A und B. Alle vier sind nötig. Ein Kind kann seine eigenen gewöhnlichen Atome erst über seinen eigenen bestandenen und fassungsgebundenen Vertrag freigeben; der Elternabschluss erhält keine Zuständigkeit für Kind- oder fachfremde Atome. Die Einzelheiten, die bewusste Verzögerung der Freigabe und die offenen Entscheidungen stehen in Abschnitt~@ref{sec:proposal-unit-assessment}.
+
 
 ### Anerkennung vor dem Gesamtabschluss {#sec:unit-early-recognition}
 

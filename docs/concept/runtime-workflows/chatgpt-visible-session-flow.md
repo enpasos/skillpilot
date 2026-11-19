@@ -1,36 +1,8 @@
 # Custom GPT: sichtbarer Notfallfallback
 
-Status: sichtbar relayed Notfallzweig des aktuellen Interim-Custom-GPTs. Er ist
-weder normaler Custom-GPT-Start noch Referenzarchitektur. Der aktuelle
-Interimsvorschlag kombiniert privaten Startcode-Redeem mit diesem Rückfall und
-steht unter
-[Custom GPT als Übergangskanal](../../deploy/openai-custom-gpt-interim.md).
-Der mehrsprachige V1-MCP-Vertrag bleibt die Zielarchitektur.
+**Historischer Custom-GPT-Rückfallpfad (August 2026).** Diese Seite dokumentiert den damaligen Action-Transport. Die aktuelle ChatGPT-Desktop-Beta startet über den Git-Marketplace. Das Runbook zur dauerhaften Serveradresse beschreibt den separat vorbereiteten Connector. [Desktop-Beta](../../deploy/openai-personal-marketplace-release.de.md) · [Dauerhafte Serveradresse](../../deploy/openai-stable-origin.md)
 
-Dieses Dokument beschreibt ausschließlich den sichtbaren Notfallzweig der beiden
-neu anzulegenden GPTs `SkillPilot GPT Coach (de)` und
-`SkillPilot GPT Coach (en)`. Die Konfiguration wird **Visible Session** genannt,
-weil alle Werte, die ein späterer ChatGPT-Action-Aufruf benötigt, sichtbar durch
-den Dialog getragen werden. Sie ist keine aufzubewahrende alte GPT-Konfiguration.
-
-Die Architektur ist ein Workaround für die beobachtete ChatGPT-Regression, bei der
-ein Custom GPT Werte aus einem früheren unsichtbaren Action-Response nach dem
-nächsten User-Turn nicht mehr zuverlässig wiederverwenden kann. Das Backend bleibt
-die Autorität für Lernstand, State Machine, erlaubte Übergänge und Mastery.
-
-Der aktuelle mehrsprachige V1-Vertrag ist die
-[OpenAI-MCP-App mit OAuth-Appbindung und 24h-Lernsession](openai-mcp-oauth-learner-session-architecture.md).
-Sie authentisiert die App über einen festen vertraulichen OAuth-Client und
-verlangt zusätzlich die bei jedem **Lernen starten** neu erzeugte, absolut
-höchstens 24 Stunden gültige Lernsession als Pflichtargument jedes fachlichen
-Tools. SkillPilot setzt diese Session automatisch in die vorbereitete
-Startnachricht ein. Die dauerhafte SkillPilot-ID bleibt ausschließlich im
-Backend; OAuth allein wählt keinen Lernenden.
-
-Die frühere Startcode-/Redeem-Architektur liefert inzwischen wieder den privaten
-Standardstart des Interim-Custom-GPTs. Ihre historischen Transportdetails sind in
-[ChatGPT-Startcode-/Session-Flow](chatgpt-startcode-session-flow.md)
-dokumentiert.
+Beim damaligen sichtbaren Notfallstart standen die für den nächsten Action-Aufruf benötigten Werte im Chat. Dieser Transport sollte eine beobachtete Störung überbrücken, bei der ein Custom GPT nach einem weiteren Nutzerturn die Werte einer vorherigen Action-Antwort verlor. Die damalige Alternative löste den Startcode im privaten Action-Kontext ein. Die folgenden Abschnitte beschreiben die Betriebsbedingungen dieses historischen Verfahrens. [Privater Startcode](chatgpt-startcode-session-flow.md)
 
 ## Architekturgrenzen
 
@@ -328,4 +300,4 @@ ChatGPT-Sitzungsfooter. Gemeinsame Projektion, Personalisierung und
 Exam-Autorisierung sind im Code ergänzt; ohne vollständige reale
 Provider-Acceptance ist Claude dennoch kein Fallback des mehrsprachigen V1-MCP-Coachs. Der
 Status und die verbleibenden Release-Gates stehen im
-[Claude-Coach-Runbook](../../deploy/claude-coach-beta.md).
+[Claude-Coach-Runbook](../../deploy/claude-coach-beta.de.md).

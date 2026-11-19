@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: Apache-2.0
-"""Finite reference checks for the 2026-11-04 concept, not runtime acceptance.
+"""Finite checks for the confirmed recognition contract and the 19 November proposal.
 
 Every labelled topologically ordered DAG of up to four vertices, every explicit
 mastery set and protected exam/card set with complete local assessment routes.
@@ -117,7 +117,66 @@ def block_dependencies(vertices, edges, own):
     return {(owner[a], owner[b]) for a, b in edges if owner[a] != owner[b]}
 
 
+def check_versioned_unit_evidence():
+    """Check the proposed E.1 contract against independently listed pass cases."""
+    child = frozenset({("vertical-throw", 1), ("acceleration-report", 1)})
+    parent_own = frozenset({("cart-A", 1), ("projectile-B", 1)})
+    required = child | parent_own
+    child_pass_cases = {child | extra for extra in subsets(parent_own)}
+    child_release = {"constant-acceleration", "idealisation"}
+    parent_release = {"measurement-errors", "measurement-uncertainty"}
+    child_content = {"constant-acceleration", "idealisation"}
+    parent_content = {"measurement-errors", "measurement-uncertainty", "run-fall-experiment"}
+    experiment = ("fall-experiment", 1)
+    # A second, hypothetical version also requires a practical performance.
+    # Adding this obligation never changes the evidence of the first version.
+    parent_versions = {
+        1: (parent_own, parent_release),
+        2: (parent_own | {experiment}, parent_release | {"run-fall-experiment"}),
+    }
+
+    def evaluate(passed, versions=parent_versions):
+        require(child_release <= child_content, "Child releases a goal it does not own")
+        for _, release in versions.values():
+            require(release <= parent_content, "E.1 release exceeds its own ordinary content")
+        completed, released = set(), set()
+        if child <= passed:
+            completed.add(("child", 1))
+            released.update(child_release)
+            for version, (own, atoms) in versions.items():
+                if own <= passed:
+                    completed.add(("E.1", version))
+                    released.update(atoms)
+        return completed, released
+
+    for passed in subsets(required):
+        original = passed.copy()
+        completed, released = evaluate(passed)
+        child_done = frozenset(passed) in child_pass_cases
+        parent_done = passed == required
+        require((("child", 1) in completed) == child_done, "Unexpected child completion")
+        require((("E.1", 1) in completed) == parent_done, "Unexpected E.1 completion")
+        expected = (child_release if child_done else set()) | (parent_release if parent_done else set())
+        require(released == expected, "Release before completion or outside the reviewed scope")
+        require(("E.1", 2) not in completed and "run-fall-experiment" not in released,
+                "The newer version broadened a historical result")
+        require(passed == original, "A planning release altered an explicit result")
+    completed, released = evaluate(required | {experiment})
+    require(completed == {("child", 1), ("E.1", 1), ("E.1", 2)} and "run-fall-experiment" in released,
+            "Fresh evidence did not qualify for its own revision")
+    for forbidden in ("mathematics-derivative", "idealisation", "orientation", "flashcard-recall"):
+        try:
+            evaluate(required, {1: (parent_own, parent_release | {forbidden})})
+        except AssertionError as error:
+            require(str(error) == "E.1 release exceeds its own ordinary content",
+                    "Invalid release failed for an unrelated reason")
+        else:
+            raise AssertionError(f"Parent subject unit permitted release of {forbidden}")
+    print("PASS: 16 E.1 pass combinations, revision-bound practical evidence and four invalid releases.")
+
+
 def main():
+    check_versioned_unit_evidence()
     checked = 0
     for size in range(1, 5):
         vertices = set(range(size))

@@ -16,6 +16,8 @@ Die Abdeckungsansicht zeigt beide Richtungen: ausgewählte Themen ohne zugeordne
 
 Eine `requires`-Kante begründet Vorbereitung, keine geprüfte Leistung, und Metadatenzuordnungen sind kein neuer fachlicher Qualitätsnachweis (die Oberfläche spricht von *hinterlegter Themenzuordnung*). Nicht verfügbare Aufgaben werden ausgewiesen statt eingeplant; verweist `coveredGoalIds` auf einen kanonischen Cluster, den die Kursansicht in sichtbare Einzelziele auflöst, fasst die Referenz nur diese bereits sichtbaren Ziele zusammen, ohne ausgeblendete Ziele einzuschleusen.
 
+Die Auswahl eines Aufgabenpakets vereinbart den Stoff für die Vorbereitung. Ob eine absolvierte Aufgabe zu einem qualifizierenden Einheitenabschluss beiträgt, entscheidet im Entwurf vom 19. November die fachlich geprüfte Einheiten- und Prüfungsfassung. Ein Vermerk in `coveredGoalIds` allein trägt diesen Schluss nicht.
+
 In der Kinematik ergänzen unter **Physik → E-Phase → Übungen** zwei Aufgabenpakete (*Senkrechter Wurf: Vorzeichen, Scheitelpunkt und Rückkehr* sowie *Waagerechter Wurf: Zwei Bewegungen, eine gemeinsame Zeit*) je sechs Teilaufgaben (36 BE) mit deutschen und englischen Lösungen und Bewertungsrastern für schriftliche Bewegungsgesetze, Diagramme und Begründungen ohne Vektorrechnung (ohne Nachweis praktischer Experimentierkompetenz).
 
 ### Vorbereitung vervollständigen {#sec:exam-complete-prep}

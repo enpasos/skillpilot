@@ -9,15 +9,9 @@ Seit der ausdrücklichen Product-Owner-Entscheidung vom 24. August 2026 wird er
 im normalen gemeinsamen Webstart neben ChatGPT angeboten; der alte versteckte
 Providerparameter und der damalige Source-Level-Schalter sind entfallen.
 
-Diese Runbook-Seite beschreibt den additiven Claude-Coach neben dem aktuellen
-[mehrsprachigen OpenAI-MCP-Coach](openai-mcp-coach-v1.md). Der
-[Custom-GPT-Action-Session-Coach](https://github.com/enpasos/skillpilot/blob/main/ai/openai%20custom%20gpt/README.md)
-bleibt davon als neu aufzubauender, befristeter Übergangskanal getrennt.
-Beide Adapter greifen auf dieselbe SkillPilot-Fachlogik, sichere State-Projektion
-und Exam-Autorisierung zu. Sie haben aber unterschiedliche Authentifizierungs-,
-Werkzeug- und Darstellungsgrenzen. Der ChatGPT-Pfad bleibt
-unabhängig und muss auch bei vollständig deaktiviertem Claude unverändert
-funktionieren.
+Der aktuelle Webstart bietet die dedizierte Claude-Spur, die ChatGPT-Desktop-Beta und den separaten [Gemini-Integrationskandidaten](gemini-integration.md). Für Claude ist der [persönliche Marketplace](claude-personal-marketplace-release.md) maßgeblich; OpenAIs neutraler Zielendpunkt steht im [Stable-Origin-Runbook](openai-stable-origin.md). Der beibehaltene Custom-GPT-Pfad dient ausschließlich als historischer Rollback-Vertrag. Diese Einordnung meldet weder ein neues Deployment noch eine Host-Abnahme.
+
+Die nachfolgenden ursprünglichen Abschnitte bewahren die damalige Architektur und Prüfung. Die Adapter teilen fachliche Kernlogik, aber keine OAuth-Verbindung, Lernsession oder providerspezifische Abnahme.
 
 > **Historischer Hinweis:** Die in diesem Dokument beschriebene UI-Pause und
 > der damalige Source-Level-Schalter gelten nicht für den dedizierten

@@ -2,6 +2,8 @@
 
 This runbook documents local installation, verification, CAS activation, and rollback for finished `full-standalone-v1` JSON packages. The provisioner (`scripts/provision_curriculum_package.py`) is the sole writer to the package store; the SkillPilot runtime reads only the exact pinned active lock and never mutates the store.
 
+**Contract selection:** The provisioner supports separate 1.0, 1.1, 1.2, and unpublished common 1.3 contracts; `--contracts-dir` selects the exact contract. Version 1.2 adds `learningUnitsV1`; 1.3 also carries `assessmentMaterialsV1` and explicit local `childOrder.after` ordering. Versions 1.2 and 1.3 do not inherit the superseded 1.1 completion artifacts. Units, required assessment stimuli, and ordering fields must not be silently dropped into an older contract. The current JSON conformance lane explicitly selects 1.3; neither installation nor a model pass activates a Land stage plan or writes learner results.
+
 ### Six-Step Security Model and Store Layout {#sec:pp-prov-security}
 
 An incoming ZIP is never consumed directly as a runtime source:

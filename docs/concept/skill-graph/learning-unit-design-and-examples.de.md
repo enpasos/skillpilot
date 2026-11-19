@@ -14,9 +14,11 @@
 <a id="sec-sga-unit-design"></a>
 ## 12. Entwurfskriterien und Beispiele für Lerneinheiten
 
-Dieses Kapitel konkretisiert den didaktischen Zweck von [rekursiven Lerneinheiten](learning-units.de.md) (Graph-Definition §11), den [Ordnungsregeln E1 bis E4](learning-unit-progression.de.md) und der [impliziten Beherrschung](assessment-gated-completion.de.md) (§13). Im dreistufigen Zielmodell (**Cluster $\to$ Einheit $\to$ Einheit mit Prüfungen**) wird eine fachliche Einheit als kanonischer Cluster erklärt und in Fächern von oben nach unten eingeführt: zuerst als grobe, nach E1–E4 rückflussfreie Facheinheit mit Geschwisterfolge `after`, danach verfeinert in Blatteinheiten mit eigenen Prüfungen (`coverageReviews`), die in allen 16 Bundesländern ungeteilt in einer Planeinheit liegen.
+**Arbeitsfassung für die Fachrunde vom 19. November 2026.** Die Regeln für repräsentative Abschlüsse sind Vorschläge. Die bestehenden Fach- und Prüfverträge gelten bis zu einer Produktentscheidung weiter.
 
-Zwei durchgearbeitete Fachstudien veranschaulichen Grenzzuschnitt, Wissenskontext und Prüfungsabdeckung: die **gleichmäßig beschleunigte Bewegung** in der Physik der Sekundarstufe II und das **Zahlverständnis** in der Mathematik der Jahrgangsstufe 5. Beide Erstschnitte wurden am 13. November 2026 im Kompatibilitätsvertrag 1.2 mit geprüften R2-Deckungsreviews angelegt (zwei Ziele und eine Prüfung in Physik, fünf Ziele und zwei Prüfungen in Mathematik); ihre Weiterentwicklung zu erklärten Cluster-Einheiten, der Vergleich mit breiteren Zuschnitten (etwa der gesamten Kinematik oder der Verbindung mit dem Rechnen mit natürlichen Zahlen) und der länderübergreifende Ganzheitstest folgen in den Schritten `F8`–`F11`.
+Eine [Lerneinheit](learning-units.de.md) braucht ein verständliches Lernversprechen. Soll sie direkt nachweisbar sein, gehört eine zweite Frage zum Entwurf. Welche selbstständige Leistung würde uns überzeugen, dass jemand dieses Versprechen auf dem angegebenen Niveau einlöst?
+
+Am Beispiel der hessischen Kinematik betrachten wir eine vorhandene Kindeinheit und einen möglichen Abschluss für ihre Elterneinheit E.1. Ein zweites Beispiel aus der Mathematik zeigt, wie sich dieselbe Frage beim Zahlverständnis stellt. Die [Unterlage für die Fachrunde](unit-assessment-discussion-2026-11-19.de.md) enthält die E.1-Aufgabenentwürfe, Bewertungsbeispiele und offenen Entscheidungen.
 
 <a id="1-establish-a-secure-foundation"></a>
 <a id="sec-sga-ud-foundation"></a>
@@ -24,9 +26,9 @@ Zwei durchgearbeitete Fachstudien veranschaulichen Grenzzuschnitt, Wissenskontex
 
 Eine Lerneinheit bündelt einen zusammenhängenden Erkenntnisschritt: Lernende verstehen ein Modell oder einen fachlichen Zusammenhang und können damit selbstständig handeln. Die Motivation erklärt, welche Frage dadurch beantwortbar wird und warum sich der Aufwand lohnt. Eine Einheit kann einem vertrauten Thema entsprechen; ebenso kann sie eine neue Denkweise erschließen, die mehrere Themen verbindet. Ihr Umfang folgt diesem Lernversprechen. Auch eine abschließende Anwendung oder Synthese kann eine Einheit bilden; sie braucht keine nachfolgende Einheit als Existenzberechtigung.
 
-Die Prüfung der Einheit – oder ihr Verbund von Prüfungen – zeigt, ob dieses Fundament tatsächlich trägt. Im regulären Verlauf wird darauf aufbauender Stoff erst entwickelt, nachdem das geforderte Fundament nachgewiesen wurde. Andernfalls wird eine Lücke sichtbar gemacht, gezielt aufgearbeitet und erneut geprüft. Ein ehrlich erkanntes Defizit hilft mehr als ein Bestehen, dessen scheinbare Sicherheit den Lernpfad später scheitern lässt.
+Der reguläre Weg führt von einer Leitfrage über Erklärung, Beispiel und Übung zur selbstständigen Anwendung. Wer die Einheit bereits kennt, kann direkt zeigen, was er kann. Vorher soll sichtbar sein, welche Teile erforderlich sind und welche bereits anerkannt vorliegen. Für beide Wege gilt derselbe fachliche Maßstab.
 
-Dies verlangt keine Fehlerlosigkeit. Ein vereinzeltes Rechenversehen wird anders beurteilt als ein fehlendes Kernverständnis. Die reguläre Bewertung muss diesen Unterschied verlässlich abbilden: Eine versprochene, aber im Kern fehlende Kompetenz darf nicht durch beiläufige Punkte an anderer Stelle ausgeglichen werden. Dadurch entstehen weder ein zweites Bestehensurteil noch ein zweiter gespeicherter Ergebniswert; der reguläre Bewertungsvertrag der Prüfung gilt unverändert.
+Ein Urteil über die Einheit darf auf repräsentativen Leistungen beruhen. Ein Rechenfehler kann mit dem Lernversprechen vereinbar sein. Wenn die Person ein für das Versprechen zentrales Modell grundlegend missversteht und dennoch besteht, tragen Aufgabe und Bewertungsregel das Urteil nicht. Fachleute prüfen beide Fälle mit konkreten Antworten.
 
 <a id="2-recognising-a-meaningful-boundary"></a>
 <a id="sec-sga-ud-boundary"></a>
@@ -62,13 +64,13 @@ Der Kontext wird abgeleitet, bevor Aufgaben, Karten und Bilder der Einheit gesch
 <a id="sec-sga-ud-loop"></a>
 ### 12.3. Lernen, nachweisen und weiterlernen
 
-Eine Leitfrage macht das Lernversprechen greifbar. Was können Lernende am Ende, und wozu brauchen sie es? Für Einheiten mit eigenen Prüfungen ist dafür ein kurzer Auftakt vorgeschlagen. Anschließend benennt der Coach das nötige Vorwissen und begleitet das Erarbeiten und Üben mit Rückmeldungen. [Einheitsauftakt in der Graph-Definition (§8.2)](https://enpasos.github.io/skillpilot/concept/skill-graph/context-and-views.de/#sec-orientation)
+„Ein Ball rollt vom Tisch. Wo landet er?“ Beim Erarbeiten macht die Frage ein Ziel sichtbar. Der Coach kann die horizontale Bewegung und den Fall zunächst an einem Beispiel erklären, eine Zeichnung vormachen und beim nächsten Beispiel schrittweise weniger helfen. Eine passende Übung am Ende des Lernpfads gibt Gelegenheit, den Landepunkt selbst vorherzusagen.
 
-In der Prüfung zeigen Lernende, ob sie das Gelernte selbstständig anwenden können. Wer beispielsweise selbst ein Modell wählen soll, muss diese Entscheidung in der Aufgabe auch treffen können. Beim Üben darf der Coach dabei helfen.
+Beim Direktversuch sehen Lernende das Lernversprechen und die erforderlichen Leistungen. Eine Aufgabe zur Überlagerung lässt die Person selbst entscheiden, wie sie beide Bewegungen zeitlich verbindet. Ob ein solcher Wurf tatsächlich auszuführen ist, hängt vom versprochenen Können ab. Eine Auswertung vorgegebener Daten kann die eigenhändige Durchführung eines Versuchs offenlassen.
 
-Verwechselt die Person etwa Geschwindigkeit und Beschleunigung, übt sie gezielt diesen Unterschied. Dieselbe Aufgabe darf sie auch nach der Lösungsanzeige erneut bearbeiten. Eine gleichwertige Aufgabe in einer neuen Situation zeigt besser, ob sie das Modell jetzt selbstständig wählen kann. Für beide Aufgaben gelten dasselbe Lernversprechen und dieselben Bestehensregeln. Bereits erworbene Nachweise anderer Einheiten bleiben gültig.
+Zeigt sich eine Lücke, kann die Person genau diese Stelle erarbeiten. Nach Einsicht in die Lösung dient derselbe Fall der Übung. Für einen erneuten Nachweis der selbstständigen Modellwahl braucht es eine gleichwertige, hinreichend neue Situation. Tragfähigkeit und Aufwand solcher Varianten sind Gegenstand der Erprobung.
 
-Im vorgesehenen Lernfluss führen `after` und die Lernweise „Einheit für Einheit" ([Einheitsfolge](learning-unit-progression.de.md)) geschlossen durch die begonnene Einheit bis zu ihren Nachweisen, ohne technische Einheitssperren aufzubauen: `after` verändert weder atomaren Bedarf noch Mastery oder Frontier, Lernende dürfen Prüfungen jederzeit direkt versuchen, ein nicht bestandener Versuch speichert kein negatives Ergebnis, und auf Prüfungsziele selbst zeigt keine `requires`-Kante späterer Fachziele.
+Ein bestandener Abschluss trägt weder den Vermerk „Einstieg erlebt“ noch ein Ereignis für übersprungene Übungen nach. Die spätere Empfehlung berücksichtigt nur den fachlich begründeten Umfang der bestandenen Fassung. Die Geschwisterrelation `after` ordnet die Einheiten und erzeugt keine fachliche Voraussetzung. [Einheitsfolge](learning-unit-progression.de.md)
 
 <a id="4-main-example-motion-with-constant-acceleration-upper-secondary-physics"></a>
 <a id="sec-sga-ud-physics"></a>
@@ -136,31 +138,30 @@ Bei der Fehlvorstellung am höchsten Punkt setzt das Weiterlernen genau dort an:
 <a id="sec-sga-ud-phys-larger"></a>
 #### 12.4. Ein größerer Kandidat: Kinematik einschließlich Überlagerung
 
-Die eindimensionale Bewegung steht als endgültige Einheitsgrenze noch nicht fest. Eine größere Einheit könnte das Versprechen tragen: **„Ich kann die Bewegungen dieses Einstiegskurses beschreiben, passende Bewegungsmodelle wählen und Bewegungen aus Komponenten zusammensetzen."** Der Schritt von einer zu zwei Dimensionen wäre dann ein innerer Erkenntnisschritt bis zu einem gemeinsamen thematischen Abschluss.
+Die hessische E.1-Lernkarte für G8 und G9 verbindet Messung und eindimensionale Bewegungsmodelle mit der Vorhersage eines waagerechten Wurfs. Der Wurf stammt curricular aus E.3 und hat hier seinen Lernort in E.1. Der Zuschnitt eignet sich, um das Zusammenspiel mehrerer Kompetenzen in einer größeren Einheit zu prüfen.
 
 Ein möglicher Verlauf führt von Darstellungen für Ort, Geschwindigkeit und Beschleunigung über gleichförmige und gleichmäßig beschleunigte Bewegungen zu unabhängigen Komponenten und deren Überlagerung. Für einen idealisierten Wurf ohne Luftwiderstand werden horizontale und vertikale Bewegung in einem festen Bezugssystem getrennt beschrieben und zur **gleichen Zeit** wieder zusammengeführt. Die Unabhängigkeit folgt aus diesem Modell; sie gilt nicht für beliebige überlagerte Bewegungen.
 
-Eine eigene Prüfungsskizze könnte eine Bahnkurve und zwei widersprüchliche Erklärungen ihrer Komponenten vorlegen. Lernende bewerten diese, begründen die Zeitzuordnung und stellen eine eigene konsistente Beschreibung auf. Beim schiefen Wurf mit nichtverschwindender Horizontalgeschwindigkeit ist am höchsten Punkt nur die vertikale Geschwindigkeitskomponente null. Wer die Aussage vom senkrechten Wurf ungeprüft auf den gesamten Geschwindigkeitsvektor überträgt, hat den erweiterten Zusammenhang noch nicht nachgewiesen. Die mathematischen Eingangskompetenzen für Komponenten, Vektoren und bei Bedarf trigonometrische Zerlegung sind entsprechend zu ergänzen.
+Die vorhandene Kindeinheit „Gleichmäßig beschleunigte Bewegung modellieren“ hat zwei eigene Prüfungen. Beim Senkrechtwurf lassen sich die Modellwahl und ihre Grenzen zeigen. Das Beschleunigungsprotokoll verlangt zusätzlich Bewegungsdiagramme und die Unterscheidung von Ortsänderung und zurückgelegter Strecke nach einer Umkehr. Das Review entzog dem Senkrechtwurf gerade wegen dieser Lücke die Deckung für das ganze Beschleunigungsziel. [Geltender Vertrag der Kindeinheit](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/learning-units/physics-constant-acceleration-2026-11-15-v2.md)
 
-**Eine größere Einheit verschiebt nicht alle Rückmeldungen ans Ende.** Bevor der Kurs auf dem eindimensionalen Modell aufbaut, muss dessen entscheidendes Verständnis geprüft sein. Die größere Einheit kann dafür eine verpflichtende Zwischenprüfung enthalten. Diese bleibt ein reguläres Prüfungsziel mit binärem Ergebnis; sie erzwingt weder automatisch eine Kindeinheit noch einen zusätzlichen gespeicherten Status. Ein Gespräch mit entscheidenden Lösungshinweisen liefert keinen selbstständigen Nachweis.
+Für einen ersten **E.1-Entwurf** gelten vier eigenständige Bestehensentscheidungen. Bereits bestandene, zur geforderten Fassung passende Teile zählen mit.
 
-Damit sind drei Zuschnitte miteinander zu vergleichen:
+| Pflichtteil | Fachliche Leistung | Stand und Bestehensgrenze |
+| --- | --- | --- |
+| Kindprüfung Senkrechtwurf | Achse wählen, Bewegung modellieren und Idealisierung begründen | Vorhanden, 24/24 Punkte |
+| Kindprüfung Beschleunigungsprotokoll | Drei Diagramme konstruieren sowie Ortsänderung und Strecke unterscheiden | Vorhanden, 20/20 Punkte |
+| E.1-Prüfung A, Wagen | Vorhersage aus Messdaten begründen und Messabweichungen beurteilen | Entwurf, 4/4 Punkte |
+| E.1-Prüfung B, waagerechter Wurf | Bewegungen in zwei Richtungen mit gemeinsamer Zeit für eine Vorhersage verbinden | Entwurf, 3/3 Punkte |
 
-| Kandidat | Begründung und Prüfpunkt |
-| --- | --- |
-| Eigene Einheit zur eindimensionalen Bewegung | Trägt schon das erste neue Modell einen eigenständig nutzbaren Abschluss? |
-| Größere Kinematikeinheit mit Lernabschnitten und mehreren Prüfungen | Ergibt erst der Transfer auf Komponenten das angestrebte Gesamtverständnis, ohne frühe Lücken zu verdecken? |
-| Kinematik mit echten Kindeinheiten und eigener Synthese | Besitzen die Kindeinheiten jeweils ein eigenes Lernversprechen und einen Abschluss, die diese zusätzliche Hierarchie rechtfertigen? |
-
-Die Lernabschnitte der zweiten Variante sind noch keine Kindeinheiten. In der dritten Variante gelten die bestehenden Kindpflichten unverändert fort; eine Synthese ersetzt deren Prüfungen nicht. Auch „die gesamte Kinematik" braucht einen klaren Umfang: Ob Kreisbewegung, Relativbewegung oder veränderliche Beschleunigung dazugehören, ist für den konkreten Kurs und seine Lernziele festzulegen. Zwei Dimensionen allein belegen noch keine Vollständigkeit des Themas Kinematik.
+Vier bestandene Teile würden E.1 in diesem Entwurf nachweisen. Wer A und B löst und die Unterscheidung von Strecke und Ortsänderung noch verfehlt, hat einen offenen Kindnachweis. Die Fachrunde muss beurteilen, ob die vier Leistungen das Versprechen tragen, ob eigene Versuchsdurchführung erforderlich ist und ob ein anders formuliertes Elternversprechen je mit weniger Pflichtteilen auskäme.
 
 <a id="recognition-inside-a-larger-unit"></a>
 <a id="sec-sga-ud-phys-recognition"></a>
-#### 12.4. Anerkennung innerhalb einer größeren Einheit
+#### 12.4. Was der E.1-Nachweis für weitere Lernschritte bedeutet
 
-Nach der am 11. November 2026 bestätigten Anerkennungsregel wird ein eigenes reguläres Ziel einer Einheit erst dann implizit anerkannt, wenn kein offenes eigenes Prüfungs- oder Memorierziel dieser Einheit es mehr direkt oder transitiv voraussetzt. Im größeren Kinematikkandidaten verlangen sowohl die Zwischenprüfung zur eindimensionalen Bewegung als auch die Abschlussprüfung zur zusammengesetzten Bewegung die eindimensionalen Modellierungsziele. Das Bestehen der Zwischenprüfung ist ein reguläres binäres Bestehen mit vollem Rückmeldewert. Solange die Abschlussprüfung offen ist, erkennt es diese Ziele jedoch noch nicht implizit an; sie bleiben offen, sofern sie nicht ausdrücklich gemeistert wurden. Sobald auch die Abschlussprüfung bestanden ist, werden sie anerkannt.
+Zum Lernort E.1 gehören elf Inhaltsziele, zwei in der Kindeinheit und neun unmittelbar in E.1. Der Entwurf gibt nach den vier Prüfungen **vier ganze Atome für die Planung** frei. Das Kind belegt die beschleunigte Bewegung sowie Modellierung und Idealisierung. In A muss die Person Messabweichungen unterscheiden und Messunsicherheiten angeben. Sind die beiden Kindprüfungen bestanden, gelten bereits die zwei Freigaben der Kindeinheit. Wer zusätzlich A löst, hat den Prüfungsbeleg für den Wagen. Die beiden Freigaben zu Messabweichungen und Messunsicherheiten aus dem E.1-Vertrag werden erst wirksam, wenn auch B bestanden und E.1 vollständig nachgewiesen ist.
 
-Dies ist eine Konsequenz, kein Entwurfsziel. Die Grenze folgt dem Erkenntnisübergang (Abschnitt 12.2), nicht einem gewünschten Anerkennungszeitpunkt; Prüfungen oder Einheiten bloß für frühere implizite Anerkennung aufzuteilen oder umzuschichten ist unzulässig. Ist die eindimensionale Bewegung ein in sich geschlossener Erkenntnisschritt mit eigenem Lernversprechen, spricht das didaktisch für eine Kindeinheit mit eigener Prüfung. Der gültige Vertrag der Kindeinheit erkennt dann deren eigene Ziele unabhängig von weiteren Prüfungen der Elterneinheit an. Die größere Einheit ist erst nach allen eigenen Prüfungen, Pflichtkarten und verpflichtenden Kindeinheiten abgeschlossen. Es entsteht kein neuer Prüfungstyp; Erwerbszuständigkeit, Nachweis und Einheitsabschluss bleiben unterscheidbar, und Aufgaben sowie reguläre Bewertung müssen die beanspruchte Anwendung tatsächlich tragen. Beschrieben ist der Zielvertrag, nicht die aktuelle Laufzeit oder die Qualität bestehender Prüfungen.
+Bei den übrigen sieben Atomen reicht die beobachtete Leistung nur für einen Ausschnitt oder fehlt ganz. Wer vorgegebene Falldaten richtig deutet, hat beispielsweise noch keinen eigenen Fallversuch durchgeführt. Die E.1-Route kann abgeschlossen sein. Ein gesondert eingeplanter Versuchsauftrag bleibt offen. Die vollständige [Prüfung jedes Atoms](unit-assessment-discussion-2026-11-19.de.md) macht diese Planungsvorschläge für die Fachrunde überprüfbar.
 
 <a id="what-textbook-structures-show"></a>
 <a id="sec-sga-ud-phys-textbooks"></a>
@@ -202,15 +203,15 @@ Das Lernversprechen lautet: „Ich verstehe den Aufbau der natürlichen Zahlen, 
 
 Im Kompatibilitätsvertrag 1.2 bilden diese fünf Ziele zusammen mit zwei zugehörigen Prüfungen bereits eine erste Blatteinheit. Beim Top-down-Ausbau der Facheinheiten (`F9`–`F11`) ist dennoch fachlich gegenzuprüfen, ob die Trennung zwischen „Zahlverständnis" und dem Rechnen mit natürlichen Zahlen als Kindeinheiten unter einer gemeinsamen Obereinheit trägt und in allen 16 Bundesländern ungeteilt in einer Planeinheit bleibt. Selbstständige Anwendungen, der tatsächliche spätere Bedarf und die Begründbarkeit der Grenze sind gegeneinander abzuwägen; die Anzahl fünf entscheidet diese Frage ebenso wenig wie das Vorliegen zweier Teilzweige.
 
-Ein Einkaufskontext mit Zählen und Überschlagen kann geeignete Anwendungen liefern. Allein weist er jedoch weder den Vergleich von Zahlensystemen noch das allgemeine Nachfolgerargument nach. Diese Anteile dürfen nicht stillschweigend entfallen, um eine bequeme Abschlussaufgabe als vollständigen Nachweis auszugeben. Nach Regel R1 bräuchte jedes der fünf Ziele eine eigene Prüfung der Einheit, die es voraussetzt; eine bequeme Abschlussaufgabe, die nur einen Teil davon verlangt, lässt die übrigen ungedeckt – das ist ein Regelverstoß und niemals eine geschenkte Anerkennung.
+Eine Einkaufssituation verlangt Größen zu schätzen. Ein Kind kann darin erfolgreich sein, ohne die Unbeschränktheit der natürlichen Zahlen mit dem Nachfolgerprinzip begründen zu können. Soll eine neue Abschlussfassung auch diese Begründung tragen, braucht sie eine passende Aufgabe mit einem wirksamen Bestehenskriterium. Ist die Begründung für das engere Gesamturteil entbehrlich, bleibt das Ziel für eine spätere Planung offen. Die beiden vorhandenen Prüfungen behalten ihren vereinbarten Umfang.
 
 Die bestehende Kante vom Ziel „Multiplikation und ganzzahlige Division als Umkehroperationen nutzen" (`cafd6520-c4af-4109-9863-cc49ba6fad4d`) zum Unbegrenztheitsziel gibt Anlass zu einer fachlichen Prüfung ihrer Notwendigkeit, ist aber keine bereits beschlossene Korrektur. Das Rechenziel umfasst ausdrücklich natürliche **und ganze** Zahlen, Vorzeichen sowie die Bedingungen zulässiger Division. Sein Umfang darf für den Vergleich mit einer Einheit zu natürlichen Zahlen nicht verengt werden.
 
 <a id="6-consistency-with-the-recognition-model-and-the-unit-validity-rules"></a>
 <a id="sec-sga-ud-validity"></a>
-### 12.6. Konsistenz mit Ordnungs- und Anerkennungsmodell (E1–E4 und R1–R5)
+### 12.6. Wie Einheitsfolge, Lernstand und Empfehlung zusammenwirken
 
-Jedes atomare Ziel behält genau ein gespeichertes binäres explizites Ergebnis. Zur expliziten Mastery $M$ tritt die aus den festen Verträgen der direkt besitzenden Einheit mit Prüfungen abgeleitete Anerkennung $I$: $M_{\mathrm{eff}}=M\cup I$. Diese Kompetenz wirkt global, auch unter einem anderen Fokus oder Persönlichen Curriculum. Weder zusätzliche gespeicherte Mastery-Stufen noch ein verdecktes zweites Qualifikationsurteil entstehen.
+Eine brauchbare Gliederung beantwortet zunächst, in welcher Reihenfolge man das Gebiet erarbeiten kann. Für den Nachweis braucht sie zusätzlich eine Antwort darauf, was ein bestandener Abschluss belegt.
 
 Jede Einheit – ob prüfungsfreie Planeinheit, übergeordnete Facheinheit oder Blatteinheit mit Prüfungen – muss zuerst die vier **Ordnungsregeln E1–E4** ([Einheitsfolge](learning-unit-progression.de.md)) erfüllen:
 
@@ -219,44 +220,21 @@ Jede Einheit – ob prüfungsfreie Planeinheit, übergeordnete Facheinheit oder 
 - **E3 (Geschwisterlokale Vollständigkeit von `after`):** Benötigt ein Atom unter Geschwistereinheit $B$ ein Atom unter Geschwistereinheit $A$ derselben Elterneinheit, so folgt $B$ in der erklärten `after`-Ordnung auf $A$ (keine Rückflüsse gegen die Einheitsfolge; auf Prüfungen selbst zeigt keine `requires`-Kante).
 - **E4 (Redundanzfreiheit):** Keine erklärte `after`-Beziehung wiederholt, was bereits über andere Geschwister in `after` folgt.
 
-Einen lokalen Anerkennungsvertrag bildet dagegen ausschließlich eine **Einheit mit Prüfungen** (mit eigenen Prüfungen und gültigen vollständigen `coverageReviews`). Einheiten ohne eigenen Anerkennungsprüfungsvertrag – darunter Stufen, Jahrgänge, Kurshalbjahre und prüfungsfreie Obereinheiten, auch wenn sie freie Übungsaufgaben oder Abiturklausuren enthalten – ordnen nur und erkennen nichts implizit an. Fehlende oder ungültige Deckung einer erklärten Prüfungseinheit bleibt dagegen ein Vertragsverstoß, keine Umklassifikation zur prüfungsfreien Einheit. Innerhalb einer Einheit mit Prüfungen ist ein eigenes Inhaltsziel (einschließlich experimenteller Inhaltsziele) genau dann anerkannt, wenn kein offenes eigenes Prüfungs- oder Memorierziel dieser Einheit es mehr direkt oder transitiv voraussetzt – auch nicht über bereits gemeisterte Zwischenziele hinweg. Gehören die Prüfungen Q1 und Q2 derselben Einheit an und verlangen beide Ziel A, bleibt A nach Bestehen von Q1 offen, bis auch Q2 bestanden ist. Eine offene Prüfung einer anderen, späteren Einheit öffnet ein bereits anerkanntes Ziel niemals erneut und hält es nicht zurück.
+**Vorschlag vom 19. November.** Neben den Einzelbelegen zählt für die Planung nur die geprüfte Freigabe eigener gewöhnlicher Inhaltsziele durch ihre vollständig bestandene Einheitenfassung. Für jedes dieser Ziele gilt auf beiden Wegen derselbe fachliche Maßstab. Ein Kind kann seine eigenen Ziele bereits freigeben, während die Elternroute noch offen ist. [Einheitennachweis und Planung](assessment-gated-completion.de.md#sec-proposal-planning-release)
 
-Für jede Einheit mit Prüfungen gelten die fünf **Gültigkeitsregeln R1–R5** ([Graph-Definition §13.3](assessment-gated-completion.de.md#sec-why-graph-not-enough)):
+Das Review dokumentiert Lernversprechen, Niveau, Pflichtteile, Aufgaben und Bewertung, offengelassene Aspekte und die Planungswirkung je Atom. Eine spätere Fassung kann eine zusätzliche Fähigkeit verlangen. Alte Ergebnisse behalten die Bedeutung ihrer damaligen Fassung. Aus einem gescheiterten Direktversuch folgt eine Lernempfehlung zur beobachteten Lücke. Frühere Erfolge bleiben gültig.
 
-- **R1:** Jedes eigene Inhaltsziel einer Einheit mit Prüfungen (einschließlich experimenteller Inhaltsziele) liegt direkt oder transitiv auf einem Voraussetzungspfad von mindestens einer eigenen Prüfung dieser Einheit; ein Pfad, der nur zu einem Memorierziel führt, zählt nicht. Gültigkeitsbedingung der Einheit mit Prüfungen, hart ab Anlage ihrer `coverageReviews`.
-- **R2:** Für jedes eigene Inhaltsziel besitzt mindestens eine eigene Prüfung, die es voraussetzt, geprüfte Evidenz dafür, dass ihre Aufgaben und ihre reguläre Bewertung das Ziel tatsächlich ohne kompensierende Nebenpunkte prüfen. Meilenstein M5, mit der aktuellen einzelzielbezogenen Bindung bei M7.
-- **R3:** Eine Prüfung beansprucht Abdeckung ausschließlich für Ziele, die sie direkt oder transitiv voraussetzt. Gleiche Einordnung wie R1.
-- **R4:** Jedes Erwerbsziel besitzt im aufgelösten Kurs genau eine direkt besitzende Einheit. Gleiche Einordnung wie R1.
-- **R5:** Ein späterer Neuzuschnitt von Einheiten oder spätere Kanten verleihen bestehenden Ergebnissen niemals nachträglich zusätzliche Anerkennung; der Vertrag ist über `revision` versioniert. Laufzeitvertrag und Vorbedingung vor einer Produktionsfreigabe impliziter Anerkennung.
+Fachliche Erprobung ist insbesondere an drei Stellen nötig. Verlangen Aufgaben und Bewertungsregeln tatsächlich die beabsichtigte selbstständige Entscheidung? Rechtfertigt das beobachtete Können die Freigabe jedes beanspruchten *ganzen* Atoms? Wenn eine spätere Aufgabe einen noch offenen Schritt benötigt, ist vorab ein kurzer Einzelcheck oder die begleitete erste Anwendung sinnvoller? Ein vorgeschriebener Praxisnachweis bleibt in beiden Fällen eine eigene Pflicht.
 
-**Aktueller Implementierungs- und Vertragsstand:** Die normative Anerkennung ist auf Einheiten mit Prüfungen begrenzt, deren Vertrag R1–R5 mit geprüfter Abdeckung erfüllt; sie ist noch nicht produktiv eingeführt. Im Zielmodell gilt: ein ungedecktes Ziel bleibt offen und stellt einen Regelverstoß dar, niemals eine kostenlose Anerkennung. Aktuell sind in den kanonischen Landschaften Mathematik und Physik drei Lerneinheiten im Kompatibilitätsvertrag 1.2 verfasst (als `programUnits` der Art `learningUnit` mit `own`-Platzierungen in `goalPlacements`, darunter der Skalarprodukt-Pilot sowie die Erstschnitte der beiden Beispiele dieses Kapitels; siehe [Graph-Definition §11.2](learning-units.de.md#sec-unit-representation)). `validate:learning-units` ([validateLearningUnits.ts](https://github.com/enpasos/skillpilot/blob/main/app/scripts/validateLearningUnits.ts)) prüft dafür R1, R3 und den Eindeutigkeitsanteil von R4 fail-closed in der Pflicht-CI sowie beanspruchte `coverageReviews` (der Vollständigkeitsanteil von R4 greift bei `learningUnitCoverage: "complete"`). Die Umstellung auf erklärte Cluster-Einheiten samt E1–E4-Fachvalidierung, R5-Vertragsversionierung und produktiver Laufzeit-Anerkennung ($M_{\mathrm{eff}}$) folgt in `F8`–`F12`.
-
-Für den Einheitsentwurf folgt daraus: Jede Einheit muss sich konvex am Stück lernen lassen (E2) und ihren kreuzenden Voraussetzungsbedarf geschwisterlokal über `after` widerspiegeln (E3/E4), während jede Einheit mit Prüfungen eigene Prüfungen im selben Cluster für alle eigenen Inhaltsziele benötigt (R1–R3) und jedes geplante Ziel im aufgelösten Kurs genau einer Einheit direkt angehört (R4).
-
-Prüfungen und Pflichtkarten benötigen eigene explizite Ergebnisse. Explizite Mastery eines regulären Ziels besteht nicht automatisch eine gesondert geforderte Einheitsprüfung. Umgekehrt verlangt eine einzelne atomare Voraussetzung nicht automatisch den Abschluss der gesamten fremden Einheit; nur ein ausdrücklich erklärtes, fachlich begründetes `after` sagt, dass im vorgesehenen Lernfluss die gesamte andere Einheit vor Beginn erledigt ist. Das ist eine Reihenfolge, kein zusätzlicher Voraussetzungstyp: Sie verändert weder atomaren Bedarf noch Frontier und sperrt keinen bewussten Prüfungsversuch. Ein Elternabschluss ersetzt keine offene Kindprüfung; abgeschlossene Kinder bestehen keine zusätzliche Elternprüfung. Gültig anerkannte Einzelkompetenz bleibt wirksam, während andere Verpflichtungen der Einheit noch offen sind.
-
-Alle wirksamen Voraussetzungen bleiben maßgeblich, einschließlich Vererbung, Clustern und vollständiger transitiver Pfade. Ein bereits gemeistertes Zwischenziel darf den Anspruch einer noch offenen lokalen Prüfung nicht verdecken. Die transitive Minimalität bleibt in Kraft.
-
-**Nicht übernommen.** Eine auf dem archivierten Branch von Pull Request #83 als „Zielentscheidung vom 6. November 2026" vermerkte Alternative sah unmittelbare Anerkennung aus der qualifizierten Abdeckungsliste einer einzelnen bestandenen Prüfung einschließlich Nachweis durch Eltern- oder Fremdeinheiten vor. Der Product Owner hat diese Variante am 11. November 2026 geprüft und nicht übernommen.
+**Geltender Vertrag vom 4./11. November.** Die drei deklarierten Facheinheiten behalten ihre Prüfungen und Deckungsreviews. Unter R1–R5 kann ein eigenes gewöhnliches Ziel schon vor dem Abschluss der ganzen Einheit anerkannt werden, sobald die dafür maßgeblichen lokalen Pflichten erfüllt sind. Diese Anerkennung gilt global. Die heutige Laufzeit kann ein Ziel schon aus dem Fehlen offener Pflichten im betrachteten Umfang anrechnen. Der Vorschlag vom 19. November würde eine zusätzliche Planungsfreigabe bis zum vollständigen Abschluss der zuständigen Einheitenfassung zurückstellen. [Bestätigte Entscheidung](completion-semantics-clarification-2026-11-04.md)
 
 <a id="7-short-design-sheet"></a>
 <a id="sec-sga-ud-sheet"></a>
 ### 12.7. Kurzes Entwurfsblatt
 
-Vor jeder Implementierungsplanung sind für jeden Kandidaten zu beantworten:
-
-1. Was können Lernende danach selbstständig, und wozu brauchen sie es?
-2. Bildet der Kandidat einen kanonischen Cluster (E1), und bleibt er als Blatteinheit in allen 16 Bundesländern ungeteilt in einer einzigen Planeinheit?
-3. Besitzt der gesamte Kindblockgraph aus atomarem Bedarf und `after` an jeder Ebene eine azyklische Ordnung, sodass jede Einheit am Stück lernbar ist (E2)?
-4. Welche konkreten Eingangskompetenzen werden benötigt, stehen sie – auch fachübergreifend – rechtzeitig bereit, und ist kreuzender Bedarf zu Geschwistereinheiten vollständig und redundanzfrei durch `after` geordnet, ohne dass `requires` auf Prüfungen zeigt (E3, E4)?
-5. Was sichert der Wissenskontext der Einheit allein über `requires`, was ist noch nicht gesichert, und bleiben alle Aufgaben, Karten, Bilder und Beispiele streng im Kontext?
-6. Welche vorhandenen Ziele gehören direkt zur Einheit (`Own(U)`), welche Kindeinheiten besitzt sie, und gehört jedes Ziel genau einer Einheit direkt an (R4)?
-7. Worin besteht der zentrale Erkenntnisschritt? Braucht die Einheit eigene Prüfungen mit Deckungsreviews, oder ordnet sie zunächst ihre Untereinheiten? Bei eigenen Prüfungen: Welches Praxisbeispiel eignet sich für den vorgeschlagenen kurzen Auftakt?
-8. Falls Einheit mit Prüfungen: Welche Aufgaben und regulären Bewertungsregeln im Einheits-Cluster weisen das gesamte Versprechen nach, liegt jedes eigene Inhaltsziel (inkl. experimenteller Ziele) auf einem Pfad von einer eigenen Prüfung (R1), und trägt mindestens eine solche Prüfung dafür geprüfte Evidenz (R2)?
-9. Beansprucht jede Prüfung Abdeckung ausschließlich für Ziele, die sie direkt oder transitiv voraussetzt (R3)?
-10. Könnte jemand bestehen, obwohl ihm eine wesentliche Kompetenz fehlt?
-11. Was kann die Person nach einer solchen Lücke gezielt üben? Woran ließe sich in einer gleichwertigen anderen Aufgabe erkennen, dass sie das Gelernte selbstständig anwenden kann?
-12. Sind freie Übungsaufgaben oder Abiturklausuren sauber von eigenen Anerkennungsprüfungen getrennt?
-13. Welche Quellen (*geführt in*) und vollständigen Zielbedeutungen begründen Umfang, Lernplatz (*steht in*) und Grenze?
-
-Vor einer erneuten Planung sollen die Beispiele nachvollziehbar machen, warum die Grenzen fachlich tragen, die Prüfungen nichts Wesentliches übersehen und ein Nichtbestehen zu sinnvollem Weiterlernen führt. Ein Alternativzuschnitt muss anhand derselben Fragen vergleichbar sein. Dieses Blatt autorisiert weder eine Implementierung noch eine vollständige Schuljahreszuordnung oder eine technische Zugangssperre.
+1. Welche Frage weckt Interesse? Was soll die Person am Ende auf welchem Niveau selbstständig meistern?
+2. Welche Ziele und Pflichtkinder gehören zur Einheit? An welcher Stelle kann sie fachlich sinnvoll beginnen und enden? Stimmen Einheitsfolge, kanonische Voraussetzungen, Wissenskontext und Lernort in den betreffenden Sichten?
+3. Wie erklärt der Coach einen neuen Gedanken, was kann er vormachen und woran können Lernende ihn mit abnehmender Hilfe erproben?
+4. Welche erforderlichen Leistungen und gültigen Vorleistungen sieht eine Person vor dem Direktversuch? Welche konkrete Aufgabe verlangt die versprochene Entscheidung im Zusammenspiel?
+5. Welche Beispielantwort muss bestehen, welche trotz richtiger Nebenrechnungen scheitern? Rechtfertigt die Fassung jede vorgeschlagene atomare Planungswirkung? Was darf für das Gesamturteil offenbleiben?
+6. Welche Rückmeldung hilft bei einem Fehlversuch? Gibt es nach Lösungseinsicht eine gleichwertige neue Aufgabe für einen selbstständigen Nachweis? Welche offenen Fragen müssen Fachleute und Lernende in der Erprobung klären?

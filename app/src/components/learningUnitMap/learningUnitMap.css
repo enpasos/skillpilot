@@ -83,6 +83,11 @@
 .lum-map-summary { height: 49px; flex-shrink: 0; display: flex; align-items: center; gap: 15px; padding: 0 24px; }
 .lum-map-summary h1 { font-size: 13px; font-weight: 600; letter-spacing: -.1px; margin: 0; }
 .lum-map-summary > span { color: #a0a8af; font-size: 10px; }
+.lum-scope-actions { display: flex; flex-wrap: wrap; gap: 8px; flex-shrink: 0; padding: 8px 16px; }
+.lum-scope-actions:empty { display: none; }
+.lum-flashcard-action { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 8px 12px; border: 1px solid #c6d7e5; border-radius: 5px; background: #f2f7fb; color: #347295; font-size: 12px; text-align: left; }
+.lum-flashcard-action:hover { background: #e7f2fa; }
+.lum-flashcard-action:focus-visible { outline: 2px solid #347aa6; outline-offset: 2px; }
 .lum-flow { flex: 1; min-height: 0; position: relative; margin-bottom: 20px; opacity: 1; transition: opacity 140ms ease; }
 .lum-flow--leaving { opacity: 0; pointer-events: none; }
 .lum-flow--entering { opacity: .55; pointer-events: none; }

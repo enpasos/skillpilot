@@ -18,7 +18,7 @@ A spaced-repetition goal for facts, vocabulary, notation, or selected formulas. 
 
 *DE: Selbstständig Probleme lösen, Prüfungsknoten*
 
-A goal carrying `examData`: an independent assessment or practice task with a model solution and scoring scheme. In the target model no `requires` edge points to an `Exam` goal (assessments are endpoints of prerequisite paths). Own recognition assessments of declared **units with assessments** (`coverageReviews`) substantiate independent application of own content goals under R1–R5, whereas standalone practice tasks and Abitur exams inside assessment-free outer units remain selectable as usual without triggering implicit recognition.
+A goal carrying `examData`: an independent assessment or practice task with a model solution and scoring scheme. In the target model no `requires` edge points to an `Exam` goal (assessments are endpoints of prerequisite paths). The applicable recognition concept binds independent application of own content goals to R1–R5 and reviewed `coverageReviews` of declared **units with assessments**. Standalone practice tasks and Abitur exams remain selectable as usual but do not establish implicit recognition on their own. The proposal of 19 November would judge unit completion separately; it expands no existing exam's meaning.
 
 ### `examData` and scoring {unnumbered=true}
 
@@ -76,7 +76,7 @@ An explicit organizational structural container (year, semester, module, phase, 
 
 A recursively composed educational whole in the three-tier progression **Cluster $\to$ Unit $\to$ Unit with assessments**. In the binding target model, a subject unit is declared as a canonical cluster with a learning promise, `revision`, sibling `after` order, and optional `coverageReviews`; own goals (`Own(U)`) and direct child units derive from `contains`, and leaf subject units stay whole inside one plan unit across all 16 Bundesländer. Until migration (`F8`–`F11`), the three existing canonical units use compatibility contract 1.2 (`programUnits` of kind `learningUnit` with `own` placements and `parentUnitId`; see [field reference](repo:docs/dev/landscape-json-field-reference.md)).
 
-Every unit obeys the ordering rules **E1–E4** without imposing technical access locks via `after`. Completion derives from child units and own obligations without a stored unit-mastery value. Implicit recognition of own content goals applies exclusively inside declared **units with assessments** (with own assessments and valid complete `coverageReviews`) satisfying R1–R5 ([Graph Definition §13.3](repo:docs/concept/skill-graph/assessment-gated-completion.md#sec-why-graph-not-enough)); runtime adaptation (`F12`/`F13`) remains pending.
+Every unit obeys the ordering rules **E1–E4** without imposing technical access locks via `after`. Completion derives from child units and own obligations without a stored unit-mastery value. Adopted individual recognition under R1–R5 and its incomplete implementation remain separate from the representative unit judgement in the proposal of 19 November. The proposal neither declares all constituent atoms mastered nor waives a required child exam ([Unit evidence and applicable recognition contract](repo:docs/concept/skill-graph/assessment-gated-completion.md)).
 
 ### Goal placement {unnumbered=true}
 

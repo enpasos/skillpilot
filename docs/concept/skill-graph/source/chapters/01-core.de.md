@@ -86,7 +86,7 @@ Für die Lernfrontier genügt es nicht, nur die direkt eingetragenen Voraussetzu
 | $R$ | verfasste (direkte) Anforderungen | Gespeicherte `requires`-Kanten. Im Zielzustand verbinden sie nur Atome. |
 | $\Reff$ | effektive Anforderungen | $R$ zusammen mit den Anforderungen, die ein Ziel von seinen `contains`-Vorfahren erbt. |
 | $\Rat$ | atomar normalisierte Anforderungen | Jede effektive Voraussetzung ist durch ihre atomare Basis ersetzt; es bleiben nur Paare von Atomen. |
-| $\Rat^+$ | transitive Hülle | Alle über Ketten erreichbaren Voraussetzungen. Grundlage von Bedarf, Frontier und impliziter Beherrschung. |
+| $\Rat^+$ | transitive Hülle | Alle über Ketten erreichbaren Voraussetzungen. Grundlage für die Berechnung des Bedarfs und der Frontier. |
 | $R_A$ | direkt atomar verfasste Anforderungen | $R\cap(A\times A)$; Grundlage der Routenprüfung in Abschnitt~@ref{sec:routes}. |
 :::
 
@@ -292,13 +292,15 @@ Eine prozentuale Abdeckung braucht darüber hinaus einen erklärten Nenner. Solc
 
 ## Lernzustand, Erfüllung und Fortschritt {#sec:state}
 
+**Geltender bestätigter Vertrag (4./11. November 2026).** Die folgenden Formeln mit $\Meff$ beschreiben das verbindliche Anerkennungsmodell. Seine vollständige Umsetzung, insbesondere die revisionsgebundene globale Ableitung, ist gesondert nachzuweisen. Der Vorschlag vom 19. November wird erst in Abschnitt~@ref{sec:proposal-unit-assessment} behandelt.
+
 Die bisherigen Abschnitte beschreiben den Graphen ohne lernende Person. Dieser Abschnitt fügt ihren Lernzustand hinzu: was gespeichert wird, was daraus als effektiv beherrscht gilt, welche Ziele als Nächstes verfügbar sind und wie Fortschritt gezählt wird.
 
 ### Erfüllung statt Rückschluss auf Voraussetzungen {#sec:satisfaction}
 
 #### Ausdrückliche Ergebnisse.
 
-Es gibt genau einen gespeicherten binären Zustand $m:A\to\{0,1\}$, mit $M=\{a\in A\mid m(a)=1\}$. $M$ ist die Menge der ausdrücklichen Erfolge, kurz: die ausdrückliche Mastery. Ein ausdrücklicher Erfolg an einem Inhaltsziel belegt zielgerecht geprüftes Verstehen. Orientierung, Memorierung und Prüfungen verwenden ihren jeweils eigenen Abschlussvertrag (Abschnitt~@ref{sec:goal-types}). Keine Teilbewertung bildet einen dritten Mastery-Zustand.
+Es gibt genau einen gespeicherten binären Zustand $m:A\to\{0,1\}$, mit $M=\{a\in A\mid m(a)=1\}$. $M$ ist die Menge der ausdrücklichen Erfolge, kurz: die ausdrückliche Mastery. Ein ausdrücklicher Erfolg an einem Inhaltsziel belegt das zielgerecht geprüfte Verstehen oder Können. Auch im Gespräch gilt der volle beschriebene Anspruch; verlangt das Atom eine eigene Durchführung, genügt eine Erklärung über fremde Daten nicht. Orientierung, Memorierung und Prüfungen verwenden ihren jeweils eigenen Abschlussvertrag (Abschnitt~@ref{sec:goal-types}). Keine Teilbewertung bildet einen dritten Mastery-Zustand.
 
 #### Anerkennung durch eine Prüfung.
 
@@ -410,7 +412,7 @@ Zu $\Closure(T)$ (früher $U(T)$) gehören die ausgewählten Atome und ihr gesam
 
 Im Pfad $a\to b\to c$ muss der Graph bei einer Auswahl von $a$ und $c$ das Zwischenziel $b$ mitführen. So bleibt die Voraussetzungskette intakt, auch wenn eine Ansicht $b$ ausblendet. Fehlt $b$ im zugrunde liegenden Graphen, ist die Projektion zu korrigieren. Die Kompositionssicht verfasst dafür keine Ersatzkante.
 
-Für die persönliche Auswahl gilt seit dem 10. November 2026: Zuerst bestimmen die geprüften Landes- und Kursfilter die atomaren Ausgangsziele $S$ aller gewählten Fächer. Dann wird auf dem unbeschnittenen kanonischen Graphen der Lernumfang $L=\Closure(S)$ gebildet. Jedes einzeln benötigte Atom gehört zu Lernen, Fortschritt und Abschluss, auch wenn es aus einem anderen Kurs oder Fach kommt. Geschwister kommen allein durch ihre Zugehörigkeit zur selben Einheit nicht hinzu. Werden alle Atome eines Faches benötigt, gehören sie alle zu $L$.
+Für den persönlichen Umfang bestimmen zuerst die geprüften Landes- und Kursfilter die atomaren Ausgangsziele $S$ aller gewählten Fächer. Nach der Entscheidung vom 10. November 2026 wird dann $L=\Closure(S)$ auf dem ungekürzten kanonischen Graphen berechnet. Jedes notwendige Atom bleibt im Lernumfang, auch aus anderen Kursen und Fächern. Weitere Geschwister derselben Einheit kommen nur bei eigenem Bedarf hinzu. Welche Arbeit noch ansteht und welche Einheit nachgewiesen ist, wird innerhalb dieses festen Umfangs bestimmt.
 
 Die persönliche Konfiguration und die Curriculum- und Projektionsrevision bestimmen $L$. Ein bereits gemeistertes Ziel bleibt als erfüllt im Nenner und braucht keine Wiederholung. Die Hülle umfasst auch seine Voraussetzungen. Eine angenommene Eingangskenntnis ist noch kein Lernergebnis.
 

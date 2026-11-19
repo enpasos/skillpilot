@@ -100,7 +100,9 @@ An aggregate budget alone is insufficient whenever individual subjects, rooms, o
 
 Under this optional profile, a schedule and acquisition plan is valid when it is both structurally feasible and workload-feasible under its declared assumptions; without calibrated effort estimates, only the structural claim is admissible. Every feasibility claim binds the plan, curriculum revision, resolved scope, and estimation assumptions, without guaranteeing uniform learning speed across individuals.
 
-Completion of a domain learning unit follows the recursive goal-type and child-unit obligations from Section~@ref{sec:learning-units}. A purely calendar planning period $S_i$ may span several subject units or cut across a unit in time; declared plan units of a Land plan, by contrast, obey E1 to E4, and subject leaf units introduced after `F8` are cut so that they sit whole inside one plan unit across all 16 Bundesländer (that cross-Land check remains pending for the three existing 1.2 units). Nothing in this scheduling profile makes the entire preceding year a universal prerequisite for every subsequent goal.
+A hypothetical completion witness shows that the plan is structurally feasible. Unit completion follows the contract in force in Section~@ref{sec:unit-completion}. Section~@ref{sec:proposal-unit-completion} proposes a separate judgement based on the performances required by a unit version.
+
+A calendar period $S_i$ may contain several subject units or cut across one. E1 to E4 apply to declared Land plan units. Under `F8`, each subject leaf unit must fit undivided into a plan unit in each of the 16 Länder. This has yet to be demonstrated for the three existing 1.2 units. A year boundary imposes no blanket prerequisite on the whole preceding year.
 
 :::sources
 [Learning Units](repo:docs/concept/skill-graph/learning-units.md); [Graph Definition](repo:docs/concept/skill-graph/graph-definition.md); [Curriculum Time Axis, Buffer Planning, and Pacing](repo:docs/concept/didactic/curriculum-time-axis-and-pacing.md).

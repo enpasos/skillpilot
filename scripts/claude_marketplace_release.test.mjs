@@ -82,9 +82,10 @@ const marketplaceTemplate = JSON.parse(
 );
 const publishedMarketplaceLane = loadHistorical110MarketplaceLane();
 const currentMarketplaceLane = loadClaudeMarketplaceLane(repositoryRoot);
-const pinnedMarketplaceLane = currentMarketplaceLane;
+const pinnedMarketplaceLane = JSON.parse(readFileSync(resolve(canonicalPluginRoot,
+  "release/history/1.1.13/marketplace-publication.json"), "utf8"));
 const pinnedBaseline = JSON.parse(readFileSync(resolve(canonicalPluginRoot,
-  "release/contract-baseline.json"), "utf8"));
+  "release/history/1.1.13/contract-baseline.json"), "utf8"));
 // Export behavior uses the current validator and an explicitly synthetic local
 // source pin. The real published workflow and pending-candidate guard are tested
 // separately below; no synthetic evidence is written into the repository.
@@ -937,13 +938,13 @@ test("published verification is pinned to the configured repository", () => {
   );
 });
 
-test("committed source produces the eligible 1.1.13 export without claiming client acceptance", () => {
+test("published 1.1.13 stays pinned while the local 1.1.14 candidate remains unpublished", () => {
   const result = checkClaudeMarketplace({ repositoryRoot });
   assert.equal(result.pluginName, "skillpilot-coach-v1");
   assert.equal(result.version, "1.1.13");
-  assert.equal(result.pendingCandidateVersion, undefined);
+  assert.equal(result.pendingCandidateVersion, "1.1.14");
   assert.match(result.treeSha256, /^[0-9a-f]{64}$/u);
-  assert.ok(result.outputRoot);
+  assert.equal(result.outputRoot, null);
   assert.equal(result.files.length, 12);
   assert.notEqual(currentMarketplaceLane.activation.state, "published_verified");
   assert.ok(currentMarketplaceLane.activation.evidence.slice(1).every(({ status }) => status === "pending"));
@@ -959,6 +960,26 @@ test("an unpinned future candidate cannot use the published workflow export", ()
     assert.throws(() => prepareCurrentMarketplace({ repositoryRoot: root, outputRoot }),
       /export version 1\.1\.14 does not match pinned template version 1\.1\.13/u);
   });
+});
+
+test("published 1.1.13 keeps its immutable archive, dossier and repository binding", () => {
+  validateClaudeMarketplaceLane(pinnedMarketplaceLane);
+  assert.equal(pinnedMarketplaceLane.activation.state, "published_pending_acceptance");
+  assert.equal(pinnedBaseline.pluginVersion, "1.1.13");
+  const digest = "0e99b10635c0a97a43d5f6fbdc0fa437b6da68bb0483515fdf8230e0764090cd";
+  const archive = readFileSync(resolve(repositoryRoot,
+    `backend/src/main/resources/claude-plugin-publication/skillpilot-coach-v1/1.1.13/sha256-${digest}/skillpilot-coach-v1-1.1.13.plugin`));
+  assert.equal(archive.length, 46595);
+  assert.equal(createHash("sha256").update(archive).digest("hex"), digest);
+  assert.equal(pinnedBaseline.archive.bytes, 46595);
+  assert.equal(pinnedBaseline.archive.sha256, digest);
+  assert.equal(pinnedMarketplaceLane.activation.evidence[0].revision,
+    "803cdbf462465c8686f2b7894a9ddfbdf1ec50b7");
+  assert.equal(pinnedMarketplaceLane.activation.evidence[0].treeSha256,
+    "1ffa2ec07f543b13a4d7111dc4317ff19ebd93290887d1cb924201771caae05f");
+  assert.equal(pinnedMarketplaceLane.plugin.directInstallSha256, digest);
+  assert.equal(pinnedMarketplaceLane.activation.evidence[0].candidateSha256, digest);
+  assert.equal(pinnedMarketplaceLane.activation.evidence[0].candidateVersion, "1.1.13");
 });
 
 test("published 1.1.12 keeps its immutable archive, dossier and repository binding", () => {
@@ -1005,10 +1026,10 @@ test("source CI always checks the marketplace and exports only an eligible candi
 
   const current = runSourceWorkflowGate(checkStep);
   assert.equal(current.status, 0, current.stderr);
-  assert.equal(current.output, "export_ready=true\n");
+  assert.equal(current.output, "export_ready=false\n");
 
   const pending = runSourceWorkflowGate(checkStep,
-    "{ version: '1.1.12', pendingCandidateVersion: loadClaudeMarketplaceLane().plugin.version, outputRoot: null }");
+    "{ version: '1.1.13', pendingCandidateVersion: loadClaudeMarketplaceLane().plugin.version, outputRoot: null }");
   assert.equal(pending.status, 0, pending.stderr);
   assert.equal(pending.output, "export_ready=false\n");
 
@@ -1159,6 +1180,9 @@ async function createExportFixture() {
       .replaceAll(pinnedBaseline.archive.sha256, baseline.archive.sha256)
       .replaceAll(String(pinnedBaseline.archive.bytes), String(baseline.archive.bytes));
     writeFileSync(resolve(templateRoot, "validate.yml"), workflow);
+    const fixtureManifestPath = resolve(templateRoot, "marketplace.json");
+    writeFileSync(fixtureManifestPath, readFileSync(fixtureManifestPath, "utf8")
+      .replaceAll(pinnedBaseline.pluginVersion, baseline.pluginVersion));
     for (const filename of ["README.md", "CHANGELOG.md"]) {
       const path = resolve(templateRoot, filename);
       writeFileSync(path, readFileSync(path, "utf8")

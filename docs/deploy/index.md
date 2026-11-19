@@ -6,7 +6,8 @@ This page groups deployment-facing operational runbooks, provider rollout record
 
 ## User Setup Guide
 
-- [SkillPilot Claude Connector: User Setup and Usage Guide](claude-connector-v1-user-guide.md)
+- [Install the current SkillPilot Coach beta for Claude](https://skillpilot.com/plugins#claude)
+- [Claude connector and plugin setup described in the release dossier](claude-connector-v1-user-guide.md)
 
 ## Core Operational Runbooks & Release Dossiers
 
@@ -16,12 +17,13 @@ This page groups deployment-facing operational runbooks, provider rollout record
 - [SkillPilot Coach v1: OpenAI Submission Dossier](openai-plugin-v1-submission.en.md)
 - [SkillPilot ChatGPT Desktop Beta: Git Marketplace and Updates](openai-personal-marketplace-release.md)
 - [SkillPilot in Gemini: Controlled Beta Integration Runbook](gemini-integration.en.md)
-- [Claude Coach (Paused Beta): Architecture, Testing, and Reactivation](claude-coach-beta.md)
 - [SkillPilot Claude Connector v1: Release and Rollback Runbook](claude-connector-v1-release.md)
 - [SkillPilot Claude Personal Git Marketplace: Release Runbook](claude-personal-marketplace-release.md)
 - [Claude Personal Marketplace: Support Readiness and Incident Runbook](claude-support-readiness-runbook.md)
 
 ## Additional Timestamped Engineering & Release Records
+
+- [Retired Claude beta on the shared origin](claude-coach-beta.md)
 
 *(Historical cutover notes, review-freeze audit logs, and interim architecture records below are retained in their original authoring language.)*
 
@@ -35,7 +37,8 @@ Diese Seite bündelt betriebsnahe Deployment-Runbooks, Provider-Rollout-Nachweis
 
 ## Einrichtungsanleitung für Nutzende
 
-- [SkillPilot Claude Connector: Einrichtung und Nutzung](claude-connector-v1-user-guide.de.md)
+- [Aktuelle Beta des SkillPilot-Coachs für Claude einrichten](https://skillpilot.com/plugins#claude)
+- [Einrichtung von Claude-Konnektor und Plugin laut Release-Dossier](claude-connector-v1-user-guide.de.md)
 
 ## Zentrale Betriebs-Runbooks & Release-Dossiers
 
@@ -45,12 +48,13 @@ Diese Seite bündelt betriebsnahe Deployment-Runbooks, Provider-Rollout-Nachweis
 - [SkillPilot Coach v1: OpenAI-Submission-Dossier](openai-plugin-v1-submission.md)
 - [SkillPilot ChatGPT-Desktop-Beta: Git-Marktplatz und Updates](openai-personal-marketplace-release.de.md)
 - [SkillPilot in Gemini: Integrations-Runbook (kontrollierte Beta)](gemini-integration.md)
-- [Claude-Coach (pausierte Beta): Architektur, Tests und Reaktivierung](claude-coach-beta.de.md)
 - [SkillPilot Claude Connector v1: Release- und Rollback-Runbook](claude-connector-v1-release.de.md)
 - [SkillPilot Claude-Git-Marktplatz: Release-Runbook](claude-personal-marketplace-release.de.md)
 - [Claude-Marktplatz: Support-Bereitschaft und Incident-Runbook](claude-support-readiness-runbook.de.md)
 
 ## Weitere datierte Betriebs- und Release-Nachweise
+
+- [Früherer Claude-Betatest mit gemeinsamem Serverursprung](claude-coach-beta.de.md)
 
 *(Historische Cutover-Notizen, Review-Freeze-Nachweise und Übergangsberichte unten verbleiben als Prüfnachweise in ihrer jeweiligen Originalsprache.)*
 

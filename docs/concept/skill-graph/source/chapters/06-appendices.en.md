@@ -8,7 +8,9 @@
 
 ## Verification Strategy for Completion Semantics {#sec:test-strategy appendix=true}
 
-The accompanying script [check-assessment-model.py](repo:docs/concept/skill-graph/latex/check-assessment-model.py) is a mathematical reference check written with the Python standard library alone. It verifies the formulas from Section~@ref{sec:assessment} across small finite models, reads no learner data, and mutates no runtime state ([GD-D04](@rule{GD-D04})).
+The script [check-assessment-model.py](repo:docs/concept/skill-graph/latex/check-assessment-model.py) checks two distinct models ([GD-D04](@rule{GD-D04})). For the E.1 proposal it evaluates all 16 subsets of the four required passes against the expected child and parent completions. A second case checks an explicit evidence-bound planning release, a prerequisite that was merely sampled and a change of assessment version. Task quality and learning effects require separate review and learner trials.
+
+**Reference cases for the contract in force since 4/11 November.** The following tests check the calculation in Section~@ref{sec:assessment}.
 
 - **Finite model checking.** Every topologically ordered DAG of up to four vertices under every assignment of explicit mastery and protected sets where local content goals have complete local assessment coverage: $5\,222$ valid cases. Graph traversal and static transitive closure yield the identical implicit set $I_U$.
 - **Minimality.** Transitive reduction is minimal and preserves closure. Redundant edges of the normalized relation do not alter recognition. The older inheritance counterexample diagnoses transitional data; this bounded model test does not replace complete `G17` validation of the current catalog ([GD-D05](@rule{GD-D05})).
@@ -24,6 +26,12 @@ Diagram generation in [generate-completion-diagrams.py](repo:docs/concept/skill-
 [check-assessment-model.py](repo:docs/concept/skill-graph/latex/check-assessment-model.py); [generate-completion-diagrams.py](repo:docs/concept/skill-graph/latex/generate-completion-diagrams.py).
 :::
 
+### Where to find the recognition contract in force {#sec:unit-assessment-history anchors="eq-needed,eq-implicit,tab-unit-validity,fig-unit-entry-paths,fig-recursive-unit,fig-waivers,fig-orientation-outcome,fig-local-recognition,fig-protected,fig-shared-assessments,fig-period"}
+
+Table~@ref{tab:unit-validity} gives the validity rules R1–R5 confirmed on 4 and 11 November. Equations~@eqref{eq:needed} and~@eqref{eq:implicit} give the open demand and the unit’s implicitly recognized own goals. These rules remain in force pending a new product decision. Section~@ref{sec:proposal-unit-assessment} describes the proposal for expert review. The separate reference cases above support comparison.
+
+Figures~@ref{fig:unit-entry-paths} and~@ref{fig:recursive-unit} illustrate entry and recursive completion. Section~@ref{sec:assessment} contains the examples of recognition, outstanding obligations and period counts.
+
 ## Glossary and Symbols {#sec:glossary appendix=true}
 
 ::include{block="glossary-appendix"}
@@ -37,7 +45,7 @@ Diagram generation in [generate-completion-diagrams.py](repo:docs/concept/skill-
 All bilingual web pages and PDF editions are compiled from the sole authored source under `docs/concept/skill-graph/source/` ([source/README.md](repo:docs/concept/skill-graph/source/README.md), [spec-manifest.json](repo:docs/concept/skill-graph/source/spec-manifest.json)). The compiler `docs/concept/skill-graph/build_spec.py` verifies 1:1 structural parity between German (`DE`) and English (`EN`), translates chapters and structured JSON datasets into MkDocs Markdown and LuaLaTeX sources, and embeds both the static original illustrations (`01`--`07`) and the deterministically generated bilingual bitmap PNGs (`00`, `08`--`18`) from `docs/concept/skill-graph/assets/graph-definition/`. From the repository root:
 
 - `python3 docs/concept/skill-graph/build_spec.py --web-and-tex` -- uses only the Python standard library to verify `DE`/`EN` AST parity and generate all bilingual MkDocs web pages plus intermediate LaTeX files under `tmp/skill-graph-document/`.
-- `python3 docs/concept/skill-graph/latex/check-assessment-model.py` -- runs the finite mathematical reference checks for Section~@ref{sec:assessment}.
+- `python3 docs/concept/skill-graph/latex/check-assessment-model.py` -- runs separate reference cases for the contract in force from 4/11 November and the E.1 proposal of 19 November.
 - `python3 docs/concept/skill-graph/latex/generate-completion-diagrams.py --check` -- verifies deterministic bilingual PNG diagram rendering without modifying files.
 - `python3 docs/concept/skill-graph/build_spec.py --all` -- runs the parity check, formula model verification, bilingual PNG rendering, Web Markdown emission, and multi-pass LuaLaTeX builds for both the German (`skillpilot-graph-definition.pdf`, `skillpilot-graph-definition.de.pdf`) and English (`skillpilot-graph-definition.en.pdf`) PDFs together with `.build.json` manifests ([GD-D11](@rule{GD-D11})).
 

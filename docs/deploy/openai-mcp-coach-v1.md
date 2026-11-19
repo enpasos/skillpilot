@@ -1,6 +1,10 @@
-# ChatGPT-App „SkillPilot Coach v1“: Deployment und Cutover
+# ChatGPT-App „SkillPilot Coach“: Deployment und Cutover
 
-**Stand:** 5. Oktober 2026
+**Stand der Einordnung:** 19. November 2026. Die operativen Beispiele unten stammen aus dem früheren V1-Cutover vom 5. Oktober.
+
+**Aktueller Zielvertrag.** Die dauerhafte Plugin-Identität ist seit der Entscheidung vom 19. Oktober `skillpilot-coach`, der einzige öffentliche Zielendpunkt und die OAuth Resource/Audience sind `https://mcp-openai.skillpilot.com/mcp`. Der interne V1-Adapter und OAuth-Issuer `https://skillpilot.com/api/openai/v1` bleiben bestehen. Für einen aktuellen Betrieb sind das [Stable-Origin-Runbook](openai-stable-origin.md), die [profilbezogene OAuth-Aktivierung](oauth-client-authentication.md) und das [Release-Runbook](openai-plugin-v1-release.md) maßgeblich. Frühere Hostnamen, UI-Hashes und Shellbeispiele in den nachfolgenden historischen Abschnitten sind keine Freigabe, die alte Origin wieder zu aktivieren. Neutraler Cutover, Paketveröffentlichung und Host-Abnahme bleiben getrennte Vorgänge.
+
+**Historischer Betriebsstand vom 5. Oktober:**
 
 **OAuth-Umstellung, 11. September 2026:** Für die freigegebene neue
 Clientauthentifizierung gilt das
@@ -20,7 +24,7 @@ für diesen Versuch ist mTLS `observe` ausdrücklich freigegeben. Siehe
 
 **Status:** Die Einlieferung `1.0.0` wurde abgelehnt (`REJECTED`). Der Product
 Owner hat die ChatGPT-Entwicklungssperren ausdrücklich aufgehoben. Der aktuelle
-Nachfolger `1.1.1` ist über den Git-Marketplace für die Desktop-Beta
+Nachfolger `1.1.2` ist über den Git-Marketplace für die Desktop-Beta
 veröffentlicht; die offizielle OpenAI-Einreichung bleibt `DRAFT` und das
 OpenAI-Verzeichnis unveröffentlicht. Installation und Lernstart in Windows
 ChatGPT Desktop sind vom Product Owner bestätigt. Siehe
@@ -29,7 +33,7 @@ Die begrenzten Aufträge vom 24. September für Archiv/native CIMD und vom
 5. Oktober für die bestehende Git-/Desktop-Beta samt normalem GUI-Start ergänzen
 die ursprüngliche Claude-first-Reihenfolge. Der Product Owner führt den
 GUI-/Serverrollout durch; lokale Änderungen sind keine erneute Einlieferung.
-Der V1-Vertrag verwendet weiterhin den dedizierten
+Der damalige V1-Vertrag verwendete den dedizierten
 `mcp-coach-v1.skillpilot.com`-Origin mit serverauthentisiertem HTTPS,
 OpenAI-Connector-mTLS und OAuth/PKCE. Der tatsächliche Produktionsstand und
 der erforderliche Modus `enforce` für den gehosteten Zertifikatstransport sind
@@ -38,7 +42,7 @@ Desktop-Beta mit `observe` bleibt davon getrennt.
 Permanente ID, Providerhinweis und Level-2-Konfiguration bleiben ausschließlich
 im First-Party-WebGUI.
 
-Dieses Runbook aktiviert den mehrsprachigen, chat-first MCP-Lerncoach mit zwei
+Der dokumentierte frühere Cutover betraf den mehrsprachigen, chat-first MCP-Lerncoach mit zwei
 getrennt gebundenen MCP Apps UIs: der read-only Lernzielbildanzeige und dem
 interaktiven Karteikartenlernen. MCP-Server,
 OAuth-Authorization-Server, UI-Ressourcenauslieferung und SkillPilot-Fachlogik
@@ -71,15 +75,15 @@ trägt diese Referenz automatisch in die kurze Startnachricht ein; ChatGPT
 
 | Zweck | URL |
 | --- | --- |
-| Plugin-Identität | `skillpilot-coach-v1` |
-| MCP Server URL | `https://mcp-coach-v1.skillpilot.com/mcp` |
-| OAuth Resource / Audience | `https://mcp-coach-v1.skillpilot.com/mcp` |
-| Deklarierte Widget-Origin | `https://mcp-coach-v1.skillpilot.com` |
-| Beobachtete ChatGPT-Web-Origin | `https://mcp-coach-v1-skillpilot-com.web-sandbox.oaiusercontent.com` |
-| Lernzielbild-Ressource | `ui://skillpilot/coach/v1/sha256-c890cf271307d815256450a2b20b27d57015a84e9f4e39c97532eaefc4e30c26/goal-visualization.html` |
-| Karteikarten-Ressource | `ui://skillpilot/coach/v1/sha256-8524ee20837971227c35f1e16518d2b5bdbd60637fbec6beede9f2f4b29e4852/memory-card-practice.html` |
-| Protected Resource Metadata | `https://mcp-coach-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp` |
-| Domain-Challenge | `https://mcp-coach-v1.skillpilot.com/.well-known/openai-apps-challenge` |
+| Plugin-Identität | `skillpilot-coach` |
+| MCP Server URL | `https://mcp-openai.skillpilot.com/mcp` |
+| OAuth Resource / Audience | `https://mcp-openai.skillpilot.com/mcp` |
+| Deklarierte Widget-Origin | `https://mcp-openai.skillpilot.com` |
+| Historisch beobachtete ChatGPT-Web-Origin (alte V1-Origin) | `https://mcp-coach-v1-skillpilot-com.web-sandbox.oaiusercontent.com` |
+| Historisch beobachtete Lernzielbild-Ressource (nicht aktueller Aktivierungspin) | `ui://skillpilot/coach/v1/sha256-c890cf271307d815256450a2b20b27d57015a84e9f4e39c97532eaefc4e30c26/goal-visualization.html` |
+| Historisch beobachtete Karteikarten-Ressource (nicht aktueller Aktivierungspin) | `ui://skillpilot/coach/v1/sha256-8524ee20837971227c35f1e16518d2b5bdbd60637fbec6beede9f2f4b29e4852/memory-card-practice.html` |
+| Protected Resource Metadata | `https://mcp-openai.skillpilot.com/.well-known/oauth-protected-resource/mcp` |
+| Domain-Challenge | `https://mcp-openai.skillpilot.com/.well-known/openai-apps-challenge` |
 | OAuth Issuer | `https://skillpilot.com/api/openai/v1` |
 | Authorization-Server-Metadata | `https://skillpilot.com/.well-known/oauth-authorization-server/api/openai/v1` |
 | Issuer-relative OAuth-Kompatibilitätsroute | `https://skillpilot.com/api/openai/v1/.well-known/openid-configuration` |
@@ -110,14 +114,16 @@ und nicht einen Pfad auf `skillpilot.com`.
 
 ## 2. Discovery-Bootstrap und OAuth-Werte des bisherigen Kompatibilitätsprofils
 
-Der Produktivvertrag verwendet Authorization Code mit PKCE `S256` und genau
+**Historischer Abschnitt.** Die folgenden Abschnitte 2–9 bewahren den früheren Basic-/V1-Operationsablauf und seine Befunde. Das Zielprofil `chatgpt-cimd-jwt` verwendet dagegen ausschließlich `private_key_jwt`; das native öffentliche Profil und Basic-Übergangsclients bleiben getrennt. Vor einer aktuellen Aktion sind Hostnamen, Profilrevision, Paketquelle und modellsichtbare Runtime-Definitionen gegen die oben verlinkten aktuellen Runbooks zu prüfen.
+
+Der damalige Basic-Produktivvertrag verwendete Authorization Code mit PKCE `S256` und genau
 einen vorregistrierten **vertraulichen OAuth-Client** für die Linie
 `SkillPilot Coach v1`. Dessen feste Client-ID, langes zufälliges
 Client-Secret, exakte Callback-Allowlist, feste MCP-Resource und feste Scopes
 werden vom App-Autor auf beiden Seiten konfiguriert. ChatGPT authentisiert sich
 am Token-Endpunkt mit `client_secret_basic`; SkillPilot akzeptiert weder
 `none` noch offene Dynamic Client Registration, CIMD oder
-`private_key_jwt` im aktiven Produktivprofil.
+`private_key_jwt` in jenem Basic-Profil. Das ist kein Ausschluss des späteren separaten JWT-Zielprofils.
 
 Das Secret ist ausschließlich geschützte Konfiguration in ChatGPT und
 SkillPilot. Es gehört weder in Repository, Browser, Startnachricht,

@@ -20,7 +20,7 @@ Die maschinenlesbaren Reifegrade **M0 bis M7** bewerten unter anderem Graphinteg
 - **M – Memory:** Eine begründete Entscheidung, ob und welche Merkinhalte nötig sind.
 - **V – Visualisierungen:** Eine fachliche KI-Bildprüfung am aktuellen Bild mit gültigen Inhaltsbindungen oder eine ausdrücklich zulässige fachliche Ausnahme.
 
-Maßgeblich ist die **Schnittmenge aller fünf Gates für die aktuelle Zielmenge**, zusammen mit bestandenen Abschlussprüfungen und ohne offene M7-Blocker. Nachweise sind an den geprüften Inhalt und Kontext gebunden; Änderungen können eine gezielte Nachprüfung erforderlich machen. Der erreichte M7-Stand der fünf Fächer bleibt im [Qualitätsbericht](https://enpasos.github.io/skillpilot/qa-ci/status/curriculum-quality-status/) nachprüfbar.
+Maßgeblich ist die **Schnittmenge aller fünf Gates für die aktuelle Zielmenge**, zusammen mit den bestandenen technischen Prüfungen des Fachcurriculums und ohne offene M7-Blocker. Nachweise sind an den geprüften Inhalt und Kontext gebunden; Änderungen können eine gezielte Nachprüfung erforderlich machen. Der erreichte M7-Stand der fünf Fächer bleibt im [Qualitätsbericht](https://enpasos.github.io/skillpilot/qa-ci/status/curriculum-quality-status.de/) nachprüfbar.
 
 100 % steht für die vollständige Abdeckung dieses QS-Verfahrens, nicht für garantierte Fehlerfreiheit oder nachgewiesene Unterrichtswirksamkeit. Die verbindlichen Regeln erläutert das [Qualitäts- und Erprobungskonzept](https://enpasos.github.io/skillpilot/concept/curriculum-quality-and-human-trial/).
 

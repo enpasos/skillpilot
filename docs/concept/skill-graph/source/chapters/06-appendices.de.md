@@ -8,7 +8,9 @@
 
 ## Prüfstrategie für die Abschlussberechnung {#sec:test-strategy appendix=true}
 
-Das begleitende [check-assessment-model.py](repo:docs/concept/skill-graph/latex/check-assessment-model.py) ist eine mathematische Referenzprüfung mit der Python-Standardbibliothek. Es prüft die Formeln aus Abschnitt~@ref{sec:assessment} an kleinen endlichen Modellen, liest keine Lernerdaten und ändert keinen Laufzeitzustand ([GD-D04](@rule{GD-D04})).
+Das Programm [check-assessment-model.py](repo:docs/concept/skill-graph/latex/check-assessment-model.py) prüft zwei getrennte Modellfälle ([GD-D04](@rule{GD-D04})). Für den Entwurf zu E.1 vergleicht es alle 16 Teilmengen der vier bestandenen Pflichtprüfungen mit den erwarteten Abschlüssen der Kind- und Elterneinheit. Ein zweiter Fall prüft eine ausdrücklich an einen Beleg gebundene Planfreigabe, eine lediglich berührte Voraussetzung und den Wechsel der Prüfungsfassung. Aufgabenqualität und Wirkung auf Lernende benötigen ein eigenes Review und eine Erprobung.
+
+**Referenzfälle für den geltenden Vertrag vom 4./11. November.** Die folgenden Tests prüfen die Rechnung in Abschnitt~@ref{sec:assessment}.
 
 - **Endliche Modellprüfung.** Alle DAGs bis vier Knoten in topologischer Ordnung mit jeder Belegung von Mastery- und Schutzmenge, soweit die lokalen Inhaltsziele vollständig durch eigene Prüfungen gedeckt sind: $5\,222$ gültige Fälle. Traversierung und statische transitive Hülle liefern dieselbe implizite Menge $I_U$.
 - **Minimalität.** Die transitive Reduktion ist minimal und erhält die Hülle. Redundante Kanten der normalisierten Relation ändern die Anerkennung nicht. Der ältere Vererbungsgegenfall ist eine Diagnose des Übergangsbestands; dieser begrenzte Modelltest ersetzt nicht die vollständige `G17`-Prüfung des aktuellen Katalogs ([GD-D05](@rule{GD-D05})).
@@ -24,6 +26,12 @@ Die Diagrammerzeugung in [generate-completion-diagrams.py](repo:docs/concept/ski
 [check-assessment-model.py](repo:docs/concept/skill-graph/latex/check-assessment-model.py); [generate-completion-diagrams.py](repo:docs/concept/skill-graph/latex/generate-completion-diagrams.py).
 :::
 
+### Fundstellen zum geltenden Anerkennungsvertrag {#sec:unit-assessment-history anchors="eq-needed,eq-implicit,tab-unit-validity,fig-unit-entry-paths,fig-recursive-unit,fig-waivers,fig-orientation-outcome,fig-local-recognition,fig-protected,fig-shared-assessments,fig-period"}
+
+Die am 4. und 11. November bestätigten Gültigkeitsregeln R1–R5 stehen in Tabelle~@ref{tab:unit-validity}. Die offene Nachfrage und die implizit anerkannten eigenen Ziele berechnen sich nach @eqref{eq:needed} und @eqref{eq:implicit}. Diese Regeln gelten bis zu einer neuen Produktentscheidung. Abschnitt~@ref{sec:proposal-unit-assessment} beschreibt den Vorschlag für die Fachrunde. Die getrennten Referenzfälle oben erlauben den Vergleich.
+
+Die Abbildungen sind beim jeweiligen Sachverhalt zu finden. Abbildungen~@ref{fig:unit-entry-paths} und~@ref{fig:recursive-unit} erläutern Einstieg und rekursiven Abschluss. Die Beispiele zu Anerkennung, offenen Pflichten und Periodenzählung stehen in Abschnitt~@ref{sec:assessment}.
+
 ## Begriffe und Symbole {#sec:glossary appendix=true}
 
 ::include{block="glossary-appendix"}
@@ -37,7 +45,7 @@ Die Diagrammerzeugung in [generate-completion-diagrams.py](repo:docs/concept/ski
 Alle zweisprachigen Web-Seiten und PDF-Ausgaben entstehen aus der einzigen verfassten Quelle unter `docs/concept/skill-graph/source/` ([source/README.md](repo:docs/concept/skill-graph/source/README.md), [spec-manifest.json](repo:docs/concept/skill-graph/source/spec-manifest.json)). Der Compiler `docs/concept/skill-graph/build_spec.py` prüft die 1:1-Strukturparität zwischen Deutsch (`DE`) und Englisch (`EN`), übersetzt Kapitel und strukturierte JSON-Quellen in MkDocs-Markdown sowie LuaLaTeX-Quellen und bindet die statischen Originalabbildungen (`01`--`07`) sowie die zweisprachig generierten Bitmap-PNGs (`00`, `08`--`18`) aus `docs/concept/skill-graph/assets/graph-definition/` ein. Vom Repositorywurzelverzeichnis aus:
 
 - `python3 docs/concept/skill-graph/build_spec.py --web-and-tex` -- prüft mit reiner Python-Standardbibliothek die `DE`/`EN`-AST-Parität und erzeugt sämtliche zweisprachigen MkDocs-Webseiten sowie die LaTeX-Zwischendateien unter `tmp/skill-graph-document/`.
-- `python3 docs/concept/skill-graph/latex/check-assessment-model.py` -- führt die endliche mathematische Referenzprüfung zu Abschnitt~@ref{sec:assessment} aus.
+- `python3 docs/concept/skill-graph/latex/check-assessment-model.py` -- führt getrennte Referenzfälle zum geltenden Vertrag vom 4./11. November und zum E.1-Vorschlag vom 19. November aus.
 - `python3 docs/concept/skill-graph/latex/generate-completion-diagrams.py --check` -- prüft die deterministisch gerenderten zweisprachigen PNG-Diagramme ohne Dateiveränderung.
 - `python3 docs/concept/skill-graph/build_spec.py --all` -- führt Paritätsprüfung, Formelmodelltest, zweisprachige PNG-Erzeugung, Web-Markdown-Generierung und den mehrstufigen LuaLaTeX-Build für die deutsche (`skillpilot-graph-definition.pdf`, `skillpilot-graph-definition.de.pdf`) und englische (`skillpilot-graph-definition.en.pdf`) PDF-Ausgabe samt `.build.json`-Manifesten aus ([GD-D11](@rule{GD-D11})).
 

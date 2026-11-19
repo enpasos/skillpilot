@@ -1,7 +1,7 @@
 :::titlebox {title="Geltung dieser Fassung"}
-Stand **17. November 2026**. Diese Definition beschreibt den Weg vom gemeinsamen Zielkatalog bis zur Frage einer lernenden Person: *Womit fange ich an, und woran erkenne ich, was ich kann?* Lernziele und Voraussetzungen bestimmen die möglichen Wege. Eine Einheit mit eigenen Prüfungen gibt dem Weg im Zielmodell einen Anfang und ein Ende. Ihr Motivationsziel erklärt den Nutzen, ihre Prüfungen belegen die selbstständige Anwendung.
+**Stand 19. November 2026.** Die am 4. und 11. November bestätigte Anerkennungsregel gilt. Sie bestimmt, wie Lernergebnisse und gültig anerkannte Kompetenzen die nächsten Lernziele und den Abschluss beeinflussen. Die Abschnitte~@ref{sec:state}, @ref{sec:unit-completion} und~@ref{sec:assessment} enthalten die Formeln. Anhang~@ref{sec:implementation} beschreibt den Stand der Software.
 
-Abschnitt~@ref{sec:learning-units} beschreibt diese Erweiterung und kennzeichnet die offenen Gestaltungsfragen. Anhang~@ref{sec:implementation} zeigt, welche Teile heute umgesetzt sind. Welche Regeln die Qualitätssicherung bereits verbindlich prüft, steht in Anhang~@ref{sec:rule-milestones}.
+**Vorschlag für die Fachrunde vom 19. November.** Eine bestandene Einheit könnte ein Gesamturteil auf dem ausgewiesenen Niveau tragen. Für die weitere Planung würde die zuständige Einheit nur ihre fachlich belegten eigenen Inhaltsziele freigeben. Die gesondert gekennzeichneten Abschnitte~@ref{sec:proposal-unit-completion} und~@ref{sec:proposal-unit-assessment} stellen diesen Entwurf zur Diskussion.
 :::
 
 ## Leserführung und Geltungsbereich {#sec:readers-guide unnumbered=true}
@@ -16,13 +16,13 @@ Die Schritte nehmen den Gedankengang des Dokuments vorweg. Die englischen Zielna
 2. **Atome und Cluster.** Ziele ohne Kinder sind atomar; nur für sie wird ein Ergebnis gespeichert. Cluster gliedern. Im Zielzustand verbindet jede verfasste Anforderung ein Atom mit einem Atom, und keine ist überflüssig. Ältere Anforderungen an oder von Clustern bleiben als Übergangsbestand lesbar (Abschnitte~@ref{sec:relations} und~@ref{sec:validity}).
 3. **Lernzustand und Frontier.** Ein ausdrückliches Ergebnis gehört zu einem atomaren Ziel. Die *Frontier* enthält die offenen Ziele, für die im betrachteten Bereich alle nötigen Voraussetzungen erfüllt sind (Abschnitt~@ref{sec:state}).
 4. **Ausschnitte.** Das Personal Curriculum legt den längerfristigen persönlichen Umfang fest, der Fokus den vorübergehenden Arbeitsbereich. Abgeleitet wird stets im ganzen Graphen und erst danach eingeschränkt. Der Normalmodus prüft die Voraussetzungen innerhalb des Ausschnitts, der strikte Modus alle (Abschnitte~@ref{sec:filters} bis~@ref{sec:personal-scope}).
-5. **Zieltypen.** Der Zieltyp bestimmt, wann ein Ziel als geschafft gilt: ein Inhaltsziel durch festgestelltes Verstehen, ein Orientierungsziel durch den abgeschlossenen Einstieg, ein Memorierziel durch verifizierten Abruf, ein Prüfungsziel durch die bestandene Prüfung (Abschnitt~@ref{sec:goal-types}).
-6. **Lerneinheiten.** Die Ziele einer Einheit gehören fachlich zusammen. Bei einer Einheit mit Prüfungen führt der empfohlene Weg vom Motivationsziel über den Inhalt zur selbstständigen Anwendung. Der vollständige Abschluss umfasst auch die Ziele ihrer Untereinheiten (Abschnitt~@ref{sec:learning-units}).
-7. **Implizite Beherrschung.** Sobald keine offene Prüfung und kein offenes Memorierziel einer Lerneinheit ein eigenes Inhaltsziel mehr benötigt, gilt dieses Ziel als selbstständig angewandt -- vorausgesetzt, der lokale Vertrag der Einheit ist fachlich geprüft und gültig. Ausdrücklich festgestelltes Verstehen und so belegte Anwendung bilden zusammen die effektiv beherrschte Menge; beide erfüllen spätere Voraussetzungen und zählen zum Fortschritt (Abschnitt~@ref{sec:assessment}).
+5. **Zieltypen.** Ein Fachziel kann Verstehen, Anwendung oder eigenes Handeln verlangen. Der Einzelbeleg muss diesen Anspruch erfüllen. Orientierung, Memorierung und Prüfungen haben jeweils einen eigenen Ergebnisvertrag (Abschnitt~@ref{sec:goal-types}).
+6. **Lerneinheiten.** Der geltende Abschluss umfasst die effektiv beherrschten eigenen Ziele und abgeschlossene Kinder (Abschnitt~@ref{sec:unit-completion}). Einen repräsentativen Abschluss über erklärte Pflichtleistungen schlägt Abschnitt~@ref{sec:proposal-unit-completion} vor.
+7. **Anerkennung durch Prüfungen.** Unter R1–R5 kann ein eigenes gewöhnliches Ziel bereits vor dem ganzen Einheitenabschluss anerkannt werden. Diese Anerkennung gilt fachübergreifend (Abschnitt~@ref{sec:assessment}). Welche spätere Planungsfreigabe stattdessen zur Diskussion steht, erklärt Abschnitt~@ref{sec:proposal-planning-release}.
 
 ### Aufbau, Status und Regelkennungen {#sec:structure-and-status unnumbered=true}
 
-Jeder Teil beantwortet eine Leitfrage und hat einen eigenen Status. Die letzte Spalte nennt die Kennungen, unter denen Anhang~@ref{sec:rule-milestones} die Regeln des Teils führt, etwa [GD-C07](@rule{GD-C07}) für eine Regel des formalen Kerns.
+Das Register in Anhang~@ref{sec:rule-milestones} dokumentiert die geltenden Prüfpflichten. Die Vorschläge in den Abschnitten~@ref{sec:proposal-unit-completion} und~@ref{sec:proposal-unit-assessment} ändern diese Pflichten erst nach einer ausdrücklichen Entscheidung.
 
 :::table {cols="33mm,X,35mm,12mm"}
 | Abschnitte | Leitfrage | Status | Regeln |
@@ -31,7 +31,7 @@ Jeder Teil beantwortet eine Leitfrage und hat einen eigenen Status. Die letzte S
 | @ref{sec:context-model}--@ref{sec:evidence-context}: Kontext, Sichten, Zieltypen, Qualität | Wo steht ein Ziel in einem Bildungsgang, was gehört zum persönlichen Umfang, wann gilt ein Ziel als geschafft, und woher stammt es? | Angrenzender Vertrag | `GD-X` |
 | @ref{sec:learning-units}: Lerneinheiten | Welche Ziele bilden ein fachliches Ganzes, und wann ist es abgeschlossen? | Fachliche Struktur | `GD-U` |
 | @ref{sec:levels}: Erwerbs- und Zeitplanung | Lässt sich der Erwerb in eine Reihenfolge und ein Zeitbudget einpassen? | Optionales Profil | `GD-P` |
-| @ref{sec:assessment}: Implizite Beherrschung | Wann belegt eine bestandene Prüfung auch die Ziele, auf denen sie aufbaut? | Verbindliches Konzept, noch nicht implementiert | `GD-A` |
+| @ref{sec:assessment} Anerkennung | Wann gilt eine Kompetenz nach R1–R5 als nachgewiesen? | Geltender Vertrag | `GD-A` |
 | Anhänge~@ref{sec:rule-milestones}--@ref{sec:build} | Wie wird welche Regel geprüft, wo weicht die Implementierung ab, und was bedeuten Begriffe und Symbole? | Nachschlageteil | `GD-D` |
 :::
 

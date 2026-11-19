@@ -2,9 +2,11 @@
 
 This pipeline builds a reproducible legacy subject-export ZIP (`legacy-subject-export`, target status `not-ready-legacy`, `standaloneProfileReady: false` under [Curriculum Package Readiness](repo:docs/qa-ci/curriculum-package-readiness.md)) for one subject landscape as a validated publication and roundtrip carrier (@ref{sec:pp-mem-fwu-roundtrip}), without claiming standalone `full-standalone-v1` runtime operation ([Release Model Conformance](repo:docs/qa-ci/curriculum-release-model-conformance.md)). Supported `DE/Gymnasium` presets currently cover all `M5`+ subjects: `Biologie`, `Chemie`, `Deutsch`, `Geschichte`, `Informatik`, `Latein`, `Mathematik`, `Physik`, `Politik und Wirtschaft`, and `Wirtschaftswissenschaften`.
 
+The [committed quality snapshot of 17 November 2026](repo:docs/qa-ci/status/curriculum-quality-status.json) places Mathematics, Physics, Chemistry, Biology, and Economics at **M7**, and the remaining five preset subjects at M6. This machine maturity establishes neither publication clearance nor human trials. The legacy ZIP carrier remains distinct from standalone contracts 1.2 (`learningUnitsV1`) and 1.3 (also `assessmentMaterialsV1` and local `childOrder.after` ordering). Runtime claims using those fields require the corresponding build profile, independent package validator, and matching consumer; a legacy export does not replace that evidence.
+
 ### Build, Independent Validation, Link Audit, and CI Release Gate {#sec:pp-export-commands}
 
-Single-subject export, batch export of all `M5`/`M6` subjects (`tmp/exports/m5-subject-export-summary.{json,md}`), independent ZIP validation (`tmp/exports/validation/` + `tmp/exports/readiness/`), live source-URL reachability audit (`--fail-on-broken` for strict pre-release checks), and reproducibility proof (`SOURCE_DATE_EPOCH`, uncompressed sorted entries with mode `0644`):
+Single-subject export, batch export of all subjects at `M5` or above (`tmp/exports/m5-subject-export-summary.{json,md}`), independent ZIP validation (`tmp/exports/validation/` + `tmp/exports/readiness/`), live source-URL reachability audit (`--fail-on-broken` for strict pre-release checks), and reproducibility proof (`SOURCE_DATE_EPOCH`, uncompressed sorted entries with mode `0644`):
 
 ```bash
 cd app

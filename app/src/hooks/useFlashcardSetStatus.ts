@@ -6,6 +6,7 @@ import {
   parseReviewTimestamp,
 } from '../components/srs/srsLogic'
 import { getSrsFilterTags } from '../utils/srsTags'
+import { waitForSrsPracticeWrites } from '../utils/srsPracticeSync'
 
 type VocabCard = {
   id: string
@@ -97,12 +98,12 @@ export function useFlashcardSetStatus(
           cards = cards.filter((card) => card.tags?.some((tag) => filterTags.includes(tag)))
         }
 
-        const storageKey = `srs_state_${skillpilotId}_${goal.id}`
-        const lastSyncKey = `srs_state_last_sync_${skillpilotId}_${goal.id}`
         const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
         const syncUrl = apiBase
           ? `${apiBase}/api/ui/learners/${skillpilotId}/client-state/${goal.id}`
           : `/api/ui/learners/${skillpilotId}/client-state/${goal.id}`
+        await waitForSrsPracticeWrites(skillpilotId, goal.id)
+        if (cancelled) return
         const stateResponse = await fetch(syncUrl, { cache: 'no-store' })
         if (!stateResponse.ok) {
           if (!cancelled) setStatus(null)
@@ -114,9 +115,6 @@ export function useFlashcardSetStatus(
           return
         }
         const srsState = snapshot.srsState
-        localStorage.setItem(storageKey, JSON.stringify(srsState))
-        if (snapshot.updatedAt) localStorage.setItem(lastSyncKey, snapshot.updatedAt)
-        else localStorage.removeItem(lastSyncKey)
 
         const now = Date.now()
         let due = 0

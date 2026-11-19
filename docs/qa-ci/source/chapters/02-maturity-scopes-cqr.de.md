@@ -1,7 +1,7 @@
 ## Curriculum Quality: Reifegrade, QA-Scopes und CQR-Regeln {#sec:qa-maturity-scopes-cqr}
 
 :::note{title="Workbench-Lesart und Konzeptkorrektur vom 4. November 2026"}
-Fachliche Spezifikation der Anzeige unter `/quality-dashboard` und der generierten Snapshots in `docs/qa-ci/status/curriculum-quality-status.json` (Generator: `cd app && npm run quality:curriculum-status` via `app/scripts/generateCurriculumQualityStatus.ts`; Kurzüberblick: [Dashboard Status Layer](repo:docs/qa-ci/curriculum-quality-dashboard.md)). **Konzeptkorrektur vom 4. November 2026:** Bisherige `M7`-Freigaben oder bestandene Routenprüfungen belegen nicht automatisch, dass Prüfungsaufgaben die selbständige Anwendung sämtlicher implizit anerkannten Kompetenzen gemäß [Assessment-Gated Completion](repo:docs/concept/skill-graph/assessment-gated-completion.md) absichern; diese Autorenpflicht erfordert ein separates Aufgaben-/Rubrikreview.
+Fachliche Spezifikation der Anzeige unter `/quality-dashboard` und der generierten Snapshots in `docs/qa-ci/status/curriculum-quality-status.json` (Generator: `cd app && npm run quality:curriculum-status` via `app/scripts/generateCurriculumQualityStatus.ts`; Kurzüberblick: [Dashboard Status Layer](repo:docs/qa-ci/curriculum-quality-dashboard.md)). **Konzeptkorrektur vom 4. November 2026:** Bisherige `M7`-Freigaben oder bestandene Routenprüfungen belegen nicht automatisch, dass Prüfungsaufgaben die selbständige Anwendung sämtlicher implizit anerkannten Kompetenzen absichern; diese Autorenpflicht erfordert ein separates Aufgaben-/Rubrikreview. Der [bisherige Anerkennungsvertrag R1–R5](repo:docs/concept/skill-graph/assessment-gated-completion.md#sec-why-graph-not-enough) ist datiert erhalten. Der [Einheitenvorschlag vom 19. November](repo:docs/concept/skill-graph/unit-assessment-discussion-2026-11-19.de.md) ändert bestehende Verträge und QA-Gates bis zu einer Produktentscheidung und Umsetzung nicht.
 :::
 
 **Erreichte Härtung, 13. November 2026:** Die direkte Durchsetzung ist mit [PR #131](https://github.com/enpasos/skillpilot/pull/131) auf `main` angekommen. Nach den anschließenden Änderungen am historischen Reviewnachweis und der Mathematikprüfung bestand `main` bei `2129b207f4` alle 14 Jobs von [CI #2315](https://github.com/enpasos/skillpilot/actions/runs/43398052180). Der [Liefernachweis](repo:docs/dev/cqr-gvr-hard-gate-plan-2026-11-12.md) trennt diesen späteren Integrationsstand vom ursprünglichen PR-Lauf und dem abgebrochenen CI-Lauf seines Merge-Commits. Im CQR/GVR-Register sind damit 22 Codes in ihrem benannten Bereich hart durchgesetzt; `CQR-104` und `GVR-012` bleiben wegen der unten benannten Abdeckungslücken `TEIL`. Das ist maschinelle QA und kein Nachweis menschlicher Erprobung oder vollständiger Umsetzung aller Graphregeln.
@@ -35,9 +35,9 @@ Ein **QA-Scope** prüft einen expliziten learner-facing Teilbereich (nicht die Z
 | Scope-ID | Stufe | Atome | Motivationsanker & terminale Autonomie |
 | --- | --- | --- | --- |
 | `canonical-math-sek1` | Sek I | 282 | `Warum Mathematik? - Entdecken, Muster & Alltag` -> 38 Aufgaben unter `Prüfungen Jahrgangsstufe 5..10` |
-| `canonical-math-sek2` | Sek II | 606 | `Warum Mathematik? - Denken, Muster & Zukunft` -> atomare Aufgaben unter `Übungen E-Phase`, `Q1..Q4` & `Prozesskompetenzen` |
-| `canonical-physics-sek1` | Sek I | 101 | `Warum Physik?` -> atomare Aufgaben unter `Übungen Sekundarstufe I Physik` |
-| `canonical-physics-sek2` | Sek II | 316 | `Warum Physik?` -> atomare Aufgaben unter `Übungen E-Phase` und `Übungen Q1..Q4` |
+| `canonical-math-sek2` | Sek II | 607 | `Warum Mathematik? - Denken, Muster & Zukunft` -> atomare Aufgaben unter `Übungen E-Phase`, `Q1..Q4` & `Prozesskompetenzen` |
+| `canonical-physics-sek1` | Sek I | 116 | `Warum Physik?` -> atomare Aufgaben unter `Übungen Sekundarstufe I Physik` |
+| `canonical-physics-sek2` | Sek II | 321 | `Warum Physik?` -> atomare Aufgaben unter `Übungen E-Phase` und `Übungen Q1..Q4` |
 :::
 
 Die Atomzahlen sind `selectedAtomicGoals` aus dem [aktuellen CQR-Status](repo:docs/qa-ci/status/curriculum-quality-status.json). Sie verwenden den jeweiligen QA-Selektor; insbesondere bei Mathematik sind sie nicht mit den ausschließlich als `curricularAtomic` klassifizierten Zielen des semantischen Audits gleichzusetzen.
@@ -90,9 +90,9 @@ Die Sichtbarkeitsprüfung ist in acht Scopes vorgeschrieben. In den übrigen vie
 | **`CQR-102`** | `M3` | **Atomic Direct Route Coverage:** Dieselbe Vorwärts-/Rückwärts-Erreichbarkeit ausschließlich über direkte atomare Kanten $R \cap (A \times A)$ ohne Cluster-Brücken. |
 | **`CQR-103`** | `M3` | **No Scoped Cluster `requires`:** Kein durch den `clusterSelector` erfasster Cluster trägt eigene `requires`-Einträge (`scopedClusterRequires = 0`). |
 | **`CQR-104`** | `M4` | **Sichtbarkeit der Endpunkte:** Motivation und terminale Endpunkte bleiben in den acht ausdrücklich fest gebundenen Sichtbarkeitsscopes sichtbar; vier weitere Stufenprofile bleiben eine dokumentierte Lücke. |
-| **`CQR-201`** | Scope-`M3` | **Terminal Autonomy `examData`:** Jedes atomare Kind der konfigurierten terminalen Autonomie-Cluster besitzt vollständige `examData`. |
-| **`CQR-202`** | `M4` | **Aufgabenreife:** Terminale Prüfungsaufgaben sind konkret und nutzbar statt Platzhalter. |
-| **`CQR-203`** | `M5` | **Prüfungsmetadaten:** Terminale Prüfungen nennen Freigabestatus, abgedeckte Ziele, Inhaltsbereiche und Anforderungsniveau. |
+| **`CQR-201`** | Scope-`M3` | **Terminal Autonomy `examData`:** Die konfigurierten atomaren terminalen Autonomieziele besitzen `examData`; Inhalte und Metadaten folgen in `CQR-202`/`203`. |
+| **`CQR-202`** | `M4` | **Formale Aufgabenreife:** Nichtleere Aufgabe und Lösung, befülltes Punkteschema, kein erkannter Platzhalter und kein explizit sperrender Freigabestatus. |
+| **`CQR-203`** | `M5` | **Prüfungsmetadaten:** `reviewStatus = "released"` sowie nichtleere Ziel-, Inhaltsbereichs- und Anforderungsniveau-Listen. |
 | **`CQR-301`** | `M5` | **Semantic Atomicity Review Freshness:** Alle relevanten Content-Leaves besitzen aktuelle, fingerprint-gültige `atomic`-Entscheidungen ohne `missing`, `stale`, `obsolete`, `needs_developer_review` oder `non_atomic` (@ref{sec:qa-semantic-atomicity}). Produzent und Standaloneprüfung verwenden denselben Recordvertrag; Parserfehler, ungültige Statuswerte, widersprüchliche Atomaritätsaussagen und doppelte Records können keinen Pass ergeben. |
 | **`CQR-302`** | `M6` | **Memory-Card Decision Trace:** Semantischer Default `no_memory_needed`; `memory_required` verweist auf existierende, in `visibilityScopes` sichtbare Memory-Knoten und kanonische Decks unter `curricula/DE/Gymnasium/memory-decks/` (neutrale `de_gymnasium_*`-IDs ohne Bundeslandpräfix), während jede behaltene Primärkarte in `*.cards.review.jsonl` über `originGoalId` auf ein `memory_required`-Ziel zurückführt (`remove`-Karten sind aus aktiven Decks entfernt). |
 | **`CQR-303`** | `M7` | **Deep Curriculum QA Completion:** Projiziert ohne Zweitrechnung `app/scripts/reportDeepUnderstandingRollout.ts`: strikte Schnittmenge der 5 Gates `D/P/A/M/V` über alle aktuellen `curricularAtomic`-Ziele plus 6 bestandene Fach-Validierungschecks (`deferred_provider_limitation` und `deferred_quality_review` bleiben offen; `humanTrialBlockingFindings` wird separat ausgewiesen). |
@@ -100,4 +100,23 @@ Die Sichtbarkeitsprüfung ist in acht Scopes vorgeschrieben. In den übrigen vie
 | **`CQR-501`** | `M5` | **Applicability Warning Debt:** `activeWarnings + obsoleteAcceptedWarnings = 0` gegenüber `docs/qa-ci/applicability-accepted-warnings.json` (`APV-202` zählt als Diagnose, nicht als Warnschuld). |
 :::
 
-**Aktuell fachlich entschiedene `CQR-302`-Bilanzen (Gymnasium DE):** Mathematik (750 Ziele: 713 `no_memory_needed` / 37 `memory_required`, 64 Karten, 6 Knoten), Physik (425: 298 / 127, 148 Karten, 5 Knoten), Chemie (376: 322 / 54, 55 Karten, 6 Knoten), Biologie (355: 348 / 7, 17 Karten, 1 Knoten), Informatik (207: 198 / 9, 28 Karten, 5 Knoten, 18 Views), Latein (115: 82 / 33, 34 Karten, 5 Knoten), Deutsch (268: 194 / 74, 48 Karten, 5 Knoten), Geschichte (156: 100 / 56, 57 Karten, 5 Knoten), Politik und Wirtschaft (413: 306 / 107, 62 Karten, 5 Knoten, 14 Views) sowie Wirtschaftswissenschaften (303: 250 / 53, 51 Karten, 5 Knoten).
+**Grenze der Prüfungschecks:** `CQR-201`–`203` prüfen die im Profil konfigurierten Endpunkte, keine beliebige Einheitenabschlussprüfung. Ein formales Punkteschema und deklarierte `coveredGoalIds` beweisen nicht, dass jedes beanspruchte Ziel zum Bestehen nötig ist oder ein Coach das Raster zuverlässig anwendet. `requires` beschreibt Vorbereitung, keine Bewertungsdeckung. Das unabhängige Deckungsreview prüft Aufgabe, Lösung, Raster, zulässige Alternativwege und Bestehenskombinationen. Bewertungen tatsächlicher Abgaben und praktische Erprobung liefern weitere, getrennte Evidenz; `M7` ersetzt sie nicht.
+
+**CQR-302-Bilanzen des eingecheckten Snapshots vom 17. November 2026:**
+
+Die Werte stammen aus `rules[id=CQR-302].metrics` in [curriculum-quality-status.json](repo:docs/qa-ci/status/curriculum-quality-status.json); Primärkarten werden ohne Sprachduplikate gezählt. Der Snapshot weist fünf Fächer auf M7 und fünf auf M6 aus. M7 ist maschinelle QS und keine menschliche Erprobung.
+
+:::table{cols="X,1.0cm,1.4cm,1.4cm,1.4cm,1.4cm,1.4cm" longtable=true}
+| Fach | Reife | Geprüfte Ziele | Ohne Memory | Mit Memory | Primärkarten | Memory-Ziele |
+| --- | --- | ---: | ---: | ---: | ---: | ---: |
+| Mathematik | M7 | 807 | 767 | 40 | 64 | 6 |
+| Physik | M7 | 485 | 357 | 128 | 146 | 5 |
+| Chemie | M7 | 455 | 389 | 66 | 759 | 68 |
+| Biologie | M7 | 397 | 387 | 10 | 27 | 3 |
+| Informatik | M6 | 207 | 198 | 9 | 28 | 5 |
+| Latein | M6 | 115 | 82 | 33 | 34 | 5 |
+| Deutsch | M6 | 268 | 194 | 74 | 48 | 5 |
+| Geschichte | M6 | 156 | 100 | 56 | 57 | 5 |
+| Politik und Wirtschaft | M6 | 413 | 306 | 107 | 62 | 5 |
+| Wirtschaftswissenschaften | M7 | 346 | 280 | 66 | 67 | 10 |
+:::

@@ -33,8 +33,15 @@ Das fortlaufend geprüfte [maschinenlesbare Transparenzinventar](repo:docs/legal
 
 #### Audio-Bestand {#sec:sec-ai-act-audio}
 
-- **`app/public/audio/intro-de.m4a`** — Dauer `1095,540680 s`, Encoder-Tag `Google`, SHA-256: `11af439ea19741567bd797d7b05314c2a1f5c416413beed5f781e2fd7d1cf196`
-- **`app/public/audio/intro-en.m4a`** — Dauer `892,482177 s`, Encoder-Tag `Google`, SHA-256: `e4d53b9f15932b7b1ce863cf06a48b36323a8a1efa09f0238fe96407a471a923`
+**Aktueller Dateibestand, am 19. November 2026 lokal geprüft.** Die aktuellen Aliasdateien sind byteidentisch mit `intro-de-v2.m4a` beziehungsweise `intro-en-v2.m4a`. Diese Beobachtung datiert keine Erstveröffentlichung und ändert den historischen Compliance-Stichtag nicht.
+
+- **`app/public/audio/intro-de.m4a`** — Dauer `359,050159 s`, Encoder-Tag `Google`, SHA-256: `9c82bb570e289d4b68c465a75687cd848f1470d92cbbe2e191d75ee1097505c8`
+- **`app/public/audio/intro-en.m4a`** — Dauer `349,251338 s`, Encoder-Tag `Google`, SHA-256: `102fc8e5010f10f4bc9cd9a192788d49c85de879a591278e54b9486e26d9a34b`
+
+**Erhaltener früherer Bestand.** Die früheren Aliasbytes liegen unter den folgenden V1-Dateinamen; die NotebookLM-Originale bleiben separat erhalten.
+
+- **`app/public/audio/intro-de-v1.m4a`** — Dauer `1095,540680 s`, Encoder-Tag `Google`, SHA-256: `11af439ea19741567bd797d7b05314c2a1f5c416413beed5f781e2fd7d1cf196`
+- **`app/public/audio/intro-en-v1.m4a`** — Dauer `892,482177 s`, Encoder-Tag `Google`, SHA-256: `e4d53b9f15932b7b1ce863cf06a48b36323a8a1efa09f0238fe96407a471a923`
 - **`docs/notebooklm/SkillPilot_macht_Bildung_zum_Navigationssystem.m4a`** — Dauer `801,413515 s`, Encoder-Tag `Google`, SHA-256: `267aafede53d9849a980cccd0304abc47c7069edee5ecac5ab8263c06c594876`
 - **`docs/notebooklm/Skill_Graphs_Tame_the_Smart_Liar.m4a`** — Dauer `1134,410884 s`, Encoder-Tag `Google`, SHA-256: `1542430f14f1beee4738dfa5b655b7fc1d819503a95e31dc1f02dbd580da43f8`
 

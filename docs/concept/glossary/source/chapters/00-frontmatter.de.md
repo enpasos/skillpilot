@@ -7,6 +7,7 @@ Dieses Dokument definiert die zentralen Fachbegriffe von SkillPilot und grenzt n
 - **Definitionen sind bewusst knapp gehalten.** Jeder Eintrag benennt, was der Begriff bedeutet und – wo Verwechslungsgefahr besteht – was er *nicht* ist. Maßgeblich bleibt immer das verlinkte Fachdokument; dieses Glossar überschreibt keine Spezifikation.
 - **EN** nennt jeweils das englische Äquivalent aus Code, englischer Dokumentation und Spezifikation. Feldnamen wie `contains`, `requires` oder `applicability` sind technische Bezeichner und bleiben in beiden Sprachen englisch.
 - **Begriffe sind nach Schichten geordnet**, von den Curriculum-Quellen bis zur Qualitäts-Governance, da Missverständnisse meist durch das Vermischen von Schichten entstehen.
+- **Beschlossene Verträge und Vorschläge bleiben getrennt.** Der [Einheitenvorschlag vom 19. November 2026](repo:docs/concept/skill-graph/unit-assessment-discussion-2026-11-19.de.md) ist noch nicht als Produktregel angenommen. Seine Begriffe ergänzen die Diskussion; bestehende Ergebnisverträge und Qualitätsgates gelten weiter.
 
 Zwei Grundregeln erklären einen großen Teil des Vokabulars:
 

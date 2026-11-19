@@ -24,7 +24,7 @@ This chapter documents the repeatable manual authoring and QA workflow for revie
 - **`direct requires`:** Prerequisites authored directly on the atomic goal itself.
 - **`effective requires`:** Direct prerequisites plus prerequisites inherited from ancestor clusters via `contains`.
 
-While inspecting inherited origins is essential during migration, the binding target state remains a purely atomic prerequisite relation $R \subseteq A \times A$ ([Graph Definition](../concept/skill-graph/graph-definition.md)).
+While inspecting inherited origins is essential during migration, the binding target state remains a purely atomic prerequisite relation $R \subseteq A \times A$ ([Graph Definition](../concept/skill-graph/graph-definition.md)). For assessment goals, `requires` denotes necessary preparation; claimed coverage is recorded separately in `examData.coveredGoalIds` and needs a task/rubric review. Repair missing coverage evidence through a suitable task, never an additional prerequisite edge without subject-matter justification.
 
 <a id="sec-qal-requires-workflow"></a>
 ### 9.2. Six-Step Review and Repair Workflow

@@ -11,7 +11,8 @@ import {
 } from './srsLogic'
 import { FlashcardFlipCard } from './FlashcardFlipCard'
 import { interpolateTemplate } from '../../utils/interpolateTemplate'
-import { SRS_STATE_RELOADED_EVENT, type SrsPracticeSnapshot, type SrsStateReloaded } from '../../utils/srsPracticeSync'
+import { selectPracticeCards } from '../../utils/flashcardPractice'
+import { runSrsPracticeWrite, waitForSrsPracticeWrites, SRS_STATE_RELOADED_EVENT, type SrsPracticeSnapshot, type SrsStateReloaded } from '../../utils/srsPracticeSync'
 import {
     FLASHCARD_PRACTICE_QUALITY,
     getAdjacentFlashcardIndex,
@@ -24,6 +25,8 @@ interface FlashcardDrillProps {
     skillPilotId: string
     titleOverride?: string
     filterTags?: string[]
+    /** Topic subset; progress and persistence still belong to the original memory goal. */
+    scopeGoalIds?: readonly string[]
     goalId: string
     readOnly?: boolean
     onSync?: (goalId: string, snapshot?: SrsPracticeSnapshot, onSaved?: (updatedAt: string) => void) => Promise<boolean>
@@ -144,6 +147,7 @@ export function FlashcardDrill({
     skillPilotId,
     titleOverride,
     filterTags,
+    scopeGoalIds,
     goalId,
     readOnly = false,
     onSync,
@@ -157,6 +161,7 @@ export function FlashcardDrill({
     // Initial load happens in useEffect to ensure we use the correct keys
     const [srsState, setSrsState] = useState<Record<string, ReviewItem>>({})
     const [vocabData, setVocabData] = useState<VocabData | null>(null)
+    const [masteryCards, setMasteryCards] = useState<Flashcard[]>([])
     const [queue, setQueue] = useState<VocabData['cards']>([])
     const [currentCardIndex, setCurrentCardIndex] = useState(0)
     const [isFlipped, setIsFlipped] = useState(false)
@@ -216,7 +221,8 @@ export function FlashcardDrill({
         if (!onSyncRef.current || syncInFlightRef.current) return
         syncInFlightRef.current = true
         try {
-            while (pendingSyncRef.current) {
+            await runSrsPracticeWrite(skillPilotId, goalId, async () => {
+              while (pendingSyncRef.current) {
                 const sync = onSyncRef.current
                 if (!sync) break
 
@@ -234,44 +240,49 @@ export function FlashcardDrill({
                     console.warn('SRS sync error', e)
                     break
                 }
-            }
+              }
+            })
         } finally {
             syncInFlightRef.current = false
         }
-    }, [goalId])
+    }, [goalId, skillPilotId])
 
     const sendBackgroundSync = useCallback(() => {
         if (!pendingSyncRef.current) return
+        if (syncInFlightRef.current) return
         if (!skillPilotId || !goalId) return
         const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
         const url = apiBase
             ? `${apiBase}/api/ui/learners/${skillPilotId}/client-state/${goalId}`
             : `/api/ui/learners/${skillPilotId}/client-state/${goalId}`
-        const payload = JSON.stringify({
-            updatedAt: new Date().toISOString(),
-            srsState: latestStateRef.current,
-            expectedUpdatedAt: serverUpdatedAtRef.current,
-        })
-        const syncingGeneration = syncGenerationRef.current
+        syncInFlightRef.current = true
 
         try {
-            void fetch(url, {
-                method: 'PUT',
-                headers: { 'Content-Type': 'application/json' },
-                body: payload,
-                keepalive: true
-            }).then(async response => {
-                if (!response.ok) return
+            void runSrsPracticeWrite(skillPilotId, goalId, async () => {
+              while (pendingSyncRef.current) {
+                const syncingGeneration = syncGenerationRef.current
+                const response = await fetch(url, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        updatedAt: new Date().toISOString(),
+                        srsState: latestStateRef.current,
+                        expectedUpdatedAt: serverUpdatedAtRef.current,
+                    }),
+                    keepalive: true,
+                })
+                if (!response.ok) break
                 const saved = await response.json()
-                if (typeof saved.savedAt === 'string') {
-                    serverUpdatedAtRef.current = saved.savedAt
-                    localStorage.setItem(`srs_state_last_sync_${skillPilotId}_${goalId}`, saved.savedAt)
-                }
+                if (typeof saved.savedAt !== 'string') break
+                serverUpdatedAtRef.current = saved.savedAt
+                localStorage.setItem(`srs_state_last_sync_${skillPilotId}_${goalId}`, saved.savedAt)
                 if (syncGenerationRef.current === syncingGeneration) pendingSyncRef.current = false
+              }
             }).catch(() => {
                 // Keep pending work for the next foreground synchronization.
-            })
+            }).finally(() => { syncInFlightRef.current = false })
         } catch (e) {
+            syncInFlightRef.current = false
             console.warn('Background sync failed', e)
         }
     }, [goalId, skillPilotId])
@@ -279,17 +290,21 @@ export function FlashcardDrill({
     // Reset and Load
     useEffect(() => {
         setVocabData(null)
+        setMasteryCards([])
         setQueue([])
         setCurrentCardIndex(0)
         setIsFlipped(false)
         setRatingsByCardId({})
         reviewedCountRef.current = 0
         setSrsState({}) // Clear state
+        latestStateRef.current = {}
+        serverUpdatedAtRef.current = null
+        pendingSyncRef.current = false
         syncInFlightRef.current = false
         syncedAllCaughtUpRef.current = false
         sessionInitialDueRef.current = null
         lastMasteryRef.current = null
-    }, [dataSourceUrl, goalId]) // Reset on goal change
+    }, [dataSourceUrl, goalId, scopeGoalIds?.join(',')]) // Reset on goal or practice scope change
 
     useEffect(() => {
         const handleVisibility = () => {
@@ -312,18 +327,18 @@ export function FlashcardDrill({
     // Initialize: Fetch Data -> Load State -> Then Queue
     useEffect(() => {
         if (!dataSourceUrl) return
+        const controller = new AbortController()
 
         const loadData = async () => {
             try {
-                const res = await fetch(dataSourceUrl, { cache: 'no-store' })
+                const res = await fetch(dataSourceUrl, { cache: 'no-store', signal: controller.signal })
                 if (!res.ok) throw new Error("Failed to load vocab")
                 const data: VocabData = await res.json()
+                if (controller.signal.aborted) return
 
-                if (filterTags && filterTags.length > 0) {
-                    data.cards = data.cards.filter(card =>
-                        card.tags && card.tags.some(tag => filterTags.includes(tag))
-                    )
-                }
+                const allGoalCards = selectPracticeCards(data.cards, filterTags)
+                setMasteryCards(allGoalCards)
+                data.cards = selectPracticeCards(allGoalCards, undefined, scopeGoalIds)
 
                 setVocabData(data)
 
@@ -333,10 +348,13 @@ export function FlashcardDrill({
                 const syncUrl = apiBase
                     ? `${apiBase}/api/ui/learners/${skillPilotId}/client-state/${goalId}`
                     : `/api/ui/learners/${skillPilotId}/client-state/${goalId}`
+                await waitForSrsPracticeWrites(skillPilotId, goalId)
+                if (controller.signal.aborted) return
                 try {
-                    const res = await fetch(syncUrl)
+                    const res = await fetch(syncUrl, { signal: controller.signal })
                     if (res.ok) {
                         const payload = await res.json()
+                        if (controller.signal.aborted) return
                         if (payload && payload.srsState) {
                             serverUpdatedAtRef.current = payload.updatedAt ?? null
                             const storageKey = `srs_state_${skillPilotId}_${goalId}`
@@ -359,10 +377,13 @@ export function FlashcardDrill({
                     if (stored) loadedState = JSON.parse(stored)
                 } catch (e) { console.error("Storage load error", e) }
 
+                if (controller.signal.aborted) return
+                latestStateRef.current = loadedState
                 setSrsState(loadedState)
 
                 const now = Date.now()
                 const nextStats = calculateStats(data.cards, loadedState, now)
+                const originalGoalStats = calculateStats(allGoalCards, loadedState, now)
                 const dueCards = data.cards.filter(card => isCardDue(loadedState[card.id], now))
                 setStats(nextStats)
 
@@ -375,9 +396,9 @@ export function FlashcardDrill({
                 setRatingsByCardId({})
 
                 if (
-                    nextStats.due === 0
-                    && nextStats.verifiedPending === 0
-                    && nextStats.total > 0
+                    originalGoalStats.due === 0
+                    && originalGoalStats.verifiedPending === 0
+                    && originalGoalStats.total > 0
                     && onSyncRef.current
                     && !syncedAllCaughtUpRef.current
                 ) {
@@ -388,14 +409,16 @@ export function FlashcardDrill({
                 }
 
             } catch (e) {
+                if (controller.signal.aborted) return
                 console.error("Error loading vocab data", e)
                 setError("Card load error.")
             }
         }
 
         loadData()
+        return () => controller.abort()
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [dataSourceUrl, filterTags?.join(','), reloadTrigger, goalId, skillPilotId, reloadSignal, triggerSync])
+    }, [dataSourceUrl, filterTags?.join(','), scopeGoalIds?.join(','), reloadTrigger, goalId, skillPilotId, reloadSignal, triggerSync])
     // Initialize: Fetch Data -> Then Queue
 
 
@@ -404,16 +427,18 @@ export function FlashcardDrill({
     useEffect(() => {
         if (!onStateChange) return
         if (stats.total <= 0) return
-        const mastery = stats.verifiedPending === 0 ? 1 : 0
+        const originalGoalStats = calculateStats(masteryCards, srsState)
+        if (!originalGoalStats.total) return
+        const mastery = originalGoalStats.verifiedPending === 0 ? 1 : 0
         if (lastMasteryRef.current === mastery) return
         lastMasteryRef.current = mastery
         onStateChange({
             goalId,
             mastery,
-            due: stats.due,
-            total: stats.total,
+            due: originalGoalStats.due,
+            total: originalGoalStats.total,
         })
-    }, [goalId, stats.due, stats.total, stats.verifiedPending, onStateChange])
+    }, [goalId, stats.due, stats.total, stats.verifiedPending, masteryCards, srsState, onStateChange])
 
     const reviewStateForCard = (cardId: string, quality: number): ReviewItem => {
         const rawState = srsState[cardId]
@@ -451,6 +476,7 @@ export function FlashcardDrill({
     }
 
     const persistSrsState = (updatedSrsState: Record<string, ReviewItem>) => {
+        latestStateRef.current = updatedSrsState
         setSrsState(updatedSrsState)
         if (vocabData) {
             setStats(calculateStats(vocabData.cards, updatedSrsState))
