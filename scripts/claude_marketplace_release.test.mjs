@@ -936,7 +936,7 @@ test("published verification is pinned to the configured repository", () => {
   );
 });
 
-test("prepared 1.1.15 reproduces its local export with independent publication and account evidence pending", () => {
+test("published 1.1.15 reproduces the verified repository tree and awaits real-account acceptance", () => {
   const result = checkClaudeMarketplace({ repositoryRoot });
   assert.equal(result.pluginName, "skillpilot-coach-v1");
   assert.equal(result.version, "1.1.15");
@@ -945,10 +945,18 @@ test("prepared 1.1.15 reproduces its local export with independent publication a
   assert.equal(result.files.length, 12);
   assert.equal(result.directInstallSha256, pinnedBaseline.archive.sha256);
   assert.equal(result.treeSha256, "ef53ba5c07db031d57719e2e0a5390b7f450d70a06207a2d59235b5f4cfd26d2");
-  assert.equal(currentMarketplaceLane.activation.state, "prepared_not_published");
-  assert.equal(currentMarketplaceLane.activation.firstPartyGuideDecision.status, "pending");
-  assert.equal(currentMarketplaceLane.activation.marketplaceUiSwitchAllowed, false);
-  assert.ok(currentMarketplaceLane.activation.evidence.every(({ status }) => status === "pending"));
+  const { activation } = currentMarketplaceLane;
+  assert.equal(activation.state, "published_pending_acceptance");
+  assert.equal(activation.firstPartyGuideDecision.status, "pending");
+  assert.equal(activation.marketplaceUiSwitchAllowed, false);
+  const [repositoryEvidence, ...accountEvidence] = activation.evidence;
+  assert.equal(repositoryEvidence.status, "pass");
+  assert.equal(repositoryEvidence.revision, "deb770b78978ad0afe1e1f99d1585f8cb290a76d");
+  assert.equal(repositoryEvidence.treeSha256, result.treeSha256);
+  assert.equal(repositoryEvidence.candidateVersion, result.version);
+  assert.equal(repositoryEvidence.candidateSha256, result.directInstallSha256);
+  assert.equal(repositoryEvidence.verifiedAt, "2026-11-19T21:54:02.696Z");
+  assert.ok(accountEvidence.every(({ status }) => status === "pending"));
 });
 
 test("published 1.1.14 retains its archive, repository revision and pending real-account checks", () => {

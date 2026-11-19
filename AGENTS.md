@@ -134,9 +134,9 @@ supersedes earlier plans for a parallel external ChatGPT beta.
 - This work order does not itself submit, publish or change production settings.
 
 On **19 November 2026**, the Product Owner authorized publishing Claude
-**1.1.14** in the repository-backed personal Marketplace. The public source,
+**1.1.15** in the repository-backed personal Marketplace. The public source,
 seven installed files, reproducible archive and manual Claude Code update from
-1.1.13 have been verified. The learning flow in Claude Web and Android remains
+1.1.14 have been verified. The learning flow in Claude Web and Android remains
 pending. See `docs/deploy/claude-personal-marketplace-release.md`.
 
 On **24 September 2026**, the Product Owner explicitly authorized trying the
