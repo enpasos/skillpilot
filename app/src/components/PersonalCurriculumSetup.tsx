@@ -77,8 +77,6 @@ interface PersonalCurriculumSetupProps {
     initialPeriodBasis?: 'DAY' | 'WEEK'
     initialCountOnlyExplicitGoals?: boolean
     initialStrictMode?: boolean
-    initialUseAssessmentShortcuts?: boolean
-    directAssessmentRunning?: boolean
     initialShowGoalVisualizationsInChat?: boolean
     personalizationEditor?: PersonalCurriculumEditorProps
     /** Separate optional settings; saving these must not rewrite the curriculum. */
@@ -101,8 +99,6 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
     initialPeriodBasis = 'WEEK',
     initialCountOnlyExplicitGoals = false,
     initialStrictMode = false,
-    initialUseAssessmentShortcuts = true,
-    directAssessmentRunning = false,
     initialShowGoalVisualizationsInChat = true,
     personalizationEditor,
     materialSettings,
@@ -110,8 +106,6 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
 }) => {
     const titleId = React.useId()
     const countOnlyExplicitGoalsDescriptionId = React.useId()
-    const shortcutDescriptionId = React.useId()
-    const shortcutAttemptHintId = React.useId()
     const { language } = useLanguage()
     const localizedLanguage = language === 'en' ? 'en' : 'de'
     const setupCopy = getPersonalCurriculumSetupCopy(localizedLanguage)
@@ -190,7 +184,6 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
     const [periodBasis, setPeriodBasis] = useState<'DAY' | 'WEEK'>(initialPeriodBasis)
     const [countOnlyExplicitGoals, setCountOnlyExplicitGoals] = useState(initialCountOnlyExplicitGoals)
     const [strictMode, setStrictMode] = useState<boolean>(initialStrictMode)
-    const [useAssessmentShortcuts, setUseAssessmentShortcuts] = useState(initialUseAssessmentShortcuts)
     const [showGoalVisualizationsInChat, setShowGoalVisualizationsInChat] = useState<boolean>(
         initialShowGoalVisualizationsInChat,
     )
@@ -225,7 +218,6 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
         sync('learningPlanPeriodBasis', initialPeriodBasis, setPeriodBasis)
         sync('learningPlanCountOnlyExplicitGoals', initialCountOnlyExplicitGoals, setCountOnlyExplicitGoals)
         sync('strictMode', initialStrictMode, setStrictMode)
-        sync('useAssessmentShortcuts', initialUseAssessmentShortcuts, setUseAssessmentShortcuts)
         sync('showGoalVisualizationsInChat', initialShowGoalVisualizationsInChat, setShowGoalVisualizationsInChat)
     }, [
         initialAutoPilot,
@@ -235,7 +227,6 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
         initialShowGoalVisualizationsInChat,
         initialStrategy,
         initialStrictMode,
-        initialUseAssessmentShortcuts,
         isOpen,
     ])
 
@@ -267,10 +258,6 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
     const handleStrictModeChange = (value: boolean) => {
         markPreference('strictMode', value !== initialStrictMode)
         setStrictMode(value)
-    }
-    const handleUseAssessmentShortcutsChange = (value: boolean) => {
-        markPreference('useAssessmentShortcuts', value !== initialUseAssessmentShortcuts)
-        setUseAssessmentShortcuts(value)
     }
     const handleShowGoalVisualizationsInChatChange = (value: boolean) => {
         markPreference('showGoalVisualizationsInChat', value !== initialShowGoalVisualizationsInChat)
@@ -502,7 +489,6 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                     learningPlanPeriodBasis: periodBasis,
                     learningPlanCountOnlyExplicitGoals: countOnlyExplicitGoals,
                     strictMode,
-                    useAssessmentShortcuts,
                     showGoalVisualizationsInChat,
                 })
                 onClose()
@@ -529,7 +515,6 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                 learningPlanPeriodBasis: periodBasis,
                 learningPlanCountOnlyExplicitGoals: countOnlyExplicitGoals,
                 strictMode,
-                useAssessmentShortcuts,
                 showGoalVisualizationsInChat,
             })
             onClose()
@@ -919,26 +904,6 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                                     <div>
                                         <span className="text-sm font-medium text-text-primary">{setupCopy.strictModeTitle}</span>
                                         <p className="text-xs text-text-secondary">{setupCopy.strictModeDescription}</p>
-                                    </div>
-                                </label>
-
-                                <label className="flex items-center gap-2 cursor-pointer">
-                                    <input
-                                        type="checkbox"
-                                        checked={useAssessmentShortcuts}
-                                        onChange={(e) => handleUseAssessmentShortcutsChange(e.target.checked)}
-                                        aria-label={setupCopy.useAssessmentShortcutsTitle}
-                                        aria-describedby={directAssessmentRunning && !useAssessmentShortcuts
-                                            ? `${shortcutDescriptionId} ${shortcutAttemptHintId}`
-                                            : shortcutDescriptionId}
-                                        className="w-4 h-4 rounded text-sky-600 focus:ring-sky-500 border-gray-300 bg-white dark:bg-slate-800 dark:border-slate-600"
-                                    />
-                                    <div>
-                                        <span className="text-sm font-medium text-text-primary">{setupCopy.useAssessmentShortcutsTitle}</span>
-                                        <p id={shortcutDescriptionId} className="text-xs text-text-secondary">{setupCopy.useAssessmentShortcutsDescription}</p>
-                                        {directAssessmentRunning && !useAssessmentShortcuts ? (
-                                            <p id={shortcutAttemptHintId} className="mt-1 text-xs text-amber-700 dark:text-amber-300" role="status">{setupCopy.assessmentShortcutAttemptEnds}</p>
-                                        ) : null}
                                     </div>
                                 </label>
 

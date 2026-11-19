@@ -83,7 +83,7 @@ export const nativeMapProfile = (physicsOnly = false) => ({
   }),
   learningStrategy: 'SEQUENTIAL', autoPilot: false, followLearningPlans: false,
   strictMode: false, showGoalVisualizationsInChat: true, copySources: [],
-  useAssessmentShortcuts: false, activeGoalId: physicsOnly ? id.physicsGoal : id.application,
+  activeGoalId: physicsOnly ? id.physicsGoal : id.application,
 })
 
 export const nativeMapDeck = {

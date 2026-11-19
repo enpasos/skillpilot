@@ -334,7 +334,6 @@ public class LearnerUiController {
                 request.showGoalVisualizationsInChat(),
                 request.followLearningPlans(),
                 request.learningPlanPeriodBasis(),
-                request.useAssessmentShortcuts(),
                 request.learningPlanCountOnlyExplicitGoals()));
     }
 

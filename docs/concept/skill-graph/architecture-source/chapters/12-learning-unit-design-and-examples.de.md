@@ -124,7 +124,7 @@ Für einen ersten **E.1-Entwurf** gelten vier eigenständige Bestehensentscheidu
 | E.1-Prüfung B, waagerechter Wurf | Bewegungen in zwei Richtungen mit gemeinsamer Zeit für eine Vorhersage verbinden | Entwurf, 3/3 Punkte |
 {cols="29%,46%,25%"}
 
-Vier bestandene Teile würden E.1 in diesem Entwurf nachweisen. Wer A und B löst und die Unterscheidung von Strecke und Ortsänderung noch verfehlt, hat einen offenen Kindnachweis. Die Fachrunde muss beurteilen, ob die vier Leistungen das Versprechen tragen, ob eigene Versuchsdurchführung erforderlich ist und ob ein anders formuliertes Elternversprechen je mit weniger Pflichtteilen auskäme.
+Vier bestandene Teile würden E.1 in diesem Entwurf nachweisen. Wer A und B löst und die Unterscheidung von Strecke und Ortsänderung noch verfehlt, hat einen offenen Kindnachweis. Für E.1 begründen Lernende ihre Vorhersage anhand vorliegender Daten. Im Lernweg können sie die Bewegung auch selbst messen. Die Fachrunde beurteilt, ob die vier Leistungen das vereinbarte Versprechen tragen und ob ein anders gefasstes Lernversprechen mit weniger Pflichtteilen auskäme.
 
 #### Was der E.1-Nachweis für weitere Lernschritte bedeutet {#sec:sga-ud-phys-recognition anchors="recognition-inside-a-larger-unit"}
 

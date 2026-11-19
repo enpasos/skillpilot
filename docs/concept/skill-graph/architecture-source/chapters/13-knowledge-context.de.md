@@ -91,7 +91,9 @@ Urteile sind **monoton**. Eine ergänzte Kante vergrößert $W(g)$ nur, sodass e
 | Coach | Der Kernkontext beschreibt die fachlich vorgesehenen Voraussetzungen. Für die persönliche Empfehlung zählt der individuelle Nachweisstand einschließlich gültiger Anerkennung nach R1–R5. Eine gesonderte Planungsfreigabe durch bestandene Einheitenfassungen gehört zum Vorschlag vom 19. November. |
 {cols="30%,70%"}
 
-Der Coach erhält Titel von Zielen und Beherrschungsstände, die sein Kontext an anderer Stelle bereits trägt. Kein Chattext fließt an das Backend zurück, und die Auswahl bleibt beim Backend.
+Beim Gespräch über ein konkretes Lernziel braucht der Coach außerdem dessen Platz in der persönlichen Sicht. In Hessen führt der Weg vom aktiven Ziel „Waagerechter Wurf analysieren“ über E.1 „Bewegungen und ihre Beschreibung“ zur Einführungsphase der Physik. Das Backend ermittelt die sichtbare Einordnung und die direkten fachlichen Voraussetzungen aus dem gespeicherten Zustand. Dafür benötigt es keinen Gesprächsverlauf. Zu einer Voraussetzung kann ein persönlicher Einzelbeleg vorliegen. Fehlt er, bleibt offen, was der Lernende schon versteht. Ist eine Voraussetzung im aktuellen Abschnitt für die Planung erlassen, nennt der Coach den Abschnitt und den belegten Grund. Der Bedarf kann entfallen sein oder eine bestandene Prüfung kann ihn abdecken.
+
+Beim Einstieg in eine gewählte Einheit kann der Coach ihre Leitfrage aufgreifen. Möchte der Lernende die Übung an seinem aktuellen Fachziel bearbeiten, verwendet der Coach dieselbe Aufgabenstellung wie die Lernkarte. Wünscht der Lernende Karten oder eine Prüfung, verwendet der Coach die angebotene Aktivität der Einheit. Die Kartenrunde übt die zugehörigen Karten des bestehenden Stapels. Der Status einer Prüfung richtet sich nach ihrem eigenen Abschlussvertrag. Das Blättern in der Karte lässt den Gesprächsfokus bestehen. Im Prüfungsversuch erhält der Coach die freigegebene Aufgabe. Fachliche Hilfen aus dem Lernkontext bleiben dem Lernmodus vorbehalten.
 
 ### Reihenfolge der Einführung {#sec:sga-kc-order anchors="order-of-introduction"}
 

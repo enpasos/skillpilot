@@ -74,6 +74,7 @@ public class ClaudeV1McpContractAdapter {
     private static final String ARG_SUBJECT = "subject";
     private static final String ARG_GOAL_ID = "goalId";
     private static final String ARG_GOAL_IDS = "goalIds";
+    private static final String ARG_PRACTICE_SCOPE_ID = "practiceScopeId";
     private static final String ARG_REDIRECT = "redirect";
     private static final String ARG_EXPECTED_STATE_VERSION = "expectedStateVersion";
     private static final String ARG_CLIENT_REQUEST_ID = "clientRequestId";
@@ -184,7 +185,7 @@ public class ClaudeV1McpContractAdapter {
             Map.entry(ClaudeV1Contract.TOOL_RENDER_GOAL_VISUALIZATION,
                     Set.of(ARG_GOAL_ID, ARG_EXPECTED_STATE_VERSION, ARG_LANGUAGE)),
             Map.entry(ClaudeV1Contract.TOOL_START_MEMORY_PRACTICE,
-                    Set.of(ARG_GOAL_ID, ARG_EXPECTED_STATE_VERSION, ARG_LANGUAGE)),
+                    Set.of(ARG_GOAL_ID, ARG_PRACTICE_SCOPE_ID, ARG_EXPECTED_STATE_VERSION, ARG_LANGUAGE)),
             Map.entry(ClaudeV1Contract.TOOL_REVIEW_MEMORY_PRACTICE_CARD, Set.of(
                     ARG_GOAL_ID, ARG_CARD_ID, ARG_REVIEW_CAPABILITY, ARG_RATING,
                     ARG_EXPECTED_STATE_VERSION, ARG_CLIENT_REQUEST_ID, ARG_LANGUAGE)),
@@ -382,6 +383,14 @@ public class ClaudeV1McpContractAdapter {
                 refresh once and apply these same rules. Continue from the full context
                 returned by a successful subject switch, perform any goalVisualization render it
                 requires, and only then confirm the switch and continue without another confirmation.
+
+                When introducing a unit, use its unitIntroduction to explain what the learner will be able to do.
+                A prerequisite marked recorded has individual evidence. A scopeWaiver applies only to its named
+                section. Missing evidence leaves the learner's prior knowledge open.
+                If the learner wants the current goal's practiceExercise, use its published prompt for practice.
+                When the learner chooses flashcards or an assessment, use the published activity action from
+                activeGoalContext or focusedUnitContext, copying action.arguments and supplying the usual session
+                and fresh write request ID where required. For a cockpit-only activity, offer its cockpit link.
 
                 Ordinary understanding goals: when teaching the current goal is authorized, help the
                 learner develop its central idea. This applies at a normal start, after a plan resume
@@ -739,12 +748,14 @@ public class ClaudeV1McpContractAdapter {
         tools.add(uiTool(
                 ClaudeV1Contract.TOOL_START_MEMORY_PRACTICE,
                 "Learn with flashcards",
-                "Starts normal spaced-repetition practice for the exact confirmed active memory goal. "
+                "Starts normal spaced-repetition practice for the confirmed active memory goal or a published "
+                        + "unitPractice action with its exact goalId and practiceScopeId. "
                         + "Private cards are delivered only to the dedicated component. This is not a mastery check.",
                 objectSchema(
                         List.of(ARG_GOAL_ID, ARG_EXPECTED_STATE_VERSION),
                         Map.of(
                                 ARG_GOAL_ID, identifierSchema(),
+                                ARG_PRACTICE_SCOPE_ID, identifierSchema(),
                                 ARG_EXPECTED_STATE_VERSION, stateVersionSchema(),
                                 ARG_LANGUAGE, languageSchema())),
                 memoryPracticeReceiptSchema(),
@@ -1419,18 +1430,22 @@ public class ClaudeV1McpContractAdapter {
             String connectionId,
             Map<String, Object> arguments) {
         String goalId = requiredIdentifier(arguments, ARG_GOAL_ID);
+        String practiceScopeId = arguments.containsKey(ARG_PRACTICE_SCOPE_ID)
+                ? requiredIdentifier(arguments, ARG_PRACTICE_SCOPE_ID) : null;
         long expectedStateVersion = requiredStateVersion(arguments);
-        String language = language(arguments);
+        String requestedLanguage = arguments.get(ARG_LANGUAGE) == null ? null : language(arguments);
         return sessionCoordinator.read(connectionId, ctx -> {
             requireCurrentStateVersion(expectedStateVersion, ctx.stateVersion());
-            FrontierGoal active = activeGoal(coachToolFacade.getLearnerState(ctx.skillpilotId()));
-            requireActiveMemoryGoal(active, goalId);
+            String language = requestedLanguage == null ? ctx.communicationLocale() : requestedLanguage;
+            UnifiedLearnerStateResponse state = coachToolFacade.getLearnerState(ctx.skillpilotId());
+            if (practiceScopeId == null) requireActiveMemoryGoal(activeGoal(state), goalId);
+            else requireRegularNavigation(state);
             MemoryPracticeResponse response;
             try {
                 response = coachToolFacade.startMemoryPractice(
                         ctx.skillpilotId(),
                         language,
-                        new MemoryPracticeStartRequest(goalId));
+                        new MemoryPracticeStartRequest(goalId, practiceScopeId));
             } catch (ResponseStatusException e) {
                 throw mapMemoryPracticeError(e);
             }
@@ -1440,7 +1455,7 @@ public class ClaudeV1McpContractAdapter {
                     language,
                     response,
                     ctx.stateVersion(),
-                    true);
+                    practiceScopeId);
         }).value();
     }
 
@@ -1462,25 +1477,26 @@ public class ClaudeV1McpContractAdapter {
                 expectedStateVersion,
                 arguments,
                 ctx -> {
-                    FrontierGoal active = activeGoal(coachToolFacade.getLearnerState(ctx.skillpilotId()));
-                    requireActiveMemoryGoal(active, goalId);
-                    capabilityService.verifyMemoryPracticeReviewCapability(
+                    var claim = capabilityService.verifyMemoryPracticeReviewCapability(
                             reviewCapability,
                             connectionId,
                             goalId,
                             cardId,
                             ctx.stateVersion());
+                    UnifiedLearnerStateResponse state = coachToolFacade.getLearnerState(ctx.skillpilotId());
+                    if (claim.practiceScopeId() == null) requireActiveMemoryGoal(activeGoal(state), goalId);
+                    else requireRegularNavigation(state);
                     MemoryPracticeResponse response;
                     try {
                         response = coachToolFacade.reviewMemoryPracticeCard(
                                 ctx.skillpilotId(),
                                 language,
-                                new MemoryPracticeReviewRequest(goalId, cardId, rating));
+                                new MemoryPracticeReviewRequest(goalId, cardId, rating, claim.practiceScopeId()));
                     } catch (ResponseStatusException e) {
                         throw mapMemoryPracticeError(e);
                     }
                     validateMemoryPracticeResponse(response, goalId);
-                    return memoryPracticeReceipt(response);
+                    return memoryPracticeReceipt(response, claim.practiceScopeId());
                 });
 
         Map<String, Object> receipt = new LinkedHashMap<>(outcome.value());
@@ -1499,7 +1515,7 @@ public class ClaudeV1McpContractAdapter {
                 "scheduled", progress.get("scheduledCards")));
         componentData.put("completed", receipt.get("completed"));
         return new UiPayload(
-                memoryPracticeSummary(language, Boolean.TRUE.equals(receipt.get("completed"))),
+                memoryPracticeSummary(language, Boolean.TRUE.equals(receipt.get("completed")), receipt.containsKey(ARG_PRACTICE_SCOPE_ID)),
                 Map.copyOf(receipt),
                 Map.of("skillpilotMemoryCard", Map.copyOf(componentData)));
     }
@@ -1965,7 +1981,7 @@ public class ClaudeV1McpContractAdapter {
         Map<String, Object> response = successResponse(outcome.stateVersion());
         response.putAll(outcome.value());
         String continuation = POST_WRITE_RELOAD_INSTRUCTION
-                + " Then teach the active goal.";
+                + " Then follow the confirmed active goal's teaching, exam or memory workflow.";
         response.put("instruction", continuation);
         response.put("presentationInstruction", continuation);
         return response;
@@ -2493,8 +2509,8 @@ public class ClaudeV1McpContractAdapter {
             String language,
             MemoryPracticeResponse response,
             long stateVersion,
-            boolean includePrivateBatch) {
-        Map<String, Object> receipt = memoryPracticeReceipt(response);
+            String practiceScopeId) {
+        Map<String, Object> receipt = memoryPracticeReceipt(response, practiceScopeId);
         receipt.put("stateVersion", stateVersion);
 
         Map<String, Object> componentData = new LinkedHashMap<>();
@@ -2508,31 +2524,30 @@ public class ClaudeV1McpContractAdapter {
                 "due", response.progress().dueCards(),
                 "scheduled", response.progress().scheduledCards()));
         componentData.put("completed", receipt.get("completed"));
-        if (includePrivateBatch) {
-            List<Map<String, Object>> cards = new ArrayList<>();
-            for (MemoryPracticeCard card : response.cards()) {
-                cards.add(Map.of(
-                        "id", card.cardId(),
-                        "front", card.front(),
-                        "back", card.back(),
-                        "reviewCapability", capabilityService.mintMemoryPracticeReviewCapability(
-                                connectionId,
-                                response.goalId(),
-                                card.cardId(),
-                                stateVersion)));
-            }
-            componentData.put("cardBatch", Map.of(
-                    "totalDueCards", response.progress().dueCards(),
-                    "cards", List.copyOf(cards)));
+        List<Map<String, Object>> cards = new ArrayList<>();
+        for (MemoryPracticeCard card : response.cards()) {
+            cards.add(Map.of(
+                    "id", card.cardId(),
+                    "front", card.front(),
+                    "back", card.back(),
+                    "reviewCapability", capabilityService.mintMemoryPracticeReviewCapability(
+                            connectionId,
+                            response.goalId(),
+                            card.cardId(),
+                            stateVersion, practiceScopeId)));
         }
+        componentData.put("cardBatch", Map.of(
+                "totalDueCards", response.progress().dueCards(),
+                "cards", List.copyOf(cards)));
         return new UiPayload(
-                memoryPracticeSummary(language, Boolean.TRUE.equals(receipt.get("completed"))),
+                memoryPracticeSummary(language, Boolean.TRUE.equals(receipt.get("completed")), receipt.containsKey(ARG_PRACTICE_SCOPE_ID)),
                 Map.copyOf(receipt),
                 Map.of("skillpilotMemoryCard", Map.copyOf(componentData)));
     }
 
-    private Map<String, Object> memoryPracticeReceipt(MemoryPracticeResponse response) {
+    private Map<String, Object> memoryPracticeReceipt(MemoryPracticeResponse response, String practiceScopeId) {
         Map<String, Object> receipt = new LinkedHashMap<>();
+        if (practiceScopeId != null) receipt.put(ARG_PRACTICE_SCOPE_ID, practiceScopeId);
         receipt.put("status", response.status());
         receipt.put("goalId", response.goalId());
         receipt.put("goalTitle", response.goalTitle());
@@ -2621,7 +2636,10 @@ public class ClaudeV1McpContractAdapter {
         return rating;
     }
 
-    private String memoryPracticeSummary(String language, boolean completed) {
+    private String memoryPracticeSummary(String language, boolean completed, boolean unitPractice) {
+        if (completed && unitPractice) return localized(language,
+                "Alle heute fälligen Karten dieser Einheit wurden geübt.",
+                "All cards due today in this unit have been practised.");
         if (completed) {
             return localized(
                     language,
@@ -2918,6 +2936,7 @@ public class ClaudeV1McpContractAdapter {
                 Map.of(
                         "status", enumStringSchema("ready", "complete"),
                         "goalId", identifierSchema(),
+                        ARG_PRACTICE_SCOPE_ID, identifierSchema(),
                         "goalTitle", Map.of("type", "string"),
                         "stateVersion", stateVersionSchema(),
                         "progress", objectSchema(

@@ -85,6 +85,10 @@
 .lum-map-summary > span { color: #a0a8af; font-size: 10px; }
 .lum-scope-actions { display: flex; flex-wrap: wrap; gap: 8px; flex-shrink: 0; padding: 8px 16px; }
 .lum-scope-actions:empty { display: none; }
+.lum-scope-intro { flex-basis: 100%; }
+.lum-scope-intro h2 { margin: 0; color: var(--lum-ink); font-size: 17px; font-weight: 600; line-height: 1.35; }
+.lum-scope-intro p { max-width: 85ch; margin: 3px 0 1px; color: #495f70; font-size: 13px; line-height: 1.45; }
+.lum-board-mode { min-height: 40px; padding: 6px 12px; border: 1px solid #c5d8e8; border-radius: 5px; color: #295d82; background: #f4f8fb; cursor: pointer; }
 .lum-flashcard-action { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 8px 12px; border: 1px solid #c6d7e5; border-radius: 5px; background: #f2f7fb; color: #347295; font-size: 12px; text-align: left; }
 .lum-flashcard-action:hover { background: #e7f2fa; }
 .lum-flashcard-action:focus-visible { outline: 2px solid #347aa6; outline-offset: 2px; }
@@ -113,6 +117,30 @@
 .lum-node-meta { font-size: 9px; line-height: 1; color: #8c98a3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .lum-node-open { flex-shrink: 0; align-self: center; display: grid; place-items: center; width: 27px; height: 40px; border: 0; background: none; color: #8ea0ae !important; border-radius: 3px; padding: 0; }
 .lum-node-open:hover { color: #346f9c !important; background: #eff5f9; }
+.lum-node--has-practice .lum-node-practice {
+  flex: none; align-self: center; margin: 0 5px 0 3px; padding: 4px 6px; min-height: 38px;
+  border: 1px solid #a6c2d6; border-radius: 4px; color: #275779; background: #eef5fa; font-size: 11px; font-weight: 600;
+}
+.lum-node--has-practice .lum-node-practice:hover { background: #deedf7; }
+.lum-practice-dialog {
+  box-sizing: border-box; width: min(36rem, calc(100% - 2rem)); max-height: calc(100dvh - 2rem); overflow: auto;
+  margin: auto; padding: clamp(16px, 4vw, 28px); border: 1px solid #bacdda; border-radius: 8px;
+  background: white; color: #26323d; box-shadow: 0 12px 50px #162d4540;
+  font: 16px/1.55 'Segoe UI', system-ui, sans-serif; text-align: left;
+}
+.lum-practice-dialog::backdrop { background: rgb(20 39 56 / 44%); }
+.lum-practice-dialog header { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.lum-practice-dialog header span { display: block; margin-bottom: 3px; color: #495f70; font-size: 13px; }
+.lum-practice-dialog h2 { margin: 0; font-size: 20px; line-height: 1.35; font-weight: 600; }
+.lum-practice-dialog header button {
+  flex: none; display: grid; place-items: center; width: 36px; height: 36px;
+  border: 1px solid #c8d7e2; border-radius: 4px; background: white; color: #39576d; cursor: pointer;
+}
+.lum-practice-dialog p { margin: 10px 0 18px; white-space: pre-line; }
+.lum-practice-dialog details { border-top: 1px solid #dce4ea; }
+.lum-practice-dialog summary { padding: 10px 0; color: #295d82; font-weight: 600; cursor: pointer; }
+.lum-practice-dialog details p { margin: 0 0 12px; }
+.lum-practice-dialog :is(button, summary):focus-visible { outline: 2px solid #347aa6; outline-offset: 2px; }
 .lum-node--motivation { border-left-color: #bd9c62; }
 .lum-node--motivation .lum-node-icon { color: #b49765; }
 .lum-node--assessment { border-left-color: #9285b6; }
@@ -134,6 +162,8 @@
 .lum-list-note { margin: 0 0 10px; max-width: 70ch; color: #6b7c8b; font-size: 11px; }
 .lum-list ul { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 9px 8px; margin: 0; padding: 6px 0 0; list-style: none; }
 .lum-list-item { position: relative; display: flex; align-items: stretch; min-height: 50px; border: 1px solid #d8dfe5; border-left: 3px solid #7897b1; border-radius: 4px; background: #fff; }
+.lum-list-item.lum-node--assessment { border-left-color: #9285b6; }
+.lum-list-item.lum-node--memory { border-left-color: #77a79a; }
 .lum-list-item:hover { border-color: #88a5bb; }
 .lum-list-item.is-focused { border-color: #3a7fb5; box-shadow: 0 0 0 1px #3a7fb5; background: #f5faff; }
 .lum-list-item .lum-node-main { padding: 6px 4px 6px 9px; }
@@ -180,6 +210,7 @@
   .lum-map-summary { flex-wrap: wrap; gap: 0 12px; align-content: center; }
 }
 @media (max-width: 760px) {
+  .lum-list-item .lum-node-practice { min-height: 44px; min-width: 48px; }
   .lum-topbar { padding: 0 12px; gap: 9px; height: 45px; }
   .lum-brand { gap: 6px; }
   .lum-brand > span { display: none; }

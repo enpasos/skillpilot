@@ -2261,7 +2261,7 @@ const readJsonBody = async (req: IncomingMessage): Promise<unknown> => {
   return JSON.parse(rawBody)
 }
 
-const deckEditorDevPlugin = {
+const deckEditorDevPlugin = (useLocalApiProxy: boolean) => ({
   name: 'skillpilot-deck-editor-dev-api',
   apply: 'serve' as const,
   configureServer(server: ViteDevServer) {
@@ -2277,7 +2277,8 @@ const deckEditorDevPlugin = {
         && !requestUrl.pathname.startsWith('/__quality-dashboard')
         && !requestUrl.pathname.startsWith('/__curriculum-mapping-workbench')
         && !requestUrl.pathname.startsWith('/__authoring')
-        && requestUrl.pathname !== '/api/ui/composition-views/match'
+        // A configured local backend owns composition matching, including merged course views.
+        && (useLocalApiProxy || requestUrl.pathname !== '/api/ui/composition-views/match')
       ) {
         next()
         return
@@ -3092,13 +3093,15 @@ const deckEditorDevPlugin = {
       })
     })
   },
-}
+})
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, APP_ROOT, '')
   const packageConsumerBuild = mode === 'package-consumer'
   const apiTarget = env.VITE_API_BASE || 'https://skillpilot.com'
+  const useLocalApiProxy = URL.canParse(apiTarget)
+    && ['localhost', '127.0.0.1', '[::1]'].includes(new URL(apiTarget).hostname)
   const coachVariant = env.VITE_SKILLPILOT_COACH_VARIANT?.trim().toLowerCase()
     || 'visible-session'
 
@@ -3111,7 +3114,7 @@ export default defineConfig(({ mode }) => {
       createBuildVersionPlugin(mode, coachVariant),
       react(),
       tailwindcss(),
-      deckEditorDevPlugin,
+      deckEditorDevPlugin(useLocalApiProxy),
       VitePWA({
         registerType: serviceWorkerRegisterType,
         injectRegister: serviceWorkerInjectRegister,

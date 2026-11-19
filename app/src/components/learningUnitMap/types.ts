@@ -1,5 +1,24 @@
 export type MapEntryKind = 'unit' | 'cluster' | 'motivation' | 'goal' | 'assessment' | 'memory'
 
+export interface MapPracticeExercise {
+  title: string
+  prompt: string
+  hint: string
+  solution: string
+}
+
+export interface MapPracticeMaterial {
+  unit: {
+    landscapeId: string
+    compositionNodeId: string
+    viewIds: string[]
+    flashcardGoalId: string
+    assessmentGoalId: string
+  }
+  intro: Record<'de' | 'en', { question: string; promise: string }>
+  exercises: ({ goalId: string } & Record<'de' | 'en', MapPracticeExercise>)[]
+}
+
 /** A compact record of actual atomic demand, never a new completion contract. */
 export interface LearningMapRequirement {
   requiredGoalId: string

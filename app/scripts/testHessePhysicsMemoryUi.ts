@@ -15,11 +15,14 @@ import { HESSE_PHYSICS_E_MEMORY_GOAL_ID as memoryId, HESSE_PHYSICS_E1_ASSESSMENT
 const canonical = JSON.parse(await readFile(new URL('../../curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json', import.meta.url), 'utf8')) as SkillLandscape
 const memory = canonical.goals.find(goal => goal.id === memoryId)!
 const assessment = canonical.goals.find(goal => goal.id === examId)!
+const horizontalThrow = canonical.goals.find(goal => goal.id === '89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2')!
+const roadSafety = canonical.goals.find(goal => goal.id === '4a2bf015-052b-4af0-aed7-324259fa1a8a')!
 const nativePhysics = nativeMapLandscapes.find(landscape => landscape.landscapeId === id.physics)!
 const force = nativePhysics.goals.find(goal => goal.id === id.physicsGoal)!
 const energyId = 'fixture-energy'
 const landscapes: SkillLandscape[] = [nativeMapLandscapes[0], { ...nativePhysics, goals: [
-  { ...nativePhysics.goals[0], contains: [force.id, energyId, memoryId, examId] }, force,
+  { ...nativePhysics.goals[0], contains: [force.id, energyId, memoryId, examId, horizontalThrow.id, roadSafety.id] }, force,
+  { ...horizontalThrow, requires: [] }, { ...roadSafety, requires: [] },
   { ...force, id: energyId, title: 'Energie erklären' }, { ...memory, requires: [] }, { ...assessment, requires: [] },
 ] }]
 const phaseId = 'composition:de-he-gym-sekii-physics-gk:structure:physics-e-phase'
@@ -29,7 +32,10 @@ const view = { viewFormatVersion: '1.2', viewId: 'de-he-gym-sekii-physics-gk', l
   scope: { schoolForm: 'Gymnasium', jurisdiction: 'DE-HE', stage: 'Sekundarstufe II', durationModel: 'G9' }, rootNodes: [
     { kind: 'structure', id: 'physics-sekii-gk', label: 'Sekundarstufe II', children: [
       { kind: 'structure', id: 'physics-e-phase', label: 'Einführungsphase', children: [
-        { kind: 'structure', id: 'physics-e1-motion', label: 'E.1 Bewegungen und ihre Beschreibung', children: [{ kind: 'goalEntry', goalId: force.id }] },
+        // This partial E.1 projection contains the throw, while the source also offers road safety.
+        { kind: 'structure', id: 'physics-e1-motion', label: 'E.1 Bewegungen und ihre Beschreibung', children: [
+          { kind: 'goalEntry', goalId: force.id }, { kind: 'goalEntry', goalId: horizontalThrow.id },
+        ] },
         { kind: 'structure', id: 'physics-e2-newton-and-conservation', label: 'E.2 Energie', children: [{ kind: 'goalEntry', goalId: energyId }] },
         { kind: 'structure', id: 'physics-he-ephase-cross-topic-assessments', label: 'Themenübergreifende Prüfungen', children: [{ kind: 'goalEntry', goalId: examId }] },
         { kind: 'goalEntry', goalId: memoryId },
@@ -85,7 +91,7 @@ try {
       'e1-b': { id: 'e1-b', interval: 1, repetition: 1, ef: 2.5, nextReview: futureTopic ? Date.now() + 86_400_000 : 0, verifiedRecall }, 'e2-a': outside,
     }
     const learnerState = { activeGoal: { id: force.id }, frontier: [{ id: force.id }],
-      goals: { planned: [{ id: id.physicsRoot }], mastered_count: 0, total_count: 4, personalized: { mastered_atomic: 0, total_atomic: 4 } },
+      goals: { planned: [{ id: id.physicsRoot }], mastered_count: 0, total_count: 6, personalized: { mastered_atomic: 0, total_atomic: 5 } },
       stateMachine: { activeGoal: { id: force.id }, goalOptions: [], requiredAction: null } }
     page.on('pageerror', error => errors.push(error.message))
     await context.route('**/*', async route => {
@@ -132,7 +138,7 @@ try {
       unexpected.push(`${request.method()} ${path}`)
       return json({ error: 'Unexpected isolated browser request' }, 404)
     })
-    await page.goto(`${origin}/learner/${force.id}?l=${id.root}`)
+    await page.goto(`${origin}/learner/${force.id}?l=${id.root}`, { waitUntil: 'domcontentloaded' })
     await page.getByTestId('learner-current-goal').getByRole('heading', { name: force.title, exact: true }).waitFor({ timeout: 30_000 })
     const opener = page.getByTestId('learner-main-content').getByTestId('learner-learning-map-open')
     await opener.click()
@@ -143,7 +149,55 @@ try {
       throw error
     })
     const practice = dialog.getByRole('button', { name: 'Lernkarten zu E.1 üben', exact: true })
+    if (!futureTopic && !switchDuringSave) {
+      await dialog.getByRole('heading', { name: 'Ein Ball rollt vom Tisch. Wo landet er?', exact: true }).waitFor()
+      const throwNode = dialog.locator(`[data-entry-id="${horizontalThrow.id}"]`)
+      const openExercise = throwNode.getByRole('button', { name: 'Üben: Wo muss die Bodenmarke liegen?', exact: true })
+      await openExercise.waitFor()
+      assert.equal(await dialog.getByTestId('learning-map-practice-action').count(), 1,
+        'the partial board shows only its own exercise, even when the landscape also contains another anchor')
+      assert.equal(await dialog.locator(`[data-entry-id="${roadSafety.id}"]`).count(), 0)
+      await openExercise.focus()
+      await page.keyboard.press('Enter')
+      const exercise = page.getByRole('dialog', { name: 'Wo muss die Bodenmarke liegen?', exact: true })
+      await exercise.waitFor()
+      assert.equal(await exercise.evaluate(element => element.contains(document.activeElement)), true)
+      await exercise.getByText('Hinweis anzeigen', { exact: true }).click()
+      assert(await exercise.getByText('Wie ändern sich die beiden Wege', { exact: false }).isVisible())
+      const solution = exercise.getByText('Die Marke gehört also 52 cm', { exact: false })
+      assert.equal(await solution.isVisible(), false)
+      await exercise.getByText('Lösung vergleichen', { exact: true }).click()
+      assert(await solution.isVisible())
+      if (width === 390) await exercise.getByRole('button', { name: 'Übung schließen', exact: true }).click()
+      else await page.keyboard.press('Escape')
+      await exercise.waitFor({ state: 'hidden' })
+      assert(await dialog.isVisible(), 'closing the exercise leaves the learning map open')
+      assert(await openExercise.evaluate(element => document.activeElement === element), 'focus returns to the exercise button')
+      if (width === 390) {
+        const list = dialog.getByTestId('learning-map-compact-list')
+        assert(await list.isVisible())
+        const buttonBounds = await openExercise.boundingBox()
+        assert(buttonBounds && buttonBounds.height >= 44 && buttonBounds.width >= 44)
+        await openExercise.click()
+        await exercise.waitFor()
+        assert.equal(await solution.isVisible(), false, 'a new attempt opens without the solution')
+        await page.keyboard.press('Escape')
+        await exercise.waitFor({ state: 'hidden' })
+        await dialog.getByRole('button', { name: 'Grafische Karte anzeigen' }).click()
+        await list.waitFor({ state: 'hidden' })
+        await dialog.getByRole('button', { name: 'Zielliste anzeigen' }).click()
+        await list.waitFor()
+      }
+      assert.deepEqual(writes, [], 'reading and checking an exercise does not save a result')
+    }
+    assert(await dialog.locator(`[data-entry-id="${examId}"]`).getByText('Prüfung der E-Phase').isVisible())
+    await dialog.locator(`[data-entry-id="${memoryId}"]`).getByText('Aus dem Deck der E-Phase').waitFor()
     await practice.waitFor()
+    for (const resource of [memoryId, examId]) {
+      const node = dialog.locator(`[data-entry-id="${resource}"]`)
+      assert.equal(await node.evaluate(element => getComputedStyle(element).opacity), '1',
+        'both resource labels remain readable while another goal is selected')
+    }
     await practice.focus()
     await page.keyboard.press('Enter')
     await dialog.waitFor({ state: 'hidden' })
@@ -207,7 +261,7 @@ try {
     await page.getByRole('button', { name: 'Zur Auswahl', exact: true }).click()
     await opener.click()
     await page.locator(`.lum-canvas[data-scope-id="${phaseId}"][aria-busy="false"]`).waitFor()
-    assert.equal(await dialog.locator(`[data-entry-id="${memoryId}"]`).count(), 0)
+    assert.equal(await dialog.locator(`[data-entry-id="${memoryId}"]`).count(), 1)
     await dialog.getByRole('button', { name: 'Lernkarten zur E-Phase üben', exact: true }).click()
     await dialog.waitFor({ state: 'hidden' })
     // E.1 is now scheduled; the complete deck correctly offers the remaining E.2 card.
@@ -238,7 +292,7 @@ try {
     assert.deepEqual(errors, [])
     await context.close()
   }
-  console.log('Hessen Physics memory UI passed: keyboard/topic practice, original progress/state, complete deck, named assessment, desktop/mobile.')
+  console.log('Hessen Physics UI passed: scoped E.1 exercise, dialog focus, keyboard/topic practice, original progress/state, complete deck, named assessment, desktop/mobile.')
 } finally {
   await browser.close()
   await server.close()

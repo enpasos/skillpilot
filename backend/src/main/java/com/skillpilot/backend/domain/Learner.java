@@ -67,6 +67,7 @@ public class Learner {
     @Column(name = "show_goal_visualizations_in_chat", nullable = false)
     private Boolean showGoalVisualizationsInChat = true;
 
+    /** Retained for signed learner backup compatibility. Direct entry is chosen per assessment. */
     @Column(name = "use_assessment_shortcuts", nullable = false)
     private Boolean useAssessmentShortcuts = true;
 

@@ -91,7 +91,9 @@ Verdicts are **monotone**. An added edge only enlarges $W(g)$, so a goal that wa
 | Coach | The core context describes the intended subject prerequisites. Personal recommendations use individual evidence including valid recognition under R1–R5. Separate planning release through passed unit versions belongs to the proposal of 19 November. |
 {cols="30%,70%"}
 
-The coach receives titles of goals and mastery states that its context already carries in other places. No chat prose flows back to the backend, and the selection stays with the backend.
+When discussing a specific learning goal, the coach also needs its place in the personal view. In Hesse the active goal “Analyse horizontal projectile motion” belongs under E.1 “Motion and its description” in the introductory phase of Physics. The backend derives the visible placement and direct subject prerequisites from stored state. It needs no conversation transcript for this. A prerequisite may have individual evidence. If that evidence is missing, what the learner already understands is still an open question. If a prerequisite has been waived in the current section, the coach names the section and the documented reason. The work may no longer be needed, or a passed assessment may cover it.
+
+On entering a selected unit, the coach can pick up its opening question. When the learner wants to practise their current goal, the coach uses the same exercise prompt as the map. When the learner asks for flashcards or an assessment, the coach uses the activity offered for that unit. A flashcard round practises the relevant cards in the existing deck. An assessment follows its own completion contract. Browsing the map leaves the conversation on its current goal. During an assessment the coach receives the released task. Subject hints from the learning context belong to the learning conversation.
 
 ### Order of Introduction {#sec:sga-kc-order anchors="order-of-introduction"}
 

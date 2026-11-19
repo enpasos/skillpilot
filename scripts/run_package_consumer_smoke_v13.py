@@ -78,7 +78,7 @@ SHA256_PATTERN = re.compile(r"^[a-f0-9]{64}$")
 # Update them intentionally whenever one of the named helpers changes.
 PINNED_HELPER_SHA256 = {
     "app/scripts/buildPackageConsumerFrontend.ts": "376b6f26df3a502c7b702f8a30761123e9a911862fb49f08cf89109c9e3f630c",
-    "app/vite.config.ts": "5faecb10945093f108049cd632b718ea6f869c64e5ef15f8ee43d119ac30714e",
+    "app/vite.config.ts": "e84b4058e4a060f80d71f5c7a30c37b7e492988dd14008498feecbd330b18803",
     "backend/src/main/resources/action-regression-openapi.yaml": "17f9f7283c13148d3d19fa7c041e56c67938cc3b4ffe3b621a0918d43d805f87",
     "backend/src/main/resources/action-regression-report.html": "a8531a620b3d923cfdc3b9f8839d99d9b60edf01795c33fd84b2572c06ae59fe",
     "backend/src/main/resources/claude-mcp-regression-report.html": "0237929c224ab7cf1e512cfedbb31e2401766d80a4b5e16bc937dcbf5b01addf",

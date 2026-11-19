@@ -160,7 +160,7 @@ For content that needs to be memorized, **spaced repetition** complements work w
 
 **Practice and assessment nodes** lead to independent application. In lower-secondary mathematics, year-level exams are organized under “Exams for Year …”; upper-secondary education adds appropriate course and Abitur exam tasks. Their review status is part of the respective curriculum’s quality assurance. Further task formats, for example for programming, writing, or speaking, can be added.
 
-The **“Offer assessment shortcuts”** setting lets learners attempt offered assessments before preparation. Choosing this route does not certify success. What a passed assessment establishes depends on the performance actually required and its assessment criteria. A written analysis, for example, does not establish that the learner carried out an experiment.
+Learners who already know the topic can go to the unit’s assessment goal and start an available assessment directly. Their performance provides the evidence. What a passed assessment establishes depends on the performance actually required and its assessment criteria. A written analysis, for example, does not establish that the learner carried out an experiment.
 
 A [new completion proposal](https://github.com/enpasos/skillpilot/blob/main/docs/concept/skill-graph/unit-assessment-discussion-2026-11-19.de.md) for subject-specific units is under discussion: learning a unit and demonstrating it directly would lead to the same stated standard. A representative unit pass would be distinct from demonstrated individual goals and an explicitly reviewed release for later learning steps. **The product decision and the corresponding migration are pending.** The current credit described here does not establish this new unit pass.
 

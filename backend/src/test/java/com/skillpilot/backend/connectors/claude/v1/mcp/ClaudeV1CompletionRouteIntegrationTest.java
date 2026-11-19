@@ -229,29 +229,29 @@ class ClaudeV1CompletionRouteIntegrationTest {
         assertThat(learners.getMastery(learnerId).getOrDefault(PREPARATION, 0.0)).isZero();
     }
 
-    @Test void cockpitOptOutInvalidatesAlreadyIssuedExamAndRouteCapabilities() throws Exception {
+    @Test void leavingTheRouteInTheCockpitInvalidatesAlreadyIssuedExamAndRouteCapabilities() throws Exception {
         var pending = context();
         successful(ClaudeV1CompletionContractRegistry.TOOL_CONFIRM,
                 Map.of("receiptCapability", map(pending, "completionContract").get("receiptCapability")));
         String start = choice(context(), "Prüfung direkt versuchen: ");
         successful(ClaudeV1McpContractAdapter.TOOL_CHOOSE_COMPLETION_ROUTE,
-                writeArgs("start-before-opt-out", version(), Map.of("choice", start)));
+                writeArgs("start-before-leaving", version(), Map.of("choice", start)));
         var evaluation = successful(ClaudeV1Contract.TOOL_GET_EXAM_EVALUATION, Map.of("goalId", EXAM));
         String oldRoute = choice(context(), "Prüfung erneut versuchen");
         long before = version();
-        learners.setPreferences(learnerId, null, null, null, null, null, null, false);
+        learners.chooseLevelCompletion(learnerId, new LevelCompletionActionRequest(
+                "leaveProfile", null, null, null, before));
         assertThat(version()).isGreaterThan(before);
         assertThat(map(context(), "levelCompletion")).containsEntry("calculationStatus", "valid")
-                .containsEntry("directAssessmentRunning", false).containsEntry("choices", List.of());
-        assertThat(call(ClaudeV1Contract.TOOL_SET_MASTERY, writeArgs("stale-grade-after-opt-out", before,
+                .containsEntry("directAssessmentRunning", false);
+        assertThat(call(ClaudeV1Contract.TOOL_SET_MASTERY, writeArgs("stale-grade-after-leaving", before,
                 Map.of("goalId", EXAM, "evaluationCapability", evaluation.get("evaluationCapability"), "earnedPoints", 10.0))).isError()).isTrue();
         assertThat(call(ClaudeV1Contract.TOOL_SET_MASTERY, writeArgs("old-evaluation-new-version", version(),
                 Map.of("goalId", EXAM, "evaluationCapability", evaluation.get("evaluationCapability"), "earnedPoints", 10.0))).isError()).isTrue();
         assertThat(call(ClaudeV1McpContractAdapter.TOOL_CHOOSE_COMPLETION_ROUTE,
-                writeArgs("old-route-after-opt-out", version(), Map.of("choice", oldRoute))).isError()).isTrue();
+                writeArgs("old-route-after-leaving", version(), Map.of("choice", oldRoute))).isError()).isTrue();
         assertThat(masteryRepository.findByLearner_SkillpilotId(learnerId)).isEmpty();
         assertThat(learnerRepository.findById(learnerId).orElseThrow().getActiveGoalId()).isNull();
-        learners.setPreferences(learnerId, null, null, null, null, null, null, true);
         var learner = learnerRepository.findById(learnerId).orElseThrow();
         assertThat(learner.getCompletionWorkflow()).isNull();
         learners.chooseLevelCompletion(learnerId, new LevelCompletionActionRequest(
@@ -260,13 +260,14 @@ class ClaudeV1CompletionRouteIntegrationTest {
         assertThat(masteryRepository.findByLearner_SkillpilotId(learnerId)).isEmpty();
     }
 
-    @Test void aSessionStartedWhileOptedOutCanUseFreshChoicesAfterReEnabling() throws Exception {
-        learners.setPreferences(learnerId, null, null, null, null, null, null, false);
+    @Test void aFreshSessionWithALegacyOptOutCanUseAnOfferedAssessment() throws Exception {
+        var legacy = learnerRepository.findById(learnerId).orElseThrow();
+        legacy.setUseAssessmentShortcuts(false);
+        learnerRepository.saveAndFlush(legacy);
         session = sessions.createFirstPartyLaunch(learnerId, new ClaudeV1CoachStartRequest("de", "web-start")).learningSessionId();
         authenticate();
         assertThat(map(context(), "levelCompletion")).containsEntry("calculationStatus", "valid")
-                .containsEntry("directAssessmentRunning", false).containsEntry("choices", List.of());
-        learners.setPreferences(learnerId, null, null, null, null, null, null, true);
+                .containsEntry("directAssessmentRunning", false);
         var learner = learnerRepository.findById(learnerId).orElseThrow();
         learners.chooseLevelCompletion(learnerId, new LevelCompletionActionRequest(
                 "selectProfile", PROFILE, null, null, learner.getCoachStateRevision()));

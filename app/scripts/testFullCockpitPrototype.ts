@@ -198,7 +198,7 @@ try {
   await sidebar.getByRole('button', { name: 'Einstellungen öffnen', exact: true }).click()
   const settings = page.getByRole('dialog', { name: 'Mein Lehrplan', exact: true })
   await settings.waitFor()
-  for (const label of ['Nach Plan lernen', 'Strict Mode aktivieren', 'Prüfungsabkürzungen anbieten', 'Lernzielbilder im Chat anzeigen']) {
+  for (const label of ['Nach Plan lernen', 'Strict Mode aktivieren', 'Angerechnete Lernziele weiter einplanen', 'Lernzielbilder im Chat anzeigen']) {
     assert.equal(await settings.getByRole('checkbox', { name: new RegExp(`^${label}(?:\\s|$)`) }).count(), 1, label)
   }
   await settings.getByRole('radio', { name: '1 Woche', exact: true }).check()

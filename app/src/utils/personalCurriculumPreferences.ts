@@ -8,7 +8,6 @@ export interface PersonalCurriculumPreferences {
   learningPlanPeriodBasis: 'DAY' | 'WEEK'
   learningPlanCountOnlyExplicitGoals: boolean
   strictMode: boolean
-  useAssessmentShortcuts: boolean
   showGoalVisualizationsInChat: boolean
 }
 
@@ -19,7 +18,6 @@ export const learnerPreferences = (learner: Learner | null) => ({
   learningPlanPeriodBasis: learner?.learningPlanPeriodBasis ?? 'WEEK',
   learningPlanCountOnlyExplicitGoals: learner?.learningPlanCountOnlyExplicitGoals ?? false,
   strictMode: learner?.strictMode ?? false,
-  useAssessmentShortcuts: learner?.useAssessmentShortcuts ?? true,
   showGoalVisualizationsInChat: learner?.showGoalVisualizationsInChat ?? true,
 })
 

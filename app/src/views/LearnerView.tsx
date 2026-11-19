@@ -2998,7 +2998,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
           learningPlanPeriodBasis: preferences.learningPlanPeriodBasis,
           learningPlanCountOnlyExplicitGoals: preferences.learningPlanCountOnlyExplicitGoals,
           strictMode: preferences.strictMode,
-          useAssessmentShortcuts: preferences.useAssessmentShortcuts,
           showGoalVisualizationsInChat: preferences.showGoalVisualizationsInChat,
         } : prev)
       }
@@ -3415,8 +3414,9 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     }
   }, [learnerDataManagementCopy.deleteMissing, learnerDataManagementCopy.deleteSuccess, onLogout, onNotify, skillpilotId])
 
+  const completionRouteActive = hasActiveCompletionRoute(levelCompletion)
   const showLearningProgress = !isGuidedPersonalizationRequired
-    && !hasActiveCompletionRoute(levelCompletion)
+    && !completionRouteActive
     && (scopedLearningPlans?.followLearningPlans
       ?? (learnerData?.skillpilotId === skillpilotId && learnerData?.followLearningPlans)) === true
   const activeGoalTitle = effectiveActiveGoalId ? goalIndexAll.get(effectiveActiveGoalId)?.title : undefined
@@ -3658,8 +3658,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         onTouchEnd={finishMobileEdgeSwipe}
         onTouchCancel={() => { mobileEdgeTouchStart.current = null }}
       >
-        {/* Cockpit actions remain reachable above the assessment shortcuts. Lernkarte stays directly
-            beside Lernen starten at the top right; on narrow screens only the feedback link wraps. */}
         <div className="mb-4 flex w-full flex-wrap items-center justify-end gap-2">
           <LearnerFeedbackLink />
           <div className="flex items-center gap-2">
@@ -3677,14 +3675,14 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             <MapIcon size={16} aria-hidden="true" />
             <span className="max-[359px]:sr-only">{localizedLanguage === 'en' ? 'Learning map' : 'Lernkarte'}</span>
           </button>
-          <Link to={buildCompletionRouteStartHref(hasActiveCompletionRoute(levelCompletion) ? levelCompletion?.profileId : undefined)} data-testid="learner-coach-start-link"
+          <Link to={buildCompletionRouteStartHref(completionRouteActive ? levelCompletion?.profileId : undefined)} data-testid="learner-coach-start-link"
             title={t.startPage.login.coachProviderLabel}
             className="inline-flex min-h-11 items-center gap-2 rounded-full border border-sky-500 bg-sky-600 px-4 py-2 text-sm font-semibold text-white hover:bg-sky-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500">
             <Send size={16} aria-hidden="true" />{t.startPage.cards.gpt.title}
           </Link>
           </div>
         </div>
-        {levelCompletion || completionDiscoveryRequest ? <div ref={completionEntryRef} className="w-full">
+        {completionRouteActive || completionDiscoveryRequest ? <div ref={completionEntryRef} className="w-full">
           {levelCompletion && (!isGuidedPersonalizationRequired || learnerStateLoadStatus === 'error') ? (
             <LevelCompletionCard
               key={`${learnerStateScopeKey}:${levelCompletion.profileId ?? 'selection'}`}
@@ -3704,16 +3702,14 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
           ) : completionDiscoveryRequest ? (
             <section data-testid="completion-shortcuts-unavailable" className="mb-4 rounded-2xl border border-border-color bg-sidebar-bg p-4 sm:p-5">
               <h2 data-completion-shortcuts-heading tabIndex={-1} className="font-semibold text-text-primary focus:outline-none">
-                {localizedLanguage === 'en' ? 'Assessment shortcuts' : 'Prüfungsabkürzungen'}
+                {localizedLanguage === 'en' ? 'Assessments' : 'Prüfungen'}
               </h2>
               <p role="status" className="mt-3 text-sm text-text-secondary">{
                 learnerStateLoadStatus === 'loading' || isPersonalConfigHydrating
                   ? (localizedLanguage === 'en' ? 'Loading the current choices…' : 'Die aktuellen Möglichkeiten werden geladen…')
                   : learnerStateLoadStatus === 'error'
                     ? (localizedLanguage === 'en' ? 'The current choices could not be loaded. Please try again.' : 'Die aktuellen Möglichkeiten konnten nicht geladen werden. Bitte versuche es erneut.')
-                    : learnerData?.useAssessmentShortcuts === false
-                      ? (localizedLanguage === 'en' ? 'You have turned off assessment shortcuts. You can enable them in your learning settings; this link does not change your choice.' : 'Du hast Prüfungsabkürzungen ausgeschaltet. Du kannst sie in deinen Lerneinstellungen einschalten; dieser Link ändert deine Wahl nicht.')
-                      : (localizedLanguage === 'en' ? 'No suitable assessment shortcuts are currently available for your Personal Curriculum. You can review your curriculum and learning settings.' : 'Für deinen Persönlichen Lehrplan sind aktuell keine passenden Prüfungsabkürzungen verfügbar. Du kannst deinen Lehrplan und die Lerneinstellungen prüfen.')
+                    : (localizedLanguage === 'en' ? 'No matching assessment is currently available for your Personal Curriculum.' : 'Für deinen Persönlichen Lehrplan ist aktuell keine passende Prüfung verfügbar.')
               }</p>
               <div className="mt-3 flex flex-wrap gap-3">
                 <button type="button" onClick={() => setIsSetupOpen(true)}
@@ -3973,9 +3969,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
                 {selectedGoalAssessments.length > 0 ? <div data-testid="selected-goal-assessment-shortcuts" className="mt-3 flex flex-col items-start gap-2 text-sm">
                   {selectedGoalAssessments.map(({ profileId, profileTitle, assessment }) => <div key={profileId} className="flex flex-wrap items-center gap-3">
-                    <span className="text-text-secondary">{profileId.startsWith('automatic:')
-                      ? (localizedLanguage === 'en' ? 'Assessment in ' : 'Prüfung im Abschnitt ')
-                      : (localizedLanguage === 'en' ? 'Assessment shortcut for ' : 'Prüfungsabkürzung für ')}
+                    <span className="text-text-secondary">{localizedLanguage === 'en' ? 'Assessment in ' : 'Prüfung im Abschnitt '}
                       <InlineMathText text={completionLabel(profileTitle, localizedLanguage)} />
                     </span>
                     {assessment.mastered ? <span>{localizedLanguage === 'en' ? 'Achieved' : 'Geschafft'}</span>
@@ -4143,10 +4137,11 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         className="learner-learning-map-dialog"
         aria-labelledby="learner-learning-map-title"
         onCancel={(event) => {
+          if (event.target !== event.currentTarget) return
           event.preventDefault()
           closeLearningMap()
         }}
-        onClose={finishLearningMapSession}
+        onClose={event => { if (event.target === event.currentTarget) finishLearningMapSession() }}
       >
         <header className="learner-learning-map-header">
           <div className="learner-learning-map-heading">
@@ -4272,8 +4267,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         initialPeriodBasis={learnerData?.learningPlanPeriodBasis}
         initialCountOnlyExplicitGoals={learnerData?.learningPlanCountOnlyExplicitGoals}
         initialStrictMode={learnerData?.strictMode}
-        initialUseAssessmentShortcuts={learnerData?.useAssessmentShortcuts}
-        directAssessmentRunning={levelCompletion?.directAssessmentRunning === true}
         initialShowGoalVisualizationsInChat={learnerData?.showGoalVisualizationsInChat}
         materialSettingsBusy={materialSelectionSaving}
         materialSettings={!isGuidedPersonalizationRequired && guidedPersonalizationGateReason !== 'scopeLoading' ? (

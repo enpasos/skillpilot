@@ -426,6 +426,15 @@ class ClaudeV1McpContractTest {
     }
 
     @Test
+    void explicitUnitRequestsDispatchThroughThePublishedActivity() {
+        String instructions = contractAdapter.serverInstructions().replaceAll("\\s+", " ");
+        assertTrue(instructions.contains("use the published activity action from activeGoalContext or focusedUnitContext"));
+        assertTrue(instructions.contains("use its published prompt for practice"));
+        assertTrue(instructions.contains("copying action.arguments"));
+        assertTrue(instructions.contains("For a cockpit-only activity, offer its cockpit link"));
+    }
+
+    @Test
     void everyToolInputStringHasAnExplicitStructuredPurpose() {
         String instructions = contractAdapter.serverInstructions().replaceAll("\\s+", " ");
         assertTrue(instructions.contains("Keep the private assessment and tool plan out of spoken and written responses"));
@@ -439,7 +448,7 @@ class ClaudeV1McpContractTest {
                 Map.entry(ClaudeV1Contract.TOOL_RESUME_LEARNING_PLAN, Set.of("clientRequestId")),
                 Map.entry(ClaudeV1Contract.TOOL_SWITCH_LEARNING_PLAN_SUBJECT, Set.of("subject", "clientRequestId")),
                 Map.entry(ClaudeV1Contract.TOOL_RENDER_GOAL_VISUALIZATION, Set.of("goalId")),
-                Map.entry(ClaudeV1Contract.TOOL_START_MEMORY_PRACTICE, Set.of("goalId")),
+                Map.entry(ClaudeV1Contract.TOOL_START_MEMORY_PRACTICE, Set.of("goalId", "practiceScopeId")),
                 Map.entry(ClaudeV1Contract.TOOL_REVIEW_MEMORY_PRACTICE_CARD,
                         Set.of("goalId", "cardId", "reviewCapability", "rating", "clientRequestId")),
                 Map.entry(ClaudeV1Contract.TOOL_SET_FOCUS, Set.of("goalIds[]", "clientRequestId")),

@@ -10,15 +10,19 @@ import static org.mockito.Mockito.when;
 
 import com.skillpilot.backend.ai.CoachStateProjection;
 import com.skillpilot.backend.ai.CoachToolFacade;
+import com.skillpilot.backend.api.ActiveGoalContext;
 import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.GoalSourceLink;
 import com.skillpilot.backend.api.LearnerGoals;
 import com.skillpilot.backend.api.LearnerPlanTodayStatus;
 import com.skillpilot.backend.api.LearnerPlanTodayStatusFixtures;
+import com.skillpilot.backend.api.LevelCompletionResponse;
+import com.skillpilot.backend.api.MasteryUpdateResponse;
 import com.skillpilot.backend.api.OrientationOutlook;
 import com.skillpilot.backend.api.PersonalizationPlan;
 import com.skillpilot.backend.api.StateMachineInfo;
 import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
+import com.skillpilot.backend.completion.CompletionCallContext;
 import com.skillpilot.backend.content.ContentMaterialResolver;
 import com.skillpilot.backend.landscape.LandscapeFilter;
 import com.skillpilot.backend.service.learningplan.PeriodBasis;
@@ -33,6 +37,237 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 class ClaudeV1CoachContextProjectorTest {
+
+    @Test
+    void activeUnitContextFollowsConfirmedGoalAndMasterySuccessor() {
+        CoachToolFacade facade = mock(CoachToolFacade.class);
+        ClaudeV1CoachContextProjector projector = new ClaudeV1CoachContextProjector(
+                new CoachStateProjection("https://skillpilot.com"), facade);
+        FrontierGoal active = goal("active", List.of());
+        when(facade.getLearnerState("learner")).thenReturn(stateWithActiveGoal(active));
+        var path = new ActiveGoalContext.UnitPath(List.of("E.1 Bewegungen", "Einführungsphase"), true, false);
+        var need = new ActiveGoalContext.Prerequisite("speed", "Geschwindigkeit aus Daten bestimmen", true);
+        var introduction = new ActiveGoalContext.UnitIntroduction("E.1 Bewegungen", "Wo landet der Ball?", "Bewegungen vorhersagen");
+        var exercise = new ActiveGoalContext.PracticeExercise("Wo muss die Bodenmarke liegen?", "Der Ball verlässt den Tisch waagerecht.");
+        var cards = new ActiveGoalContext.Activity("cards", "Lernkarten E-Phase", "memory", "E.1 Bewegungen", "unitPractice", "physics-e1-motion");
+        when(facade.getActiveGoalContext("learner", "active", 10, "de", Set.of(), true))
+                .thenReturn(new ActiveGoalContext("active", "E", List.of(path), List.of(need), introduction, List.of(cards), exercise));
+
+        Map<?, ?> block = (Map<?, ?>) projector.projectContext("learner", 10, "de").get("activeGoalContext");
+        assertNotNull(block);
+        assertEquals("active", block.get("goalId"));
+        assertEquals(List.of(path), block.get("unitPaths"));
+        assertEquals(List.of(Map.of("title", need.title(), "recorded", true)), block.get("prerequisites"));
+        assertEquals(introduction, block.get("unitIntroduction"));
+        assertEquals(exercise, block.get("practiceExercise"));
+        Map<?, ?> cardOption = (Map<?, ?>) ((List<?>) block.get("activities")).getFirst();
+        assertEquals(Map.of("tool", "start_skillpilot_memory_practice", "arguments", Map.of(
+                "goalId", "cards", "expectedStateVersion", 10L, "practiceScopeId", "physics-e1-motion")), cardOption.get("action"));
+        assertFalse(cardOption.containsKey("cockpitUrl"));
+
+        FrontierGoal successor = goal("next", List.of());
+        when(facade.getActiveGoalContext("learner", "next", 11, "de", Set.of(), true))
+                .thenReturn(new ActiveGoalContext("next", "E", List.of(path), List.of(), null, List.of()));
+        var update = new MasteryUpdateResponse(true, "active", 1.0, List.of(active, successor),
+                List.of(), "TEACHING", successor, null, null);
+        var nextContext = projector.projectMasteryContext("learner", 11, "de", null, update);
+        assertEquals("next", ((Map<?, ?>) nextContext.get("activeGoalContext")).get("goalId"));
+        assertEquals(List.of(), nextContext.get("frontier"));
+        assertFalse(nextContext.get("activeGoalContext").toString().contains(need.title()));
+    }
+
+    @Test
+    void unitAssessmentUsesOnlyItsUniquePublishedDirectChoiceOrOneOrdinaryRoute() {
+        CoachToolFacade facade = mock(CoachToolFacade.class);
+        ClaudeV1CoachContextProjector projector = new ClaudeV1CoachContextProjector(
+                new CoachStateProjection("https://skillpilot.com"), facade);
+        FrontierGoal active = goal("active", List.of());
+        var exam = new LevelCompletionResponse.Assessment("unit-exam", Map.of("de", "Bewegungsanalyse und freier Fall"),
+                false, true, null);
+        var other = new LevelCompletionResponse.Assessment("other-exam", Map.of("de", "Eine andere Prüfung"),
+                false, true, null);
+        var duplicate = new LevelCompletionResponse.Assessment("unit-exam", Map.of("de", "Dieselbe Prüfung im anderen Abschnitt"),
+                false, true, null);
+        var state = stateWithActiveGoal(active);
+        when(facade.getLearnerState("learner")).thenReturn(
+                withAssessmentChoices(state, 10, List.of(other, exam)),
+                withAssessmentChoices(state, 10, List.of(other, exam, duplicate)),
+                withAssessmentChoices(state, 9, List.of(exam)),
+                withAssessmentChoices(state, 10, List.of(other)));
+        var activity = new ActiveGoalContext.Activity("unit-exam", "Bewegungsanalyse und freier Fall", "assessment",
+                "E.1 Bewegungen", "frontier", null);
+        when(facade.getActiveGoalContext("learner", "active", 10, "de", Set.of(), true))
+                .thenReturn(new ActiveGoalContext("active", "E", List.of(), List.of(), null, List.of(activity)));
+
+        var direct = firstUnitActivity(CompletionCallContext.with(ClaudeV1CompletionProjectionTest.supported(),
+                () -> projector.projectContext("learner", 10, "de")));
+        assertEquals("directAssessment", direct.get("route"));
+        assertEquals(Map.of("tool", "choose_skillpilot_completion_route", "arguments", Map.of(
+                "choice", "Prüfung direkt versuchen: Bewegungsanalyse und freier Fall", "expectedStateVersion", 10L)),
+                direct.get("action"));
+        assertFalse(direct.containsKey("cockpitUrl"));
+
+        for (int i = 0; i < 3; i++) {
+            var fallback = firstUnitActivity(CompletionCallContext.with(ClaudeV1CompletionProjectionTest.supported(),
+                    () -> projector.projectContext("learner", 10, "de")));
+            assertEquals("frontier", fallback.get("route"));
+            assertEquals(Map.of("tool", "set_skillpilot_active_goal", "arguments", Map.of(
+                    "goalId", "unit-exam", "expectedStateVersion", 10L, "redirect", true)), fallback.get("action"));
+            assertFalse(fallback.containsKey("cockpitUrl"));
+        }
+
+        when(facade.getLearnerState("learner")).thenReturn(withAssessmentChoices(state, 10, List.of(exam)));
+        var cockpitActivity = new ActiveGoalContext.Activity(activity.goalId(), activity.title(), activity.kind(),
+                activity.sectionTitle(), "cockpit", null);
+        when(facade.getActiveGoalContext("learner", "active", 10, "de", Set.of(), true))
+                .thenReturn(new ActiveGoalContext("active", "E", List.of(), List.of(), null, List.of(cockpitActivity)));
+        var unsupported = firstUnitActivity(projector.projectContext("learner", 10, "de"));
+        assertEquals("cockpit", unsupported.get("route"));
+        assertTrue(unsupported.get("cockpitUrl").toString().contains("goal=unit-exam"));
+        assertFalse(unsupported.containsKey("action"));
+    }
+
+    @Test
+    void followingPlanKeepsExplicitUnitActionsWithAnActiveGoalAndNoExtraFrontier() {
+        CoachToolFacade facade = mock(CoachToolFacade.class);
+        ClaudeV1CoachContextProjector projector = new ClaudeV1CoachContextProjector(
+                new CoachStateProjection("https://skillpilot.com"), facade);
+        var assessment = new LevelCompletionResponse.Assessment("unit-exam", Map.of("de", "Bewegungsanalyse und freier Fall"),
+                false, true, null);
+        var active = goal("active", List.of());
+        var unrelated = goal("unrelated-frontier", List.of());
+        when(facade.getLearnerState("learner")).thenReturn(
+                withAssessmentChoices(state(active, List.of(unrelated), "teachActiveGoal"), 10, List.of(assessment)),
+                withAssessmentChoices(state(null, List.of(unrelated), "setActiveGoal"), 11, List.of(assessment)));
+        when(facade.getLearningPlanTodayStatus("learner", "de")).thenReturn(dailyStatus(true, false, 0, 0, 0));
+        var flashcards = new ActiveGoalContext.Activity("cards", "Lernkarten E-Phase", "memory", "E.1", "unitPractice", "physics-e1-motion");
+        var exam = new ActiveGoalContext.Activity("unit-exam", "Bewegungsanalyse und freier Fall", "assessment", "E.1", "cockpit", null);
+        var unrelatedCockpitLink = new ActiveGoalContext.Activity("other", "Andere Prüfung", "assessment", "E.1", "cockpit", null);
+        when(facade.getActiveGoalContext("learner", "active", 10, "de", Set.of(), true)).thenReturn(
+                new ActiveGoalContext("active", "E", List.of(), List.of(), null, List.of(flashcards, exam, unrelatedCockpitLink)));
+
+        var activeContext = CompletionCallContext.with(ClaudeV1CompletionProjectionTest.supported(),
+                () -> projector.projectContext("learner", 10, "de"));
+        assertEquals(List.of(), activeContext.get("frontier"));
+        var unitContext = (Map<?, ?>) activeContext.get("activeGoalContext");
+        List<?> activities = (List<?>) unitContext.get("activities");
+        assertEquals(List.of("unitPractice", "directAssessment"), activities.stream()
+                .map(option -> ((Map<?, ?>) option).get("route")).toList());
+
+        var finishedContext = CompletionCallContext.with(ClaudeV1CompletionProjectionTest.supported(),
+                () -> projector.projectContext("learner", 11, "de"));
+        assertEquals(List.of(), finishedContext.get("frontier"));
+        assertFalse(finishedContext.containsKey("activeGoalContext"));
+        assertFalse(finishedContext.containsKey("focusedUnitContext"));
+    }
+
+    @Test
+    void prerequisitesKeepStoredEvidenceAndExactRevisionScopedWaiversSeparate() {
+        CoachToolFacade facade = mock(CoachToolFacade.class);
+        ClaudeV1CoachContextProjector projector = new ClaudeV1CoachContextProjector(
+                new CoachStateProjection("https://skillpilot.com"), facade);
+        var active = goal("active", List.of());
+        var prerequisites = List.of(
+                new ActiveGoalContext.Prerequisite("own-goal", "Einzelbeleg", true),
+                new ActiveGoalContext.Prerequisite("no-demand-goal", "Offene Vorbereitung", false),
+                new ActiveGoalContext.Prerequisite("assessed-goal", "Projektion", false),
+                new ActiveGoalContext.Prerequisite("different-goal", "Projektion", false));
+        var detail = new ActiveGoalContext("active", "E", List.of(), prerequisites, null, List.of());
+        when(facade.getActiveGoalContext("learner", "active", 10, "de", Set.of(), true)).thenReturn(detail);
+        when(facade.getActiveGoalContext("learner", "active", 10, "de", Set.of(), false)).thenReturn(detail);
+
+        var noDemand = new LevelCompletionResponse.WaiverDetail("no-demand-goal", Map.of("de", "Offene Vorbereitung"),
+                "no_remaining_demand", List.of(), 0);
+        var assessment = new LevelCompletionResponse.AssessmentReference("passed-exam", Map.of("de", "Projektion prüfen"));
+        var assessmentWaiver = new LevelCompletionResponse.WaiverDetail("assessed-goal", Map.of("de", "Projektion"),
+                "reviewed-projection-rule", List.of(assessment), 1);
+        var notPublished = new LevelCompletionResponse.WaiverDetail("different-goal", Map.of("de", "Projektion"),
+                "reviewed-other-rule", List.of(assessment), 1);
+        var automatic = new LevelCompletionResponse("valid", "scope-context", "automatic:overview", "1", "generation", 10,
+                Map.of("de", "Mein Plan"), null, 1, 1, 2, 4, 0, 0, List.of("no-demand-goal"), List.of(), List.of(),
+                null, false, null, List.of()).withWaiverDetails(List.of(noDemand));
+        var reviewed = new LevelCompletionResponse("valid", "reviewed-context", "reviewed-section", "1", "generation", 10,
+                Map.of("de", "Der geprüfte Abschnitt"), null, 1, 1, 2, 4, 1, 1, List.of("assessed-goal"), List.of(), List.of(),
+                "required", false, null, List.of()).withWaiverDetails(List.of(assessmentWaiver, notPublished));
+        var stale = new LevelCompletionResponse("valid", "stale-context", "automatic:overview", "1", "generation", 9,
+                Map.of("de", "Alter Plan"), null, 1, 1, 2, 4, 0, 0, List.of("no-demand-goal"), List.of(), List.of(),
+                null, false, null, List.of()).withWaiverDetails(List.of(noDemand));
+        var state = stateWithActiveGoal(active);
+        when(facade.getLearnerState("learner")).thenReturn(
+                withCompletion(state, automatic), withCompletion(state, reviewed), withCompletion(state, stale));
+
+        var recorded = Map.of("title", "Einzelbeleg", "recorded", true);
+        var open = Map.of("title", "Offene Vorbereitung", "recorded", false);
+        var ordinary = Map.of("title", "Projektion", "recorded", false);
+        var noDemandEntry = Map.of("title", "Offene Vorbereitung", "recorded", false, "scopeWaiver",
+                Map.of("reason", "no_remaining_demand", "sectionTitle", "Mein Plan"));
+        var assessmentEntry = Map.of("title", "Projektion", "recorded", false, "scopeWaiver",
+                Map.of("reason", "assessment", "sectionTitle", "Der geprüfte Abschnitt"));
+        assertEquals(List.of(recorded, noDemandEntry, ordinary, ordinary),
+                directPrerequisites(projector.projectContext("learner", 10, "de")));
+        assertEquals(List.of(recorded, open, assessmentEntry, ordinary), directPrerequisites(CompletionCallContext.with(
+                ClaudeV1CompletionProjectionTest.supported(), () -> projector.projectContext("learner", 10, "de"))));
+        assertEquals(List.of(recorded, open, ordinary, ordinary),
+                directPrerequisites(projector.projectContext("learner", 10, "de")));
+    }
+
+    private static Object directPrerequisites(Map<String, Object> context) {
+        return ((Map<?, ?>) context.get("activeGoalContext")).get("prerequisites");
+    }
+
+    private static Map<?, ?> firstUnitActivity(Map<String, Object> context) {
+        return (Map<?, ?>) ((List<?>) ((Map<?, ?>) context.get("activeGoalContext")).get("activities")).getFirst();
+    }
+
+    private static UnifiedLearnerStateResponse withAssessmentChoices(UnifiedLearnerStateResponse state, long revision,
+            List<LevelCompletionResponse.Assessment> assessments) {
+        var overview = new LevelCompletionResponse("valid", "context", "automatic:overview", "1", "generation", revision,
+                Map.of("de", "Meine Lernziele"), false, 0, 0, 1, 1, 0, 1, List.of(), assessments, List.of(),
+                null, false, null, List.of());
+        return withCompletion(state, overview);
+    }
+
+    private static UnifiedLearnerStateResponse withCompletion(UnifiedLearnerStateResponse state, LevelCompletionResponse overview) {
+        return new UnifiedLearnerStateResponse(state.skillpilotId(), state.curriculum(), state.frontier(), state.goals(),
+                state.nextAllowedActions(), state.activeFilters(), state.copySources(), state.learningState(),
+                state.activeGoal(), state.stateMachine(), overview);
+    }
+
+    @Test
+    void examContextSuppressesAllInstructionalEnrichment() {
+        CoachToolFacade facade = mock(CoachToolFacade.class);
+        ClaudeV1CoachContextProjector projector = new ClaudeV1CoachContextProjector(
+                new CoachStateProjection("https://skillpilot.com"), facade);
+        var exam = new FrontierGoal("exam", "Prüfung", "", "atomic", "exam", "Active",
+                List.of(), List.of(), null, null, null, null);
+        when(facade.getLearnerState("learner")).thenReturn(stateWithActiveGoal(exam));
+        when(facade.getActiveGoalContext("learner", "exam", 10, "de", Set.of(), false))
+                .thenReturn(new ActiveGoalContext("exam", "E", List.of(new ActiveGoalContext.UnitPath(List.of("vertraulich"), true, false)),
+                        List.of(new ActiveGoalContext.Prerequisite("hidden", "vertraulicher Hinweis", true)),
+                        new ActiveGoalContext.UnitIntroduction("E.1", "Frage", "Versprechen"), List.of(),
+                        new ActiveGoalContext.PracticeExercise("Übung", "Aufgabenstellung")));
+
+        assertEquals(Map.of("goalId", "exam", "phase", "E"),
+                projector.projectContext("learner", 10, "de").get("activeGoalContext"));
+    }
+
+    @Test
+    void verifiedFocusCanShowAnIntroductionBeforeAnyGoalIsActive() {
+        CoachToolFacade facade = mock(CoachToolFacade.class);
+        ClaudeV1CoachContextProjector projector = new ClaudeV1CoachContextProjector(
+                new CoachStateProjection("https://skillpilot.com"), facade);
+        when(facade.getLearnerState("learner")).thenReturn(state(null, List.of(), "setActiveGoal"));
+        var intro = new ActiveGoalContext.UnitIntroduction("E.1", "Wo landet der Ball?", "Bewegungen vorhersagen");
+        when(facade.getActiveGoalContext("learner", null, 10, "de", Set.of(), true))
+                .thenReturn(new ActiveGoalContext(null, null, List.of(), List.of(), intro, List.of(),
+                        new ActiveGoalContext.PracticeExercise("Übung", "Aufgabenstellung")));
+
+        var focused = projector.projectContext("learner", 10, "de");
+        assertNull(focused.get("activeGoal"));
+        assertFalse(focused.containsKey("activeGoalContext"));
+        assertEquals(Map.of("unitIntroduction", intro), focused.get("focusedUnitContext"));
+        assertFalse(projector.projectContext("learner", 11, "de").containsKey("focusedUnitContext"));
+    }
 
     @Test
     void optionalMaterialsAreActiveGoalOnlyAndDisappearImmediatelyAfterDeactivation() {

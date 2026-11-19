@@ -492,6 +492,11 @@ class CompositionViewServiceTest {
                         "requires-decoy",
                         structuralGoals))
                 .isEmpty();
+        assertThat(service.findLearnerFacingFocusAncestorPaths("focus-path-view", "direct-leaf", structuralGoals))
+                .extracting(path -> path.stream().map(CompositionViewService.CompositionStructureResolution::label).toList())
+                .containsExactly(List.of("Direct inner", "Outer"), List.of("Unrelated canonical parent", "Subtree root", "Outer"));
+        assertThat(service.findLearnerFacingFocusAncestorPaths("focus-path-view", "requires-decoy", structuralGoals))
+                .isEmpty();
         assertThat(service.findLearnerFacingFocusAncestors(
                         "focus-path-view",
                         "composition:other-view:structure:direct-inner",

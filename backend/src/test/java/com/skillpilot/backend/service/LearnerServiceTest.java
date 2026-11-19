@@ -350,11 +350,11 @@ public class LearnerServiceTest {
         mac.init(new javax.crypto.spec.SecretKeySpec(secret.getBytes(java.nio.charset.StandardCharsets.UTF_8), "HmacSHA256"));
         String signature = java.util.HexFormat.of().formatHex(mac.doFinal(oldPayload.getBytes(java.nio.charset.StandardCharsets.UTF_8)));
         var oldData = objectMapper.readValue(oldPayload, com.skillpilot.backend.api.LearnerDataDTO.class);
-        learnerService.setPreferences(learnerId, null, null, null, null, null, null, null, true);
+        learnerService.setPreferences(learnerId, null, null, null, null, null, null, true);
         learnerService.importLearner(learnerId, new com.skillpilot.backend.api.SignedLearnerDataDTO(oldData, signature));
         assertThat(learnerService.getLearner(learnerId).getLearningPlanCountOnlyExplicitGoals()).isFalse();
 
-        learnerService.setPreferences(source.getSkillpilotId(), null, null, null, null, null, null, null, true);
+        learnerService.setPreferences(source.getSkillpilotId(), null, null, null, null, null, null, true);
         String explicitJson = objectMapper.writeValueAsString(learnerService.exportLearner(source.getSkillpilotId()));
         assertThat(explicitJson).contains("\"learningPlanCountOnlyExplicitGoals\":true");
         learnerService.importLearner(learnerId, objectMapper.readValue(explicitJson,
@@ -369,7 +369,7 @@ public class LearnerServiceTest {
     }
 
     @Test
-    void legacyAssessmentShortcutArchiveSignatureSurvivesAndExplicitOptOutRoundTrips() throws Exception {
+    void legacyAssessmentShortcutArchiveSignaturesAndStoredValuesRoundTrip() throws Exception {
         Learner source = learnerService.createLearner();
         var exported = learnerService.exportLearner(source.getSkillpilotId());
         // Independently reproduce the old format: the property did not exist at all.
@@ -384,7 +384,8 @@ public class LearnerServiceTest {
         learnerService.importLearner(learnerId, new com.skillpilot.backend.api.SignedLearnerDataDTO(imported, oldSignature));
         assertThat(learnerService.getLearner(learnerId).getUseAssessmentShortcuts()).isTrue();
 
-        learnerService.setPreferences(source.getSkillpilotId(), null, null, null, null, null, null, false);
+        source.setUseAssessmentShortcuts(false);
+        learnerRepository.saveAndFlush(source);
         var disabledExport = learnerService.exportLearner(source.getSkillpilotId());
         String disabledJson = objectMapper.writeValueAsString(disabledExport);
         assertThat(disabledJson).contains("\"useAssessmentShortcuts\":false");
@@ -3337,6 +3338,68 @@ public class LearnerServiceTest {
                                 "known")))
                 .isInstanceOf(ResponseStatusException.class)
                 .hasMessageContaining("not due");
+    }
+
+    @Test
+    @Transactional
+    void unitPracticeUsesOnlyTheNineMotionCardsAndKeepsTheActiveGoalAndMastery() {
+        String unit = "physics-e1-motion";
+        String deck = "9f2f5ab8-0ae4-5792-b831-82a05af5895c";
+        String active = "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2";
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
+        learner.setPersonalCurriculum(completedPersonalizationConfig("""
+                {
+                  "a0e13c56-c25f-4742-9272-3a1a603ee52e":{"selected":true,"filterId":"DE-HE","stage":"SekII","durationModel":"G9"},
+                  "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a":{"selected":true,"filterId":"GK"}
+                }
+                """));
+        learner.setFollowLearningPlans(false);
+        learner.setActiveGoalId(null);
+        learnerRepository.saveAndFlush(learner);
+        var start = new MemoryPracticeStartRequest(deck, unit);
+        assertThatThrownBy(() -> learnerService.startMemoryPractice(learnerId, "de", start))
+                .isInstanceOf(ResponseStatusException.class).hasMessageContaining("No flashcard practice");
+        learnerService.setPlannedGoals(learnerId, Set.of("composition:de-he-gym-sekii-physics-gk:structure:" + unit));
+        assertThat(learner.getActiveGoalId()).isNull();
+        var practice = learnerService.startMemoryPractice(learnerId, "de", start);
+        assertThat(practice.cards()).extracting(card -> card.cardId()).containsExactly(
+                "physics_e_cov_001", "physics_e_cov_007", "physics_e_cov_008", "physics_e_cov_009",
+                "physics_e_cov_010", "physics_e_cov_011", "physics_e_cov_012", "physics_e_cov_035", "physics_e_cov_036");
+        assertThat(practice.progress().totalCards()).isEqualTo(9);
+        assertThat(practice.goalTitle()).contains("E.1");
+        learner.setFollowLearningPlans(true);
+        learnerRepository.saveAndFlush(learner);
+        assertThatThrownBy(() -> learnerService.startMemoryPractice(learnerId, "de", start))
+                .isInstanceOf(ResponseStatusException.class).hasMessageContaining("No flashcard practice");
+        learner.setActiveGoalId(active);
+        learner.setLearningState(LearningState.TEACHING);
+        learnerRepository.saveAndFlush(learner);
+        var english = learnerService.startMemoryPractice(learnerId, "en", start);
+        assertThat(english.cards()).extracting(card -> card.cardId())
+                .containsExactlyElementsOf(practice.cards().stream().map(card -> card.cardId()).toList());
+        assertThat(english.cards().getFirst().front()).isNotEqualTo(practice.cards().getFirst().front());
+        assertThatThrownBy(() -> learnerService.startMemoryPractice(learnerId, "de", new MemoryPracticeStartRequest(deck)))
+                .isInstanceOf(ResponseStatusException.class);
+        assertThatThrownBy(() -> learnerService.startMemoryPractice(learnerId, "de", new MemoryPracticeStartRequest(deck, "physics-e4")))
+                .isInstanceOf(ResponseStatusException.class);
+        assertThatThrownBy(() -> learnerService.reviewMemoryPracticeCard(learnerId, "de",
+                new MemoryPracticeReviewRequest(deck, "physics_e_cov_002", "known", unit)))
+                .isInstanceOf(ResponseStatusException.class).hasMessageContaining("not part");
+        var mastery = learnerService.getMastery(learnerId);
+        for (var card : english.cards()) {
+            practice = learnerService.reviewMemoryPracticeCard(learnerId, "de",
+                    new MemoryPracticeReviewRequest(deck, card.cardId(), "known", unit));
+        }
+        assertThat(practice.status()).isEqualTo("complete");
+        assertThat(practice.progress().dueCards()).isZero();
+        assertThat(learner.getActiveGoalId()).isEqualTo(active);
+        assertThat(learnerService.getMastery(learnerId)).isEqualTo(mastery);
+        assertThat(learnerService.getClientState(learnerId, deck).srsState()).hasSize(9);
+        learner.setActiveGoalId("a9562b05-c54d-5635-9244-3f7dd24a8642");
+        learnerRepository.saveAndFlush(learner);
+        assertThatThrownBy(() -> learnerService.startMemoryPractice(learnerId, "de", start))
+                .isInstanceOf(ResponseStatusException.class).hasMessageContaining("No flashcard practice");
     }
 
     @Test

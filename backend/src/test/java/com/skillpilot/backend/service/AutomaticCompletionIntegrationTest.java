@@ -139,22 +139,14 @@ class AutomaticCompletionIntegrationTest {
         assertThat(learner.getActiveGoalId()).isNull();
     }
 
-    @Test void optOutAndIncompletePersonalizationStillBlockAutomaticDirectEntry() throws Exception {
+    @Test void legacyOptOutRetainsTheSameOffersAndIncompletePersonalizationStillBlocksDirectEntry() throws Exception {
         long revision = learner.getCoachStateRevision();
         var enabled = preview();
         learner.setUseAssessmentShortcuts(false);
-        var disabled = preview();
-        assertThat(disabled.calculationStatus()).isEqualTo("valid");
-        assertThat(disabled.profileId()).isEqualTo(DEFAULT_SCOPE);
-        assertThat(disabled.waivedTargetGoalIds()).isEqualTo(enabled.waivedTargetGoalIds());
-        assertThat(disabled.masteredTargetCount()).isEqualTo(enabled.masteredTargetCount());
-        assertThat(disabled.pendingTargetCount()).isEqualTo(enabled.pendingTargetCount());
-        assertThat(disabled.profileOptions()).isEmpty();
-        assertThat(disabled.assessments()).isNotEmpty().allSatisfy(assessment ->
-                assertThat(assessment.startAvailable()).isFalse());
-        assertThatThrownBy(() -> start(SEK1_EXAM)).isInstanceOf(ResponseStatusException.class);
+        var previousOptOut = preview();
+        assertThat(previousOptOut).isEqualTo(enabled);
+        assertThat(previousOptOut.assessments()).anyMatch(exam -> SEK1_EXAM.equals(exam.goalId()) && exam.startAvailable());
         assertUnchanged(revision);
-        learner.setUseAssessmentShortcuts(true);
         var config = (ObjectNode) mapper.readTree(learner.getPersonalCurriculum());
         ((ObjectNode) config.get(CurriculumPersonalizationPlanner.FLOW_STATE_CONFIG_KEY))
                 .put(CurriculumPersonalizationPlanner.MIGRATION_COMPLETED_KEY, false);

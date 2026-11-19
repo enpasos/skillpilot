@@ -3,6 +3,9 @@ package com.skillpilot.backend.landscape;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.service.CompositionViewService;
 import com.skillpilot.backend.service.DeckResourceService;
+import com.skillpilot.backend.service.UnitLearningMaterialService;
+import java.io.IOException;
+import java.nio.file.Path;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -62,5 +65,11 @@ public class RepositoryCurriculumConfiguration {
     @Bean
     DeckResourceService repositoryDeckResourceService(LandscapeProperties properties) {
         return new DeckResourceService(properties);
+    }
+
+    @Bean
+    UnitLearningMaterialService repositoryUnitLearningMaterialService(
+            LandscapeProperties properties, ObjectMapper mapper) throws IOException {
+        return UnitLearningMaterialService.fromRepository(Path.of(properties.getDirectory()), mapper);
     }
 }

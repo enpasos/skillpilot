@@ -7,7 +7,10 @@ import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.ai.CoachToolFacade;
+import com.skillpilot.backend.api.ActiveGoalContext;
 import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.MemoryPracticeCard;
 import com.skillpilot.backend.api.MemoryPracticeProgress;
@@ -18,15 +21,20 @@ import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
 import com.skillpilot.backend.connectors.claude.v1.ClaudeV1Contract;
 import com.skillpilot.backend.connectors.claude.v1.ClaudeV1TestFixtures;
 import com.skillpilot.backend.connectors.claude.v1.ClaudeV1TestProperties;
+import com.skillpilot.backend.connectors.claude.v1.session.ClaudeV1LearningSession;
 import com.skillpilot.backend.connectors.claude.v1.session.ClaudeV1LearningSessionRepository;
+import com.skillpilot.backend.connectors.claude.v1.session.ClaudeV1LearningSessionService;
+import com.skillpilot.backend.connectors.claude.v1.session.ClaudeV1SessionTokenCodec;
 import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.repository.LearnerRepository;
 import io.modelcontextprotocol.common.McpTransportContext;
 import io.modelcontextprotocol.server.McpStatelessServerFeatures;
 import io.modelcontextprotocol.spec.McpSchema;
+import java.time.Instant;
 import java.util.List;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -62,6 +70,12 @@ class ClaudeV1MemoryPracticeContractTest {
 
     @Autowired
     private ClaudeV1LearningSessionRepository connectionRepository;
+
+    @Autowired
+    private ClaudeV1SessionTokenCodec sessionTokens;
+
+    @Autowired
+    private ObjectMapper objectMapper;
 
     @MockitoBean
     private CoachToolFacade coachToolFacade;
@@ -187,6 +201,77 @@ class ClaudeV1MemoryPracticeContractTest {
     }
 
     @Test
+    void scopedPracticeBindsTheAppReviewToThePublishedUnitAcrossRequests() {
+        String unit = "physics-e1-motion";
+        when(coachToolFacade.getLearnerState(learnerId)).thenReturn(ordinaryMotionState());
+        when(coachToolFacade.startMemoryPractice(learnerId, "de", new MemoryPracticeStartRequest(GOAL_ID, unit)))
+                .thenReturn(startResponse());
+        var opened = call(ClaudeV1Contract.TOOL_START_MEMORY_PRACTICE, Map.of(
+                "goalId", GOAL_ID, "practiceScopeId", unit, "expectedStateVersion", INITIAL_STATE_VERSION, "language", "de"));
+        assertThat(opened.isError()).isFalse();
+        assertThat(map(opened.structuredContent())).containsEntry("practiceScopeId", unit);
+        String capability = firstCapability(opened);
+        var request = new MemoryPracticeReviewRequest(GOAL_ID, "card-1", "known", unit);
+        when(coachToolFacade.reviewMemoryPracticeCard(learnerId, "de", request)).thenAnswer(invocation -> {
+            Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+            learner.setCoachStateRevision(learner.getCoachStateRevision() + 1);
+            learnerRepository.save(learner);
+            return reviewResponse();
+        });
+        var rated = call(ClaudeV1Contract.TOOL_REVIEW_MEMORY_PRACTICE_CARD, Map.of(
+                "goalId", GOAL_ID, "cardId", "card-1", "reviewCapability", capability, "rating", "known",
+                "expectedStateVersion", INITIAL_STATE_VERSION, "clientRequestId", UUID.randomUUID().toString(), "language", "de"));
+        assertThat(rated.isError()).isFalse();
+        assertThat(map(rated.structuredContent())).containsEntry("practiceScopeId", unit);
+        verify(coachToolFacade).reviewMemoryPracticeCard(learnerId, "de", request);
+        verify(coachToolFacade, never()).setActiveGoal(any(), any());
+        verify(coachToolFacade, never()).setMastery(any(), any());
+    }
+
+    @Test
+    void englishUnitActionUsesTheSessionLanguageUnlessTheCallerChoosesAnotherLanguage() throws Exception {
+        learningSessionId = sessionTokens.issue();
+        Instant started = Instant.now();
+        connectionRepository.insert(new ClaudeV1LearningSession(sessionTokens.hash(learningSessionId), learnerId,
+                started, started.plus(ClaudeV1LearningSessionService.SESSION_TTL), "en", INITIAL_STATE_VERSION));
+        String scope = "physics-e1-motion";
+        var cards = new ActiveGoalContext.Activity(GOAL_ID, "Motion flashcards", "memory", "E.1 Motion", "unitPractice", scope);
+        when(coachToolFacade.getLearnerState(learnerId)).thenReturn(ordinaryMotionState());
+        when(coachToolFacade.getActiveGoalContext(learnerId, "throw", INITIAL_STATE_VERSION, "en", Set.of(), true))
+                .thenReturn(new ActiveGoalContext("throw", "E", List.of(), List.of(), null, List.of(cards)));
+        var request = new MemoryPracticeStartRequest(GOAL_ID, scope);
+        when(coachToolFacade.startMemoryPractice(learnerId, "en", request)).thenReturn(new MemoryPracticeResponse(
+                "ready", "Private", GOAL_ID, "Motion flashcards", new MemoryPracticeProgress(1, 1, 0),
+                List.of(new MemoryPracticeCard("card-1", "How far does the ball travel?", "Half a metre", "motion"))));
+        when(coachToolFacade.startMemoryPractice(learnerId, "de", request)).thenReturn(startResponse());
+
+        var contextResponse = call(ClaudeV1Contract.TOOL_GET_COACH_CONTEXT, Map.of());
+        assertThat(contextResponse.isError()).isFalse();
+        var text = (McpSchema.TextContent) contextResponse.content().getFirst();
+        Map<String, Object> context = objectMapper.readValue(text.text(), new TypeReference<>() {});
+        assertThat(context).containsEntry("language", "en");
+        var activities = (List<?>) map(context.get("activeGoalContext")).get("activities");
+        var action = map(map(activities.getFirst()).get("action"));
+        String tool = (String) action.get("tool");
+        var arguments = map(action.get("arguments"));
+        assertThat(arguments).doesNotContainKey("language");
+        var opened = call(tool, arguments);
+        assertThat(opened.isError()).isFalse();
+        var component = map(opened.meta().get("skillpilotMemoryCard"));
+        assertThat(component).containsEntry("communicationLocale", "en");
+        var batch = (List<?>) map(component.get("cardBatch")).get("cards");
+        assertThat(map(batch.getFirst())).containsEntry("front", "How far does the ball travel?");
+
+        var german = new LinkedHashMap<>(arguments);
+        german.put("language", "de");
+        var overridden = call(tool, german);
+        assertThat(overridden.isError()).isFalse();
+        assertThat(map(overridden.meta().get("skillpilotMemoryCard"))).containsEntry("communicationLocale", "de");
+        verify(coachToolFacade).startMemoryPractice(learnerId, "en", request);
+        verify(coachToolFacade).startMemoryPractice(learnerId, "de", request);
+    }
+
+    @Test
     void capabilityForAnotherCardFailsBeforeTheCanonicalReview() {
         String capability = firstCapability(start());
 
@@ -263,6 +348,13 @@ class ClaudeV1MemoryPracticeContractTest {
     @SuppressWarnings("unchecked")
     private Map<String, Object> map(Object value) {
         return (Map<String, Object>) value;
+    }
+
+    private UnifiedLearnerStateResponse ordinaryMotionState() {
+        FrontierGoal ordinary = new FrontierGoal("throw", "Waagerechter Wurf", "Wurf vorhersagen", "atomic",
+                "tutor", null, null, List.of(), List.of(), null, null, null, null);
+        return new UnifiedLearnerStateResponse(learnerId, null, List.of(ordinary), null, List.of(), List.of(),
+                Set.of(), "TEACHING", ordinary, null);
     }
 
     private UnifiedLearnerStateResponse memoryState() {
