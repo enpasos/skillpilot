@@ -3,13 +3,33 @@
 This runbook governs the repository-backed personal marketplace for
 `skillpilot-coach-v1`. It distributes one exact Claude plugin candidate; the
 marketplace mechanism itself does not alter that candidate. It is not an
-Anthropic-curated or Anthropic-verified listing. Version 1.1.13 is published in
-the public personal Marketplace; its exact source, package and repository have
-been independently verified. The website currently offers the matching 1.1.13
-archive.
-Full real-client acceptance remains pending; repository publication does not
-establish installation or synchronization in every account.
-Earlier published packages and their evidence remain immutable history.
+Anthropic-curated or Anthropic-verified listing. Version 1.1.14 is published in
+the personal Marketplace. Claude Code installation and the manual update from
+1.1.13 have been verified. Acceptance in a learner’s Claude Web or Android
+session remains open.
+
+## 1.1.14 conversational teaching for understanding goals
+
+A learner can describe what they already understand or ask for an explanation.
+The coach can explain the missing idea with an example and invite the learner
+to explain it back. The existing evidence requirements still apply when
+recording mastery.
+
+The twelve-file Marketplace tree has SHA-256
+`cf636512209e08bf5c4af6cbb2fed43ddbb1b3d0b296e82a62deb9269550ac33`.
+The workflow binds the canonical source commit
+`41f13a3c04d1181b43988d131b24e21a53fe331c`. Its plugin directory is
+byte-identical in the merged SkillPilot revision
+`039a7c39d9499a77694652959cb153c01cd6918c`. [SkillPilot PR #164](https://github.com/enpasos/skillpilot/pull/164)
+
+The public Marketplace revision is
+`f3656f5ffc6b7341b166ac28a48032be48148458`. A fresh HTTPS clone, both
+strict Claude validations and an isolated installation passed. An existing
+Claude Code 2.1.241 installation then updated from 1.1.13 to 1.1.14 and
+retained its enabled state and MCP endpoint. All seven installed files matched
+the published files. Rebuilding them reproduced the 47,085-byte archive with
+SHA-256 `e957bf74c0a751605c9fcf86af0301b61d4d70cc3df019cadf15e8f2c134d3ee`.
+[Marketplace PR #17](https://github.com/enpasos/skillpilot-claude-marketplace/pull/17) · [PR validation](https://github.com/enpasos/skillpilot-claude-marketplace/actions/runs/44482741452) · [Published revision validation](https://github.com/enpasos/skillpilot-claude-marketplace/actions/runs/44491443543)
 
 ## 1.1.13 assessment-shortcut publication
 
@@ -1107,7 +1127,7 @@ bound in the marketplace lane.
 
 - Marketplace name: `skillpilot-marketplace`
 - Stable technical plugin name: `skillpilot-coach-v1`
-- Current published candidate version: `1.1.13` (website download and personal Marketplace verified)
+- Current personal Marketplace version: `1.1.14`
 - Plugin source: `./plugins/skillpilot-coach-v1`
 - Version authority:
   `plugins/skillpilot-coach-v1/.claude-plugin/plugin.json` only
