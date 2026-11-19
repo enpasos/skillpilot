@@ -2,6 +2,7 @@ package com.skillpilot.backend.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyBoolean;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.mock;
@@ -14,6 +15,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.LearnerLearningPlanApi;
 import com.skillpilot.backend.api.LearnerPlanTodayStatus;
+import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
 import com.skillpilot.backend.completion.CompletionProfileCompiler;
 import com.skillpilot.backend.completion.CompletionProfileDefinition;
 import com.skillpilot.backend.completion.LearningPlanCompletionContext;
@@ -226,6 +228,112 @@ class LearningPlanAssessmentCreditTest {
         assertThat(status.subjects().getFirst().canContinue()).isFalse();
         assertThat(status.resumeAvailable()).isFalse();
         assertThat(status.noticeText()).contains("Abschlussberechnung", "pausiert");
+    }
+
+    /**
+     * Production shape of 19 November 2026: the automatic completion calculation is
+     * available, each subject has one captured plan, and a curriculum change moved
+     * captured goals out of the Personal Curriculum.
+     */
+    @Test void outdatedPlansNeverRevokePersonalCurriculumContinuationUnderTheAutomaticCalculation() throws Exception {
+        context = LearningPlanCompletionContext.automatic("base", "generation",
+                context.canonicalGoals(), context.level2TargetGoalIds());
+        when(learners.getLearningPlanCompletionContext(eq(ID), any())).thenReturn(context);
+        addPlan("physics", List.of("physics"), List.of("physics"));
+        List<String> originalBlocks = storedPlans.stream().map(LearnerLearningPlan::getBlocksJson).toList();
+        learner.setFollowLearningPlans(true);
+        when(learners.isLearningPlanCompatible(eq(ID), any(), anyString(), any())).thenReturn(false);
+        when(learners.getPersonalCurriculumSubjectIds(ID)).thenReturn(List.of("math", "physics"));
+        when(learners.getPersonalCurriculumSubjectFrontier(ID, "math")).thenReturn(List.of(frontier("extra")));
+        when(learners.getPersonalCurriculumSubjectFrontier(ID, "physics")).thenReturn(List.of(frontier("physics")));
+        var changed = new LearnerService.LearningPlanTransitionResult(true, mock(UnifiedLearnerStateResponse.class));
+        when(learners.applyLearningPlanTransition(ID, false, true, "physics", "physics", true,
+                "LEARNING_PLAN_SUBJECT_SWITCH")).thenReturn(changed);
+        when(learners.applyLearningPlanTransition(ID, false, true, "extra", "extra", true,
+                "LEARNING_PLAN_RECONCILED")).thenReturn(changed);
+
+        var result = service.getPlans(ID, DATE, "de");
+        var status = result.status();
+        // The balance stays unavailable: an outdated capture never yields a status line.
+        assertThat(status.unavailablePlanCount()).isEqualTo(2);
+        assertThat(status.evaluable()).isFalse();
+        assertThat(status.statusText()).contains("2 Fachpläne nicht auswertbar");
+        assertThat(status.subjects()).hasSize(2).allSatisfy(subject -> {
+            assertThat(subject.evaluable()).isFalse();
+            assertThat(subject.balance()).isNull();
+            assertThat(subject.subjectLine()).isNull();
+            assertThat(subject.planCreditText()).isNull();
+            // Learning within the Personal Curriculum remains available.
+            assertThat(subject.canContinue()).isTrue();
+        });
+        assertThat(status.resumeAvailable()).isTrue();
+        assertThat(status.automaticResumeAvailable()).isFalse();
+        // The outdated captures stay visible for review instead of disappearing.
+        assertThat(result.plans()).hasSize(2).allSatisfy(plan -> {
+            assertThat(plan.stale()).isTrue();
+            assertThat(plan.canContinue()).isFalse();
+            assertThat(plan.continueReason()).isEqualTo("personal-curriculum-changed");
+            assertThat(plan.nextEligibleGoal()).isNull();
+            assertThat(plan.learningScope()).isNull();
+        });
+        assertThat(service.getPlan(ID, "physics", DATE).stale()).isTrue();
+
+        assertThat(service.switchPersonalCurriculumSubject(ID, "physics").activeGoalId()).isEqualTo("physics");
+        assertThat(service.resumeExplicitly(ID, new LearnerLearningPlanApi.ReconcileRequest(null)).activeGoalId())
+                .isEqualTo("extra");
+        assertThat(storedPlans.stream().map(LearnerLearningPlan::getBlocksJson).toList()).isEqualTo(originalBlocks);
+        assertThat(mastery).containsExactly(Map.entry("q", 1.0));
+    }
+
+    /** A failed calculation is a different state: it still pauses every continuation. */
+    @Test void unavailableAutomaticCalculationStillPausesContinuationForCurrentPlans() {
+        learner.setFollowLearningPlans(true);
+        when(learners.getLearningPlanCompletionContext(eq(ID), any()))
+                .thenThrow(new IllegalStateException("Plan completion graph is unavailable"));
+        when(learners.getPersonalCurriculumSubjectIds(ID)).thenReturn(List.of("math"));
+        when(learners.getPersonalCurriculumSubjectFrontier(ID, "math")).thenReturn(List.of(frontier("extra")));
+
+        var status = service.getTodayStatus(ID, "de");
+        assertThat(status.unavailablePlanCount()).isEqualTo(1);
+        assertThat(status.subjects().getFirst().canContinue()).isFalse();
+        assertThat(status.resumeAvailable()).isFalse();
+        verify(learners, never()).applyLearningPlanTransition(
+                anyString(), anyBoolean(), anyBoolean(), any(), any(), anyBoolean(), anyString());
+    }
+
+    /**
+     * The current sibling of an outdated part plan gets no stated credit, because the
+     * subject's obligation scope is open. Its learner still keeps every subject reachable.
+     */
+    @Test void outdatedPartPlanWithholdsSiblingCreditButKeepsPersonalCurriculumContinuation() throws Exception {
+        addPlan("math-other", List.of("a", "consumer"), List.of("a", "consumer"));
+        addPlan("physics", List.of("physics"), List.of("physics"));
+        learner.setFollowLearningPlans(true);
+        when(learners.isLearningPlanCompatible(eq(ID), any(), eq("math-other"), any())).thenReturn(false);
+        when(learners.getPersonalCurriculumSubjectIds(ID)).thenReturn(List.of("math", "math-other"));
+        when(learners.getPersonalCurriculumSubjectFrontier(ID, "math")).thenReturn(List.of(frontier("a")));
+        when(learners.getPersonalCurriculumSubjectFrontier(ID, "math-other")).thenReturn(List.of(frontier("extra")));
+        when(learners.applyLearningPlanTransition(ID, false, true, "a", "a", true, "LEARNING_PLAN_SUBJECT_SWITCH"))
+                .thenReturn(new LearnerService.LearningPlanTransitionResult(true,
+                        mock(UnifiedLearnerStateResponse.class)));
+
+        var result = service.getPlans(ID, DATE, "de");
+        var math = result.status().subjects().stream()
+                .filter(s -> "mathematik".equals(s.subjectKey())).findFirst().orElseThrow();
+        assertThat(math.evaluable()).isFalse();
+        assertThat(math.balance()).isNull();
+        assertThat(math.planCreditText()).isNull();
+        assertThat(result.status().unavailablePlanCount()).isEqualTo(2);
+        assertThat(result.status().subjects().stream()
+                .filter(s -> "physik".equals(s.subjectKey())).findFirst().orElseThrow().evaluable()).isTrue();
+        // Only the outdated capture is listed; an understated count is never shown for its sibling.
+        assertThat(result.plans()).extracting(LearnerLearningPlanApi.PlanSummary::landscapeId)
+                .containsExactlyInAnyOrder("math-other", "physics");
+        assertThat(result.plans().stream().filter(plan -> "math-other".equals(plan.landscapeId()))
+                .findFirst().orElseThrow().stale()).isTrue();
+        assertThat(result.status().resumeAvailable()).isTrue();
+        // Without stated credit no goal is skipped as implicitly done.
+        assertThat(service.switchPersonalCurriculumSubject(ID, "math").activeGoalId()).isEqualTo("a");
     }
 
     @Test void explicitOnlyDisplayDoesNotInventPrerequisiteBlockageForWaivedWork() {

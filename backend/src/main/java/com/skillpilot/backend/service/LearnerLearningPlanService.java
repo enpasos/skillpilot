@@ -79,13 +79,32 @@ public class LearnerLearningPlanService {
     private final com.skillpilot.backend.completion.LearningPlanCompletionProjection completionProjection =
             new com.skillpilot.backend.completion.LearningPlanCompletionProjection();
 
-    /** Operation-local result: no learner outcome is retained in a shared cache. */
-    private record PlanFulfillment(Map<String, Set<String>> waivedByLandscape, Set<String> unavailable) {
+    /**
+     * Operation-local result: no learner outcome is retained in a shared cache.
+     *
+     * <p>{@code unavailable} names every plan whose credit cannot be stated.
+     * {@code creditWithheld} is the part of it whose completion calculation is intact:
+     * an outdated or unreadable part plan of the same subject leaves the subject's
+     * obligation scope open. Such a plan gets no balance, but unlike a failed
+     * calculation it never revokes learning within the Personal Curriculum.</p>
+     */
+    private record PlanFulfillment(Map<String, Set<String>> waivedByLandscape, Set<String> unavailable,
+            Set<String> creditWithheld) {
         Set<String> waived(String landscapeId) {
             if (unavailable.contains(landscapeId)) {
                 throw conflict("Learning-plan completion calculation is currently unavailable");
             }
             return waivedByLandscape.getOrDefault(landscapeId, Set.of());
+        }
+
+        /** True only when the completion calculation itself failed for this subject. */
+        boolean pausesPersonalContinuation(String landscapeId) {
+            return unavailable.contains(landscapeId) && !creditWithheld.contains(landscapeId);
+        }
+
+        /** Withheld credit skips no goal: the learner frontier alone decides. */
+        Set<String> navigationWaived(String landscapeId) {
+            return creditWithheld.contains(landscapeId) ? Set.of() : waived(landscapeId);
         }
     }
 
@@ -93,13 +112,28 @@ public class LearnerLearningPlanService {
             Map<String, Double> mastery) {
         Map<String, Set<String>> obligationsByLandscape = new LinkedHashMap<>();
         Set<String> invalidObligations = new HashSet<>();
+        Set<String> outdatedSubjects = new HashSet<>();
         Set<String> invalid = new HashSet<>();
+        Set<String> creditWithheld = new HashSet<>();
         Map<String, Set<String>> obligationsBySubject = new LinkedHashMap<>();
         for (var plan : planInputs) {
             try {
-                List<LearnerLearningPlanApi.Block> blocks = readBlocks(plan);
-                obligationsByLandscape.put(plan.getLandscapeId(), atomicIds(blocks));
-                requireCurrentBlocks(learnerId, plan);
+                final List<LearnerLearningPlanApi.Block> blocks;
+                try {
+                    blocks = readBlocks(plan);
+                    obligationsByLandscape.put(plan.getLandscapeId(), atomicIds(blocks));
+                    requireCurrentBlocks(learnerId, plan);
+                } catch (ResponseStatusException e) {
+                    String subject = stableSubjectKey(plan.getLandscapeId());
+                    if (e.getStatusCode().is5xxServerError() || subject == null) throw e;
+                    // An outdated or unreadable capture is reported by its own currency
+                    // check and otherwise behaves like a missing plan: it supplies no
+                    // obligations and receives no credit. Only current plans of its
+                    // subject lose their credit, because that scope stays open.
+                    obligationsByLandscape.remove(plan.getLandscapeId());
+                    outdatedSubjects.add(subject);
+                    continue;
+                }
                 Set<String> obligations = new LinkedHashSet<>(atomicIds(blocks));
                 // Keep the authored obligation scope, including goals already mastered
                 // before G was captured. A later revocation must still block a waiver.
@@ -129,9 +163,15 @@ public class LearnerLearningPlanService {
         Set<String> automaticTargets = null;
         Set<String> automaticWaived = null;
         RuntimeException automaticFailure = null;
+        Set<String> withheldSubjects = new HashSet<>();
         for (var entry : obligationsByLandscape.entrySet()) {
             String subject = stableSubjectKey(entry.getKey());
             if (unavailableSubjects.contains(subject)) { invalid.add(entry.getKey()); continue; }
+            if (withheldSubjects.contains(subject)) {
+                invalid.add(entry.getKey());
+                creditWithheld.add(entry.getKey());
+                continue;
+            }
             if (resolvedBySubject.containsKey(subject)) {
                 waived.put(entry.getKey(), resolvedBySubject.get(subject));
                 continue;
@@ -148,6 +188,13 @@ public class LearnerLearningPlanService {
                 if (subject == null || invalidObligations.stream()
                         .anyMatch(id -> Objects.equals(subject, stableSubjectKey(id)))) {
                     throw conflict("An active subject plan obligation scope cannot be resolved");
+                }
+                if (outdatedSubjects.contains(subject)) {
+                    // The calculation is intact; only the subject's obligation scope is open.
+                    withheldSubjects.add(subject);
+                    invalid.add(entry.getKey());
+                    creditWithheld.add(entry.getKey());
+                    continue;
                 }
                 Set<String> resolved;
                 if (context.semantics()
@@ -188,7 +235,7 @@ public class LearnerLearningPlanService {
                 unavailableSubjects.add(subject);
             }
         }
-        return new PlanFulfillment(Map.copyOf(waived), Set.copyOf(invalid));
+        return new PlanFulfillment(Map.copyOf(waived), Set.copyOf(invalid), Set.copyOf(creditWithheld));
     }
 
     private PlanFulfillment planFulfillment(String learnerId, String landscapeId,
@@ -331,8 +378,8 @@ public class LearnerLearningPlanService {
                 String subjectKey = stableSubjectKey(landscapeId);
                 SubjectAggregate aggregate = subjectKey == null ? null : bySubject.get(subjectKey);
                 if (aggregate != null && (aggregate.evaluable() || aggregate.canContinue())) continue;
-                if (!fulfillment.unavailable().contains(landscapeId)
-                        && firstPersonalCurriculumGoal(skillpilotId, landscapeId, fulfillment.waived(landscapeId)).isPresent()) {
+                if (!fulfillment.pausesPersonalContinuation(landscapeId) && firstPersonalCurriculumGoal(
+                        skillpilotId, landscapeId, fulfillment.navigationWaived(landscapeId)).isPresent()) {
                     personalContinuationAvailable = true;
                     if (aggregate != null) aggregate.allowContinuation();
                 }
@@ -1633,8 +1680,8 @@ public class LearnerLearningPlanService {
         Map<String, Double> mastery = learners.getMastery(skillpilotId);
         PlanFulfillment fulfillment = planFulfillment(skillpilotId,
                 plans.findByLearner_SkillpilotIdOrderByLandscapeIdAsc(skillpilotId), mastery);
-        if (fulfillment.unavailable().contains(landscapeId)) return Optional.empty();
-        return firstPersonalCurriculumGoal(skillpilotId, landscapeId, fulfillment.waived(landscapeId));
+        if (fulfillment.pausesPersonalContinuation(landscapeId)) return Optional.empty();
+        return firstPersonalCurriculumGoal(skillpilotId, landscapeId, fulfillment.navigationWaived(landscapeId));
     }
 
     private Optional<DueGoal> firstPersonalCurriculumGoal(String skillpilotId, String landscapeId, Set<String> waived) {
@@ -1667,8 +1714,12 @@ public class LearnerLearningPlanService {
                 return Optional.empty();
             }
             Set<String> inactiveOnly = inactiveOnlyAtomicIds(blocks);
-            Set<String> waived = planFulfillment(skillpilotId, currentPlans, learners.getMastery(skillpilotId))
-                    .waived(landscapeId);
+            PlanFulfillment fulfillment = planFulfillment(
+                    skillpilotId, currentPlans, learners.getMastery(skillpilotId));
+            // Same gate as the branch without inactive sections: a paused subject yields
+            // no goal, so the caller can still offer another subject.
+            if (fulfillment.pausesPersonalContinuation(landscapeId)) return Optional.empty();
+            Set<String> waived = fulfillment.navigationWaived(landscapeId);
             return learners.getPersonalCurriculumSubjectFrontier(skillpilotId, landscapeId).stream()
                     .filter(goal -> "atomic".equals(goal.type()) && !inactiveOnly.contains(goal.id()) && !waived.contains(goal.id()))
                     .findFirst().map(goal -> new DueGoal(goal.id(), goal.id(), null, null));
