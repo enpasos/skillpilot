@@ -25,6 +25,12 @@ test("synthetic strictly verifies recorded and generated publications during rol
   t.after(() => rmSync(temporaryRoot, { recursive: true, force: true }));
   const generatedRoot = join(temporaryRoot, "claude-plugin-publication");
   generateClaudePluginPublication({ repositoryRoot, publicationRoot: generatedRoot });
+  const generatedIndex = JSON.parse(readFileSync(join(generatedRoot, "index.json"), "utf8"));
+  assert.equal(generatedIndex.preparedAt, "2026-11-19T00:00:00.000Z");
+  assert.equal(generatedIndex.plugins[0].version, "1.1.14");
+  assert.equal(generatedIndex.plugins[0].bytes, 47085);
+  assert.equal(generatedIndex.plugins[0].sha256,
+    "e957bf74c0a751605c9fcf86af0301b61d4d70cc3df019cadf15e8f2c134d3ee");
 
   for (const [label, publicationRoot] of [["recorded publication before rollout", recordedRoot],
     ["deterministic build publication after rollout", generatedRoot]]) {
@@ -38,6 +44,7 @@ test("synthetic strictly verifies recorded and generated publications during rol
       for (const { url } of fixture.requested) {
         assert.ok(["https://skillpilot.com", "https://mcp-claude-v1.skillpilot.com"].includes(new URL(url).origin));
       }
+      assert.ok(fixture.requested.every(({ method }) => method === "GET"));
     });
   }
 
@@ -68,24 +75,27 @@ test("synthetic strictly verifies recorded and generated publications during rol
   assert.deepEqual(readFileSync(join(recordedRoot, "index.json")), recordedIndex);
 });
 
-test("synthetic verifies the deployed published build while a newer candidate is only prepared", async () => {
+test("synthetic verifies published 1.1.13 while the exact 1.1.14 successor is only prepared", async () => {
   const fixture = historicalPublicationFixture();
   const result = await verifyClaudeSupportSynthetic({ fetchImpl: fixture.fetchImpl });
   assert.deepEqual(result.candidate, {
-    version: "1.1.12",
-    sha256: "d4d2f22a551bfd044d2eeaa36495fe96d62bc588552effecaef213a4e148afc0",
+    version: "1.1.13",
+    sha256: "0e99b10635c0a97a43d5f6fbdc0fa437b6da68bb0483515fdf8230e0764090cd",
   });
   assert.equal(result.outcome, "pass");
   assert.ok(fixture.requested.some(({ url }) => url.endsWith(fixture.plugin.downloadUrl)));
-  assert.equal(fixture.requested.some(({ url }) => url.includes("/1.1.13/")), false);
+  assert.equal(fixture.requested.some(({ url }) => url.includes("/1.1.14/")), false);
+  assert.ok(fixture.requested.every(({ method }) => method === "GET"));
 });
 
 test("published historical fallback rejects changed index metadata and archive bytes", async () => {
-  for (const field of ["sha256", "preparedAt"]) {
+  for (const field of ["version", "sha256", "preparedAt", "testedSurfaces"]) {
     const fixture = historicalPublicationFixture({
       mutateIndex(index) {
         if (field === "sha256") index.plugins[0].sha256 = "f".repeat(64);
-        else index.preparedAt = "2026-10-31T00:00:00.000Z";
+        else if (field === "version") index.plugins[0].version = "1.1.14";
+        else if (field === "testedSurfaces") index.plugins[0].requirements.testedSurfaces = ["claude-android"];
+        else index.preparedAt = "2026-11-19T00:00:00.000Z";
       },
     });
     await assert.rejects(verifyClaudeSupportSynthetic({ fetchImpl: fixture.fetchImpl }),
@@ -94,7 +104,7 @@ test("published historical fallback rejects changed index metadata and archive b
   }
   const fixture = historicalPublicationFixture({ corruptArchive: true });
   await assert.rejects(verifyPublicClaudeHistoricalBuildPublication({
-    version: "1.1.12", baseUrl: "https://skillpilot.com", fetchImpl: fixture.fetchImpl,
+    version: "1.1.13", baseUrl: "https://skillpilot.com", fetchImpl: fixture.fetchImpl,
   }), /artifact SHA-256/u);
   await assert.rejects(verifyClaudeSupportSynthetic({ fetchImpl: fixture.fetchImpl }),
     /public-plugin-publication failed/u);
@@ -368,12 +378,12 @@ function historicalPublicationFixture(options = {}) {
   // Reproduce the previously deployed index from the retained catalog metadata;
   // these version/hash/date values are fixed test evidence, never remote input.
   const index = JSON.parse(readFileSync(join(recordedRoot, "index.json"), "utf8"));
-  index.preparedAt = "2026-09-30T00:00:00.000Z";
+  index.preparedAt = "2026-10-31T00:00:00.000Z";
   Object.assign(index.plugins[0], {
-    version: "1.1.12", bytes: 43272,
-    sha256: "d4d2f22a551bfd044d2eeaa36495fe96d62bc588552effecaef213a4e148afc0",
-    filename: "skillpilot-coach-v1-1.1.12.plugin",
-    downloadUrl: "/api/public/claude/plugins/skillpilot-coach-v1/1.1.12/sha256-d4d2f22a551bfd044d2eeaa36495fe96d62bc588552effecaef213a4e148afc0/skillpilot-coach-v1-1.1.12.plugin",
+    version: "1.1.13", bytes: 46595,
+    sha256: "0e99b10635c0a97a43d5f6fbdc0fa437b6da68bb0483515fdf8230e0764090cd",
+    filename: "skillpilot-coach-v1-1.1.13.plugin",
+    downloadUrl: "/api/public/claude/plugins/skillpilot-coach-v1/1.1.13/sha256-0e99b10635c0a97a43d5f6fbdc0fa437b6da68bb0483515fdf8230e0764090cd/skillpilot-coach-v1-1.1.13.plugin",
   });
   return publicationFixture(recordedRoot, {
     ...options, indexBytes: Buffer.from(`${JSON.stringify(index, null, 2)}\n`),

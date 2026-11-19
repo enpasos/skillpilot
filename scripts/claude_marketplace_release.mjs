@@ -42,10 +42,10 @@ const expectedExternalEvidence = [
   "uploaded-plugin-migration-and-marketplace-refresh",
 ];
 const expectedRepositoryName = "skillpilot-claude-marketplace";
-// Pin the Marketplace export to the exact committed 1.1.13 source.
-const canonicalSourceRevision = "1394481fd5769b0e9eac2c077cbb4d6b37d05982";
-const canonicalSourceTreeSha256 = "80e84ae610ba53cb25f344f35c294131912251ceb382bb73f608727261215384";
-const pinnedTemplateVersion = "1.1.13";
+// Pin the Marketplace export to the exact committed 1.1.14 source.
+const canonicalSourceRevision = "41f13a3c04d1181b43988d131b24e21a53fe331c";
+const canonicalSourceTreeSha256 = "9451d448b8f98efdccb517ca63f0126150e60869cb28e71a765fc21f04dd1004";
+const pinnedTemplateVersion = "1.1.14";
 const legacyInstructionVersions = new Set([
   "1.0.2", "1.0.3", "1.0.4", "1.1.0", "1.1.1", "1.1.2", "1.1.3", "1.1.4",
 ]);
@@ -1042,7 +1042,7 @@ export function validateClaudeMarketplaceWorkflow(
     'const { publicationFiles } = await import(pathToFileURL(resolve(canonicalRoot, "check-package.mjs")));',
     'const baseline = JSON.parse(readFileSync(resolve(canonicalRoot, "release/contract-baseline.json"), "utf8"));',
     `assert.equal(baseline.pluginVersion, "${lane.plugin.version}", "Pinned dossier version");`,
-    'assert.equal(baseline.archive.bytes, 46595, "Pinned dossier archive bytes");',
+    'assert.equal(baseline.archive.bytes, 47085, "Pinned dossier archive bytes");',
     `assert.equal(baseline.archive.sha256, "${lane.plugin.directInstallSha256}", "Pinned dossier archive digest");`,
     'assert.deepEqual([...publicationFiles].sort(), baseline.archive.entries.map(({ packagePath }) => packagePath).sort(), "Pinned dossier inventory");',
     'assert.ok(!stat.isSymbolicLink(), `Symlink forbidden: ${path}`);',

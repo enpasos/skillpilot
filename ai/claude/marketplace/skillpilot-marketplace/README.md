@@ -1,19 +1,20 @@
 # SkillPilot Claude Marketplace
 
-**SkillPilot Coach v1 · Version 1.1.13** provides curriculum-grounded learning
-coaching for Claude. This Marketplace export matches the exact 1.1.13
+**SkillPilot Coach v1 · Version 1.1.14** provides curriculum-grounded learning
+coaching for Claude. This Marketplace export matches the exact 1.1.14
 SkillPilot download artifact. Repository publication, installation and actual
 learning behavior in individual Claude accounts are checked separately.
 
-Version 1.1.13 adds explicit coaching instructions for assessment shortcuts.
-Ask to demonstrate existing knowledge or take an available assessment directly.
-The coach uses SkillPilot's current options; an unambiguous request to start an
-offered assessment needs no second confirmation. Normal learning, detailed exam
-feedback and binary mastery remain unchanged. Acceptance of this version in
-real Claude accounts, including Web and Android Voice, remains pending; earlier
-published packages and their evidence remain immutable history.
+### In version 1.1.14
 
-### In version 1.1.13
+Ask the coach to explain a new idea, or tell it “I don't know yet.” For an
+ordinary learning goal, the coach can start with a concrete example and then
+invite you to explain the idea in your own words. If you already have an idea,
+the coach builds on it. A question after an exercise can lead directly to
+another explanation. To record mastery, the coach still needs two independent
+demonstrations or one genuine multi-step transfer.
+
+### Learning and assessments
 
 - Ask for an assessment shortcut when you want to demonstrate existing knowledge.
   The coach offers only assessments currently authorized by SkillPilot, before
@@ -88,27 +89,27 @@ observed in two Claude accounts.
 An upload-only installation is not the same as a marketplace installation.
 
 Update timing and available synchronization controls can vary by Claude client.
-After updating, check that your installed plugin shows **1.1.13**,
+After updating, check that your installed plugin shows **1.1.14**,
 then start a fresh learning session from SkillPilot. If an update has not
 arrived, use the refresh control where available or contact
 <support@skillpilot.com>.
 
 The observed automatic update mechanism does not mean that every account has
-already received 1.1.13. Verification of this version in individual clients
+already received 1.1.14. Verification of this version in individual clients
 remains separate from publication.
 
 ## About this beta
 
 This personal marketplace is published independently by SkillPilot; it is not
 reviewed, endorsed, curated, or verified by Anthropic. The seven packaged plugin
-files match the prepared 1.1.13 direct-install candidate byte for byte.
+files match the prepared 1.1.14 direct-install candidate byte for byte.
 For supported clients, setup and the security boundary, see the
 [plugin README](./plugins/skillpilot-coach-v1/README.md) and
 [setup guide](./plugins/skillpilot-coach-v1/SETUP.md).
 
 Those packaged documents retain their canonical pre-publication snapshot;
 their preparation-time release notes are not a live availability indicator.
-This Marketplace export contains **1.1.13**, matching the exact SkillPilot download
+This Marketplace export contains **1.1.14**, matching the exact SkillPilot download
 artifact. Repository publication alone will not prove that an
 installed Claude account has updated.
 
