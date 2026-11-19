@@ -7,6 +7,9 @@ import { getEntryKindLabel } from './presentation'
 
 const sides = { WEST: Position.Left, EAST: Position.Right, NORTH: Position.Top, SOUTH: Position.Bottom }
 
+export type LearningMapPracticeAction = { label: string; open: () => void }
+
+export type LearningMapGoalAction = { title: string; context?: string; label: string; open: () => void }
 export type MapNodeData = {
   entry: LearningMapEntry
   childCount: number
@@ -18,6 +21,8 @@ export type MapNodeData = {
   progress?: LearningEntryProgress
   activeLearningGoal?: boolean
   language?: 'de' | 'en'
+  goalAction?: LearningMapGoalAction
+  practiceAction?: LearningMapPracticeAction
   onSelect: (id: string) => void
   onOpen: (id: string) => void
 }
@@ -49,28 +54,39 @@ function entryPresentation(entry: LearningMapEntry, childCount: number, progress
   return { english, kindLabel, expandable, total, explicit, implicit, progressLabel, Icon, status, statusLabel, meta, preparationLabel, preparationTitle }
 }
 
+function MapPracticeButton({ action, english }: { action: LearningMapPracticeAction; english: boolean }) {
+  return <button type="button" className="lum-node-practice nodrag nopan" data-testid="learning-map-practice-action"
+    aria-label={action.label} title={action.label} onClick={event => {
+      event.stopPropagation()
+      if (event.detail <= 1) action.open()
+    }} onDoubleClick={event => event.stopPropagation()}>
+    {english ? 'Practice' : 'Üben'}
+  </button>
+}
+
 export const MapNode = memo(function MapNode({ data }: NodeProps<LearningFlowNode>) {
-  const { entry, childCount, outsideCount, ports, active, related, muted, progress, activeLearningGoal, onSelect, onOpen } = data
+  const { entry, childCount, outsideCount, ports, active, related, muted, progress, activeLearningGoal,
+    goalAction, practiceAction, onSelect, onOpen } = data
   const { english, kindLabel, expandable, total, explicit, implicit, progressLabel, Icon, status, statusLabel, meta,
     preparationLabel, preparationTitle } = entryPresentation(entry, childCount, progress, activeLearningGoal, data.language)
-  return <article className={`lum-node lum-node--${entry.kind}${active ? ' is-focused' : ''}${related ? ' is-related' : ''}${muted ? ' is-muted' : ''}`}
+  return <article className={`lum-node lum-node--${entry.kind}${practiceAction ? ' lum-node--has-practice' : ''}${active ? ' is-focused' : ''}${related ? ' is-related' : ''}${muted ? ' is-muted' : ''}`}
     data-entry-id={entry.id} data-entry-kind={entry.kind} data-active-goal={activeLearningGoal || undefined}
     data-preparation={entry.preparation || undefined}>
     {ports.map(port => <Handle key={port.id} id={port.id}
       type={port.side === 'WEST' || port.side === 'NORTH' ? 'target' : 'source'}
       position={sides[port.side]} isConnectable={false} style={{ left: port.x, top: port.y }} />)}
-    <button type="button" className="lum-node-main nodrag" title={entry.title}
-      onClick={event => { event.stopPropagation(); onSelect(entry.id) }}
+    <button type="button" className="lum-node-main nodrag" title={goalAction?.title ?? entry.title}
+      onClick={event => { event.stopPropagation(); if (goalAction) goalAction.open(); else onSelect(entry.id) }}
       onKeyDown={event => {
         if (event.key === 'Enter' || event.key === ' ') {
           event.preventDefault(); event.stopPropagation()
-          onSelect(entry.id)
+          if (goalAction) goalAction.open(); else onSelect(entry.id)
         }
-      }} aria-pressed={active} aria-label={`${entry.title}, ${english ? 'Show details' : 'Details anzeigen'}${activeLearningGoal ? english ? ', active learning goal' : ', aktives Lernziel' : ''}${entry.preparation ? `, ${preparationLabel}` : ''}`}>
+      }} aria-pressed={goalAction ? undefined : active} aria-description={goalAction?.context} aria-label={goalAction?.label ?? `${entry.title}, ${english ? 'Show details' : 'Details anzeigen'}${activeLearningGoal ? english ? ', active learning goal' : ', aktives Lernziel' : ''}${entry.preparation ? `, ${preparationLabel}` : ''}`}>
       <span className={`lum-node-icon${expandable ? '' : ` lum-node-state ${status}`}`} role="img" aria-label={expandable ? kindLabel : statusLabel}
         title={expandable ? undefined : statusLabel}><Icon size={16} strokeWidth={!expandable && explicit ? 3 : !expandable && implicit ? 2.5 : 2} /></span>
-      <span className="lum-node-copy"><strong>{entry.title}</strong>
-        <span className="lum-node-meta" title={entry.eyebrow}>{meta}</span>
+      <span className="lum-node-copy"><strong>{goalAction?.title ?? entry.title}</strong>
+        <span className="lum-node-meta" title={goalAction?.context ?? entry.eyebrow}>{goalAction?.context ?? meta}</span>
       </span>
     </button>
     {entry.preparation && <span className="lum-node-tag" title={preparationTitle}>{preparationLabel}</span>}
@@ -87,35 +103,39 @@ export const MapNode = memo(function MapNode({ data }: NodeProps<LearningFlowNod
     }} title={english ? 'Open section' : entry.kind === 'unit' ? 'Einheit öffnen' : 'Bereich öffnen'} aria-label={english ? `Zoom into ${entry.title}` : `In ${entry.title} hineinzoomen`}>
       <ArrowDownRight size={15} strokeWidth={1.7} />
     </button>}
+    {practiceAction && <MapPracticeButton action={practiceAction} english={english} />}
   </article>
 })
 
 /** One row of a board shown as a compact list; same selection and opening contract as a card. */
-export function MapListItem({ entry, childCount, active, progress, activeLearningGoal, language, onSelect, onOpen }: {
+export function MapListItem({ entry, childCount, active, progress, activeLearningGoal, language, goalAction, practiceAction, onSelect, onOpen }: {
   entry: LearningMapEntry
   childCount: number
   active: boolean
   progress?: LearningEntryProgress
   activeLearningGoal?: boolean
   language?: 'de' | 'en'
+  goalAction?: LearningMapGoalAction
+  practiceAction?: LearningMapPracticeAction
   onSelect: (id: string) => void
   onOpen: (id: string) => void
 }) {
   const { english, kindLabel, expandable, explicit, implicit, Icon, status, statusLabel, meta,
     preparationLabel, preparationTitle } = entryPresentation(entry, childCount, progress, activeLearningGoal, language)
-  return <li className={`lum-list-item lum-node--${entry.kind}${active ? ' is-focused' : ''}`} data-entry-id={entry.id}
+  return <li className={`lum-list-item lum-node--${entry.kind}${practiceAction ? ' lum-node--has-practice' : ''}${active ? ' is-focused' : ''}`} data-entry-id={entry.id}
     data-entry-kind={entry.kind} data-active-goal={activeLearningGoal || undefined} data-preparation={entry.preparation || undefined}>
-    <button type="button" className="lum-node-main" title={entry.title} aria-pressed={active}
-      onClick={() => onSelect(entry.id)} onDoubleClick={event => { if (!event.shiftKey && expandable) onOpen(entry.id) }}
-      aria-label={`${entry.title}, ${english ? 'Show details' : 'Details anzeigen'}${activeLearningGoal ? english ? ', active learning goal' : ', aktives Lernziel' : ''}${entry.preparation ? `, ${preparationLabel}` : ''}`}>
+    <button type="button" className="lum-node-main" title={goalAction?.title ?? entry.title} aria-pressed={goalAction ? undefined : active}
+      onClick={() => { if (goalAction) goalAction.open(); else onSelect(entry.id) }} onDoubleClick={event => { if (!event.shiftKey && expandable) onOpen(entry.id) }}
+      aria-description={goalAction?.context} aria-label={goalAction?.label ?? `${entry.title}, ${english ? 'Show details' : 'Details anzeigen'}${activeLearningGoal ? english ? ', active learning goal' : ', aktives Lernziel' : ''}${entry.preparation ? `, ${preparationLabel}` : ''}`}>
       <span className={`lum-node-icon${expandable ? '' : ` lum-node-state ${status}`}`} role="img" aria-label={expandable ? kindLabel : statusLabel}
         title={expandable ? undefined : statusLabel}><Icon size={15} strokeWidth={!expandable && explicit ? 3 : !expandable && implicit ? 2.5 : 2} /></span>
-      <span className="lum-node-copy"><strong>{entry.title}</strong><span className="lum-node-meta">{meta}</span></span>
+      <span className="lum-node-copy"><strong>{goalAction?.title ?? entry.title}</strong><span className="lum-node-meta">{goalAction?.context ?? meta}</span></span>
     </button>
     {entry.preparation && <span className="lum-node-tag" title={preparationTitle}>{preparationLabel}</span>}
     {expandable && <button type="button" className="lum-node-open" onClick={() => onOpen(entry.id)}
       title={english ? 'Open section' : entry.kind === 'unit' ? 'Einheit öffnen' : 'Bereich öffnen'} aria-label={english ? `Zoom into ${entry.title}` : `In ${entry.title} hineinzoomen`}>
       <ArrowDownRight size={15} strokeWidth={1.7} />
     </button>}
+    {practiceAction && <MapPracticeButton action={practiceAction} english={english} />}
   </li>
 }

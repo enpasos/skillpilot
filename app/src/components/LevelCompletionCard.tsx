@@ -75,7 +75,7 @@ export const LevelCompletionCard = ({
       <details data-testid="completion-shortcut-discovery" open={discoveryOpen}
         onToggle={event => setDiscoveryOpen(event.currentTarget.open)}>
         <summary data-completion-shortcuts-heading className="cursor-pointer rounded font-semibold text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500">
-          {en ? 'Assessment shortcuts' : 'Prüfungsabkürzungen'}
+          {en ? 'Assessments' : 'Prüfungen'}
         </summary>
         <p className="mt-3 text-sm text-text-secondary">{en
           ? 'Already familiar with a topic? Try its assessment directly. Passing can remove preparation for that section; other goals keep their saved result.'
@@ -94,8 +94,8 @@ export const LevelCompletionCard = ({
           : 'Diese Ansicht ist veraltet. Lade den aktuellen Stand, bevor du den nächsten Schritt wählst.'}</p> : null}
         {completion.notice ? <p className="mt-3 text-sm text-text-secondary">{completionNotice(completion.notice, language)}</p> : null}
         {requestedAssessmentMissing ? <p role="status" className="mt-3 text-sm text-text-secondary">{en
-          ? 'The requested assessment is not currently available as a shortcut here. You can review your Personal Curriculum in the settings.'
-          : 'Die angefragte Prüfung ist hier aktuell nicht als Abkürzung verfügbar. Du kannst deinen Persönlichen Lehrplan in den Einstellungen prüfen.'}</p> : null}
+          ? 'The requested assessment is currently unavailable here. You can review your Personal Curriculum in the settings.'
+          : 'Die angefragte Prüfung ist hier aktuell nicht verfügbar. Du kannst deinen Persönlichen Lehrplan in den Einstellungen prüfen.'}</p> : null}
         {automaticOverview && valid && completion.profileId && completion.assessments.length > 0 ? <CompletionAssessmentList
           assessments={completion.assessments} profileId={completion.profileId} revision={completion.learnerRevision}
           language={language} disabled={discoveryDisabled} stale={stale} running={completion.directAssessmentRunning}
@@ -137,7 +137,7 @@ export const LevelCompletionCard = ({
           <button type="button" className={buttonClass} disabled={currentScopePage === scopeLastPage} onClick={() => setScopePage(currentScopePage + 1)}>{en ? 'Next' : 'Weiter'}</button>
         </nav> : null}
         {completion.profileOptions.length === 0 && (!automaticOverview || completion.assessments.length === 0) ? <p role="status" className="mt-3 text-sm text-text-secondary">{en
-          ? 'No suitable assessment shortcuts are currently available.' : 'Aktuell sind keine passenden Prüfungsabkürzungen verfügbar.'}</p> : null}
+          ? 'No matching assessment is currently available.' : 'Aktuell ist keine passende Prüfung verfügbar.'}</p> : null}
         {(completion.profileOptions.length === 0 || requestedAssessmentMissing) && onOpenSettings
           ? <button type="button" className={`mt-3 ${buttonClass}`} onClick={onOpenSettings}>{en ? 'Open learning settings' : 'Lerneinstellungen öffnen'}</button> : null}
         {stale || completion.calculationStatus === 'unavailable' || completion.calculationStatus === 'invalid'
@@ -154,8 +154,8 @@ export const LevelCompletionCard = ({
         <InlineMathText text={completionLabel(completion.title, language, en ? 'Complete a learning section' : 'Einen Lernabschnitt abschließen')} />
       </h2>
       {requestedAssessmentMissing ? <p role="status" className="mt-3 text-sm text-text-secondary">{en
-        ? 'The requested assessment is not currently available as a shortcut in this learning route. You can review your Personal Curriculum in the settings.'
-        : 'Die angefragte Prüfung ist in diesem Lernweg aktuell nicht als Abkürzung verfügbar. Du kannst deinen Persönlichen Lehrplan in den Einstellungen prüfen.'}</p> : null}
+        ? 'The requested assessment is currently unavailable in this learning route. You can review your Personal Curriculum in the settings.'
+        : 'Die angefragte Prüfung ist in diesem Lernweg aktuell nicht verfügbar. Du kannst deinen Persönlichen Lehrplan in den Einstellungen prüfen.'}</p> : null}
       {requestedAssessmentMissing && onOpenSettings ? <button type="button" className={`mt-3 ${buttonClass}`} onClick={onOpenSettings}>
         {en ? 'Open learning settings' : 'Lerneinstellungen öffnen'}
       </button> : null}

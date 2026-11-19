@@ -15,7 +15,7 @@ export function isCompactListScope(fixture: LearningMapFixture, scopeId: string,
 export function useMapNavigation(fixture: LearningMapFixture, reducedMotion: boolean,
   layoutScopeKey?: string | null, direction = 'RIGHT', initialScopeId?: string, active = true,
   focusBoundaryRef?: RefObject<HTMLElement | null>, focusSurfaceRef?: RefObject<HTMLElement | null>,
-  compactListThreshold?: number) {
+  compactListThreshold?: number, preferList?: (scopeId: string) => boolean) {
   const flow = useReactFlow()
   const store = useStoreApi()
   const [requestedPath, setPath] = useState(() => {
@@ -40,7 +40,7 @@ export function useMapNavigation(fixture: LearningMapFixture, reducedMotion: boo
   const scopeId = path[path.length - 1]
   const viewKey = `${scopeId}:${direction}`
   // A scope shown as a compact list has no graph nodes and hence no camera to place.
-  const withoutCamera = isCompactListScope(fixture, scopeId, compactListThreshold)
+  const withoutCamera = isCompactListScope(fixture, scopeId, compactListThreshold) || !!preferList?.(scopeId)
   const layoutReady = active && (withoutCamera || layoutScopeKey === undefined || layoutScopeKey === viewKey)
 
   useEffect(() => {

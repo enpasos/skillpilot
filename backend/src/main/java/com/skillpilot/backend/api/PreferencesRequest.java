@@ -1,7 +1,9 @@
 package com.skillpilot.backend.api;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.skillpilot.backend.service.learningplan.PeriodBasis;
 
+@JsonIgnoreProperties("useAssessmentShortcuts") // Older cockpit clients still send the retired preference.
 public record PreferencesRequest(
                 String learningStrategy,
                 Boolean autoPilot,
@@ -9,15 +11,7 @@ public record PreferencesRequest(
                 Boolean showGoalVisualizationsInChat,
                 Boolean followLearningPlans,
                 PeriodBasis learningPlanPeriodBasis,
-                Boolean useAssessmentShortcuts,
                 Boolean learningPlanCountOnlyExplicitGoals) {
-
-    public PreferencesRequest(String learningStrategy, Boolean autoPilot, Boolean strictMode,
-            Boolean showGoalVisualizationsInChat, Boolean followLearningPlans, PeriodBasis learningPlanPeriodBasis,
-            Boolean useAssessmentShortcuts) {
-        this(learningStrategy, autoPilot, strictMode, showGoalVisualizationsInChat,
-                followLearningPlans, learningPlanPeriodBasis, useAssessmentShortcuts, null);
-    }
 
     public PreferencesRequest(String learningStrategy, Boolean autoPilot, Boolean strictMode,
             Boolean showGoalVisualizationsInChat, Boolean followLearningPlans, PeriodBasis learningPlanPeriodBasis) {

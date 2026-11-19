@@ -16,6 +16,8 @@ import java.util.Map;
 import java.util.Set;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
@@ -317,6 +319,70 @@ class LearnerPlanningScopeServiceTest {
         assertPlanningScopeContainsOnlyStructuralAtoms(snapshot.scopeAtomicGoalIds());
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = {"G8", "G9"})
+    void physicsActiveContextUsesSelectedDurationAndOnlyStoredPrerequisiteEvidence(String duration) {
+        Learner learner = selectHessenPhysics(duration, "GK");
+        String throwGoalId = "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2";
+        String assessmentId = "a9562b05-c54d-5635-9244-3f7dd24a8642";
+        String modelGoalId = "d6dc0e02-831d-4894-a61a-852bcc74f147";
+        String focus = "composition:de-he-gym-physics-gk-" + duration.toLowerCase(java.util.Locale.ROOT)
+                + ":structure:physics-e1-motion";
+        long initialRevision = learner.getCoachStateRevision();
+        assertThat(learnerService.getCoachActiveGoalContext(LEARNER_ID, null, initialRevision, "de", Set.of(), true)).isNull();
+        learnerService.setPlannedGoals(LEARNER_ID, Set.of(focus));
+        long revision = learner.getCoachStateRevision();
+        var entry = learnerService.getCoachActiveGoalContext(LEARNER_ID, null, revision, "de", Set.of(), true);
+        assertThat(entry).isNotNull();
+        assertThat(entry.goalId()).isNull();
+        assertThat(entry.practiceExercise()).isNull();
+        assertThat(entry.unitIntroduction().question()).isEqualTo("Ein Ball rollt vom Tisch. Wo landet er?");
+        assertThat(entry.unitPaths()).anySatisfy(path -> {
+            assertThat(path.sections()).contains("E.1 Bewegungen und ihre Beschreibung");
+            assertThat(path.inCurrentFocus()).isTrue();
+        });
+
+        learner.setActiveGoalId(throwGoalId);
+        learnerRepository.saveAndFlush(learner);
+        masteryRepository.saveAndFlush(new Mastery(learner, modelGoalId, 1.0));
+        var context = learnerService.getCoachActiveGoalContext(LEARNER_ID, throwGoalId, revision, "de", Set.of(), true);
+        assertThat(context).isNotNull();
+        assertThat(context.practiceExercise().title()).isEqualTo("Wo muss die Bodenmarke liegen?");
+        assertThat(context.practiceExercise().prompt()).contains("0,80 m hohen Tisch waagerecht");
+        assertThat(learnerService.getCoachActiveGoalContext(LEARNER_ID, throwGoalId, revision, "de", Set.of(), false)
+                .practiceExercise()).isNull();
+        assertThat(context.unitPaths()).anySatisfy(path -> assertThat(path.sections())
+                .contains("E.1 Bewegungen und ihre Beschreibung"));
+        assertThat(context.prerequisites()).anySatisfy(prerequisite -> {
+            assertThat(prerequisite.title()).isEqualTo("Modellierung und Idealisierung von Bewegungen");
+            assertThat(prerequisite.recorded()).isTrue();
+        }).anySatisfy(prerequisite -> assertThat(prerequisite.recorded()).isFalse());
+        assertThat(context.activities()).anySatisfy(activity -> {
+            assertThat(activity.goalId()).isEqualTo(assessmentId);
+            assertThat(activity.route()).isEqualTo("cockpit");
+        });
+        assertThat(learnerService.getCoachActiveGoalContext(LEARNER_ID, throwGoalId, revision + 1, "de", Set.of(), true)).isNull();
+        assertThat(learnerService.getCoachActiveGoalContext(LEARNER_ID, assessmentId, revision, "de", Set.of(), true)).isNull();
+
+        learner.setActiveGoalId(assessmentId);
+        learnerRepository.saveAndFlush(learner);
+        var exam = learnerService.getCoachActiveGoalContext(LEARNER_ID, assessmentId, revision, "de", Set.of(), true);
+        assertThat(exam.goalId()).isEqualTo(assessmentId);
+        assertThat(exam.phase()).isEqualTo("E");
+        assertThat(exam.unitIntroduction()).isNull();
+        assertThat(exam.practiceExercise()).isNull();
+        assertThat(exam.unitPaths()).isEmpty();
+        assertThat(exam.prerequisites()).isEmpty();
+        assertThat(exam.activities()).isEmpty();
+
+        selectNationalMathAndPhysicsLk();
+        learner.setActiveGoalId(throwGoalId);
+        learnerRepository.saveAndFlush(learner);
+        var otherView = learnerService.getCoachActiveGoalContext(LEARNER_ID, throwGoalId,
+                learner.getCoachStateRevision(), "de", Set.of(), true);
+        if (otherView != null) assertThat(otherView.practiceExercise()).isNull();
+    }
+
     @Test
     void levelTwoSnapshotDoesNotPersistOrRepairLevelThreeState() {
         selectHessenG9Math();
@@ -393,6 +459,10 @@ class LearnerPlanningScopeServiceTest {
     }
 
     private void selectHessenG9PhysicsCombined() {
+        selectHessenPhysics("G9", "GK+LK");
+    }
+
+    private Learner selectHessenPhysics(String duration, String profile) {
         Learner learner = learnerRepository.findById(LEARNER_ID).orElseThrow();
         learner.setSelectedCurriculum(CURRICULUM_ID);
         learner.setPersonalCurriculum(completedPersonalizationConfig(Map.of(
@@ -400,11 +470,12 @@ class LearnerPlanningScopeServiceTest {
                         "selected", true,
                         "filterId", "DE-HE",
                         "stage", "CrossStage",
-                        "durationModel", "G9"),
+                        "durationModel", duration),
                 PHYSICS_LANDSCAPE_ID, Map.of(
                         "selected", true,
-                        "filterId", "GK+LK"))));
+                        "filterId", profile))));
         learnerRepository.saveAndFlush(learner);
+        return learner;
     }
 
     private void assertPlanningScopeContainsOnlyStructuralAtoms(List<String> goalIds) {

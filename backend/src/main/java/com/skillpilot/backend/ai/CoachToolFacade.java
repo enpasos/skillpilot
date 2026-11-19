@@ -1,5 +1,6 @@
 package com.skillpilot.backend.ai;
 
+import com.skillpilot.backend.api.ActiveGoalContext;
 import com.skillpilot.backend.api.ActiveGoalRequest;
 import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.LearnerLearningPlanApi;
@@ -161,6 +162,13 @@ public class CoachToolFacade {
         return com.skillpilot.backend.completion.CompletionCallContext.with(
                 new com.skillpilot.backend.completion.CompletionCallContext("legacy", "unsupported", null, false),
                 () -> completionAwareCoachState(skillpilotId));
+    }
+
+    public ActiveGoalContext getActiveGoalContext(String skillpilotId, String goalId, long stateVersion,
+            String language, Set<String> publishedFrontierIds, boolean includeActivities) {
+        learnerService.assertActiveLearnerRouteAccess(skillpilotId);
+        return learnerService.getCoachActiveGoalContext(skillpilotId, goalId, stateVersion, language,
+                publishedFrontierIds, includeActivities);
     }
 
     private UnifiedLearnerStateResponse completionAwareCoachState(String skillpilotId) {

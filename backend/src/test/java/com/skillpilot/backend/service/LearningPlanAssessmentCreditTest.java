@@ -173,7 +173,7 @@ class LearningPlanAssessmentCreditTest {
         assertThat(service.getTodayStatus(ID, "de").noticeText()).isNotBlank();
     }
 
-    @Test void navigationSkipsWaivedPreparationInBothCountingModesWithoutChangingTheNormalFrontier() {
+    @Test void planNavigationRevisitsCreditedPreparationOnlyWhenIndividualEvidenceIsRequested() {
         when(learners.getUncompactedRichFrontierForFocus(eq(ID), any()))
                 .thenReturn(List.of(frontier("a"), frontier("b")));
         when(learners.getPersonalCurriculumSubjectFrontier(ID, "math"))
@@ -181,7 +181,9 @@ class LearningPlanAssessmentCreditTest {
         var normal = service.getPlan(ID, "math", DATE);
         assertThat(normal.nextEligibleGoal().goalId()).isEqualTo("extra");
         learner.setLearningPlanCountOnlyExplicitGoals(true);
-        assertThat(service.getPlan(ID, "math", DATE).nextEligibleGoal().goalId()).isEqualTo("extra");
+        assertThat(service.getPlan(ID, "math", DATE).nextEligibleGoal().goalId()).isEqualTo("a");
+        assertThat(mastery).containsExactly(Map.entry("q", 1.0));
+        assertThat(completions).containsOnlyKeys("q");
         assertThat(learners.getUncompactedRichFrontierForFocus(ID, List.of("a", "b", "q")))
                 .extracting(FrontierGoal::id).containsExactly("a", "b");
     }

@@ -3,10 +3,10 @@ package com.skillpilot.backend.connectors.claude.v1.mcp;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.Mockito.mockingDetails;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -154,7 +154,7 @@ class ClaudeV1MasteryContractTest {
         assertThat(List.copyOf(context.keySet()).indexOf("toolPreparationInstruction"))
                 .isLessThan(List.copyOf(context.keySet()).indexOf("activeGoal"));
         assertThat(context.toString()).doesNotContain(connectionId, learnerId);
-        assertContextReadDidNotMutate();
+        assertContextReadDidNotMutate(active);
     }
 
     @ParameterizedTest
@@ -172,7 +172,7 @@ class ClaudeV1MasteryContractTest {
                 .doesNotContainKeys("goalVisualization", "presentationInstruction")
                 .hasEntrySatisfying("toolPreparationInstruction", instruction -> assertThat(instruction.toString())
                         .contains("If this fresh context's goalVisualization and presentationInstruction require rendering"));
-        assertContextReadDidNotMutate();
+        assertContextReadDidNotMutate(active);
     }
 
     @ParameterizedTest
@@ -196,7 +196,7 @@ class ClaudeV1MasteryContractTest {
 
         assertThat(result.isError()).isFalse();
         assertThat(payload(result)).doesNotContainKey("toolPreparationInstruction");
-        assertContextReadDidNotMutate();
+        assertContextReadDidNotMutate(active);
     }
 
     @Test
@@ -613,17 +613,23 @@ class ClaudeV1MasteryContractTest {
                 semanticKind, null, tags, links, null, null, null, null, false);
     }
 
-    private void assertContextReadDidNotMutate() {
+    private void assertContextReadDidNotMutate(FrontierGoal active) {
         assertThat(currentStateVersion()).isEqualTo(INITIAL_STATE_VERSION);
         assertThat(jdbc.queryForObject(
                 "SELECT COUNT(*) FROM claude_v1_session_idempotency WHERE token_hash = ?",
                 Integer.class, sessionTokens.hash(connectionId))).isZero();
-        Set<String> readOnlyMethods = Set.of(
-                "getLearnerState", "getLearningPlanTodayStatus", "getPersonalizationPlan",
-                "getAdditionalLearningMaterials", "showGoalVisualizationsInChat", "getOrientationOutlook");
-        assertThat(mockingDetails(coachToolFacade).getInvocations())
-                .extracting(invocation -> invocation.getMethod().getName())
-                .allMatch(readOnlyMethods::contains);
+        verify(coachToolFacade).getLearnerState(learnerId);
+        verify(coachToolFacade).getLearningPlanTodayStatus(learnerId, "de");
+        verify(coachToolFacade).getPersonalizationPlan(learnerId);
+        if (active != null && "atomic".equals(active.type())) {
+            verify(coachToolFacade).getActiveGoalContext(learnerId, active.id(), INITIAL_STATE_VERSION, "de", Set.of(), true);
+        }
+        verify(coachToolFacade).getAdditionalLearningMaterials(learnerId, active, "de");
+        verify(coachToolFacade).showGoalVisualizationsInChat(learnerId);
+        if (active != null && "orientation".equals(active.semanticKind())) {
+            verify(coachToolFacade).getOrientationOutlook(learnerId, "de");
+        }
+        verifyNoMoreInteractions(coachToolFacade);
     }
 
     private McpSchema.CallToolResult callMastery(

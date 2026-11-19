@@ -6,7 +6,7 @@ import { Background, BackgroundVariant, MarkerType, MiniMap, ReactFlow, ReactFlo
   useReactFlow, type Edge, type Viewport } from '@xyflow/react'
 import '@xyflow/react/dist/style.css'
 import type { LearningEntryProgress, LearningMapCommand, LearningMapFixture } from './types'
-import { MapListItem, MapNode, type LearningFlowNode } from './MapNode'
+import { MapListItem, MapNode, type LearningFlowNode, type LearningMapPracticeAction, type LearningMapGoalAction } from './MapNode'
 import { getEntryKindLabel } from './presentation'
 import { isCompactListScope, useMapNavigation } from './useMapNavigation'
 import { layoutLearningScope, restartLearningScopeLayoutWorker, type LearningScopeLayout } from './layoutLearningScope'
@@ -36,6 +36,9 @@ type MapProps = {
   onSelectionChange?: (entryId: string | null) => void
   renderSelectionActions?: (entryId: string) => ReactNode
   renderScopeActions?: (scopeId: string) => ReactNode
+  mobileListScopes?: ReadonlySet<string>
+  getGoalAction?: (scopeId: string, entryId: string) => LearningMapGoalAction | undefined
+  getPracticeAction?: (scopeId: string, entryId: string) => LearningMapPracticeAction | undefined
   onReturnToTree?: () => void
   /** Hosts such as a full-window dialog own Escape once the map search is closed. */
   onEscape?: () => void
@@ -78,12 +81,15 @@ function useNarrowScreen() {
 function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = false,
   active = true, headingMode = 'standard', rootLabel,
   learnerProgress, activeGoalId, initialScopeId, command, showInspector = true, onEntrySelect,
-  onSelectionChange, renderSelectionActions, renderScopeActions, onReturnToTree, onEscape, language = 'de',
+  onSelectionChange, renderSelectionActions, renderScopeActions, mobileListScopes, getGoalAction, getPracticeAction, onReturnToTree, onEscape, language = 'de',
   compactListThreshold, toolbar, locationBarContainer }: MapProps) {
   const label = (de: string, en: string) => language === 'en' ? en : de
   const MapContainer = embedded ? 'section' : 'main'
   const reducedMotion = useReducedMotion()
   const narrowScreen = useNarrowScreen()
+  const [mobileGraphScope, setMobileGraphScope] = useState<string | null>(null)
+  const preferList = useCallback((id: string) => narrowScreen && !!mobileListScopes?.has(id) && mobileGraphScope !== id,
+    [mobileGraphScope, mobileListScopes, narrowScreen])
   const flow = useReactFlow<LearningFlowNode>()
   const [direction, setDirection] = useState<'RIGHT' | 'DOWN'>('RIGHT')
   const [layout, setLayout] = useState<{ fixture: LearningMapFixture; key: string; data: LearningScopeLayout } | null>(null)
@@ -92,7 +98,7 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
   const mapContainer = useRef<HTMLElement>(null)
   const mapSurface = useRef<HTMLDivElement>(null)
   const nav = useMapNavigation(fixture, reducedMotion, layout?.fixture === fixture ? layout.key : null,
-    direction, initialScopeId, active, mapContainer, mapSurface, compactListThreshold)
+    direction, initialScopeId, active, mapContainer, mapSurface, compactListThreshold, preferList)
   const { enter, goUp, goToDepth, goToScope } = nav
   const [selection, setSelection] = useState<{ scope: string; id: string } | null>(null)
   const [query, setQuery] = useState('')
@@ -117,7 +123,8 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
   const selectedId = selection?.scope === nav.scopeId && visible.has(selection.id) ? selection.id : null
   const inspected = selectedId ? fixture.entries[selectedId] : null
   const layoutKey = `${nav.scopeId}:${direction}`
-  const listMode = isCompactListScope(fixture, nav.scopeId, compactListThreshold)
+  const largeList = isCompactListScope(fixture, nav.scopeId, compactListThreshold)
+  const listMode = largeList || preferList(nav.scopeId)
   const activeLayout = listMode ? EMPTY_LAYOUT : layout?.fixture === fixture && layout.key === layoutKey ? layout.data : null
   const scopeTitle = nav.scopeId === fixture.rootId && rootLabel ? rootLabel : scope.title
   const extendedTools = headingMode === 'standard' || visibleIds.length >= 8
@@ -288,6 +295,7 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
 
   const nodes = useMemo<LearningFlowNode[]>(() => activeLayout && !listMode ? visibleIds.map(id => {
     const entry = fixture.entries[id]
+    const goalAction = getGoalAction?.(nav.scopeId, id)
     return { id, type: 'learningUnit', position: activeLayout.positions[id],
       width: 220, height: 72, draggable: false, selectable: false,
       data: { entry, childCount: entry.children?.length ?? 0,
@@ -296,9 +304,11 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
           : entry.requires.filter(ref => !visible.has(ref)).length,
         ports: activeLayout.ports[id], active: selectedId === id,
         progress: learnerProgress?.[id], activeLearningGoal: activeGoalId === id, language,
-        related: selectedId !== id && related.has(id), muted: !!selectedId && !related.has(id),
+        related: selectedId !== id && related.has(id), muted: !!selectedId && !related.has(id) && !goalAction,
+        goalAction, practiceAction: getPracticeAction?.(nav.scopeId, id),
         onSelect: select, onOpen: open } }
-  }) : [], [activeLayout, listMode, fixture, nav.scopeId, visible, visibleIds, selectedId, related, select, open, learnerProgress, activeGoalId, language])
+  }) : [], [activeLayout, listMode, fixture, nav.scopeId, visible, visibleIds, selectedId, related, select, open,
+    learnerProgress, activeGoalId, language, getGoalAction, getPracticeAction])
 
   const edges = useMemo<Edge[]>(() => activeLayout?.edges.map(edge => {
     const highlighted = edge.source === selectedId || edge.target === selectedId
@@ -469,7 +479,12 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
         {headingMode === 'standard' && <div className="lum-map-summary"><h1>{scopeTitle}</h1>
           <span>{visibleIds.length} Bereiche · {activeLayout?.edges.length ?? '…'} Verbindungen</span>
         </div>}
-        {renderScopeActions && <div className="lum-scope-actions">{renderScopeActions(nav.scopeId)}</div>}
+        {renderScopeActions && <div className="lum-scope-actions">{renderScopeActions(nav.scopeId)}
+          {narrowScreen && !largeList && mobileListScopes?.has(nav.scopeId) && <button type="button" className="lum-board-mode"
+            onClick={() => setMobileGraphScope(listMode ? nav.scopeId : null)}>
+            {listMode ? label('Grafische Karte anzeigen', 'Show graph') : label('Zielliste anzeigen', 'Show goal list')}
+          </button>}
+        </div>}
         {fixture.scopeRelations && contextOpen && <aside id="lum-requirement-context" className="lum-requirement-context" data-testid="learning-map-requirement-context"
           aria-label={label('Verbindungen und Voraussetzungen', 'Connections and prerequisites')}>
           <div className="lum-requirement-head">
@@ -506,7 +521,7 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
           </div>
         </aside>}
         <div ref={mapSurface} tabIndex={-1} className={`lum-flow lum-flow--${nav.phase}`} onDoubleClickCapture={event => {
-          if (!event.shiftKey) return
+          if (!event.shiftKey || (event.target instanceof Element && event.target.closest('.lum-node-practice'))) return
           event.preventDefault()
           event.stopPropagation()
           setSelection(null)
@@ -525,15 +540,15 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
               maskColor="rgba(245,247,249,0.75)" ariaLabel="Übersichtskarte" />}
           </ReactFlow>
           {listMode && <div ref={listContainer} className="lum-list" data-testid="learning-map-compact-list">
-            <p className="lum-list-note" role="note">{visibleIds.some(id => fixture.entries[id].children?.length)
+            {largeList && <p className="lum-list-note" role="note">{visibleIds.some(id => fixture.entries[id].children?.length)
               ? label(`Hier stehen ${visibleIds.length} Einträge. Sie sind noch nicht weiter in Einheiten unterteilt und stehen deshalb als Liste ohne Pfeile da.`,
                 `There are ${visibleIds.length} entries here. They are not subdivided into units yet, so they are listed without arrows.`)
               : label(`Diese Einheit ist noch nicht weiter unterteilt. Ihre ${visibleIds.length} Lernziele stehen deshalb als Liste ohne Pfeile da.`,
-                `This unit is not subdivided yet, so its ${visibleIds.length} learning goals are listed without arrows.`)}</p>
+                `This unit is not subdivided yet, so its ${visibleIds.length} learning goals are listed without arrows.`)}</p>}
             <ul aria-label={`${label('Lernkarte', 'Learning map')}: ${scopeTitle}`}>
               {visibleIds.map(id => <MapListItem key={id} entry={fixture.entries[id]} childCount={fixture.entries[id].children?.length ?? 0}
                 active={selectedId === id} progress={learnerProgress?.[id]} activeLearningGoal={activeGoalId === id}
-                language={language} onSelect={select} onOpen={open} />)}
+                language={language} goalAction={getGoalAction?.(nav.scopeId, id)} practiceAction={getPracticeAction?.(nav.scopeId, id)} onSelect={select} onOpen={open} />)}
             </ul>
           </div>}
         </div>

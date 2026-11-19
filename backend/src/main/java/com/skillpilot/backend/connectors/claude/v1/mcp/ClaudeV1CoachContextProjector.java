@@ -2,6 +2,7 @@ package com.skillpilot.backend.connectors.claude.v1.mcp;
 
 import com.skillpilot.backend.ai.CoachStateProjection;
 import com.skillpilot.backend.ai.CoachToolFacade;
+import com.skillpilot.backend.api.ActiveGoalContext;
 import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.GoalSourceLink;
 import com.skillpilot.backend.api.LearnerGoals;
@@ -13,6 +14,7 @@ import com.skillpilot.backend.api.OrientationOutlook;
 import com.skillpilot.backend.api.PersonalizationPlan;
 import com.skillpilot.backend.api.StateMachineInfo;
 import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
+import com.skillpilot.backend.connectors.claude.v1.ClaudeV1Contract;
 import com.skillpilot.backend.connectors.claude.v1.ConditionalOnClaudeV1Enabled;
 import com.skillpilot.backend.content.ContentMaterialResolver;
 import com.skillpilot.backend.landscape.LandscapeSummary;
@@ -24,6 +26,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -198,6 +201,21 @@ public class ClaudeV1CoachContextProjector {
         }
 
         context.put("activeGoal", formatGoal(activeGoal));
+        boolean focusedUnitOnly = activeGoal == null && !guidedPlan && !completionRoute && stateMachine != null
+                && stateMachine.requiredAction() != null
+                && List.of("getFrontier", "setActiveGoal", "setScope").contains(stateMachine.requiredAction());
+        if (focusedUnitOnly || (activeGoal != null && "atomic".equals(activeGoal.type()))) {
+            Set<String> publishedFrontierIds = projectedState.frontier() == null || guidedPlan || completionRoute
+                    || suppressCompetingFrontier ? Set.of()
+                    : projectedState.frontier().stream().filter(Objects::nonNull)
+                            .filter(goal -> "atomic".equals(goal.type()))
+                            .filter(goal -> activeGoal == null || !Objects.equals(goal.id(), activeGoal.id()))
+                            .map(FrontierGoal::id).collect(Collectors.toUnmodifiableSet());
+            Map<String, Object> activeContext = projectActiveGoalContext(skillpilotId, stateVersion, language,
+                    projectedState.curriculum(), activeGoal, publishedFrontierIds,
+                    !completionRoute && (!guidedPlan || activeGoal != null), guidedPlan, completion);
+            if (activeContext != null) context.put(focusedUnitOnly ? "focusedUnitContext" : "activeGoalContext", activeContext);
+        }
 
         List<ContentMaterialResolver.ResolvedMaterial> additionalMaterials =
                 coachToolFacade.getAdditionalLearningMaterials(skillpilotId, activeGoal, language);
@@ -253,6 +271,110 @@ public class ClaudeV1CoachContextProjector {
         }
 
         return context;
+    }
+
+    private Map<String, Object> projectActiveGoalContext(String skillpilotId, long stateVersion, String language,
+            LandscapeSummary curriculum, FrontierGoal activeGoal, Set<String> publishedFrontierIds,
+            boolean includeActivities, boolean guidedPlan, LevelCompletionResponse completion) {
+        boolean exam = activeGoal != null && ("exam".equals(activeGoal.nodeKind()) || activeGoal.examData() != null);
+        String activeGoalId = activeGoal == null ? null : activeGoal.id();
+        ActiveGoalContext detail = coachToolFacade.getActiveGoalContext(skillpilotId, activeGoalId, stateVersion,
+                language, exam ? Set.of() : publishedFrontierIds, !exam && includeActivities);
+        if (detail == null || !Objects.equals(detail.goalId(), activeGoalId)) return null;
+
+        Map<String, Object> result = new LinkedHashMap<>();
+        if (detail.goalId() != null) result.put("goalId", detail.goalId());
+        if (detail.phase() != null && detail.phase().matches("E|Q[1-4]")) result.put("phase", detail.phase());
+        if (exam) return result;
+
+        if (!detail.unitPaths().isEmpty()) result.put("unitPaths", detail.unitPaths());
+        if (!detail.prerequisites().isEmpty()) {
+            result.put("prerequisites", projectDirectPrerequisites(detail.prerequisites(), completion, stateVersion, language));
+        }
+        if (detail.unitIntroduction() != null) result.put("unitIntroduction", detail.unitIntroduction());
+        if (includeActivities && activeGoal != null && !isOrientationGoal(activeGoal)
+                && !ClaudeV1McpContractAdapter.isMemoryGoal(activeGoal) && detail.practiceExercise() != null) {
+            result.put("practiceExercise", detail.practiceExercise());
+        }
+        if (includeActivities && !detail.activities().isEmpty()) {
+            String curriculumId = curriculum == null ? null : curriculum.getCurriculumId();
+            List<ClaudeV1CompletionChoices.Choice> choices = completion != null && completion.learnerRevision() == stateVersion
+                    ? ClaudeV1CompletionChoices.published(completion, language) : List.of();
+            List<Map<String, Object>> activities = detail.activities().stream().map(activity -> projectUnitActivity(
+                    activity, choices, curriculumId, activeGoalId, stateVersion))
+                    .filter(activity -> !guidedPlan || activity.containsKey("action")).toList();
+            if (!activities.isEmpty()) result.put("activities", activities);
+        }
+        return result;
+    }
+
+    private List<Map<String, Object>> projectDirectPrerequisites(List<ActiveGoalContext.Prerequisite> prerequisites,
+            LevelCompletionResponse completion, long stateVersion, String language) {
+        boolean scopedWaivers = completion != null && "valid".equals(completion.calculationStatus())
+                && completion.learnerRevision() == stateVersion && completion.notice() == null
+                && completion.contextRef() != null && !completion.contextRef().isBlank()
+                && completion.profileId() != null && !completion.profileId().isBlank()
+                && completion.title() != null && completion.waivedTargetGoalIds() != null;
+        String scopeTitle = scopedWaivers ? localized(language, completion.title().get("de"), completion.title().get("en")) : null;
+        return prerequisites.stream().map(prerequisite -> {
+            Map<String, Object> result = new LinkedHashMap<>();
+            result.put("title", prerequisite.title());
+            result.put("recorded", prerequisite.recorded());
+            if (!prerequisite.recorded() && scopeTitle != null && completion.waivedTargetGoalIds().contains(prerequisite.goalId())) {
+                List<LevelCompletionResponse.WaiverDetail> matches = completion.waiverDetails().stream()
+                        .filter(waiver -> prerequisite.goalId().equals(waiver.goalId())).limit(2).toList();
+                String reason = matches.size() == 1 ? publishedWaiverReason(matches.getFirst()) : null;
+                // The evaluator publishes at most three explanations, independently of the waived IDs.
+                result.put("scopeWaiver", reason == null ? Map.of("sectionTitle", scopeTitle)
+                        : Map.of("reason", reason, "sectionTitle", scopeTitle));
+            }
+            return result;
+        }).toList();
+    }
+
+    private static String publishedWaiverReason(LevelCompletionResponse.WaiverDetail waiver) {
+        if (waiver.ruleId() == null || waiver.ruleId().isBlank() || waiver.assessments() == null) return null;
+        if ("no_remaining_demand".equals(waiver.ruleId())) {
+            return waiver.assessmentCount() == 0 && waiver.assessments().isEmpty() ? "no_remaining_demand" : null;
+        }
+        return !waiver.assessments().isEmpty() && waiver.assessmentCount() >= waiver.assessments().size()
+                ? "assessment" : null;
+    }
+
+    private Map<String, Object> projectUnitActivity(ActiveGoalContext.Activity activity,
+            List<ClaudeV1CompletionChoices.Choice> choices, String curriculumId, String activeGoalId, long stateVersion) {
+        Map<String, Object> option = new LinkedHashMap<>();
+        option.put("goalId", activity.goalId());
+        option.put("title", activity.title());
+        option.put("kind", activity.kind());
+        option.put("sectionTitle", activity.sectionTitle());
+        List<ClaudeV1CompletionChoices.Choice> direct = "assessment".equals(activity.kind())
+                ? choices.stream().filter(choice -> "startAssessment".equals(choice.action())
+                                && activity.goalId().equals(choice.goalId())).limit(2).toList()
+                : List.of();
+        if (direct.size() == 1) {
+            option.put("route", "directAssessment");
+            option.put("action", Map.of("tool", ClaudeV1McpContractAdapter.TOOL_CHOOSE_COMPLETION_ROUTE,
+                    "arguments", Map.of("choice", direct.getFirst().label(), "expectedStateVersion", stateVersion)));
+            return option;
+        }
+
+        String route = activity.route();
+        Map<String, Object> parameters = new LinkedHashMap<>();
+        parameters.put("goalId", activity.goalId());
+        parameters.put("expectedStateVersion", stateVersion);
+        if ("frontier".equals(route)) {
+            if (activeGoalId != null) parameters.put("redirect", true);
+            option.put("action", Map.of("tool", ClaudeV1Contract.TOOL_SET_ACTIVE_GOAL, "arguments", parameters));
+        } else if ("activeMemory".equals(route) || ("unitPractice".equals(route) && activity.practiceScopeId() != null)) {
+            if (activity.practiceScopeId() != null) parameters.put("practiceScopeId", activity.practiceScopeId());
+            option.put("action", Map.of("tool", ClaudeV1Contract.TOOL_START_MEMORY_PRACTICE, "arguments", parameters));
+        } else {
+            route = "cockpit";
+            option.put("cockpitUrl", cockpitUrl(curriculumId, activity.goalId()));
+        }
+        option.put("route", route);
+        return option;
     }
 
     /**

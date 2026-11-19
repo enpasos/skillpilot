@@ -42,6 +42,22 @@ class ClaudeV1CompletionProjectionTest {
     }
 
     @Test
+    void manyOrdinaryChoicesLeaveRoomForExitingAndVoluntaryStudy() {
+        var actions = new java.util.ArrayList<LevelCompletionResponse.Action>();
+        for (int i = 0; i < 24; i++) {
+            actions.add(new LevelCompletionResponse.Action("learnGoal", "required-" + i, Map.of("de", "Lernziel " + i), "required"));
+        }
+        actions.add(new LevelCompletionResponse.Action("learnGoal", "waived", Map.of("de", "Offene Einzelleistung"), "voluntary"));
+        actions.add(new LevelCompletionResponse.Action("leaveProfile", null, Map.of("de", "Zur normalen Lernansicht"), null));
+        var result = new LevelCompletionResponse("valid", "scope", "automatic:personal-curriculum", "1", "generation", 10,
+                Map.of("de", "Mein Lehrplan"), false, 0, 1, 24, 25, 0, 0, List.of("waived"),
+                List.of(), List.of(), "required", false, null, actions);
+        var choices = CompletionCallContext.with(supported(), () -> ClaudeV1CompletionChoices.published(result, "de"));
+        assertThat(choices).extracting(ClaudeV1CompletionChoices.Choice::label)
+                .contains("Zur normalen Lernansicht", "Freiwillig vertiefen: Offene Einzelleistung", "Weiterlernen: Lernziel 0");
+    }
+
+    @Test
     void supportedContextOffersBoundLocalizedChoicesWithoutRawProfileOrGenerationIds() {
         CoachToolFacade facade = mock(CoachToolFacade.class);
         when(facade.getLearnerState("learner")).thenReturn(state(completion(10, false)));

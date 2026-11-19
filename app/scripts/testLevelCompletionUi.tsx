@@ -56,11 +56,11 @@ const discovery: LevelCompletion = { ...open, calculationStatus: 'notApplicable'
   profileOptions: [{ profileId: 'profile', title: { de: 'Skalarprodukt', en: 'Dot product' }, targetCount: 2, requiredAssessmentCount: 1,
     assessments: [{ goalId: 'Q', title: { de: 'Prüfung', en: 'Assessment' }, mastered: false, startAvailable: true }] }] }
 const discoveryHtml = render(discovery)
-assert.match(discoveryHtml, /Prüfungsabkürzungen/u)
+assert.match(discoveryHtml, />Prüfungen<\/summary>/u)
 assert.match(discoveryHtml, /completionProfile=profile/u, 'an unselected profile can offer its published direct assessment')
-assert.doesNotMatch(discoveryHtml, /<details[^>]* open=/u, 'ordinary discovery remains compact')
+assert.doesNotMatch(discoveryHtml, /<details[^>]* open=/u, 'a disclosure does not expand without an explicit request')
 assert.doesNotMatch(render(discovery, { stale: true }), /href=.*completionProfile=/u)
-assert.match(render(discovery, { language: 'en' }), /Assessment shortcuts/u)
+assert.match(render(discovery, { language: 'en' }), />Assessments<\/summary>/u)
 const unavailableDiscovery = render({ ...discovery, calculationStatus: 'unavailable', notice: 'completion_mastery_unavailable' })
 assert.match(unavailableDiscovery, /Dein Lernstand kann gerade nicht zuverlässig geladen werden/u)
 assert.match(unavailableDiscovery, /<button[^>]*disabled=""[^>]*aria-label="Abschnitt als Lernweg wählen/u)

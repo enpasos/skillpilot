@@ -5,6 +5,7 @@ import com.skillpilot.backend.landscape.GoalMappingService;
 import com.skillpilot.backend.landscape.LandscapeService;
 import com.skillpilot.backend.service.CompositionViewService;
 import com.skillpilot.backend.service.DeckResourceService;
+import com.skillpilot.backend.service.UnitLearningMaterialService;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -76,6 +77,12 @@ public class CurriculumPackageConfiguration {
     @Bean
     DeckResourceService packageDeckResourceService(PackageCurriculumResourceState resourceState) {
         return new DeckResourceService(resourceState);
+    }
+
+    @Bean
+    UnitLearningMaterialService packageUnitLearningMaterialService() {
+        // The current package contract does not export unit practice material.
+        return UnitLearningMaterialService.empty();
     }
 
     @Bean

@@ -1,5 +1,7 @@
 # Assessment-gated Completion: Implementierung und Prüfung
 
+> Die unten genannten Einstellungen dokumentieren den früheren Pilotstand. Für den aktuellen Prüfungszugang und die freiwillige Weiterplanung angerechneter Einzelziele gilt der [Lernplanvertrag](../concept/didactic/unified-learning-plan-status.md#sec-implicit-completion).
+
 > **Überholt als Umsetzungsauftrag – 4. November 2026.** Die nachfolgenden
 > Beschreibungen halten den bisherigen Implementierungs-/Prüfstand fest.
 > Aussagen über Bedarfsstopp an Mastery, implizite Karten, bloßen Arbeitsentfall

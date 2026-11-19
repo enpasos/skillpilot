@@ -79,7 +79,8 @@ public class ClaudeV1CapabilityService {
             String goalId,
             String cardId,
             long issuedStateVersion,
-            Instant expiresAt) {}
+            Instant expiresAt,
+            String practiceScopeId) {}
 
     private final ClaudeV1Properties properties;
     private final ClaudeV1SessionTokenCodec sessionTokens;
@@ -235,6 +236,11 @@ public class ClaudeV1CapabilityService {
             String goalId,
             String cardId,
             long issuedStateVersion) {
+        return mintMemoryPracticeReviewCapability(learningSessionId, goalId, cardId, issuedStateVersion, null);
+    }
+
+    public String mintMemoryPracticeReviewCapability(String learningSessionId, String goalId, String cardId,
+            long issuedStateVersion, String practiceScopeId) {
         String sessionBinding = sessionBinding(learningSessionId);
         requireBindingValue(goalId, "goalId");
         requireBindingValue(cardId, "cardId");
@@ -248,12 +254,15 @@ public class ClaudeV1CapabilityService {
                 cardId,
                 Long.toString(issuedStateVersion),
                 Long.toString(expiresAt.toEpochMilli()));
+        if (practiceScopeId != null) {
+            requireBindingValue(practiceScopeId, "practiceScopeId");
+            payload += FIELD_SEPARATOR + practiceScopeId;
+        }
         return encryptAndEncode(payload);
     }
 
     /**
-     * Verifies a private review capability against the current OAuth connection, active goal and
-     * exact card. The issued revision is a lower bound rather than an equality check: every card in
+     * Verifies the current OAuth connection, deck and card and recovers the issued practice scope. The issued revision is a lower bound rather than an equality check: every card in
      * one component-local batch is minted at the same revision, while each preceding card rating
      * legitimately advances the canonical revision. The caller still supplies the newest revision
      * to {@link ClaudeV1SessionCoordinator}, which enforces exact optimistic concurrency before the
@@ -265,7 +274,12 @@ public class ClaudeV1CapabilityService {
             String expectedGoalId,
             String expectedCardId,
             long currentStateVersion) {
-        String[] parts = verifyAndSplit(capability, KIND_MEMORY_PRACTICE_REVIEW, 6);
+        String[] parts = verifyAndDecode(capability).split("\\" + FIELD_SEPARATOR, -1);
+        if ((parts.length != 6 && parts.length != 7) || !KIND_MEMORY_PRACTICE_REVIEW.equals(parts[0])) {
+            throw new CapabilityException("Capability is not a memory practice review token.");
+        }
+        String practiceScopeId = parts.length == 7 ? parts[6] : null;
+        if (practiceScopeId != null) requireBindingValue(practiceScopeId, "practiceScopeId");
         String sessionBinding = parts[1];
         String goalId = parts[2];
         String cardId = parts[3];
@@ -286,7 +300,8 @@ public class ClaudeV1CapabilityService {
                 goalId,
                 cardId,
                 issuedStateVersion,
-                expiresAt);
+                expiresAt,
+                practiceScopeId);
     }
 
     public ExamEvaluationClaim verifyExamEvaluationCapability(

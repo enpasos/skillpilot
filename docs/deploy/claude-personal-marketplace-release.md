@@ -8,6 +8,31 @@ the personal Marketplace. Claude Code installation and the manual update from
 1.1.13 have been verified. Acceptance in a learner’s Claude Web or Android
 session remains open.
 
+## 1.1.15 unit context and contextual assessments
+
+The 1.1.15 candidate introduces a chosen learning unit and uses the active
+goal and its enclosing units to guide teaching, flashcard practice and
+assessments. Direct assessment attempts are available at the corresponding
+goal. Passing records the evidence defined by that assessment. The planning
+preference “Keep credited goals in my plan” controls suggestions for goals
+that still lack individual evidence.
+
+The prepared export contains twelve files with tree SHA-256
+`ef53ba5c07db031d57719e2e0a5390b7f450d70a06207a2d59235b5f4cfd26d2`.
+Its workflow checks out SkillPilot source commit
+`8fc046fc530de3c17c3251e4f5b2c81729d6eee7`. The 172 files in the plugin
+source directory have tree SHA-256
+`d55b1cffee03d7496b638ce7143c78e4cf2c8cb0b1cf6090670db0438cae1562`.
+Rebuilding the seven installable files produced the 47,454-byte archive with
+SHA-256 `bec6045dbba0e399b01b223901527083a1c5c437d522211dd1c06f049aba3acb`.
+
+On 19 November 2026, both strict Claude Code 2.1.241 validators passed. An
+isolated CLI profile installed the exported plugin with version 1.1.15,
+enabled state and the expected MCP endpoint. The release record marks this
+version as `prepared_not_published`. Its first-party guide decision and
+real-account checks remain pending. The public personal Marketplace still
+serves 1.1.14. Its verified revision is recorded below.
+
 ## 1.1.14 conversational teaching for understanding goals
 
 A learner can describe what they already understand or ask for an explanation.
@@ -1127,7 +1152,8 @@ bound in the marketplace lane.
 
 - Marketplace name: `skillpilot-marketplace`
 - Stable technical plugin name: `skillpilot-coach-v1`
-- Current personal Marketplace version: `1.1.14`
+- Published personal Marketplace version: `1.1.14`
+- Prepared Marketplace export version: `1.1.15`
 - Plugin source: `./plugins/skillpilot-coach-v1`
 - Version authority:
   `plugins/skillpilot-coach-v1/.claude-plugin/plugin.json` only

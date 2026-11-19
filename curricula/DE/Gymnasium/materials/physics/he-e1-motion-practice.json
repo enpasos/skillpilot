@@ -1,0 +1,75 @@
+{
+  "unit": {
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "compositionNodeId": "physics-e1-motion",
+    "viewIds": [
+      "de-he-gym-physics-gk",
+      "de-he-gym-physics-lk",
+      "de-he-gym-physics-gk-g8",
+      "de-he-gym-physics-lk-g8",
+      "de-he-gym-physics-gk-g9",
+      "de-he-gym-physics-lk-g9",
+      "de-he-gym-sekii-physics-gk",
+      "de-he-gym-sekii-physics-lk"
+    ],
+    "flashcardGoalId": "9f2f5ab8-0ae4-5792-b831-82a05af5895c",
+    "assessmentGoalId": "a9562b05-c54d-5635-9244-3f7dd24a8642"
+  },
+  "intro": {
+    "de": {
+      "question": "Ein Ball rollt vom Tisch. Wo landet er?",
+      "promise": "Du lernst, anhand von Bewegungsdaten ein passendes Modell zu wählen. Beim Ball nutzt du die Fallzeit, um vorherzusagen, wie weit er waagerecht fliegt."
+    },
+    "en": {
+      "question": "A ball rolls off a table. Where will it land?",
+      "promise": "You’ll learn to choose a model that fits motion data. For the ball, you’ll use the time it takes to fall to predict how far it travels horizontally."
+    }
+  },
+  "exercises": [
+    {
+      "goalId": "d6dc0e02-831d-4894-a61a-852bcc74f147",
+      "de": {
+        "title": "Wie weit rollt der Spielzeugzug?",
+        "prompt": "Ein Spielzeugzug rollt geradeaus. Für diese Übung sind Videodaten nachgestellt. Die Spitze steht nach 0,0 / 0,5 / 1,0 / 1,5 Sekunden bei 12 / 32 / 52 / 72 Zentimetern. Wähle ein einfaches Bewegungsmodell und sage den Ort der Spitze nach 2,5 Sekunden voraus. Das letzte Bild zeigt sie bei 95 cm. Wie gut passt deine Vorhersage? Nenne eine mögliche Erklärung für die Abweichung.",
+        "hint": "Vergleiche die Ortsänderungen in gleich langen Zeitabschnitten. Wie weit müsste der Zug zwischen dem vorletzten und dem letzten Bild fahren, wenn dein Modell weiter gilt?",
+        "solution": "Bis 1,5 s legt der Zug alle 0,5 s genau 20 cm zurück. Das spricht für konstante 40 cm/s. Von 72 cm aus kämen in der nächsten Sekunde 40 cm hinzu. Vorhergesagt sind also 112 cm. Im letzten Bild fehlen dazu 17 cm. Unter der Annahme genauer Ortsangaben war der Zug im letzten Abschnitt im Mittel langsamer. Eine rauere Schiene wäre eine mögliche Ursache. Aus dem letzten Bild allein lässt sich die Ursache nicht bestimmen."
+      },
+      "en": {
+        "title": "How far will the toy train roll?",
+        "prompt": "A toy train rolls along a straight track. Use these simulated video readings. Its front is at 12 / 32 / 52 / 72 centimetres after 0.0 / 0.5 / 1.0 / 1.5 seconds. Choose a simple model and predict the position of the front at 2.5 seconds. The last frame shows it at 95 cm. How well does your prediction fit? Give one possible reason for the difference.",
+        "hint": "Compare the changes in position over equal time intervals. How far should the train travel between the last two frames if your model still holds?",
+        "solution": "Up to 1.5 s the train covers 20 cm every 0.5 s, consistent with a constant speed of 40 cm/s. Starting at 72 cm it would travel another 40 cm in the next second, reaching 112 cm. The last frame puts it 17 cm short. Assuming accurate positions, its average speed over the final interval was lower. A rougher section of track could explain the difference. The final frame alone cannot establish the cause."
+      }
+    },
+    {
+      "goalId": "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+      "de": {
+        "title": "Reichen neun Meter zum Anhalten?",
+        "prompt": "Mira radelt auf einer abgesperrten Übungsbahn mit 5 m/s auf eine Haltelinie zu. Sie ist noch 9 m entfernt, als das Stoppsignal kommt. Mira reagiert nach 0,6 s. Ab Bremsbeginn zeigt das Modell nach 0 / 1 / 2 Sekunden ein Tempo von 5 / 2,5 / 0 m/s. Nimm eine gleichmäßige Verzögerung an. Kommt Mira vor der Linie zum Stehen? Was ändert sich, wenn sie erst nach 1,0 s reagiert?",
+        "hint": "Bis zum Bremsbeginn fährt Mira mit ihrem Anfangstempo weiter. Welches mittlere Tempo hat sie anschließend während der zwei Bremssekunden?",
+        "solution": "Während der Reaktion fährt Mira 5 m/s × 0,6 s = 3 m. Beim gleichmäßigen Bremsen beträgt das mittlere Tempo (5 + 0) / 2 = 2,5 m/s. Der Bremsweg ist 2,5 m/s × 2 s = 5 m. Zusammen sind das 8 m. Mira hält 1 m vor der Linie. Bei 1,0 s Reaktionszeit ergeben sich 5 m Reaktionsweg plus 5 m Bremsweg. Mira hält dann 1 m hinter der Linie."
+      },
+      "en": {
+        "title": "Are nine metres enough to stop?",
+        "prompt": "On a closed practice track, Mira cycles towards a stop line at 5 m/s. She is 9 m away when the stop signal appears. She reacts after 0.6 s. In the model her speed is 5 / 2.5 / 0 m/s at 0 / 1 / 2 seconds after she starts braking. Assume constant deceleration. Does Mira stop before the line? What changes if she takes 1.0 s to react?",
+        "hint": "Mira keeps her initial speed until she starts braking. What is her average speed during the two seconds of braking?",
+        "solution": "During her reaction time Mira travels 5 m/s × 0.6 s = 3 m. With constant deceleration her average speed while braking is (5 + 0) / 2 = 2.5 m/s. The braking distance is 2.5 m/s × 2 s = 5 m. The total is 8 m, so she stops 1 m before the line. With a 1.0 s reaction time she travels 5 m before braking and 5 m while braking. She then stops 1 m beyond the line."
+      }
+    },
+    {
+      "goalId": "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
+      "de": {
+        "title": "Wo muss die Bodenmarke liegen?",
+        "prompt": "Ein kleiner Ball verlässt einen 0,80 m hohen Tisch waagerecht. In den nachgestellten Videodaten ist der Ball nach 0,10 s 13 cm nach vorn und 5 cm nach unten geflogen. Nach 0,20 s sind es 26 cm nach vorn und 20 cm nach unten. Wo würdest du auf dem Boden die Stelle für den ersten Aufprall markieren? Gib den waagerechten Abstand zur Tischkante an und begründe ihn mit beiden Bewegungen. Vernachlässige den Luftwiderstand und verwende g = 10 m/s².",
+        "hint": "Wie ändern sich die beiden Wege, wenn sich die Zeit von 0,10 s auf 0,20 s verdoppelt? Überlege zuerst, wann der Ball die Tischhöhe durchfallen hat.",
+        "solution": "Waagerecht verdoppelt sich der Weg mit der Zeit. Das passt zu 0,13 m / 0,10 s = 1,3 m/s. Senkrecht vervierfacht sich der Fallweg beim Verdoppeln der Zeit. Das passt zum freien Fall aus der Ruhe in senkrechter Richtung. Nach 0,40 s beträgt der Fallweg ½ × 10 m/s² × (0,40 s)² = 0,80 m. Während derselben 0,40 s fliegt der Ball 1,3 m/s × 0,40 s = 0,52 m nach vorn. Die Marke gehört also 52 cm vor den Punkt senkrecht unter der Tischkante."
+      },
+      "en": {
+        "title": "Where should the floor marker go?",
+        "prompt": "A small ball leaves the edge of a 0.80 m high table horizontally. In the simulated video readings, it has travelled 13 cm forwards and 5 cm down after 0.10 s. After 0.20 s the distances are 26 cm forwards and 20 cm down. Where would you mark the spot where it first hits the floor? Give the horizontal distance from the edge and explain your prediction using both motions. Ignore air resistance and use g = 10 m/s².",
+        "hint": "How do the two distances change when the time doubles from 0.10 s to 0.20 s? First work out when the ball has fallen the full height of the table.",
+        "solution": "The horizontal distance doubles when the time doubles, consistent with a speed of 0.13 m / 0.10 s = 1.3 m/s. The downward distance quadruples when the time doubles. This fits free fall with zero initial vertical speed. After 0.40 s the ball has fallen ½ × 10 m/s² × (0.40 s)² = 0.80 m. In those same 0.40 s it moves 1.3 m/s × 0.40 s = 0.52 m forwards. Place the marker 52 cm beyond the point directly below the table edge."
+      }
+    }
+  ]
+}

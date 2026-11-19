@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.1.15 - 2026-11-19
+
+- Introduce the learning unit when the learner chooses it. Ground conversation,
+  flashcard practice and assessment choices in the current goal and its units.
+- Offer a direct assessment at its goal. Learners can leave an unfinished
+  attempt and continue learning. The cockpit planning preference controls
+  whether credited goals are still suggested for individual practice.
+
 ## 1.1.14 - 2026-11-19
 
 - For an ordinary understanding goal, the coach can explain a new concept with

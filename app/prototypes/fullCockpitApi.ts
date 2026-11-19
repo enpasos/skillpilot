@@ -64,7 +64,7 @@ export function createFullCockpitApi(data: FullCockpitData = fullCockpitData): F
       __skillpilot_stage_scope_sek1__: { selected: true }, __skillpilot_stage_scope_sek2__: { selected: true },
     }),
     learningStrategy: 'SEQUENTIAL', autoPilot: false, followLearningPlans: true, learningPlanPeriodBasis: 'DAY',
-    learningPlanCountOnlyExplicitGoals: true, strictMode: false, useAssessmentShortcuts: true,
+    learningPlanCountOnlyExplicitGoals: true, strictMode: false,
     showGoalVisualizationsInChat: true, activeGoalId: data.ordinaryId,
     copySources: [{ sourceId: 'fixture-local-source', copiedAt: now() }],
   })
@@ -146,12 +146,9 @@ export function createFullCockpitApi(data: FullCockpitData = fullCockpitData): F
   const completion = (): LevelCompletion | null => {
     const automatic = !completionSelected || snapshot.scenario === 'completed'
     const implicit = snapshot.implicitGoalIds.includes(data.ordinaryId)
-    const shortcuts = snapshot.profile.useAssessmentShortcuts !== false
-    if (!shortcuts && !implicit) return null
     const assessments = [{ goalId: data.assessmentId, title: title(data.goalIndexAll.get(data.assessmentId)!.title),
       mastered: snapshot.mastery[data.assessmentId] === 1,
-      startAvailable: shortcuts && snapshot.mastery[data.assessmentId] !== 1,
-      ...(!shortcuts ? { unavailableReason: 'assessment_shortcuts_disabled' } : {}) }]
+      startAvailable: snapshot.mastery[data.assessmentId] !== 1 }]
     return {
       calculationStatus: 'valid', learnerRevision: version,
       title: title('Lokaler Prüfungsweg · Skalarprodukt'),
@@ -164,7 +161,7 @@ export function createFullCockpitApi(data: FullCockpitData = fullCockpitData): F
       waiverDetails: implicit ? [{ goalId: data.ordinaryId, title: title(data.goalIndexAll.get(data.ordinaryId)!.title),
         ruleId: 'no_remaining_demand', assessments: [{ goalId: data.assessmentId, title: assessments[0].title }], assessmentCount: 1 }] : [],
       assessments,
-      profileOptions: shortcuts && snapshot.scenario !== 'completed' ? [{ profileId: 'fixture-dot-product', title: title('Skalarprodukt und Projektion · lokale Vorschau'), targetCount: 2,
+      profileOptions: snapshot.scenario !== 'completed' ? [{ profileId: 'fixture-dot-product', title: title('Skalarprodukt und Projektion · lokale Vorschau'), targetCount: 2,
         requiredAssessmentCount: 1, assessments }] : [],
       directAssessmentRunning: false,
       ...(!automatic && completionPaused ? { navigationIntent: 'paused' as const } : {}),
@@ -407,7 +404,7 @@ export function createFullCockpitApi(data: FullCockpitData = fullCockpitData): F
       const mastery = Object.fromEntries(Object.entries(asRecord(incoming.mastery)).filter(([id, value]) => data.goalIndexAll.has(id) && (value === 0 || value === 1))) as Record<string, number>
       const importedProfile = asRecord(incoming.profile)
       const profile: Learner = { ...snapshot.profile }
-      for (const key of ['autoPilot', 'followLearningPlans', 'learningPlanCountOnlyExplicitGoals', 'strictMode', 'useAssessmentShortcuts', 'showGoalVisualizationsInChat'] as const) {
+      for (const key of ['autoPilot', 'followLearningPlans', 'learningPlanCountOnlyExplicitGoals', 'strictMode', 'showGoalVisualizationsInChat'] as const) {
         if (typeof importedProfile[key] === 'boolean') profile[key] = importedProfile[key]
       }
       if (importedProfile.learningStrategy === 'RANDOM' || importedProfile.learningStrategy === 'SEQUENTIAL') profile.learningStrategy = importedProfile.learningStrategy

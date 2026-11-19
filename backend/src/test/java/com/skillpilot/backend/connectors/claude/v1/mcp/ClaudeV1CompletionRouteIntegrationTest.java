@@ -10,6 +10,8 @@ import com.skillpilot.backend.connectors.claude.v1.ClaudeV1TestProperties;
 import com.skillpilot.backend.connectors.claude.v1.session.ClaudeV1LearningSessionService;
 import com.skillpilot.backend.connectors.claude.v1.web.ClaudeV1CoachStartRequest;
 import com.skillpilot.backend.domain.Learner;
+import com.skillpilot.backend.domain.LearningState;
+import com.skillpilot.backend.domain.Mastery;
 import com.skillpilot.backend.domain.PlannedGoal;
 import com.skillpilot.backend.repository.LearnerRepository;
 import com.skillpilot.backend.repository.MasteryRepository;
@@ -91,6 +93,88 @@ class ClaudeV1CompletionRouteIntegrationTest {
         learner.setActiveGoalId(PREPARATION);
         learner.setLearningState(com.skillpilot.backend.domain.LearningState.TEACHING);
         learnerRepository.saveAndFlush(learner);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"G8", "G9"})
+    void hessianMotionInTheCoachToolUsesThePersonalMapAndItsOwnAssessmentPlacement(String duration) throws Exception {
+        String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
+        String active = "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2";
+        String recorded = "68c90ba6-c438-463c-9a53-cf61062d416a";
+        String exam = "a9562b05-c54d-5635-9244-3f7dd24a8642";
+        learners.chooseLevelCompletion(learnerId, new LevelCompletionActionRequest("leaveProfile", PROFILE, null, null, version()));
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setPersonalCurriculum(mapper.writeValueAsString(Map.of(
+                ROOT, Map.of("selected", true, "filterId", "DE-HE", "stage", "CrossStage", "durationModel", duration),
+                physics, Map.of("selected", true, "filterId", "GK"),
+                "__skillpilot_stage_scope_sek1__", Map.of("selected", true),
+                "__skillpilot_stage_scope_sek2__", Map.of("selected", true),
+                "__skillpilotPersonalizationFlow", Map.of("rootLandscapeId", ROOT,
+                        "completedOptionIds", List.of(), "migrationCompleted", true))));
+        learner.setFollowLearningPlans(false);
+        learner.setUseAssessmentShortcuts(false);
+        learnerRepository.saveAndFlush(learner);
+        String unitFocus = "composition:de-he-gym-physics-gk-" + duration.toLowerCase(java.util.Locale.ROOT)
+                + ":structure:physics-e1-motion";
+        learners.setPlannedGoals(learnerId, java.util.Set.of(unitFocus));
+        session = sessions.createFirstPartyLaunch(learnerId, new ClaudeV1CoachStartRequest("de", "web-start")).learningSessionId();
+        authenticate();
+        successful(ClaudeV1CompletionContractRegistry.TOOL_CONFIRM,
+                Map.of("receiptCapability", map(context(), "completionContract").get("receiptCapability")));
+        var focused = context();
+        assertThat(focused.get("activeGoal")).isNull();
+        var focusedUnit = mapper.valueToTree(map(focused, "focusedUnitContext"));
+        assertThat(focusedUnit.path("unitIntroduction").path("sectionTitle").asText()).isEqualTo("E.1 Bewegungen und ihre Beschreibung");
+        assertThat(focusedUnit.path("activities").get(1).path("route").asText()).isEqualTo("directAssessment");
+        var practiceAction = focusedUnit.path("activities").get(0).path("action");
+        var practice = call(practiceAction.path("tool").asText(),
+                mapper.convertValue(practiceAction.path("arguments"), new TypeReference<>() {}));
+        assertThat(practice.isError()).isFalse();
+        assertThat(mapper.valueToTree(practice.structuredContent()).path("progress").path("totalCards").asInt()).isEqualTo(9);
+        assertThat(practice.structuredContent().toString()).doesNotContain("physics_e_cov_", "reviewCapability");
+        assertThat(practice.meta()).containsOnlyKeys("skillpilotMemoryCard");
+        assertThat(learnerRepository.findById(learnerId).orElseThrow().getActiveGoalId()).isNull();
+        learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setActiveGoalId(active);
+        learner.setLearningState(LearningState.TEACHING);
+        learnerRepository.saveAndFlush(learner);
+        masteryRepository.saveAndFlush(new Mastery(learner, recorded, 1.0));
+        long before = version();
+        var response = context();
+        assertThat(map(response, "activeGoal")).containsEntry("id", active).containsEntry("title", "Waagerechter Wurf analysieren");
+        var detail = mapper.valueToTree(map(response, "activeGoalContext"));
+        var path = detail.path("unitPaths").get(0);
+        assertThat(path.path("inCurrentFocus").asBoolean()).isTrue();
+        List<String> sections = mapper.convertValue(path.path("sections"), new TypeReference<>() {});
+        assertThat(sections).containsSubsequence("E.1 Bewegungen und ihre Beschreibung", "Einführungsphase: Mechanik",
+                "Sekundarstufe II (GK)", "Physik");
+        assertThat(detail.path("unitIntroduction").path("question").asText()).contains("Ein Ball rollt vom Tisch");
+        assertThat(detail.path("practiceExercise").path("prompt").asText()).isNotBlank();
+        assertThat(detail.path("prerequisites")).hasSize(2);
+        assertThat(detail.path("prerequisites").get(0).path("title").asText()).isEqualTo("Bezugssysteme und Geschwindigkeitsüberlagerung");
+        assertThat(detail.path("prerequisites").get(0).path("recorded").asBoolean()).isTrue();
+        assertThat(detail.path("prerequisites").get(1).path("title").asText()).isEqualTo("Modellierung und Idealisierung von Bewegungen");
+        assertThat(detail.path("prerequisites").get(1).path("recorded").asBoolean()).isFalse();
+        assertThat(detail.path("activities")).hasSize(2);
+        var activity = detail.path("activities").get(1);
+        assertThat(activity.path("goalId").asText()).isEqualTo(exam);
+        assertThat(activity.path("sectionTitle").asText()).isEqualTo("Themenübergreifende Prüfungen · Einführungsphase: Mechanik");
+        assertThat(activity.path("route").asText()).isEqualTo("directAssessment");
+        assertThat(response.toString()).doesNotContain("taskDe", "taskEn", "solutionContent", "evaluationCapability");
+        assertThat(version()).isEqualTo(before);
+        var start = successful(activity.path("action").path("tool").asText(), writeArgs("he-exam-" + duration, before,
+                Map.of("choice", activity.path("action").path("arguments").path("choice").asText())));
+        var started = map(start, "context");
+        assertThat(map(started, "activeGoal")).containsEntry("id", exam);
+        assertThat(map(started, "activeGoalContext")).doesNotContainKeys("unitIntroduction", "practiceExercise", "prerequisites");
+        assertThat(map(started, "levelCompletion")).containsEntry("directAssessmentRunning", true);
+        String end = choice(started, "Zur normalen Lernansicht");
+        successful(ClaudeV1McpContractAdapter.TOOL_CHOOSE_COMPLETION_ROUTE,
+                writeArgs("he-return-" + duration, version(), Map.of("choice", end)));
+        assertThat(map(context(), "levelCompletion")).containsEntry("directAssessmentRunning", false);
+        assertThat(learnerRepository.findById(learnerId).orElseThrow().getCompletionWorkflow()).isNull();
+        assertThat(masteryRepository.findByLearner_SkillpilotId(learnerId)).extracting(Mastery::getGoalKey)
+                .containsExactly(recorded);
     }
 
     @Test void ordinaryCoachSessionOffersAndStartsTheExamWithoutPriorSectionSelection() throws Exception {
@@ -229,29 +313,29 @@ class ClaudeV1CompletionRouteIntegrationTest {
         assertThat(learners.getMastery(learnerId).getOrDefault(PREPARATION, 0.0)).isZero();
     }
 
-    @Test void cockpitOptOutInvalidatesAlreadyIssuedExamAndRouteCapabilities() throws Exception {
+    @Test void leavingTheRouteInTheCockpitInvalidatesAlreadyIssuedExamAndRouteCapabilities() throws Exception {
         var pending = context();
         successful(ClaudeV1CompletionContractRegistry.TOOL_CONFIRM,
                 Map.of("receiptCapability", map(pending, "completionContract").get("receiptCapability")));
         String start = choice(context(), "Prüfung direkt versuchen: ");
         successful(ClaudeV1McpContractAdapter.TOOL_CHOOSE_COMPLETION_ROUTE,
-                writeArgs("start-before-opt-out", version(), Map.of("choice", start)));
+                writeArgs("start-before-leaving", version(), Map.of("choice", start)));
         var evaluation = successful(ClaudeV1Contract.TOOL_GET_EXAM_EVALUATION, Map.of("goalId", EXAM));
         String oldRoute = choice(context(), "Prüfung erneut versuchen");
         long before = version();
-        learners.setPreferences(learnerId, null, null, null, null, null, null, false);
+        learners.chooseLevelCompletion(learnerId, new LevelCompletionActionRequest(
+                "leaveProfile", null, null, null, before));
         assertThat(version()).isGreaterThan(before);
         assertThat(map(context(), "levelCompletion")).containsEntry("calculationStatus", "valid")
-                .containsEntry("directAssessmentRunning", false).containsEntry("choices", List.of());
-        assertThat(call(ClaudeV1Contract.TOOL_SET_MASTERY, writeArgs("stale-grade-after-opt-out", before,
+                .containsEntry("directAssessmentRunning", false);
+        assertThat(call(ClaudeV1Contract.TOOL_SET_MASTERY, writeArgs("stale-grade-after-leaving", before,
                 Map.of("goalId", EXAM, "evaluationCapability", evaluation.get("evaluationCapability"), "earnedPoints", 10.0))).isError()).isTrue();
         assertThat(call(ClaudeV1Contract.TOOL_SET_MASTERY, writeArgs("old-evaluation-new-version", version(),
                 Map.of("goalId", EXAM, "evaluationCapability", evaluation.get("evaluationCapability"), "earnedPoints", 10.0))).isError()).isTrue();
         assertThat(call(ClaudeV1McpContractAdapter.TOOL_CHOOSE_COMPLETION_ROUTE,
-                writeArgs("old-route-after-opt-out", version(), Map.of("choice", oldRoute))).isError()).isTrue();
+                writeArgs("old-route-after-leaving", version(), Map.of("choice", oldRoute))).isError()).isTrue();
         assertThat(masteryRepository.findByLearner_SkillpilotId(learnerId)).isEmpty();
         assertThat(learnerRepository.findById(learnerId).orElseThrow().getActiveGoalId()).isNull();
-        learners.setPreferences(learnerId, null, null, null, null, null, null, true);
         var learner = learnerRepository.findById(learnerId).orElseThrow();
         assertThat(learner.getCompletionWorkflow()).isNull();
         learners.chooseLevelCompletion(learnerId, new LevelCompletionActionRequest(
@@ -260,16 +344,12 @@ class ClaudeV1CompletionRouteIntegrationTest {
         assertThat(masteryRepository.findByLearner_SkillpilotId(learnerId)).isEmpty();
     }
 
-    @Test void aSessionStartedWhileOptedOutCanUseFreshChoicesAfterReEnabling() throws Exception {
-        learners.setPreferences(learnerId, null, null, null, null, null, null, false);
+    @Test void aFreshSessionWithALegacyOptOutCanUseAnOfferedAssessment() throws Exception {
+        var legacy = learnerRepository.findById(learnerId).orElseThrow();
+        legacy.setUseAssessmentShortcuts(false);
+        learnerRepository.saveAndFlush(legacy);
         session = sessions.createFirstPartyLaunch(learnerId, new ClaudeV1CoachStartRequest("de", "web-start")).learningSessionId();
         authenticate();
-        assertThat(map(context(), "levelCompletion")).containsEntry("calculationStatus", "valid")
-                .containsEntry("directAssessmentRunning", false).containsEntry("choices", List.of());
-        learners.setPreferences(learnerId, null, null, null, null, null, null, true);
-        var learner = learnerRepository.findById(learnerId).orElseThrow();
-        learners.chooseLevelCompletion(learnerId, new LevelCompletionActionRequest(
-                "selectProfile", PROFILE, null, null, learner.getCoachStateRevision()));
         var pending = context();
         successful(ClaudeV1CompletionContractRegistry.TOOL_CONFIRM,
                 Map.of("receiptCapability", map(pending, "completionContract").get("receiptCapability")));

@@ -153,7 +153,7 @@ The initial **E.1 proposal** calls for four independent passes. Previously passe
 | E.1 assessment A, cart | Justify a prediction from measured data and judge measurement deviations | Draft, 4/4 points |
 | E.1 assessment B, horizontal projectile | Use a shared time for motions in two directions to make a prediction | Draft, 3/3 points |
 
-Four passes would qualify the learner for E.1 in this proposal. A learner who solves A and B but still confuses distance and displacement has an outstanding child obligation. Subject reviewers must judge whether the four performances support the promise, whether hands-on experimentation is essential and whether a differently worded parent promise could ever justify fewer required parts.
+Four passes would qualify the learner for E.1 in this proposal. A learner who solves A and B but still confuses distance and displacement has an outstanding child obligation. For E.1, learners justify their prediction using supplied data. They may also measure the motion themselves as they learn. Subject reviewers will judge whether the four performances support the agreed promise and whether a different parent-unit promise could be demonstrated with fewer required parts.
 
 <a id="recognition-inside-a-larger-unit"></a>
 <a id="sec-sga-ud-phys-recognition"></a>

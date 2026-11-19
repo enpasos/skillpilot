@@ -1,15 +1,18 @@
-import { useEffect, useMemo, useState } from 'react'
-import { BookOpen, ClipboardCheck } from 'lucide-react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
+import { BookOpen } from 'lucide-react'
+import type { FlashcardPracticeRequest } from '../../utils/flashcardPractice'
 import type { UiGoal } from '../../goalTypes'
 import type { LearnerGoalNavigationMapProps } from '../../views/LearnerView'
 import { buildTreeCompletionProgressMap } from '../../utils/treeCompletionProgress'
 import { completionLabel } from '../../utils/levelCompletionApi'
 import { LearningUnitMap } from './LearningUnitMap'
+import { MapPracticeDialog } from './MapPracticeDialog'
+import { HESSE_PHYSICS_E1_PRACTICE } from './learnerUnitMapPreviewSubjects'
 import { filterLearnerUnitMapToSubjects } from './learnerUnitMapProjection'
 import { createLearnerUnitMapCache, MATHEMATICS_LANDSCAPE_ID, UNIT_MAP_COMPACT_LIST_THRESHOLD,
   UNIT_MAP_PREVIEW_SUBJECT_IDS } from './learnerUnitMapPreview'
 import type { LearningEntryProgress } from './types'
-import { buildHessePhysicsE1AssessmentActions, buildHessePhysicsFlashcardActions, HESSE_PHYSICS_E_MEMORY_GOAL_ID } from './hessePhysicsFlashcardActions'
+import { buildHessePhysicsE1AssessmentActions, buildHessePhysicsFlashcardActions, findHessePhysicsE1Scopes, placeHessePhysicsE1Resources, HESSE_PHYSICS_E_MEMORY_GOAL_ID } from './hessePhysicsFlashcardActions'
 
 const subjectLabel = (landscapeId: string, english: boolean) => landscapeId === MATHEMATICS_LANDSCAPE_ID
   ? english ? 'Mathematics' : 'Mathematik' : english ? 'Physics' : 'Physik'
@@ -17,7 +20,7 @@ const subjectLabel = (landscapeId: string, english: boolean) => landscapeId === 
 /** Lazy product adapter; the original GoalCard remains the only goal detail view. */
 export default function LearnerGoalNavigationMap(props: LearnerGoalNavigationMapProps) {
   const { rootGoals, goalIndexAll, canonicalGoalSources, visibleGoalIds, visibleChildrenByParent,
-    getMastery, completionWaivers } = props
+    getMastery, completionWaivers, onPracticeFlashcards, onOpenGoal } = props
   const english = props.language === 'en'
   const canonicalSource = canonicalGoalSources ?? goalIndexAll
   const canonicalGoalIndexAll = useMemo(() => canonicalSource instanceof Map ? canonicalSource
@@ -38,12 +41,12 @@ export default function LearnerGoalNavigationMap(props: LearnerGoalNavigationMap
   }, [mapSubjects, hiddenSubjects])
   const progressFixture = useMemo(() => filterLearnerUnitMapToSubjects(view.fixture, new Set(shownSubjects)), [view.fixture, shownSubjects])
   const memoryGoal = goalIndexAll.get(HESSE_PHYSICS_E_MEMORY_GOAL_ID)
-  const canPractice = Boolean(props.onPracticeFlashcards)
+  const canPractice = Boolean(onPracticeFlashcards)
   const basePractice = useMemo(() => canPractice
     ? buildHessePhysicsFlashcardActions(progressFixture, goalIndexAll, visibleGoalIds, undefined, props.language ?? 'de')
-    : { fixture: progressFixture, actions: new Map() },
+    : new Map<string, FlashcardPracticeRequest>(),
   [progressFixture, goalIndexAll, visibleGoalIds, props.language, canPractice])
-  const deckSource = basePractice.actions.size && memoryGoal ? props.getFlashcardSource?.(memoryGoal) : undefined
+  const deckSource = basePractice.size && memoryGoal ? props.getFlashcardSource?.(memoryGoal) : undefined
   const [deck, setDeck] = useState<{ source: string; cards: { tags?: string[] }[] } | null>(null)
   useEffect(() => {
     if (!deckSource) return
@@ -60,9 +63,37 @@ export default function LearnerGoalNavigationMap(props: LearnerGoalNavigationMap
     ? buildHessePhysicsFlashcardActions(progressFixture, goalIndexAll, visibleGoalIds,
       deck.cards, props.language ?? 'de') : basePractice,
   [progressFixture, goalIndexAll, visibleGoalIds, deck, deckSource, props.language, canPractice, basePractice])
-  const fixture = practice.fixture
-  const assessmentActions = useMemo(() => buildHessePhysicsE1AssessmentActions(fixture, goalIndexAll,
-    visibleGoalIds, props.language ?? 'de'), [fixture, goalIndexAll, visibleGoalIds, props.language])
+  const language = props.language ?? 'de'
+  const e1Scopes = useMemo(() => findHessePhysicsE1Scopes(progressFixture, goalIndexAll, visibleGoalIds),
+    [progressFixture, goalIndexAll, visibleGoalIds])
+  const assessmentActions = useMemo(() => buildHessePhysicsE1AssessmentActions(progressFixture, goalIndexAll,
+    visibleGoalIds, language, e1Scopes), [progressFixture, goalIndexAll, visibleGoalIds, language, e1Scopes])
+  const fixture = useMemo(() => placeHessePhysicsE1Resources(progressFixture, e1Scopes, practice, assessmentActions),
+    [progressFixture, e1Scopes, practice, assessmentActions])
+  const getGoalAction = useCallback((scopeId: string, id: string) => {
+    const cards = practice.get(scopeId)
+    if (cards?.goalId === id && onPracticeFlashcards) {
+      const title = cards.goalIds ? (english ? 'Flashcards for E.1' : 'Lernkarten zu E.1')
+        : (english ? 'E phase flashcards' : 'Lernkarten zur E-Phase')
+      const context = cards.goalIds ? (english ? 'From the E phase deck' : 'Aus dem Deck der E-Phase') : undefined
+      return { title, context, label: cards.title, open: () => onPracticeFlashcards?.(cards) }
+    }
+    const assessment = assessmentActions.get(scopeId)
+    if (assessment?.goalId === id && onOpenGoal) {
+      return { title: fixture.entries[id].title, context: english ? 'E phase assessment' : 'Prüfung der E-Phase', label: assessment.title, open: () => onOpenGoal?.(id) }
+    }
+  }, [practice, english, assessmentActions, fixture, onPracticeFlashcards, onOpenGoal])
+  const [openExercise, setOpenExercise] = useState<{ scopeId: string; goalId: string } | null>(null)
+  const getExercise = useCallback((scopeId: string, goalId: string) => {
+    if (!e1Scopes.has(scopeId) || !visibleGoalIds.has(goalId) || !fixture.entries[scopeId]?.children?.includes(goalId)) return
+    return HESSE_PHYSICS_E1_PRACTICE?.exercises.find(item => item.goalId === goalId)?.[language]
+  }, [e1Scopes, fixture, visibleGoalIds, language])
+  const getPracticeAction = useCallback((scopeId: string, goalId: string) => {
+    const exercise = getExercise(scopeId, goalId)
+    if (exercise) return { label: `${english ? 'Practice' : 'Üben'}: ${exercise.title}`,
+      open: () => setOpenExercise({ scopeId, goalId }) }
+  }, [english, getExercise])
+  const exercise = openExercise && props.active && getExercise(openExercise.scopeId, openExercise.goalId)
   const progress = useMemo(() => {
     const fixture = progressFixture
     // Synthetic unit nodes stand in as clusters; only real goals count as atoms.
@@ -122,19 +153,19 @@ export default function LearnerGoalNavigationMap(props: LearnerGoalNavigationMap
       rootLabel={english ? 'My learning goals' : 'Meine Lernziele'} language={props.language} learnerProgress={progress} activeGoalId={props.activeGoalId}
       command={command} showInspector={false} compactListThreshold={UNIT_MAP_COMPACT_LIST_THRESHOLD}
       toolbar={toolbar} locationBarContainer={props.locationBarContainer}
+      getPracticeAction={getPracticeAction} getGoalAction={getGoalAction} mobileListScopes={e1Scopes}
       renderScopeActions={scopeId => {
-        const action = practice.actions.get(scopeId)
-        const assessment = props.onOpenGoal && assessmentActions.get(scopeId)
-        return action || assessment ? <>
-          {action && <button type="button" className="lum-flashcard-action" data-testid="learning-map-flashcard-practice"
-            onClick={() => props.onPracticeFlashcards?.(action)}><BookOpen size={17} aria-hidden="true" />{action.title}</button>}
-          {assessment && <button type="button" className="lum-flashcard-action" data-testid="learning-map-assessment-open"
-            onClick={() => props.onOpenGoal?.(assessment.goalId)}><ClipboardCheck size={17} aria-hidden="true" />{assessment.title}</button>}
-        </> : null
+        const action = practice.get(scopeId)
+        const intro = e1Scopes.has(scopeId) && HESSE_PHYSICS_E1_PRACTICE?.intro[language]
+        if (intro) return <div className="lum-scope-intro"><h2>{intro.question}</h2><p>{intro.promise}</p></div>
+        if (action?.goalIds) return <button type="button" className="lum-flashcard-action" data-testid="learning-map-flashcard-practice"
+          onClick={() => onPracticeFlashcards?.(action)}><BookOpen size={17} aria-hidden="true" />{action.title}</button>
+        return null
       }} onEntrySelect={(goalId) => {
         const goal = goalIndexAll.get(goalId)
         if (goal && !goal.personalCurriculumProjection?.presentationOnly) props.onSelectGoal(goalId)
       }}
       onReturnToTree={props.onReturnToTree} onEscape={props.onEscape} />
+    {exercise && <MapPracticeDialog exercise={exercise} language={language} onDismiss={() => setOpenExercise(null)} />}
   </div>
 }

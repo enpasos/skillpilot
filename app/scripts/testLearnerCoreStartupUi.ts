@@ -1,6 +1,10 @@
 import assert from 'node:assert/strict'
+import { mkdtemp, rm } from 'node:fs/promises'
+import { tmpdir } from 'node:os'
+import { join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { chromium, type Browser } from 'playwright'
+import { createServer } from 'vite'
 import { CANONICAL_GYMNASIUM_ROOT_ID } from '../src/utils/curriculumDisplay'
 import { startViteTestServer } from './viteTestServer'
 
@@ -52,9 +56,58 @@ const view = (landscapeId: string) => ({
 })
 const counts = new Map<string, number>()
 const count = (path: string) => counts.get(path) ?? 0
-const server = await startViteTestServer(fileURLToPath(new URL('../', import.meta.url)), 'scripts/fixtures/learnerCoreStartupUi.html')
+const appRoot = fileURLToPath(new URL('../', import.meta.url))
+const matchPath = '/api/ui/composition-views/match'
+const server = await startViteTestServer(appRoot, 'scripts/fixtures/learnerCoreStartupUi.html', {
+  plugins: [{
+    name: 'composition-match-backend-fixture',
+    configureServer(vite) {
+      vite.middlewares.use(matchPath, (req, res) => {
+        res.setHeader('Content-Type', 'application/json')
+        res.end(JSON.stringify({ viewId: 'merged:fixture-lk+fixture-gk', query: req.url }))
+      })
+    },
+  }],
+})
 let browser: Browser | null = null
 try {
+  // Exercise the actual development middleware and proxy before the browser stubs HTTP.
+  const previousApiBase = process.env.VITE_API_BASE
+  const cacheDir = await mkdtemp(join(tmpdir(), 'skillpilot-composition-match-'))
+  try {
+    for (const apiBase of [server.baseUrl, '']) {
+      process.env.VITE_API_BASE = apiBase
+      const vite = await createServer({
+        root: appRoot, cacheDir, logLevel: 'error', optimizeDeps: { noDiscovery: true, include: [] },
+        server: { host: '127.0.0.1', port: 0, hmr: false, ws: false, watch: null,
+          // Confine even an incorrectly forwarded offline request to the test fixture.
+          proxy: { '/api': { target: server.baseUrl } } },
+      })
+      try {
+        await vite.listen()
+        const address = vite.httpServer?.address()
+        assert.ok(address && typeof address !== 'string')
+        const query = new URLSearchParams({ landscapeId: '7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a',
+          schoolForm: 'Gymnasium', jurisdiction: 'DE-HE', stage: 'SekII', durationModel: 'G9',
+          courseProfile: apiBase ? 'GK+LK' : 'GK' })
+        const response = await fetch(`http://127.0.0.1:${address.port}${matchPath}?${query}`)
+        assert.equal(response.status, 200)
+        const match = await response.json()
+        if (apiBase) {
+          assert.equal(match.viewId, 'merged:fixture-lk+fixture-gk')
+          assert.equal(new URL(match.query, server.baseUrl).searchParams.toString(), query.toString())
+        } else {
+          assert.equal(match.viewId, 'de-he-gym-sekii-physics-gk', 'offline authoring resolves the repository view')
+        }
+      } finally {
+        await vite.close()
+      }
+    }
+  } finally {
+    if (previousApiBase === undefined) delete process.env.VITE_API_BASE
+    else process.env.VITE_API_BASE = previousApiBase
+    await rm(cacheDir, { recursive: true, force: true })
+  }
   browser = await chromium.launch({ headless: true })
   const page = await browser.newPage()
   const errors: string[] = []

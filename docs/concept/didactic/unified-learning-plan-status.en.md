@@ -41,7 +41,7 @@ The design favors a clean, dependable contract for standard use cases over intri
 !!! warning "Applicable planning contract of 4 and 11 November 2026"
     The confirmed contract specifies that cumulative achievement in an atomic plan counts explicitly achieved goals and valid implicit recognition. Recognition is to derive from subject-reviewed local contracts and remain available for later prerequisites across plan changes. Daily and weekly activity count actual, dated completions.
 
-    “Count only explicitly achieved learning goals” affects cumulative achievement only. The runtime evaluates existing completion profiles. Full implementation of durable recognition tied to the relevant revision remains outstanding. The formulas below describe the confirmed planning contract. The proposal of 19 November is discussed separately in the section on plan credit. [Decision of 4 November](../skill-graph/completion-semantics-clarification-2026-11-04.md)
+    Under the decision of 19 November, the planning preference affects cumulative achievement and which goals the regular plan recommends next. Learners can choose an eligible goal for voluntary study with either setting. The runtime evaluates existing completion profiles. Full implementation of durable recognition tied to the relevant revision remains outstanding. The formulas below describe the confirmed planning contract. The proposal of 19 November is discussed separately in the section on plan credit. [Decision of 4 November](../skill-graph/completion-semantics-clarification-2026-11-04.md)
 
 <a id="sec-plan-status-meaning"></a>
 ### 4.2. Domain meaning of the status
@@ -85,7 +85,7 @@ The learner's full personal target set and the plan set $G$ need not coincide: a
 
 #### Baseline-cleaned plan set
 
-At plan creation, the baseline records which scheduled goals did not yet have explicit mastery; those goals form the progress-relevant plan set $G$. Currently recognized implicit goals are not stripped from $G$ at creation time so that enabling "Count only explicitly achieved learning goals" later can still account for missing explicit completions.
+At plan creation, the baseline records which scheduled goals did not yet have explicit mastery; those goals form the progress-relevant plan set $G$. Currently recognized implicit goals are not stripped from $G$ at creation time so that enabling "Keep credited goals in my plan" later can still account for missing explicit completions.
 
 **Every quantity in the status calculation refers exclusively to this same baseline-cleaned plan set $G$.** Goals explicitly mastered prior to plan creation contribute neither to due targets, nor to cumulative achievement, nor to period completions; goals in $G$ mastered later stay in $G$ and count toward `I` (example: 50 cluster goals with 20 already mastered $\Rightarrow |G| = 30$; scheduling 5 in week 1 yields a weekly target of 5). No separate cutoff timestamp is required.
 
@@ -105,7 +105,7 @@ $$
 M_{\mathrm{eff}} = M \cup W, \qquad I = |G \cap M_{\mathrm{eff}}|.
 $$
 
-When **"Count only explicitly achieved learning goals"** is enabled, $I = |G \cap M|$ is used instead.
+When **"Keep credited goals in my plan"** is enabled, $I = |G \cap M|$ is used instead.
 
 $W$ is reconstructed from fixed authored learning-unit contracts and stored explicit assessment/recall outcomes — not merely from currently displayed or selected curriculum slices. Authored contracts governing existing results remain authoritative so later graph edits never retroactively grant extra competences to past exam results.
 
@@ -114,7 +114,7 @@ Closing assessments of a learning unit must verify independent application of th
 - **Example:** Suppose $Q$ is the sole closing assessment recognizing $A$ and $B$, with all three in $G$. Passing $Q$ yields $I = 3$ by default and $I = 1$ under explicit-only counting; only $Q$ receives an explicit mastery record. A later exam $Q_2$ requiring $A$ sees $A$ as satisfied without resetting $I$, whereas ordinary mastery of $B$ alone does not recognize $A$ while $Q$ remains open.
 - **Modeling boundaries:** An ordinary goal lacking valid assessment attachment is a modeling defect, not automatic progress. Assessment and memorization goals remain explicit obligations. Missing or unresolvable recognition contracts surface as an evaluation limitation without falling back to legacy demand-stop waivers.
 - **Single counting and explicit `H`:** Every goal ID in $G$ counts at most once; explicitly completing an already recognized goal does not increment $I$ a second time, though its genuine explicit completion today may count toward $H$. Deriving $W$, switching plans, importing state, or re-rendering never fabricates period events in $H$.
-- **Preference and plan details:** Under *Configuration → Learning Settings*, "Count only explicitly achieved learning goals" persists per SkillPilot ID (default: off). Help copy: *"Your overall plan also counts competences whose independent application was demonstrated in assessments. With this setting, only directly completed learning goals count. Your daily or weekly target always counts direct completions only."* Under *Plan Details*, optional `planCreditText` explains implicit credit (e.g. *"Credited in plan: 3 goals, including 2 via independent application in assessments."*). This specification clarification neither approves the older implementation plan nor claims runtime deployment.
+- Under *Configuration → Learning Settings*, learners can choose to keep credited goals in their learning plan. By default the plan moves on to the next required goal. When enabled, it also suggests eligible credited goals in the same plan that still lack an individual outcome. Ordinary prerequisites govern which goal is ready. The assessment result stands. Daily and weekly quotas count actual dated completions.
 
 #### Proposed assignment for a unit
 

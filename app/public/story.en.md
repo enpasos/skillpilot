@@ -72,7 +72,7 @@ Each start option creates a separate learning session for the selected provider.
 
 The coach loads your learning context and guides you through the current goal. Ask for an explanation when a concept is new. In physics, for instance, you could ask “I know what average speed means. Can you explain instantaneous speed using a bicycle speedometer?” You can ask follow-up questions, discuss a sketch, and try explaining an idea in your own words. Exercises help you apply what you learn; work independently during an explicitly started assessment. AI can make mistakes: check explanations and assessments, and explain your reasoning when you disagree.
 
-Select **Open Cockpit** to see your current learning record and active goal. After completing a goal, check your **saved progress** there. To demonstrate prior knowledge directly, enable **Offer assessment shortcuts** in your learning configuration and attempt an offered assessment. An attempt alone does not establish success; what you demonstrate depends on the task and its assessment criteria.
+Select **Open Cockpit** to see your current learning record and active goal. After completing a goal, check your **saved progress** there. To demonstrate prior knowledge, select the assessment offered at its learning goal. Its task and assessment criteria determine what passing demonstrates.
 
 For the goal displayed automatically, choose **Give feedback on this learning goal** to report a problem, including coach behaviour. Describe the issue briefly in your own words, focusing on the learning goal and what you observed. Keep personal details and your start message private.
 

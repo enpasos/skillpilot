@@ -89,26 +89,25 @@ class LearnerUiControllerPersonalizationTest {
                 false,
                 true,
                 null,
-                null,
                 null);
         verifyNoMoreInteractions(learnerService);
     }
 
     @Test
-    void preferencesForwardExplicitShortcutOptOutAndPreserveOmittedFields() throws Exception {
+    void olderClientsCanSendTheRetiredShortcutField() throws Exception {
         var request = new com.fasterxml.jackson.databind.ObjectMapper().readValue(
                 "{\"useAssessmentShortcuts\":false}", PreferencesRequest.class);
         controller.updatePreferences(LEARNER_ID, request);
-        verify(learnerService).setPreferences(LEARNER_ID, null, null, null, null, null, null, false, null);
+        verify(learnerService).setPreferences(LEARNER_ID, null, null, null, null, null, null, null);
         verifyNoMoreInteractions(learnerService);
     }
 
     @Test
-    void preferencesForwardExplicitPlanCountingWithoutChangingShortcutChoice() throws Exception {
+    void preferencesForwardExplicitPlanCounting() throws Exception {
         var request = new com.fasterxml.jackson.databind.ObjectMapper().readValue(
                 "{\"learningPlanCountOnlyExplicitGoals\":true}", PreferencesRequest.class);
         controller.updatePreferences(LEARNER_ID, request);
-        verify(learnerService).setPreferences(LEARNER_ID, null, null, null, null, null, null, null, true);
+        verify(learnerService).setPreferences(LEARNER_ID, null, null, null, null, null, null, true);
         verifyNoMoreInteractions(learnerService);
     }
 

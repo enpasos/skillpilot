@@ -35,9 +35,6 @@ export interface PersonalCurriculumSetupCopy extends SharedCurriculumSetupCopy {
   countOnlyExplicitGoalsDescription: string
   strictModeTitle: string
   strictModeDescription: string
-  useAssessmentShortcutsTitle: string
-  useAssessmentShortcutsDescription: string
-  assessmentShortcutAttemptEnds: string
   showGoalVisualizationsInChatTitle: string
   showGoalVisualizationsInChatDescription: string
   savePending: string
@@ -111,13 +108,10 @@ export const getPersonalCurriculumSetupCopy = (
         periodBasisDescription: 'Legt fest, ob dein Pensum pro Tag oder pro Woche gilt. Im Wochenmodus kannst du die ganze Woche frei einteilen. Plantermine und Lernstand ändern sich dadurch nicht.',
         periodBasisDay: '1 Tag',
         periodBasisWeek: '1 Woche',
-        countOnlyExplicitGoalsTitle: 'Nur explizit erreichte Lernziele zählen',
-        countOnlyExplicitGoalsDescription: 'Für deinen Lernplan zählen normalerweise auch implizit erledigte Ziele, die dort nicht mehr eigens bearbeitet werden müssen. Mit dieser Einstellung zählen nur die direkt abgeschlossenen Ziele.',
+        countOnlyExplicitGoalsTitle: 'Angerechnete Lernziele weiter einplanen',
+        countOnlyExplicitGoalsDescription: 'Dein Lernplan schlägt dir angerechnete Ziele weiter vor, bis du sie einzeln nachgewiesen hast. Du kannst diese Ziele jederzeit selbst auswählen.',
         strictModeTitle: 'Strict Mode aktivieren',
         strictModeDescription: 'Prüft alle Voraussetzungen global, auch außerhalb deines aktuellen Fokus.',
-        useAssessmentShortcutsTitle: 'Prüfungsabkürzungen anbieten',
-        useAssessmentShortcutsDescription: 'Bietet direkte Prüfungsversuche ohne vorherige Vorbereitung an. Diese Einstellung ändert weder gespeicherten Lernstand noch implizite Erledigung oder Plananrechnung.',
-        assessmentShortcutAttemptEnds: 'Beim Speichern beendest du den laufenden direkten Prüfungsversuch. Dein Lernstand bleibt unverändert.',
         showGoalVisualizationsInChatTitle: 'Lernzielbilder im Chat anzeigen',
         showGoalVisualizationsInChatDescription: 'Zeigt verfügbare Bilder zu atomaren Lernzielen direkt im Chat.',
         savePending: 'Speichert...',
@@ -148,13 +142,10 @@ export const getPersonalCurriculumSetupCopy = (
         periodBasisDescription: 'Sets whether your workload counts per day or per week. In weekly mode you can spread the week freely. Scheduled dates and learning progress stay unchanged.',
         periodBasisDay: '1 day',
         periodBasisWeek: '1 week',
-        countOnlyExplicitGoalsTitle: 'Count only explicitly achieved learning goals',
-        countOnlyExplicitGoalsDescription: 'Your learning plan normally also counts implicitly completed goals that no longer need separate work in that plan. With this setting, only goals you completed directly count.',
+        countOnlyExplicitGoalsTitle: 'Keep credited goals in my plan',
+        countOnlyExplicitGoalsDescription: 'Your plan keeps suggesting credited goals until you demonstrate each one individually. You can choose these goals yourself at any time.',
         strictModeTitle: 'Enable strict mode',
         strictModeDescription: 'Checks all prerequisites globally, even outside your current focus.',
-        useAssessmentShortcutsTitle: 'Offer assessment shortcuts',
-        useAssessmentShortcutsDescription: 'Offers direct assessment attempts without prior preparation. Your saved learning progress stays unchanged. Implicit completion and plan credit also stay unchanged.',
-        assessmentShortcutAttemptEnds: 'Saving ends the current direct assessment attempt. Your learning progress stays unchanged.',
         showGoalVisualizationsInChatTitle: 'Show learning-goal images in chat',
         showGoalVisualizationsInChatDescription: 'Displays available images for atomic learning goals directly in chat.',
         savePending: 'Saving...',

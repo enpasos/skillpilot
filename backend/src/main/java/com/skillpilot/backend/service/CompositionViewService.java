@@ -159,6 +159,18 @@ public class CompositionViewService {
             String viewId,
             String focusGoalId,
             Map<String, LearningGoal> structuralGoals) {
+        return findLearnerFacingFocusAncestorPaths(viewId, focusGoalId, structuralGoals, false)
+                .stream().findFirst().orElseGet(List::of);
+    }
+
+    /** Visible placement paths in this view, each ordered from the nearest section outward. */
+    public List<List<CompositionStructureResolution>> findLearnerFacingFocusAncestorPaths(
+            String viewId, String focusGoalId, Map<String, LearningGoal> structuralGoals) {
+        return findLearnerFacingFocusAncestorPaths(viewId, focusGoalId, structuralGoals, true);
+    }
+
+    private List<List<CompositionStructureResolution>> findLearnerFacingFocusAncestorPaths(
+            String viewId, String focusGoalId, Map<String, LearningGoal> structuralGoals, boolean includeAlternatives) {
         if (!StringUtils.hasText(viewId) || !StringUtils.hasText(focusGoalId)) {
             return Collections.emptyList();
         }
@@ -184,10 +196,11 @@ public class CompositionViewService {
             if (structurePath == null) {
                 return Collections.emptyList();
             }
-            return resolveEnclosingStructures(
+            List<CompositionStructureResolution> ancestors = resolveEnclosingStructures(
                     structurePath.subList(0, structurePath.size() - 1),
                     resolvedViewId,
                     new LinkedHashMap<>());
+            return ancestors.isEmpty() ? List.of() : List.of(ancestors);
         }
 
         if (structuralGoals == null || structuralGoals.isEmpty()) {
@@ -206,18 +219,22 @@ public class CompositionViewService {
                 structuralGoals,
                 candidates,
                 new int[]{0});
-        FocusPathCandidate selectedPath = candidates.stream()
-                .sorted(Comparator
-                        .comparingInt((FocusPathCandidate candidate) -> candidate.directGoalEntry() ? 0 : 1)
-                        .thenComparingInt(candidate -> candidate.canonicalPath().size())
-                        .thenComparingInt(candidate -> candidate.role() == ProjectionRole.TARGET ? 0 : 1)
-                        .thenComparingInt(FocusPathCandidate::authoredOrder))
-                .findFirst()
-                .orElse(null);
-        if (selectedPath == null || selectedPath.role() != ProjectionRole.TARGET) {
+        candidates.sort(Comparator
+                .comparingInt((FocusPathCandidate candidate) -> candidate.directGoalEntry() ? 0 : 1)
+                .thenComparingInt(candidate -> candidate.canonicalPath().size())
+                .thenComparingInt(candidate -> candidate.role() == ProjectionRole.TARGET ? 0 : 1)
+                .thenComparingInt(FocusPathCandidate::authoredOrder));
+        if (candidates.isEmpty() || candidates.getFirst().role() != ProjectionRole.TARGET) {
             return Collections.emptyList();
         }
+        var considered = includeAlternatives ? candidates.stream() : candidates.stream().limit(1);
+        return considered.filter(candidate -> candidate.role() == ProjectionRole.TARGET)
+                .map(candidate -> resolveFocusPath(candidate, resolvedViewId, structuralGoals))
+                .filter(path -> !path.isEmpty()).distinct().toList();
+    }
 
+    private static List<CompositionStructureResolution> resolveFocusPath(
+            FocusPathCandidate selectedPath, String resolvedViewId, Map<String, LearningGoal> structuralGoals) {
         LinkedHashMap<String, CompositionStructureResolution> ancestors = new LinkedHashMap<>();
         if (!selectedPath.directGoalEntry()) {
             List<String> canonicalPath = selectedPath.canonicalPath();
