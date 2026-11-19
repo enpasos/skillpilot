@@ -944,7 +944,7 @@ test("prepared 1.1.15 reproduces its local export with independent publication a
   assert.equal(typeof result.outputRoot, "string");
   assert.equal(result.files.length, 12);
   assert.equal(result.directInstallSha256, pinnedBaseline.archive.sha256);
-  assert.equal(result.treeSha256, "776210a6a829dd64c7a7da23e5b87e5047ae3ccbf70129a9149fb0bd87f914a1");
+  assert.equal(result.treeSha256, "ef53ba5c07db031d57719e2e0a5390b7f450d70a06207a2d59235b5f4cfd26d2");
   assert.equal(currentMarketplaceLane.activation.state, "prepared_not_published");
   assert.equal(currentMarketplaceLane.activation.firstPartyGuideDecision.status, "pending");
   assert.equal(currentMarketplaceLane.activation.marketplaceUiSwitchAllowed, false);
