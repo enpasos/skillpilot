@@ -21,7 +21,7 @@ er erhält die Dokumentationschecks. Die große CI schließt `docs/dev/**` und
 `AGENTS.md` bei reinen Änderungen dieser Pfade derzeit aus. Der dokumentierte
 CI-Nachweis gilt weiterhin für den benannten Implementierungscommit.
 
-## 19. November 2026, 17:32 MEZ (UTC+01:00) – Einstieg, Lernkarte und Coach-Kontext in Hessen Physik E.1
+## 19. November 2026, 21:41 MEZ (UTC+01:00) – Einstieg, Lernkarte und Coach-Kontext in Hessen Physik E.1
 
 **Lokale Prüfrunde für G8 und G9.** „Ein Ball rollt vom Tisch. Wo landet er?“ eröffnet die Einheit. Die Lernenden nutzen vorgegebene Bewegungsdaten, um eine Vorhersage zu begründen. Drei Übungen schließen an die Ziele zu Modellierung, Sicherheitsabstand und waagerechtem Wurf an. Bei jeder Aufgabe lassen sich ein Hinweis und die Musterlösung getrennt öffnen. Die Übungen dienen der Selbstkontrolle. Die zweisprachigen Aufgaben stehen im Arbeitsbaum unter `curricula/DE/Gymnasium/materials/physics/he-e1-motion-practice.json`.
 
@@ -37,7 +37,7 @@ CI-Nachweis gilt weiterhin für den benannten Implementierungscommit.
 
 **Claude.** Der lokale 1.1.15-Kandidat hat 47.454 Bytes. Zwei separate Builds waren byteidentisch. Für die Verpackung und Anweisungen bestanden 188 automatisierte Tests, für die Release-Verträge und den Direktdownload weitere 64. Die eigenständige Marketplace-Prüfung erfasste 33 Fälle und der Support-Test 18. Zwei strikte CLI-Validierungen und eine isolierte lokale Installation bestanden. Die Prüfläufe belegen das Paket und die lokalen Zugänge. Die Erprobung im tatsächlichen Claude-Chat steht aus. [Releaseprotokoll](../deploy/claude-personal-marketplace-release.md)
 
-**Integrationsstand.** Die Änderungen werden in [PR #167](https://github.com/enpasos/skillpilot/pull/167) geprüft. K 0/13 und F 0/7 vollständig abgeschlossen, 0 zusätzliche Stufenpläne aktiviert. Vor dem Deployment folgt die frische CI auf main. Die fachliche Sichtung von E.1 mit dem Product Owner und die Ausgestaltung des vollständigen E.1-Nachweises bleiben offen.
+**Integration abgeschlossen.** [PR #167](https://github.com/enpasos/skillpilot/pull/167) ist auf `main` integriert. Die [PR-CI](https://github.com/enpasos/skillpilot/actions/runs/44583827202) bestand mit 14 von 14 Jobs. Der [Merge-Commit `afcfc111ea`](https://github.com/enpasos/skillpilot/commit/afcfc111ea7ca990c665f446c558b23f5dd6f7eb) enthält denselben Git-Baum. Seine [frische Main-CI](https://github.com/enpasos/skillpilot/actions/runs/44599563115) endete am 19. November 2026 um 21:40 MEZ mit 14 von 14 erfolgreichen Jobs. Der Nachweis gilt für diesen Implementierungscommit. K 0/13 und F 0/7 sind vollständig abgeschlossen, 0 zusätzliche Stufenpläne wurden aktiviert. Die nächste fachliche Durchsicht betrifft die drei Übungsabschlüsse und den Entwurf für einen vollständigen E.1-Nachweis. Die Freigabe der Hessen-Vorlage durch den Product Owner steht aus.
 
 ## 19. November 2026, 09:55 MEZ (UTC+01:00) – Verstehenslernziele im Claude-Coach
 
