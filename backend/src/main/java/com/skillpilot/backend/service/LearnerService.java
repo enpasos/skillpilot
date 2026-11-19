@@ -864,7 +864,10 @@ public class LearnerService {
         }
         if ("leaveProfile".equals(request.action())) {
             CompletionWorkflowState old = completionWorkflow(learner);
-            if (old != null && old.directAssessment() != null) learner.setActiveGoalId(null);
+            if (old != null && old.directAssessment() != null) {
+                learner.setActiveGoalId(null);
+                learner.setLearningState(LearningState.FRONTIER);
+            }
             saveCompletionWorkflow(learner, null);
         } else if ("selectProfile".equals(request.action())) {
             assertPersonalizationCompleteForLearning(learner);
