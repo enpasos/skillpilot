@@ -91,8 +91,8 @@ technical OAuth connection is no longer active.
 Ask which assessments can shorten preparation. The coach uses current reviewed
 choices and their exact titles. Explicitly request one assessment to start it
 without a separate section-selection step. A request for information makes no
-learning-state change and exposes no task or solution. If shortcuts are disabled
-or unavailable, use the Cockpit to inspect the current setting and curriculum.
+learning-state change and exposes no task or solution. You can choose any assessment offered for the unit. To return to studying, tell
+the coach which topic you want to work on. Your saved assessment results stand.
 The server supplies fourteen base tools and, when completion is enabled,
 `confirm_skillpilot_completion_contract` and
 `choose_skillpilot_completion_route`. The technical receipt stays silent; it

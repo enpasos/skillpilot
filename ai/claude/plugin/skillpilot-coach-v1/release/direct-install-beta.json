@@ -13,7 +13,7 @@
   },
   "candidate": {
     "version": "1.1.15",
-    "sha256": "d8e2c1c6d556eec0bffda9066c8ea0944a87a794e4ebd5edd6155214cb4df5d9"
+    "sha256": "bec6045dbba0e399b01b223901527083a1c5c437d522211dd1c06f049aba3acb"
   },
   "plugin": {
     "id": "skillpilot-coach-v1",
@@ -44,19 +44,19 @@
         "id": "local-package-structural-and-unit-validation",
         "kind": "local_validation",
         "status": "pass",
-        "evidenceRef": "2026-11-19: 188 package and instruction tests, 64 release and direct-install checks; tmp/claude-unit-1.1.15/package.tap and release.tap"
+        "evidenceRef": "2026-11-19: 188 package and instruction tests plus 64 release and direct-install checks; tmp/claude-unit-1.1.15/final-package-and-release.tap"
       },
       {
         "id": "local-reproducible-plugin-archive",
         "kind": "local_validation",
         "status": "pass",
-        "evidenceRef": "2026-11-19: two independent byte-identical builds; 47399 bytes; SHA-256 d8e2c1c6d556eec0bffda9066c8ea0944a87a794e4ebd5edd6155214cb4df5d9"
+        "evidenceRef": "2026-11-19: two independent byte-identical builds; 47454 bytes; SHA-256 bec6045dbba0e399b01b223901527083a1c5c437d522211dd1c06f049aba3acb"
       },
       {
         "id": "first-party-guided-plugin-setup",
         "kind": "local_validation",
         "status": "pass",
-        "evidenceRef": "2026-11-19: first-party installation guide exercised in DE/EN Chromium with the exact candidate bytes; tmp/claude-unit-1.1.15/preview-browser.log"
+        "evidenceRef": "2026-11-19: first-party installation guide exercised in DE/EN Chromium with the exact candidate bytes; tmp/claude-unit-1.1.15/first-party-ui.log"
       },
       {
         "id": "real-client-claude-pro-web-direct-install",
