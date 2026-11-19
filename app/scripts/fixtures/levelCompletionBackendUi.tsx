@@ -35,7 +35,7 @@ const Fixture = () => {
   const location = useLocation()
   const [role, setRole] = useState<'learner' | 'trainer' | 'explorer' | null>('learner')
   const [learnerId, setLearnerId] = useState(learner)
-  const [currentGoal, setCurrentGoal] = useState(preparation)
+  const [currentGoal, setCurrentGoal] = useState(exam)
   const select = useCallback((id: string) => {
     const selected = goals.get(id)
     if (selected) setCurrentGoal(selected)
@@ -51,6 +51,6 @@ const Fixture = () => {
 
 const element = document.getElementById('root')
 if (!element) throw new Error('Missing fixture root')
-createRoot(element).render(<MemoryRouter initialEntries={[`/learner/${preparationId}`]}>
+createRoot(element).render(<MemoryRouter initialEntries={[`/learner/${examId}?completionShortcuts=1`]}>
   <LanguageProvider><ThemeProvider><Fixture /></ThemeProvider></LanguageProvider>
 </MemoryRouter>)

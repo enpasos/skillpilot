@@ -324,7 +324,9 @@ public class ClaudeV1CoachContextProjector {
                 List<LevelCompletionResponse.WaiverDetail> matches = completion.waiverDetails().stream()
                         .filter(waiver -> prerequisite.goalId().equals(waiver.goalId())).limit(2).toList();
                 String reason = matches.size() == 1 ? publishedWaiverReason(matches.getFirst()) : null;
-                if (reason != null) result.put("scopeWaiver", Map.of("reason", reason, "sectionTitle", scopeTitle));
+                // The evaluator publishes at most three explanations, independently of the waived IDs.
+                result.put("scopeWaiver", reason == null ? Map.of("sectionTitle", scopeTitle)
+                        : Map.of("reason", reason, "sectionTitle", scopeTitle));
             }
             return result;
         }).toList();

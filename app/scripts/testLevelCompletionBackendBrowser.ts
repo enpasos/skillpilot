@@ -138,7 +138,6 @@ try {
     })
     await page.goto(`${server.baseUrl}/scripts/fixtures/levelCompletionBackendUi.html?learner=${learner}`)
     const discovery = page.getByTestId('completion-shortcut-discovery')
-    await discovery.locator('summary').click()
     await discovery.getByRole('button', { name: `Abschnitt als Lernweg wählen: ${title}`, exact: true }).waitFor()
     return { page, context, failState: (failed: boolean) => { abortState = failed }, holdState: () => {
       const held = new Promise<void>((resolveHeld) => { stateHeld = resolveHeld })

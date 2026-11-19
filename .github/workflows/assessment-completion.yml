@@ -216,7 +216,8 @@ jobs:
           --tests 'com.skillpilot.backend.landscape.LandscapeServiceTest.completionMetadataDirectoriesCannotIntroduceRuntimeLandscapes'
           --tests 'com.skillpilot.backend.service.LearningPlanAssessmentCreditTest'
           --tests 'com.skillpilot.backend.migration.LearningPlanCountingPreferenceMigrationTest'
-          --tests 'com.skillpilot.backend.ui.LearnerUiControllerPersonalizationTest.preferencesForwardExplicitPlanCountingWithoutChangingShortcutChoice'
+          --tests 'com.skillpilot.backend.ui.LearnerUiControllerPersonalizationTest.preferencesForwardExplicitPlanCounting'
+          --tests 'com.skillpilot.backend.ui.LearnerUiControllerPersonalizationTest.olderClientsCanSendTheRetiredShortcutField'
           --tests 'com.skillpilot.backend.service.AssessmentCompletionSrsIntegrationTest'
           --tests 'com.skillpilot.backend.service.SrsMasteryBatchQueryTest'
           --tests 'com.skillpilot.backend.service.AssessmentCompletionPostgresIntegrationTest'
@@ -266,7 +267,7 @@ jobs:
               'com.skillpilot.backend.landscape.LandscapeServiceTest': 1,
               'com.skillpilot.backend.service.LearningPlanAssessmentCreditTest': 12,
               'com.skillpilot.backend.migration.LearningPlanCountingPreferenceMigrationTest': 1,
-              'com.skillpilot.backend.ui.LearnerUiControllerPersonalizationTest': 1,
+              'com.skillpilot.backend.ui.LearnerUiControllerPersonalizationTest': 2,
               'com.skillpilot.backend.service.AssessmentCompletionSrsIntegrationTest': 7,
               'com.skillpilot.backend.service.SrsMasteryBatchQueryTest': 6,
               'com.skillpilot.backend.service.AssessmentCompletionPostgresIntegrationTest': 4,

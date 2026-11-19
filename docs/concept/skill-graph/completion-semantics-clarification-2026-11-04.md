@@ -123,8 +123,7 @@ erledigte Ziele. Ein Tooltip erklärt den direkten Nachweis beziehungsweise
 den Nachweis selbständiger Anwendung. Wiederholen bleibt freiwillig möglich.
 
 Gesamtfortschritt zählt eindeutige effektiv beherrschte Ziele innerhalb seines
-Zielumfangs. „Nur explizit erreichte Lernziele zählen“ ändert allein die
-Plananrechnung. Tages- und Wochenpensum zählen weiterhin nur tatsächliche
+Zielumfangs. Am 4. November war die Wahl einzelner Nachweise auf die Plananrechnung begrenzt. Mit der Entscheidung vom 19. November berücksichtigt die reguläre Planfortsetzung auf Wunsch auch angerechnete Einzelziele. Tages- und Wochenpensum zählen weiterhin nur tatsächliche
 explizite Abschlussereignisse. Anerkennung erzeugt keine künstlichen Ereignisse
 oder Datumsangaben. Siehe [Lernplanstatus](../didactic/unified-learning-plan-status.md).
 

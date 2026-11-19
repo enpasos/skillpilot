@@ -27,10 +27,10 @@ test("synthetic strictly verifies recorded and generated publications during rol
   generateClaudePluginPublication({ repositoryRoot, publicationRoot: generatedRoot });
   const generatedIndex = JSON.parse(readFileSync(join(generatedRoot, "index.json"), "utf8"));
   assert.equal(generatedIndex.preparedAt, "2026-11-19T00:00:00.000Z");
-  assert.equal(generatedIndex.plugins[0].version, "1.1.14");
-  assert.equal(generatedIndex.plugins[0].bytes, 47085);
+  assert.equal(generatedIndex.plugins[0].version, "1.1.15");
+  assert.equal(generatedIndex.plugins[0].bytes, 47399);
   assert.equal(generatedIndex.plugins[0].sha256,
-    "e957bf74c0a751605c9fcf86af0301b61d4d70cc3df019cadf15e8f2c134d3ee");
+    "d8e2c1c6d556eec0bffda9066c8ea0944a87a794e4ebd5edd6155214cb4df5d9");
 
   for (const [label, publicationRoot] of [["recorded publication before rollout", recordedRoot],
     ["deterministic build publication after rollout", generatedRoot]]) {
@@ -75,16 +75,16 @@ test("synthetic strictly verifies recorded and generated publications during rol
   assert.deepEqual(readFileSync(join(recordedRoot, "index.json")), recordedIndex);
 });
 
-test("synthetic verifies published 1.1.13 while the exact 1.1.14 successor is only prepared", async () => {
+test("synthetic verifies published 1.1.14 while the exact 1.1.15 successor is only prepared", async () => {
   const fixture = historicalPublicationFixture();
   const result = await verifyClaudeSupportSynthetic({ fetchImpl: fixture.fetchImpl });
   assert.deepEqual(result.candidate, {
-    version: "1.1.13",
-    sha256: "0e99b10635c0a97a43d5f6fbdc0fa437b6da68bb0483515fdf8230e0764090cd",
+    version: "1.1.14",
+    sha256: "e957bf74c0a751605c9fcf86af0301b61d4d70cc3df019cadf15e8f2c134d3ee",
   });
   assert.equal(result.outcome, "pass");
   assert.ok(fixture.requested.some(({ url }) => url.endsWith(fixture.plugin.downloadUrl)));
-  assert.equal(fixture.requested.some(({ url }) => url.includes("/1.1.14/")), false);
+  assert.equal(fixture.requested.some(({ url }) => url.includes("/1.1.15/")), false);
   assert.ok(fixture.requested.every(({ method }) => method === "GET"));
 });
 
@@ -93,9 +93,9 @@ test("published historical fallback rejects changed index metadata and archive b
     const fixture = historicalPublicationFixture({
       mutateIndex(index) {
         if (field === "sha256") index.plugins[0].sha256 = "f".repeat(64);
-        else if (field === "version") index.plugins[0].version = "1.1.14";
+        else if (field === "version") index.plugins[0].version = "1.1.15";
         else if (field === "testedSurfaces") index.plugins[0].requirements.testedSurfaces = ["claude-android"];
-        else index.preparedAt = "2026-11-19T00:00:00.000Z";
+        else index.preparedAt = "2026-11-18T00:00:00.000Z";
       },
     });
     await assert.rejects(verifyClaudeSupportSynthetic({ fetchImpl: fixture.fetchImpl }),
@@ -104,7 +104,7 @@ test("published historical fallback rejects changed index metadata and archive b
   }
   const fixture = historicalPublicationFixture({ corruptArchive: true });
   await assert.rejects(verifyPublicClaudeHistoricalBuildPublication({
-    version: "1.1.13", baseUrl: "https://skillpilot.com", fetchImpl: fixture.fetchImpl,
+    version: "1.1.14", baseUrl: "https://skillpilot.com", fetchImpl: fixture.fetchImpl,
   }), /artifact SHA-256/u);
   await assert.rejects(verifyClaudeSupportSynthetic({ fetchImpl: fixture.fetchImpl }),
     /public-plugin-publication failed/u);
@@ -112,7 +112,7 @@ test("published historical fallback rejects changed index metadata and archive b
 
 test("historical verification cannot adopt an unknown version or an unpublished successor", async () => {
   const requested = [];
-  for (const version of ["1.1.99", "1.1.14"]) {
+  for (const version of ["1.1.99", "1.1.15"]) {
     await assert.rejects(verifyPublicClaudeHistoricalBuildPublication({
       version, baseUrl: "https://skillpilot.com", fetchImpl: fixtureFetch({ requested }),
     }));
@@ -378,12 +378,12 @@ function historicalPublicationFixture(options = {}) {
   // Reproduce the previously deployed index from the retained catalog metadata;
   // these version/hash/date values are fixed test evidence, never remote input.
   const index = JSON.parse(readFileSync(join(recordedRoot, "index.json"), "utf8"));
-  index.preparedAt = "2026-10-31T00:00:00.000Z";
+  index.preparedAt = "2026-11-19T00:00:00.000Z";
   Object.assign(index.plugins[0], {
-    version: "1.1.13", bytes: 46595,
-    sha256: "0e99b10635c0a97a43d5f6fbdc0fa437b6da68bb0483515fdf8230e0764090cd",
-    filename: "skillpilot-coach-v1-1.1.13.plugin",
-    downloadUrl: "/api/public/claude/plugins/skillpilot-coach-v1/1.1.13/sha256-0e99b10635c0a97a43d5f6fbdc0fa437b6da68bb0483515fdf8230e0764090cd/skillpilot-coach-v1-1.1.13.plugin",
+    version: "1.1.14", bytes: 47085,
+    sha256: "e957bf74c0a751605c9fcf86af0301b61d4d70cc3df019cadf15e8f2c134d3ee",
+    filename: "skillpilot-coach-v1-1.1.14.plugin",
+    downloadUrl: "/api/public/claude/plugins/skillpilot-coach-v1/1.1.14/sha256-e957bf74c0a751605c9fcf86af0301b61d4d70cc3df019cadf15e8f2c134d3ee/skillpilot-coach-v1-1.1.14.plugin",
   });
   return publicationFixture(recordedRoot, {
     ...options, indexBytes: Buffer.from(`${JSON.stringify(index, null, 2)}\n`),

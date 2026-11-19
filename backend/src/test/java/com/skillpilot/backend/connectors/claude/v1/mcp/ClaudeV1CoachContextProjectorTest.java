@@ -184,7 +184,8 @@ class ClaudeV1CoachContextProjectorTest {
         var notPublished = new LevelCompletionResponse.WaiverDetail("different-goal", Map.of("de", "Projektion"),
                 "reviewed-other-rule", List.of(assessment), 1);
         var automatic = new LevelCompletionResponse("valid", "scope-context", "automatic:overview", "1", "generation", 10,
-                Map.of("de", "Mein Plan"), null, 1, 1, 2, 4, 0, 0, List.of("no-demand-goal"), List.of(), List.of(),
+                Map.of("de", "Mein Plan"), null, 1, 4, 2, 7, 0, 0,
+                List.of("no-demand-goal", "other-waived-1", "other-waived-2", "different-goal"), List.of(), List.of(),
                 null, false, null, List.of()).withWaiverDetails(List.of(noDemand));
         var reviewed = new LevelCompletionResponse("valid", "reviewed-context", "reviewed-section", "1", "generation", 10,
                 Map.of("de", "Der geprüfte Abschnitt"), null, 1, 1, 2, 4, 1, 1, List.of("assessed-goal"), List.of(), List.of(),
@@ -203,7 +204,9 @@ class ClaudeV1CoachContextProjectorTest {
                 Map.of("reason", "no_remaining_demand", "sectionTitle", "Mein Plan"));
         var assessmentEntry = Map.of("title", "Projektion", "recorded", false, "scopeWaiver",
                 Map.of("reason", "assessment", "sectionTitle", "Der geprüfte Abschnitt"));
-        assertEquals(List.of(recorded, noDemandEntry, ordinary, ordinary),
+        var withoutExplanation = Map.of("title", "Projektion", "recorded", false, "scopeWaiver",
+                Map.of("sectionTitle", "Mein Plan"));
+        assertEquals(List.of(recorded, noDemandEntry, ordinary, withoutExplanation),
                 directPrerequisites(projector.projectContext("learner", 10, "de")));
         assertEquals(List.of(recorded, open, assessmentEntry, ordinary), directPrerequisites(CompletionCallContext.with(
                 ClaudeV1CompletionProjectionTest.supported(), () -> projector.projectContext("learner", 10, "de"))));

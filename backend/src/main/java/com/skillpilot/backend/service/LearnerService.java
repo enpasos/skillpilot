@@ -158,6 +158,8 @@ public class LearnerService {
     private final TransactionTemplate transactionTemplate;
     private final CompletionProfileCompiler frontierPrerequisiteCompiler = new CompletionProfileCompiler();
     private Clock verifiedRecallClock = Clock.systemUTC();
+    private final com.skillpilot.backend.completion.LearningPlanCompletionProjection planHandoffProjection =
+            new com.skillpilot.backend.completion.LearningPlanCompletionProjection();
     private Clock learningPlanClock = Clock.system(LEARNING_PLAN_ZONE);
 
     @Autowired
@@ -398,21 +400,38 @@ public class LearnerService {
                         && goal.getRequires().stream().anyMatch(anchors::contains))
                 .map(LearningGoal::getId).collect(Collectors.toSet());
         Set<String> nearby = new LinkedHashSet<>();
-        if (!anchors.isEmpty() && compositionViewService != null) {
-            for (String view : projection.compositionViewIds()) {
-                for (String anchor : anchors) {
-                for (var parent : compositionViewService.findLearnerFacingFocusAncestors(view,
-                        anchor, projection.structuralGoals())) {
-                    Set<String> atoms = projectedAtomicTargetIds(List.of(parent.syntheticGoalId()), projection);
-                    if (atoms.stream().anyMatch(id -> CompletionProfileCompiler.isAssessment(graph.get(id)))) {
-                        nearby.addAll(atoms);
-                        break;
+        Set<String> linkedAssessments = new HashSet<>();
+        if (compositionViewService != null) {
+            if (unitLearningMaterialService != null && anchors.isEmpty() && focusRoots.size() == 1) {
+                var section = compositionViewService.resolveStructureReference(focusRoots.getFirst());
+                if (section != null) {
+                    Map<String, Object> view = compositionViewService.findViewById(section.viewId());
+                    if (view != null && view.get("landscapeId") instanceof String landscapeId) {
+                        unitLearningMaterialService.find(landscapeId, section.viewId(), section.nodeId())
+                                .map(UnitLearningMaterialService.Material::assessmentGoalId).ifPresent(linkedAssessments::add);
                     }
                 }
+            }
+            for (String view : projection.compositionViewIds()) {
+                for (String anchor : anchors) {
+                    var path = compositionViewService.findLearnerFacingFocusAncestors(view, anchor, projection.structuralGoals());
+                    if (unitLearningMaterialService != null && !path.isEmpty()) {
+                        String landscapeId = landscapeService.getLandscapeIdForGoal(anchor);
+                        path.stream().flatMap(section -> unitLearningMaterialService.find(landscapeId, view, section.nodeId()).stream())
+                                .map(UnitLearningMaterialService.Material::assessmentGoalId).filter(Objects::nonNull)
+                                .findFirst().ifPresent(linkedAssessments::add);
+                    }
+                    for (var parent : path) {
+                        Set<String> atoms = projectedAtomicTargetIds(List.of(parent.syntheticGoalId()), projection);
+                        if (atoms.stream().anyMatch(id -> CompletionProfileCompiler.isAssessment(graph.get(id)))) {
+                            nearby.addAll(atoms);
+                            break;
+                        }
+                    }
                 }
             }
         }
-        return Comparator.<String>comparingInt(id -> directlyRelated.contains(id) ? 0
+        return Comparator.<String>comparingInt(id -> linkedAssessments.contains(id) ? -1 : directlyRelated.contains(id) ? 0
                         : nearby.contains(id) ? 1 : focused.contains(id) ? 2 : 3)
                 .thenComparing(id -> completionTitle(graph.get(id)).getOrDefault("de", id))
                 .thenComparing(Comparator.naturalOrder());
@@ -468,7 +487,7 @@ public class LearnerService {
                 .map(subject -> deriveCompositionScope(subject, config)).toList());
     }
 
-    /** Reviewed plan inputs belong to Level 2, independently of the active route and its opt-out. */
+    /** Reviewed plan inputs belong to Level 2 independently of the active route. */
     @Transactional(readOnly = true)
     public LearningPlanCompletionContext getLearningPlanCompletionContext(String skillpilotId) {
         return getLearningPlanCompletionContext(skillpilotId, null);
@@ -8052,7 +8071,7 @@ public class LearnerService {
         String activeId = goal == null ? null : goal.getId();
         List<CompositionViewService.CompositionStructureResolution> path = preferredCoachUnitPath(paths, focus);
         List<String> sectionTitles = path.stream().map(section -> coachSectionTitle(section, projection, language))
-                .filter(Objects::nonNull).distinct().limit(4).toList();
+                .filter(Objects::nonNull).toList();
         List<ActiveGoalContext.UnitPath> unitPaths = sectionTitles.isEmpty() ? List.of()
                 : List.of(new ActiveGoalContext.UnitPath(sectionTitles, coachFocusDistance(path, focus) < Integer.MAX_VALUE,
                         paths.stream().distinct().limit(2).count() > 1));
@@ -8080,8 +8099,18 @@ public class LearnerService {
                             ? section.nodeId() : null;
                     addCoachUnitActivity(activities, memoryId, title, activeId,
                             projection, publishedFrontierIds, language, practiceScopeId);
-                    addCoachUnitActivity(activities, material.get().assessmentGoalId(), title, activeId,
-                            projection, publishedFrontierIds, language, null);
+                    String assessmentId = material.get().assessmentGoalId();
+                    if (assessmentId != null && projection.targetGoalIds().contains(assessmentId)) {
+                        // A topic may link a cross-topic assessment. Describe its own placement.
+                        String placement = compositionViewService.findLearnerFacingFocusAncestors(
+                                        section.viewId(), assessmentId, projection.structuralGoals()).stream()
+                                .limit(2).map(parent -> coachSectionTitle(parent, projection, language))
+                                .filter(Objects::nonNull).collect(Collectors.joining(" · "));
+                        if (!placement.isBlank()) {
+                            addCoachUnitActivity(activities, assessmentId, placement, activeId,
+                                    projection, publishedFrontierIds, language, null);
+                        }
+                    }
                 }
                 break;
             }
@@ -8946,11 +8975,24 @@ public class LearnerService {
                 unavailableSubjects.add(subject);
             }
         }
+        var fulfillment = LearnerLearningPlanService.planFulfillment(this, learner, plans, mastery,
+                this::readPortableLearningPlanBlocks, id -> LearnerLearningPlanService.stableSubjectKey(landscapeService.getById(id)),
+                planHandoffProjection);
+        Map<String, Set<String>> creditedBySubject = new HashMap<>();
+        for (var plan : validPlans.keySet()) {
+            String subject = LearnerLearningPlanService.stableSubjectKey(landscapeService.getById(plan.getLandscapeId()));
+            if (fulfillment.unavailable().contains(plan.getLandscapeId())) {
+                unavailableSubjects.add(subject);
+            } else {
+                creditedBySubject.put(subject, fulfillment.waived(plan.getLandscapeId()));
+            }
+        }
         Set<String> subjectsWithOpenQuota = new HashSet<>();
         subjectSchedules.forEach((subject, schedule) -> {
             if (!unavailableSubjects.contains(subject)
                     && LearnerLearningPlanService.calculateBalance(
-                            schedule.keySet(), schedule, periodStart, periodEnd, mastery, completions)
+                            schedule.keySet(), schedule, periodStart, periodEnd, mastery, completions,
+                            creditedBySubject.getOrDefault(subject, Set.of()))
                             .offenesPeriodenpensum() > 0) {
                 subjectsWithOpenQuota.add(subject);
             }
@@ -8981,6 +9023,7 @@ public class LearnerService {
                                 blocks,
                                 periodEnd,
                                 mastery,
+                                fulfillment.waived(plan.getLandscapeId()),
                                 ignored -> eligibleIds);
                 if (selected.isEmpty()) {
                     continue;

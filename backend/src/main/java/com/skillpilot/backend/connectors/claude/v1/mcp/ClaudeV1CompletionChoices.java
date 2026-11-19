@@ -91,12 +91,17 @@ final class ClaudeV1CompletionChoices {
         List<Choice> unambiguous = candidates.stream().filter(choice -> counts.get(choice.label()) == 1)
                 .filter(choice -> !choice.label().isBlank() && choice.label().length() <= 512)
                 .toList();
+        java.util.LinkedHashSet<Choice> ordered = new java.util.LinkedHashSet<>();
+        // A long list of reachable goals or exams must never displace a neutral exit.
+        unambiguous.stream().filter(choice -> Set.of("leaveProfile", "endAssessment", "pauseProfile", "retryAssessment")
+                .contains(choice.action())).forEach(ordered::add);
+        unambiguous.stream().filter(choice -> "voluntary".equals(choice.intent())).findFirst().ifPresent(ordered::add);
         if (completion.profileId() == null || !completion.profileId().startsWith("automatic:")) {
-            return unambiguous.stream().limit(MAX_CHOICES).toList();
+            ordered.addAll(unambiguous);
+            return ordered.stream().limit(MAX_CHOICES).toList();
         }
         // Keep exits and useful work reachable even when hundreds of exams exist.
         // Sections consume at most six slots; they cannot crowd out direct starts.
-        java.util.LinkedHashSet<Choice> ordered = new java.util.LinkedHashSet<>();
         unambiguous.stream().filter(choice -> !"startAssessment".equals(choice.action())
                 && !"selectProfile".equals(choice.action())).limit(8).forEach(ordered::add);
         unambiguous.stream().filter(choice -> "selectProfile".equals(choice.action()))

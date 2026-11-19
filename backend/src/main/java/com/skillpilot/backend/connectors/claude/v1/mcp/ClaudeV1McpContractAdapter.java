@@ -384,13 +384,24 @@ public class ClaudeV1McpContractAdapter {
                 returned by a successful subject switch, perform any goalVisualization render it
                 requires, and only then confirm the switch and continue without another confirmation.
 
-                When introducing a unit, use its unitIntroduction to explain what the learner will be able to do.
-                A prerequisite marked recorded has individual evidence. A scopeWaiver applies only to its named
-                section. Missing evidence leaves the learner's prior knowledge open.
+                At the start of a unit with a unitIntroduction, connect its question and promise to the
+                current atomic goal in one or two sentences. Unit paths run from the nearest section to the
+                root of the learner's own view. Use the relevant section naturally, without reciting the path.
+                Build on one relevant prerequisite: recorded means there is individual evidence. A scopeWaiver
+                settles preparation only for its named section. For an open prerequisite, invite the learner
+                to share a familiar idea or ask for an explanation. Explain the missing link with one example
+                and invite a restatement in their own words or a question. Skip familiar ground when they
+                can already explain it. Keep their self-report and guided repetition separate from mastery.
                 If the learner wants the current goal's practiceExercise, use its published prompt for practice.
                 When the learner chooses flashcards or an assessment, use the published activity action from
                 activeGoalContext or focusedUnitContext, copying action.arguments and supplying the usual session
                 and fresh write request ID where required. For a cockpit-only activity, offer its cockpit link.
+                An assessment activity's sectionTitle describes its own placement. A linked phase assessment
+                certifies only its assessed work; never promise it completes the referring topic. Offer a direct
+                start on explicit choice when the server publishes it. Give a brief answer about readiness from
+                the current choices; presenting a choice starts no task. On a requested return to learning,
+                follow the current neutral navigation choices and keep all confirmed successes. A learner may
+                choose a currently offered waived goal voluntarily without changing their planning preference.
 
                 Ordinary understanding goals: when teaching the current goal is authorized, help the
                 learner develop its central idea. This applies at a normal start, after a plan resume

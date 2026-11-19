@@ -33,7 +33,7 @@ import {
 const scriptRoot = dirname(fileURLToPath(import.meta.url));
 const repositoryRoot = resolve(scriptRoot, "..");
 const canonicalPluginRoot = resolve(repositoryRoot, "ai/claude/plugin/skillpilot-coach-v1");
-const pinnedCanonicalRevision = "41f13a3c04d1181b43988d131b24e21a53fe331c";
+const pinnedCanonicalRevision = "773d77b4204cc1e7f1e293e71a46a46ded893b64";
 const marketplaceWorkflow = readFileSync(resolve(repositoryRoot,
   "ai/claude/marketplace/skillpilot-marketplace/validate.yml"), "utf8");
 function loadHistorical110MarketplaceLane() {
@@ -936,37 +936,56 @@ test("published verification is pinned to the configured repository", () => {
   );
 });
 
-test("published 1.1.14 reproduces the verified repository tree and awaits real-account acceptance", () => {
+test("prepared 1.1.15 reproduces its local export with independent publication and account evidence pending", () => {
   const result = checkClaudeMarketplace({ repositoryRoot });
   assert.equal(result.pluginName, "skillpilot-coach-v1");
-  assert.equal(result.version, "1.1.14");
+  assert.equal(result.version, "1.1.15");
   assert.equal(result.pendingCandidateVersion, undefined);
-  assert.equal(result.treeSha256, "cf636512209e08bf5c4af6cbb2fed43ddbb1b3d0b296e82a62deb9269550ac33");
   assert.equal(typeof result.outputRoot, "string");
   assert.equal(result.files.length, 12);
-  const { activation } = currentMarketplaceLane;
-  assert.equal(activation.state, "published_pending_acceptance");
-  assert.equal(activation.firstPartyGuideDecision.status, "pending");
-  assert.equal(activation.marketplaceUiSwitchAllowed, false);
-  const [repositoryEvidence, ...accountEvidence] = activation.evidence;
-  assert.equal(repositoryEvidence.status, "pass");
-  assert.equal(repositoryEvidence.revision, "f3656f5ffc6b7341b166ac28a48032be48148458");
-  assert.equal(repositoryEvidence.treeSha256, result.treeSha256);
-  assert.equal(repositoryEvidence.candidateVersion, result.version);
-  assert.equal(repositoryEvidence.candidateSha256, "e957bf74c0a751605c9fcf86af0301b61d4d70cc3df019cadf15e8f2c134d3ee");
-  assert.equal(repositoryEvidence.verifiedAt, "2026-11-19T08:54:02.000Z");
-  assert.ok(accountEvidence.every(({ status }) => status === "pending"));
+  assert.equal(result.directInstallSha256, pinnedBaseline.archive.sha256);
+  assert.equal(result.treeSha256, "776210a6a829dd64c7a7da23e5b87e5047ae3ccbf70129a9149fb0bd87f914a1");
+  assert.equal(currentMarketplaceLane.activation.state, "prepared_not_published");
+  assert.equal(currentMarketplaceLane.activation.firstPartyGuideDecision.status, "pending");
+  assert.equal(currentMarketplaceLane.activation.marketplaceUiSwitchAllowed, false);
+  assert.ok(currentMarketplaceLane.activation.evidence.every(({ status }) => status === "pending"));
+});
+
+test("published 1.1.14 retains its archive, repository revision and pending real-account checks", () => {
+  const historical = JSON.parse(readFileSync(resolve(canonicalPluginRoot,
+    "release/history/1.1.14/marketplace-publication.json"), "utf8"));
+  const baseline = JSON.parse(readFileSync(resolve(canonicalPluginRoot,
+    "release/history/1.1.14/contract-baseline.json"), "utf8"));
+  validateClaudeMarketplaceLane(historical);
+  const digest = "e957bf74c0a751605c9fcf86af0301b61d4d70cc3df019cadf15e8f2c134d3ee";
+  const bytes = readFileSync(resolve(repositoryRoot,
+    `backend/src/main/resources/claude-plugin-publication/skillpilot-coach-v1/1.1.14/sha256-${digest}/skillpilot-coach-v1-1.1.14.plugin`));
+  assert.equal(baseline.pluginVersion, "1.1.14");
+  assert.equal(baseline.archive.sha256, digest);
+  assert.equal(baseline.archive.bytes, 47085);
+  assert.equal(bytes.length, 47085);
+  assert.equal(createHash("sha256").update(bytes).digest("hex"), digest);
+  assert.equal(historical.activation.state, "published_pending_acceptance");
+  assert.equal(historical.activation.firstPartyGuideDecision.status, "pending");
+  const [repository, ...accounts] = historical.activation.evidence;
+  assert.equal(repository.status, "pass");
+  assert.equal(repository.revision, "f3656f5ffc6b7341b166ac28a48032be48148458");
+  assert.equal(repository.treeSha256, "cf636512209e08bf5c4af6cbb2fed43ddbb1b3d0b296e82a62deb9269550ac33");
+  assert.equal(repository.candidateVersion, "1.1.14");
+  assert.equal(repository.candidateSha256, digest);
+  assert.equal(repository.verifiedAt, "2026-11-19T08:54:02.000Z");
+  assert.ok(accounts.every(({ status }) => status === "pending"));
 });
 
 test("an unpinned future candidate cannot use the published workflow export", () => {
   withOutput(({ root, outputRoot }) => {
     const futureLane = withoutPublicationEvidence(currentMarketplaceLane);
-    futureLane.plugin.version = "1.1.15";
+    futureLane.plugin.version = "1.1.16";
     const lanePath = resolve(root, "ai/claude/plugin/skillpilot-coach-v1/release/marketplace-publication.json");
     mkdirSync(dirname(lanePath), { recursive: true });
     writeFileSync(lanePath, JSON.stringify(futureLane));
     assert.throws(() => prepareCurrentMarketplace({ repositoryRoot: root, outputRoot }),
-      /export version 1\.1\.15 does not match pinned template version 1\.1\.14/u);
+      /export version 1\.1\.16 does not match pinned template version 1\.1\.15/u);
   });
 });
 
@@ -1041,7 +1060,7 @@ test("source CI always checks the marketplace and exports only an eligible candi
   assert.equal(current.output, "export_ready=true\n");
 
   const pending = runSourceWorkflowGate(checkStep,
-    "{ version: '1.1.13', pendingCandidateVersion: loadClaudeMarketplaceLane().plugin.version, outputRoot: null }");
+    "{ version: '1.1.14', pendingCandidateVersion: loadClaudeMarketplaceLane().plugin.version, outputRoot: null }");
   assert.equal(pending.status, 0, pending.stderr);
   assert.equal(pending.output, "export_ready=false\n");
 
@@ -1184,7 +1203,7 @@ async function createExportFixture() {
     }
     const syntheticSourceDigest = sourceHash.digest("hex");
     const syntheticRevision = "1".repeat(40);
-    const pinnedSourceDigest = "9451d448b8f98efdccb517ca63f0126150e60869cb28e71a765fc21f04dd1004";
+    const pinnedSourceDigest = "f048d07597f891f2ad4753796379de9e481575a19e43c9588adb3b9e3805195a";
     const workflow = marketplaceWorkflow
       .replaceAll(pinnedCanonicalRevision, syntheticRevision)
       .replaceAll(pinnedSourceDigest, syntheticSourceDigest)

@@ -41,7 +41,7 @@ Die Umsetzung bevorzugt eine einfache, verlässliche Lösung für die üblichen 
 !!! warning "Geltender Planvertrag vom 4. und 11. November 2026"
     Der bestätigte Vertrag sieht vor, im Gesamt-IST des atomaren Plans ausdrücklich erreichte Ziele und gültige implizite Anerkennungen zu zählen. Die Anerkennung soll aus fachlich geprüften lokalen Verträgen entstehen und bei einem Wechsel des Plans für weitere Voraussetzungen wirksam bleiben. Das Tages- und Wochenpensum zählt tatsächliche, datierte Abschlüsse.
 
-    „Nur explizit erreichte Lernziele zählen“ betrifft ausschließlich das Gesamt-IST. Die Laufzeit wertet vorhandene Abschlussprofile aus. Eine vollständige Umsetzung der dauerhaft revisionsgebundenen Anerkennung ist weiterhin offen. Die folgenden Formeln beschreiben diesen bestätigten Planvertrag. Der Vorschlag vom 19. November wird im Abschnitt über die Plananrechnung eigens erläutert. [Beschluss vom 4. November](../skill-graph/completion-semantics-clarification-2026-11-04.md)
+    Seit der Entscheidung vom 19. November steuert „Angerechnete Lernziele weiter einplanen“ sowohl den Planstand als auch die reguläre Zielauswahl. Einzelne fachlich zugängliche Ziele können Lernende bei beiden Einstellungen freiwillig bearbeiten. Die Laufzeit wertet vorhandene Abschlussprofile aus. Eine vollständige Umsetzung der dauerhaft revisionsgebundenen Anerkennung ist weiterhin offen. Die folgenden Formeln beschreiben diesen bestätigten Planvertrag. Der Vorschlag vom 19. November wird im Abschnitt über die Plananrechnung eigens erläutert. [Beschluss vom 4. November](../skill-graph/completion-semantics-clarification-2026-11-04.md)
 
 <a id="sec-plan-status-meaning"></a>
 ### 4.2. Fachliche Bedeutung des Status
@@ -85,7 +85,7 @@ Die vollständige persönliche Zielmenge und die Planmenge $G$ sind nicht zwangs
 
 #### Bereinigte Planmenge
 
-Die bei Planerstellung erfasste Ausgangsbasis hält fest, welche vorgesehenen Ziele noch keine explizite Mastery hatten; diese Ziele bilden die fortschrittswirksame Planmenge $G$. Ein aktuell implizit anerkanntes Ziel wird bei Planerstellung nicht zusätzlich aus $G$ gestrichen, damit die Option „Nur explizit erreichte Lernziele zählen“ seinen noch fehlenden expliziten Abschluss weiterhin berücksichtigen kann.
+Die bei Planerstellung erfasste Ausgangsbasis hält fest, welche vorgesehenen Ziele noch keine explizite Mastery hatten; diese Ziele bilden die fortschrittswirksame Planmenge $G$. Ein aktuell implizit anerkanntes Ziel wird bei Planerstellung nicht zusätzlich aus $G$ gestrichen, damit die Option „Angerechnete Lernziele weiter einplanen“ seinen noch fehlenden expliziten Abschluss weiterhin berücksichtigen kann.
 
 **Alle Größen der Statusrechnung beziehen sich ausschließlich auf dieselbe bereinigte Planmenge $G$.** Vor Planerstellung explizit beherrschte Ziele tragen weder zum Soll noch zum IST noch zu den Periodenabschlüssen dieses Plans bei; später beherrschte Ziele aus $G$ bleiben in $G$ und zählen zum IST (Beispiel: 50 Clusterziele, davon 20 vorab beherrscht $\Rightarrow |G| = 30$; 5 Ziele in Woche 1 ergeben ein Wochenpensum von 5). Ein zusätzlicher Abschluss-Stichtag zur Vorwissensabgrenzung ist nicht nötig.
 
@@ -105,7 +105,7 @@ $$
 M_{\mathrm{eff}} = M \cup W, \qquad I = |G \cap M_{\mathrm{eff}}|.
 $$
 
-Ist die Einstellung **„Nur explizit erreichte Lernziele zählen“** aktiviert, gilt stattdessen $I = |G \cap M|$.
+Ist die Einstellung **„Angerechnete Lernziele weiter einplanen“** aktiviert, gilt stattdessen $I = |G \cap M|$.
 
 $W$ wird aus den festen fachlichen Abschlussverträgen der gültigen Lerneinheiten und den vorhandenen expliziten Prüfungs-/Recall-Ergebnissen bestimmt — nicht nur aus aktuell angezeigten oder im Persönlichen Lehrplan gewählten Ausschnitten. Maßgeblich bleiben die zum Ergebnis gehörigen Autorenverträge; ein später geänderter Graph darf alten Prüfungsergebnissen keine zusätzlichen Kompetenzen zuschreiben.
 
@@ -114,7 +114,7 @@ Die Prüfungen einer Lerneinheit müssen die selbstständige Anwendung der anerk
 - **Beispiel:** Berechtigt $Q$ als einzige relevante Abschlussprüfung zur Anerkennung von $A$ und $B$ und liegen alle drei in $G$, so gilt nach bestandener $Q$ im Standardmodus $I = 3$, mit Explizit-Option $I = 1$. Nur $Q$ erhält einen expliziten Mastery-Eintrag. Eine spätere Prüfung $Q_2$, die $A$ voraussetzt, trifft auf eine bereits erfüllte Voraussetzung und setzt $I$ nicht zurück; eine gewöhnliche $B$-Mastery allein erkennt $A$ dagegen nicht an, solange $Q$ in derselben Lerneinheit offen ist.
 - **Modellierungsgrenzen:** Ein gewöhnliches Ziel ohne gültige Prüfungsanbindung ist ein Modellierungsfehler, kein automatischer Fortschritt. Prüfungs- und Lernkartenziele bleiben selbst explizite Pflichten. Fehlende oder nicht auflösbare Anerkennungsdaten werden als Einschränkung ausgewiesen; es gibt keinen Rückfall auf die frühere Bedarfsstopp-Rechnung.
 - **Einfachzählung und Periodenkontingent:** Jede ID zählt in $G$ höchstens einmal; ein späterer expliziter Abschluss eines bereits anerkannten Ziels erhöht $I$ nicht erneut, darf aber am Abschlusstag regulär zum Periodenkontingent $H$ beitragen. Die Ableitung von $W$, ein Planwechsel, ein Import oder ein erneutes Anzeigen erzeugen **kein** künstliches Abschlussereignis in $H$.
-- **Lerneinstellung und Plandetails:** Unter *Konfiguration → Lerneinstellungen* ist „Nur explizit erreichte Lernziele zählen“ pro SkillPilot-ID dauerhaft gespeichert (Standard: aus). Hilfetext: *„Für deinen Gesamtplan zählen auch Kompetenzen, deren selbständige Anwendung in Prüfungen nachgewiesen wurde. Mit dieser Einstellung zählen nur direkt abgeschlossene Lernziele. Dein Tages- oder Wochenpensum zählt immer nur direkte Abschlüsse.“* Unter *Plandetails* kann optional `planCreditText` stehen (z. B. *„Im Plan angerechnet: 3 Ziele, davon 2 durch selbständige Anwendung in Prüfungen.“*). Diese Konzeptkorrektur ist keine Freigabe des alten Umsetzungsplans und kein Nachweis einer bereits korrigierten Laufzeitimplementierung.
+- Unter *Konfiguration → Lerneinstellungen* ist „Angerechnete Lernziele weiter einplanen“ standardmäßig aus. Nach einer Anrechnung geht der Plan zum nächsten erforderlichen Ziel. Wer die Option einschaltet, erhält im selben Plan auch Vorschläge für angerechnete Ziele, für die noch der Einzelbeleg fehlt. Ob der nächste Vorschlag schon zum Lernen bereitsteht, bestimmen die üblichen Voraussetzungen. Der Prüfungsnachweis bleibt bestehen. Tages- und Wochenpensum zählen die tatsächlich datierten Abschlüsse.
 
 #### Vorgeschlagener Planauftrag für eine Einheit
 

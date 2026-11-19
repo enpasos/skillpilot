@@ -1,31 +1,28 @@
 # SkillPilot Claude Marketplace
 
-**SkillPilot Coach v1 · Version 1.1.14** provides curriculum-grounded learning
-coaching for Claude. This Marketplace export matches the exact 1.1.14
+**SkillPilot Coach v1 · Version 1.1.15** provides curriculum-grounded learning
+coaching for Claude. This Marketplace export matches the exact 1.1.15
 SkillPilot download artifact. Repository publication, installation and actual
 learning behavior in individual Claude accounts are checked separately.
 
-### In version 1.1.14
+### In version 1.1.15
 
-Ask the coach to explain a new idea, or tell it “I don't know yet.” For an
-ordinary learning goal, the coach can start with a concrete example and then
-invite you to explain the idea in your own words. If you already have an idea,
-the coach builds on it. A question after an exercise can lead directly to
-another explanation. To record mastery, the coach still needs two independent
-demonstrations or one genuine multi-step transfer.
+When you choose a learning unit, the coach can introduce its guiding question
+and explain what you will learn. Ask for an example, describe what you
+already know, practice the unit’s flashcards, or ask to try an available
+assessment. Opening a unit on the learning map lets you explore it. You choose
+when to start working on a goal with the coach.
 
 ### Learning and assessments
 
-- Ask for an assessment shortcut when you want to demonstrate existing knowledge.
-  The coach offers only assessments currently authorized by SkillPilot, before
-  starting an unrelated lesson. Browsing the options starts no assessment.
-- After an explicit choice, the coach starts that assessment directly. SkillPilot
-  handles the technical contract confirmation without an extra learner decision.
-- Passed assessments can remove preparation requirements for their reviewed
-  learning section. They never mark other learning goals as mastered.
-- Detailed grading and feedback remain available. Shortcut offers do not interrupt
-  result feedback or an agreed continuation of ordinary learning. The Cockpit's
-  shortcut setting and all session and prerequisite protections still apply.
+- Ask to try the assessment for the unit you are working on. The coach uses
+  the choices SkillPilot offers for your learning context. You can also open
+  the assessment from its goal on the learning map.
+- You can return to learning during an unfinished attempt. A passed
+  assessment records what its task and scoring criteria establish. The
+  learning plan can credit the relevant goals within that section. To see
+  those goals suggested again, choose **Keep credited goals in my plan** in
+  the cockpit settings. You can also choose any of those goals yourself.
 
 - The coach quotes SkillPilot's plan status word for word, exactly as the
   SkillPilot cockpit shows it: one line per subject with its daily or weekly
@@ -89,27 +86,26 @@ observed in two Claude accounts.
 An upload-only installation is not the same as a marketplace installation.
 
 Update timing and available synchronization controls can vary by Claude client.
-After updating, check that your installed plugin shows **1.1.14**,
+After updating, check that your installed plugin shows **1.1.15**,
 then start a fresh learning session from SkillPilot. If an update has not
 arrived, use the refresh control where available or contact
 <support@skillpilot.com>.
 
-The observed automatic update mechanism does not mean that every account has
-already received 1.1.14. Verification of this version in individual clients
-remains separate from publication.
+Verification of this version in individual clients remains separate from publication.
+Check the installed version in your account before starting a new learning session.
 
 ## About this beta
 
 This personal marketplace is published independently by SkillPilot; it is not
 reviewed, endorsed, curated, or verified by Anthropic. The seven packaged plugin
-files match the prepared 1.1.14 direct-install candidate byte for byte.
+files match the prepared 1.1.15 direct-install candidate byte for byte.
 For supported clients, setup and the security boundary, see the
 [plugin README](./plugins/skillpilot-coach-v1/README.md) and
 [setup guide](./plugins/skillpilot-coach-v1/SETUP.md).
 
 Those packaged documents retain their canonical pre-publication snapshot;
 their preparation-time release notes are not a live availability indicator.
-This Marketplace export contains **1.1.14**, matching the exact SkillPilot download
+This Marketplace export contains **1.1.15**, matching the exact SkillPilot download
 artifact. Repository publication alone will not prove that an
 installed Claude account has updated.
 

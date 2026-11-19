@@ -544,6 +544,30 @@ class AssessmentCompletionIntegrationTest {
                 .satisfies(result -> assertThat(result.getGoalKey()).isEqualTo(EXAM));
     }
 
+    @org.junit.jupiter.params.ParameterizedTest
+    @org.junit.jupiter.params.provider.ValueSource(booleans = {false, true})
+    void ordinaryPlanHandoffSelectsTheNextGoalAccordingToIndividualEvidence(boolean individualEvidence) {
+        useRoleCompleteG8OrdinaryScope();
+        String countingPrinciple = "e8d810de-95ed-52d6-ab1f-0560398e35c0";
+        var monday = java.time.LocalDate.now(java.time.ZoneId.of("Europe/Berlin"))
+                .with(java.time.temporal.TemporalAdjusters.previousOrSame(java.time.DayOfWeek.MONDAY));
+        var goals = List.of(PREPARATION, countingPrinciple, UNRELATED, EXAM);
+        var block = new LearnerLearningPlanApi.Block("learning", "learning", null, "Mathematik", monday,
+                monday.plusDays(4), null, goals, goals, true);
+        String id = learner.getSkillpilotId();
+        learningPlans.upsert(id, MATH, new LearnerLearningPlanApi.UpsertRequest(0L, "Mathematik", List.of(block)), monday);
+        masteryRepository.saveAndFlush(new Mastery(learner, EXAM, 1.0));
+        learners.setPreferences(id, null, false, false, null, true,
+                com.skillpilot.backend.service.learningplan.PeriodBasis.WEEK, individualEvidence);
+        learners.setPlannedGoals(id, Set.of(countingPrinciple));
+        learners.setActiveGoal(id, countingPrinciple);
+        var next = learners.setMastery(id, new MasteryUpdateRequest(Map.of(countingPrinciple, 1.0), countingPrinciple));
+        assertThat(next.activeGoal()).isNotNull();
+        assertThat(next.activeGoal().id()).isEqualTo(individualEvidence ? PREPARATION : UNRELATED);
+        assertThat(masteryRepository.findByLearner_SkillpilotId(id)).extracting(Mastery::getGoalKey)
+                .containsExactlyInAnyOrder(EXAM, countingPrinciple);
+    }
+
     @Test void unrelatedPlanDoesNotDependOnUnavailableCompletionRules() {
         var application = (CompletionApplicationService) ReflectionTestUtils.getField(learners, "completionApplicationService");
         ReflectionTestUtils.setField(application.catalog(), "available", false);

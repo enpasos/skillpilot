@@ -186,7 +186,7 @@ async function verifySupportedPluginPublication(options) {
     // advances. Its immutable local dossier and retained bytes are the authority.
   }
   try {
-    return await verifyPublicClaudeHistoricalBuildPublication({ ...options, version: "1.1.13" });
+    return await verifyPublicClaudeHistoricalBuildPublication({ ...options, version: "1.1.14" });
   } catch {
     // Backend builds publish the current candidate without rewriting that history.
     // Reproduce its exact index and archive locally; remote metadata is never authority.
