@@ -1745,6 +1745,33 @@ class CompositionViewServiceTest {
         Map<String, List<String>> examParts = Map.of(
                 "GK", List.of("abe032d3-97dd-5eaf-964e-0439cea27ac2", "f4eac786-a8e1-5f23-aedf-17bc70fc347f"),
                 "LK", List.of("ed3a6f6b-2ca3-51c2-8f00-58e11eb02401", "320732e8-1c44-5fa4-9a47-972243cfc32a"));
+        String previousEPhaseCollection = "424b07df-bf66-5d7f-99f5-f28b32ad1f22";
+        Map<String, List<String>> ePhaseAssessmentPlacements = Map.of(
+                "physics-e1-motion", List.of(
+                        "2b9e565f-d9b4-5e23-b5b7-b7977cecff06",
+                        "6ea3fb3c-abdc-568f-ab13-97c36dc274e4",
+                        "c5807a37-129e-5df6-8989-482bc7f5683e"),
+                "physics-e2-newton-and-conservation", List.of(
+                        "22561c66-3957-5d55-b07a-25de1f359930",
+                        "72649cf5-893c-5f03-88bd-a2497171d434",
+                        "be6d4895-65ab-545b-8df9-84e5a308a5e3"),
+                "he-physics-topic-287739a3-6143-55d0-abe7-1a08889e9b49",
+                        List.of("8320bb17-e6ab-50ea-a965-aa331bfd33e1"), // E.3
+                "he-physics-topic-04d1d2df-a94b-5db4-8d07-cbb512c2e0b9",
+                        List.of("dd99528a-bae5-5b78-89e6-c6092c927f8d"), // E.4
+                "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089", List.of( // E.5
+                        "1b432223-3d59-5586-86a9-2214b4844101",
+                        "7e0308d8-a239-5c0f-b2c0-724f21e4da60",
+                        "8a1d4093-9832-5010-b1ca-9d32d8c05afa"),
+                "he-physics-topic-df11eb33-4900-52bf-93b3-eb82ff0f9a28",
+                        List.of("6ba2e47f-7e88-5d30-8f1a-3f4b4f785ca1"), // E.6
+                "he-physics-topic-9743baad-9371-52b6-98ee-72bc6dc68701",
+                        List.of("6d25344c-35d7-5853-925d-2bccbaf50630"), // E.7
+                "physics-he-ephase-cross-topic-assessments", List.of(
+                        "a9562b05-c54d-5635-9244-3f7dd24a8642", // Bewegungsanalyse und freier Fall
+                        "5773ccbe-cd20-5ba0-99a5-7ccd5f42be51",
+                        "879491c0-7153-570b-91f4-c61d9fe8a143",
+                        "7c0b94b9-2af7-59d4-bfae-278a3418f6a8"));
         for (String durationModel : List.of("G8", "G9")) {
             for (String profile : List.of("GK", "LK", "GK+LK")) {
                 String context = "Hessen Physics " + durationModel + " " + profile;
@@ -1795,12 +1822,33 @@ class CompositionViewServiceTest {
                 });
                 Map<String, Object> stage = stages.getFirst();
                 List<Map<String, Object>> allNodes = flattenCompositionNodes(List.of(stage));
-                List<String> assessmentBranches = new ArrayList<>(List.of(
-                        "424b07df-bf66-5d7f-99f5-f28b32ad1f22", // E-Phase
+                assertThat(allNodes).as(context + " retired E-phase assessment collection")
+                        .noneMatch(node -> previousEPhaseCollection.equals(node.get("goalId"))
+                                || ("existing-assessment-path-" + previousEPhaseCollection).equals(node.get("id"))
+                                || ("he-physics-topic-" + previousEPhaseCollection).equals(node.get("id")));
+                List<Map<String, Object>> stageChildren = (List<Map<String, Object>>) stage.get("children");
+                Map<String, Object> ePhase = stageChildren.stream()
+                        .filter(node -> "physics-e-phase".equals(node.get("id"))).findFirst().orElseThrow();
+                List<Map<String, Object>> phaseChildren = (List<Map<String, Object>>) ePhase.get("children");
+                ePhaseAssessmentPlacements.forEach((parentId, assessmentIds) -> {
+                    Map<String, Object> parent = phaseChildren.stream()
+                            .filter(node -> parentId.equals(node.get("id"))).findFirst().orElseThrow();
+                    List<Map<String, Object>> entries = (List<Map<String, Object>>) parent.get("children");
+                    for (String assessmentId : assessmentIds) {
+                        assertThat(entries).as(context + " placement of " + assessmentId + " in " + parentId)
+                                .filteredOn(node -> assessmentId.equals(node.get("goalId")))
+                                .singleElement().satisfies(node -> assertThat(node)
+                                        .containsEntry("kind", "canonicalSubtree")
+                                        .doesNotContainEntry("projectionRole", "prerequisiteOnly"));
+                        assertThat(allNodes).as(context + " unique placement of " + assessmentId)
+                                .filteredOn(node -> assessmentId.equals(node.get("goalId"))).hasSize(1);
+                    }
+                });
+                List<String> assessmentBranches = List.of(
                         "549a427d-f10a-5537-990e-6fdd7466848b", // Q1
                         "9dd7c596-a751-523c-acba-916f73e900a5", // Q2
                         "b47a2a23-b56d-5433-9036-075d6bb7c782", // Q3
-                        "85bbad98-2f48-5d64-85c4-ab6cf67f24c2")); // Q4
+                        "85bbad98-2f48-5d64-85c4-ab6cf67f24c2"); // Q4
                 for (String branchId : assessmentBranches) {
                     assertThat(allNodes).as(context + " expandable assessment branch " + branchId)
                             .filteredOn(node -> branchId.equals(node.get("goalId"))

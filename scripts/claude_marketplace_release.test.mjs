@@ -936,16 +936,26 @@ test("published verification is pinned to the configured repository", () => {
   );
 });
 
-test("the pinned 1.1.14 candidate is eligible for export without implying account acceptance", () => {
+test("published 1.1.14 reproduces the verified repository tree and awaits real-account acceptance", () => {
   const result = checkClaudeMarketplace({ repositoryRoot });
   assert.equal(result.pluginName, "skillpilot-coach-v1");
   assert.equal(result.version, "1.1.14");
   assert.equal(result.pendingCandidateVersion, undefined);
-  assert.match(result.treeSha256, /^[0-9a-f]{64}$/u);
+  assert.equal(result.treeSha256, "cf636512209e08bf5c4af6cbb2fed43ddbb1b3d0b296e82a62deb9269550ac33");
   assert.equal(typeof result.outputRoot, "string");
   assert.equal(result.files.length, 12);
-  assert.notEqual(currentMarketplaceLane.activation.state, "published_verified");
-  assert.ok(currentMarketplaceLane.activation.evidence.slice(1).every(({ status }) => status === "pending"));
+  const { activation } = currentMarketplaceLane;
+  assert.equal(activation.state, "published_pending_acceptance");
+  assert.equal(activation.firstPartyGuideDecision.status, "pending");
+  assert.equal(activation.marketplaceUiSwitchAllowed, false);
+  const [repositoryEvidence, ...accountEvidence] = activation.evidence;
+  assert.equal(repositoryEvidence.status, "pass");
+  assert.equal(repositoryEvidence.revision, "f3656f5ffc6b7341b166ac28a48032be48148458");
+  assert.equal(repositoryEvidence.treeSha256, result.treeSha256);
+  assert.equal(repositoryEvidence.candidateVersion, result.version);
+  assert.equal(repositoryEvidence.candidateSha256, "e957bf74c0a751605c9fcf86af0301b61d4d70cc3df019cadf15e8f2c134d3ee");
+  assert.equal(repositoryEvidence.verifiedAt, "2026-11-19T08:54:02.000Z");
+  assert.ok(accountEvidence.every(({ status }) => status === "pending"));
 });
 
 test("an unpinned future candidate cannot use the published workflow export", () => {
