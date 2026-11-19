@@ -21,7 +21,7 @@ er erhält die Dokumentationschecks. Die große CI schließt `docs/dev/**` und
 `AGENTS.md` bei reinen Änderungen dieser Pfade derzeit aus. Der dokumentierte
 CI-Nachweis gilt weiterhin für den benannten Implementierungscommit.
 
-## 19. November 2026, 16:01 MEZ (UTC+01:00) – Einstieg, Lernkarte und Coach-Kontext in Hessen Physik E.1
+## 19. November 2026, 17:32 MEZ (UTC+01:00) – Einstieg, Lernkarte und Coach-Kontext in Hessen Physik E.1
 
 **Lokale Prüfrunde für G8 und G9.** „Ein Ball rollt vom Tisch. Wo landet er?“ eröffnet die Einheit. Die Lernenden nutzen vorgegebene Bewegungsdaten, um eine Vorhersage zu begründen. Drei Übungen schließen an die Ziele zu Modellierung, Sicherheitsabstand und waagerechtem Wurf an. Bei jeder Aufgabe lassen sich ein Hinweis und die Musterlösung getrennt öffnen. Die Übungen dienen der Selbstkontrolle. Die zweisprachigen Aufgaben stehen im Arbeitsbaum unter `curricula/DE/Gymnasium/materials/physics/he-e1-motion-practice.json`.
 
@@ -33,7 +33,11 @@ CI-Nachweis gilt weiterhin für den benannten Implementierungscommit.
 
 **Abschlussfrage.** Das Lernversprechen und die Fachunterlage halten die Entscheidung zu vorgegebenen Messdaten fest. Ein eigenes Messprotokoll ist im Lernweg freiwillig. Der Abgleich der verlinkten Phasenprüfung mit ihrem Raster zeigt, dass selbst ohne die gesamte Fallaufgabe 19 Punkte bei einer Bestehensgrenze von 15 Punkten möglich sind. Dieser Befund gehört in die Diskussion über den Einheitenabschluss. [Abgrenzung der bestehenden Prüfung](../concept/skill-graph/unit-assessment-discussion-2026-11-19.de.md#was-geschieht-mit-den-vorhandenen-prüfungen)
 
-**Integrationsstand.** Arbeitsstand auf `feat/hessen-physik-sekii-vorlage` zur gemeinsamen Besichtigung. K 0/13 und F 0/7 vollständig abgeschlossen, 0 zusätzliche Stufenpläne aktiviert. Als Nächstes beurteilt der Product Owner den Einstieg und den Übungsabschluss in der laufenden Anwendung. Die Ausgestaltung des formalen E.1-Nachweises ist eine eigene Prüfrunde.
+**Prüfung und Weiterlernen.** Direkte Versuche beginnen mit der ausdrücklichen Wahl einer angebotenen Prüfung. Ein früheres Opt-out im Profil sperrt sie nicht mehr. In G8 und G9 führte die Phasenprüfung aus E.1 bis zur Claude-Auswahl. Die reguläre Stufenansicht und der Einstellungsdialog wurden in beiden Bildungsgängen im lokalen Browser geprüft. Unter „Angerechnete Lernziele weiter einplanen“ wählen Lernende, ob der Plan auch individuell noch offene angerechnete Ziele zum Weiterlernen vorschlägt. Ein freiwilliges Fachziel können sie unabhängig davon wählen. Der Prüfungsnachweis bleibt dabei bestehen.
+
+**Claude.** Der lokale 1.1.15-Kandidat hat 47.399 Bytes. Zwei separate Builds waren byteidentisch. Für die Verpackung und Anweisungen bestanden 188 automatisierte Tests, für die Release-Verträge und den Direktdownload weitere 64. Die eigenständige Marketplace-Prüfung erfasste 33 Fälle und der Support-Test 18. Zwei strikte CLI-Validierungen und eine isolierte lokale Installation bestanden. Die Prüfläufe belegen das Paket und die lokalen Zugänge. Die Erprobung im tatsächlichen Claude-Chat steht aus. [Releaseprotokoll](../deploy/claude-personal-marketplace-release.md)
+
+**Integrationsstand.** Die Änderungen werden in [PR #167](https://github.com/enpasos/skillpilot/pull/167) geprüft. K 0/13 und F 0/7 vollständig abgeschlossen, 0 zusätzliche Stufenpläne aktiviert. Vor dem Deployment folgt die frische CI auf main. Die fachliche Sichtung von E.1 mit dem Product Owner und die Ausgestaltung des vollständigen E.1-Nachweises bleiben offen.
 
 ## 19. November 2026, 09:55 MEZ (UTC+01:00) – Verstehenslernziele im Claude-Coach
 
