@@ -27,28 +27,32 @@ npm run quality:memory-card-review -- --mode=bootstrap \
   --config=curricula/DE/Gymnasium/quality/memory-card-review/<id>.config.json
 ```
 
-### Reifegrade `M0`–`M7`, Quellenbelege und Regelfamilie `curriculum-quality-v5` {#sec:qal-dashboard-rules}
+### Reifegrade `M0`–`M7`, Quellenbelege und Regelfamilie `curriculum-quality-v6` {#sec:qal-dashboard-rules}
 
 Das Dashboard weist jedem Curriculum konservativ einen Reifegrad `M0`–`M7` zu und zeigt zusätzlich den Gate-Streifen `M5–M7 review gates` (`CQR-301`, `CQR-401`, `CQR-501` für Kernstufe `M5`, `CQR-302` für `M6`, `CQR-303` für `M7`). Menschliche Champion-Erprobungen bleiben eine orthogonale Aussage ([Qualität & Erprobung](repo:docs/concept/curriculum-quality-and-human-trial.md)). Amtliche Quellen werden zweischichtig geführt: dauerhaft eingecheckt sind strukturierte `sourceDocument`/`sourceDocuments`-Referenzen mit offiziellen HTTP(S)-URLs und lesbaren extrahierten Inventaren; lokale Arbeitskopien (`curricula/**/*.pdf`) sind regulär per Git ignoriert, sodass ein grünes Quellen-Badge auch bei `0/n` lokalen PDFs gültig ist, sofern alle `n/n` offiziellen URLs und Inventare vorliegen.
 
 :::table{cols="2.2cm,1.3cm,X",longtable=true}
-| Regel | Ziel | Bedeutung in `curriculum-quality-v5` |
+| Regel | Ziel | Bedeutung in `curriculum-quality-v6` |
 | --- | --- | --- |
 | `CQR-000` | `M1` | Quelleninventare lesbar, mit offiziellen HTTP(S)-URLs verknüpft und extrahierte Ziele im Membership-/Closure-Ledger registriert. |
-| `CQR-001` | `M0` | Basis-Graphintegrität: IDs, lokale/globale Referenzen, Selbstreferenz-Schutz und direkte DAG-Prüfung. |
+| `CQR-001` | `M0` | Aktuelle Graphintegrität einschließlich atomarer Voraussetzungsschicht und transitiver Minimalität (`G17`) im vollständigen kanonischen Gymnasialkatalog; kein Vergleich mit einer historischen Voraussetzungshülle. |
 | `CQR-002` | `M0` | Explizite `type`-Metadaten stimmen mit struktureller Atom-/Cluster-Klassifikation überein. |
 | `CQR-003` | `M2` | Bundesland-Abdeckung: volle Quellenbindung aller quellenrelevanten View-Atome, keine unbelegten Zuordnungen, keine fehlenden registrierten Originalziele. |
 | `CQR-004` | `M2` | Kursniveau-Konsistenz: Quellziele (`GK_LK`, `LK`, `unspecified` mit Standard `GK_LK`) mappen nur auf kompatible `GK`/`LK`-Ziele. |
 | `CQR-101` | `M3` | Effektive Routenabdeckung über $R_{\mathrm{effective}}$ vom Motivationsanker über Atomziele bis zur terminalen Autonomie. |
 | `CQR-102` | `M3` | Direkte atomare Routenabdeckung über explizite atomare `requires`-Kanten. |
 | `CQR-103` | `M3` | Keine verbleibenden Cluster-`requires` für die reguläre Sequenzierung im Routenscope. |
-| `CQR-201` | `M4` | Terminale Autonomieziele besitzen `examData` (oder eine explizit geprüfte Ausnahmekonvention). |
+| `CQR-201` | `M4` | Konfigurierte atomare terminale Autonomieziele besitzen `examData`. |
+| `CQR-202` | `M4` | Aufgabe, Lösung und Punkteschema sind formal befüllt; erkannte Platzhalter und explizit sperrender Freigabestatus fehlen. |
+| `CQR-203` | `M5` | Freigabestatus ist `released`; Ziel-, Inhaltsbereichs- und Anforderungsniveau-Listen sind nicht leer. |
 | `CQR-301` | `M5` | Ledger der semantischen Atomizität für fachliche Blattziele sind vollständig, aktuell und aufgelöst. |
 | `CQR-302` | `M6` | Merkkarten-Ledger entscheiden explizit über Memorierungsbedarf, binden jede aktive Primärkarte und sichern Sichtbarkeit in Lernansichten. |
 | `CQR-303` | `M7` | Zentraler Bericht aus `reportDeepUnderstandingRollout.ts` beweist die exakte Schnittmenge der Gates D/P/A/M/V auf allen aktuellen `curricularAtomic`-Zielen (technische Bild-Deferrals zählen nie als erfüllt; `humanApproved`/`humanIssueIdentified` erfüllen oder blockieren Gate V/`M7` nicht). |
 | `CQR-401` | `M5` | Mindestens eine lernendenseitige Kompositionsansicht existiert. |
-| `CQR-501` | `M5` | Applicability-Warnungen sind sauber in aktive, aktuell akzeptierte und veraltet akzeptierte Zähler getrennt (`active = 0`). |
+| `CQR-501` | `M5` | Applicability-Warnungen sind in aktive, aktuell akzeptierte und veraltet akzeptierte Zähler getrennt; aktive und veraltet akzeptierte Warnungen müssen beide null sein. |
 :::
+
+Die Tabelle fasst die Checks zusammen; Fach- und Scope-Schwellen sowie fest gebundene Pflichten stehen im [Qualitätshandbuch](repo:docs/qa-ci/curriculum-quality-maturity-and-routes.md). `CQR-201`–`203` belegen formale Endpunktreife, keine vollständige fachliche Aufgabendeckung oder zuverlässige Coachbewertung. Dafür bleiben unabhängige Aufgaben-/Rubrikreviews und gesonderte Bewertungen von Abgaben erforderlich. Der [Einheitenvorschlag vom 19. November](repo:docs/concept/skill-graph/unit-assessment-discussion-2026-11-19.de.md) ändert weder die bestehenden R1–R5-Verträge noch die aktuellen Gates.
 
 ### Mapping-Pipeline, Bundesland-Evidenz und Routenprofile {#sec:qal-dashboard-coverage}
 

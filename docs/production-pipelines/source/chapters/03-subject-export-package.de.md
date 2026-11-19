@@ -2,9 +2,11 @@
 
 Diese Pipeline erzeugt ein reproduzierbares Legacy-Fachexport-ZIP (`legacy-subject-export`, Zielstatus `not-ready-legacy`, `standaloneProfileReady: false` gemäß [Curriculum-Paketbereitschaft](repo:docs/qa-ci/curriculum-package-readiness.md)) für eine einzelne Fachlandschaft als geprüfter Publikations- und Roundtrip-Träger (@ref{sec:pp-mem-fwu-roundtrip}), jedoch nicht als alleinige `full-standalone-v1`-Laufzeiteingabe ([Release-Modell-Konformität](repo:docs/qa-ci/curriculum-release-model-conformance.md)). Unterstützte `DE/Gymnasium`-Presets decken aktuell alle Fächer ab `M5` ab: `Biologie`, `Chemie`, `Deutsch`, `Geschichte`, `Informatik`, `Latein`, `Mathematik`, `Physik`, `Politik und Wirtschaft` sowie `Wirtschaftswissenschaften`.
 
+Der [eingecheckte Qualitätssnapshot vom 17. November 2026](repo:docs/qa-ci/status/curriculum-quality-status.json) führt Mathematik, Physik, Chemie, Biologie und Wirtschaftswissenschaften auf **M7**, die übrigen fünf Preset-Fächer auf M6. Diese maschinelle Reife ist keine Publikationsfreigabe oder menschliche Erprobung. Der Legacy-ZIP-Träger ist von den Standalone-Verträgen 1.2 (`learningUnitsV1`) und 1.3 (zusätzlich `assessmentMaterialsV1` und lokale `childOrder.after`-Ordnung) zu unterscheiden. Für einen Laufzeitanspruch mit diesen Feldern sind das entsprechende Build-Profil, der unabhängige Paketvalidator und der passende Consumer nötig; ein Legacy-Export ersetzt diese Nachweise nicht.
+
 ### Bau, unabhängige Validierung, Link-Audit und CI-Release-Gate {#sec:pp-export-commands}
 
-Einzelbau, Batch-Bau aller `M5`/`M6`-Fächer (`tmp/exports/m5-subject-export-summary.{json,md}`), unabhängige ZIP-Validierung (`tmp/exports/validation/` + `tmp/exports/readiness/`), Live-Quelllink-Audit (`--fail-on-broken` für strikte Vorabprüfung) und Reproduzierbarkeitsbeweis (`SOURCE_DATE_EPOCH`, unkomprimierte sortierte Einträge mit Modus `0644`):
+Einzelbau, Batch-Bau aller Fächer ab `M5` (`tmp/exports/m5-subject-export-summary.{json,md}`), unabhängige ZIP-Validierung (`tmp/exports/validation/` + `tmp/exports/readiness/`), Live-Quelllink-Audit (`--fail-on-broken` für strikte Vorabprüfung) und Reproduzierbarkeitsbeweis (`SOURCE_DATE_EPOCH`, unkomprimierte sortierte Einträge mit Modus `0644`):
 
 ```bash
 cd app

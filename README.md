@@ -14,7 +14,7 @@ Software: [Apache-2.0](LICENSE) · Own learning content: [CC BY 4.0](LICENSES/CC
 
 The ordinary learning start offers **Claude**, **ChatGPT Desktop (Beta)** and **Gemini (Beta)** with separate provider sessions and the same saved learning record. Follow the [quickstart](https://enpasos.github.io/skillpilot/quickstart/story.en/) and [coach setup guides](https://skillpilot.com/plugins).
 
-Gemini currently has a controlled integration route for a privately configured operator account in Gemini Web. Native Skill import, learning-context tools, saved progress and continuation in a new chat were tested; public onboarding, additional accounts, mobile and voice remain unconfirmed. Learning-goal images work through a direct link; embedded display has not been observed. See the [Gemini guide](https://skillpilot.com/plugins#gemini) and [integration runbook](docs/deploy/gemini-integration.md) for setup and the limits of the evidence. A backend deployment alone does not activate Gemini.
+Gemini currently has a controlled integration route for a privately configured operator account in Gemini Web. Native Skill import, learning-context tools, saved progress and continuation in a new chat were tested; public onboarding, additional accounts, mobile and voice remain unconfirmed. Learning-goal images work through a direct link; embedded display has not been observed. See the [Gemini guide](https://skillpilot.com/plugins#gemini) and [integration runbook](docs/deploy/gemini-integration.en.md) for setup and the limits of the evidence. A backend deployment alone does not activate Gemini.
 
 ## From published curricula to connected learning goals
 

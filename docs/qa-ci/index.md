@@ -207,7 +207,7 @@ Generierte Prüfübersichten für konfigurierte `CQR-302`-Reviews.
 
 ## Dated Subject M7 Checkpoints (Mathematik, Wirtschaft, Chemie, Biologie)
 
-Dated engineering checkpoints from subject-level `M6`/`M7` closeout runs (maintained in their original authoring language).
+Dated engineering checkpoints from subject-level `M6`/`M7` closeout runs (maintained in their original authoring language). These form a historical archive at their existing public URLs: counts, branch links, open tasks, and words such as “current” describe the recorded date. Use the current generated status and durable contracts above for present decisions. An intermediate checkpoint is not a fresh completion or CI receipt; final reports remain bound to their named commits and evidence.
 
 </div>
 
@@ -215,7 +215,7 @@ Dated engineering checkpoints from subject-level `M6`/`M7` closeout runs (mainta
 
 ## Datierte Fach-M7-Arbeitsstände (Mathematik, Wirtschaft, Chemie, Biologie)
 
-Datierte Zwischenstände und Abschlussberichte aus der fachweisen `M6`/`M7`-Qualitätssicherung.
+Datierte Zwischenstände und Abschlussberichte aus der fachweisen `M6`/`M7`-Qualitätssicherung. Sie bilden ein historisches Archiv unter den bestehenden öffentlichen URLs: Zahlen, Branchlinks, offene Aufgaben und Bezeichnungen wie „aktuell“ beziehen sich auf das jeweilige Datum. Für heutige Entscheidungen gelten die generierten Statusberichte und dauerhaften Verträge oben. Ein Zwischenstand ist kein frischer Abschluss- oder CI-Nachweis; Abschlussberichte bleiben an die darin benannten Commits und Evidenzen gebunden.
 
 </div>
 

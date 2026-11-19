@@ -1,7 +1,7 @@
-:::titlebox {title="Scope and Status of This Edition"}
-Edition of **17 November 2026**. This definition follows a learner's question from the shared goal catalog to the next learning decision: *Where do I start, and how can I tell what I can do?* Goals and their prerequisites determine the available paths. In the target model a unit with its own assessments gives a path a beginning and an end. Its orientation goal introduces what the learning is for, and its assessments demonstrate independent application.
+:::titlebox {title="Scope of this edition"}
+**As of 19 November 2026.** The recognition rule confirmed on 4 and 11 November remains in force. It determines how learner outcomes and validly recognized skills affect the next learning goals and completion. Sections~@ref{sec:state}, @ref{sec:unit-completion} and~@ref{sec:assessment} give the formulas. Appendix~@ref{sec:implementation} reports implementation status.
 
-Section~@ref{sec:learning-units} describes this extension and identifies the open design choices. Appendix~@ref{sec:implementation} records what has been implemented. Appendix~@ref{sec:rule-milestones} identifies the rules enforced by quality checks.
+**Proposal for expert review, 19 November.** A passed unit could support an overall judgement at the stated level. The unit could release its own content goals for subsequent planning when supported by reviewed evidence. The separately marked Sections~@ref{sec:proposal-unit-completion} and~@ref{sec:proposal-unit-assessment} present this proposal for discussion.
 :::
 
 ## Reader's Guide and Scope {#sec:readers-guide unnumbered=true}
@@ -16,13 +16,13 @@ These seven steps preview the reasoning of the document. Concrete English goal n
 2. **Atoms and clusters.** Goals without children are atomic; learner outcomes are stored only on them. Clusters group goals. In the canonical target state, every authored requirement connects an atom to an atom, and none is redundant. Legacy requirements on or toward clusters remain readable as transition data (Sections~@ref{sec:relations} and~@ref{sec:validity}).
 3. **Learner state and frontier.** An explicit result belongs to an atomic goal. The *frontier* contains the open goals whose prerequisites are satisfied in the scope being considered (Section~@ref{sec:state}).
 4. **Scoped views.** The Personal Curriculum fixes a learner's longer-term scope, while focus selects a temporary working subset. Derivations always run on the full graph first and restrict afterwards. Normal (*optimistic*) mode checks prerequisites inside the scope; strict mode checks all prerequisites globally (Sections~@ref{sec:filters} to~@ref{sec:personal-scope}).
-5. **Goal types.** A goal's pedagogical type defines what counts as achieving it: verified understanding for a content goal, completed motivational entry for an orientation goal, verified recall for a memory goal, and a passed exam for an assessment goal (Section~@ref{sec:goal-types}).
-6. **Learning units.** A unit brings related goals together. In a unit with assessments, the recommended path goes from orientation through content to independent application. Full completion includes the goals of its child units (Section~@ref{sec:learning-units}).
-7. **Implicit mastery.** Once no open assessment and no open memory goal of a learning unit still depends on one of its own content goals, that content goal counts as independently applied -- provided the unit's local contract has passed subject review and is valid. Explicitly verified understanding and application demonstrated in this way together form the effective mastered set; both satisfy later prerequisites and count toward progress (Section~@ref{sec:assessment}).
+5. **Goal types.** A subject goal may call for understanding, application or independent performance. Individual evidence must meet that claim. Orientation, recall and assessment each have their own outcome contract (Section~@ref{sec:goal-types}).
+6. **Learning units.** Under the contract in force, completion requires mastery or recognition of the unit’s own goals and completion of its children (Section~@ref{sec:unit-completion}). Section~@ref{sec:proposal-unit-completion} proposes representative qualification through declared required performances.
+7. **Assessment-based recognition.** Under R1–R5, an ordinary goal owned by a unit can gain recognition before the entire unit is complete. This recognition applies across subjects (Section~@ref{sec:assessment}). Section~@ref{sec:proposal-planning-release} describes the later planning release under discussion.
 
 ### Structure, Status, and Rule Identifiers {#sec:structure-and-status unnumbered=true}
 
-Each part answers a guiding question and carries its own status. The final column lists the prefix under which Appendix~@ref{sec:rule-milestones} tracks that part's rules, such as [GD-C07](@rule{GD-C07}) for a formal-core rule.
+Appendix~@ref{sec:rule-milestones} records the validation obligations in force. The proposals in Sections~@ref{sec:proposal-unit-completion} and~@ref{sec:proposal-unit-assessment} would change those obligations only after an explicit decision.
 
 :::table {cols="33mm,X,35mm,12mm"}
 | Sections | Guiding question | Status | Rules |
@@ -31,7 +31,7 @@ Each part answers a guiding question and carries its own status. The final colum
 | @ref{sec:context-model}--@ref{sec:evidence-context}: Context, Views, Goal Types, Quality | Where does a goal sit in an educational program, what belongs to personal scope, when does a goal count as achieved, and what is its provenance? | Adjacent contract | `GD-X` |
 | @ref{sec:learning-units}: Learning Units | Which goals form a coherent subject-matter whole, and when is it complete? | Domain structure | `GD-U` |
 | @ref{sec:levels}: Acquisition and Time Planning | Can acquisition be arranged into a valid order and calendar budget? | Optional profile | `GD-P` |
-| @ref{sec:assessment}: Implicit Mastery | When does a passed assessment also substantiate the goals it builds upon? | Binding concept, not yet implemented | `GD-A` |
+| @ref{sec:assessment} Recognition | When does a competence qualify for recognition under R1–R5? | Contract in force | `GD-A` |
 | Appendices~@ref{sec:rule-milestones}--@ref{sec:build} | How is each rule checked, where does the implementation diverge, and what do terms and symbols mean? | Reference | `GD-D` |
 :::
 

@@ -1,5 +1,46 @@
 # Canonical Gymnasium Mathematics Bundeslaender Status
 
+## Current Stage Counts, 19 November 2026
+
+This separate measurement counts unique canonical **subject target atoms** in authored stage views, including exam, orientation, and memory goals. Global target/support roles are resolved first; jurisdiction, course, and any duration model are filtered at the atoms. Support-only atoms, foreign-subject atoms, and structural nodes are excluded. These are neither the full prerequisite closure, learner mastery, nor official syllabus quantities. Overlapping profile/variant branches form a set union rather than a sum. A profile union does not establish a learner's selection of a Bavarian NTG, biophysics, or astrophysics course.
+
+State rows use existing duration-neutral views; separate Hessen rows explicitly use G8 or G9. They are not presented as identical configurations. The [machine-readable snapshot](state-stage-atom-counts-2026-11-19.json) binds the canonical source, complete view inventory, and canonical catalog with SHA-256. Cross-checks match the actual composition projection in twelve Hessen and six Bavaria stage/course cases. These figures do not feed the old rollout score or its count gates.
+
+| State / duration model | Sek I | Sek II GK | Sek II LK |
+| --- | ---: | ---: | ---: |
+| `DE-HE` Hesse | 315 | 475 | 614 |
+| `DE-BY` Bavaria | 281 | 193 | 394 |
+| `DE-NW` Nordrhein-Westfalen | 261 | 442 | 552 |
+| `DE-NI` Niedersachsen | 262 | 442 | 552 |
+| `DE-BW` Baden-Württemberg | 291 | 445 | 574 |
+| `DE-BB` Brandenburg | 273 | 455 | 575 |
+| `DE-BE` Berlin | 258 | 452 | 574 |
+| `DE-HB` Bremen | 212 | 452 | 566 |
+| `DE-HH` Hamburg | 276 | 447 | 561 |
+| `DE-MV` Mecklenburg-Vorpommern | 217 | 434 | 544 |
+| `DE-RP` Rheinland-Pfalz | 277 | 431 | 545 |
+| `DE-SH` Schleswig-Holstein | 282 | 420 | 518 |
+| `DE-SL` Saarland | 286 | 434 | 547 |
+| `DE-SN` Sachsen | 277 | 432 | 542 |
+| `DE-ST` Sachsen-Anhalt | 269 | 431 | 542 |
+| `DE-TH` Thüringen | 212 | 433 | 544 |
+| `DE-HE` Hesse G8 | 345 | 474 | 613 |
+| `DE-HE` Hesse G9 | 375 | 474 | 613 |
+
+Reproduce from the repository root:
+
+```sh
+node app/node_modules/tsx/dist/cli.mjs app/scripts/reportCanonicalMathStateAtomCounts.ts
+```
+
+## Retained April/May 2026 Rollout Record
+
+> **Historical rollout report — classified on 19 November 2026.** The snapshot and figures below remain unchanged at their stated April/May 2026 date. Percentages, count gates, and next steps describe rollout management at that time, rather than current quality, publication approval, or completion. They have not been remeasured against the November views and units.
+>
+> The [curriculum-quality report](../qa-ci/status/curriculum-quality-status.json) supplies the current machine subject/state evidence; the [stage-plan handover](stage-plan-units-handover-2026-11-15.md) and [management record](stage-plan-management-summary.md) state the confirmed mandate and actual integration. The [Mathematics](mathematics-stage-view-normalization-2026-11-16.md) and [Physics delivery](physics-stage-view-normalization-2026-11-16.md) document the newer views.
+>
+> The old render commands do not replace this historical report using current inputs. The repaired Mathematics/Physics counters support source format 1.2 and retain the 1.0 fallback. Their new stage counts remain separate from the historical rollout score. A mixed rerun would not establish a new snapshot of this old report.
+
 Snapshot: `2026-05-07T07:44:05Z`
 
 This file is generated from:

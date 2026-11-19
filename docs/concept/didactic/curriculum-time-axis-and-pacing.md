@@ -740,7 +740,7 @@ Nachkommastelle dargestellt.
 
 ### 6.1 Vergleichbarer Aufwand für Lerneinheiten und Planabschnitte
 
-[Lerneinheiten](../skill-graph/learning-units.md) bündeln Lernziele und
+[Lerneinheiten](../skill-graph/learning-units.de.md) bündeln Lernziele und
 Untereinheiten zu einem fachlich begründeten Ganzen mit abgeleitetem Abschluss.
 Ein Kalenderjahr oder Semester kann mehrere solcher Einheiten einplanen;
 Zeitabschnitt und fachliche Einheit sind nicht automatisch identisch.
@@ -912,16 +912,9 @@ optionale Einordnung entfernt keine Ziele aus dem derzeit verbindlichen
 Personal Curriculum; die bestehenden interimistischen Auswahlregeln und
 dessen Fortschritts- und Abschlussumfang bleiben erhalten.
 
-Der Abschluss einer Lerneinheit folgt der veröffentlichten zieltypgerechten
-Regel: verpflichtende Untereinheiten und eigene Zielpflichten sind erfüllt.
-Wirksame Kompetenz umfasst direkte Ergebnisse und gültige implizite Anerkennung.
-Termine, Unterrichtsdauer und verbrauchte Planungseinheiten erzeugen keinen
-Abschluss. Fehlende Ergebnisdaten bleiben nicht beurteilbar. Ein abgeschlossener
-Teil bleibt abgeschlossen, auch wenn eine übergeordnete Prüfung noch offen ist.
-Eine bloße Zeitplanung aktiviert keine technische Zugangssperre. Die Verbindlichkeit
-expliziter Abhängigkeiten zwischen ganzen Einheiten, einschließlich direkter
-Prüfungsversuche, ist im [Fortschrittskonzept](../skill-graph/learning-unit-progression.md)
-als eigene noch offene Produktentscheidung ausgewiesen.
+Für die bestehende Planung gelten die vereinbarten Ergebnistypen und die bisherige Plananrechnung. Ein Datum oder eine verbrauchte Unterrichtsstunde belegt keine fachliche Leistung. Ein Kindabschluss bleibt gültig, während die übergeordnete Einheit noch offen ist. Seit der Entscheidung vom 14. November ordnet `after` die Lernvorschläge. Eine verfügbare Prüfung kann im persönlichen Umfang direkt gewählt werden. [Einheitsfolge (§11.5)](../skill-graph/learning-unit-progression.de.md#sec-unit-progression)
+
+Der Vorschlag vom 19. November unterscheidet zwei Planaufträge. Wer eine Einheit nachweisen möchte, erfüllt die Pflichtbelege ihrer Fassung. Wer eine einzelne Leistung wie einen eigenen Fallversuch beauftragt, behält dafür einen eigenen Termin und Nachweis. Im Wochenpensum zählt die tatsächlich erbrachte Prüfungsleistung einmal. Bevor solche Einheitenaufträge im Produkt verwendet werden können, braucht es eine Produktentscheidung und eine Umstellung des heutigen atomaren Plans. [Abschluss und Planungswirkung (§13)](../skill-graph/assessment-gated-completion.de.md#sec-proposal-period-accounting)
 
 ## 8. Sollkurve und Wochenquote
 
@@ -2269,20 +2262,15 @@ Eine veröffentlichte Planrevision ist nur gültig, wenn:
 
 ## 19. Bestehender Stand und technische Lücken
 
-Das vorhandene [Learning-Velocity-Konzept](learning-velocity.md) und die
+Das vorhandene [Learning-Velocity-Konzept](learning-velocity.de.md) und die
 aktuelle Oberfläche sind eine sinnvolle Vorstufe, aber noch keine belastbare
 Zeitplanung:
 
 - `ProgressPopover.tsx` ordnet die von der History-Route gelieferten Einträge
   für ein Balkendiagramm acht lokalen, montagsbeginnenden Wochen-Buckets zu und
   zeigt zusätzlich fünf zuletzt datierte Einträge;
-- `LearnerService.getHistory()` liest nur die aktuellen Mastery-Zeilen ab
-  `0.9`;
-- `Mastery.updatedAt` wird beim Anlegen und bei jedem tatsächlichen
-  Entity-Update neu gesetzt und ist deshalb kein unveränderlicher Zeitpunkt
-  der ersten Schwellenüberschreitung;
-- die History-Route prüft nicht selbst, ob ein historischer Eintrag ein
-  planfähiges Atomziel ist;
+- Der Verlauf enthält die datierten Lernzielabschlüsse aus `learner_goal_completion`. Fehlt für ein Ziel ein solches Ereignis, kann der Verlauf zusätzlich den Zeitstempel seines aktuellen Mastery-Eintrags als Altdatum anzeigen. Für die Periodenbilanz zählen nur tatsächliche Abschlussereignisse.
+
 - `planned_goal` speichert den Level-3-Fokus, keinen Kalenderplan;
 - es gibt noch kein persistentes `CoverageEvent`, keine gemeinsame
   Klassenplanrevision und folglich keinen reproduzierbaren
@@ -2373,7 +2361,7 @@ Arbeitsbereich `?view=plan` als bewusst begrenzten Stufe-0-Pilot:
   Ergebnisse anzeigen. Klassenbezeichnungen und lokale Mitgliedschaften werden
   dabei nicht übertragen; der Abruf erzeugt keine neue Klassen- oder
   Lehrkraftberechtigung. Die ID-Besitzgrenze bleibt die des
-  [bestehenden Lernenden-Workflows](../runtime-workflows/existing-learner-teacher-view.md).
+  [bestehenden Lernenden-Workflows](../runtime-workflows/existing-learner-teacher-view.de.md).
 - Für Soll und Übergabe gilt derselbe Kalendertag in
   `Europe/Berlin`. Ein offen gebliebener Tab aktualisiert diesen Tag an der
   Berliner Datumsgrenze und beim erneuten Sichtbarwerden.
@@ -2482,13 +2470,7 @@ durch die Entscheidung vom 21. September 2026 abgelöst und dürfen nicht als
 noch zu implementierende Arbeitspakete verwendet werden. Die gespeicherten
 Lernzielergebnisse bleiben die einzige Quelle der Zielerreichung.
 
-Vor jeder Runtime-Stufe steht eine eigene Wirkungs- und Freeze-Prüfung. Schon
-ein zusätzliches Event im gemeinsamen Mastery-Schreibpfad kann Fehler-,
-Latenz-, Export-, Lösch- oder Zustandsverhalten des eingefrorenen OpenAI V1
-beeinflussen. Wenn vollständige V1-Neutralität nicht belegt werden kann, ist
-vor der Änderung eine ausdrückliche Product-Owner-Ausnahme, ein Unfreeze oder
-eine neue Vertragsversion erforderlich. Keine der folgenden Stufen hebt den
-Review-Freeze von selbst auf.
+Der Product Owner hob die OpenAI-Reviewsperre am 9. September 2026 auf. Vor Änderungen am gemeinsamen Mastery-Schreibpfad sind die Folgen für Ergebnisse, Wiederholungen, Export, Löschung und Providerverträge zu prüfen. Die abgelehnte Einreichung und veröffentlichte Artefakte bleiben in ihrer ursprünglichen Fassung erhalten.
 
 ### Stufe 0 — Vertrag und Rechenmodell
 
@@ -2582,10 +2564,7 @@ Review-Freeze von selbst auf.
 
 ### Stufe 5 — optionale Coach-Integration
 
-Erst nach einer eigenen Produkt- und Versionsentscheidung können zukünftige
-Coach-Verträge planbezogene, read-only Hinweise erhalten. Der aktuelle
-OpenAI-Coach V1, seine Tools, Schemas, Session- und Zustandssemantik bleiben
-unverändert.
+Die Coaches erhalten bereits den aktuellen Lernplanstatus vom Backend. Zusätzliche Lesehinweise aus einer versionierten Unterrichtsplanung brauchen eine Produktentscheidung über den berechtigten Empfänger, die Felder und den Providervertrag.
 
 ## 21. Bewusste Nicht-Ziele der ersten Version
 

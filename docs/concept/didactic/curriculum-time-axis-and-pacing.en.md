@@ -14,7 +14,7 @@ plan remain preserved to contextualize existing datasets; they are not active
 implementation or acceptance requirements. Legacy data is neither deleted nor
 reinterpreted as mastery. The current pilot contract is defined in Section 19.1;
 personal target-vs-actual status is governed by the
-[Unified Learning-Plan Status Concept](unified-learning-plan-status.md).
+[Unified Learning-Plan Status Concept](unified-learning-plan-status.en.md).
 
 **Outcome boundary of 29 October 2026:** Mastery is the sole stored outcome
 state per learning goal: achieved or still open. This also applies to exam
@@ -891,16 +891,9 @@ solely to the declared unit scope. An official optional classification removes
 no goals from the currently binding Personal Curriculum; existing interim
 selection rules and its progress and completion scope remain intact.
 
-Completion of a learning unit follows its published goal-type-appropriate rule:
-mandatory subunits and its own goal obligations are fulfilled. Effective
-competency encompasses direct results and valid implicit recognition. Dates,
-instructional duration, and consumed planning units never generate completion.
-Missing outcome data remains non-evaluable. A completed part stays completed
-even while a higher-level exam is still open. Mere time scheduling activates no
-technical access lock. Whether explicit dependencies between whole units—
-including direct exam attempts—are binding is documented as a separate,
-still-open product decision in the
-[progression concept](../skill-graph/learning-unit-progression.md).
+The existing plan uses the agreed outcome types and existing rules for planning credit. A date or an hour of instruction provides no evidence of subject attainment. A child qualification remains valid while the parent is open. Under the decision of 14 November, `after` orders suggestions. Learners can choose an available assessment directly within their personal scope. [Unit progression (§11.5)](../skill-graph/learning-unit-progression.md#sec-unit-progression)
+
+The proposal of 19 November distinguishes two kinds of assignment. A learner seeking a unit qualification provides the required evidence for its version. A separately assigned performance, such as conducting a free-fall experiment, retains its own due date and evidence requirement. The actual assessment success counts once toward the weekly quota. Unit assignments would require a product decision and changes to the current atom-based plan. [Completion and planning effects (§13)](../skill-graph/assessment-gated-completion.md#sec-proposal-period-accounting)
 
 ## 8. Planned Curve and Weekly Quota
 
@@ -2225,13 +2218,8 @@ pacing schedules:
 - `ProgressPopover.tsx` buckets entries returned by the history route into eight
   local Monday-starting week buckets for a bar chart alongside five most
   recently dated entries;
-- `LearnerService.getHistory()` reads strictly current mastery rows at or above
-  `0.9`;
-- `Mastery.updatedAt` is overwritten both upon creation and on every subsequent
-  entity update, making it unsuitable as an immutable timestamp of first
-  threshold crossing;
-- the history route does not verify by itself whether a historical entry is a
-  schedulable atomic goal;
+- The history includes dated learner goal completions from `learner_goal_completion`. For a goal without such an event the history can also show the timestamp of its current mastery row as a legacy estimate. Only actual completion events count toward the period balance.
+
 - `planned_goal` stores Level 3 focus rather than a calendar schedule;
 - there is not yet a persistent `CoverageEvent`, shared class plan revision, or
   consequently a reproducible `CoursePlanStatusSnapshot`;
@@ -2376,7 +2364,7 @@ introducing an additional role or invitation model:
 
 The Cockpit presents all subjects inside a shared compact **Today** / **This
 Week** guide. Plan posture follows the
-[Unified Learning-Plan Status Concept](unified-learning-plan-status.md): for
+[Unified Learning-Plan Status Concept](unified-learning-plan-status.en.md): for
 each subject, the backend tallies across all of its valid plans on the chosen
 daily or weekly basis and formulates per-subject period and balance statements.
 The Cockpit renders those texts verbatim without recalculating them locally.
@@ -2417,12 +2405,7 @@ are superseded by the decision of 21 September 2026 and must not be treated as
 pending implementation work packages. Stored learning-goal results remain the
 sole source of goal achievement.
 
-Every runtime stage is preceded by a dedicated impact and freeze review. Even a
-single added event in the shared mastery write path can affect error handling,
-latency, export, deletion, or state semantics of the frozen OpenAI V1 contract.
-Whenever complete V1 neutrality cannot be demonstrated, an explicit Product
-Owner exception, unfreeze, or new contract version is required prior to making
-changes. None of the stages below lifts a review freeze on its own.
+The owner lifted the OpenAI review freeze on 9 September 2026. Before changing shared mastery writes, check their effects on recorded outcomes, retries, exports, erasure and provider contracts. The rejected submission and published artifacts retain their original bytes.
 
 ### Stage 0 — Contract and Calculation Model
 
@@ -2517,10 +2500,7 @@ changes. None of the stages below lifts a review freeze on its own.
 
 ### Stage 5 — Optional Coach Integration
 
-Only following a dedicated product and versioning decision may future coach
-contracts receive schedule-aware, read-only hints. Today's OpenAI Coach V1—along
-with its tools, schemas, session handling, and state semantics—remains
-unchanged.
+Coaches already receive the current learning-plan status from the backend. Exposing additional read-only hints from a versioned teaching schedule would require a product decision specifying the authorised reader, fields and provider contract.
 
 ## 21. Deliberate Non-Goals of the First Version
 

@@ -16,13 +16,15 @@ Lehrpläne, Modulhandbücher und Standards liefern die verbindlichen Anforderung
 - **Voraussetzungen (`requires`):** Ein Ziel verweist auf die Grundlagen, die es benötigt.
 - **Zusammensetzung (`contains`):** Ein Thema verweist auf die Lernziele, die zu ihm gehören.
 
-So entstehen mehrere mögliche Lernwege statt einer einzigen starren Reihenfolge. Formale Prüfungen sichern die Struktur ab, etwa gegen Zirkelbezüge. Die inhaltliche Qualitätssicherung prüft darüber hinaus, ob die Ziele fachlich richtig und ihre Voraussetzungen didaktisch sinnvoll sind (Abschnitt 5.1). Die [Graph-Definition](https://enpasos.github.io/skillpilot/concept/skill-graph/graph-definition/) erläutert das formale Modell; Änderungen werden versioniert und geprüft (Abschnitt 6).
+So entstehen mehrere mögliche Lernwege statt einer einzigen starren Reihenfolge. Formale Prüfungen sichern die Struktur ab, etwa gegen Zirkelbezüge. Die inhaltliche Qualitätssicherung prüft darüber hinaus, ob die Ziele fachlich richtig und ihre Voraussetzungen didaktisch sinnvoll sind (Abschnitt 5.1). Die [Graph-Definition](https://enpasos.github.io/skillpilot/concept/skill-graph/graph-definition.de/) erläutert das formale Modell; Änderungen werden versioniert und geprüft (Abschnitt 6).
 
 #### Fachübergreifende Voraussetzungen: Mathematik und Physik
 
-**Die Lernlandkarte verbindet bereits Mathematik und Physik durch konkrete `requires`-Verknüpfungen.** So setzt „Bewegungen mit Weg-Zeit-Diagrammen beschreiben“ unter anderem „Achsen, Skalen und Einheiten lesen“ voraus. Das weiterführende Physikziel „Bewegungen mit Diagrammen untersuchen“ baut unter anderem auf „Mittlere Änderungsrate berechnen und deuten“ auf.
+**Die Lernlandkarte verbindet bereits Mathematik und Physik durch konkrete `requires`-Verknüpfungen.** So setzt „Bewegungen mit Weg-Zeit-Diagrammen beschreiben“ unter anderem „Achsen, Skalen und Einheiten lesen“ voraus. Bei „Bewegungen mit Diagrammen untersuchen“ kommt eine weitere Grundlage hinzu. Lernende bestimmen aus zwei Messwerten und dem Zeitintervall die Änderung pro Zeiteinheit.
 
-Die mathematischen Grundlagen behalten ihre eigenen Lernziel-IDs und den bereits gespeicherten Lernstand. SkillPilot kann diesen Stand dadurch auch beim Lernen in Physik berücksichtigen. Welche Ziele zur persönlichen Auswahl gehören und welche nur als Voraussetzung dienen, wird ausdrücklich festgelegt.
+Die mathematischen Grundlagen behalten ihre eigenen Lernziel-IDs und den bereits gespeicherten Lernstand. SkillPilot kann diesen Stand dadurch auch beim Lernen in Physik berücksichtigen. Die persönliche Auswahl umfasst auch die dafür notwendigen Voraussetzungen. Eine mathematische Grundlage kann so zum Lernen in Physik gehören, ohne dass zugleich das gesamte Mathematikcurriculum ausgewählt wird.
+
+Eine **Lerneinheit** bündelt Ziele, die fachlich zusammengehören. Stufenpläne ordnen sie für das jeweilige Bundesland und Dauermodell ein. Innerhalb eines Plans kann »after« eine sinnvolle Reihenfolge unter erreichbaren Einheiten angeben. Ob für ein einzelnes Ziel noch eine Grundlage fehlt, ergibt sich aus seinen fachlichen Voraussetzungen.
 
 #### Vier Ebenen der Personalisierung
 
@@ -33,15 +35,15 @@ Aus der gemeinsamen Lernlandkarte wird ein persönlicher Lernweg. SkillPilot unt
 3. **Lernfokus und aktives Ziel (Level 3):** Ein vorübergehend gewählter Ausschnitt und genau ein aktuelles Lernziel steuern die laufende Arbeit. Der Coach nutzt dafür die vom Backend angebotenen Optionen. Eine Fokusausweitung benötigt Zustimmung; innerhalb einer bestätigten Plan- oder Autopilotführung kann das nächste zulässige Ziel automatisch gewählt werden.
 4. **Lernstand / Mastery (Level 4):** Fortschritt wird an stabilen Lernziel-IDs gespeichert und bleibt bei einem Wechsel von Ansicht oder Fokus erhalten.
 
-Eine fachlich definierte **Kompositionssicht** ordnet die gemeinsamen Ziele für den gewählten Bildungskontext an. Sie unterscheidet **eigene Lernziele (`target`)** von **reinen Voraussetzungen (`prerequisiteOnly`)**. Nur eigene Lernziele zählen zum sichtbaren Lernbaum, zur Zielauswahl, zum Fortschritt und zum Abschluss dieses Umfangs. Reine Voraussetzungen behalten ihren gespeicherten Lernstand für die Voraussetzungsprüfung.
+Eine fachlich definierte **Kompositionssicht** ordnet die gemeinsamen Ziele für den gewählten Bildungskontext an. Aus den ausgewählten Fachzielen und ihren notwendigen Voraussetzungen entsteht der persönliche Lernumfang. Auch eine noch offene Sek-I-Grundlage für ein Sek-II-Ziel oder eine mathematische Grundlage für Physik braucht darin einen erreichbaren Lernplatz und zählt zu Fortschritt und Abschluss. Die fachliche Rolle `prerequisiteOnly` kennzeichnet ihren Vorbereitungsbedarf; sie erklärt die Grundlage nicht für beherrscht und nimmt sie nicht aus dem Lernumfang.
 
-So können Sek-I-Grundlagen in einer Sek-II-Sicht oder mathematische Grundlagen beim Lernen in Physik berücksichtigt werden, wenn diese Rolle dort ausdrücklich modelliert ist. Ihre Aufnahme als eigene Lernziele erfordert einen entsprechend gewählten persönlichen Umfang. Weder ein Stufenwechsel noch eine fachübergreifende Verknüpfung bescheinigt ihre Beherrschung.
+Bereits erreichte Grundlagen bleiben als erfüllt enthalten. Ein Stufenwechsel, ein neuer Fokus oder eine fachübergreifende Verknüpfung erzeugt keinen neuen Kompetenznachweis. Unabhängige weitere Themen eines anderen Fachs kommen durch eine solche Voraussetzung nicht automatisch hinzu.
 
 #### Frontier: Welche Ziele jetzt erreichbar sind
 
-Das Backend berechnet aus Umfang und Lernstand die **Frontier**: noch nicht beherrschte Ziele, deren wirksame Voraussetzungen erfüllt sind. Auch ausdrücklich als `prerequisiteOnly` modellierte Grundlagen außerhalb des sichtbaren Lernumfangs zählen bei dieser Prüfung. Der optionale **Strict Mode** prüft Voraussetzungen darüber hinaus global.
+Das Backend berechnet aus Umfang, aktuellem Fokus und Lernstand die **Frontier**: noch offene Ziele, deren wirksame Voraussetzungen im gewählten Modus erfüllt sind. Der normale Modus betrachtet die Voraussetzungen innerhalb des Fokus; der optionale **Strict Mode** prüft sie global. Ein engerer Fokus verändert weder den dauerhaften persönlichen Umfang noch bereits gespeicherte Ergebnisse.
 
-Diese Auswahl gibt dem Coach den Rahmen für den nächsten Lernschritt. Sie beschreibt den dokumentierten Stand und ist keine psychologische Diagnose des individuellen Lernpotenzials.
+Diese Auswahl gibt dem Coach den Rahmen für reguläre Lernempfehlungen. Sie beschreibt den dokumentierten Stand und ist keine psychologische Diagnose des individuellen Lernpotenzials. Für angebotene Prüfungen gibt es daneben einen direkten Zugang (Abschnitt 3.3).
 
 ### Im Dialog lernen und Fortschritt festhalten {#sec:dialogue-and-progress}
 
@@ -51,11 +53,11 @@ Diese Auswahl gibt dem Coach den Rahmen für den nächsten Lernschritt. Sie besc
 
 Der Aha-Moment gehört der lernenden Person.
 
-Der **SkillPilot-Lerncoach** macht aus dem gewählten Ziel eine konkrete Lernaufgabe. Er erklärt, gibt Hinweise, fragt nach und bespricht Lösungswege. Dabei erhält er den aktuellen Lernumfang, die Frontier und die erlaubten Übergänge vom Backend. Die **eigene Denkarbeit bleibt bei den Lernenden**: etwa eine Aufgabe mit Papier und Stift lösen, den Lösungsweg fotografieren und anschließend die Rückmeldung besprechen. Die KI soll notwendige Anstrengung wirksam unterstützen, nicht ersetzen.
+Der **SkillPilot-Lerncoach** begleitet die Arbeit am gewählten Ziel. Er kann einen neuen Begriff erklären, an einem Beispiel zeigen, auf eine Frage eingehen oder eine passende Übung anbieten. Dabei erhält er den aktuellen Lernumfang, die Frontier und die erlaubten Übergänge vom Backend. Lernende können um eine erste Erklärung bitten, nachfragen oder einen eigenen Fall besprechen. Die **eigene Denkarbeit bleibt bei ihnen**: etwa eine Idee in eigenen Worten erklären, eine Skizze entwickeln oder eine Aufgabe mit Papier und Stift lösen und die Rückmeldung besprechen. Die KI soll notwendige Anstrengung wirksam unterstützen, nicht ersetzen.
 
 #### Verstehen sichtbar machen
 
-Bei fachlichen Verständniszielen fragt der Coach nach Begründungen und Erklärungen in eigenen Worten, statt nur richtige Endergebnisse abzufragen. Diese Anlehnung an sokratische Gesprächsführung und die **Feynman-Technik** soll Lücken im Verständnis erkennbar machen und gezieltes Weiterüben ermöglichen. Sie ist ein didaktischer Ansatz, kein Wirksamkeitsnachweis für das Gesamtsystem. Für Orientierungsknoten gilt diese Wissensprüfung ausdrücklich nicht.
+Bei einem neuen Begriff kann der Coach an das anknüpfen, was die lernende Person schon weiß. Beim Thema Momentangeschwindigkeit könnte er fragen, was ein Fahrradtacho während der Fahrt anzeigt. Wer noch keine Vorstellung hat, bekommt eine Erklärung an diesem Beispiel. Anschließend kann die Person in eigenen Worten beschreiben, wie sich die Tachoanzeige vom Durchschnitt über die ganze Fahrt unterscheidet. Eine Skizze, eine Rückfrage oder eine weitere Aufgabe kann zeigen, was noch unklar ist. Diese Form der **Feynman-Technik** gibt dem Coach Hinweise für die nächste Erklärung. In einer angekündigten Prüfung zählt die selbstständige Leistung nach den Kriterien der Aufgabe.
 
 #### Mastery: Erreichten Fortschritt festhalten
 
@@ -63,7 +65,7 @@ Eine bearbeitete Aufgabe liefert Hinweise darauf, ob ein Lernziel verstanden wur
 
 Dieser Lernzustand heißt **Mastery**. Pro Lernziel gibt es genau eine Ergebnisentscheidung: geschafft oder noch nicht geschafft. Das gilt auch für Prüfungslernziele; ein bestandenes Ziel braucht keinen weiteren Qualifikationsnachweis. Prozentangaben für größere Themen fassen die geschafften Einzelziele gewichtet zusammen und sind keine Teilnoten einzelner Ziele. Orientierung und Memorieren haben eigene Abschlussregeln (Abschnitt 3.3).
 
-Der gespeicherte Lernzustand bleibt von vollständigen Dialogen und zusätzlichen Artefakten getrennt. Institutionen können außerhalb dieses Lernzielzustands eigene Nachweise verlangen; daraus entsteht in SkillPilot kein zweiter Ergebnisstatus pro Lernziel.
+Der gespeicherte Lernzustand bleibt von vollständigen Dialogen und zusätzlichen Artefakten getrennt. Heutige Abschlussanzeigen können gewöhnliche Ziele innerhalb eines Umfangs außerdem als erledigt anrechnen, wenn keine offene Prüfungs- oder Memorierpflicht sie dort noch benötigt. Diese abgeleitete Anrechnung ist keine zusätzlich beobachtete Einzelleistung und schreibt keinen eigenen Mastery-Erfolg. Institutionen können außerhalb des Lernzielzustands eigene Nachweise verlangen; daraus entsteht in SkillPilot kein zweiter Ergebnisstatus pro Lernziel.
 
 #### Kurze Wege für Feedback
 
@@ -88,6 +90,10 @@ In einem Kontext wie „Mathematik, Jahrgangsstufe 7“ oder „Leistungskurs Ph
 Für notwendige Merkinhalte ergänzt **Spaced Repetition** die Arbeit mit Erklärungen und Aufgaben: Das Karteikartensystem (SRS) plant, wann Karten wiederholt werden, während der Skill-Graph die nächsten Lernziele bestimmt. Gewöhnliches Karteikartenüben verändert nur den Wiederholungsplan. Die Beherrschung eines Memorierziels wird aus dem serverseitigen Kartenstatus und dem gesonderten **Verified Recall**, einem Abruf ohne Hilfen, abgeleitet. Diese Trennung bleibt auch im Cockpit sichtbar.
 
 **Übungs- und Prüfungsknoten** führen zur eigenständigen Anwendung. In Mathematik Sek I sind Jahrgangsprüfungen unter „Prüfungen Jahrgangsstufe …“ eingeordnet; in Sek II kommen passende Klausur- und Abituraufgaben hinzu. Ihr Prüfstand gehört zur jeweiligen Curriculum-QS. Weitere Aufgabenformate, etwa für Programmieren, Schreiben oder Sprechen, bleiben ausbaubar.
+
+Mit der Einstellung **„Prüfungsabkürzungen anbieten“** können Lernende angebotene Prüfungen auch vor der Vorbereitung versuchen. Die Wahl dieses Wegs bescheinigt noch keinen Erfolg. Was eine bestandene Prüfung belegt, bestimmen die tatsächlich geforderte Leistung und ihr Bewertungsmaßstab. Eine schriftliche Auswertung belegt beispielsweise keinen selbst durchgeführten Versuch.
+
+Für fachliche Einheiten wird ein [neuer Abschlussentwurf](https://github.com/enpasos/skillpilot/blob/main/docs/concept/skill-graph/unit-assessment-discussion-2026-11-19.de.md) beraten: Erarbeiten und direkter Nachweis sollen zum selben ausgewiesenen Anspruch führen. Ein repräsentativer Einheitenabschluss wäre dabei von nachgewiesenen Einzelzielen und einer ausdrücklich geprüften Freigabe für spätere Lernschritte zu unterscheiden. **Die Produktentscheidung und die entsprechende Umstellung stehen aus.** Die hier beschriebene heutige Anrechnung ist kein Beleg für diesen neuen Einheitenabschluss.
 
 ### Vom Lehrplan zum Lernalltag: Lernplan und geführter Coach {#sec:learning-plan}
 

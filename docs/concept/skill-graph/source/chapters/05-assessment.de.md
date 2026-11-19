@@ -4,6 +4,8 @@
 Ein ausdrücklicher Erfolg an einem Inhaltsziel belegt Verstehen. Eine gültige Abschlussprüfung kann selbstständige Anwendung der zugehörigen Kompetenzen belegen. Diese implizite Beherrschung ist global ebenso wirksam: Sie erfüllt künftige Voraussetzungen und zählt zum IST. Prüfungs- und Memorierziele selbst bleiben ausschließlich ausdrücklich zu bestehen.
 :::
 
+**Geltender bestätigter Vertrag.** Die Entscheidungen vom 4. und 11. November gelten weiter; die Formeln und R1–R5 dieses Hauptteils sind keine bloße Vertragsgeschichte. Ihre vollständige technische Durchsetzung ist davon zu unterscheiden. Der noch nicht übernommene Vorschlag vom 19. November folgt in Abschnitt~@ref{sec:proposal-unit-assessment}.
+
 Ob ein Ziel anerkannt werden kann, hängt davon ab, welche Prüfungen und Memorierziele seiner eigenen Einheit noch offen sind. Die Regel vom 11. November 2026 gilt nur für fachlich geprüfte Verträge (Abschnitt~@ref{sec:why-graph-not-enough}). Ein ausdrücklich bestätigtes Ergebnis bleibt jederzeit möglich. Die [Konzeptspezifikation](repo:docs/concept/skill-graph/assessment-gated-completion.md) beschreibt die globale Ableitung. Der gespeicherte binäre Wert $m$ bleibt das einzige Ergebnis je Ziel. Den Stand der Durchsetzung nennt Abschnitt~@ref{sec:why-graph-not-enough}.
 
 ### Vertrag, Zielumfang und geschützte Zieltypen {#sec:local-contract}
@@ -22,7 +24,7 @@ $$
 Q_U = \Own(U) \cap Q, \qquad A_{\mathrm{mem},U} = \Own(U) \cap A_{\mathrm{mem}}, \qquad P_U = Q_U \cup A_{\mathrm{mem},U}.
 $$
 
-Prüfungsziele erfordern eine eigene bestandene Prüfung, Memorierziele den verifizierten Abruf ihrer Karten. Zu den *nicht geschützten* eigenen Zielen gehören Inhalts- und Orientierungsziele. Auch experimentelle Inhaltsziele unterliegen R1 und R2. Die abgeleitete Erfüllung einer Orientierung bedeutet lediglich, dass der Einstieg erledigt ist (Abschnitt~@ref{sec:orientation}).
+Prüfungsziele erfordern eine eigene bestandene Prüfung, Memorierziele den verifizierten Abruf ihrer Karten. Zu den *nicht geschützten* eigenen Zielen gehören Inhalts- und Orientierungsziele. Auch experimentelle Inhaltsziele unterliegen R1 und R2. Der beschriebene Anspruch des einzelnen Atoms gilt auf beiden Nachweiswegen: Verlangt er eine eigene Versuchsdurchführung, reicht weder eine Erklärung im Gespräch noch die Auswertung fremder Messdaten für das ganze Atom. Daraus folgt keine zusätzliche Versuchspflicht für jede Einheit. Die abgeleitete Erfüllung einer Orientierung bedeutet lediglich, dass der Einstieg erledigt ist (Abschnitt~@ref{sec:orientation}).
 
 #### Verwendete Relation.
 
@@ -160,4 +162,142 @@ Der [gemeinsame Lernplanstatusvertrag](repo:docs/concept/didactic/unified-learni
 
 :::sources
 [Anerkennung und globaler Abschluss](repo:docs/concept/skill-graph/assessment-gated-completion.md); [Produktentscheidung vom 4. November 2026](repo:docs/concept/skill-graph/completion-semantics-clarification-2026-11-04.md); [Lernplanstatus](repo:docs/concept/didactic/unified-learning-plan-status.md).
+:::
+
+### Vorschlag vom 19. November: Was der Abschluss einer Einheit nachweisen könnte {#sec:proposal-unit-assessment}
+
+**Vorschlag für die Fachrunde, 19. November 2026.** Wer die ausgewiesenen Abschlussleistungen bestanden hat, hat die **benannte Einheit auf dem ausgewiesenen Niveau** nachgewiesen. Das Urteil darf sich auf repräsentative Leistungen stützen. Es behauptet nicht, dass jedes enthaltene Detail einzeln geprüft wurde. Auch nach einem gültigen Abschluss kann bei einem solchen Detail Unterstützung nötig sein.
+
+:::principle {title="Ein Urteil über die Einheit, getrennte Aussagen über Einzelziele"}
+Der Abschluss einer Einheit, tatsächlich erbrachte Einzelbelege und die fachlich begründete Freigabe von Voraussetzungen für die weitere Planung bleiben unterscheidbar. Ein übersprungener Lernschritt erhält keinen erfundenen Erfolg. Die Pflichtarbeit an der nachgewiesenen Route endet trotzdem.
+:::
+
+Das ist der **noch nicht übernommene Vorschlag vom 19. November 2026**. Die geltende Ableitung globaler atomarer Beherrschung aus entfallener offener Nachfrage steht weiterhin im Haupttext (Abschnitte~@ref{sec:transitive-demand} und~@ref{sec:global-effect}). Die folgenden Regeln beschreiben keine bereits erfolgte Umstellung von Backend, Ergebnisdaten, Lernplan oder Qualitätsgates. Der konkrete E.1-Vorschlag erfordert noch unabhängige fachliche Freigabe und Erprobung.
+
+#### Vorschlag: Abschlussvertrag, Umfang und tatsächliche Belege {#sec:proposal-unit-contract}
+
+Der Abschlussvertrag einer erklärten fachlichen Einheit bindet **Identität, Lernversprechen, Niveau, Fassung und erforderliche Belege**. Er benennt alle eigenen Pflichtprüfungen und Pflichtkinder sowie gegebenenfalls gesonderten Kartenabruf oder reale Durchführung. Ein Gesamtabschluss ergibt sich aus diesen Belegen nach Gleichung~@eqref{eq:unit-complete-proposal}; die bloße Mitgliedschaft eines Ziels im Cluster genügt nicht.
+
+Die Person sieht vor einem Direktversuch, welche Teile zusammen den Abschluss ergeben. Der Maßstab ist derselbe wie nach dem Erarbeiten. Ein bereits gültig bestandener Teil zählt mit. Wo ein Abschluss nur ein engeres Lernversprechen trägt, muss dieses vor der Prüfung sichtbar sein. Land, Kursprofil und Niveau dürfen im Nachweis nicht stillschweigend ausgewechselt werden.
+
+**Prüfungsidentität.** Jede eigenständige Pflichtprüfung verlangt ihren eigenen gültigen Erfolg. Ein gemeinsamer Titel oder ein zusammengezähltes Punktekonto ersetzt diese Erfolge nicht. Eine Aufgabe mit breiterem Anspruch oder verändertem qualifizierendem Raster braucht eine neue Prüfungsidentität. Alte Ergebnisse werden dadurch nicht aufgewertet. Gleichwertige Fassungen können dieselbe Bedeutung tragen, wenn Aufgabe und Bewertung diesen Anspruch nachweislich erhalten.
+
+**Vorschlag zu Pflichtbelegen.** Eine reale Versuchsdurchführung ist nur dort zusätzliche Pflicht des Einheitenabschlusses, wo der Vertrag sie ausdrücklich ausweist. Ein tatsächlich verlangter Versuch oder verifizierter Kartenabruf wird nur bei erbrachter Leistung vermerkt. Für ein bestimmtes Atom gilt auf beiden Wegen derselbe fachliche Maßstab: Fordert sein Text eine eigene Durchführung, braucht auch der ausdrückliche Einzelerfolg im Gespräch einen entsprechenden Beleg. Bloßes Erklären oder Analysieren fremder Daten genügt dafür nicht. Eine bestandene schriftliche Auswertung erzeugt kein Durchführungsereignis. Übungskarten und vorbereitende Aufgaben dürfen dagegen auf dem Direktweg entfallen, wenn sie keine ausgewiesenen Pflichtbelege sind. Prüfungen bleiben Endpunkte des Lernwegs; ihr Ergebnis wird nicht als fachliche `requires`-Kante an spätere Inhaltsziele gehängt.
+
+#### Vorschlag: Warum der Graph und eine Punktesumme nicht genügen {#sec:proposal-evidence-review}
+
+Der Prüfungsentwurf beginnt mit einer Frage: **Welche selbstständige Leistung würde uns überzeugen, der Person eine Aufgabe auf diesem Niveau anzuvertrauen?** Aufgabe, Lösung und Raster müssen dieses Urteil gemeinsam tragen. Repräsentativ bedeutet eine begründete Auswahl; unverzichtbare Konzepte dürfen beim Bestehen nicht vollständig umgangen werden.
+
+Das unabhängige Fachreview geht die gesamte Zielliste durch. Es hält für jedes Ziel fest, welche Leistung zum Bestehen nötig ist, welcher Anteil offenbleibt und weshalb das Gesamturteil diese Lücke verträgt. Direkte fachliche Anschlüsse außerhalb der Einheit verdienen besondere Aufmerksamkeit. Kann jemand bestehen und dabei ein für den nächsten Schritt tragendes Konzept völlig verfehlen, braucht es eine andere Aufgabe, ein unverzichtbares Kriterium oder ein engeres Lernversprechen. Auch ein zentrales Syntheseziel ohne nachfolgende Kante kann unverzichtbar sein.
+
+Zugleich prüft das Review die **Planungswirkung für jedes beanspruchte ganze Atom**. Ein `requires`-Pfad benennt Vorbereitungsbedarf; er belegt weder eine beobachtete Leistung noch die ausreichende Breite der Prüfung. `coveredGoalIds`, ein Titel und eine formal gültige Punkteverteilung sind ebenfalls keine fachliche Freigabe. Die Freigabe anderer Atome setzt den vollständigen Einheitenabschluss voraus. Das Review muss dafür begründen, welche unverzichtbaren Leistungen des Pflichtpakets den ganzen Anspruch des jeweiligen Atoms tragen.
+
+Ein kompensierbares Raster kann das Gesamturteil verfehlen: In der vorhandenen Prüfung „Mehrphasenbewegung und Modellprüfung“ sind 18 von 30 Punkten zum Bestehen nötig. Selbst ohne die sieben Punkte für Beschleunigungsphasen bleiben 23 Punkte erreichbar. Dieses Bestehen allein darf daher keine unverzichtbare Beschleunigungskompetenz behaupten. Die [E.1-Diskussionsgrundlage](repo:docs/concept/skill-graph/unit-assessment-discussion-2026-11-19.de.md) entwickelt dafür zwei getrennte eigene Prüfungen mit unverzichtbaren Kriterien.
+
+Wie viele Aufgaben ein belastbares Urteil tragen, ist fachlich und empirisch zu prüfen. Eine feste Mindestzahl für alle Fächer wird hier nicht gesetzt. Fachreviews, automatische Konsistenzprüfungen und Versuche mit Lernenden liefern unterschiedliche Evidenz. Die Übereinstimmung eingesetzter Coaches muss an konkreten Abgaben mit verdeckten erwarteten Urteilen geprüft werden; sie ersetzt das fachliche Urteil nicht.
+
+#### Vorschlag: Probe am Beispiel Hessen, Physik E.1 {#sec:unit-assessment-example}
+
+Der Vorschlag lautet: *Ich kann anhand von Messdaten entscheiden, wann eine Geschwindigkeit annähernd konstant ist und wann sie sich ändert. Ich kann damit eine Bewegung vorhersagen, auch wenn eine gleichförmige und eine beschleunigte Bewegung gleichzeitig stattfinden.* Die vollständige hessische E.1 ist bisher keine erklärte Facheinheit mit eigenem Abschlussvertrag. Die folgende Bündelung ist eine Probe des neuen Konzepts.
+
+:::table {#tab:unit-assessment-e1 caption="Vier erforderliche Prüfungserfolge für den vorgeschlagenen E.1-Abschluss." cols="50mm,X"}
+| Pflichtteil | Eigener Beleg und Aussage |
+| --- | --- |
+| Kind · Senkrechten Wurf mit konstanter Beschleunigung modellieren | Bestehende Prüfungsidentität; 24 von 24 Punkten. Trägt insbesondere Modellierung, Achsenwahl und Idealisierung. |
+| Kind · Beschleunigungsprotokoll: Geschwindigkeit, Ort und Modellgrenzen | Zweite bestehende Prüfungsidentität; 20 von 20 Punkten. Verlangt unter anderem konstruierte Diagramme und die Unterscheidung von Ortsänderung und Strecke nach einer Umkehr. |
+| Eigener Teil A · Wagen | Neue eigenständige Prüfungsidentität erforderlich; nur 4 von 4 Kriterienpunkten bestehen. Trägt die begründete eindimensionale Prognose, Unsicherheit, Modellgrenze und Fehlerarten. |
+| Eigener Teil B · waagerechter Wurf | Weitere neue eigenständige Prüfungsidentität erforderlich; nur 3 von 3 Kriterienpunkten bestehen. Trägt die physikalisch begründete Überlagerung über dieselbe Zeit. |
+:::
+
+**Alle vier Erfolge sind nötig.** A und B ersetzen die beiden Kindprüfungen nicht; sie ergeben allein keinen E.1-Abschluss. Die Bezeichnungen A und B sind in dieser Dokumentation Entwurfsnamen, keine schon angelegten Prüfungs-IDs. Vor einer Umsetzung braucht jede der beiden Prüfungen ihre eigene kanonische Identität und ihren gebundenen Erfolgsnachweis. Die vorhandenen Aufgaben „Mehrphasenbewegung und Modellprüfung“ und „Waagerechter Wurf: Zwei Bewegungen, eine gemeinsame Zeit“ sind Ausgangsmaterial, keine bereits bestandenen neuen Fassungen.
+
+##### Was A und B leisten und was offenbleibt.
+
+**A · Wagen** verlangt eine begründete Vorhersage aus geeigneten Messdaten, einschließlich Messunsicherheit, Modellgrenze und der Unterscheidung von Fehlerarten. **B · waagerechter Wurf** verlangt, gleichförmige Bewegung und Fallbeschleunigung physikalisch zu begründen und über dieselbe Zeit für eine gemeinsame Vorhersage zu verbinden. Alle vier Kriterien von A und alle drei von B sind unverzichtbar; zwischen Kriterien oder Prüfungen gibt es keinen Ausgleich.
+
+Der entscheidende Grenzfall: Wer bereitgestellte Falldaten überzeugend auswertet, hat damit noch keinen eigenen Fallversuch durchgeführt. Ebenso ersetzt ein passendes quadratisches Zahlenmuster ohne physikalische Deutung nicht das verlangte Verständnis der Beschleunigung. Der vorgeschlagene Abschluss kann deshalb das Lernversprechen tragen, während das vollständige experimentelle Einzelziel offenbleibt.
+
+Die [Diskussionsgrundlage](repo:docs/concept/skill-graph/unit-assessment-discussion-2026-11-19.de.md) enthält die vollständigen Aufgaben, konstruierten Messdaten, sieben unverzichtbaren Rasterkriterien und zehn Beispielabgaben für den verdeckten Vergleich. Die Daten sind keine erhobenen Versuchsergebnisse. Unabhängiges Fachreview, wiederholte Blindbewertung durch die tatsächlich eingesetzten Coaches und Erprobung mit Lernenden stehen aus.
+
+#### Vorschlag: Planungsfreigabe und stabile Bedeutung eines Ergebnisses {#sec:proposal-planning-release}
+
+**Maßstab im Vorschlag.** Für die Planung zählt der **volle kanonische Anspruch** eines benötigten Atoms. Derselbe Maßstab gilt für das ausdrückliche Ergebnis $M$ aus dem Gespräch und die Prüfungsfreigabe $F_{\mathrm{plan}}$; die Prüfungsroute verlangt für dasselbe Atom keinen strengeren Beleg. War dessen Anwendung in dieser Breite zum Bestehen des gebundenen Nachweises erforderlich und fachlich freigegeben, kann der Lernplan darauf aufbauen. War nur ein Ausschnitt nötig, reicht das für seine allgemeine Freigabe nicht. Ein repräsentativ nachgewiesener Einheitenabschluss allein beantwortet diese Frage nicht.
+
+**Vorgeschlagene Freigaberegel.** Sei $M$ die Menge tatsächlich nachgewiesener atomarer Ziele, $A_{\mathrm{content}}$ die Menge gewöhnlicher Inhaltsatome und $\mathcal V$ die Menge der vollständig nachgewiesenen gültigen Einheiten mit ihrer jeweils gebundenen Fassung $(U,\rho)$. Die fachlich geprüfte Freigabemenge $P_{U,\rho}$ enthält ausschließlich **eigene gewöhnliche Atome dieser Einheit und Fassung**. Dabei bezeichnet $\Own_{\rho}(U)$ die eigenen Ziele dieser Fassung. Für den Vorschlag gilt:
+
+$$
+P_{U,\rho}\subseteq\Own_{\rho}(U)\cap A_{\mathrm{content}},\qquad
+F_{\mathrm{plan}}=\bigcup_{(U,\rho)\in\mathcal V}P_{U,\rho},\qquad D=M\cup F_{\mathrm{plan}}.
+$$
+
+Eine Physikprüfung kann ein Mathematikatom verwenden, aber nicht für die Mathematikeinheit freigeben. Ebenso erteilt ein Elternabschluss keine Freigabe für Kindatome. Eine Kindeinheit trägt ihre eigenen geprüften Atome erst bei ihrem eigenen gültigen Bestehen bei, auch wenn die Elterneinheit offen ist. Ein einzelner Prüfungsteil erzeugt vor dem vollständigen Abschluss seiner zuständigen Einheit keine zusätzliche Freigabe. **Nur im Vorschlag** verwendet die reguläre Voraussetzungsprüfung:
+
+:::equation {#eq:planning-release}
+\ReqAtoms(g)\subseteq M\cup F_{\mathrm{plan}}.
+:::
+
+Die vollständige direkte und transitive Voraussetzungshülle bleibt maßgeblich, unter Beachtung des normalen beziehungsweise strikten Fokus. Die Formel erzeugt **keine neue Mastery-Menge**: $F_{\mathrm{plan}}$ bleibt als planerische Begründung von $M$ unterscheidbar. Eine tatsächlich verlangte Durchführung oder ein Pflichtabruf wird durch die Freigabe nicht als erfolgt eingetragen. Ebenso entsteht kein zweites Abschlussereignis.
+
+:::table {#tab:unit-assessment-release caption="Planungswirkung nach dem vorgeschlagenen vierteiligen E.1-Nachweis." cols="53mm,X"}
+| Ganzes Inhaltsatom | Planungswirkung und Grenze |
+| --- | --- |
+| Gleichmäßig beschleunigte Bewegung und Beschleunigung (Kind) | Freigegeben über beide Kindprüfungen einschließlich Anfangswerten, Richtungswechseln, Diagrammen und vorzeichenbehafteten Flächen. B allein trägt diesen ganzen Anspruch nicht. |
+| Modellierung und Idealisierung von Bewegungen (Kind) | Freigegeben über die Kindeinheit; A verlangt zusätzlich die Grenze einer konkreten Vorhersage. |
+| Messabweichungen und Fehlerarten unterscheiden | Freigegeben: Die begründete Unterscheidung ist in A unverzichtbar. |
+| Messunsicherheiten angeben | Freigegeben: A verlangt Einheiten und einen aus den Messgrenzen begründeten Zeitbereich. |
+| Gleichförmige Bewegung und Geschwindigkeit | Offen: A prüft die Modellprognose, nicht den ganzen experimentellen und grafischen Anspruch des Atoms. |
+| Bewegungen mit Diagrammen untersuchen | Offen: Kinddiagramme ersetzen nicht die eigene experimentelle Erfassung einer Bewegung. |
+| Durchschnitts- und Momentangeschwindigkeit unterscheiden | Offen: Der Vergleich von Sekanten- und Tangentensteigung ist nicht erforderlich. |
+| Freier Fall experimentell untersuchen | Offen: B liefert Daten; ein eigener Versuch wird nicht verlangt. |
+| Bezugssysteme und Geschwindigkeitsüberlagerung | Offen: Ein anderes Bezugssystem und die allgemeine vektorielle Überlagerung bleiben ungeprüft. |
+| Waagerechter Wurf analysieren | Offen: Ein eigener Versuch und das x-y-Bahn-Diagramm sind keine Pflichtleistungen. |
+| Sicherheitsabstände im Straßenverkehr bewerten | Offen: Keine der vier Prüfungen verlangt dieses Urteil. Ein zusätzlich eingeplanter eigener Erwerbsauftrag bleibt offen. |
+:::
+
+Die Tabelle nennt den **vorgeschlagenen** Freigabeumfang; sie ist keine bereits erfolgte Qualitätsfreigabe oder Datenänderung. Die ersten beiden Zeilen beruhen auf dem [Vertrag der Kindeinheit](repo:curricula/DE/Gymnasium/quality/learning-units/physics-constant-acceleration-2026-11-15-v2.md), die beiden folgenden auf den vorgeschlagenen unverzichtbaren Kriterien von A. Eine eigene Versuchsdurchführung gehört nur dann zum E.1-Abschluss, wenn sie dort ausdrücklich als Pflichtbeleg ausgewiesen wird. Ohne sie können experimentelle Atome mit diesem eigenen Anspruch weder über $M$ noch über $F_{\mathrm{plan}}$ als ganz nachgewiesen gelten.
+
+Im hessischen Beispiel wären nach vier bestandenen Prüfungen **vier der elf Inhaltsziele** für die Planung freigegeben. Wer dieselben elf Atome einzeln im Gespräch nachweist, muss für jedes den gleichen vollen Anspruch belegen; für experimentelle Atome gehört die verlangte eigene Leistung dazu. Elf bloß besprochene Ziele ergeben keine elf gültigen Einzelerfolge. Von den sieben offenen Zielen haben drei direkte Anschlüsse außerhalb von E.1. So benötigt „Schiefen Wurf beschreiben“ weiterhin einen Beleg für das ganze Ziel „Waagerechter Wurf analysieren“. Wer den eigenen Fallversuch separat nachweisen möchte, findet im Katalog bereits eine passende praktische Prüfung.
+
+**Bewusste Verzögerung im Vorschlag.** Wer A besteht, hat bereits den unverzichtbaren Beleg zur Messunsicherheit erbracht. Ihre zusätzliche Planungsfreigabe würde trotzdem bis zum gesamten E.1-Abschluss warten, also auch auf B und die beiden Kindprüfungen. Bis dahin brauchen „Signifikante Stellen korrekt verwenden“ und „Mittelwert und Streuung aus Messreihen bestimmen“ einen anderen gültigen Beleg für diese Voraussetzung. Ein ausdrücklich schon nachgewiesenes Atom in $M$ bleibt verfügbar. Die geltende Regel vom 11. November kann eigene Atome dagegen bereits bei entfallener lokaler Nachfrage anerkennen; sie wartet nicht pauschal auf den Gesamtabschluss.
+
+**Offene Alternative.** Ein eigenständig fassungsgebundenes und fachlich freigegebenes Teilpaket könnte die Freigabe unmittelbar nach A tragen. Das würde die Verzögerung vermeiden, brauchte aber einen eigenen erklärten Vertrag und dürfte weder Kind- noch Fremdatome übernehmen. Es ist kein bereits beschlossener Auslöser; der hier geprüfte Vorschlag hält vorerst am vollständigen Abschluss der zuständigen Einheit fest.
+
+Fassung, fachlicher Umfang und Planungswirkung bleiben dauerhaft an den zugrunde liegenden Erfolg gebunden. Ein Fokuswechsel, eine neue Elterneinheit, zusätzliche Kanten oder ein breiterer neuer Prüfungsanspruch erweitern ein altes Ergebnis nicht. Geeignete frühere Nachweise bleiben über Planwechsel hinweg nachvollziehbar. Eine berechtigte Ergebnis- oder Inhaltskorrektur ist von einer solchen nachträglichen Erweiterung zu unterscheiden.
+
+#### Vorschlag: Offene Voraussetzungen und verpflichtende Einzelbelege {#sec:proposal-open-prerequisites}
+
+Eine abgeschlossene Einheitenroute kann neben offenen Einzelaufträgen stehen. Ein eigener Auftrag ist erfüllt, wenn der dafür bestimmte Beleg vorliegt oder eine fachlich zulässige Freigabe seinen **ganzen** Anspruch trägt. Ist eine reale Durchführung oder ein eigenständiger Abruf ausdrücklich vorgeschrieben, bleibt diese Leistung erforderlich. Ein bloß übersprungener Übungsschritt innerhalb der abgeschlossenen Route wird dagegen nicht als Rückstand fortgeschrieben.
+
+Braucht ein späteres Ziel ein offenes Atom, benennt das Backend dem Coach den Bedarf und den Grund: etwa „Fallmodell ausgewertet; eigener Versuch nicht nachgewiesen“ oder „Intervallgeschwindigkeit verwendet; Momentangeschwindigkeit offen“. Eine bewusst gewählte Einstiegseinheit beseitigt diese Lücke nicht global. Sie erzeugt auch keinen Erfolg an anderen Einheiten.
+
+**Offene Entscheidung: Kurzcheck oder begleitete Anwendung.** Bei einer direkt benötigten gewöhnlichen Voraussetzung, deren notwendige Anwendung weder einzeln noch im vollen erforderlichen Umfang durch die bestandene Fassung belegt ist, kann vorab ein gezielter Kurzcheck stehen. Der Vorschlag aus der Diskussionsgrundlage ist stattdessen, den Einstieg mit einem Hinweis anzubieten und die Anwendung an der neuen Aufgabe zu beobachten. Bei Schwierigkeiten erklärt und übt der Coach den fehlenden Schritt. Diese lokale Einstiegsentscheidung ersetzt keinen Pflichtnachweis und schaltet das Atom nicht global frei. Eine verbindliche Festlegung und die passende Backend-Auskunft stehen aus.
+
+Beim Beobachten erhält zunächst nur das aktive Ziel ein Ergebnis. Die offene Voraussetzung kann beim nächsten Lernschritt erneut auftauchen. Wer dafür einen eigenen Nachweis möchte, wechselt mit seinem Einverständnis zum betreffenden Lernziel, erbringt dessen geforderte Leistung und kehrt zur Aufgabe zurück. Eine beiläufige Beobachtung hat keine dauerhafte Anrechnungswirkung.
+
+**Offene Entscheidung: Ersatz einer Kindpflicht für die Elternroute.** Eine Elternprüfung könnte einen engeren, anders gefassten Gesamtabschluss tragen, obwohl einzelne Kinderpflichten nicht abgelegt wurden. Dafür müsste ein fachliches Review den behaupteten Gesamtanspruch und die unverzichtbaren Beiträge der Kinder ausdrücklich freigeben. Bis zu einer solchen Entscheidung gelten alle Pflichtteile; im E.1-Beispiel sind es vier. Eine solche Ausnahme dürfte weder einen Kindabschluss noch eine reale Durchführung oder einen Kartenabruf vortäuschen.
+
+#### Vorschlag: Lernplan, Gesamtfortschritt und datierte Periodenereignisse {#sec:proposal-period-accounting}
+
+Der Lernplan unterscheidet mindestens drei Auskünfte: **Einheit durch Prüfung nachgewiesen**, **vorgesehene Aktivitäten vollständig bearbeitet** und **noch offene eigene Erwerbsaufträge**. So kann die Person den Abschluss einer Route erkennen und zugleich sehen, welche nie geprüften Einzelansprüche für einen anderen Lernweg offenbleiben. Gesamtfortschritt braucht dafür einen benannten Umfang und eine sichtbare Zählart.
+
+Das ist ein Produktvorschlag. Der heutige Lernplan führt atomare Ziel-IDs. Im Entwurf hält die Auswahl fest, ob die Person einen Einheitenabschluss oder einen Einzelauftrag plant. Wer nur E.1 beauftragt, hat nach den vier Erfolgen keine der sieben offenen Kompetenzen als Rückstand. Ein zusätzlich beauftragter eigener Fallversuch bleibt fällig. Bestehende atomare Pläne behalten ihren ausgewiesenen Umfang.
+
+Ein Einheitenzähler wie „2 von 3 Pflichteinheiten nachgewiesen“ ist nur bei vollständig gegliedertem Umfang aussagekräftig. Bei teilweise erklärten Einheiten bleiben Zielzähler für die übrigen Bereiche nötig. Beide Zählarten dürfen nicht ohne ausgewiesenen Nenner zu einem gemeinsamen Prozentwert verschmolzen werden. Ebenso darf die Zahl freigegebener Voraussetzungen nicht als Zahl tatsächlich bearbeiteter Ziele erscheinen.
+
+Im Wochenpensum zählt der reale Prüfungserfolg nach seinem Ereignisvertrag **einmal**. Die daraus abgeleitete Einheitenanzeige, mehrere freigegebene Atome und späteres Einblenden alter Vorarbeit erzeugen keine weiteren Abschlussereignisse. Ein außerhalb der laufenden Periode erbrachter Nachweis bleibt frühere Leistung. Neue selbstständige Prüfungsversuche und Wiederholungen brauchen einen ausdrücklich festgelegten Ereignisvertrag; eine bloße Neubewertung der Anzeige genügt nicht.
+
+Die bisherige Praxis erlaubt die Wiederholung einer bekannten Aufgabe auch nach Einsicht in die Lösung. Für das Erarbeiten bleibt das sinnvoll. Für einen erneuten qualifizierenden Nachweis ist eine gleichwertige, der Person unbekannte Fassung vorgeschlagen. Bei einer Prüfung der Modellwahl reicht ein bloßer Zahlentausch mit identischem Lösungsweg nicht. Diese neue Qualitätsregel ist noch nicht umgesetzt; solange keine geeignete Fassung vorliegt, kann die bekannte Aufgabe weiter als Übung dienen. Bereits gespeicherte Erfolge bleiben erhalten.
+
+#### Vorschlag: Unterschied zur geltenden atomaren Anerkennung {#sec:proposal-contract-change}
+
+Die **geltenden** Entscheidungen vom 4. und 11. November verwenden die offene Nachfrage $N_U$, die eigene implizite Menge $I_U$ und ihre globale Vereinigung $\Meff$. Die operativen Formeln und R1–R5 bleiben in den Abschnitten~@ref{sec:transitive-demand} bis~@ref{sec:period-accounting} erhalten. Der Motivationsentwurf vom 17. November ist ein gesonderter Vorschlag. **Die nachfolgenden Änderungen an Auslöser und Wirkung vom 19. November sind noch nicht übernommen.**
+
+R2 liefert weiterhin den fachlichen Maßstab für die Freigabe eines einzelnen Atoms. Aufgabe und Raster müssen seine volle Anwendung zum Bestehen verlangen. Geändert werden Auslöser und Wirkung. Bisher konnte der Bedarf an einem Atom vor dem Gesamtabschluss entfallen. Im noch nicht übernommenen Vorschlag löst erst eine vollständig nachgewiesene Einheit die geprüfte Freigabe für spätere Voraussetzungen aus. Die Einheit kann dabei bestanden sein, obwohl ganze Einzelziele fachlich offen bleiben.
+
+Die bestehende Implementierung und QA bleiben davon getrennt. [validateLearningUnits.ts](repo:app/scripts/validateLearningUnits.ts) prüft den geltenden Einheitenvertrag, unter anderem Struktur, R1, R3 und eigene Zuordnung. Die [Referenzrechnung](repo:app/scripts/lib/learningUnitRecognition.ts) überprüft die geltenden Mengengleichungen; eine vollständig globale revisionsgebundene Ableitung nach R5 ist bisher nicht implementiert. Die [Backend-Berechnung](repo:backend/src/main/java/com/skillpilot/backend/completion/CompletionEvaluator.java) kann nach ihrem heutigen Vertrag gewöhnliche Ziele schon bei entfallener offener Nachfrage als im Umfang erledigt werten, ohne dass eine Prüfung bestanden wurde. Keiner dieser Mechanismen belegt die hier vorgeschlagene Einheitenleistung.
+
+Vor einer späteren Umsetzung müssen Abschlussrechnung, Voraussetzungsprüfung, explizite Ereignisse, Anzeige, Revisionsbindung und Qualitätsgates gemeinsam überarbeitet und geprüft werden. Diese Dokumentationsänderung lockert keine vorhandene Sperre, bindet keine historischen Nachweise neu und schreibt keine Lernergebnisse um.
+
+:::sources
+[Diskussionsgrundlage vom 19. November](repo:docs/concept/skill-graph/unit-assessment-discussion-2026-11-19.de.md); [Kindvertrag zur beschleunigten Bewegung](repo:curricula/DE/Gymnasium/quality/learning-units/physics-constant-acceleration-2026-11-15-v2.md); [Historische Produktentscheidungen](repo:docs/concept/skill-graph/completion-semantics-clarification-2026-11-04.md); [Gemeinsamer Lernplanstatusvertrag](repo:docs/concept/didactic/unified-learning-plan-status.md).
 :::

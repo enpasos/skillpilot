@@ -219,7 +219,7 @@ export function validateClaudeCoachInstructions({ skill, taskClosure, recall }) 
     /Only completion of the whole Personal Curriculum ends its learning content/iu,
     /blocked\/unavailable,.+?without claiming completion/iu,
     /paused never authorizes enabling plan following/iu,
-    /backend-selected active goal with one concrete next task/iu,
+    /Follow the coaching workflow for the backend-selected active goal/iu,
     /only current authorized choices; never invent a goal/iu,
     /Status\/pause intent still takes precedence/iu,
   ]);
@@ -230,8 +230,16 @@ export function validateClaudeCoachInstructions({ skill, taskClosure, recall }) 
     /Stopping at the period target prevents unsolicited extra goals, not teaching an active unfinished goal/iu,
     /it never blocks explicitly requested learning/iu,
   ]);
+  requireRule(coaching, "ordinary-teaching", [
+    /For an ordinary understanding goal, invite an initial idea or offer an explanation/iu,
+    /If the concept is new, the learner is unsure or asks for help, explain directly with a concrete example/iu,
+    /Build on their idea and explain the missing link/iu,
+    /Answer follow-up questions directly/iu,
+    /Let them listen, ask more, sketch or explain in their own words/iu,
+    /Offer a fresh application when useful or requested/iu,
+  ]);
   requireRule(coaching, "ordinary-evidence", [
-    /For ordinary competencies, prefer understanding and transfer/iu,
+    /For ordinary mastery, require two/iu,
     /Require two independent checks or genuine multi-step transfer, even within one task; judge evidence, not task count/iu,
     /Stop assessing once all aspects are shown; no task quota/iu,
     /Self-report, copied solutions, repetition and guided answers do not suffice/iu,
@@ -242,16 +250,11 @@ export function validateClaudeCoachInstructions({ skill, taskClosure, recall }) 
   ]);
   requireRule(coaching, "deliberate-closure", [
     /When a task may finish, read \[task-closure\.md\]\(references\/task-closure\.md\) before replying or writing/iu,
-    /With autopilot on or off, silently decide from independent evidence/iu,
+    /With autopilot on or off, judge independent evidence/iu,
     /If an ordinary goal is mastered, call set_skillpilot_mastery immediately/iu,
-    /after confirmation, say it is mastered and saved, offer the next topic if available, and wait for assent/iu,
-    /If only the task finishes, give feedback and offer a targeted check or pause without a mastery write/iu,
-    /When task and goal finish together, ask one combined question/iu,
-    /Do not start the next task or render its image until explicit continuation/iu,
-    /A solved task alone does not prove goal mastery/iu,
-    /Guide the learner toward mastery with targeted checks/iu,
-    /Offer mastered status or the next topic only after the write succeeds/iu,
-    /consent cannot waive evidence/iu,
+    /After confirmation, say it is mastered and saved, offer the next topic if available, and wait for assent before teaching or rendering it/iu,
+    /If only the task finishes, give feedback without a mastery write/iu,
+    /Answer questions about the current goal/iu,
   ]);
   requireRule(closureWorkflow, "closure-workflow", [
     /Read when work may finish a task or ordinary goal/iu,
@@ -261,11 +264,11 @@ export function validateClaudeCoachInstructions({ skill, taskClosure, recall }) 
     /Make this decision before feedback or a tool write/iu,
     /evidence audit, self-instructions and tool plan out of chat and voice/iu,
     /One routine answer does not prove the goal; genuine multi-step transfer within one task may/iu,
-    /If the task is incomplete, explain the gap and continue it or offer a targeted check/iu,
+    /If the task is incomplete, explain the gap. Answer questions or offer a targeted check/iu,
     /task is complete but goal evidence is missing.+?Close only "diese Aufgabe"; make no mastery write and store no failure/iu,
-    /On requested continuation, check the specific missing aspect within this goal/iu,
+    /On continuation, discuss the missing aspect. If the learner wants help, explain it directly/iu,
     /Do not offer goal mastery or a next topic as if this goal were mastered/iu,
-    /Offer a targeted check or pause/iu,
+    /Offer practice when useful or requested; respect a pause/iu,
     /If the ordinary goal has sufficient evidence, call set_skillpilot_mastery immediately with fresh authorized state and wait for confirmation before saying it was completed or saved/iu,
     /Never make the write contingent on a learner choosing mastery/iu,
     /Ask no further assessment question or required task once every aspect has been shown/iu,

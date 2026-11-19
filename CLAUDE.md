@@ -29,8 +29,10 @@ inspection links and actual evidence. An open entry links its PR; completion
 requires the integrated implementation commit and fresh successful main CI.
 A small documentation-only completion commit or short PR is allowed afterwards.
 
-The bilingual Graph Definition is the target norm for shared Land/duration
-plans and E1–E4. Distinguish source assignment from learning placement: `after`
+The confirmed November contracts in the bilingual Graph Definition are the
+binding target norm for shared Land/duration plans and E1–E4. The separately
+marked unit-assessment proposal of 19 November is pending adoption; it does not
+replace the applicable recognition formulas or R1–R5 in §13. Distinguish source assignment from learning placement: `after`
 orders units but adds no prerequisite, mastery or atomic-frontier lock. Keep
 the existing compatibility runtime explicit; the later unit migration and
 runtime work F8–F13 are separate from the current K1–K13/F1–F7 delivery.
@@ -173,6 +175,10 @@ complete check as parallel jobs. Details: `docs/qa-ci/ci.md`.
   learning-unit progress is derived from atomic descendants; no completion
   ever writes mastery to children. Exams and memory goals always need their
   own explicit results.
+  The unit-assessment design of 19 November is pending expert review and
+  product adoption; confirmed recognition rules remain applicable. See
+  [AGENTS.md §2.4](AGENTS.md#24-recursive-learning-units) for its status and
+  the contracts applicable to implementation and QA.
 - **Curriculum data is evidence-bound**: changes under `curricula/` stay
   traceable to the official source; never invent goals, edges or source claims.
 - **Maturity floors**: after curriculum/description/route/view changes,

@@ -1,16 +1,18 @@
 ## Learning-Unit Design Criteria and Examples {#sec:sga-unit-design}
 
-This chapter makes the didactic purpose of [recursive learning units](repo:docs/concept/skill-graph/learning-units.md) (Graph Definition §11), the [ordering rules E1 to E4](repo:docs/concept/skill-graph/learning-unit-progression.md), and [implicit mastery](repo:docs/concept/skill-graph/assessment-gated-completion.md) (§13) concrete. In the three-tier target model (**Cluster $\to$ Unit $\to$ Unit with assessments**), a subject unit is declared as a canonical cluster and introduced top-down per subject: first as a coarse, E1–E4 backflow-free subject unit ordered by sibling `after`, and subsequently refined into leaf units with own assessments (`coverageReviews`) that stay whole inside a single plan unit across all 16 Bundesländer.
+**Working proposal for expert review, 19 November 2026.** Representative unit qualifications are a proposed design. The existing curriculum and assessment contracts apply pending a product decision.
 
-Two worked subject studies illustrate boundary analysis, knowledge context, and assessment coverage: **motion with constant acceleration** in upper-secondary Physics and **number sense** in grade-5 Mathematics. Initial cuts of both were authored on 13 November 2026 under compatibility contract 1.2 with reviewed R2 coverage (`2` goals and `1` assessment in Physics, `5` goals and `2` assessments in Mathematics); migrating them to declared cluster units, comparing them against broader cuts (such as full kinematics or joining number sense with natural-number arithmetic), and running the 16-Länder whole-leaf check follow in steps `F8`–`F11`.
+A [learning unit](repo:docs/concept/skill-graph/learning-units.md) needs a clear learning promise. If learners should be able to demonstrate it directly, authors must answer a second question. What independent performance would convince us that someone fulfils this promise at the stated level?
+
+Hessian kinematics provides an existing child unit and a possible qualification for its parent unit E.1. A Mathematics example poses the same question for number sense. The [subject review paper](repo:docs/concept/skill-graph/unit-assessment-discussion-2026-11-19.de.md) contains the E.1 task drafts, scoring examples and open decisions.
 
 ### Establish a Secure Foundation {#sec:sga-ud-foundation anchors="1-establish-a-secure-foundation"}
 
 A learning unit bundles one coherent conceptual step: learners understand a model or a subject-matter relationship and can act independently with it. The motivation explains which question becomes answerable and why the effort pays off. A unit may correspond to a familiar topic; it may equally open up a new way of thinking that connects several topics. Its scope follows this learning promise. A final application or synthesis can also form a unit; it does not need a later unit to justify its existence.
 
-The unit's assessment, or its set of assessments, shows whether this foundation actually holds. In the regular course, material that builds on it is developed only after the required foundation has been demonstrated. Otherwise a gap is made visible, worked on in a focused way, and assessed again. An honestly identified deficit is more helpful than a pass whose apparent security later lets the learning path fail.
+The regular route leads from an opening question through explanation, examples and practice to independent application. Someone familiar with the unit can choose to demonstrate it directly. They should first see which parts are required and which already have valid evidence. Both routes use the same assessment standard.
 
-This does not demand flawless performance. An isolated arithmetic slip is judged differently from a missing central understanding. Ordinary grading must reliably reflect this difference: a competence that is promised but fundamentally missing must not be compensated by incidental points elsewhere. This creates no second pass verdict and no second stored outcome; the ordinary grading contract of the assessment applies unchanged.
+Representative performances can support a judgment about the unit. An arithmetic slip may be compatible with the promise. If someone fundamentally misunderstands a central model and can still pass, the task and its scoring rule fail to support the judgment. Reviewers use concrete answers to examine both cases.
 
 ### Recognising a Meaningful Boundary {#sec:sga-ud-boundary anchors="2-recognising-a-meaningful-boundary"}
 
@@ -40,13 +42,13 @@ The context is derived before tasks, cards, and images of the unit are written o
 
 ### Learn, Demonstrate, and Continue Learning {#sec:sga-ud-loop anchors="3-learn-demonstrate-and-continue-learning"}
 
-An opening question makes the learning promise concrete. What will learners be able to do, and what will they use it for? A short introduction is proposed for units with assessments of their own. The coach then identifies the prior knowledge learners need and gives feedback as they learn and practise. [Unit orientation in the Graph Definition (§8.2)](https://enpasos.github.io/skillpilot/concept/skill-graph/context-and-views.en/#sec-orientation)
+“A ball rolls off a table. Where will it land?” The opening question gives a purpose to learning. The coach can explain horizontal motion and falling with one example, demonstrate how to draw the situation, and gradually withdraw help in the next example. An exercise at the end of the path gives learners a chance to predict the landing point independently.
 
-In the assessment, learners show whether they can apply what they have learned independently. For example, if they are expected to choose a model, the task must leave that choice to them. The coach can help them make it during practice.
+A direct entrant sees the learning promise and the performances required. In a task on superposition, the learner must decide independently how to relate the two motions in time. Whether they must actually perform the experiment depends on the claim. Analysing supplied data may leave experimental execution unobserved.
 
-A learner who confuses velocity and acceleration can practise that distinction. They may retry the same task after seeing its solution. An equivalent task in a new situation gives better evidence of whether they can now choose the model independently. Both tasks must address the same learning promise and use the same passing criteria. Evidence already earned in other units remains valid.
+A gap can lead back to focused work. Once the solution is known, the familiar case serves as practice. A new qualifying attempt that claims independent model choice needs an equivalent, sufficiently fresh situation. The validity and cost of providing such variants need trials.
 
-In the intended learning flow, `after` and the "Unit by Unit" learning mode ([Unit Progression](repo:docs/concept/skill-graph/learning-unit-progression.md)) guide learners coherently through an opened unit up to its assessments without imposing technical unit locks: `after` changes neither atomic demand nor mastery or frontier eligibility, learners may attempt assessments directly at any time, an attempt that is not passed records no negative result, and no `requires` edge of later subject goals points to an assessment goal.
+Passing creates no record of attending the introduction or completing skipped exercises. Later recommendations use only the reviewed scope of the version passed. The sibling relation `after` orders units without creating a subject prerequisite. [Unit progression](repo:docs/concept/skill-graph/learning-unit-progression.md)
 
 ### Main Example: Motion with Constant Acceleration (Upper-Secondary Physics) {#sec:sga-ud-physics anchors="4-main-example-motion-with-constant-acceleration-upper-secondary-physics"}
 
@@ -106,30 +108,29 @@ For the misconception at the highest point, learning continues exactly there: fo
 
 #### A Larger Candidate: Kinematics Including Superposition {#sec:sga-ud-phys-larger anchors="a-larger-candidate-kinematics-including-superposition"}
 
-One-dimensional motion is not yet fixed as the final unit boundary. A larger unit could carry the promise: **"I can describe the motions of this entry course, choose suitable motion models, and compose motions from components."** The step from one to two dimensions would then be an inner conceptual step up to a common thematic conclusion.
+The Hessian E.1 learning map for G8 and G9 links measurement and one-dimensional motion models to predicting a horizontal projectile. The projectile comes from curricular topic E.3 and has its learning placement in E.1. This grouping provides a case for assessing how several skills work together in a larger unit.
 
 A possible course leads from representations of position, velocity, and acceleration through uniform and uniformly accelerated motion to independent components and their composition. For an idealised projectile without air resistance, horizontal and vertical motion are described separately in a fixed frame of reference and recombined at the **same time**. Independence follows from this model; it does not hold for arbitrary superposed motions.
 
-An assessment sketch of its own could present a trajectory and two contradictory explanations of its components. Learners evaluate them, justify the time assignment, and set up their own consistent description. For an oblique throw with non-vanishing horizontal velocity, only the vertical velocity component is zero at the highest point. Whoever transfers the statement from the vertical throw to the whole velocity vector without checking has not yet demonstrated the extended relationship. The mathematical entry competencies for components, vectors, and, where needed, trigonometric decomposition must be added accordingly.
+The existing child unit on modelling uniformly accelerated motion has two assessments of its own. The vertical throw can show model choice and its limits. The acceleration protocol also requires motion graphs and the distinction between displacement and distance travelled after a reversal. That distinction was exactly why the reviewers withdrew coverage of the full acceleration goal from the vertical throw. [Current child-unit contract](repo:curricula/DE/Gymnasium/quality/learning-units/physics-constant-acceleration-2026-11-15-v2.md)
 
-**A larger unit does not move all feedback to the end.** Before the course builds on the one-dimensional model, its decisive understanding must have been assessed. The larger unit can contain a required intermediate assessment for this purpose. That assessment remains an ordinary assessment goal with a binary result; it does not automatically require a child unit or an additional stored status. A conversation with decisive solution hints does not provide the independent evidence.
+The initial **E.1 proposal** calls for four independent passes. Previously passed components count if they match the required version.
 
-Three cuts therefore need to be compared:
+| Required part | Performance | Status and passing threshold |
+| --- | --- | --- |
+| Child assessment, vertical throw | Choose an axis, model the motion and justify the idealisation | Existing, 24/24 points |
+| Child assessment, acceleration protocol | Construct three graphs and distinguish displacement from distance travelled | Existing, 20/20 points |
+| E.1 assessment A, cart | Justify a prediction from measured data and judge measurement deviations | Draft, 4/4 points |
+| E.1 assessment B, horizontal projectile | Use a shared time for motions in two directions to make a prediction | Draft, 3/3 points |
+{cols="29%,46%,25%"}
 
-| Candidate | Justification and Test Point |
-| --- | --- |
-| Separate unit on one-dimensional motion | Does the first new model already carry a usable conclusion of its own? |
-| Larger kinematics unit with learning sections and several assessments | Does only the transfer to components yield the intended overall understanding, without hiding early gaps? |
-| Kinematics with genuine child units and its own synthesis | Do the child units each have their own learning promise and conclusion that justify this additional hierarchy? |
-{cols="38%,62%"}
+Four passes would qualify the learner for E.1 in this proposal. A learner who solves A and B but still confuses distance and displacement has an outstanding child obligation. Subject reviewers must judge whether the four performances support the promise, whether hands-on experimentation is essential and whether a differently worded parent promise could ever justify fewer required parts.
 
-The learning sections of the second variant are not yet child units. In the third variant the existing child obligations continue to apply; a synthesis does not replace their assessments. "All of kinematics" also needs a definite scope: whether circular motion, relative motion, or variable acceleration belong to it must be decided for the concrete course and its learning goals. The two dimensions alone do not prove completeness of the kinematics topic.
+#### What E.1 evidence means for later learning {#sec:sga-ud-phys-recognition anchors="recognition-inside-a-larger-unit"}
 
-#### Recognition Inside a Larger Unit {#sec:sga-ud-phys-recognition anchors="recognition-inside-a-larger-unit"}
+Eleven content goals belong to this E.1 learning placement, two in the child unit and nine directly in E.1. After the four passes, the proposal accepts **four whole atoms for planning**. The child unit supports accelerated motion and the modelling and idealisation of motion. In A the learner must distinguish measurement deviations and state measurement uncertainty. Passing both child assessments activates the two planning permissions from the child unit. Someone who also passes A has the assessment result for the cart. The E.1 permissions for measurement deviations and uncertainty take effect only when B has also been passed and the E.1 qualification is complete.
 
-Under the recognition rule confirmed on 11 November 2026, an own ordinary goal of a unit is recognized only once no open own assessment or memory goal of that unit still requires it, directly or transitively. In the larger kinematics candidate, the intermediate assessment on one-dimensional motion and the final assessment on composed motion both require the one-dimensional modelling goals. Passing the intermediate assessment is an ordinary binary pass with its full feedback value. It does not yet recognize those goals implicitly while the final assessment is open; they stay open unless they have been mastered explicitly. Once the final assessment is passed as well, they are recognized.
-
-This is a consequence, not a design target. The boundary follows the conceptual transition (Section 12.2), not a desired recognition timing; splitting or rearranging assessments or units merely to obtain earlier recognition is not permitted. If one-dimensional motion is a self-contained conceptual step with a learning promise of its own, that is a didactic argument for a child unit with its own assessment. The child's valid contract then recognizes the child's own goals independently of further assessments of the parent. The larger unit is complete only after all its own assessments, required cards, and required child units. No new assessment type arises; acquisition ownership, evidence, and unit completion remain distinguishable, and tasks and ordinary grading must genuinely carry the claimed application. This describes the target contract, not the implemented runtime or the quality of current assessments.
+For the other seven atoms the observed performance samples only part of the skill or leaves it unobserved. Someone who correctly interprets supplied fall data has yet to demonstrate performing a fall experiment. The E.1 route can be complete while a separately assigned experiment remains open. The full [goal-by-goal review](repo:docs/concept/skill-graph/unit-assessment-discussion-2026-11-19.de.md) lets subject reviewers examine these proposed planning decisions.
 
 #### What Textbook Structures Show {#sec:sga-ud-phys-textbooks anchors="what-textbook-structures-show"}
 
@@ -166,13 +167,13 @@ The learning promise reads: "I understand the structure of the natural numbers, 
 
 Under compatibility contract 1.2, these five goals together with two associated assessments already form an initial leaf unit. During the top-down subject-unit rollout (`F9`–`F11`), subject review still examines whether separating "number sense" and natural-number arithmetic as child units beneath a shared parent unit holds up didactically and keeps each leaf unit whole inside one plan unit across all 16 Bundesländer. Independent applications, actual downstream demand, and boundary justifiability must be weighed against each other; the count of five decides this question as little as the existence of two branches does.
 
-A shopping context with counting and estimating can supply suitable applications. On its own, however, it does not demonstrate the comparison of number systems or the general successor argument. These parts must not be dropped silently in order to pass off a convenient final task as complete evidence. Under rule R1, each of the five goals would need an own assessment of the unit that requires it; a convenient final task that requires only some of them leaves the others uncovered, which is a rule violation and never a free recognition.
+A shopping problem calls for estimating quantities. A child can succeed without being able to justify the unboundedness of natural numbers using the successor principle. If a new qualifying version is meant to support that claim, it needs a suitable task and an effective passing criterion. If the justification is dispensable to a narrower overall judgment, the goal remains open for later planning. The two existing assessments retain their agreed scope.
 
 The existing edge from the goal "Use multiplication and integer division as inverse operations" (`cafd6520-c4af-4109-9863-cc49ba6fad4d`) to the unboundedness goal is a reason for a subject review of its necessity, not an already decided correction. The calculation goal explicitly covers natural **and integer** numbers, signs, and the conditions of admissible division. Its scope must not be narrowed for the comparison with a unit on natural numbers.
 
-### Consistency with the Ordering and Recognition Model (E1–E4 and R1–R5) {#sec:sga-ud-validity anchors="6-consistency-with-the-recognition-model-and-the-unit-validity-rules"}
+### How unit order, evidence and recommendations fit together {#sec:sga-ud-validity anchors="6-consistency-with-the-recognition-model-and-the-unit-validity-rules"}
 
-Each atomic goal keeps one stored binary explicit result. Explicit mastery $M$ is joined by recognition $I$ derived from the fixed contracts of the directly owning unit with assessments: $M_{\mathrm{eff}}=M\cup I$. This competence acts globally, also under another focus or Personal Curriculum. Neither additional stored mastery tiers nor a hidden second qualification verdict arise.
+A workable structure first answers in what order the subject can be learned. Qualification requires an additional answer about what passing actually demonstrates.
 
 Every unit — whether an assessment-free plan unit, a parent subject unit, or a leaf unit with assessments — must first satisfy the four **ordering rules E1–E4** ([Unit Progression](repo:docs/concept/skill-graph/learning-unit-progression.md)):
 
@@ -181,42 +182,19 @@ Every unit — whether an assessment-free plan unit, a parent subject unit, or a
 - **E3 (Sibling-local completeness of `after`):** Whenever an atom beneath sibling unit $B$ requires an atom beneath sibling unit $A$ of the same parent unit, $B$ follows $A$ in the declared `after` order (zero backflows against unit order; no `requires` edge points to an assessment goal).
 - **E4 (Irredundancy):** No declared `after` link repeats what already follows transitively across other siblings in `after`.
 
-A local recognition contract, by contrast, is formed exclusively by a **unit with assessments** (with own assessments and valid complete `coverageReviews`). Units without an own recognition-assessment contract — including stages, years, course semesters, and assessment-free parent units, even when they hold standalone practice tasks or Abitur exams — only order and recognize nothing implicitly. Missing or invalid coverage of a declared assessment-bearing unit instead remains a contract violation, never a reclassification as assessment-free. Inside a unit with assessments, an own content goal (including experimental content goals) is recognized once no open own assessment or memory goal of that unit still requires it, directly or transitively, also through already mastered intermediate goals. If assessments Q1 and Q2 belong to the same unit and both require goal A, then A stays open after Q1 is passed until Q2 is passed as well. An open assessment of another, later unit never reopens or withholds an already recognized goal.
+**Proposal of 19 November.** Alongside individual evidence, only the reviewed release of a unit’s own ordinary content goals upon completion of that unit version would count for planning. The same standard applies to each goal on both routes. A child can already release its own goals while the parent route remains open. [Unit evidence and planning](repo:docs/concept/skill-graph/assessment-gated-completion.md#sec-proposal-planning-release)
 
-Every unit with assessments is governed by the five **validity rules R1–R5** ([Graph Definition §13.3](repo:docs/concept/skill-graph/assessment-gated-completion.md#sec-why-graph-not-enough)):
+Reviewers record the learning promise, level, required components, tasks and scoring, aspects left open, and the planning effect for each atom. A subsequent version may require an additional skill. Old results retain the meaning of the version passed. An unsuccessful direct attempt leads to advice on the observed gap. Prior successes remain valid.
 
-- **R1:** Every own content goal of a unit with assessments (including experimental content goals) lies on a prerequisite path from at least one own assessment of that unit, directly or transitively; a path that leads only to a memory goal does not count. Validity condition of the unit with assessments, hard from the moment its `coverageReviews` are declared.
-- **R2:** For every own content goal, at least one own assessment that requires it has reviewed evidence that its tasks and ordinary grading genuinely test the goal without compensating-point bypasses. Milestone M5, with the current per-goal binding at M7.
-- **R3:** An assessment claims coverage only for goals it requires directly or transitively. Same placement as R1.
-- **R4:** Every acquisition target has exactly one directly owning unit in the resolved course. Same placement as R1.
-- **R5:** A later re-cut of units or later edges never grant additional recognition to existing results; the contract is versioned via `revision`. Runtime contract and precondition before implicit recognition is enabled in production.
+Subject trials are particularly important in three places. Do task and rubric actually require the intended independent decision? Does the observed performance justify relying on every *whole* atom claimed? When a later task first needs an unresolved skill, is a short individual check or supported first application more appropriate? A required practical demonstration is a separate obligation in either case.
 
-**Current implementation and contract status:** Normative recognition is limited to units with assessments whose contract satisfies R1–R5 with reviewed coverage; it is not yet in production. In the target model, an uncovered goal stays open and constitutes a rule violation, never a free recognition. Currently three learning units are authored in canonical Mathematics and Physics under compatibility contract 1.2 (as `programUnits` of kind `learningUnit` with `own` placements in `goalPlacements`, comprising the dot-product pilot and the initial cuts of the two examples in this chapter; see [Graph Definition §11.2](repo:docs/concept/skill-graph/learning-units.md#sec-unit-representation)). `validate:learning-units` ([validateLearningUnits.ts](repo:app/scripts/validateLearningUnits.ts)) enforces R1, R3, and the uniqueness part of R4 fail-closed in required CI and verifies claimed `coverageReviews` (the completeness part of R4 applies when `learningUnitCoverage` is `"complete"`). Migrating to declared cluster units with E1–E4 subject validation, R5 contract versioning, and production runtime recognition ($M_{\mathrm{eff}}$) follows in `F8`–`F12`.
-
-For unit design this means: every unit must be convexly learnable in one block (E2) and reflect crossing prerequisite demand across siblings via `after` (E3/E4), while every unit with assessments needs own assessments inside the same cluster for all own content goals (R1–R3) and every planned goal belongs directly to exactly one unit in the resolved course (R4).
-
-Assessments and required cards need their own explicit results. Explicit mastery of an ordinary goal does not automatically pass a separately required unit assessment. Conversely, a single atomic prerequisite does not automatically require completion of the whole foreign unit; only an explicitly authored, subject-justified `after` states that the whole other unit is done before work begins in the intended flow. This is order, not an additional prerequisite type: it changes neither atomic demand nor frontier and locks no deliberate assessment attempt. A parent completion replaces no open child assessment; completed children pass no additional parent assessment. Validly recognized individual competence stays in force while other obligations of the unit are still open.
-
-All effective prerequisites remain authoritative, including inheritance, clusters, and complete transitive paths. An already mastered intermediate goal must not hide the demand of a still-open local assessment. Transitive minimality stays in force.
-
-**Not adopted.** An alternative recorded on the archived branch of pull request #83 as a "6 November 2026 target decision" proposed immediate recognition from the qualified coverage list of a single passed assessment, including proof by a parent or foreign unit. The Product Owner reviewed it on 11 November 2026 and did not adopt it.
+**Contract in force, 4/11 November.** The three declared subject units retain their assessments and coverage reviews. Under R1–R5 an ordinary goal a unit owns can gain recognition before the whole unit is complete, once the relevant local obligations have been met. That recognition applies globally. Today’s runtime can already credit a goal because no open obligation in the evaluated scope still needs it. The proposal of 19 November would defer additional planning release until the owning unit version is complete. [Confirmed decision](repo:docs/concept/skill-graph/completion-semantics-clarification-2026-11-04.md)
 
 ### Short Design Sheet {#sec:sga-ud-sheet anchors="7-short-design-sheet"}
 
-Before any implementation planning, answer for every candidate:
-
-1. What will learners be able to do independently, and what will they use it for?
-2. Is the candidate a canonical cluster (E1), and if it is a leaf unit, does it stay whole inside a single plan unit across all 16 Bundesländer?
-3. Does the complete child-block graph from atomic demand and `after` admit an acyclic order at every level, so every unit can be learned contiguously (E2)?
-4. Which concrete entry competencies are needed, are they available in time (including across subjects), and is crossing demand between sibling units ordered completely and irredundantly via `after` with zero `requires` pointing to assessments (E3, E4)?
-5. What does the unit's knowledge context secure via `requires` alone, what is not yet secured, and do all tasks, cards, images, and examples stay strictly inside that context?
-6. Which existing goals belong directly to the unit (`Own(U)`), which child units does it have, and is every goal owned directly by at most one unit (R4)?
-7. What is the central insight? Does the unit need assessments of its own with coverage reviews, or will it initially organise its child units? If it has assessments of its own, what practical example would suit the proposed short opening?
-8. If it is a unit with assessments: which tasks and ordinary grading rules inside the unit cluster demonstrate the whole promise, does every own content goal (including experimental goals) lie on a path from an own assessment (R1), and does at least one such assessment carry reviewed evidence for it (R2)?
-9. Does every assessment claim coverage only for goals it requires directly or transitively (R3)?
-10. Could someone pass despite lacking an essential competence?
-11. What can the learner practise after such a gap? What would demonstrate independent application in a different but equivalent task?
-12. Are standalone practice tasks or Abitur exams cleanly separated from own recognition assessments?
-13. Which official sources (*carried in*) and complete goal meanings justify scope, learning placement (*placed in*), and boundary?
-
-Before planning again, the examples should make traceable why the boundaries hold up in subject terms, the assessments miss nothing essential, and a failure leads to meaningful further learning. An alternative cut must be comparable on the same questions. This sheet authorizes no implementation, no complete assignment of school years, and no technical access lock.
+1. Which question invites curiosity? What should learners be able to do independently, and at what level?
+2. Which goals and required children belong to the unit? Where can it meaningfully begin and end? Do unit order, canonical prerequisites, knowledge context and learning placement fit the relevant views?
+3. How does the coach explain a new idea? What can they demonstrate, and how can learners try it with decreasing support?
+4. Which required performances and valid prior results are visible before a direct attempt? Which concrete task demands the promised decision in an integrated situation?
+5. Which sample answer must pass, and which must fail despite correct incidental calculations? Does the version justify each proposed atomic planning effect? What may the overall judgment leave open?
+6. What feedback helps after an unsuccessful attempt? After solution disclosure, is an equivalent fresh task available for an independent demonstration? What open questions need trials with subject experts and learners?

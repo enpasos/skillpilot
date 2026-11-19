@@ -5,6 +5,14 @@
 > S0 und die Karte im Cockpit (S1) dieses Plans sind geliefert. Die Stufen S2–S5
 > werden nach dem neuen Plan fortgeführt; dieser Text bleibt als Historie und
 > für die Nachnutzungsbefunde in Abschnitt 6 erhalten.
+>
+> **Lesehinweis vom 19. November 2026:** „beschlossen“ und „verbindlich“
+> bezeichnen unten den Stand dieses Plans vom 5. November. Die bestätigte
+> atomare Anerkennungsregel vom 4. und 11. November bleibt für die bestehenden
+> Verträge maßgeblich; ihre [Rechnung mit R1–R5](../concept/skill-graph/assessment-gated-completion.de.md#sec-why-graph-not-enough)
+> steht in §13 der Graph-Definition. Die §§11 und 13 enthalten den noch
+> nicht angenommenen [Vorschlag zur Einheitenanerkennung](../concept/skill-graph/unit-assessment-discussion-2026-11-19.de.md).
+> Dieser Vorschlag ist keine rückwirkende Änderung des damaligen Arbeitsplans.
 
 **Stand: 5. November 2026. Arbeitsgrundlage für die Umsetzung.** Dieser Plan ersetzt den
 [vorherigen Neustartplan](curriculum-recognition-restart-plan.md) als Arbeitsgrundlage.
@@ -34,7 +42,7 @@ Wir liefern früh zwei voneinander unabhängige Ergebnisse:
    bis zum Mathematik-Fachabschluss.
 
 Grundlage sind [Lerneinheiten](../concept/skill-graph/learning-units.md),
-[Anerkennung](../concept/skill-graph/assessment-gated-completion.md),
+[damalige Anerkennungsrechnung](../concept/skill-graph/assessment-gated-completion.de.md#sec-why-graph-not-enough),
 [Fortschreiten und Zugang](../concept/skill-graph/learning-unit-progression.md),
 [Graph Definition](../concept/skill-graph/graph-definition.md) und die
 [illustrierte Gesamtdarstellung (PDF)](../concept/skill-graph/skillpilot-graph-definition.pdf).

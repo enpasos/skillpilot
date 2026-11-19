@@ -38,10 +38,10 @@ When transitioning into instruction, the active goal is announced separately:
 
 The design favors a clean, dependable contract for standard use cases over intricate special-case machinery. **That deliberate scope limit applies to feature breadth, never to the correctness of supported cases:** situations that cannot be evaluated reliably are named explicitly rather than masked behind estimates or heuristics. Existing plan structures, learner state, and sync boundaries are reused; this specification unifies distributed status logic into one shared backend component rather than introducing a new scheduling engine.
 
-!!! warning "Binding Product Clarification of 4 November 2026"
-    Total plan achievement (`I`) counts both explicit and implicit mastery by default. Implicit mastery means demonstrated independent application in suitable closing assessments — not merely skipped preparation. Valid recognition also satisfies later prerequisites and is revoked neither by new downstream consumers nor by switching plans; recognition arises within a valid learning unit and takes effect globally. Daily and weekly period completions (`H`) continue to count only actual explicit completion events.
+!!! warning "Applicable planning contract of 4 and 11 November 2026"
+    The confirmed contract specifies that cumulative achievement in an atomic plan counts explicitly achieved goals and valid implicit recognition. Recognition is to derive from subject-reviewed local contracts and remain available for later prerequisites across plan changes. Daily and weekly activity count actual, dated completions.
 
-    The learner preference "Count only explicitly achieved learning goals" affects only cumulative plan achievement (`I`). The corrected contract below is not yet confirmed as fully implemented or deployed; the earlier demand-stop implementation and its checks do not prove it. See [Assessment-Gated Completion](../skill-graph/assessment-gated-completion.md).
+    “Count only explicitly achieved learning goals” affects cumulative achievement only. The runtime evaluates existing completion profiles. Full implementation of durable recognition tied to the relevant revision remains outstanding. The formulas below describe the confirmed planning contract. The proposal of 19 November is discussed separately in the section on plan credit. [Decision of 4 November](../skill-graph/completion-semantics-clarification-2026-11-04.md)
 
 <a id="sec-plan-status-meaning"></a>
 ### 4.2. Domain meaning of the status
@@ -62,7 +62,7 @@ A completed daily target can coincide with a remaining backlog, and an active le
 
 #### Quantitative balance per subject
 
-Every progress-relevant planned goal counts as one unit; neither elapsed study time nor difficulty weights enter the balance. Later-scheduled goals that are already mastered count as work ahead and can offset quantitative backlog within the same subject.
+The current balance counts each eligible atomic goal ID once. Learning time and difficulty weights do not enter the calculation. An already achieved goal scheduled for later counts as work done ahead of schedule and can offset a numerical backlog in the same subject.
 
 Example: three earlier-scheduled goals are still open while five later-scheduled goals are already mastered. Quantitatively the learner is two goals ahead, while the three earlier goals remain substantively open and prioritized during goal selection.
 
@@ -97,9 +97,9 @@ At plan creation, the baseline records which scheduled goals did not yet have ex
 
 <a id="34-implizite-erledigung-und-optionale-explizit-zahlung"></a>
 <a id="sec-implicit-completion"></a>
-### 4.4. Implicit completion and optional explicit-only counting
+### 4.4. Credit in an atomic learning plan
 
-Let $M$ denote explicitly mastered goals and $W$ the non-explicit goals globally recognized under [Assessment-Gated Completion](../skill-graph/assessment-gated-completion.md). By default:
+Under the contract in force since 4 and 11 November, let $M$ be the explicitly mastered goals and $W$ the goals recognized by valid local contracts that have no explicit individual outcome. Under the default setting
 
 $$
 M_{\mathrm{eff}} = M \cup W, \qquad I = |G \cap M_{\mathrm{eff}}|.
@@ -115,6 +115,12 @@ Closing assessments of a learning unit must verify independent application of th
 - **Modeling boundaries:** An ordinary goal lacking valid assessment attachment is a modeling defect, not automatic progress. Assessment and memorization goals remain explicit obligations. Missing or unresolvable recognition contracts surface as an evaluation limitation without falling back to legacy demand-stop waivers.
 - **Single counting and explicit `H`:** Every goal ID in $G$ counts at most once; explicitly completing an already recognized goal does not increment $I$ a second time, though its genuine explicit completion today may count toward $H$. Deriving $W$, switching plans, importing state, or re-rendering never fabricates period events in $H$.
 - **Preference and plan details:** Under *Configuration → Learning Settings*, "Count only explicitly achieved learning goals" persists per SkillPilot ID (default: off). Help copy: *"Your overall plan also counts competences whose independent application was demonstrated in assessments. With this setting, only directly completed learning goals count. Your daily or weekly target always counts direct completions only."* Under *Plan Details*, optional `planCreditText` explains implicit credit (e.g. *"Credited in plan: 3 goals, including 2 via independent application in assessments."*). This specification clarification neither approves the older implementation plan nor claims runtime deployment.
+
+#### Proposed assignment for a unit
+
+The proposal of 19 November distinguishes what a learner agreed to do in the plan. If the assignment is “demonstrate unit E.1”, that work ends when the learner passes the required components of the named unit revision. Skipped exercises create no backlog for this assignment. If “investigate free fall experimentally” was also assigned as a separate practical demonstration, it remains outstanding until the learner conducts the experiment. “Fully worked through” requires actual completion of every specified activity.
+
+For recommendations under the proposal, $F_{\mathrm{plan}}$ describes the unit’s own whole content goals that subject review of the passed version clears for later prerequisite checks. $M$ contains explicit individual outcomes. Only actual completions count as dated activities. A list of earlier goal IDs cannot show whether the intent was a single unit route or several separate assignments. Those plans retain their original counting contract. Unit assignments require an explicit new selection or plan revision. This product proposal awaits a decision. [What a unit assessment demonstrates](../skill-graph/assessment-gated-completion.md#sec-proposal-planning-release)
 
 <a id="sec-plan-status-period"></a>
 ### 4.5. Daily and weekly period basis

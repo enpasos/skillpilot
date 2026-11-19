@@ -1,6 +1,6 @@
 # SkillPilot: Lernen in 5 Schritten starten
 
-**Stand:** 6. Oktober 2026
+**Stand:** 19. November 2026
 
 Dein Lernen. Dein Tempo. Wähle dein Curriculum, lass dich beim Üben begleiten und entdecke deine Erfolge im Cockpit.
 
@@ -68,9 +68,9 @@ Jede Startoption erzeugt eine eigene Lernsession für den gewählten Anbieter. D
 
 ## 5. Lernen und Erfolge im Cockpit ansehen
 
-Der Coach lädt deinen Lernkontext und begleitet dich beim aktuellen Ziel. Arbeite selbst, frage nach und bitte bei Bedarf um kleinere Schritte oder einen Tipp. KI kann Fehler machen: Prüfe Erklärungen und Bewertungen und begründe deine Sicht, wenn du anderer Meinung bist.
+Der Coach lädt deinen Lernkontext und begleitet dich beim aktuellen Ziel. Bitte um eine Erklärung, wenn dir ein Begriff neu ist. In Physik könntest du sagen „Die Durchschnittsgeschwindigkeit kenne ich. Kannst du mir die Momentangeschwindigkeit am Fahrradtacho erklären?“ Du kannst nachfragen, eine Skizze besprechen und eine Idee in eigenen Worten ausprobieren. Übungen helfen dir, das Gelernte anzuwenden; eine ausdrücklich begonnene Prüfung bearbeitest du selbstständig. KI kann Fehler machen: Prüfe Erklärungen und Bewertungen und begründe deine Sicht, wenn du anderer Meinung bist.
 
-Über **Cockpit öffnen** siehst du deinen aktuellen Lernstand und das aktive Lernziel. Prüfe dort nach einem Abschluss deinen **gespeicherten Fortschritt**.
+Über **Cockpit öffnen** siehst du deinen aktuellen Lernstand und das aktive Lernziel. Prüfe dort nach einem Abschluss deinen **gespeicherten Fortschritt**. Wenn du Vorwissen direkt zeigen möchtest, kannst du in der Lernkonfiguration **Prüfungsabkürzungen anbieten** aktivieren und eine angebotene Prüfung versuchen. Der Versuch allein belegt noch keinen Erfolg; was du damit nachweist, ergibt sich aus der Aufgabe und ihren Bewertungsvorgaben.
 
 Zum automatisch angezeigten Lernziel kannst du **Feedback zu diesem Lernziel** abgeben, auch zum Verhalten des Coaches. Beschreibe das Problem knapp in eigenen Worten und konzentriere dich auf das Lernziel und deine Beobachtung. Halte persönliche Angaben und deine Startnachricht vertraulich.
 

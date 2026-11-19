@@ -228,7 +228,7 @@ test("production direct-install lane has the isolated, fail-closed beta semantic
     downloadBasePath: "/api/public/claude/plugins",
     accessModel: "first_party_guided_beta",
   });
-  assert.equal(canonicalLane.candidate.version, "1.1.13");
+  assert.equal(canonicalLane.candidate.version, "1.1.14");
   assert.match(canonicalLane.candidate.sha256, /^[0-9a-f]{64}$/u);
   for (const id of [
     "web-learning-plan-compact-summary", "android-voice-learning-plan-compact-summary",
@@ -1268,6 +1268,14 @@ async function withPreparedFixtureAsync(callback) {
       version: fixtureVersion,
       sha256: sha256(deterministicBytes),
     };
+    // Synthetic local evidence belongs to this isolated test fixture; it must
+    // not inherit readiness or change the checked-in candidate's pending gates.
+    for (const entry of fixtureLane.readiness.controlledBetaEvidence) {
+      if (entry.kind === "local_validation") {
+        entry.status = "pass";
+        entry.evidenceRef = `synthetic-fixture-${entry.id}`;
+      }
+    }
     rebindFixtureLaneEvidenceRefs(fixtureLane);
     writeJson(lanePath, fixtureLane);
     writeJson(
@@ -1313,6 +1321,14 @@ function withFixture(callback, candidateBytes = deterministicBytes) {
       version: fixtureVersion,
       sha256: sha256(candidateBytes),
     };
+    // Synthetic local evidence belongs to this isolated test fixture; it must
+    // not inherit readiness or change the checked-in candidate's pending gates.
+    for (const entry of fixtureLane.readiness.controlledBetaEvidence) {
+      if (entry.kind === "local_validation") {
+        entry.status = "pass";
+        entry.evidenceRef = `synthetic-fixture-${entry.id}`;
+      }
+    }
     rebindFixtureLaneEvidenceRefs(fixtureLane);
     writeJson(lanePath, fixtureLane);
     writeJson(exactClientEvidencePath, fixtureExactClientEvidence(fixtureLane));

@@ -17,6 +17,7 @@
 - **Definitionen sind bewusst knapp gehalten.** Jeder Eintrag benennt, was der Begriff bedeutet und – wo Verwechslungsgefahr besteht – was er *nicht* ist. Maßgeblich bleibt immer das verlinkte Fachdokument; dieses Glossar überschreibt keine Spezifikation.
 - **EN** nennt jeweils das englische Äquivalent aus Code, englischer Dokumentation und Spezifikation. Feldnamen wie `contains`, `requires` oder `applicability` sind technische Bezeichner und bleiben in beiden Sprachen englisch.
 - **Begriffe sind nach Schichten geordnet**, von den Curriculum-Quellen bis zur Qualitäts-Governance, da Missverständnisse meist durch das Vermischen von Schichten entstehen.
+- **Beschlossene Verträge und Vorschläge bleiben getrennt.** Der [Einheitenvorschlag vom 19. November 2026](skill-graph/unit-assessment-discussion-2026-11-19.de.md) ist noch nicht als Produktregel angenommen. Seine Begriffe ergänzen die Diskussion; bestehende Ergebnisverträge und Qualitätsgates gelten weiter.
 
 Zwei Grundregeln erklären einen großen Teil des Vokabulars:
 
@@ -204,7 +205,7 @@ Erklärte Einheit im gemeinsamen Plan eines Landes und Dauermodells über die ge
 
 *EN: Subject unit* — siehe [Lerneinheiten](skill-graph/learning-units.de.md)
 
-Erklärter Cluster der kanonischen Fachlandschaft mit Lernversprechen und Revision; gilt in allen Bundesländern (fachliche Blatteinheiten liegen in allen 16 Ländern ungeteilt in einer Planeinheit). Eine **Einheit mit Prüfungen** (mit eigenen Prüfungen und gültigen vollständigen `coverageReviews`) belegt zusätzlich die selbstständige Anwendung ihrer eigenen Inhaltsziele nach R1–R5.
+Erklärter Cluster der kanonischen Fachlandschaft mit Lernversprechen und Revision; gilt in allen Bundesländern (fachliche Blatteinheiten liegen in allen 16 Ländern ungeteilt in einer Planeinheit). Im geltenden Anerkennungskonzept belegt eine **Einheit mit Prüfungen** mit eigenen Prüfungen und gültigen vollständigen `coverageReviews` die selbstständige Anwendung ihrer eigenen Inhaltsziele nach R1–R5. Der noch unentschiedene Vorschlag vom 19. November trennt davon ein repräsentatives Urteil über die Einheit und eine gesondert begründete Planungsfreigabe ganzer Atome.
 
 ### `after`
 
@@ -244,9 +245,9 @@ Ausdrücklich als vorläufig gekennzeichnete didaktische Einordnung (`canonicalD
 
 ### Prüfungslücke
 
-*EN: Assessment gap* — siehe [Implizite Beherrschung](skill-graph/assessment-gated-completion.de.md)
+*EN: Assessment gap* — siehe [Prüfungsnachweise und Anerkennungsvertrag](skill-graph/assessment-gated-completion.de.md)
 
-Ein eigenes Inhaltsziel einer Einheit mit Prüfungen ohne geeignete geprüfte Aufgaben- und Rasterabdeckung bleibt ein nicht bestandener Befund (R1/R2). Die Reparatur liefert eine tragfähige Prüfung samt unabhängigem Review, niemals fiktive Voraussetzungen oder gelockerte Qualitätsgates.
+Nach dem geltenden Anerkennungsvertrag bleibt ein eigenes Inhaltsziel einer Einheit mit Prüfungen ohne geeignete geprüfte Aufgaben- und Rasterabdeckung ein nicht bestandener Befund (R1/R2). Die Reparatur liefert eine tragfähige Prüfung samt unabhängigem Review, niemals fiktive Voraussetzungen oder gelockerte Qualitätsgates. Der Vorschlag vom 19. November hebt keinen solchen Befund auf und stuft kein Gate um.
 
 <a id="sec-node-types"></a>
 ## 3. Knotentypen (Lernmodi)
@@ -269,7 +270,7 @@ Ein Spaced-Repetition-Ziel für Fakten, Vokabeln, Notation oder ausgewählte For
 
 *EN: Exam*
 
-Ein Ziel mit `examData`: eine eigenständig zu bearbeitende Prüfungs- oder Übungsaufgabe samt Musterlösung und Bewertungsschema. Im Zielmodell zeigt keine `requires`-Kante auf ein `Exam`-Ziel (Prüfungen sind Endpunkte von Voraussetzungspfaden). Eigene Anerkennungsprüfungen erklärter **Einheiten mit Prüfungen** (`coverageReviews`) belegen nach R1–R5 die selbstständige Anwendung eigener Inhaltsziele; freie Übungsaufgaben und Abiturklausuren in prüfungsfreien äußeren Einheiten sind regulär wählbar, lösen aber keine implizite Anerkennung aus.
+Ein Ziel mit `examData`: eine eigenständig zu bearbeitende Prüfungs- oder Übungsaufgabe samt Musterlösung und Bewertungsschema. Im Zielmodell zeigt keine `requires`-Kante auf ein `Exam`-Ziel (Prüfungen sind Endpunkte von Voraussetzungspfaden). Das geltende Anerkennungskonzept bindet die selbstständige Anwendung eigener Inhaltsziele an R1–R5 und die geprüften `coverageReviews` erklärter **Einheiten mit Prüfungen**. Freie Übungsaufgaben und Abiturklausuren bleiben regulär wählbar, begründen aber für sich keine implizite Anerkennung. Der Vorschlag vom 19. November würde den Einheitenabschluss gesondert beurteilen; er erweitert keine vorhandene Prüfungsbedeutung.
 
 ### `examData` und Bewertung
 
@@ -326,7 +327,7 @@ Ein expliziter organisatorischer Strukturcontainer (Jahrgang, Halbjahr, Modul, P
 
 Ein rekursiv aufgebautes pädagogisches Ganzes im dreistufigen Modell **Cluster $\to$ Einheit $\to$ Einheit mit Prüfungen**. Im verbindlichen Zielmodell wird eine fachliche Einheit als kanonischer Cluster mit Lernversprechen, `revision`, Geschwisterfolge `after` und optionalen `coverageReviews` erklärt; eigene Ziele (`Own(U)`) und direkte Untereinheiten leiten sich aus `contains` ab, und Blatteinheiten bleiben in allen 16 Bundesländern ungeteilt in einer Planeinheit. Bis zur Migration (`F8`–`F11`) nutzen die drei bestehenden kanonischen Einheiten den Kompatibilitätsvertrag 1.2 (`programUnits` der Art `learningUnit` mit `own`-Platzierungen und `parentUnitId`; siehe [Feldreferenz](../dev/landscape-json-field-reference.de.md)).
 
-Jede Einheit erfüllt die Ordnungsregeln **E1–E4**, ohne über `after` eine technische Zugangssperre aufzubauen. Der Abschluss folgt aus Untereinheiten und eigenen Zielpflichten ohne gespeicherte Einheits-Mastery. Implizite Anerkennung eigener Inhaltsziele gilt ausschließlich in erklärten **Einheiten mit Prüfungen** (mit eigenen Prüfungen und gültigen vollständigen `coverageReviews`), die R1–R5 erfüllen ([Graph-Definition §13.3](skill-graph/assessment-gated-completion.de.md#sec-why-graph-not-enough)); die Laufzeitumsetzung (`F12`/`F13`) steht noch aus.
+Jede Einheit erfüllt die Ordnungsregeln **E1–E4**, ohne über `after` eine technische Zugangssperre aufzubauen. Der Abschluss folgt aus Untereinheiten und eigenen Pflichten ohne gespeicherte Einheits-Mastery. Die beschlossene Einzelanerkennung nach R1–R5 und ihre noch unvollständige Umsetzung bleiben von dem repräsentativen Einheitenurteil des Vorschlags vom 19. November getrennt. Der Vorschlag erklärt nicht alle enthaltenen Atome für gemeistert und hebt keine Pflichtprüfung eines Kindes auf ([Einheitennachweis und geltender Anerkennungsvertrag](skill-graph/assessment-gated-completion.de.md)).
 
 ### Zielplatzierung (`Goal placement`)
 
@@ -436,7 +437,7 @@ Die vor Lernbeginn gewählte Skill-Landschaft; sie spannt das gesamte Zieluniver
 
 *EN: Personal curriculum* — siehe [Learning Workflow](runtime-workflows/learning-workflow.de.md)
 
-Der bestätigte, längerfristig gültige Ausschnitt des Basiscurriculums für eine lernende Person (Bundesland oder kanonische Sicht, Dauermodell, Schulstufe, Fächer und Kursprofile je Fach). Er bestimmt die lernendenseitige Kompositionssicht und bildet den Kandidatenraum für Fokus, Frontier, Fortschritt und Abschluss, während das Backend bei strikten Prüfungen weiterhin den Gesamtgraphen heranziehen kann.
+Der bestätigte, längerfristig gültige Ausschnitt des Basiscurriculums für eine lernende Person (Bundesland oder kanonische Sicht, Dauermodell, Schulstufe, Fächer und Kursprofile je Fach). Er bestimmt die lernendenseitige Kompositionssicht und bildet den Kandidatenraum für Fokus, Frontier, Fortschritt und Abschluss, während das Backend bei strikten Prüfungen weiterhin den Gesamtgraphen heranziehen kann. Die Auswahl liefert die atomaren Ausgangsziele $S$. Die persönliche Lernbasis $L$ umfasst $S$ und alle im kanonischen Graphen transitiv benötigten Voraussetzungen. Dazu können Ziele eines anderen Fachs gehören. Ein Fokuswechsel ändert diese Lernbasis nicht.
 
 Dieser Zustand gehört verbindlich dem Backend und wird ausschließlich über die SkillPilot-Weboberfläche bzw. das Cockpit bearbeitet – der Chat-Coach fragt ihn weder ab noch verändert er ihn.
 
@@ -479,7 +480,7 @@ $\mathrm{Sat}(g)$ gilt genau dann, wenn die atomare Basis von $g$ nichtleer und 
 
 *EN: Optimistic mode* — siehe [Context & Views](skill-graph/context-and-views.de.md)
 
-Erst auf den gewählten Sichtumfang filtern (einschließlich expliziter `prerequisiteOnly`-Grundlagen), dann Voraussetzungen prüfen. Lernende können direkt im gewählten Umfang starten, ohne pauschal durch ältere Jahrgänge blockiert zu werden. Dies ist der Standardmodus.
+Die Laufzeit leitet Voraussetzungen im Gesamtgraphen ab und ermittelt dort die Erreichbarkeit, auch über ausgeblendete Zwischenziele. Erst danach beschränkt sie die blockierenden Voraussetzungen auf den gewählten Umfang einschließlich der ausgewiesenen Grundlagen. Dies ist der Standardmodus.
 
 ### Strikter / pessimistischer Modus (`Strict mode`)
 
@@ -495,11 +496,23 @@ Die noch unerfüllten effektiven Voraussetzungen eines Ziels, getrennt nach Lüc
 
 ### Beherrschung (`Mastery`)
 
-*EN: Mastery* — siehe [Learning Workflow](runtime-workflows/learning-workflow.de.md) und [Implizite Beherrschung](skill-graph/assessment-gated-completion.de.md)
+*EN: Mastery* — siehe [Learning Workflow](runtime-workflows/learning-workflow.de.md) und [Prüfungsnachweise und Anerkennungsvertrag](skill-graph/assessment-gated-completion.de.md)
 
 Das einzige gespeicherte Ergebnis für ein atomares Lernziel: **gemeistert oder noch nicht gemeistert** (kodierbar als `0` und `1`, ohne Zwischennoten oder zweite Qualifikationsstufe). Mastery hängt an stabilen Lernziel-IDs und gilt global über alle Kompositionssichten hinweg. Cluster- oder Fachfortschritt ist der gewichtete Anteil eindeutiger gemeisterter atomarer Ziele.
 
-Das verbindliche Konzept vom 4. November 2026 ergänzt die **effektive Beherrschung** $M_{\mathrm{eff}} = M \cup I$: Dabei bezeichnet $I$ die abgeleitete Anerkennung gewöhnlicher Kompetenzen durch selbstständige Anwendung in gültigen lokalen Prüfungsverträgen. Prüfungs- und Memorierziele gelangen niemals nach $I$. Die Laufzeitanpassung an diesen erweiterten Vertrag steht noch aus.
+Die beschlossenen Anerkennungsregeln vom 4. und 11. November 2026 ergänzen die **effektive Beherrschung** $M_{\mathrm{eff}} = M \cup I$: Dabei bezeichnet $I$ die abgeleitete Anerkennung gewöhnlicher Kompetenzen in gültigen lokalen Prüfungsverträgen. Prüfungs- und Memorierziele gelangen niemals nach $I$. Die globale revisionsgebundene Laufzeitumsetzung ist noch unvollständig. Der Vorschlag vom 19. November ersetzt diese geltende Vertragsgrundlage nicht; seine Begriffe unterscheiden Einheitenurteil, direkten Einzelbeleg und Planungsfreigabe.
+
+### Einheitennachweis (Vorschlag vom 19. November 2026)
+
+*EN: Unit qualification (proposal)* — siehe [Einheitenabschluss](skill-graph/learning-units.de.md#sec-proposal-unit-completion)
+
+Das vorgeschlagene Urteil, dass eine benannte fachliche Einheit auf dem ausgewiesenen Niveau durch die Pflichtbelege ihrer Fassung nachgewiesen ist. Repräsentative Leistungen können dieses Urteil tragen, ohne jedes Detail einzeln zu prüfen. Der Vorschlag zählt alle ausgewiesenen Pflichtkinder mit; ein Ersatz ihrer Prüfungen durch eine Elternprüfung ist gesondert zu entscheiden. Er erzeugt keine nie erbrachten Einzelresultate und keinen Vermerk über einen übersprungenen Auftakt, Kartenabruf oder Versuch. Produktentscheidung und Erprobung stehen aus.
+
+### Planungsfreigabe (Vorschlag vom 19. November 2026)
+
+*EN: Planning release (proposal)* — siehe [Planungsfreigabe](skill-graph/assessment-gated-completion.de.md#sec-proposal-planning-release)
+
+Im Vorschlag umfasst $F_{\mathrm{plan}}$ ausschließlich eigene gewöhnliche Inhaltsziele einer vollständig bestandenen Einheitenfassung, soweit ihr Fachreview den vollen Anspruch bestätigt. Für jedes Ziel gilt derselbe Maßstab wie bei einem direkten Einzelbeleg. Die Freigabe gilt bei späteren Voraussetzungen auch außerhalb der Einheit. Für Ziele einer anderen Einheit ist deren eigener Nachweis maßgeblich. Das gilt auch für ein Kind, dessen eigene Freigaben schon vor dem Elternabschluss wirken können. Die Freigabe erzeugt weder einen Mastery-Eintrag noch ein datiertes Abschlussereignis.
 
 ### Curriculum-Zeitachse und Stoffverteilungsplan
 
@@ -668,7 +681,9 @@ Ein durch ein Skript erzeugter Bericht, Status-Snapshot oder Dokumentations-Buil
 | Lerneinheit vs. Personalisierungsstufe | Rekursive pädagogische Einheit mit abgeleitetem Abschluss vs. eine der vier Umfangs-/Zustandsebenen. |
 | Lerneinheit vs. Zielschwierigkeit | Erwerbs- und Abschlusseinheit vs. Anspruchsniveau eines einzelnen Ziels (`level`). |
 | Einheitsabschluss vs. Zielverfügbarkeit | Erfüllte Kind- und Eigenpflichten vs. Startvoraussetzungen; das Zielmodell enthält keine technischen Einheitssperren, und `after` ordnet ohne Bedarf oder Mastery. |
-| Einheit vs. Einheit mit Prüfungen | Jede Einheit erfüllt E1–E4 und ordnet über `after`; nur Einheiten mit eigenem gültigem Prüfungsvertrag und vollständigen aktuellen `coverageReviews` erkennen eigene Inhaltsziele nach R1–R5 implizit an. |
+| Einheit vs. Einheit mit Prüfungen | Jede Einheit erfüllt E1–E4 und ordnet über `after`; im geltenden Anerkennungskonzept ist implizite Einzelanerkennung an einen eigenen gültigen Prüfungsvertrag, R1–R5 und vollständige aktuelle `coverageReviews` gebunden. |
+| Einheitennachweis vs. Einzelresultat | Im Vorschlag vom 19. November kann die repräsentative Leistung eine Einheit nachweisen, während nie einzeln geprüfte Details offenbleiben. Pflichtbelege und tatsächlich abgelegte Einzelprüfungen bleiben sichtbar. |
+| Planungsfreigabe vs. Mastery | Die vorgeschlagene Freigabe betrifft fachlich geprüfte eigene Inhaltsatome der bestandenen Einheit für die weitere Planung. Sie schreibt weder Einzelmastery noch neue Periodenereignisse; die Produktentscheidung steht aus. |
 | Geführt in vs. steht in | Belegte amtliche Quellenzuordnung (`officialSource`) vs. didaktischer Lernplatz in der Planeinheit (inkl. begründeter Vorarbeit und abgeleitetem frühestem Bedarf in $L$). |
 | Lernzielbaum vs. Lernkarte | Vollständiger Baum inkl. gewöhnlicher Fachcluster vs. entlang `contains` kontrahierte Sicht nur aus Einheiten und atomaren Zielen mit aggregierten Kindpfeilen. |
 | QA-Scope vs. Lernroute | Ein QA-Scope ist ein registriertes Prüfprofil, kein einzelner Lernpfad. |

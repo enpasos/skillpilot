@@ -66,7 +66,7 @@ The existing [stage-plan foundation](repo:contracts/curriculum-package/v1.3/READ
 
 #### Canonical identity is preserved.
 
-A canonical cluster must never become an independently assessable or masterable atom through a direct reference or collapsed child display. This rule holds regardless of whether a separate `semanticKind` review exists. A collapsed presentation stands for its reviewed canonical atomic basis; prerequisite checks, progress, and completion retain that basis, fixed through `canonicalSubtree` or explicit references to the intended canonical atoms. Changing projections must never copy an existing cluster-ID value down to child goals.
+A collapsed view preserves the canonical atomic basis of its cluster. The basis can be checked through `canonicalSubtree` or explicit references to the intended canonical atoms. Hiding children changes neither the node type nor the children’s outcomes. A group declared as a unit also needs a learning promise and specified obligations in the applicable revision to support its own unit completion claim.
 
 A cluster authoritatively classified as `curricularArea` must not appear via a direct `goalEntry` reference as an opaque, seemingly atomic runtime goal. A `canonicalSubtree` reference preserves its reviewed descendants; alternatively, explicit view structure names the intended atomic goals. This presentation rule does not alter any projection role.
 
@@ -87,7 +87,7 @@ Choosing “School,” “Higher Education,” or “Languages” is catalog nav
 1. **Base Curriculum:** An explicitly selectable root curriculum provides the goal universe.
 2. **Personal Curriculum:** The committed, longer-lived, backend-owned educational scope. For school curricula, it comprises the state or canonical context, the applicable eight- or nine-year secondary duration model (`G8`/`G9`), an explicitly resolved stage, the selected subjects, and their course profiles.
 3. **Learning Focus and Active Goal:** One or more focus roots narrow the temporary working corridor; exactly one atomic goal is the immediate active target. Both focus and active goal are mutable.
-4. **Mastery:** The binary outcome “mastered” or “not yet mastered” belongs to the stable atomic goal ID. Outcomes persist across view and focus changes; cluster progress is derived from them.
+4. **Learner outcomes.** An explicitly achieved outcome belongs to the stable atomic goal ID and persists across changes of view or focus. Under the contract in force, unit completion is derived from mastery or recognition of its own goals and completion of its children (Section~@ref{sec:unit-completion}). A separate judgement about a passed unit version with its own planning effect is the proposal of 19 November (Section~@ref{sec:proposal-unit-assessment}).
 
 Basic (`GK`, Grundkurs) and advanced (`LK`, Leistungskurs) course profiles belong to the selected subject. The school stage is specified separately and stays unresolved if omitted. Two examples illustrate why this matters.
 
@@ -96,7 +96,7 @@ Basic (`GK`, Grundkurs) and advanced (`LK`, Leistungskurs) course profiles belon
 
 Changing the Personal Curriculum revalidates the current focus and active goal against the new target set without deleting or writing global mastery outcomes. Configuring the Personal Curriculum is owned by SkillPilot's first-party WebGUI surfaces; the language-model coach connected through the concrete OpenAI V1 adapter reads that scope and neither presents nor mutates it.
 
-Under the Product Owner decision of 10 November 2026, the complete personal learning basis is $L = \Closure(S)$ from Section~@ref{par:projection-closure}: the valid seed targets together with all necessary atomic prerequisites on the unpruned canonical skill graph. It remains fixed independently of mastery; existing valid mastery counts as satisfied rather than causing removal or forced repetition. A narrow focus restricts only the temporary working corridor. Necessary goals outside the focus remain authoritative for total progress and completion; completing a focus never completes the entire Personal Curriculum.
+Under the decision of 10 November 2026, the personal learning scope is $L=\Closure(S)$ from Section~@ref{par:projection-closure}. It contains the seed targets and every necessary atomic prerequisite on the canonical graph regardless of previous results. A narrow focus limits the current work. Within $L$, explicit outcomes and valid recognition under R1–R5 determine which work remains due. The separate planning effect of unit completion is described in the proposal of 19 November (Section~@ref{sec:proposal-planning-release}). Completing a focus speaks only to its scope.
 
 ### Target Role and Prerequisite Support {#sec:projection-roles}
 
@@ -129,13 +129,15 @@ The location of a `prerequisiteOnly` entry determines neither the official stage
 
 For state-specific extensions, an explicitly declared inheritance boundary can prevent a broad ancestor source mapping from being reported as source provenance for newly added descendants; direct sources and mappings on the extension branch remain authoritative. Likewise, the visibility of a local practice or assessment endpoint may be derived from its prerequisites under a dedicated contract, establishing applicability without automatically asserting official source-curriculum coverage.
 
-### Switching Focus Without Implicit Mastery {#sec:focus-switch}
+### Guided recommendation and deliberate entry {#sec:focus-switch}
 
 A focus consists of the union of the selected focus roots and their visible descendants, intersected with the Personal Curriculum. Normal mode checks transitive effective prerequisites within that focus; explicitly selected strict mode checks them globally. In normal mode, an outside-focus prerequisite neither blocks availability nor becomes mastered by being masked. Section~@ref{sec:filter-modes} gives the formal frontier definitions.
 
 Focus widening follows the unique visible parent path. Each backend-published widening option must form a strict superset and add at least one unmastered target goal. With multiple roots, it replaces only the covered branch and carries independent roots forward. The coach adopts the published option verbatim and waits for learner agreement before changing focus.
 
-The backend proposes widening only after the current focus is complete. An empty frontier can also mean that the remaining goals are blocked. After widening, the backend checks the newly included open prerequisites. Mastering a dependent goal writes no mastery back to its prerequisites. Under the recognition model, application established by a valid local contract remains effective after a change of plan or focus. A new goal requiring that competence can build on it.
+The backend proposes widening only after focus completion. An empty frontier can also reflect outstanding prerequisites. Global recognition of ordinary goals under the contract in force since 4/11 November survives a change of focus. Prerequisite checking uses effective mastery in the selected mode (Section~@ref{sec:state}).
+
+**Proposal of 19 November.** Learners could choose an entry unit in their own learning scope. Required practical performances and uncovered prerequisites remain outstanding. Section~@ref{sec:proposal-planning-release} describes the proposed release of content goals by their owning unit for later planning.
 
 :::sources
 [Levels of Personalization](repo:docs/concept/levels-of-personalization.md); [View Projection and Goal Placement](repo:docs/concept/skill-graph/view-projection-and-goal-placement.md).
@@ -143,20 +145,20 @@ The backend proposes widening only after the current focus is complete. An empty
 
 ## Goal Types and the Meaning of an Outcome {#sec:goal-types}
 
-Each atomic goal can carry an explicit binary outcome. The action that warrants recording it depends on the goal type. Under the recognition model, a valid local assessment contract can also establish satisfaction for certain goals without writing another outcome (Section~@ref{sec:assessment}). Table~@ref{tab:goal-types} distinguishes these cases.
+The goal type determines the required performance. The same subject standard applies to an individual goal on either route. The third column of Table~@ref{tab:goal-types} describes only the proposal of 19 November presented in Section~@ref{sec:proposal-unit-assessment}.
 
-:::table {#tab:goal-types caption="What an explicit outcome establishes and what the target model can derive." cols="26mm,X,X"}
-| Goal type | Explicit outcome | Satisfaction under a valid assessment contract |
+:::table {#tab:goal-types caption="Individual evidence and its role in direct demonstration of a unit." cols="26mm,X,X"}
+| Goal type | Explicit individual outcome | Proposed direct unit qualification |
 | --- | --- | --- |
-| Content goal | The coach has established the required understanding (Section~@ref{sec:understanding}). | Independent application is established. |
-| Orientation goal | The learner has agreed to close the subject introduction. For a unit opening, the proposal calls for an explicit “continue” (Section~@ref{sec:orientation}). | Only the introduction is settled. |
-| Memory goal | The learner recalled all required cards unaided during completion recall (Section~@ref{sec:memory}). | The goal's own recall check is required. |
-| Assessment goal | The complete submission met the passing threshold under the rubric (Section~@ref{sec:exams}). | The assessment itself must be passed. |
+| Content goal | The learner demonstrated the required understanding or skill (Section~@ref{sec:understanding}). | Skipped practice has no individual outcome. Later prerequisite checks can use reviewed clearance for the entire atom. |
+| Orientation goal | The learner took part in the opening and agreed to complete it (Section~@ref{sec:orientation}). | Before the attempt, the learner sees what they will need to demonstrate. A skipped opening remains unvisited. |
+| Memory goal | The learner recalled the required cards unaided in the completion check (Section~@ref{sec:memory}). | An explicitly required recall check remains compulsory. Ordinary practice cards can be skipped. |
+| Assessment goal | The submission meets the applicable rubric (Section~@ref{sec:exams}). | All specified components in the qualifying revision count towards unit completion. |
 :::
 
 ### Understanding and Application {#sec:understanding}
 
-For a content goal, the learner's performance must demonstrate the understanding specified in its description. A single multi-step transfer task may suffice. A single correct answer is enough if it actually covers all required aspects.
+The coach can explain a new concept or model a step. Independent explanations and applications can demonstrate understanding. When an individual goal calls for conducting an experiment, the individual outcome also needs evidence of that performance. The coach can discuss the learner’s own experimental observations and data with them. Interpreting supplied data alone evidences analysis. The goal and coach contracts determine what independent performances suffice for the whole goal.
 
 Once sufficient evidence is available, the coach records the outcome without asking for separate permission to save it. It can report the pass as saved once persistence is confirmed. It then offers the next topic selected by the backend and begins when the learner agrees.
 
@@ -170,7 +172,7 @@ An atomic orientation goal (`semanticKind: "orientation"`) shows what the upcomi
 2. **Summary.** After a substantive response or an explicit wish to leave orientation, the coach summarizes the conversation positively and offers to close.
 3. **Closure.** The goal is complete when the learner accepts that offer.
 
-**Proposed unit opening.** The motivation goal in the record of a unit with its own assessments would use a shorter workflow (Section~@ref{sec:unit-claims}). The backend would supply the learning promise and a concrete application. The coach uses the example to show what learners will be able to do after the unit and why it matters. They can ask a question or say “continue” to close the introduction. In this case the backend stores only the binary outcome. The coach sends no conversation text. Section~@ref{sec:transitive-demand} explains how this entry may also be settled without an explicit outcome.
+**Proposed unit opening (17 November).** When working through a unit, the coach poses a concrete question about its declared learning promise (Section~@ref{sec:unit-claims}). In kinematics, a ball can roll off the edge of a table. Where will it land? The learner can ask questions or finish the opening by choosing “continue”. That records an explicit outcome for the opening. Learners going straight to assessment see what they need to demonstrate. Passing creates no retrospective visit to the opening (Section~@ref{sec:proposal-unit-assessment}).
 
 **Which goals are selectable today.** If the relevant projected working scope contains open orientation goals, ordinary entry offers only these as long as it contains neither curricular progress nor an active curricular goal. Learners already working on the subject in that scope can continue. A deliberately selected, available assessment remains directly accessible (Section~@ref{sec:exams}).
 
@@ -224,7 +226,7 @@ Step points follow the authored rubric criteria; the total-score formula alone l
 
 #### Access.
 
-Ordinary learning access checks transitive effective prerequisites, including atomic satisfaction of required clusters. Assessment goals additionally grant general *direct assessment access*: missing preparatory mastery does not block an intentional assessment attempt, provided task availability, personal scope, and an authorized learner session hold. Existing direct assessment access must be kept distinct from the new global implicit-mastery derivation, which is **not yet implemented** on `main`.
+Guided learning checks transitive prerequisites under the selected focus mode. Today direct assessment access allows an intentional attempt at an available assessment while preparation remains outstanding. Personal scope and an authorized session remain required. In the proposal of 19 November “Demonstrate this unit directly” shows the learning promise and every required component for this revision before the learner starts. The offer of an attempt alone establishes no completion.
 
 #### Exam-mode workflow.
 
@@ -232,7 +234,7 @@ In Exam Mode, the learner receives the complete, verbatim task prompt and works 
 
 #### Post-grading semantics.
 
-After grading, the learner receives the outcome, score, per-step feedback, and model solution; new material begins only after a subsequent learner choice. Unlimited retries of the same task remain permitted. Seeing the solution may reduce the evidential weight of a later retry without creating a second qualification tier: stored exam mastery remains an explicit pass of that assessment goal. Broader application recognition requires a valid, domain-reviewed local contract; a legacy unreviewed scoring rubric does not satisfy that requirement automatically. Neither an extra per-learner qualification field nor a second partial assessment is introduced.
+After grading, the learner receives the outcome, score, feedback and solution. The existing flow allows retries of the same task. A previously earned individual outcome persists. For another qualifying attempt, the proposal calls for an equivalent task the learner has not previously seen. While only the familiar task is available, the learner can use it for practice. Whether an earlier assessment supports that judgement must be established for the revision actually taken (Section~@ref{sec:proposal-unit-contract}).
 
 :::sources
 [Node Types and Exam Workflow](repo:docs/concept/skill-graph/node-types.md); [Project Rules on Orientation, Evidence, and Continuation](repo:AGENTS.md); [Backend Derivation of Memory Mastery](repo:backend/src/main/java/com/skillpilot/backend/service/LearnerService.java); [Frontend Derivation of Memory Mastery](repo:app/src/hooks/useSrsMastery.ts).
@@ -246,7 +248,7 @@ Time planning is an execution overlay rather than a fifth personalization level.
 
 Available capacity accounts for actual instructional or study minutes after holidays, cancellations, and other exclusions. Planned activities, protected reserve, and committed subject budgets must fit within that capacity without double counting. Section~@ref{sec:levels} specifies the formal budget check and its requirement for calibrated effort estimates.
 
-Planned targets and actual attainment share the same named scope. Explicit outcomes together with validly derived application recognition form global cumulative attainment; manual teaching-coverage flags neither establish nor conceal completion, and missing learner results remain visibly unavailable. New plan revisions must never silently reinterpret historical goals, stored outcomes, or past progress statements.
+Planned targets and actual attainment refer to the same specified scope. Under the contract in force, explicit outcomes and validly derived recognition count towards cumulative progress. Weekly activity counts each real assessment success once on its date. Section~@ref{sec:proposal-period-accounting} discusses a different assignment for expert review: unit qualification and individual work actually performed would be reported separately. New plan revisions preserve the meaning of historical outcomes and dates.
 
 The documented local planning pilot and the target backend-owned architecture must be kept distinct; in particular, the learning-unit definition claims no implemented cross-subject budget validator.
 

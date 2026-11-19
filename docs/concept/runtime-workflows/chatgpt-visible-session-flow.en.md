@@ -1,34 +1,8 @@
 # Custom GPT: Visible Emergency Fallback
 
-Status: visibly relayed emergency fallback branch of the current interim Custom GPT. It is
-neither the ordinary Custom GPT start flow nor the reference architecture. The current
-interim design combines private start-code redemption with this fallback and is documented
-under [Custom GPT as an Interim Channel](../../deploy/openai-custom-gpt-interim.md).
-The multilingual V1 MCP contract remains the target architecture.
+**Historical Custom GPT fallback (August 2026).** This page records the earlier Action transport. The current ChatGPT Desktop beta starts through the Git marketplace. The stable-origin runbook describes the separately prepared connector. [Desktop beta](../../deploy/openai-personal-marketplace-release.md) · [Stable origin](../../deploy/openai-stable-origin.md)
 
-This document describes exclusively the visible emergency fallback branch of the two newly
-created GPTs `SkillPilot GPT Coach (de)` and `SkillPilot GPT Coach (en)`. The configuration
-is called **Visible Session** because every value required by a subsequent ChatGPT Action
-call is carried visibly through the conversation. It is not an old GPT configuration kept
-around for archival compatibility.
-
-This architecture works around the observed ChatGPT regression in which a Custom GPT can no
-longer reliably reuse values from an earlier invisible Action response after the next user
-turn. The backend remains authoritative for learner state, state machine, permitted
-transitions, and mastery.
-
-The current multilingual V1 contract is the
-[OpenAI MCP App with OAuth App Binding and 24h Learner Session](openai-mcp-oauth-learner-session-architecture.md).
-It authenticates the app via a fixed confidential OAuth client and additionally requires
-the learner session — freshly minted at every **Start learning** action and bounded to an
-absolute maximum lifetime of 24 hours — as a mandatory argument on every domain tool.
-SkillPilot inserts this session automatically into the prepared start message. The
-permanent SkillPilot ID remains exclusively inside the backend; OAuth alone never selects a
-learner.
-
-The earlier start-code/redeem architecture once again provides the private default start of
-the interim Custom GPT. Its historical transport details are documented in
-[ChatGPT Startcode/Session Flow](chatgpt-startcode-session-flow.md).
+The earlier visible fallback carried the values needed by the next Action call in the chat. It addressed an observed Custom GPT issue where a later turn lost values from an earlier Action response. The alternative redeemed a start code in the private Action context. The sections below record how this historical transport worked. [Private start code](chatgpt-startcode-session-flow.en.md)
 
 ## Architectural Boundaries
 
@@ -158,7 +132,7 @@ option. Because this fallback surface does not expose that dimension as its own 
 every state, the GPT must stop honestly at the first real gap rather than claiming a
 fabricated resolution. The strategic replacement of the visible relay mechanism by two
 provider-hosted MCP apps is described in the
-[SkillPilot Learning Coach Target Architecture](skillpilot-owned-coach-architecture.md).
+[SkillPilot Learning Coach Target Architecture](skillpilot-owned-coach-architecture.en.md).
 
 ## Action Surface and Workflow Coverage
 
@@ -210,7 +184,7 @@ GPT must not invent a specific domain mistake from illegible input.
 
 The durable shared architectural boundary and the deliberately deferred
 revision/idempotency mechanisms are documented under
-[ChatClient/Backend Communication Contract](provider-neutral-coach-boundary.md).
+[ChatClient/Backend Communication Contract](provider-neutral-coach-boundary.en.md).
 
 The visible fallback uses nine session operations. Ahead of them, the current Builder
 schema adds `redeemStartCode` as a tenth operation for the private default start. All nine

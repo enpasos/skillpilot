@@ -4,11 +4,20 @@
 > Beschreibungen halten den bisherigen Implementierungs-/Prüfstand fest.
 > Aussagen über Bedarfsstopp an Mastery, implizite Karten, bloßen Arbeitsentfall
 > und globale Verbraucherblockierung gelten nicht für das korrigierte Konzept.
-> Verbindlich sind [die neue Abschlusssemantik](../concept/skill-graph/assessment-gated-completion.md)
-> und [die Produktentscheidung](../concept/skill-graph/completion-semantics-clarification-2026-11-04.md).
-> Die aktuelle Neuplanung steht im [Umsetzungsplan für Lerneinheiten und integrierte Lernkarte](learning-units-implementation-plan.md).
+> Die [Produktentscheidung vom 4. und 11. November](../concept/skill-graph/completion-semantics-clarification-2026-11-04.md)
+> und ihre [Anerkennungsrechnung](../concept/skill-graph/assessment-gated-completion.de.md#sec-why-graph-not-enough)
+> bleiben der Maßstab der bestehenden Verträge.
+> Die Folgeplanung steht inzwischen im [Mathematik-/Physik-Plan](mathematics-physics-learning-units-plan.md).
 > Der nachfolgende historische Stand ist keine Freigabe zur Fortsetzung des alten
 > Rollouts; wiederverwendbare Teile benötigen die dort festgelegte neue Prüfung.
+>
+> **Einordnung vom 19. November 2026:** Die Aussagen „aktuell“ und
+> „verbindlich“ unten gehören zum Stand vom 31. Oktober. Spätere technische
+> Korrekturen sind gesondert dokumentiert
+> ([Abgleich vom 15. November](graph-definition-documentation-review-2026-11-15.md)).
+> Die heutigen §11 und §13 enthalten den noch nicht angenommenen
+> [Vorschlag zur Einheitenanerkennung](../concept/skill-graph/unit-assessment-discussion-2026-11-19.de.md).
+> Er erteilt keine rückwirkende Freigabe für diesen alten Rollout.
 
 
 Stand: 31. Oktober 2026. Dieser Plan beschreibt den **aktuellen lokalen
@@ -17,8 +26,8 @@ Bedarfsberechnung aus Graph und Mastery statt manueller Erlassprofile.
 Abschließende Gesamtprüfung, entfernter CI-Lauf, Deployment und tatsächliche
 Coach-Host-Abnahme sind getrennte Nachweise; ihr Erfolg wird hier nicht behauptet.
 
-Fachlich verbindlich ist das
-[Abschlusskonzept](../concept/skill-graph/assessment-gated-completion.md).
+Die spätere fachliche Korrektur dieses Standes ist die
+[Produktentscheidung vom November](../concept/skill-graph/completion-semantics-clarification-2026-11-04.md).
 Die [Bedien- und Prüfhinweise](assessment-gated-completion-pilot.md) beschreiben
 Cockpit, Lerncoach und den weiterhin nützlichen Skalarprodukt-Testfall.
 

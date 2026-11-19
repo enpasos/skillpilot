@@ -1,12 +1,12 @@
 # SkillPilot – the story in pictures
 
-**Version:** 1.0.23 · **Project:** SkillPilot · *Some illustrations are AI-generated.*
+**Version:** 1.0.24 · **Project:** SkillPilot · *Some illustrations are AI-generated.*
 
 ## 1. Knowledge you can build on. One learning goal at a time.
 
 ![A learner works on her phone and on paper; her knowledge grows like a house built from solid learning-goal blocks](learning-house.png)
 
-Mathematics and Physics throughout German Gymnasium upper secondary education: the Claude-based SkillPilot coach already guides you through your personal curriculum, based on the official curriculum you select – on your phone, too. You do the learning; each understood building block supports what comes next.
+From your selected curriculum to a personal learning path: the Claude-based SkillPilot coach already supports learning in Germany’s Gymnasium — on your phone, too. The [curriculum directory](https://skillpilot.com/curricula) shows the reviewed subjects and stages. You do the learning; each understood building block supports what comes next.
 
 ## 2. A shared curriculum. Your own learning path.
 
@@ -18,13 +18,13 @@ Mathematics and Physics throughout German Gymnasium upper secondary education: t
 
 ![From an open question through the learner's own attempt with a coach's hint to explaining the solution to a classmate](learning-moment.png)
 
-The moment of understanding is yours. In the Claude chat, you can type, use Voice Mode, or photograph your own work with your phone and discuss it. The coach helps with questions and hints – and you can challenge its feedback.
+The moment of understanding is yours. In the Claude chat, you can type, use Voice Mode, or photograph your own work with your phone and discuss it. Ask for an explanation if a concept is new, bring your own questions, and explore the idea with an example. Learning brings explanation, conversation, and practice together. An assessment requires your independent performance; you can challenge the AI’s feedback.
 
 ## 4. Your progress stays connected.
 
 ![The phone coach connects to a separate SkillPilot learning map: achieved foundations, an active learning goal, and a plan](learning-core.png)
 
-The coach handles the conversation; SkillPilot manages curriculum, progress, and planning separately from the chat. Tomorrow, you pick up where you left off. **The plan guides your learning; it does not limit it.** The subject-specific core is separate from the AI provider: Claude is today's beta entry point; other integrations, including ChatGPT, are in development.
+The coach handles the conversation; SkillPilot manages curriculum, progress, and planning separately from the chat. Tomorrow, you pick up where you left off. **The plan guides your learning; it does not limit it.** The subject-specific core is separate from the AI provider. Alongside Claude, a ChatGPT Desktop beta route is available; the [Quickstart](https://skillpilot.com/quickstart/en) explains its requirements and tested limits.
 
 ## 5. One learning goal. Different ways to understand it.
 

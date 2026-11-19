@@ -54,9 +54,28 @@ Temporary similarity or originality reports stay strictly under `tmp/`. The plan
 2. **Step 1 (Create QA checklist):** Phrase verifiable checks covering metadata, selection rules, topic coverage, cognitive level, originality, permitted aids, and task/solution/scoring consistency (`checkliste.md`).
 3. **Step 2 (Create blueprint):** Plan `GK`/`LK` course variants, task-part rules, proposal matrix, and explicit complementarity/originality relative to earlier examples.
 4. **Step 3 (Draft exam tasks):** Write independent, non-copied tasks with realistic contexts, clean operator wording, consistent units/data, and strictly learner-facing text.
-5. **Step 4 (Draft solution & scoring):** Provide complete per-subtask derivations, transparent `BE` point mapping, explanatory steps, and explicit rounding/tolerance rules.
+5. **Step 4 (Draft solution & scoring):** Provide complete per-subtask derivations, transparent `BE` point mapping, explanatory steps, valid alternative approaches, and explicit rounding/tolerance rules. Where recognition of an individual goal is claimed, check whether its essential performance is necessary to pass or can be fully compensated by other points.
 6. **Step 5 (Run final QA):** Record item-by-item checklist verdicts, residual risks, and release status (`draft-ready`, `release candidate`) in `Schritt5_Abschluss_QS.md`.
 7. **Step 6 (Capture findings):** Turn review feedback into structured `findings.md` items (ID, source, description, priority, affected files, acceptance criterion, status).
 8. **Step 7 (Process findings):** Log addressed findings, exact edits, rationale, originality/similarity checks, and any follow-up risk in `Schritt7_Finding_Bearbeitung.md`.
 9. **Step 8 (Re-QA after findings):** Document finding-by-finding status deltas (`behoben`, `teilweise behoben`, `offen`), affected checklist categories, and updated release status in `Schritt8_ReQS.md`.
-10. **Step 9 (Integrate into skill graph):** Only after stabilization, promote exam nodes with `examData.taskContent`, `examData.solutionContent`, and `examData.scoring` into the landscape JSON (`docs/concept/skill-graph/node-types.md`). Subject-specific `exam-example-authoring-guide.md` files instantiate this workflow with concrete sources, paths, and current step without duplicating the general pipeline.
+10. **Step 9 (Integrate into skill graph):** Only after stabilization, promote exam nodes with `examData.taskContent`, `examData.solutionContent`, and `examData.scoring` into the landscape JSON ([Node Types](../concept/skill-graph/node-types.md)). Keep necessary preparation in `requires` separate from reviewed coverage claims in `examData.coveredGoalIds`; a graph path does not establish task coverage. Subject-specific `exam-example-authoring-guide.md` files instantiate this workflow with concrete sources, paths, and current step without duplicating the general pipeline.
+
+<a id="sec-pp-unit-assessments"></a>
+### 5.3. Existing Learning-Unit Assessment Production Lane
+
+[applyLearningUnitAssessments.mjs](https://github.com/enpasos/skillpilot/blob/main/app/scripts/applyLearningUnitAssessments.mjs) binds selected Mathematics and Physics tasks to their Markdown source sections, task/solution and rubric revisions, and independent coverage-review references. It generates or checks canonical assessment nodes, `programUnits`, own `goalPlacements`, and affected semantic-ledger fingerprints. Existing reviewed tasks can be referenced through their exact revisions; a second divergent task copy is no substitute.
+
+```bash
+# Read-only check that the catalog agrees with the assessment sources.
+npm --prefix app run check:learning-unit-assessments
+# After a deliberate source/review change: update the projection, then check.
+cd app
+node --import tsx scripts/applyLearningUnitAssessments.mjs --write
+npm run check:learning-unit-assessments
+npm run validate:learning-units
+```
+
+Technical synchronization is neither a new independent content review, grading of learner submissions, nor a learner trial. The existing Physics unit `physics-constant-acceleration` binds two assessments; coverage is the union of their individually reviewed contributions. Packages transport these units from contract 1.2; required byte-exact assessment stimuli and explicit partial ordering belong to the 1.3 candidate. Missing tasks or coverage reviews require repair, without using prerequisite paths as assessment evidence.
+
+Declared learning units additionally retain their existing [contract conditions R1–R5](../concept/skill-graph/assessment-gated-completion.md#sec-why-graph-not-enough). Independent review binds the task, solution, rubric, and claimed coverage to the reviewed version. A later expansion grants no additional recognition to earlier results. The [unit proposal of 19 November](../concept/skill-graph/unit-assessment-discussion-2026-11-19.de.md) is not yet a new approval rule. Formal CI, content review, independent grading of submissions, and learner trials provide separate evidence.

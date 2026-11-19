@@ -1,3 +1,8 @@
+# Historical Quickstart Image Prompts
+
+These prompts document how older comic images were produced. Their references to signing in with a free ChatGPT account and to earlier buttons are not current setup instructions. Follow the provider requirements and steps in the [Quickstart](story.en.md) for current access. The existing images and original prompt text remain as production history.
+
+---
 
 ---
 comic01.en.png

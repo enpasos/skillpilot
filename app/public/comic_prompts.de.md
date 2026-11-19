@@ -1,4 +1,8 @@
- 
+# Historische Bildprompts zum Schnellstart
+
+Diese Prompts dokumentieren die Entstehung älterer Comicbilder. Die darin genannte Anmeldung mit einem kostenlosen ChatGPT-Konto und die damaligen Schaltflächen sind keine aktuelle Einrichtungsanleitung. Für den heutigen Zugang gelten die Provider-Voraussetzungen und Schritte im [Schnellstart](story.de.md). Die bestehenden Bilder und ihre ursprünglichen Prompttexte bleiben als Produktionsgeschichte erhalten.
+
+---
 
 ---
 comic01.de.png

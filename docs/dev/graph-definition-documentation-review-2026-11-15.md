@@ -89,7 +89,7 @@ builds passed. This formatting correction is recorded separately from the
 original content-review delta. Existing tolerated PDF package warnings are not
 misreported as warning-free output.
 
-The [retained review evidence](https://github.com/enpasos/skillpilot/tree/fix/stage-plan-next-delivery-20261115/contracts/stage-plan-review-evidence/2026-11-15/documentation-critique-review-v1)
+The [retained review evidence](https://github.com/enpasos/skillpilot/tree/9975a142f7a26f1c4ff31c46a70e149d82a3fce5/contracts/stage-plan-review-evidence/2026-11-15/documentation-critique-review-v1)
 contains the incoming source patch, the independent bilingual review delta,
 21 matching DE/EN structure checks, three bounded model counterexamples, and
 the actual local test results. The original critique is not republished.

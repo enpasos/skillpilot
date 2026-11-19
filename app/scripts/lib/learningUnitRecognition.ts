@@ -1,6 +1,9 @@
 // SPDX-License-Identifier: Apache-2.0
 /**
- * Recognition of own goals through valid local contracts (Graph Definition §13.2 and §13.4).
+ * Recognition of own goals through valid local contracts: the applicable 4/11 November
+ * contract in Graph Definition §§13.2 and 13.4 (sec:transitive-demand, sec:global-effect).
+ * The separately marked unit-assessment proposal of 19 November is pending adoption;
+ * this evaluator implements the confirmed recognition formulas below.
  *
  *   N_U   = Reach*(P_U \ M)            open demand: open own assessment and memory goals with all they require
  *   I_U   = Own(U) \ (M ∪ P_U ∪ N_U)   implicit set of the unit

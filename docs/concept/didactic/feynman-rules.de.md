@@ -17,22 +17,22 @@
 <a id="sec-feynman-principle"></a>
 ### 1.1. Kernprinzip
 
-Die Feynman-Methode geht auf den Physiker Richard Feynman zurück, der tiefes Verstehen konsequent über bloßes Auswendiglernen stellte: Man durchdringt und verankert ein Konzept, indem man es vereinfacht und eigenständig erklärt. Wie Feynman formulierte: *„I don't know what's the matter with people: they don't learn by understanding; they learn by some other way—by rote, or something. Their knowledge is so fragile!“*
+Eine Erklärung in eigenen Worten zeigt, wie jemand einen Zusammenhang versteht. Der Coach kann an das anknüpfen, was die lernende Person schon weiß, vermutet oder wissen möchte. Wer das Thema zum ersten Mal sieht, bekommt eine verständliche Einführung und bei Bedarf ein vorgemachtes Beispiel.
 
-In SkillPilot prägt dieses Prinzip den diagnostischen Lerndialog bei Verstehenszielen (siehe [Knotentypen](../skill-graph/node-types.de.md)): Echte Beherrschung zeigt sich, wenn Lernende einen Zusammenhang ohne vorformulierte Schablonen selbstständig begründen und anwenden können.
+Im Gespräch kann die Person eine Frage stellen, einen eigenen Erklärungsversuch wagen oder um ein weiteres Beispiel bitten. Der Coach beantwortet Fragen und erklärt die Stelle, an der etwas unklar wird. Anschließend bekommt die Person Raum, den Zusammenhang erneut in eigenen Worten darzustellen oder auf einen neuen Fall zu übertragen. Eine solche eigene Leistung kann zum Nachweis des Lernziels beitragen. [Zieltypen](../skill-graph/node-types.de.md) · [Beispiel für den lokalen Claude-Kandidaten](claude-beta-erklaeren-2026-11-19.de.md)
 
 <a id="sec-feynman-steps"></a>
-### 1.2. Vier Schritte
+### 1.2. Vier Schritte für einen Erklärungsversuch
 
-1. **Konzept wählen:** Das Thema oder Lernziel benennen, das verstanden werden soll, und das vorhandene Vorwissen knapp festhalten.
-2. **Einfach erklären:** Den Sachverhalt in eigenen Worten so darstellen, als würde man ihn einer Person ohne Spezialvorwissen beibringen — klar formuliert, ohne sich hinter Fachjargon zu verstecken, gestützt auf konkrete Beispiele oder Analogien.
-3. **Lücken erkennen:** Genau beobachten, wo die Erklärung ins Stocken gerät, unnötig kompliziert wird oder ungesicherte Annahmen benutzt. Dort liegen die eigentlichen Verständnislücken im Skill-Graphen.
-4. **Nacharbeiten und schärfen:** Gezielt zu den Quellen oder Voraussetzungszielen zurückkehren, die Lücken schließen und die Erklärung schrittweise klären, bis sie präzise, knapp und tragfähig ist.
+1. **Einen Gedanken wählen.** Die Person kann eine eigene Frage mitbringen. Der Coach kann auch einen Begriff vorstellen, der zum Lernziel führt.
+2. **In eigenen Worten erklären.** Wie würde man den Zusammenhang jemandem erklären, der ihn zum ersten Mal hört? Ein eigenes Beispiel kann helfen.
+3. **Die offene Stelle finden.** Der Coach greift eine konkrete Aussage auf. Wer Geschwindigkeit und Beschleunigung verwechselt, kann etwa an einer Fahrt mit gleichbleibendem Tempo auf gerader Strecke prüfen, wie sich die beiden Größen unterscheiden.
+4. **Gemeinsam klären, selbst neu darstellen.** Der Coach erklärt die fehlende Verbindung, wenn sie gebraucht wird. Anschließend kann die Person die eigene Erklärung überarbeiten oder einen ähnlichen Fall selbst deuten. Die vier Schritte sind ein Angebot für das Gespräch. Umfang und Reihenfolge richten sich danach, was die Person bereits versteht.
 
 <a id="sec-feynman-benefits"></a>
 ### 1.3. Nutzen und Anwendungshinweise
 
-- Fördert belastbares Verständnis und Transfer statt kurzlebiger Reproduktion.
-- Deckt Scheinverständnis frühzeitig auf, bevor weiterführende Kompetenzen darauf aufbauen.
-- Eignet sich fachübergreifend — von Mathematik und Physik bis zu Sprachen und Gesellschaftswissenschaften.
-- Stärkt die aktive Verbalisierung im schriftlichen oder mündlichen Coaching: frei ohne Notizen formulieren und so lange nachschärfen, bis die Argumentation aus sich heraus trägt.
+- Eine eigene Erklärung macht nachvollziehbar, welche Verbindung die Person bereits ziehen kann.
+- Eine Rückfrage kann zeigen, welche Erklärung, Darstellung oder Anwendung als Nächstes hilfreich wäre.
+- Lässt sich die Begründung auf ein neues Beispiel übertragen, gewinnt der Coach einen weiteren Hinweis auf das Verständnis. Für einen Abschluss gelten die Nachweisanforderungen des konkreten Ziels.
+- Das Gespräch kann mündlich oder schriftlich stattfinden. Lernende können auch mit einer Skizze oder einem Diagramm zeigen, was sie meinen.

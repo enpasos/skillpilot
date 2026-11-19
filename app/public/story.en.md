@@ -1,6 +1,6 @@
 # SkillPilot: Start Learning in 5 Steps
 
-**Updated:** October 6, 2026
+**Updated:** November 19, 2026
 
 Your learning. Your pace. Choose your curriculum, get support while practising, and discover your achievements in the Cockpit.
 
@@ -38,7 +38,7 @@ You need a **personal Google account, age 18 or over**, **US access**, an **Engl
 2. Download the **Gemini coaching Skill** from the [Gemini guide](https://skillpilot.com/plugins#gemini). Import the ZIP under **Gemini Settings → Skills → Upload skill** and save the Skill.
 3. Check that the app is connected and **skillpilot-coach-v1** is available. After a Skill update, import the current ZIP again.
 
-The controlled test loaded the learning context, saved two learning goals and continued learning in a new Gemini web chat. A working direct link opens the learning-goal image; embedded display has not been observed. Additional accounts, mobile apps, voice mode, card practice, Verified Recall and exams have not yet been checked in an actual Gemini chat. The [integration runbook](https://enpasos.github.io/skillpilot/deploy/gemini-integration/) documents the tested scope and test-connection setup.
+The controlled test loaded the learning context, saved two learning goals and continued learning in a new Gemini web chat. A working direct link opens the learning-goal image; embedded display has not been observed. Additional accounts, mobile apps, voice mode, card practice, Verified Recall and exams have not yet been checked in an actual Gemini chat. The [integration runbook](https://enpasos.github.io/skillpilot/deploy/gemini-integration.en/) documents the tested scope and test-connection setup.
 
 ## 2. Open SkillPilot and protect your SkillPilot ID
 
@@ -70,9 +70,9 @@ Each start option creates a separate learning session for the selected provider.
 
 ## 5. Learn and see your achievements in the Cockpit
 
-The coach loads your learning context and guides you through the current goal. Do the work yourself, ask questions, and request smaller steps or a hint when needed. AI can make mistakes: check explanations and assessments, and explain your reasoning when you disagree.
+The coach loads your learning context and guides you through the current goal. Ask for an explanation when a concept is new. In physics, for instance, you could ask “I know what average speed means. Can you explain instantaneous speed using a bicycle speedometer?” You can ask follow-up questions, discuss a sketch, and try explaining an idea in your own words. Exercises help you apply what you learn; work independently during an explicitly started assessment. AI can make mistakes: check explanations and assessments, and explain your reasoning when you disagree.
 
-Select **Open Cockpit** to see your current learning record and active goal. After completing a goal, check your **saved progress** there.
+Select **Open Cockpit** to see your current learning record and active goal. After completing a goal, check your **saved progress** there. To demonstrate prior knowledge directly, enable **Offer assessment shortcuts** in your learning configuration and attempt an offered assessment. An attempt alone does not establish success; what you demonstrate depends on the task and its assessment criteria.
 
 For the goal displayed automatically, choose **Give feedback on this learning goal** to report a problem, including coach behaviour. Describe the issue briefly in your own words, focusing on the learning goal and what you observed. Keep personal details and your start message private.
 

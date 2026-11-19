@@ -35,7 +35,8 @@ Assets kopiert werden. Eine fehlende Produktionsabhängigkeit kann daher niemals
 
 Lernzielbuch-PDFs und ihre öffentlichen Indizes werden generiert und nicht eingecheckt.
 Das Deployment verwendet `npm ci`, installiert das zum Lockfile passende Playwright-Chromium,
-prüft dessen Startfähigkeit und generiert bzw. verifiziert alle vier Bücher vor Vite.
+prüft dessen Startfähigkeit und generiert bzw. verifiziert alle fünf registrierten Bücher vor Vite.
+Die fünf Fächer sind Mathematik, Physik, Chemie, Biologie und Wirtschaftswissenschaften; maßgeblich ist `app/src/utils/goalBookPublicationRegistry.ts`. Eigene Lernzielbuch-Inhalte stehen gemäß [Lizenzzuordnung](https://github.com/enpasos/skillpilot/blob/main/LICENSING.md) unter CC-BY-4.0.
 Die Betriebssystembibliotheken für den Browser müssen bereits vorhanden sein; es gibt keinen stillen Fallback auf
 einen Systembrowser. Siehe [das Runbook zum Buch-Build und zur Bereinigung der Historie](goal-book-build-and-history-cleanup.md),
 insbesondere vor der Weiternutzung eines alten Produktions-Checkouts nach der einmaligen
@@ -434,7 +435,7 @@ separate Betriebsentscheidungen.
 ## Details zum Asset-Deployment
 
 - `scripts/deploy_decks.py`
-  - durchsucht `curricula/**/json/` nach Dateien, die auf `_deck*.json` passen
+  - durchsucht `curricula/**/json/` nach Dateien mit dem Namenssuffix `_deck.json` oder `_deck.<sprache>.json` beziehungsweise `_deck_<sprache>.json` (Regex `_deck([._][a-z]{2})?\.json$`)
   - kopiert sie nach:
     - `app/public/data/`
     - `backend/src/main/resources/static/data/`
@@ -459,12 +460,12 @@ separate Betriebsentscheidungen.
     Kommunikationssprache.
 - Die kanonischen öffentlichen OpenAI-V1-Werte sind sichere, versionierte
   Anwendungsstandards:
-  - MCP-Endpunkt: `https://mcp-coach-v1.skillpilot.com/mcp`
-  - OAuth-Resource: `https://mcp-coach-v1.skillpilot.com/mcp`
+  - MCP-Endpunkt: `https://mcp-openai.skillpilot.com/mcp`
+  - OAuth-Resource: `https://mcp-openai.skillpilot.com/mcp`
   - Protected-Resource-Metadaten:
-    `https://mcp-coach-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp`
+    `https://mcp-openai.skillpilot.com/.well-known/oauth-protected-resource/mcp`
   V1 bindet exakt zwei aktive inhaltsadressierte MCP-Apps-UI-Ressourcen auf der
-  festen Widget-Domain `https://mcp-coach-v1.skillpilot.com`: den reinen Bild-Lernziel-Renderer
+  festen Widget-Domain `https://mcp-openai.skillpilot.com`: den reinen Bild-Lernziel-Renderer
   und das interaktive Kartenlernen. Zuvor beworbene Bild-Hash-URIs
   bleiben passiv und byte-identisch lesbar. Das Karten-Review-Tool
   ist App-exklusiv und ungebunden; reguläre Tools bleiben UI-frei. Vergabe der permanenten ID und

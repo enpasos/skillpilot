@@ -22,15 +22,16 @@
 
 Die Lerngeschwindigkeit (*Learning Velocity*) ist eine didaktische Kontinuitätsmetrik: Sie macht **Beständigkeit und Lernrhythmus** über die Zeit sichtbar und unterstützt regelmäßiges Dranbleiben statt kurzfristiger Spitzen.
 
-Konzeptuell zählt die Lerngeschwindigkeit die neu gemeisterten **atomaren** Lernziele je Kalenderwoche $w$:
+Die Metrik für neu erreichte Lernziele zählt die **ersten belegten Einzelerfolge** je Kalenderwoche $w$. $t_1(g)$ bezeichnet den Zeitpunkt des ersten ausdrücklichen Abschlusses, sofern er verlässlich bekannt ist.
 
 $$
-\mathrm{velocity}(w) = \bigl|\{\, g \in A \mid \mathrm{mastered}(g) \land \mathrm{achieved\_at}(g) \in w \,\}\bigr|.
+\mathrm{velocity}(w) = \bigl|\{\, g \in A \mid t_1(g) \in w \,\}\bigr|.
 $$
 
 - **Ausschließlich atomare Ziele:** Nur Blattknoten zählen (keine Cluster), um strukturelle Mehrfachzählung auszuschließen.
 - **Binäres Zielergebnis:** Ein Lernziel ist entweder gemeistert oder nicht gemeistert; Teilpunkte auf Zielebene gibt es nicht. Die aktuelle Speicherschwelle `mastery >= 0.9` dient der technischen Kompatibilität und ist weder Notenskala noch Teilbeherrschung.
 - **Kalenderbasis:** Die heutige Cockpit-Auswertung („aufgezeichnete Abschlüsse“, siehe [Daily Learning Progress](../runtime-workflows/daily-learning-progress.md)) gruppiert Ereignisse nach `Europe/Berlin`-Kalenderwochen, zählt dasselbe Ziel höchstens einmal pro Tag und lässt ältere undatierte Bestandsdaten sichtbar, ohne sie künstlich in das Diagramm nachzutragen.
+- **Einheiten im Vorschlag vom 19. November.** Eine bestandene Abschlussprüfung zählt an ihrem tatsächlichen Datum als abgeschlossenes Prüfungsziel. Eine fachliche Freigabe für spätere Voraussetzungen erzeugt keine weiteren datierten Ereignisse für ausgelassene Lernaktivitäten.
 
 <a id="sec-velocity-caveats"></a>
 ### 3.2. Interpretation, Entwurfsprinzipien und Grenzen

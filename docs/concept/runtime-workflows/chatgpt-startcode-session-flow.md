@@ -1,9 +1,6 @@
 # Custom GPT: privater Startcode- und Session-Flow
 
-Status: ursprünglich am 19. Mai 2026 eingeführte Architektur, seit 18. August
-2026 wieder privater Standardstart für die zwei neu aufzubauenden GPTs
-`SkillPilot GPT Coach (de)` und `SkillPilot GPT Coach (en)`. Turnübergreifende
-Action-Retention bleibt ein real zu prüfendes Rollout-Gate.
+**Historischer Custom-GPT-Rückfallpfad (August 2026).** Diese Seite dokumentiert den damaligen Action-Transport. Die aktuelle ChatGPT-Desktop-Beta startet über den Git-Marketplace. Das Runbook zur dauerhaften Serveradresse beschreibt den separat vorbereiteten Connector. [Desktop-Beta](../../deploy/openai-personal-marketplace-release.de.md) · [Dauerhafte Serveradresse](../../deploy/openai-stable-origin.md)
 
 > Dieses Dokument beschreibt den Custom-GPT-Transport. Die mehrsprachige
 > Zielarchitektur bleibt die

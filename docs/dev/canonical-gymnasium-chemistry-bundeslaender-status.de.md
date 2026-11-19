@@ -1,5 +1,11 @@
 # Kanonisches Gymnasium Chemie: Bundesländer-Status
 
+> **Historischer Rolloutbericht – redaktionell eingeordnet am 19. November 2026.** Der folgende Snapshot und seine Zahlen bleiben unverändert auf dem angegebenen Stand von April/Mai 2026. Prozentwerte, Count-Gates und nächste Schritte sind damalige Rolloutsteuerung, keine heutigen Qualitäts-, Freigabe- oder Abschlusswerte. Die geänderten November-Ansichten und Einheiten sind darin nicht nachgemessen.
+>
+> Den aktuellen maschinellen Fach-/Länderstand führt der [Curriculum-Qualitätsbericht](../qa-ci/status/curriculum-quality-status.json); den bestätigten Auftrag und die tatsächliche Integration führen [Stufenplan-Übergabe](stage-plan-units-handover-2026-11-15.md) und [Management Summary](stage-plan-management-summary.md). Die [Mathematik-](mathematics-stage-view-normalization-2026-11-16.md) und [Physiklieferung](physics-stage-view-normalization-2026-11-16.md) dokumentieren die neuen Ansichten.
+>
+> Die alten Renderbefehle ersetzen diesen historischen Bericht nicht mit aktuellen Eingaben. Die reparierten Mathematik-/Physikzähler unterstützen Sourceformat 1.2 und bewahren den 1.0-Rückfall. Ihre neue Stufenzählung bleibt vom historischen Rolloutscore getrennt. Ein gemischter Neulauf wäre kein neuer Snapshot dieses alten Berichts.
+
 Snapshot: `2026-05-12T01:05:00Z`
 
 Diese Datei wird generiert aus:

@@ -371,6 +371,26 @@ try {
   const backwardStroke = await page.locator('.react-flow__edge[aria-label^="Rückgriff"] path').first().evaluate(path => getComputedStyle(path).strokeDasharray)
   const declaredStroke = await page.locator('.react-flow__edge[aria-label$="(erklärte Reihenfolge)"] path').first().evaluate(path => getComputedStyle(path).strokeDasharray)
   assert.notEqual(backwardStroke, declaredStroke, 'a Rückgriff is drawn differently from the declared order')
+
+  const declaredOrder = page.locator('.react-flow__edge[aria-label="Änderungsraten kommt nach Vektorrechnung (erklärte Reihenfolge)"] .react-flow__edge-path')
+  await node(page, section.vectors).click()
+  await mapSelection(page, section.vectors)
+  const highlightedOrder = await declaredOrder.evaluate(path => ({
+    color: getComputedStyle(path).stroke, width: getComputedStyle(path).strokeWidth,
+  }))
+  await node(page, id.physicsGoal).click()
+  await mapSelection(page, id.physicsGoal)
+  const unrelatedOrder = await declaredOrder.evaluate(path => ({
+    color: getComputedStyle(path).stroke, width: getComputedStyle(path).strokeWidth,
+    opacity: getComputedStyle(path).opacity, dashed: getComputedStyle(path).strokeDasharray,
+    marker: path.getAttribute('marker-end'),
+  }))
+  assert.equal(unrelatedOrder.opacity, '1', 'declared phase order remains fully visible when an unrelated goal is selected')
+  assert.equal(unrelatedOrder.dashed, 'none', 'the declared order keeps its solid relation semantics')
+  assert.ok(unrelatedOrder.marker?.startsWith('url('), 'the declared order keeps its arrowhead')
+  assert.notEqual(highlightedOrder.color, unrelatedOrder.color, 'selection still highlights the adjacent order in blue')
+  assert.ok(parseFloat(highlightedOrder.width) > parseFloat(unrelatedOrder.width), 'selection still emphasizes adjacent order lines')
+  await page.screenshot({ path: join(artifacts, '02-native-order-unrelated-selection.png') })
   await page.getByRole('button', { name: 'Eine Ebene auftauchen', exact: true }).click()
   await scope(page, mapRoot)
   assert.deepEqual(await page.locator('.lum-node[data-entry-id]').evaluateAll(nodes => nodes.map(n => n.getAttribute('data-entry-id'))),

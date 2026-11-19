@@ -1,5 +1,7 @@
 ### **Das SkillPilot Comic**
 
+> **Einordnung des ursprünglichen Bildskripts · 19. November 2026:** Die GPS-Metapher unten beschreibt die Idee einer Lernhilfe. SkillPilot berechnet aus gespeicherten Ergebnissen und Voraussetzungen eine Menge möglicher nächster Ziele. Es ortet das Können einer Person nicht exakt und garantiert weder Langeweilefreiheit noch passende Belastung. Der Coach beurteilt Leistungen im Dialog; diese KI-Beurteilung kann fehlerhaft sein. Die ursprünglichen Bildtexte und Bilder bleiben erhalten.
+
 **Panel 1: Die Herausforderung**
 - **Bild:** Ein Lehrer steht schwitzend vor einer riesigen Landkarte an der Wand, die "Lehrplan" (Curriculum) heißt. Die Schüler wuseln im Raum herum; manche rennen schnell, andere bleiben stehen, manche schauen sich orientierungslos um. Der Lehrer hat keinen Überblick.
 - **Text:** *"Der Lehrplan ist für alle gleich – aber jeder Schüler steht woanders! Im Klassenzimmer ist es extrem schwer, die genaue Position und das Tempo jedes Einzelnen zu erkennen."*

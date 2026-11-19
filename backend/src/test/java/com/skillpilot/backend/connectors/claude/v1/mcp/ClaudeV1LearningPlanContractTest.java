@@ -147,6 +147,43 @@ class ClaudeV1LearningPlanContractTest {
     }
 
     @Test
+    void ordinaryUnderstandingInvitesExplanationAndQuestionsWithoutChangingCompletionOrEntryGates() {
+        String instructions = contractAdapter.serverInstructions().replaceAll("\\s+", " ");
+
+        assertThat(instructions).contains(
+                "Ordinary understanding goals: when teaching the current goal is authorized",
+                "This applies at a normal start, after a plan resume or subject switch",
+                "when the learner has agreed to continue to the backend-selected successor",
+                "prior knowledge is never an entry requirement",
+                "If the learner asks for an explanation, says they do not know or the concept is unfamiliar, explain immediately with a short concrete example",
+                "Do not require an attempted answer or repeat a diagnostic question before explaining",
+                "Answer concrete questions directly",
+                "Let the learner choose to listen, ask a follow-up, explain in their own words, sketch an idea or discuss a new application",
+                "including a case of their own when they already know the definition",
+                "address a remaining gap with a different explanation or a useful follow-up",
+                "Offer a short practical task when it helps explore the idea or the learner wants practice",
+                "do not turn every explanation or follow-up into a compulsory quiz",
+                "Answer a pending question or request for explanation directly, including after task-only feedback",
+                "explain the gap with a short example when useful",
+                "Invite questions or offer optional targeted practice in the same goal, rather than automatically assigning another task",
+                "A coach explanation, a repeated supplied answer or a guided example is not independent learner evidence",
+                "It does not replace orientation, memory, Verified Recall or an explicitly started exam or assessment",
+                "independent assessment work without teaching hints",
+                "It never authorizes teaching or rendering a successor before the required consent",
+                "nor new learning content during a status-only question or a pause");
+
+        // Explanation is available before assessment, while completion still needs the
+        // established independent evidence and keeps all specialised workflows intact.
+        assertThat(instructions).contains(
+                "at least two independent checks or one genuine multi-step transfer task",
+                "Do not treat praise, repetition or a single guided answer as evidence",
+                "Never use normal mastery for a memory goal",
+                "Orientation is motivational, not subject assessment",
+                "Do not present a successor task or image until the learner explicitly chooses to continue",
+                "Answer a status-only question or respect a pause without starting a goal or exercise");
+    }
+
+    @Test
     void planPresentationMandatesTheVerbatimBackendTextAndNoOwnArithmetic() {
         String instructions = contractAdapter.serverInstructions().replaceAll("\\s+", " ");
 

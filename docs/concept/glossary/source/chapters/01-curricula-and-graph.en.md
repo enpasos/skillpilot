@@ -177,7 +177,7 @@ Declared unit in the shared plan of one Land and duration model across selected 
 
 *DE: Fachliche Einheit* — see [Learning Units](repo:docs/concept/skill-graph/learning-units.md)
 
-Declared cluster in the canonical subject landscape with a learning promise and revision; applies across all Bundesländer (leaf subject units stay whole inside one plan unit across all 16 Länder). A **unit with assessments** (with own assessments and valid complete `coverageReviews`) additionally demonstrates independent application of its own content goals under R1–R5.
+Declared cluster in the canonical subject landscape with a learning promise and revision; applies across all Bundesländer (leaf subject units stay whole inside one plan unit across all 16 Länder). Under the applicable recognition concept, a **unit with assessments**, own exams and valid complete `coverageReviews` demonstrates independent application of its own content goals under R1–R5. The undecided proposal of 19 November distinguishes this from a representative judgement about the unit and separately justified planning release for whole atoms.
 
 ### `after` {unnumbered=true}
 
@@ -217,6 +217,6 @@ Explicitly labeled provisional didactic assignment (`canonicalDefault`) derived 
 
 ### Assessment gap {unnumbered=true}
 
-*DE: Prüfungslücke* — see [Implicit Mastery](repo:docs/concept/skill-graph/assessment-gated-completion.md)
+*DE: Prüfungslücke* — see [Assessment evidence and recognition contract](repo:docs/concept/skill-graph/assessment-gated-completion.md)
 
-An own content goal of a unit with assessments lacking suitable reviewed task and rubric coverage remains a failing finding (R1/R2). Repair supplies a sound assessment and independent review, never fictitious prerequisites or relaxed quality gates.
+Under the applicable recognition contract, an own content goal of a unit with assessments lacking suitable reviewed task and rubric coverage remains a failing finding (R1/R2). Repair supplies a sound assessment and independent review, never fictitious prerequisites or relaxed quality gates. The proposal of 19 November resolves no such finding and changes no gate status.

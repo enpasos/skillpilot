@@ -10,6 +10,8 @@ Die Lehrkraft kann aus dem für ihren Kurs geltenden Lernzielbuch eine überscha
 
 Die erste Ausbaustufe verbindet die vorhandene Kursplanung mit dem Lernzielbuch, ohne ein zweites Planmodell oder eine zentrale Klassenverwaltung einzuführen. Bestehende Planabschnitte, lokale Revisionen, Datumsprüfungen und die ausdrückliche Übernahme in persönliche Lernpläne werden wiederverwendet. Die anschließende Klausurvorbereitung (@ref{sec:exam-preparation-planning}) ergänzt Klausurstoff- und Aufgabenabdeckung, eine Vorschau zur Vorbereitungsvervollständigung und einzeln deaktivierbare Planabschnitte.
 
+Ein lokaler Lernabschnitt ordnet Unterrichtstermine und ausgewählte Ziel-IDs. Sein Titel kann beispielsweise „Kinematik“ lauten. Ob eine Person das Lernversprechen einer bestimmten Einheitenfassung nachgewiesen hat, ist eine andere Auskunft. Ein späterer Einheitenauftrag müsste diesen Anspruch bei der Planerstellung ausdrücklich benennen.
+
 ### Erste Ausbaustufe {#sec:goal-book-planning-stage1}
 
 1. **Kursgebundene Zielauswahl im Buch:** Im bestehenden Kurskontext wählt die Lehrkraft ein Lernziel anhand seiner Beschreibung und Buchdarstellung aus. Die autoritative Kursprojektion begrenzt die Auswahl; ein öffentlich sichtbares Buchziel ist nicht automatisch Ziel dieses Kurses. Fach, Bundesland, Stufe, Bildungsgang und Kursprofil werden nicht erneut geraten.

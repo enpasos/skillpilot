@@ -1,6 +1,6 @@
-# SkillPilot Coach v1: Release, Rollback, and Retirement
+# SkillPilot Coach: Release, Rollback, and Retirement
 
-**As of:** 19 October 2026
+**As of:** 19 November 2026
 
 **Status:** 1.0.0 was rejected; all ChatGPT/OpenAI review development freezes
 have been explicitly lifted. Current local package state: **1.1.3**, prepared
@@ -32,25 +32,25 @@ security checks and submission evidence gates remain unchanged.
 
 This runbook puts the
 [versioning and lifecycle plan](../concept/runtime-workflows/openai-plugin-versioning-and-lifecycle.md)
-into operational practice. It applies to `skillpilot-coach-v1`.
+into operational practice. It applies to the permanent identity `skillpilot-coach`; the internal adapter and runtime contract remain V1. The decision of 19 October replaces the earlier public V1 identity. The [neutral cutover](openai-stable-origin.md) is prepared and accepted separately; this documentation correction records no new rollout.
 
 ## 1. Fixed Identity and V1 Contract
 
 | Component | Binding Value |
 | --- | --- |
-| Plugin identity | `skillpilot-coach-v1` |
-| Display name | `SkillPilot Coach v1` |
+| Plugin identity | `skillpilot-coach` |
+| Display name | `SkillPilot Coach` |
 | Current package state | `1.1.3` prepared locally; Git/Desktop beta `1.1.2` published; OpenAI portal `DRAFT` |
 | Contract Major | `1` |
 | Lifecycle policy | `policyRevision=5` |
-| Public MCP endpoint and OAuth Resource/Audience | `https://mcp-coach-v1.skillpilot.com/mcp` |
-| Protected Resource Metadata | `https://mcp-coach-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp` |
-| Domain challenge | `https://mcp-coach-v1.skillpilot.com/.well-known/openai-apps-challenge` |
+| Public MCP endpoint and OAuth Resource/Audience | `https://mcp-openai.skillpilot.com/mcp` |
+| Protected Resource Metadata | `https://mcp-openai.skillpilot.com/.well-known/oauth-protected-resource/mcp` |
+| Domain challenge | `https://mcp-openai.skillpilot.com/.well-known/openai-apps-challenge` |
 | Active MCP Apps UIs | exactly two: learning-goal image and flashcard practice |
 | Support URL | `https://skillpilot.com/imprint` |
 | Historical review video | `https://skillpilot.com/api/public/openai/review/skillpilot-coach-v1/1.0.0/sha256-20f5327535513df8b1c088b553195baf6ae339d57fc417b303488ae597644deb.mp4` (not acceptance of the current candidate) |
 | Publication status | Git beta `1.1.2` published; current draft `1.1.3-SNAPSHOT` unpublished; previously published Git packages and snapshots remain preserved |
-| Source package | `ai/openai plugin/skillpilot-coach-v1/` |
+| Source package | `ai/openai plugin/skillpilot-coach/` |
 
 Permanent SkillPilot ID, CREATE/EXISTING, provider notice, and curriculum,
 stage, subjects, profile, and personalization are configured exclusively in the
@@ -131,11 +131,11 @@ Machine-readable sources of truth are:
 - `release/line.json` for Contract Major, endpoint, and state versions;
 - `release/lifecycle.json` for support, publication, and launch status as well
   as the monotonic `policyRevision`;
-- `contracts/drafts/openai/skillpilot-coach-v1/<version>-SNAPSHOT/` for the
+- `contracts/drafts/openai/skillpilot-coach/<version>-SNAPSHOT/` for the
   updatable current draft; the rejected `1.0.0-SNAPSHOT` remains separately
-  immutable as historical evidence;
-- `contracts/published/openai/skillpilot-coach-v1/<version>/` and
-  `contracts/openai/skillpilot-coach-v1/release-index.json` exclusively for
+  immutable under its former identity as historical evidence;
+- `contracts/published/openai/skillpilot-coach/<version>/` and
+  `contracts/openai/skillpilot-coach/release-index.json` exclusively for
   versions actually published in the OpenAI portal.
 
 Following the rejection, the Product Owner explicitly terminated the review
@@ -174,7 +174,7 @@ node scripts/openai_plugin_release.mjs prepare
 node scripts/openai_plugin_submission.mjs prepare
 node scripts/openai_plugin_submission.mjs check
 node scripts/openai_plugin_submission.mjs package --out-dir tmp/openai-submission-package
-node scripts/openai_plugin_submission.mjs audit-zip --zip tmp/openai-submission-package/skillpilot-coach-v1-1.1.3-submission.zip
+node scripts/openai_plugin_submission.mjs audit-zip --zip tmp/openai-submission-package/skillpilot-coach-1.1.3-submission.zip
 ```
 
 The ZIP archive and `submission-package.json` are the concrete handoff
@@ -203,7 +203,7 @@ For actual connection verification:
 1. In the designated account, follow the documented
    [remote MCP test path](https://developers.openai.com/plugins/deploy/connect-chatgpt#add-the-mcp-server),
    or connect the remote server from the uploaded ZIP. The endpoint remains
-   strictly `https://mcp-coach-v1.skillpilot.com/mcp`.
+   strictly `https://mcp-openai.skillpilot.com/mcp`.
 2. Compare the actually displayed hosted CIMD URL and redirect URI against the
    protected server configuration. Current connections may use
    callback-specific URLs. Neither guess a new ID nor reuse the native desktop

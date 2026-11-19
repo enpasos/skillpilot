@@ -31,3 +31,10 @@ Für Geschwisterknoten eines Elternclusters (zyklenfrei bezüglich `requires`) f
 | **6. Kanonische ID** | Endgültige Deterministik | Lexikographischer Vergleich von `goal.id` für 100 % reproduzierbare Reihenfolge. |
 
 Während die reine Inhaltsbaum-Inspektion ([Sichtenprojektion](../concept/skill-graph/view-projection-and-goal-placement.de.md)) die explizite `contains`- bzw. `treeOrder`-Reihenfolge abbildet, steuert `sortSiblingGoalsBalanced` die didaktische Lernansicht überall dort, wo kein manuelles `treeOrder` gesetzt ist.
+
+<a id="sec-dev-no-declared-order"></a>
+### 7.2. Erklärte Teilordnung und integrierte Lernkarte
+
+Die oben beschriebene Sortierung ist die Heuristik des Kompetenzbaums. In den mit [#160](https://github.com/enpasos/skillpilot/pull/160) gelieferten Länderansichten hat `childOrder.after` des Sourceformats 1.2 eine andere Aufgabe: Es erklärt die fachlich begründete Teilordnung zwischen Geschwistereinheiten. Der Composition-Compiler erhält sie als `compositionChildOrder`. `after` ergänzt weder `requires` noch den Zugang zur Frontier; es ändert keine gespeicherte Beherrschung. Ein autorisierter Erwerbsplatz für ein notwendiges Atom ist ebenso wenig eine zusätzliche Ordnungskante.
+
+Die integrierte Lernkarte aus [#153](https://github.com/enpasos/skillpilot/pull/153) und [#162](https://github.com/enpasos/skillpilot/pull/162) zeigt Einheiten, ihre Ordnung und fachliche Rückgriffe. Der Lernzielbaum bleibt die Inhaltsnavigation. Ein aktivierter Stufenplan liefert gemeinsame Identitäten und verschachtelte Jahrgänge/Phasen; ohne aktivierte Planmetadaten bleibt die Kartenprojektion ausdrücklich vorläufig. Rote Rückgriffspfeile werden fachlich repariert und nicht durch Sortieren versteckt. Aktuelle Liefer- und Abnahmegrenzen stehen im [Management Summary](stage-plan-management-summary.md).

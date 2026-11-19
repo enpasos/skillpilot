@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.1.14 - 2026-11-19
+
+- For an ordinary understanding goal, the coach can explain a new concept with
+  a concrete example as soon as the learner asks for help or says the idea is
+  unfamiliar. It builds on a learner’s own explanation when one is available.
+- The learner can ask follow-up questions after solving an exercise. Recording
+  mastery still requires two independent demonstrations or one genuine
+  multi-step transfer.
+
 ## 1.1.13 - 2026-10-31
 
 - Handle requested assessment shortcuts using SkillPilot's current backend

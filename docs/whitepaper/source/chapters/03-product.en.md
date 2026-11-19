@@ -20,9 +20,11 @@ This creates several possible learning paths rather than one fixed sequence. For
 
 #### Cross-Subject Prerequisites: Mathematics and Physics
 
-**The learning map already connects Mathematics and Physics through specific `requires` links.** For example, “Describe motions using distance-time diagrams” requires “Read axes, scales and units,” among other foundations. The more advanced Physics goal “Investigate Motions with Diagrams” builds on “Calculate and interpret average rate of change,” among other goals.
+**The learning map already connects Mathematics and Physics through specific `requires` links.** For example, “Describe motions using distance-time diagrams” requires “Read axes, scales and units,” among other foundations. For “Investigate Motions with Diagrams”, learners also need to determine the change per unit of time from two measurements and the interval between them.
 
-The mathematical foundations retain their own learning-goal IDs and previously recorded progress. SkillPilot can therefore take that progress into account when learning Physics too. Which goals belong to the personal selection and which serve only as prerequisites is explicitly defined.
+The mathematical foundations retain their own learning-goal IDs and previously recorded progress. SkillPilot can therefore take that progress into account when learning Physics too. The personal selection also includes the prerequisites it needs. A mathematical foundation can therefore belong to learning Physics without selecting the entire Mathematics curriculum.
+
+A **learning unit** groups related goals. Stage plans place them for the relevant state and programme duration. Within a plan, “after” can suggest an order among reachable units. The prerequisites of an individual goal determine which foundations the learner still needs.
 
 #### Four Levels of Personalization
 
@@ -33,15 +35,15 @@ The shared learning map becomes a personal learning path. SkillPilot distinguish
 3. **Learning Focus and Active Goal (Level 3):** A temporarily selected subset and exactly one current learning goal guide the ongoing work. The coach uses the options offered by the backend. Widening the focus requires consent; within confirmed plan-guided or autopilot learning, the next permitted goal can be selected automatically.
 4. **Learning Progress / Mastery (Level 4):** Progress is stored against stable learning-goal IDs and is retained when the view or focus changes.
 
-A subject-specific **composition view** arranges the shared goals for the selected educational context. It distinguishes **goals to be learned (`target`)** from **prerequisites only (`prerequisiteOnly`)**. Only target goals count toward the visible learning tree, goal selection, progress, and completion of this scope. Prerequisite-only goals retain their recorded progress for prerequisite checks.
+A subject-specific **composition view** arranges the shared goals for the selected educational context. The selected subject goals and their necessary prerequisites form the personal learning scope. An open lower-secondary foundation needed for an upper-secondary goal, or a mathematical foundation needed for Physics, requires an accessible place to learn within that scope and counts toward progress and completion. The subject role `prerequisiteOnly` identifies its preparatory purpose; it neither certifies mastery nor removes the foundation from the learning scope.
 
-Lower-secondary foundations can therefore be taken into account in an upper-secondary view, or mathematical foundations when learning Physics, where that role is explicitly modeled. Including them as learning goals in their own right requires an appropriately selected personal scope. Neither moving to a new school stage nor a cross-subject link certifies their mastery.
+Foundations already achieved remain included as fulfilled. Changing school stage, choosing a new focus, or adding a cross-subject link creates no new evidence of competence. Unrelated topics from another subject do not enter the scope merely because one of its goals is needed.
 
 #### Frontier: Which Goals Are Reachable Now
 
-The backend calculates the **frontier** from the learning scope and recorded progress: goals not yet mastered whose effective prerequisites are met. The checks also include foundations explicitly modeled as `prerequisiteOnly` outside the visible learning scope. Optional **Strict Mode** additionally checks prerequisites globally.
+The backend calculates the **frontier** from the scope, current focus, and recorded progress: open goals whose effective prerequisites are met in the selected mode. Normal mode considers prerequisites within the focus; optional **Strict Mode** checks them globally. A narrower focus changes neither the lasting personal scope nor previously stored results.
 
-This selection sets the boundaries for the coach’s next learning step. It reflects the recorded state and is not a psychological assessment of an individual’s learning potential.
+This selection guides the coach’s regular learning recommendations. It reflects the recorded state and is not a psychological assessment of an individual’s learning potential. Offered assessments also have a direct entry route (section 3.3).
 
 ### Learning Through Dialogue and Recording Progress {#sec:dialogue-and-progress}
 
@@ -51,11 +53,11 @@ This selection sets the boundaries for the coach’s next learning step. It refl
 
 The moment of understanding belongs to the learner.
 
-The **SkillPilot Learning Coach** turns the selected goal into a concrete learning task. It explains, offers hints, asks follow-up questions, and discusses solution methods. It receives the current learning scope, frontier, and permitted transitions from the backend. **Learners still do their own thinking**: for example, solving a task with paper and pencil, photographing their solution, and then discussing the feedback. AI should support the necessary effort effectively, not replace it.
+The **SkillPilot Learning Coach** supports work on the selected goal. It can explain a new concept, illustrate it with an example, answer a question, or offer a suitable exercise. It receives the current learning scope, frontier, and permitted transitions from the backend. Learners can ask for an initial explanation, follow up with questions, or discuss a case of their own. **They still do their own thinking**: for example, explaining an idea in their own words, developing a sketch, or solving a task with paper and pencil and discussing the feedback. AI should support the necessary effort effectively, not replace it.
 
 #### Making Understanding Visible
 
-For subject-specific understanding goals, the coach asks for reasoning and explanations in the learner’s own words rather than only correct final answers. Drawing on Socratic dialogue and the **Feynman technique**, this approach aims to reveal gaps in understanding and support targeted further practice. It is a teaching approach, not evidence of the effectiveness of the overall system. This knowledge assessment explicitly does not apply to orientation nodes.
+When introducing a concept, the coach can build on what the learner already knows. For instantaneous speed, the coach might ask what a bicycle speedometer shows during a ride. Someone encountering the idea for the first time gets an explanation using that example. The learner can then describe in their own words how the reading differs from the average over the whole ride. A sketch, a question or a further task can bring out what is still unclear. This use of the **Feynman technique** helps the coach decide what to explain next. In an announced assessment, the learner’s independent work is judged against the criteria for the task.
 
 #### Mastery: Recording Achieved Progress
 
@@ -63,7 +65,7 @@ Work on a task provides evidence of whether a learning goal has been understood.
 
 This learning state is called **mastery**. Each learning goal has one outcome: achieved or not yet achieved. Assessment goals follow the same rule; a passed goal needs no additional qualification. Percentages for broader topics are weighted aggregates of achieved goals, not partial grades for individual goals. Orientation and memorization have their own completion rules (section 3.3).
 
-The stored learning state remains separate from complete dialogues and additional artifacts. Institutions may require evidence outside this learning-goal state; this does not create a second outcome per goal in SkillPilot.
+The stored learning state remains separate from complete dialogues and additional artifacts. Current completion displays can also count ordinary goals as complete within a scope when no open assessment or memory obligation in that scope still needs them. This derived credit is not an additional observed individual performance and does not store a mastery success of its own. Institutions may require evidence outside the learning-goal state; this does not create a second outcome per goal in SkillPilot.
 
 #### A Short Path from Feedback to Improvement
 
@@ -88,6 +90,10 @@ Within a context such as “Mathematics, Year 7” or “Advanced Physics Course
 For content that needs to be memorized, **spaced repetition** complements work with explanations and tasks: the flashcard system (SRS) schedules when cards are reviewed, while the skill graph determines the next learning goals. Ordinary flashcard practice changes only the review schedule. Mastery of a memorization goal is derived from server-side card state and the separate **Verified Recall**, an unaided recall check. This distinction also remains visible in the Cockpit.
 
 **Practice and assessment nodes** lead to independent application. In lower-secondary mathematics, year-level exams are organized under “Exams for Year …”; upper-secondary education adds appropriate course and Abitur exam tasks. Their review status is part of the respective curriculum’s quality assurance. Further task formats, for example for programming, writing, or speaking, can be added.
+
+The **“Offer assessment shortcuts”** setting lets learners attempt offered assessments before preparation. Choosing this route does not certify success. What a passed assessment establishes depends on the performance actually required and its assessment criteria. A written analysis, for example, does not establish that the learner carried out an experiment.
+
+A [new completion proposal](https://github.com/enpasos/skillpilot/blob/main/docs/concept/skill-graph/unit-assessment-discussion-2026-11-19.de.md) for subject-specific units is under discussion: learning a unit and demonstrating it directly would lead to the same stated standard. A representative unit pass would be distinct from demonstrated individual goals and an explicitly reviewed release for later learning steps. **The product decision and the corresponding migration are pending.** The current credit described here does not establish this new unit pass.
 
 ### From Curriculum to Everyday Learning: Learning Plans and Coach Guidance {#sec:learning-plan}
 

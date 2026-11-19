@@ -1,18 +1,15 @@
 # Custom GPT: Private Startcode and Session Flow
 
-Status: architecture originally introduced on 19 May 2026 and restored since 18 August 2026
-as the private default start flow for the two newly built GPTs `SkillPilot GPT Coach (de)`
-and `SkillPilot GPT Coach (en)`. Cross-turn Action retention remains a mandatory real-host
-rollout gate.
+**Historical Custom GPT fallback (August 2026).** This page records the earlier Action transport. The current ChatGPT Desktop beta starts through the Git marketplace. The stable-origin runbook describes the separately prepared connector. [Desktop beta](../../deploy/openai-personal-marketplace-release.md) · [Stable origin](../../deploy/openai-stable-origin.md)
 
 > This document describes the Custom GPT transport. The multilingual target architecture
 > remains the
-> [OpenAI MCP App with OAuth and 24h Learner Session](openai-mcp-oauth-learner-session-architecture.md).
+> [OpenAI MCP App with OAuth and 24h Learner Session](openai-mcp-oauth-learner-session-architecture.en.md).
 > There, ChatGPT carries OAuth access automatically. Every explicit start in SkillPilot
 > creates a separate learner session capped at an absolute maximum of 24 hours, inserts it
 > automatically into the prepared start message, and subsequently requires it as an argument
 > on every domain tool. The permanent SkillPilot ID never appears in chat. The
-> [Visible Session Architecture](chatgpt-visible-session-flow.md) serves solely as the
+> [Visible Session Architecture](chatgpt-visible-session-flow.en.md) serves solely as the
 > explicitly launched emergency fallback of those same new GPTs. In normal operation,
 > German, English, and any later-supported interaction language share the same
 > major-versioned app.

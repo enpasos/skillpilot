@@ -16,7 +16,7 @@
 
 This chapter specifies how SkillPilot narrows from the published curriculum catalog down to individual atomic mastery. Catalog navigation precedes the four personalization levels and is never persisted as learner scope.
 
-These four levels remain distinct from [Learning Units](skill-graph/learning-units.md) (*Lerneinheiten*, `LearningUnit`) — recursively composed didactic units with intended outcomes and derived completion whose placement belongs to the resolved educational context rather than forming a fifth personalization level.
+The four levels describe a learner’s choices and individual record. [Learning units](skill-graph/learning-units.md) organise content in the selected educational context. A unit can be chosen as a focus. What completing it demonstrates is a separate subject-matter question.
 
 <a id="sec-personalization-catalog"></a>
 ### 1.1. Before Level 1: catalog navigation
@@ -51,6 +51,8 @@ The Personal Curriculum is the learner's committed, durable scope inside the Bas
 4. **Selected subjects**;
 5. **Course profile per selected subject** (where applicable).
 
+The selection supplies the atomic seed goals $S$. The personal learning basis $L$ contains $S$ and all prerequisites transitively required in the canonical graph, including necessary goals from another subject. Changing focus leaves this basis intact.
+
 Course profile is a per-subject attribute: Mathematics `LK` and Physics `GK` may coexist, `LK` never implies upper secondary, and missing stage data never silently defaults to cross-stage scope. Level 2 resolves the applicable composition view and bounds focus, frontier, progress, and completion; changing Level 2 revalidates focus and `activeGoal` without altering canonical goal IDs or erasing global mastery.
 
 **Single first-party editor contract:** Level 2 is edited exclusively in SkillPilot's first-party WebGUI (on the start screen before launching a session and in the Cockpit afterward) over shared backend validation, normalization, and save rules. The OpenAI ChatClient neither presents nor mutates Level 2; if configuration is incomplete, it halts domain coaching and refers the learner back to the WebGUI.
@@ -65,11 +67,13 @@ Level 3 is intentionally lightweight and comprises two parts:
 
 Focus widening follows the learner-facing ancestor path toward the root: the backend publishes valid broader ancestors that add unmastered `target` goals (nearest suitable ancestor first, preserving independent multi-root corridors in `goalIds`), and automatic widening is proposed only upon genuine completion of the current focus (never merely because the frontier is blocked), requiring learner confirmation.
 
-Under the 4 November 2026 [Assessment-Gated Completion](skill-graph/assessment-gated-completion.md) clarification, `requires` alone never writes mastery to prerequisites; valid passed application assessments derive globally effective recognition of ordinary goals, so widening focus never reopens recognized competences.
+Choosing a higher entry level describes what the learner wants to work on. A focus change or a `requires` edge supplies no evidence for earlier units or their goals. When a learner attempts an offered assessment directly, only a successful attempt provides an assessment result. See [2.3](runtime-workflows/learning-workflow.md#sec-workflow-step4) for the learning route and the unit proposal.
 
 <a id="sec-personalization-level4"></a>
 ### 1.5. Level 4: Mastery and the orthogonal timeline axis
 
-Mastery is the learner's single durable outcome per stable atomic goal UUID — **mastered or not mastered** — remaining global across composition views and Level 2/3 changes without partial-mastery states. Effective mastery $M_{\mathrm{eff}} = M \cup W$ combines stored explicit mastery $M$ with assessment-gated recognition $W$ (while assessment and memorization goals stay explicit; runtime migration remains pending, see [2.4](runtime-workflows/learning-workflow.md#sec-workflow-step5)). Cluster and scope percentages express the weighted share of effectively mastered atomic goals, never partial mastery of one goal.
+A durable learner result belongs to the stable UUID of the atomic goal and survives changes to subject view, Personal Curriculum and focus. An individual goal has a binary outcome contract. Aggregate progress needs a stated scope and counting rule. The current learning plan can be set to credit only explicitly achieved goals. Work waived in a particular scope creates no stored success for the atom. [Learning-plan status](didactic/unified-learning-plan-status.en.md)
+
+**Contract in force, 4/11 November.** Effective mastery $M_{\mathrm{eff}}=M\cup I$ combines stored results $M$ with derived recognition $I$. Recognition originates in the owning unit and continues to apply after a focus change. Step 4 describes implementation status and the proposal of 19 November. See [2.3](runtime-workflows/learning-workflow.md#sec-workflow-step4).
 
 **Orthogonal curriculum timeline:** A dated course or exam schedule is an execution-plan overlay answering **when** targets inside Level 2 should be addressed (see [Unified Learning-Plan Status](didactic/unified-learning-plan-status.en.md) and [Curriculum Time Axis and Pacing](didactic/curriculum-time-axis-and-pacing.en.md)), not a fifth personalization level.

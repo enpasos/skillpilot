@@ -16,7 +16,7 @@ The skill landscape chosen before learning starts; it provides the full goal uni
 
 *DE: persönliches Curriculum, persönlicher Lehrplan* — see [Learning Workflow](repo:docs/concept/runtime-workflows/learning-workflow.md)
 
-The committed, longer-lived subset of the base curriculum in scope for one learner (jurisdiction or canonical view, applicable duration model, stage, subjects, and course profiles per subject). It resolves the learner-facing composition view and becomes the candidate space for focus, frontier, progress, and completion, while the backend may still consult the full graph for strict prerequisite checks.
+The committed, longer-lived subset of the base curriculum in scope for one learner (jurisdiction or canonical view, applicable duration model, stage, subjects, and course profiles per subject). It resolves the learner-facing composition view and becomes the candidate space for focus, frontier, progress, and completion, while the backend may still consult the full graph for strict prerequisite checks. The selection supplies the atomic seed goals $S$. The personal learning basis $L$ contains $S$ and all prerequisites transitively required in the canonical graph, including necessary goals from another subject. Changing focus leaves this basis intact.
 
 This state is backend-owned and configured exclusively through the first-party WebGUI and Cockpit; the chat coach neither asks for nor mutates it.
 
@@ -59,7 +59,7 @@ $\mathrm{Sat}(g)$ holds iff the atomic basis of $g$ is non-empty and fully maste
 
 *DE: optimistischer Modus* — see [Context & Views](repo:docs/concept/skill-graph/context-and-views.en.md)
 
-Filter to the selected view scope first (including explicit `prerequisiteOnly` foundations), then evaluate prerequisites. Learners can start directly in their chosen scope without being globally blocked by gaps from earlier years. This is the default mode.
+The runtime derives prerequisites and computes reachability in the full graph, including paths through hidden intermediate goals. It then restricts blocking prerequisites to the chosen scope, including its designated foundations. This is the default mode.
 
 ### Strict mode (pessimistic mode) {unnumbered=true}
 
@@ -75,11 +75,23 @@ The unsatisfied effective prerequisites of a goal, split into gaps inside and ou
 
 ### Mastery {unnumbered=true}
 
-*DE: Beherrschung; Lernziel geschafft oder noch nicht geschafft* — see [Learning Workflow](repo:docs/concept/runtime-workflows/learning-workflow.md) and [Implicit Mastery](repo:docs/concept/skill-graph/assessment-gated-completion.md)
+*DE: Beherrschung; Lernziel geschafft oder noch nicht geschafft* — see [Learning Workflow](repo:docs/concept/runtime-workflows/learning-workflow.md) and [Assessment evidence and recognition contract](repo:docs/concept/skill-graph/assessment-gated-completion.md)
 
 The single stored outcome for an atomic goal: **mastered or not mastered** (encodable as `0` and `1`, without intermediate partial grades or extra qualification tiers). Mastery belongs to stable goal IDs and applies globally across composition views. Cluster or subject progress is the weighted share of unique mastered atomic goals.
 
-The binding 4 November 2026 concept adds **effective mastery** $M_{\mathrm{eff}} = M \cup I$, where $I$ is derived recognition of ordinary competencies through independent application in valid local assessment contracts. Exam and memory goals never enter $I$. Runtime adaptation to this extended contract remains pending.
+The adopted recognition rules of 4 and 11 November 2026 add **effective mastery** $M_{\mathrm{eff}} = M \cup I$, where $I$ is derived recognition of ordinary competencies in valid local assessment contracts. Exam and memory goals never enter $I$. Global revision-bound runtime implementation remains incomplete. The proposal of 19 November does not replace this applicable contract basis; its terms distinguish unit judgement, direct individual evidence and planning release.
+
+### Unit qualification (proposal of 19 November 2026) {unnumbered=true}
+
+*DE: Einheitennachweis (Vorschlag)* — see [Unit completion](repo:docs/concept/skill-graph/learning-units.md#sec-proposal-unit-completion)
+
+The proposed judgement that a named subject unit at its stated level is demonstrated through its version's required evidence. Representative performances can support this judgement without assessing every detail individually. The proposal includes all stated required children; replacing their exams with a parent assessment requires a separate decision. It creates neither individual results never demonstrated nor records of a skipped opening, flashcard recall or experiment. The product decision and trials remain pending.
+
+### Planning release (proposal of 19 November 2026) {unnumbered=true}
+
+*DE: Planungsfreigabe (Vorschlag)* — see [Planning release](repo:docs/concept/skill-graph/assessment-gated-completion.md#sec-proposal-planning-release)
+
+In the proposal, $F_{\mathrm{plan}}$ includes only ordinary content goals owned by a fully passed unit version whose review supports their full claim. Each goal uses the same evidentiary standard as an individual result. Release can satisfy later prerequisites outside the unit. Goals owned by a different unit depend on that unit’s own evidence. This includes a child whose own releases may already apply while the parent is open. A release creates neither a mastery entry nor a dated completion event.
 
 ### Curriculum timeline and pacing plan {unnumbered=true}
 

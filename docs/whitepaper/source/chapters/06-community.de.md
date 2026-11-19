@@ -34,8 +34,10 @@ Der Claude-Einstieg erfolgt über den SkillPilot-Marketplace; die Einrichtung ze
 
 **SkillPilot ist nicht auf eine bestimmte KI festgelegt.** Plugins und eigene Provideradapter verbinden den unabhängigen fachlichen Kern mit dem jeweiligen KI-Chat. Zusätzlich zur Claude-Beta ist **ChatGPT Desktop (Beta)** über den [SkillPilot-Git-Marketplace](https://github.com/enpasos/skillpilot-chatgpt-marketplace) verfügbar. Installation und Lernstart sind unter Windows bestätigt. Wählen Sie in SkillPilot **ChatGPT Desktop**, bereiten Sie seine Startnachricht vor und senden Sie sie in einem neuen Desktop-Chat. Die [Plugin-Anleitung](https://skillpilot.com/plugins#chatgpt-desktop) erklärt Einrichtung und Updates. Browser und mobile ChatGPT-App sind für diesen Weg noch nicht bestätigt. Weitere Anbindungen setzen geeignete Schnittstellen und zuverlässig unterstützte Funktionen beim jeweiligen Anbieter voraus.
 
+Für **Gemini (Beta)** gibt es einen kontrollierten Webtest mit einem privat eingerichteten Konto. Dort wurden Lernstart, gespeicherter Fortschritt und Fortsetzung in einem neuen Chat erprobt. Der Zugang für weitere Konten ist noch offen.
+
 **Initiator:** Träger ist die **enpasos GmbH**. Wir laden Partner ein, SkillPilot gemeinsam weiterzuentwickeln – fachlich, didaktisch und technisch.
 
-**Mehr Transparenz:** [GitHub](https://github.com/enpasos/skillpilot) · [Dokumentation](https://enpasos.github.io/skillpilot/) · [Graph-Definition](https://enpasos.github.io/skillpilot/concept/skill-graph/graph-definition/)
+**Mehr Transparenz:** [GitHub](https://github.com/enpasos/skillpilot) · [Dokumentation](https://enpasos.github.io/skillpilot/) · [Graph-Definition](https://enpasos.github.io/skillpilot/concept/skill-graph/graph-definition.de/)
 
 ---

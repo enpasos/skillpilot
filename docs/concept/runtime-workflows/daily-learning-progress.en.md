@@ -1,7 +1,7 @@
 # Daily Learning Progress: Daily Quota First, Voluntary Extra Work Afterward
 
 > **Superseded.** Since September 2026, the authoritative specification for learning-plan
-> status is the [Unified Learning-Plan Status Concept](../didactic/unified-learning-plan-status.md).
+> status is the [Unified Learning-Plan Status Concept](../didactic/unified-learning-plan-status.en.md).
 > It uses a per-subject quantitative balance on a daily or weekly basis whose wording is
 > formulated authoritatively by the backend. The daily-quota counter fields described here
 > (`dueToday`, `completedToday`, `openToday`, `openOverdue`, `extraCompletedToday`) are no

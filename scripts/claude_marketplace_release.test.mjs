@@ -33,7 +33,7 @@ import {
 const scriptRoot = dirname(fileURLToPath(import.meta.url));
 const repositoryRoot = resolve(scriptRoot, "..");
 const canonicalPluginRoot = resolve(repositoryRoot, "ai/claude/plugin/skillpilot-coach-v1");
-const pinnedCanonicalRevision = "1394481fd5769b0e9eac2c077cbb4d6b37d05982";
+const pinnedCanonicalRevision = "41f13a3c04d1181b43988d131b24e21a53fe331c";
 const marketplaceWorkflow = readFileSync(resolve(repositoryRoot,
   "ai/claude/marketplace/skillpilot-marketplace/validate.yml"), "utf8");
 function loadHistorical110MarketplaceLane() {
@@ -82,7 +82,6 @@ const marketplaceTemplate = JSON.parse(
 );
 const publishedMarketplaceLane = loadHistorical110MarketplaceLane();
 const currentMarketplaceLane = loadClaudeMarketplaceLane(repositoryRoot);
-const pinnedMarketplaceLane = currentMarketplaceLane;
 const pinnedBaseline = JSON.parse(readFileSync(resolve(canonicalPluginRoot,
   "release/contract-baseline.json"), "utf8"));
 // Export behavior uses the current validator and an explicitly synthetic local
@@ -102,7 +101,7 @@ test("Marketplace README names only the pinned export version and explains obser
   const readme = readFileSync(resolve(repositoryRoot,
     "ai/claude/marketplace/skillpilot-marketplace/README.md"), "utf8");
   const mentionedVersions = new Set(readme.match(/\b\d+\.\d+\.\d+\b/gu));
-  assert.deepEqual([...mentionedVersions], [pinnedMarketplaceLane.plugin.version]);
+  assert.deepEqual([...mentionedVersions], [pinnedBaseline.pluginVersion]);
   assert.match(readme, /automatic updates/u);
   assert.match(readme, /observed in two Claude accounts/u);
   assert.match(readme, /Update timing.*can vary/u);
@@ -665,7 +664,7 @@ candidateExportTest("synthetically pinned current source exports its exact allow
 });
 
 test("current Marketplace CI pins canonical source content and credentials without depending on the public download", () => {
-  const lane = pinnedMarketplaceLane;
+  const lane = currentMarketplaceLane;
   validateClaudeMarketplaceWorkflow(marketplaceWorkflow, lane);
   assert.doesNotMatch(marketplaceWorkflow, /curl|api\/public\/claude\/plugins/u);
   for (const replacement of ["main", "a".repeat(40)]) {
@@ -686,7 +685,7 @@ test("current Marketplace CI pins canonical source content and credentials witho
 });
 
 test("current Marketplace workflow contract fails closed when integrity or either strict validation is weakened", () => {
-  const lane = pinnedMarketplaceLane;
+  const lane = currentMarketplaceLane;
   for (const requiredLine of [
     "Pinned canonical source tree", "Canonical source symlink forbidden",
     "Pinned dossier archive bytes", "Pinned dossier archive digest",
@@ -937,13 +936,13 @@ test("published verification is pinned to the configured repository", () => {
   );
 });
 
-test("committed source produces the eligible 1.1.13 export without claiming client acceptance", () => {
+test("the pinned 1.1.14 candidate is eligible for export without implying account acceptance", () => {
   const result = checkClaudeMarketplace({ repositoryRoot });
   assert.equal(result.pluginName, "skillpilot-coach-v1");
-  assert.equal(result.version, "1.1.13");
+  assert.equal(result.version, "1.1.14");
   assert.equal(result.pendingCandidateVersion, undefined);
   assert.match(result.treeSha256, /^[0-9a-f]{64}$/u);
-  assert.ok(result.outputRoot);
+  assert.equal(typeof result.outputRoot, "string");
   assert.equal(result.files.length, 12);
   assert.notEqual(currentMarketplaceLane.activation.state, "published_verified");
   assert.ok(currentMarketplaceLane.activation.evidence.slice(1).every(({ status }) => status === "pending"));
@@ -952,13 +951,37 @@ test("committed source produces the eligible 1.1.13 export without claiming clie
 test("an unpinned future candidate cannot use the published workflow export", () => {
   withOutput(({ root, outputRoot }) => {
     const futureLane = withoutPublicationEvidence(currentMarketplaceLane);
-    futureLane.plugin.version = "1.1.14";
+    futureLane.plugin.version = "1.1.15";
     const lanePath = resolve(root, "ai/claude/plugin/skillpilot-coach-v1/release/marketplace-publication.json");
     mkdirSync(dirname(lanePath), { recursive: true });
     writeFileSync(lanePath, JSON.stringify(futureLane));
     assert.throws(() => prepareCurrentMarketplace({ repositoryRoot: root, outputRoot }),
-      /export version 1\.1\.14 does not match pinned template version 1\.1\.13/u);
+      /export version 1\.1\.15 does not match pinned template version 1\.1\.14/u);
   });
+});
+
+test("published 1.1.13 keeps its immutable archive, dossier and repository binding", () => {
+  const pinnedMarketplaceLane = JSON.parse(readFileSync(resolve(canonicalPluginRoot,
+    "release/history/1.1.13/marketplace-publication.json"), "utf8"));
+  const pinnedBaseline = JSON.parse(readFileSync(resolve(canonicalPluginRoot,
+    "release/history/1.1.13/contract-baseline.json"), "utf8"));
+  validateClaudeMarketplaceLane(pinnedMarketplaceLane);
+  assert.equal(pinnedMarketplaceLane.activation.state, "published_pending_acceptance");
+  assert.equal(pinnedBaseline.pluginVersion, "1.1.13");
+  const digest = "0e99b10635c0a97a43d5f6fbdc0fa437b6da68bb0483515fdf8230e0764090cd";
+  const archive = readFileSync(resolve(repositoryRoot,
+    `backend/src/main/resources/claude-plugin-publication/skillpilot-coach-v1/1.1.13/sha256-${digest}/skillpilot-coach-v1-1.1.13.plugin`));
+  assert.equal(archive.length, 46595);
+  assert.equal(createHash("sha256").update(archive).digest("hex"), digest);
+  assert.equal(pinnedBaseline.archive.bytes, 46595);
+  assert.equal(pinnedBaseline.archive.sha256, digest);
+  assert.equal(pinnedMarketplaceLane.activation.evidence[0].revision,
+    "803cdbf462465c8686f2b7894a9ddfbdf1ec50b7");
+  assert.equal(pinnedMarketplaceLane.activation.evidence[0].treeSha256,
+    "1ffa2ec07f543b13a4d7111dc4317ff19ebd93290887d1cb924201771caae05f");
+  assert.equal(pinnedMarketplaceLane.plugin.directInstallSha256, digest);
+  assert.equal(pinnedMarketplaceLane.activation.evidence[0].candidateSha256, digest);
+  assert.equal(pinnedMarketplaceLane.activation.evidence[0].candidateVersion, "1.1.13");
 });
 
 test("published 1.1.12 keeps its immutable archive, dossier and repository binding", () => {
@@ -1008,7 +1031,7 @@ test("source CI always checks the marketplace and exports only an eligible candi
   assert.equal(current.output, "export_ready=true\n");
 
   const pending = runSourceWorkflowGate(checkStep,
-    "{ version: '1.1.12', pendingCandidateVersion: loadClaudeMarketplaceLane().plugin.version, outputRoot: null }");
+    "{ version: '1.1.13', pendingCandidateVersion: loadClaudeMarketplaceLane().plugin.version, outputRoot: null }");
   assert.equal(pending.status, 0, pending.stderr);
   assert.equal(pending.output, "export_ready=false\n");
 
@@ -1151,7 +1174,7 @@ async function createExportFixture() {
     }
     const syntheticSourceDigest = sourceHash.digest("hex");
     const syntheticRevision = "1".repeat(40);
-    const pinnedSourceDigest = "80e84ae610ba53cb25f344f35c294131912251ceb382bb73f608727261215384";
+    const pinnedSourceDigest = "9451d448b8f98efdccb517ca63f0126150e60869cb28e71a765fc21f04dd1004";
     const workflow = marketplaceWorkflow
       .replaceAll(pinnedCanonicalRevision, syntheticRevision)
       .replaceAll(pinnedSourceDigest, syntheticSourceDigest)
@@ -1159,6 +1182,9 @@ async function createExportFixture() {
       .replaceAll(pinnedBaseline.archive.sha256, baseline.archive.sha256)
       .replaceAll(String(pinnedBaseline.archive.bytes), String(baseline.archive.bytes));
     writeFileSync(resolve(templateRoot, "validate.yml"), workflow);
+    const fixtureManifestPath = resolve(templateRoot, "marketplace.json");
+    writeFileSync(fixtureManifestPath, readFileSync(fixtureManifestPath, "utf8")
+      .replaceAll(pinnedBaseline.pluginVersion, baseline.pluginVersion));
     for (const filename of ["README.md", "CHANGELOG.md"]) {
       const path = resolve(templateRoot, filename);
       writeFileSync(path, readFileSync(path, "utf8")

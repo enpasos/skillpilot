@@ -1,5 +1,11 @@
 # Canonical Gymnasium Chemistry Bundeslaender Status
 
+> **Historical rollout report — classified on 19 November 2026.** The snapshot and figures below remain unchanged at their stated April/May 2026 date. Percentages, count gates, and next steps describe rollout management at that time, rather than current quality, publication approval, or completion. They have not been remeasured against the November views and units.
+>
+> The [curriculum-quality report](../qa-ci/status/curriculum-quality-status.json) supplies the current machine subject/state evidence; the [stage-plan handover](stage-plan-units-handover-2026-11-15.md) and [management record](stage-plan-management-summary.md) state the confirmed mandate and actual integration. The [Mathematics](mathematics-stage-view-normalization-2026-11-16.md) and [Physics delivery](physics-stage-view-normalization-2026-11-16.md) document the newer views.
+>
+> The old render commands do not replace this historical report using current inputs. The repaired Mathematics/Physics counters support source format 1.2 and retain the 1.0 fallback. Their new stage counts remain separate from the historical rollout score. A mixed rerun would not establish a new snapshot of this old report.
+
 Snapshot: `2026-05-12T01:05:00Z`
 
 This file is generated from:

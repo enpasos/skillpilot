@@ -54,7 +54,7 @@ The same definition covers the other kinds of nodes. An assessment or memory goa
 
 **Interplay of `requires` and `after` across unit boundaries:** Only atomic `requires` paths enter the knowledge context; a sibling `after` declaration ([Unit Progression](learning-unit-progression.md)) adds zero goals to $W(g)$ and never unlocks subject matter for tasks, cards, images, or explanations. Conversely, in an E3-compliant unit hierarchy for two distinct child units at their smallest common parent, the prerequisite branch precedes the dependent branch in `after`. When either branch is an own atom, atomic demand itself provides the order instead. `after` describes block order in the intended learning flow; only `requires` secures exact conceptual usability.
 
-Nothing new is stored for the knowledge context. It is a projection of `contains`, `requires`, titles, and descriptions, as the frontier is a projection of prerequisites and mastery.
+The knowledge context supports content development. It derives from `contains`, `requires`, titles and descriptions. A personal recommendation also uses the learner’s record, including goals recognized under R1–R5. The proposal of 19 November would use individually demonstrated goals and the content goals released for planning by the unit versions that own them and have been passed.
 
 <a id="what-the-derivation-shows"></a>
 <a id="sec-sga-kc-prototype"></a>
@@ -107,9 +107,9 @@ Verdicts are **monotone**. An added edge only enlarges $W(g)$, so a goal that wa
 | Generation and review of goal texts and edges | The sufficiency question for every goal; the review proposes candidate edges and never adds them itself. |
 | Goal images | The image prompt carries the context; today it carries only the title and description of the goal. The image review records faithfulness. |
 | Memory cards, practice tasks, and exams | The context of the assessment or memory goal bounds task, solution, and rubric. |
-| Learning units | The context of the unit replaces any hand-written statement of its subject matter; the coverage review of an own assessment receives it. |
+| Learning units | The knowledge context bounds the tools a task may use. The applicable R1–R5 separately determine recognition of own goals. The proposal of 19 November would additionally review the overall judgement about the unit and its planning releases. |
 | Learning-goal book | The context of the goal bounds its page. |
-| Coach | The core context of the active goal. The backend merges it with the learner's state: a secured goal that is not yet mastered is not assumed, and a "not yet" goal that the learner has mastered may be used. |
+| Coach | The core context describes the intended subject prerequisites. Personal recommendations use individual evidence including valid recognition under R1–R5. Separate planning release through passed unit versions belongs to the proposal of 19 November. |
 
 The coach receives titles of goals and mastery states that its context already carries in other places. No chat prose flows back to the backend, and the selection stays with the backend.
 

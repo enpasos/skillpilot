@@ -16,6 +16,8 @@ The coverage view surfaces both directions: selected topics lacking an assigned 
 
 A `requires` edge establishes preparation demand rather than tested performance, and metadata mappings are presented as *recorded topic mappings* rather than fresh quality certifications. Unavailable tasks are flagged rather than scheduled; when `coveredGoalIds` references a canonical cluster expanded into visible goals by the course view, it summarizes only those already visible goals without pulling hidden goals into the course.
 
+Selecting a task package specifies content for preparation. Under the proposal of 19 November, whether completing a task contributes to a qualifying unit judgement depends on the subject-reviewed unit and assessment revision. A `coveredGoalIds` entry alone cannot establish that judgement.
+
 For kinematics under **Physics → Phase E → Exercises**, two selectable task packages (*Vertical Throw: Signs, Apex, and Return* and *Horizontal Launch: Two Motions, One Shared Time*) each provide six sub-tasks (36 credit points) with full DE/EN solutions and rubrics covering equations of motion, diagrams, and vector-free reasoning (without claiming hands-on lab skill).
 
 ### Completing preparation {#sec:exam-complete-prep}

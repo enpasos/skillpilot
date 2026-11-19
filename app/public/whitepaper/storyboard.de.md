@@ -1,12 +1,12 @@
 # SkillPilot – die Geschichte in Bildern
 
-**Version:** 1.0.23 · **Projekt:** SkillPilot · *Ein Teil der Illustrationen ist KI-generiert.*
+**Version:** 1.0.24 · **Projekt:** SkillPilot · *Ein Teil der Illustrationen ist KI-generiert.*
 
 ## 1. Wissen, das trägt. Lernziel für Lernziel.
 
 ![Eine Lernende arbeitet am Handy und auf Papier; ihr Wissen wächst wie ein Haus aus tragfähigen Lernzielbausteinen](learning-house.png)
 
-Mathematik und Physik für die gesamte gymnasiale Oberstufe: Schon heute führt der Claude-basierte SkillPilot-Coach durch das persönliche Curriculum auf Grundlage des gewählten offiziellen Lehrplans – auch auf dem Handy. Die Erfolge erarbeitest du selbst; jeder verstandene Baustein trägt das Weitere.
+Vom gewählten Lehrplan zum persönlichen Lernweg: Der Claude-basierte SkillPilot-Coach begleitet bereits das Lernen im Gymnasium – auch auf dem Handy. Welche Fächer und Stufen geprüft sind, zeigt das [Curriculum-Verzeichnis](https://skillpilot.com/curricula). Die Erfolge erarbeitest du selbst; jeder verstandene Baustein trägt das Weitere.
 
 ## 2. Ein gemeinsamer Lehrplan. Dein eigener Lernweg.
 
@@ -18,13 +18,13 @@ Mathematik und Physik für die gesamte gymnasiale Oberstufe: Schon heute führt 
 
 ![Von einer offenen Frage über den eigenen Lösungsversuch mit einem Hinweis des Coaches bis zur Erklärung für eine Mitschülerin](learning-moment.png)
 
-Der Aha-Moment gehört dir. Du kannst im Claude-Chat tippen, den Voice Mode nutzen oder deine eigene Arbeit mit dem Handy fotografieren und besprechen. Der Coach hilft mit Fragen und Hinweisen – seine Rückmeldungen darfst du hinterfragen.
+Der Aha-Moment gehört dir. Du kannst im Claude-Chat tippen, den Voice Mode nutzen oder deine eigene Arbeit mit dem Handy fotografieren und besprechen. Bitte um eine Erklärung, wenn ein Begriff neu ist, bring eigene Fragen ein und probiere den Gedanken an einem Beispiel aus. Beim Lernen gehören Erklären, Gespräch und Üben zusammen. Für einen Prüfungsnachweis zählt deine selbstständige Leistung; die Rückmeldung der KI darfst du hinterfragen.
 
 ## 4. Dein Fortschritt bleibt zusammen.
 
 ![Der Coach auf dem Handy steht mit einer separaten SkillPilot-Lernlandkarte in Verbindung: erreichte Grundlagen, ein aktives Lernziel und ein Plan](learning-core.png)
 
-Der Coach führt den Dialog; SkillPilot verwaltet Curriculum, Lernstand und Plan getrennt vom Chat. Morgen knüpfst du daran an. **Der Plan leitet, aber begrenzt nicht dein Lernen.** Der fachliche Kern ist vom KI-Anbieter entkoppelt; Claude ist heute der Beta-Zugang, weitere Anbindungen wie ChatGPT sind in Arbeit.
+Der Coach führt den Dialog; SkillPilot verwaltet Curriculum, Lernstand und Plan getrennt vom Chat. Morgen knüpfst du daran an. **Der Plan leitet, aber begrenzt nicht dein Lernen.** Der fachliche Kern ist vom KI-Anbieter entkoppelt. Neben Claude gibt es einen ChatGPT-Desktop-Betaweg; Voraussetzungen und geprüfte Grenzen stehen im [Kurzstart](https://skillpilot.com/quickstart/de).
 
 ## 5. Ein Lernziel. Verschiedene Wege zum Verstehen.
 

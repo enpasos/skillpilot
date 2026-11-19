@@ -86,7 +86,7 @@ To find the learning frontier, the graph must account for a goal’s direct prer
 | $R$ | Authored (direct) requirements | Stored `requires` edges. In the canonical target state they connect atoms only. |
 | $\Reff$ | Effective requirements | $R$ together with requirements inherited from `contains` ancestors. |
 | $\Rat$ | Atomically normalized requirements | Every effective prerequisite is expanded into its atomic basis, leaving pairs of atoms only. |
-| $\Rat^+$ | Transitive closure | All prerequisites reachable across chains. Basis of demand, frontier, and implicit mastery. |
+| $\Rat^+$ | Transitive closure | All prerequisites reachable across chains. Used to calculate demand and the frontier. |
 | $R_A$ | Directly authored atomic requirements | $R\cap(A\times A)$; basis of the didactic route check in Section~@ref{sec:routes}. |
 :::
 
@@ -292,6 +292,8 @@ A percentage coverage summary additionally requires an explicit denominator. Der
 
 ## Learner State, Satisfaction, and Progress {#sec:state}
 
+**Applicable confirmed contract (4/11 November 2026).** The following formulas using $\Meff$ describe the binding recognition model. Full implementation, especially revision-bound global derivation, requires separate evidence. The proposal of 19 November is discussed only in Section~@ref{sec:proposal-unit-assessment}.
+
 The preceding sections describe the skill graph independently of any learner. This section adds learner state: what is persisted, what counts as effectively mastered, which goals are available next, and how progress is aggregated.
 
 ### Satisfaction Without Backward Prerequisite Inference {#sec:satisfaction}
@@ -410,7 +412,7 @@ $\Closure(T)$ (formerly $U(T)$) comprises the selected atoms and their entire tr
 
 Along the path $a\to b\to c$, selecting $a$ and $c$ must retain the intermediate goal $b$ in the underlying graph. This preserves the prerequisite chain even if a view hides $b$. If $b$ is missing from the underlying graph, the projection needs repair. The composition view introduces no substitute edge.
 
-For personal selection, the decision of 10 November 2026 sets the order of operations. First, the reviewed jurisdiction and course filters determine the atomic seed targets $S$ from all selected subjects. The personal scope $L=\Closure(S)$ is then computed on the unpruned canonical graph. Every individually necessary atom belongs to learning, progress and completion, including atoms from another course or subject. Merely belonging to the same unit does not enrol a sibling. If all atoms in a subject are needed, all of them enter $L$.
+For personal scope, the reviewed jurisdiction and course filters first select atomic seed targets $S$ across the chosen subjects. Under the decision of 10 November 2026, $L=\Closure(S)$ is then computed on the unpruned canonical graph. Every necessary atom stays in scope, including atoms from other courses and subjects. Siblings in the same unit are included only when themselves needed. Outstanding work and demonstrated units are determined within that fixed scope.
 
 The personal configuration and the curriculum and projection revision determine $L$. A mastered goal stays satisfied in the denominator and needs no repetition. Closure includes its prerequisites too. Assumed prior knowledge is not evidence of mastery.
 

@@ -1,5 +1,7 @@
 ## Implicit Mastery Through Valid Local Assessments {#sec:assessment}
 
+**Applicable confirmed contract.** The decisions of 4 and 11 November remain in force; the formulas and R1–R5 in this main section are not merely contract history. Their full technical enforcement is a separate matter. The unadopted proposal of 19 November follows in Section~@ref{sec:proposal-unit-assessment}.
+
 :::principle {title="Binding Concept Revision of 4 November 2026"}
 An explicit pass on a content goal establishes understanding. Passing a valid local assessment can establish independent application of the underlying competencies. That implicit mastery carries equal global weight: it satisfies subsequent prerequisites and counts toward cumulative attainment. Assessment and memory goals themselves remain strictly explicit.
 :::
@@ -22,7 +24,7 @@ $$
 Q_U = \Own(U) \cap Q, \qquad A_{\mathrm{mem},U} = \Own(U) \cap A_{\mathrm{mem}}, \qquad P_U = Q_U \cup A_{\mathrm{mem},U}.
 $$
 
-Assessment goals require passing their own assessment, and memory goals require verified recall of their cards. The remaining *unprotected* own goals are content and orientation goals. Experimental content goals are also subject to R1 and R2. Deriving satisfaction of an orientation goal means only that the introduction is settled (Section~@ref{sec:orientation}).
+Assessment goals require passing their own assessment, and memory goals require verified recall of their cards. The remaining *unprotected* own goals are content and orientation goals. Experimental content goals are also subject to R1 and R2. An individual atom has the same stated claim on both evidence routes: if it requires the learner’s own experiment, neither dialogue explanation nor analysis of supplied data demonstrates the whole atom. This introduces no extra experiment obligation for every unit. Deriving satisfaction of an orientation goal means only that the introduction is settled (Section~@ref{sec:orientation}).
 
 #### Underlying relation.
 
@@ -160,4 +162,142 @@ The [unified learning-plan status contract](repo:docs/concept/didactic/unified-l
 
 :::sources
 [Assessment-Gated Completion and Implicit Mastery](repo:docs/concept/skill-graph/assessment-gated-completion.md); [Completion Semantics Clarification of 4 November 2026](repo:docs/concept/skill-graph/completion-semantics-clarification-2026-11-04.md); [Unified Learning-Plan Status Contract](repo:docs/concept/didactic/unified-learning-plan-status.md).
+:::
+
+### Proposal of 19 November: what completing a unit could demonstrate {#sec:proposal-unit-assessment}
+
+**Proposal for expert review, 19 November 2026.** Passing the stated final assessments demonstrates the **named unit at its stated level**. This judgement may rest on representative performances. It does not claim that every included detail was assessed individually. Support with such a detail may still be needed after valid completion.
+
+:::principle {title="A judgement about the unit, separate statements about individual goals"}
+Unit completion, actual individual evidence and justified release of prerequisites for subsequent planning remain distinguishable. A skipped learning step receives no invented success. Required work on the demonstrated route nevertheless ends.
+:::
+
+This is the **unadopted proposal of 19 November 2026**. The applicable derivation of global atomic mastery from absent outstanding demand remains in the main text (Sections~@ref{sec:transitive-demand} and~@ref{sec:global-effect}). The following rules describe no completed migration of the backend, result data, learning plan or quality gates. The concrete E.1 proposal still requires independent subject approval and trials.
+
+#### Proposal: Completion contract, scope and actual evidence {#sec:proposal-unit-contract}
+
+The completion contract of a declared subject unit binds its **identity, learning promise, level, version and required evidence**. It lists all own required exams and required children, plus separate flashcard recall or real performance where necessary. Full completion follows from this evidence under Equation~@eqref{eq:unit-complete-proposal}; membership of a goal in the cluster is insufficient.
+
+Before a direct attempt, the learner sees which parts jointly constitute completion. The standard is the same as after working through. A previously passed part that remains valid counts towards completion. Where completion supports only a narrower promise, that promise must be visible before the assessment. The Land, course profile and level must not be silently exchanged in the evidence.
+
+**Exam identity.** Each independent required exam needs its own valid pass. A shared title or pooled points account does not replace these passes. A task with a broader claim or changed qualifying rubric needs a new exam identity. This does not upgrade old results. Equivalent versions may carry the same meaning where their task and assessment demonstrably preserve that claim.
+
+**Proposed required evidence.** Performing an own experiment is an additional unit-completion obligation only where the contract expressly declares it. An actually required experiment or verified flashcard recall is recorded only when performed. The same atom has the same subject standard on both routes: where its text requires own performance, an explicit individual outcome in dialogue requires corresponding evidence too. Merely explaining or analysing supplied data is insufficient. Passing a written analysis creates no performance event for an experiment. Practice cards and preparatory tasks may be omitted on the direct route where they are not stated required evidence. Exams remain endpoints of the learning route; their results are not attached as subject `requires` edges to later content goals.
+
+#### Proposal: Why the graph and a points total are insufficient {#sec:proposal-evidence-review}
+
+Assessment design begins with a question: **What independent performance would convince us to entrust someone with a task at this level?** Task, solution and rubric must jointly support this judgement. Representative means a justified selection; passing must not allow indispensable concepts to be bypassed entirely.
+
+The independent subject review examines the complete goal list. For each goal it records which performance is required to pass, which part remains open and why the overall judgement can tolerate that gap. Direct subject connections beyond the unit deserve particular attention. If someone can pass while entirely misunderstanding a concept essential to the next step, the unit needs a different task, an indispensable criterion or a narrower promise. A central synthesis goal without an outgoing connection can also be indispensable.
+
+The review also examines the **planning effect for each whole atom claimed**. A `requires` path identifies preparation needs; it proves neither observed performance nor sufficient assessment breadth. `coveredGoalIds`, a title and a formally valid allocation of points do not constitute subject approval either. Releasing other atoms requires full unit completion. The review must justify which indispensable performances in the required package support the entire claim of each atom.
+
+A compensatory rubric can undermine the overall judgement: the existing exam “Multi-phase motion and model testing” requires 18 of 30 points to pass. Even without the seven points for acceleration phases, 23 points remain attainable. Passing this exam alone therefore cannot assert indispensable acceleration competence. The [E.1 discussion document](repo:docs/concept/skill-graph/unit-assessment-discussion-2026-11-19.de.md) develops two separate own exams with indispensable criteria.
+
+How many tasks support a reliable judgement requires subject and empirical investigation. No fixed minimum for every subject is established here. Subject reviews, automated consistency checks and learner trials provide different evidence. Agreement between the coaches used must be tested against concrete submissions with expected judgements concealed; it does not replace subject judgement.
+
+#### Proposal: Trial example: Hesse, Physics E.1 {#sec:unit-assessment-example}
+
+The proposed promise is: *I can use measurement data to decide when a velocity is approximately constant and when it changes. I can use this to predict motion, including simultaneous uniform and accelerated motion.* The full Hessian E.1 is not yet a declared subject unit with its own completion contract. The following combination is a trial of the new concept.
+
+:::table {#tab:unit-assessment-e1 caption="Four required exam passes for the proposed E.1 completion." cols="50mm,X"}
+| Required part | Own evidence and claim |
+| --- | --- |
+| Child · Modelling vertical projectile motion with constant acceleration | Existing exam identity; 24 of 24 points. Supports modelling, axis choice and idealisation in particular. |
+| Child · Acceleration report: velocity, position and model limits | Second existing exam identity; 20 of 20 points. Requires constructed diagrams and distinguishing displacement from distance after a reversal, among other things. |
+| Own part A · cart | New independent exam identity required; only 4 of 4 criterion points pass. Supports justified one-dimensional prediction, uncertainty, model limits and error types. |
+| Own part B · horizontal projectile | Another new independent exam identity required; only 3 of 3 criterion points pass. Supports physically justified superposition over a shared time. |
+:::
+
+**All four passes are required.** A and B do not replace the two child exams; they do not complete E.1 on their own. A and B are draft labels in this documentation, not exam IDs already created. Implementation requires a separate canonical identity and bound pass evidence for each of these two exams. The existing tasks “Multi-phase motion and model testing” and “Horizontal projectile: two motions, one shared time” provide starting material, not already passed new versions.
+
+##### What A and B demonstrate and what remains open.
+
+**A · cart** requires a justified prediction from suitable measurements, including measurement uncertainty, model limits and distinguishing error types. **B · horizontal projectile** requires physical justification of uniform motion and fall acceleration and their combination over the same time for a joint prediction. All four criteria of A and all three of B are indispensable; there is no compensation between criteria or exams.
+
+The decisive boundary case: convincingly analysing supplied fall data does not mean the learner has performed their own falling experiment. Likewise, a fitting quadratic numerical pattern without physical interpretation does not replace the required understanding of acceleration. The proposed completion can therefore support the learning promise while the full experimental individual goal remains open.
+
+The [discussion document](repo:docs/concept/skill-graph/unit-assessment-discussion-2026-11-19.de.md) contains the complete tasks, constructed measurements, seven indispensable rubric criteria and ten sample submissions for blind scoring. The data are not collected experimental results. Independent subject review, repeated blind assessment by the coaches actually used and trials with learners remain outstanding.
+
+#### Proposal: Planning release and stable result meaning {#sec:proposal-planning-release}
+
+**Standard in the proposal.** Planning concerns the **full canonical claim** of a required atom. The same standard applies to an explicit outcome $M$ from dialogue and assessment release $F_{\mathrm{plan}}$; assessment demands no stronger evidence for the same atom. Where application at this breadth was required to pass the bound evidence and has received subject approval, the learning plan can build on it. Requiring only a part is insufficient for general release. Representative evidence of unit completion alone does not answer this question.
+
+**Proposed release rule.** Let $M$ be the actually demonstrated atomic goals, $A_{\mathrm{content}}$ the ordinary content atoms and $\mathcal V$ the fully demonstrated valid units with their respective bound revisions $(U,\rho)$. The subject-reviewed release set $P_{U,\rho}$ contains exclusively **own ordinary atoms of that unit and revision**. Here $\Own_{\rho}(U)$ denotes the goals owned in that version. For the proposal:
+
+$$
+P_{U,\rho}\subseteq\Own_{\rho}(U)\cap A_{\mathrm{content}},\qquad
+F_{\mathrm{plan}}=\bigcup_{(U,\rho)\in\mathcal V}P_{U,\rho},\qquad D=M\cup F_{\mathrm{plan}}.
+$$
+
+A Physics exam can use a Mathematics atom but cannot release it on behalf of the Mathematics unit. Parent completion likewise releases no child atoms. A child unit contributes its own reviewed atoms only upon its own valid pass, even while its parent remains open. An individual exam part creates no additional release before its responsible unit is fully completed. **Only in the proposal**, regular prerequisite checking uses:
+
+:::equation {#eq:planning-release}
+\ReqAtoms(g)\subseteq M\cup F_{\mathrm{plan}}.
+:::
+
+The complete direct and transitive prerequisite closure remains decisive, respecting normal and strict focus. The formula creates **no new mastery set**: $F_{\mathrm{plan}}$ remains a planning justification distinguishable from $M$. Release does not record an actually required performance or required recall as having occurred. Nor does it create a second completion event.
+
+:::table {#tab:unit-assessment-release caption="Planning effect after the proposed four-part E.1 evidence." cols="53mm,X"}
+| Whole content atom | Planning effect and limitation |
+| --- | --- |
+| Uniformly accelerated motion and acceleration (child) | Released through both child exams, including initial values, reversals, diagrams and signed areas. B alone does not support this whole claim. |
+| Modelling and idealising motion (child) | Released through the child unit; A additionally requires the limit of a concrete prediction. |
+| Distinguishing measurement deviations and error types | Released: the justified distinction is indispensable in A. |
+| Stating measurement uncertainties | Released: A requires units and a time interval justified from measurement bounds. |
+| Uniform motion and velocity | Open: A assesses model prediction, not the atom's full experimental and graphical claim. |
+| Investigating motion with diagrams | Open: child diagrams do not replace independently recording motion experimentally. |
+| Distinguishing average and instantaneous velocity | Open: comparing secant and tangent slopes is not required. |
+| Investigating free fall experimentally | Open: B supplies data; an own experiment is not required. |
+| Reference frames and velocity superposition | Open: another reference frame and general vector superposition remain unassessed. |
+| Analysing horizontal projectile motion | Open: an own experiment and the x-y trajectory diagram are not required performances. |
+| Evaluating safe distances in road traffic | Open: none of the four exams requires this judgement. An additionally scheduled own acquisition assignment remains open. |
+:::
+
+The table states the **proposed** release scope; it is neither completed quality approval nor a data change. The first two rows rest on the [child unit contract](repo:curricula/DE/Gymnasium/quality/learning-units/physics-constant-acceleration-2026-11-15-v2.md), the next two on A's proposed indispensable criteria. Performing an own experiment belongs to E.1 completion only if expressly declared as required evidence there. Without that performance, experimental atoms whose own claim requires it cannot count as fully evidenced through either $M$ or $F_{\mathrm{plan}}$.
+
+In the Hessian example, passing all four assessments would release **four of the eleven content goals** for planning. A learner demonstrating the same eleven atoms individually in dialogue must meet the same full claim for each, including required own performance for experimental atoms. Merely discussing eleven goals does not establish eleven valid individual outcomes. Three of the seven open goals have direct dependants outside E.1. For instance, oblique projectile motion still needs evidence for the full horizontal projectile goal. The catalog already contains a practical assessment for learners seeking separate evidence of conducting a free-fall experiment.
+
+**Deliberate delay in the proposal.** Passing A already provides the indispensable evidence for measurement uncertainty. Its additional planning release would nevertheless wait for full E.1 completion, including B and the two child exams. Until then, “Using significant figures correctly” and “Determining mean and spread from measurements” need another valid source of evidence for that prerequisite. An atom already explicitly demonstrated in $M$ stays available. The applicable rule of 11 November can instead recognise own atoms once their local outstanding demand ceases; it does not invariably await full completion.
+
+**Open alternative.** A separately declared, revision-bound and subject-approved partial package could release the atom immediately after A. This would avoid the delay but require its own contract and could take over neither child nor foreign atoms. It is not an adopted trigger; the proposal examined here provisionally retains full completion of the responsible unit.
+
+The version, subject scope and planning effect remain durably bound to the underlying success. A focus change, new parent unit, additional edges or a broader new assessment claim never expand an old result. Suitable earlier evidence remains traceable across plan changes. A justified correction to results or content must be distinguished from such a retrospective expansion.
+
+#### Proposal: Open prerequisites and required individual evidence {#sec:proposal-open-prerequisites}
+
+A completed unit route can coexist with open individual assignments. An own assignment is fulfilled when its specified evidence exists or subject-appropriate release supports its **entire** claim. Where real performance or independent recall is explicitly prescribed, that performance remains required. A merely skipped exercise within the completed route is not carried forward as a backlog.
+
+Where a later goal needs an open atom, the backend tells the coach the need and its reason: for example “fall model analysed; own experiment not demonstrated” or “interval velocity used; instantaneous velocity open”. Deliberately choosing an entry unit does not remove this gap globally. It creates no success in other units either.
+
+**Open decision: short check or supported application.** For a directly required ordinary prerequisite whose necessary application has neither been demonstrated individually nor evidenced at the full required breadth by the passed version, a targeted short check could come first. The discussion document instead proposes offering entry with a note and observing application in the new task. If difficulties arise, the coach explains and practises the missing step. This local entry decision replaces no required evidence and does not release the atom globally. A binding decision and the corresponding backend information remain outstanding.
+
+When application is observed, only the active goal receives an outcome. The open prerequisite may reappear at a later step. A learner seeking durable evidence can choose the prerequisite as the active goal, demonstrate the specified performance and return to the original task. An incidental observation carries no lasting credit.
+
+**Open decision: replacing a child obligation for the parent route.** A parent assessment might support a narrower, differently worded overall completion even though individual child obligations have not been taken. A subject review would have to approve the claimed overall standard and the children's indispensable contributions explicitly. Until such a decision, all required parts apply; the E.1 example requires four. Such an exception must not fabricate child completion, real performance or flashcard recall.
+
+#### Proposal: Learning plan, cumulative progress and dated period events {#sec:proposal-period-accounting}
+
+The learning plan distinguishes at least three statements: **unit demonstrated by assessment**, **scheduled activities fully worked through**, and **outstanding own acquisition assignments**. The learner can thus recognise completion of a route while seeing which individually unassessed claims remain open for another route. Cumulative progress needs a named scope and visible counting method.
+
+This is a product proposal. Today the plan contains atomic goal IDs. Under the proposal, selecting work records whether the learner wants a unit qualification or an individual assignment. A learner who chose only E.1 has no backlog from the seven open skills after passing all four parts. A separately assigned free-fall experiment remains due. Existing atomic plans retain their stated scope.
+
+A unit counter such as “2 of 3 required units demonstrated” is meaningful only for a fully structured scope. Where units are only partly declared, goal counters remain necessary for the other areas. Both counting methods must not be merged into one percentage without a stated denominator. Likewise, the number of released prerequisites must not appear as the number of goals actually worked through.
+
+In the weekly workload, the real exam success counts **once** under its event contract. The derived unit display, multiple released atoms and later display of prior work create no further completion events. Evidence earned outside the current period remains earlier performance. New independent assessment attempts and retakes need an explicitly specified event contract; recalculating a display is insufficient.
+
+Current practice permits repeating a known task even after viewing its solution. This remains useful when working through. For a new qualifying demonstration, an equivalent version unfamiliar to the learner is proposed. Where model choice is assessed, merely changing numbers while retaining the identical solution route is insufficient. This new quality rule is not implemented; until a suitable version exists, the known task can remain available for practice. Previously stored successes remain valid.
+
+#### Proposal: Boundary with atomic recognition in force {#sec:proposal-contract-change}
+
+The **applicable** decisions of 4 and 11 November use outstanding demand $N_U$, the own implicit set $I_U$ and their global union $\Meff$. Their operative formulas and R1–R5 remain in Sections~@ref{sec:transitive-demand} through~@ref{sec:period-accounting}. The motivation draft of 17 November is a separate proposal. **The following changes to trigger and effect dated 19 November have not been adopted.**
+
+R2 still supplies the subject-matter standard for releasing an individual atom. The task and rubric must make its full application essential to passing. The trigger and consequence change. Under the earlier model demand for an atom could cease before unit completion. In this unadopted proposal only a fully demonstrated unit activates a reviewed release for later prerequisites. The unit can pass while entire individual goals remain open.
+
+Existing implementation and QA remain separate. [validateLearningUnits.ts](repo:app/scripts/validateLearningUnits.ts) checks the applicable unit contract, including structure, R1, R3 and own ownership. The [reference evaluation](repo:app/scripts/lib/learningUnitRecognition.ts) checks the applicable set equations; fully global revision-bound derivation under R5 is not yet implemented. Under its current contract, the [backend evaluation](repo:backend/src/main/java/com/skillpilot/backend/completion/CompletionEvaluator.java) can treat ordinary goals as done within scope when outstanding demand disappears, without an exam having been passed. None of these mechanisms evidences the unit performance proposed here.
+
+Before later implementation, completion evaluation, prerequisite checking, explicit events, display, revision binding and quality gates must be revised and checked together. This documentation change relaxes no existing gate, rebinds no historical evidence and rewrites no learner results.
+
+:::sources
+[Discussion document of 19 November](repo:docs/concept/skill-graph/unit-assessment-discussion-2026-11-19.de.md); [Child contract for accelerated motion](repo:curricula/DE/Gymnasium/quality/learning-units/physics-constant-acceleration-2026-11-15-v2.md); [Historical product decisions](repo:docs/concept/skill-graph/completion-semantics-clarification-2026-11-04.md); [Unified learning-plan status contract](repo:docs/concept/didactic/unified-learning-plan-status.md).
 :::

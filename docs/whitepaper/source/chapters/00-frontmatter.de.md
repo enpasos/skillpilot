@@ -1,4 +1,4 @@
-**Version:** 1.0.27 · **Projekt:** SkillPilot · *Ein Teil der Illustrationen ist KI-generiert.*
+**Version:** 1.0.28 · **Projekt:** SkillPilot · *Ein Teil der Illustrationen ist KI-generiert.*
 
 ---
 

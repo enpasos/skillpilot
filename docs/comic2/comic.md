@@ -1,5 +1,7 @@
 ### **SkillPilot KI Agent In Ausbildung Comic**
 
+> **Einordnung des ursprünglichen Bildskripts · 19. November 2026:** „Nicht vorsagen“ in Panel 4 bezieht sich auf die eigenständige Lösung einer Aufgabe. Beim Erlernen eines neuen Begriffs darf der Coach erklären, ein Beispiel zeigen und eine Verständnisfrage direkt beantworten. Ein Lerngespräch ist keine dauernde Prüfung. Für einen ausdrücklich begonnenen Prüfungsnachweis gelten die Anforderungen an selbstständige Bearbeitung. Die ursprünglichen Bildtexte und Bilder bleiben erhalten.
+
 **Panel 1: Die richtige Tonart (Chat Persona)**
 - **Bild:** Der kleine schwebende SkillPilot-Roboter sitzt auf einer Schulbank. Ein menschlicher Lerncoach zeigt ihm zwei Sprechblasen. Eine mit technischem Binärcode "010100" wirft der Roboter in einen Papierkorb. Die andere mit "Hallo! Wie kann ich dir helfen?" hält er stolz hoch.
 - **Text:** *"Lektion 1: Die Sprache der Lernenden. Ein guter Lerncoach rattert keine Daten herunter, sondern motiviert, hört zu und erklärt geduldig auf Augenhöhe."*

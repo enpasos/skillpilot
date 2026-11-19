@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import type { UiGoal } from '../goalTypes'
 import { getSrsFilterTags } from '../utils/srsTags'
+import { waitForSrsPracticeWrites } from '../utils/srsPracticeSync'
 
 type VocabCard = {
   id: string
@@ -76,6 +77,7 @@ export function useSrsMastery(
 
   const loadClientState = useCallback(async (goalId: string) => {
     if (!skillpilotId || !goalId) return null
+    await waitForSrsPracticeWrites(skillpilotId, goalId)
 
     const cacheKey = `${skillpilotId}:${reloadSignal}:${goalId}`
     const cache = clientStateCacheRef.current
@@ -146,20 +148,10 @@ export function useSrsMastery(
         )
       }
 
-      const storageKey = `srs_state_${skillpilotId}_${goal.id}`
-      const lastSyncKey = `srs_state_last_sync_${skillpilotId}_${goal.id}`
       const snapshot = await loadClientState(goal.id)
       if (runId !== runRef.current) return
       if (!snapshot?.srsState) continue
       const srsState = snapshot.srsState
-      // Recall is authoritative server state; a newer browser clock cannot certify it.
-      try {
-        localStorage.setItem(storageKey, JSON.stringify(srsState))
-        if (snapshot.updatedAt) localStorage.setItem(lastSyncKey, snapshot.updatedAt)
-        else localStorage.removeItem(lastSyncKey)
-      } catch {
-        // The current server snapshot remains usable without a browser mirror.
-      }
 
       let dueCount = 0
       let nextDueAt = Number.POSITIVE_INFINITY

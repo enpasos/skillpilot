@@ -337,6 +337,12 @@ def render() -> str:
 
 def main() -> None:
     tracker = load_json(TRACKER_PATH)
+    if tracker.get("updatedAt", "") < "2026-11-19":
+        raise SystemExit(
+            "Historical April/May rollout snapshot is preserved; current inputs must not be "
+            "mixed into its dated figures. Use curriculum-quality-status.json and the current "
+            "stage-plan reports. A new report needs a reviewed reporting contract."
+        )
     output_path = REPO_ROOT / tracker["quickViewPath"]
     output_path.write_text(render(), encoding="utf-8")
 

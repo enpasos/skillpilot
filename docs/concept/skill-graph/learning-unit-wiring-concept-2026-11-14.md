@@ -2,6 +2,8 @@
 
 **Stand: 15. November 2026 (normativ in die zweisprachigen Standard-Kompendien übernommen).** Dieses Entscheidungs- und Konzeptdokument hält fest, was eine Lerneinheit ist, wie Einheiten geordnet werden und wie diese Ordnung im Lernfluss wirkt, und dokumentiert in Abschnitt 9 und 10 die empirische Ausgangsmessung sowie die Folgearbeiten `F1` bis `F13`.
 
+**Einordnung vom 19. November 2026.** Dieses Protokoll hält den damaligen Stand fest. Für die aktuelle Arbeitsfassung des Abschlusskonzepts siehe [Einheiten und Lernwege (§11)](learning-units.de.md) und [Abschlussnachweise (§13)](assessment-gated-completion.de.md).
+
 > [!NOTE]
 > **Status der Spezifikationsintegration:** Die verbindlichen Modellregeln dieses Dokuments (`B1`–`B16`, `E1`–`E4`, Landesplan-Präzisierungen `M1`–`M8`, `Lernzielbaum` vs. `Lernkarte`, „Einheit für Einheit“ sowie die Schnittstelleneigenschaft zum Wissenskontext) sind vollständig in die zweisprachigen Single-Source-Kompendien integriert: **Band I** ([Graph-Definition §§6, 11–13](learning-units.de.md)), **Band Ia** ([Skill-Graph-Architektur §§1–3, 6, 8–13](general-goal-system-and-migration.de.md)), **Band II** ([Frontier-Auswahlstrategien §2](../didactic/frontier-goal-selection-strategies-autopilot.de.md)), **Band III** ([Operativer Lernablauf §2](../runtime-workflows/learning-workflow.de.md)) und das [Glossar](../glossary.de.md). Dieses Dokument bleibt als datiertes Entscheidungsprotokoll und operativer Einführungsplan (`F1`–`F13`) erhalten; die jeweiligen Kapitel weisen die Grenze zwischen Zielmodell, Kompatibilitätsvertrag 1.2 und Stufenplan-Grundlage `v1.3` direkt aus.
 

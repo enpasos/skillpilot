@@ -17,6 +17,7 @@
 - **Definitions are short on purpose.** Each entry states what the term means and, where it matters, what it is *not*. The linked document stays the normative source; this page never overrides it.
 - **DE** gives the German term used in the app, in German documentation, and by the learning coach. Field names such as `contains`, `requires`, or `applicability` are code identifiers and stay English in both languages.
 - **Terms are grouped by layer**, from curriculum sources up to quality governance, because most misunderstandings come from mixing layers rather than from a single word.
+- **Adopted contracts and proposals remain separate.** The [unit proposal of 19 November 2026](skill-graph/unit-assessment-discussion-2026-11-19.de.md) has not been adopted as a product rule. Its terms support the discussion; existing outcome contracts and quality gates continue to apply.
 
 Two rules explain a large part of the vocabulary below:
 
@@ -204,7 +205,7 @@ Declared unit in the shared plan of one Land and duration model across selected 
 
 *DE: Fachliche Einheit* — see [Learning Units](skill-graph/learning-units.md)
 
-Declared cluster in the canonical subject landscape with a learning promise and revision; applies across all Bundesländer (leaf subject units stay whole inside one plan unit across all 16 Länder). A **unit with assessments** (with own assessments and valid complete `coverageReviews`) additionally demonstrates independent application of its own content goals under R1–R5.
+Declared cluster in the canonical subject landscape with a learning promise and revision; applies across all Bundesländer (leaf subject units stay whole inside one plan unit across all 16 Länder). Under the applicable recognition concept, a **unit with assessments**, own exams and valid complete `coverageReviews` demonstrates independent application of its own content goals under R1–R5. The undecided proposal of 19 November distinguishes this from a representative judgement about the unit and separately justified planning release for whole atoms.
 
 ### `after`
 
@@ -244,9 +245,9 @@ Explicitly labeled provisional didactic assignment (`canonicalDefault`) derived 
 
 ### Assessment gap
 
-*DE: Prüfungslücke* — see [Implicit Mastery](skill-graph/assessment-gated-completion.md)
+*DE: Prüfungslücke* — see [Assessment evidence and recognition contract](skill-graph/assessment-gated-completion.md)
 
-An own content goal of a unit with assessments lacking suitable reviewed task and rubric coverage remains a failing finding (R1/R2). Repair supplies a sound assessment and independent review, never fictitious prerequisites or relaxed quality gates.
+Under the applicable recognition contract, an own content goal of a unit with assessments lacking suitable reviewed task and rubric coverage remains a failing finding (R1/R2). Repair supplies a sound assessment and independent review, never fictitious prerequisites or relaxed quality gates. The proposal of 19 November resolves no such finding and changes no gate status.
 
 <a id="sec-node-types"></a>
 ## 3. Node types (learning modes)
@@ -269,7 +270,7 @@ A spaced-repetition goal for facts, vocabulary, notation, or selected formulas. 
 
 *DE: Selbstständig Probleme lösen, Prüfungsknoten*
 
-A goal carrying `examData`: an independent assessment or practice task with a model solution and scoring scheme. In the target model no `requires` edge points to an `Exam` goal (assessments are endpoints of prerequisite paths). Own recognition assessments of declared **units with assessments** (`coverageReviews`) substantiate independent application of own content goals under R1–R5, whereas standalone practice tasks and Abitur exams inside assessment-free outer units remain selectable as usual without triggering implicit recognition.
+A goal carrying `examData`: an independent assessment or practice task with a model solution and scoring scheme. In the target model no `requires` edge points to an `Exam` goal (assessments are endpoints of prerequisite paths). The applicable recognition concept binds independent application of own content goals to R1–R5 and reviewed `coverageReviews` of declared **units with assessments**. Standalone practice tasks and Abitur exams remain selectable as usual but do not establish implicit recognition on their own. The proposal of 19 November would judge unit completion separately; it expands no existing exam's meaning.
 
 ### `examData` and scoring
 
@@ -326,7 +327,7 @@ An explicit organizational structural container (year, semester, module, phase, 
 
 A recursively composed educational whole in the three-tier progression **Cluster $\to$ Unit $\to$ Unit with assessments**. In the binding target model, a subject unit is declared as a canonical cluster with a learning promise, `revision`, sibling `after` order, and optional `coverageReviews`; own goals (`Own(U)`) and direct child units derive from `contains`, and leaf subject units stay whole inside one plan unit across all 16 Bundesländer. Until migration (`F8`–`F11`), the three existing canonical units use compatibility contract 1.2 (`programUnits` of kind `learningUnit` with `own` placements and `parentUnitId`; see [field reference](../dev/landscape-json-field-reference.md)).
 
-Every unit obeys the ordering rules **E1–E4** without imposing technical access locks via `after`. Completion derives from child units and own obligations without a stored unit-mastery value. Implicit recognition of own content goals applies exclusively inside declared **units with assessments** (with own assessments and valid complete `coverageReviews`) satisfying R1–R5 ([Graph Definition §13.3](skill-graph/assessment-gated-completion.md#sec-why-graph-not-enough)); runtime adaptation (`F12`/`F13`) remains pending.
+Every unit obeys the ordering rules **E1–E4** without imposing technical access locks via `after`. Completion derives from child units and own obligations without a stored unit-mastery value. Adopted individual recognition under R1–R5 and its incomplete implementation remain separate from the representative unit judgement in the proposal of 19 November. The proposal neither declares all constituent atoms mastered nor waives a required child exam ([Unit evidence and applicable recognition contract](skill-graph/assessment-gated-completion.md)).
 
 ### Goal placement
 
@@ -436,7 +437,7 @@ The skill landscape chosen before learning starts; it provides the full goal uni
 
 *DE: persönliches Curriculum, persönlicher Lehrplan* — see [Learning Workflow](runtime-workflows/learning-workflow.md)
 
-The committed, longer-lived subset of the base curriculum in scope for one learner (jurisdiction or canonical view, applicable duration model, stage, subjects, and course profiles per subject). It resolves the learner-facing composition view and becomes the candidate space for focus, frontier, progress, and completion, while the backend may still consult the full graph for strict prerequisite checks.
+The committed, longer-lived subset of the base curriculum in scope for one learner (jurisdiction or canonical view, applicable duration model, stage, subjects, and course profiles per subject). It resolves the learner-facing composition view and becomes the candidate space for focus, frontier, progress, and completion, while the backend may still consult the full graph for strict prerequisite checks. The selection supplies the atomic seed goals $S$. The personal learning basis $L$ contains $S$ and all prerequisites transitively required in the canonical graph, including necessary goals from another subject. Changing focus leaves this basis intact.
 
 This state is backend-owned and configured exclusively through the first-party WebGUI and Cockpit; the chat coach neither asks for nor mutates it.
 
@@ -479,7 +480,7 @@ $\mathrm{Sat}(g)$ holds iff the atomic basis of $g$ is non-empty and fully maste
 
 *DE: optimistischer Modus* — see [Context & Views](skill-graph/context-and-views.en.md)
 
-Filter to the selected view scope first (including explicit `prerequisiteOnly` foundations), then evaluate prerequisites. Learners can start directly in their chosen scope without being globally blocked by gaps from earlier years. This is the default mode.
+The runtime derives prerequisites and computes reachability in the full graph, including paths through hidden intermediate goals. It then restricts blocking prerequisites to the chosen scope, including its designated foundations. This is the default mode.
 
 ### Strict mode (pessimistic mode)
 
@@ -495,11 +496,23 @@ The unsatisfied effective prerequisites of a goal, split into gaps inside and ou
 
 ### Mastery
 
-*DE: Beherrschung; Lernziel geschafft oder noch nicht geschafft* — see [Learning Workflow](runtime-workflows/learning-workflow.md) and [Implicit Mastery](skill-graph/assessment-gated-completion.md)
+*DE: Beherrschung; Lernziel geschafft oder noch nicht geschafft* — see [Learning Workflow](runtime-workflows/learning-workflow.md) and [Assessment evidence and recognition contract](skill-graph/assessment-gated-completion.md)
 
 The single stored outcome for an atomic goal: **mastered or not mastered** (encodable as `0` and `1`, without intermediate partial grades or extra qualification tiers). Mastery belongs to stable goal IDs and applies globally across composition views. Cluster or subject progress is the weighted share of unique mastered atomic goals.
 
-The binding 4 November 2026 concept adds **effective mastery** $M_{\mathrm{eff}} = M \cup I$, where $I$ is derived recognition of ordinary competencies through independent application in valid local assessment contracts. Exam and memory goals never enter $I$. Runtime adaptation to this extended contract remains pending.
+The adopted recognition rules of 4 and 11 November 2026 add **effective mastery** $M_{\mathrm{eff}} = M \cup I$, where $I$ is derived recognition of ordinary competencies in valid local assessment contracts. Exam and memory goals never enter $I$. Global revision-bound runtime implementation remains incomplete. The proposal of 19 November does not replace this applicable contract basis; its terms distinguish unit judgement, direct individual evidence and planning release.
+
+### Unit qualification (proposal of 19 November 2026)
+
+*DE: Einheitennachweis (Vorschlag)* — see [Unit completion](skill-graph/learning-units.md#sec-proposal-unit-completion)
+
+The proposed judgement that a named subject unit at its stated level is demonstrated through its version's required evidence. Representative performances can support this judgement without assessing every detail individually. The proposal includes all stated required children; replacing their exams with a parent assessment requires a separate decision. It creates neither individual results never demonstrated nor records of a skipped opening, flashcard recall or experiment. The product decision and trials remain pending.
+
+### Planning release (proposal of 19 November 2026)
+
+*DE: Planungsfreigabe (Vorschlag)* — see [Planning release](skill-graph/assessment-gated-completion.md#sec-proposal-planning-release)
+
+In the proposal, $F_{\mathrm{plan}}$ includes only ordinary content goals owned by a fully passed unit version whose review supports their full claim. Each goal uses the same evidentiary standard as an individual result. Release can satisfy later prerequisites outside the unit. Goals owned by a different unit depend on that unit’s own evidence. This includes a child whose own releases may already apply while the parent is open. A release creates neither a mastery entry nor a dated completion event.
 
 ### Curriculum timeline and pacing plan
 
@@ -668,7 +681,9 @@ A report, status snapshot, or documentation output produced by a script and carr
 | Learning unit vs personalization level | A recursively composed educational whole with derived completion vs one of the four scope/state layers. |
 | Learning unit vs goal difficulty | A unit of acquisition and completion vs the demand level of one goal (`level`). |
 | Unit completion vs goal availability | Fulfilled child and own obligations vs prerequisites for starting work; the target model has no technical whole-unit locks, and `after` orders without demand or mastery. |
-| Unit vs unit with assessments | Every unit obeys E1–E4 and orders via `after`; only units with an own valid assessment contract and complete current `coverageReviews` implicitly recognize own content goals under R1–R5. |
+| Unit vs unit with assessments | Every unit obeys E1–E4 and orders via `after`; under the applicable recognition concept, implicit individual recognition is bound to an own valid assessment contract, R1–R5 and complete current `coverageReviews`. |
+| Unit qualification vs individual result | In the proposal of 19 November, representative performance can demonstrate a unit while individually unassessed details remain open. Required evidence and individual exams actually taken remain visible. |
+| Planning release vs mastery | Proposed release concerns reviewed whole content goals owned by the passed unit for subsequent planning. It writes neither individual mastery nor new period events; the product decision remains pending. |
 | Carried in vs placed in | Evidenced official source assignment (`officialSource`) vs didactic learning placement inside a plan unit (including justified preparation and derived earliest need in $L$). |
 | Goal tree vs learner map | Full tree including non-unit subject clusters vs `contains`-contracted view showing only units and atomic goals with aggregated child arrows. |
 | QA scope vs learning route | A QA scope is a registered check profile, not a single path walked by a learner. |

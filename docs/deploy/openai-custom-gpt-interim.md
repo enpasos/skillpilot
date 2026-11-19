@@ -1,11 +1,6 @@
 # Neue SkillPilot Custom GPTs als befristeter Übergangskanal
 
-**Stand:** 18. August 2026
-
-**Status:** Clean-Slate-Builder-Paket vorbereitet; noch kein GPT erstellt und
-keine Produktions-WebGUI geändert
-
-**OpenAI-App:** `skillpilot-coach-v1` Version `1.0.0` bleibt unverändert im Review
+**Historisches Optionspapier vom 18. August 2026.** Es dokumentiert das damals vorbereitete Builder-Paket und die Annahmen für einen möglichen Rückfall auf Custom GPTs. Die OpenAI-Einreichung 1.0.0 wurde später abgelehnt. Der reguläre ChatGPT-Desktop-Betastart nutzt den Git-Marketplace. [Aktueller Desktop-Einstieg](openai-personal-marketplace-release.de.md) · [Nachfolgekonzept zur Serveradresse](openai-stable-origin.md)
 
 ## Entscheidung
 

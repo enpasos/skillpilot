@@ -27,28 +27,32 @@ npm run quality:memory-card-review -- --mode=bootstrap \
   --config=curricula/DE/Gymnasium/quality/memory-card-review/<id>.config.json
 ```
 
-### Maturity Levels `M0`–`M7`, Source Evidence, and `curriculum-quality-v5` Rules {#sec:qal-dashboard-rules}
+### Maturity Levels `M0`–`M7`, Source Evidence, and `curriculum-quality-v6` Rules {#sec:qal-dashboard-rules}
 
 The dashboard assigns one conservative maturity level `M0`–`M7` per curriculum alongside the `M5–M7 review gates` strip (`CQR-301`, `CQR-401`, `CQR-501` for core `M5`, `CQR-302` for `M6`, and `CQR-303` for `M7`). Human Champion trials remain an orthogonal statement ([Quality & Human Trials](repo:docs/concept/curriculum-quality-and-human-trial.md)). Official sources are tracked in two layers: committed Git metadata stores structured `sourceDocument`/`sourceDocuments` references with official HTTP(S) URLs and readable extracted inventories, whereas local PDFs (`curricula/**/*.pdf`) are gitignored working copies, so a green source badge remains valid with `0/n` local PDFs whenever all `n/n` official URLs and inventories are present.
 
 :::table{cols="2.2cm,1.3cm,X",longtable=true}
-| Rule | Target | Meaning in `curriculum-quality-v5` |
+| Rule | Target | Meaning in `curriculum-quality-v6` |
 | --- | --- | --- |
 | `CQR-000` | `M1` | Source inventories readable, linked to official HTTP(S) URLs, and extracted goals registered in the membership/closure ledger. |
-| `CQR-001` | `M0` | Basic graph integrity: IDs, local/global references, self-reference guards, and direct DAG check. |
+| `CQR-001` | `M0` | Current graph integrity including atomic prerequisites and transitive minimality (`G17`) throughout the complete canonical Gymnasium catalog; no comparison with a historical prerequisite closure. |
 | `CQR-002` | `M0` | Explicit `type` metadata matches structural atomic/cluster classification. |
 | `CQR-003` | `M2` | Bundesland coverage: full source backing for source-relevant view atoms, zero unsupported assignments, zero missing registered source goals. |
 | `CQR-004` | `M2` | Course-level consistency: source goals (`GK_LK`, `LK`, `unspecified` defaulting to `GK_LK`) map only to compatible `GK`/`LK` goals. |
 | `CQR-101` | `M3` | Effective route coverage via $R_{\mathrm{effective}}$ from motivation anchor through atomic goals to terminal autonomy. |
 | `CQR-102` | `M3` | Direct atomic route coverage via authored atomic `requires` edges. |
 | `CQR-103` | `M3` | Zero remaining route-scope cluster-level `requires` for ordinary sequencing. |
-| `CQR-201` | `M4` | Terminal autonomy goals carry `examData` (or an explicitly reviewed exception convention). |
+| `CQR-201` | `M4` | Configured atomic terminal autonomy goals carry `examData`. |
+| `CQR-202` | `M4` | Task, solution, and scoring structure are formally populated; no detected placeholder or explicitly blocking review status. |
+| `CQR-203` | `M5` | Review status is `released`; covered-goal, content-area, and demand-level lists are nonempty. |
 | `CQR-301` | `M5` | Semantic-atomicity review ledgers for content leaf goals are complete, current, and resolved. |
 | `CQR-302` | `M6` | Memory-card ledgers explicitly decide memorization need, trace every kept primary card, and ensure visibility in learner views. |
 | `CQR-303` | `M7` | Central report from `reportDeepUnderstandingRollout.ts` proves the exact D/P/A/M/V gate intersection across all current `curricularAtomic` goals (technical image deferrals never count; `humanApproved`/`humanIssueIdentified` neither satisfy nor veto Gate V/`M7`). |
 | `CQR-401` | `M5` | At least one learner-facing composition view exists. |
-| `CQR-501` | `M5` | Applicability warnings are cleanly split into active, accepted-current, and obsolete-accepted counts (`active = 0`). |
+| `CQR-501` | `M5` | Applicability warnings are split into active, accepted-current, and obsolete-accepted counts; active and obsolete-accepted warnings must both be zero. |
 :::
+
+This table summarizes checks; subject/scope thresholds and pinned obligations are specified in the [Quality Handbook](repo:docs/qa-ci/curriculum-quality-maturity-and-routes.md). `CQR-201`–`203` establish formal endpoint readiness rather than complete subject-matter assessment coverage or reliable coach grading. Independent task/rubric reviews and separate evaluations of submissions remain necessary. The [unit proposal of 19 November](repo:docs/concept/skill-graph/unit-assessment-discussion-2026-11-19.de.md) changes neither existing R1–R5 contracts nor current gates.
 
 ### Mapping Pipeline, Bundesland Evidence, and Route Profiles {#sec:qal-dashboard-coverage}
 

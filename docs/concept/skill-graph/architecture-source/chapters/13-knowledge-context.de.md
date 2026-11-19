@@ -37,7 +37,7 @@ Dieselbe Definition deckt die übrigen Knotenarten. Ein Prüfungs- oder Lernkart
 
 **Zusammenspiel von `requires` und `after` an Einheitsgrenzen:** Für den Wissenskontext zählen ausschließlich atomare `requires`-Pfade; eine `after`-Reihenfolge zwischen Geschwistereinheiten ([Einheitsfolge](repo:docs/concept/skill-graph/learning-unit-progression.md)) fügt $W(g)$ kein einziges Ziel hinzu und schaltet keinen Stoff für Aufgaben, Karten, Bilder oder Erklärungen frei. Umgekehrt garantiert Regel E3 in einem geordneten Einheitenbaum, dass bei zwei verschiedenen Kindeinheiten an der kleinsten gemeinsamen Elterneinheit der benötigte Zweig in `after` vorgelagert ist. Ist einer der beiden Zweige ein eigenes Atom, ordnet stattdessen der atomare Bedarf selbst. `after` beschreibt die Blockfolge im vorgesehenen Lernfluss; allein `requires` sichert die präzise fachliche Verwendbarkeit.
 
-Für den Wissenskontext wird nichts Neues gespeichert. Er ist eine Projektion aus `contains`, `requires`, Titeln und Beschreibungen, so wie die Frontier eine Projektion aus Voraussetzungen und Beherrschung ist.
+Der Wissenskontext dient der Materialentwicklung. Er ergibt sich aus `contains`, `requires`, Titeln und Beschreibungen. Für eine persönliche Empfehlung gilt zusätzlich der individuelle Nachweisstand einschließlich der nach R1–R5 anerkannten Ziele. Der Vorschlag vom 19. November würde dafür die einzeln nachgewiesenen Ziele und die zur Planung freigegebenen eigenen Inhaltsziele bestandener Einheitenfassungen verwenden.
 
 ### Was die Ableitung zeigt {#sec:sga-kc-prototype anchors="what-the-derivation-shows"}
 
@@ -86,9 +86,9 @@ Urteile sind **monoton**. Eine ergänzte Kante vergrößert $W(g)$ nur, sodass e
 | Erzeugung und Review von Zieltexten und Kanten | Die Frage nach der Hinlänglichkeit für jedes Ziel; das Review schlägt Kandidatenkanten vor und ergänzt sie nie selbst. |
 | Lernzielbilder | Der Bild-Prompt trägt den Kontext; heute trägt er nur Titel und Beschreibung des Ziels. Das Bildreview hält die Kontexttreue fest. |
 | Lernkarten, Übungsaufgaben und Prüfungen | Der Kontext des Prüfungs- oder Lernkartenziels begrenzt Aufgabe, Lösung und Raster. |
-| Lerneinheiten | Der Kontext der Einheit ersetzt jede von Hand geschriebene Angabe ihres Stoffs; das Abdeckungsreview einer eigenen Prüfung erhält ihn. |
+| Lerneinheiten | Der Wissenskontext begrenzt die fachlichen Mittel einer Aufgabe. Die geltenden R1–R5 bestimmen gesondert die Anerkennung eigener Ziele. Der Vorschlag vom 19. November würde zusätzlich das Gesamturteil über die Einheit und deren Planungsfreigaben prüfen. |
 | Lernzielbuch | Der Kontext des Ziels begrenzt dessen Seite. |
-| Coach | Der Kernkontext des aktiven Ziels. Das Backend verbindet ihn mit dem Stand der lernenden Person: Ein gesichertes Ziel, das noch nicht beherrscht ist, wird nicht vorausgesetzt, und ein Ziel aus „noch nicht", das die Person beherrscht, darf benutzt werden. |
+| Coach | Der Kernkontext beschreibt die fachlich vorgesehenen Voraussetzungen. Für die persönliche Empfehlung zählt der individuelle Nachweisstand einschließlich gültiger Anerkennung nach R1–R5. Eine gesonderte Planungsfreigabe durch bestandene Einheitenfassungen gehört zum Vorschlag vom 19. November. |
 {cols="30%,70%"}
 
 Der Coach erhält Titel von Zielen und Beherrschungsstände, die sein Kontext an anderer Stelle bereits trägt. Kein Chattext fließt an das Backend zurück, und die Auswahl bleibt beim Backend.
