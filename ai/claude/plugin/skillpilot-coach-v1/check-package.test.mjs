@@ -18,15 +18,15 @@ test("validates the checked-in Claude plugin package", () => {
   assert.deepEqual(validateClaudePluginPackage(packageRoot), { errors: [], toolCount: 14 });
 });
 
-test("rejects a replacement candidate version other than 1.1.14", () => {
+test("rejects a replacement candidate version other than 1.1.15", () => {
   withPackageCopy((root) => {
     mutate(root, ".claude-plugin/plugin.json", (value) => value.replace(
-      '"version": "1.1.14"',
+      '"version": "1.1.15"',
       '"version": "1.0.4"',
     ));
     assert.match(
       validateClaudePluginPackage(root).errors.join("\n"),
-      /replacement candidate must be version 1\.1\.14/u,
+      /replacement candidate must be version 1\.1\.15/u,
     );
   });
 });
@@ -228,26 +228,37 @@ for (const [name, owner, original, unsafeReplacement, invariant] of [
   });
 }
 
+test("requires the coach to distinguish a scoped waiver from individual evidence", () => {
+  const instructions = readInstructions();
+  const original = "a scope waiver applies to its named section";
+  assert.ok(instructions.skill.includes(original));
+  instructions.skill = instructions.skill.replace(original, "a scope waiver proves the individual goal");
+  assert.match(validateClaudeCoachInstructions(instructions).join("\n"), /Coach invariant unit-context/u);
+});
+
 for (const [name, original, replacement] of [
-  ["shortcut intent being preempted by old-goal teaching", "before ordinary resume, subject switching or goal rendering", "after ordinary goal teaching"],
-  ["shortcut selection from remembered options", "current `levelCompletion.choices`", "remembered completion choices"],
-  ["pending technical receipt bypassed before checking choices", "then reload context before matching choices or declaring them\nunavailable", "report no choices without confirming or refreshing"],
-  ["inventing a technical receipt", "instruction with the unchanged receipt\nand session", "instruction with an invented receipt and session"],
-  ["technical receipt treated as learner consent", "This technical receipt is not learner selection", "This technical receipt authorizes the first assessment"],
-  ["inspection writing state", "Inspection changes no learning state", "Inspection selects the profile"],
-  ["early exam task disclosure", "reveals no assessment task,\nhint or solution", "reveals the assessment task and solution"],
-  ["a second consent round for an explicit exam choice", "already supplies selection consent", "requires another selection confirmation"],
-  ["shortcut choice through ordinary goal selection", "call `choose_skillpilot_completion_route`", "call `set_skillpilot_active_goal`"],
-  ["invented choice payloads", "with that unchanged choice", "with an inferred choice"],
-  ["starting an ambiguous assessment", "Otherwise clarify ambiguity", "Otherwise choose the first assessment"],
-  ["requiring preliminary section selection", "No preliminary section selection is needed", "Always select a section before starting an assessment"],
-  ["automatic shortcut opt-in", "never enable it\nor bypass prerequisites", "enable it and bypass prerequisites"],
-  ["normal plan resume overriding a completion route", "use only its published choices instead of normal plan resume", "resume the normal plan instead"],
-  ["AI-derived shortcut waivers", "without recalculating waivers", "by recalculating waivers"],
-  ["waived preparation becoming mastery", "only for that section, never become globally mastered", "for every section and become globally mastered"],
-  ["an additional saved assessment result", "only binary mastery, with no second pass record", "a second saved assessment result"],
-  ["dropping detailed exam feedback", "Detailed exam feedback remains governed by Exams", "Only report binary mastery without feedback"],
-  ["unsolicited shortcuts replacing normal continuation", "Do not interrupt current\nfeedback or replace an agreed normal successor", "Interrupt feedback and replace the normal successor"],
+  ["ordinary resume taking precedence", "before ordinary\nresume, subject switching or rendering", "after ordinary teaching"],
+  ["selection from remembered options", "Read fresh context", "Consult remembered options"],
+  ["skipping a pending contract receipt", "silently call `confirm_skillpilot_completion_contract`", "ignore the pending contract"],
+  ["inventing a technical receipt", "with its unchanged receipt and session, then reload", "with an invented receipt without reloading"],
+  ["treating a technical receipt as permission", "This receipt is technical", "Treat the receipt as learner consent"],
+  ["inventing assessments or their titles", "in `levelCompletion.choices` by exact title", "by an invented title"],
+  ["inspection starting the exam", "Inspection\nstarts nothing", "Inspection starts the exam"],
+  ["early disclosure", "reveals no task, hint or solution", "reveals the task and solution"],
+  ["extra consent for an unambiguous choice", "An explicit request to\nstart one unambiguous assessment authorizes", "An explicit selection requires a second consent before"],
+  ["choosing a shortcut with ordinary focus tools", "`choose_skillpilot_completion_route`\nwith its unchanged choice and shared write fields", "use an ordinary focus action"],
+  ["starting an ambiguous exam", "Otherwise clarify or wait\nfor selection", "Otherwise start the first assessment"],
+  ["a preliminary section round", "no preliminary section choice or second\nconfirmation", "mandatory preliminary section choice"],
+  ["skipping the Exams feedback workflow", "Follow the returned context and Exams", "Report only a binary result"],
+  ["bypassing unavailable options", "Explain unavailable options. Never bypass prerequisites through goal or focus tools", "Override unavailable options"],
+  ["misattributing a phase assessment", "A phase assessment cannot\ncertify the referring topic", "The phase assessment completes the referring topic"],
+  ["using ordinary resume over a route", "During a completion route use only its published\nchoices", "Use any successor during a route"],
+  ["discarding an earned success on exit", "use neutral navigation and retain\nsaved successes", "erase the current result on exit"],
+  ["claiming invented credit", "Use the backend's scoped completion statement", "Estimate mastery from related goals"],
+  ["denying voluntary study", "A waived goal\nwithout individual evidence can be studied voluntarily through a published choice", "Mark waived goals as individually mastered"],
+  ["changing a preference through voluntary study", "This choice leaves the learner's automatic planning preference alone", "Change the planning preference on selection"],
+  ["duplicating the individual evidence", "Each\ngoal has one binary mastery", "Store a second pass"],
+  ["interrupting ordinary teaching", "Do not interrupt feedback or an agreed normal\nsuccessor with unsolicited shortcuts", "Always interrupt teaching to offer shortcuts"],
 ]) {
   test("rejects " + name, () => {
     const instructions = readInstructions();
@@ -382,7 +393,7 @@ test("rejects loss of same-server coexistence and custom-connector boundaries", 
   });
 });
 
-test("rejects conflation of historical observations with 1.1.14 acceptance", () => {
+test("rejects conflation of historical observations with 1.1.15 acceptance", () => {
   withPackageCopy((root) => {
     mutate(root, "SETUP.md", (value) => value.replace(
       /Earlier packages were\s+observed in paid Claude Web chat and, after account-level direct installation\s+on Claude Pro, in the native Claude app on Android/u,
@@ -390,7 +401,7 @@ test("rejects conflation of historical observations with 1.1.14 acceptance", () 
     ));
     assert.match(
       validateClaudePluginPackage(root).errors.join("\n"),
-      /distinguish historical observations from pending 1\.1\.14 exact-candidate acceptance/u,
+      /distinguish historical observations from pending 1\.1\.15 exact-candidate acceptance/u,
     );
   });
 });

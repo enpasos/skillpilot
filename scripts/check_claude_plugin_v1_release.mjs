@@ -26,8 +26,15 @@ const historicalReleaseRoot = `${releaseRoot}/history`;
 const connectorContractBaselinePath =
   "ai/claude/connector-v1/release/contract-baseline.json";
 const expectedPluginIdentity = "skillpilot-coach-v1";
-const expectedPluginVersion = "1.1.14";
+const expectedPluginVersion = "1.1.15";
 const expectedHistoricalReleaseFiles = new Map([
+  ["1.1.14/contract-baseline.json", "b4854d650c34009bed776e26d25ccf23d0eab8bc75180208e5ab1c3e13461a7f"],
+  ["1.1.14/direct-install-beta.json", "3566965ed2328da666685652294ea296c61858e3ea1fa6355f401a05d3a07582"],
+  ["1.1.14/evidence-manifest.json", "146dd221d937cf4034271c0b4b4095d44749c961cd8a24af6b9afd102ba7f3dd"],
+  ["1.1.14/lifecycle.json", "c15aca77c4ff38c7f60bd77aaec3118a4055fa6e45fa648c926777ff15f9d3b2"],
+  ["1.1.14/marketplace-publication.json", "b3aeae0a05f0bc96bb8380d072c9cf751e015380d60f05823d43fe7a5c07511a"],
+  ["1.1.14/release-gates.json", "58f82d3462a05d7d5d5ede1e286f36004c37c1703ae0376b00f435a14da64f92"],
+  ["1.1.14/support-readiness-drill.template.md", "8a5c1b6a3da74dd818cd1f8b6bfc4d05321c54df55bf1f83bb262fc5b486c438"],
   ["1.1.13/contract-baseline.json", "b4fa75d2a287ad8d160d928ee3b84d926256835e2a61ca6994f215b152e57814"],
   ["1.1.13/direct-install-beta.json", "20b541a342ad3964aaf389e829eaedc826f77bbcaa79a00fc3ef082e93859491"],
   ["1.1.13/evidence-manifest.json", "06a93b8d4d2af8db0cbfa89b76e9fff21fd9abc57a395cf97807401112ea1fce"],
@@ -264,7 +271,7 @@ export function verifyClaudePluginV1Release({
     );
     check(
       document?.pluginVersion === expectedPluginVersion,
-      "Every plugin release document must use Claude plugin version 1.1.14.",
+      "Every plugin release document must use Claude plugin version 1.1.15.",
     );
   }
 
@@ -326,13 +333,13 @@ export function verifyClaudePluginV1Release({
   check(
     lifecycle?.productOwnerAuthorization?.approvedAt === "2026-11-19"
       && lifecycle?.productOwnerAuthorization?.approvedBy === "product-owner"
-      && /local preparation of the exact SkillPilot Coach v1\.1\.14 candidate/u.test(lifecycle?.productOwnerAuthorization?.scope ?? "")
-      && /Preserve all published 1\.1\.13 files and evidence/u.test(lifecycle?.productOwnerAuthorization?.scope ?? "")
+      && /local preparation of the exact SkillPilot Coach v1\.1\.15 candidate/u.test(lifecycle?.productOwnerAuthorization?.scope ?? "")
+      && /Preserve all published 1\.1\.14 files and evidence/u.test(lifecycle?.productOwnerAuthorization?.scope ?? "")
       && /all external publication and exact-candidate host acceptance remain pending/u.test(lifecycle?.productOwnerAuthorization?.scope ?? "")
       && Array.isArray(lifecycle?.productOwnerAuthorization?.excludes)
-      && lifecycle.productOwnerAuthorization.excludes.some((entry) => /Deployment, Marketplace publication, Anthropic Console submission, guide activation, credential changes and inherited candidate acceptance/u.test(entry))
+      && lifecycle.productOwnerAuthorization.excludes.some((entry) => /Anthropic Console submission, guide activation, credential changes and inherited candidate acceptance/u.test(entry))
       && lifecycle.productOwnerAuthorization.excludes.some((entry) => /Connector Directory/u.test(entry)),
-    "Plugin lifecycle must record local 1.1.14 preparation authority without publication or inherited client acceptance.",
+    "Plugin lifecycle must record local 1.1.15 preparation authority without publication or inherited client acceptance.",
   );
   check(
     lifecycle?.releaseLine?.major === 1

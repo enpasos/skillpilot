@@ -32,10 +32,10 @@ test("checked-in public plugin lane is structurally valid but fail-closed PRE_SU
   assert.equal(result.requiredPendingCount, pendingGateCount);
   assert.equal(result.blockers.length, pendingGateCount);
   assert.ok(pendingGateCount > 0);
-  assert.equal(result.pluginVersion, "1.1.14");
+  assert.equal(result.pluginVersion, "1.1.15");
 
   const baseline = readJson(repositoryRoot, `${releasePath}/contract-baseline.json`);
-  assert.equal(baseline.pluginVersion, "1.1.14");
+  assert.equal(baseline.pluginVersion, "1.1.15");
   assert.equal(baseline.remoteContract.tools.length, 14);
   assert.deepEqual(baseline.remoteContract.optionalCompletionTools, [
     "confirm_skillpilot_completion_contract",
@@ -61,12 +61,12 @@ test("checked-in public plugin lane is structurally valid but fail-closed PRE_SU
   );
 });
 
-test("the published 1.1.13 release dossier remains immutable beside the local 1.1.14 candidate", (t) => {
+test("the published 1.1.14 release dossier remains immutable beside the local 1.1.15 candidate", (t) => {
   const fixture = createFixture(t);
-  const historicalPath = resolve(fixture, releasePath, "history/1.1.13/marketplace-publication.json");
+  const historicalPath = resolve(fixture, releasePath, "history/1.1.14/marketplace-publication.json");
   writeFileSync(historicalPath, `${readFileSync(historicalPath, "utf8")}\n`);
   const result = verifyClaudePluginV1Release({ repositoryRoot: fixture });
-  assert.match(result.errors.join("\n"), /Historical plugin release file changed: 1\.1\.13\/marketplace-publication\.json/u);
+  assert.match(result.errors.join("\n"), /Historical plugin release file changed: 1\.1\.14\/marketplace-publication\.json/u);
 });
 
 test("the published 1.1.12 release dossier remains immutable beside the new candidate", (t) => {
