@@ -4,7 +4,7 @@
 
 Für die Produktverträge gilt die bestätigte Anerkennungsregel vom 4./11. November. [§11](learning-units.de.md#sec-proposal-unit-completion) und [§13](assessment-gated-completion.de.md#sec-proposal-planning-release) stellen den Vorschlag vom 19. November daneben. Dieses Arbeitsdokument enthält die Aufgaben, Bewertungsbeispiele und offenen Fragen für das Fachreview.
 
-Die Überarbeitung der Graph-Definition ist beauftragt. Die neue Abschlussregel steht dort als **Vorschlag für die Fachrunde**. Eine Produktentscheidung über ihre Übernahme und die Umstellung bestehender Verträge stehen aus. In den Entwurf sind KI-Reviews eingeflossen. Lehrkräfte haben die Aufgaben noch nicht fachlich abgenommen, die eingesetzten Coaches haben die Musterabgaben noch nicht blind bewertet und Lernende haben die Prüfungen noch nicht erprobt.
+Die Überarbeitung der Graph-Definition ist beauftragt. Die neue Abschlussregel steht dort als **Vorschlag für die Fachrunde**. Eine Produktentscheidung über ihre Übernahme und die Umstellung bestehender Verträge stehen aus. In den Entwurf sind KI-Reviews eingeflossen. Eine erste verdeckte Modellprobe mit Claude Code ist unten dokumentiert. Die Fachabnahme durch Lehrkräfte, der vollständige Vergleich der Coaches und die Erprobung mit Lernenden stehen aus.
 
 Zur Entscheidung steht folgende Regel. Lernende können in eine fachliche Einheit einsteigen, um sie zu erarbeiten oder um ihr Können direkt zu zeigen. Wer die für den Abschluss ausgewiesenen Prüfungen bestanden hat, hat die **Einheit auf dem ausgewiesenen Niveau** nachgewiesen. Das Urteil darf sich auf repräsentative Leistungen stützen. Einzelne Wissenslücken sind damit vereinbar.
 
@@ -146,7 +146,7 @@ Für die Ortsablesungen gilt jeweils ±0,01 m; Zeiten und Kantenhöhe gelten als
 | --- | --- |
 | A1 · Auslaufmodell | Die Person bestimmt die Bewegung aus geeigneten Zeit-Ort-Paaren auf der Ebene und berücksichtigt die späten Messpunkte. Das Modell muss innerhalb der angegebenen Ablesegrenzen zum ganzen beobachteten Auslauf passen. Neben annähernd konstantem Tempo kommt ein begründetes Modell mit schwacher Verzögerung in Betracht. |
 | A2 · Prognose und Unsicherheit | Die Person gibt die letzte gemessene Lage samt Ablesegrenze und Einheit an und verwendet sie mit dem gewählten Modell für Ankunftszeit und Zeitbereich. Gleichwertig sind eine ±-Angabe, ein Intervall, die Lage relativ zur roten Linie oder ein beschrifteter Fehlerbalken, dessen Grenzen aus der Skala ablesbar sind. Eine dieser Darstellungen genügt. Ein begründeter konservativer Zeitbereich reicht aus. |
-| A3 · Modellgrenze | Eine konkrete Idealisierung und ihre Grenze werden genannt, etwa vernachlässigtes Abbremsen durch Rollwiderstand: Wird es auf der Reststrecke erheblich, kommt der Wagen später. Eine tatsächliche Modellabweichung muss aus den vorliegenden Daten nicht behauptet werden. |
+| A3 · Modellgrenze | Die Person benennt eine Annahme über die restliche Strecke und erläutert, wie eine konkrete Änderung die Vorhersage beeinflussen würde. Die Modellannahme kann sich auch aus der Vorhersage und der beschriebenen Änderung zusammen ergeben. Erkennbar sein müssen die Fortsetzung des gewählten Modells auf dem Reststück, eine konkrete Änderung und deren Wirkung auf die Ankunft. Eine bloße Ankunftszeit genügt dafür nicht. |
 | A4 · Fehlerarten | Die Kameraablesungen schwanken um 0,50 m; die zweite Skala liegt trotz eigener kleiner Streuung stets um 0,03 bis 0,04 m darüber. Die Person unterscheidet so zufällige Streuung und den Hinweis auf eine zusätzliche systematische Abweichung. Drei Ablesungen beweisen weder eine Verteilung noch eine Fehlerursache. |
 | B1 · Physikalische Modellwahl | Die Person begründet an den Messwerten annähernd konstante waagerechte Geschwindigkeit und senkrechte Beschleunigung aus der Ruhe. Sie deutet das quadratische Wachstum als beschleunigte Bewegung und bestimmt etwa 10 m/s² abwärts oder prüft ein gleichwertiges physikalisch begründetes Modell an den Daten. Die bekannte Fallformel allein und ein reines Zahlenmuster ohne physikalische Deutung erfüllen dieses Kriterium nicht. |
 | B2 · Gemeinsame Vorhersage | Fallhöhe und ein mit den Daten verträgliches Fallmodell bestimmen die Flugzeit; mit genau dieser Zeit ergibt sich aus dem waagerechten Modell der Landepunkt. |
@@ -206,7 +206,19 @@ Eine Rechenprobe zeigt das Risiko: Angenommen, jede vollständig erfüllte Raste
 
 Deshalb beginnt die Anbieterprüfung mit mehrfacher verdeckter Bewertung der guten Abgaben W-01 und K-01 durch die tatsächlich eingesetzten Coaches von ChatGPT, Claude und Gemini, jeweils in frischem Kontext und wechselnder Reihenfolge. Zuerst wird erhoben, wie oft sie trotz vollständiger Leistung nicht 4/4 beziehungsweise 3/3 erhalten. Danach folgen die weiteren Abgaben; für eine Aussage über das ganze Viererpaket braucht es zusätzlich fachlich geprüfte vollständige Abgaben zu den Kindprüfungen. Festgehalten werden Modellversion, genaue Aufgabe und Rasterfassung, Urteil je Kriterium und die dafür genannte Antwortstelle. Abgaben, Schlüssel und Einzelurteile bleiben für die Gegenprüfung getrennt.
 
-Bevor aus einer Abweichung eine Aufgabenänderung oder Produktentscheidung folgt, wird die betreffende Abgabe unabhängig nachbewertet: Liegt ein Bewertungsfehler, eine unklare Rasterstelle oder eine tatsächliche fachliche Lücke vor? Ein Bewertungsfehler verlangt die Korrektur des Urteils über **dieselbe Leistung**, keinen neuen Versuch mit einer unbekannten Aufgabe. Erst bei tatsächlich fehlender Leistung stellt sich die Frage nach Übung und einem neuen qualifizierenden Versuch. Diese Anbieterprüfung und die Erprobung mit Lernenden stehen aus.
+Bevor aus einer Abweichung eine Aufgabenänderung oder Produktentscheidung folgt, wird die betreffende Abgabe unabhängig nachbewertet: Liegt ein Bewertungsfehler, eine unklare Rasterstelle oder eine tatsächliche fachliche Lücke vor? Ein Bewertungsfehler verlangt die Korrektur des Urteils über **dieselbe Leistung**, keinen neuen Versuch mit einer unbekannten Aufgabe. Erst bei tatsächlich fehlender Leistung stellt sich die Frage nach Übung und einem neuen qualifizierenden Versuch. Der vollständige Anbietervergleich und die Erprobung mit Lernenden stehen aus.
+
+**Erste Modellprobe am 19. November 2026.** Claude Code 2.1.241 meldete das Modell `claude-sonnet-5`. Jede der zehn Bewertungen begann in einer frischen Sitzung. Das Modell erhielt nur die Aufgabe, das Raster und eine erfundene Abgabe. Den Auswertungsschlüssel sah es nicht. Es hatte keine Verbindung zu einem Lernprofil.
+
+| Abgabe | Ursprüngliches Raster | Nach Präzisierung von A3 |
+| --- | --- | --- |
+| W-01 · Konstanttempo mit Messgrenzen | 3/4 und 4/4 | 4/4 und 4/4 |
+| W-03 · Bremsmodell ohne Angabe der letzten gemessenen Lage | 3/4, A2 offen | 3/4, A2 offen |
+| W-02 · nur Ankunftszeit | – | 0/4 |
+| K-01 · datenbegründeter Wurf | zweimal 3/3 | – |
+| K-04 · Wurf ohne den verlangten Datenvergleich | 2/3, B1 offen | – |
+
+Bei W-01 fehlte im ersten Urteil der Punkt A3, weil die Person die Modellannahme für den Restweg nicht eigens formuliert hatte. Ein unabhängiges KI-Gegenurteil (GPT-6.2 Astra) erkannte die Leistung an. Die Person verwendet das zuvor bestimmte Tempo für den Restweg und erklärt, dass stärkeres Bremsen die Ankunft verzögert. Deshalb erlaubt A3 ausdrücklich, beide Aussagen zusammen zu lesen. W-01 und W-03 blieben bei der Nachprüfung im Wortlaut unverändert. Diese wenigen Fälle zeigen die Auswirkung an einem konkreten Bewertungsstreit. Eine Fehlerquote für das Modell oder eine Abnahme der vierteiligen Prüfung lässt sich daraus nicht ableiten.
 
 ### Was geschieht mit den vorhandenen Prüfungen?
 
