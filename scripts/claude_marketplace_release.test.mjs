@@ -33,7 +33,7 @@ import {
 const scriptRoot = dirname(fileURLToPath(import.meta.url));
 const repositoryRoot = resolve(scriptRoot, "..");
 const canonicalPluginRoot = resolve(repositoryRoot, "ai/claude/plugin/skillpilot-coach-v1");
-const pinnedCanonicalRevision = "773d77b4204cc1e7f1e293e71a46a46ded893b64";
+const pinnedCanonicalRevision = "8fc046fc530de3c17c3251e4f5b2c81729d6eee7";
 const marketplaceWorkflow = readFileSync(resolve(repositoryRoot,
   "ai/claude/marketplace/skillpilot-marketplace/validate.yml"), "utf8");
 function loadHistorical110MarketplaceLane() {
@@ -1203,7 +1203,7 @@ async function createExportFixture() {
     }
     const syntheticSourceDigest = sourceHash.digest("hex");
     const syntheticRevision = "1".repeat(40);
-    const pinnedSourceDigest = "f048d07597f891f2ad4753796379de9e481575a19e43c9588adb3b9e3805195a";
+    const pinnedSourceDigest = "d55b1cffee03d7496b638ce7143c78e4cf2c8cb0b1cf6090670db0438cae1562";
     const workflow = marketplaceWorkflow
       .replaceAll(pinnedCanonicalRevision, syntheticRevision)
       .replaceAll(pinnedSourceDigest, syntheticSourceDigest)

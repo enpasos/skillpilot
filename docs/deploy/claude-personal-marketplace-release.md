@@ -18,13 +18,13 @@ preference “Keep credited goals in my plan” controls suggestions for goals
 that still lack individual evidence.
 
 The prepared export contains twelve files with tree SHA-256
-`776210a6a829dd64c7a7da23e5b87e5047ae3ccbf70129a9149fb0bd87f914a1`.
+`ef53ba5c07db031d57719e2e0a5390b7f450d70a06207a2d59235b5f4cfd26d2`.
 Its workflow checks out SkillPilot source commit
-`773d77b4204cc1e7f1e293e71a46a46ded893b64`. The 172 files in the plugin
+`8fc046fc530de3c17c3251e4f5b2c81729d6eee7`. The 172 files in the plugin
 source directory have tree SHA-256
-`f048d07597f891f2ad4753796379de9e481575a19e43c9588adb3b9e3805195a`.
-Rebuilding the seven installable files produced the 47,399-byte archive with
-SHA-256 `d8e2c1c6d556eec0bffda9066c8ea0944a87a794e4ebd5edd6155214cb4df5d9`.
+`d55b1cffee03d7496b638ce7143c78e4cf2c8cb0b1cf6090670db0438cae1562`.
+Rebuilding the seven installable files produced the 47,454-byte archive with
+SHA-256 `bec6045dbba0e399b01b223901527083a1c5c437d522211dd1c06f049aba3acb`.
 
 On 19 November 2026, both strict Claude Code 2.1.241 validators passed. An
 isolated CLI profile installed the exported plugin with version 1.1.15,

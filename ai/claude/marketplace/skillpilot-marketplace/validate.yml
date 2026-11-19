@@ -22,7 +22,7 @@ jobs:
       - uses: actions/checkout@v6
         with:
           repository: enpasos/skillpilot
-          ref: 773d77b4204cc1e7f1e293e71a46a46ded893b64
+          ref: 8fc046fc530de3c17c3251e4f5b2c81729d6eee7
           path: canonical
           sparse-checkout: ai/claude/plugin/skillpilot-coach-v1
           persist-credentials: false
@@ -70,13 +70,13 @@ jobs:
             sourceHash.update(createHash("sha256").update(readFileSync(absolute)).digest("hex"), "utf8");
             sourceHash.update("\0", "utf8");
           }
-          assert.equal(sourceHash.digest("hex"), "f048d07597f891f2ad4753796379de9e481575a19e43c9588adb3b9e3805195a", "Pinned canonical source tree");
+          assert.equal(sourceHash.digest("hex"), "d55b1cffee03d7496b638ce7143c78e4cf2c8cb0b1cf6090670db0438cae1562", "Pinned canonical source tree");
           const { buildClaudePluginPackage } = await import(pathToFileURL(resolve(canonicalRoot, "build-package.mjs")));
           const { publicationFiles } = await import(pathToFileURL(resolve(canonicalRoot, "check-package.mjs")));
           const baseline = JSON.parse(readFileSync(resolve(canonicalRoot, "release/contract-baseline.json"), "utf8"));
           assert.equal(baseline.pluginVersion, "1.1.15", "Pinned dossier version");
-          assert.equal(baseline.archive.bytes, 47399, "Pinned dossier archive bytes");
-          assert.equal(baseline.archive.sha256, "d8e2c1c6d556eec0bffda9066c8ea0944a87a794e4ebd5edd6155214cb4df5d9", "Pinned dossier archive digest");
+          assert.equal(baseline.archive.bytes, 47454, "Pinned dossier archive bytes");
+          assert.equal(baseline.archive.sha256, "bec6045dbba0e399b01b223901527083a1c5c437d522211dd1c06f049aba3acb", "Pinned dossier archive digest");
           assert.deepEqual([...publicationFiles].sort(), baseline.archive.entries.map(({ packagePath }) => packagePath).sort(), "Pinned dossier inventory");
 
           const expectedFiles = [
@@ -114,7 +114,7 @@ jobs:
           assert.deepEqual(built.entries, baseline.archive.entries, "Rebuilt archive entries");
           NODE
           printf '%s  %s\n' \
-            'd8e2c1c6d556eec0bffda9066c8ea0944a87a794e4ebd5edd6155214cb4df5d9' \
+            'bec6045dbba0e399b01b223901527083a1c5c437d522211dd1c06f049aba3acb' \
             "${artifact}" | sha256sum --check --strict
           mkdir "${extracted}"
           unzip -q "${artifact}" -d "${extracted}"

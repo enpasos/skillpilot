@@ -28,9 +28,9 @@ test("synthetic strictly verifies recorded and generated publications during rol
   const generatedIndex = JSON.parse(readFileSync(join(generatedRoot, "index.json"), "utf8"));
   assert.equal(generatedIndex.preparedAt, "2026-11-19T00:00:00.000Z");
   assert.equal(generatedIndex.plugins[0].version, "1.1.15");
-  assert.equal(generatedIndex.plugins[0].bytes, 47399);
+  assert.equal(generatedIndex.plugins[0].bytes, 47454);
   assert.equal(generatedIndex.plugins[0].sha256,
-    "d8e2c1c6d556eec0bffda9066c8ea0944a87a794e4ebd5edd6155214cb4df5d9");
+    "bec6045dbba0e399b01b223901527083a1c5c437d522211dd1c06f049aba3acb");
 
   for (const [label, publicationRoot] of [["recorded publication before rollout", recordedRoot],
     ["deterministic build publication after rollout", generatedRoot]]) {
