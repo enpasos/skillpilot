@@ -1,6 +1,6 @@
 # Wie führt der Claude-Coach einen neuen Begriff ein?
 
-**Lokaler Claude-Kandidat 1.1.14 · 19. November 2026**
+**Claude 1.1.14 im persönlichen Marketplace · 19. November 2026**
 
 Ein Schüler berichtet aus der Beta, dass er auch bei gewöhnlichen Lernzielen überwiegend Aufgaben löst und wenig erklärt bekommt. Das ist seine Rückmeldung zum erlebten Unterricht. Welche Äußerung oder Anweisung den Verlauf seines Gesprächs bestimmt hat, bleibt offen.
 
@@ -8,7 +8,7 @@ Ein Schüler berichtet aus der Beta, dass er auch bei gewöhnlichen Lernzielen �
 
 Im veröffentlichten Claude-Skill 1.1.13 lautete die Vorgabe für die Fortsetzung eines aktiven Ziels „one concrete next task“. Wer bei einem neuen Begriff erst eine Erklärung brauchte, bekam an dieser Stelle keinen eigenen Gesprächsweg angeboten.
 
-Im lokalen Kandidaten 1.1.14 greifen der installierbare Skill und die begleitenden Backend-Anweisungen dieselbe Frage auf. Sagt ein Lernender „Weiß ich noch nicht“ oder bittet er um eine Erklärung, führt Claude die Idee direkt an einem konkreten Beispiel ein. Bringt der Lernende eine eigene Vorstellung mit, knüpft Claude daran an und erklärt den fehlenden Zusammenhang. Das gilt auch nach einer gelösten Aufgabe, wenn eine Frage offenbleibt. Den Abschluss einer gewöhnlichen Kompetenz tragen weiterhin zwei unabhängige Nachweise oder ein echter mehrschrittiger Transfer. [Claude-Skill](https://github.com/enpasos/skillpilot/blob/main/ai/claude/plugin/skillpilot-coach-v1/skills/skillpilot-coach-v1/SKILL.md#coaching-and-completion) · [Backend-Anweisungen](https://github.com/enpasos/skillpilot/blob/main/backend/src/main/java/com/skillpilot/backend/connectors/claude/v1/mcp/ClaudeV1McpContractAdapter.java)
+In Version 1.1.14 greifen der installierbare Skill und die begleitenden Backend-Anweisungen dieselbe Frage auf. Sagt ein Lernender „Weiß ich noch nicht“ oder bittet er um eine Erklärung, führt Claude die Idee direkt an einem konkreten Beispiel ein. Bringt der Lernende eine eigene Vorstellung mit, knüpft Claude daran an und erklärt den fehlenden Zusammenhang. Das gilt auch nach einer gelösten Aufgabe, wenn eine Frage offenbleibt. Den Abschluss einer gewöhnlichen Kompetenz tragen weiterhin zwei unabhängige Nachweise oder ein echter mehrschrittiger Transfer. [Claude-Skill](https://github.com/enpasos/skillpilot/blob/main/ai/claude/plugin/skillpilot-coach-v1/skills/skillpilot-coach-v1/SKILL.md#coaching-and-completion) · [Backend-Anweisungen](https://github.com/enpasos/skillpilot/blob/main/backend/src/main/java/com/skillpilot/backend/connectors/claude/v1/mcp/ClaudeV1McpContractAdapter.java)
 
 ## Ein Verständnisziel im Gespräch erarbeiten
 

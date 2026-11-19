@@ -133,12 +133,11 @@ supersedes earlier plans for a parallel external ChatGPT beta.
   not silence on a general support question, can block the next step.
 - This work order does not itself submit, publish or change production settings.
 
-Claude lane status in the repository on **11 November 2026** (recorded state,
-not a new decision): plugin **1.1.13** is published in the repository-backed
-personal marketplace with independently verified source, package and
-repository. Full real-client acceptance remains pending, and this is not an
-Anthropic-curated or Anthropic-verified listing. See
-`docs/deploy/claude-personal-marketplace-release.md`.
+On **19 November 2026**, the Product Owner authorized publishing Claude
+**1.1.14** in the repository-backed personal Marketplace. The public source,
+seven installed files, reproducible archive and manual Claude Code update from
+1.1.13 have been verified. The learning flow in Claude Web and Android remains
+pending. See `docs/deploy/claude-personal-marketplace-release.md`.
 
 On **24 September 2026**, the Product Owner explicitly authorized trying the
 documented ChatGPT archive upload and adapting the server to native desktop

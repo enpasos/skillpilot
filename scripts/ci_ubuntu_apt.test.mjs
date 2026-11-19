@@ -20,10 +20,11 @@ const renderScript = join(actionDirectory, 'render-ubuntu-sources.sh')
 const orderScript = join(actionDirectory, 'order-ubuntu-mirrors.sh')
 
 // Pinned policy: every Ubuntu stanza reads a mirror list with the direct Ubuntu
-// endpoint first and the runner image's Azure mirror second; APT moves a failed or
-// stalled file to the next mirror, and a pre-update hook lets a source that answers go first.
+// endpoint first, the UC Davis mirror second and the Azure mirror third. APT retries a
+// failed file at the next mirror, and a pre-update hook prefers the first answering source.
 const directArchive = 'https://archive.ubuntu.com/ubuntu/'
 const directSecurity = 'https://security.ubuntu.com/ubuntu/'
+const communityMirror = 'https://mirror.math.ucdavis.edu/ubuntu/'
 const azureMirror = 'http://azure.archive.ubuntu.com/ubuntu/'
 const installedHook = '/usr/local/sbin/skillpilot-order-ubuntu-mirrors'
 const installedMirrorDirectory = '/etc/apt/skillpilot-ubuntu-mirrors'
@@ -175,12 +176,12 @@ test('Ubuntu APT policy routes Ubuntu through direct-first mirror lists, bypasse
     ], 'Each Ubuntu stanza must read the SkillPilot mirror list of its kind')
     assert.deepEqual(readMirrorList(join(mirrorDirectory, 'archive.txt')), {
       probe: 'dists/noble/InRelease',
-      entries: [[directArchive, 'priority:1'], [azureMirror, 'priority:2']],
-    }, 'The archive suites must prefer archive.ubuntu.com and fall back to the Azure mirror')
+      entries: [[directArchive, 'priority:1'], [communityMirror, 'priority:2'], [azureMirror, 'priority:3']],
+    }, 'The archive suites must prefer archive.ubuntu.com before the UC Davis and Azure mirrors')
     assert.deepEqual(readMirrorList(join(mirrorDirectory, 'security.txt')), {
       probe: 'dists/noble-security/InRelease',
-      entries: [[directSecurity, 'priority:1'], [azureMirror, 'priority:2']],
-    }, 'The security suite must prefer security.ubuntu.com and fall back to the Azure mirror')
+      entries: [[directSecurity, 'priority:1'], [communityMirror, 'priority:2'], [azureMirror, 'priority:3']],
+    }, 'The security suite must prefer security.ubuntu.com before the UC Davis and Azure mirrors')
     // Installed verbatim: --print-uris and apt-config never run the update hook.
     copyFileSync(join(actionDirectory, 'apt.conf'), join(apt.etc, 'apt.conf.d/99skillpilot-ubuntu-sources'))
 
@@ -240,7 +241,7 @@ test('rendering writes a mirror list per stanza kind and keeps other sources unt
     ])
     assert.deepEqual(readdirSync(mirrorDirectory), ['security.txt'], 'Only used mirror lists are written')
     assert.deepEqual(readMirrorList(join(mirrorDirectory, 'security.txt')).entries,
-      [[directSecurity, 'priority:1'], [azureMirror, 'priority:2']])
+      [[directSecurity, 'priority:1'], [communityMirror, 'priority:2'], [azureMirror, 'priority:3']])
 
     writeFileSync(input, [
       'Types: deb',
@@ -252,7 +253,7 @@ test('rendering writes a mirror list per stanza kind and keeps other sources unt
     renderSources(input, output, mirrorDirectory)
     assert.deepEqual(readMirrorList(join(mirrorDirectory, 'archive.txt')), {
       probe: 'dists/noble/InRelease',
-      entries: [[directArchive, 'priority:1'], [azureMirror, 'priority:2']],
+      entries: [[directArchive, 'priority:1'], [communityMirror, 'priority:2'], [azureMirror, 'priority:3']],
     }, 'A stanza with any non-security suite uses the archive list')
 
     const failing = args => spawnSync('bash', [renderScript, ...args], { encoding: 'utf8', env: baseEnvironment })
@@ -283,7 +284,7 @@ test('the order hook keeps the lists unchanged when it cannot probe', () => {
   const root = mkdtempSync(join(tmpdir(), 'skillpilot-ubuntu-apt-order-'))
   try {
     const list = join(root, 'archive.txt')
-    const content = `# probe: dists/noble/InRelease\n${directArchive}\tpriority:1\n${azureMirror}\tpriority:2\n`
+    const content = `# probe: dists/noble/InRelease\n${directArchive}\tpriority:1\n${communityMirror}\tpriority:2\n${azureMirror}\tpriority:3\n`
     writeFileSync(list, content)
     const result = spawnSync('/bin/bash', [orderScript, root], { encoding: 'utf8', env: { PATH: '/nonexistent' } })
     assert.equal(result.status, 0, 'The hook must never fail apt-get update')
@@ -457,13 +458,18 @@ test('APT fails over per file, the order hook moves a refusing or stalled source
     servers.push(tampered)
     const refused = await refusedUri('127.0.0.4')
     const otherRefused = await refusedUri('127.0.0.5')
-    const probeEnvironment = { SKILLPILOT_APT_PROBE_CONNECT_TIMEOUT: '2', SKILLPILOT_APT_PROBE_MAX_TIME: '3' }
+    const unavailableCommunity = await refusedUri('127.0.0.8')
+    const community = await serveRepository(webRoot, '127.0.0.9')
+    servers.push(community)
+    const probeEnvironment = { SKILLPILOT_APT_PROBE_CONNECT_TIMEOUT: '2', SKILLPILOT_APT_PROBE_MAX_TIME: '3', no_proxy: '*' }
 
     let phase = 0
-    const prepare = ({ preferred, fallbackUri, hook }) => {
+    const prepare = ({ preferred, communityUri = unavailableCommunity, fallbackUri, hook }) => {
       phase += 1
-      const apt = createAptRoot(`phase${phase}-`, ['APT::Architecture "amd64";', 'APT::Architectures { "amd64"; };'], workspace)
-      writeFileSync(join(apt.etc, 'apt-mirrors.txt'), `${azureMirror}\tpriority:1\n`)
+      const apt = createAptRoot(`phase${phase}-`, [
+        'APT::Architecture "amd64";', 'APT::Architectures { "amd64"; };', 'Acquire::http::Proxy "DIRECT";',
+      ], workspace)
+      writeFileSync(join(apt.etc, 'apt-mirrors.txt'), `${fallbackUri}\tpriority:1\n`)
       const stanza = suite => [
         'Types: deb', `URIs: mirror+file:${join(apt.etc, 'apt-mirrors.txt')}`, `Suites: ${suite}`,
         'Components: main', `Signed-By: ${keyring}`, '',
@@ -474,8 +480,12 @@ test('APT fails over per file, the order hook moves a refusing or stalled source
         mirrorDirectory, {
           SKILLPILOT_UBUNTU_ARCHIVE_URI: preferred,
           SKILLPILOT_UBUNTU_SECURITY_URI: preferred,
+          SKILLPILOT_UBUNTU_COMMUNITY_URI: communityUri,
           SKILLPILOT_UBUNTU_FALLBACK_URI: fallbackUri,
         })
+      const lists = () => ['archive.txt', 'security.txt'].map(name => readMirrorList(join(mirrorDirectory, name)).entries)
+      const initialEntries = [[preferred, 'priority:1'], [communityUri, 'priority:2'], [fallbackUri, 'priority:3']]
+      assert.deepEqual(lists(), [initialEntries, initialEntries], 'Both mirror lists must use only the loopback fixture before APT runs')
       installPolicy(apt.etc, mirrorDirectory, { hook })
       const options = { env: { ...apt.env, ...probeEnvironment }, cwd: apt.root }
       return {
@@ -483,7 +493,7 @@ test('APT fails over per file, the order hook moves a refusing or stalled source
         download: () => run('apt-get', ['download', fixturePackage], options),
         // The shape of the workflow steps: `apt-get update && apt-get install ...`.
         step: () => run('sh', ['-c', `apt-get update && apt-get install --simulate --yes --no-install-recommends ${fixturePackage}`], options),
-        lists: () => ['archive.txt', 'security.txt'].map(name => readMirrorList(join(mirrorDirectory, name)).entries),
+        lists,
         cleanup: () => rmSync(apt.root, { recursive: true, force: true }),
       }
     }
@@ -512,32 +522,47 @@ test('APT fails over per file, the order hook moves a refusing or stalled source
     // 2. A source that accepts connections but stalls would cost two 30 s timeouts per
     //    file; the hook probes it first and lets the answering mirror go first.
     fallback.requests.length = 0
-    const stalled = prepare({ preferred: stall.uri, fallbackUri: fallback.uri, hook: true })
+    const stalled = prepare({ preferred: stall.uri, communityUri: community.uri, fallbackUri: fallback.uri, hook: true })
     const stalledUpdate = await stalled.update()
     assert.equal(stalledUpdate.status, 0, stalledUpdate.output)
     assert.ok(stalledUpdate.seconds < 25, `A stalled source must not stall the update (took ${stalledUpdate.seconds}s)`)
-    assert.match(stalledUpdate.output, /failed the probe, trying http:\/\/127\.0\.0\.1:\d+\/ubuntu\/ first/u)
+    assert.match(stalledUpdate.output, /failed the probe, trying http:\/\/127\.0\.0\.9:\d+\/ubuntu\/ first/u)
     assert.deepEqual(stalled.lists(), [
-      [[stall.uri, 'priority:2'], [fallback.uri, 'priority:1']],
-      [[stall.uri, 'priority:2'], [fallback.uri, 'priority:1']],
+      [[stall.uri, 'priority:2'], [community.uri, 'priority:1'], [fallback.uri, 'priority:3']],
+      [[stall.uri, 'priority:2'], [community.uri, 'priority:1'], [fallback.uri, 'priority:3']],
     ], 'The hook must change priorities only, keeping the line order as the preference')
     assert.equal(stall.connections(), 2, 'Only the two probes may reach the stalled source, never APT itself')
-    assertServed(fallback, indexFiles, 'Stalled source', stalledUpdate)
+    assertServed(community, indexFiles, 'Preferred community mirror after direct-source stall', stalledUpdate)
+    assert.ok(fallback.requests.every(path => path.endsWith('/InRelease')), 'The healthy Azure fallback receives at most a probe')
     stalled.cleanup()
 
     // 3. Reverse case: while the preferred source answers, it stays first and the hook
-    //    does not wait for a stalled second source.
+    //    does not wait for a stalled fallback source.
     const healthy = prepare({ preferred: direct.uri, fallbackUri: stall.uri, hook: true })
     const healthyStep = await healthy.step()
     assert.equal(healthyStep.status, 0, healthyStep.output)
-    assert.ok(healthyStep.seconds < 15, `A stalled second source must not delay the update (took ${healthyStep.seconds}s)`)
+    assert.ok(healthyStep.seconds < 15, `A stalled fallback source must not delay the update (took ${healthyStep.seconds}s)`)
     assert.deepEqual(healthy.lists(), [
-      [[direct.uri, 'priority:1'], [stall.uri, 'priority:2']],
-      [[direct.uri, 'priority:1'], [stall.uri, 'priority:2']],
+      [[direct.uri, 'priority:1'], [unavailableCommunity, 'priority:2'], [stall.uri, 'priority:3']],
+      [[direct.uri, 'priority:1'], [unavailableCommunity, 'priority:2'], [stall.uri, 'priority:3']],
     ])
     assertServed(direct, indexFiles, 'Healthy preferred source', healthyStep)
-    assert.ok(stall.connections() <= 4, 'APT must not contact the stalled second source')
+    assert.ok(stall.connections() <= 4, 'APT must not contact the stalled fallback source')
     healthy.cleanup()
+
+    // If both original endpoints are unavailable, the new mirror supplies the signed
+    // metadata, the indexes named in it and the actual package, even in a fresh APT process.
+    community.requests.length = 0
+    const communityOnly = prepare({ preferred: refused, communityUri: community.uri, fallbackUri: otherRefused, hook: true })
+    const communityUpdate = await communityOnly.update()
+    assert.equal(communityUpdate.status, 0, communityUpdate.output)
+    const promoted = [[refused, 'priority:2'], [community.uri, 'priority:1'], [otherRefused, 'priority:3']]
+    assert.deepEqual(communityOnly.lists(), [promoted, promoted])
+    assertServed(community, indexFiles, 'Community mirror alone', communityUpdate)
+    const communityDownload = await communityOnly.download()
+    assert.equal(communityDownload.status, 0, communityDownload.output)
+    assertServed(community, [`/ubuntu/${fixtureDeb}`], 'Community package download', communityDownload)
+    communityOnly.cleanup()
 
     // 4. When every source is down, the step still fails: apt-get update only warns
     //    about transient network errors, and the install that follows finds no package.
@@ -547,7 +572,7 @@ test('APT fails over per file, the order hook moves a refusing or stalled source
     assert.match(downStep.output, /Some index files failed to download/u)
     assert.equal(downStep.status, 100, `A total outage must fail the step:\n${downStep.output}`)
     assert.ok(downStep.seconds < 20, `A refused total outage must fail fast (took ${downStep.seconds}s)`)
-    assert.deepEqual(down.lists()[0], [[refused, 'priority:1'], [otherRefused, 'priority:2']],
+    assert.deepEqual(down.lists()[0], [[refused, 'priority:1'], [unavailableCommunity, 'priority:2'], [otherRefused, 'priority:3']],
       'Without an answering source the line order stays')
     down.cleanup()
 

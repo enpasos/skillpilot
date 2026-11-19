@@ -4,7 +4,7 @@
 # whose first entry is the Azure mirror (azure.archive.ubuntu.com). Every stanza that
 # uses a mirror list or the Azure mirror reads a SkillPilot mirror list instead: the
 # direct Ubuntu endpoint first (security.ubuntu.com for a stanza whose suites are all
-# *-security, archive.ubuntu.com otherwise) and the Azure mirror second. APT's mirror
+# *-security, archive.ubuntu.com otherwise), the UC Davis archive, then Azure. APT's mirror
 # transport (apt-transport-mirror(1)) moves a file to the next entry when a source fails
 # or stalls, and order-ubuntu-mirrors.sh lets a source that answers go first.
 # Types, suites, components and Signed-By stay as-is, so whichever mirror serves a file,
@@ -20,6 +20,7 @@ output=$2
 mirror_dir=${3%/}
 archive_uri=${SKILLPILOT_UBUNTU_ARCHIVE_URI:-https://archive.ubuntu.com/ubuntu/}
 security_uri=${SKILLPILOT_UBUNTU_SECURITY_URI:-https://security.ubuntu.com/ubuntu/}
+community_uri=${SKILLPILOT_UBUNTU_COMMUNITY_URI:-https://mirror.math.ucdavis.edu/ubuntu/}
 fallback_uri=${SKILLPILOT_UBUNTU_FALLBACK_URI:-http://azure.archive.ubuntu.com/ubuntu/}
 
 if [[ $mirror_dir != /* ]]; then
@@ -88,7 +89,8 @@ write_list() {
       printf '# probe: dists/%s/InRelease\n' "$suite"
     fi
     printf '%s\tpriority:1\n' "$direct_uri"
-    printf '%s\tpriority:2\n' "$fallback_uri"
+    printf '%s\tpriority:2\n' "$community_uri"
+    printf '%s\tpriority:3\n' "$fallback_uri"
   } > "$work/$kind.txt"
 }
 write_list archive "$archive_uri"
