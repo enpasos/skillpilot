@@ -74,19 +74,13 @@ jobs:
         run: npx playwright install --with-deps chromium
       - name: Install package validation dependencies
         run: python -m pip install -r scripts/curriculum_package_validation_requirements.txt
-      - name: Validate full standalone curriculum package
+      - name: Validate full standalone package, load the active store and test the hermetic consumer
         run: |
           bash -n \
             scripts/run_curriculum_release_model_conformance.sh \
+            scripts/check_provisioned_curriculum_package_backend.sh \
             scripts/run_curriculum_full_package_conformance.sh
           bash scripts/run_curriculum_full_package_conformance.sh
-      - name: Load real package through the backend
-        working-directory: backend
-        env:
-          SKILLPILOT_CONFORMANCE_PACKAGE_STORE: ${{ github.workspace }}/tmp/curriculum-release-model/provisioned-store
-        run: |
-          ./gradlew test \
-            --tests 'com.skillpilot.backend.curriculumpackage.ProvisionedCurriculumPackageConformanceTest'
       - name: Upload package evidence
         if: always()
         uses: actions/upload-artifact@v6
