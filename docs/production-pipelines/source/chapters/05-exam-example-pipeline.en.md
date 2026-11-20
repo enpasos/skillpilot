@@ -49,6 +49,8 @@ Temporary similarity or originality reports stay strictly under `tmp/`. The plan
 
 [applyLearningUnitAssessments.mjs](repo:app/scripts/applyLearningUnitAssessments.mjs) binds selected Mathematics and Physics tasks to their Markdown source sections, task/solution and rubric revisions, and independent coverage-review references. It generates or checks canonical assessment nodes, `programUnits`, own `goalPlacements`, and affected semantic-ledger fingerprints. Existing reviewed tasks can be referenced through their exact revisions; a second divergent task copy is no substitute.
 
+Try the rubric for each authored multi-part assessment on two submissions. One demonstrates the core competence with a minor slip. The other lacks a core capability the assessment claims to cover. Record the partial scores and the pass mark for both submissions in the review. The first submission must reach the pass mark. The second must fall below it. If either result differs, revise the task, rubric or coverage claim.
+
 ```bash
 # Read-only check that the catalog agrees with the assessment sources.
 npm --prefix app run check:learning-unit-assessments

@@ -2,6 +2,7 @@
 // Conformance of the learning-unit validator: shared fixtures, runtime schema, goal kinds, review binding and CLI contract.
 import assert from 'node:assert/strict'
 import { spawnSync } from 'node:child_process'
+import { createHash } from 'node:crypto'
 import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { dirname, join, resolve } from 'node:path'
@@ -12,6 +13,7 @@ import {
   type UnitFinding, type UnitGraphGoal, type UnitGraphLandscape,
 } from './lib/learningUnitContracts'
 import { deriveRecognition } from './lib/learningUnitRecognition'
+import { assertLearningUnitAssessmentReview, readLearningUnitAssessmentSource } from './lib/learningUnitAssessmentSource'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
 const json = (path: string) => JSON.parse(readFileSync(resolve(root, path), 'utf8'))
@@ -236,6 +238,44 @@ assert(pilotGoal, 'Pilot assessment must exist in canonical Mathematics')
 assert.deepEqual(assessmentReviewRevisions(pilotGoal),
   { taskRevision: pilot.review.taskRevision, rubricRevision: pilot.review.rubricRevision },
   'TypeScript and backend review bindings must agree')
+
+// A graduated rubric row can award partial points within the maximum advertised for its part.
+const partialCreditSource = `## example
+### Aufgabe
+1. Vergleiche und begründe. (3 BE)
+2. Markiere die Zahl. (1 BE)
+### Lösung
+Beispiellösung
+### Bewertung
+Eine richtige Angabe zählt in jedem Teil.
+| Schritt | BE | Kriterium |
+| --- | --- | --- |
+| 1 | 3 | 1 Punkt für den Vergleich, bis zu 2 weitere für die Begründung. |
+| 2 | 1 | Position |
+Erreichbar sind 4 BE. Bestanden ist die Prüfung mit 3 BE.`
+const readAssessment = (source: string) => readLearningUnitAssessmentSource(source, 'example.md', {
+  sectionKey: 'example', stepIdPrefix: 'example',
+})
+const partialAssessment = readAssessment(partialCreditSource)
+assert(!partialAssessment.taskContent.includes('Eine richtige Angabe zählt'), 'Do not expose grading notes in the task before submission')
+assert.equal(partialAssessment.solutionContent, 'Beispiellösung\n\n**Hinweise zur Bewertung**\n\nEine richtige Angabe zählt in jedem Teil.',
+  'The released evaluation after submission includes the common grading instructions')
+assert.deepEqual(partialAssessment.scoring, { maxPoints: 4, passingPoints: 3, steps: [
+  { id: 'example_1', points: 3, description: '1 Punkt für den Vergleich, bis zu 2 weitere für die Begründung.' },
+  { id: 'example_2', points: 1, description: 'Position' },
+] })
+assert.throws(() => readAssessment(partialCreditSource.replace('(3 BE)', '(1 BE)')), /other points/u)
+assert.throws(() => readAssessment(partialCreditSource.replace('| 2 | 1 | Position', '| 3 | 1 | Position')), /numbered from 1/u)
+assert.throws(() => readAssessment(partialCreditSource.replace('mit 3 BE', 'mit 5 BE')), /passing score/u)
+const partialRevisions = assessmentReviewRevisions({ id: 'A', examData: partialAssessment })
+const rawSourceHash = createHash('sha256').update(partialCreditSource).digest('hex')
+const reviewRow = `| A | \`${rawSourceHash}\` | ${partialRevisions.taskRevision} | ${partialRevisions.rubricRevision} |`
+assertLearningUnitAssessmentReview(reviewRow, 'A', partialCreditSource, partialRevisions)
+assert.throws(() => assertLearningUnitAssessmentReview(reviewRow, 'B', partialCreditSource, partialRevisions), /same review-table row/u)
+assert.throws(() => assertLearningUnitAssessmentReview(reviewRow, 'A', partialCreditSource + '\n', partialRevisions), /same review-table row/u)
+assert.throws(() => assertLearningUnitAssessmentReview(
+  reviewRow.replace(`| ${partialRevisions.rubricRevision}`, `|\n| B | ${partialRevisions.rubricRevision}`), 'A', partialCreditSource, partialRevisions,
+), /same review-table row/u)
 
 // CLI contract: 0 valid, 1 findings, 2 malformed input.
 const work = mkdtempSync(join(tmpdir(), 'learning-unit-cli-'))

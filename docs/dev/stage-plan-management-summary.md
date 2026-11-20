@@ -21,7 +21,7 @@ er erhält die Dokumentationschecks. Die große CI schließt `docs/dev/**` und
 `AGENTS.md` bei reinen Änderungen dieser Pfade derzeit aus. Der dokumentierte
 CI-Nachweis gilt weiterhin für den benannten Implementierungscommit.
 
-## 20. November 2026, 09:34 MEZ (UTC+01:00) – Hessen Physik E.1 in G8 und G9
+## 20. November 2026, 10:18 MEZ (UTC+01:00) – Hessen Physik E.1 in G8 und G9
 
 **Zur Teilabnahme.** In der [lokalen Vorschau](hessen-physik-e1-vorschau.md) die Ballfrage und eine der drei Übungen öffnen, von der Wurfaufgabe zur Wagenaufgabe wechseln und die vier Aufgaben unter **Einheitenprüfung** vergleichen. A verlangt 14/17, B 15/18, C und D je 17/20 Punkte. Neun Themenkarten stehen zum Üben bereit. Die fachliche Gesamtfreigabe erteilt der Product Owner gesondert. [Fachentscheid A/B](https://github.com/enpasos/skillpilot/blob/bea9d4329942a183424d2ff5615f10cdda7bdd8e/curricula/DE/Gymnasium/quality/release-model/physics-he-e1-partial-credit-review-2026-11-20.md) · [Fachentscheid C/D](../concept/skill-graph/examples/hessen-physik-e1/entwuerfe-kindeinheit/unabhaengiges-fachreview.md)
 
@@ -29,7 +29,21 @@ CI-Nachweis gilt weiterhin für den benannten Implementierungscommit.
 
 **Fortschritt und Integration.** K 0/13, F 0/7 abgeschlossen, 0 Stufenpläne aktiviert. In acht hessischen Ansichten mit je Prüfstand 367 Tafeln blieb E.1 vor und nach der Änderung ohne Rückgriff. Ein bestehender Rückgriff Q2→Q1 liegt außerhalb von E.1. Physik bleibt bei M7 mit 854 Zielen und 485/485 fachlichen Atomen je Qualitätsdimension. Die neun hessischen Konfigurationen erreichen beide geprüften Aufgaben der Untereinheit. Die zwölf schon auf `main` offenen Konfigurationen in BW und BY sind dokumentiert. [Qualitätsstand](../qa-ci/status/curriculum-quality-status.de.md) · [Vergleich der drei Prüfstände](hessen-physik-sekii-uebergabe.md#prüfungsdeckung-in-den-angebotenen-ansichten)
 
+Auf dem gemeinsamen Stand mit den überarbeiteten Mathematikaufgaben lädt der Backendtest das frisch installierte Referenzpaket und prüft beide neuen Aufgaben auf ihre Bestehensgrenze von 10/12. [Paketstand auf der Hauptlinie](https://github.com/enpasos/skillpilot/commit/2910cae99ff478d266744d241fbe7e4157d56c30)
+
 [PR #171](https://github.com/enpasos/skillpilot/pull/171) ist offen. Zur Sichtprüfung stehen E.1 und die [große Mathematiktafel](http://localhost:5177/vergleich/mathematik) bereit. Die persönliche E.1-Teilabnahme und die Integrations-CI stehen aus.
+
+## 20. November 2026, 08:56 MEZ (UTC+01:00) – Prüfungen auf Verständnis bewerten
+
+Im kanonischen Gymnasium-Katalog verlangen am Ausgangsstand 137 von 1.049 bepunkteten Prüfungen volle Punktzahl. In der Einheit „Natürliche Zahlen“ prüften die beiden Aufgaben bisher mit 13/13 und 17/17. Die neue Fassung erlaubt in beiden Fällen einen hinreichenden Nachweis mit 10/12. Für die übrigen 135 Fälle steht das fachliche Review noch aus. K1–K13 und F1–F7 erhalten durch dieses Paket keinen zusätzlichen Abschluss. Neu aktiviert wurden 0 Stufenpläne. Der Katalogvergleich ergibt unveränderte Kanten und Platzierungen.
+
+**Für die fachliche Durchsicht** eignen sich die beiden [Aufgaben und ihre Grenzabgaben](https://github.com/enpasos/skillpilot/blob/6a04a80ee38d7788681c840edfeed9c24218ecac/curricula/DE/Gymnasium/quality/learning-units/math-natural-numbers-2026-11-20-v2.md). Beim Spendenlauf zählt eine richtig geschriebene Zahlenkette als Nachweis der darin gezeigten Vergleiche. Bei der Konzertkasse ist zu prüfen, warum zwei richtige Nachfolger allein die allgemeine Aussage über die natürlichen Zahlen offenlassen. Die gemeinsame [Coachanweisung](https://github.com/enpasos/skillpilot/blob/6a04a80ee38d7788681c840edfeed9c24218ecac/backend/src/main/java/com/skillpilot/backend/ai/ExamGradingGuidance.java) bewertet jedes Kriterium anhand der gesamten Abgabe und berücksichtigt Widersprüche dort, wo sie den Nachweis betreffen.
+
+**Nachweise und Integration.** Das fachliche Gegenlesen anhand synthetischer Lösungen und der technische Grenzversuch sind getrennt dokumentiert. Im lokalen Claude-MCP mit Spring und H2 wurde bei beiden Prüfungszielen die Eingabe von 9 Punkten abgewiesen und die von 10 Punkten als bestandene Prüfung gespeichert. Die zusätzlichen Lernziele erhielten jeweils keinen Masteryeintrag. Das [katalogweite Prüfskript](https://github.com/enpasos/skillpilot/blob/6a04a80ee38d7788681c840edfeed9c24218ecac/scripts/check_exam_pass_marks.py) vergleicht neue und geänderte Materialien mit dem CI-Basiscommit. Der [PR #170](https://github.com/enpasos/skillpilot/pull/170) führt zur Integration. Nach erfolgreicher Main-CI folgen die Erprobung im Coach und die Überprüfung weiterer Vollpunktprüfungen nach Fach und Einheit.
+
+Die G8/G9-Generierung prüft die Fassung des Mathematikkatalogs gegen zwei genehmigte Pläne für die Platzierung der Lernziele. Der Abgleich mit dem Basiscommit ergab bei 1.310 identischen Ziel-IDs ausschließlich neue Prüfungsdaten und Quellenverweise an den beiden überarbeiteten Aufgaben. Die beiden aktiven Bindungen verwenden nun den geprüften Kataloghash `cb40d5be…`. Alle 18 daraus erzeugten Daueransichten entsprechen den eingecheckten Dateien. [Fehlgeschlagener CI-Schritt und Ausgangsstand](https://github.com/enpasos/skillpilot/actions/runs/44682822375/job/136121439655)
+
+Das Mathematikpaket enthält jetzt für jede der beiden Prüfungen eine eigene Aufgabenquelle. Das vollständige ZIP umfasst 1.121 Einträge mit 1.119 Manifestdateien, darunter dieselben 864 Medien. Der aktualisierte Prüfnachweis bindet den Paketinhalt `e9458739…` und die Eingabedateien des Release-Modells. Alle bisherigen Rechteentscheidungen sind erhalten. Für eine Veröffentlichung sind weiterhin 867 Prüfpositionen offen. [Paketprüfung des vorherigen Stands](https://github.com/enpasos/skillpilot/actions/runs/44689137269/job/136142403934)
 
 ## 20. November 2026, 02:05 MEZ (UTC+01:00) – Prüfungsbelege in Hessen Physik E.1
 

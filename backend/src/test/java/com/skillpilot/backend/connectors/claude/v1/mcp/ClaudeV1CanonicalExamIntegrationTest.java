@@ -110,6 +110,10 @@ class ClaudeV1CanonicalExamIntegrationTest {
         Map<String, Object> evaluation = successfulCall(
                 bound.connectionId(), ClaudeV1Contract.TOOL_GET_EXAM_EVALUATION, Map.of("goalId", EXAM_ID));
         assertThat(evaluation).containsEntry("goalId", EXAM_ID);
+        assertThat(evaluation.get("instruction").toString()).contains("gesamten Abgabe", "Teilpunkte", "Bestehensgrenze");
+        Map<String, Object> english = successfulCall(bound.connectionId(), ClaudeV1Contract.TOOL_GET_EXAM_EVALUATION,
+                Map.of("goalId", EXAM_ID, "language", "en"));
+        assertThat(english.get("instruction").toString()).contains("whole submission", "partial credit", "threshold");
         assertThat(evaluation.get("solutionContent").toString())
                 .contains("Das Netz besteht", "Schrägbild", "Draufsicht");
         Map<String, Object> scoring = nestedMap(evaluation, "scoring");
@@ -225,7 +229,7 @@ class ClaudeV1CanonicalExamIntegrationTest {
     private McpSchema.CallToolResult call(String sessionId, String tool, Map<String, Object> arguments) {
         Map<String, Object> request = new LinkedHashMap<>(arguments);
         request.put("learningSessionId", sessionId);
-        request.put("language", "de");
+        request.putIfAbsent("language", "de");
         var specification = contractAdapter.toolSpecifications().stream()
                 .filter(candidate -> tool.equals(candidate.tool().name())).findFirst().orElseThrow();
         return specification.callHandler().apply(McpTransportContext.EMPTY,

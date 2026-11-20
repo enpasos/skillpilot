@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.ai.CoachToolFacade;
+import com.skillpilot.backend.ai.ExamGradingGuidance;
 import com.skillpilot.backend.api.ActiveGoalRequest;
 import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.LevelCompletionResponse;
@@ -1644,7 +1645,7 @@ public class ClaudeV1McpContractAdapter {
 
     private Map<String, Object> getExamEvaluation(String connectionId, Map<String, Object> arguments) {
         String goalId = requiredIdentifier(arguments, ARG_GOAL_ID);
-        language(arguments);
+        String evaluationLanguage = language(arguments);
         return sessionCoordinator.read(connectionId, ctx -> {
             UnifiedLearnerStateResponse state = coachToolFacade.getLearnerState(ctx.skillpilotId());
             FrontierGoal active = state == null ? null : state.activeGoal();
@@ -1661,6 +1662,7 @@ public class ClaudeV1McpContractAdapter {
             response.put("solutionContentEn",
                     contextProjector.projectReleasedEvaluationContent(evaluation.solutionContentEn()));
             response.put("scoring", evaluation.scoring());
+            response.put("instruction", LANGUAGE_EN.equals(evaluationLanguage) ? ExamGradingGuidance.EN : ExamGradingGuidance.DE);
             response.put("evaluationCapability", capabilityService.mintExamEvaluationCapability(
                     connectionId, evaluation.goalId(), ctx.stateVersion(), released.revision().fingerprint()));
             return response;

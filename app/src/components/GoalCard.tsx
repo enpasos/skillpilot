@@ -677,7 +677,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
 
       <div className="mt-2 text-sm text-text-primary leading-relaxed prose dark:prose-invert max-w-none">
         {examDataForDisplay ? (
-          <div className="space-y-6">
+          <div className="space-y-6 [&_table]:wrap-anywhere">
             <div className="bg-blue-50 dark:bg-blue-900/10 p-4 rounded-xl border border-blue-100 dark:border-blue-900/30">
               <h3 className="text-sm font-bold text-blue-700 dark:text-blue-400 uppercase tracking-wide mb-2 flex items-center gap-2">
                 <Target size={16} />

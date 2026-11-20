@@ -66,6 +66,8 @@ Temporäre Ähnlichkeits- oder Originalitätsberichte gehören ausschließlich u
 
 [applyLearningUnitAssessments.mjs](https://github.com/enpasos/skillpilot/blob/main/app/scripts/applyLearningUnitAssessments.mjs) bindet die ausgewählten Mathematik- und Physikaufgaben an ihre Markdown-Quellabschnitte, Aufgaben-/Lösungs- und Rubrikrevisionen sowie die unabhängigen Deckungsreview-Referenzen. Es erzeugt beziehungsweise prüft kanonische Prüfungsknoten, `programUnits`, eigene `goalPlacements` und die betroffenen semantischen Ledger-Fingerprints. Bestehende geprüfte Aufgaben können über ihre exakten Revisionen eingebunden werden; eine zweite abweichende Aufgabenkopie ist kein Ersatz.
 
+Das fachliche Review erprobt das Raster einer selbst verfassten mehrteiligen Prüfung an zwei Lösungen. Eine zeigt die Kernkompetenz trotz eines Nebenfehlers, die andere lässt eine beanspruchte Kernleistung offen. Das Review dokumentiert Teilpunkte und Bestehensgrenze für beide Fälle. Die erste Lösung muss die Bestehensgrenze erreichen, die zweite muss darunter bleiben. Bei abweichenden Ergebnissen werden Aufgabe, Raster oder Deckungsanspruch überarbeitet.
+
 ```bash
 # Prüft ohne Schreibzugriff, dass der Katalog den Aufgabenquellen entspricht.
 npm --prefix app run check:learning-unit-assessments

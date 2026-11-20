@@ -2064,6 +2064,14 @@ Key principles for Layer C:
   instruction. Target MCP Apps must use a widget-backed
   `start -> submit -> receipt -> evaluate -> record` attempt so the backend can
   prove submission before releasing protected evaluation material.
+- For new or revised SkillPilot assessments with multiple points or scoring steps, use a
+  passing score below full marks. It must suffice on its own. In subject review,
+  grade a submission that demonstrates the core despite a minor slip and a
+  submission missing a capability claimed as demonstrated. The former must
+  be able to pass and the latter must fall below the threshold. Adjust the
+  task, rubric weights or coverage if these checks disagree. Count clear
+  evidence wherever it occurs in the submission. Charge a mistake only to
+  criteria whose evidence it actually affects.
 - Exam grading is criterion-based, not an exact match against the released
   solution. The solution is a non-exclusive reference; subject-correct equivalent
   results, representations, permitted rounding, explanations, and alternative

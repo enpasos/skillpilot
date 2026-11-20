@@ -139,6 +139,8 @@ Release blocker if failed: later-year content or hidden prerequisite knowledge.
 - [ ] No single artificial umbrella scenario is copied across unrelated tasks.
 - [ ] Task dependencies are limited: failure in one task should not make the remaining tasks unsolvable.
 - [ ] Total points and subtask points are plausible for the intended assessment length.
+- [ ] Each independently demonstrated skill earns its stated credit wherever it is shown in the submission. Every required written or graphical form is clear in the task.
+- [ ] For a multi-part task, score a borderline pass with a minor slip and a borderline failure missing a claimed core capability. Check both against the same pass mark below full points.
 
 Release blocker if failed: purely procedural task set or one incoherent mega-context.
 

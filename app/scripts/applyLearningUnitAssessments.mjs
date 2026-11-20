@@ -15,12 +15,17 @@ import { existsSync, readFileSync, writeFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { fingerprintSemanticKindSourceGoal } from './goalBookModel.ts'
 import { assessmentReviewRevisions } from './lib/learningUnitContracts.ts'
+import { assertLearningUnitAssessmentReview, readLearningUnitAssessmentSource } from './lib/learningUnitAssessmentSource.ts'
 
 const root = resolve(import.meta.dirname, '../..')
 const assessments = 'curricula/DE/Gymnasium/assessments'
 const reviews = 'curricula/DE/Gymnasium/quality/learning-units'
-const machineReview = (date, hash, reviewPath) =>
-  `Machine-only content, calculation and unit coverage review, ${date}; source section SHA-256 ${hash}. Every rubric step is required because the backend enforces only total points; the grading note inside the sample solution says what costs no points. Review record: ${reviewPath}. No human review, learner trial or publication claimed.`
+const machineReview = (date, hash, reviewPath, scoring) => {
+  const scoringNote = scoring.passingPoints < scoring.maxPoints
+    ? 'The rubric describes how each part earns points. The backend enforces the reviewed total passing score.'
+    : 'Every rubric step is required because the backend enforces only total points; the grading note inside the sample solution says what costs no points.'
+  return `Machine-only content, calculation and unit coverage review, ${date}; source section SHA-256 ${hash}. ${scoringNote} Review record: ${reviewPath}. No human review, learner trial or publication claimed.`
+}
 
 // One entry per canonical landscape. A unit lists its own ordinary goals and its assessments; an
 // assessment names its source section, the goals it requires directly and the goals it covers.
@@ -60,18 +65,19 @@ const landscapes = [{
     }],
   }, {
     id: 'math-natural-numbers',
-    revision: '2026-11-13-v1',
+    revision: '2026-11-20-v2',
     label: 'Natürliche Zahlen verstehen und darstellen',
     labelEn: 'Understanding and representing natural numbers',
     promise: 'Ich kann natürliche Zahlen in Ziffern und Worten schreiben, am Zahlenstrahl verorten, vergleichen und sinnvoll runden. Ich kann erklären, wie das Stellenwertsystem aufgebaut ist, und begründen, warum es keine größte natürliche Zahl gibt. So kann ich große Zahlen aus Tabellen und Texten sicher einordnen; darauf bauen das Rechnen mit natürlichen Zahlen, die ganzen Zahlen und die Brüche auf.',
     promiseEn: 'I can write natural numbers in digits and in words, locate them on the number line, compare them and round them sensibly. I can explain how the place-value system is built and justify why there is no largest natural number. This lets me judge large numbers from tables and texts with confidence; calculating with natural numbers, the integers and fractions build on it.',
     ownGoalIds: ['cf474eab-1379-4877-907e-58b0892ce734', '9ef6c4fa-b97a-5d7a-86c1-96690f02d916', '624764d6-becd-5f9b-ada3-0d4f9d143073',
       'fe07241a-b779-5f35-a82d-7aa51ae74f42', '1a25ef44-f310-4c23-9ba8-44baec60d3b0'],
-    reviewPath: `${reviews}/math-natural-numbers-2026-11-13.md`,
-    reviewDate: '2026-11-13',
-    sourcePath: `${assessments}/mathematik/seki/j5/natural-numbers-unit-20261113-v1/tasks.md`,
+    reviewPath: `${reviews}/math-natural-numbers-2026-11-20-v2.md`,
+    reviewDate: '2026-11-20',
+    reviewFormat: 'source-bindings-v2',
     assessments: [{
       sectionKey: 'natural-numbers-order',
+      sourcePath: `${assessments}/mathematik/seki/j5/natural-numbers-order-20261120-v2/tasks.md`,
       shortKey: 'canonical_math_sek1_j5_unit_natural_numbers_order',
       stepIdPrefix: 'j5_unit_natural_numbers_order',
       title: 'Natürliche Zahlen darstellen, am Zahlenstrahl verorten und ordnen',
@@ -87,6 +93,7 @@ const landscapes = [{
       coveredGoalIds: ['cf474eab-1379-4877-907e-58b0892ce734', '9ef6c4fa-b97a-5d7a-86c1-96690f02d916'],
     }, {
       sectionKey: 'natural-numbers-place-value',
+      sourcePath: `${assessments}/mathematik/seki/j5/natural-numbers-place-value-20261120-v2/tasks.md`,
       shortKey: 'canonical_math_sek1_j5_unit_natural_numbers_place_value',
       stepIdPrefix: 'j5_unit_natural_numbers_place_value',
       title: 'Stellenwertsystem erklären, runden und Unbegrenztheit begründen',
@@ -159,35 +166,6 @@ const readText = (path) => readFileSync(resolve(root, path), 'utf8')
 const serialize = (value) => JSON.stringify(value, null, 2) + '\n'
 const sortedUnion = (lists) => [...new Set(lists.flat())].sort()
 
-// One assessment section of a source file: task, solution and rubric table. The rubric stands
-// inside the section (`### Bewertung`) or, in a file with a single assessment, after it (`## Bewertung`).
-function readSection(source, sourcePath, { sectionKey, stepIdPrefix }) {
-  const block = source.split(`## ${sectionKey}\n`)[1]?.split('\n## ')[0]
-  assert(block, `${sourcePath}: missing assessment section ${sectionKey}`)
-  const taskContent = block.split('### Aufgabe\n')[1]?.split('\n### Lösung')[0]?.trim()
-  const ownRubric = block.split('\n### Bewertung\n')[1]
-  const solutionContent = block.split('### Lösung\n')[1]?.split('\n### Bewertung\n')[0]?.trim()
-  assert(taskContent && solutionContent, `${sectionKey}: missing task or solution`)
-  const rubric = ownRubric ?? source.split('\n## Bewertung\n')[1]
-  assert(rubric, `${sectionKey}: missing rubric`)
-  const steps = [...rubric.matchAll(/^\| (\d+) \| (\d+) \| (.+) \|$/gmu)].map(([, number, points, description]) => ({
-    id: `${stepIdPrefix}_${number}`, points: Number(points), description: description.trim(),
-  }))
-  assert(steps.length > 0 && steps.every((step, index) => step.id.endsWith(`_${index + 1}`)), `${sectionKey}: rubric steps must be numbered from 1`)
-  const totals = rubric.match(/Erreichbar sind (\d+) BE\. Bestanden ist die Prüfung mit (\d+) BE\./u)
-  assert(totals, `${sectionKey}: missing point totals`)
-  const maxPoints = Number(totals[1]), passingPoints = Number(totals[2])
-  assert.equal(steps.reduce((sum, step) => sum + step.points, 0), maxPoints, `${sectionKey}: rubric points differ from the stated total`)
-  // The task states for every part the points of its rubric step, so nothing is graded that the learner cannot see.
-  const parts = `\n${taskContent}`.split(/\n(?=\d+\. )/u).filter((part) => /^\d+\. /u.test(part))
-  assert.equal(parts.length, steps.length, `${sectionKey}: the task has other parts than the rubric`)
-  for (const [index, step] of steps.entries())
-    assert(parts[index].startsWith(`${index + 1}. `) && parts[index].trimEnd().endsWith(`(${step.points} BE)`),
-      `${sectionKey}: task part ${index + 1} states other points than the rubric`)
-  const sectionHash = createHash('sha256').update(`${taskContent}\n### Lösung\n${solutionContent}`).digest('hex')
-  return { taskContent, solutionContent, scoring: { maxPoints, passingPoints, steps }, sectionHash }
-}
-
 const report = []
 for (const landscape of landscapes) {
   const canonical = JSON.parse(readText(landscape.canonicalPath))
@@ -210,8 +188,8 @@ for (const landscape of landscapes) {
   const touchedAncestors = new Set()
 
   for (const unit of landscape.units) {
+    if (unit.reviewFormat !== undefined) assert.equal(unit.reviewFormat, 'source-bindings-v2', `${unit.id}: unknown review format`)
     assert(existsSync(resolve(root, unit.reviewPath)), `Missing review record ${unit.reviewPath}`)
-    const source = readText(unit.sourcePath)
     unit.ownGoalIds.forEach(ordinary)
     const coverageReviews = []
     const assessmentIds = []
@@ -236,7 +214,9 @@ for (const landscape of landscapes) {
       }
       const hex = createHash('sha1').update(`${landscape.idNamespace}:${declared.shortKey}`).digest('hex')
       const assessmentId = `${hex.slice(0, 8)}-${hex.slice(8, 12)}-5${hex.slice(13, 16)}-8${hex.slice(17, 20)}-${hex.slice(20, 32)}`
-      const { taskContent, solutionContent, scoring, sectionHash } = readSection(source, unit.sourcePath, declared)
+      const sourcePath = declared.sourcePath ?? unit.sourcePath
+      const source = readText(sourcePath)
+      const { taskContent, solutionContent, scoring, sectionHash } = readLearningUnitAssessmentSource(source, sourcePath, declared)
       const required = declared.requires.map(ordinary), covered = declared.coveredGoalIds.map(ordinary)
       assert(declared.coveredGoalIds.every((id) => unit.ownGoalIds.includes(id)), `${declared.sectionKey}: covers a goal the unit does not own`)
       const cluster = byId.get(declared.practiceClusterId)
@@ -254,7 +234,7 @@ for (const landscape of landscapes) {
         tags: declared.tags,
         applicability: { jurisdiction: sortedUnion(required.map((goal) => goal.applicability.jurisdiction)) },
         extendedData: { applicabilityFromRequires: true, applicabilityMappingInheritance: 'boundary' },
-        sourceRef: unit.sourcePath,
+        sourceRef: sourcePath,
         dimensionTags: {
           framework: landscape.framework, demandLevel: 'AB3',
           processCompetencies: declared.processCompetencies ?? sortedUnion(covered.map((goal) => goal.dimensionTags.processCompetencies)),
@@ -267,11 +247,11 @@ for (const landscape of landscapes) {
         resourceLinks: [],
         examData: {
           reviewStatus: 'released',
-          reviewNote: machineReview(unit.reviewDate, sectionHash, unit.reviewPath),
+          reviewNote: machineReview(unit.reviewDate, sectionHash, unit.reviewPath, scoring),
           coveredGoalIds: declared.coveredGoalIds,
           coveredStrands: strands,
           demandLevels: ['AB1', 'AB2', 'AB3'],
-          sourceArtifactPath: unit.sourcePath,
+          sourceArtifactPath: sourcePath,
           taskContent,
           solutionContent,
           scoring,
@@ -280,6 +260,8 @@ for (const landscape of landscapes) {
         type: 'atomic',
         ...(landscape.examNodeKind === false ? {} : { nodeKind: 'exam' }),
       }
+      const revisions = assessmentReviewRevisions(assessment)
+      if (unit.reviewFormat === 'source-bindings-v2') assertLearningUnitAssessmentReview(readText(unit.reviewPath), assessmentId, source, revisions)
 
       // Catalog: the assessment goal, its cluster membership and the weights of its ancestors.
       const ancestors = [declared.practiceClusterId, ...ancestorsOf(declared.practiceClusterId)]
@@ -309,7 +291,7 @@ for (const landscape of landscapes) {
         semantic.counts.total += 1
       }
       coverageReviews.push({ assessmentGoalId: assessmentId, goalIds: declared.coveredGoalIds, reference: unit.reviewPath,
-        ...assessmentReviewRevisions(assessment) })
+        ...revisions })
       assessmentIds.push(assessmentId)
       report.push({ unitId: unit.id, unitRevision: unit.revision, assessmentId, sourceSectionSha256: sectionHash,
         maxPoints: scoring.maxPoints, passingPoints: scoring.passingPoints, steps: scoring.steps.length, ...coverageReviews.at(-1) })

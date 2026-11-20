@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.landscape.GoalMappingService;
 import com.skillpilot.backend.landscape.LandscapeService;
 import java.nio.file.Path;
+import java.util.Map;
 import org.junit.jupiter.api.Assumptions;
 import org.junit.jupiter.api.Test;
 
@@ -45,7 +46,7 @@ class ProvisionedCurriculumPackageConformanceTest {
         assertThat(activePackage.packageVersion()).isEqualTo(PACKAGE_VERSION);
         assertThat(activePackage.releaseId()).isEqualTo(PACKAGE_ID + "@" + PACKAGE_VERSION);
         assertThat(activePackage.contentDigest())
-                .isEqualTo("sha256:c2df283bfd359ba5ecf8bfe2ae1abf311e193871e923035074b493cbac754a8f");
+                .isEqualTo("sha256:e94587399f76b9f2ef0fd9ee3e3bb70ad7455deb5bbe50413b9b4b37ace3ad01");
         assertThat(activePackage.capabilities()).contains("learningUnitsV1", "assessmentMaterialsV1");
         assertThat(snapshot.rootLandscapeIds()).hasSize(1);
         assertThat(snapshot.landscapesById()).hasSize(1);
@@ -86,7 +87,7 @@ class ProvisionedCurriculumPackageConformanceTest {
                         .filter(resource -> resource.mediaType().equals("image/svg+xml"))
                         .count())
                 .isEqualTo(18);
-        assertThat(snapshot.artifactsByKey()).hasSize(1118);
+        assertThat(snapshot.artifactsByKey()).hasSize(1119);
         assertThat(snapshot.artifactsByRole().get("mapping"))
                 .singleElement()
                 .satisfies(artifact -> {
@@ -131,6 +132,17 @@ class ProvisionedCurriculumPackageConformanceTest {
         assertThat(domainState.generationSha256()).isEqualTo(snapshot.generationSha256());
         assertThat(domainState.landscapes()).hasSize(1);
         assertThat(domainState.landscapeIdByGoalId()).hasSize(1310);
+        Map.of(
+                "49507f95-d079-5113-8aac-1a08299473a3", "Beim Spendenlauf haben vier Klassen ihre Schritte gezählt.",
+                "de7e0bb2-262a-50e7-8398-f91ab1b365ca", "Für ein Konzert wurden")
+                .forEach((goalId, prompt) -> assertThat(domainState.landscapes().getFirst().getGoals())
+                        .filteredOn(goal -> goal.getId().equals(goalId))
+                        .singleElement().satisfies(goal -> {
+                            var exam = goal.getExamData();
+                            assertThat(exam.getTaskContent()).startsWith(prompt);
+                            assertThat(exam.getScoring().getMaxPoints()).isEqualTo(12.0);
+                            assertThat(exam.getScoring().getPassingPoints()).isEqualTo(10.0);
+                        }));
         assertThat(domainState.mappingState().packageStates()).singleElement().satisfies(state -> {
             assertThat(state.mappingCollectionCount()).isEqualTo(31);
             assertThat(state.decisionCount()).isEqualTo(10_022);
