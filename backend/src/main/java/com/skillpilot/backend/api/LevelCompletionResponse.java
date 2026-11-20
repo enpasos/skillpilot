@@ -105,5 +105,11 @@ public record LevelCompletionResponse(
             this(profileId, title, null, null);
         }
     }
-    public record Action(String action, String goalId, Map<String, String> title, String intent) { }
+    public record PracticePrerequisite(String goalId, Map<String, String> title) { }
+    public record PracticeStep(String startGoalId, List<PracticePrerequisite> openPrerequisites) { }
+    public record Action(String action, String goalId, Map<String, String> title, String intent, PracticeStep practice) {
+        public Action(String action, String goalId, Map<String, String> title, String intent) {
+            this(action, goalId, title, intent, null);
+        }
+    }
 }

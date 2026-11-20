@@ -1,5 +1,24 @@
 export type LearnerLearningPlanDate = string
 
+export interface UnitAssignmentRef {
+  sectionGoalId: string
+  revision: string
+  fingerprint: string
+}
+
+export interface UnitAssignmentOption extends UnitAssignmentRef {
+  title: Record<string, string>
+  passed: boolean
+  parts: { goalId: string; title: Record<string, string>; passed: boolean; materialCurrent: boolean }[]
+}
+
+export interface LearnerUnitAssignmentStatus {
+  title: string
+  status: 'active' | 'completed' | 'unavailable'
+  passedParts: number | null
+  requiredParts: number
+}
+
 export interface LearnerLearningPlanPeriod {
   startDate: LearnerLearningPlanDate
   endDate: LearnerLearningPlanDate
@@ -38,6 +57,10 @@ export type LearnerLearningPlanContinueReason =
   | 'personal-curriculum-changed'
   | 'no-open-due-frontier-goal'
   | 'active-goal-in-progress'
+  | 'unit-assessment-choice-required'
+  | 'unit-assignment-completed'
+  | 'unit-assignment-unavailable'
+  | 'assessment-coverage-unavailable'
   | null
 
 export interface LearnerLearningPlanSummary {
@@ -98,6 +121,7 @@ export interface LearnerPlanLearningScope {
  * as whether the plan status can be determined.
  */
 export interface LearnerPlanSubjectStatus {
+  unitAssignments?: LearnerUnitAssignmentStatus[]
   subjectKey: string
   landscapeIds: string[]
   subjectLabel: string
@@ -157,6 +181,7 @@ export interface LearnerLearningPlansResponse {
 }
 
 export interface LearnerLearningPlanLearningBlock {
+  unitAssignment?: UnitAssignmentRef
   id: string
   kind: 'learning'
   active?: boolean
@@ -199,6 +224,7 @@ export interface LearnerLearningPlanDetail extends LearnerLearningPlanSummary {
 }
 
 export interface SaveLearnerLearningPlanLearningBlock {
+  unitAssignment?: UnitAssignmentRef
   id: string
   kind: 'learning'
   active?: boolean

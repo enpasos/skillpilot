@@ -311,6 +311,12 @@ public class ClaudeV1McpContractAdapter {
                 and no feedback or question about the completed work is pending, perform any goalVisualization render required
                 by the Goal images rule below.
                 Then follow learningPlanToday.guidance, which owns the current next step.
+                The unitAssignments list for each subject describes explicitly chosen unit qualifications.
+                A completed assignment ends its required work. Further individual learning is
+                voluntary unless another chosen assignment requires it. An active unit permits
+                offering its available assessment parts, which the learner chooses before starting.
+                For an unavailable assignment, report that its edition cannot currently be evaluated.
+                Use the published assignment result and keep its part counts separate from daily quotas.
                 Learning plans prioritize work and never limit learning within the Personal Curriculum.
                 For explicit continuation, the backend prioritizes due prerequisite-safe plan goals,
                 then other reachable plan goals including future dates, then eligible personal targets
@@ -319,7 +325,7 @@ public class ClaudeV1McpContractAdapter {
                 A clear explicit subject request takes priority over generic resume: select its
                 published subject directly, without first activating another subject. Otherwise,
                 for a normal learning start, if no activeGoal is returned and
-                learningPlanToday.resumeAvailable is true, immediately call
+                learningPlanToday.resumeAvailable is true and guidance.state is not unitChoice, immediately call
                 resume_skillpilot_learning_plan with the current stateVersion and a fresh UUID before
                 any learner-facing response. Automatic continuation from a successor context is permitted
                 only when guidance.state=resume, except after an ordinary or exam mastery write: first
@@ -648,6 +654,9 @@ public class ClaudeV1McpContractAdapter {
                 longer demand their own prerequisites; non-assessment goals with no remaining demand
                 are implicitly completed. This does not certify prerequisite competence or change
                 saved goal results. A section with no required assessments may also be complete.
+                On the learning map a green check means the learner directly demonstrated that goal.
+                A shield with a check marks evidence-backed subject credit from another assessment.
+                When preparation simply becomes optional, describe it as optional.
                 Do not recalculate this result or restore implicitly completed work as mandatory;
                 voluntary learning remains possible through current published choices.
                 In ordinary learning, a published direct-assessment

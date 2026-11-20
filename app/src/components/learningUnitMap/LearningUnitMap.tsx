@@ -149,6 +149,7 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
   const visible = useMemo(() => new Set(visibleIds), [visibleIds])
   const selectedId = selection?.scope === nav.scopeId && visible.has(selection.id) ? selection.id : null
   const inspected = selectedId ? fixture.entries[selectedId] : null
+  const inspectedProgress = inspected ? learnerProgress?.[inspected.id] : undefined
   const layoutKey = `${nav.scopeId}:${direction}`
   const largeList = isCompactListScope(fixture, nav.scopeId, compactListThreshold)
   const listMode = largeList || preferList(nav.scopeId)
@@ -622,9 +623,9 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
         <div className="lum-inspector-top"><span>{inspected.eyebrow ?? getEntryKindLabel(inspected, language)}</span>
           <button type="button" aria-label="Information schließen" onClick={() => setSelection(null)}><X size={17} /></button></div>
         <h2 title={inspected.description}>{inspected.title}</h2><p>{inspected.description}</p>
-        {learnerProgress?.[inspected.id] && <div className="lum-selected-progress">
-          <strong>{learnerProgress[inspected.id].explicit + learnerProgress[inspected.id].implicit} / {learnerProgress[inspected.id].total} erreicht</strong>
-          <span>{learnerProgress[inspected.id].explicit} direkt · {learnerProgress[inspected.id].implicit} implizit</span>
+        {inspectedProgress && <div className="lum-selected-progress">
+          <strong>{inspectedProgress.explicit + inspectedProgress.implicit} / {inspectedProgress.total} {label('mit Nachweis', 'with evidence')}</strong>
+          <span>{inspectedProgress.explicit} {label('direkt nachgewiesen', 'directly demonstrated')} · {inspectedProgress.implicit} {label('fachlich angerechnet', 'credited through assessment')} · {inspectedProgress.notRequired ?? 0} {label('für diesen Auftrag nicht mehr erforderlich', 'no longer required for this assignment')} · {inspectedProgress.total - inspectedProgress.explicit - inspectedProgress.implicit - (inspectedProgress.notRequired ?? 0)} {label('offen', 'open')}</span>
         </div>}
         {renderSelectionActions && <div className="lum-selection-actions">{renderSelectionActions(inspected.id)}</div>}
         {inspected.children?.length ? <button type="button" className="lum-enter" disabled={nav.isTransitioning}

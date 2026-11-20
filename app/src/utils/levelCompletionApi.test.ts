@@ -89,6 +89,10 @@ const unitStatus = {
 const verifiedUnit = { ...valid, unitAssessment: unitStatus }
 assert.deepEqual(parseLevelCompletion(verifiedUnit)?.unitAssessment, unitStatus)
 const changedParts = unitStatus.parts.map(part => ({ ...part, materialCurrent: false }))
+const historicalParts = unitStatus.parts.map(part => ({ ...part, missingPlanningCreditBinding: part.passed }))
+assert.deepEqual(parseLevelCompletion({ ...valid, unitAssessment: { ...unitStatus, parts: historicalParts } })?.unitAssessment?.parts, historicalParts)
+assert.throws(() => parseLevelCompletion({ ...valid, unitAssessment: { ...unitStatus,
+  parts: unitStatus.parts.map(part => ({ ...part, passed: false, missingPlanningCreditBinding: true })), passed: false } }))
 assert.throws(() => parseLevelCompletion({ ...valid, unitAssessment: { ...unitStatus, parts: changedParts } }))
 assert.equal(parseLevelCompletion({ ...valid, unitAssessment: null })?.unitAssessment, undefined)
 for (const invalidStatus of [
@@ -102,6 +106,15 @@ const waiverWithReceipt = parseLevelCompletion({ ...valid, profileId: 'automatic
 })
 assert.equal(completionWaiversForTree(waiverWithReceipt, false).get('A')?.reason, 'assessment')
 const personalCompletion = { ...valid, profileId: 'automatic:personal-curriculum', planningCreditGoalIds: ['A'] }
+const foundation = { goalId: 'basis', title: { de: 'Grundlage' } }
+const study = { action: 'focusPractice', goalId: 'A', title: { de: 'Grundlage für A erarbeiten' }, intent: 'voluntary',
+  practice: { startGoalId: 'basis', openPrerequisites: [foundation] } }
+assert.deepEqual(parseLevelCompletion({ ...personalCompletion, actions: [study] })?.actions, [study])
+for (const invalidStudy of [{ ...study, intent: 'required' }, { ...study, practice: null }, { ...study, action: 'learnGoal' },
+  { ...study, practice: { startGoalId: 'other', openPrerequisites: [foundation] } },
+  { ...study, practice: { startGoalId: 'basis', openPrerequisites: [foundation, foundation] } }]) {
+  assert.throws(() => parseLevelCompletion({ ...personalCompletion, actions: [invalidStudy] }))
+}
 assert.equal(completionWaiversForTree(parseLevelCompletion(personalCompletion), false).get('A')?.reason, 'assessment',
   'the personal overview retains the assessment reason outside its unit and without detailed waiver rows')
 for (const ids of [['A', 'A'], ['outside-scope']]) {
@@ -111,6 +124,11 @@ for (const ids of [['A', 'A'], ['outside-scope']]) {
 const explanation = { goalId: 'A', title: { de: 'Vorbereitung' }, ruleId: 'static-rule',
   assessments: [{ goalId: 'Q', title: { de: 'Prüfung' } }], assessmentCount: 1 }
 assert.deepEqual(parseLevelCompletion({ ...valid, waiverDetails: [explanation] })?.waiverDetails, [explanation])
+assert.equal(completionWaiversForTree(parseLevelCompletion({ ...valid, waiverDetails: [explanation] }), false).get('A')?.reason,
+  'preparation_waived', 'the list of exams explaining an older exemption cannot certify an individual planning credit')
+assert.equal(completionWaiversForTree(parseLevelCompletion({ ...personalCompletion, planningCreditGoalIds: [],
+  waiverDetails: [{ ...explanation, ruleId: 'versioned_unit_assessment:historical' }] }), false).get('A')?.reason,
+  'no_remaining_demand', 'an explained assessment rule cannot override the authoritative list of current planning credits')
 assert.throws(() => parseLevelCompletion({ ...valid, waiverDetails: [{ ...explanation, goalId: 'outside-scope' }] }))
 assert.throws(() => parseLevelCompletion({ ...valid, waiverDetails: [{ ...explanation, assessmentCount: 0 }] }))
 assert.throws(() => parseLevelCompletion({ ...valid, waiverDetails: [explanation, explanation] }))

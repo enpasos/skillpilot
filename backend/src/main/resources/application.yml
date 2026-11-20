@@ -176,6 +176,7 @@ skillpilot:
           refresh-token-ttl: ${SKILLPILOT_OPENAI_OAUTH_REFRESH_TOKEN_TTL:P30D}
   completion:
     enabled: ${SKILLPILOT_COMPLETION_ENABLED:true}
+    unit-assessment-pilot-enabled: ${SKILLPILOT_UNIT_ASSESSMENT_PILOT_ENABLED:false}
     # Empty means all reviewed profiles; optional operator restriction only.
     enabled-profile-ids: ${SKILLPILOT_COMPLETION_ENABLED_PROFILE_IDS:}
     # Empty discovers matching current bases in repository or package mode before readiness.

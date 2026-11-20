@@ -2,7 +2,7 @@ import { sanitizeSkillpilotId } from './skillpilotId'
 
 export type CompletionCalculationStatus = 'valid' | 'unresolved' | 'invalid' | 'notApplicable' | 'unavailable'
 export type CompletionNavigationIntent = 'required' | 'support' | 'voluntary'
-export type CompletionActionName = 'selectProfile' | 'leaveProfile' | 'pauseProfile' | 'learnGoal' | 'endAssessment' | 'retryAssessment' | 'includeTarget' | 'includeSupport'
+export type CompletionActionName = 'selectProfile' | 'leaveProfile' | 'pauseProfile' | 'learnGoal' | 'focusPractice' | 'endAssessment' | 'retryAssessment' | 'includeTarget' | 'includeSupport'
 export type CompletionTitle = Record<string, string>
 
 export interface CompletionAssessmentStart {
@@ -17,6 +17,7 @@ export interface CompletionAction {
   goalId?: string
   title: CompletionTitle
   intent?: CompletionNavigationIntent
+  practice?: { startGoalId: string; openPrerequisites: { goalId: string; title: CompletionTitle }[] }
 }
 
 export interface CompletionAssessment {
@@ -31,7 +32,7 @@ export interface UnitAssessment {
   sectionGoalId: string
   revision: string
   passed: boolean
-  parts: { goalId: string; title: CompletionTitle; passed: boolean; materialCurrent?: boolean }[]
+  parts: { goalId: string; title: CompletionTitle; passed: boolean; materialCurrent?: boolean; missingPlanningCreditBinding?: boolean }[]
   planningCreditGoalIds: string[]
   individuallyOpenGoalIds: string[]
 }
@@ -73,7 +74,7 @@ export interface CompletionActionInput {
 
 export interface CompletionTreeWaiver {
   sectionTitle: CompletionTitle
-  reason?: 'assessment' | 'no_remaining_demand'
+  reason: 'assessment' | 'no_remaining_demand' | 'preparation_waived'
   assessments: { goalId: string; title: CompletionTitle }[]
   assessmentCount?: number
 }
@@ -121,7 +122,7 @@ export const completionWaiversForTree = (
     result.set(goalId, {
       sectionTitle: completion.title,
       reason: credits.has(goalId) ? 'assessment'
-        : isAutomaticCompletion(completion) || detail?.ruleId === 'no_remaining_demand' ? 'no_remaining_demand' : 'assessment',
+        : isAutomaticCompletion(completion) || detail?.ruleId === 'no_remaining_demand' ? 'no_remaining_demand' : 'preparation_waived',
       assessments: detail?.assessments ?? [],
       assessmentCount: detail?.assessmentCount,
     })
@@ -167,7 +168,7 @@ const intent = (value: unknown): CompletionNavigationIntent | undefined => {
   return value
 }
 const actionName = (value: unknown): CompletionActionName => {
-  if (value !== 'selectProfile' && value !== 'leaveProfile' && value !== 'pauseProfile' && value !== 'learnGoal' && value !== 'endAssessment' && value !== 'retryAssessment' && value !== 'includeTarget' && value !== 'includeSupport') throw invalid()
+  if (value !== 'selectProfile' && value !== 'leaveProfile' && value !== 'pauseProfile' && value !== 'learnGoal' && value !== 'focusPractice' && value !== 'endAssessment' && value !== 'retryAssessment' && value !== 'includeTarget' && value !== 'includeSupport') throw invalid()
   return value
 }
 
@@ -189,7 +190,9 @@ function parseUnitAssessment(value: unknown): UnitAssessment {
     const passed = bool(part.passed)
     const material = part.materialCurrent === undefined ? {} : { materialCurrent: bool(part.materialCurrent) }
     if (passed && material.materialCurrent === false) throw invalid()
-    return { goalId: text(part.goalId), title: title(part.title), passed, ...material }
+    const credit = part.missingPlanningCreditBinding === undefined ? {} : { missingPlanningCreditBinding: bool(part.missingPlanningCreditBinding) }
+    if (credit.missingPlanningCreditBinding && !passed) throw invalid()
+    return { goalId: text(part.goalId), title: title(part.title), passed, ...material, ...credit }
   })
   const passed = bool(source.passed)
   const planningCreditGoalIds = list(source.planningCreditGoalIds, 100_000).map(text)
@@ -253,7 +256,23 @@ export const parseLevelCompletion = (value: unknown): LevelCompletion | null => 
     notice: optionalText(source.notice),
     actions: list(source.actions).map((value) => {
       const action = record(value)
-      return { action: actionName(action.action), goalId: optionalText(action.goalId), title: title(action.title), intent: intent(action.intent) }
+      const result: CompletionAction = { action: actionName(action.action), goalId: optionalText(action.goalId), title: title(action.title), intent: intent(action.intent) }
+      if (action.practice != null) {
+        const practice = record(action.practice)
+        const openPrerequisites = list(practice.openPrerequisites, 100_000).map(value => {
+          const prerequisite = record(value)
+          return { goalId: text(prerequisite.goalId), title: title(prerequisite.title) }
+        })
+        const startGoalId = text(practice.startGoalId)
+        const prerequisiteIds = new Set(openPrerequisites.map(item => item.goalId))
+        if (result.intent !== 'voluntary' || !result.goalId || !['focusPractice', 'learnGoal'].includes(result.action)
+          || prerequisiteIds.size !== openPrerequisites.length || prerequisiteIds.has(result.goalId)
+          || result.action === 'learnGoal' && startGoalId !== result.goalId
+          || startGoalId !== result.goalId && !prerequisiteIds.has(startGoalId)) throw invalid()
+        result.practice = { startGoalId, openPrerequisites }
+      }
+      if (result.action === 'focusPractice' && !result.practice) throw invalid()
+      return result
     }),
   }
   if (source.planningCreditGoalIds != null) {

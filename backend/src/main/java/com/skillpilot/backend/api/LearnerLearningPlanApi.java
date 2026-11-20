@@ -21,6 +21,14 @@ public final class LearnerLearningPlanApi {
     public record ErrorResponse(String errorCode) {
     }
 
+    public record UnitAssignment(String sectionGoalId, String revision, String fingerprint) { }
+    public record UnitAssignmentPart(String goalId, java.util.Map<String, String> title, boolean passed,
+            boolean materialCurrent, boolean startAvailable) { }
+    public record UnitAssignmentOption(String sectionGoalId, String revision, String fingerprint,
+            java.util.Map<String, String> title, boolean passed, List<UnitAssignmentPart> parts) {
+        public UnitAssignment binding() { return new UnitAssignment(sectionGoalId, revision, fingerprint); }
+    }
+
     /**
      * goalIds record the selected topic roots of a learning section or milestone.
      * An explicitly present list (including an empty list) replaces legacy goalId.
@@ -37,7 +45,12 @@ public final class LearnerLearningPlanApi {
             @JsonFormat(shape = JsonFormat.Shape.STRING) LocalDate date,
             List<String> atomicGoalIds,
             List<String> goalIds,
-            @JsonProperty("active") Boolean active) {
+            @JsonProperty("active") Boolean active, UnitAssignment unitAssignment) {
+        public Block(String id, String kind, String goalId, String title,
+                LocalDate startDate, LocalDate endDate, LocalDate date, List<String> atomicGoalIds,
+                List<String> goalIds, Boolean active) {
+            this(id, kind, goalId, title, startDate, endDate, date, atomicGoalIds, goalIds, active, null);
+        }
         public Block(String id, String kind, String goalId, String title,
                 LocalDate startDate, LocalDate endDate, LocalDate date, List<String> atomicGoalIds,
                 List<String> goalIds) {
@@ -53,6 +66,9 @@ public final class LearnerLearningPlanApi {
         public boolean isActive() {
             return !Boolean.FALSE.equals(active);
         }
+
+        @JsonIgnore
+        public boolean isAtomicLearning() { return "learning".equals(kind) && unitAssignment == null; }
 
         public List<String> focusGoalIds() {
             return goalIds != null ? goalIds

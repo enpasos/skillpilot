@@ -173,6 +173,9 @@ public class LearnerService {
     @Autowired(required = false)
     private CompletionApplicationService completionApplicationService;
 
+    @Value("${skillpilot.completion.unit-assessment-pilot-enabled:false}")
+    private boolean unitAssessmentPilotEnabled;
+
     public boolean completionRouteOwnsNavigation(Learner learner) {
         return CompletionNavigationPolicy.ownsNavigation(learner);
     }
@@ -597,15 +600,16 @@ public class LearnerService {
     /** Current, version-bound unit evidence. It is never persisted as individual mastery. */
     @Transactional(readOnly = true)
     public Map<String, CompletionEvaluation.WaiverReason> getUnitPlanningCredits(String skillpilotId) {
-        Learner learner = getLearner(skillpilotId);
         if (!unitPlanningCreditsEnabled()) return Map.of();
+        Learner learner = getLearner(skillpilotId);
         GoalProjection projection = getGoalProjection(learner.getSelectedCurriculum(), learner.getPersonalCurriculum());
         return unitPlanningCredits(learner, projection, completionGraph(learner, projection));
     }
 
     private boolean unitPlanningCreditsEnabled() {
-        return completionApplicationService != null && completionApplicationService.catalog().automatic()
-                && completionApplicationService.catalog().enabled() && completionApplicationService.catalog().available();
+        if (!unitAssessmentPilotEnabled || completionApplicationService == null) return false;
+        var catalog = completionApplicationService.catalog();
+        return catalog.automatic() && catalog.enabled() && catalog.available();
     }
 
     private Map<String, CompletionEvaluation.WaiverReason> unitPlanningCredits(Learner learner,
@@ -652,6 +656,55 @@ public class LearnerService {
         return List.copyOf(bindings);
     }
 
+    @Transactional(readOnly = true)
+    public List<LearnerLearningPlanApi.UnitAssignmentOption> getUnitAssignmentOptions(String skillpilotId, String landscapeId) {
+        if (!unitPlanningCreditsEnabled() || unitLearningMaterialService == null || verifiedExamPassService == null) return List.of();
+        Learner learner = getLearner(skillpilotId);
+        if (!hasCompletedPersonalCurriculum(learner)) return List.of();
+        var projection = getGoalProjection(learner.getSelectedCurriculum(), learner.getPersonalCurriculum());
+        var bindings = unitLearningMaterialService.assessmentBindings(projection.compositionViewIds()).stream()
+                .filter(binding -> binding.landscapeId().equals(landscapeId)).toList();
+        if (bindings.isEmpty()) return List.of();
+        var graph = completionGraph(learner, projection);
+        var receipts = verifiedExamPassService.findForGoals(skillpilotId, bindings.stream()
+                .flatMap(binding -> binding.contract().parts().stream()).map(UnitAssessmentContract.Part::goalId).distinct().toList());
+        var options = new ArrayList<LearnerLearningPlanApi.UnitAssignmentOption>();
+        var subjectScope = deriveCompositionScope(landscapeId, parsePersonalCurriculumConfig(learner.getPersonalCurriculum()));
+        CompletionSnapshot available = null;
+        for (var binding : bindings) {
+            var contract = binding.contract();
+            var unit = validatedUnitAssessment(binding, projection, graph, receipts, Set.of());
+            if (unit == null || unit.response().parts().stream().anyMatch(part -> !part.materialCurrent())) continue;
+            var response = unit.response();
+            String fingerprint = contract.assignmentFingerprint(landscapeId, binding.viewId(), binding.compositionNodeId(), subjectScope);
+            var section = compositionViewService.resolveStructureReference(response.sectionGoalId());
+            if (section == null) continue;
+            String title = coachSectionTitle(section, projection, "de");
+            if (title == null) continue;
+            String english = coachSectionTitle(section, projection, "en");
+            Set<String> offered = Set.of();
+            if (!response.passed()) {
+                if (available == null) available = completionSnapshot(learner, projection);
+                if (available != null) {
+                    var completion = available.response();
+                    String profileId = AUTOMATIC_COMPLETION_PREFIX + response.sectionGoalId();
+                    var assessments = profileId.equals(completion.profileId()) ? completion.assessments().stream()
+                            : completion.profileOptions().stream().filter(option -> profileId.equals(option.profileId()))
+                                    .flatMap(option -> option.assessments().stream());
+                    offered = assessments.filter(LevelCompletionResponse.Assessment::startAvailable)
+                            .map(LevelCompletionResponse.Assessment::goalId).collect(Collectors.toSet());
+                }
+            }
+            var startable = offered;
+            // Earlier exact task and rubric receipts also certify a later order for this edition.
+            var parts = response.parts().stream().map(part -> new LearnerLearningPlanApi.UnitAssignmentPart(
+                    part.goalId(), part.title(), part.passed(), part.materialCurrent(), startable.contains(part.goalId()))).toList();
+            options.add(new LearnerLearningPlanApi.UnitAssignmentOption(response.sectionGoalId(), response.revision(),
+                    fingerprint, Map.of("de", title, "en", english == null ? title : english), response.passed(), parts));
+        }
+        return List.copyOf(options);
+    }
+
     private boolean validPlanningRelease(UnitLearningMaterialService.AssessmentBinding binding,
             UnitAssessmentContract.PlanningCredit rule, Map<String, LearningGoal> graph) {
         var release = rule.release();
@@ -659,15 +712,7 @@ public class LearnerService {
                 || !release.valid(binding.landscapeId(), binding.compositionNodeId(), binding.contract(),
                 rule, binding.viewId(), graph) || binding.contract().parts().stream()
                     .filter(part -> rule.requiredPartIds().contains(part.goalId())).anyMatch(part -> !currentUnitPart(part, graph))) return false;
-        SkillLandscape landscape = landscapeService.getById(binding.landscapeId());
-        if (landscape == null || landscape.getProgramUnits() == null || landscape.getGoalPlacements() == null
-                || landscape.getProgramUnits().stream().noneMatch(unit -> release.ownerUnitId().equals(unit.getId())
-                    && "learningUnit".equals(unit.getKind()) && release.ownerRevision().equals(unit.getRevision()))) return false;
-        return rule.goalIds().stream().allMatch(id -> {
-            var owners = landscape.getGoalPlacements().stream().filter(placement -> id.equals(placement.getGoalId())
-                    && placement.isOwnership()).toList();
-            return owners.size() == 1 && release.ownerUnitId().equals(owners.getFirst().getUnitId());
-        });
+        return release.hasReviewedOwnership(landscapeService.getById(binding.landscapeId()), binding.contract(), rule);
     }
 
     private boolean currentUnitPart(UnitAssessmentContract.Part part, Map<String, LearningGoal> graph) {
@@ -712,16 +757,22 @@ public class LearnerService {
         var result = contract.evaluate(sectionId, unitTargets, graph, currentReceipts, individuallyMastered).orElse(null);
         if (result == null) return null;
         Map<String, CompletionEvaluation.WaiverReason> credits = new LinkedHashMap<>();
+        Set<String> missingBindings = new HashSet<>();
         for (var rule : contract.planningCredits()) {
-            if (!validPlanningRelease(binding, rule, graph) || contract.parts().stream()
-                    .filter(part -> rule.requiredPartIds().contains(part.goalId()))
-                    .anyMatch(part -> !hasBoundPlanningReceipt(part, rule.release().fingerprint(), currentReceipts))) continue;
+            if (!validPlanningRelease(binding, rule, graph)) continue;
+            var missing = contract.parts().stream().filter(part -> rule.requiredPartIds().contains(part.goalId()))
+                    .filter(part -> !hasBoundPlanningReceipt(part, rule.release().fingerprint(), currentReceipts)).toList();
+            if (!missing.isEmpty()) {
+                missing.forEach(part -> missingBindings.add(part.goalId()));
+                continue;
+            }
             var reason = new CompletionEvaluation.WaiverReason("versioned_unit_assessment:" + rule.release().fingerprint(), rule.requiredPartIds());
             rule.goalIds().forEach(id -> credits.putIfAbsent(id, reason));
         }
         var response = new UnitAssessmentResponse(result.sectionGoalId(), result.revision(), result.passed(),
                 result.parts().stream().map(part -> new UnitAssessmentResponse.Part(part.goalId(), part.title(),
-                        part.passed(), currentParts.contains(part.goalId()))).toList(),
+                        part.passed(), currentParts.contains(part.goalId()),
+                        part.passed() && missingBindings.contains(part.goalId()))).toList(),
                 List.copyOf(credits.keySet()), result.individuallyOpenGoalIds());
         return new UnitAssessmentProjection(response, Map.copyOf(credits));
     }
@@ -784,7 +835,7 @@ public class LearnerService {
             try {
                 masterySnapshot = completionMasterySnapshot(learner, graph, candidates.values(),
                         workflow != null && completionWorkflowMatches(learner, workflow));
-                if (workflow != null && catalog.automatic() && compositionViewService != null && unitLearningMaterialService != null) {
+                if (workflow != null && unitPlanningCreditsEnabled() && compositionViewService != null && unitLearningMaterialService != null) {
                     var section = overview ? explicitCoachUnitFocus(learner, projection) : completionUnitSection(workflow.profileId());
                     unitResult = unitAssessment(learner, section, projection, graph);
                 }
@@ -938,6 +989,9 @@ public class LearnerService {
                         }
                     }
                 }
+                if (compatible && !storedDirect && compiled.automatic() && unitPlanningCreditsEnabled()) {
+                    addIndividualPractice(learner, compiled, evaluation, graph, actions);
+                }
             } catch (CompletionApplicability.UnresolvedScopeException e) {
                 status = "unresolved"; notice = "completion_scope_unresolved";
             } catch (CompletionApplicationService.ScopeNotApplicableException e) {
@@ -986,6 +1040,60 @@ public class LearnerService {
         return new CompletionSnapshot(response, compiled, evaluation);
     }
 
+    /** Explicit individual work uses the same focus and availability rules as the ordinary learning plan. */
+    private void addIndividualPractice(Learner learner, CompiledCompletionProfile compiled,
+            CompletionEvaluation evaluation, Map<String, LearningGoal> graph, List<LevelCompletionResponse.Action> actions) {
+        Set<String> credits = evaluation.waiverReasons().entrySet().stream()
+                .filter(entry -> entry.getValue().ruleId().startsWith("versioned_unit_assessment:"))
+                .map(Map.Entry::getKey).collect(Collectors.toCollection(LinkedHashSet::new));
+        for (String id : credits) {
+            if (!compiled.targetGoalIds().contains(id)) continue;
+            Map<String, Integer> distance = new LinkedHashMap<>();
+            distance.put(id, 0);
+            ArrayDeque<String> pending = new ArrayDeque<>(List.of(id));
+            while (!pending.isEmpty()) {
+                String current = pending.removeFirst();
+                for (String prerequisite : compiled.directPrerequisites(current)) {
+                    if (distance.putIfAbsent(prerequisite, distance.get(current) + 1) == null) pending.addLast(prerequisite);
+                }
+            }
+            distance.remove(id);
+            Set<String> prerequisites = distance.keySet();
+            prerequisites.removeAll(evaluation.masteredGoalIds());
+            prerequisites.removeAll(credits);
+            var open = prerequisites.stream().map(goal -> new LevelCompletionResponse.PracticePrerequisite(
+                    goal, completionTitle(graph.get(goal)))).toList();
+            // Keep an already published in-focus transition, including its completion navigation intent.
+            var available = actions.stream().filter(action -> id.equals(action.goalId())
+                    && "voluntary".equals(action.intent()) && "learnGoal".equals(action.action())).findFirst();
+            if (available.isPresent()) {
+                var action = available.get();
+                actions.set(actions.indexOf(action), new LevelCompletionResponse.Action(action.action(), id,
+                        action.title(), action.intent(), new LevelCompletionResponse.PracticeStep(id, open)));
+                continue;
+            }
+            boolean strict = Boolean.TRUE.equals(learner.getStrictMode());
+            List<String> focus = new ArrayList<>(List.of(id));
+            if (strict) focus.addAll(prerequisites);
+            var frontier = filterAtomicFrontier(getUncompactedRichFrontierForFocus(learner.getSkillpilotId(), focus));
+            String start = frontier.stream().map(FrontierGoal::id).filter(id::equals).findFirst().orElse(null);
+            if (start == null && strict) {
+                start = frontier.stream().map(FrontierGoal::id).filter(prerequisites::contains)
+                        .filter(goal -> !isExamGoal(graph.get(goal)))
+                        .min(Comparator.comparingInt(distance::get)).orElse(null);
+            }
+            if (start == null) continue;
+            var title = completionTitle(graph.get(id));
+            var first = completionTitle(graph.get(start));
+            var label = id.equals(start)
+                    ? Map.of("de", "Einzelfokus starten: " + title.get("de"), "en", "Start individual focus: " + title.get("en"))
+                    : Map.of("de", "Grundlagen für „" + title.get("de") + "“ erarbeiten: " + first.get("de"),
+                            "en", "Study the prerequisites for “" + title.get("en") + "”: " + first.get("en"));
+            actions.add(new LevelCompletionResponse.Action("focusPractice", id, label, "voluntary",
+                    new LevelCompletionResponse.PracticeStep(start, open)));
+        }
+    }
+
     private CompositionViewService.CompositionStructureResolution completionUnitSection(String profileId) {
         if (compositionViewService == null || profileId == null || !profileId.startsWith(AUTOMATIC_COMPLETION_PREFIX)) return null;
         String root = profileId.substring(AUTOMATIC_COMPLETION_PREFIX.length());
@@ -994,7 +1102,7 @@ public class LearnerService {
 
     private boolean unitPartMaterialCurrent(String profileId, String goalId, Map<String, LearningGoal> graph,
             Map<String, Set<String>> changedByProfile) {
-        if (unitLearningMaterialService == null || profileId == null
+        if (!unitPlanningCreditsEnabled() || unitLearningMaterialService == null || profileId == null
                 || !profileId.startsWith(AUTOMATIC_COMPLETION_PREFIX)) return true;
         Set<String> changed = changedByProfile.computeIfAbsent(profileId, id -> unitLearningMaterialService
                 .assessmentBindingForReference(id.substring(AUTOMATIC_COMPLETION_PREFIX.length()))
@@ -1103,6 +1211,15 @@ public class LearnerService {
             }
             learner.setActiveGoalId(null); learner.setLearningState(LearningState.FRONTIER);
             saveCompletionWorkflow(learner, old.withNavigation("paused", null));
+        } else if ("focusPractice".equals(request.action())) {
+            var action = offered.response().actions().stream().filter(item -> "focusPractice".equals(item.action())
+                    && Objects.equals(item.goalId(), request.goalId()) && item.practice() != null).findFirst().orElseThrow();
+            Set<String> focus = new LinkedHashSet<>(List.of(action.goalId()));
+            if (Boolean.TRUE.equals(learner.getStrictMode())) {
+                action.practice().openPrerequisites().forEach(prerequisite -> focus.add(prerequisite.goalId()));
+            }
+            setPlannedGoals(skillpilotId, focus);
+            setActiveGoal(skillpilotId, action.practice().startGoalId());
         } else if ("learnGoal".equals(request.action())) {
             CompletionWorkflowState old = completionWorkflow(learner);
             if (!completionWorkflowMatches(learner, old) || request.intent() == null
@@ -3960,7 +4077,7 @@ public class LearnerService {
                 }
             }
         }
-        List<String> atoms = blocks.stream().filter(block -> "learning".equals(block.kind()))
+        List<String> atoms = blocks.stream().filter(block -> block.isAtomicLearning())
                 .flatMap(block -> block.atomicGoalIds().stream()).toList();
         // Detect relevant contains cycles before inherited-requirement resolution.
         assertLearningPlanGraphAcyclic(atoms, goals,
@@ -4079,9 +4196,9 @@ public class LearnerService {
                     continue;
                 }
                 List<String> focusGoalIds;
-                if (("milestone".equals(block.kind()) || "learning".equals(block.kind())) && block.goalIds() != null) {
+                if (("milestone".equals(block.kind()) || block.isAtomicLearning()) && block.goalIds() != null) {
                     focusGoalIds = block.goalIds();
-                } else if ("learning".equals(block.kind())) {
+                } else if (block.isAtomicLearning()) {
                     String focusGoalId = block.goalId();
                     if (focusGoalId == null || focusGoalId.isBlank()) {
                         if (block.atomicGoalIds() != null) {
@@ -4234,6 +4351,12 @@ public class LearnerService {
                 updateLearningPlanDigest(digest, "block");
                 updateLearningPlanDigest(digest, block.id());
                 updateLearningPlanDigest(digest, block.kind());
+                if (block.unitAssignment() != null) {
+                    updateLearningPlanDigest(digest, "unit-assignment");
+                    updateLearningPlanDigest(digest, block.unitAssignment().sectionGoalId());
+                    updateLearningPlanDigest(digest, block.unitAssignment().revision());
+                    updateLearningPlanDigest(digest, block.unitAssignment().fingerprint());
+                }
                 if (!block.isActive()) updateLearningPlanDigest(digest, "inactive");
                 updateLearningPlanDigest(digest, block.goalId());
                 updateLearningPlanDigest(digest, block.startDate() == null ? null : block.startDate().toString());
@@ -4245,7 +4368,7 @@ public class LearnerService {
                         updateLearningPlanDigest(digest, atomicGoalId);
                     }
                 }
-                if (("milestone".equals(block.kind()) || "learning".equals(block.kind())) && block.goalIds() != null) {
+                if (("milestone".equals(block.kind()) || block.isAtomicLearning()) && block.goalIds() != null) {
                     for (String goalId : block.goalIds()) {
                         updateLearningPlanDigest(digest, "milestone".equals(block.kind()) ? "milestone-goal" : "learning-goal");
                         updateLearningPlanDigest(digest, goalId);
@@ -4361,7 +4484,7 @@ public class LearnerService {
                 learner.getPersonalCurriculum());
 
         for (LearnerLearningPlanApi.Block block : blocks) {
-            if (block == null || !("learning".equals(block.kind()) || "milestone".equals(block.kind()))) continue;
+            if (block == null || !(block.isAtomicLearning() || "milestone".equals(block.kind()))) continue;
             List<String> roots = "milestone".equals(block.kind())
                     ? block.goalIds() == null ? List.of() : block.goalIds()
                     : block.focusGoalIds();
@@ -4372,7 +4495,7 @@ public class LearnerService {
             }
             // Multiple canonical roots are a union, not an intersection. Each
             // submitted atom must still belong to this subject and to that union.
-            if ("learning".equals(block.kind()) && block.atomicGoalIds() != null
+            if (block.isAtomicLearning() && block.atomicGoalIds() != null
                     && !allowedAtoms.containsAll(block.atomicGoalIds())) {
                 throw invalidLearningPlanFocus(block.id());
             }
@@ -4470,7 +4593,8 @@ public class LearnerService {
                 if ("exam".equals(scope.kind())) {
                     hasExam = true;
                     scope.goalIds().stream().filter(projection.targetGoalIds()::contains).forEach(atoms::add);
-                } else if (!scope.goalIds().isEmpty()) ordinaryLearning = true;
+                } else if (!scope.goalIds().isEmpty() || blocks.stream().anyMatch(block ->
+                        block.isActive() && block.unitAssignment() != null)) ordinaryLearning = true;
             } catch (ResponseStatusException exception) {
                 if (exception.getStatusCode().is5xxServerError()) throw exception;
                 hasExam |= explicitExam;
@@ -4490,7 +4614,7 @@ public class LearnerService {
             if (block.kind() == null || !Set.of("learning", "buffer", "milestone").contains(block.kind())
                     || ("milestone".equals(block.kind()) ? block.date() == null
                             : block.startDate() == null || block.endDate() == null)
-                    || ("learning".equals(block.kind()) && (block.atomicGoalIds() == null
+                    || (block.isAtomicLearning() && (block.atomicGoalIds() == null
                             || block.atomicGoalIds().stream().anyMatch(id -> id == null || id.isBlank())))
                     || (block.goalIds() != null && block.goalIds().stream().anyMatch(id -> id == null || id.isBlank()))) {
                 throw new IllegalStateException("Stored learning-plan block has an invalid shape");
@@ -4543,7 +4667,7 @@ public class LearnerService {
         Map<String, LearningGoal> structuralGoals = projection.structuralGoals();
         Map<String, List<String>> effectiveRequires = computeEffectiveRequires(structuralGoals);
         List<String> submittedAtoms = blocks.stream()
-                .filter(block -> block.isActive() && "learning".equals(block.kind()))
+                .filter(block -> block.isActive() && block.isAtomicLearning())
                 .filter(block -> block.atomicGoalIds() != null)
                 .flatMap(block -> block.atomicGoalIds().stream())
                 .toList();
@@ -4560,7 +4684,7 @@ public class LearnerService {
             List<LearnerLearningPlanApi.Block> blocks,
             Map<String, ? extends Collection<String>> submittedPrerequisitesByDependent) {
         List<String> submittedAtoms = blocks.stream()
-                .filter(block -> block.isActive() && "learning".equals(block.kind()))
+                .filter(block -> block.isActive() && block.isAtomicLearning())
                 .filter(block -> block.atomicGoalIds() != null)
                 .flatMap(block -> block.atomicGoalIds().stream())
                 .toList();
@@ -4609,7 +4733,7 @@ public class LearnerService {
         Map<String, LocalDate> scheduledDueDates = LearnerLearningPlanService
                 .scheduledAtomicGoalDueDatesForSchedule(blocks);
         for (LearnerLearningPlanApi.Block block : blocks) {
-            if (!block.isActive() || !"learning".equals(block.kind())
+            if (!block.isActive() || !block.isAtomicLearning()
                     || block.atomicGoalIds() == null
                     || block.atomicGoalIds().isEmpty()) {
                 continue;
@@ -4657,7 +4781,7 @@ public class LearnerService {
             List<LearnerLearningPlanApi.Block> blocks) {
         TreeSet<LocalDate> activeWorkdays = new TreeSet<>();
         for (LearnerLearningPlanApi.Block block : blocks) {
-            if (!block.isActive() || !"learning".equals(block.kind())
+            if (!block.isActive() || !block.isAtomicLearning()
                     || block.atomicGoalIds() == null
                     || block.atomicGoalIds().isEmpty()) {
                 continue;
@@ -4690,10 +4814,10 @@ public class LearnerService {
             List<LocalDate> activeWorkdays,
             LearningPlanScheduleCheckBudget scheduleCheckBudget) {
         long learningBlockCount = blocks.stream()
-                .filter(block -> block.isActive() && "learning".equals(block.kind()))
+                .filter(block -> block.isActive() && block.isAtomicLearning())
                 .count();
         long atomCount = blocks.stream()
-                .filter(block -> block.isActive() && "learning".equals(block.kind()))
+                .filter(block -> block.isActive() && block.isAtomicLearning())
                 .filter(block -> block.atomicGoalIds() != null)
                 .mapToLong(block -> block.atomicGoalIds().size())
                 .sum();
@@ -4905,7 +5029,7 @@ public class LearnerService {
         Map<String, Integer> currentOrderIndex = new HashMap<>();
         int currentIndex = 0;
         for (LearnerLearningPlanApi.Block block : blocks) {
-            if (!block.isActive() || !"learning".equals(block.kind()) || block.atomicGoalIds() == null) {
+            if (!block.isActive() || !block.isAtomicLearning() || block.atomicGoalIds() == null) {
                 continue;
             }
             for (String goalId : block.atomicGoalIds()) {
@@ -4922,7 +5046,7 @@ public class LearnerService {
                         Integer.MAX_VALUE))
                 .thenComparing(goalId -> goalId);
         for (LearnerLearningPlanApi.Block block : blocks) {
-            if (!block.isActive() || !"learning".equals(block.kind())
+            if (!block.isActive() || !block.isAtomicLearning()
                     || block.atomicGoalIds() == null
                     || block.atomicGoalIds().size() < 2) {
                 orderedBlocks.add(block);
@@ -9174,7 +9298,7 @@ public class LearnerService {
                         .forEach((goalId, date) -> schedule.merge(
                                 goalId, date, (left, right) -> left.isBefore(right) ? left : right));
                 validPlans.put(plan, blocks);
-                if (blocks.stream().filter(block -> block.isActive() && "learning".equals(block.kind()))
+                if (blocks.stream().filter(block -> block.isActive() && block.isAtomicLearning())
                         .map(LearnerLearningPlanApi.Block::atomicGoalIds)
                         .filter(Objects::nonNull)
                         .anyMatch(goalIds -> goalIds.contains(completedAnchorGoalId))) {

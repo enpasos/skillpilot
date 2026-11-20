@@ -379,6 +379,7 @@ class ClaudeV1CoachContextProjectorTest {
                 subjects.stream().map(subject -> subject.get("subject")).toList());
         assertEquals(false, subjects.get(0).get("canContinue"),
                 "A subject backed by several plans must not authorize an ambiguous switch");
+        assertFalse(subjects.get(0).containsKey("unitAssignments"));
         assertEquals(true, subjects.get(1).get("canContinue"));
         assertEquals(false, subjects.get(2).get("evaluable"),
                 "An unevaluable subject keeps its own state instead of a faked direction");
@@ -391,6 +392,57 @@ class ClaudeV1CoachContextProjectorTest {
         assertEquals(true, activeSubjects.getFirst().get("current"));
         assertEquals(false, activeSubjects.getFirst().get("canContinue"),
                 "Merged equal subject names must not authorize an ambiguous switch");
+    }
+
+    @Test
+    void projectsExplicitUnitWorkSeparatelyFromAdditionalAssignmentsAndVoluntaryLearning() {
+        var projector = new ClaudeV1CoachContextProjector(
+                mock(CoachStateProjection.class), mock(CoachToolFacade.class), "https://skillpilot.com");
+        var complete = new LearnerPlanTodayStatus.UnitAssignmentStatus("Bewegungen und ihre Beschreibung",
+                "completed", 4, 4);
+        var unavailable = new LearnerPlanTodayStatus.UnitAssignmentStatus("Frühere Fassung", "unavailable", null, 4);
+        var subject = LearnerPlanTodayStatusFixtures.subject("private-physics", "Physik", 0, 0, 0, 0, false, false);
+        var mixed = LearnerPlanTodayStatusFixtures.subject("private-other", "Zweites Fach", 1, 0, 1, 0, false, true);
+        var today = LearnerPlanTodayStatusFixtures.status(LocalDate.of(2026, 11, 20), true, false, 0, null,
+                List.of(subject.withUnitAssignments(List.of(complete, unavailable)),
+                        mixed.withUnitAssignments(List.of(complete))));
+
+        var projected = projector.projectLearningPlanToday(today, false);
+        var subjects = (List<?>) projected.get("subjects");
+        var unitOnly = (Map<?, ?>) subjects.getFirst();
+        var results = (List<?>) unitOnly.get("unitAssignments");
+        assertEquals(Map.of("title", complete.title(), "status", "completed", "passedParts", 4, "requiredParts", 4),
+                results.getFirst());
+        assertEquals(Map.of("title", unavailable.title(), "status", "unavailable"), results.get(1));
+        assertEquals(false, unitOnly.get("canContinue"));
+        assertEquals(true, ((Map<?, ?>) subjects.get(1)).get("canContinue"));
+        assertEquals(today.statusText(), projected.get("text"));
+        assertFalse(projected.toString().contains("private-"));
+    }
+
+    @Test
+    void anOpenUnitRequiresAnAssessmentChoiceEvenWhenTheSeparatePeriodQuotaIsEmpty() {
+        var projector = new ClaudeV1CoachContextProjector(
+                mock(CoachStateProjection.class), mock(CoachToolFacade.class), "https://skillpilot.com");
+        var date = LocalDate.of(2026, 11, 20);
+        var assignment = new LearnerPlanTodayStatus.UnitAssignmentStatus("Bewegungen", "active", 2, 4);
+        var unit = LearnerPlanTodayStatusFixtures.subject("private-physics", "Physik", 0, 0, 0, 0, false, false)
+                .withUnitAssignments(List.of(assignment));
+        var unitOnly = LearnerPlanTodayStatusFixtures.status(date, true, false, unit);
+        assertTrue(unitOnly.periodQuotaFulfilled());
+        var guidance = (Map<?, ?>) projector.projectLearningPlanToday(unitOnly, false).get("guidance");
+        assertEquals("unitChoice", guidance.get("state"));
+        assertTrue(guidance.get("instruction").toString().contains("await a choice"));
+
+        var due = LearnerPlanTodayStatusFixtures.subject("private-math", "Mathematik", 1, 1, 0, 0, false, true);
+        var withDueWork = LearnerPlanTodayStatusFixtures.status(date, true, true, unit, due);
+        assertFalse(withDueWork.periodQuotaFulfilled());
+        assertEquals("resume", ((Map<?, ?>) projector.projectLearningPlanToday(withDueWork, false)
+                .get("guidance")).get("state"));
+        var unavailable = new LearnerPlanTodayStatus.UnitAssignmentStatus("Frühere Fassung", "unavailable", null, 4);
+        var stale = LearnerPlanTodayStatusFixtures.status(date, true, false, unit.withUnitAssignments(List.of(unavailable)));
+        assertEquals("unavailable", ((Map<?, ?>) projector.projectLearningPlanToday(stale, false)
+                .get("guidance")).get("state"));
     }
 
     @Test

@@ -116,6 +116,20 @@ class ClaudeV1CompletionProjectionTest {
     }
 
     @Test
+    void explainsAnUnboundHistoricalPartInBothSessionLanguages() {
+        var part = new UnitAssessmentResponse.Part("private-exam", Map.of("de", "Wurf", "en", "Throw"), true, true, true);
+        var response = completion(10, false).withUnitAssessment(new UnitAssessmentResponse(
+                "private-section", "private-revision", true, List.of(part), List.of(), List.of()));
+        for (String language : List.of("de", "en")) {
+            var context = (Map<?, ?>) ClaudeV1CompletionChoices.project(response, language).get("unitAssessment");
+            var projected = (Map<?, ?>) ((List<?>) context.get("parts")).getFirst();
+            assertThat(projected.get("passed")).isEqualTo(true);
+            assertThat(projected.get("planningCreditNotice").toString()).contains("en".equals(language) ? "planning credit" : "Planungsanrechnung");
+            assertThat(projected.toString()).doesNotContain("private-");
+        }
+    }
+
+    @Test
     void explainsOnlyTheCurrentWaivedPreparationWithLocalizedAssessmentTitles() {
         var detail = new LevelCompletionResponse.WaiverDetail("goal", Map.of("de", "Projektion verstehen", "en", "Understand projection"),
                 "static-rule", List.of(new LevelCompletionResponse.AssessmentReference("exam",
@@ -124,7 +138,10 @@ class ClaudeV1CompletionProjectionTest {
                 Map.of("de", "Abschnitt", "en", "Section"), true, 1, 1, 0, 2, 1, 1,
                 List.of("goal"), List.of(), List.of(), "required", false, null, List.of()).withWaiverDetails(List.of(detail));
         var projected = ClaudeV1CompletionChoices.project(response, "en");
-        assertThat(projected.toString()).contains("Understand projection", "Explain projection", "Only this learning section");
+        assertThat(projected.toString()).contains("Understand projection", "Explain projection", "Preparation for this learning section is optional");
+        assertThat(projected.get("text").toString()).contains("goals credited for planning (0)", "preparation waived (1)");
+        var credited = ClaudeV1CompletionChoices.project(response.withPlanningCreditGoalIds(List.of("goal")), "en");
+        assertThat(credited.get("text").toString()).contains("goals credited for planning (1)", "preparation waived (0)");
         assertThat(projected.toString()).doesNotContain("static-rule");
     }
 
@@ -144,18 +161,19 @@ class ClaudeV1CompletionProjectionTest {
             assertThat(projected.get("choices")).isEqualTo(List.of());
             assertThat(ClaudeV1CompletionChoices.active(response)).isFalse();
             assertThat(projected.get("text").toString()).isEqualTo("en".equals(language)
-                    ? "Directly achieved learning goals: 0 of 1. Required assessments passed: 0 of 0. "
-                            + "Implicitly completed learning goals in this section: 1. Saved goal results stay unchanged. "
-                            + "Remaining target obligations: 0. Learning section completed."
-                    : "Direkt geschaffte Lernziele: 0 von 1. Geschaffte erforderliche Prüfungen: 0 von 0. "
-                            + "In diesem Abschnitt implizit erledigte Lernziele: 1. Die gespeicherten Lernstände bleiben unverändert. "
-                            + "Noch offene Zielpflichten: 0. Lernabschnitt abgeschlossen.");
+                    ? "Direct evidence on learning goals (0/1), required assessments passed (0/0), "
+                            + "goals credited for planning (0), preparation waived (1), "
+                            + "remaining obligations (0). Learning section completed."
+                    : "Eigene Nachweise an Lernzielen (0/1), bestandene Pflichtprüfungen (0/0), "
+                            + "fachlich angerechnete Ziele (0), entfallene Vorbereitung (1), "
+                            + "offene Zielpflichten (0). Lernabschnitt abgeschlossen.");
             var details = (List<?>) projected.get("waivedPreparation");
             assertThat(details).hasSize(1);
             var projectedDetail = (Map<?, ?>) details.getFirst();
             assertThat(projectedDetail.get("passedAssessments")).isEqualTo(List.of());
             assertThat(projectedDetail.get("supportingAssessmentCount")).isEqualTo(0);
             assertThat(projected.get("instruction").toString())
+                    .contains("A mastered goal no longer demands its own prerequisites")
                     .contains("A passed assessment is not required for implicit completion")
                     .contains("Do not restore implicitly completed work as mandatory")
                     .contains("read-only overview, not an active completion route");

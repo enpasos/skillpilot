@@ -15,6 +15,18 @@ import java.util.stream.Collectors;
 public record UnitAssessmentContract(String revision, List<String> viewIds, List<Part> parts, List<String> contentGoalIds,
         List<PlanningCredit> planningCredits) {
     private static final Pattern DIGEST = Pattern.compile("sha256:[a-f0-9]{64}");
+    private static final com.fasterxml.jackson.databind.ObjectMapper MAPPER = new com.fasterxml.jackson.databind.ObjectMapper();
+
+    public String assignmentFingerprint(String landscapeId, String viewId, String nodeId, Map<String, String> subjectScope) {
+        try {
+            return CompletionReviewBindings.canonicalHash(MAPPER.valueToTree(Map.of(
+                    "kind", "explicit-unit-assignment-v1", "landscape", landscapeId, "view", viewId,
+                    "node", nodeId, "scope", subjectScope, "revision", revision, "parts", parts,
+                    "contentGoals", contentGoalIds)), MAPPER);
+        } catch (Exception invalid) {
+            throw new IllegalArgumentException("Cannot bind the unit assignment", invalid);
+        }
+    }
 
     public record Part(String goalId, AssessmentMaterialRevision material) {
         public Part {

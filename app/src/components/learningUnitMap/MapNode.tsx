@@ -1,5 +1,5 @@
-import { memo } from 'react'
-import { ArrowDownRight, Check, Layers3, Link2, Send, ShieldCheck, Target } from 'lucide-react'
+import React from 'react'
+import { ArrowDownRight, Check, Layers3, Link2, Minus, Send, ShieldCheck, Target } from 'lucide-react'
 import { Handle, Position, type Node, type NodeProps } from '@xyflow/react'
 import type { LearningEntryProgress, LearningMapEntry } from './types'
 import type { LayoutPort } from './layoutLearningScope'
@@ -37,21 +37,27 @@ function entryPresentation(entry: LearningMapEntry, childCount: number, progress
   const total = progress?.total ?? 0
   const explicit = Math.min(total, Math.max(0, progress?.explicit ?? 0))
   const implicit = Math.min(total - explicit, Math.max(0, progress?.implicit ?? 0))
-  const achieved = explicit + implicit
-  const scopeLabel = progress?.implicitScopeLabel
-  const progressLabel = (english ? `${achieved} of ${total} learning goals completed: ${explicit} explicit, ${implicit} completed in this section.`
-    : `${achieved} von ${total} Lernzielen erledigt: ${explicit} explizit, ${implicit} in diesem Lernabschnitt erledigt.`)
-    + (implicit && scopeLabel ? ` ${scopeLabel}. ${english ? 'Saved learning results stay unchanged.' : 'Gespeicherte Lernstände bleiben unverändert.'}` : '')
-  const Icon = expandable ? Layers3 : explicit ? Check : implicit ? ShieldCheck : activeLearningGoal ? Send : Target
-  const status = explicit ? 'is-explicit' : implicit ? 'is-implicit' : activeLearningGoal ? 'is-active' : progress ? 'is-open' : 'is-context'
-  const statusLabel = explicit ? english ? 'Explicitly completed' : 'Direkt geschafft' : implicit ? progress?.waiverLabel
-    ?? (english ? 'Completed in this section' : 'In diesem Lernabschnitt erledigt')
+  const notRequired = Math.min(total - explicit - implicit, Math.max(0, progress?.notRequired ?? 0))
+  const withEvidence = explicit + implicit
+  const open = total - withEvidence - notRequired
+  const counts = english
+    ? `${explicit} directly demonstrated, ${implicit} credited through assessment, ${notRequired} no longer required for this assignment, ${open} open.`
+    : `${explicit} direkt nachgewiesen, ${implicit} fachlich angerechnet, ${notRequired} für diesen Auftrag nicht mehr erforderlich, ${open} offen.`
+  const progressLabel = progress?.sectionTitle && (implicit || notRequired)
+    ? `${counts} ${english ? 'Scope' : 'Geltungsbereich'}: ${progress.sectionTitle}` : counts
+  const Icon = expandable ? Layers3 : explicit ? Check : implicit ? ShieldCheck : notRequired ? Minus : activeLearningGoal ? Send : Target
+  const status = explicit ? 'is-explicit' : implicit ? 'is-implicit' : notRequired ? 'is-not-required' : activeLearningGoal ? 'is-active' : progress ? 'is-open' : 'is-context'
+  const marker = expandable ? undefined : explicit ? 'learning-map-direct-evidence' : implicit ? 'learning-map-credited-evidence'
+    : notRequired ? 'learning-map-not-required' : undefined
+  const statusLabel = explicit ? english ? 'Directly demonstrated' : 'Direkt nachgewiesen'
+    : implicit ? (progress?.waiverLabel ?? (english ? 'Credited through assessment' : 'Fachlich angerechnet'))
+    : notRequired ? (english ? 'No longer required for this assignment' : 'Für diesen Auftrag nicht mehr erforderlich')
     : activeLearningGoal ? english ? 'Active learning goal' : 'Aktives Lernziel' : progress ? english ? 'Still open' : 'Noch offen' : kindLabel
-  const meta = `${progress ? kindLabel : entry.eyebrow ?? kindLabel}${expandable ? (total ? ` · ${achieved}/${total} ${english ? 'completed' : 'erledigt'}` : ` · ${childCount} ${english ? 'sections' : 'Bereiche'}`) : ''}`
+  const meta = `${progress ? kindLabel : entry.eyebrow ?? kindLabel}${expandable ? (total ? ` · ${withEvidence}/${total} ${english ? 'with evidence' : 'mit Nachweis'}` : ` · ${childCount} ${english ? 'sections' : 'Bereiche'}`) : ''}`
   const preparationLabel = english ? 'Preparation' : 'Vorbereitung'
   const preparationTitle = english ? 'Added from outside the plan because a goal here needs it.'
     : 'Kommt von außerhalb des Plans hinzu, weil ein Ziel hier es braucht.'
-  return { english, kindLabel, expandable, total, explicit, implicit, progressLabel, Icon, status, statusLabel, meta, preparationLabel, preparationTitle }
+  return { english, kindLabel, expandable, total, explicit, implicit, progressLabel, Icon, status, marker, statusLabel, meta, preparationLabel, preparationTitle }
 }
 
 function MapPracticeButton({ action, english }: { action: LearningMapPracticeAction; english: boolean }) {
@@ -64,10 +70,10 @@ function MapPracticeButton({ action, english }: { action: LearningMapPracticeAct
   </button>
 }
 
-export const MapNode = memo(function MapNode({ data }: NodeProps<LearningFlowNode>) {
+export const MapNode = React.memo(function MapNode({ data }: NodeProps<LearningFlowNode>) {
   const { entry, childCount, outsideCount, ports, active, related, muted, progress, activeLearningGoal,
     goalAction, practiceAction, onSelect, onOpen } = data
-  const { english, kindLabel, expandable, total, explicit, implicit, progressLabel, Icon, status, statusLabel, meta,
+  const { english, kindLabel, expandable, total, explicit, implicit, progressLabel, Icon, status, marker, statusLabel, meta,
     preparationLabel, preparationTitle } = entryPresentation(entry, childCount, progress, activeLearningGoal, data.language)
   return <article className={`lum-node lum-node--${entry.kind}${practiceAction ? ' lum-node--has-practice' : ''}${active ? ' is-focused' : ''}${related ? ' is-related' : ''}${muted ? ' is-muted' : ''}`}
     data-entry-id={entry.id} data-entry-kind={entry.kind} data-active-goal={activeLearningGoal || undefined}
@@ -82,8 +88,8 @@ export const MapNode = memo(function MapNode({ data }: NodeProps<LearningFlowNod
           event.preventDefault(); event.stopPropagation()
           if (goalAction) goalAction.open(); else onSelect(entry.id)
         }
-      }} aria-pressed={goalAction ? undefined : active} aria-description={goalAction?.context} aria-label={goalAction?.label ?? `${entry.title}, ${english ? 'Show details' : 'Details anzeigen'}${activeLearningGoal ? english ? ', active learning goal' : ', aktives Lernziel' : ''}${entry.preparation ? `, ${preparationLabel}` : ''}`}>
-      <span className={`lum-node-icon${expandable ? '' : ` lum-node-state ${status}`}`} role="img" aria-label={expandable ? kindLabel : statusLabel}
+      }} aria-pressed={goalAction ? undefined : active} aria-description={[goalAction?.context, expandable ? (progress ? progressLabel : undefined) : statusLabel].filter(Boolean).join('. ')} aria-label={goalAction?.label ?? `${entry.title}, ${english ? 'Show details' : 'Details anzeigen'}${activeLearningGoal ? english ? ', active learning goal' : ', aktives Lernziel' : ''}${entry.preparation ? `, ${preparationLabel}` : ''}`}>
+      <span className={`lum-node-icon${expandable ? '' : ` lum-node-state ${status}`}`} data-testid={marker} role="img" aria-label={expandable ? kindLabel : statusLabel}
         title={expandable ? undefined : statusLabel}><Icon size={16} strokeWidth={!expandable && explicit ? 3 : !expandable && implicit ? 2.5 : 2} /></span>
       <span className="lum-node-copy"><strong>{goalAction?.title ?? entry.title}</strong>
         <span className="lum-node-meta" title={goalAction?.context ?? entry.eyebrow}>{goalAction?.context ?? meta}</span>
@@ -120,14 +126,14 @@ export function MapListItem({ entry, childCount, active, progress, activeLearnin
   onSelect: (id: string) => void
   onOpen: (id: string) => void
 }) {
-  const { english, kindLabel, expandable, explicit, implicit, Icon, status, statusLabel, meta,
+  const { english, kindLabel, expandable, explicit, implicit, progressLabel, Icon, status, marker, statusLabel, meta,
     preparationLabel, preparationTitle } = entryPresentation(entry, childCount, progress, activeLearningGoal, language)
   return <li className={`lum-list-item lum-node--${entry.kind}${practiceAction ? ' lum-node--has-practice' : ''}${active ? ' is-focused' : ''}`} data-entry-id={entry.id}
     data-entry-kind={entry.kind} data-active-goal={activeLearningGoal || undefined} data-preparation={entry.preparation || undefined}>
     <button type="button" className="lum-node-main" title={goalAction?.title ?? entry.title} aria-pressed={goalAction ? undefined : active}
       onClick={() => { if (goalAction) goalAction.open(); else onSelect(entry.id) }} onDoubleClick={event => { if (!event.shiftKey && expandable) onOpen(entry.id) }}
-      aria-description={goalAction?.context} aria-label={goalAction?.label ?? `${entry.title}, ${english ? 'Show details' : 'Details anzeigen'}${activeLearningGoal ? english ? ', active learning goal' : ', aktives Lernziel' : ''}${entry.preparation ? `, ${preparationLabel}` : ''}`}>
-      <span className={`lum-node-icon${expandable ? '' : ` lum-node-state ${status}`}`} role="img" aria-label={expandable ? kindLabel : statusLabel}
+      aria-description={[goalAction?.context, expandable ? (progress ? progressLabel : undefined) : statusLabel].filter(Boolean).join('. ')} aria-label={goalAction?.label ?? `${entry.title}, ${english ? 'Show details' : 'Details anzeigen'}${activeLearningGoal ? english ? ', active learning goal' : ', aktives Lernziel' : ''}${entry.preparation ? `, ${preparationLabel}` : ''}`}>
+      <span className={`lum-node-icon${expandable ? '' : ` lum-node-state ${status}`}`} data-testid={marker} role="img" aria-label={expandable ? kindLabel : statusLabel}
         title={expandable ? undefined : statusLabel}><Icon size={15} strokeWidth={!expandable && explicit ? 3 : !expandable && implicit ? 2.5 : 2} /></span>
       <span className="lum-node-copy"><strong>{goalAction?.title ?? entry.title}</strong><span className="lum-node-meta">{goalAction?.context ?? meta}</span></span>
     </button>

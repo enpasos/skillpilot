@@ -79,6 +79,24 @@ class UnitAssessmentContractTest {
         assertThat(complete.planningCreditGoalIds()).isEmpty();
         assertThat(complete.individuallyOpenGoalIds()).hasSize(11);
 
+        var scope = Map.of("durationModel", "G8", "courseProfile", "GK", "stage", "SekII");
+        String assignment = contract.assignmentFingerprint("physics", view, section, scope);
+        var a = contract.parts().getFirst();
+        var differentRubric = new AssessmentMaterialRevision(a.material().taskRevision(),
+                "sha256:" + "a".repeat(64), a.material().fingerprint());
+        var revisedParts = new java.util.ArrayList<>(contract.parts());
+        revisedParts.set(0, new UnitAssessmentContract.Part(a.goalId(), differentRubric));
+        var revised = new UnitAssessmentContract(contract.revision(), contract.viewIds(), revisedParts,
+                contract.contentGoalIds(), contract.planningCredits());
+        assertThat(revised.planningCredits()).isEqualTo(contract.planningCredits());
+        assertThat(revised.assignmentFingerprint("physics", view, section, scope)).isNotEqualTo(assignment);
+        assertThat(contract.assignmentFingerprint("physics", "de-he-gym-physics-gk-g9", section, scope)).isNotEqualTo(assignment);
+        assertThat(contract.assignmentFingerprint("physics", view, section,
+                Map.of("durationModel", "G9", "courseProfile", "GK", "stage", "SekII"))).isNotEqualTo(assignment);
+        var withoutExtraCredit = new UnitAssessmentContract(contract.revision(), contract.viewIds(), contract.parts(),
+                contract.contentGoalIds(), List.of());
+        assertThat(withoutExtraCredit.assignmentFingerprint("physics", view, section, scope)).isEqualTo(assignment);
+
         var first = contract.parts().getFirst();
         var other = receipts.get(contract.parts().get(1).goalId());
         receipts.put(first.goalId(), other);

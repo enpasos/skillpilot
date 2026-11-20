@@ -2,6 +2,8 @@ import React from 'react'
 import { Check, FileSearch, Send, Target, X } from 'lucide-react'
 import type { UiGoal as Goal } from '../goalTypes'
 
+import { CompletionWaiverIcon } from './CompletionWaiverIcon'
+import type { CompletionTreeWaiver } from '../utils/levelCompletionApi'
 import { MasteryBar } from './MasteryBar'
 import { isCompleteMastery, isMastered } from '../goalUiUtils'
 import { InlineMathText } from './InlineMathText'
@@ -23,6 +25,7 @@ import type {
 interface GoalCardProps {
   goal: Goal
   masteryValue: number
+  completionWaiver?: CompletionTreeWaiver
   onMasteryChange?: (id: string, value: number) => void
   showLearnerTools: boolean
   useRawGoalTitles?: boolean
@@ -429,6 +432,7 @@ const SourceRationaleModal: React.FC<{
 export const GoalCard: React.FC<GoalCardProps> = ({
   goal,
   masteryValue,
+  completionWaiver,
   onMasteryChange,
   showLearnerTools,
   useRawGoalTitles = false,
@@ -461,7 +465,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
   })()
 
   // Detect if Atomic Goal (no children)
-  const isAtomic = !goal.contains || goal.contains.length === 0
+  const isAtomic = goal.type !== 'cluster' && (!goal.contains || goal.contains.length === 0)
   const isMemoryGoal = goal.nodeKind === 'memory' || (goal.tags ?? []).some((tag) => tag === 'memorization' || tag.startsWith('srs-deck:'))
   const semanticKind = goal.semanticKind?.trim().toLowerCase()
   const isOrientationGoal = semanticKind
@@ -633,6 +637,8 @@ export const GoalCard: React.FC<GoalCardProps> = ({
               <FileSearch size={18} strokeWidth={2} />
             </button>
           )}
+          {isAtomic && !mastered && completionWaiver && <CompletionWaiverIcon
+            waiver={completionWaiver} language={localizedLanguage} surface="goal-card" />}
           {isAtomic && (
             canSetActive ? (
               <button
@@ -644,8 +650,10 @@ export const GoalCard: React.FC<GoalCardProps> = ({
               >
                 {isActive ? <Send size={28} strokeWidth={2} /> : <Target size={28} strokeWidth={2} />}
               </button>
-            ) : (
-              <div className={`shrink-0 ${iconColor}`}>
+            ) : (mastered || !completionWaiver) && (
+              <div className={`shrink-0 ${iconColor}`} role={mastered ? 'img' : undefined}
+                data-testid={mastered ? 'completion-goal-card-direct-evidence' : undefined}
+                aria-label={mastered ? (localizedLanguage === 'en' ? 'Directly demonstrated' : 'Direkt nachgewiesen') : undefined}>
                 <StatusIcon size={28} strokeWidth={strokeWidth} />
               </div>
             )

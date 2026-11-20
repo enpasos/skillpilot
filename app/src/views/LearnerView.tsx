@@ -13,6 +13,7 @@ import { LearnerPlanTodayOverview } from '../components/LearnerPlanTodayOverview
 import { LearnerActiveGoalBanner } from '../components/LearnerActiveGoalBanner'
 import { LevelCompletionCard } from '../components/LevelCompletionCard'
 import { UnitAssessmentSummary } from '../components/UnitAssessmentSummary'
+import { LearnerUnitAssignment } from '../components/LearnerUnitAssignment'
 import { Settings, Database, Menu, X, Target, Send, Check, MoveRight, BookOpen, ClipboardCheck, PanelLeftClose, PanelLeftOpen, Map as MapIcon, Construction } from 'lucide-react'
 import { InfoModal } from '../components/InfoModal'
 import { LogoutButton } from '../components/LogoutButton'
@@ -54,7 +55,7 @@ import type { ToastKind } from '../hooks/useToast'
 import { queueToastForNextLoad } from '../hooks/useToast'
 import { dispatchLearnerUiRefresh } from '../utils/learnerUiEvents'
 import { createSynchronousInFlightGuard } from '../utils/synchronousInFlightGuard'
-import { buildCompletionAssessmentStartHref, buildCompletionRouteStartHref, completionAssessmentsForGoal, completionLabel, completionUnavailableReason, completionWaiversForTree, hasActiveCompletionRoute, parseLevelCompletion, requestLevelCompletionAction, type CompletionActionInput, type LevelCompletion, type CompletionTreeWaiver } from '../utils/levelCompletionApi'
+import { buildCompletionAssessmentStartHref, buildCompletionRouteStartHref, completionAssessmentsForGoal, completionLabel, completionPlanningCredits, completionUnavailableReason, completionWaiversForTree, hasActiveCompletionRoute, parseLevelCompletion, requestLevelCompletionAction, type CompletionActionInput, type LevelCompletion, type CompletionTreeWaiver } from '../utils/levelCompletionApi'
 import {
   beginLatestRequest,
   invalidateLatestRequest,
@@ -1927,7 +1928,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       if (!isLearnerStatePayload(response)) throw new Error('Invalid completion state')
       invalidateLatestRequest(learnerStateRequestSequenceRef)
       const result = applyLearnerStatePayload(response, requestScopeKey)
-      if (action.action === 'learnGoal' && result.activeGoalId) onSelectGoal(result.activeGoalId)
+      if ((action.action === 'learnGoal' || action.action === 'focusPractice') && result.activeGoalId) onSelectGoal(result.activeGoalId)
       await refreshLearningPlans()
       onRefresh?.()
     } catch {
@@ -3418,14 +3419,32 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   }, [learnerDataManagementCopy.deleteMissing, learnerDataManagementCopy.deleteSuccess, onLogout, onNotify, skillpilotId])
 
   const completionRouteActive = hasActiveCompletionRoute(levelCompletion)
+  const individualPractice = currentGoal && learnerStateLoadStatus === 'ready' && levelCompletion?.calculationStatus === 'valid'
+    ? levelCompletion.actions.find(action => action.goalId === currentGoal.id && action.practice) : undefined
   const completionGoalTitle = (id: string) => {
     const goal = goalIndexAll.get(id)
     return goal ? getLearnerGoalTitle(goal) : undefined
   }
+  const assessment = levelCompletion?.unitAssessment
+  const unitLandscapeId = assessment?.parts[0] && goalIndexAll.get(assessment.parts[0].goalId)?.landscapeId
+  const unitAssignmentControl = skillpilotId && levelCompletion?.calculationStatus === 'valid' && assessment && unitLandscapeId
+    ? <LearnerUnitAssignment key={skillpilotId + ':' + assessment.sectionGoalId} learnerId={skillpilotId} landscapeId={unitLandscapeId}
+        assessment={assessment} completion={levelCompletion} language={localizedLanguage} goalTitle={completionGoalTitle}
+        disabled={learnerStateLoadStatus !== 'ready' || completionActionBusy} onSaved={retryLearningPlans} />
+    : null
   const unitAssessmentSummary = levelCompletion?.calculationStatus === 'valid' && levelCompletion.unitAssessment ? {
     scopeGoalId: levelCompletion.unitAssessment.sectionGoalId,
     content: <UnitAssessmentSummary assessment={levelCompletion.unitAssessment} completion={levelCompletion} language={localizedLanguage}
-      titleForGoal={completionGoalTitle} allowStart={learnerStateLoadStatus === 'ready' && !completionActionBusy} />,
+      titleForGoal={completionGoalTitle} allowStart={learnerStateLoadStatus === 'ready' && !completionActionBusy}
+      onShowGoal={id => {
+        if (isLearningMapOpen) {
+          selectMapGoal(id)
+          closeLearningMap()
+        } else {
+          onSelectGoal(id)
+          focusSelectedGoalCard(id)
+        }
+      }} />,
   } : undefined
   const showLearningProgress = !isGuidedPersonalizationRequired
     && !completionRouteActive
@@ -3709,6 +3728,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
               onAction={(action) => { void handleCompletionAction(action) }}
               onRetry={() => { void refreshState(true) }}
               titleForGoal={completionGoalTitle}
+              unitAssignmentControl={unitAssignmentControl}
               onShowGoal={showCompletionGoalInTree}
               onOpenSettings={() => setIsSetupOpen(true)}
             />
@@ -3962,6 +3982,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                   ) : (
                     <GoalCard
                       goal={currentGoal}
+                      completionWaiver={completionTreeWaivers.get(currentGoal.id)}
                       masteryValue={
                         currentGoal.contains && currentGoal.contains.length > 0
                           ? getFilteredMastery(currentGoal.id)
@@ -3983,7 +4004,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                 <GoalExamPassHistory goal={currentGoal} skillpilotId={skillpilotId} language={localizedLanguage} />
 
                 {!completionRouteActive && !completionDiscoveryRequest && unitAssessmentSummary?.scopeGoalId === currentGoal.id
-                  ? unitAssessmentSummary.content : null}
+                  ? <>{unitAssessmentSummary.content}{unitAssignmentControl}</> : null}
                 {selectedGoalAssessments.length > 0 ? <div data-testid="selected-goal-assessment-shortcuts" className="mt-3 flex flex-col items-start gap-2 text-sm">
                   {selectedGoalAssessments.map(({ profileId, profileTitle, assessment }) => <div key={profileId} className="flex flex-wrap items-center gap-3">
                     <span className="text-text-secondary">{localizedLanguage === 'en' ? 'Assessment in ' : 'Prüfung im Abschnitt '}
@@ -4001,12 +4022,42 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                   </div>)}
                 </div> : null}
 
-                {learnerStateLoadStatus === 'ready' && levelCompletion?.calculationStatus === 'valid' && levelCompletion.waivedTargetGoalIds.includes(currentGoal.id) ? (
+                {individualPractice?.practice ? (
+                  <div data-testid="credited-goal-individual-study" className="mt-3 space-y-2 text-sm text-text-secondary">
+                    <p>{localizedLanguage === 'en'
+                      ? 'Your passed assessments cover this goal for planning. You can work on it for an individual learning result.'
+                      : 'Deine bestandenen Prüfungen decken dieses Ziel für den Lernplan ab. Du kannst es für einen eigenen Lernnachweis erarbeiten.'}</p>
+                    {individualPractice.action === 'focusPractice' && individualPractice.practice.openPrerequisites.length > 0 && <p>
+                      {individualPractice.practice.startGoalId === currentGoal.id
+                        ? (localizedLanguage === 'en' ? 'Individual focus lets you start this goal now. Your coach can help you with any open prerequisites.'
+                          : 'Im Einzelfokus kannst du direkt mit diesem Ziel beginnen. Dein Lerncoach hilft dir bei Bedarf mit offenen Voraussetzungen.')
+                        : (localizedLanguage === 'en' ? 'Your strict learning mode starts with an open prerequisite. Your coach will help you work on it.'
+                          : 'Dein strenger Lernmodus beginnt mit einer offenen Voraussetzung. Dein Lerncoach hilft dir, sie zu erarbeiten.')}
+                    </p>}
+                    {individualPractice.practice.openPrerequisites.length > 0 &&
+                      <details><summary className="cursor-pointer font-semibold">{localizedLanguage === 'en' ? 'Open prerequisites' : 'Offene Voraussetzungen'}
+                        {' ('}{individualPractice.practice.openPrerequisites.length}{')'}</summary>
+                        <ul className="list-disc ps-6">{individualPractice.practice.openPrerequisites.map(item =>
+                          <li key={item.goalId}><InlineMathText text={completionLabel(item.title, localizedLanguage)} /></li>)}</ul>
+                      </details>}
+                    {effectiveActiveGoalId !== currentGoal.id &&
+                      <button type="button" data-testid="credited-goal-study-start" disabled={completionActionBusy}
+                        className="min-h-11 rounded-lg border border-sky-400 px-3 py-2 font-semibold focus-visible:outline-none focus-visible:ring-2"
+                        onClick={() => void handleCompletionAction({ action: individualPractice.action, goalId: currentGoal.id, intent: individualPractice.intent })}>
+                        {individualPractice.action === 'learnGoal' ? (localizedLanguage === 'en' ? 'Study this goal individually' : 'Dieses Ziel einzeln erarbeiten')
+                          : completionLabel(individualPractice.title, localizedLanguage)}
+                      </button>}
+                  </div>
+                ) : learnerStateLoadStatus === 'ready' && levelCompletion?.calculationStatus === 'valid' && completionPlanningCredits(levelCompletion).has(currentGoal.id) ? (
+                  <p className="mt-3 text-sm text-text-secondary">{localizedLanguage === 'en'
+                    ? 'Your passed assessments cover this goal for planning. Individual study is currently unavailable in this learning context.'
+                    : 'Deine bestandenen Prüfungen decken dieses Ziel für den Lernplan ab. Die Einzelbearbeitung ist im aktuellen Lernkontext gerade nicht verfügbar.'}</p>
+                ) : learnerStateLoadStatus === 'ready' && levelCompletion?.calculationStatus === 'valid' && levelCompletion.waivedTargetGoalIds.includes(currentGoal.id) ? (
                   <p data-testid="level-completion-goal-context" className="mt-3 text-sm text-text-secondary">
                     {levelCompletion.profileId?.startsWith('automatic:')
                       ? (localizedLanguage === 'en'
-                        ? 'This goal is implicitly completed in the selected section because no remaining work requires it. Its saved learning result stays unchanged; you can still choose to study it.'
-                        : 'Dieses Ziel ist im gewählten Abschnitt implizit erledigt, weil keine verbleibende Arbeit es benötigt. Sein gespeicherter Lernstand bleibt unverändert; du kannst es freiwillig weiterlernen.')
+                        ? 'This goal is no longer required for this assignment. You can still study it and earn individual evidence.'
+                        : 'Für diesen Auftrag ist dieses Ziel nicht mehr erforderlich. Du kannst es weiterhin bearbeiten und einen eigenen Nachweis erwerben.')
                       : (localizedLanguage === 'en'
                         ? 'Preparation for this goal is no longer required for the selected section. You can still choose to study it.'
                         : 'Für den gewählten Abschnitt ist die Vorbereitung zu diesem Lernziel nicht mehr erforderlich. Du kannst es freiwillig weiterlernen.')}

@@ -79,7 +79,7 @@ final class ClaudeV1CompletionChoices {
                 } else if ("leaveProfile".equals(action.action()) || "endAssessment".equals(action.action())
                         || "pauseProfile".equals(action.action())
                         || "retryAssessment".equals(action.action()) || "includeTarget".equals(action.action())
-                        || "includeSupport".equals(action.action())) {
+                        || "includeSupport".equals(action.action()) || "focusPractice".equals(action.action())) {
                     prefix = "";
                 } else continue;
                 candidates.add(new Choice(prefix + label(action.title(), language), action.action(),
@@ -129,6 +129,9 @@ final class ClaudeV1CompletionChoices {
                 projected.put("title", label(part.title(), language));
                 projected.put("passed", part.passed());
                 projected.put("materialCurrent", part.materialCurrent());
+                if (part.missingPlanningCreditBinding()) projected.put("planningCreditNotice", en
+                        ? "This pass counts towards the unit. When you passed, the assessment record did not include the current approval for planning credit. The related individual goals stay open unless you have demonstrated them separately."
+                        : "Dieser Beleg zählt für die Einheit. Dein Prüfungsbeleg enthält keine Freigabe für die aktuelle Planungsanrechnung. Die zugehörigen Fachziele bleiben offen, bis du sie selbst nachweist.");
                 if (!part.materialCurrent()) projected.put("notice", en
                         ? "The current task has a different assessment version. This unit part is unavailable; saved historical passes remain retained."
                         : "Die aktuelle Aufgabe hat eine andere Prüfungsfassung. Dieser Einheitsteil ist derzeit nicht verfügbar; frühere Prüfungsbelege bleiben erhalten.");
@@ -154,15 +157,18 @@ final class ClaudeV1CompletionChoices {
         }
         if ("valid".equals(completion.calculationStatus()) && completion.complete() != null) {
             result.put("complete", completion.complete());
-            result.put("text", en
-                    ? "Directly achieved learning goals: %d of %d. Required assessments passed: %d of %d. Implicitly completed learning goals in this section: %d. Saved goal results stay unchanged. Remaining target obligations: %d.%s".formatted(
-                            completion.masteredTargetCount(), completion.targetCount(), completion.masteredAssessmentCount(),
-                            completion.requiredAssessmentCount(), completion.waivedTargetCount(), completion.pendingTargetCount(),
-                            Boolean.TRUE.equals(completion.complete()) ? " Learning section completed." : "")
-                    : "Direkt geschaffte Lernziele: %d von %d. Geschaffte erforderliche Prüfungen: %d von %d. In diesem Abschnitt implizit erledigte Lernziele: %d. Die gespeicherten Lernstände bleiben unverändert. Noch offene Zielpflichten: %d.%s".formatted(
-                            completion.masteredTargetCount(), completion.targetCount(), completion.masteredAssessmentCount(),
-                            completion.requiredAssessmentCount(), completion.waivedTargetCount(), completion.pendingTargetCount(),
-                            Boolean.TRUE.equals(completion.complete()) ? " Lernabschnitt abgeschlossen." : ""));
+            int credited = completion.planningCreditGoalIds().size();
+            String wording = en
+                    ? "Direct evidence on learning goals (%d/%d), required assessments passed (%d/%d), "
+                            + "goals credited for planning (%d), preparation waived (%d), "
+                            + "remaining obligations (%d).%s"
+                    : "Eigene Nachweise an Lernzielen (%d/%d), bestandene Pflichtprüfungen (%d/%d), "
+                            + "fachlich angerechnete Ziele (%d), entfallene Vorbereitung (%d), "
+                            + "offene Zielpflichten (%d).%s";
+            result.put("text", wording.formatted(completion.masteredTargetCount(), completion.targetCount(),
+                    completion.masteredAssessmentCount(), completion.requiredAssessmentCount(), credited,
+                    completion.waivedTargetCount() - credited, completion.pendingTargetCount(),
+                    completion.complete() ? (en ? " Learning section completed." : " Lernabschnitt abgeschlossen.") : ""));
         }
         if ("paused".equals(completion.navigationIntent())) {
             result.put("paused", true);
@@ -176,8 +182,8 @@ final class ClaudeV1CompletionChoices {
                     "scope", detail.ruleId() != null && detail.ruleId().startsWith("versioned_unit_assessment:")
                             ? en ? "A version-bound unit assessment establishes this full prerequisite for further planning; its individual result stays unchanged."
                                     : "Ein fassungsgebundener Einheitenbeleg weist diese ganze Voraussetzung für die weitere Planung nach; der individuelle Lernstand bleibt unverändert."
-                            : en ? "Only this learning section; implicit completion does not change the goal's saved result."
-                                    : "Nur dieser Lernabschnitt; die implizite Erledigung ändert den gespeicherten Stand des Lernziels nicht.")).toList());
+                            : en ? "Preparation for this learning section is optional. The goal remains available for individual learning."
+                                    : "Die Vorbereitung für diesen Lernabschnitt ist freiwillig. Du kannst das Lernziel weiterhin einzeln erarbeiten.")).toList());
         }
         if (active(completion) && !supported()) {
             result.put("notice", en
@@ -192,12 +198,29 @@ final class ClaudeV1CompletionChoices {
                     ? "This completion route cannot currently be used reliably. Follow only the published choices; existing mastery is retained."
                     : "Dieser Abschlussweg kann gerade nicht zuverlässig genutzt werden. Folge ausschließlich den angebotenen Möglichkeiten; vorhandene Mastery bleibt erhalten.");
         }
-        result.put("choices", published(completion, language).stream().map(Choice::label).toList());
+        var choices = published(completion, language);
+        result.put("choices", choices.stream().map(Choice::label).toList());
+        if (!choices.isEmpty() && completion.actions() != null) {
+            var practice = new ArrayList<Map<String, Object>>();
+            for (var action : completion.actions()) {
+                if (action.practice() == null) continue;
+                choices.stream().filter(choice -> choice.action().equals(action.action())
+                        && action.goalId().equals(choice.goalId())).findFirst().ifPresent(choice ->
+                        practice.add(Map.of("choice", choice.label(), "openPrerequisiteCount", action.practice().openPrerequisites().size(),
+                                "openPrerequisites", action.practice().openPrerequisites().stream().limit(MAX_CHOICES)
+                                        .map(goal -> label(goal.title(), language)).toList())));
+            }
+            if (!practice.isEmpty()) result.put("individualPractice", practice);
+        }
         result.put("instruction", "Use this backend completion statement without recalculating or turning implicit completion into mastery. "
-                + "The backend marks non-assessment goals with no remaining demand as implicitly completed. "
+                + "A mastered goal no longer demands its own prerequisites. The backend marks non-assessment goals with no remaining demand as implicitly completed. "
                 + "A passed assessment is not required for implicit completion, and it does not certify prerequisite competence. "
-                + "Separately, explicit version-bound unit planning evidence can certify the named full prerequisites; no individual mastery or other prerequisite follows from it. "
+                + (completion.unitAssessment() != null || !completion.planningCreditGoalIds().isEmpty()
+                    ? "Use only the named planning credits from the current assessment evidence. Each individual goal still needs its own mastery evidence. " : "")
                 + "Do not restore implicitly completed work as mandatory. "
+                + (result.containsKey("individualPractice")
+                    ? "On a request to study a credited goal individually, use its published individualPractice choice. "
+                        + "Offer help with its open prerequisites. When strict mode names a prerequisite as the first step, teach that returned active goal. " : "")
                 + "Available direct assessment choices can be selected from ordinary learning without choosing a section first. "
                 + "Offer them when the learner asks for a shortcut, an assessment or to demonstrate existing knowledge; do not interrupt ordinary teaching unprompted. "
                 + "For an explicit learner choice, copy exactly one current choices entry into choose_skillpilot_completion_route. "

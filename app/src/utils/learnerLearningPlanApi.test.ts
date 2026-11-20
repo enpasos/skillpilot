@@ -172,6 +172,14 @@ const learningTopics = {
   goalIds: ['analysis-root', 'geometry-root'], title: 'Vorbereitung',
   startDate: '2026-09-01', endDate: '2026-09-18', atomicGoalIds: ['analysis-1', 'geometry-1'],
 }
+const assignmentRef = { sectionGoalId: 'motion', revision: 'v1', fingerprint: 'sha256:exam-contract' }
+const assignmentBlock = { ...learningTopics, active: true, unitAssignment: assignmentRef }
+const completedUnit = parseLearnerLearningPlanDetail({ ...planDetail, blocks: [assignmentBlock],
+  canContinue: false, continueReason: 'unit-assignment-completed', nextEligibleGoal: null })
+assert.equal(completedUnit.continueReason, 'unit-assignment-completed')
+assert.deepEqual(completedUnit.blocks[0].kind === 'learning' && completedUnit.blocks[0].unitAssignment, assignmentRef)
+assert.throws(() => parseLearnerLearningPlanDetail({ ...planDetail,
+  blocks: [{ ...assignmentBlock, unitAssignment: { sectionGoalId: 'motion', revision: 'v1' } }] }))
 const parsedPausedPlan = parseLearnerLearningPlanDetail({
   ...planDetail,
   blocks: [learningTopics, { ...examTopicBlock, active: false }, {

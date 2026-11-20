@@ -279,6 +279,18 @@ const serverOnlyExamSubject = await loadTeacherLearningPlanActivationSubject({
 assert.equal(serverOnlyExamSubject.status, 'cockpit-only')
 assert.deepEqual(serverOnlyExamSubject.copy?.blocks.at(-1), examTopicBlock,
   'reusing an existing server plan preserves its exam topic selection')
+const binding = { sectionGoalId: 'motion', revision: 'updated', fingerprint: 'reviewed' }
+const withUnit = { ...serverPlan, blocks: serverPlan.blocks.map(block => block.kind === 'learning' ? { ...block, unitAssignment: binding } : block) }
+const storedUnit = await loadTeacherLearningPlanActivationSubject({
+  classSession: { id: 'server-only-unit', name: 'Physik', landscapeId: serverPlan.landscapeId, activeFilter: 'all', students: [] },
+  landscapeId: serverPlan.landscapeId, label: 'Physik', landscapeEntries: [],
+  runtimeCatalogState: { mode: 'repository' }, serverPlan: withUnit, serverAvailable: true, storage: { getItem: () => null },
+})
+assert(storedUnit.copy)
+assert(learnerPlanCopyMatchesServer(storedUnit.copy, withUnit))
+assert(!learnerPlanCopyMatchesServer(storedUnit.copy, serverPlan), 'atomic work cannot silently replace a unit assignment on activation')
+const storedUnitRequest = teacherLearningPlanActivationRequest('2026-09-10', [storedUnit])
+assert(storedUnitRequest.plans[0].blocks.some(block => block.kind === 'learning' && block.unitAssignment?.fingerprint === binding.fingerprint))
 const storedExamCopy = serverOnlyExamSubject.copy?.blocks.at(-1)
 assert(storedExamCopy?.kind === 'milestone')
 assert.notEqual(storedExamCopy.goalIds, examTopicBlock.goalIds,

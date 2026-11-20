@@ -340,6 +340,8 @@ const comparableBlock = (block: ComparableLearningPlanBlock) => {
       startDate: block.startDate,
       endDate: block.endDate,
       atomicGoalIds: block.atomicGoalIds ?? [],
+      ...(block.unitAssignment ? { unitAssignment: { sectionGoalId: block.unitAssignment.sectionGoalId,
+        revision: block.unitAssignment.revision, fingerprint: block.unitAssignment.fingerprint } } : {}),
     }
   }
   if (block.kind === 'buffer') {
@@ -467,6 +469,7 @@ const copyStoredServerPlan = (
         id: block.id,
         kind: block.kind,
         ...activation,
+        ...(block.unitAssignment ? { unitAssignment: { ...block.unitAssignment } } : {}),
         ...(block.goalId ? { goalId: block.goalId } : {}),
         ...(block.goalIds !== undefined ? { goalIds: [...block.goalIds] } : {}),
         ...(block.title ? { title: block.title } : {}),

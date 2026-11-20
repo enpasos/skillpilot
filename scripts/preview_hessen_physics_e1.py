@@ -12,7 +12,7 @@ import socket
 import subprocess
 import tempfile
 import time
-from urllib.error import URLError
+from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 import uuid
@@ -26,9 +26,12 @@ PHYSICS = '7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a'
 
 def request(base, path, method='GET', data=None):
     body = None if data is None else json.dumps(data).encode()
-    with urlopen(Request(base + path, data=body, method=method,
-                         headers={'Content-Type': 'application/json'}), timeout=120) as response:
-        content = response.read()
+    try:
+        with urlopen(Request(base + path, data=body, method=method,
+                             headers={'Content-Type': 'application/json'}), timeout=120) as response:
+            content = response.read()
+    except HTTPError as error:
+        raise RuntimeError(f'{method} {path}: HTTP {error.code}: {error.read(1000).decode()}') from error
     return json.loads(content) if content else None
 
 
@@ -61,7 +64,7 @@ def create_subject_learner(api, duration, subject):
     return learner_id, view
 
 
-def create_learner(api, duration):
+def create_learner(api, duration, expected_parts):
     learner_id, view = create_subject_learner(api, duration, PHYSICS)
     learner = '/api/ui/learners/' + learner_id
     focus = f'composition:{view["viewId"]}:structure:physics-e1-motion'
@@ -77,8 +80,8 @@ def create_learner(api, duration):
     if current.get('profileId') != profile or current.get('requiredAssessmentCount') != 5:
         raise RuntimeError(f'{duration}: unexpected E.1 section')
     assessment = current.get('unitAssessment') or {}
-    if len(assessment.get('parts', [])) != 4 or assessment.get('passed') is not False:
-        raise RuntimeError(f'{duration}: expected four E.1 assessment parts in the upper-secondary view')
+    if [part['goalId'] for part in assessment.get('parts', [])] != expected_parts or assessment.get('passed') is not False:
+        raise RuntimeError(f'{duration}: expected the reviewed E.1 parts in order A, B, C, D in the upper-secondary view')
     if any(request(api, learner + '/mastery')['mastery'].values()):
         raise RuntimeError('The synthetic learner already has mastery')
     return learner_id, focus
@@ -125,11 +128,18 @@ def serve(args, work, stack):
     browser_ui = f'http://localhost:{args.ui_port}'
     jars = work / 'runtime-jars'
     build = work / 'backend-build'
-    subprocess.run([str(backend / 'gradlew'), '--no-daemon', '--console=plain', '-I',
+    subprocess.run([str(backend / 'gradlew'), '--no-daemon', '--console=plain',
+                    '--project-cache-dir', str(work / 'gradle-project-cache'), '-I',
                     str(ROOT / 'scripts/package_consumer_runtime.init.gradle'),
                     'writePackageConsumerRuntimeClasspath', '-PpackageConsumerClasspathOutput=' + str(jars)],
                    cwd=backend, env={**os.environ, 'SKILLPILOT_BACKEND_BUILD_DIR': str(build)}, check=True)
     classpath = [str(build / 'classes/java/main'), str(backend / 'src/main/resources'), *jars.read_text().splitlines()]
+    preview_classes = work / 'preview-classes'
+    preview_classes.mkdir()
+    javac = str(Path(java).with_name('javac'))
+    subprocess.run([javac, '-proc:none', '-cp', os.pathsep.join(classpath), '-d', str(preview_classes),
+                    str(ROOT / 'scripts/preview/HesseE1GradedPreview.java')], check=True)
+    classpath.insert(0, str(preview_classes))
     settings = {
         'server.address': '127.0.0.1', 'server.port': args.api_port,
         'skillpilot.curriculum.source': 'repository', 'skillpilot.landscapes.directory': str(ROOT / 'curricula'),
@@ -146,20 +156,35 @@ def serve(args, work, stack):
         'skillpilot.claude.connector.v1.signing-secret': secrets.token_urlsafe(48),
         'skillpilot.claude.connector.v1.capability-secret': secrets.token_urlsafe(48),
         'skillpilot.claude.connector.v1.enabled': True, 'skillpilot.claude.enabled': False,
+        'skillpilot.completion.unit-assessment-pilot-enabled': True,
         'skillpilot.openai.coach-v1.enabled': False, 'skillpilot.teacher-supervision.enabled': False,
     }
     runtime_env = {'PATH': os.environ['PATH'], 'LANG': 'C.UTF-8', 'SPRING_APPLICATION_JSON': json.dumps(settings)}
     log = stack.enter_context((work / 'backend.log').open('w'))
     spring = subprocess.Popen([java, '-Xmx2304m', '-XX:TieredStopAtLevel=1', '-cp', os.pathsep.join(classpath),
-                               'com.skillpilot.backend.SkillpilotApplication'],
+                               'preview.HesseE1GradedPreview'], stdin=subprocess.PIPE,
                               cwd=work, env=runtime_env, stdout=log, stderr=subprocess.STDOUT)
     stack.callback(stop, spring)
     wait_ready(api + '/actuator/health', spring)
+    scope = json.loads((ROOT / 'docs/concept/skill-graph/examples/hessen-physik-e1/umfang.json').read_text())
+    expected_parts = scope['ownAssessmentGoalIds'] + scope['childAssessmentGoalIds']
     profiles = {}
     for duration in ('G8', 'G9'):
-        viewer, section = create_learner(api, duration)
+        viewer, section = create_learner(api, duration, expected_parts)
         profiles[duration] = {'viewer': viewer, 'E1': section,
-                              **{part: create_learner(api, duration)[0] for part in ('A', 'B')}}
+                              **{part: create_learner(api, duration, expected_parts)[0] for part in ('A', 'B', 'CD', 'ABCD', 'unitOpen', 'unitCD', 'unitABCD', 'mixed')}}
+    spring.stdin.write(json.dumps(profiles).encode())
+    spring.stdin.close()
+    for _ in range(1200):
+        if (work / 'grading.json').is_file():
+            break
+        if spring.poll() is not None:
+            messages = [line for line in (work / 'backend.log').read_text().splitlines()
+                        if line.startswith('Graded preview failed:')]
+            raise RuntimeError(messages[-1] if messages else 'The preview backend stopped during grading')
+        time.sleep(1)
+    else:
+        raise RuntimeError('Timed out preparing the graded E.1 scenarios')
     math_viewer, _ = create_subject_learner(api, 'G9', MATHEMATICS)
     profiles['mathematik'] = {'viewer': math_viewer, 'goal': MATH_COMPARISON_GOAL}
     (work / 'profiles.json').write_text(json.dumps(profiles))
@@ -171,6 +196,8 @@ def serve(args, work, stack):
     wait_ready(ui + '/nativ/G8/A', vite)
     for d in ('G8', 'G9'):
         print(f'{d}: {browser_ui}/nativ/{d}/E1   {browser_ui}/nativ/{d}/A   {browser_ui}/nativ/{d}/B', flush=True)
+        print(f'{d} Einheitenauftrag: {browser_ui}/auftraege/{d} (offen, C+D, A–D und gemischt)', flush=True)
+        print(f'{d} mit Belegen: {browser_ui}/vergleich/{d}/CD   {browser_ui}/vergleich/{d}/ABCD', flush=True)
     print(f'Mathematik-Kartenvergleich: {browser_ui}/vergleich/mathematik', flush=True)
     if args.check:
         subprocess.run([node, str(app / 'scripts/checkHesseE1Preview.mjs'), browser_ui, api, str(work / 'profiles.json')],

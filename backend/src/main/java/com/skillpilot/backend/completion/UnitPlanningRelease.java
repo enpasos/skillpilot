@@ -2,7 +2,10 @@ package com.skillpilot.backend.completion;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.landscape.LearningGoal;
+import com.skillpilot.backend.landscape.ProgramUnit;
+import com.skillpilot.backend.landscape.SkillLandscape;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,6 +31,39 @@ public record UnitPlanningRelease(int schemaVersion, String revision, String own
         if (viewId == null) return false;
         return viewId.startsWith("merged:")
                 ? viewIds.containsAll(List.of(viewId.substring(7).split("\\+", -1))) : viewIds.contains(viewId);
+    }
+
+    /** R1/R2 evidence belongs to the dated canonical unit and its own assessments. */
+    public boolean hasReviewedOwnership(SkillLandscape landscape, UnitAssessmentContract contract,
+            UnitAssessmentContract.PlanningCredit rule) {
+        if (blank(ownerUnitId) || blank(ownerRevision) || review == null || blank(review.path())
+                || landscape == null || landscape.getProgramUnits() == null || landscape.getGoalPlacements() == null) return false;
+        var owners = landscape.getProgramUnits().stream().filter(unit -> ownerUnitId.equals(unit.getId())).toList();
+        if (owners.size() != 1) return false;
+        ProgramUnit unit = owners.getFirst();
+        if (!unit.isLearningUnit() || !ownerRevision.equals(unit.getRevision()) || unit.getCoverageReviews() == null) return false;
+
+        Set<String> expected = new HashSet<>(rule.goalIds());
+        expected.addAll(rule.requiredPartIds());
+        Set<String> owned = new HashSet<>();
+        for (var placement : landscape.getGoalPlacements()) {
+            if (!placement.isOwnership() || !expected.contains(placement.getGoalId())) continue;
+            if (!ownerUnitId.equals(placement.getUnitId()) || !owned.add(placement.getGoalId())) return false;
+        }
+        if (!owned.equals(expected)) return false;
+        Set<String> covered = new HashSet<>();
+        for (var part : contract.parts()) {
+            if (!rule.requiredPartIds().contains(part.goalId())) continue;
+            var reviews = unit.getCoverageReviews().stream()
+                    .filter(row -> part.goalId().equals(row.getAssessmentGoalId())).toList();
+            if (reviews.size() != 1) return false;
+            var row = reviews.getFirst();
+            if (!review.path().equals(row.getReference()) || !part.material().taskRevision().equals(row.getTaskRevision())
+                    || !part.material().rubricRevision().equals(row.getRubricRevision())
+                    || row.getGoalIds() == null || row.getGoalIds().isEmpty()) return false;
+            covered.addAll(row.getGoalIds());
+        }
+        return covered.containsAll(rule.goalIds());
     }
 
     public boolean valid(String landscapeId, String compositionNodeId, UnitAssessmentContract contract,

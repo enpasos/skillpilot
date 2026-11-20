@@ -300,11 +300,11 @@ try {
     assert.ok(waived, 'the real canonical scope must expose a generic explanation for an actual implicit goal')
     assert.ok(beforePause.levelCompletion.waivedTargetGoalIds.includes(waived.goalId))
     assert.deepEqual(waived.assessments, [])
-    await reloadedCard.getByText('Warum sind diese Ziele implizit erledigt?', { exact: true }).click()
+    await reloadedCard.getByText('Welche Nachweise zählen und welche Vorbereitung entfällt?', { exact: true }).click()
     const explanation = reloadedCard.locator('details').getByRole('listitem').filter({
       has: mobile.page.getByRole('button', { name: `Im Lernzielbaum anzeigen: ${waived.title.de}`, exact: true }),
     })
-    await explanation.getByText('Keine verbleibende Arbeit benötigt dieses Ziel in diesem Abschnitt.', { exact: false }).waitFor()
+    await explanation.getByText('Für diesen Auftrag ist dieses Ziel nicht mehr erforderlich.', { exact: false }).waitFor()
     assert.equal(await explanation.getByText('Geschaffte Prüfungen:', { exact: false }).count(), 0)
     await mobile.page.screenshot({ path: `${output}/mobile-assessment-passed.png`, fullPage: true })
     const paused = mobile.page.waitForResponse((response) => response.url().endsWith('/level-completion/actions'))

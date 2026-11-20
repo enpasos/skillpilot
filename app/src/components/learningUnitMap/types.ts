@@ -80,9 +80,10 @@ export interface LearningEntryProgress {
   total: number
   explicit: number
   implicit: number
+  notRequired?: number
   explicitRatio?: number
   implicitRatio?: number
-  implicitScopeLabel?: string
+  sectionTitle?: string
   waiverLabel?: string
 }
 

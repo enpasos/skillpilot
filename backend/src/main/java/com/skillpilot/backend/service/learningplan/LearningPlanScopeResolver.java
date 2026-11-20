@@ -57,7 +57,7 @@ public final class LearningPlanScopeResolver {
             if (!atoms.isEmpty()) return examScope(next, atoms);
         }
         LinkedHashSet<String> atoms = new LinkedHashSet<>();
-        blocks.stream().filter(block -> block.isActive() && "learning".equals(block.kind()))
+        blocks.stream().filter(block -> block.isActive() && block.isAtomicLearning())
                 .filter(block -> block.atomicGoalIds() != null)
                 .forEach(block -> atoms.addAll(block.atomicGoalIds()));
         return new Scope("plan", null, "Lernplan", List.copyOf(atoms), null);

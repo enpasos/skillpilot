@@ -6,7 +6,11 @@ import java.util.Map;
 /** A reviewed unit result derived from historical exam receipts in the learner's current scope. */
 public record UnitAssessmentResponse(String sectionGoalId, String revision, boolean passed, List<Part> parts,
         List<String> planningCreditGoalIds, List<String> individuallyOpenGoalIds) {
-    public record Part(String goalId, Map<String, String> title, boolean passed, boolean materialCurrent) {
+    public record Part(String goalId, Map<String, String> title, boolean passed, boolean materialCurrent,
+            boolean missingPlanningCreditBinding) {
+        public Part(String goalId, Map<String, String> title, boolean passed, boolean materialCurrent) {
+            this(goalId, title, passed, materialCurrent, false);
+        }
         public Part(String goalId, Map<String, String> title, boolean passed) { this(goalId, title, passed, true); }
     }
 }

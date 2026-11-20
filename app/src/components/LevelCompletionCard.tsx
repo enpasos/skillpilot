@@ -25,6 +25,7 @@ export interface LevelCompletionCardProps {
   learningPlanPaused?: boolean
   onAction: (action: CompletionActionInput) => void
   onRetry: () => void
+  unitAssignmentControl?: React.ReactNode
   onShowGoal?: (goalId: string) => void
   titleForGoal?: (goalId: string) => string | undefined
   /** Read-only handoff from a coach; opening this disclosure never selects a route. */
@@ -49,7 +50,7 @@ function assessmentStatus(completion: LevelCompletion, en: boolean) {
 /** All counts and choices come from the same backend state as the active goal. */
 export const LevelCompletionCard = ({
   completion, language, stale = false, busy = false, error, learningPlanPaused = false, onAction, onRetry, onShowGoal,
-  discoveryOpenRequest, onOpenSettings, requestedAssessmentMissing = false, titleForGoal,
+  discoveryOpenRequest, onOpenSettings, requestedAssessmentMissing = false, titleForGoal, unitAssignmentControl,
 }: LevelCompletionCardProps) => {
   const en = language.startsWith('en')
   const headingId = React.useId()
@@ -77,8 +78,8 @@ export const LevelCompletionCard = ({
   const creditExplanation = planningCredits.size > 0 ? <p>{en
     ? `Passed assessments cover ${planningCredits.size} learning ${planningCredits.size === 1 ? 'goal' : 'goals'} for your plan. You can still practise each goal individually.`
     : `Bestandene Prüfungen decken ${planningCredits.size} ${planningCredits.size === 1 ? 'Lernziel' : 'Lernziele'} für deinen Lernplan ab. Du kannst jedes Ziel auch einzeln bearbeiten.`}</p> : null
-  const unitSummary = unit && <UnitAssessmentSummary assessment={unit} completion={completion} language={language}
-    titleForGoal={titleForGoal} allowStart={!disabled} />
+  const unitSummary = unit && <><UnitAssessmentSummary assessment={unit} completion={completion} language={language}
+    titleForGoal={titleForGoal} onShowGoal={onShowGoal} allowStart={!disabled} />{unitAssignmentControl}</>
   const otherAssessments = unit ? completion.assessments.filter(entry => !unit.parts.some(part => part.goalId === entry.goalId)) : completion.assessments
   const filteredScopes = completion.profileOptions.filter(option => completionLabel(option.title, language)
     .toLocaleLowerCase(en ? 'en' : 'de').includes(scopeQuery.trim().toLocaleLowerCase(en ? 'en' : 'de')))
@@ -120,11 +121,8 @@ export const LevelCompletionCard = ({
         {unitSummary || (automaticOverview && valid ? <div data-testid="completion-default-overview" className="mt-3 space-y-1 text-sm text-text-secondary">
           <p className="font-medium text-text-primary"><InlineMathText text={completionLabel(completion.title, language)} /></p>
           <p>{en
-            ? `${completion.masteredTargetCount} goals achieved directly; ${completion.waivedTargetCount} implicitly completed; ${completion.pendingTargetCount} still required.`
-            : `${completion.masteredTargetCount} Lernziele direkt geschafft; ${completion.waivedTargetCount} implizit erledigt; ${completion.pendingTargetCount} noch erforderlich.`}</p>
-          <p>{en
-            ? 'Implicitly completed goals no longer need separate work in this scope. Their saved learning results stay unchanged.'
-            : 'Implizit erledigte Ziele müssen in diesem Umfang nicht mehr eigens bearbeitet werden. Ihre gespeicherten Lernstände bleiben unverändert.'}</p>
+            ? `${completion.masteredTargetCount} directly demonstrated, ${planningCredits.size} credited through assessment, ${remainingWaivers} no longer required for this assignment, ${completion.pendingTargetCount} still required.`
+            : `${completion.masteredTargetCount} direkt nachgewiesen, ${planningCredits.size} fachlich angerechnet, ${remainingWaivers} für diesen Auftrag nicht mehr erforderlich, ${completion.pendingTargetCount} noch erforderlich.`}</p>
           {creditExplanation}
         </div> : null)}
         {stale ? <p role="status" className="mt-3 text-sm text-text-secondary">{en
@@ -204,13 +202,11 @@ export const LevelCompletionCard = ({
           <p>{en ? `${completion.masteredTargetCount} of ${completion.targetCount} learning ${completion.targetCount === 1 ? 'goal' : 'goals'} achieved${automatic ? ' directly' : ''}.` : `${completion.masteredTargetCount} von ${completion.targetCount} ${completion.targetCount === 1 ? 'Lernziel' : 'Lernzielen'} ${automatic ? 'direkt ' : ''}geschafft.`}</p>
           <p role="status">{assessmentStatus(completion, en)}</p>
           {creditExplanation}
-          {remainingWaivers > 0 ? <p>{automatic
-            ? (en ? `${remainingWaivers} learning ${remainingWaivers === 1 ? 'goal is' : 'goals are'} implicitly completed in this section because no remaining work requires them. Saved learning results stay unchanged.`
-              : `${remainingWaivers} ${remainingWaivers === 1 ? 'Lernziel ist' : 'Lernziele sind'} in diesem Abschnitt implizit erledigt, weil keine verbleibende Arbeit sie benötigt. Die gespeicherten Lernstände bleiben unverändert.`)
-            : (en ? `Preparation for ${completion.waivedTargetCount} learning ${completion.waivedTargetCount === 1 ? 'goal' : 'goals'} is no longer required for this section. The individual goals keep their existing result.` : `Für diesen Abschnitt entfällt die Vorbereitung für ${completion.waivedTargetCount} ${completion.waivedTargetCount === 1 ? 'Lernziel' : 'Lernziele'}. Die einzelnen Lernziele behalten ihren bisherigen Stand.`)}</p> : null}
+          {remainingWaivers > 0 ? <p>{en
+            ? `For this assignment, ${remainingWaivers} learning ${remainingWaivers === 1 ? 'goal is' : 'goals are'} no longer required.`
+            : `Für diesen Auftrag ${remainingWaivers === 1 ? 'ist' : 'sind'} ${remainingWaivers} ${remainingWaivers === 1 ? 'Lernziel' : 'Lernziele'} nicht mehr erforderlich.`}</p> : null}
           {completion.waiverDetails?.length ? <details className="rounded-lg border border-border-color p-3">
-            <summary className="cursor-pointer font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500">{automatic ? (en ? 'Why are these goals implicitly completed?' : 'Warum sind diese Ziele implizit erledigt?')
-              : (en ? 'Why is this preparation no longer required?' : 'Warum entfällt diese Vorbereitung?')}</summary>
+            <summary className="cursor-pointer font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500">{en ? 'Which assessments count and which preparation is no longer required?' : 'Welche Nachweise zählen und welche Vorbereitung entfällt?'}</summary>
             <ul className="mt-3 space-y-3">
               {completion.waiverDetails.map((detail) => <li key={detail.goalId}>
                 <p><InlineMathText text={completionLabel(detail.title, language)} className="font-medium" /></p>
@@ -229,14 +225,14 @@ export const LevelCompletionCard = ({
                 </p> : null}
                 <p>{planningCredits.has(detail.goalId) ? (en ? 'Your plan can use this goal as a prerequisite.' : 'Dein Lernplan kann dieses Ziel als Voraussetzung nutzen.')
                   : automatic || detail.ruleId === 'no_remaining_demand'
-                  ? (en ? 'No remaining work requires this goal in this section. It is implicitly completed here; its saved learning result stays unchanged.'
-                    : 'Keine verbleibende Arbeit benötigt dieses Ziel in diesem Abschnitt. Es ist hier implizit erledigt; sein gespeicherter Lernstand bleibt unverändert.')
+                  ? (en ? 'This goal is no longer required for this assignment. You can still earn individual evidence for it.'
+                    : 'Für diesen Auftrag ist dieses Ziel nicht mehr erforderlich. Du kannst es weiterhin einzeln nachweisen.')
                   : (en ? 'This preparation is no longer required for this section; the learning goal keeps its existing result.' : 'Diese Vorbereitung entfällt für diesen Abschnitt; das Lernziel behält seinen bisherigen Stand.')}</p>
               </li>)}
             </ul>
             {completion.waivedTargetCount > completion.waiverDetails.length ? <p className="mt-2">{en
-              ? `Showing ${completion.waiverDetails.length} of ${completion.waivedTargetCount} ${automatic ? 'implicitly completed goals' : 'preparation goals'}.`
-              : `Angezeigt: ${completion.waiverDetails.length} von ${completion.waivedTargetCount} ${automatic ? 'implizit erledigten Lernzielen' : 'entfallenden Vorbereitungszielen'}.`}</p> : null}
+              ? `Showing ${completion.waiverDetails.length} of ${completion.waivedTargetCount} goals.`
+              : `Angezeigt: ${completion.waiverDetails.length} von ${completion.waivedTargetCount} Lernzielen.`}</p> : null}
           </details> : null}
           {completion.pendingTargetCount > 0 ? <p>{en ? `${completion.pendingTargetCount} learning ${completion.pendingTargetCount === 1 ? 'goal' : 'goals'} still required.` : `${completion.pendingTargetCount} ${completion.pendingTargetCount === 1 ? 'Lernziel' : 'Lernziele'} noch erforderlich.`}</p> : null}
         </div>

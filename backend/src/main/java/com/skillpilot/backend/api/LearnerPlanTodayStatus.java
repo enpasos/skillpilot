@@ -92,6 +92,9 @@ public record LearnerPlanTodayStatus(
             String progressText) {
     }
 
+    /** Current edition of one explicitly ordered unit; an unavailable edition has no pass count. */
+    public record UnitAssignmentStatus(String title, String status, Integer passedParts, int requiredParts) { }
+
     /**
      * One subject, merged across every current plan of that subject.
      *
@@ -126,7 +129,25 @@ public record LearnerPlanTodayStatus(
             String balanceDialText,
             @JsonIgnore PlanBalanceResult balance,
             @JsonInclude(JsonInclude.Include.NON_NULL) LearningScope learningScope,
-            @JsonInclude(JsonInclude.Include.NON_NULL) String planCreditText) {
+            @JsonInclude(JsonInclude.Include.NON_NULL) String planCreditText,
+            @JsonInclude(JsonInclude.Include.NON_EMPTY) List<UnitAssignmentStatus> unitAssignments) {
+
+        public SubjectStatus(List<String> landscapeIds, String subjectKey, String subjectLabel,
+                boolean evaluable, String periodText, String planStatusText, String subjectLine,
+                StatusDirection statusDirection, boolean current, boolean canContinue,
+                PeriodGauge periodGauge, BalanceGauge balanceGauge, Integer achievedGoalCount,
+                Integer targetGoalCount, String balanceDialText, PlanBalanceResult balance,
+                LearningScope learningScope, String planCreditText) {
+            this(landscapeIds, subjectKey, subjectLabel, evaluable, periodText, planStatusText,
+                    subjectLine, statusDirection, current, canContinue, periodGauge, balanceGauge,
+                    achievedGoalCount, targetGoalCount, balanceDialText, balance, learningScope, planCreditText, List.of());
+        }
+
+        public SubjectStatus withUnitAssignments(List<UnitAssignmentStatus> items) {
+            return new SubjectStatus(landscapeIds, subjectKey, subjectLabel, evaluable, periodText, planStatusText,
+                    subjectLine, statusDirection, current, canContinue, periodGauge, balanceGauge, achievedGoalCount,
+                    targetGoalCount, balanceDialText, balance, learningScope, planCreditText, List.copyOf(items));
+        }
 
         public SubjectStatus(List<String> landscapeIds, String subjectKey, String subjectLabel,
                 boolean evaluable, String periodText, String planStatusText, String subjectLine,

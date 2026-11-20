@@ -118,13 +118,13 @@ export default function LearnerGoalNavigationMap(props: LearnerGoalNavigationMap
     const language = props.language ?? 'de'
     const scope = completionWaivers.values().next().value?.sectionTitle
     for (const [id, value] of buildTreeCompletionProgressMap(visibleGoals, children, getMastery, completionWaivers)) {
-      result[id] = { total: value.totalCount, explicit: value.explicitCount, implicit: value.implicitCount,
+      result[id] = { total: value.totalCount, explicit: value.explicitCount, implicit: value.implicitCount, notRequired: value.notRequiredCount,
         explicitRatio: value.explicitRatio, implicitRatio: value.implicitRatio,
-        implicitScopeLabel: scope ? completionLabel(scope, language) : undefined }
+        sectionTitle: scope ? completionLabel(scope, language) : undefined }
       const waiver = completionWaivers.get(id)
-      if (waiver) result[id].waiverLabel = language === 'en'
-        ? `${waiver.reason === 'no_remaining_demand' ? 'No longer required' : 'Covered by assessment'} for this section: ${completionLabel(waiver.sectionTitle, language)}`
-        : `${waiver.reason === 'no_remaining_demand' ? 'Nicht mehr erforderlich' : 'Durch Prüfung abgedeckt'} für diesen Lernabschnitt: ${completionLabel(waiver.sectionTitle, language)}`
+      if (waiver?.reason === 'assessment') result[id].waiverLabel = language === 'en'
+        ? `Credited through assessment for this section: ${completionLabel(waiver.sectionTitle, language)}`
+        : `Fachlich angerechnet für diesen Lernabschnitt: ${completionLabel(waiver.sectionTitle, language)}`
     }
     return result
   }, [progressFixture, goalIndexAll, getMastery, completionWaivers, props.language])

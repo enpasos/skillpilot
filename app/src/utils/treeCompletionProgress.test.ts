@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict'
+import type { CompletionTreeWaiver } from './levelCompletionApi'
 import type { UiGoal } from '../goalTypes'
 import { buildTreeCompletionProgressMap } from './treeCompletionProgress'
 
@@ -8,15 +9,16 @@ const goal = (id: string, changes: Partial<UiGoal> = {}): UiGoal => ({
   requires: [], contains: [], examples: [], ...changes,
 })
 const graph = (...goals: UiGoal[]) => new Map(goals.map(entry => [entry.id, entry]))
+const credits = (ids: string[]) => new Map(ids.map(id => [id, { reason: 'assessment' as const, sectionTitle: { de: 'Abschnitt' }, assessments: [] }]))
 const children = (...entries: [string, string[]][]) => new Map(entries)
 
 {
   const goals = graph(goal('root', { contains: ['exam', 'a', 'b'] }), goal('exam'), goal('a'), goal('b'))
   const visible = children(['root', ['exam', 'a', 'b']])
-  const progress = buildTreeCompletionProgressMap(goals, visible, id => id === 'exam' ? 1 : 0, new Set(['a', 'b']))
+  const progress = buildTreeCompletionProgressMap(goals, visible, id => id === 'exam' ? 1 : 0, credits(['a', 'b']))
   assert.deepEqual(progress.get('root'), {
-    totalCount: 3, explicitCount: 1, implicitCount: 2, openCount: 0,
-    totalWeight: 3, explicitWeight: 1, implicitWeight: 2, openWeight: 0,
+    totalCount: 3, explicitCount: 1, implicitCount: 2, notRequiredCount: 0, openCount: 0,
+    totalWeight: 3, explicitWeight: 1, implicitWeight: 2, notRequiredWeight: 0, openWeight: 0,
     explicitRatio: 1 / 3, implicitRatio: 2 / 3,
   }, 'one passed goal and two implicit goals fill separate segments without extra mastery')
 }
@@ -38,10 +40,10 @@ const children = (...entries: [string, string[]][]) => new Map(entries)
   const progress = buildTreeCompletionProgressMap(goals, visible, id => {
     reads.set(id, (reads.get(id) ?? 0) + 1)
     return id === 'a' ? 1 : 0
-  }, new Set(['shared']))
+  }, credits(['shared']))
   assert.deepEqual(progress.get('root'), {
-    totalCount: 3, explicitCount: 1, implicitCount: 1, openCount: 1,
-    totalWeight: 10, explicitWeight: 2, implicitWeight: 3, openWeight: 5,
+    totalCount: 3, explicitCount: 1, implicitCount: 1, notRequiredCount: 0, openCount: 1,
+    totalWeight: 10, explicitWeight: 2, implicitWeight: 3, notRequiredWeight: 0, openWeight: 5,
     explicitRatio: 0.2, implicitRatio: 0.3,
   }, 'diamond paths and duplicate child entries count each atom once, using atom weights only')
   assert.equal(progress.get('left')?.totalWeight, 5)
@@ -59,7 +61,7 @@ const children = (...entries: [string, string[]][]) => new Map(entries)
   )
   const mastery = new Map([['mastered', 1], ['threshold', 0.9], ['below', 0.899]])
   const progress = buildTreeCompletionProgressMap(goals, children(['root', ['mastered', 'threshold', 'below']]),
-    id => mastery.get(id) ?? 0, new Set(['mastered', 'threshold', 'below']))
+    id => mastery.get(id) ?? 0, credits(['mastered', 'threshold', 'below']))
   assert.equal(progress.get('root')?.explicitCount, 2, 'mastery follows the existing leaf check threshold')
   assert.equal(progress.get('root')?.implicitCount, 1, 'explicit mastery wins over overlapping implicit membership')
   assert.equal(progress.get('threshold')?.explicitRatio, 1, 'a mastered atom counts binarily, not as 90% progress')
@@ -72,7 +74,7 @@ const children = (...entries: [string, string[]][]) => new Map(entries)
     goal('empty', { type: 'cluster' }), goal('hidden'),
   )
   const visible = children(['root', ['visible', 'filtered', 'empty']], ['filtered', []])
-  const progress = buildTreeCompletionProgressMap(goals, visible, () => 1, new Set(['hidden', 'filtered']))
+  const progress = buildTreeCompletionProgressMap(goals, visible, () => 1, credits(['hidden', 'filtered']))
   assert.equal(progress.get('root')?.totalCount, 1, 'only visible descendants contribute to the parent')
   for (const id of ['filtered', 'empty']) {
     assert.equal(progress.get(id)?.totalCount, 0, 'filtered and explicitly empty clusters never become atoms')
@@ -87,18 +89,34 @@ const children = (...entries: [string, string[]][]) => new Map(entries)
   const visible = children(['root', ['a', 'b']])
   const mastery = new Map([['a', 0], ['b', 0]])
   const read = (id: string) => mastery.get(id) ?? 0
-  const first = buildTreeCompletionProgressMap(goals, visible, read, new Map([['a', {}]]))
-  const changedScope = buildTreeCompletionProgressMap(goals, visible, read, new Set(['b']))
+  const first = buildTreeCompletionProgressMap(goals, visible, read, credits(['a']))
+  const changedScope = buildTreeCompletionProgressMap(goals, visible, read, credits(['b']))
   const noImplicit = buildTreeCompletionProgressMap(goals, visible, read)
   assert.equal(first.get('a')?.implicitCount, 1)
   assert.equal(changedScope.get('a')?.openCount, 1, 'changing context removes previous implicit annotations')
   assert.equal(changedScope.get('b')?.implicitCount, 1)
   assert.equal(noImplicit.get('root')?.openCount, 2, 'missing or stale waiver maps leave goals open')
   mastery.set('b', 1)
-  const afterPass = buildTreeCompletionProgressMap(goals, visible, read, new Set())
+  const afterPass = buildTreeCompletionProgressMap(goals, visible, read, new Map())
   assert.equal(afterPass.get('root')?.explicitCount, 1, 'a new build observes changed mastery without global caches')
   assert.equal(afterPass.get('a')?.openCount, 1, 'requires edges never create implicit membership in the UI')
   assert.equal(first.get('root')?.explicitCount, 0, 'later builds do not mutate prior snapshots')
+}
+
+{
+  const ids = ['A', 'B', 'C', 'D', 'motion', 'model', 'safety', 'projectile', 'open']
+  const goals = graph(goal('root', { contains: ids }), ...ids.map(id => goal(id)))
+  const direct = new Set(['A', 'B', 'C', 'D'])
+  const waivers = new Map<string, CompletionTreeWaiver>(credits(['C', 'motion', 'model']))
+  for (const id of ['D', 'safety', 'projectile']) {
+    waivers.set(id, { reason: 'no_remaining_demand', assessments: [], sectionTitle: { de: 'E.1' } })
+  }
+  const result = buildTreeCompletionProgressMap(goals, children(['root', ids]), id => direct.has(id) ? 1 : 0, waivers)
+  assert.deepEqual(result.get('root'), {
+    totalCount: 9, explicitCount: 4, implicitCount: 2, notRequiredCount: 2, openCount: 1,
+    totalWeight: 9, explicitWeight: 4, implicitWeight: 2, notRequiredWeight: 2, openWeight: 1,
+    explicitRatio: 4 / 9, implicitRatio: 2 / 9,
+  }, 'only individual results and genuine credits supply evidence; waived work and open goals remain distinct')
 }
 
 {

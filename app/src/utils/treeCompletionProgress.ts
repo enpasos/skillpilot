@@ -1,3 +1,4 @@
+import type { CompletionTreeWaiver } from './levelCompletionApi'
 import type { UiGoal } from '../goalTypes'
 import { isMastered } from '../goalUiUtils'
 
@@ -5,10 +6,12 @@ export interface TreeCompletionProgress {
   totalCount: number
   explicitCount: number
   implicitCount: number
+  notRequiredCount: number
   openCount: number
   totalWeight: number
   explicitWeight: number
   implicitWeight: number
+  notRequiredWeight: number
   openWeight: number
   explicitRatio: number
   implicitRatio: number
@@ -19,7 +22,7 @@ export const buildTreeCompletionProgressMap = (
   allGoals: Map<string, UiGoal>,
   visibleChildrenByParent: Map<string, string[]>,
   getMastery: (goalId: string) => number,
-  implicitGoals?: { has(goalId: string): boolean },
+  waivers?: ReadonlyMap<string, CompletionTreeWaiver>,
 ): Map<string, TreeCompletionProgress> => {
   const atomsByGoal = new Map<string, ReadonlySet<string>>()
   const visiting = new Set<string>()
@@ -46,12 +49,12 @@ export const buildTreeCompletionProgressMap = (
     return atoms
   }
 
-  const atomStates = new Map<string, { weight: number; explicit: boolean; implicit: boolean }>()
+  const atomStates = new Map<string, { weight: number; explicit: boolean; reason: CompletionTreeWaiver['reason'] | undefined }>()
   const progressByGoal = new Map<string, TreeCompletionProgress>()
   for (const goalId of allGoals.keys()) {
     const progress: TreeCompletionProgress = {
-      totalCount: 0, explicitCount: 0, implicitCount: 0, openCount: 0,
-      totalWeight: 0, explicitWeight: 0, implicitWeight: 0, openWeight: 0,
+      totalCount: 0, explicitCount: 0, implicitCount: 0, notRequiredCount: 0, openCount: 0,
+      totalWeight: 0, explicitWeight: 0, implicitWeight: 0, notRequiredWeight: 0, openWeight: 0,
       explicitRatio: 0, implicitRatio: 0,
     }
     for (const atomId of collectAtoms(goalId)) {
@@ -63,23 +66,26 @@ export const buildTreeCompletionProgressMap = (
           // Missing or invalid authoring weights must not hide an otherwise visible atom.
           weight: Number.isFinite(weight) && weight > 0 ? weight : 1,
           explicit,
-          implicit: !explicit && (implicitGoals?.has(atomId) ?? false),
+          reason: waivers?.get(atomId)?.reason,
         }
         atomStates.set(atomId, state)
       }
       if (state.explicit) {
         progress.explicitCount += 1
         progress.explicitWeight += state.weight
-      } else if (state.implicit) {
+      } else if (state.reason === 'assessment') {
         progress.implicitCount += 1
         progress.implicitWeight += state.weight
+      } else if (state.reason) {
+        progress.notRequiredCount += 1
+        progress.notRequiredWeight += state.weight
       } else {
         progress.openCount += 1
         progress.openWeight += state.weight
       }
     }
-    progress.totalCount = progress.explicitCount + progress.implicitCount + progress.openCount
-    progress.totalWeight = progress.explicitWeight + progress.implicitWeight + progress.openWeight
+    progress.totalCount = progress.explicitCount + progress.implicitCount + progress.notRequiredCount + progress.openCount
+    progress.totalWeight = progress.explicitWeight + progress.implicitWeight + progress.notRequiredWeight + progress.openWeight
     if (progress.totalWeight > 0) {
       progress.explicitRatio = progress.explicitWeight / progress.totalWeight
       progress.implicitRatio = progress.implicitWeight / progress.totalWeight
