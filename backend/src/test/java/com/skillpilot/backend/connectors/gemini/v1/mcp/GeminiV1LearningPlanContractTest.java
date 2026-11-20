@@ -37,6 +37,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.NullSource;
+import org.junit.jupiter.params.provider.ValueSource;
 import com.skillpilot.backend.service.learningplan.PeriodBasis;
 import com.skillpilot.backend.api.LearnerPlanTodayStatusFixtures;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -222,9 +224,20 @@ class GeminiV1LearningPlanContractTest {
         verify(coachToolFacade, never()).resumeLearningPlan(learnerId, "de");
     }
 
-    @Test
+    @ParameterizedTest
+    @NullSource
+    @ValueSource(ints = {0, 2, 4})
     @SuppressWarnings("unchecked")
-    void resumeUsesCanonicalReconcileAndReturnsFreshFullContextIdempotently() throws Exception {
+    void resumeUsesCanonicalReconcileAndReturnsFreshFullContextIdempotently(Integer unitPassedParts) throws Exception {
+        if (unitPassedParts != null) {
+            var status = todayStatus();
+            when(coachToolFacade.getLearningPlanTodayStatus(learnerId, "de")).thenReturn(
+                    LearnerPlanTodayStatusFixtures.status(status.asOf(), true, true,
+                            status.subjects().getFirst(), LearnerPlanTodayStatusFixtures.physicsUnit(unitPassedParts)));
+        }
+        var before = objectMapper.valueToTree(payload(call(GeminiV1Contract.TOOL_GET_COACH_CONTEXT,
+                Map.of("learningSessionId", connectionId))));
+        assertThat(before.path("stateMachine").path("requiredAction").asText()).isEqualTo("resume");
         when(coachToolFacade.resumeLearningPlan(learnerId, "de")).thenAnswer(invocation -> {
             FrontierGoal selected = goal(RESUMED_GOAL_ID);
             activeGoal.set(selected);
@@ -277,7 +290,8 @@ class GeminiV1LearningPlanContractTest {
                 .contains("Mathematik", "Physik")
                 .doesNotContain("private-math-landscape", "private-physics-landscape");
         assertThat(currentStateVersion()).isEqualTo(21L);
-        verify(coachToolFacade, times(2)).getLearningPlanTodayStatus(learnerId, "de");
+        // Initial context, write gate, and committed successor. The idempotent replay adds no read.
+        verify(coachToolFacade, times(3)).getLearningPlanTodayStatus(learnerId, "de");
         verify(coachToolFacade, times(1)).resumeLearningPlan(learnerId, "de");
     }
 
@@ -296,6 +310,35 @@ class GeminiV1LearningPlanContractTest {
                         .contains("already active"));
         assertThat(currentStateVersion()).isEqualTo(INITIAL_STATE_VERSION);
         verify(coachToolFacade, never()).getLearningPlanTodayStatus(learnerId, "de");
+        verify(coachToolFacade, never()).resumeLearningPlan(learnerId, "de");
+    }
+
+    @ParameterizedTest
+    @CsvSource({"0, true, unitChoice", "2, true, unitChoice", "4, true, unitComplete", "4, false, unitComplete", ", false, unavailable"})
+    void aUnitAloneNeverOffersOrExecutesGenericContinuation(Integer passedParts, boolean hasVoluntaryGoal, String guidance) throws Exception {
+        var status = LearnerPlanTodayStatusFixtures.status(LocalDate.of(2026, 11, 20), true, false,
+                LearnerPlanTodayStatusFixtures.physicsUnit(passedParts, hasVoluntaryGoal));
+        when(coachToolFacade.getLearningPlanTodayStatus(learnerId, "de")).thenReturn(status);
+        var context = objectMapper.valueToTree(payload(call(GeminiV1Contract.TOOL_GET_COACH_CONTEXT,
+                Map.of("learningSessionId", connectionId))));
+        var today = context.path("learningPlanToday");
+        assertThat(context.path("frontier").isEmpty()).isTrue();
+        assertThat(context.path("stateMachine").path("requiredAction").asText()).isEqualTo(guidance);
+        assertThat(today.path("resumeAvailable").asBoolean(true)).isFalse();
+        assertThat(today.path("subjects").get(0).path("canContinue").asBoolean(true)).isFalse();
+        assertThat(today.path("text").asText()).isEqualTo(status.statusText());
+        String instruction = today.path("guidance").path("instruction").asText();
+        assertThat(today.toString()).doesNotContain("private-goal-id");
+        if (passedParts != null && passedParts == 4) {
+            assertThat(instruction).contains(hasVoluntaryGoal
+                    ? "Modellierung und Idealisierung von Bewegungen" : "No voluntary goal choice");
+        } else if (passedParts != null) {
+            assertThat(instruction).contains("assessment part choice");
+        }
+        var refused = call(GeminiV1Contract.TOOL_RESUME_LEARNING_PLAN, resumeArguments(UUID.randomUUID().toString()));
+        assertThat(refused.isError()).isTrue();
+        assertThat(payload(refused)).containsEntry("errorCode", "CONFLICT");
+        assertThat(currentStateVersion()).isEqualTo(INITIAL_STATE_VERSION);
         verify(coachToolFacade, never()).resumeLearningPlan(learnerId, "de");
     }
 

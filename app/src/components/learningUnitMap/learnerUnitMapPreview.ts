@@ -338,13 +338,6 @@ export function deriveLearnerUnitMapPreview(input: LearnerUnitMapPreviewInput, r
   return { maxStep, step, units, after, memberUnits }
 }
 
-/**
- * Boards with more children are listed without arrows. Measured on the real
- * Bavarian and Hessian GK views with ELK: boards up to 178 children lay out in
- * under 1 s; the stage boards of step 1 (408 to 1026 children) need 2.5 s to 40 s.
- */
-export const UNIT_MAP_COMPACT_LIST_THRESHOLD = 200
-
 export type LearnerUnitMapViewInput = LearnerUnitMapPreviewInput & {
   canonicalGoalIndexAll: ReadonlyMap<string, UiGoal>
   useRawGoalTitles?: boolean

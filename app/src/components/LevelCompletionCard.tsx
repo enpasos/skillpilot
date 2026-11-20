@@ -37,6 +37,9 @@ export interface LevelCompletionCardProps {
 function assessmentStatus(completion: LevelCompletion, en: boolean) {
   const { requiredAssessmentCount: total, masteredAssessmentCount: passed } = completion
   if (isAutomaticCompletion(completion)) {
+    if (completion.assessments.some(entry => entry.voluntary)) {
+      return en ? `${passed} of ${total} required ${total === 1 ? 'assessment' : 'assessments'} passed.` : `Erforderliche Prüfungen: ${passed} von ${total} bestanden.`
+    }
     if (total === 0) return en ? 'There are no assessments in this section.' : 'In diesem Abschnitt gibt es keine Prüfungen.'
     return en
       ? `${passed} of ${total} ${total === 1 ? 'assessment' : 'assessments'} in this section passed.`
@@ -73,6 +76,10 @@ export const LevelCompletionCard = ({
   const automaticOverview = automatic && !active
   const valid = completion.calculationStatus === 'valid'
   const unit = valid ? completion.unitAssessment : undefined
+  const sectionStatus = valid && !stale && completion.complete ? <p role="status" className="font-semibold">
+    {active && automatic ? (en ? 'Learning route completed.' : 'Lernweg abgeschlossen.')
+      : (en ? 'Learning section completed.' : 'Lernabschnitt abgeschlossen.')}
+  </p> : null
   const planningCredits = completionPlanningCredits(completion)
   const remainingWaivers = completion.waivedTargetCount - planningCredits.size
   const creditExplanation = planningCredits.size > 0 ? <p>{en
@@ -95,7 +102,9 @@ export const LevelCompletionCard = ({
   }
   const cancel = () => { setPendingChoice(null); pendingTrigger.current?.focus() }
   const buttonClass = 'min-h-11 rounded-lg border border-sky-400 px-3 py-2 text-sm font-semibold text-text-primary hover:bg-sky-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 disabled:cursor-not-allowed disabled:opacity-50 dark:hover:bg-sky-950/40'
-  const supplementalLabel = en ? 'Other assessments in this section' : 'Weitere Prüfungen im Abschnitt'
+  const supplementalLabel = otherAssessments.every(entry => entry.voluntary)
+    ? (en ? 'Optional assessments' : 'Freiwillige Zusatzprüfungen')
+    : (en ? 'Other assessments in this section' : 'Weitere Prüfungen im Abschnitt')
   const assessmentList = valid && completion.profileId && otherAssessments.length > 0 ? <CompletionAssessmentList
     key={completion.profileId} assessments={otherAssessments} profileId={completion.profileId} revision={completion.learnerRevision}
     language={language} disabled={active ? disabled : discoveryDisabled} stale={stale} running={completion.directAssessmentRunning}
@@ -118,13 +127,15 @@ export const LevelCompletionCard = ({
         <p className="mt-3 text-sm text-text-secondary">{en
           ? 'Already familiar with a topic? Try its assessment directly. Passing can remove preparation for that section; other goals keep their saved result.'
           : 'Du kennst ein Thema bereits? Versuche seine Prüfung direkt. Nach dem Bestehen kann Vorbereitung für den Abschnitt entfallen; andere Lernziele behalten ihren gespeicherten Stand.'}</p>
-        {unitSummary || (automaticOverview && valid ? <div data-testid="completion-default-overview" className="mt-3 space-y-1 text-sm text-text-secondary">
+        {automaticOverview && valid && (!unit || sectionStatus) ? <div data-testid="completion-default-overview" className="mt-3 space-y-1 text-sm text-text-secondary">
           <p className="font-medium text-text-primary"><InlineMathText text={completionLabel(completion.title, language)} /></p>
-          <p>{en
-            ? `${completion.masteredTargetCount} directly demonstrated, ${planningCredits.size} credited through assessment, ${remainingWaivers} no longer required for this assignment, ${completion.pendingTargetCount} still required.`
-            : `${completion.masteredTargetCount} direkt nachgewiesen, ${planningCredits.size} fachlich angerechnet, ${remainingWaivers} für diesen Auftrag nicht mehr erforderlich, ${completion.pendingTargetCount} noch erforderlich.`}</p>
-          {creditExplanation}
-        </div> : null)}
+          {sectionStatus}
+          {!unit && <><p>{en
+            ? `${completion.masteredTargetCount} directly demonstrated, ${planningCredits.size} credited through assessment, ${remainingWaivers} no longer required for this section, ${completion.pendingTargetCount} still required.`
+            : `${completion.masteredTargetCount} direkt nachgewiesen, ${planningCredits.size} fachlich angerechnet, ${remainingWaivers} für diesen Abschnitt nicht mehr erforderlich, ${completion.pendingTargetCount} noch erforderlich.`}</p>
+          {creditExplanation}</>}
+        </div> : null}
+        {unitSummary}
         {stale ? <p role="status" className="mt-3 text-sm text-text-secondary">{en
           ? 'This view is out of date. Reload before choosing your next step.'
           : 'Diese Ansicht ist veraltet. Lade den aktuellen Stand, bevor du den nächsten Schritt wählst.'}</p> : null}
@@ -145,8 +156,8 @@ export const LevelCompletionCard = ({
           {filteredScopes.slice(currentScopePage * 6, currentScopePage * 6 + 6).map(option => <li key={option.profileId} className="space-y-3">
             <h3 className="font-semibold text-text-primary"><InlineMathText text={completionLabel(option.title, language)} /></h3>
             {option.targetCount !== undefined && option.requiredAssessmentCount !== undefined ? <p className="text-sm text-text-secondary">{en
-              ? `${option.targetCount} learning ${option.targetCount === 1 ? 'goal' : 'goals'}${isAutomaticCompletion(option) ? ` with ${option.requiredAssessmentCount}` : `, including ${option.requiredAssessmentCount} required`} ${option.requiredAssessmentCount === 1 ? 'assessment' : 'assessments'}.`
-              : `${option.targetCount} ${option.targetCount === 1 ? 'Lernziel' : 'Lernziele'}${isAutomaticCompletion(option) ? ` mit ${option.requiredAssessmentCount}` : `, davon ${option.requiredAssessmentCount} erforderliche`} ${option.requiredAssessmentCount === 1 ? 'Prüfung' : 'Prüfungen'}.`}</p> : null}
+              ? `${option.targetCount} learning ${option.targetCount === 1 ? 'goal' : 'goals'}${isAutomaticCompletion(option) && !option.assessments?.some(entry => entry.voluntary) ? ` with ${option.requiredAssessmentCount}` : `, including ${option.requiredAssessmentCount} required`} ${option.requiredAssessmentCount === 1 ? 'assessment' : 'assessments'}.`
+              : `${option.targetCount} ${option.targetCount === 1 ? 'Lernziel' : 'Lernziele'}${isAutomaticCompletion(option) && !option.assessments?.some(entry => entry.voluntary) ? ` mit ${option.requiredAssessmentCount}` : `, davon ${option.requiredAssessmentCount} erforderliche`} ${option.requiredAssessmentCount === 1 ? 'Prüfung' : 'Prüfungen'}.`}</p> : null}
             {!automaticOverview && option.assessments?.length ? <CompletionAssessmentList
               assessments={option.assessments} profileId={option.profileId} revision={completion.learnerRevision}
               language={language} disabled={discoveryDisabled} stale={stale} running={completion.directAssessmentRunning}
@@ -194,17 +205,15 @@ export const LevelCompletionCard = ({
       {stale ? (
         <p role="status" className="mt-3 text-sm text-text-secondary">{en ? 'This view is out of date. Reload before choosing your next step.' : 'Diese Ansicht ist veraltet. Lade den aktuellen Stand, bevor du den nächsten Schritt wählst.'}</p>
       ) : null}
+      {sectionStatus}
       {unitSummary || (valid ? (
         <div className="mt-3 space-y-2 text-sm">
-          {completion.complete ? <p role="status" className="font-semibold">{automatic
-            ? (en ? 'Learning route completed.' : 'Lernweg abgeschlossen.')
-            : (en ? 'Learning section completed.' : 'Lernabschnitt abgeschlossen.')}</p> : null}
           <p>{en ? `${completion.masteredTargetCount} of ${completion.targetCount} learning ${completion.targetCount === 1 ? 'goal' : 'goals'} achieved${automatic ? ' directly' : ''}.` : `${completion.masteredTargetCount} von ${completion.targetCount} ${completion.targetCount === 1 ? 'Lernziel' : 'Lernzielen'} ${automatic ? 'direkt ' : ''}geschafft.`}</p>
           <p role="status">{assessmentStatus(completion, en)}</p>
           {creditExplanation}
           {remainingWaivers > 0 ? <p>{en
-            ? `For this assignment, ${remainingWaivers} learning ${remainingWaivers === 1 ? 'goal is' : 'goals are'} no longer required.`
-            : `Für diesen Auftrag ${remainingWaivers === 1 ? 'ist' : 'sind'} ${remainingWaivers} ${remainingWaivers === 1 ? 'Lernziel' : 'Lernziele'} nicht mehr erforderlich.`}</p> : null}
+            ? `For this section, ${remainingWaivers} learning ${remainingWaivers === 1 ? 'goal is' : 'goals are'} no longer required.`
+            : `Für diesen Abschnitt ${remainingWaivers === 1 ? 'ist' : 'sind'} ${remainingWaivers} ${remainingWaivers === 1 ? 'Lernziel' : 'Lernziele'} nicht mehr erforderlich.`}</p> : null}
           {completion.waiverDetails?.length ? <details className="rounded-lg border border-border-color p-3">
             <summary className="cursor-pointer font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500">{en ? 'Which assessments count and which preparation is no longer required?' : 'Welche Nachweise zählen und welche Vorbereitung entfällt?'}</summary>
             <ul className="mt-3 space-y-3">
@@ -225,8 +234,8 @@ export const LevelCompletionCard = ({
                 </p> : null}
                 <p>{planningCredits.has(detail.goalId) ? (en ? 'Your plan can use this goal as a prerequisite.' : 'Dein Lernplan kann dieses Ziel als Voraussetzung nutzen.')
                   : automatic || detail.ruleId === 'no_remaining_demand'
-                  ? (en ? 'This goal is no longer required for this assignment. You can still earn individual evidence for it.'
-                    : 'Für diesen Auftrag ist dieses Ziel nicht mehr erforderlich. Du kannst es weiterhin einzeln nachweisen.')
+                  ? (en ? 'This goal is no longer required for this section. You can still earn individual evidence for it.'
+                    : 'Für diesen Abschnitt ist dieses Ziel nicht mehr erforderlich. Du kannst es weiterhin einzeln nachweisen.')
                   : (en ? 'This preparation is no longer required for this section; the learning goal keeps its existing result.' : 'Diese Vorbereitung entfällt für diesen Abschnitt; das Lernziel behält seinen bisherigen Stand.')}</p>
               </li>)}
             </ul>

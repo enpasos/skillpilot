@@ -304,7 +304,7 @@ try {
     const explanation = reloadedCard.locator('details').getByRole('listitem').filter({
       has: mobile.page.getByRole('button', { name: `Im Lernzielbaum anzeigen: ${waived.title.de}`, exact: true }),
     })
-    await explanation.getByText('Für diesen Auftrag ist dieses Ziel nicht mehr erforderlich.', { exact: false }).waitFor()
+    await explanation.getByText('Für diesen Abschnitt ist dieses Ziel nicht mehr erforderlich.', { exact: false }).waitFor()
     assert.equal(await explanation.getByText('Geschaffte Prüfungen:', { exact: false }).count(), 0)
     await mobile.page.screenshot({ path: `${output}/mobile-assessment-passed.png`, fullPage: true })
     const paused = mobile.page.waitForResponse((response) => response.url().endsWith('/level-completion/actions'))

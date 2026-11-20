@@ -2,6 +2,7 @@ package com.skillpilot.backend.connectors.gemini.v1.mcp;
 
 import com.skillpilot.backend.ai.CoachStateProjection;
 import com.skillpilot.backend.ai.CoachToolFacade;
+import com.skillpilot.backend.ai.UnitAssignmentGuidance;
 import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.GoalSourceLink;
 import com.skillpilot.backend.api.LearnerGoals;
@@ -236,10 +237,10 @@ public class GeminiV1CoachContextProjector {
                     "evaluable", false,
                     "resumeAvailable", false,
                     "subjects", List.of(),
-                    "guidance", dailyPlanGuidance("unavailable"));
+                    "guidance", dailyPlanGuidance("unavailable", null));
         }
 
-        boolean unavailablePlans = status.unavailablePlanCount() > 0;
+        boolean unavailablePlans = false;
         List<LearnerPlanTodayStatus.SubjectStatus> rawSubjects =
                 status.subjects() == null ? List.of() : status.subjects();
         List<Map<String, Object>> subjects = new java.util.ArrayList<>();
@@ -282,20 +283,15 @@ public class GeminiV1CoachContextProjector {
         projected.put(
                 "resumeAvailable",
                 status.followLearningPlans() && status.resumeAvailable() && !hasActiveGoal);
-        boolean canAutomaticallyResume = Boolean.TRUE.equals(projected.get("resumeAvailable"))
-                && status.automaticResumeAvailable();
-        String guidanceState = !status.followLearningPlans() ? "paused"
-                : hasActiveGoal ? "continue"
-                : status.asOf() == null || subjects.isEmpty() ? "unavailable"
-                : status.periodQuotaFulfilled()
-                        ? (unavailablePlans || !status.evaluable() ? "unavailable" : "complete")
-                : canAutomaticallyResume ? "resume" : "blocked";
-        projected.put("guidance", dailyPlanGuidance(guidanceState));
+        String guidanceState = status.coachGuidanceState(hasActiveGoal, !subjects.isEmpty(), unavailablePlans);
+        projected.put("guidance", dailyPlanGuidance(guidanceState, status));
         return Map.copyOf(projected);
     }
 
-    private Map<String, Object> dailyPlanGuidance(String state) {
+    private Map<String, Object> dailyPlanGuidance(String state, LearnerPlanTodayStatus status) {
         String instruction = switch (state) {
+            case "unitComplete" -> UnitAssignmentGuidance.completedInCockpit(status);
+            case "unitChoice" -> UnitAssignmentGuidance.CHOOSE_ASSESSMENT_IN_COCKPIT;
             case "continue" -> "Output 'text' verbatim when reporting plan status, at most once per response, "
                     + "and add no numbers, totals or overall judgement of your own; it already states any "
                     + "remaining backlog. When teaching of the active goal begins, output 'activeGoalAnnouncement' "

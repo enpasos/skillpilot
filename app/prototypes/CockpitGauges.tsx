@@ -23,7 +23,7 @@ function Dial({ title, value, total, description, testId }: {
 }
 
 export function CockpitGauges({ progress, todayExplicit, weekExplicit, demoDate }: {
-  progress: { total: number; explicit: number; implicit: number; completed: number }
+  progress: { total: number; explicit: number; notRequired: number; completed: number }
   todayExplicit: number; weekExplicit: number; demoDate: string
 }) {
   const [period, setPeriod] = useState<'DAY' | 'WEEK'>('WEEK')
@@ -36,7 +36,7 @@ export function CockpitGauges({ progress, todayExplicit, weekExplicit, demoDate 
       value={periodValue} total={1} testId="cockpit-period-gauge"
       description={`${periodTitle}: ${periodValue} von 1 direkt abgeschlossen. Beispieldatum: ${demoDate}.`} />
     <Dial title="Gesamt" value={progress.completed} total={progress.total} testId="cockpit-total-gauge"
-      description={`Gesamt: ${progress.completed} von ${progress.total}. ${progress.explicit} direkt, ${progress.implicit} implizit.`} />
+      description={`Gesamt: ${progress.completed} von ${progress.total}. ${progress.explicit} direkt nachgewiesen, ${progress.notRequired} für diesen Abschnitt nicht mehr erforderlich.`} />
     <span className="cp-sr-only" aria-hidden="true" data-testid="cockpit-progress-total">{progress.completed} / {progress.total}</span>
     <span className="cp-sr-only" aria-hidden="true" data-testid="cockpit-today-explicit">{todayExplicit} / 1</span>
     <span className="cp-sr-only" aria-hidden="true" data-testid="cockpit-week-explicit">{weekExplicit} / 1</span>

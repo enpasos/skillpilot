@@ -51,13 +51,13 @@ Die Gruppenkanten der Übersicht sind reine Anzeigeaggregation. `edgeProvenance`
 
 Alle Lernstände und Ereignisse sind ausdrücklich fiktive lokale Testprofile. Sie bilden keine zeitliche Folge und werden nicht mit einem Lernendenkonto verbunden:
 
-| Testprofil | Explizites M | Demo-I | Gesamt | Heute / Woche explizit |
+| Testprofil | Explizites M | Für den Abschnitt entfallen | Ziele mit Nachweis | Heute / Woche explizit |
 | --- | --- | --- | --- | --- |
 | Noch keine Ergebnisse | leer | leer | 0/2 | 0 / 0 |
 | Vor der Prüfung | A | leer | 1/2 | 0 / 1 |
-| Prüfung bestanden – Demo | Q | A | 2/2 | 1 / 1 |
+| Prüfung bestanden – Demo | Q | A | 1/2 | 1 / 1 |
 
-`deriveCockpitState` demonstriert die Own={A,Q}, P={Q}-Mengenformel. Die volle transitive Nachfrage wird auch durch explizit gemeisterte Zwischenziele verfolgt. I wird ausschließlich abgeleitet und weder gespeichert noch in M zurückgeschrieben. Prüfung, Karten und außerhalb liegende Voraussetzungen werden niemals implizit vergeben. Suche, Fokus und angezeigte Ebene ändern den Zweiernenner nicht. Periodenzähler deduplizieren tatsächliche explizite Testereignisse; eine implizite Anerkennung ist kein Tagesereignis.
+`deriveCockpitState` demonstriert die Own={A,Q}, P={Q}-Mengenformel. Die volle transitive Nachfrage wird auch durch explizit gemeisterte Zwischenziele verfolgt. Nach dem Bestehen von Q endet der Abschnitt. Die Vorbereitung A entfällt und erhält ein graues Minus. Für A bleibt der eigene Nachweis offen. Suche, Fokus und angezeigte Ebene ändern den Zweiernenner nicht. Periodenzähler deduplizieren tatsächliche explizite Testereignisse; entfallene Vorbereitung zählt nicht als Tagesereignis.
 
 Die vorhandene mathematische Aufgabe und ihre Rubrik sind als unveränderte Vorschau nutzbar. Der historische Review belegt einen damaligen begrenzten maschinellen Notations-/Inhalts-/Rechenstand, **keine neue Vertragsfreigabe nach dem korrigierten Anerkennungskonzept**, keine menschliche Erprobung und keine Lernwirksamkeit. Ein ausgewähltes Demo-Prüfungsprofil ist kein durch diese Oberfläche tatsächlich bewerteter Prüfungspass.
 

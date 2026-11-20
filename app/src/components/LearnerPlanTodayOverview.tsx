@@ -26,6 +26,7 @@ export interface LearnerPlanTodayOverviewProps {
   planModeEnabled: boolean
   subjectLabel: (landscapeId: string) => string
   goalLabel: (goalId: string) => string | undefined
+  goalPreviewAction?: (goalId: string) => (() => void) | undefined
   activeGoalId?: string | null
   activeLandscapeId?: string | null
   /** The cockpit renders this separately above the selected goal and progress columns. */
@@ -110,6 +111,7 @@ export const LearnerPlanTodayOverview = ({
   planModeEnabled,
   subjectLabel,
   goalLabel,
+  goalPreviewAction,
   activeGoalId = null,
   activeLandscapeId = null,
   showActiveGoal = true,
@@ -252,12 +254,23 @@ export const LearnerPlanTodayOverview = ({
                 </div>
               </div>
               {subject.unitAssignments?.map((assignment, index) => <div key={index} data-testid="learner-plan-unit-assignment"
-                className="mt-3 text-sm" role="status">
+                className="mt-3 text-sm">
                 <strong>{language === 'de' ? 'Einheitenauftrag' : 'Unit assignment'} · {assignment.title}</strong>
-                <p>{assignment.status === 'unavailable' ? (language === 'de' ? 'Auftragsfassung nicht verfügbar' : 'Assignment version unavailable')
+                <p role="status">{assignment.status === 'unavailable' ? (language === 'de' ? 'Auftragsfassung nicht verfügbar' : 'Assignment version unavailable')
                   : <>{assignment.passedParts} / {assignment.requiredParts} · {assignment.status === 'completed'
                     ? (language === 'de' ? 'Auftrag abgeschlossen' : 'Assignment complete')
                     : (language === 'de' ? 'Auftrag aktiv' : 'Assignment active')}</>}</p>
+                {assignment.status === 'completed' && Boolean(assignment.voluntaryGoals?.length) && <details className="mt-1">
+                  <summary className="cursor-pointer rounded py-1 font-medium">{language === 'de' ? 'Freiwillig weiterlernen' : 'Continue voluntarily'}</summary>
+                  <ul className="mt-1 max-h-64 overflow-y-auto ps-4">
+                    {assignment.voluntaryGoals?.map(goal => {
+                      const preview = goalPreviewAction?.(goal.goalId)
+                      return <li key={goal.goalId}>{preview
+                        ? <button type="button" onClick={preview} className="min-h-9 text-left underline underline-offset-2">{goal.title}</button>
+                        : goal.title}</li>
+                    })}
+                  </ul>
+                </details>}
               </div>)}
               {subject.learningScope ? (
                 <div data-testid="learner-plan-learning-scope" className="mt-3 text-sm">

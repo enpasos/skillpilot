@@ -1,6 +1,6 @@
 # Assessment-gated Completion: Implementierung und Prüfung
 
-> Die unten genannten Einstellungen dokumentieren den früheren Pilotstand. Für den aktuellen Prüfungszugang und die freiwillige Weiterplanung angerechneter Einzelziele gilt der [Lernplanvertrag](../concept/didactic/unified-learning-plan-status.md#sec-implicit-completion).
+> Die [Anzeige von Nachweisen und Abschnittsabschluss](#anzeige-von-nachweisen-und-abschnittsabschluss) dokumentiert den Stand vom 20. November 2026. Die unten genannten Einstellungen dokumentieren den früheren Pilotstand. Für den aktuellen Prüfungszugang und die freiwillige Weiterplanung angerechneter Einzelziele gilt der [Lernplanvertrag](../concept/didactic/unified-learning-plan-status.md#sec-implicit-completion).
 
 > **Überholt als Umsetzungsauftrag – 4. November 2026.** Die nachfolgenden
 > Beschreibungen halten den bisherigen Implementierungs-/Prüfstand fest.
@@ -96,30 +96,24 @@ Ansehen startet nichts. Auch am konkreten Prüfungslernziel ist derselbe Einstie
 verfügbar. Die Backendprüfung von Revision, Scope, Aufgabenverfügbarkeit und
 Sitzungseigentümer bleibt maßgeblich.
 
-Im Lernzielbaum kennzeichnet ein kompaktes blaues Schildsymbol implizite
-Erledigung. Der Tooltip **„Für diesen Abschnitt nicht mehr erforderlich“**
-nennt den Bezug und erklärt den unveränderten Lernstand. Er behauptet nicht,
-dass eine Prüfung bestanden wurde, wenn gewöhnliche Mastery oder fehlender
-Bedarf ausschlaggebend war. Es gibt keinen grünen Mastery-Haken und keinen
-breiten Zusatzblock. Das Symbol ist mit Maus, Tastatur und Touch bedienbar.
-Bei veralteten oder ungültigen Daten verschwinden positive Kontextmarker.
-Nach Verlassen eines gewählten Abschnitts gilt wieder der aktuelle
-Defaultkontext; dessen weiterhin gültige Marker dürfen erhalten bleiben.
+## Anzeige von Nachweisen und Abschnittsabschluss
 
-Die Balken an Sammelknoten der Lernendenansicht zeigen die Erledigung in drei
-Anteilen: **grün = explizit geschafft**, **blau = implizit erledigt**,
-**grau = offen**. Blau verwendet dieselben gültigen, auf den aktuellen Abschnitt
-bezogenen Markierungen wie die Schilde; bei veralteten Daten entfällt dieser
-Anteil ebenfalls. Jeder Balken zählt die eindeutigen atomaren Nachfahren der
-dargestellten Projektion mit ihren atomaren Gewichten. Gemeinsame Nachfahren
-zählen einmal, Clustergewichte nicht zusätzlich. Zu- und Aufklappen verändert
-diese Menge nicht. Ein explizit geschafftes und zwei implizit erledigte Ziele
-mit gleichen Gewichten ergeben einen vollen Balken: ein Drittel grün und zwei
-Drittel blau. Das bedeutet vollständige Erledigung, nicht vollständige Mastery.
-Der Tooltip ist per Maus, Tastatur und Touch erreichbar und nennt Zielanzahlen,
-gewichteten Fortschritt sowie den Abschnitt der impliziten Erledigung.
-Die Plan-IST-Option **„Nur explizit erreichte Lernziele zählen“** verändert weder
-diesen Balken noch die Schilde; gespeicherte Mastery bleibt unverändert.
+Die Regel gilt für alle Fächer mit ein- und ausgeschaltetem Einheitenpiloten. Lernzielbaum, Zielkarte, Prüfungsübersicht und die grafische Lernkarte verwenden dieselbe Häkchenform. Beschriftungen und Erläuterungen unterscheiden die beiden Nachweisarten auch ohne Farberkennung. Die Bedeutung hängt von den Belegen im aktuellen Lernabschnitt ab. [Statusauswertung für Baum und Karte](https://github.com/enpasos/skillpilot/blob/main/app/src/utils/levelCompletionApi.ts)
+
+| Anzeige an einem Einzelziel | Bedeutung |
+| --- | --- |
+| Grüner Haken | Für das Ziel liegt eigener Lernfortschritt auf Bestehensniveau vor. Bei einer Prüfung zeigt die Einheitenübersicht den gültigen Prüfungsbeleg an. |
+| Grauer Haken | Das Backend hat dieses Ziel anhand einer fachlich freigegebenen Prüfungsabdeckung für die Planung angerechnet. Das Ziel bleibt einzeln erlernbar. |
+| Neutrales Minus | „Für diesen Abschnitt nicht mehr erforderlich“. Der Vorbereitungsbedarf im jeweiligen Abschnitt ist entfallen. Ein eigener Nachweis bleibt möglich. |
+| Offen | Der Abschnitt enthält für dieses Ziel weder einen Nachweis noch einen Entfall. |
+
+Der Balken eines Sammelknotens misst die **gewichtete Abdeckung seiner sichtbaren atomaren Nachfahren**. Jeder Nachfahre zählt einmal. Grün steht für eigene Nachweise, Grau für fachliche Anrechnung. Offene und lediglich entfallene Ziele lassen den Hintergrund frei. Die Beschriftung zählt Ziele mit Nachweis. Die Erklärung am Baum-Balken und die zugänglichen Kartenbeschriftungen weisen die Anzahlen getrennt aus. Die Einstellung zur freiwilligen Weiterplanung angerechneter Ziele ändert die Nachweise im Balken nicht. [Berechnung der Balken](https://github.com/enpasos/skillpilot/blob/main/app/src/utils/treeCompletionProgress.ts)
+
+Der Abschnittsabschluss kommt aus der gültigen Abschlussauswertung des Backends. Die Prüfungsansicht nennt zum Titel des abgeschlossenen Bereichs **„Lernabschnitt abgeschlossen.“** bzw. beim aktiven automatischen Prüfungsweg **„Lernweg abgeschlossen.“** Sind von zwei gleich gewichteten Zielen die Prüfung selbst bestanden und ihre Vorbereitung entfallen, ist der Abschnitt abgeschlossen. Der Balken zeigt **1 von 2 Lernzielen mit Nachweis**, zur Hälfte grün. [Cockpit-Anzeige](https://github.com/enpasos/skillpilot/blob/main/app/src/components/LevelCompletionCard.tsx)
+
+Bei ausgeschaltetem Einheitenpilot können gewöhnliche Prüfungswege weiter einen abgeschlossenen Abschnitt und entfallene Vorbereitung ausweisen. Sie liefern aus dem Einheitenpiloten keine fachlichen Anrechnungen. Bei aktiviertem Piloten zählen ausschließlich die tatsächlich belegten Freigaben. In Hessen Physik E.1 sind das bei den beiden bestandenen Teilen C und D zwei angerechnete Fachziele. Für den ausdrücklich gewählten E.1-Auftrag zählen A–D. In den frischen G8- und G9-Abnahmeprofilen sind nach diesen vier Belegen der Auftrag und der Abschnitt abgeschlossen. Elf Fachziele sind weiterhin einzeln offen. „Freiwillig weiterlernen“ zeigt ihre Titel im Lernplan. Ein Klick öffnet das gewählte Ziel im Cockpit. Die zusätzliche Prüfung zum waagerechten Wurf erscheint als **„Freiwillige Zusatzprüfung“**. Sie lässt sich gesondert versuchen und hat ein eigenes Ergebnis. Ein ausdrücklich gewählter Einheitenauftrag hat seine eigene Anzeige **„Einheitenauftrag im Lernplan“** mit der Zahl seiner bestandenen Prüfungsteile. Der Stand dieses Auftrags, der jeweilige Abschnittsabschluss und die Anzeige der individuellen Nachweise haben getrennte Bezugsgrößen. [Abnahmebeispiele für G8 und G9](hessen-physik-e1-vorschau.md)
+
+## Weitere Navigation im früheren Prüfstand
 
 Manuell geschlossene Baumknoten bleiben geschlossen. Eine neue bewusste
 Navigation kann den Zielpfad wieder öffnen. **„Im Lernzielbaum anzeigen“**

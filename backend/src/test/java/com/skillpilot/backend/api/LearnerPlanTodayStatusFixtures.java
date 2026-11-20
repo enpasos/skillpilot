@@ -26,6 +26,27 @@ public final class LearnerPlanTodayStatusFixtures {
     private LearnerPlanTodayStatusFixtures() {
     }
 
+    /** An explicitly ordered qualification; its assessment choices are separate from dated goals. */
+    public static LearnerPlanTodayStatus.SubjectStatus physicsUnit(Integer passedParts) {
+        return physicsUnit(passedParts, true);
+    }
+
+    public static LearnerPlanTodayStatus.SubjectStatus physicsUnit(Integer passedParts, boolean hasVoluntaryGoal) {
+        String state = passedParts == null ? "unavailable" : passedParts == 4 ? "completed" : "active";
+        String summary = passedParts == null ? "Fassung des Einheitenauftrags nicht verfügbar"
+                : "Einheitenauftrag " + (passedParts == 4 ? "abgeschlossen" : "aktiv")
+                        + " (" + passedParts + "/4 Prüfungsteile)";
+        var unit = new LearnerPlanTodayStatus.UnitAssignmentStatus(
+                "E.1 Bewegungen und ihre Beschreibung", state, passedParts, 4, hasVoluntaryGoal ? List.of(
+                        new LearnerPlanTodayStatus.VoluntaryGoal("private-goal-id", "Modellierung und Idealisierung von Bewegungen"))
+                        : List.of());
+        return new LearnerPlanTodayStatus.SubjectStatus(List.of("private-physics"), "physik", "Physik",
+                true, summary, summary, "Physik · " + summary, null, false, false,
+                new LearnerPlanTodayStatus.PeriodGauge(0, 0, null), null, null, null, null,
+                UnifiedLearningPlanStatusCalculator.calculate(new PlanBalanceInputs(0, 0, 0, 0)),
+                null, null, List.of(unit));
+    }
+
     /**
      * An evaluable subject.
      *

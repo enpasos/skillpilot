@@ -47,6 +47,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.NullSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class OpenAiDeV11DailyPlanContractTest {
 
@@ -344,12 +346,22 @@ class OpenAiDeV11DailyPlanContractTest {
         assertThat(content.has("statusDirection")).isFalse();
     }
 
-    @Test
-    void resumeUsesTheVersionedWriteAndReturnsOnlyTheFreshExistingContext() {
+    @ParameterizedTest
+    @NullSource
+    @ValueSource(ints = {0, 2, 4})
+    void resumeUsesTheVersionedWriteAndReturnsOnlyTheFreshExistingContext(Integer unitPassedParts) {
         OpenAiDeV1McpContractAdapter contract = contract(true);
         UnifiedLearnerStateResponse state = activeGoalState();
+        var status = availablePlanStatus();
+        if (unitPassedParts != null) {
+            status = LearnerPlanTodayStatusFixtures.status(status.asOf(), true, true,
+                    status.subjects().getFirst(), LearnerPlanTodayStatusFixtures.physicsUnit(unitPassedParts));
+        }
         when(coachTools.getLearningPlanTodayStatus(LEARNER_ID, "de-DE"))
-                .thenReturn(availablePlanStatus());
+                .thenReturn(status);
+        JsonNode before = objectMapper.valueToTree(call(contract,
+                OpenAiDeV1McpContractAdapter.GET_CONTEXT, readArguments()).structuredContent());
+        assertThat(before.path("requiredAction").asText()).isEqualTo("resume");
         UUID internalPlanId = UUID.fromString("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee");
         when(coachTools.resumeLearningPlan(LEARNER_ID, "de-DE"))
                 .thenReturn(new LearnerLearningPlanApi.TransitionResponse(
@@ -744,6 +756,36 @@ class OpenAiDeV11DailyPlanContractTest {
         when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(noActiveGoalState());
         when(coachTools.getLearningPlanTodayStatus(LEARNER_ID, "de-DE")).thenReturn(null);
         assertThat(call(contract(true), OpenAiDeV1McpContractAdapter.RESUME_LEARNING_PLAN, writeArguments())
+                .isError()).isTrue();
+        verify(coachTools, never()).resumeLearningPlan(any(), any());
+    }
+
+    @ParameterizedTest
+    @CsvSource({"0, true, blocked", "2, true, blocked", "4, true, complete", "4, false, complete", ", false, unavailable"})
+    void aUnitAloneNeverOffersOrExecutesGenericContinuation(Integer passedParts, boolean hasVoluntaryGoal, String wireState) {
+        var status = LearnerPlanTodayStatusFixtures.status(LocalDate.of(2026, 11, 20), true, false,
+                LearnerPlanTodayStatusFixtures.physicsUnit(passedParts, hasVoluntaryGoal));
+        when(coachTools.getLearningPlanTodayStatus(LEARNER_ID, "de-DE")).thenReturn(status);
+        var adapter = contract(true);
+        JsonNode context = objectMapper.valueToTree(call(adapter, OpenAiDeV1McpContractAdapter.GET_CONTEXT,
+                readArguments()).structuredContent());
+        JsonNode plan = context.path("learningPlanToday");
+        assertThat(context.path("requiredAction").asText()).isEqualTo(wireState);
+        assertThat(context.path("frontier").isEmpty()).isTrue();
+        assertThat(context.path("nextAllowedTools").toString()).doesNotContain(
+                OpenAiDeV1McpContractAdapter.RESUME_LEARNING_PLAN, OpenAiDeV1McpContractAdapter.SWITCH_LEARNING_PLAN_SUBJECT);
+        assertThat(plan.path("text").asText()).isEqualTo(status.statusText());
+        assertThat(plan.path("resumeAvailable").asBoolean(true)).isFalse();
+        assertThat(plan.path("subjects").get(0).path("canContinue").asBoolean(true)).isFalse();
+        String instruction = plan.path("guidance").path("instruction").asText();
+        assertThat(plan.toString()).doesNotContain("private-goal-id");
+        if (passedParts != null && passedParts == 4) {
+            assertThat(instruction).contains(hasVoluntaryGoal
+                    ? "Modellierung und Idealisierung von Bewegungen" : "No voluntary goal choice");
+        } else if (passedParts != null) {
+            assertThat(instruction).contains("assessment part choice");
+        }
+        assertThat(call(adapter, OpenAiDeV1McpContractAdapter.RESUME_LEARNING_PLAN, writeArguments())
                 .isError()).isTrue();
         verify(coachTools, never()).resumeLearningPlan(any(), any());
     }

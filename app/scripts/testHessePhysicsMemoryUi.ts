@@ -119,47 +119,66 @@ async function checkMapLayout(page: Page, dialog: Locator, releaseDeck: () => vo
   await assertBoardStable('receiving a new active goal on the same board preserves the layout and camera')
 }
 
-async function checkProjectionList(page: Page, dialog: Locator, manual: boolean, releaseDeck: () => void, updateProgress: () => void) {
-  const list = dialog.getByTestId('learning-map-compact-list')
+async function centerGoal(dialog: Locator, title: string) {
+  const search = dialog.getByRole('textbox', { name: 'In dieser Ebene suchen' })
+  await search.click()
+  await search.fill(title)
+  await dialog.getByRole('option').first().waitFor()
+  await search.press('Enter')
+}
+
+async function checkProjectionGraph(page: Page, dialog: Locator, releaseDeck: () => void, updateProgress: () => void) {
+  const cart = canonical.goals.find(goal => goal.id === 'ee7d5f3d-858f-59d6-89b0-e5a7f437f458')!
+  const projectile = canonical.goals.find(goal => goal.id === '39f52dcb-ff1d-5cad-9ccb-30da803cfa85')!
   const board = dialog.locator('.lum-canvas[aria-busy="false"]')
-  await list.waitFor()
-  await board.waitFor()
-  assert.equal(await list.locator('[data-entry-kind="assessment"]').count(), 6, 'the released projection has six assessment nodes')
-  if (manual) {
-    await dialog.getByRole('button', { name: 'Grafische Karte anzeigen' }).click()
-    await list.waitFor({ state: 'hidden' })
-    await board.waitFor()
-    const measuredScale = await page.waitForFunction(() => {
-      const graph = document.querySelector('.lum-flow')
-      const viewport = graph?.querySelector('.react-flow__viewport')
-      const nodes = graph?.querySelectorAll('.react-flow__node [data-entry-kind="assessment"]')
-      if (!viewport || nodes?.length !== 6) return false
-      const scale = new DOMMatrixReadOnly(getComputedStyle(viewport).transform).a
-      return scale > 0 && scale < 0.8 ? scale : null
-    })
-    console.log('Six assessment nodes in graph mode at', Math.round((await measuredScale.jsonValue())! * 100) + '%')
-    await dialog.getByRole('button', { name: 'Zielliste anzeigen' }).click()
-    await list.waitFor()
-    await board.waitFor()
+  const graph = dialog.locator('.lum-flow')
+  const camera = () => graph.locator('.react-flow__viewport').evaluate(element => (element as HTMLElement).style.transform)
+  const waitForReadable = async (id: string) => {
+    await page.waitForFunction(id => {
+      const el = document.querySelector(`.lum-flow [data-entry-id="${id}"]`)
+      const surface = el?.closest('.lum-flow')?.getBoundingClientRect()
+      const rect = el?.getBoundingClientRect()
+      return rect && surface && rect.width >= 175 && rect.left >= surface.left - 1 && rect.right <= surface.right + 1
+        && rect.top >= surface.top - 1 && rect.bottom <= surface.bottom + 1
+    }, id)
   }
-  const originalList = await list.elementHandle()
-  const scrollTop = await list.evaluate(element => { element.scrollTop = 80; return element.scrollTop })
+  await board.waitFor()
+  await waitForReadable(projectile.id)
+  const initialZoom = await dialog.getByLabel('Zoomwert').innerText()
+  const count = graph.locator('[data-entry-kind="assessment"]')
+  await dialog.getByRole('button', { name: 'Diese Ebene einpassen', exact: true }).click()
+  await page.waitForFunction(() => document.querySelectorAll('.lum-flow [data-entry-kind="assessment"]').length === 6)
+  assert.equal(await count.count(), 6)
+  assert(await count.evaluateAll(nodes => nodes.every(node => getComputedStyle(node).opacity === '1')),
+    'neighbouring assessments retain full contrast when a peer is selected')
+  await centerGoal(dialog, cart.title)
+  await waitForReadable(cart.id)
+  await graph.locator(`[data-entry-id="${cart.id}"] .lum-node-main`).press('Enter')
+  await dialog.locator(`[data-selected-goal-id="${cart.id}"]`).waitFor()
   const probe = await monitorBoard(dialog)
-  assert.equal(await list.locator(`[data-entry-id="${memoryId}"]`).count(), 0)
   releaseDeck()
-  await list.locator(`[data-entry-id="${memoryId}"]`).waitFor()
-  assert.deepEqual(await probe.evaluate(value => value.activity), { layouts: 0, busy: 0, loading: 0 }, 'topic deck updates in the open list')
-  const goal = list.locator(`[data-entry-id="${horizontalThrow.id}"]`)
+  await page.waitForFunction(value => value.activity.layouts === 1, probe)
+  await board.waitFor()
+  await centerGoal(dialog, 'Lernkarten zu E.1 üben')
+  await graph.locator(`[data-entry-id="${memoryId}"]`).waitFor()
+  const afterDeck = await probe.evaluate(value => value.activity)
+  assert.deepEqual(afterDeck, { layouts: 1, busy: 1, loading: 1 }, 'a real deck changes the graph topology exactly once')
+  await centerGoal(dialog, horizontalThrow.title)
+  await waitForReadable(horizontalThrow.id)
+  const goal = graph.locator(`[data-entry-id="${horizontalThrow.id}"]`)
   await goal.getByRole('img', { name: 'Noch offen' }).waitFor()
+  const originalNode = await goal.elementHandle()
+  const beforeMastery = await camera()
   updateProgress()
   await page.evaluate(() => window.dispatchEvent(new CustomEvent('test-learner-update', { detail: 'MASTERY_UPDATE' })))
   await page.waitForFunction(value => value.lastRefresh === 'MASTERY_UPDATE', probe)
   const directEvidence = goal.getByRole('img', { name: 'Direkt nachgewiesen', exact: true })
   await directEvidence.waitFor()
   assert.equal(await directEvidence.getAttribute('data-testid'), 'learning-map-direct-evidence')
-  assert.deepEqual(await probe.evaluate(value => value.activity), { layouts: 0, busy: 0, loading: 0 }, 'mastery updates in the open list')
-  assert(await originalList?.evaluate(element => element.isConnected), 'the same list remains mounted through both updates')
-  assert.equal(await list.evaluate(element => element.scrollTop), scrollTop, 'a data refresh preserves the chosen reading position')
+  assert.deepEqual(await probe.evaluate(value => value.activity), afterDeck, 'mastery updates without rearranging the graph')
+  assert(await originalNode?.evaluate(element => element.isConnected), 'the same graph node remains mounted')
+  assert.equal(await camera(), beforeMastery)
+  return initialZoom
 }
 
 const appRoot = fileURLToPath(new URL('../', import.meta.url))
@@ -179,14 +198,12 @@ const scenarios: {
   width: number
   height?: number
   viewFile?: string
-  manual?: boolean
   futureTopic?: boolean
   switchDuringSave?: boolean
   backgroundOverlap?: boolean
 }[] = [
   ...['de-he-gk-g8', 'de-he-sekii-gk'].flatMap(viewFile => [
-    { width: 1024, height: 900, viewFile, manual: false },
-    { width: 1024, height: 650, viewFile, manual: true },
+    ...[390, 761, 1024, 1440].map(width => ({ width, height: width === 1024 ? 650 : 900, viewFile })),
   ]),
   { width: 1440, futureTopic: false, switchDuringSave: false, backgroundOverlap: false },
   { width: 390, futureTopic: false, switchDuringSave: false, backgroundOverlap: false },
@@ -209,7 +226,7 @@ try {
     }
     const dataLandscapes = viewFile ? [nativeMapLandscapes[0], canonical] : landscapes
     const dataTopic = `composition:${dataView.viewId}:structure:physics-e1-motion`
-    const initialGoal = viewFile ? canonical.goals.find(goal => goal.id === 'ee7d5f3d-858f-59d6-89b0-e5a7f437f458')! : force
+    const initialGoal = viewFile ? canonical.goals.find(goal => goal.id === '39f52dcb-ff1d-5cad-9ccb-30da803cfa85')! : force
     const mastery: Record<string, number> = {}
     const checkLayout = width === 1440 && !futureTopic && !switchDuringSave
     let releaseDeck!: () => void
@@ -312,10 +329,10 @@ try {
       throw error
     })
     if (viewFile) {
-      await checkProjectionList(page, dialog, scenario.manual === true, releaseDeck, () => { mastery[horizontalThrow.id] = 1 })
+      const initialZoom = await checkProjectionGraph(page, dialog, releaseDeck, () => { mastery[horizontalThrow.id] = 1 })
       assert.deepEqual(errors, [])
       assert.deepEqual(unexpected, [])
-      console.log(`${viewFile} ${width}×${scenario.height}: six assessments, ${scenario.manual ? 'manual' : 'automatic'} list kept during deck and mastery refresh`)
+      console.log(`${viewFile} ${width}×${scenario.height}: six assessments, graph B→A; initial zoom ${initialZoom}, stable on mastery refresh`)
       await context.close()
       continue
     }
@@ -326,6 +343,7 @@ try {
     const practice = dialog.getByRole('button', { name: 'Lernkarten zu E.1 üben', exact: true })
     if (!futureTopic && !switchDuringSave) {
       await dialog.getByRole('heading', { name: 'Ein Ball rollt vom Tisch. Wo landet er?', exact: true }).waitFor()
+      if (width === 390) await centerGoal(dialog, horizontalThrow.title)
       const throwNode = dialog.locator(`[data-entry-id="${horizontalThrow.id}"]`)
       const openExercise = throwNode.getByRole('button', { name: 'Üben: Wo muss die Bodenmarke liegen?', exact: true })
       await openExercise.waitFor()
@@ -349,8 +367,6 @@ try {
       assert(await dialog.isVisible(), 'closing the exercise leaves the learning map open')
       assert(await openExercise.evaluate(element => document.activeElement === element), 'focus returns to the exercise button')
       if (width === 390) {
-        const list = dialog.getByTestId('learning-map-compact-list')
-        assert(await list.isVisible())
         const buttonBounds = await openExercise.boundingBox()
         assert(buttonBounds && buttonBounds.height >= 44 && buttonBounds.width >= 44)
         await openExercise.click()
@@ -358,21 +374,21 @@ try {
         assert.equal(await solution.isVisible(), false, 'a new attempt opens without the solution')
         await page.keyboard.press('Escape')
         await exercise.waitFor({ state: 'hidden' })
-        await dialog.getByRole('button', { name: 'Grafische Karte anzeigen' }).click()
-        await list.waitFor({ state: 'hidden' })
-        await dialog.getByRole('button', { name: 'Zielliste anzeigen' }).click()
-        await list.waitFor()
       }
       assert.deepEqual(writes, [], 'reading and checking an exercise does not save a result')
     }
+    if (width === 390) await centerGoal(dialog, assessment.title)
     await dialog.locator(`[data-entry-id="${examId}"]`).getByText('Prüfung aus „Themenübergreifende Prüfungen“').waitFor()
+    if (width === 390) await centerGoal(dialog, 'Lernkarten zu E.1 üben')
     await dialog.locator(`[data-entry-id="${memoryId}"]`).getByText('Aus dem Stapel „Einführungsphase“').waitFor()
     await practice.waitFor()
     for (const resource of [memoryId, examId]) {
+      if (width === 390) await centerGoal(dialog, resource === memoryId ? 'Lernkarten zu E.1 üben' : assessment.title)
       const node = dialog.locator(`[data-entry-id="${resource}"]`)
       assert.equal(await node.evaluate(element => getComputedStyle(element).opacity), '1',
         'both resource labels remain readable while another goal is selected')
     }
+    if (width === 390) await centerGoal(dialog, 'Lernkarten zu E.1 üben')
     await practice.focus()
     await page.keyboard.press('Enter')
     await dialog.waitFor({ state: 'hidden' })

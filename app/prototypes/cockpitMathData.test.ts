@@ -33,32 +33,34 @@ for (const entry of Object.values(entries)) {
 }
 
 const expected = [
-  { m: [], explicit: 0, implicit: 0, complete: false },
-  { m: [a], explicit: 1, implicit: 0, complete: false },
-  { m: [q], explicit: 1, implicit: 1, complete: true },
-  { m: [a, q], explicit: 2, implicit: 0, complete: true },
+  { m: [], explicit: 0, notRequired: 0, complete: false },
+  { m: [a], explicit: 1, notRequired: 0, complete: false },
+  { m: [q], explicit: 1, notRequired: 1, complete: true },
+  { m: [a, q], explicit: 2, notRequired: 0, complete: true },
 ]
 for (const example of expected) {
   const before = JSON.stringify(example.m)
   const state = deriveCockpitState(example.m)
   assert.equal(JSON.stringify(example.m), before, 'Derivation must not write mastery back')
-  assert.deepEqual(state.progress, { total: 2, explicit: example.explicit, implicit: example.implicit,
-    completed: example.explicit + example.implicit, percent: (example.explicit + example.implicit) * 50 })
+  assert.deepEqual(state.progress, { total: 2, explicit: example.explicit, notRequired: example.notRequired,
+    completed: example.explicit, percent: example.explicit * 50 })
   assert.equal(state.unitComplete, example.complete)
-  assert.ok(state.implicitGoalIds.every(id => id === a), 'No exam, recall or external prerequisite is implicitly awarded')
+  assert.ok(state.notRequiredGoalIds.every(id => id === a), 'No exam, recall or external prerequisite is implicitly awarded')
   const shown = exportLearningEntryProgress(state)
   assert.equal(shown[data.rootId].total, 2)
   assert.equal(shown[data.unitId].total, 2)
+  assert.equal(shown[data.unitId].implicit, 0)
+  assert.equal(shown[data.unitId].notRequired, example.notRequired)
   assert.equal(shown[data.cards.goalId], undefined, 'External memory must not enter the target denominator')
 }
 const externalSupport = data.goalById[a].requires[0]
-assert.deepEqual(deriveCockpitState([externalSupport]).implicitGoalIds, [])
-assert.ok(!deriveCockpitState([q]).effectiveGoalIds.includes(externalSupport), 'Q recognizes only its own target A, not the whole prerequisite closure')
+assert.deepEqual(deriveCockpitState([externalSupport]).notRequiredGoalIds, [])
+assert.ok(!deriveCockpitState([q]).notRequiredGoalIds.includes(externalSupport), 'Q recognizes only its own target A, not the whole prerequisite closure')
 assert.throws(() => deriveCockpitState(['not-a-real-id']), /Unbekanntes Testziel/)
 
 const passed = cockpitScenarios.find(scenario => scenario.id === 'passed-assessment')!
 const completed = deriveCockpitState(passed.explicitGoalIds, passed.events)
-assert.equal(completed.progress.completed, 2)
+assert.equal(completed.progress.completed, 1)
 assert.equal(completed.todayExplicit, 1)
 assert.equal(completed.weekExplicit, 1)
 const repeatedAndInvalidEvents = deriveCockpitState([q], [

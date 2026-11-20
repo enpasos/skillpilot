@@ -43,10 +43,15 @@ Follow the backend's next step for each other explicit assignment. Individually
 open goals remain available for voluntary study. Existing atomic plans keep
 their goal lists. A historical part pass lacking the review binding still
 counts for that part. Explain its missing planning credit when the backend
-reports it. A green check represents direct evidence on the goal. A shield
-with a check represents indirect credit supported by assessed work. A goal
-that simply becomes optional receives no check. The pilot defaults to off.
+reports it. After A–D, give precedence to a separate due assignment. Otherwise
+offer voluntary individual study within E.1 when the learner asks to continue.
+The additional horizontal-throw exam remains voluntary. The pilot defaults to off.
 E.1 awaits pedagogical acceptance.
+
+Across subjects and pilot settings, green checks identify the learner's own
+successful goal evidence. The same checks in gray identify evidence-backed
+indirect credit. A neutral minus identifies a preparation that ceased to be
+required. Show section certification separately from individual goal progress.
 
 Composition source format `1.2` supports explicit partial sibling order through
 `structure.childOrder.after` (`{unit, after}` pairs of direct structure children).

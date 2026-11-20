@@ -8,6 +8,7 @@ public final class CompiledCompletionProfile extends CompiledCompletionGraph {
     private final CompletionProfileDefinition definition;
     private final String curriculumGeneration;
     private final boolean automatic;
+    private final Set<String> requiredAssessments;
 
     CompiledCompletionProfile(CompletionProfileDefinition definition, String curriculumGeneration,
             List<String> goalIds, int[][] prerequisites, int[] order, Set<String> targets,
@@ -19,12 +20,22 @@ public final class CompiledCompletionProfile extends CompiledCompletionGraph {
     CompiledCompletionProfile(CompletionProfileDefinition definition, String curriculumGeneration,
             List<String> goalIds, int[][] prerequisites, int[] order, Set<String> targets,
             Set<String> assessments, Set<String> protectedGoals, List<CompiledRule> rules, boolean automatic) {
+        this(definition, curriculumGeneration, goalIds, prerequisites, order, targets, assessments,
+                protectedGoals, rules, automatic, assessments);
+    }
+
+    CompiledCompletionProfile(CompletionProfileDefinition definition, String curriculumGeneration,
+            List<String> goalIds, int[][] prerequisites, int[] order, Set<String> targets,
+            Set<String> assessments, Set<String> protectedGoals, List<CompiledRule> rules, boolean automatic,
+            Set<String> requiredAssessments) {
         super(goalIds, prerequisites, order, targets, assessments, protectedGoals, rules);
         this.definition = definition;
         this.curriculumGeneration = curriculumGeneration;
         this.automatic = automatic;
+        this.requiredAssessments = immutableSet(requiredAssessments);
     }
 
+    @Override public Set<String> requiredAssessmentGoalIds() { return requiredAssessments; }
     public CompletionProfileDefinition definition() { return definition; }
     public CompletionProfileDefinition profile() { return definition; }
     public String curriculumGeneration() { return curriculumGeneration; }

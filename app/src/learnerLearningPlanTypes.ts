@@ -17,6 +17,7 @@ export interface LearnerUnitAssignmentStatus {
   status: 'active' | 'completed' | 'unavailable'
   passedParts: number | null
   requiredParts: number
+  voluntaryGoals?: { goalId: string; title: string }[]
 }
 
 export interface LearnerLearningPlanPeriod {

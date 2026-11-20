@@ -24,8 +24,14 @@ public final class LearnerLearningPlanApi {
     public record UnitAssignment(String sectionGoalId, String revision, String fingerprint) { }
     public record UnitAssignmentPart(String goalId, java.util.Map<String, String> title, boolean passed,
             boolean materialCurrent, boolean startAvailable) { }
+    public record VoluntaryGoal(String goalId, java.util.Map<String, String> title) { }
     public record UnitAssignmentOption(String sectionGoalId, String revision, String fingerprint,
-            java.util.Map<String, String> title, boolean passed, List<UnitAssignmentPart> parts) {
+            java.util.Map<String, String> title, boolean passed, List<UnitAssignmentPart> parts,
+            @JsonInclude(JsonInclude.Include.NON_EMPTY) List<VoluntaryGoal> voluntaryGoals) {
+        public UnitAssignmentOption(String sectionGoalId, String revision, String fingerprint,
+                java.util.Map<String, String> title, boolean passed, List<UnitAssignmentPart> parts) {
+            this(sectionGoalId, revision, fingerprint, title, passed, parts, List.of());
+        }
         public UnitAssignment binding() { return new UnitAssignment(sectionGoalId, revision, fingerprint); }
     }
 

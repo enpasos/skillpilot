@@ -9,7 +9,7 @@ import { LearningUnitMap } from './LearningUnitMap'
 import { MapPracticeDialog } from './MapPracticeDialog'
 import { UNIT_MAP_LEARNING_MATERIALS } from './learnerUnitMapPreviewSubjects'
 import { filterLearnerUnitMapToSubjects } from './learnerUnitMapProjection'
-import { createLearnerUnitMapCache, MATHEMATICS_LANDSCAPE_ID, UNIT_MAP_COMPACT_LIST_THRESHOLD,
+import { createLearnerUnitMapCache, MATHEMATICS_LANDSCAPE_ID,
   UNIT_MAP_PREVIEW_SUBJECT_IDS } from './learnerUnitMapPreview'
 import type { LearningEntryProgress } from './types'
 import { buildUnitAssessmentActions, buildUnitFlashcardActions, findUnitMaterialScopes, placeUnitLearningResources, unitResourcePlacements } from './unitLearningMaterialActions'
@@ -165,9 +165,9 @@ export default function LearnerGoalNavigationMap(props: LearnerGoalNavigationMap
     data-selected-goal-id={props.selectedGoalId} data-map-active={props.active}>
     <LearningUnitMap fixture={fixture} embedded active={props.active} headingMode="context"
       rootLabel={english ? 'My learning goals' : 'Meine Lernziele'} language={props.language} learnerProgress={progress} activeGoalId={props.activeGoalId}
-      command={command} showInspector={false} compactListThreshold={UNIT_MAP_COMPACT_LIST_THRESHOLD}
+      command={command} showInspector={false}
       toolbar={toolbar} locationBarContainer={props.locationBarContainer}
-      getPracticeAction={getPracticeAction} getGoalAction={getGoalAction} mobileListScopes={materialScopes}
+      getPracticeAction={getPracticeAction} getGoalAction={getGoalAction} materialScopes={materialScopes}
       renderScopeActions={scopeId => {
         const intros = resources.flatMap(({ scopes, material }) => scopes.has(scopeId) ? [material] : [])
         const subdecks = new Map<string, FlashcardPracticeRequest>()

@@ -231,6 +231,14 @@ const parseSubjectUpdate = (changes: Record<string, unknown>) => parseLearnerPla
   ...parsed.status,
   subjects: [{ ...legacySubject, ...changes }],
 }).subjects[0]
+const unitStatus = { title: 'Einheit', status: 'completed', passedParts: 4, requiredParts: 4 }
+const voluntaryGoals = [{ goalId: 'open', title: 'Offenes Einzelziel' }]
+assert.deepEqual(parseSubjectUpdate({ unitAssignments: [{ ...unitStatus, voluntaryGoals }] }).unitAssignments?.[0].voluntaryGoals, voluntaryGoals)
+assert.equal(parseSubjectUpdate({ unitAssignments: [unitStatus] }).unitAssignments?.[0].voluntaryGoals, undefined)
+for (const malformed of [[...voluntaryGoals, ...voluntaryGoals], [{ goalId: 'open' }], {}]) {
+  assert.throws(() => parseSubjectUpdate({ unitAssignments: [{ ...unitStatus, voluntaryGoals: malformed }] }))
+}
+assert.throws(() => parseSubjectUpdate({ unitAssignments: [{ ...unitStatus, status: 'active', passedParts: 2, voluntaryGoals }] }))
 const parsedLegacySubject = parseSubjectUpdate({})
 assert.equal(Object.prototype.hasOwnProperty.call(parsedLegacySubject, 'achievedGoalCount'), false)
 assert.equal(Object.prototype.hasOwnProperty.call(parsedLegacySubject, 'targetGoalCount'), false)

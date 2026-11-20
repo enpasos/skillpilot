@@ -51,6 +51,8 @@ class UnitLearningMaterialServiceTest {
         assertThat(g8.promise("en")).contains("motion data");
         assertThat(g8.flashcardGoalId()).isEqualTo("9f2f5ab8-0ae4-5792-b831-82a05af5895c");
         assertThat(g8.assessmentGoalId()).isEqualTo("a9562b05-c54d-5635-9244-3f7dd24a8642");
+        assertThat(g8.sectionAssessmentPolicy().voluntaryAssessmentGoalIds())
+                .containsExactly("6ea3fb3c-abdc-568f-ab13-97c36dc274e4");
         assertThat(service.find(PHYSICS, "merged:de-he-gym-physics-lk-g8+another-view", MOTION)).isEmpty();
         assertThat(service.find(PHYSICS, "de-he-gym-physics-gk-g9", "physics-q1")).isEmpty();
         assertThat(service.find("mathematics", "de-he-gym-physics-gk-g9", MOTION)).isEmpty();
@@ -87,6 +89,25 @@ class UnitLearningMaterialServiceTest {
                             assertThat(binding.contract().parts()).hasSize(4));
                 }
             }
+        }
+    }
+
+    @Test
+    void changingOrRemovingARequiredPartDisablesTheVoluntarySectionException(@TempDir Path repository) throws IOException {
+        var mapper = new ObjectMapper();
+        var source = mapper.readTree(Path.of("../curricula/DE/Gymnasium/materials/physics/he-e1-motion-practice.json").toFile());
+        var local = Files.createDirectories(repository.resolve("DE/Gymnasium/materials")).resolve("sample-practice.json");
+        for (boolean removePart : List.of(false, true)) {
+            var changed = source.deepCopy();
+            var parts = (com.fasterxml.jackson.databind.node.ArrayNode) changed.at("/unit/assessmentContract/parts");
+            if (removePart) parts.remove(0);
+            else ((com.fasterxml.jackson.databind.node.ObjectNode) parts.get(0).get("material"))
+                    .put("rubricRevision", "sha256:" + "b".repeat(64));
+            mapper.writeValue(local.toFile(), changed);
+            var material = UnitLearningMaterialService.fromRepository(repository, mapper)
+                    .find(PHYSICS, "de-he-gym-physics-gk-g9", MOTION).orElseThrow();
+            assertThat(material.assessmentContract()).isNotNull();
+            assertThat(material.sectionAssessmentPolicy()).isNull();
         }
     }
 

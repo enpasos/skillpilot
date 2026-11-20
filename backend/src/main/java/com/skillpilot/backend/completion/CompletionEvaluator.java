@@ -68,11 +68,11 @@ public final class CompletionEvaluator {
                 else if (!needed[i]) waivedTargetCount++;
                 else pendingTargets.add(id);
             }
-            if (mastered[i] && graph.assessmentGoalIds().contains(id)) passedAssessments.add(id);
+            if (mastered[i] && graph.requiredAssessmentGoalIds().contains(id)) passedAssessments.add(id);
         }
         return new CompletionEvaluation(masteredIds, waivedIds, pendingTargets, passedAssessments, reasons, blockers,
                 pendingTargets.isEmpty() && graph.protectedGoalIds().stream().allMatch(mastery::contains),
-                graph.targetGoalIds().size(), masteredTargetCount, waivedTargetCount, graph.assessmentGoalIds().size());
+                graph.targetGoalIds().size(), masteredTargetCount, waivedTargetCount, graph.requiredAssessmentGoalIds().size());
     }
 
     public CompletionEvaluation evaluate(CompiledCompletionProfile profile, Set<String> mastery) {

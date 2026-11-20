@@ -90,7 +90,13 @@ public record LevelCompletionResponse(
                               List<AssessmentReference> assessments, int assessmentCount) { }
     public record AssessmentReference(String goalId, Map<String, String> title) { }
     public record Assessment(String goalId, Map<String, String> title, boolean mastered,
-                             boolean startAvailable, String unavailableReason) { }
+                             boolean startAvailable, String unavailableReason,
+                             @JsonInclude(JsonInclude.Include.NON_NULL) Boolean voluntary) {
+        public Assessment(String goalId, Map<String, String> title, boolean mastered,
+                boolean startAvailable, String unavailableReason) {
+            this(goalId, title, mastered, startAvailable, unavailableReason, null);
+        }
+    }
     public record ProfileOption(String profileId, Map<String, String> title,
                                 Integer targetCount, Integer requiredAssessmentCount,
                                 List<Assessment> assessments) {

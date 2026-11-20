@@ -367,9 +367,32 @@ public class LearnerService {
                 learner.getSelectedCurriculum(), graph, projection.targetGoalIds());
         CompletionProfileDefinition definition = automaticCompletionDefinition(id, projection);
         if (definition == null) throw new CompletionApplicationService.ScopeNotApplicableException();
+        Set<String> targets = automaticCompletionTargets(id, projection);
         return completionApplicationService.compileAutomatic(definition,
-                learner.getSelectedCurriculum() + ":" + completionScopeDigest(learner), graph,
-                automaticCompletionTargets(id, projection), projection.targetGoalIds());
+                learner.getSelectedCurriculum() + ":" + completionScopeDigest(learner), graph, targets,
+                projection.targetGoalIds(), voluntarySectionAssessments(id, projection, graph, targets));
+    }
+
+    private Set<String> voluntarySectionAssessments(String profileId, GoalProjection projection,
+            Map<String, LearningGoal> graph, Set<String> targets) {
+        if (!unitPlanningCreditsEnabled() || unitLearningMaterialService == null
+                || !profileId.startsWith(AUTOMATIC_COMPLETION_PREFIX + "composition:")) return Set.of();
+        var binding = unitLearningMaterialService.assessmentBindingForReference(
+                profileId.substring(AUTOMATIC_COMPLETION_PREFIX.length())).orElse(null);
+        if (binding == null || !projection.compositionViewIds().contains(binding.viewId())) return Set.of();
+        var policy = unitLearningMaterialService.find(binding.landscapeId(), binding.viewId(), binding.compositionNodeId())
+                .map(UnitLearningMaterialService.Material::sectionAssessmentPolicy).orElse(null);
+        if (policy == null || !binding.contract().revision().equals(policy.unitContractRevision())
+                || policy.voluntaryAssessmentGoalIds() == null || policy.voluntaryAssessmentGoalIds().isEmpty()) return Set.of();
+        Set<String> required = binding.contract().parts().stream().map(UnitAssessmentContract.Part::goalId).collect(Collectors.toSet());
+        var optional = policy.voluntaryAssessmentGoalIds();
+        if (optional.stream().anyMatch(id -> id == null || !targets.contains(id) || required.contains(id)
+                || !binding.landscapeId().equals(landscapeService.getLandscapeIdForGoal(id))
+                || !isAtomicGoal(graph.get(id)) || !CompletionProfileCompiler.isAssessment(graph.get(id)))
+                || optional.stream().distinct().count() != optional.size()) return Set.of();
+        var unit = validatedUnitAssessment(binding, projection, graph, Map.of(), Set.of());
+        return unit != null && unit.response().parts().stream().allMatch(UnitAssessmentResponse.Part::materialCurrent)
+                ? Set.copyOf(optional) : Set.of();
     }
 
     /** Discovery may rank scopes by focus; the chosen scope itself never depends on subsequent focus changes. */
@@ -656,11 +679,16 @@ public class LearnerService {
         return List.copyOf(bindings);
     }
 
+    boolean isUnitAssignmentSubjectSelected(Learner learner, String landscapeId) {
+        return landscapeId.equals(learner.getSelectedCurriculum())
+                || isSelectedInPersonalCurriculum(parsePersonalCurriculumConfig(learner.getPersonalCurriculum()).get(landscapeId));
+    }
+
     @Transactional(readOnly = true)
     public List<LearnerLearningPlanApi.UnitAssignmentOption> getUnitAssignmentOptions(String skillpilotId, String landscapeId) {
         if (!unitPlanningCreditsEnabled() || unitLearningMaterialService == null || verifiedExamPassService == null) return List.of();
         Learner learner = getLearner(skillpilotId);
-        if (!hasCompletedPersonalCurriculum(learner)) return List.of();
+        if (!hasCompletedPersonalCurriculum(learner) || !isUnitAssignmentSubjectSelected(learner, landscapeId)) return List.of();
         var projection = getGoalProjection(learner.getSelectedCurriculum(), learner.getPersonalCurriculum());
         var bindings = unitLearningMaterialService.assessmentBindings(projection.compositionViewIds()).stream()
                 .filter(binding -> binding.landscapeId().equals(landscapeId)).toList();
@@ -699,8 +727,18 @@ public class LearnerService {
             // Earlier exact task and rubric receipts also certify a later order for this edition.
             var parts = response.parts().stream().map(part -> new LearnerLearningPlanApi.UnitAssignmentPart(
                     part.goalId(), part.title(), part.passed(), part.materialCurrent(), startable.contains(part.goalId()))).toList();
+            List<LearnerLearningPlanApi.VoluntaryGoal> voluntaryGoals = List.of();
+            if (response.passed() && !response.individuallyOpenGoalIds().isEmpty()) {
+                var mastered = masteryRepository.findMasteredGoalIds(skillpilotId, response.individuallyOpenGoalIds(),
+                        PLANNING_SCOPE_MASTERY_THRESHOLD);
+                voluntaryGoals = response.individuallyOpenGoalIds().stream()
+                        .filter(goalId -> !mastered.contains(goalId))
+                        .map(goalId -> new LearnerLearningPlanApi.VoluntaryGoal(goalId, completionTitle(graph.get(goalId))))
+                        .toList();
+            }
             options.add(new LearnerLearningPlanApi.UnitAssignmentOption(response.sectionGoalId(), response.revision(),
-                    fingerprint, Map.of("de", title, "en", english == null ? title : english), response.passed(), parts));
+                    fingerprint, Map.of("de", title, "en", english == null ? title : english), response.passed(), parts,
+                    voluntaryGoals));
         }
         return List.copyOf(options);
     }
@@ -857,6 +895,7 @@ public class LearnerService {
             Set<String> optionAssessments = candidate == null
                     ? completionScopeAssessments(candidates.get(AUTOMATIC_COMPLETION_DEFAULT), optionTargets)
                     : candidate.assessmentGoalIds();
+            Set<String> optional = voluntarySectionAssessments(definition.id(), projection, graph, optionTargets);
             List<LevelCompletionResponse.Assessment> preview = new ArrayList<>();
             if (masteryFailure == null) {
                 for (String id : optionAssessments.stream().sorted(assessmentOrder)
@@ -872,12 +911,12 @@ public class LearnerService {
                             available, mastered ? null : routeOwnsNavigation ? "completion_route_active"
                                     : !targets.contains(id) ? "assessment_outside_personal_curriculum"
                                     : !materialCurrent ? "assessment_material_changed"
-                                    : taskAvailable ? null : "assessment_task_unavailable"));
+                                    : taskAvailable ? null : "assessment_task_unavailable", optional.contains(id) ? true : null));
                 }
             }
             options.add(new LevelCompletionResponse.ProfileOption(
                     definition.id(), definition.title(), optionTargets.size(),
-                    optionAssessments.size(), preview));
+                    (int) optionAssessments.stream().filter(id -> !optional.contains(id)).count(), preview));
         }
         if (!routeOwnsNavigation && options.isEmpty() && !catalog.automatic()) return null;
         String status = "unresolved";
@@ -909,6 +948,14 @@ public class LearnerService {
                 if (!candidates.containsKey(compiled.profile().id())) {
                     masterySnapshot = completionMasterySnapshot(learner, graph, List.of(compiled), true);
                 }
+                if (workflow.profileId().equals(unitProfileId)
+                        && compiled.requiredAssessmentGoalIds().size() < compiled.assessmentGoalIds().size()) {
+                    masterySnapshot = new HashMap<>(masterySnapshot);
+                    for (var part : unitResult.parts()) {
+                        if (part.passed()) masterySnapshot.put(part.goalId(), 1.0);
+                        else masterySnapshot.remove(part.goalId());
+                    }
+                }
                 evaluation = withUnitPlanningCredits(completionApplicationService.evaluate(compiled, masterySnapshot),
                         compiled, learner, projection, graph);
                 status = "valid";
@@ -920,7 +967,7 @@ public class LearnerService {
                 else if (foreignOwner) notice = "completion_assessment_owned_elsewhere";
                 for (String id : compiled.assessmentGoalIds().stream().sorted(assessmentOrder).toList()) {
                     LearningGoal goal = graph.get(id);
-                    boolean mastered = evaluation.masteredAssessmentGoalIds().contains(id);
+                    boolean mastered = evaluation.masteredGoalIds().contains(id);
                     if (workflow.profileId().equals(unitProfileId)) mastered = partResults.getOrDefault(id, mastered);
                     boolean materialCurrent = unitPartMaterialCurrent(workflow.profileId(), id, graph, changedUnitParts);
                     boolean available = compatible && !mastered && !directRunning && materialCurrent
@@ -930,7 +977,8 @@ public class LearnerService {
                                     : directRunning ? "assessment_running"
                                     : !targets.contains(id) ? "assessment_outside_personal_curriculum"
                                     : !materialCurrent ? "assessment_material_changed"
-                                    : compatible ? "assessment_task_unavailable" : "coach_contract_unsupported"));
+                                    : compatible ? "assessment_task_unavailable" : "coach_contract_unsupported",
+                            compiled.requiredAssessmentGoalIds().contains(id) ? null : true));
                 }
                 if (compatible && !overview) {
                     if (directRunning && unitPartMaterialCurrent(workflow.profileId(), workflow.directAssessment().goalId(), graph, changedUnitParts)) actions.add(new LevelCompletionResponse.Action("retryAssessment",

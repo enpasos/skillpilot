@@ -7,7 +7,7 @@ import { requiresCompletionExitConfirmation, type LevelCompletion } from '../src
 import { TreeCompletionProgressBar } from '../src/components/TreeCompletionProgressBar'
 import type { TreeCompletionProgress } from '../src/utils/treeCompletionProgress'
 import { CompletionWaiverIcon } from '../src/components/CompletionWaiverIcon'
-import { MapListItem } from '../src/components/learningUnitMap/MapNode'
+import { MapNode } from '../src/components/learningUnitMap/MapNode'
 import type { LearningEntryProgress, LearningMapEntry } from '../src/components/learningUnitMap/types'
 import { CompetenceTree } from '../src/components/CompetenceTree'
 import { LanguageProvider } from '../src/contexts/LanguageContext'
@@ -30,7 +30,7 @@ const render = (completion: LevelCompletion, extra: { stale?: boolean; language?
 const done = render(completed, { learningPlanPaused: true })
 assert.match(done, /Lernabschnitt abgeschlossen/u)
 assert.match(done, /1 von 2 Lernzielen geschafft/u)
-assert.match(done, /Für diesen Auftrag ist 1 Lernziel nicht mehr erforderlich\./u)
+assert.match(done, /Für diesen Abschnitt ist 1 Lernziel nicht mehr erforderlich\./u)
 assert.doesNotMatch(done, /2 von 2 Lernzielen geschafft/u)
 assert.match(done, /Lernplan ist pausiert/u)
 assert.match(done, /Für heute beenden/u)
@@ -76,6 +76,10 @@ for (const [total, passed, complete, de, en] of [
   assert.ok(english.includes(en))
   assert.equal(german.includes('Lernweg abgeschlossen.'), complete)
   assert.equal(english.includes('Learning route completed.'), complete)
+  const overview = { ...automatic, navigationIntent: undefined }
+  assert.equal(render(overview).includes('Lernabschnitt abgeschlossen.'), complete)
+  assert.equal(render(overview, { language: 'en' }).includes('Learning section completed.'), complete)
+  assert.doesNotMatch(render(overview, { stale: true }), /Lernabschnitt abgeschlossen/u)
 }
 
 const open: LevelCompletion = {
@@ -94,7 +98,7 @@ assert.match(unit, /3 von 4 Teilen bestanden/u)
 assert.equal((unit.match(/Beleg vorhanden/gu) ?? []).length, 3)
 assert.equal((unit.match(/unit-assessment-direct-evidence/gu) ?? []).length, 3)
 assert.equal((unit.match(/unit-assessment-credited-evidence/gu) ?? []).length, 1,
-  'the individually open list never duplicates the shield shown beside its genuinely credited goal')
+  'the individually open list never duplicates the check for the credited goal')
 assert.equal((unit.match(/completionGoal=D/gu) ?? []).length, 1)
 assert.match(unit, /Für deinen Lernplan angerechnet \(1\)/u)
 assert.match(unit, /Einzeln noch nachzuweisen \(2\)/u)
@@ -105,13 +109,25 @@ const changedUnit = { ...currentUnit, unitAssessment: { ...currentUnit.unitAsses
   parts: unitParts.map(part => ({ ...part, materialCurrent: part.passed })) } }
 assert.match(render(changedUnit), /Diese Prüfungsfassung ist nicht verfügbar/u)
 assert.doesNotMatch(render(changedUnit), /completionGoal=D/u)
-const unitPassed = { ...currentUnit, unitAssessment: { ...currentUnit.unitAssessment!, passed: true,
-  parts: unitParts.map(part => ({ ...part, passed: true })) } }
+const passedParts = unitParts.map(part => ({ ...part, passed: true }))
+const otherExam = { goalId: 'Q5', title: { de: 'Waagerechter Wurf', en: 'Horizontal throw' }, voluntary: true, mastered: false, startAvailable: true }
+const unitPassed = { ...currentUnit, targetCount: 5, masteredTargetCount: 4, pendingTargetCount: 1,
+  requiredAssessmentCount: 4, masteredAssessmentCount: 4,
+  assessments: [...passedParts.map(part => ({ goalId: part.goalId, title: part.title, mastered: true, startAvailable: false })), otherExam],
+  unitAssessment: { ...currentUnit.unitAssessment!, passed: true, parts: passedParts } }
 const englishUnit = render(unitPassed, { language: 'en' })
+assert.match(englishUnit, /Optional assessment<\/p>/u)
+assert.match(englishUnit, /completionGoal=Q5/u)
+assert.match(render(unitPassed), /Freiwillige Zusatzprüfung<\/p>/u)
 assert.match(englishUnit, /Unit assessment passed/u)
 assert.match(englishUnit, /4 of 4 parts passed/u)
 assert.match(englishUnit, /Still awaiting individual evidence \(2\)/u)
 assert.doesNotMatch(englishUnit, /Learning route completed/u)
+const sectionPassed = { ...unitPassed, complete: true, targetCount: 4, pendingTargetCount: 0 }
+assert.match(render(sectionPassed), /Lernweg abgeschlossen\./u,
+  'a valid section completion stays visible alongside the independent unit result')
+assert.match(render({ ...sectionPassed, navigationIntent: undefined }, { language: 'en' }),
+  /Learning section completed\./u)
 assert.match(render(open), /Prüfung direkt versuchen/u)
 assert.match(render(open), /completionProfile=profile/u)
 assert.match(render(open), /Noch nicht geschafft/u)
@@ -164,14 +180,14 @@ const renderProgress = (progress: TreeCompletionProgress, language: 'de' | 'en' 
 )
 const treeHtml = renderProgress(treeProgress)
 assert.match(treeHtml, /3 von 3 Lernzielen mit Nachweis/u)
-assert.match(treeHtml, /1 direkt nachgewiesen\. 2 fachlich angerechnet\. 0 für diesen Auftrag nicht mehr erforderlich\. 0 offen/u)
+assert.match(treeHtml, /1 direkt nachgewiesen\. 2 fachlich angerechnet\. 0 für diesen Abschnitt nicht mehr erforderlich\. 0 offen/u)
 assert.match(treeHtml, /Gewichteter Anteil mit Nachweis: 100 %/u)
 assert.match(treeHtml, /Geltungsbereich: Sekundarstufe I/u)
 assert.match(treeHtml, /<button[^>]*type="button"[^>]*aria-label=/u)
 assert.doesNotMatch(treeHtml, /100% Mastery|role="progressbar"/u)
 const englishTreeHtml = renderProgress(treeProgress, 'en')
 assert.match(englishTreeHtml, /3 of 3 learning goals with evidence/u)
-assert.match(englishTreeHtml, /1 directly demonstrated\. 2 credited through assessment\. 0 no longer required for this assignment\. 0 open/u)
+assert.match(englishTreeHtml, /1 directly demonstrated\. 2 credited through assessment\. 0 no longer required for this section\. 0 open/u)
 assert.match(englishTreeHtml, /Weighted share with evidence: 100%/u)
 const weightedTreeHtml = renderProgress({
   totalCount: 2, explicitCount: 1, implicitCount: 0, notRequiredCount: 0, openCount: 1,
@@ -186,6 +202,11 @@ assert.match(renderProgress({
   totalWeight: 100000, explicitWeight: 99999, implicitWeight: 0, notRequiredWeight: 0, openWeight: 1,
   explicitRatio: 0.99999, implicitRatio: 0,
 }), /Gewichteter Anteil mit Nachweis: 99,9 %/u, 'A small open weight must not be announced as fully completed')
+const waivedProgress = renderProgress({ totalCount: 2, explicitCount: 1, implicitCount: 0, notRequiredCount: 1, openCount: 0,
+  totalWeight: 2, explicitWeight: 1, implicitWeight: 0, notRequiredWeight: 1, openWeight: 0, explicitRatio: 0.5, implicitRatio: 0 })
+assert.match(waivedProgress, /1 von 2 Lernzielen mit Nachweis/u)
+assert.match(waivedProgress, /Gewichteter Anteil mit Nachweis: 50 %/u)
+assert.match(waivedProgress, /completion-tree-progress-implicit[^>]*width:0%/u)
 const emptyTreeHtml = renderProgress({
   totalCount: 0, explicitCount: 0, implicitCount: 0, notRequiredCount: 0, openCount: 0,
   totalWeight: 0, explicitWeight: 0, implicitWeight: 0, notRequiredWeight: 0, openWeight: 0,
@@ -196,8 +217,10 @@ assert.doesNotMatch(emptyTreeHtml, /100 %|NaN|Infinity/u)
 
 const learningEntry: LearningMapEntry = { id: 'goal', title: 'Ziel', description: '', kind: 'goal', requires: [], position: { x: 0, y: 0 } }
 const renderMapRow = (progress: LearningEntryProgress, childCount = 0) => renderToStaticMarkup(
-  <MapListItem entry={learningEntry} language="de" active={false} progress={progress} childCount={childCount}
-    onSelect={() => undefined} onOpen={() => undefined} />,
+  <MapNode id={learningEntry.id} type="learningUnit" data={{ entry: learningEntry, language: 'de', childCount, progress,
+    outsideCount: 0, ports: [], active: false, related: false, muted: false, onSelect() {}, onOpen() {} }}
+    zIndex={0} dragging={false} selected={false} selectable={false} draggable={false} deletable={false}
+    isConnectable={false} positionAbsoluteX={0} positionAbsoluteY={0} />,
 )
 const directRow = renderMapRow({ total: 1, explicit: 1, implicit: 0 })
 assert.match(directRow, /learning-map-direct-evidence/u)
@@ -205,20 +228,25 @@ assert.match(directRow, /aria-description="Direkt nachgewiesen"/u)
 const creditedRow = renderMapRow({ total: 1, explicit: 0, implicit: 1 })
 assert.match(creditedRow, /learning-map-credited-evidence/u)
 assert.match(creditedRow, /aria-description="Fachlich angerechnet"/u)
+for (const row of [directRow, creditedRow]) {
+  assert.match(row, /class="lucide lucide-check"/u)
+  assert.match(row, /stroke-width="3"/u)
+}
 const neutralRow = renderMapRow({ total: 1, explicit: 0, implicit: 0, notRequired: 1 })
 assert.match(neutralRow, /learning-map-not-required/u)
-assert.match(neutralRow, /aria-description="Für diesen Auftrag nicht mehr erforderlich"/u)
+assert.match(neutralRow, /aria-description="Für diesen Abschnitt nicht mehr erforderlich"/u)
 assert.doesNotMatch(neutralRow, /lucide-(?:shield-)?check|learning-map-(?:credited|direct)-evidence/u)
 const openRow = renderMapRow({ total: 1, explicit: 0, implicit: 0, notRequired: 0 })
 assert.match(openRow, /aria-description="Noch offen"/u)
 assert.doesNotMatch(openRow, /learning-map-(?:credited-evidence|direct-evidence|not-required)/u)
 const clusterRow = renderMapRow({ total: 17, explicit: 4, implicit: 2, notRequired: 3, sectionTitle: 'E.1' }, 17)
 assert.match(clusterRow, /6\/17 mit Nachweis/u)
-assert.match(clusterRow, /aria-description="4 direkt nachgewiesen, 2 fachlich angerechnet, 3 für diesen Auftrag nicht mehr erforderlich, 8 offen\. Geltungsbereich: E\.1"/u)
+assert.match(clusterRow, /aria-description="4 direkt nachgewiesen, 2 fachlich angerechnet, 3 für diesen Abschnitt nicht mehr erforderlich, 8 offen\. Geltungsbereich: E\.1"/u)
 assert.doesNotMatch(clusterRow, /learning-map-(?:credited|direct)-evidence/u, 'a cluster reports descendant results without assigning itself proof')
 for (const reason of ['assessment', 'no_remaining_demand', 'preparation_waived'] as const) {
   const html = renderToStaticMarkup(<CompletionWaiverIcon waiver={{ reason, sectionTitle: { de: 'Physik' }, assessments: [] }} language="de" />)
-  assert.equal(html.includes('lucide-shield-check'), reason === 'assessment')
+  assert.ok(!html.includes('lucide-shield-check'))
+  assert.equal(html.includes('lucide-check'), reason === 'assessment')
   assert.equal(html.includes('completion-tree-not-required'), reason !== 'assessment')
 }
 
@@ -230,6 +258,12 @@ try {
     core: true, weight: 1, leitideen: [], kompetenzen: [], sourceRef: '', requires: [], contains: [], examples: [],
   }
   const cluster: UiGoal = { ...atom, id: 'cluster', title: 'Abschnitt', contains: ['atom'], type: 'cluster' }
+  const passingAtom = renderToStaticMarkup(<LanguageProvider><CompetenceTree
+    rootGoals={[atom]} allGoals={new Map([[atom.id, atom]])} getMastery={() => 0.9}
+    plannedGoals={new Set()} onTogglePlan={() => undefined} onSelect={() => undefined} selectedId="" audience="learner"
+  /></LanguageProvider>)
+  assert.match(passingAtom, /class="mr-1 text-emerald-[^"]*"[^>]*><svg[^>]*data-testid="completion-tree-direct-evidence"/u,
+    'The learner sees a green check from the actual passing threshold onwards')
   const trainerTree = renderToStaticMarkup(<LanguageProvider><CompetenceTree
     rootGoals={[cluster]} allGoals={new Map([[cluster.id, cluster], [atom.id, atom]])}
     getMastery={() => 0.5} plannedGoals={new Set()} onTogglePlan={() => undefined}

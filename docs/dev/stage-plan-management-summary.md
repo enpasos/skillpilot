@@ -21,6 +21,16 @@ er erhält die Dokumentationschecks. Die große CI schließt `docs/dev/**` und
 `AGENTS.md` bei reinen Änderungen dieser Pfade derzeit aus. Der dokumentierte
 CI-Nachweis gilt weiterhin für den benannten Implementierungscommit.
 
+## 21. November 2026, 00:02 MEZ – E.1-Auftrag, Prüfungswahl und grafische Lernkarte
+
+Die Lernkarte öffnet für alle Bildschirmbreiten direkt die Grafik. Der Umschalter zur Zielliste entfällt. Ein grünes Häkchen bedeutet eigener erfolgreicher Nachweis, dieselbe Form in Grau bedeutet belegte fachliche Anrechnung. Ein reiner Wegfall der Vorbereitung erhält ein Minus. Ein abgeschlossener Abschnitt ist im Cockpit eigens gekennzeichnet. Wer nur den Abschnitt nachweist, kann die einzeln offenen Ziele weiterhin sehen und bearbeiten.
+
+**Kontrollstellen für die fachliche Sichtung.** Vom waagerechten Wurf zur Wagenaufgabe wechseln, nach C+D die verbliebenen Pflichtteile ansehen und nach A–D zwischen freiwilliger Vertiefung und einem zusätzlich gewählten Einzelauftrag unterscheiden. Die weitere Aufgabe zum waagerechten Wurf bleibt als freiwillige Zusatzprüfung mit eigenem Ergebnis erreichbar. [Einstieg in G8](http://localhost:5177/nativ/G8/B) · [Aufträge in G9](http://localhost:5177/auftraege/G9) · [Prüfabläufe](hessen-physik-e1-vorschau.md)
+
+**Automatisierte Prüfungen und Reichweite.** In der laufenden Vorschau gelang der Wechsel B→A für G8 und G9 bei 390, 761, 1024 und 1440 Pixeln. Die lokalen OpenAI-/Gemini-Prüfungen umfassten 100 erfolgreiche Tests. Sie verwenden registrierte MCP-Handler mit kontrolliertem Backendstatus. Weitere End-to-End-Prüfungen verwenden die hessischen Aufgaben und den lokalen Claude-Adapter. Die fassungsgebundenen Aufgaben, Raster und unabhängigen Fachentscheide A–D behalten ihre bestehende Geltung. Eine persönliche Teilabnahme oder Erprobung im gehosteten Coach ist gesondert zu belegen.
+
+**Integration offen.** K 0/13 und F 0/7 vollständig abgeschlossen. Dieses Paket aktiviert 0 zusätzliche Stufenpläne und ändert keine fachlichen Voraussetzungen oder Stufenplatzierungen. Ein neuer Rücklaufeffekt wurde für dieses Paket nicht gemessen. Nach technischer Prüfung und E.1-Teilabnahme folgt die weitere hessische Oberstufe gemäß dem erweiterten Übergabeauftrag. [Umfang und fachliche Tiefe](hessen-physik-sekii-uebergabe.md)
+
 ## 20. November 2026, 16:37 MEZ (UTC+01:00) – Hessen Physik E.1 in G8 und G9
 
 **Zur fachlichen Durchsicht.** Die Ballfrage eröffnet E.1. Drei Übungen und neun Themenkarten führen zu den vier Prüfungen. Wagen A verlangt 14/17, waagerechter Wurf B 15/18, senkrechter Wurf C und Beschleunigungsprotokoll D jeweils 17/20 Punkte. Vom Wurf aus lässt sich bei 1024 Pixeln die Wagenaufgabe wählen. Die Vergleichsprofile zeigen das Cockpit vor den Prüfungen, nach C+D und nach A–D. [Anleitung für G8 und G9](hessen-physik-e1-vorschau.md) · [Fachentscheid A/B](https://github.com/enpasos/skillpilot/blob/bea9d4329942a183424d2ff5615f10cdda7bdd8e/curricula/DE/Gymnasium/quality/release-model/physics-he-e1-partial-credit-review-2026-11-20.md) · [Fachentscheid C/D und kanonische Zuordnung](https://github.com/enpasos/skillpilot/blob/2c2505fecef3a3a8a561b472b52ba1f04a5a4cdb/curricula/DE/Gymnasium/quality/learning-units/physics-constant-acceleration-2026-11-20-v3.md)

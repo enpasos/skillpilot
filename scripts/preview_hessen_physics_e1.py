@@ -77,8 +77,9 @@ def create_learner(api, duration, expected_parts):
         current = request(api, learner + '/level-completion/actions', 'POST', {
             'action': 'selectProfile', 'profileId': profile, 'expectedRevision': current['learnerRevision'],
         })['levelCompletion']
-    if current.get('profileId') != profile or current.get('requiredAssessmentCount') != 5:
-        raise RuntimeError(f'{duration}: unexpected E.1 section')
+    required = {item['goalId'] for item in current.get('assessments', []) if not item.get('voluntary')}
+    if current.get('profileId') != profile or current.get('requiredAssessmentCount') != len(expected_parts) or required != set(expected_parts):
+        raise RuntimeError(f'{duration}: expected the E.1 section with its four required assessments')
     assessment = current.get('unitAssessment') or {}
     if [part['goalId'] for part in assessment.get('parts', [])] != expected_parts or assessment.get('passed') is not False:
         raise RuntimeError(f'{duration}: expected the reviewed E.1 parts in order A, B, C, D in the upper-secondary view')

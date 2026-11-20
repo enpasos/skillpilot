@@ -89,7 +89,6 @@
 .lum-scope-intro { flex-basis: 100%; }
 .lum-scope-intro h2 { margin: 0; color: var(--lum-ink); font-size: 17px; font-weight: 600; line-height: 1.35; }
 .lum-scope-intro p { max-width: 85ch; margin: 3px 0 1px; color: #495f70; font-size: 13px; line-height: 1.45; }
-.lum-board-mode { min-height: 40px; padding: 6px 12px; border: 1px solid #c5d8e8; border-radius: 5px; color: #295d82; background: #f4f8fb; cursor: pointer; }
 .lum-flashcard-action { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 8px 12px; border: 1px solid #c6d7e5; border-radius: 5px; background: #f2f7fb; color: #347295; font-size: 12px; text-align: left; }
 .lum-flashcard-action:hover { background: #e7f2fa; }
 .lum-flashcard-action:focus-visible { outline: 2px solid #347aa6; outline-offset: 2px; }
@@ -102,15 +101,15 @@
 .lum-node.is-related { border-color: #9ebbd1; }
 .lum-node.is-muted { opacity: .23; }
 .lum-node-state { display: flex; }
-.lum-node .lum-node-state.is-explicit, .lum-list-item .lum-node-state.is-explicit { color: #15a87b; }
-.lum-node .lum-node-state.is-implicit, .lum-list-item .lum-node-state.is-implicit { color: #2f8bc5; }
-.lum-node .lum-node-state.is-active, .lum-list-item .lum-node-state.is-active { color: #f59e0b; }
-.lum-node .lum-node-state.is-open, .lum-list-item .lum-node-state.is-open { color: #ef4444; }
-.lum-node .lum-node-state.is-context, .lum-list-item .lum-node-state.is-context { color: #8195a7; }
+.lum-node .lum-node-state.is-explicit { color: #15a87b; }
+.lum-node .lum-node-state.is-implicit { color: #606060; }
+.lum-node .lum-node-state.is-active { color: #f59e0b; }
+.lum-node .lum-node-state.is-open { color: #ef4444; }
+.lum-node .lum-node-state.is-context { color: #8195a7; }
 .lum-node-progress { position: absolute; bottom: 0; left: 0; right: 0; height: 3px; display: flex; overflow: hidden; border-radius: 0 0 4px 4px; background: #edf0f3; }
-.lum-node .lum-node-state.is-not-required, .lum-list-item .lum-node-state.is-not-required { color: var(--color-text-secondary, #6b7280); }
+.lum-node .lum-node-state.is-not-required { color: #606060; }
 .lum-node-progress > .is-explicit { background: #26ae88; }
-.lum-node-progress > .is-implicit { background: #3c95c9; }
+.lum-node-progress > .is-implicit { background: #737373; }
 .lum-node .react-flow__handle { opacity: 0; width: 4px; height: 4px; min-width: 0; min-height: 0; }
 .lum-node-main { display: flex; align-items: center; gap: 9px; min-width: 0; flex: 1; border: 0; background: none; padding: 8px 0 8px 10px; text-align: left; border-radius: 3px; }
 .lum-node-icon { display: flex; align-items: center; color: #718da2; flex-shrink: 0; }
@@ -150,7 +149,7 @@
 .lum-node--memory { border-left-color: #77a79a; }
 .lum-node--memory .lum-node-icon { color: #77a799; }
 .lum-context-count { position: absolute; right: 6px; bottom: 3px; color: #9ca9b3; display: flex; }
-/* Unit map: preparation goals, the order legend and boards shown as compact lists. */
+/* Unit map: preparation goals and the order legend. */
 .lum-node-tag { position: absolute; top: -8px; right: 8px; padding: 0 5px; border: 1px solid #e3c68d; border-radius: 3px; background: #fdf5e6; color: #7f5410; font-size: 9px; line-height: 14px; white-space: nowrap; }
 .lum-location-bar--toolbar { flex-wrap: wrap; }
 .lum-toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin-left: auto; font-size: 11px; color: #62778b; }
@@ -160,15 +159,6 @@
 .lum-legend-line--derived { border-top: 1.2px dashed #9aa4ae; }
 .lum-legend-line--backward { border-top: 2px dotted #d4553a; }
 .lum-legend-backward { color: #b42318; font-weight: 600; }
-.lum-list { position: absolute; inset: 0; z-index: 4; overflow: auto; padding: 2px 24px 24px; background: #fff; }
-.lum-list-note { margin: 0 0 10px; max-width: 70ch; color: #6b7c8b; font-size: 11px; }
-.lum-list ul { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 9px 8px; margin: 0; padding: 6px 0 0; list-style: none; }
-.lum-list-item { position: relative; display: flex; align-items: stretch; min-height: 50px; border: 1px solid #d8dfe5; border-left: 3px solid #7897b1; border-radius: 4px; background: #fff; }
-.lum-list-item.lum-node--assessment { border-left-color: #9285b6; }
-.lum-list-item.lum-node--memory { border-left-color: #77a79a; }
-.lum-list-item:hover { border-color: #88a5bb; }
-.lum-list-item.is-focused { border-color: #3a7fb5; box-shadow: 0 0 0 1px #3a7fb5; background: #f5faff; }
-.lum-list-item .lum-node-main { padding: 6px 4px 6px 9px; }
 .lum-subject-filter { display: inline-flex; gap: 0; border: 1px solid #d6dee5; border-radius: 4px; overflow: hidden; }
 .lum-subject-filter > button { min-height: 29px; padding: 3px 10px; border: 0; background: #fff; color: #62778b; font-size: 11px; }
 .lum-subject-filter > button + button { border-left: 1px solid #d6dee5; }
@@ -212,7 +202,7 @@
   .lum-map-summary { flex-wrap: wrap; gap: 0 12px; align-content: center; }
 }
 @media (max-width: 760px) {
-  .lum-list-item .lum-node-practice { min-height: 44px; min-width: 48px; }
+  .lum-node--has-practice .lum-node-practice { min-height: 44px; min-width: 48px; }
   .lum-topbar { padding: 0 12px; gap: 9px; height: 45px; }
   .lum-brand { gap: 6px; }
   .lum-brand > span { display: none; }
@@ -223,7 +213,6 @@
   .lum-search { grid-column: 1 / 4; grid-row: 2; width: 100%; }
   .lum-toolbar { grid-column: 1 / 4; flex-wrap: nowrap; justify-content: space-between; gap: 8px; margin-left: 0; }
   .lum-subject-filter > button { padding: 3px 8px; }
-  .lum-list { padding: 2px 12px 18px; }
   .lum-search-results { width: 100%; right: 0; }
   .lum-breadcrumb { gap: 0; }
   .lum-breadcrumb > span { gap: 0; }

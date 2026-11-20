@@ -411,15 +411,14 @@ public class ClaudeV1CoachContextProjector {
                     "guidance", dailyPlanGuidance("unavailable"));
         }
 
-        boolean unavailablePlans = status.unavailablePlanCount() > 0;
-        boolean hasOpenUnitAssignment = false;
+        boolean invalidSubjectLabels = false;
         List<LearnerPlanTodayStatus.SubjectStatus> rawSubjects =
                 status.subjects() == null ? List.of() : status.subjects();
         List<Map<String, Object>> subjects = new java.util.ArrayList<>();
         for (LearnerPlanTodayStatus.SubjectStatus subject : rawSubjects) {
             String label = subject == null ? null : safeSubjectLabel(subject.subjectLabel());
             if (label == null) {
-                unavailablePlans = true;
+                invalidSubjectLabels = true;
                 continue;
             }
             Map<String, Object> projectedSubject = new LinkedHashMap<>();
@@ -434,8 +433,6 @@ public class ClaudeV1CoachContextProjector {
             if (subject.unitAssignments() != null && !subject.unitAssignments().isEmpty()) {
                 projectedSubject.put("unitAssignments", subject.unitAssignments().stream()
                         .map(this::projectUnitAssignment).toList());
-                hasOpenUnitAssignment |= subject.unitAssignments().stream().anyMatch(item -> "active".equals(item.status()));
-                unavailablePlans |= subject.unitAssignments().stream().anyMatch(item -> "unavailable".equals(item.status()));
             }
             subjects.add(Map.copyOf(projectedSubject));
         }
@@ -461,15 +458,7 @@ public class ClaudeV1CoachContextProjector {
         projected.put(
                 "resumeAvailable",
                 status.followLearningPlans() && status.resumeAvailable() && !hasActiveGoal);
-        boolean canAutomaticallyResume = Boolean.TRUE.equals(projected.get("resumeAvailable"))
-                && status.automaticResumeAvailable();
-        String guidanceState = !status.followLearningPlans() ? "paused"
-                : hasActiveGoal ? "continue"
-                : status.asOf() == null || subjects.isEmpty() ? "unavailable"
-                : hasOpenUnitAssignment && (status.periodQuotaFulfilled() || !canAutomaticallyResume) ? "unitChoice"
-                : status.periodQuotaFulfilled()
-                        ? (unavailablePlans || !status.evaluable() ? "unavailable" : "complete")
-                : canAutomaticallyResume ? "resume" : "blocked";
+        String guidanceState = status.coachGuidanceState(hasActiveGoal, !subjects.isEmpty(), invalidSubjectLabels);
         projected.put("guidance", dailyPlanGuidance(guidanceState));
         return Map.copyOf(projected);
     }
@@ -482,11 +471,21 @@ public class ClaudeV1CoachContextProjector {
             result.put("passedParts", assignment.passedParts());
             result.put("requiredParts", assignment.requiredParts());
         }
+        if (!assignment.voluntaryGoals().isEmpty()) {
+            result.put("voluntaryGoalTitles", assignment.voluntaryGoals().stream()
+                    .map(LearnerPlanTodayStatus.VoluntaryGoal::title)
+                    .map(this::safeSubjectLabel).filter(java.util.Objects::nonNull).distinct().toList());
+        }
         return result;
     }
 
     private Map<String, Object> dailyPlanGuidance(String state) {
         String instruction = switch (state) {
+            case "unitComplete" -> "The explicitly chosen unit assignment is complete. Report its backend status text "
+                    + "verbatim when asked. On a request to continue, offer voluntary study using the completed unit's "
+                    + "voluntaryGoalTitles and await the learner's choice. With no listed goals, offer to stop or choose a new assignment. Use current choices for that section, "
+                    + "or guide the learner to its individual goals in the Cockpit. Do not automatically start a "
+                    + "goal or exam or treat optional work as required.";
             case "unitChoice" -> "Report the backend plan text verbatim when asked for status. "
                     + "An explicit unit assignment still has outstanding parts. On a request to work on that unit, "
                     + "offer available parts from the current published assessment choices and await a choice. "
