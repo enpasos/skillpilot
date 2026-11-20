@@ -5,6 +5,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.ai.CoachStateProjection;
 import com.skillpilot.backend.ai.CoachToolFacade;
+import com.skillpilot.backend.ai.ExamGradingGuidance;
 import com.skillpilot.backend.api.ActiveGoalRequest;
 import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.LearnerLearningPlanApi;
@@ -2664,15 +2665,7 @@ public final class OpenAiDeV1McpContractAdapter {
                         response.goalId(),
                         metadata),
                 localized(metadata,
-                        "Bewerte die bereits vollständig vorliegende Abgabe Schritt für Schritt nach jedem Rasterkriterium "
-                                + "und ausschließlich anhand sichtbar vorliegender Leistung. Die Musterlösung ist nur Referenz: "
-                                + "Fachlich gleichwertige Ergebnisse, Darstellungen, Rundungen, Begründungen und korrekte "
-                                + "alternative Lösungswege zählen voll, sofern Aufgabe oder Raster keine bestimmte Antwortform "
-                                + "verlangt; ausdrückliche Anforderungen bleiben verbindlich. Fehlt eine ausdrücklich geforderte "
-                                + "Deutung oder Begründung, erhält genau dieser Teil keine Punkte; trenne Teilpunkte sauber und "
-                                + "begründe jeden Abzug konkret. Bewerte abschließend ohne Nachfrage. Benenne Unleserliches als "
-                                + "solches und erfinde daraus keinen konkreten fachlichen Fehler. Lege Punktzahl und Ergebnis "
-                                + "für diese Abgabe abschließend fest. Speichere bei mindestens passingPoints sofort "
+                        ExamGradingGuidance.DE + " Lege das Ergebnis ohne Nachfrage fest. Speichere bei mindestens passingPoints sofort "
                                 + "Mastery mit dieser unveränderten evaluationCapability und earnedPoints, ohne separate "
                                 + "Zustimmung zum Abschluss. Behaupte Speicherung erst nach bestätigtem Erfolg. Bei "
                                 + "Nichtbestehen speichere weder Versuch noch Mastery; dieselbe Prüfung darf unbegrenzt "
@@ -2680,15 +2673,7 @@ public final class OpenAiDeV1McpContractAdapter {
                                 + "Aufgabe und Musterlösung, biete Rückfragen oder Weitergehen an und warte auf die Antwort. "
                                 + "Ein bloßes Weitergehen ändert das Urteil nicht; nur neue fachliche Leistung oder ein "
                                 + "tatsächlicher Bewertungsfehler rechtfertigen eine Neubewertung. Sende keine Gesprächsinhalte an SkillPilot.",
-                        "Assess the complete visible submission step by step against every rubric criterion and only "
-                                + "from visible work. The sample solution is a reference, not a wording requirement. Give "
-                                + "full credit for technically equivalent results, representations, rounding, reasoning, and "
-                                + "correct alternative approaches unless the task or rubric requires a specific form. Explicit "
-                                + "requirements remain binding. If a required interpretation or justification is missing, "
-                                + "withhold only those points, separate partial credit cleanly, and justify every deduction. "
-                                + "Complete the assessment without another question. Identify unreadable content as unreadable "
-                                + "and do not invent a specific subject error. Fix the score and verdict for this submission. "
-                                + "With at least passingPoints, save mastery immediately using this unchanged "
+                        ExamGradingGuidance.EN + " With at least passingPoints, save mastery immediately using this unchanged "
                                 + "evaluationCapability and earnedPoints, without separate closure consent. Claim it was "
                                 + "saved only after confirmed success. On failure, write neither the attempt nor mastery; "
                                 + "the same exam may be retried without a limit. Then give the full feedback and score "

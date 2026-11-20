@@ -806,6 +806,10 @@ jobs:
         run: npm run test:learning-unit-contracts
       - name: Validate authored learning-unit contracts
         run: npm run validate:learning-units
+      - name: Check pass marks of new and revised canonical assessments
+        run: |
+          python3 -B ../scripts/test_exam_pass_marks.py
+          python3 -B ../scripts/check_exam_pass_marks.py --base "$SEMANTIC_ROUTE_POLICY_BASE"
       - name: Check learning-unit assessments against their sources
         run: npm run check:learning-unit-assessments
       - name: Test knowledge-context derivation
