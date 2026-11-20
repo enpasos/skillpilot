@@ -21,15 +21,15 @@ er erhält die Dokumentationschecks. Die große CI schließt `docs/dev/**` und
 `AGENTS.md` bei reinen Änderungen dieser Pfade derzeit aus. Der dokumentierte
 CI-Nachweis gilt weiterhin für den benannten Implementierungscommit.
 
-## 20. November 2026, 08:59 MEZ (UTC+01:00) – Hessen Physik E.1 in G8 und G9
+## 20. November 2026, 09:19 MEZ (UTC+01:00) – Hessen Physik E.1 in G8 und G9
 
 **Zur Teilabnahme.** In der [lokalen Vorschau](hessen-physik-e1-vorschau.md) die Ballfrage und eine der drei Übungen öffnen, von der Wurfaufgabe zur Wagenaufgabe wechseln und die vier Aufgaben unter **Einheitenprüfung** vergleichen. A verlangt 14/17, B 15/18, C und D je 17/20 Punkte. Neun Themenkarten stehen zum Üben bereit. Die fachliche Gesamtfreigabe erteilt der Product Owner gesondert. [Fachentscheid A/B](https://github.com/enpasos/skillpilot/blob/bea9d4329942a183424d2ff5615f10cdda7bdd8e/curricula/DE/Gymnasium/quality/release-model/physics-he-e1-partial-credit-review-2026-11-20.md) · [Fachentscheid C/D](../concept/skill-graph/examples/hessen-physik-e1/entwuerfe-kindeinheit/unabhaengiges-fachreview.md)
 
-**Wirkung und Prüfstand.** Vier bestandene Aufgaben ergeben E.1 und vier der fünf Abschnittsprüfungen. C und D decken zusammen zwei weitere Positionen im Lernplan. Alle elf Fachziele bleiben einzeln erlernbar. 67 Backendtests, 15 Beleg-/Migrationstests und 31 Claude-App-Tests bestanden. Die Erprobung echter Schülerantworten im Claude-Client steht aus. Der isolierte Start des Mathematik-Pilotpakets bestand 15/15 Prüfungen. [Paketbelege](https://github.com/enpasos/skillpilot/actions/runs/44693316086/artifacts/14611546629)
+**Wirkung und Prüfstand.** Vier bestandene Aufgaben ergeben E.1 und vier der fünf Abschnittsprüfungen. C und D decken zusammen zwei weitere Positionen im Lernplan. Alle elf Fachziele bleiben einzeln erlernbar. 67 Backendtests, 15 Beleg-/Migrationstests und 31 Claude-App-Tests bestanden. In Chromium gelangen 15 Kartenwechsel und vier Erststarts. Bei 1024 Pixeln sind Wagen und Wurf in beiden Bildungsgängen lesbar. Drei aufeinanderfolgende Zielwechsel lösten vorher je zwei, jetzt null ELK-Layoutaufträge aus. Echte Schülerantworten im Claude-Client bleiben zu erproben. Der isolierte Start des Mathematik-Pilotpakets bestand 15/15 Prüfungen. [Paketbelege](https://github.com/enpasos/skillpilot/actions/runs/44693316086/artifacts/14611546629)
 
 **Fortschritt und Integration.** K 0/13, F 0/7 abgeschlossen, 0 Stufenpläne aktiviert. In acht hessischen Ansichten mit je Prüfstand 367 Tafeln blieb E.1 vor und nach der Änderung ohne Rückgriff. Ein bestehender Rückgriff Q2→Q1 liegt außerhalb von E.1. Physik bleibt bei M7 mit 854 Zielen und 485/485 fachlichen Atomen je Qualitätsdimension. Die neun hessischen Konfigurationen erreichen beide geprüften Aufgaben der Untereinheit. Die zwölf schon auf `main` offenen Konfigurationen in BW und BY sind dokumentiert. [Qualitätsstand](../qa-ci/status/curriculum-quality-status.de.md) · [Vergleich der drei Prüfstände](hessen-physik-sekii-uebergabe.md#prüfungsdeckung-in-den-angebotenen-ansichten)
 
-[PR #171](https://github.com/enpasos/skillpilot/pull/171) ist offen. Nächste Schritte sind die Browserprüfung bei 1024 Pixeln, die fachliche E.1-Teilabnahme und die Integrations-CI.
+[PR #171](https://github.com/enpasos/skillpilot/pull/171) ist offen. Zur Sichtprüfung stehen E.1 und die [große Mathematiktafel](http://localhost:5177/vergleich/mathematik) bereit. Die persönliche E.1-Teilabnahme und die Integrations-CI stehen aus.
 
 ## 20. November 2026, 02:05 MEZ (UTC+01:00) – Prüfungsbelege in Hessen Physik E.1
 
