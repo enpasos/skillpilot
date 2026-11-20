@@ -108,7 +108,7 @@ Die Spalte „Planungswirkung“ gehört zur geprüften Fassung. Frühere Ergebn
 
 **A und B sind im Vorschlag zwei eigene neue Prüfungen.** Jede erhält eine eigene Prüfungskennung und verlangt eine vollständige Abgabe. Die Lernenden erhalten vorher die gesamte Aufgabenstellung mit allen dafür benötigten Daten. Das folgende Raster dient der Bewertung nach der Abgabe. A prüft die begründete Vorhersage eines Auslaufs einschließlich Unsicherheit, Modellgrenze und Fehlerarten. B prüft die Verbindung von gleichförmiger Bewegung und Fallbeschleunigung über dieselbe Zeit. Beide zusammen ersetzen die zwei Prüfungen der enthaltenen Einheit nicht und ergeben allein keinen E.1-Abschluss.
 
-Die zweisprachigen Entwürfe enthalten Aufgabenstellung, Musterlösung und Bewertungsraster. [A · Wagen](examples/hessen-physik-e1/wagen.json) · [B · Wurf](examples/hessen-physik-e1/wurf.json)
+Die zweisprachigen Entwürfe enthalten Aufgabenstellung, Musterlösung und Bewertungsraster. Der maschinenlesbare Umfang bindet beide Fassungen an die bestehende Kindrevision und benennt die Planungswirkung für alle elf Inhaltsziele. [A · Wagen](examples/hessen-physik-e1/wagen.json) · [B · Wurf](examples/hessen-physik-e1/wurf.json) · [Vier Prüfungsteile und elf Inhaltsziele](examples/hessen-physik-e1/umfang.json)
 
 **A · Wann überquert der Wagen die rote Linie?**
 
