@@ -34,7 +34,7 @@ class ClaudeV1CompletionReceiptCapabilityTest {
         assertThatThrownBy(() -> expired.verifyCompletionContractCapability(receipt, SESSION, "a".repeat(64)))
                 .isInstanceOf(ClaudeV1CapabilityService.CapabilityException.class);
         var service = service(Duration.ofMinutes(2));
-        String evaluation = service.mintExamEvaluationCapability(SESSION, "a".repeat(64), 7);
+        String evaluation = service.mintExamEvaluationCapability(SESSION, "a".repeat(64), 7, "a".repeat(64));
         assertThatThrownBy(() -> service.verifyCompletionContractCapability(evaluation, SESSION, "a".repeat(64)))
                 .isInstanceOf(ClaudeV1CapabilityService.CapabilityException.class);
         assertThatThrownBy(() -> service.verifyExamEvaluationCapability(

@@ -17,6 +17,7 @@ import com.skillpilot.backend.api.ScopeRequest;
 import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
 import com.skillpilot.backend.api.UpdateCurriculumRequest;
 import com.skillpilot.backend.api.VerifiedRecallAnswerRequest;
+import com.skillpilot.backend.api.VerifiedExamPassResponse;
 import com.skillpilot.backend.api.VerifiedRecallAnswerResponse;
 import com.skillpilot.backend.api.VerifiedRecallBatchAnswerRequest;
 import com.skillpilot.backend.api.VerifiedRecallBatchAnswerResponse;
@@ -33,11 +34,14 @@ import com.skillpilot.backend.service.ChatSessionService;
 import com.skillpilot.backend.service.LearnerLearningPlanService;
 import com.skillpilot.backend.service.LearnerLifecycleService;
 import com.skillpilot.backend.service.LearnerService;
+import com.skillpilot.backend.service.VerifiedExamPassService;
+import com.skillpilot.backend.completion.AssessmentMaterialRevision;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -125,6 +129,8 @@ public class CoachToolFacade {
     private final LearnerLifecycleService learnerLifecycle;
     private final LearnerLearningPlanService learnerLearningPlanService;
     private ContentMaterialResolver contentMaterialResolver;
+    @Autowired
+    private VerifiedExamPassService verifiedExamPassService;
     private final ThreadLocal<SessionActivityScope> activeSessionActivity = new ThreadLocal<>();
 
     public CoachToolFacade(
@@ -673,7 +679,21 @@ public class CoachToolFacade {
             String skillpilotId,
             ExamEvaluationRequest request) {
         learnerService.assertActiveLearnerRouteAccess(skillpilotId);
-        UnifiedLearnerStateResponse state = learnerService.getCoachLearnerState(skillpilotId);
+        return evaluateActiveExam(skillpilotId, request, learnerService.getCoachLearnerState(skillpilotId));
+    }
+
+    /** Use the same authenticated snapshot for the task, solution and rubric in a single tool call. */
+    public ExamEvaluationResult getExamEvaluation(String skillpilotId, ExamEvaluationRequest request,
+            UnifiedLearnerStateResponse state) {
+        learnerService.assertActiveLearnerRouteAccess(skillpilotId);
+        if (state == null || !Objects.equals(state.skillpilotId(), skillpilotId)) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Reload the current learner context.");
+        }
+        return evaluateActiveExam(skillpilotId, request, state);
+    }
+
+    private ExamEvaluationResult evaluateActiveExam(String skillpilotId, ExamEvaluationRequest request,
+            UnifiedLearnerStateResponse state) {
         if (request == null || request.goalId() == null || request.goalId().isBlank()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "goalId must not be empty.");
         }
@@ -692,6 +712,16 @@ public class CoachToolFacade {
                 exam.getSolutionContent(),
                 exam.getSolutionContentEn(),
                 examScoring(exam.getScoring()));
+    }
+
+    /** Called only after a scored exam and canonical mastery write in the same learner transaction. */
+    public void recordVerifiedExamPass(String skillpilotId, String goalId, AssessmentMaterialRevision revision,
+            double earnedPoints, double maxPoints, double passingPoints) {
+        verifiedExamPassService.record(skillpilotId, goalId, revision, earnedPoints, maxPoints, passingPoints);
+    }
+
+    public Optional<VerifiedExamPassResponse> latestExamPass(String skillpilotId, String goalId) {
+        return verifiedExamPassService.latestForGoal(skillpilotId, goalId);
     }
 
     public UnifiedLearnerStateResponse setCurriculum(String skillpilotId, UpdateCurriculumRequest request) {

@@ -18,6 +18,7 @@ import { LogoutButton } from '../components/LogoutButton'
 import { LearnerDataManagementDialog } from '../components/LearnerDataManagementDialog'
 import { GoalCard } from '../components/GoalCard'
 import { MaterialSelectionPanel } from '../components/MaterialSelectionPanel'
+import { GoalExamPassHistory } from '../components/GoalExamPassHistory'
 import { GoalAdditionalMaterials } from '../components/GoalAdditionalMaterials'
 import { LearnerGoalFeedbackAction } from '../components/LearnerGoalFeedbackAction'
 import { LearnerFeedbackLink } from '../components/LearnerFeedbackLink'
@@ -3966,6 +3967,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                       activeFilter={effectiveActiveFilter}
                     />
                   )}
+
+                <GoalExamPassHistory goal={currentGoal} skillpilotId={skillpilotId} language={localizedLanguage} />
 
                 {selectedGoalAssessments.length > 0 ? <div data-testid="selected-goal-assessment-shortcuts" className="mt-3 flex flex-col items-start gap-2 text-sm">
                   {selectedGoalAssessments.map(({ profileId, profileTitle, assessment }) => <div key={profileId} className="flex flex-wrap items-center gap-3">

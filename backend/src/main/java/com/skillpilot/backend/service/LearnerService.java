@@ -165,6 +165,9 @@ public class LearnerService {
     @Autowired
     private LearnerGoalCompletionService goalCompletionService;
 
+    @Autowired
+    private VerifiedExamPassService verifiedExamPassService;
+
     @Autowired(required = false)
     private CompletionApplicationService completionApplicationService;
 
@@ -12944,7 +12947,9 @@ public class LearnerService {
 
     @Transactional(readOnly = true, isolation = org.springframework.transaction.annotation.Isolation.REPEATABLE_READ)
     public SignedLearnerDataDTO exportLearner(String skillpilotId) {
-        Learner learner = getLearner(skillpilotId);
+        // Related rows may already have put a learner proxy in this transaction.
+        // Always sign and return the same portable learner representation.
+        Learner learner = org.hibernate.Hibernate.unproxy(getLearner(skillpilotId), Learner.class);
         Map<String, MasteryEntryDTO> mastery = getMasteryWithTimestamps(skillpilotId);
         List<String> planned = hasCompletedPersonalCurriculum(learner)
                 ? getPlannedGoals(skillpilotId)
@@ -13081,7 +13086,8 @@ public class LearnerService {
                 plannedGoals,
                 learner.getCopySources(),
                 learningPlans,
-                exportPortableSrsData(learner.getSkillpilotId()));
+                exportPortableSrsData(learner.getSkillpilotId()),
+                verifiedExamPassService.export(learner.getSkillpilotId()));
         String signature = calculateSignature(data);
         return new SignedLearnerDataDTO(data, signature);
     }
@@ -13206,7 +13212,8 @@ public class LearnerService {
         Learner existing = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
                 .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
         Map<String, Map<String, Object>> restoredSrs = preparePortableSrsRestore(existing, importedSrs);
-        // ... rest of logic
+        verifiedExamPassService.restoreOwnArchive(existing, data,
+                com.skillpilot.backend.openai.de.OpenAiDeSecureModeValidation.isValidSigningSecret(signingSecret));
 
         // Provenance / Chain of Custody
         Map<String, CopySource> candidateCopySources = new LinkedHashMap<>();

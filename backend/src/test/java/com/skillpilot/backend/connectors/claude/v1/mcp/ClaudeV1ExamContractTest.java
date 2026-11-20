@@ -119,7 +119,7 @@ class ClaudeV1ExamContractTest {
 
     @Test
     void theEvaluationCapabilityIsBoundToSessionGoalAndRevision() {
-        String capability = capabilityService.mintExamEvaluationCapability(connectionId, EXAM_GOAL_ID, 2L);
+        String capability = capabilityService.mintExamEvaluationCapability(connectionId, EXAM_GOAL_ID, 2L, "a".repeat(64));
 
         ClaudeV1CapabilityService.ExamEvaluationClaim claim =
                 capabilityService.verifyExamEvaluationCapability(capability, connectionId, EXAM_GOAL_ID);
@@ -131,7 +131,7 @@ class ClaudeV1ExamContractTest {
     @Test
     void anEvaluationCapabilityFromAnotherSessionCannotSaveMastery() {
         String foreignCapability =
-                capabilityService.mintExamEvaluationCapability(otherConnectionId, EXAM_GOAL_ID, 2L);
+                capabilityService.mintExamEvaluationCapability(otherConnectionId, EXAM_GOAL_ID, 2L, "a".repeat(64));
 
         assertThrows(ClaudeV1CapabilityService.CapabilityException.class, () ->
                 capabilityService.verifyExamEvaluationCapability(foreignCapability, connectionId, EXAM_GOAL_ID));
@@ -139,7 +139,7 @@ class ClaudeV1ExamContractTest {
 
     @Test
     void anEvaluationCapabilityForAnotherGoalIsRefused() {
-        String capability = capabilityService.mintExamEvaluationCapability(connectionId, "goal_exam_other", 2L);
+        String capability = capabilityService.mintExamEvaluationCapability(connectionId, "goal_exam_other", 2L, "a".repeat(64));
 
         assertThrows(ClaudeV1CapabilityService.CapabilityException.class, () ->
                 capabilityService.verifyExamEvaluationCapability(capability, connectionId, EXAM_GOAL_ID));

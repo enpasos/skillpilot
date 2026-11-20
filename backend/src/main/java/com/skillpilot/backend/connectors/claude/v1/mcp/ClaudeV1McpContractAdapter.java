@@ -24,6 +24,7 @@ import com.skillpilot.backend.api.VerifiedRecallBatchResultRequest;
 import com.skillpilot.backend.api.VerifiedRecallBatchResultResponse;
 import com.skillpilot.backend.api.VerifiedRecallPromptCard;
 import com.skillpilot.backend.api.VerifiedRecallPromptResponse;
+import com.skillpilot.backend.completion.AssessmentMaterialRevision;
 import com.skillpilot.backend.connectors.claude.v1.ClaudeV1Contract;
 import com.skillpilot.backend.connectors.claude.v1.ClaudeV1Properties;
 import com.skillpilot.backend.connectors.claude.v1.ConditionalOnClaudeV1Enabled;
@@ -1342,7 +1343,9 @@ public class ClaudeV1McpContractAdapter {
         } catch (ClaudeV1CapabilityService.CapabilityException e) {
             return error(
                     ClaudeV1ErrorCode.CAPABILITY_MISMATCH,
-                    "The supplied capability is missing, expired or does not belong to this context.");
+                    ClaudeV1Contract.TOOL_SET_MASTERY.equals(toolName)
+                            ? "Reload the active exam task and get its evaluation again before grading and saving."
+                            : "The supplied capability is missing, expired or does not belong to this context.");
         } catch (ClaudeV1LearningSessionException e) {
             ClaudeV1ErrorCode code = e.reason() == ClaudeV1LearningSessionException.Reason.EXPIRED
                     ? ClaudeV1ErrorCode.SESSION_EXPIRED
@@ -1644,10 +1647,8 @@ public class ClaudeV1McpContractAdapter {
             if (active == null || !goalId.equals(active.id()) || !isExamGoal(active)) {
                 throw new ToolConflictException("The cited goal is not the active exam goal.");
             }
-            CoachToolFacade.ExamEvaluationResult evaluation = coachToolFacade.getExamEvaluation(
-                    ctx.skillpilotId(),
-                    new CoachToolFacade.ExamEvaluationRequest(goalId));
-            requireValidExamEvaluation(evaluation, goalId);
+            ReleasedExam released = releasedExam(ctx.skillpilotId(), state);
+            CoachToolFacade.ExamEvaluationResult evaluation = released.evaluation();
 
             Map<String, Object> response = new LinkedHashMap<>();
             response.put("goalId", evaluation.goalId());
@@ -1657,7 +1658,7 @@ public class ClaudeV1McpContractAdapter {
                     contextProjector.projectReleasedEvaluationContent(evaluation.solutionContentEn()));
             response.put("scoring", evaluation.scoring());
             response.put("evaluationCapability", capabilityService.mintExamEvaluationCapability(
-                    connectionId, evaluation.goalId(), ctx.stateVersion()));
+                    connectionId, evaluation.goalId(), ctx.stateVersion(), released.revision().fingerprint()));
             return response;
         }).value();
     }
@@ -2023,11 +2024,12 @@ public class ClaudeV1McpContractAdapter {
                                 "Normal coach mastery is permitted only for the active non-memory atomic goal.");
                     }
 
+                    ReleasedExam passedExam = null;
                     if (isExamGoal(active)) {
-                        applyExamMasteryRules(
+                        passedExam = applyExamMasteryRules(
                                 connectionId,
                                 ctx.skillpilotId(),
-                                goalId,
+                                state,
                                 evaluationCapability,
                                 earnedPoints,
                                 ctx.stateVersion());
@@ -2052,6 +2054,11 @@ public class ClaudeV1McpContractAdapter {
                             || Double.compare(result.update().savedMastery(), 1.0) != 0) {
                         throw new IllegalStateException(
                                 "The canonical mastery operation returned an inconsistent completion result.");
+                    }
+                    if (passedExam != null) {
+                        CoachToolFacade.ExamScoring scoring = passedExam.evaluation().scoring();
+                        coachToolFacade.recordVerifiedExamPass(ctx.skillpilotId(), goalId, passedExam.revision(),
+                                earnedPoints, scoring.maxPoints(), scoring.passingPoints());
                     }
                     long successorStateVersion = ctx.currentStateVersion();
                     Map<String, Object> successorContext = contextProjector.projectMasteryContext(
@@ -2102,10 +2109,10 @@ public class ClaudeV1McpContractAdapter {
      * Enforces the canonical exam gate: the capability must belong to this connection and goal, and
      * the score must lie inside the released rubric and reach the passing threshold.
      */
-    private void applyExamMasteryRules(
+    private ReleasedExam applyExamMasteryRules(
             String connectionId,
             String skillpilotId,
-            String goalId,
+            UnifiedLearnerStateResponse state,
             String evaluationCapability,
             Double earnedPoints,
             long stateVersion) {
@@ -2118,12 +2125,15 @@ public class ClaudeV1McpContractAdapter {
         if (!Double.isFinite(earnedPoints)) {
             throw new ToolInputException("earnedPoints must be a finite number.");
         }
-        capabilityService.verifyExamEvaluationCapability(
-                evaluationCapability, connectionId, goalId, stateVersion);
-
-        CoachToolFacade.ExamEvaluationResult evaluation = coachToolFacade.getExamEvaluation(
-                skillpilotId, new CoachToolFacade.ExamEvaluationRequest(goalId));
-        requireValidExamEvaluation(evaluation, goalId);
+        var claim = capabilityService.verifyExamEvaluationCapability(
+                evaluationCapability, connectionId, state.activeGoal().id(), stateVersion);
+        ReleasedExam released = releasedExam(skillpilotId, state);
+        if (!released.revision().fingerprint().equals(claim.materialFingerprint())) {
+            throw new ToolConflictException("The exam materials have changed. Reload the active exam task and "
+                    + "get its evaluation again before grading and saving. If the task changed, first obtain "
+                    + "the learner's submission for the current task.");
+        }
+        CoachToolFacade.ExamEvaluationResult evaluation = released.evaluation();
         if (earnedPoints < 0.0 || earnedPoints > evaluation.scoring().maxPoints()) {
             throw new ToolInputException("earnedPoints lies outside the released scoring rubric.");
         }
@@ -2133,6 +2143,24 @@ public class ClaudeV1McpContractAdapter {
                             + "score, explain the evaluation, discuss the task and released sample solution, "
                             + "and invite questions or a "
                             + "new attempt. The same exam goal remains active and may be retried.");
+        }
+        return released;
+    }
+
+    private record ReleasedExam(CoachToolFacade.ExamEvaluationResult evaluation, AssessmentMaterialRevision revision) {}
+
+    private ReleasedExam releasedExam(String skillpilotId, UnifiedLearnerStateResponse state) {
+        FrontierGoal active = state.activeGoal();
+        CoachToolFacade.ExamEvaluationResult evaluation = coachToolFacade.getExamEvaluation(
+                skillpilotId, new CoachToolFacade.ExamEvaluationRequest(active.id()), state);
+        requireValidExamEvaluation(evaluation, active.id());
+        if (active.examData() == null) {
+            throw new ToolConflictException("The active exam has no released task.");
+        }
+        try {
+            return new ReleasedExam(evaluation, AssessmentMaterialRevision.of(active.examData(), evaluation));
+        } catch (IllegalArgumentException e) {
+            throw new ToolConflictException("The active exam has incomplete or inconsistent evaluation materials.");
         }
     }
 

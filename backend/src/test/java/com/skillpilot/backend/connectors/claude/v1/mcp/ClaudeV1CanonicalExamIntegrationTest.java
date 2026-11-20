@@ -13,12 +13,14 @@ import com.skillpilot.backend.domain.LearningState;
 import com.skillpilot.backend.repository.LearnerRepository;
 import com.skillpilot.backend.repository.MasteryRepository;
 import com.skillpilot.backend.service.LearnerService;
+import com.skillpilot.backend.service.VerifiedExamPassService;
 import io.modelcontextprotocol.common.McpTransportContext;
 import io.modelcontextprotocol.spec.McpSchema;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.UUID;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,8 +34,8 @@ import org.springframework.test.context.TestPropertySource;
 /**
  * Real canonical-data regression for loading the cuboid exam reported in the Claude beta.
  * No facade, learner service, projection, repository, or curriculum loader is mocked.
- * The synthetic learner starts with a persisted active exam; this tests retrieval, not grading
- * or proof that a submission took place in the external Claude conversation.
+ * The synthetic learner starts with a persisted active exam. Scores in the write test
+ * are supplied through MCP to verify the canonical write and receipt transaction.
  */
 @SpringBootTest
 @ActiveProfiles("test")
@@ -54,6 +56,7 @@ class ClaudeV1CanonicalExamIntegrationTest {
     @Autowired private ClaudeV1McpContractAdapter contractAdapter;
     @Autowired private ClaudeV1CapabilityService capabilityService;
     @Autowired private LearnerService learnerService;
+    @Autowired private VerifiedExamPassService examPasses;
     @Autowired private LearnerRepository learnerRepository;
     @Autowired private MasteryRepository masteryRepository;
     @Autowired private ClaudeV1LearningSessionRepository sessionRepository;
@@ -139,6 +142,36 @@ class ClaudeV1CanonicalExamIntegrationTest {
         String deniedPayload = ((McpSchema.TextContent) denied.content().getFirst()).text();
         assertThat(deniedPayload).contains("CONFLICT")
                 .doesNotContain("solutionContent", "passingPoints", "evaluationCapability");
+    }
+
+    @Test
+    void passingTheReleasedExamThroughMcpRecordsOnlyThatExamsMasteryAndScoredMaterial() throws Exception {
+        var bound = createLearnerWithActiveExam();
+        String session = bound.connectionId();
+        String learnerId = bound.learnerId();
+        SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(
+                session, "unused", List.of(new SimpleGrantedAuthority("SCOPE_" + ClaudeV1Contract.SCOPE_READ),
+                        new SimpleGrantedAuthority("SCOPE_" + ClaudeV1Contract.SCOPE_WRITE))));
+        long stateVersion = learnerRepository.findById(learnerId).orElseThrow().getCoachStateRevision();
+        String evaluation = successfulCall(session, ClaudeV1Contract.TOOL_GET_EXAM_EVALUATION, Map.of("goalId", EXAM_ID))
+                .get("evaluationCapability").toString();
+        var released = capabilityService.verifyExamEvaluationCapability(evaluation, session, EXAM_ID, stateVersion);
+        var arguments = Map.<String, Object>of("goalId", EXAM_ID, "evaluationCapability", evaluation, "earnedPoints", 5.0,
+                "expectedStateVersion", stateVersion, "clientRequestId", UUID.randomUUID().toString());
+
+        Map<String, Object> result = successfulCall(session, ClaudeV1Contract.TOOL_SET_MASTERY, arguments);
+        assertThat(result).containsEntry("savedGoalId", EXAM_ID).containsEntry("earnedPoints", 5.0);
+        assertThat(successfulCall(session, ClaudeV1Contract.TOOL_SET_MASTERY, arguments)).isEqualTo(result);
+        assertThat(masteryRepository.findByLearner_SkillpilotId(learnerId)).singleElement().satisfies(mastery -> {
+            assertThat(mastery.getGoalKey()).isEqualTo(EXAM_ID);
+            assertThat(mastery.getValue()).isEqualTo(1.0);
+        });
+        assertThat(examPasses.findForGoal(learnerId, EXAM_ID)).singleElement().satisfies(pass -> {
+            assertThat(pass.earnedPoints()).isEqualTo(5.0);
+            assertThat(pass.maxPoints()).isEqualTo(10.0);
+            assertThat(pass.passingPoints()).isEqualTo(5.0);
+            assertThat(pass.fingerprint()).isEqualTo(released.materialFingerprint());
+        });
     }
 
     private ClaudeV1TestFixtures.BoundLearner createLearnerWithActiveExam() {

@@ -303,6 +303,14 @@ public class ClaudeV1CoachContextProjector {
             List<Map<String, Object>> activities = detail.activities().stream().map(activity -> projectUnitActivity(
                     activity, choices, curriculumId, activeGoalId, stateVersion))
                     .filter(activity -> !guidedPlan || activity.containsKey("action")).toList();
+            for (var activity : activities) {
+                if ("assessment".equals(activity.get("kind"))) {
+                    coachToolFacade.latestExamPass(skillpilotId, (String) activity.get("goalId"))
+                            .ifPresent(pass -> activity.put("latestRecordedPass", Map.of(
+                                    "passedAt", pass.passedAt().toString(), "earnedPoints", pass.earnedPoints(),
+                                    "maxPointsAtAssessment", pass.maxPoints(), "passingPointsAtAssessment", pass.passingPoints())));
+                }
+            }
             if (!activities.isEmpty()) result.put("activities", activities);
         }
         return result;

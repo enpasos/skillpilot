@@ -22,6 +22,7 @@ import com.skillpilot.backend.api.OrientationOutlook;
 import com.skillpilot.backend.api.PersonalizationPlan;
 import com.skillpilot.backend.api.StateMachineInfo;
 import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
+import com.skillpilot.backend.api.VerifiedExamPassResponse;
 import com.skillpilot.backend.completion.CompletionCallContext;
 import com.skillpilot.backend.content.ContentMaterialResolver;
 import com.skillpilot.backend.landscape.LandscapeFilter;
@@ -37,6 +38,27 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 class ClaudeV1CoachContextProjectorTest {
+
+    @Test
+    void unitOffersShowOnlyTheHistoricalScoreOfTheMatchingAssessment() {
+        var facade = mock(CoachToolFacade.class);
+        var projector = new ClaudeV1CoachContextProjector(new CoachStateProjection("https://skillpilot.com"), facade);
+        when(facade.getLearnerState("learner")).thenReturn(state(null, List.of(), "setActiveGoal"));
+        var exam = new ActiveGoalContext.Activity("exam", "Wurf", "assessment", "E.1", "cockpit", null);
+        var memory = new ActiveGoalContext.Activity("cards", "Lernkarten", "memory", "E.1", "cockpit", null);
+        when(facade.getActiveGoalContext("learner", null, 10, "de", Set.of(), true))
+                .thenReturn(new ActiveGoalContext(null, "E", List.of(), List.of(), null, List.of(exam, memory)));
+        var passedAt = java.time.Instant.parse("2026-11-19T12:30:00Z");
+        when(facade.latestExamPass("learner", "exam")).thenReturn(java.util.Optional.of(
+                new VerifiedExamPassResponse(passedAt, 22, 36, 22, "task", "rubric", "material")));
+        var context = (Map<?, ?>) projector.projectContext("learner", 10, "de").get("focusedUnitContext");
+        var activities = (List<?>) context.get("activities");
+        assertEquals(Map.of("passedAt", passedAt.toString(), "earnedPoints", 22.0,
+                        "maxPointsAtAssessment", 36.0, "passingPointsAtAssessment", 22.0),
+                ((Map<?, ?>) activities.getFirst()).get("latestRecordedPass"));
+        assertFalse(((Map<?, ?>) activities.getLast()).containsKey("latestRecordedPass"));
+        org.mockito.Mockito.verify(facade, org.mockito.Mockito.never()).latestExamPass("learner", "cards");
+    }
 
     @Test
     void activeUnitContextFollowsConfirmedGoalAndMasterySuccessor() {

@@ -91,7 +91,7 @@ class ClaudeV1LearningSessionLaunchTest {
         String capability = capabilities.mintExamEvaluationCapability(
                 launch.learningSessionId(),
                 "goal_exam",
-                3L);
+                3L, "a".repeat(64));
         var claim = capabilities.verifyExamEvaluationCapability(
                 capability,
                 launch.learningSessionId(),

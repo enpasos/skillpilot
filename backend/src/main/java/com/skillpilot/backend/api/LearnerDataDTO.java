@@ -15,7 +15,15 @@ public record LearnerDataDTO(
         @JsonInclude(JsonInclude.Include.NON_NULL)
         List<LearnerLearningPlanApi.PortablePlan> learningPlans,
         @JsonInclude(JsonInclude.Include.NON_NULL)
-        PortableSrsData srsData) {
+        PortableSrsData srsData,
+        @JsonInclude(JsonInclude.Include.NON_EMPTY)
+        Map<String, List<VerifiedExamPassResponse>> verifiedExamPasses) {
+    public LearnerDataDTO(Learner learner, Map<String, MasteryEntryDTO> mastery,
+            List<String> plannedGoals, Set<CopySource> copySources,
+            List<LearnerLearningPlanApi.PortablePlan> learningPlans, PortableSrsData srsData) {
+        this(learner, mastery, plannedGoals, copySources, learningPlans, srsData, null);
+    }
+
     public LearnerDataDTO(
             Learner learner,
             Map<String, MasteryEntryDTO> mastery,

@@ -1,0 +1,78 @@
+databaseChangeLog:
+  - changeSet:
+      id: 044-add-verified-exam-pass
+      author: skillpilot
+      changes:
+        - createTable:
+            tableName: verified_exam_pass
+            columns:
+              - column:
+                  name: id
+                  type: UUID
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    primaryKeyName: pk_verified_exam_pass
+              - column:
+                  name: learner_id
+                  type: VARCHAR(80)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: goal_id
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: task_revision
+                  type: VARCHAR(71)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: rubric_revision
+                  type: VARCHAR(71)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: material_fingerprint
+                  type: VARCHAR(71)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: passed_at
+                  type: TIMESTAMP WITH TIME ZONE
+                  constraints:
+                    nullable: false
+              - column:
+                  name: earned_points
+                  type: DOUBLE PRECISION
+                  constraints:
+                    nullable: false
+              - column:
+                  name: max_points
+                  type: DOUBLE PRECISION
+                  constraints:
+                    nullable: false
+              - column:
+                  name: passing_points
+                  type: DOUBLE PRECISION
+                  constraints:
+                    nullable: false
+        - addForeignKeyConstraint:
+            baseTableName: verified_exam_pass
+            baseColumnNames: learner_id
+            referencedTableName: learner
+            referencedColumnNames: skillpilot_id
+            constraintName: fk_verified_exam_pass_learner
+            onDelete: CASCADE
+        - addUniqueConstraint:
+            tableName: verified_exam_pass
+            columnNames: learner_id, goal_id, material_fingerprint
+            constraintName: uq_verified_exam_pass_material
+        - sql: >
+            ALTER TABLE verified_exam_pass ADD CONSTRAINT ck_verified_exam_pass_score
+            CHECK (passing_points > 0 AND passing_points <= earned_points AND earned_points <= max_points
+            AND max_points <= 1.7976931348623157E308)
+      rollback:
+        - dropTable:
+            tableName: verified_exam_pass

@@ -72,6 +72,7 @@ public class ClaudeV1CapabilityService {
             String sessionBinding,
             String goalId,
             long stateVersion,
+            String materialFingerprint,
             Instant expiresAt) {}
 
     public record MemoryPracticeReviewClaim(
@@ -194,10 +195,12 @@ public class ClaudeV1CapabilityService {
                 KIND_RECALL_GRADING, capability, expectedLearningSessionId, expectedGoalId, expectedStateVersion);
     }
 
-    public String mintExamEvaluationCapability(String learningSessionId, String goalId, long stateVersion) {
+    public String mintExamEvaluationCapability(
+            String learningSessionId, String goalId, long stateVersion, String materialFingerprint) {
         String sessionBinding = sessionBinding(learningSessionId);
         requireBindingValue(goalId, "goalId");
         requireStateVersion(stateVersion);
+        requireBindingValue(materialFingerprint, "assessment material fingerprint");
         Instant expiresAt = capabilityExpiresAt(learningSessionId);
         String payload = String.join(
                 FIELD_SEPARATOR,
@@ -205,6 +208,7 @@ public class ClaudeV1CapabilityService {
                 sessionBinding,
                 goalId,
                 Long.toString(stateVersion),
+                materialFingerprint,
                 Long.toString(expiresAt.toEpochMilli()));
         return encryptAndEncode(payload);
     }
@@ -316,18 +320,20 @@ public class ClaudeV1CapabilityService {
             String expectedLearningSessionId,
             String expectedGoalId,
             Long expectedStateVersion) {
-        String[] parts = verifyAndSplit(capability, KIND_EXAM_EVALUATION, 5);
+        String[] parts = verifyAndSplit(capability, KIND_EXAM_EVALUATION, 6);
         String sessionBinding = parts[1];
         String goalId = parts[2];
         long stateVersion = parseLong(parts[3]);
-        Instant expiresAt = parseInstant(parts[4]);
+        String materialFingerprint = parts[4];
+        requireBindingValue(materialFingerprint, "assessment material fingerprint");
+        Instant expiresAt = parseInstant(parts[5]);
 
         requireNotExpired(expiresAt);
         requireBinding(sessionBinding(expectedLearningSessionId), sessionBinding, "learning session");
         requireBinding(expectedGoalId, goalId, "goal");
         requireStateBinding(expectedStateVersion, stateVersion);
 
-        return new ExamEvaluationClaim(sessionBinding, goalId, stateVersion, expiresAt);
+        return new ExamEvaluationClaim(sessionBinding, goalId, stateVersion, materialFingerprint, expiresAt);
     }
 
     private String mintRecallCapability(
