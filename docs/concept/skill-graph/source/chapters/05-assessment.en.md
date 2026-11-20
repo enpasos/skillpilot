@@ -209,7 +209,7 @@ The proposed promise is: *I can use measurement data to decide when a velocity i
 | Own part B · horizontal projectile | Another new independent exam identity required; only 3 of 3 criterion points pass. Supports physically justified superposition over a shared time. |
 :::
 
-**All four passes are required.** A and B do not replace the two child exams; they do not complete E.1 on their own. A and B are draft labels in this documentation, not exam IDs already created. Implementation requires a separate canonical identity and bound pass evidence for each of these two exams. The existing tasks “Multi-phase motion and model testing” and “Horizontal projectile: two motions, one shared time” provide starting material, not already passed new versions.
+**All four passes are required.** A and B each have an ID for the bilingual draft material. Using these as canonical exams in a completion contract requires subject review and approval. Both child exams remain part of the qualification. The existing multi-phase motion and horizontal projectile tasks served as source material.
 
 ##### What A and B demonstrate and what remains open.
 
@@ -243,8 +243,8 @@ The complete direct and transitive prerequisite closure remains decisive, respec
 | --- | --- |
 | Uniformly accelerated motion and acceleration (child) | Released through both child exams, including initial values, reversals, diagrams and signed areas. B alone does not support this whole claim. |
 | Modelling and idealising motion (child) | Released through the child unit; A additionally requires the limit of a concrete prediction. |
-| Distinguishing measurement deviations and error types | Released: the justified distinction is indispensable in A. |
-| Stating measurement uncertainties | Released: A requires units and a time interval justified from measurement bounds. |
+| Distinguishing measurement deviations and error types | Open. A4 requires the learner to distinguish scatter from a possible offset. How averaging or calibration affects them remains unassessed. |
+| Stating measurement uncertainties | Open. A2 uses a supplied reading limit. Choosing a suitable uncertainty from measurement conditions remains unassessed. |
 | Uniform motion and velocity | Open: A assesses model prediction, not the atom's full experimental and graphical claim. |
 | Investigating motion with diagrams | Open: child diagrams do not replace independently recording motion experimentally. |
 | Distinguishing average and instantaneous velocity | Open: comparing secant and tangent slopes is not required. |
@@ -254,13 +254,13 @@ The complete direct and transitive prerequisite closure remains decisive, respec
 | Evaluating safe distances in road traffic | Open: none of the four exams requires this judgement. An additionally scheduled own acquisition assignment remains open. |
 :::
 
-The table states the **proposed** release scope; it is neither completed quality approval nor a data change. The first two rows rest on the [child unit contract](repo:curricula/DE/Gymnasium/quality/learning-units/physics-constant-acceleration-2026-11-15-v2.md), the next two on A's proposed indispensable criteria. For the Hessian E.1 qualification, learners analyse supplied data. They may take their own measurements as they learn. An experimental goal that calls for carrying out the experiment stays open until the learner demonstrates that performance. This applies to both $M$ and $F_{\mathrm{plan}}$.
+The scope is a proposal for E.1. The first two rows rest on the [child unit contract](repo:curricula/DE/Gymnasium/quality/learning-units/physics-constant-acceleration-2026-11-15-v2.md). For the two measurement goals, a [subject review of A2 and A4](repo:docs/concept/skill-graph/examples/hessen-physik-e1/fachabgleich-messziele-2026-11-20.de.md) identifies what a passing submission can leave unassessed. For E.1, learners analyse supplied data. An individual experimental goal requiring an investigation of their own stays open until they demonstrate that performance. This applies to both $M$ and $F_{\mathrm{plan}}$.
 
-In the Hessian example, passing all four assessments would release **four of the eleven content goals** for planning. A learner demonstrating the same eleven atoms individually in dialogue must meet the same full claim for each, including required own performance for experimental atoms. Merely discussing eleven goals does not establish eleven valid individual outcomes. Three of the seven open goals have direct dependants outside E.1. For instance, oblique projectile motion still needs evidence for the full horizontal projectile goal. The catalog already contains a practical assessment for learners seeking separate evidence of conducting a free-fall experiment.
+After all four assessments, **two of the eleven content goals are released for planning**. Both releases come from the child unit. Nine goals need further evidence if the plan is to build on them. Five of these are direct prerequisites for eight distinct ordinary physics goals outside E.1. For example, oblique projectile motion requires the whole horizontal projectile goal. A learner demonstrating an individual goal in dialogue must also meet its full requirements. A practical assessment is available for an independent free-fall investigation.
 
-**Deliberate delay in the proposal.** Passing A already provides the indispensable evidence for measurement uncertainty. Its additional planning release would nevertheless wait for full E.1 completion, including B and the two child exams. Until then, “Using significant figures correctly” and “Determining mean and spread from measurements” need another valid source of evidence for that prerequisite. An atom already explicitly demonstrated in $M$ stays available. The applicable rule of 11 November can instead recognise own atoms once their local outstanding demand ceases; it does not invariably await full completion.
+**When release takes effect.** The vertical throw assessment provides full evidence for modelling and idealisation. Under the proposal, the plan can use that goal through the child unit once the learner has also passed its second assessment, the acceleration log. This can happen before A and B. Existing individual evidence in $M$ counts immediately. The rule of 11 November can recognise an own atom once all local exam or recall obligations relevant to that atom have been fulfilled.
 
-**Open alternative.** A separately declared, revision-bound and subject-approved partial package could release the atom immediately after A. This would avoid the delay but require its own contract and could take over neither child nor foreign atoms. It is not an adopted trigger; the proposal examined here provisionally retains full completion of the responsible unit.
+**Open alternative.** A separately declared, revision-bound subunit could release a goal of its own earlier if subject review confirmed that passing it requires the whole goal. Both measurement goals in the current cart task would remain open even with an earlier trigger. The proposal uses full completion of the responsible unit.
 
 The version, subject scope and planning effect remain durably bound to the underlying success. A focus change, new parent unit, additional edges or a broader new assessment claim never expand an old result. Suitable earlier evidence remains traceable across plan changes. A justified correction to results or content must be distinguished from such a retrospective expansion.
 
@@ -280,7 +280,7 @@ When application is observed, only the active goal receives an outcome. The open
 
 The learning plan distinguishes at least three statements: **unit demonstrated by assessment**, **scheduled activities fully worked through**, and **outstanding own acquisition assignments**. The learner can thus recognise completion of a route while seeing which individually unassessed claims remain open for another route. Cumulative progress needs a named scope and visible counting method.
 
-This is a product proposal. Today the plan contains atomic goal IDs. Under the proposal, selecting work records whether the learner wants a unit qualification or an individual assignment. A learner who chose only E.1 has no backlog from the seven open skills after passing all four parts. A separately assigned free-fall experiment remains due. Existing atomic plans retain their stated scope.
+This is a product proposal. Today the plan contains atomic goal IDs. Under the proposal, selecting work records whether the learner wants a unit qualification or an individual assignment. A learner who chose only E.1 has no backlog from the nine open skills after passing all four parts. A separately assigned free-fall experiment remains due. Existing atomic plans retain their stated scope.
 
 A unit counter such as “2 of 3 required units demonstrated” is meaningful only for a fully structured scope. Where units are only partly declared, goal counters remain necessary for the other areas. Both counting methods must not be merged into one percentage without a stated denominator. Likewise, the number of released prerequisites must not appear as the number of goals actually worked through.
 
