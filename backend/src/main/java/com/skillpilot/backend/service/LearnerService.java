@@ -796,6 +796,7 @@ public class LearnerService {
         Map<String, Boolean> partResults = unitResult == null ? Map.of() : unitResult.parts().stream()
                 .collect(Collectors.toMap(UnitAssessmentResponse.Part::goalId, UnitAssessmentResponse.Part::passed));
         String unitProfileId = unitResult == null ? null : AUTOMATIC_COMPLETION_PREFIX + unitResult.sectionGoalId();
+        Map<String, Set<String>> changedUnitParts = new HashMap<>();
         for (var definition : definitions) {
             var candidate = candidates.get(definition.id());
             if (candidate == null && !catalog.automatic()) continue;
@@ -812,7 +813,7 @@ public class LearnerService {
                     LearningGoal goal = graph.get(id);
                     boolean mastered = Mastery.isMastered(masterySnapshot.get(id));
                     if (definition.id().equals(unitProfileId)) mastered = partResults.getOrDefault(id, mastered);
-                    boolean materialCurrent = unitPartMaterialCurrent(definition.id(), id, graph);
+                    boolean materialCurrent = unitPartMaterialCurrent(definition.id(), id, graph, changedUnitParts);
                     boolean taskAvailable = targets.contains(id) && !isExamGoalUnavailableForHardCheck(goal) && materialCurrent;
                     boolean available = !routeOwnsNavigation
                             && persistedWorkflow == null && !mastered && taskAvailable;
@@ -870,7 +871,7 @@ public class LearnerService {
                     LearningGoal goal = graph.get(id);
                     boolean mastered = evaluation.masteredAssessmentGoalIds().contains(id);
                     if (workflow.profileId().equals(unitProfileId)) mastered = partResults.getOrDefault(id, mastered);
-                    boolean materialCurrent = unitPartMaterialCurrent(workflow.profileId(), id, graph);
+                    boolean materialCurrent = unitPartMaterialCurrent(workflow.profileId(), id, graph, changedUnitParts);
                     boolean available = compatible && !mastered && !directRunning && materialCurrent
                             && targets.contains(id) && !isExamGoalUnavailableForHardCheck(goal);
                     assessments.add(new LevelCompletionResponse.Assessment(id, completionTitle(goal), mastered,
@@ -881,7 +882,7 @@ public class LearnerService {
                                     : compatible ? "assessment_task_unavailable" : "coach_contract_unsupported"));
                 }
                 if (compatible && !overview) {
-                    if (directRunning && unitPartMaterialCurrent(workflow.profileId(), workflow.directAssessment().goalId(), graph)) actions.add(new LevelCompletionResponse.Action("retryAssessment",
+                    if (directRunning && unitPartMaterialCurrent(workflow.profileId(), workflow.directAssessment().goalId(), graph, changedUnitParts)) actions.add(new LevelCompletionResponse.Action("retryAssessment",
                             workflow.directAssessment().goalId(),
                             Map.of("de", "Prüfung erneut versuchen", "en", "Try assessment again"), null));
                     CompletionEvaluation evaluated = evaluation;
@@ -991,16 +992,16 @@ public class LearnerService {
         return isCompositionStructureGoalId(root) ? compositionViewService.resolveStructureReference(root) : null;
     }
 
-    private boolean unitPartMaterialCurrent(String profileId, String goalId, Map<String, LearningGoal> graph) {
-        var section = completionUnitSection(profileId);
-        if (section == null || unitLearningMaterialService == null) return true;
-        Map<String, Object> view = compositionViewService.findViewById(section.viewId());
-        if (view == null || !(view.get("landscapeId") instanceof String landscape)) return false;
-        var contract = unitLearningMaterialService.find(landscape, section.viewId(), section.nodeId())
-                .map(UnitLearningMaterialService.Material::assessmentContract).orElse(null);
-        if (contract == null || !contract.appliesTo(section.viewId())) return true;
-        return contract.parts().stream().filter(part -> goalId.equals(part.goalId()))
-                .allMatch(part -> currentUnitPart(part, graph));
+    private boolean unitPartMaterialCurrent(String profileId, String goalId, Map<String, LearningGoal> graph,
+            Map<String, Set<String>> changedByProfile) {
+        if (unitLearningMaterialService == null || profileId == null
+                || !profileId.startsWith(AUTOMATIC_COMPLETION_PREFIX)) return true;
+        Set<String> changed = changedByProfile.computeIfAbsent(profileId, id -> unitLearningMaterialService
+                .assessmentBindingForReference(id.substring(AUTOMATIC_COMPLETION_PREFIX.length()))
+                .map(binding -> binding.contract().parts().stream().filter(part -> !currentUnitPart(part, graph))
+                    .map(UnitAssessmentContract.Part::goalId).collect(Collectors.toUnmodifiableSet()))
+                .orElse(Set.of()));
+        return !changed.contains(goalId);
     }
 
     private UnitAssessmentResponse unitAssessment(Learner learner, CompositionViewService.CompositionStructureResolution section,

@@ -34,15 +34,17 @@ export function UnitAssessmentSummary({ assessment, completion, language, titleF
     </summary>
     <ul aria-label={en ? 'Assessment parts' : 'Prüfungsteile'} className="mt-3 space-y-2">
       {assessment.parts.map(part => {
-        const startHref = allowStart && !completion.directAssessmentRunning && !part.passed && startProfile
+        const startHref = allowStart && !completion.directAssessmentRunning && !part.passed && part.materialCurrent !== false && startProfile
           && startProfile.assessments?.some(item => item.goalId === part.goalId && item.startAvailable)
           ? buildCompletionAssessmentStartHref({ profileId: startProfile.profileId, goalId: part.goalId, expectedRevision: completion.learnerRevision })
           : undefined
         const label = completionLabel(part.title, language)
+        const status = part.materialCurrent === false ? (en ? 'This assessment version is unavailable' : 'Diese Prüfungsfassung ist nicht verfügbar')
+          : part.passed ? (en ? 'Verified pass' : 'Beleg vorhanden') : (en ? 'Open' : 'Offen')
         return <li key={part.goalId} className="flex flex-wrap items-center justify-between gap-x-3 rounded-lg border border-border-color px-3 py-2">
           <span className="min-w-0 [overflow-wrap:anywhere]"><InlineMathText text={label} /></span>
           <span className="inline-flex items-center gap-1 text-xs text-text-secondary">
-            {part.passed && <Check size={14} aria-hidden="true" />}{part.passed ? (en ? 'Verified pass' : 'Beleg vorhanden') : (en ? 'Open' : 'Offen')}
+            {part.passed && <Check size={14} aria-hidden="true" />}{status}
           </span>
           {startHref && <Link to={startHref}
             aria-label={en ? `Try ${label} directly` : `${label} direkt versuchen`}

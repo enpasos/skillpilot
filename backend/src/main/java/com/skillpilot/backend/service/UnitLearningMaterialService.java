@@ -91,7 +91,7 @@ public final class UnitLearningMaterialService {
     }
 
     public boolean isReviewedPlanningRelease(com.skillpilot.backend.completion.UnitPlanningRelease release) {
-        return release != null && release.review() != null
+        return release != null && release.review() != null && release.review().sha256() != null
                 && release.review().sha256().equals(reviewedPlanningReleases.get(release.fingerprint()));
     }
 
@@ -171,5 +171,19 @@ public final class UnitLearningMaterialService {
             }
         }
         return List.copyOf(result);
+    }
+
+    /** Exact catalog lookup; absence needs no traversal of the composition tree. */
+    public Optional<AssessmentBinding> assessmentBindingForReference(String reference) {
+        if (reference == null || !reference.startsWith("composition:")) return Optional.empty();
+        int marker = reference.indexOf(":structure:", "composition:".length());
+        if (marker < 0) return Optional.empty();
+        String view = reference.substring("composition:".length(), marker);
+        String node = reference.substring(marker + ":structure:".length());
+        return materials.keySet().stream().filter(key -> node.equals(key.node())).map(Key::landscape).distinct()
+                .sorted().map(landscape -> find(landscape, view, node).map(Material::assessmentContract)
+                    .filter(contract -> contract.appliesTo(view))
+                    .map(contract -> new AssessmentBinding(landscape, view, node, contract)))
+                .flatMap(Optional::stream).findFirst();
     }
 }

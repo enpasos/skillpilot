@@ -124,8 +124,16 @@ final class ClaudeV1CompletionChoices {
             summary.put("passed", unit.passed());
             summary.put("partCount", unit.parts().size());
             summary.put("passedPartCount", unit.parts().stream().filter(UnitAssessmentResponse.Part::passed).count());
-            summary.put("parts", unit.parts().stream().limit(MAX_CHOICES).map(part ->
-                    Map.of("title", label(part.title(), language), "passed", part.passed())).toList());
+            summary.put("parts", unit.parts().stream().limit(MAX_CHOICES).map(part -> {
+                Map<String, Object> projected = new LinkedHashMap<>();
+                projected.put("title", label(part.title(), language));
+                projected.put("passed", part.passed());
+                projected.put("materialCurrent", part.materialCurrent());
+                if (!part.materialCurrent()) projected.put("notice", en
+                        ? "The current task has a different assessment version. This unit part is unavailable; saved historical passes remain retained."
+                        : "Die aktuelle Aufgabe hat eine andere Prüfungsfassung. Dieser Einheitsteil ist derzeit nicht verfügbar; frühere Prüfungsbelege bleiben erhalten.");
+                return projected;
+            }).toList());
             summary.put("creditedForPlanningCount", unit.planningCreditGoalIds().size());
             summary.put("individuallyOpenCount", unit.individuallyOpenGoalIds().size());
             result.put("unitAssessment", summary);
@@ -165,8 +173,11 @@ final class ClaudeV1CompletionChoices {
                     "goal", label(detail.title(), language),
                     "passedAssessments", detail.assessments().stream().map(assessment -> label(assessment.title(), language)).toList(),
                     "supportingAssessmentCount", detail.assessmentCount(),
-                    "scope", en ? "Only this learning section; implicit completion does not change the goal's saved result."
-                            : "Nur dieser Lernabschnitt; die implizite Erledigung ändert den gespeicherten Stand des Lernziels nicht.")).toList());
+                    "scope", detail.ruleId() != null && detail.ruleId().startsWith("versioned_unit_assessment:")
+                            ? en ? "A version-bound unit assessment establishes this full prerequisite for further planning; its individual result stays unchanged."
+                                    : "Ein fassungsgebundener Einheitenbeleg weist diese ganze Voraussetzung für die weitere Planung nach; der individuelle Lernstand bleibt unverändert."
+                            : en ? "Only this learning section; implicit completion does not change the goal's saved result."
+                                    : "Nur dieser Lernabschnitt; die implizite Erledigung ändert den gespeicherten Stand des Lernziels nicht.")).toList());
         }
         if (active(completion) && !supported()) {
             result.put("notice", en
@@ -183,8 +194,9 @@ final class ClaudeV1CompletionChoices {
         }
         result.put("choices", published(completion, language).stream().map(Choice::label).toList());
         result.put("instruction", "Use this backend completion statement without recalculating or turning implicit completion into mastery. "
-                + "A mastered goal no longer demands its own prerequisites; the backend marks non-assessment goals with no remaining demand as implicitly completed. "
+                + "The backend marks non-assessment goals with no remaining demand as implicitly completed. "
                 + "A passed assessment is not required for implicit completion, and it does not certify prerequisite competence. "
+                + "Separately, explicit version-bound unit planning evidence can certify the named full prerequisites; no individual mastery or other prerequisite follows from it. "
                 + "Do not restore implicitly completed work as mandatory. "
                 + "Available direct assessment choices can be selected from ordinary learning without choosing a section first. "
                 + "Offer them when the learner asks for a shortcut, an assessment or to demonstrate existing knowledge; do not interrupt ordinary teaching unprompted. "

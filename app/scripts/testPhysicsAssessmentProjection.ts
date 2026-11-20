@@ -22,6 +22,7 @@ import { loadCurrentCurriculumCatalog } from './currentCurriculumCatalog'
 import { collectRenderedAtomicGoalIdsFromCompositionView, evaluateRouteProfile, createRouteProfiles } from './generateCurriculumQualityStatus'
 import { assessmentReviewRevisions } from './lib/learningUnitContracts'
 import { liveVerificationInputs } from './lib/verificationInputSnapshot'
+import { checkUnitPlanningReleases } from './checkUnitPlanningReleases'
 
 const routeProfiles = createRouteProfiles()
 const root = resolve(import.meta.dirname, '../..')
@@ -53,10 +54,14 @@ const hesseE1Assessments = new Map([
 const hesseChildAssessments = new Map([
   ['c933b7d2-edcb-5747-9378-9762659f260a', {
     historical: 'c5807a37-129e-5df6-8989-482bc7f5683e', coverage: 'd6dc0e02-831d-4894-a61a-852bcc74f147',
+    definition: 'sha256:47e0d1bd093ca15e19b6e9de958838f947ed30d6d902a378997d64df504cbff9',
+    evidenceProfile: 'sha256:4ee8d93ca2d11b9106e4051214494a52fd0b0538682e2f30bf8e2668a8c0fd4f',
     section: 'constant-acceleration-model', prefix: 'C',
   }],
   ['f13ca187-b680-5f47-b4ad-76bd474bd8a2', {
     historical: 'a8dc0290-9f80-5763-8943-e16b8d2aa860', coverage: 'e4b38061-1f28-43ad-8371-a3e7c0e81856',
+    definition: 'sha256:083de95ae0c93aa5f5ba649140a82e724ae7b61a604626a09e9e188acf01cf4b',
+    evidenceProfile: 'sha256:e7d478c83be998c71a1e4ff75e412cbb0558b24403e207a936f1ea38a8174039',
     section: 'constant-acceleration-log', prefix: 'D',
   }],
 ])
@@ -82,7 +87,43 @@ for (const id of hesseE1Assessments.keys()) {
 }
 assert.deepEqual(e1Scope.childAssessmentGoalIds, [...hesseChildAssessments.keys()])
 const childReview = readFileSync(resolve(root, e1Scope.childAssessmentReview.sourceFile), 'utf8')
+assert.equal(e1Scope.childAssessmentReview.sourceFileSha256, 'd5aafed0908cdd81317e59cad1d0bfb860fc6652950006f15cab8f1ca51883d6',
+  'The 17/20 child release is bound to its independent review; older full-score reviews concern different tasks')
 assert.equal(createHash('sha256').update(childReview).digest('hex'), e1Scope.childAssessmentReview.sourceFileSha256)
+const readRepoJson = (path: string) => JSON.parse(readFileSync(resolve(root, path), 'utf8'))
+assert(checkUnitPlanningReleases() > 0, 'The independently reviewed child pair must have a current planning release')
+const materialFiles: string[] = readRepoJson('curricula/unit-learning-materials.json').materials
+const e1Contracts = materialFiles.map(path => readRepoJson(`curricula/${path}`).unit)
+  .filter(unit => unit.landscapeId === canonicalLandscape.landscapeId && unit.compositionNodeId === 'physics-e1-motion')
+assert.equal(e1Contracts.length, 1)
+const contract = e1Contracts[0].assessmentContract
+assert.equal(contract.revision, '2026-11-20-e1-v1')
+const creditedGoalIds = [...hesseChildAssessments.values()].map(spec => spec.coverage)
+assert.deepEqual(e1Scope.childPlanningGoalIds, creditedGoalIds)
+assert.deepEqual(e1Scope.unitPlanningGoalIds, [])
+assert.equal(contract.planningCredits.length, 1)
+const [childCredit] = contract.planningCredits
+assert.equal(childCredit.release.fingerprint, 'sha256:167dcd7df3cc45dbf3211b469ae6e62b79eb4702799a817aed44bdaef73aa93d',
+  'Only the independently checked Hessen C+D edition may use this approval')
+assert.deepEqual(childCredit.release.review, { path: e1Scope.childAssessmentReview.sourceFile, sha256: 'sha256:' + e1Scope.childAssessmentReview.sourceFileSha256 })
+assert.deepEqual(childCredit.release.viewIds, [...e1Scope.viewIds].sort())
+assert.equal(childCredit.release.revision, e1Scope.childAssessmentScopeRevision)
+assert.equal(childCredit.release.ownerUnitId, e1Scope.childUnitId)
+assert.equal(childCredit.release.ownerRevision, e1Scope.childRevision)
+assert.deepEqual(childCredit.requiredPartIds, [...hesseChildAssessments.keys()],
+  'Only the complete child pair releases the two reviewed prerequisites')
+assert.deepEqual(childCredit.goalIds, creditedGoalIds)
+assert.deepEqual([...contract.contentGoalIds].sort(), [...creditedGoalIds, ...e1Scope.otherContentGoalIds].sort())
+assert.deepEqual(contract.viewIds, e1Scope.viewIds)
+const reviewedParts = [...hesseE1Assessments.keys(), ...hesseChildAssessments.keys()].map(goalId => {
+  const { taskRevision, rubricRevision, fingerprint } = e1Scope.ownAssessmentRevisions[goalId] ?? e1Scope.childAssessmentRevisions[goalId]
+  return { goalId, material: { taskRevision, rubricRevision, fingerprint } }
+})
+assert.deepEqual(contract.parts, reviewedParts, 'All four production receipt predicates must bind the reviewed materials')
+const child = canonicalLandscape.programUnits?.find(unit => unit.id === 'physics-constant-acceleration')
+assert(child && child.kind === 'learningUnit' && child.revision === e1Scope.childRevision)
+assert.equal(e1Scope.childUnitId, child.id)
+assert.equal(e1Scope.childAssessmentScopeRevision, '2026-11-20-he-v1')
 for (const [id, spec] of hesseChildAssessments) {
   const binding = e1Scope.childAssessmentRevisions[id]
   const source = readFileSync(resolve(e1MaterialDirectory, binding.sourceFile), 'utf8')
@@ -103,6 +144,16 @@ for (const [id, spec] of hesseChildAssessments) {
   assert.deepEqual(native.requires, [spec.coverage])
   assert.deepEqual(exam.coveredGoalIds, [spec.coverage])
   assert.deepEqual(binding.planningGoalIds, [spec.coverage])
+  assert.equal(binding.coverageReview, e1Scope.childAssessmentReview.sourceFile)
+  assert.deepEqual(childCredit.release.goalDefinitions[spec.coverage], {
+    definition: spec.definition, profileFingerprint: spec.evidenceProfile,
+  }, 'The review covers this exact goal definition and its performance and transfer expectations')
+  for (const ownId of [spec.coverage, spec.historical]) {
+    const owners = canonicalLandscape.goalPlacements?.filter(row => row.goalId === ownId && row.relation === 'own')
+    assert.deepEqual(owners?.map(row => row.unitId), [child.id])
+  }
+  const originalReview = child.coverageReviews?.find(row => row.assessmentGoalId === spec.historical)
+  assert.deepEqual(originalReview?.goalIds, [spec.coverage])
   const de = source.split(`\n## ${spec.section}\n`)[1].split('\n## ')[0]
   const en = source.split(`\n## ${spec.section}-en\n`)[1]
   const read = (content: string, task: string, solution: string, rubric: string, notes: string) => {

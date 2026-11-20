@@ -31,7 +31,7 @@ export interface UnitAssessment {
   sectionGoalId: string
   revision: string
   passed: boolean
-  parts: { goalId: string; title: CompletionTitle; passed: boolean }[]
+  parts: { goalId: string; title: CompletionTitle; passed: boolean; materialCurrent?: boolean }[]
   planningCreditGoalIds: string[]
   individuallyOpenGoalIds: string[]
 }
@@ -186,7 +186,10 @@ function parseUnitAssessment(value: unknown): UnitAssessment {
   const source = record(value)
   const parts = list(source.parts).map(value => {
     const part = record(value)
-    return { goalId: text(part.goalId), title: title(part.title), passed: bool(part.passed) }
+    const passed = bool(part.passed)
+    const material = part.materialCurrent === undefined ? {} : { materialCurrent: bool(part.materialCurrent) }
+    if (passed && material.materialCurrent === false) throw invalid()
+    return { goalId: text(part.goalId), title: title(part.title), passed, ...material }
   })
   const passed = bool(source.passed)
   const planningCreditGoalIds = list(source.planningCreditGoalIds, 100_000).map(text)

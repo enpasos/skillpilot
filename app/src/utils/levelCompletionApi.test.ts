@@ -88,6 +88,8 @@ const unitStatus = {
 }
 const verifiedUnit = { ...valid, unitAssessment: unitStatus }
 assert.deepEqual(parseLevelCompletion(verifiedUnit)?.unitAssessment, unitStatus)
+const changedParts = unitStatus.parts.map(part => ({ ...part, materialCurrent: false }))
+assert.throws(() => parseLevelCompletion({ ...valid, unitAssessment: { ...unitStatus, parts: changedParts } }))
 assert.equal(parseLevelCompletion({ ...valid, unitAssessment: null })?.unitAssessment, undefined)
 for (const invalidStatus of [
   { ...unitStatus, revision: ' ' }, { ...unitStatus, passed: false }, { ...unitStatus, parts: [] },

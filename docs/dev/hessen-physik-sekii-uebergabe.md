@@ -28,6 +28,12 @@ Der Coach beginnt mit dem fachlichen Anliegen der Person. Wer noch eine Erkläru
 
 Die Materialzuordnung und die Lernziel-Verweise der Karten bestimmen den Ausschnitt pro Einheit. E.1 nutzt neun der 87 Karten des übergeordneten Stapels. Die private Kartenanwendung führt den Wiederholungsstand. Beim Nachladen weiterer Karten bleibt die gewählte Einheit erhalten. Das fachliche Lernziel bleibt aktiv. Für Einzelbeherrschung und Einheitenabschluss gelten die jeweils dafür vorgesehenen Nachweise. Einheiten ohne passende Karten bieten die Aktion für diese Einheit nicht an.
 
+## Wiederaufnahme auf dem neuen Rechner
+
+Der Arbeitsstand `bea9d43299` ist übernommen. Der Nutzer hat die Hessen-Vorlage für die weitere Arbeit ausdrücklich freigegeben und E.1 als erste fachliche Teilabnahme benannt. In der [lokalen Vorschau](hessen-physik-e1-vorschau.md) führt die Wahl der Sekundarstufe II in G8 und G9 zum selben vierteiligen E.1-Abschluss. Über die Einheit erreicht man die Ballfrage. A bis D lassen sich auch einzeln öffnen.
+
+Beim Kartenwechsel fehlte die Wurfprüfung im sichtbaren Ausschnitt, sobald die Desktopkarte 17 Einträge enthielt. Die Kartenansicht berücksichtigt jetzt die tatsächlichen Abmessungen. Acht Desktopwechsel, ein mobiler Wechsel und vier Erststarts gelangen in der laufenden Vorschau. Für beide Bildungsgänge öffnete Chromium außerdem die E.1-Einleitung und beide Kindprüfungen auf Deutsch und Englisch. Der Lernplan berücksichtigt die zwei durch C und D gedeckten fachlichen Voraussetzungen auch außerhalb der Einheit. Er zeigt nach vier passenden Prüfungen sechs erfüllte Positionen. Im Einzelweg können Lernende die beiden Ziele weiterhin erarbeiten. Die Freigabe ist an die bei der tatsächlichen Bewertung geltende Kombination aus Unterrichtszielen, Aufgabenfassungen und Fachentscheid gebunden. Ältere Belege bleiben für ihre jeweilige Prüfungsfassung lesbar. Der folgende Abschnitt hält den damaligen Prüfstand fest. [Laufender Implementierungs- und Prüfstand](stage-plan-management-summary.md) · [PR #171](https://github.com/enpasos/skillpilot/pull/171)
+
 ## Prüfstand beim Rechnerwechsel
 
 Das Hessen-Goal ist auf dem bisherigen Rechner pausiert. Der Arbeitsbranch enthält den Zwischenstand für die Fortsetzung. Der Nutzer hat E.1 und die Hessen-Vorlage noch nicht abgenommen. Die Überwachung und Reparatur von [Mathematik-PR #170](https://github.com/enpasos/skillpilot/pull/170) läuft im bisherigen Chat weiter.

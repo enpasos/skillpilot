@@ -57,18 +57,23 @@ class VerifiedExamPassIntegrationTest {
     @Test
     void concurrentPassingSubmissionsForTheSameMaterialAreIdempotent() throws Exception {
         var start = new CyclicBarrier(2);
-        Callable<Void> submit = () -> {
-            start.await(10, TimeUnit.SECONDS);
-            record(learnerId, ORIGINAL, 8, 10, 7);
-            return null;
-        };
         try (var workers = Executors.newFixedThreadPool(2)) {
-            var first = workers.submit(submit);
-            var second = workers.submit(submit);
+            var first = workers.submit(passingAttempt(start, hash("1")));
+            var second = workers.submit(passingAttempt(start, hash("2")));
             first.get(40, TimeUnit.SECONDS);
             second.get(40, TimeUnit.SECONDS);
         }
-        assertThat(passes.findForGoal(learnerId, EXAM)).hasSize(1);
+        assertThat(passes.findForGoal(learnerId, EXAM)).singleElement().satisfies(pass ->
+                assertThat(pass.planningCreditBindingIds()).containsExactly(hash("1"), hash("2")));
+    }
+
+    private Callable<Void> passingAttempt(CyclicBarrier start, String bindingId) {
+        return () -> {
+            start.await(10, TimeUnit.SECONDS);
+            transactions.executeWithoutResult(status -> passes.record(learnerId, EXAM, ORIGINAL, 8, 10, 7,
+                    List.of(bindingId)));
+            return null;
+        };
     }
 
     @AfterEach
@@ -86,6 +91,7 @@ class VerifiedExamPassIntegrationTest {
         assertThat(firstPass.taskRevision()).isEqualTo(ORIGINAL.taskRevision());
         assertThat(firstPass.rubricRevision()).isEqualTo(ORIGINAL.rubricRevision());
         assertThat(firstPass.fingerprint()).isEqualTo(ORIGINAL.fingerprint());
+        assertThat(firstPass.planningCreditBindingIds()).isEmpty();
         assertThat(firstPass.passedAt()).isNotNull();
 
         record(learnerId, ORIGINAL, 10, 10, 7);
@@ -115,6 +121,9 @@ class VerifiedExamPassIntegrationTest {
         assertThatThrownBy(() -> record(learnerId, new AssessmentMaterialRevision(
                 "unknown", ORIGINAL.rubricRevision(), ORIGINAL.fingerprint()), 8, 10, 7))
                 .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> transactions.executeWithoutResult(status -> passes.record(
+                learnerId, EXAM, ORIGINAL, 7, 10, 7, List.of("unversioned"))))
+                .isInstanceOf(IllegalArgumentException.class);
         assertThat(passes.findForGoal(learnerId, EXAM)).isEmpty();
     }
 
@@ -137,8 +146,9 @@ class VerifiedExamPassIntegrationTest {
         transactions.executeWithoutResult(status -> {
             var learner = learners.findBySkillpilotIdForUpdate(learnerId).orElseThrow();
             mastery.saveAndFlush(new Mastery(learner, EXAM, 1.0));
-            passes.record(learnerId, EXAM, ORIGINAL, 8, 10, 7);
-            assertThat(passes.findForGoal(learnerId, EXAM)).hasSize(1);
+            passes.record(learnerId, EXAM, ORIGINAL, 8, 10, 7, List.of(hash("1")));
+            assertThat(passes.findForGoal(learnerId, EXAM)).singleElement().satisfies(pass ->
+                    assertThat(pass.planningCreditBindingIds()).containsExactly(hash("1")));
             status.setRollbackOnly();
         });
         assertThat(passes.findForGoal(learnerId, EXAM)).isEmpty();

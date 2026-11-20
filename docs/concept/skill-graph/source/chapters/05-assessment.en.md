@@ -172,7 +172,7 @@ The [unified learning-plan status contract](repo:docs/concept/didactic/unified-l
 Unit completion, actual individual evidence and justified release of prerequisites for subsequent planning remain distinguishable. A skipped learning step receives no invented success. Required work on the demonstrated route nevertheless ends.
 :::
 
-This is the **unadopted proposal of 19 November 2026**. The applicable derivation of global atomic mastery from absent outstanding demand remains in the main text (Sections~@ref{sec:transitive-demand} and~@ref{sec:global-effect}). The following rules describe no completed migration of the backend, result data, learning plan or quality gates. The concrete E.1 proposal still requires independent subject approval and trials.
+This is the **unadopted proposal of 19 November 2026**. The applicable derivation of global atomic mastery from absent outstanding demand remains in the main text (Sections~@ref{sec:transitive-demand} and~@ref{sec:global-effect}). The general proposal remains open. For Hessian Physics E.1, the learning map, cockpit and learning plan already use a versioned contract. All four tasks have independent subject reviews. The product owner’s first pedagogical acceptance of the unit is pending.
 
 #### Proposal: Completion contract, scope and actual evidence {#sec:proposal-unit-contract}
 
@@ -198,18 +198,18 @@ How many tasks support a reliable judgement requires subject and empirical inves
 
 #### Proposal: Trial example: Hesse, Physics E.1 {#sec:unit-assessment-example}
 
-The proposed promise is: *I can use measurement data to decide when a velocity is approximately constant and when it changes. I can use this to predict motion, including simultaneous uniform and accelerated motion.* The full Hessian E.1 is not yet a declared subject unit with its own completion contract. The following combination is a trial of the new concept.
+The proposed promise is: *I can use measurement data to decide when a velocity is approximately constant and when it changes. I can use this to predict motion, including simultaneous uniform and accelerated motion.* For this learning promise, the Hessian G8 and G9 E.1 contract requires four exams. The section overview lists a fifth exam as well.
 
-:::table {#tab:unit-assessment-e1 caption="Four required exam passes for the proposed E.1 completion." cols="50mm,X"}
+:::table {#tab:unit-assessment-e1 caption="Four required exam passes for Hessian E.1 completion." cols="50mm,X"}
 | Required part | Own evidence and claim |
 | --- | --- |
-| Child · Modelling vertical projectile motion with constant acceleration | Existing exam identity; 24 of 24 points. Supports modelling, axis choice and idealisation in particular. |
-| Child · Acceleration report: velocity, position and model limits | Second existing exam identity; 20 of 20 points. Requires constructed diagrams and distinguishing displacement from distance after a reversal, among other things. |
+| Child · Modelling vertical projectile motion with constant acceleration | Hessian version, pass mark 17 out of 20. Supports modelling, axis choice and idealisation in particular. |
+| Child · Acceleration report: velocity, position and model limits | Hessian version, pass mark 17 out of 20. Requires constructed diagrams and distinguishing displacement from distance after a reversal, among other things. |
 | Own part A · cart | Pass mark 14 out of 17. Passing requires a model supported by the early and late motion and a quantitative arrival prediction that accounts for the reading limits. |
 | Own part B · horizontal projectile | Pass mark 15 out of 18. Both motion models need support from the data. A determinate landing position follows from the shared flight time. |
 :::
 
-**The proposed E.1 qualification requires all four passes.** Subject review cleared A and B for individual assessment in German and English. The catalog contains both tasks and the system records a pass for each completed assessment. Combining the four records into an E.1 qualification remains open. Both child exams remain part of the qualification. The existing multi-phase motion and horizontal projectile tasks served as source material.
+**The E.1 qualification requires all four passes.** Each passed part counts through its own record for the specified task and rubric version. A and B and the two [Hessian child exams](repo:docs/concept/skill-graph/examples/hessen-physik-e1/entwuerfe-kindeinheit/unabhaengiges-fachreview.md) are available in German and English. The existing multi-phase motion and horizontal projectile tasks served as source material.
 
 ##### What A and B demonstrate and what remains open.
 
@@ -254,7 +254,7 @@ The complete direct and transitive prerequisite closure remains decisive, respec
 | Evaluating safe distances in road traffic | Open: none of the four exams requires this judgement. An additionally scheduled own acquisition assignment remains open. |
 :::
 
-The scope is a proposal for E.1. The first two rows rest on the [child unit contract](repo:curricula/DE/Gymnasium/quality/learning-units/physics-constant-acceleration-2026-11-15-v2.md). For the two measurement goals, a [subject review of A2 and A4](repo:docs/concept/skill-graph/examples/hessen-physik-e1/fachabgleich-messziele-2026-11-20.de.md) identifies what a passing submission can leave unassessed. For E.1, learners analyse supplied data. An individual experimental goal requiring an investigation of their own stays open until they demonstrate that performance. This applies to both $M$ and $F_{\mathrm{plan}}$.
+For the first two rows, the E.1 contract uses the reviewed coverage from the [child unit contract](repo:curricula/DE/Gymnasium/quality/learning-units/physics-constant-acceleration-2026-11-15-v2.md). For the two measurement goals, a [subject review of A2 and A4](repo:docs/concept/skill-graph/examples/hessen-physik-e1/fachabgleich-messziele-2026-11-20.de.md) identifies what a passing submission can leave unassessed. For E.1, learners analyse supplied data. An individual experimental goal requiring an investigation of their own stays open until they demonstrate that performance. This applies to both $M$ and $F_{\mathrm{plan}}$.
 
 After all four assessments, **two of the eleven content goals are released for planning**. Both releases come from the child unit. Nine goals need further evidence if the plan is to build on them. Five of these are direct prerequisites for eight distinct ordinary physics goals outside E.1. For example, oblique projectile motion requires the whole horizontal projectile goal. A learner demonstrating an individual goal in dialogue must also meet its full requirements. A practical assessment is available for an independent free-fall investigation.
 

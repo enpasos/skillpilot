@@ -420,11 +420,12 @@ class ClaudeV1MasteryContractTest {
     void passedExamWritesMasteryAndReturnsFeedbackBeforeContinuationInstruction() throws Exception {
         FrontierGoal activeExam = configureActiveExam();
         FrontierGoal backendNext = goal(BACKEND_NEXT_GOAL_ID, "content");
-        when(coachToolFacade.setMastery(eq(learnerId), any(MasteryUpdateRequest.class)))
+        when(coachToolFacade.setMastery(eq(learnerId), any(MasteryUpdateRequest.class), any(Runnable.class)))
                 .thenAnswer(invocation -> {
                     Learner learner = learnerRepository.findById(learnerId).orElseThrow();
                     learner.setCoachStateRevision(learner.getCoachStateRevision() + 1);
                     learnerRepository.save(learner);
+                    invocation.<Runnable>getArgument(2).run();
                     return new CoachToolFacade.MasteryResult(
                             CoachToolFacade.MasteryStatus.UPDATED,
                             successfulUpdate(backendNext),
@@ -453,7 +454,7 @@ class ClaudeV1MasteryContractTest {
         assertThat(revision.fingerprint()).isEqualTo(capabilityService.verifyExamEvaluationCapability(
                 capability, connectionId, ACTIVE_GOAL_ID, INITIAL_STATE_VERSION).materialFingerprint());
         verify(coachToolFacade).recordVerifiedExamPass(learnerId, ACTIVE_GOAL_ID, revision, 7.0, 10.0, 6.0);
-        verify(coachToolFacade, times(1)).setMastery(eq(learnerId), any(MasteryUpdateRequest.class));
+        verify(coachToolFacade, times(1)).setMastery(eq(learnerId), any(MasteryUpdateRequest.class), any(Runnable.class));
     }
 
     @ParameterizedTest
@@ -515,7 +516,7 @@ class ClaudeV1MasteryContractTest {
     void canonicalRefusalOfPassingScoreDoesNotRecordExamPass() throws Exception {
         configureActiveExam();
         String capability = releasedEvaluationCapability();
-        when(coachToolFacade.setMastery(eq(learnerId), any(MasteryUpdateRequest.class)))
+        when(coachToolFacade.setMastery(eq(learnerId), any(MasteryUpdateRequest.class), any(Runnable.class)))
                 .thenReturn(new CoachToolFacade.MasteryResult(CoachToolFacade.MasteryStatus.CONFLICT, null, null, null));
         var denied = callMastery(Map.of("evaluationCapability", capability, "earnedPoints", 6.0), UUID.randomUUID().toString());
         assertThat(payload(denied)).containsEntry("errorCode", "CONFLICT");

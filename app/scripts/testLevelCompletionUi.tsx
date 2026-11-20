@@ -95,6 +95,10 @@ assert.match(unit, /Einzeln noch nachzuweisen \(2\)/u)
 assert.match(unit, /Bewegung modellieren/u)
 assert.match(unit, /Freier Fall/u)
 assert.doesNotMatch(render(currentUnit, { stale: true }), /completionGoal=/u)
+const changedUnit = { ...currentUnit, unitAssessment: { ...currentUnit.unitAssessment!,
+  parts: unitParts.map(part => ({ ...part, materialCurrent: part.passed })) } }
+assert.match(render(changedUnit), /Diese Prüfungsfassung ist nicht verfügbar/u)
+assert.doesNotMatch(render(changedUnit), /completionGoal=D/u)
 const unitPassed = { ...currentUnit, unitAssessment: { ...currentUnit.unitAssessment!, passed: true,
   parts: unitParts.map(part => ({ ...part, passed: true })) } }
 const englishUnit = render(unitPassed, { language: 'en' })

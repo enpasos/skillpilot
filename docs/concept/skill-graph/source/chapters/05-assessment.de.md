@@ -172,7 +172,7 @@ Der [gemeinsame Lernplanstatusvertrag](repo:docs/concept/didactic/unified-learni
 Der Abschluss einer Einheit, tatsächlich erbrachte Einzelbelege und die fachlich begründete Freigabe von Voraussetzungen für die weitere Planung bleiben unterscheidbar. Ein übersprungener Lernschritt erhält keinen erfundenen Erfolg. Die Pflichtarbeit an der nachgewiesenen Route endet trotzdem.
 :::
 
-Das ist der **noch nicht übernommene Vorschlag vom 19. November 2026**. Die geltende Ableitung globaler atomarer Beherrschung aus entfallener offener Nachfrage steht weiterhin im Haupttext (Abschnitte~@ref{sec:transitive-demand} und~@ref{sec:global-effect}). Die folgenden Regeln beschreiben keine bereits erfolgte Umstellung von Backend, Ergebnisdaten, Lernplan oder Qualitätsgates. Der konkrete E.1-Vorschlag erfordert noch unabhängige fachliche Freigabe und Erprobung.
+Das ist der **noch nicht übernommene Vorschlag vom 19. November 2026**. Die geltende Ableitung globaler atomarer Beherrschung aus entfallener offener Nachfrage steht weiterhin im Haupttext (Abschnitte~@ref{sec:transitive-demand} und~@ref{sec:global-effect}). Der allgemeine Vorschlag ist weiterhin offen. Für Hessen Physik E.1 lesen Lernkarte, Cockpit und Lernplan bereits einen fassungsgebundenen Vertrag. Für die vier Aufgaben liegen unabhängige Fachprüfungen vor. Die erste fachliche Teilabnahme der Einheit durch den Auftraggeber steht aus.
 
 #### Vorschlag: Abschlussvertrag, Umfang und tatsächliche Belege {#sec:proposal-unit-contract}
 
@@ -198,18 +198,18 @@ Wie viele Aufgaben ein belastbares Urteil tragen, ist fachlich und empirisch zu 
 
 #### Vorschlag: Probe am Beispiel Hessen, Physik E.1 {#sec:unit-assessment-example}
 
-Der Vorschlag lautet: *Ich kann anhand von Messdaten entscheiden, wann eine Geschwindigkeit annähernd konstant ist und wann sie sich ändert. Ich kann damit eine Bewegung vorhersagen, auch wenn eine gleichförmige und eine beschleunigte Bewegung gleichzeitig stattfinden.* Die vollständige hessische E.1 ist bisher keine erklärte Facheinheit mit eigenem Abschlussvertrag. Die folgende Bündelung ist eine Probe des neuen Konzepts.
+Der Vorschlag lautet: *Ich kann anhand von Messdaten entscheiden, wann eine Geschwindigkeit annähernd konstant ist und wann sie sich ändert. Ich kann damit eine Bewegung vorhersagen, auch wenn eine gleichförmige und eine beschleunigte Bewegung gleichzeitig stattfinden.* Für dieses Lernversprechen bündelt der E.1-Abschlussvertrag in Hessen G8 und G9 vier Prüfungen. Die Abschnittsübersicht führt zusätzlich eine fünfte Prüfung.
 
-:::table {#tab:unit-assessment-e1 caption="Vier erforderliche Prüfungserfolge für den vorgeschlagenen E.1-Abschluss." cols="50mm,X"}
+:::table {#tab:unit-assessment-e1 caption="Vier erforderliche Prüfungserfolge für den hessischen E.1-Abschluss." cols="50mm,X"}
 | Pflichtteil | Eigener Beleg und Aussage |
 | --- | --- |
-| Kind · Senkrechten Wurf mit konstanter Beschleunigung modellieren | Bestehende Prüfungsidentität; 24 von 24 Punkten. Trägt insbesondere Modellierung, Achsenwahl und Idealisierung. |
-| Kind · Beschleunigungsprotokoll: Geschwindigkeit, Ort und Modellgrenzen | Zweite bestehende Prüfungsidentität; 20 von 20 Punkten. Verlangt unter anderem konstruierte Diagramme und die Unterscheidung von Ortsänderung und Strecke nach einer Umkehr. |
+| Kind · Senkrechten Wurf mit konstanter Beschleunigung modellieren | Hessische Fassung, ab 17 von 20 Punkten. Trägt insbesondere Modellierung, Achsenwahl und Idealisierung. |
+| Kind · Beschleunigungsprotokoll: Geschwindigkeit, Ort und Modellgrenzen | Hessische Fassung, ab 17 von 20 Punkten. Verlangt unter anderem konstruierte Diagramme und die Unterscheidung von Ortsänderung und Strecke nach einer Umkehr. |
 | Eigener Teil A · Wagen | Ab 14 von 17 Punkten. Die Modellwahl am frühen und späten Verlauf sowie eine quantitative Ankunftsprognose mit Einfluss der Messgrenzen sind zum Bestehen nötig. |
 | Eigener Teil B · waagerechter Wurf | Ab 15 von 18 Punkten. Beide Bewegungsmodelle brauchen einen Datenbeleg. Eine bestimmbare Landestelle ergibt sich aus der gemeinsamen Flugzeit. |
 :::
 
-**Der vorgeschlagene E.1-Abschluss verlangt alle vier Erfolge.** A und B liegen nach fachlicher Prüfung als einzeln bewertbare Aufgaben auf Deutsch und Englisch im Katalog. Die Laufzeit speichert für jeden bestandenen Teil einen eigenen Beleg. Die Zusammenführung dieser Belege zu einem E.1-Abschluss ist noch offen. Die beiden Kindprüfungen gehören weiter zum Abschluss. Die vorhandenen Aufgaben „Mehrphasenbewegung und Modellprüfung“ und „Waagerechter Wurf: Zwei Bewegungen, eine gemeinsame Zeit“ dienten als Vorlagen.
+**Der E.1-Abschluss verlangt alle vier Erfolge.** Für jeden bestandenen Teil zählt ein eigener Beleg zur angegebenen Aufgaben- und Rasterfassung. A und B sowie die beiden [hessischen Kindprüfungen](repo:docs/concept/skill-graph/examples/hessen-physik-e1/entwuerfe-kindeinheit/unabhaengiges-fachreview.md) liegen auf Deutsch und Englisch vor. Die vorhandenen Aufgaben „Mehrphasenbewegung und Modellprüfung“ und „Waagerechter Wurf: Zwei Bewegungen, eine gemeinsame Zeit“ dienten als Vorlagen.
 
 ##### Was A und B leisten und was offenbleibt.
 
@@ -254,7 +254,7 @@ Die vollständige direkte und transitive Voraussetzungshülle bleibt maßgeblich
 | Sicherheitsabstände im Straßenverkehr bewerten | Offen: Keine der vier Prüfungen verlangt dieses Urteil. Ein zusätzlich eingeplanter eigener Erwerbsauftrag bleibt offen. |
 :::
 
-Der Umfang ist ein Vorschlag für E.1. Die ersten beiden Zeilen stützen sich auf den [Vertrag der Kindeinheit](repo:curricula/DE/Gymnasium/quality/learning-units/physics-constant-acceleration-2026-11-15-v2.md). Für die beiden Messziele dokumentiert ein [fachlicher Abgleich von A2 und A4](repo:docs/concept/skill-graph/examples/hessen-physik-e1/fachabgleich-messziele-2026-11-20.de.md), welche Leistungen in einer gültigen Abgabe fehlen können. Für den E.1-Abschluss werten Lernende vorliegende Daten aus. Ein experimentelles Einzelziel mit verpflichtender eigener Durchführung bleibt bis zu deren Nachweis offen. Das gilt für $M$ und für $F_{\mathrm{plan}}$.
+Der E.1-Vertrag übernimmt für die beiden ersten Zeilen die fachlich geprüfte Deckung aus dem [Vertrag der Kindeinheit](repo:curricula/DE/Gymnasium/quality/learning-units/physics-constant-acceleration-2026-11-15-v2.md). Für die beiden Messziele dokumentiert ein [fachlicher Abgleich von A2 und A4](repo:docs/concept/skill-graph/examples/hessen-physik-e1/fachabgleich-messziele-2026-11-20.de.md), welche Leistungen in einer gültigen Abgabe fehlen können. Für den E.1-Abschluss werten Lernende vorliegende Daten aus. Ein experimentelles Einzelziel mit verpflichtender eigener Durchführung bleibt bis zu deren Nachweis offen. Das gilt für $M$ und für $F_{\mathrm{plan}}$.
 
 Nach den vier Prüfungen sind **zwei der elf Inhaltsziele für die Planung freigegeben**. Beide Freigaben stammen aus der Kindeinheit. Für neun Ziele braucht es zusätzliche Belege, wenn der Plan darauf aufbauen soll. Fünf dieser Ziele werden von acht verschiedenen gewöhnlichen Physikzielen außerhalb von E.1 direkt vorausgesetzt. So setzt der schiefe Wurf das ganze Ziel zum waagerechten Wurf voraus. Auch ein Einzelgespräch muss den ganzen Anspruch des jeweiligen Ziels belegen. Für einen eigenen Fallversuch gibt es eine praktische Prüfung.
 
