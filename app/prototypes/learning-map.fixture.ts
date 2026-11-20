@@ -1,3 +1,4 @@
+import { kindLabels } from '../src/components/learningUnitMap/presentation'
 import type { LearningMapEntry, LearningMapFixture, MapEntryKind } from '../src/components/learningUnitMap/types'
 
 // Synthetic navigation data only: no curriculum, learner result or access policy.
@@ -21,13 +22,7 @@ const entry = (
   requires: requires.map(value => `demo:${value}`),
   ...(children ? { children: children.map(value => `demo:${value}`) } : {}),
   position: { x, y },
-  eyebrow: {
-    unit: 'Lerneinheit',
-    motivation: 'Motivation',
-    goal: 'Fachliches Lernziel',
-    assessment: 'Prüfung',
-    memory: 'Lernkarten',
-  }[kind],
+  eyebrow: kind === 'goal' ? 'Fachliches Lernziel' : kindLabels[kind],
 })
 
 const entries: LearningMapEntry[] = [

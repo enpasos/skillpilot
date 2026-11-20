@@ -5,6 +5,7 @@ import { chromium, type Page } from 'playwright'
 import { createServer } from 'vite'
 import { fullCockpitData as data } from '../prototypes/fullCockpitData'
 import { getLegalTermsCopy } from '../src/utils/legalTermsCopy'
+import type { LevelCompletion } from '../src/utils/levelCompletionApi'
 
 const appRoot = fileURLToPath(new URL('../', import.meta.url))
 const artifacts = fileURLToPath(new URL('../../tmp/learning-cockpit-prototype-review/', import.meta.url))
@@ -129,13 +130,13 @@ async function scenarioRefreshRace(page: Page) {
     const completedRefreshFinished = page.waitForEvent('console', { predicate: message => message.text() === '[SSE] ✅ Preferences refresh complete' })
     await page.getByTestId('full-cockpit-scenario').selectOption('completed')
     const progress = page.getByTestId('learner-plan-subject-mathematik').getByTestId('learner-plan-achieved-goals')
-    await progress.filter({ hasText: '2 von 2' }).waitFor()
+    await progress.filter({ hasText: '1 von 2' }).waitFor()
     await unchangedMain(page)
     await completedRefreshFinished
     const olderRefreshFinished = page.waitForEvent('console', { predicate: message => message.text() === '[SSE] ✅ Preferences refresh complete' })
     await probe.evaluate(probe => probe.release())
     await olderRefreshFinished
-    assert.equal(await progress.innerText(), '2 von 2', 'an older scenario response must not replace the completed scenario')
+    assert.equal(await progress.innerText(), '1 von 2', 'an older scenario response must not replace the one demonstrated goal')
   } finally {
     console.log('Full Cockpit scenario refresh race:', JSON.stringify({
       ...await probe.evaluate(probe => ({ held: probe.held, responses: probe.responses,
@@ -247,22 +248,32 @@ try {
   assert.equal(await flip.getAttribute('aria-pressed'), 'true')
   assert.equal(await flip.getAttribute('data-drill-instance-witness'), 'original')
 
-  stage = 'same explicit and implicit icons, whole-subject and plan-scope counts'
+  stage = 'same direct evidence and waived obligation in tree and map, whole-subject and plan-scope counts'
   await page.getByTestId('full-cockpit-scenario').selectOption('completed')
   await selected.getByText('Prüfungsaufgabe', { exact: true }).waitFor()
   const mathProgress = page.getByTestId('learner-plan-subject-mathematik')
-  await mathProgress.getByTestId('learner-plan-achieved-goals').filter({ hasText: '2 von 2' }).waitFor()
-  assert.match(await mathProgress.getByTestId('learner-plan-whole-subject-progress').innerText(), /2 von 55/)
+  await mathProgress.getByTestId('learner-plan-achieved-goals').filter({ hasText: '1 von 2' }).waitFor()
+  const completion = await page.evaluate(async learnerId => {
+    const response = await fetch(`/api/ui/learners/${learnerId}/state`)
+    return (await response.json()).levelCompletion as LevelCompletion
+  }, data.learnerId)
+  assert.equal(completion.complete, true)
+  assert.deepEqual([completion.masteredTargetCount, completion.waivedTargetCount, completion.pendingTargetCount], [1, 1, 0])
+  assert.deepEqual(completion.planningCreditGoalIds, [])
+  assert.deepEqual(completion.waiverDetails?.map(({ goalId, ruleId, assessments, assessmentCount }) =>
+    [goalId, ruleId, assessments, assessmentCount]), [[data.ordinaryId, 'no_remaining_demand', [], 0]])
+  assert.match(await mathProgress.getByTestId('learner-plan-whole-subject-progress').innerText(), /1 von 55/)
   assert.match(await mathProgress.getByTestId('learner-plan-period-gauge').innerText(), /1 von 8/)
   const treeOrdinary = sidebar.locator(`[data-goal-id="${data.ordinaryId}"]`)
-  await treeOrdinary.getByTestId('completion-tree-waiver').waitFor()
-  assert.equal(await treeOrdinary.locator('.lucide-shield-check').count(), 1)
+  await treeOrdinary.getByTestId('completion-tree-not-required').waitFor()
+  assert.equal(await treeOrdinary.locator('.lucide-shield-check, .lucide-check').count(), 0)
   assert.equal(await sidebar.locator(`[data-goal-id="${data.assessmentId}"] .lucide-check`).count(), 1)
   await openMap(page, data.mathScopeId)
   const ordinaryNode = page.locator(`[data-entry-id="${data.ordinaryId}"]`)
   const examNode = page.locator(`[data-entry-id="${data.assessmentId}"]`)
-  await ordinaryNode.locator('.lum-node-state.is-implicit .lucide-shield-check').waitFor()
-  await examNode.locator('.lum-node-state.is-explicit .lucide-check').waitFor()
+  await ordinaryNode.getByTestId('learning-map-not-required').waitFor()
+  assert.equal(await ordinaryNode.locator('.lucide-shield-check, .lucide-check').count(), 0)
+  await examNode.getByTestId('learning-map-direct-evidence').locator('.lucide-check').waitFor()
   await unchangedMain(page)
   await page.screenshot({ path: `${artifacts}/16-full-map-completed.png` })
   await closeMap(page)
@@ -384,7 +395,7 @@ try {
   }
   assert.deepEqual(rejected, [], 'No API, external network, or write may leave the local adapter')
   assert.deepEqual(errors, [], 'No browser errors or unknown API fallback')
-  console.log('Full original Cockpit navigation passed: tree plus full-window map, unchanged main/SRS, selection versus active goal, original settings/materials/plan/data/provider, explicit/implicit icons and 320/390px.')
+  console.log('Full original Cockpit navigation passed: tree plus full-window map, unchanged main/SRS, selection versus active goal, original settings/materials/plan/data/provider, direct evidence and waived obligations, 320/390px.')
 } catch (error) {
   console.error(`Full Cockpit navigation failed at: ${stage}`)
   await lastPage?.screenshot({ path: `${artifacts}/failure.png` }).catch(() => {})
