@@ -30,6 +30,19 @@ export interface LevelCompletionCardProps {
   requestedAssessmentMissing?: boolean
 }
 
+function assessmentStatus(completion: LevelCompletion, en: boolean) {
+  const { requiredAssessmentCount: total, masteredAssessmentCount: passed } = completion
+  if (isAutomaticCompletion(completion)) {
+    if (total === 0) return en ? 'There are no assessments in this section.' : 'In diesem Abschnitt gibt es keine Prüfungen.'
+    return en
+      ? `${passed} of ${total} ${total === 1 ? 'assessment' : 'assessments'} in this section passed.`
+      : `${passed} von ${total} ${total === 1 ? 'Prüfung' : 'Prüfungen'} in diesem Abschnitt bestanden.`
+  }
+  return en
+    ? `${passed} of ${total} required ${total === 1 ? 'assessment' : 'assessments'} passed.`
+    : `Erforderliche Prüfungen: ${passed} von ${total} geschafft.`
+}
+
 /** All counts and choices come from the same backend state as the active goal. */
 export const LevelCompletionCard = ({
   completion, language, stale = false, busy = false, error, learningPlanPaused = false, onAction, onRetry, onShowGoal,
@@ -113,8 +126,8 @@ export const LevelCompletionCard = ({
           {filteredScopes.slice(currentScopePage * 6, currentScopePage * 6 + 6).map(option => <li key={option.profileId} className="space-y-3">
             <h3 className="font-semibold text-text-primary"><InlineMathText text={completionLabel(option.title, language)} /></h3>
             {option.targetCount !== undefined && option.requiredAssessmentCount !== undefined ? <p className="text-sm text-text-secondary">{en
-              ? `${option.targetCount} learning ${option.targetCount === 1 ? 'goal' : 'goals'}, ${option.profileId.startsWith('automatic:') ? 'with' : 'including'} ${option.requiredAssessmentCount} required ${option.requiredAssessmentCount === 1 ? 'assessment' : 'assessments'}.`
-              : `${option.targetCount} ${option.targetCount === 1 ? 'Lernziel' : 'Lernziele'}, ${option.profileId.startsWith('automatic:') ? 'mit' : 'davon'} ${option.requiredAssessmentCount} erforderliche ${option.requiredAssessmentCount === 1 ? 'Prüfung' : 'Prüfungen'}.`}</p> : null}
+              ? `${option.targetCount} learning ${option.targetCount === 1 ? 'goal' : 'goals'}${isAutomaticCompletion(option) ? ` with ${option.requiredAssessmentCount}` : `, including ${option.requiredAssessmentCount} required`} ${option.requiredAssessmentCount === 1 ? 'assessment' : 'assessments'}.`
+              : `${option.targetCount} ${option.targetCount === 1 ? 'Lernziel' : 'Lernziele'}${isAutomaticCompletion(option) ? ` mit ${option.requiredAssessmentCount}` : `, davon ${option.requiredAssessmentCount} erforderliche`} ${option.requiredAssessmentCount === 1 ? 'Prüfung' : 'Prüfungen'}.`}</p> : null}
             {!automaticOverview && option.assessments?.length ? <CompletionAssessmentList
               assessments={option.assessments} profileId={option.profileId} revision={completion.learnerRevision}
               language={language} disabled={discoveryDisabled} stale={stale} running={completion.directAssessmentRunning}
@@ -164,9 +177,11 @@ export const LevelCompletionCard = ({
       ) : null}
       {valid ? (
         <div className="mt-3 space-y-2 text-sm">
-          {completion.complete ? <p role="status" className="font-semibold">{en ? 'Learning section completed.' : 'Lernabschnitt abgeschlossen.'}</p> : null}
+          {completion.complete ? <p role="status" className="font-semibold">{automatic
+            ? (en ? 'Learning route completed.' : 'Lernweg abgeschlossen.')
+            : (en ? 'Learning section completed.' : 'Lernabschnitt abgeschlossen.')}</p> : null}
           <p>{en ? `${completion.masteredTargetCount} of ${completion.targetCount} learning ${completion.targetCount === 1 ? 'goal' : 'goals'} achieved${automatic ? ' directly' : ''}.` : `${completion.masteredTargetCount} von ${completion.targetCount} ${completion.targetCount === 1 ? 'Lernziel' : 'Lernzielen'} ${automatic ? 'direkt ' : ''}geschafft.`}</p>
-          <p role="status">{en ? `${completion.masteredAssessmentCount} of ${completion.requiredAssessmentCount} ${automatic ? 'completion' : 'required'} ${completion.requiredAssessmentCount === 1 ? 'assessment' : 'assessments'} passed.` : `${automatic ? 'Abschlussprüfungen' : 'Erforderliche Prüfungen'}: ${completion.masteredAssessmentCount} von ${completion.requiredAssessmentCount} geschafft.`}</p>
+          <p role="status">{assessmentStatus(completion, en)}</p>
           {completion.waivedTargetCount > 0 ? <p>{automatic
             ? (en ? `${completion.waivedTargetCount} learning ${completion.waivedTargetCount === 1 ? 'goal is' : 'goals are'} implicitly completed in this section because no remaining work requires them. Saved learning results stay unchanged.`
               : `${completion.waivedTargetCount} ${completion.waivedTargetCount === 1 ? 'Lernziel ist' : 'Lernziele sind'} in diesem Abschnitt implizit erledigt, weil keine verbleibende Arbeit sie benötigt. Die gespeicherten Lernstände bleiben unverändert.`)

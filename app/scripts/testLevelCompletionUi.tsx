@@ -40,6 +40,33 @@ assert.match(explained, /Projektion veranschaulichen/u)
 assert.match(explained, /Projektion erklären/u)
 assert.doesNotMatch(explained, /internal-static-rule/u, 'the static reference does not become product jargon')
 
+assert.match(done, /Erforderliche Prüfungen: 1 von 1 geschafft/u)
+assert.match(render(completed, { language: 'en' }), /Learning section completed\./u)
+assert.match(render(completed, { language: 'en' }), /1 of 1 required assessment passed\./u)
+
+for (const [total, passed, complete, de, en] of [
+  [0, 0, true, 'In diesem Abschnitt gibt es keine Prüfungen.', 'There are no assessments in this section.'],
+  [1, 1, true, '1 von 1 Prüfung in diesem Abschnitt bestanden.', '1 of 1 assessment in this section passed.'],
+  [5, 0, false, '0 von 5 Prüfungen in diesem Abschnitt bestanden.', '0 of 5 assessments in this section passed.'],
+  [5, 5, false, '5 von 5 Prüfungen in diesem Abschnitt bestanden.', '5 of 5 assessments in this section passed.'],
+] as const) {
+  const pending = complete ? 0 : total - passed + 1
+  const automatic: LevelCompletion = {
+    ...completed, profileId: 'automatic:section', navigationIntent: 'required', complete,
+    targetCount: passed + pending + 1, masteredTargetCount: passed, pendingTargetCount: pending,
+    requiredAssessmentCount: total, masteredAssessmentCount: passed,
+    assessments: Array.from({ length: total }, (_, index) => ({
+      goalId: 'Q' + index, title: { de: 'Prüfung ' + index }, mastered: index < passed, startAvailable: index >= passed,
+    })),
+  }
+  const german = render(automatic)
+  const english = render(automatic, { language: 'en' })
+  assert.ok(german.includes(de))
+  assert.ok(english.includes(en))
+  assert.equal(german.includes('Lernweg abgeschlossen.'), complete)
+  assert.equal(english.includes('Learning route completed.'), complete)
+}
+
 const open: LevelCompletion = {
   ...completed, complete: false, masteredTargetCount: 0, waivedTargetCount: 0, pendingTargetCount: 2,
   masteredAssessmentCount: 0, waivedTargetGoalIds: [],
@@ -55,6 +82,9 @@ assert.match(render({ ...open, calculationStatus: 'unresolved', complete: undefi
 const discovery: LevelCompletion = { ...open, calculationStatus: 'notApplicable', complete: undefined, profileId: undefined,
   profileOptions: [{ profileId: 'profile', title: { de: 'Skalarprodukt', en: 'Dot product' }, targetCount: 2, requiredAssessmentCount: 1,
     assessments: [{ goalId: 'Q', title: { de: 'Prüfung', en: 'Assessment' }, mastered: false, startAvailable: true }] }] }
+const automaticDiscovery = { ...discovery, profileOptions: [{ ...discovery.profileOptions[0], profileId: 'automatic:section' }] }
+assert.match(render(automaticDiscovery), /2 Lernziele mit 1 Prüfung\./u)
+assert.match(render(automaticDiscovery, { language: 'en' }), /2 learning goals with 1 assessment\./u)
 const discoveryHtml = render(discovery)
 assert.match(discoveryHtml, />Prüfungen<\/summary>/u)
 assert.match(discoveryHtml, /completionProfile=profile/u, 'an unselected profile can offer its published direct assessment')

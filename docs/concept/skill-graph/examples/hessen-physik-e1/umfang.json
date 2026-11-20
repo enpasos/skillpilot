@@ -1,6 +1,6 @@
 {
   "reviewStatus": "draft",
-  "revision": "2026-11-20-draft-2",
+  "revision": "2026-11-20-draft-3",
   "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
   "compositionNodeId": "physics-e1-motion",
   "viewIds": [
@@ -11,7 +11,8 @@
   ],
   "planningReview": {
     "sourceFile": "fachabgleich-messziele-2026-11-20.de.md",
-    "sourceFileSha256": "e18d0c7790701c6656d2e6e07b8b1b57d66586cfa7b92587736db7a9a3aad607"
+    "sourceFileSha256": "e18d0c7790701c6656d2e6e07b8b1b57d66586cfa7b92587736db7a9a3aad607",
+    "scope": "earlier-full-score-rubric-and-ordinary-goal-definitions"
   },
   "ownAssessmentGoalIds": [
     "ee7d5f3d-858f-59d6-89b0-e5a7f437f458",
@@ -20,16 +21,19 @@
   "ownAssessmentRevisions": {
     "ee7d5f3d-858f-59d6-89b0-e5a7f437f458": {
       "sourceFile": "wagen.json",
-      "taskRevision": "sha256:6ab3c1940e59e55422878fc7ef8489e67fd9e5a5601e96e631270562c3eb948a",
-      "rubricRevision": "sha256:78a9793913d76f90a87b681fe2d40c75fa87bbe1ff4868f037a5f6a46fe8befc",
-      "sourceFileSha256": "50e4d944ce41f38f8c5e1de7fbd510651006e733719361f1f1380d94c79f5ae5",
+      "taskRevision": "sha256:8c1dadffb91e5a1c585453dbee5c47caa389b2a58645255c3a2c48d6bdc30506",
+      "rubricRevision": "sha256:82e4e0b14410639f1f23d7172fc0fe48a9d4b2c0d75af404f1b62a4cbdbc719c",
+      "sourceFileSha256": "3d083cd914464a31a29e35a1b7e1fd6ad7b203720164a3427a6ab66f1f296134",
       "planningEvidence": [],
-      "fingerprint": "sha256:1be94285b9ccd9e39392341cdd425c33798a63cd93c2134982f22205fd953810",
+      "fingerprint": "sha256:82ce486eb9bc756a56a89f8208060df26fca425f67a72464df1c1b76d2768a94",
       "partialObservations": [
         {
           "goalId": "8aff7aac-321b-5172-ac55-877876bfd2cd",
           "requiredStepIds": [
-            "A4"
+            "A4a",
+            "A4b",
+            "A4c",
+            "A4d"
           ]
         },
         {
@@ -42,11 +46,11 @@
     },
     "39f52dcb-ff1d-5cad-9ccb-30da803cfa85": {
       "sourceFile": "wurf.json",
-      "taskRevision": "sha256:53ab2e197601d4383b0b053c0b7182a5459881764b73f97727504cee73881842",
-      "rubricRevision": "sha256:85c600d8bbb5eae243d42bd6fafa0a48e4a34785ff5b789178e7e8967b19f485",
-      "sourceFileSha256": "08291faa9418a2247ada691067283251343662fcbe2844dcdb2ff61218d65fe0",
+      "taskRevision": "sha256:8d602025e828af49d51d92c98f6e1eab7254adeedeb067b6c4c3a5b017f023c2",
+      "rubricRevision": "sha256:aedba03dc90e7615eba5ab4a2a32eeac449b749eaa7f24d41984901d47ddaa12",
+      "sourceFileSha256": "4cbb7324b119a9d5f8503b178e3bede674f525e0bf7ee55f85d6aa77b6b742d3",
       "planningEvidence": [],
-      "fingerprint": "sha256:1a362c1fcc9e90831debb82b1fdb113202b9578dce96ac5f082ea81ac3abcf9d"
+      "fingerprint": "sha256:b2186af46d563f538cb29ec277bc01228695b8155f201890c29bc4770beae0af"
     }
   },
   "childUnitSource": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
@@ -98,6 +102,11 @@
     "unitPlanningGoalIds": "allOwnAndAllChildAssessmentsPassed",
     "otherContentGoalIds": "noPlanningCreditFromThisRoute",
     "individualMastery": "unchanged",
-    "partialObservations": "noPlanningCreditFromThisRoute"
+    "partialObservations": "noPlanningCreditFromThisRoute",
+    "partialObservationEvidence": "fullPointsForEachListedStep"
+  },
+  "ownAssessmentReview": {
+    "sourceFile": "curricula/DE/Gymnasium/quality/release-model/physics-he-e1-partial-credit-review-2026-11-20.md",
+    "sourceFileSha256": "21f45113f4f30fd279d8f6fe90456ae9c2a9b4e5d84ae1638229e50145ef4cf2"
   }
 }

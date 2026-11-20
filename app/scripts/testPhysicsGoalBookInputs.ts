@@ -614,15 +614,19 @@ const KINEMATICS_ASSESSMENT_IDS = new Set([
   '4ab1cf6d-b808-5b86-9291-85df0b9f2496',
   '6ea3fb3c-abdc-568f-ab13-97c36dc274e4',
 ])
+const HESSE_E1_ASSESSMENT_IDS = new Set([
+  'ee7d5f3d-858f-59d6-89b0-e5a7f437f458',
+  '39f52dcb-ff1d-5cad-9ccb-30da803cfa85',
+])
 const EXPECTED_COUNTS: SemanticKindLedger['counts'] = {
   curricularAtomic: 485,
   curricularArea: 113,
-  practiceAssessment: 240,
+  practiceAssessment: 242,
   programStructure: 1,
   memory: 5,
   runtimeSupport: 4,
   orientation: 2,
-  total: 850,
+  total: 852,
 }
 // One reviewed measurement-rate atom is preparation only in the atlas's
 // current source views. It remains an ordinary curricular goal in the ledger.
@@ -989,7 +993,7 @@ const explicitClassification = (
     goal.type === 'atomic'
     && goal.contains.length === 0
     && goal.examData !== undefined
-    && goal.nodeKind === undefined
+    && (goal.nodeKind === undefined || (goal.nodeKind === 'exam' && HESSE_E1_ASSESSMENT_IDS.has(goal.id)))
   ) {
     return {
       semanticKind: 'practiceAssessment',

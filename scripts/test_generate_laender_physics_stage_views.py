@@ -65,14 +65,17 @@ class PhysicsStageAuthoring(unittest.TestCase):
             with self.subTest(view=view["viewId"]):
                 roles = authoring.graph.role_atoms(view)
                 allowed_new_task = set()
-                if view["scope"]["stage"] == "CrossStage":
-                    state = view["scope"].get("jurisdiction", "DE")
+                stage = view["scope"]["stage"]
+                state = view["scope"].get("jurisdiction", "DE")
+                if stage == "CrossStage":
                     allowed_new_task = (set(NEW_TASK_OFFERS) - {NEW_EYE_ASSESSMENT_ID} if state == "DE" else
                         {task for task, states in NEW_TASK_OFFERS.items() if state in states})
                     if view["scope"]["courseProfile"] == "GK":
                         allowed_new_task -= LK_ONLY_NEW_TASKS
                     if state in ("DE-SL", "DE-ST"):
                         allowed_new_task |= {"ef2bb474-89e1-5deb-81c4-c6b05d174bbd", "44ada28b-8635-5481-8d09-2d91686d352b"}
+                if state == "DE-HE" and stage in ("CrossStage", "SekII"):
+                    allowed_new_task.update(authoring.graph.HESSEN_E1_ASSESSMENTS)
                 self.assertTrue(allowed_new_task <= roles["target"])
                 retained = roles["target"] - allowed_new_task
                 digest = hashlib.sha256(("\n".join(sorted(retained)) + "\n").encode()).hexdigest()

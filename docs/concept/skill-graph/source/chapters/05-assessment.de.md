@@ -192,7 +192,7 @@ Das unabhängige Fachreview geht die gesamte Zielliste durch. Es hält für jede
 
 Zugleich prüft das Review die **Planungswirkung für jedes beanspruchte ganze Atom**. Ein `requires`-Pfad benennt Vorbereitungsbedarf; er belegt weder eine beobachtete Leistung noch die ausreichende Breite der Prüfung. `coveredGoalIds`, ein Titel und eine formal gültige Punkteverteilung sind ebenfalls keine fachliche Freigabe. Die Freigabe anderer Atome setzt den vollständigen Einheitenabschluss voraus. Das Review muss dafür begründen, welche unverzichtbaren Leistungen des Pflichtpakets den ganzen Anspruch des jeweiligen Atoms tragen.
 
-Ein kompensierbares Raster kann das Gesamturteil verfehlen: In der vorhandenen Prüfung „Mehrphasenbewegung und Modellprüfung“ sind 18 von 30 Punkten zum Bestehen nötig. Selbst ohne die sieben Punkte für Beschleunigungsphasen bleiben 23 Punkte erreichbar. Dieses Bestehen allein darf daher keine unverzichtbare Beschleunigungskompetenz behaupten. Die [E.1-Diskussionsgrundlage](repo:docs/concept/skill-graph/unit-assessment-discussion-2026-11-19.de.md) entwickelt dafür zwei getrennte eigene Prüfungen mit unverzichtbaren Kriterien.
+Ein kompensierbares Raster kann das Gesamturteil verfehlen: In der vorhandenen Prüfung „Mehrphasenbewegung und Modellprüfung“ sind 18 von 30 Punkten zum Bestehen nötig. Selbst ohne die sieben Punkte für Beschleunigungsphasen bleiben 23 Punkte erreichbar. Dieses Bestehen allein darf daher keine unverzichtbare Beschleunigungskompetenz behaupten. Die [E.1-Diskussionsgrundlage](repo:docs/concept/skill-graph/unit-assessment-discussion-2026-11-19.de.md) zeigt, wie zwei getrennte Punkteraster einen fachlichen Kern gegen vollständigen Ausgleich schützen.
 
 Wie viele Aufgaben ein belastbares Urteil tragen, ist fachlich und empirisch zu prüfen. Eine feste Mindestzahl für alle Fächer wird hier nicht gesetzt. Fachreviews, automatische Konsistenzprüfungen und Versuche mit Lernenden liefern unterschiedliche Evidenz. Die Übereinstimmung eingesetzter Coaches muss an konkreten Abgaben mit verdeckten erwarteten Urteilen geprüft werden; sie ersetzt das fachliche Urteil nicht.
 
@@ -205,19 +205,19 @@ Der Vorschlag lautet: *Ich kann anhand von Messdaten entscheiden, wann eine Gesc
 | --- | --- |
 | Kind · Senkrechten Wurf mit konstanter Beschleunigung modellieren | Bestehende Prüfungsidentität; 24 von 24 Punkten. Trägt insbesondere Modellierung, Achsenwahl und Idealisierung. |
 | Kind · Beschleunigungsprotokoll: Geschwindigkeit, Ort und Modellgrenzen | Zweite bestehende Prüfungsidentität; 20 von 20 Punkten. Verlangt unter anderem konstruierte Diagramme und die Unterscheidung von Ortsänderung und Strecke nach einer Umkehr. |
-| Eigener Teil A · Wagen | Neue eigenständige Prüfungsidentität erforderlich; nur 4 von 4 Kriterienpunkten bestehen. Trägt die begründete eindimensionale Prognose, Unsicherheit, Modellgrenze und Fehlerarten. |
-| Eigener Teil B · waagerechter Wurf | Weitere neue eigenständige Prüfungsidentität erforderlich; nur 3 von 3 Kriterienpunkten bestehen. Trägt die physikalisch begründete Überlagerung über dieselbe Zeit. |
+| Eigener Teil A · Wagen | Ab 14 von 17 Punkten. Die Modellwahl am frühen und späten Verlauf sowie eine quantitative Ankunftsprognose mit Einfluss der Messgrenzen sind zum Bestehen nötig. |
+| Eigener Teil B · waagerechter Wurf | Ab 15 von 18 Punkten. Beide Bewegungsmodelle brauchen einen Datenbeleg. Eine bestimmbare Landestelle ergibt sich aus der gemeinsamen Flugzeit. |
 :::
 
-**Alle vier Erfolge sind nötig.** A und B haben je eine Kennung für das zweisprachige Entwurfsmaterial. Ihre Verwendung als kanonische Prüfungen mit einem Abschlussvertrag erfordert eine fachliche Freigabe. Die beiden Kindprüfungen gehören weiter zum Abschluss. Die vorhandenen Aufgaben „Mehrphasenbewegung und Modellprüfung“ und „Waagerechter Wurf: Zwei Bewegungen, eine gemeinsame Zeit“ dienten als Vorlagen.
+**Der vorgeschlagene E.1-Abschluss verlangt alle vier Erfolge.** A und B liegen nach fachlicher Prüfung als einzeln bewertbare Aufgaben auf Deutsch und Englisch im Katalog. Die Laufzeit speichert für jeden bestandenen Teil einen eigenen Beleg. Die Zusammenführung dieser Belege zu einem E.1-Abschluss ist noch offen. Die beiden Kindprüfungen gehören weiter zum Abschluss. Die vorhandenen Aufgaben „Mehrphasenbewegung und Modellprüfung“ und „Waagerechter Wurf: Zwei Bewegungen, eine gemeinsame Zeit“ dienten als Vorlagen.
 
 ##### Was A und B leisten und was offenbleibt.
 
-**A · Wagen** verlangt eine begründete Vorhersage aus geeigneten Messdaten, einschließlich Messunsicherheit, Modellgrenze und der Unterscheidung von Fehlerarten. **B · waagerechter Wurf** verlangt, gleichförmige Bewegung und Fallbeschleunigung physikalisch zu begründen und über dieselbe Zeit für eine gemeinsame Vorhersage zu verbinden. Alle vier Kriterien von A und alle drei von B sind unverzichtbar; zwischen Kriterien oder Prüfungen gibt es keinen Ausgleich.
+**A · Wagen** lässt bei einer tragfähigen Prognose Nebenfehler zu. Eine begründete Änderung am Reststück, beide Intervallgrenzen und die vollständige Unterscheidung der Messabweichungen sind an einzelnen Belegen erkennbar. **B · waagerechter Wurf** prüft die Modellwahl an beiden Messreihen und die gekoppelte Vorhersage. Je Aufgabe entscheidet ihre eigene Punktsumme. Die beiden Kindprüfungen behalten ihre separat gebundenen Raster.
 
 Der entscheidende Grenzfall: Wer bereitgestellte Falldaten überzeugend auswertet, hat damit noch keinen eigenen Fallversuch durchgeführt. Ebenso ersetzt ein passendes quadratisches Zahlenmuster ohne physikalische Deutung nicht das verlangte Verständnis der Beschleunigung. Der vorgeschlagene Abschluss kann deshalb das Lernversprechen tragen, während das vollständige experimentelle Einzelziel offenbleibt.
 
-Die [Diskussionsgrundlage](repo:docs/concept/skill-graph/unit-assessment-discussion-2026-11-19.de.md) enthält die vollständigen Aufgaben, konstruierten Messdaten, sieben unverzichtbaren Rasterkriterien und zehn Beispielabgaben für den verdeckten Vergleich. Die Daten sind keine erhobenen Versuchsergebnisse. Unabhängiges Fachreview, wiederholte Blindbewertung durch die tatsächlich eingesetzten Coaches und Erprobung mit Lernenden stehen aus.
+Die [Diskussionsgrundlage](repo:docs/concept/skill-graph/unit-assessment-discussion-2026-11-19.de.md) enthält beide Aufgaben und die früheren verdeckten Gegenproben. Der [unabhängige Fachentscheid zum Teilpunkteraster](repo:curricula/DE/Gymnasium/quality/release-model/physics-he-e1-partial-credit-review-2026-11-20.md) prüft die aktuellen Schwellen. Die Daten sind konstruiert. Ein wiederholter Vergleich der tatsächlich eingesetzten Coaches und die Erprobung mit Lernenden für diese Fassung stehen aus.
 
 #### Vorschlag: Planungsfreigabe und stabile Bedeutung eines Ergebnisses {#sec:proposal-planning-release}
 
@@ -242,8 +242,8 @@ Die vollständige direkte und transitive Voraussetzungshülle bleibt maßgeblich
 | Ganzes Inhaltsatom | Planungswirkung und Grenze |
 | --- | --- |
 | Gleichmäßig beschleunigte Bewegung und Beschleunigung (Kind) | Freigegeben über beide Kindprüfungen einschließlich Anfangswerten, Richtungswechseln, Diagrammen und vorzeichenbehafteten Flächen. B allein trägt diesen ganzen Anspruch nicht. |
-| Modellierung und Idealisierung von Bewegungen (Kind) | Freigegeben über die Kindeinheit; A verlangt zusätzlich die Grenze einer konkreten Vorhersage. |
-| Messabweichungen und Fehlerarten unterscheiden | Offen. A4 verlangt die Unterscheidung von Streuung und möglichem Versatz. Wie sich beide durch Mittelung oder Kalibrierung beeinflussen lassen, bleibt ungeprüft. |
+| Modellierung und Idealisierung von Bewegungen (Kind) | Freigegeben über die Kindeinheit; A vergibt zusätzlich Punkte für die Grenze einer konkreten Vorhersage. |
+| Messabweichungen und Fehlerarten unterscheiden | Offen. Ein vollständiger Nachweis in A4 unterscheidet Streuung und möglichen Versatz. Wie sich beide durch Mittelung oder Kalibrierung beeinflussen lassen, bleibt ungeprüft. |
 | Messunsicherheiten angeben | Offen. A2 verwendet eine vorgegebene Ablesegrenze. Die Wahl einer geeigneten Unsicherheit aus den Messbedingungen bleibt ungeprüft. |
 | Gleichförmige Bewegung und Geschwindigkeit | Offen: A prüft die Modellprognose, nicht den ganzen experimentellen und grafischen Anspruch des Atoms. |
 | Bewegungen mit Diagrammen untersuchen | Offen: Kinddiagramme ersetzen nicht die eigene experimentelle Erfassung einer Bewegung. |

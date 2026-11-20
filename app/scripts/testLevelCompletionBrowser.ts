@@ -963,7 +963,8 @@ try {
     }
     const h = await open(implicit, mobile, true, { examMastered: false })
     const card = h.page.getByTestId('level-completion-card')
-    await card.getByText('Lernabschnitt abgeschlossen.', { exact: true }).waitFor()
+    await card.getByText('Lernweg abgeschlossen.', { exact: true }).waitFor()
+    await card.getByText('In diesem Abschnitt gibt es keine Prüfungen.', { exact: true }).waitFor()
     await card.getByText('0 von 2 Lernzielen direkt geschafft.', { exact: true }).waitFor()
     await card.getByText('2 Lernziele sind in diesem Abschnitt implizit erledigt', { exact: false }).waitFor()
     await card.getByText('Warum sind diese Ziele implizit erledigt?', { exact: true }).click()

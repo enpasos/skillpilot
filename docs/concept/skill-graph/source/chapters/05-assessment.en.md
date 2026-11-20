@@ -192,7 +192,7 @@ The independent subject review examines the complete goal list. For each goal it
 
 The review also examines the **planning effect for each whole atom claimed**. A `requires` path identifies preparation needs; it proves neither observed performance nor sufficient assessment breadth. `coveredGoalIds`, a title and a formally valid allocation of points do not constitute subject approval either. Releasing other atoms requires full unit completion. The review must justify which indispensable performances in the required package support the entire claim of each atom.
 
-A compensatory rubric can undermine the overall judgement: the existing exam “Multi-phase motion and model testing” requires 18 of 30 points to pass. Even without the seven points for acceleration phases, 23 points remain attainable. Passing this exam alone therefore cannot assert indispensable acceleration competence. The [E.1 discussion document](repo:docs/concept/skill-graph/unit-assessment-discussion-2026-11-19.de.md) develops two separate own exams with indispensable criteria.
+A compensatory rubric can undermine the overall judgement: the existing exam “Multi-phase motion and model testing” requires 18 of 30 points to pass. Even without the seven points for acceleration phases, 23 points remain attainable. Passing this exam alone therefore cannot assert indispensable acceleration competence. The [E.1 discussion document](repo:docs/concept/skill-graph/unit-assessment-discussion-2026-11-19.de.md) shows how the allocation of points can protect the core performance in each of two separate assessments.
 
 How many tasks support a reliable judgement requires subject and empirical investigation. No fixed minimum for every subject is established here. Subject reviews, automated consistency checks and learner trials provide different evidence. Agreement between the coaches used must be tested against concrete submissions with expected judgements concealed; it does not replace subject judgement.
 
@@ -205,19 +205,19 @@ The proposed promise is: *I can use measurement data to decide when a velocity i
 | --- | --- |
 | Child · Modelling vertical projectile motion with constant acceleration | Existing exam identity; 24 of 24 points. Supports modelling, axis choice and idealisation in particular. |
 | Child · Acceleration report: velocity, position and model limits | Second existing exam identity; 20 of 20 points. Requires constructed diagrams and distinguishing displacement from distance after a reversal, among other things. |
-| Own part A · cart | New independent exam identity required; only 4 of 4 criterion points pass. Supports justified one-dimensional prediction, uncertainty, model limits and error types. |
-| Own part B · horizontal projectile | Another new independent exam identity required; only 3 of 3 criterion points pass. Supports physically justified superposition over a shared time. |
+| Own part A · cart | Pass mark 14 out of 17. Passing requires a model supported by the early and late motion and a quantitative arrival prediction that accounts for the reading limits. |
+| Own part B · horizontal projectile | Pass mark 15 out of 18. Both motion models need support from the data. A determinate landing position follows from the shared flight time. |
 :::
 
-**All four passes are required.** A and B each have an ID for the bilingual draft material. Using these as canonical exams in a completion contract requires subject review and approval. Both child exams remain part of the qualification. The existing multi-phase motion and horizontal projectile tasks served as source material.
+**The proposed E.1 qualification requires all four passes.** Subject review cleared A and B for individual assessment in German and English. The catalog contains both tasks and the system records a pass for each completed assessment. Combining the four records into an E.1 qualification remains open. Both child exams remain part of the qualification. The existing multi-phase motion and horizontal projectile tasks served as source material.
 
 ##### What A and B demonstrate and what remains open.
 
-**A · cart** requires a justified prediction from suitable measurements, including measurement uncertainty, model limits and distinguishing error types. **B · horizontal projectile** requires physical justification of uniform motion and fall acceleration and their combination over the same time for a joint prediction. All four criteria of A and all three of B are indispensable; there is no compensation between criteria or exams.
+**A · cart** allows minor errors in an otherwise sound prediction. Evidence for a change on the final stretch, both bounds and the full distinction between measurement deviations comes from individual contributions. **B · horizontal projectile** assesses the models against both data series and uses them in a coupled prediction. Each assessment has its own additive pass mark. The child assessments retain their separately bound rubrics.
 
 The decisive boundary case: convincingly analysing supplied fall data does not mean the learner has performed their own falling experiment. Likewise, a fitting quadratic numerical pattern without physical interpretation does not replace the required understanding of acceleration. The proposed completion can therefore support the learning promise while the full experimental individual goal remains open.
 
-The [discussion document](repo:docs/concept/skill-graph/unit-assessment-discussion-2026-11-19.de.md) contains the complete tasks, constructed measurements, seven indispensable rubric criteria and ten sample submissions for blind scoring. The data are not collected experimental results. Independent subject review, repeated blind assessment by the coaches actually used and trials with learners remain outstanding.
+The [discussion document](repo:docs/concept/skill-graph/unit-assessment-discussion-2026-11-19.de.md) gives both tasks and the previous blind comparisons. The [independent review of partial credit](repo:curricula/DE/Gymnasium/quality/release-model/physics-he-e1-partial-credit-review-2026-11-20.md) checks the current thresholds. The data are constructed. Repeated blind scoring by the coaches actually used and trials with learners remain open for this revision.
 
 #### Proposal: Planning release and stable result meaning {#sec:proposal-planning-release}
 
@@ -242,8 +242,8 @@ The complete direct and transitive prerequisite closure remains decisive, respec
 | Whole content atom | Planning effect and limitation |
 | --- | --- |
 | Uniformly accelerated motion and acceleration (child) | Released through both child exams, including initial values, reversals, diagrams and signed areas. B alone does not support this whole claim. |
-| Modelling and idealising motion (child) | Released through the child unit; A additionally requires the limit of a concrete prediction. |
-| Distinguishing measurement deviations and error types | Open. A4 requires the learner to distinguish scatter from a possible offset. How averaging or calibration affects them remains unassessed. |
+| Modelling and idealising motion (child) | Released through the child unit; A also awards credit for the limit of a concrete prediction. |
+| Distinguishing measurement deviations and error types | Open. Full A4 evidence distinguishes scatter from a possible offset. How averaging or calibration affects them remains unassessed. |
 | Stating measurement uncertainties | Open. A2 uses a supplied reading limit. Choosing a suitable uncertainty from measurement conditions remains unassessed. |
 | Uniform motion and velocity | Open: A assesses model prediction, not the atom's full experimental and graphical claim. |
 | Investigating motion with diagrams | Open: child diagrams do not replace independently recording motion experimentally. |

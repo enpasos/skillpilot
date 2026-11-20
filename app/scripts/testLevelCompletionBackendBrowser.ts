@@ -46,7 +46,7 @@ const title: string = option.title.de
 const masteryText = (completion: { masteredTargetCount: number; targetCount: number }) =>
   `${completion.masteredTargetCount} von ${completion.targetCount} Lernzielen direkt geschafft.`
 const assessmentText = (completion: { masteredAssessmentCount: number; requiredAssessmentCount: number }) =>
-  `Abschlussprüfungen: ${completion.masteredAssessmentCount} von ${completion.requiredAssessmentCount} geschafft.`
+  `${completion.masteredAssessmentCount} von ${completion.requiredAssessmentCount} Prüfungen in diesem Abschnitt bestanden.`
 const findExamRow = async (card: Locator) => {
   const list = card.getByRole('list', { name: 'Prüfungen in diesem Abschnitt', exact: true })
   await list.waitFor() // Wait for the selected route, not the preceding read-only search field.
@@ -290,7 +290,7 @@ try {
     await confirmed.waitFor()
     assert.equal(await confirmed.getAttribute('role'), 'status', 'the confirmed individual assessment has a screenreader status region')
     await reloadedCard.getByText(masteryText(beforePause.levelCompletion), { exact: true }).waitFor()
-    assert.equal(await reloadedCard.getByText('Lernabschnitt abgeschlossen.', { exact: true }).count(), 0)
+    assert.equal(await reloadedCard.getByText('Lernweg abgeschlossen.', { exact: true }).count(), 0)
     const passedExam = await findExamRow(reloadedCard)
     await passedExam.getByText('Geschafft', { exact: true }).waitFor()
     assert.equal(await passedExam.getByRole('link', { name: 'Prüfung direkt versuchen', exact: true }).count(), 0)

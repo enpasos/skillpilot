@@ -63,10 +63,12 @@ Die hessische E.1-Lernkarte bündelt elf Inhaltsziele. Zwei gehören bereits zur
 | --- | --- |
 | Kindeinheit · „Senkrechten Wurf mit konstanter Beschleunigung modellieren“ | Bestehende Prüfung mit 24 von 24 Punkten. Sie trägt den eigenen Anspruch zur Modellierung und Idealisierung. |
 | Kindeinheit · „Beschleunigungsprotokoll: Geschwindigkeit, Ort und Modellgrenzen“ | Bestehende Prüfung mit 20 von 20 Punkten. Sie verlangt unter anderem drei selbst konstruierte Bewegungsdiagramme und die Unterscheidung von Ortsänderung und Strecke nach einer Umkehr. Mit beiden Prüfungen ist der geltende Kindnachweis erfüllt. |
-| Eigener E.1-Teil · Wagen (A) | Vorgeschlagene eigenständige Prüfung zur eindimensionalen Modellvorhersage und zum Umgang mit Messabweichungen. |
-| Eigener E.1-Teil · waagerechter Wurf (B) | Vorgeschlagene eigenständige Prüfung zur Überlagerung der Bewegung in zwei Richtungen. |
+| Eigener E.1-Teil · Wagen (A) | Eigenständige Prüfung zur eindimensionalen Modellvorhersage und zum Umgang mit Messabweichungen. |
+| Eigener E.1-Teil · waagerechter Wurf (B) | Eigenständige Prüfung zur Überlagerung der Bewegung in zwei Richtungen. |
 
 Das Review der Kindeinheit hatte gerade wegen der fehlenden Unterscheidung von Ortsänderung und Strecke dem Senkrechtwurf die Deckung für das volle Beschleunigungsziel entzogen. Der Beschleunigungsanspruch von B ist enger. Im Vorschlag erbringt die Person die beiden Kindnachweise und zeigt in A und B, wie sie das Gelernte für weitere Fragen einsetzt. **Alle vier bestandenen Prüfungen ergeben den vorgeschlagenen E.1-Abschluss.** Die Fachrunde kann damit das repräsentative Urteil erproben, ohne schon über einen Erlass von Kindprüfungen entscheiden zu müssen. [Vertrag der Kindeinheit und Begründung der zwei Pflichtprüfungen](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/learning-units/physics-constant-acceleration-2026-11-15-v2.md)
+
+**Lokaler Prüfungsstand am 20. November.** A und B haben jeweils eine eigene fachlich geprüfte Teilpunktfassung. Das automatische Cockpit zählt im Abschnitt fünf Prüfungen, darunter „Zwei Bewegungen, eine gemeinsame Zeit“. Die vier fachlich ausgewählten Belege sind Gegenstand des vorgeschlagenen Einheitenvertrags. Eine eigene E.1-Bescheinigung ist noch offen. [Fachentscheid zur aktuellen Fassung](../../../curricula/DE/Gymnasium/quality/release-model/physics-he-e1-partial-credit-review-2026-11-20.md)
 
 ### Was darf der Lernplan nach diesem Abschluss voraussetzen?
 
@@ -74,7 +76,7 @@ Das Review der Kindeinheit hatte gerade wegen der fehlenden Unterscheidung von O
 
 **A2 belegt den Umgang mit einer vorgegebenen Ablesegrenze.** In W-05 zeigt der Fehlerbalken, dass der Wagen nach 1,90 s noch 7 bis 9 cm vor der Linie ist. Die Person verwendet diesen Bereich für ihre Vorhersage. Das Einzelziel umfasst auch die Entscheidung, welche Unsicherheit zu den Messbedingungen passt. Wer bei einem fein auflösenden Gerät trotz großer Wiederholungsstreuung nur die letzte Anzeigestelle ansetzt, kann A2 dennoch vollständig lösen. Die vorhandene Prüfung „Messreihen, Unsicherheit und Gerätewahl“ verlangt diese Abwägung anhand bereitgestellter Daten. [Zielreview zur Messunsicherheit](https://github.com/enpasos/skillpilot/blob/e3659ed9ac37f10569c05774d48be59137a5157d/curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-10-17/existing-math-prerequisites-current-v1/resolutions/f6b1d812-ce8b-5852-b417-e6c29b533c7a.resolution.json#L61-L67) · [Vergleichsaufgabe im Physikkatalog](https://github.com/enpasos/skillpilot/blob/e3659ed9ac37f10569c05774d48be59137a5157d/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json#L59747)
 
-**A4 belegt das Erkennen zweier Abweichungsmuster.** Bei der Kamera liegen die Ablesungen um den Sollwert. Die zweite Skala zeigt trotz eigener Streuung durchweg 3 bis 4 cm zu viel. Wer beides erklärt, erhält den Punkt. Dieselbe Person kann glauben, ein konstanter Versatz verschwinde, wenn man nur oft genug misst und mittelt. Das Einzelziel verlangt auch zu erklären, was Mitteln gegen Streuung bewirkt und wie sich ein Versatz kontrollieren lässt. Diese Frage bleibt bei A4 offen. [Zielreview zu Fehlerarten](https://github.com/enpasos/skillpilot/blob/e3659ed9ac37f10569c05774d48be59137a5157d/curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-28/batch-018-fast-measurement-mechanics-energy-18-carryover-11-v1/resolutions-stable-current-carryover-8-v1/8aff7aac-321b-5172-ac55-877876bfd2cd.resolution.json#L61-L67)
+**A4 belegt das Erkennen zweier Abweichungsmuster.** Bei der Kamera liegen die Ablesungen um den Sollwert. Die zweite Skala zeigt trotz eigener Streuung durchweg 3 bis 4 cm zu viel. Die aktuellen Teilpunkte unterscheiden zwischen der Deutung und ihrem Zahlenbeleg. Dieselbe Person kann glauben, ein konstanter Versatz verschwinde, wenn man nur oft genug misst und mittelt. Das Einzelziel verlangt auch zu erklären, was Mitteln gegen Streuung bewirkt und wie sich ein Versatz kontrollieren lässt. Diese Frage bleibt bei A4 offen. [Zielreview zu Fehlerarten](https://github.com/enpasos/skillpilot/blob/e3659ed9ac37f10569c05774d48be59137a5157d/curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-28/batch-018-fast-measurement-mechanics-energy-18-carryover-11-v1/resolutions-stable-current-carryover-8-v1/8aff7aac-321b-5172-ac55-877876bfd2cd.resolution.json#L61-L67)
 
 **Für dasselbe Atom gilt auf beiden Wegen derselbe Maßstab.** Eine selbstständige fachliche Erklärung kann im Lerngespräch einen dafür passenden Anspruch erfüllen. Verlangt das Atom auch die Durchführung eines eigenen Versuchs, braucht es dafür auf beiden Wegen einen Beleg der Durchführung, etwa eigene Messwerte mit nachvollziehbarem Versuchsprotokoll. Wer die Versuchsidee im Gespräch erläutert oder fremde Messwerte auswertet, hat damit genau diese Teilleistung gezeigt. Die vier E.1-Prüfungen können also weniger Einzelziele freigeben als elf tatsächlich erbrachte Einzelbelege. Auch bei elf bearbeiteten Lernzielen entscheidet jeweils die gezeigte Leistung.
 
@@ -85,10 +87,10 @@ Das Review der Kindeinheit hatte gerade wegen der fehlenden Unterscheidung von O
 | Ziel | Welche Leistung ist zum Bestehen nötig? | Planungswirkung für das ganze Atom |
 | --- | --- | --- |
 | Gleichmäßig beschleunigte Bewegung und Beschleunigung (Kind) | Der Kindnachweis umfasst Anfangswerte, Richtungswechsel, Diagramme und vorzeichenbehaftete Flächen. B verwendet Beschleunigung beim freien Fall. | Freigegeben über die bestandene Kindeinheit. |
-| Modellierung und Idealisierung von Bewegungen (Kind) | Senkrechtwurf mit begründeter Achsenwahl, Idealisierungen und Gültigkeitsgrenzen. A verlangt zusätzlich die Grenze einer konkreten Vorhersage. | Freigegeben über die bestandene Kindeinheit. |
-| Messabweichungen und Fehlerarten unterscheiden | A verlangt am Kontrollmaterial eine begründete Unterscheidung von Ablesestreuung und systematischer Abweichung. Dies ist auch für „Digitale und analoge Messverfahren vergleichen“ relevant. | Offen. Wie Mittelung oder eine Kontrolle des Versatzes wirken, bleibt ungeprüft. |
-| Messunsicherheiten angeben | A verlangt die Lage des Wagens bei der letzten Kameraablesung mit Ablesegrenze und Einheit. Aus dieser Angabe und dem Auslaufmodell begründet die Person einen Zeitbereich. | Offen. Die Wahl einer passenden Messunsicherheit aus den Messbedingungen bleibt ungeprüft. |
-| Gleichförmige Bewegung und Geschwindigkeit | A verlangt die Bestimmung der Geschwindigkeit aus geeigneten Messwerten. Die experimentelle Bestimmung samt Erkennen im Diagramm bleibt nur teilweise beobachtet. | Offen. Der größere Anspruch des Atoms reicht über die Prognose hinaus. |
+| Modellierung und Idealisierung von Bewegungen (Kind) | Senkrechtwurf mit begründeter Achsenwahl, Idealisierungen und Gültigkeitsgrenzen. A vergibt zusätzlich Punkte für die Grenze einer konkreten Vorhersage. | Freigegeben über die bestandene Kindeinheit. |
+| Messabweichungen und Fehlerarten unterscheiden | Die vier Teilpunkte in A4 erfassen Aussagen zur Ablesestreuung und zum systematischen Versatz. Dies ist auch für „Digitale und analoge Messverfahren vergleichen“ relevant. | Offen. Wie Mittelung oder eine Kontrolle des Versatzes wirken, bleibt ungeprüft. |
+| Messunsicherheiten angeben | A verlangt eine Ankunftsprognose mit quantifizierter Auswirkung der Ablesegrenzen. Die vollständige letzte Ortsangabe ist eine zusätzliche beobachtbare Leistung. | Offen. Die Wahl einer passenden Messunsicherheit aus den Messbedingungen bleibt ungeprüft. |
+| Gleichförmige Bewegung und Geschwindigkeit | A verlangt eine am frühen und späten Auslauf begründete Modellwahl. Die experimentelle Bestimmung samt Erkennen im Diagramm bleibt nur teilweise beobachtet. | Offen. Der größere Anspruch des Atoms reicht über die Prognose hinaus. |
 | Bewegungen mit Diagrammen untersuchen | Im Kindnachweis werden Diagramme konstruiert. Eine eigene Bewegung experimentell zu erfassen und zugehörige Diagramme auszuwerten ist im Gesamtpaket nicht zwingend. | Offen für den vollständigen experimentellen Anspruch. |
 | Durchschnitts- und Momentangeschwindigkeit unterscheiden | In A wird eine Intervallgeschwindigkeit verwendet. Der Vergleich von Sekanten- und Tangentensteigung ist zum Bestehen entbehrlich. | Offen. |
 | Freier Fall experimentell untersuchen | B verlangt eine begründete Auswertung von Falldaten. Die Person erhält die Daten und muss keinen eigenen Fallversuch durchführen. | Offen für das vollständige experimentelle Ziel. |
@@ -114,7 +116,7 @@ Die Spalte „Planungswirkung“ gehört zur geprüften Fassung. Frühere Ergebn
 
 **A und B sind im Vorschlag zwei eigene neue Prüfungen.** Jede erhält eine eigene Prüfungskennung und verlangt eine vollständige Abgabe. Die Lernenden erhalten vorher die gesamte Aufgabenstellung mit allen dafür benötigten Daten. Das folgende Raster dient der Bewertung nach der Abgabe. A prüft die begründete Vorhersage eines Auslaufs einschließlich Unsicherheit, Modellgrenze und Fehlerarten. B prüft die Verbindung von gleichförmiger Bewegung und Fallbeschleunigung über dieselbe Zeit. Beide zusammen ersetzen die zwei Prüfungen der enthaltenen Einheit nicht und ergeben allein keinen E.1-Abschluss.
 
-Der maschinenlesbare Umfang bindet jede der vier Prüfungen an ihre Aufgabe, Musterlösung und Bewertung. Der Fingerabdruck jeder Prüfung erfasst die deutschen Texte sowie vorhandene englische Aufgaben- und Lösungstexte. Für Wagen, waagerechten Wurf und Beschleunigungsprotokoll liegen beide Sprachfassungen vor. Beim Senkrechtwurf sind Titel und Zielbeschreibung übersetzt. Aufgabe und Musterlösung liegen hier auf Deutsch vor. Die beiden eigenen Entwürfe haben eigene Kennungen. Die Freigabe der zwei Kindziele lässt sich je Ziel bis zu seinem fachlichen Deckungsreview zurückverfolgen. Die beiden Teilbeobachtungen bei A bleiben dem jeweiligen Pflichtkriterium zugeordnet. [A · Wagen](examples/hessen-physik-e1/wagen.json) · [B · Wurf](examples/hessen-physik-e1/wurf.json) · [Vier Materialfassungen und elf Inhaltsziele](examples/hessen-physik-e1/umfang.json)
+Der maschinenlesbare Umfang bindet jede der vier Prüfungen an ihre Aufgabe, Musterlösung und Bewertung. Der Fingerabdruck jeder Prüfung erfasst die deutschen Texte sowie vorhandene englische Aufgaben- und Lösungstexte. Für Wagen, waagerechten Wurf und Beschleunigungsprotokoll liegen beide Sprachfassungen vor. Beim Senkrechtwurf sind Titel und Zielbeschreibung übersetzt. Aufgabe und Musterlösung liegen hier auf Deutsch vor. Die beiden eigenen Entwürfe haben eigene Kennungen. Die Freigabe der zwei Kindziele lässt sich je Ziel bis zu seinem fachlichen Deckungsreview zurückverfolgen. Die beiden Teilbeobachtungen bei A setzen die im Umfang benannten Einzelbelege voraus. Aus der Gesamtpunktzahl lassen sie sich nicht ableiten. [A · Wagen](examples/hessen-physik-e1/wagen.json) · [B · Wurf](examples/hessen-physik-e1/wurf.json) · [Vier Materialfassungen und elf Inhaltsziele](examples/hessen-physik-e1/umfang.json)
 
 **A · Wann überquert der Wagen die rote Linie?**
 
@@ -135,30 +137,34 @@ Ein Wagen rollt aus der Ruhe eine Rampe hinunter. Bei 0,38 m beginnt die ebene F
 3. Auf welcher Annahme über das letzte Stück beruht deine Vorhersage? Nenne eine konkrete Änderung und erkläre, wie sie die Ankunft beeinflussen würde.
 4. Zur Kontrolle wurde eine feste Marke bei genau 0,50 m dreimal abgelesen. Die Kamera ergab 0,49 / 0,50 / 0,51 m, eine zweite Skala 0,53 / 0,54 / 0,53 m. Welche Reihe ist mit zufälliger Streuung um den Sollwert vereinbar? Welche deutet zusätzlich auf eine systematische Abweichung hin? Begründe dein Urteil mit den Zahlen.
 
-Alle Daten liegen vor. Gib die vier Teile zusammen ab. Jeder Teil zählt einen Punkt. Zum Bestehen brauchst du alle vier Punkte. Du kannst rechnen, grafisch arbeiten oder ein anderes physikalisch begründetes Verfahren verwenden.
+Für Modell, Vorhersage, Modellgrenze und Kontrollmessungen kannst du 5, 6, 2 und 4 Punkte erreichen. Ab 14 von 17 Punkten ist die Prüfung bestanden. Du kannst rechnen, zeichnen oder ein anderes physikalisch begründetes Verfahren verwenden.
 
-**B · Wo trifft die waagerecht gestartete Kugel auf?** Eine Kugel verlässt eine **1,00 m hohe** Kante waagerecht. Sage die ungefähre Auftreffzeit und den waagerechten Abstand des Landepunkts von der Kante voraus. Begründe mit den Daten, welche Bewegungsmodelle du für beide Richtungen verwendest und warum sie dieselbe Zeit benötigen. Was verändert eine doppelt so große waagerechte Startgeschwindigkeit bei unveränderter Höhe und weiterhin waagerechtem Start?
+**B · Wo trifft die waagerecht gestartete Kugel auf?**
+
+Eine Kugel verlässt eine **1,00 m hohe Kante** waagerecht. Sage die ungefähre Auftreffzeit und den waagerechten Abstand des Landepunkts von der Kante voraus. Begründe mit den Daten, welche Bewegungsmodelle du für beide Richtungen verwendest und warum sie dieselbe Zeit benötigen. Was verändert eine doppelt so große waagerechte Startgeschwindigkeit bei unveränderter Höhe und weiterhin waagerechtem Start?
 
 | Zeit nach dem Start in s | 0,10 | 0,20 | 0,30 | 0,40 |
 | --- | ---: | ---: | ---: | ---: |
-| Waagerechter Abstand in m | 0,16 | 0,33 | 0,48 | 0,64 |
-| Fallstrecke in m | 0,05 | 0,20 | 0,44 | 0,79 |
+| Waagerechter Abstand von der Kante in m | 0,16 | 0,33 | 0,48 | 0,64 |
+| Fallstrecke seit dem Start in m | 0,05 | 0,20 | 0,44 | 0,79 |
 
-Für die Ortsablesungen gilt jeweils ±0,01 m; Zeiten und Kantenhöhe gelten als genau. Die kleinen Abweichungen sind bei der Modellwahl zu berücksichtigen. B verlangt Schätzwerte für Zeit und Ort; die Berechnung eines Unsicherheitsbereichs wird in A geprüft.
+Für jede Ortsablesung gilt eine Ablesegrenze von ±0,01 m. Zeiten und Kantenhöhe gelten als genau. Berücksichtige die kleinen Abweichungen bei deiner Modellwahl. Für die Auftreffzeit und die Reichweite genügen Schätzwerte.
+
+Begründe deine Modelle, sage den Auftreffpunkt voraus und erkläre die Wirkung des doppelten Starttempos. Gib auch die neue Reichweite oder einen Ansatz an, mit dem sie sich direkt bestimmen lässt. Für die Prüfung der waagerechten und senkrechten Modelle gibt es je 5 Punkte, für die Vorhersage und den zweiten Wurf je 4 Punkte. Ab 15 von 18 Punkten ist die Prüfung bestanden. Du kannst rechnen, zeichnen oder ein anderes physikalisch tragfähiges Verfahren verwenden.
 
 ### Wie entscheiden die Bewertenden?
 
-**Jede unverzichtbare Leistung erhält genau einen Punkt, wenn sie vollständig erbracht ist.** A ist nur mit **4 von 4**, B nur mit **3 von 3 Punkten** bestanden. Damit entspricht die Bestehensgrenze jeweils der Höchstpunktzahl. Es gibt weder innerhalb einer Prüfung noch zwischen A und B einen Ausgleich. Rechnerische, grafische und andere physikalisch tragfähige Verfahren sind gleichwertig; kleine Rundungsabweichungen sind zulässig.
+A ist mit **14 von 17**, B mit **15 von 18 Punkten** bestanden. Ein richtiges Verfahren zählt auch an einer anderen Stelle der Abgabe. Ein Rechenfehler lässt die davon unabhängigen Schritte und eine fachlich richtige Folgerechnung anrechenbar.
 
-| Prüfung | Unverzichtbare Leistung für jeweils einen Punkt |
-| --- | --- |
-| A1 · Auslaufmodell | Die Person bestimmt die Bewegung aus geeigneten Zeit-Ort-Paaren auf der Ebene und berücksichtigt die späten Messpunkte. Das Modell muss innerhalb der angegebenen Ablesegrenzen zum ganzen beobachteten Auslauf passen. Neben annähernd konstantem Tempo kommt ein begründetes Modell mit schwacher Verzögerung in Betracht. |
-| A2 · Prognose und Unsicherheit | Die Person gibt die letzte gemessene Lage samt Ablesegrenze und Einheit an und verwendet sie mit dem gewählten Modell für Ankunftszeit und Zeitbereich. Gleichwertig sind eine ±-Angabe, ein Intervall, die Lage relativ zur roten Linie oder ein beschrifteter Fehlerbalken, dessen Grenzen aus der Skala ablesbar sind. Eine dieser Darstellungen genügt. Ein begründeter konservativer Zeitbereich reicht aus. |
-| A3 · Modellgrenze | Die Person benennt eine Annahme über die restliche Strecke und erläutert, wie eine konkrete Änderung die Vorhersage beeinflussen würde. Die Modellannahme kann sich auch aus der Vorhersage und der beschriebenen Änderung zusammen ergeben. Erkennbar sein müssen die Fortsetzung des gewählten Modells auf dem Reststück, eine konkrete Änderung und deren Wirkung auf die Ankunft. Eine bloße Ankunftszeit genügt dafür nicht. |
-| A4 · Fehlerarten | Die Kameraablesungen schwanken um 0,50 m; die zweite Skala liegt trotz eigener kleiner Streuung stets um 0,03 bis 0,04 m darüber. Die Person unterscheidet so zufällige Streuung und den Hinweis auf eine zusätzliche systematische Abweichung. Drei Ablesungen beweisen weder eine Verteilung noch eine Fehlerursache. |
-| B1 · Physikalische Modellwahl | Die Person begründet an den Messwerten annähernd konstante waagerechte Geschwindigkeit und senkrechte Beschleunigung aus der Ruhe. Sie deutet das quadratische Wachstum als beschleunigte Bewegung und bestimmt etwa 10 m/s² abwärts oder prüft ein gleichwertiges physikalisch begründetes Modell an den Daten. Die bekannte Fallformel allein und ein reines Zahlenmuster ohne physikalische Deutung erfüllen dieses Kriterium nicht. |
-| B2 · Gemeinsame Vorhersage | Fallhöhe und ein mit den Daten verträgliches Fallmodell bestimmen die Flugzeit; mit genau dieser Zeit ergibt sich aus dem waagerechten Modell der Landepunkt. |
-| B3 · Veränderte Startgeschwindigkeit | Die Person begründet die unveränderte Fallzeit bei unverändertem senkrechtem Startzustand und die dadurch verdoppelte waagerechte Reichweite. |
+| Geprüfte Leistung | Punkte | Was eine mögliche Lücke bedeutet |
+| --- | ---: | --- |
+| A · Modellwahl | 0–5 | Ein einziges abgesichertes Tempo ohne Vergleich des frühen und späten Auslaufs ergibt höchstens 1 Punkt und insgesamt höchstens 13. |
+| A · Vorhersage | 0–6 | Eine einseitige Zeitgrenze allein oder eine Ankunftszeit ohne quantitativ erklärten Unsicherheitseinfluss ergibt höchstens 2 Punkte und insgesamt höchstens 13. |
+| A · Modellgrenze und Kontrolle | 0–2 und 0–4 | Änderung und Folge für die Ankunft sowie die Deutung jeder Kontrollreihe und ihr Zahlenbeleg zählen getrennt. Welche dieser Leistungen gelungen sind, zeigt die Einzelbewertung. |
+| B · Waagerechtes und senkrechtes Modell | je 0–5 | Bei einer gänzlich unbegründeten Achse sind insgesamt höchstens 14 Punkte erreichbar. Für das Fallmodell braucht es einen Datenbezug zur annähernd konstanten Beschleunigung aus der Ruhe. |
+| B · Landestelle und zweiter Wurf | je 0–4 | Ohne eine mit der gemeinsamen Fallzeit bestimmbare Reichweite in einer der beiden Situationen sind höchstens 14 Punkte erreichbar. |
+
+Rechnungen, maßstäbliche Zeichnungen und andere tragfähige Verfahren sind gleichwertig. Die genauen lokalen Leistungsstufen, Annahmen und Rundungsgrenzen stehen im deutsch-englischen Raster. [Wagen](examples/hessen-physik-e1/wagen.json) · [Wurf](examples/hessen-physik-e1/wurf.json) · [Unabhängiger Fachentscheid](../../../curricula/DE/Gymnasium/quality/release-model/physics-he-e1-partial-credit-review-2026-11-20.md)
 
 **Rechenreferenz für A.** Bei konstantem Tempo passen 0,80 m/s zu allen fünf Messungen auf der Ebene. Bei 1,90 s beträgt die Kameraablesung (1,12 ± 0,01) m. Der Wagen befindet sich also 0,07 bis 0,09 m vor der Linie. Mit dem mittleren Restweg von 0,08 m wird die Linie im Modell bei 2,00 s erreicht. Die Messungen bei 1,50 und 1,90 s begrenzen die Geschwindigkeit konservativ auf 0,75 bis 0,85 m/s. Mit den jeweils dazugehörigen Endpositionen erhält man 1,90 + 0,07/0,85 ≈ 1,982 s und 1,90 + 0,09/0,75 = 2,020 s. **1,98 bis 2,02 s** ist ein nach außen gerundeter Bereich. Zusätzliche Ablesungen können diese Schranken weiter einengen.
 
@@ -166,9 +172,9 @@ Auch eine über den ganzen Auslauf gleichbleibende schwache Verzögerung ist mö
 
 **Rechenreferenz für B.** Mit x und y in Metern und t in Sekunden passen x = 1,60·t und y = 5·t² zu allen Ablesegrenzen. Bei 1,00 m Fallhöhe folgen t ≈ 0,447 s und x ≈ 0,716 m. Bei doppelter waagerechter Startgeschwindigkeit sind es etwa 1,43 m bei gleicher Fallzeit. Auch g = 9,81 m/s² ist mit allen vier Fallmessungen vereinbar. Es liefert rund 0,049 / 0,196 / 0,441 / 0,785 m, eine Flugzeit von 0,452 s und eine Reichweite von 0,722 m.
 
-### Zehn Beispielabgaben für die Gegenprobe
+### Frühere Gegenprobe mit zehn Beispielabgaben (Vollpunktraster vom 19. November)
 
-Die folgenden Abgaben sind erfunden. Fünf betreffen A, fünf B. Sie werden einzeln und in wechselnder Reihenfolge bewertet. Für die Ausgabe lassen sich die Kennungen durch zufällige Codes ersetzen; die Zuordnung und der Auswertungsschlüssel bleiben bei der Versuchsleitung. Bewertende erhalten nur Aufgabe, Raster und eine Abgabe. Die Begründungen im Schlüssel sind ein Diskussionsvorschlag, kein bereits unabhängiges Urteil.
+Die Lösungen und Wertungen dieses Abschnitts dokumentieren die frühere Version A 4/4 und B 3/3. Die Urteile und die Anbieterprobe gehören ausschließlich zu jener Fassung. Die folgenden Abgaben sind erfunden. Fünf betreffen A, fünf B. Sie werden einzeln und in wechselnder Reihenfolge bewertet. Für die Ausgabe lassen sich die Kennungen durch zufällige Codes ersetzen; die Zuordnung und der Auswertungsschlüssel bleiben bei der Versuchsleitung. Bewertende erhalten nur Aufgabe, Raster und eine Abgabe. Die Begründungen im Schlüssel sind ein Diskussionsvorschlag, kein bereits unabhängiges Urteil.
 
 #### Abgabenpool ohne Bewertung
 
@@ -206,7 +212,7 @@ Die früheren Fallstrecken bei 0,20 und 0,40 s schlossen g = 9,81 m/s² jeweils 
 
 „Nicht bestanden“ bezeichnet hier das vorgeschlagene Bewertungsurteil; der heutige Ablauf speichert keinen Fehlversuch als neuen Lernstatus. Ein bereits gespeicherter Prüfungserfolg bleibt erhalten. Auch bestandene A- und B-Abgaben allein erfüllen die beiden weiteren E.1-Pflichten nicht.
 
-#### Wie zuverlässig ist die strenge Bewertung?
+#### Historische Zuverlässigkeitsprobe der damaligen Vollpunktbewertung
 
 Der Viererabschluss verlangt volle Erfüllung von **19 Rasterpositionen**: sieben im Senkrechtwurf, fünf im Beschleunigungsprotokoll, vier in A und drei in B. Die beiden bestehenden Prüfungen verlangen 24/24 beziehungsweise 20/20 Punkte. Ihre Rasterpositionen bündeln teilweise mehrere Leistungen; es sind nicht 19 gleichartige Einzelentscheidungen. [Bestehende Aufgaben und Raster](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json)
 
@@ -266,6 +272,6 @@ Im vierteiligen Vorschlag behalten Senkrechtwurf und Beschleunigungsprotokoll ih
 
 ## Fragen für die Fachrunde
 
-1. **Tragen die Aufgaben das E.1-Lernversprechen?** Verlangen A und B zum Bestehen tatsächlich, dass die Person Bewegungen anhand vorgegebener Messdaten modelliert und ihre Vorhersage begründet? Die zehn Beispielabgaben erlauben eine erste Gegenprobe für die Bewertung der beiden schriftlichen Teile.
+1. **Tragen die Aufgaben das E.1-Lernversprechen?** Verlangen A und B zum Bestehen tatsächlich, dass die Person Bewegungen anhand vorgegebener Messdaten modelliert und ihre Vorhersage begründet? Die Gegenbeispiele aus dem Fachentscheid prüfen die aktuellen Schwellen; die zehn früheren Beispielabgaben bewahren den Vergleich mit dem ursprünglichen Raster.
 2. **Welche späteren Lernschritte darf das System empfehlen?** Sind die Einträge in der Spalte „Planungswirkung“ fachlich richtig? Wenn ein direkt benötigtes Ziel nachweislich offen geblieben ist, genügt der Hinweis an den Coach für die Anwendung in der nächsten Aufgabe, oder braucht die Person zuerst einen kurzen Einzelcheck?
 3. **Könnten A und B eines Tages die beiden Kindprüfungen für den übergeordneten Abschluss ersetzen?** Jemand löst Wagen und Wurf korrekt, verwechselt nach einem Richtungswechsel aber Ortsänderung und zurückgelegte Strecke. Nach dem vorgeschlagenen Viererpaket bleibt E.1 in diesem Fall offen, solange der Kindnachweis fehlt. Die Frage an die Fachrunde lautet, ob das engere Gesamturteil aus A und B einen *anders gefassten* E.1-Abschluss tragen könnte. Der heutige Nachweis der Kindeinheit verlangt weiterhin beide eigenen Prüfungen.

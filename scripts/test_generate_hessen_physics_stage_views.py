@@ -109,6 +109,22 @@ class HessenPhysicsEPhasePlacement(unittest.TestCase):
                                  "16bfb017-53d6-5328-a4e3-2e2b4e4398a9"}
                                 <= {node.get("goalId") for node in methods["children"]})
 
+    def test_e1_assessment_admission_only_adds_the_two_targets(self):
+        exams = set(generator.HESSEN_E1_ASSESSMENTS)
+        for name, current in self.views.items():
+            with self.subTest(view=name):
+                previous = copy.deepcopy(current)
+                motion = find(previous, "physics-e1-motion")
+                motion["children"] = [node for node in motion["children"] if node.get("goalId") not in exams]
+                generated, _ = generator.generate(previous)
+                self.assertEqual(generated, current)
+                old_seeds, old_learning = atomic_basis(previous)
+                new_seeds, new_learning = atomic_basis(generated)
+                self.assertEqual(new_seeds, old_seeds | exams)
+                self.assertEqual(new_learning, old_learning | exams)
+                self.assertEqual(generator.role_atoms(generated)["prerequisiteOnly"],
+                                 generator.role_atoms(previous)["prerequisiteOnly"])
+
     def test_repair_preserves_reference_payloads_roles_basis_and_other_units(self):
         def payloads(view):
             references = []
@@ -302,6 +318,7 @@ class HessenPhysicsDurationViews(unittest.TestCase):
             self.assertEqual(view["scope"]["stage"], "SekI")
             self.assertNotIn("courseProfile", view["scope"])
             self.assertFalse(any(node.get("id", "").startswith("physics-sekii-") for node in generator.walk(view["rootNodes"])))
+            self.assertTrue(set(generator.HESSEN_E1_ASSESSMENTS).isdisjoint(atomic_basis(view)[1]))
             for profile in ("gk", "lk"):
                 crossstage, _ = self.outputs[f"de-he-{profile}-{duration}.view.json"]
                 self.assertEqual(find(view, "physics-seki"), find(crossstage, "physics-seki"))
