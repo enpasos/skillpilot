@@ -1,0 +1,74 @@
+{
+  "id": "39f52dcb-ff1d-5cad-9ccb-30da803cfa85",
+  "title": "Wo trifft die waagerecht gestartete Kugel auf?",
+  "titleEn": "Where will the ball land after a horizontal launch?",
+  "description": "Die lernende Person kann anhand vorliegender Bewegungsdaten Modelle für beide Bewegungsrichtungen begründen und damit Auftreffzeit, Landepunkt und die Wirkung einer veränderten Startgeschwindigkeit vorhersagen.",
+  "descriptionEn": "The learner can use supplied motion data to justify models for both directions and predict the time of impact, the landing point and the effect of a change in launch speed.",
+  "type": "atomic",
+  "nodeKind": "exam",
+  "weight": 1,
+  "contains": [],
+  "requires": [
+    "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+  ],
+  "tags": [
+    "GK",
+    "LK",
+    "Practice",
+    "Assessment"
+  ],
+  "applicability": {
+    "jurisdiction": [
+      "DE-HE"
+    ]
+  },
+  "dimensionTags": {
+    "framework": "canonical-gymnasium-physics",
+    "phase": "E",
+    "area": "Klausurtraining",
+    "demandLevel": "AB2",
+    "processCompetencies": [
+      "PK2_MODELLIEREN",
+      "PK3_MATHEMATISIEREN",
+      "PK4_KOMMUNIZIEREN"
+    ],
+    "guidingIdeas": [
+      "LI_BEWEGUNG"
+    ]
+  },
+  "examData": {
+    "reviewStatus": "draft",
+    "coveredGoalIds": [],
+    "coveredStrands": [
+      "LI_BEWEGUNG"
+    ],
+    "demandLevels": [
+      "AB2"
+    ],
+    "taskContent": "Eine Kugel verlässt eine **1,00 m hohe Kante** waagerecht. Sage die ungefähre Auftreffzeit und den waagerechten Abstand des Landepunkts von der Kante voraus. Begründe mit den Daten, welche Bewegungsmodelle du für beide Richtungen verwendest und warum sie dieselbe Zeit benötigen. Was verändert eine doppelt so große waagerechte Startgeschwindigkeit bei unveränderter Höhe und weiterhin waagerechtem Start?\n\n| Zeit nach dem Start in s | 0,10 | 0,20 | 0,30 | 0,40 |\n| --- | ---: | ---: | ---: | ---: |\n| Waagerechter Abstand von der Kante in m | 0,16 | 0,33 | 0,48 | 0,64 |\n| Fallstrecke seit dem Start in m | 0,05 | 0,20 | 0,44 | 0,79 |\n\nFür jede Ortsablesung gilt eine Ablesegrenze von ±0,01 m. Zeiten und Kantenhöhe gelten als genau. Berücksichtige die kleinen Abweichungen bei deiner Modellwahl. Für die Auftreffzeit und die Reichweite genügen Schätzwerte.\n\nGib Modellbegründung, gemeinsame Vorhersage und Erklärung zur veränderten Startgeschwindigkeit zusammen ab. Jeder dieser drei Teile zählt einen Punkt. Zum Bestehen brauchst du alle drei Punkte. Du kannst rechnen, grafisch arbeiten oder ein anderes physikalisch tragfähiges Verfahren verwenden.",
+    "taskContentEn": "A ball leaves the edge of a **1.00 m high ledge** horizontally. Predict the approximate time of impact and the horizontal distance from the edge to the landing point. Use the data to justify the motion models you choose for each direction and explain why the two motions take the same time. What changes if the horizontal launch speed doubles, with the height unchanged and the launch still horizontal?\n\n| Time since launch in s | 0.10 | 0.20 | 0.30 | 0.40 |\n| --- | ---: | ---: | ---: | ---: |\n| Horizontal distance from the edge in m | 0.16 | 0.33 | 0.48 | 0.64 |\n| Distance fallen since launch in m | 0.05 | 0.20 | 0.44 | 0.79 |\n\nEach position reading has a reading uncertainty of ±0.01 m. Treat the times and the height of the ledge as exact. Take the small deviations into account when choosing your models. Estimates are sufficient for the time of impact and the horizontal range.\n\nSubmit your reasons for choosing the models, your combined prediction and your explanation of the effect of changing the launch speed together. Each of these three parts is worth one mark. All three marks are required to pass. You may use calculations, a graphical approach or another physically sound method.",
+    "solutionContent": "**Modellwahl.** Der waagerechte Abstand und die Fallstrecke beziehen sich auf den Startpunkt. Bei 1,60 m/s waagerechtem Tempo erwarten wir nach je 0,10 s einen Zuwachs von 0,16 m. Vorhergesagt sind 0,16 / 0,32 / 0,48 / 0,64 m. Die zweite Ablesung liegt 0,01 m höher, die übrigen stimmen überein. Senkrecht startet die Kugel mit Geschwindigkeit null. Für eine konstante Beschleunigung von 10 m/s² nach unten ergibt sich aus $y = gt^2/2$ die Reihe 0,05 / 0,20 / 0,45 / 0,80 m. Alle Ablesungen liegen höchstens 0,01 m davon entfernt. Das quadratische Wachstum der Fallstrecke passt zu einer mit der Zeit zunehmenden Fallgeschwindigkeit.\n\n**Auftreffen.** Waagerechte und senkrechte Bewegung gehören zu derselben Kugel und beginnen gleichzeitig. Sobald sie 1,00 m gefallen ist, erreicht sie den Boden. Mit $t = \\sqrt{2h/g}$ ergibt sich eine Flugzeit von etwa 0,447 s. In dieser Zeit bewegt sie sich waagerecht um $x = v_x t$, also etwa 0,716 m. Rund 0,45 s und 0,72 m sind angemessene Angaben.\n\n**Doppeltes waagerechtes Tempo.** Höhe, senkrechte Startgeschwindigkeit und Fallbeschleunigung bleiben gleich. Die Fallzeit bleibt daher gleich. In dieser Zeit legt die Kugel bei 3,20 m/s den doppelten waagerechten Weg zurück, etwa 1,43 m.\n\nAuch 9,81 m/s² ist mit den Daten verträglich. Die zugehörigen Fallstrecken sind etwa 0,049 / 0,196 / 0,441 / 0,785 m. Es folgen etwa 0,452 s Flugzeit, 0,722 m Reichweite und nach der Verdopplung etwa 1,44 m.",
+    "solutionContentEn": "**Choosing the models.** Horizontal displacement and distance fallen are given relative to the launch point. A horizontal speed of 1.60 m/s gives an increase of 0.16 m every 0.10 s. The predicted positions are 0.16 / 0.32 / 0.48 / 0.64 m. The second reading is 0.01 m higher and the others match. The ball starts with zero vertical velocity. A constant downward acceleration of 10 m/s² gives distances of 0.05 / 0.20 / 0.45 / 0.80 m from $y = gt^2/2$. Each reading is within 0.01 m of its prediction. The quadratic growth of the distance fallen is consistent with a vertical speed that increases with time.\n\n**Impact.** Both motions belong to the same ball and start together. The ball hits the ground when it has fallen 1.00 m. Using $t = \\sqrt{2h/g}$ gives a flight time of approximately 0.447 s. Over this time it travels a horizontal distance $x = v_x t$ of about 0.716 m. Around 0.45 s and 0.72 m are appropriate estimates.\n\n**Doubling the horizontal speed.** The height, initial vertical velocity and gravitational acceleration stay the same, so the flight time is unchanged. At 3.20 m/s the ball travels twice as far horizontally in that time, about 1.43 m.\n\nA downward acceleration of 9.81 m/s² also fits the data. The predicted distances fallen are approximately 0.049 / 0.196 / 0.441 / 0.785 m. The resulting flight time is about 0.452 s, the horizontal distance 0.722 m and the distance at twice the launch speed about 1.44 m.",
+    "scoring": {
+      "maxPoints": 3,
+      "passingPoints": 3,
+      "steps": [
+        {
+          "id": "B1",
+          "points": 1,
+          "description": "DE: Physikalische Modellwahl. Die Person begründet an den Messwerten annähernd konstante waagerechte Geschwindigkeit und senkrechte Beschleunigung aus der Ruhe. Sie deutet das quadratische Wachstum als beschleunigte Bewegung und bestimmt etwa 10 m/s² abwärts oder prüft ein gleichwertiges physikalisch begründetes Modell an den Daten. Die bekannte Fallformel allein und ein reines Zahlenmuster ohne physikalische Deutung erfüllen dieses Kriterium nicht. EN: Physical model choice. The learner uses the readings to justify approximately constant horizontal velocity and downward acceleration from zero vertical velocity. They interpret quadratic growth as accelerated motion and obtain a downward acceleration of about 10 m/s², or test an equivalent physically justified model against the data. Quoting the free-fall formula alone or describing a numerical pattern without interpreting the motion does not meet this criterion."
+        },
+        {
+          "id": "B2",
+          "points": 1,
+          "description": "DE: Gemeinsame Vorhersage. Fallhöhe und ein mit den Daten verträgliches Fallmodell bestimmen die Flugzeit. Mit genau dieser Zeit ergibt sich aus dem waagerechten Modell der Landepunkt. EN: Combined prediction. The learner uses the drop height and a fall model consistent with the data to determine the flight time. They use that same time in the horizontal model to find the landing point."
+        },
+        {
+          "id": "B3",
+          "points": 1,
+          "description": "DE: Veränderte Startgeschwindigkeit. Die Person begründet die unveränderte Fallzeit bei unverändertem senkrechtem Startzustand und die dadurch verdoppelte waagerechte Reichweite. EN: Changed launch speed. The learner explains why the fall time stays the same when the initial vertical conditions stay the same, and why the horizontal range therefore doubles."
+        }
+      ]
+    }
+  }
+}

@@ -108,6 +108,8 @@ Die Spalte „Planungswirkung“ gehört zur geprüften Fassung. Frühere Ergebn
 
 **A und B sind im Vorschlag zwei eigene neue Prüfungen.** Jede erhält eine eigene Prüfungskennung und verlangt eine vollständige Abgabe. Die Lernenden erhalten vorher die gesamte Aufgabenstellung mit allen dafür benötigten Daten. Das folgende Raster dient der Bewertung nach der Abgabe. A prüft die begründete Vorhersage eines Auslaufs einschließlich Unsicherheit, Modellgrenze und Fehlerarten. B prüft die Verbindung von gleichförmiger Bewegung und Fallbeschleunigung über dieselbe Zeit. Beide zusammen ersetzen die zwei Prüfungen der enthaltenen Einheit nicht und ergeben allein keinen E.1-Abschluss.
 
+Die zweisprachigen Entwürfe enthalten Aufgabenstellung, Musterlösung und Bewertungsraster. [A · Wagen](examples/hessen-physik-e1/wagen.json) · [B · Wurf](examples/hessen-physik-e1/wurf.json)
+
 **A · Wann überquert der Wagen die rote Linie?**
 
 Ein Wagen rollt aus der Ruhe eine Rampe hinunter. Bei 0,38 m beginnt die ebene Fahrbahn. Die rote Linie liegt bei 1,20 m. Eine Kamera hat den Ort des Wagens entlang der Fahrbahn erfasst. Für jeden Ortswert gilt eine Ablesegrenze von ±0,01 m. Die Zeitmarken und die Lage der roten Linie gelten als genau.
