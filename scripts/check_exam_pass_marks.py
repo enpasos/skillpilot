@@ -28,7 +28,8 @@ def grading_material(exam):
 
 def requires_revision(exam, previous):
     scoring = exam["scoring"]
-    return (scoring["maxPoints"] > 1 and scoring["passingPoints"] >= scoring["maxPoints"]
+    graded_in_parts = scoring["maxPoints"] > 1 or len(scoring.get("steps", [])) > 1
+    return (graded_in_parts and scoring["passingPoints"] >= scoring["maxPoints"]
             and (previous is None or grading_material(exam) != grading_material(previous)))
 
 
@@ -59,7 +60,7 @@ def main():
                 full_marks += 1
                 if args.base and requires_revision(exam, old.get(goal_id)):
                     failures.append(f"{rel}: {goal_id}")
-    print(f"{total} scored assessments, {full_marks} multi-point assessments with a full-mark threshold.")
+    print(f"{total} scored assessments, {full_marks} graded assessments requiring full marks.")
     for item in failures:
         print(f"{item} needs a passing score below full marks and a review of partial credit and coverage.",
               file=sys.stderr)

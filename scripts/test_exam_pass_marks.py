@@ -16,6 +16,8 @@ class ExamPassMarkTest(unittest.TestCase):
         old = {"scoring": {"maxPoints": 5, "passingPoints": 5}}
         self.assertFalse(requires_revision({**old, "reviewStatus": "released"}, old))
         self.assertFalse(requires_revision({"scoring": {"maxPoints": 1, "passingPoints": 1}}, None))
+        normalized = {"scoring": {"maxPoints": 1, "passingPoints": 1, "steps": [{"points": 0.5}, {"points": 0.5}]}}
+        self.assertTrue(requires_revision(normalized, None))
 
 
 if __name__ == "__main__":
