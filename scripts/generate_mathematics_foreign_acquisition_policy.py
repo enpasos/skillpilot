@@ -62,6 +62,15 @@ def authored_places(view, normalizer):
     return result
 
 
+def earliest_consumer(places, atom, normalizer):
+    """Select a current authored consumer at the earliest explicit time unit."""
+    consumers = [(goal, location) for goal, location in places.items()
+                 if atom in normalizer.prerequisite_closure(goal)]
+    bounded = [(goal, location) for goal, location in consumers if location['place']]
+    return min(bounded or consumers, default=None, key=lambda item:
+               (normalizer.placement_rank(item[1]['place']) if item[1]['place'] else (9, 99, ''), item[0]))
+
+
 def build(witness_path, native_path, physics_dir, retired_demands=None):
     n = Normalizer()
     actual = read(native_path)
@@ -89,9 +98,8 @@ def build(witness_path, native_path, physics_dir, retired_demands=None):
         for (physics, atom), context_ids in sorted(demands.items()):
             view, path, places = current[physics]
             source_pins[str(path.relative_to(ROOT))] = digest(path)
-            consumers = [(consumer, location) for consumer, location in places.items()
-                         if atom in n.prerequisite_closure(consumer)]
-            if not consumers:
+            selected = earliest_consumer(places, atom, n)
+            if selected is None:
                 if retired_demands is None:
                     raise ValueError(f'Actual foreign consumer no longer has source authority: {physics}/{atom}')
                 # A reviewed source-scope correction can retire an old observed
@@ -110,11 +118,7 @@ def build(witness_path, native_path, physics_dir, retired_demands=None):
                     currentAtomicTargets=sorted(places),
                     currentLearningClosure=sorted(learning)))
                 continue
-            # Every current selected consumer is examined. A BFS witness picked
-            # by UUID is insufficient to determine the earliest actual demand.
-            bounded = [(consumer, location) for consumer, location in consumers if location['place']]
-            consumer, location = min(bounded or consumers, key=lambda item:
-                (n.placement_rank(item[1]['place']) if item[1]['place'] else (9, 99, ''), item[0]))
+            consumer, location = selected
             pending, seen = [[consumer]], {consumer}
             for chain in pending:
                 if chain[-1] == atom:

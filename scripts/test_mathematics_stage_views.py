@@ -6,6 +6,7 @@ import hashlib
 from collections import defaultdict
 import unittest
 
+from generate_mathematics_foreign_acquisition_policy import authored_places, earliest_consumer
 from normalize_mathematics_stage_views import Normalizer, ROOT, SCHEMA, read, structure
 
 
@@ -383,8 +384,11 @@ class MathematicsStageViewsTest(unittest.TestCase):
         n = self.normalizer
         policy = read(ROOT / 'app/scripts/config/math-foreign-acquisition-demand.json')
         self.assertEqual(policy['schemaVersion'], 1)
+        places_by_view = {}
         for path, digest in policy['currentPhysicsSourcePins'].items():
             self.assertEqual(hashlib.sha256((ROOT / path).read_bytes()).hexdigest(), digest, path)
+            view = read(ROOT / path)
+            places_by_view[view['viewId']] = authored_places(view, n)
         rows = [row for values in policy['views'].values() for row in values]
         # The reviewed MV source-scope correction retired the former demand
         # for scalar multiplication (571793bd...) from this conditional policy.
@@ -392,6 +396,12 @@ class MathematicsStageViewsTest(unittest.TestCase):
         self.assertEqual(len({row['goalId'] for row in rows}), 47)
         for row in rows:
             self.assertIn(row['goalId'], n.math_atoms)
+            selected = earliest_consumer(places_by_view[row['physicsViewId']], row['goalId'], n)
+            self.assertIsNotNone(selected, (row['physicsViewId'], row['goalId']))
+            consumer, location = selected
+            self.assertEqual(row['consumerGoalId'], consumer)
+            self.assertEqual(row['consumerStructurePath'], location['path'])
+            self.assertEqual(row['demandPlace'], list(location['place']) if location['place'] else None)
             self.assertEqual(row['requiresPath'][0], row['consumerGoalId'])
             self.assertEqual(row['requiresPath'][-1], row['goalId'])
             for dependent, prerequisite in zip(row['requiresPath'], row['requiresPath'][1:]):
