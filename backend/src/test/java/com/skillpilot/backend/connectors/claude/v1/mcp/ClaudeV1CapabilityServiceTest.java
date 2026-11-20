@@ -173,7 +173,7 @@ class ClaudeV1CapabilityServiceTest {
     void aCapabilityMintedWithAnotherKeyDoesNotVerify() {
         ClaudeV1CapabilityService foreignService = new ClaudeV1CapabilityService(
                 properties("a-completely-different-capability-secret-value"));
-        String foreignCapability = foreignService.mintExamEvaluationCapability(CONNECTION_ID, GOAL_ID, 1L);
+        String foreignCapability = foreignService.mintExamEvaluationCapability(CONNECTION_ID, GOAL_ID, 1L, "a".repeat(64));
 
         assertThrows(ClaudeV1CapabilityService.CapabilityException.class, () ->
                 capabilityService.verifyExamEvaluationCapability(foreignCapability, CONNECTION_ID, GOAL_ID));
@@ -181,7 +181,7 @@ class ClaudeV1CapabilityServiceTest {
 
     @Test
     void tamperedAndMalformedCapabilitiesAreRefused() {
-        String capability = capabilityService.mintExamEvaluationCapability(CONNECTION_ID, GOAL_ID, 1L);
+        String capability = capabilityService.mintExamEvaluationCapability(CONNECTION_ID, GOAL_ID, 1L, "a".repeat(64));
         String tampered = capability.substring(0, capability.length() - 4) + "AAAA";
 
         assertThrows(ClaudeV1CapabilityService.CapabilityException.class, () ->
@@ -200,7 +200,7 @@ class ClaudeV1CapabilityServiceTest {
         shortLived.setCapabilityTtl(Duration.ofMillis(1));
         ClaudeV1CapabilityService service = new ClaudeV1CapabilityService(shortLived);
 
-        String capability = service.mintExamEvaluationCapability(CONNECTION_ID, GOAL_ID, 1L);
+        String capability = service.mintExamEvaluationCapability(CONNECTION_ID, GOAL_ID, 1L, "a".repeat(64));
         assertThrows(ClaudeV1CapabilityService.CapabilityException.class, () -> {
             Thread.sleep(20);
             service.verifyExamEvaluationCapability(capability, CONNECTION_ID, GOAL_ID);
@@ -253,7 +253,7 @@ class ClaudeV1CapabilityServiceTest {
     void capabilityStateMustMatchTheCurrentCanonicalRevision() {
         String recall = capabilityService.mintRecallBatchCapability(
                 CONNECTION_ID, GOAL_ID, CARDS, CONFIGURED_BATCH_SIZE, 5L, issuedAt);
-        String exam = capabilityService.mintExamEvaluationCapability(CONNECTION_ID, GOAL_ID, 5L);
+        String exam = capabilityService.mintExamEvaluationCapability(CONNECTION_ID, GOAL_ID, 5L, "a".repeat(64));
 
         assertThrows(ClaudeV1CapabilityService.CapabilityException.class, () ->
                 capabilityService.verifyRecallBatchCapability(
@@ -269,18 +269,19 @@ class ClaudeV1CapabilityServiceTest {
                 capabilityService.verifyExamEvaluationCapability(
                         "a".repeat(20_000), CONNECTION_ID, GOAL_ID));
         assertThrows(ClaudeV1CapabilityService.CapabilityException.class, () ->
-                capabilityService.mintExamEvaluationCapability(CONNECTION_ID, GOAL_ID, -1L));
+                capabilityService.mintExamEvaluationCapability(CONNECTION_ID, GOAL_ID, -1L, "a".repeat(64)));
     }
 
     @Test
     void examEvaluationCapabilityRoundTrips() {
-        String capability = capabilityService.mintExamEvaluationCapability(CONNECTION_ID, "exam_xyz", 3L);
+        String capability = capabilityService.mintExamEvaluationCapability(CONNECTION_ID, "exam_xyz", 3L, "a".repeat(64));
         assertNotNull(capability);
 
         ClaudeV1CapabilityService.ExamEvaluationClaim claim =
                 capabilityService.verifyExamEvaluationCapability(capability, CONNECTION_ID, "exam_xyz");
         assertEquals(sessionBinding(CONNECTION_ID), claim.sessionBinding());
         assertEquals("exam_xyz", claim.goalId());
+        assertEquals("a".repeat(64), claim.materialFingerprint());
         assertEquals(3L, claim.stateVersion());
     }
 

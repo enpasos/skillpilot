@@ -313,7 +313,7 @@ class GeminiV1CapabilityServiceTest {
                 new com.skillpilot.backend.connectors.claude.v1.session.ClaudeV1LearningSession(
                         hash, "internal-test-learner", now, now.plusSeconds(86400), "de", 5L)));
         var otherCapabilities = new com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CapabilityService(other, sessions);
-        String cap = otherCapabilities.mintExamEvaluationCapability(token, GOAL_ID, 5L);
+        String cap = otherCapabilities.mintExamEvaluationCapability(token, GOAL_ID, 5L, "sha256:" + "a".repeat(64));
         assertThrows(GeminiV1CapabilityService.CapabilityException.class, () ->
                 capabilityService.verifyExamEvaluationCapability(cap, CONNECTION_ID, GOAL_ID, 5L));
     }

@@ -2,7 +2,11 @@ package com.skillpilot.backend.landscape;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.databind.JsonNode;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -107,8 +111,24 @@ public class ExamData {
         this.scoring = scoring;
     }
 
+    /** Preserve authored rubric fields such as translations for revision binding.
+     * The public learner projection still exposes only its existing typed properties. */
+    public abstract static class RubricPart {
+        private Map<String, JsonNode> additionalFields;
+
+        @JsonAnySetter
+        void retainRubricField(String name, JsonNode value) {
+            if (additionalFields == null) additionalFields = new LinkedHashMap<>();
+            additionalFields.put(name, value);
+        }
+
+        public Map<String, JsonNode> additionalReviewFields() {
+            return additionalFields == null ? Map.of() : java.util.Collections.unmodifiableMap(additionalFields);
+        }
+    }
+
     @JsonIgnoreProperties(ignoreUnknown = true)
-    public static class Scoring {
+    public static class Scoring extends RubricPart {
         private double maxPoints;
         private double passingPoints;
         private List<Step> steps;
@@ -139,7 +159,7 @@ public class ExamData {
     }
 
     @JsonIgnoreProperties(ignoreUnknown = true)
-    public static class Step {
+    public static class Step extends RubricPart {
         private String id;
         private double points;
         private String description;

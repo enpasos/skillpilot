@@ -374,6 +374,7 @@ export function createFullCockpitApi(data: FullCockpitData = fullCockpitData): F
       title: 'Ergänzendes Material · UI-Testverweis', url: 'https://materials.example.invalid/cockpit-math', provider: 'Lokaler Testanbieter',
       resourceType: 'article', language: 'de', sections: [], access: 'public-link', aiUsage: 'link-only',
     }] : [])
+    if (method === 'GET' && suffix === `/exam-passes/${data.assessmentId}`) return json([])
     if (suffix === `/client-state/${data.memoryId}` && ['GET', 'PUT'].includes(method)) {
       if (method === 'PUT') {
         if ((body.expectedUpdatedAt ?? null) !== srsUpdatedAt) return json({ error: 'Local SRS revision conflict' }, 409)
