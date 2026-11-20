@@ -1,6 +1,6 @@
 # Hessen Physik Sek II · Übergabe für den nächsten Rechner
 
-Arbeitsbranch `feat/hessen-e1-pruefungsteile` im Repository `enpasos/skillpilot`. Konkreter Prüfstand am 20. November 2026, 07:35 MEZ. Der aktuelle Branch enthält die Arbeit für die erste Teilabnahme. Der erste Meilenstein ist E.1 in Hessen Physik Sek II für G8 und G9. Der Nutzer möchte die Oberstufe fertigstellen, bevor weitere Schulstufen, Fächer oder Länder folgen.
+Arbeitsbranch `feat/hessen-e1-pruefungsteile` im Repository `enpasos/skillpilot`. Die technische Vorschau zur E.1-Teilabnahme läuft seit dem 20. November 2026 auf Port 5177. Der historische Ausgangsstand vom selben Tag um 07:35 MEZ steht im Abschnitt „Prüfstand beim Rechnerwechsel“. Der aktuelle Branch enthält die Arbeit für die erste Teilabnahme. Der erste Meilenstein ist E.1 in Hessen Physik Sek II für G8 und G9. Der Nutzer möchte die Oberstufe fertigstellen, bevor weitere Schulstufen, Fächer oder Länder folgen.
 
 ## Auftrag für die neue Sitzung
 
@@ -77,7 +77,7 @@ Im getrennten optionalen OWL-Test geht beim Wiederherstellen der Mathematikansic
 
 ## Prüfstand beim Rechnerwechsel
 
-Das Hessen-Goal ist auf dem bisherigen Rechner pausiert. Der Arbeitsbranch enthält den Zwischenstand für die Fortsetzung. Der Nutzer hat E.1 und die Hessen-Vorlage noch nicht abgenommen. Die Überwachung und Reparatur von [Mathematik-PR #170](https://github.com/enpasos/skillpilot/pull/170) läuft im bisherigen Chat weiter.
+Beim Rechnerwechsel war das Hessen-Goal pausiert. Die folgenden Punkte dokumentieren die damals offenen Prüfungen. Die anschließenden G8/G9-Ergebnisse stehen in der [Vorschauanleitung](hessen-physik-e1-vorschau.md) und im [Managementbericht](stage-plan-management-summary.md). Die Betreuung von [Mathematik-PR #170](https://github.com/enpasos/skillpilot/pull/170) lag im bisherigen Chat.
 
 - Die Auswahl der Karten ist im Frontend für 32 hessische Projektionen und mit einer zweiten Mathematikeinheit mit 27 Testkarten geprüft. Die 31 Claude-Kartentests waren lokal erfolgreich. Die Paketprüfungen bestätigen die Trennung der Materialien und die beiden neuen Prüfsummenbindungen. Ein echter Start einer frischen Paketinstallation steht aus.
 - Der lokale Vierernachweis in G8 und G9 ist oben beschrieben. Die wiederholbare JUnit-Prüfung dafür liegt in `ClaudeV1CompletionRouteIntegrationTest.hessianMotionAssessmentNeedsFourVersionedExamPassesAndKeepsIndividualGoalsOpen`. Ihr abschließender Gradle-Lauf nach einer Compile-Korrektur ist offen. Beim Neubau ein eigenes `SKILLPILOT_BACKEND_BUILD_DIR` verwenden, wenn mehrere Gradle-Läufe gleichzeitig stattfinden.
@@ -87,8 +87,8 @@ Das Hessen-Goal ist auf dem bisherigen Rechner pausiert. Der Arbeitsbranch enth�
 ## Als Nächstes
 
 1. Den Befund der automatisierten G8-/G9-Prüfungen einordnen. Die Bewertung mit vorgegebenen Testpunkten prüft Speicherung, Fassungsbindung und Bestehensgrenzen. Wie Claude reale Schülerantworten benotet und nach den Karten wieder ins Gespräch einsteigt, erfordert eine gesonderte Erprobung im Claude-Client.
-2. Im persönlichen Lernplan prüfen, welche Ziele nach bestandenen Teilprüfungen als Nächstes angeboten werden. Ein freiwilliger Einzelweg soll angerechnete Ziele gezielt weiterbearbeiten können. Das Ergebnis am Beispiel einer Person vor und nach den vier Teilnachweisen abgleichen.
-3. Dem Nutzer E.1 in der lokal laufenden Anwendung in beiden Bildungsgängen zur Teilabnahme zeigen. Anschließend die nächste Einheit in Hessen Physik Sek II gemeinsam verbessern. Die Bewertung für Jahrgangsstufe 5 wird getrennt in [PR #170](https://github.com/enpasos/skillpilot/pull/170) geführt. Die frühere Grundlage für Prüfungsbelege wurde mit [PR #169](https://github.com/enpasos/skillpilot/pull/169) integriert und auf dem zugehörigen [Main-CI-Lauf](https://github.com/enpasos/skillpilot/actions/runs/44675318290) geprüft.
+2. Für die fachliche Teilabnahme lassen sich der Ball-Einstieg, die drei Übungen und neun Karten sowie der Vierernachweis im regulären Cockpit öffnen. Der Auftragsvergleich zeigt auch den freiwilligen Einzelweg und die Wirkung eines zusätzlich beauftragten Einzelziels. Der Browserlauf hat die vier Starts, beide Schulzeitmodelle und den Nachbarwechsel bei 1024 Pixeln geprüft. [G8](http://localhost:5177/auftraege/G8) · [G9](http://localhost:5177/auftraege/G9)
+3. Nach der persönlichen E.1-Teilabnahme folgt die nächste hessische Oberstufeneinheit. Die Bewertung für Jahrgangsstufe 5 wurde separat in [PR #170](https://github.com/enpasos/skillpilot/pull/170) betreut. Die frühere Grundlage für Prüfungsbelege stammt aus [PR #169](https://github.com/enpasos/skillpilot/pull/169) und seinem [Main-CI-Lauf](https://github.com/enpasos/skillpilot/actions/runs/44675318290).
 
 ## Einstieg auf einem neuen Rechner
 

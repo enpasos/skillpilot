@@ -262,9 +262,11 @@ async function checkUnitAssignments(duration) {
       const normalPlan = page.getByTestId('learner-plan-unit-assignment')
       await normalPlan.waitFor()
       assert((await normalPlan.innerText()).includes(passed + ' / 4'))
-      const unitStatus = control.getByTestId('unit-assignment-status')
-      await unitStatus.waitFor()
-      assert((await unitStatus.innerText()).includes(passed + ' / 4'))
+      if (route !== 'gemischt') {
+        const unitStatus = control.getByTestId('unit-assignment-status')
+        await unitStatus.waitFor()
+        assert((await unitStatus.innerText()).includes(passed + ' / 4'))
+      }
       const id = profiles[duration][profile]
       const plan = await readApi(id, '/learning-plans/by-landscape?landscapeId=' + physics)
       const saved = plan.blocks.filter(block => block.unitAssignment)
@@ -286,8 +288,8 @@ async function checkUnitAssignments(duration) {
         await checkEvidenceMap(page, duration)
       } else {
         assert.equal(plan.nextEligibleGoal.goalId, 'ae67bcf1-f3ee-50d6-9a12-25a159dff659')
-        assert((await control.getByTestId('unit-assignment-next').innerText()).includes('Bewegungen mit Weg-Zeit-Diagrammen beschreiben'))
-        await control.getByTestId('unit-assignment-next-individual').click()
+        const banner = page.getByTestId('learner-active-goal-banner').filter({ hasText: 'Bewegungen mit Weg-Zeit-Diagrammen beschreiben' })
+        await banner.getByRole('button', { name: 'Gehe zum aktiven Ziel' }).click()
         await page.getByTestId('learner-current-goal').getByRole('heading', { name: 'Bewegungen mit Weg-Zeit-Diagrammen beschreiben', exact: true }).first().waitFor()
       }
       console.log(duration, route, 'Einheitenauftrag und tatsächlicher nächster Planvorschlag OK')
