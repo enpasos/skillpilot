@@ -9,7 +9,7 @@ import { collectCompositionProjectionRoleGoalIds, type CompositionView, type Com
 import type { LearningGoal, SkillLandscape } from '../src/landscapeTypes'
 import { fingerprintCurrentCurriculumDocument as digest, loadCurrentCurriculumCatalog } from './currentCurriculumCatalog'
 import { fingerprintSemanticKindSourceGoal } from './goalBookModel'
-import { assessmentReviewRevisions, UnitGraph, type ReviewedUnitAssessmentEdition, type UnitGraphLandscape } from './lib/learningUnitContracts'
+import { assessmentReviewRevisions, UnitGraph, type UnitGraphLandscape } from './lib/learningUnitContracts'
 import { liveVerificationInputs } from './lib/verificationInputSnapshot'
 import { fingerprintPositiveGoalEvidenceProfile, type PositiveGoalEvidenceReviewRecord } from './positiveGoalEvidenceProfileModel'
 
@@ -112,9 +112,18 @@ export function validatePlanningRelease(unit: MaterialUnit, credit: Credit, evid
       ...(exam.solutionContentEn != null && { solutionContentEn: exam.solutionContentEn }) }
     assert.deepEqual(contract.parts.find(part => part.goalId === id)!.material,
       { ...revisions, fingerprint: digest(materialBinding) }, 'Witness task, rubric or language edition differs')
+    const placements = landscape.goalPlacements?.filter(row => row.relation === 'own' && row.goalId === id)
+    assert.deepEqual(placements?.map(row => row.unitId), [release.ownerUnitId], 'Wrong assessment owner')
+    const reviews = owners[0].coverageReviews?.filter(row => row.assessmentGoalId === id)
+    assert(reviews?.length === 1 && reviews[0].reference === release.review.path
+      && reviews[0].taskRevision === revisions.taskRevision && reviews[0].rubricRevision === revisions.rubricRevision,
+    'Missing or stale coverage review of an own assessment')
     const reachable = graph.reach(key)
-    for (const goalId of exam.coveredGoalIds ?? []) {
-      if (reachable.has(graph.resolve(goalId, landscape.landscapeId))) covered.add(graph.resolve(goalId, landscape.landscapeId))
+    uniqueIds(reviews[0].goalIds, 'Reviewed coverage')
+    for (const goalId of reviews[0].goalIds) {
+      const goalKey = graph.resolve(goalId, landscape.landscapeId)
+      assert(exam.coveredGoalIds?.includes(goalId) && reachable.has(goalKey), 'No required assessment both covers and requires ' + goalId)
+      covered.add(goalKey)
     }
   }
   for (const id of goalIds) {
@@ -129,6 +138,7 @@ export function validatePlanningRelease(unit: MaterialUnit, credit: Credit, evid
       definition: planningGoalDefinition(goal), profileFingerprint: evidence.currentProfile(id),
     }, 'Current goal or performance expectations differ for ' + id)
   }
+  assert.equal(covered.size, goalIds.length, 'Planning goal set differs from the canonical reviews')
 }
 
 interface ProfileConfig { landscapeId: string; scope: { goalIds: string[] }; reviewPath: string }
@@ -153,7 +163,7 @@ function loadReleasedViews(units: MaterialUnit[]): Map<string, CompositionView> 
   return views
 }
 
-export function checkUnitPlanningReleases(): ReviewedUnitAssessmentEdition[] {
+export function checkUnitPlanningReleases(): string[] {
   const inventory = readJson('curricula/unit-learning-materials.json')
   assert.equal(inventory.schemaVersion, 1)
   const units: MaterialUnit[] = inventory.materials.map((path: string) => readJson('curricula/' + path).unit)
@@ -161,7 +171,7 @@ export function checkUnitPlanningReleases(): ReviewedUnitAssessmentEdition[] {
   const { entries } = loadCurrentCurriculumCatalog(liveVerificationInputs)
   const graph = new UnitGraph(entries.map(({ landscape }) => landscape as UnitGraphLandscape))
   const rollouts: Rollout[] = readJson('curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json').subjects
-  const active = new Map<string, ReviewedUnitAssessmentEdition>()
+  const active = new Set<string>()
   for (const unit of units) {
     const credits = unit.assessmentContract?.planningCredits ?? []
     if (!credits.length) continue
@@ -196,9 +206,7 @@ export function checkUnitPlanningReleases(): ReviewedUnitAssessmentEdition[] {
         approved: inventory.reviewedPlanningReleases ?? {}, currentProfile,
         reviewHash: path => 'sha256:' + createHash('sha256').update(readBytes(path)).digest('hex') })
       assert(!active.has(credit.release.fingerprint), 'Duplicate planning release')
-      const { ownerUnitId, ownerRevision, viewIds } = credit.release
-      active.set(credit.release.fingerprint, { landscapeId: unit.landscapeId, ownerUnitId, ownerRevision, viewIds,
-        requiredPartIds: credit.requiredPartIds, goalIds: credit.goalIds })
+      active.add(credit.release.fingerprint)
     }
   }
   return [...active.values()]

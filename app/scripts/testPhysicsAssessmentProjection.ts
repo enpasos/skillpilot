@@ -97,13 +97,13 @@ const e1Contracts = materialFiles.map(path => readRepoJson(`curricula/${path}`).
   .filter(unit => unit.landscapeId === canonicalLandscape.landscapeId && unit.compositionNodeId === 'physics-e1-motion')
 assert.equal(e1Contracts.length, 1)
 const contract = e1Contracts[0].assessmentContract
-assert.equal(contract.revision, '2026-11-20-e1-v1')
+assert.equal(contract.revision, '2026-11-20-e1-v2')
 const creditedGoalIds = [...hesseChildAssessments.values()].map(spec => spec.coverage)
 assert.deepEqual(e1Scope.childPlanningGoalIds, creditedGoalIds)
 assert.deepEqual(e1Scope.unitPlanningGoalIds, [])
 assert.equal(contract.planningCredits.length, 1)
 const [childCredit] = contract.planningCredits
-assert.equal(childCredit.release.fingerprint, 'sha256:167dcd7df3cc45dbf3211b469ae6e62b79eb4702799a817aed44bdaef73aa93d',
+assert.equal(childCredit.release.fingerprint, 'sha256:d795236680087accef0ab60ed4d4257bbf651d83f8f2a5fc3dbbc5e28d9a96ba',
   'Only the independently checked Hessen C+D edition may use this approval')
 assert.deepEqual(childCredit.release.review, { path: e1Scope.childAssessmentReview.sourceFile, sha256: 'sha256:' + e1Scope.childAssessmentReview.sourceFileSha256 })
 assert.deepEqual(childCredit.release.viewIds, [...e1Scope.viewIds].sort())
@@ -123,7 +123,7 @@ assert.deepEqual(contract.parts, reviewedParts, 'All four production receipt pre
 const child = canonicalLandscape.programUnits?.find(unit => unit.id === 'physics-constant-acceleration')
 assert(child && child.kind === 'learningUnit' && child.revision === e1Scope.childRevision)
 assert.equal(e1Scope.childUnitId, child.id)
-assert.equal(e1Scope.childAssessmentScopeRevision, '2026-11-20-he-v1')
+assert.equal(e1Scope.childAssessmentScopeRevision, '2026-11-20-he-v2')
 for (const [id, spec] of hesseChildAssessments) {
   const binding = e1Scope.childAssessmentRevisions[id]
   const source = readFileSync(resolve(e1MaterialDirectory, binding.sourceFile), 'utf8')

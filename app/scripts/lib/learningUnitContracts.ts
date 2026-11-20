@@ -57,7 +57,6 @@ export interface CoverageReview {
 /** One learning unit as read from the placement layer. */
 export interface LearningUnit {
   id: string
-  revision?: string
   ownGoalIds: string[]
   childUnitIds: string[]
   coverageReviews: CoverageReview[]
@@ -110,17 +109,6 @@ export interface OfferedMembershipClass {
   /** The closed learning scope: seed targets plus the prerequisites the closure added as targets. */
   targetGoalIds: ReadonlySet<string>
   members: string[]
-  /** Native view IDs (including merged IDs) of the individual configurations in this class. */
-  viewIdByMember?: ReadonlyMap<string, string | null>
-}
-/** A current independent release checked against all source editions and actual unit views. */
-export interface ReviewedUnitAssessmentEdition {
-  landscapeId: string
-  ownerUnitId: string
-  ownerRevision: string
-  viewIds: string[]
-  requiredPartIds: string[]
-  goalIds: string[]
 }
 
 export class UnitGraphError extends Error {}
@@ -368,7 +356,7 @@ export function deriveLearningUnits(landscapes: UnitGraphLandscape[]): DerivedLe
         if (stray.length) report('LU-UNIT', `Program unit ${id} of kind ${String(unit.kind)} carries learning-unit fields: ${stray.join(', ')}`)
         continue
       }
-      units.set(id, { id, revision: typeof unit.revision === 'string' ? unit.revision : undefined, ownGoalIds: [], childUnitIds: [], coverageReviews: [] })
+      units.set(id, { id, ownGoalIds: [], childUnitIds: [], coverageReviews: [] })
       const problems = [
         ...(slug.test(id) ? [] : ['id is not a lowercase slug']),
         ...['label', 'labelEn', 'promise', 'promiseEn'].filter((field) => !hasText(unit[field])).map((field) => `${field} is missing`),
@@ -676,7 +664,6 @@ export function validateLearningUnits(
  */
 export function validateOfferedScopes(
   catalogs: LearningUnitCatalog[], graph: UnitGraph, classes: OfferedMembershipClass[],
-  reviewedEditions: readonly ReviewedUnitAssessmentEdition[] = [],
 ): UnitFinding[] {
   const findings: UnitFinding[] = []
   for (const catalog of catalogs) {
@@ -686,46 +673,20 @@ export function validateOfferedScopes(
         .filter((key) => graph.has(key) && graph.isAtomic(key))
       const ordinary = own.filter((key) => graph.kind(key) === 'ordinary')
       const assessments = own.filter((key) => graph.kind(key) === 'assessment')
-      const editions = reviewedEditions.filter(edition => edition.landscapeId === catalog.landscapeId
-        && edition.ownerUnitId === unit.id && edition.ownerRevision === unit.revision)
-      // A current regional edition can stand in for the owning unit's reviewed assessment of that goal.
-      const historicallyReviewed = new Set<string>()
-      for (const review of editions.length ? unit.coverageReviews : []) {
-        const assessment = `${catalog.landscapeId}:${review.assessmentGoalId}`
-        if (!assessments.includes(assessment)) continue
-        let revisions: ReturnType<typeof assessmentReviewRevisions>
-        try { revisions = assessmentReviewRevisions(graph.goal(assessment)) } catch (invalid) {
-          if (invalid instanceof UnitGraphError) continue
-          throw invalid
-        }
-        if (revisions.taskRevision !== review.taskRevision || revisions.rubricRevision !== review.rubricRevision) continue
-        const coverage = coveredGoalKeys(graph, assessment)
-        for (const key of coverage.keys) {
-          if (review.goalIds.includes(idOf(key)) && graph.reach(assessment).has(key)) historicallyReviewed.add(key)
-        }
-      }
-      const uncovered = new Map<string, string[]>()
+      // goal -> classes whose view targets it while no own assessment requiring it is in scope.
+      const uncovered = new Map<string, OfferedMembershipClass[]>()
       for (const membership of offered) {
         const assessed = new Set(assessments.filter((key) => membership.targetGoalIds.has(idOf(key)))
           .flatMap((key) => [...graph.reach(key)]))
-        const offeredEditions = editions.filter(edition => edition.requiredPartIds.length > 0
-          && edition.requiredPartIds.every(id => membership.seedTargetGoalIds.has(id)))
         for (const key of ordinary) {
-          const id = idOf(key)
-          if (!membership.seedTargetGoalIds.has(id) || assessed.has(key)) continue
-          const missing = membership.members.filter(member => {
-            const view = membership.viewIdByMember?.get(member)
-            if (!view || !historicallyReviewed.has(key)) return true
-            const components = view.startsWith('merged:') ? view.slice(7).split('+') : [view]
-            return !offeredEditions.some(edition => edition.goalIds.includes(id)
-              && components.every(component => edition.viewIds.includes(component)))
-          })
-          if (missing.length) uncovered.set(key, [...(uncovered.get(key) ?? []), ...missing])
+          if (!membership.seedTargetGoalIds.has(idOf(key)) || assessed.has(key)) continue
+          uncovered.set(key, [...(uncovered.get(key) ?? []), membership])
         }
       }
-      for (const [key, members] of uncovered) {
+      for (const [key, memberships] of uncovered) {
+        const configurations = memberships.reduce((count, membership) => count + membership.members.length, 0)
         findings.push({ code: 'LU-R1-OFFERED', landscapeId: catalog.landscapeId, unitId: unit.id, goalId: idOf(key),
-          message: `Goal ${idOf(key)} is a view target without a learnable own assessment in ${members.length} configuration(s), e.g. ${members[0]}` })
+          message: `Goal ${idOf(key)} is a view target without a learnable own assessment in ${configurations} configuration(s), e.g. ${memberships[0].members[0]}` })
       }
     }
   }
