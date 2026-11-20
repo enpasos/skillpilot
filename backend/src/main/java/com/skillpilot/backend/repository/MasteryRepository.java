@@ -4,6 +4,7 @@ import com.skillpilot.backend.domain.Mastery;
 import com.skillpilot.backend.domain.MasteryId;
 import java.time.Instant;
 import java.util.List;
+import java.util.Set;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -17,6 +18,11 @@ public interface MasteryRepository extends JpaRepository<Mastery, MasteryId> {
     }
 
     List<Mastery> findByLearner_SkillpilotId(String skillpilotId);
+
+    @Query("select m.id.goalKey from Mastery m where m.id.skillpilotId = :learnerId "
+            + "and m.id.goalKey in :goalIds and m.value >= :threshold")
+    Set<String> findMasteredGoalIds(@Param("learnerId") String learnerId,
+            @Param("goalIds") List<String> goalIds, @Param("threshold") double threshold);
 
     List<Mastery> findAllByValueGreaterThanEqual(double value);
 

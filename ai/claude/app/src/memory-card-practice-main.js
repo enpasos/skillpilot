@@ -214,6 +214,7 @@ async function submitReview(args, copy) {
       || !current
       || resultLearningSessionId !== current.learningSessionId
       || receipt.goalId !== current.goalId
+      || receipt.practiceScopeId !== current.practiceScopeId
       || receipt.expectedStateVersion <= current.expectedStateVersion
     ) {
       throw new Error("invalid-review-receipt");
@@ -255,7 +256,8 @@ async function loadNextBatch(args, copy) {
     const next = memoryCardPracticeFromToolResult(result, {
       allowMetadataStateVersion: false
     });
-    if (!next || next.goalId !== args.goalId) throw new Error("invalid-batch");
+    if (!next || next.goalId !== args.goalId || next.practiceScopeId !== args.practiceScopeId
+      || next.learningSessionId !== args.learningSessionId) throw new Error("invalid-batch");
     adoptPractice(next);
   } catch {
     if (gate.isCurrent(generation)) renderError(practice, copy, true);

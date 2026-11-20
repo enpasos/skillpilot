@@ -3,7 +3,8 @@
 """Regroup Hessen Physics views; never author goal content.
 
 The existing views are the reviewed scope inputs, supplemented by the two
-Hessen E.1 assessments. This bounded, idempotent authoring migration opens a
+Hessen E.1 assessments and two replacements for the assessments of the nested unit.
+This bounded, idempotent authoring migration opens a
 canonical group only where its parts need different learning places. --check
 verifies stable placements and atomic target/support roles on replay.
 --duration-views derives explicit G8/G9 views without writing those four inputs.
@@ -43,6 +44,12 @@ HESSEN_E1_ASSESSMENTS = (
     "ee7d5f3d-858f-59d6-89b0-e5a7f437f458",
     "39f52dcb-ff1d-5cad-9ccb-30da803cfa85",
 )
+HESSEN_E1_VERTICAL_THROW_ASSESSMENT = "c933b7d2-edcb-5747-9378-9762659f260a"
+HESSEN_E1_ACCELERATION_LOG_ASSESSMENT = "f13ca187-b680-5f47-b4ad-76bd474bd8a2"
+HESSEN_E1_CHILD_ASSESSMENT_VARIANTS = {
+    "c5807a37-129e-5df6-8989-482bc7f5683e": HESSEN_E1_VERTICAL_THROW_ASSESSMENT,
+    "a8dc0290-9f80-5763-8943-e16b8d2aa860": HESSEN_E1_ACCELERATION_LOG_ASSESSMENT,
+}
 # Learning places follow the work actually assessed in the task and rubric.
 # In particular, a supplied physical context does not turn a measurement or
 # linearisation assessment into a thermodynamics or oscillations assessment.
@@ -50,7 +57,7 @@ E_PHASE_ASSESSMENT_PLACEMENTS = {
     "physics-e1-motion": (
         "2b9e565f-d9b4-5e23-b5b7-b7977cecff06",
         "6ea3fb3c-abdc-568f-ab13-97c36dc274e4",
-        "c5807a37-129e-5df6-8989-482bc7f5683e",
+        HESSEN_E1_VERTICAL_THROW_ASSESSMENT,
         *HESSEN_E1_ASSESSMENTS,
     ),
     "physics-e2-newton-and-conservation": (
@@ -133,7 +140,17 @@ def generate(view):
     result["$schema"] = PARTIAL_ORDER_SCHEMA
     result["viewFormatVersion"] = "1.2"
     result.setdefault("language", "de")
-    before = role_atoms(view)
+    motion = next((node for node in walk(result["rootNodes"]) if node.get("id") == "physics-e1-motion"), None)
+    if motion is not None:
+        for historical, variant in HESSEN_E1_CHILD_ASSESSMENT_VARIANTS.items():
+            references = [node for node in walk(motion["children"])
+                          if node.get("goalId") in (historical, variant) and node.get("projectionRole", "target") == "target"]
+            if len(references) != 1 or not GOALS.get(variant, {}).get("examData"):
+                raise ValueError(f"{view['viewId']}: expected one E.1 child assessment reference and a canonical variant for {historical}")
+            references[0]["goalId"] = variant
+    before = role_atoms(result)
+    if motion is not None and set(HESSEN_E1_CHILD_ASSESSMENT_VARIANTS) & (before["target"] | before["prerequisiteOnly"]):
+        raise ValueError(f"{view['viewId']}: a historical child assessment is still projected in Hessen E.1")
     before["target"].update(HESSEN_E1_ASSESSMENTS)
     # Opening Gravitation must retain its three reviewed GK scope exclusions,
     # including their authored reference kinds, once each. In particular, a

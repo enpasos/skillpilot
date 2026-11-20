@@ -3,9 +3,11 @@ package com.skillpilot.backend.service;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.api.ActiveGoalContext.PracticeExercise;
+import com.skillpilot.backend.completion.UnitAssessmentContract;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -16,7 +18,7 @@ public final class UnitLearningMaterialService {
     private record Key(String landscape, String view, String node) {}
     public record Intro(String question, String promise) {}
     public record Material(String flashcardGoalId, String assessmentGoalId, Map<String, Intro> intro,
-            Map<String, Map<String, PracticeExercise>> exercises) {
+            Map<String, Map<String, PracticeExercise>> exercises, UnitAssessmentContract assessmentContract) {
         public Material {
             intro = Map.copyOf(intro);
             exercises = Map.copyOf(exercises);
@@ -46,12 +48,9 @@ public final class UnitLearningMaterialService {
     }
 
     public static UnitLearningMaterialService fromRepository(Path directory, ObjectMapper mapper) throws IOException {
-        Path folder = directory.resolve("DE/Gymnasium/materials");
-        if (!Files.isDirectory(folder)) return empty();
         Map<Key, Material> materials = new HashMap<>();
-        try (Stream<Path> files = Files.walk(folder)) {
-            for (Path file : files.filter(Files::isRegularFile)
-                    .filter(path -> path.getFileName().toString().endsWith("-practice.json")).toList()) {
+        try (Stream<Path> files = materialFiles(directory, mapper)) {
+            for (Path file : files.toList()) {
                 JsonNode data = mapper.readTree(file.toFile());
                 JsonNode unit = data.required("unit");
                 Map<String, Intro> intros = new HashMap<>();
@@ -60,7 +59,10 @@ public final class UnitLearningMaterialService {
                     intros.put(language, new Intro(intro.required("question").asText(), intro.required("promise").asText()));
                 }
                 Material material = new Material(unit.path("flashcardGoalId").textValue(),
-                        unit.path("assessmentGoalId").textValue(), intros, readExercises(data.path("exercises"), file));
+                        unit.path("assessmentGoalId").textValue(), intros, readExercises(data.path("exercises"), file),
+                        unit.has("assessmentContract")
+                                ? mapper.treeToValue(unit.required("assessmentContract"), UnitAssessmentContract.class)
+                                : null);
                 String landscape = unit.required("landscapeId").asText();
                 String node = unit.required("compositionNodeId").asText();
                 for (JsonNode view : unit.required("viewIds")) {
@@ -72,6 +74,33 @@ public final class UnitLearningMaterialService {
             }
         }
         return new UnitLearningMaterialService(materials);
+    }
+
+    private static Stream<Path> materialFiles(Path directory, ObjectMapper mapper) throws IOException {
+        Path catalog = directory.resolve("unit-learning-materials.json");
+        if (!Files.exists(catalog)) {
+            // Older repository releases shipped the initial materials in this folder.
+            Path previous = directory.resolve("DE/Gymnasium/materials");
+            return Files.isDirectory(previous) ? Files.walk(previous).filter(Files::isRegularFile)
+                    .filter(path -> path.getFileName().toString().endsWith("-practice.json")) : Stream.empty();
+        }
+        JsonNode data = mapper.readTree(catalog.toFile());
+        if (data.path("schemaVersion").asInt() != 1 || !data.path("materials").isArray()) {
+            throw new IOException("Invalid unit material catalog " + catalog);
+        }
+        Path root = directory.toRealPath();
+        var files = new ArrayList<Path>();
+        for (JsonNode entry : data.required("materials")) {
+            if (!entry.isTextual() || entry.asText().isBlank() || Path.of(entry.asText()).isAbsolute()) {
+                throw new IOException("Expected a repository-relative unit material path in " + catalog);
+            }
+            Path file = root.resolve(entry.asText()).normalize();
+            if (!file.startsWith(root) || !Files.isRegularFile(file) || !file.toRealPath().startsWith(root)) {
+                throw new IOException("Missing or out-of-scope unit material " + entry.asText());
+            }
+            files.add(file);
+        }
+        return files.stream();
     }
 
     private static Map<String, Map<String, PracticeExercise>> readExercises(JsonNode entries, Path file) {

@@ -78,6 +78,13 @@ class PhysicsStageAuthoring(unittest.TestCase):
                     allowed_new_task.update(authoring.graph.HESSEN_E1_ASSESSMENTS)
                 self.assertTrue(allowed_new_task <= roles["target"])
                 retained = roles["target"] - allowed_new_task
+                variants = authoring.graph.HESSEN_E1_CHILD_ASSESSMENT_VARIANTS
+                if state == "DE-HE" and stage in ("CrossStage", "SekII"):
+                    self.assertTrue(set(variants.values()) <= retained)
+                    self.assertTrue(set(variants).isdisjoint(retained))
+                    retained = (retained - set(variants.values())) | set(variants)
+                else:
+                    self.assertTrue(set(variants.values()).isdisjoint(roles["target"] | roles["prerequisiteOnly"]))
                 digest = hashlib.sha256(("\n".join(sorted(retained)) + "\n").encode()).hexdigest()
                 self.assertEqual(digest, baseline["selectedAtomicSha256"])
                 self.assertEqual(len(retained), baseline["selectedAtomicCount"])

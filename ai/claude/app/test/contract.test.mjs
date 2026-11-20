@@ -84,6 +84,17 @@ test("additional batches are derived from the two-field private batch shape", ()
   assert.equal(practice?.cardBatch.hasMore, true);
 });
 
+test("a second batch retains its unit even when another unit uses the same deck", () => {
+  const batch = projection();
+  batch.practiceScopeId = "intro-to-algorithms";
+  batch.progress = { due: 21, scheduled: 2, total: 23 };
+  batch.cardBatch.totalDueCards = 21;
+  const practice = memoryCardPracticeFromToolResult(toolResult(batch));
+  assert.ok(practice.cardBatch.hasMore);
+  assert.equal(createMemoryCardStartArguments(practice).practiceScopeId, batch.practiceScopeId);
+  assert.equal(memoryCardPracticeFromToolResult(toolResult({ ...batch, practiceScopeId: " " })), undefined);
+});
+
 test("Claude review capabilities are bounded opaque base64url tokens", () => {
   assert.ok(memoryCardPracticeFromToolResult(toolResult(projection())));
   assert.ok(memoryCardPracticeFromToolResult(toolResult(projection({

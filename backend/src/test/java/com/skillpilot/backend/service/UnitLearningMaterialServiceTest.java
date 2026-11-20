@@ -6,11 +6,35 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.nio.file.Path;
+import java.nio.file.Files;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
 
 class UnitLearningMaterialServiceTest {
     private static final String PHYSICS = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
     private static final String MOTION = "physics-e1-motion";
+
+    @Test
+    void catalogResolvesAnUnrelatedProgramWithAndWithoutCards(@TempDir Path repository) throws IOException {
+        var folder = Files.createDirectories(repository.resolve("university/computing/units"));
+        String source = """
+                {"unit":{"landscapeId":"computing","compositionNodeId":"algorithms","viewIds":["%s"]%s},
+                 "intro":{"de":{"question":"Wie sucht man?","promise":"Suchverfahren vergleichen"},
+                         "en":{"question":"How do we search?","promise":"Compare search methods"}}}
+                """;
+        Files.writeString(folder.resolve("intro.json"), source.formatted("lecture", ""));
+        Files.writeString(folder.resolve("recall.json"), source.formatted("seminar", ",\"flashcardGoalId\":\"algorithms-deck\""));
+        Files.writeString(repository.resolve("unit-learning-materials.json"), """
+                {"schemaVersion":1,"materials":["university/computing/units/intro.json","university/computing/units/recall.json"]}
+                """);
+        var materials = UnitLearningMaterialService.fromRepository(repository, new ObjectMapper());
+        var lecture = materials.find("computing", "lecture", "algorithms").orElseThrow();
+        assertThat(lecture.flashcardGoalId()).isNull();
+        assertThat(lecture.assessmentContract()).isNull();
+        assertThat(materials.find("computing", "seminar", "algorithms").orElseThrow().flashcardGoalId()).isEqualTo("algorithms-deck");
+        assertThat(materials.find("computing", "merged:lecture+seminar", "algorithms")).isEmpty();
+        assertThat(materials.find("physics", "seminar", "algorithms")).isEmpty();
+    }
 
     @Test
     void resolvesTheSameIntroductionAndGoalReferencesOnlyForMatchingPersonalViews() throws IOException {

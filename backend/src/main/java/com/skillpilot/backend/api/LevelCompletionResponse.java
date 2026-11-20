@@ -28,7 +28,8 @@ public record LevelCompletionResponse(
         boolean directAssessmentRunning,
         String notice,
         List<Action> actions,
-        List<WaiverDetail> waiverDetails) {
+        List<WaiverDetail> waiverDetails,
+        UnitAssessmentResponse unitAssessment) {
     public LevelCompletionResponse {
         waiverDetails = waiverDetails == null ? List.of() : List.copyOf(waiverDetails);
     }
@@ -42,7 +43,7 @@ public record LevelCompletionResponse(
         this(calculationStatus, contextRef, profileId, profileRevision, curriculumGeneration, learnerRevision,
                 title, complete, masteredTargetCount, waivedTargetCount, pendingTargetCount, targetCount,
                 masteredAssessmentCount, requiredAssessmentCount, waivedTargetGoalIds, assessments, profileOptions,
-                navigationIntent, directAssessmentRunning, notice, actions, List.of());
+                navigationIntent, directAssessmentRunning, notice, actions, List.of(), null);
     }
 
     public LevelCompletionResponse withWaiverDetails(List<WaiverDetail> details) {
@@ -50,7 +51,15 @@ public record LevelCompletionResponse(
                 curriculumGeneration, learnerRevision, title, complete, masteredTargetCount, waivedTargetCount,
                 pendingTargetCount, targetCount, masteredAssessmentCount, requiredAssessmentCount,
                 waivedTargetGoalIds, assessments, profileOptions, navigationIntent, directAssessmentRunning,
-                notice, actions, details);
+                notice, actions, details, unitAssessment);
+    }
+
+    public LevelCompletionResponse withUnitAssessment(UnitAssessmentResponse result) {
+        return new LevelCompletionResponse(calculationStatus, contextRef, profileId, profileRevision,
+                curriculumGeneration, learnerRevision, title, complete, masteredTargetCount, waivedTargetCount,
+                pendingTargetCount, targetCount, masteredAssessmentCount, requiredAssessmentCount,
+                waivedTargetGoalIds, assessments, profileOptions, navigationIntent, directAssessmentRunning,
+                notice, actions, waiverDetails, result);
     }
 
     /** Bounded explanation of the current derived scope result; never a historical evidence record. */

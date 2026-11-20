@@ -73,6 +73,15 @@ public class VerifiedExamPassService {
     }
 
     @Transactional(readOnly = true)
+    public Map<String, List<VerifiedExamPassResponse>> findForGoals(String learnerId, List<String> goalIds) {
+        Map<String, List<VerifiedExamPassResponse>> byGoal = new LinkedHashMap<>();
+        for (var row : passes.findByLearner_SkillpilotIdAndGoalIdIn(learnerId, goalIds)) {
+            byGoal.computeIfAbsent(row.getGoalId(), key -> new ArrayList<>()).add(receipt(row));
+        }
+        return byGoal;
+    }
+
+    @Transactional(readOnly = true)
     public Map<String, List<VerifiedExamPassResponse>> export(String learnerId) {
         Map<String, List<VerifiedExamPassResponse>> byGoal = new LinkedHashMap<>();
         for (var row : passes.findByLearner_SkillpilotIdOrderByGoalIdAscPassedAtDescFingerprintAsc(learnerId)) {

@@ -88,7 +88,7 @@ class HessenPhysicsEPhasePlacement(unittest.TestCase):
                 motion = find(view, "physics-e1-motion")
                 direct_motion = {node.get("goalId") for node in motion["children"]}
                 self.assertTrue({"2b9e565f-d9b4-5e23-b5b7-b7977cecff06", "6ea3fb3c-abdc-568f-ab13-97c36dc274e4",
-                                 "c5807a37-129e-5df6-8989-482bc7f5683e"} <= direct_motion)
+                                 generator.HESSEN_E1_VERTICAL_THROW_ASSESSMENT} <= direct_motion)
                 # This existing exam requires E.4 modelling and Newtonian
                 # dynamics. Its sole learning place must preserve those needs
                 # instead of silently moving them into E.1 for its title.
@@ -124,6 +124,29 @@ class HessenPhysicsEPhasePlacement(unittest.TestCase):
                 self.assertEqual(new_learning, old_learning | exams)
                 self.assertEqual(generator.role_atoms(generated)["prerequisiteOnly"],
                                  generator.role_atoms(previous)["prerequisiteOnly"])
+
+    def test_e1_child_assessments_replace_historical_references_one_for_one(self):
+        replacements = generator.HESSEN_E1_CHILD_ASSESSMENT_VARIANTS
+        historical_by_variant = {variant: historical for historical, variant in replacements.items()}
+        for name, current in self.views.items():
+            with self.subTest(view=name):
+                previous = copy.deepcopy(current)
+                motion = find(previous, "physics-e1-motion")
+                for node in generator.walk(motion["children"]):
+                    identifier = node.get("goalId")
+                    if identifier in historical_by_variant:
+                        node["goalId"] = historical_by_variant[identifier]
+                generated, _ = generator.generate(previous)
+                self.assertEqual(generated, current)
+                old_seeds, old_learning = atomic_basis(previous)
+                new_seeds, new_learning = atomic_basis(generated)
+                self.assertEqual(new_seeds, {replacements.get(identifier, identifier) for identifier in old_seeds})
+                self.assertEqual(new_learning, {replacements.get(identifier, identifier) for identifier in old_learning})
+                self.assertEqual(generator.role_atoms(generated)["prerequisiteOnly"],
+                                 generator.role_atoms(previous)["prerequisiteOnly"])
+                references = [node.get("goalId") for node in generator.walk(generated["rootNodes"])]
+                self.assertTrue(set(replacements).isdisjoint(references))
+                self.assertTrue(all(references.count(variant) == 1 for variant in replacements.values()))
 
     def test_repair_preserves_reference_payloads_roles_basis_and_other_units(self):
         def payloads(view):

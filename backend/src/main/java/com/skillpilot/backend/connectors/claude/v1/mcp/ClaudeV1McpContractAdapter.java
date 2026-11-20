@@ -762,6 +762,8 @@ public class ClaudeV1McpContractAdapter {
                 "Learn with flashcards",
                 "Starts normal spaced-repetition practice for the confirmed active memory goal or a published "
                         + "unitPractice action with its exact goalId and practiceScopeId. "
+                        + "Offer unit cards when a learner wants to recall a concept. On assent open the activity. "
+                        + "On return, continue the learner's open question at the current goal; explain a gap if asked. "
                         + "Private cards are delivered only to the dedicated component. This is not a mastery check.",
                 objectSchema(
                         List.of(ARG_GOAL_ID, ARG_EXPECTED_STATE_VERSION),
@@ -2557,6 +2559,7 @@ public class ClaudeV1McpContractAdapter {
         componentData.put(ARG_LEARNING_SESSION_ID, connectionId);
         componentData.put("goalId", response.goalId());
         componentData.put("goalTitle", response.goalTitle());
+        if (practiceScopeId != null) componentData.put(ARG_PRACTICE_SCOPE_ID, practiceScopeId);
         componentData.put("expectedStateVersion", stateVersion);
         componentData.put("progress", Map.of(
                 "total", response.progress().totalCards(),

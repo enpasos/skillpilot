@@ -3,6 +3,7 @@ package com.skillpilot.backend.service;
 import com.skillpilot.backend.api.ActiveGoalContext;
 import com.skillpilot.backend.api.MasteryUpdateRequest;
 import com.skillpilot.backend.api.LevelCompletionResponse;
+import com.skillpilot.backend.api.UnitAssessmentResponse;
 import com.skillpilot.backend.api.LevelCompletionActionRequest;
 import com.skillpilot.backend.api.CompletionAssessmentStart;
 import com.skillpilot.backend.completion.*;
@@ -638,15 +639,23 @@ public class LearnerService {
         }
         Map<String, Double> masterySnapshot = Map.of();
         RuntimeException masteryFailure = null;
+        UnitAssessmentResponse unitResult = null;
         if (!candidates.isEmpty()) {
             try {
                 masterySnapshot = completionMasterySnapshot(learner, graph, candidates.values(),
                         workflow != null && completionWorkflowMatches(learner, workflow));
+                if (workflow != null && catalog.automatic() && compositionViewService != null && unitLearningMaterialService != null) {
+                    var section = overview ? explicitCoachUnitFocus(learner, projection) : completionUnitSection(workflow.profileId());
+                    unitResult = unitAssessment(learner, section, projection, graph);
+                }
             } catch (RuntimeException e) {
                 masteryFailure = e;
             }
         }
         Comparator<String> assessmentOrder = completionAssessmentOrder(learner, projection, graph);
+        Map<String, Boolean> partResults = unitResult == null ? Map.of() : unitResult.parts().stream()
+                .collect(Collectors.toMap(UnitAssessmentResponse.Part::goalId, UnitAssessmentResponse.Part::passed));
+        String unitProfileId = unitResult == null ? null : AUTOMATIC_COMPLETION_PREFIX + unitResult.sectionGoalId();
         for (var definition : definitions) {
             var candidate = candidates.get(definition.id());
             if (candidate == null && !catalog.automatic()) continue;
@@ -662,6 +671,7 @@ public class LearnerService {
                         .limit(catalog.automatic() ? Long.MAX_VALUE : MAX_COMPLETION_DISCOVERY_CHOICES).toList()) {
                     LearningGoal goal = graph.get(id);
                     boolean mastered = Mastery.isMastered(masterySnapshot.get(id));
+                    if (definition.id().equals(unitProfileId)) mastered = partResults.getOrDefault(id, mastered);
                     boolean taskAvailable = targets.contains(id) && !isExamGoalUnavailableForHardCheck(goal);
                     boolean available = !routeOwnsNavigation
                             && persistedWorkflow == null && !mastered && taskAvailable;
@@ -716,6 +726,7 @@ public class LearnerService {
                 for (String id : compiled.assessmentGoalIds().stream().sorted(assessmentOrder).toList()) {
                     LearningGoal goal = graph.get(id);
                     boolean mastered = evaluation.masteredAssessmentGoalIds().contains(id);
+                    if (workflow.profileId().equals(unitProfileId)) mastered = partResults.getOrDefault(id, mastered);
                     boolean available = compatible && !mastered && !directRunning
                             && targets.contains(id) && !isExamGoalUnavailableForHardCheck(goal);
                     assessments.add(new LevelCompletionResponse.Assessment(id, completionTitle(goal), mastered,
@@ -824,7 +835,33 @@ public class LearnerService {
                         .limit(catalog.automatic() ? Long.MAX_VALUE : 100).toList(),
                 List.copyOf(assessments), List.copyOf(options), workflow == null ? null : workflow.navigationIntent(),
                 directRunning, notice, List.copyOf(actions));
-        return new CompletionSnapshot(CompletionResponseProjection.withExplanations(response, evaluation, graph), compiled, evaluation);
+        response = CompletionResponseProjection.withExplanations(response, evaluation, graph);
+        if (evaluation != null && unitResult != null) response = response.withUnitAssessment(unitResult);
+        return new CompletionSnapshot(response, compiled, evaluation);
+    }
+
+    private CompositionViewService.CompositionStructureResolution completionUnitSection(String profileId) {
+        if (compositionViewService == null || profileId == null || !profileId.startsWith(AUTOMATIC_COMPLETION_PREFIX)) return null;
+        String root = profileId.substring(AUTOMATIC_COMPLETION_PREFIX.length());
+        return isCompositionStructureGoalId(root) ? compositionViewService.resolveStructureReference(root) : null;
+    }
+
+    private UnitAssessmentResponse unitAssessment(Learner learner, CompositionViewService.CompositionStructureResolution section,
+            GoalProjection projection, Map<String, LearningGoal> graph) {
+        if (section == null || unitLearningMaterialService == null || verifiedExamPassService == null
+                || !projection.compositionViewIds().contains(section.viewId())) return null;
+        Map<String, Object> view = compositionViewService.findViewById(section.viewId());
+        if (view == null || !(view.get("landscapeId") instanceof String landscape)) return null;
+        var contract = unitLearningMaterialService.find(landscape, section.viewId(), section.nodeId())
+                .map(UnitLearningMaterialService.Material::assessmentContract).orElse(null);
+        if (contract == null || !contract.appliesTo(section.viewId())) return null;
+        Set<String> targetIds = projectedAtomicTargetIds(List.of(section.syntheticGoalId()), projection);
+        String learnerId = learner.getSkillpilotId();
+        Set<String> mastered = masteryRepository.findMasteredGoalIds(learnerId,
+                contract.contentGoalIds(), PLANNING_SCOPE_MASTERY_THRESHOLD);
+        var receipts = verifiedExamPassService.findForGoals(learnerId,
+                contract.parts().stream().map(UnitAssessmentContract.Part::goalId).toList());
+        return contract.evaluate(section.syntheticGoalId(), targetIds, graph, receipts, mastered).orElse(null);
     }
 
     private Map<String, String> completionTitle(LearningGoal goal) {
@@ -993,7 +1030,8 @@ public class LearnerService {
                     && Objects.equals(assessment.goalId(), request.goalId())));
         if (!publishedStart || (!newRoute && (snapshot.evaluation() == null
                 || !snapshot.compiled().assessmentGoalIds().contains(request.goalId())
-                || snapshot.evaluation().masteredAssessmentGoalIds().contains(request.goalId())))
+                || snapshot.response().assessments().stream().anyMatch(assessment ->
+                        assessment.goalId().equals(request.goalId()) && assessment.mastered())))
                 || isExamGoalUnavailableForHardCheck(projection.visibleGoals().get(request.goalId()))) {
             throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT, "This assessment cannot be started.");
         }
@@ -2269,11 +2307,8 @@ public class LearnerService {
                     LearningGoal member = projection.visibleGoals().get(id);
                     return !isExamGoal(member) && !isSrsGoal(member) && !isOrientationGoal(member);
                 }).map(id -> "goal:" + id).collect(Collectors.toSet());
-        List<SrsCard> selected = filterSrsCards(deck, loadSrsDeckCards(deck, source)).stream()
+        return filterSrsCards(deck, loadSrsDeckCards(deck, source)).stream()
                 .filter(card -> card.tags != null && card.tags.stream().anyMatch(topicTags::contains)).toList();
-        // The current component's next-batch request carries only the full deck ID.
-        // Publish scoped practice only when that request will never be necessary.
-        return selected.size() <= MEMORY_PRACTICE_BATCH_LIMIT ? selected : List.of();
     }
 
     private VerifiedRecallContext resolveVerifiedRecallContext(

@@ -2,6 +2,7 @@ package com.skillpilot.backend.connectors.claude.v1.mcp;
 
 import com.skillpilot.backend.api.LevelCompletionActionRequest;
 import com.skillpilot.backend.api.LevelCompletionResponse;
+import com.skillpilot.backend.api.UnitAssessmentResponse;
 import com.skillpilot.backend.completion.CompletionCallContext;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -117,6 +118,18 @@ final class ClaudeV1CompletionChoices {
         result.put("calculationStatus", completion.calculationStatus());
         result.put("title", label(completion.title(), language));
         result.put("directAssessmentRunning", completion.directAssessmentRunning());
+        if (completion.unitAssessment() != null) {
+            var unit = completion.unitAssessment();
+            Map<String, Object> summary = new LinkedHashMap<>();
+            summary.put("passed", unit.passed());
+            summary.put("partCount", unit.parts().size());
+            summary.put("passedPartCount", unit.parts().stream().filter(UnitAssessmentResponse.Part::passed).count());
+            summary.put("parts", unit.parts().stream().limit(MAX_CHOICES).map(part ->
+                    Map.of("title", label(part.title(), language), "passed", part.passed())).toList());
+            summary.put("creditedForPlanningCount", unit.planningCreditGoalIds().size());
+            summary.put("individuallyOpenCount", unit.individuallyOpenGoalIds().size());
+            result.put("unitAssessment", summary);
+        }
         if (!active(completion) && completion.profileOptions() != null && !completion.profileOptions().isEmpty()) {
             result.put("sections", completion.profileOptions().stream().limit(MAX_CHOICES).map(option -> {
                 Map<String, Object> section = new LinkedHashMap<>();

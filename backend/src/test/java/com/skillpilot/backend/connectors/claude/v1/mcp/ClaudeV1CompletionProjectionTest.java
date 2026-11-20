@@ -10,6 +10,7 @@ import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.LevelCompletionResponse;
 import com.skillpilot.backend.api.StateMachineInfo;
 import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
+import com.skillpilot.backend.api.UnitAssessmentResponse;
 import com.skillpilot.backend.completion.CompletionCallContext;
 import java.time.Instant;
 import java.util.List;
@@ -86,6 +87,19 @@ class ClaudeV1CompletionProjectionTest {
         assertThat(completion.get("choices")).isEqualTo(List.of());
         assertThat(completion.get("notice").toString()).contains("Pausiere", "Cockpit");
         assertThat(result).doesNotContainKey("goalVisualization");
+    }
+
+    @Test
+    void compactUnitContextSummarizesTheWholeUnitWhenOnlySomePartTitlesFit() {
+        var parts = java.util.stream.IntStream.range(0, 30).mapToObj(i -> new UnitAssessmentResponse.Part(
+                "private-id-" + i, Map.of("en", "Lab " + i), i % 2 == 0)).toList();
+        var response = completion(10, false).withUnitAssessment(new UnitAssessmentResponse(
+                "private-section", "private-revision", false, parts, List.of(), List.of("private-content")));
+        var context = (Map<?, ?>) ClaudeV1CompletionChoices.project(response, "en").get("unitAssessment");
+        assertThat(context.get("partCount")).isEqualTo(30);
+        assertThat(context.get("passedPartCount")).isEqualTo(15L);
+        assertThat((List<?>) context.get("parts")).hasSize(24);
+        assertThat(context.toString()).contains("Lab 0").doesNotContain("private-", "Lab 29");
     }
 
     @Test

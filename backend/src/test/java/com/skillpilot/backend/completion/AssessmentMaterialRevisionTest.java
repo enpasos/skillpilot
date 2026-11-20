@@ -71,7 +71,7 @@ class AssessmentMaterialRevisionTest {
         return AssessmentMaterialRevision.of(exam, evaluation(exam, "exam"));
     }
 
-    private static ExamEvaluationResult evaluation(ExamData exam, String goalId) {
+    static ExamEvaluationResult evaluation(ExamData exam, String goalId) {
         var rubric = exam.getScoring();
         var steps = rubric.getSteps().stream()
                 .map(step -> new ExamScoringStep(step.getId(), step.getPoints(), step.getDescription())).toList();
