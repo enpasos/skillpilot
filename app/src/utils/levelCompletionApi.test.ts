@@ -99,6 +99,12 @@ const waiverWithReceipt = parseLevelCompletion({ ...valid, profileId: 'automatic
   waiverDetails: [], waivedTargetGoalIds: ['A'], unitAssessment: { ...unitStatus, planningCreditGoalIds: ['A'] },
 })
 assert.equal(completionWaiversForTree(waiverWithReceipt, false).get('A')?.reason, 'assessment')
+const personalCompletion = { ...valid, profileId: 'automatic:personal-curriculum', planningCreditGoalIds: ['A'] }
+assert.equal(completionWaiversForTree(parseLevelCompletion(personalCompletion), false).get('A')?.reason, 'assessment',
+  'the personal overview retains the assessment reason outside its unit and without detailed waiver rows')
+for (const ids of [['A', 'A'], ['outside-scope']]) {
+  assert.throws(() => parseLevelCompletion({ ...personalCompletion, planningCreditGoalIds: ids }))
+}
 
 const explanation = { goalId: 'A', title: { de: 'Vorbereitung' }, ruleId: 'static-rule',
   assessments: [{ goalId: 'Q', title: { de: 'Prüfung' } }], assessmentCount: 1 }

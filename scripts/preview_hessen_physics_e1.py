@@ -116,7 +116,7 @@ def serve(args, work, stack):
     api, ui = f'http://127.0.0.1:{args.api_port}', f'http://127.0.0.1:{args.ui_port}'
     jars = work / 'runtime-jars'
     build = work / 'backend-build'
-    subprocess.run([str(backend / 'gradlew'), '--console=plain', '-I',
+    subprocess.run([str(backend / 'gradlew'), '--no-daemon', '--console=plain', '-I',
                     str(ROOT / 'scripts/package_consumer_runtime.init.gradle'),
                     'writePackageConsumerRuntimeClasspath', '-PpackageConsumerClasspathOutput=' + str(jars)],
                    cwd=backend, env={**os.environ, 'SKILLPILOT_BACKEND_BUILD_DIR': str(build)}, check=True)

@@ -38,6 +38,7 @@ export interface UnitAssessment {
 
 export interface LevelCompletion {
   unitAssessment?: UnitAssessment
+  planningCreditGoalIds?: string[]
   calculationStatus: CompletionCalculationStatus
   contextRef?: string
   profileId?: string
@@ -99,6 +100,13 @@ export const completionAssessmentsForGoal = (completion: LevelCompletion | null,
     .map(assessment => ({ profileId: profile.profileId, profileTitle: profile.title, assessment })))
 }
 
+/** Earlier responses only identified planning credit inside the selected unit. */
+export const completionPlanningCredits = (completion: LevelCompletion): ReadonlySet<string> => {
+  if (completion.planningCreditGoalIds) return new Set(completion.planningCreditGoalIds)
+  const unitIds = new Set(completion.unitAssessment?.planningCreditGoalIds)
+  return new Set(completion.waivedTargetGoalIds.filter(id => unitIds.has(id)))
+}
+
 /** Annotate only the backend's current scoped waivers; never infer mastery or coverage. */
 export const completionWaiversForTree = (
   completion: LevelCompletion | null,
@@ -107,11 +115,12 @@ export const completionWaiversForTree = (
   const result = new Map<string, CompletionTreeWaiver>()
   if (stale || completion?.calculationStatus !== 'valid' || !completion.profileId) return result
   const details = new Map(completion.waiverDetails?.map((detail) => [detail.goalId, detail]))
+  const credits = completionPlanningCredits(completion)
   for (const goalId of completion.waivedTargetGoalIds) {
     const detail = details.get(goalId)
     result.set(goalId, {
       sectionTitle: completion.title,
-      reason: completion.unitAssessment?.planningCreditGoalIds.includes(goalId) ? 'assessment'
+      reason: credits.has(goalId) ? 'assessment'
         : isAutomaticCompletion(completion) || detail?.ruleId === 'no_remaining_demand' ? 'no_remaining_demand' : 'assessment',
       assessments: detail?.assessments ?? [],
       assessmentCount: detail?.assessmentCount,
@@ -243,6 +252,12 @@ export const parseLevelCompletion = (value: unknown): LevelCompletion | null => 
       const action = record(value)
       return { action: actionName(action.action), goalId: optionalText(action.goalId), title: title(action.title), intent: intent(action.intent) }
     }),
+  }
+  if (source.planningCreditGoalIds != null) {
+    const ids = list(source.planningCreditGoalIds, 100_000).map(text)
+    const waivedIds = new Set(result.waivedTargetGoalIds)
+    if (new Set(ids).size !== ids.length || ids.some(id => !waivedIds.has(id)) || (ids.length && status !== 'valid')) throw invalid()
+    result.planningCreditGoalIds = ids
   }
   if (source.unitAssessment != null) {
     if (status !== 'valid') throw invalid()

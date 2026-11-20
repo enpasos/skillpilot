@@ -13,6 +13,16 @@ import java.util.Objects;
 public record AssessmentMaterialRevision(String taskRevision, String rubricRevision, String fingerprint) {
     private static final ObjectMapper MAPPER = new ObjectMapper();
 
+    /** Internal comparison with the currently loaded scored material; exposes no evaluation to a learner. */
+    public static AssessmentMaterialRevision of(ExamData exam) {
+        Objects.requireNonNull(exam);
+        var scoring = Objects.requireNonNull(exam.getScoring());
+        return of(exam, new CoachToolFacade.ExamEvaluationResult(null, exam.getSolutionContent(),
+                exam.getSolutionContentEn(), new CoachToolFacade.ExamScoring(scoring.getMaxPoints(),
+                        scoring.getPassingPoints(), scoring.getSteps().stream().map(step ->
+                                new CoachToolFacade.ExamScoringStep(step.getId(), step.getPoints(), step.getDescription())).toList())));
+    }
+
     public static AssessmentMaterialRevision of(ExamData exam, CoachToolFacade.ExamEvaluationResult evaluation) {
         Objects.requireNonNull(exam);
         Objects.requireNonNull(evaluation);

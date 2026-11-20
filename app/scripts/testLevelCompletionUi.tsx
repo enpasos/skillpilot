@@ -39,6 +39,14 @@ assert.match(explained, /Warum entfällt diese Vorbereitung/u)
 assert.match(explained, /Projektion veranschaulichen/u)
 assert.match(explained, /Projektion erklären/u)
 assert.doesNotMatch(explained, /internal-static-rule/u, 'the static reference does not become product jargon')
+const creditOutsideUnit = { ...completed, profileId: 'automatic:personal-curriculum', planningCreditGoalIds: ['A'],
+  waiverDetails: [{ goalId: 'A', title: { de: 'Modell wählen' }, ruleId: 'versioned_unit_assessment:r1',
+    assessments: [{ goalId: 'Q', title: { de: 'Wurf modellieren' } }], assessmentCount: 1 }] }
+assert.match(render(creditOutsideUnit), /Bestandene Prüfungen decken 1 Lernziel für deinen Lernplan ab/u)
+const activeCredit = render({ ...creditOutsideUnit, navigationIntent: 'required' })
+assert.match(activeCredit, /Wurf modellieren/u)
+assert.match(activeCredit, /Dein Lernplan kann dieses Ziel als Voraussetzung nutzen/u)
+assert.doesNotMatch(activeCredit, /Keine verbleibende Arbeit benötigt dieses Ziel/u)
 
 assert.match(done, /Erforderliche Prüfungen: 1 von 1 geschafft/u)
 assert.match(render(completed, { language: 'en' }), /Learning section completed\./u)

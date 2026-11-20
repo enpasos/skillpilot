@@ -388,7 +388,9 @@ public class ClaudeV1McpContractAdapter {
                 At the start of a unit with a unitIntroduction, connect its question and promise to the
                 current atomic goal in one or two sentences. Unit paths run from the nearest section to the
                 root of the learner's own view. Use the relevant section naturally, without reciting the path.
-                Build on one relevant prerequisite: recorded means there is individual evidence. A scopeWaiver
+                Build on one relevant prerequisite: recorded means there is individual evidence. planningCredit
+                means a complete version-bound unit assessment establishes this whole prerequisite for planning,
+                including later units; it creates no individual mastery and settles no other prerequisite. A scopeWaiver
                 settles preparation only for its named section. For an open prerequisite, invite the learner
                 to share a familiar idea or ask for an explanation. Explain the missing link with one example
                 and invite a restatement in their own words or a question. Skip familiar ground when they
@@ -2040,9 +2042,15 @@ public class ClaudeV1McpContractAdapter {
                                 "evaluationCapability and earnedPoints are only valid for an active exam goal.");
                     }
 
-                    CoachToolFacade.MasteryResult result = coachToolFacade.setMastery(
-                            ctx.skillpilotId(),
-                            new MasteryUpdateRequest(null, goalId));
+                    ReleasedExam verifiedExam = passedExam;
+                    Runnable verifiedReceipt = verifiedExam == null ? null : () -> {
+                        CoachToolFacade.ExamScoring scoring = verifiedExam.evaluation().scoring();
+                        coachToolFacade.recordVerifiedExamPass(ctx.skillpilotId(), goalId, verifiedExam.revision(),
+                                earnedPoints, scoring.maxPoints(), scoring.passingPoints());
+                    };
+                    CoachToolFacade.MasteryResult result = verifiedReceipt == null
+                            ? coachToolFacade.setMastery(ctx.skillpilotId(), new MasteryUpdateRequest(null, goalId))
+                            : coachToolFacade.setMastery(ctx.skillpilotId(), new MasteryUpdateRequest(null, goalId), verifiedReceipt);
                     if (result.status() == CoachToolFacade.MasteryStatus.BAD_REQUEST) {
                         throw new ToolInputException("The mastery update was rejected by the canonical rules.");
                     }
@@ -2056,11 +2064,6 @@ public class ClaudeV1McpContractAdapter {
                             || Double.compare(result.update().savedMastery(), 1.0) != 0) {
                         throw new IllegalStateException(
                                 "The canonical mastery operation returned an inconsistent completion result.");
-                    }
-                    if (passedExam != null) {
-                        CoachToolFacade.ExamScoring scoring = passedExam.evaluation().scoring();
-                        coachToolFacade.recordVerifiedExamPass(ctx.skillpilotId(), goalId, passedExam.revision(),
-                                earnedPoints, scoring.maxPoints(), scoring.passingPoints());
                     }
                     long successorStateVersion = ctx.currentStateVersion();
                     Map<String, Object> successorContext = contextProjector.projectMasteryContext(

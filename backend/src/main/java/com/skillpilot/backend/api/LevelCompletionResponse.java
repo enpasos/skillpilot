@@ -29,9 +29,24 @@ public record LevelCompletionResponse(
         String notice,
         List<Action> actions,
         List<WaiverDetail> waiverDetails,
-        UnitAssessmentResponse unitAssessment) {
+        UnitAssessmentResponse unitAssessment,
+        List<String> planningCreditGoalIds) {
     public LevelCompletionResponse {
         waiverDetails = waiverDetails == null ? List.of() : List.copyOf(waiverDetails);
+        planningCreditGoalIds = planningCreditGoalIds == null ? List.of() : List.copyOf(planningCreditGoalIds);
+    }
+
+    public LevelCompletionResponse(String calculationStatus, String contextRef, String profileId,
+            String profileRevision, String curriculumGeneration, long learnerRevision, Map<String, String> title,
+            Boolean complete, int masteredTargetCount, int waivedTargetCount, int pendingTargetCount, int targetCount,
+            int masteredAssessmentCount, int requiredAssessmentCount, List<String> waivedTargetGoalIds,
+            List<Assessment> assessments, List<ProfileOption> profileOptions, String navigationIntent,
+            boolean directAssessmentRunning, String notice, List<Action> actions, List<WaiverDetail> waiverDetails,
+            UnitAssessmentResponse unitAssessment) {
+        this(calculationStatus, contextRef, profileId, profileRevision, curriculumGeneration, learnerRevision,
+                title, complete, masteredTargetCount, waivedTargetCount, pendingTargetCount, targetCount,
+                masteredAssessmentCount, requiredAssessmentCount, waivedTargetGoalIds, assessments, profileOptions,
+                navigationIntent, directAssessmentRunning, notice, actions, waiverDetails, unitAssessment, List.of());
     }
 
     public LevelCompletionResponse(String calculationStatus, String contextRef, String profileId,
@@ -51,7 +66,7 @@ public record LevelCompletionResponse(
                 curriculumGeneration, learnerRevision, title, complete, masteredTargetCount, waivedTargetCount,
                 pendingTargetCount, targetCount, masteredAssessmentCount, requiredAssessmentCount,
                 waivedTargetGoalIds, assessments, profileOptions, navigationIntent, directAssessmentRunning,
-                notice, actions, details, unitAssessment);
+                notice, actions, details, unitAssessment, planningCreditGoalIds);
     }
 
     public LevelCompletionResponse withUnitAssessment(UnitAssessmentResponse result) {
@@ -59,7 +74,15 @@ public record LevelCompletionResponse(
                 curriculumGeneration, learnerRevision, title, complete, masteredTargetCount, waivedTargetCount,
                 pendingTargetCount, targetCount, masteredAssessmentCount, requiredAssessmentCount,
                 waivedTargetGoalIds, assessments, profileOptions, navigationIntent, directAssessmentRunning,
-                notice, actions, waiverDetails, result);
+                notice, actions, waiverDetails, result, planningCreditGoalIds);
+    }
+
+    public LevelCompletionResponse withPlanningCreditGoalIds(List<String> ids) {
+        return new LevelCompletionResponse(calculationStatus, contextRef, profileId, profileRevision,
+                curriculumGeneration, learnerRevision, title, complete, masteredTargetCount, waivedTargetCount,
+                pendingTargetCount, targetCount, masteredAssessmentCount, requiredAssessmentCount,
+                waivedTargetGoalIds, assessments, profileOptions, navigationIntent, directAssessmentRunning,
+                notice, actions, waiverDetails, unitAssessment, ids);
     }
 
     /** Bounded explanation of the current derived scope result; never a historical evidence record. */

@@ -225,7 +225,8 @@ public class LearnerLearningPlanService {
                     if (automaticWaived == null) {
                         try {
                             automaticWaived = completionProjection.waivedGoals(context, automaticTargets,
-                                    ids -> learners.resolveLearningPlanCompletionMastery(learnerId, mastery, ids));
+                                    ids -> learners.resolveLearningPlanCompletionMastery(learnerId, mastery, ids),
+                                    learners.getUnitPlanningCredits(learnerId));
                         } catch (RuntimeException e) {
                             automaticFailure = e;
                             throw e;

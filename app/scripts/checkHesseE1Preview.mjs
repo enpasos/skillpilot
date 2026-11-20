@@ -10,7 +10,7 @@ const readTask = async file => JSON.parse(await readFile(
 const tasks = { A: await readTask('wagen.json'), B: await readTask('wurf.json') }
 const scope = await readTask('umfang.json')
 const unitPartIds = [...scope.ownAssessmentGoalIds, ...scope.childAssessmentGoalIds]
-const { unit, intro } = JSON.parse(await readFile(new URL(
+const { unit, intro, exercises } = JSON.parse(await readFile(new URL(
   '../../curricula/DE/Gymnasium/materials/physics/he-e1-motion-practice.json', import.meta.url), 'utf8'))
 const contract = unit.assessmentContract
 assert.equal(contract?.parts.length, 4, 'Expected the reviewed Hessen E.1 unit contract')
@@ -146,6 +146,11 @@ async function checkUnitAndChildCards(duration) {
     await dialog.getByRole('button', { name: 'In E.1 Bewegungen und ihre Beschreibung hineinzoomen', exact: true }).click()
     await dialog.getByRole('heading', { name: intro.de.question, exact: true }).waitFor()
     await dialog.getByText(intro.de.promise, { exact: true }).waitFor()
+    for (const exercise of exercises) {
+      await dialog.getByRole('button', { name: 'Üben: ' + exercise.de.title, exact: true }).waitFor()
+    }
+    await dialog.getByRole('button', { name: 'Lernkarten zu E.1 üben', exact: true }).click()
+    await page.getByText('Karte 1 von 9', { exact: true }).waitFor()
     const assessment = (await readApi(viewer, '/state')).levelCompletion.unitAssessment
     for (const [index, part] of ['C', 'D'].entries()) {
       const id = scope.childAssessmentGoalIds[index]

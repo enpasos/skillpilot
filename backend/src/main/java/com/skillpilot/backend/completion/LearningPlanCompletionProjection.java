@@ -20,6 +20,12 @@ public final class LearningPlanCompletionProjection {
 
     public Set<String> waivedGoals(LearningPlanCompletionContext context, Set<String> obligations,
             Function<Set<String>, Map<String, Double>> masterySnapshot) {
+        return waivedGoals(context, obligations, masterySnapshot, Map.of());
+    }
+
+    public Set<String> waivedGoals(LearningPlanCompletionContext context, Set<String> obligations,
+            Function<Set<String>, Map<String, Double>> masterySnapshot,
+            Map<String, CompletionEvaluation.WaiverReason> planningCredits) {
         if (context == null || obligations.isEmpty()
                 || context.semantics() == LearningPlanCompletionContext.Semantics.REVIEWED_RULES
                         && context.reviewedProfiles().isEmpty()) return Set.of();
@@ -30,6 +36,10 @@ public final class LearningPlanCompletionProjection {
         mastery.forEach((id, value) -> { if (Mastery.isMastered(value)) mastered.add(id); });
         CompletionEvaluation evaluation = graph instanceof CompiledAutomaticCompletion automatic
                 ? evaluator.evaluateAutomatic(automatic, mastered) : evaluator.evaluateGraph(graph, mastered);
+        if (context.semantics() == LearningPlanCompletionContext.Semantics.AUTOMATIC) {
+            evaluation = evaluation.withPlanningCredits(planningCredits, graph.contextGoalIds(),
+                    graph.targetGoalIds(), graph.protectedGoalIds());
+        }
         Set<String> waived = new TreeSet<>(evaluation.waivedGoalIds());
         waived.retainAll(obligations);
         return Set.copyOf(waived);

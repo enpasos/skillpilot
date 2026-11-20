@@ -156,6 +156,7 @@ export function FlashcardDrill({
 }: FlashcardDrillProps) {
     const { language } = useLanguage()
     const t = getFlashcardDrillCopy(language === 'en' ? 'en' : 'de')
+    const practiceScopeKey = scopeGoalIds?.join(',')
 
     // State for SRS
     // Initial load happens in useEffect to ensure we use the correct keys
@@ -304,7 +305,7 @@ export function FlashcardDrill({
         syncedAllCaughtUpRef.current = false
         sessionInitialDueRef.current = null
         lastMasteryRef.current = null
-    }, [dataSourceUrl, goalId, scopeGoalIds?.join(',')]) // Reset on goal or practice scope change
+    }, [dataSourceUrl, goalId, practiceScopeKey]) // Reset on goal or practice scope change
 
     useEffect(() => {
         const handleVisibility = () => {
@@ -418,7 +419,7 @@ export function FlashcardDrill({
         loadData()
         return () => controller.abort()
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [dataSourceUrl, filterTags?.join(','), scopeGoalIds?.join(','), reloadTrigger, goalId, skillPilotId, reloadSignal, triggerSync])
+    }, [dataSourceUrl, filterTags?.join(','), practiceScopeKey, reloadTrigger, goalId, skillPilotId, reloadSignal, triggerSync])
     // Initialize: Fetch Data -> Then Queue
 
 

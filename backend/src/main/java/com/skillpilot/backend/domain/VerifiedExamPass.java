@@ -1,6 +1,8 @@
 package com.skillpilot.backend.domain;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.CollectionTable;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -11,7 +13,12 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 import java.time.Instant;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.UUID;
+import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -53,6 +60,13 @@ public class VerifiedExamPass {
     @Column(name = "passed_at", nullable = false)
     private Instant passedAt;
 
+    @ElementCollection
+    @CollectionTable(name = "verified_exam_pass_credit_binding", joinColumns = @JoinColumn(name = "pass_id", nullable = false))
+    @Column(name = "binding_id", nullable = false, length = 71)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @BatchSize(size = 64)
+    private Set<String> planningCreditBindingIds = new HashSet<>();
+
     protected VerifiedExamPass() {}
 
     public VerifiedExamPass(Learner learner, String goalId, String taskRevision, String rubricRevision,
@@ -80,6 +94,8 @@ public class VerifiedExamPass {
     public String getTaskRevision() { return taskRevision; }
     public String getRubricRevision() { return rubricRevision; }
     public String getFingerprint() { return fingerprint; }
+    public List<String> getPlanningCreditBindingIds() { return planningCreditBindingIds.stream().sorted().toList(); }
+    public void addPlanningCreditBindings(Collection<String> ids) { planningCreditBindingIds.addAll(ids); }
     public double getEarnedPoints() { return earnedPoints; }
     public double getMaxPoints() { return maxPoints; }
     public double getPassingPoints() { return passingPoints; }

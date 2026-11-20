@@ -11,11 +11,15 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Collection;
+import java.util.List;
 import java.util.stream.Stream;
 
 /** Unit introductions, activity references and exercise prompts shared by the map and the coach. */
 public final class UnitLearningMaterialService {
     private record Key(String landscape, String view, String node) {}
+    public record AssessmentBinding(String landscapeId, String viewId, String compositionNodeId,
+            UnitAssessmentContract contract) {}
     public record Intro(String question, String promise) {}
     public record Material(String flashcardGoalId, String assessmentGoalId, Map<String, Intro> intro,
             Map<String, Map<String, PracticeExercise>> exercises, UnitAssessmentContract assessmentContract) {
@@ -38,13 +42,15 @@ public final class UnitLearningMaterialService {
     }
 
     private final Map<Key, Material> materials;
+    private final Map<String, String> reviewedPlanningReleases;
 
-    private UnitLearningMaterialService(Map<Key, Material> materials) {
+    private UnitLearningMaterialService(Map<Key, Material> materials, Map<String, String> reviewedPlanningReleases) {
         this.materials = Map.copyOf(materials);
+        this.reviewedPlanningReleases = Map.copyOf(reviewedPlanningReleases);
     }
 
     public static UnitLearningMaterialService empty() {
-        return new UnitLearningMaterialService(Map.of());
+        return new UnitLearningMaterialService(Map.of(), Map.of());
     }
 
     public static UnitLearningMaterialService fromRepository(Path directory, ObjectMapper mapper) throws IOException {
@@ -73,7 +79,20 @@ public final class UnitLearningMaterialService {
                 }
             }
         }
-        return new UnitLearningMaterialService(materials);
+        Map<String, String> reviewed = new HashMap<>();
+        Path catalog = directory.resolve("unit-learning-materials.json");
+        if (Files.isRegularFile(catalog)) {
+            var releases = mapper.readTree(catalog.toFile()).path("reviewedPlanningReleases");
+            if (releases.isObject()) releases.fields().forEachRemaining(entry -> {
+                if (entry.getValue().isTextual()) reviewed.put(entry.getKey(), entry.getValue().asText());
+            });
+        }
+        return new UnitLearningMaterialService(materials, reviewed);
+    }
+
+    public boolean isReviewedPlanningRelease(com.skillpilot.backend.completion.UnitPlanningRelease release) {
+        return release != null && release.review() != null
+                && release.review().sha256().equals(reviewedPlanningReleases.get(release.fingerprint()));
     }
 
     private static Stream<Path> materialFiles(Path directory, ObjectMapper mapper) throws IOException {
@@ -137,5 +156,20 @@ public final class UnitLearningMaterialService {
             }
         }
         return Optional.of(selected);
+    }
+
+    /** Current view bindings, independent of a learner's temporary focus or chosen route. */
+    public List<AssessmentBinding> assessmentBindings(Collection<String> viewIds) {
+        var result = new ArrayList<AssessmentBinding>();
+        var scopes = materials.keySet().stream().map(key -> new Key(key.landscape(), "", key.node()))
+                .distinct().sorted(java.util.Comparator.comparing(Key::landscape).thenComparing(Key::node)).toList();
+        for (String view : viewIds.stream().sorted().toList()) {
+            for (var scope : scopes) {
+                find(scope.landscape(), view, scope.node()).map(Material::assessmentContract)
+                        .filter(contract -> contract.appliesTo(view))
+                        .ifPresent(contract -> result.add(new AssessmentBinding(scope.landscape(), view, scope.node(), contract)));
+            }
+        }
+        return List.copyOf(result);
     }
 }

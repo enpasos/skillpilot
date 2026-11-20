@@ -20,7 +20,7 @@ const subjectLabel = (landscapeId: string, english: boolean) => landscapeId === 
 /** Lazy product adapter; the original GoalCard remains the only goal detail view. */
 export default function LearnerGoalNavigationMap(props: LearnerGoalNavigationMapProps) {
   const { rootGoals, goalIndexAll, canonicalGoalSources, visibleGoalIds, visibleChildrenByParent,
-    getMastery, completionWaivers, onPracticeFlashcards, onOpenGoal } = props
+    getMastery, completionWaivers, onPracticeFlashcards, getFlashcardSource, onOpenGoal } = props
   const english = props.language === 'en'
   const canonicalSource = canonicalGoalSources ?? goalIndexAll
   const canonicalGoalIndexAll = useMemo(() => canonicalSource instanceof Map ? canonicalSource
@@ -48,9 +48,9 @@ export default function LearnerGoalNavigationMap(props: LearnerGoalNavigationMap
     const memory = memoryId && visibleGoalIds.has(memoryId) && progressFixture.entries[memoryId]?.kind === 'memory'
       ? goalIndexAll.get(memoryId) : undefined
     const source = onPracticeFlashcards && memory?.landscapeId === material.unit.landscapeId
-      ? props.getFlashcardSource?.(memory) : undefined
+      ? getFlashcardSource?.(memory) : undefined
     return [{ material, scopes, source }]
-  }), [progressFixture, goalIndexAll, visibleGoalIds, onPracticeFlashcards, props.getFlashcardSource])
+  }), [progressFixture, goalIndexAll, visibleGoalIds, onPracticeFlashcards, getFlashcardSource])
   // Avoid refetching when a render or language change yields the same authorized deck URLs.
   const sourceList = JSON.stringify([...new Set(bindings.flatMap(binding => binding.source ? [binding.source] : []))].sort())
   const [decks, setDecks] = useState<ReadonlyMap<string, { tags?: string[] }[]>>(new Map())

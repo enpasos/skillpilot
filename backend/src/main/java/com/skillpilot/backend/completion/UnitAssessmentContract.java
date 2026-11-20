@@ -36,10 +36,13 @@ public record UnitAssessmentContract(String revision, List<String> viewIds, List
         }
     }
 
-    public record PlanningCredit(List<String> requiredPartIds, List<String> goalIds) {
+    public record PlanningCredit(List<String> requiredPartIds, List<String> goalIds, UnitPlanningRelease release) {
         public PlanningCredit {
             requiredPartIds = checkedIds(requiredPartIds);
             goalIds = checkedIds(goalIds);
+        }
+        public PlanningCredit(List<String> requiredPartIds, List<String> goalIds) {
+            this(requiredPartIds, goalIds, null);
         }
     }
 

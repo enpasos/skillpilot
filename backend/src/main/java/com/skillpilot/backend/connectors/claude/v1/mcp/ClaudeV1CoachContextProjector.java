@@ -328,7 +328,9 @@ public class ClaudeV1CoachContextProjector {
             Map<String, Object> result = new LinkedHashMap<>();
             result.put("title", prerequisite.title());
             result.put("recorded", prerequisite.recorded());
-            if (!prerequisite.recorded() && scopeTitle != null && completion.waivedTargetGoalIds().contains(prerequisite.goalId())) {
+            if (prerequisite.planningCredit()) result.put("planningCredit", true);
+            if (!prerequisite.recorded() && !prerequisite.planningCredit()
+                    && scopeTitle != null && completion.waivedTargetGoalIds().contains(prerequisite.goalId())) {
                 List<LevelCompletionResponse.WaiverDetail> matches = completion.waiverDetails().stream()
                         .filter(waiver -> prerequisite.goalId().equals(waiver.goalId())).limit(2).toList();
                 String reason = matches.size() == 1 ? publishedWaiverReason(matches.getFirst()) : null;
