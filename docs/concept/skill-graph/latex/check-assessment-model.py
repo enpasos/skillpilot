@@ -8,7 +8,9 @@ Independent closure and traversal formulations; no mastery stopping barrier.
 Own-only acquisition contracts, recursive unit completion and optional block
 ordering are checked separately. Real task quality needs content review.
 """
+import json
 from itertools import combinations, permutations
+from pathlib import Path
 
 
 def require(condition, message):
@@ -119,20 +121,37 @@ def block_dependencies(vertices, edges, own):
 
 def check_versioned_unit_evidence():
     """Check the proposed E.1 contract against independently listed pass cases."""
-    child = frozenset({("vertical-throw", 1), ("acceleration-report", 1)})
-    parent_own = frozenset({("cart-A", 1), ("projectile-B", 1)})
+    fixture = Path(__file__).resolve().parents[1] / "examples/hessen-physik-e1/umfang.json"
+    scope = json.loads(fixture.read_text(encoding="utf-8"))
+    child = frozenset((goal, 1) for goal in scope["childAssessmentGoalIds"])
+    parent_own = frozenset((goal, 1) for goal in scope["ownAssessmentGoalIds"])
     required = child | parent_own
+    require(len(child) == len(parent_own) == 2 and len(required) == 4, "Expected four distinct assessments")
     child_pass_cases = {child | extra for extra in subsets(parent_own)}
-    child_release = {"constant-acceleration", "idealisation"}
-    parent_release = {"measurement-errors", "measurement-uncertainty"}
-    child_content = {"constant-acceleration", "idealisation"}
-    parent_content = {"measurement-errors", "measurement-uncertainty", "run-fall-experiment"}
+    idealisation = "d6dc0e02-831d-4894-a61a-852bcc74f147"
+    acceleration = "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+    child_content = {idealisation, acceleration}
+    child_release = set(scope["childPlanningGoalIds"])
+    parent_release = set(scope["unitPlanningGoalIds"])
+    open_goals = set(scope["otherContentGoalIds"])
+    require(child_release == child_content and not parent_release, "Only the two reviewed child goals qualify")
+    require(len(open_goals) == 9 and child_content.isdisjoint(open_goals), "Expected nine other open goals")
+    own_revisions = scope["ownAssessmentRevisions"].values()
+    require(all(not revision["planningEvidence"] for revision in own_revisions),
+            "Neither parent assessment has whole-goal evidence")
+    require(scope["rules"]["individualMastery"] == "unchanged", "Explicit mastery must remain independent")
+    observed = {item["goalId"] for revision in own_revisions
+                for item in revision.get("partialObservations", [])}
+    require(observed == {"8aff7aac-321b-5172-ac55-877876bfd2cd", "f6b1d812-ce8b-5852-b417-e6c29b533c7a"}
+            and observed <= open_goals, "Both measurement goals must remain open")
+    parent_content = open_goals | parent_release
+    free_fall = "09029573-864f-40ca-bf8a-cee7bf6dcb73"
     experiment = ("fall-experiment", 1)
     # A second, hypothetical version also requires a practical performance.
     # Adding this obligation never changes the evidence of the first version.
     parent_versions = {
         1: (parent_own, parent_release),
-        2: (parent_own | {experiment}, parent_release | {"run-fall-experiment"}),
+        2: (parent_own | {experiment}, parent_release | {free_fall}),
     }
 
     def evaluate(passed, versions=parent_versions):
@@ -156,15 +175,15 @@ def check_versioned_unit_evidence():
         parent_done = passed == required
         require((("child", 1) in completed) == child_done, "Unexpected child completion")
         require((("E.1", 1) in completed) == parent_done, "Unexpected E.1 completion")
-        expected = (child_release if child_done else set()) | (parent_release if parent_done else set())
+        expected = child_content if child_done else set()
         require(released == expected, "Release before completion or outside the reviewed scope")
-        require(("E.1", 2) not in completed and "run-fall-experiment" not in released,
+        require(("E.1", 2) not in completed and free_fall not in released,
                 "The newer version broadened a historical result")
         require(passed == original, "A planning release altered an explicit result")
     completed, released = evaluate(required | {experiment})
-    require(completed == {("child", 1), ("E.1", 1), ("E.1", 2)} and "run-fall-experiment" in released,
+    require(completed == {("child", 1), ("E.1", 1), ("E.1", 2)} and free_fall in released,
             "Fresh evidence did not qualify for its own revision")
-    for forbidden in ("mathematics-derivative", "idealisation", "orientation", "flashcard-recall"):
+    for forbidden in ("mathematics-derivative", idealisation, "orientation", "flashcard-recall"):
         try:
             evaluate(required, {1: (parent_own, parent_release | {forbidden})})
         except AssertionError as error:
@@ -172,7 +191,7 @@ def check_versioned_unit_evidence():
                     "Invalid release failed for an unrelated reason")
         else:
             raise AssertionError(f"Parent subject unit permitted release of {forbidden}")
-    print("PASS: 16 E.1 pass combinations, revision-bound practical evidence and four invalid releases.")
+    print("PASS: 16 E.1 pass combinations, two child planning releases, nine open goals, revision-bound practical evidence and four invalid releases.")
 
 
 def main():

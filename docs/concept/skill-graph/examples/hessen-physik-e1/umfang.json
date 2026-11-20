@@ -1,6 +1,6 @@
 {
   "reviewStatus": "draft",
-  "revision": "2026-11-20-draft-1",
+  "revision": "2026-11-20-draft-2",
   "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
   "compositionNodeId": "physics-e1-motion",
   "viewIds": [
@@ -9,6 +9,10 @@
     "de-he-gym-physics-gk-g9",
     "de-he-gym-physics-lk-g9"
   ],
+  "planningReview": {
+    "sourceFile": "fachabgleich-messziele-2026-11-20.de.md",
+    "sourceFileSha256": "e18d0c7790701c6656d2e6e07b8b1b57d66586cfa7b92587736db7a9a3aad607"
+  },
   "ownAssessmentGoalIds": [
     "ee7d5f3d-858f-59d6-89b0-e5a7f437f458",
     "39f52dcb-ff1d-5cad-9ccb-30da803cfa85"
@@ -19,7 +23,9 @@
       "taskRevision": "sha256:6ab3c1940e59e55422878fc7ef8489e67fd9e5a5601e96e631270562c3eb948a",
       "rubricRevision": "sha256:78a9793913d76f90a87b681fe2d40c75fa87bbe1ff4868f037a5f6a46fe8befc",
       "sourceFileSha256": "50e4d944ce41f38f8c5e1de7fbd510651006e733719361f1f1380d94c79f5ae5",
-      "planningEvidence": [
+      "planningEvidence": [],
+      "fingerprint": "sha256:1be94285b9ccd9e39392341cdd425c33798a63cd93c2134982f22205fd953810",
+      "partialObservations": [
         {
           "goalId": "8aff7aac-321b-5172-ac55-877876bfd2cd",
           "requiredStepIds": [
@@ -39,7 +45,8 @@
       "taskRevision": "sha256:53ab2e197601d4383b0b053c0b7182a5459881764b73f97727504cee73881842",
       "rubricRevision": "sha256:85c600d8bbb5eae243d42bd6fafa0a48e4a34785ff5b789178e7e8967b19f485",
       "sourceFileSha256": "08291faa9418a2247ada691067283251343662fcbe2844dcdb2ff61218d65fe0",
-      "planningEvidence": []
+      "planningEvidence": [],
+      "fingerprint": "sha256:1a362c1fcc9e90831debb82b1fdb113202b9578dce96ac5f082ea81ac3abcf9d"
     }
   },
   "childUnitSource": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
@@ -49,15 +56,34 @@
     "c5807a37-129e-5df6-8989-482bc7f5683e",
     "a8dc0290-9f80-5763-8943-e16b8d2aa860"
   ],
+  "childAssessmentRevisions": {
+    "c5807a37-129e-5df6-8989-482bc7f5683e": {
+      "taskRevision": "sha256:45c2c559b0ddf2b4f35060b459438cd9dd22dac456abfc04ef91855538c68324",
+      "rubricRevision": "sha256:dc7256b9a559ea7ec359f8b5c53c377a4b99481628aced62a68b885d71c11ad7",
+      "fingerprint": "sha256:884f20ecc952f261c516e1d051bf121d0b8beb59144735810af42624a3787fda",
+      "planningGoalIds": [
+        "d6dc0e02-831d-4894-a61a-852bcc74f147"
+      ],
+      "coverageReview": "curricula/DE/Gymnasium/quality/learning-units/physics-constant-acceleration-2026-11-15-v2.md"
+    },
+    "a8dc0290-9f80-5763-8943-e16b8d2aa860": {
+      "taskRevision": "sha256:8a5ccaa3f596ace70e6a4dad6f644a2ddaa046be5f2c598a012a1ff40d9b17ef",
+      "rubricRevision": "sha256:62bf8143588daa963566318ada486cc4a189906d6a6b92d2e428ec8fe5383163",
+      "fingerprint": "sha256:9d10eb2da549ce666b2cdeea504ab814da3db6e226ca25ebc837708018f24268",
+      "planningGoalIds": [
+        "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+      ],
+      "coverageReview": "curricula/DE/Gymnasium/quality/learning-units/physics-constant-acceleration-2026-11-15-v2.md"
+    }
+  },
   "childPlanningGoalIds": [
     "d6dc0e02-831d-4894-a61a-852bcc74f147",
     "e4b38061-1f28-43ad-8371-a3e7c0e81856"
   ],
-  "unitPlanningGoalIds": [
-    "8aff7aac-321b-5172-ac55-877876bfd2cd",
-    "f6b1d812-ce8b-5852-b417-e6c29b533c7a"
-  ],
+  "unitPlanningGoalIds": [],
   "otherContentGoalIds": [
+    "8aff7aac-321b-5172-ac55-877876bfd2cd",
+    "f6b1d812-ce8b-5852-b417-e6c29b533c7a",
     "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
     "ce431132-dfc4-42c2-aff6-bd72035190f8",
     "bf8517a9-142b-5789-826a-767f3b277998",
@@ -71,6 +97,7 @@
     "childPlanningGoalIds": "allChildAssessmentsPassed",
     "unitPlanningGoalIds": "allOwnAndAllChildAssessmentsPassed",
     "otherContentGoalIds": "noPlanningCreditFromThisRoute",
-    "individualMastery": "unchanged"
+    "individualMastery": "unchanged",
+    "partialObservations": "noPlanningCreditFromThisRoute"
   }
 }
