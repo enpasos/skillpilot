@@ -82,20 +82,29 @@ export function buildUnitFlashcardActions(
   return actions
 }
 
+interface UnitResourcePlacement { scopeId: string; goalIds: readonly string[] }
+
+export function unitResourcePlacements({ scopes, flashcards, assessments }: {
+  scopes: ReadonlySet<string>
+  flashcards: ReadonlyMap<string, FlashcardPracticeRequest>
+  assessments: ReadonlyMap<string, { goalId: string }>
+}): UnitResourcePlacement[] {
+  return [...scopes].flatMap(scopeId => {
+    const goalIds = [flashcards.get(scopeId), assessments.get(scopeId)].flatMap(action => action ? [action.goalId] : [])
+    return goalIds.length ? [{ scopeId, goalIds }] : []
+  })
+}
+
 /** Place additional references on the topic board. The source tree remains the owner of every result. */
-export function placeUnitLearningResources(
-  fixture: LearningMapFixture, scopes: ReadonlySet<string>, flashcards: ReadonlyMap<string, FlashcardPracticeRequest>,
-  assessments: ReadonlyMap<string, { goalId: string }>,
-): LearningMapFixture {
-  if (!scopes.size) return fixture
+export function placeUnitLearningResources(fixture: LearningMapFixture, placements: readonly UnitResourcePlacement[]): LearningMapFixture {
+  if (!placements.length) return fixture
   const entries = { ...fixture.entries }
   const scopeRelations = { ...fixture.scopeRelations }
   const scopeContext = { ...fixture.scopeContext }
-  for (const scopeId of scopes) {
+  for (const { scopeId, goalIds } of placements) {
     const scope = entries[scopeId]
     if (!scope) continue
-    const resources = [flashcards.get(scopeId)?.goalId, assessments.get(scopeId)?.goalId].filter(
-      (id): id is string => !!id && !!entries[id] && !scope.children?.includes(id))
+    const resources = goalIds.filter(id => entries[id] && !scope.children?.includes(id))
     if (!resources.length) continue
     entries[scopeId] = { ...scope, children: [...(scope.children ?? []), ...resources] }
     const relations = [...(scopeRelations[scopeId] ?? [])]

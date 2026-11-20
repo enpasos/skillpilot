@@ -5,9 +5,10 @@ import { join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
-import { chromium } from 'playwright'
+import { chromium, type Locator, type Page } from 'playwright'
 import { createServer } from 'vite'
 import { CURRENT_TERMS_VERSION } from '../src/utils/legalTermsVersion'
+import { LEARNER_UI_REFRESH_EVENT } from '../src/utils/learnerUiEvents'
 import type { SkillLandscape } from '../src/landscapeTypes'
 import { nativeMapIds as id, nativeMapLandscapes, nativeMapProfile } from './fixtures/nativeLearningMapData'
 import { readUnitMapMaterials } from './lib/unitLearningMaterialCatalog'
@@ -50,6 +51,62 @@ const deck = { deckId: 'de_gymnasium_physics_mechanics_ephase', title: memory.ti
   { id: 'e1-b', front: 'E1 Frage B', back: 'E1 Antwort B', category: 'E1', tags: ['GK', 'goal:' + force.id] },
   { id: 'e2-a', front: 'E2 Frage', back: 'E2 Antwort', category: 'E2', tags: ['GK', 'goal:' + energyId] },
 ] }
+async function checkMapLayout(page: Page, dialog: Locator, releaseDeck: () => void, changeActiveGoal: () => void) {
+  const board = dialog.locator(`.lum-canvas[data-scope-id="${topicId}"][aria-busy="false"]`)
+  const node = (goalId: string) => dialog.locator(`[data-entry-id="${goalId}"]`)
+  await node(examId!).waitFor()
+  assert.equal(await node(memoryId!).count(), 0, 'the E.1 board has no topic deck before its cards arrive')
+  const probe = await dialog.evaluateHandle((element, refreshEvent) => {
+    const activity = { layouts: 0, busy: 0, loading: 0 }
+    const result = { activity, activeGoalRefreshed: false }
+    const original = Worker.prototype.postMessage
+    Worker.prototype.postMessage = function(message, ...args) {
+      if (message?.cmd === 'layout') activity.layouts++
+      return Reflect.apply(original, this, [message, ...args])
+    }
+    new MutationObserver(records => {
+      for (const record of records) {
+        if (record.attributeName === 'aria-busy' && record.oldValue === 'false' && record.target instanceof Element
+            && record.target.matches('.lum-canvas')) activity.busy++
+        for (const added of record.addedNodes) {
+          if (added instanceof Element && (added.matches('.lum-loading') || added.querySelector('.lum-loading'))) activity.loading++
+        }
+      }
+    }).observe(element, { subtree: true, childList: true, attributes: true, attributeFilter: ['aria-busy'], attributeOldValue: true })
+    window.addEventListener(refreshEvent, event => {
+      if ((event as CustomEvent).detail.reason === 'ACTIVE_GOAL_UPDATE') result.activeGoalRefreshed = true
+    })
+    return result
+  }, LEARNER_UI_REFRESH_EVENT)
+  releaseDeck()
+  await node(memoryId!).waitFor()
+  await board.waitFor()
+  const afterDeck = await probe.evaluate(value => value.activity)
+  assert(afterDeck.layouts > 0 && afterDeck.busy > 0 && afterDeck.loading > 0, 'a newly available topic deck triggers layout')
+  const camera = () => dialog.locator('.react-flow__viewport').evaluate(element => (element as HTMLElement).style.transform)
+  const fittedCamera = await camera()
+  await dialog.getByRole('button', { name: 'Karte verkleinern', exact: true }).click()
+  const chosenCamera = await camera()
+  assert.notEqual(chosenCamera, fittedCamera)
+  const assertBoardStable = async (action: string) => {
+    await board.waitFor()
+    await page.evaluate(() => new Promise<void>(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))))
+    assert.deepEqual(await probe.evaluate(value => value.activity), afterDeck, action)
+    assert.equal(await camera(), chosenCamera, action)
+  }
+  await node(horizontalThrow.id).locator('.lum-node-main').click()
+  await dialog.locator(`[data-selected-goal-id="${horizontalThrow.id}"]`).waitFor()
+  await assertBoardStable('selecting another goal on the same board preserves the layout and camera')
+  await dialog.locator(`[data-entry-id="${force.id}"][data-active-goal="true"] .lum-node-main`).click()
+  await dialog.locator(`[data-selected-goal-id="${force.id}"]`).waitFor()
+  changeActiveGoal()
+  await page.evaluate(() => window.dispatchEvent(new Event('test-active-goal-update')))
+  await page.waitForFunction(value => value.activeGoalRefreshed, probe)
+  await dialog.locator(`[data-entry-id="${horizontalThrow.id}"][data-active-goal="true"]`).waitFor()
+  await dialog.locator(`[data-selected-goal-id="${horizontalThrow.id}"]`).waitFor()
+  await assertBoardStable('receiving a new active goal on the same board preserves the layout and camera')
+}
+
 const appRoot = fileURLToPath(new URL('../', import.meta.url))
 const cacheDir = await mkdtemp(join(tmpdir(), 'skillpilot-he-memory-'))
 const server = await createServer({ root: appRoot, configFile: false, cacheDir, logLevel: 'error',
@@ -71,6 +128,9 @@ try {
     { width: 1440, futureTopic: false, switchDuringSave: true, backgroundOverlap: false },
     { width: 1440, futureTopic: false, switchDuringSave: true, backgroundOverlap: true },
   ]) {
+    const checkLayout = width === 1440 && !futureTopic && !switchDuringSave
+    let releaseDeck!: () => void
+    const delayedDeck = new Promise<void>(resolve => { releaseDeck = resolve })
     const context = await browser.newContext({ viewport: { width, height: 960 }, reducedMotion: 'reduce', serviceWorkers: 'block' })
     await context.addInitScript('globalThis.__name = (target) => target')
     await context.addInitScript(({ learner, root, terms }) => {
@@ -79,7 +139,12 @@ try {
       localStorage.setItem('skillpilot_id', learner)
       localStorage.setItem('skillpilot_learner_landscape', root)
       localStorage.setItem('skillpilot_terms_accepted_version', terms)
-      class TestEventSource extends EventTarget { readyState = 1; close() {} }
+      class TestEventSource extends EventTarget {
+        readyState = 1
+        constructor() { super(); window.addEventListener('test-active-goal-update', this.update) }
+        update = () => this.dispatchEvent(new MessageEvent('client-state', { data: JSON.stringify({ type: 'ACTIVE_GOAL_UPDATE' }) }))
+        close() { window.removeEventListener('test-active-goal-update', this.update) }
+      }
       Object.defineProperty(window, 'EventSource', { configurable: true, value: TestEventSource })
     }, { learner: id.learner, root: id.root, terms: CURRENT_TERMS_VERSION })
     context.setDefaultTimeout(30_000)
@@ -102,7 +167,10 @@ try {
       const request = route.request(), url = new URL(request.url()), path = url.pathname
       const json = (body: unknown, status = 200) => route.fulfill({ status, contentType: 'application/json', body: JSON.stringify(body) })
       if (url.origin !== origin) return route.abort()
-      if (path.includes('de_gymnasium_physics_flashcards_mechanics_ephase.')) return json(deck)
+      if (path.includes('de_gymnasium_physics_flashcards_mechanics_ephase.')) {
+        if (checkLayout) await delayedDeck
+        return json(deck)
+      }
       if (!path.startsWith('/api/')) return route.continue()
       if (path === '/api/ui/curriculum-catalog') return json({ error: 'Repository curriculum mode' }, 404)
       if (path === '/api/ui/landscapes') return json({ summaries: landscapes.map(landscape => ({ curriculumId: landscape.landscapeId,
@@ -118,7 +186,7 @@ try {
         return json([{ passedAt: '2026-11-17T08:00:00Z', earnedPoints: 18, maxPoints: 25, passingPoints: 15,
           fingerprint: 'sha256:' + 'a'.repeat(64) }])
       }
-      if (!suffix && request.method() === 'GET') return json(nativeMapProfile(true))
+      if (!suffix && request.method() === 'GET') return json({ ...nativeMapProfile(true), activeGoalId: learnerState.activeGoal.id })
       if (suffix === '/mastery') return json({ mastery: {} })
       if (suffix === '/state') return json(learnerState)
       if (suffix === '/resume') return json({ lastActivityAt: '2026-11-18T08:00:00Z', scheduledDeletionAt: '2027-05-18T08:00:00Z' })
@@ -155,6 +223,10 @@ try {
       console.error({ width, board: await page.locator('.lum-canvas').getAttribute('data-scope-id'),
         map: await dialog.innerText(), errors, unexpected })
       throw error
+    })
+    if (checkLayout) await checkMapLayout(page, dialog, releaseDeck, () => {
+      learnerState.activeGoal.id = horizontalThrow.id
+      learnerState.stateMachine.activeGoal.id = horizontalThrow.id
     })
     const practice = dialog.getByRole('button', { name: 'Lernkarten zu E.1 üben', exact: true })
     if (!futureTopic && !switchDuringSave) {
@@ -303,7 +375,7 @@ try {
     assert.deepEqual(errors, [])
     await context.close()
   }
-  console.log('Hessen Physics UI passed: scoped E.1 exercise, dialog focus, keyboard/topic practice, original progress/state, complete deck, named assessment, desktop/mobile.')
+  console.log('Hessen Physics UI passed: scoped E.1 exercise, dialog focus, ELK/selection/active updates, keyboard/topic practice, original progress/state, complete deck, named assessment, desktop/mobile.')
 } finally {
   await browser.close()
   await server.close()

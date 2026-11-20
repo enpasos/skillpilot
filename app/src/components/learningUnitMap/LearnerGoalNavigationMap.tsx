@@ -11,8 +11,8 @@ import { UNIT_MAP_LEARNING_MATERIALS } from './learnerUnitMapPreviewSubjects'
 import { filterLearnerUnitMapToSubjects } from './learnerUnitMapProjection'
 import { createLearnerUnitMapCache, MATHEMATICS_LANDSCAPE_ID, UNIT_MAP_COMPACT_LIST_THRESHOLD,
   UNIT_MAP_PREVIEW_SUBJECT_IDS } from './learnerUnitMapPreview'
-import type { LearningEntryProgress, LearningMapFixture } from './types'
-import { buildUnitAssessmentActions, buildUnitFlashcardActions, findUnitMaterialScopes, placeUnitLearningResources } from './unitLearningMaterialActions'
+import type { LearningEntryProgress } from './types'
+import { buildUnitAssessmentActions, buildUnitFlashcardActions, findUnitMaterialScopes, placeUnitLearningResources, unitResourcePlacements } from './unitLearningMaterialActions'
 
 const subjectLabel = (landscapeId: string, english: boolean) => landscapeId === MATHEMATICS_LANDSCAPE_ID
   ? english ? 'Mathematics' : 'Mathematik' : english ? 'Physics' : 'Physik'
@@ -41,16 +41,17 @@ export default function LearnerGoalNavigationMap(props: LearnerGoalNavigationMap
   }, [mapSubjects, hiddenSubjects])
   const progressFixture = useMemo(() => filterLearnerUnitMapToSubjects(view.fixture, new Set(shownSubjects)), [view.fixture, shownSubjects])
   const language = props.language ?? 'de'
+  const canPracticeFlashcards = Boolean(onPracticeFlashcards)
   const bindings = useMemo(() => UNIT_MAP_LEARNING_MATERIALS.flatMap(material => {
     const scopes = findUnitMaterialScopes(material, progressFixture, goalIndexAll, visibleGoalIds)
     if (!scopes.size) return []
     const memoryId = material.unit.flashcardGoalId
     const memory = memoryId && visibleGoalIds.has(memoryId) && progressFixture.entries[memoryId]?.kind === 'memory'
       ? goalIndexAll.get(memoryId) : undefined
-    const source = onPracticeFlashcards && memory?.landscapeId === material.unit.landscapeId
+    const source = canPracticeFlashcards && memory?.landscapeId === material.unit.landscapeId
       ? getFlashcardSource?.(memory) : undefined
     return [{ material, scopes, source }]
-  }), [progressFixture, goalIndexAll, visibleGoalIds, onPracticeFlashcards, getFlashcardSource])
+  }), [progressFixture, goalIndexAll, visibleGoalIds, canPracticeFlashcards, getFlashcardSource])
   // Avoid refetching when a render or language change yields the same authorized deck URLs.
   const sourceList = JSON.stringify([...new Set(bindings.flatMap(binding => binding.source ? [binding.source] : []))].sort())
   const [decks, setDecks] = useState<ReadonlyMap<string, { tags?: string[] }[]>>(new Map())
@@ -68,13 +69,14 @@ export default function LearnerGoalNavigationMap(props: LearnerGoalNavigationMap
   }, [sourceList])
   const resources = useMemo(() => bindings.map(({ material, scopes, source }) => ({
     material, scopes,
-    flashcards: onPracticeFlashcards ? buildUnitFlashcardActions(material, progressFixture, goalIndexAll, visibleGoalIds,
+    flashcards: canPracticeFlashcards ? buildUnitFlashcardActions(material, progressFixture, goalIndexAll, visibleGoalIds,
       source ? decks.get(source) : undefined, language, scopes) : new Map<string, FlashcardPracticeRequest>(),
     assessments: buildUnitAssessmentActions(material, progressFixture, goalIndexAll, visibleGoalIds, language, scopes),
-  })), [bindings, progressFixture, goalIndexAll, visibleGoalIds, decks, language, onPracticeFlashcards])
+  })), [bindings, progressFixture, goalIndexAll, visibleGoalIds, decks, language, canPracticeFlashcards])
   const materialScopes = useMemo(() => new Set(resources.flatMap(({ scopes }) => [...scopes])), [resources])
-  const fixture = useMemo(() => resources.reduce<LearningMapFixture>((board, { scopes, flashcards, assessments }) =>
-    placeUnitLearningResources(board, scopes, flashcards, assessments), progressFixture), [resources, progressFixture])
+  // Route selection can recreate the goal index and its actions while the same resource nodes stay on the board.
+  const placementKey = useMemo(() => JSON.stringify(resources.flatMap(unitResourcePlacements)), [resources])
+  const fixture = useMemo(() => placeUnitLearningResources(progressFixture, JSON.parse(placementKey)), [progressFixture, placementKey])
   const getGoalAction = useCallback((scopeId: string, id: string) => {
     const homeId = progressFixture.entryPaths?.[id]?.at(-2)
     const home = homeId && progressFixture.entries[homeId]?.title
