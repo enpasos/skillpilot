@@ -13,6 +13,7 @@ import subprocess
 import tempfile
 import time
 from urllib.error import URLError
+from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 import uuid
 
@@ -35,7 +36,7 @@ def create_learner(api, duration):
     learner = '/api/ui/learners/' + learner_id
     request(api, learner + '/curriculum', 'PUT', {'curriculumId': OVERVIEW})
     request(api, learner + '/personal-curriculum', 'PUT', {
-        OVERVIEW: {'selected': True, 'filterId': 'DE-HE', 'durationModel': duration, 'stage': 'CrossStage'},
+        OVERVIEW: {'selected': True, 'filterId': 'DE-HE', 'durationModel': duration, 'stage': 'SekII'},
         PHYSICS: {'selected': True, 'filterId': 'GK'},
     })
     plan = request(api, learner + '/personalization-plan')
@@ -50,7 +51,12 @@ def create_learner(api, duration):
         plan = request(api, learner + '/personalization-options', 'POST', {'optionId': choice['optionId']})
     if plan['stage'] != 'COMPLETE':
         raise RuntimeError('Personalization is incomplete')
-    focus = f'composition:de-he-gym-physics-gk-{duration.lower()}:structure:physics-e1-motion'
+    query = urlencode({'landscapeId': PHYSICS, 'schoolForm': 'Gymnasium', 'jurisdiction': 'DE-HE',
+                       'stage': 'SekII', 'courseProfile': 'GK', 'durationModel': duration})
+    view = request(api, '/api/ui/composition-views/match?' + query)
+    if not view or view['scope']['stage'] != 'SekII':
+        raise RuntimeError(f'{duration}: upper-secondary Physics view is missing')
+    focus = f'composition:{view["viewId"]}:structure:physics-e1-motion'
     request(api, learner + '/planned', 'PUT', {'goals': [focus]})
     current = request(api, learner + '/state')['levelCompletion']
     profile = 'automatic:' + focus
@@ -62,9 +68,12 @@ def create_learner(api, duration):
         })['levelCompletion']
     if current.get('profileId') != profile or current.get('requiredAssessmentCount') != 5:
         raise RuntimeError(f'{duration}: unexpected E.1 section')
+    assessment = current.get('unitAssessment') or {}
+    if len(assessment.get('parts', [])) != 4 or assessment.get('passed') is not False:
+        raise RuntimeError(f'{duration}: expected four E.1 assessment parts in the upper-secondary view')
     if any(request(api, learner + '/mastery')['mastery'].values()):
         raise RuntimeError('The synthetic learner already has mastery')
-    return learner_id
+    return learner_id, focus
 
 
 def wait_ready(url, process):
@@ -101,7 +110,9 @@ def serve(args, work, stack):
         raise ValueError('API and UI need distinct ports.')
     for port in (args.api_port, args.ui_port):
         with socket.socket() as probe:
+            probe.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
             probe.bind(('127.0.0.1', port))
+            probe.listen()
     api, ui = f'http://127.0.0.1:{args.api_port}', f'http://127.0.0.1:{args.ui_port}'
     jars = work / 'runtime-jars'
     build = work / 'backend-build'
@@ -135,7 +146,11 @@ def serve(args, work, stack):
                               cwd=work, env=runtime_env, stdout=log, stderr=subprocess.STDOUT)
     stack.callback(stop, spring)
     wait_ready(api + '/actuator/health', spring)
-    profiles = {d: {role: create_learner(api, d) for role in ('viewer', 'A', 'B')} for d in ('G8', 'G9')}
+    profiles = {}
+    for duration in ('G8', 'G9'):
+        viewer, section = create_learner(api, duration)
+        profiles[duration] = {'viewer': viewer, 'E1': section,
+                              **{part: create_learner(api, duration)[0] for part in ('A', 'B')}}
     (work / 'profiles.json').write_text(json.dumps(profiles))
     ui_env = {**os.environ, 'SKILLPILOT_E1_PREVIEW_DIR': str(work), 'VITE_API_BASE': api}
     vite = subprocess.Popen([node, str(app / 'node_modules/vite/bin/vite.js'), '--config',
@@ -144,7 +159,7 @@ def serve(args, work, stack):
     stack.callback(stop, vite)
     wait_ready(ui + '/nativ/G8/A', vite)
     for d in ('G8', 'G9'):
-        print(f'{d}: {ui}/nativ/{d}/A   {ui}/nativ/{d}/B', flush=True)
+        print(f'{d}: {ui}/nativ/{d}/E1   {ui}/nativ/{d}/A   {ui}/nativ/{d}/B', flush=True)
     if args.check:
         subprocess.run([node, str(app / 'scripts/checkHesseE1Preview.mjs'), ui, api, str(work / 'profiles.json')],
                        cwd=app, check=True)

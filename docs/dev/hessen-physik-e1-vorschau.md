@@ -1,6 +1,6 @@
 # Hessische E.1-Prüfungen lokal ansehen
 
-Die Vorschau öffnet die beiden deutsch-englischen Physikprüfungen über die reguläre Lernkarte und das Cockpit. Sie legt für Hessen G8 und G9 je ein Zuschauerprofil und zwei Profile für unabhängige Erststarts an. Die lokale H2-Datenbank befindet sich im Arbeitsspeicher. Beim Beenden verfallen alle sechs Profile.
+Die Vorschau öffnet E.1 und ihre vier deutsch-englischen Prüfungen im regulären Cockpit. Im persönlichen Curriculum ist ausdrücklich Hessen, Sekundarstufe II, Physik (GK) ausgewählt. G8 und G9 erhalten je ein Zuschauerprofil und zwei Profile für unabhängige Erststarts. Die lokale H2-Datenbank befindet sich im Arbeitsspeicher. Beim Beenden verfallen die sechs Profile.
 
 ## Start aus einem frischen Checkout
 
@@ -11,12 +11,12 @@ npm ci --prefix app
 python3 scripts/preview_hessen_physics_e1.py
 ```
 
-Der Gradle-Wrapper übersetzt die Backendklassen aus diesem Checkout. Gradle und npm laden beim ersten Start gegebenenfalls ihre Abhängigkeiten. Die lokale API und Vite lauschen auf den Loopback-Ports 8084 und 5177. Auf der Konsole erscheinen die vier Einstiege, sobald beide Dienste bereit sind.
+Der Gradle-Wrapper übersetzt die Backendklassen aus diesem Checkout. Gradle und npm laden beim ersten Start gegebenenfalls ihre Abhängigkeiten. Die lokale API und Vite lauschen auf den Loopback-Ports 8084 und 5177. Auf der Konsole erscheinen die Einstiege, sobald beide Dienste bereit sind.
 
-| Lehrplan | Wagen | Waagerechter Wurf |
-| --- | --- | --- |
-| Hessen G8 · GK | [A öffnen](http://127.0.0.1:5177/nativ/G8/A) | [B öffnen](http://127.0.0.1:5177/nativ/G8/B) |
-| Hessen G9 · GK | [A öffnen](http://127.0.0.1:5177/nativ/G9/A) | [B öffnen](http://127.0.0.1:5177/nativ/G9/B) |
+| Lehrplan | Einheit | Wagen | Waagerechter Wurf | Senkrechter Wurf | Beschleunigungsprotokoll |
+| --- | --- | --- | --- | --- | --- |
+| Hessen G8 · GK | [E.1](http://127.0.0.1:5177/nativ/G8/E1) | [A](http://127.0.0.1:5177/nativ/G8/A) | [B](http://127.0.0.1:5177/nativ/G8/B) | [C](http://127.0.0.1:5177/nativ/G8/C) | [D](http://127.0.0.1:5177/nativ/G8/D) |
+| Hessen G9 · GK | [E.1](http://127.0.0.1:5177/nativ/G9/E1) | [A](http://127.0.0.1:5177/nativ/G9/A) | [B](http://127.0.0.1:5177/nativ/G9/B) | [C](http://127.0.0.1:5177/nativ/G9/C) | [D](http://127.0.0.1:5177/nativ/G9/D) |
 
 Für Englisch `?lang=en` anhängen. Der Einstiegslink wählt das eigens angelegte lokale Profil und wechselt zum nativen Pfad `/learner/<Prüfungs-ID>`. In einer Karte zeigt **Lernkarte öffnen** auch die andere Aufgabe. Die Aufgaben nennen die erreichbaren Punkte und ihre Bestehensgrenzen. Wagen A ist ab 14 von 17, Kugel B ab 15 von 18 Punkten bestanden. Der automatische E.1-Lernabschnitt enthält fünf Prüfungen. Im fassungsgebundenen Vierernachweis zählen davon A, B und die zwei Prüfungen der Kindeinheit. Der senkrechte Wurf und das Beschleunigungsprotokoll sind jeweils ab 17 von 20 Punkten bestanden. Vor dem ersten Versuch zeigt der Nachweis 0 von 4 bestandenen Teilen. Er lässt sich öffnen und zeigt alle vier Aufgaben sowie die elf einzeln noch nachzuweisenden Inhaltsziele.
 

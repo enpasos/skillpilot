@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState, type RefObject } from 'react'
-import { useReactFlow, useStoreApi, type OnMove, type Viewport } from '@xyflow/react'
+import { getViewportForBounds, useReactFlow, useStoreApi, type OnMove, type Viewport } from '@xyflow/react'
 import type { LearningMapFixture } from './types'
 import { mapEntryPath, validMapScopePath } from './mapEntryPath'
 
@@ -56,22 +56,27 @@ export function useMapNavigation(fixture: LearningMapFixture, reducedMotion: boo
         const saved = cameras.current.get(viewKey)
         if (withoutCamera) { /* A fit without nodes would never settle. */ }
         else if (saved) await flow.setViewport(saved, { duration: 0 })
-        else if (window.matchMedia('(max-width: 760px)').matches || flow.getNodes().length > 16) {
-          // A readable point of entry on small screens; the overview fit remains
-          // an explicit action, while ordinary panning discovers the surroundings.
+        else {
           const nodes = flow.getNodes()
+          const { width, height } = store.getState()
+          const narrow = window.matchMedia('(max-width: 760px)').matches
+          const overview = getViewportForBounds(flow.getNodesBounds(nodes), width, height, 0, 1.1, 0.2)
           const first = nodes.find(node => fixture.entries[node.id]?.children?.length) ?? nodes[0]
-          if (first) {
+          // Fit complete boards on desktop whenever the layout fits at the existing
+          // overview scale. A newly loaded card must not move its neighbours offscreen
+          // just because the board now contains one more node.
+          if (!narrow && overview.zoom >= 0.35 && nodes.length) {
+            await flow.setViewport(overview, { duration: 0 })
+          } else if (first) {
             const centerX = first.position.x + (first.width ?? 220) / 2
             const centerY = first.position.y + (first.height ?? 72) / 2
-            const { width, height } = store.getState()
-            if (nodes.length > 16 && width > 760) {
+            if (!narrow) {
               await flow.setViewport(direction === 'RIGHT'
                 ? { x: 36 - first.position.x, y: height / 2 - centerY, zoom: 1 }
                 : { x: width / 2 - centerX, y: 36 - first.position.y, zoom: 1 }, { duration: 0 })
             } else await flow.setCenter(centerX, centerY, { zoom: 1, duration: 0 })
           }
-        } else await flow.fitView({ padding: 0.2, minZoom: 0.35, maxZoom: 1.1, duration: 0 })
+        }
         if (version !== epoch.current) return
         if (!withoutCamera) {
           cameras.current.set(viewKey, flow.getViewport())

@@ -10,11 +10,12 @@ const readTask = async file => JSON.parse(await readFile(
 const tasks = { A: await readTask('wagen.json'), B: await readTask('wurf.json') }
 const scope = await readTask('umfang.json')
 const unitPartIds = [...scope.ownAssessmentGoalIds, ...scope.childAssessmentGoalIds]
-const { unit } = JSON.parse(await readFile(new URL(
+const { unit, intro } = JSON.parse(await readFile(new URL(
   '../../curricula/DE/Gymnasium/materials/physics/he-e1-motion-practice.json', import.meta.url), 'utf8'))
 const contract = unit.assessmentContract
 assert.equal(contract?.parts.length, 4, 'Expected the reviewed Hessen E.1 unit contract')
 assert.deepEqual(new Set(contract.parts.map(part => part.goalId)), new Set(unitPartIds))
+assert.deepEqual(new Set(contract.viewIds), new Set(scope.viewIds))
 const browser = await chromium.launch({ args: ['--disable-background-networking'] })
 const normalize = text => text.replace(/\s+/g, ' ').trim()
 const readApi = async (id, suffix) => {
@@ -129,6 +130,39 @@ async function check(duration, part, lang, start, mobile = false) {
     await context.close()
   }
 }
+async function checkUnitAndChildCards(duration) {
+  const { viewer, E1: section } = profiles[duration]
+  const before = await evidence(viewer)
+  const page = await browser.newPage({ reducedMotion: 'reduce', serviceWorkers: 'block' })
+  page.setDefaultTimeout(90000)
+  try {
+    const entry = site + '/nativ/' + duration + '/'
+    await page.goto(entry + 'E1')
+    const card = page.getByTestId('learner-current-goal')
+    await card.getByRole('heading', { name: 'E.1 Bewegungen und ihre Beschreibung', exact: true }).waitFor()
+    assert.equal(decodeURIComponent(new URL(page.url()).pathname), '/learner/' + section)
+    await page.getByTestId('learner-main-content').getByTestId('learner-learning-map-open').click()
+    const dialog = page.getByTestId('learner-learning-map-dialog')
+    await dialog.getByRole('button', { name: 'In E.1 Bewegungen und ihre Beschreibung hineinzoomen', exact: true }).click()
+    await dialog.getByRole('heading', { name: intro.de.question, exact: true }).waitFor()
+    await dialog.getByText(intro.de.promise, { exact: true }).waitFor()
+    const assessment = (await readApi(viewer, '/state')).levelCompletion.unitAssessment
+    for (const [index, part] of ['C', 'D'].entries()) {
+      const id = scope.childAssessmentGoalIds[index]
+      const { title } = assessment.parts.find(row => row.goalId === id)
+      for (const lang of ['de', 'en']) {
+        await page.goto(entry + part + '?lang=' + lang)
+        await card.getByRole('heading', { name: title[lang], exact: true }).waitFor()
+        assert.equal(new URL(page.url()).pathname, '/learner/' + id)
+        await card.getByText(lang === 'de' ? /17 von 20 BE/ : /17 out of 20 marks/).first().waitFor()
+      }
+    }
+    assert.deepEqual(await evidence(viewer), before)
+    console.log(duration, 'E.1-Einstieg und beide Untereinheitsprüfungen DE/EN OK')
+  } finally {
+    await page.close()
+  }
+}
 try {
   // Each curriculum has its own viewer and a fresh learner per first attempt.
   for (const duration of ['G8', 'G9']) {
@@ -136,6 +170,7 @@ try {
       for (const lang of ['de', 'en']) await check(duration, part, lang, false)
     }
     if (duration === 'G9') await check(duration, 'B', 'de', false, true)
+    await checkUnitAndChildCards(duration)
     for (const part of ['A', 'B']) await check(duration, part, 'de', true)
   }
 } finally {

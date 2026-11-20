@@ -582,6 +582,45 @@ try {
   await scope(unitPage, largeUnit)
   await unitPage.screenshot({ path: join(artifacts, '05-unit-map-list.png') })
 
+  stage = 'desktop unit overview keeps neighbouring targets reachable before and after hydration'
+  for (const hydrate of [false, true]) {
+    await unitPage.setViewportSize(hydrate ? { width: 900, height: 640 } : { width: 1440, height: 960 })
+    await unitPage.goto(`${origin}/scripts/fixtures/learnerUnitMapUi.html?mode=overview${hydrate ? '&hydrate' : ''}`)
+    await scope(unitPage, largeUnit)
+    if (hydrate) {
+      await node(unitPage, 'force-016').click()
+      await unitPage.getByRole('button', { name: 'Load last goal' }).click()
+    }
+    // Clicking the target demands a mounted, visible and reachable button, including
+    // at the previous 16/17 threshold. Check the full card against the map clipping area.
+    await node(unitPage, 'force-017').click()
+    await unitPage.getByTestId('unit-map-selected').filter({ hasText: 'force-017' }).waitFor()
+    const fits = await unitPage.locator('.lum-flow').evaluate(surface => {
+      const viewport = surface.getBoundingClientRect()
+      return [...surface.querySelectorAll('.lum-node')].filter(card => {
+        const rect = card.getBoundingClientRect()
+        return rect.left >= viewport.left && rect.top >= viewport.top && rect.right <= viewport.right && rect.bottom <= viewport.bottom
+      }).length
+    })
+    assert.equal(fits, 17, 'all goals on this board fit in the desktop viewport')
+  }
+
+  // A resize retains the learner's camera. Fit to the new viewport with the
+  // same control available to someone who previously panned or zoomed in.
+  await unitPage.setViewportSize({ width: 800, height: 580 })
+  await unitPage.getByRole('button', { name: 'Diese Ebene einpassen' }).click()
+  await node(unitPage, 'force-001').click()
+  await node(unitPage, 'force-017').click()
+
+  stage = 'a long graph remains readable and its distant goals are selectable through search'
+  await unitPage.goto(`${origin}/scripts/fixtures/learnerUnitMapUi.html?mode=wide`)
+  await scope(unitPage, largeUnit)
+  assert.equal(await unitPage.getByLabel('Zoomwert').innerText(), '100 %')
+  await unitPage.getByRole('textbox', { name: 'In dieser Ebene suchen' }).fill('Kraft 17')
+  await unitPage.getByRole('option', { name: /Kraft 17/ }).click()
+  await node(unitPage, 'force-017').click()
+  await unitPage.getByTestId('unit-map-selected').filter({ hasText: 'force-017' }).waitFor()
+
   stage = 'a tree without Mathematics and Physics gets a notice instead of a map'
   await unitPage.goto(`${origin}/scripts/fixtures/learnerUnitMapUi.html?mode=other`)
   const unavailable = unitPage.getByTestId('learner-map-subjects-unavailable')
