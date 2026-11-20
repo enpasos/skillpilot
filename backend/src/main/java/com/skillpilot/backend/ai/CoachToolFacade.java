@@ -128,9 +128,8 @@ public class CoachToolFacade {
     private final CoachStateProjection coachStateProjection;
     private final LearnerLifecycleService learnerLifecycle;
     private final LearnerLearningPlanService learnerLearningPlanService;
+    private final VerifiedExamPassService verifiedExamPassService;
     private ContentMaterialResolver contentMaterialResolver;
-    @Autowired
-    private VerifiedExamPassService verifiedExamPassService;
     private final ThreadLocal<SessionActivityScope> activeSessionActivity = new ThreadLocal<>();
 
     public CoachToolFacade(
@@ -146,18 +145,29 @@ public class CoachToolFacade {
                 null);
     }
 
-    @Autowired
     public CoachToolFacade(
             LearnerService learnerService,
             ChatSessionService chatSessionService,
             CoachStateProjection coachStateProjection,
             LearnerLifecycleService learnerLifecycle,
             LearnerLearningPlanService learnerLearningPlanService) {
+        this(learnerService, chatSessionService, coachStateProjection, learnerLifecycle, learnerLearningPlanService, null);
+    }
+
+    @Autowired
+    public CoachToolFacade(
+            LearnerService learnerService,
+            ChatSessionService chatSessionService,
+            CoachStateProjection coachStateProjection,
+            LearnerLifecycleService learnerLifecycle,
+            LearnerLearningPlanService learnerLearningPlanService,
+            VerifiedExamPassService verifiedExamPassService) {
         this.learnerService = learnerService;
         this.chatSessionService = chatSessionService;
         this.coachStateProjection = coachStateProjection;
         this.learnerLifecycle = learnerLifecycle;
         this.learnerLearningPlanService = learnerLearningPlanService;
+        this.verifiedExamPassService = verifiedExamPassService;
     }
 
     public UnifiedLearnerStateResponse getLearnerState(String skillpilotId) {
