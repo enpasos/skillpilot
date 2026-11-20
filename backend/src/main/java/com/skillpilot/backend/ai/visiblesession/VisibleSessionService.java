@@ -1,6 +1,7 @@
 package com.skillpilot.backend.ai.visiblesession;
 
 import com.skillpilot.backend.ai.CoachToolFacade;
+import com.skillpilot.backend.ai.ExamGradingGuidance;
 import com.skillpilot.backend.ai.CoachStateProjection;
 import com.skillpilot.backend.api.ActiveGoalRequest;
 import com.skillpilot.backend.api.FrontierGoal;
@@ -506,8 +507,8 @@ public class VisibleSessionService {
                 solution,
                 visibleScoring(evaluation.scoring()),
                 localized(language,
-                        "Bewerte die bereits vorliegende Antwort kriteriumsbezogen nach Aufgabe und Raster. Die Lösung ist nur Referenz: Fachlich gleichwertige Ergebnisse, Darstellungen, Begründungen und korrekte alternative Wege zählen voll, sofern Aufgabe oder Raster keine bestimmte Antwortform verlangt; ausdrückliche Anforderungen bleiben verbindlich. Bewerte abschließend ohne Rückfrage; benenne Unleserliches als solches und erfinde daraus keinen konkreten fachlichen Fehler. Speichere Mastery erst nach einem final bestandenen Ergebnis.",
-                        "Grade the answer already provided criterion by criterion against the task and rubric. The solution is a reference only: give full credit to subject-correct equivalent results, representations, explanations, and alternative methods unless the task or rubric explicitly requires a specific answer form; explicit requirements remain binding. Grade conclusively without follow-up questions; identify illegible work as such and never invent a specific subject error from it. Save mastery only after a final passing result."));
+                        ExamGradingGuidance.DE + " Speichere Mastery erst nach einem final bestandenen Ergebnis.",
+                        ExamGradingGuidance.EN + " Save mastery only after a final passing result."));
     }
 
     private ActionOutcome outcome(

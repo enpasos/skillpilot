@@ -21,6 +21,14 @@ er erhält die Dokumentationschecks. Die große CI schließt `docs/dev/**` und
 `AGENTS.md` bei reinen Änderungen dieser Pfade derzeit aus. Der dokumentierte
 CI-Nachweis gilt weiterhin für den benannten Implementierungscommit.
 
+## 20. November 2026, 06:19 MEZ (UTC+01:00) – Prüfungen auf Verständnis bewerten
+
+Im kanonischen Gymnasium-Katalog verlangen am Ausgangsstand 137 von 1.049 bepunkteten Prüfungen volle Punktzahl. In der Einheit „Natürliche Zahlen“ prüften die beiden Aufgaben bisher mit 13/13 und 17/17. Die neue Fassung erlaubt in beiden Fällen einen hinreichenden Nachweis mit 10/12. Für die übrigen 135 Fälle steht das fachliche Review noch aus. K1–K13 und F1–F7 erhalten durch dieses Paket keinen zusätzlichen Abschluss. Neu aktiviert wurden 0 Stufenpläne. Der Katalogvergleich ergibt unveränderte Kanten und Platzierungen.
+
+**Für die fachliche Durchsicht** eignen sich die beiden [Aufgaben und ihre Grenzabgaben](../../curricula/DE/Gymnasium/quality/learning-units/math-natural-numbers-2026-11-20-v2.md). Beim Spendenlauf zählt eine richtig geschriebene Zahlenkette als Nachweis der darin gezeigten Vergleiche. Bei der Konzertkasse ist zu prüfen, warum zwei richtige Nachfolger allein die allgemeine Aussage über die natürlichen Zahlen offenlassen. Die gemeinsame [Coachanweisung](../../backend/src/main/java/com/skillpilot/backend/ai/ExamGradingGuidance.java) bewertet jedes Kriterium anhand der gesamten Abgabe und berücksichtigt Widersprüche dort, wo sie den Nachweis betreffen.
+
+**Nachweise und Integration.** Das fachliche Gegenlesen anhand synthetischer Lösungen und der technische Grenzversuch sind getrennt dokumentiert. Im lokalen Claude-MCP mit Spring und H2 wurde bei beiden Prüfungszielen die Eingabe von 9 Punkten abgewiesen und die von 10 Punkten als bestandene Prüfung gespeichert. Die zusätzlichen Lernziele erhielten jeweils keinen Masteryeintrag. Das [katalogweite Prüfskript](../../scripts/check_exam_pass_marks.py) vergleicht neue und geänderte Materialien mit dem CI-Basiscommit. Der [PR zu diesem Paket](https://github.com/enpasos/skillpilot/pulls?q=is%3Apr+head%3Afix%2Fklasse5-zahlendarstellungen) führt zur Integration. Nach erfolgreicher Main-CI folgen die Erprobung im Coach und die Überprüfung weiterer Vollpunktprüfungen nach Fach und Einheit.
+
 ## 20. November 2026, 02:05 MEZ (UTC+01:00) – Prüfungsbelege in Hessen Physik E.1
 
 Ein bestandener, mit Claude bewerteter Prüfungsversuch erhält einen Beleg für die damalige Aufgabe und ihr Bewertungsraster. Das Cockpit zeigt Datum, Punktzahl und Bestehensgrenze am Prüfungsziel. Beim Besprechen einer angebotenen Prüfung sieht Claude den jüngsten gespeicherten Beleg für genau dieses Ziel. Die Anrechnung auf den Abschluss der gesamten Einheit ist ein eigener, noch offener Schritt.

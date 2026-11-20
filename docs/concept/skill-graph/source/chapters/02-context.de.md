@@ -224,6 +224,10 @@ $$
 
 Die Punktevergabe folgt den einzelnen Rastervorgaben. Die Gesamtsummenformel allein legitimiert keine frei erfundenen Punkte, negativen Bewertungen oder Änderungen des Aufgabeninhalts.
 
+Für neue und überarbeitete SkillPilot-Prüfungen mit mehreren erreichbaren Punkten gilt eine erreichbare Bestehensgrenze unter der Höchstpunktzahl. Die Grenze folgt der geprüften Kompetenz. Aufgaben nennen ausdrücklich, welche Darstellung oder Begründung verlangt wird. Das Raster trennt fachlich unterscheidbare Teilleistungen. Ein eindeutiger Nachweis kann an jeder passenden Stelle der Abgabe stehen. Ein Widerspruch betrifft die Kriterien, für die er den Nachweis entkräftet. Die Summe der vergebenen Punkte entscheidet über das Bestehen.
+
+Das fachliche Review bewertet zwei Grenzfälle. Eine Lösung, die den Kern selbstständig zeigt, muss trotz eines Nebenfehlers bestehen. Fehlt eine Kernleistung, die die Prüfung nachweisen soll, muss die Lösung unter der Schwelle bleiben. Bei abweichenden Ergebnissen werden Aufgabe, Gewichtung oder Deckungsanspruch überarbeitet. Leselänge und Antwortform müssen zu Jahrgang und Kompetenz passen.
+
 #### Zugang.
 
 Der reguläre Lernweg prüft die transitiven Voraussetzungen im gewählten Fokusmodus. Heute lässt der direkte Prüfungszugang einen bewusst gewählten verfügbaren Prüfungsversuch auch bei offener Vorbereitung zu. Persönlicher Geltungsbereich und autorisierte Sitzung bleiben erforderlich. Im Vorschlag vom 19. November zeigt die Option „Einheit direkt nachweisen“ vor dem Start das Lernversprechen und sämtliche für diese Fassung nötigen Pflichtteile. Ein angebotener Versuch allein belegt noch keinen Abschluss.

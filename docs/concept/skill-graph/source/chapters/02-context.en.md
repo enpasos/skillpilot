@@ -224,6 +224,10 @@ $$
 
 Step points follow the authored rubric criteria; the total-score formula alone legitimizes neither invented step points nor negative scores nor altered task prompts.
 
+New and revised SkillPilot assessments worth more than one point use an attainable pass mark below the maximum score. Choose the threshold for the competence being assessed. State any required representation or explanation in the task. The rubric distinguishes separately demonstrable achievements. Clear evidence can appear anywhere in the submission. A contradiction affects the criteria whose evidence it undermines. The sum of the awarded points determines the result.
+
+The subject review scores two borderline submissions. A submission that independently demonstrates the core competence must pass despite a minor slip. A submission missing a core capability that the assessment claims to cover must fall below the threshold. If either result differs, revise the task, weights or coverage claim. The reading load and required answer format should fit the age group and competence.
+
 #### Access.
 
 Guided learning checks transitive prerequisites under the selected focus mode. Today direct assessment access allows an intentional attempt at an available assessment while preparation remains outstanding. Personal scope and an authorized session remain required. In the proposal of 19 November “Demonstrate this unit directly” shows the learning promise and every required component for this revision before the learner starts. The offer of an attempt alone establishes no completion.
