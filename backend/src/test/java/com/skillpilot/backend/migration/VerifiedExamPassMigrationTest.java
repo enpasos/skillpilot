@@ -42,8 +42,27 @@ class VerifiedExamPassMigrationTest {
                 assertThatThrownBy(insert::executeUpdate).isInstanceOf(SQLException.class);
             }
             assertThat(count(connection)).isOne();
+            new Liquibase("db/changelog/changes/045-add-verified-exam-pass-credit-binding.yaml",
+                    new ClassLoaderResourceAccessor(), new JdbcConnection(connection)).update(new Contexts());
+            assertThat(count(connection)).isOne();
+            try (var result = sql.executeQuery("SELECT count(*) FROM verified_exam_pass_credit_binding")) {
+                result.next();
+                assertThat(result.getInt(1)).isZero();
+            }
+            try (var insert = connection.prepareStatement("""
+                    INSERT INTO verified_exam_pass_credit_binding (pass_id, binding_id)
+                    SELECT id, ? FROM verified_exam_pass
+                    """)) {
+                insert.setString(1, hash);
+                assertThat(insert.executeUpdate()).isOne();
+                assertThatThrownBy(insert::executeUpdate).isInstanceOf(SQLException.class);
+            }
             sql.executeUpdate("DELETE FROM learner WHERE skillpilot_id = 'learner'");
             assertThat(count(connection)).isZero();
+            try (var result = sql.executeQuery("SELECT count(*) FROM verified_exam_pass_credit_binding")) {
+                result.next();
+                assertThat(result.getInt(1)).isZero();
+            }
         }
     }
 

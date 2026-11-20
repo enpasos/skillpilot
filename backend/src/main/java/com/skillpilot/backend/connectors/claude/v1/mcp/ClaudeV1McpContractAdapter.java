@@ -311,6 +311,12 @@ public class ClaudeV1McpContractAdapter {
                 and no feedback or question about the completed work is pending, perform any goalVisualization render required
                 by the Goal images rule below.
                 Then follow learningPlanToday.guidance, which owns the current next step.
+                The unitAssignments list for each subject describes explicitly chosen unit qualifications.
+                A completed assignment ends its required work. Further individual learning is
+                voluntary unless another chosen assignment requires it. An active unit permits
+                offering its available assessment parts, which the learner chooses before starting.
+                For an unavailable assignment, report that its edition cannot currently be evaluated.
+                Use the published assignment result and keep its part counts separate from daily quotas.
                 Learning plans prioritize work and never limit learning within the Personal Curriculum.
                 For explicit continuation, the backend prioritizes due prerequisite-safe plan goals,
                 then other reachable plan goals including future dates, then eligible personal targets
@@ -319,7 +325,7 @@ public class ClaudeV1McpContractAdapter {
                 A clear explicit subject request takes priority over generic resume: select its
                 published subject directly, without first activating another subject. Otherwise,
                 for a normal learning start, if no activeGoal is returned and
-                learningPlanToday.resumeAvailable is true, immediately call
+                learningPlanToday.resumeAvailable is true and guidance.state is not unitChoice, immediately call
                 resume_skillpilot_learning_plan with the current stateVersion and a fresh UUID before
                 any learner-facing response. Automatic continuation from a successor context is permitted
                 only when guidance.state=resume, except after an ordinary or exam mastery write: first
@@ -389,7 +395,9 @@ public class ClaudeV1McpContractAdapter {
                 At the start of a unit with a unitIntroduction, connect its question and promise to the
                 current atomic goal in one or two sentences. Unit paths run from the nearest section to the
                 root of the learner's own view. Use the relevant section naturally, without reciting the path.
-                Build on one relevant prerequisite: recorded means there is individual evidence. A scopeWaiver
+                Build on one relevant prerequisite: recorded means there is individual evidence. planningCredit
+                means a complete version-bound unit assessment establishes this whole prerequisite for planning,
+                including later units; it creates no individual mastery and settles no other prerequisite. A scopeWaiver
                 settles preparation only for its named section. For an open prerequisite, invite the learner
                 to share a familiar idea or ask for an explanation. Explain the missing link with one example
                 and invite a restatement in their own words or a question. Skip familiar ground when they
@@ -646,6 +654,9 @@ public class ClaudeV1McpContractAdapter {
                 longer demand their own prerequisites; non-assessment goals with no remaining demand
                 are implicitly completed. This does not certify prerequisite competence or change
                 saved goal results. A section with no required assessments may also be complete.
+                On the learning map a green check means the learner directly demonstrated that goal.
+                A shield with a check marks evidence-backed subject credit from another assessment.
+                When preparation simply becomes optional, describe it as optional.
                 Do not recalculate this result or restore implicitly completed work as mandatory;
                 voluntary learning remains possible through current published choices.
                 In ordinary learning, a published direct-assessment
@@ -763,6 +774,8 @@ public class ClaudeV1McpContractAdapter {
                 "Learn with flashcards",
                 "Starts normal spaced-repetition practice for the confirmed active memory goal or a published "
                         + "unitPractice action with its exact goalId and practiceScopeId. "
+                        + "Offer unit cards when a learner wants to recall a concept. On assent open the activity. "
+                        + "On return, continue the learner's open question at the current goal; explain a gap if asked. "
                         + "Private cards are delivered only to the dedicated component. This is not a mastery check.",
                 objectSchema(
                         List.of(ARG_GOAL_ID, ARG_EXPECTED_STATE_VERSION),
@@ -2040,9 +2053,15 @@ public class ClaudeV1McpContractAdapter {
                                 "evaluationCapability and earnedPoints are only valid for an active exam goal.");
                     }
 
-                    CoachToolFacade.MasteryResult result = coachToolFacade.setMastery(
-                            ctx.skillpilotId(),
-                            new MasteryUpdateRequest(null, goalId));
+                    ReleasedExam verifiedExam = passedExam;
+                    Runnable verifiedReceipt = verifiedExam == null ? null : () -> {
+                        CoachToolFacade.ExamScoring scoring = verifiedExam.evaluation().scoring();
+                        coachToolFacade.recordVerifiedExamPass(ctx.skillpilotId(), goalId, verifiedExam.revision(),
+                                earnedPoints, scoring.maxPoints(), scoring.passingPoints());
+                    };
+                    CoachToolFacade.MasteryResult result = verifiedReceipt == null
+                            ? coachToolFacade.setMastery(ctx.skillpilotId(), new MasteryUpdateRequest(null, goalId))
+                            : coachToolFacade.setMastery(ctx.skillpilotId(), new MasteryUpdateRequest(null, goalId), verifiedReceipt);
                     if (result.status() == CoachToolFacade.MasteryStatus.BAD_REQUEST) {
                         throw new ToolInputException("The mastery update was rejected by the canonical rules.");
                     }
@@ -2056,11 +2075,6 @@ public class ClaudeV1McpContractAdapter {
                             || Double.compare(result.update().savedMastery(), 1.0) != 0) {
                         throw new IllegalStateException(
                                 "The canonical mastery operation returned an inconsistent completion result.");
-                    }
-                    if (passedExam != null) {
-                        CoachToolFacade.ExamScoring scoring = passedExam.evaluation().scoring();
-                        coachToolFacade.recordVerifiedExamPass(ctx.skillpilotId(), goalId, passedExam.revision(),
-                                earnedPoints, scoring.maxPoints(), scoring.passingPoints());
                     }
                     long successorStateVersion = ctx.currentStateVersion();
                     Map<String, Object> successorContext = contextProjector.projectMasteryContext(
@@ -2559,6 +2573,7 @@ public class ClaudeV1McpContractAdapter {
         componentData.put(ARG_LEARNING_SESSION_ID, connectionId);
         componentData.put("goalId", response.goalId());
         componentData.put("goalTitle", response.goalTitle());
+        if (practiceScopeId != null) componentData.put(ARG_PRACTICE_SCOPE_ID, practiceScopeId);
         componentData.put("expectedStateVersion", stateVersion);
         componentData.put("progress", Map.of(
                 "total", response.progress().totalCards(),

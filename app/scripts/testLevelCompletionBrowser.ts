@@ -180,6 +180,24 @@ try {
   }
 
   {
+    const unit: LevelCompletion = { ...selected(25), profileId: 'automatic:math-sek-ii', actions: [],
+      unitAssessment: { sectionGoalId: 'math-sek-ii', revision: 'current', passed: false,
+        parts: [{ goalId: 'math-exam', title: { de: 'Skalarprodukt prüfen' }, passed: false }],
+        planningCreditGoalIds: [], individuallyOpenGoalIds: ['math-upper'] },
+    }
+    const h = await open(unit, true, true, { entryGoal: 'math-sek-ii' })
+    const summary = h.page.getByTestId('learner-current-goal').getByTestId('unit-assessment-summary')
+    await summary.locator(':scope > summary').click()
+    await summary.getByRole('link', { name: 'Skalarprodukt prüfen direkt versuchen' }).waitFor()
+    await summary.getByText('Einzeln noch nachzuweisen (1)', { exact: true }).click()
+    await summary.getByText('Ableitungen für Wachstumsmodelle deuten', { exact: true }).waitFor()
+    assert.equal(await h.page.getByTestId('level-completion-card').count(), 0, 'the focus already shows its assessment')
+    assert.equal(h.writes.length, 0, 'viewing unit evidence does not activate or assess a goal')
+    assert.deepEqual(h.errors, [])
+    await h.context.close()
+  }
+
+  {
     const h = await open(unselected(1), false, false, { handoff: true })
     assert.equal(h.writes.length, 0, 'a profile is never selected automatically')
     await h.page.getByTestId('level-completion-card').getByRole('button', { name: `Abschnitt als Lernweg wählen: ${title.de}`, exact: true }).click()
@@ -452,11 +470,11 @@ try {
     const completed: LevelCompletion = {
       ...selected(200), profileId: 'automatic:math-all', title: { de: scopeTitle }, navigationIntent: 'required',
       complete: true, targetCount: 3, masteredTargetCount: 1, waivedTargetCount: 2, pendingTargetCount: 0,
-      masteredAssessmentCount: 1, waivedTargetGoalIds: ['math-upper', 'math-lower'],
+      masteredAssessmentCount: 1, waivedTargetGoalIds: ['math-upper', 'math-lower'], planningCreditGoalIds: ['math-upper', 'math-lower'],
       assessments: [{ goalId: 'math-exam', title: { de: 'Skalarprodukt prüfen' }, mastered: true, startAvailable: false }],
       waiverDetails: ['math-upper', 'math-lower'].map(goalId => ({
         goalId, title: { de: goalId === 'math-upper' ? 'Ableitungen für Wachstumsmodelle deuten' : 'Lineare Gleichungen lösen' },
-        ruleId: 'no_remaining_demand', assessments: [], assessmentCount: 0,
+        ruleId: 'versioned_unit_assessment:reviewed', assessments: [{ goalId: 'math-exam', title: { de: 'Skalarprodukt prüfen' } }], assessmentCount: 1,
       })),
     }
     const h = await open(completed, mobile, true)
@@ -473,12 +491,12 @@ try {
     await progress.waitFor({ state: 'visible' })
     await h.page.waitForFunction(() => document.querySelector(
       '[data-goal-id="math-root"] [data-testid="completion-tree-progress"]',
-    )?.getAttribute('aria-label')?.includes('2 implizit erledigt'))
+    )?.getAttribute('aria-label')?.includes('2 fachlich angerechnet'))
     assert.equal(await progress.evaluate(element => element.tagName), 'BUTTON')
-    assert.match(await progress.getAttribute('aria-label') ?? '', /3 von 3 Lernzielen erledigt/u)
+    assert.match(await progress.getAttribute('aria-label') ?? '', /3 von 3 Lernzielen mit Nachweis/u)
     assert.match(await progress.getAttribute('aria-label') ?? '', /100\s*%/u)
-    assert.match(await progress.getAttribute('aria-label') ?? '', /1 explizit geschafft/u)
-    assert.match(await progress.getAttribute('aria-label') ?? '', /2 implizit erledigt/u)
+    assert.match(await progress.getAttribute('aria-label') ?? '', /1 direkt nachgewiesen/u)
+    assert.match(await progress.getAttribute('aria-label') ?? '', /2 fachlich angerechnet/u)
     const rowHeight = (await rootRow.boundingBox())!.height
     const totalWidth = (await explicit.boundingBox())!.width + (await implicit.boundingBox())!.width
     assert.ok(Math.abs((await explicit.boundingBox())!.width / totalWidth - 1 / 3) < 0.03)
@@ -492,9 +510,9 @@ try {
 
     if (mobile) await progress.tap()
     else await progress.hover()
-    await tooltip.getByText('3 von 3 Lernzielen erledigt', { exact: true }).waitFor()
-    await tooltip.getByText('1 explizit geschafft', { exact: true }).waitFor()
-    await tooltip.getByText('2 implizit erledigt', { exact: true }).waitFor()
+    await tooltip.getByText('3 von 3 Lernzielen mit Nachweis', { exact: true }).waitFor()
+    await tooltip.getByText('1 direkt nachgewiesen', { exact: true }).waitFor()
+    await tooltip.getByText('2 fachlich angerechnet', { exact: true }).waitFor()
     await tooltip.getByText('0 offen', { exact: true }).waitFor()
     await tooltip.getByText(scopeTitle, { exact: false }).waitFor()
     assert.equal(await progress.getAttribute('aria-describedby'), await tooltip.getAttribute('id'))
@@ -542,12 +560,12 @@ try {
     await h.page.evaluate(() => window.dispatchEvent(new CustomEvent('learner-startup-fixture-mastery', {
       detail: { goalId: 'math-upper', value: 1 },
     })))
-    await h.page.waitForFunction(() => /2 explizit geschafft/.test(document.querySelector(
+    await h.page.waitForFunction(() => /2 direkt nachgewiesen/.test(document.querySelector(
       '[data-goal-id="math-root"] [data-testid="completion-tree-progress"]',
     )?.getAttribute('aria-label') ?? ''))
-    assert.match(await progress.getAttribute('aria-label') ?? '', /3 von 3 Lernzielen erledigt/u,
+    assert.match(await progress.getAttribute('aria-label') ?? '', /3 von 3 Lernzielen mit Nachweis/u,
       'a mastered previously implicit goal is never counted twice')
-    assert.match(await progress.getAttribute('aria-label') ?? '', /1 implizit erledigt/u)
+    assert.match(await progress.getAttribute('aria-label') ?? '', /1 fachlich angerechnet/u)
     assert.ok(Math.abs((await explicit.boundingBox())!.width / totalWidth - 2 / 3) < 0.03)
     assert.ok(Math.abs((await implicit.boundingBox())!.width / totalWidth - 1 / 3) < 0.03)
     assert.equal(await explicit.evaluate(element => getComputedStyle(element).backgroundColor), explicitColor)
@@ -555,18 +573,18 @@ try {
     assert.equal(await tree.locator('[data-goal-id="math-upper"] svg.lucide-check').count(), 1)
 
     h.update({ ...completed, learnerRevision: 201, masteredTargetCount: 2, waivedTargetCount: 1,
-      waivedTargetGoalIds: ['math-lower'], waiverDetails: completed.waiverDetails!.filter(detail => detail.goalId === 'math-lower') })
+      waivedTargetGoalIds: ['math-lower'], planningCreditGoalIds: ['math-lower'], waiverDetails: completed.waiverDetails!.filter(detail => detail.goalId === 'math-lower') })
     const refreshed = h.page.waitForEvent('console', { predicate: message => message.text().includes('[SSE] ✅ Refresh complete') })
     await h.page.evaluate(learnerId => window.dispatchEvent(new CustomEvent('learner-startup-fixture-sse', {
       detail: { learnerId, type: 'ACTIVE_GOAL_UPDATE' },
     })), learner)
     await refreshed
     assert.match(await progress.getAttribute('aria-label') ?? '', /100\s*%/u)
-    assert.match(await progress.getAttribute('aria-label') ?? '', /2 explizit geschafft/u)
+    assert.match(await progress.getAttribute('aria-label') ?? '', /2 direkt nachgewiesen/u)
 
     // Invalid completion evidence removes implicit credit even while the
     // ordinary learner state and its explicitly mastered goals remain usable.
-    h.update({ ...completed, learnerRevision: 202, calculationStatus: 'invalid', complete: undefined })
+    h.update({ ...completed, learnerRevision: 202, calculationStatus: 'invalid', complete: undefined, planningCreditGoalIds: [] })
     const invalidRefreshed = h.page.waitForEvent('console', { predicate: message => message.text().includes('[SSE] ✅ Refresh complete') })
     await h.page.evaluate(learnerId => window.dispatchEvent(new CustomEvent('learner-startup-fixture-sse', {
       detail: { learnerId, type: 'ACTIVE_GOAL_UPDATE' },
@@ -577,11 +595,11 @@ try {
     )?.getBoundingClientRect().width === 0)
     assert.ok(Math.abs((await explicit.boundingBox())!.width / totalWidth - 2 / 3) < 0.03,
       'invalid completion removes blue credit while preserving both real mastery results')
-    assert.match(await progress.getAttribute('aria-label') ?? '', /2 explizit geschafft/u)
+    assert.match(await progress.getAttribute('aria-label') ?? '', /2 direkt nachgewiesen/u)
     assert.match(await progress.getAttribute('aria-label') ?? '', /1 offen/u)
 
     const recovered: LevelCompletion = { ...completed, learnerRevision: 203, masteredTargetCount: 2, waivedTargetCount: 1,
-      waivedTargetGoalIds: ['math-lower'], waiverDetails: completed.waiverDetails!.filter(detail => detail.goalId === 'math-lower') }
+      waivedTargetGoalIds: ['math-lower'], planningCreditGoalIds: ['math-lower'], waiverDetails: completed.waiverDetails!.filter(detail => detail.goalId === 'math-lower') }
     h.update(recovered)
     const validRefreshed = h.page.waitForEvent('console', { predicate: message => message.text().includes('[SSE] ✅ Refresh complete') })
     await h.page.evaluate(learnerId => window.dispatchEvent(new CustomEvent('learner-startup-fixture-sse', {
@@ -590,7 +608,7 @@ try {
     await validRefreshed
     await h.page.waitForFunction(() => document.querySelector(
       '[data-goal-id="math-root"] [data-testid="completion-tree-progress"]',
-    )?.getAttribute('aria-label')?.includes('1 implizit erledigt'))
+    )?.getAttribute('aria-label')?.includes('1 fachlich angerechnet'))
 
     h.unavailable()
     const staleResponse = h.page.waitForResponse(response => new URL(response.url()).pathname === `/api/ui/learners/${learner}/state`
@@ -612,8 +630,8 @@ try {
     })), learner)
     await transportRestored
     await progress.waitFor({ state: 'visible' })
-    assert.match(await progress.getAttribute('aria-label') ?? '', /2 explizit geschafft/u)
-    assert.match(await progress.getAttribute('aria-label') ?? '', /1 implizit erledigt/u)
+    assert.match(await progress.getAttribute('aria-label') ?? '', /2 direkt nachgewiesen/u)
+    assert.match(await progress.getAttribute('aria-label') ?? '', /1 fachlich angerechnet/u)
     assert.equal(await tree.locator('[data-goal-id="math-upper"] svg.lucide-check').count(), 1,
       'recovering authoritative state retains the actually achieved goal')
     assert.equal(await tree.locator('[data-goal-id="math-exam"] svg.lucide-check').count(), 1,
@@ -635,19 +653,19 @@ try {
     const h = await open(completed, mobile, true)
     const card = h.page.getByTestId('level-completion-card')
     await card.getByText('1 von 2 Lernzielen geschafft.', { exact: true }).waitFor()
-    await card.getByText('Warum entfällt diese Vorbereitung?', { exact: true }).click()
+    await card.getByText('Welche Nachweise zählen und welche Vorbereitung entfällt?', { exact: true }).click()
     await card.locator('details').getByRole('button', { name: 'Im Lernzielbaum anzeigen' }).click()
     await waitForTreeReveal(h.page, 'math-upper')
     const row = h.page.locator('[data-goal-id="math-upper"]')
     const waiver = row.getByTestId('completion-tree-waiver')
     await waiver.waitFor({ state: 'visible' })
     assert.equal(await row.locator('svg.lucide-check').count(), 0, 'waived preparation does not acquire a mastery check')
-    assert.equal(await waiver.locator('svg.lucide-shield-check').count(), 1, 'coverage uses its own compact status icon')
-    assert.equal(await row.locator('svg.lucide-target').count(), 0, 'the coverage icon replaces the open target icon')
+    assert.equal(await waiver.locator('svg.lucide-shield-check').count(), 0, 'legacy waived preparation carries no positive assessment evidence')
+    assert.equal(await waiver.getByTestId('completion-tree-not-required').count(), 1, 'the neutral status retains its explanation')
     assert.equal(await h.page.locator('[data-goal-id="math-exam"] svg.lucide-check').count(), 1, 'only the actually mastered exam has a check')
-    assert.equal(await waiver.getAttribute('aria-label'), 'Für diesen Abschnitt durch Prüfung abgedeckt')
+    assert.equal(await waiver.getAttribute('aria-label'), 'Für diesen Auftrag nicht mehr erforderlich')
     assert.equal(await row.locator('details, summary').count(), 0, 'the tree keeps a compact row without an inline explanation block')
-    assert.doesNotMatch(await row.innerText(), /Für diesen Abschnitt durch Prüfung abgedeckt|separate Vorbereitung/u)
+    assert.doesNotMatch(await row.innerText(), /Für diesen Auftrag nicht mehr erforderlich|separate Vorbereitung/u)
     const screenshotDir = fileURLToPath(new URL('../../tmp/level-completion-browser/', import.meta.url))
     await mkdir(screenshotDir, { recursive: true })
     await h.page.locator('#learner-goal-sidebar').screenshot({ path: `${screenshotDir}${mobile ? 'mobile' : 'desktop'}-tree-compact.png` })
@@ -660,7 +678,7 @@ try {
     await tooltip.waitFor({ state: 'visible' })
     await tooltip.getByText(title.de, { exact: false }).waitFor()
     await tooltip.getByText('Skalarprodukt prüfen', { exact: false }).waitFor()
-    await tooltip.getByText(/Lernstand.*unverändert/u).waitFor()
+    await tooltip.getByText(/einen eigenen Nachweis erwerben/u).waitFor()
     if (mobile) await tooltip.getByText('Skalarprodukt prüfen', { exact: false }).tap()
     else {
       await waiver.focus()
@@ -756,7 +774,7 @@ try {
     const h = await open(completed, false, true)
     await h.page.setViewportSize({ width: 640, height: 360 })
     const card = h.page.getByTestId('level-completion-card')
-    await card.getByText('Warum entfällt diese Vorbereitung?', { exact: true }).click()
+    await card.getByText('Welche Nachweise zählen und welche Vorbereitung entfällt?', { exact: true }).click()
     await card.locator('details').getByRole('button', { name: 'Im Lernzielbaum anzeigen' }).click()
     // Reveal finishes by focusing the row in a rendering frame. Enter the icon
     // only after that navigation, otherwise the pending row focus steals it.
@@ -769,7 +787,7 @@ try {
     await tooltip.waitFor({ state: 'visible' })
     assert.equal(await tooltip.evaluate((element) => element.scrollHeight > element.clientHeight), true,
       'long valid assessment titles exercise an overflowing tooltip in a short viewport')
-    await tooltip.getByText('Für diesen Abschnitt durch Prüfung abgedeckt', { exact: true }).click()
+    await tooltip.getByText('Für diesen Auftrag nicht mehr erforderlich', { exact: true }).click()
     await h.page.waitForTimeout(200)
     assert.equal(await tooltip.isVisible(), true, 'clicking tooltip text after trigger focus does not dismiss it')
     await waiver.focus()
@@ -781,7 +799,7 @@ try {
     await waiver.press('End')
     const end = await tooltip.evaluate((element) => ({ top: element.scrollTop, maximum: element.scrollHeight - element.clientHeight }))
     assert.ok(Math.abs(end.top - end.maximum) <= 1, 'End reaches the complete explanation')
-    const reasonBox = (await tooltip.getByText(/Lernstand.*unverändert/u).boundingBox())!
+    const reasonBox = (await tooltip.getByText(/einen eigenen Nachweis erwerben/u).boundingBox())!
     const tooltipBox = (await tooltip.boundingBox())!
     assert.ok(reasonBox.y >= tooltipBox.y && reasonBox.y + reasonBox.height <= tooltipBox.y + tooltipBox.height,
       'the unchanged-mastery explanation at the bottom is visible after keyboard scrolling')
@@ -963,25 +981,30 @@ try {
     }
     const h = await open(implicit, mobile, true, { examMastered: false })
     const card = h.page.getByTestId('level-completion-card')
-    await card.getByText('Lernabschnitt abgeschlossen.', { exact: true }).waitFor()
+    await card.getByText('Lernweg abgeschlossen.', { exact: true }).waitFor()
+    await card.getByText('In diesem Abschnitt gibt es keine Prüfungen.', { exact: true }).waitFor()
     await card.getByText('0 von 2 Lernzielen direkt geschafft.', { exact: true }).waitFor()
-    await card.getByText('2 Lernziele sind in diesem Abschnitt implizit erledigt', { exact: false }).waitFor()
-    await card.getByText('Warum sind diese Ziele implizit erledigt?', { exact: true }).click()
+    await card.getByText('Für diesen Auftrag sind 2 Lernziele nicht mehr erforderlich.', { exact: false }).waitFor()
+    await card.getByText('Welche Nachweise zählen und welche Vorbereitung entfällt?', { exact: true }).click()
     assert.equal(await card.getByText('Geschaffte Prüfungen:', { exact: false }).count(), 0,
       'ordinary mastery or absent demand must not be explained as a passed assessment')
     await card.getByRole('button', { name: 'Im Lernzielbaum anzeigen: Ableitungen für Wachstumsmodelle deuten', exact: true }).click()
     await waitForTreeReveal(h.page, 'math-upper')
     const row = h.page.locator('[data-goal-id="math-upper"]')
-    const icon = row.getByRole('button', { name: 'Für diesen Abschnitt nicht mehr erforderlich', exact: true })
+    const icon = row.getByRole('button', { name: 'Für diesen Auftrag nicht mehr erforderlich', exact: true })
     if (mobile) await icon.tap()
     else {
       await row.press('Tab')
       assert.equal(await icon.evaluate(element => document.activeElement === element), true)
     }
     const tooltip = h.page.getByRole('tooltip')
-    await tooltip.getByText('Das Ziel ist hier implizit erledigt;', { exact: false }).waitFor()
+    await tooltip.getByText('Du kannst dieses Ziel weiterhin bearbeiten', { exact: false }).waitFor()
     assert.equal(await tooltip.getByText('Bestandene Prüfungen:', { exact: false }).count(), 0)
-    assert.equal(await row.locator('svg.lucide-check').count(), 0, 'implicit completion never adds a mastery check')
+    assert.equal(await row.locator('svg.lucide-check, svg.lucide-shield-check').count(), 0, 'an expired obligation cannot become evidence')
+    assert.equal(await row.getByTestId('completion-tree-not-required').count(), 1)
+    const clusterProgress = h.page.locator('[data-goal-id="math-root"]').getByTestId('completion-tree-progress')
+    assert.match(await clusterProgress.getAttribute('aria-label') ?? '', /0 fachlich angerechnet\. 2 für diesen Auftrag nicht mehr erforderlich/u)
+    assert.equal(await clusterProgress.getByTestId('completion-tree-progress-implicit').evaluate(el => el.getBoundingClientRect().width), 0)
     assert.ok((await row.boundingBox())!.height < 80, 'generic explanations keep the same compact tree row')
     assert.equal(h.writes.length, 0, 'inspection and tooltip interaction never choose a route or write mastery')
     await h.page.keyboard.press('Escape')
@@ -1070,6 +1093,24 @@ try {
     await h.page.reload()
     await waiver.waitFor()
     await h.page.getByTestId('selected-goal-assessment-shortcuts').getByRole('link', { name: 'Prüfung direkt versuchen', exact: true }).waitFor()
+    await h.page.locator('#learner-goal-sidebar [data-goal-id="math-upper"]').click()
+    const current = h.page.getByTestId('learner-current-goal')
+    await current.getByTestId('completion-goal-card-not-required').waitFor()
+    assert.equal(await current.locator('svg.lucide-shield-check, svg.lucide-check').count(), 0)
+    h.update({ ...overview, learnerRevision: 176, planningCreditGoalIds: ['math-upper'], waiverDetails: [{
+      ...overview.waiverDetails![0], ruleId: 'versioned_unit_assessment:reviewed',
+      assessments: [{ goalId: 'math-exam', title: { de: 'Skalarprodukt prüfen' } }], assessmentCount: 1,
+    }] })
+    await h.page.evaluate(learnerId => window.dispatchEvent(new CustomEvent('learner-startup-fixture-sse', {
+      detail: { learnerId, type: 'ACTIVE_GOAL_UPDATE' },
+    })), learner)
+    await current.getByTestId('completion-goal-card-credited-evidence').waitFor()
+    assert.equal(await current.getByTestId('completion-goal-card-direct-evidence').count(), 0)
+    await h.page.evaluate(() => window.dispatchEvent(new CustomEvent('learner-startup-fixture-mastery', {
+      detail: { goalId: 'math-upper', value: 1 },
+    })))
+    await current.getByTestId('completion-goal-card-direct-evidence').waitFor()
+    assert.equal(await current.getByTestId('completion-goal-card-credited-evidence').count(), 0)
     assert.deepEqual(h.writes, [], 'exam availability and scoped planning require no legacy preference migration writes')
     assert.deepEqual(h.errors, [])
     await h.context.close()

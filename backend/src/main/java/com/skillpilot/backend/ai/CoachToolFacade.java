@@ -560,6 +560,10 @@ public class CoachToolFacade {
     }
 
     public MasteryResult setMastery(String skillpilotId, MasteryUpdateRequest request) {
+        return setMastery(skillpilotId, request, null);
+    }
+
+    public MasteryResult setMastery(String skillpilotId, MasteryUpdateRequest request, Runnable verifiedAssessmentReceipt) {
         learnerService.assertWritableLearningSession(skillpilotId);
 
         String validationError = validateMasteryRequest(request);
@@ -597,7 +601,9 @@ public class CoachToolFacade {
         }
 
         try {
-            return MasteryResult.updated(learnerService.setMastery(skillpilotId, effectiveRequest));
+            return MasteryResult.updated(verifiedAssessmentReceipt == null
+                    ? learnerService.setMastery(skillpilotId, effectiveRequest)
+                    : learnerService.setMastery(skillpilotId, effectiveRequest, verifiedAssessmentReceipt));
         } catch (ResponseStatusException exception) {
             if (HttpStatus.CONFLICT.equals(exception.getStatusCode())) {
                 return MasteryResult.conflict(learnerService.getCoachLearnerState(skillpilotId));
@@ -727,7 +733,8 @@ public class CoachToolFacade {
     /** Called only after a scored exam and canonical mastery write in the same learner transaction. */
     public void recordVerifiedExamPass(String skillpilotId, String goalId, AssessmentMaterialRevision revision,
             double earnedPoints, double maxPoints, double passingPoints) {
-        verifiedExamPassService.record(skillpilotId, goalId, revision, earnedPoints, maxPoints, passingPoints);
+        verifiedExamPassService.record(skillpilotId, goalId, revision, earnedPoints, maxPoints, passingPoints,
+                learnerService.resolvePlanningCreditBindingsForAssessment(skillpilotId, goalId, revision));
     }
 
     public Optional<VerifiedExamPassResponse> latestExamPass(String skillpilotId, String goalId) {

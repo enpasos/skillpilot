@@ -12,8 +12,8 @@ export interface MapPracticeMaterial {
     landscapeId: string
     compositionNodeId: string
     viewIds: string[]
-    flashcardGoalId: string
-    assessmentGoalId: string
+    flashcardGoalId?: string
+    assessmentGoalId?: string
   }
   intro: Record<'de' | 'en', { question: string; promise: string }>
   exercises: ({ goalId: string } & Record<'de' | 'en', MapPracticeExercise>)[]
@@ -80,9 +80,10 @@ export interface LearningEntryProgress {
   total: number
   explicit: number
   implicit: number
+  notRequired?: number
   explicitRatio?: number
   implicitRatio?: number
-  implicitScopeLabel?: string
+  sectionTitle?: string
   waiverLabel?: string
 }
 

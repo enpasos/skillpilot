@@ -46,7 +46,7 @@ const title: string = option.title.de
 const masteryText = (completion: { masteredTargetCount: number; targetCount: number }) =>
   `${completion.masteredTargetCount} von ${completion.targetCount} Lernzielen direkt geschafft.`
 const assessmentText = (completion: { masteredAssessmentCount: number; requiredAssessmentCount: number }) =>
-  `Abschlussprüfungen: ${completion.masteredAssessmentCount} von ${completion.requiredAssessmentCount} geschafft.`
+  `${completion.masteredAssessmentCount} von ${completion.requiredAssessmentCount} Prüfungen in diesem Abschnitt bestanden.`
 const findExamRow = async (card: Locator) => {
   const list = card.getByRole('list', { name: 'Prüfungen in diesem Abschnitt', exact: true })
   await list.waitFor() // Wait for the selected route, not the preceding read-only search field.
@@ -290,7 +290,7 @@ try {
     await confirmed.waitFor()
     assert.equal(await confirmed.getAttribute('role'), 'status', 'the confirmed individual assessment has a screenreader status region')
     await reloadedCard.getByText(masteryText(beforePause.levelCompletion), { exact: true }).waitFor()
-    assert.equal(await reloadedCard.getByText('Lernabschnitt abgeschlossen.', { exact: true }).count(), 0)
+    assert.equal(await reloadedCard.getByText('Lernweg abgeschlossen.', { exact: true }).count(), 0)
     const passedExam = await findExamRow(reloadedCard)
     await passedExam.getByText('Geschafft', { exact: true }).waitFor()
     assert.equal(await passedExam.getByRole('link', { name: 'Prüfung direkt versuchen', exact: true }).count(), 0)
@@ -300,11 +300,11 @@ try {
     assert.ok(waived, 'the real canonical scope must expose a generic explanation for an actual implicit goal')
     assert.ok(beforePause.levelCompletion.waivedTargetGoalIds.includes(waived.goalId))
     assert.deepEqual(waived.assessments, [])
-    await reloadedCard.getByText('Warum sind diese Ziele implizit erledigt?', { exact: true }).click()
+    await reloadedCard.getByText('Welche Nachweise zählen und welche Vorbereitung entfällt?', { exact: true }).click()
     const explanation = reloadedCard.locator('details').getByRole('listitem').filter({
       has: mobile.page.getByRole('button', { name: `Im Lernzielbaum anzeigen: ${waived.title.de}`, exact: true }),
     })
-    await explanation.getByText('Keine verbleibende Arbeit benötigt dieses Ziel in diesem Abschnitt.', { exact: false }).waitFor()
+    await explanation.getByText('Für diesen Auftrag ist dieses Ziel nicht mehr erforderlich.', { exact: false }).waitFor()
     assert.equal(await explanation.getByText('Geschaffte Prüfungen:', { exact: false }).count(), 0)
     await mobile.page.screenshot({ path: `${output}/mobile-assessment-passed.png`, fullPage: true })
     const paused = mobile.page.waitForResponse((response) => response.url().endsWith('/level-completion/actions'))

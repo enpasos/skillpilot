@@ -210,6 +210,7 @@ class ClaudeV1MemoryPracticeContractTest {
                 "goalId", GOAL_ID, "practiceScopeId", unit, "expectedStateVersion", INITIAL_STATE_VERSION, "language", "de"));
         assertThat(opened.isError()).isFalse();
         assertThat(map(opened.structuredContent())).containsEntry("practiceScopeId", unit);
+        assertThat(map(opened.meta().get("skillpilotMemoryCard"))).containsEntry("practiceScopeId", unit);
         String capability = firstCapability(opened);
         var request = new MemoryPracticeReviewRequest(GOAL_ID, "card-1", "known", unit);
         when(coachToolFacade.reviewMemoryPracticeCard(learnerId, "de", request)).thenAnswer(invocation -> {

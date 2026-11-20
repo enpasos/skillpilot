@@ -93,6 +93,15 @@ public class LearnerLearningPlanController {
                 .body(learningPlans.getPlan(skillpilotId, landscapeId, asOf));
     }
 
+    @GetMapping("/{landscapeId}/unit-assignments")
+    public ResponseEntity<java.util.List<LearnerLearningPlanApi.UnitAssignmentOption>> getUnitAssignments(
+            @PathVariable String skillpilotId, @PathVariable String landscapeId, HttpServletResponse response) {
+        noStore(response);
+        learners.assertActiveLearnerRouteAccess(skillpilotId);
+        return ResponseEntity.ok().cacheControl(CacheControl.noStore())
+                .body(learners.getUnitAssignmentOptions(skillpilotId, landscapeId));
+    }
+
     @PutMapping(value = "/by-landscape", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<LearnerLearningPlanApi.PlanDetail> putPlan(
             @PathVariable String skillpilotId,

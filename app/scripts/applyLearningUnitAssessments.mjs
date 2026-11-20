@@ -20,6 +20,7 @@ import { assertLearningUnitAssessmentReview, readLearningUnitAssessmentSource } 
 const root = resolve(import.meta.dirname, '../..')
 const assessments = 'curricula/DE/Gymnasium/assessments'
 const reviews = 'curricula/DE/Gymnasium/quality/learning-units'
+const hesseChildReview = 'docs/concept/skill-graph/examples/hessen-physik-e1/entwuerfe-kindeinheit/unabhaengiges-fachreview.md'
 const machineReview = (date, hash, reviewPath, scoring) => {
   const scoringNote = scoring.passingPoints < scoring.maxPoints
     ? 'The rubric describes how each part earns points. The backend enforces the reviewed total passing score.'
@@ -122,7 +123,7 @@ const landscapes = [{
   examNodeKind: false,
   units: [{
     id: 'physics-constant-acceleration',
-    revision: '2026-11-15-v2',
+    revision: '2026-11-20-v3',
     label: 'Gleichmäßig beschleunigte Bewegung modellieren',
     labelEn: 'Modelling motion with constant acceleration',
     promise: 'Ich kann eine geradlinige Bewegung mit konstanter Beschleunigung selbstständig modellieren: Ich lege Achse und Vorzeichen fest, stelle Zeit-Ort- und Zeit-Geschwindigkeits-Gesetz mit den Anfangsbedingungen auf und beschreibe die Bewegung in Diagrammen. Ich kann sagen, welche Vereinfachungen das Modell macht und wo seine Vorhersagen enden. Darauf bauen der freie Fall im Experiment, Würfe in zwei Dimensionen, Kräfte und Energie auf.',
@@ -156,6 +157,18 @@ const landscapes = [{
       coveredGoalIds: ['e4b38061-1f28-43ad-8371-a3e7c0e81856'],
       taskRevision: 'sha256:8a5ccaa3f596ace70e6a4dad6f644a2ddaa046be5f2c598a012a1ff40d9b17ef',
       rubricRevision: 'sha256:62bf8143588daa963566318ada486cc4a189906d6a6b92d2e428ec8fe5383163',
+    }, {
+      existingGoalId: 'c933b7d2-edcb-5747-9378-9762659f260a',
+      coveredGoalIds: ['d6dc0e02-831d-4894-a61a-852bcc74f147'],
+      reviewPath: hesseChildReview,
+      taskRevision: 'sha256:5fe14a6f9b5a06a7a25bf8ab18275a1102c231197321f7f2eeac302ae735b752',
+      rubricRevision: 'sha256:a117de51728be60b4c881b061f24046a8c34618960108acafb478718fd0317eb',
+    }, {
+      existingGoalId: 'f13ca187-b680-5f47-b4ad-76bd474bd8a2',
+      coveredGoalIds: ['e4b38061-1f28-43ad-8371-a3e7c0e81856'],
+      reviewPath: hesseChildReview,
+      taskRevision: 'sha256:e0c8168fd6d8a86ce63012d2bd1241f3a790e39bbbffea6710d7c137c8d24cdd',
+      rubricRevision: 'sha256:88da8d12bcb9f7c8cd3761730755307ba6e8a0a0405cb9a522bf5338d9be715f',
     }],
   }],
 }]
@@ -204,8 +217,10 @@ for (const landscape of landscapes) {
         assert(declared.coveredGoalIds.every((id) => unit.ownGoalIds.includes(id)
           && assessment.examData.coveredGoalIds.includes(id)), `${unit.id}: invalid existing assessment coverage`)
         declared.coveredGoalIds.forEach(ordinary)
+        const reference = declared.reviewPath ?? unit.reviewPath
+        assert(existsSync(resolve(root, reference)), `Missing review record ${reference}`)
         coverageReviews.push({ assessmentGoalId: assessment.id, goalIds: declared.coveredGoalIds,
-          reference: unit.reviewPath, ...assessmentReviewRevisions(assessment) })
+          reference, ...assessmentReviewRevisions(assessment) })
         assessmentIds.push(assessment.id)
         report.push({ unitId: unit.id, unitRevision: unit.revision, assessmentId: assessment.id,
           retainedExistingAssessment: true, maxPoints: assessment.examData.scoring.maxPoints,

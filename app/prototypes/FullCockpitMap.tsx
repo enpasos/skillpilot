@@ -1,6 +1,7 @@
 import { useMemo } from 'react'
 import { LearningUnitMap } from '../src/components/learningUnitMap/LearningUnitMap'
 import type { LearningEntryProgress, LearningMapEntry, LearningMapFixture } from '../src/components/learningUnitMap/types'
+import { buildTreeCompletionProgressMap } from '../src/utils/treeCompletionProgress'
 import type { LearnerGoalNavigationMapProps } from '../src/views/LearnerView'
 
 /** Navigation only: use exactly the visible Cockpit tree and its existing results. */
@@ -27,24 +28,14 @@ export function FullCockpitMap(props: LearnerGoalNavigationMapProps) {
 
   const progress = useMemo(() => {
     const result: Record<string, LearningEntryProgress> = {}
-    const atoms = (id: string, seen = new Set<string>()): Set<string> => {
-      if (seen.has(id)) return new Set()
-      seen.add(id)
-      const entry = fixture.entries[id]
-      if (!entry) return new Set()
-      if (!entry.children?.length) return new Set([id])
-      return new Set(entry.children.flatMap(child => [...atoms(child, seen)]))
-    }
-    for (const id of Object.keys(fixture.entries)) {
-      const descendants = [...atoms(id)]
-      result[id] = {
-        total: descendants.length,
-        explicit: descendants.filter(atom => getMastery(atom) >= 1).length,
-        implicit: descendants.filter(atom => getMastery(atom) < 1 && completionWaivers.has(atom)).length,
-      }
+    const goals = new Map([...goalIndexAll].filter(([id]) => visibleGoalIds.has(id)))
+    const children = new Map(Object.values(fixture.entries).map(entry => [entry.id, entry.children ?? []]))
+    for (const [id, counts] of buildTreeCompletionProgressMap(goals, children, getMastery, completionWaivers)) {
+      result[id] = { total: counts.totalCount, explicit: counts.explicitCount, implicit: counts.implicitCount,
+        notRequired: counts.notRequiredCount, explicitRatio: counts.explicitRatio, implicitRatio: counts.implicitRatio }
     }
     return result
-  }, [fixture, getMastery, completionWaivers])
+  }, [fixture, goalIndexAll, visibleGoalIds, getMastery, completionWaivers])
   const command = useMemo(() => ({ entryId: props.selectedGoalId,
     nonce: props.revealRequest?.nonce ?? 0,
     revealEntryId: props.revealRequest?.entryId,

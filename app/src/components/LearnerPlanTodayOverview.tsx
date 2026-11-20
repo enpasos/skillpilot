@@ -251,6 +251,14 @@ export const LearnerPlanTodayOverview = ({
                     } : undefined} />
                 </div>
               </div>
+              {subject.unitAssignments?.map((assignment, index) => <div key={index} data-testid="learner-plan-unit-assignment"
+                className="mt-3 text-sm" role="status">
+                <strong>{language === 'de' ? 'Einheitenauftrag' : 'Unit assignment'} · {assignment.title}</strong>
+                <p>{assignment.status === 'unavailable' ? (language === 'de' ? 'Auftragsfassung nicht verfügbar' : 'Assignment version unavailable')
+                  : <>{assignment.passedParts} / {assignment.requiredParts} · {assignment.status === 'completed'
+                    ? (language === 'de' ? 'Auftrag abgeschlossen' : 'Assignment complete')
+                    : (language === 'de' ? 'Auftrag aktiv' : 'Assignment active')}</>}</p>
+              </div>)}
               {subject.learningScope ? (
                 <div data-testid="learner-plan-learning-scope" className="mt-3 text-sm">
                   <p className="font-medium text-text-primary">{subject.learningScope.title}</p>

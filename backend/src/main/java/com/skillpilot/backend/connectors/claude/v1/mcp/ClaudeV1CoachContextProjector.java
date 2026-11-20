@@ -328,7 +328,9 @@ public class ClaudeV1CoachContextProjector {
             Map<String, Object> result = new LinkedHashMap<>();
             result.put("title", prerequisite.title());
             result.put("recorded", prerequisite.recorded());
-            if (!prerequisite.recorded() && scopeTitle != null && completion.waivedTargetGoalIds().contains(prerequisite.goalId())) {
+            if (prerequisite.planningCredit()) result.put("planningCredit", true);
+            if (!prerequisite.recorded() && !prerequisite.planningCredit()
+                    && scopeTitle != null && completion.waivedTargetGoalIds().contains(prerequisite.goalId())) {
                 List<LevelCompletionResponse.WaiverDetail> matches = completion.waiverDetails().stream()
                         .filter(waiver -> prerequisite.goalId().equals(waiver.goalId())).limit(2).toList();
                 String reason = matches.size() == 1 ? publishedWaiverReason(matches.getFirst()) : null;
@@ -386,7 +388,7 @@ public class ClaudeV1CoachContextProjector {
     }
 
     /**
-     * Projects the authoritative backend text and non-numeric learning capabilities.
+     * Projects the authoritative backend text, learning capabilities and explicitly assigned unit results.
      *
      * <p>Opaque landscape and plan identifiers never cross the Claude boundary. If multiple
      * current plans share a subject, the backend has already deduplicated their plan goals.</p>
@@ -410,6 +412,7 @@ public class ClaudeV1CoachContextProjector {
         }
 
         boolean unavailablePlans = status.unavailablePlanCount() > 0;
+        boolean hasOpenUnitAssignment = false;
         List<LearnerPlanTodayStatus.SubjectStatus> rawSubjects =
                 status.subjects() == null ? List.of() : status.subjects();
         List<Map<String, Object>> subjects = new java.util.ArrayList<>();
@@ -427,6 +430,12 @@ public class ClaudeV1CoachContextProjector {
             projectedSubject.put("evaluable", subject.evaluable());
             if (subject.statusDirection() != null) {
                 projectedSubject.put("statusDirection", subject.statusDirection().getValue());
+            }
+            if (subject.unitAssignments() != null && !subject.unitAssignments().isEmpty()) {
+                projectedSubject.put("unitAssignments", subject.unitAssignments().stream()
+                        .map(this::projectUnitAssignment).toList());
+                hasOpenUnitAssignment |= subject.unitAssignments().stream().anyMatch(item -> "active".equals(item.status()));
+                unavailablePlans |= subject.unitAssignments().stream().anyMatch(item -> "unavailable".equals(item.status()));
             }
             subjects.add(Map.copyOf(projectedSubject));
         }
@@ -457,6 +466,7 @@ public class ClaudeV1CoachContextProjector {
         String guidanceState = !status.followLearningPlans() ? "paused"
                 : hasActiveGoal ? "continue"
                 : status.asOf() == null || subjects.isEmpty() ? "unavailable"
+                : hasOpenUnitAssignment && (status.periodQuotaFulfilled() || !canAutomaticallyResume) ? "unitChoice"
                 : status.periodQuotaFulfilled()
                         ? (unavailablePlans || !status.evaluable() ? "unavailable" : "complete")
                 : canAutomaticallyResume ? "resume" : "blocked";
@@ -464,8 +474,24 @@ public class ClaudeV1CoachContextProjector {
         return Map.copyOf(projected);
     }
 
+    private Map<String, Object> projectUnitAssignment(LearnerPlanTodayStatus.UnitAssignmentStatus assignment) {
+        Map<String, Object> result = new LinkedHashMap<>();
+        result.put("title", safeSubjectLabel(assignment.title()));
+        result.put("status", assignment.status());
+        if (assignment.passedParts() != null) {
+            result.put("passedParts", assignment.passedParts());
+            result.put("requiredParts", assignment.requiredParts());
+        }
+        return result;
+    }
+
     private Map<String, Object> dailyPlanGuidance(String state) {
         String instruction = switch (state) {
+            case "unitChoice" -> "Report the backend plan text verbatim when asked for status. "
+                    + "An explicit unit assignment still has outstanding parts. On a request to work on that unit, "
+                    + "offer available parts from the current published assessment choices and await a choice. "
+                    + "Do not automatically start an exam or substitute another goal. If no part is offered, "
+                    + "explain the current availability from the backend.";
             case "continue" -> "Output 'text' verbatim when reporting plan status, at most once per response, "
                     + "and add no numbers, totals or overall judgement of your own; it already states any "
                     + "remaining backlog. When teaching of the active goal begins, output 'activeGoalAnnouncement' "

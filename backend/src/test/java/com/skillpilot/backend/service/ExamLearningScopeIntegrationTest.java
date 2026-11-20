@@ -49,6 +49,7 @@ class ExamLearningScopeIntegrationTest {
     private static final String DIAGRAMS = "ce431132-dfc4-42c2-aff6-bd72035190f8";
     private static final String UNIFORM = "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd";
     private static final String ACCELERATION = "e4b38061-1f28-43ad-8371-a3e7c0e81856";
+    private static final String HESSIAN_VERTICAL_THROW_EXAM = "c933b7d2-edcb-5747-9378-9762659f260a";
     // The course planner normalizes the projected E.1 program container to its
     // seven visible canonical targets, excluding the separate Sek-I fall target.
     private static final List<String> MOTION_TOPICS = List.of(DIAGRAMS, UNIFORM,
@@ -60,7 +61,7 @@ class ExamLearningScopeIntegrationTest {
             "09029573-864f-40ca-bf8a-cee7bf6dcb73", "d6dc0e02-831d-4894-a61a-852bcc74f147",
             "4a2bf015-052b-4af0-aed7-324259fa1a8a", "68c90ba6-c438-463c-9a53-cf61062d416a",
             "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
-            "a9562b05-c54d-5635-9244-3f7dd24a8642", "c5807a37-129e-5df6-8989-482bc7f5683e",
+            "a9562b05-c54d-5635-9244-3f7dd24a8642", HESSIAN_VERTICAL_THROW_EXAM,
             "6ea3fb3c-abdc-568f-ab13-97c36dc274e4");
     private static final LocalDate TODAY = LocalDate.parse("2026-10-22");
     private static final ZoneId BERLIN = ZoneId.of("Europe/Berlin");

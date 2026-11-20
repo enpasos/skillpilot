@@ -540,6 +540,19 @@ adopt the separate unit-assessment proposal of 19 November. The [discussion
 paper](docs/concept/skill-graph/unit-assessment-discussion-2026-11-19.de.md)
 sets out the changes that adoption would require.
 
+**Hessian E.1 pilot decision, 20 November 2026.** For an explicitly selected
+unit-qualification assignment, passing the four designated versions A–D ends
+the required work for that assignment. An individually open goal remains
+available voluntarily or due under a separate explicit assignment. Existing
+atomic plans retain their selected goals. A valid historical part receipt
+counts towards its part after a scope change. If it lacks the planning-release
+binding at grading, the cockpit and coach explain why the two individual
+goals remain open. On the map, a green check marks a direct result for that goal.
+A check inside a shield marks evidence-backed indirect credit. A goal that
+simply ceases to be required receives no completion mark. The local acceptance preview opts into the pilot. Its
+separate runtime setting defaults to off. The Product Owner reserves the
+pedagogical acceptance of E.1 and subsequent acceptance of the Hessian template.
+
 The Product Owner confirmed **Lerneinheit** (English **learning unit**,
 conceptual name `LearningUnit`) on **4 November 2026**. This replaces the former
 curricular-level terminology. Personalization Levels 1–4, QA maturity and goal

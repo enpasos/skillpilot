@@ -17,12 +17,13 @@ class AssessmentMaterialRevisionTest {
     private final ObjectMapper mapper = new ObjectMapper();
 
     @Test
-    void bothPhysicsChildExamsBindToTheirPublishedCoverageReviews() throws Exception {
+    void allPhysicsChildExamEditionsBindToTheirPublishedCoverageReviews() throws Exception {
         var file = Path.of("../curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json");
         JsonNode physics = mapper.readTree(file.toFile());
         var unit = physics.path("programUnits").findParents("coverageReviews").stream()
                 .filter(node -> "physics-constant-acceleration".equals(node.path("id").asText())).findFirst().orElseThrow();
-        assertThat(unit.path("coverageReviews").size()).isEqualTo(2);
+        assertThat(unit.required("revision").asText()).isEqualTo("2026-11-20-v3");
+        assertThat(unit.path("coverageReviews").size()).isEqualTo(4);
         for (var review : unit.path("coverageReviews")) {
             String goalId = review.path("assessmentGoalId").textValue();
             var goal = physics.path("goals").valueStream().filter(node -> goalId.equals(node.path("id").asText()))
@@ -71,7 +72,7 @@ class AssessmentMaterialRevisionTest {
         return AssessmentMaterialRevision.of(exam, evaluation(exam, "exam"));
     }
 
-    private static ExamEvaluationResult evaluation(ExamData exam, String goalId) {
+    static ExamEvaluationResult evaluation(ExamData exam, String goalId) {
         var rubric = exam.getScoring();
         var steps = rubric.getSteps().stream()
                 .map(step -> new ExamScoringStep(step.getId(), step.getPoints(), step.getDescription())).toList();

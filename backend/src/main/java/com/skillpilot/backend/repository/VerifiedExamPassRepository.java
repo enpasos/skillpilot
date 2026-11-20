@@ -19,4 +19,6 @@ public interface VerifiedExamPassRepository extends JpaRepository<VerifiedExamPa
 
     List<VerifiedExamPass> findByLearner_SkillpilotIdAndGoalIdOrderByPassedAtDescFingerprintAsc(
             String learnerId, String goalId);
+
+    List<VerifiedExamPass> findByLearner_SkillpilotIdAndGoalIdIn(String learnerId, List<String> goalIds);
 }

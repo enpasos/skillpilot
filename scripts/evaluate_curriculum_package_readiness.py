@@ -172,6 +172,7 @@ FULL_VALIDATOR_TIMEOUT_SECONDS = 30 * 60
 MAX_FULL_VALIDATOR_REPORT_BYTES = 2 * 1024 * 1024
 MAX_FULL_VALIDATOR_BINDING_JSON_BYTES = 64 * 1024 * 1024
 MAX_CONSUMER_REPORT_BYTES = 16 * 1024 * 1024
+MAX_RETAINED_RUNNER_LOG_BYTES = 32 * 1024
 CONSUMER_RUNNER_PATH = SCRIPT_DIR / "run_package_consumer_smoke.py"
 CONSUMER_RUNNER_TIMEOUT_SECONDS = 30 * 60
 CONSUMER_RUNNER_ID = "skillpilot-package-consumer-smoke"
@@ -1165,6 +1166,27 @@ def validate_consumer_work_directory(path: Path) -> Path:
     return candidate
 
 
+def missing_consumer_report_diagnostic(log_tail: bytes) -> str:
+    # Runner output can contain process arguments or dependency-repository credentials.
+    # Only fixed descriptions of observed build errors belong in the public report.
+    message = "Pinned consumer runner emitted no report"
+    if b"./gradlew" not in log_tail or b"writePackageConsumerRuntimeClasspath" not in log_tail:
+        return message
+    details = log_tail.lower()
+    for marker, cause in (
+        (b"no space left on device", "disk space exhausted"),
+        (b"java heap space", "Java heap exhausted"),
+        (b"daemon disappeared", "Gradle daemon disappeared"),
+        (b"could not resolve", "dependency resolution failed"),
+        (b"could not download", "dependency download failed"),
+        (b"compilation failed", "Java compilation failed"),
+        (b"timed out", "operation timed out"),
+    ):
+        if marker in details:
+            return f"{message}: backend Gradle runtime classpath build reported {cause}"
+    return f"{message}: backend Gradle runtime classpath build failed"
+
+
 def execute_consumer_runner(
     zip_path: Path,
     store_path: Path,
@@ -1308,7 +1330,15 @@ def execute_consumer_runner(
             and not loaded_report.errors
         )
         if loaded_report is None:
-            execution_errors.append("Pinned consumer runner emitted no report")
+            with log_path.open("rb") as log:
+                log.seek(max(0, log_path.stat().st_size - MAX_RETAINED_RUNNER_LOG_BYTES))
+                diagnostic = log.read(MAX_RETAINED_RUNNER_LOG_BYTES)
+            execution_errors.append(missing_consumer_report_diagnostic(diagnostic))
+            if persistent_work_dir is not None and diagnostic:
+                # Diagnostic only. The workflow uploads the readiness report, not this raw local log.
+                atomic_write_output_bytes(
+                    work_dir / "consumer-runner-failure.log", diagnostic, "Retained consumer runner diagnostics"
+                )
         elif loaded_report.errors:
             execution_errors.extend(loaded_report.errors[:5])
         if exit_code not in {0, 1} and not timed_out:
@@ -4218,6 +4248,7 @@ def run_fixture_suite() -> None:
                 "(work / 'assembly/runtime.bin').write_bytes(b'assembly')\n"
                 "(work / 'evidence-bundle').mkdir(parents=True, exist_ok=True)\n"
                 "(work / 'evidence-bundle/evidence.json').write_bytes(b'evidence')\n"
+                f"sys.stderr.write('x' * {MAX_RETAINED_RUNNER_LOG_BYTES} + './gradlew writePackageConsumerRuntimeClasspath: Could not resolve fixture-with-fake-secret\\n')\n"
                 "raise SystemExit(17)\n",
                 encoding="utf-8",
             )
@@ -4313,6 +4344,12 @@ def run_fixture_suite() -> None:
                 raise ReadinessError(
                     "Explicit consumer work directory was not retained and recomputed"
                 )
+            diagnostic = (valid_retained_work / "consumer-runner-failure.log").read_bytes()
+            if len(diagnostic) != MAX_RETAINED_RUNNER_LOG_BYTES or not diagnostic.endswith(b"fixture-with-fake-secret\n"):
+                raise ReadinessError("Retained runner diagnostics must contain the bounded failure tail")
+            public_errors = " ".join(failed_execution.execution_errors)
+            if "dependency resolution failed" not in public_errors or "fake-secret" in public_errors:
+                raise ReadinessError("The public consumer gate must report only a fixed build diagnosis")
             print(
                 "PASS default consumer work is private/ephemeral and explicit safe work is retained"
             )

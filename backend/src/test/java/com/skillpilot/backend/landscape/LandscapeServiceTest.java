@@ -1304,7 +1304,9 @@ class LandscapeServiceTest {
                                                 "e4b38061-1f28-43ad-8371-a3e7c0e81856",
                                                 "d6dc0e02-831d-4894-a61a-852bcc74f147",
                                                 "c5807a37-129e-5df6-8989-482bc7f5683e",
-                                                "a8dc0290-9f80-5763-8943-e16b8d2aa860");
+                                                "a8dc0290-9f80-5763-8943-e16b8d2aa860",
+                                                "c933b7d2-edcb-5747-9378-9762659f260a",
+                                                "f13ca187-b680-5f47-b4ad-76bd474bd8a2");
                 assertThat(pilot.getGoalPlacements())
                                 .extracting(GoalPlacement::getUnitId)
                                 .contains(

@@ -16,8 +16,14 @@ public final class CompletionResponseProjection {
             CompletionEvaluation evaluation, Map<String, LearningGoal> graph) {
         if (response == null) return null;
         if (!"valid".equals(response.calculationStatus()) || evaluation == null) {
-            return response.withWaiverDetails(List.of());
+            return response.withWaiverDetails(List.of()).withPlanningCreditGoalIds(List.of());
         }
+        response = response.withPlanningCreditGoalIds(response.waivedTargetGoalIds().stream()
+                .filter(id -> {
+                    var reason = evaluation.waiverReasons().get(id);
+                    return evaluation.waivedGoalIds().contains(id) && reason != null
+                            && reason.ruleId().startsWith("versioned_unit_assessment:");
+                }).toList());
         List<LevelCompletionResponse.WaiverDetail> details = new ArrayList<>();
         for (String id : response.waivedTargetGoalIds()) {
             var reason = evaluation.waiverReasons().get(id);

@@ -19,13 +19,24 @@ const section = (viewId: string, nodeId: string, landscapeId: string, title: str
     extendedData: { syntheticStructureKind: 'compositionView', compositionViewId: viewId, compositionNodeId: nodeId } })
 const root = (id: string, landscapeId: string, title: string, contains: string[]) => goal(id, landscapeId, contains, { title, tags: ['root'] })
 
-const mode = new URLSearchParams(location.search).get('mode') ?? 'list'
-// One Physics stage with more goals than a board shows as a graph.
-const manyIds = Array.from({ length: 205 }, (_, index) => `force-${String(index + 1).padStart(3, '0')}`)
-const goals: UiGoal[] = mode === 'list' ? [
+const query = new URLSearchParams(location.search)
+const mode = query.get('mode') ?? 'list'
+const physicsBoard = ['list', 'overview', 'wide'].includes(mode)
+const manyIds = Array.from({ length: mode === 'list' ? 205 : 17 }, (_, index) => `force-${String(index + 1).padStart(3, '0')}`)
+const mathTasks = Array.from({ length: 19 }, (_, i) => `quadratic-${i + 1}`)
+const goals: UiGoal[] = mode === 'math-assessments' ? [
+  root('math-root', MATHEMATICS_LANDSCAPE_ID, 'Mathematik', ['composition:fx-math:structure:sek1']),
+  section('fx-math', 'sek1', MATHEMATICS_LANDSCAPE_ID, 'Quadratische Funktionen', mathTasks),
+  ...mathTasks.map((id, index) => goal(id, MATHEMATICS_LANDSCAPE_ID, [], {
+    title: index === 8 ? 'Scheitelpunkt bestimmen' : index === 10 ? 'Nullstellen bestimmen' : `Parabelaufgabe ${index + 1}`,
+    nodeKind: index === 8 || index === 10 ? 'exam' : 'tutor',
+    requires: index ? [mathTasks[index - 1]] : [],
+  })),
+] : physicsBoard ? [
   root('physics-root', PHYSICS_LANDSCAPE_ID, 'Physik', ['composition:fx-phys:structure:physics-seki', 'why-physics']),
   section('fx-phys', 'physics-seki', PHYSICS_LANDSCAPE_ID, 'Sekundarstufe I', manyIds),
-  ...manyIds.map((id, index) => goal(id, PHYSICS_LANDSCAPE_ID, [], { title: `Kraft ${index + 1}`, requires: index ? [manyIds[index - 1]] : [] })),
+  ...manyIds.map((id, index) => goal(id, PHYSICS_LANDSCAPE_ID, [], { title: `Kraft ${index + 1}`,
+    requires: mode !== 'overview' && index ? [manyIds[index - 1]] : [] })),
   goal('why-physics', PHYSICS_LANDSCAPE_ID, [], { title: 'Wozu Physik?' }),
 ] : [
   ...(mode === 'mixed' ? [root('math-root', MATHEMATICS_LANDSCAPE_ID, 'Mathematik', ['numbers']),
@@ -38,14 +49,16 @@ const goalIndexAll = new Map(goals.map(item => [item.id, item]))
 const visibleChildrenByParent = new Map(goals.map(item => [item.id, item.contains]))
 const rootGoals = goals.filter(item => item.tags?.includes('root'))
 const visibleGoalIds = new Set(goals.map(item => item.id))
+const beforeLastGoal = new Set([...visibleGoalIds].filter(id => id !== manyIds.at(-1)))
 const mastered = new Set(['force-001'])
 
 function Fixture() {
-  const [selected, setSelected] = useState(mode === 'list' ? 'force-003' : 'atoms')
+  const [selected, setSelected] = useState(mode === 'math-assessments' ? mathTasks[10] : physicsBoard ? 'force-003' : 'atoms')
+  const [allLoaded, setAllLoaded] = useState(!query.has('hydrate'))
   const [returned, setReturned] = useState(false)
   return <div style={{ display: 'grid', gridTemplateRows: '1fr auto', height: '100vh' }}>
     <div style={{ minHeight: 0, position: 'relative' }}>
-      <LearnerGoalNavigationMap rootGoals={rootGoals} goalIndexAll={goalIndexAll} visibleGoalIds={visibleGoalIds}
+      <LearnerGoalNavigationMap rootGoals={rootGoals} goalIndexAll={goalIndexAll} visibleGoalIds={allLoaded ? visibleGoalIds : beforeLastGoal}
         visibleChildrenByParent={visibleChildrenByParent} selectedGoalId={selected} activeGoalId="force-002"
         getMastery={id => mastered.has(id) ? 1 : 0} completionWaivers={new Map()} onSelectGoal={setSelected}
         active language="de" onReturnToTree={() => setReturned(true)} />
@@ -53,6 +66,7 @@ function Fixture() {
     <footer style={{ padding: 8 }}>
       <output data-testid="unit-map-selected">{selected}</output>
       <output data-testid="unit-map-returned">{returned ? 'returned' : ''}</output>
+      {!allLoaded && <button type="button" onClick={() => setAllLoaded(true)}>Load last goal</button>}
     </footer>
   </div>
 }

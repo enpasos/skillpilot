@@ -3,6 +3,8 @@ package com.skillpilot.backend.service;
 import com.skillpilot.backend.api.ActiveGoalContext;
 import com.skillpilot.backend.api.MasteryUpdateRequest;
 import com.skillpilot.backend.api.LevelCompletionResponse;
+import com.skillpilot.backend.api.UnitAssessmentResponse;
+import com.skillpilot.backend.api.VerifiedExamPassResponse;
 import com.skillpilot.backend.api.LevelCompletionActionRequest;
 import com.skillpilot.backend.api.CompletionAssessmentStart;
 import com.skillpilot.backend.completion.*;
@@ -170,6 +172,9 @@ public class LearnerService {
 
     @Autowired(required = false)
     private CompletionApplicationService completionApplicationService;
+
+    @Value("${skillpilot.completion.unit-assessment-pilot-enabled:false}")
+    private boolean unitAssessmentPilotEnabled;
 
     public boolean completionRouteOwnsNavigation(Learner learner) {
         return CompletionNavigationPolicy.ownsNavigation(learner);
@@ -592,6 +597,193 @@ public class LearnerService {
         return resolved;
     }
 
+    /** Current, version-bound unit evidence. It is never persisted as individual mastery. */
+    @Transactional(readOnly = true)
+    public Map<String, CompletionEvaluation.WaiverReason> getUnitPlanningCredits(String skillpilotId) {
+        if (!unitPlanningCreditsEnabled()) return Map.of();
+        Learner learner = getLearner(skillpilotId);
+        GoalProjection projection = getGoalProjection(learner.getSelectedCurriculum(), learner.getPersonalCurriculum());
+        return unitPlanningCredits(learner, projection, completionGraph(learner, projection));
+    }
+
+    private boolean unitPlanningCreditsEnabled() {
+        if (!unitAssessmentPilotEnabled || completionApplicationService == null) return false;
+        var catalog = completionApplicationService.catalog();
+        return catalog.automatic() && catalog.enabled() && catalog.available();
+    }
+
+    private Map<String, CompletionEvaluation.WaiverReason> unitPlanningCredits(Learner learner,
+            GoalProjection projection, Map<String, LearningGoal> graph) {
+        if (unitLearningMaterialService == null || verifiedExamPassService == null || compositionViewService == null
+                || !unitPlanningCreditsEnabled()) return Map.of();
+        var bindings = unitLearningMaterialService.assessmentBindings(projection.compositionViewIds());
+        if (bindings.isEmpty()) return Map.of();
+        var partIds = bindings.stream().flatMap(binding -> binding.contract().parts().stream())
+                .map(UnitAssessmentContract.Part::goalId).distinct().toList();
+        var receipts = verifiedExamPassService.findForGoals(learner.getSkillpilotId(), partIds);
+        Map<String, CompletionEvaluation.WaiverReason> credits = new LinkedHashMap<>();
+        for (var binding : bindings) {
+            var result = validatedUnitAssessment(binding, projection, graph, receipts, Set.of());
+            if (result == null) continue;
+            result.credits().forEach(credits::putIfAbsent);
+        }
+        return Map.copyOf(credits);
+    }
+
+    private record UnitAssessmentProjection(UnitAssessmentResponse response,
+            Map<String, CompletionEvaluation.WaiverReason> credits) { }
+
+    /** Resolve only the authored meaning that is active when this newly graded result is persisted. */
+    @Transactional(readOnly = true)
+    public List<String> resolvePlanningCreditBindingsForAssessment(String skillpilotId, String goalId,
+            AssessmentMaterialRevision material) {
+        if (!unitPlanningCreditsEnabled() || unitLearningMaterialService == null) return List.of();
+        Learner learner = getLearner(skillpilotId);
+        GoalProjection projection = getGoalProjection(learner.getSelectedCurriculum(), learner.getPersonalCurriculum());
+        Map<String, LearningGoal> graph = completionGraph(learner, projection);
+        Set<String> bindings = new TreeSet<>();
+        for (var binding : unitLearningMaterialService.assessmentBindings(projection.compositionViewIds())) {
+            if (validatedUnitAssessment(binding, projection, graph, Map.of(), Set.of()) == null) continue;
+            boolean exactPart = binding.contract().parts().stream().anyMatch(part -> goalId.equals(part.goalId())
+                    && part.material().equals(material) && currentUnitPart(part, graph));
+            if (!exactPart) continue;
+            for (var rule : binding.contract().planningCredits()) {
+                if (rule.requiredPartIds().contains(goalId) && validPlanningRelease(binding, rule, graph)) {
+                    bindings.add(rule.release().fingerprint());
+                }
+            }
+        }
+        return List.copyOf(bindings);
+    }
+
+    @Transactional(readOnly = true)
+    public List<LearnerLearningPlanApi.UnitAssignmentOption> getUnitAssignmentOptions(String skillpilotId, String landscapeId) {
+        if (!unitPlanningCreditsEnabled() || unitLearningMaterialService == null || verifiedExamPassService == null) return List.of();
+        Learner learner = getLearner(skillpilotId);
+        if (!hasCompletedPersonalCurriculum(learner)) return List.of();
+        var projection = getGoalProjection(learner.getSelectedCurriculum(), learner.getPersonalCurriculum());
+        var bindings = unitLearningMaterialService.assessmentBindings(projection.compositionViewIds()).stream()
+                .filter(binding -> binding.landscapeId().equals(landscapeId)).toList();
+        if (bindings.isEmpty()) return List.of();
+        var graph = completionGraph(learner, projection);
+        var receipts = verifiedExamPassService.findForGoals(skillpilotId, bindings.stream()
+                .flatMap(binding -> binding.contract().parts().stream()).map(UnitAssessmentContract.Part::goalId).distinct().toList());
+        var options = new ArrayList<LearnerLearningPlanApi.UnitAssignmentOption>();
+        var subjectScope = deriveCompositionScope(landscapeId, parsePersonalCurriculumConfig(learner.getPersonalCurriculum()));
+        CompletionSnapshot available = null;
+        for (var binding : bindings) {
+            var contract = binding.contract();
+            var unit = validatedUnitAssessment(binding, projection, graph, receipts, Set.of());
+            if (unit == null || unit.response().parts().stream().anyMatch(part -> !part.materialCurrent())) continue;
+            var response = unit.response();
+            String fingerprint = contract.assignmentFingerprint(landscapeId, binding.viewId(), binding.compositionNodeId(), subjectScope);
+            var section = compositionViewService.resolveStructureReference(response.sectionGoalId());
+            if (section == null) continue;
+            String title = coachSectionTitle(section, projection, "de");
+            if (title == null) continue;
+            String english = coachSectionTitle(section, projection, "en");
+            Set<String> offered = Set.of();
+            if (!response.passed()) {
+                if (available == null) available = completionSnapshot(learner, projection);
+                if (available != null) {
+                    var completion = available.response();
+                    String profileId = AUTOMATIC_COMPLETION_PREFIX + response.sectionGoalId();
+                    var assessments = profileId.equals(completion.profileId()) ? completion.assessments().stream()
+                            : completion.profileOptions().stream().filter(option -> profileId.equals(option.profileId()))
+                                    .flatMap(option -> option.assessments().stream());
+                    offered = assessments.filter(LevelCompletionResponse.Assessment::startAvailable)
+                            .map(LevelCompletionResponse.Assessment::goalId).collect(Collectors.toSet());
+                }
+            }
+            var startable = offered;
+            // Earlier exact task and rubric receipts also certify a later order for this edition.
+            var parts = response.parts().stream().map(part -> new LearnerLearningPlanApi.UnitAssignmentPart(
+                    part.goalId(), part.title(), part.passed(), part.materialCurrent(), startable.contains(part.goalId()))).toList();
+            options.add(new LearnerLearningPlanApi.UnitAssignmentOption(response.sectionGoalId(), response.revision(),
+                    fingerprint, Map.of("de", title, "en", english == null ? title : english), response.passed(), parts));
+        }
+        return List.copyOf(options);
+    }
+
+    private boolean validPlanningRelease(UnitLearningMaterialService.AssessmentBinding binding,
+            UnitAssessmentContract.PlanningCredit rule, Map<String, LearningGoal> graph) {
+        var release = rule.release();
+        if (release == null || !unitLearningMaterialService.isReviewedPlanningRelease(release)
+                || !release.valid(binding.landscapeId(), binding.compositionNodeId(), binding.contract(),
+                rule, binding.viewId(), graph) || binding.contract().parts().stream()
+                    .filter(part -> rule.requiredPartIds().contains(part.goalId())).anyMatch(part -> !currentUnitPart(part, graph))) return false;
+        return release.hasReviewedOwnership(landscapeService.getById(binding.landscapeId()), binding.contract(), rule);
+    }
+
+    private boolean currentUnitPart(UnitAssessmentContract.Part part, Map<String, LearningGoal> graph) {
+        LearningGoal goal = graph.get(part.goalId());
+        if (isExamGoalUnavailableForHardCheck(goal)) return false;
+        try { return part.material().equals(AssessmentMaterialRevision.of(goal.getExamData())); }
+        catch (IllegalArgumentException | NullPointerException invalidMaterial) { return false; }
+    }
+
+    private boolean hasBoundPlanningReceipt(UnitAssessmentContract.Part part, String bindingId,
+            Map<String, List<VerifiedExamPassResponse>> receipts) {
+        return receipts.getOrDefault(part.goalId(), List.of()).stream().anyMatch(receipt ->
+                part.material().taskRevision().equals(receipt.taskRevision())
+                && part.material().rubricRevision().equals(receipt.rubricRevision())
+                && part.material().fingerprint().equals(receipt.fingerprint())
+                && receipt.planningCreditBindingIds().contains(bindingId));
+    }
+
+    /** One current-material and ownership decision for cards, coach, prerequisites and plan credit. */
+    private UnitAssessmentProjection validatedUnitAssessment(UnitLearningMaterialService.AssessmentBinding binding,
+            GoalProjection projection, Map<String, LearningGoal> graph,
+            Map<String, List<VerifiedExamPassResponse>> receipts, Set<String> individuallyMastered) {
+        var contract = binding.contract();
+        if (!unitPlanningCreditsEnabled() || !contract.appliesTo(binding.viewId())) return null;
+        String sectionId = "composition:" + binding.viewId() + ":structure:" + binding.compositionNodeId();
+        Set<String> unitTargets = projectedAtomicTargetIds(List.of(sectionId), projection);
+        if (contract.contentGoalIds().stream().anyMatch(id -> !isAtomicGoal(graph.get(id))
+                || CompletionProfileCompiler.isAssessment(graph.get(id)) || CompletionProfileCompiler.isMemory(graph.get(id))
+                || CompletionProfileCompiler.isOrientation(graph.get(id))
+                || !binding.landscapeId().equals(landscapeService.getLandscapeIdForGoal(id)))
+                || contract.parts().stream().anyMatch(part -> !isAtomicGoal(graph.get(part.goalId()))
+                    || !CompletionProfileCompiler.isAssessment(graph.get(part.goalId()))
+                    || !binding.landscapeId().equals(landscapeService.getLandscapeIdForGoal(part.goalId())))) return null;
+        Map<String, List<VerifiedExamPassResponse>> currentReceipts = new LinkedHashMap<>();
+        Set<String> currentParts = new HashSet<>();
+        for (var part : contract.parts()) {
+            if (currentUnitPart(part, graph)) {
+                currentParts.add(part.goalId());
+                currentReceipts.put(part.goalId(), receipts.getOrDefault(part.goalId(), List.of()));
+            }
+        }
+        var result = contract.evaluate(sectionId, unitTargets, graph, currentReceipts, individuallyMastered).orElse(null);
+        if (result == null) return null;
+        Map<String, CompletionEvaluation.WaiverReason> credits = new LinkedHashMap<>();
+        Set<String> missingBindings = new HashSet<>();
+        for (var rule : contract.planningCredits()) {
+            if (!validPlanningRelease(binding, rule, graph)) continue;
+            var missing = contract.parts().stream().filter(part -> rule.requiredPartIds().contains(part.goalId()))
+                    .filter(part -> !hasBoundPlanningReceipt(part, rule.release().fingerprint(), currentReceipts)).toList();
+            if (!missing.isEmpty()) {
+                missing.forEach(part -> missingBindings.add(part.goalId()));
+                continue;
+            }
+            var reason = new CompletionEvaluation.WaiverReason("versioned_unit_assessment:" + rule.release().fingerprint(), rule.requiredPartIds());
+            rule.goalIds().forEach(id -> credits.putIfAbsent(id, reason));
+        }
+        var response = new UnitAssessmentResponse(result.sectionGoalId(), result.revision(), result.passed(),
+                result.parts().stream().map(part -> new UnitAssessmentResponse.Part(part.goalId(), part.title(),
+                        part.passed(), currentParts.contains(part.goalId()),
+                        part.passed() && missingBindings.contains(part.goalId()))).toList(),
+                List.copyOf(credits.keySet()), result.individuallyOpenGoalIds());
+        return new UnitAssessmentProjection(response, Map.copyOf(credits));
+    }
+
+    private CompletionEvaluation withUnitPlanningCredits(CompletionEvaluation evaluation,
+            CompiledCompletionProfile compiled, Learner learner, GoalProjection projection, Map<String, LearningGoal> graph) {
+        return !compiled.automatic() ? evaluation : evaluation.withPlanningCredits(
+                unitPlanningCredits(learner, projection, graph), compiled.contextGoalIds(), compiled.targetGoalIds(),
+                compiled.protectedGoalIds());
+    }
+
     private CompletionSnapshot completionSnapshot(Learner learner, GoalProjection projection) {
         if (completionApplicationService == null || (!completionApplicationService.catalog().enabled()
                 && !completionRouteOwnsNavigation(learner))) return null;
@@ -638,15 +830,24 @@ public class LearnerService {
         }
         Map<String, Double> masterySnapshot = Map.of();
         RuntimeException masteryFailure = null;
+        UnitAssessmentResponse unitResult = null;
         if (!candidates.isEmpty()) {
             try {
                 masterySnapshot = completionMasterySnapshot(learner, graph, candidates.values(),
                         workflow != null && completionWorkflowMatches(learner, workflow));
+                if (workflow != null && unitPlanningCreditsEnabled() && compositionViewService != null && unitLearningMaterialService != null) {
+                    var section = overview ? explicitCoachUnitFocus(learner, projection) : completionUnitSection(workflow.profileId());
+                    unitResult = unitAssessment(learner, section, projection, graph);
+                }
             } catch (RuntimeException e) {
                 masteryFailure = e;
             }
         }
         Comparator<String> assessmentOrder = completionAssessmentOrder(learner, projection, graph);
+        Map<String, Boolean> partResults = unitResult == null ? Map.of() : unitResult.parts().stream()
+                .collect(Collectors.toMap(UnitAssessmentResponse.Part::goalId, UnitAssessmentResponse.Part::passed));
+        String unitProfileId = unitResult == null ? null : AUTOMATIC_COMPLETION_PREFIX + unitResult.sectionGoalId();
+        Map<String, Set<String>> changedUnitParts = new HashMap<>();
         for (var definition : definitions) {
             var candidate = candidates.get(definition.id());
             if (candidate == null && !catalog.automatic()) continue;
@@ -662,12 +863,15 @@ public class LearnerService {
                         .limit(catalog.automatic() ? Long.MAX_VALUE : MAX_COMPLETION_DISCOVERY_CHOICES).toList()) {
                     LearningGoal goal = graph.get(id);
                     boolean mastered = Mastery.isMastered(masterySnapshot.get(id));
-                    boolean taskAvailable = targets.contains(id) && !isExamGoalUnavailableForHardCheck(goal);
+                    if (definition.id().equals(unitProfileId)) mastered = partResults.getOrDefault(id, mastered);
+                    boolean materialCurrent = unitPartMaterialCurrent(definition.id(), id, graph, changedUnitParts);
+                    boolean taskAvailable = targets.contains(id) && !isExamGoalUnavailableForHardCheck(goal) && materialCurrent;
                     boolean available = !routeOwnsNavigation
                             && persistedWorkflow == null && !mastered && taskAvailable;
                     preview.add(new LevelCompletionResponse.Assessment(id, completionTitle(goal), mastered,
                             available, mastered ? null : routeOwnsNavigation ? "completion_route_active"
                                     : !targets.contains(id) ? "assessment_outside_personal_curriculum"
+                                    : !materialCurrent ? "assessment_material_changed"
                                     : taskAvailable ? null : "assessment_task_unavailable"));
                 }
             }
@@ -705,7 +909,8 @@ public class LearnerService {
                 if (!candidates.containsKey(compiled.profile().id())) {
                     masterySnapshot = completionMasterySnapshot(learner, graph, List.of(compiled), true);
                 }
-                evaluation = completionApplicationService.evaluate(compiled, masterySnapshot);
+                evaluation = withUnitPlanningCredits(completionApplicationService.evaluate(compiled, masterySnapshot),
+                        compiled, learner, projection, graph);
                 status = "valid";
                 CompletionCallContext call = CompletionCallContext.current();
                 boolean foreignOwner = storedDirect && call != null && !ownsDirectAssessment(call, workflow);
@@ -716,16 +921,19 @@ public class LearnerService {
                 for (String id : compiled.assessmentGoalIds().stream().sorted(assessmentOrder).toList()) {
                     LearningGoal goal = graph.get(id);
                     boolean mastered = evaluation.masteredAssessmentGoalIds().contains(id);
-                    boolean available = compatible && !mastered && !directRunning
+                    if (workflow.profileId().equals(unitProfileId)) mastered = partResults.getOrDefault(id, mastered);
+                    boolean materialCurrent = unitPartMaterialCurrent(workflow.profileId(), id, graph, changedUnitParts);
+                    boolean available = compatible && !mastered && !directRunning && materialCurrent
                             && targets.contains(id) && !isExamGoalUnavailableForHardCheck(goal);
                     assessments.add(new LevelCompletionResponse.Assessment(id, completionTitle(goal), mastered,
                             available, available || mastered ? null : invalidDirectBinding ? "assessment_context_unavailable"
                                     : directRunning ? "assessment_running"
                                     : !targets.contains(id) ? "assessment_outside_personal_curriculum"
+                                    : !materialCurrent ? "assessment_material_changed"
                                     : compatible ? "assessment_task_unavailable" : "coach_contract_unsupported"));
                 }
                 if (compatible && !overview) {
-                    if (directRunning) actions.add(new LevelCompletionResponse.Action("retryAssessment",
+                    if (directRunning && unitPartMaterialCurrent(workflow.profileId(), workflow.directAssessment().goalId(), graph, changedUnitParts)) actions.add(new LevelCompletionResponse.Action("retryAssessment",
                             workflow.directAssessment().goalId(),
                             Map.of("de", "Prüfung erneut versuchen", "en", "Try assessment again"), null));
                     CompletionEvaluation evaluated = evaluation;
@@ -781,6 +989,9 @@ public class LearnerService {
                         }
                     }
                 }
+                if (compatible && !storedDirect && compiled.automatic() && unitPlanningCreditsEnabled()) {
+                    addIndividualPractice(learner, compiled, evaluation, graph, actions);
+                }
             } catch (CompletionApplicability.UnresolvedScopeException e) {
                 status = "unresolved"; notice = "completion_scope_unresolved";
             } catch (CompletionApplicationService.ScopeNotApplicableException e) {
@@ -824,7 +1035,100 @@ public class LearnerService {
                         .limit(catalog.automatic() ? Long.MAX_VALUE : 100).toList(),
                 List.copyOf(assessments), List.copyOf(options), workflow == null ? null : workflow.navigationIntent(),
                 directRunning, notice, List.copyOf(actions));
-        return new CompletionSnapshot(CompletionResponseProjection.withExplanations(response, evaluation, graph), compiled, evaluation);
+        response = CompletionResponseProjection.withExplanations(response, evaluation, graph);
+        if (evaluation != null && unitResult != null) response = response.withUnitAssessment(unitResult);
+        return new CompletionSnapshot(response, compiled, evaluation);
+    }
+
+    /** Explicit individual work uses the same focus and availability rules as the ordinary learning plan. */
+    private void addIndividualPractice(Learner learner, CompiledCompletionProfile compiled,
+            CompletionEvaluation evaluation, Map<String, LearningGoal> graph, List<LevelCompletionResponse.Action> actions) {
+        Set<String> credits = evaluation.waiverReasons().entrySet().stream()
+                .filter(entry -> entry.getValue().ruleId().startsWith("versioned_unit_assessment:"))
+                .map(Map.Entry::getKey).collect(Collectors.toCollection(LinkedHashSet::new));
+        for (String id : credits) {
+            if (!compiled.targetGoalIds().contains(id)) continue;
+            Map<String, Integer> distance = new LinkedHashMap<>();
+            distance.put(id, 0);
+            ArrayDeque<String> pending = new ArrayDeque<>(List.of(id));
+            while (!pending.isEmpty()) {
+                String current = pending.removeFirst();
+                for (String prerequisite : compiled.directPrerequisites(current)) {
+                    if (distance.putIfAbsent(prerequisite, distance.get(current) + 1) == null) pending.addLast(prerequisite);
+                }
+            }
+            distance.remove(id);
+            Set<String> prerequisites = distance.keySet();
+            prerequisites.removeAll(evaluation.masteredGoalIds());
+            prerequisites.removeAll(credits);
+            var open = prerequisites.stream().map(goal -> new LevelCompletionResponse.PracticePrerequisite(
+                    goal, completionTitle(graph.get(goal)))).toList();
+            // Keep an already published in-focus transition, including its completion navigation intent.
+            var available = actions.stream().filter(action -> id.equals(action.goalId())
+                    && "voluntary".equals(action.intent()) && "learnGoal".equals(action.action())).findFirst();
+            if (available.isPresent()) {
+                var action = available.get();
+                actions.set(actions.indexOf(action), new LevelCompletionResponse.Action(action.action(), id,
+                        action.title(), action.intent(), new LevelCompletionResponse.PracticeStep(id, open)));
+                continue;
+            }
+            boolean strict = Boolean.TRUE.equals(learner.getStrictMode());
+            List<String> focus = new ArrayList<>(List.of(id));
+            if (strict) focus.addAll(prerequisites);
+            var frontier = filterAtomicFrontier(getUncompactedRichFrontierForFocus(learner.getSkillpilotId(), focus));
+            String start = frontier.stream().map(FrontierGoal::id).filter(id::equals).findFirst().orElse(null);
+            if (start == null && strict) {
+                start = frontier.stream().map(FrontierGoal::id).filter(prerequisites::contains)
+                        .filter(goal -> !isExamGoal(graph.get(goal)))
+                        .min(Comparator.comparingInt(distance::get)).orElse(null);
+            }
+            if (start == null) continue;
+            var title = completionTitle(graph.get(id));
+            var first = completionTitle(graph.get(start));
+            var label = id.equals(start)
+                    ? Map.of("de", "Einzelfokus starten: " + title.get("de"), "en", "Start individual focus: " + title.get("en"))
+                    : Map.of("de", "Grundlagen für „" + title.get("de") + "“ erarbeiten: " + first.get("de"),
+                            "en", "Study the prerequisites for “" + title.get("en") + "”: " + first.get("en"));
+            actions.add(new LevelCompletionResponse.Action("focusPractice", id, label, "voluntary",
+                    new LevelCompletionResponse.PracticeStep(start, open)));
+        }
+    }
+
+    private CompositionViewService.CompositionStructureResolution completionUnitSection(String profileId) {
+        if (compositionViewService == null || profileId == null || !profileId.startsWith(AUTOMATIC_COMPLETION_PREFIX)) return null;
+        String root = profileId.substring(AUTOMATIC_COMPLETION_PREFIX.length());
+        return isCompositionStructureGoalId(root) ? compositionViewService.resolveStructureReference(root) : null;
+    }
+
+    private boolean unitPartMaterialCurrent(String profileId, String goalId, Map<String, LearningGoal> graph,
+            Map<String, Set<String>> changedByProfile) {
+        if (!unitPlanningCreditsEnabled() || unitLearningMaterialService == null || profileId == null
+                || !profileId.startsWith(AUTOMATIC_COMPLETION_PREFIX)) return true;
+        Set<String> changed = changedByProfile.computeIfAbsent(profileId, id -> unitLearningMaterialService
+                .assessmentBindingForReference(id.substring(AUTOMATIC_COMPLETION_PREFIX.length()))
+                .map(binding -> binding.contract().parts().stream().filter(part -> !currentUnitPart(part, graph))
+                    .map(UnitAssessmentContract.Part::goalId).collect(Collectors.toUnmodifiableSet()))
+                .orElse(Set.of()));
+        return !changed.contains(goalId);
+    }
+
+    private UnitAssessmentResponse unitAssessment(Learner learner, CompositionViewService.CompositionStructureResolution section,
+            GoalProjection projection, Map<String, LearningGoal> graph) {
+        if (section == null || unitLearningMaterialService == null || verifiedExamPassService == null
+                || !projection.compositionViewIds().contains(section.viewId())) return null;
+        Map<String, Object> view = compositionViewService.findViewById(section.viewId());
+        if (view == null || !(view.get("landscapeId") instanceof String landscape)) return null;
+        var contract = unitLearningMaterialService.find(landscape, section.viewId(), section.nodeId())
+                .map(UnitLearningMaterialService.Material::assessmentContract).orElse(null);
+        if (contract == null || !contract.appliesTo(section.viewId())) return null;
+        String learnerId = learner.getSkillpilotId();
+        Set<String> mastered = masteryRepository.findMasteredGoalIds(learnerId,
+                contract.contentGoalIds(), PLANNING_SCOPE_MASTERY_THRESHOLD);
+        var receipts = verifiedExamPassService.findForGoals(learnerId,
+                contract.parts().stream().map(UnitAssessmentContract.Part::goalId).toList());
+        var result = validatedUnitAssessment(new UnitLearningMaterialService.AssessmentBinding(landscape,
+                section.viewId(), section.nodeId(), contract), projection, graph, receipts, mastered);
+        return result == null ? null : result.response();
     }
 
     private Map<String, String> completionTitle(LearningGoal goal) {
@@ -907,6 +1211,15 @@ public class LearnerService {
             }
             learner.setActiveGoalId(null); learner.setLearningState(LearningState.FRONTIER);
             saveCompletionWorkflow(learner, old.withNavigation("paused", null));
+        } else if ("focusPractice".equals(request.action())) {
+            var action = offered.response().actions().stream().filter(item -> "focusPractice".equals(item.action())
+                    && Objects.equals(item.goalId(), request.goalId()) && item.practice() != null).findFirst().orElseThrow();
+            Set<String> focus = new LinkedHashSet<>(List.of(action.goalId()));
+            if (Boolean.TRUE.equals(learner.getStrictMode())) {
+                action.practice().openPrerequisites().forEach(prerequisite -> focus.add(prerequisite.goalId()));
+            }
+            setPlannedGoals(skillpilotId, focus);
+            setActiveGoal(skillpilotId, action.practice().startGoalId());
         } else if ("learnGoal".equals(request.action())) {
             CompletionWorkflowState old = completionWorkflow(learner);
             if (!completionWorkflowMatches(learner, old) || request.intent() == null
@@ -993,7 +1306,8 @@ public class LearnerService {
                     && Objects.equals(assessment.goalId(), request.goalId())));
         if (!publishedStart || (!newRoute && (snapshot.evaluation() == null
                 || !snapshot.compiled().assessmentGoalIds().contains(request.goalId())
-                || snapshot.evaluation().masteredAssessmentGoalIds().contains(request.goalId())))
+                || snapshot.response().assessments().stream().anyMatch(assessment ->
+                        assessment.goalId().equals(request.goalId()) && assessment.mastered())))
                 || isExamGoalUnavailableForHardCheck(projection.visibleGoals().get(request.goalId()))) {
             throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT, "This assessment cannot be started.");
         }
@@ -2269,11 +2583,8 @@ public class LearnerService {
                     LearningGoal member = projection.visibleGoals().get(id);
                     return !isExamGoal(member) && !isSrsGoal(member) && !isOrientationGoal(member);
                 }).map(id -> "goal:" + id).collect(Collectors.toSet());
-        List<SrsCard> selected = filterSrsCards(deck, loadSrsDeckCards(deck, source)).stream()
+        return filterSrsCards(deck, loadSrsDeckCards(deck, source)).stream()
                 .filter(card -> card.tags != null && card.tags.stream().anyMatch(topicTags::contains)).toList();
-        // The current component's next-batch request carries only the full deck ID.
-        // Publish scoped practice only when that request will never be necessary.
-        return selected.size() <= MEMORY_PRACTICE_BATCH_LIMIT ? selected : List.of();
     }
 
     private VerifiedRecallContext resolveVerifiedRecallContext(
@@ -3390,6 +3701,12 @@ public class LearnerService {
 
     @Transactional
     public MasteryUpdateResponse setMastery(String skillpilotId, MasteryUpdateRequest request) {
+        return setMastery(skillpilotId, request, null);
+    }
+
+    /** Trusted scored-result hook runs after persistence and before successor planning in the same transaction. */
+    @Transactional
+    public MasteryUpdateResponse setMastery(String skillpilotId, MasteryUpdateRequest request, Runnable verifiedAssessmentReceipt) {
         assertWritableLearningSession(skillpilotId);
         Map<String, Double> requestedMastery = request == null ? null : request.mastery();
         if (request == null || requestedMastery == null || requestedMastery.isEmpty()) {
@@ -3506,6 +3823,7 @@ public class LearnerService {
         mastery.setValue(masteryValue);
         masteryRepository.save(mastery);
         recordGoalCompletion(learner, effectiveGoalId, def, previousValue, masteryValue, learningPlanClock.instant(), "coach_learning");
+        if (masteryValue == 1.0 && verifiedAssessmentReceipt != null) verifiedAssessmentReceipt.run();
 
         // A failed/partial plan attempt remains the current work item. This is
         // intentionally scoped to plan mode so the established default
@@ -3759,7 +4077,7 @@ public class LearnerService {
                 }
             }
         }
-        List<String> atoms = blocks.stream().filter(block -> "learning".equals(block.kind()))
+        List<String> atoms = blocks.stream().filter(block -> block.isAtomicLearning())
                 .flatMap(block -> block.atomicGoalIds().stream()).toList();
         // Detect relevant contains cycles before inherited-requirement resolution.
         assertLearningPlanGraphAcyclic(atoms, goals,
@@ -3878,9 +4196,9 @@ public class LearnerService {
                     continue;
                 }
                 List<String> focusGoalIds;
-                if (("milestone".equals(block.kind()) || "learning".equals(block.kind())) && block.goalIds() != null) {
+                if (("milestone".equals(block.kind()) || block.isAtomicLearning()) && block.goalIds() != null) {
                     focusGoalIds = block.goalIds();
-                } else if ("learning".equals(block.kind())) {
+                } else if (block.isAtomicLearning()) {
                     String focusGoalId = block.goalId();
                     if (focusGoalId == null || focusGoalId.isBlank()) {
                         if (block.atomicGoalIds() != null) {
@@ -4033,6 +4351,12 @@ public class LearnerService {
                 updateLearningPlanDigest(digest, "block");
                 updateLearningPlanDigest(digest, block.id());
                 updateLearningPlanDigest(digest, block.kind());
+                if (block.unitAssignment() != null) {
+                    updateLearningPlanDigest(digest, "unit-assignment");
+                    updateLearningPlanDigest(digest, block.unitAssignment().sectionGoalId());
+                    updateLearningPlanDigest(digest, block.unitAssignment().revision());
+                    updateLearningPlanDigest(digest, block.unitAssignment().fingerprint());
+                }
                 if (!block.isActive()) updateLearningPlanDigest(digest, "inactive");
                 updateLearningPlanDigest(digest, block.goalId());
                 updateLearningPlanDigest(digest, block.startDate() == null ? null : block.startDate().toString());
@@ -4044,7 +4368,7 @@ public class LearnerService {
                         updateLearningPlanDigest(digest, atomicGoalId);
                     }
                 }
-                if (("milestone".equals(block.kind()) || "learning".equals(block.kind())) && block.goalIds() != null) {
+                if (("milestone".equals(block.kind()) || block.isAtomicLearning()) && block.goalIds() != null) {
                     for (String goalId : block.goalIds()) {
                         updateLearningPlanDigest(digest, "milestone".equals(block.kind()) ? "milestone-goal" : "learning-goal");
                         updateLearningPlanDigest(digest, goalId);
@@ -4160,7 +4484,7 @@ public class LearnerService {
                 learner.getPersonalCurriculum());
 
         for (LearnerLearningPlanApi.Block block : blocks) {
-            if (block == null || !("learning".equals(block.kind()) || "milestone".equals(block.kind()))) continue;
+            if (block == null || !(block.isAtomicLearning() || "milestone".equals(block.kind()))) continue;
             List<String> roots = "milestone".equals(block.kind())
                     ? block.goalIds() == null ? List.of() : block.goalIds()
                     : block.focusGoalIds();
@@ -4171,7 +4495,7 @@ public class LearnerService {
             }
             // Multiple canonical roots are a union, not an intersection. Each
             // submitted atom must still belong to this subject and to that union.
-            if ("learning".equals(block.kind()) && block.atomicGoalIds() != null
+            if (block.isAtomicLearning() && block.atomicGoalIds() != null
                     && !allowedAtoms.containsAll(block.atomicGoalIds())) {
                 throw invalidLearningPlanFocus(block.id());
             }
@@ -4269,7 +4593,8 @@ public class LearnerService {
                 if ("exam".equals(scope.kind())) {
                     hasExam = true;
                     scope.goalIds().stream().filter(projection.targetGoalIds()::contains).forEach(atoms::add);
-                } else if (!scope.goalIds().isEmpty()) ordinaryLearning = true;
+                } else if (!scope.goalIds().isEmpty() || blocks.stream().anyMatch(block ->
+                        block.isActive() && block.unitAssignment() != null)) ordinaryLearning = true;
             } catch (ResponseStatusException exception) {
                 if (exception.getStatusCode().is5xxServerError()) throw exception;
                 hasExam |= explicitExam;
@@ -4289,7 +4614,7 @@ public class LearnerService {
             if (block.kind() == null || !Set.of("learning", "buffer", "milestone").contains(block.kind())
                     || ("milestone".equals(block.kind()) ? block.date() == null
                             : block.startDate() == null || block.endDate() == null)
-                    || ("learning".equals(block.kind()) && (block.atomicGoalIds() == null
+                    || (block.isAtomicLearning() && (block.atomicGoalIds() == null
                             || block.atomicGoalIds().stream().anyMatch(id -> id == null || id.isBlank())))
                     || (block.goalIds() != null && block.goalIds().stream().anyMatch(id -> id == null || id.isBlank()))) {
                 throw new IllegalStateException("Stored learning-plan block has an invalid shape");
@@ -4342,7 +4667,7 @@ public class LearnerService {
         Map<String, LearningGoal> structuralGoals = projection.structuralGoals();
         Map<String, List<String>> effectiveRequires = computeEffectiveRequires(structuralGoals);
         List<String> submittedAtoms = blocks.stream()
-                .filter(block -> block.isActive() && "learning".equals(block.kind()))
+                .filter(block -> block.isActive() && block.isAtomicLearning())
                 .filter(block -> block.atomicGoalIds() != null)
                 .flatMap(block -> block.atomicGoalIds().stream())
                 .toList();
@@ -4359,7 +4684,7 @@ public class LearnerService {
             List<LearnerLearningPlanApi.Block> blocks,
             Map<String, ? extends Collection<String>> submittedPrerequisitesByDependent) {
         List<String> submittedAtoms = blocks.stream()
-                .filter(block -> block.isActive() && "learning".equals(block.kind()))
+                .filter(block -> block.isActive() && block.isAtomicLearning())
                 .filter(block -> block.atomicGoalIds() != null)
                 .flatMap(block -> block.atomicGoalIds().stream())
                 .toList();
@@ -4408,7 +4733,7 @@ public class LearnerService {
         Map<String, LocalDate> scheduledDueDates = LearnerLearningPlanService
                 .scheduledAtomicGoalDueDatesForSchedule(blocks);
         for (LearnerLearningPlanApi.Block block : blocks) {
-            if (!block.isActive() || !"learning".equals(block.kind())
+            if (!block.isActive() || !block.isAtomicLearning()
                     || block.atomicGoalIds() == null
                     || block.atomicGoalIds().isEmpty()) {
                 continue;
@@ -4456,7 +4781,7 @@ public class LearnerService {
             List<LearnerLearningPlanApi.Block> blocks) {
         TreeSet<LocalDate> activeWorkdays = new TreeSet<>();
         for (LearnerLearningPlanApi.Block block : blocks) {
-            if (!block.isActive() || !"learning".equals(block.kind())
+            if (!block.isActive() || !block.isAtomicLearning()
                     || block.atomicGoalIds() == null
                     || block.atomicGoalIds().isEmpty()) {
                 continue;
@@ -4489,10 +4814,10 @@ public class LearnerService {
             List<LocalDate> activeWorkdays,
             LearningPlanScheduleCheckBudget scheduleCheckBudget) {
         long learningBlockCount = blocks.stream()
-                .filter(block -> block.isActive() && "learning".equals(block.kind()))
+                .filter(block -> block.isActive() && block.isAtomicLearning())
                 .count();
         long atomCount = blocks.stream()
-                .filter(block -> block.isActive() && "learning".equals(block.kind()))
+                .filter(block -> block.isActive() && block.isAtomicLearning())
                 .filter(block -> block.atomicGoalIds() != null)
                 .mapToLong(block -> block.atomicGoalIds().size())
                 .sum();
@@ -4704,7 +5029,7 @@ public class LearnerService {
         Map<String, Integer> currentOrderIndex = new HashMap<>();
         int currentIndex = 0;
         for (LearnerLearningPlanApi.Block block : blocks) {
-            if (!block.isActive() || !"learning".equals(block.kind()) || block.atomicGoalIds() == null) {
+            if (!block.isActive() || !block.isAtomicLearning() || block.atomicGoalIds() == null) {
                 continue;
             }
             for (String goalId : block.atomicGoalIds()) {
@@ -4721,7 +5046,7 @@ public class LearnerService {
                         Integer.MAX_VALUE))
                 .thenComparing(goalId -> goalId);
         for (LearnerLearningPlanApi.Block block : blocks) {
-            if (!block.isActive() || !"learning".equals(block.kind())
+            if (!block.isActive() || !block.isAtomicLearning()
                     || block.atomicGoalIds() == null
                     || block.atomicGoalIds().size() < 2) {
                 orderedBlocks.add(block);
@@ -6959,7 +7284,8 @@ public class LearnerService {
                     contextGoals, existingMastery, resolveProjectionStateFilterId(learner)));
             resolveSrsMasterySnapshot(learner.getSkillpilotId(), List.copyOf(contextGoals.values()))
                     .forEach((id, mastered) -> mastery.put(id, mastered ? 1.0 : 0.0));
-            return completionApplicationService.evaluate(compiled, mastery).waivedGoalIds();
+            return withUnitPlanningCredits(completionApplicationService.evaluate(compiled, mastery),
+                    compiled, learner, projection, graph).waivedGoalIds();
         } catch (RuntimeException unavailable) {
             // The context projection publishes the error. Do not recommend work from an
             // invented fallback outcome; explicit raw availability remains separate.
@@ -7356,16 +7682,17 @@ public class LearnerService {
             Map<String, LearningGoal> lookup = prerequisiteGraph(learner, projection);
             var topology = frontierPrerequisiteCompiler.normalizePrerequisites(lookup);
             topology.validateContext(automaticCompletionTargets(AUTOMATIC_COMPLETION_DEFAULT, projection));
-            return new FrontierPrerequisites(lookup, topology, mastery, prerequisiteScope);
+            return new FrontierPrerequisites(lookup, topology, mastery, prerequisiteScope,
+                    unitPlanningCredits(learner, projection, lookup).keySet());
         } catch (CompletionCompilationException invalid) {
             // Broken authored definitions never become an empty, successful demand.
-            return new FrontierPrerequisites(Map.of(), null, mastery, prerequisiteScope);
+            return new FrontierPrerequisites(Map.of(), null, mastery, prerequisiteScope, Set.of());
         }
     }
 
     private record FrontierPrerequisites(Map<String, LearningGoal> lookup,
             CompletionProfileCompiler.PrerequisiteTopology topology, Map<String, Double> mastery,
-            Set<String> scope) { }
+            Set<String> scope, Set<String> planningCredits) { }
 
     private boolean areFrontierPrerequisitesMastered(
             LearningGoal goal, GoalProjection projection, FrontierPrerequisites prerequisites) {
@@ -7387,7 +7714,8 @@ public class LearnerService {
         }
         for (String id : requiredAtoms) {
             if (prerequisites.scope() != null && !prerequisites.scope().contains(id)) continue;
-            if (prerequisites.mastery().getOrDefault(id, 0.0) < PLANNING_SCOPE_MASTERY_THRESHOLD) return false;
+            if (prerequisites.mastery().getOrDefault(id, 0.0) < PLANNING_SCOPE_MASTERY_THRESHOLD
+                    && !prerequisites.planningCredits().contains(id)) return false;
         }
         return true;
     }
@@ -8083,7 +8411,7 @@ public class LearnerService {
                         paths.stream().distinct().limit(2).count() > 1));
 
         List<ActiveGoalContext.Prerequisite> prerequisites = goal == null ? List.of()
-                : coachDirectPrerequisites(learner.getSkillpilotId(), goal, projection, language);
+                : coachDirectPrerequisites(learner, goal, projection, language);
         ActiveGoalContext.UnitIntroduction introduction = null;
         ActiveGoalContext.PracticeExercise practiceExercise = null;
         Map<String, ActiveGoalContext.Activity> activities = new LinkedHashMap<>();
@@ -8138,10 +8466,14 @@ public class LearnerService {
         return Integer.MAX_VALUE;
     }
 
-    private List<ActiveGoalContext.Prerequisite> coachDirectPrerequisites(String skillpilotId, LearningGoal goal,
+    private List<ActiveGoalContext.Prerequisite> coachDirectPrerequisites(Learner learner, LearningGoal goal,
             GoalProjection projection, String language) {
         if (goal.getRequires() == null || goal.getRequires().isEmpty()) return List.of();
-        Set<String> savedMastery = masteryRepository.findByLearner_SkillpilotId(skillpilotId).stream()
+        boolean hasBoundUnits = unitPlanningCreditsEnabled() && unitLearningMaterialService != null
+                && !unitLearningMaterialService.assessmentBindings(projection.compositionViewIds()).isEmpty();
+        Set<String> planningCredits = hasBoundUnits
+                ? unitPlanningCredits(learner, projection, prerequisiteGraph(learner, projection)).keySet() : Set.of();
+        Set<String> savedMastery = masteryRepository.findByLearner_SkillpilotId(learner.getSkillpilotId()).stream()
                 .filter(result -> result.getValue() >= PLANNING_SCOPE_MASTERY_THRESHOLD)
                 .map(Mastery::getGoalKey).collect(Collectors.toSet());
         return goal.getRequires().stream().map(reference -> resolveGoalRef(reference, projection.structuralGoals()))
@@ -8151,7 +8483,7 @@ public class LearnerService {
                         && !isExamGoal(prerequisite) && !isSrsGoal(prerequisite))
                 .limit(5)
                 .map(prerequisite -> new ActiveGoalContext.Prerequisite(prerequisite.getId(), coachGoalTitle(prerequisite, language),
-                        savedMastery.contains(prerequisite.getId())))
+                        savedMastery.contains(prerequisite.getId()), planningCredits.contains(prerequisite.getId())))
                 .filter(prerequisite -> prerequisite.title() != null && !prerequisite.title().isBlank()).toList();
     }
 
@@ -8966,7 +9298,7 @@ public class LearnerService {
                         .forEach((goalId, date) -> schedule.merge(
                                 goalId, date, (left, right) -> left.isBefore(right) ? left : right));
                 validPlans.put(plan, blocks);
-                if (blocks.stream().filter(block -> block.isActive() && "learning".equals(block.kind()))
+                if (blocks.stream().filter(block -> block.isActive() && block.isAtomicLearning())
                         .map(LearnerLearningPlanApi.Block::atomicGoalIds)
                         .filter(Objects::nonNull)
                         .anyMatch(goalIds -> goalIds.contains(completedAnchorGoalId))) {

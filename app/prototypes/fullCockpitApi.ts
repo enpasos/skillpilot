@@ -11,7 +11,7 @@ export interface FullCockpitSnapshot {
   version: number
   scenario: FullCockpitScenario
   mastery: Record<string, number>
-  /** Derived display result of the explicitly fictional completed scenario. */
+  /** Goals no longer required in the completed example; these carry no assessment credit. */
   implicitGoalIds: string[]
   activeGoalId: string
   plannedGoalIds: string[]
@@ -141,7 +141,7 @@ export function createFullCockpitApi(data: FullCockpitData = fullCockpitData): F
     ids.forEach(visit)
     return [...found]
   }
-  const completed = (ids: readonly string[]) => ids.filter(id => snapshot.mastery[id] === 1 || snapshot.implicitGoalIds.includes(id)).length
+  const completedForSection = (ids: readonly string[]) => ids.filter(id => snapshot.mastery[id] === 1 || snapshot.implicitGoalIds.includes(id)).length
   const explicitlyCompleted = (ids: readonly string[]) => ids.filter(id => snapshot.mastery[id] === 1).length
   const completion = (): LevelCompletion | null => {
     const automatic = !completionSelected || snapshot.scenario === 'completed'
@@ -153,13 +153,13 @@ export function createFullCockpitApi(data: FullCockpitData = fullCockpitData): F
       calculationStatus: 'valid', learnerRevision: version,
       title: title('Lokaler Prüfungsweg · Skalarprodukt'),
       contextRef: 'fixture-local-completion', profileId: automatic ? 'automatic:fixture-full-overview' : 'fixture-dot-product',
-      profileRevision: '1', curriculumGeneration: 'fixture-local', complete: completed(data.targetGoalIds) === 2,
+      profileRevision: '1', curriculumGeneration: 'fixture-local', complete: completedForSection(data.targetGoalIds) === 2,
       masteredTargetCount: explicitlyCompleted(data.targetGoalIds), waivedTargetCount: implicit ? 1 : 0,
-      pendingTargetCount: 2 - completed(data.targetGoalIds), targetCount: 2,
+      pendingTargetCount: 2 - completedForSection(data.targetGoalIds), targetCount: 2,
       masteredAssessmentCount: assessments[0].mastered ? 1 : 0, requiredAssessmentCount: 1,
-      waivedTargetGoalIds: implicit ? [data.ordinaryId] : [],
+      waivedTargetGoalIds: implicit ? [data.ordinaryId] : [], planningCreditGoalIds: [],
       waiverDetails: implicit ? [{ goalId: data.ordinaryId, title: title(data.goalIndexAll.get(data.ordinaryId)!.title),
-        ruleId: 'no_remaining_demand', assessments: [{ goalId: data.assessmentId, title: assessments[0].title }], assessmentCount: 1 }] : [],
+        ruleId: 'no_remaining_demand', assessments: [], assessmentCount: 0 }] : [],
       assessments,
       profileOptions: snapshot.scenario !== 'completed' ? [{ profileId: 'fixture-dot-product', title: title('Skalarprodukt und Projektion · lokale Vorschau'), targetCount: 2,
         requiredAssessmentCount: 1, assessments }] : [],
@@ -180,8 +180,8 @@ export function createFullCockpitApi(data: FullCockpitData = fullCockpitData): F
       return { id, title: goal.title, description: goal.description, type: 'atomic', nodeKind: goal.nodeKind, reason: 'local-fixture' }
     })
     return { activeGoal: { id: snapshot.activeGoalId }, frontier,
-      goals: { planned: snapshot.plannedGoalIds.map(id => ({ id })), mastered_count: completed(scope), total_count: scope.length,
-        personalized: { mastered_atomic: completed(all), total_atomic: all.length } },
+      goals: { planned: snapshot.plannedGoalIds.map(id => ({ id })), mastered_count: explicitlyCompleted(scope), total_count: scope.length,
+        personalized: { mastered_atomic: explicitlyCompleted(all), total_atomic: all.length } },
       stateMachine: { activeGoal: { id: snapshot.activeGoalId }, goalOptions: frontier, requiredAction: null }, levelCompletion: completion() }
   }
 
@@ -191,8 +191,8 @@ export function createFullCockpitApi(data: FullCockpitData = fullCockpitData): F
     const subject = (physics: boolean): LearnerPlanSubjectStatus => {
       const ids = physics ? [data.physicsGoalId] : data.targetGoalIds
       const subjectIds = atomsBelow([physics ? data.physicsLandscapeId : data.mathLandscapeId])
-      const achieved = completed(ids)
-      const subjectAchieved = completed(subjectIds)
+      const achieved = explicitlyCompleted(ids)
+      const subjectAchieved = explicitlyCompleted(subjectIds)
       const periodCompleted = explicitlyCompleted(subjectIds)
       const subjectLabel = physics ? 'Physik · UI-Testdaten' : 'Mathematik'
       const periodTarget = week ? 8 : 2

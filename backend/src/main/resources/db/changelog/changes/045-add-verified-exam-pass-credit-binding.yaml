@@ -1,0 +1,33 @@
+databaseChangeLog:
+  - changeSet:
+      id: 045-add-verified-exam-pass-credit-binding
+      author: skillpilot
+      changes:
+        # Only a verified evaluation can establish a release binding. Existing passes start unbound.
+        - createTable:
+            tableName: verified_exam_pass_credit_binding
+            columns:
+              - column:
+                  name: pass_id
+                  type: UUID
+                  constraints:
+                    nullable: false
+              - column:
+                  name: binding_id
+                  type: VARCHAR(71)
+                  constraints:
+                    nullable: false
+        - addPrimaryKey:
+            tableName: verified_exam_pass_credit_binding
+            columnNames: pass_id, binding_id
+            constraintName: pk_verified_exam_pass_credit_binding
+        - addForeignKeyConstraint:
+            baseTableName: verified_exam_pass_credit_binding
+            baseColumnNames: pass_id
+            referencedTableName: verified_exam_pass
+            referencedColumnNames: id
+            constraintName: fk_verified_exam_pass_credit_binding
+            onDelete: CASCADE
+      rollback:
+        - dropTable:
+            tableName: verified_exam_pass_credit_binding

@@ -19,7 +19,11 @@ public record ActiveGoalContext(
 
     public record UnitPath(List<String> sections, boolean inCurrentFocus, boolean otherPlacements) { }
 
-    public record Prerequisite(String goalId, String title, boolean recorded) { }
+    public record Prerequisite(String goalId, String title, boolean recorded, boolean planningCredit) {
+        public Prerequisite(String goalId, String title, boolean recorded) {
+            this(goalId, title, recorded, false);
+        }
+    }
 
     public record UnitIntroduction(String sectionTitle, String question, String promise) { }
 

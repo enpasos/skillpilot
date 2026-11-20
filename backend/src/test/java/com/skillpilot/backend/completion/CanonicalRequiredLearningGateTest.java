@@ -106,15 +106,15 @@ class CanonicalRequiredLearningGateTest {
         PersonalCurriculumLearningScope learning = ReflectionTestUtils.invokeMethod(probe.projection(), "learningScope");
         assertThat(learning.seedAtomicGoalIds()).containsExactly("T");
         assertThat(learning.learningAtomicGoalIds()).containsExactlyInAnyOrder("T", "P", "Q");
-        assertThat(roleProbe(service, probe.graph(), probe.projection(), "T", probe.topology())).isTrue();
+        assertThat(roleProbe(service, probe.graph(), probe.projection(), "T")).isTrue();
         Object missingTarget = withoutAcquisitionTarget(probe.projection(), "Q");
         PersonalCurriculumLearningScope broken = ReflectionTestUtils.invokeMethod(missingTarget, "learningScope");
         assertThat(broken.seedAtomicGoalIds()).isEqualTo(learning.seedAtomicGoalIds());
         assertThat(broken.learningAtomicGoalIds()).doesNotContain("Q");
         assertThat(ReflectionTestUtils.<Map<String, LearningGoal>>invokeMethod(missingTarget, "visibleGoals")).doesNotContainKey("Q");
         assertThat(ReflectionTestUtils.<Map<String, LearningGoal>>invokeMethod(missingTarget, "canonicalPrerequisiteGoals")).isSameAs(graph);
-        assertThat(roleProbe(service, probe.graph(), missingTarget, "T", probe.topology())).isFalse();
-        assertThat(roleProbe(service, probe.graph(), withoutNonAtomicRole(probe.projection(), "K"), "T", probe.topology())).isTrue();
+        assertThat(roleProbe(service, probe.graph(), missingTarget, "T")).isFalse();
+        assertThat(roleProbe(service, probe.graph(), withoutNonAtomicRole(probe.projection(), "K"), "T")).isTrue();
         assertThat((JsonNode) MAPPER.valueToTree(graph)).isEqualTo(canonicalBefore);
         assertThat(learning.learningAtomicGoalIds()).contains("Q");
         Map<String, LearningGoal> missingDefinition = new TreeMap<>(graph);
@@ -267,7 +267,7 @@ class CanonicalRequiredLearningGateTest {
             assertThatThrownBy(() -> fixture.assertLearningEmission(
                     scope.learner().getPersonalCurriculum(), broken)).isInstanceOf(AssertionError.class)
                     .hasMessageContaining("APV-102");
-            assertThat(roleProbe(fixture.service, scope.graph(), broken, assessment, scope.topology())).isFalse();
+            assertThat(roleProbe(fixture.service, scope.graph(), broken, assessment)).isFalse();
             Object narrowed = ReflectionTestUtils.invokeMethod(fixture.service, "frontierPrerequisites",
                     scope.learner(), broken, fullMastery, Set.of(assessment));
             assertThat(ReflectionTestUtils.<Object>invokeMethod(narrowed, "topology")).isNotNull();
@@ -281,8 +281,7 @@ class CanonicalRequiredLearningGateTest {
 
     private record ResolvedScope(Learner learner, Object projection, Set<String> atomicTargets,
             Map<String, LearningGoal> graph, CompletionProfileCompiler.PrerequisiteTopology topology) { }
-    private record CanonicalProbe(Map<String, LearningGoal> graph,
-            CompletionProfileCompiler.PrerequisiteTopology topology, Object projection) { }
+    private record CanonicalProbe(Map<String, LearningGoal> graph, Object projection) { }
     private record Discovery(Map<String, Map<String, Map<String, Object>>> configurations,
             Set<String> plannerScopes, Map<String, PersonalizationPlan> offeredPlans) { }
 
@@ -302,7 +301,7 @@ class CanonicalRequiredLearningGateTest {
         constructor.setAccessible(true);
         Object projection = constructor.newInstance(graph, targets, support, graph, Set.of(),
                 atoms.stream().sorted().toList(), true, learningScope, graph);
-        return new CanonicalProbe(graph, topology, projection);
+        return new CanonicalProbe(graph, projection);
     }
 
     /** Production services over the committed curricula, with unsaved learners only. */
@@ -471,15 +470,16 @@ class CanonicalRequiredLearningGateTest {
         return new ObjectMapper().enable(JsonParser.Feature.ALLOW_SINGLE_QUOTES).readTree(source.substring(start + marker.length(), end));
     }
 
-    /** Effective-role check of one goal with every goal of the graph mastered. */
+    /** Effective-role check with full mastery, strict prerequisites and no individual assessment credit. */
     private static boolean roleProbe(LearnerService service, Map<String, LearningGoal> graph, Object projection,
-            String sourceId, CompletionProfileCompiler.PrerequisiteTopology topology) throws Exception {
+            String sourceId) {
+        var learner = new Learner();
+        learner.setStrictMode(true);
         Map<String, Double> mastered = new TreeMap<>();
         graph.keySet().forEach(id -> mastered.put(id, 1.0));
-        var type = Class.forName("com.skillpilot.backend.service.LearnerService$FrontierPrerequisites");
-        var constructor = type.getDeclaredConstructor(Map.class, CompletionProfileCompiler.PrerequisiteTopology.class, Map.class, Set.class);
-        constructor.setAccessible(true);
-        Object prerequisites = constructor.newInstance(graph, topology, mastered, null);
+        Object prerequisites = ReflectionTestUtils.invokeMethod(service, "frontierPrerequisites", learner, projection, mastered, null);
+        assertThat(ReflectionTestUtils.<Object>invokeMethod(prerequisites, "topology")).isNotNull();
+        assertThat(ReflectionTestUtils.<Set<String>>invokeMethod(prerequisites, "planningCredits")).isEmpty();
         return ReflectionTestUtils.invokeMethod(service, "areFrontierPrerequisitesMastered", graph.get(sourceId), projection, prerequisites);
     }
 

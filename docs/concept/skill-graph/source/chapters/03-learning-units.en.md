@@ -18,6 +18,8 @@ A unit’s **learning promise** describes what learners will be able to do and w
 
 The [proposed short opening](repo:docs/concept/skill-graph/learning-unit-motivation-concept-2026-11-17.md) uses an application example written for the motivation goal and attributed to SkillPilot as a didactic contribution. Section~@ref{sec:orientation} describes how the coach guides and concludes the opening.
 
+Learners can ask for a short review during the conversation. If the current unit has suitable flashcards, the coach can also offer them once a concept has been explored. The learner can practise the cards or carry on with their question. After practice the coach returns to the open question at the same learning goal. Learners who ask for an explanation get one in the conversation. Practice updates the card review schedule. A unit that expressly requires verified recall has a separate check for it.
+
 A simplified example with two content goals shows how the graph represents a learning path. In Figure~@ref{fig:unit-entry-paths}, assessment $\nd{q}$ requires content goal $\nd{b}$, which requires $\nd{a}$, which in turn requires the opening $\nd{m}$. Each arrow points from a goal to its prerequisite. A learner following the intended order starts at $\nd{m}$ and works through $\nd{a}$ and $\nd{b}$ towards the assessment. The subject-matter coverage review establishes whether the tasks and their grading actually demonstrate application of $\nd{a}$ and $\nd{b}$.
 
 ::figure{id="fig:unit-entry-paths"}

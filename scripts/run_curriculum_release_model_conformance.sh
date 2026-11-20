@@ -256,6 +256,9 @@ if len(packages) != 1 or packages[0].get("outerZipSha256") != build.get("zipSha2
     raise SystemExit("provisioner active lock does not select the built ZIP")
 PY
 
+bash scripts/check_provisioned_curriculum_package_backend.sh \
+  "${PACKAGE_STORE}" "${PACKAGE_OUTPUT}/backend-package-load-report.json" "${PACKAGE_OUTER_SHA256}"
+
 python3 -B scripts/evaluate_curriculum_package_readiness.py \
   --contracts-dir "${CONTRACTS_DIR}" \
   --zip "${PACKAGE_ZIP}" \
@@ -267,11 +270,21 @@ python3 -B scripts/evaluate_curriculum_package_readiness.py \
   --compact \
   >/dev/null
 
-python3 -B - "${PACKAGE_CONSUMER_SMOKE_REPORT}" "${PACKAGE_READINESS_REPORT}" <<'PY'
+python3 -B - "${PACKAGE_CONSUMER_SMOKE_REPORT}" "${PACKAGE_READINESS_REPORT}" "${PACKAGE_CONSUMER_SMOKE_WORK}" <<'PY'
 import json
 import sys
+from pathlib import Path
 
-smoke, readiness = [json.load(open(path, encoding="utf-8")) for path in sys.argv[1:]]
+readiness = json.loads(Path(sys.argv[2]).read_bytes())
+checks = {check["id"]: check for check in readiness.get("checks", [])}
+consumer = checks.get("consumer.hermetic-package-only") or {}
+if consumer.get("result") != "pass":
+    diagnostic = Path(sys.argv[3]) / "consumer-runner-failure.log"
+    raise SystemExit(
+        f"Package-only consumer gate {consumer.get('result')}: {consumer.get('message')}."
+        + (f" Runner diagnostics: {diagnostic}" if diagnostic.is_file() else "")
+    )
+smoke = json.loads(Path(sys.argv[1]).read_bytes())
 if smoke.get("status") != "passed" or smoke.get("summary") != {
     "required": 15,
     "passed": 15,
@@ -279,10 +292,6 @@ if smoke.get("status") != "passed" or smoke.get("summary") != {
     "notRun": 0,
 }:
     raise SystemExit("real package consumer smoke did not pass its closed 15-check set")
-checks = {check["id"]: check for check in readiness.get("checks", [])}
-consumer = checks.get("consumer.hermetic-package-only") or {}
-if consumer.get("result") != "pass":
-    raise SystemExit("readiness report did not accept the hermetic consumer proof")
 consumer_evidence = readiness.get("consumerEvidence") or {}
 if consumer_evidence.get("status") != "accepted":
     raise SystemExit("readiness report did not bind the consumer-smoke evidence")

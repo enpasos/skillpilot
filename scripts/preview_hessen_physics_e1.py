@@ -1,0 +1,226 @@
+#!/usr/bin/env python3
+"""Start the local Hessen G8/G9 E.1 preview with disposable synthetic learners."""
+
+import argparse
+from contextlib import ExitStack
+import json
+import os
+from pathlib import Path
+import secrets
+import shutil
+import socket
+import subprocess
+import tempfile
+import time
+from urllib.error import HTTPError, URLError
+from urllib.parse import urlencode
+from urllib.request import Request, urlopen
+import uuid
+
+ROOT = Path(__file__).resolve().parents[1]
+OVERVIEW = 'a0e13c56-c25f-4742-9272-3a1a603ee52e'
+MATHEMATICS = '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced'
+MATH_COMPARISON_GOAL = '649b673c-1a74-5dc5-af01-b4c9e090b90d'
+PHYSICS = '7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a'
+
+
+def request(base, path, method='GET', data=None):
+    body = None if data is None else json.dumps(data).encode()
+    try:
+        with urlopen(Request(base + path, data=body, method=method,
+                             headers={'Content-Type': 'application/json'}), timeout=120) as response:
+            content = response.read()
+    except HTTPError as error:
+        raise RuntimeError(f'{method} {path}: HTTP {error.code}: {error.read(1000).decode()}') from error
+    return json.loads(content) if content else None
+
+
+def create_subject_learner(api, duration, subject):
+    created = request(api, '/api/ui/learners', 'POST', {})
+    learner_id = str(uuid.UUID(created['state']['skillpilotId']))
+    learner = '/api/ui/learners/' + learner_id
+    request(api, learner + '/curriculum', 'PUT', {'curriculumId': OVERVIEW})
+    request(api, learner + '/personal-curriculum', 'PUT', {
+        OVERVIEW: {'selected': True, 'filterId': 'DE-HE', 'durationModel': duration, 'stage': 'SekII'},
+        subject: {'selected': True, 'filterId': 'GK'},
+    })
+    plan = request(api, learner + '/personalization-plan')
+    for _ in range(15):
+        if plan['stage'] == 'COMPLETE':
+            break
+        options = plan['options']
+        choice = next((o for o in options if o['kind'] == 'COMPLETE_GROUP'), None)
+        choice = choice or next((o for o in options if o.get('filterId') == 'GK'), None)
+        if not choice:
+            raise RuntimeError(f'Unexpected personalization stage {plan["stage"]}')
+        plan = request(api, learner + '/personalization-options', 'POST', {'optionId': choice['optionId']})
+    if plan['stage'] != 'COMPLETE':
+        raise RuntimeError('Personalization is incomplete')
+    query = urlencode({'landscapeId': subject, 'schoolForm': 'Gymnasium', 'jurisdiction': 'DE-HE',
+                       'stage': 'SekII', 'courseProfile': 'GK', 'durationModel': duration})
+    view = request(api, '/api/ui/composition-views/match?' + query)
+    if not view or view['scope']['stage'] != 'SekII':
+        raise RuntimeError(f'{duration}: upper-secondary view for {subject} is missing')
+    return learner_id, view
+
+
+def create_learner(api, duration, expected_parts):
+    learner_id, view = create_subject_learner(api, duration, PHYSICS)
+    learner = '/api/ui/learners/' + learner_id
+    focus = f'composition:{view["viewId"]}:structure:physics-e1-motion'
+    request(api, learner + '/planned', 'PUT', {'goals': [focus]})
+    current = request(api, learner + '/state')['levelCompletion']
+    profile = 'automatic:' + focus
+    if current.get('profileId') != profile:
+        if not any(o['profileId'] == profile for o in current['profileOptions']):
+            raise RuntimeError(f'{duration}: E.1 was not offered')
+        current = request(api, learner + '/level-completion/actions', 'POST', {
+            'action': 'selectProfile', 'profileId': profile, 'expectedRevision': current['learnerRevision'],
+        })['levelCompletion']
+    if current.get('profileId') != profile or current.get('requiredAssessmentCount') != 5:
+        raise RuntimeError(f'{duration}: unexpected E.1 section')
+    assessment = current.get('unitAssessment') or {}
+    if [part['goalId'] for part in assessment.get('parts', [])] != expected_parts or assessment.get('passed') is not False:
+        raise RuntimeError(f'{duration}: expected the reviewed E.1 parts in order A, B, C, D in the upper-secondary view')
+    if any(request(api, learner + '/mastery')['mastery'].values()):
+        raise RuntimeError('The synthetic learner already has mastery')
+    return learner_id, focus
+
+
+def wait_ready(url, process):
+    for _ in range(480):
+        if process.poll() is not None:
+            raise RuntimeError(f'{process.args[0]} exited with {process.returncode}')
+        try:
+            with urlopen(url, timeout=3) as response:
+                if response.status == 200:
+                    return
+        except (OSError, URLError):
+            time.sleep(1)
+    raise RuntimeError('Service did not become ready at ' + url)
+
+
+def stop(process):
+    if process.poll() is None:
+        process.terminate()
+        try:
+            process.wait(25)
+        except subprocess.TimeoutExpired:
+            process.kill()
+            process.wait()
+
+
+def serve(args, work, stack):
+    backend, app = ROOT / 'backend', ROOT / 'app'
+    java_home = os.environ.get('JAVA_HOME')
+    java = str(Path(java_home) / 'bin/java') if java_home else shutil.which('java')
+    node = shutil.which('node')
+    if not java or not node or not (app / 'node_modules/vite/bin/vite.js').is_file():
+        raise RuntimeError('Install the repository JDK and Node version and run npm ci --prefix app.')
+    if args.api_port == args.ui_port:
+        raise ValueError('API and UI need distinct ports.')
+    for port in (args.api_port, args.ui_port):
+        with socket.socket() as probe:
+            probe.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+            probe.bind(('127.0.0.1', port))
+            probe.listen()
+    api, ui = f'http://127.0.0.1:{args.api_port}', f'http://127.0.0.1:{args.ui_port}'
+    browser_ui = f'http://localhost:{args.ui_port}'
+    jars = work / 'runtime-jars'
+    build = work / 'backend-build'
+    subprocess.run([str(backend / 'gradlew'), '--no-daemon', '--console=plain',
+                    '--project-cache-dir', str(work / 'gradle-project-cache'), '-I',
+                    str(ROOT / 'scripts/package_consumer_runtime.init.gradle'),
+                    'writePackageConsumerRuntimeClasspath', '-PpackageConsumerClasspathOutput=' + str(jars)],
+                   cwd=backend, env={**os.environ, 'SKILLPILOT_BACKEND_BUILD_DIR': str(build)}, check=True)
+    classpath = [str(build / 'classes/java/main'), str(backend / 'src/main/resources'), *jars.read_text().splitlines()]
+    preview_classes = work / 'preview-classes'
+    preview_classes.mkdir()
+    javac = str(Path(java).with_name('javac'))
+    subprocess.run([javac, '-proc:none', '-cp', os.pathsep.join(classpath), '-d', str(preview_classes),
+                    str(ROOT / 'scripts/preview/HesseE1GradedPreview.java')], check=True)
+    classpath.insert(0, str(preview_classes))
+    settings = {
+        'server.address': '127.0.0.1', 'server.port': args.api_port,
+        'skillpilot.curriculum.source': 'repository', 'skillpilot.landscapes.directory': str(ROOT / 'curricula'),
+        'skillpilot.public-base-url': browser_ui, 'cors.allowed-origins': f'{browser_ui},{ui}',
+        'spring.datasource.url': 'jdbc:h2:mem:hesse-e1;DB_CLOSE_DELAY=-1;NON_KEYWORDS=VALUE',
+        'spring.datasource.driver-class-name': 'org.h2.Driver', 'spring.datasource.username': 'sa',
+        'spring.datasource.password': secrets.token_urlsafe(48),
+        'spring.jpa.database-platform': 'org.hibernate.dialect.H2Dialect',
+        'spring.jpa.hibernate.ddl-auto': 'update', 'spring.jpa.show-sql': False,
+        'spring.liquibase.enabled': True, 'spring.liquibase.change-log': 'classpath:db/changelog/db.changelog-master.yaml',
+        'spring.security.oauth2.client.registration.github.client-id': 'local-preview',
+        'spring.security.oauth2.client.registration.github.client-secret': 'local-preview',
+        'skillpilot.security.signing-secret': secrets.token_urlsafe(48),
+        'skillpilot.claude.connector.v1.signing-secret': secrets.token_urlsafe(48),
+        'skillpilot.claude.connector.v1.capability-secret': secrets.token_urlsafe(48),
+        'skillpilot.claude.connector.v1.enabled': True, 'skillpilot.claude.enabled': False,
+        'skillpilot.completion.unit-assessment-pilot-enabled': True,
+        'skillpilot.openai.coach-v1.enabled': False, 'skillpilot.teacher-supervision.enabled': False,
+    }
+    runtime_env = {'PATH': os.environ['PATH'], 'LANG': 'C.UTF-8', 'SPRING_APPLICATION_JSON': json.dumps(settings)}
+    log = stack.enter_context((work / 'backend.log').open('w'))
+    spring = subprocess.Popen([java, '-Xmx2304m', '-XX:TieredStopAtLevel=1', '-cp', os.pathsep.join(classpath),
+                               'preview.HesseE1GradedPreview'], stdin=subprocess.PIPE,
+                              cwd=work, env=runtime_env, stdout=log, stderr=subprocess.STDOUT)
+    stack.callback(stop, spring)
+    wait_ready(api + '/actuator/health', spring)
+    scope = json.loads((ROOT / 'docs/concept/skill-graph/examples/hessen-physik-e1/umfang.json').read_text())
+    expected_parts = scope['ownAssessmentGoalIds'] + scope['childAssessmentGoalIds']
+    profiles = {}
+    for duration in ('G8', 'G9'):
+        viewer, section = create_learner(api, duration, expected_parts)
+        profiles[duration] = {'viewer': viewer, 'E1': section,
+                              **{part: create_learner(api, duration, expected_parts)[0] for part in ('A', 'B', 'CD', 'ABCD', 'unitOpen', 'unitCD', 'unitABCD', 'mixed')}}
+    spring.stdin.write(json.dumps(profiles).encode())
+    spring.stdin.close()
+    for _ in range(1200):
+        if (work / 'grading.json').is_file():
+            break
+        if spring.poll() is not None:
+            messages = [line for line in (work / 'backend.log').read_text().splitlines()
+                        if line.startswith('Graded preview failed:')]
+            raise RuntimeError(messages[-1] if messages else 'The preview backend stopped during grading')
+        time.sleep(1)
+    else:
+        raise RuntimeError('Timed out preparing the graded E.1 scenarios')
+    math_viewer, _ = create_subject_learner(api, 'G9', MATHEMATICS)
+    profiles['mathematik'] = {'viewer': math_viewer, 'goal': MATH_COMPARISON_GOAL}
+    (work / 'profiles.json').write_text(json.dumps(profiles))
+    ui_env = {**os.environ, 'SKILLPILOT_E1_PREVIEW_DIR': str(work), 'VITE_API_BASE': api}
+    vite = subprocess.Popen([node, str(app / 'node_modules/vite/bin/vite.js'), '--config',
+                             str(app / 'scripts/hesseE1Preview.config.ts'), '--host', '127.0.0.1',
+                             '--port', str(args.ui_port), '--strictPort'], cwd=app, env=ui_env)
+    stack.callback(stop, vite)
+    wait_ready(ui + '/nativ/G8/A', vite)
+    for d in ('G8', 'G9'):
+        print(f'{d}: {browser_ui}/nativ/{d}/E1   {browser_ui}/nativ/{d}/A   {browser_ui}/nativ/{d}/B', flush=True)
+        print(f'{d} Einheitenauftrag: {browser_ui}/auftraege/{d} (offen, C+D, A–D und gemischt)', flush=True)
+        print(f'{d} mit Belegen: {browser_ui}/vergleich/{d}/CD   {browser_ui}/vergleich/{d}/ABCD', flush=True)
+    print(f'Mathematik-Kartenvergleich: {browser_ui}/vergleich/mathematik', flush=True)
+    if args.check:
+        subprocess.run([node, str(app / 'scripts/checkHesseE1Preview.mjs'), browser_ui, api, str(work / 'profiles.json')],
+                       cwd=app, check=True)
+    else:
+        print('Ctrl+C beendet die Vorschau und löscht die synthetischen Profile.', flush=True)
+        while spring.poll() is None and vite.poll() is None:
+            time.sleep(1)
+        raise RuntimeError('A preview service exited; start a fresh preview to continue.')
+
+
+def main():
+    cli = argparse.ArgumentParser(description=__doc__)
+    cli.add_argument('--ui-port', type=int, default=5177)
+    cli.add_argument('--api-port', type=int, default=8084)
+    cli.add_argument('--check', action='store_true', help='run the Chromium acceptance check, then stop')
+    args = cli.parse_args()
+    with tempfile.TemporaryDirectory(prefix='skillpilot-e1-') as tmp, ExitStack() as stack:
+        try:
+            serve(args, Path(tmp), stack)
+        except KeyboardInterrupt:
+            pass
+
+
+if __name__ == '__main__':
+    main()

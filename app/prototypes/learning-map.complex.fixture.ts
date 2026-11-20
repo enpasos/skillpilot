@@ -1,3 +1,4 @@
+import { kindLabels } from '../src/components/learningUnitMap/presentation'
 import type { LearningMapEntry, LearningMapFixture, MapEntryKind } from '../src/components/learningUnitMap/types'
 
 // Synthetic layout benchmark: 56 sibling areas, 98 root edges, three isolated optional areas,
@@ -67,13 +68,6 @@ const areas: Area[] = [
 
 const entries: Record<string, LearningMapEntry> = {}
 const id = (value: string) => `demo:complex:${value}`
-const labels: Record<MapEntryKind, string> = {
-  unit: 'Lerneinheit',
-  motivation: 'Motivation',
-  goal: 'Fachliches Lernziel',
-  assessment: 'Prüfung',
-  memory: 'Lernkarten',
-}
 
 const add = (
   suffix: string,
@@ -93,7 +87,7 @@ const add = (
     ...(children ? { children: children.map(id) } : {}),
     // Deliberately neutral: the layout engine must place every current scope.
     position: { x: 0, y: 0 },
-    eyebrow: labels[kind],
+    eyebrow: kind === 'goal' ? 'Fachliches Lernziel' : kindLabels[kind],
   }
 }
 

@@ -6,11 +6,40 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.nio.file.Path;
+import java.nio.file.Files;
+import com.skillpilot.backend.landscape.LandscapeProperties;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
 
 class UnitLearningMaterialServiceTest {
     private static final String PHYSICS = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
     private static final String MOTION = "physics-e1-motion";
+
+    @Test
+    void catalogResolvesAnUnrelatedProgramWithAndWithoutCards(@TempDir Path repository) throws IOException {
+        var folder = Files.createDirectories(repository.resolve("university/computing/units"));
+        String source = """
+                {"unit":{"landscapeId":"computing","compositionNodeId":"algorithms","viewIds":["%s"]%s},
+                 "intro":{"de":{"question":"Wie sucht man?","promise":"Suchverfahren vergleichen"},
+                         "en":{"question":"How do we search?","promise":"Compare search methods"}}}
+                """;
+        Files.writeString(folder.resolve("intro.json"), source.formatted("lecture", ""));
+        Files.writeString(folder.resolve("recall.json"), source.formatted("seminar", ",\"flashcardGoalId\":\"algorithms-deck\""));
+        Files.writeString(repository.resolve("unit-learning-materials.json"), """
+                {"schemaVersion":1,"materials":["university/computing/units/intro.json","university/computing/units/recall.json"]}
+                """);
+        var materials = UnitLearningMaterialService.fromRepository(repository, new ObjectMapper());
+        var lecture = materials.find("computing", "lecture", "algorithms").orElseThrow();
+        assertThat(lecture.flashcardGoalId()).isNull();
+        assertThat(lecture.assessmentContract()).isNull();
+        assertThat(materials.find("computing", "seminar", "algorithms").orElseThrow().flashcardGoalId()).isEqualTo("algorithms-deck");
+        assertThat(materials.find("computing", "merged:lecture+seminar", "algorithms")).isEmpty();
+        assertThat(materials.find("physics", "seminar", "algorithms")).isEmpty();
+    }
 
     @Test
     void resolvesTheSameIntroductionAndGoalReferencesOnlyForMatchingPersonalViews() throws IOException {
@@ -25,6 +54,40 @@ class UnitLearningMaterialServiceTest {
         assertThat(service.find(PHYSICS, "merged:de-he-gym-physics-lk-g8+another-view", MOTION)).isEmpty();
         assertThat(service.find(PHYSICS, "de-he-gym-physics-gk-g9", "physics-q1")).isEmpty();
         assertThat(service.find("mathematics", "de-he-gym-physics-gk-g9", MOTION)).isEmpty();
+    }
+
+    @Test
+    void durationNeutralCrossStageOffersLearningMaterialsWhileTheFourPartAwardUsesItsOwnViews() throws IOException {
+        var directory = Path.of("../curricula");
+        var mapper = new ObjectMapper();
+        var properties = new LandscapeProperties();
+        properties.setDirectory(directory.toString());
+        var views = new CompositionViewService(properties, mapper);
+        var materials = UnitLearningMaterialService.fromRepository(directory, mapper);
+        for (String course : List.of("GK", "LK", "GK+LK")) {
+            var scope = new LinkedHashMap<>(Map.of("schoolForm", "Gymnasium", "jurisdiction", "DE-HE",
+                    "stage", "CrossStage", "courseProfile", course));
+            String neutral = (String) views.findLearnerScopeView(PHYSICS, scope).get("viewId");
+            assertThat(neutral).isEqualTo("GK+LK".equals(course)
+                    ? "merged:de-he-gym-physics-lk+de-he-gym-physics-gk"
+                    : "de-he-gym-physics-" + course.toLowerCase(Locale.ROOT));
+            var material = materials.find(PHYSICS, neutral, MOTION).orElseThrow();
+            assertThat(material.question("de")).isEqualTo("Ein Ball rollt vom Tisch. Wo landet er?");
+            assertThat(material.exercises()).hasSize(3);
+            assertThat(material.flashcardGoalId()).isEqualTo("9f2f5ab8-0ae4-5792-b831-82a05af5895c");
+            assertThat(materials.assessmentBindings(List.of(neutral))).isEmpty();
+            assertThat(materials.assessmentBindingForReference("composition:" + neutral + ":structure:" + MOTION)).isEmpty();
+            for (String duration : List.of("G8", "G9")) {
+                scope.put("durationModel", duration);
+                for (String stage : List.of("CrossStage", "SekII")) {
+                    scope.put("stage", stage);
+                    String selected = (String) views.findLearnerScopeView(PHYSICS, scope).get("viewId");
+                    assertThat(selected).isNotEqualTo(neutral);
+                    assertThat(materials.assessmentBindings(List.of(selected))).singleElement().satisfies(binding ->
+                            assertThat(binding.contract().parts()).hasSize(4));
+                }
+            }
+        }
     }
 
     @Test

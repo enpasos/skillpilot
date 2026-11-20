@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict'
+import { createHash } from 'node:crypto'
 import './testCurriculumQualityStatus'
 import { mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
@@ -19,7 +20,9 @@ import { buildVisibleChildrenMap } from '../src/utils/treeProjectionRuntime'
 import { buildApplicabilityCompilation } from './applicabilityCompiler'
 import { loadCurrentCurriculumCatalog } from './currentCurriculumCatalog'
 import { collectRenderedAtomicGoalIdsFromCompositionView, evaluateRouteProfile, createRouteProfiles } from './generateCurriculumQualityStatus'
+import { assessmentReviewRevisions } from './lib/learningUnitContracts'
 import { liveVerificationInputs } from './lib/verificationInputSnapshot'
+import { checkUnitPlanningReleases } from './checkUnitPlanningReleases'
 
 const routeProfiles = createRouteProfiles()
 const root = resolve(import.meta.dirname, '../..')
@@ -44,9 +47,138 @@ const hesseStageViewIds = new Set(['de-he-gym-physics-gk', 'de-he-gym-physics-lk
   'de-he-gym-sekii-physics-gk', 'de-he-gym-sekii-physics-lk',
   'de-he-gym-physics-gk-g8', 'de-he-gym-physics-lk-g8',
   'de-he-gym-physics-gk-g9', 'de-he-gym-physics-lk-g9'])
+const hesseE1Assessments = new Map([
+  ['ee7d5f3d-858f-59d6-89b0-e5a7f437f458', { maxPoints: 17, passingPoints: 14 }],
+  ['39f52dcb-ff1d-5cad-9ccb-30da803cfa85', { maxPoints: 18, passingPoints: 15 }],
+])
+const hesseChildAssessments = new Map([
+  ['c933b7d2-edcb-5747-9378-9762659f260a', {
+    historical: 'c5807a37-129e-5df6-8989-482bc7f5683e', coverage: 'd6dc0e02-831d-4894-a61a-852bcc74f147',
+    definition: 'sha256:47e0d1bd093ca15e19b6e9de958838f947ed30d6d902a378997d64df504cbff9',
+    evidenceProfile: 'sha256:4ee8d93ca2d11b9106e4051214494a52fd0b0538682e2f30bf8e2668a8c0fd4f',
+    section: 'constant-acceleration-model', prefix: 'C',
+  }],
+  ['f13ca187-b680-5f47-b4ad-76bd474bd8a2', {
+    historical: 'a8dc0290-9f80-5763-8943-e16b8d2aa860', coverage: 'e4b38061-1f28-43ad-8371-a3e7c0e81856',
+    definition: 'sha256:083de95ae0c93aa5f5ba649140a82e724ae7b61a604626a09e9e188acf01cf4b',
+    evidenceProfile: 'sha256:e7d478c83be998c71a1e4ff75e412cbb0558b24403e207a936f1ea38a8174039',
+    section: 'constant-acceleration-log', prefix: 'D',
+  }],
+])
+const hesseChildVariantByHistorical = new Map([...hesseChildAssessments].map(([id, variant]) => [variant.historical, id]))
+const e1MaterialDirectory = resolve(root, 'docs/concept/skill-graph/examples/hessen-physik-e1')
+const e1Scope = JSON.parse(readFileSync(resolve(e1MaterialDirectory, 'umfang.json'), 'utf8'))
+const e1Review = readFileSync(resolve(root, e1Scope.ownAssessmentReview.sourceFile))
+assert.equal(createHash('sha256').update(e1Review).digest('hex'), e1Scope.ownAssessmentReview.sourceFileSha256)
+for (const id of hesseE1Assessments.keys()) {
+  const binding = e1Scope.ownAssessmentRevisions[id]
+  const bytes = readFileSync(resolve(e1MaterialDirectory, binding.sourceFile))
+  assert.equal(createHash('sha256').update(bytes).digest('hex'), binding.sourceFileSha256)
+  assert(e1Review.toString('utf8').includes(binding.sourceFileSha256), `${id}: independent review must bind these exact bytes`)
+  const source = JSON.parse(bytes.toString('utf8'))
+  const native = canonicalLandscape.goals.find(goal => goal.id === id)!
+  assert.equal(source.id, native.id)
+  assert.equal(source.description, native.description)
+  assert.equal(source.descriptionEn, 'descriptionEn' in native ? native.descriptionEn : undefined)
+  assert.deepEqual({ ...source.examData, reviewStatus: 'released' }, native.examData)
+  for (const step of native.examData?.scoring?.steps ?? []) {
+    assert(step.description.length <= 2000, `${id}/${step.id}: evaluation exceeds the MCP step text limit`)
+  }
+}
+assert.deepEqual(e1Scope.childAssessmentGoalIds, [...hesseChildAssessments.keys()])
+const childReview = readFileSync(resolve(root, e1Scope.childAssessmentReview.sourceFile), 'utf8')
+assert.equal(e1Scope.childAssessmentReview.sourceFileSha256, 'd5aafed0908cdd81317e59cad1d0bfb860fc6652950006f15cab8f1ca51883d6',
+  'The 17/20 child release is bound to its independent review; older full-score reviews concern different tasks')
+assert.equal(createHash('sha256').update(childReview).digest('hex'), e1Scope.childAssessmentReview.sourceFileSha256)
+const readRepoJson = (path: string) => JSON.parse(readFileSync(resolve(root, path), 'utf8'))
+assert(checkUnitPlanningReleases().length > 0, 'The independently reviewed child pair must have a current planning release')
+const materialFiles: string[] = readRepoJson('curricula/unit-learning-materials.json').materials
+const e1Contracts = materialFiles.map(path => readRepoJson(`curricula/${path}`).unit)
+  .filter(unit => unit.landscapeId === canonicalLandscape.landscapeId && unit.compositionNodeId === 'physics-e1-motion')
+assert.equal(e1Contracts.length, 1)
+const contract = e1Contracts[0].assessmentContract
+assert.equal(contract.revision, '2026-11-20-e1-v2')
+const creditedGoalIds = [...hesseChildAssessments.values()].map(spec => spec.coverage)
+assert.deepEqual(e1Scope.childPlanningGoalIds, creditedGoalIds)
+assert.deepEqual(e1Scope.unitPlanningGoalIds, [])
+assert.equal(contract.planningCredits.length, 1)
+const [childCredit] = contract.planningCredits
+assert.equal(childCredit.release.fingerprint, 'sha256:d795236680087accef0ab60ed4d4257bbf651d83f8f2a5fc3dbbc5e28d9a96ba',
+  'Only the independently checked Hessen C+D edition may use this approval')
+assert.deepEqual(childCredit.release.review, { path: e1Scope.childAssessmentReview.sourceFile, sha256: 'sha256:' + e1Scope.childAssessmentReview.sourceFileSha256 })
+assert.deepEqual(childCredit.release.viewIds, [...e1Scope.viewIds].sort())
+assert.equal(childCredit.release.revision, e1Scope.childAssessmentScopeRevision)
+assert.equal(childCredit.release.ownerUnitId, e1Scope.childUnitId)
+assert.equal(childCredit.release.ownerRevision, e1Scope.childRevision)
+assert.deepEqual(childCredit.requiredPartIds, [...hesseChildAssessments.keys()],
+  'Only the complete child pair releases the two reviewed prerequisites')
+assert.deepEqual(childCredit.goalIds, creditedGoalIds)
+assert.deepEqual([...contract.contentGoalIds].sort(), [...creditedGoalIds, ...e1Scope.otherContentGoalIds].sort())
+assert.deepEqual(contract.viewIds, e1Scope.viewIds)
+const reviewedParts = [...hesseE1Assessments.keys(), ...hesseChildAssessments.keys()].map(goalId => {
+  const { taskRevision, rubricRevision, fingerprint } = e1Scope.ownAssessmentRevisions[goalId] ?? e1Scope.childAssessmentRevisions[goalId]
+  return { goalId, material: { taskRevision, rubricRevision, fingerprint } }
+})
+assert.deepEqual(contract.parts, reviewedParts, 'All four production receipt predicates must bind the reviewed materials')
+const child = canonicalLandscape.programUnits?.find(unit => unit.id === 'physics-constant-acceleration')
+assert(child && child.kind === 'learningUnit' && child.revision === e1Scope.childRevision)
+assert.equal(e1Scope.childUnitId, child.id)
+assert.equal(e1Scope.childAssessmentScopeRevision, '2026-11-20-he-v2')
+for (const [id, spec] of hesseChildAssessments) {
+  const binding = e1Scope.childAssessmentRevisions[id]
+  const source = readFileSync(resolve(e1MaterialDirectory, binding.sourceFile), 'utf8')
+  assert.equal(createHash('sha256').update(source).digest('hex'), binding.sourceFileSha256)
+  assert(childReview.includes(binding.sourceFileSha256), `${id}: independent review must bind these exact bytes`)
+  const native = canonicalLandscape.goals.find(goal => goal.id === id)!
+  const exam = native.examData!
+  const reviews = assessmentReviewRevisions(native)
+  assert.equal(binding.historicalAssessmentGoalId, spec.historical)
+  assert.equal(binding.taskRevision, reviews.taskRevision)
+  assert.equal(binding.rubricRevision, reviews.rubricRevision)
+  const fingerprint = JSON.stringify({
+    rubricRevision: reviews.rubricRevision, solutionContentEn: exam.solutionContentEn,
+    taskContentEn: exam.taskContentEn, taskRevision: reviews.taskRevision,
+  })
+  assert.equal(binding.fingerprint, `sha256:${createHash('sha256').update(fingerprint).digest('hex')}`)
+  assert.deepEqual(native.applicability?.jurisdiction, ['DE-HE'])
+  assert.deepEqual(native.requires, [spec.coverage])
+  assert.deepEqual(exam.coveredGoalIds, [spec.coverage])
+  assert.deepEqual(binding.planningGoalIds, [spec.coverage])
+  assert.equal(binding.coverageReview, e1Scope.childAssessmentReview.sourceFile)
+  assert.deepEqual(childCredit.release.goalDefinitions[spec.coverage], {
+    definition: spec.definition, profileFingerprint: spec.evidenceProfile,
+  }, 'The review covers this exact goal definition and its performance and transfer expectations')
+  for (const ownId of [spec.coverage, spec.historical]) {
+    const owners = canonicalLandscape.goalPlacements?.filter(row => row.goalId === ownId && row.relation === 'own')
+    assert.deepEqual(owners?.map(row => row.unitId), [child.id])
+  }
+  const originalReview = child.coverageReviews?.find(row => row.assessmentGoalId === spec.historical)
+  assert.deepEqual(originalReview?.goalIds, [spec.coverage])
+  const de = source.split(`\n## ${spec.section}\n`)[1].split('\n## ')[0]
+  const en = source.split(`\n## ${spec.section}-en\n`)[1]
+  const read = (content: string, task: string, solution: string, rubric: string, notes: string) => {
+    const [taskContent, answer] = content.split(`### ${task}\n`)[1].split(`\n### ${solution}\n`)
+    const [solutionContent, assessment] = answer.split(`\n### ${rubric}\n`)
+    const criteria = [...assessment.matchAll(/^\| ([1-4]) \| 5 \| (.+) \|$/gmu)].map(match => match[2])
+    return { taskContent: taskContent.trim(),
+      solutionContent: `${solutionContent.trim()}\n\n**${notes}**\n\n${assessment.split('\n|')[0].trim()}`, criteria }
+  }
+  const deSource = read(de, 'Aufgabe', 'Lösung', 'Bewertung', 'Hinweise zur Bewertung')
+  const enSource = read(en, 'English task', 'English solution', 'English scoring', 'Scoring notes')
+  assert.equal(exam.taskContent, deSource.taskContent)
+  assert.equal(exam.solutionContent, deSource.solutionContent)
+  assert.equal(exam.taskContentEn, enSource.taskContent)
+  assert.equal(exam.solutionContentEn, enSource.solutionContent)
+  assert.deepEqual(exam.scoring, { maxPoints: 20, passingPoints: 17, steps: deSource.criteria.map((criterion, i) => ({
+    id: `${spec.prefix}${i + 1}`, points: 5, description: `DE: ${criterion} EN: ${enSource.criteria[i]}`,
+  })) })
+  assert(exam.scoring.steps.every(step => step.description.length <= 2000))
+  assert.equal(exam.reviewStatus, 'released')
+}
 const hesseIntroductoryAssessmentPlaces = {
   'physics-e1-motion': [
-    '2b9e565f-d9b4-5e23-b5b7-b7977cecff06', '6ea3fb3c-abdc-568f-ab13-97c36dc274e4', 'c5807a37-129e-5df6-8989-482bc7f5683e',
+    '2b9e565f-d9b4-5e23-b5b7-b7977cecff06', '6ea3fb3c-abdc-568f-ab13-97c36dc274e4', 'c933b7d2-edcb-5747-9378-9762659f260a',
+    ...hesseE1Assessments.keys(),
   ],
   'physics-e2-newton-and-conservation': [
     '22561c66-3957-5d55-b07a-25de1f359930', '72649cf5-893c-5f03-88bd-a2497171d434', 'be6d4895-65ab-545b-8df9-84e5a308a5e3',
@@ -276,6 +408,37 @@ for (const filename of readdirSync(viewDirectory).filter((name) => name.endsWith
   }
   projected.goals.filter((goal) => goal.tags?.includes('root')).forEach((goal) => visit(goal.id))
   const { targetGoalIds, prerequisiteOnlyGoalIds } = collectCompositionProjectionRoleGoalIds(view.rootNodes, canonicalById)
+  const admitsHesseE1Assessments = hesseStageViewIds.has(view.viewId)
+  for (const [id, points] of hesseE1Assessments) {
+    assert.equal(targetGoalIds.has(id), admitsHesseE1Assessments, `${view.viewId}: wrong E.1 assessment target role for ${id}`)
+    assert(!prerequisiteOnlyGoalIds.has(id), `${view.viewId}: E.1 assessment is not prerequisite support`)
+    assert.equal(visible.has(id), admitsHesseE1Assessments, `${view.viewId}: wrong E.1 assessment visibility for ${id}`)
+    if (!admitsHesseE1Assessments) continue
+    const projectedTask = byId.get(id)!
+    const assessment = projectedTask.examData
+    assert.equal(projectedTask.nodeKind, 'exam')
+    assert.deepEqual(assessment, canonicalById.get(id)?.examData)
+    const path = ancestorsById.get(id)!.map(parentId => byId.get(parentId)!)
+    assert(path.some(parent => parent.extendedData?.compositionNodeId === 'physics-e1-motion'))
+    assert.equal(path.filter(parent => /^Sekundarstufe (?:I|II)(?:\s|$)/u.test(parent.title)).length, 1)
+    assert.equal(assessment?.reviewStatus, 'released')
+    assert.equal(assessment?.scoring?.maxPoints, points.maxPoints)
+    assert.equal(assessment?.scoring?.passingPoints, points.passingPoints)
+    assert.deepEqual(assessment?.coveredGoalIds, [])
+    practiceTaskPairs++
+  }
+  for (const [id, spec] of hesseChildAssessments) {
+    assert.equal(targetGoalIds.has(id), admitsHesseE1Assessments, `${view.viewId}: wrong child assessment target role`)
+    assert.equal(visible.has(id), admitsHesseE1Assessments, `${view.viewId}: wrong child assessment visibility`)
+    assert(!prerequisiteOnlyGoalIds.has(id), `${view.viewId}: a child assessment is not prerequisite support`)
+    if (!admitsHesseE1Assessments) continue
+    assert(!targetGoalIds.has(spec.historical) && !prerequisiteOnlyGoalIds.has(spec.historical) && !visible.has(spec.historical),
+      `${view.viewId}: historical and revised child assessments must not coexist`)
+    const placement = ancestorsById.get(id)!.map(parentId => byId.get(parentId)!)
+    assert(placement.some(parent => parent.extendedData?.compositionNodeId === 'physics-e1-motion'))
+    assert(placement.some(parent => /^Sekundarstufe II(?:\s|$)/u.test(parent.title)))
+    assert.deepEqual(byId.get(id)?.examData, canonicalById.get(id)?.examData)
+  }
   for (const id of visible) if (byId.get(id)?.examData) {
     assertAssessmentPlacement(view.viewId, byId.get(id)!, byId, ancestorsById)
   }
@@ -339,7 +502,9 @@ for (const filename of readdirSync(viewDirectory).filter((name) => name.endsWith
   const preservedSekITasks = expectedSekITasks(view)
   viewCount++
   if (view.scope.jurisdiction) jurisdictions.add(view.scope.jurisdiction)
-  for (const { id, maxPoints } of kinematicsAssessments) {
+  for (const assessment of kinematicsAssessments) {
+    const id = (admitsHesseE1Assessments && hesseChildVariantByHistorical.get(assessment.id)) || assessment.id
+    const maxPoints = id === assessment.id ? assessment.maxPoints : 20
     assert(visible.has(id), `${view.viewId}: the reviewed vector-free kinematics task must remain reachable`)
     assert.equal(byId.get(id)?.examData?.reviewStatus, 'released')
     assert.equal(byId.get(id)?.examData?.scoring.maxPoints, maxPoints)
@@ -390,7 +555,9 @@ for (const filename of readdirSync(viewDirectory).filter((name) => name.endsWith
     const collectionIds = projectedRootId ? collectDescendants(projectedRootId, byId, children) : undefined
     const expectedTasks = [...collectDescendants(rootId, canonicalById)]
       .map((id) => canonicalById.get(id)!)
-      .filter((goal) => goal.examData && goalMatchesFilters(goal, filters) && !prerequisiteOnlyGoalIds.has(goal.id))
+      .filter((goal) => goal.examData && goalMatchesFilters(goal, filters) && !prerequisiteOnlyGoalIds.has(goal.id)
+        && !(admitsHesseE1Assessments && hesseChildVariantByHistorical.has(goal.id))
+        && (admitsHesseE1Assessments || !hesseChildAssessments.has(goal.id)))
     assert(expectedTasks.length > 0, `${view.viewId}: ${sourceRoot.title} has no applicable source tasks`)
 
     for (const source of expectedTasks) {
@@ -441,7 +608,7 @@ assertCount('fermiScopeViewCount', 69, 6, 'Check exact Fermi assessment target v
 assert.equal(jurisdictions.size, 14, 'Cover all jurisdictions using these Physics assessment collections.')
 assertCount('kinematicsTaskPairs', 120, 8, 'Both reviewed kinematics assessments must appear in all shared GK/LK exercise views.')
 assertCount('astronomyTaskPairs', 136, 8, 'Every existing ordinary astronomy demand needs its applicable task across all views.')
-assertCount('practiceTaskPairs', 4266, 308,
+assertCount('practiceTaskPairs', 4274, 316,
   'Expose every current canonical collection obligation, including the new individual and nested assessments.')
 assertCount('abiturTaskPairs', 480, 32, 'Every applicable view must expose both Abitur sample exams and all eight proposals.')
 assertCount('preservedSekITaskPairs', 30, 0, 'Preserve the source-backed Sek-I task placements, including six SL/SN astronomy placements.')

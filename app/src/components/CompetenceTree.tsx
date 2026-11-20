@@ -247,6 +247,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
     : isForcedExpanded || localIsExpanded
   const hasChildren = renderedChildren.length > 0
   const mastered = isMastered(mastery)
+  const directEvidence = mastered && goal.type !== 'cluster' && !goal.contains.length
   const completionWaiver = audience === 'learner' && !hasChildren && !mastered
     ? completionWaivers?.get(goal.id)
     : undefined
@@ -389,8 +390,8 @@ const TreeNode: React.FC<TreeNodeProps> = ({
                 : 'text-slate-400 dark:text-slate-500'
               }`}
           >
-            {mastered ? (
-              <Check size={16} strokeWidth={3} />
+            {directEvidence ? (
+              <Check data-testid="completion-tree-direct-evidence" role="img" aria-label={localizedLanguage === 'en' ? 'Directly demonstrated' : 'Direkt nachgewiesen'} size={16} strokeWidth={3} />
             ) : completionWaiver ? (
               <CompletionWaiverIcon waiver={completionWaiver} language={localizedLanguage} />
             ) : activeGoalId === goal.id ? (

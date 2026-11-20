@@ -1,4 +1,7 @@
 import type {
+  UnitAssignmentOption,
+  UnitAssignmentRef,
+  LearnerUnitAssignmentStatus,
   ActivateLearnerLearningPlansRequest,
   ActivateLearnerLearningPlansResponse,
   ContinueLearnerLearningPlanRequest,
@@ -201,6 +204,10 @@ export const parseLearnerLearningPlanSummary = (value: unknown): LearnerLearning
     'personal-curriculum-changed',
     'no-open-due-frontier-goal',
     'active-goal-in-progress',
+    'unit-assessment-choice-required',
+    'unit-assignment-completed',
+    'unit-assignment-unavailable',
+    'assessment-coverage-unavailable',
   ].includes(parsedContinueReason)) {
     throw new Error('Invalid learning-plan response: continueReason')
   }
@@ -345,6 +352,23 @@ const parseLearningScope = (value: unknown): LearnerPlanLearningScope | null => 
   }
 }
 
+const parseUnitAssignmentRef = (value: unknown): UnitAssignmentRef => {
+  const data = asRecord(value, 'Invalid unit assignment')
+  return { sectionGoalId: requiredString(data.sectionGoalId, 'sectionGoalId'),
+    revision: requiredString(data.revision, 'revision'), fingerprint: requiredString(data.fingerprint, 'fingerprint') }
+}
+
+const parseUnitAssignmentStatuses = (value: unknown): LearnerUnitAssignmentStatus[] => {
+  if (!Array.isArray(value)) throw new Error('Invalid unit assignment statuses')
+  return value.map(item => {
+    const row = asRecord(item, 'Invalid unit assignment status')
+    const status = row.status
+    if (status !== 'active' && status !== 'completed' && status !== 'unavailable') throw new Error('Invalid unit assignment status')
+    return { title: requiredString(row.title, 'title'), status, requiredParts: requiredInteger(row.requiredParts, 'requiredParts'),
+      passedParts: row.passedParts == null ? null : requiredInteger(row.passedParts, 'passedParts') }
+  })
+}
+
 const parseLearnerPlanSubjectStatus = (value: unknown): LearnerPlanSubjectStatus => {
   const source = asRecord(value, 'Invalid learning-plan status response: subject')
   const evaluable = requiredBoolean(source.evaluable, 'subject.evaluable')
@@ -377,6 +401,7 @@ const parseLearnerPlanSubjectStatus = (value: unknown): LearnerPlanSubjectStatus
     throw new Error('Invalid learning-plan status response: subject.evaluability')
   }
   return {
+    ...(source.unitAssignments == null ? {} : { unitAssignments: parseUnitAssignmentStatuses(source.unitAssignments) }),
     subjectKey: requiredString(source.subjectKey, 'subject.subjectKey'),
     landscapeIds: parseStringList(source.landscapeIds, 'subject.landscapeIds'),
     subjectLabel: requiredString(source.subjectLabel, 'subject.subjectLabel'),
@@ -489,6 +514,7 @@ const parsePlanBlock = (value: unknown): LearnerLearningPlanBlock => {
       id,
       kind,
       ...activation,
+      ...(source.unitAssignment == null ? {} : { unitAssignment: parseUnitAssignmentRef(source.unitAssignment) }),
       ...(learningGoalId ? { goalId: learningGoalId } : {}),
       ...(goalIds !== undefined ? { goalIds } : {}),
       ...(title ? { title } : {}),
@@ -644,6 +670,29 @@ export const getLearnerLearningPlans = async (
     },
   )
   return parseLearnerLearningPlansResponse(await readJsonResponse(response))
+}
+
+export const getUnitAssignmentOptions = async (
+  learnerId: string, landscapeId: string, options: LearnerLearningPlanRequestOptions = {},
+): Promise<UnitAssignmentOption[]> => {
+  const endpoint = learnerPlansBase(learnerId, options.apiBase) + '/' + encodeURIComponent(landscapeId) + '/unit-assignments'
+  const response = await (options.fetchImpl ?? fetch)(endpoint, { credentials: 'include', cache: 'no-store', signal: options.signal })
+  const value = await readJsonResponse(response)
+  if (!Array.isArray(value)) throw new Error('Invalid unit assignment options')
+  const title = (raw: unknown) => {
+    const labels = asRecord(raw, 'Invalid unit title')
+    return Object.fromEntries(Object.entries(labels).map(([lang, label]) => [lang, requiredString(label, lang)]))
+  }
+  return value.map(item => {
+    const row = asRecord(item, 'Invalid unit assignment option')
+    if (!Array.isArray(row.parts) || row.parts.length === 0) throw new Error('Invalid unit assignment parts')
+    return { ...parseUnitAssignmentRef(row), passed: requiredBoolean(row.passed, 'passed'), title: title(row.title),
+      parts: row.parts.map(item => {
+        const part = asRecord(item, 'Invalid unit assignment part')
+        return { goalId: requiredString(part.goalId, 'goalId'), title: title(part.title),
+          passed: requiredBoolean(part.passed, 'passed'), materialCurrent: requiredBoolean(part.materialCurrent, 'materialCurrent') }
+      }) }
+  })
 }
 
 export const getLearnerLearningPlan = async (

@@ -8,6 +8,7 @@ import { fileURLToPath } from 'node:url'
 import { defineConfig, loadEnv, type Plugin, type ViteDevServer } from 'vite'
 import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
+import { readUnitMapMaterials } from './scripts/lib/unitLearningMaterialCatalog'
 import tailwindcss from '@tailwindcss/vite'
 import {
   serviceWorkerNavigationFallbackDenylist,
@@ -3108,7 +3109,7 @@ export default defineConfig(({ mode }) => {
   return {
     define: packageConsumerBuild
       ? { 'import.meta.env.VITE_API_BASE': JSON.stringify('') }
-      : undefined,
+      : { __UNIT_MAP_LEARNING_MATERIALS__: JSON.stringify(readUnitMapMaterials(CURRICULA_ROOT)) },
     plugins: [
       createPackageConsumerSourcePolicyPlugin(mode),
       createBuildVersionPlugin(mode, coachVariant),

@@ -119,6 +119,7 @@ public class LearnerLearningPlanService {
             Function<String, String> subjectOf, com.skillpilot.backend.completion.LearningPlanCompletionProjection completionProjection) {
         String learnerId = learner.getSkillpilotId();
         Map<String, Set<String>> obligationsByLandscape = new LinkedHashMap<>();
+        Map<String, Set<String>> orderedIndividualGoals = new LinkedHashMap<>();
         Set<String> invalidObligations = new HashSet<>();
         Set<String> outdatedSubjects = new HashSet<>();
         Set<String> invalid = new HashSet<>();
@@ -149,7 +150,7 @@ public class LearnerLearningPlanService {
                 // before G was captured. A later revocation must still block a waiver.
                 for (var block : blocks) {
                     if (!block.isActive() || block.focusGoalIds().isEmpty()
-                            || !("learning".equals(block.kind()) || "milestone".equals(block.kind()))) continue;
+                            || !(block.isAtomicLearning() || "milestone".equals(block.kind()))) continue;
                     try {
                         obligations.addAll(learners.resolveLearningPlanGoalIds(
                                 learnerId, plan.getLandscapeId(), block.focusGoalIds()));
@@ -161,6 +162,14 @@ public class LearnerLearningPlanService {
                 obligationsByLandscape.put(plan.getLandscapeId(), Set.copyOf(obligations));
                 String subject = subjectOf.apply(plan.getLandscapeId());
                 if (subject == null) throw conflict("Learning-plan subject cannot be resolved");
+                if (hasActiveUnitAssignment(blocks)) {
+                    var selected = orderedIndividualGoals.computeIfAbsent(plan.getLandscapeId(), unused -> new LinkedHashSet<>());
+                    for (var block : blocks) {
+                        if (!block.isActive() || !(block.isAtomicLearning() || "milestone".equals(block.kind()))) continue;
+                        if (block.isAtomicLearning() && block.focusGoalIds().isEmpty()) selected.addAll(block.atomicGoalIds());
+                        else block.focusGoalIds().stream().filter(obligations::contains).forEach(selected::add);
+                    }
+                }
                 obligationsBySubject.computeIfAbsent(subject, ignored -> new LinkedHashSet<>()).addAll(obligations);
             } catch (RuntimeException e) {
                 invalidObligations.add(plan.getLandscapeId());
@@ -188,6 +197,10 @@ public class LearnerLearningPlanService {
             }
             try {
                 Set<String> allObligations = obligationsBySubject.getOrDefault(subject, entry.getValue());
+                if (allObligations.isEmpty() && orderedIndividualGoals.containsKey(entry.getKey())) {
+                    waived.put(entry.getKey(), Set.of());
+                    continue;
+                }
                 var context = automaticContext != null ? automaticContext
                         : learners.getLearningPlanCompletionContext(learnerId, allObligations);
                 if (context == null) {
@@ -225,7 +238,8 @@ public class LearnerLearningPlanService {
                     if (automaticWaived == null) {
                         try {
                             automaticWaived = completionProjection.waivedGoals(context, automaticTargets,
-                                    ids -> learners.resolveLearningPlanCompletionMastery(learnerId, mastery, ids));
+                                    ids -> learners.resolveLearningPlanCompletionMastery(learnerId, mastery, ids),
+                                    learners.getUnitPlanningCredits(learnerId));
                         } catch (RuntimeException e) {
                             automaticFailure = e;
                             throw e;
@@ -245,6 +259,12 @@ public class LearnerLearningPlanService {
                 unavailableSubjects.add(subject);
             }
         }
+        // A separately ordered individual result in this plan still requires its own evidence.
+        orderedIndividualGoals.forEach((landscape, explicit) -> waived.computeIfPresent(landscape, (id, prior) -> {
+            var remaining = new LinkedHashSet<>(prior);
+            remaining.removeAll(explicit);
+            return Set.copyOf(remaining);
+        }));
         // The same completed work determines both plan credit and the next planned goal.
         // A missing coverage calculation still pauses the affected continuation in either mode.
         return new PlanFulfillment(learner.getLearningPlanCountOnlyExplicitGoals() ? Map.of() : Map.copyOf(waived),
@@ -418,7 +438,7 @@ public class LearnerLearningPlanService {
                     periodBasis, periodStart, periodEnd, mastery, periodCompletions,
                     aggregate.waivedGoalIds,
                     achievementBySubject.get(aggregate.subjectKey), effectiveLocale);
-            subjects.add(subject);
+            subjects.add(aggregate.unitAssignments.isEmpty() ? subject : subject.withUnitAssignments(aggregate.unitAssignments));
             if (subject.subjectLine() != null && !subject.subjectLine().isBlank()) {
                 subjectLines.add(subject.subjectLine());
             }
@@ -627,7 +647,7 @@ public class LearnerLearningPlanService {
         return Optional.of(new PlanEvaluation(
                 dueDates,
                 plannedGoalIds,
-                enabled && summary.nextEligibleGoal() != null,
+                enabled && summary.nextEligibleGoal() != null && !"unit-assessment-choice-required".equals(summary.continueReason()),
                 summary.canContinue(),
                 activeGoalId != null && (plannedGoalIds.contains(activeGoalId)
                         || plan.getLandscapeId().equals(
@@ -637,7 +657,8 @@ public class LearnerLearningPlanService {
                                 evaluation.blocks(), mastery,
                                 waived, locale),
                         summary.nextEligibleGoal() == null && !fulfillment.unavailable().contains(plan.getLandscapeId()),
-                        waived, mastery, locale), waived));
+                        waived, mastery, locale), waived,
+                evaluation.assignments().stream().map(state -> state.status(locale)).toList()));
     }
 
     /** Stable subject identity: the landscape's canonical subject, never its translated label. */
@@ -945,6 +966,20 @@ public class LearnerLearningPlanService {
         if (scopePlan != null && !"exam".equals(learningScope(skillpilotId, scopePlan.getLandscapeId(),
                 readBlocks(scopePlan), asOf, false).kind())) {
             selectedScope = selected.map(candidate -> List.of(candidate.dueGoal().focusGoalId())).orElse(List.of());
+        }
+
+        if (scopePlan == null && !preserveInactiveActiveGoal && !learners.completionRouteOwnsNavigation(learner)) {
+            // Deliberate package activation can select a unit from a different previous focus.
+            // Publish that unit's assessment choices without selecting or starting an exam.
+            for (var plan : savedPlans) {
+                var assignment = assignmentStates(skillpilotId, plan.getLandscapeId(), readBlocks(plan)).stream()
+                        .map(AssignmentState::option).filter(Objects::nonNull).filter(option -> !option.passed()).findFirst();
+                if (assignment.isPresent()) {
+                    scopePlan = plan;
+                    selectedScope = List.of(assignment.get().sectionGoalId());
+                    break;
+                }
+            }
         }
 
         LearnerService.LearningPlanTransitionResult transition;
@@ -1318,6 +1353,21 @@ public class LearnerLearningPlanService {
         List<LearnerLearningPlanApi.Block> existingBlocks = existing
                 .map(this::readBlocks)
                 .orElseGet(List::of);
+        if (requestedBlocks != null && requestedBlocks.stream().filter(Objects::nonNull).anyMatch(block -> block.unitAssignment() != null)) {
+            var options = learners.getUnitAssignmentOptions(skillpilotId, landscapeId);
+            Set<LearnerLearningPlanApi.UnitAssignment> selected = new HashSet<>();
+            for (var block : requestedBlocks) {
+                if (block == null || block.unitAssignment() == null) continue;
+                var capture = block.unitAssignment();
+                if (!selected.add(capture)) throw badRequest("Duplicate unit assignment");
+                if (existingBlocks.contains(block)) continue;
+                if (capture.sectionGoalId() == null || !"learning".equals(block.kind()) || !List.of(capture.sectionGoalId()).equals(block.goalIds())
+                        || options.stream().noneMatch(option -> capture.equals(option.binding())
+                            && option.parts().stream().map(LearnerLearningPlanApi.UnitAssignmentPart::goalId).toList().equals(block.atomicGoalIds()))) {
+                    throw conflict("Unit assignment or its assessed parts do not match the current edition");
+                }
+            }
+        }
         List<LearnerLearningPlanApi.Block> normalizedBlocks = normalizeBlocks(
                 requestedBlocks,
                 scope,
@@ -1403,7 +1453,7 @@ public class LearnerLearningPlanService {
             if (!learningScope(skillpilotId, plan.getLandscapeId(), readBlocks(plan),
                     LocalDate.now(clock.withZone(PLAN_ZONE)), false).goalIds().contains(activeGoalId)) continue;
             for (LearnerLearningPlanApi.Block block : readBlocks(plan)) {
-                if (block.isActive() && "learning".equals(block.kind())
+                if (block.isActive() && block.isAtomicLearning()
                         && block.atomicGoalIds() != null
                         && block.atomicGoalIds().contains(activeGoalId)) {
                     String focusGoalId = runtimeFocusGoalId(block, activeGoalId);
@@ -1642,6 +1692,23 @@ public class LearnerLearningPlanService {
                                         ? "no-open-due-frontier-goal"
                                         : "active-goal-in-progress";
 
+        var selectedScope = stale ? null : learningScope(skillpilotId, plan.getLandscapeId(), blocks, asOf, true);
+        var assignments = assignmentStates(skillpilotId, plan.getLandscapeId(), blocks);
+        var nextGoal = eligible.map(DueGoal::atomicGoalId).orElse(null);
+        if (nextGoal == null && !stale && !coverageUnavailable && !assignments.isEmpty()) {
+            nextGoal = assignments.stream().filter(state -> state.option() != null)
+                    .flatMap(state -> state.option().parts().stream())
+                    .filter(LearnerLearningPlanApi.UnitAssignmentPart::startAvailable)
+                    .map(LearnerLearningPlanApi.UnitAssignmentPart::goalId).findFirst().orElse(null);
+            if (nextGoal != null) continueReason = "unit-assessment-choice-required";
+            else if (assignments.stream().anyMatch(state -> state.option() == null)) continueReason = "unit-assignment-unavailable";
+            else if (assignments.stream().allMatch(state -> state.option().passed())
+                    && java.util.stream.Stream.concat(atomicIds(blocks).stream(), selectedScope.goalIds().stream())
+                            .allMatch(id -> waived.contains(id) || mastery.getOrDefault(id, 0.0) >= MASTERY_THRESHOLD)) {
+                continueReason = "unit-assignment-completed";
+            }
+        }
+
         // Plan details describe the schedule only. The learning-plan status itself is
         // formulated once, per subject, in getTodayStatus; a second per-plan wording
         // here would compete with it as soon as a subject has more than one plan.
@@ -1655,16 +1722,13 @@ public class LearnerLearningPlanService {
                 currentBlock(blocks, asOf).orElse(null),
                 nextMilestone(blocks, asOf).orElse(null),
                 buffer(blocks, asOf),
-                eligible
-                        .map(next -> new LearnerLearningPlanApi.NextEligibleGoal(next.atomicGoalId()))
-                        .orElse(null),
+                nextGoal == null ? null : new LearnerLearningPlanApi.NextEligibleGoal(nextGoal),
                 continueReason,
                 canContinue,
                 stale ? null : scopeWithBlockage(skillpilotId,
-                        scopeProgress(learningScope(skillpilotId, plan.getLandscapeId(), blocks, asOf, true),
-                                blocks, mastery, waived, "de"),
+                        scopeProgress(selectedScope, blocks, mastery, waived, "de"),
                         eligible.isEmpty() && !coverageUnavailable, waived, mastery, "de"));
-        return new Evaluation(summary, blocks);
+        return new Evaluation(summary, blocks, assignments);
     }
 
     private Optional<DueGoal> firstEligibleDueGoal(
@@ -1715,12 +1779,12 @@ public class LearnerLearningPlanService {
             }
             var scope = learningScope(skillpilotId, landscapeId, blocks,
                     LocalDate.now(clock.withZone(PLAN_ZONE)), true);
-            if ("exam".equals(scope.kind())) return firstScopeContinuationGoal(skillpilotId, landscapeId, blocks,
+            if ("exam".equals(scope.kind()) || hasActiveUnitAssignment(blocks)) return firstScopeContinuationGoal(skillpilotId, landscapeId, blocks,
                     LocalDate.now(clock.withZone(PLAN_ZONE)), learners.getMastery(skillpilotId), true);
             boolean hasInactiveLearning = blocks.stream().anyMatch(block -> block != null
-                    && !block.isActive() && "learning".equals(block.kind()));
+                    && !block.isActive() && block.isAtomicLearning());
             if (!hasInactiveLearning) return firstPersonalCurriculumGoal(skillpilotId, landscapeId);
-            if (blocks.stream().noneMatch(block -> block.isActive() && "learning".equals(block.kind()))) {
+            if (blocks.stream().noneMatch(block -> block.isActive() && block.isAtomicLearning())) {
                 return Optional.empty();
             }
             Set<String> inactiveOnly = inactiveOnlyAtomicIds(blocks);
@@ -1836,15 +1900,15 @@ public class LearnerLearningPlanService {
             LocalDate asOf, Map<String, Double> mastery, boolean keepBinding, Set<String> waived) {
         var scope = learningScope(skillpilotId, landscapeId, blocks, asOf, keepBinding);
         if (!"exam".equals(scope.kind())) {
-            if (blocks.stream().noneMatch(block -> block.isActive() && "learning".equals(block.kind()))) return Optional.empty();
+            if (blocks.stream().noneMatch(block -> block.isActive() && block.isAtomicLearning())) return Optional.empty();
             LocalDate cutoff = periodEnd(learners.getLearner(skillpilotId).getLearningPlanPeriodBasis(), asOf);
             var due = firstEligibleDueGoal(skillpilotId, blocks, cutoff, mastery, waived);
             if (due.isPresent()) return due;
             LocalDate scheduleEnd = blocks.stream().filter(LearnerLearningPlanApi.Block::isActive)
-                    .filter(block -> "learning".equals(block.kind())).map(LearnerLearningPlanApi.Block::endDate)
+                    .filter(block -> block.isAtomicLearning()).map(LearnerLearningPlanApi.Block::endDate)
                     .max(LocalDate::compareTo).orElse(asOf);
             var planned = firstEligibleDueGoal(skillpilotId, blocks, scheduleEnd, mastery, waived);
-            if (planned.isPresent()) return planned;
+            if (planned.isPresent() || hasActiveUnitAssignment(blocks)) return planned;
             Set<String> inactive = inactiveOnlyAtomicIds(blocks);
             return learners.getPersonalCurriculumSubjectFrontier(skillpilotId, landscapeId).stream()
                     .filter(goal -> "atomic".equals(goal.type()) && !inactive.contains(goal.id()) && !waived.contains(goal.id()))
@@ -1875,7 +1939,7 @@ public class LearnerLearningPlanService {
     private static Set<String> inactiveOnlyAtomicIds(List<LearnerLearningPlanApi.Block> blocks) {
         LinkedHashSet<String> inactive = new LinkedHashSet<>();
         for (LearnerLearningPlanApi.Block block : blocks) {
-            if (!block.isActive() && "learning".equals(block.kind()) && block.atomicGoalIds() != null) {
+            if (!block.isActive() && block.isAtomicLearning() && block.atomicGoalIds() != null) {
                 inactive.addAll(block.atomicGoalIds());
             }
         }
@@ -1953,6 +2017,16 @@ public class LearnerLearningPlanService {
                 throw badRequest("block.id must be unique");
             }
             String kind = requireText(raw.kind(), "block.kind", 20).toLowerCase(Locale.ROOT);
+            if (raw.unitAssignment() != null) {
+                var binding = raw.unitAssignment();
+                if (!"learning".equals(kind) || binding.sectionGoalId() == null || binding.sectionGoalId().isBlank()
+                        || binding.revision() == null || binding.revision().isBlank()
+                        || binding.fingerprint() == null || !binding.fingerprint().matches("sha256:[a-f0-9]{64}")
+                        || !List.of(binding.sectionGoalId()).equals(raw.goalIds()) || raw.atomicGoalIds() == null
+                        || raw.atomicGoalIds().isEmpty() || raw.atomicGoalIds().stream().distinct().count() != raw.atomicGoalIds().size()) {
+                    throw badRequest("Invalid versioned unit assignment");
+                }
+            }
             LearnerLearningPlanApi.Block normalized;
             LocalDate sortDate;
             LocalDate sortEndDate;
@@ -1961,7 +2035,7 @@ public class LearnerLearningPlanService {
                     LocalDate start = requireDate(raw.startDate(), "block.startDate");
                     LocalDate end = requireDate(raw.endDate(), "block.endDate");
                     requireDateOrder(start, end);
-                    if (workdaysInclusive(start, end) == 0) {
+                    if (raw.unitAssignment() == null && workdaysInclusive(start, end) == 0) {
                         throw badRequest("learning blocks must contain at least one workday");
                     }
                     if (raw.atomicGoalIds() == null) {
@@ -1974,7 +2048,9 @@ public class LearnerLearningPlanService {
                     List<String> atoms = new ArrayList<>();
                     for (String rawGoalId : raw.atomicGoalIds()) {
                         String goalId = requireText(rawGoalId, "atomicGoalIds entry", 255);
-                        if (!scopeIds.contains(goalId)) {
+                        if (raw.unitAssignment() != null) {
+                            atoms.add(goalId);
+                        } else if (!scopeIds.contains(goalId)) {
                             unknownIds.add(goalId);
                         } else if (!raw.isActive() || preserveAllScopeAtoms
                                 || openIds.contains(goalId)
@@ -1997,7 +2073,7 @@ public class LearnerLearningPlanService {
                             null,
                             List.copyOf(new LinkedHashSet<>(atoms)),
                             goalIds,
-                            raw.active());
+                            raw.active(), raw.unitAssignment());
                     sortDate = start;
                     sortEndDate = end;
                 }
@@ -2054,7 +2130,7 @@ public class LearnerLearningPlanService {
         List<LearnerLearningPlanApi.Block> normalized = new ArrayList<>();
         for (IndexedBlock entry : indexed) {
             LearnerLearningPlanApi.Block block = entry.block();
-            if (!block.isActive() || !"learning".equals(block.kind())) {
+            if (!block.isActive() || !block.isAtomicLearning()) {
                 normalized.add(block);
                 continue;
             }
@@ -2075,7 +2151,7 @@ public class LearnerLearningPlanService {
         }
         boolean allLearningInactive = indexed.stream().anyMatch(entry -> "learning".equals(entry.block().kind()))
                 && indexed.stream().noneMatch(entry -> "learning".equals(entry.block().kind()) && entry.block().isActive());
-        if (seenAtoms.isEmpty() && !allLearningInactive) {
+        if (seenAtoms.isEmpty() && !allLearningInactive && normalized.stream().noneMatch(block -> block.unitAssignment() != null)) {
             throw conflict("The plan contains no currently open atomic goals");
         }
         return List.copyOf(normalized);
@@ -2153,7 +2229,7 @@ public class LearnerLearningPlanService {
         List<IndexedBlock> indexedLearningBlocks = new ArrayList<>();
         for (int index = 0; index < blocks.size(); index++) {
             LearnerLearningPlanApi.Block block = blocks.get(index);
-            if (block.isActive() && "learning".equals(block.kind()) && block.atomicGoalIds() != null) {
+            if (block.isActive() && block.isAtomicLearning() && block.atomicGoalIds() != null) {
                 indexedLearningBlocks.add(new IndexedBlock(
                         index,
                         block.startDate(),
@@ -2449,7 +2525,7 @@ public class LearnerLearningPlanService {
     private static Set<String> atomicIds(List<LearnerLearningPlanApi.Block> blocks) {
         LinkedHashSet<String> ids = new LinkedHashSet<>();
         for (LearnerLearningPlanApi.Block block : blocks) {
-            if (block.isActive() && block.atomicGoalIds() != null) {
+            if (block.isActive() && block.isAtomicLearning() && block.atomicGoalIds() != null) {
                 ids.addAll(block.atomicGoalIds());
             }
         }
@@ -2459,7 +2535,7 @@ public class LearnerLearningPlanService {
     private static Set<String> capturedAtomicIds(List<LearnerLearningPlanApi.Block> blocks) {
         LinkedHashSet<String> ids = new LinkedHashSet<>();
         for (LearnerLearningPlanApi.Block block : blocks) {
-            if (block.atomicGoalIds() != null) ids.addAll(block.atomicGoalIds());
+            if (block.isAtomicLearning() && block.atomicGoalIds() != null) ids.addAll(block.atomicGoalIds());
         }
         return Set.copyOf(ids);
     }
@@ -2726,7 +2802,7 @@ public class LearnerLearningPlanService {
             boolean resumable,
             boolean current,
             LearnerPlanTodayStatus.LearningScope learningScope,
-            Set<String> waivedGoalIds) {
+            Set<String> waivedGoalIds, List<LearnerPlanTodayStatus.UnitAssignmentStatus> assignments) {
     }
 
     /**
@@ -2738,6 +2814,7 @@ public class LearnerLearningPlanService {
         private final String subjectKey;
         private final String subjectLabel;
         private final List<String> landscapeIds = new ArrayList<>();
+        private final List<LearnerPlanTodayStatus.UnitAssignmentStatus> unitAssignments = new ArrayList<>();
         private final Map<String, LocalDate> dueDates = new LinkedHashMap<>();
         private final Set<String> plannedGoalIds = new LinkedHashSet<>();
         private final Set<String> waivedGoalIds = new LinkedHashSet<>();
@@ -2784,6 +2861,7 @@ public class LearnerLearningPlanService {
         void merge(PlanEvaluation evaluation) {
             evaluation.dueDates().forEach((goalId, dueDate) -> dueDates.merge(
                     goalId, dueDate, (left, right) -> left.isBefore(right) ? left : right));
+            unitAssignments.addAll(evaluation.assignments());
             plannedGoalIds.addAll(evaluation.plannedGoalIds());
             waivedGoalIds.addAll(evaluation.waivedGoalIds());
             canContinue |= evaluation.canContinue();
@@ -2833,6 +2911,22 @@ public class LearnerLearningPlanService {
                 subjectLine = subjectLabel + ": " + selectedScope.progressText() + " · "
                         + (hasScheduledGoals ? UnifiedLearningPlanStatusFormatter.formatPeriodText(periodBasis, balance, locale)
                                 : periodText);
+            }
+            if (!hasScheduledGoals && selectedScope == null && !unitAssignments.isEmpty()) {
+                boolean english = locale.startsWith("en");
+                var lines = new ArrayList<String>();
+                for (var assignment : unitAssignments) {
+                    String state = switch (assignment.status()) {
+                        case "completed" -> english ? "Unit assignment complete" : "Einheitenauftrag abgeschlossen";
+                        case "active" -> english ? "Unit assignment active" : "Einheitenauftrag aktiv";
+                        default -> english ? "Unit assignment version unavailable" : "Fassung des Einheitenauftrags nicht verfügbar";
+                    };
+                    lines.add(assignment.passedParts() == null ? state : state + " (" + assignment.passedParts()
+                            + "/" + assignment.requiredParts() + (english ? " assessment parts)" : " Prüfungsteile)"));
+                }
+                planStatusText = String.join(" · ", lines);
+                periodText = planStatusText;
+                subjectLine = subjectLabel + " · " + planStatusText;
             }
             return new LearnerPlanTodayStatus.SubjectStatus(
                     List.copyOf(landscapeIds),
@@ -2898,7 +2992,31 @@ public class LearnerLearningPlanService {
 
     private record Evaluation(
             LearnerLearningPlanApi.PlanSummary summary,
-            List<LearnerLearningPlanApi.Block> blocks) {
+            List<LearnerLearningPlanApi.Block> blocks, List<AssignmentState> assignments) {
+    }
+
+    private static boolean hasActiveUnitAssignment(List<LearnerLearningPlanApi.Block> blocks) {
+        return blocks.stream().anyMatch(block -> block.isActive() && block.unitAssignment() != null);
+    }
+
+    private List<AssignmentState> assignmentStates(String learnerId, String landscape, List<LearnerLearningPlanApi.Block> blocks) {
+        if (!hasActiveUnitAssignment(blocks)) return List.of();
+        var current = learners.getUnitAssignmentOptions(learnerId, landscape);
+        return blocks.stream().filter(block -> block.isActive() && block.unitAssignment() != null)
+                .map(block -> new AssignmentState(block, current.stream().filter(option -> option.binding().equals(block.unitAssignment())
+                        && option.parts().stream().map(LearnerLearningPlanApi.UnitAssignmentPart::goalId).toList()
+                                .equals(block.atomicGoalIds())).findFirst().orElse(null))).toList();
+    }
+
+    private record AssignmentState(LearnerLearningPlanApi.Block block, LearnerLearningPlanApi.UnitAssignmentOption option) {
+        LearnerPlanTodayStatus.UnitAssignmentStatus status(String locale) {
+            String title = option == null ? block.title() : option.title().getOrDefault(
+                    locale != null && locale.startsWith("en") ? "en" : "de", block.title());
+            return new LearnerPlanTodayStatus.UnitAssignmentStatus(title,
+                    option == null ? "unavailable" : option.passed() ? "completed" : "active",
+                    option == null ? null : (int) option.parts().stream().filter(LearnerLearningPlanApi.UnitAssignmentPart::passed).count(),
+                    block.atomicGoalIds().size());
+        }
     }
 
     private record PreparedPlan(

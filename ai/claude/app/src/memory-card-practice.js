@@ -9,6 +9,7 @@ export function memoryCardReviewReceiptFromToolResult(value) {
     const expectedStateVersion = nonNegativeInteger(candidate.stateVersion);
     const status = boundedText(candidate.status, 100);
     const goalId = boundedText(candidate.goalId, 300);
+    const practiceScopeId = boundedText(candidate.practiceScopeId, 256);
     const goalTitle = boundedText(candidate.goalTitle, 1_000);
     const progress = record(candidate.progress);
     const total = nonNegativeInteger(progress?.totalCards);
@@ -19,6 +20,7 @@ export function memoryCardReviewReceiptFromToolResult(value) {
       expectedStateVersion === undefined
       || !status
       || !goalId
+      || (candidate.practiceScopeId !== undefined && !practiceScopeId)
       || !goalTitle
       || total === undefined
       || due === undefined
@@ -33,6 +35,7 @@ export function memoryCardReviewReceiptFromToolResult(value) {
       status,
       goalId,
       goalTitle,
+      ...(practiceScopeId ? { practiceScopeId } : {}),
       expectedStateVersion,
       progress: { total, due, scheduled },
       completed
@@ -79,6 +82,7 @@ export function memoryCardPracticeFromMetadata(value, stateVersion) {
   const learningSessionId = opaqueLearningSessionId(candidate.learningSessionId);
   const communicationLocale = locale(candidate.communicationLocale);
   const goalId = boundedText(candidate.goalId, 300);
+  const practiceScopeId = boundedText(candidate.practiceScopeId, 256);
   const goalTitle = boundedText(candidate.goalTitle, 1_000);
   const expectedStateVersion = stateVersion
     ?? nonNegativeInteger(candidate.expectedStateVersion);
@@ -93,6 +97,7 @@ export function memoryCardPracticeFromMetadata(value, stateVersion) {
     !learningSessionId
     || !communicationLocale
     || !goalId
+    || (candidate.practiceScopeId !== undefined && !practiceScopeId)
     || !goalTitle
     || expectedStateVersion === undefined
     || due === undefined
@@ -115,6 +120,7 @@ export function memoryCardPracticeFromMetadata(value, stateVersion) {
     communicationLocale,
     goalId,
     goalTitle,
+    ...(practiceScopeId ? { practiceScopeId } : {}),
     expectedStateVersion,
     progress: { due, scheduled, total },
     completed,
@@ -172,6 +178,7 @@ export function createMemoryCardStartArguments(practice) {
   return {
     learningSessionId: practice.learningSessionId,
     goalId: practice.goalId,
+    ...(practice.practiceScopeId ? { practiceScopeId: practice.practiceScopeId } : {}),
     expectedStateVersion: practice.expectedStateVersion,
     language: practice.communicationLocale
   };

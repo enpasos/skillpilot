@@ -8,7 +8,8 @@ on:
       - 'ai/gemini/coach/**'
       - 'backend/**'
       - 'app/**'
-      - 'curricula/DE/Gymnasium/materials/physics/he-e1-motion-practice.json'
+      - 'curricula/unit-learning-materials.json'
+      - 'curricula/**/materials/**'
       - 'deploy/gemini-v1/**'
       - 'scripts/install_gemini_v1_gateway.py'
       - 'scripts/verify_gemini_v1_runtime.py'
@@ -28,7 +29,8 @@ on:
       - 'ai/gemini/coach/**'
       - 'backend/**'
       - 'app/**'
-      - 'curricula/DE/Gymnasium/materials/physics/he-e1-motion-practice.json'
+      - 'curricula/unit-learning-materials.json'
+      - 'curricula/**/materials/**'
       - 'deploy/gemini-v1/**'
       - 'scripts/install_gemini_v1_gateway.py'
       - 'scripts/verify_gemini_v1_runtime.py'
@@ -190,7 +192,8 @@ jobs:
             /ai/gemini/coach/
             /app/
             !/app/public/assets/goal-visualizations/
-            /curricula/DE/Gymnasium/materials/physics/he-e1-motion-practice.json
+            /curricula/unit-learning-materials.json
+            /curricula/**/materials/
             /scripts/
       - uses: actions/setup-node@v6
         with:
