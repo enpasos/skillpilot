@@ -1750,7 +1750,9 @@ class CompositionViewServiceTest {
                 "physics-e1-motion", List.of(
                         "2b9e565f-d9b4-5e23-b5b7-b7977cecff06",
                         "6ea3fb3c-abdc-568f-ab13-97c36dc274e4",
-                        "c5807a37-129e-5df6-8989-482bc7f5683e"),
+                        "ee7d5f3d-858f-59d6-89b0-e5a7f437f458", // A: wagon
+                        "39f52dcb-ff1d-5cad-9ccb-30da803cfa85", // B: horizontal throw
+                        "c933b7d2-edcb-5747-9378-9762659f260a"), // C: vertical throw
                 "physics-e2-newton-and-conservation", List.of(
                         "22561c66-3957-5d55-b07a-25de1f359930",
                         "72649cf5-893c-5f03-88bd-a2497171d434",
@@ -1844,6 +1846,22 @@ class CompositionViewServiceTest {
                                 .filteredOn(node -> assessmentId.equals(node.get("goalId"))).hasSize(1);
                     }
                 });
+                // In the reviewed Hessian edition C is visible on the E.1 board. D is on its acceleration board.
+                String accelerationProtocol = "f13ca187-b680-5f47-b4ad-76bd474bd8a2";
+                Map<String, Object> motion = phaseChildren.stream()
+                        .filter(node -> "physics-e1-motion".equals(node.get("id"))).findFirst().orElseThrow();
+                List<Map<String, Object>> motionChildren = (List<Map<String, Object>>) motion.get("children");
+                assertThat(motionChildren).as(context + " acceleration board in E.1")
+                        .filteredOn(node -> "physics-e1-accelerated-and-free-fall".equals(node.get("id")))
+                        .singleElement().satisfies(board -> assertThat((List<Map<String, Object>>) board.get("children"))
+                                .filteredOn(node -> accelerationProtocol.equals(node.get("goalId")))
+                                .singleElement().satisfies(node -> assertThat(node).containsEntry("kind", "goalEntry")
+                                        .doesNotContainEntry("projectionRole", "prerequisiteOnly")));
+                assertThat(allNodes).as(context + " unique acceleration protocol")
+                        .filteredOn(node -> accelerationProtocol.equals(node.get("goalId"))).hasSize(1);
+                assertThat(allNodes).as(context + " former throw and protocol editions are not offered")
+                        .extracting(node -> node.get("goalId")).doesNotContain(
+                                "c5807a37-129e-5df6-8989-482bc7f5683e", "a8dc0290-9f80-5763-8943-e16b8d2aa860");
                 List<String> assessmentBranches = List.of(
                         "549a427d-f10a-5537-990e-6fdd7466848b", // Q1
                         "9dd7c596-a751-523c-acba-916f73e900a5", // Q2

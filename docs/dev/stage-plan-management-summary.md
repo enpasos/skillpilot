@@ -21,7 +21,7 @@ er erhält die Dokumentationschecks. Die große CI schließt `docs/dev/**` und
 `AGENTS.md` bei reinen Änderungen dieser Pfade derzeit aus. Der dokumentierte
 CI-Nachweis gilt weiterhin für den benannten Implementierungscommit.
 
-## 20. November 2026, 12:42 MEZ (UTC+01:00) – Hessen Physik E.1 in G8 und G9
+## 20. November 2026, 13:56 MEZ (UTC+01:00) – Hessen Physik E.1 in G8 und G9
 
 **Zur fachlichen Durchsicht.** Die Ballfrage eröffnet E.1. Drei Übungen und neun Themenkarten führen zu den vier Prüfungen. Wagen A verlangt 14/17, waagerechter Wurf B 15/18, senkrechter Wurf C und Beschleunigungsprotokoll D jeweils 17/20 Punkte. Vom Wurf aus lässt sich bei 1024 Pixeln die Wagenaufgabe wählen. Die Vergleichsprofile zeigen das Cockpit vor den Prüfungen, nach C+D und nach A–D. [Anleitung für G8 und G9](hessen-physik-e1-vorschau.md) · [Fachentscheid A/B](https://github.com/enpasos/skillpilot/blob/bea9d4329942a183424d2ff5615f10cdda7bdd8e/curricula/DE/Gymnasium/quality/release-model/physics-he-e1-partial-credit-review-2026-11-20.md) · [Fachentscheid C/D und kanonische Zuordnung](https://github.com/enpasos/skillpilot/blob/2c2505fecef3a3a8a561b472b52ba1f04a5a4cdb/curricula/DE/Gymnasium/quality/learning-units/physics-constant-acceleration-2026-11-20-v3.md)
 
@@ -31,13 +31,15 @@ CI-Nachweis gilt weiterhin für den benannten Implementierungscommit.
 
 Die reguläre Lernkarte und der Cockpit-Prototyp verwenden dieselbe Auswertung. Im separaten Prototypfall beendet ein direkter Prüfungsnachweis die Vorbereitung auf ein weiteres Ziel. Der Abschnitt ist damit abgeschlossen. Für das Fach ist ein Ziel von 55 nachgewiesen und im ausdrücklich gewählten Einzelzielplan eines von zwei. Der Browser prüft das neutrale Minus am entfallenen Ziel und das grüne Häkchen am Prüfungsziel.
 
+Im ersten vollständigen Backendlauf auf diesem Stand fanden zehn Tests aus drei Klassen noch die frühere hessische Wurffassung oder erwarteten einen alten internen Konstruktor für die Voraussetzungenprüfung. Die aktualisierten Tests prüfen die hessische Fassung C im ausdrücklich gewählten Klausurplan, A bis D auf den jeweiligen Lernkarten und die tatsächlich verwendete Berechnung der Lernfront. Alle 84 Tests der drei Klassen bestanden lokal. Die Klausur behält ihre neun fachlichen Ziele und drei gewählten Aufgaben. [Protokoll des vorherigen Backendlaufs](https://github.com/enpasos/skillpilot/actions/runs/44729930523/job/136278763709)
+
 **Integration.** K 0/13 und F 0/7 vollständig abgeschlossen, 0 neue Stufenpläne aktiviert. Der E.1-Branch enthält den aktuellen Hauptstand mit der gesondert integrierten Korrektur für offene Cockpit-Streams. Die dauerhafte Vorschau auf Port 5177 wurde am Implementierungsstand `a45ff1b502` im regulären Cockpit geprüft. Windows Edge zeigte in beiden Bildungsgängen den abgeschlossenen Auftrag im regulären Cockpit und den zusätzlichen offenen Einzelauftrag im Vergleich. Der vollständige lokale G8/G9-Browserlauf bestand einschließlich der vier Erststarts, des aktiven Einzelziels im gemischten Auftrag und des freiwilligen Einzelwegs. Die Vollprüfung der Integration und die persönliche fachliche Teilabnahme stehen aus. Die Gesamtfreigabe für Hessen erteilt der Product Owner gesondert. [Hessen-PR #171](https://github.com/enpasos/skillpilot/pull/171) · [Stream-PR #172](https://github.com/enpasos/skillpilot/pull/172)
 
-## 20. November 2026, 11:47 MEZ (UTC+01:00) – Zwei offene Cockpit-Tabs
+## 20. November 2026, 13:04 MEZ (UTC+01:00) – Zwei offene Cockpit-Tabs
 
 Die Registrierung eines Cockpit-Streams gibt die Datenbankverbindung frei, sobald das Profil unter der Transaktionssperre geprüft ist. Mit einer einzigen verfügbaren Verbindung lieferte ein paralleler Lernstandabruf vor der Korrektur HTTP 500 und danach HTTP 200. Zwei offene Tabs belegten danach zusammen null Poolverbindungen. Im HTTP-Test empfing der erste Tab weiterhin das Aktualisierungsereignis. Der Eingriff betrifft die Streamregistrierung. K 0/13 und F 0/7 vollständig abgeschlossen, 0 neue Stufenpläne und 0 geänderte Lernkartentafeln. Die Prüfpunkte sind der Lernstandabruf im zweiten Tab und die Aktualisierung im ersten Tab. [Implementierung und automatisierte Regression in PR #172](https://github.com/enpasos/skillpilot/pull/172)
 
-Die separate Integration auf `main` erfolgte um 11:46 MEZ, nachdem die PR-CI mit 14/14 Jobs bestanden hatte. Die frische Main-CI läuft. [PR-CI](https://github.com/enpasos/skillpilot/actions/runs/44710664415) · [Main-CI](https://github.com/enpasos/skillpilot/actions/runs/44722117370)
+**Integration abgeschlossen.** Der geprüfte PR-Stand `ea083c2b46` kam um 11:46 MEZ über den Merge-Commit `ca9e6831c4` auf `main`. Die vollständige PR-CI bestand mit 14 von 14 Jobs. Der frische Push-Lauf auf dem Merge-Commit endete um 13:03 MEZ ebenfalls mit 14 von 14 erfolgreichen Jobs. [PR-CI](https://github.com/enpasos/skillpilot/actions/runs/44710664415) · [Implementierung auf main](https://github.com/enpasos/skillpilot/commit/ca9e6831c47b329b8de095783a80e1d54318654c) · [Main-CI](https://github.com/enpasos/skillpilot/actions/runs/44722117370)
 
 ## 20. November 2026, 08:56 MEZ (UTC+01:00) – Prüfungen auf Verständnis bewerten
 
