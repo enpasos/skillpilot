@@ -110,6 +110,10 @@ try {
       }
       if (path.endsWith(`/landscapes/${id.root}/closure`)) return json(landscapes)
       const suffix = path.replace(`/api/ui/learners/${id.learner}`, '')
+      if (request.method() === 'GET' && suffix === `/exam-passes/${examId}`) {
+        return json([{ passedAt: '2026-11-17T08:00:00Z', earnedPoints: 18, maxPoints: 25, passingPoints: 15,
+          fingerprint: 'sha256:' + 'a'.repeat(64) }])
+      }
       if (!suffix && request.method() === 'GET') return json(nativeMapProfile(true))
       if (suffix === '/mastery') return json({ mastery: {} })
       if (suffix === '/state') return json(learnerState)
@@ -288,6 +292,9 @@ try {
     await dialog.waitFor({ state: 'hidden' })
     await page.getByTestId('learner-current-goal').getByRole('heading', { name: assessment.title, exact: true }).waitFor()
     assert.equal(new URL(page.url()).pathname, `/learner/${examId}`, 'E.1 opens the single canonical assessment target')
+    const history = page.getByRole('region', { name: 'Deine Prüfungsnachweise' })
+    await history.getByText('Bestanden mit 18 von 25 Punkten (Bestehensgrenze 15)').waitFor()
+    assert.equal(await history.locator('time').getAttribute('datetime'), '2026-11-17T08:00:00Z')
     assert.deepEqual(unexpected, [])
     assert.deepEqual(errors, [])
     await context.close()
