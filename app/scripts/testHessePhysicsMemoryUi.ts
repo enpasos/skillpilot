@@ -51,47 +51,59 @@ const deck = { deckId: 'de_gymnasium_physics_mechanics_ephase', title: memory.ti
   { id: 'e1-b', front: 'E1 Frage B', back: 'E1 Antwort B', category: 'E1', tags: ['GK', 'goal:' + force.id] },
   { id: 'e2-a', front: 'E2 Frage', back: 'E2 Antwort', category: 'E2', tags: ['GK', 'goal:' + energyId] },
 ] }
-async function checkMapLayout(page: Page, dialog: Locator, releaseDeck: () => void, changeActiveGoal: () => void) {
-  const board = dialog.locator(`.lum-canvas[data-scope-id="${topicId}"][aria-busy="false"]`)
-  const node = (goalId: string) => dialog.locator(`[data-entry-id="${goalId}"]`)
-  await node(examId!).waitFor()
-  assert.equal(await node(memoryId!).count(), 0, 'the E.1 board has no topic deck before its cards arrive')
-  const probe = await dialog.evaluateHandle((element, refreshEvent) => {
+function monitorBoard(dialog: Locator) {
+  return dialog.evaluateHandle((element, refreshEvent) => {
     const activity = { layouts: 0, busy: 0, loading: 0 }
-    const result = { activity, activeGoalRefreshed: false }
+    const result = { activity, lastRefresh: '' }
     const original = Worker.prototype.postMessage
     Worker.prototype.postMessage = function(message, ...args) {
       if (message?.cmd === 'layout') activity.layouts++
       return Reflect.apply(original, this, [message, ...args])
     }
+    const canvas = element.querySelector('.lum-canvas')!
     new MutationObserver(records => {
-      for (const record of records) {
-        if (record.attributeName === 'aria-busy' && record.oldValue === 'false' && record.target instanceof Element
-            && record.target.matches('.lum-canvas')) activity.busy++
+      // Read batched mutations backwards to distinguish real false→true transitions from repeated attribute writes.
+      let nextBusy = canvas.getAttribute('aria-busy')
+      for (const record of records.reverse()) {
+        if (record.attributeName === 'aria-busy' && record.target === canvas) {
+          if (record.oldValue === 'false' && nextBusy === 'true') activity.busy++
+          nextBusy = record.oldValue
+        }
         for (const added of record.addedNodes) {
           if (added instanceof Element && (added.matches('.lum-loading') || added.querySelector('.lum-loading'))) activity.loading++
         }
       }
     }).observe(element, { subtree: true, childList: true, attributes: true, attributeFilter: ['aria-busy'], attributeOldValue: true })
     window.addEventListener(refreshEvent, event => {
-      if ((event as CustomEvent).detail.reason === 'ACTIVE_GOAL_UPDATE') result.activeGoalRefreshed = true
+      result.lastRefresh = (event as CustomEvent).detail.reason
     })
     return result
   }, LEARNER_UI_REFRESH_EVENT)
+}
+
+async function checkMapLayout(page: Page, dialog: Locator, releaseDeck: () => void, changeActiveGoal: () => void) {
+  const board = dialog.locator(`.lum-canvas[data-scope-id="${topicId}"][aria-busy="false"]`)
+  const node = (goalId: string) => dialog.locator(`[data-entry-id="${goalId}"]`)
+  await node(examId!).waitFor()
+  await board.waitFor()
+  assert.equal(await node(memoryId!).count(), 0, 'the E.1 board has no topic deck before its cards arrive')
+  const probe = await monitorBoard(dialog)
   releaseDeck()
   await node(memoryId!).waitFor()
   await board.waitFor()
   const afterDeck = await probe.evaluate(value => value.activity)
-  assert(afterDeck.layouts > 0 && afterDeck.busy > 0 && afterDeck.loading > 0, 'a newly available topic deck triggers layout')
+  assert.deepEqual(afterDeck, { layouts: 1, busy: 1, loading: 1 }, 'loading a new deck keeps the board busy until its camera is ready')
   const camera = () => dialog.locator('.react-flow__viewport').evaluate(element => (element as HTMLElement).style.transform)
   const fittedCamera = await camera()
   await dialog.getByRole('button', { name: 'Karte verkleinern', exact: true }).click()
   const chosenCamera = await camera()
   assert.notEqual(chosenCamera, fittedCamera)
+  const afterZoom = await probe.evaluate(value => value.activity)
+  assert.deepEqual(afterZoom, afterDeck, 'manual zoom on the ready board does not restart placement')
   const assertBoardStable = async (action: string) => {
     await board.waitFor()
     await page.evaluate(() => new Promise<void>(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))))
-    assert.deepEqual(await probe.evaluate(value => value.activity), afterDeck, action)
+    assert.deepEqual(await probe.evaluate(value => value.activity), afterZoom, action)
     assert.equal(await camera(), chosenCamera, action)
   }
   await node(horizontalThrow.id).locator('.lum-node-main').click()
@@ -100,11 +112,52 @@ async function checkMapLayout(page: Page, dialog: Locator, releaseDeck: () => vo
   await dialog.locator(`[data-entry-id="${force.id}"][data-active-goal="true"] .lum-node-main`).click()
   await dialog.locator(`[data-selected-goal-id="${force.id}"]`).waitFor()
   changeActiveGoal()
-  await page.evaluate(() => window.dispatchEvent(new Event('test-active-goal-update')))
-  await page.waitForFunction(value => value.activeGoalRefreshed, probe)
+  await page.evaluate(() => window.dispatchEvent(new CustomEvent('test-learner-update', { detail: 'ACTIVE_GOAL_UPDATE' })))
+  await page.waitForFunction(value => value.lastRefresh === 'ACTIVE_GOAL_UPDATE', probe)
   await dialog.locator(`[data-entry-id="${horizontalThrow.id}"][data-active-goal="true"]`).waitFor()
   await dialog.locator(`[data-selected-goal-id="${horizontalThrow.id}"]`).waitFor()
   await assertBoardStable('receiving a new active goal on the same board preserves the layout and camera')
+}
+
+async function checkProjectionList(page: Page, dialog: Locator, manual: boolean, releaseDeck: () => void, updateProgress: () => void) {
+  const list = dialog.getByTestId('learning-map-compact-list')
+  const board = dialog.locator('.lum-canvas[aria-busy="false"]')
+  await list.waitFor()
+  await board.waitFor()
+  assert.equal(await list.locator('[data-entry-kind="assessment"]').count(), 6, 'the released projection has six assessment nodes')
+  if (manual) {
+    await dialog.getByRole('button', { name: 'Grafische Karte anzeigen' }).click()
+    await list.waitFor({ state: 'hidden' })
+    await board.waitFor()
+    const measuredScale = await page.waitForFunction(() => {
+      const graph = document.querySelector('.lum-flow')
+      const viewport = graph?.querySelector('.react-flow__viewport')
+      const nodes = graph?.querySelectorAll('.react-flow__node [data-entry-kind="assessment"]')
+      if (!viewport || nodes?.length !== 6) return false
+      const scale = new DOMMatrixReadOnly(getComputedStyle(viewport).transform).a
+      return scale > 0 && scale < 0.8 ? scale : null
+    })
+    console.log('Six assessment nodes in graph mode at', Math.round((await measuredScale.jsonValue())! * 100) + '%')
+    await dialog.getByRole('button', { name: 'Zielliste anzeigen' }).click()
+    await list.waitFor()
+    await board.waitFor()
+  }
+  const originalList = await list.elementHandle()
+  const scrollTop = await list.evaluate(element => { element.scrollTop = 80; return element.scrollTop })
+  const probe = await monitorBoard(dialog)
+  assert.equal(await list.locator(`[data-entry-id="${memoryId}"]`).count(), 0)
+  releaseDeck()
+  await list.locator(`[data-entry-id="${memoryId}"]`).waitFor()
+  assert.deepEqual(await probe.evaluate(value => value.activity), { layouts: 0, busy: 0, loading: 0 }, 'topic deck updates in the open list')
+  const goal = list.locator(`[data-entry-id="${horizontalThrow.id}"]`)
+  await goal.getByRole('img', { name: 'Noch offen' }).waitFor()
+  updateProgress()
+  await page.evaluate(() => window.dispatchEvent(new CustomEvent('test-learner-update', { detail: 'MASTERY_UPDATE' })))
+  await page.waitForFunction(value => value.lastRefresh === 'MASTERY_UPDATE', probe)
+  await goal.getByRole('img', { name: 'Direkt geschafft' }).waitFor()
+  assert.deepEqual(await probe.evaluate(value => value.activity), { layouts: 0, busy: 0, loading: 0 }, 'mastery updates in the open list')
+  assert(await originalList?.evaluate(element => element.isConnected), 'the same list remains mounted through both updates')
+  assert.equal(await list.evaluate(element => element.scrollTop), scrollTop, 'a data refresh preserves the chosen reading position')
 }
 
 const appRoot = fileURLToPath(new URL('../', import.meta.url))
@@ -120,18 +173,46 @@ const address = server.httpServer!.address()
 assert(address && typeof address !== 'string')
 const origin = `http://127.0.0.1:${address.port}`
 const browser = await chromium.launch({ headless: true })
+const scenarios: {
+  width: number
+  height?: number
+  viewFile?: string
+  manual?: boolean
+  futureTopic?: boolean
+  switchDuringSave?: boolean
+  backgroundOverlap?: boolean
+}[] = [
+  ...['de-he-gk-g8', 'de-he-sekii-gk'].flatMap(viewFile => [
+    { width: 1024, height: 900, viewFile, manual: false },
+    { width: 1024, height: 650, viewFile, manual: true },
+  ]),
+  { width: 1440, futureTopic: false, switchDuringSave: false, backgroundOverlap: false },
+  { width: 390, futureTopic: false, switchDuringSave: false, backgroundOverlap: false },
+  { width: 1440, futureTopic: true, switchDuringSave: false, backgroundOverlap: false },
+  { width: 1440, futureTopic: false, switchDuringSave: true, backgroundOverlap: false },
+  { width: 1440, futureTopic: false, switchDuringSave: true, backgroundOverlap: true },
+]
 try {
-  for (const { width, futureTopic, switchDuringSave, backgroundOverlap } of [
-    { width: 1440, futureTopic: false, switchDuringSave: false, backgroundOverlap: false },
-    { width: 390, futureTopic: false, switchDuringSave: false, backgroundOverlap: false },
-    { width: 1440, futureTopic: true, switchDuringSave: false, backgroundOverlap: false },
-    { width: 1440, futureTopic: false, switchDuringSave: true, backgroundOverlap: false },
-    { width: 1440, futureTopic: false, switchDuringSave: true, backgroundOverlap: true },
-  ]) {
+  for (const scenario of scenarios) {
+    const { width, futureTopic, switchDuringSave, backgroundOverlap, viewFile } = scenario
+    const dataView = viewFile ? JSON.parse(await readFile(new URL(
+      `../../curricula/DE/Gymnasium/composition-views/physik/${viewFile}.view.json`, import.meta.url), 'utf8')) : view
+    const profile = nativeMapProfile(true)
+    if (viewFile) {
+      const config = JSON.parse(profile.personalCurriculum)
+      config[id.root] = { selected: true, filterId: 'DE-HE', durationModel: dataView.scope.durationModel ?? 'G9', stage: dataView.scope.stage }
+      config[id.physics].filterId = dataView.scope.courseProfile
+      if (dataView.scope.stage === 'CrossStage') config.__skillpilot_stage_scope_sek1__ = { selected: true }
+      profile.personalCurriculum = JSON.stringify(config)
+    }
+    const dataLandscapes = viewFile ? [nativeMapLandscapes[0], canonical] : landscapes
+    const dataTopic = `composition:${dataView.viewId}:structure:physics-e1-motion`
+    const initialGoal = viewFile ? canonical.goals.find(goal => goal.id === 'ee7d5f3d-858f-59d6-89b0-e5a7f437f458')! : force
+    const mastery: Record<string, number> = {}
     const checkLayout = width === 1440 && !futureTopic && !switchDuringSave
     let releaseDeck!: () => void
     const delayedDeck = new Promise<void>(resolve => { releaseDeck = resolve })
-    const context = await browser.newContext({ viewport: { width, height: 960 }, reducedMotion: 'reduce', serviceWorkers: 'block' })
+    const context = await browser.newContext({ viewport: { width, height: scenario.height ?? 960 }, reducedMotion: 'reduce', serviceWorkers: 'block' })
     await context.addInitScript('globalThis.__name = (target) => target')
     await context.addInitScript(({ learner, root, terms }) => {
       localStorage.setItem('skillpilot_lang', 'de')
@@ -141,9 +222,10 @@ try {
       localStorage.setItem('skillpilot_terms_accepted_version', terms)
       class TestEventSource extends EventTarget {
         readyState = 1
-        constructor() { super(); window.addEventListener('test-active-goal-update', this.update) }
-        update = () => this.dispatchEvent(new MessageEvent('client-state', { data: JSON.stringify({ type: 'ACTIVE_GOAL_UPDATE' }) }))
-        close() { window.removeEventListener('test-active-goal-update', this.update) }
+        constructor() { super(); window.addEventListener('test-learner-update', this.update) }
+        onmessage: ((event: MessageEvent) => void) | null = null
+        update = (event: Event) => this.onmessage?.(new MessageEvent('message', { data: JSON.stringify({ type: (event as CustomEvent).detail }) }))
+        close() { window.removeEventListener('test-learner-update', this.update) }
       }
       Object.defineProperty(window, 'EventSource', { configurable: true, value: TestEventSource })
     }, { learner: id.learner, root: id.root, terms: CURRENT_TERMS_VERSION })
@@ -159,35 +241,37 @@ try {
       'e1-a': { id: 'e1-a', interval: 1, repetition: 1, ef: 2.5, nextReview: futureTopic ? Date.now() + 86_400_000 : 0, verifiedRecall },
       'e1-b': { id: 'e1-b', interval: 1, repetition: 1, ef: 2.5, nextReview: futureTopic ? Date.now() + 86_400_000 : 0, verifiedRecall }, 'e2-a': outside,
     }
-    const learnerState = { activeGoal: { id: force.id }, frontier: [{ id: force.id }],
+    const learnerState = { activeGoal: { id: initialGoal.id }, frontier: [{ id: initialGoal.id }],
       goals: { planned: [{ id: id.physicsRoot }], mastered_count: 0, total_count: 6, personalized: { mastered_atomic: 0, total_atomic: 5 } },
-      stateMachine: { activeGoal: { id: force.id }, goalOptions: [], requiredAction: null } }
+      stateMachine: { activeGoal: { id: initialGoal.id }, goalOptions: [], requiredAction: null } }
     page.on('pageerror', error => errors.push(error.message))
     await context.route('**/*', async route => {
       const request = route.request(), url = new URL(request.url()), path = url.pathname
       const json = (body: unknown, status = 200) => route.fulfill({ status, contentType: 'application/json', body: JSON.stringify(body) })
       if (url.origin !== origin) return route.abort()
       if (path.includes('de_gymnasium_physics_flashcards_mechanics_ephase.')) {
-        if (checkLayout) await delayedDeck
-        return json(deck)
+        if (checkLayout || viewFile) await delayedDeck
+        return viewFile ? route.fulfill({ contentType: 'application/json', path: fileURLToPath(new URL(
+          '../../curricula/DE/Gymnasium/memory-decks/de_gymnasium_physics_flashcards_mechanics_ephase.de.json', import.meta.url)) }) : json(deck)
       }
       if (!path.startsWith('/api/')) return route.continue()
       if (path === '/api/ui/curriculum-catalog') return json({ error: 'Repository curriculum mode' }, 404)
-      if (path === '/api/ui/landscapes') return json({ summaries: landscapes.map(landscape => ({ curriculumId: landscape.landscapeId,
+      if (path === '/api/ui/landscapes') return json({ summaries: dataLandscapes.map(landscape => ({ curriculumId: landscape.landscapeId,
         title: landscape.title, subject: landscape.subject ?? 'Gymnasium', filename: `${landscape.landscapeId}.json`, frameworkId: 'canonical-gymnasium',
         country: 'DE', region: 'DE', type: 'GYMNASIUM', level: 'Sekundarstufe', locale: 'de-DE', schoolType: 'Gymnasium', qualityMaturity: 'M6' })) })
       if (path === '/api/ui/composition-views/match') {
-        return json(url.searchParams.get('landscapeId') === id.physics ? view
-          : { viewId: 'fixture-root', landscapeId: id.root, scope: view.scope, rootNodes: [{ kind: 'landscapeEntry', landscapeId: id.physics }] })
+        return json(url.searchParams.get('landscapeId') === id.physics ? dataView
+          : { viewId: 'fixture-root', landscapeId: id.root, scope: dataView.scope, rootNodes: [{ kind: 'landscapeEntry', landscapeId: id.physics }] })
       }
-      if (path.endsWith(`/landscapes/${id.root}/closure`)) return json(landscapes)
+      if (path.endsWith(`/landscapes/${id.root}/closure`)) return json(dataLandscapes)
       const suffix = path.replace(`/api/ui/learners/${id.learner}`, '')
       if (request.method() === 'GET' && suffix === `/exam-passes/${examId}`) {
         return json([{ passedAt: '2026-11-17T08:00:00Z', earnedPoints: 18, maxPoints: 25, passingPoints: 15,
           fingerprint: 'sha256:' + 'a'.repeat(64) }])
       }
-      if (!suffix && request.method() === 'GET') return json({ ...nativeMapProfile(true), activeGoalId: learnerState.activeGoal.id })
-      if (suffix === '/mastery') return json({ mastery: {} })
+      if (viewFile && suffix.startsWith('/exam-passes/') && request.method() === 'GET') return json([])
+      if (!suffix && request.method() === 'GET') return json({ ...profile, activeGoalId: learnerState.activeGoal.id })
+      if (suffix === '/mastery') return json({ mastery })
       if (suffix === '/state') return json(learnerState)
       if (suffix === '/resume') return json({ lastActivityAt: '2026-11-18T08:00:00Z', scheduledDeletionAt: '2027-05-18T08:00:00Z' })
       if (suffix === '/personalization-plan') return json({ stage: 'COMPLETE', options: [], displayOptions: [], navigationOptions: [],
@@ -210,20 +294,29 @@ try {
         if (savePending) getsDuringWrite++
         return json({ srsState, updatedAt: revision })
       }
+      if (viewFile && suffix.startsWith('/client-state/') && request.method() === 'GET') return json({ srsState: {}, updatedAt: revision })
       if (suffix === '/content-selection' || suffix === '/content-materials') return json({ error: 'Optional pilot disabled' }, 404)
       unexpected.push(`${request.method()} ${path}`)
       return json({ error: 'Unexpected isolated browser request' }, 404)
     })
-    await page.goto(`${origin}/learner/${force.id}?l=${id.root}`, { waitUntil: 'domcontentloaded' })
-    await page.getByTestId('learner-current-goal').getByRole('heading', { name: force.title, exact: true }).waitFor({ timeout: 30_000 })
+    await page.goto(`${origin}/learner/${initialGoal.id}?l=${id.root}`, { waitUntil: 'domcontentloaded' })
+    await page.getByTestId('learner-current-goal').getByRole('heading', { name: initialGoal.title, exact: true }).first().waitFor({ timeout: 30_000 })
     const opener = page.getByTestId('learner-main-content').getByTestId('learner-learning-map-open')
     await opener.click()
     const dialog = page.getByTestId('learner-learning-map-dialog')
-    await page.locator(`.lum-canvas[data-scope-id="${topicId}"][aria-busy="false"]`).waitFor({ timeout: 15_000 }).catch(async error => {
+    await page.locator(`.lum-canvas[data-scope-id="${dataTopic}"][aria-busy="false"]`).waitFor({ timeout: 15_000 }).catch(async error => {
       console.error({ width, board: await page.locator('.lum-canvas').getAttribute('data-scope-id'),
         map: await dialog.innerText(), errors, unexpected })
       throw error
     })
+    if (viewFile) {
+      await checkProjectionList(page, dialog, scenario.manual === true, releaseDeck, () => { mastery[horizontalThrow.id] = 1 })
+      assert.deepEqual(errors, [])
+      assert.deepEqual(unexpected, [])
+      console.log(`${viewFile} ${width}×${scenario.height}: six assessments, ${scenario.manual ? 'manual' : 'automatic'} list kept during deck and mastery refresh`)
+      await context.close()
+      continue
+    }
     if (checkLayout) await checkMapLayout(page, dialog, releaseDeck, () => {
       learnerState.activeGoal.id = horizontalThrow.id
       learnerState.stateMachine.activeGoal.id = horizontalThrow.id

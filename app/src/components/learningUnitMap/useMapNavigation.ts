@@ -27,7 +27,6 @@ export function useMapNavigation(fixture: LearningMapFixture, reducedMotion: boo
   const path = useMemo(() => validMapScopePath(fixture, requestedPath), [fixture, requestedPath])
   const [phase, setPhase] = useState<Phase>('entering')
   const [zoom, setZoom] = useState(1)
-  const [cameraKey, setCameraKey] = useState<string | null>(null)
   const cameras = useRef(new Map<string, Viewport>())
   const initialZooms = useRef(new Map<string, number>())
   const busy = useRef(true)
@@ -43,25 +42,31 @@ export function useMapNavigation(fixture: LearningMapFixture, reducedMotion: boo
   // A scope shown as a compact list has no graph nodes and hence no camera to place.
   const withoutCamera = isCompactListScope(fixture, scopeId, compactListThreshold) || !!preferList?.(scopeId)
   const layoutReady = active && (withoutCamera || layoutScopeKey === undefined || layoutScopeKey === viewKey)
+  // A changed board can keep its scope and saved viewport. Its new layout still needs to place the camera.
+  const graphFixture = withoutCamera ? null : fixture
+  const cameraTarget = useMemo(() => layoutReady ? { graphFixture, viewKey, overview, reducedMotion } : null,
+    [layoutReady, graphFixture, viewKey, overview, reducedMotion])
+  const [placedTarget, setPlacedTarget] = useState<typeof cameraTarget>(null)
 
   useEffect(() => {
     const version = ++epoch.current
-    if (!layoutReady) {
+    if (!cameraTarget) {
       busy.current = true
       return
     }
+    const { graphFixture, viewKey, overview, reducedMotion } = cameraTarget
     let innerFrame = 0
     const frame = requestAnimationFrame(() => {
       setPhase('entering')
       innerFrame = requestAnimationFrame(async () => {
         const saved = cameras.current.get(viewKey)
-        if (withoutCamera) { /* A fit without nodes would never settle. */ }
+        if (!graphFixture) { /* A fit without nodes would never settle. */ }
         else if (saved) await flow.setViewport(saved, { duration: 0 })
         else if (window.matchMedia('(max-width: 760px)').matches || (!overview && flow.getNodes().length > 16)) {
           // A readable point of entry on small screens; the overview fit remains
           // an explicit action, while ordinary panning discovers the surroundings.
           const nodes = flow.getNodes()
-          const first = nodes.find(node => fixture.entries[node.id]?.children?.length) ?? nodes[0]
+          const first = nodes.find(node => graphFixture.entries[node.id]?.children?.length) ?? nodes[0]
           if (first) {
             const centerX = first.position.x + (first.width ?? 220) / 2
             const centerY = first.position.y + (first.height ?? 72) / 2
@@ -74,12 +79,11 @@ export function useMapNavigation(fixture: LearningMapFixture, reducedMotion: boo
           }
         } else await flow.fitView({ padding: 0.2, minZoom: 0.35, maxZoom: 1.1, duration: 0 })
         if (version !== epoch.current) return
-        if (!withoutCamera) {
+        if (graphFixture) {
           cameras.current.set(viewKey, flow.getViewport())
           if (!initialZooms.current.has(viewKey)) initialZooms.current.set(viewKey, flow.getZoom())
         }
         setZoom(flow.getZoom())
-        setCameraKey(viewKey)
         timer.current = setTimeout(() => {
           if (version !== epoch.current) return
           if (restoreMapFocus.current && active) {
@@ -92,6 +96,7 @@ export function useMapNavigation(fixture: LearningMapFixture, reducedMotion: boo
           }
           restoreMapFocus.current = false
           busy.current = false
+          setPlacedTarget(cameraTarget)
           setPhase('idle')
         }, reducedMotion ? 0 : 150)
       })
@@ -101,7 +106,7 @@ export function useMapNavigation(fixture: LearningMapFixture, reducedMotion: boo
       cancelAnimationFrame(innerFrame)
       clearTimeout(timer.current)
     }
-  }, [scopeId, viewKey, flow, store, direction, reducedMotion, fixture, layoutReady, active, focusSurfaceRef, withoutCamera, overview])
+  }, [cameraTarget, flow, store, direction, active, focusSurfaceRef])
 
   const navigate = useCallback((nextPath: string[], towardId?: string) => {
     if (busy.current || nextPath[nextPath.length - 1] === scopeId) return
@@ -170,5 +175,5 @@ export function useMapNavigation(fixture: LearningMapFixture, reducedMotion: boo
   }, [enter, fixture, goUp, path.length, viewKey])
 
   return { path, scopeId, phase, zoom, enter, goUp, goToDepth, goToScope, recordGesture,
-    onMove, considerSemanticZoom, isTransitioning: phase !== 'idle' || !layoutReady || cameraKey !== viewKey }
+    onMove, considerSemanticZoom, isTransitioning: phase !== 'idle' || !cameraTarget || placedTarget !== cameraTarget }
 }

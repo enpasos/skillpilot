@@ -87,17 +87,17 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
   const MapContainer = embedded ? 'section' : 'main'
   const reducedMotion = useReducedMotion()
   const narrowScreen = useNarrowScreen()
-  const [graphScopeOverride, setGraphScopeOverride] = useState<string | null>(null)
+  const [displayChoice, setDisplayChoice] = useState<{ scope: string; list: boolean } | null>(null)
   const flow = useReactFlow<LearningFlowNode>()
   const [direction, setDirection] = useState<'RIGHT' | 'DOWN'>('RIGHT')
   const [layout, setLayout] = useState<{ fixture: LearningMapFixture; key: string; data: LearningScopeLayout } | null>(null)
   const canvasWidth = useStore(state => state.width)
   const canvasHeight = useStore(state => state.height)
-  const assessmentCamera = useMemo(() => {
+  const assessmentGroupViewport = useMemo(() => {
     const id = command?.entryId
-    if (!id || !layout || layout.fixture !== fixture || !layout.data.positions[id]
-      || fixture.entries[id]?.kind !== 'assessment' || !canvasWidth || !canvasHeight) return null
-    const peers = Object.entries(layout.data.positions).filter(([key]) => fixture.entries[key].kind === 'assessment')
+    if (!id || !layout || !layout.data.positions[id]
+      || layout.fixture.entries[id]?.kind !== 'assessment' || !canvasWidth || !canvasHeight) return null
+    const peers = Object.entries(layout.data.positions).filter(([key]) => layout.fixture.entries[key].kind === 'assessment')
     if (peers.length < 2) return null
     const xs = peers.map(([, point]) => point.x)
     const ys = peers.map(([, point]) => point.y)
@@ -105,18 +105,20 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
     const y = Math.min(...ys)
     return getViewportForBounds({ x, y, width: Math.max(...xs) - x + NODE_WIDTH,
       height: Math.max(...ys) - y + NODE_HEIGHT }, canvasWidth, canvasHeight, 0, 1, 0.06)
-  }, [command?.entryId, fixture, layout, canvasWidth, canvasHeight])
+  }, [command?.entryId, layout, canvasWidth, canvasHeight])
+  const assessmentCamera = layout?.fixture === fixture ? assessmentGroupViewport : null
   // The same rows and actions work when the assessment group would be too small to read.
   const offersList = useCallback((id: string) => {
     const hasMaterial = mobileListScopes?.has(id)
     if (narrowScreen && hasMaterial) return true
-    if (!layout || layout.key !== `${id}:${direction}` || layout.fixture !== fixture) return false
-    if (assessmentCamera) return assessmentCamera.zoom < 0.8
+    // List rows can update immediately. Keep the latest measured geometry for this scope when its contents refresh.
+    if (!layout || layout.key !== `${id}:${direction}`) return false
+    if (assessmentGroupViewport) return assessmentGroupViewport.zoom < 0.8
     if (!hasMaterial || !canvasWidth || !canvasHeight) return false
     const bounds = { x: 0, y: 0, width: layout.data.width, height: layout.data.height }
     return getViewportForBounds(bounds, canvasWidth, canvasHeight, 0, 1, 0.2).zoom < 0.35
-  }, [narrowScreen, mobileListScopes, assessmentCamera, fixture, layout, direction, canvasWidth, canvasHeight])
-  const preferList = useCallback((id: string) => offersList(id) && graphScopeOverride !== id, [offersList, graphScopeOverride])
+  }, [narrowScreen, mobileListScopes, assessmentGroupViewport, layout, direction, canvasWidth, canvasHeight])
+  const preferList = useCallback((id: string) => displayChoice?.scope === id ? displayChoice.list : offersList(id), [displayChoice, offersList])
   const previousAssessmentCamera = useRef<Viewport | null>(null)
   const [layoutError, setLayoutError] = useState<string | null>(null)
   const [layoutAttempt, setLayoutAttempt] = useState(0)
@@ -150,7 +152,7 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
   const layoutKey = `${nav.scopeId}:${direction}`
   const largeList = isCompactListScope(fixture, nav.scopeId, compactListThreshold)
   const listMode = largeList || preferList(nav.scopeId)
-  const showListSwitch = !largeList && offersList(nav.scopeId)
+  const showListSwitch = !largeList && (displayChoice?.scope === nav.scopeId || offersList(nav.scopeId))
   const activeLayout = listMode ? EMPTY_LAYOUT : layout?.fixture === fixture && layout.key === layoutKey ? layout.data : null
   const scopeTitle = nav.scopeId === fixture.rootId && rootLabel ? rootLabel : scope.title
   const extendedTools = headingMode === 'standard' || visibleIds.length >= 8
@@ -520,7 +522,7 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
           {showListSwitch && <button type="button" className="lum-board-mode"
             onClick={() => {
               if (listMode && selectedId) pendingNodeFocus.current = { id: selectedId, center: false }
-              setGraphScopeOverride(listMode ? nav.scopeId : null)
+              setDisplayChoice({ scope: nav.scopeId, list: !listMode })
             }}>
             {listMode ? label('Grafische Karte anzeigen', 'Show graph') : label('Zielliste anzeigen', 'Show goal list')}
           </button>}
