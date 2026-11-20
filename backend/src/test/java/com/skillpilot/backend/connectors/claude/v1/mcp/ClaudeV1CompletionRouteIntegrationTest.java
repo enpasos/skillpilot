@@ -610,6 +610,14 @@ class ClaudeV1CompletionRouteIntegrationTest {
         assertThatThrownBy(() -> learningPlans.continuePlan(learnerId, plan.planId(),
                 new LearnerLearningPlanApi.ContinueRequest(plan.revision(), day))).isInstanceOf(org.springframework.web.server.ResponseStatusException.class);
 
+        learners.setPlannedGoals(learnerId, java.util.Set.of("5c44b9ba-9b05-4774-95d5-073230d3fc4f"));
+        var activated = learningPlans.activatePlans(learnerId, new LearnerLearningPlanApi.ActivateRequest(day, List.of(
+                new LearnerLearningPlanApi.ActivationPlan(physics, plan.revision(), "E.1", plan.blocks()))));
+        assertThat(activated.selectedPlanId()).isEqualTo(plan.planId());
+        assertThat(activated.focusGoalId()).isEqualTo(section);
+        assertThat(activated.activeGoalId()).isNull();
+        assertThat(activated.plans().getFirst().nextEligibleGoal().goalId()).isEqualTo(ids.getFirst());
+        assertThat(activated.state().levelCompletion().directAssessmentRunning()).isFalse();
         var points = List.of(14, 15, 17, 17);
         for (int index : List.of(2, 3, 0, 1)) {
             passHessianAssessment(section, ids.get(index), points.get(index));
@@ -635,6 +643,8 @@ class ClaudeV1CompletionRouteIntegrationTest {
         assertThat(masteryRepository.findByLearner_SkillpilotId(learnerId)).extracting(Mastery::getGoalKey)
                 .containsExactlyInAnyOrderElementsOf(ids);
 
+        String extra = learners.getPersonalCurriculumSubjectFrontier(learnerId, physics).stream()
+                .filter(goal -> "atomic".equals(goal.type()) && !ids.contains(goal.id())).findFirst().orElseThrow().id();
         String acceleration = "e4b38061-1f28-43ad-8371-a3e7c0e81856";
         var milestone = new LearnerLearningPlanApi.Block("proof", "milestone", acceleration, "Eigener Nachweis",
                 null, null, monday.plusDays(4), null, List.of(acceleration), true);
@@ -644,8 +654,6 @@ class ClaudeV1CompletionRouteIntegrationTest {
         assertThat(independentProof.learningScope().goalIds()).containsExactly(acceleration);
         assertThat(independentProof.learningScope().achievedGoalCount()).isZero();
 
-        String extra = learners.getPersonalCurriculumSubjectFrontier(learnerId, physics).stream()
-                .filter(goal -> "atomic".equals(goal.type()) && !ids.contains(goal.id())).findFirst().orElseThrow().id();
         var independent = new LearnerLearningPlanApi.Block("extra", "learning", extra, "Einzelauftrag", monday,
                 monday.plusDays(4), null, List.of(extra), List.of(extra), true);
         var mixed = learningPlans.upsert(learnerId, physics, new LearnerLearningPlanApi.UpsertRequest(

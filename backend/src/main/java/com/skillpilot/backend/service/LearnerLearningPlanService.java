@@ -968,6 +968,20 @@ public class LearnerLearningPlanService {
             selectedScope = selected.map(candidate -> List.of(candidate.dueGoal().focusGoalId())).orElse(List.of());
         }
 
+        if (scopePlan == null && !preserveInactiveActiveGoal && !learners.completionRouteOwnsNavigation(learner)) {
+            // Deliberate package activation can select a unit from a different previous focus.
+            // Publish that unit's assessment choices without selecting or starting an exam.
+            for (var plan : savedPlans) {
+                var assignment = assignmentStates(skillpilotId, plan.getLandscapeId(), readBlocks(plan)).stream()
+                        .map(AssignmentState::option).filter(Objects::nonNull).filter(option -> !option.passed()).findFirst();
+                if (assignment.isPresent()) {
+                    scopePlan = plan;
+                    selectedScope = List.of(assignment.get().sectionGoalId());
+                    break;
+                }
+            }
+        }
+
         LearnerService.LearningPlanTransitionResult transition;
         if (selected.isPresent()) {
             PlanGoalCandidate candidate = selected.get();

@@ -21,7 +21,7 @@ er erhält die Dokumentationschecks. Die große CI schließt `docs/dev/**` und
 `AGENTS.md` bei reinen Änderungen dieser Pfade derzeit aus. Der dokumentierte
 CI-Nachweis gilt weiterhin für den benannten Implementierungscommit.
 
-## 20. November 2026, 11:18 MEZ (UTC+01:00) – Hessen Physik E.1 in G8 und G9
+## 20. November 2026, 11:24 MEZ (UTC+01:00) – Hessen Physik E.1 in G8 und G9
 
 **Zur fachlichen Durchsicht.** Die Ballfrage eröffnet E.1. Drei Übungen und neun Themenkarten führen zu den vier Prüfungen. Wagen A verlangt 14/17, waagerechter Wurf B 15/18, senkrechter Wurf C und Beschleunigungsprotokoll D jeweils 17/20 Punkte. Vom Wurf aus lässt sich bei 1024 Pixeln die Wagenaufgabe wählen. Die Vergleichsprofile zeigen das Cockpit vor den Prüfungen, nach C+D und nach A–D. [Anleitung für G8 und G9](hessen-physik-e1-vorschau.md) · [Fachentscheid A/B](https://github.com/enpasos/skillpilot/blob/bea9d4329942a183424d2ff5615f10cdda7bdd8e/curricula/DE/Gymnasium/quality/release-model/physics-he-e1-partial-credit-review-2026-11-20.md) · [Fachentscheid C/D und kanonische Zuordnung](https://github.com/enpasos/skillpilot/blob/2c2505fecef3a3a8a561b472b52ba1f04a5a4cdb/curricula/DE/Gymnasium/quality/learning-units/physics-constant-acceleration-2026-11-20-v3.md)
 

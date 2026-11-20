@@ -129,6 +129,12 @@ public final class HesseE1GradedPreview {
             learners.chooseLevelCompletion(id, new LevelCompletionActionRequest("selectProfile", "automatic:" + section,
                     null, null, revision(id)));
         }
+        if (unitAssignment) {
+            // Resume the ordinary plan without carrying a practice cursor out of assessment navigation.
+            for (String action : List.of("pauseProfile", "leaveProfile")) {
+                learners.chooseLevelCompletion(id, new LevelCompletionActionRequest(action, null, null, null, revision(id)));
+            }
+        }
         var inScope = learners.getLearningPlanCompletionContext(id).canonicalGoals();
         var targeted = offeredSuccessors(id, inScope);
         boolean strictAtStart = Boolean.TRUE.equals(learners.getLearner(id).getStrictMode());

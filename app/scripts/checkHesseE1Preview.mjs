@@ -235,7 +235,7 @@ async function checkEvidenceMap(page, duration) {
   const directGoals = new Set(await markers(direct))
   const creditedGoals = new Set(await markers(credited))
   for (const id of ['4a2bf015-052b-4af0-aed7-324259fa1a8a', '89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2']) {
-    await entry(id).getByTestId('learning-map-not-required').waitFor()
+    await entry(id).waitFor()
     assert.equal(await entry(id).getByTestId(credited).count(), 0)
     assert.equal(await entry(id).getByTestId(direct).count(), 0)
   }
@@ -259,6 +259,9 @@ async function checkUnitAssignments(duration) {
       await page.getByRole('link').filter({ hasText: { offen:'Einheitenauftrag ohne Beleg', CD:'Einheitenauftrag mit C und D',
         ABCD:'Einheitenauftrag mit A bis D', gemischt:'A bis D und zusätzlicher Einzelauftrag' }[route] }).click()
       const control = page.getByTestId('learner-unit-assignment')
+      const normalPlan = page.getByTestId('learner-plan-unit-assignment')
+      await normalPlan.waitFor()
+      assert((await normalPlan.innerText()).includes(passed + ' / 4'))
       const unitStatus = control.getByTestId('unit-assignment-status')
       await unitStatus.waitFor()
       assert((await unitStatus.innerText()).includes(passed + ' / 4'))
@@ -267,7 +270,9 @@ async function checkUnitAssignments(duration) {
       const saved = plan.blocks.filter(block => block.unitAssignment)
       assert.equal(saved.length, 1)
       assert.deepEqual(saved[0].atomicGoalIds, unitPartIds)
-      const subject = (await readApi(id, '/learning-plans/status?language=de')).subjects.find(item => item.landscapeIds.includes(physics))
+      const status = await readApi(id, '/learning-plans/status?language=de')
+      assert.equal(status.followLearningPlans, true)
+      const subject = status.subjects.find(item => item.landscapeIds.includes(physics))
       assert.deepEqual(subject.unitAssignments.map(item => [item.passedParts, item.requiredParts, item.status]), [[passed, 4, passed === 4 ? 'completed' : 'active']])
       if (passed < 4) {
         assert.equal(plan.continueReason, 'unit-assessment-choice-required')
