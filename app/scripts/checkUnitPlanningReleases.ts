@@ -9,7 +9,7 @@ import { collectCompositionProjectionRoleGoalIds, type CompositionView, type Com
 import type { LearningGoal, SkillLandscape } from '../src/landscapeTypes'
 import { fingerprintCurrentCurriculumDocument as digest, loadCurrentCurriculumCatalog } from './currentCurriculumCatalog'
 import { fingerprintSemanticKindSourceGoal } from './goalBookModel'
-import { assessmentReviewRevisions, UnitGraph, type UnitGraphLandscape } from './lib/learningUnitContracts'
+import { assessmentReviewRevisions, UnitGraph, type ReviewedUnitAssessmentEdition, type UnitGraphLandscape } from './lib/learningUnitContracts'
 import { liveVerificationInputs } from './lib/verificationInputSnapshot'
 import { fingerprintPositiveGoalEvidenceProfile, type PositiveGoalEvidenceReviewRecord } from './positiveGoalEvidenceProfileModel'
 
@@ -153,7 +153,7 @@ function loadReleasedViews(units: MaterialUnit[]): Map<string, CompositionView> 
   return views
 }
 
-export function checkUnitPlanningReleases(): number {
+export function checkUnitPlanningReleases(): ReviewedUnitAssessmentEdition[] {
   const inventory = readJson('curricula/unit-learning-materials.json')
   assert.equal(inventory.schemaVersion, 1)
   const units: MaterialUnit[] = inventory.materials.map((path: string) => readJson('curricula/' + path).unit)
@@ -161,7 +161,7 @@ export function checkUnitPlanningReleases(): number {
   const { entries } = loadCurrentCurriculumCatalog(liveVerificationInputs)
   const graph = new UnitGraph(entries.map(({ landscape }) => landscape as UnitGraphLandscape))
   const rollouts: Rollout[] = readJson('curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json').subjects
-  const active = new Set<string>()
+  const active = new Map<string, ReviewedUnitAssessmentEdition>()
   for (const unit of units) {
     const credits = unit.assessmentContract?.planningCredits ?? []
     if (!credits.length) continue
@@ -196,13 +196,15 @@ export function checkUnitPlanningReleases(): number {
         approved: inventory.reviewedPlanningReleases ?? {}, currentProfile,
         reviewHash: path => 'sha256:' + createHash('sha256').update(readBytes(path)).digest('hex') })
       assert(!active.has(credit.release.fingerprint), 'Duplicate planning release')
-      active.add(credit.release.fingerprint)
+      const { ownerUnitId, ownerRevision, viewIds } = credit.release
+      active.set(credit.release.fingerprint, { landscapeId: unit.landscapeId, ownerUnitId, ownerRevision, viewIds,
+        requiredPartIds: credit.requiredPartIds, goalIds: credit.goalIds })
     }
   }
-  return active.size
+  return [...active.values()]
 }
 
 if (resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  const count = checkUnitPlanningReleases()
+  const count = checkUnitPlanningReleases().length
   console.log('Verified ' + count + ' reviewed unit planning release(s) against the current catalog.')
 }

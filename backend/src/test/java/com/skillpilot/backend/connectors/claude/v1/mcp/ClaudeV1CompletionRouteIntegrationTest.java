@@ -64,6 +64,7 @@ class ClaudeV1CompletionRouteIntegrationTest {
     @Autowired LearnerService learners;
     @Autowired LearnerLearningPlanService learningPlans;
     @Autowired UnitLearningMaterialService unitMaterials;
+    @Autowired com.skillpilot.backend.landscape.LandscapeService landscapeDefinitions;
     @Autowired LearnerRepository learnerRepository;
     @Autowired MasteryRepository masteryRepository;
     @Autowired PlannedGoalRepository focus;
@@ -387,7 +388,7 @@ class ClaudeV1CompletionRouteIntegrationTest {
             Map<String, com.skillpilot.backend.landscape.LearningGoal> graph) {
         learners.setPlannedGoals(learnerId, java.util.Set.of(section));
         var history = examPasses.findForGoals(learnerId, List.of(c, d));
-        var currentExam = graph.get(c).getExamData();
+        var currentExam = landscapeDefinitions.getGoalDefinition(c).getExamData();
         String originalTask = currentExam.getTaskContent();
         try {
             currentExam.setTaskContent(originalTask + "\nEine andere aktuelle Aufgabenfassung.");

@@ -172,7 +172,7 @@ Der [gemeinsame Lernplanstatusvertrag](repo:docs/concept/didactic/unified-learni
 Der Abschluss einer Einheit, tatsächlich erbrachte Einzelbelege und die fachlich begründete Freigabe von Voraussetzungen für die weitere Planung bleiben unterscheidbar. Ein übersprungener Lernschritt erhält keinen erfundenen Erfolg. Die Pflichtarbeit an der nachgewiesenen Route endet trotzdem.
 :::
 
-Das ist der **noch nicht übernommene Vorschlag vom 19. November 2026**. Die geltende Ableitung globaler atomarer Beherrschung aus entfallener offener Nachfrage steht weiterhin im Haupttext (Abschnitte~@ref{sec:transitive-demand} und~@ref{sec:global-effect}). Der allgemeine Vorschlag ist weiterhin offen. Für Hessen Physik E.1 lesen Lernkarte, Cockpit und Lernplan bereits einen fassungsgebundenen Vertrag. Für die vier Aufgaben liegen unabhängige Fachprüfungen vor. Die erste fachliche Teilabnahme der Einheit durch den Auftraggeber steht aus.
+Das ist der **noch nicht übernommene Vorschlag vom 19. November 2026**. Die geltende Ableitung globaler atomarer Beherrschung aus entfallener offener Nachfrage steht weiterhin im Haupttext (Abschnitte~@ref{sec:transitive-demand} und~@ref{sec:global-effect}). Für den Piloten Hessen Physik E.1 in G8 und G9 lesen Lernkarte, Cockpit und Lernplan bereits einen fassungsgebundenen Vertrag. Sein Geltungsbereich umfasst sechs geprüfte Ansichten. Die Regeln R1–R5 bleiben verbindlich. Für die vier Aufgaben liegen unabhängige Fachprüfungen vor. Die erste fachliche Teilabnahme der Einheit durch den Auftraggeber steht aus.
 
 #### Vorschlag: Abschlussvertrag, Umfang und tatsächliche Belege {#sec:proposal-unit-contract}
 

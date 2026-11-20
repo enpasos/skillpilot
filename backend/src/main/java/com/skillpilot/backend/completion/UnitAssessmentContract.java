@@ -87,9 +87,9 @@ public record UnitAssessmentContract(String revision, List<String> viewIds, List
                 receipts.getOrDefault(part.goalId(), List.of()).stream().anyMatch(part::matches))).toList();
         Set<String> passed = results.stream().filter(UnitAssessmentResponse.Part::passed)
                 .map(UnitAssessmentResponse.Part::goalId).collect(Collectors.toSet());
-        List<String> credit = planningCredits.stream().filter(rule -> passed.containsAll(rule.requiredPartIds()))
-                .flatMap(rule -> rule.goalIds().stream()).distinct().toList();
-        return Optional.of(new UnitAssessmentResponse(sectionGoalId, revision, passed.size() == parts.size(), results, credit,
+        // A material receipt alone has no planning-grant meaning. Only the shared runtime
+        // projection may add credits from an approved release carried by the actual receipts.
+        return Optional.of(new UnitAssessmentResponse(sectionGoalId, revision, passed.size() == parts.size(), results, List.of(),
                 contentGoalIds.stream().filter(id -> !individuallyMastered.contains(id)).toList()));
     }
 }

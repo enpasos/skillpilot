@@ -13,7 +13,7 @@ import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import {
   UnitGraph, validateLearningUnits, validateOfferedScopes,
-  type OfferedMembershipClass, type UnitFinding, type UnitGraphLandscape,
+  type OfferedMembershipClass, type ReviewedUnitAssessmentEdition, type UnitFinding, type UnitGraphLandscape,
 } from './lib/learningUnitContracts'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
@@ -44,13 +44,23 @@ async function offeredClasses(path: string): Promise<OfferedMembershipClass[]> {
   const { decodeGoalSetBits } = await import('./reportMathPhysicsNativeInventory')
   const inventory = JSON.parse(readFileSync(resolve(root, path), 'utf8')) as {
     goalUniverseIds: string[]
+    configurations: { key: string; membershipClass: string; landscapeId: string; viewId: string | null }[]
     membershipClasses: Record<string, { landscapeId: string; targetBits: string; seedTargetBits?: string; members: string[] }>
   }
   if (!Array.isArray(inventory.goalUniverseIds) || !inventory.membershipClasses) throw new Error(`${path} is not an offered-membership inventory`)
+  const configurations = new Map(inventory.configurations.map(config => [config.key, config]))
+  if (configurations.size !== inventory.configurations.length) throw new Error('Duplicate native configuration')
   const classes = Object.entries(inventory.membershipClasses).map(([id, membership]) => {
     if (typeof membership.seedTargetBits !== 'string') throw new Error(`${path}: class ${id} lacks seedTargetBits; regenerate the inventory`)
     return {
       id, landscapeId: membership.landscapeId, members: membership.members,
+      viewIdByMember: new Map(membership.members.map(member => {
+        const config = configurations.get(member)
+        if (config?.membershipClass !== id || config.landscapeId !== membership.landscapeId) {
+          throw new Error('Missing or inconsistent native view for ' + member)
+        }
+        return [member, config.viewId]
+      })),
       seedTargetGoalIds: new Set(decodeGoalSetBits(inventory.goalUniverseIds, membership.seedTargetBits)),
       targetGoalIds: new Set(decodeGoalSetBits(inventory.goalUniverseIds, membership.targetBits)),
     }
@@ -61,6 +71,7 @@ async function offeredClasses(path: string): Promise<OfferedMembershipClass[]> {
 
 async function main(): Promise<number> {
   let landscapes: UnitGraphLandscape[], graph: UnitGraph, offered: OfferedMembershipClass[] | undefined
+  let editions: ReviewedUnitAssessmentEdition[] = []
   try {
     const options = parseArgs(process.argv.slice(2))
     landscapes = canonicalFiles(resolve(root, options.canonical))
@@ -68,7 +79,13 @@ async function main(): Promise<number> {
       .filter((value): value is UnitGraphLandscape => typeof value.landscapeId === 'string' && Array.isArray(value.goals))
     if (landscapes.length === 0) throw new Error(`No canonical landscape under ${options.canonical}`)
     graph = new UnitGraph(landscapes)
-    if (options.offered) offered = await offeredClasses(options.offered)
+    if (options.offered) {
+      offered = await offeredClasses(options.offered)
+      if (resolve(root, options.canonical) === resolve(root, 'curricula/DE/Gymnasium/canonical')) {
+        const { checkUnitPlanningReleases } = await import('./checkUnitPlanningReleases')
+        editions = checkUnitPlanningReleases()
+      }
+    }
   } catch (error) {
     console.error(`invalid-input: ${error instanceof Error ? error.message : String(error)}`)
     return 2
@@ -77,7 +94,7 @@ async function main(): Promise<number> {
   const result = validateLearningUnits(landscapes, graph, {
     reviewRecordExists: (path) => existsSync(resolve(root, path)),
   })
-  const findings: UnitFinding[] = [...result.findings, ...(offered ? validateOfferedScopes(result.catalogs, graph, offered) : [])]
+  const findings: UnitFinding[] = [...result.findings, ...(offered ? validateOfferedScopes(result.catalogs, graph, offered, editions) : [])]
   for (const ledger of result.ledgers) {
     const open = ledger.unownedGoals
     console.log(`${ledger.landscapeId} (${ledger.completeness}): ${ledger.ownedGoals}/${ledger.atomicGoals} atomic goals owned;`

@@ -3,7 +3,7 @@ import assert from 'node:assert/strict'
 import type { LearningGoal, SkillLandscape } from '../src/landscapeTypes'
 import { planningGoalDefinition, planningReleaseFingerprint, validatePlanningRelease } from './checkUnitPlanningReleases'
 import { fingerprintCurrentCurriculumDocument as digest } from './currentCurriculumCatalog'
-import { UnitGraph, assessmentReviewRevisions } from './lib/learningUnitContracts'
+import { UnitGraph, assessmentReviewRevisions, validateOfferedScopes, type LearningUnitCatalog, type ReviewedUnitAssessmentEdition } from './lib/learningUnitContracts'
 
 const atom = { id: 'pressure', type: 'atomic', title: 'Interpret pressure', titleEn: 'Interpret pressure',
   description: 'Infer pressure from force and area', weight: 1, tags: [], contains: [], requires: [],
@@ -76,3 +76,36 @@ additionalPart.assessmentContract.parts.push({ ...part, goalId: 'separate-exam' 
 assert.equal(planningReleaseFingerprint(additionalPart, decision), decision.release.fingerprint,
   'An additional assessment outside the reviewed witnesses preserves their previous meaning')
 console.log('Independent planning-release tests passed for two subjects, two courses and changed definitions, materials, ownership and graph witnesses.')
+
+// An offered regional qualification can replace the original owner's reviewed examination only as a whole.
+const original = { ...assessment, id: 'original-test' }
+const second = { ...assessment, id: 'second-test' }
+const scopedGraph = new UnitGraph([{ landscapeId: landscape.landscapeId, goals: [atom, original, assessment, second] }])
+const catalog: LearningUnitCatalog = { landscapeId: landscape.landscapeId, completeness: 'partial', units: [{
+  id: owner.id, revision: owner.revision, ownGoalIds: [atom.id, original.id], childUnitIds: [],
+  coverageReviews: [{ assessmentGoalId: original.id, goalIds: [atom.id], reference: review.path, ...revisions }],
+}] }
+const edition: ReviewedUnitAssessmentEdition = { landscapeId: landscape.landscapeId, ownerUnitId: owner.id,
+  ownerRevision: owner.revision, requiredPartIds: [assessment.id, second.id], viewIds: ['x', 'y'], goalIds: [atom.id] }
+const whole = [atom.id, assessment.id, second.id]
+function missing(members: string[], offered = whole, editionOverride = edition, canonical = catalog) {
+  const acquired = new Set(offered)
+  return validateOfferedScopes([canonical], scopedGraph, [{ id: 'same-goal-set', landscapeId: landscape.landscapeId,
+    members, viewIdByMember: new Map(members.map(view => [view, view])), targetGoalIds: acquired, seedTargetGoalIds: acquired,
+  }], [editionOverride])
+}
+assert.deepEqual(missing(['x', 'y', 'merged:x+y']), [])
+assert.match(missing(['x', 'other', 'merged:x+other'])[0].message, /in 2 configuration\(s\), e.g. other/)
+for (const ids of [[atom.id, assessment.id], [atom.id, second.id], [atom.id, 'unrelated-exam']]) {
+  assert.equal(missing(['x'], ids).length, 1, 'Each exact required assessment must be an offered target')
+}
+assert.equal(missing(['x'], whole, { ...edition, ownerRevision: 'older' }).length, 1)
+assert.equal(missing(['x'], whole, { ...edition, ownerUnitId: 'another-unit' }).length, 1)
+const staleSource = structuredClone(catalog)
+staleSource.units[0].coverageReviews[0].rubricRevision = digest('different rubric')
+assert.equal(missing(['x'], whole, edition, staleSource).length, 1)
+const foreignSource = structuredClone(catalog)
+foreignSource.units[0].ownGoalIds = [atom.id]
+assert.equal(missing(['x'], whole, edition, foreignSource).length, 1)
+assert.deepEqual(missing(['other'], [atom.id, original.id]), [], 'The original own assessment retains its scope')
+console.log('Offered R1 tested for exact own editions, full witness sets and per-member single and merged views.')

@@ -172,7 +172,7 @@ The [unified learning-plan status contract](repo:docs/concept/didactic/unified-l
 Unit completion, actual individual evidence and justified release of prerequisites for subsequent planning remain distinguishable. A skipped learning step receives no invented success. Required work on the demonstrated route nevertheless ends.
 :::
 
-This is the **unadopted proposal of 19 November 2026**. The applicable derivation of global atomic mastery from absent outstanding demand remains in the main text (Sections~@ref{sec:transitive-demand} and~@ref{sec:global-effect}). The general proposal remains open. For Hessian Physics E.1, the learning map, cockpit and learning plan already use a versioned contract. All four tasks have independent subject reviews. The product owner’s first pedagogical acceptance of the unit is pending.
+This is the **unadopted proposal of 19 November 2026**. The applicable derivation of global atomic mastery from absent outstanding demand remains in the main text (Sections~@ref{sec:transitive-demand} and~@ref{sec:global-effect}). For the Hessian G8 and G9 Physics E.1 pilot, the learning map, cockpit and learning plan already use a versioned contract. It covers six reviewed views. Rules R1–R5 remain binding. All four tasks have independent subject reviews. The product owner’s first pedagogical acceptance of the unit is pending.
 
 #### Proposal: Completion contract, scope and actual evidence {#sec:proposal-unit-contract}
 

@@ -7,6 +7,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Files;
+import com.skillpilot.backend.landscape.LandscapeProperties;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
@@ -49,6 +54,40 @@ class UnitLearningMaterialServiceTest {
         assertThat(service.find(PHYSICS, "merged:de-he-gym-physics-lk-g8+another-view", MOTION)).isEmpty();
         assertThat(service.find(PHYSICS, "de-he-gym-physics-gk-g9", "physics-q1")).isEmpty();
         assertThat(service.find("mathematics", "de-he-gym-physics-gk-g9", MOTION)).isEmpty();
+    }
+
+    @Test
+    void durationNeutralCrossStageOffersLearningMaterialsWhileTheFourPartAwardUsesItsOwnViews() throws IOException {
+        var directory = Path.of("../curricula");
+        var mapper = new ObjectMapper();
+        var properties = new LandscapeProperties();
+        properties.setDirectory(directory.toString());
+        var views = new CompositionViewService(properties, mapper);
+        var materials = UnitLearningMaterialService.fromRepository(directory, mapper);
+        for (String course : List.of("GK", "LK", "GK+LK")) {
+            var scope = new LinkedHashMap<>(Map.of("schoolForm", "Gymnasium", "jurisdiction", "DE-HE",
+                    "stage", "CrossStage", "courseProfile", course));
+            String neutral = (String) views.findLearnerScopeView(PHYSICS, scope).get("viewId");
+            assertThat(neutral).isEqualTo("GK+LK".equals(course)
+                    ? "merged:de-he-gym-physics-lk+de-he-gym-physics-gk"
+                    : "de-he-gym-physics-" + course.toLowerCase(Locale.ROOT));
+            var material = materials.find(PHYSICS, neutral, MOTION).orElseThrow();
+            assertThat(material.question("de")).isEqualTo("Ein Ball rollt vom Tisch. Wo landet er?");
+            assertThat(material.exercises()).hasSize(3);
+            assertThat(material.flashcardGoalId()).isEqualTo("9f2f5ab8-0ae4-5792-b831-82a05af5895c");
+            assertThat(materials.assessmentBindings(List.of(neutral))).isEmpty();
+            assertThat(materials.assessmentBindingForReference("composition:" + neutral + ":structure:" + MOTION)).isEmpty();
+            for (String duration : List.of("G8", "G9")) {
+                scope.put("durationModel", duration);
+                for (String stage : List.of("CrossStage", "SekII")) {
+                    scope.put("stage", stage);
+                    String selected = (String) views.findLearnerScopeView(PHYSICS, scope).get("viewId");
+                    assertThat(selected).isNotEqualTo(neutral);
+                    assertThat(materials.assessmentBindings(List.of(selected))).singleElement().satisfies(binding ->
+                            assertThat(binding.contract().parts()).hasSize(4));
+                }
+            }
+        }
     }
 
     @Test

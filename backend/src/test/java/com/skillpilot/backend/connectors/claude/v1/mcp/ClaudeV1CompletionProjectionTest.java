@@ -102,6 +102,19 @@ class ClaudeV1CompletionProjectionTest {
         assertThat(context.toString()).contains("Lab 0").doesNotContain("private-", "Lab 29");
     }
 
+    @Test void compactUnitContextExplainsAnUnavailableMaterialVersionWithoutOfferingANewStart() {
+        var part = new UnitAssessmentResponse.Part("private-part", Map.of("de", "Wurf", "en", "Throw"), false, false);
+        var response = completion(10, false).withUnitAssessment(new UnitAssessmentResponse(
+                "private-section", "private-revision", false, List.of(part), List.of(), List.of()));
+        for (String language : List.of("de", "en")) {
+            var context = (Map<?, ?>) ClaudeV1CompletionChoices.project(response, language).get("unitAssessment");
+            var projected = (Map<?, ?>) ((List<?>) context.get("parts")).getFirst();
+            assertThat(projected.get("materialCurrent")).isEqualTo(false);
+            assertThat(projected.get("notice").toString()).contains("en".equals(language) ? "unavailable" : "nicht verfügbar");
+            assertThat(projected.toString()).doesNotContain("private-", "startAvailable=true");
+        }
+    }
+
     @Test
     void explainsOnlyTheCurrentWaivedPreparationWithLocalizedAssessmentTitles() {
         var detail = new LevelCompletionResponse.WaiverDetail("goal", Map.of("de", "Projektion verstehen", "en", "Understand projection"),

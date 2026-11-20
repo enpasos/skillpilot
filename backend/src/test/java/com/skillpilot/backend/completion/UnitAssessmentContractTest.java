@@ -37,7 +37,7 @@ class UnitAssessmentContractTest {
     }
 
     @Test
-    void usesAllFourPublishedMaterialsAndOnlyTheReviewedChildCredit() throws Exception {
+    void usesAllFourPublishedMaterialsWithoutDerivingPlanningCreditFromUnboundReceipts() throws Exception {
         var mapper = new ObjectMapper();
         var curricula = Path.of("../curricula");
         String view = "de-he-gym-physics-gk-g8";
@@ -75,8 +75,8 @@ class UnitAssessmentContractTest {
         }
         var complete = contract.evaluate(section, graph.keySet(), graph, receipts, Set.of()).orElseThrow();
         assertThat(complete.passed()).isTrue();
-        assertThat(complete.planningCreditGoalIds()).containsExactlyInAnyOrderElementsOf(contract.planningCredits().getFirst().goalIds());
-        assertThat(complete.planningCreditGoalIds()).hasSize(2);
+        assertThat(contract.planningCredits().getFirst().goalIds()).hasSize(2);
+        assertThat(complete.planningCreditGoalIds()).isEmpty();
         assertThat(complete.individuallyOpenGoalIds()).hasSize(11);
 
         var first = contract.parts().getFirst();
@@ -85,7 +85,7 @@ class UnitAssessmentContractTest {
         var partial = contract.evaluate(section, graph.keySet(), graph, receipts, Set.of(contract.contentGoalIds().getFirst())).orElseThrow();
         assertThat(partial.passed()).isFalse();
         assertThat(partial.parts()).filteredOn(part -> !part.passed()).hasSize(1);
-        assertThat(partial.planningCreditGoalIds()).hasSize(2);
+        assertThat(partial.planningCreditGoalIds()).isEmpty();
         assertThat(partial.individuallyOpenGoalIds()).hasSize(10);
         assertThat(contract.evaluate(section, Set.of(first.goalId()), graph, receipts, Set.of())).isEmpty();
     }

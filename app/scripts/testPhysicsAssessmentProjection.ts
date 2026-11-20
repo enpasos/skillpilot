@@ -91,7 +91,7 @@ assert.equal(e1Scope.childAssessmentReview.sourceFileSha256, 'd5aafed0908cdd8131
   'The 17/20 child release is bound to its independent review; older full-score reviews concern different tasks')
 assert.equal(createHash('sha256').update(childReview).digest('hex'), e1Scope.childAssessmentReview.sourceFileSha256)
 const readRepoJson = (path: string) => JSON.parse(readFileSync(resolve(root, path), 'utf8'))
-assert(checkUnitPlanningReleases() > 0, 'The independently reviewed child pair must have a current planning release')
+assert(checkUnitPlanningReleases().length > 0, 'The independently reviewed child pair must have a current planning release')
 const materialFiles: string[] = readRepoJson('curricula/unit-learning-materials.json').materials
 const e1Contracts = materialFiles.map(path => readRepoJson(`curricula/${path}`).unit)
   .filter(unit => unit.landscapeId === canonicalLandscape.landscapeId && unit.compositionNodeId === 'physics-e1-motion')

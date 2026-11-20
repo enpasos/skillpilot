@@ -11,7 +11,7 @@ import { selectPracticeCards } from '../src/utils/flashcardPractice'
 import { getSrsFilterTagsForGoal } from '../src/utils/srsTags'
 import { buildLearnerUnitMapProjection, filterLearnerUnitMapToSubjects } from '../src/components/learningUnitMap/learnerUnitMapProjection'
 import { deriveLearnerUnitMapPreview, MATHEMATICS_LANDSCAPE_ID as math, PHYSICS_LANDSCAPE_ID as physics } from '../src/components/learningUnitMap/learnerUnitMapPreview'
-import { buildUnitAssessmentActions, buildUnitFlashcardActions, findUnitMaterialScopes, placeUnitLearningResources } from '../src/components/learningUnitMap/unitLearningMaterialActions'
+import { buildUnitAssessmentActions, buildUnitFlashcardActions, findUnitMaterialScopes, placeUnitLearningResources, unitResourcePlacements } from '../src/components/learningUnitMap/unitLearningMaterialActions'
 import { UNIT_MAP_LEARNING_MATERIALS as packageMaterials } from '../src/packageConsumer/learnerUnitMapPreviewSubjects'
 import { readUnitMapMaterials } from './lib/unitLearningMaterialCatalog'
 import { fileURLToPath } from 'node:url'
@@ -70,7 +70,9 @@ for (const scope of ['', '-g8', '-g9', '-sekii']) for (const course of ['gk', 'l
       const examAction = [...assessments.values()][0]
       assert.equal(examAction.goalId, examId)
       assert.equal(examAction.title, `${language === 'de' ? 'Prüfung' : 'Assessment'}: ${value.goalIndexAll.get(examId)!.title}`)
-      const placed = placeUnitLearningResources(original, e1Scopes, actions, assessments)
+      const place = (flashcards: typeof actions, exams: typeof assessments) =>
+        placeUnitLearningResources(original, unitResourcePlacements({ scopes: e1Scopes, flashcards, assessments: exams }))
+      const placed = place(actions, assessments)
       assert.deepEqual(placed.entryPaths, original.entryPaths, 'both goals keep their original home and reveal paths')
       assert.deepEqual(placed.entries[e1ScopeId].children, [...original.entries[e1ScopeId].children!, memoryId, examId])
       assert(!original.entries[e1ScopeId].children!.includes(memoryId) && !original.entries[e1ScopeId].children!.includes(examId))
@@ -89,7 +91,7 @@ for (const scope of ['', '-g8', '-g9', '-sekii']) for (const course of ['gk', 'l
       withoutExam.delete(examId)
       const hiddenAssessment = buildUnitAssessmentActions(practiceMaterial, original, value.goalIndexAll, withoutExam, language)
       assert.equal(hiddenAssessment.size, 0)
-      assert(!placeUnitLearningResources(original, e1Scopes, actions, hiddenAssessment).entries[e1ScopeId].children?.includes(examId))
+      assert(!place(actions, hiddenAssessment).entries[e1ScopeId].children?.includes(examId))
       assert(placed.entries[original.entryPaths![examId].at(-2)!].children?.includes(examId), 'the assessment keeps its original phase placement')
       const phase = [...actions.values()].find(action => action.goalIds === undefined)
       assert.equal(phase?.title, language === 'de' ? 'Gesamten Lernkartenstapel üben' : 'Practice the full deck')
@@ -100,6 +102,7 @@ for (const scope of ['', '-g8', '-g9', '-sekii']) for (const course of ['gk', 'l
       const e1 = [...actions.values()].find(action => action.title === (language === 'de' ? 'Lernkarten zu E.1 üben' : 'Practice flashcards for E.1'))
       assert(e1?.goalIds?.length, `${filename}: E.1 has an actual practice action`)
       const selectedCards = selectPracticeCards(deck.cards, getSrsFilterTagsForGoal(value.goalIndexAll.get(memoryId)!), e1.goalIds)
+      if (scope === '') assert.equal(selectedCards.length, 9, 'The duration-neutral E.1 topic offers its nine cards')
       assert(selectedCards.length > 0 && selectedCards.length < deck.cards.length, 'E.1 is a strict subset of the original deck')
       assert.equal(new Set(selectedCards.map(card => card.id)).size, selectedCards.length)
       for (const card of selectedCards) assert(card.tags?.some(tag => e1.goalIds!.some(id => tag === `goal:${id}`)))
@@ -112,7 +115,7 @@ for (const scope of ['', '-g8', '-g9', '-sekii']) for (const course of ['gk', 'l
       noVisibleMemory.delete(memoryId)
       assert.equal(buildUnitFlashcardActions(practiceMaterial, original, value.goalIndexAll, noVisibleMemory, deck.cards, language).size, 0)
       const noTopicCards = buildUnitFlashcardActions(practiceMaterial, original, value.goalIndexAll, value.visibleGoalIds, [], language)
-      assert(!placeUnitLearningResources(original, e1Scopes, noTopicCards, assessments).entries[e1ScopeId].children?.includes(memoryId))
+      assert(!place(noTopicCards, assessments).entries[e1ScopeId].children?.includes(memoryId))
       assert.equal(noTopicCards.size, 1,
         'a topic with no matching card offers no empty drill; the full deck remains accessible')
       const children = new Map(Object.values(original.entries).map(entry => [entry.id, entry.children ?? []]))
