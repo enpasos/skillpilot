@@ -9,15 +9,15 @@ import org.springframework.http.MediaType;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 import org.springframework.web.server.ResponseStatusException;
 
 @RestController
-@RequestMapping("/api/ui")
 @Tag(name = "UI Updates", description = "Real-time updates for the UI")
 public class UpdateController {
+
+    public static final String STREAM_PATH = "/api/ui/updates/{skillpilotId}";
 
     private final SseService sseService;
     private final LearnerRepository learnerRepository;
@@ -27,7 +27,7 @@ public class UpdateController {
         this.learnerRepository = learnerRepository;
     }
 
-    @GetMapping(path = "/updates/{skillpilotId}", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    @GetMapping(path = STREAM_PATH, produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     @Operation(summary = "Stream updates for a specific learner")
     @Transactional
     public SseEmitter subscribe(@PathVariable String skillpilotId) {
