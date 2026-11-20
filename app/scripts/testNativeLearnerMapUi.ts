@@ -582,7 +582,7 @@ try {
   await scope(unitPage, largeUnit)
   await unitPage.screenshot({ path: join(artifacts, '05-unit-map-list.png') })
 
-  stage = 'desktop unit overview keeps neighbouring targets reachable before and after hydration'
+  stage = 'ordinary large boards retain a readable starting point and an explicit overview'
   for (const hydrate of [false, true]) {
     await unitPage.setViewportSize(hydrate ? { width: 900, height: 640 } : { width: 1440, height: 960 })
     await unitPage.goto(`${origin}/scripts/fixtures/learnerUnitMapUi.html?mode=overview${hydrate ? '&hydrate' : ''}`)
@@ -591,8 +591,8 @@ try {
       await node(unitPage, 'force-016').click()
       await unitPage.getByRole('button', { name: 'Load last goal' }).click()
     }
-    // Clicking the target demands a mounted, visible and reachable button, including
-    // at the previous 16/17 threshold. Check the full card against the map clipping area.
+    if (!hydrate) assert.equal(await unitPage.getByLabel('Zoomwert').innerText(), '100 %')
+    await unitPage.getByRole('button', { name: 'Diese Ebene einpassen' }).click()
     await node(unitPage, 'force-017').click()
     await unitPage.getByTestId('unit-map-selected').filter({ hasText: 'force-017' }).waitFor()
     const fits = await unitPage.locator('.lum-flow').evaluate(surface => {
@@ -620,6 +620,21 @@ try {
   await unitPage.getByRole('option', { name: /Kraft 17/ }).click()
   await node(unitPage, 'force-017').click()
   await unitPage.getByTestId('unit-map-selected').filter({ hasText: 'force-017' }).waitFor()
+
+  stage = 'a second subject opens neighbouring assessments together on a large board'
+  await unitPage.setViewportSize({ width: 1024, height: 768 })
+  await unitPage.goto(`${origin}/scripts/fixtures/learnerUnitMapUi.html?mode=math-assessments`)
+  await scope(unitPage, 'composition:fx-math:structure:sek1')
+  await unitPage.waitForFunction(() => {
+    const surface = document.querySelector('.lum-flow')!.getBoundingClientRect()
+    return ['quadratic-9', 'quadratic-11'].every(id => {
+      const rect = document.querySelector(`[data-entry-id="${id}"] .lum-node-main`)?.getBoundingClientRect()
+      return rect && rect.width >= 170 && rect.left >= surface.left && rect.right <= surface.right
+        && rect.top >= surface.top && rect.bottom <= surface.bottom
+    })
+  })
+  await node(unitPage, 'quadratic-9').click()
+  await unitPage.getByTestId('unit-map-selected').filter({ hasText: 'quadratic-9' }).waitFor()
 
   stage = 'a tree without Mathematics and Physics gets a notice instead of a map'
   await unitPage.goto(`${origin}/scripts/fixtures/learnerUnitMapUi.html?mode=other`)

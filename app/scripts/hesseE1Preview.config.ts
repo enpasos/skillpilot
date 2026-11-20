@@ -18,13 +18,15 @@ const entry: Plugin = {
     server.middlewares.use((request, response, next) => {
       const url = new URL(request.url ?? '/', 'http://127.0.0.1')
       const match = /^\/(nativ|testlauf)\/(G8|G9)\/(E1|[ABCD])\/?$/.exec(url.pathname)
-      if (!match || request.method !== 'GET') return next()
-      const [, entryType, duration, part] = match
+      const math = url.pathname === '/vergleich/mathematik'
+      if ((!match && !math) || request.method !== 'GET') return next()
+      const [, entryType, duration, part] = match ?? []
       if (entryType === 'testlauf' && !['A', 'B'].includes(part)) return next()
       const profiles = JSON.parse(readFileSync(profileFile, 'utf8'))
-      const id = profiles[duration][entryType === 'nativ' ? 'viewer' : part]
+      if (math && !profiles.mathematik) return next()
+      const id = math ? profiles.mathematik.viewer : profiles[duration][entryType === 'nativ' ? 'viewer' : part]
       const goals = [...scope.ownAssessmentGoalIds, ...scope.childAssessmentGoalIds]
-      const goal = part === 'E1' ? profiles[duration].E1 : goals['ABCD'.indexOf(part)]
+      const goal = math ? profiles.mathematik.goal : part === 'E1' ? profiles[duration].E1 : goals['ABCD'.indexOf(part)]
       const keys = {
         skillpilot_id: id,
         skillpilot_role: 'learner',

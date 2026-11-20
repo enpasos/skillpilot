@@ -19,6 +19,8 @@ import uuid
 
 ROOT = Path(__file__).resolve().parents[1]
 OVERVIEW = 'a0e13c56-c25f-4742-9272-3a1a603ee52e'
+MATHEMATICS = '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced'
+MATH_COMPARISON_GOAL = '649b673c-1a74-5dc5-af01-b4c9e090b90d'
 PHYSICS = '7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a'
 
 
@@ -30,14 +32,14 @@ def request(base, path, method='GET', data=None):
     return json.loads(content) if content else None
 
 
-def create_learner(api, duration):
+def create_subject_learner(api, duration, subject):
     created = request(api, '/api/ui/learners', 'POST', {})
     learner_id = str(uuid.UUID(created['state']['skillpilotId']))
     learner = '/api/ui/learners/' + learner_id
     request(api, learner + '/curriculum', 'PUT', {'curriculumId': OVERVIEW})
     request(api, learner + '/personal-curriculum', 'PUT', {
         OVERVIEW: {'selected': True, 'filterId': 'DE-HE', 'durationModel': duration, 'stage': 'SekII'},
-        PHYSICS: {'selected': True, 'filterId': 'GK'},
+        subject: {'selected': True, 'filterId': 'GK'},
     })
     plan = request(api, learner + '/personalization-plan')
     for _ in range(15):
@@ -51,11 +53,17 @@ def create_learner(api, duration):
         plan = request(api, learner + '/personalization-options', 'POST', {'optionId': choice['optionId']})
     if plan['stage'] != 'COMPLETE':
         raise RuntimeError('Personalization is incomplete')
-    query = urlencode({'landscapeId': PHYSICS, 'schoolForm': 'Gymnasium', 'jurisdiction': 'DE-HE',
+    query = urlencode({'landscapeId': subject, 'schoolForm': 'Gymnasium', 'jurisdiction': 'DE-HE',
                        'stage': 'SekII', 'courseProfile': 'GK', 'durationModel': duration})
     view = request(api, '/api/ui/composition-views/match?' + query)
     if not view or view['scope']['stage'] != 'SekII':
-        raise RuntimeError(f'{duration}: upper-secondary Physics view is missing')
+        raise RuntimeError(f'{duration}: upper-secondary view for {subject} is missing')
+    return learner_id, view
+
+
+def create_learner(api, duration):
+    learner_id, view = create_subject_learner(api, duration, PHYSICS)
+    learner = '/api/ui/learners/' + learner_id
     focus = f'composition:{view["viewId"]}:structure:physics-e1-motion'
     request(api, learner + '/planned', 'PUT', {'goals': [focus]})
     current = request(api, learner + '/state')['levelCompletion']
@@ -151,6 +159,8 @@ def serve(args, work, stack):
         viewer, section = create_learner(api, duration)
         profiles[duration] = {'viewer': viewer, 'E1': section,
                               **{part: create_learner(api, duration)[0] for part in ('A', 'B')}}
+    math_viewer, _ = create_subject_learner(api, 'G9', MATHEMATICS)
+    profiles['mathematik'] = {'viewer': math_viewer, 'goal': MATH_COMPARISON_GOAL}
     (work / 'profiles.json').write_text(json.dumps(profiles))
     ui_env = {**os.environ, 'SKILLPILOT_E1_PREVIEW_DIR': str(work), 'VITE_API_BASE': api}
     vite = subprocess.Popen([node, str(app / 'node_modules/vite/bin/vite.js'), '--config',
@@ -160,11 +170,12 @@ def serve(args, work, stack):
     wait_ready(ui + '/nativ/G8/A', vite)
     for d in ('G8', 'G9'):
         print(f'{d}: {ui}/nativ/{d}/E1   {ui}/nativ/{d}/A   {ui}/nativ/{d}/B', flush=True)
+    print(f'Mathematik-Kartenvergleich: {ui}/vergleich/mathematik', flush=True)
     if args.check:
         subprocess.run([node, str(app / 'scripts/checkHesseE1Preview.mjs'), ui, api, str(work / 'profiles.json')],
                        cwd=app, check=True)
     else:
-        print('Ctrl+C beendet die Vorschau und löscht die sechs synthetischen Profile.', flush=True)
+        print('Ctrl+C beendet die Vorschau und löscht die synthetischen Profile.', flush=True)
         while spring.poll() is None and vite.poll() is None:
             time.sleep(1)
         raise RuntimeError('A preview service exited; start a fresh preview to continue.')

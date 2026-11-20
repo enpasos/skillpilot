@@ -47,12 +47,12 @@ async function checkCard(page, task, lang) {
   assert.deepEqual(rendered, cells)
   assert(!(await card.getByRole('heading').allTextContents()).some(t => /^(Lösung|Musterlösung|Solution|Model solution)$/i.test(t)))
 }
-async function check(duration, part, lang, start, mobile = false) {
+async function check(duration, part, lang, start, width = 1440) {
   const task = tasks[part]
   const id = profiles[duration][start ? part : 'viewer']
   const before = await evidence(id)
   const context = await browser.newContext({
-    locale: lang, serviceWorkers: 'block', reducedMotion: 'reduce', viewport: { width: mobile ? 390 : 1440, height: 900 },
+    locale: lang, serviceWorkers: 'block', reducedMotion: 'reduce', viewport: { width, height: 900 },
   })
   try {
     await context.route('**/*', route => [site, api].includes(new URL(route.request().url()).origin)
@@ -117,6 +117,26 @@ async function check(duration, part, lang, start, mobile = false) {
           console.log(duration, part, lang, await layoutError.getByRole('paragraph').innerText())
           await layoutError.getByRole('button', { name: lang === 'de' ? 'Erneut versuchen' : 'Try again' }).click()
         }
+        if (width >= 761 && width <= 1100) {
+          const list = map.getByTestId('learning-map-compact-list')
+          if (await list.isVisible()) {
+            await map.getByRole('button', { name: 'Grafische Karte anzeigen' }).click()
+            await list.waitFor({ state: 'hidden' })
+            await map.getByRole('button', { name: 'Zielliste anzeigen' }).click()
+            await list.waitFor()
+          } else {
+            // Virtualized nodes may be partially clipped; verify both complete cards at a readable scale.
+            await page.waitForFunction(ids => {
+              const surface = document.querySelector('.lum-flow')?.getBoundingClientRect()
+              if (!surface) return false
+              return ids.every(id => {
+                const rect = document.querySelector(`[data-entry-id="${id}"] .lum-node-main`)?.getBoundingClientRect()
+                return rect && rect.width >= 170 && rect.left >= surface.left && rect.right <= surface.right
+                  && rect.top >= surface.top && rect.bottom <= surface.bottom
+              })
+            }, [other.id, task.id])
+          }
+        }
         await neighbor.click()
       } catch (error) {
         throw new Error(`${duration}/${part}/${lang}: ${(await map.innerText()).slice(0, 1600)}`, { cause: error })
@@ -125,7 +145,7 @@ async function check(duration, part, lang, start, mobile = false) {
       await checkCard(page, other, lang)
     }
     assert.deepEqual(await evidence(id), before)
-    console.log(duration, part, lang, start ? 'Erststart' : 'Aufgabe und Kartenwechsel', mobile ? '390 px' : '', 'OK')
+    console.log(duration, part, lang, start ? 'Erststart' : 'Aufgabe und Kartenwechsel', `${width} px`, 'OK')
   } finally {
     await context.close()
   }
@@ -168,13 +188,35 @@ async function checkUnitAndChildCards(duration) {
     await page.close()
   }
 }
+async function checkMathComparison() {
+  const page = await browser.newPage({ viewport: { width: 1440, height: 900 }, reducedMotion: 'reduce', serviceWorkers: 'block' })
+  try {
+    await page.goto(site + '/vergleich/mathematik')
+    await page.getByTestId('learner-current-goal').getByRole('heading', {
+      name: 'Intervalladditivität und Linearität von Integralen nutzen', exact: true,
+    }).first().waitFor()
+    await page.getByTestId('learner-main-content').getByTestId('learner-learning-map-open').click()
+    const dialog = page.getByTestId('learner-learning-map-dialog')
+    const board = dialog.getByRole('region', { name: 'Lernkarte: Q1.3 Vertiefung der Differenzial- und Integralrechnung', exact: true })
+    await board.locator('.lum-flow--idle .is-focused').waitFor()
+    assert.equal(await board.getByLabel('Zoomwert').innerText(), '100 %')
+    await board.getByRole('button', { name: 'Diese Ebene einpassen' }).click()
+    await page.waitForFunction(() => document.querySelectorAll('.react-flow__node').length > 16)
+    console.log('Mathematik Q1.3: 100 % beim Einstieg,', await board.getByLabel('Zoomwert').innerText(),
+      'und', await board.locator('.react-flow__node').count(), 'Einträge in der Übersicht OK')
+  } finally {
+    await page.close()
+  }
+}
 try {
+  await checkMathComparison()
   // Each curriculum has its own viewer and a fresh learner per first attempt.
   for (const duration of ['G8', 'G9']) {
     for (const part of ['A', 'B']) {
       for (const lang of ['de', 'en']) await check(duration, part, lang, false)
     }
-    if (duration === 'G9') await check(duration, 'B', 'de', false, true)
+    for (const width of [761, 1024, 1100]) await check(duration, 'B', 'de', false, width)
+    if (duration === 'G9') await check(duration, 'B', 'de', false, 390)
     await checkUnitAndChildCards(duration)
     for (const part of ['A', 'B']) await check(duration, part, 'de', true)
   }

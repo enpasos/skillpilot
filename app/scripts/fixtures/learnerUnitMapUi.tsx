@@ -23,7 +23,16 @@ const query = new URLSearchParams(location.search)
 const mode = query.get('mode') ?? 'list'
 const physicsBoard = ['list', 'overview', 'wide'].includes(mode)
 const manyIds = Array.from({ length: mode === 'list' ? 205 : 17 }, (_, index) => `force-${String(index + 1).padStart(3, '0')}`)
-const goals: UiGoal[] = physicsBoard ? [
+const mathTasks = Array.from({ length: 19 }, (_, i) => `quadratic-${i + 1}`)
+const goals: UiGoal[] = mode === 'math-assessments' ? [
+  root('math-root', MATHEMATICS_LANDSCAPE_ID, 'Mathematik', ['composition:fx-math:structure:sek1']),
+  section('fx-math', 'sek1', MATHEMATICS_LANDSCAPE_ID, 'Quadratische Funktionen', mathTasks),
+  ...mathTasks.map((id, index) => goal(id, MATHEMATICS_LANDSCAPE_ID, [], {
+    title: index === 8 ? 'Scheitelpunkt bestimmen' : index === 10 ? 'Nullstellen bestimmen' : `Parabelaufgabe ${index + 1}`,
+    nodeKind: index === 8 || index === 10 ? 'exam' : 'tutor',
+    requires: index ? [mathTasks[index - 1]] : [],
+  })),
+] : physicsBoard ? [
   root('physics-root', PHYSICS_LANDSCAPE_ID, 'Physik', ['composition:fx-phys:structure:physics-seki', 'why-physics']),
   section('fx-phys', 'physics-seki', PHYSICS_LANDSCAPE_ID, 'Sekundarstufe I', manyIds),
   ...manyIds.map((id, index) => goal(id, PHYSICS_LANDSCAPE_ID, [], { title: `Kraft ${index + 1}`,
@@ -44,7 +53,7 @@ const beforeLastGoal = new Set([...visibleGoalIds].filter(id => id !== manyIds.a
 const mastered = new Set(['force-001'])
 
 function Fixture() {
-  const [selected, setSelected] = useState(physicsBoard ? 'force-003' : 'atoms')
+  const [selected, setSelected] = useState(mode === 'math-assessments' ? mathTasks[10] : physicsBoard ? 'force-003' : 'atoms')
   const [allLoaded, setAllLoaded] = useState(!query.has('hydrate'))
   const [returned, setReturned] = useState(false)
   return <div style={{ display: 'grid', gridTemplateRows: '1fr auto', height: '100vh' }}>

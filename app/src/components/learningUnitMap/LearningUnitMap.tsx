@@ -3,13 +3,13 @@ import { createPortal } from 'react-dom'
 import { ArrowDown, ArrowLeft, ArrowRight, ArrowUpRight, ChevronRight, Compass, Expand,
   Minus, Plus, Search, Waypoints, X } from 'lucide-react'
 import { Background, BackgroundVariant, MarkerType, MiniMap, ReactFlow, ReactFlowProvider,
-  useReactFlow, type Edge, type Viewport } from '@xyflow/react'
+  getViewportForBounds, useReactFlow, useStore, type Edge, type Viewport } from '@xyflow/react'
 import '@xyflow/react/dist/style.css'
 import type { LearningEntryProgress, LearningMapCommand, LearningMapFixture } from './types'
 import { MapListItem, MapNode, type LearningFlowNode, type LearningMapPracticeAction, type LearningMapGoalAction } from './MapNode'
 import { getEntryKindLabel } from './presentation'
 import { isCompactListScope, useMapNavigation } from './useMapNavigation'
-import { layoutLearningScope, restartLearningScopeLayoutWorker, type LearningScopeLayout } from './layoutLearningScope'
+import { layoutLearningScope, NODE_HEIGHT, NODE_WIDTH, restartLearningScopeLayoutWorker, type LearningScopeLayout } from './layoutLearningScope'
 import { ElkRoutedEdge } from './ElkRoutedEdge'
 import { mapEntryPath } from './mapEntryPath'
 import { getLearningScopeRelations } from './scopeRelations'
@@ -87,18 +87,43 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
   const MapContainer = embedded ? 'section' : 'main'
   const reducedMotion = useReducedMotion()
   const narrowScreen = useNarrowScreen()
-  const [mobileGraphScope, setMobileGraphScope] = useState<string | null>(null)
-  const preferList = useCallback((id: string) => narrowScreen && !!mobileListScopes?.has(id) && mobileGraphScope !== id,
-    [mobileGraphScope, mobileListScopes, narrowScreen])
+  const [graphScopeOverride, setGraphScopeOverride] = useState<string | null>(null)
   const flow = useReactFlow<LearningFlowNode>()
   const [direction, setDirection] = useState<'RIGHT' | 'DOWN'>('RIGHT')
   const [layout, setLayout] = useState<{ fixture: LearningMapFixture; key: string; data: LearningScopeLayout } | null>(null)
+  const canvasWidth = useStore(state => state.width)
+  const canvasHeight = useStore(state => state.height)
+  const assessmentCamera = useMemo(() => {
+    const id = command?.entryId
+    if (!id || !layout || layout.fixture !== fixture || !layout.data.positions[id]
+      || fixture.entries[id]?.kind !== 'assessment' || !canvasWidth || !canvasHeight) return null
+    const peers = Object.entries(layout.data.positions).filter(([key]) => fixture.entries[key].kind === 'assessment')
+    if (peers.length < 2) return null
+    const xs = peers.map(([, point]) => point.x)
+    const ys = peers.map(([, point]) => point.y)
+    const x = Math.min(...xs)
+    const y = Math.min(...ys)
+    return getViewportForBounds({ x, y, width: Math.max(...xs) - x + NODE_WIDTH,
+      height: Math.max(...ys) - y + NODE_HEIGHT }, canvasWidth, canvasHeight, 0, 1, 0.06)
+  }, [command?.entryId, fixture, layout, canvasWidth, canvasHeight])
+  // The same rows and actions work when the assessment group would be too small to read.
+  const offersList = useCallback((id: string) => {
+    const hasMaterial = mobileListScopes?.has(id)
+    if (narrowScreen && hasMaterial) return true
+    if (!layout || layout.key !== `${id}:${direction}` || layout.fixture !== fixture) return false
+    if (assessmentCamera) return assessmentCamera.zoom < 0.8
+    if (!hasMaterial || !canvasWidth || !canvasHeight) return false
+    const bounds = { x: 0, y: 0, width: layout.data.width, height: layout.data.height }
+    return getViewportForBounds(bounds, canvasWidth, canvasHeight, 0, 1, 0.2).zoom < 0.35
+  }, [narrowScreen, mobileListScopes, assessmentCamera, fixture, layout, direction, canvasWidth, canvasHeight])
+  const preferList = useCallback((id: string) => offersList(id) && graphScopeOverride !== id, [offersList, graphScopeOverride])
+  const previousAssessmentCamera = useRef<Viewport | null>(null)
   const [layoutError, setLayoutError] = useState<string | null>(null)
   const [layoutAttempt, setLayoutAttempt] = useState(0)
   const mapContainer = useRef<HTMLElement>(null)
   const mapSurface = useRef<HTMLDivElement>(null)
   const nav = useMapNavigation(fixture, reducedMotion, layout?.fixture === fixture ? layout.key : null,
-    direction, initialScopeId, active, mapContainer, mapSurface, compactListThreshold, preferList)
+    direction, initialScopeId, active, mapContainer, mapSurface, compactListThreshold, preferList, mobileListScopes)
   const { enter, goUp, goToDepth, goToScope } = nav
   const [selection, setSelection] = useState<{ scope: string; id: string } | null>(null)
   const [query, setQuery] = useState('')
@@ -125,6 +150,7 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
   const layoutKey = `${nav.scopeId}:${direction}`
   const largeList = isCompactListScope(fixture, nav.scopeId, compactListThreshold)
   const listMode = largeList || preferList(nav.scopeId)
+  const showListSwitch = !largeList && offersList(nav.scopeId)
   const activeLayout = listMode ? EMPTY_LAYOUT : layout?.fixture === fixture && layout.key === layoutKey ? layout.data : null
   const scopeTitle = nav.scopeId === fixture.rootId && rootLabel ? rootLabel : scope.title
   const extendedTools = headingMode === 'standard' || visibleIds.length >= 8
@@ -250,6 +276,17 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
         const height = surface.clientHeight
         const current = flow.getViewport()
         const requested = pendingNodeFocus.current?.id === selectedId ? pendingNodeFocus.current : null
+        const previous = previousAssessmentCamera.current
+        const stillAtAssessment = previous && Math.abs(current.x - previous.x) < 1
+          && Math.abs(current.y - previous.y) < 1 && Math.abs(current.zoom - previous.zoom) < 0.005
+        if (assessmentCamera && !requested?.center && (requested || stillAtAssessment)) {
+          // A routed assessment opens with its peers. Refitting after hydration
+          // or resize preserves a camera that the learner has already moved.
+          pendingNodeFocus.current = null
+          previousAssessmentCamera.current = assessmentCamera
+          void flow.setViewport(assessmentCamera, { duration: 0 })
+          return
+        }
         if (!showInspector && !requested) return
         pendingNodeFocus.current = null
         if (requested?.center) {
@@ -270,7 +307,7 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
       })
     })
     return () => { cancelAnimationFrame(frame); cancelAnimationFrame(secondFrame) }
-  }, [selection, selectedId, flow, reducedMotion, nav.isTransitioning, showInspector])
+  }, [selection, selectedId, flow, reducedMotion, nav.isTransitioning, showInspector, assessmentCamera])
 
   const scopeRelations = useMemo(() => getLearningScopeRelations(fixture, nav.scopeId), [fixture, nav.scopeId])
   const relationByEndpoints = useMemo(() => new Map(scopeRelations.map(relation =>
@@ -479,9 +516,12 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
         {headingMode === 'standard' && <div className="lum-map-summary"><h1>{scopeTitle}</h1>
           <span>{visibleIds.length} Bereiche · {activeLayout?.edges.length ?? '…'} Verbindungen</span>
         </div>}
-        {renderScopeActions && <div className="lum-scope-actions">{renderScopeActions(nav.scopeId)}
-          {narrowScreen && !largeList && mobileListScopes?.has(nav.scopeId) && <button type="button" className="lum-board-mode"
-            onClick={() => setMobileGraphScope(listMode ? nav.scopeId : null)}>
+        {(renderScopeActions || showListSwitch) && <div className="lum-scope-actions">{renderScopeActions?.(nav.scopeId)}
+          {showListSwitch && <button type="button" className="lum-board-mode"
+            onClick={() => {
+              if (listMode && selectedId) pendingNodeFocus.current = { id: selectedId, center: false }
+              setGraphScopeOverride(listMode ? nav.scopeId : null)
+            }}>
             {listMode ? label('Grafische Karte anzeigen', 'Show graph') : label('Zielliste anzeigen', 'Show goal list')}
           </button>}
         </div>}
