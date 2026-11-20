@@ -27,7 +27,17 @@ export interface CompletionAssessment {
   unavailableReason?: string
 }
 
+export interface UnitAssessment {
+  sectionGoalId: string
+  revision: string
+  passed: boolean
+  parts: { goalId: string; title: CompletionTitle; passed: boolean }[]
+  planningCreditGoalIds: string[]
+  individuallyOpenGoalIds: string[]
+}
+
 export interface LevelCompletion {
+  unitAssessment?: UnitAssessment
   calculationStatus: CompletionCalculationStatus
   contextRef?: string
   profileId?: string
@@ -101,8 +111,8 @@ export const completionWaiversForTree = (
     const detail = details.get(goalId)
     result.set(goalId, {
       sectionTitle: completion.title,
-      reason: isAutomaticCompletion(completion) || detail?.ruleId === 'no_remaining_demand'
-        ? 'no_remaining_demand' : 'assessment',
+      reason: completion.unitAssessment?.planningCreditGoalIds.includes(goalId) ? 'assessment'
+        : isAutomaticCompletion(completion) || detail?.ruleId === 'no_remaining_demand' ? 'no_remaining_demand' : 'assessment',
       assessments: detail?.assessments ?? [],
       assessmentCount: detail?.assessmentCount,
     })
@@ -163,6 +173,22 @@ const assessment = (value: unknown): CompletionAssessment => {
   return result
 }
 
+function parseUnitAssessment(value: unknown): UnitAssessment {
+  const source = record(value)
+  const parts = list(source.parts).map(value => {
+    const part = record(value)
+    return { goalId: text(part.goalId), title: title(part.title), passed: bool(part.passed) }
+  })
+  const passed = bool(source.passed)
+  const planningCreditGoalIds = list(source.planningCreditGoalIds, 100_000).map(text)
+  const individuallyOpenGoalIds = list(source.individuallyOpenGoalIds, 100_000).map(text)
+  if (!parts.length || passed !== parts.every(part => part.passed)) throw invalid()
+  for (const ids of [parts.map(part => part.goalId), planningCreditGoalIds, individuallyOpenGoalIds]) {
+    if (new Set(ids).size !== ids.length) throw invalid()
+  }
+  return { sectionGoalId: text(source.sectionGoalId), revision: text(source.revision), passed, parts, planningCreditGoalIds, individuallyOpenGoalIds }
+}
+
 /** Read the one projection supplied with the learner state; never calculate mastery here. */
 export const parseLevelCompletion = (value: unknown): LevelCompletion | null => {
   if (value === null || value === undefined) return null
@@ -217,6 +243,10 @@ export const parseLevelCompletion = (value: unknown): LevelCompletion | null => 
       const action = record(value)
       return { action: actionName(action.action), goalId: optionalText(action.goalId), title: title(action.title), intent: intent(action.intent) }
     }),
+  }
+  if (source.unitAssessment != null) {
+    if (status !== 'valid') throw invalid()
+    result.unitAssessment = parseUnitAssessment(source.unitAssessment)
   }
   if (status === 'valid') {
     result.complete = bool(source.complete)

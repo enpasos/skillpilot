@@ -180,6 +180,24 @@ try {
   }
 
   {
+    const unit: LevelCompletion = { ...selected(25), profileId: 'automatic:math-sek-ii', actions: [],
+      unitAssessment: { sectionGoalId: 'math-sek-ii', revision: 'current', passed: false,
+        parts: [{ goalId: 'math-exam', title: { de: 'Skalarprodukt prüfen' }, passed: false }],
+        planningCreditGoalIds: [], individuallyOpenGoalIds: ['math-upper'] },
+    }
+    const h = await open(unit, true, true, { entryGoal: 'math-sek-ii' })
+    const summary = h.page.getByTestId('learner-current-goal').getByTestId('unit-assessment-summary')
+    await summary.locator(':scope > summary').click()
+    await summary.getByRole('link', { name: 'Skalarprodukt prüfen direkt versuchen' }).waitFor()
+    await summary.getByText('Einzeln noch nachzuweisen (1)', { exact: true }).click()
+    await summary.getByText('Ableitungen für Wachstumsmodelle deuten', { exact: true }).waitFor()
+    assert.equal(await h.page.getByTestId('level-completion-card').count(), 0, 'the focus already shows its assessment')
+    assert.equal(h.writes.length, 0, 'viewing unit evidence does not activate or assess a goal')
+    assert.deepEqual(h.errors, [])
+    await h.context.close()
+  }
+
+  {
     const h = await open(unselected(1), false, false, { handoff: true })
     assert.equal(h.writes.length, 0, 'a profile is never selected automatically')
     await h.page.getByTestId('level-completion-card').getByRole('button', { name: `Abschnitt als Lernweg wählen: ${title.de}`, exact: true }).click()

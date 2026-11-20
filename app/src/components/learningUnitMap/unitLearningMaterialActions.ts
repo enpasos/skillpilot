@@ -1,43 +1,37 @@
 import type { UiGoal } from '../../goalTypes'
 import { getSrsFilterTagsForGoal } from '../../utils/srsTags'
 import { selectPracticeCards, type FlashcardPracticeRequest } from '../../utils/flashcardPractice'
-import type { LearningMapFixture, LearningMapRelation, LearningMapRequirement } from './types'
-import {
-  HESSE_PHYSICS_E_MEMORY_GOAL_ID, HESSE_PHYSICS_E1_ASSESSMENT_GOAL_ID,
-  HESSE_PHYSICS_PRACTICE_VIEW_IDS as viewIds, HESSE_PHYSICS_E1_PRACTICE, PHYSICS_LANDSCAPE_ID,
-} from './learnerUnitMapPreviewSubjects'
+import type { LearningMapFixture, LearningMapRelation, LearningMapRequirement, MapPracticeMaterial } from './types'
+const matchesView = (viewIds: readonly string[], value: unknown) => typeof value === 'string'
+  && (viewIds.includes(value) || value.startsWith('merged:') && value.slice(7).split('+').every(id => viewIds.includes(id)))
 
-export { HESSE_PHYSICS_E_MEMORY_GOAL_ID, HESSE_PHYSICS_E1_ASSESSMENT_GOAL_ID }
-const isHesseView = (value: unknown) => typeof value === 'string'
-  && (viewIds.has(value) || value.startsWith('merged:') && value.slice(7).split('+').every(id => viewIds.has(id)))
-
-export function findHessePhysicsE1Scopes(
-  fixture: LearningMapFixture, goalIndex: ReadonlyMap<string, UiGoal>, visibleGoalIds: ReadonlySet<string>,
+export function findUnitMaterialScopes(
+  material: MapPracticeMaterial, fixture: LearningMapFixture, goalIndex: ReadonlyMap<string, UiGoal>, visibleGoalIds: ReadonlySet<string>,
 ): Set<string> {
   const scopes = new Set<string>()
-  if (!HESSE_PHYSICS_E1_PRACTICE) return scopes
   for (const goal of goalIndex.values()) {
-    if (goal.landscapeId !== PHYSICS_LANDSCAPE_ID
-      || goal.extendedData?.compositionNodeId !== HESSE_PHYSICS_E1_PRACTICE.unit.compositionNodeId
-      || !isHesseView(goal.extendedData.compositionViewId) || !visibleGoalIds.has(goal.id)) continue
+    if (goal.landscapeId !== material.unit.landscapeId
+      || goal.extendedData?.compositionNodeId !== material.unit.compositionNodeId
+      || !matchesView(material.unit.viewIds, goal.extendedData.compositionViewId) || !visibleGoalIds.has(goal.id)) continue
     const path = fixture.entryPaths?.[goal.id]
     const scopeId = fixture.entries[goal.id] ? goal.id : path?.slice(0, -1).at(-1)
-    if (scopeId && fixture.entries[scopeId]?.kind === 'unit') scopes.add(scopeId)
+    if (scopeId && fixture.entries[scopeId]?.kind === 'unit'
+      && (fixture.entries[scopeId].subjects ?? [material.unit.landscapeId]).includes(material.unit.landscapeId)) scopes.add(scopeId)
   }
   return scopes
 }
 
 /** The topic can reference the phase assessment when it is visible in the learner's projection. */
-export function buildHessePhysicsE1AssessmentActions(
-  fixture: LearningMapFixture, goalIndex: ReadonlyMap<string, UiGoal>, visibleGoalIds: ReadonlySet<string>, language: 'de' | 'en',
+export function buildUnitAssessmentActions(
+  material: MapPracticeMaterial, fixture: LearningMapFixture, goalIndex: ReadonlyMap<string, UiGoal>, visibleGoalIds: ReadonlySet<string>, language: 'de' | 'en',
   scopes?: ReadonlySet<string>,
 ): ReadonlyMap<string, { goalId: string; title: string }> {
   const actions = new Map<string, { goalId: string; title: string }>()
-  const goalId = HESSE_PHYSICS_E1_ASSESSMENT_GOAL_ID
+  const goalId = material.unit.assessmentGoalId
   if (!goalId) return actions
   const assessment = goalIndex.get(goalId)
-  if (!visibleGoalIds.has(goalId) || !assessment || !fixture.entries[goalId]) return actions
-  for (const scopeId of scopes ?? findHessePhysicsE1Scopes(fixture, goalIndex, visibleGoalIds)) {
+  if (!visibleGoalIds.has(goalId) || !assessment || assessment.landscapeId !== material.unit.landscapeId || fixture.entries[goalId]?.kind !== 'assessment') return actions
+  for (const scopeId of scopes ?? findUnitMaterialScopes(material, fixture, goalIndex, visibleGoalIds)) {
     actions.set(scopeId, { goalId,
       title: `${language === 'en' ? 'Assessment' : 'Prüfung'}: ${assessment.title}` })
   }
@@ -45,57 +39,51 @@ export function buildHessePhysicsE1AssessmentActions(
 }
 
 /** Presentation only: goals, prerequisite demand and completion continue to use the original fixture. */
-export function buildHessePhysicsFlashcardActions(
-  fixture: LearningMapFixture, goalIndex: ReadonlyMap<string, UiGoal>, visibleGoalIds: ReadonlySet<string>,
+export function buildUnitFlashcardActions(
+  material: MapPracticeMaterial, fixture: LearningMapFixture, goalIndex: ReadonlyMap<string, UiGoal>, visibleGoalIds: ReadonlySet<string>,
   cards: readonly { tags?: string[] }[] | undefined, language: 'de' | 'en',
+  scopes = findUnitMaterialScopes(material, fixture, goalIndex, visibleGoalIds),
 ): ReadonlyMap<string, FlashcardPracticeRequest> {
   const actions = new Map<string, FlashcardPracticeRequest>()
-  const memoryId = HESSE_PHYSICS_E_MEMORY_GOAL_ID
+  const memoryId = material.unit.flashcardGoalId
+  if (!memoryId || !scopes.size) return actions
   const memoryGoal = goalIndex.get(memoryId)
-  if (!memoryGoal || !visibleGoalIds.has(memoryId) || !fixture.entries[memoryId]) return actions
+  if (memoryGoal?.landscapeId !== material.unit.landscapeId || !visibleGoalIds.has(memoryId)
+    || fixture.entries[memoryId]?.kind !== 'memory') return actions
   const filterTags = getSrsFilterTagsForGoal(memoryGoal)
-  const ePhase = [...goalIndex.values()].find(goal => goal.landscapeId === PHYSICS_LANDSCAPE_ID
-    && goal.extendedData?.compositionNodeId === 'physics-e-phase'
-    && isHesseView(goal.extendedData.compositionViewId) && visibleGoalIds.has(goal.id))
-  if (!ePhase) return actions
-  // A shared Mathematics/Physics phase can have a synthetic entry. The alias
-  // path identifies its real board without relying on translated labels.
-  const phasePath = fixture.entryPaths?.[ePhase.id]
-  const phaseId = fixture.entries[ePhase.id] ? ePhase.id : phasePath?.slice(0, -1).at(-1)
-  if (!phaseId || !fixture.entries[phaseId]) return actions
-  const memoryPath = fixture.entryPaths?.[memoryId]
-  if (!memoryPath?.includes(phaseId)) return actions
-  actions.set(phaseId, { goalId: memoryId,
-    title: language === 'en' ? 'Practice flashcards for the E phase' : 'Lernkarten zur E-Phase üben' })
+  const deckHome = fixture.entryPaths?.[memoryId]?.at(-2)
+  if (!deckHome || !fixture.entries[deckHome]?.children?.includes(memoryId)) return actions
+  const practiceTitle = (topic: string) => language === 'en' ? `Practice flashcards for ${topic}` : `Lernkarten zu ${topic} üben`
+  actions.set(deckHome, { goalId: memoryId, title: language === 'en' ? 'Practice the full deck' : 'Gesamten Lernkartenstapel üben' })
   const visit = (id: string) => {
     const entry = fixture.entries[id]
     if (!entry) return
-    if (id !== phaseId && entry.kind === 'unit') {
+    if (id !== deckHome && entry.kind === 'unit') {
       const goalIds: string[] = []
       const collect = (childId: string) => {
         const child = fixture.entries[childId]
         if (!child) return
         const goal = goalIndex.get(childId)
-        if (visibleGoalIds.has(childId) && goal?.landscapeId === PHYSICS_LANDSCAPE_ID
+        if (visibleGoalIds.has(childId) && goal?.landscapeId === material.unit.landscapeId
           && child.kind === 'goal') goalIds.push(childId)
         for (const descendant of child.children ?? []) collect(descendant)
       }
       collect(id)
       if (cards && selectPracticeCards(cards, filterTags, goalIds).length) {
-        const topicCode = /^E\.\d+/u.exec(entry.title)?.[0]
+        const topicCode = /^\p{L}+\.\d+(?=\s)/u.exec(entry.title)?.[0]
         const topic = topicCode ?? entry.title
         actions.set(id, { goalId: memoryId, goalIds,
-          title: language === 'en' ? `Practice flashcards for ${topic}` : `Lernkarten zu ${topic} üben` })
+          title: practiceTitle(topic) })
       }
     }
     for (const child of entry.children ?? []) visit(child)
   }
-  visit(phaseId)
+  visit(deckHome)
   return actions
 }
 
 /** Place additional references on the topic board. The source tree remains the owner of every result. */
-export function placeHessePhysicsE1Resources(
+export function placeUnitLearningResources(
   fixture: LearningMapFixture, scopes: ReadonlySet<string>, flashcards: ReadonlyMap<string, FlashcardPracticeRequest>,
   assessments: ReadonlyMap<string, { goalId: string }>,
 ): LearningMapFixture {

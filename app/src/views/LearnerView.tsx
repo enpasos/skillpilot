@@ -12,6 +12,7 @@ import { getPersonalCurriculumSetupCopy } from '../utils/curriculumSetupCopy'
 import { LearnerPlanTodayOverview } from '../components/LearnerPlanTodayOverview'
 import { LearnerActiveGoalBanner } from '../components/LearnerActiveGoalBanner'
 import { LevelCompletionCard } from '../components/LevelCompletionCard'
+import { UnitAssessmentSummary } from '../components/UnitAssessmentSummary'
 import { Settings, Database, Menu, X, Target, Send, Check, MoveRight, BookOpen, ClipboardCheck, PanelLeftClose, PanelLeftOpen, Map as MapIcon, Construction } from 'lucide-react'
 import { InfoModal } from '../components/InfoModal'
 import { LogoutButton } from '../components/LogoutButton'
@@ -154,6 +155,7 @@ export interface LearnerGoalNavigationMapProps {
   activeGoalId: string | null
   getMastery: (goalId: string) => number
   completionWaivers: ReadonlyMap<string, CompletionTreeWaiver>
+  unitAssessmentSummary?: { scopeGoalId: string; content: React.ReactNode }
   revealRequest?: { entryId: string; nonce: number }
   onSelectGoal: (goalId: string) => void
   getFlashcardSource?: (goal: UiGoal) => string | undefined
@@ -3416,6 +3418,15 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   }, [learnerDataManagementCopy.deleteMissing, learnerDataManagementCopy.deleteSuccess, onLogout, onNotify, skillpilotId])
 
   const completionRouteActive = hasActiveCompletionRoute(levelCompletion)
+  const completionGoalTitle = (id: string) => {
+    const goal = goalIndexAll.get(id)
+    return goal ? getLearnerGoalTitle(goal) : undefined
+  }
+  const unitAssessmentSummary = levelCompletion?.calculationStatus === 'valid' && levelCompletion.unitAssessment ? {
+    scopeGoalId: levelCompletion.unitAssessment.sectionGoalId,
+    content: <UnitAssessmentSummary assessment={levelCompletion.unitAssessment} completion={levelCompletion} language={localizedLanguage}
+      titleForGoal={completionGoalTitle} allowStart={learnerStateLoadStatus === 'ready' && !completionActionBusy} />,
+  } : undefined
   const showLearningProgress = !isGuidedPersonalizationRequired
     && !completionRouteActive
     && (scopedLearningPlans?.followLearningPlans
@@ -3697,6 +3708,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
               requestedAssessmentMissing={Boolean(completionDiscoveryRequest && selectedGoalAssessments.length === 0)}
               onAction={(action) => { void handleCompletionAction(action) }}
               onRetry={() => { void refreshState(true) }}
+              titleForGoal={completionGoalTitle}
               onShowGoal={showCompletionGoalInTree}
               onOpenSettings={() => setIsSetupOpen(true)}
             />
@@ -3970,6 +3982,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
                 <GoalExamPassHistory goal={currentGoal} skillpilotId={skillpilotId} language={localizedLanguage} />
 
+                {!completionRouteActive && !completionDiscoveryRequest && unitAssessmentSummary?.scopeGoalId === currentGoal.id
+                  ? unitAssessmentSummary.content : null}
                 {selectedGoalAssessments.length > 0 ? <div data-testid="selected-goal-assessment-shortcuts" className="mt-3 flex flex-col items-start gap-2 text-sm">
                   {selectedGoalAssessments.map(({ profileId, profileTitle, assessment }) => <div key={profileId} className="flex flex-wrap items-center gap-3">
                     <span className="text-text-secondary">{localizedLanguage === 'en' ? 'Assessment in ' : 'Prüfung im Abschnitt '}
@@ -4210,6 +4224,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             activeGoalId: effectiveActiveGoalId ?? null,
             getMastery: getEffectiveMastery,
             completionWaivers: completionTreeWaivers,
+            unitAssessmentSummary,
             revealRequest: navigationRevealRequest ? {
               ...navigationRevealRequest,
               entryId: subjectRootIdByAlias.get(navigationRevealRequest.entryId) ?? navigationRevealRequest.entryId,

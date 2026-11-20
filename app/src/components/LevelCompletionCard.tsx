@@ -13,6 +13,7 @@ import {
 } from '../utils/levelCompletionApi'
 import { InlineMathText } from './InlineMathText'
 import { CompletionAssessmentList } from './CompletionAssessmentList'
+import { UnitAssessmentSummary } from './UnitAssessmentSummary'
 
 export interface LevelCompletionCardProps {
   completion: LevelCompletion
@@ -24,6 +25,7 @@ export interface LevelCompletionCardProps {
   onAction: (action: CompletionActionInput) => void
   onRetry: () => void
   onShowGoal?: (goalId: string) => void
+  titleForGoal?: (goalId: string) => string | undefined
   /** Read-only handoff from a coach; opening this disclosure never selects a route. */
   discoveryOpenRequest?: string
   onOpenSettings?: () => void
@@ -46,7 +48,7 @@ function assessmentStatus(completion: LevelCompletion, en: boolean) {
 /** All counts and choices come from the same backend state as the active goal. */
 export const LevelCompletionCard = ({
   completion, language, stale = false, busy = false, error, learningPlanPaused = false, onAction, onRetry, onShowGoal,
-  discoveryOpenRequest, onOpenSettings, requestedAssessmentMissing = false,
+  discoveryOpenRequest, onOpenSettings, requestedAssessmentMissing = false, titleForGoal,
 }: LevelCompletionCardProps) => {
   const en = language.startsWith('en')
   const headingId = React.useId()
@@ -68,6 +70,10 @@ export const LevelCompletionCard = ({
   const active = hasActiveCompletionRoute(completion)
   const automaticOverview = automatic && !active
   const valid = completion.calculationStatus === 'valid'
+  const unit = valid ? completion.unitAssessment : undefined
+  const unitSummary = unit && <UnitAssessmentSummary assessment={unit} completion={completion} language={language}
+    titleForGoal={titleForGoal} allowStart={!disabled} />
+  const otherAssessments = unit ? completion.assessments.filter(entry => !unit.parts.some(part => part.goalId === entry.goalId)) : completion.assessments
   const filteredScopes = completion.profileOptions.filter(option => completionLabel(option.title, language)
     .toLocaleLowerCase(en ? 'en' : 'de').includes(scopeQuery.trim().toLocaleLowerCase(en ? 'en' : 'de')))
   const scopeLastPage = Math.max(0, Math.ceil(filteredScopes.length / 6) - 1)
@@ -82,6 +88,18 @@ export const LevelCompletionCard = ({
   }
   const cancel = () => { setPendingChoice(null); pendingTrigger.current?.focus() }
   const buttonClass = 'min-h-11 rounded-lg border border-sky-400 px-3 py-2 text-sm font-semibold text-text-primary hover:bg-sky-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 disabled:cursor-not-allowed disabled:opacity-50 dark:hover:bg-sky-950/40'
+  const supplementalLabel = en ? 'Other assessments in this section' : 'Weitere Prüfungen im Abschnitt'
+  const assessmentList = valid && completion.profileId && otherAssessments.length > 0 ? <CompletionAssessmentList
+    key={completion.profileId} assessments={otherAssessments} profileId={completion.profileId} revision={completion.learnerRevision}
+    language={language} disabled={active ? disabled : discoveryDisabled} stale={stale} running={completion.directAssessmentRunning}
+    label={unit ? supplementalLabel : !active ? (en ? 'Assessments in your Personal Curriculum' : 'Prüfungen im Persönlichen Lehrplan')
+      : automatic ? (en ? 'Assessments in this section' : 'Prüfungen in diesem Abschnitt') : (en ? 'Required assessments' : 'Erforderliche Prüfungen')}
+    onShowGoal={onShowGoal}
+  /> : null
+  const assessmentChoices = unit && assessmentList ? <details className="mt-3 text-sm text-text-secondary">
+    <summary className="cursor-pointer rounded font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500">{supplementalLabel}</summary>
+    {assessmentList}
+  </details> : assessmentList
   if (!active) return (
     <section data-testid="level-completion-card" aria-busy={busy}
       className="mb-4 w-full rounded-2xl border border-border-color bg-sidebar-bg p-4 sm:p-5">
@@ -93,7 +111,7 @@ export const LevelCompletionCard = ({
         <p className="mt-3 text-sm text-text-secondary">{en
           ? 'Already familiar with a topic? Try its assessment directly. Passing can remove preparation for that section; other goals keep their saved result.'
           : 'Du kennst ein Thema bereits? Versuche seine Prüfung direkt. Nach dem Bestehen kann Vorbereitung für den Abschnitt entfallen; andere Lernziele behalten ihren gespeicherten Stand.'}</p>
-        {automaticOverview && valid ? <div data-testid="completion-default-overview" className="mt-3 space-y-1 text-sm text-text-secondary">
+        {unitSummary || (automaticOverview && valid ? <div data-testid="completion-default-overview" className="mt-3 space-y-1 text-sm text-text-secondary">
           <p className="font-medium text-text-primary"><InlineMathText text={completionLabel(completion.title, language)} /></p>
           <p>{en
             ? `${completion.masteredTargetCount} goals achieved directly; ${completion.waivedTargetCount} implicitly completed; ${completion.pendingTargetCount} still required.`
@@ -101,7 +119,7 @@ export const LevelCompletionCard = ({
           <p>{en
             ? 'Implicitly completed goals no longer need separate work in this scope. Their saved learning results stay unchanged.'
             : 'Implizit erledigte Ziele müssen in diesem Umfang nicht mehr eigens bearbeitet werden. Ihre gespeicherten Lernstände bleiben unverändert.'}</p>
-        </div> : null}
+        </div> : null)}
         {stale ? <p role="status" className="mt-3 text-sm text-text-secondary">{en
           ? 'This view is out of date. Reload before choosing your next step.'
           : 'Diese Ansicht ist veraltet. Lade den aktuellen Stand, bevor du den nächsten Schritt wählst.'}</p> : null}
@@ -109,11 +127,7 @@ export const LevelCompletionCard = ({
         {requestedAssessmentMissing ? <p role="status" className="mt-3 text-sm text-text-secondary">{en
           ? 'The requested assessment is currently unavailable here. You can review your Personal Curriculum in the settings.'
           : 'Die angefragte Prüfung ist hier aktuell nicht verfügbar. Du kannst deinen Persönlichen Lehrplan in den Einstellungen prüfen.'}</p> : null}
-        {automaticOverview && valid && completion.profileId && completion.assessments.length > 0 ? <CompletionAssessmentList
-          assessments={completion.assessments} profileId={completion.profileId} revision={completion.learnerRevision}
-          language={language} disabled={discoveryDisabled} stale={stale} running={completion.directAssessmentRunning}
-          label={en ? 'Assessments in your Personal Curriculum' : 'Prüfungen im Persönlichen Lehrplan'} onShowGoal={onShowGoal}
-        /> : null}
+        {automaticOverview && assessmentChoices}
         {automaticOverview && completion.profileOptions.length > 0 ? <h3 className="mt-5 font-semibold text-text-primary">
           {en ? 'Choose a learning section' : 'Lernabschnitt auswählen'}
         </h3> : null}
@@ -175,7 +189,7 @@ export const LevelCompletionCard = ({
       {stale ? (
         <p role="status" className="mt-3 text-sm text-text-secondary">{en ? 'This view is out of date. Reload before choosing your next step.' : 'Diese Ansicht ist veraltet. Lade den aktuellen Stand, bevor du den nächsten Schritt wählst.'}</p>
       ) : null}
-      {valid ? (
+      {unitSummary || (valid ? (
         <div className="mt-3 space-y-2 text-sm">
           {completion.complete ? <p role="status" className="font-semibold">{automatic
             ? (en ? 'Learning route completed.' : 'Lernweg abgeschlossen.')
@@ -219,19 +233,12 @@ export const LevelCompletionCard = ({
         </div>
       ) : active ? (
         <p role="status" className="mt-3 text-sm text-text-secondary">{en ? 'Completion cannot currently be calculated. Your saved progress remains available.' : 'Der Abschluss kann gerade nicht berechnet werden. Dein gespeicherter Lernfortschritt bleibt erhalten.'}</p>
-      ) : <p className="mt-3 text-sm text-text-secondary">{en ? 'Choose a section to learn normally or attempt its required assessments directly.' : 'Wähle einen Abschnitt, um regulär zu lernen oder seine erforderlichen Prüfungen direkt zu versuchen.'}</p>}
+      ) : <p className="mt-3 text-sm text-text-secondary">{en ? 'Choose a section to learn normally or attempt its required assessments directly.' : 'Wähle einen Abschnitt, um regulär zu lernen oder seine erforderlichen Prüfungen direkt zu versuchen.'}</p>)}
       {completion.directAssessmentRunning ? <p role="status" className="mt-3 text-sm font-medium">{en ? 'An assessment is running in your learning coach.' : 'Eine Prüfung läuft in deinem Lerncoach.'}</p> : null}
       {completion.navigationIntent === 'paused' ? <p role="status" className="mt-3 text-sm text-text-secondary">{en ? 'This learning route is paused. Choose your next step when you want to continue.' : 'Dieser Lernweg ist pausiert. Wähle deinen nächsten Schritt, wenn du fortfahren möchtest.'}</p> : null}
       {learningPlanPaused && active ? <p className="mt-3 text-sm text-text-secondary">{en ? 'Your regular learning plan is paused while you work on completing this section.' : 'Dein regulärer Lernplan ist pausiert, während du am Abschluss dieses Abschnitts arbeitest.'}</p> : null}
       {completion.notice ? <p className="mt-3 text-sm text-text-secondary">{completionNotice(completion.notice, language)}</p> : null}
-      {completion.assessments.length > 0 && valid && completion.profileId ? <CompletionAssessmentList
-        key={completion.profileId}
-        assessments={completion.assessments} profileId={completion.profileId} revision={completion.learnerRevision}
-        language={language} disabled={disabled} stale={stale} running={completion.directAssessmentRunning}
-        label={automatic ? (en ? 'Assessments in this section' : 'Prüfungen in diesem Abschnitt')
-          : (en ? 'Required assessments' : 'Erforderliche Prüfungen')}
-        onShowGoal={onShowGoal}
-      /> : null}
+      {assessmentChoices}
       <div className="mt-4 flex flex-wrap gap-2">
         {completion.actions.map((action, index) => <button key={`${action.action}:${action.goalId ?? index}`} type="button" disabled={disabled}
           className={buttonClass} onClick={(event) => choose({ action: action.action, goalId: action.goalId, intent: action.intent }, event.currentTarget)}>{completionLabel(action.title, language)}</button>)}

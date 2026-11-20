@@ -81,6 +81,25 @@ assert.equal(parseLevelCompletion({ ...valid,
 for (const changes of [{ requiredAssessmentCount: 3 }, { requiredAssessmentCount: null }, { targetCount: -1 }]) {
   assert.throws(() => parseLevelCompletion({ ...valid, profileOptions: [{ ...profileOption, ...changes }] }))
 }
+const unitStatus = {
+  sectionGoalId: 'math-sek-ii', revision: 'updated', passed: true,
+  parts: ['A', 'B', 'C', 'D'].map(goalId => ({ goalId, title: { de: goalId }, passed: true })),
+  planningCreditGoalIds: ['motion'], individuallyOpenGoalIds: ['motion', 'model'],
+}
+const verifiedUnit = { ...valid, unitAssessment: unitStatus }
+assert.deepEqual(parseLevelCompletion(verifiedUnit)?.unitAssessment, unitStatus)
+assert.equal(parseLevelCompletion({ ...valid, unitAssessment: null })?.unitAssessment, undefined)
+for (const invalidStatus of [
+  { ...unitStatus, revision: ' ' }, { ...unitStatus, passed: false }, { ...unitStatus, parts: [] },
+  { ...unitStatus, parts: [unitStatus.parts[0], unitStatus.parts[0]] },
+  { ...unitStatus, planningCreditGoalIds: ['motion', 'motion'] },
+  { ...unitStatus, individuallyOpenGoalIds: [true] },
+]) assert.throws(() => parseLevelCompletion({ ...valid, unitAssessment: invalidStatus }))
+const waiverWithReceipt = parseLevelCompletion({ ...valid, profileId: 'automatic:motion',
+  waiverDetails: [], waivedTargetGoalIds: ['A'], unitAssessment: { ...unitStatus, planningCreditGoalIds: ['A'] },
+})
+assert.equal(completionWaiversForTree(waiverWithReceipt, false).get('A')?.reason, 'assessment')
+
 const explanation = { goalId: 'A', title: { de: 'Vorbereitung' }, ruleId: 'static-rule',
   assessments: [{ goalId: 'Q', title: { de: 'Prüfung' } }], assessmentCount: 1 }
 assert.deepEqual(parseLevelCompletion({ ...valid, waiverDetails: [explanation] })?.waiverDetails, [explanation])

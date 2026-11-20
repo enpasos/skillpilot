@@ -12,8 +12,8 @@ export interface MapPracticeMaterial {
     landscapeId: string
     compositionNodeId: string
     viewIds: string[]
-    flashcardGoalId: string
-    assessmentGoalId: string
+    flashcardGoalId?: string
+    assessmentGoalId?: string
   }
   intro: Record<'de' | 'en', { question: string; promise: string }>
   exercises: ({ goalId: string } & Record<'de' | 'en', MapPracticeExercise>)[]

@@ -617,16 +617,18 @@ const KINEMATICS_ASSESSMENT_IDS = new Set([
 const HESSE_E1_ASSESSMENT_IDS = new Set([
   'ee7d5f3d-858f-59d6-89b0-e5a7f437f458',
   '39f52dcb-ff1d-5cad-9ccb-30da803cfa85',
+  'c933b7d2-edcb-5747-9378-9762659f260a',
+  'f13ca187-b680-5f47-b4ad-76bd474bd8a2',
 ])
 const EXPECTED_COUNTS: SemanticKindLedger['counts'] = {
   curricularAtomic: 485,
   curricularArea: 113,
-  practiceAssessment: 242,
+  practiceAssessment: 244,
   programStructure: 1,
   memory: 5,
   runtimeSupport: 4,
   orientation: 2,
-  total: 852,
+  total: 854,
 }
 // One reviewed measurement-rate atom is preparation only in the atlas's
 // current source views. It remains an ordinary curricular goal in the ledger.

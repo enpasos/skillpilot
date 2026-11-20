@@ -11,11 +11,15 @@ import { selectPracticeCards } from '../src/utils/flashcardPractice'
 import { getSrsFilterTagsForGoal } from '../src/utils/srsTags'
 import { buildLearnerUnitMapProjection, filterLearnerUnitMapToSubjects } from '../src/components/learningUnitMap/learnerUnitMapProjection'
 import { deriveLearnerUnitMapPreview, MATHEMATICS_LANDSCAPE_ID as math, PHYSICS_LANDSCAPE_ID as physics } from '../src/components/learningUnitMap/learnerUnitMapPreview'
-import { buildHessePhysicsE1AssessmentActions, buildHessePhysicsFlashcardActions, findHessePhysicsE1Scopes, placeHessePhysicsE1Resources,
-  HESSE_PHYSICS_E_MEMORY_GOAL_ID as memoryId, HESSE_PHYSICS_E1_ASSESSMENT_GOAL_ID as examId } from '../src/components/learningUnitMap/hessePhysicsFlashcardActions'
-import { HESSE_PHYSICS_E1_PRACTICE as packagePractice } from '../src/packageConsumer/learnerUnitMapPreviewSubjects'
-import { HESSE_PHYSICS_E1_PRACTICE as practiceMaterial } from '../src/components/learningUnitMap/learnerUnitMapPreviewSubjects'
+import { buildUnitAssessmentActions, buildUnitFlashcardActions, findUnitMaterialScopes, placeUnitLearningResources } from '../src/components/learningUnitMap/unitLearningMaterialActions'
+import { UNIT_MAP_LEARNING_MATERIALS as packageMaterials } from '../src/packageConsumer/learnerUnitMapPreviewSubjects'
+import { readUnitMapMaterials } from './lib/unitLearningMaterialCatalog'
+import { fileURLToPath } from 'node:url'
 
+const materials = readUnitMapMaterials(fileURLToPath(new URL('../../curricula/', import.meta.url)))
+const practiceMaterial = materials.find(item => item.unit.landscapeId === physics && item.unit.compositionNodeId === 'physics-e1-motion')!
+const { flashcardGoalId: memoryId, assessmentGoalId: examId } = practiceMaterial.unit
+assert(memoryId && examId)
 const read = async <T,>(path: string): Promise<T> => JSON.parse(await readFile(new URL(`../../curricula/DE/Gymnasium/${path}`, import.meta.url), 'utf8'))
 const physicsLandscape = await read<SkillLandscape>('canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json')
 const mathematicsLandscape = await read<SkillLandscape>('canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json')
@@ -50,7 +54,7 @@ for (const scope of ['', '-g8', '-g9', '-sekii']) for (const course of ['gk', 'l
     const original = filterLearnerUnitMapToSubjects(buildLearnerUnitMapProjection({ ...value,
       units: preview.units, after: preview.after, memberUnits: preview.memberUnits }), new Set([physics]))
     const snapshot = JSON.stringify(original)
-    const e1Scopes = findHessePhysicsE1Scopes(original, value.goalIndexAll, value.visibleGoalIds)
+    const e1Scopes = findUnitMaterialScopes(practiceMaterial, original, value.goalIndexAll, value.visibleGoalIds)
     assert.equal(e1Scopes.size, 1)
     const [e1ScopeId] = e1Scopes
     for (const exercise of practiceMaterial.exercises) {
@@ -60,13 +64,13 @@ for (const scope of ['', '-g8', '-g9', '-sekii']) for (const course of ['gk', 'l
       const deck = await read<{ deckId: string; cards: { id: string; tags?: string[] }[] }>(`memory-decks/de_gymnasium_physics_flashcards_mechanics_ephase.${language}.json`)
       assert.equal(deck.deckId, 'de_gymnasium_physics_mechanics_ephase')
       assert.equal(deck.cards.length, 87)
-      const actions = buildHessePhysicsFlashcardActions(original, value.goalIndexAll, value.visibleGoalIds, deck.cards, language)
-      const assessments = buildHessePhysicsE1AssessmentActions(original, value.goalIndexAll, value.visibleGoalIds, language)
+      const actions = buildUnitFlashcardActions(practiceMaterial, original, value.goalIndexAll, value.visibleGoalIds, deck.cards, language)
+      const assessments = buildUnitAssessmentActions(practiceMaterial, original, value.goalIndexAll, value.visibleGoalIds, language)
       assert.equal(assessments.size, 1, 'E.1 keeps a direct named link to its one canonical assessment')
       const examAction = [...assessments.values()][0]
       assert.equal(examAction.goalId, examId)
       assert.equal(examAction.title, `${language === 'de' ? 'Prüfung' : 'Assessment'}: ${value.goalIndexAll.get(examId)!.title}`)
-      const placed = placeHessePhysicsE1Resources(original, e1Scopes, actions, assessments)
+      const placed = placeUnitLearningResources(original, e1Scopes, actions, assessments)
       assert.deepEqual(placed.entryPaths, original.entryPaths, 'both goals keep their original home and reveal paths')
       assert.deepEqual(placed.entries[e1ScopeId].children, [...original.entries[e1ScopeId].children!, memoryId, examId])
       assert(!original.entries[e1ScopeId].children!.includes(memoryId) && !original.entries[e1ScopeId].children!.includes(examId))
@@ -83,12 +87,12 @@ for (const scope of ['', '-g8', '-g9', '-sekii']) for (const course of ['gk', 'l
       assert.equal(Object.values(placed.entries).filter(entry => entry.id === examId).length, 1)
       const withoutExam = new Set(value.visibleGoalIds)
       withoutExam.delete(examId)
-      const hiddenAssessment = buildHessePhysicsE1AssessmentActions(original, value.goalIndexAll, withoutExam, language)
+      const hiddenAssessment = buildUnitAssessmentActions(practiceMaterial, original, value.goalIndexAll, withoutExam, language)
       assert.equal(hiddenAssessment.size, 0)
-      assert(!placeHessePhysicsE1Resources(original, e1Scopes, actions, hiddenAssessment).entries[e1ScopeId].children?.includes(examId))
+      assert(!placeUnitLearningResources(original, e1Scopes, actions, hiddenAssessment).entries[e1ScopeId].children?.includes(examId))
       assert(placed.entries[original.entryPaths![examId].at(-2)!].children?.includes(examId), 'the assessment keeps its original phase placement')
       const phase = [...actions.values()].find(action => action.goalIds === undefined)
-      assert.equal(phase?.title, language === 'de' ? 'Lernkarten zur E-Phase üben' : 'Practice flashcards for the E phase')
+      assert.equal(phase?.title, language === 'de' ? 'Gesamten Lernkartenstapel üben' : 'Practice the full deck')
       assert.equal(phase.goalId, memoryId)
       assert.equal(placed.entries[memoryId], original.entries[memoryId], 'the same full deck remains a real goal on the E phase board')
       assert(placed.entries[original.entryPaths![memoryId].at(-2)!].children?.includes(memoryId))
@@ -106,9 +110,9 @@ for (const scope of ['', '-g8', '-g9', '-sekii']) for (const course of ['gk', 'l
       }
       const noVisibleMemory = new Set(value.visibleGoalIds)
       noVisibleMemory.delete(memoryId)
-      assert.equal(buildHessePhysicsFlashcardActions(original, value.goalIndexAll, noVisibleMemory, deck.cards, language).size, 0)
-      const noTopicCards = buildHessePhysicsFlashcardActions(original, value.goalIndexAll, value.visibleGoalIds, [], language)
-      assert(!placeHessePhysicsE1Resources(original, e1Scopes, noTopicCards, assessments).entries[e1ScopeId].children?.includes(memoryId))
+      assert.equal(buildUnitFlashcardActions(practiceMaterial, original, value.goalIndexAll, noVisibleMemory, deck.cards, language).size, 0)
+      const noTopicCards = buildUnitFlashcardActions(practiceMaterial, original, value.goalIndexAll, value.visibleGoalIds, [], language)
+      assert(!placeUnitLearningResources(original, e1Scopes, noTopicCards, assessments).entries[e1ScopeId].children?.includes(memoryId))
       assert.equal(noTopicCards.size, 1,
         'a topic with no matching card offers no empty drill; the full deck remains accessible')
       const children = new Map(Object.values(original.entries).map(entry => [entry.id, entry.children ?? []]))
@@ -129,17 +133,50 @@ for (const duration of ['g8', 'g9']) {
   const preview = deriveLearnerUnitMapPreview(value)
   const fixture = buildLearnerUnitMapProjection({ ...value, units: preview.units, after: preview.after, memberUnits: preview.memberUnits })
   const cards = (await read<{ cards: { tags?: string[] }[] }>('memory-decks/de_gymnasium_physics_flashcards_mechanics_ephase.de.json')).cards
-  const combined = buildHessePhysicsFlashcardActions(fixture, value.goalIndexAll, value.visibleGoalIds, cards, 'de')
+  const combined = buildUnitFlashcardActions(practiceMaterial, fixture, value.goalIndexAll, value.visibleGoalIds, cards, 'de')
   const phase = [...combined].find(([, action]) => action.goalIds === undefined)
   assert(phase && fixture.entries[phase[0]].subjects?.includes(math) && fixture.entries[phase[0]].subjects?.includes(physics),
     'a combined Mathematics/Physics E phase keeps its Physics practice action through the real scope alias')
   const mathOnly = filterLearnerUnitMapToSubjects(fixture, new Set([math]))
-  assert.equal(findHessePhysicsE1Scopes(mathOnly, value.goalIndexAll, value.visibleGoalIds).size, 0,
+  assert.equal(findUnitMaterialScopes(practiceMaterial, mathOnly, value.goalIndexAll, value.visibleGoalIds).size, 0,
     'a Mathematics-only board cannot offer the Physics E.1 introduction or exercises')
-  assert.equal(buildHessePhysicsFlashcardActions(mathOnly, value.goalIndexAll, value.visibleGoalIds, cards, 'de').size, 0,
+  assert.equal(buildUnitFlashcardActions(practiceMaterial, mathOnly, value.goalIndexAll, value.visibleGoalIds, cards, 'de').size, 0,
     'hiding Physics removes its action from a shared phase')
 }
-assert.equal(packagePractice, undefined, 'the package-consumer edition supplies no repository-specific E.1 materials')
+// An unrelated subject has its own view, lesson, graph anchors and deck. No registry entry or
+// repository-specific IDs are needed by the projection functions.
+{
+  const mathView = await read<CompositionView>('composition-views/mathematik/de-he-gk-g9.view.json')
+  const value = input([mathView])
+  const preview = deriveLearnerUnitMapPreview(value)
+  const fixture = buildLearnerUnitMapProjection({ ...value, units: preview.units, after: preview.after, memberUnits: preview.memberUnits })
+  const memory = Object.values(fixture.entries).find(({ id, kind }) => kind === 'memory' && value.goalIndexAll.get(id)?.landscapeId === math)!
+  assert(memory)
+  const owner = fixture.entryPaths![memory.id].at(-2)!
+  const topic = Object.values(fixture.entries).find(({ id, kind, children }) => kind === 'unit' && id !== owner
+    && fixture.entryPaths![id].includes(owner) && value.goalIndexAll.get(id)?.extendedData?.compositionNodeId
+    && children?.some(child => fixture.entries[child]?.kind === 'goal' && value.goalIndexAll.get(child)?.landscapeId === math))!
+  assert(topic, 'the second subject has a real projected lesson on the deck owner board')
+  const atomicId = topic.children!.find(id => fixture.entries[id]?.kind === 'goal' && value.goalIndexAll.get(id)?.landscapeId === math)!
+  const unit = { landscapeId: math, viewIds: [mathView.viewId], compositionNodeId: String(value.goalIndexAll.get(topic.id)!.extendedData!.compositionNodeId) }
+  const material = { ...practiceMaterial, unit: { ...unit, flashcardGoalId: memory.id }, exercises: [] }
+  const matching = findUnitMaterialScopes(material, fixture, value.goalIndexAll, value.visibleGoalIds)
+  assert.deepEqual([...matching], [topic.id])
+  const cards = Array.from({ length: 27 }, (_, index) => ({ id: String(index), tags: [
+    ...(getSrsFilterTagsForGoal(value.goalIndexAll.get(memory.id)!) ?? []), `goal:${atomicId}`,
+  ] }))
+  const action = buildUnitFlashcardActions(material, fixture, value.goalIndexAll, value.visibleGoalIds, cards, 'de').get(topic.id)
+  assert(action?.goalIds?.includes(atomicId) && action.goalId === memory.id)
+  assert.equal(selectPracticeCards(cards, undefined, action.goalIds).length, 27, 'larger subdecks remain available in full')
+  assert.equal(buildUnitAssessmentActions(material, fixture, value.goalIndexAll, value.visibleGoalIds, 'de').size, 0)
+  const deckless = { ...material, unit }
+  assert.deepEqual([...findUnitMaterialScopes(deckless, fixture, value.goalIndexAll, value.visibleGoalIds)], [topic.id])
+  assert.equal(buildUnitFlashcardActions(deckless, fixture, value.goalIndexAll, value.visibleGoalIds, cards, 'de').size, 0)
+  const wrong = { ...material, unit: { ...material.unit, viewIds: ['some-other-view'] } }
+  assert.equal(findUnitMaterialScopes(wrong, fixture, value.goalIndexAll, value.visibleGoalIds).size, 0)
+  assert.equal(buildUnitFlashcardActions(wrong, fixture, value.goalIndexAll, value.visibleGoalIds, cards, 'de').size, 0)
+}
+assert.deepEqual(packageMaterials, [], 'the package-consumer edition supplies no repository-specific E.1 materials')
 assert.deepEqual(selectPracticeCards([{ tags: ['GK', 'goal:a'] }, { tags: ['LK', 'goal:b'] }], ['GK'], ['b']), [], 'course and topic selection are intersected')
 assert.deepEqual(selectPracticeCards([{ tags: ['goal:a'] }], undefined, []), [], 'an empty topic cannot accidentally open the full deck')
 console.log(`Hessen Physics flashcard actions passed ${checked} real course/duration/language projections.`)

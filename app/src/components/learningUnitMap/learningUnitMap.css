@@ -85,6 +85,7 @@
 .lum-map-summary > span { color: #a0a8af; font-size: 10px; }
 .lum-scope-actions { display: flex; flex-wrap: wrap; gap: 8px; flex-shrink: 0; padding: 8px 16px; }
 .lum-scope-actions:empty { display: none; }
+.lum-scope-actions .unit-assessment-summary[open] { max-height: 40dvh; overflow-y: auto; overscroll-behavior: contain; touch-action: pan-y; }
 .lum-scope-intro { flex-basis: 100%; }
 .lum-scope-intro h2 { margin: 0; color: var(--lum-ink); font-size: 17px; font-weight: 600; line-height: 1.35; }
 .lum-scope-intro p { max-width: 85ch; margin: 3px 0 1px; color: #495f70; font-size: 13px; line-height: 1.45; }

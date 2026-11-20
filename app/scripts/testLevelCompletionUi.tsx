@@ -21,7 +21,7 @@ const completed: LevelCompletion = {
     { action: 'leaveProfile', title: { de: 'Zur regulären Lernansicht', en: 'Return to regular learning' } },
   ],
 }
-const render = (completion: LevelCompletion, extra: { stale?: boolean; language?: string; learningPlanPaused?: boolean } = {}) => renderToStaticMarkup(
+const render = (completion: LevelCompletion, extra: { stale?: boolean; language?: string; learningPlanPaused?: boolean; titleForGoal?: (id: string) => string | undefined } = {}) => renderToStaticMarkup(
   <MemoryRouter><LevelCompletionCard completion={completion} language="de" onAction={() => undefined} onRetry={() => undefined} {...extra} /></MemoryRouter>,
 )
 const done = render(completed, { learningPlanPaused: true })
@@ -72,6 +72,28 @@ const open: LevelCompletion = {
   masteredAssessmentCount: 0, waivedTargetGoalIds: [],
   assessments: [{ goalId: 'Q', title: { de: 'Prüfung', en: 'Assessment' }, mastered: false, startAvailable: true }],
 }
+const unitParts = ['A', 'B', 'C', 'D'].map(goalId => ({ goalId, title: { de: 'Teil ' + goalId, en: 'Part ' + goalId }, passed: goalId !== 'D' }))
+const currentUnit: LevelCompletion = {
+  ...open, profileId: 'automatic:math-sek-ii', navigationIntent: 'required',
+  assessments: unitParts.map(part => ({ ...part, mastered: part.passed, startAvailable: !part.passed })),
+  unitAssessment: { sectionGoalId: 'math-sek-ii', revision: 'reviewed', passed: false, parts: unitParts, planningCreditGoalIds: ['model'], individuallyOpenGoalIds: ['model', 'fall'] },
+}
+const unit = render(currentUnit, { titleForGoal: id => ({ model: 'Bewegung modellieren', fall: 'Freier Fall' })[id] })
+assert.match(unit, /3 von 4 Teilen bestanden/u)
+assert.equal((unit.match(/Beleg vorhanden/gu) ?? []).length, 3)
+assert.equal((unit.match(/completionGoal=D/gu) ?? []).length, 1)
+assert.match(unit, /Für deinen Lernplan angerechnet \(1\)/u)
+assert.match(unit, /Einzeln noch nachzuweisen \(2\)/u)
+assert.match(unit, /Bewegung modellieren/u)
+assert.match(unit, /Freier Fall/u)
+assert.doesNotMatch(render(currentUnit, { stale: true }), /completionGoal=/u)
+const unitPassed = { ...currentUnit, unitAssessment: { ...currentUnit.unitAssessment!, passed: true,
+  parts: unitParts.map(part => ({ ...part, passed: true })) } }
+const englishUnit = render(unitPassed, { language: 'en' })
+assert.match(englishUnit, /Unit assessment passed/u)
+assert.match(englishUnit, /4 of 4 parts passed/u)
+assert.match(englishUnit, /Still awaiting individual evidence \(2\)/u)
+assert.doesNotMatch(englishUnit, /Learning route completed/u)
 assert.match(render(open), /Prüfung direkt versuchen/u)
 assert.match(render(open), /completionProfile=profile/u)
 assert.match(render(open), /Noch nicht geschafft/u)

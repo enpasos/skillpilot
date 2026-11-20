@@ -18,6 +18,8 @@ Das **Lernversprechen** der Einheit sagt, was Lernende danach können und wozu e
 
 Der [Vorschlag für den kurzen Auftakt](repo:docs/concept/skill-graph/learning-unit-motivation-concept-2026-11-17.md) sieht einen von Hand verfassten Praxisbezug am Motivationsziel vor. Seine Herkunft weist ihn als didaktischen Beitrag von SkillPilot aus. Abschnitt~@ref{sec:orientation} beschreibt, wie der Coach diesen Einstieg begleitet und abschließt.
 
+Lernende können im Gespräch um eine kurze Wiederholung bitten. Liegen für die aktuelle Einheit passende Karten vor, kann der Coach sie auch anbieten, sobald ein Begriff erarbeitet ist. Die Person entscheidet, ob sie Karten übt oder an ihrer Frage weiterarbeitet. Nach den Karten greift der Coach die offene Frage am selben Lernziel wieder auf. Wer um eine Erklärung bittet, erhält sie im Gespräch. Die Wiederholung aktualisiert den Übungsstand der Karten. Ein ausdrücklich geforderter verifizierter Abruf hat seinen eigenen Nachweis.
+
 Wie der Graph einen Lernweg abbildet, zeigt ein vereinfachtes Beispiel mit zwei Inhaltszielen. In Abbildung~@ref{fig:unit-entry-paths} benötigt die Prüfung $\nd{q}$ das Inhaltsziel $\nd{b}$, dieses benötigt $\nd{a}$, und $\nd{a}$ benötigt den Auftakt $\nd{m}$. Die Pfeile zeigen vom Ziel zu seiner Voraussetzung. Wer die Einheit in der vorgesehenen Reihenfolge lernt, beginnt bei $\nd{m}$ und gelangt über $\nd{a}$ und $\nd{b}$ zur Prüfung. Ob deren Aufgaben und Bewertung tatsächlich die Anwendung von $\nd{a}$ und $\nd{b}$ belegen, klärt das fachliche Deckungsreview.
 
 ::figure{id="fig:unit-entry-paths"}

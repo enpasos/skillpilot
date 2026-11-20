@@ -10,8 +10,11 @@ import { createServer } from 'vite'
 import { CURRENT_TERMS_VERSION } from '../src/utils/legalTermsVersion'
 import type { SkillLandscape } from '../src/landscapeTypes'
 import { nativeMapIds as id, nativeMapLandscapes, nativeMapProfile } from './fixtures/nativeLearningMapData'
-import { HESSE_PHYSICS_E_MEMORY_GOAL_ID as memoryId, HESSE_PHYSICS_E1_ASSESSMENT_GOAL_ID as examId } from '../src/components/learningUnitMap/hessePhysicsFlashcardActions'
+import { readUnitMapMaterials } from './lib/unitLearningMaterialCatalog'
 
+const materials = readUnitMapMaterials(fileURLToPath(new URL('../../curricula/', import.meta.url)))
+const { flashcardGoalId: memoryId, assessmentGoalId: examId } = materials.find(item => item.unit.compositionNodeId === 'physics-e1-motion')!.unit
+assert(memoryId && examId)
 const canonical = JSON.parse(await readFile(new URL('../../curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json', import.meta.url), 'utf8')) as SkillLandscape
 const memory = canonical.goals.find(goal => goal.id === memoryId)!
 const assessment = canonical.goals.find(goal => goal.id === examId)!
@@ -50,7 +53,7 @@ const deck = { deckId: 'de_gymnasium_physics_mechanics_ephase', title: memory.ti
 const appRoot = fileURLToPath(new URL('../', import.meta.url))
 const cacheDir = await mkdtemp(join(tmpdir(), 'skillpilot-he-memory-'))
 const server = await createServer({ root: appRoot, configFile: false, cacheDir, logLevel: 'error',
-  define: { 'import.meta.env.VITE_API_BASE': JSON.stringify('') }, plugins: [react(), tailwindcss(), {
+  define: { 'import.meta.env.VITE_API_BASE': JSON.stringify(''), __UNIT_MAP_LEARNING_MATERIALS__: JSON.stringify(materials) }, plugins: [react(), tailwindcss(), {
     name: 'he-memory-no-service-worker', resolveId(source) { if (source === 'virtual:pwa-register') return '\0he-memory-pwa' },
     load(source) { if (source === '\0he-memory-pwa') return 'export const registerSW = () => () => {}' },
   }], optimizeDeps: { entries: ['index.html'], include: ['react/jsx-dev-runtime'] },
@@ -79,6 +82,7 @@ try {
       class TestEventSource extends EventTarget { readyState = 1; close() {} }
       Object.defineProperty(window, 'EventSource', { configurable: true, value: TestEventSource })
     }, { learner: id.learner, root: id.root, terms: CURRENT_TERMS_VERSION })
+    context.setDefaultTimeout(30_000)
     const page = await context.newPage()
     const errors: string[] = [], unexpected: string[] = []
     const writes: { srsState: Record<string, { repetition?: number; nextReview?: number }> }[] = []
@@ -194,8 +198,8 @@ try {
       }
       assert.deepEqual(writes, [], 'reading and checking an exercise does not save a result')
     }
-    assert(await dialog.locator(`[data-entry-id="${examId}"]`).getByText('Prüfung der E-Phase').isVisible())
-    await dialog.locator(`[data-entry-id="${memoryId}"]`).getByText('Aus dem Deck der E-Phase').waitFor()
+    await dialog.locator(`[data-entry-id="${examId}"]`).getByText('Prüfung aus „Themenübergreifende Prüfungen“').waitFor()
+    await dialog.locator(`[data-entry-id="${memoryId}"]`).getByText('Aus dem Stapel „Einführungsphase“').waitFor()
     await practice.waitFor()
     for (const resource of [memoryId, examId]) {
       const node = dialog.locator(`[data-entry-id="${resource}"]`)
@@ -266,7 +270,7 @@ try {
     await opener.click()
     await page.locator(`.lum-canvas[data-scope-id="${phaseId}"][aria-busy="false"]`).waitFor()
     assert.equal(await dialog.locator(`[data-entry-id="${memoryId}"]`).count(), 1)
-    await dialog.getByRole('button', { name: 'Lernkarten zur E-Phase üben', exact: true }).click()
+    await dialog.getByRole('button', { name: 'Gesamten Lernkartenstapel üben', exact: true }).click()
     await dialog.waitFor({ state: 'hidden' })
     // E.1 is now scheduled; the complete deck correctly offers the remaining E.2 card.
     await page.getByText('E2 Frage', { exact: true }).waitFor()

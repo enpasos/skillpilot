@@ -3,11 +3,7 @@
 // learner map reports itself as unavailable instead of drawing a board.
 import type { MapPracticeMaterial } from '../components/learningUnitMap/types'
 
-export const HESSE_PHYSICS_E1_PRACTICE: MapPracticeMaterial | undefined = undefined
+export const UNIT_MAP_LEARNING_MATERIALS: readonly MapPracticeMaterial[] = []
 export const MATHEMATICS_LANDSCAPE_ID = ''
 export const PHYSICS_LANDSCAPE_ID = ''
 export const UNIT_MAP_PREVIEW_SUBJECT_IDS: readonly string[] = Object.freeze([])
-
-export const HESSE_PHYSICS_E_MEMORY_GOAL_ID = ''
-export const HESSE_PHYSICS_E1_ASSESSMENT_GOAL_ID = ''
-export const HESSE_PHYSICS_PRACTICE_VIEW_IDS: ReadonlySet<string> = new Set<string>()
