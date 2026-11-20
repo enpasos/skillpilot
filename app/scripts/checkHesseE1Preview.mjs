@@ -3,7 +3,9 @@ import { readFile } from 'node:fs/promises'
 import { chromium } from 'playwright'
 
 const [site, api, profilesFile] = process.argv.slice(2)
-for (const url of [site, api]) assert.equal(new URL(url).hostname, '127.0.0.1')
+for (const url of [site, api]) assert(['localhost', '127.0.0.1'].includes(new URL(url).hostname))
+const numericSite = new URL(site)
+numericSite.hostname = '127.0.0.1'
 const profiles = JSON.parse(await readFile(profilesFile, 'utf8'))
 const readTask = async file => JSON.parse(await readFile(
   new URL('../../docs/concept/skill-graph/examples/hessen-physik-e1/' + file, import.meta.url), 'utf8'))
@@ -49,17 +51,18 @@ async function checkCard(page, task, lang) {
 }
 async function check(duration, part, lang, start, width = 1440) {
   const task = tasks[part]
+  const entrySite = start && duration === 'G9' ? numericSite.origin : site
   const id = profiles[duration][start ? part : 'viewer']
   const before = await evidence(id)
   const context = await browser.newContext({
     locale: lang, serviceWorkers: 'block', reducedMotion: 'reduce', viewport: { width, height: 900 },
   })
   try {
-    await context.route('**/*', route => [site, api].includes(new URL(route.request().url()).origin)
+    await context.route('**/*', route => [entrySite, api].includes(new URL(route.request().url()).origin)
       ? route.continue() : route.abort())
     const page = await context.newPage()
     page.setDefaultTimeout(90000)
-    await page.goto(site + '/' + (start ? 'testlauf' : 'nativ') + '/' + duration + '/' + part + '?lang=' + lang)
+    await page.goto(entrySite + '/' + (start ? 'testlauf' : 'nativ') + '/' + duration + '/' + part + '?lang=' + lang)
     await checkCard(page, task, lang)
     assert.equal(new URL(page.url()).pathname, '/learner/' + task.id)
     const shortcut = page.getByTestId('selected-goal-assessment-shortcuts')

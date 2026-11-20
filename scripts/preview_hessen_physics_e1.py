@@ -122,6 +122,7 @@ def serve(args, work, stack):
             probe.bind(('127.0.0.1', port))
             probe.listen()
     api, ui = f'http://127.0.0.1:{args.api_port}', f'http://127.0.0.1:{args.ui_port}'
+    browser_ui = f'http://localhost:{args.ui_port}'
     jars = work / 'runtime-jars'
     build = work / 'backend-build'
     subprocess.run([str(backend / 'gradlew'), '--no-daemon', '--console=plain', '-I',
@@ -132,7 +133,7 @@ def serve(args, work, stack):
     settings = {
         'server.address': '127.0.0.1', 'server.port': args.api_port,
         'skillpilot.curriculum.source': 'repository', 'skillpilot.landscapes.directory': str(ROOT / 'curricula'),
-        'skillpilot.public-base-url': ui, 'cors.allowed-origins': ui,
+        'skillpilot.public-base-url': browser_ui, 'cors.allowed-origins': f'{browser_ui},{ui}',
         'spring.datasource.url': 'jdbc:h2:mem:hesse-e1;DB_CLOSE_DELAY=-1;NON_KEYWORDS=VALUE',
         'spring.datasource.driver-class-name': 'org.h2.Driver', 'spring.datasource.username': 'sa',
         'spring.datasource.password': secrets.token_urlsafe(48),
@@ -169,10 +170,10 @@ def serve(args, work, stack):
     stack.callback(stop, vite)
     wait_ready(ui + '/nativ/G8/A', vite)
     for d in ('G8', 'G9'):
-        print(f'{d}: {ui}/nativ/{d}/E1   {ui}/nativ/{d}/A   {ui}/nativ/{d}/B', flush=True)
-    print(f'Mathematik-Kartenvergleich: {ui}/vergleich/mathematik', flush=True)
+        print(f'{d}: {browser_ui}/nativ/{d}/E1   {browser_ui}/nativ/{d}/A   {browser_ui}/nativ/{d}/B', flush=True)
+    print(f'Mathematik-Kartenvergleich: {browser_ui}/vergleich/mathematik', flush=True)
     if args.check:
-        subprocess.run([node, str(app / 'scripts/checkHesseE1Preview.mjs'), ui, api, str(work / 'profiles.json')],
+        subprocess.run([node, str(app / 'scripts/checkHesseE1Preview.mjs'), browser_ui, api, str(work / 'profiles.json')],
                        cwd=app, check=True)
     else:
         print('Ctrl+C beendet die Vorschau und löscht die synthetischen Profile.', flush=True)
