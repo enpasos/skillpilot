@@ -41,6 +41,15 @@ Das hessische Kerncurriculum nennt E.1 als verbindliches Themenfeld der Einführ
 
 Der Einheitenauftrag A–D verbindet Modellwahl, Rechnung, Vorhersage und Begründung. Aufgabe B verwendet den waagerechten Wurf als Anwendung. Ihr Bezug zu E.1 ist der freie Fall aus der Ruhe in vertikaler Richtung. Der waagerechte Wurf ist im Kerncurriculum eigens in E.3 verortet. Die eigene Geschwindigkeitsmessung und die Datenerhebung zum freien Fall bleiben auch bei 4/4 individuell offen, solange dafür kein eigener Nachweis vorliegt. In den vorbereiteten Abschlussprofilen lässt sich das an „Freier Fall experimentell untersuchen“ nachvollziehen. [Fachentscheid zur Zuordnung von A und B](https://github.com/enpasos/skillpilot/blob/98b61309acc16c32a00f1bf05151163c2f2ef617/curricula/DE/Gymnasium/quality/release-model/physics-he-e1-assessment-placement-review-2026-11-20.md) · [Fachentscheid zu C und D](https://github.com/enpasos/skillpilot/blob/98b61309acc16c32a00f1bf05151163c2f2ef617/curricula/DE/Gymnasium/quality/learning-units/physics-constant-acceleration-2026-11-20-v3.md) · [Abschlussprofil G8](http://localhost:5177/auftraege/G8/ABCD) · [Abschlussprofil G9](http://localhost:5177/auftraege/G9/ABCD)
 
+## Zwei eigene Versuche
+
+Im Cockpit mit vier bestandenen Teilen unter **Freiwillig weiterlernen** das gewünschte Fachziel auswählen. Die Zielkarte und die grafische Lernkarte öffnen denselben Versuchsauftrag.
+
+- **Gleichförmige Bewegung und Geschwindigkeit.** Bei „Wie schnell bewegt sich dein Wagen?“ selbst messen, aus dem Zeit-Ort-Diagramm die Geschwindigkeit bestimmen und die Vorhersage mit der Messung an einer weiteren Marke vergleichen.
+- **Freier Fall experimentell untersuchen.** Bei „Wie groß ist die Fallbeschleunigung in deinem Versuch?“ eine eigene Aufnahme oder Sensormessung auswerten. Zu den Ergebnissen gehören ein Diagramm, die experimentell bestimmte Fallbeschleunigung, das zu den Achsen passende Zeit-Ort-Gesetz und der Vergleich mit 9,81 m/s². Der Kartenpfad führt über **Beschleunigte Bewegung und freier Fall**.
+
+Die Kriterien im Arbeitsauftrag zeigen, welche Messdaten und Begründungen für das gewählte Ziel zählen. Im gewöhnlichen Lerngespräch kann Claude diese Leistung nach den Regeln für den eigenen Lernnachweis beurteilen. Das Öffnen des Versuchs lässt den Einzelstand und die bereits erworbenen vier Prüfungsbelege bestehen. [Unabhängiges Fachreview mit vier gerechneten Beispielfällen](https://github.com/enpasos/skillpilot/blob/289a53e091619013e0261a47669eb54b1250c1fd/curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-individual-experiments-2026-11-21/fachreview.md)
+
 ## Bestehensbelege, Lernplan und Lernfront vergleichen
 
 | Bildungsgang | Vergleich der drei Ausgangszustände | C und D bestanden | A, B, C und D bestanden |
