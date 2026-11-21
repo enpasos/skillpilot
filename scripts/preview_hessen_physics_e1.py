@@ -56,6 +56,13 @@ def create_subject_learner(api, duration, subject, course='GK'):
         plan = request(api, learner + '/personalization-options', 'POST', {'optionId': choice['optionId']})
     if plan['stage'] != 'COMPLETE':
         raise RuntimeError('Personalization is incomplete')
+    curriculum = json.loads(request(api, learner)['personalCurriculum'])
+    root = curriculum.get(OVERVIEW, {})
+    selected_subject = curriculum.get(subject, {})
+    if (root.get('filterId') != 'DE-HE' or root.get('stage') != 'SekII'
+            or root.get('durationModel') != duration or not selected_subject.get('selected')
+            or selected_subject.get('filterId') != course):
+        raise RuntimeError(f'{duration}: the learner did not retain the Hessian SekII {course} selection')
     query = urlencode({'landscapeId': subject, 'schoolForm': 'Gymnasium', 'jurisdiction': 'DE-HE',
                        'stage': 'SekII', 'courseProfile': course, 'durationModel': duration})
     view = request(api, '/api/ui/composition-views/match?' + query)
