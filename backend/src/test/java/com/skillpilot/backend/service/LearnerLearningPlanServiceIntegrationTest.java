@@ -15,6 +15,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.skillpilot.backend.ai.CoachToolFacade;
 import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.LearnerLearningPlanApi;
 import com.skillpilot.backend.api.LearnerPlanTodayStatus;
@@ -2202,6 +2203,51 @@ class LearnerLearningPlanServiceIntegrationTest {
             assertThat(subject.canContinue()).isFalse();
         });
         assertThat(status.statusText()).isEqualTo("Mathematik: Tagesziel 0 von 2 · im Plan");
+    }
+
+    @ParameterizedTest
+    @ValueSource(booleans = {false, true})
+    void personalLandscapeSharingAStoredPlansNameDoesNotAuthorizeAnAmbiguousCoachSwitch(boolean unreadablePlan) {
+        learner.setFollowLearningPlans(true);
+        String otherMath = "math-advanced";
+        when(landscapeService.getById(otherMath)).thenReturn(landscape(otherMath, "Mathematik"));
+        when(learnerService.getUncompactedRichFrontierForFocus(LEARNER_ID, List.of("block-focus")))
+                .thenReturn(List.of(frontier("atom-a")));
+        var plan = service.upsert(LEARNER_ID, LANDSCAPE_ID, new LearnerLearningPlanApi.UpsertRequest(
+                0L, "Mathe Basis", List.of(learning("basic", "2026-09-04", "2026-09-04", "atom-a"))), TODAY);
+        if (unreadablePlan) {
+            var stored = planRepository.findById(plan.planId()).orElseThrow();
+            stored.setBlocksJson("{broken");
+            planRepository.saveAndFlush(stored);
+        }
+        when(learnerService.getPersonalCurriculumSubjectIds(LEARNER_ID)).thenReturn(List.of(LANDSCAPE_ID, otherMath));
+        var original = service.getCoachTodayStatus(LEARNER_ID, "de").subjects().getFirst();
+        assertThat(original.landscapeId()).isEqualTo(LANDSCAPE_ID);
+        assertThat(original.canContinue()).isEqualTo(!unreadablePlan);
+        when(learnerService.getPersonalCurriculumSubjectFrontier(LEARNER_ID, otherMath))
+                .thenReturn(List.of(frontier("atom-m1")));
+
+        var coach = service.getCoachTodayStatus(LEARNER_ID, "de");
+        assertThat(coach.subjects()).singleElement().satisfies(subject -> {
+            assertThat(subject.landscapeIds()).containsExactlyInAnyOrder(LANDSCAPE_ID, otherMath);
+            assertThat(subject.landscapeId()).isNull();
+            assertThat(subject.canContinue()).isFalse();
+            assertThat(subject.balance()).isEqualTo(original.balance());
+            assertThat(subject.periodGauge()).isEqualTo(original.periodGauge());
+        });
+        assertThat(coach.unavailablePlanCount()).isEqualTo(unreadablePlan ? 1 : 0);
+        var cockpit = service.getTodayStatus(LEARNER_ID, "de");
+        assertThat(cockpit.statusText()).isEqualTo(coach.statusText());
+        assertThat(cockpit.subjects()).containsExactly(original);
+
+        var facade = new CoachToolFacade(learnerService, null, null, null, service);
+        assertThatThrownBy(() -> facade.switchLearningPlanSubject(LEARNER_ID, "de", "Mathematik"))
+                .isInstanceOfSatisfying(ResponseStatusException.class, failure -> {
+                    assertThat(failure.getStatusCode()).isEqualTo(HttpStatus.CONFLICT);
+                    assertThat(failure.getReason()).contains("not an unambiguous current learning-plan subject");
+                });
+        verify(learnerService, never()).applyLearningPlanTransition(
+                any(), anyBoolean(), anyBoolean(), any(), any(), anyBoolean(), any());
     }
 
     @Test

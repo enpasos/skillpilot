@@ -425,7 +425,10 @@ public class LearnerLearningPlanService {
         if (enabled && !hasExamScope(skillpilotId, subjectPlans, asOf)) {
             for (String landscapeId : learners.getPersonalCurriculumSubjectIds(skillpilotId)) {
                 String subjectKey = stableSubjectKey(landscapeId);
-                SubjectAggregate aggregate = subjectKey == null ? null : bySubject.get(subjectKey);
+                SubjectAggregate plannedSubject = subjectKey == null ? null : bySubject.get(subjectKey);
+                // A plan describes only its captured landscapes, even when another personal subject has the same name.
+                SubjectAggregate aggregate = plannedSubject != null && plannedSubject.landscapeIds.contains(landscapeId)
+                        ? plannedSubject : null;
                 var assignments = fulfillment.assignmentsByLandscape().getOrDefault(landscapeId, List.of());
                 boolean unitUnavailable = !assignments.isEmpty() && assignments.stream().allMatch(a -> a.option() == null);
                 if (aggregate != null && (aggregate.canContinue() || aggregate.evaluable() && !unitUnavailable)) continue;
@@ -437,11 +440,14 @@ public class LearnerLearningPlanService {
                 if (personalGoal.isPresent()) {
                     personalContinuationAvailable |= !unitBindsContinuation;
                     if (aggregate == null && includeSubjectChoices && subjectKey != null) {
-                        var label = localizedSubjectLabel(landscapeId, effectiveLocale);
-                        if (label.isEmpty()) continue;
-                        aggregate = subjectsWithoutPlan.computeIfAbsent(subjectKey, key -> new SubjectAggregate(key, label.get()));
+                        aggregate = plannedSubject;
+                        if (aggregate == null) {
+                            var label = localizedSubjectLabel(landscapeId, effectiveLocale);
+                            if (label.isEmpty()) continue;
+                            aggregate = subjectsWithoutPlan.computeIfAbsent(subjectKey, key -> new SubjectAggregate(key, label.get()));
+                            aggregate.markUnevaluable();
+                        }
                         aggregate.addLandscape(landscapeId);
-                        aggregate.markUnevaluable();
                     }
                     if (aggregate != null) aggregate.allowContinuation();
                 }
