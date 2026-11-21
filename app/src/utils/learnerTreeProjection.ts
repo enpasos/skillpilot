@@ -1,4 +1,4 @@
-import type { UiGoal } from '../goalTypes'
+import type { NavigationSource, UiGoal } from '../goalTypes'
 
 const SYNTHETIC_PROGRAM_UNIT_TAG = 'synthetic:program-unit'
 
@@ -195,7 +195,55 @@ export function buildLearnerNavigationProjection(allGoals: Map<string, UiGoal>, 
       }
     }
   }
-  return { childrenByParent, targetByAlias, childrenByAlias }
+  const navigationGoals = new Map(allGoals)
+  const promotedGroups = new Set<string>()
+  for (const [parentId, children] of childrenByParent) {
+    const parent = allGoals.get(parentId)
+    if (!parent?.compositionSubtrees?.length) continue
+    const sources = new Map(parent.compositionSubtrees.map(source => [source.id, source]))
+    const childSources = new Map<string, NavigationSource[]>()
+    const promote = (id: string, path: NavigationSource[]): string[] => {
+      const goal = allGoals.get(id)
+      const descendants = childrenByParent.get(id)
+      if (path.some(source => source.id === id)) return []
+      // Declared units, material and opaque references remain individually addressable.
+      if (goal?.type === 'cluster' && descendants?.length && !isSyntheticProgramUnit(goal)
+        && !goal.tags?.includes('root') && !goal.examData && !goal.resourceLinks?.length
+        && (!goal.nodeKind || goal.nodeKind === 'tutor') && (!goal.semanticKind || goal.semanticKind === 'curricularArea')
+        && !goal.extendedData?.compositionEntryKind && !goal.extendedData?.compositionNodeId
+        && !goal.extendedData?.compositionChildOrder) {
+        promotedGroups.add(id)
+        childrenByAlias.set(id, descendants)
+        const canonicalTitle = goal.extendedData?.compositionCanonicalTitle
+        const title = (path.length === 0 && sources.get(id)?.title)
+          || (typeof canonicalTitle === 'string' ? canonicalTitle : goal.title)
+        const source: NavigationSource = { id, kind: 'canonicalSubtree', title }
+        return descendants.flatMap(child => promote(child, [...path, source]))
+      }
+      if (path.length) {
+        const existing = childSources.get(id) ?? []
+        childSources.set(id, [...new Map([...existing, ...path].map(source => [source.id, source])).values()])
+      }
+      return [id]
+    }
+    const placed = children.flatMap(id => sources.has(id) ? promote(id, []) : [id])
+    if (childSources.size) {
+      childrenByParent.set(parentId, dedupePreservingOrder(placed))
+      navigationGoals.set(parentId, { ...parent, childNavigationSources: childSources })
+    }
+  }
+  // Keep a source's own contents for direct group links. Only remove its hidden
+  // navigation edges when no other visible placement still uses the group.
+  if (promotedGroups.size) {
+    const incoming = new Set([...childrenByParent].filter(([id]) => !promotedGroups.has(id)).flatMap(([, ids]) => ids))
+    const retain = (id: string) => {
+      if (!promotedGroups.delete(id)) return
+      for (const child of childrenByParent.get(id) ?? []) retain(child)
+    }
+    incoming.forEach(retain)
+    promotedGroups.forEach(id => childrenByParent.delete(id))
+  }
+  return { childrenByParent, targetByAlias, childrenByAlias, navigationGoals }
 }
 
 interface RootBranchInfo {

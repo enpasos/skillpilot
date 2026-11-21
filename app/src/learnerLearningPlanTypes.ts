@@ -174,7 +174,19 @@ export interface LearnerPlanStatus {
   unavailablePlanCount: number
 }
 
+export interface StoredUnitAssignment {
+  planId: string
+  revision: number
+  landscapeId: string
+  blockId: string
+  sectionGoalId: string
+  title: string | null
+  active: boolean
+  canReactivate: boolean
+}
+
 export interface LearnerLearningPlansResponse {
+  storedUnitAssignments?: StoredUnitAssignment[]
   asOf: LearnerLearningPlanDate
   followLearningPlans: boolean
   plans: LearnerLearningPlanSummary[]

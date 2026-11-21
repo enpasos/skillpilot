@@ -32,6 +32,10 @@ public final class LearnerLearningPlanApi {
                 java.util.Map<String, String> title, boolean passed, List<UnitAssignmentPart> parts) {
             this(sectionGoalId, revision, fingerprint, title, passed, parts, List.of());
         }
+        public boolean matches(Block block) {
+            return binding().equals(block.unitAssignment())
+                    && parts.stream().map(UnitAssignmentPart::goalId).toList().equals(block.atomicGoalIds());
+        }
         public UnitAssignment binding() { return new UnitAssignment(sectionGoalId, revision, fingerprint); }
     }
 
@@ -66,6 +70,10 @@ public final class LearnerLearningPlanApi {
         public Block(String id, String kind, String goalId, String title,
                 LocalDate startDate, LocalDate endDate, LocalDate date, List<String> atomicGoalIds) {
             this(id, kind, goalId, title, startDate, endDate, date, atomicGoalIds, null, null);
+        }
+
+        public Block withActive(boolean enabled) {
+            return new Block(id, kind, goalId, title, startDate, endDate, date, atomicGoalIds, goalIds, enabled, unitAssignment);
         }
 
         @JsonIgnore
@@ -192,11 +200,20 @@ public final class LearnerLearningPlanApi {
         }
     }
 
+    /** First-party plan editor references, independent of the coach-facing daily status. */
+    public record StoredUnitAssignment(UUID planId, long revision, String landscapeId, String blockId,
+            String sectionGoalId, String title, boolean active, boolean canReactivate) { }
+    public record UnitAssignmentActivity(Long expectedRevision, String blockId, Boolean active) { }
+
     public record CollectionResponse(
             @JsonFormat(shape = JsonFormat.Shape.STRING) LocalDate asOf,
             boolean followLearningPlans,
             List<PlanSummary> plans,
-            LearnerPlanTodayStatus status) {
+            LearnerPlanTodayStatus status,
+            @JsonInclude(JsonInclude.Include.NON_EMPTY) List<StoredUnitAssignment> storedUnitAssignments) {
+        public CollectionResponse(LocalDate asOf, boolean followLearningPlans, List<PlanSummary> plans, LearnerPlanTodayStatus status) {
+            this(asOf, followLearningPlans, plans, status, List.of());
+        }
     }
 
     public record ContinueRequest(

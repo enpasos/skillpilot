@@ -35,14 +35,14 @@ def request(base, path, method='GET', data=None):
     return json.loads(content) if content else None
 
 
-def create_subject_learner(api, duration, subject):
+def create_subject_learner(api, duration, subject, course='GK'):
     created = request(api, '/api/ui/learners', 'POST', {})
     learner_id = str(uuid.UUID(created['state']['skillpilotId']))
     learner = '/api/ui/learners/' + learner_id
     request(api, learner + '/curriculum', 'PUT', {'curriculumId': OVERVIEW})
     request(api, learner + '/personal-curriculum', 'PUT', {
         OVERVIEW: {'selected': True, 'filterId': 'DE-HE', 'durationModel': duration, 'stage': 'SekII'},
-        subject: {'selected': True, 'filterId': 'GK'},
+        subject: {'selected': True, 'filterId': course},
     })
     plan = request(api, learner + '/personalization-plan')
     for _ in range(15):
@@ -50,22 +50,29 @@ def create_subject_learner(api, duration, subject):
             break
         options = plan['options']
         choice = next((o for o in options if o['kind'] == 'COMPLETE_GROUP'), None)
-        choice = choice or next((o for o in options if o.get('filterId') == 'GK'), None)
+        choice = choice or next((o for o in options if o.get('filterId') == course), None)
         if not choice:
             raise RuntimeError(f'Unexpected personalization stage {plan["stage"]}')
         plan = request(api, learner + '/personalization-options', 'POST', {'optionId': choice['optionId']})
     if plan['stage'] != 'COMPLETE':
         raise RuntimeError('Personalization is incomplete')
+    curriculum = json.loads(request(api, learner)['personalCurriculum'])
+    root = curriculum.get(OVERVIEW, {})
+    selected_subject = curriculum.get(subject, {})
+    if (root.get('filterId') != 'DE-HE' or root.get('stage') != 'SekII'
+            or root.get('durationModel') != duration or not selected_subject.get('selected')
+            or selected_subject.get('filterId') != course):
+        raise RuntimeError(f'{duration}: the learner did not retain the Hessian SekII {course} selection')
     query = urlencode({'landscapeId': subject, 'schoolForm': 'Gymnasium', 'jurisdiction': 'DE-HE',
-                       'stage': 'SekII', 'courseProfile': 'GK', 'durationModel': duration})
+                       'stage': 'SekII', 'courseProfile': course, 'durationModel': duration})
     view = request(api, '/api/ui/composition-views/match?' + query)
-    if not view or view['scope']['stage'] != 'SekII':
-        raise RuntimeError(f'{duration}: upper-secondary view for {subject} is missing')
+    if not view or view['scope']['stage'] != 'SekII' or view['scope']['courseProfile'] != course:
+        raise RuntimeError(f'{duration}: upper-secondary {course} view for {subject} is missing')
     return learner_id, view
 
 
-def create_learner(api, duration, expected_parts):
-    learner_id, view = create_subject_learner(api, duration, PHYSICS)
+def create_learner(api, duration, expected_parts, course='GK'):
+    learner_id, view = create_subject_learner(api, duration, PHYSICS, course)
     learner = '/api/ui/learners/' + learner_id
     focus = f'composition:{view["viewId"]}:structure:physics-e1-motion'
     request(api, learner + '/planned', 'PUT', {'goals': [focus]})
@@ -111,7 +118,7 @@ def stop(process):
             process.wait()
 
 
-def serve(args, work, stack):
+def serve(args, work, stack, physics_course='GK'):
     backend, app = ROOT / 'backend', ROOT / 'app'
     java_home = os.environ.get('JAVA_HOME')
     java = str(Path(java_home) / 'bin/java') if java_home else shutil.which('java')
@@ -171,9 +178,9 @@ def serve(args, work, stack):
     expected_parts = scope['ownAssessmentGoalIds'] + scope['childAssessmentGoalIds']
     profiles = {}
     for duration in ('G8', 'G9'):
-        viewer, section = create_learner(api, duration, expected_parts)
+        viewer, section = create_learner(api, duration, expected_parts, physics_course)
         profiles[duration] = {'viewer': viewer, 'E1': section,
-                              **{part: create_learner(api, duration, expected_parts)[0] for part in ('A', 'B', 'CD', 'ABCD', 'unitOpen', 'unitCD', 'unitABCD', 'mixed')}}
+                              **{part: create_learner(api, duration, expected_parts, physics_course)[0] for part in ('A', 'B', 'CD', 'ABCD', 'unitOpen', 'unitCD', 'unitABCD', 'mixed')}}
     spring.stdin.write(json.dumps(profiles).encode())
     spring.stdin.close()
     for _ in range(1200):
@@ -189,7 +196,8 @@ def serve(args, work, stack):
     math_viewer, _ = create_subject_learner(api, 'G9', MATHEMATICS)
     profiles['mathematik'] = {'viewer': math_viewer, 'goal': MATH_COMPARISON_GOAL}
     (work / 'profiles.json').write_text(json.dumps(profiles))
-    ui_env = {**os.environ, 'SKILLPILOT_E1_PREVIEW_DIR': str(work), 'VITE_API_BASE': api}
+    ui_env = {**os.environ, 'SKILLPILOT_E1_PREVIEW_DIR': str(work),
+              'SKILLPILOT_E1_PHYSICS_COURSE': physics_course, 'VITE_API_BASE': api}
     vite = subprocess.Popen([node, str(app / 'node_modules/vite/bin/vite.js'), '--config',
                              str(app / 'scripts/hesseE1Preview.config.ts'), '--host', '127.0.0.1',
                              '--port', str(args.ui_port), '--strictPort'], cwd=app, env=ui_env)
@@ -197,11 +205,11 @@ def serve(args, work, stack):
     wait_ready(ui + '/nativ/G8/A', vite)
     for d in ('G8', 'G9'):
         print(f'{d}: {browser_ui}/nativ/{d}/E1   {browser_ui}/nativ/{d}/A   {browser_ui}/nativ/{d}/B', flush=True)
-        print(f'{d} Einheitenauftrag: {browser_ui}/auftraege/{d} (offen, C+D, A–D und gemischt)', flush=True)
+        print(f'{d} Physik {physics_course}, Einheitenauftrag: {browser_ui}/auftraege/{d} (offen, C+D, A–D und gemischt)', flush=True)
         print(f'{d} mit Belegen: {browser_ui}/vergleich/{d}/CD   {browser_ui}/vergleich/{d}/ABCD', flush=True)
     print(f'Mathematik-Kartenvergleich: {browser_ui}/vergleich/mathematik', flush=True)
     if args.check:
-        subprocess.run([node, str(app / 'scripts/checkHesseE1Preview.mjs'), browser_ui, api, str(work / 'profiles.json')],
+        subprocess.run([node, str(app / 'scripts/checkHesseE1Preview.mjs'), browser_ui, api, str(work / 'profiles.json'), physics_course],
                        cwd=app, check=True)
     else:
         print('Ctrl+C beendet die Vorschau und löscht die synthetischen Profile.', flush=True)
@@ -214,11 +222,13 @@ def main():
     cli = argparse.ArgumentParser(description=__doc__)
     cli.add_argument('--ui-port', type=int, default=5177)
     cli.add_argument('--api-port', type=int, default=8084)
+    cli.add_argument('--physics-course', choices=('GK', 'LK'), default='GK',
+                     help='Physics course profile for both G8 and G9 (default: GK)')
     cli.add_argument('--check', action='store_true', help='run the Chromium acceptance check, then stop')
     args = cli.parse_args()
     with tempfile.TemporaryDirectory(prefix='skillpilot-e1-') as tmp, ExitStack() as stack:
         try:
-            serve(args, Path(tmp), stack)
+            serve(args, Path(tmp), stack, physics_course=args.physics_course)
         except KeyboardInterrupt:
             pass
 

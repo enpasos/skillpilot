@@ -79,7 +79,7 @@ export default function LearnerGoalNavigationMap(props: LearnerGoalNavigationMap
   const fixture = useMemo(() => placeUnitLearningResources(progressFixture, JSON.parse(placementKey)), [progressFixture, placementKey])
   const getGoalAction = useCallback((scopeId: string, id: string) => {
     const homeId = progressFixture.entryPaths?.[id]?.at(-2)
-    const home = progressFixture.entries[id]?.sourceSections?.at(-1)?.title ?? (homeId && progressFixture.entries[homeId]?.title)
+    const home = progressFixture.entries[id]?.sourceSections?.filter(source => source.kind !== 'canonicalSubtree').at(-1)?.title ?? (homeId && progressFixture.entries[homeId]?.title)
     for (const { flashcards, assessments } of resources) {
       const cards = flashcards.get(scopeId)
       if (cards?.goalId === id && onPracticeFlashcards) {
@@ -171,7 +171,7 @@ export default function LearnerGoalNavigationMap(props: LearnerGoalNavigationMap
     data-selected-goal-id={props.selectedGoalId} data-map-active={props.active}>
     <LearningUnitMap fixture={fixture} embedded active={props.active} headingMode="context"
       rootLabel={english ? 'My learning goals' : 'Meine Lernziele'} language={props.language} learnerProgress={progress} activeGoalId={props.activeGoalId}
-      command={command} showInspector={false}
+      command={command} assessedUnit={props.unitAssessmentSummary} showInspector={false}
       toolbar={toolbar} locationBarContainer={props.locationBarContainer}
       getPracticeAction={getPracticeAction} getGoalAction={getGoalAction} materialScopes={materialScopes}
       renderScopeActions={scopeId => {

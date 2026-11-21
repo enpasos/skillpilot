@@ -382,17 +382,50 @@ public class LearnerService {
         if (binding == null || !projection.compositionViewIds().contains(binding.viewId())) return Set.of();
         var policy = unitLearningMaterialService.find(binding.landscapeId(), binding.viewId(), binding.compositionNodeId())
                 .map(UnitLearningMaterialService.Material::sectionAssessmentPolicy).orElse(null);
-        if (policy == null || !binding.contract().revision().equals(policy.unitContractRevision())
-                || policy.voluntaryAssessmentGoalIds() == null || policy.voluntaryAssessmentGoalIds().isEmpty()) return Set.of();
+        if (policy == null || !binding.contract().revision().equals(policy.unitContractRevision())) return Set.of();
         Set<String> required = binding.contract().parts().stream().map(UnitAssessmentContract.Part::goalId).collect(Collectors.toSet());
-        var optional = policy.voluntaryAssessmentGoalIds();
+        var optional = policy.voluntaryAssessmentsFor(binding.viewId());
+        if (optional.isEmpty()) return Set.of();
         if (optional.stream().anyMatch(id -> id == null || !targets.contains(id) || required.contains(id)
                 || !binding.landscapeId().equals(landscapeService.getLandscapeIdForGoal(id))
-                || !isAtomicGoal(graph.get(id)) || !CompletionProfileCompiler.isAssessment(graph.get(id)))
-                || optional.stream().distinct().count() != optional.size()) return Set.of();
+                || !isAtomicGoal(graph.get(id)) || !CompletionProfileCompiler.isAssessment(graph.get(id))
+                || !releasedSectionAssessment(graph.get(id)))) return Set.of();
         var unit = validatedUnitAssessment(binding, projection, graph, Map.of(), Set.of());
         return unit != null && unit.response().parts().stream().allMatch(UnitAssessmentResponse.Part::materialCurrent)
                 ? Set.copyOf(optional) : Set.of();
+    }
+
+    private boolean releasedSectionAssessment(LearningGoal goal) {
+        var exam = goal.getExamData();
+        return exam != null && "released".equals(exam.getReviewStatus()) && isExamDataReadyForHardCheck(exam);
+    }
+
+    /** A section-wide plan includes its required assessments. An explicit additional goal stays required. */
+    Set<String> implicitVoluntaryAssessments(Learner learner, List<String> roots, Collection<String> captured) {
+        if (learner == null || captured.isEmpty() || !unitPlanningCreditsEnabled() || unitLearningMaterialService == null
+                || roots.stream().anyMatch(Objects::isNull)
+                || roots.stream().noneMatch(root -> hasCapturedVoluntaryAssessment(root, captured))) return Set.of();
+        var projection = getGoalProjection(learner.getSelectedCurriculum(), learner.getPersonalCurriculum());
+        var graph = completionGraph(learner, projection);
+        Set<String> optional = new HashSet<>();
+        Set<String> requiredByAnotherRoot = new HashSet<>();
+        for (String root : roots) {
+            var targets = projectedAtomicTargetIds(List.of(root), projection);
+            var choices = voluntarySectionAssessments(AUTOMATIC_COMPLETION_PREFIX + root, projection, graph, targets);
+            optional.addAll(choices);
+            targets.stream().filter(id -> !choices.contains(id)).forEach(requiredByAnotherRoot::add);
+        }
+        optional.removeAll(requiredByAnotherRoot);
+        return optional;
+    }
+
+    private boolean hasCapturedVoluntaryAssessment(String root, Collection<String> captured) {
+        if (root == null || !root.startsWith("composition:")) return false;
+        return unitLearningMaterialService.assessmentBindingForReference(root)
+                .flatMap(binding -> unitLearningMaterialService.find(binding.landscapeId(), binding.viewId(), binding.compositionNodeId())
+                        .map(UnitLearningMaterialService.Material::sectionAssessmentPolicy)
+                        .map(policy -> policy.voluntaryAssessmentsFor(binding.viewId())))
+                .stream().flatMap(Collection::stream).anyMatch(captured::contains);
     }
 
     /** Discovery may rank scopes by focus; the chosen scope itself never depends on subsequent focus changes. */
@@ -4561,6 +4594,7 @@ public class LearnerService {
         for (String root : roots) {
             atoms.addAll(validateLearningPlanFocus(root, "selected-scope", landscapeId, projection));
         }
+        atoms.removeAll(implicitVoluntaryAssessments(learner, roots, atoms));
         return projection.targetGoalIds().stream().filter(atoms::contains).toList();
     }
 
@@ -4625,10 +4659,11 @@ public class LearnerService {
             if (!requestedLandscapes.isEmpty() && !requestedLandscapes.contains(plan.getLandscapeId())) continue;
             boolean explicitExam = false;
             try {
-                List<LearnerLearningPlanApi.Block> blocks = readPortableLearningPlanBlocks(plan);
-                explicitExam = blocks.stream().anyMatch(block -> block.isActive() && "milestone".equals(block.kind())
+                var captured = readPortableLearningPlanBlocks(plan);
+                explicitExam = captured.stream().anyMatch(block -> block.isActive() && "milestone".equals(block.kind())
                         && block.goalIds() != null && !block.goalIds().isEmpty());
-                validateFollowedLearningPlanShape(blocks);
+                validateFollowedLearningPlanShape(captured);
+                var blocks = LearnerLearningPlanService.effectivePlanBlocks(this, learner, plan.getLandscapeId(), captured);
                 if (!Objects.equals(plan.getCurriculumId(), learner.getSelectedCurriculum())) {
                     hasExam |= explicitExam;
                     unavailablePlan |= !explicitExam;
@@ -9334,12 +9369,13 @@ public class LearnerService {
                 continue;
             }
             try {
-                List<LearnerLearningPlanApi.Block> blocks = readPortableLearningPlanBlocks(plan);
+                var captured = readPortableLearningPlanBlocks(plan);
                 if (!isLearningPlanCompatible(
-                        learner.getSkillpilotId(), plan.getCurriculumId(), plan.getLandscapeId(), blocks)) {
+                        learner.getSkillpilotId(), plan.getCurriculumId(), plan.getLandscapeId(), captured)) {
                     unavailableSubjects.add(subject);
                     continue;
                 }
+                var blocks = LearnerLearningPlanService.effectivePlanBlocks(this, learner, plan.getLandscapeId(), captured);
                 Map<String, LocalDate> schedule = subjectSchedules.computeIfAbsent(
                         subject, ignored -> new LinkedHashMap<>());
                 LearnerLearningPlanService.scheduledAtomicGoalDueDatesForSchedule(blocks)

@@ -130,7 +130,9 @@ public record LearnerPlanTodayStatus(
     public record VoluntaryGoal(String goalId, String title) { }
 
     /**
-     * One subject, merged across every current plan of that subject.
+     * One subject, merged across every current plan of that subject. The coach also receives
+     * selectable personal subjects without a stored plan. Such a row has no plan line or
+     * gauges and cannot change the evaluated balances or the number of unavailable plans.
      *
      * <p>The stable {@link #subjectKey()} identifies the subject, not the translated label.
      * Goals shared by several plans of the same subject count once, and the earliest valid
@@ -205,7 +207,7 @@ public record LearnerPlanTodayStatus(
         }
 
         /**
-         * The one plan landscape backing this subject, or {@code null} when several do.
+         * The one landscape backing this subject choice, or {@code null} when several do.
          *
          * <p>An ambiguous subject fails closed: a switch must never guess which plan of a
          * subject the learner meant.</p>

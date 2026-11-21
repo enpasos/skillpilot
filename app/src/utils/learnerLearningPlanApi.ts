@@ -1,5 +1,6 @@
 import type {
   UnitAssignmentOption,
+  StoredUnitAssignment,
   UnitAssignmentRef,
   LearnerUnitAssignmentStatus,
   ActivateLearnerLearningPlansRequest,
@@ -574,7 +575,19 @@ export const parseLearnerLearningPlansResponse = (value: unknown): LearnerLearni
   if (status.asOf !== asOf || status.followLearningPlans !== followLearningPlans) {
     throw new Error('Invalid learning-plan response: status.snapshot')
   }
-  return { asOf, followLearningPlans, plans, status }
+  if (source.storedUnitAssignments == null) return { asOf, followLearningPlans, plans, status }
+  if (!Array.isArray(source.storedUnitAssignments)) throw new Error('Invalid stored unit assignments')
+  const storedUnitAssignments = source.storedUnitAssignments.map(raw => {
+    const row = asRecord(raw, 'Invalid stored unit assignment')
+    return { planId: requiredString(row.planId, 'planId'), revision: requiredInteger(row.revision, 'revision'),
+      landscapeId: requiredString(row.landscapeId, 'landscapeId'), blockId: requiredString(row.blockId, 'blockId'),
+      sectionGoalId: requiredString(row.sectionGoalId, 'sectionGoalId'), title: optionalString(row.title) ?? null,
+      active: requiredBoolean(row.active, 'active'), canReactivate: requiredBoolean(row.canReactivate, 'canReactivate') }
+  })
+  if (new Set(storedUnitAssignments.map(item => JSON.stringify([item.planId, item.blockId]))).size !== storedUnitAssignments.length) {
+    throw new Error('Duplicate stored unit assignment')
+  }
+  return { asOf, followLearningPlans, plans, status, storedUnitAssignments }
 }
 
 const requiredSegment = (value: string, message: string) => {
@@ -681,6 +694,15 @@ export const getLearnerLearningPlans = async (
     },
   )
   return parseLearnerLearningPlansResponse(await readJsonResponse(response))
+}
+
+export async function setUnitAssignmentActivity(learnerId: string, assignment: StoredUnitAssignment, active: boolean,
+  options: LearnerLearningPlanRequestOptions = {}): Promise<void> {
+  const endpoint = learnerPlansBase(learnerId, options.apiBase) + '/' + requiredSegment(assignment.planId, 'planId')
+    + '/unit-assignment-activity'
+  const response = await (options.fetchImpl ?? fetch)(endpoint, { method: 'PUT', credentials: 'include',
+    headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ expectedRevision: assignment.revision, blockId: assignment.blockId, active }) })
+  if (!response.ok) throw learningPlanApiError((await response.text()).trim(), response.status)
 }
 
 export const getUnitAssignmentOptions = async (

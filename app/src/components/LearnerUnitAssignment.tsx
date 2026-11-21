@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import type { LearnerLearningPlanDetail, UnitAssignmentOption } from '../learnerLearningPlanTypes'
-import { getLearnerLearningPlan, getUnitAssignmentOptions, LearnerLearningPlanApiError, saveLearnerLearningPlan } from '../utils/learnerLearningPlanApi'
-import { berlinDateKey } from '../utils/learnerLearningPlanReadModel'
+import type { LearnerLearningPlanDetail, StoredUnitAssignment, UnitAssignmentOption } from '../learnerLearningPlanTypes'
+import { getLearnerLearningPlan, getUnitAssignmentOptions, LearnerLearningPlanApiError, saveLearnerLearningPlan, setUnitAssignmentActivity } from '../utils/learnerLearningPlanApi'
+import { berlinDateKey, storedUnitAssignmentAnchor } from '../utils/learnerLearningPlanReadModel'
 import { buildCompletionAssessmentStartHref, completionLabel, type LevelCompletion, type UnitAssessment } from '../utils/levelCompletionApi'
 
 interface Props {
@@ -11,12 +11,13 @@ interface Props {
   assessment: UnitAssessment
   completion: LevelCompletion
   language: string
+  storedAssignments?: StoredUnitAssignment[]
   disabled: boolean
   goalTitle: (id: string) => string | undefined
   onSaved: () => Promise<void>
 }
 
-export function LearnerUnitAssignment({ learnerId, landscapeId, assessment, completion, language, disabled, goalTitle, onSaved }: Props) {
+export function LearnerUnitAssignment({ learnerId, landscapeId, assessment, completion, language, disabled, storedAssignments, goalTitle, onSaved }: Props) {
   const en = language.startsWith('en')
   const label = (de: string, english: string) => en ? english : de
   const [data, setData] = useState<{ option?: UnitAssignmentOption; plan: LearnerLearningPlanDetail | null }>()
@@ -26,6 +27,7 @@ export function LearnerUnitAssignment({ learnerId, landscapeId, assessment, comp
   const submitting = useRef(false)
   const day = berlinDateKey()
   const { sectionGoalId, revision } = assessment
+  const storedRevision = storedAssignments?.find(row => row.landscapeId === landscapeId)?.revision
   useEffect(() => {
     const controller = new AbortController()
     const options = { signal: controller.signal }
@@ -43,11 +45,16 @@ export function LearnerUnitAssignment({ learnerId, landscapeId, assessment, comp
       if (!controller.signal.aborted) setData({ option: offered.find(item => item.sectionGoalId === sectionGoalId && item.revision === revision), plan })
     }).catch(() => { if (!controller.signal.aborted) setError(true) })
     return () => controller.abort()
-  }, [learnerId, landscapeId, sectionGoalId, revision, completion.learnerRevision, day, attempt])
+  }, [learnerId, landscapeId, sectionGoalId, revision, completion.learnerRevision, storedRevision, day, attempt])
 
   const option = data?.option
   const plan = data?.plan
-  const block = plan?.blocks.find(block => block.kind === 'learning' && block.unitAssignment?.sectionGoalId === sectionGoalId)
+  const stored = plan?.blocks.filter(block => block.kind === 'learning' && block.unitAssignment?.sectionGoalId === sectionGoalId) ?? []
+  const block = stored.find(candidate => candidate.kind === 'learning' && candidate.unitAssignment?.fingerprint === option?.fingerprint
+    && candidate.unitAssignment?.revision === option?.revision) ?? (stored.length === 1 ? stored[0] : undefined)
+  const management = plan && block && storedAssignments?.find(item => item.planId === plan.planId && item.blockId === block.id)
+  const manageLink = management && <a className="mt-2 inline-block min-h-9 underline"
+    href={'#' + encodeURIComponent(storedUnitAssignmentAnchor(management.planId, management.blockId))}>{label('Einheitenauftrag verwalten', 'Manage unit assignment')}</a>
   const sameVersion = block?.kind === 'learning' && block.unitAssignment?.revision === option?.revision && block.unitAssignment?.fingerprint === option?.fingerprint
   const needsRebind = Boolean(block && option && !sameVersion)
   const paused = sameVersion && block?.active === false
@@ -58,6 +65,12 @@ export function LearnerUnitAssignment({ learnerId, landscapeId, assessment, comp
     setSaving(true)
     setError(false)
     try {
+      if (paused && management) {
+        await setUnitAssignmentActivity(learnerId, management, true)
+        await onSaved()
+        setAttempt(value => value + 1)
+        return
+      }
       const title = completionLabel(option.title, language)
       const assignment = { sectionGoalId, revision, fingerprint: option.fingerprint }
       const ids = option.parts.map(item => item.goalId)
@@ -85,7 +98,7 @@ export function LearnerUnitAssignment({ learnerId, landscapeId, assessment, comp
     {label('Der Einheitenauftrag konnte nicht geladen oder gespeichert werden.', 'The unit assignment could not be loaded or saved.')} {' '}
     <button type="button" className="underline" onClick={() => setAttempt(n => n + 1)}>{label('Neu laden', 'Reload')}</button>
   </p>
-  if (!option) return null
+  if (!option) return manageLink ?? null
   const next = plan?.nextEligibleGoal?.goalId
   const profileId = 'automatic:' + sectionGoalId
   const startProfile = completion.profileId === profileId ? completion : completion.profileOptions.find(item => item.profileId === profileId)
@@ -101,6 +114,7 @@ export function LearnerUnitAssignment({ learnerId, landscapeId, assessment, comp
           className="mt-2 min-h-10 rounded-lg border border-sky-500 px-3 font-semibold disabled:opacity-50" onClick={() => void save()}>
           {needsRebind ? label('Aktuelle Fassung für diesen Auftrag wählen', 'Choose the current version for this assignment')
             : paused ? label('Einheitenauftrag wieder aktivieren', 'Reactivate unit assignment') : label('Einheitenauftrag in den Lernplan aufnehmen', 'Add unit assignment to learning plan')}</button></>}
+    {manageLink}
     {plan && <p data-testid="unit-assignment-next" className="mt-2">{label('Nächster Planvorschlag', 'Next learning plan suggestion')}{' · '}
       {next ? goalTitle(next) ?? completionLabel(nextPart?.title ?? {}, language) : label('Kein weiterer Vorschlag', 'No further suggestion')}</p>}
     {assigned && canTry && <Link data-testid="unit-assignment-try" className="mt-2 inline-block min-h-9 underline"

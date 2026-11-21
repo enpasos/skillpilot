@@ -159,6 +159,7 @@ public final class HesseE1GradedPreview {
         result.put("passed", unit.parts().stream().filter(part -> part.passed()).count());
         result.put("credited", unit.planningCreditGoalIds().size());
         result.put("individuallyOpen", unit.individuallyOpenGoalIds().size());
+        result.put("planPositionCount", status.periodGauge() == null ? null : status.periodGauge().target());
         result.put("completed", status.periodGauge() == null ? null : status.periodGauge().completed());
         result.put("next", next == null ? "" : inScope.get(next.goalId()).getTitle());
         result.put("asOf", today.toString());

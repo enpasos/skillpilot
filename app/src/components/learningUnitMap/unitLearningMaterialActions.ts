@@ -62,7 +62,7 @@ export function buildUnitFlashcardActions(
   const visit = (id: string) => {
     const entry = fixture.entries[id]
     if (!entry) return
-    const representedTopic = entry.kind === 'goal' && entry.sourceSections?.at(-1)
+    const representedTopic = entry.kind === 'goal' && entry.sourceSections?.filter(source => source.kind !== 'canonicalSubtree').at(-1)
     if (id !== deckHome && (entry.kind === 'unit' || representedTopic)) {
       const goalIds: string[] = []
       const collect = (childId: string) => {

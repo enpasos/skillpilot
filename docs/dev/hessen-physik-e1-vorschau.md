@@ -1,6 +1,8 @@
 # Hessische E.1-Prüfungen lokal ansehen
 
-Die Vorschau öffnet E.1 und ihre vier deutsch-englischen Prüfungen im regulären Cockpit. Im persönlichen Curriculum ist ausdrücklich Hessen, Sekundarstufe II, Physik (GK) ausgewählt. G8 und G9 erhalten je ein Zuschauerprofil ohne Belege, zwei Profile für unabhängige Erststarts und zwei Profile mit bewerteten Prüfungen im atomaren Lernplan. Dazu kommen vier Profile mit ausdrücklich gewählten Aufträgen je Bildungsgang. Ein weiteres Profil öffnet die große Mathematiktafel. Die 19 lokalen Profile liegen in einer H2-Datenbank im Arbeitsspeicher und verfallen beim Beenden. Das Startskript setzt für diese Instanz `skillpilot.completion.unit-assessment-pilot-enabled=true`.
+Die Vorschau öffnet E.1 und ihre vier deutsch-englischen Prüfungen im regulären Cockpit. Im persönlichen Curriculum ist Hessen, Sekundarstufe II und standardmäßig Physik-GK ausgewählt. Mit `--physics-course LK` richtet das Skript für G8 und G9 jeweils ein persönliches Physik-LK-Profil ein. Der Mathematikvergleich verwendet in beiden Fällen den Grundkurs. G8 und G9 erhalten je ein Zuschauerprofil ohne Belege, zwei Profile für unabhängige Erststarts und zwei Profile mit bewerteten Prüfungen im atomaren Lernplan. Dazu kommen vier Profile mit ausdrücklich gewählten Aufträgen je Bildungsgang. Ein weiteres Profil öffnet die große Mathematiktafel. Die 19 lokalen Profile liegen in einer H2-Datenbank im Arbeitsspeicher und verfallen beim Beenden. Das Startskript setzt für diese Instanz `skillpilot.completion.unit-assessment-pilot-enabled=true`.
+
+Auf dem Abnahmerechner dient Port 5177 dem integrierten Hauptstand. Der gesonderte Kandidat auf Port 5189 hat einen eigenen Checkout, eine eigene API und eigene lokale Profile. Bei einem Vergleich denselben Bildungsgang und Prüfungsstand wählen. Ein gespeichertes Ergebnis im Kandidaten verändert das Profil auf der Hauptlinie nicht. [E.1 auf der Hauptlinie](http://localhost:5177/auftraege/G9) · [E.1 im Kandidaten](http://localhost:5189/auftraege/G9)
 
 ## Start aus einem frischen Checkout
 
@@ -46,17 +48,31 @@ Der Einheitenauftrag A–D verbindet Modellwahl, Rechnung, Vorhersage und Begrü
 | G8 | [Lernplan und Lernfront](http://localhost:5177/vergleich/G8) | [Cockpit mit zwei Belegen](http://localhost:5177/vergleich/G8/CD) | [Cockpit mit vier Belegen](http://localhost:5177/vergleich/G8/ABCD) |
 | G9 | [Lernplan und Lernfront](http://localhost:5177/vergleich/G9) | [Cockpit mit zwei Belegen](http://localhost:5177/vergleich/G9/CD) | [Cockpit mit vier Belegen](http://localhost:5177/vergleich/G9/ABCD) |
 
-Diese drei Profile je Bildungsgang haben denselben Plan mit 17 einzeln ausgewählten Zielen. Dafür startet das Vorschauprogramm die regulären Prüfungssitzungen, fordert die fassungsgebundene Bewertung an und reicht synthetische Punkte beim Claude-MCP-Handler ein. A erhält 14/17, B 15/18, C und D je 17/20 Punkte. Die Identität des Coaches wird lokal simuliert. Spring bewertet und speichert die Belege auf dem regulären Weg. Es gibt weder Lernendenabgaben noch eine Bewertung durch ein externes Claude-Konto.
+Diese drei Profile je Bildungsgang haben denselben Einzelzielplan. Im gespeicherten Block ist E.1 als Abschnitt gewählt. Daraus ergeben sich 16 Einzelpositionen. Die freiwillige Zusatzprüfung kommt bei ausdrücklicher Einzelwahl hinzu. Dafür startet das Vorschauprogramm die regulären Prüfungssitzungen, fordert die fassungsgebundene Bewertung an und reicht synthetische Punkte beim Claude-MCP-Handler ein. A erhält 14/17, B 15/18, C und D je 17/20 Punkte. Die Identität des Coaches wird lokal simuliert. Spring bewertet und speichert die Belege auf dem regulären Weg. Es gibt weder Lernendenabgaben noch eine Bewertung durch ein externes Claude-Konto.
 
 | Prüfungsstand | Erledigte Positionen im Plan | Angerechnete Fachziele | Einzeln offene Fachziele |
 | --- | --- | --- | --- |
-| 0 von 4 | 0 von 17 | 0 | 11 |
-| C und D | 4 von 17 | 2 | 11 |
-| Alle vier | 6 von 17 | 2 | 11 |
+| 0 von 4 | 0 von 16 | 0 | 11 |
+| C und D | 4 von 16 | 2 | 11 |
+| Alle vier | 6 von 16 | 2 | 11 |
 
 Im vollständigen Fall entstehen sechs Planpositionen aus vier belegten Prüfungen und zwei daraus angerechneten Fachzielen. In beiden Bildungsgängen empfiehlt der Plan in allen drei Zuständen weiterhin „Bewegungen mit Weg-Zeit-Diagrammen beschreiben“. Die Lernfront im E.1-Fokus bietet außerdem „Messabweichungen und Fehlerarten unterscheiden“ und „Waagerechter Wurf und Superposition“ an.
 
 Die Vergleichsseite zeigt zusätzlich eine gezielte Abfrage für Newtons erstes Axiom, dessen Anwendung und „Harmonische Schwingung verstehen“. Bei ausdrücklich auf das jeweilige Ziel verengtem Fokus bietet der Standardmodus jedes dieser Ziele bereits ohne Prüfungsbeleg an. Im strikten Modus bleibt jedes der drei Ziele in allen Vergleichszuständen gesperrt. Die Vorschau stellt danach die ursprüngliche Präferenz wieder her. Die Vergleichsseite hält den Stand beim Start fest. In den verlinkten Cockpits kann man weiterlernen.
+
+### Grundkurs- und Leistungskursprofil vergleichen
+
+Das hessische Kerncurriculum führt E.1 als gemeinsames Themenfeld der Einführungsphase. Die fachspezifischen Anforderungen der Grund- und Leistungskurse differenziert es für die Qualifikationsphase. Deshalb gilt für den E.1-Auftrag im technischen GK- und LK-Profil dieselbe Aufgaben- und Rasterfassung für A–D. Beide Profile bieten die zusätzliche Wurfprüfung an. Im LK gibt es außerdem „Mehrphasenbewegung und Modellprüfung“ als freiwillige Vertiefung. Wer E.1 als Abschnitt im Einzelzielplan wählt, plant die Fachziele und die vier Pflichtprüfungen A–D ein. Eine ausdrücklich einzeln beauftragte Zusatzprüfung zählt als weitere Planposition. [Hessisches Kerncurriculum Physik 2024, S. 25–26 und 30](https://github.com/enpasos/skillpilot/blob/d5c45c3830b374500fbfffb35e52dcc3797ccb55/curricula/DE/Gymnasium/input/HE/upper-secondary/kernkurriculum_gymnasiale_oberstufe-physik.pdf#page=25)
+
+Auf dem Abnahmerechner zeigen die gesonderten LK-Profile dieselben vier Auftragszustände wie im GK. Für die freiwillige Mehrphasenprüfung das Profil **Einheitenauftrag mit C und D** öffnen. Im E.1-Baum **Mehrphasenbewegung und Modellprüfung** auswählen. Auf der Zielkarte führt **Prüfung direkt versuchen** zum Prüfungsstart. Im Einheitenauftrag sind zu diesem Zeitpunkt A und B offen. [LK mit C und D in G8](http://localhost:5201/auftraege/G8/CD) · [LK mit C und D in G9](http://localhost:5201/auftraege/G9/CD)
+
+Im Vergleichsprofil mit bereits geöffnetem E.1-Prüfungsabschnitt führt ein zweiter Weg über **Freiwillige Zusatzprüfungen**. Neben der Mehrphasenaufgabe **Prüfung direkt versuchen** wählen. In der Vorschau mit Grundkursprofil steht an dieser Stelle die zusätzliche Wurfprüfung. [E.1-Prüfungsabschnitt im G8-LK](http://localhost:5201/vergleich/G8/CD) · [E.1-Prüfungsabschnitt im G9-LK](http://localhost:5201/vergleich/G9/CD)
+
+Für einen eigenen parallelen LK-Vergleich zwei freie Ports wählen.
+
+```sh
+python3 scripts/preview_hessen_physics_e1.py --physics-course LK --ui-port 5201 --api-port 8211
+```
 
 ### Einheitenauftrag und Häkchen auf der Lernkarte
 
@@ -64,9 +80,13 @@ Die vier weiteren Profile je Bildungsgang zeigen einen ausdrücklich gewählten 
 
 Im Cockpit mit vier bestandenen Prüfungen die Lernkarte öffnen. Ein grünes Häkchen bezeichnet den eigenen Nachweis an genau diesem Ziel. A, B und C tragen dieses Häkchen auf der E.1-Tafel. D liegt in der Untereinheit „Beschleunigte Bewegung und freier Fall“. Dasselbe Häkchen in Grau zeigt die fachlich belegte Anrechnung für die Planung. C und D decken gemeinsam „Modellierung und Idealisierung von Bewegungen“ und „Gleichmäßig beschleunigte Bewegung und Beschleunigung“ ab. Wer eines dieser Fachziele anschließend selbst nachweist, sieht dort das grüne Häkchen. Bei den übrigen Fachzielen entsteht durch den Abschluss kein Häkchen. Weitere Prüfungen auf der Tafel, etwa „Waagerechter Wurf: Zwei Bewegungen, eine gemeinsame Zeit“, bleiben freiwillig und haben ihren eigenen Nachweis. [Vier Belege in G8](http://localhost:5177/auftraege/G8/ABCD) · [Vier Belege in G9](http://localhost:5177/auftraege/G9/ABCD)
 
+### Einen gespeicherten Auftrag pausieren
+
+Im Cockpit den **Lernplan** öffnen. Unter **Gespeicherte Einheitenaufträge verwalten** beim E.1-Auftrag **Einheitenauftrag pausieren** wählen. Die vier bereits bestandenen Prüfungsteile lassen sich im Cockpit weiterhin einsehen. Im gemischten Profil bleibt der gesondert gewählte Auftrag zu den Weg-Zeit-Diagrammen fällig. **Einheitenauftrag wieder aktivieren** nimmt denselben E.1-Auftrag mit seinen Belegen wieder auf. Auch nach einer Abwahl von Physik ist der gespeicherte Auftrag im Lernplan pausierbar. Zur Reaktivierung muss seine Fassung im persönlichen Curriculum wieder verfügbar sein. [G8 mit vier Belegen](http://localhost:5189/auftraege/G8/ABCD) · [G9 mit vier Belegen](http://localhost:5189/auftraege/G9/ABCD)
+
 ### Einen Prüfungsversuch vor der Abgabe verlassen
 
-1. Das Cockpit mit den beiden bestandenen Teilen öffnen. Unter **Einheitenprüfung · 2 von 4 Teilen bestanden** bei „Wann überquert der Wagen die rote Linie?“ (A) **Direkt versuchen** wählen. Auf der Startseite **Schritt 2: Mit Claude starten** anklicken. [G8 mit C und D](http://localhost:5177/auftraege/G8/CD) · [G9 mit C und D](http://localhost:5177/auftraege/G9/CD)
+1. Das Cockpit mit den beiden bestandenen Teilen öffnen. Unter **Einheitenprüfung · 2 von 4 Teilen bestanden** bei „Wann überquert der Wagen die rote Linie?“ (A) **Direkt versuchen** wählen. Falls auf der Startseite **Weiter zu Schritt 2: Curriculum wählen** erscheint, diesen Schritt öffnen. Dann **Schritt 2: Mit Claude starten** anklicken. [G8 mit C und D](http://localhost:5177/auftraege/G8/CD) · [G9 mit C und D](http://localhost:5177/auftraege/G9/CD)
 2. Vor der Abgabe denselben Cockpit-Link erneut öffnen. Bei der laufenden Prüfung **Zur normalen Lernansicht** wählen und mit **Prüfung beenden und wechseln** bestätigen.
 3. Die **Einheitenprüfung** erneut aufklappen. A und B zeigen **Offen**, C und D jeweils **Beleg vorhanden**. Der Auftrag steht weiter bei zwei von vier bestandenen Teilen. Über **Für deinen Lernplan angerechnet (2)** lässt sich jetzt eines der beiden Fachziele zum freiwilligen Weiterlernen öffnen.
 
@@ -74,13 +94,15 @@ Im Cockpit mit vier bestandenen Prüfungen die Lernkarte öffnen. Ein grünes H�
 
 Im Cockpit **C und D bestanden** die **Einheitenprüfung** und darin **Für deinen Lernplan angerechnet (2)** aufklappen. Der Titel **Gleichmäßig beschleunigte Bewegung und Beschleunigung** öffnet die Zielkarte. Unter **Offene Voraussetzungen** stehen die noch ausstehenden Grundlagen. Der beschriftete Startknopf aktiviert im Standardmodus den Einzelfokus auf das gewählte Ziel. Bei eingeschaltetem strikten Modus nennt der Knopf die verfügbare Grundlage, bei der der Einzelweg beginnt. Im frischen Vergleichsprofil hat das Beschleunigungsziel 54 offene Voraussetzungen einschließlich ihrer Vorstufen. Fünf davon gehören zu den einzeln offenen E.1-Inhalten. Sie betreffen Durchschnitts- und Momentangeschwindigkeit, gleichförmige Bewegung, Bewegungsdiagramme, Messunsicherheiten und Fehlerarten. Unter den drei aktuell verfügbaren Grundlagen hat „Warum Mathematik? – Denken, Muster & Zukunft“ den kürzesten Weg zum Beschleunigungsziel (drei Voraussetzungsschritte). Die beiden anderen Angebote „Warum Physik? – Weltverständnis & Zukunft“ und „Warum Mathematik? – Entdecken, Muster & Alltag“ sind jeweils fünf Schritte entfernt. Keines der fünf E.1-Ziele ist hier bereits als nächster Schritt verfügbar. Das Cockpit zeigt nach dem Klick das aktive Ziel. Für einen eigenen Lernnachweis muss die Person das Ziel anschließend tatsächlich erarbeiten.
 
+Nach A–D kann man im Claude-Coach zum Beispiel „Ich möchte Modellierung und Idealisierung von Bewegungen selbst erarbeiten“ wählen. Nach der Bestätigung des Abschlussvertrags bietet der Server den Einzelfokus für dieses Ziel an. Der Coach kann ihn direkt starten. Für einen gewünschten Titel ohne angebotene Startaktion führt der Weg über **Cockpit → Lernplan → Freiwillig weiterlernen**. Ein ausdrücklicher Wechsel zu einem anderen Fach des persönlichen Curriculums ist auch bei einem offenen E.1-Auftrag möglich.
+
 ## Den Elternpfad in Baum und Karte prüfen
 
 Im E.1-Cockpit den Abschnitt „E.1 Bewegungen und ihre Beschreibung“ aufklappen. „Bewegungen mit Weg-Zeit-Diagrammen beschreiben“ steht direkt darunter und trägt den Herkunftshinweis „Notwendige Grundlagen“. Die Wagenprüfung steht auf derselben Ebene. „Gleichmäßig beschleunigte Bewegung und Beschleunigung“ liegt eine Ebene tiefer unter „Beschleunigte Bewegung und freier Fall“. In der Lernkarte die gleichen Einheiten öffnen. Ein Klick auf das Weg-Zeit-Ziel führt in beiden Ansichten direkt zur Zielkarte. [E.1 in G8 öffnen](http://localhost:5177/nativ/G8/E1) · [E.1 in G9 öffnen](http://localhost:5177/nativ/G9/E1)
 
 ## Zwei Karten vergleichen
 
-Vom Wurf (**B**) aus die **Lernkarte** öffnen. Auf großen wie kleinen Bildschirmen erscheint die Grafik. Bei 1024 Pixeln sind in den personalisierten G8- und G9-Profilen beide Prüfungen im Ausschnitt erreichbar. Auf dem Smartphone in **In dieser Ebene suchen** „Wagen“ eingeben, den Treffer wählen und den zentrierten grafischen Knoten öffnen. **Diese Ebene einpassen** zeigt die gesamte Tafel. Die Zoomtasten, das Verschieben der Grafik und die Tastatur bleiben verfügbar.
+Vom Wurf (**B**) aus die **Lernkarte** öffnen. Bei 1024 Pixeln Breite stehen die Wagenprüfung A, die Wurfprüfung B und der Verweis auf C vollständig im Ausschnitt. Das lässt sich auch im LK mit der zusätzlichen Mehrphasenprüfung kontrollieren. A anklicken, um die Wagenaufgabe zu lesen. Auf dem Smartphone in **In dieser Ebene suchen** „Wagen“ eingeben, den Treffer wählen und den zentrierten grafischen Knoten öffnen. **Diese Ebene einpassen** zeigt die gesamte Tafel. Die Zoomtasten, das Verschieben der Grafik und die Tastatur bleiben verfügbar. [LK-Karte von der Wurfaufgabe aus in G8](http://localhost:5201/nativ/G8/B) · [LK-Karte von der Wurfaufgabe aus in G9](http://localhost:5201/nativ/G9/B)
 
 Der Mathematikvergleich öffnet „Intervalladditivität und Linearität von Integralen nutzen“ im hessischen G9-Grundkurs. **Lernkarte** zeigt dazu die Tafel „Q1.3 Vertiefung der Differenzial- und Integralrechnung“. Bei 1440 × 900 Pixeln startet sie mit 100 % und acht gerenderten Knoten. **Diese Ebene einpassen** zeigt bei 73 % alle 18 Knoten. So lassen sich Lesbarkeit und Gesamtübersicht auf derselben Tafel vergleichen. [Mathematik-Kartenvergleich öffnen](http://localhost:5177/vergleich/mathematik)
 

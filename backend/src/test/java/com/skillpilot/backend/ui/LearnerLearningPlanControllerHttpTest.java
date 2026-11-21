@@ -245,6 +245,24 @@ class LearnerLearningPlanControllerHttpTest {
     }
 
     @Test
+    void setStoredUnitAssignmentActivityRequiresTheWritableLearnerAndExpectedRevision() throws Exception {
+        doAnswer(invocation -> { ((Runnable) invocation.getArgument(1)).run(); return null; })
+                .when(lifecycle).withActivity(eq(LEARNER_ID), any(Runnable.class));
+        String path = "/api/ui/learners/{learner}/learning-plans/{plan}/unit-assignment-activity";
+        mockMvc.perform(put(path, LEARNER_ID, PLAN_ID).contentType(MediaType.APPLICATION_JSON)
+                .content("{\"expectedRevision\":3,\"blockId\":\"unit/1\",\"active\":false}")).andExpect(status().isNoContent())
+                .andExpect(header().string(HttpHeaders.CACHE_CONTROL, "no-store"));
+        InOrder ordered = inOrder(learners, learningPlans);
+        ordered.verify(learners).assertWritableLearningSession(LEARNER_ID);
+        ordered.verify(learningPlans).setUnitAssignmentActivity(LEARNER_ID, PLAN_ID, new LearnerLearningPlanApi.UnitAssignmentActivity(3L, "unit/1", false));
+        doThrow(new ResponseStatusException(HttpStatus.FORBIDDEN)).when(learners).assertWritableLearningSession(LEARNER_ID);
+        mockMvc.perform(put(path, LEARNER_ID, PLAN_ID).contentType(MediaType.APPLICATION_JSON)
+                .content("{\"expectedRevision\":3,\"blockId\":\"another\",\"active\":true}")).andExpect(status().isForbidden());
+        org.mockito.Mockito.verify(learningPlans, org.mockito.Mockito.never())
+                .setUnitAssignmentActivity(LEARNER_ID, PLAN_ID, new LearnerLearningPlanApi.UnitAssignmentActivity(3L, "another", true));
+    }
+
+    @Test
     void activateAcceptsMultipleSubjectsAndReturnsTheAutomaticallySelectedGoal() throws Exception {
         LearnerLearningPlanApi.ActivateResponse response = new LearnerLearningPlanApi.ActivateResponse(
                 AS_OF,
