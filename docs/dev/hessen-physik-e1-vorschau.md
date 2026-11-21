@@ -2,6 +2,8 @@
 
 Die Vorschau öffnet E.1 und ihre vier deutsch-englischen Prüfungen im regulären Cockpit. Im persönlichen Curriculum ist ausdrücklich Hessen, Sekundarstufe II, Physik (GK) ausgewählt. G8 und G9 erhalten je ein Zuschauerprofil ohne Belege, zwei Profile für unabhängige Erststarts und zwei Profile mit bewerteten Prüfungen im atomaren Lernplan. Dazu kommen vier Profile mit ausdrücklich gewählten Aufträgen je Bildungsgang. Ein weiteres Profil öffnet die große Mathematiktafel. Die 19 lokalen Profile liegen in einer H2-Datenbank im Arbeitsspeicher und verfallen beim Beenden. Das Startskript setzt für diese Instanz `skillpilot.completion.unit-assessment-pilot-enabled=true`.
 
+Auf dem Abnahmerechner dient Port 5177 dem integrierten Hauptstand. Der gesonderte Kandidat auf Port 5189 hat einen eigenen Checkout, eine eigene API und eigene lokale Profile. Bei einem Vergleich denselben Bildungsgang und Prüfungsstand wählen. Ein gespeichertes Ergebnis im Kandidaten verändert das Profil auf der Hauptlinie nicht. [E.1 auf der Hauptlinie](http://localhost:5177/auftraege/G9) · [E.1 im Kandidaten](http://localhost:5189/auftraege/G9)
+
 ## Start aus einem frischen Checkout
 
 Vorausgesetzt werden Python 3, Git, das in `.java-version` und `.corretto-version` festgelegte Amazon-Corretto-JDK sowie Node gemäß `.nvmrc`. `JAVA_HOME` zeigt auf die JDK-Installation. Eine vollständige Arbeitskopie des Vorschau-Branches enthält die Aufgaben, Landschaften, Quellen und Startskripte. Die Befehle laufen im Wurzelverzeichnis.
