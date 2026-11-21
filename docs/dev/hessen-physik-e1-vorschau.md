@@ -49,7 +49,9 @@ Die Vergleichsseite zeigt zusätzlich eine gezielte Abfrage für Newtons erstes 
 
 Das hessische Kerncurriculum führt E.1 als gemeinsames Themenfeld der Einführungsphase. Die fachspezifischen Anforderungen der Grund- und Leistungskurse differenziert es für die Qualifikationsphase. Deshalb gilt für den E.1-Auftrag im technischen GK- und LK-Profil dieselbe Aufgaben- und Rasterfassung für A–D. Beide Profile bieten die zusätzliche Wurfprüfung an. Im LK gibt es außerdem „Mehrphasenbewegung und Modellprüfung“ als freiwillige Vertiefung. Wer E.1 als Abschnitt im Einzelzielplan wählt, plant die Fachziele und die vier Pflichtprüfungen A–D ein. Eine ausdrücklich einzeln beauftragte Zusatzprüfung zählt als weitere Planposition. [Hessisches Kerncurriculum Physik 2024, S. 25–26 und 30](https://github.com/enpasos/skillpilot/blob/d5c45c3830b374500fbfffb35e52dcc3797ccb55/curricula/DE/Gymnasium/input/HE/upper-secondary/kernkurriculum_gymnasiale_oberstufe-physik.pdf#page=25)
 
-Auf dem Abnahmerechner zeigen die gesonderten LK-Profile dieselben vier Auftragszustände wie im GK. [LK in G8](http://localhost:5201/auftraege/G8) · [LK in G9](http://localhost:5201/auftraege/G9)
+Auf dem Abnahmerechner zeigen die gesonderten LK-Profile dieselben vier Auftragszustände wie im GK. Für die freiwillige Mehrphasenprüfung das Profil **Einheitenauftrag mit C und D** öffnen. Im E.1-Baum **Mehrphasenbewegung und Modellprüfung** auswählen. Auf der Zielkarte führt **Prüfung direkt versuchen** zum Prüfungsstart. Im Einheitenauftrag sind zu diesem Zeitpunkt A und B offen. [LK mit C und D in G8](http://localhost:5201/auftraege/G8/CD) · [LK mit C und D in G9](http://localhost:5201/auftraege/G9/CD)
+
+Im Vergleichsprofil mit bereits geöffnetem E.1-Prüfungsabschnitt führt ein zweiter Weg über **Freiwillige Zusatzprüfungen**. Neben der Mehrphasenaufgabe **Prüfung direkt versuchen** wählen. In der Vorschau mit Grundkursprofil steht an dieser Stelle die zusätzliche Wurfprüfung. [E.1-Prüfungsabschnitt im G8-LK](http://localhost:5201/vergleich/G8/CD) · [E.1-Prüfungsabschnitt im G9-LK](http://localhost:5201/vergleich/G9/CD)
 
 Für einen eigenen parallelen LK-Vergleich zwei freie Ports wählen.
 
@@ -69,7 +71,7 @@ Im Cockpit den **Lernplan** öffnen. Unter **Gespeicherte Einheitenaufträge ver
 
 ### Einen Prüfungsversuch vor der Abgabe verlassen
 
-1. Das Cockpit mit den beiden bestandenen Teilen öffnen. Unter **Einheitenprüfung · 2 von 4 Teilen bestanden** bei „Wann überquert der Wagen die rote Linie?“ (A) **Direkt versuchen** wählen. Auf der Startseite **Schritt 2: Mit Claude starten** anklicken. [G8 mit C und D](http://localhost:5177/auftraege/G8/CD) · [G9 mit C und D](http://localhost:5177/auftraege/G9/CD)
+1. Das Cockpit mit den beiden bestandenen Teilen öffnen. Unter **Einheitenprüfung · 2 von 4 Teilen bestanden** bei „Wann überquert der Wagen die rote Linie?“ (A) **Direkt versuchen** wählen. Falls auf der Startseite **Weiter zu Schritt 2: Curriculum wählen** erscheint, diesen Schritt öffnen. Dann **Schritt 2: Mit Claude starten** anklicken. [G8 mit C und D](http://localhost:5177/auftraege/G8/CD) · [G9 mit C und D](http://localhost:5177/auftraege/G9/CD)
 2. Vor der Abgabe denselben Cockpit-Link erneut öffnen. Bei der laufenden Prüfung **Zur normalen Lernansicht** wählen und mit **Prüfung beenden und wechseln** bestätigen.
 3. Die **Einheitenprüfung** erneut aufklappen. A und B zeigen **Offen**, C und D jeweils **Beleg vorhanden**. Der Auftrag steht weiter bei zwei von vier bestandenen Teilen. Über **Für deinen Lernplan angerechnet (2)** lässt sich jetzt eines der beiden Fachziele zum freiwilligen Weiterlernen öffnen.
 
@@ -85,7 +87,7 @@ Im E.1-Cockpit den Abschnitt „E.1 Bewegungen und ihre Beschreibung“ aufklapp
 
 ## Zwei Karten vergleichen
 
-Vom Wurf (**B**) aus die **Lernkarte** öffnen. Auf großen wie kleinen Bildschirmen erscheint die Grafik. Bei 1024 Pixeln sind in den personalisierten G8- und G9-Profilen beide Prüfungen im Ausschnitt erreichbar. Auf dem Smartphone in **In dieser Ebene suchen** „Wagen“ eingeben, den Treffer wählen und den zentrierten grafischen Knoten öffnen. **Diese Ebene einpassen** zeigt die gesamte Tafel. Die Zoomtasten, das Verschieben der Grafik und die Tastatur bleiben verfügbar.
+Vom Wurf (**B**) aus die **Lernkarte** öffnen. Bei 1024 Pixeln Breite stehen die Wagenprüfung A, die Wurfprüfung B und der Verweis auf C vollständig im Ausschnitt. Das lässt sich auch im LK mit der zusätzlichen Mehrphasenprüfung kontrollieren. A anklicken, um die Wagenaufgabe zu lesen. Auf dem Smartphone in **In dieser Ebene suchen** „Wagen“ eingeben, den Treffer wählen und den zentrierten grafischen Knoten öffnen. **Diese Ebene einpassen** zeigt die gesamte Tafel. Die Zoomtasten, das Verschieben der Grafik und die Tastatur bleiben verfügbar. [LK-Karte von der Wurfaufgabe aus in G8](http://localhost:5201/nativ/G8/B) · [LK-Karte von der Wurfaufgabe aus in G9](http://localhost:5201/nativ/G9/B)
 
 Der Mathematikvergleich öffnet „Intervalladditivität und Linearität von Integralen nutzen“ im hessischen G9-Grundkurs. **Lernkarte** zeigt dazu die Tafel „Q1.3 Vertiefung der Differenzial- und Integralrechnung“. Bei 1440 × 900 Pixeln startet sie mit 100 % und acht gerenderten Knoten. **Diese Ebene einpassen** zeigt bei 73 % alle 18 Knoten. So lassen sich Lesbarkeit und Gesamtübersicht auf derselben Tafel vergleichen. [Mathematik-Kartenvergleich öffnen](http://localhost:5177/vergleich/mathematik)
 
