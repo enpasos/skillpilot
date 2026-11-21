@@ -2,7 +2,11 @@ import assert from 'node:assert/strict'
 import { readFile } from 'node:fs/promises'
 import { chromium } from 'playwright'
 
-const [site, api, profilesFile] = process.argv.slice(2)
+const [site, api, profilesFile, physicsCourse = 'GK'] = process.argv.slice(2)
+assert(['GK', 'LK'].includes(physicsCourse), 'Expected the explicit Physics course GK or LK')
+const throwAssessment = '6ea3fb3c-abdc-568f-ab13-97c36dc274e4'
+const multiphaseAssessment = '2b9e565f-d9b4-5e23-b5b7-b7977cecff06'
+const voluntaryAssessmentIds = physicsCourse === 'LK' ? [throwAssessment, multiphaseAssessment] : [throwAssessment]
 for (const url of [site, api]) assert(['localhost', '127.0.0.1'].includes(new URL(url).hostname))
 const numericSite = new URL(site)
 numericSite.hostname = '127.0.0.1'
@@ -27,7 +31,7 @@ const readApi = async (id, suffix) => {
 }
 async function evidence(id) {
   const mastery = await readApi(id, '/mastery')
-  const passes = await Promise.all(unitPartIds.map(goalId => readApi(id, '/exam-passes/' + goalId)))
+  const passes = await Promise.all([...unitPartIds, ...voluntaryAssessmentIds].map(goalId => readApi(id, '/exam-passes/' + goalId)))
   assert(Object.values(mastery.mastery).every(value => value === 0))
   assert(passes.every(receipts => Array.isArray(receipts) && receipts.length === 0))
   return { mastery, passes }
@@ -48,6 +52,19 @@ async function checkCard(page, task, lang) {
     rows.map(row => Array.from(row.cells, cell => cell.innerText.trim())))
   assert.deepEqual(rendered, cells)
   assert(!(await card.getByRole('heading').allTextContents()).some(t => /^(Lösung|Musterlösung|Solution|Model solution)$/i.test(t)))
+}
+async function launchAssessment(page, goalId) {
+  const launch = page.getByTestId('claude-plugin-start')
+  const next = page.getByRole('button', { name: 'Weiter zu Schritt 2: Curriculum wählen' })
+  if (!await launch.isVisible() && await next.isVisible()) await next.click()
+  await launch.waitFor()
+  const result = page.waitForResponse(r => r.request().method() === 'POST' && new URL(r.url()).pathname.endsWith('/claude/v1/launch'))
+  await launch.click()
+  const response = await result
+  assert.equal(response.status(), 200)
+  const accepted = response.request().postDataJSON().completionAssessment
+  assert.equal(accepted.goalId, goalId)
+  assert(!accepted.restartCurrent)
 }
 async function check(duration, part, lang, start, width = 1440, height = 900) {
   const task = tasks[part]
@@ -70,17 +87,7 @@ async function check(duration, part, lang, start, width = 1440, height = 900) {
     await shortcut.waitFor()
     if (start) {
       await shortcut.click()
-      const launch = page.getByTestId('claude-plugin-start')
-      const next = page.getByRole('button', { name: 'Weiter zu Schritt 2: Curriculum wählen' })
-      if (!await launch.isVisible() && await next.isVisible()) await next.click()
-      await launch.waitFor()
-      const result = page.waitForResponse(r => r.request().method() === 'POST' && new URL(r.url()).pathname.endsWith('/claude/v1/launch'))
-      await launch.click()
-      const response = await result
-      assert.equal(response.status(), 200)
-      const accepted = response.request().postDataJSON().completionAssessment
-      assert.equal(accepted.goalId, task.id)
-      assert(!accepted.restartCurrent)
+      await launchAssessment(page, task.id)
       const state = await readApi(id, '/state')
       assert.equal(state.levelCompletion.directAssessmentRunning, true)
       assert.equal(state.activeGoal.id ?? state.activeGoal.goalId, task.id)
@@ -89,7 +96,9 @@ async function check(duration, part, lang, start, width = 1440, height = 900) {
       assert.equal(state.requiredAssessmentCount, unitPartIds.length)
       assert.deepEqual(new Set(state.assessments.filter(row => !row.voluntary).map(row => row.goalId)), new Set(unitPartIds))
       const optional = state.assessments.filter(row => row.voluntary)
-      assert.deepEqual(optional.map(row => row.goalId), ['6ea3fb3c-abdc-568f-ab13-97c36dc274e4'])
+      assert.deepEqual(optional.map(row => row.goalId).sort(), [...voluntaryAssessmentIds].sort())
+      assert(optional.every(row => row.startAvailable), 'Each supplementary assessment must be independently startable')
+      assert.equal(state.assessments.some(row => row.goalId === multiphaseAssessment), physicsCourse === 'LK')
       assert.equal(state.masteredAssessmentCount, 0)
       assert.equal(state.complete, false)
       assert.equal(state.directAssessmentRunning, false)
@@ -112,10 +121,14 @@ async function check(duration, part, lang, start, width = 1440, height = 900) {
       const optionalDisclosure = panel.getByText(lang === 'de' ? 'Freiwillige Zusatzprüfungen' : 'Optional assessments', { exact: true })
       await optionalDisclosure.click()
       const optionalList = panel.getByRole('list', { name: lang === 'de' ? 'Freiwillige Zusatzprüfungen' : 'Optional assessments' })
-      await optionalList.getByText(optional[0].title[lang], { exact: true }).waitFor()
-      await optionalList.getByText(lang === 'de' ? 'Freiwillige Zusatzprüfung' : 'Optional assessment', { exact: true }).waitFor()
-      const optionalLink = await optionalList.getByRole('link').getAttribute('href')
-      assert.equal(new URL(optionalLink, site).searchParams.get('completionGoal'), optional[0].goalId)
+      const optionalRows = optionalList.getByRole('listitem')
+      assert.equal(await optionalRows.count(), voluntaryAssessmentIds.length)
+      for (const assessment of optional) {
+        const row = optionalRows.filter({ has: page.getByText(assessment.title[lang], { exact: true }) })
+        await row.getByText(lang === 'de' ? 'Freiwillige Zusatzprüfung' : 'Optional assessment', { exact: true }).waitFor()
+        const href = await row.getByRole('link').getAttribute('href')
+        assert.equal(new URL(href, site).searchParams.get('completionGoal'), assessment.goalId)
+      }
       await optionalDisclosure.click()
       const openCount = contract.contentGoalIds.length
       await summary.getByText(lang === 'de' ? `Einzeln noch nachzuweisen (${openCount})`
@@ -204,7 +217,10 @@ async function checkTreeAndMapParents(duration) {
     const treeEntries = await treeRow(section).locator('..').locator('[data-goal-id]').evaluateAll((rows, section) =>
       rows.filter(row => row.dataset.goalId !== section).map(row => [row.dataset.goalId, row.parentElement.parentElement.parentElement
         .querySelector(':scope > [data-goal-id]').dataset.goalId]), section)
-    assert.equal(treeEntries.length, 18)
+    const expectedTreeCount = physicsCourse === 'LK' ? 19 : 18
+    assert.equal(treeEntries.length, expectedTreeCount)
+    assert.equal(treeEntries.some(([id]) => id === multiphaseAssessment), physicsCourse === 'LK')
+    if (physicsCourse === 'LK') assert.equal(await directTreeParent(multiphaseAssessment), section)
 
     const open = page.getByTestId('learner-main-content').getByTestId('learner-learning-map-open')
     await open.click()
@@ -212,9 +228,10 @@ async function checkTreeAndMapParents(duration) {
     await dialog.getByRole('button', { name: 'In E.1 Bewegungen und ihre Beschreibung hineinzoomen', exact: true }).click()
     const board = dialog.getByTestId('learning-map-board')
     const mapEntries = []
-    const resources = new Map([[unit.flashcardGoalId, 'Aus dem Stapel „Einführungsphase“'],
-      [unit.assessmentGoalId, 'Prüfung aus „Themenübergreifende Prüfungen“']])
-    // React Flow only renders the viewport. Fit the full board after both real resources arrive.
+    const resources = new Map([[unit.flashcardGoalId, 'Aus dem Stapel „Einführungsphase“']])
+    // The external “Bewegungsanalyse und freier Fall” is a GK assessment. In LK the
+    // additional owned multiphase assessment occupies a place on the same 17-entry board.
+    if (physicsCourse === 'GK') resources.set(unit.assessmentGoalId, 'Prüfung aus „Themenübergreifende Prüfungen“')
     for (const [parent, count] of [[section, 17], [childSection, 3]]) {
       if (parent === childSection) {
         await board.getByRole('button', { name: 'In Beschleunigte Bewegung und freier Fall hineinzoomen', exact: true }).click()
@@ -233,6 +250,8 @@ async function checkTreeAndMapParents(duration) {
         } else mapEntries.push([id, parent])
       }
       if (parent === section) {
+        assert.equal(await board.locator('[data-entry-id="' + unit.assessmentGoalId + '"]').count(), physicsCourse === 'GK' ? 1 : 0)
+        assert.equal(await board.locator('[data-entry-id="' + multiphaseAssessment + '"]').count(), physicsCourse === 'LK' ? 1 : 0)
         assert.equal(await board.locator('[data-entry-id="' + preparationFolder + '"]').count(), 0)
         const pathNode = board.locator('[data-entry-id="' + pathTime + '"]')
         assert((await pathNode.innerText()).includes('Notwendige Grundlagen'))
@@ -265,7 +284,7 @@ async function checkTreeAndMapParents(duration) {
     }).waitFor()
     assert.equal(new URL(page.url()).pathname, '/learner/' + pathTime)
     assert.deepEqual(await evidence(viewer), before)
-    console.log(duration, 'Alle 18 E.1-Elternpfade, zwei externe Ressourcen, Suche anhand der E.3-Herkunft und direkte Aufrufe beider Ziele sowie ihrer kanonischen Gruppe bestätigt.')
+    console.log(duration, `Alle ${expectedTreeCount} E.1-Elternpfade (${physicsCourse}), ${physicsCourse === 'GK' ? 'zwei externe Ressourcen' : 'eine externe Ressource'}, Suche anhand der E.3-Herkunft und direkte Aufrufe beider Ziele sowie ihrer kanonischen Gruppe bestätigt.`)
   } finally {
     await page.close()
   }
@@ -309,6 +328,8 @@ async function checkUnitAndChildCards(duration) {
   }
 }
 async function checkMathComparison() {
+  const math = JSON.parse((await readApi(profiles.mathematik.viewer, '')).personalCurriculum)
+  assert.equal(math['68a8ac50-f5f5-4e24-8aa9-5e408ca01ced'].filterId, 'GK')
   const page = await browser.newPage({ viewport: { width: 1440, height: 900 }, reducedMotion: 'reduce', serviceWorkers: 'block' })
   try {
     await page.goto(site + '/vergleich/mathematik')
@@ -403,8 +424,9 @@ async function checkStoredAssignmentActivity(duration) {
       assert.equal(response.status, 200)
       let flow = await readApi(id, '/personalization-plan')
       for (let step = 0; step < 15 && flow.stage !== 'COMPLETE'; step++) {
-        const option = flow.options.find(item => item.kind === 'COMPLETE_GROUP') ?? flow.options.find(item => item.filterId === 'GK')
-        assert(option, 'Expected an authored completion or GK option')
+        const course = config[physics]?.selected ? physicsCourse : 'GK'
+        const option = flow.options.find(item => item.kind === 'COMPLETE_GROUP') ?? flow.options.find(item => item.filterId === course)
+        assert(option, 'Expected an authored completion or ' + course + ' option')
         const selected = await fetch(api + '/api/ui/learners/' + id + '/personalization-options', {
           method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ optionId: option.optionId }),
         })
@@ -412,6 +434,10 @@ async function checkStoredAssignmentActivity(duration) {
         flow = await selected.json()
       }
       assert.equal(flow.stage, 'COMPLETE')
+      const persisted = JSON.parse((await readApi(id, '')).personalCurriculum)
+      const subject = config[physics]?.selected ? physics : math
+      assert.equal(persisted[subject].selected, true)
+      assert.equal(persisted[subject].filterId, subject === physics ? physicsCourse : 'GK')
     }
     const page = await browser.newPage({ viewport: { width: 1024, height: 900 }, serviceWorkers: 'block' })
     try {
@@ -603,6 +629,46 @@ async function checkVoluntaryStudy(duration, scenario, id, href, mastery, passed
     await page.close()
   }
 }
+async function checkOptionalMultiphaseAttempt(duration) {
+  const id = profiles[duration].unitCD
+  const url = site + '/auftraege/' + duration + '/CD'
+  const receipts = () => Promise.all([...unitPartIds, ...voluntaryAssessmentIds].map(goal => readApi(id, '/exam-passes/' + goal)))
+  const before = await receipts()
+  const mastery = await readApi(id, '/mastery')
+  assert.deepEqual(before.map(rows => rows.length), [0, 0, 1, 1, 0, 0])
+  const context = await browser.newContext({ locale: 'de', serviceWorkers: 'block', reducedMotion: 'reduce' })
+  try {
+    await context.route('**/*', route => [site, api].includes(new URL(route.request().url()).origin) ? route.continue() : route.abort())
+    const page = await context.newPage()
+    await page.goto(url)
+    const panel = page.getByTestId('level-completion-card')
+    await panel.getByText('Freiwillige Zusatzprüfungen', { exact: true }).click()
+    await panel.getByRole('list', { name: 'Freiwillige Zusatzprüfungen' })
+      .locator('a[href*="completionGoal=' + multiphaseAssessment + '"]').click()
+    await launchAssessment(page, multiphaseAssessment)
+    const running = await readApi(id, '/state')
+    assert.equal(running.levelCompletion.directAssessmentRunning, true)
+    assert.equal(running.activeGoal.id ?? running.activeGoal.goalId, multiphaseAssessment)
+    const cockpit = await context.newPage()
+    await cockpit.goto(url)
+    const active = cockpit.getByTestId('level-completion-card')
+    await active.getByRole('button', { name: 'Zur normalen Lernansicht', exact: true }).click()
+    const exit = active.getByRole('group', { name: 'Laufende Prüfung beenden' })
+      .getByRole('button', { name: 'Prüfung beenden und wechseln', exact: true })
+    const changed = cockpit.waitForResponse(response => response.request().method() === 'POST'
+      && new URL(response.url()).pathname.endsWith('/level-completion/actions'))
+    await exit.click()
+    const result = await changed
+    assert.equal(result.status(), 200)
+    assert.equal(result.request().postDataJSON().action, 'leaveProfile')
+    assert.equal((await readApi(id, '/state')).levelCompletion.directAssessmentRunning, false)
+    assert.deepEqual(await receipts(), before)
+    assert.deepEqual(await readApi(id, '/mastery'), mastery)
+    console.log(duration, 'Freiwillige LK-Mehrphasenprüfung begonnen und vor der Abgabe verlassen; C+D und Einzelmastery erhalten OK')
+  } finally {
+    await context.close()
+  }
+}
 async function checkGradedComparison(duration) {
   const physics = '7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a'
   const firstPlanGoal = 'ae67bcf1-f3ee-50d6-9a12-25a159dff659'
@@ -610,7 +676,7 @@ async function checkGradedComparison(duration) {
   const comparison = await browser.newPage()
   try {
     await comparison.goto(site + '/vergleich/' + duration)
-    await comparison.getByRole('heading', { name: `E.1 – Lernplan und Lernfront (${duration})` }).waitFor()
+    await comparison.getByRole('heading', { name: `E.1 – Lernplan und Lernfront (${duration} · ${physicsCourse})` }).waitFor()
     for (const [scenario, label, count] of [
       ['viewer', 'Kein Prüfungsteil bestanden', 0], ['CD', 'C und D bestanden', 2], ['ABCD', 'Alle vier bestanden', 4],
     ]) {
@@ -632,12 +698,18 @@ async function checkGradedComparison(duration) {
       const status = await readApi(id, '/learning-plans/status?language=de')
       const gauge = status.subjects.find(subject => subject.landscapeIds.includes(physics)).periodGauge
       assert.equal(gauge.target, 16)
-      const extraId = '6ea3fb3c-abdc-568f-ab13-97c36dc274e4'
-      assert(plan.blocks.every(block => !block.atomicGoalIds?.includes(extraId)))
+      const scheduled = plan.blocks.flatMap(block => block.atomicGoalIds ?? [])
+      assert.equal(scheduled.length, gauge.target)
+      assert(scheduled.includes(tasks.A.id) && scheduled.includes(tasks.B.id))
+      assert(!scheduled.includes(throwAssessment) && !scheduled.includes(multiphaseAssessment))
       assert.equal(gauge.completed, count + (count ? 2 : 0))
       assert.equal(await section.locator('dt').filter({ hasText: 'Erledigte Positionen im E.1-Lernplan' })
         .evaluate(term => term.nextElementSibling.textContent), String(gauge.completed))
-      const unitState = (await readApi(id, '/state')).levelCompletion.unitAssessment
+      const level = (await readApi(id, '/state')).levelCompletion
+      assert.equal(level.requiredAssessmentCount, 4)
+      assert.equal(level.masteredAssessmentCount, count)
+      assert.deepEqual(level.assessments.filter(row => row.voluntary).map(row => row.goalId).sort(), [...voluntaryAssessmentIds].sort())
+      const unitState = level.unitAssessment
       const expected = count === 0 ? [] : count === 2 ? scope.childAssessmentGoalIds : unitPartIds
       const passed = new Set(expected)
       assert.deepEqual(new Set(unitState.parts.filter(part => part.passed).map(part => part.goalId)), passed)
@@ -652,6 +724,8 @@ async function checkGradedComparison(duration) {
         assert.equal(receipts.length, passed.has(goal) ? 1 : 0)
         if (receipts.length) {
           const receipt = receipts[0]
+          const { taskRevision, rubricRevision, fingerprint } = receipt
+          assert.deepEqual({ taskRevision, rubricRevision, fingerprint }, contract.parts[index].material)
           assert.deepEqual([receipt.earnedPoints, receipt.maxPoints, receipt.passingPoints],
             [[14, 17, 14], [15, 18, 15], [17, 20, 17], [17, 20, 17]][index])
         }
@@ -670,6 +744,9 @@ try {
   await checkMathComparison()
   // Each curriculum has its own viewer and a fresh learner per first attempt.
   for (const duration of ['G8', 'G9']) {
+    assert.equal(profiles[duration].E1, `composition:de-he-gym-sekii-physics-${physicsCourse.toLowerCase()}:structure:physics-e1-motion`)
+    const persisted = JSON.parse((await readApi(profiles[duration].viewer, '')).personalCurriculum)
+    assert.equal(persisted[scope.landscapeId].filterId, physicsCourse)
     for (const part of ['A', 'B']) {
       for (const lang of ['de', 'en']) await check(duration, part, lang, false)
     }
@@ -683,6 +760,7 @@ try {
     await checkPlanSelection(duration, false)
     await checkPlanSelection(duration, true)
     await checkStoredAssignmentActivity(duration)
+    if (physicsCourse === 'LK') await checkOptionalMultiphaseAttempt(duration)
     for (const part of ['A', 'B']) await check(duration, part, 'de', true)
   }
 } finally {
