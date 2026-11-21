@@ -402,6 +402,29 @@ async function checkEvidenceMap(page, duration) {
   console.log(duration, 'E.1-Karte: vier direkte Prüfungsbelege, genau zwei graue Häkchen, beide übrigen Beispielziele ohne Beleg OK')
 }
 
+// Hold the real plan read across a user click, as can happen during an SSE or tab refresh.
+async function pauseDuringPlanRefresh(page, pauseButton) {
+  await pauseButton.click({ trial: true })
+  const planRead = /\/api\/ui\/learners\/[^/]+\/learning-plans(?:\?|$)/
+  let releaseRead
+  const reading = new Promise(resolve => { releaseRead = resolve })
+  const hold = async route => {
+    await reading
+    await route.continue()
+  }
+  await page.route(planRead, hold)
+  try {
+    await Promise.all([
+      page.waitForRequest(request => request.method() === 'GET' && planRead.test(request.url())),
+      page.evaluate(() => document.dispatchEvent(new Event('visibilitychange'))),
+    ])
+    await pauseButton.click()
+  } finally {
+    releaseRead()
+    await page.unrouteAll({ behavior: 'wait' })
+  }
+}
+
 async function checkStoredAssignmentActivity(duration) {
   const physics = scope.landscapeId
   const math = '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced'
@@ -451,7 +474,9 @@ async function checkStoredAssignmentActivity(duration) {
       await page.goto(site + '/auftraege/' + duration + '/' + route)
       const manager = page.getByTestId('stored-unit-assignments')
       const row = manager.locator('[data-block-id="' + block.id + '"]')
-      await row.getByRole('button', { name: 'Einheitenauftrag pausieren', exact: true }).click()
+      const pause = row.getByRole('button', { name: 'Einheitenauftrag pausieren', exact: true })
+      if (profile === 'unitCD' && !temporarilyDeselect) await pauseDuringPlanRefresh(page, pause)
+      else await pause.click()
       if (originalConfig) {
         await row.getByText('Pausiert. Diese Auftragsfassung ist derzeit nicht verfügbar.', { exact: true }).waitFor()
         assert.equal(await row.getByRole('button').count(), 0)

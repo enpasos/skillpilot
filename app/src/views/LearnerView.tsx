@@ -522,6 +522,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const [learningPlansLoadState, setLearningPlansLoadState] = useState<{
     scopeKey: string
     status: LearnerStateLoadStatus
+    confirmedLanguage?: string
   }>({
     scopeKey: learnerStateScopeKey,
     status: skillpilotId ? 'loading' : 'ready',
@@ -1854,7 +1855,12 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       requestScopeKey,
     )
     learningPlansRefreshInFlightRef.current = true
-    setLearningPlansLoadState({ scopeKey: requestScopeKey, status: 'loading' })
+    // A background read keeps the last confirmed plan revision usable for guarded edits.
+    setLearningPlansLoadState(previous => ({
+      scopeKey: requestScopeKey,
+      status: 'loading',
+      confirmedLanguage: previous.scopeKey === requestScopeKey ? previous.confirmedLanguage : undefined,
+    }))
     try {
       // One backend snapshot supplies schedule and authoritative status together.
       const startedRequest = takeStartedLearningPlans(skillpilotId, localizedLanguage)
@@ -1867,7 +1873,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       learningPlansRefreshInFlightRef.current = false
       setLearningPlans(response)
       setLearningPlansDataScopeKey(requestScopeKey)
-      setLearningPlansLoadState({ scopeKey: requestScopeKey, status: 'ready' })
+      setLearningPlansLoadState({ scopeKey: requestScopeKey, status: 'ready', confirmedLanguage: localizedLanguage })
       return response
     } catch (error) {
       if (!isCurrentRequest()) return null
@@ -2526,6 +2532,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const retryLearningPlans = useCallback(async () => {
     setLearningPlanActionError(null)
     setLearningPlanActionsBlocked(false)
+    // After a write or explicit retry, require a newly confirmed revision before another edit.
+    setLearningPlansLoadState(current => ({ ...current, confirmedLanguage: undefined }))
     learningPlanReconcileAttemptedKeyRef.current = null
     await Promise.all([
       refreshState(true),
@@ -4221,7 +4229,9 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             )}
             {skillpilotId && localizedLearningPlans?.storedUnitAssignments && localizedLearningPlans.storedUnitAssignments.length > 0 && <StoredUnitAssignments
               key={skillpilotId} learnerId={skillpilotId} assignments={localizedLearningPlans.storedUnitAssignments}
-              language={localizedLanguage} disabled={learningPlansLoadStatus !== 'ready' || learningPlanActionsBlocked}
+              language={localizedLanguage}
+              disabled={learningPlansLoadState.scopeKey !== learnerStateScopeKey
+                || learningPlansLoadState.confirmedLanguage !== localizedLanguage || learningPlanActionsBlocked}
               sectionTitle={completionGoalTitle} subjectTitle={id => learningPlanSubjectLabels.get(id)} onRefresh={retryLearningPlans} />}
           </div>
         </div>
