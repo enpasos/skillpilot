@@ -398,6 +398,7 @@ public class LearnerService {
     /** A section-wide plan includes its required assessments. An explicit additional goal stays required. */
     Set<String> implicitVoluntaryAssessments(Learner learner, List<String> roots, Collection<String> captured) {
         if (learner == null || captured.isEmpty() || !unitPlanningCreditsEnabled() || unitLearningMaterialService == null
+                || roots.stream().anyMatch(Objects::isNull)
                 || roots.stream().noneMatch(root -> hasCapturedVoluntaryAssessment(root, captured))) return Set.of();
         var projection = getGoalProjection(learner.getSelectedCurriculum(), learner.getPersonalCurriculum());
         var graph = completionGraph(learner, projection);
@@ -420,12 +421,6 @@ public class LearnerService {
                 .map(UnitLearningMaterialService.Material::sectionAssessmentPolicy)
                 .map(UnitLearningMaterialService.SectionAssessmentPolicy::voluntaryAssessmentGoalIds)
                 .stream().flatMap(Collection::stream).anyMatch(captured::contains);
-    }
-
-    // Archive export keeps the stored selection. The plan and its learner-facing consequences
-    // interpret older section captures with the same current policy as a newly selected section.
-    private List<LearnerLearningPlanApi.Block> effectiveLearningPlanBlocks(LearnerLearningPlan plan) {
-        return LearnerLearningPlanService.effectivePlanBlocks(this, plan.getLearner(), readPortableLearningPlanBlocks(plan));
     }
 
     /** Discovery may rank scopes by focus; the chosen scope itself never depends on subsequent focus changes. */
@@ -4659,10 +4654,11 @@ public class LearnerService {
             if (!requestedLandscapes.isEmpty() && !requestedLandscapes.contains(plan.getLandscapeId())) continue;
             boolean explicitExam = false;
             try {
-                List<LearnerLearningPlanApi.Block> blocks = effectiveLearningPlanBlocks(plan);
-                explicitExam = blocks.stream().anyMatch(block -> block.isActive() && "milestone".equals(block.kind())
+                var captured = readPortableLearningPlanBlocks(plan);
+                explicitExam = captured.stream().anyMatch(block -> block.isActive() && "milestone".equals(block.kind())
                         && block.goalIds() != null && !block.goalIds().isEmpty());
-                validateFollowedLearningPlanShape(blocks);
+                validateFollowedLearningPlanShape(captured);
+                var blocks = LearnerLearningPlanService.effectivePlanBlocks(this, learner, plan.getLandscapeId(), captured);
                 if (!Objects.equals(plan.getCurriculumId(), learner.getSelectedCurriculum())) {
                     hasExam |= explicitExam;
                     unavailablePlan |= !explicitExam;
@@ -9368,12 +9364,13 @@ public class LearnerService {
                 continue;
             }
             try {
-                List<LearnerLearningPlanApi.Block> blocks = effectiveLearningPlanBlocks(plan);
+                var captured = readPortableLearningPlanBlocks(plan);
                 if (!isLearningPlanCompatible(
-                        learner.getSkillpilotId(), plan.getCurriculumId(), plan.getLandscapeId(), blocks)) {
+                        learner.getSkillpilotId(), plan.getCurriculumId(), plan.getLandscapeId(), captured)) {
                     unavailableSubjects.add(subject);
                     continue;
                 }
+                var blocks = LearnerLearningPlanService.effectivePlanBlocks(this, learner, plan.getLandscapeId(), captured);
                 Map<String, LocalDate> schedule = subjectSchedules.computeIfAbsent(
                         subject, ignored -> new LinkedHashMap<>());
                 LearnerLearningPlanService.scheduledAtomicGoalDueDatesForSchedule(blocks)
@@ -9396,7 +9393,7 @@ public class LearnerService {
             }
         }
         var fulfillment = LearnerLearningPlanService.planFulfillment(this, learner, plans, mastery,
-                this::effectiveLearningPlanBlocks, id -> LearnerLearningPlanService.stableSubjectKey(landscapeService.getById(id)),
+                this::readPortableLearningPlanBlocks, id -> LearnerLearningPlanService.stableSubjectKey(landscapeService.getById(id)),
                 planHandoffProjection);
         Map<String, Set<String>> creditedBySubject = new HashMap<>();
         for (var plan : validPlans.keySet()) {

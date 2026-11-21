@@ -912,7 +912,8 @@ class ClaudeV1CompletionRouteIntegrationTest {
         var captured = saved.blocks().getFirst();
         var legacyCapture = new LearnerLearningPlanApi.Block(captured.id(), captured.kind(), captured.goalId(), captured.title(),
                 captured.startDate(), captured.endDate(), captured.date(), all, captured.goalIds(), captured.active());
-        String legacyJson = mapper.writeValueAsString(List.of(legacyCapture));
+        String legacyJson = mapper.writeValueAsString(learners.orderLearningPlanBlocksByPrerequisites(
+                learnerId, List.of(legacyCapture)));
         stored.setBlocksJson(legacyJson);
         storedPlans.saveAndFlush(stored);
         var interpreted = learningPlans.getPlan(learnerId, physics, today);
@@ -925,6 +926,90 @@ class ClaudeV1CompletionRouteIntegrationTest {
         var explicit = learningPlans.upsert(learnerId, physics, new LearnerLearningPlanApi.UpsertRequest(
                 interpreted.revision(), "E.1 und Zusatzprüfung", List.of(withExtra)), today);
         assertThat(explicit.blocks().getFirst().atomicGoalIds()).containsExactlyInAnyOrderElementsOf(all);
+    }
+
+    @ParameterizedTest
+    @CsvSource({"G8,true,false", "G9,true,false", "G8,false,false", "G9,false,false", "G9,true,true"})
+    void separateExplicitAssessmentSurvivesSectionDeduplicationAndSignedArchive(
+            String duration, boolean sectionFirst, boolean additionalSection) throws Exception {
+        String section = selectHessianMotionUnit(duration, "SekII");
+        String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
+        String extra = "6ea3fb3c-abdc-568f-ab13-97c36dc274e4";
+        var today = java.time.LocalDate.now(java.time.ZoneId.of("Europe/Berlin"));
+        var monday = today.with(java.time.DayOfWeek.MONDAY);
+        var required = learners.resolveLearningPlanGoalIds(learnerId, physics, List.of(section));
+        var all = learners.resolveLearningPlanGoalIds(learnerId, physics, List.of(section, extra));
+        var sectionDate = monday;
+        var examDate = sectionFirst ? monday.plusDays(1) : monday;
+        var sectionBlock = new LearnerLearningPlanApi.Block("section", "learning", section, "E.1",
+                sectionDate, sectionDate, null, all, List.of(section), true);
+        String additionalRoot = additionalSection ? section.replace("physics-e1-motion", "physics-e-phase") : extra;
+        var examBlock = new LearnerLearningPlanApi.Block("own", "learning", additionalRoot, "Weitere Auswahl",
+                examDate, examDate, null, List.of(extra), List.of(additionalRoot), true);
+        var saved = learningPlans.upsert(learnerId, physics, new LearnerLearningPlanApi.UpsertRequest(
+                0L, "Abschnitt und eigene Prüfung", sectionFirst ? List.of(sectionBlock, examBlock) : List.of(examBlock, sectionBlock)), today);
+        assertThat(saved.blocks().get(sectionFirst ? 0 : 1).atomicGoalIds()).containsExactlyInAnyOrderElementsOf(required);
+        assertThat(saved.blocks().get(sectionFirst ? 1 : 0).atomicGoalIds()).containsExactly(extra);
+        if (!sectionFirst) return;
+
+        // Older releases materialized the whole first section and left the explicitly selected
+        // goal of the later block recorded only in its roots after cross-block deduplication.
+        var emptyExam = new LearnerLearningPlanApi.Block(examBlock.id(), examBlock.kind(), additionalRoot, examBlock.title(),
+                examDate, examDate, null, List.of(), List.of(additionalRoot), true);
+        var legacy = learners.orderLearningPlanBlocksByPrerequisites(learnerId, List.of(sectionBlock, emptyExam));
+        var record = storedPlans.findByLearner_SkillpilotIdAndLandscapeId(learnerId, physics).orElseThrow();
+        record.setBlocksJson(mapper.writeValueAsString(legacy));
+        storedPlans.saveAndFlush(record);
+        var archive = learners.exportLearner(learnerId);
+        assertThat(archive.data().learningPlans().getFirst().blocks()).isEqualTo(legacy);
+        assertThat(archive.signature()).isNotBlank();
+        var effective = learningPlans.getPlan(learnerId, physics, today);
+        assertThat(effective.stale()).isFalse();
+        assertThat(effective.revision()).isEqualTo(saved.revision());
+        assertThat(effective.blocks().getFirst().atomicGoalIds()).containsExactlyInAnyOrderElementsOf(required);
+        assertThat(effective.blocks().getLast().atomicGoalIds()).containsExactly(extra);
+        assertThat(learners.exportLearner(learnerId).data().learningPlans().getFirst().blocks()).isEqualTo(legacy);
+        learners.importLearner(learnerId, archive);
+        assertThat(learningPlans.getPlan(learnerId, physics, today).blocks()).isEqualTo(effective.blocks());
+    }
+
+    @Test void oldSectionCaptureWithOnlyTheOptionalAssessmentFinishesWithoutAcceptingAnEmptyNewPlan() throws Exception {
+        String section = selectHessianMotionUnit("G9", "SekII");
+        String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
+        String extra = "6ea3fb3c-abdc-568f-ab13-97c36dc274e4";
+        var today = java.time.LocalDate.now(java.time.ZoneId.of("Europe/Berlin"));
+        var monday = today.with(java.time.DayOfWeek.MONDAY);
+        var old = new LearnerLearningPlanApi.Block("section", "learning", section, "E.1", monday, monday,
+                null, List.of(extra), List.of(section), true);
+        var required = learners.resolveLearningPlanGoalIds(learnerId, physics, List.of(section));
+        var explicit = new LearnerLearningPlanApi.Block("exam", "learning", extra, "Meine Prüfung", monday, monday,
+                null, List.of(extra), List.of(extra), true);
+        var full = new LearnerLearningPlanApi.Block("section", "learning", section, "E.1", monday, monday, null,
+                learners.resolveLearningPlanGoalIds(learnerId, physics, List.of(section, extra)), List.of(section), true);
+        var learner = learners.getLearner(learnerId);
+        masteryRepository.saveAllAndFlush(required.stream().map(id -> new Mastery(learner, id, 1.0)).toList());
+        assertThatThrownBy(() -> learningPlans.upsert(learnerId, physics,
+                new LearnerLearningPlanApi.UpsertRequest(0L, "Keine offenen Pflichtziele", List.of(full)), today))
+                .hasMessageContaining("no currently open atomic goals");
+        assertThat(storedPlans.findByLearner_SkillpilotIdAndLandscapeId(learnerId, physics)).isEmpty();
+        learningPlans.upsert(learnerId, physics,
+                new LearnerLearningPlanApi.UpsertRequest(0L, "Explizit", List.of(explicit)), today);
+        var record = storedPlans.findByLearner_SkillpilotIdAndLandscapeId(learnerId, physics).orElseThrow();
+        record.setBlocksJson(mapper.writeValueAsString(List.of(old)));
+        storedPlans.saveAndFlush(record);
+        var historical = learningPlans.getPlan(learnerId, physics, today);
+        assertThat(historical.stale()).isFalse();
+        assertThat(historical.blocks().getFirst().atomicGoalIds()).isEmpty();
+        if (historical.nextEligibleGoal() != null) {
+            assertThat(historical.nextEligibleGoal().goalId()).isNotEqualTo(extra);
+        }
+        assertThat(learners.exportLearner(learnerId).data().learningPlans().getFirst().blocks()).containsExactly(old);
+
+        // The genuine capture still has an atom. An already empty historical block never
+        // satisfied the old capture contract, even if its section happens to match this unit.
+        record.setBlocksJson(mapper.writeValueAsString(historical.blocks()));
+        storedPlans.saveAndFlush(record);
+        assertThat(learningPlans.getPlan(learnerId, physics, today).stale()).isTrue();
     }
 
     @Test void changingDurationInTheSharedSekIIViewNeedsANewAssignmentChoice() throws Exception {
