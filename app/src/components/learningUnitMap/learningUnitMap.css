@@ -92,7 +92,7 @@
 .lum-flashcard-action { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 8px 12px; border: 1px solid #c6d7e5; border-radius: 5px; background: #f2f7fb; color: #347295; font-size: 12px; text-align: left; }
 .lum-flashcard-action:hover { background: #e7f2fa; }
 .lum-flashcard-action:focus-visible { outline: 2px solid #347aa6; outline-offset: 2px; }
-.lum-flow { flex: 1; min-height: 0; position: relative; margin-bottom: 20px; opacity: 1; transition: opacity 140ms ease; }
+.lum-flow { flex: 1; min-height: 0; position: relative; opacity: 1; transition: opacity 140ms ease; }
 .lum-flow--leaving { opacity: 0; pointer-events: none; }
 .lum-flow--entering { opacity: .55; pointer-events: none; }
 .lum-node { position: relative; width: 220px; height: 72px; display: flex; align-items: stretch; border: 1px solid #cfd7de; border-left: 3px solid #7897b1; border-radius: 5px; background: #fff; transition: opacity 120ms, border-color 120ms; }
@@ -164,27 +164,20 @@
 .lum-relations > button:hover { color: #226b9f; }
 .lum-relations > small { color: #a1abb4; font-size: 10px; }
 .lum-outside > span { display: block; font-size: 11px; color: #8a99a5; padding: 4px 0; }
-.lum-map-controls { position: absolute; z-index: 5; display: flex; align-items: center; gap: 1px; bottom: 36px; left: 20px; padding: 3px; background: #fffffff5; border: 1px solid #dce2e7; border-radius: 5px; }
+.lum-map-controls { flex-shrink: 0; display: flex; align-items: center; gap: 1px; padding: 3px; background: #fffffff5; border: 1px solid #dce2e7; border-radius: 5px; }
 .lum-map-controls > button { display: grid; place-items: center; height: 29px; width: 29px; border: 0; border-radius: 3px; background: none; color: #83929e; }
 .lum-map-controls > button:hover { background: #f0f4f7; color: #347aa6; }
 .lum-map-controls > span:not(.lum-control-divider) { width: 45px; text-align: center; font-size: 10px; color: #8c99a4; font-variant-numeric: tabular-nums; }
 .lum-control-divider { height: 15px; width: 1px; background: #e1e6eb; margin: 0 3px; }
-.lum-map-bottom-bar { display: contents; }
-/* One line below the map: how to read the arrows and how to move. The right end stays clear for the overview map. */
-.lum-map-footer { position: absolute; left: 23px; right: 180px; bottom: 6px; display: flex; flex-wrap: wrap; align-items: center; gap: 1px 18px; pointer-events: none; }
+/* Keep both the controls and the interactive overview outside the pannable drawing. */
+.lum-map-bottom-bar { display: flex; align-items: center; gap: 12px; padding: 3px 20px 4px; flex-shrink: 0; }
+.lum-map-footer { flex: 1; min-width: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 1px 18px; pointer-events: none; }
 .lum-map-hint { color: #a5adb5; font-size: 10px; }
-.lum-app .react-flow__minimap { width: 160px; height: 100px; border: 1px solid #e3e7eb; border-radius: 4px; box-shadow: none; background: #fff; bottom: 12px; right: 8px; }
+.lum-map-bottom-bar .react-flow__minimap { position: static; flex-shrink: 0; margin: 0; border: 1px solid #e3e7eb; border-radius: 4px; box-shadow: none; background: #fff; }
 .lum-loading, .lum-layout-error { position: absolute; inset: 60px 0 0; display: grid; place-items: center; background: #ffffffcf; font-size: 12px; color: #80929f; }
 .lum-app--contextual .lum-loading, .lum-app--contextual .lum-layout-error { inset: 0; }
 .lum-layout-error { color: #9a5d5d; }
 .lum-sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; }
-/* Desktop controls get their own row, so even cards at the canvas edge stay readable and clickable. */
-@media (min-width: 761px) {
-  .lum-flow { margin-bottom: 0; }
-  .lum-map-bottom-bar { display: flex; align-items: center; gap: 12px; padding: 3px 20px 4px; flex-shrink: 0; }
-  .lum-map-controls { position: static; flex-shrink: 0; }
-  .lum-map-footer { position: static; flex: 1; min-width: 0; }
-}
 @media (max-width: 900px) {
   .lum-demo-badge { display: none; }
   .lum-inspector { width: 260px; padding: 15px; }
@@ -217,14 +210,13 @@
   .lum-inspector > p { font-size: 11px; }
   .lum-enter { margin-top: 10px; }
   .lum-relations { margin-top: 15px; }
-  .lum-map-controls { left: 12px; bottom: 31px; }
-  .lum-map-footer { left: 15px; right: 110px; bottom: 6px; gap: 1px 10px; }
+  .lum-map-bottom-bar { gap: 5px 8px; padding: 3px 8px 4px; }
+  .lum-map-footer { gap: 1px 6px; }
   .lum-map-hint { font-size: 8px; }
   .lum-map-hint > span { display: none; }
   .lum-order-legend { gap: 2px 8px; font-size: 8.5px; }
   /* The legend already says how the arrows read; both lines do not fit beside the overview map. */
   .lum-map-footer:has(.lum-order-legend) .lum-map-hint { display: none; }
-  .lum-app .react-flow__minimap { width: 102px; height: 67px; right: 0; bottom: 10px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .lum-app *, .lum-app *::before, .lum-app *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; }

@@ -144,6 +144,13 @@ async function fitComplex(page: Page) {
   assert.ok(routes.every(route => route.path && !/NaN|Infinity/.test(route.path) && route.length > 0), 'All 98 routes have finite visible SVG paths')
 }
 
+async function assertOverviewOutsideDrawing(page: Page) {
+  const drawing = await page.locator('.lum-flow').boundingBox()
+  const overview = await page.locator('.react-flow__minimap-svg').boundingBox()
+  assert.ok(drawing && overview && overview.width > 0 && overview.height > 0)
+  assert.ok(overview.y >= drawing.y + drawing.height - 1, 'The overview leaves the entire drawing usable')
+}
+
 async function pinchOn(page: Page, id: string, halves: number[]) {
   const bounds = await page.locator(`[data-entry-id="${id}"]`).boundingBox()
   assert.ok(bounds)
@@ -273,6 +280,11 @@ try {
   assert.match(await complex.locator('.lum-map-summary').innerText(), /56 Bereiche · 98 Verbindungen/)
   const complexRoot = complexLearningMapFixture.rootId
   const rootPositions = await complexGeometry(complex, 'RIGHT')
+  await assertOverviewOutsideDrawing(complex)
+  const initialZoom = await complex.getByLabel('Zoomwert').innerText()
+  await complex.locator('.react-flow__minimap-svg').hover()
+  await complex.mouse.wheel(0, -180)
+  await complex.waitForFunction(before => document.querySelector('[aria-label="Zoomwert"]')?.textContent !== before, initialZoom)
   assert.ok((await ids(complex)).every(id => id?.startsWith('demo:complex:')))
   await fitComplex(complex)
   await complex.screenshot({ path: `${artifacts}/complex-overview.png` })
@@ -361,6 +373,7 @@ try {
 
   stage = 'complex mobile layout'
   const complexMobile = await pageFor(390, 844, true, 'complex')
+  await assertOverviewOutsideDrawing(complexMobile)
   assert.equal(await complexMobile.locator('body').evaluate(element => element.scrollWidth <= window.innerWidth), true)
   assert.match(await complexMobile.locator('.lum-map-summary').innerText(), /56 Bereiche · 98 Verbindungen/)
   await complexMobile.locator('[data-entry-id="demo:complex:tools"] .lum-node-main').tap()

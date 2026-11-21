@@ -561,8 +561,6 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
             onPaneClick={() => { setSelection(null); setSearchOpen(false) }}
             proOptions={{ hideAttribution: true }} preventScrolling>
             <Background variant={BackgroundVariant.Dots} gap={24} size={0.65} color="#e3e6e9" />
-            {showMinimap && <MiniMap pannable zoomable nodeColor="#d5e1ec" nodeStrokeColor="#9db2c4" nodeBorderRadius={2}
-              maskColor="rgba(245,247,249,0.75)" ariaLabel="Übersichtskarte" />}
           </ReactFlow>
         </div>
         {layoutError && <div className="lum-layout-error" role="alert" data-testid="learner-map-layout-error"><p>{layoutError}</p>
@@ -589,6 +587,9 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
             </span>}
             <span className="lum-map-hint">{direction === 'RIGHT' ? '→' : '↓'} {label('Vorbereitung zur Anwendung', 'Preparation to application')}<span> · {label('Doppelklick hinein · Shift + Doppelklick heraus', 'Double-click in · Shift + double-click out')}</span></span>
           </div>
+          {showMinimap && <MiniMap pannable zoomable style={{ width: narrowScreen ? 100 : 144, height: narrowScreen ? 44 : 56 }}
+            nodeColor="#d5e1ec" nodeStrokeColor="#9db2c4" nodeBorderRadius={2}
+            maskColor="rgba(245,247,249,0.75)" ariaLabel={label('Übersichtskarte', 'Overview map')} />}
         </div>
       </section>
       {showInspector && inspected && <aside className="lum-inspector" aria-label="Ausgewählter Bereich">

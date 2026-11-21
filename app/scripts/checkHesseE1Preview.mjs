@@ -181,6 +181,11 @@ async function check(duration, part, lang, start, width = 1440, height = 900) {
           await map.locator('.lum-flow--idle').waitFor()
         }
         assert.equal(await map.getByRole('button', { name: /Zielliste anzeigen|Grafische Karte anzeigen|Show goal list|Show graph/ }).count(), 0)
+        const drawing = await map.locator('.lum-flow').boundingBox()
+        const overview = await map.locator('.react-flow__minimap-svg').boundingBox()
+        assert(drawing && overview && overview.width > 0 && overview.height > 0
+          && overview.y >= drawing.y + drawing.height - 1,
+        'The interactive overview stays below the whole drawing, including the lower right goal cards.')
         if (width < 1024) {
           const title = lang === 'de' ? other.title : other.titleEn
           await map.getByRole('textbox', { name: lang === 'de' ? 'In dieser Ebene suchen' : 'Search this level' }).fill(title)

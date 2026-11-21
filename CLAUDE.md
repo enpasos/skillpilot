@@ -40,13 +40,20 @@ runtime work F8–F13 are separate from the current K1–K13/F1–F7 delivery.
 For the Hessian E.1 pilot the Product Owner decided on **20 November 2026**
 that four matching A–D passes complete the explicitly chosen unit assignment.
 Follow the backend's next step for each other explicit assignment. Individually
-open goals remain available for voluntary study. Existing atomic plans keep
-their goal lists. A historical part pass lacking the review binding still
+open goals remain available for voluntary study. A historical part pass lacking the review binding still
 counts for that part. Explain its missing planning credit when the backend
 reports it. After A–D, give precedence to a separate due assignment. Otherwise
 offer voluntary individual study within E.1 when the learner asks to continue.
 The additional horizontal-throw exam remains voluntary. The pilot defaults to off.
 E.1 awaits pedagogical acceptance.
+
+**21 November 2026.** With the pilot enabled, new and existing atomic plans
+apply the section's assessment policy to goals included by a section selection.
+The older GK example contributes 16 E.1 positions, or 17 when the voluntary
+horizontal-throw exam was also selected explicitly. This holds even if older
+overlapping blocks stored the exam only once. Use the backend's effective
+plan. Stored selections, receipts and individual mastery are preserved. With
+the pilot disabled the stored lists apply.
 
 The learner-facing Cockpit tree and graphical map should share one unit and
 atomic-goal hierarchy in the same scope. Present an atomic goal directly

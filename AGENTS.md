@@ -564,8 +564,7 @@ goals have their own evidence. Display choices never write mastery.
 **Hessian E.1 pilot decision, 20 November 2026.** For an explicitly selected
 unit-qualification assignment, passing the four designated versions A–D ends
 the required work for that assignment. An individually open goal remains
-available voluntarily or due under a separate explicit assignment. Existing
-atomic plans retain their selected goals. A valid historical part receipt
+available voluntarily or due under a separate explicit assignment. A valid historical part receipt
 counts towards its part after a scope change. If it lacks the planning-release
 binding at grading, the cockpit and coach explain why the two individual
 goals remain open. A separate due assignment takes priority on a request to
@@ -575,6 +574,16 @@ The additional horizontal-throw examination remains available voluntarily and
 has its own result. The local acceptance preview opts into the pilot. Its
 separate runtime setting defaults to off. The Product Owner reserves the
 pedagogical acceptance of E.1 and subsequent acceptance of the Hessian template.
+
+**Section selections in atomic plans, 21 November 2026.** With the unit
+assessment pilot enabled, a section selection contributes the goals required
+by its applicable assessment policy. This applies when reading an existing
+plan as well as creating a new one. An old E.1 section selection that captured
+the voluntary horizontal-throw exam contributes 16 positions instead of 17
+in the GK example. An explicit selection of that exam still counts, including
+in older plans that stored it only once across overlapping blocks. Stored
+selections, assessment receipts and individual mastery are preserved. With
+the pilot disabled, plans use their stored goal lists.
 
 The Product Owner confirmed **Lerneinheit** (English **learning unit**,
 conceptual name `LearningUnit`) on **4 November 2026**. This replaces the former
