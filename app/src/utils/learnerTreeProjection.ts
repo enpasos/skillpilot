@@ -173,6 +173,31 @@ export function collapseLearnerSubjectRoots(
   return { childrenByParent, subjectRootIdByAlias, childrenBySubjectRootAlias }
 }
 
+/** One visible containment projection for the learner tree, reveal paths and map. */
+export function buildLearnerNavigationProjection(allGoals: Map<string, UiGoal>, visibleChildren: Map<string, string[]>) {
+  const { childrenByParent, subjectRootIdByAlias: targetByAlias, childrenBySubjectRootAlias: childrenByAlias } =
+    collapseLearnerSubjectRoots(allGoals, visibleChildren)
+  const preparationAliases = new Map<string, string>()
+  for (const goal of allGoals.values()) {
+    const folder = goal.preparationSource?.id
+    if (!folder || goal.type === 'cluster' || goal.contains.length || goal.personalCurriculumProjection?.role !== 'target') continue
+    const children = childrenByParent.get(folder)
+    if (children?.length !== 1 || children[0] !== goal.id) continue
+    preparationAliases.set(folder, goal.id)
+    targetByAlias.set(folder, goal.id)
+    childrenByAlias.set(folder, children)
+    childrenByParent.delete(folder)
+  }
+  if (preparationAliases.size) {
+    for (const [parent, children] of childrenByParent) {
+      if (children.some(id => preparationAliases.has(id))) {
+        childrenByParent.set(parent, dedupePreservingOrder(children.map(id => preparationAliases.get(id) ?? id)))
+      }
+    }
+  }
+  return { childrenByParent, targetByAlias, childrenByAlias }
+}
+
 interface RootBranchInfo {
   depth: number
   rootChildOrder: number

@@ -191,9 +191,11 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
     setSearchOpen(false)
   }, [highlight, visible])
   const selectSearchResult = useCallback((id: string) => {
-    select(id)
+    // A borrowed deck or exam opens through its own button. Searching for it
+    // positions its node on this board without routing to its home scope.
+    if (!getGoalAction?.(nav.scopeId, id)) select(id)
     focusNode(id, true)
-  }, [focusNode, select])
+  }, [focusNode, getGoalAction, nav.scopeId, select])
 
   useEffect(() => {
     if (!command) return
@@ -242,7 +244,8 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
     const frame = requestAnimationFrame(() => {
       lastCommand.current = key
       if (pendingReveal.current === reveal) pendingReveal.current = null
-      if (targetId !== fixture.rootId) focusNode(targetId)
+      const nodeId = targetPath[targetPath.length - 1]
+      if (nodeId !== fixture.rootId) focusNode(nodeId)
     })
     return () => cancelAnimationFrame(frame)
   }, [active, command, fixture, nav.isTransitioning, nav.scopeId, goToScope, focusNode])
@@ -403,8 +406,8 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
   }
   const matches = useMemo(() => {
     const text = query.trim().toLocaleLowerCase(language)
-    return visibleIds.filter(id => !text || [fixture.entries[id].title, getGoalAction?.(nav.scopeId, id)?.title]
-      .some(title => title?.toLocaleLowerCase(language).includes(text)))
+    return visibleIds.filter(id => !text || [fixture.entries[id].title, getGoalAction?.(nav.scopeId, id)?.title,
+      ...(fixture.entries[id].sourceSections ?? []).map(section => section.title)].some(title => title?.toLocaleLowerCase(language).includes(text)))
   }, [fixture, query, visibleIds, language, nav.scopeId, getGoalAction])
   const contextEntries = inspected?.requires.filter(id => !visible.has(id) && fixture.entries[id]).map(id => fixture.entries[id]) ?? []
   const selectedRelations = selectedId ? scopeRelations.filter(relation => relation.source === selectedId || relation.target === selectedId) : []

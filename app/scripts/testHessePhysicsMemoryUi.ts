@@ -161,6 +161,8 @@ async function checkProjectionGraph(page: Page, dialog: Locator, releaseDeck: ()
   await board.waitFor()
   await centerGoal(dialog, 'Lernkarten zu E.1 üben')
   await graph.locator(`[data-entry-id="${memoryId}"]`).waitFor()
+  assert.equal(await dialog.getByTestId('native-cockpit-map').getAttribute('data-selected-goal-id'), cart.id,
+    'locating a borrowed deck does not route the cockpit away from the selected goal')
   const afterDeck = await probe.evaluate(value => value.activity)
   assert.deepEqual(afterDeck, { layouts: 1, busy: 1, loading: 1 }, 'a real deck changes the graph topology exactly once')
   await centerGoal(dialog, horizontalThrow.title)
@@ -330,6 +332,26 @@ try {
     })
     if (viewFile) {
       const initialZoom = await checkProjectionGraph(page, dialog, releaseDeck, () => { mastery[horizontalThrow.id] = 1 })
+      if (width === 390 || width === 1440) {
+        const cases = [
+          { id: '716acf20-d882-5152-9735-099876d631b4', phase: 'physics-q1', source: 'Übungen' },
+          { id: 'e0932fef-9e1c-5c95-b00c-7589e76d0e83', phase: 'physics-q2', source: 'Aufgaben zu Magnetfeldern und Induktion' },
+        ]
+        for (const example of cases) {
+          const title = canonical.goals.find(goal => goal.id === example.id)!.title
+          await page.goto(`${origin}/learner/${example.id}?l=${id.root}`, { waitUntil: 'domcontentloaded' })
+          await page.getByTestId('learner-current-goal').getByRole('heading', { name: title, exact: true }).first().waitFor()
+          await opener.click()
+          const phase = `composition:${dataView.viewId}:structure:${example.phase}`
+          await dialog.locator(`.lum-canvas[data-scope-id="${phase}"][aria-busy="false"]`).waitFor()
+          const leaf = dialog.locator(`[data-entry-id="${example.id}"][data-entry-kind="assessment"]`)
+          await leaf.waitFor()
+          assert.equal(await leaf.locator('.lum-node-meta').innerText(), `Prüfung · ${example.source}`)
+          assert.equal(await leaf.locator('.lum-node-open').count(), 0)
+          await leaf.locator('.lum-node-main').press('Enter')
+          await dialog.locator(`[data-selected-goal-id="${example.id}"]`).waitFor()
+        }
+      }
       assert.deepEqual(errors, [])
       assert.deepEqual(unexpected, [])
       console.log(`${viewFile} ${width}×${scenario.height}: six assessments, graph B→A; initial zoom ${initialZoom}, stable on mastery refresh`)
@@ -418,9 +440,10 @@ try {
       await page.getByRole('button', { name: 'Zur Auswahl', exact: true }).click()
       await opener.click()
       await page.locator(`.lum-canvas[data-scope-id="${phaseId}"][aria-busy="false"]`).waitFor()
-      await dialog.locator(`[data-entry-id="${energyTopicId}"] .lum-node-main`).dblclick()
-      await page.locator(`.lum-canvas[data-scope-id="${energyTopicId}"][aria-busy="false"]`).waitFor()
-      await dialog.getByRole('button', { name: 'Lernkarten zu E.2 üben', exact: true }).click()
+      assert.equal(await dialog.locator(`[data-entry-id="${energyTopicId}"]`).count(), 0)
+      const energy = dialog.locator(`[data-entry-id="${energyId}"][data-entry-kind="goal"]`)
+      assert.match(await energy.locator('.lum-node-meta').innerText(), /E\.2 Energie/u)
+      await energy.getByRole('button', { name: 'Lernkarten zu E.2 üben', exact: true }).click()
       await page.getByText('E2 Frage', { exact: true }).waitFor()
       assert.equal(getsDuringWrite, 0, 'the next topic reads after the previous topic save completes')
       await page.getByRole('button', { name: 'Antwort zeigen', exact: true }).click()

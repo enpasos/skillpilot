@@ -414,6 +414,9 @@ const TreeNode: React.FC<TreeNodeProps> = ({
                   : 'text-slate-700 dark:text-slate-200' // Open (Normal Scope)
             }`}
           />
+          {audience === 'learner' && goal.preparationSource && <small className="block text-xs text-slate-500">
+            {goal.preparationSource.title}
+          </small>}
         </div>
 
         {audience !== 'learner' && isSyntheticStructureNode && !hideTechnicalStructureUi && (

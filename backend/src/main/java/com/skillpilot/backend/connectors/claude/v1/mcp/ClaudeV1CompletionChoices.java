@@ -12,7 +12,7 @@ import java.util.Set;
 
 /** Projects authorized choices; it never calculates mastery, waivers or prerequisite access. */
 final class ClaudeV1CompletionChoices {
-    private static final int MAX_CHOICES = 24;
+    static final int MAX_CHOICES = 24;
     private ClaudeV1CompletionChoices() { }
 
     record Choice(String label, String action, String profileId, String goalId, String intent) {

@@ -48,6 +48,12 @@ offer voluntary individual study within E.1 when the learner asks to continue.
 The additional horizontal-throw exam remains voluntary. The pilot defaults to off.
 E.1 awaits pedagogical acceptance.
 
+The learner-facing Cockpit tree and graphical map should share one unit and
+atomic-goal hierarchy in the same scope. Present an atomic goal directly
+when a presentation group would merely wrap it. Keep its assessed identity,
+actions and prerequisite context. The hierarchy is distinct from requirement
+arrows and links to materials.
+
 Across subjects and pilot settings, green checks identify the learner's own
 successful goal evidence. The same checks in gray identify evidence-backed
 indirect credit. A neutral minus identifies a preparation that ceased to be

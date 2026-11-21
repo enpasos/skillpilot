@@ -540,6 +540,18 @@ adopt the separate unit-assessment proposal of 19 November. The [discussion
 paper](docs/concept/skill-graph/unit-assessment-discussion-2026-11-19.de.md)
 sets out the changes that adoption would require.
 
+**Learner-facing hierarchy, 21 November 2026.** The target for a given learner
+and scope is one containment hierarchy shared by the Cockpit tree and the
+graphical learning map. The same unit has the same children and an atomic
+goal opens under the same parent in both views. Prerequisite arrows, source
+references and links to practice material do not create an additional owner.
+A presentation group containing only a single atomic learning goal must not
+create a navigable learning unit around it. Open the goal directly and retain
+its context, direct actions and evidence. Keep declared programme stages,
+source scope and independent unit promises, assessments and ordering intact.
+Verify parity against actual displayed parent paths in the same scope as the
+tree and map converge.
+
 **Learner-facing evidence marks for all subjects and scopes.** A green check
 means the learner has their own successful evidence for this goal. The same check in gray
 means that assessed work on another goal gives a

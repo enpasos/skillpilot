@@ -79,7 +79,7 @@ export default function LearnerGoalNavigationMap(props: LearnerGoalNavigationMap
   const fixture = useMemo(() => placeUnitLearningResources(progressFixture, JSON.parse(placementKey)), [progressFixture, placementKey])
   const getGoalAction = useCallback((scopeId: string, id: string) => {
     const homeId = progressFixture.entryPaths?.[id]?.at(-2)
-    const home = homeId && progressFixture.entries[homeId]?.title
+    const home = progressFixture.entries[id]?.sourceSections?.at(-1)?.title ?? (homeId && progressFixture.entries[homeId]?.title)
     for (const { flashcards, assessments } of resources) {
       const cards = flashcards.get(scopeId)
       if (cards?.goalId === id && onPracticeFlashcards) {
@@ -106,7 +106,13 @@ export default function LearnerGoalNavigationMap(props: LearnerGoalNavigationMap
     const exercise = getExercise(scopeId, goalId)
     if (exercise) return { label: `${english ? 'Practice' : 'Üben'}: ${exercise.title}`,
       open: () => setOpenExercise({ scopeId, goalId }) }
-  }, [english, getExercise])
+    if (progressFixture.entries[goalId]?.sourceSections && onPracticeFlashcards) {
+      for (const { flashcards } of resources) {
+        const action = flashcards.get(goalId)
+        if (action) return { label: action.title, open: () => onPracticeFlashcards(action) }
+      }
+    }
+  }, [english, getExercise, progressFixture, resources, onPracticeFlashcards])
   const exercise = openExercise && props.active && getExercise(openExercise.scopeId, openExercise.goalId)
   const progress = useMemo(() => {
     const fixture = progressFixture

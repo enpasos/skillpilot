@@ -14,6 +14,8 @@ export type Leitidee = 'L1' | 'L2' | 'L3' | 'L4' | 'L5'
 
 export interface UiGoal {
   id: string
+  /** Original single-atom acquisition folder in this personal view. */
+  preparationSource?: { id: string; title: string }
   /** Display state derived exclusively from the learner API's closed target basis. */
   personalCurriculumProjection?: {
     revision: 'atomic-prerequisite-learning-v1'

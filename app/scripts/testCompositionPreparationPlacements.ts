@@ -3,7 +3,8 @@ import assert from 'node:assert/strict'
 import { prepareLandscapeEntries, type LandscapeEntry } from '../src/hooks/useLandscapes'
 import type { LearningGoal, SkillLandscape } from '../src/landscapeTypes'
 import { applyCompositionViewProjection, applyPersonalCurriculumProjection } from '../src/utils/compositionViewRuntime'
-import { normalizeLearnerProjectedEntries } from '../src/utils/learnerTreeProjection'
+import { buildLearnerNavigationProjection, normalizeLearnerProjectedEntries } from '../src/utils/learnerTreeProjection'
+import { buildDirectChildrenMap } from '../src/utils/treeProjectionRuntime'
 import type { CompositionView } from '../src/utils/authoring/compositionViewAuthoring'
 import { compileCompositionView } from '../src/utils/authoring/compositionViewAuthoring'
 import { normalizeCanonicalLandscape } from '../src/utils/authoring/canonicalAuthoring'
@@ -76,6 +77,38 @@ assert(!result.flatMap(entry => entry.goals).some(goal => goal.personalCurriculu
   'An explicit earlier learning place avoids an unrelated fallback preparation branch.')
 assert.deepEqual(applyPersonalCurriculumProjection(result, personal), result, 'Repeated projection is idempotent.')
 assert.equal(JSON.stringify({ source, personal, view }), snapshot, 'Canonical inputs, seeds and authoritative L remain untouched.')
+
+for (const mode of ['single', 'ordered', 'several', 'target'] as const) {
+  const variant = structuredClone(view)
+  const root = variant.rootNodes[0]
+  assert(root.kind === 'structure')
+  const earlier = root.children[0]
+  assert(earlier.kind === 'structure')
+  const folder = earlier.children[0]
+  assert(folder.kind === 'structure')
+  if (mode !== 'several') folder.children = [folder.children[0]]
+  if (mode === 'ordered') {
+    earlier.children.push({ kind: 'structure', id: 'next', label: 'Weiter', children: [{ kind: 'goalEntry', goalId: 'outside' }] })
+    earlier.childOrder = { after: [{ unit: 'next', after: folder.id }] }
+  }
+  if (mode === 'target') folder.children = [{ kind: 'goalEntry', goalId: 'a' }]
+  const projected = applyPersonalCurriculumProjection(applyCompositionViewProjection(source, variant), personal)
+  const index = all(projected)
+  const before = buildDirectChildrenMap(index)
+  const nav = buildLearnerNavigationProjection(index, before)
+  assert.deepEqual(before.get(id('earlier')), [id('topic')], 'Original placement remains addressable.')
+  if (mode === 'single') {
+    assert.deepEqual(nav.childrenByParent.get(id('earlier')), ['a'])
+    assert(!nav.childrenByParent.has(id('topic')))
+    assert.equal(nav.targetByAlias.get(id('topic')), 'a')
+    assert.deepEqual(nav.childrenByAlias.get(id('topic')), ['a'])
+    assert.deepEqual(index.get('a')?.preparationSource, { id: id('topic'), title: 'Grundlagen' })
+    assert.deepEqual(index.get('a')?.personalCurriculumProjection?.requiredByPath, ['b', 'a'])
+  } else {
+    assert.deepEqual(nav.childrenByParent.get(id('earlier')), [id('topic')], mode)
+    assert.equal(index.get('a')?.preparationSource, undefined, mode)
+  }
+}
 
 for (const kind of ['goalEntry', 'canonicalSubtree'] as const) {
   const candidate = structuredClone(view)

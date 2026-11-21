@@ -102,14 +102,17 @@ assert.equal(map1.scopeRelations?.[map1.rootId]?.find(relation => relation.sourc
 assert.deepEqual(map1.entries['__unit__:sek1'].children, ['__unit__:learning-unit:68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:lu-five', 'm6a', 'pa1'],
   'a learning unit whose own goals share one preview unit is shown as a unit')
 const map2 = buildLearnerUnitMapProjection({ ...input, units: step2.units, after: step2.after, memberUnits: step2.memberUnits })
-assert.deepEqual(map2.entries['__unit__:sek1'].children, [sectionId(math, 'm-j5'), sectionId(math, 'm-j6'), sectionId(physics, 'p-a')])
+assert.deepEqual(map2.entries['__unit__:sek1'].children, [sectionId(math, 'm-j5'), 'm6a', 'pa1'])
 assert.equal(map2.scopeRelations?.['__unit__:sek1']?.find(relation => relation.source === sectionId(math, 'm-j5')
-  && relation.target === sectionId(math, 'm-j6'))?.unitOrder, 'declared')
-assert.equal(map2.scopeRelations?.['__unit__:sek1']?.find(relation => relation.source === sectionId(math, 'm-j6')
-  && relation.target === sectionId(physics, 'p-a'))?.unitOrder, 'derived', 'cross-subject demand between sections is derived, not declared')
+  && relation.target === 'm6a')?.unitOrder, 'declared')
+assert.equal(map2.scopeRelations?.['__unit__:sek1']?.find(relation => relation.source === 'm6a'
+  && relation.target === 'pa1')?.unitOrder, 'derived', 'cross-subject demand between sections is derived, not declared')
 assert.equal(map2.scopeRelations?.[map2.rootId]?.find(relation => relation.source === '__unit__:sek2'
   && relation.target === '__unit__:sek1'), undefined)
 assert.deepEqual(map2.findings, [])
+assert.deepEqual(map2.entries.pa1.sourceSections, [{ id: sectionId(physics, 'p-a'), title: 'Bewegung' }])
+assert.deepEqual(map2.entryPaths?.[sectionId(physics, 'p-a')], map2.entryPaths?.pa1)
+assert.equal(filterLearnerUnitMapToSubjects(map2, new Set([math])).entryPaths?.[sectionId(physics, 'p-a')], undefined)
 const previewOnly = filterLearnerUnitMapToSubjects(map2, new Set([math, physics]))
 assert.equal(previewOnly.entries.c1, undefined, 'the map shows Mathematics and Physics only')
 assert.deepEqual(previewOnly.subjectIds, [math, physics])
@@ -126,6 +129,28 @@ assert.deepEqual(filterLearnerUnitMapToSubjects(buildLearnerUnitMapProjection({ 
 // Real views: Bavaria and Hesse share one node per stage, without contradictory declarations.
 const read = async (path: string) => JSON.parse(await readFile(fileURLToPath(new URL(`../../curricula/DE/Gymnasium/${path}`, import.meta.url)), 'utf8'))
 const canonical = prepareLandscapeEntries(await Promise.all(['MATHEMATIK', 'PHYSIK'].map(subject => read(`canonical/DE_DEU_S_GYM_CANONICAL_${subject}.de.json`))))
+for (const file of ['de-he-gk-g8', 'de-he-sekii-gk']) {
+  const view = await read(`composition-views/physik/${file}.view.json`)
+  const real = learnerTree(canonical.filter(entry => entry.meta.landscapeId === physics), [view])
+  const map = buildLearnerUnitMapProjection({ ...real, ...deriveLearnerUnitMapPreview(real) })
+  const sourceId = (node: string) => `composition:${view.viewId}:structure:${node}`
+  for (const [leaf, group, title, preceding] of [
+    ['716acf20-d882-5152-9735-099876d631b4', 'existing-assessment-path-549a427d-f10a-5537-990e-6fdd7466848b', 'Übungen', 'electrical-source-d7bc20e0-5ee9-593a-a7a9-d7cbb88392e6'],
+    ['b4175564-4397-5c08-90ba-4f13231a75ec', 'physics-current-magnetic-fields-0bd4a459', 'Aufgaben zu Magnetfeldern und Induktion', 'he-physics-topic-13e882bd-2fc6-59c6-a2a8-32eb1fbf1751'],
+    ['e0932fef-9e1c-5c95-b00c-7589e76d0e83', 'physics-current-magnetic-fields-1969c687', 'Aufgaben zu Magnetfeldern und Induktion'],
+  ]) {
+    assert.equal(map.entries[leaf].kind, 'assessment')
+    assert.deepEqual(map.entries[leaf].sourceSections, [{ id: sourceId(group), title }])
+    assert.equal(map.entries[sourceId(group)], undefined)
+    assert.deepEqual(map.entryPaths?.[sourceId(group)], map.entryPaths?.[leaf])
+    const parent = map.entryPaths![leaf].at(-2)!
+    assert(map.entries[parent].children?.includes(leaf))
+    const incoming = (map.scopeRelations?.[parent] ?? []).filter(edge => edge.target === leaf && edge.unitOrder === 'declared')
+    assert.deepEqual(incoming.map(edge => edge.source), preceding ? [sourceId(preceding)] : [],
+      `${file}: each declared order remains and an unordered topic stays unordered`)
+    if (preceding) assert(incoming[0].provenance.some(witness => witness.dependentGoalId === leaf))
+  }
+}
 const stageKeys = PROVISIONAL_STAGE_PLAN_UNITS.map(stage => stage.key)
 for (const [land, mathView, physicsView] of [['BY', 'de-by-gk', 'de-by-gk'], ['HE', 'de-he-gk-g9', 'de-he-gk']]) {
   const real = learnerTree(canonical, [await read(`composition-views/mathematik/${mathView}.view.json`), await read(`composition-views/physik/${physicsView}.view.json`)])

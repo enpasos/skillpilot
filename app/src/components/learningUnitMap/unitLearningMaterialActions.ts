@@ -5,14 +5,18 @@ import type { LearningMapFixture, LearningMapRelation, LearningMapRequirement, M
 const matchesView = (viewIds: readonly string[], value: unknown) => typeof value === 'string'
   && (viewIds.includes(value) || value.startsWith('merged:') && value.slice(7).split('+').every(id => viewIds.includes(id)))
 
+export function isUnitMaterialSource(material: MapPracticeMaterial, goal: UiGoal): boolean {
+  return goal.landscapeId === material.unit.landscapeId
+    && goal.extendedData?.compositionNodeId === material.unit.compositionNodeId
+    && matchesView(material.unit.viewIds, goal.extendedData.compositionViewId)
+}
+
 export function findUnitMaterialScopes(
   material: MapPracticeMaterial, fixture: LearningMapFixture, goalIndex: ReadonlyMap<string, UiGoal>, visibleGoalIds: ReadonlySet<string>,
 ): Set<string> {
   const scopes = new Set<string>()
   for (const goal of goalIndex.values()) {
-    if (goal.landscapeId !== material.unit.landscapeId
-      || goal.extendedData?.compositionNodeId !== material.unit.compositionNodeId
-      || !matchesView(material.unit.viewIds, goal.extendedData.compositionViewId) || !visibleGoalIds.has(goal.id)) continue
+    if (!isUnitMaterialSource(material, goal) || !visibleGoalIds.has(goal.id)) continue
     const path = fixture.entryPaths?.[goal.id]
     const scopeId = fixture.entries[goal.id] ? goal.id : path?.slice(0, -1).at(-1)
     if (scopeId && fixture.entries[scopeId]?.kind === 'unit'
@@ -58,7 +62,8 @@ export function buildUnitFlashcardActions(
   const visit = (id: string) => {
     const entry = fixture.entries[id]
     if (!entry) return
-    if (id !== deckHome && entry.kind === 'unit') {
+    const representedTopic = entry.kind === 'goal' && entry.sourceSections?.at(-1)
+    if (id !== deckHome && (entry.kind === 'unit' || representedTopic)) {
       const goalIds: string[] = []
       const collect = (childId: string) => {
         const child = fixture.entries[childId]
@@ -70,8 +75,8 @@ export function buildUnitFlashcardActions(
       }
       collect(id)
       if (cards && selectPracticeCards(cards, filterTags, goalIds).length) {
-        const topicCode = /^\p{L}+\.\d+(?=\s)/u.exec(entry.title)?.[0]
-        const topic = topicCode ?? entry.title
+        const title = representedTopic ? representedTopic.title : entry.title
+        const topic = /^\p{L}+\.\d+(?=\s)/u.exec(title)?.[0] ?? title
         actions.set(id, { goalId: memoryId, goalIds,
           title: practiceTitle(topic) })
       }

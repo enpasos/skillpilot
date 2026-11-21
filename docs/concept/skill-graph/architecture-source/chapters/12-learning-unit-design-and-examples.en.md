@@ -18,10 +18,12 @@ Representative performances can support a judgment about the unit. An arithmetic
 
 A boundary is supported by an understandable shared learning promise and by an independent application that can test the whole claimed conceptual step. A recognisable transition to later demands is another important reason; a final unit needs no successor. Subject proximity and dense prerequisite connections are indications, not an automatic cut. A sparse, transitively minimal chain can also be closely connected. Shared foundations such as equations or number sense connect many topics without turning them into one giant unit.
 
+In the target design the Cockpit tree and graphical learning map share the same hierarchy of units and atomic goals in the same personal scope. Each goal has the same parent path in both views. Prerequisites and linked materials may appear on other boards while keeping their original placement.
+
 The following justifications are unsuitable:
 
 - "There already is an assessment": the assessment must arise from the learning promise; its existing scope does not determine the unit.
-- "The group needs at least a few goals": there is no minimum number. A single goal can be comprehensive enough; many goals can be only loosely connected.
+- "The group needs at least a few goals": the learning promise and the application that can be demonstrated determine the scope. An atomic goal opens directly. A folder containing only that goal without a distinct learning path adds no level to learner navigation.
 - "The heading looks tidy": an additional parent heading creates neither coherence nor a new learning outcome.
 - "Then all edges fit": prerequisites are neither invented nor removed to make a desired partition fit afterwards.
 
