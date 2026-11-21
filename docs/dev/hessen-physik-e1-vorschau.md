@@ -24,6 +24,21 @@ Für einen manuellen Erststart öffnet man z. B. `/testlauf/G8/A` und wählt **P
 
 Die Zuschauerprofile beginnen ohne Prüfungsbelege. In der Lernkarte führen die drei Übungen vom Spielzeugzug über den Bremsweg zur Bodenmarke beim Wurf. **Lernkarten zu E.1 üben** öffnet die neun passenden Karten. Bei der fachlichen Durchsicht lässt sich so vom Einstiegsproblem über eine Übung bis zur Prüfung verfolgen, welche eigenständige Vorhersage die Person jeweils leisten soll.
 
+## Welche Leistungen deckt E.1 ab?
+
+Das hessische Kerncurriculum nennt E.1 als verbindliches Themenfeld der Einführungsphase. Die folgende Tabelle führt die 13 Haupt- und Unterpunkte auf Seite 30 zu den zugeordneten Lernzielen in SkillPilot. Bei den Punkten 5, 6, 7, 8 und 13 weist der fachliche Abgleich Teilzuordnungen aus. Die Zuordnung bezeichnet den Ort einer Kompetenz im Lehrplan. Ob ein Lernender sie gezeigt hat, ergibt sich aus seinem jeweiligen Nachweis. [Kerncurriculum Physik 2024, S. 30](https://github.com/enpasos/skillpilot/blob/98b61309acc16c32a00f1bf05151163c2f2ef617/curricula/DE/Gymnasium/input/HE/upper-secondary/kernkurriculum_gymnasiale_oberstufe-physik.pdf#page=30) · [Extrahierte Quellenstellen](https://github.com/enpasos/skillpilot/blob/98b61309acc16c32a00f1bf05151163c2f2ef617/curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_PHYSIK_SEKII_KC2024.source-extraction.json) · [Einzelzuordnungen zu den Lernzielen](https://github.com/enpasos/skillpilot/blob/98b61309acc16c32a00f1bf05151163c2f2ef617/curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_physics_upper_secondary_source_extraction_to_canonical_physics.review.json)
+
+| Punkte auf S. 30 in Quellenreihenfolge | Physikalische Leistung | Zugeordnete Lernziele |
+| --- | --- | --- |
+| 1–2 | Bewegungen anhand von Orts-, Geschwindigkeits- und Beschleunigungsdiagrammen über der Zeit untersuchen | Bewegungen mit Diagrammen untersuchen |
+| 3–5 | Gleichförmige Bewegung beschreiben, Geschwindigkeit definieren und ihren Betrag selbst messen | Gleichförmige Bewegung und Geschwindigkeit. Zum Versuch gehört auch die Zuordnung zu „Bewegungen mit Videoanalyse untersuchen“. |
+| 6–8 | Bei gleichmäßiger Beschleunigung aus der Ruhe und mit Anfangsort null den Bewegungsverlauf erklären, Beschleunigung definieren, Durchschnitts- und Momentangeschwindigkeit vergleichen | Gleichmäßig beschleunigte Bewegung und Beschleunigung · Durchschnitts- und Momentangeschwindigkeit unterscheiden |
+| 9 | Beim freien Fall eigene Daten erheben, grafisch auswerten, die Fallbeschleunigung bestimmen, eine Abweichung vom Literaturwert diskutieren und das Zeit-Ort-Gesetz aus dem Modell gewinnen | Freier Fall experimentell untersuchen |
+| 10–12 | Begründen, wann ein Körper als Massepunkt behandelt und Reibung vernachlässigt werden kann | Modellierung und Idealisierung von Bewegungen |
+| 13 | Orts- und Geschwindigkeitsgesetze aus Diagrammen gewinnen und ihren Zusammenhang erklären | Bewegungen mit Diagrammen untersuchen · Gleichförmige Bewegung und Geschwindigkeit · Gleichmäßig beschleunigte Bewegung und Beschleunigung |
+
+Der Einheitenauftrag A–D verbindet Modellwahl, Rechnung, Vorhersage und Begründung. Aufgabe B verwendet den waagerechten Wurf als Anwendung. Ihr Bezug zu E.1 ist der freie Fall aus der Ruhe in vertikaler Richtung. Der waagerechte Wurf ist im Kerncurriculum eigens in E.3 verortet. Die eigene Geschwindigkeitsmessung und die Datenerhebung zum freien Fall bleiben auch bei 4/4 individuell offen, solange dafür kein eigener Nachweis vorliegt. In den vorbereiteten Abschlussprofilen lässt sich das an „Freier Fall experimentell untersuchen“ nachvollziehen. [Fachentscheid zur Zuordnung von A und B](https://github.com/enpasos/skillpilot/blob/98b61309acc16c32a00f1bf05151163c2f2ef617/curricula/DE/Gymnasium/quality/release-model/physics-he-e1-assessment-placement-review-2026-11-20.md) · [Fachentscheid zu C und D](https://github.com/enpasos/skillpilot/blob/98b61309acc16c32a00f1bf05151163c2f2ef617/curricula/DE/Gymnasium/quality/learning-units/physics-constant-acceleration-2026-11-20-v3.md) · [Abschlussprofil G8](http://localhost:5177/auftraege/G8/ABCD) · [Abschlussprofil G9](http://localhost:5177/auftraege/G9/ABCD)
+
 ## Bestehensbelege, Lernplan und Lernfront vergleichen
 
 | Bildungsgang | Vergleich der drei Ausgangszustände | C und D bestanden | A, B, C und D bestanden |
