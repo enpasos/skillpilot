@@ -12,7 +12,13 @@ export type PhaseCode =
   | 'J1' | 'J2' | 'J3' | 'J4' | 'J5' | 'J6' | 'J7' | 'J8' | 'J9' | 'J10' | 'J11' | 'J12' | 'J13'
 export type Leitidee = 'L1' | 'L2' | 'L3' | 'L4' | 'L5'
 
+export interface NavigationSource { id: string; title: string; kind: 'canonicalSubtree' }
+
 export interface UiGoal {
+  /** Explicit canonicalSubtree references in this composition placement. */
+  compositionSubtrees?: { id: string; title: string }[]
+  /** Sources of a child placed directly here by the learner navigation projection. */
+  childNavigationSources?: ReadonlyMap<string, NavigationSource[]>
   id: string
   /** Original single-atom acquisition folder in this personal view. */
   preparationSource?: { id: string; title: string }

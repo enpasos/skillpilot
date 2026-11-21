@@ -190,32 +190,82 @@ async function checkTreeAndMapParents(duration) {
     const expected = [[pathTime, section], [tasks.A.id, section], [acceleration, childSection]]
     for (const [id, parent] of expected) assert.equal(await directTreeParent(id), parent, 'Tree parent of ' + id)
     await treeRow(pathTime).getByText('Notwendige Grundlagen', { exact: true }).waitFor()
+    const sourceId = '82b5df3d-b1a7-4c6f-bd62-18fbbbe097a3'
+    const sourceLabel = 'Waagerechter Wurf und Superposition (aus E.3)'
+    const sourceGoals = [
+      ['68c90ba6-c438-463c-9a53-cf61062d416a', 'Bezugssysteme und Geschwindigkeitsüberlagerung'],
+      ['89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2', 'Waagerechter Wurf analysieren'],
+    ]
+    assert.equal(await treeRow(sourceId).count(), 0)
+    for (const [id] of sourceGoals) {
+      assert.equal(await directTreeParent(id), section)
+      await treeRow(id).getByText(sourceLabel, { exact: true }).waitFor()
+    }
+    const treeEntries = await treeRow(section).locator('..').locator('[data-goal-id]').evaluateAll((rows, section) =>
+      rows.filter(row => row.dataset.goalId !== section).map(row => [row.dataset.goalId, row.parentElement.parentElement.parentElement
+        .querySelector(':scope > [data-goal-id]').dataset.goalId]), section)
+    assert.equal(treeEntries.length, 18)
 
-    await page.getByTestId('learner-main-content').getByTestId('learner-learning-map-open').click()
+    const open = page.getByTestId('learner-main-content').getByTestId('learner-learning-map-open')
+    await open.click()
     const dialog = page.getByTestId('learner-learning-map-dialog')
     await dialog.getByRole('button', { name: 'In E.1 Bewegungen und ihre Beschreibung hineinzoomen', exact: true }).click()
     const board = dialog.getByTestId('learning-map-board')
-    for (const [id, parent] of expected) {
+    const mapEntries = []
+    const resources = new Map([[unit.flashcardGoalId, 'Aus dem Stapel „Einführungsphase“'],
+      [unit.assessmentGoalId, 'Prüfung aus „Themenübergreifende Prüfungen“']])
+    // React Flow only renders the viewport. Fit the full board after both real resources arrive.
+    for (const [parent, count] of [[section, 17], [childSection, 3]]) {
       if (parent === childSection) {
         await board.getByRole('button', { name: 'In Beschleunigte Bewegung und freier Fall hineinzoomen', exact: true }).click()
       }
-      const node = board.locator('[data-entry-id="' + id + '"]')
-      await node.waitFor()
-      assert.equal(await board.getAttribute('data-scope-id'), parent, 'Map parent of ' + id)
-      if (id === pathTime) {
+      await dialog.getByRole('status').filter({ hasText: count + ' Bereiche.' }).waitFor()
+      await dialog.getByRole('button', { name: 'Diese Ebene einpassen', exact: true }).click()
+      await page.waitForFunction(count =>
+        document.querySelectorAll('.lum-canvas[aria-busy="false"] .lum-flow [data-entry-id]').length === count, count)
+      assert.equal(await board.getAttribute('data-scope-id'), parent)
+      for (const node of await board.locator('.lum-flow [data-entry-id]').all()) {
+        const id = await node.getAttribute('data-entry-id')
+        if (resources.has(id)) {
+          assert.equal(parent, section)
+          await node.getByText(resources.get(id), { exact: true }).waitFor()
+          resources.delete(id)
+        } else mapEntries.push([id, parent])
+      }
+      if (parent === section) {
         assert.equal(await board.locator('[data-entry-id="' + preparationFolder + '"]').count(), 0)
-        assert((await node.innerText()).includes('Notwendige Grundlagen'))
-        await node.locator('.lum-node-main').click()
+        const pathNode = board.locator('[data-entry-id="' + pathTime + '"]')
+        assert((await pathNode.innerText()).includes('Notwendige Grundlagen'))
+        await pathNode.locator('.lum-node-main').click()
         await page.waitForURL(url => decodeURIComponent(url.pathname) === '/learner/' + pathTime)
+        const search = dialog.getByRole('textbox', { name: 'In dieser Ebene suchen' })
+        for (const [id, title] of sourceGoals) {
+          const node = board.locator('[data-entry-id="' + id + '"]')
+          assert((await node.innerText()).includes(sourceLabel))
+          await search.fill(sourceLabel)
+          const options = dialog.getByRole('option')
+          assert.equal(await options.count(), 2)
+          await options.filter({ hasText: title }).click()
+          await page.waitForURL(url => decodeURIComponent(url.pathname) === '/learner/' + id)
+        }
       }
     }
+    assert.deepEqual(resources.size, 0)
+    assert.deepEqual(mapEntries.sort(), treeEntries.sort(), 'All E.1 owned parent-child relations agree.')
+    // The address of a multi-goal source opens that source, without choosing one member.
+    await page.goto(site + '/learner/' + sourceId)
+    await page.getByTestId('learner-current-goal').getByRole('heading', { name: sourceLabel, exact: true }).first().waitFor()
+    assert.equal(new URL(page.url()).pathname, '/learner/' + sourceId)
+    await open.click()
+    await dialog.locator('.lum-canvas[data-scope-id="' + section + '"][aria-busy="false"]').waitFor()
+    assert.equal(new URL(page.url()).pathname, '/learner/' + sourceId)
     await page.goto(site + '/learner/' + encodeURIComponent(preparationFolder))
     await page.getByTestId('learner-current-goal').getByRole('heading', {
       name: 'Bewegungen mit Weg-Zeit-Diagrammen beschreiben', exact: true,
     }).waitFor()
     assert.equal(new URL(page.url()).pathname, '/learner/' + pathTime)
     assert.deepEqual(await evidence(viewer), before)
-    console.log(duration, 'Baum und Karte: Weg-Zeit und Wagenprüfung direkt unter E.1, Beschleunigung in der Untereinheit; Herkunft und Zielaufruf bestätigt.')
+    console.log(duration, 'Alle 18 E.1-Elternpfade, zwei externe Ressourcen, Suche anhand der E.3-Herkunft und direkte Aufrufe beider Ziele sowie ihrer kanonischen Gruppe bestätigt.')
   } finally {
     await page.close()
   }

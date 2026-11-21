@@ -55,8 +55,8 @@ export interface LearningMapEntry {
   eyebrow?: string
   /** A view-only group with no unit contract of its own. */
   presentationGroup?: true
-  /** Original view groups represented directly by their sole actionable goal, outermost first. */
-  sourceSections?: { id: string; title: string }[]
+  /** Original containment groups, outermost first. A canonicalSubtree names provenance, independent of its member count. */
+  sourceSections?: { id: string; title: string; kind?: 'canonicalSubtree' }[]
   /** Unit map only: landscape IDs of the subjects whose goals the entry is or contains. */
   subjects?: string[]
   /** Unit map only: a goal the prerequisite closure added from outside the plan. */

@@ -420,6 +420,11 @@ export const deriveRuntimeCompositionScope = ({
   }
 }
 
+// Keep the label on its placement: another view or section may name the same source differently.
+const compositionSubtrees = (nodes: CompositionViewNode[]) => nodes.flatMap(node =>
+  node.kind === 'canonicalSubtree' && getCompositionProjectionRole(node) !== 'prerequisiteOnly'
+    ? [{ id: node.goalId, title: node.displayLabel?.trim() ?? '' }] : [])
+
 const createSyntheticStructureGoal = ({
   entry,
   view,
@@ -438,6 +443,7 @@ const createSyntheticStructureGoal = ({
   id: `composition:${view.viewId}:structure:${node.id}`,
   landscapeId: entry.meta.landscapeId,
   title: node.label,
+  compositionSubtrees: compositionSubtrees(node.children),
   description: node.label,
   phase: 'GLOBAL',
   themenfeld: '',
@@ -726,6 +732,7 @@ const applyAnchoredProjection = ({
 
   const finalAnchorChildIds = [...preservedAnchorChildren, ...childIds]
   anchorGoal.contains = finalAnchorChildIds
+  anchorGoal.compositionSubtrees = compositionSubtrees(nodes)
   if (anchorStructure && view.viewFormatVersion === '1.2') {
     anchorGoal.extendedData = { ...anchorGoal.extendedData, compositionViewFormatVersion: view.viewFormatVersion }
   }
@@ -963,7 +970,7 @@ export const applyCompositionViewProjection = (
         title: presentation.displayLabel ?? maybeOpaque.title,
         extendedData: {
           ...(maybeOpaque.extendedData ?? {}),
-          ...(presentation.displayLabel ? { compositionDisplayLabel: presentation.displayLabel } : {}),
+          ...(presentation.displayLabel ? { compositionDisplayLabel: presentation.displayLabel, compositionCanonicalTitle: goal.title } : {}),
           ...(typeof presentation.treeOrder === 'number' ? {
             treeOrder: presentation.treeOrder,
             compositionSourceOrder: presentation.treeOrder,

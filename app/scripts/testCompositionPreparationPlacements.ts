@@ -4,6 +4,7 @@ import { prepareLandscapeEntries, type LandscapeEntry } from '../src/hooks/useLa
 import type { LearningGoal, SkillLandscape } from '../src/landscapeTypes'
 import { applyCompositionViewProjection, applyPersonalCurriculumProjection } from '../src/utils/compositionViewRuntime'
 import { buildLearnerNavigationProjection, normalizeLearnerProjectedEntries } from '../src/utils/learnerTreeProjection'
+import { buildLearnerUnitMapProjection } from '../src/components/learningUnitMap/learnerUnitMapProjection'
 import { buildDirectChildrenMap } from '../src/utils/treeProjectionRuntime'
 import type { CompositionView } from '../src/utils/authoring/compositionViewAuthoring'
 import { compileCompositionView } from '../src/utils/authoring/compositionViewAuthoring'
@@ -222,3 +223,44 @@ for (const reverse of [false, true]) for (const hasOwnPlace of [false, true]) {
   assert.deepEqual([...reachable(actual)].filter(key => ['a', 'b', 'c', 'outside'].includes(key)).sort(), ['a', 'b', 'c'])
 }
 console.log('Explicit preparation placements passed: authoritative closure only, full ancestor reconstruction, no scope growth, no target relocation, idempotence, subject ownership and legacy/global/subtree boundaries.')
+
+// An explicitly placed canonical subject area is a source, not a new teaching unit.
+const areaSource = prepareLandscapeEntries([{ ...raw, goals: [
+  { ...goal('root', [], ['area', 'opaque', 'support', 'material']), title: 'Fach', tags: ['root'] },
+  goal('area', [], ['a', 'nested']), goal('nested', [], ['b']), goal('a'), goal('b'),
+  goal('opaque', [], ['hidden']), goal('hidden'), goal('support', [], ['unused']), goal('unused'),
+  { ...goal('material', [], ['lab']), resourceLinks: [{ type: 'document', title: 'Labor', url: '/labor' }] }, goal('lab'),
+] }])
+const areaView: CompositionView = { ...view, rootNodes: [{ kind: 'structure', id: 'subject', label: 'Fach',
+  childOrder: { after: [{ unit: 'later', after: 'earlier' }] }, children: [
+    { kind: 'structure', id: 'earlier', label: 'Unterricht', children: [
+      { kind: 'canonicalSubtree', goalId: 'area', displayLabel: 'Lokale Herkunft' },
+      { kind: 'canonicalSubtree', goalId: 'material' }, { kind: 'goalEntry', goalId: 'opaque' },
+      { kind: 'canonicalSubtree', goalId: 'support', projectionRole: 'prerequisiteOnly' },
+    ] },
+    { kind: 'structure', id: 'later', label: 'Zweiter Lernort', children: [{ kind: 'canonicalSubtree', goalId: 'area' }] },
+  ] }] }
+const areaGoals = all(applyCompositionViewProjection(areaSource, areaView))
+const nav = buildLearnerNavigationProjection(areaGoals, buildDirectChildrenMap(areaGoals))
+assert.deepEqual(nav.childrenByParent.get(id('earlier')), ['a', 'b', 'material', 'opaque'])
+assert.deepEqual(nav.childrenByParent.get(id('later')), ['a', 'b'])
+assert.deepEqual(nav.childrenByParent.get('root'), [id('earlier'), id('later')])
+assert.deepEqual(nav.childrenByAlias.get('area'), ['a', 'nested'])
+assert.deepEqual(nav.childrenByAlias.get('nested'), ['b'])
+assert(!nav.targetByAlias.has('area'))
+assert(!nav.childrenByAlias.has('material'))
+assert(!nav.childrenByAlias.has('opaque'))
+assert(!nav.childrenByAlias.has('support'))
+const labels = (parent: string, atom: string) =>
+  nav.navigationGoals.get(parent)?.childNavigationSources?.get(atom)?.map(source => source.title)
+assert.deepEqual(labels(id('earlier'), 'b'), ['Lokale Herkunft', 'nested'])
+assert.deepEqual(labels(id('later'), 'b'), ['area', 'nested'], 'The unlabeled placement uses its canonical title.')
+assert.deepEqual(areaGoals.get('area')?.contains, ['a', 'nested'])
+assert.equal(areaGoals.get(id('earlier'))?.childNavigationSources, undefined, 'The shared domain input is immutable.')
+const unitMap = buildLearnerUnitMapProjection({ rootGoals: [areaGoals.get('root')!], goalIndexAll: nav.navigationGoals,
+  canonicalGoalIndexAll: areaGoals, visibleGoalIds: new Set(areaGoals.keys()), visibleChildrenByParent: nav.childrenByParent,
+  units: new Map(['earlier', 'later'].map(unit => [id(unit), { key: unit }])), after: [{ unit: 'later', after: 'earlier' }] })
+assert.equal(unitMap.entryPaths?.area, undefined, 'A multi-board source must not pick its first member or board.')
+assert.deepEqual(unitMap.entries.a.sourceSections?.map(source => source.title), ['Lokale Herkunft'])
+assert(unitMap.findings.some(finding => finding.kind === 'goalInTwoPlaces'))
+console.log('Canonical subtree navigation passed: nested sources, localized placements, independent material, opaque and support-only groups, order, and ambiguous source routes.')

@@ -144,6 +144,7 @@ export function buildLearnerUnitMapProjection(input: LearnerUnitMapProjectionInp
     const goal = goalIndexAll.get(nodeId)!
     const id = nodes.length === 1 ? nodeId : syntheticUnitId(identity.key)
     entries[id] = { id, title: identity.label ?? audienceTitle(goal, treeParentId),
+      sourceSections: nodes.length === 1 && treeParentId ? goalIndexAll.get(treeParentId)?.childNavigationSources?.get(nodeId) : undefined,
       presentationGroup: nodes.length === 1 ? identity.presentationGroup : undefined,
       description: nodes.length === 1 ? goal.description : '', kind: 'unit', unitType: 'unit', children: [], requires: [], position: { x: 0, y: 0 } }
     childSet.set(id, new Set())
@@ -159,16 +160,23 @@ export function buildLearnerUnitMapProjection(input: LearnerUnitMapProjectionInp
   const preparationIds: string[] = []
   let preparationTitle: string | undefined
   const aliasOwner = new Map<string, string>()
+  const displacedSources = new Set<string>()
   const placeLeaf = (id: string, parentId: string, treeParentId?: string) => {
+    const sources = treeParentId ? goalIndexAll.get(treeParentId)?.childNavigationSources?.get(id) ?? [] : []
     const existing = parentOf.get(id)
     if (existing !== undefined) {
-      if (existing !== parentId) report({ kind: 'goalInTwoPlaces', goalIds: [id],
-        message: `Goal ${id} lies under two units; it stays in its first place.` }, `goal:${id}`)
+      if (existing !== parentId) {
+        for (const source of sources) displacedSources.add(source.id)
+        report({ kind: 'goalInTwoPlaces', goalIds: [id],
+          message: `Goal ${id} lies under two units; it stays in its first place.` }, `goal:${id}`)
+      }
       return
     }
     const goal = goalIndexAll.get(id)!
+    const sourceSections = goal.preparationSource && goal.preparationSource.id !== treeParentId
+      ? [goal.preparationSource, ...sources] : sources
     entries[id] = { id, title: audienceTitle(goal, treeParentId), description: goal.description,
-      sourceSections: goal.preparationSource && goal.preparationSource.id !== treeParentId ? [goal.preparationSource] : undefined,
+      sourceSections: sourceSections.length ? sourceSections : undefined,
       kind: learnerMapEntryKind(goal, canonicalGoalIndexAll.get(id), 0), children: [], requires: [],
       position: { x: 0, y: 0 }, subjects: goal.landscapeId ? [goal.landscapeId] : [] }
     treeParentOf.set(id, treeParentId)
@@ -469,8 +477,25 @@ export function buildLearnerUnitMapProjection(input: LearnerUnitMapProjectionInp
     order.push(id)
   }
 
+  const boardsBySource = new Map<string, Set<string>>()
   for (const id of order) {
-    for (const source of entries[id].sourceSections ?? []) entryPaths[source.id] ??= entryPaths[id]
+    for (const source of entries[id].sourceSections ?? []) {
+      if (goalIndexAll.get(id)?.preparationSource?.id === source.id) {
+        entryPaths[source.id] ??= entryPaths[id] // explicit single-atom acquisition alias
+      } else {
+        const boards = boardsBySource.get(source.id) ?? new Set<string>()
+        boards.add(parentOf.get(id)!)
+        boardsBySource.set(source.id, boards)
+      }
+    }
+  }
+  // A source group opens its containing board, never one arbitrary member.
+  // When distributed across boards it has no unique map location.
+  for (const [source, boards] of boardsBySource) {
+    const prior = aliasOwner.get(source)
+    if (prior) boards.add(prior)
+    if (boards.size === 1 && !displacedSources.has(source)) aliasOwner.set(source, [...boards][0])
+    else aliasOwner.delete(source)
   }
 
   // Subjects come from the goals' landscapes, never from titles.

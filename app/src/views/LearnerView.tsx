@@ -932,6 +932,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   )
   const {
     childrenByParent: learnerVisibleChildrenByParent,
+    navigationGoals,
     targetByAlias,
     childrenByAlias,
   } = learnerTreeProjection
@@ -3638,7 +3639,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             <CompetenceTree
               key={learnerTreeScopeKey}
               rootGoals={visibleRootGoals}
-              allGoals={goalIndexAll}
+              allGoals={navigationGoals}
               getMastery={getEffectiveMastery}
               plannedGoals={plannedGoals}
               plannedScopeGoalIds={plannedScopeGoalIds}
@@ -4288,7 +4289,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             rootGoals: visibleRootGoals,
             language: localizedLanguage,
             useRawGoalTitles: currentLandscapeHasMatchedCompositionView,
-            goalIndexAll,
+            goalIndexAll: navigationGoals,
             canonicalGoalSources,
             visibleGoalIds: visibleGoals,
             visibleChildrenByParent: learnerVisibleChildrenByParent,
