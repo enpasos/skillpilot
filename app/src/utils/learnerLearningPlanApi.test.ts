@@ -20,6 +20,7 @@ import {
   previewLearnerLearningPlans,
   reconcileLearnerLearningPlans,
   saveLearnerLearningPlan,
+  setUnitAssignmentActivity,
   switchLearnerLearningPlan,
 } from './learnerLearningPlanApi'
 import {
@@ -180,6 +181,22 @@ assert.equal(completedUnit.continueReason, 'unit-assignment-completed')
 assert.deepEqual(completedUnit.blocks[0].kind === 'learning' && completedUnit.blocks[0].unitAssignment, assignmentRef)
 assert.throws(() => parseLearnerLearningPlanDetail({ ...planDetail,
   blocks: [{ ...assignmentBlock, unitAssignment: { sectionGoalId: 'motion', revision: 'v1' } }] }))
+const editable = { planId: 'bded5c51-3c59-4219-aea4-ca29351fcccf', revision: 7, landscapeId: 'first', blockId: 'unit/A #1', sectionGoalId: 'section',
+  title: 'Gleiche Überschrift', active: true, canReactivate: false }
+const otherEditable = { ...editable, planId: 'other', blockId: 'unit-2', active: false, canReactivate: true }
+const management = parseLearnerLearningPlansResponse({ ...parsed, plans: [], storedUnitAssignments: [editable, otherEditable] })
+assert.throws(() => parseLearnerLearningPlansResponse({ ...parsed, storedUnitAssignments: [editable, editable] }), /Duplicate/u)
+assert.deepEqual(management.storedUnitAssignments, [editable, otherEditable], 'Stored blocks remain manageable independently of a current plan offer.')
+assert.throws(() => parseLearnerLearningPlansResponse({ ...parsed, storedUnitAssignments: [{ ...editable, active: null }] }))
+await setUnitAssignmentActivity('learner-42', editable, false, { apiBase: '', fetchImpl: async (url, request) => {
+  assert.equal(url, '/api/ui/learners/learner-42/learning-plans/bded5c51-3c59-4219-aea4-ca29351fcccf/unit-assignment-activity')
+  assert.equal(request?.method, 'PUT')
+  assert.deepEqual(JSON.parse(request?.body as string), { expectedRevision: 7, blockId: 'unit/A #1', active: false })
+  return new Response(null, { status: 204 })
+} })
+await assert.rejects(setUnitAssignmentActivity('learner-42', editable, false, { fetchImpl: async () => new Response('', { status: 409 }) }),
+  (failure: unknown) => failure instanceof LearnerLearningPlanApiError && failure.status === 409)
+
 const parsedPausedPlan = parseLearnerLearningPlanDetail({
   ...planDetail,
   blocks: [learningTopics, { ...examTopicBlock, active: false }, {

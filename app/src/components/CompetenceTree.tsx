@@ -414,6 +414,8 @@ const TreeNode: React.FC<TreeNodeProps> = ({
                   : 'text-slate-700 dark:text-slate-200' // Open (Normal Scope)
             }`}
           />
+          {audience === 'learner' && parentGoal?.childNavigationSources?.get(goal.id)?.map(source =>
+            <small key={source.id} className="block text-xs text-slate-500">{source.title}</small>)}
           {audience === 'learner' && goal.preparationSource && <small className="block text-xs text-slate-500">
             {goal.preparationSource.title}
           </small>}

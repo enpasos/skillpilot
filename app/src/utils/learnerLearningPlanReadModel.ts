@@ -110,3 +110,6 @@ export const formatLearnerLearningPlanPeriod = (
   endDate: LearnerLearningPlanDate,
   language: LabelLanguage,
 ): string => `${formatLearnerLearningPlanDate(startDate, language)} – ${formatLearnerLearningPlanDate(endDate, language)}`
+
+export const storedUnitAssignmentAnchor = (planId: string, blockId: string) =>
+  'stored-unit-' + planId + '-' + blockId

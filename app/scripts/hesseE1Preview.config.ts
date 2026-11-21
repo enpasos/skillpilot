@@ -7,6 +7,7 @@ import { CURRENT_TERMS_VERSION } from '../src/utils/legalTermsVersion'
 const appRoot = resolve(import.meta.dirname, '..')
 const runtime = process.env.SKILLPILOT_E1_PREVIEW_DIR
 if (!runtime) throw new Error('Start this preview with scripts/preview_hessen_physics_e1.py.')
+const course = process.env.SKILLPILOT_E1_PHYSICS_COURSE === 'LK' ? 'LK' : 'GK'
 
 const scope = JSON.parse(readFileSync(resolve(appRoot,
   '../docs/concept/skill-graph/examples/hessen-physik-e1/umfang.json'), 'utf8'))
@@ -18,6 +19,7 @@ type GradedScenario = {
   credited: number
   individuallyOpen: number
   completed: number
+  planPositionCount: number | null
   unitAssignments?: { title: string, status: string, passedParts: number | null, requiredParts: number }[]
   next: string
   frontier: { id: string, title: string }[]
@@ -41,13 +43,13 @@ function compareScenarios(duration: string, assignments = false) {
         <td>${unit?.passedParts ?? '–'} / ${unit?.requiredParts ?? '–'}</td><td>${html(data.next || 'Kein weiterer Vorschlag')}</td></tr>`
     })
     return `<!doctype html><html lang="de"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>Einheitenaufträge E.1 (${duration})</title><style>body{font:1rem/1.5 system-ui;margin:2rem auto;padding:0 1rem;max-width:65rem}
+      <title>Einheitenaufträge E.1 (${duration} · ${course})</title><style>body{font:1rem/1.5 system-ui;margin:2rem auto;padding:0 1rem;max-width:65rem}
       table{border-collapse:collapse}th,td{text-align:left;vertical-align:top;padding:.6em;border-bottom:1px solid #aaa}a{color:#174e74}</style>
-      <h1>Einheitenaufträge E.1 (${duration})</h1><p>Die vier Prüfungsteile beenden den ausdrücklich gewählten Einheitenauftrag.
+      <h1>Einheitenaufträge E.1 (${duration} · ${course})</h1><p>Die vier Prüfungsteile beenden den ausdrücklich gewählten Einheitenauftrag.
       Einzeln noch offene Fachziele kannst du freiwillig bearbeiten. Ein zusätzlich ausgewählter Einzelauftrag bleibt bestehen.</p>
       <p>Stand beim Start der Vorschau. Die Auftragsnamen öffnen das jeweilige reguläre Cockpit.</p>
       <table><thead><tr><th>Auftrag</th><th>Status</th><th>Bestandene Teile</th><th>Nächster Planvorschlag</th></tr></thead><tbody>${rows.join('')}</tbody></table>
-      <p><a href="/vergleich/${duration}">Zum Vergleich mit dem Lernplan aus 17 Einzelpositionen</a></p></html>`
+      <p><a href="/vergleich/${duration}">Zum Vergleich mit dem Einzelzielplan</a></p></html>`
   }
   const scenarios = [['viewer', 'Kein Prüfungsteil bestanden'], ['CD', 'C und D bestanden'], ['ABCD', 'Alle vier bestanden']]
   const sections = scenarios.map(([key, label]) => {
@@ -67,12 +69,14 @@ function compareScenarios(duration: string, assignments = false) {
       </section>`
   })
   return `<!doctype html><html lang="de"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>E.1 – Lernplan und Lernfront (${duration})</title>
+    <title>E.1 – Lernplan und Lernfront (${duration} · ${course})</title>
     <style>body{font:1rem/1.5 system-ui;margin:2rem auto;padding:0 1rem;max-width:80rem;color:#17202b}main{display:grid;
     grid-template-columns:repeat(auto-fit,minmax(min(100%,20rem),1fr));gap:1.5rem}dt{font-weight:600}dd{margin:0 0 .6em}
     section{border-top:2px solid #436e84}ul{padding-inline-start:1.3em}a{color:#174e74}th,td{text-align:left;vertical-align:top;padding:.3em}</style>
-    <h1>E.1 – Lernplan und Lernfront (${duration})</h1><p>Stand bei Vorschau-Start am ${html(initial[duration + '/viewer'].asOf)}.
-    Alle drei Profile haben einen Lernplan mit 17 einzeln ausgewählten Positionen. Die verlinkten Überschriften öffnen das jeweilige Cockpit.</p>
+    <h1>E.1 – Lernplan und Lernfront (${duration} · ${course})</h1><p>Stand bei Vorschau-Start am ${html(initial[duration + '/viewer'].asOf)}.
+    Alle drei Profile haben den Abschnitt E.1 als Einzelzielplan gewählt. Daraus ergeben sich ${initial[duration + '/viewer'].planPositionCount} Planpositionen.
+    ${course === 'LK' ? 'Die Zusatzprüfungen zum waagerechten Wurf und zur Mehrphasenbewegung lassen sich einzeln dazuwählen.' : 'Die Zusatzprüfung zum waagerechten Wurf lässt sich einzeln dazuwählen.'}
+    Die verlinkten Überschriften öffnen das jeweilige Cockpit.</p>
     <p>Die Prüfungsbelege stammen aus lokalen Bewertungen mit synthetischen Punkten an der Bestehensgrenze.
     Die Anmeldung des Coaches ist simuliert. Einzelne Fachziele wurden bei der Einrichtung nicht als gemeistert verbucht.</p>
     ${initial[duration + '/unitOpen'] ? '<p><a href="/auftraege/' + duration + '">Zum ausdrücklich gewählten E.1-Einheitenauftrag</a></p>' : ''}

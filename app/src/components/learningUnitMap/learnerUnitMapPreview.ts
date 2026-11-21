@@ -356,7 +356,7 @@ export function createLearnerUnitMapCache() {
       const goal = input.goalIndexAll.get(id)
       return [goal?.landscapeId, goal?.extendedData?.syntheticStructureKind, goal?.extendedData?.compositionViewId,
         goal?.extendedData?.compositionNodeId, goal?.extendedData?.compositionChildOrder,
-        goal?.extendedData?.compositionChildOrderChildIds, goal?.personalCurriculumProjection?.presentationOnly, goal?.preparationSource]
+        goal?.extendedData?.compositionChildOrderChildIds, goal?.personalCurriculumProjection?.presentationOnly, goal?.preparationSource, goal?.childNavigationSources && [...goal.childNavigationSources]]
     })])
     if (previous?.signature !== signature || previous.canonical !== input.canonicalGoalIndexAll || previous.sources !== input.landscapeSources) {
       previous = { signature, canonical: input.canonicalGoalIndexAll, sources: input.landscapeSources, byStep: new Map() }

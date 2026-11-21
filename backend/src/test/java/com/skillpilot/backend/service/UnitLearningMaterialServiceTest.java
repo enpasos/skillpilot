@@ -53,6 +53,16 @@ class UnitLearningMaterialServiceTest {
         assertThat(g8.assessmentGoalId()).isEqualTo("a9562b05-c54d-5635-9244-3f7dd24a8642");
         assertThat(g8.sectionAssessmentPolicy().voluntaryAssessmentGoalIds())
                 .containsExactly("6ea3fb3c-abdc-568f-ab13-97c36dc274e4");
+        String common = "6ea3fb3c-abdc-568f-ab13-97c36dc274e4";
+        String advanced = "2b9e565f-d9b4-5e23-b5b7-b7977cecff06";
+        for (String view : g8.assessmentContract().viewIds()) {
+            assertThat(g8.sectionAssessmentPolicy().voluntaryAssessmentsFor(view))
+                    .containsExactlyElementsOf(view.contains("-lk") ? List.of(common, advanced) : List.of(common));
+        }
+        for (String merged : List.of("merged:de-he-gym-sekii-physics-lk+de-he-gym-sekii-physics-gk",
+                "merged:de-he-gym-sekii-physics-gk+de-he-gym-sekii-physics-lk")) {
+            assertThat(g8.sectionAssessmentPolicy().voluntaryAssessmentsFor(merged)).containsExactly(common, advanced);
+        }
         assertThat(service.find(PHYSICS, "merged:de-he-gym-physics-lk-g8+another-view", MOTION)).isEmpty();
         assertThat(service.find(PHYSICS, "de-he-gym-physics-gk-g9", "physics-q1")).isEmpty();
         assertThat(service.find("mathematics", "de-he-gym-physics-gk-g9", MOTION)).isEmpty();
@@ -108,6 +118,25 @@ class UnitLearningMaterialServiceTest {
                     .find(PHYSICS, "de-he-gym-physics-gk-g9", MOTION).orElseThrow();
             assertThat(material.assessmentContract()).isNotNull();
             assertThat(material.sectionAssessmentPolicy()).isNull();
+        }
+    }
+
+    @Test
+    void anUnknownViewOrRepeatedOrRequiredAdditionalGoalInvalidatesTheSectionPolicy(@TempDir Path repository) throws IOException {
+        var mapper = new ObjectMapper();
+        var source = mapper.readTree(Path.of("../curricula/DE/Gymnasium/materials/physics/he-e1-motion-practice.json").toFile());
+        var local = Files.createDirectories(repository.resolve("DE/Gymnasium/materials")).resolve("sample-practice.json");
+        String view = "de-he-gym-sekii-physics-lk";
+        String common = source.at("/unit/sectionAssessmentPolicy/voluntaryAssessmentGoalIds/0").asText();
+        String required = source.at("/unit/assessmentContract/parts/0/goalId").asText();
+        for (var refs : List.of(Map.of("unknown-view", List.of(common)),
+                Map.of(view, List.of(common)), Map.of(view, List.of(required)), Map.of(view, List.of("repeat", "repeat")))) {
+            var changed = source.deepCopy();
+            var policy = (com.fasterxml.jackson.databind.node.ObjectNode) changed.at("/unit/sectionAssessmentPolicy");
+            policy.set("additionalVoluntaryAssessmentGoalIdsByView", mapper.valueToTree(refs));
+            mapper.writeValue(local.toFile(), changed);
+            assertThat(UnitLearningMaterialService.fromRepository(repository, mapper)
+                    .find(PHYSICS, view, MOTION).orElseThrow().sectionAssessmentPolicy()).isNull();
         }
     }
 

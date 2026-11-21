@@ -259,7 +259,7 @@ public class CoachToolFacade {
             String skillpilotId,
             String communicationLocale) {
         learnerService.assertActiveLearnerRouteAccess(skillpilotId);
-        return requireLearningPlanService().getTodayStatus(skillpilotId, communicationLocale);
+        return requireLearningPlanService().getCoachTodayStatus(skillpilotId, communicationLocale);
     }
 
     /**
@@ -274,7 +274,7 @@ public class CoachToolFacade {
             String communicationLocale) {
         learnerService.assertWritableLearningSession(skillpilotId);
         LearnerLearningPlanService plans = requireLearningPlanService();
-        LearnerPlanTodayStatus status = plans.getTodayStatus(skillpilotId, communicationLocale);
+        LearnerPlanTodayStatus status = plans.getCoachTodayStatus(skillpilotId, communicationLocale);
         if (!status.resumeAvailable()) {
             throw new ResponseStatusException(
                     HttpStatus.CONFLICT,
@@ -314,7 +314,7 @@ public class CoachToolFacade {
         // Serialize subject-name resolution with plan edits and transitions.
         // The downstream switch verifies the selected plan revision again.
         learnerService.acquireLearningPlanMutationLock(skillpilotId);
-        LearnerPlanTodayStatus status = plans.getTodayStatus(skillpilotId, communicationLocale);
+        LearnerPlanTodayStatus status = plans.getCoachTodayStatus(skillpilotId, communicationLocale);
         if (status == null || !status.followLearningPlans()) {
             throw new ResponseStatusException(
                     HttpStatus.CONFLICT,
@@ -345,36 +345,26 @@ public class CoachToolFacade {
                     "Learning-plan subject switching is not currently available");
         }
 
-        LearnerLearningPlanApi.PlanDetail selectedPlan = null;
-        boolean planMissing = false;
+        LearnerLearningPlanApi.PlanDetail selectedPlan;
         try {
-            selectedPlan = plans.getPlan(
-                    skillpilotId,
-                    selectedSubject.landscapeId(),
-                    asOf);
-        } catch (ResponseStatusException exception) {
-            if (exception.getStatusCode().is5xxServerError()) {
-                throw exception;
-            }
-            boolean unavailableSchedule = exception.getStatusCode() == HttpStatus.CONFLICT
+            boolean allowUnevaluable = !selectedSubject.evaluable()
                     && status.unavailablePlanCount() > 0 && selectedSubject.canContinue();
-            if (exception.getStatusCode() != HttpStatus.NOT_FOUND && !unavailableSchedule) {
-                throw new ResponseStatusException(
-                        HttpStatus.CONFLICT,
-                        "The requested subject cannot be switched right now");
+            var stored = plans.findPlan(skillpilotId, selectedSubject.landscapeId(), asOf, allowUnevaluable);
+            if (stored == null || stored.isPresent() && (stored.get().planId() == null
+                    || !Objects.equals(stored.get().landscapeId(), selectedSubject.landscapeId()))) {
+                throw new ResponseStatusException(HttpStatus.CONFLICT);
             }
-            planMissing = true;
-        }
-        if (!planMissing && (selectedPlan == null || selectedPlan.planId() == null
-                || !Objects.equals(selectedPlan.landscapeId(), selectedSubject.landscapeId()))) {
-            throw new ResponseStatusException(
-                    HttpStatus.CONFLICT,
-                    "The requested subject cannot be switched right now");
+            selectedPlan = stored.orElse(null);
+        } catch (ResponseStatusException exception) {
+            if (exception.getStatusCode().is5xxServerError()) throw exception;
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "The requested subject cannot be switched right now");
         }
 
         final LearnerLearningPlanApi.TransitionResponse transition;
         try {
-            transition = selectedPlan == null || selectedPlan.stale()
+            boolean usePersonalSubject = selectedPlan == null || selectedPlan.stale()
+                    || "unit-assignment-unavailable".equals(selectedPlan.continueReason());
+            transition = usePersonalSubject
                     ? plans.switchPersonalCurriculumSubject(skillpilotId, selectedSubject.landscapeId())
                     : plans.switchPlan(
                     skillpilotId,
@@ -430,9 +420,8 @@ public class CoachToolFacade {
     }
 
     /**
-     * A subject is switchable when its published name is well formed and exactly one plan
-     * landscape backs it. Plan counts never gate this: the ability to keep learning is
-     * independent of whether the plan status can be evaluated.
+     * A subject choice requires a well-formed published name and exactly one backing landscape.
+     * Learning may continue even when the plan status cannot be evaluated.
      */
     private static boolean isPublishedPlanSubject(
             LearnerPlanTodayStatus.SubjectStatus subject) {

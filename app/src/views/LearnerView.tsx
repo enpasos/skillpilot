@@ -14,6 +14,7 @@ import { LearnerActiveGoalBanner } from '../components/LearnerActiveGoalBanner'
 import { LevelCompletionCard } from '../components/LevelCompletionCard'
 import { UnitAssessmentSummary } from '../components/UnitAssessmentSummary'
 import { LearnerUnitAssignment } from '../components/LearnerUnitAssignment'
+import { StoredUnitAssignments } from '../components/StoredUnitAssignments'
 import { Settings, Database, Menu, X, Target, Send, Check, MoveRight, BookOpen, ClipboardCheck, PanelLeftClose, PanelLeftOpen, Map as MapIcon, Construction } from 'lucide-react'
 import { InfoModal } from '../components/InfoModal'
 import { LogoutButton } from '../components/LogoutButton'
@@ -156,7 +157,7 @@ export interface LearnerGoalNavigationMapProps {
   activeGoalId: string | null
   getMastery: (goalId: string) => number
   completionWaivers: ReadonlyMap<string, CompletionTreeWaiver>
-  unitAssessmentSummary?: { scopeGoalId: string; content: React.ReactNode }
+  unitAssessmentSummary?: { scopeGoalId: string; parts: readonly { goalId: string }[]; content: React.ReactNode }
   revealRequest?: { entryId: string; nonce: number }
   onSelectGoal: (goalId: string) => void
   getFlashcardSource?: (goal: UiGoal) => string | undefined
@@ -521,6 +522,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const [learningPlansLoadState, setLearningPlansLoadState] = useState<{
     scopeKey: string
     status: LearnerStateLoadStatus
+    confirmedLanguage?: string
   }>({
     scopeKey: learnerStateScopeKey,
     status: skillpilotId ? 'loading' : 'ready',
@@ -932,6 +934,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   )
   const {
     childrenByParent: learnerVisibleChildrenByParent,
+    navigationGoals,
     targetByAlias,
     childrenByAlias,
   } = learnerTreeProjection
@@ -1852,7 +1855,12 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       requestScopeKey,
     )
     learningPlansRefreshInFlightRef.current = true
-    setLearningPlansLoadState({ scopeKey: requestScopeKey, status: 'loading' })
+    // A background read keeps the last confirmed plan revision usable for guarded edits.
+    setLearningPlansLoadState(previous => ({
+      scopeKey: requestScopeKey,
+      status: 'loading',
+      confirmedLanguage: previous.scopeKey === requestScopeKey ? previous.confirmedLanguage : undefined,
+    }))
     try {
       // One backend snapshot supplies schedule and authoritative status together.
       const startedRequest = takeStartedLearningPlans(skillpilotId, localizedLanguage)
@@ -1865,7 +1873,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       learningPlansRefreshInFlightRef.current = false
       setLearningPlans(response)
       setLearningPlansDataScopeKey(requestScopeKey)
-      setLearningPlansLoadState({ scopeKey: requestScopeKey, status: 'ready' })
+      setLearningPlansLoadState({ scopeKey: requestScopeKey, status: 'ready', confirmedLanguage: localizedLanguage })
       return response
     } catch (error) {
       if (!isCurrentRequest()) return null
@@ -2524,6 +2532,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const retryLearningPlans = useCallback(async () => {
     setLearningPlanActionError(null)
     setLearningPlanActionsBlocked(false)
+    // After a write or explicit retry, require a newly confirmed revision before another edit.
+    setLearningPlansLoadState(current => ({ ...current, confirmedLanguage: undefined }))
     learningPlanReconcileAttemptedKeyRef.current = null
     await Promise.all([
       refreshState(true),
@@ -3438,10 +3448,12 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const unitAssignmentControl = skillpilotId && levelCompletion?.calculationStatus === 'valid' && assessment && unitLandscapeId
     ? <LearnerUnitAssignment key={skillpilotId + ':' + assessment.sectionGoalId} learnerId={skillpilotId} landscapeId={unitLandscapeId}
         assessment={assessment} completion={levelCompletion} language={localizedLanguage} goalTitle={completionGoalTitle}
+        storedAssignments={localizedLearningPlans?.storedUnitAssignments}
         disabled={learnerStateLoadStatus !== 'ready' || completionActionBusy} onSaved={retryLearningPlans} />
     : null
   const unitAssessmentSummary = levelCompletion?.calculationStatus === 'valid' && levelCompletion.unitAssessment ? {
     scopeGoalId: levelCompletion.unitAssessment.sectionGoalId,
+    parts: levelCompletion.unitAssessment.parts,
     content: <UnitAssessmentSummary assessment={levelCompletion.unitAssessment} completion={levelCompletion} language={localizedLanguage}
       titleForGoal={completionGoalTitle} allowStart={learnerStateLoadStatus === 'ready' && !completionActionBusy}
       onShowGoal={id => {
@@ -3638,7 +3650,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             <CompetenceTree
               key={learnerTreeScopeKey}
               rootGoals={visibleRootGoals}
-              allGoals={goalIndexAll}
+              allGoals={navigationGoals}
               getMastery={getEffectiveMastery}
               plannedGoals={plannedGoals}
               plannedScopeGoalIds={plannedScopeGoalIds}
@@ -4215,6 +4227,12 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                 ) : null}
               </section>
             )}
+            {skillpilotId && localizedLearningPlans?.storedUnitAssignments && localizedLearningPlans.storedUnitAssignments.length > 0 && <StoredUnitAssignments
+              key={skillpilotId} learnerId={skillpilotId} assignments={localizedLearningPlans.storedUnitAssignments}
+              language={localizedLanguage}
+              disabled={learningPlansLoadState.scopeKey !== learnerStateScopeKey
+                || learningPlansLoadState.confirmedLanguage !== localizedLanguage || learningPlanActionsBlocked}
+              sectionTitle={completionGoalTitle} subjectTitle={id => learningPlanSubjectLabels.get(id)} onRefresh={retryLearningPlans} />}
           </div>
         </div>
       </main>
@@ -4288,7 +4306,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             rootGoals: visibleRootGoals,
             language: localizedLanguage,
             useRawGoalTitles: currentLandscapeHasMatchedCompositionView,
-            goalIndexAll,
+            goalIndexAll: navigationGoals,
             canonicalGoalSources,
             visibleGoalIds: visibleGoals,
             visibleChildrenByParent: learnerVisibleChildrenByParent,

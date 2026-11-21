@@ -3,6 +3,7 @@ import assert from 'node:assert/strict'
 import React from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 
+import { StoredUnitAssignments } from '../src/components/StoredUnitAssignments'
 import { LearnerPlanTodayOverview } from '../src/components/LearnerPlanTodayOverview'
 import type {
   LearnerLearningPlanSummary,
@@ -643,3 +644,16 @@ assert.match(mergedPlansMarkup, /Mathematik A/u)
 assert.match(mergedPlansMarkup, /Mathematik B/u)
 assert.doesNotMatch(mergedPlansMarkup, /data-testid="learner-plan-switch"/u, 'merged plans expose details without guessing a navigation target')
 console.log('Learner plan overview and shared weekly preview UI tests passed')
+
+const stored = { planId: 'plan', revision: 3, landscapeId: 'physics', sectionGoalId: 'E1', title: 'Einheit', blockId: 'active',
+  active: true, canReactivate: false }
+for (const language of ['de', 'en']) {
+  const editable = renderToStaticMarkup(<StoredUnitAssignments learnerId="learner" language={language} disabled={false}
+    sectionTitle={() => 'E1'} subjectTitle={() => 'Physik'} onRefresh={async () => {}}
+    assignments={[stored, { ...stored, blockId: 'paused', active: false, canReactivate: true },
+      { ...stored, blockId: 'obsolete', active: false }]} />)
+  assert.equal((editable.match(/<button/g) ?? []).length, 2)
+  assert(editable.includes(language === 'de' ? 'Einheitenauftrag pausieren' : 'Pause unit assignment'))
+  assert(editable.includes(language === 'de' ? 'Einheitenauftrag wieder aktivieren' : 'Reactivate unit assignment'))
+  assert(editable.includes(language === 'de' ? 'Diese Auftragsfassung ist derzeit nicht verfügbar.' : 'This edition is currently unavailable.'))
+}
