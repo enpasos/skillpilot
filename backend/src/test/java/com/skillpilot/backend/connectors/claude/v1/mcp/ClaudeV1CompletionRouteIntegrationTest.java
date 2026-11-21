@@ -943,7 +943,8 @@ class ClaudeV1CompletionRouteIntegrationTest {
         var examDate = sectionFirst ? monday.plusDays(1) : monday;
         var sectionBlock = new LearnerLearningPlanApi.Block("section", "learning", section, "E.1",
                 sectionDate, sectionDate, null, all, List.of(section), true);
-        String additionalRoot = additionalSection ? section.replace("physics-e1-motion", "physics-e-phase") : extra;
+        // The separate canonical “Übungen E-Phase” cluster also contains the supplementary exam.
+        String additionalRoot = additionalSection ? "424b07df-bf66-5d7f-99f5-f28b32ad1f22" : extra;
         var examBlock = new LearnerLearningPlanApi.Block("own", "learning", additionalRoot, "Weitere Auswahl",
                 examDate, examDate, null, List.of(extra), List.of(additionalRoot), true);
         var saved = learningPlans.upsert(learnerId, physics, new LearnerLearningPlanApi.UpsertRequest(
