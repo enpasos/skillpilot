@@ -216,7 +216,7 @@ final class ClaudeV1CompletionChoices {
                     ? "Use only the named planning credits from the current assessment evidence. Each individual goal still needs its own mastery evidence. " : "")
                 + "Do not restore implicitly completed work as mandatory. "
                 + (result.containsKey("individualPractice")
-                    ? "On a request to study a credited goal individually, use its published individualPractice choice. "
+                    ? "When the learner requests an individual goal, use its published individualPractice choice. "
                         + "Offer help with its open prerequisites. When strict mode names a prerequisite as the first step, teach that returned active goal. " : "")
                 + "Available direct assessment choices can be selected from ordinary learning without choosing a section first. "
                 + "Offer them when the learner asks for a shortcut, an assessment or to demonstrate existing knowledge; do not interrupt ordinary teaching unprompted. "
