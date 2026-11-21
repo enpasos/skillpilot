@@ -31,6 +31,7 @@ type MapProps = {
   activeGoalId?: string | null
   initialScopeId?: string
   command?: LearningMapCommand | null
+  assessedUnit?: { scopeGoalId: string; parts: readonly { goalId: string }[] }
   showInspector?: boolean
   onEntrySelect?: (entryId: string) => void
   onSelectionChange?: (entryId: string | null) => void
@@ -76,7 +77,7 @@ function useNarrowScreen() {
 
 function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = false,
   active = true, headingMode = 'standard', rootLabel,
-  learnerProgress, activeGoalId, initialScopeId, command, showInspector = true, onEntrySelect,
+  learnerProgress, activeGoalId, initialScopeId, command, assessedUnit, showInspector = true, onEntrySelect,
   onSelectionChange, renderSelectionActions, renderScopeActions, materialScopes, getGoalAction, getPracticeAction, onReturnToTree, onEscape, language = 'de',
   toolbar, locationBarContainer }: MapProps) {
   const label = (de: string, en: string) => language === 'en' ? en : de
@@ -88,22 +89,32 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
   const [layout, setLayout] = useState<{ fixture: LearningMapFixture; key: string; data: LearningScopeLayout } | null>(null)
   const canvasWidth = useStore(state => state.width)
   const canvasHeight = useStore(state => state.height)
+  const boundScope = assessedUnit?.scopeGoalId
+  const boundParts = assessedUnit?.parts
   const assessmentCamera = useMemo(() => {
     const id = command?.entryId
     if (!id || !layout || layout.fixture !== fixture || !layout.data.positions[id]
       || layout.fixture.entries[id]?.kind !== 'assessment' || !canvasWidth || !canvasHeight) return null
     const peers = Object.entries(layout.data.positions).filter(([key]) => layout.fixture.entries[key].kind === 'assessment')
     if (peers.length < 2) return null
-    const xs = peers.map(([, point]) => point.x)
-    const ys = peers.map(([, point]) => point.y)
-    const x = Math.min(...xs)
-    const y = Math.min(...ys)
-    const peersViewport = getViewportForBounds({ x, y, width: Math.max(...xs) - x + NODE_WIDTH,
-      height: Math.max(...ys) - y + NODE_HEIGHT }, canvasWidth, canvasHeight, 0, 1, 0.06)
-    if (peersViewport.zoom >= 0.8) return peersViewport
+    const groups = [peers]
+    if (boundScope && layout.key === `${boundScope}:${direction}` && boundParts?.some(part => part.goalId === id)) {
+      const partIds = new Set(boundParts.map(part => part.goalId))
+      const visibleParts = peers.filter(([key]) => partIds.has(key))
+      if (visibleParts.length >= 2 && visibleParts.length < peers.length) groups.push(visibleParts)
+    }
+    for (const group of groups) {
+      const xs = group.map(([, point]) => point.x)
+      const ys = group.map(([, point]) => point.y)
+      const x = Math.min(...xs)
+      const y = Math.min(...ys)
+      const viewport = getViewportForBounds({ x, y, width: Math.max(...xs) - x + NODE_WIDTH,
+        height: Math.max(...ys) - y + NODE_HEIGHT }, canvasWidth, canvasHeight, 0, 1, 0.06)
+      if (viewport.zoom >= 0.8) return viewport
+    }
     const point = layout.data.positions[id]
     return { x: canvasWidth / 2 - point.x - NODE_WIDTH / 2, y: canvasHeight / 2 - point.y - NODE_HEIGHT / 2, zoom: 1 }
-  }, [command?.entryId, fixture, layout, canvasWidth, canvasHeight])
+  }, [command?.entryId, fixture, layout, canvasWidth, canvasHeight, boundScope, boundParts, direction])
   const previousAssessmentCamera = useRef<Viewport | null>(null)
   const [layoutError, setLayoutError] = useState<string | null>(null)
   const [layoutAttempt, setLayoutAttempt] = useState(0)

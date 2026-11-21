@@ -157,7 +157,7 @@ export interface LearnerGoalNavigationMapProps {
   activeGoalId: string | null
   getMastery: (goalId: string) => number
   completionWaivers: ReadonlyMap<string, CompletionTreeWaiver>
-  unitAssessmentSummary?: { scopeGoalId: string; content: React.ReactNode }
+  unitAssessmentSummary?: { scopeGoalId: string; parts: readonly { goalId: string }[]; content: React.ReactNode }
   revealRequest?: { entryId: string; nonce: number }
   onSelectGoal: (goalId: string) => void
   getFlashcardSource?: (goal: UiGoal) => string | undefined
@@ -3445,6 +3445,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     : null
   const unitAssessmentSummary = levelCompletion?.calculationStatus === 'valid' && levelCompletion.unitAssessment ? {
     scopeGoalId: levelCompletion.unitAssessment.sectionGoalId,
+    parts: levelCompletion.unitAssessment.parts,
     content: <UnitAssessmentSummary assessment={levelCompletion.unitAssessment} completion={levelCompletion} language={localizedLanguage}
       titleForGoal={completionGoalTitle} allowStart={learnerStateLoadStatus === 'ready' && !completionActionBusy}
       onShowGoal={id => {

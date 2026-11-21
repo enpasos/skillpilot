@@ -150,6 +150,8 @@ async function check(duration, part, lang, start, width = 1440, height = 900) {
           await map.getByRole('textbox', { name: lang === 'de' ? 'In dieser Ebene suchen' : 'Search this level' }).fill(title)
           await map.getByRole('option').filter({ hasText: title }).click()
         } else if (width <= 1100) {
+          // The parent also shows C as a reference. D is reached on the child board.
+          const visibleParts = [task.id, other.id, scope.childAssessmentGoalIds[0]]
           await page.waitForFunction(ids => {
             const surface = document.querySelector('.lum-flow')?.getBoundingClientRect()
             if (!surface) return false
@@ -158,7 +160,7 @@ async function check(duration, part, lang, start, width = 1440, height = 900) {
               return rect && rect.width >= 170 && rect.left >= surface.left && rect.right <= surface.right
                 && rect.top >= surface.top && rect.bottom <= surface.bottom
             })
-          }, [other.id, task.id])
+          }, visibleParts)
         }
         await neighbor.click()
       } catch (error) {
