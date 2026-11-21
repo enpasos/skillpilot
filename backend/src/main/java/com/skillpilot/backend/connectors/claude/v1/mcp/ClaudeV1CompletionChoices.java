@@ -32,7 +32,24 @@ final class ClaudeV1CompletionChoices {
                     || completion.navigationIntent() != null || completion.directAssessmentRunning());
     }
 
+    record Page(List<Choice> choices, int number, int count) { }
+
     static List<Choice> published(LevelCompletionResponse completion, String language) {
+        return page(completion, language, 1).choices();
+    }
+
+    static Page page(LevelCompletionResponse completion, String language, int number) {
+        var ordered = authorizedChoices(completion, language);
+        int count = Math.max(1, Math.ceilDiv(ordered.size(), MAX_CHOICES));
+        if (number < 1 || number > count) {
+            throw new ClaudeV1McpContractAdapter.ToolInputException(
+                    "The completion choice page is unavailable. Reload the current coach context.");
+        }
+        int start = (number - 1) * MAX_CHOICES;
+        return new Page(ordered.subList(start, start + Math.min(MAX_CHOICES, ordered.size() - start)), number, count);
+    }
+
+    private static List<Choice> authorizedChoices(LevelCompletionResponse completion, String language) {
         if (completion == null || !supported()
                 || "completion_assessment_owned_elsewhere".equals(completion.notice())) return List.of();
         boolean en = "en".equals(language);
@@ -97,7 +114,7 @@ final class ClaudeV1CompletionChoices {
         unambiguous.stream().filter(choice -> "voluntary".equals(choice.intent())).findFirst().ifPresent(ordered::add);
         if (completion.profileId() == null || !completion.profileId().startsWith("automatic:")) {
             ordered.addAll(unambiguous);
-            return ordered.stream().limit(MAX_CHOICES).toList();
+            return List.copyOf(ordered);
         }
         // Keep exits and useful work reachable even when hundreds of exams exist.
         // Sections consume at most six slots; they cannot crowd out direct starts.
@@ -110,10 +127,16 @@ final class ClaudeV1CompletionChoices {
         // Keep the first direct exam reachable, then offer individual study before filling the list with more exams.
         unambiguous.stream().filter(choice -> "focusPractice".equals(choice.action())).forEach(ordered::add);
         ordered.addAll(directStarts);
-        return ordered.stream().limit(MAX_CHOICES).toList();
+        // Keep the original overview priorities on page one, then include every other authorized action.
+        ordered.addAll(unambiguous);
+        return List.copyOf(ordered);
     }
 
     static Map<String, Object> project(LevelCompletionResponse completion, String language) {
+        return project(completion, language, page(completion, language, 1));
+    }
+
+    static Map<String, Object> project(LevelCompletionResponse completion, String language, Page page) {
         if (completion == null) return null;
         boolean en = "en".equals(language);
         Map<String, Object> result = new LinkedHashMap<>();
@@ -199,7 +222,15 @@ final class ClaudeV1CompletionChoices {
                     ? "This completion route cannot currently be used reliably. Follow only the published choices; existing mastery is retained."
                     : "Dieser Abschlussweg kann gerade nicht zuverlässig genutzt werden. Folge ausschließlich den angebotenen Möglichkeiten; vorhandene Mastery bleibt erhalten.");
         }
-        var choices = published(completion, language);
+        var choices = page.choices();
+        if (page.count() > 1) {
+            Map<String, Object> pages = new LinkedHashMap<>();
+            pages.put("page", page.number());
+            pages.put("pageCount", page.count());
+            if (page.number() > 1) pages.put("previousPage", page.number() - 1);
+            if (page.number() < page.count()) pages.put("nextPage", page.number() + 1);
+            result.put("choicePagination", pages);
+        }
         result.put("choices", choices.stream().map(Choice::label).toList());
         if (!choices.isEmpty() && completion.actions() != null) {
             var practice = new ArrayList<Map<String, Object>>();
@@ -224,6 +255,10 @@ final class ClaudeV1CompletionChoices {
                         + "Offer help with its open prerequisites. When strict mode names a prerequisite as the first step, teach that returned active goal. " : "")
                 + "Available direct assessment choices can be selected from ordinary learning without choosing a section first. "
                 + "Offer them when the learner asks for a shortcut, an assessment or to demonstrate existing knowledge; do not interrupt ordinary teaching unprompted. "
+                + (page.count() > 1 ? "If the requested goal or assessment is missing here, read the remaining choicePagination pages with "
+                    + "get_skillpilot_coach_context(completionChoicePage=nextPage). Paging is read-only and requires no additional consent. "
+                    + "Use the page containing the chosen exact title as completionChoicePage when selecting it. "
+                    + "If several titles fit, ask which one; never guess or expose technical page arguments. " : "")
                 + "For an explicit learner choice, copy exactly one current choices entry into choose_skillpilot_completion_route. "
                 + "An explicit learner request to start exactly one currently published assessment already supplies selection consent; invoke that choice without asking again. "
                 + "Otherwise offer choices by their exact titles and wait for the learner's explicit selection before invoking the choice tool. "

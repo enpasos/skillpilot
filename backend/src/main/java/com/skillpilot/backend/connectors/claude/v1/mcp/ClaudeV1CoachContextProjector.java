@@ -99,9 +99,13 @@ public class ClaudeV1CoachContextProjector {
     }
 
     public Map<String, Object> projectContext(String skillpilotId, long stateVersion, String language) {
+        return projectContext(skillpilotId, stateVersion, language, 1);
+    }
+
+    Map<String, Object> projectContext(String skillpilotId, long stateVersion, String language, int choicePage) {
         UnifiedLearnerStateResponse rawState = coachToolFacade.getLearnerState(skillpilotId);
         UnifiedLearnerStateResponse projectedState = coachStateProjection.project(rawState);
-        return projectContext(skillpilotId, stateVersion, language, projectedState, false);
+        return projectContext(skillpilotId, stateVersion, language, projectedState, false, choicePage);
     }
 
     Map<String, Object> projectMasteryContext(
@@ -126,7 +130,7 @@ public class ClaudeV1CoachContextProjector {
                 projectedUpdate.activeGoal(),
                 projectedUpdate.stateMachine(),
                 projectedUpdate.levelCompletion());
-        return projectContext(skillpilotId, stateVersion, language, projectedState, true);
+        return projectContext(skillpilotId, stateVersion, language, projectedState, true, 1);
     }
 
     private Map<String, Object> projectContext(
@@ -134,7 +138,7 @@ public class ClaudeV1CoachContextProjector {
             long stateVersion,
             String language,
             UnifiedLearnerStateResponse projectedState,
-            boolean suppressCompetingFrontier) {
+            boolean suppressCompetingFrontier, int choicePage) {
         Map<String, Object> context = new LinkedHashMap<>();
         LevelCompletionResponse completion = projectedState.levelCompletion();
         boolean completionRoute = ClaudeV1CompletionChoices.active(completion);
@@ -142,7 +146,8 @@ public class ClaudeV1CoachContextProjector {
         FrontierGoal activeGoal = unsupportedCompletion ? null : projectedState.activeGoal();
         context.put("stateVersion", stateVersion);
         context.put("language", language);
-        if (completion != null) context.put("levelCompletion", ClaudeV1CompletionChoices.project(completion, language));
+        var page = ClaudeV1CompletionChoices.page(completion, language, choicePage);
+        if (completion != null) context.put("levelCompletion", ClaudeV1CompletionChoices.project(completion, language, page));
         if (!completionRoute && !ClaudeV1CompletionChoices.supported()) {
             var discovery = com.skillpilot.backend.ai.AssessmentShortcutDiscovery.project(completion, publicBaseUrl, language);
             if (discovery != null) {
@@ -213,7 +218,7 @@ public class ClaudeV1CoachContextProjector {
                             .map(FrontierGoal::id).collect(Collectors.toUnmodifiableSet());
             Map<String, Object> activeContext = projectActiveGoalContext(skillpilotId, stateVersion, language,
                     projectedState.curriculum(), activeGoal, publishedFrontierIds,
-                    !completionRoute && (!guidedPlan || activeGoal != null), guidedPlan, completion);
+                    !completionRoute && (!guidedPlan || activeGoal != null), guidedPlan, completion, page);
             if (activeContext != null) context.put(focusedUnitOnly ? "focusedUnitContext" : "activeGoalContext", activeContext);
         }
 
@@ -275,7 +280,7 @@ public class ClaudeV1CoachContextProjector {
 
     private Map<String, Object> projectActiveGoalContext(String skillpilotId, long stateVersion, String language,
             LandscapeSummary curriculum, FrontierGoal activeGoal, Set<String> publishedFrontierIds,
-            boolean includeActivities, boolean guidedPlan, LevelCompletionResponse completion) {
+            boolean includeActivities, boolean guidedPlan, LevelCompletionResponse completion, ClaudeV1CompletionChoices.Page page) {
         boolean exam = activeGoal != null && ("exam".equals(activeGoal.nodeKind()) || activeGoal.examData() != null);
         String activeGoalId = activeGoal == null ? null : activeGoal.id();
         ActiveGoalContext detail = coachToolFacade.getActiveGoalContext(skillpilotId, activeGoalId, stateVersion,
@@ -299,9 +304,9 @@ public class ClaudeV1CoachContextProjector {
         if (includeActivities && !detail.activities().isEmpty()) {
             String curriculumId = curriculum == null ? null : curriculum.getCurriculumId();
             List<ClaudeV1CompletionChoices.Choice> choices = completion != null && completion.learnerRevision() == stateVersion
-                    ? ClaudeV1CompletionChoices.published(completion, language) : List.of();
+                    ? page.choices() : List.of();
             List<Map<String, Object>> activities = detail.activities().stream().map(activity -> projectUnitActivity(
-                    activity, choices, curriculumId, activeGoalId, stateVersion))
+                    activity, choices, page.number(), curriculumId, activeGoalId, stateVersion))
                     .filter(activity -> !guidedPlan || activity.containsKey("action")).toList();
             for (var activity : activities) {
                 if ("assessment".equals(activity.get("kind"))) {
@@ -352,7 +357,7 @@ public class ClaudeV1CoachContextProjector {
     }
 
     private Map<String, Object> projectUnitActivity(ActiveGoalContext.Activity activity,
-            List<ClaudeV1CompletionChoices.Choice> choices, String curriculumId, String activeGoalId, long stateVersion) {
+            List<ClaudeV1CompletionChoices.Choice> choices, int pageNumber, String curriculumId, String activeGoalId, long stateVersion) {
         Map<String, Object> option = new LinkedHashMap<>();
         option.put("goalId", activity.goalId());
         option.put("title", activity.title());
@@ -364,8 +369,12 @@ public class ClaudeV1CoachContextProjector {
                 : List.of();
         if (direct.size() == 1) {
             option.put("route", "directAssessment");
+            Map<String, Object> arguments = new LinkedHashMap<>();
+            arguments.put("choice", direct.getFirst().label());
+            arguments.put("expectedStateVersion", stateVersion);
+            if (pageNumber > 1) arguments.put(ClaudeV1McpContractAdapter.ARG_COMPLETION_CHOICE_PAGE, pageNumber);
             option.put("action", Map.of("tool", ClaudeV1McpContractAdapter.TOOL_CHOOSE_COMPLETION_ROUTE,
-                    "arguments", Map.of("choice", direct.getFirst().label(), "expectedStateVersion", stateVersion)));
+                    "arguments", arguments));
             return option;
         }
 

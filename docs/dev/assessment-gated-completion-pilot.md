@@ -207,6 +207,16 @@ ihre spätere Integration braucht denselben vollständigen Sitzungsablauf,
 geeignete Adapter und eigene Host-Abnahme. Ein Cockpit-Link ersetzt diesen
 Ablauf nicht.
 
+Im Claude-Coach enthält `levelCompletion.choices` höchstens 24 ausführbare
+Auswahltexte pro Seite. Bei mehreren Seiten veröffentlicht der Server unter
+`choicePagination` die aktuelle Seite, die Gesamtzahl und die verfügbaren
+Nachbarseiten. Der Coach kann mit `get_skillpilot_coach_context` und dem
+optionalen Ganzzahlparameter `completionChoicePage` weiterblättern, während
+Lernstand und aktives Ziel erhalten bleiben. Zur bewussten Auswahl kopiert
+er den exakten Text und auf Folgeseiten dieselbe Seitennummer in
+`choose_skillpilot_completion_route`. Der Server prüft Seite, Text und
+Lernstandsrevision erneut. Ohne Seitenparameter gilt weiterhin Seite 1.
+
 ## Reproduzierbare Prüfung
 
 Die folgenden Befehle prüfen den aktuellen lokalen Stand; sie sind keine
