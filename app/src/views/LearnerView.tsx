@@ -95,7 +95,7 @@ import {
 } from '../utils/learnerGoalSelection'
 import { getNextSingleLearnerFocus } from '../utils/learnerFocus'
 import { buildCanonicalFocusScope } from '../utils/plannedScope'
-import { collapseLearnerSubjectRoots, normalizeLearnerVisibleChildrenMap } from '../utils/learnerTreeProjection'
+import { buildLearnerNavigationProjection, normalizeLearnerVisibleChildrenMap } from '../utils/learnerTreeProjection'
 import {
   deliverCoachChatStart,
   getActiveVisibleSessionLaunchCopy,
@@ -919,7 +919,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
           learnerStructureMode,
           rootLandscapeId,
         ))
-      return collapseLearnerSubjectRoots(goalIndexAll, visibleChildren)
+      return buildLearnerNavigationProjection(goalIndexAll, visibleChildren)
     },
     [
       currentLandscapeHasMatchedCompositionView,
@@ -932,8 +932,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   )
   const {
     childrenByParent: learnerVisibleChildrenByParent,
-    subjectRootIdByAlias,
-    childrenBySubjectRootAlias,
+    targetByAlias,
+    childrenByAlias,
   } = learnerTreeProjection
 
   const learnerProjectedParentMap = useMemo(() => {
@@ -978,7 +978,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
   const buildCollapsedFocusPath = useCallback((targetId: string) => {
     if (!targetId) return new Set<string>()
-    const visibleTargetId = subjectRootIdByAlias.get(targetId) ?? targetId
+    const visibleTargetId = targetByAlias.get(targetId) ?? targetId
 
     const visiblePath = new Set<string>()
     const visited = new Set<string>()
@@ -1017,7 +1017,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       parents.forEach((parentId) => queue.push(parentId))
     }
     return expanded
-  }, [effectiveLearnerParentMap, goalIndexAll, learnerVisibleChildrenByParent, subjectRootIdByAlias, visibleRootGoals])
+  }, [effectiveLearnerParentMap, goalIndexAll, learnerVisibleChildrenByParent, targetByAlias, visibleRootGoals])
 
   const learnerTreeRevealPathKey = useMemo(() => {
     const targetId = currentRouteGoalId || effectiveActiveGoalId || selectedId
@@ -1076,9 +1076,9 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
   const getVisibleChildIds = useCallback((parentId: string) => {
     if (isPersonalConfigHydrating) return []
-    return childrenBySubjectRootAlias.get(parentId)
+    return childrenByAlias.get(parentId)
       ?? getRenderedChildIds(parentId, goalIndexAll, learnerVisibleChildrenByParent)
-  }, [childrenBySubjectRootAlias, goalIndexAll, isPersonalConfigHydrating, learnerVisibleChildrenByParent])
+  }, [childrenByAlias, goalIndexAll, isPersonalConfigHydrating, learnerVisibleChildrenByParent])
 
   const getLearnerGoalTitle = useCallback(
     (goal: Pick<UiGoal, 'title'>) => currentLandscapeHasMatchedCompositionView ? goal.title : getAudienceGoalTitle(goal),
@@ -1220,6 +1220,12 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   }, [goalIndexAll, plannedGoals, canonicalGoalSources])
 
   useEffect(() => {
+    const represented = targetByAlias.get(currentRouteGoalId)
+    if (represented && visibleGoals.has(represented)
+      && goalIndexAll.get(represented)?.preparationSource?.id === currentRouteGoalId) {
+      onSelectGoal(represented)
+      return
+    }
     const nextVisibleGoalId = getNextVisibleLearnerGoalSelection({
       currentGoalId: currentGoal?.id,
       currentRouteGoalId,
@@ -1237,6 +1243,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   }, [
     currentGoal,
     currentRouteGoalId,
+    targetByAlias,
+    goalIndexAll,
     learnerStateLoadStatus,
     visibleGoals,
     effectiveActiveGoalId,
@@ -3462,7 +3470,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     : undefined
 
   // The map and the tree use the same visible selection ID.
-  const navigationSelectedId = subjectRootIdByAlias.get(selectedId) ?? selectedId
+  const navigationSelectedId = targetByAlias.get(selectedId) ?? selectedId
   const selectMapGoal = (goalId: string) => {
     if (!visibleGoals.has(goalId)) return
     if (learningMapSessionRef.current) learningMapSessionRef.current.mapSelectionId = goalId
@@ -3636,7 +3644,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
               plannedScopeGoalIds={plannedScopeGoalIds}
               onTogglePlan={togglePlan}
               onSelect={onSelectGoal}
-              selectedId={subjectRootIdByAlias.get(selectedId) ?? selectedId}
+              selectedId={targetByAlias.get(selectedId) ?? selectedId}
               activeFilter={effectiveActiveFilter}
               structureMode={learnerStructureMode}
               hideTechnicalStructureUi
@@ -4291,7 +4299,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             unitAssessmentSummary,
             revealRequest: navigationRevealRequest ? {
               ...navigationRevealRequest,
-              entryId: subjectRootIdByAlias.get(navigationRevealRequest.entryId) ?? navigationRevealRequest.entryId,
+              entryId: targetByAlias.get(navigationRevealRequest.entryId) ?? navigationRevealRequest.entryId,
             } : undefined,
             onSelectGoal: selectMapGoal,
             getFlashcardSource: getSrsSource,

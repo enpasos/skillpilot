@@ -727,8 +727,8 @@ class ClaudeV1CompletionRouteIntegrationTest {
     }
 
     @ParameterizedTest(name = "{0}, {1} part passes, separate order = {2}")
-    @CsvSource({"G8,0,false", "G8,2,false", "G8,4,false", "G8,4,true",
-                "G9,0,false", "G9,2,false", "G9,4,false", "G9,4,true"})
+    @CsvSource({"G8,0,false", "G8,2,false", "G8,4,false", "G8,0,true", "G8,2,true", "G8,4,true",
+                "G9,0,false", "G9,2,false", "G9,4,false", "G9,0,true", "G9,2,true", "G9,4,true"})
     void genericResumeHonorsTheChosenUnitAndAnySeparatelyDueOrder(
             String duration, int passedParts, boolean separateOrder) throws Exception {
         String section = selectHessianMotionUnit(duration, "SekII");
@@ -859,6 +859,15 @@ class ClaudeV1CompletionRouteIntegrationTest {
         String section = selectHessianMotionUnit(duration, "SekII");
         String profile = "automatic:" + section;
         String extra = "6ea3fb3c-abdc-568f-ab13-97c36dc274e4";
+        var sections = learners.getLearnerState(learnerId).levelCompletion().profileOptions();
+        assertThat(sections).filteredOn(option -> profile.equals(option.profileId())).singleElement().satisfies(option -> {
+            assertThat(option.requiredAssessmentCount()).isEqualTo(4);
+            assertThat(option.assessments()).filteredOn(item -> extra.equals(item.goalId())).singleElement()
+                    .satisfies(item -> assertThat(item.voluntary()).isTrue());
+        });
+        assertThat(sections.stream().filter(option -> !profile.equals(option.profileId()))
+                .flatMap(option -> option.assessments().stream()).filter(item -> extra.equals(item.goalId())).toList())
+                .isNotEmpty().allMatch(item -> item.voluntary() == null);
         learners.chooseLevelCompletion(learnerId, new LevelCompletionActionRequest("selectProfile", profile, null, null, version()));
         session = sessions.createFirstPartyLaunch(learnerId, new ClaudeV1CoachStartRequest("de", "web-start")).learningSessionId();
         authenticate();

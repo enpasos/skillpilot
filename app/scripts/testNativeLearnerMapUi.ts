@@ -356,13 +356,15 @@ try {
 
   stage = 'one stage unit for both subjects, declared order and Rückgriff'
   assert.deepEqual((await page.locator('.lum-node[data-entry-id]').evaluateAll(nodes => nodes.map(n => n.getAttribute('data-entry-id')))).sort(),
-    [section.vectors, section.analysis, id.physicsGoal].sort(), 'Sekundarstufe II holds the units of Mathematics and the goal of Physics')
+    [section.vectors, id.other, id.physicsGoal].sort(), 'Sekundarstufe II holds the declared ordering position of the single Mathematics goal')
+  assert.equal(await page.locator(`[data-entry-id="${section.analysis}"]`).count(), 0)
+  assert.equal(await page.locator(`[data-entry-id="${id.other}"] .lum-node-meta`).innerText(), 'Fachziel · Änderungsraten')
   const vectorUnit = page.locator(`.lum-node[data-entry-id="${section.vectors}"]`)
   assert.equal(await vectorUnit.locator('.lum-node-meta').innerText(), 'Einheit · 1/3 mit Nachweis')
   assert.equal(await vectorUnit.locator('.lum-node-progress').getAttribute('aria-label'),
     '1 direkt nachgewiesen, 0 fachlich angerechnet, 0 für diesen Abschnitt nicht mehr erforderlich, 2 offen.',
     'the unit reports its one directly demonstrated goal and the two goals still open')
-  const [vectorsBox, analysisBox] = await Promise.all([node(page, section.vectors).boundingBox(), node(page, section.analysis).boundingBox()])
+  const [vectorsBox, analysisBox] = await Promise.all([node(page, section.vectors).boundingBox(), node(page, id.other).boundingBox()])
   assert.ok(vectorsBox && analysisBox && vectorsBox.x + vectorsBox.width < analysisBox.x,
     'the declared order, not the Rückgriff, sets the direction: the earlier unit stands on the left')
   const legend = page.getByTestId('learning-map-order-legend')
@@ -370,12 +372,12 @@ try {
   assert.ok((await legend.innerText()).includes('erklärte Reihenfolge') && (await legend.innerText()).includes('1 Rückgriff'))
   assert.equal(await page.locator('.react-flow__edge[aria-label^="Rückgriff: Vektorrechnung braucht Ziele aus Änderungsraten"]').count(), 1,
     'a goal of the earlier unit needing a goal of the later unit is marked as Rückgriff')
-  assert.equal(await page.locator('.react-flow__edge[aria-label="Änderungsraten kommt nach Vektorrechnung (erklärte Reihenfolge)"]').count(), 1)
+  assert.equal(await page.locator('.react-flow__edge[aria-label="Änderungsraten deuten kommt nach Vektorrechnung (erklärte Reihenfolge)"]').count(), 1)
   const backwardStroke = await page.locator('.react-flow__edge[aria-label^="Rückgriff"] path').first().evaluate(path => getComputedStyle(path).strokeDasharray)
   const declaredStroke = await page.locator('.react-flow__edge[aria-label$="(erklärte Reihenfolge)"] path').first().evaluate(path => getComputedStyle(path).strokeDasharray)
   assert.notEqual(backwardStroke, declaredStroke, 'a Rückgriff is drawn differently from the declared order')
 
-  const declaredOrder = page.locator('.react-flow__edge[aria-label="Änderungsraten kommt nach Vektorrechnung (erklärte Reihenfolge)"] .react-flow__edge-path')
+  const declaredOrder = page.locator('.react-flow__edge[aria-label="Änderungsraten deuten kommt nach Vektorrechnung (erklärte Reihenfolge)"] .react-flow__edge-path')
   await node(page, section.vectors).click()
   await mapSelection(page, section.vectors)
   const highlightedOrder = await declaredOrder.evaluate(path => ({

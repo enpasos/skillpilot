@@ -160,6 +160,66 @@ async function check(duration, part, lang, start, width = 1440, height = 900) {
     await context.close()
   }
 }
+async function checkTreeAndMapParents(duration) {
+  const { E1: section, viewer } = profiles[duration]
+  const before = await evidence(viewer)
+  const pathTime = 'ae67bcf1-f3ee-50d6-9a12-25a159dff659'
+  const acceleration = 'e4b38061-1f28-43ad-8371-a3e7c0e81856'
+  const childSection = section.replace(/physics-e1-motion$/, 'physics-e1-accelerated-and-free-fall')
+  const preparationFolder = section.replace(/physics-e1-motion$/, 'physics-required-preparation-physics-e1-motion')
+  const page = await browser.newPage({ viewport: { width: 1440, height: 900 }, reducedMotion: 'reduce', serviceWorkers: 'block' })
+  page.setDefaultTimeout(60000)
+  try {
+    await page.goto(site + '/nativ/' + duration + '/E1')
+    const tree = page.locator('.learner-tree-navigation')
+    const treeRow = id => tree.locator('[data-goal-id="' + id + '"]')
+    const expand = async id => {
+      const button = treeRow(id).locator('button[aria-expanded]').first()
+      await button.waitFor()
+      if (await button.getAttribute('aria-expanded') === 'false') await button.click()
+    }
+    await expand(section)
+    await expand(childSection)
+    assert.equal(await treeRow(preparationFolder).count(), 0, 'A single preparation goal must open on E.1.')
+    const directTreeParent = async id => {
+      const row = treeRow(id)
+      await row.waitFor()
+      return row.evaluate(element => element.parentElement.parentElement.parentElement
+        .querySelector(':scope > [data-goal-id]')?.getAttribute('data-goal-id'))
+    }
+    const expected = [[pathTime, section], [tasks.A.id, section], [acceleration, childSection]]
+    for (const [id, parent] of expected) assert.equal(await directTreeParent(id), parent, 'Tree parent of ' + id)
+    await treeRow(pathTime).getByText('Notwendige Grundlagen', { exact: true }).waitFor()
+
+    await page.getByTestId('learner-main-content').getByTestId('learner-learning-map-open').click()
+    const dialog = page.getByTestId('learner-learning-map-dialog')
+    await dialog.getByRole('button', { name: 'In E.1 Bewegungen und ihre Beschreibung hineinzoomen', exact: true }).click()
+    const board = dialog.getByTestId('learning-map-board')
+    for (const [id, parent] of expected) {
+      if (parent === childSection) {
+        await board.getByRole('button', { name: 'In Beschleunigte Bewegung und freier Fall hineinzoomen', exact: true }).click()
+      }
+      const node = board.locator('[data-entry-id="' + id + '"]')
+      await node.waitFor()
+      assert.equal(await board.getAttribute('data-scope-id'), parent, 'Map parent of ' + id)
+      if (id === pathTime) {
+        assert.equal(await board.locator('[data-entry-id="' + preparationFolder + '"]').count(), 0)
+        assert((await node.innerText()).includes('Notwendige Grundlagen'))
+        await node.locator('.lum-node-main').click()
+        await page.waitForURL(url => decodeURIComponent(url.pathname) === '/learner/' + pathTime)
+      }
+    }
+    await page.goto(site + '/learner/' + encodeURIComponent(preparationFolder))
+    await page.getByTestId('learner-current-goal').getByRole('heading', {
+      name: 'Bewegungen mit Weg-Zeit-Diagrammen beschreiben', exact: true,
+    }).waitFor()
+    assert.equal(new URL(page.url()).pathname, '/learner/' + pathTime)
+    assert.deepEqual(await evidence(viewer), before)
+    console.log(duration, 'Baum und Karte: Weg-Zeit und Wagenprüfung direkt unter E.1, Beschleunigung in der Untereinheit; Herkunft und Zielaufruf bestätigt.')
+  } finally {
+    await page.close()
+  }
+}
 async function checkUnitAndChildCards(duration) {
   const { viewer, E1: section } = profiles[duration]
   const before = await evidence(viewer)
@@ -238,12 +298,18 @@ async function checkEvidenceMap(page, duration) {
   await map.getByRole('button', { name: 'In E.1 Bewegungen und ihre Beschreibung hineinzoomen', exact: true }).click()
   await map.locator('.lum-flow--idle').waitFor()
   await map.getByRole('button', { name: 'Diese Ebene einpassen' }).click()
-  await map.locator('[data-entry-id="' + tasks.A.id + '"]').waitFor()
   const entry = id => map.locator('[data-entry-id="' + id + '"]')
   const direct = 'learning-map-direct-evidence'
   const credited = 'learning-map-credited-evidence'
   const markers = async testId => map.getByTestId(testId).evaluateAll(nodes =>
     nodes.map(node => node.closest('[data-entry-id]').getAttribute('data-entry-id')))
+  // Fitting a virtualized board mounts newly visible cards after the camera is updated.
+  const [parentBoardPart, childBoardPart] = scope.childAssessmentGoalIds
+  for (const goalId of [...scope.ownAssessmentGoalIds, parentBoardPart]) {
+    await entry(goalId).getByTestId(direct).waitFor()
+  }
+  const creditGoalsFor = partId => scope.childAssessmentRevisions[partId].planningGoalIds
+  for (const goalId of creditGoalsFor(parentBoardPart)) await entry(goalId).getByTestId(credited).waitFor()
   const directGoals = new Set(await markers(direct))
   const creditedGoals = new Set(await markers(credited))
   for (const id of ['4a2bf015-052b-4af0-aed7-324259fa1a8a', '89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2']) {
@@ -254,11 +320,12 @@ async function checkEvidenceMap(page, duration) {
   await map.getByRole('button', { name: 'In Beschleunigte Bewegung und freier Fall hineinzoomen', exact: true }).click()
   await map.locator('.lum-flow--idle').waitFor()
   await map.getByRole('button', { name: 'Diese Ebene einpassen' }).click()
-  await entry(scope.childAssessmentGoalIds[1]).getByTestId(direct).waitFor()
+  await entry(childBoardPart).getByTestId(direct).waitFor()
+  for (const goalId of creditGoalsFor(childBoardPart)) await entry(goalId).getByTestId(credited).waitFor()
   for (const id of await markers(direct)) directGoals.add(id)
   for (const id of await markers(credited)) creditedGoals.add(id)
   assert.deepEqual(directGoals, new Set(unitPartIds))
-  assert.deepEqual(creditedGoals, new Set(scope.childAssessmentGoalIds.flatMap(id => scope.childAssessmentRevisions[id].planningGoalIds)))
+  assert.deepEqual(creditedGoals, new Set(scope.childAssessmentGoalIds.flatMap(creditGoalsFor)))
   console.log(duration, 'E.1-Karte: vier direkte Prüfungsbelege, genau zwei graue Häkchen, beide übrigen Beispielziele ohne Beleg OK')
 }
 
@@ -486,6 +553,7 @@ try {
     await check(duration, 'B', 'de', false, 1024, 650)
     await check(duration, 'B', 'de', false, 390)
     await checkUnitAndChildCards(duration)
+    await checkTreeAndMapParents(duration)
     await checkGradedComparison(duration)
     await checkUnitAssignments(duration)
     await checkPlanSelection(duration, false)

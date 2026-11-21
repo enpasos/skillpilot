@@ -36,10 +36,12 @@ Ein Urteil über die Einheit darf auf repräsentativen Leistungen beruhen. Ein R
 
 Eine Grenze wird durch ein verständliches gemeinsames Lernversprechen und durch eine selbstständige Anwendung getragen, die den gesamten beanspruchten Erkenntnisschritt prüfen kann. Ein erkennbarer Übergang zu späteren Anforderungen ist ein weiterer wichtiger Grund; eine Abschlusseinheit benötigt keinen Nachfolger. Fachliche Nähe und dichte Voraussetzungsverbindungen sind Hinweise, kein automatischer Zuschnitt. Auch eine sparsame, transitiv minimale Kette kann eng zusammenhängen. Gemeinsame Grundlagen wie Gleichungen oder Zahlverständnis verbinden viele Themen, ohne sie zu einer einzigen Rieseneinheit zu verschmelzen.
 
+Im Zielbild folgen Cockpit-Baum und grafische Lernkarte im selben persönlichen Ausschnitt derselben Hierarchie von Einheiten und atomaren Zielen. Ein Fachziel hat in beiden Ansichten denselben Elternpfad. Voraussetzungen und verlinkte Materialien dürfen auf anderen Tafeln erscheinen. Ihre fachliche Zuordnung bleibt dabei erhalten.
+
 Ungeeignet sind folgende Begründungen:
 
 - „Es gibt schon eine Prüfung": Die Prüfung muss aus dem Lernversprechen hervorgehen; ihr vorhandener Zuschnitt bestimmt nicht die Einheit.
-- „Die Gruppe braucht mindestens ein paar Ziele": Es gibt keine Mindestanzahl. Ein einzelnes Ziel kann umfassend genug sein; viele Ziele können nur lose zusammenhängen.
+- „Die Gruppe braucht mindestens ein paar Ziele": Der Zuschnitt ergibt sich aus dem Lernversprechen und der nachweisbaren Anwendung. Ein einzelnes atomares Ziel wird direkt angezeigt. Ein Ordner, der nur dieses Ziel enthält und keinen eigenständigen Lernweg eröffnet, entfällt in der Lernnavigation.
 - „Die Überschrift wirkt aufgeräumt": Eine zusätzliche Oberüberschrift erzeugt weder fachlichen Zusammenhang noch ein neues Lernergebnis.
 - „Dann passen alle Kanten": Voraussetzungen werden weder erfunden noch entfernt, um eine gewünschte Zerlegung nachträglich passend zu machen.
 

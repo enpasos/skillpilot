@@ -96,6 +96,19 @@ assert.equal(depthMap.entries.U.kind, 'unit')
 assert.equal(depthMap.entries.U.unitType, 'unit', 'a unit from the tree is named a plain unit')
 assert.deepEqual(depthMap.findings, [])
 
+// One subject can leave a single actionable goal inside an otherwise useful view group.
+const scoped = tree([goal('parent', ['group']), goal('group', ['left', 'subtree']), goal('subtree', ['right']),
+  goal('left', [], [], subjectB), goal('right', [], ['left'])], ['parent'])
+const unfiltered = project({ ...scoped, units: new Map([['group', { key: 'group', presentationGroup: true }]]) })
+const filtered = filterLearnerUnitMapToSubjects(unfiltered, new Set([subjectA]))
+assert.deepEqual(children(unfiltered, 'group'), ['left', 'right'])
+assert.deepEqual(rootChildren(filtered), ['right'])
+assert.deepEqual(filtered.entryPaths?.group, [filtered.rootId, 'right'])
+assert.deepEqual(filtered.entryPaths?.subtree, [filtered.rootId, 'right'], 'a canonical subtree alias reveals the promoted goal')
+assert.deepEqual(filtered.scopeContext?.[filtered.rootId]?.right.map(value => value.sourceGoalIds), [['left']])
+assert.equal(filtered.entries.right.kind, 'goal')
+assert.deepEqual(filterLearnerUnitMapToSubjects(filtered, new Set([subjectA])), filtered)
+
 // With an empty units map, every atomic goal is a child of the root.
 const flat = project(depth)
 assert.deepEqual(rootChildren(flat), ['v1', 'v2', 'c1', 'u1', 'w1'], 'an empty units map yields all atomic goals at the root, in tree order')
@@ -284,15 +297,13 @@ const interleavedPreparation = tree([
 ], ['subject'])
 const interleavedSnapshot = JSON.stringify([...interleavedPreparation.goalIndexAll])
 const stratified = project({ ...interleavedPreparation, units: unitsOf({ E: 'e', A: 'a', B: 'b', C: 'c' }) })
-const earlyFoundation = parentOf(stratified, 'p0'), laterFoundation = parentOf(stratified, 'p1')
-assert.notEqual(earlyFoundation, laterFoundation, 'a topic on the prerequisite path separates preparation groups')
-assert.equal(parentOf(stratified, earlyFoundation), 'E')
-assert.equal(parentOf(stratified, laterFoundation), 'E')
-assert(findRelation(stratified, 'E', earlyFoundation, 'A'))
-assert(findRelation(stratified, 'E', 'A', laterFoundation))
-assert(findRelation(stratified, 'E', laterFoundation, 'B'))
-assert(!findRelation(stratified, 'E', 'A', earlyFoundation))
-assert(!findRelation(stratified, 'E', laterFoundation, 'A'))
+assert.equal(parentOf(stratified, 'p0'), 'E')
+assert.equal(parentOf(stratified, 'p1'), 'E')
+assert(findRelation(stratified, 'E', 'p0', 'A'))
+assert(findRelation(stratified, 'E', 'A', 'p1'))
+assert(findRelation(stratified, 'E', 'p1', 'B'))
+assert(!findRelation(stratified, 'E', 'A', 'p0'))
+assert(!findRelation(stratified, 'E', 'p1', 'A'))
 assert.equal(JSON.stringify([...interleavedPreparation.goalIndexAll]), interleavedSnapshot)
 assertArrowsAmongChildren(stratified, 'stratified preparation')
 
@@ -307,6 +318,10 @@ assert.deepEqual(children(memberMap, '__unit__:lu'), ['v1', 'v2'])
 assert.equal(memberMap.entries['__unit__:lu'].unitType, 'unitWithAssessments', 'a unit whose entry names assessment reviews is a unit with assessments')
 const plainMember = project({ ...depth, units: unitsOf({ U: 'u', V: 'v', W: 'w' }), memberUnits: [{ key: 'plain', label: 'Ohne', goalIds: ['v1', 'v2'] }] })
 assert.equal(plainMember.entries['__unit__:plain'].unitType, 'unit', 'a declared unit without assessment reviews is a plain unit')
+const singleMember = project({ ...depth, units: unitsOf({ U: 'u', V: 'v', W: 'w' }), memberUnits: [
+  { key: 'reviewed', label: 'Deklarierte Einheit', goalIds: ['v1'], withAssessments: true },
+] })
+assert.deepEqual(children(singleMember, '__unit__:reviewed'), ['v1'], 'a unit with its own assessment contract keeps its board')
 assert.deepEqual(memberMap.findings.map(finding => finding.kind), ['memberUnitSplit', 'memberUnitAbsent'])
 
 console.log('Learner unit map projection passed: units and goals only, unequal depth, removed clusters, merged keys, '

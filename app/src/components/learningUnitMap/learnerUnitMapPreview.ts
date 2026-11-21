@@ -6,7 +6,9 @@ import { projectCompositionChildOrder, readCompositionChildOrder } from '../../u
 import { learnerMapProjectionSignature } from './learnerMapProjection'
 import { buildLearnerUnitMapProjection, type LearnerMapMemberUnit, type LearnerMapUnitIdentity,
   type LearnerMapUnitOrder, type LearnerUnitMapFixture } from './learnerUnitMapProjection'
-import { MATHEMATICS_LANDSCAPE_ID, PHYSICS_LANDSCAPE_ID, UNIT_MAP_PREVIEW_SUBJECT_IDS } from './learnerUnitMapPreviewSubjects'
+import { MATHEMATICS_LANDSCAPE_ID, PHYSICS_LANDSCAPE_ID, UNIT_MAP_LEARNING_MATERIALS, UNIT_MAP_PREVIEW_SUBJECT_IDS } from './learnerUnitMapPreviewSubjects'
+
+import { isUnitMaterialSource } from './unitLearningMaterialActions'
 
 export { MATHEMATICS_LANDSCAPE_ID, PHYSICS_LANDSCAPE_ID, UNIT_MAP_PREVIEW_SUBJECT_IDS } from './learnerUnitMapPreviewSubjects'
 
@@ -260,7 +262,8 @@ export function deriveLearnerUnitMapPreview(input: LearnerUnitMapPreviewInput, r
     const stage = planBoundViewIds.has(viewId(goal)) ? undefined : stageByViewNodeId.get(viewNodeId(goal)!)
     units.set(id, declared ? { key: keyOf(goal), label: language === 'en' ? declared.labelEn ?? declared.label : declared.label }
       : stage ? { key: stage.key, label: stage.label[language] }
-        : hesseCompatibility.has(id) ? { key: keyOf(goal), label: hesseCompatibility.get(id)!.label } : { key: keyOf(goal) })
+        : hesseCompatibility.has(id) ? { key: keyOf(goal), label: hesseCompatibility.get(id)!.label } : { key: keyOf(goal),
+          ...(UNIT_MAP_LEARNING_MATERIALS.some(material => isUnitMaterialSource(material, goal)) ? {} : { presentationGroup: true }) })
   }
   const keys = new Set([...units.values()].map(identity => identity.key))
   const after: LearnerMapUnitOrder[] = []
@@ -353,7 +356,7 @@ export function createLearnerUnitMapCache() {
       const goal = input.goalIndexAll.get(id)
       return [goal?.landscapeId, goal?.extendedData?.syntheticStructureKind, goal?.extendedData?.compositionViewId,
         goal?.extendedData?.compositionNodeId, goal?.extendedData?.compositionChildOrder,
-        goal?.extendedData?.compositionChildOrderChildIds, goal?.personalCurriculumProjection?.presentationOnly]
+        goal?.extendedData?.compositionChildOrderChildIds, goal?.personalCurriculumProjection?.presentationOnly, goal?.preparationSource]
     })])
     if (previous?.signature !== signature || previous.canonical !== input.canonicalGoalIndexAll || previous.sources !== input.landscapeSources) {
       previous = { signature, canonical: input.canonicalGoalIndexAll, sources: input.landscapeSources, byStep: new Map() }

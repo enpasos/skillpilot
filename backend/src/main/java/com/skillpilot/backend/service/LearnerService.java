@@ -680,8 +680,8 @@ public class LearnerService {
     }
 
     boolean isUnitAssignmentSubjectSelected(Learner learner, String landscapeId) {
-        return landscapeId.equals(learner.getSelectedCurriculum())
-                || isSelectedInPersonalCurriculum(parsePersonalCurriculumConfig(learner.getPersonalCurriculum()).get(landscapeId));
+        return landscapeId != null && (landscapeId.equals(learner.getSelectedCurriculum())
+                || isSelectedInPersonalCurriculum(parsePersonalCurriculumConfig(learner.getPersonalCurriculum()).get(landscapeId)));
     }
 
     @Transactional(readOnly = true)

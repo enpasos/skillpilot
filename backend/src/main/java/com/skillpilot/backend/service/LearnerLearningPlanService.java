@@ -1489,26 +1489,6 @@ public class LearnerLearningPlanService {
     }
 
     private Optional<PlanGoalCandidate> firstCandidateAcrossPlans(
-            String skillpilotId,
-            List<LearnerLearningPlan> candidatePlans,
-            LocalDate asOf,
-            Map<String, Double> mastery,
-            boolean failOnInvalidPlan) {
-        return firstCandidateAcrossPlans(skillpilotId, candidatePlans, asOf, mastery, failOnInvalidPlan, false);
-    }
-
-    private Optional<PlanGoalCandidate> firstCandidateAcrossPlans(
-            String skillpilotId,
-            List<LearnerLearningPlan> candidatePlans,
-            LocalDate asOf,
-            Map<String, Double> mastery,
-            boolean failOnInvalidPlan,
-            boolean allowExtra) {
-        return firstCandidateAcrossPlans(skillpilotId, candidatePlans, asOf, mastery,
-                failOnInvalidPlan, allowExtra, true);
-    }
-
-    private Optional<PlanGoalCandidate> firstCandidateAcrossPlans(
             String skillpilotId, List<LearnerLearningPlan> candidatePlans, LocalDate asOf,
             Map<String, Double> mastery, boolean failOnInvalidPlan, boolean allowExtra, boolean keepBinding) {
         return firstCandidateAcrossPlans(skillpilotId, candidatePlans, asOf, mastery, failOnInvalidPlan,

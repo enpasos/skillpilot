@@ -474,7 +474,8 @@ public class ClaudeV1CoachContextProjector {
         if (!assignment.voluntaryGoals().isEmpty()) {
             result.put("voluntaryGoalTitles", assignment.voluntaryGoals().stream()
                     .map(LearnerPlanTodayStatus.VoluntaryGoal::title)
-                    .map(this::safeSubjectLabel).filter(java.util.Objects::nonNull).distinct().toList());
+                    .map(this::safeSubjectLabel).filter(java.util.Objects::nonNull).distinct()
+                    .limit(ClaudeV1CompletionChoices.MAX_CHOICES).toList());
         }
         return result;
     }

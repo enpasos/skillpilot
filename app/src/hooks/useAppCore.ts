@@ -1,5 +1,5 @@
 import React, { useMemo, useCallback, useEffect } from 'react'
-import { useNavigate, useSearchParams, useLocation, matchPath } from 'react-router-dom'
+import { useNavigate, useSearchParams, useLocation, matchRoutes } from 'react-router-dom'
 import type { UiGoal as Goal, ExternalRequirement } from '../goalTypes'
 import { shortKeyFromId } from '../shortKey'
 import { useLandscapes } from './useLandscapes'
@@ -230,10 +230,9 @@ export function useAppCore({
   const navigate = useNavigate()
   const location = useLocation()
   const runtimeCatalogState = useRuntimeCurriculumCatalog({ enabled })
-  // Fix: useParams only works inside a Route. Since useAppCore is called in App (outside Routes),
-  // we must parse the URL manually using matchPath.
-  const match = matchPath({ path: '/:view/:goalId?' }, location.pathname)
-  const goalId = match?.params.goalId
+  // This hook runs above Routes. Read the same decoded parameter as the routed
+  // view, including ordinary encoded deep links to composition structure IDs.
+  const goalId = matchRoutes([{ path: '/:view/:goalId?' }], location.pathname)?.[0]?.params.goalId
   const [searchParams, setSearchParams] = useSearchParams()
   const pendingSearchRef = React.useRef<string | null>(null)
   const pendingSelectedGoalNavigationRef = React.useRef<string | null>(null)
@@ -913,13 +912,12 @@ export function useAppCore({
   }, [goalId, navigate, location.pathname, location.search, searchParams])
 
   const handleNavigateToExternal = useCallback(
-    (targetLandscapeId: string, goalId: string) => {
-      if (!goalId) return
-      const currentRouteGoalId = matchPath('/:view/:goalId', location.pathname)?.params.goalId
-      const newSearchParams = getGoalNavigationSearch(searchParams, currentRouteGoalId, goalId)
+    (targetLandscapeId: string, targetGoalId: string) => {
+      if (!targetGoalId) return
+      const newSearchParams = getGoalNavigationSearch(searchParams, goalId, targetGoalId)
       // A loaded personal target belongs to the committed root even when its
       // canonical owner is an independently unselected subject.
-      const loadedGoal = goalIndexAll.get(goalId)
+      const loadedGoal = goalIndexAll.get(targetGoalId)
       const isPersonalTarget = loadedGoal?.personalCurriculumProjection?.revision === 'atomic-prerequisite-learning-v1'
         && loadedGoal.personalCurriculumProjection.role === 'target'
       const isLoadedCanonicalTarget = role === 'learner'
@@ -927,9 +925,9 @@ export function useAppCore({
         && loadedGoal?.landscapeId === targetLandscapeId
       if (!isLoadedCanonicalTarget) newSearchParams.set('l', targetLandscapeId)
       const view = location.pathname.split('/')[1]
-      navigate(`/${view}/${goalId}?${newSearchParams.toString()}`)
+      navigate(`/${view}/${targetGoalId}?${newSearchParams.toString()}`)
     },
-    [navigate, location.pathname, searchParams, role, selectedLandscapeId, goalIndexAll],
+    [navigate, location.pathname, searchParams, role, selectedLandscapeId, goalIndexAll, goalId],
   )
 
   const handleMasteryChange = (id: string, value: number) => {

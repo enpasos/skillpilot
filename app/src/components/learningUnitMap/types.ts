@@ -53,6 +53,10 @@ export interface LearningMapEntry {
   requires: string[]
   position: { x: number; y: number }
   eyebrow?: string
+  /** A view-only group with no unit contract of its own. */
+  presentationGroup?: true
+  /** Original view groups represented directly by their sole actionable goal, outermost first. */
+  sourceSections?: { id: string; title: string }[]
   /** Unit map only: landscape IDs of the subjects whose goals the entry is or contains. */
   subjects?: string[]
   /** Unit map only: a goal the prerequisite closure added from outside the plan. */

@@ -8,6 +8,7 @@ import type { LearningMapEntry, LearningMapFixture, LearningMapRelation, Learnin
 export interface LearnerMapUnitIdentity {
   key: string
   label?: string
+  presentationGroup?: true
 }
 
 /** Declared order between two units: `unit` lies after `after`. */
@@ -143,6 +144,7 @@ export function buildLearnerUnitMapProjection(input: LearnerUnitMapProjectionInp
     const goal = goalIndexAll.get(nodeId)!
     const id = nodes.length === 1 ? nodeId : syntheticUnitId(identity.key)
     entries[id] = { id, title: identity.label ?? audienceTitle(goal, treeParentId),
+      presentationGroup: nodes.length === 1 ? identity.presentationGroup : undefined,
       description: nodes.length === 1 ? goal.description : '', kind: 'unit', unitType: 'unit', children: [], requires: [], position: { x: 0, y: 0 } }
     childSet.set(id, new Set())
     unitEntryIdByKey.set(identity.key, id)
@@ -166,6 +168,7 @@ export function buildLearnerUnitMapProjection(input: LearnerUnitMapProjectionInp
     }
     const goal = goalIndexAll.get(id)!
     entries[id] = { id, title: audienceTitle(goal, treeParentId), description: goal.description,
+      sourceSections: goal.preparationSource && goal.preparationSource.id !== treeParentId ? [goal.preparationSource] : undefined,
       kind: learnerMapEntryKind(goal, canonicalGoalIndexAll.get(id), 0), children: [], requires: [],
       position: { x: 0, y: 0 }, subjects: goal.landscapeId ? [goal.landscapeId] : [] }
     treeParentOf.set(id, treeParentId)
@@ -445,7 +448,7 @@ export function buildLearnerUnitMapProjection(input: LearnerUnitMapProjectionInp
       while (unitEntryIdByKey.has(key)) key += '_'
       const id = syntheticUnitId(key)
       const title = preparationTitle ?? 'Notwendige Grundlagen'
-      entries[id] = { id, title: groups.length > 1 ? `${title} (${index + 1})` : title, description: '', kind: 'unit', unitType: 'unit',
+      entries[id] = { id, title: groups.length > 1 ? `${title} (${index + 1})` : title, description: '', kind: 'unit', unitType: 'unit', presentationGroup: true,
         children: [], requires: [], position: { x: 0, y: 0 } }
       unitEntryIdByKey.set(key, id)
       unitKeyByEntryId.set(id, key)
@@ -464,6 +467,10 @@ export function buildLearnerUnitMapProjection(input: LearnerUnitMapProjectionInp
     if (entryPaths[id]) continue
     entryPaths[id] = [...entryPaths[parentId], id]
     order.push(id)
+  }
+
+  for (const id of order) {
+    for (const source of entries[id].sourceSections ?? []) entryPaths[source.id] ??= entryPaths[id]
   }
 
   // Subjects come from the goals' landscapes, never from titles.
@@ -563,9 +570,70 @@ export function buildLearnerUnitMapProjection(input: LearnerUnitMapProjectionInp
   for (const [alias, owner] of aliasOwner) {
     if (!entries[alias] && entryPaths[owner]) entryPaths[alias] = [...entryPaths[owner], alias]
   }
-  return { rootId, title: 'Meine Lernziele', entries, entryPaths, scopeRelations, scopeContext, contextGoalTitles,
+  return promoteSingleGoalGroups({ rootId, title: 'Meine Lernziele', entries, entryPaths, scopeRelations, scopeContext, contextGoalTitles,
     getRequirementContext: resolver.getRequirementContext, findings, subjectIds,
-    unitEntryIds: Object.fromEntries(unitEntryIdByKey) }
+    unitEntryIds: Object.fromEntries(unitEntryIdByKey) })
+}
+
+/**
+ * A presentation group may stand for its single actionable leaf. Perform this
+ * after placing all owned goals and evaluating the declared sibling order:
+ * the leaf takes the group's place in the same order, with the same evidence.
+ * Stage-plan units and units with a curriculum or material contract retain their board.
+ */
+function promoteSingleGoalGroups(fixture: LearnerUnitMapFixture): LearnerUnitMapFixture {
+  const representative = new Map<string, string>()
+  const visit = (id: string): string => {
+    const entry = fixture.entries[id]
+    const children = entry.children?.map(visit)
+    if (entry.presentationGroup && children?.length === 1) {
+      const leaf = fixture.entries[children[0]]
+      if (leaf.kind !== 'unit' && leaf.kind !== 'cluster') {
+        representative.set(id, leaf.id)
+        return leaf.id
+      }
+    }
+    return id
+  }
+  visit(fixture.rootId)
+  if (!representative.size) return fixture
+  const shown = (id: string) => representative.get(id) ?? id
+  const entries: typeof fixture.entries = Object.assign(Object.create(null), fixture.entries)
+  for (const [group, goalId] of representative) {
+    const source = entries[group]
+    delete entries[group]
+    const goal = entries[goalId]
+    // Children are visited first, so prepending reconstructs the source path.
+    entries[goalId] = { ...goal, sourceSections: [{ id: group, title: source.title }, ...(goal.sourceSections ?? [])] }
+  }
+  for (const entry of Object.values(entries)) {
+    if (entry.children?.some(id => representative.has(id))) entries[entry.id] = { ...entry, children: entry.children.map(shown) }
+  }
+  const entryPaths: NonNullable<LearningMapFixture['entryPaths']> = Object.create(null)
+  for (const [id, path] of Object.entries(fixture.entryPaths ?? {})) {
+    // Legacy aliases of removed clusters end with the alias behind its owner.
+    const owner = !fixture.entries[id] && path.at(-1) === id ? path.at(-2) : id
+    const visible = path.filter(step => !representative.has(step))
+    if (owner && representative.has(owner)) {
+      if (id !== owner) visible.pop()
+      visible.push(shown(owner))
+    }
+    entryPaths[id] = visible
+  }
+  const scopeRelations: NonNullable<LearningMapFixture['scopeRelations']> = Object.create(null)
+  for (const [scope, relations] of Object.entries(fixture.scopeRelations ?? {})) {
+    if (!representative.has(scope)) scopeRelations[scope] = relations.map(edge => ({
+      ...edge, source: shown(edge.source), target: shown(edge.target),
+    }))
+  }
+  const scopeContext: NonNullable<LearningMapFixture['scopeContext']> = Object.create(null)
+  for (const [scope, board] of Object.entries(fixture.scopeContext ?? {})) {
+    if (representative.has(scope)) continue
+    const context = scopeContext[scope] = Object.create(null)
+    for (const [id, requirements] of Object.entries(board)) context[shown(id)] = requirements
+  }
+  return { ...fixture, entries, entryPaths, scopeRelations, scopeContext,
+    unitEntryIds: Object.fromEntries(Object.entries(fixture.unitEntryIds).filter(([, id]) => !representative.has(id))) }
 }
 
 /**
@@ -595,7 +663,7 @@ export function filterLearnerUnitMapToSubjects(fixture: LearnerUnitMapFixture, s
   }
   const entryPaths: Record<string, string[]> = Object.create(null)
   for (const [id, path] of Object.entries(fixture.entryPaths ?? {})) {
-    if (kept.has(id) || (!fixture.entries[id] && path.slice(0, -1).every(step => kept.has(step)))) entryPaths[id] = path
+    if (kept.has(id) || (!fixture.entries[id] && path.every(step => step === id || kept.has(step)))) entryPaths[id] = path
   }
   const scopeContext: NonNullable<LearningMapFixture['scopeContext']> = Object.create(null)
   const addContext = (scopeId: string, target: string, provenance: LearningMapRequirement) => {
@@ -639,15 +707,14 @@ export function filterLearnerUnitMapToSubjects(fixture: LearnerUnitMapFixture, s
     const declared = new Map<string, Set<string>>()
     for (const relation of relations) {
       if (relation.unitOrder !== 'declared' || relation.backward
-        || !siblings.has(relation.source) || !siblings.has(relation.target)
-        || fixture.entries[relation.source]?.kind !== 'unit' || fixture.entries[relation.target]?.kind !== 'unit') continue
+        || !siblings.has(relation.source) || !siblings.has(relation.target)) continue
       const next = declared.get(relation.source) ?? new Set<string>()
       next.add(relation.target)
       declared.set(relation.source, next)
     }
     const contracted = new Map<string, Set<string>>()
     for (const source of siblings) {
-      if (!kept.has(source) || fixture.entries[source]?.kind !== 'unit') continue
+      if (!kept.has(source) || !declared.has(source)) continue
       const seen = new Set([source]), pending = [...declared.get(source) ?? []], targets = new Set<string>()
       while (pending.length) {
         const target = pending.pop()!
@@ -678,7 +745,7 @@ export function filterLearnerUnitMapToSubjects(fixture: LearnerUnitMapFixture, s
       } else output.push({ source, target, kind: 'summary', provenance: [], unitOrder: 'declared' })
     }
   }
-  return { ...fixture, entries, entryPaths, scopeRelations, scopeContext,
+  return promoteSingleGoalGroups({ ...fixture, entries, entryPaths, scopeRelations, scopeContext,
     subjectIds: fixture.subjectIds.filter(subject => subjects.has(subject)),
-    unitEntryIds: Object.fromEntries(Object.entries(fixture.unitEntryIds).filter(([, id]) => kept.has(id))) }
+    unitEntryIds: Object.fromEntries(Object.entries(fixture.unitEntryIds).filter(([, id]) => kept.has(id))) })
 }

@@ -990,7 +990,7 @@ export const applyCompositionViewProjection = (
       // Scope exclusions are not learning places. Only an explicit acquisition
       // declaration provides a template, and it never supplies target authority.
       if (view.viewFormatVersion === '1.2') {
-        const visit = (node: CompositionViewNode, treeOrder: number, ancestors: UiGoal[]) => {
+        const visit = (node: CompositionViewNode, treeOrder: number, ancestors: UiGoal[], parent?: CompositionStructureNode) => {
           if (node.kind === 'goalEntry' && getCompositionProjectionRole(node) === 'prerequisiteOnly'
             && node.acquisitionPlacement === true
             && ancestors.length > 0 && prerequisiteOnlyGoalIds.has(node.goalId)
@@ -1000,7 +1000,15 @@ export const applyCompositionViewProjection = (
           if (node.kind !== 'structure') return
           const template = createSyntheticStructureGoal({ entry, view, node, contains: [], treeOrder,
             isRoot: !anchorGoalId && ancestors.length === 0 })
-          node.children.forEach((child, index) => visit(child, index, [...ancestors, template]))
+          // An explicitly unordered folder that only places one prerequisite provides
+          // source context for that atom. A stage binding or sibling order keeps its own place.
+          const onlyChild = node.children.length === 1 ? node.children[0] : undefined
+          if (onlyChild?.kind === 'goalEntry' && onlyChild.projectionRole === 'prerequisiteOnly'
+            && onlyChild.acquisitionPlacement === true && !view.stagePlanProjection && node.childOrder === undefined
+            && parent?.childOrder && !parent.childOrder.after.some(pair => pair.unit === node.id || pair.after === node.id)) {
+            template.extendedData = { ...template.extendedData, compositionSinglePreparationGoalId: onlyChild.goalId }
+          }
+          node.children.forEach((child, index) => visit(child, index, [...ancestors, template], node))
         }
         nodes.forEach((node, index) => visit(node, index, []))
       }
@@ -1208,7 +1216,12 @@ export const applyPersonalCurriculumProjection = (
     }
     if (parent && !parent.contains.includes(placement.goalId)) parent.contains.push(placement.goalId)
     const atom = goalById.get(placement.goalId)!
-    atom.extendedData = { ...atom.extendedData, treeOrder: placement.treeOrder }
+    let displayOrder = placement.treeOrder
+    if (parent?.extendedData?.compositionSinglePreparationGoalId === atom.id) {
+      atom.preparationSource = { id: parent.id, title: parent.title }
+      if (typeof parent.extendedData.treeOrder === 'number') displayOrder = parent.extendedData.treeOrder
+    }
+    atom.extendedData = { ...atom.extendedData, treeOrder: displayOrder }
     displayedRootsNow().forEach(root => markReachable(root.id))
     // Existing roots may already have been visited before their new children.
     placement.ancestors.forEach(goal => markReachable(goal.id))
