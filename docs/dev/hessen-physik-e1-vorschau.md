@@ -47,9 +47,11 @@ Die Vergleichsseite zeigt zusätzlich eine gezielte Abfrage für Newtons erstes 
 
 ### Grundkurs- und Leistungskursprofil vergleichen
 
-Das hessische Kerncurriculum führt E.1 als gemeinsames Themenfeld der Einführungsphase. Die fachspezifischen Anforderungen der Grund- und Leistungskurse differenziert es für die Qualifikationsphase. Deshalb gilt für den E.1-Auftrag im technischen GK- und LK-Profil dieselbe Aufgaben- und Rasterfassung für A–D. Beide Profile bieten die zusätzliche Wurfprüfung an. Im LK gibt es außerdem „Mehrphasenbewegung und Modellprüfung“ als freiwillige Vertiefung. Die gewöhnliche Abschnittswahl umfasst nur die in diesem Profil verpflichtenden Prüfungen. Eine ausdrücklich einzeln beauftragte Zusatzprüfung zählt im jeweiligen Einzelzielplan. [Hessisches Kerncurriculum Physik 2024, S. 25–26 und 30](https://github.com/enpasos/skillpilot/blob/d5c45c3830b374500fbfffb35e52dcc3797ccb55/curricula/DE/Gymnasium/input/HE/upper-secondary/kernkurriculum_gymnasiale_oberstufe-physik.pdf#page=25)
+Das hessische Kerncurriculum führt E.1 als gemeinsames Themenfeld der Einführungsphase. Die fachspezifischen Anforderungen der Grund- und Leistungskurse differenziert es für die Qualifikationsphase. Deshalb gilt für den E.1-Auftrag im technischen GK- und LK-Profil dieselbe Aufgaben- und Rasterfassung für A–D. Beide Profile bieten die zusätzliche Wurfprüfung an. Im LK gibt es außerdem „Mehrphasenbewegung und Modellprüfung“ als freiwillige Vertiefung. Wer E.1 als Abschnitt im Einzelzielplan wählt, plant die Fachziele und die vier Pflichtprüfungen A–D ein. Eine ausdrücklich einzeln beauftragte Zusatzprüfung zählt als weitere Planposition. [Hessisches Kerncurriculum Physik 2024, S. 25–26 und 30](https://github.com/enpasos/skillpilot/blob/d5c45c3830b374500fbfffb35e52dcc3797ccb55/curricula/DE/Gymnasium/input/HE/upper-secondary/kernkurriculum_gymnasiale_oberstufe-physik.pdf#page=25)
 
-Für einen parallelen LK-Vergleich eine eigene Vorschau mit zwei freien Ports starten.
+Auf dem Abnahmerechner zeigen die gesonderten LK-Profile dieselben vier Auftragszustände wie im GK. [LK in G8](http://localhost:5201/auftraege/G8) · [LK in G9](http://localhost:5201/auftraege/G9)
+
+Für einen eigenen parallelen LK-Vergleich zwei freie Ports wählen.
 
 ```sh
 python3 scripts/preview_hessen_physics_e1.py --physics-course LK --ui-port 5201 --api-port 8211
