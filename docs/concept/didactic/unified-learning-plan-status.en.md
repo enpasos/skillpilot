@@ -134,6 +134,8 @@ Selecting a unit as a section in an ordinary individual-goal plan includes the a
 
 The assignment governs a general request to continue. When the learner expressly requests an available subject in their Personal Curriculum, the coach can switch to it while a unit assignment is open or complete. A reachable future goal of the expressly selected subject plan can then be brought forward. An unavailable assignment edition remains visible in the status and leaves other available work accessible.
 
+Learners can pause a saved unit assignment in the Cockpit even when its subject or edition is currently unavailable. Pausing applies only to the chosen assignment. The learner keeps its assessment evidence and all other assignments. When the same edition becomes available again, the learner can reactivate the assignment.
+
 The first implementation is the Hessian Physics E.1 pilot for G8 and G9, disabled by default. The four version-bound parts A–D certify the unit assignment. The additional horizontal-throw examination remains voluntary. Adopting the broader 19 November assessment proposal beyond this pilot requires a separate decision. [Unit assessment and planning credit](../skill-graph/assessment-gated-completion.md#sec-proposal-planning-release)
 
 <a id="sec-plan-status-period"></a>

@@ -120,6 +120,8 @@ Wird eine Einheit im gewöhnlichen Einzelzielplan als Abschnitt ausgewählt, umf
 
 Die Auftragswahl steuert die Fortsetzung auf ein allgemeines „weiter“. Einen ausdrücklich gewünschten Wechsel in ein zugängliches Fach des persönlichen Lehrplans kann der Coach auch bei offenem oder abgeschlossenem Einheitenauftrag ausführen. Ein künftiges erreichbares Ziel eines ausdrücklich gewählten Fachplans kann dabei vorgezogen werden. Eine inzwischen unverfügbare Auftragsfassung bleibt im Status sichtbar und sperrt andere verfügbare Arbeit nicht.
 
+Ein gespeicherter Einheitenauftrag lässt sich im Cockpit auch dann pausieren, wenn sein Fach oder seine Fassung inzwischen aus dem Angebot gefallen ist. Die Pause betrifft nur den gewählten Auftrag. Seine Prüfungsbelege und die anderen Aufträge der Person bleiben erhalten. Sobald die gleiche Fassung wieder verfügbar ist, kann die Person den Auftrag reaktivieren.
+
 Der erste aktive Anwendungsfall ist der standardmäßig ausgeschaltete Pilot Hessen Physik E.1 für G8 und G9. Die vier versionierten Pflichtteile A–D tragen den Einheitenauftrag. Die zusätzliche Prüfung zum waagerechten Wurf ist eine freiwillige Vertiefung. Eine generelle Übernahme des fachlichen Vorschlags vom 19. November über diesen Pilot hinaus bedarf einer eigenen Entscheidung. [Fachlicher Entwurf zur Planungsanrechnung](repo:docs/concept/skill-graph/assessment-gated-completion.md#sec-proposal-planning-release)
 
 ### Tages- und Wochenbasis {#sec:plan-status-period}
