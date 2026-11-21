@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-30",
+  "status": "LOCAL_INSTALL_AND_LOADER_PASSED",
+  "sourceState": "Uncommitted local implementation; artifact identities below bind the tested package bytes.",
+  "scope": "Real independently validated Mathematics JSON package; private local provisioner store and isolated Java loader/catalog/evaluator probe.",
+  "package": {
+    "packageId": "org.skillpilot.curriculum.de.gymnasium.mathematik",
+    "packageVersion": "0.1.0-completion.2",
+    "releaseId": "org.skillpilot.curriculum.de.gymnasium.mathematik@0.1.0-completion.2",
+    "outerZipSha256": "fe52bf0608117e08779e47391c0d32521bf97749b944dd3b70c129207257d839",
+    "contentDigest": "sha256:55ed6abbef12a036a31d520bfe3608d086e5e7a1a8e2cef76d1bb8221f264328",
+    "installRecordSha256": "8bc4b16d50de22e6285b1aa6190b40f4d23802e5c80b3f9842a343f7d08159d3"
+  },
+  "sourceValidation": {
+    "passed": true,
+    "adversarialCaseCount": 49,
+    "logicalArtifactCount": 114,
+    "definitionCount": 2716,
+    "referenceCount": 26387,
+    "fieldRegistryEntryCount": 473,
+    "binaryResourceCount": 836,
+    "definitionIndexDigest": "sha256:483f356d42a3243e18fa5a56759a312df0d7478887f7f36666e3623345de553a"
+  },
+  "localStore": {
+    "activation": "passed using the regular compare-and-swap command",
+    "activeLockSha256": "d434e33a5102aaf67a0f6d0eef95fefd35e22dcf0558ce6b7a8ed7be28de473b",
+    "productionActivation": false
+  },
+  "loaderProbe": {
+    "passed": true,
+    "zipSha256": "fe52bf0608117e08779e47391c0d32521bf97749b944dd3b70c129207257d839",
+    "snapshotGeneration": "d434e33a5102aaf67a0f6d0eef95fefd35e22dcf0558ce6b7a8ed7be28de473b",
+    "canonicalGoals": 1252,
+    "completionProfiles": [
+      "math-dot-product-projection"
+    ],
+    "complete": true,
+    "waivedGoalIds": [
+      "3016ec37-1c2e-47db-83f5-e767923bc97e"
+    ],
+    "unchangedMastery": [
+      "e98672c6-871a-5d0b-889c-5afc51040f0d"
+    ],
+    "javaRuntimeVersion": "25.0.2+10-LTS",
+    "imagesWithoutRetainedPayload": 836,
+    "heapMaxBytes": 402653184,
+    "heapUsedAfterGcBytes": 24756640,
+    "scope": "Real independently validated ZIP and private local provisioner store; FileSystemRepository, Loader, Catalog and Evaluator exercised; no production activation"
+  },
+  "artifacts": {
+    "sourceBuildProfile": "contracts/curriculum-package/v1.1/profiles/de-gymnasium-mathematik-completion-release-model-v1.profile.json",
+    "jsonZip": "tmp/assessment-completion-package-json-02-20261030/skillpilot-curriculum-de-gymnasium-mathematik-0.1.0-completion.2.json.zip",
+    "sourceValidationLog": "tmp/assessment-completion-package-source-02-independent-validation.log",
+    "installationLog": "tmp/assessment-completion-real-package-install-02.log",
+    "loaderLog": "tmp/assessment-completion-real-package-loader-02.log",
+    "loaderReport": "tmp/assessment-completion-java-probe/real-package-loader-report.json",
+    "isolatedProbeRunner": "tmp/assessment-completion-java-probe/run-real-loader.py",
+    "repositoryWarmupLog": "tmp/assessment-completion-real-repository-warmup-sealed.log",
+    "repositoryWarmupReport": "tmp/assessment-completion-java-probe/real-repository-warmup-report.json",
+    "repositoryWarmupRunner": "tmp/assessment-completion-java-probe/run-real-repository-warmup.py"
+  },
+  "pendingEvidence": [],
+  "limits": [
+    "The heap value is one observed post-GC measurement, not an end-to-end latency SLO or a retained-size guarantee.",
+    "This probe does not start a production server or activate production feature/profile flags.",
+    "Technical package checks do not approve unresolved redistribution reviews or authorize publication.",
+    "This evidence is local machine QA; it does not establish human learning quality or real-host acceptance.",
+    "The repository startup timing is one local wall-clock observation and includes catalog pinning; it is not production latency or a workload SLA."
+  ],
+  "repositoryWarmupProbe": {
+    "contextGoalsByBase": {
+      "a0e13c56-c25f-4742-9272-3a1a603ee52e": 10,
+      "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": 10
+    },
+    "warmupMs": 767,
+    "canonicalGoalsByBase": {
+      "a0e13c56-c25f-4742-9272-3a1a603ee52e": 6524,
+      "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": 1252
+    },
+    "totalStartupMs": 15531,
+    "heapUsedAfterGcBytes": 191921120,
+    "curriculumGeneration": "cf40c05fb5efddb1ba1868757445b52ab27aac90d1300c6de3947f617cfdd265",
+    "passed": true,
+    "javaRuntimeVersion": "25.0.2+10-LTS",
+    "scope": "Real enabled repository catalog, both default pilot bases, warm cached compilation and sealed rejection of unknown bases; no learner transaction"
+  },
+  "measurementSnapshot": "The loader, heap and repository startup observations were captured before the final FWU proof completed. Their original values remain unchanged; the completed package proof is linked separately.",
+  "completedPackageRoundtripEvidence": "docs/qa-ci/status/assessment-completion-fwu-roundtrip-2026-10-30.json"
+}
