@@ -1589,7 +1589,7 @@ class LearnerLearningPlanServiceIntegrationTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"active", "completed", "unavailable"})
-    void genericContinuationOfAnOrderedUnitNeverActivatesAPersonalSubject(String expectedStatus) {
+    void availableUnitBindsGenericContinuationAndLeavesNamedPersonalSubjectsOpen(String expectedStatus) {
         learner.setSelectedCurriculum(CURRICULUM_ID);
         learner.setFollowLearningPlans(true);
         when(learnerService.isUnitAssignmentSubjectSelected(learner, PHYSICS_LANDSCAPE_ID)).thenReturn(true);
@@ -1612,18 +1612,38 @@ class LearnerLearningPlanServiceIntegrationTest {
             assertThat(subject.unitAssignments()).singleElement().satisfies(assignment -> assertThat(assignment.status()).isEqualTo(expectedStatus));
             assertThat(subject.canContinue()).isFalse();
         });
-        assertThat(status.resumeAvailable()).isFalse();
+        var unavailable = "unavailable".equals(expectedStatus);
+        assertThat(status.resumeAvailable()).isEqualTo(unavailable);
         assertThat(status.automaticResumeAvailable()).isFalse();
+        var coach = service.getCoachTodayStatus(LEARNER_ID, "de");
+        assertThat(coach.statusText()).isEqualTo(status.statusText());
+        assertThat(coach.subjects()).filteredOn(subject -> LANDSCAPE_ID.equals(subject.landscapeId())).singleElement()
+                .satisfies(subject -> {
+                    assertThat(subject.canContinue()).isTrue();
+                    assertThat(subject.evaluable()).isFalse();
+                    assertThat(subject.periodGauge()).isNull();
+                });
+        var transition = new LearnerService.LearningPlanTransitionResult(true, mock(UnifiedLearnerStateResponse.class));
+        when(learnerService.applyLearningPlanTransition(LEARNER_ID, false, true, "atom-a", "atom-a", true,
+                "LEARNING_PLAN_RECONCILED")).thenReturn(transition);
+        when(learnerService.applyLearningPlanTransition(LEARNER_ID, false, true, "atom-a", "atom-a", true,
+                "LEARNING_PLAN_SUBJECT_SWITCH")).thenReturn(transition);
         var request = new LearnerLearningPlanApi.ReconcileRequest(TODAY);
-        assertThat(service.resumeExplicitly(LEARNER_ID, request).changed()).isFalse();
+        assertThat(service.resumeExplicitly(LEARNER_ID, request).changed()).isEqualTo(unavailable);
         assertThat(service.reconcile(LEARNER_ID, request).changed()).isFalse();
         assertStatus(() -> service.continuePlan(LEARNER_ID, plan.planId(), new LearnerLearningPlanApi.ContinueRequest(plan.revision(), TODAY)),
                 HttpStatus.CONFLICT);
-        assertStatus(() -> service.switchPersonalCurriculumSubject(LEARNER_ID, LANDSCAPE_ID), HttpStatus.CONFLICT);
-        verify(learnerService, never()).applyLearningPlanTransition(any(), anyBoolean(), anyBoolean(), any(), any(), anyBoolean(), any());
+        assertThat(service.switchPersonalCurriculumSubject(LEARNER_ID, LANDSCAPE_ID).activeGoalId()).isEqualTo("atom-a");
 
         // The historical physics order cannot constrain a later curriculum that deselects its subject.
         when(learnerService.isUnitAssignmentSubjectSelected(learner, PHYSICS_LANDSCAPE_ID)).thenReturn(false);
+        assertThat(service.getTodayStatus(LEARNER_ID, "de").resumeAvailable()).isTrue();
+
+        // A compatible material edition also cannot bind an outdated plan.
+        when(learnerService.isUnitAssignmentSubjectSelected(learner, PHYSICS_LANDSCAPE_ID)).thenReturn(true);
+        when(learnerService.getUnitAssignmentOptions(LEARNER_ID, PHYSICS_LANDSCAPE_ID)).thenReturn(List.of(unit));
+        when(learnerService.isLearningPlanCompatible(eq(LEARNER_ID), eq(CURRICULUM_ID), eq(PHYSICS_LANDSCAPE_ID), any()))
+                .thenReturn(false);
         assertThat(service.getTodayStatus(LEARNER_ID, "de").resumeAvailable()).isTrue();
     }
 
@@ -1647,8 +1667,9 @@ class LearnerLearningPlanServiceIntegrationTest {
         var request = new LearnerLearningPlanApi.ReconcileRequest(TODAY);
         assertThat(service.getTodayStatus(LEARNER_ID, "de").resumeAvailable()).isFalse();
         assertThat(service.resumeExplicitly(LEARNER_ID, request).changed()).isFalse();
-        assertStatus(() -> service.continuePlan(LEARNER_ID, math.planId(), new LearnerLearningPlanApi.ContinueRequest(math.revision(), TODAY)),
-                HttpStatus.CONFLICT);
+        assertThat(service.getPlan(LEARNER_ID, LANDSCAPE_ID, TODAY).canContinue()).isTrue();
+        assertThat(service.continuePlan(LEARNER_ID, math.planId(),
+                new LearnerLearningPlanApi.ContinueRequest(math.revision(), TODAY)).activeGoalId()).isEqualTo("atom-a");
 
         var today = learning("individual", "2026-09-04", "2026-09-04", "atom-a");
         service.upsert(LEARNER_ID, LANDSCAPE_ID, new LearnerLearningPlanApi.UpsertRequest(math.revision(), "Mathematik", List.of(today)), TODAY);
