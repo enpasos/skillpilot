@@ -46,6 +46,8 @@ Ein durch `unitAssignment` gespeicherter Lernblock bindet die gewählte Abschnit
 
 Wenn die nächste Entscheidung die Wahl eines Prüfungsteils ist, gibt die Coachsteuerung `guidance.state=unitChoice` zurück. Der Coach bietet die aktuell zulässigen Prüfungsteile zur Wahl an. Bei einer abgeschlossenen Einheit führt `unitComplete` auf ausdrückliches „weiter“ zur freiwilligen Zielwahl innerhalb dieser Einheit. Ein eigener fälliger und erreichbarer Auftrag hat Vorrang. Der Server validiert jede Fortsetzung erneut. Ein Aufruf ohne zulässiges Ziel lässt Fortschritt, Prüfungsbelege und aktives Ziel unberührt.
 
+Zu einem ausdrücklich genannten Fach veröffentlicht der Server die verfügbare Fachwahl. Für ein freiwillig gewähltes Ziel bestätigt der Claude-Adapter bei Bedarf zuerst den angebotenen Abschlussvertrag und lädt die aktuellen Auswahlmöglichkeiten. Eine passend veröffentlichte Einzelaktion kann den Lernweg starten. Der Titel in der Tagesübersicht allein ist ein Anzeigehinweis. Fehlt eine passende Aktion, führt der Coach zur Zielauswahl unter **Freiwillig weiterlernen** im Cockpit.
+
 Claude und Gemini können diese Auswahlzustände direkt benennen. Der bestehende OpenAI-Vertrag bildet sie auf `blocked` beziehungsweise `complete` ab und erläutert die konkrete Wahl im Handlungshinweis. Eine Lane ohne eigene gültige Prüfungsaktion verweist für die Auswahl ins Cockpit. Jeder Anbieter verwendet ausschließlich seine veröffentlichten Auswahlmöglichkeiten und die vom gemeinsamen Backend erteilten Fähigkeiten.
 
 ### Werkzeuge und Eingaben: semantisch klein, frei von Chat-Freitexten {#sec:coach-boundary-inputs}

@@ -484,12 +484,15 @@ public class ClaudeV1CoachContextProjector {
         String instruction = switch (state) {
             case "unitComplete" -> "The explicitly chosen unit assignment is complete. Report its backend status text "
                     + "verbatim when asked. On a request to continue, offer voluntary study using the completed unit's "
-                    + "voluntaryGoalTitles and await the learner's choice. With no listed goals, offer to stop or choose a new assignment. Use current choices for that section, "
-                    + "or guide the learner to its individual goals in the Cockpit. Do not automatically start a "
-                    + "goal or exam or treat optional work as required.";
+                    + "voluntaryGoalTitles and await the learner's choice. For an explicit subject switch, use the published subject with canContinue=true. "
+                    + "After selecting a voluntary title, confirm the offered completion contract when needed and reload the context. "
+                    + "Use the matching published voluntary choice for the selected goal. A title alone is not a tool argument. "
+                    + "If there is no matching choice, guide the learner to that title in the Cockpit learning plan under "
+                    + "‘Freiwillig weiterlernen’ (‘Continue voluntarily’). With no listed goals, offer to stop or choose a new assignment.";
             case "unitChoice" -> "Report the backend plan text verbatim when asked for status. "
                     + "An explicit unit assignment still has outstanding parts. On a request to work on that unit, "
                     + "offer available parts from the current published assessment choices and await a choice. "
+                    + "Honor an explicitly requested published subject with canContinue=true. "
                     + "Do not automatically start an exam or substitute another goal. If no part is offered, "
                     + "explain the current availability from the backend.";
             case "continue" -> "Output 'text' verbatim when reporting plan status, at most once per response, "

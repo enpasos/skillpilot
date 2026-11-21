@@ -63,6 +63,7 @@ class ClaudeV1CompletionRouteIntegrationTest {
     @Autowired com.skillpilot.backend.connectors.claude.v1.session.ClaudeV1SessionTokenCodec sessionTokens;
     @Autowired LearnerService learners;
     @Autowired LearnerLearningPlanService learningPlans;
+    @Autowired com.skillpilot.backend.repository.LearnerLearningPlanRepository storedPlans;
     @Autowired com.skillpilot.backend.landscape.LandscapeService landscapeDefinitions;
     @Autowired LearnerRepository learnerRepository;
     @Autowired MasteryRepository masteryRepository;
@@ -792,9 +793,76 @@ class ClaudeV1CompletionRouteIntegrationTest {
             assertThat(version()).isEqualTo(currentVersion);
             assertThat(learners.getLearner(learnerId).getActiveGoalId()).isNull();
         }
+        if (passedParts == 4 && !separateOrder) {
+            assertThat((List<?>) map(before, "levelCompletion").get("choices")).isEmpty();
+            assertThat(map(today, "guidance").get("instruction").toString()).contains("Freiwillig weiterlernen");
+            successful(ClaudeV1CompletionContractRegistry.TOOL_CONFIRM, Map.of(
+                    "receiptCapability", map(context(), "completionContract").get("receiptCapability")));
+            var confirmed = context();
+            String title = "Modellierung und Idealisierung von Bewegungen";
+            var offered = (List<?>) assignment.get("voluntaryGoalTitles");
+            String cockpitGoal = "Physik im Straßenverkehr: Sicherheitsabstände bewerten";
+            assertThat(offered.toString()).contains(title, cockpitGoal);
+            var beforeUnpublishedChoice = version();
+            var unavailable = call(ClaudeV1McpContractAdapter.TOOL_CHOOSE_COMPLETION_ROUTE,
+                    writeArgs("unpublished-voluntary-title", beforeUnpublishedChoice, Map.of("choice", cockpitGoal)));
+            assertThat(unavailable.isError()).isTrue();
+            assertThat(version()).isEqualTo(beforeUnpublishedChoice);
+            assertThat(learners.getLearner(learnerId).getActiveGoalId()).isNull();
+            String published = choice(confirmed, "Einzelfokus starten: " + title);
+            var receiptsBeforeChoice = examPasses.findForGoals(learnerId, parts);
+            var result = successful(ClaudeV1McpContractAdapter.TOOL_CHOOSE_COMPLETION_ROUTE,
+                    writeArgs("start-chosen-individual-goal", version(), Map.of("choice", published)));
+            assertThat(map(map(result, "context"), "activeGoal"))
+                    .containsEntry("id", "d6dc0e02-831d-4894-a61a-852bcc74f147").containsEntry("title", title);
+            assertThat(learners.getLearner(learnerId).getActiveGoalId()).isEqualTo("d6dc0e02-831d-4894-a61a-852bcc74f147");
+            assertThat(examPasses.findForGoals(learnerId, parts)).isEqualTo(receiptsBeforeChoice);
+        }
         assertThat(examPasses.findForGoals(learnerId, parts)).hasSize(passedParts);
         assertThat(masteryRepository.findByLearner_SkillpilotId(learnerId)).extracting(Mastery::getGoalKey)
                 .containsExactlyInAnyOrderElementsOf(order.subList(0, passedParts).stream().map(parts::get).toList());
+    }
+
+    @ParameterizedTest
+    @CsvSource({"G8,SekII,16", "G9,SekII,16", "G8,CrossStage,15", "G9,CrossStage,15"})
+    void supplementaryAssessmentRequiresExplicitSelectionInAnIndividualPlan(String duration, String stage, int expected) throws Exception {
+        String section = selectHessianMotionUnit(duration, stage);
+        String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
+        String extra = "6ea3fb3c-abdc-568f-ab13-97c36dc274e4";
+        var today = java.time.LocalDate.now(java.time.ZoneId.of("Europe/Berlin"));
+        var monday = today.with(java.time.DayOfWeek.MONDAY);
+        var sunday = monday.plusDays(6);
+        var sectionRoots = List.of(section);
+        var individual = List.of(section, extra);
+        var required = learners.resolveLearningPlanGoalIds(learnerId, physics, sectionRoots);
+        var all = learners.resolveLearningPlanGoalIds(learnerId, physics, individual);
+        assertThat(required).hasSize(expected).doesNotContain(extra);
+        assertThat(all).containsExactlyInAnyOrderElementsOf(
+                java.util.stream.Stream.concat(required.stream(), java.util.stream.Stream.of(extra)).toList());
+        assertThat(learners.resolveLearningPlanGoalIds(learnerId, physics, List.of(extra))).containsExactly(extra);
+
+        var fullCapture = new LearnerLearningPlanApi.Block("motion", "learning", null, "E.1",
+                monday, sunday, null, all, sectionRoots, true);
+        var saved = learningPlans.upsert(learnerId, physics, new LearnerLearningPlanApi.UpsertRequest(
+                0L, "E.1", List.of(fullCapture)), today);
+        assertThat(saved.blocks().getFirst().atomicGoalIds()).containsExactlyInAnyOrderElementsOf(required);
+        var stored = storedPlans.findByLearner_SkillpilotIdAndLandscapeId(learnerId, physics).orElseThrow();
+        var captured = saved.blocks().getFirst();
+        var legacyCapture = new LearnerLearningPlanApi.Block(captured.id(), captured.kind(), captured.goalId(), captured.title(),
+                captured.startDate(), captured.endDate(), captured.date(), all, captured.goalIds(), captured.active());
+        String legacyJson = mapper.writeValueAsString(List.of(legacyCapture));
+        stored.setBlocksJson(legacyJson);
+        storedPlans.saveAndFlush(stored);
+        var interpreted = learningPlans.getPlan(learnerId, physics, today);
+        assertThat(interpreted.stale()).isFalse();
+        assertThat(interpreted.blocks().getFirst().atomicGoalIds()).containsExactlyInAnyOrderElementsOf(required);
+        assertThat(storedPlans.findByLearner_SkillpilotIdAndLandscapeId(learnerId, physics).orElseThrow().getBlocksJson())
+                .isEqualTo(legacyJson);
+        var withExtra = new LearnerLearningPlanApi.Block("motion", "learning", null, "E.1 und Zusatzprüfung",
+                monday, sunday, null, all, individual, true);
+        var explicit = learningPlans.upsert(learnerId, physics, new LearnerLearningPlanApi.UpsertRequest(
+                interpreted.revision(), "E.1 und Zusatzprüfung", List.of(withExtra)), today);
+        assertThat(explicit.blocks().getFirst().atomicGoalIds()).containsExactlyInAnyOrderElementsOf(all);
     }
 
     @Test void changingDurationInTheSharedSekIIViewNeedsANewAssignmentChoice() throws Exception {

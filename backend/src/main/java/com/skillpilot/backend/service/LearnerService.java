@@ -395,6 +395,39 @@ public class LearnerService {
                 ? Set.copyOf(optional) : Set.of();
     }
 
+    /** A section-wide plan includes its required assessments. An explicit additional goal stays required. */
+    Set<String> implicitVoluntaryAssessments(Learner learner, List<String> roots, Collection<String> captured) {
+        if (learner == null || captured.isEmpty() || !unitPlanningCreditsEnabled() || unitLearningMaterialService == null
+                || roots.stream().noneMatch(root -> hasCapturedVoluntaryAssessment(root, captured))) return Set.of();
+        var projection = getGoalProjection(learner.getSelectedCurriculum(), learner.getPersonalCurriculum());
+        var graph = completionGraph(learner, projection);
+        Set<String> optional = new HashSet<>();
+        Set<String> requiredByAnotherRoot = new HashSet<>();
+        for (String root : roots) {
+            var targets = projectedAtomicTargetIds(List.of(root), projection);
+            var choices = voluntarySectionAssessments(AUTOMATIC_COMPLETION_PREFIX + root, projection, graph, targets);
+            optional.addAll(choices);
+            targets.stream().filter(id -> !choices.contains(id)).forEach(requiredByAnotherRoot::add);
+        }
+        optional.removeAll(requiredByAnotherRoot);
+        return optional;
+    }
+
+    private boolean hasCapturedVoluntaryAssessment(String root, Collection<String> captured) {
+        if (root == null || !root.startsWith("composition:")) return false;
+        return unitLearningMaterialService.assessmentBindingForReference(root)
+                .flatMap(binding -> unitLearningMaterialService.find(binding.landscapeId(), binding.viewId(), binding.compositionNodeId()))
+                .map(UnitLearningMaterialService.Material::sectionAssessmentPolicy)
+                .map(UnitLearningMaterialService.SectionAssessmentPolicy::voluntaryAssessmentGoalIds)
+                .stream().flatMap(Collection::stream).anyMatch(captured::contains);
+    }
+
+    // Archive export keeps the stored selection. The plan and its learner-facing consequences
+    // interpret older section captures with the same current policy as a newly selected section.
+    private List<LearnerLearningPlanApi.Block> effectiveLearningPlanBlocks(LearnerLearningPlan plan) {
+        return LearnerLearningPlanService.effectivePlanBlocks(this, plan.getLearner(), readPortableLearningPlanBlocks(plan));
+    }
+
     /** Discovery may rank scopes by focus; the chosen scope itself never depends on subsequent focus changes. */
     private List<CompletionProfileDefinition> automaticCompletionOptions(Learner learner, GoalProjection projection) {
         LinkedHashSet<String> roots = new LinkedHashSet<>(projection.presentationRootGoalIds());
@@ -4561,6 +4594,7 @@ public class LearnerService {
         for (String root : roots) {
             atoms.addAll(validateLearningPlanFocus(root, "selected-scope", landscapeId, projection));
         }
+        atoms.removeAll(implicitVoluntaryAssessments(learner, roots, atoms));
         return projection.targetGoalIds().stream().filter(atoms::contains).toList();
     }
 
@@ -4625,7 +4659,7 @@ public class LearnerService {
             if (!requestedLandscapes.isEmpty() && !requestedLandscapes.contains(plan.getLandscapeId())) continue;
             boolean explicitExam = false;
             try {
-                List<LearnerLearningPlanApi.Block> blocks = readPortableLearningPlanBlocks(plan);
+                List<LearnerLearningPlanApi.Block> blocks = effectiveLearningPlanBlocks(plan);
                 explicitExam = blocks.stream().anyMatch(block -> block.isActive() && "milestone".equals(block.kind())
                         && block.goalIds() != null && !block.goalIds().isEmpty());
                 validateFollowedLearningPlanShape(blocks);
@@ -9334,7 +9368,7 @@ public class LearnerService {
                 continue;
             }
             try {
-                List<LearnerLearningPlanApi.Block> blocks = readPortableLearningPlanBlocks(plan);
+                List<LearnerLearningPlanApi.Block> blocks = effectiveLearningPlanBlocks(plan);
                 if (!isLearningPlanCompatible(
                         learner.getSkillpilotId(), plan.getCurriculumId(), plan.getLandscapeId(), blocks)) {
                     unavailableSubjects.add(subject);
@@ -9362,7 +9396,7 @@ public class LearnerService {
             }
         }
         var fulfillment = LearnerLearningPlanService.planFulfillment(this, learner, plans, mastery,
-                this::readPortableLearningPlanBlocks, id -> LearnerLearningPlanService.stableSubjectKey(landscapeService.getById(id)),
+                this::effectiveLearningPlanBlocks, id -> LearnerLearningPlanService.stableSubjectKey(landscapeService.getById(id)),
                 planHandoffProjection);
         Map<String, Set<String>> creditedBySubject = new HashMap<>();
         for (var plan : validPlans.keySet()) {

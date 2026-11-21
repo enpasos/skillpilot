@@ -18,6 +18,7 @@ type GradedScenario = {
   credited: number
   individuallyOpen: number
   completed: number
+  planPositionCount: number | null
   unitAssignments?: { title: string, status: string, passedParts: number | null, requiredParts: number }[]
   next: string
   frontier: { id: string, title: string }[]
@@ -47,7 +48,7 @@ function compareScenarios(duration: string, assignments = false) {
       Einzeln noch offene Fachziele kannst du freiwillig bearbeiten. Ein zusätzlich ausgewählter Einzelauftrag bleibt bestehen.</p>
       <p>Stand beim Start der Vorschau. Die Auftragsnamen öffnen das jeweilige reguläre Cockpit.</p>
       <table><thead><tr><th>Auftrag</th><th>Status</th><th>Bestandene Teile</th><th>Nächster Planvorschlag</th></tr></thead><tbody>${rows.join('')}</tbody></table>
-      <p><a href="/vergleich/${duration}">Zum Vergleich mit dem Lernplan aus 17 Einzelpositionen</a></p></html>`
+      <p><a href="/vergleich/${duration}">Zum Vergleich mit dem Einzelzielplan</a></p></html>`
   }
   const scenarios = [['viewer', 'Kein Prüfungsteil bestanden'], ['CD', 'C und D bestanden'], ['ABCD', 'Alle vier bestanden']]
   const sections = scenarios.map(([key, label]) => {
@@ -72,7 +73,7 @@ function compareScenarios(duration: string, assignments = false) {
     grid-template-columns:repeat(auto-fit,minmax(min(100%,20rem),1fr));gap:1.5rem}dt{font-weight:600}dd{margin:0 0 .6em}
     section{border-top:2px solid #436e84}ul{padding-inline-start:1.3em}a{color:#174e74}th,td{text-align:left;vertical-align:top;padding:.3em}</style>
     <h1>E.1 – Lernplan und Lernfront (${duration})</h1><p>Stand bei Vorschau-Start am ${html(initial[duration + '/viewer'].asOf)}.
-    Alle drei Profile haben einen Lernplan mit 17 einzeln ausgewählten Positionen. Die verlinkten Überschriften öffnen das jeweilige Cockpit.</p>
+    Alle drei Profile haben den Abschnitt E.1 als Einzelzielplan gewählt. Daraus ergeben sich ${initial[duration + '/viewer'].planPositionCount} Planpositionen. Die freiwillige Zusatzprüfung lässt sich einzeln dazuwählen. Die verlinkten Überschriften öffnen das jeweilige Cockpit.</p>
     <p>Die Prüfungsbelege stammen aus lokalen Bewertungen mit synthetischen Punkten an der Bestehensgrenze.
     Die Anmeldung des Coaches ist simuliert. Einzelne Fachziele wurden bei der Einrichtung nicht als gemeistert verbucht.</p>
     ${initial[duration + '/unitOpen'] ? '<p><a href="/auftraege/' + duration + '">Zum ausdrücklich gewählten E.1-Einheitenauftrag</a></p>' : ''}

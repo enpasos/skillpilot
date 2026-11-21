@@ -1383,6 +1383,7 @@ public class LearnerLearningPlanService {
                 capturedAtomicIds(existingBlocks),
                 false);
         learners.validateLearningPlanBlockFoci(skillpilotId, landscapeId, normalizedBlocks);
+        normalizedBlocks = effectivePlanBlocks(learners, learner, normalizedBlocks);
         normalizedBlocks = learners.orderLearningPlanBlocksByPrerequisites(
                 skillpilotId,
                 normalizedBlocks);
@@ -2557,6 +2558,10 @@ public class LearnerLearningPlanService {
     }
 
     private List<LearnerLearningPlanApi.Block> readBlocks(LearnerLearningPlan plan) {
+        return effectivePlanBlocks(learners, plan.getLearner(), readStoredBlocks(plan));
+    }
+
+    private List<LearnerLearningPlanApi.Block> readStoredBlocks(LearnerLearningPlan plan) {
         try {
             List<LearnerLearningPlanApi.Block> blocks = objectMapper.readValue(
                     plan.getBlocksJson(),
@@ -2565,6 +2570,18 @@ public class LearnerLearningPlanService {
         } catch (JsonProcessingException | NullPointerException exception) {
             throw conflict("Stored learning-plan blocks are invalid");
         }
+    }
+
+    static List<LearnerLearningPlanApi.Block> effectivePlanBlocks(LearnerService learners, Learner learner,
+            List<LearnerLearningPlanApi.Block> blocks) {
+        return blocks.stream().map(block -> {
+            if (!block.isAtomicLearning() || block.atomicGoalIds() == null || block.focusGoalIds().isEmpty()) return block;
+            var optional = learners.implicitVoluntaryAssessments(learner, block.focusGoalIds(), block.atomicGoalIds());
+            if (optional.isEmpty()) return block;
+            var required = block.atomicGoalIds().stream().filter(id -> !optional.contains(id)).toList();
+            return new LearnerLearningPlanApi.Block(block.id(), block.kind(), block.goalId(), block.title(),
+                    block.startDate(), block.endDate(), block.date(), required, block.goalIds(), block.active());
+        }).toList();
     }
 
     private LocalDate asOf(LocalDate requested) {

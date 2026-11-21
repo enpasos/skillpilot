@@ -31,13 +31,13 @@ Die Zuschauerprofile beginnen ohne Prüfungsbelege. In der Lernkarte führen die
 | G8 | [Lernplan und Lernfront](http://localhost:5177/vergleich/G8) | [Cockpit mit zwei Belegen](http://localhost:5177/vergleich/G8/CD) | [Cockpit mit vier Belegen](http://localhost:5177/vergleich/G8/ABCD) |
 | G9 | [Lernplan und Lernfront](http://localhost:5177/vergleich/G9) | [Cockpit mit zwei Belegen](http://localhost:5177/vergleich/G9/CD) | [Cockpit mit vier Belegen](http://localhost:5177/vergleich/G9/ABCD) |
 
-Diese drei Profile je Bildungsgang haben denselben Plan mit 17 einzeln ausgewählten Zielen. Dafür startet das Vorschauprogramm die regulären Prüfungssitzungen, fordert die fassungsgebundene Bewertung an und reicht synthetische Punkte beim Claude-MCP-Handler ein. A erhält 14/17, B 15/18, C und D je 17/20 Punkte. Die Identität des Coaches wird lokal simuliert. Spring bewertet und speichert die Belege auf dem regulären Weg. Es gibt weder Lernendenabgaben noch eine Bewertung durch ein externes Claude-Konto.
+Diese drei Profile je Bildungsgang haben denselben Einzelzielplan. Im gespeicherten Block ist E.1 als Abschnitt gewählt. Daraus ergeben sich 16 Einzelpositionen. Die freiwillige Zusatzprüfung kommt bei ausdrücklicher Einzelwahl hinzu. Dafür startet das Vorschauprogramm die regulären Prüfungssitzungen, fordert die fassungsgebundene Bewertung an und reicht synthetische Punkte beim Claude-MCP-Handler ein. A erhält 14/17, B 15/18, C und D je 17/20 Punkte. Die Identität des Coaches wird lokal simuliert. Spring bewertet und speichert die Belege auf dem regulären Weg. Es gibt weder Lernendenabgaben noch eine Bewertung durch ein externes Claude-Konto.
 
 | Prüfungsstand | Erledigte Positionen im Plan | Angerechnete Fachziele | Einzeln offene Fachziele |
 | --- | --- | --- | --- |
-| 0 von 4 | 0 von 17 | 0 | 11 |
-| C und D | 4 von 17 | 2 | 11 |
-| Alle vier | 6 von 17 | 2 | 11 |
+| 0 von 4 | 0 von 16 | 0 | 11 |
+| C und D | 4 von 16 | 2 | 11 |
+| Alle vier | 6 von 16 | 2 | 11 |
 
 Im vollständigen Fall entstehen sechs Planpositionen aus vier belegten Prüfungen und zwei daraus angerechneten Fachzielen. In beiden Bildungsgängen empfiehlt der Plan in allen drei Zuständen weiterhin „Bewegungen mit Weg-Zeit-Diagrammen beschreiben“. Die Lernfront im E.1-Fokus bietet außerdem „Messabweichungen und Fehlerarten unterscheiden“ und „Waagerechter Wurf und Superposition“ an.
 

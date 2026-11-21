@@ -509,7 +509,9 @@ async function checkGradedComparison(duration) {
       assert.equal(plan.nextEligibleGoal.goalId, firstPlanGoal)
       const status = await readApi(id, '/learning-plans/status?language=de')
       const gauge = status.subjects.find(subject => subject.landscapeIds.includes(physics)).periodGauge
-      assert.equal(gauge.target, 17)
+      assert.equal(gauge.target, 16)
+      const extraId = '6ea3fb3c-abdc-568f-ab13-97c36dc274e4'
+      assert(plan.blocks.every(block => !block.atomicGoalIds?.includes(extraId)))
       assert.equal(gauge.completed, count + (count ? 2 : 0))
       assert.equal(await section.locator('dt').filter({ hasText: 'Erledigte Positionen im E.1-Lernplan' })
         .evaluate(term => term.nextElementSibling.textContent), String(gauge.completed))
