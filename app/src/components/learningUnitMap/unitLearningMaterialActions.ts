@@ -1,16 +1,8 @@
+import { isUnitMaterialSource } from '../../utils/unitLearningMaterial'
 import type { UiGoal } from '../../goalTypes'
 import { getSrsFilterTagsForGoal } from '../../utils/srsTags'
 import { selectPracticeCards, type FlashcardPracticeRequest } from '../../utils/flashcardPractice'
 import type { LearningMapFixture, LearningMapRelation, LearningMapRequirement, MapPracticeMaterial } from './types'
-const matchesView = (viewIds: readonly string[], value: unknown) => typeof value === 'string'
-  && (viewIds.includes(value) || value.startsWith('merged:') && value.slice(7).split('+').every(id => viewIds.includes(id)))
-
-export function isUnitMaterialSource(material: MapPracticeMaterial, goal: UiGoal): boolean {
-  return goal.landscapeId === material.unit.landscapeId
-    && goal.extendedData?.compositionNodeId === material.unit.compositionNodeId
-    && matchesView(material.unit.viewIds, goal.extendedData.compositionViewId)
-}
-
 export function findUnitMaterialScopes(
   material: MapPracticeMaterial, fixture: LearningMapFixture, goalIndex: ReadonlyMap<string, UiGoal>, visibleGoalIds: ReadonlySet<string>,
 ): Set<string> {

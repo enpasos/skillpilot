@@ -1,3 +1,4 @@
+import { findUnitPracticeExercise } from '../../utils/unitLearningMaterial'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { BookOpen } from 'lucide-react'
 import type { FlashcardPracticeRequest } from '../../utils/flashcardPractice'
@@ -6,7 +7,8 @@ import type { LearnerGoalNavigationMapProps } from '../../views/LearnerView'
 import { buildTreeCompletionProgressMap } from '../../utils/treeCompletionProgress'
 import { completionLabel } from '../../utils/levelCompletionApi'
 import { LearningUnitMap } from './LearningUnitMap'
-import { MapPracticeDialog } from './MapPracticeDialog'
+import { mapEntryPath } from './mapEntryPath'
+import { GoalPracticeDialog } from '../GoalPracticeDialog'
 import { UNIT_MAP_LEARNING_MATERIALS } from './learnerUnitMapPreviewSubjects'
 import { filterLearnerUnitMapToSubjects } from './learnerUnitMapProjection'
 import { createLearnerUnitMapCache, MATHEMATICS_LANDSCAPE_ID,
@@ -96,11 +98,10 @@ export default function LearnerGoalNavigationMap(props: LearnerGoalNavigationMap
   const [openExercise, setOpenExercise] = useState<{ scopeId: string; goalId: string } | null>(null)
   const getExercise = useCallback((scopeId: string, goalId: string) => {
     if (!visibleGoalIds.has(goalId) || !progressFixture.entries[scopeId]?.children?.includes(goalId)) return
-    for (const { scopes, material } of resources) {
-      if (!scopes.has(scopeId) || goalIndexAll.get(goalId)?.landscapeId !== material.unit.landscapeId) continue
-      const exercise = material.exercises.find(item => item.goalId === goalId)
-      if (exercise) return exercise[language]
-    }
+    const path = mapEntryPath(progressFixture, scopeId)
+    if (!path) return
+    return findUnitPracticeExercise(goalIndexAll.get(goalId), [...path].reverse(),
+      id => resources.find(resource => resource.scopes.has(id))?.material, language)
   }, [resources, progressFixture, goalIndexAll, visibleGoalIds, language])
   const getPracticeAction = useCallback((scopeId: string, goalId: string) => {
     const exercise = getExercise(scopeId, goalId)
@@ -194,6 +195,6 @@ export default function LearnerGoalNavigationMap(props: LearnerGoalNavigationMap
         if (goal && !goal.personalCurriculumProjection?.presentationOnly) props.onSelectGoal(goalId)
       }}
       onReturnToTree={props.onReturnToTree} onEscape={props.onEscape} />
-    {exercise && <MapPracticeDialog exercise={exercise} language={language} onDismiss={() => setOpenExercise(null)} />}
+    {exercise && <GoalPracticeDialog exercise={exercise} language={language} onDismiss={() => setOpenExercise(null)} />}
   </div>
 }

@@ -56,9 +56,11 @@ import java.util.PriorityQueue;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.UUID;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.io.InputStream;
 import org.springframework.stereotype.Service;
+import org.springframework.util.function.SingletonSupplier;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionDefinition;
@@ -726,7 +728,13 @@ public class LearnerService {
         var bindings = unitLearningMaterialService.assessmentBindings(projection.compositionViewIds()).stream()
                 .filter(binding -> binding.landscapeId().equals(landscapeId)).toList();
         if (bindings.isEmpty()) return List.of();
-        var graph = completionGraph(learner, projection);
+        return unitAssignmentOptions(learner, landscapeId, projection, completionGraph(learner, projection), bindings, true);
+    }
+
+    private List<LearnerLearningPlanApi.UnitAssignmentOption> unitAssignmentOptions(
+            Learner learner, String landscapeId, GoalProjection projection, Map<String, LearningGoal> graph,
+            List<UnitLearningMaterialService.AssessmentBinding> bindings, boolean includeUnfinished) {
+        String skillpilotId = learner.getSkillpilotId();
         var receipts = verifiedExamPassService.findForGoals(skillpilotId, bindings.stream()
                 .flatMap(binding -> binding.contract().parts().stream()).map(UnitAssessmentContract.Part::goalId).distinct().toList());
         var options = new ArrayList<LearnerLearningPlanApi.UnitAssignmentOption>();
@@ -737,6 +745,7 @@ public class LearnerService {
             var unit = validatedUnitAssessment(binding, projection, graph, receipts, Set.of());
             if (unit == null || unit.response().parts().stream().anyMatch(part -> !part.materialCurrent())) continue;
             var response = unit.response();
+            if (!includeUnfinished && !response.passed()) continue;
             String fingerprint = contract.assignmentFingerprint(landscapeId, binding.viewId(), binding.compositionNodeId(), subjectScope);
             var section = compositionViewService.resolveStructureReference(response.sectionGoalId());
             if (section == null) continue;
@@ -1071,7 +1080,7 @@ public class LearnerService {
                     }
                 }
                 if (compatible && !storedDirect && compiled.automatic() && unitPlanningCreditsEnabled()) {
-                    addIndividualPractice(learner, compiled, evaluation, graph, actions);
+                    addIndividualPractice(learner, compiled, evaluation, graph, actions, projection, unitResult);
                 }
             } catch (CompletionApplicability.UnresolvedScopeException e) {
                 status = "unresolved"; notice = "completion_scope_unresolved";
@@ -1121,14 +1130,54 @@ public class LearnerService {
         return new CompletionSnapshot(response, compiled, evaluation);
     }
 
+    /** In the personal overview, only a followed, current assignment supplies additional voluntary goals. */
+    private Set<String> completedAssignmentPracticeGoals(Learner learner, GoalProjection projection,
+            Map<String, LearningGoal> graph, List<LearnerLearningPlan> followed) {
+        if (followed.isEmpty() || unitLearningMaterialService == null || verifiedExamPassService == null) return Set.of();
+        Set<String> goals = new LinkedHashSet<>();
+        for (var plan : followed) {
+            String landscape = plan.getLandscapeId();
+            if (!Objects.equals(learner.getSelectedCurriculum(), plan.getCurriculumId())
+                    || !isUnitAssignmentSubjectSelected(learner, landscape)) continue;
+            List<LearnerLearningPlanApi.Block> blocks;
+            try { blocks = readPortableLearningPlanBlocks(plan); }
+            catch (IllegalStateException invalidCapture) { continue; }
+            var assignments = blocks.stream().filter(block -> block.isActive() && block.unitAssignment() != null).toList();
+            var bindings = assignments.stream().map(block -> block.unitAssignment().sectionGoalId()).distinct()
+                    .flatMap(id -> unitLearningMaterialService.assessmentBindingForReference(id).stream())
+                    .filter(binding -> landscape.equals(binding.landscapeId()) && projection.compositionViewIds().contains(binding.viewId()))
+                    .toList();
+            if (bindings.isEmpty()) continue;
+            // The completed-only read never asks completionSnapshot for available examinations.
+            var current = unitAssignmentOptions(learner, landscape, projection, graph, bindings, false).stream()
+                    .filter(option -> assignments.stream().anyMatch(option::matches)).toList();
+            if (!current.isEmpty() && isLearningPlanCompatible(learner.getSkillpilotId(), plan.getCurriculumId(), landscape, blocks)) {
+                current.forEach(option -> option.voluntaryGoals().forEach(goal -> goals.add(goal.goalId())));
+            }
+        }
+        return goals;
+    }
+
     /** Explicit individual work uses the same focus and availability rules as the ordinary learning plan. */
     private void addIndividualPractice(Learner learner, CompiledCompletionProfile compiled,
-            CompletionEvaluation evaluation, Map<String, LearningGoal> graph, List<LevelCompletionResponse.Action> actions) {
+            CompletionEvaluation evaluation, Map<String, LearningGoal> graph, List<LevelCompletionResponse.Action> actions,
+            GoalProjection projection, UnitAssessmentResponse section) {
         Set<String> credits = evaluation.waiverReasons().entrySet().stream()
                 .filter(entry -> entry.getValue().ruleId().startsWith("versioned_unit_assessment:"))
                 .map(Map.Entry::getKey).collect(Collectors.toCollection(LinkedHashSet::new));
-        for (String id : credits) {
-            if (!compiled.targetGoalIds().contains(id)) continue;
+        var followed = currentFollowedLearningPlans(learner);
+        Set<String> practiceGoals = new LinkedHashSet<>(credits);
+        if (AUTOMATIC_COMPLETION_DEFAULT.equals(compiled.profile().id())) {
+            practiceGoals.addAll(completedAssignmentPracticeGoals(learner, projection, graph, followed));
+        } else if (section != null && section.passed()
+                && compiled.profile().id().equals(AUTOMATIC_COMPLETION_PREFIX + section.sectionGoalId())) {
+            practiceGoals.addAll(section.individuallyOpenGoalIds());
+        }
+        if (practiceGoals.isEmpty()) return;
+        // These facts are stable for this read. Each candidate still gets its own exact prospective focus.
+        var frontierFacts = SingletonSupplier.of(() -> richFrontierFacts(learner, projection));
+        for (String id : practiceGoals) {
+            if (!compiled.targetGoalIds().contains(id) || evaluation.masteredGoalIds().contains(id)) continue;
             Map<String, Integer> distance = new LinkedHashMap<>();
             distance.put(id, 0);
             ArrayDeque<String> pending = new ArrayDeque<>(List.of(id));
@@ -1156,7 +1205,10 @@ public class LearnerService {
             boolean strict = Boolean.TRUE.equals(learner.getStrictMode());
             List<String> focus = new ArrayList<>(List.of(id));
             if (strict) focus.addAll(prerequisites);
-            var frontier = filterAtomicFrontier(getUncompactedRichFrontierForFocus(learner.getSkillpilotId(), focus));
+            Set<String> followedScope = followedLearningScopeIds(learner, projection, focus, followed);
+            if (followedScope != null && followedScope.isEmpty()) continue;
+            var frontier = filterAtomicFrontier(getRichFrontier(learner, projection, frontierFacts.get(),
+                    false, focus, false, followedScope));
             String start = frontier.stream().map(FrontierGoal::id).filter(id::equals).findFirst().orElse(null);
             if (start == null && strict) {
                 start = frontier.stream().map(FrontierGoal::id).filter(prerequisites::contains)
@@ -4637,7 +4689,11 @@ public class LearnerService {
     /** Null means ordinary free learning; an empty set means a deliberately paused plan. */
     private Set<String> followedLearningScopeIds(Learner learner, GoalProjection projection,
             List<String> prospectiveFocusIds) {
-        List<LearnerLearningPlan> followed = currentFollowedLearningPlans(learner);
+        return followedLearningScopeIds(learner, projection, prospectiveFocusIds, currentFollowedLearningPlans(learner));
+    }
+
+    private Set<String> followedLearningScopeIds(Learner learner, GoalProjection projection,
+            List<String> prospectiveFocusIds, List<LearnerLearningPlan> followed) {
         if (followed.isEmpty()) return null;
         LinkedHashSet<String> atoms = new LinkedHashSet<>();
         List<String> binding = prospectiveFocusIds == null
@@ -7545,18 +7601,33 @@ public class LearnerService {
             return Collections.emptyList();
         }
 
-        // Check if strict mode is enabled
-        boolean strictMode = Boolean.TRUE.equals(learner.getStrictMode());
-
         GoalProjection projection = getGoalProjection(curriculumId, learner.getPersonalCurriculum());
         Set<String> followedScope = followedLearningScopeIds(learner, projection, prospectiveFocusGoalIds);
         if (followedScope != null && followedScope.isEmpty()) return List.of();
+        return getRichFrontier(learner, projection, richFrontierFacts(learner, projection), compactFrontier,
+                prospectiveFocusGoalIds, requiredRecommendations, followedScope);
+    }
+
+    private record RichFrontierFacts(Map<String, Double> mastery, Map<String, Double> effectiveMastery,
+            Set<String> automaticWaivers, Supplier<FrontierPrerequisites> prerequisites) { }
+
+    private RichFrontierFacts richFrontierFacts(Learner learner, GoalProjection projection) {
+        var mastery = getMastery(learner.getSkillpilotId());
+        return new RichFrontierFacts(mastery, computeEffectiveMastery(projection.visibleGoals(), mastery),
+                automaticFrontierWaivers(learner, projection, mastery), SingletonSupplier.of(
+                        () -> frontierPrerequisites(learner, projection, mastery, null)));
+    }
+
+    private List<FrontierGoal> getRichFrontier(Learner learner, GoalProjection projection, RichFrontierFacts facts,
+            boolean compactFrontier, List<String> prospectiveFocusGoalIds, boolean requiredRecommendations, Set<String> followedScope) {
+        String skillpilotId = learner.getSkillpilotId();
+        boolean strictMode = Boolean.TRUE.equals(learner.getStrictMode());
         Map<String, LearningGoal> allFilteredGoals = projection.visibleGoals();
         Map<String, LearningGoal> allStructuralGoals = projection.structuralGoals();
 
-        Map<String, Double> masteryMap = getMastery(skillpilotId);
-        Map<String, Double> effectiveMastery = computeEffectiveMastery(allFilteredGoals, masteryMap);
-        Set<String> automaticWaivers = automaticFrontierWaivers(learner, projection, masteryMap);
+        Map<String, Double> masteryMap = facts.mastery();
+        Map<String, Double> effectiveMastery = facts.effectiveMastery();
+        Set<String> automaticWaivers = facts.automaticWaivers();
         if (requiredRecommendations && automaticWaivers == null) return List.of();
         Set<String> waived = automaticWaivers == null ? Set.of() : automaticWaivers;
         Set<String> completedWork = requiredRecommendations
@@ -7615,8 +7686,7 @@ public class LearnerService {
                     .filter(goal -> followedScope == null || followedScope.contains(goal.id())).toList(), projection);
         }
 
-        FrontierPrerequisites prerequisites = frontierPrerequisites(
-                learner, projection, masteryMap, scope);
+        FrontierPrerequisites prerequisites = facts.prerequisites().get().within(scope);
         List<FrontierGoal> frontier = new ArrayList<>();
 
         // Iterate FILTERED goals (what the user should see)
@@ -7775,7 +7845,13 @@ public class LearnerService {
 
     private record FrontierPrerequisites(Map<String, LearningGoal> lookup,
             CompletionProfileCompiler.PrerequisiteTopology topology, Map<String, Double> mastery,
-            Set<String> scope, Set<String> planningCredits) { }
+            Set<String> scope, Set<String> planningCredits) {
+        FrontierPrerequisites within(Set<String> focus) {
+            if (scope == null || focus == null) return this;
+            Set<String> selected = focus.stream().filter(scope::contains).collect(Collectors.toSet());
+            return new FrontierPrerequisites(lookup, topology, mastery, selected, planningCredits);
+        }
+    }
 
     private boolean areFrontierPrerequisitesMastered(
             LearningGoal goal, GoalProjection projection, FrontierPrerequisites prerequisites) {

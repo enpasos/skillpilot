@@ -22,6 +22,8 @@ import { LearnerDataManagementDialog } from '../components/LearnerDataManagement
 import { GoalCard } from '../components/GoalCard'
 import { MaterialSelectionPanel } from '../components/MaterialSelectionPanel'
 import { GoalExamPassHistory } from '../components/GoalExamPassHistory'
+import { GoalPracticeAction } from '../components/GoalPracticeDialog'
+import { findUnitPracticeExercise, isUnitMaterialSource, UNIT_MAP_LEARNING_MATERIALS } from '../utils/unitLearningMaterial'
 import { GoalAdditionalMaterials } from '../components/GoalAdditionalMaterials'
 import { LearnerGoalFeedbackAction } from '../components/LearnerGoalFeedbackAction'
 import { LearnerFeedbackLink } from '../components/LearnerFeedbackLink'
@@ -1213,6 +1215,15 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     }
     return visible
   }, [visibleRootGoals, goalIndexAll, isPersonalConfigHydrating, personalConfig, getVisibleChildIds])
+
+  const goalExercise = useMemo(() => {
+    if (!currentGoal || !visibleGoals.has(currentGoal.id)
+      || !UNIT_MAP_LEARNING_MATERIALS.some(material => material.exercises.some(exercise => exercise.goalId === currentGoal.id))) return
+    return findUnitPracticeExercise(currentGoal, buildCollapsedFocusPath(currentGoal.id), id => {
+      const scope = navigationGoals.get(id)
+      return scope && UNIT_MAP_LEARNING_MATERIALS.find(material => isUnitMaterialSource(material, scope))
+    }, localizedLanguage)
+  }, [currentGoal, visibleGoals, buildCollapsedFocusPath, navigationGoals, localizedLanguage])
 
   const plannedScopeGoalIds = useMemo(() => {
     if (plannedGoals.size === 0) {
@@ -3437,6 +3448,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   }, [learnerDataManagementCopy.deleteMissing, learnerDataManagementCopy.deleteSuccess, onLogout, onNotify, skillpilotId])
 
   const completionRouteActive = hasActiveCompletionRoute(levelCompletion)
+  const selectedGoalHasPlanningCredit = currentGoal && levelCompletion?.calculationStatus === 'valid'
+    && completionPlanningCredits(levelCompletion).has(currentGoal.id)
   const individualPractice = currentGoal && learnerStateLoadStatus === 'ready' && levelCompletion?.calculationStatus === 'valid'
     ? levelCompletion.actions.find(action => action.goalId === currentGoal.id && action.practice) : undefined
   const completionGoalTitle = (id: string) => {
@@ -4045,10 +4058,13 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                 </div> : null}
 
                 {individualPractice?.practice ? (
-                  <div data-testid="credited-goal-individual-study" className="mt-3 space-y-2 text-sm text-text-secondary">
+                  <div data-testid="individual-goal-study" className="mt-3 space-y-2 text-sm text-text-secondary">
+                    {selectedGoalHasPlanningCredit && <p>{localizedLanguage === 'en'
+                      ? 'Your passed assessments cover this goal for planning.'
+                      : 'Deine bestandenen Prüfungen decken dieses Ziel für den Lernplan ab.'}</p>}
                     <p>{localizedLanguage === 'en'
-                      ? 'Your passed assessments cover this goal for planning. You can work on it for an individual learning result.'
-                      : 'Deine bestandenen Prüfungen decken dieses Ziel für den Lernplan ab. Du kannst es für einen eigenen Lernnachweis erarbeiten.'}</p>
+                      ? 'You can choose to study this goal and earn individual evidence.'
+                      : 'Du kannst dieses Ziel freiwillig bearbeiten und einen eigenen Nachweis erwerben.'}</p>
                     {individualPractice.action === 'focusPractice' && individualPractice.practice.openPrerequisites.length > 0 && <p>
                       {individualPractice.practice.startGoalId === currentGoal.id
                         ? (localizedLanguage === 'en' ? 'Individual focus lets you start this goal now. Your coach can help you with any open prerequisites.'
@@ -4063,14 +4079,14 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                           <li key={item.goalId}><InlineMathText text={completionLabel(item.title, localizedLanguage)} /></li>)}</ul>
                       </details>}
                     {effectiveActiveGoalId !== currentGoal.id &&
-                      <button type="button" data-testid="credited-goal-study-start" disabled={completionActionBusy}
+                      <button type="button" data-testid="individual-goal-study-start" disabled={completionActionBusy}
                         className="min-h-11 rounded-lg border border-sky-400 px-3 py-2 font-semibold focus-visible:outline-none focus-visible:ring-2"
                         onClick={() => void handleCompletionAction({ action: individualPractice.action, goalId: currentGoal.id, intent: individualPractice.intent })}>
                         {individualPractice.action === 'learnGoal' ? (localizedLanguage === 'en' ? 'Study this goal individually' : 'Dieses Ziel einzeln erarbeiten')
                           : completionLabel(individualPractice.title, localizedLanguage)}
                       </button>}
                   </div>
-                ) : learnerStateLoadStatus === 'ready' && levelCompletion?.calculationStatus === 'valid' && completionPlanningCredits(levelCompletion).has(currentGoal.id) ? (
+                ) : learnerStateLoadStatus === 'ready' && selectedGoalHasPlanningCredit ? (
                   <p className="mt-3 text-sm text-text-secondary">{localizedLanguage === 'en'
                     ? 'Your passed assessments cover this goal for planning. Individual study is currently unavailable in this learning context.'
                     : 'Deine bestandenen Prüfungen decken dieses Ziel für den Lernplan ab. Die Einzelbearbeitung ist im aktuellen Lernkontext gerade nicht verfügbar.'}</p>
@@ -4085,6 +4101,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                         : 'Für den gewählten Abschnitt ist die Vorbereitung zu diesem Lernziel nicht mehr erforderlich. Du kannst es freiwillig weiterlernen.')}
                   </p>
                 ) : null}
+                {goalExercise && <GoalPracticeAction key={currentGoal.id} exercise={goalExercise} language={localizedLanguage} />}
                 <GoalAdditionalMaterials
                   skillpilotId={skillpilotId}
                   goalId={currentGoal.id}

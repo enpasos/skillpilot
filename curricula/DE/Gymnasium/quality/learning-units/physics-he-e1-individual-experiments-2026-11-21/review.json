@@ -1,0 +1,74 @@
+{
+  "reviewId": "he-e1-voluntary-practical-exercises-independent-content-review",
+  "reviewer": "Unabhängiges KI-Fachreview; separater Reviewer-Agent /root/praktikafachentscheid",
+  "authorshipIndependence": "Der Reviewer hat keine der beiden Aufgaben verfasst oder geändert und keine Repositorydatei geändert.",
+  "reviewedAt": "2026-11-21T11:24:44+01:00",
+  "timezone": "Europe/Berlin (MEZ, UTC+01:00)",
+  "decision": "FREIGEGEBEN als freiwillige praktische Einzelaufgaben an den beiden gebundenen Lernzielen",
+  "scope": {
+    "taskPath": "curricula/DE/Gymnasium/materials/physics/he-e1-motion-practice.json",
+    "goalPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "exercises": [
+      {
+        "goalId": "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
+        "title": "Gleichförmige Bewegung und Geschwindigkeit",
+        "exerciseSha256": "21df8a4027457a1ba03da6f7120dbfa7be3540aef286eb1c4cfefbe8558a501b",
+        "goalSha256": "310b3ca3347114ba28d92fbad623298f8e1f05a096f35be84a2d787efefe3483",
+        "decision": "FREIGEGEBEN",
+        "requiredCorrections": []
+      },
+      {
+        "goalId": "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+        "title": "Freier Fall experimentell untersuchen",
+        "exerciseSha256": "1eb92e47e437406c9388eae01b2806eebcc345af994de1ac792073e9d2f4c099",
+        "goalSha256": "087e03961731f80a78bd456f4f9edbec3156a1b8d5dbb537a90d88f679af253d",
+        "decision": "FREIGEGEBEN",
+        "requiredCorrections": []
+      }
+    ],
+    "excluded": "Die drei alten Rechenübungen, der gemeinsame Einheitenauftrag A–D, Alters-/Kursfreigaben und technische Laufzeit-/Mastery-Implementierung sind nicht Gegenstand der Freigabe."
+  },
+  "hashMethod": "SHA-256 über UTF-8 von json.dumps(Aufgabenobjekt, sort_keys=True, ensure_ascii=False, separators=(',', ':')); keine abschließende neue Zeile",
+  "sources": [
+    {
+      "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kernkurriculum_gymnasiale_oberstufe-physik.pdf",
+      "sha256": "46f3e728b5d9fc6b5901f191247951a4a9d9c3df641afa60ca8b17a2e049813f",
+      "checkedPage": 30,
+      "inspection": "Original-PDF lokal unmittelbar mit pypdf gelesen; PDF-Seite 30 trägt die gedruckte Seitenzahl 30."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_PHYSIK_SEKII_KC2024.source-extraction.json",
+      "sha256": "9552cccda78f64503c338ee4f2c6adba2909f9cbdd8a8f3d111b97627ea7c27b",
+      "checkedPassage": "he-physics-sekii:E.1",
+      "inspection": "Abgleich der relevanten offiziellen Aspekte mit der Original-PDF."
+    }
+  ],
+  "criticalChecks": [
+    {
+      "check": "Zielpassung und Quellenfidelität",
+      "result": "PASS"
+    },
+    {
+      "check": "Deutsch/Englisch fachlich äquivalent",
+      "result": "PASS"
+    },
+    {
+      "check": "Eigene experimentelle Daten statt reiner Rechenleistung",
+      "result": "PASS"
+    },
+    {
+      "check": "Wagen: zurückgehaltener Kontrollzeitpunkt verhindert zirkuläre Modellprüfung bei Anwendung des vierten Kriteriums",
+      "result": "PASS"
+    },
+    {
+      "check": "Fall: grafische g-Bestimmung, Achsen und Anfangsbedingungen, zahlenbezogener Literaturvergleich und konkrete Grenze",
+      "result": "PASS"
+    },
+    {
+      "check": "Eigene durchgerechnete Testabgaben mit Bestehen und Nichtbestehen",
+      "result": "PASS; siehe fachreview.md"
+    }
+  ],
+  "requiredCorrections": [],
+  "acceptanceLimits": "Die Freigabe bescheinigt die fachliche Eignung der gebundenen Aufgaben. Eine Lernendenabgabe muss die Kriterien tatsächlich belegen; freiwilliges Bearbeiten allein erbringt keine Kompetenz und schreibt keine Mastery. Keine volle Abdeckung von E.1 durch diese beiden Einzelaufgaben."
+}

@@ -66,6 +66,42 @@ async function launchAssessment(page, goalId) {
   assert.equal(accepted.goalId, goalId)
   assert(!accepted.restartCurrent)
 }
+async function checkMapCardExposure(page, ids) {
+  const measured = await page.evaluate(ids => {
+    const surface = document.querySelector('.lum-flow').getBoundingClientRect()
+    const controls = document.querySelector('.lum-map-controls').getBoundingClientRect()
+    return ids.map(id => {
+      const button = document.querySelector(`[data-entry-id="${id}"] .lum-node-main`)
+      const card = button.getBoundingClientRect()
+      // Text ranges measure the actual title lines, including the second line
+      // that a toolbar can cover while the button's center remains clickable.
+      const text = ['strong', '.lum-node-meta'].flatMap(selector => {
+        const element = button.querySelector(selector)
+        const bounds = element.getBoundingClientRect()
+        const range = document.createRange()
+        range.selectNodeContents(element)
+        return Array.from(range.getClientRects()).filter(rect => rect.top < bounds.bottom && rect.bottom > bounds.top)
+          .map(rect => ({ left: Math.max(rect.left, bounds.left), right: Math.min(rect.right, bounds.right),
+            top: Math.max(rect.top, bounds.top), bottom: Math.min(rect.bottom, bounds.bottom) }))
+          .filter(rect => rect.right > rect.left && rect.bottom > rect.top)
+      })
+      return { id, width: card.width,
+        inside: card.left >= surface.left && card.right <= surface.right
+          && card.top >= surface.top && card.bottom <= surface.bottom,
+        toolbarOverlap: card.left < controls.right && card.right > controls.left
+          && card.top < controls.bottom && card.bottom > controls.top,
+        textRegions: text.length,
+        textExposed: text.every(rect => [0.1, 0.5, 0.9].every(x => button.contains(document.elementFromPoint(
+          rect.left + (rect.right - rect.left) * x, (rect.top + rect.bottom) / 2)))),
+      }
+    })
+  }, ids)
+  for (const card of measured) {
+    assert(card.inside && card.width >= 170, `Readable assessment card: ${JSON.stringify(card)}`)
+    assert(!card.toolbarOverlap && card.textRegions >= 2 && card.textExposed,
+      `Assessment title and type remain unobstructed: ${JSON.stringify(card)}`)
+  }
+}
 async function check(duration, part, lang, start, width = 1440, height = 900) {
   const task = tasks[part]
   const entrySite = start && duration === 'G9' ? numericSite.origin : site
@@ -162,6 +198,7 @@ async function check(duration, part, lang, start, width = 1440, height = 900) {
             })
           }, visibleParts)
         }
+        if (width >= 1024) await checkMapCardExposure(page, [task.id, other.id, scope.childAssessmentGoalIds[0]])
         await neighbor.click()
       } catch (error) {
         throw new Error(`${duration}/${part}/${lang}: ${(await map.innerText()).slice(0, 1600)}`, { cause: error })
@@ -175,6 +212,31 @@ async function check(duration, part, lang, start, width = 1440, height = 900) {
     await context.close()
   }
 }
+const worksheets = [
+  { goalId: '971beafa-6ba5-4c82-ac8b-7ebf66eec3dd', title: 'Gleichförmige Bewegung und Geschwindigkeit' },
+  { goalId: '09029573-864f-40ca-bf8a-cee7bf6dcb73', title: 'Freier Fall experimentell untersuchen' },
+]
+
+async function checkExerciseDialog(page, owner, exercise) {
+  const open = owner.getByRole('button', { name: 'Üben: ' + exercise.title, exact: true })
+  await open.click()
+  const dialog = page.getByRole('dialog', { name: exercise.title, exact: true })
+  await dialog.getByText(exercise.prompt, { exact: true }).waitFor()
+  if (exercise.evidenceCriteria) {
+    await dialog.getByRole('heading', { name: 'Kriterien für deinen Nachweis', exact: true }).waitFor()
+    assert.deepEqual(await dialog.getByRole('listitem').allTextContents(), exercise.evidenceCriteria)
+  }
+  const solution = dialog.getByText(exercise.solution, { exact: true })
+  assert.equal(await solution.isVisible(), false)
+  await dialog.getByText('Hinweis anzeigen', { exact: true }).click()
+  await dialog.getByText(exercise.hint, { exact: true }).waitFor()
+  await dialog.getByText('Lösung vergleichen', { exact: true }).click()
+  await solution.waitFor()
+  await dialog.getByRole('button', { name: 'Übung schließen', exact: true }).click()
+  await dialog.waitFor({ state: 'hidden' })
+  assert(await open.evaluate(element => document.activeElement === element))
+}
+
 async function checkTreeAndMapParents(duration) {
   const { E1: section, viewer } = profiles[duration]
   const before = await evidence(viewer)
@@ -243,6 +305,12 @@ async function checkTreeAndMapParents(duration) {
       await page.waitForFunction(count =>
         document.querySelectorAll('.lum-canvas[aria-busy="false"] .lum-flow [data-entry-id]').length === count, count)
       assert.equal(await board.getAttribute('data-scope-id'), parent)
+      for (const exercise of exercises) {
+        const expectedParent = exercise.goalId === worksheets[1].goalId ? childSection : section
+        if (parent === expectedParent) {
+          await checkExerciseDialog(page, board.locator('[data-entry-id="' + exercise.goalId + '"]'), exercise.de)
+        }
+      }
       for (const node of await board.locator('.lum-flow [data-entry-id]').all()) {
         const id = await node.getAttribute('data-entry-id')
         if (resources.has(id)) {
@@ -307,9 +375,6 @@ async function checkUnitAndChildCards(duration) {
     await dialog.getByRole('button', { name: 'In E.1 Bewegungen und ihre Beschreibung hineinzoomen', exact: true }).click()
     await dialog.getByRole('heading', { name: intro.de.question, exact: true }).waitFor()
     await dialog.getByText(intro.de.promise, { exact: true }).waitFor()
-    for (const exercise of exercises) {
-      await dialog.getByRole('button', { name: 'Üben: ' + exercise.de.title, exact: true }).waitFor()
-    }
     await dialog.getByRole('button', { name: 'Lernkarten zu E.1 üben', exact: true }).click()
     await page.getByText('Karte 1 von 9', { exact: true }).waitFor()
     const assessment = (await readApi(viewer, '/state')).levelCompletion.unitAssessment
@@ -553,6 +618,21 @@ async function checkUnitAssignments(duration) {
         await page.getByTestId('learner-learning-map-dialog').waitFor({ state: 'hidden' })
         await offered.click()
         await page.getByTestId('learner-current-goal').getByRole('heading', { name: 'Modellierung und Idealisierung von Bewegungen', exact: true }).first().waitFor()
+        const passes = () => Promise.all(unitPartIds.map(goal => readApi(id, '/exam-passes/' + goal)))
+        const previousPasses = await passes()
+        for (const { goalId, title } of worksheets) {
+          const exercise = exercises.find(entry => entry.goalId === goalId)?.de
+          assert(exercise?.evidenceCriteria?.length, 'Expected reviewed criteria for ' + title)
+          await normalPlan.getByRole('button', { name: title, exact: true }).click()
+          const current = page.getByTestId('learner-current-goal')
+          await current.getByRole('heading', { name: title, exact: true }).first().waitFor()
+          await checkExerciseDialog(page, current, exercise)
+          const individual = current.getByTestId('individual-goal-study')
+          await individual.getByText('Du kannst dieses Ziel freiwillig bearbeiten und einen eigenen Nachweis erwerben.', { exact: true }).waitFor()
+          assert.equal(await individual.getByText('Deine bestandenen Prüfungen decken dieses Ziel für den Lernplan ab.', { exact: true }).count(), 0)
+          await individual.getByTestId('individual-goal-study-start').waitFor()
+        }
+        assert.deepEqual(await passes(), previousPasses)
         assert.deepEqual(await readApi(id, '/mastery'), beforeChoice)
         assert.equal((await readApi(id, '/state')).activeGoal ?? null, null)
       } else {
@@ -633,12 +713,12 @@ async function checkVoluntaryStudy(duration, scenario, id, href, mastery, passed
     await creditList.getByRole('button', { name: title, exact: true }).click()
     const card = page.getByTestId('learner-current-goal')
     await card.getByRole('heading', { name: title, exact: true }).first().waitFor()
-    const study = card.getByTestId('credited-goal-individual-study')
+    const study = card.getByTestId('individual-goal-study')
     await study.getByText(`Offene Voraussetzungen (${prerequisites.length})`, { exact: true }).click()
     for (const prerequisite of prerequisites) await study.getByText(prerequisite.title.de, { exact: true }).waitFor()
     const result = page.waitForResponse(response => response.request().method() === 'POST'
       && new URL(response.url()).pathname.endsWith('/level-completion/actions'))
-    await study.getByTestId('credited-goal-study-start').click()
+    await study.getByTestId('individual-goal-study-start').click()
     assert.equal((await result).status(), 200)
     const now = await readApi(id, '/state')
     assert.equal(now.activeGoal.id ?? now.activeGoal.goalId, choice.practice.startGoalId)

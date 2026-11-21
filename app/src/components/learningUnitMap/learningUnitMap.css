@@ -123,25 +123,6 @@
   border: 1px solid #a6c2d6; border-radius: 4px; color: #275779; background: #eef5fa; font-size: 11px; font-weight: 600;
 }
 .lum-node--has-practice .lum-node-practice:hover { background: #deedf7; }
-.lum-practice-dialog {
-  box-sizing: border-box; width: min(36rem, calc(100% - 2rem)); max-height: calc(100dvh - 2rem); overflow: auto;
-  margin: auto; padding: clamp(16px, 4vw, 28px); border: 1px solid #bacdda; border-radius: 8px;
-  background: white; color: #26323d; box-shadow: 0 12px 50px #162d4540;
-  font: 16px/1.55 'Segoe UI', system-ui, sans-serif; text-align: left;
-}
-.lum-practice-dialog::backdrop { background: rgb(20 39 56 / 44%); }
-.lum-practice-dialog header { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
-.lum-practice-dialog header span { display: block; margin-bottom: 3px; color: #495f70; font-size: 13px; }
-.lum-practice-dialog h2 { margin: 0; font-size: 20px; line-height: 1.35; font-weight: 600; }
-.lum-practice-dialog header button {
-  flex: none; display: grid; place-items: center; width: 36px; height: 36px;
-  border: 1px solid #c8d7e2; border-radius: 4px; background: white; color: #39576d; cursor: pointer;
-}
-.lum-practice-dialog p { margin: 10px 0 18px; white-space: pre-line; }
-.lum-practice-dialog details { border-top: 1px solid #dce4ea; }
-.lum-practice-dialog summary { padding: 10px 0; color: #295d82; font-weight: 600; cursor: pointer; }
-.lum-practice-dialog details p { margin: 0 0 12px; }
-.lum-practice-dialog :is(button, summary):focus-visible { outline: 2px solid #347aa6; outline-offset: 2px; }
 .lum-node--motivation { border-left-color: #bd9c62; }
 .lum-node--motivation .lum-node-icon { color: #b49765; }
 .lum-node--assessment { border-left-color: #9285b6; }
@@ -188,6 +169,7 @@
 .lum-map-controls > button:hover { background: #f0f4f7; color: #347aa6; }
 .lum-map-controls > span:not(.lum-control-divider) { width: 45px; text-align: center; font-size: 10px; color: #8c99a4; font-variant-numeric: tabular-nums; }
 .lum-control-divider { height: 15px; width: 1px; background: #e1e6eb; margin: 0 3px; }
+.lum-map-bottom-bar { display: contents; }
 /* One line below the map: how to read the arrows and how to move. The right end stays clear for the overview map. */
 .lum-map-footer { position: absolute; left: 23px; right: 180px; bottom: 6px; display: flex; flex-wrap: wrap; align-items: center; gap: 1px 18px; pointer-events: none; }
 .lum-map-hint { color: #a5adb5; font-size: 10px; }
@@ -196,6 +178,13 @@
 .lum-app--contextual .lum-loading, .lum-app--contextual .lum-layout-error { inset: 0; }
 .lum-layout-error { color: #9a5d5d; }
 .lum-sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; }
+/* Desktop controls get their own row, so even cards at the canvas edge stay readable and clickable. */
+@media (min-width: 761px) {
+  .lum-flow { margin-bottom: 0; }
+  .lum-map-bottom-bar { display: flex; align-items: center; gap: 12px; padding: 3px 20px 4px; flex-shrink: 0; }
+  .lum-map-controls { position: static; flex-shrink: 0; }
+  .lum-map-footer { position: static; flex: 1; min-width: 0; }
+}
 @media (max-width: 900px) {
   .lum-demo-badge { display: none; }
   .lum-inspector { width: 260px; padding: 15px; }

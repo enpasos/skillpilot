@@ -186,6 +186,37 @@ class ClaudeV1CompletionRouteIntegrationTest {
     private static final String WURF_EXTRA = "6ea3fb3c-abdc-568f-ab13-97c36dc274e4";
     private static final String MULTIPHASE_EXTRA = "2b9e565f-d9b4-5e23-b5b7-b7977cecff06";
 
+    @ParameterizedTest
+    @CsvSource({"G8,GK", "G9,GK", "G8,LK", "G9,LK"})
+    void activeIndividualExperimentUsesTheSamePromptAndCriteriaAsTheMap(String duration, String course) throws Exception {
+        selectHessianMotionUnit(duration, "SekII", course);
+        session = sessions.createFirstPartyLaunch(learnerId, new ClaudeV1CoachStartRequest("de", "web-start")).learningSessionId();
+        authenticate();
+        successful(ClaudeV1CompletionContractRegistry.TOOL_CONFIRM, Map.of("receiptCapability",
+                map(context(), "completionContract").get("receiptCapability")));
+        var material = mapper.readTree(java.nio.file.Path.of("../curricula/DE/Gymnasium/materials/physics/he-e1-motion-practice.json").toFile());
+        var mastery = learners.getMastery(learnerId);
+        for (String id : List.of("971beafa-6ba5-4c82-ac8b-7ebf66eec3dd", "09029573-864f-40ca-bf8a-cee7bf6dcb73")) {
+            var expected = material.required("exercises").valueStream()
+                    .filter(exercise -> id.equals(exercise.required("goalId").asText()))
+                    .findFirst().orElseThrow().required("de");
+            var learner = learnerRepository.findById(learnerId).orElseThrow();
+            learner.setActiveGoalId(id);
+            learner.setLearningState(LearningState.TEACHING);
+            learnerRepository.saveAndFlush(learner);
+            long before = version();
+            var response = context();
+            assertThat(map(response, "activeGoal")).containsEntry("id", id);
+            var actual = mapper.valueToTree(map(response, "activeGoalContext")).required("practiceExercise");
+            assertThat(actual.required("prompt")).isEqualTo(expected.required("prompt"));
+            assertThat(actual.required("evidenceCriteria")).isEqualTo(expected.required("evidenceCriteria"));
+            assertThat(actual.required("evidenceCriteria").size()).isPositive();
+            assertThat(actual.has("solution")).isFalse();
+            assertThat(version()).isEqualTo(before);
+        }
+        assertThat(learners.getMastery(learnerId)).isEqualTo(mastery);
+    }
+
     private String selectHessianMotionUnit(String duration, String stage) throws Exception {
         return selectHessianMotionUnit(duration, stage, "GK");
     }
@@ -684,6 +715,7 @@ class ClaudeV1CompletionRouteIntegrationTest {
         var subject = learningPlans.getTodayStatus(learnerId, "de").subjects().getFirst();
         assertThat(subject.unitAssignments().getFirst().status()).isEqualTo("completed");
         assertThat(subject.canContinue()).isTrue();
+        assertThat(individualPracticeGoalIds()).contains("09029573-864f-40ca-bf8a-cee7bf6dcb73", "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd");
 
         var priorPasses = examPasses.findForGoals(learnerId, ids);
         var currentA = landscapeDefinitions.getGoalDefinition(ids.getFirst()).getExamData();
@@ -694,6 +726,7 @@ class ClaudeV1CompletionRouteIntegrationTest {
             assertThat(changed.unitAssignments().getFirst().status()).isEqualTo("unavailable");
             assertThat(changed.unitAssignments().getFirst().passedParts()).isNull();
             assertThat(learningPlans.getPlan(learnerId, physics, day).nextEligibleGoal().goalId()).isEqualTo(extra);
+            assertThat(individualPracticeGoalIds()).containsOnly("e4b38061-1f28-43ad-8371-a3e7c0e81856", "d6dc0e02-831d-4894-a61a-852bcc74f147");
             assertThat(learners.getUnitPlanningCredits(learnerId)).hasSize(2);
             assertThat(examPasses.findForGoals(learnerId, ids)).isEqualTo(priorPasses);
         } finally {
@@ -703,6 +736,7 @@ class ClaudeV1CompletionRouteIntegrationTest {
         org.springframework.test.util.ReflectionTestUtils.setField(learners, "unitAssessmentPilotEnabled", false);
         try {
             assertThat(learners.getUnitAssignmentOptions(learnerId, physics)).isEmpty();
+            assertThat(individualPracticeGoalIds()).isEmpty();
             var off = learningPlans.getTodayStatus(learnerId, "de").subjects().getFirst();
             assertThat(off.unitAssignments().getFirst().status()).isEqualTo("unavailable");
             assertThat(off.unitAssignments().getFirst().passedParts()).isNull();
@@ -728,6 +762,8 @@ class ClaudeV1CompletionRouteIntegrationTest {
                 "selectProfile", "automatic:" + section, null, null, version()));
         assertThat(route.levelCompletion().masteredAssessmentCount()).isEqualTo(4);
         assertThat(route.levelCompletion().requiredAssessmentCount()).isEqualTo(4);
+        assertThat(route.levelCompletion().actions()).filteredOn(item -> item.practice() != null).extracting(item -> item.goalId())
+                .containsExactlyInAnyOrderElementsOf(route.levelCompletion().unitAssessment().individuallyOpenGoalIds());
         var voluntary = route.levelCompletion().actions().stream().filter(item ->
                 "voluntary".equals(item.intent()) && acceleration.equals(item.goalId())).findFirst().orElseThrow();
         var started = learners.chooseLevelCompletion(learnerId, new LevelCompletionActionRequest(
@@ -783,13 +819,13 @@ class ClaudeV1CompletionRouteIntegrationTest {
             var confirmed = context();
             String title = "Modellierung und Idealisierung von Bewegungen";
             var offered = (List<?>) assignment.get("voluntaryGoalTitles");
-            String cockpitGoal = "Physik im Straßenverkehr: Sicherheitsabstände bewerten";
-            assertThat(offered.toString()).contains(title, cockpitGoal);
-            var beforeUnpublishedChoice = version();
-            var unavailable = call(ClaudeV1McpContractAdapter.TOOL_CHOOSE_COMPLETION_ROUTE,
-                    writeArgs("unpublished-voluntary-title", beforeUnpublishedChoice, Map.of("choice", cockpitGoal)));
-            assertThat(unavailable.isError()).isTrue();
-            assertThat(version()).isEqualTo(beforeUnpublishedChoice);
+            String bareGoalTitle = "Physik im Straßenverkehr: Sicherheitsabstände bewerten";
+            assertThat(offered.toString()).contains(title, bareGoalTitle);
+            var beforeBareTitle = version();
+            var bareTitleResult = call(ClaudeV1McpContractAdapter.TOOL_CHOOSE_COMPLETION_ROUTE,
+                    writeArgs("bare-goal-title", beforeBareTitle, Map.of("choice", bareGoalTitle)));
+            assertThat(bareTitleResult.isError()).isTrue();
+            assertThat(version()).isEqualTo(beforeBareTitle);
             assertThat(learners.getLearner(learnerId).getActiveGoalId()).isNull();
             String published = choice(confirmed, "Einzelfokus starten: " + title);
             var receiptsBeforeChoice = examPasses.findForGoals(learnerId, parts);
@@ -803,6 +839,81 @@ class ClaudeV1CompletionRouteIntegrationTest {
         assertThat(examPasses.findForGoals(learnerId, parts)).hasSize(passedParts);
         assertThat(masteryRepository.findByLearner_SkillpilotId(learnerId)).extracting(Mastery::getGoalKey)
                 .containsExactlyInAnyOrderElementsOf(HESSIAN_PASS_ORDER.subList(0, passedParts).stream().map(parts::get).toList());
+    }
+
+    @ParameterizedTest
+    @CsvSource({"G8,false,09029573-864f-40ca-bf8a-cee7bf6dcb73", "G9,false,971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
+            "G9,true,09029573-864f-40ca-bf8a-cee7bf6dcb73"})
+    void completedAssignmentOffersExactlyItsOpenIndividualGoalsInThePersonalProfile(
+            String duration, boolean strict, String requested) throws Exception {
+        String section = selectHessianMotionUnit(duration, "SekII");
+        String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
+        var parts = prepareUnitContinuation(section, 4, false);
+        learners.setPlannedGoals(learnerId, java.util.Set.of());
+        learners.setPreferences(learnerId, null, false, strict);
+        var receipts = examPasses.findForGoals(learnerId, parts);
+        var option = learners.getUnitAssignmentOptions(learnerId, physics).stream()
+                .filter(item -> section.equals(item.sectionGoalId())).findFirst().orElseThrow();
+        var open = option.voluntaryGoals().stream().map(LearnerLearningPlanApi.VoluntaryGoal::goalId).toList();
+        assertThat(option.passed()).isTrue();
+        assertThat(open).hasSize(11).contains(requested);
+        var completion = learners.getLearnerState(learnerId).levelCompletion();
+        assertThat(completion.profileId()).isEqualTo("automatic:personal-curriculum");
+        assertThat(completion.unitAssessment()).isNull();
+        var practice = completion.actions().stream().filter(action -> action.practice() != null).toList();
+        assertThat(practice).extracting(action -> action.goalId()).containsExactlyInAnyOrderElementsOf(open);
+        assertThat(practice).allMatch(action -> "voluntary".equals(action.intent()));
+        assertThat(learners.getUnitPlanningCredits(learnerId)).hasSize(2).doesNotContainKey(requested);
+        var chosen = practice.stream().filter(action -> requested.equals(action.goalId())).findFirst().orElseThrow();
+        var outstanding = chosen.practice().openPrerequisites().stream().map(item -> item.goalId()).toList();
+        assertThat(outstanding).isNotEmpty();
+        if (strict) assertThat(chosen.practice().startGoalId()).isIn(outstanding).isNotEqualTo(requested);
+        else assertThat(chosen.practice().startGoalId()).isEqualTo(requested);
+        successful(ClaudeV1CompletionContractRegistry.TOOL_CONFIRM, Map.of(
+                "receiptCapability", map(context(), "completionContract").get("receiptCapability")));
+        var confirmed = context();
+        var route = map(confirmed, "levelCompletion");
+        var individualChoices = ((List<?>) route.get("individualPractice")).stream()
+                .map(item -> ((Map<?, ?>) item).get("choice").toString()).toList();
+        assertThat(individualChoices).containsExactlyInAnyOrderElementsOf(
+                practice.stream().map(action -> action.title().get("de")).toList());
+        assertThat((List<?>) route.get("choices")).hasSizeLessThanOrEqualTo(ClaudeV1CompletionChoices.MAX_CHOICES);
+        var result = successful(ClaudeV1McpContractAdapter.TOOL_CHOOSE_COMPLETION_ROUTE,
+                writeArgs("start-requested-individual-experiment", version(), Map.of("choice", choice(confirmed, chosen.title().get("de")))));
+        assertThat(map(map(result, "context"), "activeGoal")).containsEntry("id", chosen.practice().startGoalId());
+        assertThat(map(context(), "activeGoal")).containsEntry("id", chosen.practice().startGoalId());
+        assertThat(learners.getPlannedGoals(learnerId)).contains(requested);
+        assertThat(examPasses.findForGoals(learnerId, parts)).isEqualTo(receipts);
+        assertThat(masteryRepository.findByLearner_SkillpilotId(learnerId)).extracting(Mastery::getGoalKey)
+                .containsExactlyInAnyOrderElementsOf(parts);
+    }
+
+    private List<String> individualPracticeGoalIds() {
+        return learners.getLearnerState(learnerId).levelCompletion().actions().stream()
+                .filter(item -> item.practice() != null).map(item -> item.goalId()).toList();
+    }
+
+    @Test void aPausedAssignmentCannotPublishOrStartItsOpenGoalsAndASeparateResultStaysMastered() throws Exception {
+        String section = selectHessianMotionUnit("G8", "SekII");
+        String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
+        String freeFall = "09029573-864f-40ca-bf8a-cee7bf6dcb73";
+        String uniform = "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd";
+        var parts = prepareUnitContinuation(section, 4, false);
+        var plan = learningPlans.getPlan(learnerId, physics, java.time.LocalDate.now(java.time.ZoneId.of("Europe/Berlin")));
+        var receipts = examPasses.findForGoals(learnerId, parts);
+        learningPlans.setUnitAssignmentActivity(learnerId, plan.planId(),
+                new LearnerLearningPlanApi.UnitAssignmentActivity(plan.revision(), "unit", false));
+        // The section is still focused and its current A–D receipts still exist.
+        assertThat(learners.getLearnerState(learnerId).levelCompletion().unitAssessment().passed()).isTrue();
+        assertThat(individualPracticeGoalIds()).doesNotContain(freeFall, uniform);
+        assertThatThrownBy(() -> learners.chooseLevelCompletion(learnerId, new LevelCompletionActionRequest(
+                "focusPractice", "automatic:personal-curriculum", freeFall, "voluntary", version())))
+                .isInstanceOf(org.springframework.web.server.ResponseStatusException.class);
+        learningPlans.setUnitAssignmentActivity(learnerId, plan.planId(),
+                new LearnerLearningPlanApi.UnitAssignmentActivity(plan.revision() + 1, "unit", true));
+        masteryRepository.saveAndFlush(new Mastery(learnerRepository.findById(learnerId).orElseThrow(), uniform, 1.0));
+        assertThat(individualPracticeGoalIds()).hasSize(10).contains(freeFall).doesNotContain(uniform, WURF_EXTRA);
+        assertThat(examPasses.findForGoals(learnerId, parts)).isEqualTo(receipts);
     }
 
     private List<String> prepareUnitContinuation(String section, int passedParts, boolean separateOrder) throws Exception {

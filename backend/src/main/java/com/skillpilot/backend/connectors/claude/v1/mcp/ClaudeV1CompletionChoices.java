@@ -105,7 +105,11 @@ final class ClaudeV1CompletionChoices {
                 && !"selectProfile".equals(choice.action())).limit(8).forEach(ordered::add);
         unambiguous.stream().filter(choice -> "selectProfile".equals(choice.action()))
                 .limit(6).forEach(ordered::add);
-        unambiguous.stream().filter(choice -> "startAssessment".equals(choice.action())).forEach(ordered::add);
+        var directStarts = unambiguous.stream().filter(choice -> "startAssessment".equals(choice.action())).toList();
+        directStarts.stream().findFirst().ifPresent(ordered::add);
+        // Keep the first direct exam reachable, then offer individual study before filling the list with more exams.
+        unambiguous.stream().filter(choice -> "focusPractice".equals(choice.action())).forEach(ordered::add);
+        ordered.addAll(directStarts);
         return ordered.stream().limit(MAX_CHOICES).toList();
     }
 
@@ -216,7 +220,7 @@ final class ClaudeV1CompletionChoices {
                     ? "Use only the named planning credits from the current assessment evidence. Each individual goal still needs its own mastery evidence. " : "")
                 + "Do not restore implicitly completed work as mandatory. "
                 + (result.containsKey("individualPractice")
-                    ? "On a request to study a credited goal individually, use its published individualPractice choice. "
+                    ? "When the learner requests an individual goal, use its published individualPractice choice. "
                         + "Offer help with its open prerequisites. When strict mode names a prerequisite as the first step, teach that returned active goal. " : "")
                 + "Available direct assessment choices can be selected from ordinary learning without choosing a section first. "
                 + "Offer them when the learner asks for a shortcut, an assessment or to demonstrate existing knowledge; do not interrupt ordinary teaching unprompted. "

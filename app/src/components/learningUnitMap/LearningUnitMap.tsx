@@ -570,23 +570,25 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
           {onReturnToTree && <button type="button" onClick={onReturnToTree}>{label('Zum Baum wechseln', 'Return to tree')}</button>}
         </div>}
         {!activeLayout && !layoutError && <div className="lum-loading" role="status">{label('Karte wird angeordnet…', 'Arranging map…')}</div>}
-        <div className="lum-map-controls" aria-label={label('Kartensteuerung', 'Map controls')} onPointerDownCapture={() => { gestureOnMap.current = false }}>
-          <button type="button" onClick={() => void flow.zoomOut({ duration: reducedMotion ? 0 : 150 })} aria-label={label('Karte verkleinern', 'Zoom out')}><Minus size={16} /></button>
-          <span aria-label={label('Zoomwert', 'Zoom level')}>{Math.round(nav.zoom * 100)} %</span>
-          <button type="button" onClick={() => void flow.zoomIn({ duration: reducedMotion ? 0 : 150 })} aria-label={label('Karte vergrößern', 'Zoom in')}><Plus size={16} /></button>
-          <span className="lum-control-divider" />
-          <button type="button" onClick={() => void flow.fitView({ padding: 0.16, maxZoom: 1.1, duration: reducedMotion ? 0 : 200 })} aria-label={label('Diese Ebene einpassen', 'Fit this level')} title={label('Gesamte Ebene einpassen', 'Fit entire level')}><Expand size={16} /></button>
-        </div>
-        <div className="lum-map-footer">
-          {unitOrderRelations && <span className="lum-order-legend" data-testid="learning-map-order-legend">
-            <span><i className="lum-legend-line lum-legend-line--declared" />{label('erklärte Reihenfolge', 'declared order')}</span>
-            <span title={label('Lernziele am Ende des Pfeils brauchen Lernziele an seinem Anfang. Zwischen zwei Einheiten ist dafür noch keine Reihenfolge erklärt.',
-              'Goals at the end of the arrow need goals at its start. Between two units, no order has been declared for this yet.')}>
-              <i className="lum-legend-line lum-legend-line--derived" />{label('Bedarf der Lernziele', 'need of the goals')}</span>
-            {backwardCount > 0 && <span className="lum-legend-backward" title={label('Früheres braucht Späteres: Ein Ziel braucht ein Ziel aus einer Einheit, die nach seiner eigenen Einheit kommt.', 'Earlier needs later: a goal needs a goal from a unit that comes after its own unit.')}>
-              <i className="lum-legend-line lum-legend-line--backward" />{backwardCount} {label(backwardCount === 1 ? 'Rückgriff' : 'Rückgriffe', backwardCount === 1 ? 'backward dependency' : 'backward dependencies')}</span>}
-          </span>}
-          <span className="lum-map-hint">{direction === 'RIGHT' ? '→' : '↓'} {label('Vorbereitung zur Anwendung', 'Preparation to application')}<span> · {label('Doppelklick hinein · Shift + Doppelklick heraus', 'Double-click in · Shift + double-click out')}</span></span>
+        <div className="lum-map-bottom-bar">
+          <div className="lum-map-controls" aria-label={label('Kartensteuerung', 'Map controls')} onPointerDownCapture={() => { gestureOnMap.current = false }}>
+            <button type="button" onClick={() => void flow.zoomOut({ duration: reducedMotion ? 0 : 150 })} aria-label={label('Karte verkleinern', 'Zoom out')}><Minus size={16} /></button>
+            <span aria-label={label('Zoomwert', 'Zoom level')}>{Math.round(nav.zoom * 100)} %</span>
+            <button type="button" onClick={() => void flow.zoomIn({ duration: reducedMotion ? 0 : 150 })} aria-label={label('Karte vergrößern', 'Zoom in')}><Plus size={16} /></button>
+            <span className="lum-control-divider" />
+            <button type="button" onClick={() => void flow.fitView({ padding: 0.16, maxZoom: 1.1, duration: reducedMotion ? 0 : 200 })} aria-label={label('Diese Ebene einpassen', 'Fit this level')} title={label('Gesamte Ebene einpassen', 'Fit entire level')}><Expand size={16} /></button>
+          </div>
+          <div className="lum-map-footer">
+            {unitOrderRelations && <span className="lum-order-legend" data-testid="learning-map-order-legend">
+              <span><i className="lum-legend-line lum-legend-line--declared" />{label('erklärte Reihenfolge', 'declared order')}</span>
+              <span title={label('Lernziele am Ende des Pfeils brauchen Lernziele an seinem Anfang. Zwischen zwei Einheiten ist dafür noch keine Reihenfolge erklärt.',
+                'Goals at the end of the arrow need goals at its start. Between two units, no order has been declared for this yet.')}>
+                <i className="lum-legend-line lum-legend-line--derived" />{label('Bedarf der Lernziele', 'need of the goals')}</span>
+              {backwardCount > 0 && <span className="lum-legend-backward" title={label('Früheres braucht Späteres: Ein Ziel braucht ein Ziel aus einer Einheit, die nach seiner eigenen Einheit kommt.', 'Earlier needs later: a goal needs a goal from a unit that comes after its own unit.')}>
+                <i className="lum-legend-line lum-legend-line--backward" />{backwardCount} {label(backwardCount === 1 ? 'Rückgriff' : 'Rückgriffe', backwardCount === 1 ? 'backward dependency' : 'backward dependencies')}</span>}
+            </span>}
+            <span className="lum-map-hint">{direction === 'RIGHT' ? '→' : '↓'} {label('Vorbereitung zur Anwendung', 'Preparation to application')}<span> · {label('Doppelklick hinein · Shift + Doppelklick heraus', 'Double-click in · Shift + double-click out')}</span></span>
+          </div>
         </div>
       </section>
       {showInspector && inspected && <aside className="lum-inspector" aria-label="Ausgewählter Bereich">

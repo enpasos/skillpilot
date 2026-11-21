@@ -1,3 +1,5 @@
+import { fingerprintCurrentCurriculumDocument } from './currentCurriculumCatalog'
+import { findUnitPracticeExercise } from '../src/utils/unitLearningMaterial'
 import assert from 'node:assert/strict'
 import { readFile } from 'node:fs/promises'
 import { prepareLandscapeEntries, type LandscapeEntry } from '../src/hooks/useLandscapes'
@@ -12,6 +14,7 @@ import { getSrsFilterTagsForGoal } from '../src/utils/srsTags'
 import { buildLearnerUnitMapProjection, filterLearnerUnitMapToSubjects } from '../src/components/learningUnitMap/learnerUnitMapProjection'
 import { deriveLearnerUnitMapPreview, MATHEMATICS_LANDSCAPE_ID as math, PHYSICS_LANDSCAPE_ID as physics } from '../src/components/learningUnitMap/learnerUnitMapPreview'
 import { buildUnitAssessmentActions, buildUnitFlashcardActions, findUnitMaterialScopes, placeUnitLearningResources, unitResourcePlacements } from '../src/components/learningUnitMap/unitLearningMaterialActions'
+import { mapEntryPath } from '../src/components/learningUnitMap/mapEntryPath'
 import { UNIT_MAP_LEARNING_MATERIALS as packageMaterials } from '../src/packageConsumer/learnerUnitMapPreviewSubjects'
 import { readUnitMapMaterials } from './lib/unitLearningMaterialCatalog'
 import { fileURLToPath } from 'node:url'
@@ -21,6 +24,16 @@ const practiceMaterial = materials.find(item => item.unit.landscapeId === physic
 const { flashcardGoalId: memoryId, assessmentGoalId: examId } = practiceMaterial.unit
 assert(memoryId && examId)
 const read = async <T,>(path: string): Promise<T> => JSON.parse(await readFile(new URL(`../../curricula/DE/Gymnasium/${path}`, import.meta.url), 'utf8'))
+const review = await read<{ scope: { exercises: { goalId: string; exerciseSha256: string }[] } }>(
+  'quality/learning-units/physics-he-e1-individual-experiments-2026-11-21/review.json')
+assert.deepEqual(review.scope.exercises.map(row => row.goalId).sort(),
+  ['09029573-864f-40ca-bf8a-cee7bf6dcb73', '971beafa-6ba5-4c82-ac8b-7ebf66eec3dd'])
+for (const approved of review.scope.exercises) {
+  const exercise = practiceMaterial.exercises.find(entry => entry.goalId === approved.goalId)
+  assert(exercise, 'Reviewed exercise is missing: ' + approved.goalId)
+  assert.equal(fingerprintCurrentCurriculumDocument(exercise), 'sha256:' + approved.exerciseSha256,
+    'Exercise contents have changed since the independent review: ' + approved.goalId)
+}
 const physicsLandscape = await read<SkillLandscape>('canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json')
 const mathematicsLandscape = await read<SkillLandscape>('canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json')
 const canonical = prepareLandscapeEntries([mathematicsLandscape, physicsLandscape])
@@ -58,7 +71,20 @@ for (const scope of ['', '-g8', '-g9', '-sekii']) for (const course of ['gk', 'l
     assert.equal(e1Scopes.size, 1)
     const [e1ScopeId] = e1Scopes
     for (const exercise of practiceMaterial.exercises) {
-      assert(original.entries[e1ScopeId].children?.includes(exercise.goalId), `${filename}: ${exercise.goalId} must be on its E.1 board`)
+      const path = mapEntryPath(original, exercise.goalId)
+      assert(path?.includes(e1ScopeId), `${filename}: exercise is reachable inside its published unit`)
+      const goal = value.goalIndexAll.get(exercise.goalId)!
+      const materialForScope = (id: string) => e1Scopes.has(id) ? practiceMaterial : undefined
+      for (const language of ['de', 'en'] as const) {
+        assert.deepEqual(findUnitPracticeExercise(goal, [...path].reverse(), materialForScope, language), exercise[language])
+        assert.equal(findUnitPracticeExercise(goal, ['unrelated board'], materialForScope, language), undefined)
+        const nested = { ...practiceMaterial, exercises: [] }
+        assert.equal(findUnitPracticeExercise(goal, ['nested', e1ScopeId], id => id === 'nested' ? nested : materialForScope(id), language),
+          undefined, 'A different material bound to the nearer unit takes precedence')
+        assert.equal(findUnitPracticeExercise({ ...goal, nodeKind: 'exam' }, [e1ScopeId], materialForScope, language), undefined)
+        assert.equal(findUnitPracticeExercise({ ...goal, landscapeId: math }, [e1ScopeId], materialForScope, language), undefined)
+        assert.equal(findUnitPracticeExercise({ ...goal, id: 'another goal with the same title' }, [e1ScopeId], materialForScope, language), undefined)
+      }
     }
     for (const language of ['de', 'en'] as const) {
       const deck = await read<{ deckId: string; cards: { id: string; tags?: string[] }[] }>(`memory-decks/de_gymnasium_physics_flashcards_mechanics_ephase.${language}.json`)

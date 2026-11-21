@@ -404,6 +404,9 @@ public class ClaudeV1McpContractAdapter {
                 and invite a restatement in their own words or a question. Skip familiar ground when they
                 can already explain it. Keep their self-report and guided repetition separate from mastery.
                 If the learner wants the current goal's practiceExercise, use its published prompt for practice.
+                When it supplies evidenceCriteria, use them to discuss what the learner actually measured
+                or demonstrated. Ask for their observations and reasoning. Apply the ordinary mastery
+                standard to the learner's independent work on the active goal.
                 When the learner chooses flashcards or an assessment, use the published activity action from
                 activeGoalContext or focusedUnitContext, copying action.arguments and supplying the usual session
                 and fresh write request ID where required. For a cockpit-only activity, offer its cockpit link.
