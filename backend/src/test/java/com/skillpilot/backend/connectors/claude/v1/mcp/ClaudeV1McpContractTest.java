@@ -146,7 +146,15 @@ class ClaudeV1McpContractTest {
 
         Map<String, Object> contextProperties = (Map<String, Object>)
                 schemaOf(ClaudeV1Contract.TOOL_GET_COACH_CONTEXT).get("properties");
-        assertEquals(Set.of("learningSessionId", "language"), contextProperties.keySet());
+        assertEquals(Set.of("learningSessionId", "language", "completionChoicePage"), contextProperties.keySet());
+        Map<String, Object> choiceProperties = (Map<String, Object>)
+                schemaOf(ClaudeV1McpContractAdapter.TOOL_CHOOSE_COMPLETION_ROUTE).get("properties");
+        assertEquals(contextProperties.get("completionChoicePage"), choiceProperties.get("completionChoicePage"));
+        Map<?, ?> page = (Map<?, ?>) contextProperties.get("completionChoicePage");
+        assertEquals("integer", page.get("type"));
+        assertEquals(1, page.get("minimum"));
+        assertFalse(requiredOf(ClaudeV1Contract.TOOL_GET_COACH_CONTEXT).contains("completionChoicePage"));
+        assertFalse(requiredOf(ClaudeV1McpContractAdapter.TOOL_CHOOSE_COMPLETION_ROUTE).contains("completionChoicePage"));
     }
 
     @Test
@@ -622,6 +630,9 @@ class ClaudeV1McpContractTest {
         assertFalse(instructions.contains("starts its reviewed section"));
         String description = tool(ClaudeV1McpContractAdapter.TOOL_CHOOSE_COMPLETION_ROUTE).description();
         assertTrue(description.contains("Chooses a current learning section"));
+        assertTrue(instructions.contains("published nextPage as completionChoicePage"));
+        assertTrue(description.contains("completionChoicePage"));
+        assertTrue(tool(ClaudeV1Contract.TOOL_GET_COACH_CONTEXT).description().contains("choicePagination"));
         assertFalse(description.contains("reviewed section"));
     }
 

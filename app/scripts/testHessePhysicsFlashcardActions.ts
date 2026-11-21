@@ -1,7 +1,9 @@
 import { fingerprintCurrentCurriculumDocument } from './currentCurriculumCatalog'
 import { findUnitPracticeExercise } from '../src/utils/unitLearningMaterial'
 import assert from 'node:assert/strict'
-import { readFile } from 'node:fs/promises'
+import { mkdtemp, readFile, rm, writeFile } from 'node:fs/promises'
+import { tmpdir } from 'node:os'
+import { join } from 'node:path'
 import { prepareLandscapeEntries, type LandscapeEntry } from '../src/hooks/useLandscapes'
 import type { SkillLandscape } from '../src/landscapeTypes'
 import type { CompositionView } from '../src/utils/authoring/compositionViewAuthoring'
@@ -18,6 +20,22 @@ import { mapEntryPath } from '../src/components/learningUnitMap/mapEntryPath'
 import { UNIT_MAP_LEARNING_MATERIALS as packageMaterials } from '../src/packageConsumer/learnerUnitMapPreviewSubjects'
 import { readUnitMapMaterials } from './lib/unitLearningMaterialCatalog'
 import { fileURLToPath } from 'node:url'
+
+const tempCatalog = await mkdtemp(join(tmpdir(), 'unit-learning-material-'))
+try {
+  await writeFile(join(tempCatalog, 'unit-learning-materials.json'), JSON.stringify({ schemaVersion: 1, materials: ['intro.json'] }))
+  const material = { unit: { landscapeId: 'history', compositionNodeId: 'sources', viewIds: ['intro'] },
+    intro: { de: { question: 'Wann?', promise: 'Datieren.' }, en: { question: 'When?', promise: 'Establish dates.' } } }
+  const path = join(tempCatalog, 'intro.json')
+  await writeFile(path, JSON.stringify(material))
+  const legacy = readUnitMapMaterials(tempCatalog)
+  await writeFile(path, JSON.stringify({ schemaVersion: 1, ...material }))
+  assert.deepEqual(readUnitMapMaterials(tempCatalog), legacy)
+  await writeFile(path, JSON.stringify({ schemaVersion: 2, ...material }))
+  assert.throws(() => readUnitMapMaterials(tempCatalog), /Unsupported unit learning material version/)
+} finally {
+  await rm(tempCatalog, { recursive: true, force: true })
+}
 
 const materials = readUnitMapMaterials(fileURLToPath(new URL('../../curricula/', import.meta.url)))
 const practiceMaterial = materials.find(item => item.unit.landscapeId === physics && item.unit.compositionNodeId === 'physics-e1-motion')!

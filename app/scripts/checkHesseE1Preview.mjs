@@ -67,6 +67,18 @@ async function launchAssessment(page, goalId) {
   assert(!accepted.restartCurrent)
 }
 async function checkMapCardExposure(page, ids) {
+  // Scope navigation mounts the cards before the routed assessment camera settles.
+  // Await that camera at every desktop width, then measure title occlusion below.
+  await page.waitForFunction(ids => {
+    const board = document.querySelector('[data-testid="learner-learning-map-dialog"] [data-testid="learning-map-board"]')
+    const surface = board?.querySelector('.lum-flow')?.getBoundingClientRect()
+    if (!surface || board.getAttribute('aria-busy') !== 'false') return false
+    return ids.every(id => {
+      const rect = board.querySelector(`[data-entry-id="${id}"] .lum-node-main`)?.getBoundingClientRect()
+      return rect && rect.width >= 170 && rect.left >= surface.left && rect.right <= surface.right
+        && rect.top >= surface.top && rect.bottom <= surface.bottom
+    })
+  }, ids)
   const measured = await page.evaluate(ids => {
     const surface = document.querySelector('.lum-flow').getBoundingClientRect()
     const controls = document.querySelector('.lum-map-controls').getBoundingClientRect()
@@ -181,22 +193,15 @@ async function check(duration, part, lang, start, width = 1440, height = 900) {
           await map.locator('.lum-flow--idle').waitFor()
         }
         assert.equal(await map.getByRole('button', { name: /Zielliste anzeigen|Grafische Karte anzeigen|Show goal list|Show graph/ }).count(), 0)
+        const drawing = await map.locator('.lum-flow').boundingBox()
+        const overview = await map.locator('.react-flow__minimap-svg').boundingBox()
+        assert(drawing && overview && overview.width > 0 && overview.height > 0
+          && overview.y >= drawing.y + drawing.height - 1,
+        'The interactive overview stays below the whole drawing, including the lower right goal cards.')
         if (width < 1024) {
           const title = lang === 'de' ? other.title : other.titleEn
           await map.getByRole('textbox', { name: lang === 'de' ? 'In dieser Ebene suchen' : 'Search this level' }).fill(title)
           await map.getByRole('option').filter({ hasText: title }).click()
-        } else if (width <= 1100) {
-          // The parent also shows C as a reference. D is reached on the child board.
-          const visibleParts = [task.id, other.id, scope.childAssessmentGoalIds[0]]
-          await page.waitForFunction(ids => {
-            const surface = document.querySelector('.lum-flow')?.getBoundingClientRect()
-            if (!surface) return false
-            return ids.every(id => {
-              const rect = document.querySelector(`[data-entry-id="${id}"] .lum-node-main`)?.getBoundingClientRect()
-              return rect && rect.width >= 170 && rect.left >= surface.left && rect.right <= surface.right
-                && rect.top >= surface.top && rect.bottom <= surface.bottom
-            })
-          }, visibleParts)
         }
         if (width >= 1024) await checkMapCardExposure(page, [task.id, other.id, scope.childAssessmentGoalIds[0]])
         await neighbor.click()

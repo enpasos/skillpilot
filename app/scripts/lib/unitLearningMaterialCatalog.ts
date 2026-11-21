@@ -11,7 +11,11 @@ export function readUnitMapMaterials(curriculaRoot: string): MapPracticeMaterial
     if (typeof entry !== 'string' || !entry || path.isAbsolute(entry)) throw new Error('Expected a relative unit material path')
     const source = realpathSync(path.join(root, entry))
     if (!source.startsWith(root + path.sep)) throw new Error('Unit material outside curriculum')
-    const { unit, intro, exercises = [] } = JSON.parse(readFileSync(source, 'utf8'))
+    const material = JSON.parse(readFileSync(source, 'utf8'))
+    if (Object.hasOwn(material, 'schemaVersion') && material.schemaVersion !== 1) {
+      throw new Error('Unsupported unit learning material version in ' + entry)
+    }
+    const { unit, intro, exercises = [] } = material
     const { landscapeId, compositionNodeId, viewIds, flashcardGoalId, assessmentGoalId } = unit
     return { unit: { landscapeId, compositionNodeId, viewIds, flashcardGoalId, assessmentGoalId }, intro, exercises }
   })

@@ -1,6 +1,7 @@
 package com.skillpilot.backend.connectors.claude.v1.mcp;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -56,6 +57,35 @@ class ClaudeV1CompletionProjectionTest {
         var choices = CompletionCallContext.with(supported(), () -> ClaudeV1CompletionChoices.published(result, "de"));
         assertThat(choices).extracting(ClaudeV1CompletionChoices.Choice::label)
                 .contains("Zur normalen Lernansicht", "Freiwillig vertiefen: Offene Einzelleistung", "Weiterlernen: Lernziel 0");
+    }
+
+    @Test
+    void overviewPrioritiesNeverClipLaterSectionsAndUnsupportedChoicesStayClosed() {
+        var sections = new java.util.ArrayList<LevelCompletionResponse.ProfileOption>();
+        var exams = new java.util.ArrayList<LevelCompletionResponse.Assessment>();
+        for (int i = 1; i <= 30; i++) {
+            sections.add(new LevelCompletionResponse.ProfileOption("profile-" + i, Map.of("en", "Section " + i), 1, 1, List.of()));
+            exams.add(new LevelCompletionResponse.Assessment("exam-" + i, Map.of("en", "Exam " + i), false, true, null));
+        }
+        var result = new LevelCompletionResponse("valid", "scope", "automatic:personal-curriculum", "1", "generation", 10,
+                Map.of("en", "Curriculum"), false, 0, 0, 0, 0, 0, 30, List.of(), exams, sections, null, false, null, List.of());
+        CompletionCallContext.with(supported(), () -> {
+            var first = ClaudeV1CompletionChoices.page(result, "en", 1);
+            assertThat(first.count()).isEqualTo(3);
+            assertThat(first.choices()).hasSize(24).startsWith(new ClaudeV1CompletionChoices.Choice(
+                    "Choose section: Section 1", "selectProfile", "profile-1", null, null));
+            var labels = new java.util.LinkedHashSet<String>();
+            for (int number = 1; number <= first.count(); number++) {
+                var page = ClaudeV1CompletionChoices.page(result, "en", number);
+                assertThat(page.choices()).hasSize(number == 3 ? 12 : 24);
+                page.choices().forEach(choice -> assertThat(labels.add(choice.label())).isTrue());
+            }
+            assertThat(labels).hasSize(60).contains("Choose section: Section 30", "Try assessment directly: Exam 30");
+            return null;
+        });
+        assertThat(ClaudeV1CompletionChoices.published(result, "en")).isEmpty();
+        assertThatThrownBy(() -> ClaudeV1CompletionChoices.page(result, "en", 2))
+                .isInstanceOf(ClaudeV1McpContractAdapter.ToolInputException.class);
     }
 
     @Test

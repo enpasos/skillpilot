@@ -90,6 +90,10 @@ public class ClaudeV1McpContractAdapter {
     private static final String ARG_RATING = "rating";
     private static final String ARG_PASSED = "passed";
     private static final String ARG_CHOICE = "choice";
+    static final String ARG_COMPLETION_CHOICE_PAGE = "completionChoicePage";
+    private static final Map<String, Object> COMPLETION_CHOICE_PAGE_SCHEMA = Map.of(
+            "type", "integer", "minimum", 1, "maximum", Integer.MAX_VALUE,
+            "description", "The published completion choice page (default 1).");
     private static final String ARG_RECEIPT_CAPABILITY = "receiptCapability";
     static final String TOOL_CHOOSE_COMPLETION_ROUTE = "choose_skillpilot_completion_route";
 
@@ -179,7 +183,7 @@ public class ClaudeV1McpContractAdapter {
                     + "continue immediately with the returned active goal. Do not ask for another confirmation, "
                     + "mark the parked goal as mastered or expose identifiers, state revisions or plan mechanics.";
     private static final Map<String, Set<String>> ALLOWED_ARGUMENTS = Map.ofEntries(
-            Map.entry(ClaudeV1Contract.TOOL_GET_COACH_CONTEXT, Set.of(ARG_LANGUAGE)),
+            Map.entry(ClaudeV1Contract.TOOL_GET_COACH_CONTEXT, Set.of(ARG_LANGUAGE, ARG_COMPLETION_CHOICE_PAGE)),
             Map.entry(ClaudeV1Contract.TOOL_RESUME_LEARNING_PLAN, Set.of(
                     ARG_EXPECTED_STATE_VERSION, ARG_CLIENT_REQUEST_ID, ARG_LANGUAGE)),
             Map.entry(ClaudeV1Contract.TOOL_SWITCH_LEARNING_PLAN_SUBJECT, Set.of(
@@ -208,7 +212,7 @@ public class ClaudeV1McpContractAdapter {
                     ARG_CLIENT_REQUEST_ID, ARG_LANGUAGE)),
             Map.entry(ClaudeV1Contract.TOOL_GET_EXAM_EVALUATION, Set.of(ARG_GOAL_ID, ARG_LANGUAGE)),
             Map.entry(TOOL_CHOOSE_COMPLETION_ROUTE, Set.of(
-                    ARG_CHOICE, ARG_EXPECTED_STATE_VERSION, ARG_CLIENT_REQUEST_ID, ARG_LANGUAGE)),
+                    ARG_CHOICE, ARG_COMPLETION_CHOICE_PAGE, ARG_EXPECTED_STATE_VERSION, ARG_CLIENT_REQUEST_ID, ARG_LANGUAGE)),
             Map.entry(ClaudeV1CompletionContractRegistry.TOOL_CONFIRM, Set.of(ARG_RECEIPT_CAPABILITY, ARG_LANGUAGE)));
 
     private final CoachToolFacade coachToolFacade;
@@ -674,8 +678,10 @@ public class ClaudeV1McpContractAdapter {
                 learner already explicitly requested to start exactly one published assessment,
                 that request is selection consent: do not ask again. Otherwise offer a fitting
                 published choice and wait for the learner's explicit selection.
+                If the requested option is missing, inspect subsequent choicePagination pages via
+                get_skillpilot_coach_context with the published nextPage as completionChoicePage.
                 Then call choose_skillpilot_completion_route with that exact choice, the current
-                stateVersion and a fresh clientRequestId. The server binds direct assessments to
+                stateVersion and a fresh clientRequestId. On later pages include completionChoicePage. The server binds direct assessments to
                 this authenticated session; never invent bypass flags or another pass record.
                 A failed assessment writes no result; offer support, retry or pause and use an
                 accepted neutral navigation choice. Unsupported sessions pause and direct the
@@ -703,8 +709,12 @@ public class ClaudeV1McpContractAdapter {
                 "Loads the connected learner's current learning context: today's additive workload "
                         + "across every current subject plan, curriculum, active goal, available next goals "
                         + "and progress. Call before coaching and after any conflict. "
-                        + "Reads only; it never changes learner state.",
-                objectSchema(List.of(), Map.of(ARG_LANGUAGE, languageSchema())),
+                        + "Reads only; it never changes learner state."
+                        + (completionEnabled ? " Copy a published nextPage or previousPage from choicePagination "
+                                + "as completionChoicePage to browse more choices." : ""),
+                objectSchema(List.of(), completionEnabled
+                        ? Map.of(ARG_LANGUAGE, languageSchema(), ARG_COMPLETION_CHOICE_PAGE, COMPLETION_CHOICE_PAGE_SCHEMA)
+                        : Map.of(ARG_LANGUAGE, languageSchema())),
                 true,
                 this::getCoachContext));
 
@@ -994,13 +1004,14 @@ public class ClaudeV1McpContractAdapter {
                     TOOL_CHOOSE_COMPLETION_ROUTE,
                     "Choose SkillPilot Completion Route",
                     "Accepts exactly one choice copied from the newest context.levelCompletion.choices "
-                            + "after the learner explicitly selects it. Chooses a current learning section, starts "
+                            + "after the learner explicitly selects it. Copy its published completionChoicePage when browsing later pages. Chooses a current learning section, starts "
                             + "its direct assessment in this authenticated session, requests support or "
                             + "voluntary learning, pauses neutrally, or returns to regular learning. "
                             + "Never send goal identifiers, prerequisite bypasses, answers, scores or failure status. "
                             + "Returns the authoritative successor context; does not itself write mastery.",
                     objectSchema(List.of(ARG_CHOICE, ARG_EXPECTED_STATE_VERSION, ARG_CLIENT_REQUEST_ID),
                             Map.of(ARG_CHOICE, Map.of("type", "string", "minLength", 1, "maxLength", 512),
+                                    ARG_COMPLETION_CHOICE_PAGE, COMPLETION_CHOICE_PAGE_SCHEMA,
                                     ARG_EXPECTED_STATE_VERSION, stateVersionSchema(),
                                     ARG_CLIENT_REQUEST_ID, clientRequestIdSchema(), ARG_LANGUAGE, languageSchema())),
                     false, this::chooseCompletionRoute));
@@ -1387,6 +1398,7 @@ public class ClaudeV1McpContractAdapter {
 
     private Map<String, Object> getCoachContext(String connectionId, Map<String, Object> arguments) {
         language(arguments);
+        int page = completionChoicePage(arguments);
         return sessionCoordinator.readForCoachContext(
                 connectionId,
                 ctx -> {
@@ -1409,9 +1421,7 @@ public class ClaudeV1McpContractAdapter {
                         return response;
                     }
                     Map<String, Object> response = new LinkedHashMap<>(contextProjector.projectContext(
-                        ctx.skillpilotId(),
-                        ctx.stateVersion(),
-                        ctx.communicationLocale()));
+                        ctx.skillpilotId(), ctx.stateVersion(), ctx.communicationLocale(), page));
                     // A fresh ordinary session may acknowledge the contract before choosing its
                     // first section. Cached old clients can ignore this offer and keep learning
                     // normally; only an active completion route requires the receipt to proceed.
@@ -1686,6 +1696,7 @@ public class ClaudeV1McpContractAdapter {
 
     private Map<String, Object> chooseCompletionRoute(String connectionId, Map<String, Object> arguments) {
         String choiceLabel = requiredString(arguments, ARG_CHOICE);
+        int page = completionChoicePage(arguments);
         if (choiceLabel.length() > 512) throw new ToolInputException("choice exceeds the permitted length.");
         long expectedStateVersion = requiredStateVersion(arguments);
         String clientRequestId = requiredClientRequestId(arguments);
@@ -1701,8 +1712,8 @@ public class ClaudeV1McpContractAdapter {
                     if (completion == null || completion.learnerRevision() != ctx.stateVersion()) {
                         throw new ToolConflictException("Reload the current completion choices before selecting a route.");
                     }
-                    List<ClaudeV1CompletionChoices.Choice> matches = ClaudeV1CompletionChoices.published(
-                            completion, ctx.communicationLocale()).stream()
+                    List<ClaudeV1CompletionChoices.Choice> matches = ClaudeV1CompletionChoices.page(
+                            completion, ctx.communicationLocale(), page).choices().stream()
                             .filter(candidate -> candidate.label().equals(choiceLabel)).toList();
                     if (matches.size() != 1) {
                         throw new ToolInputException("choice must exactly match one currently published completion choice.");
@@ -2874,6 +2885,21 @@ public class ClaudeV1McpContractAdapter {
             throw new ToolInputException(key + " must be a finite number.");
         }
         return value;
+    }
+
+    private int completionChoicePage(Map<String, Object> arguments) {
+        if (!arguments.containsKey(ARG_COMPLETION_CHOICE_PAGE)) return 1;
+        if (!completionEnabled) throw new ToolInputException("Completion choice pages are disabled.");
+        Object raw = arguments.get(ARG_COMPLETION_CHOICE_PAGE);
+        if (raw instanceof Number number) {
+            try {
+                int page = new BigDecimal(number.toString()).intValueExact();
+                if (page > 0) return page;
+            } catch (NumberFormatException | ArithmeticException ignored) {
+                // Fractional and oversized values cannot identify a page.
+            }
+        }
+        throw new ToolInputException("completionChoicePage must be a positive integer.");
     }
 
     private long requiredStateVersion(Map<String, Object> arguments) {

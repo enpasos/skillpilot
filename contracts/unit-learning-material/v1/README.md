@@ -1,0 +1,5 @@
+# Unit learning material, version 1
+
+The repository catalog in `curricula/unit-learning-materials.json` lists the materials loaded by the map and the backend. Each current material declares `"schemaVersion": 1` and conforms to [material.schema.json](material.schema.json). Its unit identifies the landscape, composition node and applicable views. An introduction may stand alone. Exercises are bilingual and attach to individual goals. Optional localized `evidenceCriteria` describe the observable work for that exercise. The normal learning or exam workflow records the learner's result.
+
+The format version applies to the document envelope. Task, rubric, practical exercise and planning release fingerprints retain their own bindings. Consumers read earlier documents without the version marker as version 1 and reject unknown versions. When authoring a new file, add it to the catalog and run `python scripts/validate_schemas.py` from the repository root. Units with an assessment contract also run `npm --prefix app run check:learning-unit-assessments` against their actual curriculum views.

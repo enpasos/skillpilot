@@ -715,8 +715,31 @@ public class LearnerService {
     }
 
     boolean isUnitAssignmentSubjectSelected(Learner learner, String landscapeId) {
-        return landscapeId != null && (landscapeId.equals(learner.getSelectedCurriculum())
-                || isSelectedInPersonalCurriculum(parsePersonalCurriculumConfig(learner.getPersonalCurriculum()).get(landscapeId)));
+        if (landscapeId == null) return false;
+        String rootId = learner.getSelectedCurriculum();
+        if (rootId == null || rootId.isBlank()) return false;
+        if (landscapeId.equals(rootId)) return true;
+        var config = parsePersonalCurriculumConfig(learner.getPersonalCurriculum());
+        if (isSelectedInPersonalCurriculum(config.get(landscapeId))) return true;
+        SkillLandscape root = landscapeService.getById(rootId);
+        if (!config.isEmpty() || root == null || root.getPersonalizationFlow() != null) return false;
+        // Older programmes select their contained modules with the root itself.
+        // A requires edge alone never enrolls an independent subject.
+        Map<String, LearningGoal> graph = new LinkedHashMap<>();
+        for (SkillLandscape landscape : Optional.ofNullable(landscapeService.getClosure(rootId)).orElse(List.of())) {
+            landscape.getGoals().forEach(goal -> graph.put(goal.getId(), goal));
+        }
+        root.getGoals().forEach(goal -> graph.putIfAbsent(goal.getId(), goal));
+        ArrayDeque<String> pending = new ArrayDeque<>(root.getGoals().stream().map(LearningGoal::getId).toList());
+        Set<String> visited = new HashSet<>();
+        while (!pending.isEmpty()) {
+            String id = resolveGoalRef(pending.removeFirst(), graph);
+            if (id == null || !visited.add(id)) continue;
+            if (landscapeId.equals(landscapeService.getLandscapeIdForGoal(id))) return true;
+            LearningGoal goal = graph.get(id);
+            if (goal != null && goal.getContains() != null) pending.addAll(goal.getContains());
+        }
+        return false;
     }
 
     @Transactional(readOnly = true)
@@ -1130,7 +1153,7 @@ public class LearnerService {
         return new CompletionSnapshot(response, compiled, evaluation);
     }
 
-    /** In the personal overview, only a followed, current assignment supplies additional voluntary goals. */
+    /** A current completed assignment retains its voluntary goals when its obligation is paused. */
     private Set<String> completedAssignmentPracticeGoals(Learner learner, GoalProjection projection,
             Map<String, LearningGoal> graph, List<LearnerLearningPlan> followed) {
         if (followed.isEmpty() || unitLearningMaterialService == null || verifiedExamPassService == null) return Set.of();
@@ -1142,7 +1165,7 @@ public class LearnerService {
             List<LearnerLearningPlanApi.Block> blocks;
             try { blocks = readPortableLearningPlanBlocks(plan); }
             catch (IllegalStateException invalidCapture) { continue; }
-            var assignments = blocks.stream().filter(block -> block.isActive() && block.unitAssignment() != null).toList();
+            var assignments = blocks.stream().filter(block -> block.unitAssignment() != null).toList();
             var bindings = assignments.stream().map(block -> block.unitAssignment().sectionGoalId()).distinct()
                     .flatMap(id -> unitLearningMaterialService.assessmentBindingForReference(id).stream())
                     .filter(binding -> landscape.equals(binding.landscapeId()) && projection.compositionViewIds().contains(binding.viewId()))
@@ -4079,7 +4102,7 @@ public class LearnerService {
                 Instant.now());
     }
 
-    /** Subjects with targets in the committed personal curriculum, independent of dated plans. */
+    /** Explicitly selected subjects with targets; foreign prerequisites do not select another subject. */
     @Transactional(readOnly = true)
     public List<String> getPersonalCurriculumSubjectIds(String skillpilotId) {
         Learner learner = getLearner(skillpilotId);
@@ -4092,7 +4115,9 @@ public class LearnerService {
         return projection.targetGoalIds().stream()
                 .filter(id -> isCountedAtomicGoal(projection.structuralGoals().get(id)))
                 .map(landscapeService::getLandscapeIdForGoal)
-                .filter(Objects::nonNull).distinct().sorted().toList();
+                .filter(Objects::nonNull).distinct()
+                .filter(id -> isUnitAssignmentSubjectSelected(learner, id))
+                .sorted().toList();
     }
 
     /**
@@ -4135,12 +4160,24 @@ public class LearnerService {
     @Transactional(readOnly = true)
     public List<FrontierGoal> getPersonalCurriculumSubjectFrontier(String skillpilotId, String landscapeId) {
         LearnerPlanningScopeResponse scope = getPlanningScope(skillpilotId, landscapeId);
-        Set<String> openTargets = Set.copyOf(scope.openAtomicGoalIds());
-        if (openTargets.isEmpty()) {
-            return List.of();
+        Learner learner = getLearner(skillpilotId);
+        GoalProjection projection = getGoalProjection(learner.getSelectedCurriculum(), learner.getPersonalCurriculum());
+        Set<String> subjectAtoms = new LinkedHashSet<>(scope.scopeAtomicGoalIds());
+        if (projection.learningScope() != null) {
+            Set<String> subjectSeeds = projection.learningScope().seedAtomicGoalIds().stream()
+                    .filter(id -> landscapeId.equals(landscapeService.getLandscapeIdForGoal(id)))
+                    .collect(Collectors.toCollection(LinkedHashSet::new));
+            if (subjectSeeds.equals(projection.learningScope().seedAtomicGoalIds())) {
+                subjectAtoms = projection.learningScope().learningAtomicGoalIds();
+            } else if (!subjectSeeds.isEmpty()) {
+                // Other subjects, including legacy runtime support landscapes, may
+                // have their own seeds. They cannot widen this subject's learning path.
+                subjectAtoms = PersonalCurriculumLearningScope.compile(
+                        projection.canonicalPrerequisiteGoals(), subjectSeeds).learningAtomicGoalIds();
+            }
         }
-        return getUncompactedRichFrontierForFocus(skillpilotId, scope.scopeAtomicGoalIds()).stream()
-                .filter(goal -> "atomic".equals(goal.type()) && openTargets.contains(goal.id()))
+        return getUncompactedRichFrontierForFocus(skillpilotId, List.copyOf(subjectAtoms)).stream()
+                .filter(goal -> "atomic".equals(goal.type()))
                 .toList();
     }
 
@@ -4157,6 +4194,9 @@ public class LearnerService {
             String landscapeId,
             List<LearnerLearningPlanApi.Block> storedBlocks) {
         try {
+            // A retained plan for a deselected subject is history, even when
+            // some of its atoms remain necessary foundations of another subject.
+            if (!isUnitAssignmentSubjectSelected(getLearner(skillpilotId), landscapeId)) return false;
             LearnerPlanningScopeResponse scope = getPlanningScope(skillpilotId, landscapeId);
             if (!Objects.equals(capturedCurriculumId, scope.curriculumId())
                     || !Objects.equals(landscapeId, scope.landscapeId())) {
@@ -4686,7 +4726,7 @@ public class LearnerService {
                 : (english ? "Open prerequisites: " : "Offene Voraussetzungen: ") + String.join(", ", names);
     }
 
-    /** Null means ordinary free learning; an empty set means a deliberately paused plan. */
+    /** Null means ordinary learning; an empty set retains a paused individual plan or exam scope. */
     private Set<String> followedLearningScopeIds(Learner learner, GoalProjection projection,
             List<String> prospectiveFocusIds) {
         return followedLearningScopeIds(learner, projection, prospectiveFocusIds, currentFollowedLearningPlans(learner));
@@ -4733,7 +4773,7 @@ public class LearnerService {
                     hasExam = true;
                     scope.goalIds().stream().filter(projection.targetGoalIds()::contains).forEach(atoms::add);
                 } else if (!scope.goalIds().isEmpty() || blocks.stream().anyMatch(block ->
-                        block.isActive() && block.unitAssignment() != null)) ordinaryLearning = true;
+                        block.unitAssignment() != null)) ordinaryLearning = true;
             } catch (ResponseStatusException exception) {
                 if (exception.getStatusCode().is5xxServerError()) throw exception;
                 hasExam |= explicitExam;

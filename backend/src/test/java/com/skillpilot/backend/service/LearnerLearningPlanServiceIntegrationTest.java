@@ -100,6 +100,8 @@ class LearnerLearningPlanServiceIntegrationTest {
                 landscapeService,
                 Clock.fixed(TODAY.atStartOfDay(zone).toInstant(), zone));
         when(learnerService.getLearner(LEARNER_ID)).thenReturn(learner);
+        when(learnerService.isUnitAssignmentSubjectSelected(learner, LANDSCAPE_ID)).thenReturn(true);
+        when(learnerService.isUnitAssignmentSubjectSelected(learner, PHYSICS_LANDSCAPE_ID)).thenReturn(true);
         when(learnerService.getMastery(LEARNER_ID)).thenReturn(Map.of());
         when(learnerService.getPlanningScope(LEARNER_ID, LANDSCAPE_ID))
                 .thenReturn(scope(List.of("atom-a", "atom-b", "atom-c"), List.of("atom-a", "atom-b")));
@@ -312,6 +314,7 @@ class LearnerLearningPlanServiceIntegrationTest {
     void overlappingGoalsAcrossSubjectPlansCountOnceAtTheirEarliestScheduledDate() {
         String extension = "math-extension";
         when(landscapeService.getById(extension)).thenReturn(landscape(extension, "Mathematik"));
+        when(learnerService.isUnitAssignmentSubjectSelected(learner, extension)).thenReturn(true);
         when(learnerService.getPlanningScope(LEARNER_ID, extension))
                 .thenReturn(scopeFor(extension, List.of("atom-a", "atom-b"), List.of("atom-a", "atom-b")));
         when(learnerService.learningPlanFingerprint(eq(LEARNER_ID), eq(extension), any())).thenReturn("extension");
@@ -404,6 +407,7 @@ class LearnerLearningPlanServiceIntegrationTest {
     void mergedSubjectAdvanceWorkPreventsAutomaticExtraWorkFromAnIncompletePartPlan() {
         String extension = "math-extension";
         when(landscapeService.getById(extension)).thenReturn(landscape(extension, "Mathematik"));
+        when(learnerService.isUnitAssignmentSubjectSelected(learner, extension)).thenReturn(true);
         when(learnerService.getPlanningScope(LEARNER_ID, extension))
                 .thenReturn(scopeFor(extension, List.of("atom-b"), List.of("atom-b")));
         when(learnerService.learningPlanFingerprint(eq(LEARNER_ID), eq(extension), any()))
@@ -2177,6 +2181,7 @@ class LearnerLearningPlanServiceIntegrationTest {
     @Test
     void severalPlansOfTheSameSubjectMergeIntoOneBalanceWithoutDoubleCounting() {
         String secondMathLandscape = "math-advanced";
+        when(learnerService.isUnitAssignmentSubjectSelected(learner, secondMathLandscape)).thenReturn(true);
         when(learnerService.getPlanningScope(LEARNER_ID, secondMathLandscape))
                 .thenReturn(scopeFor(secondMathLandscape,
                         List.of("atom-m1", "atom-m2"), List.of("atom-m1", "atom-m2")));
@@ -2253,6 +2258,7 @@ class LearnerLearningPlanServiceIntegrationTest {
     @Test
     void mergedSubjectGaugeUsesEarliestDueDateOnceAndKeepsItsDailyScaleOnAFreeDay() {
         String secondMathLandscape = "math-advanced";
+        when(learnerService.isUnitAssignmentSubjectSelected(learner, secondMathLandscape)).thenReturn(true);
         when(learnerService.getPlanningScope(LEARNER_ID, secondMathLandscape))
                 .thenReturn(scopeFor(secondMathLandscape,
                         List.of("atom-a", "atom-m1"), List.of("atom-a", "atom-m1")));

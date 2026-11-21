@@ -961,6 +961,9 @@ jobs:
           python -B scripts/run_package_consumer_smoke.py --self-test
           SKILLPILOT_FULL_PACKAGE_CONFORMANCE=false \
             bash scripts/run_curriculum_release_model_conformance.sh
+      - name: Test unit learning material schema gate
+        working-directory: .
+        run: python -B scripts/test_unit_learning_material_schema.py -v
       - name: Test portable curriculum symlinks
         working-directory: .
         run: python -B scripts/test_validate_schemas_symlinks.py -v

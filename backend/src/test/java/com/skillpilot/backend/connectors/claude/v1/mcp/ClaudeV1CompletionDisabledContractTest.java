@@ -26,5 +26,8 @@ class ClaudeV1CompletionDisabledContractTest {
                 .containsExactlyInAnyOrderElementsOf(ClaudeV1Contract.ALL_TOOL_NAMES)
                 .doesNotContain(ClaudeV1CompletionContractRegistry.TOOL_CONFIRM,
                         ClaudeV1McpContractAdapter.TOOL_CHOOSE_COMPLETION_ROUTE);
+        var context = adapter.toolSpecifications().stream().map(specification -> specification.tool())
+                .filter(tool -> ClaudeV1Contract.TOOL_GET_COACH_CONTEXT.equals(tool.name())).findFirst().orElseThrow();
+        assertThat(context.inputSchema().toString()).doesNotContain("completionChoicePage");
     }
 }

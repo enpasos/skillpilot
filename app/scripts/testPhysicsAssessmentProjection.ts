@@ -6,7 +6,7 @@ import { tmpdir } from 'node:os'
 import { resolve } from 'node:path'
 
 import type { UiGoal } from '../src/goalTypes'
-import { normalizeLandscape } from '../src/hooks/useLandscapes'
+import { normalizeLandscape, prepareLandscapeEntries } from '../src/hooks/useLandscapes'
 import type { SkillLandscape } from '../src/landscapeTypes'
 import {
   collectCompositionProjectionRoleGoalIds,
@@ -18,9 +18,9 @@ import { goalMatchesFilters } from '../src/utils/goalFilters'
 import { normalizeLearnerProjectedEntries } from '../src/utils/learnerTreeProjection'
 import { buildVisibleChildrenMap } from '../src/utils/treeProjectionRuntime'
 import { buildApplicabilityCompilation } from './applicabilityCompiler'
-import { loadCurrentCurriculumCatalog } from './currentCurriculumCatalog'
+import { fingerprintCurrentCurriculumDocument, loadCurrentCurriculumCatalog } from './currentCurriculumCatalog'
 import { collectRenderedAtomicGoalIdsFromCompositionView, evaluateRouteProfile, createRouteProfiles } from './generateCurriculumQualityStatus'
-import { assessmentReviewRevisions } from './lib/learningUnitContracts'
+import { assessmentReviewRevisions, UnitGraph, type UnitGraphLandscape } from './lib/learningUnitContracts'
 import { liveVerificationInputs } from './lib/verificationInputSnapshot'
 import { checkUnitPlanningReleases, validateSectionAssessmentPolicy } from './checkUnitPlanningReleases'
 
@@ -109,10 +109,37 @@ const multiphaseGoal = '2b9e565f-d9b4-5e23-b5b7-b7977cecff06'
 assert.deepEqual(sectionPolicy.voluntaryAssessmentGoalIds, ['6ea3fb3c-abdc-568f-ab13-97c36dc274e4'])
 assert.deepEqual(sectionPolicy.additionalVoluntaryAssessmentGoalIdsByView, Object.fromEntries(
   [...e1Views.values()].filter(view => view.scope.courseProfile === 'LK').map(view => [view.viewId, [multiphaseGoal]])))
-function checkSectionPolicy(policy: typeof sectionPolicy, landscape = canonicalLandscape) {
-  validateSectionAssessmentPolicy({ ...e1Material, sectionAssessmentPolicy: policy }, landscape, e1Views)
+const currentCatalog = loadCurrentCurriculumCatalog(liveVerificationInputs).entries.map(row => row.landscape as SkillLandscape)
+const sectionGraph = new UnitGraph(currentCatalog as UnitGraphLandscape[])
+const projectionEntries = prepareLandscapeEntries(currentCatalog)
+function checkSectionPolicy(policy: typeof sectionPolicy, landscape?: SkillLandscape) {
+  const unit = { ...e1Material, sectionAssessmentPolicy: policy }
+  if (!landscape) return validateSectionAssessmentPolicy(unit, e1Views, sectionGraph, projectionEntries)
+  const catalog = currentCatalog.map(source => source.landscapeId === landscape.landscapeId ? landscape : source)
+  validateSectionAssessmentPolicy(unit, e1Views, new UnitGraph(catalog as UnitGraphLandscape[]), prepareLandscapeEntries(catalog))
 }
 checkSectionPolicy(sectionPolicy)
+assert.equal(e1Views.size, 6, 'All six contractual course and stage views must be validated')
+// A section also owes an assessment reached as a prerequisite of an offered target.
+const externalExamId = '22561c66-3957-5d55-b07a-25de1f359930'
+assert(canonicalLandscape.goals.find(goal => goal.id === externalExamId)?.examData)
+assert.throws(() => checkSectionPolicy(sectionPolicy, { ...canonicalLandscape, goals: canonicalLandscape.goals.map(goal =>
+  goal.id === contract.parts[0].goalId ? { ...goal, requires: [...goal.requires, externalExamId] } : goal) }),
+  (error: Error) => error.message.includes('Required section assessments differ') && error.message.includes(externalExamId))
+// A forgotten LK exception reproduces the fifth mandatory exam separately in each real LK view.
+for (const [viewId, additional] of Object.entries(sectionPolicy.additionalVoluntaryAssessmentGoalIdsByView)) {
+  const byView = { ...sectionPolicy.additionalVoluntaryAssessmentGoalIdsByView }
+  delete byView[viewId]
+  assert.throws(() => checkSectionPolicy({ ...sectionPolicy, additionalVoluntaryAssessmentGoalIdsByView: byView }),
+    (error: Error) => error.message.includes(viewId) && error.message.includes(`extra [${additional}]`))
+}
+assert.throws(() => checkSectionPolicy(undefined), /Required section assessments differ.*6ea3fb3c/)
+const absentPart = { ...contract.parts[0], goalId: 'unoffered-required-assessment' }
+const amendedParts = [...contract.parts, absentPart]
+assert.throws(() => validateSectionAssessmentPolicy({
+  ...e1Material, assessmentContract: { ...contract, parts: amendedParts },
+  sectionAssessmentPolicy: { ...sectionPolicy, requiredPartsFingerprint: fingerprintCurrentCurriculumDocument(amendedParts) },
+}, e1Views, sectionGraph, projectionEntries), /missing \[unoffered-required-assessment\]/)
 // A released E.2 exam is still outside this section, and the LK-only exam cannot be common to every view.
 for (const extra of ['unknown-goal', contract.parts[0].goalId, '4a2bf015-052b-4af0-aed7-324259fa1a8a',
   '22561c66-3957-5d55-b07a-25de1f359930', multiphaseGoal]) {
@@ -662,8 +689,6 @@ try {
 }
 const routeProfile = routeProfiles.find((profile) => profile.profileId === 'canonical-physics-sek1')
 assert(routeProfile, 'The actual Physics Sek-I route profile must remain configured.')
-const currentCatalog = loadCurrentCurriculumCatalog(liveVerificationInputs).entries
-  .map(entry => entry.landscape as SkillLandscape)
 const routeStatus = evaluateRouteProfile(canonicalLandscape, routeProfile, buildApplicabilityCompilation(), currentCatalog)
 const compositionRule = routeStatus.rules.find((rule) => rule.id === 'CQR-104')
 assert(compositionRule, 'The actual endpoint-composition rule must run over the current Physics views.')
