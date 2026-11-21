@@ -225,6 +225,10 @@ class PersonalCurriculumLearningScopeIntegrationTest {
         // unrelated atoms still cannot become an independent subject or root path.
         fixture.learner().setPersonalCurriculum("{}");
         when(fixture.landscapes().getClosure(ROOT)).thenAnswer(invocation -> List.copyOf(fixture.catalog()));
+        CompositionViewService views = (CompositionViewService) ReflectionTestUtils.getField(fixture.service(), "compositionViewService");
+        when(views.isAuthoritativeForLandscape(ROOT)).thenReturn(false);
+        when(views.findLearnerScopeView(eq(ROOT), anyMap())).thenReturn(null);
+        when(views.findDefaultView(ROOT)).thenReturn(null);
         assertThat(fixture.service().getPersonalCurriculumSubjectIds(LEARNER)).containsExactly(ROOT);
         assertThat(fixture.service().getPlanningScope(LEARNER, "foreign-subject").scopeAtomicGoalIds()).contains(Q);
         assertThat(fixture.service().getPersonalCurriculumSubjectFrontier(LEARNER, ROOT))
