@@ -37,8 +37,9 @@ public final class UnitLearningMaterialService {
         public List<String> voluntaryAssessmentsFor(String view) {
             // A merged view contains the selected goals of each of its participating views.
             var ids = new LinkedHashSet<>(voluntaryAssessmentGoalIds);
-            var components = view.startsWith("merged:") ? view.substring(7).split("\\+", -1) : new String[]{view};
-            for (String component : components) ids.addAll(additionalVoluntaryAssessmentGoalIdsByView.getOrDefault(component, List.of()));
+            for (String component : viewComponents(view)) {
+                ids.addAll(additionalVoluntaryAssessmentGoalIdsByView.getOrDefault(component, List.of()));
+            }
             return List.copyOf(ids);
         }
     }
@@ -195,9 +196,13 @@ public final class UnitLearningMaterialService {
         }
     }
 
+    private static String[] viewComponents(String viewId) {
+        return viewId.startsWith("merged:") ? viewId.substring(7).split("\\+", -1) : new String[] {viewId};
+    }
+
     public Optional<Material> find(String landscapeId, String viewId, String compositionNodeId) {
         if (viewId == null || viewId.isBlank()) return Optional.empty();
-        String[] views = viewId.startsWith("merged:") ? viewId.substring(7).split("\\+", -1) : new String[] {viewId};
+        String[] views = viewComponents(viewId);
         Material selected = materials.get(new Key(landscapeId, views[0], compositionNodeId));
         for (String view : views) {
             if (selected == null || !selected.equals(materials.get(new Key(landscapeId, view, compositionNodeId)))) {

@@ -6,6 +6,7 @@ import { readFileSync, readdirSync, realpathSync } from 'node:fs'
 import { isAbsolute, resolve, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { collectCompositionProjectionRoleGoalIds, type CompositionView, type CompositionViewNode } from '../src/utils/authoring/compositionViewAuthoring'
+import { goalMatchesFilters } from '../src/utils/goalFilters'
 import type { LearningGoal, SkillLandscape } from '../src/landscapeTypes'
 import { fingerprintCurrentCurriculumDocument as digest, loadCurrentCurriculumCatalog } from './currentCurriculumCatalog'
 import { fingerprintSemanticKindSourceGoal } from './goalBookModel'
@@ -35,7 +36,9 @@ interface MaterialUnit {
   landscapeId: string
   compositionNodeId: string
   viewIds: string[]
-  assessmentContract?: { viewIds: string[]; parts: Part[]; contentGoalIds: string[]; planningCredits: Credit[] }
+  sectionAssessmentPolicy?: { unitContractRevision: string; requiredPartsFingerprint: string; voluntaryAssessmentGoalIds: string[];
+    additionalVoluntaryAssessmentGoalIdsByView?: Record<string, string[]> }
+  assessmentContract?: { revision?: string; viewIds: string[]; parts: Part[]; contentGoalIds: string[]; planningCredits: Credit[] }
 }
 
 const root = realpathSync(resolve(import.meta.dirname, '../..'))
@@ -148,8 +151,41 @@ function matchingStructures(nodes: CompositionViewNode[], id: string): Compositi
   return nodes.flatMap(node => node.kind !== 'structure' ? [] : node.id === id ? [node] : matchingStructures(node.children, id))
 }
 
+export function validateSectionAssessmentPolicy(unit: MaterialUnit, landscape: SkillLandscape, views: Map<string, CompositionView>): void {
+  const policy = unit.sectionAssessmentPolicy
+  if (!policy) return
+  const contract = unit.assessmentContract
+  assert(contract?.revision && contract.revision === policy.unitContractRevision && digest(contract.parts) === policy.requiredPartsFingerprint,
+    'Section assessment policy requires the current unit contract and its exact required parts')
+  const byView = policy.additionalVoluntaryAssessmentGoalIdsByView ?? {}
+  assert(Object.keys(byView).every(id => contract.viewIds.includes(id)), 'Additional voluntary assessments require a contract view')
+  const goals = new Map(landscape.goals.map(goal => [goal.id, goal]))
+  const required = new Set(contract.parts.map(part => part.goalId))
+  for (const id of contract.viewIds) {
+    const view = views.get(id)
+    assert(unit.viewIds.includes(id) && view?.landscapeId === unit.landscapeId && landscape.landscapeId === unit.landscapeId,
+      'Section assessment policy references an unknown view or landscape')
+    const nodes = matchingStructures(view.rootNodes, unit.compositionNodeId)
+    assert.equal(nodes.length, 1, 'Voluntary assessments need an unambiguous unit in ' + id)
+    const { targetGoalIds } = collectCompositionProjectionRoleGoalIds(nodes, goals)
+    if (Object.hasOwn(byView, id)) uniqueIds(byView[id], 'View-specific voluntary assessments')
+    const optional = [...policy.voluntaryAssessmentGoalIds, ...(byView[id] ?? [])]
+    if (optional.length) uniqueIds(optional, 'Voluntary assessments in ' + id)
+    const filters = [view.scope.courseProfile, view.scope.jurisdiction, view.scope.durationModel].filter((value): value is string => !!value)
+    for (const goalId of optional) {
+      const goal = goals.get(goalId)
+      assert(goal && !goal.contains.length && goal.examData?.reviewStatus === 'released' && !required.has(goalId)
+        && targetGoalIds.has(goalId) && goalMatchesFilters({ tags: goal.tags ?? [], applicability: goal.applicability }, filters),
+      'Voluntary goal must be a released additional assessment within the selected unit and course: ' + id + '/' + goalId)
+    }
+  }
+}
+
 function loadReleasedViews(units: MaterialUnit[]): Map<string, CompositionView> {
-  const selected = new Set(units.flatMap(unit => (unit.assessmentContract?.planningCredits ?? []).flatMap(credit => credit.release.viewIds)))
+  const selected = new Set(units.flatMap(unit => [
+    ...(unit.sectionAssessmentPolicy ? unit.assessmentContract?.viewIds ?? [] : []),
+    ...(unit.assessmentContract?.planningCredits ?? []).flatMap(credit => credit.release.viewIds),
+  ]))
   const directory = resolve(root, 'curricula/DE/Gymnasium/composition-views')
   const views = new Map<string, CompositionView>()
   if (!selected.size) return views
@@ -174,9 +210,12 @@ export function checkUnitPlanningReleases(): string[] {
   const active = new Set<string>()
   for (const unit of units) {
     const credits = unit.assessmentContract?.planningCredits ?? []
-    if (!credits.length) continue
+    if (!credits.length && !unit.sectionAssessmentPolicy) continue
     const entry = entries.find(row => row.landscape.landscapeId === unit.landscapeId)
     assert(entry, 'No canonical source for the release owner ' + unit.landscapeId)
+    const landscape = entry.landscape as unknown as SkillLandscape
+    validateSectionAssessmentPolicy(unit, landscape, views)
+    if (!credits.length) continue
     const rollout = rollouts.find(row => row.landscapePath === entry.path)
     assert(rollout, 'Missing current performance evidence for ' + entry.path)
     const configs: ProfileConfig[] = rollout.positiveEvidenceConfigPaths.map(readJson)
@@ -202,7 +241,7 @@ export function checkUnitPlanningReleases(): string[] {
         assert([...credit.requiredPartIds, ...credit.goalIds].every(id => targetGoalIds.has(id)),
           'Release requires assessments and goals outside the target unit in ' + viewId)
       }
-      validatePlanningRelease(unit, credit, { landscape: entry.landscape as unknown as SkillLandscape, graph,
+      validatePlanningRelease(unit, credit, { landscape, graph,
         approved: inventory.reviewedPlanningReleases ?? {}, currentProfile,
         reviewHash: path => 'sha256:' + createHash('sha256').update(readBytes(path)).digest('hex') })
       assert(!active.has(credit.release.fingerprint), 'Duplicate planning release')

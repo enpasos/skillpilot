@@ -22,7 +22,7 @@ import { loadCurrentCurriculumCatalog } from './currentCurriculumCatalog'
 import { collectRenderedAtomicGoalIdsFromCompositionView, evaluateRouteProfile, createRouteProfiles } from './generateCurriculumQualityStatus'
 import { assessmentReviewRevisions } from './lib/learningUnitContracts'
 import { liveVerificationInputs } from './lib/verificationInputSnapshot'
-import { checkUnitPlanningReleases } from './checkUnitPlanningReleases'
+import { checkUnitPlanningReleases, validateSectionAssessmentPolicy } from './checkUnitPlanningReleases'
 
 const routeProfiles = createRouteProfiles()
 const root = resolve(import.meta.dirname, '../..')
@@ -98,6 +98,31 @@ const e1Contracts = materialFiles.map(path => readRepoJson(`curricula/${path}`).
 assert.equal(e1Contracts.length, 1)
 const contract = e1Contracts[0].assessmentContract
 assert.equal(contract.revision, '2026-11-20-e1-v2')
+const e1Material = e1Contracts[0]
+const e1Views = new Map<string, CompositionView>()
+for (const file of readdirSync(viewDirectory).filter(path => path.endsWith('.view.json'))) {
+  const view = JSON.parse(readFileSync(resolve(viewDirectory, file), 'utf8')) as CompositionView
+  if (contract.viewIds.includes(view.viewId)) e1Views.set(view.viewId, view)
+}
+const sectionPolicy = e1Material.sectionAssessmentPolicy
+const multiphaseGoal = '2b9e565f-d9b4-5e23-b5b7-b7977cecff06'
+assert.deepEqual(sectionPolicy.voluntaryAssessmentGoalIds, ['6ea3fb3c-abdc-568f-ab13-97c36dc274e4'])
+assert.deepEqual(sectionPolicy.additionalVoluntaryAssessmentGoalIdsByView, Object.fromEntries(
+  [...e1Views.values()].filter(view => view.scope.courseProfile === 'LK').map(view => [view.viewId, [multiphaseGoal]])))
+function checkSectionPolicy(policy: typeof sectionPolicy, landscape = canonicalLandscape) {
+  validateSectionAssessmentPolicy({ ...e1Material, sectionAssessmentPolicy: policy }, landscape, e1Views)
+}
+checkSectionPolicy(sectionPolicy)
+// A released E.2 exam is still outside this section, and the LK-only exam cannot be common to every view.
+for (const extra of ['unknown-goal', contract.parts[0].goalId, '4a2bf015-052b-4af0-aed7-324259fa1a8a',
+  '22561c66-3957-5d55-b07a-25de1f359930', multiphaseGoal]) {
+  assert.throws(() => checkSectionPolicy({ ...sectionPolicy, voluntaryAssessmentGoalIds: [extra] }), /released additional assessment/)
+}
+assert.throws(() => checkSectionPolicy({ ...sectionPolicy, additionalVoluntaryAssessmentGoalIdsByView: { 'outside-view': [multiphaseGoal] } }), /contract view/)
+assert.throws(() => checkSectionPolicy({ ...sectionPolicy, requiredPartsFingerprint: 'stale' }), /current unit contract/)
+assert.throws(() => checkSectionPolicy(sectionPolicy, { ...canonicalLandscape, goals: canonicalLandscape.goals.map(goal =>
+  goal.id === multiphaseGoal ? { ...goal, examData: { ...goal.examData!, reviewStatus: 'draft' } } : goal) }), /released additional assessment/)
+
 const creditedGoalIds = [...hesseChildAssessments.values()].map(spec => spec.coverage)
 assert.deepEqual(e1Scope.childPlanningGoalIds, creditedGoalIds)
 assert.deepEqual(e1Scope.unitPlanningGoalIds, [])

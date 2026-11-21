@@ -65,6 +65,7 @@ class ClaudeV1CompletionRouteIntegrationTest {
     @Autowired com.skillpilot.backend.connectors.claude.v1.session.ClaudeV1SessionTokenCodec sessionTokens;
     @Autowired LearnerService learners;
     @Autowired LearnerLearningPlanService learningPlans;
+    @Autowired com.skillpilot.backend.service.CompositionViewService compositionViews;
     @Autowired com.skillpilot.backend.repository.LearnerLearningPlanRepository storedPlans;
     @Autowired com.skillpilot.backend.landscape.LandscapeService landscapeDefinitions;
     @Autowired LearnerRepository learnerRepository;
@@ -208,9 +209,10 @@ class ClaudeV1CompletionRouteIntegrationTest {
         learner.setFollowLearningPlans(false);
         learner.setUseAssessmentShortcuts(false);
         learnerRepository.saveAndFlush(learner);
-        String profile = course.toLowerCase(java.util.Locale.ROOT);
-        String view = "SekII".equals(stage) ? "de-he-gym-sekii-physics-" + profile
-                : "de-he-gym-physics-" + profile + (duration == null ? "" : "-" + duration.toLowerCase(java.util.Locale.ROOT));
+        var requested = new java.util.HashMap<>(Map.of("schoolForm", "Gymnasium", "jurisdiction", "DE-HE",
+                "stage", stage, "courseProfile", course));
+        if (duration != null) requested.put("durationModel", duration);
+        String view = (String) compositionViews.findLearnerScopeView("7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a", requested).get("viewId");
         String unitFocus = "composition:" + view + ":structure:physics-e1-motion";
         learners.setPlannedGoals(learnerId, java.util.Set.of(unitFocus));
         return unitFocus;
@@ -1078,11 +1080,11 @@ class ClaudeV1CompletionRouteIntegrationTest {
     }
 
     @ParameterizedTest
-    @CsvSource({"G8,GK", "G9,GK", "G8,LK", "G9,LK"})
+    @CsvSource({"G8,GK", "G9,GK", "G8,LK", "G9,LK", "G9,GK+LK"})
     void optionalSectionExamCanBeChosenAndPassedWithoutCompletingAUnitPart(String duration, String course) throws Exception {
         String section = selectHessianMotionUnit(duration, "SekII", course);
         String profile = "automatic:" + section;
-        boolean advanced = "LK".equals(course);
+        boolean advanced = !"GK".equals(course);
         String extra = advanced ? MULTIPHASE_EXTRA : WURF_EXTRA;
         var sections = learners.getLearnerState(learnerId).levelCompletion().profileOptions();
         assertThat(sections).filteredOn(option -> profile.equals(option.profileId())).singleElement().satisfies(option -> {
@@ -1124,6 +1126,24 @@ class ClaudeV1CompletionRouteIntegrationTest {
             assertThat(ordinary.assessments()).allMatch(item -> item.voluntary() == null);
         } finally {
             org.springframework.test.util.ReflectionTestUtils.setField(learners, "unitAssessmentPilotEnabled", true);
+        }
+    }
+
+    @Test
+    void draftSupplementaryAssessmentCannotExemptASectionOrDisappearFromItsPlan() throws Exception {
+        String section = selectHessianMotionUnit("G8", "SekII", "LK");
+        String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
+        var exam = landscapeDefinitions.getGoalDefinition(MULTIPHASE_EXTRA).getExamData();
+        var reviewed = exam.getReviewStatus();
+        try {
+            exam.setReviewStatus("draft");
+            var option = learners.getLearnerState(learnerId).levelCompletion().profileOptions().stream()
+                    .filter(row -> row.profileId().equals("automatic:" + section)).findFirst().orElseThrow();
+            assertThat(option.assessments()).allMatch(item -> item.voluntary() == null);
+            assertThat(option.assessments()).noneMatch(item -> MULTIPHASE_EXTRA.equals(item.goalId()) && item.startAvailable());
+            assertThat(learners.resolveLearningPlanGoalIds(learnerId, physics, List.of(section))).contains(MULTIPHASE_EXTRA, WURF_EXTRA);
+        } finally {
+            exam.setReviewStatus(reviewed);
         }
     }
 
