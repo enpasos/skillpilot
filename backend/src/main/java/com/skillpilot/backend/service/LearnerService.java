@@ -4164,19 +4164,16 @@ public class LearnerService {
         GoalProjection projection = getGoalProjection(learner.getSelectedCurriculum(), learner.getPersonalCurriculum());
         Set<String> subjectAtoms = new LinkedHashSet<>(scope.scopeAtomicGoalIds());
         if (projection.learningScope() != null) {
-            List<String> selectedSubjects = getPersonalCurriculumSubjectIds(skillpilotId);
-            if (selectedSubjects.size() == 1 && selectedSubjects.contains(landscapeId)) {
+            Set<String> subjectSeeds = projection.learningScope().seedAtomicGoalIds().stream()
+                    .filter(id -> landscapeId.equals(landscapeService.getLandscapeIdForGoal(id)))
+                    .collect(Collectors.toCollection(LinkedHashSet::new));
+            if (subjectSeeds.equals(projection.learningScope().seedAtomicGoalIds())) {
                 subjectAtoms = projection.learningScope().learningAtomicGoalIds();
-            } else {
-                Set<String> subjectSeeds = projection.learningScope().seedAtomicGoalIds().stream()
-                        .filter(id -> landscapeId.equals(landscapeService.getLandscapeIdForGoal(id)))
-                        .collect(Collectors.toCollection(LinkedHashSet::new));
-                if (!subjectSeeds.isEmpty()) {
-                    // Close this subject's own reviewed seeds, not the full personal
-                    // curriculum: only its genuinely necessary foreign atoms belong here.
-                    subjectAtoms = PersonalCurriculumLearningScope.compile(
-                            projection.canonicalPrerequisiteGoals(), subjectSeeds).learningAtomicGoalIds();
-                }
+            } else if (!subjectSeeds.isEmpty()) {
+                // Other subjects, including legacy runtime support landscapes, may
+                // have their own seeds. They cannot widen this subject's learning path.
+                subjectAtoms = PersonalCurriculumLearningScope.compile(
+                        projection.canonicalPrerequisiteGoals(), subjectSeeds).learningAtomicGoalIds();
             }
         }
         return getUncompactedRichFrontierForFocus(skillpilotId, List.copyOf(subjectAtoms)).stream()

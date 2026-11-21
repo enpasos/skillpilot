@@ -221,6 +221,14 @@ class PersonalCurriculumLearningScopeIntegrationTest {
         assertThat(fixture.service().getPlanningScope(LEARNER, ROOT).openAtomicGoalIds()).isEmpty();
         assertThat(fixture.service().getPersonalCurriculumSubjectFrontier(LEARNER, ROOT))
                 .extracting(FrontierGoal::id).containsExactly(P).doesNotContain(Q);
+        // A flowless legacy root can load the complete support landscape. Its
+        // unrelated atoms still cannot become an independent subject or root path.
+        fixture.learner().setPersonalCurriculum("{}");
+        when(fixture.landscapes().getClosure(ROOT)).thenAnswer(invocation -> List.copyOf(fixture.catalog()));
+        assertThat(fixture.service().getPersonalCurriculumSubjectIds(LEARNER)).containsExactly(ROOT);
+        assertThat(fixture.service().getPlanningScope(LEARNER, "foreign-subject").scopeAtomicGoalIds()).contains(Q);
+        assertThat(fixture.service().getPersonalCurriculumSubjectFrontier(LEARNER, ROOT))
+                .extracting(FrontierGoal::id).containsExactly(P).doesNotContain(Q);
         assertNoMasteryWrites(fixture);
     }
 

@@ -4,7 +4,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.skillpilot.backend.api.*;
+import com.skillpilot.backend.api.CompletionAssessmentStart;
+import com.skillpilot.backend.api.LearnerLearningPlanApi;
+import com.skillpilot.backend.api.LevelCompletionActionRequest;
+import com.skillpilot.backend.api.OpenAiDeCoachStartRequest;
 import com.skillpilot.backend.connectors.claude.v1.ClaudeV1Contract;
 import com.skillpilot.backend.connectors.claude.v1.ClaudeV1TestProperties;
 import com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionContractRegistry;
@@ -24,8 +27,19 @@ import com.skillpilot.backend.repository.MasteryRepository;
 import io.modelcontextprotocol.common.McpTransportContext;
 import io.modelcontextprotocol.server.McpStatelessServerFeatures;
 import io.modelcontextprotocol.spec.McpSchema;
-import java.time.*;
-import java.util.*;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
+import java.util.UUID;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -118,6 +132,52 @@ class CoachSubjectContinuationIntegrationTest {
                 .contains(repository.findById(id).orElseThrow().getActiveGoalId());
     }
 
+    @ParameterizedTest
+    @CsvSource({"CLAUDE,false", "CLAUDE,true", "OPENAI,false", "OPENAI,true", "GEMINI,false", "GEMINI,true"})
+    void aRetainedPlanCannotReenrollADeselectedSubject(Provider provider, boolean pilot) throws Exception {
+        ReflectionTestUtils.setField(learners, "unitAssessmentPilotEnabled", pilot);
+        String id = learner("G9", "GK", true);
+        String goal = learners.getPersonalCurriculumSubjectFrontier(id, MATH).getFirst().id();
+        LocalDate day = LocalDate.now(ZoneId.of("Europe/Berlin"));
+        LocalDate monday = day.with(java.time.temporal.TemporalAdjusters.previousOrSame(DayOfWeek.MONDAY));
+        var block = new LearnerLearningPlanApi.Block("math", "learning", goal, "Mathematik", monday, monday.plusDays(6),
+                null, List.of(goal), List.of(goal), true);
+        var plan = plans.upsert(id, MATH, new LearnerLearningPlanApi.UpsertRequest(0L, "Mathematik", List.of(block)), day);
+        Learner learner = repository.findById(id).orElseThrow();
+        var config = json.readTree(learner.getPersonalCurriculum());
+        ((com.fasterxml.jackson.databind.node.ObjectNode) config).remove(MATH);
+        learner.setPersonalCurriculum(json.writeValueAsString(config));
+        repository.saveAndFlush(learner);
+        assertThat(plans.getPlan(id, MATH, day).stale()).isTrue();
+        assertThat(plans.getPlan(id, MATH, day).blocks()).isEqualTo(plan.blocks());
+        Session session = session(provider, id);
+        context(session).path("learningPlanToday").path("subjects").valueStream()
+                .filter(subject -> "Mathematik".equals(subject.path("subject").asText()))
+                .forEach(subject -> assertThat(subject.path("canContinue").asBoolean()).isFalse());
+        assertThat(call(session, "switch_skillpilot_learning_plan_subject", Map.of("subject", "Mathematik"), true).isError()).isTrue();
+        successful(session, "resume_skillpilot_learning_plan", Map.of(), true);
+        assertPhysicsFoundation(id, repository.findById(id).orElseThrow().getActiveGoalId());
+        assertThat(storedMastery(id)).isEmpty();
+    }
+
+    @ParameterizedTest
+    @CsvSource({"CLAUDE,false", "CLAUDE,true", "OPENAI,false", "OPENAI,true", "GEMINI,false", "GEMINI,true"})
+    void anotherDueOrderKeepsPriorityAfterPausingTheCompletedUnit(Provider provider, boolean pilot) throws Exception {
+        Unit unit = completedParts("G8", "GK", 4, true);
+        plans.setUnitAssignmentActivity(unit.learner(), unit.planId(),
+                new LearnerLearningPlanApi.UnitAssignmentActivity(unit.revision(), "unit", false));
+        ReflectionTestUtils.setField(learners, "unitAssessmentPilotEnabled", pilot);
+        var before = storedMastery(unit.learner());
+        var receipts = json.<JsonNode>valueToTree(passes.findForGoals(unit.learner(), unit.parts()));
+        Session session = session(provider, unit.learner());
+        assertThat(context(session).path("learningPlanToday").path("resumeAvailable").asBoolean()).isTrue();
+        successful(session, "resume_skillpilot_learning_plan", Map.of(), true);
+        assertThat(repository.findById(unit.learner()).orElseThrow().getActiveGoalId())
+                .isEqualTo("ae67bcf1-f3ee-50d6-9a12-25a159dff659");
+        assertThat(storedMastery(unit.learner())).isEqualTo(before);
+        assertThat(json.<JsonNode>valueToTree(passes.findForGoals(unit.learner(), unit.parts()))).isEqualTo(receipts);
+    }
+
     static Stream<Arguments> pausedCases() {
         return Arrays.stream(Provider.values()).flatMap(provider -> Stream.of(false, true).flatMap(pilot ->
                 Stream.of(2, 4).map(count -> Arguments.of(provider, pilot, count,
@@ -177,6 +237,9 @@ class CoachSubjectContinuationIntegrationTest {
         return l.getSkillpilotId();
     }
     private Unit completedParts(String duration, String course, int count) throws Exception {
+        return completedParts(duration, course, count, false);
+    }
+    private Unit completedParts(String duration, String course, int count, boolean separateWork) throws Exception {
         ReflectionTestUtils.setField(learners, "unitAssessmentPilotEnabled", true);
         String id = learner(duration, course, false); learners.setPreferences(id, null, false, false);
         String section = "composition:de-he-gym-sekii-physics-" + course.toLowerCase(Locale.ROOT) + ":structure:physics-e1-motion";
@@ -186,7 +249,13 @@ class CoachSubjectContinuationIntegrationTest {
         var day = LocalDate.now(ZoneId.of("Europe/Berlin"));
         var monday = day.with(java.time.temporal.TemporalAdjusters.previousOrSame(DayOfWeek.MONDAY));
         var block = new LearnerLearningPlanApi.Block("unit", "learning", null, "E.1", monday, monday.plusDays(6), null, parts, List.of(section), true, option.binding());
-        var plan = plans.upsert(id, PHYSICS, new LearnerLearningPlanApi.UpsertRequest(0L, "E.1", List.of(block)), day);
+        var blocks = new ArrayList<>(List.of(block));
+        if (separateWork) {
+            String diagrams = "ae67bcf1-f3ee-50d6-9a12-25a159dff659";
+            blocks.add(new LearnerLearningPlanApi.Block("individual", "learning", diagrams, "Eigener Diagrammauftrag",
+                    monday, monday.plusDays(6), null, List.of(diagrams), List.of(diagrams), true));
+        }
+        var plan = plans.upsert(id, PHYSICS, new LearnerLearningPlanApi.UpsertRequest(0L, "E.1", blocks), day);
         for (int index : List.of(2, 3, 0, 1).subList(0, count)) grade(id, section, parts.get(index));
         learners.chooseLevelCompletion(id, new LevelCompletionActionRequest("selectProfile", "automatic:" + section, null, null, version(id)));
         for (String action : List.of("pauseProfile", "leaveProfile")) learners.chooseLevelCompletion(id, new LevelCompletionActionRequest(action, null, null, null, version(id)));
