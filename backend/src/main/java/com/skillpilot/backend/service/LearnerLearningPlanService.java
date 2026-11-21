@@ -1853,7 +1853,7 @@ public class LearnerLearningPlanService {
             if ("exam".equals(scope.kind())) return firstScopeContinuationGoal(skillpilotId, landscapeId, blocks,
                     LocalDate.now(clock.withZone(PLAN_ZONE)), learners.getMastery(skillpilotId), true);
             boolean hasInactiveLearning = blocks.stream().anyMatch(block -> block != null
-                    && !block.isActive() && block.isAtomicLearning());
+                    && !block.isActive() && block.isAtomicLearning() && block.unitAssignment() == null);
             if (!hasInactiveLearning) return firstPersonalCurriculumGoal(skillpilotId, landscapeId, waived);
             if (blocks.stream().noneMatch(block -> block.isActive() && block.isAtomicLearning())) {
                 return Optional.empty();
@@ -1966,7 +1966,16 @@ public class LearnerLearningPlanService {
         Set<String> waived = fulfillment.waived(landscapeId);
         var scope = learningScope(skillpilotId, landscapeId, blocks, asOf, keepBinding);
         if (!"exam".equals(scope.kind())) {
-            if (blocks.stream().noneMatch(block -> block.isActive() && block.isAtomicLearning())) return Optional.empty();
+            if (blocks.stream().noneMatch(block -> block.isActive() && block.isAtomicLearning())) {
+                // Pausing an assessment obligation leaves ordinary subject learning
+                // available. Separately paused individual work remains excluded.
+                if (blocks.stream().noneMatch(block -> !block.isActive() && block.unitAssignment() != null)) {
+                    return Optional.empty();
+                }
+                Set<String> excluded = new HashSet<>(waived);
+                excluded.addAll(inactiveOnlyAtomicIds(blocks));
+                return firstPersonalCurriculumGoal(skillpilotId, landscapeId, excluded);
+            }
             LocalDate cutoff = periodEnd(learners.getLearner(skillpilotId).getLearningPlanPeriodBasis(), asOf);
             var due = firstEligibleDueGoal(skillpilotId, blocks, cutoff, mastery, waived);
             if (due.isPresent()) return due;
@@ -2005,7 +2014,8 @@ public class LearnerLearningPlanService {
     private static Set<String> inactiveOnlyAtomicIds(List<LearnerLearningPlanApi.Block> blocks) {
         LinkedHashSet<String> inactive = new LinkedHashSet<>();
         for (LearnerLearningPlanApi.Block block : blocks) {
-            if (!block.isActive() && block.isAtomicLearning() && block.atomicGoalIds() != null) {
+            if (!block.isActive() && block.isAtomicLearning() && block.unitAssignment() == null
+                    && block.atomicGoalIds() != null) {
                 inactive.addAll(block.atomicGoalIds());
             }
         }

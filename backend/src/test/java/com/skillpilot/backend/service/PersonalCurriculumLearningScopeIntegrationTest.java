@@ -209,6 +209,22 @@ class PersonalCurriculumLearningScopeIntegrationTest {
     }
 
     @Test
+    void aSelectedNonGymnasiumRootKeepsOnlyItsNecessaryForeignFoundationsWithoutSelectingTheirSubject() {
+        var fixture = fixture(landscape(ROOT, List.of(atom(T, "foreign-subject:" + P))), "LK", entry(T));
+        fixture.catalog().add(landscape("foreign-subject", List.of(atom(P), atom(Q))));
+        fixture.learner().setStrictMode(true);
+
+        assertThat(fixture.service().getPersonalCurriculumSubjectIds(LEARNER)).containsExactly(ROOT);
+        assertThat(fixture.service().getPersonalCurriculumSubjectFrontier(LEARNER, ROOT))
+                .extracting(FrontierGoal::id).containsExactly(P).doesNotContain(Q);
+        fixture.mastered(T);
+        assertThat(fixture.service().getPlanningScope(LEARNER, ROOT).openAtomicGoalIds()).isEmpty();
+        assertThat(fixture.service().getPersonalCurriculumSubjectFrontier(LEARNER, ROOT))
+                .extracting(FrontierGoal::id).containsExactly(P).doesNotContain(Q);
+        assertNoMasteryWrites(fixture);
+    }
+
+    @Test
     void learnerExportIncludesOnlyTheRequiredForeignAtomWithReadOnlyProvenanceMetadata() throws Exception {
         var fixture = fixture(landscape(ROOT, List.of(atom(T, "foreign-subject:" + P))), "LK", entry(T));
         SkillLandscape foreign = landscape("foreign-subject", List.of(atom(P), atom(Q, "unknown-unrelated")));
