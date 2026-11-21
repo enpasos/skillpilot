@@ -43,7 +43,12 @@ Der Einheitenauftrag A–D verbindet Modellwahl, Rechnung, Vorhersage und Begrü
 
 ## Zwei eigene Versuche
 
-Im Cockpit mit vier bestandenen Teilen unter **Freiwillig weiterlernen** das gewünschte Fachziel auswählen. Die Zielkarte und die grafische Lernkarte öffnen denselben Versuchsauftrag.
+Die vorbereiteten Profile beginnen mit vier bestandenen Teilen. Im Cockpit den **Lernplan** öffnen und unter **Freiwillig weiterlernen** eines der beiden Fachziele wählen. Auf der Zielkarte den Versuch unter **Üben** öffnen. Derselbe Versuch steht auch am Lernziel auf der grafischen Karte.
+
+| Bildungsgang | Grundkurs | Leistungskurs |
+| --- | --- | --- |
+| G8 | [G8 im GK](http://localhost:5217/auftraege/G8/ABCD) | [G8 im LK](http://localhost:5219/auftraege/G8/ABCD) |
+| G9 | [G9 im GK](http://localhost:5217/auftraege/G9/ABCD) | [G9 im LK](http://localhost:5219/auftraege/G9/ABCD) |
 
 - **Gleichförmige Bewegung und Geschwindigkeit.** Bei „Wie schnell bewegt sich dein Wagen?“ selbst messen, aus dem Zeit-Ort-Diagramm die Geschwindigkeit bestimmen und die Vorhersage mit der Messung an einer weiteren Marke vergleichen.
 - **Freier Fall experimentell untersuchen.** Bei „Wie groß ist die Fallbeschleunigung in deinem Versuch?“ eine eigene Aufnahme oder Sensormessung auswerten. Zu den Ergebnissen gehören ein Diagramm, die experimentell bestimmte Fallbeschleunigung, das zu den Achsen passende Zeit-Ort-Gesetz und der Vergleich mit 9,81 m/s². Der Kartenpfad führt über **Beschleunigte Bewegung und freier Fall**.
@@ -103,7 +108,7 @@ Im Cockpit den **Lernplan** öffnen. Unter **Gespeicherte Einheitenaufträge ver
 
 Im Cockpit **C und D bestanden** die **Einheitenprüfung** und darin **Für deinen Lernplan angerechnet (2)** aufklappen. Der Titel **Gleichmäßig beschleunigte Bewegung und Beschleunigung** öffnet die Zielkarte. Unter **Offene Voraussetzungen** stehen die noch ausstehenden Grundlagen. Der beschriftete Startknopf aktiviert im Standardmodus den Einzelfokus auf das gewählte Ziel. Bei eingeschaltetem strikten Modus nennt der Knopf die verfügbare Grundlage, bei der der Einzelweg beginnt. Im frischen Vergleichsprofil hat das Beschleunigungsziel 54 offene Voraussetzungen einschließlich ihrer Vorstufen. Fünf davon gehören zu den einzeln offenen E.1-Inhalten. Sie betreffen Durchschnitts- und Momentangeschwindigkeit, gleichförmige Bewegung, Bewegungsdiagramme, Messunsicherheiten und Fehlerarten. Unter den drei aktuell verfügbaren Grundlagen hat „Warum Mathematik? – Denken, Muster & Zukunft“ den kürzesten Weg zum Beschleunigungsziel (drei Voraussetzungsschritte). Die beiden anderen Angebote „Warum Physik? – Weltverständnis & Zukunft“ und „Warum Mathematik? – Entdecken, Muster & Alltag“ sind jeweils fünf Schritte entfernt. Keines der fünf E.1-Ziele ist hier bereits als nächster Schritt verfügbar. Das Cockpit zeigt nach dem Klick das aktive Ziel. Für einen eigenen Lernnachweis muss die Person das Ziel anschließend tatsächlich erarbeiten.
 
-Nach A–D kann man im Claude-Coach zum Beispiel „Ich möchte Modellierung und Idealisierung von Bewegungen selbst erarbeiten“ wählen. Nach der Bestätigung des Abschlussvertrags bietet der Server den Einzelfokus für dieses Ziel an. Der Coach kann ihn direkt starten. Für einen gewünschten Titel ohne angebotene Startaktion führt der Weg über **Cockpit → Lernplan → Freiwillig weiterlernen**. Ein ausdrücklicher Wechsel zu einem anderen Fach des persönlichen Curriculums ist auch bei einem offenen E.1-Auftrag möglich.
+Nach A–D kann man im Claude-Coach zum Beispiel „Ich möchte den freien Fall selbst untersuchen“ wählen. Für jedes der elf individuell offenen Fachziele des gewählten, abgeschlossenen Auftrags kann der Coach nach Bestätigung des Abschlussvertrags die angebotene Einzelbearbeitung starten. In der Zielkarte steht dieselbe Wahl. Im Standardmodus beginnt das gewählte Fachziel, im strikten Modus gegebenenfalls die am Knopf benannte offene Grundlage. Der Klick schreibt noch keinen eigenen Nachweis. Ein ausdrücklicher Wechsel zu einem anderen Fach des persönlichen Curriculums ist auch bei einem offenen E.1-Auftrag möglich.
 
 ## Den Elternpfad in Baum und Karte prüfen
 
