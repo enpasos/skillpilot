@@ -20,9 +20,9 @@ const section = (viewId: string, nodeId: string, landscapeId: string, title: str
 const root = (id: string, landscapeId: string, title: string, contains: string[]) => goal(id, landscapeId, contains, { title, tags: ['root'] })
 
 const query = new URLSearchParams(location.search)
-const mode = query.get('mode') ?? 'list'
-const physicsBoard = ['list', 'overview', 'wide'].includes(mode)
-const manyIds = Array.from({ length: mode === 'list' ? 205 : 17 }, (_, index) => `force-${String(index + 1).padStart(3, '0')}`)
+const mode = query.get('mode') ?? 'large'
+const physicsBoard = ['large', 'overview', 'wide'].includes(mode)
+const manyIds = Array.from({ length: mode === 'large' ? 205 : 17 }, (_, index) => `force-${String(index + 1).padStart(3, '0')}`)
 const mathTasks = Array.from({ length: 19 }, (_, i) => `quadratic-${i + 1}`)
 const goals: UiGoal[] = mode === 'math-assessments' ? [
   root('math-root', MATHEMATICS_LANDSCAPE_ID, 'Mathematik', ['composition:fx-math:structure:sek1']),

@@ -86,7 +86,10 @@ async function check(duration, part, lang, start, width = 1440, height = 900) {
       assert.equal(state.activeGoal.id ?? state.activeGoal.goalId, task.id)
     } else {
       const state = (await readApi(id, '/state')).levelCompletion
-      assert.equal(state.requiredAssessmentCount, 5)
+      assert.equal(state.requiredAssessmentCount, unitPartIds.length)
+      assert.deepEqual(new Set(state.assessments.filter(row => !row.voluntary).map(row => row.goalId)), new Set(unitPartIds))
+      const optional = state.assessments.filter(row => row.voluntary)
+      assert.deepEqual(optional.map(row => row.goalId), ['6ea3fb3c-abdc-568f-ab13-97c36dc274e4'])
       assert.equal(state.masteredAssessmentCount, 0)
       assert.equal(state.complete, false)
       assert.equal(state.directAssessmentRunning, false)
@@ -106,6 +109,14 @@ async function check(duration, part, lang, start, width = 1440, height = 900) {
       }
       await summary.getByText(lang === 'de' ? 'Für deinen Lernplan angerechnet (0)'
         : 'Credited toward your learning plan (0)', { exact: true }).waitFor()
+      const optionalDisclosure = panel.getByText(lang === 'de' ? 'Freiwillige Zusatzprüfungen' : 'Optional assessments', { exact: true })
+      await optionalDisclosure.click()
+      const optionalList = panel.getByRole('list', { name: lang === 'de' ? 'Freiwillige Zusatzprüfungen' : 'Optional assessments' })
+      await optionalList.getByText(optional[0].title[lang], { exact: true }).waitFor()
+      await optionalList.getByText(lang === 'de' ? 'Freiwillige Zusatzprüfung' : 'Optional assessment', { exact: true }).waitFor()
+      const optionalLink = await optionalList.getByRole('link').getAttribute('href')
+      assert.equal(new URL(optionalLink, site).searchParams.get('completionGoal'), optional[0].goalId)
+      await optionalDisclosure.click()
       const openCount = contract.contentGoalIds.length
       await summary.getByText(lang === 'de' ? `Einzeln noch nachzuweisen (${openCount})`
         : `Still awaiting individual evidence (${openCount})`, { exact: true }).waitFor()
@@ -115,31 +126,26 @@ async function check(duration, part, lang, start, width = 1440, height = 900) {
       const neighbor = map.locator('[data-entry-id="' + other.id + '"]').getByRole('button').first()
       const layoutError = map.getByTestId('learner-map-layout-error')
       try {
-        await neighbor.or(layoutError).first().waitFor()
+        await map.locator('.lum-flow--idle').or(layoutError).first().waitFor()
         if (await layoutError.isVisible()) {
-          console.log(duration, part, lang, await layoutError.getByRole('paragraph').innerText())
           await layoutError.getByRole('button', { name: lang === 'de' ? 'Erneut versuchen' : 'Try again' }).click()
+          await map.locator('.lum-flow--idle').waitFor()
         }
-        if (width >= 761 && width <= 1100) {
-          const list = map.getByTestId('learning-map-compact-list')
-          assert.equal(await list.isVisible(), width === 761, `personalized E.1 at ${width}×${height}`)
-          if (width === 761) {
-            await map.getByRole('button', { name: 'Grafische Karte anzeigen' }).click()
-            await list.waitFor({ state: 'hidden' })
-            await map.getByRole('button', { name: 'Zielliste anzeigen' }).click()
-            await list.waitFor()
-          } else {
-            // Virtualized nodes may be partially clipped; verify both complete cards at a readable scale.
-            await page.waitForFunction(ids => {
-              const surface = document.querySelector('.lum-flow')?.getBoundingClientRect()
-              if (!surface) return false
-              return ids.every(id => {
-                const rect = document.querySelector(`[data-entry-id="${id}"] .lum-node-main`)?.getBoundingClientRect()
-                return rect && rect.width >= 170 && rect.left >= surface.left && rect.right <= surface.right
-                  && rect.top >= surface.top && rect.bottom <= surface.bottom
-              })
-            }, [other.id, task.id])
-          }
+        assert.equal(await map.getByRole('button', { name: /Zielliste anzeigen|Grafische Karte anzeigen|Show goal list|Show graph/ }).count(), 0)
+        if (width < 1024) {
+          const title = lang === 'de' ? other.title : other.titleEn
+          await map.getByRole('textbox', { name: lang === 'de' ? 'In dieser Ebene suchen' : 'Search this level' }).fill(title)
+          await map.getByRole('option').filter({ hasText: title }).click()
+        } else if (width <= 1100) {
+          await page.waitForFunction(ids => {
+            const surface = document.querySelector('.lum-flow')?.getBoundingClientRect()
+            if (!surface) return false
+            return ids.every(id => {
+              const rect = document.querySelector(`[data-entry-id="${id}"] .lum-node-main`)?.getBoundingClientRect()
+              return rect && rect.width >= 170 && rect.left >= surface.left && rect.right <= surface.right
+                && rect.top >= surface.top && rect.bottom <= surface.bottom
+            })
+          }, [other.id, task.id])
         }
         await neighbor.click()
       } catch (error) {
@@ -217,16 +223,22 @@ async function checkEvidenceMap(page, duration) {
   await summary.locator('summary').first().click()
   await summary.getByText('Für deinen Lernplan angerechnet (2)', { exact: true }).click()
   const directChecks = summary.getByTestId('unit-assessment-direct-evidence')
-  const creditShields = summary.getByTestId('unit-assessment-credited-evidence')
+  const creditedChecks = summary.getByTestId('unit-assessment-credited-evidence')
   assert.equal(await directChecks.count(), 4)
-  assert.equal(await creditShields.count(), 2)
+  assert.equal(await creditedChecks.count(), 2)
   for (const check of await directChecks.all()) assert(await check.isVisible())
-  for (const shield of await creditShields.all()) assert(await shield.isVisible())
+  for (const check of await creditedChecks.all()) {
+    assert(await check.isVisible())
+    assert(await check.evaluate(node => node.classList.contains('lucide-check')))
+  }
+  const greenShape = await directChecks.first().evaluate(node => node.innerHTML)
+  assert.equal(await creditedChecks.first().evaluate(node => node.innerHTML), greenShape)
   await page.getByTestId('learner-main-content').getByTestId('learner-learning-map-open').click()
   const map = page.getByTestId('learner-learning-map-dialog')
   await map.getByRole('button', { name: 'In E.1 Bewegungen und ihre Beschreibung hineinzoomen', exact: true }).click()
-  const list = map.getByTestId('learning-map-compact-list')
-  await list.waitFor()
+  await map.locator('.lum-flow--idle').waitFor()
+  await map.getByRole('button', { name: 'Diese Ebene einpassen' }).click()
+  await map.locator('[data-entry-id="' + tasks.A.id + '"]').waitFor()
   const entry = id => map.locator('[data-entry-id="' + id + '"]')
   const direct = 'learning-map-direct-evidence'
   const credited = 'learning-map-credited-evidence'
@@ -241,12 +253,13 @@ async function checkEvidenceMap(page, duration) {
   }
   await map.getByRole('button', { name: 'In Beschleunigte Bewegung und freier Fall hineinzoomen', exact: true }).click()
   await map.locator('.lum-flow--idle').waitFor()
+  await map.getByRole('button', { name: 'Diese Ebene einpassen' }).click()
   await entry(scope.childAssessmentGoalIds[1]).getByTestId(direct).waitFor()
   for (const id of await markers(direct)) directGoals.add(id)
   for (const id of await markers(credited)) creditedGoals.add(id)
   assert.deepEqual(directGoals, new Set(unitPartIds))
   assert.deepEqual(creditedGoals, new Set(scope.childAssessmentGoalIds.flatMap(id => scope.childAssessmentRevisions[id].planningGoalIds)))
-  console.log(duration, 'E.1-Karte: vier direkte Prüfungsbelege, genau zwei Schilde, beide übrigen Beispielziele ohne Beleg OK')
+  console.log(duration, 'E.1-Karte: vier direkte Prüfungsbelege, genau zwei graue Häkchen, beide übrigen Beispielziele ohne Beleg OK')
 }
 
 async function checkUnitAssignments(duration) {
@@ -276,7 +289,11 @@ async function checkUnitAssignments(duration) {
       assert.equal(status.followLearningPlans, true)
       const subject = status.subjects.find(item => item.landscapeIds.includes(physics))
       assert.deepEqual(subject.unitAssignments.map(item => [item.passedParts, item.requiredParts, item.status]), [[passed, 4, passed === 4 ? 'completed' : 'active']])
+      const voluntary = normalPlan.getByText('Freiwillig weiterlernen', { exact: true })
+      const separateOrder = route === 'gemischt'
+      if (!separateOrder) assert.equal(status.resumeAvailable, false)
       if (passed < 4) {
+        assert.equal(await voluntary.count(), 0)
         assert.equal(plan.continueReason, 'unit-assessment-choice-required')
         assert.equal(plan.nextEligibleGoal.goalId, unitPartIds[0])
         await control.getByTestId('unit-assignment-try').click()
@@ -285,7 +302,17 @@ async function checkUnitAssignments(duration) {
         assert.equal(plan.continueReason, 'unit-assignment-completed')
         assert.equal(plan.nextEligibleGoal, null)
         assert((await control.getByTestId('unit-assignment-next').innerText()).includes('Kein weiterer Vorschlag'))
+        const beforeChoice = await readApi(id, '/mastery')
+        await voluntary.click()
+        const offered = normalPlan.getByRole('button', { name: 'Modellierung und Idealisierung von Bewegungen', exact: true })
+        assert(await offered.isVisible())
         await checkEvidenceMap(page, duration)
+        await page.keyboard.press('Escape')
+        await page.getByTestId('learner-learning-map-dialog').waitFor({ state: 'hidden' })
+        await offered.click()
+        await page.getByTestId('learner-current-goal').getByRole('heading', { name: 'Modellierung und Idealisierung von Bewegungen', exact: true }).first().waitFor()
+        assert.deepEqual(await readApi(id, '/mastery'), beforeChoice)
+        assert.equal((await readApi(id, '/state')).activeGoal ?? null, null)
       } else {
         assert.equal(plan.nextEligibleGoal.goalId, 'ae67bcf1-f3ee-50d6-9a12-25a159dff659')
         const banner = page.getByTestId('learner-active-goal-banner').filter({ hasText: 'Bewegungen mit Weg-Zeit-Diagrammen beschreiben' })
@@ -457,7 +484,7 @@ try {
     }
     for (const width of [761, 1024, 1100]) await check(duration, 'B', 'de', false, width)
     await check(duration, 'B', 'de', false, 1024, 650)
-    if (duration === 'G9') await check(duration, 'B', 'de', false, 390)
+    await check(duration, 'B', 'de', false, 390)
     await checkUnitAndChildCards(duration)
     await checkGradedComparison(duration)
     await checkUnitAssignments(duration)

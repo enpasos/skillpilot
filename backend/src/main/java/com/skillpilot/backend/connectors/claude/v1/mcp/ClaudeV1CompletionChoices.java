@@ -45,8 +45,7 @@ final class ClaudeV1CompletionChoices {
             for (var option : completion.profileOptions()) {
                 for (var assessment : automaticOverview ? List.<LevelCompletionResponse.Assessment>of() : option.assessments()) {
                     if (!assessment.mastered() && assessment.startAvailable()) {
-                        candidates.add(new Choice((en ? "Try assessment directly: " : "Prüfung direkt versuchen: ")
-                                + label(assessment.title(), language), "startAssessment", option.profileId(),
+                        candidates.add(new Choice(assessmentChoice(assessment, language), "startAssessment", option.profileId(),
                                 assessment.goalId(), null));
                     }
                 }
@@ -59,8 +58,7 @@ final class ClaudeV1CompletionChoices {
                 && !completion.directAssessmentRunning()) {
             for (var assessment : completion.assessments()) {
                 if (!assessment.mastered() && assessment.startAvailable()) {
-                    candidates.add(new Choice((en ? "Try assessment directly: " : "Prüfung direkt versuchen: ")
-                            + label(assessment.title(), language), "startAssessment", completion.profileId(),
+                    candidates.add(new Choice(assessmentChoice(assessment, language), "startAssessment", completion.profileId(),
                             assessment.goalId(), null));
                 }
             }
@@ -149,8 +147,7 @@ final class ClaudeV1CompletionChoices {
                 if (option.requiredAssessmentCount() != null) section.put("requiredAssessmentCount", option.requiredAssessmentCount());
                 if (!option.assessments().isEmpty()) {
                     section.put("assessments", option.assessments().stream().limit(MAX_CHOICES).map(assessment ->
-                            Map.of("title", label(assessment.title(), language), "mastered", assessment.mastered(),
-                                    "startAvailable", supported() && assessment.startAvailable())).toList());
+                            projectedAssessment(assessment, language)).toList());
                 }
                 return section;
             }).toList());
@@ -232,6 +229,23 @@ final class ClaudeV1CompletionChoices {
                     : "This is a read-only overview, not an active completion route; ordinary learning and focus choices remain available. ")
                 + "If the calculation is unavailable, do not invent remaining obligations or report failure. "
                 + "An endAssessment choice is neutral navigation: never transmit an unsuccessful attempt, score or chat text.");
+        return result;
+    }
+
+    private static String assessmentChoice(LevelCompletionResponse.Assessment assessment, String language) {
+        boolean english = "en".equals(language);
+        String prefix = Boolean.TRUE.equals(assessment.voluntary())
+                ? (english ? "Try optional assessment: " : "Freiwillige Zusatzprüfung versuchen: ")
+                : (english ? "Try assessment directly: " : "Prüfung direkt versuchen: ");
+        return prefix + label(assessment.title(), language);
+    }
+
+    private static Map<String, Object> projectedAssessment(LevelCompletionResponse.Assessment assessment, String language) {
+        var result = new LinkedHashMap<String, Object>();
+        result.put("title", label(assessment.title(), language));
+        result.put("mastered", assessment.mastered());
+        result.put("startAvailable", supported() && assessment.startAvailable());
+        if (Boolean.TRUE.equals(assessment.voluntary())) result.put("voluntary", true);
         return result;
     }
 

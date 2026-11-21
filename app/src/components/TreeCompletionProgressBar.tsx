@@ -1,4 +1,5 @@
 import React from 'react'
+import { Check, Minus } from 'lucide-react'
 import type { TreeCompletionProgress } from '../utils/treeCompletionProgress'
 import { completionLabel } from '../utils/levelCompletionApi'
 import { InlineMathText } from './InlineMathText'
@@ -25,7 +26,7 @@ export function TreeCompletionProgressBar({ progress, title, language, sectionTi
       : `${completedCount} of ${totalCount} learning goals with evidence`)
   const explicitLabel = language === 'de' ? `${explicitCount} direkt nachgewiesen` : `${explicitCount} directly demonstrated`
   const implicitLabel = language === 'de' ? `${implicitCount} fachlich angerechnet` : `${implicitCount} credited through assessment`
-  const notRequiredLabel = language === 'de' ? `${notRequiredCount} für diesen Auftrag nicht mehr erforderlich` : `${notRequiredCount} no longer required for this assignment`
+  const notRequiredLabel = language === 'de' ? `${notRequiredCount} für diesen Abschnitt nicht mehr erforderlich` : `${notRequiredCount} no longer required for this section`
   const openLabel = language === 'de' ? `${openCount} offen` : `${openCount} open`
   const weightedLabel = language === 'de'
     ? `Gewichteter Anteil mit Nachweis: ${percentLabel} %`
@@ -41,10 +42,10 @@ export function TreeCompletionProgressBar({ progress, title, language, sectionTi
       <p className="font-semibold"><InlineMathText text={title} /></p>
       <p className="mt-2 font-semibold">{heading}</p>
       <ul className="mt-2 space-y-1">
-        <li className="flex items-center gap-2"><span aria-hidden="true" className="h-2 w-2 shrink-0 rounded-full bg-emerald-500" />{explicitLabel}</li>
-        <li className="flex items-center gap-2"><span aria-hidden="true" className="h-2 w-2 shrink-0 rounded-full bg-sky-600 dark:bg-sky-400" />{implicitLabel}</li>
-        <li>{notRequiredLabel}</li>
-        <li className="flex items-center gap-2"><span aria-hidden="true" className="h-2 w-2 shrink-0 rounded-full bg-slate-300 dark:bg-slate-600" />{openLabel}</li>
+        <li className="flex items-center gap-2"><Check aria-hidden="true" size={14} strokeWidth={3} className="shrink-0 text-emerald-600 dark:text-emerald-400" />{explicitLabel}</li>
+        <li className="flex items-center gap-2"><Check aria-hidden="true" size={14} strokeWidth={3} className="shrink-0 text-neutral-600 dark:text-neutral-400" />{implicitLabel}</li>
+        <li className="flex items-center gap-2"><Minus aria-hidden="true" size={14} className="shrink-0 text-neutral-600 dark:text-neutral-400" />{notRequiredLabel}</li>
+        <li className="flex items-center gap-2"><span aria-hidden="true" className="mx-0.5 h-2.5 w-2.5 shrink-0 rounded-full bg-slate-200 dark:bg-slate-700" />{openLabel}</li>
       </ul>
       {totalCount > 0 && <p className="mt-2">{weightedLabel}</p>}
       {scope && <p className="mt-2"><InlineMathText text={scopeLabel} /></p>}
@@ -52,7 +53,7 @@ export function TreeCompletionProgressBar({ progress, title, language, sectionTi
   >
     <span aria-hidden="true" className="flex h-1.5 w-full overflow-hidden rounded-full bg-slate-200 dark:bg-slate-700">
       <span data-testid="completion-tree-progress-explicit" className="h-full shrink-0 bg-emerald-500" style={{ width: `${explicitRatio * 100}%` }} />
-      <span data-testid="completion-tree-progress-implicit" className="h-full shrink-0 bg-sky-600 dark:bg-sky-400" style={{ width: `${implicitRatio * 100}%` }} />
+      <span data-testid="completion-tree-progress-implicit" className="h-full shrink-0 bg-neutral-500 dark:bg-neutral-400" style={{ width: `${implicitRatio * 100}%` }} />
     </span>
   </TreeStatusTooltip>
 }

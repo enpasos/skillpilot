@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { ArrowUpRight, Check, Image as ImageIcon, Send, ShieldCheck, Target, X } from 'lucide-react'
+import { ArrowUpRight, Check, Image as ImageIcon, Minus, Send, Target, X } from 'lucide-react'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import remarkMath from 'remark-math'
@@ -8,7 +8,7 @@ import { CockpitGauges } from './CockpitGauges'
 import { GoalImageButton, type CockpitGoalImage, type CockpitImagePreview } from './GoalImage'
 
 type GoalPreview = { id: string; title: string; description: string; kind: string }
-type Progress = { total: number; explicit: number; implicit: number; completed: number; percent: number }
+type Progress = { total: number; explicit: number; notRequired: number; completed: number; percent: number }
 
 export type CockpitPreview = {
   mode: 'goal' | 'assessment' | 'cards'
@@ -53,13 +53,13 @@ export function CockpitLearningView({ activeGoal, unitComplete, activeImage, ass
 }
 
 export function CockpitPlanView({ unitTitle, goals, progress, todayExplicit, weekExplicit, demoDate,
-  explicitGoalIds, implicitGoalIds, activeGoalId, onShowUnit, onPreview }: {
+  explicitGoalIds, notRequiredGoalIds, activeGoalId, onShowUnit, onPreview }: {
   unitTitle: string; goals: GoalPreview[]; progress: Progress; todayExplicit: number; weekExplicit: number; demoDate: string
-  explicitGoalIds: readonly string[]; implicitGoalIds: readonly string[]; activeGoalId?: string
+  explicitGoalIds: readonly string[]; notRequiredGoalIds: readonly string[]; activeGoalId?: string
   onShowUnit: () => void; onPreview: (goalId: string) => void
 }) {
   const explicit = new Set(explicitGoalIds)
-  const implicit = new Set(implicitGoalIds)
+  const notRequired = new Set(notRequiredGoalIds)
   return <article className="cp-plan-view" aria-labelledby="cockpit-plan-heading">
     <h1 id="cockpit-plan-heading">Mein Plan</h1>
     <section className="cp-plan-scope" aria-label="Geplanter Ausschnitt">
@@ -71,12 +71,12 @@ export function CockpitPlanView({ unitTitle, goals, progress, todayExplicit, wee
       <CockpitGauges progress={progress} todayExplicit={todayExplicit} weekExplicit={weekExplicit} demoDate={demoDate} />
       <ul className="cp-plan-goals" aria-label="Ziele dieses Ausschnitts">
         {goals.map(goal => {
-          const status = explicit.has(goal.id) ? 'Direkt erreicht' : implicit.has(goal.id) ? 'Implizit erreicht'
+          const status = explicit.has(goal.id) ? 'Direkt erreicht' : notRequired.has(goal.id) ? 'Für diesen Abschnitt nicht mehr erforderlich'
             : activeGoalId === goal.id ? 'Aktives Lernziel' : 'Offen'
           return <li key={goal.id}>
-            <span className="cp-plan-status" title={status} aria-label={status}>
+            <span className="cp-plan-status" role="img" title={status} aria-label={status}>
               {explicit.has(goal.id) ? <Check size={18} strokeWidth={3} className="cp-complete-icon" />
-                : implicit.has(goal.id) ? <ShieldCheck size={18} className="cp-implicit-icon" />
+                : notRequired.has(goal.id) ? <Minus size={18} className="cp-not-required-icon" />
                   : activeGoalId === goal.id ? <Send size={17} className="cp-active-icon" />
                     : <Target size={18} className="cp-open-icon" />}
             </span>

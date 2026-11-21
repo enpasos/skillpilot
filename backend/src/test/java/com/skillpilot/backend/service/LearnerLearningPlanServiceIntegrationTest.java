@@ -1587,6 +1587,81 @@ class LearnerLearningPlanServiceIntegrationTest {
         assertThat(service.getPlan(LEARNER_ID, LANDSCAPE_ID, TODAY).blocks()).isEqualTo(plan.blocks());
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = {"active", "completed", "unavailable"})
+    void genericContinuationOfAnOrderedUnitNeverActivatesAPersonalSubject(String expectedStatus) {
+        learner.setSelectedCurriculum(CURRICULUM_ID);
+        learner.setFollowLearningPlans(true);
+        when(learnerService.isUnitAssignmentSubjectSelected(learner, PHYSICS_LANDSCAPE_ID)).thenReturn(true);
+        when(learnerService.getPersonalCurriculumSubjectIds(LEARNER_ID)).thenReturn(List.of(LANDSCAPE_ID, PHYSICS_LANDSCAPE_ID));
+        when(learnerService.getPersonalCurriculumSubjectFrontier(LEARNER_ID, LANDSCAPE_ID)).thenReturn(List.of(frontier("atom-a")));
+        var part = new LearnerLearningPlanApi.UnitAssignmentPart("atom-p", Map.of("de", "Teil"), "completed".equals(expectedStatus),
+                true, "active".equals(expectedStatus));
+        var unit = new LearnerLearningPlanApi.UnitAssignmentOption("section", "v1", "sha256:" + "a".repeat(64),
+                Map.of("de", "Einheit"), part.passed(), List.of(part));
+        when(learnerService.getUnitAssignmentOptions(LEARNER_ID, PHYSICS_LANDSCAPE_ID)).thenReturn(List.of(unit));
+        var block = new LearnerLearningPlanApi.Block("unit", "learning", null, "Einheit",
+                TODAY, TODAY, null, List.of(part.goalId()), List.of(unit.sectionGoalId()), true, unit.binding());
+        var plan = service.upsert(LEARNER_ID, PHYSICS_LANDSCAPE_ID,
+                new LearnerLearningPlanApi.UpsertRequest(0L, "Physik", List.of(block)), TODAY);
+        if ("unavailable".equals(expectedStatus)) {
+            when(learnerService.getUnitAssignmentOptions(LEARNER_ID, PHYSICS_LANDSCAPE_ID)).thenReturn(List.of());
+        }
+        var status = service.getTodayStatus(LEARNER_ID, "de");
+        assertThat(status.subjects()).singleElement().satisfies(subject -> {
+            assertThat(subject.unitAssignments()).singleElement().satisfies(assignment -> assertThat(assignment.status()).isEqualTo(expectedStatus));
+            assertThat(subject.canContinue()).isFalse();
+        });
+        assertThat(status.resumeAvailable()).isFalse();
+        assertThat(status.automaticResumeAvailable()).isFalse();
+        var request = new LearnerLearningPlanApi.ReconcileRequest(TODAY);
+        assertThat(service.resumeExplicitly(LEARNER_ID, request).changed()).isFalse();
+        assertThat(service.reconcile(LEARNER_ID, request).changed()).isFalse();
+        assertStatus(() -> service.continuePlan(LEARNER_ID, plan.planId(), new LearnerLearningPlanApi.ContinueRequest(plan.revision(), TODAY)),
+                HttpStatus.CONFLICT);
+        assertStatus(() -> service.switchPersonalCurriculumSubject(LEARNER_ID, LANDSCAPE_ID), HttpStatus.CONFLICT);
+        verify(learnerService, never()).applyLearningPlanTransition(any(), anyBoolean(), anyBoolean(), any(), any(), anyBoolean(), any());
+
+        // The historical physics order cannot constrain a later curriculum that deselects its subject.
+        when(learnerService.isUnitAssignmentSubjectSelected(learner, PHYSICS_LANDSCAPE_ID)).thenReturn(false);
+        assertThat(service.getTodayStatus(LEARNER_ID, "de").resumeAvailable()).isTrue();
+    }
+
+    @Test
+    void orderedUnitAllowsSeparatelyDueWorkWithoutOpeningUnplannedOrFutureGoals() {
+        learner.setSelectedCurriculum(CURRICULUM_ID);
+        learner.setFollowLearningPlans(true);
+        when(learnerService.isUnitAssignmentSubjectSelected(learner, PHYSICS_LANDSCAPE_ID)).thenReturn(true);
+        var part = new LearnerLearningPlanApi.UnitAssignmentPart("atom-p", Map.of(), true, true, false);
+        var unit = new LearnerLearningPlanApi.UnitAssignmentOption("section", "v1", "sha256:" + "a".repeat(64),
+                Map.of("de", "Einheit"), true, List.of(part));
+        when(learnerService.getUnitAssignmentOptions(LEARNER_ID, PHYSICS_LANDSCAPE_ID)).thenReturn(List.of(unit));
+        service.upsert(LEARNER_ID, PHYSICS_LANDSCAPE_ID, new LearnerLearningPlanApi.UpsertRequest(0L, "Physik",
+                List.of(new LearnerLearningPlanApi.Block("unit", "learning", null, "Einheit", TODAY, TODAY, null,
+                        List.of(part.goalId()), List.of(unit.sectionGoalId()), true, unit.binding()))), TODAY);
+        when(learnerService.getPersonalCurriculumSubjectIds(LEARNER_ID)).thenReturn(List.of(LANDSCAPE_ID, PHYSICS_LANDSCAPE_ID));
+        when(learnerService.getPersonalCurriculumSubjectFrontier(LEARNER_ID, LANDSCAPE_ID)).thenReturn(List.of(frontier("atom-b")));
+        when(learnerService.getUncompactedRichFrontierForFocus(LEARNER_ID, List.of("block-focus"))).thenReturn(List.of(frontier("atom-a")));
+        var math = service.upsert(LEARNER_ID, LANDSCAPE_ID, new LearnerLearningPlanApi.UpsertRequest(0L, "Mathematik",
+                List.of(learning("individual", "2026-09-07", "2026-09-07", "atom-a"))), TODAY);
+        var request = new LearnerLearningPlanApi.ReconcileRequest(TODAY);
+        assertThat(service.getTodayStatus(LEARNER_ID, "de").resumeAvailable()).isFalse();
+        assertThat(service.resumeExplicitly(LEARNER_ID, request).changed()).isFalse();
+        assertStatus(() -> service.continuePlan(LEARNER_ID, math.planId(), new LearnerLearningPlanApi.ContinueRequest(math.revision(), TODAY)),
+                HttpStatus.CONFLICT);
+
+        var today = learning("individual", "2026-09-04", "2026-09-04", "atom-a");
+        service.upsert(LEARNER_ID, LANDSCAPE_ID, new LearnerLearningPlanApi.UpsertRequest(math.revision(), "Mathematik", List.of(today)), TODAY);
+        when(learnerService.applyLearningPlanTransition(LEARNER_ID, false, true, "block-focus", "atom-a", true, "LEARNING_PLAN_RECONCILED"))
+                .thenReturn(new LearnerService.LearningPlanTransitionResult(true, mock(UnifiedLearnerStateResponse.class)));
+        assertThat(service.getTodayStatus(LEARNER_ID, "de").automaticResumeAvailable()).isTrue();
+        assertThat(service.resumeExplicitly(LEARNER_ID, request).activeGoalId()).isEqualTo("atom-a");
+        assertThat(service.reconcile(LEARNER_ID, request).activeGoalId()).isEqualTo("atom-a");
+        learner.setActiveGoalId("voluntary");
+        assertThat(service.resumeExplicitly(LEARNER_ID, request).changed()).isFalse();
+        assertThat(learner.getActiveGoalId()).isEqualTo("voluntary");
+    }
+
     @Test
     void completedPlanStillOffersUnplannedOpenPersonalTargets() {
         learner.setFollowLearningPlans(true);

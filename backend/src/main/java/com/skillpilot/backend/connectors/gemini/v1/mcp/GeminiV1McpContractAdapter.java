@@ -245,6 +245,9 @@ public class GeminiV1McpContractAdapter {
                 and no feedback or question about the completed work is pending, perform any goalVisualization render required
                 by the Goal images rule below.
                 Then follow learningPlanToday.guidance, which owns the current next step.
+                For unitChoice or unitComplete, use its instruction for the learner's explicit
+                choice in the Cockpit. A generic continuation cannot select an assessment
+                part or a voluntary individual goal on the learner's behalf.
                 Learning plans prioritize work and never limit learning within the Personal Curriculum.
                 For explicit continuation, the backend prioritizes due prerequisite-safe plan goals,
                 then other reachable plan goals including future dates, then eligible personal targets

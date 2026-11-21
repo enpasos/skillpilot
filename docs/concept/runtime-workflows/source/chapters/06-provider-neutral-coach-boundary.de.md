@@ -40,6 +40,14 @@ neue Lernendennachricht -> genau ein frischer Vollzustand -> Entscheidung:
 4. Schmale Renderer- oder Widget-Receipts sind kein Vollkontext.
 5. Bei State-Konflikt wird genau einmal frisch geladen und neu bewertet; wiederholte Konflikte oder harte Fehler stoppen den Ablauf transparent.
 
+#### Auswahl bei Einheitenaufträgen
+
+Ein durch `unitAssignment` gespeicherter Lernblock bindet die gewählte Abschnittsfassung. `subjects[].unitAssignments` im gemeinsamen Status beschreibt ihre Auswertbarkeit und ihren Abschluss. Die drei Gründe im Plandetail sind `unit-assessment-choice-required`, `unit-assignment-unavailable` und `unit-assignment-completed`. Für Zustand, Pflichtteile und Belegzählung ist der gemeinsame Lernplanstatus verbindlich. [Vertrag für Einheitenaufträge](repo:docs/concept/didactic/unified-learning-plan-status.md#sec-implicit-completion)
+
+Wenn die nächste Entscheidung die Wahl eines Prüfungsteils ist, gibt die Coachsteuerung `guidance.state=unitChoice` zurück. Der Coach bietet die aktuell zulässigen Prüfungsteile zur Wahl an. Bei einer abgeschlossenen Einheit führt `unitComplete` auf ausdrückliches „weiter“ zur freiwilligen Zielwahl innerhalb dieser Einheit. Ein eigener fälliger und erreichbarer Auftrag hat Vorrang. Der Server validiert jede Fortsetzung erneut. Ein Aufruf ohne zulässiges Ziel lässt Fortschritt, Prüfungsbelege und aktives Ziel unberührt.
+
+Claude und Gemini können diese Auswahlzustände direkt benennen. Der bestehende OpenAI-Vertrag bildet sie auf `blocked` beziehungsweise `complete` ab und erläutert die konkrete Wahl im Handlungshinweis. Eine Lane ohne eigene gültige Prüfungsaktion verweist für die Auswahl ins Cockpit. Jeder Anbieter verwendet ausschließlich seine veröffentlichten Auswahlmöglichkeiten und die vom gemeinsamen Backend erteilten Fähigkeiten.
+
 ### Werkzeuge und Eingaben: semantisch klein, frei von Chat-Freitexten {#sec:coach-boundary-inputs}
 
 Werkzeuge bilden zusammenhängende Nutzerhandlungen ab (keine 1:1-Service-APIs): ableitbare technische Parameter fehlen im Modellinput, Item-Schleifen werden gebatcht, unterschiedliche Risiken/Bestätigungen bleiben getrennte Tools, und Reads vs. Writes sind klar annotiert.

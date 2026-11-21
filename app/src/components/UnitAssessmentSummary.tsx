@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Check, ShieldCheck } from 'lucide-react'
+import { Check } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { buildCompletionAssessmentStartHref, completionLabel, type LevelCompletion, type UnitAssessment } from '../utils/levelCompletionApi'
 import { InlineMathText } from './InlineMathText'
@@ -45,7 +45,7 @@ export function UnitAssessmentSummary({ assessment, completion, language, titleF
         return <li key={part.goalId} className="flex flex-wrap items-center justify-between gap-x-3 rounded-lg border border-border-color px-3 py-2">
           <span className="min-w-0 [overflow-wrap:anywhere]"><InlineMathText text={label} /></span>
           <span className="inline-flex items-center gap-1 text-xs text-text-secondary">
-            {part.passed && part.materialCurrent !== false && <Check data-testid="unit-assessment-direct-evidence" className="text-emerald-600 dark:text-emerald-400" size={14} aria-hidden="true" />}{status}
+            {part.passed && part.materialCurrent !== false && <Check data-testid="unit-assessment-direct-evidence" className="shrink-0 text-emerald-600 dark:text-emerald-400" size={16} strokeWidth={3} aria-hidden="true" />}{status}
           </span>
           {part.missingPlanningCreditBinding && <p className="w-full text-sm text-text-secondary">
             {en ? 'This pass counts towards the unit. It was recorded without the planning credit for the current review.'
@@ -67,7 +67,7 @@ export function UnitAssessmentSummary({ assessment, completion, language, titleF
       return titles.length ? <details key={label} className="mt-2">
         <summary className="cursor-pointer rounded font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500">{label} ({ids.length})</summary>
         <ul className="ml-5 mt-2 space-y-1 text-text-secondary">{titles.map(({ id, title }) => <li key={id} className="flex items-center gap-2">
-          {credited && <ShieldCheck data-testid="unit-assessment-credited-evidence" className="shrink-0 text-sky-600 dark:text-sky-400" size={16} aria-hidden="true" />}
+          {credited && <Check data-testid="unit-assessment-credited-evidence" className="shrink-0 text-neutral-600 dark:text-neutral-400" size={16} strokeWidth={3} role="img" aria-label={en ? 'Credited through assessment' : 'Fachlich angerechnet'} />}
           {onShowGoal ? <button type="button" className="min-h-9 rounded text-left underline underline-offset-2 focus-visible:outline-none focus-visible:ring-2"
             onClick={() => onShowGoal(id)}><InlineMathText text={title} /></button> : <InlineMathText text={title} />}
         </li>)}</ul>

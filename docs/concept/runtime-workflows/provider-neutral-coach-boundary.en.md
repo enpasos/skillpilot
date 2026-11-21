@@ -51,6 +51,14 @@ new learner message -> exactly one fresh full context -> decision:
 4. Narrow renderer or widget receipts are never full contexts.
 5. On state conflict, reload context once and re-evaluate; repeated conflicts or hard errors halt structured execution transparently.
 
+#### Choices for unit assignments
+
+A learning block with a `unitAssignment` binds the selected section edition. The shared status publishes evaluation and completion in `subjects[].unitAssignments`. The three plan detail reasons are `unit-assessment-choice-required`, `unit-assignment-unavailable` and `unit-assignment-completed`. The shared plan status owns these states, required parts and evidence counts. [Unit assignment contract](../didactic/unified-learning-plan-status.en.md#sec-implicit-completion)
+
+When the next decision is an exam part, the coach guidance is `guidance.state=unitChoice`. The coach offers the currently available parts for an explicit selection. In a completed unit, `unitComplete` responds to a request to continue by offering voluntary individual study within that unit. A separate eligible due assignment takes priority. The server revalidates every continuation. A request without an eligible target preserves progress, assessment receipts and the active goal.
+
+Claude and Gemini can name these states directly. The existing OpenAI contract maps them to `blocked` and `complete`, respectively, and explains the specific choice in its guidance. A lane without a valid action to start that exam directs the learner to the Cockpit. Each provider uses the capabilities published for its own lane and authorized by the shared backend.
+
 <a id="sec-coach-boundary-inputs"></a>
 ### 6.2. Tools and inputs: semantically minimal, zero chat free text
 

@@ -25,6 +25,7 @@ export interface CompletionAssessment {
   title: CompletionTitle
   mastered: boolean
   startAvailable: boolean
+  voluntary?: boolean
   unavailableReason?: string
 }
 
@@ -177,6 +178,7 @@ const assessment = (value: unknown): CompletionAssessment => {
   const result = {
     goalId: text(source.goalId), title: title(source.title),
     mastered: bool(source.mastered), startAvailable: bool(source.startAvailable),
+    voluntary: source.voluntary == null ? undefined : bool(source.voluntary),
     unavailableReason: optionalText(source.unavailableReason),
   }
   if (result.mastered && result.startAvailable) throw invalid()
@@ -248,7 +250,7 @@ export const parseLevelCompletion = (value: unknown): LevelCompletion | null => 
           || (requiredAssessmentCount !== undefined && !automaticOption && (requiredAssessmentCount === 0 || requiredAssessmentCount > targetCount!))) throw invalid()
       const assessments = list(option.assessments ?? [], 100_000).map(assessment)
       if (new Set(assessments.map(entry => entry.goalId)).size !== assessments.length
-          || (requiredAssessmentCount !== undefined && assessments.length > requiredAssessmentCount)) throw invalid()
+          || (requiredAssessmentCount !== undefined && assessments.filter(entry => !entry.voluntary).length > requiredAssessmentCount)) throw invalid()
       return { profileId: text(option.profileId), title: title(option.title), targetCount, requiredAssessmentCount, assessments }
     }),
     navigationIntent: source.navigationIntent === 'paused' ? 'paused' : intent(source.navigationIntent),

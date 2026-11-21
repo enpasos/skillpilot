@@ -364,7 +364,18 @@ const parseUnitAssignmentStatuses = (value: unknown): LearnerUnitAssignmentStatu
     const row = asRecord(item, 'Invalid unit assignment status')
     const status = row.status
     if (status !== 'active' && status !== 'completed' && status !== 'unavailable') throw new Error('Invalid unit assignment status')
-    return { title: requiredString(row.title, 'title'), status, requiredParts: requiredInteger(row.requiredParts, 'requiredParts'),
+    let voluntaryGoals: LearnerUnitAssignmentStatus['voluntaryGoals']
+    if (row.voluntaryGoals != null) {
+      if (!Array.isArray(row.voluntaryGoals) || (row.voluntaryGoals.length > 0 && status !== 'completed')) {
+        throw new Error('Invalid voluntary goals for unit assignment')
+      }
+      voluntaryGoals = row.voluntaryGoals.map(value => {
+        const goal = asRecord(value, 'Invalid voluntary goal')
+        return { goalId: requiredString(goal.goalId, 'goalId'), title: requiredString(goal.title, 'title') }
+      })
+      if (new Set(voluntaryGoals.map(goal => goal.goalId)).size !== voluntaryGoals.length) throw new Error('Duplicate voluntary goal')
+    }
+    return { ...(voluntaryGoals ? { voluntaryGoals } : {}), title: requiredString(row.title, 'title'), status, requiredParts: requiredInteger(row.requiredParts, 'requiredParts'),
       passedParts: row.passedParts == null ? null : requiredInteger(row.passedParts, 'passedParts') }
   })
 }

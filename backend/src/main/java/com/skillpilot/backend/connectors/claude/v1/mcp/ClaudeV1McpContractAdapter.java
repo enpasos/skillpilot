@@ -312,8 +312,9 @@ public class ClaudeV1McpContractAdapter {
                 by the Goal images rule below.
                 Then follow learningPlanToday.guidance, which owns the current next step.
                 The unitAssignments list for each subject describes explicitly chosen unit qualifications.
-                A completed assignment ends its required work. Further individual learning is
-                voluntary unless another chosen assignment requires it. An active unit permits
+                A completed assignment ends its required work. On a request to continue after it,
+                prioritize a separately due assignment. With unitComplete, offer voluntary individual
+                study within the completed unit and wait for the learner to choose. An active unit permits
                 offering its available assessment parts, which the learner chooses before starting.
                 For an unavailable assignment, report that its edition cannot currently be evaluated.
                 Use the published assignment result and keep its part counts separate from daily quotas.
@@ -325,7 +326,7 @@ public class ClaudeV1McpContractAdapter {
                 A clear explicit subject request takes priority over generic resume: select its
                 published subject directly, without first activating another subject. Otherwise,
                 for a normal learning start, if no activeGoal is returned and
-                learningPlanToday.resumeAvailable is true and guidance.state is not unitChoice, immediately call
+                learningPlanToday.resumeAvailable is true and guidance permits resuming, immediately call
                 resume_skillpilot_learning_plan with the current stateVersion and a fresh UUID before
                 any learner-facing response. Automatic continuation from a successor context is permitted
                 only when guidance.state=resume, except after an ordinary or exam mastery write: first

@@ -4,7 +4,7 @@ import { useTranslation } from '../hooks/useTranslation'
 import { useLanguage } from '../contexts/LanguageContext'
 import type { UiGoal } from '../goalTypes'
 import { sortGoalsTopologically } from '../utils/goalSorter'
-import { isCompleteMastery, isMastered, masteryColorClass } from '../goalUiUtils'
+import { isMastered, masteryColorClass } from '../goalUiUtils'
 import { InlineMathText } from './InlineMathText'
 import type { CompletionTreeWaiver } from '../utils/levelCompletionApi'
 import { CompletionWaiverIcon } from './CompletionWaiverIcon'
@@ -251,7 +251,6 @@ const TreeNode: React.FC<TreeNodeProps> = ({
   const completionWaiver = audience === 'learner' && !hasChildren && !mastered
     ? completionWaivers?.get(goal.id)
     : undefined
-  const complete = isCompleteMastery(mastery)
   const hasProgress = mastery > 0
   const isPlanned = plannedGoals.has(goal.id)
   const isLearnerFocusControl = audience === 'learner'
@@ -381,10 +380,10 @@ const TreeNode: React.FC<TreeNodeProps> = ({
 
         {!hasChildren && (
           <div
-            className={`mr-1 ${isDimmed
-              ? 'text-slate-300 dark:text-slate-600'
-              : complete
-                ? 'text-emerald-500'
+            className={`mr-1 ${directEvidence
+              ? 'text-emerald-600 dark:text-emerald-400'
+              : isDimmed
+                ? 'text-slate-300 dark:text-slate-600'
                 : hasProgress
                   ? 'text-amber-500'
                 : 'text-slate-400 dark:text-slate-500'

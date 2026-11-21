@@ -594,7 +594,7 @@ try {
       '[data-goal-id="math-root"] [data-testid="completion-tree-progress-implicit"]',
     )?.getBoundingClientRect().width === 0)
     assert.ok(Math.abs((await explicit.boundingBox())!.width / totalWidth - 2 / 3) < 0.03,
-      'invalid completion removes blue credit while preserving both real mastery results')
+      'invalid completion removes the credited segment while preserving both real mastery results')
     assert.match(await progress.getAttribute('aria-label') ?? '', /2 direkt nachgewiesen/u)
     assert.match(await progress.getAttribute('aria-label') ?? '', /1 offen/u)
 
@@ -652,6 +652,7 @@ try {
     }
     const h = await open(completed, mobile, true)
     const card = h.page.getByTestId('level-completion-card')
+    await card.getByRole('status').filter({ hasText: 'Lernabschnitt abgeschlossen.' }).waitFor()
     await card.getByText('1 von 2 Lernzielen geschafft.', { exact: true }).waitFor()
     await card.getByText('Welche Nachweise zählen und welche Vorbereitung entfällt?', { exact: true }).click()
     await card.locator('details').getByRole('button', { name: 'Im Lernzielbaum anzeigen' }).click()
@@ -660,12 +661,12 @@ try {
     const waiver = row.getByTestId('completion-tree-waiver')
     await waiver.waitFor({ state: 'visible' })
     assert.equal(await row.locator('svg.lucide-check').count(), 0, 'waived preparation does not acquire a mastery check')
-    assert.equal(await waiver.locator('svg.lucide-shield-check').count(), 0, 'legacy waived preparation carries no positive assessment evidence')
+    assert.equal(await waiver.locator('svg.lucide-check').count(), 0, 'legacy waived preparation carries no positive assessment evidence')
     assert.equal(await waiver.getByTestId('completion-tree-not-required').count(), 1, 'the neutral status retains its explanation')
     assert.equal(await h.page.locator('[data-goal-id="math-exam"] svg.lucide-check').count(), 1, 'only the actually mastered exam has a check')
-    assert.equal(await waiver.getAttribute('aria-label'), 'Für diesen Auftrag nicht mehr erforderlich')
+    assert.equal(await waiver.getAttribute('aria-label'), 'Für diesen Abschnitt nicht mehr erforderlich')
     assert.equal(await row.locator('details, summary').count(), 0, 'the tree keeps a compact row without an inline explanation block')
-    assert.doesNotMatch(await row.innerText(), /Für diesen Auftrag nicht mehr erforderlich|separate Vorbereitung/u)
+    assert.doesNotMatch(await row.innerText(), /Für diesen Abschnitt nicht mehr erforderlich|separate Vorbereitung/u)
     const screenshotDir = fileURLToPath(new URL('../../tmp/level-completion-browser/', import.meta.url))
     await mkdir(screenshotDir, { recursive: true })
     await h.page.locator('#learner-goal-sidebar').screenshot({ path: `${screenshotDir}${mobile ? 'mobile' : 'desktop'}-tree-compact.png` })
@@ -787,7 +788,7 @@ try {
     await tooltip.waitFor({ state: 'visible' })
     assert.equal(await tooltip.evaluate((element) => element.scrollHeight > element.clientHeight), true,
       'long valid assessment titles exercise an overflowing tooltip in a short viewport')
-    await tooltip.getByText('Für diesen Auftrag nicht mehr erforderlich', { exact: true }).click()
+    await tooltip.getByText('Für diesen Abschnitt nicht mehr erforderlich', { exact: true }).click()
     await h.page.waitForTimeout(200)
     assert.equal(await tooltip.isVisible(), true, 'clicking tooltip text after trigger focus does not dismiss it')
     await waiver.focus()
@@ -984,14 +985,14 @@ try {
     await card.getByText('Lernweg abgeschlossen.', { exact: true }).waitFor()
     await card.getByText('In diesem Abschnitt gibt es keine Prüfungen.', { exact: true }).waitFor()
     await card.getByText('0 von 2 Lernzielen direkt geschafft.', { exact: true }).waitFor()
-    await card.getByText('Für diesen Auftrag sind 2 Lernziele nicht mehr erforderlich.', { exact: false }).waitFor()
+    await card.getByText('Für diesen Abschnitt sind 2 Lernziele nicht mehr erforderlich.', { exact: false }).waitFor()
     await card.getByText('Welche Nachweise zählen und welche Vorbereitung entfällt?', { exact: true }).click()
     assert.equal(await card.getByText('Geschaffte Prüfungen:', { exact: false }).count(), 0,
       'ordinary mastery or absent demand must not be explained as a passed assessment')
     await card.getByRole('button', { name: 'Im Lernzielbaum anzeigen: Ableitungen für Wachstumsmodelle deuten', exact: true }).click()
     await waitForTreeReveal(h.page, 'math-upper')
     const row = h.page.locator('[data-goal-id="math-upper"]')
-    const icon = row.getByRole('button', { name: 'Für diesen Auftrag nicht mehr erforderlich', exact: true })
+    const icon = row.getByRole('button', { name: 'Für diesen Abschnitt nicht mehr erforderlich', exact: true })
     if (mobile) await icon.tap()
     else {
       await row.press('Tab')
@@ -1003,7 +1004,7 @@ try {
     assert.equal(await row.locator('svg.lucide-check, svg.lucide-shield-check').count(), 0, 'an expired obligation cannot become evidence')
     assert.equal(await row.getByTestId('completion-tree-not-required').count(), 1)
     const clusterProgress = h.page.locator('[data-goal-id="math-root"]').getByTestId('completion-tree-progress')
-    assert.match(await clusterProgress.getAttribute('aria-label') ?? '', /0 fachlich angerechnet\. 2 für diesen Auftrag nicht mehr erforderlich/u)
+    assert.match(await clusterProgress.getAttribute('aria-label') ?? '', /0 fachlich angerechnet\. 2 für diesen Abschnitt nicht mehr erforderlich/u)
     assert.equal(await clusterProgress.getByTestId('completion-tree-progress-implicit').evaluate(el => el.getBoundingClientRect().width), 0)
     assert.ok((await row.boundingBox())!.height < 80, 'generic explanations keep the same compact tree row')
     assert.equal(h.writes.length, 0, 'inspection and tooltip interaction never choose a route or write mastery')

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.api.ActiveGoalContext.PracticeExercise;
 import com.skillpilot.backend.completion.UnitAssessmentContract;
+import com.skillpilot.backend.completion.CompletionReviewBindings;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -21,8 +22,10 @@ public final class UnitLearningMaterialService {
     public record AssessmentBinding(String landscapeId, String viewId, String compositionNodeId,
             UnitAssessmentContract contract) {}
     public record Intro(String question, String promise) {}
+    public record SectionAssessmentPolicy(String unitContractRevision, String requiredPartsFingerprint, List<String> voluntaryAssessmentGoalIds) {}
     public record Material(String flashcardGoalId, String assessmentGoalId, Map<String, Intro> intro,
-            Map<String, Map<String, PracticeExercise>> exercises, UnitAssessmentContract assessmentContract) {
+            Map<String, Map<String, PracticeExercise>> exercises, UnitAssessmentContract assessmentContract,
+            SectionAssessmentPolicy sectionAssessmentPolicy) {
         public Material {
             intro = Map.copyOf(intro);
             exercises = Map.copyOf(exercises);
@@ -68,7 +71,7 @@ public final class UnitLearningMaterialService {
                         unit.path("assessmentGoalId").textValue(), intros, readExercises(data.path("exercises"), file),
                         unit.has("assessmentContract")
                                 ? mapper.treeToValue(unit.required("assessmentContract"), UnitAssessmentContract.class)
-                                : null);
+                                : null, boundSectionPolicy(unit, mapper));
                 String landscape = unit.required("landscapeId").asText();
                 String node = unit.required("compositionNodeId").asText();
                 for (JsonNode view : unit.required("viewIds")) {
@@ -144,6 +147,20 @@ public final class UnitLearningMaterialService {
         String value = entry.path(field).textValue();
         if (value == null || value.isBlank()) throw new IllegalArgumentException("Missing exercise " + field + " in " + file);
         return value;
+    }
+
+    private static SectionAssessmentPolicy boundSectionPolicy(JsonNode unit, ObjectMapper mapper) {
+        if (!unit.has("sectionAssessmentPolicy")) return null;
+        try {
+            var policy = mapper.treeToValue(unit.required("sectionAssessmentPolicy"), SectionAssessmentPolicy.class);
+            var contract = unit.required("assessmentContract");
+            String fingerprint = CompletionReviewBindings.canonicalHash(contract.required("parts"), mapper);
+            return fingerprint.equals(policy.requiredPartsFingerprint())
+                    && contract.required("revision").asText().equals(policy.unitContractRevision()) ? policy : null;
+        } catch (Exception invalidBinding) {
+            // Ordinary section requirements remain in force for an unreadable or unbound exception.
+            return null;
+        }
     }
 
     public Optional<Material> find(String landscapeId, String viewId, String compositionNodeId) {

@@ -302,6 +302,8 @@ public final class OpenAiDeV1McpContractAdapter {
                     + "read. For a normal learning start, follow its guidance and resume only with no active goal "
                     + "and resumeAvailable=true. Automatic continuation from a successor context requires "
                     + "guidance.state=resume; complete, blocked or unavailable requires an explicit learning request. "
+                    + "For a unit assignment, follow the specific guidance.instruction for its assessment "
+                    + "part choice or voluntary individual goal choice in the Cockpit. "
                     + "A request to continue, catch up or learn a named subject is sufficient; do not ask for "
                     + "another confirmation. The backend's resumeAvailable and canContinue capabilities remain "
                     + "authoritative even when the period target is already fulfilled; the plan and calendar "
@@ -1854,19 +1856,15 @@ public final class OpenAiDeV1McpContractAdapter {
                                     + "Lernplanstatus aus, indem du context.learningPlanToday.text wörtlich "
                                     + "wiedergibst, höchstens einmal und ohne eigene Zahlen, Summen oder "
                                     + "Gesamtbewertung; der Text nennt bereits Periodenziel, Rückstand und "
-                                    + "Vorarbeit. Bei guidance.state=complete würdige den gedeckten Periodenbedarf "
-                                    + "und biete weiteres Lernen oder eine Pause an, ohne Druck oder Schuldgefühl. "
-                                    + "Starte Zusatzarbeit nur auf ausdrücklichen Lernwunsch. Für andere Zustände "
-                                    + "führe die aktuelle guidance aus. Lade keinen neuen Kontext.",
+                                    + "Vorarbeit. Führe die konkrete guidance.instruction aus. Starte freiwillige "
+                                    + "Zusatzarbeit nur auf ausdrücklichen Lernwunsch. Lade keinen neuen Kontext.",
                             "The recall check is complete. On a pause, acknowledge only the closure. If continuing "
                                     + "was agreed, follow only context.learningPlanToday.guidance from "
                                     + "this successor now. Report the plan status by outputting "
                                     + "context.learningPlanToday.text verbatim, at most once and adding no counts, "
                                     + "totals or overall judgement of your own; it already states the period target, "
-                                    + "any backlog and any advance work. For guidance.state=complete, celebrate the "
-                                    + "covered period workload and offer optional further learning or a break, "
-                                    + "without pressure or guilt. Start extra learning only on an explicit learning "
-                                    + "request. For other states, execute the current guidance. Do not reload context."),
+                                    + "any backlog and any advance work. Follow the specific guidance.instruction. "
+                                    + "Start extra learning only on an explicit learning request. Do not reload context."),
                     null);
         }
         if (context != null && "setScope".equals(context.requiredAction())

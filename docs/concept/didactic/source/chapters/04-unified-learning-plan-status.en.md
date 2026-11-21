@@ -102,11 +102,21 @@ Closing assessments of a learning unit must verify independent application of th
 - **Single counting and explicit `H`:** Every goal ID in $G$ counts at most once; explicitly completing an already recognized goal does not increment $I$ a second time, though its genuine explicit completion today may count toward $H$. Deriving $W$, switching plans, importing state, or re-rendering never fabricates period events in $H$.
 - Under *Configuration → Learning Settings*, learners can choose to keep credited goals in their learning plan. By default the plan moves on to the next required goal. When enabled, it also suggests eligible credited goals in the same plan that still lack an individual outcome. Ordinary prerequisites govern which goal is ready. The assessment result stands. Daily and weekly quotas count actual dated completions.
 
-#### Proposed assignment for a unit
+#### Explicit unit assignment
 
-The proposal of 19 November distinguishes what a learner agreed to do in the plan. If the assignment is “demonstrate unit E.1”, that work ends when the learner passes the required components of the named unit revision. Skipped exercises create no backlog for this assignment. If “investigate free fall experimentally” was also assigned as a separate practical demonstration, it remains outstanding until the learner conducts the experiment. “Fully worked through” requires actual completion of every specified activity.
+A learning block can carry a `unitAssignment` with `sectionGoalId`, `revision` and `fingerprint`. The server publishes the editions available in the selected course and validates the binding and required parts when saving. Existing atomic blocks retain their meaning. Activating a unit assignment focuses the section. Starting an exam requires an explicit choice.
 
-For recommendations under the proposal, $F_{\mathrm{plan}}$ describes the unit’s own whole content goals that subject review of the passed version clears for later prerequisite checks. $M$ contains explicit individual outcomes. Only actual completions count as dated activities. A list of earlier goal IDs cannot show whether the intent was a single unit route or several separate assignments. Those plans retain their original counting contract. Unit assignments require an explicit new selection or plan revision. This product proposal awaits a decision. [What a unit assessment demonstrates](repo:docs/concept/skill-graph/assessment-gated-completion.md#sec-proposal-planning-release)
+In `subjects[].unitAssignments`, the day or week status reports each active assignment's title and number of required parts (`requiredParts`). For `status=active`, `passedParts` counts recorded passes matching the current task and rubric. For `completed`, all required parts have matching evidence. For `unavailable`, the stored edition cannot be evaluated in the current scope and the pass count is unknown. A matching historical receipt counts for a later explicit assignment. Planning credit requires the approval applicable when the work was graded.
+
+| Plan detail `continueReason` | Navigation |
+| --- | --- |
+| `unit-assessment-choice-required` | An outstanding part is available. The learner chooses it explicitly. |
+| `unit-assignment-unavailable` | The stored edition is unavailable. Previously earned evidence is retained. |
+| `unit-assignment-completed` | This assignment is complete. Individually open goals in the unit are available for voluntary study. |
+
+Generic continuation may start an eligible goal from a separate, explicitly assigned item when due. The unit assignment alone never selects an exam part or an unrelated personal target. The server refuses that continuation through both the Cockpit and the coach. Deliberately choosing individual study respects prerequisites and can earn a separate result. Unit certification, planning credit and dated individual results remain distinct.
+
+The first implementation is the Hessian Physics E.1 pilot for G8 and G9, disabled by default. The four version-bound parts A–D certify the unit assignment. The additional horizontal-throw examination remains voluntary. Adopting the broader 19 November assessment proposal beyond this pilot requires a separate decision. [Unit assessment and planning credit](repo:docs/concept/skill-graph/assessment-gated-completion.md#sec-proposal-planning-release)
 
 ### Daily and weekly period basis {#sec:plan-status-period}
 

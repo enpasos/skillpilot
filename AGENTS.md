@@ -540,6 +540,15 @@ adopt the separate unit-assessment proposal of 19 November. The [discussion
 paper](docs/concept/skill-graph/unit-assessment-discussion-2026-11-19.de.md)
 sets out the changes that adoption would require.
 
+**Learner-facing evidence marks for all subjects and scopes.** A green check
+means the learner has their own successful evidence for this goal. The same check in gray
+means that assessed work on another goal gives a
+documented credit for this one. When a prerequisite simply ceases to be
+required, show a neutral minus. Use the same meaning in the tree, map,
+progress bars and accessible text, including with assessment pilots disabled.
+Show a certified section's completion separately from how many individual
+goals have their own evidence. Display choices never write mastery.
+
 **Hessian E.1 pilot decision, 20 November 2026.** For an explicitly selected
 unit-qualification assignment, passing the four designated versions A–D ends
 the required work for that assignment. An individually open goal remains
@@ -547,9 +556,11 @@ available voluntarily or due under a separate explicit assignment. Existing
 atomic plans retain their selected goals. A valid historical part receipt
 counts towards its part after a scope change. If it lacks the planning-release
 binding at grading, the cockpit and coach explain why the two individual
-goals remain open. On the map, a green check marks a direct result for that goal.
-A check inside a shield marks evidence-backed indirect credit. A goal that
-simply ceases to be required receives no completion mark. The local acceptance preview opts into the pilot. Its
+goals remain open. A separate due assignment takes priority on a request to
+continue. Once the unit assignment is complete and no such work is due, offer
+a choice of individually open targets of the same unit for voluntary study.
+The additional horizontal-throw examination remains available voluntarily and
+has its own result. The local acceptance preview opts into the pilot. Its
 separate runtime setting defaults to off. The Product Owner reserves the
 pedagogical acceptance of E.1 and subsequent acceptance of the Hessian template.
 

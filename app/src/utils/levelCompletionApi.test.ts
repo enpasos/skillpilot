@@ -61,6 +61,15 @@ const profileOption = { profileId: 'next', title: { de: 'Abschnitt' }, targetCou
 assert.equal(parseLevelCompletion({ ...valid, profileOptions: [profileOption] })?.profileOptions[0].targetCount, 2)
 assert.deepEqual(parseLevelCompletion({ ...valid, profileOptions: [profileOption] })?.profileOptions[0].assessments, [], 'legacy profile options remain readable')
 const availableAssessment = { goalId: 'next-exam', title: { de: 'Prüfung' }, mastered: false, startAvailable: true }
+const optionalAssessment = { ...availableAssessment, goalId: 'extra', voluntary: true }
+const offers = parseLevelCompletion({ ...valid, assessments: [...valid.assessments, optionalAssessment],
+  profileOptions: [{ ...profileOption, assessments: [availableAssessment, optionalAssessment] }] })!
+assert.equal(offers.requiredAssessmentCount, 1)
+assert.equal(offers.assessments.find(entry => entry.goalId === 'extra')?.voluntary, true)
+assert.equal(offers.profileOptions[0].assessments?.find(entry => entry.goalId === 'extra')?.voluntary, true)
+assert.throws(() => parseLevelCompletion({ ...valid, assessments: [{ ...optionalAssessment, voluntary: 'yes' }] }))
+assert.throws(() => parseLevelCompletion({ ...valid,
+  profileOptions: [{ ...profileOption, assessments: [availableAssessment, { ...optionalAssessment, voluntary: false }] }] }))
 const discovery = parseLevelCompletion({ ...valid, calculationStatus: 'notApplicable', complete: undefined, profileId: undefined,
   profileOptions: [{ ...profileOption, assessments: [availableAssessment] }] })!
 assert.equal(completionAssessmentsForGoal(discovery, 'next-exam')[0].profileId, 'next')

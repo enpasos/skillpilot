@@ -44,6 +44,34 @@ public record LearnerPlanTodayStatus(
         int unavailablePlanCount,
         @JsonIgnore boolean automaticResumeAvailable) {
 
+    /** Next chat action; the independent explicit resume and subject-switch capabilities still apply. */
+    @JsonIgnore
+    public String coachGuidanceState(boolean hasActiveGoal, boolean hasVisibleSubjects, boolean hasUnavailablePlans) {
+        if (!followLearningPlans) return "paused";
+        if (hasActiveGoal) return "continue";
+        if (asOf == null || !hasVisibleSubjects) return "unavailable";
+        if (!periodQuotaFulfilled && resumeAvailable && automaticResumeAvailable) return "resume";
+
+        // A qualification has no dated atomic quota. A zero quota alone cannot finish it.
+        boolean unavailableUnit = false;
+        boolean completedUnit = false;
+        if (subjects != null) {
+            for (SubjectStatus subject : subjects) {
+                if (subject == null || subject.unitAssignments() == null) continue;
+                for (UnitAssignmentStatus unit : subject.unitAssignments()) {
+                    if ("active".equals(unit.status())) return "unitChoice";
+                    if ("unavailable".equals(unit.status())) unavailableUnit = true;
+                    if ("completed".equals(unit.status())) completedUnit = true;
+                }
+            }
+        }
+        if (periodQuotaFulfilled) {
+            if (hasUnavailablePlans || unavailablePlanCount > 0 || unavailableUnit || !evaluable) return "unavailable";
+            return completedUnit && !resumeAvailable ? "unitComplete" : "complete";
+        }
+        return "blocked";
+    }
+
     /**
      * The active learning goal, announced independently of the plan evaluation.
      *
@@ -93,7 +121,13 @@ public record LearnerPlanTodayStatus(
     }
 
     /** Current edition of one explicitly ordered unit; an unavailable edition has no pass count. */
-    public record UnitAssignmentStatus(String title, String status, Integer passedParts, int requiredParts) { }
+    public record UnitAssignmentStatus(String title, String status, Integer passedParts, int requiredParts,
+            @JsonInclude(JsonInclude.Include.NON_EMPTY) List<VoluntaryGoal> voluntaryGoals) {
+        public UnitAssignmentStatus(String title, String status, Integer passedParts, int requiredParts) {
+            this(title, status, passedParts, requiredParts, List.of());
+        }
+    }
+    public record VoluntaryGoal(String goalId, String title) { }
 
     /**
      * One subject, merged across every current plan of that subject.

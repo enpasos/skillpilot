@@ -4007,7 +4007,9 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                   ? <>{unitAssessmentSummary.content}{unitAssignmentControl}</> : null}
                 {selectedGoalAssessments.length > 0 ? <div data-testid="selected-goal-assessment-shortcuts" className="mt-3 flex flex-col items-start gap-2 text-sm">
                   {selectedGoalAssessments.map(({ profileId, profileTitle, assessment }) => <div key={profileId} className="flex flex-wrap items-center gap-3">
-                    <span className="text-text-secondary">{localizedLanguage === 'en' ? 'Assessment in ' : 'Prüfung im Abschnitt '}
+                    <span className="text-text-secondary">{assessment.voluntary
+                      ? (localizedLanguage === 'en' ? 'Optional assessment in ' : 'Freiwillige Zusatzprüfung im Abschnitt ')
+                      : (localizedLanguage === 'en' ? 'Assessment in ' : 'Prüfung im Abschnitt ')}
                       <InlineMathText text={completionLabel(profileTitle, localizedLanguage)} />
                     </span>
                     {assessment.mastered ? <span>{localizedLanguage === 'en' ? 'Achieved' : 'Geschafft'}</span>
@@ -4056,8 +4058,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                   <p data-testid="level-completion-goal-context" className="mt-3 text-sm text-text-secondary">
                     {levelCompletion.profileId?.startsWith('automatic:')
                       ? (localizedLanguage === 'en'
-                        ? 'This goal is no longer required for this assignment. You can still study it and earn individual evidence.'
-                        : 'Für diesen Auftrag ist dieses Ziel nicht mehr erforderlich. Du kannst es weiterhin bearbeiten und einen eigenen Nachweis erwerben.')
+                        ? 'This goal is no longer required for this section. You can still study it and earn individual evidence.'
+                        : 'Für diesen Abschnitt ist dieses Ziel nicht mehr erforderlich. Du kannst es weiterhin bearbeiten und einen eigenen Nachweis erwerben.')
                       : (localizedLanguage === 'en'
                         ? 'Preparation for this goal is no longer required for the selected section. You can still choose to study it.'
                         : 'Für den gewählten Abschnitt ist die Vorbereitung zu diesem Lernziel nicht mehr erforderlich. Du kannst es freiwillig weiterlernen.')}
@@ -4169,6 +4171,17 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                       learningPlanSubjectLabels.get(planLandscapeId) ?? planLandscapeId
                     )}
                     goalLabel={(goalId) => goalIndexAll.get(goalId)?.title}
+                    goalPreviewAction={goalId => {
+                      if (visibleGoals.has(goalId)) return () => {
+                        onSelectGoal(goalId)
+                        focusLearnerGoalContent(goalId)
+                      }
+                      const targetLandscape = goalIndexAll.get(goalId)?.landscapeId
+                      if (targetLandscape && onSelectGoalInLandscape) return () => {
+                        onSelectGoalInLandscape(targetLandscape, goalId)
+                        focusLearnerGoalContent(goalId)
+                      }
+                    }}
                     showActiveGoal={false}
                     activeGoalId={effectiveActiveGoalId}
                     activeLandscapeId={activeLearningPlanLandscapeId}

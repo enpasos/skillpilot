@@ -112,7 +112,7 @@ export function Cockpit() {
         hidden={view !== 'plan'} inert={view !== 'plan'}>
         <CockpitPlanView unitTitle={data.unitTitle} goals={data.targetGoalIds.map(id => data.goalById[id])}
           progress={state.progress} todayExplicit={state.todayExplicit} weekExplicit={state.weekExplicit} demoDate={demoDate}
-          explicitGoalIds={state.explicitGoalIds} implicitGoalIds={state.implicitGoalIds} activeGoalId={activeGoalId}
+          explicitGoalIds={state.explicitGoalIds} notRequiredGoalIds={state.notRequiredGoalIds} activeGoalId={activeGoalId}
           onShowUnit={() => showInMap(data.unitId)} onPreview={openPreview} />
       </section>
     </div>

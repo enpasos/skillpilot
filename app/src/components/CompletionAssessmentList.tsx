@@ -51,8 +51,9 @@ export function CompletionAssessmentList({
         className="flex flex-col items-stretch justify-between gap-3 rounded-xl border border-border-color p-3 sm:flex-row sm:items-center">
         <div className="min-w-0 flex-1">
           <InlineMathText text={completionLabel(assessment.title, language)} className="font-medium" />
+          {assessment.voluntary && <p className="text-sm text-text-secondary">{en ? 'Optional assessment' : 'Freiwillige Zusatzprüfung'}</p>}
           <p className="mt-1 flex items-center gap-1 text-sm text-text-secondary">
-            {assessment.mastered ? <Check size={16} aria-hidden="true" /> : null}
+            {assessment.mastered ? <Check size={16} strokeWidth={3} className="text-emerald-600 dark:text-emerald-400" aria-hidden="true" /> : null}
             {assessment.mastered ? (en ? 'Achieved' : 'Geschafft') : (en ? 'Not yet achieved' : 'Noch nicht geschafft')}
           </p>
           {onShowGoal ? <button type="button" disabled={stale} onClick={() => onShowGoal(assessment.goalId)}

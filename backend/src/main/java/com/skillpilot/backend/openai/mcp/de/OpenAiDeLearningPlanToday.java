@@ -1,6 +1,7 @@
 package com.skillpilot.backend.openai.mcp.de;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.skillpilot.backend.ai.UnitAssignmentGuidance;
 import com.skillpilot.backend.api.LearnerPlanTodayStatus;
 import com.skillpilot.backend.service.learningplan.UnifiedLearningPlanStatusFormatter;
 import java.util.ArrayList;
@@ -48,9 +49,9 @@ public record OpenAiDeLearningPlanToday(
         if (source == null) {
             return new OpenAiDeLearningPlanToday(null, null,
                     UnifiedLearningPlanStatusFormatter.formatUnavailableStatusNotice(locale),
-                    null, false, false, false, List.of(), guidance("unavailable"));
+                    null, false, false, false, List.of(), guidance("unavailable", null));
         }
-        boolean unavailable = source.unavailablePlanCount() > 0;
+        boolean unavailable = false;
         List<Subject> subjects = new ArrayList<>();
         for (LearnerPlanTodayStatus.SubjectStatus subject :
                 source.subjects() == null ? List.<LearnerPlanTodayStatus.SubjectStatus>of() : source.subjects()) {
@@ -69,13 +70,7 @@ public record OpenAiDeLearningPlanToday(
         }
         boolean resume = source.asOf() != null && source.followLearningPlans()
                 && source.resumeAvailable() && !hasActiveGoal;
-        String state = !source.followLearningPlans() ? "paused"
-                : hasActiveGoal ? "continue"
-                : source.asOf() == null || subjects.isEmpty() ? "unavailable"
-                : source.periodQuotaFulfilled()
-                        ? (unavailable || !source.evaluable() ? "unavailable" : "complete")
-                : resume && source.automaticResumeAvailable() ? "resume"
-                : "blocked";
+        String state = source.coachGuidanceState(hasActiveGoal, !subjects.isEmpty(), unavailable);
         return new OpenAiDeLearningPlanToday(
                 source.asOf() == null ? null : source.asOf().toString(),
                 source.periodBasis() != null ? source.periodBasis().name() : "DAY",
@@ -85,7 +80,7 @@ public record OpenAiDeLearningPlanToday(
                 source.followLearningPlans(),
                 resume,
                 List.copyOf(subjects),
-                guidance(state));
+                guidance(state, source));
     }
 
     /** The backend text is the binding formulation; this channel composes no alternative. */
@@ -96,7 +91,14 @@ public record OpenAiDeLearningPlanToday(
         return UnifiedLearningPlanStatusFormatter.formatUnavailableStatusNotice(english ? "en" : "de");
     }
 
-    private static Guidance guidance(String state) {
+    private static Guidance guidance(String state, LearnerPlanTodayStatus source) {
+        // The OpenAI V1 schema publishes a fixed state vocabulary. Its instruction carries the specific choice.
+        if ("unitChoice".equals(state)) {
+            return new Guidance("blocked", UnitAssignmentGuidance.CHOOSE_ASSESSMENT_IN_COCKPIT);
+        }
+        if ("unitComplete".equals(state)) {
+            return new Guidance("complete", UnitAssignmentGuidance.completedInCockpit(source));
+        }
         String instruction = switch (state) {
             case "continue" -> "Output 'text' verbatim when reporting plan status, at most once per "
                     + "response, and add no numbers, totals or overall judgement of your own. Then "

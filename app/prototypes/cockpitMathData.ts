@@ -22,9 +22,8 @@ export interface CockpitScenario {
 }
 export interface CockpitDerivedState {
   explicitGoalIds: string[]
-  implicitGoalIds: string[]
-  effectiveGoalIds: string[]
-  progress: { total: number; explicit: number; implicit: number; completed: number; percent: number }
+  notRequiredGoalIds: string[]
+  progress: { total: number; explicit: number; notRequired: number; completed: number; percent: number }
   unitComplete: boolean
   todayExplicit: number
   weekExplicit: number
@@ -134,7 +133,7 @@ export const cockpitScenarios: CockpitScenario[] = [
   { id: 'before-assessment', label: 'Vor der Prüfung', description: 'Fiktives Testprofil: Fachziel direkt geschafft, Prüfung noch offen.',
     explicitGoalIds: [ordinaryId], activeGoalId: assessmentId,
     events: [{ goalId: ordinaryId, at: '2026-11-02T09:00:00Z' }] },
-  { id: 'passed-assessment', label: 'Prüfung bestanden · Demo', description: 'Fiktives Testprofil: Prüfung geschafft. Das Fachziel zählt dadurch implizit mit.',
+  { id: 'passed-assessment', label: 'Prüfung bestanden · Demo', description: 'Fiktives Testprofil: Prüfung geschafft. Das Fachziel bleibt einzeln offen. Für den Abschnitt ist es nicht mehr erforderlich.',
     explicitGoalIds: [assessmentId], activeGoalId: assessmentId,
     events: [{ goalId: assessmentId, at: '2026-11-04T09:15:00Z' }] },
 ]
@@ -152,25 +151,23 @@ export function deriveCockpitState(explicitGoalIds: readonly string[], events: r
     needed.add(id)
     pending.push(...goalById[id].requires)
   }
-  const implicit = new Set(!explicit.has(ordinaryId) && !needed.has(ordinaryId) ? [ordinaryId] : [])
-  const effective = new Set([...explicit, ...implicit])
+  const notRequired = new Set(!explicit.has(ordinaryId) && !needed.has(ordinaryId) ? [ordinaryId] : [])
   const explicitCount = targetGoalIds.filter(id => explicit.has(id)).length
-  const implicitCount = targetGoalIds.filter(id => implicit.has(id)).length
-  const completed = explicitCount + implicitCount
+  const notRequiredCount = notRequired.size
   const countEvents = (start: number) => new Set(events.filter(event => {
     const time = Date.parse(event.at)
     return targetSet.has(event.goalId) && explicit.has(event.goalId)
       && Number.isFinite(time) && time >= start && time <= Date.parse(cockpitDemoClock)
   }).map(event => event.goalId)).size
   return {
-    explicitGoalIds: [...explicit], implicitGoalIds: [...implicit], effectiveGoalIds: [...effective],
-    progress: { total: 2, explicit: explicitCount, implicit: implicitCount, completed, percent: completed * 50 },
-    unitComplete: completed === 2, todayExplicit: countEvents(todayStart), weekExplicit: countEvents(weekStart),
+    explicitGoalIds: [...explicit], notRequiredGoalIds: [...notRequired],
+    progress: { total: 2, explicit: explicitCount, notRequired: notRequiredCount, completed: explicitCount, percent: explicitCount * 50 },
+    unitComplete: explicitCount + notRequiredCount === targetGoalIds.length, todayExplicit: countEvents(todayStart), weekExplicit: countEvents(weekStart),
   }
 }
 
-export function exportLearningEntryProgress(state: CockpitDerivedState): Record<string, { total: number; explicit: number; implicit: number }> {
-  const explicit = new Set(state.explicitGoalIds), implicit = new Set(state.implicitGoalIds)
+export function exportLearningEntryProgress(state: CockpitDerivedState): Record<string, { total: number; explicit: number; implicit: number; notRequired: number }> {
+  const explicit = new Set(state.explicitGoalIds), notRequired = new Set(state.notRequiredGoalIds)
   const targetsBelow = (id: string): Set<string> => {
     const entry = entries[id]
     return new Set([...(targetSet.has(id) ? [id] : []), ...(entry.children ?? []).flatMap(child => [...targetsBelow(child)])])
@@ -178,7 +175,7 @@ export function exportLearningEntryProgress(state: CockpitDerivedState): Record<
   return Object.fromEntries(Object.keys(entries).flatMap(id => {
     const targets = targetsBelow(id)
     return targets.size ? [[id, { total: targets.size, explicit: [...targets].filter(goal => explicit.has(goal)).length,
-      implicit: [...targets].filter(goal => implicit.has(goal)).length }]] : []
+      implicit: 0, notRequired: [...targets].filter(goal => notRequired.has(goal)).length }]] : []
   }))
 }
 
@@ -197,5 +194,5 @@ export const cockpitMathData = {
   coachStartText: buildCockpitCoachStart(ordinaryId),
   sourcePaths: snapshot.sourcePaths, sourceSha256: snapshot.sourceSha256,
   canonicalParents: snapshot.targetCanonicalParents, compositionReferences: snapshot.compositionReferences,
-  notice: 'Lokaler Testdatensatz: echte Lernziel- und Aufgabentexte, vorläufige Prototypgruppierungen und fiktive Ergebnisse. Die implizite Anzeige demonstriert die Mengenformel; sie behauptet keinen neu freigegebenen Anerkennungsvertrag. Nur A und Q zählen zu den insgesamt 2 Zielen. Vorbereitungen und das vollständige zusätzliche Kartendeck bleiben außerhalb dieses Umfangs.',
+  notice: 'Lokaler Testdatensatz: echte Lernziel- und Aufgabentexte, vorläufige Prototypgruppierungen und fiktive Ergebnisse. Das Minus zeigt entfallene Vorbereitung im Abschnitt. Nur A und Q zählen zu den insgesamt 2 Zielen. Vorbereitungen und das vollständige zusätzliche Kartendeck bleiben außerhalb dieses Umfangs.',
 }

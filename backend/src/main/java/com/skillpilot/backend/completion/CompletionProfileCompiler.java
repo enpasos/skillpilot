@@ -126,6 +126,12 @@ public final class CompletionProfileCompiler {
             Set<String> resolvedScopeTargetIds,
             Set<String> level2TargetIds,
             String curriculumGeneration) {
+        return compileAutomaticProfile(definition, canonicalGoals, resolvedScopeTargetIds, level2TargetIds, curriculumGeneration, Set.of());
+    }
+
+    CompiledCompletionProfile compileAutomaticProfile(CompletionProfileDefinition definition,
+            Map<String, LearningGoal> canonicalGoals, Set<String> resolvedScopeTargetIds, Set<String> level2TargetIds,
+            String curriculumGeneration, Set<String> voluntaryAssessments) {
         if (definition == null || definition.schemaVersion() != 1 || !text(definition.id())
                 || !text(definition.revision()) || !text(definition.levelScopeRef())
                 || !text(definition.title().get("de")) || !text(definition.title().get("en"))) {
@@ -133,11 +139,18 @@ public final class CompletionProfileCompiler {
         }
         CompiledAutomaticCompletion graph = compileAutomatic(canonicalGoals, resolvedScopeTargetIds,
                 level2TargetIds, curriculumGeneration);
+        if (!graph.assessmentGoalIds().containsAll(voluntaryAssessments) || !resolvedScopeTargetIds.containsAll(voluntaryAssessments)) {
+            fail("INVALID_PROFILE", "Voluntary assessments must be actual assessment targets of this section");
+        }
+        var required = new TreeSet<>(graph.assessmentGoalIds());
+        var obligations = new TreeSet<>(graph.protectedGoalIds());
+        required.removeAll(voluntaryAssessments);
+        obligations.removeAll(voluntaryAssessments);
         return new CompiledCompletionProfile(definition, curriculumGeneration, graph.goalIds(),
                 java.util.stream.IntStream.range(0, graph.size()).mapToObj(graph::prerequisiteIndices)
                         .toArray(int[][]::new),
-                graph.order(), graph.targetGoalIds(), graph.assessmentGoalIds(), graph.protectedGoalIds(),
-                List.of(), true);
+                graph.order(), graph.targetGoalIds(), graph.assessmentGoalIds(), obligations,
+                List.of(), true, required);
     }
 
     /**

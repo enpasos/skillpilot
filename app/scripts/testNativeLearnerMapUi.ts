@@ -360,7 +360,7 @@ try {
   const vectorUnit = page.locator(`.lum-node[data-entry-id="${section.vectors}"]`)
   assert.equal(await vectorUnit.locator('.lum-node-meta').innerText(), 'Einheit · 1/3 mit Nachweis')
   assert.equal(await vectorUnit.locator('.lum-node-progress').getAttribute('aria-label'),
-    '1 direkt nachgewiesen, 0 fachlich angerechnet, 0 für diesen Auftrag nicht mehr erforderlich, 2 offen.',
+    '1 direkt nachgewiesen, 0 fachlich angerechnet, 0 für diesen Abschnitt nicht mehr erforderlich, 2 offen.',
     'the unit reports its one directly demonstrated goal and the two goals still open')
   const [vectorsBox, analysisBox] = await Promise.all([node(page, section.vectors).boundingBox(), node(page, section.analysis).boundingBox()])
   assert.ok(vectorsBox && analysisBox && vectorsBox.x + vectorsBox.width < analysisBox.x,
@@ -554,36 +554,39 @@ try {
   assert.deepEqual(failed.unexpected, [])
   await failed.context.close()
 
-  stage = 'a unit too large for a graph is a compact list with the same selection contract'
+  stage = 'a 205-goal board supports graph navigation, evidence, search and keyboard selection'
   const unitMap = await open(1440)
   const unitPage = unitMap.page
-  await unitPage.goto(`${origin}/scripts/fixtures/learnerUnitMapUi.html?mode=list`)
+  await unitPage.goto(`${origin}/scripts/fixtures/learnerUnitMapUi.html?mode=large`)
   const largeUnit = 'composition:fx-phys:structure:physics-seki'
   await scope(unitPage, largeUnit)
-  const list = unitPage.getByTestId('learning-map-compact-list')
-  await list.waitFor()
-  assert.ok((await list.getByRole('note').innerText()).includes('noch nicht weiter unterteilt'), 'the list explains that the unit is not subdivided yet')
-  assert.equal(await list.locator('.lum-list-item').count(), 205)
-  assert.equal(await unitPage.locator('.react-flow__node').count(), 0, 'no graph layout for the large board')
-  assert.equal(await unitPage.getByRole('button', { name: 'Diese Ebene einpassen', exact: true }).count(), 0)
-  assert.equal(await node(unitPage, 'force-003').getAttribute('aria-pressed'), 'true', 'the selected goal is revealed in the list')
-  assert.equal(await list.locator('[data-entry-id="force-002"]').getAttribute('data-active-goal'), 'true', 'the active goal stays marked')
-  assert.equal(await list.locator('[data-entry-id="force-001"] .lum-node-state').getAttribute('class'), 'lum-node-icon lum-node-state is-explicit',
-    'progress is shown on list rows')
-  await node(unitPage, 'force-150').click()
+  const searchGoal = async (title: string) => {
+    const search = unitPage.getByRole('textbox', { name: 'In dieser Ebene suchen' })
+    await search.fill(title)
+    await search.press('Enter')
+  }
+  const fitGraph = unitPage.getByRole('button', { name: 'Diese Ebene einpassen', exact: true })
+  await fitGraph.waitFor()
+  await unitPage.locator('[data-entry-id="force-003"] .lum-node-main[aria-pressed="true"]').waitFor()
+  await searchGoal('Kraft 2')
+  await unitPage.locator('[data-entry-id="force-002"][data-active-goal="true"]').waitFor()
+  await searchGoal('Kraft 1')
+  await unitPage.locator('[data-entry-id="force-001"]').getByTestId('learning-map-direct-evidence').waitFor()
+  await searchGoal('Kraft 150')
+  await node(unitPage, 'force-150').press('Enter')
   await unitPage.getByTestId('unit-map-selected').filter({ hasText: 'force-150' }).waitFor()
   assert.equal(await node(unitPage, 'force-150').getAttribute('aria-pressed'), 'true')
   await unitPage.getByRole('button', { name: 'Eine Ebene auftauchen', exact: true }).click()
   await scope(unitPage, mapRoot)
-  assert.equal(await list.count(), 0, 'small boards stay graphs')
   await node(unitPage, largeUnit).dblclick({ delay: 100 })
   await scope(unitPage, largeUnit)
+  await searchGoal('Kraft 10')
   await node(unitPage, 'force-010').dblclick({ delay: 100, modifiers: ['Shift'] })
   await scope(unitPage, mapRoot)
   await unitPage.screenshot({ path: join(artifacts, '04-unit-map-root.png') })
   await node(unitPage, largeUnit).dblclick({ delay: 100 })
   await scope(unitPage, largeUnit)
-  await unitPage.screenshot({ path: join(artifacts, '05-unit-map-list.png') })
+  await unitPage.screenshot({ path: join(artifacts, '05-large-unit-graph.png') })
 
   stage = 'ordinary large boards retain a readable starting point and an explicit overview'
   for (const hydrate of [false, true]) {
