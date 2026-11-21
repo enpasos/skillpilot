@@ -14,6 +14,7 @@ import { LearnerActiveGoalBanner } from '../components/LearnerActiveGoalBanner'
 import { LevelCompletionCard } from '../components/LevelCompletionCard'
 import { UnitAssessmentSummary } from '../components/UnitAssessmentSummary'
 import { LearnerUnitAssignment } from '../components/LearnerUnitAssignment'
+import { StoredUnitAssignments } from '../components/StoredUnitAssignments'
 import { Settings, Database, Menu, X, Target, Send, Check, MoveRight, BookOpen, ClipboardCheck, PanelLeftClose, PanelLeftOpen, Map as MapIcon, Construction } from 'lucide-react'
 import { InfoModal } from '../components/InfoModal'
 import { LogoutButton } from '../components/LogoutButton'
@@ -3439,6 +3440,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const unitAssignmentControl = skillpilotId && levelCompletion?.calculationStatus === 'valid' && assessment && unitLandscapeId
     ? <LearnerUnitAssignment key={skillpilotId + ':' + assessment.sectionGoalId} learnerId={skillpilotId} landscapeId={unitLandscapeId}
         assessment={assessment} completion={levelCompletion} language={localizedLanguage} goalTitle={completionGoalTitle}
+        storedAssignments={localizedLearningPlans?.storedUnitAssignments}
         disabled={learnerStateLoadStatus !== 'ready' || completionActionBusy} onSaved={retryLearningPlans} />
     : null
   const unitAssessmentSummary = levelCompletion?.calculationStatus === 'valid' && levelCompletion.unitAssessment ? {
@@ -4216,6 +4218,10 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                 ) : null}
               </section>
             )}
+            {skillpilotId && localizedLearningPlans?.storedUnitAssignments && localizedLearningPlans.storedUnitAssignments.length > 0 && <StoredUnitAssignments
+              key={skillpilotId} learnerId={skillpilotId} assignments={localizedLearningPlans.storedUnitAssignments}
+              language={localizedLanguage} disabled={learningPlansLoadStatus !== 'ready' || learningPlanActionsBlocked}
+              sectionTitle={completionGoalTitle} subjectTitle={id => learningPlanSubjectLabels.get(id)} onRefresh={retryLearningPlans} />}
           </div>
         </div>
       </main>

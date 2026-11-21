@@ -119,6 +119,18 @@ public class LearnerLearningPlanController {
                 .body(detail);
     }
 
+    @PutMapping(value = "/{planId}/unit-assignment-activity", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Void> setUnitAssignmentActivity(@PathVariable String skillpilotId, @PathVariable UUID planId,
+            @RequestBody LearnerLearningPlanApi.UnitAssignmentActivity request,
+            HttpServletResponse response) {
+        noStore(response);
+        lifecycle.withActivity(skillpilotId, () -> {
+            learners.assertWritableLearningSession(skillpilotId);
+            learningPlans.setUnitAssignmentActivity(skillpilotId, planId, request);
+        });
+        return ResponseEntity.noContent().cacheControl(CacheControl.noStore()).build();
+    }
+
     /** POST carries unsaved drafts, but does not count as learner activity or mutate state. */
     @PostMapping(value = "/preview", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<LearnerLearningPlanApi.PreviewResponse> previewPlans(

@@ -1647,6 +1647,59 @@ class LearnerLearningPlanServiceIntegrationTest {
         assertThat(service.getTodayStatus(LEARNER_ID, "de").resumeAvailable()).isTrue();
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = {"active", "completed", "unavailable"})
+    void pauseAndReactivateOnlyTheExactStoredUnitWithoutLosingEvidence(String state) throws Exception {
+        learner.setSelectedCurriculum(CURRICULUM_ID);
+        when(learnerService.isUnitAssignmentSubjectSelected(learner, PHYSICS_LANDSCAPE_ID)).thenReturn(true);
+        var part = new LearnerLearningPlanApi.UnitAssignmentPart("atom-p", Map.of("de", "Teil"), !"active".equals(state), true, false);
+        var unit = new LearnerLearningPlanApi.UnitAssignmentOption("section", "v1", "sha256:" + "a".repeat(64),
+                Map.of("de", "Einheit"), part.passed(), List.of(part));
+        var other = new LearnerLearningPlanApi.UnitAssignmentOption("other", "v1", "sha256:" + "b".repeat(64),
+                unit.title(), part.passed(), List.of(part));
+        when(learnerService.getUnitAssignmentOptions(LEARNER_ID, PHYSICS_LANDSCAPE_ID)).thenReturn(List.of(unit, other));
+        var a = new LearnerLearningPlanApi.Block("first", "learning", null, "Einheit", TODAY, TODAY, null,
+                List.of(part.goalId()), List.of(unit.sectionGoalId()), true, unit.binding());
+        var b = new LearnerLearningPlanApi.Block("other", "learning", null, a.title(), TODAY, TODAY, null,
+                a.atomicGoalIds(), List.of(other.sectionGoalId()), true, other.binding());
+        var atom = learning("atom", "2026-09-07", "2026-09-07", "atom-q");
+        var initial = service.upsert(LEARNER_ID, PHYSICS_LANDSCAPE_ID,
+                new LearnerLearningPlanApi.UpsertRequest(0L, "Physik", List.of(a, b, atom)), TODAY);
+        var stored = planRepository.findById(initial.planId()).orElseThrow();
+        var originalJson = objectMapper.readTree(stored.getBlocksJson());
+        var pause = new LearnerLearningPlanApi.UnitAssignmentActivity(initial.revision(), a.id(), false);
+        if ("unavailable".equals(state)) when(learnerService.getUnitAssignmentOptions(LEARNER_ID, PHYSICS_LANDSCAPE_ID)).thenReturn(List.of());
+        assertStatus(() -> service.setUnitAssignmentActivity("another-learner", initial.planId(), pause), HttpStatus.NOT_FOUND);
+        assertStatus(() -> service.setUnitAssignmentActivity(LEARNER_ID, initial.planId(), new LearnerLearningPlanApi.UnitAssignmentActivity(initial.revision(), atom.id(), false)), HttpStatus.NOT_FOUND);
+        service.setUnitAssignmentActivity(LEARNER_ID, initial.planId(), pause);
+        assertStatus(() -> service.setUnitAssignmentActivity(LEARNER_ID, initial.planId(), new LearnerLearningPlanApi.UnitAssignmentActivity(initial.revision(), b.id(), false)), HttpStatus.CONFLICT);
+        var paused = service.getPlan(LEARNER_ID, PHYSICS_LANDSCAPE_ID, TODAY);
+        assertThat(paused.revision()).isEqualTo(initial.revision() + 1);
+        var pausedBlock = paused.blocks().stream().filter(block -> a.id().equals(block.id())).findFirst().orElseThrow();
+        assertThat(pausedBlock.withActive(true)).isEqualTo(initial.blocks().stream().filter(block -> a.id().equals(block.id())).findFirst().orElseThrow());
+        assertThat(pausedBlock.isActive()).isFalse();
+        var expectedJson = originalJson.deepCopy();
+        expectedJson.forEach(node -> { if (a.id().equals(node.get("id").asText())) ((com.fasterxml.jackson.databind.node.ObjectNode) node).put("active", false); });
+        assertThat(objectMapper.readTree(planRepository.findById(initial.planId()).orElseThrow().getBlocksJson())).isEqualTo(expectedJson);
+        var listed = service.getPlans(LEARNER_ID, TODAY).storedUnitAssignments();
+        assertThat(listed).hasSize(2);
+        assertThat(listed).filteredOn(item -> a.id().equals(item.blockId())).singleElement().satisfies(item -> {
+            assertThat(item.active()).isFalse();
+            assertThat(item.canReactivate()).isEqualTo(!"unavailable".equals(state));
+            assertThat(item.revision()).isEqualTo(paused.revision());
+        });
+        var resume = new LearnerLearningPlanApi.UnitAssignmentActivity(paused.revision(), a.id(), true);
+        var newer = new LearnerLearningPlanApi.UnitAssignmentOption(unit.sectionGoalId(), "v2", other.fingerprint(),
+                unit.title(), part.passed(), List.of(part));
+        when(learnerService.getUnitAssignmentOptions(LEARNER_ID, PHYSICS_LANDSCAPE_ID)).thenReturn(List.of(newer, other));
+        assertStatus(() -> service.setUnitAssignmentActivity(LEARNER_ID, initial.planId(), resume), HttpStatus.CONFLICT);
+        when(learnerService.getUnitAssignmentOptions(LEARNER_ID, PHYSICS_LANDSCAPE_ID)).thenReturn(List.of(unit, other));
+        assertThat(service.getPlans(LEARNER_ID, TODAY).storedUnitAssignments()).anyMatch(item -> item.blockId().equals(a.id()) && item.canReactivate());
+        service.setUnitAssignmentActivity(LEARNER_ID, initial.planId(), resume);
+        assertThat(objectMapper.readTree(planRepository.findById(initial.planId()).orElseThrow().getBlocksJson())).isEqualTo(originalJson);
+        assertThat(service.getPlan(LEARNER_ID, PHYSICS_LANDSCAPE_ID, TODAY).revision()).isEqualTo(paused.revision() + 1);
+    }
+
     @Test
     void orderedUnitAllowsSeparatelyDueWorkWithoutOpeningUnplannedOrFutureGoals() {
         learner.setSelectedCurriculum(CURRICULUM_ID);

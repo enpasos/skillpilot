@@ -799,7 +799,56 @@ public class LearnerLearningPlanService {
                 .map(plan -> safeSummary(skillpilotId, plan, asOf, enabled, learner.getActiveGoalId(), mastery, fulfillment))
                 .filter(Objects::nonNull)
                 .toList();
-        return new LearnerLearningPlanApi.CollectionResponse(asOf, enabled, summaries, status);
+        var assignments = storedPlans.stream().flatMap(plan -> editableUnitAssignments(learner, plan).stream()).toList();
+        return new LearnerLearningPlanApi.CollectionResponse(asOf, enabled, summaries, status, assignments);
+    }
+
+    private List<LearnerLearningPlanApi.StoredUnitAssignment> editableUnitAssignments(Learner learner, LearnerLearningPlan plan) {
+        List<LearnerLearningPlanApi.Block> blocks;
+        try {
+            blocks = readStoredBlocks(plan);
+        } catch (ResponseStatusException failure) {
+            if (failure.getStatusCode().value() != 409) throw failure;
+            return List.of(); // An unreadable stored block has no safe editor identity.
+        }
+        Set<String> blockIds = new HashSet<>();
+        if (blocks.stream().anyMatch(block -> block.id() == null || !blockIds.add(block.id()))) return List.of();
+        var units = blocks.stream().filter(block -> "learning".equals(block.kind()) && block.unitAssignment() != null
+                && block.unitAssignment().sectionGoalId() != null).toList();
+        var options = units.stream().anyMatch(block -> !block.isActive())
+                && Objects.equals(learner.getSelectedCurriculum(), plan.getCurriculumId())
+                ? learners.getUnitAssignmentOptions(learner.getSkillpilotId(), plan.getLandscapeId())
+                : List.<LearnerLearningPlanApi.UnitAssignmentOption>of();
+        return units.stream().map(block -> new LearnerLearningPlanApi.StoredUnitAssignment(plan.getId(), plan.getRevision(),
+                plan.getLandscapeId(), block.id(), block.unitAssignment().sectionGoalId(), block.title(), block.isActive(),
+                !block.isActive() && options.stream().anyMatch(option -> option.matches(block)))).toList();
+    }
+
+    /** A pause edits only the selected stored block, even after its material or subject left the offer. */
+    @Transactional
+    public void setUnitAssignmentActivity(String learnerId, UUID planId, LearnerLearningPlanApi.UnitAssignmentActivity request) {
+        if (request == null || request.active() == null) throw badRequest("active is required");
+        String blockId = requireText(request.blockId(), "blockId", 120);
+        long expectedRevision = requireExpectedRevision(request.expectedRevision());
+        learners.acquireLearningPlanMutationLock(learnerId);
+        var plan = requireCurrentPlan(learnerId, planId, expectedRevision);
+        var blocks = new ArrayList<>(readStoredBlocks(plan));
+        var matches = blocks.stream().filter(item -> blockId.equals(item.id())).toList();
+        if (matches.size() > 1) throw conflict("Stored block ID is ambiguous");
+        if (matches.isEmpty() || !"learning".equals(matches.getFirst().kind()) || matches.getFirst().unitAssignment() == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Stored unit assignment not found");
+        }
+        var block = matches.getFirst();
+        if (block.isActive() == request.active()) return;
+        if (request.active() && (!Objects.equals(learners.getLearner(learnerId).getSelectedCurriculum(), plan.getCurriculumId())
+                || learners.getUnitAssignmentOptions(learnerId, plan.getLandscapeId()).stream().noneMatch(option -> option.matches(block)))) {
+            throw conflict("The stored unit assignment is not available in this curriculum and edition");
+        }
+        blocks.set(blocks.indexOf(block), block.withActive(request.active()));
+        plan.setBlocksJson(writeBlocks(blocks));
+        plan.setRevision(expectedRevision + 1);
+        plans.saveAndFlush(plan);
+        eventPublisher.publishEvent(new LearnerStateChangedEvent(this, learnerId, "LEARNING_PLAN_UPDATE"));
     }
 
     private LearnerLearningPlanApi.PlanSummary safeSummary(
@@ -3035,9 +3084,7 @@ public class LearnerLearningPlanService {
         if (!hasActiveUnitAssignment(blocks)) return List.of();
         var current = learners.getUnitAssignmentOptions(learnerId, landscape);
         return blocks.stream().filter(block -> block.isActive() && block.unitAssignment() != null)
-                .map(block -> new AssignmentState(block, current.stream().filter(option -> option.binding().equals(block.unitAssignment())
-                        && option.parts().stream().map(LearnerLearningPlanApi.UnitAssignmentPart::goalId).toList()
-                                .equals(block.atomicGoalIds())).findFirst().orElse(null))).toList();
+                .map(block -> new AssignmentState(block, current.stream().filter(option -> option.matches(block)).findFirst().orElse(null))).toList();
     }
 
     private record AssignmentState(LearnerLearningPlanApi.Block block, LearnerLearningPlanApi.UnitAssignmentOption option) {

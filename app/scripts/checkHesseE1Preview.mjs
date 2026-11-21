@@ -379,6 +379,78 @@ async function checkEvidenceMap(page, duration) {
   console.log(duration, 'E.1-Karte: vier direkte Prüfungsbelege, genau zwei graue Häkchen, beide übrigen Beispielziele ohne Beleg OK')
 }
 
+async function checkStoredAssignmentActivity(duration) {
+  const physics = scope.landscapeId
+  const math = '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced'
+  for (const [route, profile, temporarilyDeselect] of [
+    ['CD', 'unitCD', false], ['ABCD', 'unitABCD', false], ['gemischt', 'mixed', false], ['CD', 'unitCD', true],
+  ]) {
+    const id = profiles[duration][profile]
+    const plan = () => readApi(id, '/learning-plans/by-landscape?landscapeId=' + physics)
+    const results = () => Promise.all([readApi(id, '/mastery'), ...unitPartIds.map(goal => readApi(id, '/exam-passes/' + goal))])
+    const original = await plan()
+    const before = await results()
+    const block = original.blocks.find(item => item.unitAssignment)
+    assert(block && block.active !== false)
+    // The public editor accepts landscape choices. Flow completion is read and selected through its own API.
+    const originalConfig = temporarilyDeselect ? Object.fromEntries(Object.entries(JSON.parse((await readApi(id, '')).personalCurriculum))
+      .filter(([, item]) => typeof item.selected === 'boolean')) : undefined
+    let selectionChanged = false
+    const setConfig = async config => {
+      const response = await fetch(api + '/api/ui/learners/' + id + '/personal-curriculum', {
+        method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(config),
+      })
+      assert.equal(response.status, 200)
+      let flow = await readApi(id, '/personalization-plan')
+      for (let step = 0; step < 15 && flow.stage !== 'COMPLETE'; step++) {
+        const option = flow.options.find(item => item.kind === 'COMPLETE_GROUP') ?? flow.options.find(item => item.filterId === 'GK')
+        assert(option, 'Expected an authored completion or GK option')
+        const selected = await fetch(api + '/api/ui/learners/' + id + '/personalization-options', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ optionId: option.optionId }),
+        })
+        assert.equal(selected.status, 200)
+        flow = await selected.json()
+      }
+      assert.equal(flow.stage, 'COMPLETE')
+    }
+    const page = await browser.newPage({ viewport: { width: 1024, height: 900 }, serviceWorkers: 'block' })
+    try {
+      if (originalConfig) {
+        selectionChanged = true
+        await setConfig({ ...originalConfig, [physics]: { ...originalConfig[physics], selected: false }, [math]: { selected: true, filterId: 'GK' } })
+        assert.deepEqual(await readApi(id, '/learning-plans/' + physics + '/unit-assignments'), [])
+      }
+      await page.goto(site + '/auftraege/' + duration + '/' + route)
+      const manager = page.getByTestId('stored-unit-assignments')
+      const row = manager.locator('[data-block-id="' + block.id + '"]')
+      await row.getByRole('button', { name: 'Einheitenauftrag pausieren', exact: true }).click()
+      if (originalConfig) {
+        await row.getByText('Pausiert. Diese Auftragsfassung ist derzeit nicht verfügbar.', { exact: true }).waitFor()
+        assert.equal(await row.getByRole('button').count(), 0)
+        await setConfig(originalConfig)
+        selectionChanged = false
+        await page.reload()
+      }
+      const resume = row.getByRole('button', { name: 'Einheitenauftrag wieder aktivieren', exact: true })
+      await resume.waitFor()
+      const paused = await plan()
+      assert.equal(paused.revision, original.revision + 1)
+      assert.deepEqual(paused.blocks, original.blocks.map(item => item.id === block.id ? { ...item, active: false } : item))
+      assert.deepEqual(await results(), before)
+      await resume.click()
+      await row.getByRole('button', { name: 'Einheitenauftrag pausieren', exact: true }).waitFor()
+      const restored = await plan()
+      assert.equal(restored.revision, original.revision + 2)
+      assert.deepEqual(restored.blocks, original.blocks.map(item => item.id === block.id ? { ...item, active: true } : item))
+      assert.deepEqual(await results(), before)
+      console.log(duration, route, temporarilyDeselect ? 'ohne verfügbares Fachangebot' : '', 'Einheitenauftrag pausiert und reaktiviert; Originalblöcke, Belege und Mastery bestätigt.')
+    } finally {
+      if (selectionChanged) await setConfig(originalConfig)
+      await page.close()
+    }
+  }
+}
+
 async function checkUnitAssignments(duration) {
   const physics = scope.landscapeId
   for (const [route, profile, passed] of [['offen', 'unitOpen', 0], ['CD', 'unitCD', 2], ['ABCD', 'unitABCD', 4], ['gemischt', 'mixed', 4]]) {
@@ -610,6 +682,7 @@ try {
     await checkUnitAssignments(duration)
     await checkPlanSelection(duration, false)
     await checkPlanSelection(duration, true)
+    await checkStoredAssignmentActivity(duration)
     for (const part of ['A', 'B']) await check(duration, part, 'de', true)
   }
 } finally {
