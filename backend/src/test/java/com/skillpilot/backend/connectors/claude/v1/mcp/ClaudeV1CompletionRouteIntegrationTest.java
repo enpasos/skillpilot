@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.api.LevelCompletionActionRequest;
 import com.skillpilot.backend.api.CompletionAssessmentStart;
 import com.skillpilot.backend.api.UnitAssessmentResponse;
+import com.skillpilot.backend.api.LevelCompletionResponse;
 import com.skillpilot.backend.api.LearnerLearningPlanApi;
 import com.skillpilot.backend.completion.AssessmentMaterialRevision;
 import com.skillpilot.backend.service.VerifiedExamPassService;
@@ -181,9 +182,16 @@ class ClaudeV1CompletionRouteIntegrationTest {
         return selectHessianMotionUnit(duration, "CrossStage");
     }
 
+    private static final String WURF_EXTRA = "6ea3fb3c-abdc-568f-ab13-97c36dc274e4";
+    private static final String MULTIPHASE_EXTRA = "2b9e565f-d9b4-5e23-b5b7-b7977cecff06";
+
     private String selectHessianMotionUnit(String duration, String stage) throws Exception {
+        return selectHessianMotionUnit(duration, stage, "GK");
+    }
+
+    private String selectHessianMotionUnit(String duration, String stage, String course) throws Exception {
         learners.chooseLevelCompletion(learnerId, new LevelCompletionActionRequest("leaveProfile", PROFILE, null, null, version()));
-        return configureHessianMotionUnit(duration, stage, "GK");
+        return configureHessianMotionUnit(duration, stage, course);
     }
 
     private String configureHessianMotionUnit(String duration, String stage, String course) throws Exception {
@@ -209,9 +217,9 @@ class ClaudeV1CompletionRouteIntegrationTest {
     }
 
     @ParameterizedTest
-    @CsvSource({"G8,CrossStage", "G9,CrossStage", "G8,SekII", "G9,SekII"})
-    void hessianMotionAssessmentNeedsFourVersionedExamPassesAndKeepsIndividualGoalsOpen(String duration, String stage) throws Exception {
-        String section = selectHessianMotionUnit(duration, stage);
+    @CsvSource({"G8,CrossStage,GK", "G9,CrossStage,GK", "G8,SekII,GK", "G9,SekII,GK", "G8,SekII,LK", "G9,SekII,LK"})
+    void hessianMotionAssessmentNeedsFourVersionedExamPassesAndKeepsIndividualGoalsOpen(String duration, String stage, String course) throws Exception {
+        String section = selectHessianMotionUnit(duration, stage, course);
         record Exam(String goalId, int passingPoints, int maximum) {}
         var parts = List.of(new Exam("ee7d5f3d-858f-59d6-89b0-e5a7f437f458", 14, 17),
                 new Exam("39f52dcb-ff1d-5cad-9ccb-30da803cfa85", 15, 18),
@@ -276,10 +284,9 @@ class ClaudeV1CompletionRouteIntegrationTest {
             assertThat(completion.complete()).isEqualTo(allPassed);
             assertThat(completion.requiredAssessmentCount()).isEqualTo(4);
             assertThat(completion.assessments()).filteredOn(item -> Boolean.TRUE.equals(item.voluntary()))
-                    .singleElement().satisfies(item -> {
-                        assertThat(item.goalId()).isEqualTo("6ea3fb3c-abdc-568f-ab13-97c36dc274e4");
-                        assertThat(item.startAvailable()).isTrue();
-                    });
+                    .allMatch(LevelCompletionResponse.Assessment::startAvailable)
+                    .extracting(LevelCompletionResponse.Assessment::goalId)
+                    .containsExactlyInAnyOrderElementsOf("LK".equals(course) ? List.of(WURF_EXTRA, MULTIPHASE_EXTRA) : List.of(WURF_EXTRA));
             assertThat(completion.masteredAssessmentCount()).isEqualTo(passed.size());
             var updated = context();
             var compact = mapper.valueToTree(map(map(updated, "levelCompletion"), "unitAssessment"));
@@ -886,11 +893,12 @@ class ClaudeV1CompletionRouteIntegrationTest {
     }
 
     @ParameterizedTest
-    @CsvSource({"G8,SekII,16", "G9,SekII,16", "G8,CrossStage,15", "G9,CrossStage,15"})
-    void supplementaryAssessmentRequiresExplicitSelectionInAnIndividualPlan(String duration, String stage, int expected) throws Exception {
-        String section = selectHessianMotionUnit(duration, stage);
+    @CsvSource({"G8,SekII,GK,16", "G9,SekII,GK,16", "G8,CrossStage,GK,15", "G9,CrossStage,GK,15",
+            "G8,SekII,LK,16", "G9,SekII,LK,16"})
+    void supplementaryAssessmentRequiresExplicitSelectionInAnIndividualPlan(String duration, String stage, String course, int expected) throws Exception {
+        String section = selectHessianMotionUnit(duration, stage, course);
         String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
-        String extra = "6ea3fb3c-abdc-568f-ab13-97c36dc274e4";
+        String extra = "LK".equals(course) ? MULTIPHASE_EXTRA : WURF_EXTRA;
         var today = java.time.LocalDate.now(java.time.ZoneId.of("Europe/Berlin"));
         var monday = today.with(java.time.DayOfWeek.MONDAY);
         var sunday = monday.plusDays(6);
@@ -898,7 +906,7 @@ class ClaudeV1CompletionRouteIntegrationTest {
         var individual = List.of(section, extra);
         var required = learners.resolveLearningPlanGoalIds(learnerId, physics, sectionRoots);
         var all = learners.resolveLearningPlanGoalIds(learnerId, physics, individual);
-        assertThat(required).hasSize(expected).doesNotContain(extra);
+        assertThat(required).hasSize(expected).doesNotContain(WURF_EXTRA, MULTIPHASE_EXTRA);
         assertThat(all).containsExactlyInAnyOrderElementsOf(
                 java.util.stream.Stream.concat(required.stream(), java.util.stream.Stream.of(extra)).toList());
         assertThat(learners.resolveLearningPlanGoalIds(learnerId, physics, List.of(extra))).containsExactly(extra);
@@ -1070,11 +1078,12 @@ class ClaudeV1CompletionRouteIntegrationTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"G8", "G9"})
-    void optionalSectionExamCanBeChosenAndPassedWithoutCompletingAUnitPart(String duration) throws Exception {
-        String section = selectHessianMotionUnit(duration, "SekII");
+    @CsvSource({"G8,GK", "G9,GK", "G8,LK", "G9,LK"})
+    void optionalSectionExamCanBeChosenAndPassedWithoutCompletingAUnitPart(String duration, String course) throws Exception {
+        String section = selectHessianMotionUnit(duration, "SekII", course);
         String profile = "automatic:" + section;
-        String extra = "6ea3fb3c-abdc-568f-ab13-97c36dc274e4";
+        boolean advanced = "LK".equals(course);
+        String extra = advanced ? MULTIPHASE_EXTRA : WURF_EXTRA;
         var sections = learners.getLearnerState(learnerId).levelCompletion().profileOptions();
         assertThat(sections).filteredOn(option -> profile.equals(option.profileId())).singleElement().satisfies(option -> {
             assertThat(option.requiredAssessmentCount()).isEqualTo(4);
@@ -1089,7 +1098,8 @@ class ClaudeV1CompletionRouteIntegrationTest {
         authenticate();
         successful(ClaudeV1CompletionContractRegistry.TOOL_CONFIRM,
                 Map.of("receiptCapability", map(context(), "completionContract").get("receiptCapability")));
-        String start = choice(context(), "Freiwillige Zusatzprüfung versuchen: Waagerechter Wurf");
+        String start = choice(context(), "Freiwillige Zusatzprüfung versuchen: "
+                + (advanced ? "Mehrphasenbewegung" : "Waagerechter Wurf"));
         successful(ClaudeV1McpContractAdapter.TOOL_CHOOSE_COMPLETION_ROUTE,
                 writeArgs("voluntary-start", version(), Map.of("choice", start)));
         assertThat(map(context(), "activeGoal")).containsEntry("id", extra);
@@ -1100,8 +1110,8 @@ class ClaudeV1CompletionRouteIntegrationTest {
         var completed = learners.getLearnerState(learnerId).levelCompletion();
         assertThat(completed.requiredAssessmentCount()).isEqualTo(4);
         assertThat(completed.masteredAssessmentCount()).isZero();
-        assertThat(completed.assessments()).filteredOn(item -> Boolean.TRUE.equals(item.voluntary())).singleElement()
-                .satisfies(item -> { assertThat(item.mastered()).isTrue(); assertThat(item.startAvailable()).isFalse(); });
+        assertThat(completed.assessments()).filteredOn(item -> Boolean.TRUE.equals(item.voluntary()) && item.mastered()).singleElement()
+                .satisfies(item -> { assertThat(item.goalId()).isEqualTo(extra); assertThat(item.startAvailable()).isFalse(); });
         assertThat(completed.unitAssessment().parts()).noneMatch(UnitAssessmentResponse.Part::passed);
         assertThat(learners.getUnitPlanningCredits(learnerId)).isEmpty();
         assertThat(examPasses.findForGoals(learnerId, List.of(extra)).get(extra)).hasSize(1);
@@ -1109,7 +1119,7 @@ class ClaudeV1CompletionRouteIntegrationTest {
         org.springframework.test.util.ReflectionTestUtils.setField(learners, "unitAssessmentPilotEnabled", false);
         try {
             var ordinary = learners.getLearnerState(learnerId).levelCompletion();
-            assertThat(ordinary.requiredAssessmentCount()).isEqualTo(5);
+            assertThat(ordinary.requiredAssessmentCount()).isEqualTo(advanced ? 6 : 5);
             assertThat(ordinary.masteredAssessmentCount()).isOne();
             assertThat(ordinary.assessments()).allMatch(item -> item.voluntary() == null);
         } finally {

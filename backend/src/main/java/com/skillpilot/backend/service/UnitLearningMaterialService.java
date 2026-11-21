@@ -10,6 +10,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Collection;
@@ -22,7 +23,25 @@ public final class UnitLearningMaterialService {
     public record AssessmentBinding(String landscapeId, String viewId, String compositionNodeId,
             UnitAssessmentContract contract) {}
     public record Intro(String question, String promise) {}
-    public record SectionAssessmentPolicy(String unitContractRevision, String requiredPartsFingerprint, List<String> voluntaryAssessmentGoalIds) {}
+    public record SectionAssessmentPolicy(String unitContractRevision, String requiredPartsFingerprint,
+            List<String> voluntaryAssessmentGoalIds, Map<String, List<String>> additionalVoluntaryAssessmentGoalIdsByView) {
+        public SectionAssessmentPolicy {
+            voluntaryAssessmentGoalIds = List.copyOf(voluntaryAssessmentGoalIds);
+            var bound = new HashMap<String, List<String>>();
+            if (additionalVoluntaryAssessmentGoalIdsByView != null) {
+                additionalVoluntaryAssessmentGoalIdsByView.forEach((view, ids) -> bound.put(view, List.copyOf(ids)));
+            }
+            additionalVoluntaryAssessmentGoalIdsByView = Map.copyOf(bound);
+        }
+
+        public List<String> voluntaryAssessmentsFor(String view) {
+            // A merged view contains the selected goals of each of its participating views.
+            var ids = new LinkedHashSet<>(voluntaryAssessmentGoalIds);
+            var components = view.startsWith("merged:") ? view.substring(7).split("\\+", -1) : new String[]{view};
+            for (String component : components) ids.addAll(additionalVoluntaryAssessmentGoalIdsByView.getOrDefault(component, List.of()));
+            return List.copyOf(ids);
+        }
+    }
     public record Material(String flashcardGoalId, String assessmentGoalId, Map<String, Intro> intro,
             Map<String, Map<String, PracticeExercise>> exercises, UnitAssessmentContract assessmentContract,
             SectionAssessmentPolicy sectionAssessmentPolicy) {
@@ -155,6 +174,19 @@ public final class UnitLearningMaterialService {
             var policy = mapper.treeToValue(unit.required("sectionAssessmentPolicy"), SectionAssessmentPolicy.class);
             var contract = unit.required("assessmentContract");
             String fingerprint = CompletionReviewBindings.canonicalHash(contract.required("parts"), mapper);
+            var viewIds = mapper.readerForListOf(String.class).<List<String>>readValue(contract.required("viewIds"));
+            var required = new LinkedHashSet<String>();
+            contract.required("parts").forEach(part -> required.add(part.required("goalId").asText()));
+            var common = policy.voluntaryAssessmentGoalIds();
+            if (!viewIds.containsAll(policy.additionalVoluntaryAssessmentGoalIdsByView().keySet())
+                    || common.size() != new LinkedHashSet<>(common).size()
+                    || Stream.concat(common.stream(),
+                            policy.additionalVoluntaryAssessmentGoalIdsByView().values().stream().flatMap(List::stream))
+                            .anyMatch(id -> id.isBlank() || required.contains(id))) return null;
+            for (var scoped : policy.additionalVoluntaryAssessmentGoalIdsByView().values()) {
+                if (scoped.isEmpty() || scoped.size() != new LinkedHashSet<>(scoped).size()
+                        || scoped.stream().anyMatch(common::contains)) return null;
+            }
             return fingerprint.equals(policy.requiredPartsFingerprint())
                     && contract.required("revision").asText().equals(policy.unitContractRevision()) ? policy : null;
         } catch (Exception invalidBinding) {

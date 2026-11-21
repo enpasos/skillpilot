@@ -382,17 +382,22 @@ public class LearnerService {
         if (binding == null || !projection.compositionViewIds().contains(binding.viewId())) return Set.of();
         var policy = unitLearningMaterialService.find(binding.landscapeId(), binding.viewId(), binding.compositionNodeId())
                 .map(UnitLearningMaterialService.Material::sectionAssessmentPolicy).orElse(null);
-        if (policy == null || !binding.contract().revision().equals(policy.unitContractRevision())
-                || policy.voluntaryAssessmentGoalIds() == null || policy.voluntaryAssessmentGoalIds().isEmpty()) return Set.of();
+        if (policy == null || !binding.contract().revision().equals(policy.unitContractRevision())) return Set.of();
         Set<String> required = binding.contract().parts().stream().map(UnitAssessmentContract.Part::goalId).collect(Collectors.toSet());
-        var optional = policy.voluntaryAssessmentGoalIds();
+        var optional = policy.voluntaryAssessmentsFor(binding.viewId());
+        if (optional.isEmpty()) return Set.of();
         if (optional.stream().anyMatch(id -> id == null || !targets.contains(id) || required.contains(id)
                 || !binding.landscapeId().equals(landscapeService.getLandscapeIdForGoal(id))
-                || !isAtomicGoal(graph.get(id)) || !CompletionProfileCompiler.isAssessment(graph.get(id)))
-                || optional.stream().distinct().count() != optional.size()) return Set.of();
+                || !isAtomicGoal(graph.get(id)) || !CompletionProfileCompiler.isAssessment(graph.get(id))
+                || !releasedSectionAssessment(graph.get(id)))) return Set.of();
         var unit = validatedUnitAssessment(binding, projection, graph, Map.of(), Set.of());
         return unit != null && unit.response().parts().stream().allMatch(UnitAssessmentResponse.Part::materialCurrent)
                 ? Set.copyOf(optional) : Set.of();
+    }
+
+    private boolean releasedSectionAssessment(LearningGoal goal) {
+        var exam = goal.getExamData();
+        return exam != null && "released".equals(exam.getReviewStatus()) && isExamDataReadyForHardCheck(exam);
     }
 
     /** A section-wide plan includes its required assessments. An explicit additional goal stays required. */
@@ -417,9 +422,9 @@ public class LearnerService {
     private boolean hasCapturedVoluntaryAssessment(String root, Collection<String> captured) {
         if (root == null || !root.startsWith("composition:")) return false;
         return unitLearningMaterialService.assessmentBindingForReference(root)
-                .flatMap(binding -> unitLearningMaterialService.find(binding.landscapeId(), binding.viewId(), binding.compositionNodeId()))
-                .map(UnitLearningMaterialService.Material::sectionAssessmentPolicy)
-                .map(UnitLearningMaterialService.SectionAssessmentPolicy::voluntaryAssessmentGoalIds)
+                .flatMap(binding -> unitLearningMaterialService.find(binding.landscapeId(), binding.viewId(), binding.compositionNodeId())
+                        .map(UnitLearningMaterialService.Material::sectionAssessmentPolicy)
+                        .map(policy -> policy.voluntaryAssessmentsFor(binding.viewId())))
                 .stream().flatMap(Collection::stream).anyMatch(captured::contains);
     }
 
