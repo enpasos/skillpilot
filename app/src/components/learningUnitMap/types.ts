@@ -5,6 +5,7 @@ export interface MapPracticeExercise {
   prompt: string
   hint: string
   solution: string
+  evidenceCriteria?: readonly string[]
 }
 
 export interface MapPracticeMaterial {

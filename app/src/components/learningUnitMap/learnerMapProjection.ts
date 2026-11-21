@@ -1,6 +1,6 @@
-import type { UiGoal } from '../../goalTypes'
+import { learnerGoalPresentationKind, type UiGoal } from '../../goalTypes'
 import { getAudienceGoalTitle } from '../../utils/treeProjectionRuntime'
-import type { LearningMapEntry, LearningMapFixture, LearningMapRelation, LearningMapRequirement, MapEntryKind } from './types'
+import type { LearningMapEntry, LearningMapFixture, LearningMapRelation, LearningMapRequirement } from './types'
 
 export interface LearnerMapProjectionInput {
   rootGoals: readonly UiGoal[]
@@ -18,13 +18,7 @@ export function learnerMapRootId(goalIndexAll: ReadonlyMap<string, UiGoal>, base
   return rootId
 }
 
-/** Map kind of a displayed tree node; a cluster stays a cluster even when its children are hidden. */
-export function learnerMapEntryKind(goal: UiGoal, original: UiGoal | undefined, visibleChildCount: number): MapEntryKind {
-  const cluster = goal.type === 'cluster' || goal.contains.length > 0 || visibleChildCount > 0
-    || original?.type === 'cluster' || (original?.contains.length ?? 0) > 0
-  return cluster ? 'cluster' : goal.nodeKind === 'exam' || goal.examData ? 'assessment'
-    : goal.nodeKind === 'memory' ? 'memory' : goal.tags?.some(tag => tag === 'motivation' || tag === 'orientation') ? 'motivation' : 'goal'
-}
+export const learnerMapEntryKind = learnerGoalPresentationKind
 
 export type LearnerRequirementResolver = ReturnType<typeof createLearnerRequirementResolver>
 

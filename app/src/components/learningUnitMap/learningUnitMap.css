@@ -123,25 +123,6 @@
   border: 1px solid #a6c2d6; border-radius: 4px; color: #275779; background: #eef5fa; font-size: 11px; font-weight: 600;
 }
 .lum-node--has-practice .lum-node-practice:hover { background: #deedf7; }
-.lum-practice-dialog {
-  box-sizing: border-box; width: min(36rem, calc(100% - 2rem)); max-height: calc(100dvh - 2rem); overflow: auto;
-  margin: auto; padding: clamp(16px, 4vw, 28px); border: 1px solid #bacdda; border-radius: 8px;
-  background: white; color: #26323d; box-shadow: 0 12px 50px #162d4540;
-  font: 16px/1.55 'Segoe UI', system-ui, sans-serif; text-align: left;
-}
-.lum-practice-dialog::backdrop { background: rgb(20 39 56 / 44%); }
-.lum-practice-dialog header { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
-.lum-practice-dialog header span { display: block; margin-bottom: 3px; color: #495f70; font-size: 13px; }
-.lum-practice-dialog h2 { margin: 0; font-size: 20px; line-height: 1.35; font-weight: 600; }
-.lum-practice-dialog header button {
-  flex: none; display: grid; place-items: center; width: 36px; height: 36px;
-  border: 1px solid #c8d7e2; border-radius: 4px; background: white; color: #39576d; cursor: pointer;
-}
-.lum-practice-dialog p { margin: 10px 0 18px; white-space: pre-line; }
-.lum-practice-dialog details { border-top: 1px solid #dce4ea; }
-.lum-practice-dialog summary { padding: 10px 0; color: #295d82; font-weight: 600; cursor: pointer; }
-.lum-practice-dialog details p { margin: 0 0 12px; }
-.lum-practice-dialog :is(button, summary):focus-visible { outline: 2px solid #347aa6; outline-offset: 2px; }
 .lum-node--motivation { border-left-color: #bd9c62; }
 .lum-node--motivation .lum-node-icon { color: #b49765; }
 .lum-node--assessment { border-left-color: #9285b6; }

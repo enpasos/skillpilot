@@ -1,8 +1,9 @@
-import { useEffect, useId, useRef } from 'react'
+import { useEffect, useId, useRef, useState } from 'react'
 import { X } from 'lucide-react'
-import type { MapPracticeExercise } from './types'
+import './GoalPracticeDialog.css'
+import type { MapPracticeExercise } from './learningUnitMap/types'
 
-export function MapPracticeDialog({ exercise, language, onDismiss }: {
+export function GoalPracticeDialog({ exercise, language, onDismiss }: {
   exercise: MapPracticeExercise
   language: 'de' | 'en'
   onDismiss: () => void
@@ -25,7 +26,22 @@ export function MapPracticeDialog({ exercise, language, onDismiss }: {
         onClick={() => ref.current?.close()}><X size={20} aria-hidden="true" /></button>
     </header>
     <p>{exercise.prompt}</p>
+    {exercise.evidenceCriteria && exercise.evidenceCriteria.length > 0 && <section>
+      <h3>{english ? 'Criteria for your evidence' : 'Kriterien für deinen Nachweis'}</h3>
+      <ul>{exercise.evidenceCriteria.map(criterion => <li key={criterion}>{criterion}</li>)}</ul>
+    </section>}
     <details><summary>{english ? 'Show a hint' : 'Hinweis anzeigen'}</summary><p>{exercise.hint}</p></details>
     <details><summary>{english ? 'Compare your solution' : 'Lösung vergleichen'}</summary><p>{exercise.solution}</p></details>
   </dialog>
+}
+
+export function GoalPracticeAction({ exercise, language }: { exercise: MapPracticeExercise; language: 'de' | 'en' }) {
+  const [open, setOpen] = useState(false)
+  return <>
+    <button type="button" onClick={() => setOpen(true)}
+      className="mt-3 min-h-11 rounded-lg border border-sky-400 px-3 py-2 text-sm font-semibold text-text-primary focus-visible:outline-2 focus-visible:outline-sky-500">
+      {language === 'en' ? 'Practice' : 'Üben'}: {exercise.title}
+    </button>
+    {open && <GoalPracticeDialog exercise={exercise} language={language} onDismiss={() => setOpen(false)} />}
+  </>
 }

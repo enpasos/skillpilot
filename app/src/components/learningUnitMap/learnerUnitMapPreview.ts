@@ -1,3 +1,4 @@
+import { isUnitMaterialSource } from '../../utils/unitLearningMaterial'
 import type { StagePlan, StagePlanStructureBinding, StagePlanUnit } from '../../utils/stagePlan'
 import type { UiGoal } from '../../goalTypes'
 import type { GoalPlacement, ProgramUnit } from '../../landscapeTypes'
@@ -8,7 +9,6 @@ import { buildLearnerUnitMapProjection, type LearnerMapMemberUnit, type LearnerM
   type LearnerMapUnitOrder, type LearnerUnitMapFixture } from './learnerUnitMapProjection'
 import { MATHEMATICS_LANDSCAPE_ID, PHYSICS_LANDSCAPE_ID, UNIT_MAP_LEARNING_MATERIALS, UNIT_MAP_PREVIEW_SUBJECT_IDS } from './learnerUnitMapPreviewSubjects'
 
-import { isUnitMaterialSource } from './unitLearningMaterialActions'
 
 export { MATHEMATICS_LANDSCAPE_ID, PHYSICS_LANDSCAPE_ID, UNIT_MAP_PREVIEW_SUBJECT_IDS } from './learnerUnitMapPreviewSubjects'
 

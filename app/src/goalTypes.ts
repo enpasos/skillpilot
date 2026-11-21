@@ -61,6 +61,14 @@ export interface UiGoal {
   nodeKind?: 'exam' | 'tutor' | 'memory'
 }
 
+/** A displayed cluster retains its kind when its children are hidden. */
+export function learnerGoalPresentationKind(goal: UiGoal, original?: UiGoal, visibleChildCount = 0) {
+  const cluster = goal.type === 'cluster' || goal.contains.length > 0 || visibleChildCount > 0
+    || original?.type === 'cluster' || (original?.contains.length ?? 0) > 0
+  return cluster ? 'cluster' : goal.nodeKind === 'exam' || goal.examData ? 'assessment'
+    : goal.nodeKind === 'memory' ? 'memory' : goal.tags?.some(tag => tag === 'motivation' || tag === 'orientation') ? 'motivation' : 'goal'
+}
+
 function demandLevelToNumber(level: string): number {
   if (level === 'AB1') return 1
   if (level === 'AB2') return 2
