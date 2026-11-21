@@ -7,6 +7,9 @@ import { isAbsolute, resolve, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { collectCompositionProjectionRoleGoalIds, type CompositionView, type CompositionViewNode } from '../src/utils/authoring/compositionViewAuthoring'
 import { goalMatchesFilters } from '../src/utils/goalFilters'
+import { prepareLandscapeEntries, type LandscapeEntry } from '../src/hooks/useLandscapes'
+import { applyCompositionViewProjection } from '../src/utils/compositionViewRuntime'
+import type { UiGoal } from '../src/goalTypes'
 import type { LearningGoal, SkillLandscape } from '../src/landscapeTypes'
 import { fingerprintCurrentCurriculumDocument as digest, loadCurrentCurriculumCatalog } from './currentCurriculumCatalog'
 import { fingerprintSemanticKindSourceGoal } from './goalBookModel'
@@ -151,39 +154,88 @@ function matchingStructures(nodes: CompositionViewNode[], id: string): Compositi
   return nodes.flatMap(node => node.kind !== 'structure' ? [] : node.id === id ? [node] : matchingStructures(node.children, id))
 }
 
-export function validateSectionAssessmentPolicy(unit: MaterialUnit, landscape: SkillLandscape, views: Map<string, CompositionView>): void {
+function offeredSectionTargetAtoms(view: CompositionView, nodeId: string, entries: LandscapeEntry[]): Map<string, UiGoal> {
+  const sectionId = `composition:${view.viewId}:structure:${nodeId}`
+  const projected = applyCompositionViewProjection(entries, view)
+  const owner = projected.find(entry => entry.meta.landscapeId === view.landscapeId)
+  assert(owner, 'Missing projected landscape for ' + sectionId)
+  const goals = new Map(projected.flatMap(entry => entry.goals.map(goal => [goal.id, goal] as const)))
+  const filters = [view.scope.courseProfile, view.scope.jurisdiction, view.scope.durationModel].filter((value): value is string => !!value)
+  function reachableFrom(roots: string[]): Set<string> {
+    const reachable = new Set<string>()
+    const pending = [...roots]
+    while (pending.length) {
+      const id = pending.pop()!
+      if (reachable.has(id)) continue
+      const goal = goals.get(id)
+      assert(goal, 'Unresolved goal in ' + view.viewId + ': ' + id)
+      if (!goalMatchesFilters(goal, filters)) continue
+      reachable.add(id)
+      pending.push(...goal.contains)
+    }
+    return reachable
+  }
+  const roots = owner.goals.filter(goal => goal.tags?.includes('root')).map(goal => goal.id)
+  assert(reachableFrom(roots).has(sectionId), 'Unreachable section in the selected view: ' + sectionId)
+  const targets = new Map<string, UiGoal>()
+  for (const id of reachableFrom([sectionId])) {
+    const goal = goals.get(id)!
+    if (goal.type === 'atomic') targets.set(id, goal)
+  }
+  return targets
+}
+
+export function validateSectionAssessmentPolicy(
+  unit: MaterialUnit, views: Map<string, CompositionView>, graph: UnitGraph, entries: LandscapeEntry[],
+): void {
   const policy = unit.sectionAssessmentPolicy
-  if (!policy) return
   const contract = unit.assessmentContract
-  assert(contract?.revision && contract.revision === policy.unitContractRevision && digest(contract.parts) === policy.requiredPartsFingerprint,
+  if (!contract) {
+    assert(!policy, 'Section assessment policy requires the current unit contract')
+    return
+  }
+  assert(!policy || (contract.revision && contract.revision === policy.unitContractRevision && digest(contract.parts) === policy.requiredPartsFingerprint),
     'Section assessment policy requires the current unit contract and its exact required parts')
-  const byView = policy.additionalVoluntaryAssessmentGoalIdsByView ?? {}
+  const byView = policy?.additionalVoluntaryAssessmentGoalIdsByView ?? {}
   assert(Object.keys(byView).every(id => contract.viewIds.includes(id)), 'Additional voluntary assessments require a contract view')
-  const goals = new Map(landscape.goals.map(goal => [goal.id, goal]))
-  const required = new Set(contract.parts.map(part => part.goalId))
+  const partIds = contract.parts.map(part => part.goalId)
+  uniqueIds(partIds, 'Unit assessment parts')
+  uniqueIds(contract.viewIds, 'Unit assessment views')
+  const required = new Set(partIds)
   for (const id of contract.viewIds) {
     const view = views.get(id)
-    assert(unit.viewIds.includes(id) && view?.landscapeId === unit.landscapeId && landscape.landscapeId === unit.landscapeId,
+    assert(unit.viewIds.includes(id) && view?.landscapeId === unit.landscapeId,
       'Section assessment policy references an unknown view or landscape')
     const nodes = matchingStructures(view.rootNodes, unit.compositionNodeId)
     assert.equal(nodes.length, 1, 'Voluntary assessments need an unambiguous unit in ' + id)
-    const { targetGoalIds } = collectCompositionProjectionRoleGoalIds(nodes, goals)
+    const targetAtoms = offeredSectionTargetAtoms(view, unit.compositionNodeId, entries)
     if (Object.hasOwn(byView, id)) uniqueIds(byView[id], 'View-specific voluntary assessments')
-    const optional = [...policy.voluntaryAssessmentGoalIds, ...(byView[id] ?? [])]
+    const optional = [...(policy?.voluntaryAssessmentGoalIds ?? []), ...(byView[id] ?? [])]
     if (optional.length) uniqueIds(optional, 'Voluntary assessments in ' + id)
-    const filters = [view.scope.courseProfile, view.scope.jurisdiction, view.scope.durationModel].filter((value): value is string => !!value)
     for (const goalId of optional) {
-      const goal = goals.get(goalId)
-      assert(goal && !goal.contains.length && goal.examData?.reviewStatus === 'released' && !required.has(goalId)
-        && targetGoalIds.has(goalId) && goalMatchesFilters({ tags: goal.tags ?? [], applicability: goal.applicability }, filters),
+      const goal = targetAtoms.get(goalId)
+      assert(goal?.examData?.reviewStatus === 'released' && !required.has(goalId),
       'Voluntary goal must be a released additional assessment within the selected unit and course: ' + id + '/' + goalId)
     }
+    // The automatic section compiler counts assessments in the full prerequisite context of its target atoms.
+    const sectionExams = new Set<string>()
+    for (const goalId of targetAtoms.keys()) {
+      const key = graph.resolve(goalId, unit.landscapeId)
+      for (const candidate of [key, ...graph.reach(key)]) {
+        if (graph.kind(candidate) === 'assessment') sectionExams.add(graph.goal(candidate).id)
+      }
+    }
+    for (const goalId of optional) sectionExams.delete(goalId)
+    const extra = [...sectionExams].filter(goalId => !required.has(goalId))
+    const missing = [...required].filter(goalId => !sectionExams.has(goalId))
+    assert(!extra.length && !missing.length,
+      `Required section assessments differ from the unit parts in ${id}: extra [${extra}], missing [${missing}]`)
   }
 }
 
 function loadReleasedViews(units: MaterialUnit[]): Map<string, CompositionView> {
   const selected = new Set(units.flatMap(unit => [
-    ...(unit.sectionAssessmentPolicy ? unit.assessmentContract?.viewIds ?? [] : []),
+    ...(unit.assessmentContract?.viewIds ?? []),
     ...(unit.assessmentContract?.planningCredits ?? []).flatMap(credit => credit.release.viewIds),
   ]))
   const directory = resolve(root, 'curricula/DE/Gymnasium/composition-views')
@@ -206,15 +258,16 @@ export function checkUnitPlanningReleases(): string[] {
   const views = loadReleasedViews(units)
   const { entries } = loadCurrentCurriculumCatalog(liveVerificationInputs)
   const graph = new UnitGraph(entries.map(({ landscape }) => landscape as UnitGraphLandscape))
+  const projectionEntries = prepareLandscapeEntries(entries.map(({ landscape }) => landscape as SkillLandscape))
   const rollouts: Rollout[] = readJson('curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json').subjects
   const active = new Set<string>()
   for (const unit of units) {
     const credits = unit.assessmentContract?.planningCredits ?? []
-    if (!credits.length && !unit.sectionAssessmentPolicy) continue
+    if (!unit.assessmentContract && !unit.sectionAssessmentPolicy) continue
     const entry = entries.find(row => row.landscape.landscapeId === unit.landscapeId)
     assert(entry, 'No canonical source for the release owner ' + unit.landscapeId)
     const landscape = entry.landscape as unknown as SkillLandscape
-    validateSectionAssessmentPolicy(unit, landscape, views)
+    validateSectionAssessmentPolicy(unit, views, graph, projectionEntries)
     if (!credits.length) continue
     const rollout = rollouts.find(row => row.landscapePath === entry.path)
     assert(rollout, 'Missing current performance evidence for ' + entry.path)

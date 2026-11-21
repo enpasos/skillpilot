@@ -11,6 +11,7 @@ import sys
 # Configuration
 CURRICULA_DIR = "curricula"
 SCHEMA_PATH = "docs/landscape-runtime.schema.json"
+UNIT_MATERIAL_SCHEMA_PATH = "contracts/unit-learning-material/v1/material.schema.json"
 COMPILED_SCHEMA_PATH = "contracts/curriculum-package/v1/compiled-landscape.schema.json"
 
 # This exact authoring source is restored at the sourcePath already declared by
@@ -652,6 +653,42 @@ def validate_file(file_path, schema):
             return False
     return True
 
+def validate_unit_learning_materials(curricula_dir, schema_path=UNIT_MATERIAL_SCHEMA_PATH):
+    """Check every file declared by the same inventory used by the map and backend."""
+    root = Path(curricula_dir).resolve()
+    catalog = root / "unit-learning-materials.json"
+    try:
+        schema = json.loads(Path(schema_path).read_text(encoding="utf-8"))
+        jsonschema.Draft202012Validator.check_schema(schema)
+        validator = jsonschema.Draft202012Validator(schema)
+        inventory = json.loads(catalog.read_text(encoding="utf-8"))
+        paths = inventory.get("materials") if isinstance(inventory, dict) else None
+        if not isinstance(paths, list) or type(inventory.get("schemaVersion")) is not int or inventory["schemaVersion"] != 1:
+            return [f"{catalog}: unsupported unit learning material inventory"]
+    except (OSError, ValueError, jsonschema.SchemaError) as error:
+        return [str(error)]
+
+    errors = []
+    for entry in paths:
+        if not isinstance(entry, str) or not entry.strip() or Path(entry).is_absolute() or PureWindowsPath(entry).drive:
+            errors.append(f"{catalog}: invalid relative material path {entry!r}")
+            continue
+        path = (root / entry).resolve()
+        if not path.is_relative_to(root):
+            errors.append(f"{catalog}: material outside curriculum: {entry}")
+            continue
+        try:
+            material = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, ValueError) as error:
+            errors.append(f"{path}: {error}")
+            continue
+        for error in validator.iter_errors(material):
+            errors.append(f"{path} {error.json_path}: {error.message}")
+    if not errors:
+        print(f"Validated {len(paths)} declared unit learning material file(s) against {schema_path}.")
+    return errors
+
+
 def main():
     if not os.path.exists(SCHEMA_PATH):
         print(f"Schema not found: {SCHEMA_PATH}")
@@ -679,9 +716,9 @@ def main():
         print(f"Directory not found: {CURRICULA_DIR}")
         sys.exit(1)
 
-    symlink_errors = curriculum_symlink_errors()
-    if symlink_errors:
-        for error in symlink_errors:
+    schema_input_errors = curriculum_symlink_errors() + validate_unit_learning_materials(CURRICULA_DIR)
+    if schema_input_errors:
+        for error in schema_input_errors:
             print(f"❌ {error}")
         sys.exit(1)
 

@@ -1,9 +1,11 @@
 package com.skillpilot.backend.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Files;
@@ -20,7 +22,7 @@ class UnitLearningMaterialServiceTest {
     private static final String MOTION = "physics-e1-motion";
 
     @Test
-    void catalogResolvesAnUnrelatedProgramWithAndWithoutCards(@TempDir Path repository) throws IOException {
+    void catalogSupportsLegacyAndVersionedMaterialWithOptionalCardsAndRejectsUnknownVersions(@TempDir Path repository) throws IOException {
         var folder = Files.createDirectories(repository.resolve("university/computing/units"));
         String source = """
                 {"unit":{"landscapeId":"computing","compositionNodeId":"algorithms","viewIds":["%s"]%s},
@@ -39,6 +41,17 @@ class UnitLearningMaterialServiceTest {
         assertThat(materials.find("computing", "seminar", "algorithms").orElseThrow().flashcardGoalId()).isEqualTo("algorithms-deck");
         assertThat(materials.find("computing", "merged:lecture+seminar", "algorithms")).isEmpty();
         assertThat(materials.find("physics", "seminar", "algorithms")).isEmpty();
+        var introFile = folder.resolve("intro.json");
+        var mapper = new ObjectMapper();
+        var versioned = (ObjectNode) mapper.readTree(introFile.toFile());
+        versioned.put("schemaVersion", 1);
+        mapper.writeValue(introFile.toFile(), versioned);
+        assertThat(UnitLearningMaterialService.fromRepository(repository, mapper).find("computing", "lecture", "algorithms"))
+                .contains(lecture);
+        versioned.put("schemaVersion", 2);
+        mapper.writeValue(introFile.toFile(), versioned);
+        assertThatThrownBy(() -> UnitLearningMaterialService.fromRepository(repository, mapper))
+                .isInstanceOf(IOException.class).hasMessageContaining("Unsupported unit learning material version");
     }
 
     @Test

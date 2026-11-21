@@ -6,6 +6,7 @@ import com.skillpilot.backend.api.ActiveGoalContext.PracticeExercise;
 import com.skillpilot.backend.completion.UnitAssessmentContract;
 import com.skillpilot.backend.completion.CompletionReviewBindings;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -81,6 +82,10 @@ public final class UnitLearningMaterialService {
         try (Stream<Path> files = materialFiles(directory, mapper)) {
             for (Path file : files.toList()) {
                 JsonNode data = mapper.readTree(file.toFile());
+                JsonNode version = data.get("schemaVersion");
+                if (version != null && (!version.isNumber() || version.decimalValue().compareTo(BigDecimal.ONE) != 0)) {
+                    throw new IOException("Unsupported unit learning material version in " + file);
+                }
                 JsonNode unit = data.required("unit");
                 Map<String, Intro> intros = new HashMap<>();
                 for (String language : new String[] {"de", "en"}) {
