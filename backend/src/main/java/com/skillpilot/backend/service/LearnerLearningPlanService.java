@@ -428,6 +428,7 @@ public class LearnerLearningPlanService {
                 var assignments = fulfillment.assignmentsByLandscape().getOrDefault(landscapeId, List.of());
                 boolean unitUnavailable = !assignments.isEmpty() && assignments.stream().allMatch(a -> a.option() == null);
                 if (aggregate != null && (aggregate.canContinue() || aggregate.evaluable() && !unitUnavailable)) continue;
+                if (aggregate == null && unitBindsContinuation && !includeSubjectChoices) continue;
                 if (fulfillment.pausesPersonalContinuation(landscapeId)) continue;
                 var personalGoal = unitUnavailable
                         ? firstPersonalCurriculumGoalForPlanContinuation(skillpilotId, landscapeId, subjectPlans, fulfillment)
