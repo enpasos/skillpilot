@@ -1,6 +1,6 @@
 # Hessische E.1-Prüfungen lokal ansehen
 
-Die Vorschau öffnet E.1 und ihre vier deutsch-englischen Prüfungen im regulären Cockpit. Im persönlichen Curriculum ist ausdrücklich Hessen, Sekundarstufe II, Physik (GK) ausgewählt. G8 und G9 erhalten je ein Zuschauerprofil ohne Belege, zwei Profile für unabhängige Erststarts und zwei Profile mit bewerteten Prüfungen im atomaren Lernplan. Dazu kommen vier Profile mit ausdrücklich gewählten Aufträgen je Bildungsgang. Ein weiteres Profil öffnet die große Mathematiktafel. Die 19 lokalen Profile liegen in einer H2-Datenbank im Arbeitsspeicher und verfallen beim Beenden. Das Startskript setzt für diese Instanz `skillpilot.completion.unit-assessment-pilot-enabled=true`.
+Die Vorschau öffnet E.1 und ihre vier deutsch-englischen Prüfungen im regulären Cockpit. Im persönlichen Curriculum ist Hessen, Sekundarstufe II und standardmäßig Physik-GK ausgewählt. Mit `--physics-course LK` richtet das Skript für G8 und G9 jeweils ein persönliches Physik-LK-Profil ein. Der Mathematikvergleich verwendet in beiden Fällen den Grundkurs. G8 und G9 erhalten je ein Zuschauerprofil ohne Belege, zwei Profile für unabhängige Erststarts und zwei Profile mit bewerteten Prüfungen im atomaren Lernplan. Dazu kommen vier Profile mit ausdrücklich gewählten Aufträgen je Bildungsgang. Ein weiteres Profil öffnet die große Mathematiktafel. Die 19 lokalen Profile liegen in einer H2-Datenbank im Arbeitsspeicher und verfallen beim Beenden. Das Startskript setzt für diese Instanz `skillpilot.completion.unit-assessment-pilot-enabled=true`.
 
 Auf dem Abnahmerechner dient Port 5177 dem integrierten Hauptstand. Der gesonderte Kandidat auf Port 5189 hat einen eigenen Checkout, eine eigene API und eigene lokale Profile. Bei einem Vergleich denselben Bildungsgang und Prüfungsstand wählen. Ein gespeichertes Ergebnis im Kandidaten verändert das Profil auf der Hauptlinie nicht. [E.1 auf der Hauptlinie](http://localhost:5177/auftraege/G9) · [E.1 im Kandidaten](http://localhost:5189/auftraege/G9)
 
@@ -44,6 +44,16 @@ Diese drei Profile je Bildungsgang haben denselben Einzelzielplan. Im gespeicher
 Im vollständigen Fall entstehen sechs Planpositionen aus vier belegten Prüfungen und zwei daraus angerechneten Fachzielen. In beiden Bildungsgängen empfiehlt der Plan in allen drei Zuständen weiterhin „Bewegungen mit Weg-Zeit-Diagrammen beschreiben“. Die Lernfront im E.1-Fokus bietet außerdem „Messabweichungen und Fehlerarten unterscheiden“ und „Waagerechter Wurf und Superposition“ an.
 
 Die Vergleichsseite zeigt zusätzlich eine gezielte Abfrage für Newtons erstes Axiom, dessen Anwendung und „Harmonische Schwingung verstehen“. Bei ausdrücklich auf das jeweilige Ziel verengtem Fokus bietet der Standardmodus jedes dieser Ziele bereits ohne Prüfungsbeleg an. Im strikten Modus bleibt jedes der drei Ziele in allen Vergleichszuständen gesperrt. Die Vorschau stellt danach die ursprüngliche Präferenz wieder her. Die Vergleichsseite hält den Stand beim Start fest. In den verlinkten Cockpits kann man weiterlernen.
+
+### Grundkurs- und Leistungskursprofil vergleichen
+
+Das hessische Kerncurriculum führt E.1 als gemeinsames Themenfeld der Einführungsphase. Die fachspezifischen Anforderungen der Grund- und Leistungskurse differenziert es für die Qualifikationsphase. Deshalb gilt für den E.1-Auftrag im technischen GK- und LK-Profil dieselbe Aufgaben- und Rasterfassung für A–D. Beide Profile bieten die zusätzliche Wurfprüfung an. Im LK gibt es außerdem „Mehrphasenbewegung und Modellprüfung“ als freiwillige Vertiefung. Die gewöhnliche Abschnittswahl umfasst nur die in diesem Profil verpflichtenden Prüfungen. Eine ausdrücklich einzeln beauftragte Zusatzprüfung zählt im jeweiligen Einzelzielplan. [Hessisches Kerncurriculum Physik 2024, S. 25–26 und 30](https://github.com/enpasos/skillpilot/blob/d5c45c3830b374500fbfffb35e52dcc3797ccb55/curricula/DE/Gymnasium/input/HE/upper-secondary/kernkurriculum_gymnasiale_oberstufe-physik.pdf#page=25)
+
+Für einen parallelen LK-Vergleich eine eigene Vorschau mit zwei freien Ports starten.
+
+```sh
+python3 scripts/preview_hessen_physics_e1.py --physics-course LK --ui-port 5201 --api-port 8211
+```
 
 ### Einheitenauftrag und Häkchen auf der Lernkarte
 
