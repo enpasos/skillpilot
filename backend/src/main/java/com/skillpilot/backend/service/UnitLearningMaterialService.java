@@ -160,7 +160,18 @@ public final class UnitLearningMaterialService {
     }
 
     private static PracticeExercise readExercise(JsonNode entry, Path file) {
-        return new PracticeExercise(requiredText(entry, "title", file), requiredText(entry, "prompt", file));
+        var criteria = new ArrayList<String>();
+        var authored = entry.path("evidenceCriteria");
+        if (!authored.isMissingNode()) {
+            if (!authored.isArray()) throw new IllegalArgumentException("Expected evidence criteria in " + file);
+            for (var criterion : authored) {
+                if (!criterion.isTextual() || criterion.textValue().isBlank()) {
+                    throw new IllegalArgumentException("Expected a written evidence criterion in " + file);
+                }
+                criteria.add(criterion.textValue());
+            }
+        }
+        return new PracticeExercise(requiredText(entry, "title", file), requiredText(entry, "prompt", file), criteria);
     }
 
     private static String requiredText(JsonNode entry, String field, Path file) {

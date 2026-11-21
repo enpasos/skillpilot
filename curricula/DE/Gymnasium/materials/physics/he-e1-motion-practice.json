@@ -179,6 +179,60 @@
         "hint": "How do the two distances change when the time doubles from 0.10 s to 0.20 s? First work out when the ball has fallen the full height of the table.",
         "solution": "The horizontal distance doubles when the time doubles, consistent with a speed of 0.13 m / 0.10 s = 1.3 m/s. The downward distance quadruples when the time doubles. This fits free fall with zero initial vertical speed. After 0.40 s the ball has fallen ½ × 10 m/s² × (0.40 s)² = 0.80 m. In those same 0.40 s it moves 1.3 m/s × 0.40 s = 0.52 m forwards. Place the marker 52 cm beyond the point directly below the table edge."
       }
+    },
+    {
+      "goalId": "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
+      "de": {
+        "title": "Wie schnell bewegt sich dein Wagen?",
+        "prompt": "Lass einen Spielzeugwagen möglichst gleichmäßig geradeaus fahren. Du kannst auch eine geradlinige Gehbewegung untersuchen. Lege eine Ortsachse mit Maßstab fest. Erfasse mit einer Uhr oder einem Video selbst die Zeiten beim Passieren mehrerer Marken. Bewahre die Messung an der letzten Marke zunächst für die Kontrolle auf. Gib deine Ort-Zeit-Paare mit Einheiten an und zeichne das Zeit-Ort-Diagramm. Welcher Abschnitt lässt sich als gleichförmige Bewegung beschreiben? Bestimme dort den Geschwindigkeitsbetrag und sage die Ankunftszeit an der letzten Marke voraus. Vergleiche deine Vorhersage mit der eigenen Messung.",
+        "hint": "Für zwei Messpunkte auf einer Geraden im Zeit-Ort-Diagramm ist die Steigung die Ortsänderung geteilt durch die verstrichene Zeit. Versuche, die Steigung auch mit einem zweiten Punktepaar zu bestimmen. Wie genau kannst du die Zeit oder den Ort ablesen?",
+        "solution": "Deine Messung bestimmt das Ergebnis. Bei gleichförmiger geradliniger Bewegung ergeben verschiedene Punktpaare innerhalb der Messgenauigkeit denselben Wert für Δx/Δt. Das Vorzeichen hängt von der Ortsachse ab. Der Geschwindigkeitsbetrag ist |Δx/Δt|. Berechne von einem gemessenen Punkt aus die restliche Fahrzeit. Eine Abweichung an der letzten Marke kann an der Zeitmessung oder an einer Tempoänderung liegen. Vergleiche beides mit dem Verlauf deiner Messpunkte.",
+        "evidenceCriteria": [
+          "Der Aufbau mit Marken, Maßstab und Zeitmessung ist nachvollziehbar. Das Protokoll enthält selbst erhobene Orte und Zeiten mit Einheiten, einschließlich des Kontrollpunkts.",
+          "Das beschriftete Zeit-Ort-Diagramm zeigt die eigenen Messpunkte. Der gewählte Abschnitt wird anhand der Messwerte auf annähernd konstante Geschwindigkeit geprüft.",
+          "Die gerichtete Geschwindigkeit wird als Ortsänderung pro Zeit erklärt. Aus der Steigung folgt ein nachvollziehbarer Geschwindigkeitsbetrag mit Einheit.",
+          "Die Vorhersage benutzt die zunächst zurückgehaltene Zeit nicht. Ihr Vergleich mit der Messung berücksichtigt Ablesegenauigkeit oder eine erkennbare Abweichung vom Modell."
+        ]
+      },
+      "en": {
+        "title": "How fast is your cart moving?",
+        "prompt": "Let a toy cart move in a straight line at as steady a speed as possible. You can also investigate someone walking in a straight line. Define a position axis and a length scale. Use a clock or video to measure the times at which several marks are passed. Keep the time at the last mark for a separate check. Report your position and time pairs with units and draw a position–time graph. Which section can be described as uniform motion? Determine the speed there and predict when the last mark will be reached. Compare your prediction with your own measurement.",
+        "hint": "For two points on a straight line in a position–time graph, the slope is the change in position divided by the elapsed time. Try a second pair of points. How precisely can you read the position or time?",
+        "solution": "Your measurements determine the result. For uniform straight-line motion, different pairs of points give the same Δx/Δt within measurement uncertainty. Its sign depends on the position axis. The speed is |Δx/Δt|. Calculate the remaining travel time from a measured point. A discrepancy at the last mark could be due to timing uncertainty or a change in speed. Compare both possibilities with the pattern of your measurements.",
+        "evidenceCriteria": [
+          "The setup, marks, length scale and timing method can be followed. The record contains positions and times you measured yourself, including the check point, with units.",
+          "The labelled position–time graph shows your measured points. You use the measurements to check whether the chosen section has approximately constant velocity.",
+          "You explain signed velocity as change in position per unit time and derive a speed with its unit from the slope.",
+          "The prediction is independent of the time you kept for the check. The comparison with your measurement takes reading precision or an observable departure from the model into account."
+        ]
+      }
+    },
+    {
+      "goalId": "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+      "de": {
+        "title": "Wie groß ist die Fallbeschleunigung in deinem Versuch?",
+        "prompt": "Lass einen kleinen kompakten Ball neben einem senkrechten Maßstab aus der Ruhe fallen. Nimm den Fall von der Seite auf oder verwende einen geeigneten Wegsensor. Protokolliere Aufbau, Längen- und Zeitskala sowie mehrere selbst gemessene Zeiten und Positionen während des Falls. Lege den Zeitnullpunkt und die positive Ortsrichtung fest. Stelle deine Messwerte grafisch dar und bestimme daraus die Fallbeschleunigung. Welches Zeit-Ort-Gesetz beschreibt deinen Fall? Vergleiche deinen Messwert mit dem Richtwert 9,81 m/s². Erkläre anhand deines Versuchs, wie genau der Vergleich ist und wodurch eine Abweichung entstehen kann.",
+        "hint": "Verfolge beim Video stets denselben Punkt des Balls. Eine Längenskala in seiner Bewegungsebene erleichtert das Ablesen. Bestimmst du den Fallweg ab der Loslassposition, kannst du ihn gegen das Quadrat der Zeit seit dem Loslassen auftragen. Welche Bedeutung hat dann die Steigung?",
+        "solution": "Wählst du die Richtung nach unten positiv und misst die Zeit ab dem Loslassen aus der Ruhe, gilt im Modell konstanter Fallbeschleunigung s(t) = s₀ + ½gt². Im Diagramm des zurückgelegten Fallwegs gegen t² entspricht die Steigung g/2. Bei einer nach oben positiven Ortsachse hat der quadratische Term das umgekehrte Vorzeichen. Auch eine passende quadratische Anpassung an dein Zeit-Ort-Diagramm ist möglich. Vergleiche den aus deiner Messung gewonnenen Betrag von g samt Einheit mit dem Richtwert. Prüfe etwa, wie ein um ein Bild verschobener Zeitnullpunkt oder die Position des Maßstabs dein Ergebnis beeinflusst.",
+        "evidenceCriteria": [
+          "Ein eigener Fallversuch ist durch Aufbau, Längen- und Zeitkalibrierung sowie mehrere selbst erhobene Zeit-Ort-Paare mit Einheiten belegt.",
+          "Ein beschriftetes Diagramm zeigt die Messdaten. Seine Auswertung liefert eine begründete Fallbeschleunigung mit Einheit, etwa über die Steigung im Fallweg-t²-Diagramm oder eine quadratische Anpassung.",
+          "Das Zeit-Ort-Gesetz passt zu den gewählten Achsen und Anfangsbedingungen. Die Modellannahmen Fall aus der Ruhe, annähernd konstantes g und vernachlässigbarer Luftwiderstand werden auf den Versuch bezogen.",
+          "Der gemessene Betrag wird zahlenbezogen mit 9,81 m/s² verglichen. Eine konkrete Mess- oder Modellgrenze wird auf die beobachtete Abweichung oder die Genauigkeit der Übereinstimmung bezogen."
+        ]
+      },
+      "en": {
+        "title": "What acceleration of free fall do you measure?",
+        "prompt": "Release a small compact ball from rest beside a vertical length scale. Record the fall from the side or use a suitable position sensor. Record the setup, length and time scales, and several times and positions you measured during the fall. Choose the time origin and the positive direction of your position axis. Plot your measurements and use the graph to determine the acceleration of free fall. What position–time law describes your fall? Compare your result with the reference value of 9.81 m/s². Use your experiment to explain how precise the comparison is and what might cause a discrepancy.",
+        "hint": "In a video, track the same point on the ball throughout. A scale in the plane of motion helps you read the positions. If you measure the distance fallen from the release position, you can plot it against the square of the time since release. What does the slope represent?",
+        "solution": "If downwards is positive and time is measured from release at rest, the constant-acceleration model gives s(t) = s₀ + ½gt². In a graph of distance fallen against t², the slope is g/2. With an upwards-positive position axis, the quadratic term has the opposite sign. A suitable quadratic fit to your position–time graph also works. Compare the magnitude of g obtained from your measurements, with its unit, with the reference value. For example, consider how shifting the time origin by one frame or changing the placement of the scale would affect your result.",
+        "evidenceCriteria": [
+          "Your own drop experiment is documented by the setup, length and time calibration, and several measured time–position pairs with units.",
+          "A labelled graph shows the measurements. You use it to derive an acceleration with its unit, for example from the slope of distance fallen against t² or from a quadratic fit.",
+          "Your position–time law is consistent with the axes and initial conditions. You relate release from rest, approximately constant g and negligible air resistance to the actual experiment.",
+          "You compare the measured magnitude numerically with 9.81 m/s² and relate a specific measurement or model limitation to the observed difference or the precision of the agreement."
+        ]
+      }
     }
   ]
 }

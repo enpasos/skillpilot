@@ -186,6 +186,37 @@ class ClaudeV1CompletionRouteIntegrationTest {
     private static final String WURF_EXTRA = "6ea3fb3c-abdc-568f-ab13-97c36dc274e4";
     private static final String MULTIPHASE_EXTRA = "2b9e565f-d9b4-5e23-b5b7-b7977cecff06";
 
+    @ParameterizedTest
+    @CsvSource({"G8,GK", "G9,GK", "G8,LK", "G9,LK"})
+    void activeIndividualExperimentUsesTheSamePromptAndCriteriaAsTheMap(String duration, String course) throws Exception {
+        selectHessianMotionUnit(duration, "SekII", course);
+        session = sessions.createFirstPartyLaunch(learnerId, new ClaudeV1CoachStartRequest("de", "web-start")).learningSessionId();
+        authenticate();
+        successful(ClaudeV1CompletionContractRegistry.TOOL_CONFIRM, Map.of("receiptCapability",
+                map(context(), "completionContract").get("receiptCapability")));
+        var material = mapper.readTree(java.nio.file.Path.of("../curricula/DE/Gymnasium/materials/physics/he-e1-motion-practice.json").toFile());
+        var mastery = learners.getMastery(learnerId);
+        for (String id : List.of("971beafa-6ba5-4c82-ac8b-7ebf66eec3dd", "09029573-864f-40ca-bf8a-cee7bf6dcb73")) {
+            var expected = material.required("exercises").valueStream()
+                    .filter(exercise -> id.equals(exercise.required("goalId").asText()))
+                    .findFirst().orElseThrow().required("de");
+            var learner = learnerRepository.findById(learnerId).orElseThrow();
+            learner.setActiveGoalId(id);
+            learner.setLearningState(LearningState.TEACHING);
+            learnerRepository.saveAndFlush(learner);
+            long before = version();
+            var response = context();
+            assertThat(map(response, "activeGoal")).containsEntry("id", id);
+            var actual = mapper.valueToTree(map(response, "activeGoalContext")).required("practiceExercise");
+            assertThat(actual.required("prompt")).isEqualTo(expected.required("prompt"));
+            assertThat(actual.required("evidenceCriteria")).isEqualTo(expected.required("evidenceCriteria"));
+            assertThat(actual.required("evidenceCriteria").size()).isPositive();
+            assertThat(actual.has("solution")).isFalse();
+            assertThat(version()).isEqualTo(before);
+        }
+        assertThat(learners.getMastery(learnerId)).isEqualTo(mastery);
+    }
+
     private String selectHessianMotionUnit(String duration, String stage) throws Exception {
         return selectHessianMotionUnit(duration, stage, "GK");
     }
