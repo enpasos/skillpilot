@@ -67,6 +67,11 @@ async function launchAssessment(page, goalId) {
   assert(!accepted.restartCurrent)
 }
 async function checkMapCardExposure(page, ids) {
+  await page.waitForFunction(ids => {
+    const board = document.querySelector('[data-testid="learner-learning-map-dialog"] [data-testid="learning-map-board"]')
+    return board?.getAttribute('aria-busy') === 'false'
+      && ids.every(id => board.querySelector(`[data-entry-id="${id}"] .lum-node-main`))
+  }, ids)
   const measured = await page.evaluate(ids => {
     const surface = document.querySelector('.lum-flow').getBoundingClientRect()
     const controls = document.querySelector('.lum-map-controls').getBoundingClientRect()
