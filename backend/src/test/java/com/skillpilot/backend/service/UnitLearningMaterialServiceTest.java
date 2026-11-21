@@ -76,6 +76,7 @@ class UnitLearningMaterialServiceTest {
         properties.setDirectory(directory.toString());
         var views = new CompositionViewService(properties, mapper);
         var materials = UnitLearningMaterialService.fromRepository(directory, mapper);
+        var g8Exercises = materials.find(PHYSICS, "de-he-gym-physics-gk-g8", MOTION).orElseThrow().exercises();
         for (String course : List.of("GK", "LK", "GK+LK")) {
             var scope = new LinkedHashMap<>(Map.of("schoolForm", "Gymnasium", "jurisdiction", "DE-HE",
                     "stage", "CrossStage", "courseProfile", course));
@@ -85,7 +86,7 @@ class UnitLearningMaterialServiceTest {
                     : "de-he-gym-physics-" + course.toLowerCase(Locale.ROOT));
             var material = materials.find(PHYSICS, neutral, MOTION).orElseThrow();
             assertThat(material.question("de")).isEqualTo("Ein Ball rollt vom Tisch. Wo landet er?");
-            assertThat(material.exercises()).hasSize(3);
+            assertThat(material.exercises()).isEqualTo(g8Exercises);
             assertThat(material.flashcardGoalId()).isEqualTo("9f2f5ab8-0ae4-5792-b831-82a05af5895c");
             assertThat(materials.assessmentBindings(List.of(neutral))).isEmpty();
             assertThat(materials.assessmentBindingForReference("composition:" + neutral + ":structure:" + MOTION)).isEmpty();
@@ -141,7 +142,7 @@ class UnitLearningMaterialServiceTest {
     }
 
     @Test
-    void onlyTheExactLocalizedExerciseTitleAndPromptAreLoaded() throws IOException {
+    void loadsOnlyTheLocalizedTitlePromptAndAnyAuthoredEvidenceCriteria() throws IOException {
         var mapper = new ObjectMapper();
         var curricula = Path.of("../curricula");
         var service = UnitLearningMaterialService.fromRepository(curricula, mapper);
@@ -153,9 +154,11 @@ class UnitLearningMaterialServiceTest {
                 for (String language : new String[] {"de", "en"}) {
                     var localized = exercise.required(language);
                     var projected = material.exercise(goalId, language).orElseThrow();
-                    assertThat(projected.title()).isEqualTo(localized.required("title").asText());
-                    assertThat(projected.prompt()).isEqualTo(localized.required("prompt").asText());
-                    assertThat(mapper.<JsonNode>valueToTree(projected).properties()).hasSize(2);
+                    var expected = mapper.createObjectNode();
+                    expected.set("title", localized.required("title"));
+                    expected.set("prompt", localized.required("prompt"));
+                    if (localized.has("evidenceCriteria")) expected.set("evidenceCriteria", localized.get("evidenceCriteria"));
+                    assertThat(mapper.<JsonNode>valueToTree(projected)).isEqualTo(expected);
                 }
             }
             assertThat(material.exercise(material.assessmentGoalId(), "de")).isEmpty();

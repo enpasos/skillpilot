@@ -819,13 +819,13 @@ class ClaudeV1CompletionRouteIntegrationTest {
             var confirmed = context();
             String title = "Modellierung und Idealisierung von Bewegungen";
             var offered = (List<?>) assignment.get("voluntaryGoalTitles");
-            String cockpitGoal = "Physik im Straßenverkehr: Sicherheitsabstände bewerten";
-            assertThat(offered.toString()).contains(title, cockpitGoal);
-            var beforeUnpublishedChoice = version();
-            var unavailable = call(ClaudeV1McpContractAdapter.TOOL_CHOOSE_COMPLETION_ROUTE,
-                    writeArgs("unpublished-voluntary-title", beforeUnpublishedChoice, Map.of("choice", cockpitGoal)));
-            assertThat(unavailable.isError()).isTrue();
-            assertThat(version()).isEqualTo(beforeUnpublishedChoice);
+            String bareGoalTitle = "Physik im Straßenverkehr: Sicherheitsabstände bewerten";
+            assertThat(offered.toString()).contains(title, bareGoalTitle);
+            var beforeBareTitle = version();
+            var bareTitleResult = call(ClaudeV1McpContractAdapter.TOOL_CHOOSE_COMPLETION_ROUTE,
+                    writeArgs("bare-goal-title", beforeBareTitle, Map.of("choice", bareGoalTitle)));
+            assertThat(bareTitleResult.isError()).isTrue();
+            assertThat(version()).isEqualTo(beforeBareTitle);
             assertThat(learners.getLearner(learnerId).getActiveGoalId()).isNull();
             String published = choice(confirmed, "Einzelfokus starten: " + title);
             var receiptsBeforeChoice = examPasses.findForGoals(learnerId, parts);
@@ -869,10 +869,19 @@ class ClaudeV1CompletionRouteIntegrationTest {
         assertThat(outstanding).isNotEmpty();
         if (strict) assertThat(chosen.practice().startGoalId()).isIn(outstanding).isNotEqualTo(requested);
         else assertThat(chosen.practice().startGoalId()).isEqualTo(requested);
-        var started = learners.chooseLevelCompletion(learnerId, new LevelCompletionActionRequest(
-                chosen.action(), completion.profileId(), requested, chosen.intent(), version()));
-        assertThat(started.activeGoal().id()).isEqualTo(chosen.practice().startGoalId());
-        assertThat(map(context(), "activeGoal")).containsEntry("id", started.activeGoal().id());
+        successful(ClaudeV1CompletionContractRegistry.TOOL_CONFIRM, Map.of(
+                "receiptCapability", map(context(), "completionContract").get("receiptCapability")));
+        var confirmed = context();
+        var route = map(confirmed, "levelCompletion");
+        var individualChoices = ((List<?>) route.get("individualPractice")).stream()
+                .map(item -> ((Map<?, ?>) item).get("choice").toString()).toList();
+        assertThat(individualChoices).containsExactlyInAnyOrderElementsOf(
+                practice.stream().map(action -> action.title().get("de")).toList());
+        assertThat((List<?>) route.get("choices")).hasSizeLessThanOrEqualTo(ClaudeV1CompletionChoices.MAX_CHOICES);
+        var result = successful(ClaudeV1McpContractAdapter.TOOL_CHOOSE_COMPLETION_ROUTE,
+                writeArgs("start-requested-individual-experiment", version(), Map.of("choice", choice(confirmed, chosen.title().get("de")))));
+        assertThat(map(map(result, "context"), "activeGoal")).containsEntry("id", chosen.practice().startGoalId());
+        assertThat(map(context(), "activeGoal")).containsEntry("id", chosen.practice().startGoalId());
         assertThat(learners.getPlannedGoals(learnerId)).contains(requested);
         assertThat(examPasses.findForGoals(learnerId, parts)).isEqualTo(receipts);
         assertThat(masteryRepository.findByLearner_SkillpilotId(learnerId)).extracting(Mastery::getGoalKey)

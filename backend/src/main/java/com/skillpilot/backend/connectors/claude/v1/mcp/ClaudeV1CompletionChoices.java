@@ -105,7 +105,11 @@ final class ClaudeV1CompletionChoices {
                 && !"selectProfile".equals(choice.action())).limit(8).forEach(ordered::add);
         unambiguous.stream().filter(choice -> "selectProfile".equals(choice.action()))
                 .limit(6).forEach(ordered::add);
-        unambiguous.stream().filter(choice -> "startAssessment".equals(choice.action())).forEach(ordered::add);
+        var directStarts = unambiguous.stream().filter(choice -> "startAssessment".equals(choice.action())).toList();
+        directStarts.stream().findFirst().ifPresent(ordered::add);
+        // Keep the first direct exam reachable, then offer individual study before filling the list with more exams.
+        unambiguous.stream().filter(choice -> "focusPractice".equals(choice.action())).forEach(ordered::add);
+        ordered.addAll(directStarts);
         return ordered.stream().limit(MAX_CHOICES).toList();
     }
 
