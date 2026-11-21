@@ -66,6 +66,42 @@ async function launchAssessment(page, goalId) {
   assert.equal(accepted.goalId, goalId)
   assert(!accepted.restartCurrent)
 }
+async function checkMapCardExposure(page, ids) {
+  const measured = await page.evaluate(ids => {
+    const surface = document.querySelector('.lum-flow').getBoundingClientRect()
+    const controls = document.querySelector('.lum-map-controls').getBoundingClientRect()
+    return ids.map(id => {
+      const button = document.querySelector(`[data-entry-id="${id}"] .lum-node-main`)
+      const card = button.getBoundingClientRect()
+      // Text ranges measure the actual title lines, including the second line
+      // that a toolbar can cover while the button's center remains clickable.
+      const text = ['strong', '.lum-node-meta'].flatMap(selector => {
+        const element = button.querySelector(selector)
+        const bounds = element.getBoundingClientRect()
+        const range = document.createRange()
+        range.selectNodeContents(element)
+        return Array.from(range.getClientRects()).filter(rect => rect.top < bounds.bottom && rect.bottom > bounds.top)
+          .map(rect => ({ left: Math.max(rect.left, bounds.left), right: Math.min(rect.right, bounds.right),
+            top: Math.max(rect.top, bounds.top), bottom: Math.min(rect.bottom, bounds.bottom) }))
+          .filter(rect => rect.right > rect.left && rect.bottom > rect.top)
+      })
+      return { id, width: card.width,
+        inside: card.left >= surface.left && card.right <= surface.right
+          && card.top >= surface.top && card.bottom <= surface.bottom,
+        toolbarOverlap: card.left < controls.right && card.right > controls.left
+          && card.top < controls.bottom && card.bottom > controls.top,
+        textRegions: text.length,
+        textExposed: text.every(rect => [0.1, 0.5, 0.9].every(x => button.contains(document.elementFromPoint(
+          rect.left + (rect.right - rect.left) * x, (rect.top + rect.bottom) / 2)))),
+      }
+    })
+  }, ids)
+  for (const card of measured) {
+    assert(card.inside && card.width >= 170, `Readable assessment card: ${JSON.stringify(card)}`)
+    assert(!card.toolbarOverlap && card.textRegions >= 2 && card.textExposed,
+      `Assessment title and type remain unobstructed: ${JSON.stringify(card)}`)
+  }
+}
 async function check(duration, part, lang, start, width = 1440, height = 900) {
   const task = tasks[part]
   const entrySite = start && duration === 'G9' ? numericSite.origin : site
@@ -162,6 +198,7 @@ async function check(duration, part, lang, start, width = 1440, height = 900) {
             })
           }, visibleParts)
         }
+        if (width >= 1024) await checkMapCardExposure(page, [task.id, other.id, scope.childAssessmentGoalIds[0]])
         await neighbor.click()
       } catch (error) {
         throw new Error(`${duration}/${part}/${lang}: ${(await map.innerText()).slice(0, 1600)}`, { cause: error })

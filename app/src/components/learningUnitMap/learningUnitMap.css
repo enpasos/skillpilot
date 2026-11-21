@@ -169,6 +169,7 @@
 .lum-map-controls > button:hover { background: #f0f4f7; color: #347aa6; }
 .lum-map-controls > span:not(.lum-control-divider) { width: 45px; text-align: center; font-size: 10px; color: #8c99a4; font-variant-numeric: tabular-nums; }
 .lum-control-divider { height: 15px; width: 1px; background: #e1e6eb; margin: 0 3px; }
+.lum-map-bottom-bar { display: contents; }
 /* One line below the map: how to read the arrows and how to move. The right end stays clear for the overview map. */
 .lum-map-footer { position: absolute; left: 23px; right: 180px; bottom: 6px; display: flex; flex-wrap: wrap; align-items: center; gap: 1px 18px; pointer-events: none; }
 .lum-map-hint { color: #a5adb5; font-size: 10px; }
@@ -177,6 +178,13 @@
 .lum-app--contextual .lum-loading, .lum-app--contextual .lum-layout-error { inset: 0; }
 .lum-layout-error { color: #9a5d5d; }
 .lum-sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; }
+/* Desktop controls get their own row, so even cards at the canvas edge stay readable and clickable. */
+@media (min-width: 761px) {
+  .lum-flow { margin-bottom: 0; }
+  .lum-map-bottom-bar { display: flex; align-items: center; gap: 12px; padding: 3px 20px 4px; flex-shrink: 0; }
+  .lum-map-controls { position: static; flex-shrink: 0; }
+  .lum-map-footer { position: static; flex: 1; min-width: 0; }
+}
 @media (max-width: 900px) {
   .lum-demo-badge { display: none; }
   .lum-inspector { width: 260px; padding: 15px; }
