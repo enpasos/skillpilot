@@ -11,6 +11,7 @@ export function GoalPracticeDialog({ exercise, language, onDismiss }: {
   const ref = useRef<HTMLDialogElement>(null)
   const titleId = useId()
   const english = language === 'en'
+  const criteria = exercise.evidenceCriteria ?? []
   useEffect(() => {
     const dialog = ref.current
     dialog?.showModal()
@@ -20,15 +21,17 @@ export function GoalPracticeDialog({ exercise, language, onDismiss }: {
   return <dialog ref={ref} className="lum-practice-dialog" aria-labelledby={titleId}
     onKeyDown={event => { if (event.key === 'Escape') event.stopPropagation() }}
     onClose={event => { if (!event.currentTarget.open) onDismiss() }}>
-    <header><div><span>{english ? 'Self-check exercise' : 'Übung zur Selbstkontrolle'}</span>
+    <header><div><span>{criteria.length > 0
+      ? (english ? 'Optional individual task' : 'Freiwillige Einzelaufgabe')
+      : (english ? 'Self-check exercise' : 'Übung zur Selbstkontrolle')}</span>
       <h2 id={titleId}>{exercise.title}</h2></div>
       <button type="button" aria-label={english ? 'Close exercise' : 'Übung schließen'}
         onClick={() => ref.current?.close()}><X size={20} aria-hidden="true" /></button>
     </header>
     <p>{exercise.prompt}</p>
-    {exercise.evidenceCriteria && exercise.evidenceCriteria.length > 0 && <section>
+    {criteria.length > 0 && <section>
       <h3>{english ? 'Criteria for your evidence' : 'Kriterien für deinen Nachweis'}</h3>
-      <ul>{exercise.evidenceCriteria.map(criterion => <li key={criterion}>{criterion}</li>)}</ul>
+      <ul>{criteria.map(criterion => <li key={criterion}>{criterion}</li>)}</ul>
     </section>}
     <details><summary>{english ? 'Show a hint' : 'Hinweis anzeigen'}</summary><p>{exercise.hint}</p></details>
     <details><summary>{english ? 'Compare your solution' : 'Lösung vergleichen'}</summary><p>{exercise.solution}</p></details>
