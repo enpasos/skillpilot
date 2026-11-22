@@ -22,6 +22,7 @@ const { unit, intro, exercises: ownExercises } = JSON.parse(await readFile(new U
 const childMaterial = JSON.parse(await readFile(new URL(
   '../../curricula/DE/Gymnasium/materials/physics/he-e1-accelerated-and-free-fall.json', import.meta.url), 'utf8'))
 const orientationGoalIds = [unit.orientationGoalId, childMaterial.unit.orientationGoalId]
+const unitStudyIntentKey = 'skillpilot:unit-study-navigation:v1'
 assert(orientationGoalIds.every(id => typeof id === 'string'))
 const exercises = [...new Map([...ownExercises, ...childMaterial.exercises].map(exercise => [exercise.goalId, exercise])).values()]
 const canonicalPhysics = JSON.parse(await readFile(new URL(
@@ -302,6 +303,8 @@ async function checkGuidedUnitEntry(duration) {
     await page.waitForURL(url => url.pathname === '/learner/' + childMaterial.unit.orientationGoalId)
     await view.getByRole('heading', { name: childMaterial.intro.de.question, exact: true }).waitFor()
     assert.deepEqual(await readApi(parentOriented, '/mastery'), parentBefore, 'Child resource gating preserves the parent confirmation')
+    await page.reload({ waitUntil: 'domcontentloaded' })
+    await view.getByRole('heading', { name: childMaterial.intro.de.question, exact: true }).waitFor()
 
     // The handoff reaches the ordinary provider flow even without a coach session.
     const activation = page.waitForResponse(response => response.request().method() === 'POST' && new URL(response.url()).pathname.endsWith('/active-goal'))
@@ -372,7 +375,11 @@ async function checkForeignFocusEntry(duration) {
     const entry = await fetch(site + '/nativ/' + duration + '/E1').then(response => response.text())
     const keys = JSON.parse(entry.match(/Object.entries\((\{[^]*?\})\)/)[1])
     keys.skillpilot_id = learnerId
-    await context.addInitScript(values => { for (const [key, value] of Object.entries(values)) localStorage.setItem(key, value) }, keys)
+    await context.addInitScript(values => {
+      if (sessionStorage.getItem('unit-study-fixture-initialized')) return
+      for (const [key, value] of Object.entries(values)) localStorage.setItem(key, value)
+      sessionStorage.setItem('unit-study-fixture-initialized', '1')
+    }, keys)
     const page = await context.newPage()
     page.setDefaultTimeout(90000)
     await page.goto(site + '/learner/' + goalId)
@@ -384,6 +391,31 @@ async function checkForeignFocusEntry(duration) {
     assert.equal(await page.getByRole('dialog', { name: exercise.title, exact: true }).count(), 0)
     assert.deepEqual(await planned(), [foreignFocus], 'The read-only resource gate does not switch the focus')
     assert.deepEqual(await evidence(learnerId), before)
+    await page.goto(site + '/nativ/' + duration + '/E1')
+    await card.getByTestId('unit-introduction').waitFor()
+    await page.waitForFunction(key => sessionStorage.getItem(key) === null, unitStudyIntentKey)
+    assert.equal(await page.evaluate(key => sessionStorage.getItem(key), unitStudyIntentKey), null,
+      'Loading another learner cancels the pending navigation intent')
+    await page.evaluate(id => localStorage.setItem('skillpilot_id', id), learnerId)
+    await page.goto(site + '/learner/' + goalId)
+    await card.getByRole('button', { name: 'Üben: ' + exercise.title, exact: true }).click()
+    await page.waitForURL(url => url.pathname === '/learner/' + unit.orientationGoalId)
+    const differentGoal = worksheets[0].goalId
+    await page.goto(site + '/learner/' + differentGoal)
+    await card.getByRole('heading', { name: worksheets[0].title, exact: true }).first().waitFor()
+    await page.goto(site + '/learner/' + unit.orientationGoalId)
+    await card.getByTestId('unit-introduction').waitFor()
+    await page.waitForFunction(key => sessionStorage.getItem(key) === null, unitStudyIntentKey)
+    assert.equal(await page.evaluate(key => sessionStorage.getItem(key), unitStudyIntentKey), null,
+      'Leaving the introduction for another goal cancels the old request, including after returning')
+    await page.goto(site + '/learner/' + goalId)
+    await card.getByRole('button', { name: 'Üben: ' + exercise.title, exact: true }).click()
+    await page.waitForURL(url => url.pathname === '/learner/' + unit.orientationGoalId)
+    for (let reload = 0; reload < 2; reload++) {
+      await page.reload({ waitUntil: 'domcontentloaded' })
+      await card.getByTestId('unit-introduction').getByRole('heading', { name: intro.de.question, exact: true }).waitFor()
+    }
+    assert.deepEqual(await planned(), [foreignFocus], 'Reloading the introduction keeps the original foreign focus')
     const start = page.waitForResponse(response => response.request().method() === 'POST' && new URL(response.url()).pathname.endsWith('/active-goal'))
     await card.getByTestId('unit-introduction-continue').click()
     const response = await start
@@ -395,7 +427,7 @@ async function checkForeignFocusEntry(duration) {
     assert(focus.includes(foreignFocus), 'The existing independent subject assignment is retained')
     assert(focus.includes(profiles[duration].E1), 'The explicit start acquires the actual owning unit')
     assert.deepEqual(await evidence(learnerId), before, 'Starting in the owning unit never transfers mastery')
-    console.log(duration, 'Struktureller Mathematik-Fremdfokus: Physik ansehen und Übungsgate bleiben lesend; erst bewusster Coach-Start übernimmt E.1 und erhält das exakte Fachziel OK')
+    console.log(duration, 'Struktureller Mathematik-Fremdfokus: lesendes Übungsgate, verworfene Ziel-/Lernerwechsel, zwei echte Reloads und bewusster Coach-Start mit exaktem Fachziel ohne Mastery-Änderung OK')
   } finally { await context.close() }
 }
 

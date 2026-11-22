@@ -25,6 +25,7 @@ import { GoalExamPassHistory } from '../components/GoalExamPassHistory'
 import { GoalPracticeAction } from '../components/GoalPracticeDialog'
 import { UnitIntroduction } from '../components/UnitIntroduction'
 import { requestUnitIntroductionGate, unitIntroductionForSelection } from '../utils/unitIntroduction'
+import { clearUnitStudyIntent, readUnitStudyIntent, saveUnitStudyIntent, unitStudyIntentDecision } from '../utils/unitStudyIntent'
 import { findUnitPracticeExercise, isUnitMaterialSource, UNIT_MAP_LEARNING_MATERIALS } from '../utils/unitLearningMaterial'
 import { GoalAdditionalMaterials } from '../components/GoalAdditionalMaterials'
 import { LearnerGoalFeedbackAction } from '../components/LearnerGoalFeedbackAction'
@@ -171,6 +172,7 @@ export interface LearnerGoalNavigationMapProps {
   /** Read-only backend gate; a redirect leaves the resource unopened. */
   onRequestUnitStudy?: (scopeGoalId: string, targetGoalId?: string) => Promise<boolean>
   onContinueUnitIntroduction?: (orientationGoalId: string) => Promise<void>
+  unitIntroductionReady?: boolean
   active: boolean
   onReturnToTree?: () => void
   /** Escape outside the map search closes the full-window map instead of leaving a level. */
@@ -575,7 +577,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const initialProfileReadStartedRef = useRef(false)
   const currentSkillpilotIdRef = useRef(skillpilotId)
   const unitStudySelectionRef = useRef(currentGoal?.id)
-  const pendingUnitStudyRef = useRef<{ orientationGoalId: string; targetGoalId: string } | null>(null)
+  const unitStudyContextRef = useRef('')
   const loadLearnerRetentionRef = useRef<() => Promise<void>>(async () => undefined)
   const fullRefreshInFlightRef = useRef(false)
   const lastFullRefreshAtRef = useRef(0)
@@ -990,6 +992,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     () => `skillpilot:learner-tree-expanded:${skillpilotId || 'anonymous'}:${learnerTreeScopeKey}`,
     [learnerTreeScopeKey, skillpilotId],
   )
+  unitStudyContextRef.current = `${skillpilotId}\u0000${rootLandscapeId || landscapeId}\u0000${learnerTreeScopeKey}`
 
   const buildCollapsedFocusPath = useCallback((targetId: string) => {
     if (!targetId) return new Set<string>()
@@ -1261,6 +1264,17 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       return belongsToUnit ? [goal] : []
     })[0]
   }, [currentIntroduction, effectiveActiveGoalId, frontierOptions, navigationGoals, visibleGoals, buildCollapsedFocusPath])
+
+  useEffect(() => {
+    const intent = readUnitStudyIntent()
+    if (!intent) return
+    const decision = unitStudyIntentDecision(intent, { learnerId: skillpilotId, curriculumId: rootLandscapeId || landscapeId,
+      routeGoalId: currentRouteGoalId,
+      ...(learnerStateLoadStatus === 'ready' && !isPersonalConfigHydrating ? { scopeKey: learnerTreeScopeKey } : {}),
+    })
+    if (decision === 'discard') clearUnitStudyIntent()
+    else if (decision === 'settled' && !intent.routeSettled) saveUnitStudyIntent({ ...intent, routeSettled: true })
+  }, [skillpilotId, rootLandscapeId, landscapeId, currentRouteGoalId, learnerStateLoadStatus, isPersonalConfigHydrating, learnerTreeScopeKey])
 
   const plannedScopeGoalIds = useMemo(() => {
     if (plannedGoals.size === 0) {
@@ -1735,7 +1749,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     invalidateLatestRequest(learningPlansRequestSequenceRef)
     invalidateLatestRequest(learningPlanContinueRequestSequenceRef)
     setStateRequiredAction(null)
-    pendingUnitStudyRef.current = null
     setMemoryPractice(null)
     setCompletionSnapshot(null)
     setCompletionActionBusy(false)
@@ -2304,10 +2317,10 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     void refreshLearningPlans()
   }, [skillpilotId, refreshLearningPlans])
 
-  const handleSetActiveGoal = useCallback(async (goalId: string) => {
+  const handleSetActiveGoal = useCallback(async (goalId: string, preserveUnitStudyIntent = false) => {
     if (!skillpilotId) return null;
     const requestScopeKey = learnerStateScopeKey
-    pendingUnitStudyRef.current = null
+    if (!preserveUnitStudyIntent) clearUnitStudyIntent()
     try {
       const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
       const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}/active-goal` : `/api/ui/learners/${skillpilotId}/active-goal`
@@ -2386,15 +2399,20 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const requestUnitStudy = useCallback(async (scopeGoalId: string, targetGoalId?: string): Promise<boolean> => {
     if (!skillpilotId || learnerStateLoadStatus !== 'ready') return false
     const requestScopeKey = learnerStateScopeKey
+    const requestContextKey = unitStudyContextRef.current
     const selectionAtStart = unitStudySelectionRef.current
     try {
       // Exact exercise intent and explicit unit/deck intent share the backend's
       // ownership resolver, including when the stored focus is another subject.
       const orientationGoalId = await requestUnitIntroductionGate(skillpilotId, targetGoalId ?? scopeGoalId)
-      if (currentLearnerStateScopeKeyRef.current !== requestScopeKey || unitStudySelectionRef.current !== selectionAtStart) return false
-      if (!orientationGoalId) { pendingUnitStudyRef.current = null; return true }
+      if (currentLearnerStateScopeKeyRef.current !== requestScopeKey || unitStudyContextRef.current !== requestContextKey
+        || unitStudySelectionRef.current !== selectionAtStart) return false
+      if (!orientationGoalId) { clearUnitStudyIntent(); return true }
       if (!visibleGoals.has(orientationGoalId)) throw new Error('Orientation outside current scope')
-      pendingUnitStudyRef.current = targetGoalId && visibleGoals.has(targetGoalId) ? { orientationGoalId, targetGoalId } : null
+      if (targetGoalId && visibleGoals.has(targetGoalId)) saveUnitStudyIntent({ learnerId: skillpilotId,
+        curriculumId: rootLandscapeId || landscapeId, scopeKey: learnerTreeScopeKey,
+        originGoalId: currentRouteGoalId || currentGoal?.id || scopeGoalId, orientationGoalId, targetGoalId, routeSettled: false })
+      else clearUnitStudyIntent()
       setMemoryPractice(null)
       setIsLearningMapOpen(false)
       onSelectGoal(orientationGoalId)
@@ -2405,22 +2423,28 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         : 'Der Einstieg der Einheit konnte nicht geprüft werden. Bitte versuche es erneut.')
       return false
     }
-  }, [skillpilotId, learnerStateLoadStatus, learnerStateScopeKey, visibleGoals, onSelectGoal, onNotify, localizedLanguage])
+  }, [skillpilotId, learnerStateLoadStatus, learnerStateScopeKey, visibleGoals, rootLandscapeId, landscapeId,
+    learnerTreeScopeKey, currentRouteGoalId, currentGoal?.id, onSelectGoal, onNotify, localizedLanguage])
 
   const continueUnitIntroduction = useCallback(async (orientationGoalId: string) => {
+    if (learnerStateLoadStatus !== 'ready' || isPersonalConfigHydrating) throw new Error('Introduction context is loading')
     const requestScopeKey = learnerStateScopeKey
-    const pending = pendingUnitStudyRef.current
-    const requestedGoalId = pending?.orientationGoalId === orientationGoalId ? pending.targetGoalId : orientationGoalId
+    const pending = readUnitStudyIntent()
+    const decision = pending && unitStudyIntentDecision(pending, { learnerId: skillpilotId, curriculumId: rootLandscapeId || landscapeId,
+      routeGoalId: currentRouteGoalId, scopeKey: learnerTreeScopeKey })
+    const requestedGoalId = pending?.orientationGoalId === orientationGoalId && decision !== 'discard' && visibleGoals.has(pending.targetGoalId)
+      ? pending.targetGoalId : orientationGoalId
     const targetId = requestedGoalId === orientationGoalId && effectiveActiveGoalId === orientationGoalId
-      ? orientationGoalId : await handleSetActiveGoal(requestedGoalId)
+      ? orientationGoalId : await handleSetActiveGoal(requestedGoalId, true)
     if (currentLearnerStateScopeKeyRef.current !== requestScopeKey) return
     if (!targetId) throw new Error('Introduction could not be selected')
-    pendingUnitStudyRef.current = null
+    clearUnitStudyIntent()
     // The ordinary entry also offers a provider to learners without a session.
     // Only the coach's established confirmed-result flow completes orientation.
     setIsLearningMapOpen(false)
     navigate(buildCompletionRouteStartHref(hasActiveCompletionRoute(levelCompletion) ? levelCompletion?.profileId : undefined))
-  }, [handleSetActiveGoal, effectiveActiveGoalId, learnerStateScopeKey, navigate, levelCompletion])
+  }, [handleSetActiveGoal, effectiveActiveGoalId, learnerStateScopeKey, skillpilotId, rootLandscapeId, landscapeId,
+    currentRouteGoalId, learnerTreeScopeKey, visibleGoals, learnerStateLoadStatus, isPersonalConfigHydrating, navigate, levelCompletion])
 
   const togglePlan = useCallback(async (id: string) => {
     // Single-focus mode: a completed personal curriculum always keeps one
@@ -3960,7 +3984,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                   completed={!!currentIntroduction.unit.orientationGoalId && isMastered(getEffectiveMastery(currentIntroduction.unit.orientationGoalId))}
                   credited={completionTreeWaivers.get(currentIntroduction.unit.orientationGoalId ?? '')?.reason === 'assessment'}
                   nextStep={introductionNextGoal ? { title: getLearnerGoalTitle(introductionNextGoal), open: () => onSelectGoal(introductionNextGoal.id) } : undefined}
-                  active={!isLearningMapOpen && !isSetupOpen && !isDataManagementOpen && !isModalOpen}
+                  active={!isLearningMapOpen && !isSetupOpen && !isDataManagementOpen && !isModalOpen
+                    && learnerStateLoadStatus === 'ready' && !isPersonalConfigHydrating}
                   onContinue={continueUnitIntroduction} /> : currentGoal.tags && currentGoal.tags.some(t => t.startsWith('srs-deck')) ? (
                     <div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-border-color p-6">
                       <div className="mb-6 border-b border-border-color pb-4">
@@ -4440,6 +4465,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             onSelectGoal: selectMapGoal,
             onRequestUnitStudy: requestUnitStudy,
             onContinueUnitIntroduction: continueUnitIntroduction,
+            unitIntroductionReady: learnerStateLoadStatus === 'ready' && !isPersonalConfigHydrating,
             getFlashcardSource: getSrsSource,
             onPracticeFlashcards: request => {
               if (!visibleGoals.has(request.goalId) || !goalIndexAll.has(request.goalId)) return
