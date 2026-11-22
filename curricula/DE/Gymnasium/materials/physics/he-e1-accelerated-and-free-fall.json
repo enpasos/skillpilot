@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 2,
+  "unit": {
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "compositionNodeId": "physics-e1-accelerated-and-free-fall",
+    "viewIds": [
+      "de-he-gym-physics-gk",
+      "de-he-gym-physics-lk",
+      "de-he-gym-physics-gk-g8",
+      "de-he-gym-physics-lk-g8",
+      "de-he-gym-physics-gk-g9",
+      "de-he-gym-physics-lk-g9",
+      "de-he-gym-sekii-physics-gk",
+      "de-he-gym-sekii-physics-lk"
+    ],
+    "orientationGoalId": "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e",
+    "assessmentGoalId": "f13ca187-b680-5f47-b4ad-76bd474bd8a2"
+  },
+  "intro": {
+    "de": {
+      "question": "Was verrät ein Video über einen fallenden Ball?",
+      "promise": "Du lernst, beschleunigte Bewegungen in Diagrammen und mit passenden Gesetzen zu beschreiben. Mit einem eigenen Fallversuch kannst du prüfen, wie gut dieses Modell zur Wirklichkeit passt.",
+      "scene": "Eine Hand hält den Ball neben einem Maßstab, kurz vor dem Loslassen. In E.1 suchst du die Landestelle des Balls am Tisch. Hier untersuchst du dafür zunächst die Bewegung nach unten.",
+      "imageUrl": "/assets/goal-visualizations/physik/b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e/b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e.png",
+      "imageAlt": "Eine Hand hält einen einzelnen blauen Ball neben dem oberen Teil eines senkrechten Maßstabs mit unbeschrifteten Teilstrichen. Boden und Fallraum sind sichtbar; spätere Ballpositionen fehlen.",
+      "topics": [
+        "Änderungen der Geschwindigkeit beschreiben",
+        "Zeit, Ort und Geschwindigkeit in Diagrammen verbinden",
+        "Freien Fall selbst messen",
+        "Vorhersagen und Modellgrenzen vergleichen"
+      ]
+    },
+    "en": {
+      "question": "What can a video reveal about a falling ball?",
+      "promise": "You will learn to describe accelerated motion using graphs and suitable laws. With your own drop experiment, you can check how well the model fits the real motion.",
+      "scene": "A hand holds the ball beside a measuring stick, just before release. In E.1 you are working towards predicting where the ball from the table lands. Here you first investigate its downward motion.",
+      "imageUrl": "/assets/goal-visualizations/physik/b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e/b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e.png",
+      "imageAlt": "A hand holds a single blue ball near the top of a vertical measuring stick with unlabelled tick marks. The floor and falling space are visible; no later ball positions are shown.",
+      "topics": [
+        "Describe changes in velocity",
+        "Connect time, position and velocity in graphs",
+        "Measure free fall yourself",
+        "Compare predictions and model limits"
+      ]
+    }
+  },
+  "exercises": [
+    {
+      "goalId": "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+      "de": {
+        "title": "Wie groß ist die Fallbeschleunigung in deinem Versuch?",
+        "prompt": "Lass einen kleinen kompakten Ball neben einem senkrechten Maßstab aus der Ruhe fallen. Nimm den Fall von der Seite auf oder verwende einen geeigneten Wegsensor. Protokolliere Aufbau, Längen- und Zeitskala sowie mehrere selbst gemessene Zeiten und Positionen während des Falls. Lege den Zeitnullpunkt und die positive Ortsrichtung fest. Stelle deine Messwerte grafisch dar und bestimme daraus die Fallbeschleunigung. Welches Zeit-Ort-Gesetz beschreibt deinen Fall? Vergleiche deinen Messwert mit dem Richtwert 9,81 m/s². Erkläre anhand deines Versuchs, wie genau der Vergleich ist und wodurch eine Abweichung entstehen kann.",
+        "hint": "Verfolge beim Video stets denselben Punkt des Balls. Eine Längenskala in seiner Bewegungsebene erleichtert das Ablesen. Bestimmst du den Fallweg ab der Loslassposition, kannst du ihn gegen das Quadrat der Zeit seit dem Loslassen auftragen. Welche Bedeutung hat dann die Steigung?",
+        "solution": "Wählst du die Richtung nach unten positiv und misst die Zeit ab dem Loslassen aus der Ruhe, gilt im Modell konstanter Fallbeschleunigung s(t) = s₀ + ½gt². Im Diagramm des zurückgelegten Fallwegs gegen t² entspricht die Steigung g/2. Bei einer nach oben positiven Ortsachse hat der quadratische Term das umgekehrte Vorzeichen. Auch eine passende quadratische Anpassung an dein Zeit-Ort-Diagramm ist möglich. Vergleiche den aus deiner Messung gewonnenen Betrag von g samt Einheit mit dem Richtwert. Prüfe etwa, wie ein um ein Bild verschobener Zeitnullpunkt oder die Position des Maßstabs dein Ergebnis beeinflusst.",
+        "evidenceCriteria": [
+          "Ein eigener Fallversuch ist durch Aufbau, Längen- und Zeitkalibrierung sowie mehrere selbst erhobene Zeit-Ort-Paare mit Einheiten belegt.",
+          "Ein beschriftetes Diagramm zeigt die Messdaten. Seine Auswertung liefert eine begründete Fallbeschleunigung mit Einheit, etwa über die Steigung im Fallweg-t²-Diagramm oder eine quadratische Anpassung.",
+          "Das Zeit-Ort-Gesetz passt zu den gewählten Achsen und Anfangsbedingungen. Die Modellannahmen Fall aus der Ruhe, annähernd konstantes g und vernachlässigbarer Luftwiderstand werden auf den Versuch bezogen.",
+          "Der gemessene Betrag wird zahlenbezogen mit 9,81 m/s² verglichen. Eine konkrete Mess- oder Modellgrenze wird auf die beobachtete Abweichung oder die Genauigkeit der Übereinstimmung bezogen."
+        ]
+      },
+      "en": {
+        "title": "What acceleration of free fall do you measure?",
+        "prompt": "Release a small compact ball from rest beside a vertical length scale. Record the fall from the side or use a suitable position sensor. Record the setup, length and time scales, and several times and positions you measured during the fall. Choose the time origin and the positive direction of your position axis. Plot your measurements and use the graph to determine the acceleration of free fall. What position–time law describes your fall? Compare your result with the reference value of 9.81 m/s². Use your experiment to explain how precise the comparison is and what might cause a discrepancy.",
+        "hint": "In a video, track the same point on the ball throughout. A scale in the plane of motion helps you read the positions. If you measure the distance fallen from the release position, you can plot it against the square of the time since release. What does the slope represent?",
+        "solution": "If downwards is positive and time is measured from release at rest, the constant-acceleration model gives s(t) = s₀ + ½gt². In a graph of distance fallen against t², the slope is g/2. With an upwards-positive position axis, the quadratic term has the opposite sign. A suitable quadratic fit to your position–time graph also works. Compare the magnitude of g obtained from your measurements, with its unit, with the reference value. For example, consider how shifting the time origin by one frame or changing the placement of the scale would affect your result.",
+        "evidenceCriteria": [
+          "Your own drop experiment is documented by the setup, length and time calibration, and several measured time–position pairs with units.",
+          "A labelled graph shows the measurements. You use it to derive an acceleration with its unit, for example from the slope of distance fallen against t² or from a quadratic fit.",
+          "Your position–time law is consistent with the axes and initial conditions. You relate release from rest, approximately constant g and negligible air resistance to the actual experiment.",
+          "You compare the measured magnitude numerically with 9.81 m/s² and relate a specific measurement or model limitation to the observed difference or the precision of the agreement."
+        ]
+      }
+    }
+  ]
+}

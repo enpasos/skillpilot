@@ -52,6 +52,22 @@ class UnitLearningMaterialSchemaTests(unittest.TestCase):
         del self.material["schemaVersion"]
         self.assertTrue(self.validate_second(self.material))
 
+    def test_v2_guided_entry_is_complete_and_v1_remains_readable(self):
+        introduction = {"question": "Why?", "promise": "Find out.", "scene": "A ball is held.",
+                        "imageUrl": "/assets/ball.png", "imageAlt": "A ball.", "topics": ["Motion"]}
+        versioned = {**self.material, "schemaVersion": 2,
+                     "unit": {**self.material["unit"], "orientationGoalId": "intro"},
+                     "intro": {"de": introduction, "en": introduction}}
+        self.assertEqual([], self.validate_second(versioned))
+        for field in ("scene", "imageUrl", "imageAlt", "topics"):
+            incomplete = {**introduction}
+            del incomplete[field]
+            self.assertTrue(self.validate_second({**versioned, "intro": {"de": incomplete, "en": introduction}}))
+        for image_url in ("https://provider.example/ball.png", "javascript:alert(1)"):
+            invalid = {**introduction, "imageUrl": image_url}
+            self.assertTrue(self.validate_second({**versioned, "intro": {"de": invalid, "en": introduction}}))
+        self.assertTrue(self.validate_second({**versioned, "unit": self.material["unit"]}))
+
     def test_catalog_rejects_missing_or_outside_file(self):
         self.assertTrue(any("two.json" in e for e in validate_unit_learning_materials(self.root, SCHEMA)))
         outside = self.root.parent / "outside.json"

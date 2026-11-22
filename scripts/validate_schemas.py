@@ -12,6 +12,7 @@ import sys
 CURRICULA_DIR = "curricula"
 SCHEMA_PATH = "docs/landscape-runtime.schema.json"
 UNIT_MATERIAL_SCHEMA_PATH = "contracts/unit-learning-material/v1/material.schema.json"
+UNIT_MATERIAL_V2_SCHEMA_PATH = "contracts/unit-learning-material/v2/material.schema.json"
 COMPILED_SCHEMA_PATH = "contracts/curriculum-package/v1/compiled-landscape.schema.json"
 
 # This exact authoring source is restored at the sourcePath already declared by
@@ -661,6 +662,9 @@ def validate_unit_learning_materials(curricula_dir, schema_path=UNIT_MATERIAL_SC
         schema = json.loads(Path(schema_path).read_text(encoding="utf-8"))
         jsonschema.Draft202012Validator.check_schema(schema)
         validator = jsonschema.Draft202012Validator(schema)
+        v2_schema = json.loads(Path(UNIT_MATERIAL_V2_SCHEMA_PATH).read_text(encoding="utf-8"))
+        jsonschema.Draft202012Validator.check_schema(v2_schema)
+        validators = {1: validator, 2: jsonschema.Draft202012Validator(v2_schema)}
         inventory = json.loads(catalog.read_text(encoding="utf-8"))
         paths = inventory.get("materials") if isinstance(inventory, dict) else None
         if not isinstance(paths, list) or type(inventory.get("schemaVersion")) is not int or inventory["schemaVersion"] != 1:
@@ -682,10 +686,12 @@ def validate_unit_learning_materials(curricula_dir, schema_path=UNIT_MATERIAL_SC
         except (OSError, ValueError) as error:
             errors.append(f"{path}: {error}")
             continue
-        for error in validator.iter_errors(material):
+        version = material.get("schemaVersion") if isinstance(material, dict) else None
+        selected = validators.get(version, validator) if type(version) is int else validator
+        for error in selected.iter_errors(material):
             errors.append(f"{path} {error.json_path}: {error.message}")
     if not errors:
-        print(f"Validated {len(paths)} declared unit learning material file(s) against {schema_path}.")
+        print(f"Validated {len(paths)} declared unit learning material file(s) against the v1/v2 schemas.")
     return errors
 
 
