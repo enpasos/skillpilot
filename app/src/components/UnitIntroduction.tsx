@@ -5,17 +5,14 @@ import type { MapPracticeMaterial } from './learningUnitMap/types'
 import './UnitIntroduction.css'
 
 /** Presentation never writes a learner result. The coach owns confirmation. */
-export function UnitIntroduction({ material, language, context, completed, credited = false, nextStep, compact = false,
-  deferUntilRequested = false, active = true, onContinue, assessmentEntry, resumeLink }: {
+export function UnitIntroduction({ material, language, context, completed, credited = false, nextStep,
+  active = true, onContinue, assessmentEntry, resumeLink }: {
   material: MapPracticeMaterial
   language: 'de' | 'en'
   context: readonly string[]
   completed: boolean
   credited?: boolean
   nextStep?: { title: string; open: () => void }
-  compact?: boolean
-  /** Direct assessment navigation retains its drawing space and entry exception. */
-  deferUntilRequested?: boolean
   active?: boolean
   assessmentEntry?: ReactNode
   resumeLink?: ReactNode
@@ -24,17 +21,17 @@ export function UnitIntroduction({ material, language, context, completed, credi
   const intro = material.intro[language]
   const english = language === 'en'
   const id = useId()
-  const [expanded, setExpanded] = useState(!completed && !credited && !deferUntilRequested)
+  const [expanded, setExpanded] = useState(!completed && !credited)
   const [busy, setBusy] = useState(false)
   const [imageFailed, setImageFailed] = useState(false)
   const [error, setError] = useState(false)
   const done = completed || credited
-  useEffect(() => { setExpanded(!done && !deferUntilRequested) }, [done, deferUntilRequested, active])
+  useEffect(() => { setExpanded(!done) }, [done])
 
   const orientationGoalId = material.unit.orientationGoalId
   const startIntroduction = expanded && !done && orientationGoalId && onContinue
 
-  return <section className={`unit-introduction${expanded ? '' : ' unit-introduction--short'}${compact ? ' unit-introduction--map' : ''}`}
+  return <section className={`unit-introduction${expanded ? '' : ' unit-introduction--short'}`}
     data-testid="unit-introduction" data-orientation-goal-id={material.unit.orientationGoalId}
     data-state={done ? 'return' : 'orientation'} aria-labelledby={expanded ? id : undefined}
     aria-label={expanded ? undefined : context.at(-1) ?? intro.question}>

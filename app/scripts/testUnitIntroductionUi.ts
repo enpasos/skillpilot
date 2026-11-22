@@ -21,7 +21,6 @@ const server = await createServer({ root, cacheDir, configFile: false, logLevel:
       import {UnitIntroduction} from '/src/components/UnitIntroduction.tsx';
       const language = new URL(location.href).searchParams.get('lang') || 'de';
       const credited = new URL(location.href).searchParams.get('credit') === '1';
-      const deferUntilRequested = new URL(location.href).searchParams.get('exam') === '1';
       const text = {de:{question:'Wie kommt eine Nachricht an?',promise:'Du erklärst den Weg einer Nachricht.',scene:'Ein Brief wartet am ersten Knoten.',imageUrl:'/intro-image.svg',imageAlt:'Brief und zwei verbundene Stationen',topics:['Nachrichten aufteilen','Wege vergleichen']},en:{question:'How does a message arrive?',promise:'Explain the path of a message.',scene:'A letter waits at the first node.',imageUrl:'/intro-image.svg',imageAlt:'Letter and two connected stations',topics:['Split messages','Compare routes']}};
       const material={unit:{landscapeId:'informatics',compositionNodeId:'networks',viewIds:['test'],orientationGoalId:'network-intro'},intro:text,exercises:[]};
       function App(){const [complete,setComplete]=useState(false),[active,setActive]=useState(false),[handoffs,setHandoffs]=useState(0);
@@ -29,7 +28,7 @@ const server = await createServer({ root, cacheDir, configFile: false, logLevel:
       React.createElement('button',{onClick:()=>setActive(true)},'Show active unit'),
       React.createElement('button',{onClick:()=>setComplete(true)},'Receive confirmed coach result'),
       React.createElement('output',null,'Handoffs: '+handoffs),
-      React.createElement(UnitIntroduction,{material,language,context:['Informatik','Netzwerke'],completed:complete,credited,deferUntilRequested,active,nextStep:{title:'Nachrichten aufteilen',open:()=>{}},onContinue:async id=>{if(id!=='network-intro')throw Error('wrong ID');setHandoffs(value=>value+1)}}));}
+      React.createElement(UnitIntroduction,{material,language,context:['Informatik','Netzwerke'],completed:complete,credited,active,nextStep:{title:'Nachrichten aufteilen',open:()=>{}},onContinue:async id=>{if(id!=='network-intro')throw Error('wrong ID');setHandoffs(value=>value+1)}}));}
       createRoot(document.getElementById('root')).render(React.createElement(App));
       </script></body></html>`
       void server.transformIndexHtml(request.url, html).then(body => response.end(body))
@@ -93,15 +92,4 @@ try {
   await alternative.getByText('Handoffs: 1', { exact: true }).waitFor()
   assert.equal(await alternativeIntro.getAttribute('data-state'), 'orientation')
   await alternative.close()
-  const directExam = await browser.newPage()
-  await directExam.route('**/intro-image.svg', route => route.fulfill({ status: 404, body: '' }))
-  await directExam.goto(`http://127.0.0.1:${address.port}/__unit-introduction?lang=en&exam=1`)
-  const deferred = directExam.getByTestId('unit-introduction')
-  await deferred.getByText('The unit introduction is still open.', { exact: true }).waitFor()
-  assert.equal(await deferred.getByRole('img').count(), 0, 'Assessment navigation keeps room for the actual task')
-  assert.equal(await deferred.getAttribute('data-state'), 'orientation', 'Deferring a scene never claims completion')
-  await deferred.getByRole('button', { name: 'View introduction', exact: true }).click()
-  await deferred.getByRole('heading', { name: 'How does a message arrive?', exact: true }).waitFor()
-  assert.equal(await deferred.getAttribute('data-state'), 'orientation')
-  await directExam.close()
 } finally { await browser.close(); await server.close(); await rm(cacheDir, { recursive: true, force: true }) }
